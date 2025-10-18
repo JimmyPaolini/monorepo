@@ -2,6 +2,7 @@
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "nxCloudId": "68f404cfd0c3c650a1a6befd",
   "projects": {
-    "caelundas": "applications/caelundas"
+    "caelundas": "applications/caelundas",
+    "JimmyPaolini": "applications/JimmyPaolini"
   }
 }
