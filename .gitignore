@@ -1,0 +1,26 @@
+# Editor/OS files 💻
+.DS_Store
+*.swp
+*.swo
+*.bak
+
+# Dependencies 📦
+node_modules/
+
+# Environment variables 🎛️
+.env
+
+# Terraform 🏗️
+.terraform/
+infrastructure/terraform/.terraform.lock.hcl
+*.terraform-provider-*
+*.tfstate
+*.tfstate.*
+*.tfvars
+crash.log
+
+# NX 🦭
+.nx/cache
+.nx/workspace-data
+.cursor/rules/nx-rules.mdc
+.github/instructions/nx.instructions.md
