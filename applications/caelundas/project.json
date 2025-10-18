@@ -1,0 +1,16 @@
+{
+  "name": "caelundas",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "applications/caelundas/src",
+  "projectType": "application",
+  "targets": {
+    "run": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "deno task run",
+        "cwd": "applications/caelundas"
+      }
+    }
+  },
+  "tags": []
+}
