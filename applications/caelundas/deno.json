@@ -1,0 +1,14 @@
+{
+  "tasks": {
+    "run": "deno run --allow-all --unstable-fs main.ts"
+  },
+  "imports": {
+    "@inkjs/ui": "npm:@inkjs/ui@^2.0.0",
+    "@types/ink": "npm:@types/ink@^2.0.3",
+    "@types/react": "npm:@types/react@^19.1.9",
+    "ink": "npm:ink@^6.1.0",
+    "lodash": "npm:lodash@^4.17.21",
+    "moment-timezone": "npm:moment-timezone@^0.6.0",
+    "react": "npm:react@^19.1.1"
+  }
+}
