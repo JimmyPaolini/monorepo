@@ -1,4 +1,4 @@
-import { TextProps } from "npm:ink";
+import { TextProps } from "ink";
 import { defaultTheme, extendTheme } from "@inkjs/ui";
 
 export const theme = extendTheme(defaultTheme, {

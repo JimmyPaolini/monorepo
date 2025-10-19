@@ -1,7 +1,7 @@
-import prompts from "npm:prompts";
-import yargs from "npm:yargs";
-import _ from "npm:lodash";
-import moment from "npm:moment-timezone";
+import prompts from "prompts";
+import yargs from "yargs";
+import _ from "lodash";
+import moment from "moment-timezone";
 import type { Body, RetrogradeBody } from "../symbols.constants.ts";
 import type { Latitude, Longitude } from "../ephemeris/ephemeris.types.ts";
 import type {

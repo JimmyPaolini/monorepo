@@ -1,5 +1,5 @@
-import _ from "npm:lodash";
-import type { Moment } from "npm:moment";
+import _ from "lodash";
+import type { Moment } from "moment";
 import type {
   Body,
   Sign,

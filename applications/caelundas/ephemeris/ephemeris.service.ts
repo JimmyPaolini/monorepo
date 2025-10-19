@@ -1,4 +1,4 @@
-import _ from "npm:lodash";
+import _ from "lodash";
 import {
   commandIdByBody,
   QUANTITY_ANGULAR_DIAMETER,

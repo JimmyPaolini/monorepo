@@ -1,14 +1,28 @@
 {
   "name": "caelundas",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "applications/caelundas/src",
+  "sourceRoot": "applications/caelundas",
   "projectType": "application",
   "targets": {
     "run": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "deno task run",
+        "command": "pnpm start",
         "cwd": "applications/caelundas"
+      }
+    },
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/applications/caelundas",
+        "main": "applications/caelundas/main.ts",
+        "tsConfig": "applications/caelundas/tsconfig.json",
+        "assets": [
+          "applications/caelundas/*.md"
+        ]
       }
     }
   },

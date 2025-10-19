@@ -1,5 +1,5 @@
-import moment from "npm:moment-timezone";
-import _ from "npm:lodash";
+import moment from "moment-timezone";
+import _ from "lodash";
 import type {
   Coordinates,
   DiameterEphemeris,

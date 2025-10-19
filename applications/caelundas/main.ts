@@ -1,5 +1,5 @@
-import _ from "npm:lodash";
-import moment from "npm:moment-timezone";
+import _ from "lodash";
+import moment from "moment-timezone";
 import { getChoices } from "./choices/choices.service.ts";
 import type { Event } from "./calendar.utilities.ts";
 import type { Coordinates } from "./ephemeris/ephemeris.types.ts";
