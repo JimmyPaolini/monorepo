@@ -1,4 +1,4 @@
-import moment from "npm:moment-timezone";
+import moment from "moment-timezone";
 
 export function setupDates(args: { date?: Date; start?: Date; end?: Date }) {
   const { date, start, end } = args;

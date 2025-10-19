@@ -1,5 +1,5 @@
-import React, { ReactNode } from "npm:react";
-import { render, RenderOptions } from "npm:ink";
+import React, { ReactNode } from "react";
+import { render, RenderOptions } from "ink";
 import { Logs } from "./logs.component.tsx";
 import type { Log, LogsProps } from "./logs.types.tsx";
 

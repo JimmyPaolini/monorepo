@@ -11,6 +11,8 @@
   "license": "ISC",
   "packageManager": "pnpm@10.18.3",
   "devDependencies": {
-    "nx": "21.6.5"
+    "@nx/js": "^21.6.5",
+    "nx": "21.6.5",
+    "typescript": "^5.9.3"
   }
 }

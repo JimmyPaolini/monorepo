@@ -1,5 +1,5 @@
-import React, { Fragment } from "npm:react";
-import { Box, Text, Spacer, Newline, Static } from "npm:ink";
+import React, { Fragment } from "react";
+import { Box, Text, Spacer, Newline, Static } from "ink";
 import { ProgressBar, Spinner, ThemeProvider } from "@inkjs/ui";
 import { theme } from "./logs.theme.ts";
 import { setupDates } from "./logs.utils.tsx";

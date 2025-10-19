@@ -1,4 +1,4 @@
-import moment from "npm:moment-timezone";
+import moment from "moment-timezone";
 import type { Choices } from "./choices.types.ts";
 
 export const initialChoices: Choices = {

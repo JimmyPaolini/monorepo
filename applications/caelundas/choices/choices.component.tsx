@@ -1,11 +1,11 @@
-import React from "npm:react";
-import _ from "npm:lodash";
-import moment from "npm:moment-timezone";
-import { Box, Text } from "npm:ink";
+import React from "react";
+import _ from "lodash";
+import moment from "moment-timezone";
+import { Box, Text } from "ink";
 import type { ChoicesProps } from "./choices.types.ts";
 import { Body, symbolByBody } from "../symbols.constants.ts";
 import { UnorderedList } from "@inkjs/ui";
-import { useState } from "npm:react";
+import { useState } from "react";
 
 export function Choices(props: ChoicesProps) {
   const {

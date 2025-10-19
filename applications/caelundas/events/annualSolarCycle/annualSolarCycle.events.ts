@@ -1,6 +1,6 @@
-import _ from "npm:lodash";
-import moment from "npm:moment-timezone";
-import type { Moment } from "npm:moment";
+import _ from "lodash";
+import moment from "moment-timezone";
+import type { Moment } from "moment";
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types.ts";
 import type { DistanceEphemeris } from "../../ephemeris/ephemeris.types.ts";
 import { type Event, getCalendar } from "../../calendar.utilities.ts";

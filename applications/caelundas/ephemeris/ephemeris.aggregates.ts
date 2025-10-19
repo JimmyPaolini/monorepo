@@ -1,4 +1,4 @@
-import _ from "npm:lodash";
+import _ from "lodash";
 import { type Body } from "../symbols.constants.ts";
 import type {
   Coordinates,

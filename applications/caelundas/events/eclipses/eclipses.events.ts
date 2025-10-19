@@ -1,5 +1,5 @@
-import moment from "npm:moment-timezone";
-import type { Moment } from "npm:moment";
+import moment from "moment-timezone";
+import type { Moment } from "moment";
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types.ts";
 import type { DiameterEphemeris } from "../../ephemeris/ephemeris.types.ts";
 import type { Event } from "../../calendar.utilities.ts";
