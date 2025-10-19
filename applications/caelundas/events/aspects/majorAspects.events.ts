@@ -1,3 +1,4 @@
+import fs from "fs";
 import _ from "lodash";
 import type { Moment } from "moment";
 import type { Event } from "../../calendar.utilities.ts";
@@ -149,7 +150,7 @@ export function writeMajorAspectEvents(args: {
     majorAspectEvents,
     "Major Aspects 📐"
   );
-  Deno.writeFileSync(
+  fs.writeFileSync(
     `./calendars/major-aspects_${majorAspectBodiesString}_${timespan}.ics`,
     new TextEncoder().encode(majorAspectsCalendar)
   );

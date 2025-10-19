@@ -1,3 +1,4 @@
+import fs from "fs";
 import _ from "lodash";
 import type { Moment } from "moment";
 import { getCalendar, type Event } from "../../calendar.utilities.ts";
@@ -136,7 +137,7 @@ export function writeRetrogradeEvents(args: {
 
   const retrogradeBodiesString = retrogradeBodies.join(", ");
   const retrogradesCalendar = getCalendar(retrogradeEvents, "Retrogrades ↩️");
-  Deno.writeFileSync(
+  fs.writeFileSync(
     `./calendars/retrogrades_${retrogradeBodiesString}_${timespan}.ics`,
     new TextEncoder().encode(retrogradesCalendar)
   );

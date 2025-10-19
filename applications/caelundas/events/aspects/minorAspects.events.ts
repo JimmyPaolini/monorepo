@@ -1,3 +1,4 @@
+import fs from "fs";
 import _ from "lodash";
 import type { Moment } from "moment";
 import type { EventTemplate } from "../../calendar.utilities.ts";
@@ -150,7 +151,7 @@ export function writeMinorAspectEvents(args: {
     minorAspectEvents,
     "Minor Aspects 🖇️"
   );
-  Deno.writeFileSync(
+  fs.writeFileSync(
     `./calendars/minor-aspects_${minorAspectBodiesString}_${timespan}.ics`,
     new TextEncoder().encode(minorAspectsCalendar)
   );

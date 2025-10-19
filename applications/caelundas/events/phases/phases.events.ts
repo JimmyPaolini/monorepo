@@ -1,3 +1,4 @@
+import fs from "fs";
 import _ from "lodash";
 import moment from "moment-timezone";
 import type { Moment } from "moment";
@@ -707,7 +708,7 @@ export function writePlanetaryPhaseEvents(args: {
     planetaryPhaseEvents,
     "Planetary Phases 🌓"
   );
-  Deno.writeFileSync(
+  fs.writeFileSync(
     `./calendars/planetary_phases_${planetaryPhaseBodiesString}_${timespan}.ics`,
     new TextEncoder().encode(planetaryPhasesCalendar)
   );
