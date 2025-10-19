@@ -1,24 +1,46 @@
-import { DB } from "https://deno.land/x/sqlite/mod.ts";
-import { type Body } from "./symbols.constants.ts";
-import { type Event } from "./calendar.utilities.ts";
+import sqlite3 from "sqlite3";
+import { open, type Database } from "sqlite";
+import type { Body } from "./symbols.constants.ts";
+import type { Event } from "./calendar.utilities.ts";
 
-const db = new DB("database.db");
+const databasePromise: Promise<Database> = open({
+  filename: "./database.db",
+  driver: sqlite3.Database,
+});
 
-export function closeConnection() {
-  db.close();
+// Ensure tables exist once DB is opened.
+(async () => {
+  const db = await databasePromise;
+
+  // Ephemeris table — keep commented bodies creation in source if needed later.
+  await db.exec(`
+    CREATE TABLE IF NOT EXISTS ephemeris (
+      body TEXT,
+      timestamp TEXT,
+      latitude REAL,
+      longitude REAL,
+      PRIMARY KEY (body, timestamp)
+    );
+  `);
+
+  // Events table
+  await db.exec(`
+    CREATE TABLE IF NOT EXISTS events (
+      summary TEXT,
+      description TEXT,
+      start TEXT,
+      end TEXT,
+      PRIMARY KEY (summary, start)
+    );
+  `);
+})();
+
+export async function closeConnection() {
+  const db = await databasePromise;
+  await db.close();
 }
 
 // #region Ephemeris
-
-// db.execute(`
-//   CREATE TABLE IF NOT EXISTS ephemeris (
-//     body TEXT CHECK(body IN (${bodies.map((body) => `'${body}'`).join(", ")})),
-//     timestamp TEXT,
-//     latitude REAL CHECK(latitude >= -90 AND latitude <= 90),
-//     longitude REAL CHECK(longitude >= 0 AND longitude <= 360),
-//     PRIMARY KEY (body, timestamp)
-//   );
-// `);
 
 export interface EphemerisRecord {
   body: Body;
@@ -27,21 +49,25 @@ export interface EphemerisRecord {
   longitude: number;
 }
 
-export function upsertEphemerisValue(ephemerisValue: EphemerisRecord) {
+export async function upsertEphemerisValue(ephemerisValue: EphemerisRecord) {
+  const db = await databasePromise;
   const { body, timestamp, latitude, longitude } = ephemerisValue;
-  const result = db.query(
+  const result = await db.run(
     "INSERT OR REPLACE INTO ephemeris (body, timestamp, latitude, longitude) VALUES (?, ?, ?, ?)",
     [body, timestamp.toISOString(), latitude, longitude]
   );
   return result;
 }
 
-export function upsertEphemerisValues(ephemerisValues: EphemerisRecord[]) {
+export async function upsertEphemerisValues(
+  ephemerisValues: EphemerisRecord[]
+) {
   if (ephemerisValues.length === 0) return;
 
+  const placeholders = ephemerisValues.map(() => "(?, ?, ?, ?)").join(", ");
   const query = `
     INSERT INTO ephemeris (body, timestamp, latitude, longitude)
-    VALUES ${ephemerisValues.map(() => "(?, ?, ?, ?)").join(", ")}
+    VALUES ${placeholders}
     ON CONFLICT(body, timestamp) DO UPDATE SET
       latitude = excluded.latitude,
       longitude = excluded.longitude
@@ -56,20 +82,11 @@ export function upsertEphemerisValues(ephemerisValues: EphemerisRecord[]) {
     ]
   );
 
-  db.query(query, parameters);
+  const db = await databasePromise;
+  await db.run(query, parameters);
 }
 
 // #region Events
-
-db.execute(`
-  CREATE TABLE IF NOT EXISTS events (
-    summary TEXT,
-    description TEXT,
-    start TEXT,
-    end TEXT,
-    PRIMARY KEY (summary, start)
-  );
-`);
 
 export interface EventRecord {
   summary: string;
@@ -77,21 +94,23 @@ export interface EventRecord {
   timestamp: Date;
 }
 
-export function upsertEvent(event: Event) {
+export async function upsertEvent(event: Event) {
+  const db = await databasePromise;
   const { summary, description, start } = event;
-  const result = db.query(
+  const result = await db.run(
     "INSERT OR REPLACE INTO events (summary, description, start) VALUES (?, ?, ?)",
     [summary, description, start.toISOString()]
   );
   return result;
 }
 
-export function upsertEvents(events: Event[]) {
+export async function upsertEvents(events: Event[]) {
   if (events.length === 0) return;
 
+  const placeholders = events.map(() => "(?, ?, ?)").join(", ");
   const query = `
     INSERT INTO events (summary, description, start)
-    VALUES ${events.map(() => "(?, ?, ?)").join(", ")}
+    VALUES ${placeholders}
     ON CONFLICT(summary, start) DO UPDATE SET
       description = excluded.description
   `;
@@ -102,5 +121,6 @@ export function upsertEvents(events: Event[]) {
     start.toISOString(),
   ]);
 
-  db.query(query, parameters);
+  const db = await databasePromise;
+  await db.run(query, parameters);
 }

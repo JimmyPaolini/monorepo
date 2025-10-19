@@ -1,3 +1,4 @@
+import fs from "fs";
 import _ from "lodash";
 import moment from "moment-timezone";
 import type { Moment } from "moment";
@@ -372,7 +373,7 @@ export function writeAnnualSolarCycleEvents(args: {
     annualSolarCycleEvents,
     "Annual Solar Cycle 📏"
   );
-  Deno.writeFileSync(
+  fs.writeFileSync(
     `./calendars/annual-solar-cycle_${timespan}.ics`,
     new TextEncoder().encode(ingressCalendar)
   );

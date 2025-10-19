@@ -1,3 +1,4 @@
+import fs from "fs";
 import _ from "lodash";
 import type { Moment } from "moment";
 import type { EventTemplate } from "../../calendar.utilities.ts";
@@ -154,7 +155,7 @@ export function writeSpecialtyAspectEvents(args: {
     specialtyAspectEvents,
     "Specialty Aspects 🧮"
   );
-  Deno.writeFileSync(
+  fs.writeFileSync(
     `./calendars/specialty-aspects_${specialtyAspectBodiesString}_${timespan}.ics`,
     new TextEncoder().encode(specialtyAspectsCalendar)
   );

@@ -36,7 +36,7 @@ export async function getChoices() {
 
   if (_.isEmpty(eventTypes)) {
     console.error("🚫 No events selected.");
-    Deno.exit(1);
+    process.exit(1);
   }
 
   let ingresses: IngressChoice[] = [];
@@ -62,7 +62,7 @@ export async function getChoices() {
 
     if (_.isEmpty(ingresses)) {
       console.error("🚫 No ingresses selected.");
-      Deno.exit(1);
+      process.exit(1);
     }
 
     if (ingresses.includes("signs")) {
@@ -75,7 +75,7 @@ export async function getChoices() {
 
       if (ingresses.includes("signs") && _.isEmpty(signIngressBodies)) {
         console.error("🚫 No sign ingress bodies selected.");
-        Deno.exit(1);
+        process.exit(1);
       }
     }
 
@@ -89,7 +89,7 @@ export async function getChoices() {
 
       if (ingresses.includes("decans") && _.isEmpty(decanIngressBodies)) {
         console.error("🚫 No decan ingress bodies selected.");
-        Deno.exit(1);
+        process.exit(1);
       }
     }
 
@@ -103,7 +103,7 @@ export async function getChoices() {
 
       if (ingresses.includes("peaks") && _.isEmpty(peakIngressBodies)) {
         console.error("🚫 No peak ingress bodies selected.");
-        Deno.exit(1);
+        process.exit(1);
       }
     }
   }
@@ -118,7 +118,7 @@ export async function getChoices() {
 
     if (_.isEmpty(aspects)) {
       console.error("🚫 No aspects selected.");
-      Deno.exit(1);
+      process.exit(1);
     }
     if (aspects.includes("majorAspects")) {
       ({ majorAspectBodies } = await prompts({
@@ -130,7 +130,7 @@ export async function getChoices() {
 
       if (aspects.includes("majorAspects") && _.isEmpty(majorAspectBodies)) {
         console.error("🚫 No major aspect bodies selected.");
-        Deno.exit(1);
+        process.exit(1);
       }
     }
 
@@ -144,7 +144,7 @@ export async function getChoices() {
 
       if (aspects.includes("minorAspects") && _.isEmpty(minorAspectBodies)) {
         console.error("🚫 No minor aspect bodies selected.");
-        Deno.exit(1);
+        process.exit(1);
       }
     }
 
@@ -161,7 +161,7 @@ export async function getChoices() {
         _.isEmpty(specialtyAspectBodies)
       ) {
         console.error("🚫 No specialty aspect bodies selected.");
-        Deno.exit(1);
+        process.exit(1);
       }
     }
   }
@@ -176,7 +176,7 @@ export async function getChoices() {
 
     if (_.isEmpty(retrogradeBodies)) {
       console.error("🚫 No retrograde bodies selected.");
-      Deno.exit(1);
+      process.exit(1);
     }
   }
 
@@ -190,7 +190,7 @@ export async function getChoices() {
 
     if (_.isEmpty(planetaryPhaseBodies)) {
       console.error("🚫 No planetary phases selected.");
-      Deno.exit(1);
+      process.exit(1);
     }
   }
 
@@ -208,7 +208,7 @@ export async function getChoices() {
 
     if (!latitude) {
       console.error("🚫 No latitude input.");
-      Deno.exit(1);
+      process.exit(1);
     }
 
     ({ longitude } = await prompts({
@@ -219,7 +219,7 @@ export async function getChoices() {
 
     if (!longitude) {
       console.error("🚫 No longitude input.");
-      Deno.exit(1);
+      process.exit(1);
     }
   }
 
@@ -235,7 +235,7 @@ export async function getChoices() {
 
   if (!start) {
     console.error("🚫 No start date input.");
-    Deno.exit(1);
+    process.exit(1);
   }
 
   const { end } = await prompts({
@@ -255,7 +255,7 @@ export async function getChoices() {
 
   if (!end) {
     console.error("🚫 No end date input.");
-    Deno.exit(1);
+    process.exit(1);
   }
 
   const choices: Choices = {

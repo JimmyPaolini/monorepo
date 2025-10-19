@@ -1,3 +1,4 @@
+import fs from "fs";
 import _ from "lodash";
 import type { Moment } from "moment";
 import type {
@@ -125,7 +126,7 @@ export function writeSignIngressEvents(args: {
     signIngressEvents,
     "Sign Ingresses 🪧"
   );
-  Deno.writeFileSync(
+  fs.writeFileSync(
     `./calendars/ingresses_${signIngressBodiesString}_${timespan}.ics`,
     new TextEncoder().encode(signIngressesCalendar)
   );
@@ -236,7 +237,7 @@ export function writeDecanIngressEvents(args: {
     decanIngressEvents,
     "Decan Ingresses 🔟"
   );
-  Deno.writeFileSync(
+  fs.writeFileSync(
     `./calendars/ingresses_${decanIngressBodiesString}_${timespan}.ics`,
     new TextEncoder().encode(decanIngressesCalendar)
   );
@@ -340,7 +341,7 @@ export function writePeakIngressEvents(args: {
     peakIngressEvents,
     "Peak Ingresses ⛰️"
   );
-  Deno.writeFileSync(
+  fs.writeFileSync(
     `./calendars/ingresses_${peakIngressBodiesString}_${timespan}.ics`,
     new TextEncoder().encode(peakIngressesCalendar)
   );

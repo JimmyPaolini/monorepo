@@ -1,3 +1,4 @@
+import fs from "fs";
 import _ from "lodash";
 import moment from "moment-timezone";
 import type { Moment } from "moment";
@@ -94,7 +95,7 @@ export function writeMonthlyLunarCycleEvents(args: {
     monthlyLunarCycleEvents,
     "Monthly Lunar Cycle 🌒"
   );
-  Deno.writeFileSync(
+  fs.writeFileSync(
     `./calendars/monthly-lunar-cycle_${timespan}.ics`,
     new TextEncoder().encode(ingressCalendar)
   );

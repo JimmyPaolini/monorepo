@@ -69,7 +69,7 @@ import { initializeLogs, print, setDate } from "./logs/logs.service.tsx";
 
 export const MARGIN_MINUTES = 30;
 
-if (import.meta.main) {
+async function main() {
   // #region 🔮 Choices
   const choices = await getChoices();
 
@@ -360,5 +360,6 @@ if (import.meta.main) {
 
   print(`🔭 Caelundas from choices:`, JSON.stringify(choices));
 
-  Deno.exit();
+  process.exit(0);
 }
+main();
