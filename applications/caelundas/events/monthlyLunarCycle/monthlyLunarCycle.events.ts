@@ -2,16 +2,16 @@ import fs from "fs";
 import _ from "lodash";
 import moment from "moment-timezone";
 import type { Moment } from "moment";
-import type { Event } from "../../calendar.utilities.ts";
-import type { IlluminationEphemeris } from "../../ephemeris/ephemeris.types.ts";
-import type { LunarPhase } from "../../symbols.constants.ts";
-import { getCalendar } from "../../calendar.utilities.ts";
-import { upsertEvents } from "../../database.utilities.ts";
-import { MARGIN_MINUTES } from "../../main.ts";
-import { lunarPhases } from "../../symbols.constants.ts";
-import { isLunarPhase } from "./monthlyLunarCycle.utilities.ts";
-import { symbolByLunarPhase } from "../../symbols.constants.ts";
-import { incrementEventsCount, print } from "../../logs/logs.service.tsx";
+import type { Event } from "../../calendar.utilities";
+import type { IlluminationEphemeris } from "../../ephemeris/ephemeris.types";
+import type { LunarPhase } from "../../symbols.constants";
+import { getCalendar } from "../../calendar.utilities";
+import { upsertEvents } from "../../database.utilities";
+import { MARGIN_MINUTES } from "../../main";
+import { lunarPhases } from "../../symbols.constants";
+import { isLunarPhase } from "./monthlyLunarCycle.utilities";
+import { symbolByLunarPhase } from "../../symbols.constants";
+import { incrementEventsCount, print } from "../../logs/logs.service";
 
 export function getMonthlyLunarCycleEvents(args: {
   currentMinute: Moment;

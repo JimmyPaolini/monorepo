@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { render, RenderOptions } from "ink";
-import { Logs } from "./logs.component.tsx";
-import type { Log, LogsProps } from "./logs.types.tsx";
+import { Logs } from "./logs.component";
+import type { Log, LogsProps } from "./logs.types";
 
 /** @description Global state variable mutated by exported functions below */
 let logsProps: LogsProps = {};
@@ -15,10 +15,14 @@ export function initializeLogs(props: LogsProps) {
 }
 
 export function print(...logs: string[]) {
-  const toLog = (log: string): Log => ({ timestamp: new Date(), value: log });
-  logsProps.logs = (logsProps.logs || []).concat(logs.map(toLog));
-  rerender(<Logs {...logsProps} />);
+  console.log(...logs);
 }
+
+// export function print(...logs: string[]) {
+//   const toLog = (log: string): Log => ({ timestamp: new Date(), value: log });
+//   logsProps.logs = (logsProps.logs || []).concat(logs.map(toLog));
+//   rerender(<Logs {...logsProps} />);
+// }
 
 export function setDate(date: Date) {
   logsProps.date = date;

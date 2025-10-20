@@ -1,4 +1,4 @@
-import { type Body } from "../symbols.constants.ts";
+import { type Body } from "../symbols.constants";
 
 export type Latitude = number;
 export type Longitude = number;

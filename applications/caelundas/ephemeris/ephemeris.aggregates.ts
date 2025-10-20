@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { type Body } from "../symbols.constants.ts";
+import { type Body } from "../symbols.constants";
 import type {
   Coordinates,
   CoordinateEphemeris,
@@ -12,18 +12,18 @@ import type {
   IlluminationEphemeris,
   DiameterEphemeris,
   DistanceEphemeris,
-} from "../ephemeris/ephemeris.types.ts";
+} from "../ephemeris/ephemeris.types";
 import {
   getAzimuthElevationEphemerisByBody,
   getCoordinateEphemerisByBody,
   getDiameterEphemerisByBody,
   getDistanceEphemerisByBody,
   getIlluminationEphemerisByBody,
-} from "../ephemeris/ephemeris.service.ts";
+} from "../ephemeris/ephemeris.service";
 import {
   type EventTypeChoice,
   type PlanetaryPhaseBodyChoice,
-} from "../choices/choices.types.ts";
+} from "../choices/choices.types";
 
 // #region shouldGetEphemeris
 export function shouldGetEphemeris(args: {

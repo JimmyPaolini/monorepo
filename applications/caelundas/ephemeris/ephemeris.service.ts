@@ -6,7 +6,7 @@ import {
   QUANTITY_ECLIPTIC_LONGITUDE_LATITUDE,
   QUANTITY_ILLUMINATED_FRACTION,
   QUANTITY_RANGE_RATE,
-} from "./ephemeris.constants.ts";
+} from "./ephemeris.constants";
 import {
   getHorizonsBaseUrl,
   parseAzimuthElevationEphemeris,
@@ -15,7 +15,7 @@ import {
   parseDistanceEphemeris,
   parseIlluminationEphemeris,
   parseOrbitEphemeris,
-} from "./ephemeris.utilities.ts";
+} from "./ephemeris.utilities";
 import {
   Body,
   Node,
@@ -24,7 +24,7 @@ import {
   type Asteroid,
   type Comet,
   type Planet,
-} from "../symbols.constants.ts";
+} from "../symbols.constants";
 import {
   DiameterEphemeris,
   type AzimuthElevationEphemerisBody,
@@ -38,9 +38,9 @@ import {
   AzimuthElevationEphemeris,
   CoordinateEphemeris,
   OrbitEphemeris,
-} from "./ephemeris.types.ts";
-import { normalizeDegrees } from "../math.utilities.ts";
-import { print } from "../logs/logs.service.tsx";
+} from "./ephemeris.types";
+import { normalizeDegrees } from "../math.utilities";
+import { print } from "../logs/logs.service";
 
 // #region 💫 Orbit
 

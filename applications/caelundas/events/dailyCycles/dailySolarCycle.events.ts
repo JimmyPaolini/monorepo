@@ -2,13 +2,13 @@ import fs from "fs";
 import _ from "lodash";
 import moment from "moment-timezone";
 import type { Moment } from "moment";
-import type { Event } from "../../calendar.utilities.ts";
-import type { AzimuthElevationEphemeris } from "../../ephemeris/ephemeris.types.ts";
-import { getCalendar } from "../../calendar.utilities.ts";
-import { upsertEvents } from "../../database.utilities.ts";
-import { isRise, isSet } from "./dailyCycle.utilities.ts";
-import { isMaximum, isMinimum } from "../../math.utilities.ts";
-import { incrementEventsCount, print } from "../../logs/logs.service.tsx";
+import type { Event } from "../../calendar.utilities";
+import type { AzimuthElevationEphemeris } from "../../ephemeris/ephemeris.types";
+import { getCalendar } from "../../calendar.utilities";
+import { upsertEvents } from "../../database.utilities";
+import { isRise, isSet } from "./dailyCycle.utilities";
+import { isMaximum, isMinimum } from "../../math.utilities";
+import { incrementEventsCount, print } from "../../logs/logs.service";
 
 export function getDailySolarCycleEvents(args: {
   currentMinute: Moment;

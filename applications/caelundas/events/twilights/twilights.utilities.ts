@@ -1,4 +1,4 @@
-import { arcminutesPerDegree } from "../../math.utilities.ts";
+import { arcminutesPerDegree } from "../../math.utilities";
 
 const sunRadiusArcminutes = 16;
 export const sunRadiusDegrees = sunRadiusArcminutes / arcminutesPerDegree;

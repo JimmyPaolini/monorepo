@@ -2,10 +2,10 @@ import fs from "fs";
 import _ from "lodash";
 import moment from "moment-timezone";
 import type { Moment } from "moment";
-import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types.ts";
-import type { DistanceEphemeris } from "../../ephemeris/ephemeris.types.ts";
-import { type Event, getCalendar } from "../../calendar.utilities.ts";
-import { upsertEvents } from "../../database.utilities.ts";
+import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
+import type { DistanceEphemeris } from "../../ephemeris/ephemeris.types";
+import { type Event, getCalendar } from "../../calendar.utilities";
+import { upsertEvents } from "../../database.utilities";
 import {
   isAutumnalEquinox,
   isBeltane,
@@ -23,9 +23,9 @@ import {
   isThirteenthHexadecan,
   isVernalEquinox,
   isWinterSolstice,
-} from "./annualSolarCycle.utilities.ts";
-import { isMaximum, isMinimum } from "../../math.utilities.ts";
-import { incrementEventsCount, print } from "../../logs/logs.service.tsx";
+} from "./annualSolarCycle.utilities";
+import { isMaximum, isMinimum } from "../../math.utilities";
+import { incrementEventsCount, print } from "../../logs/logs.service";
 
 // #region 📏 Annual Solar Cycle
 

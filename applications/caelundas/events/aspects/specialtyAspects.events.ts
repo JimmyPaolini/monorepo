@@ -1,8 +1,8 @@
 import fs from "fs";
 import _ from "lodash";
 import type { Moment } from "moment";
-import type { EventTemplate } from "../../calendar.utilities.ts";
-import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types.ts";
+import type { EventTemplate } from "../../calendar.utilities";
+import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 import {
   type Body,
   type SpecialtyAspect,
@@ -10,11 +10,11 @@ import {
   type SpecialtyAspectSymbol,
   symbolByBody,
   symbolBySpecialtyAspect,
-} from "../../symbols.constants.ts";
-import { type Event, getCalendar } from "../../calendar.utilities.ts";
-import { getSpecialtyAspect, isSpecialtyAspect } from "./aspects.utilities.ts";
-import { upsertEvents } from "../../database.utilities.ts";
-import { incrementEventsCount, print } from "../../logs/logs.service.tsx";
+} from "../../symbols.constants";
+import { type Event, getCalendar } from "../../calendar.utilities";
+import { getSpecialtyAspect, isSpecialtyAspect } from "./aspects.utilities";
+import { upsertEvents } from "../../database.utilities";
+import { incrementEventsCount, print } from "../../logs/logs.service";
 
 type SpecialtyAspectDescription =
   `${Capitalize<Body>} ${SpecialtyAspect} ${Capitalize<Body>}`;

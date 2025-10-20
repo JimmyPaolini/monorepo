@@ -1,4 +1,4 @@
-import { normalizeForComparison } from "../../math.utilities.ts";
+import { normalizeForComparison } from "../../math.utilities";
 
 export function isRetrograde(args: {
   currentLongitude: number;

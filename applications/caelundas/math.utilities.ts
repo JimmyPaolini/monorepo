@@ -1,4 +1,4 @@
-import type { Longitude } from "./ephemeris/ephemeris.types.ts";
+import type { Longitude } from "./ephemeris/ephemeris.types";
 
 export const arcsecondsPerArcminute = 60;
 export const arcminutesPerDegree = 60;

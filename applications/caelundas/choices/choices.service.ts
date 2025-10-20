@@ -2,16 +2,16 @@ import prompts from "prompts";
 import yargs from "yargs";
 import _ from "lodash";
 import moment from "moment-timezone";
-import type { Body, RetrogradeBody } from "../symbols.constants.ts";
-import type { Latitude, Longitude } from "../ephemeris/ephemeris.types.ts";
+import type { Body, RetrogradeBody } from "../symbols.constants";
+import type { Latitude, Longitude } from "../ephemeris/ephemeris.types";
 import type {
   AspectChoice,
   Choices,
   EventTypeChoice,
   IngressChoice,
   PlanetaryPhaseBodyChoice,
-} from "./choices.types.ts";
-import { initialChoices } from "./choices.input.ts";
+} from "./choices.types";
+import { initialChoices } from "./choices.input";
 import {
   aspectChoices,
   bodyChoices,
@@ -19,7 +19,7 @@ import {
   planetaryPhaseBodyChoices,
   retrogradeBodyChoices,
   ingressChoices,
-} from "./choices.constants.ts";
+} from "./choices.constants";
 
 export async function getChoices() {
   prompts.override(yargs.argv);

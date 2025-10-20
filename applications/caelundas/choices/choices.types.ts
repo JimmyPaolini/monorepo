@@ -1,12 +1,12 @@
-import { Body, RetrogradeBody } from "../symbols.constants.ts";
+import { Body, RetrogradeBody } from "../symbols.constants";
 
-import { Latitude, Longitude } from "../ephemeris/ephemeris.types.ts";
+import { Latitude, Longitude } from "../ephemeris/ephemeris.types";
 import {
   aspectChoices,
   ingressChoices,
   eventTypeChoices,
   planetaryPhaseBodyChoices,
-} from "../choices/choices.constants.ts";
+} from "../choices/choices.constants";
 
 export type EventTypeChoice = (typeof eventTypeChoices)[number]["value"];
 export type IngressChoice = (typeof ingressChoices)[number]["value"];

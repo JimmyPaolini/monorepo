@@ -6,27 +6,27 @@ import type {
   Sign,
   BodySymbol,
   SignSymbol,
-} from "../../symbols.constants.ts";
-import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types.ts";
+} from "../../symbols.constants";
+import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 import {
   type Event,
   type EventTemplate,
   getCalendar,
-} from "../../calendar.utilities.ts";
+} from "../../calendar.utilities";
 import {
   getDecan,
   getSign,
   isDecanIngress,
   isSignIngress,
   isPeakIngress,
-} from "../ingresses/ingresses.utilities.ts";
+} from "../ingresses/ingresses.utilities";
 import {
   symbolByBody,
   symbolByDecan,
   symbolBySign,
-} from "../../symbols.constants.ts";
-import { upsertEvents } from "../../database.utilities.ts";
-import { incrementEventsCount, print } from "../../logs/logs.service.tsx";
+} from "../../symbols.constants";
+import { upsertEvents } from "../../database.utilities";
+import { incrementEventsCount, print } from "../../logs/logs.service";
 
 // #region 🪧 Signs
 

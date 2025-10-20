@@ -6,8 +6,8 @@ import {
   type MajorAspect,
   type MinorAspect,
   type SpecialtyAspect,
-} from "../../symbols.constants.ts";
-import { getAngle } from "../../math.utilities.ts";
+} from "../../symbols.constants";
+import { getAngle } from "../../math.utilities";
 
 const angleByMajorAspect: Record<MajorAspect, number> = {
   conjunct: 0,

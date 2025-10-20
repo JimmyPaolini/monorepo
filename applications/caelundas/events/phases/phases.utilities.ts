@@ -1,5 +1,5 @@
-import { getAngle, isMaximum } from "../../math.utilities.ts";
-import { degreesByTwilight } from "../twilights/twilights.utilities.ts";
+import { getAngle, isMaximum } from "../../math.utilities";
+import { degreesByTwilight } from "../twilights/twilights.utilities";
 
 function isWestern(args: {
   currentLongitudePlanet: number;

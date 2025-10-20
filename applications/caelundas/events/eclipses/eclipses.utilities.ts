@@ -1,4 +1,4 @@
-import { getAngle, isMaximum, isMinimum } from "../../math.utilities.ts";
+import { getAngle, isMaximum, isMinimum } from "../../math.utilities";
 
 export function isSolarEclipse(args: {
   currentDiameterMoon: number;
