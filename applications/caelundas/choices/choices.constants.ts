@@ -1,9 +1,5 @@
 import _ from "lodash";
-import {
-  bodies,
-  retrogradeBodies,
-  symbolByBody,
-} from "../symbols.constants.ts";
+import { bodies, retrogradeBodies, symbolByBody } from "../symbols.constants";
 
 export const eventTypeChoices = [
   { title: "Ingresses 💫", value: "ingresses" },

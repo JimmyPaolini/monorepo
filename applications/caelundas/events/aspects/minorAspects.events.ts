@@ -1,8 +1,8 @@
 import fs from "fs";
 import _ from "lodash";
 import type { Moment } from "moment";
-import type { EventTemplate } from "../../calendar.utilities.ts";
-import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types.ts";
+import type { EventTemplate } from "../../calendar.utilities";
+import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 import {
   type MinorAspect,
   type Body,
@@ -10,11 +10,11 @@ import {
   type MinorAspectSymbol,
   symbolByBody,
   symbolByMinorAspect,
-} from "../../symbols.constants.ts";
-import { type Event, getCalendar } from "../../calendar.utilities.ts";
-import { getMinorAspect, isMinorAspect } from "./aspects.utilities.ts";
-import { upsertEvents } from "../../database.utilities.ts";
-import { incrementEventsCount, print } from "../../logs/logs.service.tsx";
+} from "../../symbols.constants";
+import { type Event, getCalendar } from "../../calendar.utilities";
+import { getMinorAspect, isMinorAspect } from "./aspects.utilities";
+import { upsertEvents } from "../../database.utilities";
+import { incrementEventsCount, print } from "../../logs/logs.service";
 
 type MinorAspectDescription =
   `${Capitalize<Body>} ${MinorAspect} ${Capitalize<Body>}`;

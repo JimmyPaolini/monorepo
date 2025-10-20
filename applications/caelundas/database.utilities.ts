@@ -1,7 +1,7 @@
 import sqlite3 from "sqlite3";
 import { open, type Database } from "sqlite";
-import type { Body } from "./symbols.constants.ts";
-import type { Event } from "./calendar.utilities.ts";
+import type { Body } from "./symbols.constants";
+import type { Event } from "./calendar.utilities";
 
 const databasePromise: Promise<Database> = open({
   filename: "./database.db",

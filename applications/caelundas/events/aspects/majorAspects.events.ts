@@ -1,9 +1,9 @@
 import fs from "fs";
 import _ from "lodash";
 import type { Moment } from "moment";
-import type { Event } from "../../calendar.utilities.ts";
-import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types.ts";
-import { type EventTemplate, getCalendar } from "../../calendar.utilities.ts";
+import type { Event } from "../../calendar.utilities";
+import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
+import { type EventTemplate, getCalendar } from "../../calendar.utilities";
 import {
   type Body,
   type BodySymbol,
@@ -11,10 +11,10 @@ import {
   type MajorAspectSymbol,
   symbolByBody,
   symbolByMajorAspect,
-} from "../../symbols.constants.ts";
-import { upsertEvents } from "../../database.utilities.ts";
-import { getMajorAspect, isMajorAspect } from "./aspects.utilities.ts";
-import { incrementEventsCount, print } from "../../logs/logs.service.tsx";
+} from "../../symbols.constants";
+import { upsertEvents } from "../../database.utilities";
+import { getMajorAspect, isMajorAspect } from "./aspects.utilities";
+import { incrementEventsCount, print } from "../../logs/logs.service";
 
 type MajorAspectDescription =
   `${Capitalize<Body>} ${MajorAspect} ${Capitalize<Body>}`;

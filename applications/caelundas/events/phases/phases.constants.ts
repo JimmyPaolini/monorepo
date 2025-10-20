@@ -2,7 +2,7 @@ import {
   VenusianPhaseEventTemplate,
   MercurianPhaseEventTemplate,
   MartianPhaseEventTemplate,
-} from "../phases/phases.events.ts";
+} from "../phases/phases.events";
 
 export const venusianPhases = [
   // { summary: "♀️🌑 Venus New", description: "Venus New" },

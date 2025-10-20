@@ -1,4 +1,4 @@
-import { ChoicesProps } from "../choices/choices.types.ts";
+import { ChoicesProps } from "../choices/choices.types";
 
 export interface Log {
   timestamp: Date;

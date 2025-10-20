@@ -1,23 +1,23 @@
 import fs from "fs";
 import _ from "lodash";
 import type { Moment } from "moment";
-import { getCalendar, type Event } from "../../calendar.utilities.ts";
-import type { EventTemplate } from "../../calendar.utilities.ts";
-import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types.ts";
+import { getCalendar, type Event } from "../../calendar.utilities";
+import type { EventTemplate } from "../../calendar.utilities";
+import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 import type {
   OrbitalDirection,
   RetrogradeBody,
   OrbitalDirectionSymbol,
   RetrogradeBodySymbol,
-} from "../../symbols.constants.ts";
+} from "../../symbols.constants";
 import {
   symbolByBody,
   symbolByOrbitalDirection,
-} from "../../symbols.constants.ts";
-import { MARGIN_MINUTES } from "../../main.ts";
-import { isDirect, isRetrograde } from "./retrogrades.utilities.ts";
-import { upsertEvents } from "../../database.utilities.ts";
-import { incrementEventsCount, print } from "../../logs/logs.service.tsx";
+} from "../../symbols.constants";
+import { MARGIN_MINUTES } from "../../main";
+import { isDirect, isRetrograde } from "./retrogrades.utilities";
+import { upsertEvents } from "../../database.utilities";
+import { incrementEventsCount, print } from "../../logs/logs.service";
 
 type RetrogradeDescription =
   `${Capitalize<RetrogradeBody>} Stationary ${Capitalize<OrbitalDirection>}`;

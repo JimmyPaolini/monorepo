@@ -2,10 +2,10 @@ import fs from "fs";
 import _ from "lodash";
 import moment from "moment-timezone";
 import type { Moment } from "moment";
-import type { Event } from "../../calendar.utilities.ts";
-import type { AzimuthElevationEphemeris } from "../../ephemeris/ephemeris.types.ts";
-import { getCalendar } from "../../calendar.utilities.ts";
-import { upsertEvents } from "../../database.utilities.ts";
+import type { Event } from "../../calendar.utilities";
+import type { AzimuthElevationEphemeris } from "../../ephemeris/ephemeris.types";
+import { getCalendar } from "../../calendar.utilities";
+import { upsertEvents } from "../../database.utilities";
 import {
   isAstronomicalDawn,
   isAstronomicalDusk,
@@ -13,8 +13,8 @@ import {
   isCivilDusk,
   isNauticalDawn,
   isNauticalDusk,
-} from "./twilights.utilities.ts";
-import { incrementEventsCount, print } from "../../logs/logs.service.tsx";
+} from "./twilights.utilities";
+import { incrementEventsCount, print } from "../../logs/logs.service";
 
 export function getTwilightEvents(args: {
   currentMinute: Moment;

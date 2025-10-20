@@ -6,7 +6,7 @@ import {
   type EventTemplate,
   type Event,
   getCalendar,
-} from "../../calendar.utilities.ts";
+} from "../../calendar.utilities";
 import {
   symbolByMartianPhase,
   symbolByMercurianPhase,
@@ -18,7 +18,7 @@ import {
   type MercurianPhaseSymbol,
   type VenusianPhase,
   type VenusianPhaseSymbol,
-} from "../../symbols.constants.ts";
+} from "../../symbols.constants";
 import type {
   CoordinateEphemeris,
   CoordinateEphemerisBody,
@@ -26,7 +26,7 @@ import type {
   DistanceEphemerisBody,
   IlluminationEphemeris,
   IlluminationEphemerisBody,
-} from "../../ephemeris/ephemeris.types.ts";
+} from "../../ephemeris/ephemeris.types";
 import {
   isEasternBrightest,
   isEasternElongation,
@@ -36,10 +36,10 @@ import {
   isMorningSet,
   isWesternBrightest,
   isWesternElongation,
-} from "./phases.utilities.ts";
-import { upsertEvents } from "../../database.utilities.ts";
-import { MARGIN_MINUTES } from "../../main.ts";
-import { incrementEventsCount, print } from "../../logs/logs.service.tsx";
+} from "./phases.utilities";
+import { upsertEvents } from "../../database.utilities";
+import { MARGIN_MINUTES } from "../../main";
+import { incrementEventsCount, print } from "../../logs/logs.service";
 
 export function getPlanetaryPhaseEvents(args: {
   currentMinute: Moment;

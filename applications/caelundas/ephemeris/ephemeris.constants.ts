@@ -1,4 +1,4 @@
-import { Asteroid, Comet, Planet } from "../symbols.constants.ts";
+import { Asteroid, Comet, Planet } from "../symbols.constants";
 
 export const horizonsUrl = "https://ssd.jpl.nasa.gov/api/horizons.api";
 

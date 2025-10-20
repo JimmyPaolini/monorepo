@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
 import { Box, Text, Spacer, Newline, Static } from "ink";
 import { ProgressBar, Spinner, ThemeProvider } from "@inkjs/ui";
-import { theme } from "./logs.theme.ts";
-import { setupDates } from "./logs.utils.tsx";
-import type { Log, LogsProps } from "./logs.types.tsx";
-import { Choices } from "../choices/choices.component.tsx";
-import { ChoicesProps } from "../choices/choices.types.ts";
+import { theme } from "./logs.theme";
+import { setupDates } from "./logs.utils";
+import type { Log, LogsProps } from "./logs.types";
+import { Choices } from "../choices/choices.component";
+import { ChoicesProps } from "../choices/choices.types";
 
 export function Logs(props: LogsProps) {
   const { choices, date, count = 0, logs = [], start, end } = props;

@@ -1,12 +1,12 @@
 import _ from "lodash";
 import moment from "moment-timezone";
-import { getChoices } from "./choices/choices.service.ts";
-import type { Event } from "./calendar.utilities.ts";
-import type { Coordinates } from "./ephemeris/ephemeris.types.ts";
+import { getChoices } from "./choices/choices.service";
+import type { Event } from "./calendar.utilities";
+import type { Coordinates } from "./ephemeris/ephemeris.types";
 import {
   getEphemerides,
   shouldGetEphemeris,
-} from "./ephemeris/ephemeris.aggregates.ts";
+} from "./ephemeris/ephemeris.aggregates";
 import {
   getSignIngressEvents,
   writeSignIngressEvents,
@@ -17,55 +17,55 @@ import {
   getPeakIngressEvents,
   writePeakIngressEvents,
   type PeakIngressEvent,
-} from "./events/ingresses/ingresses.events.ts";
+} from "./events/ingresses/ingresses.events";
 import {
   type MajorAspectEvent,
   getMajorAspectEvents,
   writeMajorAspectEvents,
-} from "./events/aspects/majorAspects.events.ts";
+} from "./events/aspects/majorAspects.events";
 import {
   type MinorAspectEvent,
   getMinorAspectEvents,
   writeMinorAspectEvents,
-} from "./events/aspects/minorAspects.events.ts";
+} from "./events/aspects/minorAspects.events";
 import {
   type SpecialtyAspectEvent,
   getSpecialtyAspectEvents,
   writeSpecialtyAspectEvents,
-} from "./events/aspects/specialtyAspects.events.ts";
+} from "./events/aspects/specialtyAspects.events";
 import {
   getRetrogradeEvents,
   writeRetrogradeEvents,
   type RetrogradeEvent,
-} from "./events/retrogrades/retrogrades.events.ts";
+} from "./events/retrogrades/retrogrades.events";
 import {
   getAnnualSolarCycleEvents,
   getSolarApsisEvents,
   writeAnnualSolarCycleEvents,
-} from "./events/annualSolarCycle/annualSolarCycle.events.ts";
+} from "./events/annualSolarCycle/annualSolarCycle.events";
 import {
   getMonthlyLunarCycleEvents,
   writeMonthlyLunarCycleEvents,
-} from "./events/monthlyLunarCycle/monthlyLunarCycle.events.ts";
-import { getEclipseEvents } from "./events/eclipses/eclipses.events.ts";
+} from "./events/monthlyLunarCycle/monthlyLunarCycle.events";
+import { getEclipseEvents } from "./events/eclipses/eclipses.events";
 import {
   getDailyLunarCycleEvents,
   writeDailyLunarCycleEvents,
-} from "./events/dailyCycles/dailyLunarCycle.events.ts";
+} from "./events/dailyCycles/dailyLunarCycle.events";
 import {
   getDailySolarCycleEvents,
   writeDailySolarCycleEvents,
-} from "./events/dailyCycles/dailySolarCycle.events.ts";
+} from "./events/dailyCycles/dailySolarCycle.events";
 import {
   getTwilightEvents,
   writeTwilightEvents,
-} from "./events/twilights/twilights.events.ts";
+} from "./events/twilights/twilights.events";
 import {
   getPlanetaryPhaseEvents,
   type PlanetaryPhaseEvent,
   writePlanetaryPhaseEvents,
-} from "./events/phases/phases.events.ts";
-import { initializeLogs, print, setDate } from "./logs/logs.service.tsx";
+} from "./events/phases/phases.events";
+import { initializeLogs, print, setDate } from "./logs/logs.service";
 
 export const MARGIN_MINUTES = 30;
 
@@ -89,14 +89,14 @@ async function main() {
     start,
   } = choices;
 
-  initializeLogs({
-    choices,
-    date: start,
-    start,
-    end,
-    logs: [],
-    count: 0,
-  });
+  // initializeLogs({
+  //   choices,
+  //   date: start,
+  //   start,
+  //   end,
+  //   logs: [],
+  //   count: 0,
+  // });
 
   const ephemerisBodies = shouldGetEphemeris({
     eventTypes,
@@ -118,7 +118,7 @@ async function main() {
   ) {
     const nextDay = currentDay.clone().add(1, "day");
     const currentDayLabel = currentDay.format("YYYY-MM-DD");
-    setDate(currentDay.toDate());
+    // setDate(currentDay.toDate());
 
     const signIngressEvents: SignIngressEvent[] = [];
     const decanIngressEvents: DecanIngressEvent[] = [];

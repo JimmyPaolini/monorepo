@@ -1,10 +1,10 @@
 import moment from "moment-timezone";
 import type { Moment } from "moment";
-import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types.ts";
-import type { DiameterEphemeris } from "../../ephemeris/ephemeris.types.ts";
-import type { Event } from "../../calendar.utilities.ts";
-import { isSolarEclipse, isLunarEclipse } from "./eclipses.utilities.ts";
-import { incrementEventsCount, print } from "../../logs/logs.service.tsx";
+import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
+import type { DiameterEphemeris } from "../../ephemeris/ephemeris.types";
+import type { Event } from "../../calendar.utilities";
+import { isSolarEclipse, isLunarEclipse } from "./eclipses.utilities";
+import { incrementEventsCount, print } from "../../logs/logs.service";
 
 export function getEclipseEvents(args: {
   currentMinute: Moment;

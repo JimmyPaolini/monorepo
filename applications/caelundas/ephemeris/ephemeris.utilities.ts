@@ -10,9 +10,9 @@ import type {
   Longitude,
   OrbitEphemeris,
   AzimuthElevationEphemeris,
-} from "./ephemeris.types.ts";
-import { dateRegex, decimalRegex, horizonsUrl } from "./ephemeris.constants.ts";
-import { arcsecondsPerDegree } from "../math.utilities.ts";
+} from "./ephemeris.types";
+import { dateRegex, decimalRegex, horizonsUrl } from "./ephemeris.constants";
+import { arcsecondsPerDegree } from "../math.utilities";
 
 // #region getHorizonsBaseUrl
 export function getHorizonsBaseUrl(args: {

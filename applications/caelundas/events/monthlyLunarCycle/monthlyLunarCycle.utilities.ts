@@ -1,4 +1,4 @@
-import { LunarPhase } from "../../symbols.constants.ts";
+import { LunarPhase } from "../../symbols.constants";
 
 export const illuminationByPhase: Record<LunarPhase, number> = {
   new: 0,
