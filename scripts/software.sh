@@ -1,5 +1,5 @@
 
-# Check for Homebrew
+echo "🔍 Checking for homebrew installation..."
 if ! command -v brew &> /dev/null; then
   echo "🛑 Homebrew not found. Please install Homebrew first: https://brew.sh/" >&2
   exit 1
@@ -19,18 +19,28 @@ else
   fi
 fi
 
-echo "🔍 Checking for Deno installation..."
-if ! command -v deno &> /dev/null; then
-  echo "📦 Deno not found. Installing via Homebrew..."
-  brew install deno
-  echo "✅ Deno installed via Homebrew, version: $(deno --version | head -n 1)"
+echo "🔍 Checking for nvm installation..."
+if ! brew list nvm &> /dev/null; then
+  echo "📦 nvm not found. Installing via Homebrew..."
+  brew install nvm
+  echo "✅ nvm installed via Homebrew."
 else
-  echo "👍 Deno is already installed via Homebrew, version: $(deno --version | head -n 1)"
-  echo "⬆️ Checking for deno updates..."
-  if brew outdated | grep -q '^deno$'; then
-    echo "🔄 Deno is outdated. To update, run: brew upgrade deno"
+  echo "👍 nvm is already installed via Homebrew."
+  echo "⬆️ Checking for nvm updates..."
+  if brew outdated | grep -q '^nvm$'; then
+    echo "🔄 nvm is outdated. To update, run: brew upgrade nvm"
   fi
 fi
+
+# Set up and source nvm
+export NVM_DIR="$HOME/.nvm"
+mkdir -p "$NVM_DIR"
+. "$(brew --prefix nvm)/nvm.sh"
+
+echo "🔍 Checking for node installation..."
+nvm install
+nvm use
+echo "👍 node is installed via nvm, version: $(nvm current)"
 
 echo "🔍 Checking for Terraform installation..."
 if ! command -v terraform &> /dev/null; then
