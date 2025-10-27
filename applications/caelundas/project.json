@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "applications/caelundas",
   "projectType": "application",
+  "tags": [],
   "targets": {
     "run": {
       "executor": "nx:run-commands",
@@ -11,7 +12,7 @@
         "cwd": "applications/caelundas"
       }
     },
-    "build": {
+    "typecheck": {
       "executor": "@nx/js:tsc",
       "outputs": [
         "{options.outputPath}"
@@ -24,7 +25,76 @@
           "applications/caelundas/*.md"
         ]
       }
+    },
+    "docker-build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "docker buildx build --platform linux/amd64 -f applications/caelundas/Dockerfile -t caelundas:1.0.0 -t ghcr.io/jimmypaolini/caelundas:1.0.0 --load .",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "docker-push": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "docker-build"
+      ],
+      "options": {
+        "command": "docker buildx build --platform linux/amd64 -f applications/caelundas/Dockerfile -t ghcr.io/jimmypaolini/caelundas:1.0.0 --push .",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "helm-upgrade": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "helm upgrade --install caelundas-job ./infrastructure/helm/kubernetes-job -f ./infrastructure/helm/kubernetes-job/values-caelundas.yaml",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "helm-uninstall": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "helm uninstall caelundas-job",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "k8s-copy-files": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "echo '📥 Copying files from Kubernetes pod...'",
+          "mkdir -p applications/caelundas/calendars-output",
+          "POD=$(kubectl get pods -l app.kubernetes.io/name=kubernetes-job -o jsonpath='{.items[0].metadata.name}' 2>/dev/null || kubectl get pods -l job-name=caelundas -o jsonpath='{.items[0].metadata.name}')",
+          "echo \"Pod: $POD\"",
+          "kubectl cp $POD:/app/data/calendars applications/caelundas/calendars-output",
+          "echo '✅ Files copied to ./applications/caelundas/calendars-output/'"
+        ],
+        "parallel": false,
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "k8s-list-files": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "echo '📂 Listing files in persistent volume...'",
+          "POD=$(kubectl get pods -l app.kubernetes.io/name=kubernetes-job -o jsonpath='{.items[0].metadata.name}' 2>/dev/null || kubectl get pods -l job-name=caelundas -o jsonpath='{.items[0].metadata.name}')",
+          "echo \"Pod: $POD\"",
+          "kubectl exec $POD -- ls -lah /app/data/calendars 2>/dev/null || echo 'Directory not found or empty'"
+        ],
+        "parallel": false,
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "dependsOn": [
+        "docker-build",
+        "docker-push"
+      ],
+      "options": {
+        "command": "helm upgrade --install caelundas-job ./infrastructure/helm/kubernetes-job -f ./infrastructure/helm/kubernetes-job/values-caelundas.yaml",
+        "cwd": "{workspaceRoot}"
+      }
     }
-  },
-  "tags": []
+  }
 }

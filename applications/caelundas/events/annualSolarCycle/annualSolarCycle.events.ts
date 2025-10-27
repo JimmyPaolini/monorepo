@@ -26,6 +26,7 @@ import {
 } from "./annualSolarCycle.utilities";
 import { isMaximum, isMinimum } from "../../math.utilities";
 import { incrementEventsCount, print } from "../../logs/logs.service";
+import { getOutputPath } from "../../output.utilities";
 
 // #region 📏 Annual Solar Cycle
 
@@ -374,7 +375,7 @@ export function writeAnnualSolarCycleEvents(args: {
     "Annual Solar Cycle 📏"
   );
   fs.writeFileSync(
-    `./calendars/annual-solar-cycle_${timespan}.ics`,
+    getOutputPath(`annual-solar-cycle_${timespan}.ics`),
     new TextEncoder().encode(ingressCalendar)
   );
 

@@ -27,6 +27,7 @@ import {
 } from "../../symbols.constants";
 import { upsertEvents } from "../../database.utilities";
 import { incrementEventsCount, print } from "../../logs/logs.service";
+import { getOutputPath } from "../../output.utilities";
 
 // #region 🪧 Signs
 
@@ -127,7 +128,7 @@ export function writeSignIngressEvents(args: {
     "Sign Ingresses 🪧"
   );
   fs.writeFileSync(
-    `./calendars/ingresses_${signIngressBodiesString}_${timespan}.ics`,
+    getOutputPath(`ingresses_${signIngressBodiesString}_${timespan}.ics`),
     new TextEncoder().encode(signIngressesCalendar)
   );
 
@@ -238,7 +239,7 @@ export function writeDecanIngressEvents(args: {
     "Decan Ingresses 🔟"
   );
   fs.writeFileSync(
-    `./calendars/ingresses_${decanIngressBodiesString}_${timespan}.ics`,
+    getOutputPath(`ingresses_${decanIngressBodiesString}_${timespan}.ics`),
     new TextEncoder().encode(decanIngressesCalendar)
   );
 
@@ -342,7 +343,7 @@ export function writePeakIngressEvents(args: {
     "Peak Ingresses ⛰️"
   );
   fs.writeFileSync(
-    `./calendars/ingresses_${peakIngressBodiesString}_${timespan}.ics`,
+    getOutputPath(`ingresses_${peakIngressBodiesString}_${timespan}.ics`),
     new TextEncoder().encode(peakIngressesCalendar)
   );
 

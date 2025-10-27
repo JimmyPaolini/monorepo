@@ -9,6 +9,7 @@ import { upsertEvents } from "../../database.utilities";
 import { isRise, isSet } from "./dailyCycle.utilities";
 import { isMaximum, isMinimum } from "../../math.utilities";
 import { incrementEventsCount, print } from "../../logs/logs.service";
+import { getOutputPath } from "../../output.utilities";
 
 export function getDailyLunarCycleEvents(args: {
   currentMinute: Moment;
@@ -120,7 +121,7 @@ export function writeDailyLunarCycleEvents(args: {
     "Daily Lunar Cycle 🌙"
   );
   fs.writeFileSync(
-    `./calendars/daily-lunar-cycle_${timespan}.ics`,
+    getOutputPath(`daily-lunar-cycle_${timespan}.ics`),
     new TextEncoder().encode(ingressCalendar)
   );
 

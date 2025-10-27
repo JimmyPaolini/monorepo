@@ -25,11 +25,11 @@ export function print(...logs: string[]) {
 // }
 
 export function setDate(date: Date) {
-  logsProps.date = date;
-  rerender(<Logs {...logsProps} />);
+  // logsProps.date = date;
+  // rerender(<Logs {...logsProps} />);
 }
 
 export function incrementEventsCount() {
-  logsProps.count = (logsProps.count || 0) + 1;
-  rerender(<Logs {...logsProps} />);
+  // logsProps.count = (logsProps.count || 0) + 1;
+  // rerender(<Logs {...logsProps} />);
 }

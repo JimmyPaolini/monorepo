@@ -40,6 +40,7 @@ import {
 import { upsertEvents } from "../../database.utilities";
 import { MARGIN_MINUTES } from "../../main";
 import { incrementEventsCount, print } from "../../logs/logs.service";
+import { getOutputPath } from "../../output.utilities";
 
 export function getPlanetaryPhaseEvents(args: {
   currentMinute: Moment;
@@ -709,7 +710,9 @@ export function writePlanetaryPhaseEvents(args: {
     "Planetary Phases 🌓"
   );
   fs.writeFileSync(
-    `./calendars/planetary_phases_${planetaryPhaseBodiesString}_${timespan}.ics`,
+    getOutputPath(
+      `planetary_phases_${planetaryPhaseBodiesString}_${timespan}.ics`
+    ),
     new TextEncoder().encode(planetaryPhasesCalendar)
   );
 

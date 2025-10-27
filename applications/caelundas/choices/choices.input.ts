@@ -169,12 +169,9 @@ export const initialChoices: Choices = {
     // "lunar apogee",
   ],
   planetaryPhaseBodies: ["venus", "mercury", "mars"],
-  /** @description The Inlet */
-  // latitude: 40.7128,
-  // longitude: -74.006,
   /** @description Rittenhouse Square, southeast corner of the fountain */
   latitude: 39.949309,
   longitude: -75.17169,
-  start: moment.tz("2025-06-07", "America/New_York").toDate(),
-  end: moment.tz("2025-07-10", "America/New_York").toDate(),
+  start: moment.tz("2025-01-01", "America/New_York").toDate(),
+  end: moment.tz("2025-12-31", "America/New_York").toDate(),
 };

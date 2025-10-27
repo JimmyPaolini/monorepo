@@ -1,0 +1,9 @@
+name: monorepo
+version: "3.8"
+services:
+  caelundas:
+    build:
+      context: ../..
+      dockerfile: applications/caelundas/Dockerfile
+    image: caelundas
+    container_name: caelundas

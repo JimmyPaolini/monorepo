@@ -18,6 +18,7 @@ import { MARGIN_MINUTES } from "../../main";
 import { isDirect, isRetrograde } from "./retrogrades.utilities";
 import { upsertEvents } from "../../database.utilities";
 import { incrementEventsCount, print } from "../../logs/logs.service";
+import { getOutputPath } from "../../output.utilities";
 
 type RetrogradeDescription =
   `${Capitalize<RetrogradeBody>} Stationary ${Capitalize<OrbitalDirection>}`;
@@ -138,7 +139,7 @@ export function writeRetrogradeEvents(args: {
   const retrogradeBodiesString = retrogradeBodies.join(", ");
   const retrogradesCalendar = getCalendar(retrogradeEvents, "Retrogrades ↩️");
   fs.writeFileSync(
-    `./calendars/retrogrades_${retrogradeBodiesString}_${timespan}.ics`,
+    getOutputPath(`retrogrades_${retrogradeBodiesString}_${timespan}.ics`),
     new TextEncoder().encode(retrogradesCalendar)
   );
 

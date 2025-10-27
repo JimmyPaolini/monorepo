@@ -9,6 +9,7 @@ import { upsertEvents } from "../../database.utilities";
 import { isRise, isSet } from "./dailyCycle.utilities";
 import { isMaximum, isMinimum } from "../../math.utilities";
 import { incrementEventsCount, print } from "../../logs/logs.service";
+import { getOutputPath } from "../../output.utilities";
 
 export function getDailySolarCycleEvents(args: {
   currentMinute: Moment;
@@ -122,7 +123,7 @@ export function writeDailySolarCycleEvents(args: {
     "Daily Sun Cycle ☀️"
   );
   fs.writeFileSync(
-    `./calendars/daily-solar-cycle_${timespan}.ics`,
+    getOutputPath(`daily-solar-cycle_${timespan}.ics`),
     new TextEncoder().encode(ingressCalendar)
   );
 
