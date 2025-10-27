@@ -1,0 +1,43 @@
+# Caelundas-specific values
+# Use this file when deploying the caelundas application
+# Example: helm install caelundas ./kubernetes-job -f values-caelundas.yaml
+
+nameOverride: "caelundas"
+fullnameOverride: "caelundas"
+
+image:
+  repository: ghcr.io/jimmypaolini/caelundas
+  pullPolicy: Always
+  tag: "1.0.0"
+
+job:
+  backoffLimit: 3
+  completions: 1
+  parallelism: 1
+  ttlSecondsAfterFinished: 86400
+
+# Environment variables
+env:
+  - name: OUTPUT_DIR
+    value: "/app/data/calendars"
+
+persistence:
+  enabled: true
+  storageClassName: "linode-block-storage-retain"
+  accessMode: ReadWriteOnce
+  size: 1Gi
+  mountPath: /app/data
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

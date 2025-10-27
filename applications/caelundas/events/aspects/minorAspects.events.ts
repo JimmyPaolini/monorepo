@@ -15,6 +15,7 @@ import { type Event, getCalendar } from "../../calendar.utilities";
 import { getMinorAspect, isMinorAspect } from "./aspects.utilities";
 import { upsertEvents } from "../../database.utilities";
 import { incrementEventsCount, print } from "../../logs/logs.service";
+import { getOutputPath } from "../../output.utilities";
 
 type MinorAspectDescription =
   `${Capitalize<Body>} ${MinorAspect} ${Capitalize<Body>}`;
@@ -152,7 +153,7 @@ export function writeMinorAspectEvents(args: {
     "Minor Aspects 🖇️"
   );
   fs.writeFileSync(
-    `./calendars/minor-aspects_${minorAspectBodiesString}_${timespan}.ics`,
+    getOutputPath(`minor-aspects_${minorAspectBodiesString}_${timespan}.ics`),
     new TextEncoder().encode(minorAspectsCalendar)
   );
 

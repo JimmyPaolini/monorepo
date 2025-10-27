@@ -15,6 +15,7 @@ import { type Event, getCalendar } from "../../calendar.utilities";
 import { getSpecialtyAspect, isSpecialtyAspect } from "./aspects.utilities";
 import { upsertEvents } from "../../database.utilities";
 import { incrementEventsCount, print } from "../../logs/logs.service";
+import { getOutputPath } from "../../output.utilities";
 
 type SpecialtyAspectDescription =
   `${Capitalize<Body>} ${SpecialtyAspect} ${Capitalize<Body>}`;
@@ -156,7 +157,9 @@ export function writeSpecialtyAspectEvents(args: {
     "Specialty Aspects 🧮"
   );
   fs.writeFileSync(
-    `./calendars/specialty-aspects_${specialtyAspectBodiesString}_${timespan}.ics`,
+    getOutputPath(
+      `specialty-aspects_${specialtyAspectBodiesString}_${timespan}.ics`
+    ),
     new TextEncoder().encode(specialtyAspectsCalendar)
   );
 

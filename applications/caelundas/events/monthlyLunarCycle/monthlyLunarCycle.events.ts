@@ -12,6 +12,7 @@ import { lunarPhases } from "../../symbols.constants";
 import { isLunarPhase } from "./monthlyLunarCycle.utilities";
 import { symbolByLunarPhase } from "../../symbols.constants";
 import { incrementEventsCount, print } from "../../logs/logs.service";
+import { getOutputPath } from "../../output.utilities";
 
 export function getMonthlyLunarCycleEvents(args: {
   currentMinute: Moment;
@@ -96,7 +97,7 @@ export function writeMonthlyLunarCycleEvents(args: {
     "Monthly Lunar Cycle 🌒"
   );
   fs.writeFileSync(
-    `./calendars/monthly-lunar-cycle_${timespan}.ics`,
+    getOutputPath(`monthly-lunar-cycle_${timespan}.ics`),
     new TextEncoder().encode(ingressCalendar)
   );
 

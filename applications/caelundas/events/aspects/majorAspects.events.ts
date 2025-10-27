@@ -15,6 +15,7 @@ import {
 import { upsertEvents } from "../../database.utilities";
 import { getMajorAspect, isMajorAspect } from "./aspects.utilities";
 import { incrementEventsCount, print } from "../../logs/logs.service";
+import { getOutputPath } from "../../output.utilities";
 
 type MajorAspectDescription =
   `${Capitalize<Body>} ${MajorAspect} ${Capitalize<Body>}`;
@@ -151,7 +152,7 @@ export function writeMajorAspectEvents(args: {
     "Major Aspects 📐"
   );
   fs.writeFileSync(
-    `./calendars/major-aspects_${majorAspectBodiesString}_${timespan}.ics`,
+    getOutputPath(`major-aspects_${majorAspectBodiesString}_${timespan}.ics`),
     new TextEncoder().encode(majorAspectsCalendar)
   );
 

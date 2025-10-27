@@ -15,6 +15,7 @@ import {
   isNauticalDusk,
 } from "./twilights.utilities";
 import { incrementEventsCount, print } from "../../logs/logs.service";
+import { getOutputPath } from "../../output.utilities";
 
 export function getTwilightEvents(args: {
   currentMinute: Moment;
@@ -144,7 +145,7 @@ export function writeTwilightEvents(args: {
 
   const ingressCalendar = getCalendar(twilightEvents, "Twilights 🌠");
   fs.writeFileSync(
-    `./calendars/twilight_${timespan}.ics`,
+    getOutputPath(`twilight_${timespan}.ics`),
     new TextEncoder().encode(ingressCalendar)
   );
 
