@@ -1,18 +1,5 @@
 #!/bin/bash
 
-# ==============================================================================
-# utilities.sh
-# ==============================================================================
-# Shared utilities for Caelundas Kubernetes scripts
-#
-# This file contains common functions and constants used by k8s-list-files.sh
-# and k8s-copy-files.sh scripts.
-#
-# Usage:
-#   source "$(dirname "${BASH_SOURCE[0]}")/utilities.sh"
-# ==============================================================================
-
-# Constants
 readonly CALENDARS_PATH="/app/data/calendars"
 readonly DEBUG_POD_NAME="caelundas-debug"
 readonly DEBUG_IMAGE="busybox:latest"

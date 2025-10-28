@@ -1,28 +1,9 @@
 #!/bin/bash
+
 set -e
 
-# ==============================================================================
-# k8s-list-files.sh
-# ==============================================================================
-# Lists files in the Caelundas Kubernetes job's persistent volume.
-#
-# This script only works with completed (Succeeded/Failed) pods. It creates
-# a temporary debug pod with the same PVC mounted to access the files.
-#
-# Usage:
-#   ./k8s-list-files.sh
-#
-# Requirements:
-#   - kubectl configured and connected to the cluster
-#   - Caelundas job must be completed (not running)
-#   - Must be run from monorepo root
-# ==============================================================================
-
-# Source shared utilities
-# shellcheck disable=SC1091
 source "applications/caelundas/scripts/utilities.sh"
 
-# Validate environment
 validate_monorepo_root
 
 # ==============================================================================
