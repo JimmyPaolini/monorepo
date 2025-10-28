@@ -5,60 +5,97 @@ set -e
 # k8s-list-files.sh
 # ==============================================================================
 # Lists files in the Caelundas Kubernetes job's persistent volume.
-# This script finds the running Caelundas pod and displays the contents
-# of the /app/data/calendars directory where calendar files are stored.
+#
+# This script only works with completed (Succeeded/Failed) pods. It creates
+# a temporary debug pod with the same PVC mounted to access the files.
 #
 # Usage:
 #   ./k8s-list-files.sh
 #
 # Requirements:
 #   - kubectl configured and connected to the cluster
-#   - Caelundas job must be running or completed
+#   - Caelundas job must be completed (not running)
+#   - Must be run from monorepo root
 # ==============================================================================
 
-CALENDARS_PATH="/app/data/calendars"
+# Source shared utilities
+# shellcheck disable=SC1091
+source "applications/caelundas/scripts/utilities.sh"
 
-# Find the Caelundas pod using label selectors
-find_pod() {
-  local pod
+# Validate environment
+validate_monorepo_root
 
-  # Try Helm-managed label first
-  pod=$(kubectl get pods -l app.kubernetes.io/name=kubernetes-job \
-    -o jsonpath='{.items[0].metadata.name}' 2>/dev/null)
+# ==============================================================================
+# Actions
+# ==============================================================================
 
-  # Fall back to job name label
-  if [ -z "$pod" ]; then
-    pod=$(kubectl get pods -l job-name=caelundas \
-      -o jsonpath='{.items[0].metadata.name}' 2>/dev/null)
+# List files by creating a temporary debug pod with the PVC mounted
+# Args: $1 - pvc name
+list_pod_files() {
+  local pvc_name="$1"
+
+  echo "💾 PVC: $pvc_name"
+  echo "📂 Path: $CALENDARS_PATH"
+
+  # Create temporary pod that mounts the PVC and runs ls
+  if ! kubectl run "$DEBUG_POD_NAME" --rm -i --restart=Never \
+    --image="$DEBUG_IMAGE" \
+    --overrides="{
+      \"spec\": {
+        \"containers\": [{
+          \"name\": \"$DEBUG_POD_NAME\",
+          \"image\": \"$DEBUG_IMAGE\",
+          \"command\": [\"ls\", \"-lah\", \"$CALENDARS_PATH\"],
+          \"volumeMounts\": [{
+            \"name\": \"data\",
+            \"mountPath\": \"/app/data\"
+          }]
+        }],
+        \"volumes\": [{
+          \"name\": \"data\",
+          \"persistentVolumeClaim\": {
+            \"claimName\": \"$pvc_name\"
+          }
+        }]
+      }
+    }"; then
+    echo "❌ Failed to access directory"
+    return 1
   fi
-
-  echo "$pod"
 }
 
-main() {
-  echo "📂 Listing files in persistent volume..."
-  echo ""
+# ==============================================================================
+# Main Script
+# ==============================================================================
 
-  local pod
-  pod=$(find_pod)
+echo "📂 Listing files from Kubernetes pod..."
 
-  if [ -z "$pod" ]; then
-    echo "❌ Error: No Caelundas pod found"
-    echo "   Make sure the job is running: kubectl get jobs"
-    exit 1
-  fi
+# Find the pod
+pod=$(find_pod)
 
-  echo "Pod: $pod"
-  echo "Path: $CALENDARS_PATH"
-  echo ""
+if [ -z "$pod" ]; then
+  echo "❌ No Caelundas pod found"
+  exit 1
+fi
 
-  if kubectl exec "$pod" -- ls -lah "$CALENDARS_PATH" 2>/dev/null; then
-    echo ""
-    echo "✅ Listed successfully"
-  else
-    echo "❌ Error: Directory not found or inaccessible"
-    exit 1
-  fi
-}
+echo "🫛 Pod: $pod"
 
-main "$@"
+# Get pod status
+pod_phase=$(get_pod_phase "$pod")
+echo "🚦 Status: $pod_phase"
+
+# Validate pod is completed
+validate_pod_completed "$pod_phase" "$pod"
+
+echo "🔧 Creating temporary debug pod..."
+
+pvc_name=$(get_pvc_name "$pod")
+
+if [ -z "$pvc_name" ]; then
+  echo "❌ Could not find PVC attached to pod"
+  exit 1
+fi
+
+list_pod_files "$pvc_name"
+
+echo "✅ Listed files successfully"
