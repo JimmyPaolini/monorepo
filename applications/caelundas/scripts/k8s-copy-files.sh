@@ -1,92 +1,129 @@
 #!/bin/bash
+
 set -e
 
-# ==============================================================================
-# k8s-copy-files.sh
-# ==============================================================================
-# Copies calendar files from the Caelundas Kubernetes job's persistent volume
-# to the local machine.
-#
-# The files are copied from the pod's /app/data/calendars directory to
-# ./applications/caelundas/calendars-output/ in the monorepo.
-#
-# Usage:
-#   ./k8s-copy-files.sh
-#
-# Requirements:
-#   - kubectl configured and connected to the cluster
-#   - Caelundas job must be running or completed
-#   - Write permissions in the output directory
-# ==============================================================================
+source "applications/caelundas/scripts/utilities.sh"
 
-CALENDARS_PATH="/app/data/calendars"
-OUTPUT_DIR="applications/caelundas/calendars-output"
+validate_monorepo_root
 
-# Find the Caelundas pod using label selectors
-find_pod() {
-  local pod
+source "applications/caelundas/.env"
 
-  # Try Helm-managed label first
-  pod=$(kubectl get pods -l app.kubernetes.io/name=kubernetes-job \
-    -o jsonpath='{.items[0].metadata.name}' 2>/dev/null)
+readonly OUTPUT_DIR="applications/caelundas/${OUTPUT_DIR#./}"
 
-  # Fall back to job name label
-  if [ -z "$pod" ]; then
-    pod=$(kubectl get pods -l job-name=caelundas \
-      -o jsonpath='{.items[0].metadata.name}' 2>/dev/null)
-  fi
 
-  echo "$pod"
-}
+# Display copied files
+# Returns: 0 on success, 1 if directory is empty
+show_contents() {
+  local file_count
+  file_count=$(find "$OUTPUT_DIR" -type f 2>/dev/null | wc -l | tr -d ' ')
 
-# Copy files from pod to local directory
-copy_files() {
-  local pod=$1
-  local source="$pod:$CALENDARS_PATH"
-
-  if kubectl cp "$source" "$OUTPUT_DIR" 2>/dev/null; then
+  if [ "$file_count" -gt 0 ]; then
+    echo "📁 Copied $file_count files:"
+    ls -lh "$OUTPUT_DIR" | tail -n +2
     return 0
   else
+    echo "⚠️  No files copied"
     return 1
   fi
 }
 
-# Display copied files
-show_contents() {
-  echo ""
-  echo "📁 Copied files:"
-  ls -lh "$OUTPUT_DIR" | tail -n +2 || echo "   (none)"
-}
+# ==============================================================================
+# Action Functions
+# ==============================================================================
 
-main() {
-  echo "📥 Copying files from Kubernetes pod..."
-  echo ""
+# Copy files from a completed pod using a temporary debug pod
+# Args: $1 - pod name
+# Returns: 0 on success, 1 on failure
+copy_from_debug_pod() {
+  local pod=$1
+  local pvc
 
-  # Ensure output directory exists
-  mkdir -p "$OUTPUT_DIR"
+  pvc=$(get_pvc_name "$pod")
 
-  local pod
-  pod=$(find_pod)
-
-  if [ -z "$pod" ]; then
-    echo "❌ Error: No Caelundas pod found"
-    echo "   Make sure the job is running: kubectl get jobs"
-    exit 1
+  if [ -z "$pvc" ]; then
+    echo "❌ Could not find PVC for pod $pod"
+    return 1
   fi
 
-  echo "Pod: $pod"
-  echo "Source: $CALENDARS_PATH"
-  echo "Destination: ./$OUTPUT_DIR"
-  echo ""
+  echo "🔧 Creating temporary debug pod..."
+  echo "💾 PVC: $pvc"
+  echo "📂 Path: $CALENDARS_PATH"
 
-  if copy_files "$pod"; then
-    echo "✅ Files copied successfully"
-    show_contents
+  # Create a temporary pod with the PVC mounted and sleep to keep it running
+  kubectl run "$DEBUG_POD_NAME" \
+    --image="$DEBUG_IMAGE" \
+    --restart=Never \
+    --overrides="{
+      \"spec\": {
+        \"containers\": [{
+          \"name\": \"$DEBUG_POD_NAME\",
+          \"image\": \"$DEBUG_IMAGE\",
+          \"command\": [\"sleep\", \"300\"],
+          \"volumeMounts\": [{
+            \"name\": \"data\",
+            \"mountPath\": \"/app/data\"
+          }]
+        }],
+        \"volumes\": [{
+          \"name\": \"data\",
+          \"persistentVolumeClaim\": {
+            \"claimName\": \"$pvc\"
+          }
+        }]
+      }
+    }" >/dev/null 2>&1
+
+  # Wait for the debug pod to be ready
+  echo "⏳ Waiting for debug pod to be ready..."
+  if ! kubectl wait --for=condition=Ready pod/"$DEBUG_POD_NAME" --timeout=60s >/dev/null 2>&1; then
+    echo "❌ Debug pod did not become ready in time"
+    kubectl delete pod "$DEBUG_POD_NAME" --ignore-not-found=true >/dev/null 2>&1
+    return 1
+  fi
+
+  # Copy files from the debug pod
+  echo "📥 Copying files..."
+  local source="$DEBUG_POD_NAME:$CALENDARS_PATH"
+  local success=0
+
+  if kubectl cp "$source" "$OUTPUT_DIR" 2>/dev/null; then
+    success=0
   else
-    echo "❌ Error: Failed to copy files"
-    echo "   The directory may not exist or be empty"
-    exit 1
+    success=1
   fi
+
+  # Clean up the debug pod
+  kubectl delete pod "$DEBUG_POD_NAME" >/dev/null 2>&1
+  echo "🧹 Cleaned up debug pod"
+
+  return $success
 }
 
-main "$@"
+# ==============================================================================
+# Main Script
+# ==============================================================================
+
+echo "📥 Copying files from Kubernetes pod..."
+
+pod=$(find_pod)
+
+if [ -z "$pod" ]; then
+  echo "❌ No Caelundas pod found"
+  exit 1
+fi
+
+phase=$(get_pod_phase "$pod")
+
+echo "🫛 Pod: $pod"
+echo "🚦 Status: $phase"
+
+validate_pod_completed "$phase" "$pod"
+
+# Pod is completed - use debug pod
+if copy_from_debug_pod "$pod"; then
+  echo "✅ Files copied successfully"
+  show_contents
+else
+  echo "❌ Failed to copy files"
+  exit 1
+fi
