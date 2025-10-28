@@ -1,8 +1,8 @@
 # Dockerfile for caelundas application
 
 # 1. Base Image
-# Using a lightweight node image for AMD64/x86_64 architecture (Linode/cloud compatibility)
-FROM --platform=linux/amd64 node:22.20.0-alpine
+# Using a lightweight node image
+FROM node:22.20.0-alpine
 
 # Install build tools needed for native modules like sqlite3
 RUN apk add --no-cache python3 make g++

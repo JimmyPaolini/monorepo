@@ -41,6 +41,7 @@ import {
 } from "./ephemeris.types";
 import { normalizeDegrees } from "../math.utilities";
 import { print } from "../logs/logs.service";
+import { fetchWithRetry } from "../fetch.utilities";
 
 // #region 💫 Orbit
 
@@ -77,7 +78,7 @@ export async function getOrbitEphemeris(args: {
 
   const url = getOrbitEphemerisUrl({ body, end, start });
   // print(`🌐 Orbit url:`, url.toString());
-  const text = await fetch(url.toString()).then((res) => res.text());
+  const text = await fetchWithRetry(url.toString());
   // print(`🏁 Orbit response:`, text);
   const orbitEphemeris = parseOrbitEphemeris(text);
 
@@ -118,12 +119,14 @@ export async function getNodeCoordinatesEphemeris(args: {
             longitude: normalizeDegrees(
               longitudeOfAscendingNode + argumentOfPerifocus
             ),
+            latitude: 0,
           };
         case "lunar apogee":
           return {
             longitude: normalizeDegrees(
               longitudeOfAscendingNode + argumentOfPerifocus + 180
             ),
+            latitude: 0,
           };
         default:
           throw new Error(`Unknown node: ${node}`);
@@ -169,7 +172,7 @@ export async function getCoordinatesEphemeris(args: {
 
   const url = getCoordinatesEphemerisUrl({ body, start, end });
   // print(`🌐 Ephemeris url:`, url.toString());
-  const text = await fetch(url.toString()).then((res) => res.text());
+  const text = await fetchWithRetry(url.toString());
   // print(`🏁 Ephemeris response:`, text);
   const ephemeris = parseCoordinatesEphemeris(text);
 
@@ -267,7 +270,7 @@ export async function getAzimuthElevationEphemeris(args: {
     body,
   });
   // print(`🌐 Ephemeris url:`, url.toString());
-  const text = await fetch(url.toString()).then((res) => res.text());
+  const text = await fetchWithRetry(url.toString());
   // print(`🏁 Ephemeris response:`, text);
   const ephemeris = parseAzimuthElevationEphemeris(text);
   // print(`🐋 ~ ephemeris:`, ephemeris);
@@ -352,7 +355,7 @@ export async function getIlluminationEphemeris(args: {
     coordinates,
   });
   // print(`🌐 Ephemeris url:`, url.toString());
-  const text = await fetch(url.toString()).then((res) => res.text());
+  const text = await fetchWithRetry(url.toString());
   // print(`🏁 Ephemeris response:`, text);
   const ephemeris = parseIlluminationEphemeris(text);
   // print(`🐋 ~ ephemeris:`, ephemeris);
@@ -427,7 +430,7 @@ export async function getDiameterEphemeris(args: {
 
   const url = getDiameterEphemerisUrl({ start, end, body });
   // print(`🌐 Ephemeris url:`, url.toString());
-  const text = await fetch(url.toString()).then((res) => res.text());
+  const text = await fetchWithRetry(url.toString());
   // print(`🏁 Ephemeris response:`, text);
   const ephemeris = parseDiameterEphemeris(text);
   // print(`🐋 ~ ephemeris:`, ephemeris);
@@ -505,7 +508,7 @@ export async function getDistanceEphemeris(args: {
 
   const url = getDistanceEphemerisUrl({ body, end, start });
   // print(`🌐 Ephemeris url:`, url.toString());
-  const text = await fetch(url.toString()).then((res) => res.text());
+  const text = await fetchWithRetry(url.toString());
   // print(`🏁 Ephemeris response:`, text);
   const ephemeris = parseDistanceEphemeris(text);
   // print(`🐋 ~ ephemeris:`, ephemeris);
