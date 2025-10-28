@@ -170,8 +170,18 @@ export const initialChoices: Choices = {
   ],
   planetaryPhaseBodies: ["venus", "mercury", "mars"],
   /** @description Rittenhouse Square, southeast corner of the fountain */
-  latitude: 39.949309,
-  longitude: -75.17169,
-  start: moment.tz("2025-01-01", "America/New_York").toDate(),
-  end: moment.tz("2025-12-31", "America/New_York").toDate(),
+  latitude: parseFloat(process.env.LATITUDE || "39.949309"),
+  longitude: parseFloat(process.env.LONGITUDE || "-75.17169"),
+  start: moment
+    .tz(
+      process.env.START_DATE || "2025-01-01",
+      process.env.TIMEZONE || "America/New_York"
+    )
+    .toDate(),
+  end: moment
+    .tz(
+      process.env.END_DATE || "2025-12-31",
+      process.env.TIMEZONE || "America/New_York"
+    )
+    .toDate(),
 };
