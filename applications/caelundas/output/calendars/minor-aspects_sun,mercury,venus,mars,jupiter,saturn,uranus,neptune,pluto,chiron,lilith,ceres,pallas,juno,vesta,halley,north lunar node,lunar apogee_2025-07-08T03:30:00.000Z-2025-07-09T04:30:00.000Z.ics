@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:☊ ⚼ 🌚 North Lunar Node sesquiquadrate Lunar Apogee::North Lunar Node sesquiquadrate Lunar Apogee::20250708T065200
+DTSTAMP:20251028T034254Z
+DTSTART:20250708T065200Z
+SUMMARY:☊ ⚼ 🌚 North Lunar Node sesquiquadrate Lunar Apogee
+DESCRIPTION:North Lunar Node sesquiquadrate Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⚻ 🌚 Venus quincunx Lunar Apogee::Venus quincunx Lunar Apogee::20250708T200800
+DTSTAMP:20251028T034254Z
+DTSTART:20250708T200800Z
+SUMMARY:♀️ ⚻ 🌚 Venus quincunx Lunar Apogee
+DESCRIPTION:Venus quincunx Lunar Apogee
+END:VEVENT
+END:VCALENDAR

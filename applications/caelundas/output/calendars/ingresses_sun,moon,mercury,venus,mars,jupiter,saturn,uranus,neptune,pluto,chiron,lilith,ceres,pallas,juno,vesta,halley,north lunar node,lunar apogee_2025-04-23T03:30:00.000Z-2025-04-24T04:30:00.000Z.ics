@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Decan Ingresses 🔟
+BEGIN:VEVENT
+UID:🌙 → ♓︎2️⃣ Moon ingress decan 2 Pisces::Moon ingress decan 2 Pisces::20250423T221400
+DTSTAMP:20251028T011944Z
+DTSTART:20250423T221400Z
+SUMMARY:🌙 → ♓︎2️⃣ Moon ingress decan 2 Pisces
+DESCRIPTION:Moon ingress decan 2 Pisces
+END:VEVENT
+BEGIN:VEVENT
+UID:♃ → ♊︎3️⃣ Jupiter ingress decan 3 Gemini::Jupiter ingress decan 3 Gemini::20250424T003500
+DTSTAMP:20251028T011944Z
+DTSTART:20250424T003500Z
+SUMMARY:♃ → ♊︎3️⃣ Jupiter ingress decan 3 Gemini
+DESCRIPTION:Jupiter ingress decan 3 Gemini
+END:VEVENT
+END:VCALENDAR

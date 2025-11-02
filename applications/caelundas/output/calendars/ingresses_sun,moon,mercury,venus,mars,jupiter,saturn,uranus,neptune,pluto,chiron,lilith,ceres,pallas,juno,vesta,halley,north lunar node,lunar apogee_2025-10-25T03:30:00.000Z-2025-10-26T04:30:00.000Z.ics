@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Peak Ingresses ⛰️
+BEGIN:VEVENT
+UID:🌙 → ♐︎⛰️ Moon peak ingress Sagittarius::Moon peak ingress Sagittarius::20251025T104200
+DTSTAMP:20251028T071044Z
+DTSTART:20251025T104200Z
+SUMMARY:🌙 → ♐︎⛰️ Moon peak ingress Sagittarius
+DESCRIPTION:Moon peak ingress Sagittarius
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ → ♎︎⛰️ Venus peak ingress Libra::Venus peak ingress Libra::20251025T223800
+DTSTAMP:20251028T071044Z
+DTSTART:20251025T223800Z
+SUMMARY:♀️ → ♎︎⛰️ Venus peak ingress Libra
+DESCRIPTION:Venus peak ingress Libra
+END:VEVENT
+END:VCALENDAR

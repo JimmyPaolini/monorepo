@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:☀️ ⚹ ☊ Sun sextile North Lunar Node::Sun sextile North Lunar Node::20250515T162200
+DTSTAMP:20251028T020047Z
+DTSTART:20250515T162200Z
+SUMMARY:☀️ ⚹ ☊ Sun sextile North Lunar Node
+DESCRIPTION:Sun sextile North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⚹ ☄ Mercury sextile Halley::Mercury sextile Halley::20250515T221600
+DTSTAMP:20251028T020047Z
+DTSTART:20250515T221600Z
+SUMMARY:☿ ⚹ ☄ Mercury sextile Halley
+DESCRIPTION:Mercury sextile Halley
+END:VEVENT
+END:VCALENDAR

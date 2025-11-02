@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♀️ ⚻ ♆ Venus quincunx Neptune::Venus quincunx Neptune::20251106T163700
+DTSTAMP:20251028T073349Z
+DTSTART:20251106T163700Z
+SUMMARY:♀️ ⚻ ♆ Venus quincunx Neptune
+DESCRIPTION:Venus quincunx Neptune
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⚼ ♆ Sun sesquiquadrate Neptune::Sun sesquiquadrate Neptune::20251106T202800
+DTSTAMP:20251028T073349Z
+DTSTART:20251106T202800Z
+SUMMARY:☀️ ⚼ ♆ Sun sesquiquadrate Neptune
+DESCRIPTION:Sun sesquiquadrate Neptune
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⚻ ♅ Venus quincunx Uranus::Venus quincunx Uranus::20251106T233100
+DTSTAMP:20251028T073349Z
+DTSTART:20251106T233100Z
+SUMMARY:♀️ ⚻ ♅ Venus quincunx Uranus
+DESCRIPTION:Venus quincunx Uranus
+END:VEVENT
+END:VCALENDAR

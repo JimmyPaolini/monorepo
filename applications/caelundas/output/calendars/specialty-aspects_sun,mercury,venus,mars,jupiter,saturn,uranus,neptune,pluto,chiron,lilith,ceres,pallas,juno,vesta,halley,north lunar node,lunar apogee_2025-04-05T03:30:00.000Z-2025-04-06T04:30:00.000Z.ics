@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:♄ ⬠ ♇ Saturn quintile Pluto::Saturn quintile Pluto::20250405T170200
+DTSTAMP:20251028T004612Z
+DTSTART:20250405T170200Z
+SUMMARY:♄ ⬠ ♇ Saturn quintile Pluto
+DESCRIPTION:Saturn quintile Pluto
+END:VEVENT
+BEGIN:VEVENT
+UID:⚵ ⬠ 🌚 Juno quintile Lunar Apogee::Juno quintile Lunar Apogee::20250405T180700
+DTSTAMP:20251028T004612Z
+DTSTART:20250405T180700Z
+SUMMARY:⚵ ⬠ 🌚 Juno quintile Lunar Apogee
+DESCRIPTION:Juno quintile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

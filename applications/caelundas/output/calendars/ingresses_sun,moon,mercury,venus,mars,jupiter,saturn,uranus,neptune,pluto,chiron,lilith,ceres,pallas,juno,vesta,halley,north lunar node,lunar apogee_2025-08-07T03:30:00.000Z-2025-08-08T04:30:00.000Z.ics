@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Peak Ingresses ⛰️
+BEGIN:VEVENT
+UID:☀️ → ♌︎⛰️ Sun peak ingress Leo::Sun peak ingress Leo::20250807T055200
+DTSTAMP:20251028T043945Z
+DTSTART:20250807T055200Z
+SUMMARY:☀️ → ♌︎⛰️ Sun peak ingress Leo
+DESCRIPTION:Sun peak ingress Leo
+END:VEVENT
+BEGIN:VEVENT
+UID:🌚 → ♎︎⛰️ Lunar Apogee peak ingress Libra::Lunar Apogee peak ingress Libra::20250808T002000
+DTSTAMP:20251028T043945Z
+DTSTART:20250808T002000Z
+SUMMARY:🌚 → ♎︎⛰️ Lunar Apogee peak ingress Libra
+DESCRIPTION:Lunar Apogee peak ingress Libra
+END:VEVENT
+END:VCALENDAR

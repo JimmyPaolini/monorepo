@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☿ ⬠ ♃ Mercury quintile Jupiter::Mercury quintile Jupiter::20250720T204300
+DTSTAMP:20251028T040544Z
+DTSTART:20250720T204300Z
+SUMMARY:☿ ⬠ ♃ Mercury quintile Jupiter
+DESCRIPTION:Mercury quintile Jupiter
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ± ⚵ Sun biquintile Juno::Sun biquintile Juno::20250720T233300
+DTSTAMP:20251028T040544Z
+DTSTART:20250720T233300Z
+SUMMARY:☀️ ± ⚵ Sun biquintile Juno
+DESCRIPTION:Sun biquintile Juno
+END:VEVENT
+END:VCALENDAR

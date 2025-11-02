@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☿ ± 🌚 Mercury biquintile Lunar Apogee::Mercury biquintile Lunar Apogee::20250424T042700
+DTSTAMP:20251028T012136Z
+DTSTART:20250424T042700Z
+SUMMARY:☿ ± 🌚 Mercury biquintile Lunar Apogee
+DESCRIPTION:Mercury biquintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♃ ± ⚶ Jupiter biquintile Vesta::Jupiter biquintile Vesta::20250424T064600
+DTSTAMP:20251028T012136Z
+DTSTART:20250424T064600Z
+SUMMARY:♃ ± ⚶ Jupiter biquintile Vesta
+DESCRIPTION:Jupiter biquintile Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ± ⚶ Mercury biquintile Vesta::Mercury biquintile Vesta::20250424T213000
+DTSTAMP:20251028T012136Z
+DTSTART:20250424T213000Z
+SUMMARY:☿ ± ⚶ Mercury biquintile Vesta
+DESCRIPTION:Mercury biquintile Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:♆ ⬠ ⚸ Neptune quintile Lilith::Neptune quintile Lilith::20250425T002200
+DTSTAMP:20251028T012136Z
+DTSTART:20250425T002200Z
+SUMMARY:♆ ⬠ ⚸ Neptune quintile Lilith
+DESCRIPTION:Neptune quintile Lilith
+END:VEVENT
+BEGIN:VEVENT
+UID:⚵ ± ☄ Juno biquintile Halley::Juno biquintile Halley::20250425T034600
+DTSTAMP:20251028T012136Z
+DTSTART:20250425T034600Z
+SUMMARY:⚵ ± ☄ Juno biquintile Halley
+DESCRIPTION:Juno biquintile Halley
+END:VEVENT
+END:VCALENDAR

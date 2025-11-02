@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☀️ ⬠ ♅ Sun quintile Uranus::Sun quintile Uranus::20250805T044100
+DTSTAMP:20251028T043600Z
+DTSTART:20250805T044100Z
+SUMMARY:☀️ ⬠ ♅ Sun quintile Uranus
+DESCRIPTION:Sun quintile Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:♄ ± 🌚 Saturn biquintile Lunar Apogee::Saturn biquintile Lunar Apogee::20250805T054400
+DTSTAMP:20251028T043600Z
+DTSTART:20250805T054400Z
+SUMMARY:♄ ± 🌚 Saturn biquintile Lunar Apogee
+DESCRIPTION:Saturn biquintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ± ☊ Venus biquintile North Lunar Node::Venus biquintile North Lunar Node::20250805T181700
+DTSTAMP:20251028T043600Z
+DTSTART:20250805T181700Z
+SUMMARY:♀️ ± ☊ Venus biquintile North Lunar Node
+DESCRIPTION:Venus biquintile North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:♄ ⬠ ⚸ Saturn quintile Lilith::Saturn quintile Lilith::20250805T182400
+DTSTAMP:20251028T043600Z
+DTSTART:20250805T182400Z
+SUMMARY:♄ ⬠ ⚸ Saturn quintile Lilith
+DESCRIPTION:Saturn quintile Lilith
+END:VEVENT
+BEGIN:VEVENT
+UID:♂️ ⬠ 🌚 Mars quintile Lunar Apogee::Mars quintile Lunar Apogee::20250806T002400
+DTSTAMP:20251028T043600Z
+DTSTART:20250806T002400Z
+SUMMARY:♂️ ⬠ 🌚 Mars quintile Lunar Apogee
+DESCRIPTION:Mars quintile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

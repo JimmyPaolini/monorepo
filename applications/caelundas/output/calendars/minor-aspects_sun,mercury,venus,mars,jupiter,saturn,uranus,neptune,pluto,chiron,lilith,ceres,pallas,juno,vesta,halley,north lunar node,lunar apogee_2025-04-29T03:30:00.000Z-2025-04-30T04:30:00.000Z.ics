@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:☀️ ∠ ⚳ Sun semisquare Ceres::Sun semisquare Ceres::20250429T043800
+DTSTAMP:20251028T013053Z
+DTSTART:20250429T043800Z
+SUMMARY:☀️ ∠ ⚳ Sun semisquare Ceres
+DESCRIPTION:Sun semisquare Ceres
+END:VEVENT
+BEGIN:VEVENT
+UID:♄ ⚼ ⚶ Saturn sesquiquadrate Vesta::Saturn sesquiquadrate Vesta::20250429T185300
+DTSTAMP:20251028T013053Z
+DTSTART:20250429T185300Z
+SUMMARY:♄ ⚼ ⚶ Saturn sesquiquadrate Vesta
+DESCRIPTION:Saturn sesquiquadrate Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:♆ ⚻ 🌚 Neptune quincunx Lunar Apogee::Neptune quincunx Lunar Apogee::20250429T215100
+DTSTAMP:20251028T013053Z
+DTSTART:20250429T215100Z
+SUMMARY:♆ ⚻ 🌚 Neptune quincunx Lunar Apogee
+DESCRIPTION:Neptune quincunx Lunar Apogee
+END:VEVENT
+END:VCALENDAR

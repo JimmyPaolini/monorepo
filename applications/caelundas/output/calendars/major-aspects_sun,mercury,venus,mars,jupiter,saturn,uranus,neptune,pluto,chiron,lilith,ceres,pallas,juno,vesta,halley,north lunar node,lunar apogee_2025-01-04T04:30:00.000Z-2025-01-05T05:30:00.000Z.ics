@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:♂️ □ ⚶ Mars square Vesta::Mars square Vesta::20250104T153400
+DTSTAMP:20251027T215741Z
+DTSTART:20250104T153400Z
+SUMMARY:♂️ □ ⚶ Mars square Vesta
+DESCRIPTION:Mars square Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⚹ ♄ Sun sextile Saturn::Sun sextile Saturn::20250104T223600
+DTSTAMP:20251027T215741Z
+DTSTART:20250104T223600Z
+SUMMARY:☀️ ⚹ ♄ Sun sextile Saturn
+DESCRIPTION:Sun sextile Saturn
+END:VEVENT
+END:VCALENDAR

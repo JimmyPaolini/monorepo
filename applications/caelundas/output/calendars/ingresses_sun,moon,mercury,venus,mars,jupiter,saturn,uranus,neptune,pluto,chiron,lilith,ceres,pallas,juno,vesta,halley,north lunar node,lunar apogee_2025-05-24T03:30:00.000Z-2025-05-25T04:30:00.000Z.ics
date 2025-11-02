@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Sign Ingresses 🪧
+BEGIN:VEVENT
+UID:🌙 → ♉︎ Moon ingress Taurus::Moon ingress Taurus::20250524T173900
+DTSTAMP:20251028T021743Z
+DTSTART:20250524T173900Z
+SUMMARY:🌙 → ♉︎ Moon ingress Taurus
+DESCRIPTION:Moon ingress Taurus
+END:VEVENT
+BEGIN:VEVENT
+UID:♄ → ♈ Saturn ingress Aries::Saturn ingress Aries::20250525T033700
+DTSTAMP:20251028T021743Z
+DTSTART:20250525T033700Z
+SUMMARY:♄ → ♈ Saturn ingress Aries
+DESCRIPTION:Saturn ingress Aries
+END:VEVENT
+END:VCALENDAR

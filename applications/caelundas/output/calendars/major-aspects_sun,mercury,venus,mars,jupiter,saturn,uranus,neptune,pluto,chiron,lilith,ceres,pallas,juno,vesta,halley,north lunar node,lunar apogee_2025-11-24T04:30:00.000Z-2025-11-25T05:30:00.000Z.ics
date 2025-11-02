@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:☀️ □ ☄ Sun square Halley::Sun square Halley::20251124T110100
+DTSTAMP:20251028T080817Z
+DTSTART:20251124T110100Z
+SUMMARY:☀️ □ ☄ Sun square Halley
+DESCRIPTION:Sun square Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ☌ ♀️ Mercury conjunct Venus::Mercury conjunct Venus::20251125T015200
+DTSTAMP:20251028T080817Z
+DTSTART:20251125T015200Z
+SUMMARY:☿ ☌ ♀️ Mercury conjunct Venus
+DESCRIPTION:Mercury conjunct Venus
+END:VEVENT
+END:VCALENDAR

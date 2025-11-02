@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:☀️ ∠ ☄ Sun semisquare Halley::Sun semisquare Halley::20250927T173300
+DTSTAMP:20251028T061703Z
+DTSTART:20250927T173300Z
+SUMMARY:☀️ ∠ ☄ Sun semisquare Halley
+DESCRIPTION:Sun semisquare Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⚼ ♅ Mercury sesquiquadrate Uranus::Mercury sesquiquadrate Uranus::20250927T224000
+DTSTAMP:20251028T061703Z
+DTSTART:20250927T224000Z
+SUMMARY:☿ ⚼ ♅ Mercury sesquiquadrate Uranus
+DESCRIPTION:Mercury sesquiquadrate Uranus
+END:VEVENT
+END:VCALENDAR

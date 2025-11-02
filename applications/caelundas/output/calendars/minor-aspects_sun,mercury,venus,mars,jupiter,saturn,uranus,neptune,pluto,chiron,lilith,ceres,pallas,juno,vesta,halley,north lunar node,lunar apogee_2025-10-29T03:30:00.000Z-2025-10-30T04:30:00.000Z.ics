@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♀️ ∠ 🌚 Venus semisquare Lunar Apogee::Venus semisquare Lunar Apogee::20251029T094600
+DTSTAMP:20251028T071824Z
+DTSTART:20251029T094600Z
+SUMMARY:♀️ ∠ 🌚 Venus semisquare Lunar Apogee
+DESCRIPTION:Venus semisquare Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ∠ ⚶ Sun semisquare Vesta::Sun semisquare Vesta::20251029T171000
+DTSTAMP:20251028T071824Z
+DTSTART:20251029T171000Z
+SUMMARY:☀️ ∠ ⚶ Sun semisquare Vesta
+DESCRIPTION:Sun semisquare Vesta
+END:VEVENT
+END:VCALENDAR

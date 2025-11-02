@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♄ ⚼ ⚵ Saturn sesquiquadrate Juno::Saturn sesquiquadrate Juno::20250627T155000
+DTSTAMP:20251028T032209Z
+DTSTART:20250627T155000Z
+SUMMARY:♄ ⚼ ⚵ Saturn sesquiquadrate Juno
+DESCRIPTION:Saturn sesquiquadrate Juno
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⚼ 🌚 Sun sesquiquadrate Lunar Apogee::Sun sesquiquadrate Lunar Apogee::20250627T213500
+DTSTAMP:20251028T032209Z
+DTSTART:20250627T213500Z
+SUMMARY:☀️ ⚼ 🌚 Sun sesquiquadrate Lunar Apogee
+DESCRIPTION:Sun sesquiquadrate Lunar Apogee
+END:VEVENT
+END:VCALENDAR

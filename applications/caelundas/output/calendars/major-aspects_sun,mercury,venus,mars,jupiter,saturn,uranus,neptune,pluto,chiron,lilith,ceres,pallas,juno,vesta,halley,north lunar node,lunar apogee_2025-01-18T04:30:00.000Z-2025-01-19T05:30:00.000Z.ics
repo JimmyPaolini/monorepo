@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:☀️ □ 🌚 Sun square Lunar Apogee::Sun square Lunar Apogee::20250118T110400
+DTSTAMP:20251027T222348Z
+DTSTART:20250118T110400Z
+SUMMARY:☀️ □ 🌚 Sun square Lunar Apogee
+DESCRIPTION:Sun square Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⚹ ☊ Sun sextile North Lunar Node::Sun sextile North Lunar Node::20250118T151900
+DTSTAMP:20251027T222348Z
+DTSTART:20250118T151900Z
+SUMMARY:☀️ ⚹ ☊ Sun sextile North Lunar Node
+DESCRIPTION:Sun sextile North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:⚷ □ ⚴ Chiron square Pallas::Chiron square Pallas::20250118T183100
+DTSTAMP:20251027T222348Z
+DTSTART:20250118T183100Z
+SUMMARY:⚷ □ ⚴ Chiron square Pallas
+DESCRIPTION:Chiron square Pallas
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ☌ ♄ Venus conjunct Saturn::Venus conjunct Saturn::20250119T012600
+DTSTAMP:20251027T222348Z
+DTSTART:20250119T012600Z
+SUMMARY:♀️ ☌ ♄ Venus conjunct Saturn
+DESCRIPTION:Venus conjunct Saturn
+END:VEVENT
+BEGIN:VEVENT
+UID:☄ △ 🌚 Halley trine Lunar Apogee::Halley trine Lunar Apogee::20250119T013000
+DTSTAMP:20251027T222348Z
+DTSTART:20250119T013000Z
+SUMMARY:☄ △ 🌚 Halley trine Lunar Apogee
+DESCRIPTION:Halley trine Lunar Apogee
+END:VEVENT
+END:VCALENDAR

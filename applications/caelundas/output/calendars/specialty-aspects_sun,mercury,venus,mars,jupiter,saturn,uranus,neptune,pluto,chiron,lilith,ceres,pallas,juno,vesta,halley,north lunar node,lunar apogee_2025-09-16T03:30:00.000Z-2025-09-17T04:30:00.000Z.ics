@@ -1,0 +1,46 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☿ ± ⚸ Mercury biquintile Lilith::Mercury biquintile Lilith::20250916T061400
+DTSTAMP:20251028T055556Z
+DTSTART:20250916T061400Z
+SUMMARY:☿ ± ⚸ Mercury biquintile Lilith
+DESCRIPTION:Mercury biquintile Lilith
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⬠ 🌚 Sun quintile Lunar Apogee::Sun quintile Lunar Apogee::20250916T102400
+DTSTAMP:20251028T055556Z
+DTSTART:20250916T102400Z
+SUMMARY:☀️ ⬠ 🌚 Sun quintile Lunar Apogee
+DESCRIPTION:Sun quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ☄ Mercury quintile Halley::Mercury quintile Halley::20250916T144600
+DTSTAMP:20251028T055556Z
+DTSTART:20250916T144600Z
+SUMMARY:☿ ⬠ ☄ Mercury quintile Halley
+DESCRIPTION:Mercury quintile Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⬠ ♃ Venus quintile Jupiter::Venus quintile Jupiter::20250916T152700
+DTSTAMP:20251028T055556Z
+DTSTART:20250916T152700Z
+SUMMARY:♀️ ⬠ ♃ Venus quintile Jupiter
+DESCRIPTION:Venus quintile Jupiter
+END:VEVENT
+BEGIN:VEVENT
+UID:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee::Vesta quintile Lunar Apogee::20250916T203600
+DTSTAMP:20251028T055556Z
+DTSTART:20250916T203600Z
+SUMMARY:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee
+DESCRIPTION:Vesta quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☄ ⬠ 🌚 Halley quintile Lunar Apogee::Halley quintile Lunar Apogee::20250916T222400
+DTSTAMP:20251028T055556Z
+DTSTART:20250916T222400Z
+SUMMARY:☄ ⬠ 🌚 Halley quintile Lunar Apogee
+DESCRIPTION:Halley quintile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:♃ ± ⚵ Jupiter biquintile Juno::Jupiter biquintile Juno::20250528T092300
+DTSTAMP:20251028T022512Z
+DTSTART:20250528T092300Z
+SUMMARY:♃ ± ⚵ Jupiter biquintile Juno
+DESCRIPTION:Jupiter biquintile Juno
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ⚷ Mercury quintile Chiron::Mercury quintile Chiron::20250528T141100
+DTSTAMP:20251028T022512Z
+DTSTART:20250528T141100Z
+SUMMARY:☿ ⬠ ⚷ Mercury quintile Chiron
+DESCRIPTION:Mercury quintile Chiron
+END:VEVENT
+BEGIN:VEVENT
+UID:♆ ⬠ ⚸ Neptune quintile Lilith::Neptune quintile Lilith::20250528T153800
+DTSTAMP:20251028T022512Z
+DTSTART:20250528T153800Z
+SUMMARY:♆ ⬠ ⚸ Neptune quintile Lilith
+DESCRIPTION:Neptune quintile Lilith
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ☊ Mercury quintile North Lunar Node::Mercury quintile North Lunar Node::20250528T191900
+DTSTAMP:20251028T022512Z
+DTSTART:20250528T191900Z
+SUMMARY:☿ ⬠ ☊ Mercury quintile North Lunar Node
+DESCRIPTION:Mercury quintile North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⬠ ♅ Venus quintile Uranus::Venus quintile Uranus::20250528T200700
+DTSTAMP:20251028T022512Z
+DTSTART:20250528T200700Z
+SUMMARY:♀️ ⬠ ♅ Venus quintile Uranus
+DESCRIPTION:Venus quintile Uranus
+END:VEVENT
+END:VCALENDAR

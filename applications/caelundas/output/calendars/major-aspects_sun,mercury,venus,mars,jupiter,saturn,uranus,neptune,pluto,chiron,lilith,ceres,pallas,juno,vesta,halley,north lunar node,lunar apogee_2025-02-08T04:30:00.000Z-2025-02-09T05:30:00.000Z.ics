@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:☀️ ⚹ ⚷ Sun sextile Chiron::Sun sextile Chiron::20250208T062300
+DTSTAMP:20251027T230238Z
+DTSTART:20250208T062300Z
+SUMMARY:☀️ ⚹ ⚷ Sun sextile Chiron
+DESCRIPTION:Sun sextile Chiron
+END:VEVENT
+BEGIN:VEVENT
+UID:♆ △ ⚵ Neptune trine Juno::Neptune trine Juno::20250208T184100
+DTSTAMP:20251027T230238Z
+DTSTART:20250208T184100Z
+SUMMARY:♆ △ ⚵ Neptune trine Juno
+DESCRIPTION:Neptune trine Juno
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⚹ ⚷ Mercury sextile Chiron::Mercury sextile Chiron::20250208T192100
+DTSTAMP:20251027T230238Z
+DTSTART:20250208T192100Z
+SUMMARY:☿ ⚹ ⚷ Mercury sextile Chiron
+DESCRIPTION:Mercury sextile Chiron
+END:VEVENT
+END:VCALENDAR

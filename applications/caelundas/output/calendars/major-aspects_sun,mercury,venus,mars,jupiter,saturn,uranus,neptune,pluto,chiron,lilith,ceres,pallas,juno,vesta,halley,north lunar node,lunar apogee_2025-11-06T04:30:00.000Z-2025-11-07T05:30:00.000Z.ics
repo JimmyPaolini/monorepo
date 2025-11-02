@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:♀️ ⚹ ☄ Venus sextile Halley::Venus sextile Halley::20251106T111000
+DTSTAMP:20251028T073349Z
+DTSTART:20251106T111000Z
+SUMMARY:♀️ ⚹ ☄ Venus sextile Halley
+DESCRIPTION:Venus sextile Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:♂️ ⚹ ♇ Mars sextile Pluto::Mars sextile Pluto::20251106T151200
+DTSTAMP:20251028T073349Z
+DTSTART:20251106T151200Z
+SUMMARY:♂️ ⚹ ♇ Mars sextile Pluto
+DESCRIPTION:Mars sextile Pluto
+END:VEVENT
+BEGIN:VEVENT
+UID:♄ □ ⚶ Saturn square Vesta::Saturn square Vesta::20251106T170800
+DTSTAMP:20251028T073349Z
+DTSTART:20251106T170800Z
+SUMMARY:♄ □ ⚶ Saturn square Vesta
+DESCRIPTION:Saturn square Vesta
+END:VEVENT
+END:VCALENDAR

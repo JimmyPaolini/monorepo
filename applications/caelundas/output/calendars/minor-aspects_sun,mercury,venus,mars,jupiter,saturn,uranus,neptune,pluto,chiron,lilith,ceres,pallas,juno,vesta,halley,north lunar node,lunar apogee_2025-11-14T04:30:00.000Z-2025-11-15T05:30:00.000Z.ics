@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♅ ⚻ ⚶ Uranus quincunx Vesta::Uranus quincunx Vesta::20251114T212100
+DTSTAMP:20251028T074909Z
+DTSTART:20251114T212100Z
+SUMMARY:♅ ⚻ ⚶ Uranus quincunx Vesta
+DESCRIPTION:Uranus quincunx Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:♄ ⚼ 🌚 Saturn sesquiquadrate Lunar Apogee::Saturn sesquiquadrate Lunar Apogee::20251115T023400
+DTSTAMP:20251028T074909Z
+DTSTART:20251115T023400Z
+SUMMARY:♄ ⚼ 🌚 Saturn sesquiquadrate Lunar Apogee
+DESCRIPTION:Saturn sesquiquadrate Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⚼ ♄ Venus sesquiquadrate Saturn::Venus sesquiquadrate Saturn::20251115T040200
+DTSTAMP:20251028T074909Z
+DTSTART:20251115T040200Z
+SUMMARY:♀️ ⚼ ♄ Venus sesquiquadrate Saturn
+DESCRIPTION:Venus sesquiquadrate Saturn
+END:VEVENT
+END:VCALENDAR

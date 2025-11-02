@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:♀️ ⬠ 🌚 Venus quintile Lunar Apogee::Venus quintile Lunar Apogee::20251019T042100
+DTSTAMP:20251028T065921Z
+DTSTART:20251019T042100Z
+SUMMARY:♀️ ⬠ 🌚 Venus quintile Lunar Apogee
+DESCRIPTION:Venus quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee::Vesta quintile Lunar Apogee::20251019T104700
+DTSTAMP:20251028T065921Z
+DTSTART:20251019T104700Z
+SUMMARY:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee
+DESCRIPTION:Vesta quintile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

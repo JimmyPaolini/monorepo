@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:⚵ ☌ ⚶ Juno conjunct Vesta::Juno conjunct Vesta::20250821T050500
+DTSTAMP:20251028T050614Z
+DTSTART:20250821T050500Z
+SUMMARY:⚵ ☌ ⚶ Juno conjunct Vesta
+DESCRIPTION:Juno conjunct Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:⚸ □ 🌚 Lilith square Lunar Apogee::Lilith square Lunar Apogee::20250821T191500
+DTSTAMP:20251028T050614Z
+DTSTART:20250821T191500Z
+SUMMARY:⚸ □ 🌚 Lilith square Lunar Apogee
+DESCRIPTION:Lilith square Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ △ 🌚 Venus trine Lunar Apogee::Venus trine Lunar Apogee::20250822T005000
+DTSTAMP:20251028T050614Z
+DTSTART:20250822T005000Z
+SUMMARY:♀️ △ 🌚 Venus trine Lunar Apogee
+DESCRIPTION:Venus trine Lunar Apogee
+END:VEVENT
+END:VCALENDAR

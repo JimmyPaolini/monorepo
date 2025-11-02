@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♄ ⚻ 🌚 Saturn quincunx Lunar Apogee::Saturn quincunx Lunar Apogee::20250907T040400
+DTSTAMP:20251028T053845Z
+DTSTART:20250907T040400Z
+SUMMARY:♄ ⚻ 🌚 Saturn quincunx Lunar Apogee
+DESCRIPTION:Saturn quincunx Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⚼ ♆ Venus sesquiquadrate Neptune::Venus sesquiquadrate Neptune::20250908T034100
+DTSTAMP:20251028T053845Z
+DTSTART:20250908T034100Z
+SUMMARY:♀️ ⚼ ♆ Venus sesquiquadrate Neptune
+DESCRIPTION:Venus sesquiquadrate Neptune
+END:VEVENT
+END:VCALENDAR

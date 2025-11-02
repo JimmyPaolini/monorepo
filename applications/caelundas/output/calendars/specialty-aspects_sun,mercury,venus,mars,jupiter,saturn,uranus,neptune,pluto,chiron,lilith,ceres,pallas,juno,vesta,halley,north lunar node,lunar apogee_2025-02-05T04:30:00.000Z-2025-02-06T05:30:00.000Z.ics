@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:♂️ ⬠ 🌚 Mars quintile Lunar Apogee::Mars quintile Lunar Apogee::20250205T204900
+DTSTAMP:20251027T225705Z
+DTSTART:20250205T204900Z
+SUMMARY:♂️ ⬠ 🌚 Mars quintile Lunar Apogee
+DESCRIPTION:Mars quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ± ♂️ Venus biquintile Mars::Venus biquintile Mars::20250205T220300
+DTSTAMP:20251027T225705Z
+DTSTART:20250205T220300Z
+SUMMARY:♀️ ± ♂️ Venus biquintile Mars
+DESCRIPTION:Venus biquintile Mars
+END:VEVENT
+BEGIN:VEVENT
+UID:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee::Vesta quintile Lunar Apogee::20250206T014300
+DTSTAMP:20251027T225705Z
+DTSTART:20250206T014300Z
+SUMMARY:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee
+DESCRIPTION:Vesta quintile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

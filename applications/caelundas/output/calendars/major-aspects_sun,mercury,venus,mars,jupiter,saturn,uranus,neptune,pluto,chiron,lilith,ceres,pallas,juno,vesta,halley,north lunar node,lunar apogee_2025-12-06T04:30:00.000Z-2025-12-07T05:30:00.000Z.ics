@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:☿ △ ♃ Mercury trine Jupiter::Mercury trine Jupiter::20251206T130500
+DTSTAMP:20251028T083119Z
+DTSTART:20251206T130500Z
+SUMMARY:☿ △ ♃ Mercury trine Jupiter
+DESCRIPTION:Mercury trine Jupiter
+END:VEVENT
+BEGIN:VEVENT
+UID:⚸ □ 🌚 Lilith square Lunar Apogee::Lilith square Lunar Apogee::20251206T153100
+DTSTAMP:20251028T083119Z
+DTSTART:20251206T153100Z
+SUMMARY:⚸ □ 🌚 Lilith square Lunar Apogee
+DESCRIPTION:Lilith square Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♆ △ 🌚 Neptune trine Lunar Apogee::Neptune trine Lunar Apogee::20251207T033500
+DTSTAMP:20251028T083119Z
+DTSTART:20251207T033500Z
+SUMMARY:♆ △ 🌚 Neptune trine Lunar Apogee
+DESCRIPTION:Neptune trine Lunar Apogee
+END:VEVENT
+END:VCALENDAR

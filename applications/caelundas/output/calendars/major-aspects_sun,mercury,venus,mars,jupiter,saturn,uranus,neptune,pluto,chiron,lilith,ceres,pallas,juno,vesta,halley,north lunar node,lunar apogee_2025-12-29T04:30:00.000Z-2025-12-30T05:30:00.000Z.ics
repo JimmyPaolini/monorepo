@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:♂️ ⚹ ☊ Mars sextile North Lunar Node::Mars sextile North Lunar Node::20251229T140400
+DTSTAMP:20251028T091523Z
+DTSTART:20251229T140400Z
+SUMMARY:♂️ ⚹ ☊ Mars sextile North Lunar Node
+DESCRIPTION:Mars sextile North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:♄ □ 🌚 Saturn square Lunar Apogee::Saturn square Lunar Apogee::20251229T230400
+DTSTAMP:20251028T091523Z
+DTSTART:20251229T230400Z
+SUMMARY:♄ □ 🌚 Saturn square Lunar Apogee
+DESCRIPTION:Saturn square Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ □ ⚳ Venus square Ceres::Venus square Ceres::20251229T231300
+DTSTAMP:20251028T091523Z
+DTSTART:20251229T231300Z
+SUMMARY:♀️ □ ⚳ Venus square Ceres
+DESCRIPTION:Venus square Ceres
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ☌ 🌚 Mercury conjunct Lunar Apogee::Mercury conjunct Lunar Apogee::20251230T022000
+DTSTAMP:20251028T091523Z
+DTSTART:20251230T022000Z
+SUMMARY:☿ ☌ 🌚 Mercury conjunct Lunar Apogee
+DESCRIPTION:Mercury conjunct Lunar Apogee
+END:VEVENT
+END:VCALENDAR

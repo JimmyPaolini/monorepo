@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:♀️ ⬠ ☊ Venus quintile North Lunar Node::Venus quintile North Lunar Node::20250609T081400
+DTSTAMP:20251028T024814Z
+DTSTART:20250609T081400Z
+SUMMARY:♀️ ⬠ ☊ Venus quintile North Lunar Node
+DESCRIPTION:Venus quintile North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ± ⚸ Sun biquintile Lilith::Sun biquintile Lilith::20250609T130800
+DTSTAMP:20251028T024814Z
+DTSTART:20250609T130800Z
+SUMMARY:☀️ ± ⚸ Sun biquintile Lilith
+DESCRIPTION:Sun biquintile Lilith
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ♅ Mercury quintile Uranus::Mercury quintile Uranus::20250609T144200
+DTSTAMP:20251028T024814Z
+DTSTART:20250609T144200Z
+SUMMARY:☿ ⬠ ♅ Mercury quintile Uranus
+DESCRIPTION:Mercury quintile Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⬠ ♄ Venus quintile Saturn::Venus quintile Saturn::20250609T223100
+DTSTAMP:20251028T024814Z
+DTSTART:20250609T223100Z
+SUMMARY:♀️ ⬠ ♄ Venus quintile Saturn
+DESCRIPTION:Venus quintile Saturn
+END:VEVENT
+BEGIN:VEVENT
+UID:♂️ ± ♆ Mars biquintile Neptune::Mars biquintile Neptune::20250610T034200
+DTSTAMP:20251028T024814Z
+DTSTART:20250610T034200Z
+SUMMARY:♂️ ± ♆ Mars biquintile Neptune
+DESCRIPTION:Mars biquintile Neptune
+END:VEVENT
+END:VCALENDAR

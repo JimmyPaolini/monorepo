@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:⚸ ⚹ ⚶ Lilith sextile Vesta::Lilith sextile Vesta::20251027T055700
+DTSTAMP:20251028T071434Z
+DTSTART:20251027T055700Z
+SUMMARY:⚸ ⚹ ⚶ Lilith sextile Vesta
+DESCRIPTION:Lilith sextile Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ☌ 🌚 Mercury conjunct Lunar Apogee::Mercury conjunct Lunar Apogee::20251027T142600
+DTSTAMP:20251028T071434Z
+DTSTART:20251027T142600Z
+SUMMARY:☿ ☌ 🌚 Mercury conjunct Lunar Apogee
+DESCRIPTION:Mercury conjunct Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:⚴ ⚹ ⚵ Pallas sextile Juno::Pallas sextile Juno::20251027T194300
+DTSTAMP:20251028T071434Z
+DTSTART:20251027T194300Z
+SUMMARY:⚴ ⚹ ⚵ Pallas sextile Juno
+DESCRIPTION:Pallas sextile Juno
+END:VEVENT
+END:VCALENDAR

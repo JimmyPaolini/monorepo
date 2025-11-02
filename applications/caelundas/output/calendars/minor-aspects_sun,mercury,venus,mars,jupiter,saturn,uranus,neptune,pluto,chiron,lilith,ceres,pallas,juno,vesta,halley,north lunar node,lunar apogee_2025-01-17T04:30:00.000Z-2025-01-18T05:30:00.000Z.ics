@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:☀️ ⚻ ☄ Sun quincunx Halley::Sun quincunx Halley::20250117T095100
+DTSTAMP:20251027T222157Z
+DTSTART:20250117T095100Z
+SUMMARY:☀️ ⚻ ☄ Sun quincunx Halley
+DESCRIPTION:Sun quincunx Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:♄ ⚼ 🌚 Saturn sesquiquadrate Lunar Apogee::Saturn sesquiquadrate Lunar Apogee::20250117T132100
+DTSTAMP:20251027T222157Z
+DTSTART:20250117T132100Z
+SUMMARY:♄ ⚼ 🌚 Saturn sesquiquadrate Lunar Apogee
+DESCRIPTION:Saturn sesquiquadrate Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⚼ 🌚 Venus sesquiquadrate Lunar Apogee::Venus sesquiquadrate Lunar Apogee::20250117T214500
+DTSTAMP:20251027T222157Z
+DTSTART:20250117T214500Z
+SUMMARY:♀️ ⚼ 🌚 Venus sesquiquadrate Lunar Apogee
+DESCRIPTION:Venus sesquiquadrate Lunar Apogee
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee::Vesta quintile Lunar Apogee::20250309T192500
+DTSTAMP:20251027T235607Z
+DTSTART:20250309T192500Z
+SUMMARY:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee
+DESCRIPTION:Vesta quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ± ⚵ Sun biquintile Juno::Sun biquintile Juno::20250310T004800
+DTSTAMP:20251027T235607Z
+DTSTART:20250310T004800Z
+SUMMARY:☀️ ± ⚵ Sun biquintile Juno
+DESCRIPTION:Sun biquintile Juno
+END:VEVENT
+BEGIN:VEVENT
+UID:⚸ ⬠ ☊ Lilith quintile North Lunar Node::Lilith quintile North Lunar Node::20250310T020900
+DTSTAMP:20251027T235607Z
+DTSTART:20250310T020900Z
+SUMMARY:⚸ ⬠ ☊ Lilith quintile North Lunar Node
+DESCRIPTION:Lilith quintile North Lunar Node
+END:VEVENT
+END:VCALENDAR

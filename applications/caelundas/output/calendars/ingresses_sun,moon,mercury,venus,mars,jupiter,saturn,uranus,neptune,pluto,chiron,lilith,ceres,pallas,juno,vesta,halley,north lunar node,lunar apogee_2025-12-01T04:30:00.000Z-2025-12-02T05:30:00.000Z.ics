@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Decan Ingresses 🔟
+BEGIN:VEVENT
+UID:🌙 → ♈3️⃣ Moon ingress decan 3 Aries::Moon ingress decan 3 Aries::20251201T105300
+DTSTAMP:20251028T082137Z
+DTSTART:20251201T105300Z
+SUMMARY:🌙 → ♈3️⃣ Moon ingress decan 3 Aries
+DESCRIPTION:Moon ingress decan 3 Aries
+END:VEVENT
+BEGIN:VEVENT
+UID:⚵ → ♐︎3️⃣ Juno ingress decan 3 Sagittarius::Juno ingress decan 3 Sagittarius::20251201T162100
+DTSTAMP:20251028T082137Z
+DTSTART:20251201T162100Z
+SUMMARY:⚵ → ♐︎3️⃣ Juno ingress decan 3 Sagittarius
+DESCRIPTION:Juno ingress decan 3 Sagittarius
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ → ♐︎2️⃣ Sun ingress decan 2 Sagittarius::Sun ingress decan 2 Sagittarius::20251201T224500
+DTSTAMP:20251028T082137Z
+DTSTART:20251201T224500Z
+SUMMARY:☀️ → ♐︎2️⃣ Sun ingress decan 2 Sagittarius
+DESCRIPTION:Sun ingress decan 2 Sagittarius
+END:VEVENT
+BEGIN:VEVENT
+UID:♂️ → ♐︎3️⃣ Mars ingress decan 3 Sagittarius::Mars ingress decan 3 Sagittarius::20251201T224900
+DTSTAMP:20251028T082137Z
+DTSTART:20251201T224900Z
+SUMMARY:♂️ → ♐︎3️⃣ Mars ingress decan 3 Sagittarius
+DESCRIPTION:Mars ingress decan 3 Sagittarius
+END:VEVENT
+BEGIN:VEVENT
+UID:🌚 → ♐︎1️⃣ Lunar Apogee ingress decan 1 Sagittarius::Lunar Apogee ingress decan 1 Sagittarius::20251202T013200
+DTSTAMP:20251028T082137Z
+DTSTART:20251202T013200Z
+SUMMARY:🌚 → ♐︎1️⃣ Lunar Apogee ingress decan 1 Sagittarius
+DESCRIPTION:Lunar Apogee ingress decan 1 Sagittarius
+END:VEVENT
+END:VCALENDAR

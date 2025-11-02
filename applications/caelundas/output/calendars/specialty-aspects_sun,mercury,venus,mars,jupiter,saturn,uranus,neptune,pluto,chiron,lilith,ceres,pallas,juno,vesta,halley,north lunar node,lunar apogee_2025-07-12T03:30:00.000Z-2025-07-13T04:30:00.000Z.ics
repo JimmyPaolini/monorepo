@@ -1,0 +1,53 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☀️ ± ♆ Sun biquintile Neptune::Sun biquintile Neptune::20250712T060200
+DTSTAMP:20251028T035029Z
+DTSTART:20250712T060200Z
+SUMMARY:☀️ ± ♆ Sun biquintile Neptune
+DESCRIPTION:Sun biquintile Neptune
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ± ⚶ Sun biquintile Vesta::Sun biquintile Vesta::20250712T091100
+DTSTAMP:20251028T035029Z
+DTSTART:20250712T091100Z
+SUMMARY:☀️ ± ⚶ Sun biquintile Vesta
+DESCRIPTION:Sun biquintile Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:♄ ⬠ ⚴ Saturn quintile Pallas::Saturn quintile Pallas::20250712T123300
+DTSTAMP:20251028T035029Z
+DTSTART:20250712T123300Z
+SUMMARY:♄ ⬠ ⚴ Saturn quintile Pallas
+DESCRIPTION:Saturn quintile Pallas
+END:VEVENT
+BEGIN:VEVENT
+UID:♄ ± 🌚 Saturn biquintile Lunar Apogee::Saturn biquintile Lunar Apogee::20250712T145300
+DTSTAMP:20251028T035029Z
+DTSTART:20250712T145300Z
+SUMMARY:♄ ± 🌚 Saturn biquintile Lunar Apogee
+DESCRIPTION:Saturn biquintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♆ ± 🌚 Neptune biquintile Lunar Apogee::Neptune biquintile Lunar Apogee::20250712T162700
+DTSTAMP:20251028T035029Z
+DTSTART:20250712T162700Z
+SUMMARY:♆ ± 🌚 Neptune biquintile Lunar Apogee
+DESCRIPTION:Neptune biquintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ± 🌚 Sun biquintile Lunar Apogee::Sun biquintile Lunar Apogee::20250712T201200
+DTSTAMP:20251028T035029Z
+DTSTART:20250712T201200Z
+SUMMARY:☀️ ± 🌚 Sun biquintile Lunar Apogee
+DESCRIPTION:Sun biquintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♃ ± ☊ Jupiter biquintile North Lunar Node::Jupiter biquintile North Lunar Node::20250712T210600
+DTSTAMP:20251028T035029Z
+DTSTART:20250712T210600Z
+SUMMARY:♃ ± ☊ Jupiter biquintile North Lunar Node
+DESCRIPTION:Jupiter biquintile North Lunar Node
+END:VEVENT
+END:VCALENDAR

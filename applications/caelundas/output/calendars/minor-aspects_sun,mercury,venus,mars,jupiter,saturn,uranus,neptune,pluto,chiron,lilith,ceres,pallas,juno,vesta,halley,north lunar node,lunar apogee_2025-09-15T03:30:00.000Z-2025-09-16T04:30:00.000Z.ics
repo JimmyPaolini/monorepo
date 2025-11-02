@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:☀️ ⚺ 🌚 Sun semisextile Lunar Apogee::Sun semisextile Lunar Apogee::20250915T065200
+DTSTAMP:20251028T055401Z
+DTSTART:20250915T065200Z
+SUMMARY:☀️ ⚺ 🌚 Sun semisextile Lunar Apogee
+DESCRIPTION:Sun semisextile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⚼ ⚴ Sun sesquiquadrate Pallas::Sun sesquiquadrate Pallas::20250915T073100
+DTSTAMP:20251028T055401Z
+DTSTART:20250915T073100Z
+SUMMARY:☀️ ⚼ ⚴ Sun sesquiquadrate Pallas
+DESCRIPTION:Sun sesquiquadrate Pallas
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⚺ ♀️ Mercury semisextile Venus::Mercury semisextile Venus::20250916T025900
+DTSTAMP:20251028T055401Z
+DTSTART:20250916T025900Z
+SUMMARY:☿ ⚺ ♀️ Mercury semisextile Venus
+DESCRIPTION:Mercury semisextile Venus
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⚺ ♂️ Mercury semisextile Mars::Mercury semisextile Mars::20250916T030200
+DTSTAMP:20251028T055401Z
+DTSTART:20250916T030200Z
+SUMMARY:☿ ⚺ ♂️ Mercury semisextile Mars
+DESCRIPTION:Mercury semisextile Mars
+END:VEVENT
+END:VCALENDAR

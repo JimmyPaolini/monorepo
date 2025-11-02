@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♆ ⚼ 🌚 Neptune sesquiquadrate Lunar Apogee::Neptune sesquiquadrate Lunar Apogee::20250831T221200
+DTSTAMP:20251028T052516Z
+DTSTART:20250831T221200Z
+SUMMARY:♆ ⚼ 🌚 Neptune sesquiquadrate Lunar Apogee
+DESCRIPTION:Neptune sesquiquadrate Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♂️ ⚺ 🌚 Mars semisextile Lunar Apogee::Mars semisextile Lunar Apogee::20250901T035600
+DTSTAMP:20251028T052516Z
+DTSTART:20250901T035600Z
+SUMMARY:♂️ ⚺ 🌚 Mars semisextile Lunar Apogee
+DESCRIPTION:Mars semisextile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

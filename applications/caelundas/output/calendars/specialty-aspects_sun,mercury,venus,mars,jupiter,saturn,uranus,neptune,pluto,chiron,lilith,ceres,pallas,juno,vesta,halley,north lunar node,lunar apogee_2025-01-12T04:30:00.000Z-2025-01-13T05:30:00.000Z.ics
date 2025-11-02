@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:⚵ ± ☄ Juno biquintile Halley::Juno biquintile Halley::20250112T210400
+DTSTAMP:20251027T221238Z
+DTSTART:20250112T210400Z
+SUMMARY:⚵ ± ☄ Juno biquintile Halley
+DESCRIPTION:Juno biquintile Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ± ☄ Venus biquintile Halley::Venus biquintile Halley::20250113T002500
+DTSTAMP:20251027T221238Z
+DTSTART:20250113T002500Z
+SUMMARY:♀️ ± ☄ Venus biquintile Halley
+DESCRIPTION:Venus biquintile Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ± ⚵ Venus biquintile Juno::Venus biquintile Juno::20250113T021900
+DTSTAMP:20251027T221238Z
+DTSTART:20250113T021900Z
+SUMMARY:♀️ ± ⚵ Venus biquintile Juno
+DESCRIPTION:Venus biquintile Juno
+END:VEVENT
+END:VCALENDAR

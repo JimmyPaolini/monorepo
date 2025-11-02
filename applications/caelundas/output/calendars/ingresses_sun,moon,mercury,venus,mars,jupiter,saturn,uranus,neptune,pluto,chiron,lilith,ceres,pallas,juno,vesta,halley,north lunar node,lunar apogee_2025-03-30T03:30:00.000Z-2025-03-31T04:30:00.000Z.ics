@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Decan Ingresses 🔟
+BEGIN:VEVENT
+UID:🌙 → ♈3️⃣ Moon ingress decan 3 Aries::Moon ingress decan 3 Aries::20250330T042500
+DTSTAMP:20251028T003501Z
+DTSTART:20250330T042500Z
+SUMMARY:🌙 → ♈3️⃣ Moon ingress decan 3 Aries
+DESCRIPTION:Moon ingress decan 3 Aries
+END:VEVENT
+BEGIN:VEVENT
+UID:🌚 → ♎︎2️⃣ Lunar Apogee ingress decan 2 Libra::Lunar Apogee ingress decan 2 Libra::20250330T102100
+DTSTAMP:20251028T003501Z
+DTSTART:20250330T102100Z
+SUMMARY:🌚 → ♎︎2️⃣ Lunar Apogee ingress decan 2 Libra
+DESCRIPTION:Lunar Apogee ingress decan 2 Libra
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ → ♈2️⃣ Sun ingress decan 2 Aries::Sun ingress decan 2 Aries::20250330T111300
+DTSTAMP:20251028T003501Z
+DTSTART:20250330T111300Z
+SUMMARY:☀️ → ♈2️⃣ Sun ingress decan 2 Aries
+DESCRIPTION:Sun ingress decan 2 Aries
+END:VEVENT
+END:VCALENDAR

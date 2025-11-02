@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:☿ ⚼ ♆ Mercury sesquiquadrate Neptune::Mercury sesquiquadrate Neptune::20251017T053200
+DTSTAMP:20251028T065536Z
+DTSTART:20251017T053200Z
+SUMMARY:☿ ⚼ ♆ Mercury sesquiquadrate Neptune
+DESCRIPTION:Mercury sesquiquadrate Neptune
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⚼ ⚸ Venus sesquiquadrate Lilith::Venus sesquiquadrate Lilith::20251017T053800
+DTSTAMP:20251028T065536Z
+DTSTART:20251017T053800Z
+SUMMARY:♀️ ⚼ ⚸ Venus sesquiquadrate Lilith
+DESCRIPTION:Venus sesquiquadrate Lilith
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⚺ 🌚 Venus semisextile Lunar Apogee::Venus semisextile Lunar Apogee::20251017T063900
+DTSTAMP:20251028T065536Z
+DTSTART:20251017T063900Z
+SUMMARY:♀️ ⚺ 🌚 Venus semisextile Lunar Apogee
+DESCRIPTION:Venus semisextile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:⚵ ⚺ 🌚 Juno semisextile Lunar Apogee::Juno semisextile Lunar Apogee::20251017T100300
+DTSTAMP:20251028T065536Z
+DTSTART:20251017T100300Z
+SUMMARY:⚵ ⚺ 🌚 Juno semisextile Lunar Apogee
+DESCRIPTION:Juno semisextile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⚺ ⚶ Mercury semisextile Vesta::Mercury semisextile Vesta::20251017T122400
+DTSTAMP:20251028T065536Z
+DTSTART:20251017T122400Z
+SUMMARY:☿ ⚺ ⚶ Mercury semisextile Vesta
+DESCRIPTION:Mercury semisextile Vesta
+END:VEVENT
+END:VCALENDAR

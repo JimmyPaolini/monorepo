@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Decan Ingresses 🔟
+BEGIN:VEVENT
+UID:🌚 → ♏︎2️⃣ Lunar Apogee ingress decan 2 Scorpio::Lunar Apogee ingress decan 2 Scorpio::20250828T064300
+DTSTAMP:20251028T051930Z
+DTSTART:20250828T064300Z
+SUMMARY:🌚 → ♏︎2️⃣ Lunar Apogee ingress decan 2 Scorpio
+DESCRIPTION:Lunar Apogee ingress decan 2 Scorpio
+END:VEVENT
+BEGIN:VEVENT
+UID:🌙 → ♏︎2️⃣ Moon ingress decan 2 Scorpio::Moon ingress decan 2 Scorpio::20250828T213700
+DTSTAMP:20251028T051930Z
+DTSTART:20250828T213700Z
+SUMMARY:🌙 → ♏︎2️⃣ Moon ingress decan 2 Scorpio
+DESCRIPTION:Moon ingress decan 2 Scorpio
+END:VEVENT
+END:VCALENDAR

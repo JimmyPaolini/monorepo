@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Planetary Phases 🌓
+BEGIN:VEVENT
+UID:☿🔆 Mercury Western Brightest::Mercury Western Brightest::20250421T084100
+DTSTAMP:20251028T011601Z
+DTSTART:20250421T084100Z
+SUMMARY:☿🔆 Mercury Western Brightest
+DESCRIPTION:Mercury Western Brightest
+END:VEVENT
+BEGIN:VEVENT
+UID:☿⬅️📏 Mercury Western Elongation::Mercury Western Elongation::20250421T150600
+DTSTAMP:20251028T011601Z
+DTSTART:20250421T150600Z
+SUMMARY:☿⬅️📏 Mercury Western Elongation
+DESCRIPTION:Mercury Western Elongation
+END:VEVENT
+END:VCALENDAR

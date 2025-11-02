@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☀️ ± ⚸ Sun biquintile Lilith::Sun biquintile Lilith::20251025T042400
+DTSTAMP:20251028T071044Z
+DTSTART:20251025T042400Z
+SUMMARY:☀️ ± ⚸ Sun biquintile Lilith
+DESCRIPTION:Sun biquintile Lilith
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ± ♄ Sun biquintile Saturn::Sun biquintile Saturn::20251025T071300
+DTSTAMP:20251028T071044Z
+DTSTART:20251025T071300Z
+SUMMARY:☀️ ± ♄ Sun biquintile Saturn
+DESCRIPTION:Sun biquintile Saturn
+END:VEVENT
+BEGIN:VEVENT
+UID:⚷ ± 🌚 Chiron biquintile Lunar Apogee::Chiron biquintile Lunar Apogee::20251025T150600
+DTSTAMP:20251028T071044Z
+DTSTART:20251025T150600Z
+SUMMARY:⚷ ± 🌚 Chiron biquintile Lunar Apogee
+DESCRIPTION:Chiron biquintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ⚴ Mercury quintile Pallas::Mercury quintile Pallas::20251025T163400
+DTSTAMP:20251028T071044Z
+DTSTART:20251025T163400Z
+SUMMARY:☿ ⬠ ⚴ Mercury quintile Pallas
+DESCRIPTION:Mercury quintile Pallas
+END:VEVENT
+BEGIN:VEVENT
+UID:♄ ⬠ ⚸ Saturn quintile Lilith::Saturn quintile Lilith::20251025T195000
+DTSTAMP:20251028T071044Z
+DTSTART:20251025T195000Z
+SUMMARY:♄ ⬠ ⚸ Saturn quintile Lilith
+DESCRIPTION:Saturn quintile Lilith
+END:VEVENT
+END:VCALENDAR

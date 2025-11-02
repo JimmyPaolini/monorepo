@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:⚴ □ 🌚 Pallas square Lunar Apogee::Pallas square Lunar Apogee::20250217T164700
+DTSTAMP:20251027T231920Z
+DTSTART:20250217T164700Z
+SUMMARY:⚴ □ 🌚 Pallas square Lunar Apogee
+DESCRIPTION:Pallas square Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ □ ⚵ Sun square Juno::Sun square Juno::20250218T032800
+DTSTAMP:20251027T231920Z
+DTSTART:20250218T032800Z
+SUMMARY:☀️ □ ⚵ Sun square Juno
+DESCRIPTION:Sun square Juno
+END:VEVENT
+END:VCALENDAR

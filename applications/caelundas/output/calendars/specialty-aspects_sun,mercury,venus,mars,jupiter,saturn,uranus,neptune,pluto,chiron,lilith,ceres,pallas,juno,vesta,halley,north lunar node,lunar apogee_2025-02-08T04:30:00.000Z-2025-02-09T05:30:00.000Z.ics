@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☄ ± 🌚 Halley biquintile Lunar Apogee::Halley biquintile Lunar Apogee::20250208T095600
+DTSTAMP:20251027T230238Z
+DTSTART:20250208T095600Z
+SUMMARY:☄ ± 🌚 Halley biquintile Lunar Apogee
+DESCRIPTION:Halley biquintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♇ ± 🌚 Pluto biquintile Lunar Apogee::Pluto biquintile Lunar Apogee::20250208T130800
+DTSTAMP:20251027T230238Z
+DTSTART:20250208T130800Z
+SUMMARY:♇ ± 🌚 Pluto biquintile Lunar Apogee
+DESCRIPTION:Pluto biquintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♅ ± 🌚 Uranus biquintile Lunar Apogee::Uranus biquintile Lunar Apogee::20250209T004100
+DTSTAMP:20251027T230238Z
+DTSTART:20250209T004100Z
+SUMMARY:♅ ± 🌚 Uranus biquintile Lunar Apogee
+DESCRIPTION:Uranus biquintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:⚵ ⬠ 🌚 Juno quintile Lunar Apogee::Juno quintile Lunar Apogee::20250209T042800
+DTSTAMP:20251027T230238Z
+DTSTART:20250209T042800Z
+SUMMARY:⚵ ⬠ 🌚 Juno quintile Lunar Apogee
+DESCRIPTION:Juno quintile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

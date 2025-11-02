@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☿ ± ☊ Mercury biquintile North Lunar Node::Mercury biquintile North Lunar Node::20251028T043600
+DTSTAMP:20251028T071629Z
+DTSTART:20251028T043600Z
+SUMMARY:☿ ± ☊ Mercury biquintile North Lunar Node
+DESCRIPTION:Mercury biquintile North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:♃ ⬠ ☄ Jupiter quintile Halley::Jupiter quintile Halley::20251028T131600
+DTSTAMP:20251028T071629Z
+DTSTART:20251028T131600Z
+SUMMARY:♃ ⬠ ☄ Jupiter quintile Halley
+DESCRIPTION:Jupiter quintile Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⬠ ⚵ Sun quintile Juno::Sun quintile Juno::20251028T220700
+DTSTAMP:20251028T071629Z
+DTSTART:20251028T220700Z
+SUMMARY:☀️ ⬠ ⚵ Sun quintile Juno
+DESCRIPTION:Sun quintile Juno
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ± ♆ Sun biquintile Neptune::Sun biquintile Neptune::20251029T004300
+DTSTAMP:20251028T071629Z
+DTSTART:20251029T004300Z
+SUMMARY:☀️ ± ♆ Sun biquintile Neptune
+DESCRIPTION:Sun biquintile Neptune
+END:VEVENT
+END:VCALENDAR

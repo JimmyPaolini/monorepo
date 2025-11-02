@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:♀️ ± ♄ Venus biquintile Saturn::Venus biquintile Saturn::20250816T095000
+DTSTAMP:20251028T045644Z
+DTSTART:20250816T095000Z
+SUMMARY:♀️ ± ♄ Venus biquintile Saturn
+DESCRIPTION:Venus biquintile Saturn
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⬠ 🌚 Sun quintile Lunar Apogee::Sun quintile Lunar Apogee::20250816T141800
+DTSTAMP:20251028T045644Z
+DTSTART:20250816T141800Z
+SUMMARY:☀️ ⬠ 🌚 Sun quintile Lunar Apogee
+DESCRIPTION:Sun quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♅ ± ⚴ Uranus biquintile Pallas::Uranus biquintile Pallas::20250816T221800
+DTSTAMP:20251028T045644Z
+DTSTART:20250816T221800Z
+SUMMARY:♅ ± ⚴ Uranus biquintile Pallas
+DESCRIPTION:Uranus biquintile Pallas
+END:VEVENT
+BEGIN:VEVENT
+UID:♄ ± 🌚 Saturn biquintile Lunar Apogee::Saturn biquintile Lunar Apogee::20250816T225100
+DTSTAMP:20251028T045644Z
+DTSTART:20250816T225100Z
+SUMMARY:♄ ± 🌚 Saturn biquintile Lunar Apogee
+DESCRIPTION:Saturn biquintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ± ♆ Venus biquintile Neptune::Venus biquintile Neptune::20250817T002600
+DTSTAMP:20251028T045644Z
+DTSTART:20250817T002600Z
+SUMMARY:♀️ ± ♆ Venus biquintile Neptune
+DESCRIPTION:Venus biquintile Neptune
+END:VEVENT
+END:VCALENDAR

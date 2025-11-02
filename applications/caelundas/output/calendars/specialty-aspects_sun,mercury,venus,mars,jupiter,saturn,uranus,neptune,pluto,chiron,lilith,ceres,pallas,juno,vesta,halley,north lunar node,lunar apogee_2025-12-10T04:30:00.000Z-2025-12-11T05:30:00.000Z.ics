@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:♂️ ⬠ 🌚 Mars quintile Lunar Apogee::Mars quintile Lunar Apogee::20251210T141600
+DTSTAMP:20251028T083901Z
+DTSTART:20251210T141600Z
+SUMMARY:♂️ ⬠ 🌚 Mars quintile Lunar Apogee
+DESCRIPTION:Mars quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:⚵ ⬠ 🌚 Juno quintile Lunar Apogee::Juno quintile Lunar Apogee::20251210T142300
+DTSTAMP:20251028T083901Z
+DTSTART:20251210T142300Z
+SUMMARY:⚵ ⬠ 🌚 Juno quintile Lunar Apogee
+DESCRIPTION:Juno quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♇ ⬠ 🌚 Pluto quintile Lunar Apogee::Pluto quintile Lunar Apogee::20251210T185000
+DTSTAMP:20251028T083901Z
+DTSTART:20251210T185000Z
+SUMMARY:♇ ⬠ 🌚 Pluto quintile Lunar Apogee
+DESCRIPTION:Pluto quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ± ⚷ Mercury biquintile Chiron::Mercury biquintile Chiron::20251210T233700
+DTSTAMP:20251028T083901Z
+DTSTART:20251210T233700Z
+SUMMARY:☿ ± ⚷ Mercury biquintile Chiron
+DESCRIPTION:Mercury biquintile Chiron
+END:VEVENT
+BEGIN:VEVENT
+UID:♄ ⬠ ⚶ Saturn quintile Vesta::Saturn quintile Vesta::20251211T022300
+DTSTAMP:20251028T083901Z
+DTSTART:20251211T022300Z
+SUMMARY:♄ ⬠ ⚶ Saturn quintile Vesta
+DESCRIPTION:Saturn quintile Vesta
+END:VEVENT
+END:VCALENDAR

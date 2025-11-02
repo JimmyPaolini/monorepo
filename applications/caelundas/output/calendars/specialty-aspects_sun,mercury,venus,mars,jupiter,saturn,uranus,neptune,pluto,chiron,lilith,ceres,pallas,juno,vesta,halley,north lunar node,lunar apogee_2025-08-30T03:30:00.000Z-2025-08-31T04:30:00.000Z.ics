@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☿ ± ♄ Mercury biquintile Saturn::Mercury biquintile Saturn::20250830T100900
+DTSTAMP:20251028T052321Z
+DTSTART:20250830T100900Z
+SUMMARY:☿ ± ♄ Mercury biquintile Saturn
+DESCRIPTION:Mercury biquintile Saturn
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ± ⚶ Venus biquintile Vesta::Venus biquintile Vesta::20250830T143500
+DTSTAMP:20251028T052321Z
+DTSTART:20250830T143500Z
+SUMMARY:♀️ ± ⚶ Venus biquintile Vesta
+DESCRIPTION:Venus biquintile Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:♂️ ⬠ 🌚 Mars quintile Lunar Apogee::Mars quintile Lunar Apogee::20250830T153100
+DTSTAMP:20251028T052321Z
+DTSTART:20250830T153100Z
+SUMMARY:♂️ ⬠ 🌚 Mars quintile Lunar Apogee
+DESCRIPTION:Mars quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ± ♇ Sun biquintile Pluto::Sun biquintile Pluto::20250830T222000
+DTSTAMP:20251028T052321Z
+DTSTART:20250830T222000Z
+SUMMARY:☀️ ± ♇ Sun biquintile Pluto
+DESCRIPTION:Sun biquintile Pluto
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ± ♆ Mercury biquintile Neptune::Mercury biquintile Neptune::20250831T023200
+DTSTAMP:20251028T052321Z
+DTSTART:20250831T023200Z
+SUMMARY:☿ ± ♆ Mercury biquintile Neptune
+DESCRIPTION:Mercury biquintile Neptune
+END:VEVENT
+END:VCALENDAR

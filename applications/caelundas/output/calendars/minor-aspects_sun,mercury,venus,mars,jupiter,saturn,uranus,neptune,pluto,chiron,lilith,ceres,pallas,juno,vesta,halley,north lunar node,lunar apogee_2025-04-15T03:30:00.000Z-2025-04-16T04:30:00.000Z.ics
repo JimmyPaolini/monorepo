@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:☀️ ⚺ ♅ Sun semisextile Uranus::Sun semisextile Uranus::20250415T042000
+DTSTAMP:20251028T010449Z
+DTSTART:20250415T042000Z
+SUMMARY:☀️ ⚺ ♅ Sun semisextile Uranus
+DESCRIPTION:Sun semisextile Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⚼ 🌚 Venus sesquiquadrate Lunar Apogee::Venus sesquiquadrate Lunar Apogee::20250415T220900
+DTSTAMP:20251028T010449Z
+DTSTART:20250415T220900Z
+SUMMARY:♀️ ⚼ 🌚 Venus sesquiquadrate Lunar Apogee
+DESCRIPTION:Venus sesquiquadrate Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⚺ ♄ Sun semisextile Saturn::Sun semisextile Saturn::20250415T233200
+DTSTAMP:20251028T010449Z
+DTSTART:20250415T233200Z
+SUMMARY:☀️ ⚺ ♄ Sun semisextile Saturn
+DESCRIPTION:Sun semisextile Saturn
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Decan Ingresses 🔟
+BEGIN:VEVENT
+UID:☀️ → ♏︎2️⃣ Sun ingress decan 2 Scorpio::Sun ingress decan 2 Scorpio::20251102T041700
+DTSTAMP:20251028T072607Z
+DTSTART:20251102T041700Z
+SUMMARY:☀️ → ♏︎2️⃣ Sun ingress decan 2 Scorpio
+DESCRIPTION:Sun ingress decan 2 Scorpio
+END:VEVENT
+BEGIN:VEVENT
+UID:⚵ → ♐︎2️⃣ Juno ingress decan 2 Sagittarius::Juno ingress decan 2 Sagittarius::20251102T134400
+DTSTAMP:20251028T072607Z
+DTSTART:20251102T134400Z
+SUMMARY:⚵ → ♐︎2️⃣ Juno ingress decan 2 Sagittarius
+DESCRIPTION:Juno ingress decan 2 Sagittarius
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:☿ □ ♂️ Mercury square Mars::Mercury square Mars::20250518T043600
+DTSTAMP:20251028T020627Z
+DTSTART:20250518T043600Z
+SUMMARY:☿ □ ♂️ Mercury square Mars
+DESCRIPTION:Mercury square Mars
+END:VEVENT
+BEGIN:VEVENT
+UID:♃ ⚹ ⚷ Jupiter sextile Chiron::Jupiter sextile Chiron::20250518T134500
+DTSTAMP:20251028T020627Z
+DTSTART:20250518T134500Z
+SUMMARY:♃ ⚹ ⚷ Jupiter sextile Chiron
+DESCRIPTION:Jupiter sextile Chiron
+END:VEVENT
+BEGIN:VEVENT
+UID:⚸ □ 🌚 Lilith square Lunar Apogee::Lilith square Lunar Apogee::20250518T152300
+DTSTAMP:20251028T020627Z
+DTSTART:20250518T152300Z
+SUMMARY:⚸ □ 🌚 Lilith square Lunar Apogee
+DESCRIPTION:Lilith square Lunar Apogee
+END:VEVENT
+END:VCALENDAR

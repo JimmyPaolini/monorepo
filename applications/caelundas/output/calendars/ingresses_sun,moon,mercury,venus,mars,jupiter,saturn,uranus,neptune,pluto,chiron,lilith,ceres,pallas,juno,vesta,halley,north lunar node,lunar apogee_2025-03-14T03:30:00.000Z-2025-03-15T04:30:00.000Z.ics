@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Sign Ingresses 🪧
+BEGIN:VEVENT
+UID:🌙 → ♎︎ Moon ingress Libra::Moon ingress Libra::20250314T185900
+DTSTAMP:20251028T000525Z
+DTSTART:20250314T185900Z
+SUMMARY:🌙 → ♎︎ Moon ingress Libra
+DESCRIPTION:Moon ingress Libra
+END:VEVENT
+BEGIN:VEVENT
+UID:🌚 → ♏︎ Lunar Apogee ingress Scorpio::Lunar Apogee ingress Scorpio::20250315T011700
+DTSTAMP:20251028T000525Z
+DTSTART:20250315T011700Z
+SUMMARY:🌚 → ♏︎ Lunar Apogee ingress Scorpio
+DESCRIPTION:Lunar Apogee ingress Scorpio
+END:VEVENT
+END:VCALENDAR

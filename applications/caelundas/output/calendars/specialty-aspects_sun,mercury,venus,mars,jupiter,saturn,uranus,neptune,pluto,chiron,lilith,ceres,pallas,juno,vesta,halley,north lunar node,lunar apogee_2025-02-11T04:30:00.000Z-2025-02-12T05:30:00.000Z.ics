@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☿ ± ♂️ Mercury biquintile Mars::Mercury biquintile Mars::20250211T054000
+DTSTAMP:20251027T230811Z
+DTSTART:20250211T054000Z
+SUMMARY:☿ ± ♂️ Mercury biquintile Mars
+DESCRIPTION:Mercury biquintile Mars
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ☊ Mercury quintile North Lunar Node::Mercury quintile North Lunar Node::20250211T133800
+DTSTAMP:20251027T230811Z
+DTSTART:20250211T133800Z
+SUMMARY:☿ ⬠ ☊ Mercury quintile North Lunar Node
+DESCRIPTION:Mercury quintile North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ♀️ Mercury quintile Venus::Mercury quintile Venus::20250211T170500
+DTSTAMP:20251027T230811Z
+DTSTART:20250211T170500Z
+SUMMARY:☿ ⬠ ♀️ Mercury quintile Venus
+DESCRIPTION:Mercury quintile Venus
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ± ♃ Sun biquintile Jupiter::Sun biquintile Jupiter::20250211T203600
+DTSTAMP:20251027T230811Z
+DTSTART:20250211T203600Z
+SUMMARY:☀️ ± ♃ Sun biquintile Jupiter
+DESCRIPTION:Sun biquintile Jupiter
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ♆ Mercury quintile Neptune::Mercury quintile Neptune::20250212T014300
+DTSTAMP:20251027T230811Z
+DTSTART:20250212T014300Z
+SUMMARY:☿ ⬠ ♆ Mercury quintile Neptune
+DESCRIPTION:Mercury quintile Neptune
+END:VEVENT
+END:VCALENDAR

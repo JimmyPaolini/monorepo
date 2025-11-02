@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:☿ ⚺ ♃ Mercury semisextile Jupiter::Mercury semisextile Jupiter::20250524T071700
+DTSTAMP:20251028T021743Z
+DTSTART:20250524T071700Z
+SUMMARY:☿ ⚺ ♃ Mercury semisextile Jupiter
+DESCRIPTION:Mercury semisextile Jupiter
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ∠ ☄ Mercury semisquare Halley::Mercury semisquare Halley::20250524T150300
+DTSTAMP:20251028T021743Z
+DTSTART:20250524T150300Z
+SUMMARY:☿ ∠ ☄ Mercury semisquare Halley
+DESCRIPTION:Mercury semisquare Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:⚴ ⚺ ☊ Pallas semisextile North Lunar Node::Pallas semisextile North Lunar Node::20250525T033900
+DTSTAMP:20251028T021743Z
+DTSTART:20250525T033900Z
+SUMMARY:⚴ ⚺ ☊ Pallas semisextile North Lunar Node
+DESCRIPTION:Pallas semisextile North Lunar Node
+END:VEVENT
+END:VCALENDAR

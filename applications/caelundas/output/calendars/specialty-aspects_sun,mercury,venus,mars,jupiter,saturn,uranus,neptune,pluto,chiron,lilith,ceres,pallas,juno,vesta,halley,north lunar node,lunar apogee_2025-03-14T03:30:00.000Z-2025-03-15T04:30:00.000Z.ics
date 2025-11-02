@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:♄ ± 🌚 Saturn biquintile Lunar Apogee::Saturn biquintile Lunar Apogee::20250314T091800
+DTSTAMP:20251028T000525Z
+DTSTART:20250314T091800Z
+SUMMARY:♄ ± 🌚 Saturn biquintile Lunar Apogee
+DESCRIPTION:Saturn biquintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:⚵ ⬠ 🌚 Juno quintile Lunar Apogee::Juno quintile Lunar Apogee::20250314T164200
+DTSTAMP:20251028T000525Z
+DTSTART:20250314T164200Z
+SUMMARY:⚵ ⬠ 🌚 Juno quintile Lunar Apogee
+DESCRIPTION:Juno quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⬠ ♇ Sun quintile Pluto::Sun quintile Pluto::20250315T001200
+DTSTAMP:20251028T000525Z
+DTSTART:20250315T001200Z
+SUMMARY:☀️ ⬠ ♇ Sun quintile Pluto
+DESCRIPTION:Sun quintile Pluto
+END:VEVENT
+BEGIN:VEVENT
+UID:♅ ⬠ ⚷ Uranus quintile Chiron::Uranus quintile Chiron::20250315T023400
+DTSTAMP:20251028T000525Z
+DTSTART:20250315T023400Z
+SUMMARY:♅ ⬠ ⚷ Uranus quintile Chiron
+DESCRIPTION:Uranus quintile Chiron
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:⚷ ⚻ 🌚 Chiron quincunx Lunar Apogee::Chiron quincunx Lunar Apogee::20251103T095300
+DTSTAMP:20251028T072802Z
+DTSTART:20251103T095300Z
+SUMMARY:⚷ ⚻ 🌚 Chiron quincunx Lunar Apogee
+DESCRIPTION:Chiron quincunx Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:⚶ ⚺ 🌚 Vesta semisextile Lunar Apogee::Vesta semisextile Lunar Apogee::20251103T113700
+DTSTAMP:20251028T072802Z
+DTSTART:20251103T113700Z
+SUMMARY:⚶ ⚺ 🌚 Vesta semisextile Lunar Apogee
+DESCRIPTION:Vesta semisextile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⚻ ♄ Venus quincunx Saturn::Venus quincunx Saturn::20251103T115700
+DTSTAMP:20251028T072802Z
+DTSTART:20251103T115700Z
+SUMMARY:♀️ ⚻ ♄ Venus quincunx Saturn
+DESCRIPTION:Venus quincunx Saturn
+END:VEVENT
+BEGIN:VEVENT
+UID:⚴ ∠ ⚶ Pallas semisquare Vesta::Pallas semisquare Vesta::20251103T160800
+DTSTAMP:20251028T072802Z
+DTSTART:20251103T160800Z
+SUMMARY:⚴ ∠ ⚶ Pallas semisquare Vesta
+DESCRIPTION:Pallas semisquare Vesta
+END:VEVENT
+END:VCALENDAR

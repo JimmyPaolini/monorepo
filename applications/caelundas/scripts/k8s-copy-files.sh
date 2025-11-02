@@ -1,12 +1,8 @@
 #!/bin/bash
 
-set -e
+source scripts/utilities.sh
 
-source "applications/caelundas/scripts/utilities.sh"
-
-validate_monorepo_root
-
-source "applications/caelundas/.env"
+source applications/caelundas/scripts/utilities.sh
 
 readonly OUTPUT_DIR="applications/caelundas/${OUTPUT_DIR#./}"
 

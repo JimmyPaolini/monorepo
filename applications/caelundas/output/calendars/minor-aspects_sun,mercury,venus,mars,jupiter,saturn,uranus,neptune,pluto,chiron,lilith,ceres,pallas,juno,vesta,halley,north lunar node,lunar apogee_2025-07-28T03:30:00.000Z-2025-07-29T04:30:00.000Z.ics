@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:☿ ∠ ♀️ Mercury semisquare Venus::Mercury semisquare Venus::20250728T072000
+DTSTAMP:20251028T042052Z
+DTSTART:20250728T072000Z
+SUMMARY:☿ ∠ ♀️ Mercury semisquare Venus
+DESCRIPTION:Mercury semisquare Venus
+END:VEVENT
+BEGIN:VEVENT
+UID:♆ ⚼ ⚵ Neptune sesquiquadrate Juno::Neptune sesquiquadrate Juno::20250728T181300
+DTSTAMP:20251028T042052Z
+DTSTART:20250728T181300Z
+SUMMARY:♆ ⚼ ⚵ Neptune sesquiquadrate Juno
+DESCRIPTION:Neptune sesquiquadrate Juno
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⚼ ⚶ Venus sesquiquadrate Vesta::Venus sesquiquadrate Vesta::20250728T211500
+DTSTAMP:20251028T042052Z
+DTSTART:20250728T211500Z
+SUMMARY:♀️ ⚼ ⚶ Venus sesquiquadrate Vesta
+DESCRIPTION:Venus sesquiquadrate Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⚺ ♃ Mercury semisextile Jupiter::Mercury semisextile Jupiter::20250729T034400
+DTSTAMP:20251028T042052Z
+DTSTART:20250729T034400Z
+SUMMARY:☿ ⚺ ♃ Mercury semisextile Jupiter
+DESCRIPTION:Mercury semisextile Jupiter
+END:VEVENT
+END:VCALENDAR

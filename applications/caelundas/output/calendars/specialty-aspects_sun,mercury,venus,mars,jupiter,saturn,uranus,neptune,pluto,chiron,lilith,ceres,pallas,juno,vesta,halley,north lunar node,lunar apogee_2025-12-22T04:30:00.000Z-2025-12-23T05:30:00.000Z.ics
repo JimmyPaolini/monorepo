@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:♇ ⬠ 🌚 Pluto quintile Lunar Apogee::Pluto quintile Lunar Apogee::20251222T133200
+DTSTAMP:20251028T090204Z
+DTSTART:20251222T133200Z
+SUMMARY:♇ ⬠ 🌚 Pluto quintile Lunar Apogee
+DESCRIPTION:Pluto quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♆ ± 🌚 Neptune biquintile Lunar Apogee::Neptune biquintile Lunar Apogee::20251222T153300
+DTSTAMP:20251028T090204Z
+DTSTART:20251222T153300Z
+SUMMARY:♆ ± 🌚 Neptune biquintile Lunar Apogee
+DESCRIPTION:Neptune biquintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:⚶ ⬠ ☊ Vesta quintile North Lunar Node::Vesta quintile North Lunar Node::20251223T013700
+DTSTAMP:20251028T090204Z
+DTSTART:20251223T013700Z
+SUMMARY:⚶ ⬠ ☊ Vesta quintile North Lunar Node
+DESCRIPTION:Vesta quintile North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee::Vesta quintile Lunar Apogee::20251223T022600
+DTSTAMP:20251028T090204Z
+DTSTART:20251223T022600Z
+SUMMARY:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee
+DESCRIPTION:Vesta quintile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

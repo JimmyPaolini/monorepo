@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Peak Ingresses ⛰️
+BEGIN:VEVENT
+UID:♂️ → ♋︎⛰️ Mars peak ingress Cancer::Mars peak ingress Cancer::20250106T104500
+DTSTAMP:20251027T220127Z
+DTSTART:20250106T104500Z
+SUMMARY:♂️ → ♋︎⛰️ Mars peak ingress Cancer
+DESCRIPTION:Mars peak ingress Cancer
+END:VEVENT
+BEGIN:VEVENT
+UID:🌙 → ♈⛰️ Moon peak ingress Aries::Moon peak ingress Aries::20250106T204000
+DTSTAMP:20251027T220127Z
+DTSTART:20250106T204000Z
+SUMMARY:🌙 → ♈⛰️ Moon peak ingress Aries
+DESCRIPTION:Moon peak ingress Aries
+END:VEVENT
+BEGIN:VEVENT
+UID:♄ → ♓︎⛰️ Saturn peak ingress Pisces::Saturn peak ingress Pisces::20250106T234000
+DTSTAMP:20251027T220127Z
+DTSTART:20250106T234000Z
+SUMMARY:♄ → ♓︎⛰️ Saturn peak ingress Pisces
+DESCRIPTION:Saturn peak ingress Pisces
+END:VEVENT
+END:VCALENDAR

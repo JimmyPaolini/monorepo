@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:♂️ ⚹ ⚴ Mars sextile Pallas::Mars sextile Pallas::20251121T083100
+DTSTAMP:20251028T080231Z
+DTSTART:20251121T083100Z
+SUMMARY:♂️ ⚹ ⚴ Mars sextile Pallas
+DESCRIPTION:Mars sextile Pallas
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ △ ♆ Sun trine Neptune::Sun trine Neptune::20251121T130600
+DTSTAMP:20251028T080231Z
+DTSTART:20251121T130600Z
+SUMMARY:☀️ △ ♆ Sun trine Neptune
+DESCRIPTION:Sun trine Neptune
+END:VEVENT
+BEGIN:VEVENT
+UID:♇ ⚹ 🌚 Pluto sextile Lunar Apogee::Pluto sextile Lunar Apogee::20251121T204000
+DTSTAMP:20251028T080231Z
+DTSTART:20251121T204000Z
+SUMMARY:♇ ⚹ 🌚 Pluto sextile Lunar Apogee
+DESCRIPTION:Pluto sextile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☄ □ 🌚 Halley square Lunar Apogee::Halley square Lunar Apogee::20251121T230600
+DTSTAMP:20251028T080231Z
+DTSTART:20251121T230600Z
+SUMMARY:☄ □ 🌚 Halley square Lunar Apogee
+DESCRIPTION:Halley square Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ □ ⚸ Mercury square Lilith::Mercury square Lilith::20251122T023700
+DTSTAMP:20251028T080231Z
+DTSTART:20251122T023700Z
+SUMMARY:☿ □ ⚸ Mercury square Lilith
+DESCRIPTION:Mercury square Lilith
+END:VEVENT
+END:VCALENDAR

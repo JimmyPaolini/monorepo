@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Sign Ingresses 🪧
+BEGIN:VEVENT
+UID:♂️ → ♌︎ Mars ingress Leo::Mars ingress Leo::20250418T042100
+DTSTAMP:20251028T011024Z
+DTSTART:20250418T042100Z
+SUMMARY:♂️ → ♌︎ Mars ingress Leo
+DESCRIPTION:Mars ingress Leo
+END:VEVENT
+BEGIN:VEVENT
+UID:🌙 → ♑︎ Moon ingress Capricorn::Moon ingress Capricorn::20250418T141300
+DTSTAMP:20251028T011024Z
+DTSTART:20250418T141300Z
+SUMMARY:🌙 → ♑︎ Moon ingress Capricorn
+DESCRIPTION:Moon ingress Capricorn
+END:VEVENT
+END:VCALENDAR

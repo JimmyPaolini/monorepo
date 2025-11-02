@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:⚵ ⬠ 🌚 Juno quintile Lunar Apogee::Juno quintile Lunar Apogee::20250224T084700
+DTSTAMP:20251027T233215Z
+DTSTART:20250224T084700Z
+SUMMARY:⚵ ⬠ 🌚 Juno quintile Lunar Apogee
+DESCRIPTION:Juno quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ± ⚵ Mercury biquintile Juno::Mercury biquintile Juno::20250224T131700
+DTSTAMP:20251027T233215Z
+DTSTART:20250224T131700Z
+SUMMARY:☿ ± ⚵ Mercury biquintile Juno
+DESCRIPTION:Mercury biquintile Juno
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⬠ ⚳ Venus quintile Ceres::Venus quintile Ceres::20250224T144900
+DTSTAMP:20251027T233215Z
+DTSTART:20250224T144900Z
+SUMMARY:♀️ ⬠ ⚳ Venus quintile Ceres
+DESCRIPTION:Venus quintile Ceres
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♃ ⚼ 🌚 Jupiter sesquiquadrate Lunar Apogee::Jupiter sesquiquadrate Lunar Apogee::20250413T141200
+DTSTAMP:20251028T010107Z
+DTSTART:20250413T141200Z
+SUMMARY:♃ ⚼ 🌚 Jupiter sesquiquadrate Lunar Apogee
+DESCRIPTION:Jupiter sesquiquadrate Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:⚳ ⚼ 🌚 Ceres sesquiquadrate Lunar Apogee::Ceres sesquiquadrate Lunar Apogee::20250413T183900
+DTSTAMP:20251028T010107Z
+DTSTART:20250413T183900Z
+SUMMARY:⚳ ⚼ 🌚 Ceres sesquiquadrate Lunar Apogee
+DESCRIPTION:Ceres sesquiquadrate Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♇ ∠ ⚳ Pluto semisquare Ceres::Pluto semisquare Ceres::20250414T003100
+DTSTAMP:20251028T010107Z
+DTSTART:20250414T003100Z
+SUMMARY:♇ ∠ ⚳ Pluto semisquare Ceres
+DESCRIPTION:Pluto semisquare Ceres
+END:VEVENT
+END:VCALENDAR

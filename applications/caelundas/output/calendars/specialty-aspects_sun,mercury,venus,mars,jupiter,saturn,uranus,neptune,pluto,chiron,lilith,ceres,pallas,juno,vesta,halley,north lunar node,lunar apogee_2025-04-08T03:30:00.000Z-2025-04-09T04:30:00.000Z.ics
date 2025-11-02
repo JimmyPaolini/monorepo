@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:♀️ ⬠ ♇ Venus quintile Pluto::Venus quintile Pluto::20250408T064500
+DTSTAMP:20251028T005148Z
+DTSTART:20250408T064500Z
+SUMMARY:♀️ ⬠ ♇ Venus quintile Pluto
+DESCRIPTION:Venus quintile Pluto
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⬠ ☄ Sun quintile Halley::Sun quintile Halley::20250408T074600
+DTSTAMP:20251028T005148Z
+DTSTART:20250408T074600Z
+SUMMARY:☀️ ⬠ ☄ Sun quintile Halley
+DESCRIPTION:Sun quintile Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:♇ ± 🌚 Pluto biquintile Lunar Apogee::Pluto biquintile Lunar Apogee::20250408T122600
+DTSTAMP:20251028T005148Z
+DTSTART:20250408T122600Z
+SUMMARY:♇ ± 🌚 Pluto biquintile Lunar Apogee
+DESCRIPTION:Pluto biquintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:⚷ ⬠ ⚳ Chiron quintile Ceres::Chiron quintile Ceres::20250408T155800
+DTSTAMP:20251028T005148Z
+DTSTART:20250408T155800Z
+SUMMARY:⚷ ⬠ ⚳ Chiron quintile Ceres
+DESCRIPTION:Chiron quintile Ceres
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⬠ ♅ Sun quintile Uranus::Sun quintile Uranus::20250408T172700
+DTSTAMP:20251028T005148Z
+DTSTART:20250408T172700Z
+SUMMARY:☀️ ⬠ ♅ Sun quintile Uranus
+DESCRIPTION:Sun quintile Uranus
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♃ ⚼ 🌚 Jupiter sesquiquadrate Lunar Apogee::Jupiter sesquiquadrate Lunar Apogee::20250314T113300
+DTSTAMP:20251028T000525Z
+DTSTART:20250314T113300Z
+SUMMARY:♃ ⚼ 🌚 Jupiter sesquiquadrate Lunar Apogee
+DESCRIPTION:Jupiter sesquiquadrate Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♆ ⚻ 🌚 Neptune quincunx Lunar Apogee::Neptune quincunx Lunar Apogee::20250314T190900
+DTSTAMP:20251028T000525Z
+DTSTART:20250314T190900Z
+SUMMARY:♆ ⚻ 🌚 Neptune quincunx Lunar Apogee
+DESCRIPTION:Neptune quincunx Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⚺ ⚳ Venus semisextile Ceres::Venus semisextile Ceres::20250314T232500
+DTSTAMP:20251028T000525Z
+DTSTART:20250314T232500Z
+SUMMARY:♀️ ⚺ ⚳ Venus semisextile Ceres
+DESCRIPTION:Venus semisextile Ceres
+END:VEVENT
+BEGIN:VEVENT
+UID:♄ ∠ ⚸ Saturn semisquare Lilith::Saturn semisquare Lilith::20250314T232800
+DTSTAMP:20251028T000525Z
+DTSTART:20250314T232800Z
+SUMMARY:♄ ∠ ⚸ Saturn semisquare Lilith
+DESCRIPTION:Saturn semisquare Lilith
+END:VEVENT
+BEGIN:VEVENT
+UID:⚸ ⚺ ⚳ Lilith semisextile Ceres::Lilith semisextile Ceres::20250315T002400
+DTSTAMP:20251028T000525Z
+DTSTART:20250315T002400Z
+SUMMARY:⚸ ⚺ ⚳ Lilith semisextile Ceres
+DESCRIPTION:Lilith semisextile Ceres
+END:VEVENT
+END:VCALENDAR

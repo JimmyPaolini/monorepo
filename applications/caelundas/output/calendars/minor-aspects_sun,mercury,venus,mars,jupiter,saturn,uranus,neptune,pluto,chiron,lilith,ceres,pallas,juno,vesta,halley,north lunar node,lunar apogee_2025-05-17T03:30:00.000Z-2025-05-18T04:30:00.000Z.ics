@@ -1,0 +1,46 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♀️ ∠ ⚸ Venus semisquare Lilith::Venus semisquare Lilith::20250517T083200
+DTSTAMP:20251028T020435Z
+DTSTART:20250517T083200Z
+SUMMARY:♀️ ∠ ⚸ Venus semisquare Lilith
+DESCRIPTION:Venus semisquare Lilith
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ∠ ♀️ Sun semisquare Venus::Sun semisquare Venus::20250517T170600
+DTSTAMP:20251028T020435Z
+DTSTART:20250517T170600Z
+SUMMARY:☀️ ∠ ♀️ Sun semisquare Venus
+DESCRIPTION:Sun semisquare Venus
+END:VEVENT
+BEGIN:VEVENT
+UID:♃ ⚻ 🌚 Jupiter quincunx Lunar Apogee::Jupiter quincunx Lunar Apogee::20250517T200100
+DTSTAMP:20251028T020435Z
+DTSTART:20250517T200100Z
+SUMMARY:♃ ⚻ 🌚 Jupiter quincunx Lunar Apogee
+DESCRIPTION:Jupiter quincunx Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:⚷ ⚻ 🌚 Chiron quincunx Lunar Apogee::Chiron quincunx Lunar Apogee::20250517T210000
+DTSTAMP:20251028T020435Z
+DTSTART:20250517T210000Z
+SUMMARY:⚷ ⚻ 🌚 Chiron quincunx Lunar Apogee
+DESCRIPTION:Chiron quincunx Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☄ ⚼ 🌚 Halley sesquiquadrate Lunar Apogee::Halley sesquiquadrate Lunar Apogee::20250517T220100
+DTSTAMP:20251028T020435Z
+DTSTART:20250517T220100Z
+SUMMARY:☄ ⚼ 🌚 Halley sesquiquadrate Lunar Apogee
+DESCRIPTION:Halley sesquiquadrate Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ∠ ♅ Venus semisquare Uranus::Venus semisquare Uranus::20250518T003700
+DTSTAMP:20251028T020435Z
+DTSTART:20250518T003700Z
+SUMMARY:♀️ ∠ ♅ Venus semisquare Uranus
+DESCRIPTION:Venus semisquare Uranus
+END:VEVENT
+END:VCALENDAR

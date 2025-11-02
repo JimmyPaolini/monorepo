@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Decan Ingresses 🔟
+BEGIN:VEVENT
+UID:🌚 → ♏︎3️⃣ Lunar Apogee ingress decan 3 Scorpio::Lunar Apogee ingress decan 3 Scorpio::20250715T052600
+DTSTAMP:20251028T035610Z
+DTSTART:20250715T052600Z
+SUMMARY:🌚 → ♏︎3️⃣ Lunar Apogee ingress decan 3 Scorpio
+DESCRIPTION:Lunar Apogee ingress decan 3 Scorpio
+END:VEVENT
+BEGIN:VEVENT
+UID:🌙 → ♓︎3️⃣ Moon ingress decan 3 Pisces::Moon ingress decan 3 Pisces::20250715T110700
+DTSTAMP:20251028T035610Z
+DTSTART:20250715T110700Z
+SUMMARY:🌙 → ♓︎3️⃣ Moon ingress decan 3 Pisces
+DESCRIPTION:Moon ingress decan 3 Pisces
+END:VEVENT
+END:VCALENDAR

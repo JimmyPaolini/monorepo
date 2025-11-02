@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☀️ ± ☊ Sun biquintile North Lunar Node::Sun biquintile North Lunar Node::20250804T172100
+DTSTAMP:20251028T043406Z
+DTSTART:20250804T172100Z
+SUMMARY:☀️ ± ☊ Sun biquintile North Lunar Node
+DESCRIPTION:Sun biquintile North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:♂️ ⬠ 🌚 Mars quintile Lunar Apogee::Mars quintile Lunar Apogee::20250804T182400
+DTSTAMP:20251028T043406Z
+DTSTART:20250804T182400Z
+SUMMARY:♂️ ⬠ 🌚 Mars quintile Lunar Apogee
+DESCRIPTION:Mars quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♆ ± 🌚 Neptune biquintile Lunar Apogee::Neptune biquintile Lunar Apogee::20250805T013500
+DTSTAMP:20251028T043406Z
+DTSTART:20250805T013500Z
+SUMMARY:♆ ± 🌚 Neptune biquintile Lunar Apogee
+DESCRIPTION:Neptune biquintile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

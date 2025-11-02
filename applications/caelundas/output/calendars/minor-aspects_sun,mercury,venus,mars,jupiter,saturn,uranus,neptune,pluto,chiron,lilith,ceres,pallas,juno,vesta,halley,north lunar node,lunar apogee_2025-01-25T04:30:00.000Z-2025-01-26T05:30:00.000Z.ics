@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:☿ ⚼ ♃ Mercury sesquiquadrate Jupiter::Mercury sesquiquadrate Jupiter::20250125T214400
+DTSTAMP:20251027T223643Z
+DTSTART:20250125T214400Z
+SUMMARY:☿ ⚼ ♃ Mercury sesquiquadrate Jupiter
+DESCRIPTION:Mercury sesquiquadrate Jupiter
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⚻ ☄ Mercury quincunx Halley::Mercury quincunx Halley::20250125T221000
+DTSTAMP:20251027T223643Z
+DTSTART:20250125T221000Z
+SUMMARY:☿ ⚻ ☄ Mercury quincunx Halley
+DESCRIPTION:Mercury quincunx Halley
+END:VEVENT
+END:VCALENDAR

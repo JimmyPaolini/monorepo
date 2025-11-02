@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:☀️ ⚹ ⚴ Sun sextile Pallas::Sun sextile Pallas::20250404T120900
+DTSTAMP:20251028T004421Z
+DTSTART:20250404T120900Z
+SUMMARY:☀️ ⚹ ⚴ Sun sextile Pallas
+DESCRIPTION:Sun sextile Pallas
+END:VEVENT
+BEGIN:VEVENT
+UID:♄ ⚹ ♅ Saturn sextile Uranus::Saturn sextile Uranus::20250404T162100
+DTSTAMP:20251028T004421Z
+DTSTART:20250404T162100Z
+SUMMARY:♄ ⚹ ♅ Saturn sextile Uranus
+DESCRIPTION:Saturn sextile Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:♂️ ⚹ ♅ Mars sextile Uranus::Mars sextile Uranus::20250404T230500
+DTSTAMP:20251028T004421Z
+DTSTART:20250404T230500Z
+SUMMARY:♂️ ⚹ ♅ Mars sextile Uranus
+DESCRIPTION:Mars sextile Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:♂️ △ ♄ Mars trine Saturn::Mars trine Saturn::20250405T010900
+DTSTAMP:20251028T004421Z
+DTSTART:20250405T010900Z
+SUMMARY:♂️ △ ♄ Mars trine Saturn
+DESCRIPTION:Mars trine Saturn
+END:VEVENT
+END:VCALENDAR

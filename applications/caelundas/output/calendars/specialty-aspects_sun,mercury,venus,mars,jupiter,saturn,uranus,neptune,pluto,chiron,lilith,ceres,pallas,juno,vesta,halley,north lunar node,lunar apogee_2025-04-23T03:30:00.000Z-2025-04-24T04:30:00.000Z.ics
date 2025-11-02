@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☀️ ⬠ ♆ Sun quintile Neptune::Sun quintile Neptune::20250423T120500
+DTSTAMP:20251028T011944Z
+DTSTART:20250423T120500Z
+SUMMARY:☀️ ⬠ ♆ Sun quintile Neptune
+DESCRIPTION:Sun quintile Neptune
+END:VEVENT
+BEGIN:VEVENT
+UID:⚸ ⬠ ☊ Lilith quintile North Lunar Node::Lilith quintile North Lunar Node::20250423T182600
+DTSTAMP:20251028T011944Z
+DTSTART:20250423T182600Z
+SUMMARY:⚸ ⬠ ☊ Lilith quintile North Lunar Node
+DESCRIPTION:Lilith quintile North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:♃ ± 🌚 Jupiter biquintile Lunar Apogee::Jupiter biquintile Lunar Apogee::20250423T202400
+DTSTAMP:20251028T011944Z
+DTSTART:20250423T202400Z
+SUMMARY:♃ ± 🌚 Jupiter biquintile Lunar Apogee
+DESCRIPTION:Jupiter biquintile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

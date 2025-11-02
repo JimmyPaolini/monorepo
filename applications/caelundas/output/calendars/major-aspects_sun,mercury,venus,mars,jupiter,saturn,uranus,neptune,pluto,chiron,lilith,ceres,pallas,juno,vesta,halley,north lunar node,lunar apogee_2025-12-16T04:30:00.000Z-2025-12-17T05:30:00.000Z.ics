@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:♃ △ 🌚 Jupiter trine Lunar Apogee::Jupiter trine Lunar Apogee::20251216T122500
+DTSTAMP:20251028T085034Z
+DTSTART:20251216T122500Z
+SUMMARY:♃ △ 🌚 Jupiter trine Lunar Apogee
+DESCRIPTION:Jupiter trine Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♄ □ ⚵ Saturn square Juno::Saturn square Juno::20251217T010200
+DTSTAMP:20251028T085034Z
+DTSTART:20251217T010200Z
+SUMMARY:♄ □ ⚵ Saturn square Juno
+DESCRIPTION:Saturn square Juno
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ □ ♄ Sun square Saturn::Sun square Saturn::20251217T043400
+DTSTAMP:20251028T085034Z
+DTSTART:20251217T043400Z
+SUMMARY:☀️ □ ♄ Sun square Saturn
+DESCRIPTION:Sun square Saturn
+END:VEVENT
+END:VCALENDAR

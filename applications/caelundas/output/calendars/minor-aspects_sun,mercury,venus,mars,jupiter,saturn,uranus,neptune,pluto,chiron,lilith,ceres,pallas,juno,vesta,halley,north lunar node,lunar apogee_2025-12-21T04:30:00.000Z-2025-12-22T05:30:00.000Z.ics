@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♂️ ∠ ⚴ Mars semisquare Pallas::Mars semisquare Pallas::20251221T072600
+DTSTAMP:20251028T090009Z
+DTSTART:20251221T072600Z
+SUMMARY:♂️ ∠ ⚴ Mars semisquare Pallas
+DESCRIPTION:Mars semisquare Pallas
+END:VEVENT
+BEGIN:VEVENT
+UID:♃ ⚼ 🌚 Jupiter sesquiquadrate Lunar Apogee::Jupiter sesquiquadrate Lunar Apogee::20251221T195000
+DTSTAMP:20251028T090009Z
+DTSTART:20251221T195000Z
+SUMMARY:♃ ⚼ 🌚 Jupiter sesquiquadrate Lunar Apogee
+DESCRIPTION:Jupiter sesquiquadrate Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:⚷ ⚼ 🌚 Chiron sesquiquadrate Lunar Apogee::Chiron sesquiquadrate Lunar Apogee::20251221T200400
+DTSTAMP:20251028T090009Z
+DTSTART:20251221T200400Z
+SUMMARY:⚷ ⚼ 🌚 Chiron sesquiquadrate Lunar Apogee
+DESCRIPTION:Chiron sesquiquadrate Lunar Apogee
+END:VEVENT
+END:VCALENDAR

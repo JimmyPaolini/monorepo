@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:♃ ± 🌚 Jupiter biquintile Lunar Apogee::Jupiter biquintile Lunar Apogee::20250615T073100
+DTSTAMP:20251028T025932Z
+DTSTART:20250615T073100Z
+SUMMARY:♃ ± 🌚 Jupiter biquintile Lunar Apogee
+DESCRIPTION:Jupiter biquintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⬠ ♃ Venus quintile Jupiter::Venus quintile Jupiter::20250615T234200
+DTSTAMP:20251028T025932Z
+DTSTART:20250615T234200Z
+SUMMARY:♀️ ⬠ ♃ Venus quintile Jupiter
+DESCRIPTION:Venus quintile Jupiter
+END:VEVENT
+END:VCALENDAR

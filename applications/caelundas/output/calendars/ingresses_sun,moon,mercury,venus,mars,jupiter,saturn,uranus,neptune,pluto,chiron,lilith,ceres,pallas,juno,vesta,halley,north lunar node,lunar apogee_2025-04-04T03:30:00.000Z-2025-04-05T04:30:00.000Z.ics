@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Peak Ingresses ⛰️
+BEGIN:VEVENT
+UID:☀️ → ♈⛰️ Sun peak ingress Aries::Sun peak ingress Aries::20250404T124900
+DTSTAMP:20251028T004421Z
+DTSTART:20250404T124900Z
+SUMMARY:☀️ → ♈⛰️ Sun peak ingress Aries
+DESCRIPTION:Sun peak ingress Aries
+END:VEVENT
+BEGIN:VEVENT
+UID:⚴ → ♒︎⛰️ Pallas peak ingress Aquarius::Pallas peak ingress Aquarius::20250404T143400
+DTSTAMP:20251028T004421Z
+DTSTART:20250404T143400Z
+SUMMARY:⚴ → ♒︎⛰️ Pallas peak ingress Aquarius
+DESCRIPTION:Pallas peak ingress Aquarius
+END:VEVENT
+BEGIN:VEVENT
+UID:🌙 → ♋︎⛰️ Moon peak ingress Cancer::Moon peak ingress Cancer::20250405T011600
+DTSTAMP:20251028T004421Z
+DTSTART:20250405T011600Z
+SUMMARY:🌙 → ♋︎⛰️ Moon peak ingress Cancer
+DESCRIPTION:Moon peak ingress Cancer
+END:VEVENT
+END:VCALENDAR

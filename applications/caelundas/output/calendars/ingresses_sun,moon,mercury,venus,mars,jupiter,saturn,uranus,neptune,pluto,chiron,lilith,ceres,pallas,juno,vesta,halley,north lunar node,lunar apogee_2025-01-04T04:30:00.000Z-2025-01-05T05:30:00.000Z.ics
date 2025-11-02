@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Peak Ingresses ⛰️
+BEGIN:VEVENT
+UID:🌙 → ♓︎⛰️ Moon peak ingress Pisces::Moon peak ingress Pisces::20250104T171600
+DTSTAMP:20251027T215741Z
+DTSTART:20250104T171600Z
+SUMMARY:🌙 → ♓︎⛰️ Moon peak ingress Pisces
+DESCRIPTION:Moon peak ingress Pisces
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ → ♑︎⛰️ Sun peak ingress Capricorn::Sun peak ingress Capricorn::20250105T023300
+DTSTAMP:20251027T215741Z
+DTSTART:20250105T023300Z
+SUMMARY:☀️ → ♑︎⛰️ Sun peak ingress Capricorn
+DESCRIPTION:Sun peak ingress Capricorn
+END:VEVENT
+END:VCALENDAR

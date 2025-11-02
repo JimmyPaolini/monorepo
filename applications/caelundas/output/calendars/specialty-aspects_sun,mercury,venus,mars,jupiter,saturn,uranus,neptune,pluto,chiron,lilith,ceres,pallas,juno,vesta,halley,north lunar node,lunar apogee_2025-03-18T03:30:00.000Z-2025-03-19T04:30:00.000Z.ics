@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:♇ ± ☄ Pluto biquintile Halley::Pluto biquintile Halley::20250318T101300
+DTSTAMP:20251028T001247Z
+DTSTART:20250318T101300Z
+SUMMARY:♇ ± ☄ Pluto biquintile Halley
+DESCRIPTION:Pluto biquintile Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:♆ ± 🌚 Neptune biquintile Lunar Apogee::Neptune biquintile Lunar Apogee::20250318T175400
+DTSTAMP:20251028T001247Z
+DTSTART:20250318T175400Z
+SUMMARY:♆ ± 🌚 Neptune biquintile Lunar Apogee
+DESCRIPTION:Neptune biquintile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♆ ⚺ ⚳ Neptune semisextile Ceres::Neptune semisextile Ceres::20250220T081800
+DTSTAMP:20251027T232453Z
+DTSTART:20250220T081800Z
+SUMMARY:♆ ⚺ ⚳ Neptune semisextile Ceres
+DESCRIPTION:Neptune semisextile Ceres
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⚼ ♂️ Sun sesquiquadrate Mars::Sun sesquiquadrate Mars::20250220T120100
+DTSTAMP:20251027T232453Z
+DTSTART:20250220T120100Z
+SUMMARY:☀️ ⚼ ♂️ Sun sesquiquadrate Mars
+DESCRIPTION:Sun sesquiquadrate Mars
+END:VEVENT
+BEGIN:VEVENT
+UID:♆ ⚻ 🌚 Neptune quincunx Lunar Apogee::Neptune quincunx Lunar Apogee::20250220T224500
+DTSTAMP:20251027T232453Z
+DTSTART:20250220T224500Z
+SUMMARY:♆ ⚻ 🌚 Neptune quincunx Lunar Apogee
+DESCRIPTION:Neptune quincunx Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⚺ ♇ Sun semisextile Pluto::Sun semisextile Pluto::20250221T013500
+DTSTAMP:20251027T232453Z
+DTSTART:20250221T013500Z
+SUMMARY:☀️ ⚺ ♇ Sun semisextile Pluto
+DESCRIPTION:Sun semisextile Pluto
+END:VEVENT
+END:VCALENDAR

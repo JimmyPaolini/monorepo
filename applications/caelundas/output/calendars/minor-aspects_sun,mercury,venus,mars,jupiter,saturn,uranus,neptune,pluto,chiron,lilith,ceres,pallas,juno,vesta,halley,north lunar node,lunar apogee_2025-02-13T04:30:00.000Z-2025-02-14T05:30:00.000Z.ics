@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♃ ⚼ ⚸ Jupiter sesquiquadrate Lilith::Jupiter sesquiquadrate Lilith::20250213T064000
+DTSTAMP:20251027T231157Z
+DTSTART:20250213T064000Z
+SUMMARY:♃ ⚼ ⚸ Jupiter sesquiquadrate Lilith
+DESCRIPTION:Jupiter sesquiquadrate Lilith
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⚺ ♆ Mercury semisextile Neptune::Mercury semisextile Neptune::20250213T143000
+DTSTAMP:20251027T231157Z
+DTSTART:20250213T143000Z
+SUMMARY:☿ ⚺ ♆ Mercury semisextile Neptune
+DESCRIPTION:Mercury semisextile Neptune
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⚺ ⚴ Mercury semisextile Pallas::Mercury semisextile Pallas::20250213T223400
+DTSTAMP:20251027T231157Z
+DTSTART:20250213T223400Z
+SUMMARY:☿ ⚺ ⚴ Mercury semisextile Pallas
+DESCRIPTION:Mercury semisextile Pallas
+END:VEVENT
+END:VCALENDAR

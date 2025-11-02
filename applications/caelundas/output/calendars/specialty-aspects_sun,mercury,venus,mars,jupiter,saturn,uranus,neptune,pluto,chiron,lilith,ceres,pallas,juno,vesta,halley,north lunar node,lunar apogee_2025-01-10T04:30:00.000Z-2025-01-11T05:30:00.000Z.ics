@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☊ ± 🌚 North Lunar Node biquintile Lunar Apogee::North Lunar Node biquintile Lunar Apogee::20250110T062800
+DTSTAMP:20251027T220854Z
+DTSTART:20250110T062800Z
+SUMMARY:☊ ± 🌚 North Lunar Node biquintile Lunar Apogee
+DESCRIPTION:North Lunar Node biquintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♄ ⬠ ⚳ Saturn quintile Ceres::Saturn quintile Ceres::20250110T071100
+DTSTAMP:20251027T220854Z
+DTSTART:20250110T071100Z
+SUMMARY:♄ ⬠ ⚳ Saturn quintile Ceres
+DESCRIPTION:Saturn quintile Ceres
+END:VEVENT
+BEGIN:VEVENT
+UID:♃ ± 🌚 Jupiter biquintile Lunar Apogee::Jupiter biquintile Lunar Apogee::20250110T105700
+DTSTAMP:20251027T220854Z
+DTSTART:20250110T105700Z
+SUMMARY:♃ ± 🌚 Jupiter biquintile Lunar Apogee
+DESCRIPTION:Jupiter biquintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ♄ Mercury quintile Saturn::Mercury quintile Saturn::20250110T180200
+DTSTAMP:20251027T220854Z
+DTSTART:20250110T180200Z
+SUMMARY:☿ ⬠ ♄ Mercury quintile Saturn
+DESCRIPTION:Mercury quintile Saturn
+END:VEVENT
+END:VCALENDAR

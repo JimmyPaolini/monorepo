@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:♆ ± ☄ Neptune biquintile Halley::Neptune biquintile Halley::20251014T055300
+DTSTAMP:20251028T064953Z
+DTSTART:20251014T055300Z
+SUMMARY:♆ ± ☄ Neptune biquintile Halley
+DESCRIPTION:Neptune biquintile Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ⚶ Mercury quintile Vesta::Mercury quintile Vesta::20251014T105800
+DTSTAMP:20251028T064953Z
+DTSTART:20251014T105800Z
+SUMMARY:☿ ⬠ ⚶ Mercury quintile Vesta
+DESCRIPTION:Mercury quintile Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ± ♃ Mercury biquintile Jupiter::Mercury biquintile Jupiter::20251014T213600
+DTSTAMP:20251028T064953Z
+DTSTART:20251014T213600Z
+SUMMARY:☿ ± ♃ Mercury biquintile Jupiter
+DESCRIPTION:Mercury biquintile Jupiter
+END:VEVENT
+END:VCALENDAR

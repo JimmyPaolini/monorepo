@@ -1,0 +1,46 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:♀️ ± ♅ Venus biquintile Uranus::Venus biquintile Uranus::20251102T075600
+DTSTAMP:20251028T072607Z
+DTSTART:20251102T075600Z
+SUMMARY:♀️ ± ♅ Venus biquintile Uranus
+DESCRIPTION:Venus biquintile Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⬠ 🌚 Venus quintile Lunar Apogee::Venus quintile Lunar Apogee::20251102T080700
+DTSTAMP:20251028T072607Z
+DTSTART:20251102T080700Z
+SUMMARY:♀️ ⬠ 🌚 Venus quintile Lunar Apogee
+DESCRIPTION:Venus quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:⚴ ⬠ 🌚 Pallas quintile Lunar Apogee::Pallas quintile Lunar Apogee::20251102T091200
+DTSTAMP:20251028T072607Z
+DTSTART:20251102T091200Z
+SUMMARY:⚴ ⬠ 🌚 Pallas quintile Lunar Apogee
+DESCRIPTION:Pallas quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♇ ⬠ ⚵ Pluto quintile Juno::Pluto quintile Juno::20251102T155400
+DTSTAMP:20251028T072607Z
+DTSTART:20251102T155400Z
+SUMMARY:♇ ⬠ ⚵ Pluto quintile Juno
+DESCRIPTION:Pluto quintile Juno
+END:VEVENT
+BEGIN:VEVENT
+UID:♂️ ± ☊ Mars biquintile North Lunar Node::Mars biquintile North Lunar Node::20251102T162100
+DTSTAMP:20251028T072607Z
+DTSTART:20251102T162100Z
+SUMMARY:♂️ ± ☊ Mars biquintile North Lunar Node
+DESCRIPTION:Mars biquintile North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⬠ ☄ Sun quintile Halley::Sun quintile Halley::20251102T203000
+DTSTAMP:20251028T072607Z
+DTSTART:20251102T203000Z
+SUMMARY:☀️ ⬠ ☄ Sun quintile Halley
+DESCRIPTION:Sun quintile Halley
+END:VEVENT
+END:VCALENDAR

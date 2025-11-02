@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:♀️ △ ♇ Venus trine Pluto::Venus trine Pluto::20250707T084400
+DTSTAMP:20251028T034100Z
+DTSTART:20250707T084400Z
+SUMMARY:♀️ △ ♇ Venus trine Pluto
+DESCRIPTION:Venus trine Pluto
+END:VEVENT
+BEGIN:VEVENT
+UID:♃ △ 🌚 Jupiter trine Lunar Apogee::Jupiter trine Lunar Apogee::20250707T090800
+DTSTAMP:20251028T034100Z
+DTSTART:20250707T090800Z
+SUMMARY:♃ △ 🌚 Jupiter trine Lunar Apogee
+DESCRIPTION:Jupiter trine Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ △ ⚵ Sun trine Juno::Sun trine Juno::20250708T035700
+DTSTAMP:20251028T034100Z
+DTSTART:20250708T035700Z
+SUMMARY:☀️ △ ⚵ Sun trine Juno
+DESCRIPTION:Sun trine Juno
+END:VEVENT
+END:VCALENDAR

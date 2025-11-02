@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☀️ ± ♂️ Sun biquintile Mars::Sun biquintile Mars::20250212T090000
+DTSTAMP:20251027T231003Z
+DTSTART:20250212T090000Z
+SUMMARY:☀️ ± ♂️ Sun biquintile Mars
+DESCRIPTION:Sun biquintile Mars
+END:VEVENT
+BEGIN:VEVENT
+UID:♆ ⬠ ⚳ Neptune quintile Ceres::Neptune quintile Ceres::20250212T180300
+DTSTAMP:20251027T231003Z
+DTSTART:20250212T180300Z
+SUMMARY:♆ ⬠ ⚳ Neptune quintile Ceres
+DESCRIPTION:Neptune quintile Ceres
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⬠ ☊ Sun quintile North Lunar Node::Sun quintile North Lunar Node::20250213T004300
+DTSTAMP:20251027T231003Z
+DTSTART:20250213T004300Z
+SUMMARY:☀️ ⬠ ☊ Sun quintile North Lunar Node
+DESCRIPTION:Sun quintile North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⬠ ⚳ Venus quintile Ceres::Venus quintile Ceres::20250213T040000
+DTSTAMP:20251027T231003Z
+DTSTART:20250213T040000Z
+SUMMARY:♀️ ⬠ ⚳ Venus quintile Ceres
+DESCRIPTION:Venus quintile Ceres
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☿ ⬠ ☄ Mercury quintile Halley::Mercury quintile Halley::20250521T011600
+DTSTAMP:20251028T021011Z
+DTSTART:20250521T011600Z
+SUMMARY:☿ ⬠ ☄ Mercury quintile Halley
+DESCRIPTION:Mercury quintile Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ♃ Mercury quintile Jupiter::Mercury quintile Jupiter::20250521T013300
+DTSTAMP:20251028T021011Z
+DTSTART:20250521T013300Z
+SUMMARY:☿ ⬠ ♃ Mercury quintile Jupiter
+DESCRIPTION:Mercury quintile Jupiter
+END:VEVENT
+END:VCALENDAR

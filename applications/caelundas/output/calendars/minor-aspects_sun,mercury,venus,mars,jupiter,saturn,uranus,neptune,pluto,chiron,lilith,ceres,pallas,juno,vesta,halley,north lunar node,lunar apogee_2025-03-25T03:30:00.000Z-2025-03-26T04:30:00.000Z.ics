@@ -1,0 +1,46 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:⚴ ∠ ☊ Pallas semisquare North Lunar Node::Pallas semisquare North Lunar Node::20250325T060200
+DTSTAMP:20251028T002545Z
+DTSTART:20250325T060200Z
+SUMMARY:⚴ ∠ ☊ Pallas semisquare North Lunar Node
+DESCRIPTION:Pallas semisquare North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:⚵ ⚺ 🌚 Juno semisextile Lunar Apogee::Juno semisextile Lunar Apogee::20250325T110900
+DTSTAMP:20251028T002545Z
+DTSTART:20250325T110900Z
+SUMMARY:⚵ ⚺ 🌚 Juno semisextile Lunar Apogee
+DESCRIPTION:Juno semisextile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⚻ 🌚 Venus quincunx Lunar Apogee::Venus quincunx Lunar Apogee::20250325T183800
+DTSTAMP:20251028T002545Z
+DTSTART:20250325T183800Z
+SUMMARY:♀️ ⚻ 🌚 Venus quincunx Lunar Apogee
+DESCRIPTION:Venus quincunx Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⚼ ⚶ Mercury sesquiquadrate Vesta::Mercury sesquiquadrate Vesta::20250326T000100
+DTSTAMP:20251028T002545Z
+DTSTART:20250326T000100Z
+SUMMARY:☿ ⚼ ⚶ Mercury sesquiquadrate Vesta
+DESCRIPTION:Mercury sesquiquadrate Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:♃ ⚼ 🌚 Jupiter sesquiquadrate Lunar Apogee::Jupiter sesquiquadrate Lunar Apogee::20250326T013400
+DTSTAMP:20251028T002545Z
+DTSTART:20250326T013400Z
+SUMMARY:♃ ⚼ 🌚 Jupiter sesquiquadrate Lunar Apogee
+DESCRIPTION:Jupiter sesquiquadrate Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♆ ⚻ 🌚 Neptune quincunx Lunar Apogee::Neptune quincunx Lunar Apogee::20250326T034000
+DTSTAMP:20251028T002545Z
+DTSTART:20250326T034000Z
+SUMMARY:♆ ⚻ 🌚 Neptune quincunx Lunar Apogee
+DESCRIPTION:Neptune quincunx Lunar Apogee
+END:VEVENT
+END:VCALENDAR

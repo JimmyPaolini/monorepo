@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:☀️ ∠ ♄ Sun semisquare Saturn::Sun semisquare Saturn::20250503T061900
+DTSTAMP:20251028T013823Z
+DTSTART:20250503T061900Z
+SUMMARY:☀️ ∠ ♄ Sun semisquare Saturn
+DESCRIPTION:Sun semisquare Saturn
+END:VEVENT
+BEGIN:VEVENT
+UID:♂️ ∠ ♃ Mars semisquare Jupiter::Mars semisquare Jupiter::20250503T232200
+DTSTAMP:20251028T013823Z
+DTSTART:20250503T232200Z
+SUMMARY:♂️ ∠ ♃ Mars semisquare Jupiter
+DESCRIPTION:Mars semisquare Jupiter
+END:VEVENT
+END:VCALENDAR

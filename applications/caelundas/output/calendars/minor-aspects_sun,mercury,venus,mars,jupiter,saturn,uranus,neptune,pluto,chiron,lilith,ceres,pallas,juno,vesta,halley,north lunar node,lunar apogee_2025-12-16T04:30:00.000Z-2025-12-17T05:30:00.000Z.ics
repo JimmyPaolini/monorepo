@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:⚷ ⚻ 🌚 Chiron quincunx Lunar Apogee::Chiron quincunx Lunar Apogee::20251216T054500
+DTSTAMP:20251028T085034Z
+DTSTART:20251216T054500Z
+SUMMARY:⚷ ⚻ 🌚 Chiron quincunx Lunar Apogee
+DESCRIPTION:Chiron quincunx Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:⚸ ⚺ ⚳ Lilith semisextile Ceres::Lilith semisextile Ceres::20251217T012100
+DTSTAMP:20251028T085034Z
+DTSTART:20251217T012100Z
+SUMMARY:⚸ ⚺ ⚳ Lilith semisextile Ceres
+DESCRIPTION:Lilith semisextile Ceres
+END:VEVENT
+END:VCALENDAR

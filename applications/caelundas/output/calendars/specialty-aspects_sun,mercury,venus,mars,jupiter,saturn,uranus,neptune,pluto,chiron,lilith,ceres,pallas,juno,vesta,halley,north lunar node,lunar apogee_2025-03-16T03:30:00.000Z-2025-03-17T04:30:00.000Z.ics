@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:⚷ ⬠ ⚴ Chiron quintile Pallas::Chiron quintile Pallas::20250316T165100
+DTSTAMP:20251028T000906Z
+DTSTART:20250316T165100Z
+SUMMARY:⚷ ⬠ ⚴ Chiron quintile Pallas
+DESCRIPTION:Chiron quintile Pallas
+END:VEVENT
+BEGIN:VEVENT
+UID:♆ ⬠ ⚸ Neptune quintile Lilith::Neptune quintile Lilith::20250316T184100
+DTSTAMP:20251028T000906Z
+DTSTART:20250316T184100Z
+SUMMARY:♆ ⬠ ⚸ Neptune quintile Lilith
+DESCRIPTION:Neptune quintile Lilith
+END:VEVENT
+BEGIN:VEVENT
+UID:☊ ± 🌚 North Lunar Node biquintile Lunar Apogee::North Lunar Node biquintile Lunar Apogee::20250316T190500
+DTSTAMP:20251028T000906Z
+DTSTART:20250316T190500Z
+SUMMARY:☊ ± 🌚 North Lunar Node biquintile Lunar Apogee
+DESCRIPTION:North Lunar Node biquintile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

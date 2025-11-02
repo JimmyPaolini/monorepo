@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:♄ ⬠ ⚸ Saturn quintile Lilith::Saturn quintile Lilith::20250406T102800
+DTSTAMP:20251028T004804Z
+DTSTART:20250406T102800Z
+SUMMARY:♄ ⬠ ⚸ Saturn quintile Lilith
+DESCRIPTION:Saturn quintile Lilith
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⬠ ⚴ Venus quintile Pallas::Venus quintile Pallas::20250406T110900
+DTSTAMP:20251028T004804Z
+DTSTART:20250406T110900Z
+SUMMARY:♀️ ⬠ ⚴ Venus quintile Pallas
+DESCRIPTION:Venus quintile Pallas
+END:VEVENT
+BEGIN:VEVENT
+UID:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee::Vesta quintile Lunar Apogee::20250406T220700
+DTSTAMP:20251028T004804Z
+DTSTART:20250406T220700Z
+SUMMARY:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee
+DESCRIPTION:Vesta quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⬠ ⚸ Venus quintile Lilith::Venus quintile Lilith::20250407T015200
+DTSTAMP:20251028T004804Z
+DTSTART:20250407T015200Z
+SUMMARY:♀️ ⬠ ⚸ Venus quintile Lilith
+DESCRIPTION:Venus quintile Lilith
+END:VEVENT
+END:VCALENDAR

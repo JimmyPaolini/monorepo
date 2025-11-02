@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♇ ∠ ⚵ Pluto semisquare Juno::Pluto semisquare Juno::20251122T084300
+DTSTAMP:20251028T080425Z
+DTSTART:20251122T084300Z
+SUMMARY:♇ ∠ ⚵ Pluto semisquare Juno
+DESCRIPTION:Pluto semisquare Juno
+END:VEVENT
+BEGIN:VEVENT
+UID:⚶ ⚺ 🌚 Vesta semisextile Lunar Apogee::Vesta semisextile Lunar Apogee::20251122T095300
+DTSTAMP:20251028T080425Z
+DTSTART:20251122T095300Z
+SUMMARY:⚶ ⚺ 🌚 Vesta semisextile Lunar Apogee
+DESCRIPTION:Vesta semisextile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

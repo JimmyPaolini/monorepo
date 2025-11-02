@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:⚵ ⬠ 🌚 Juno quintile Lunar Apogee::Juno quintile Lunar Apogee::20250327T141500
+DTSTAMP:20251028T002928Z
+DTSTART:20250327T141500Z
+SUMMARY:⚵ ⬠ 🌚 Juno quintile Lunar Apogee
+DESCRIPTION:Juno quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:⚴ ± 🌚 Pallas biquintile Lunar Apogee::Pallas biquintile Lunar Apogee::20250327T231900
+DTSTAMP:20251028T002928Z
+DTSTART:20250327T231900Z
+SUMMARY:⚴ ± 🌚 Pallas biquintile Lunar Apogee
+DESCRIPTION:Pallas biquintile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

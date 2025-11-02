@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:♄ △ ⚶ Saturn trine Vesta::Saturn trine Vesta::20250912T065400
+DTSTAMP:20251028T054819Z
+DTSTART:20250912T065400Z
+SUMMARY:♄ △ ⚶ Saturn trine Vesta
+DESCRIPTION:Saturn trine Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⚹ ♃ Sun sextile Jupiter::Sun sextile Jupiter::20250912T073100
+DTSTAMP:20251028T054819Z
+DTSTART:20250912T073100Z
+SUMMARY:☀️ ⚹ ♃ Sun sextile Jupiter
+DESCRIPTION:Sun sextile Jupiter
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⚹ 🌚 Venus sextile Lunar Apogee::Venus sextile Lunar Apogee::20250912T194100
+DTSTAMP:20251028T054819Z
+DTSTART:20250912T194100Z
+SUMMARY:♀️ ⚹ 🌚 Venus sextile Lunar Apogee
+DESCRIPTION:Venus sextile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⚹ ♃ Mercury sextile Jupiter::Mercury sextile Jupiter::20250912T215400
+DTSTAMP:20251028T054819Z
+DTSTART:20250912T215400Z
+SUMMARY:☿ ⚹ ♃ Mercury sextile Jupiter
+DESCRIPTION:Mercury sextile Jupiter
+END:VEVENT
+END:VCALENDAR

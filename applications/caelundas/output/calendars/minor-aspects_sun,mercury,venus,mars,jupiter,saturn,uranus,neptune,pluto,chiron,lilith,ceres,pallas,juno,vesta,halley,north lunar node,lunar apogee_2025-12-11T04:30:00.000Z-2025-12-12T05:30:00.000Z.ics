@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:☀️ ⚺ 🌚 Sun semisextile Lunar Apogee::Sun semisextile Lunar Apogee::20251211T063100
+DTSTAMP:20251028T084057Z
+DTSTART:20251211T063100Z
+SUMMARY:☀️ ⚺ 🌚 Sun semisextile Lunar Apogee
+DESCRIPTION:Sun semisextile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⚺ ⚶ Venus semisextile Vesta::Venus semisextile Vesta::20251211T154300
+DTSTAMP:20251028T084057Z
+DTSTART:20251211T154300Z
+SUMMARY:♀️ ⚺ ⚶ Venus semisextile Vesta
+DESCRIPTION:Venus semisextile Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:♅ ⚼ ⚶ Uranus sesquiquadrate Vesta::Uranus sesquiquadrate Vesta::20251211T165800
+DTSTAMP:20251028T084057Z
+DTSTART:20251211T165800Z
+SUMMARY:♅ ⚼ ⚶ Uranus sesquiquadrate Vesta
+DESCRIPTION:Uranus sesquiquadrate Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:♃ ⚻ ⚵ Jupiter quincunx Juno::Jupiter quincunx Juno::20251211T234300
+DTSTAMP:20251028T084057Z
+DTSTART:20251211T234300Z
+SUMMARY:♃ ⚻ ⚵ Jupiter quincunx Juno
+DESCRIPTION:Jupiter quincunx Juno
+END:VEVENT
+END:VCALENDAR

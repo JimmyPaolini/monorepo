@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Peak Ingresses ⛰️
+BEGIN:VEVENT
+UID:🌚 → ♍︎⛰️ Lunar Apogee peak ingress Virgo::Lunar Apogee peak ingress Virgo::20250202T233300
+DTSTAMP:20251027T225129Z
+DTSTART:20250202T233300Z
+SUMMARY:🌚 → ♍︎⛰️ Lunar Apogee peak ingress Virgo
+DESCRIPTION:Lunar Apogee peak ingress Virgo
+END:VEVENT
+BEGIN:VEVENT
+UID:🌙 → ♈⛰️ Moon peak ingress Aries::Moon peak ingress Aries::20250203T021800
+DTSTAMP:20251027T225129Z
+DTSTART:20250203T021800Z
+SUMMARY:🌙 → ♈⛰️ Moon peak ingress Aries
+DESCRIPTION:Moon peak ingress Aries
+END:VEVENT
+END:VCALENDAR

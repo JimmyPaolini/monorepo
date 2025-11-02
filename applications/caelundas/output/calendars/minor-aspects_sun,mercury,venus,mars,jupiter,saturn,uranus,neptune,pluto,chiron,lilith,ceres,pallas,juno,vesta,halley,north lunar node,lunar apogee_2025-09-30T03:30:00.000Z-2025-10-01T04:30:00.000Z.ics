@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♃ ⚼ ⚶ Jupiter sesquiquadrate Vesta::Jupiter sesquiquadrate Vesta::20250930T122300
+DTSTAMP:20251028T062248Z
+DTSTART:20250930T122300Z
+SUMMARY:♃ ⚼ ⚶ Jupiter sesquiquadrate Vesta
+DESCRIPTION:Jupiter sesquiquadrate Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ∠ 🌚 Sun semisquare Lunar Apogee::Sun semisquare Lunar Apogee::20250930T191100
+DTSTAMP:20251028T062248Z
+DTSTART:20250930T191100Z
+SUMMARY:☀️ ∠ 🌚 Sun semisquare Lunar Apogee
+DESCRIPTION:Sun semisquare Lunar Apogee
+END:VEVENT
+END:VCALENDAR

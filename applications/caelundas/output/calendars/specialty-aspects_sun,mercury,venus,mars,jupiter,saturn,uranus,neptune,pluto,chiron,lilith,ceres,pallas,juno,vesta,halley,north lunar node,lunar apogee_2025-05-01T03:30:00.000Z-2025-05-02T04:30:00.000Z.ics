@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☿ ⬠ ♇ Mercury quintile Pluto::Mercury quintile Pluto::20250501T052000
+DTSTAMP:20251028T013438Z
+DTSTART:20250501T052000Z
+SUMMARY:☿ ⬠ ♇ Mercury quintile Pluto
+DESCRIPTION:Mercury quintile Pluto
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⬠ ♆ Sun quintile Neptune::Sun quintile Neptune::20250501T053200
+DTSTAMP:20251028T013438Z
+DTSTART:20250501T053200Z
+SUMMARY:☀️ ⬠ ♆ Sun quintile Neptune
+DESCRIPTION:Sun quintile Neptune
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ♅ Mercury quintile Uranus::Mercury quintile Uranus::20250501T144100
+DTSTAMP:20251028T013438Z
+DTSTART:20250501T144100Z
+SUMMARY:☿ ⬠ ♅ Mercury quintile Uranus
+DESCRIPTION:Mercury quintile Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⬠ ♃ Sun quintile Jupiter::Sun quintile Jupiter::20250501T151800
+DTSTAMP:20251028T013438Z
+DTSTART:20250501T151800Z
+SUMMARY:☀️ ⬠ ♃ Sun quintile Jupiter
+DESCRIPTION:Sun quintile Jupiter
+END:VEVENT
+END:VCALENDAR

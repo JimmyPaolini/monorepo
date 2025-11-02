@@ -1,0 +1,67 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♀️ ⚻ ⚶ Venus quincunx Vesta::Venus quincunx Vesta::20250514T060600
+DTSTAMP:20251028T015854Z
+DTSTART:20250514T060600Z
+SUMMARY:♀️ ⚻ ⚶ Venus quincunx Vesta
+DESCRIPTION:Venus quincunx Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⚼ ⚵ Venus sesquiquadrate Juno::Venus sesquiquadrate Juno::20250514T074800
+DTSTAMP:20251028T015854Z
+DTSTART:20250514T074800Z
+SUMMARY:♀️ ⚼ ⚵ Venus sesquiquadrate Juno
+DESCRIPTION:Venus sesquiquadrate Juno
+END:VEVENT
+BEGIN:VEVENT
+UID:♃ ⚼ ⚶ Jupiter sesquiquadrate Vesta::Jupiter sesquiquadrate Vesta::20250514T123500
+DTSTAMP:20251028T015854Z
+DTSTART:20250514T123500Z
+SUMMARY:♃ ⚼ ⚶ Jupiter sesquiquadrate Vesta
+DESCRIPTION:Jupiter sesquiquadrate Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:⚵ ⚼ ☄ Juno sesquiquadrate Halley::Juno sesquiquadrate Halley::20250514T134500
+DTSTAMP:20251028T015854Z
+DTSTART:20250514T134500Z
+SUMMARY:⚵ ⚼ ☄ Juno sesquiquadrate Halley
+DESCRIPTION:Juno sesquiquadrate Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:♃ ⚻ ⚵ Jupiter quincunx Juno::Jupiter quincunx Juno::20250514T162900
+DTSTAMP:20251028T015854Z
+DTSTART:20250514T162900Z
+SUMMARY:♃ ⚻ ⚵ Jupiter quincunx Juno
+DESCRIPTION:Jupiter quincunx Juno
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⚺ ♃ Sun semisextile Jupiter::Sun semisextile Jupiter::20250514T191000
+DTSTAMP:20251028T015854Z
+DTSTART:20250514T191000Z
+SUMMARY:☀️ ⚺ ♃ Sun semisextile Jupiter
+DESCRIPTION:Sun semisextile Jupiter
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ∠ ☄ Sun semisquare Halley::Sun semisquare Halley::20250514T211700
+DTSTAMP:20251028T015854Z
+DTSTART:20250514T211700Z
+SUMMARY:☀️ ∠ ☄ Sun semisquare Halley
+DESCRIPTION:Sun semisquare Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:♄ ⚼ 🌚 Saturn sesquiquadrate Lunar Apogee::Saturn sesquiquadrate Lunar Apogee::20250514T213400
+DTSTAMP:20251028T015854Z
+DTSTART:20250514T213400Z
+SUMMARY:♄ ⚼ 🌚 Saturn sesquiquadrate Lunar Apogee
+DESCRIPTION:Saturn sesquiquadrate Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:⚳ ⚼ 🌚 Ceres sesquiquadrate Lunar Apogee::Ceres sesquiquadrate Lunar Apogee::20250514T231200
+DTSTAMP:20251028T015854Z
+DTSTART:20250514T231200Z
+SUMMARY:⚳ ⚼ 🌚 Ceres sesquiquadrate Lunar Apogee
+DESCRIPTION:Ceres sesquiquadrate Lunar Apogee
+END:VEVENT
+END:VCALENDAR

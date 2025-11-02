@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:☀️ □ ⚶ Sun square Vesta::Sun square Vesta::20250807T160900
+DTSTAMP:20251028T043945Z
+DTSTART:20250807T160900Z
+SUMMARY:☀️ □ ⚶ Sun square Vesta
+DESCRIPTION:Sun square Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ☌ ☄ Mercury conjunct Halley::Mercury conjunct Halley::20250808T011900
+DTSTAMP:20251028T043945Z
+DTSTART:20250808T011900Z
+SUMMARY:☿ ☌ ☄ Mercury conjunct Halley
+DESCRIPTION:Mercury conjunct Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:⚴ □ ⚶ Pallas square Vesta::Pallas square Vesta::20250808T023500
+DTSTAMP:20251028T043945Z
+DTSTART:20250808T023500Z
+SUMMARY:⚴ □ ⚶ Pallas square Vesta
+DESCRIPTION:Pallas square Vesta
+END:VEVENT
+END:VCALENDAR

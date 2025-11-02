@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:⚳ ⚼ ⚵ Ceres sesquiquadrate Juno::Ceres sesquiquadrate Juno::20250602T154400
+DTSTAMP:20251028T023456Z
+DTSTART:20250602T154400Z
+SUMMARY:⚳ ⚼ ⚵ Ceres sesquiquadrate Juno
+DESCRIPTION:Ceres sesquiquadrate Juno
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⚼ 🌚 Mercury sesquiquadrate Lunar Apogee::Mercury sesquiquadrate Lunar Apogee::20250603T000100
+DTSTAMP:20251028T023456Z
+DTSTART:20250603T000100Z
+SUMMARY:☿ ⚼ 🌚 Mercury sesquiquadrate Lunar Apogee
+DESCRIPTION:Mercury sesquiquadrate Lunar Apogee
+END:VEVENT
+END:VCALENDAR

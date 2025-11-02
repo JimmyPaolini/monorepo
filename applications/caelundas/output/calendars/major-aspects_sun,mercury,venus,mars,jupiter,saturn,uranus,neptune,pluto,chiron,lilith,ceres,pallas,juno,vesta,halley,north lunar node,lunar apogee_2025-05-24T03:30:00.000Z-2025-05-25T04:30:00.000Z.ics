@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:☀️ △ ♇ Sun trine Pluto::Sun trine Pluto::20250524T155600
+DTSTAMP:20251028T021743Z
+DTSTART:20250524T155600Z
+SUMMARY:☀️ △ ♇ Sun trine Pluto
+DESCRIPTION:Sun trine Pluto
+END:VEVENT
+BEGIN:VEVENT
+UID:⚵ ☌ 🌚 Juno conjunct Lunar Apogee::Juno conjunct Lunar Apogee::20250524T211000
+DTSTAMP:20251028T021743Z
+DTSTART:20250524T211000Z
+SUMMARY:⚵ ☌ 🌚 Juno conjunct Lunar Apogee
+DESCRIPTION:Juno conjunct Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ☌ ♅ Mercury conjunct Uranus::Mercury conjunct Uranus::20250524T231500
+DTSTAMP:20251028T021743Z
+DTSTART:20250524T231500Z
+SUMMARY:☿ ☌ ♅ Mercury conjunct Uranus
+DESCRIPTION:Mercury conjunct Uranus
+END:VEVENT
+END:VCALENDAR

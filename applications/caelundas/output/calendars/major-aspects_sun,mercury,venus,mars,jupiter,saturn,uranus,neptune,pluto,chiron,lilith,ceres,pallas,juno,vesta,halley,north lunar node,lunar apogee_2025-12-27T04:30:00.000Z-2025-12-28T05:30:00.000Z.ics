@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:☀️ ☌ 🌚 Sun conjunct Lunar Apogee::Sun conjunct Lunar Apogee::20251227T060300
+DTSTAMP:20251028T091135Z
+DTSTART:20251227T060300Z
+SUMMARY:☀️ ☌ 🌚 Sun conjunct Lunar Apogee
+DESCRIPTION:Sun conjunct Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:⚵ ☌ 🌚 Juno conjunct Lunar Apogee::Juno conjunct Lunar Apogee::20251227T161400
+DTSTAMP:20251028T091135Z
+DTSTART:20251227T161400Z
+SUMMARY:⚵ ☌ 🌚 Juno conjunct Lunar Apogee
+DESCRIPTION:Juno conjunct Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ □ ⚳ Sun square Ceres::Sun square Ceres::20251227T170600
+DTSTAMP:20251028T091135Z
+DTSTART:20251227T170600Z
+SUMMARY:☀️ □ ⚳ Sun square Ceres
+DESCRIPTION:Sun square Ceres
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ △ ⚷ Mercury trine Chiron::Mercury trine Chiron::20251228T001500
+DTSTAMP:20251028T091135Z
+DTSTART:20251228T001500Z
+SUMMARY:☿ △ ⚷ Mercury trine Chiron
+DESCRIPTION:Mercury trine Chiron
+END:VEVENT
+BEGIN:VEVENT
+UID:♆ □ ⚵ Neptune square Juno::Neptune square Juno::20251228T025000
+DTSTAMP:20251028T091135Z
+DTSTART:20251228T025000Z
+SUMMARY:♆ □ ⚵ Neptune square Juno
+DESCRIPTION:Neptune square Juno
+END:VEVENT
+END:VCALENDAR

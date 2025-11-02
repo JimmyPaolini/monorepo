@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:☿ ⚹ ♅ Mercury sextile Uranus::Mercury sextile Uranus::20250626T094500
+DTSTAMP:20251028T032018Z
+DTSTART:20250626T094500Z
+SUMMARY:☿ ⚹ ♅ Mercury sextile Uranus
+DESCRIPTION:Mercury sextile Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⚹ ☊ Venus sextile North Lunar Node::Venus sextile North Lunar Node::20250626T105100
+DTSTAMP:20251028T032018Z
+DTSTART:20250626T105100Z
+SUMMARY:♀️ ⚹ ☊ Venus sextile North Lunar Node
+DESCRIPTION:Venus sextile North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⚹ ♂️ Sun sextile Mars::Sun sextile Mars::20250626T141200
+DTSTAMP:20251028T032018Z
+DTSTART:20250626T141200Z
+SUMMARY:☀️ ⚹ ♂️ Sun sextile Mars
+DESCRIPTION:Sun sextile Mars
+END:VEVENT
+BEGIN:VEVENT
+UID:⚴ □ 🌚 Pallas square Lunar Apogee::Pallas square Lunar Apogee::20250626T222000
+DTSTAMP:20251028T032018Z
+DTSTART:20250626T222000Z
+SUMMARY:⚴ □ 🌚 Pallas square Lunar Apogee
+DESCRIPTION:Pallas square Lunar Apogee
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,46 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee::Vesta quintile Lunar Apogee::20251120T065500
+DTSTAMP:20251028T080036Z
+DTSTART:20251120T065500Z
+SUMMARY:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee
+DESCRIPTION:Vesta quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♂️ ± ♆ Mars biquintile Neptune::Mars biquintile Neptune::20251120T094100
+DTSTAMP:20251028T080036Z
+DTSTART:20251120T094100Z
+SUMMARY:♂️ ± ♆ Mars biquintile Neptune
+DESCRIPTION:Mars biquintile Neptune
+END:VEVENT
+BEGIN:VEVENT
+UID:☊ ± 🌚 North Lunar Node biquintile Lunar Apogee::North Lunar Node biquintile Lunar Apogee::20251120T105100
+DTSTAMP:20251028T080036Z
+DTSTART:20251120T105100Z
+SUMMARY:☊ ± 🌚 North Lunar Node biquintile Lunar Apogee
+DESCRIPTION:North Lunar Node biquintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:⚶ ⬠ ☊ Vesta quintile North Lunar Node::Vesta quintile North Lunar Node::20251121T011600
+DTSTAMP:20251028T080036Z
+DTSTART:20251121T011600Z
+SUMMARY:⚶ ⬠ ☊ Vesta quintile North Lunar Node
+DESCRIPTION:Vesta quintile North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:⚴ ⬠ ☊ Pallas quintile North Lunar Node::Pallas quintile North Lunar Node::20251121T032800
+DTSTAMP:20251028T080036Z
+DTSTART:20251121T032800Z
+SUMMARY:⚴ ⬠ ☊ Pallas quintile North Lunar Node
+DESCRIPTION:Pallas quintile North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:⚷ ± 🌚 Chiron biquintile Lunar Apogee::Chiron biquintile Lunar Apogee::20251121T040400
+DTSTAMP:20251028T080036Z
+DTSTART:20251121T040400Z
+SUMMARY:⚷ ± 🌚 Chiron biquintile Lunar Apogee
+DESCRIPTION:Chiron biquintile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

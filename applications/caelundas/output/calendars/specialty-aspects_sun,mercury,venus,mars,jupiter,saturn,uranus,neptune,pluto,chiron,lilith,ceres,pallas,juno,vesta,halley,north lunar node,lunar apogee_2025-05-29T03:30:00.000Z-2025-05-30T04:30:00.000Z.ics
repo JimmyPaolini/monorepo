@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☿ ⬠ ☄ Mercury quintile Halley::Mercury quintile Halley::20250529T094100
+DTSTAMP:20251028T022708Z
+DTSTART:20250529T094100Z
+SUMMARY:☿ ⬠ ☄ Mercury quintile Halley
+DESCRIPTION:Mercury quintile Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ♂️ Mercury quintile Mars::Mercury quintile Mars::20250529T145000
+DTSTAMP:20251028T022708Z
+DTSTART:20250529T145000Z
+SUMMARY:☿ ⬠ ♂️ Mercury quintile Mars
+DESCRIPTION:Mercury quintile Mars
+END:VEVENT
+BEGIN:VEVENT
+UID:⚸ ± 🌚 Lilith biquintile Lunar Apogee::Lilith biquintile Lunar Apogee::20250529T232100
+DTSTAMP:20251028T022708Z
+DTSTART:20250529T232100Z
+SUMMARY:⚸ ± 🌚 Lilith biquintile Lunar Apogee
+DESCRIPTION:Lilith biquintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♄ ± ⚶ Saturn biquintile Vesta::Saturn biquintile Vesta::20250530T031900
+DTSTAMP:20251028T022708Z
+DTSTART:20250530T031900Z
+SUMMARY:♄ ± ⚶ Saturn biquintile Vesta
+DESCRIPTION:Saturn biquintile Vesta
+END:VEVENT
+END:VCALENDAR

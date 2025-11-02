@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☀️ ⬠ 🌚 Sun quintile Lunar Apogee::Sun quintile Lunar Apogee::20250917T070100
+DTSTAMP:20251028T055752Z
+DTSTART:20250917T070100Z
+SUMMARY:☀️ ⬠ 🌚 Sun quintile Lunar Apogee
+DESCRIPTION:Sun quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ 🌚 Mercury quintile Lunar Apogee::Mercury quintile Lunar Apogee::20250917T072100
+DTSTAMP:20251028T055752Z
+DTSTART:20250917T072100Z
+SUMMARY:☿ ⬠ 🌚 Mercury quintile Lunar Apogee
+DESCRIPTION:Mercury quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:⚸ ± 🌚 Lilith biquintile Lunar Apogee::Lilith biquintile Lunar Apogee::20250917T124600
+DTSTAMP:20251028T055752Z
+DTSTART:20250917T124600Z
+SUMMARY:⚸ ± 🌚 Lilith biquintile Lunar Apogee
+DESCRIPTION:Lilith biquintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♄ ± 🌚 Saturn biquintile Lunar Apogee::Saturn biquintile Lunar Apogee::20250918T010800
+DTSTAMP:20251028T055752Z
+DTSTART:20250918T010800Z
+SUMMARY:♄ ± 🌚 Saturn biquintile Lunar Apogee
+DESCRIPTION:Saturn biquintile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

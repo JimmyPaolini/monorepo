@@ -1,0 +1,46 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:☀️ ⚺ ⚷ Sun semisextile Chiron::Sun semisextile Chiron::20250311T113400
+DTSTAMP:20251027T235948Z
+DTSTART:20250311T113400Z
+SUMMARY:☀️ ⚺ ⚷ Sun semisextile Chiron
+DESCRIPTION:Sun semisextile Chiron
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ∠ ⚸ Sun semisquare Lilith::Sun semisquare Lilith::20250311T115600
+DTSTAMP:20251027T235948Z
+DTSTART:20250311T115600Z
+SUMMARY:☀️ ∠ ⚸ Sun semisquare Lilith
+DESCRIPTION:Sun semisquare Lilith
+END:VEVENT
+BEGIN:VEVENT
+UID:⚵ ∠ 🌚 Juno semisquare Lunar Apogee::Juno semisquare Lunar Apogee::20250311T132000
+DTSTAMP:20251027T235948Z
+DTSTART:20250311T132000Z
+SUMMARY:⚵ ∠ 🌚 Juno semisquare Lunar Apogee
+DESCRIPTION:Juno semisquare Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ∠ ♅ Venus semisquare Uranus::Venus semisquare Uranus::20250311T134300
+DTSTAMP:20251027T235948Z
+DTSTART:20250311T134300Z
+SUMMARY:♀️ ∠ ♅ Venus semisquare Uranus
+DESCRIPTION:Venus semisquare Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:⚷ ∠ ⚳ Chiron semisquare Ceres::Chiron semisquare Ceres::20250311T174500
+DTSTAMP:20251027T235948Z
+DTSTART:20250311T174500Z
+SUMMARY:⚷ ∠ ⚳ Chiron semisquare Ceres
+DESCRIPTION:Chiron semisquare Ceres
+END:VEVENT
+BEGIN:VEVENT
+UID:⚶ ⚺ 🌚 Vesta semisextile Lunar Apogee::Vesta semisextile Lunar Apogee::20250311T193800
+DTSTAMP:20251027T235948Z
+DTSTART:20250311T193800Z
+SUMMARY:⚶ ⚺ 🌚 Vesta semisextile Lunar Apogee
+DESCRIPTION:Vesta semisextile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

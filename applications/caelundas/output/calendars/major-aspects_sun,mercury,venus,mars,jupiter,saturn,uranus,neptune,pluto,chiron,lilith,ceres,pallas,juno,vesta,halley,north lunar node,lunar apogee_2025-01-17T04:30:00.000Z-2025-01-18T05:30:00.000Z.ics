@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:♇ □ 🌚 Pluto square Lunar Apogee::Pluto square Lunar Apogee::20250117T075900
+DTSTAMP:20251027T222157Z
+DTSTART:20250117T075900Z
+SUMMARY:♇ □ 🌚 Pluto square Lunar Apogee
+DESCRIPTION:Pluto square Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⚹ ♆ Sun sextile Neptune::Sun sextile Neptune::20250117T112000
+DTSTAMP:20251027T222157Z
+DTSTART:20250117T112000Z
+SUMMARY:☀️ ⚹ ♆ Sun sextile Neptune
+DESCRIPTION:Sun sextile Neptune
+END:VEVENT
+END:VCALENDAR

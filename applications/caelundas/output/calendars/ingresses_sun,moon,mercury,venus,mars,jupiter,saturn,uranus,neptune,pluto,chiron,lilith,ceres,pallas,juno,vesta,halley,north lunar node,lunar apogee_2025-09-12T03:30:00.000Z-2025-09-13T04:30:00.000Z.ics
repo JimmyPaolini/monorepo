@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Decan Ingresses 🔟
+BEGIN:VEVENT
+UID:🌙 → ♉︎3️⃣ Moon ingress decan 3 Taurus::Moon ingress decan 3 Taurus::20250912T050100
+DTSTAMP:20251028T054819Z
+DTSTART:20250912T050100Z
+SUMMARY:🌙 → ♉︎3️⃣ Moon ingress decan 3 Taurus
+DESCRIPTION:Moon ingress decan 3 Taurus
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ → ♍︎3️⃣ Sun ingress decan 3 Virgo::Sun ingress decan 3 Virgo::20250912T122400
+DTSTAMP:20251028T054819Z
+DTSTART:20250912T122400Z
+SUMMARY:☀️ → ♍︎3️⃣ Sun ingress decan 3 Virgo
+DESCRIPTION:Sun ingress decan 3 Virgo
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ → ♍︎3️⃣ Mercury ingress decan 3 Virgo::Mercury ingress decan 3 Virgo::20250912T231200
+DTSTAMP:20251028T054819Z
+DTSTART:20250912T231200Z
+SUMMARY:☿ → ♍︎3️⃣ Mercury ingress decan 3 Virgo
+DESCRIPTION:Mercury ingress decan 3 Virgo
+END:VEVENT
+END:VCALENDAR

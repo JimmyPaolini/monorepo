@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:♆ △ 🌚 Neptune trine Lunar Apogee::Neptune trine Lunar Apogee::20251101T072100
+DTSTAMP:20251028T072407Z
+DTSTART:20251101T072100Z
+SUMMARY:♆ △ 🌚 Neptune trine Lunar Apogee
+DESCRIPTION:Neptune trine Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☄ □ 🌚 Halley square Lunar Apogee::Halley square Lunar Apogee::20251101T191100
+DTSTAMP:20251028T072407Z
+DTSTART:20251101T191100Z
+SUMMARY:☄ □ 🌚 Halley square Lunar Apogee
+DESCRIPTION:Halley square Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♂️ ☌ 🌚 Mars conjunct Lunar Apogee::Mars conjunct Lunar Apogee::20251101T220400
+DTSTAMP:20251028T072407Z
+DTSTART:20251101T220400Z
+SUMMARY:♂️ ☌ 🌚 Mars conjunct Lunar Apogee
+DESCRIPTION:Mars conjunct Lunar Apogee
+END:VEVENT
+END:VCALENDAR

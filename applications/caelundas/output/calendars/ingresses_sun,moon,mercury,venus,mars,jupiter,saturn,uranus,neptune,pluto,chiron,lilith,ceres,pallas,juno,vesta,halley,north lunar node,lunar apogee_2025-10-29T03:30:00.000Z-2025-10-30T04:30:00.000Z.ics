@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Decan Ingresses 🔟
+BEGIN:VEVENT
+UID:♀️ → ♎︎3️⃣ Venus ingress decan 3 Libra::Venus ingress decan 3 Libra::20251029T224500
+DTSTAMP:20251028T071824Z
+DTSTART:20251029T224500Z
+SUMMARY:♀️ → ♎︎3️⃣ Venus ingress decan 3 Libra
+DESCRIPTION:Venus ingress decan 3 Libra
+END:VEVENT
+BEGIN:VEVENT
+UID:🌙 → ♒︎2️⃣ Moon ingress decan 2 Aquarius::Moon ingress decan 2 Aquarius::20251029T225800
+DTSTAMP:20251028T071824Z
+DTSTART:20251029T225800Z
+SUMMARY:🌙 → ♒︎2️⃣ Moon ingress decan 2 Aquarius
+DESCRIPTION:Moon ingress decan 2 Aquarius
+END:VEVENT
+END:VCALENDAR

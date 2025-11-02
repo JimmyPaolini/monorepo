@@ -1,0 +1,46 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♀️ ⚻ ♇ Venus quincunx Pluto::Venus quincunx Pluto::20250802T054600
+DTSTAMP:20251028T043018Z
+DTSTART:20250802T054600Z
+SUMMARY:♀️ ⚻ ♇ Venus quincunx Pluto
+DESCRIPTION:Venus quincunx Pluto
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⚼ ⚵ Venus sesquiquadrate Juno::Venus sesquiquadrate Juno::20250802T070600
+DTSTAMP:20251028T043018Z
+DTSTART:20250802T070600Z
+SUMMARY:♀️ ⚼ ⚵ Venus sesquiquadrate Juno
+DESCRIPTION:Venus sesquiquadrate Juno
+END:VEVENT
+BEGIN:VEVENT
+UID:♂️ ⚻ ⚷ Mars quincunx Chiron::Mars quincunx Chiron::20250802T092500
+DTSTAMP:20251028T043018Z
+DTSTART:20250802T092500Z
+SUMMARY:♂️ ⚻ ⚷ Mars quincunx Chiron
+DESCRIPTION:Mars quincunx Chiron
+END:VEVENT
+BEGIN:VEVENT
+UID:♂️ ∠ 🌚 Mars semisquare Lunar Apogee::Mars semisquare Lunar Apogee::20250802T145000
+DTSTAMP:20251028T043018Z
+DTSTART:20250802T145000Z
+SUMMARY:♂️ ∠ 🌚 Mars semisquare Lunar Apogee
+DESCRIPTION:Mars semisquare Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♆ ∠ ⚴ Neptune semisquare Pallas::Neptune semisquare Pallas::20250802T174100
+DTSTAMP:20251028T043018Z
+DTSTART:20250802T174100Z
+SUMMARY:♆ ∠ ⚴ Neptune semisquare Pallas
+DESCRIPTION:Neptune semisquare Pallas
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⚺ ☄ Venus semisextile Halley::Venus semisextile Halley::20250802T231000
+DTSTAMP:20251028T043018Z
+DTSTART:20250802T231000Z
+SUMMARY:♀️ ⚺ ☄ Venus semisextile Halley
+DESCRIPTION:Venus semisextile Halley
+END:VEVENT
+END:VCALENDAR

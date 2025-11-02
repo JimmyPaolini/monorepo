@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee::Vesta quintile Lunar Apogee::20250301T185200
+DTSTAMP:20251027T234127Z
+DTSTART:20250301T185200Z
+SUMMARY:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee
+DESCRIPTION:Vesta quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⬠ ♅ Sun quintile Uranus::Sun quintile Uranus::20250302T001400
+DTSTAMP:20251027T234127Z
+DTSTART:20250302T001400Z
+SUMMARY:☀️ ⬠ ♅ Sun quintile Uranus
+DESCRIPTION:Sun quintile Uranus
+END:VEVENT
+END:VCALENDAR

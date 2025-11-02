@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:☀️ △ ⚶ Sun trine Vesta::Sun trine Vesta::20250308T021400
+DTSTAMP:20251027T235231Z
+DTSTART:20250308T021400Z
+SUMMARY:☀️ △ ⚶ Sun trine Vesta
+DESCRIPTION:Sun trine Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:⚵ ⚹ 🌚 Juno sextile Lunar Apogee::Juno sextile Lunar Apogee::20250308T040100
+DTSTAMP:20251027T235231Z
+DTSTART:20250308T040100Z
+SUMMARY:⚵ ⚹ 🌚 Juno sextile Lunar Apogee
+DESCRIPTION:Juno sextile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

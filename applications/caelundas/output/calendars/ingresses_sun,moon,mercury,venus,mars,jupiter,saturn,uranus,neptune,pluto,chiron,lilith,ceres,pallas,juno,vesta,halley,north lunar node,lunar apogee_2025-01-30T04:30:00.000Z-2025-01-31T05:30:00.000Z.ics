@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Decan Ingresses 🔟
+BEGIN:VEVENT
+UID:🌙 → ♒︎3️⃣ Moon ingress decan 3 Aquarius::Moon ingress decan 3 Aquarius::20250130T055700
+DTSTAMP:20251027T224556Z
+DTSTART:20250130T055700Z
+SUMMARY:🌙 → ♒︎3️⃣ Moon ingress decan 3 Aquarius
+DESCRIPTION:Moon ingress decan 3 Aquarius
+END:VEVENT
+BEGIN:VEVENT
+UID:⚶ → ♏︎2️⃣ Vesta ingress decan 2 Scorpio::Vesta ingress decan 2 Scorpio::20250131T034100
+DTSTAMP:20251027T224556Z
+DTSTART:20250131T034100Z
+SUMMARY:⚶ → ♏︎2️⃣ Vesta ingress decan 2 Scorpio
+DESCRIPTION:Vesta ingress decan 2 Scorpio
+END:VEVENT
+END:VCALENDAR

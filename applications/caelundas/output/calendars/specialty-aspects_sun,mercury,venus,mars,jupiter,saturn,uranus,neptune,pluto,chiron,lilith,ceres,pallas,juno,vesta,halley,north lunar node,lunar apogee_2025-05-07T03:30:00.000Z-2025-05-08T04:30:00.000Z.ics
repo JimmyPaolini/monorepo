@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:♂️ ⬠ ♅ Mars quintile Uranus::Mars quintile Uranus::20250507T145500
+DTSTAMP:20251028T014550Z
+DTSTART:20250507T145500Z
+SUMMARY:♂️ ⬠ ♅ Mars quintile Uranus
+DESCRIPTION:Mars quintile Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ☄ Mercury quintile Halley::Mercury quintile Halley::20250507T172100
+DTSTAMP:20251028T014550Z
+DTSTART:20250507T172100Z
+SUMMARY:☿ ⬠ ☄ Mercury quintile Halley
+DESCRIPTION:Mercury quintile Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⬠ ☊ Sun quintile North Lunar Node::Sun quintile North Lunar Node::20250507T175500
+DTSTAMP:20251028T014550Z
+DTSTART:20250507T175500Z
+SUMMARY:☀️ ⬠ ☊ Sun quintile North Lunar Node
+DESCRIPTION:Sun quintile North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⬠ ⚸ Venus quintile Lilith::Venus quintile Lilith::20250507T182400
+DTSTAMP:20251028T014550Z
+DTSTART:20250507T182400Z
+SUMMARY:♀️ ⬠ ⚸ Venus quintile Lilith
+DESCRIPTION:Venus quintile Lilith
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ± ⚶ Venus biquintile Vesta::Venus biquintile Vesta::20250508T031100
+DTSTAMP:20251028T014550Z
+DTSTART:20250508T031100Z
+SUMMARY:♀️ ± ⚶ Venus biquintile Vesta
+DESCRIPTION:Venus biquintile Vesta
+END:VEVENT
+END:VCALENDAR

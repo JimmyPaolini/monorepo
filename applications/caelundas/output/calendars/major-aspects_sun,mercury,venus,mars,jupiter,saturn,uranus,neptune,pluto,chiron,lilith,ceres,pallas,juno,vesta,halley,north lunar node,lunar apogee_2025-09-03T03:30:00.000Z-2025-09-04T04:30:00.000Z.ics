@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:☿ □ ♅ Mercury square Uranus::Mercury square Uranus::20250903T074100
+DTSTAMP:20251028T053103Z
+DTSTART:20250903T074100Z
+SUMMARY:☿ □ ♅ Mercury square Uranus
+DESCRIPTION:Mercury square Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⚹ 🌚 Sun sextile Lunar Apogee::Sun sextile Lunar Apogee::20250903T082600
+DTSTAMP:20251028T053103Z
+DTSTART:20250903T082600Z
+SUMMARY:☀️ ⚹ 🌚 Sun sextile Lunar Apogee
+DESCRIPTION:Sun sextile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ □ 🌚 Venus square Lunar Apogee::Venus square Lunar Apogee::20250903T123200
+DTSTAMP:20251028T053103Z
+DTSTART:20250903T123200Z
+SUMMARY:♀️ □ 🌚 Venus square Lunar Apogee
+DESCRIPTION:Venus square Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:⚴ □ 🌚 Pallas square Lunar Apogee::Pallas square Lunar Apogee::20250903T214400
+DTSTAMP:20251028T053103Z
+DTSTART:20250903T214400Z
+SUMMARY:⚴ □ 🌚 Pallas square Lunar Apogee
+DESCRIPTION:Pallas square Lunar Apogee
+END:VEVENT
+END:VCALENDAR

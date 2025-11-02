@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee::Vesta quintile Lunar Apogee::20250227T164900
+DTSTAMP:20251027T233746Z
+DTSTART:20250227T164900Z
+SUMMARY:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee
+DESCRIPTION:Vesta quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ♇ Mercury quintile Pluto::Mercury quintile Pluto::20250227T191600
+DTSTAMP:20251027T233746Z
+DTSTART:20250227T191600Z
+SUMMARY:☿ ⬠ ♇ Mercury quintile Pluto
+DESCRIPTION:Mercury quintile Pluto
+END:VEVENT
+END:VCALENDAR

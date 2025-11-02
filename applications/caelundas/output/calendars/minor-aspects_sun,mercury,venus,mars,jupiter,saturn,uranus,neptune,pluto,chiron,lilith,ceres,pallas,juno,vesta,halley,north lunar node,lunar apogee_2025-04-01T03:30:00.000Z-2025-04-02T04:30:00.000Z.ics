@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:☿ ∠ ⚸ Mercury semisquare Lilith::Mercury semisquare Lilith::20250401T110300
+DTSTAMP:20251028T003843Z
+DTSTART:20250401T110300Z
+SUMMARY:☿ ∠ ⚸ Mercury semisquare Lilith
+DESCRIPTION:Mercury semisquare Lilith
+END:VEVENT
+BEGIN:VEVENT
+UID:⚳ ⚻ 🌚 Ceres quincunx Lunar Apogee::Ceres quincunx Lunar Apogee::20250402T014700
+DTSTAMP:20251028T003843Z
+DTSTART:20250402T014700Z
+SUMMARY:⚳ ⚻ 🌚 Ceres quincunx Lunar Apogee
+DESCRIPTION:Ceres quincunx Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:⚳ ⚺ ⚴ Ceres semisextile Pallas::Ceres semisextile Pallas::20250402T015300
+DTSTAMP:20251028T003843Z
+DTSTART:20250402T015300Z
+SUMMARY:⚳ ⚺ ⚴ Ceres semisextile Pallas
+DESCRIPTION:Ceres semisextile Pallas
+END:VEVENT
+END:VCALENDAR

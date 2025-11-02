@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♃ ⚼ 🌚 Jupiter sesquiquadrate Lunar Apogee::Jupiter sesquiquadrate Lunar Apogee::20250613T085300
+DTSTAMP:20251028T025544Z
+DTSTART:20250613T085300Z
+SUMMARY:♃ ⚼ 🌚 Jupiter sesquiquadrate Lunar Apogee
+DESCRIPTION:Jupiter sesquiquadrate Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ∠ ☊ Venus semisquare North Lunar Node::Venus semisquare North Lunar Node::20250613T094100
+DTSTAMP:20251028T025544Z
+DTSTART:20250613T094100Z
+SUMMARY:♀️ ∠ ☊ Venus semisquare North Lunar Node
+DESCRIPTION:Venus semisquare North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:♄ ⚼ 🌚 Saturn sesquiquadrate Lunar Apogee::Saturn sesquiquadrate Lunar Apogee::20250613T110400
+DTSTAMP:20251028T025544Z
+DTSTART:20250613T110400Z
+SUMMARY:♄ ⚼ 🌚 Saturn sesquiquadrate Lunar Apogee
+DESCRIPTION:Saturn sesquiquadrate Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♆ ⚼ 🌚 Neptune sesquiquadrate Lunar Apogee::Neptune sesquiquadrate Lunar Apogee::20250613T153200
+DTSTAMP:20251028T025544Z
+DTSTART:20250613T153200Z
+SUMMARY:♆ ⚼ 🌚 Neptune sesquiquadrate Lunar Apogee
+DESCRIPTION:Neptune sesquiquadrate Lunar Apogee
+END:VEVENT
+END:VCALENDAR

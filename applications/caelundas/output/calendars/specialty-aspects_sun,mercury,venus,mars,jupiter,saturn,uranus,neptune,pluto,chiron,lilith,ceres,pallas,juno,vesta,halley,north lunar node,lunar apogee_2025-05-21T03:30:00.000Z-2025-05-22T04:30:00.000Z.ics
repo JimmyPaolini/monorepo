@@ -1,0 +1,60 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☿ ⬠ ♄ Mercury quintile Saturn::Mercury quintile Saturn::20250521T201800
+DTSTAMP:20251028T021205Z
+DTSTART:20250521T201800Z
+SUMMARY:☿ ⬠ ♄ Mercury quintile Saturn
+DESCRIPTION:Mercury quintile Saturn
+END:VEVENT
+BEGIN:VEVENT
+UID:♆ ± ⚶ Neptune biquintile Vesta::Neptune biquintile Vesta::20250521T211400
+DTSTAMP:20251028T021205Z
+DTSTART:20250521T211400Z
+SUMMARY:♆ ± ⚶ Neptune biquintile Vesta
+DESCRIPTION:Neptune biquintile Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:⚳ ± ⚶ Ceres biquintile Vesta::Ceres biquintile Vesta::20250521T231300
+DTSTAMP:20251028T021205Z
+DTSTART:20250521T231300Z
+SUMMARY:⚳ ± ⚶ Ceres biquintile Vesta
+DESCRIPTION:Ceres biquintile Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⬠ ⚴ Venus quintile Pallas::Venus quintile Pallas::20250522T000700
+DTSTAMP:20251028T021205Z
+DTSTART:20250522T000700Z
+SUMMARY:♀️ ⬠ ⚴ Venus quintile Pallas
+DESCRIPTION:Venus quintile Pallas
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⬠ ♇ Venus quintile Pluto::Venus quintile Pluto::20250522T010500
+DTSTAMP:20251028T021205Z
+DTSTART:20250522T010500Z
+SUMMARY:♀️ ⬠ ♇ Venus quintile Pluto
+DESCRIPTION:Venus quintile Pluto
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⬠ ⚷ Sun quintile Chiron::Sun quintile Chiron::20250522T012000
+DTSTAMP:20251028T021205Z
+DTSTART:20250522T012000Z
+SUMMARY:☀️ ⬠ ⚷ Sun quintile Chiron
+DESCRIPTION:Sun quintile Chiron
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⬠ ☄ Sun quintile Halley::Sun quintile Halley::20250522T025000
+DTSTAMP:20251028T021205Z
+DTSTART:20250522T025000Z
+SUMMARY:☀️ ⬠ ☄ Sun quintile Halley
+DESCRIPTION:Sun quintile Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ± ♇ Mercury biquintile Pluto::Mercury biquintile Pluto::20250522T030200
+DTSTAMP:20251028T021205Z
+DTSTART:20250522T030200Z
+SUMMARY:☿ ± ♇ Mercury biquintile Pluto
+DESCRIPTION:Mercury biquintile Pluto
+END:VEVENT
+END:VCALENDAR

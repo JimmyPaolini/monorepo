@@ -1,0 +1,53 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☿ ⬠ ⚶ Mercury quintile Vesta::Mercury quintile Vesta::20250911T055600
+DTSTAMP:20251028T054622Z
+DTSTART:20250911T055600Z
+SUMMARY:☿ ⬠ ⚶ Mercury quintile Vesta
+DESCRIPTION:Mercury quintile Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:☊ ± 🌚 North Lunar Node biquintile Lunar Apogee::North Lunar Node biquintile Lunar Apogee::20250911T061500
+DTSTAMP:20251028T054622Z
+DTSTART:20250911T061500Z
+SUMMARY:☊ ± 🌚 North Lunar Node biquintile Lunar Apogee
+DESCRIPTION:North Lunar Node biquintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ 🌚 Mercury quintile Lunar Apogee::Mercury quintile Lunar Apogee::20250911T145600
+DTSTAMP:20251028T054622Z
+DTSTART:20250911T145600Z
+SUMMARY:☿ ⬠ 🌚 Mercury quintile Lunar Apogee
+DESCRIPTION:Mercury quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♂️ ⬠ ⚶ Mars quintile Vesta::Mars quintile Vesta::20250911T193400
+DTSTAMP:20251028T054622Z
+DTSTART:20250911T193400Z
+SUMMARY:♂️ ⬠ ⚶ Mars quintile Vesta
+DESCRIPTION:Mars quintile Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee::Vesta quintile Lunar Apogee::20250911T220000
+DTSTAMP:20251028T054622Z
+DTSTART:20250911T220000Z
+SUMMARY:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee
+DESCRIPTION:Vesta quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ± ♅ Sun biquintile Uranus::Sun biquintile Uranus::20250911T225000
+DTSTAMP:20251028T054622Z
+DTSTART:20250911T225000Z
+SUMMARY:☀️ ± ♅ Sun biquintile Uranus
+DESCRIPTION:Sun biquintile Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ☄ Mercury quintile Halley::Mercury quintile Halley::20250911T232100
+DTSTAMP:20251028T054622Z
+DTSTART:20250911T232100Z
+SUMMARY:☿ ⬠ ☄ Mercury quintile Halley
+DESCRIPTION:Mercury quintile Halley
+END:VEVENT
+END:VCALENDAR

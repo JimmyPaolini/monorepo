@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:☊ ⚼ 🌚 North Lunar Node sesquiquadrate Lunar Apogee::North Lunar Node sesquiquadrate Lunar Apogee::20250905T204100
+DTSTAMP:20251028T053456Z
+DTSTART:20250905T204100Z
+SUMMARY:☊ ⚼ 🌚 North Lunar Node sesquiquadrate Lunar Apogee
+DESCRIPTION:North Lunar Node sesquiquadrate Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⚺ ☄ Sun semisextile Halley::Sun semisextile Halley::20250905T230100
+DTSTAMP:20251028T053456Z
+DTSTART:20250905T230100Z
+SUMMARY:☀️ ⚺ ☄ Sun semisextile Halley
+DESCRIPTION:Sun semisextile Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:⚷ ⚻ ⚶ Chiron quincunx Vesta::Chiron quincunx Vesta::20250906T023600
+DTSTAMP:20251028T053456Z
+DTSTART:20250906T023600Z
+SUMMARY:⚷ ⚻ ⚶ Chiron quincunx Vesta
+DESCRIPTION:Chiron quincunx Vesta
+END:VEVENT
+END:VCALENDAR

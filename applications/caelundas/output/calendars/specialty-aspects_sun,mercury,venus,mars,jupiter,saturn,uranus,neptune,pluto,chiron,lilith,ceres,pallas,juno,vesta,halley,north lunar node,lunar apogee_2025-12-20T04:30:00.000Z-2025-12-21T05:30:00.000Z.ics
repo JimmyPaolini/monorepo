@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☿ ± ♆ Mercury biquintile Neptune::Mercury biquintile Neptune::20251220T091700
+DTSTAMP:20251028T085814Z
+DTSTART:20251220T091700Z
+SUMMARY:☿ ± ♆ Mercury biquintile Neptune
+DESCRIPTION:Mercury biquintile Neptune
+END:VEVENT
+BEGIN:VEVENT
+UID:♆ ⬠ ⚴ Neptune quintile Pallas::Neptune quintile Pallas::20251220T200400
+DTSTAMP:20251028T085814Z
+DTSTART:20251220T200400Z
+SUMMARY:♆ ⬠ ⚴ Neptune quintile Pallas
+DESCRIPTION:Neptune quintile Pallas
+END:VEVENT
+BEGIN:VEVENT
+UID:♂️ ± ♅ Mars biquintile Uranus::Mars biquintile Uranus::20251220T234100
+DTSTAMP:20251028T085814Z
+DTSTART:20251220T234100Z
+SUMMARY:♂️ ± ♅ Mars biquintile Uranus
+DESCRIPTION:Mars biquintile Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⬠ ☊ Sun quintile North Lunar Node::Sun quintile North Lunar Node::20251220T235600
+DTSTAMP:20251028T085814Z
+DTSTART:20251220T235600Z
+SUMMARY:☀️ ⬠ ☊ Sun quintile North Lunar Node
+DESCRIPTION:Sun quintile North Lunar Node
+END:VEVENT
+END:VCALENDAR

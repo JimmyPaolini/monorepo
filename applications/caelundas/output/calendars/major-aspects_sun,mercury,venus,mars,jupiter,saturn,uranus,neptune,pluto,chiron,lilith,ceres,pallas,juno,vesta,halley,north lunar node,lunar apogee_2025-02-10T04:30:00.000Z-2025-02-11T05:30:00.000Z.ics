@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:⚳ △ 🌚 Ceres trine Lunar Apogee::Ceres trine Lunar Apogee::20250210T072100
+DTSTAMP:20251027T230620Z
+DTSTART:20250210T072100Z
+SUMMARY:⚳ △ 🌚 Ceres trine Lunar Apogee
+DESCRIPTION:Ceres trine Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:⚸ □ 🌚 Lilith square Lunar Apogee::Lilith square Lunar Apogee::20250210T104200
+DTSTAMP:20251027T230620Z
+DTSTART:20250210T104200Z
+SUMMARY:⚸ □ 🌚 Lilith square Lunar Apogee
+DESCRIPTION:Lilith square Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☄ △ 🌚 Halley trine Lunar Apogee::Halley trine Lunar Apogee::20250210T105600
+DTSTAMP:20251027T230620Z
+DTSTART:20250210T105600Z
+SUMMARY:☄ △ 🌚 Halley trine Lunar Apogee
+DESCRIPTION:Halley trine Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ □ ♅ Mercury square Uranus::Mercury square Uranus::20250210T192800
+DTSTAMP:20251027T230620Z
+DTSTART:20250210T192800Z
+SUMMARY:☿ □ ♅ Mercury square Uranus
+DESCRIPTION:Mercury square Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:⚴ □ 🌚 Pallas square Lunar Apogee::Pallas square Lunar Apogee::20250211T003600
+DTSTAMP:20251027T230620Z
+DTSTART:20250211T003600Z
+SUMMARY:⚴ □ 🌚 Pallas square Lunar Apogee
+DESCRIPTION:Pallas square Lunar Apogee
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☿ ⬠ 🌚 Mercury quintile Lunar Apogee::Mercury quintile Lunar Apogee::20250902T201200
+DTSTAMP:20251028T052905Z
+DTSTART:20250902T201200Z
+SUMMARY:☿ ⬠ 🌚 Mercury quintile Lunar Apogee
+DESCRIPTION:Mercury quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⬠ ⚵ Sun quintile Juno::Sun quintile Juno::20250903T003100
+DTSTAMP:20251028T052905Z
+DTSTART:20250903T003100Z
+SUMMARY:☀️ ⬠ ⚵ Sun quintile Juno
+DESCRIPTION:Sun quintile Juno
+END:VEVENT
+END:VCALENDAR

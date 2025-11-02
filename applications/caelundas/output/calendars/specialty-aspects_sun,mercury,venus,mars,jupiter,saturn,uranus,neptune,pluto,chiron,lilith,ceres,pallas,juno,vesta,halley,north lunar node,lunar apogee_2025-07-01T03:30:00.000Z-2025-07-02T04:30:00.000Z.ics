@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☀️ ⬠ ♅ Sun quintile Uranus::Sun quintile Uranus::20250701T071400
+DTSTAMP:20251028T032941Z
+DTSTART:20250701T071400Z
+SUMMARY:☀️ ⬠ ♅ Sun quintile Uranus
+DESCRIPTION:Sun quintile Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:☄ ± 🌚 Halley biquintile Lunar Apogee::Halley biquintile Lunar Apogee::20250701T140900
+DTSTAMP:20251028T032941Z
+DTSTART:20250701T140900Z
+SUMMARY:☄ ± 🌚 Halley biquintile Lunar Apogee
+DESCRIPTION:Halley biquintile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♆ ⚻ 🌚 Neptune quincunx Lunar Apogee::Neptune quincunx Lunar Apogee::20251016T045800
+DTSTAMP:20251028T065343Z
+DTSTART:20251016T045800Z
+SUMMARY:♆ ⚻ 🌚 Neptune quincunx Lunar Apogee
+DESCRIPTION:Neptune quincunx Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♅ ⚻ 🌚 Uranus quincunx Lunar Apogee::Uranus quincunx Lunar Apogee::20251016T093800
+DTSTAMP:20251028T065343Z
+DTSTART:20251016T093800Z
+SUMMARY:♅ ⚻ 🌚 Uranus quincunx Lunar Apogee
+DESCRIPTION:Uranus quincunx Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☊ ⚼ 🌚 North Lunar Node sesquiquadrate Lunar Apogee::North Lunar Node sesquiquadrate Lunar Apogee::20251016T210800
+DTSTAMP:20251028T065343Z
+DTSTART:20251016T210800Z
+SUMMARY:☊ ⚼ 🌚 North Lunar Node sesquiquadrate Lunar Apogee
+DESCRIPTION:North Lunar Node sesquiquadrate Lunar Apogee
+END:VEVENT
+END:VCALENDAR

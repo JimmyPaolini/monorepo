@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:⚷ ⚻ ⚵ Chiron quincunx Juno::Chiron quincunx Juno::20250512T102500
+DTSTAMP:20251028T015513Z
+DTSTART:20250512T102500Z
+SUMMARY:⚷ ⚻ ⚵ Chiron quincunx Juno
+DESCRIPTION:Chiron quincunx Juno
+END:VEVENT
+BEGIN:VEVENT
+UID:⚸ ⚺ ☊ Lilith semisextile North Lunar Node::Lilith semisextile North Lunar Node::20250512T142700
+DTSTAMP:20251028T015513Z
+DTSTART:20250512T142700Z
+SUMMARY:⚸ ⚺ ☊ Lilith semisextile North Lunar Node
+DESCRIPTION:Lilith semisextile North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ∠ ⚴ Venus semisquare Pallas::Venus semisquare Pallas::20250512T214200
+DTSTAMP:20251028T015513Z
+DTSTART:20250512T214200Z
+SUMMARY:♀️ ∠ ⚴ Venus semisquare Pallas
+DESCRIPTION:Venus semisquare Pallas
+END:VEVENT
+END:VCALENDAR

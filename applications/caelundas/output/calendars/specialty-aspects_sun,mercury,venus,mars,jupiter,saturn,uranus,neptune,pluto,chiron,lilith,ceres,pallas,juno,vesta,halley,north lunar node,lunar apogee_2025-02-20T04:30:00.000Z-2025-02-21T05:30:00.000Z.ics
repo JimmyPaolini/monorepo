@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:⚴ ± ☄ Pallas biquintile Halley::Pallas biquintile Halley::20250220T124600
+DTSTAMP:20251027T232453Z
+DTSTART:20250220T124600Z
+SUMMARY:⚴ ± ☄ Pallas biquintile Halley
+DESCRIPTION:Pallas biquintile Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ⚴ Mercury quintile Pallas::Mercury quintile Pallas::20250220T153100
+DTSTAMP:20251027T232453Z
+DTSTART:20250220T153100Z
+SUMMARY:☿ ⬠ ⚴ Mercury quintile Pallas
+DESCRIPTION:Mercury quintile Pallas
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ♅ Mercury quintile Uranus::Mercury quintile Uranus::20250220T164200
+DTSTAMP:20251027T232453Z
+DTSTART:20250220T164200Z
+SUMMARY:☿ ⬠ ♅ Mercury quintile Uranus
+DESCRIPTION:Mercury quintile Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:⚷ ⬠ ⚳ Chiron quintile Ceres::Chiron quintile Ceres::20250220T220500
+DTSTAMP:20251027T232453Z
+DTSTART:20250220T220500Z
+SUMMARY:⚷ ⬠ ⚳ Chiron quintile Ceres
+DESCRIPTION:Chiron quintile Ceres
+END:VEVENT
+END:VCALENDAR

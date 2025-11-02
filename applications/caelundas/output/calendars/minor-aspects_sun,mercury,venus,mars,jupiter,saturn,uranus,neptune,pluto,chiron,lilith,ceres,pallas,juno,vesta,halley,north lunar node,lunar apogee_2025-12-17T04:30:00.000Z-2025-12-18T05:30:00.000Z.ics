@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:⚳ ⚻ ☄ Ceres quincunx Halley::Ceres quincunx Halley::20251217T182900
+DTSTAMP:20251028T085229Z
+DTSTART:20251217T182900Z
+SUMMARY:⚳ ⚻ ☄ Ceres quincunx Halley
+DESCRIPTION:Ceres quincunx Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⚼ ⚷ Mercury sesquiquadrate Chiron::Mercury sesquiquadrate Chiron::20251217T184400
+DTSTAMP:20251028T085229Z
+DTSTART:20251217T184400Z
+SUMMARY:☿ ⚼ ⚷ Mercury sesquiquadrate Chiron
+DESCRIPTION:Mercury sesquiquadrate Chiron
+END:VEVENT
+BEGIN:VEVENT
+UID:⚵ ⚺ 🌚 Juno semisextile Lunar Apogee::Juno semisextile Lunar Apogee::20251217T222600
+DTSTAMP:20251028T085229Z
+DTSTART:20251217T222600Z
+SUMMARY:⚵ ⚺ 🌚 Juno semisextile Lunar Apogee
+DESCRIPTION:Juno semisextile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⚼ ♃ Mercury sesquiquadrate Jupiter::Mercury sesquiquadrate Jupiter::20251218T002900
+DTSTAMP:20251028T085229Z
+DTSTART:20251218T002900Z
+SUMMARY:☿ ⚼ ♃ Mercury sesquiquadrate Jupiter
+DESCRIPTION:Mercury sesquiquadrate Jupiter
+END:VEVENT
+END:VCALENDAR

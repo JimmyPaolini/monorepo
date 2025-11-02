@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:☿ ∠ ♅ Mercury semisquare Uranus::Mercury semisquare Uranus::20250312T082600
+DTSTAMP:20251028T000139Z
+DTSTART:20250312T082600Z
+SUMMARY:☿ ∠ ♅ Mercury semisquare Uranus
+DESCRIPTION:Mercury semisquare Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:⚳ ⚼ 🌚 Ceres sesquiquadrate Lunar Apogee::Ceres sesquiquadrate Lunar Apogee::20250312T123200
+DTSTAMP:20251028T000139Z
+DTSTART:20250312T123200Z
+SUMMARY:⚳ ⚼ 🌚 Ceres sesquiquadrate Lunar Apogee
+DESCRIPTION:Ceres sesquiquadrate Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♄ ⚻ 🌚 Saturn quincunx Lunar Apogee::Saturn quincunx Lunar Apogee::20250312T160500
+DTSTAMP:20251028T000139Z
+DTSTART:20250312T160500Z
+SUMMARY:♄ ⚻ 🌚 Saturn quincunx Lunar Apogee
+DESCRIPTION:Saturn quincunx Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⚻ 🌚 Sun quincunx Lunar Apogee::Sun quincunx Lunar Apogee::20250312T173200
+DTSTAMP:20251028T000139Z
+DTSTART:20250312T173200Z
+SUMMARY:☀️ ⚻ 🌚 Sun quincunx Lunar Apogee
+DESCRIPTION:Sun quincunx Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♅ ⚻ 🌚 Uranus quincunx Lunar Apogee::Uranus quincunx Lunar Apogee::20250313T024200
+DTSTAMP:20251028T000139Z
+DTSTART:20250313T024200Z
+SUMMARY:♅ ⚻ 🌚 Uranus quincunx Lunar Apogee
+DESCRIPTION:Uranus quincunx Lunar Apogee
+END:VEVENT
+END:VCALENDAR

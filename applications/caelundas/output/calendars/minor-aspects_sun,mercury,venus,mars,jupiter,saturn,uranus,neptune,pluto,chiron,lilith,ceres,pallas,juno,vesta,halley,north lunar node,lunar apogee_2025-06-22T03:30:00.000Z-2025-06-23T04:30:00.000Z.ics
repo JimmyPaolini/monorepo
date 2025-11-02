@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♀️ ∠ ♄ Venus semisquare Saturn::Venus semisquare Saturn::20250622T061600
+DTSTAMP:20251028T031247Z
+DTSTART:20250622T061600Z
+SUMMARY:♀️ ∠ ♄ Venus semisquare Saturn
+DESCRIPTION:Venus semisquare Saturn
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⚻ 🌚 Sun quincunx Lunar Apogee::Sun quincunx Lunar Apogee::20250622T170800
+DTSTAMP:20251028T031247Z
+DTSTART:20250622T170800Z
+SUMMARY:☀️ ⚻ 🌚 Sun quincunx Lunar Apogee
+DESCRIPTION:Sun quincunx Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ∠ ♆ Venus semisquare Neptune::Venus semisquare Neptune::20250622T190200
+DTSTAMP:20251028T031247Z
+DTSTART:20250622T190200Z
+SUMMARY:♀️ ∠ ♆ Venus semisquare Neptune
+DESCRIPTION:Venus semisquare Neptune
+END:VEVENT
+BEGIN:VEVENT
+UID:♆ ⚼ ⚵ Neptune sesquiquadrate Juno::Neptune sesquiquadrate Juno::20250622T230100
+DTSTAMP:20251028T031247Z
+DTSTART:20250622T230100Z
+SUMMARY:♆ ⚼ ⚵ Neptune sesquiquadrate Juno
+DESCRIPTION:Neptune sesquiquadrate Juno
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⚻ ⚴ Mercury quincunx Pallas::Mercury quincunx Pallas::20250622T233000
+DTSTAMP:20251028T031247Z
+DTSTART:20250622T233000Z
+SUMMARY:☿ ⚻ ⚴ Mercury quincunx Pallas
+DESCRIPTION:Mercury quincunx Pallas
+END:VEVENT
+END:VCALENDAR

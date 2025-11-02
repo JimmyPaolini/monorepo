@@ -1,0 +1,46 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:⚶ ⚺ 🌚 Vesta semisextile Lunar Apogee::Vesta semisextile Lunar Apogee::20250620T051600
+DTSTAMP:20251028T030903Z
+DTSTART:20250620T051600Z
+SUMMARY:⚶ ⚺ 🌚 Vesta semisextile Lunar Apogee
+DESCRIPTION:Vesta semisextile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⚼ 🌚 Mercury sesquiquadrate Lunar Apogee::Mercury sesquiquadrate Lunar Apogee::20250620T053200
+DTSTAMP:20251028T030903Z
+DTSTART:20250620T053200Z
+SUMMARY:☿ ⚼ 🌚 Mercury sesquiquadrate Lunar Apogee
+DESCRIPTION:Mercury sesquiquadrate Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⚺ ♅ Sun semisextile Uranus::Sun semisextile Uranus::20250620T054800
+DTSTAMP:20251028T030903Z
+DTSTART:20250620T054800Z
+SUMMARY:☀️ ⚺ ♅ Sun semisextile Uranus
+DESCRIPTION:Sun semisextile Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:♃ ⚼ ⚵ Jupiter sesquiquadrate Juno::Jupiter sesquiquadrate Juno::20250620T101800
+DTSTAMP:20251028T030903Z
+DTSTART:20250620T101800Z
+SUMMARY:♃ ⚼ ⚵ Jupiter sesquiquadrate Juno
+DESCRIPTION:Jupiter sesquiquadrate Juno
+END:VEVENT
+BEGIN:VEVENT
+UID:☄ ⚼ 🌚 Halley sesquiquadrate Lunar Apogee::Halley sesquiquadrate Lunar Apogee::20250620T160700
+DTSTAMP:20251028T030903Z
+DTSTART:20250620T160700Z
+SUMMARY:☄ ⚼ 🌚 Halley sesquiquadrate Lunar Apogee
+DESCRIPTION:Halley sesquiquadrate Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♂️ ⚻ ♆ Mars quincunx Neptune::Mars quincunx Neptune::20250621T031500
+DTSTAMP:20251028T030903Z
+DTSTART:20250621T031500Z
+SUMMARY:♂️ ⚻ ♆ Mars quincunx Neptune
+DESCRIPTION:Mars quincunx Neptune
+END:VEVENT
+END:VCALENDAR

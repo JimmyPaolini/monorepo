@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:☿ □ ☄ Mercury square Halley::Mercury square Halley::20250420T080400
+DTSTAMP:20251028T011407Z
+DTSTART:20250420T080400Z
+SUMMARY:☿ □ ☄ Mercury square Halley
+DESCRIPTION:Mercury square Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⚹ ♅ Venus sextile Uranus::Venus sextile Uranus::20250420T182100
+DTSTAMP:20251028T011407Z
+DTSTART:20250420T182100Z
+SUMMARY:♀️ ⚹ ♅ Venus sextile Uranus
+DESCRIPTION:Venus sextile Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⚹ ♇ Mercury sextile Pluto::Mercury sextile Pluto::20250420T214000
+DTSTAMP:20251028T011407Z
+DTSTART:20250420T214000Z
+SUMMARY:☿ ⚹ ♇ Mercury sextile Pluto
+DESCRIPTION:Mercury sextile Pluto
+END:VEVENT
+BEGIN:VEVENT
+UID:⚶ ☌ 🌚 Vesta conjunct Lunar Apogee::Vesta conjunct Lunar Apogee::20250420T231800
+DTSTAMP:20251028T011407Z
+DTSTART:20250420T231800Z
+SUMMARY:⚶ ☌ 🌚 Vesta conjunct Lunar Apogee
+DESCRIPTION:Vesta conjunct Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ □ ♂️ Sun square Mars::Sun square Mars::20250421T013400
+DTSTAMP:20251028T011407Z
+DTSTART:20250421T013400Z
+SUMMARY:☀️ □ ♂️ Sun square Mars
+DESCRIPTION:Sun square Mars
+END:VEVENT
+END:VCALENDAR

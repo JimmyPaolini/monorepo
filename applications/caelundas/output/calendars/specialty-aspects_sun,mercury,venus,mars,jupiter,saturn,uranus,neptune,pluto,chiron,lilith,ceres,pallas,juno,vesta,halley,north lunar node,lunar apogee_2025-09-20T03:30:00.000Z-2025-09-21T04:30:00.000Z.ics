@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:♀️ ⬠ ♃ Venus quintile Jupiter::Venus quintile Jupiter::20250920T090500
+DTSTAMP:20251028T060337Z
+DTSTART:20250920T090500Z
+SUMMARY:♀️ ⬠ ♃ Venus quintile Jupiter
+DESCRIPTION:Venus quintile Jupiter
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⬠ ☄ Sun quintile Halley::Sun quintile Halley::20250920T141800
+DTSTAMP:20251028T060337Z
+DTSTART:20250920T141800Z
+SUMMARY:☀️ ⬠ ☄ Sun quintile Halley
+DESCRIPTION:Sun quintile Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ♀️ Mercury quintile Venus::Mercury quintile Venus::20250920T224600
+DTSTAMP:20251028T060337Z
+DTSTART:20250920T224600Z
+SUMMARY:☿ ⬠ ♀️ Mercury quintile Venus
+DESCRIPTION:Mercury quintile Venus
+END:VEVENT
+END:VCALENDAR

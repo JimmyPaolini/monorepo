@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☿ ⬠ ♇ Mercury quintile Pluto::Mercury quintile Pluto::20250107T094100
+DTSTAMP:20251027T220318Z
+DTSTART:20250107T094100Z
+SUMMARY:☿ ⬠ ♇ Mercury quintile Pluto
+DESCRIPTION:Mercury quintile Pluto
+END:VEVENT
+BEGIN:VEVENT
+UID:⚸ ⬠ 🌚 Lilith quintile Lunar Apogee::Lilith quintile Lunar Apogee::20250107T193900
+DTSTAMP:20251027T220318Z
+DTSTART:20250107T193900Z
+SUMMARY:⚸ ⬠ 🌚 Lilith quintile Lunar Apogee
+DESCRIPTION:Lilith quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ± ♅ Mercury biquintile Uranus::Mercury biquintile Uranus::20250108T014500
+DTSTAMP:20251027T220318Z
+DTSTART:20250108T014500Z
+SUMMARY:☿ ± ♅ Mercury biquintile Uranus
+DESCRIPTION:Mercury biquintile Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⬠ ☊ Sun quintile North Lunar Node::Sun quintile North Lunar Node::20250108T030100
+DTSTAMP:20251027T220318Z
+DTSTART:20250108T030100Z
+SUMMARY:☀️ ⬠ ☊ Sun quintile North Lunar Node
+DESCRIPTION:Sun quintile North Lunar Node
+END:VEVENT
+END:VCALENDAR

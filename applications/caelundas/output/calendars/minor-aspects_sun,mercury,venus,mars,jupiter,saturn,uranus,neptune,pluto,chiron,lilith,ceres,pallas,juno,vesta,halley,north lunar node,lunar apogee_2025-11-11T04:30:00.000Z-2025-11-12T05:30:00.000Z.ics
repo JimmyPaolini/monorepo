@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♄ ∠ ⚴ Saturn semisquare Pallas::Saturn semisquare Pallas::20251112T011800
+DTSTAMP:20251028T074324Z
+DTSTART:20251112T011800Z
+SUMMARY:♄ ∠ ⚴ Saturn semisquare Pallas
+DESCRIPTION:Saturn semisquare Pallas
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⚺ ♀️ Mercury semisextile Venus::Mercury semisextile Venus::20251112T021600
+DTSTAMP:20251028T074324Z
+DTSTART:20251112T021600Z
+SUMMARY:☿ ⚺ ♀️ Mercury semisextile Venus
+DESCRIPTION:Mercury semisextile Venus
+END:VEVENT
+END:VCALENDAR

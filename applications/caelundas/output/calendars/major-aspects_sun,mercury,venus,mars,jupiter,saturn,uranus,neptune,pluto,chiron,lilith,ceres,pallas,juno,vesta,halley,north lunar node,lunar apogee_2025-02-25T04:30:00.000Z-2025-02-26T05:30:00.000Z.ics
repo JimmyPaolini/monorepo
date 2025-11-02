@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:♂️ □ 🌚 Mars square Lunar Apogee::Mars square Lunar Apogee::20250225T092700
+DTSTAMP:20251027T233405Z
+DTSTART:20250225T092700Z
+SUMMARY:♂️ □ 🌚 Mars square Lunar Apogee
+DESCRIPTION:Mars square Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ☌ ♄ Mercury conjunct Saturn::Mercury conjunct Saturn::20250225T120200
+DTSTAMP:20251027T233405Z
+DTSTART:20250225T120200Z
+SUMMARY:☿ ☌ ♄ Mercury conjunct Saturn
+DESCRIPTION:Mercury conjunct Saturn
+END:VEVENT
+BEGIN:VEVENT
+UID:⚳ □ ⚵ Ceres square Juno::Ceres square Juno::20250225T165500
+DTSTAMP:20251027T233405Z
+DTSTART:20250225T165500Z
+SUMMARY:⚳ □ ⚵ Ceres square Juno
+DESCRIPTION:Ceres square Juno
+END:VEVENT
+END:VCALENDAR

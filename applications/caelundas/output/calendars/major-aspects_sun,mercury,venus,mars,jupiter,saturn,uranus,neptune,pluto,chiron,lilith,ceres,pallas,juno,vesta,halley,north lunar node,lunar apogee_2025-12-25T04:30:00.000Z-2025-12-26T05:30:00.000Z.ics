@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:♂️ ⚹ ⚸ Mars sextile Lilith::Mars sextile Lilith::20251225T100100
+DTSTAMP:20251028T090749Z
+DTSTART:20251225T100100Z
+SUMMARY:♂️ ⚹ ⚸ Mars sextile Lilith
+DESCRIPTION:Mars sextile Lilith
+END:VEVENT
+BEGIN:VEVENT
+UID:♄ □ 🌚 Saturn square Lunar Apogee::Saturn square Lunar Apogee::20251226T002400
+DTSTAMP:20251028T090749Z
+DTSTART:20251226T002400Z
+SUMMARY:♄ □ 🌚 Saturn square Lunar Apogee
+DESCRIPTION:Saturn square Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ △ ☄ Sun trine Halley::Sun trine Halley::20251226T040200
+DTSTAMP:20251028T090749Z
+DTSTART:20251226T040200Z
+SUMMARY:☀️ △ ☄ Sun trine Halley
+DESCRIPTION:Sun trine Halley
+END:VEVENT
+END:VCALENDAR

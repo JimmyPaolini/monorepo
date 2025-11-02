@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:☄ □ ☊ Halley square North Lunar Node::Halley square North Lunar Node::20250316T071400
+DTSTAMP:20251028T000906Z
+DTSTART:20250316T071400Z
+SUMMARY:☄ □ ☊ Halley square North Lunar Node
+DESCRIPTION:Halley square North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⚹ ⚴ Mercury sextile Pallas::Mercury sextile Pallas::20250316T175300
+DTSTAMP:20251028T000906Z
+DTSTART:20250316T175300Z
+SUMMARY:☿ ⚹ ⚴ Mercury sextile Pallas
+DESCRIPTION:Mercury sextile Pallas
+END:VEVENT
+BEGIN:VEVENT
+UID:♇ □ 🌚 Pluto square Lunar Apogee::Pluto square Lunar Apogee::20250316T230500
+DTSTAMP:20251028T000906Z
+DTSTART:20250316T230500Z
+SUMMARY:♇ □ 🌚 Pluto square Lunar Apogee
+DESCRIPTION:Pluto square Lunar Apogee
+END:VEVENT
+END:VCALENDAR

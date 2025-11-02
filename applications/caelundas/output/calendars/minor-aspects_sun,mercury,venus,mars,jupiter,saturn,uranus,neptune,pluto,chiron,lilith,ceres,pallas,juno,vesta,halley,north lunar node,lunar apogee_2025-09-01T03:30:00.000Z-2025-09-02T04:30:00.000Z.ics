@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♄ ⚼ 🌚 Saturn sesquiquadrate Lunar Apogee::Saturn sesquiquadrate Lunar Apogee::20250901T184400
+DTSTAMP:20251028T052711Z
+DTSTART:20250901T184400Z
+SUMMARY:♄ ⚼ 🌚 Saturn sesquiquadrate Lunar Apogee
+DESCRIPTION:Saturn sesquiquadrate Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♂️ ⚼ ♅ Mars sesquiquadrate Uranus::Mars sesquiquadrate Uranus::20250901T200300
+DTSTAMP:20251028T052711Z
+DTSTART:20250901T200300Z
+SUMMARY:♂️ ⚼ ♅ Mars sesquiquadrate Uranus
+DESCRIPTION:Mars sesquiquadrate Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⚻ ⚴ Sun quincunx Pallas::Sun quincunx Pallas::20250901T223400
+DTSTAMP:20251028T052711Z
+DTSTART:20250901T223400Z
+SUMMARY:☀️ ⚻ ⚴ Sun quincunx Pallas
+DESCRIPTION:Sun quincunx Pallas
+END:VEVENT
+END:VCALENDAR

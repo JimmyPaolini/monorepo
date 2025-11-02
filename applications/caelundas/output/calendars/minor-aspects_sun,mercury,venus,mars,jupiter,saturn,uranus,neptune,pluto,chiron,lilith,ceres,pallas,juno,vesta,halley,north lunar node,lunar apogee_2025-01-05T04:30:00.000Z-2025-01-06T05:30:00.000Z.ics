@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:☿ ∠ ⚳ Mercury semisquare Ceres::Mercury semisquare Ceres::20250105T080500
+DTSTAMP:20251027T215934Z
+DTSTART:20250105T080500Z
+SUMMARY:☿ ∠ ⚳ Mercury semisquare Ceres
+DESCRIPTION:Mercury semisquare Ceres
+END:VEVENT
+BEGIN:VEVENT
+UID:♅ ⚻ 🌚 Uranus quincunx Lunar Apogee::Uranus quincunx Lunar Apogee::20250105T135300
+DTSTAMP:20251027T215934Z
+DTSTART:20250105T135300Z
+SUMMARY:♅ ⚻ 🌚 Uranus quincunx Lunar Apogee
+DESCRIPTION:Uranus quincunx Lunar Apogee
+END:VEVENT
+END:VCALENDAR

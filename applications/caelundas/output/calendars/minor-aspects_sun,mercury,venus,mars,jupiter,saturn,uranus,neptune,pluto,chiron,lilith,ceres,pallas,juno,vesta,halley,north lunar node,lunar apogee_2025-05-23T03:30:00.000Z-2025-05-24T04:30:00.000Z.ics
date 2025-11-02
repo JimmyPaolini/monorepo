@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:⚷ ⚻ 🌚 Chiron quincunx Lunar Apogee::Chiron quincunx Lunar Apogee::20250523T074300
+DTSTAMP:20251028T021550Z
+DTSTART:20250523T074300Z
+SUMMARY:⚷ ⚻ 🌚 Chiron quincunx Lunar Apogee
+DESCRIPTION:Chiron quincunx Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♂️ ⚼ ♆ Mars sesquiquadrate Neptune::Mars sesquiquadrate Neptune::20250523T164100
+DTSTAMP:20251028T021550Z
+DTSTART:20250523T164100Z
+SUMMARY:♂️ ⚼ ♆ Mars sesquiquadrate Neptune
+DESCRIPTION:Mars sesquiquadrate Neptune
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⚺ ⚷ Mercury semisextile Chiron::Mercury semisextile Chiron::20250523T200600
+DTSTAMP:20251028T021550Z
+DTSTART:20250523T200600Z
+SUMMARY:☿ ⚺ ⚷ Mercury semisextile Chiron
+DESCRIPTION:Mercury semisextile Chiron
+END:VEVENT
+END:VCALENDAR

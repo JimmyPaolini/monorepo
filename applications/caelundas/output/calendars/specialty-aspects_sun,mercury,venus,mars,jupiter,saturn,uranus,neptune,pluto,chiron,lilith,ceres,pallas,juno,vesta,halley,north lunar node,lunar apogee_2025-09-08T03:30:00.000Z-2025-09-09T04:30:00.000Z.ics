@@ -1,0 +1,46 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:♂️ ± ⚴ Mars biquintile Pallas::Mars biquintile Pallas::20250908T062900
+DTSTAMP:20251028T054041Z
+DTSTART:20250908T062900Z
+SUMMARY:♂️ ± ⚴ Mars biquintile Pallas
+DESCRIPTION:Mars biquintile Pallas
+END:VEVENT
+BEGIN:VEVENT
+UID:♃ ± ♆ Jupiter biquintile Neptune::Jupiter biquintile Neptune::20250908T110900
+DTSTAMP:20251028T054041Z
+DTSTART:20250908T110900Z
+SUMMARY:♃ ± ♆ Jupiter biquintile Neptune
+DESCRIPTION:Jupiter biquintile Neptune
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ⚵ Mercury quintile Juno::Mercury quintile Juno::20250908T194600
+DTSTAMP:20251028T054041Z
+DTSTART:20250908T194600Z
+SUMMARY:☿ ⬠ ⚵ Mercury quintile Juno
+DESCRIPTION:Mercury quintile Juno
+END:VEVENT
+BEGIN:VEVENT
+UID:⚷ ± ☄ Chiron biquintile Halley::Chiron biquintile Halley::20250908T195400
+DTSTAMP:20251028T054041Z
+DTSTART:20250908T195400Z
+SUMMARY:⚷ ± ☄ Chiron biquintile Halley
+DESCRIPTION:Chiron biquintile Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⬠ 🌚 Sun quintile Lunar Apogee::Sun quintile Lunar Apogee::20250909T010600
+DTSTAMP:20251028T054041Z
+DTSTART:20250909T010600Z
+SUMMARY:☀️ ⬠ 🌚 Sun quintile Lunar Apogee
+DESCRIPTION:Sun quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☄ ⬠ 🌚 Halley quintile Lunar Apogee::Halley quintile Lunar Apogee::20250909T022900
+DTSTAMP:20251028T054041Z
+DTSTART:20250909T022900Z
+SUMMARY:☄ ⬠ 🌚 Halley quintile Lunar Apogee
+DESCRIPTION:Halley quintile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

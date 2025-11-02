@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♂️ ⚼ ♄ Mars sesquiquadrate Saturn::Mars sesquiquadrate Saturn::20250106T130600
+DTSTAMP:20251027T220127Z
+DTSTART:20250106T130600Z
+SUMMARY:♂️ ⚼ ♄ Mars sesquiquadrate Saturn
+DESCRIPTION:Mars sesquiquadrate Saturn
+END:VEVENT
+BEGIN:VEVENT
+UID:♆ ⚻ 🌚 Neptune quincunx Lunar Apogee::Neptune quincunx Lunar Apogee::20250106T162400
+DTSTAMP:20251027T220127Z
+DTSTART:20250106T162400Z
+SUMMARY:♆ ⚻ 🌚 Neptune quincunx Lunar Apogee
+DESCRIPTION:Neptune quincunx Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♃ ⚼ 🌚 Jupiter sesquiquadrate Lunar Apogee::Jupiter sesquiquadrate Lunar Apogee::20250106T182800
+DTSTAMP:20251027T220127Z
+DTSTART:20250106T182800Z
+SUMMARY:♃ ⚼ 🌚 Jupiter sesquiquadrate Lunar Apogee
+DESCRIPTION:Jupiter sesquiquadrate Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ∠ ⚷ Venus semisquare Chiron::Venus semisquare Chiron::20250106T232200
+DTSTAMP:20251027T220127Z
+DTSTART:20250106T232200Z
+SUMMARY:♀️ ∠ ⚷ Venus semisquare Chiron
+DESCRIPTION:Venus semisquare Chiron
+END:VEVENT
+END:VCALENDAR

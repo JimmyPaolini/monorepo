@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☀️ ± ⚷ Sun biquintile Chiron::Sun biquintile Chiron::20250807T091700
+DTSTAMP:20251028T043945Z
+DTSTART:20250807T091700Z
+SUMMARY:☀️ ± ⚷ Sun biquintile Chiron
+DESCRIPTION:Sun biquintile Chiron
+END:VEVENT
+BEGIN:VEVENT
+UID:♃ ± 🌚 Jupiter biquintile Lunar Apogee::Jupiter biquintile Lunar Apogee::20250807T132500
+DTSTAMP:20251028T043945Z
+DTSTART:20250807T132500Z
+SUMMARY:♃ ± 🌚 Jupiter biquintile Lunar Apogee
+DESCRIPTION:Jupiter biquintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⬠ ⚷ Venus quintile Chiron::Venus quintile Chiron::20250808T003100
+DTSTAMP:20251028T043945Z
+DTSTART:20250808T003100Z
+SUMMARY:♀️ ⬠ ⚷ Venus quintile Chiron
+DESCRIPTION:Venus quintile Chiron
+END:VEVENT
+BEGIN:VEVENT
+UID:⚴ ⬠ ☊ Pallas quintile North Lunar Node::Pallas quintile North Lunar Node::20250808T025700
+DTSTAMP:20251028T043945Z
+DTSTART:20250808T025700Z
+SUMMARY:⚴ ⬠ ☊ Pallas quintile North Lunar Node
+DESCRIPTION:Pallas quintile North Lunar Node
+END:VEVENT
+END:VCALENDAR

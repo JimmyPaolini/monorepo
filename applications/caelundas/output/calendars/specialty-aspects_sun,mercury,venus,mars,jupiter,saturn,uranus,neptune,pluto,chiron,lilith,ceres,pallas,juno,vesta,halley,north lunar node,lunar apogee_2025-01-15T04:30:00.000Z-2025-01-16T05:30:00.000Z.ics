@@ -1,0 +1,53 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:♃ ± ⚴ Jupiter biquintile Pallas::Jupiter biquintile Pallas::20250115T132100
+DTSTAMP:20251027T221812Z
+DTSTART:20250115T132100Z
+SUMMARY:♃ ± ⚴ Jupiter biquintile Pallas
+DESCRIPTION:Jupiter biquintile Pallas
+END:VEVENT
+BEGIN:VEVENT
+UID:⚴ ⬠ 🌚 Pallas quintile Lunar Apogee::Pallas quintile Lunar Apogee::20250115T190900
+DTSTAMP:20251027T221812Z
+DTSTART:20250115T190900Z
+SUMMARY:⚴ ⬠ 🌚 Pallas quintile Lunar Apogee
+DESCRIPTION:Pallas quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♃ ± 🌚 Jupiter biquintile Lunar Apogee::Jupiter biquintile Lunar Apogee::20250115T200900
+DTSTAMP:20251027T221812Z
+DTSTART:20250115T200900Z
+SUMMARY:♃ ± 🌚 Jupiter biquintile Lunar Apogee
+DESCRIPTION:Jupiter biquintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⬠ ⚷ Venus quintile Chiron::Venus quintile Chiron::20250115T234600
+DTSTAMP:20251027T221812Z
+DTSTART:20250115T234600Z
+SUMMARY:♀️ ⬠ ⚷ Venus quintile Chiron
+DESCRIPTION:Venus quintile Chiron
+END:VEVENT
+BEGIN:VEVENT
+UID:♆ ⬠ ⚸ Neptune quintile Lilith::Neptune quintile Lilith::20250116T004700
+DTSTAMP:20251027T221812Z
+DTSTART:20250116T004700Z
+SUMMARY:♆ ⬠ ⚸ Neptune quintile Lilith
+DESCRIPTION:Neptune quintile Lilith
+END:VEVENT
+BEGIN:VEVENT
+UID:⚶ ± ☊ Vesta biquintile North Lunar Node::Vesta biquintile North Lunar Node::20250116T011100
+DTSTAMP:20251027T221812Z
+DTSTART:20250116T011100Z
+SUMMARY:⚶ ± ☊ Vesta biquintile North Lunar Node
+DESCRIPTION:Vesta biquintile North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:☊ ± 🌚 North Lunar Node biquintile Lunar Apogee::North Lunar Node biquintile Lunar Apogee::20250116T044200
+DTSTAMP:20251027T221812Z
+DTSTART:20250116T044200Z
+SUMMARY:☊ ± 🌚 North Lunar Node biquintile Lunar Apogee
+DESCRIPTION:North Lunar Node biquintile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

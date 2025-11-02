@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☀️ ± ☊ Sun biquintile North Lunar Node::Sun biquintile North Lunar Node::20250630T054600
+DTSTAMP:20251028T032747Z
+DTSTART:20250630T054600Z
+SUMMARY:☀️ ± ☊ Sun biquintile North Lunar Node
+DESCRIPTION:Sun biquintile North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⬠ ⚷ Sun quintile Chiron::Sun quintile Chiron::20250630T070500
+DTSTAMP:20251028T032747Z
+DTSTART:20250630T070500Z
+SUMMARY:☀️ ⬠ ⚷ Sun quintile Chiron
+DESCRIPTION:Sun quintile Chiron
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ♂️ Mercury quintile Mars::Mercury quintile Mars::20250630T211000
+DTSTAMP:20251028T032747Z
+DTSTART:20250630T211000Z
+SUMMARY:☿ ⬠ ♂️ Mercury quintile Mars
+DESCRIPTION:Mercury quintile Mars
+END:VEVENT
+END:VCALENDAR

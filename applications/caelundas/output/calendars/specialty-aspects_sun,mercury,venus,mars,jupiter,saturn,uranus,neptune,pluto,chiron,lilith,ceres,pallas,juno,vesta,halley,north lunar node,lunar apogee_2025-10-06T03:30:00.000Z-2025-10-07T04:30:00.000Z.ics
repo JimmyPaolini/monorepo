@@ -1,0 +1,46 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☀️ ± ♇ Sun biquintile Pluto::Sun biquintile Pluto::20251006T091800
+DTSTAMP:20251028T063443Z
+DTSTART:20251006T091800Z
+SUMMARY:☀️ ± ♇ Sun biquintile Pluto
+DESCRIPTION:Sun biquintile Pluto
+END:VEVENT
+BEGIN:VEVENT
+UID:⚶ ± ☄ Vesta biquintile Halley::Vesta biquintile Halley::20251006T124000
+DTSTAMP:20251028T063443Z
+DTSTART:20251006T124000Z
+SUMMARY:⚶ ± ☄ Vesta biquintile Halley
+DESCRIPTION:Vesta biquintile Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⬠ ☄ Sun quintile Halley::Sun quintile Halley::20251006T171300
+DTSTAMP:20251028T063443Z
+DTSTART:20251006T171300Z
+SUMMARY:☀️ ⬠ ☄ Sun quintile Halley
+DESCRIPTION:Sun quintile Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee::Vesta quintile Lunar Apogee::20251006T172800
+DTSTAMP:20251028T063443Z
+DTSTART:20251006T172800Z
+SUMMARY:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee
+DESCRIPTION:Vesta quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ⚶ Mercury quintile Vesta::Mercury quintile Vesta::20251006T235000
+DTSTAMP:20251028T063443Z
+DTSTART:20251006T235000Z
+SUMMARY:☿ ⬠ ⚶ Mercury quintile Vesta
+DESCRIPTION:Mercury quintile Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ± ⚸ Mercury biquintile Lilith::Mercury biquintile Lilith::20251007T034900
+DTSTAMP:20251028T063443Z
+DTSTART:20251007T034900Z
+SUMMARY:☿ ± ⚸ Mercury biquintile Lilith
+DESCRIPTION:Mercury biquintile Lilith
+END:VEVENT
+END:VCALENDAR

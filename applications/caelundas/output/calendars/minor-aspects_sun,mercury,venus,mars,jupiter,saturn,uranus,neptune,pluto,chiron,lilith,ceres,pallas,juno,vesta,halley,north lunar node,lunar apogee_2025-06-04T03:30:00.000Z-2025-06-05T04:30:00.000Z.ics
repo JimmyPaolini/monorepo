@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♀️ ⚺ ♅ Venus semisextile Uranus::Venus semisextile Uranus::20250604T113300
+DTSTAMP:20251028T023846Z
+DTSTART:20250604T113300Z
+SUMMARY:♀️ ⚺ ♅ Venus semisextile Uranus
+DESCRIPTION:Venus semisextile Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⚼ ⚶ Mercury sesquiquadrate Vesta::Mercury sesquiquadrate Vesta::20250604T132300
+DTSTAMP:20251028T023846Z
+DTSTART:20250604T132300Z
+SUMMARY:☿ ⚼ ⚶ Mercury sesquiquadrate Vesta
+DESCRIPTION:Mercury sesquiquadrate Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:⚳ ⚻ ⚶ Ceres quincunx Vesta::Ceres quincunx Vesta::20250604T201200
+DTSTAMP:20251028T023846Z
+DTSTART:20250604T201200Z
+SUMMARY:⚳ ⚻ ⚶ Ceres quincunx Vesta
+DESCRIPTION:Ceres quincunx Vesta
+END:VEVENT
+END:VCALENDAR

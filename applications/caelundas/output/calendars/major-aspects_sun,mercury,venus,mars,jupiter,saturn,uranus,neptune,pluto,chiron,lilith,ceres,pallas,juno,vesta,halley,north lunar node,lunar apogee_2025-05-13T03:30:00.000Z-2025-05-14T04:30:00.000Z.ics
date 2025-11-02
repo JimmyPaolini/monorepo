@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:☄ △ 🌚 Halley trine Lunar Apogee::Halley trine Lunar Apogee::20250513T101100
+DTSTAMP:20251028T015704Z
+DTSTART:20250513T101100Z
+SUMMARY:☄ △ 🌚 Halley trine Lunar Apogee
+DESCRIPTION:Halley trine Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:⚶ ☌ 🌚 Vesta conjunct Lunar Apogee::Vesta conjunct Lunar Apogee::20250513T133200
+DTSTAMP:20251028T015704Z
+DTSTART:20250513T133200Z
+SUMMARY:⚶ ☌ 🌚 Vesta conjunct Lunar Apogee
+DESCRIPTION:Vesta conjunct Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ □ ⚴ Sun square Pallas::Sun square Pallas::20250513T201600
+DTSTAMP:20251028T015704Z
+DTSTART:20250513T201600Z
+SUMMARY:☀️ □ ⚴ Sun square Pallas
+DESCRIPTION:Sun square Pallas
+END:VEVENT
+BEGIN:VEVENT
+UID:♄ ☌ ⚳ Saturn conjunct Ceres::Saturn conjunct Ceres::20250513T214200
+DTSTAMP:20251028T015704Z
+DTSTART:20250513T214200Z
+SUMMARY:♄ ☌ ⚳ Saturn conjunct Ceres
+DESCRIPTION:Saturn conjunct Ceres
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ □ ☄ Venus square Halley::Venus square Halley::20250514T021200
+DTSTAMP:20251028T015704Z
+DTSTART:20250514T021200Z
+SUMMARY:♀️ □ ☄ Venus square Halley
+DESCRIPTION:Venus square Halley
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,46 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♃ ⚼ ⚸ Jupiter sesquiquadrate Lilith::Jupiter sesquiquadrate Lilith::20251224T124100
+DTSTAMP:20251028T090556Z
+DTSTART:20251224T124100Z
+SUMMARY:♃ ⚼ ⚸ Jupiter sesquiquadrate Lilith
+DESCRIPTION:Jupiter sesquiquadrate Lilith
+END:VEVENT
+BEGIN:VEVENT
+UID:⚶ ⚺ 🌚 Vesta semisextile Lunar Apogee::Vesta semisextile Lunar Apogee::20251224T124800
+DTSTAMP:20251028T090556Z
+DTSTART:20251224T124800Z
+SUMMARY:⚶ ⚺ 🌚 Vesta semisextile Lunar Apogee
+DESCRIPTION:Vesta semisextile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♅ ⚻ ⚵ Uranus quincunx Juno::Uranus quincunx Juno::20251224T125200
+DTSTAMP:20251028T090556Z
+DTSTART:20251224T125200Z
+SUMMARY:♅ ⚻ ⚵ Uranus quincunx Juno
+DESCRIPTION:Uranus quincunx Juno
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ∠ ♇ Mercury semisquare Pluto::Mercury semisquare Pluto::20251224T135000
+DTSTAMP:20251028T090556Z
+DTSTART:20251224T135000Z
+SUMMARY:☿ ∠ ♇ Mercury semisquare Pluto
+DESCRIPTION:Mercury semisquare Pluto
+END:VEVENT
+BEGIN:VEVENT
+UID:⚴ ⚺ ⚶ Pallas semisextile Vesta::Pallas semisextile Vesta::20251224T203400
+DTSTAMP:20251028T090556Z
+DTSTART:20251224T203400Z
+SUMMARY:⚴ ⚺ ⚶ Pallas semisextile Vesta
+DESCRIPTION:Pallas semisextile Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:♃ ⚻ 🌚 Jupiter quincunx Lunar Apogee::Jupiter quincunx Lunar Apogee::20251224T233200
+DTSTAMP:20251028T090556Z
+DTSTART:20251224T233200Z
+SUMMARY:♃ ⚻ 🌚 Jupiter quincunx Lunar Apogee
+DESCRIPTION:Jupiter quincunx Lunar Apogee
+END:VEVENT
+END:VCALENDAR

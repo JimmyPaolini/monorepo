@@ -1,0 +1,46 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☿ ⬠ ☄ Mercury quintile Halley::Mercury quintile Halley::20250527T071500
+DTSTAMP:20251028T022317Z
+DTSTART:20250527T071500Z
+SUMMARY:☿ ⬠ ☄ Mercury quintile Halley
+DESCRIPTION:Mercury quintile Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⬠ ☊ Sun quintile North Lunar Node::Sun quintile North Lunar Node::20250527T072500
+DTSTAMP:20251028T022317Z
+DTSTART:20250527T072500Z
+SUMMARY:☀️ ⬠ ☊ Sun quintile North Lunar Node
+DESCRIPTION:Sun quintile North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:⚴ ± ⚶ Pallas biquintile Vesta::Pallas biquintile Vesta::20250527T080100
+DTSTAMP:20251028T022317Z
+DTSTART:20250527T080100Z
+SUMMARY:⚴ ± ⚶ Pallas biquintile Vesta
+DESCRIPTION:Pallas biquintile Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:♂️ ⬠ ☄ Mars quintile Halley::Mars quintile Halley::20250527T221700
+DTSTAMP:20251028T022317Z
+DTSTART:20250527T221700Z
+SUMMARY:♂️ ⬠ ☄ Mars quintile Halley
+DESCRIPTION:Mars quintile Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⬠ ☄ Sun quintile Halley::Sun quintile Halley::20250527T234200
+DTSTAMP:20251028T022317Z
+DTSTART:20250527T234200Z
+SUMMARY:☀️ ⬠ ☄ Sun quintile Halley
+DESCRIPTION:Sun quintile Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⬠ ♂️ Sun quintile Mars::Sun quintile Mars::20250528T002900
+DTSTAMP:20251028T022317Z
+DTSTART:20250528T002900Z
+SUMMARY:☀️ ⬠ ♂️ Sun quintile Mars
+DESCRIPTION:Sun quintile Mars
+END:VEVENT
+END:VCALENDAR

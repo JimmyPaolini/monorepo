@@ -1,0 +1,39 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:☀️ □ ♅ Sun square Uranus::Sun square Uranus::20250211T193100
+DTSTAMP:20251027T230811Z
+DTSTART:20250211T193100Z
+SUMMARY:☀️ □ ♅ Sun square Uranus
+DESCRIPTION:Sun square Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ☌ ⚳ Mercury conjunct Ceres::Mercury conjunct Ceres::20250211T213200
+DTSTAMP:20251027T230811Z
+DTSTART:20250211T213200Z
+SUMMARY:☿ ☌ ⚳ Mercury conjunct Ceres
+DESCRIPTION:Mercury conjunct Ceres
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ △ ☄ Mercury trine Halley::Mercury trine Halley::20250211T223500
+DTSTAMP:20251027T230811Z
+DTSTART:20250211T223500Z
+SUMMARY:☿ △ ☄ Mercury trine Halley
+DESCRIPTION:Mercury trine Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:⚳ △ ☄ Ceres trine Halley::Ceres trine Halley::20250212T020500
+DTSTAMP:20251027T230811Z
+DTSTART:20250212T020500Z
+SUMMARY:⚳ △ ☄ Ceres trine Halley
+DESCRIPTION:Ceres trine Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:♆ ⚹ ⚴ Neptune sextile Pallas::Neptune sextile Pallas::20250212T024700
+DTSTAMP:20251027T230811Z
+DTSTART:20250212T024700Z
+SUMMARY:♆ ⚹ ⚴ Neptune sextile Pallas
+DESCRIPTION:Neptune sextile Pallas
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:⚴ ⬠ ☊ Pallas quintile North Lunar Node::Pallas quintile North Lunar Node::20251109T062500
+DTSTAMP:20251028T073935Z
+DTSTART:20251109T062500Z
+SUMMARY:⚴ ⬠ ☊ Pallas quintile North Lunar Node
+DESCRIPTION:Pallas quintile North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:♄ ⬠ ⚸ Saturn quintile Lilith::Saturn quintile Lilith::20251109T065900
+DTSTAMP:20251028T073935Z
+DTSTART:20251109T065900Z
+SUMMARY:♄ ⬠ ⚸ Saturn quintile Lilith
+DESCRIPTION:Saturn quintile Lilith
+END:VEVENT
+BEGIN:VEVENT
+UID:⚵ ⬠ 🌚 Juno quintile Lunar Apogee::Juno quintile Lunar Apogee::20251110T011400
+DTSTAMP:20251028T073935Z
+DTSTART:20251110T011400Z
+SUMMARY:⚵ ⬠ 🌚 Juno quintile Lunar Apogee
+DESCRIPTION:Juno quintile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

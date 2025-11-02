@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:♅ ± ⚴ Uranus biquintile Pallas::Uranus biquintile Pallas::20251118T085800
+DTSTAMP:20251028T075644Z
+DTSTART:20251118T085800Z
+SUMMARY:♅ ± ⚴ Uranus biquintile Pallas
+DESCRIPTION:Uranus biquintile Pallas
+END:VEVENT
+BEGIN:VEVENT
+UID:⚴ ⬠ ⚶ Pallas quintile Vesta::Pallas quintile Vesta::20251118T140900
+DTSTAMP:20251028T075644Z
+DTSTART:20251118T140900Z
+SUMMARY:⚴ ⬠ ⚶ Pallas quintile Vesta
+DESCRIPTION:Pallas quintile Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:♂️ ⬠ ♇ Mars quintile Pluto::Mars quintile Pluto::20251118T164500
+DTSTAMP:20251028T075644Z
+DTSTART:20251118T164500Z
+SUMMARY:♂️ ⬠ ♇ Mars quintile Pluto
+DESCRIPTION:Mars quintile Pluto
+END:VEVENT
+BEGIN:VEVENT
+UID:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee::Vesta quintile Lunar Apogee::20251118T200100
+DTSTAMP:20251028T075644Z
+DTSTART:20251118T200100Z
+SUMMARY:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee
+DESCRIPTION:Vesta quintile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

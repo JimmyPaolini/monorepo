@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☿ ± ♃ Mercury biquintile Jupiter::Mercury biquintile Jupiter::20250120T074900
+DTSTAMP:20251027T222729Z
+DTSTART:20250120T074900Z
+SUMMARY:☿ ± ♃ Mercury biquintile Jupiter
+DESCRIPTION:Mercury biquintile Jupiter
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ⚶ Mercury quintile Vesta::Mercury quintile Vesta::20250120T233100
+DTSTAMP:20251027T222729Z
+DTSTART:20250120T233100Z
+SUMMARY:☿ ⬠ ⚶ Mercury quintile Vesta
+DESCRIPTION:Mercury quintile Vesta
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☿ ⬠ ♅ Mercury quintile Uranus::Mercury quintile Uranus::20250421T122700
+DTSTAMP:20251028T011601Z
+DTSTART:20250421T122700Z
+SUMMARY:☿ ⬠ ♅ Mercury quintile Uranus
+DESCRIPTION:Mercury quintile Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⬠ ⚸ Sun quintile Lilith::Sun quintile Lilith::20250421T202700
+DTSTAMP:20251028T011601Z
+DTSTART:20250421T202700Z
+SUMMARY:☀️ ⬠ ⚸ Sun quintile Lilith
+DESCRIPTION:Sun quintile Lilith
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⬠ ♀️ Sun quintile Venus::Sun quintile Venus::20250422T001300
+DTSTAMP:20251028T011601Z
+DTSTART:20250422T001300Z
+SUMMARY:☀️ ⬠ ♀️ Sun quintile Venus
+DESCRIPTION:Sun quintile Venus
+END:VEVENT
+END:VCALENDAR

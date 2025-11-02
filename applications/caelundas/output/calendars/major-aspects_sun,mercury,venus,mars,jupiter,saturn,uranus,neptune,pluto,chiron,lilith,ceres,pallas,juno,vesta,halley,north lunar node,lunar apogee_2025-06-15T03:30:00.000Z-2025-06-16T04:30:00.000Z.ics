@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:⚴ □ 🌚 Pallas square Lunar Apogee::Pallas square Lunar Apogee::20250615T070000
+DTSTAMP:20251028T025932Z
+DTSTART:20250615T070000Z
+SUMMARY:⚴ □ 🌚 Pallas square Lunar Apogee
+DESCRIPTION:Pallas square Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♂️ □ ♅ Mars square Uranus::Mars square Uranus::20250615T094700
+DTSTAMP:20251028T025932Z
+DTSTART:20250615T094700Z
+SUMMARY:♂️ □ ♅ Mars square Uranus
+DESCRIPTION:Mars square Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:♃ □ ♄ Jupiter square Saturn::Jupiter square Saturn::20250615T143600
+DTSTAMP:20251028T025932Z
+DTSTART:20250615T143600Z
+SUMMARY:♃ □ ♄ Jupiter square Saturn
+DESCRIPTION:Jupiter square Saturn
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ △ ⚴ Sun trine Pallas::Sun trine Pallas::20250615T233600
+DTSTAMP:20251028T025932Z
+DTSTART:20250615T233600Z
+SUMMARY:☀️ △ ⚴ Sun trine Pallas
+DESCRIPTION:Sun trine Pallas
+END:VEVENT
+END:VCALENDAR

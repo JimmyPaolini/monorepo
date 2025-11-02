@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:☿ □ 🌚 Mercury square Lunar Apogee::Mercury square Lunar Apogee::20250714T054600
+DTSTAMP:20251028T035417Z
+DTSTART:20250714T054600Z
+SUMMARY:☿ □ 🌚 Mercury square Lunar Apogee
+DESCRIPTION:Mercury square Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♂️ ⚹ 🌚 Mars sextile Lunar Apogee::Mars sextile Lunar Apogee::20250714T085700
+DTSTAMP:20251028T035417Z
+DTSTART:20250714T085700Z
+SUMMARY:♂️ ⚹ 🌚 Mars sextile Lunar Apogee
+DESCRIPTION:Mars sextile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:⚵ ☌ 🌚 Juno conjunct Lunar Apogee::Juno conjunct Lunar Apogee::20250714T120000
+DTSTAMP:20251028T035417Z
+DTSTART:20250714T120000Z
+SUMMARY:⚵ ☌ 🌚 Juno conjunct Lunar Apogee
+DESCRIPTION:Juno conjunct Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☊ △ 🌚 North Lunar Node trine Lunar Apogee::North Lunar Node trine Lunar Apogee::20250715T023700
+DTSTAMP:20251028T035417Z
+DTSTART:20250715T023700Z
+SUMMARY:☊ △ 🌚 North Lunar Node trine Lunar Apogee
+DESCRIPTION:North Lunar Node trine Lunar Apogee
+END:VEVENT
+END:VCALENDAR

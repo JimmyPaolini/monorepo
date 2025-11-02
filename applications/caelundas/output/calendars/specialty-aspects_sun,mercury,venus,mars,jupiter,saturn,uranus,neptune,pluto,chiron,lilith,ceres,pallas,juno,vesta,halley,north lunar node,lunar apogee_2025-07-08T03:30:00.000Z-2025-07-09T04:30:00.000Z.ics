@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☀️ ± ⚴ Sun biquintile Pallas::Sun biquintile Pallas::20250708T135400
+DTSTAMP:20251028T034254Z
+DTSTART:20250708T135400Z
+SUMMARY:☀️ ± ⚴ Sun biquintile Pallas
+DESCRIPTION:Sun biquintile Pallas
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ♅ Mercury quintile Uranus::Mercury quintile Uranus::20250708T135800
+DTSTAMP:20251028T034254Z
+DTSTART:20250708T135800Z
+SUMMARY:☿ ⬠ ♅ Mercury quintile Uranus
+DESCRIPTION:Mercury quintile Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ± 🌚 Sun biquintile Lunar Apogee::Sun biquintile Lunar Apogee::20250708T165300
+DTSTAMP:20251028T034254Z
+DTSTART:20250708T165300Z
+SUMMARY:☀️ ± 🌚 Sun biquintile Lunar Apogee
+DESCRIPTION:Sun biquintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:⚴ ± 🌚 Pallas biquintile Lunar Apogee::Pallas biquintile Lunar Apogee::20250708T205400
+DTSTAMP:20251028T034254Z
+DTSTART:20250708T205400Z
+SUMMARY:⚴ ± 🌚 Pallas biquintile Lunar Apogee
+DESCRIPTION:Pallas biquintile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♀️ ⚼ ☊ Venus sesquiquadrate North Lunar Node::Venus sesquiquadrate North Lunar Node::20251107T193200
+DTSTAMP:20251028T073544Z
+DTSTART:20251107T193200Z
+SUMMARY:♀️ ⚼ ☊ Venus sesquiquadrate North Lunar Node
+DESCRIPTION:Venus sesquiquadrate North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:♆ ⚻ ☄ Neptune quincunx Halley::Neptune quincunx Halley::20251107T195900
+DTSTAMP:20251028T073544Z
+DTSTART:20251107T195900Z
+SUMMARY:♆ ⚻ ☄ Neptune quincunx Halley
+DESCRIPTION:Neptune quincunx Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:♆ ⚼ 🌚 Neptune sesquiquadrate Lunar Apogee::Neptune sesquiquadrate Lunar Apogee::20251108T012100
+DTSTAMP:20251028T073544Z
+DTSTART:20251108T012100Z
+SUMMARY:♆ ⚼ 🌚 Neptune sesquiquadrate Lunar Apogee
+DESCRIPTION:Neptune sesquiquadrate Lunar Apogee
+END:VEVENT
+END:VCALENDAR

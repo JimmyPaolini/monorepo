@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:⚵ ⚺ 🌚 Juno semisextile Lunar Apogee::Juno semisextile Lunar Apogee::20250121T015300
+DTSTAMP:20251027T222729Z
+DTSTART:20250121T015300Z
+SUMMARY:⚵ ⚺ 🌚 Juno semisextile Lunar Apogee
+DESCRIPTION:Juno semisextile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ∠ ♄ Sun semisquare Saturn::Sun semisquare Saturn::20250121T022700
+DTSTAMP:20251027T222729Z
+DTSTART:20250121T022700Z
+SUMMARY:☀️ ∠ ♄ Sun semisquare Saturn
+DESCRIPTION:Sun semisquare Saturn
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Sign Ingresses 🪧
+BEGIN:VEVENT
+UID:🌙 → ♎︎ Moon ingress Libra::Moon ingress Libra::20250825T140900
+DTSTAMP:20251028T051346Z
+DTSTART:20250825T140900Z
+SUMMARY:🌙 → ♎︎ Moon ingress Libra
+DESCRIPTION:Moon ingress Libra
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ → ♌︎ Venus ingress Leo::Venus ingress Leo::20250825T162800
+DTSTAMP:20251028T051346Z
+DTSTART:20250825T162800Z
+SUMMARY:♀️ → ♌︎ Venus ingress Leo
+DESCRIPTION:Venus ingress Leo
+END:VEVENT
+END:VCALENDAR

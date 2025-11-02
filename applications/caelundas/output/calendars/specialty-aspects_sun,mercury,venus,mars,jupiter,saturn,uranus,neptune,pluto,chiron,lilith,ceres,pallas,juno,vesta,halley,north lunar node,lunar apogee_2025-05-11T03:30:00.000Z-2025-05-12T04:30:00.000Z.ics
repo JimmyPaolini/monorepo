@@ -1,0 +1,67 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☀️ ⬠ ♃ Sun quintile Jupiter::Sun quintile Jupiter::20250511T041500
+DTSTAMP:20251028T015321Z
+DTSTART:20250511T041500Z
+SUMMARY:☀️ ⬠ ♃ Sun quintile Jupiter
+DESCRIPTION:Sun quintile Jupiter
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ♄ Mercury quintile Saturn::Mercury quintile Saturn::20250511T103800
+DTSTAMP:20251028T015321Z
+DTSTART:20250511T103800Z
+SUMMARY:☿ ⬠ ♄ Mercury quintile Saturn
+DESCRIPTION:Mercury quintile Saturn
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ☊ Mercury quintile North Lunar Node::Mercury quintile North Lunar Node::20250511T132000
+DTSTAMP:20251028T015321Z
+DTSTART:20250511T132000Z
+SUMMARY:☿ ⬠ ☊ Mercury quintile North Lunar Node
+DESCRIPTION:Mercury quintile North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:♆ ⬠ ⚸ Neptune quintile Lilith::Neptune quintile Lilith::20250511T170700
+DTSTAMP:20251028T015321Z
+DTSTART:20250511T170700Z
+SUMMARY:♆ ⬠ ⚸ Neptune quintile Lilith
+DESCRIPTION:Neptune quintile Lilith
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ♃ Mercury quintile Jupiter::Mercury quintile Jupiter::20250511T184300
+DTSTAMP:20251028T015321Z
+DTSTART:20250511T184300Z
+SUMMARY:☿ ⬠ ♃ Mercury quintile Jupiter
+DESCRIPTION:Mercury quintile Jupiter
+END:VEVENT
+BEGIN:VEVENT
+UID:⚴ ⬠ ☊ Pallas quintile North Lunar Node::Pallas quintile North Lunar Node::20250511T190200
+DTSTAMP:20251028T015321Z
+DTSTART:20250511T190200Z
+SUMMARY:⚴ ⬠ ☊ Pallas quintile North Lunar Node
+DESCRIPTION:Pallas quintile North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:⚳ ± 🌚 Ceres biquintile Lunar Apogee::Ceres biquintile Lunar Apogee::20250511T215800
+DTSTAMP:20251028T015321Z
+DTSTART:20250511T215800Z
+SUMMARY:⚳ ± 🌚 Ceres biquintile Lunar Apogee
+DESCRIPTION:Ceres biquintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♄ ± 🌚 Saturn biquintile Lunar Apogee::Saturn biquintile Lunar Apogee::20250512T021400
+DTSTAMP:20251028T015321Z
+DTSTART:20250512T021400Z
+SUMMARY:♄ ± 🌚 Saturn biquintile Lunar Apogee
+DESCRIPTION:Saturn biquintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:⚴ ± 🌚 Pallas biquintile Lunar Apogee::Pallas biquintile Lunar Apogee::20250512T033400
+DTSTAMP:20251028T015321Z
+DTSTART:20250512T033400Z
+SUMMARY:⚴ ± 🌚 Pallas biquintile Lunar Apogee
+DESCRIPTION:Pallas biquintile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

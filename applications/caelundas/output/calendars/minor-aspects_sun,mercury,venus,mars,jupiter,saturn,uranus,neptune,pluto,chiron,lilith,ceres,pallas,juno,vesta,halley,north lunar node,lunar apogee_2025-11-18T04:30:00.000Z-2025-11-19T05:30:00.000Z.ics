@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♂️ ⚼ ♃ Mars sesquiquadrate Jupiter::Mars sesquiquadrate Jupiter::20251118T112300
+DTSTAMP:20251028T075644Z
+DTSTART:20251118T112300Z
+SUMMARY:♂️ ⚼ ♃ Mars sesquiquadrate Jupiter
+DESCRIPTION:Mars sesquiquadrate Jupiter
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⚼ ♆ Venus sesquiquadrate Neptune::Venus sesquiquadrate Neptune::20251118T122000
+DTSTAMP:20251028T075644Z
+DTSTART:20251118T122000Z
+SUMMARY:♀️ ⚼ ♆ Venus sesquiquadrate Neptune
+DESCRIPTION:Venus sesquiquadrate Neptune
+END:VEVENT
+BEGIN:VEVENT
+UID:♇ ⚺ ⚶ Pluto semisextile Vesta::Pluto semisextile Vesta::20251118T162000
+DTSTAMP:20251028T075644Z
+DTSTART:20251118T162000Z
+SUMMARY:♇ ⚺ ⚶ Pluto semisextile Vesta
+DESCRIPTION:Pluto semisextile Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:♃ ⚻ ⚸ Jupiter quincunx Lilith::Jupiter quincunx Lilith::20251118T163000
+DTSTAMP:20251028T075644Z
+DTSTART:20251118T163000Z
+SUMMARY:♃ ⚻ ⚸ Jupiter quincunx Lilith
+DESCRIPTION:Jupiter quincunx Lilith
+END:VEVENT
+END:VCALENDAR

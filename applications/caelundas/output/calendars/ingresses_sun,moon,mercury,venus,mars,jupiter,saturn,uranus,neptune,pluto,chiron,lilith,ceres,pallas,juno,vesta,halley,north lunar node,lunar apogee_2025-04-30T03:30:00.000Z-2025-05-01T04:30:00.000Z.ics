@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Peak Ingresses ⛰️
+BEGIN:VEVENT
+UID:🌙 → ♊︎⛰️ Moon peak ingress Gemini::Moon peak ingress Gemini::20250430T064000
+DTSTAMP:20251028T013244Z
+DTSTART:20250430T064000Z
+SUMMARY:🌙 → ♊︎⛰️ Moon peak ingress Gemini
+DESCRIPTION:Moon peak ingress Gemini
+END:VEVENT
+BEGIN:VEVENT
+UID:🌚 → ♎︎⛰️ Lunar Apogee peak ingress Libra::Lunar Apogee peak ingress Libra::20250430T082300
+DTSTAMP:20251028T013244Z
+DTSTART:20250430T082300Z
+SUMMARY:🌚 → ♎︎⛰️ Lunar Apogee peak ingress Libra
+DESCRIPTION:Lunar Apogee peak ingress Libra
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ → ♈⛰️ Mercury peak ingress Aries::Mercury peak ingress Aries::20250430T145500
+DTSTAMP:20251028T013244Z
+DTSTART:20250430T145500Z
+SUMMARY:☿ → ♈⛰️ Mercury peak ingress Aries
+DESCRIPTION:Mercury peak ingress Aries
+END:VEVENT
+END:VCALENDAR

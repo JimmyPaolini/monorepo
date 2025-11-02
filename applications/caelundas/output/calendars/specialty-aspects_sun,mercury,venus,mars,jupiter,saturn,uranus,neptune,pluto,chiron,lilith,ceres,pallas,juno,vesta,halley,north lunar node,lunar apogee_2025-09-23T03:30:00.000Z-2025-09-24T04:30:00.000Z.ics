@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:♂️ ⬠ ☄ Mars quintile Halley::Mars quintile Halley::20250923T062900
+DTSTAMP:20251028T060923Z
+DTSTART:20250923T062900Z
+SUMMARY:♂️ ⬠ ☄ Mars quintile Halley
+DESCRIPTION:Mars quintile Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:♂️ ± ⚸ Mars biquintile Lilith::Mars biquintile Lilith::20250924T025300
+DTSTAMP:20251028T060923Z
+DTSTART:20250924T025300Z
+SUMMARY:♂️ ± ⚸ Mars biquintile Lilith
+DESCRIPTION:Mars biquintile Lilith
+END:VEVENT
+END:VCALENDAR

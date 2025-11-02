@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☀️ ⬠ ☄ Sun quintile Halley::Sun quintile Halley::20250914T190800
+DTSTAMP:20251028T055207Z
+DTSTART:20250914T190800Z
+SUMMARY:☀️ ⬠ ☄ Sun quintile Halley
+DESCRIPTION:Sun quintile Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⬠ ♂️ Sun quintile Mars::Sun quintile Mars::20250914T205200
+DTSTAMP:20251028T055207Z
+DTSTART:20250914T205200Z
+SUMMARY:☀️ ⬠ ♂️ Sun quintile Mars
+DESCRIPTION:Sun quintile Mars
+END:VEVENT
+END:VCALENDAR

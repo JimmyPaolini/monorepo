@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:♂️ ± ♅ Mars biquintile Uranus::Mars biquintile Uranus::20250719T040100
+DTSTAMP:20251028T040347Z
+DTSTART:20250719T040100Z
+SUMMARY:♂️ ± ♅ Mars biquintile Uranus
+DESCRIPTION:Mars biquintile Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⬠ ♂️ Sun quintile Mars::Sun quintile Mars::20250720T003800
+DTSTAMP:20251028T040347Z
+DTSTART:20250720T003800Z
+SUMMARY:☀️ ⬠ ♂️ Sun quintile Mars
+DESCRIPTION:Sun quintile Mars
+END:VEVENT
+BEGIN:VEVENT
+UID:♃ ⬠ ⚷ Jupiter quintile Chiron::Jupiter quintile Chiron::20250720T015400
+DTSTAMP:20251028T040347Z
+DTSTART:20250720T015400Z
+SUMMARY:♃ ⬠ ⚷ Jupiter quintile Chiron
+DESCRIPTION:Jupiter quintile Chiron
+END:VEVENT
+END:VCALENDAR

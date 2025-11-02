@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:☿ ⚼ ☊ Mercury sesquiquadrate North Lunar Node::Mercury sesquiquadrate North Lunar Node::20250701T130100
+DTSTAMP:20251028T032941Z
+DTSTART:20250701T130100Z
+SUMMARY:☿ ⚼ ☊ Mercury sesquiquadrate North Lunar Node
+DESCRIPTION:Mercury sesquiquadrate North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⚺ ⚷ Venus semisextile Chiron::Venus semisextile Chiron::20250701T173300
+DTSTAMP:20251028T032941Z
+DTSTART:20250701T173300Z
+SUMMARY:♀️ ⚺ ⚷ Venus semisextile Chiron
+DESCRIPTION:Venus semisextile Chiron
+END:VEVENT
+BEGIN:VEVENT
+UID:♂️ ∠ ☄ Mars semisquare Halley::Mars semisquare Halley::20250701T212300
+DTSTAMP:20251028T032941Z
+DTSTART:20250701T212300Z
+SUMMARY:♂️ ∠ ☄ Mars semisquare Halley
+DESCRIPTION:Mars semisquare Halley
+END:VEVENT
+END:VCALENDAR

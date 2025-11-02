@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♀️ ∠ 🌚 Venus semisquare Lunar Apogee::Venus semisquare Lunar Apogee::20251024T060900
+DTSTAMP:20251028T070848Z
+DTSTART:20251024T060900Z
+SUMMARY:♀️ ∠ 🌚 Venus semisquare Lunar Apogee
+DESCRIPTION:Venus semisquare Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⚻ ⚷ Mercury quincunx Chiron::Mercury quincunx Chiron::20251024T134300
+DTSTAMP:20251028T070848Z
+DTSTART:20251024T134300Z
+SUMMARY:☿ ⚻ ⚷ Mercury quincunx Chiron
+DESCRIPTION:Mercury quincunx Chiron
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⚼ ☊ Sun sesquiquadrate North Lunar Node::Sun sesquiquadrate North Lunar Node::20251025T031200
+DTSTAMP:20251028T070848Z
+DTSTART:20251025T031200Z
+SUMMARY:☀️ ⚼ ☊ Sun sesquiquadrate North Lunar Node
+DESCRIPTION:Sun sesquiquadrate North Lunar Node
+END:VEVENT
+END:VCALENDAR

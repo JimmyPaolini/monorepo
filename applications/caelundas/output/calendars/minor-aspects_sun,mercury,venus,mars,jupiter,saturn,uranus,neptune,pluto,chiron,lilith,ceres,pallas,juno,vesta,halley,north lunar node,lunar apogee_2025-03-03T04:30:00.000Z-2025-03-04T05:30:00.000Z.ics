@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♇ ⚺ ⚳ Pluto semisextile Ceres::Pluto semisextile Ceres::20250303T115800
+DTSTAMP:20251027T234507Z
+DTSTART:20250303T115800Z
+SUMMARY:♇ ⚺ ⚳ Pluto semisextile Ceres
+DESCRIPTION:Pluto semisextile Ceres
+END:VEVENT
+BEGIN:VEVENT
+UID:⚳ ⚻ 🌚 Ceres quincunx Lunar Apogee::Ceres quincunx Lunar Apogee::20250303T191700
+DTSTAMP:20251027T234507Z
+DTSTART:20250303T191700Z
+SUMMARY:⚳ ⚻ 🌚 Ceres quincunx Lunar Apogee
+DESCRIPTION:Ceres quincunx Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:⚶ ∠ 🌚 Vesta semisquare Lunar Apogee::Vesta semisquare Lunar Apogee::20250304T040400
+DTSTAMP:20251027T234507Z
+DTSTART:20250304T040400Z
+SUMMARY:⚶ ∠ 🌚 Vesta semisquare Lunar Apogee
+DESCRIPTION:Vesta semisquare Lunar Apogee
+END:VEVENT
+END:VCALENDAR

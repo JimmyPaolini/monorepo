@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:⚴ ⬠ ⚵ Pallas quintile Juno::Pallas quintile Juno::20250330T154100
+DTSTAMP:20251028T003501Z
+DTSTART:20250330T154100Z
+SUMMARY:⚴ ⬠ ⚵ Pallas quintile Juno
+DESCRIPTION:Pallas quintile Juno
+END:VEVENT
+BEGIN:VEVENT
+UID:⚳ ± 🌚 Ceres biquintile Lunar Apogee::Ceres biquintile Lunar Apogee::20250330T174900
+DTSTAMP:20251028T003501Z
+DTSTART:20250330T174900Z
+SUMMARY:⚳ ± 🌚 Ceres biquintile Lunar Apogee
+DESCRIPTION:Ceres biquintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♇ ⬠ ⚳ Pluto quintile Ceres::Pluto quintile Ceres::20250331T010500
+DTSTAMP:20251028T003501Z
+DTSTART:20250331T010500Z
+SUMMARY:♇ ⬠ ⚳ Pluto quintile Ceres
+DESCRIPTION:Pluto quintile Ceres
+END:VEVENT
+BEGIN:VEVENT
+UID:♅ ± 🌚 Uranus biquintile Lunar Apogee::Uranus biquintile Lunar Apogee::20250331T023900
+DTSTAMP:20251028T003501Z
+DTSTART:20250331T023900Z
+SUMMARY:♅ ± 🌚 Uranus biquintile Lunar Apogee
+DESCRIPTION:Uranus biquintile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

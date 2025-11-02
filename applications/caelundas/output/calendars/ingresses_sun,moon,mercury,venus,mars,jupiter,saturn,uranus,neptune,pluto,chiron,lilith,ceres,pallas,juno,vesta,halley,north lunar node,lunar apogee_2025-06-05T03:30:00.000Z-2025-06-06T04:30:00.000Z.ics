@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Peak Ingresses ⛰️
+BEGIN:VEVENT
+UID:☀️ → ♊︎⛰️ Sun peak ingress Gemini::Sun peak ingress Gemini::20250605T095700
+DTSTAMP:20251028T024040Z
+DTSTART:20250605T095700Z
+SUMMARY:☀️ → ♊︎⛰️ Sun peak ingress Gemini
+DESCRIPTION:Sun peak ingress Gemini
+END:VEVENT
+BEGIN:VEVENT
+UID:🌙 → ♎︎⛰️ Moon peak ingress Libra::Moon peak ingress Libra::20250605T195400
+DTSTAMP:20251028T024040Z
+DTSTART:20250605T195400Z
+SUMMARY:🌙 → ♎︎⛰️ Moon peak ingress Libra
+DESCRIPTION:Moon peak ingress Libra
+END:VEVENT
+END:VCALENDAR

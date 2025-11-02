@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:☿ ⚼ ♇ Mercury sesquiquadrate Pluto::Mercury sesquiquadrate Pluto::20250603T131800
+DTSTAMP:20251028T023654Z
+DTSTART:20250603T131800Z
+SUMMARY:☿ ⚼ ♇ Mercury sesquiquadrate Pluto
+DESCRIPTION:Mercury sesquiquadrate Pluto
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⚻ ⚵ Mercury quincunx Juno::Mercury quincunx Juno::20250604T030600
+DTSTAMP:20251028T023654Z
+DTSTART:20250604T030600Z
+SUMMARY:☿ ⚻ ⚵ Mercury quincunx Juno
+DESCRIPTION:Mercury quincunx Juno
+END:VEVENT
+END:VCALENDAR

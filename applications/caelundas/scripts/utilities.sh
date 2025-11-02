@@ -1,5 +1,9 @@
 #!/bin/bash
 
+source scripts/utilities.sh
+
+source applications/caelundas/.env
+
 readonly CALENDARS_PATH="/app/data/calendars"
 readonly DEBUG_POD_NAME="caelundas-debug"
 readonly DEBUG_IMAGE="busybox:latest"
@@ -7,16 +11,6 @@ readonly DEBUG_IMAGE="busybox:latest"
 # ==============================================================================
 # Validation Functions
 # ==============================================================================
-
-# Verify script is run from monorepo root
-# Exits with error if not in the correct directory
-validate_monorepo_root() {
-  if [ ! -f "package.json" ] || ! grep -q '"name": "monorepo"' package.json 2>/dev/null; then
-    echo "❌ Error: This script must be run from the monorepo root directory"
-    echo "📁 Current directory: $(pwd)"
-    exit 1
-  fi
-}
 
 # Validate that a pod is in a completed state (Succeeded or Failed)
 # Args:

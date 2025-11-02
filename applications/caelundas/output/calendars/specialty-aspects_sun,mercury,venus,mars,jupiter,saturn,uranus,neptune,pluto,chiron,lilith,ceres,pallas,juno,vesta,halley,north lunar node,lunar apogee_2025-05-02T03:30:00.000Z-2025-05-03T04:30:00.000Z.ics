@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:♇ ⬠ ⚳ Pluto quintile Ceres::Pluto quintile Ceres::20250502T104600
+DTSTAMP:20251028T013629Z
+DTSTART:20250502T104600Z
+SUMMARY:♇ ⬠ ⚳ Pluto quintile Ceres
+DESCRIPTION:Pluto quintile Ceres
+END:VEVENT
+BEGIN:VEVENT
+UID:☄ ± 🌚 Halley biquintile Lunar Apogee::Halley biquintile Lunar Apogee::20250502T162100
+DTSTAMP:20251028T013629Z
+DTSTART:20250502T162100Z
+SUMMARY:☄ ± 🌚 Halley biquintile Lunar Apogee
+DESCRIPTION:Halley biquintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:⚷ ⬠ ☄ Chiron quintile Halley::Chiron quintile Halley::20250502T162200
+DTSTAMP:20251028T013629Z
+DTSTART:20250502T162200Z
+SUMMARY:⚷ ⬠ ☄ Chiron quintile Halley
+DESCRIPTION:Chiron quintile Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:⚵ ⬠ 🌚 Juno quintile Lunar Apogee::Juno quintile Lunar Apogee::20250502T165500
+DTSTAMP:20251028T013629Z
+DTSTART:20250502T165500Z
+SUMMARY:⚵ ⬠ 🌚 Juno quintile Lunar Apogee
+DESCRIPTION:Juno quintile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

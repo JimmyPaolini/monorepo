@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Peak Ingresses ⛰️
+BEGIN:VEVENT
+UID:🌙 → ♊︎⛰️ Moon peak ingress Gemini::Moon peak ingress Gemini::20251107T150000
+DTSTAMP:20251028T073544Z
+DTSTART:20251107T150000Z
+SUMMARY:🌙 → ♊︎⛰️ Moon peak ingress Gemini
+DESCRIPTION:Moon peak ingress Gemini
+END:VEVENT
+BEGIN:VEVENT
+UID:♅ → ♉︎⛰️ Uranus peak ingress Taurus::Uranus peak ingress Taurus::20251108T022000
+DTSTAMP:20251028T073544Z
+DTSTART:20251108T022000Z
+SUMMARY:♅ → ♉︎⛰️ Uranus peak ingress Taurus
+DESCRIPTION:Uranus peak ingress Taurus
+END:VEVENT
+END:VCALENDAR

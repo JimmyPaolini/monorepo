@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:☿ ⚼ 🌚 Mercury sesquiquadrate Lunar Apogee::Mercury sesquiquadrate Lunar Apogee::20250420T140200
+DTSTAMP:20251028T011407Z
+DTSTART:20250420T140200Z
+SUMMARY:☿ ⚼ 🌚 Mercury sesquiquadrate Lunar Apogee
+DESCRIPTION:Mercury sesquiquadrate Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⚺ ♆ Sun semisextile Neptune::Sun semisextile Neptune::20250420T143600
+DTSTAMP:20251028T011407Z
+DTSTART:20250420T143600Z
+SUMMARY:☀️ ⚺ ♆ Sun semisextile Neptune
+DESCRIPTION:Sun semisextile Neptune
+END:VEVENT
+BEGIN:VEVENT
+UID:☄ ⚼ 🌚 Halley sesquiquadrate Lunar Apogee::Halley sesquiquadrate Lunar Apogee::20250421T025500
+DTSTAMP:20251028T011407Z
+DTSTART:20250421T025500Z
+SUMMARY:☄ ⚼ 🌚 Halley sesquiquadrate Lunar Apogee
+DESCRIPTION:Halley sesquiquadrate Lunar Apogee
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:♇ ⚹ 🌚 Pluto sextile Lunar Apogee::Pluto sextile Lunar Apogee::20250621T143700
+DTSTAMP:20251028T031054Z
+DTSTART:20250621T143700Z
+SUMMARY:♇ ⚹ 🌚 Pluto sextile Lunar Apogee
+DESCRIPTION:Pluto sextile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♂️ □ 🌚 Mars square Lunar Apogee::Mars square Lunar Apogee::20250622T003600
+DTSTAMP:20251028T031054Z
+DTSTART:20250622T003600Z
+SUMMARY:♂️ □ 🌚 Mars square Lunar Apogee
+DESCRIPTION:Mars square Lunar Apogee
+END:VEVENT
+END:VCALENDAR

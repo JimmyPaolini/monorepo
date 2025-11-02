@@ -1,0 +1,46 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:⚳ ⬠ ⚴ Ceres quintile Pallas::Ceres quintile Pallas::20250515T042200
+DTSTAMP:20251028T020047Z
+DTSTART:20250515T042200Z
+SUMMARY:⚳ ⬠ ⚴ Ceres quintile Pallas
+DESCRIPTION:Ceres quintile Pallas
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ⚸ Mercury quintile Lilith::Mercury quintile Lilith::20250515T044400
+DTSTAMP:20251028T020047Z
+DTSTART:20250515T044400Z
+SUMMARY:☿ ⬠ ⚸ Mercury quintile Lilith
+DESCRIPTION:Mercury quintile Lilith
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ± 🌚 Venus biquintile Lunar Apogee::Venus biquintile Lunar Apogee::20250515T100600
+DTSTAMP:20251028T020047Z
+DTSTART:20250515T100600Z
+SUMMARY:♀️ ± 🌚 Venus biquintile Lunar Apogee
+DESCRIPTION:Venus biquintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ♄ Mercury quintile Saturn::Mercury quintile Saturn::20250515T173900
+DTSTAMP:20251028T020047Z
+DTSTART:20250515T173900Z
+SUMMARY:☿ ⬠ ♄ Mercury quintile Saturn
+DESCRIPTION:Mercury quintile Saturn
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⬠ ⚳ Mercury quintile Ceres::Mercury quintile Ceres::20250516T002400
+DTSTAMP:20251028T020047Z
+DTSTART:20250516T002400Z
+SUMMARY:☿ ⬠ ⚳ Mercury quintile Ceres
+DESCRIPTION:Mercury quintile Ceres
+END:VEVENT
+BEGIN:VEVENT
+UID:♃ ± 🌚 Jupiter biquintile Lunar Apogee::Jupiter biquintile Lunar Apogee::20250516T003500
+DTSTAMP:20251028T020047Z
+DTSTART:20250516T003500Z
+SUMMARY:♃ ± 🌚 Jupiter biquintile Lunar Apogee
+DESCRIPTION:Jupiter biquintile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

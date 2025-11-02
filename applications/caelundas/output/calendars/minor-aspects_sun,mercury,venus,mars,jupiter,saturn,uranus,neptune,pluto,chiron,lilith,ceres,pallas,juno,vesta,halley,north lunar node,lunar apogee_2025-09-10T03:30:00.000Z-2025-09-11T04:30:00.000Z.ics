@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:☿ ⚺ ☄ Mercury semisextile Halley::Mercury semisextile Halley::20250910T064300
+DTSTAMP:20251028T054428Z
+DTSTART:20250910T064300Z
+SUMMARY:☿ ⚺ ☄ Mercury semisextile Halley
+DESCRIPTION:Mercury semisextile Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:⚵ ⚺ 🌚 Juno semisextile Lunar Apogee::Juno semisextile Lunar Apogee::20250910T191900
+DTSTAMP:20251028T054428Z
+DTSTART:20250910T191900Z
+SUMMARY:⚵ ⚺ 🌚 Juno semisextile Lunar Apogee
+DESCRIPTION:Juno semisextile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⚺ ♃ Venus semisextile Jupiter::Venus semisextile Jupiter::20250910T231300
+DTSTAMP:20251028T054428Z
+DTSTART:20250910T231300Z
+SUMMARY:♀️ ⚺ ♃ Venus semisextile Jupiter
+DESCRIPTION:Venus semisextile Jupiter
+END:VEVENT
+END:VCALENDAR

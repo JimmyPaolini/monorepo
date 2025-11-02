@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Decan Ingresses 🔟
+BEGIN:VEVENT
+UID:☀️ → ♍︎2️⃣ Sun ingress decan 2 Virgo::Sun ingress decan 2 Virgo::20250902T050200
+DTSTAMP:20251028T052905Z
+DTSTART:20250902T050200Z
+SUMMARY:☀️ → ♍︎2️⃣ Sun ingress decan 2 Virgo
+DESCRIPTION:Sun ingress decan 2 Virgo
+END:VEVENT
+BEGIN:VEVENT
+UID:🌙 → ♑︎2️⃣ Moon ingress decan 2 Capricorn::Moon ingress decan 2 Capricorn::20250902T210400
+DTSTAMP:20251028T052905Z
+DTSTART:20250902T210400Z
+SUMMARY:🌙 → ♑︎2️⃣ Moon ingress decan 2 Capricorn
+DESCRIPTION:Moon ingress decan 2 Capricorn
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ → ♌︎2️⃣ Venus ingress decan 2 Leo::Venus ingress decan 2 Leo::20250903T004500
+DTSTAMP:20251028T052905Z
+DTSTART:20250903T004500Z
+SUMMARY:♀️ → ♌︎2️⃣ Venus ingress decan 2 Leo
+DESCRIPTION:Venus ingress decan 2 Leo
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:☀️ ∠ ♆ Sun semisquare Neptune::Sun semisquare Neptune::20250506T131400
+DTSTAMP:20251028T014358Z
+DTSTART:20250506T131400Z
+SUMMARY:☀️ ∠ ♆ Sun semisquare Neptune
+DESCRIPTION:Sun semisquare Neptune
+END:VEVENT
+BEGIN:VEVENT
+UID:⚶ ⚼ ☊ Vesta sesquiquadrate North Lunar Node::Vesta sesquiquadrate North Lunar Node::20250506T203100
+DTSTAMP:20251028T014358Z
+DTSTART:20250506T203100Z
+SUMMARY:⚶ ⚼ ☊ Vesta sesquiquadrate North Lunar Node
+DESCRIPTION:Vesta sesquiquadrate North Lunar Node
+END:VEVENT
+BEGIN:VEVENT
+UID:⚴ ⚼ ☄ Pallas sesquiquadrate Halley::Pallas sesquiquadrate Halley::20250507T015900
+DTSTAMP:20251028T014358Z
+DTSTART:20250507T015900Z
+SUMMARY:⚴ ⚼ ☄ Pallas sesquiquadrate Halley
+DESCRIPTION:Pallas sesquiquadrate Halley
+END:VEVENT
+END:VCALENDAR

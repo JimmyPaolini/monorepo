@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:☀️ ⬠ ⚵ Sun quintile Juno::Sun quintile Juno::20251018T040800
+DTSTAMP:20251028T065729Z
+DTSTART:20251018T040800Z
+SUMMARY:☀️ ⬠ ⚵ Sun quintile Juno
+DESCRIPTION:Sun quintile Juno
+END:VEVENT
+BEGIN:VEVENT
+UID:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee::Vesta quintile Lunar Apogee::20251018T143600
+DTSTAMP:20251028T065729Z
+DTSTART:20251018T143600Z
+SUMMARY:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee
+DESCRIPTION:Vesta quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⬠ ♃ Venus quintile Jupiter::Venus quintile Jupiter::20251018T215400
+DTSTAMP:20251028T065729Z
+DTSTART:20251018T215400Z
+SUMMARY:♀️ ⬠ ♃ Venus quintile Jupiter
+DESCRIPTION:Venus quintile Jupiter
+END:VEVENT
+BEGIN:VEVENT
+UID:♃ ± 🌚 Jupiter biquintile Lunar Apogee::Jupiter biquintile Lunar Apogee::20251019T023600
+DTSTAMP:20251028T065729Z
+DTSTART:20251019T023600Z
+SUMMARY:♃ ± 🌚 Jupiter biquintile Lunar Apogee
+DESCRIPTION:Jupiter biquintile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

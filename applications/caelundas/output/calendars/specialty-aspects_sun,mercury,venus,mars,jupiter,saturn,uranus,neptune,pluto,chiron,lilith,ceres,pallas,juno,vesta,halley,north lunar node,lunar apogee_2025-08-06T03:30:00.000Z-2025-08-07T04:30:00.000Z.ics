@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:♀️ ⬠ ♅ Venus quintile Uranus::Venus quintile Uranus::20250806T060000
+DTSTAMP:20251028T043752Z
+DTSTART:20250806T060000Z
+SUMMARY:♀️ ⬠ ♅ Venus quintile Uranus
+DESCRIPTION:Venus quintile Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:♂️ ⬠ 🌚 Mars quintile Lunar Apogee::Mars quintile Lunar Apogee::20250806T230200
+DTSTAMP:20251028T043752Z
+DTSTART:20250806T230200Z
+SUMMARY:♂️ ⬠ 🌚 Mars quintile Lunar Apogee
+DESCRIPTION:Mars quintile Lunar Apogee
+END:VEVENT
+END:VCALENDAR

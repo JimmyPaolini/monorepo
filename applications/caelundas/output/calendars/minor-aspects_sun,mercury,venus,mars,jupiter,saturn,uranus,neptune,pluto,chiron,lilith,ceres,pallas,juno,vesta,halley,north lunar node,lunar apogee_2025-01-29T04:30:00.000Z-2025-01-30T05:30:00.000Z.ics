@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:⚵ ⚻ ☄ Juno quincunx Halley::Juno quincunx Halley::20250129T065500
+DTSTAMP:20251027T224405Z
+DTSTART:20250129T065500Z
+SUMMARY:⚵ ⚻ ☄ Juno quincunx Halley
+DESCRIPTION:Juno quincunx Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ∠ ♄ Mercury semisquare Saturn::Mercury semisquare Saturn::20250129T103100
+DTSTAMP:20251027T224405Z
+DTSTART:20250129T103100Z
+SUMMARY:☿ ∠ ♄ Mercury semisquare Saturn
+DESCRIPTION:Mercury semisquare Saturn
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee::Vesta quintile Lunar Apogee::20250403T040500
+DTSTAMP:20251028T004229Z
+DTSTART:20250403T040500Z
+SUMMARY:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee
+DESCRIPTION:Vesta quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♄ ⬠ ⚴ Saturn quintile Pallas::Saturn quintile Pallas::20250404T020800
+DTSTAMP:20251028T004229Z
+DTSTART:20250404T020800Z
+SUMMARY:♄ ⬠ ⚴ Saturn quintile Pallas
+DESCRIPTION:Saturn quintile Pallas
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:☀️ ⚻ ♄ Sun quincunx Saturn::Sun quincunx Saturn::20250823T110500
+DTSTAMP:20251028T050959Z
+DTSTART:20250823T110500Z
+SUMMARY:☀️ ⚻ ♄ Sun quincunx Saturn
+DESCRIPTION:Sun quincunx Saturn
+END:VEVENT
+BEGIN:VEVENT
+UID:⚷ ⚻ 🌚 Chiron quincunx Lunar Apogee::Chiron quincunx Lunar Apogee::20250823T165000
+DTSTAMP:20251028T050959Z
+DTSTART:20250823T165000Z
+SUMMARY:⚷ ⚻ 🌚 Chiron quincunx Lunar Apogee
+DESCRIPTION:Chiron quincunx Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♃ ∠ ♅ Jupiter semisquare Uranus::Jupiter semisquare Uranus::20250824T000100
+DTSTAMP:20251028T050959Z
+DTSTART:20250824T000100Z
+SUMMARY:♃ ∠ ♅ Jupiter semisquare Uranus
+DESCRIPTION:Jupiter semisquare Uranus
+END:VEVENT
+END:VCALENDAR

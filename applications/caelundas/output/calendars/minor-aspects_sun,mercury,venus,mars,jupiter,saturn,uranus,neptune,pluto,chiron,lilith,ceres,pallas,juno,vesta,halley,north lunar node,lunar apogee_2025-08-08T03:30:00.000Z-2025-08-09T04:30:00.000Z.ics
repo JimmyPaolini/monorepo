@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♃ ⚼ ⚸ Jupiter sesquiquadrate Lilith::Jupiter sesquiquadrate Lilith::20250808T052200
+DTSTAMP:20251028T044139Z
+DTSTART:20250808T052200Z
+SUMMARY:♃ ⚼ ⚸ Jupiter sesquiquadrate Lilith
+DESCRIPTION:Jupiter sesquiquadrate Lilith
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⚼ ♄ Sun sesquiquadrate Saturn::Sun sesquiquadrate Saturn::20250808T155200
+DTSTAMP:20251028T044139Z
+DTSTART:20250808T155200Z
+SUMMARY:☀️ ⚼ ♄ Sun sesquiquadrate Saturn
+DESCRIPTION:Sun sesquiquadrate Saturn
+END:VEVENT
+END:VCALENDAR

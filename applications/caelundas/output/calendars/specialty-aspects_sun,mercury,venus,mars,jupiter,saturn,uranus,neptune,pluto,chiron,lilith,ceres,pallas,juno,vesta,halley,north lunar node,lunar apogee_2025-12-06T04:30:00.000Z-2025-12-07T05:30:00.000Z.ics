@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Specialty Aspects 🧮
+BEGIN:VEVENT
+UID:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee::Vesta quintile Lunar Apogee::20251206T123200
+DTSTAMP:20251028T083119Z
+DTSTART:20251206T123200Z
+SUMMARY:⚶ ⬠ 🌚 Vesta quintile Lunar Apogee
+DESCRIPTION:Vesta quintile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ± ♄ Venus biquintile Saturn::Venus biquintile Saturn::20251206T140400
+DTSTAMP:20251028T083119Z
+DTSTART:20251206T140400Z
+SUMMARY:♀️ ± ♄ Venus biquintile Saturn
+DESCRIPTION:Venus biquintile Saturn
+END:VEVENT
+BEGIN:VEVENT
+UID:⚵ ± ☄ Juno biquintile Halley::Juno biquintile Halley::20251206T184600
+DTSTAMP:20251028T083119Z
+DTSTART:20251206T184600Z
+SUMMARY:⚵ ± ☄ Juno biquintile Halley
+DESCRIPTION:Juno biquintile Halley
+END:VEVENT
+END:VCALENDAR

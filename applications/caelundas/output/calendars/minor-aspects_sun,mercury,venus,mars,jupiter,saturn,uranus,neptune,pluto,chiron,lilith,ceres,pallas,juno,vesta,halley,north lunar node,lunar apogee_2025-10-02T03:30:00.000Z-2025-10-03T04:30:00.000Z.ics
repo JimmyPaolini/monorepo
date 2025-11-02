@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:☿ ∠ ⚶ Mercury semisquare Vesta::Mercury semisquare Vesta::20251002T071100
+DTSTAMP:20251028T062637Z
+DTSTART:20251002T071100Z
+SUMMARY:☿ ∠ ⚶ Mercury semisquare Vesta
+DESCRIPTION:Mercury semisquare Vesta
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⚼ ♇ Venus sesquiquadrate Pluto::Venus sesquiquadrate Pluto::20251002T212000
+DTSTAMP:20251028T062637Z
+DTSTART:20251002T212000Z
+SUMMARY:♀️ ⚼ ♇ Venus sesquiquadrate Pluto
+DESCRIPTION:Venus sesquiquadrate Pluto
+END:VEVENT
+END:VCALENDAR

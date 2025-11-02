@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Major Aspects 📐
+BEGIN:VEVENT
+UID:☿ ⚹ ♄ Mercury sextile Saturn::Mercury sextile Saturn::20250119T073900
+DTSTAMP:20251027T222539Z
+DTSTART:20250119T073900Z
+SUMMARY:☿ ⚹ ♄ Mercury sextile Saturn
+DESCRIPTION:Mercury sextile Saturn
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ⚹ ♀️ Mercury sextile Venus::Mercury sextile Venus::20250119T163200
+DTSTAMP:20251027T222539Z
+DTSTART:20250119T163200Z
+SUMMARY:☿ ⚹ ♀️ Mercury sextile Venus
+DESCRIPTION:Mercury sextile Venus
+END:VEVENT
+BEGIN:VEVENT
+UID:☿ ☌ ⚸ Mercury conjunct Lilith::Mercury conjunct Lilith::20250119T223500
+DTSTAMP:20251027T222539Z
+DTSTART:20250119T223500Z
+SUMMARY:☿ ☌ ⚸ Mercury conjunct Lilith
+DESCRIPTION:Mercury conjunct Lilith
+END:VEVENT
+END:VCALENDAR

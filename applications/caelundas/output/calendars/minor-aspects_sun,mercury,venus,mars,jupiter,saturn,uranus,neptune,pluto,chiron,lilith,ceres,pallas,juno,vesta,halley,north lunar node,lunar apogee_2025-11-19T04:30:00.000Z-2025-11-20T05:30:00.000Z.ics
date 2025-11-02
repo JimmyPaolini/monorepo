@@ -1,0 +1,32 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♄ ⚺ ⚸ Saturn semisextile Lilith::Saturn semisextile Lilith::20251119T062400
+DTSTAMP:20251028T075840Z
+DTSTART:20251119T062400Z
+SUMMARY:♄ ⚺ ⚸ Saturn semisextile Lilith
+DESCRIPTION:Saturn semisextile Lilith
+END:VEVENT
+BEGIN:VEVENT
+UID:⚷ ⚻ 🌚 Chiron quincunx Lunar Apogee::Chiron quincunx Lunar Apogee::20251119T083900
+DTSTAMP:20251028T075840Z
+DTSTART:20251119T083900Z
+SUMMARY:⚷ ⚻ 🌚 Chiron quincunx Lunar Apogee
+DESCRIPTION:Chiron quincunx Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♇ ⚻ ☄ Pluto quincunx Halley::Pluto quincunx Halley::20251119T094300
+DTSTAMP:20251028T075840Z
+DTSTART:20251119T094300Z
+SUMMARY:♇ ⚻ ☄ Pluto quincunx Halley
+DESCRIPTION:Pluto quincunx Halley
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⚺ ⚵ Venus semisextile Juno::Venus semisextile Juno::20251119T114600
+DTSTAMP:20251028T075840Z
+DTSTART:20251119T114600Z
+SUMMARY:♀️ ⚺ ⚵ Venus semisextile Juno
+DESCRIPTION:Venus semisextile Juno
+END:VEVENT
+END:VCALENDAR

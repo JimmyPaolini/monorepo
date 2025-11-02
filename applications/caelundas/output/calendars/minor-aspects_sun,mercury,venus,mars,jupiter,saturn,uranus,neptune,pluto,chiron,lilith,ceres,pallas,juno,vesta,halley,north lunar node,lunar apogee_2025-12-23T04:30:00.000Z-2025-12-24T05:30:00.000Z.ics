@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♀️ ⚻ ♅ Venus quincunx Uranus::Venus quincunx Uranus::20251223T062300
+DTSTAMP:20251028T090359Z
+DTSTART:20251223T062300Z
+SUMMARY:♀️ ⚻ ♅ Venus quincunx Uranus
+DESCRIPTION:Venus quincunx Uranus
+END:VEVENT
+BEGIN:VEVENT
+UID:♇ ∠ 🌚 Pluto semisquare Lunar Apogee::Pluto semisquare Lunar Apogee::20251223T214300
+DTSTAMP:20251028T090359Z
+DTSTART:20251223T214300Z
+SUMMARY:♇ ∠ 🌚 Pluto semisquare Lunar Apogee
+DESCRIPTION:Pluto semisquare Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⚺ ♇ Sun semisextile Pluto::Sun semisextile Pluto::20251224T013700
+DTSTAMP:20251028T090359Z
+DTSTART:20251224T013700Z
+SUMMARY:☀️ ⚺ ♇ Sun semisextile Pluto
+DESCRIPTION:Sun semisextile Pluto
+END:VEVENT
+END:VCALENDAR

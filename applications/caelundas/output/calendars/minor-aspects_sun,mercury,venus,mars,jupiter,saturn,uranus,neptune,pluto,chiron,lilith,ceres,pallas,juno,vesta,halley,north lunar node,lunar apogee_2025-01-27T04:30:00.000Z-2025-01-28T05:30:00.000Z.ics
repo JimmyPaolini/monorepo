@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:⚶ ⚺ 🌚 Vesta semisextile Lunar Apogee::Vesta semisextile Lunar Apogee::20250127T112100
+DTSTAMP:20251027T224024Z
+DTSTART:20250127T112100Z
+SUMMARY:⚶ ⚺ 🌚 Vesta semisextile Lunar Apogee
+DESCRIPTION:Vesta semisextile Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♅ ⚼ 🌚 Uranus sesquiquadrate Lunar Apogee::Uranus sesquiquadrate Lunar Apogee::20250127T153400
+DTSTAMP:20251027T224024Z
+DTSTART:20250127T153400Z
+SUMMARY:♅ ⚼ 🌚 Uranus sesquiquadrate Lunar Apogee
+DESCRIPTION:Uranus sesquiquadrate Lunar Apogee
+END:VEVENT
+BEGIN:VEVENT
+UID:♀️ ⚼ ⚶ Venus sesquiquadrate Vesta::Venus sesquiquadrate Vesta::20250127T173700
+DTSTAMP:20251027T224024Z
+DTSTART:20250127T173700Z
+SUMMARY:♀️ ⚼ ⚶ Venus sesquiquadrate Vesta
+DESCRIPTION:Venus sesquiquadrate Vesta
+END:VEVENT
+END:VCALENDAR

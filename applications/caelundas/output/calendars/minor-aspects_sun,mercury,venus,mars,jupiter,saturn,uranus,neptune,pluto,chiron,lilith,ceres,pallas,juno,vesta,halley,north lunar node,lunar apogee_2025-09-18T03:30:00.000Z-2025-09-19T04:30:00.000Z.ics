@@ -1,0 +1,18 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:Minor Aspects 🖇️
+BEGIN:VEVENT
+UID:♀️ ⚻ ♄ Venus quincunx Saturn::Venus quincunx Saturn::20250918T113400
+DTSTAMP:20251028T055946Z
+DTSTART:20250918T113400Z
+SUMMARY:♀️ ⚻ ♄ Venus quincunx Saturn
+DESCRIPTION:Venus quincunx Saturn
+END:VEVENT
+BEGIN:VEVENT
+UID:☀️ ⚻ ⚷ Sun quincunx Chiron::Sun quincunx Chiron::20250918T191300
+DTSTAMP:20251028T055946Z
+DTSTART:20250918T191300Z
+SUMMARY:☀️ ⚻ ⚷ Sun quincunx Chiron
+DESCRIPTION:Sun quincunx Chiron
+END:VEVENT
+END:VCALENDAR
