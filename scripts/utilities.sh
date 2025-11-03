@@ -17,3 +17,17 @@ set +a
 
 echo "👟 Making all monorepo scripts executable..."
 find . -type f -name '*.sh' -print0 | xargs -0 chmod +x || true
+
+get_git_commit_hash() {
+  local commit
+  commit=$(git rev-parse --short=7 HEAD 2>/dev/null || echo "unknown")
+  echo "🔖 Git Commit Hash (first 7 characters): $commit" >&2
+  echo "$commit"
+}
+
+get_utc_timestamp() {
+  local timestamp
+  timestamp=$(date -u +"%Y%m%d-%H%M%S")
+  echo "🕐 UTC Timestamp: $timestamp" >&2
+  echo "$timestamp"
+}

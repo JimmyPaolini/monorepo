@@ -4,6 +4,12 @@ metadata:
   name: {{ include "kubernetes-job.fullname" . }}
   labels:
     {{- include "kubernetes-job.labels" . | nindent 4 }}
+    {{- if .Values.metadata.gitCommit }}
+    caelundas.job/git-commit: {{ .Values.metadata.gitCommit | quote }}
+    {{- end }}
+    {{- if .Values.metadata.timestamp }}
+    caelundas.job/timestamp: {{ .Values.metadata.timestamp | quote }}
+    {{- end }}
 spec:
   backoffLimit: {{ .Values.job.backoffLimit }}
   completions: {{ .Values.job.completions }}
@@ -17,6 +23,12 @@ spec:
     metadata:
       labels:
         {{- include "kubernetes-job.selectorLabels" . | nindent 8 }}
+        {{- if .Values.metadata.gitCommit }}
+        caelundas.job/git-commit: {{ .Values.metadata.gitCommit | quote }}
+        {{- end }}
+        {{- if .Values.metadata.timestamp }}
+        caelundas.job/timestamp: {{ .Values.metadata.timestamp | quote }}
+        {{- end }}
       {{- with .Values.podAnnotations }}
       annotations:
         {{- toYaml . | nindent 8 }}

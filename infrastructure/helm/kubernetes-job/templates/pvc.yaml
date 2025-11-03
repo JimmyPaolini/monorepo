@@ -5,6 +5,13 @@ metadata:
   name: {{ include "kubernetes-job.fullname" . }}
   labels:
     {{- include "kubernetes-job.labels" . | nindent 4 }}
+    application: caelundas
+    {{- if .Values.metadata.gitCommit }}
+    caelundas.job/git-commit: {{ .Values.metadata.gitCommit | quote }}
+    {{- end }}
+    {{- if .Values.metadata.timestamp }}
+    caelundas.job/timestamp: {{ .Values.metadata.timestamp | quote }}
+    {{- end }}
 spec:
   accessModes:
     - {{ .Values.persistence.accessMode }}

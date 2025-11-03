@@ -1,9 +1,17 @@
 # Caelundas-specific values
 # Use this file when deploying the caelundas application
-# Example: helm install caelundas ./kubernetes-job -f values-caelundas.yaml
+# Example: ./applications/caelundas/scripts/k8s-deploy.sh
+#
+# Note: Release names are auto-generated using git commit + timestamp
+# This allows multiple jobs to run concurrently with separate PVCs
 
 nameOverride: "caelundas"
-fullnameOverride: "caelundas"
+# fullnameOverride removed - using dynamic release names instead
+
+# Metadata for tracking job provenance
+metadata:
+  gitCommit: "" # Set via --set during deployment
+  timestamp: "" # Set via --set during deployment
 
 image:
   repository: ghcr.io/jimmypaolini/caelundas
