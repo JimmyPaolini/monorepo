@@ -6,6 +6,8 @@ import type { Event } from "../../calendar.utilities";
 import { isSolarEclipse, isLunarEclipse } from "./eclipses.utilities";
 import { incrementEventsCount, print } from "../../logs/logs.service";
 
+const categories = ["Astronomy", "Astrology", "Eclipse"];
+
 export function getEclipseEvents(args: {
   currentMinute: Moment;
   moonCoordinateEphemeris: CoordinateEphemeris;
@@ -86,7 +88,12 @@ export function getSolarEclipseEvent(args: {
   print(`${summary} at ${dateString}`);
   incrementEventsCount();
 
-  const solarEclipseEvent = { start: date, summary, description };
+  const solarEclipseEvent = {
+    start: date,
+    summary,
+    description,
+    categories: categories.concat(["Solar"]),
+  };
   return solarEclipseEvent;
 }
 
@@ -103,6 +110,11 @@ export function getLunarEclipseEvent(args: {
   print(`${summary} at ${dateString}`);
   incrementEventsCount();
 
-  const lunarEclipseEvent = { start: date, summary, description };
+  const lunarEclipseEvent = {
+    start: date,
+    summary,
+    description,
+    categories: categories.concat(["Lunar"]),
+  };
   return lunarEclipseEvent;
 }

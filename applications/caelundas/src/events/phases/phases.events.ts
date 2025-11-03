@@ -42,6 +42,8 @@ import { MARGIN_MINUTES } from "../../calendar.utilities";
 import { incrementEventsCount, print } from "../../logs/logs.service";
 import { getOutputPath } from "../../output.utilities";
 
+const categories = ["Astronomy", "Astrology", "Planetary Phases"];
+
 export function getPlanetaryPhaseEvents(args: {
   currentMinute: Moment;
   planetaryPhaseBodies: Extract<Body, "mercury" | "venus" | "mars">[];
@@ -138,6 +140,7 @@ export function getVenusianPhaseEvent(args: {
 
   const venusianPhaseEvent: VenusianPhaseEvent = {
     start: timestamp,
+    categories: categories.concat(["Venusian"]),
     description,
     summary,
   };
@@ -343,6 +346,7 @@ export function getMercurianPhaseEvent(args: {
 
   const mercurianPhaseEvent: MercurianPhaseEvent = {
     start: timestamp,
+    categories: categories.concat(["Mercurian"]),
     description,
     summary,
   };
@@ -547,6 +551,7 @@ export function getMartianPhaseEvent(args: {
 
   const martianPhaseEvent: MartianPhaseEvent = {
     start: timestamp,
+    categories: categories.concat(["Martian"]),
     description,
     summary,
   };
@@ -704,14 +709,14 @@ export function writePlanetaryPhaseEvents(args: {
 
   upsertEvents(planetaryPhaseEvents);
 
-  const planetaryPhaseBodiesString = planetaryPhaseBodies.join(",");
-  const planetaryPhasesCalendar = getCalendar(
-    planetaryPhaseEvents,
-    "Planetary Phases 🌓"
-  );
+  const planetaryPhasesBodiesString = planetaryPhaseBodies.join(",");
+  const planetaryPhasesCalendar = getCalendar({
+    events: planetaryPhaseEvents,
+    name: "Planetary Phases 🌓",
+  });
   fs.writeFileSync(
     getOutputPath(
-      `planetary_phases_${planetaryPhaseBodiesString}_${timespan}.ics`
+      `planetary-phases_${planetaryPhasesBodiesString}_${timespan}.ics`
     ),
     new TextEncoder().encode(planetaryPhasesCalendar)
   );

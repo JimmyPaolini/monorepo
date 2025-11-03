@@ -11,6 +11,8 @@ import { isMaximum, isMinimum } from "../../math.utilities";
 import { incrementEventsCount, print } from "../../logs/logs.service";
 import { getOutputPath } from "../../output.utilities";
 
+const categories = ["Astronomy", "Astrology", "Daily Solar Cycle", "Solar"];
+
 export function getDailySolarCycleEvents(args: {
   currentMinute: Moment;
   sunAzimuthElevationEphemeris: AzimuthElevationEphemeris;
@@ -64,7 +66,12 @@ export function getSunriseEvent(date: Date): Event {
   print(`${summary} at ${dateString}`);
   incrementEventsCount();
 
-  const sunriseEvent: Event = { start: date, summary, description };
+  const sunriseEvent: Event = {
+    start: date,
+    summary,
+    description,
+    categories,
+  };
   return sunriseEvent;
 }
 
@@ -76,7 +83,12 @@ export function getSolarZenithEvent(date: Date): Event {
   print(`${summary} at ${dateString}`);
   incrementEventsCount();
 
-  const solarZenithEvent: Event = { start: date, summary, description };
+  const solarZenithEvent: Event = {
+    start: date,
+    summary,
+    description,
+    categories,
+  };
   return solarZenithEvent;
 }
 
@@ -88,7 +100,12 @@ export function getSunsetEvent(date: Date): Event {
   print(`${summary} at ${dateString}`);
   incrementEventsCount();
 
-  const sunsetEvent: Event = { start: date, summary, description };
+  const sunsetEvent: Event = {
+    start: date,
+    summary,
+    description,
+    categories,
+  };
   return sunsetEvent;
 }
 
@@ -100,7 +117,12 @@ export function getSolarNadirEvent(date: Date): Event {
   print(`${summary} at ${dateString}`);
   incrementEventsCount();
 
-  const solarNadirEvent: Event = { start: date, summary, description };
+  const solarNadirEvent: Event = {
+    start: date,
+    summary,
+    description,
+    categories,
+  };
   return solarNadirEvent;
 }
 
@@ -118,10 +140,10 @@ export function writeDailySolarCycleEvents(args: {
 
   upsertEvents(dailySolarCycleEvents);
 
-  const ingressCalendar = getCalendar(
-    dailySolarCycleEvents,
-    "Daily Sun Cycle ☀️"
-  );
+  const ingressCalendar = getCalendar({
+    events: dailySolarCycleEvents,
+    name: "Daily Solar Cycle ☀️",
+  });
   fs.writeFileSync(
     getOutputPath(`daily-solar-cycle_${timespan}.ics`),
     new TextEncoder().encode(ingressCalendar)

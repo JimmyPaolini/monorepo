@@ -29,6 +29,8 @@ import { upsertEvents } from "../../database.utilities";
 import { incrementEventsCount, print } from "../../logs/logs.service";
 import { getOutputPath } from "../../output.utilities";
 
+const categories = ["Astronomy", "Astrology", "Ingresses"];
+
 // #region 🪧 Signs
 
 export type SignIngressDescription =
@@ -100,6 +102,7 @@ export function getSignIngressEvent(args: {
 
   const signIngressEvent: SignIngressEvent = {
     start: date,
+    categories,
     description,
     summary,
   };
@@ -123,10 +126,10 @@ export function writeSignIngressEvents(args: {
   upsertEvents(signIngressEvents);
 
   const signIngressBodiesString = signIngressBodies.join(",");
-  const signIngressesCalendar = getCalendar(
-    signIngressEvents,
-    "Sign Ingresses 🪧"
-  );
+  const signIngressesCalendar = getCalendar({
+    events: signIngressEvents,
+    name: "Sign Ingresses 🪧",
+  });
   fs.writeFileSync(
     getOutputPath(`ingresses_${signIngressBodiesString}_${timespan}.ics`),
     new TextEncoder().encode(signIngressesCalendar)
@@ -211,6 +214,7 @@ export function getDecanIngressEvent(args: {
 
   const decanIngressEvent: DecanIngressEvent = {
     start: date,
+    categories,
     description,
     summary,
   };
@@ -315,6 +319,7 @@ export function getPeakIngressEvent(args: {
 
   const peakIngressEvent: PeakIngressEvent = {
     start: date,
+    categories,
     description,
     summary,
   };
@@ -338,12 +343,12 @@ export function writePeakIngressEvents(args: {
   upsertEvents(peakIngressEvents);
 
   const peakIngressBodiesString = peakIngressBodies.join(",");
-  const peakIngressesCalendar = getCalendar(
-    peakIngressEvents,
-    "Peak Ingresses ⛰️"
-  );
+  const peakIngressesCalendar = getCalendar({
+    events: peakIngressEvents,
+    name: "Peak Ingresses ⛰️",
+  });
   fs.writeFileSync(
-    getOutputPath(`ingresses_${peakIngressBodiesString}_${timespan}.ics`),
+    getOutputPath(`peak-ingresses_${peakIngressBodiesString}_${timespan}.ics`),
     new TextEncoder().encode(peakIngressesCalendar)
   );
 

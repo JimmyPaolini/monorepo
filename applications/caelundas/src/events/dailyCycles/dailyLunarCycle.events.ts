@@ -11,6 +11,8 @@ import { isMaximum, isMinimum } from "../../math.utilities";
 import { incrementEventsCount, print } from "../../logs/logs.service";
 import { getOutputPath } from "../../output.utilities";
 
+const categories = ["Astronomy", "Astrology", "Daily Lunar Cycle", "Lunar"];
+
 export function getDailyLunarCycleEvents(args: {
   currentMinute: Moment;
   moonAzimuthElevationEphemeris: AzimuthElevationEphemeris;
@@ -63,7 +65,12 @@ export function getMoonriseEvent(date: Date): Event {
   print(`${summary} at ${dateString}`);
   incrementEventsCount();
 
-  const moonriseEvent: Event = { start: date, summary, description };
+  const moonriseEvent: Event = {
+    start: date,
+    summary,
+    description,
+    categories,
+  };
   return moonriseEvent;
 }
 
@@ -75,7 +82,12 @@ export function getLunarZenithEvent(date: Date): Event {
   print(`${summary} at ${dateString}`);
   incrementEventsCount();
 
-  const lunarZenithEvent: Event = { start: date, summary, description };
+  const lunarZenithEvent: Event = {
+    start: date,
+    summary,
+    description,
+    categories,
+  };
   return lunarZenithEvent;
 }
 
@@ -87,7 +99,12 @@ export function getMoonsetEvent(date: Date): Event {
   print(`${summary} at ${dateString}`);
   incrementEventsCount();
 
-  const moonsetEvent: Event = { start: date, summary, description };
+  const moonsetEvent: Event = {
+    start: date,
+    summary,
+    description,
+    categories,
+  };
   return moonsetEvent;
 }
 
@@ -99,7 +116,12 @@ export function getLunarNadirEvent(date: Date): Event {
   print(`${summary} at ${dateString}`);
   incrementEventsCount();
 
-  const lunarNadirEvent: Event = { start: date, summary, description };
+  const lunarNadirEvent: Event = {
+    start: date,
+    summary,
+    description,
+    categories,
+  };
   return lunarNadirEvent;
 }
 
@@ -116,10 +138,10 @@ export function writeDailyLunarCycleEvents(args: {
 
   upsertEvents(dailyLunarCycleEvents);
 
-  const ingressCalendar = getCalendar(
-    dailyLunarCycleEvents,
-    "Daily Lunar Cycle 🌙"
-  );
+  const ingressCalendar = getCalendar({
+    events: dailyLunarCycleEvents,
+    name: "Daily Lunar Cycle 🌙",
+  });
   fs.writeFileSync(
     getOutputPath(`daily-lunar-cycle_${timespan}.ics`),
     new TextEncoder().encode(ingressCalendar)

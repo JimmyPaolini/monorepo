@@ -5,7 +5,7 @@
   "projectType": "application",
   "tags": [],
   "targets": {
-    "run": {
+    "start": {
       "executor": "nx:run-commands",
       "options": {
         "command": "pnpm start",

@@ -132,6 +132,7 @@ export function getSpecialtyAspectEvent(args: {
     start: timestamp,
     description,
     summary,
+    categories: ["Astronomy", "Astrology", "Specialty Aspects"],
   };
   return specialtyAspectEvent;
 }
@@ -152,10 +153,10 @@ export function writeSpecialtyAspectEvents(args: {
   upsertEvents(specialtyAspectEvents);
 
   const specialtyAspectBodiesString = specialtyAspectBodies.join(",");
-  const specialtyAspectsCalendar = getCalendar(
-    specialtyAspectEvents,
-    "Specialty Aspects 🧮"
-  );
+  const specialtyAspectsCalendar = getCalendar({
+    events: specialtyAspectEvents,
+    name: "Specialty Aspects 🧮",
+  });
   fs.writeFileSync(
     getOutputPath(
       `specialty-aspects_${specialtyAspectBodiesString}_${timespan}.ics`

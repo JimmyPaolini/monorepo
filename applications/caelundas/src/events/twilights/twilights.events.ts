@@ -17,6 +17,8 @@ import {
 import { incrementEventsCount, print } from "../../logs/logs.service";
 import { getOutputPath } from "../../output.utilities";
 
+const categories = ["Astronomy", "Astrology", "Twilight"];
+
 export function getTwilightEvents(args: {
   currentMinute: Moment;
   sunAzimuthElevationEphemeris: AzimuthElevationEphemeris;
@@ -65,7 +67,12 @@ export function getAstronomicalDawnEvent(date: Date): Event {
   print(`${summary} at ${dateString}`);
   incrementEventsCount();
 
-  const astronomicalDawnEvent: Event = { start: date, summary, description };
+  const astronomicalDawnEvent: Event = {
+    start: date,
+    summary,
+    description,
+    categories,
+  };
   return astronomicalDawnEvent;
 }
 
@@ -77,7 +84,12 @@ export function getNauticalDawnEvent(date: Date): Event {
   print(`${summary} at ${dateString}`);
   incrementEventsCount();
 
-  const nauticalDawnEvent: Event = { start: date, summary, description };
+  const nauticalDawnEvent: Event = {
+    start: date,
+    summary,
+    description,
+    categories,
+  };
   return nauticalDawnEvent;
 }
 
@@ -89,7 +101,12 @@ export function getCivilDawnEvent(date: Date): Event {
   print(`${summary} at ${dateString}`);
   incrementEventsCount();
 
-  const civilDawnEvent: Event = { start: date, summary, description };
+  const civilDawnEvent: Event = {
+    start: date,
+    summary,
+    description,
+    categories,
+  };
   return civilDawnEvent;
 }
 
@@ -101,7 +118,12 @@ export function getCivilDuskEvent(date: Date): Event {
   print(`${summary} at ${dateString}`);
   incrementEventsCount();
 
-  const civilDuskEvent: Event = { start: date, summary, description };
+  const civilDuskEvent: Event = {
+    start: date,
+    summary,
+    description,
+    categories,
+  };
   return civilDuskEvent;
 }
 
@@ -113,7 +135,12 @@ export function getNauticalDuskEvent(date: Date): Event {
   print(`${summary} at ${dateString}`);
   incrementEventsCount();
 
-  const nauticalDuskEvent: Event = { start: date, summary, description };
+  const nauticalDuskEvent: Event = {
+    start: date,
+    summary,
+    description,
+    categories,
+  };
   return nauticalDuskEvent;
 }
 
@@ -125,7 +152,12 @@ export function getAstronomicalDuskEvent(date: Date): Event {
   print(`${summary} at ${dateString}`);
   incrementEventsCount();
 
-  const astronomicalDuskEvent: Event = { start: date, summary, description };
+  const astronomicalDuskEvent: Event = {
+    start: date,
+    summary,
+    description,
+    categories,
+  };
   return astronomicalDuskEvent;
 }
 
@@ -143,7 +175,10 @@ export function writeTwilightEvents(args: {
 
   upsertEvents(twilightEvents);
 
-  const ingressCalendar = getCalendar(twilightEvents, "Twilights 🌠");
+  const ingressCalendar = getCalendar({
+    events: twilightEvents,
+    name: "Twilights 🌠",
+  });
   fs.writeFileSync(
     getOutputPath(`twilight_${timespan}.ics`),
     new TextEncoder().encode(ingressCalendar)

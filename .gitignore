@@ -28,5 +28,4 @@ crash.log
 # Other
 tmp
 applications/JimmyPaolini
-applications/caelundas/calendars
-!applications/caelundas/calendars/.gitkeep
+applications/caelundas/output

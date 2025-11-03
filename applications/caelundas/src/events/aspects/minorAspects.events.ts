@@ -128,6 +128,7 @@ export function getMinorAspectEvent(args: {
     start: timestamp,
     description,
     summary,
+    categories: ["Astronomy", "Astrology", "Minor Aspects"],
   };
   return minorAspectEvent;
 }
@@ -148,10 +149,10 @@ export function writeMinorAspectEvents(args: {
   upsertEvents(minorAspectEvents);
 
   const minorAspectBodiesString = minorAspectBodies.join(",");
-  const minorAspectsCalendar = getCalendar(
-    minorAspectEvents,
-    "Minor Aspects 🖇️"
-  );
+  const minorAspectsCalendar = getCalendar({
+    events: minorAspectEvents,
+    name: "Minor Aspects 🖇️",
+  });
   fs.writeFileSync(
     getOutputPath(`minor-aspects_${minorAspectBodiesString}_${timespan}.ics`),
     new TextEncoder().encode(minorAspectsCalendar)

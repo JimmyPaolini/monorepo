@@ -114,6 +114,7 @@ export function getRetrogradeEvent(args: {
 
   const retrogradeEvent: RetrogradeEvent = {
     start: timestamp,
+    categories: ["Astronomy", "Astrology", "Retrogrades"],
     summary,
     description,
   };
@@ -137,7 +138,10 @@ export function writeRetrogradeEvents(args: {
   upsertEvents(retrogradeEvents);
 
   const retrogradeBodiesString = retrogradeBodies.join(", ");
-  const retrogradesCalendar = getCalendar(retrogradeEvents, "Retrogrades ↩️");
+  const retrogradesCalendar = getCalendar({
+    events: retrogradeEvents,
+    name: "Retrogrades ↩️",
+  });
   fs.writeFileSync(
     getOutputPath(`retrogrades_${retrogradeBodiesString}_${timespan}.ics`),
     new TextEncoder().encode(retrogradesCalendar)

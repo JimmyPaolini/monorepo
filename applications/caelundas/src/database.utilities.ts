@@ -4,7 +4,7 @@ import type { Body } from "./symbols.constants";
 import type { Event } from "./calendar.utilities";
 
 const databasePromise: Promise<Database> = open({
-  filename: "./database.db",
+  filename: "./output/database.db",
   driver: sqlite3.Database,
 });
 
@@ -30,6 +30,13 @@ const databasePromise: Promise<Database> = open({
       description TEXT,
       start TEXT,
       end TEXT,
+      categories TEXT,
+      location TEXT,
+      latitude REAL,
+      longitude REAL,
+      url TEXT,
+      priority INTEGER,
+      color TEXT,
       PRIMARY KEY (summary, start)
     );
   `);
@@ -88,18 +95,43 @@ export async function upsertEphemerisValues(
 
 // #region Events
 
-export interface EventRecord {
-  summary: string;
-  description: string;
-  timestamp: Date;
+function mapRowToEvent(row: any): Event {
+  return {
+    summary: row.summary,
+    description: row.description,
+    start: new Date(row.start),
+    end: row.end ? new Date(row.end) : undefined,
+    categories: row.categories ? row.categories.split(",") : [],
+    location: row.location || undefined,
+    geography:
+      row.latitude !== null && row.longitude !== null
+        ? { latitude: row.latitude, longitude: row.longitude }
+        : undefined,
+    url: row.url || undefined,
+    priority: row.priority !== null ? row.priority : undefined,
+    color: row.color || undefined,
+  };
 }
 
 export async function upsertEvent(event: Event) {
   const db = await databasePromise;
-  const { summary, description, start } = event;
   const result = await db.run(
-    "INSERT OR REPLACE INTO events (summary, description, start) VALUES (?, ?, ?)",
-    [summary, description, start.toISOString()]
+    `INSERT OR REPLACE INTO events
+     (summary, description, start, end, categories, location, latitude, longitude, url, priority, color)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    [
+      event.summary,
+      event.description,
+      event.start.toISOString(),
+      event.end?.toISOString() || null,
+      event.categories.join(","),
+      event.location || null,
+      event.geography?.latitude || null,
+      event.geography?.longitude || null,
+      event.url || null,
+      event.priority ?? null,
+      event.color || null,
+    ]
   );
   return result;
 }
@@ -107,20 +139,65 @@ export async function upsertEvent(event: Event) {
 export async function upsertEvents(events: Event[]) {
   if (events.length === 0) return;
 
-  const placeholders = events.map(() => "(?, ?, ?)").join(", ");
+  const placeholders = events
+    .map(() => "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")
+    .join(", ");
   const query = `
-    INSERT INTO events (summary, description, start)
+    INSERT INTO events (summary, description, start, end, categories, location, latitude, longitude, url, priority, color)
     VALUES ${placeholders}
     ON CONFLICT(summary, start) DO UPDATE SET
-      description = excluded.description
+      description = excluded.description,
+      end = excluded.end,
+      categories = excluded.categories,
+      location = excluded.location,
+      latitude = excluded.latitude,
+      longitude = excluded.longitude,
+      url = excluded.url,
+      priority = excluded.priority,
+      color = excluded.color
   `;
 
-  const parameters = events.flatMap(({ summary, description, start }) => [
-    summary,
-    description,
-    start.toISOString(),
+  const parameters = events.flatMap((event) => [
+    event.summary,
+    event.description,
+    event.start.toISOString(),
+    event.end?.toISOString() || null,
+    event.categories.join(","),
+    event.location || null,
+    event.geography?.latitude || null,
+    event.geography?.longitude || null,
+    event.url || null,
+    event.priority ?? null,
+    event.color || null,
   ]);
 
   const db = await databasePromise;
   await db.run(query, parameters);
+}
+
+export async function getEventsByDateRange(
+  start: Date,
+  end: Date
+): Promise<Event[]> {
+  const db = await databasePromise;
+  const rows = await db.all(
+    `SELECT summary, description, start, end, categories, location, latitude, longitude, url, priority, color
+     FROM events
+     WHERE start >= ? AND start <= ?
+     ORDER BY start ASC`,
+    [start.toISOString(), end.toISOString()]
+  );
+
+  return rows.map(mapRowToEvent);
+}
+
+export async function getAllEvents(): Promise<Event[]> {
+  const db = await databasePromise;
+  const rows = await db.all(
+    `SELECT summary, description, start, end, categories, location, latitude, longitude, url, priority, color
+     FROM events
+     ORDER BY start ASC`
+  );
+
+  return rows.map(mapRowToEvent);
 }

@@ -127,6 +127,7 @@ export function getMajorAspectEvent(args: {
     start: timestamp,
     description,
     summary,
+    categories: ["Astronomy", "Astrology", "Major Aspects"],
   };
   return majorAspectEvent;
 }
@@ -147,10 +148,10 @@ export function writeMajorAspectEvents(args: {
   upsertEvents(majorAspectEvents);
 
   const majorAspectBodiesString = majorAspectBodies.join(",");
-  const majorAspectsCalendar = getCalendar(
-    majorAspectEvents,
-    "Major Aspects 📐"
-  );
+  const majorAspectsCalendar = getCalendar({
+    events: majorAspectEvents,
+    name: "Major Aspects 📐",
+  });
   fs.writeFileSync(
     getOutputPath(`major-aspects_${majorAspectBodiesString}_${timespan}.ics`),
     new TextEncoder().encode(majorAspectsCalendar)

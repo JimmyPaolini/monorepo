@@ -73,7 +73,12 @@ export function getMonthlyLunarCycleEvent(args: {
   print(`${summary} at ${dateString}`);
   incrementEventsCount();
 
-  const monthlyLunarCycleEvent = { start: date, summary, description };
+  const monthlyLunarCycleEvent = {
+    start: date,
+    summary,
+    description,
+    categories: ["Astronomy", "Astrology", "Monthly Lunar Cycle", "Lunar"],
+  };
   return monthlyLunarCycleEvent;
 }
 
@@ -91,10 +96,10 @@ export function writeMonthlyLunarCycleEvents(args: {
 
   upsertEvents(monthlyLunarCycleEvents);
 
-  const ingressCalendar = getCalendar(
-    monthlyLunarCycleEvents,
-    "Monthly Lunar Cycle 🌒"
-  );
+  const ingressCalendar = getCalendar({
+    events: monthlyLunarCycleEvents,
+    name: "Monthly Lunar Cycle 🌒",
+  });
   fs.writeFileSync(
     getOutputPath(`monthly-lunar-cycle_${timespan}.ics`),
     new TextEncoder().encode(ingressCalendar)

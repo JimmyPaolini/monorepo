@@ -42,6 +42,7 @@ import {
 import { normalizeDegrees } from "../math.utilities";
 import { print } from "../logs/logs.service";
 import { fetchWithRetry } from "../fetch.utilities";
+import moment from "moment-timezone";
 
 // #region 💫 Orbit
 
@@ -68,12 +69,12 @@ export async function getOrbitEphemeris(args: {
 }) {
   const { body, end, start } = args;
 
-  // const timespan = `${moment
-  //   .tz(start, "America/New_York")
-  //   .toISOString(true)} to ${moment
-  //   .tz(end, "America/New_York")
-  //   .toISOString(true)}`;
-  const message = `orbit ephemeris 🎯 for ${symbolByBody[body]}`;
+  const timespan = `${moment
+    .tz(start, "America/New_York")
+    .toISOString(true)} to ${moment
+    .tz(end, "America/New_York")
+    .toISOString(true)}`;
+  const message = `orbit ephemeris 🎯 for ${symbolByBody[body]} from ${timespan}`;
   print(`🔭 Fetching ${message}`);
 
   const url = getOrbitEphemerisUrl({ body, end, start });
@@ -162,12 +163,12 @@ export async function getCoordinatesEphemeris(args: {
 }) {
   const { body, start, end } = args;
 
-  // const timespan = `${moment
-  //   .tz(start, "America/New_York")
-  //   .toISOString(true)} to ${moment
-  //   .tz(end, "America/New_York")
-  //   .toISOString(true)}`;
-  const message = `coordinate ephemeris 🎯 for ${symbolByBody[body]}`;
+  const timespan = `${moment
+    .tz(start, "America/New_York")
+    .toISOString(true)} to ${moment
+    .tz(end, "America/New_York")
+    .toISOString(true)}`;
+  const message = `coordinate ephemeris 🎯 for ${symbolByBody[body]} from ${timespan}`;
   print(`🔭 Fetching ${message}`);
 
   const url = getCoordinatesEphemerisUrl({ body, start, end });
@@ -192,15 +193,13 @@ export async function getCoordinateEphemerisByBody(args: {
 }) {
   const { bodies, start, end } = args;
 
-  // const bodiesString = uniqueBodies
-  //   .map((body: Body) => symbolByBody[body])
-  //   .join(" ");
-  // const timespan = `${moment
-  //   .tz(start, "America/New_York")
-  //   .toISOString(true)} to ${moment
-  //   .tz(end, "America/New_York")
-  //   .toISOString(true)}`;
-  const message = `coordinate ephemerides 🎯`;
+  const bodiesString = bodies.map((body: Body) => symbolByBody[body]).join(" ");
+  const timespan = `${moment
+    .tz(start, "America/New_York")
+    .toISOString(true)} to ${moment
+    .tz(end, "America/New_York")
+    .toISOString(true)}`;
+  const message = `coordinate ephemerides 🎯 for ${bodiesString} from ${timespan}`;
   print(`🔭 Fetching ${message}`);
 
   const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
@@ -255,12 +254,12 @@ export async function getAzimuthElevationEphemeris(args: {
 }) {
   const { body, coordinates, end, start } = args;
 
-  // const timespan = `${moment
-  //   .tz(start, "America/New_York")
-  //   .toISOString(true)} to ${moment
-  //   .tz(end, "America/New_York")
-  //   .toISOString(true)}`;
-  const message = `azimuth elevation ephemeris ⏫ for ${symbolByBody[body]}`;
+  const timespan = `${moment
+    .tz(start, "America/New_York")
+    .toISOString(true)} to ${moment
+    .tz(end, "America/New_York")
+    .toISOString(true)}`;
+  const message = `azimuth elevation ephemeris ⏫ for ${symbolByBody[body]} from ${timespan}`;
   print(`🔭 Fetching ${message}`);
 
   const url = getAzimuthElevationEphemerisUrl({
@@ -288,15 +287,13 @@ export async function getAzimuthElevationEphemerisByBody(args: {
 }) {
   const { bodies, start, end, coordinates } = args;
 
-  // const bodiesString = uniqueBodies
-  //   .map((body: Body) => symbolByBody[body])
-  //   .join(" ");
-  // const timespan = `${moment
-  //   .tz(start, "America/New_York")
-  //   .toISOString(true)} to ${moment
-  //   .tz(end, "America/New_York")
-  //   .toISOString(true)}`;
-  const message = `azimuth elevation ephemerides ⏫`;
+  const bodiesString = bodies.map((body: Body) => symbolByBody[body]).join(" ");
+  const timespan = `${moment
+    .tz(start, "America/New_York")
+    .toISOString(true)} to ${moment
+    .tz(end, "America/New_York")
+    .toISOString(true)}`;
+  const message = `azimuth elevation ephemerides ⏫ for ${bodiesString} from ${timespan}`;
   print(`🔭 Fetching ${message}`);
 
   const azimuthElevationEphemerisByBody = {} as Record<
@@ -345,7 +342,12 @@ export async function getIlluminationEphemeris(args: {
 }) {
   const { body, start, end, coordinates } = args;
 
-  const message = `illumination ephemeris 🌕 for ${symbolByBody[body]}`;
+  const timespan = `${moment
+    .tz(start, "America/New_York")
+    .toISOString(true)} to ${moment
+    .tz(end, "America/New_York")
+    .toISOString(true)}`;
+  const message = `illumination ephemeris 🌕 for ${symbolByBody[body]} from ${timespan}`;
   print(`🔭 Fetching ${message}`);
 
   const url = getIlluminationEphemerisUrl({
@@ -373,15 +375,13 @@ export async function getIlluminationEphemerisByBody(args: {
 }) {
   const { bodies, start, end, coordinates } = args;
 
-  // const bodiesString = uniqueBodies
-  //   .map((body: Body) => symbolByBody[body])
-  //   .join(" ");
-  // const timespan = `${moment
-  //   .tz(start, "America/New_York")
-  //   .toISOString(true)} to ${moment
-  //   .tz(end, "America/New_York")
-  //   .toISOString(true)}`;
-  const message = `illumination ephemerides 🌕`;
+  const bodiesString = bodies.map((body: Body) => symbolByBody[body]).join(" ");
+  const timespan = `${moment
+    .tz(start, "America/New_York")
+    .toISOString(true)} to ${moment
+    .tz(end, "America/New_York")
+    .toISOString(true)}`;
+  const message = `illumination ephemerides 🌕 for ${bodiesString} from ${timespan}`;
   print(`🔭 Fetching ${message}`);
 
   const illuminationEphemerisByBody = {} as Record<Body, IlluminationEphemeris>;
@@ -425,7 +425,12 @@ export async function getDiameterEphemeris(args: {
 }) {
   const { start, end, body } = args;
 
-  const message = `diameter ephemeris 🛟 for ${symbolByBody[body]}`;
+  const timespan = `${moment
+    .tz(start, "America/New_York")
+    .toISOString(true)} to ${moment
+    .tz(end, "America/New_York")
+    .toISOString(true)}`;
+  const message = `diameter ephemeris 🛟 for ${symbolByBody[body]} from ${timespan}`;
   print(`🔭 Fetching ${message}`);
 
   const url = getDiameterEphemerisUrl({ start, end, body });
@@ -447,15 +452,13 @@ export async function getDiameterEphemerisByBody(args: {
 }) {
   const { bodies, start, end } = args;
 
-  // const bodiesString = uniqueBodies
-  //   .map((body: Body) => symbolByBody[body])
-  //   .join(" ");
-  // const timespan = `${moment
-  //   .tz(start, "America/New_York")
-  //   .toISOString(true)} to ${moment
-  //   .tz(end, "America/New_York")
-  //   .toISOString(true)}`;
-  const message = `diameter ephemerides 🛟`;
+  const bodiesString = bodies.map((body: Body) => symbolByBody[body]).join(" ");
+  const timespan = `${moment
+    .tz(start, "America/New_York")
+    .toISOString(true)} to ${moment
+    .tz(end, "America/New_York")
+    .toISOString(true)}`;
+  const message = `diameter ephemerides 🛟 for ${bodiesString} from ${timespan}`;
   print(`🔭 Fetching ${message}`);
 
   const diameterEphemerisByBody = {} as Record<Body, DiameterEphemeris>;
@@ -498,12 +501,12 @@ export async function getDistanceEphemeris(args: {
 }) {
   const { body, end, start } = args;
 
-  // const timespan = `${moment
-  //   .tz(start, "America/New_York")
-  //   .toISOString(true)} to ${moment
-  //   .tz(end, "America/New_York")
-  //   .toISOString(true)}`;
-  const message = `distance ephemeris 📏 for ${symbolByBody[body]}`;
+  const timespan = `${moment
+    .tz(start, "America/New_York")
+    .toISOString(true)} to ${moment
+    .tz(end, "America/New_York")
+    .toISOString(true)}`;
+  const message = `distance ephemeris 📏 for ${symbolByBody[body]} from ${timespan}`;
   print(`🔭 Fetching ${message}`);
 
   const url = getDistanceEphemerisUrl({ body, end, start });
@@ -525,15 +528,13 @@ export async function getDistanceEphemerisByBody(args: {
 }) {
   const { bodies, start, end } = args;
 
-  // const bodiesString = uniqueBodies
-  //   .map((body: Body) => symbolByBody[body])
-  //   .join(" ");
-  // const timespan = `${moment
-  //   .tz(start, "America/New_York")
-  //   .toISOString(true)} to ${moment
-  //   .tz(end, "America/New_York")
-  //   .toISOString(true)}`;
-  const message = `distance ephemerides 📏`;
+  const bodiesString = bodies.map((body: Body) => symbolByBody[body]).join(" ");
+  const timespan = `${moment
+    .tz(start, "America/New_York")
+    .toISOString(true)} to ${moment
+    .tz(end, "America/New_York")
+    .toISOString(true)}`;
+  const message = `distance ephemerides 📏 for ${bodiesString} from ${timespan}`;
   print(`🔭 Fetching ${message}`);
 
   const distanceEphemerisByBody = {} as Record<Body, DistanceEphemeris>;
