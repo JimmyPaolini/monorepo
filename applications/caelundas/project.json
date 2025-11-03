@@ -53,8 +53,12 @@
     "helm-uninstall": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "helm uninstall caelundas-job",
-        "cwd": "{workspaceRoot}"
+        "commands": [
+          "kubectl delete pv -l app.kubernetes.io/instance=caelundas-job --ignore-not-found=true",
+          "helm uninstall caelundas-job"
+        ],
+        "cwd": "{workspaceRoot}",
+        "parallel": false
       }
     },
     "k8s-copy-files": {
