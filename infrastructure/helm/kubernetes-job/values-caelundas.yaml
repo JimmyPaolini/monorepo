@@ -27,7 +27,7 @@ job:
 # Environment variables
 env:
   - name: OUTPUT_DIR
-    value: "/app/data/calendars"
+    value: "/app/data"
 
 persistence:
   enabled: true

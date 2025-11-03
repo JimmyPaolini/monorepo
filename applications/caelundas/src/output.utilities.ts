@@ -3,11 +3,11 @@ import path from "path";
 
 /**
  * Get the output directory for calendar files.
- * Uses environment variable OUTPUT_DIR if set, otherwise defaults to ./calendars
+ * Uses environment variable OUTPUT_DIR if set, otherwise defaults to ./output
  * This allows the application to write to persistent volumes in Kubernetes.
  */
 export function getOutputDirectory(): string {
-  const outputDir = process.env.OUTPUT_DIR || "./calendars";
+  const outputDir = process.env.OUTPUT_DIR || "./output";
 
   // Ensure the directory exists
   if (!fs.existsSync(outputDir)) {

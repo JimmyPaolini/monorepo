@@ -16,7 +16,7 @@ validate_pod_completed "$pod_phase" "$pod_name"
 pvc_name=$(get_pvc_name "$pod_name")
 
 echo "🔧 Creating temporary script pod..."
-echo "📂 Path: /app/data/calendars"
+echo "📂 Path: /app/data"
 
 kubectl run "caelundas-script" --rm -i --restart=Never \
   --image="busybox:latest" \
@@ -25,7 +25,7 @@ kubectl run "caelundas-script" --rm -i --restart=Never \
       \"containers\": [{
         \"name\": \"caelundas-script\",
         \"image\": \"busybox:latest\",
-        \"command\": [\"ls\", \"-lah\", \"/app/data/calendars\"],
+        \"command\": [\"ls\", \"-lah\", \"/app/data\"],
         \"volumeMounts\": [{
           \"name\": \"data\",
           \"mountPath\": \"/app/data\"

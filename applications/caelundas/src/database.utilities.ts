@@ -2,9 +2,10 @@ import sqlite3 from "sqlite3";
 import { open, type Database } from "sqlite";
 import type { Body } from "./symbols.constants";
 import type { Event } from "./calendar.utilities";
+import { getOutputPath } from "./output.utilities";
 
 const databasePromise: Promise<Database> = open({
-  filename: "./output/database.db",
+  filename: getOutputPath("database.db"),
   driver: sqlite3.Database,
 });
 

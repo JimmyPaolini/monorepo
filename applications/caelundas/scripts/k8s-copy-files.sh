@@ -2,7 +2,7 @@
 
 source applications/caelundas/scripts/utilities.sh
 
-readonly OUTPUT_DIR="applications/caelundas/${OUTPUT_DIR#./}"
+readonly OUTPUT_DIR="applications/caelundas/output"
 
 echo "📥 Copying files from Kubernetes pod..."
 
@@ -19,7 +19,7 @@ pvc_name=$(get_pvc_name "$pod_name")
 
 echo "🔧 Creating temporary script pod..."
 echo "💾 PVC: $pvc_name"
-echo "📂 Path: /app/data/calendars"
+echo "📂 Path: /app/data"
 
 # Create a temporary pod with the PVC mounted and sleep to keep it running
 kubectl run "caelundas-script" \
@@ -54,7 +54,7 @@ fi
 
 # Copy files from the script pod
 echo "📥 Copying files..."
-source="caelundas-script:/app/data/calendars"
+source="caelundas-script:/app/data"
 
 if kubectl cp "$source" "$OUTPUT_DIR" 2>/dev/null; then
   # Clean up the script pod
