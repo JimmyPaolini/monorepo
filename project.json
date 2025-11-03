@@ -1,0 +1,23 @@
+{
+  "name": "monorepo",
+  "$schema": "node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "targets": {
+    "terraform:import": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "./scripts/terraform-import.sh",
+        "cwd": "{projectRoot}"
+      },
+      "description": "Import existing infrastructure resources into Terraform state"
+    },
+    "terraform:plan": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "./scripts/terraform-plan.sh",
+        "cwd": "{projectRoot}"
+      },
+      "description": "Run terraform plan to preview infrastructure changes"
+    }
+  }
+}

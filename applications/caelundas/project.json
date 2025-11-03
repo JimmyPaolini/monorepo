@@ -10,7 +10,8 @@
       "options": {
         "command": "pnpm start",
         "cwd": "applications/caelundas"
-      }
+      },
+      "description": "Start the Caelundas application"
     },
     "typecheck": {
       "executor": "@nx/js:tsc",
@@ -24,14 +25,16 @@
         "assets": [
           "applications/caelundas/*.md"
         ]
-      }
+      },
+      "description": "Type-check the application and compile TypeScript"
     },
     "docker-build": {
       "executor": "nx:run-commands",
       "options": {
         "command": "docker buildx build --platform linux/amd64 -f applications/caelundas/Dockerfile -t caelundas:1.0.0 -t ghcr.io/jimmypaolini/caelundas:1.0.0 --load .",
         "cwd": "{workspaceRoot}"
-      }
+      },
+      "description": "Build Docker image for linux/amd64 and load it locally"
     },
     "docker-push": {
       "executor": "nx:run-commands",
@@ -41,14 +44,16 @@
       "options": {
         "command": "docker buildx build --platform linux/amd64 -f applications/caelundas/Dockerfile -t ghcr.io/jimmypaolini/caelundas:1.0.0 --push .",
         "cwd": "{workspaceRoot}"
-      }
+      },
+      "description": "Build and push Docker image to GitHub Container Registry"
     },
     "helm-upgrade": {
       "executor": "nx:run-commands",
       "options": {
         "command": "helm upgrade --install caelundas-job ./infrastructure/helm/kubernetes-job -f ./infrastructure/helm/kubernetes-job/values-caelundas.yaml",
         "cwd": "{workspaceRoot}"
-      }
+      },
+      "description": "Install or upgrade the Caelundas Helm chart in Kubernetes"
     },
     "helm-uninstall": {
       "executor": "nx:run-commands",
@@ -59,21 +64,24 @@
         ],
         "cwd": "{workspaceRoot}",
         "parallel": false
-      }
+      },
+      "description": "Uninstall the Caelundas Helm release and delete associated persistent volumes"
     },
     "k8s-copy-files": {
       "executor": "nx:run-commands",
       "options": {
         "command": "./applications/caelundas/scripts/k8s-copy-files.sh",
         "cwd": "{workspaceRoot}"
-      }
+      },
+      "description": "Copy files to the Kubernetes pod"
     },
     "k8s-list-files": {
       "executor": "nx:run-commands",
       "options": {
         "command": "./applications/caelundas/scripts/k8s-list-files.sh",
         "cwd": "{workspaceRoot}"
-      }
+      },
+      "description": "List files in the Kubernetes pod"
     }
   }
 }
