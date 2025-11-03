@@ -1,5 +1,7 @@
 import moment from "moment-timezone";
 
+export const MARGIN_MINUTES = 30;
+
 export interface Event {
   start: Date;
   end?: Date;

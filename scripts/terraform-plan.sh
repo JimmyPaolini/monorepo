@@ -1,18 +1,4 @@
-#!/usr/bin/env bash
-
-# Ensure the script is run from the monorepo root directory
-if [ ! -d ".git" ] && [ "$(basename "$(pwd)")" != "monorepo" ]; then
-  echo "🛑 Error: This script must be run from the monorepo root directory." >&2
-  exit 1
-fi
-
-# Export all variables from .env file
-if [ -f ".env" ]; then
-  echo "🎛️ Exporting environment variables from .env file..."
-  set -a
-  source .env
-  set +a
-fi
+#!/bin/bash
 
 # Change to the Terraform infrastructure directory
 echo "📂 Changing to infrastructure/terraform directory..."

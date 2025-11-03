@@ -1,7 +1,7 @@
 import _ from "lodash";
 import moment from "moment-timezone";
 import { getChoices } from "./choices/choices.service";
-import type { Event } from "./calendar.utilities";
+import { MARGIN_MINUTES, type Event } from "./calendar.utilities";
 import type { Coordinates } from "./ephemeris/ephemeris.types";
 import {
   getEphemerides,
@@ -66,8 +66,6 @@ import {
   writePlanetaryPhaseEvents,
 } from "./events/phases/phases.events";
 import { initializeLogs, print, setDate } from "./logs/logs.service";
-
-export const MARGIN_MINUTES = 30;
 
 async function main() {
   // #region 🔮 Choices

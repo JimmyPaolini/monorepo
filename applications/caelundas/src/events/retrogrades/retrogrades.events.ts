@@ -14,7 +14,7 @@ import {
   symbolByBody,
   symbolByOrbitalDirection,
 } from "../../symbols.constants";
-import { MARGIN_MINUTES } from "../../main";
+import { MARGIN_MINUTES } from "../../calendar.utilities";
 import { isDirect, isRetrograde } from "./retrogrades.utilities";
 import { upsertEvents } from "../../database.utilities";
 import { incrementEventsCount, print } from "../../logs/logs.service";

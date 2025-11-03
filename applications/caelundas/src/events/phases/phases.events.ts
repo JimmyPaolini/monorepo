@@ -38,7 +38,7 @@ import {
   isWesternElongation,
 } from "./phases.utilities";
 import { upsertEvents } from "../../database.utilities";
-import { MARGIN_MINUTES } from "../../main";
+import { MARGIN_MINUTES } from "../../calendar.utilities";
 import { incrementEventsCount, print } from "../../logs/logs.service";
 import { getOutputPath } from "../../output.utilities";
 

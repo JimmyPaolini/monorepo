@@ -2,7 +2,10 @@
 
 source scripts/utilities.sh
 
+echo "🎛️ Exporting environment variables from applications/caelundas/.env file..."
+set -a
 source applications/caelundas/.env
+set +a
 
 readonly CALENDARS_PATH="/app/data/calendars"
 readonly DEBUG_POD_NAME="caelundas-debug"

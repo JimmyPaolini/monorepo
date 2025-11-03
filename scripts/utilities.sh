@@ -10,9 +10,10 @@ fi
 echo "🚪 Setting script to exit immediately on error..."
 set -e
 
-echo "🔢 Exporting environment variables..."
+echo "🎛️ Exporting environment variables from .env file..."
 set -a
 source .env
+set +a
 
 echo "👟 Making all monorepo scripts executable..."
 find . -type f -name '*.sh' -print0 | xargs -0 chmod +x || true
