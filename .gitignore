@@ -29,3 +29,6 @@ crash.log
 tmp
 applications/JimmyPaolini
 applications/caelundas/output
+
+# Database files 🛢️
+database.db
