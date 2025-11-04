@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "start": "set -a && source .env && set +a && tsx src/main.ts"
+    "dev": "set -a && source .env && set +a && tsx src/main.ts",
+    "start": "tsx src/main.ts"
   },
   "dependencies": {
     "@inkjs/ui": "^2.0.0",

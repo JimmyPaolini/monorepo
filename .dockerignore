@@ -19,7 +19,10 @@ Thumbs.db
 .git
 .gitignore
 
-# IDEs
+# 🎛️ Environment files
+*.env*
+
+# 🧑‍💻 IDEs
 .idea
 .vscode
 *.swp

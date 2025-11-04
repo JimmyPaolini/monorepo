@@ -11,7 +11,7 @@ release_name=$(generate_release_name "$commit" "$timestamp")
 echo "📦 Deploying Helm release..."
 
 helm upgrade --install "$release_name" infrastructure/helm/kubernetes-job \
-  --values infrastructure/helm/kubernetes-job/values-caelundas.yaml \
+  --values infrastructure/helm/kubernetes-job/values/caelundas-production.yaml \
   --set metadata.gitCommit="$commit" \
   --set metadata.timestamp="$timestamp"
 

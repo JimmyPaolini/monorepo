@@ -5,6 +5,14 @@
   "projectType": "application",
   "tags": [],
   "targets": {
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm dev",
+        "cwd": "applications/caelundas"
+      },
+      "description": "Run Caelundas locally with .env file"
+    },
     "start": {
       "executor": "nx:run-commands",
       "options": {
@@ -38,38 +46,27 @@
     },
     "docker-push": {
       "executor": "nx:run-commands",
-      "dependsOn": [
-        "docker-build"
-      ],
       "options": {
         "command": "docker buildx build --platform linux/amd64 -f applications/caelundas/Dockerfile -t ghcr.io/jimmypaolini/caelundas:1.0.0 --push .",
         "cwd": "{workspaceRoot}"
       },
       "description": "Build and push Docker image to GitHub Container Registry"
     },
-    "k8s-deploy": {
+    "helm-deploy": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "./applications/caelundas/scripts/k8s-deploy.sh",
+        "command": "./applications/caelundas/scripts/helm-deploy.sh",
         "cwd": "{workspaceRoot}"
       },
-      "description": "Deploy Caelundas job to Kubernetes with auto-generated release name"
+      "description": "Deploy Caelundas job with Helm with auto-generated release name"
     },
-    "k8s-list-jobs": {
+    "k8s-list-files": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "./applications/caelundas/scripts/k8s-list-jobs.sh",
+        "command": "./applications/caelundas/scripts/k8s-list-files.sh",
         "cwd": "{workspaceRoot}"
       },
-      "description": "List all Caelundas Kubernetes jobs with metadata"
-    },
-    "k8s-uninstall": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "./applications/caelundas/scripts/k8s-uninstall.sh",
-        "cwd": "{workspaceRoot}"
-      },
-      "description": "Uninstall a Caelundas Helm release and clean up PVC (requires release name argument)"
+      "description": "List files in a Caelundas job's PVC (requires release name argument)"
     },
     "k8s-copy-files": {
       "executor": "nx:run-commands",
@@ -79,13 +76,13 @@
       },
       "description": "Copy files from a completed Caelundas job (requires release name argument)"
     },
-    "k8s-list-files": {
+    "helm-uninstall": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "./applications/caelundas/scripts/k8s-list-files.sh",
+        "command": "./applications/caelundas/scripts/helm-uninstall.sh",
         "cwd": "{workspaceRoot}"
       },
-      "description": "List files in a Caelundas job's PVC (requires release name argument)"
+      "description": "Uninstall a Caelundas Helm release and clean up PVC (requires release name argument)"
     }
   }
 }
