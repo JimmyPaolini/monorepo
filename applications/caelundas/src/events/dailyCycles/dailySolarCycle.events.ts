@@ -8,7 +8,6 @@ import { getCalendar } from "../../calendar.utilities";
 import { upsertEvents } from "../../database.utilities";
 import { isRise, isSet } from "./dailyCycle.utilities";
 import { isMaximum, isMinimum } from "../../math.utilities";
-import { incrementEventsCount, print } from "../../logs/logs.service";
 import { getOutputPath } from "../../output.utilities";
 
 const categories = ["Astronomy", "Astrology", "Daily Solar Cycle", "Solar"];
@@ -63,8 +62,7 @@ export function getSunriseEvent(date: Date): Event {
   const summary = `☀️ 🔼 ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
 
   const sunriseEvent: Event = {
     start: date,
@@ -80,8 +78,7 @@ export function getSolarZenithEvent(date: Date): Event {
   const summary = `☀️ ⏫ ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
 
   const solarZenithEvent: Event = {
     start: date,
@@ -97,8 +94,7 @@ export function getSunsetEvent(date: Date): Event {
   const summary = `☀️ 🔽 ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
 
   const sunsetEvent: Event = {
     start: date,
@@ -114,8 +110,7 @@ export function getSolarNadirEvent(date: Date): Event {
   const summary = `☀️ ⏬ ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
 
   const solarNadirEvent: Event = {
     start: date,
@@ -136,7 +131,7 @@ export function writeDailySolarCycleEvents(args: {
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${dailySolarCycleEvents.length} daily sun cycle events from ${timespan}`;
-  print(`☀️ Writing ${message}`);
+  console.log(`☀️ Writing ${message}`);
 
   upsertEvents(dailySolarCycleEvents);
 
@@ -149,5 +144,5 @@ export function writeDailySolarCycleEvents(args: {
     new TextEncoder().encode(ingressCalendar)
   );
 
-  print(`☀️ Wrote ${message}`);
+  console.log(`☀️ Wrote ${message}`);
 }

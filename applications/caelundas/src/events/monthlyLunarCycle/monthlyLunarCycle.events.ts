@@ -10,7 +10,6 @@ import { upsertEvents } from "../../database.utilities";
 import { lunarPhases } from "../../symbols.constants";
 import { isLunarPhase } from "./monthlyLunarCycle.utilities";
 import { symbolByLunarPhase } from "../../symbols.constants";
-import { incrementEventsCount, print } from "../../logs/logs.service";
 import { getOutputPath } from "../../output.utilities";
 
 export function getMonthlyLunarCycleEvents(args: {
@@ -70,8 +69,7 @@ export function getMonthlyLunarCycleEvent(args: {
   const summary = `🌙 ${symbolByLunarPhase[lunarPhase]} ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
 
   const monthlyLunarCycleEvent = {
     start: date,
@@ -92,7 +90,7 @@ export function writeMonthlyLunarCycleEvents(args: {
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${monthlyLunarCycleEvents.length} monthly lunar cycle events from ${timespan}`;
-  print(`🌒 Writing ${message}`);
+  console.log(`🌒 Writing ${message}`);
 
   upsertEvents(monthlyLunarCycleEvents);
 
@@ -105,5 +103,5 @@ export function writeMonthlyLunarCycleEvents(args: {
     new TextEncoder().encode(ingressCalendar)
   );
 
-  print(`🌒 Wrote ${message}`);
+  console.log(`🌒 Wrote ${message}`);
 }

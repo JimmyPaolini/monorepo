@@ -176,22 +176,6 @@ export async function upsertEvents(events: Event[]) {
   await db.run(query, parameters);
 }
 
-export async function getEventsByDateRange(
-  start: Date,
-  end: Date
-): Promise<Event[]> {
-  const db = await databasePromise;
-  const rows = await db.all(
-    `SELECT summary, description, start, end, categories, location, latitude, longitude, url, priority, color
-     FROM events
-     WHERE start >= ? AND start <= ?
-     ORDER BY start ASC`,
-    [start.toISOString(), end.toISOString()]
-  );
-
-  return rows.map(mapRowToEvent);
-}
-
 export async function getAllEvents(): Promise<Event[]> {
   const db = await databasePromise;
   const rows = await db.all(
@@ -200,5 +184,7 @@ export async function getAllEvents(): Promise<Event[]> {
      ORDER BY start ASC`
   );
 
-  return rows.map(mapRowToEvent);
+  const events: Event[] = rows.map(mapRowToEvent);
+
+  return events;
 }

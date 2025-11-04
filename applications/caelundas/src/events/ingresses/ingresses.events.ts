@@ -26,7 +26,6 @@ import {
   symbolBySign,
 } from "../../symbols.constants";
 import { upsertEvents } from "../../database.utilities";
-import { incrementEventsCount, print } from "../../logs/logs.service";
 import { getOutputPath } from "../../output.utilities";
 
 const categories = ["Astronomy", "Astrology", "Ingresses"];
@@ -97,8 +96,7 @@ export function getSignIngressEvent(args: {
   const description: SignIngressDescription = `${bodyCapitalized} ingress ${signCapitalized}`;
   const summary: SignIngressSummary = `${bodySymbol} → ${signSymbol} ${description}`;
 
-  print(`${summary} at ${date.toISOString()}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${date.toISOString()}`);
 
   const signIngressEvent: SignIngressEvent = {
     start: date,
@@ -121,7 +119,7 @@ export function writeSignIngressEvents(args: {
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${signIngressEvents.length} sign ingress events from ${timespan}`;
-  print(`🪧 Writing ${message}`);
+  console.log(`🪧 Writing ${message}`);
 
   upsertEvents(signIngressEvents);
 
@@ -135,7 +133,7 @@ export function writeSignIngressEvents(args: {
     new TextEncoder().encode(signIngressesCalendar)
   );
 
-  print(`🪧 Wrote ${message}`);
+  console.log(`🪧 Wrote ${message}`);
 }
 
 // #region 🔟 Decans
@@ -209,8 +207,7 @@ export function getDecanIngressEvent(args: {
   const description: DecanIngressDescription = `${bodyCapitalized} ingress decan ${decan} ${signCapitalized}`;
   const summary: DecanIngressSummary = `${bodySymbol} → ${signSymbol}${decanSymbol} ${description}`;
 
-  print(`${summary} at ${date.toISOString()}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${date.toISOString()}`);
 
   const decanIngressEvent: DecanIngressEvent = {
     start: date,
@@ -233,7 +230,7 @@ export function writeDecanIngressEvents(args: {
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${decanIngressEvents.length} decan ingress events from ${timespan}`;
-  print(`🔟 Writing ${message}`);
+  console.log(`🔟 Writing ${message}`);
 
   upsertEvents(decanIngressEvents);
 
@@ -247,7 +244,7 @@ export function writeDecanIngressEvents(args: {
     new TextEncoder().encode(decanIngressesCalendar)
   );
 
-  print(`🔟 Wrote ${message}`);
+  console.log(`🔟 Wrote ${message}`);
 }
 
 // #region ⛰️ Peaks
@@ -314,8 +311,7 @@ export function getPeakIngressEvent(args: {
   const description: PeakIngressDescription = `${bodyCapitalized} peak ingress ${signCapitalized}`;
   const summary: PeakIngressSummary = `${bodySymbol} → ${signSymbol}⛰️ ${description}`;
 
-  print(`${summary} at ${date.toISOString()}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${date.toISOString()}`);
 
   const peakIngressEvent: PeakIngressEvent = {
     start: date,
@@ -338,7 +334,7 @@ export function writePeakIngressEvents(args: {
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${peakIngressEvents.length} peak ingress events from ${timespan}`;
-  print(`⛰️ Writing ${message}`);
+  console.log(`⛰️ Writing ${message}`);
 
   upsertEvents(peakIngressEvents);
 
@@ -352,5 +348,5 @@ export function writePeakIngressEvents(args: {
     new TextEncoder().encode(peakIngressesCalendar)
   );
 
-  print(`⛰️ Wrote ${message}`);
+  console.log(`⛰️ Wrote ${message}`);
 }

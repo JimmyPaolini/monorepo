@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "start": "tsx src/main.ts"
+    "start": "set -a && source .env && set +a && tsx src/main.ts"
   },
   "dependencies": {
     "@inkjs/ui": "^2.0.0",
@@ -14,7 +14,8 @@
     "react": "^19.1.1",
     "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7",
-    "yargs": "^18.0.0"
+    "yargs": "^18.0.0",
+    "zod": "^4.1.12"
   },
   "devDependencies": {
     "@types/ink": "^2.0.3",

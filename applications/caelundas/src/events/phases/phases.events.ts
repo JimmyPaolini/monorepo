@@ -39,7 +39,6 @@ import {
 } from "./phases.utilities";
 import { upsertEvents } from "../../database.utilities";
 import { MARGIN_MINUTES } from "../../calendar.utilities";
-import { incrementEventsCount, print } from "../../logs/logs.service";
 import { getOutputPath } from "../../output.utilities";
 
 const categories = ["Astronomy", "Astrology", "Planetary Phases"];
@@ -135,8 +134,7 @@ export function getVenusianPhaseEvent(args: {
   const summary: VenusianPhaseSummary = `♀️${phaseSymbol} ${description}`;
 
   const dateString = moment.tz(timestamp, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
 
   const venusianPhaseEvent: VenusianPhaseEvent = {
     start: timestamp,
@@ -341,8 +339,7 @@ export function getMercurianPhaseEvent(args: {
   const summary: MercurianPhaseSummary = `☿${phaseSymbol} ${description}`;
 
   const dateString = moment.tz(timestamp, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
 
   const mercurianPhaseEvent: MercurianPhaseEvent = {
     start: timestamp,
@@ -546,8 +543,7 @@ export function getMartianPhaseEvent(args: {
   const summary: MartianPhaseSummary = `♂️${phaseSymbol} ${description}`;
 
   const dateString = moment.tz(timestamp, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
 
   const martianPhaseEvent: MartianPhaseEvent = {
     start: timestamp,
@@ -705,7 +701,7 @@ export function writePlanetaryPhaseEvents(args: {
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${planetaryPhaseEvents.length} planetary phase events from ${timespan}`;
-  print(`🌓 Writing ${message}`);
+  console.log(`🌓 Writing ${message}`);
 
   upsertEvents(planetaryPhaseEvents);
 
@@ -721,5 +717,5 @@ export function writePlanetaryPhaseEvents(args: {
     new TextEncoder().encode(planetaryPhasesCalendar)
   );
 
-  print(`🌓 Wrote ${message}`);
+  console.log(`🌓 Wrote ${message}`);
 }

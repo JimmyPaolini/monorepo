@@ -1,6 +1,5 @@
 import _ from "lodash";
 import moment from "moment-timezone";
-import { getChoices } from "./choices/choices.service";
 import { MARGIN_MINUTES, type Event } from "./calendar.utilities";
 import type { Coordinates } from "./ephemeris/ephemeris.types";
 import {
@@ -9,67 +8,60 @@ import {
 } from "./ephemeris/ephemeris.aggregates";
 import {
   getSignIngressEvents,
-  writeSignIngressEvents,
-  type SignIngressEvent,
   getDecanIngressEvents,
-  writeDecanIngressEvents,
-  type DecanIngressEvent,
   getPeakIngressEvents,
-  writePeakIngressEvents,
-  type PeakIngressEvent,
 } from "./events/ingresses/ingresses.events";
-import {
-  type MajorAspectEvent,
-  getMajorAspectEvents,
-  writeMajorAspectEvents,
-} from "./events/aspects/majorAspects.events";
-import {
-  type MinorAspectEvent,
-  getMinorAspectEvents,
-  writeMinorAspectEvents,
-} from "./events/aspects/minorAspects.events";
-import {
-  type SpecialtyAspectEvent,
-  getSpecialtyAspectEvents,
-  writeSpecialtyAspectEvents,
-} from "./events/aspects/specialtyAspects.events";
-import {
-  getRetrogradeEvents,
-  writeRetrogradeEvents,
-  type RetrogradeEvent,
-} from "./events/retrogrades/retrogrades.events";
+import { getMajorAspectEvents } from "./events/aspects/majorAspects.events";
+import { getMinorAspectEvents } from "./events/aspects/minorAspects.events";
+import { getSpecialtyAspectEvents } from "./events/aspects/specialtyAspects.events";
+import { getRetrogradeEvents } from "./events/retrogrades/retrogrades.events";
 import {
   getAnnualSolarCycleEvents,
   getSolarApsisEvents,
-  writeAnnualSolarCycleEvents,
 } from "./events/annualSolarCycle/annualSolarCycle.events";
-import {
-  getMonthlyLunarCycleEvents,
-  writeMonthlyLunarCycleEvents,
-} from "./events/monthlyLunarCycle/monthlyLunarCycle.events";
+import { getMonthlyLunarCycleEvents } from "./events/monthlyLunarCycle/monthlyLunarCycle.events";
 import { getEclipseEvents } from "./events/eclipses/eclipses.events";
-import {
-  getDailyLunarCycleEvents,
-  writeDailyLunarCycleEvents,
-} from "./events/dailyCycles/dailyLunarCycle.events";
-import {
-  getDailySolarCycleEvents,
-  writeDailySolarCycleEvents,
-} from "./events/dailyCycles/dailySolarCycle.events";
-import {
-  getTwilightEvents,
-  writeTwilightEvents,
-} from "./events/twilights/twilights.events";
-import {
-  getPlanetaryPhaseEvents,
-  type PlanetaryPhaseEvent,
-  writePlanetaryPhaseEvents,
-} from "./events/phases/phases.events";
-import { initializeLogs, print, setDate } from "./logs/logs.service";
+import { getDailyLunarCycleEvents } from "./events/dailyCycles/dailyLunarCycle.events";
+import { getDailySolarCycleEvents } from "./events/dailyCycles/dailySolarCycle.events";
+import { getTwilightEvents } from "./events/twilights/twilights.events";
+import { getPlanetaryPhaseEvents } from "./events/phases/phases.events";
+import { getCalendar } from "./calendar.utilities";
+import { getOutputPath } from "./output.utilities";
+import { upsertEvents, getAllEvents } from "./database.utilities";
+import fs from "fs";
+import { inputSchema } from "./input.schema";
 
 async function main() {
-  // #region 🔮 Choices
-  const choices = await getChoices();
+  // #region 🔮 Input
+  const input = inputSchema.parse({
+    eventTypes: process.env.EVENT_TYPES,
+    ingresses: process.env.INGRESSES,
+    signIngressBodies: process.env.SIGN_INGRESS_BODIES,
+    decanIngressBodies: process.env.DECAN_INGRESS_BODIES,
+    peakIngressBodies: process.env.PEAK_INGRESS_BODIES,
+    aspects: process.env.ASPECTS,
+    majorAspectBodies: process.env.MAJOR_ASPECT_BODIES,
+    minorAspectBodies: process.env.MINOR_ASPECT_BODIES,
+    specialtyAspectBodies: process.env.SPECIALTY_ASPECT_BODIES,
+    retrogradeBodies: process.env.RETROGRADE_BODIES,
+    planetaryPhaseBodies: process.env.PLANETARY_PHASE_BODIES,
+    latitude: process.env.LATITUDE,
+    longitude: process.env.LONGITUDE,
+    start: moment
+      .tz(
+        process.env.START_DATE || "2025-01-01",
+        process.env.TIMEZONE || "America/New_York"
+      )
+      .toDate(),
+    end: moment
+      .tz(
+        process.env.END_DATE || "2025-12-31",
+        process.env.TIMEZONE || "America/New_York"
+      )
+      .toDate(),
+  });
+
+  console.log(`🔭 Caelundas with input:`, JSON.stringify(input));
 
   const {
     end,
@@ -85,16 +77,7 @@ async function main() {
     retrogradeBodies,
     specialtyAspectBodies,
     start,
-  } = choices;
-
-  // initializeLogs({
-  //   choices,
-  //   date: start,
-  //   start,
-  //   end,
-  //   logs: [],
-  //   count: 0,
-  // });
+  } = input;
 
   const ephemerisBodies = shouldGetEphemeris({
     eventTypes,
@@ -110,37 +93,19 @@ async function main() {
 
   // #region 🌅 Day Loop
   for (
-    let currentDay = moment.tz(start, "America/New_York");
-    currentDay.isBefore(end);
-    currentDay = currentDay.add(1, "day")
+    let thisDay = moment.tz(start, "America/New_York");
+    thisDay.isBefore(end);
+    thisDay = thisDay.add(1, "day")
   ) {
-    const nextDay = currentDay.clone().add(1, "day");
-    const currentDayLabel = currentDay.format("YYYY-MM-DD");
-    // setDate(currentDay.toDate());
-
-    const signIngressEvents: SignIngressEvent[] = [];
-    const decanIngressEvents: DecanIngressEvent[] = [];
-    const peakIngressEvents: PeakIngressEvent[] = [];
-
-    const majorAspectEvents: MajorAspectEvent[] = [];
-    const minorAspectEvents: MinorAspectEvent[] = [];
-    const specialtyAspectEvents: SpecialtyAspectEvent[] = [];
-
-    const retrogradeEvents: RetrogradeEvent[] = [];
-    const planetaryPhaseEvents: PlanetaryPhaseEvent[] = [];
-
-    const annualSolarCycleEvents: Event[] = [];
-    const monthlyLunarCycleEvents: Event[] = [];
-    const dailySolarCycleEvents: Event[] = [];
-    const dailyLunarCycleEvents: Event[] = [];
-    const twilightEvents: Event[] = [];
+    const nextDay = thisDay.clone().add(1, "day");
 
     // #region 🔮 Ephemerides
-    const start = currentDay
-      .clone()
-      .subtract(MARGIN_MINUTES, "minutes")
-      .toDate();
+    const start = thisDay.clone().subtract(MARGIN_MINUTES, "minutes").toDate();
     const end = nextDay.clone().add(MARGIN_MINUTES, "minutes").toDate();
+
+    const timespan = `${start.toISOString()}_${end.toISOString()}`;
+    console.log(`📅 Processing from ${timespan}`);
+
     const coordinates = [longitude, latitude] as Coordinates;
 
     const {
@@ -153,14 +118,14 @@ async function main() {
 
     // #region ⏱️ Minute Loop
     for (
-      let currentMinute = moment.tz(currentDay, "America/New_York");
+      let currentMinute = moment.tz(thisDay, "America/New_York");
       currentMinute.isBefore(nextDay);
       currentMinute = currentMinute.add(1, "minute")
     ) {
       // #region 🪧 Sign Ingresses
       if (eventTypes.includes("ingresses") && signIngressBodies.length > 0) {
-        signIngressEvents.push(
-          ...getSignIngressEvents({
+        await upsertEvents(
+          getSignIngressEvents({
             coordinateEphemerisByBody,
             currentMinute,
             signIngressBodies,
@@ -170,8 +135,8 @@ async function main() {
 
       // #region 🔟 Decan Ingresses
       if (eventTypes.includes("ingresses") && decanIngressBodies.length > 0) {
-        decanIngressEvents.push(
-          ...getDecanIngressEvents({
+        await upsertEvents(
+          getDecanIngressEvents({
             coordinateEphemerisByBody,
             currentMinute,
             decanIngressBodies,
@@ -181,8 +146,8 @@ async function main() {
 
       // #region ⛰️ Peak Ingresses
       if (eventTypes.includes("ingresses") && peakIngressBodies.length > 0) {
-        peakIngressEvents.push(
-          ...getPeakIngressEvents({
+        await upsertEvents(
+          getPeakIngressEvents({
             coordinateEphemerisByBody,
             currentMinute,
             peakIngressBodies,
@@ -192,8 +157,8 @@ async function main() {
 
       // #region 📐 Major Aspects
       if (eventTypes.includes("aspects") && majorAspectBodies.length > 0) {
-        majorAspectEvents.push(
-          ...getMajorAspectEvents({
+        await upsertEvents(
+          getMajorAspectEvents({
             coordinateEphemerisByBody,
             currentMinute,
             majorAspectBodies,
@@ -203,8 +168,8 @@ async function main() {
 
       // #region 📐 Minor Aspects
       if (eventTypes.includes("aspects") && minorAspectBodies.length > 0) {
-        minorAspectEvents.push(
-          ...getMinorAspectEvents({
+        await upsertEvents(
+          getMinorAspectEvents({
             coordinateEphemerisByBody,
             currentMinute,
             minorAspectBodies,
@@ -214,8 +179,8 @@ async function main() {
 
       // #region 📐 Specialty Aspects
       if (eventTypes.includes("aspects") && specialtyAspectBodies.length > 0) {
-        specialtyAspectEvents.push(
-          ...getSpecialtyAspectEvents({
+        await upsertEvents(
+          getSpecialtyAspectEvents({
             coordinateEphemerisByBody,
             currentMinute,
             specialtyAspectBodies,
@@ -225,8 +190,8 @@ async function main() {
 
       // #region ↩️ Retrogrades
       if (eventTypes.includes("retrogrades") && retrogradeBodies.length > 0) {
-        retrogradeEvents.push(
-          ...getRetrogradeEvents({
+        await upsertEvents(
+          getRetrogradeEvents({
             coordinateEphemerisByBody,
             currentMinute,
             retrogradeBodies,
@@ -239,8 +204,8 @@ async function main() {
         eventTypes.includes("planetaryPhases") &&
         planetaryPhaseBodies.length > 0
       ) {
-        planetaryPhaseEvents.push(
-          ...getPlanetaryPhaseEvents({
+        await upsertEvents(
+          getPlanetaryPhaseEvents({
             coordinateEphemerisByBody,
             currentMinute,
             distanceEphemerisByBody,
@@ -252,8 +217,8 @@ async function main() {
 
       // #region 🌸 Annual Solar Cycle
       if (eventTypes.includes("annualSolarCycle")) {
-        annualSolarCycleEvents.push(
-          ...getAnnualSolarCycleEvents({
+        await upsertEvents(
+          getAnnualSolarCycleEvents({
             currentMinute,
             ephemeris: coordinateEphemerisByBody["sun"],
           })
@@ -262,8 +227,8 @@ async function main() {
 
       // #region 📏 Apsides
       if (eventTypes.includes("annualSolarCycle")) {
-        annualSolarCycleEvents.push(
-          ...getSolarApsisEvents({
+        await upsertEvents(
+          getSolarApsisEvents({
             currentMinute,
             sunDistanceEphemeris: distanceEphemerisByBody["sun"],
           })
@@ -272,8 +237,8 @@ async function main() {
 
       // #region 🐉 Eclipses
       if (eventTypes.includes("monthlyLunarCycle")) {
-        monthlyLunarCycleEvents.push(
-          ...getEclipseEvents({
+        await upsertEvents(
+          getEclipseEvents({
             currentMinute,
             moonCoordinateEphemeris: coordinateEphemerisByBody["moon"],
             moonDiameterEphemeris: diameterEphemerisByBody["moon"],
@@ -285,8 +250,8 @@ async function main() {
 
       // #region 🌒 Monthly Lunar Cycle
       if (eventTypes.includes("monthlyLunarCycle")) {
-        monthlyLunarCycleEvents.push(
-          ...getMonthlyLunarCycleEvents({
+        await upsertEvents(
+          getMonthlyLunarCycleEvents({
             currentMinute,
             moonIlluminationEphemeris: illuminationEphemerisByBody["moon"],
           })
@@ -295,8 +260,8 @@ async function main() {
 
       // #region ☀️ Daily Solar Cycle
       if (eventTypes.includes("dailySolarCycle")) {
-        dailySolarCycleEvents.push(
-          ...getDailySolarCycleEvents({
+        await upsertEvents(
+          getDailySolarCycleEvents({
             currentMinute,
             sunAzimuthElevationEphemeris:
               azimuthElevationEphemerisByBody["sun"],
@@ -306,8 +271,8 @@ async function main() {
 
       // #region 🌙 Daily Lunar Cycle
       if (eventTypes.includes("dailyLunarCycle")) {
-        dailyLunarCycleEvents.push(
-          ...getDailyLunarCycleEvents({
+        await upsertEvents(
+          getDailyLunarCycleEvents({
             currentMinute,
             moonAzimuthElevationEphemeris:
               azimuthElevationEphemerisByBody["moon"],
@@ -317,8 +282,8 @@ async function main() {
 
       // #region 🌄 Twilights
       if (eventTypes.includes("twilights")) {
-        twilightEvents.push(
-          ...getTwilightEvents({
+        await upsertEvents(
+          getTwilightEvents({
             currentMinute,
             sunAzimuthElevationEphemeris:
               azimuthElevationEphemerisByBody["sun"],
@@ -327,36 +292,28 @@ async function main() {
       }
     }
 
-    // #region ✏️ Write Events
-
-    print(`📅 Writing calendar files for ${currentDayLabel}`);
-
-    const times = { start, end };
-
-    writeSignIngressEvents({ signIngressBodies, signIngressEvents, ...times });
-    const decanIngresses = { decanIngressBodies, decanIngressEvents };
-    writeDecanIngressEvents({ ...decanIngresses, ...times });
-    writePeakIngressEvents({ peakIngressBodies, peakIngressEvents, ...times });
-
-    writeMajorAspectEvents({ majorAspectBodies, majorAspectEvents, ...times });
-    writeMinorAspectEvents({ minorAspectBodies, minorAspectEvents, ...times });
-    const specialtyAspects = { specialtyAspectBodies, specialtyAspectEvents };
-    writeSpecialtyAspectEvents({ ...specialtyAspects, ...times });
-
-    writeRetrogradeEvents({ retrogradeBodies, retrogradeEvents, ...times });
-    const planetaryPhases = { planetaryPhaseBodies, planetaryPhaseEvents };
-    writePlanetaryPhaseEvents({ ...planetaryPhases, ...times });
-
-    writeAnnualSolarCycleEvents({ annualSolarCycleEvents, ...times });
-    writeMonthlyLunarCycleEvents({ monthlyLunarCycleEvents, ...times });
-    writeDailySolarCycleEvents({ dailySolarCycleEvents, ...times });
-    writeDailyLunarCycleEvents({ dailyLunarCycleEvents, ...times });
-    writeTwilightEvents({ twilightEvents, ...times });
-
-    print(`📅 Wrote calendar files for ${currentDayLabel}`);
+    console.log(`📅 Processed from ${timespan}`);
   }
 
-  print(`🔭 Caelundas from choices:`, JSON.stringify(choices));
+  // #region 💾 Save Events
+  console.log(`🔍 Fetching all events from the database`);
+  const allEvents = await getAllEvents();
+  console.log(`🔍 Fetched ${allEvents.length} events from the database`);
+
+  const calendar = getCalendar({
+    events: allEvents,
+    name: "Caelundas 🔭",
+    description: "Astronomical events and celestial phenomena",
+  });
+
+  const timespan = `${start.toISOString()}_${end.toISOString()}`;
+  const filename = `caelundas_${timespan}.ics`;
+
+  console.log(`✏️ Writing ${allEvents.length} events to ${filename}`);
+  fs.writeFileSync(getOutputPath(filename), new TextEncoder().encode(calendar));
+  console.log(`✏️ Wrote ${allEvents.length} events to ${filename}`);
+
+  console.log(`🔭 Caelundas from input:`, JSON.stringify(input));
 
   process.exit(0);
 }

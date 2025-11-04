@@ -14,7 +14,6 @@ import {
   isNauticalDawn,
   isNauticalDusk,
 } from "./twilights.utilities";
-import { incrementEventsCount, print } from "../../logs/logs.service";
 import { getOutputPath } from "../../output.utilities";
 
 const categories = ["Astronomy", "Astrology", "Twilight"];
@@ -64,8 +63,7 @@ export function getAstronomicalDawnEvent(date: Date): Event {
   const summary = `🌠 ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
 
   const astronomicalDawnEvent: Event = {
     start: date,
@@ -81,8 +79,7 @@ export function getNauticalDawnEvent(date: Date): Event {
   const summary = `🌅 ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
 
   const nauticalDawnEvent: Event = {
     start: date,
@@ -98,8 +95,7 @@ export function getCivilDawnEvent(date: Date): Event {
   const summary = `🌄 ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
 
   const civilDawnEvent: Event = {
     start: date,
@@ -115,8 +111,7 @@ export function getCivilDuskEvent(date: Date): Event {
   const summary = `🌇 ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
 
   const civilDuskEvent: Event = {
     start: date,
@@ -132,8 +127,7 @@ export function getNauticalDuskEvent(date: Date): Event {
   const summary = `🌉 ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
 
   const nauticalDuskEvent: Event = {
     start: date,
@@ -149,8 +143,7 @@ export function getAstronomicalDuskEvent(date: Date): Event {
   const summary = `🌌 ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
 
   const astronomicalDuskEvent: Event = {
     start: date,
@@ -171,7 +164,7 @@ export function writeTwilightEvents(args: {
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${twilightEvents.length} twilight events from ${timespan}`;
-  print(`🌠 Writing ${message}`);
+  console.log(`🌠 Writing ${message}`);
 
   upsertEvents(twilightEvents);
 
@@ -184,5 +177,5 @@ export function writeTwilightEvents(args: {
     new TextEncoder().encode(ingressCalendar)
   );
 
-  print(`🌠 Wrote ${message}`);
+  console.log(`🌠 Wrote ${message}`);
 }

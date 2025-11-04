@@ -14,7 +14,6 @@ import {
 } from "../../symbols.constants";
 import { upsertEvents } from "../../database.utilities";
 import { getMajorAspect, isMajorAspect } from "./aspects.utilities";
-import { incrementEventsCount, print } from "../../logs/logs.service";
 import { getOutputPath } from "../../output.utilities";
 
 type MajorAspectDescription =
@@ -120,8 +119,7 @@ export function getMajorAspectEvent(args: {
     // @ts-ignore: it's ok that the type is complicated
     `${body1Symbol} ${majorAspectSymbol} ${body2Symbol} ${description}` as MajorAspectSummary;
 
-  print(`${summary} at ${timestamp.toISOString()}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${timestamp.toISOString()}`);
 
   const majorAspectEvent: MajorAspectEvent = {
     start: timestamp,
@@ -143,7 +141,7 @@ export function writeMajorAspectEvents(args: {
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${majorAspectEvents.length} major aspect events from ${timespan}`;
-  print(`📐 Writing ${message}`);
+  console.log(`📐 Writing ${message}`);
 
   upsertEvents(majorAspectEvents);
 
@@ -157,5 +155,5 @@ export function writeMajorAspectEvents(args: {
     new TextEncoder().encode(majorAspectsCalendar)
   );
 
-  print(`📐 Wrote ${message}`);
+  console.log(`📐 Wrote ${message}`);
 }

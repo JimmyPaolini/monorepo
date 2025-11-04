@@ -21,9 +21,9 @@ import {
   getIlluminationEphemerisByBody,
 } from "../ephemeris/ephemeris.service";
 import {
-  type EventTypeChoice,
-  type PlanetaryPhaseBodyChoice,
-} from "../choices/choices.types";
+  type EventType as EventTypeChoice,
+  type PlanetaryPhaseBody as PlanetaryPhaseBodyChoice,
+} from "../input.schema";
 
 // #region shouldGetEphemeris
 export function shouldGetEphemeris(args: {

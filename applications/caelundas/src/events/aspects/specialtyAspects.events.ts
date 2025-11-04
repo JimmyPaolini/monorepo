@@ -14,7 +14,6 @@ import {
 import { type Event, getCalendar } from "../../calendar.utilities";
 import { getSpecialtyAspect, isSpecialtyAspect } from "./aspects.utilities";
 import { upsertEvents } from "../../database.utilities";
-import { incrementEventsCount, print } from "../../logs/logs.service";
 import { getOutputPath } from "../../output.utilities";
 
 type SpecialtyAspectDescription =
@@ -125,8 +124,7 @@ export function getSpecialtyAspectEvent(args: {
     // @ts-ignore: it's ok that the type is complicated
     `${body1Symbol} ${specialtyAspectSymbol} ${body2Symbol} ${description}` as SpecialtyAspectSummary;
 
-  print(`${summary} at ${timestamp.toISOString()}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${timestamp.toISOString()}`);
 
   const specialtyAspectEvent: SpecialtyAspectEvent = {
     start: timestamp,
@@ -148,7 +146,7 @@ export function writeSpecialtyAspectEvents(args: {
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${specialtyAspectEvents.length} specialty aspect events from ${timespan}`;
-  print(`🧮 Writing ${message}`);
+  console.log(`🧮 Writing ${message}`);
 
   upsertEvents(specialtyAspectEvents);
 
@@ -164,5 +162,5 @@ export function writeSpecialtyAspectEvents(args: {
     new TextEncoder().encode(specialtyAspectsCalendar)
   );
 
-  print(`🧮 Wrote ${message}`);
+  console.log(`🧮 Wrote ${message}`);
 }

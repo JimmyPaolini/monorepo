@@ -25,10 +25,13 @@ crash.log
 .cursor/rules/nx-rules.mdc
 .github/instructions/nx.instructions.md
 
-# Other
+# Database files 🛢️
+*.db
+
+# Calendar files 📆
+*.ics
+
+# Other 🗑️
 tmp
 applications/JimmyPaolini
 applications/caelundas/output
-
-# Database files 🛢️
-database.db

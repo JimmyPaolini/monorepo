@@ -1,5 +1,3 @@
-import { print } from "./logs/logs.service";
-
 const MAX_RETRIES = parseInt(process.env.MAX_RETRIES || "5", 10);
 const INITIAL_DELAY_MS = parseInt(process.env.INITIAL_DELAY_MS || "1000", 10);
 const MAX_DELAY_MS = parseInt(process.env.MAX_DELAY_MS || "30000", 10);
@@ -65,18 +63,18 @@ export async function fetchWithRetry(url: string): Promise<string> {
 
       if (!isRetryableError(error)) {
         const message = error instanceof Error ? error.message : String(error);
-        print(`❌ Non-retryable error: ${message}`);
+        console.log(`❌ Non-retryable error: ${message}`);
         throw error;
       }
 
       if (attempt > MAX_RETRIES) {
-        print(`❌ Max retries (${MAX_RETRIES}) exceeded`);
+        console.log(`❌ Max retries (${MAX_RETRIES}) exceeded`);
         break;
       }
 
       const delayMs = calculateDelay(attempt);
       const errorCode = getErrorCode(error);
-      print(
+      console.log(
         `⚠️  Retry ${attempt}/${MAX_RETRIES}: ${errorCode} - waiting ${delayMs}ms`
       );
 

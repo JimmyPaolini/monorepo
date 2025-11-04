@@ -14,7 +14,6 @@ import {
 import { type Event, getCalendar } from "../../calendar.utilities";
 import { getMinorAspect, isMinorAspect } from "./aspects.utilities";
 import { upsertEvents } from "../../database.utilities";
-import { incrementEventsCount, print } from "../../logs/logs.service";
 import { getOutputPath } from "../../output.utilities";
 
 type MinorAspectDescription =
@@ -121,8 +120,7 @@ export function getMinorAspectEvent(args: {
     // @ts-ignore: it's ok that the type is complicated
     `${body1Symbol} ${minorAspectSymbol} ${body2Symbol} ${description}` as MinorAspectSummary;
 
-  print(`${summary} at ${timestamp.toISOString()}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${timestamp.toISOString()}`);
 
   const minorAspectEvent: MinorAspectEvent = {
     start: timestamp,
@@ -144,7 +142,7 @@ export function writeMinorAspectEvents(args: {
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${minorAspectEvents.length} minor aspect events from ${timespan}`;
-  print(`🖇️ Writing ${message}`);
+  console.log(`🖇️ Writing ${message}`);
 
   upsertEvents(minorAspectEvents);
 
@@ -158,5 +156,5 @@ export function writeMinorAspectEvents(args: {
     new TextEncoder().encode(minorAspectsCalendar)
   );
 
-  print(`🖇️ Wrote ${message}`);
+  console.log(`🖇️ Wrote ${message}`);
 }

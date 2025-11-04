@@ -25,7 +25,6 @@ import {
   isWinterSolstice,
 } from "./annualSolarCycle.utilities";
 import { isMaximum, isMinimum } from "../../math.utilities";
-import { incrementEventsCount, print } from "../../logs/logs.service";
 import { getOutputPath } from "../../output.utilities";
 
 const categories = ["Astronomy", "Astrology", "Annual Solar Cycle", "Solar"];
@@ -146,8 +145,7 @@ export function getAphelionEvent(date: Date): Event {
   const summary = `☀️ ❄️ ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
 
   const aphelionEvent: Event = {
     start: date,
@@ -163,8 +161,7 @@ export function getPerihelionEvent(date: Date): Event {
   const summary = `☀️ 🔥 ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
 
   const perihelionEvent: Event = {
     start: date,
@@ -182,8 +179,7 @@ export function getVernalEquinoxEvent(date: Date): Event {
   const summary = `🌸 ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
 
   const vernalEquinoxEvent: Event = {
     start: date,
@@ -199,8 +195,7 @@ export function getFirstHexadecanEvent(date: Date): Event {
   const summary = `🌳 ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
   const firstHexadecanEvent: Event = {
     start: date,
     summary,
@@ -215,8 +210,7 @@ export function getBeltaneEvent(date: Date): Event {
   const summary = `🐦‍🔥 ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
 
   const beltaneEvent: Event = {
     start: date,
@@ -232,8 +226,7 @@ export function getThirdHexadecanEvent(date: Date): Event {
   const summary = `🌻 ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
 
   const thirdHexadecanEvent: Event = {
     start: date,
@@ -249,8 +242,7 @@ export function getSummerSolsticeEvent(date: Date): Event {
   const summary = `🌞 ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
 
   const summerSolsticeEvent: Event = {
     start: date,
@@ -266,8 +258,7 @@ export function getFifthHexadecanEvent(date: Date): Event {
   const summary = `⛱️ ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
 
   const fifthHexadecanEvent: Event = {
     start: date,
@@ -283,8 +274,7 @@ export function getLammasEvent(date: Date): Event {
   const summary = `🌾 ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
 
   const lammasEvent: Event = {
     start: date,
@@ -300,8 +290,7 @@ export function getSeventhHexadecanEvent(date: Date): Event {
   const summary = `🎑 ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
   const seventhHexadecanEvent: Event = {
     start: date,
     summary,
@@ -316,8 +305,7 @@ export function getAutumnalEquinoxEvent(date: Date): Event {
   const summary = `🍂 ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
 
   const autumnalEquinoxEvent: Event = {
     start: date,
@@ -333,8 +321,7 @@ export function getNinthHexadecanEvent(date: Date): Event {
   const summary = `🍁 ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
   const ninthHexadecanEvent: Event = {
     start: date,
     summary,
@@ -349,8 +336,7 @@ export function getSamhainEvent(date: Date): Event {
   const summary = `🎃 ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
 
   const samhainEvent: Event = {
     start: date,
@@ -366,8 +352,7 @@ export function getEleventhHexadecanEvent(date: Date): Event {
   const summary = `🧤 ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
   const eleventhHexadecanEvent: Event = {
     start: date,
     summary,
@@ -382,8 +367,7 @@ export function getWinterSolsticeEvent(date: Date): Event {
   const summary = `☃️ ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
 
   const winterSolsticeEvent: Event = {
     start: date,
@@ -398,8 +382,7 @@ export function getThirteenthHexadecanEvent(date: Date): Event {
   const description = "Thirteenth Hexadecan";
   const summary = `❄️ ${description}`;
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
   const thirteenthHexadecanEvent: Event = {
     start: date,
     summary,
@@ -414,8 +397,7 @@ export function getImbolcEvent(date: Date): Event {
   const summary = `🐑 ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
 
   const imbolcEvent: Event = {
     start: date,
@@ -431,8 +413,7 @@ export function getFifteenthHexadecanEvent(date: Date): Event {
   const summary = `🌨️ ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
-  print(`${summary} at ${dateString}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${dateString}`);
 
   const fifteenthHexadecanEvent: Event = {
     start: date,
@@ -453,8 +434,7 @@ export function writeAnnualSolarCycleEvents(args: {
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${annualSolarCycleEvents.length} annual solar cycle events from ${timespan}`;
-  print(`📏 Writing ${message}`);
-  incrementEventsCount();
+  console.log(`📏 Writing ${message}`);
 
   upsertEvents(annualSolarCycleEvents);
 
@@ -467,6 +447,5 @@ export function writeAnnualSolarCycleEvents(args: {
     new TextEncoder().encode(ingressCalendar)
   );
 
-  print(`📏 Wrote ${message}`);
-  incrementEventsCount();
+  console.log(`📏 Wrote ${message}`);
 }

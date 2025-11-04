@@ -17,7 +17,6 @@ import {
 import { MARGIN_MINUTES } from "../../calendar.utilities";
 import { isDirect, isRetrograde } from "./retrogrades.utilities";
 import { upsertEvents } from "../../database.utilities";
-import { incrementEventsCount, print } from "../../logs/logs.service";
 import { getOutputPath } from "../../output.utilities";
 
 type RetrogradeDescription =
@@ -109,8 +108,7 @@ export function getRetrogradeEvent(args: {
   const description: RetrogradeDescription = `${bodyCapitalized} Stationary ${orbitalDirectionCapitalized}`;
   const summary: RetrogradeSummary = `${retrogradeBodySymbol} ${orbitalDirectionSymbol} ${description}`;
 
-  print(`${summary} at ${timestamp.toISOString()}`);
-  incrementEventsCount();
+  console.log(`${summary} at ${timestamp.toISOString()}`);
 
   const retrogradeEvent: RetrogradeEvent = {
     start: timestamp,
@@ -133,7 +131,7 @@ export function writeRetrogradeEvents(args: {
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${retrogradeEvents.length} retrograde events from ${timespan}`;
-  print(`↩️ Writing ${message}`);
+  console.log(`↩️ Writing ${message}`);
 
   upsertEvents(retrogradeEvents);
 
@@ -147,5 +145,5 @@ export function writeRetrogradeEvents(args: {
     new TextEncoder().encode(retrogradesCalendar)
   );
 
-  print(`↩️ Wrote ${message}`);
+  console.log(`↩️ Wrote ${message}`);
 }
