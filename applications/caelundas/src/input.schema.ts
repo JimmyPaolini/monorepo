@@ -1,27 +1,45 @@
 import { z } from "zod";
-
-// #region Latitude
-export const latitudeSchema = z.coerce.number().min(-90).max(90);
-
-export type Latitude = z.infer<typeof latitudeSchema>;
-
-// #region Longitude
-export const longitudeSchema = z.coerce.number().min(-180).max(180);
-
-export type Longitude = z.infer<typeof longitudeSchema>;
-
-// #region Timezone
-export const timezoneSchema = z.string();
-
-export type Timezone = z.infer<typeof timezoneSchema>;
+import moment from "moment-timezone";
 
 // #region Input
-export const inputSchema = z.object({
-  latitude: latitudeSchema.optional().default(39.949309),
-  longitude: longitudeSchema.optional().default(-75.17169),
-  timezone: timezoneSchema.default("America/New_York"),
-  start: z.date().min(new Date("1900-01-01")).max(new Date("2100-12-31")),
-  end: z.date().min(new Date("1900-01-01")).max(new Date("2100-12-31")),
-});
+export const inputSchema = z
+  .object({
+    latitude: z.coerce.number().min(-90).max(90).optional().default(39.949309),
+    longitude: z.coerce
+      .number()
+      .min(-180)
+      .max(180)
+      .optional()
+      .default(-75.17169),
+    timezone: z.string().optional().default("America/New_York"),
+    startDate: z.string().optional().default("2025-01-01"),
+    endDate: z.string().optional().default("2025-12-31"),
+  })
+  .transform((data) => {
+    const timezone = data.timezone;
+
+    return {
+      latitude: data.latitude,
+      longitude: data.longitude,
+      timezone: data.timezone,
+      start: moment.tz(data.startDate, timezone).toDate(),
+      end: moment.tz(data.endDate, timezone).toDate(),
+    };
+  })
+  .refine((data) => data.start >= new Date("1900-01-01"), {
+    message: "Start date must be on or after 1900-01-01",
+  })
+  .refine((data) => data.start <= new Date("2100-12-31"), {
+    message: "Start date must be on or before 2100-12-31",
+  })
+  .refine((data) => data.end >= new Date("1900-01-01"), {
+    message: "End date must be on or after 1900-01-01",
+  })
+  .refine((data) => data.end <= new Date("2100-12-31"), {
+    message: "End date must be on or before 2100-12-31",
+  })
+  .refine((data) => data.end > data.start, {
+    message: "End date must be after start date",
+  });
 
 export type Input = z.infer<typeof inputSchema>;

@@ -33,18 +33,8 @@ async function main() {
     latitude: process.env.LATITUDE,
     longitude: process.env.LONGITUDE,
     timezone: process.env.TIMEZONE,
-    start: moment
-      .tz(
-        process.env.START_DATE || "2025-01-01",
-        process.env.TIMEZONE || "America/New_York"
-      )
-      .toDate(),
-    end: moment
-      .tz(
-        process.env.END_DATE || "2025-12-31",
-        process.env.TIMEZONE || "America/New_York"
-      )
-      .toDate(),
+    startDate: process.env.START_DATE,
+    endDate: process.env.END_DATE,
   });
 
   console.log(`🔭 Caelundas with input:`, JSON.stringify(input));
@@ -60,12 +50,14 @@ async function main() {
     const nextDay = thisDay.clone().add(1, "day");
 
     // #region 🔮 Ephemerides
-    const start = thisDay.clone().subtract(MARGIN_MINUTES, "minutes").toDate();
-    const end = nextDay.clone().add(MARGIN_MINUTES, "minutes").toDate();
+    const startMoment = thisDay.clone().subtract(MARGIN_MINUTES, "minutes");
+    const endMoment = nextDay.clone().add(MARGIN_MINUTES, "minutes");
 
-    const timespan = `${start.toISOString()}_${end.toISOString()}`;
+    const timespan = `${startMoment.format()} to ${endMoment.format()}`;
     console.log(`📅 Processing from ${timespan}`);
 
+    const start = startMoment.toDate();
+    const end = endMoment.toDate();
     const coordinates = [longitude, latitude] as Coordinates;
 
     const {
@@ -166,7 +158,9 @@ async function main() {
     description: "Astronomical events and celestial phenomena",
   });
 
-  const timespan = `${start.toISOString()}_${end.toISOString()}`;
+  const timespan = `${moment.tz(start, timezone).format()} to ${moment
+    .tz(end, timezone)
+    .format()}`;
   const filename = `caelundas_${timespan}.ics`;
 
   console.log(`✏️ Writing ${allEvents.length} events to ${filename}`);

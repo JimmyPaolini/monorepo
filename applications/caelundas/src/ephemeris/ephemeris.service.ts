@@ -25,22 +25,21 @@ import {
   type Comet,
   type Planet,
 } from "../constants";
-import {
+import type {
   DiameterEphemeris,
-  type AzimuthElevationEphemerisBody,
-  type Coordinates,
-  type DiameterEphemerisBody,
-  type DistanceEphemerisBody,
-  type IlluminationEphemerisBody,
-  type OrbitEphemerisBody,
-  type DistanceEphemeris,
+  AzimuthElevationEphemerisBody,
+  Coordinates,
+  DiameterEphemerisBody,
+  DistanceEphemerisBody,
+  IlluminationEphemerisBody,
+  OrbitEphemerisBody,
+  DistanceEphemeris,
   IlluminationEphemeris,
   AzimuthElevationEphemeris,
   CoordinateEphemeris,
   OrbitEphemeris,
 } from "./ephemeris.types";
 import { normalizeDegrees } from "../math.utilities";
-import { print } from "../logs/logs.service";
 import { fetchWithRetry } from "../fetch.utilities";
 import moment from "moment-timezone";
 
@@ -74,7 +73,7 @@ export async function getOrbitEphemeris(args: {
     .toISOString(true)} to ${moment
     .tz(end, "America/New_York")
     .toISOString(true)}`;
-  const message = `orbit ephemeris 🎯 for ${symbolByBody[body]} from ${timespan}`;
+  const message = `orbit ephemeris 💫 for ${symbolByBody[body]} from ${timespan}`;
   console.log(`🔭 Fetching ${message}`);
 
   const url = getOrbitEphemerisUrl({ body, end, start });
@@ -238,7 +237,6 @@ function getAzimuthElevationEphemerisUrl(args: {
   const url = getHorizonsBaseUrl({ start, end, coordinates });
 
   url.searchParams.append("EPHEM_TYPE", "OBSERVER");
-  // url.searchParams.append("COORD_TYPE", "GEODETIC");
   url.searchParams.append("QUANTITIES", QUANTITY_APPARENT_AZIMUTH_ELEVATION);
   url.searchParams.append("CENTER", "coord@399"); // earth, specific location
   url.searchParams.append("COMMAND", commandIdByBody[body]);
@@ -268,11 +266,8 @@ export async function getAzimuthElevationEphemeris(args: {
     coordinates,
     body,
   });
-  // console.log(`🌐 Ephemeris url:`, url.toString());
   const text = await fetchWithRetry(url.toString());
-  // console.log(`🏁 Ephemeris response:`, text);
   const ephemeris = parseAzimuthElevationEphemeris(text);
-  // console.log(`🐋 ~ ephemeris:`, ephemeris);
 
   console.log(`🔭 Fetched ${message}`);
 
@@ -327,8 +322,8 @@ function getIlluminationEphemerisUrl(args: {
   const url = getHorizonsBaseUrl({ start, end, coordinates });
 
   url.searchParams.append("EPHEM_TYPE", "OBSERVER");
-  url.searchParams.append("QUANTITIES", QUANTITY_ILLUMINATED_FRACTION); // illuminated fraction
-  url.searchParams.append("CENTER", "500@399"); // earth, specific location
+  url.searchParams.append("QUANTITIES", QUANTITY_ILLUMINATED_FRACTION);
+  url.searchParams.append("CENTER", "500@399"); // earth, geocentric
   url.searchParams.append("COMMAND", commandIdByBody[body]);
 
   return url;
@@ -356,11 +351,8 @@ export async function getIlluminationEphemeris(args: {
     end,
     coordinates,
   });
-  // console.log(`🌐 Ephemeris url:`, url.toString());
   const text = await fetchWithRetry(url.toString());
-  // console.log(`🏁 Ephemeris response:`, text);
   const ephemeris = parseIlluminationEphemeris(text);
-  // console.log(`🐋 ~ ephemeris:`, ephemeris);
 
   console.log(`🔭 Fetched ${message}`);
 
@@ -412,8 +404,8 @@ function getDiameterEphemerisUrl(args: {
 
   url.searchParams.append("EPHEM_TYPE", "OBSERVER");
   url.searchParams.append("QUANTITIES", QUANTITY_ANGULAR_DIAMETER);
-  url.searchParams.append("CENTER", "500@399"); // earth, specific location
-  url.searchParams.append("COMMAND", commandIdByBody[body]); // moon
+  url.searchParams.append("CENTER", "500@399"); // earth, geocentric
+  url.searchParams.append("COMMAND", commandIdByBody[body]);
 
   return url;
 }
@@ -434,11 +426,8 @@ export async function getDiameterEphemeris(args: {
   console.log(`🔭 Fetching ${message}`);
 
   const url = getDiameterEphemerisUrl({ start, end, body });
-  // console.log(`🌐 Ephemeris url:`, url.toString());
   const text = await fetchWithRetry(url.toString());
-  // console.log(`🏁 Ephemeris response:`, text);
   const ephemeris = parseDiameterEphemeris(text);
-  // console.log(`🐋 ~ ephemeris:`, ephemeris);
 
   console.log(`🔭 Fetched ${message}`);
 
@@ -510,11 +499,8 @@ export async function getDistanceEphemeris(args: {
   console.log(`🔭 Fetching ${message}`);
 
   const url = getDistanceEphemerisUrl({ body, end, start });
-  // console.log(`🌐 Ephemeris url:`, url.toString());
   const text = await fetchWithRetry(url.toString());
-  // console.log(`🏁 Ephemeris response:`, text);
   const ephemeris = parseDistanceEphemeris(text);
-  // console.log(`🐋 ~ ephemeris:`, ephemeris);
 
   console.log(`🔭 Fetched ${message}`);
 

@@ -9,22 +9,240 @@ const databasePromise: Promise<Database> = open({
   driver: sqlite3.Database,
 });
 
-// Ensure tables exist once DB is opened.
+export async function closeConnection() {
+  const db = await databasePromise;
+  await db.close();
+}
+
+// #region Ephemeris
+
 (async () => {
   const db = await databasePromise;
 
-  // Ephemeris table — keep commented bodies creation in source if needed later.
   await db.exec(`
     CREATE TABLE IF NOT EXISTS ephemeris (
       body TEXT,
       timestamp TEXT,
       latitude REAL,
       longitude REAL,
+      azimuth REAL,
+      elevation REAL,
+      illumination REAL,
+      diameter REAL,
+      distance REAL,
+      argumentOfPerifocus REAL,
+      eccentricity REAL,
+      inclination REAL,
+      timeOfPeriapsis REAL,
+      longitudeOfAscendingNode REAL,
+      meanAnomaly REAL,
+      periapsisDistance REAL,
+      meanMotion REAL,
+      trueAnomaly REAL,
+      semiMajorAxis REAL,
+      apoapsisDistance REAL,
+      siderealOrbitPeriod REAL,
       PRIMARY KEY (body, timestamp)
     );
   `);
+})();
 
-  // Events table
+export interface EphemerisRecord {
+  body: Body;
+  timestamp: Date;
+  // Coordinate ephemeris
+  latitude?: number;
+  longitude?: number;
+  // Azimuth/Elevation ephemeris
+  azimuth?: number;
+  elevation?: number;
+  // Illumination ephemeris
+  illumination?: number;
+  // Diameter ephemeris
+  diameter?: number;
+  // Distance ephemeris
+  distance?: number;
+  // Orbit ephemeris
+  argumentOfPerifocus?: number;
+  eccentricity?: number;
+  inclination?: number;
+  timeOfPeriapsis?: number;
+  longitudeOfAscendingNode?: number;
+  meanAnomaly?: number;
+  periapsisDistance?: number;
+  meanMotion?: number;
+  trueAnomaly?: number;
+  semiMajorAxis?: number;
+  apoapsisDistance?: number;
+  siderealOrbitPeriod?: number;
+}
+
+export async function upsertEphemerisValue(ephemerisValue: EphemerisRecord) {
+  const db = await databasePromise;
+  const {
+    body,
+    timestamp,
+    latitude,
+    longitude,
+    azimuth,
+    elevation,
+    illumination,
+    diameter,
+    distance,
+    argumentOfPerifocus,
+    eccentricity,
+    inclination,
+    timeOfPeriapsis,
+    longitudeOfAscendingNode,
+    meanAnomaly,
+    periapsisDistance,
+    meanMotion,
+    trueAnomaly,
+    semiMajorAxis,
+    apoapsisDistance,
+    siderealOrbitPeriod,
+  } = ephemerisValue;
+  const result = await db.run(
+    `INSERT OR REPLACE INTO ephemeris (
+      body, timestamp, latitude, longitude, azimuth, elevation, illumination,
+      diameter, distance, argumentOfPerifocus, eccentricity, inclination,
+      timeOfPeriapsis, longitudeOfAscendingNode, meanAnomaly, periapsisDistance,
+      meanMotion, trueAnomaly, semiMajorAxis, apoapsisDistance, siderealOrbitPeriod
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    [
+      body,
+      timestamp.toISOString(),
+      latitude ?? null,
+      longitude ?? null,
+      azimuth ?? null,
+      elevation ?? null,
+      illumination ?? null,
+      diameter ?? null,
+      distance ?? null,
+      argumentOfPerifocus ?? null,
+      eccentricity ?? null,
+      inclination ?? null,
+      timeOfPeriapsis ?? null,
+      longitudeOfAscendingNode ?? null,
+      meanAnomaly ?? null,
+      periapsisDistance ?? null,
+      meanMotion ?? null,
+      trueAnomaly ?? null,
+      semiMajorAxis ?? null,
+      apoapsisDistance ?? null,
+      siderealOrbitPeriod ?? null,
+    ]
+  );
+  return result;
+}
+
+export async function upsertEphemerisValues(
+  ephemerisValues: EphemerisRecord[]
+) {
+  if (ephemerisValues.length === 0) return;
+
+  const db = await databasePromise;
+
+  // SQLite has a limit of 999 variables per query (SQLITE_MAX_VARIABLE_NUMBER)
+  // With 21 fields per record, we can insert ~47 records at once (999 / 21 ≈ 47)
+  // Using 32 as a safe batch size
+  const BATCH_SIZE = 32;
+
+  for (let i = 0; i < ephemerisValues.length; i += BATCH_SIZE) {
+    const batch = ephemerisValues.slice(i, i + BATCH_SIZE);
+
+    const placeholders = batch
+      .map(
+        () => "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+      )
+      .join(", ");
+    const query = `
+      INSERT INTO ephemeris (
+        body, timestamp, latitude, longitude, azimuth, elevation, illumination,
+        diameter, distance, argumentOfPerifocus, eccentricity, inclination,
+        timeOfPeriapsis, longitudeOfAscendingNode, meanAnomaly, periapsisDistance,
+        meanMotion, trueAnomaly, semiMajorAxis, apoapsisDistance, siderealOrbitPeriod
+      )
+      VALUES ${placeholders}
+      ON CONFLICT(body, timestamp) DO UPDATE SET
+        latitude = COALESCE(excluded.latitude, latitude),
+        longitude = COALESCE(excluded.longitude, longitude),
+        azimuth = COALESCE(excluded.azimuth, azimuth),
+        elevation = COALESCE(excluded.elevation, elevation),
+        illumination = COALESCE(excluded.illumination, illumination),
+        diameter = COALESCE(excluded.diameter, diameter),
+        distance = COALESCE(excluded.distance, distance),
+        argumentOfPerifocus = COALESCE(excluded.argumentOfPerifocus, argumentOfPerifocus),
+        eccentricity = COALESCE(excluded.eccentricity, eccentricity),
+        inclination = COALESCE(excluded.inclination, inclination),
+        timeOfPeriapsis = COALESCE(excluded.timeOfPeriapsis, timeOfPeriapsis),
+        longitudeOfAscendingNode = COALESCE(excluded.longitudeOfAscendingNode, longitudeOfAscendingNode),
+        meanAnomaly = COALESCE(excluded.meanAnomaly, meanAnomaly),
+        periapsisDistance = COALESCE(excluded.periapsisDistance, periapsisDistance),
+        meanMotion = COALESCE(excluded.meanMotion, meanMotion),
+        trueAnomaly = COALESCE(excluded.trueAnomaly, trueAnomaly),
+        semiMajorAxis = COALESCE(excluded.semiMajorAxis, semiMajorAxis),
+        apoapsisDistance = COALESCE(excluded.apoapsisDistance, apoapsisDistance),
+        siderealOrbitPeriod = COALESCE(excluded.siderealOrbitPeriod, siderealOrbitPeriod)
+    `;
+
+    const parameters = batch.flatMap(
+      ({
+        body,
+        timestamp,
+        latitude,
+        longitude,
+        azimuth,
+        elevation,
+        illumination,
+        diameter,
+        distance,
+        argumentOfPerifocus,
+        eccentricity,
+        inclination,
+        timeOfPeriapsis,
+        longitudeOfAscendingNode,
+        meanAnomaly,
+        periapsisDistance,
+        meanMotion,
+        trueAnomaly,
+        semiMajorAxis,
+        apoapsisDistance,
+        siderealOrbitPeriod,
+      }) => [
+        body,
+        timestamp.toISOString(),
+        latitude ?? null,
+        longitude ?? null,
+        azimuth ?? null,
+        elevation ?? null,
+        illumination ?? null,
+        diameter ?? null,
+        distance ?? null,
+        argumentOfPerifocus ?? null,
+        eccentricity ?? null,
+        inclination ?? null,
+        timeOfPeriapsis ?? null,
+        longitudeOfAscendingNode ?? null,
+        meanAnomaly ?? null,
+        periapsisDistance ?? null,
+        meanMotion ?? null,
+        trueAnomaly ?? null,
+        semiMajorAxis ?? null,
+        apoapsisDistance ?? null,
+        siderealOrbitPeriod ?? null,
+      ]
+    );
+
+    await db.run(query, parameters);
+  }
+}
+
+// #region Events
+
+(async () => {
+  const db = await databasePromise;
+
   await db.exec(`
     CREATE TABLE IF NOT EXISTS events (
       summary TEXT,
@@ -42,59 +260,6 @@ const databasePromise: Promise<Database> = open({
     );
   `);
 })();
-
-export async function closeConnection() {
-  const db = await databasePromise;
-  await db.close();
-}
-
-// #region Ephemeris
-
-export interface EphemerisRecord {
-  body: Body;
-  timestamp: Date;
-  latitude: number;
-  longitude: number;
-}
-
-export async function upsertEphemerisValue(ephemerisValue: EphemerisRecord) {
-  const db = await databasePromise;
-  const { body, timestamp, latitude, longitude } = ephemerisValue;
-  const result = await db.run(
-    "INSERT OR REPLACE INTO ephemeris (body, timestamp, latitude, longitude) VALUES (?, ?, ?, ?)",
-    [body, timestamp.toISOString(), latitude, longitude]
-  );
-  return result;
-}
-
-export async function upsertEphemerisValues(
-  ephemerisValues: EphemerisRecord[]
-) {
-  if (ephemerisValues.length === 0) return;
-
-  const placeholders = ephemerisValues.map(() => "(?, ?, ?, ?)").join(", ");
-  const query = `
-    INSERT INTO ephemeris (body, timestamp, latitude, longitude)
-    VALUES ${placeholders}
-    ON CONFLICT(body, timestamp) DO UPDATE SET
-      latitude = excluded.latitude,
-      longitude = excluded.longitude
-  `;
-
-  const parameters = ephemerisValues.flatMap(
-    ({ body, timestamp, latitude, longitude }) => [
-      body,
-      timestamp.toISOString(),
-      latitude,
-      longitude,
-    ]
-  );
-
-  const db = await databasePromise;
-  await db.run(query, parameters);
-}
-
-// #region Events
 
 function mapRowToEvent(row: any): Event {
   return {
@@ -140,40 +305,50 @@ export async function upsertEvent(event: Event) {
 export async function upsertEvents(events: Event[]) {
   if (events.length === 0) return;
 
-  const placeholders = events
-    .map(() => "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")
-    .join(", ");
-  const query = `
-    INSERT INTO events (summary, description, start, end, categories, location, latitude, longitude, url, priority, color)
-    VALUES ${placeholders}
-    ON CONFLICT(summary, start) DO UPDATE SET
-      description = excluded.description,
-      end = excluded.end,
-      categories = excluded.categories,
-      location = excluded.location,
-      latitude = excluded.latitude,
-      longitude = excluded.longitude,
-      url = excluded.url,
-      priority = excluded.priority,
-      color = excluded.color
-  `;
-
-  const parameters = events.flatMap((event) => [
-    event.summary,
-    event.description,
-    event.start.toISOString(),
-    event.end?.toISOString() || null,
-    event.categories.join(","),
-    event.location || null,
-    event.geography?.latitude || null,
-    event.geography?.longitude || null,
-    event.url || null,
-    event.priority ?? null,
-    event.color || null,
-  ]);
-
   const db = await databasePromise;
-  await db.run(query, parameters);
+
+  // SQLite has a limit of 999 variables per query (SQLITE_MAX_VARIABLE_NUMBER)
+  // With 11 fields per event, we can insert ~90 events at once (999 / 11 ≈ 90)
+  // Using 80 as a safe batch size
+  const BATCH_SIZE = 80;
+
+  for (let i = 0; i < events.length; i += BATCH_SIZE) {
+    const batch = events.slice(i, i + BATCH_SIZE);
+
+    const placeholders = batch
+      .map(() => "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")
+      .join(", ");
+    const query = `
+      INSERT INTO events (summary, description, start, end, categories, location, latitude, longitude, url, priority, color)
+      VALUES ${placeholders}
+      ON CONFLICT(summary, start) DO UPDATE SET
+        description = excluded.description,
+        end = excluded.end,
+        categories = excluded.categories,
+        location = excluded.location,
+        latitude = excluded.latitude,
+        longitude = excluded.longitude,
+        url = excluded.url,
+        priority = excluded.priority,
+        color = excluded.color
+    `;
+
+    const parameters = batch.flatMap((event) => [
+      event.summary,
+      event.description,
+      event.start.toISOString(),
+      event.end?.toISOString() || null,
+      event.categories.join(","),
+      event.location || null,
+      event.geography?.latitude || null,
+      event.geography?.longitude || null,
+      event.url || null,
+      event.priority ?? null,
+      event.color || null,
+    ]);
+
+    await db.run(query, parameters);
+  }
 }
 
 export async function getAllEvents(): Promise<Event[]> {
