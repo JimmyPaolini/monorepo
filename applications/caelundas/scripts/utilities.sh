@@ -7,6 +7,11 @@ set -a
 source applications/caelundas/.env
 set +a
 
+# Constants
+readonly SCRIPT_POD_NAME="caelundas-script"
+readonly SCRIPT_POD_IMAGE="busybox:latest"
+readonly MOUNT_PATH="/app/data"
+
 # List all Caelundas jobs with their metadata
 list_jobs() {
   echo "📋 Caelundas Jobs:"
@@ -56,79 +61,68 @@ validate_release_name() {
   fi
 }
 
-# Validate that a pod is in a completed state (Succeeded or Failed)
-# Args:
-#   $1 - pod phase
-#   $2 - pod name (for error messages)
-# Exits with error if pod is not in a valid completed state
-validate_pod_completed() {
-  local phase="$1"
-  local pod="$2"
+# Verify that a PVC exists
+# Args: $1 - PVC name to verify
+# Exits with error if PVC does not exist
+verify_pvc_exists() {
+  local pvc_name="$1"
 
-  if [ "$phase" = "Running" ]; then
-    echo "❌ Error: Pod is currently running. This script only works with completed pods. Wait for the job to complete or use kubectl exec directly"
+  echo "💾 Verifying PVC: $pvc_name" >&2
+
+  if ! kubectl get pvc "$pvc_name" &>/dev/null; then
+    echo "❌ Error: PVC '$pvc_name' not found" >&2
+    echo "Available PVCs:" >&2
+    kubectl get pvc -l app.kubernetes.io/name=caelundas 2>/dev/null || echo "No PVCs found" >&2
     exit 1
   fi
 
-  if [ "$phase" != "Succeeded" ] && [ "$phase" != "Failed" ]; then
-    echo "❌ Error: Unexpected pod phase: $phase. Expected: Succeeded or Failed"
+  echo "   PVC exists: $pvc_name" >&2
+}
+
+# Create a script pod with PVC mounted
+# Args: $1 - PVC name to mount
+# Returns: 0 on success, exits on failure
+create_script_pod() {
+  local pvc_name="$1"
+
+  echo "🫛 Creating script pod..." >&2
+
+  kubectl run "$SCRIPT_POD_NAME" \
+    --image="$SCRIPT_POD_IMAGE" \
+    --restart=Never \
+    --overrides="{
+      \"spec\": {
+        \"containers\": [{
+          \"name\": \"$SCRIPT_POD_NAME\",
+          \"image\": \"$SCRIPT_POD_IMAGE\",
+          \"command\": [\"sleep\", \"300\"],
+          \"volumeMounts\": [{
+            \"name\": \"data\",
+            \"mountPath\": \"$MOUNT_PATH\"
+          }]
+        }],
+        \"volumes\": [{
+          \"name\": \"data\",
+          \"persistentVolumeClaim\": {
+            \"claimName\": \"$pvc_name\"
+          }
+        }]
+      }
+    }" >/dev/null 2>&1
+
+  echo "⏳ Waiting for script pod to be ready..." >&2
+  if ! kubectl wait --for=condition=Ready pod/"$SCRIPT_POD_NAME" --timeout=60s 2>&1; then
+    echo "❌ Script pod did not become ready in time" >&2
+    kubectl get pod "$SCRIPT_POD_NAME" 2>&1 || true
+    kubectl describe pod "$SCRIPT_POD_NAME" 2>&1 | tail -20 || true
+    kubectl delete pod "$SCRIPT_POD_NAME" --ignore-not-found=true >/dev/null 2>&1
     exit 1
   fi
 }
 
-# Find pod by job name (release name)
-# Args: $1 - job name (release name)
-# Returns: pod name or empty string if not found
-find_pod_by_job() {
-  local job_name="$1"
-  local pod
-
-  echo "🔍 Finding pod for job: $job_name" >&2
-  pod=$(kubectl get pods -l job-name="$job_name" \
-    -o jsonpath='{.items[0].metadata.name}' 2>/dev/null)
-
-  if [ -n "$pod" ]; then
-    echo "🫛 Found pod: $pod"
-  else
-    echo "🥀 No pod found for job: $job_name" >&2
-    exit 1
-  fi
-
-  echo "$pod"
-}
-
-# Get the phase of a pod (Pending, Running, Succeeded, Failed, Unknown)
-# Args: $1 - pod name
-# Returns: pod phase string
-get_pod_phase() {
-  local pod="$1"
-  local phase
-
-  echo "🚦 Getting pod phase for: $pod" >&2
-  phase=$(kubectl get pod "$pod" -o jsonpath='{.status.phase}' 2>/dev/null)
-  echo "   Phase: $phase" >&2
-
-  echo "$phase"
-}
-
-# Get the PVC name attached to a pod
-# Args: $1 - pod name
-# Returns: PVC name or empty string if not found
-get_pvc_name() {
-  local pod="$1"
-  local pvc
-
-  echo "💾 Getting PVC for pod: $pod" >&2
-  pvc=$(kubectl get pod "$pod" \
-    -o jsonpath='{.spec.volumes[?(@.persistentVolumeClaim)].persistentVolumeClaim.claimName}' \
-    2>/dev/null)
-
-  if [ -n "$pvc" ]; then
-    echo "   PVC: $pvc" >&2
-  else
-    echo "   No PVC found" >&2
-    exit 1
-  fi
-
-  echo "$pvc"
+# Clean up the script pod
+# Returns: 0 on success
+cleanup_script_pod() {
+  kubectl delete pod "$SCRIPT_POD_NAME" --ignore-not-found=true >/dev/null 2>&1
+  echo "🧹 Cleaned up script pod" >&2
 }

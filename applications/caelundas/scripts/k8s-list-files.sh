@@ -2,42 +2,22 @@
 
 source applications/caelundas/scripts/utilities.sh
 
-echo "📂 Listing files from Kubernetes pod..."
+echo "📂 Listing files from Kubernetes PVC..."
 
 release_name="${1:-}"
 validate_release_name "$release_name"
 
-pod_name=$(find_pod_by_job "$release_name")
+pvc_name="$release_name"
+verify_pvc_exists "$pvc_name"
 
-pod_phase=$(get_pod_phase "$pod_name")
+create_script_pod "$pvc_name"
 
-validate_pod_completed "$pod_phase" "$pod_name"
-
-pvc_name=$(get_pvc_name "$pod_name")
-
-echo "🔧 Creating temporary script pod..."
-echo "📂 Path: /app/data"
-
-kubectl run "caelundas-script" --rm -i --restart=Never \
-  --image="busybox:latest" \
-  --overrides="{
-    \"spec\": {
-      \"containers\": [{
-        \"name\": \"caelundas-script\",
-        \"image\": \"busybox:latest\",
-        \"command\": [\"ls\", \"-lah\", \"/app/data\"],
-        \"volumeMounts\": [{
-          \"name\": \"data\",
-          \"mountPath\": \"/app/data\"
-        }]
-      }],
-      \"volumes\": [{
-        \"name\": \"data\",
-        \"persistentVolumeClaim\": {
-          \"claimName\": \"$pvc_name\"
-        }
-      }]
-    }
-  }"
-
-echo "✅ Listed files successfully"
+echo "📂 Listing files..."
+if kubectl exec "$SCRIPT_POD_NAME" -- ls -lah "$MOUNT_PATH"; then
+  cleanup_script_pod
+  echo "✅ Listed files successfully"
+else
+  cleanup_script_pod
+  echo "❌ Failed to list files" >&2
+  exit 1
+fi
