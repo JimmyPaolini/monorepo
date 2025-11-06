@@ -1,4 +1,4 @@
-import { LunarPhase } from "../../symbols.constants";
+import { LunarPhase } from "../../constants";
 
 export const illuminationByPhase: Record<LunarPhase, number> = {
   new: 0,

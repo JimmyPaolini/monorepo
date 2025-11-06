@@ -24,7 +24,7 @@ import {
   type Asteroid,
   type Comet,
   type Planet,
-} from "../symbols.constants";
+} from "../constants";
 import {
   DiameterEphemeris,
   type AzimuthElevationEphemerisBody,

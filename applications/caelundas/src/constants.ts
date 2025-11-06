@@ -273,10 +273,11 @@ export const RETROGRADE_BODIES: RetrogradeBody[] = [
   "vesta",
 ];
 
-export const PLANETARY_PHASE_BODIES: Extract<
-  Body,
-  "mercury" | "venus" | "mars"
->[] = ["venus", "mercury", "mars"];
+export const PLANETARY_PHASE_BODIES: Extract<Body, "mercury" | "venus" | "mars">[] = [
+  "venus",
+  "mercury",
+  "mars",
+];
 
 // #region Aspects 🧭
 

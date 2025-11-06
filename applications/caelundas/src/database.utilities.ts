@@ -1,6 +1,6 @@
 import sqlite3 from "sqlite3";
 import { open, type Database } from "sqlite";
-import type { Body } from "./symbols.constants";
+import type { Body } from "./constants";
 import type { Event } from "./calendar.utilities";
 import { getOutputPath } from "./output.utilities";
 

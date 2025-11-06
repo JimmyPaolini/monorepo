@@ -18,7 +18,7 @@ import {
   type MercurianPhaseSymbol,
   type VenusianPhase,
   type VenusianPhaseSymbol,
-} from "../../symbols.constants";
+} from "../../constants";
 import type {
   CoordinateEphemeris,
   CoordinateEphemerisBody,
@@ -40,12 +40,12 @@ import {
 import { upsertEvents } from "../../database.utilities";
 import { MARGIN_MINUTES } from "../../calendar.utilities";
 import { getOutputPath } from "../../output.utilities";
+import { PLANETARY_PHASE_BODIES } from "../../constants";
 
 const categories = ["Astronomy", "Astrology", "Planetary Phases"];
 
 export function getPlanetaryPhaseEvents(args: {
   currentMinute: Moment;
-  planetaryPhaseBodies: Extract<Body, "mercury" | "venus" | "mars">[];
   coordinateEphemerisByBody: Record<
     CoordinateEphemerisBody,
     CoordinateEphemeris
@@ -58,12 +58,12 @@ export function getPlanetaryPhaseEvents(args: {
 }) {
   const {
     currentMinute,
-    planetaryPhaseBodies,
     coordinateEphemerisByBody,
     distanceEphemerisByBody,
     illuminationEphemerisByBody,
   } = args;
 
+  const planetaryPhaseBodies = PLANETARY_PHASE_BODIES;
   const planetaryPhaseEvents: PlanetaryPhaseEvent[] = [];
 
   if (planetaryPhaseBodies.includes("venus")) {

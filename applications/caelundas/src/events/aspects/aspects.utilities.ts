@@ -6,7 +6,7 @@ import {
   type MajorAspect,
   type MinorAspect,
   type SpecialtyAspect,
-} from "../../symbols.constants";
+} from "../../constants";
 import { getAngle } from "../../math.utilities";
 
 const angleByMajorAspect: Record<MajorAspect, number> = {

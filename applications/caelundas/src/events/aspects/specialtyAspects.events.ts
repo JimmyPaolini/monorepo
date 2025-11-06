@@ -10,7 +10,8 @@ import {
   type SpecialtyAspectSymbol,
   symbolByBody,
   symbolBySpecialtyAspect,
-} from "../../symbols.constants";
+  SPECIALTY_ASPECT_BODIES,
+} from "../../constants";
 import { type Event, getCalendar } from "../../calendar.utilities";
 import { getSpecialtyAspect, isSpecialtyAspect } from "./aspects.utilities";
 import { upsertEvents } from "../../database.utilities";
@@ -32,12 +33,11 @@ export interface SpecialtyAspectEvent extends Event {
 }
 
 export function getSpecialtyAspectEvents(args: {
-  specialtyAspectBodies: Body[];
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
   currentMinute: Moment;
 }) {
-  const { specialtyAspectBodies, coordinateEphemerisByBody, currentMinute } =
-    args;
+  const { coordinateEphemerisByBody, currentMinute } = args;
+  const specialtyAspectBodies = SPECIALTY_ASPECT_BODIES;
 
   const previousMinute = currentMinute.clone().subtract(1, "minute");
   const nextMinute = currentMinute.clone().add(1, "minute");

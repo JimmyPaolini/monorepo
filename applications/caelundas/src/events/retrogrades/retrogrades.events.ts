@@ -9,11 +9,12 @@ import type {
   RetrogradeBody,
   OrbitalDirectionSymbol,
   RetrogradeBodySymbol,
-} from "../../symbols.constants";
+} from "../../constants";
 import {
   symbolByBody,
   symbolByOrbitalDirection,
-} from "../../symbols.constants";
+  RETROGRADE_BODIES,
+} from "../../constants";
 import { MARGIN_MINUTES } from "../../calendar.utilities";
 import { isDirect, isRetrograde } from "./retrogrades.utilities";
 import { upsertEvents } from "../../database.utilities";
@@ -35,11 +36,11 @@ export interface RetrogradeEvent extends Event {
 }
 
 export function getRetrogradeEvents(args: {
-  retrogradeBodies: RetrogradeBody[];
   coordinateEphemerisByBody: Record<RetrogradeBody, CoordinateEphemeris>;
   currentMinute: Moment;
 }) {
-  const { retrogradeBodies, coordinateEphemerisByBody, currentMinute } = args;
+  const { coordinateEphemerisByBody, currentMinute } = args;
+  const retrogradeBodies = RETROGRADE_BODIES;
   const retrogradeEvents: RetrogradeEvent[] = [];
 
   for (const body of retrogradeBodies as RetrogradeBody[]) {

@@ -1,12 +1,7 @@
 import fs from "fs";
 import _ from "lodash";
 import type { Moment } from "moment";
-import type {
-  Body,
-  Sign,
-  BodySymbol,
-  SignSymbol,
-} from "../../symbols.constants";
+import type { Body, Sign, BodySymbol, SignSymbol } from "../../constants";
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 import {
   type Event,
@@ -24,7 +19,10 @@ import {
   symbolByBody,
   symbolByDecan,
   symbolBySign,
-} from "../../symbols.constants";
+  SIGN_INGRESS_BODIES,
+  DECAN_INGRESS_BODIES,
+  PEAK_INGRESS_BODIES,
+} from "../../constants";
 import { upsertEvents } from "../../database.utilities";
 import { getOutputPath } from "../../output.utilities";
 
@@ -48,11 +46,11 @@ export interface SignIngressEvent extends Event {
 }
 
 export function getSignIngressEvents(args: {
-  signIngressBodies: Body[];
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
   currentMinute: Moment;
 }) {
-  const { signIngressBodies, coordinateEphemerisByBody, currentMinute } = args;
+  const { coordinateEphemerisByBody, currentMinute } = args;
+  const signIngressBodies = SIGN_INGRESS_BODIES;
 
   const previousMinute = currentMinute.clone().subtract(1, "minute");
 
@@ -153,11 +151,11 @@ export interface DecanIngressEvent extends Event {
 }
 
 export function getDecanIngressEvents(args: {
-  decanIngressBodies: Body[];
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
   currentMinute: Moment;
 }) {
-  const { decanIngressBodies, coordinateEphemerisByBody, currentMinute } = args;
+  const { coordinateEphemerisByBody, currentMinute } = args;
+  const decanIngressBodies = DECAN_INGRESS_BODIES;
 
   const previousMinute = currentMinute.clone().subtract(1, "minute");
 
@@ -263,11 +261,11 @@ export interface PeakIngressEvent extends Event {
   summary: PeakIngressSummary;
 }
 export function getPeakIngressEvents(args: {
-  peakIngressBodies: Body[];
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
   currentMinute: Moment;
 }) {
-  const { peakIngressBodies, coordinateEphemerisByBody, currentMinute } = args;
+  const { coordinateEphemerisByBody, currentMinute } = args;
+  const peakIngressBodies = PEAK_INGRESS_BODIES;
 
   const previousMinute = currentMinute.clone().subtract(1, "minute");
 

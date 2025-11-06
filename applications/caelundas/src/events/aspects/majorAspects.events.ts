@@ -11,7 +11,8 @@ import {
   type MajorAspectSymbol,
   symbolByBody,
   symbolByMajorAspect,
-} from "../../symbols.constants";
+  MAJOR_ASPECT_BODIES,
+} from "../../constants";
 import { upsertEvents } from "../../database.utilities";
 import { getMajorAspect, isMajorAspect } from "./aspects.utilities";
 import { getOutputPath } from "../../output.utilities";
@@ -32,11 +33,11 @@ export interface MajorAspectEvent extends Event {
 }
 
 export function getMajorAspectEvents(args: {
-  majorAspectBodies: Body[];
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
   currentMinute: Moment;
 }) {
-  const { majorAspectBodies, coordinateEphemerisByBody, currentMinute } = args;
+  const { coordinateEphemerisByBody, currentMinute } = args;
+  const majorAspectBodies = MAJOR_ASPECT_BODIES;
 
   const previousMinute = currentMinute.clone().subtract(1, "minute");
   const nextMinute = currentMinute.clone().add(1, "minute");

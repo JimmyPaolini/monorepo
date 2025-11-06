@@ -43,39 +43,7 @@ env:
   - name: END_DATE
     value: "2025-12-31"
 
-  # 🎫 Event Types Configuration
-  - name: EVENT_TYPES
-    value: "ingresses,aspects,retrogrades,planetaryPhases,annualSolarCycle,monthlyLunarCycle,dailySolarCycle,dailyLunarCycle,twilights"
-
-  # 🚪 Ingress Configuration
-  - name: INGRESSES
-    value: "signs,decans,peaks"
-  - name: SIGN_INGRESS_BODIES
-    value: "sun,moon,mercury,venus,mars,jupiter,saturn,uranus,neptune,pluto,chiron,lilith,ceres,pallas,juno,vesta,halley,north lunar node,lunar apogee"
-  - name: DECAN_INGRESS_BODIES
-    value: "sun,moon,mercury,venus,mars,jupiter,saturn,uranus,neptune,pluto,chiron,lilith,ceres,pallas,juno,vesta,halley,north lunar node,lunar apogee"
-  - name: PEAK_INGRESS_BODIES
-    value: "sun,moon,mercury,venus,mars,jupiter,saturn,uranus,neptune,pluto,chiron,lilith,ceres,pallas,juno,vesta,halley,north lunar node,lunar apogee"
-
-  # 📐 Aspect Configuration
-  - name: ASPECTS
-    value: "majorAspects,minorAspects,specialtyAspects"
-  - name: MAJOR_ASPECT_BODIES
-    value: "sun,mercury,venus,mars,jupiter,saturn,uranus,neptune,pluto,chiron,lilith,ceres,pallas,juno,vesta,halley,north lunar node,lunar apogee"
-  - name: MINOR_ASPECT_BODIES
-    value: "sun,mercury,venus,mars,jupiter,saturn,uranus,neptune,pluto,chiron,lilith,ceres,pallas,juno,vesta,halley,north lunar node,lunar apogee"
-  - name: SPECIALTY_ASPECT_BODIES
-    value: "sun,mercury,venus,mars,jupiter,saturn,uranus,neptune,pluto,chiron,lilith,ceres,pallas,juno,vesta,halley,north lunar node,lunar apogee"
-
-  # ↩️ Retrograde Configuration
-  - name: RETROGRADE_BODIES
-    value: "mercury,venus,mars,jupiter,saturn,uranus,neptune,pluto,chiron,lilith,ceres,pallas,juno,vesta"
-
-  # Planetary Phase Configuration
-  - name: PLANETARY_PHASE_BODIES
-    value: "venus,mercury,mars"
-
-  # Retry Configuration
+  # � Retry Configuration
   - name: MAX_RETRIES
     value: "5"
   - name: INITIAL_DELAY_MS

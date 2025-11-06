@@ -4,12 +4,12 @@ import moment from "moment-timezone";
 import type { Moment } from "moment";
 import type { Event } from "../../calendar.utilities";
 import type { IlluminationEphemeris } from "../../ephemeris/ephemeris.types";
-import type { LunarPhase } from "../../symbols.constants";
+import type { LunarPhase } from "../../constants";
 import { getCalendar, MARGIN_MINUTES } from "../../calendar.utilities";
 import { upsertEvents } from "../../database.utilities";
-import { lunarPhases } from "../../symbols.constants";
+import { lunarPhases } from "../../constants";
 import { isLunarPhase } from "./monthlyLunarCycle.utilities";
-import { symbolByLunarPhase } from "../../symbols.constants";
+import { symbolByLunarPhase } from "../../constants";
 import { getOutputPath } from "../../output.utilities";
 
 export function getMonthlyLunarCycleEvents(args: {

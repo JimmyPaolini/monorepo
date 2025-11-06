@@ -10,7 +10,8 @@ import {
   type MinorAspectSymbol,
   symbolByBody,
   symbolByMinorAspect,
-} from "../../symbols.constants";
+  MINOR_ASPECT_BODIES,
+} from "../../constants";
 import { type Event, getCalendar } from "../../calendar.utilities";
 import { getMinorAspect, isMinorAspect } from "./aspects.utilities";
 import { upsertEvents } from "../../database.utilities";
@@ -32,11 +33,11 @@ export interface MinorAspectEvent extends Event {
 }
 
 export function getMinorAspectEvents(args: {
-  minorAspectBodies: Body[];
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
   currentMinute: Moment;
 }) {
-  const { minorAspectBodies, coordinateEphemerisByBody, currentMinute } = args;
+  const { coordinateEphemerisByBody, currentMinute } = args;
+  const minorAspectBodies = MINOR_ASPECT_BODIES;
 
   const previousMinute = currentMinute.clone().subtract(1, "minute");
   const nextMinute = currentMinute.clone().add(1, "minute");
