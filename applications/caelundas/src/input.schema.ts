@@ -1,5 +1,6 @@
 import { z } from "zod";
 import moment from "moment-timezone";
+import tzLookup from "@photostructure/tz-lookup";
 
 // #region Input
 export const inputSchema = z
@@ -11,17 +12,16 @@ export const inputSchema = z
       .max(180)
       .optional()
       .default(-75.17169),
-    timezone: z.string().optional().default("America/New_York"),
     startDate: z.string().optional().default("2025-01-01"),
     endDate: z.string().optional().default("2025-12-31"),
   })
   .transform((data) => {
-    const timezone = data.timezone;
+    const timezone = tzLookup(data.latitude, data.longitude);
 
     return {
       latitude: data.latitude,
       longitude: data.longitude,
-      timezone: data.timezone,
+      timezone: timezone,
       start: moment.tz(data.startDate, timezone).toDate(),
       end: moment.tz(data.endDate, timezone).toDate(),
     };
