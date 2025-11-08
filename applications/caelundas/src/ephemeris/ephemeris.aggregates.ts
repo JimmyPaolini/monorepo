@@ -2,16 +2,11 @@ import _ from "lodash";
 import { type Body, bodies } from "../constants";
 import type {
   Coordinates,
-  CoordinateEphemeris,
-  AzimuthElevationEphemeris,
   CoordinateEphemerisBody,
   DiameterEphemerisBody,
   IlluminationEphemerisBody,
   DistanceEphemerisBody,
   AzimuthElevationEphemerisBody,
-  IlluminationEphemeris,
-  DiameterEphemeris,
-  DistanceEphemeris,
 } from "../ephemeris/ephemeris.types";
 import {
   getAzimuthElevationEphemerisByBody,
@@ -20,82 +15,6 @@ import {
   getDistanceEphemerisByBody,
   getIlluminationEphemerisByBody,
 } from "../ephemeris/ephemeris.service";
-import {
-  upsertEphemerisValues,
-  type EphemerisRecord,
-} from "../database.utilities";
-
-// #region convertCoordinateEphemerisToRecords
-// Convert coordinate ephemeris data to database records format
-function convertCoordinateEphemerisToRecords(
-  coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>
-): EphemerisRecord[] {
-  return _.flatMap(_.toPairs(coordinateEphemerisByBody), ([body, ephemeris]) =>
-    _.map(_.toPairs(ephemeris), ([timestampIso, { latitude, longitude }]) => ({
-      body: body as Body,
-      timestamp: new Date(timestampIso),
-      latitude,
-      longitude,
-    }))
-  );
-}
-
-// #region convertAzimuthElevationEphemerisToRecords
-function convertAzimuthElevationEphemerisToRecords(
-  azimuthElevationEphemerisByBody: Record<Body, AzimuthElevationEphemeris>
-): EphemerisRecord[] {
-  return _.flatMap(
-    _.toPairs(azimuthElevationEphemerisByBody),
-    ([body, ephemeris]) =>
-      _.map(_.toPairs(ephemeris), ([timestampIso, { azimuth, elevation }]) => ({
-        body: body as Body,
-        timestamp: new Date(timestampIso),
-        azimuth,
-        elevation,
-      }))
-  );
-}
-
-// #region convertIlluminationEphemerisToRecords
-function convertIlluminationEphemerisToRecords(
-  illuminationEphemerisByBody: Record<Body, IlluminationEphemeris>
-): EphemerisRecord[] {
-  return _.flatMap(
-    _.toPairs(illuminationEphemerisByBody),
-    ([body, ephemeris]) =>
-      _.map(_.toPairs(ephemeris), ([timestampIso, { illumination }]) => ({
-        body: body as Body,
-        timestamp: new Date(timestampIso),
-        illumination,
-      }))
-  );
-}
-
-// #region convertDiameterEphemerisToRecords
-function convertDiameterEphemerisToRecords(
-  diameterEphemerisByBody: Record<Body, DiameterEphemeris>
-): EphemerisRecord[] {
-  return _.flatMap(_.toPairs(diameterEphemerisByBody), ([body, ephemeris]) =>
-    _.map(_.toPairs(ephemeris), ([timestampIso, { diameter }]) => ({
-      body: body as Body,
-      timestamp: new Date(timestampIso),
-      diameter,
-    }))
-  );
-}
-
-// #region convertDistanceEphemerisToRecords
-function convertDistanceEphemerisToRecords(
-  distanceEphemerisByBody: Record<Body, DistanceEphemeris>
-): EphemerisRecord[] {
-  return _.flatMap(_.toPairs(distanceEphemerisByBody), ([body, ephemeris]) =>
-    _.map(_.toPairs(ephemeris), ([timestampIso, { distance }]) => ({
-      body: body as Body,
-      timestamp: new Date(timestampIso),
-      distance,
-    }))
-  );
-}
 
 // #region getEphemerides
 export async function getEphemerides(args: {
@@ -165,16 +84,6 @@ export async function getEphemerides(args: {
     start,
     end,
   });
-
-  await upsertEphemerisValues([
-    ...convertCoordinateEphemerisToRecords(coordinateEphemerisByBody),
-    ...convertAzimuthElevationEphemerisToRecords(
-      azimuthElevationEphemerisByBody
-    ),
-    ...convertIlluminationEphemerisToRecords(illuminationEphemerisByBody),
-    ...convertDiameterEphemerisToRecords(diameterEphemerisByBody),
-    ...convertDistanceEphemerisToRecords(distanceEphemerisByBody),
-  ]);
 
   return {
     azimuthElevationEphemerisByBody,

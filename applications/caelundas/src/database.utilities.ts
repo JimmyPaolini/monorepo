@@ -30,18 +30,6 @@ export async function closeConnection() {
       illumination REAL,
       diameter REAL,
       distance REAL,
-      argumentOfPerifocus REAL,
-      eccentricity REAL,
-      inclination REAL,
-      timeOfPeriapsis REAL,
-      longitudeOfAscendingNode REAL,
-      meanAnomaly REAL,
-      periapsisDistance REAL,
-      meanMotion REAL,
-      trueAnomaly REAL,
-      semiMajorAxis REAL,
-      apoapsisDistance REAL,
-      siderealOrbitPeriod REAL,
       PRIMARY KEY (body, timestamp)
     );
   `);
@@ -50,7 +38,7 @@ export async function closeConnection() {
 export interface EphemerisRecord {
   body: Body;
   timestamp: Date;
-  // Coordinate ephemeris
+  // Coordinate/Orbit ephemeris
   latitude?: number;
   longitude?: number;
   // Azimuth/Elevation ephemeris
@@ -62,78 +50,6 @@ export interface EphemerisRecord {
   diameter?: number;
   // Distance ephemeris
   distance?: number;
-  // Orbit ephemeris
-  argumentOfPerifocus?: number;
-  eccentricity?: number;
-  inclination?: number;
-  timeOfPeriapsis?: number;
-  longitudeOfAscendingNode?: number;
-  meanAnomaly?: number;
-  periapsisDistance?: number;
-  meanMotion?: number;
-  trueAnomaly?: number;
-  semiMajorAxis?: number;
-  apoapsisDistance?: number;
-  siderealOrbitPeriod?: number;
-}
-
-export async function upsertEphemerisValue(ephemerisValue: EphemerisRecord) {
-  const db = await databasePromise;
-  const {
-    body,
-    timestamp,
-    latitude,
-    longitude,
-    azimuth,
-    elevation,
-    illumination,
-    diameter,
-    distance,
-    argumentOfPerifocus,
-    eccentricity,
-    inclination,
-    timeOfPeriapsis,
-    longitudeOfAscendingNode,
-    meanAnomaly,
-    periapsisDistance,
-    meanMotion,
-    trueAnomaly,
-    semiMajorAxis,
-    apoapsisDistance,
-    siderealOrbitPeriod,
-  } = ephemerisValue;
-  const result = await db.run(
-    `INSERT OR REPLACE INTO ephemeris (
-      body, timestamp, latitude, longitude, azimuth, elevation, illumination,
-      diameter, distance, argumentOfPerifocus, eccentricity, inclination,
-      timeOfPeriapsis, longitudeOfAscendingNode, meanAnomaly, periapsisDistance,
-      meanMotion, trueAnomaly, semiMajorAxis, apoapsisDistance, siderealOrbitPeriod
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-    [
-      body,
-      timestamp.toISOString(),
-      latitude ?? null,
-      longitude ?? null,
-      azimuth ?? null,
-      elevation ?? null,
-      illumination ?? null,
-      diameter ?? null,
-      distance ?? null,
-      argumentOfPerifocus ?? null,
-      eccentricity ?? null,
-      inclination ?? null,
-      timeOfPeriapsis ?? null,
-      longitudeOfAscendingNode ?? null,
-      meanAnomaly ?? null,
-      periapsisDistance ?? null,
-      meanMotion ?? null,
-      trueAnomaly ?? null,
-      semiMajorAxis ?? null,
-      apoapsisDistance ?? null,
-      siderealOrbitPeriod ?? null,
-    ]
-  );
-  return result;
 }
 
 export async function upsertEphemerisValues(
@@ -144,24 +60,20 @@ export async function upsertEphemerisValues(
   const db = await databasePromise;
 
   // SQLite has a limit of 999 variables per query (SQLITE_MAX_VARIABLE_NUMBER)
-  // With 21 fields per record, we can insert ~47 records at once (999 / 21 ≈ 47)
-  // Using 32 as a safe batch size
-  const BATCH_SIZE = 32;
+  // With 9 fields per record, we can insert ~111 records at once (999 / 9 ≈ 111)
+  // 96 leaves some room for safety
+  const BATCH_SIZE = 96;
 
   for (let i = 0; i < ephemerisValues.length; i += BATCH_SIZE) {
     const batch = ephemerisValues.slice(i, i + BATCH_SIZE);
 
     const placeholders = batch
-      .map(
-        () => "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-      )
+      .map(() => "(?, ?, ?, ?, ?, ?, ?, ?, ?)")
       .join(", ");
     const query = `
       INSERT INTO ephemeris (
         body, timestamp, latitude, longitude, azimuth, elevation, illumination,
-        diameter, distance, argumentOfPerifocus, eccentricity, inclination,
-        timeOfPeriapsis, longitudeOfAscendingNode, meanAnomaly, periapsisDistance,
-        meanMotion, trueAnomaly, semiMajorAxis, apoapsisDistance, siderealOrbitPeriod
+        diameter, distance
       )
       VALUES ${placeholders}
       ON CONFLICT(body, timestamp) DO UPDATE SET
@@ -171,19 +83,7 @@ export async function upsertEphemerisValues(
         elevation = COALESCE(excluded.elevation, elevation),
         illumination = COALESCE(excluded.illumination, illumination),
         diameter = COALESCE(excluded.diameter, diameter),
-        distance = COALESCE(excluded.distance, distance),
-        argumentOfPerifocus = COALESCE(excluded.argumentOfPerifocus, argumentOfPerifocus),
-        eccentricity = COALESCE(excluded.eccentricity, eccentricity),
-        inclination = COALESCE(excluded.inclination, inclination),
-        timeOfPeriapsis = COALESCE(excluded.timeOfPeriapsis, timeOfPeriapsis),
-        longitudeOfAscendingNode = COALESCE(excluded.longitudeOfAscendingNode, longitudeOfAscendingNode),
-        meanAnomaly = COALESCE(excluded.meanAnomaly, meanAnomaly),
-        periapsisDistance = COALESCE(excluded.periapsisDistance, periapsisDistance),
-        meanMotion = COALESCE(excluded.meanMotion, meanMotion),
-        trueAnomaly = COALESCE(excluded.trueAnomaly, trueAnomaly),
-        semiMajorAxis = COALESCE(excluded.semiMajorAxis, semiMajorAxis),
-        apoapsisDistance = COALESCE(excluded.apoapsisDistance, apoapsisDistance),
-        siderealOrbitPeriod = COALESCE(excluded.siderealOrbitPeriod, siderealOrbitPeriod)
+        distance = COALESCE(excluded.distance, distance)
     `;
 
     const parameters = batch.flatMap(
@@ -197,18 +97,6 @@ export async function upsertEphemerisValues(
         illumination,
         diameter,
         distance,
-        argumentOfPerifocus,
-        eccentricity,
-        inclination,
-        timeOfPeriapsis,
-        longitudeOfAscendingNode,
-        meanAnomaly,
-        periapsisDistance,
-        meanMotion,
-        trueAnomaly,
-        semiMajorAxis,
-        apoapsisDistance,
-        siderealOrbitPeriod,
       }) => [
         body,
         timestamp.toISOString(),
@@ -219,18 +107,6 @@ export async function upsertEphemerisValues(
         illumination ?? null,
         diameter ?? null,
         distance ?? null,
-        argumentOfPerifocus ?? null,
-        eccentricity ?? null,
-        inclination ?? null,
-        timeOfPeriapsis ?? null,
-        longitudeOfAscendingNode ?? null,
-        meanAnomaly ?? null,
-        periapsisDistance ?? null,
-        meanMotion ?? null,
-        trueAnomaly ?? null,
-        semiMajorAxis ?? null,
-        apoapsisDistance ?? null,
-        siderealOrbitPeriod ?? null,
       ]
     );
 
