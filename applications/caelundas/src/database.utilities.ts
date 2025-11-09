@@ -114,6 +114,73 @@ export async function upsertEphemerisValues(
   }
 }
 
+export type EphemerisType =
+  | "coordinate"
+  | "azimuthElevation"
+  | "illumination"
+  | "diameter"
+  | "distance";
+
+export async function getEphemerisRecords(args: {
+  body: Body;
+  start: Date;
+  end: Date;
+  type: EphemerisType;
+}): Promise<EphemerisRecord[]> {
+  const { body, start, end, type } = args;
+  const db = await databasePromise;
+
+  // Build WHERE clause based on ephemeris type
+  let additionalConditions = "";
+  switch (type) {
+    case "coordinate":
+      additionalConditions =
+        "AND latitude IS NOT NULL AND longitude IS NOT NULL";
+      break;
+    case "azimuthElevation":
+      additionalConditions =
+        "AND azimuth IS NOT NULL AND elevation IS NOT NULL";
+      break;
+    case "illumination":
+      additionalConditions = "AND illumination IS NOT NULL";
+      break;
+    case "diameter":
+      additionalConditions = "AND diameter IS NOT NULL";
+      break;
+    case "distance":
+      additionalConditions = "AND distance IS NOT NULL";
+      break;
+  }
+
+  const query = `
+    SELECT body, timestamp, latitude, longitude, azimuth, elevation, illumination, diameter, distance
+    FROM ephemeris
+    WHERE body = ?
+      AND timestamp >= ?
+      AND timestamp <= ?
+      ${additionalConditions}
+    ORDER BY timestamp ASC
+  `;
+
+  const rows = await db.all(query, [
+    body,
+    start.toISOString(),
+    end.toISOString(),
+  ]);
+
+  return rows.map((row) => ({
+    body: row.body as Body,
+    timestamp: new Date(row.timestamp),
+    latitude: row.latitude ?? undefined,
+    longitude: row.longitude ?? undefined,
+    azimuth: row.azimuth ?? undefined,
+    elevation: row.elevation ?? undefined,
+    illumination: row.illumination ?? undefined,
+    diameter: row.diameter ?? undefined,
+    distance: row.distance ?? undefined,
+  }));
+}
+
 // #region Events
 
 (async () => {

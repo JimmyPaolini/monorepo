@@ -12,12 +12,12 @@ import {
   QUANTITY_RANGE_RATE,
 } from "./ephemeris.constants";
 import {
-  Body,
-  Node,
   nodes,
   symbolByBody,
   type Asteroid,
+  type Body,
   type Comet,
+  type Node,
   type Planet,
 } from "../constants";
 import type {
@@ -38,9 +38,21 @@ import type {
 } from "./ephemeris.types";
 import { arcsecondsPerDegree, normalizeDegrees } from "../math.utilities";
 import { fetchWithRetry } from "../fetch.utilities";
-import { EphemerisRecord, upsertEphemerisValues } from "../database.utilities";
+import {
+  type EphemerisRecord,
+  upsertEphemerisValues,
+  getEphemerisRecords,
+} from "../database.utilities";
 
 // #region Utilities
+
+function getExpectedRecordCount(start: Date, end: Date): number {
+  // Ephemeris data is fetched at 1-minute intervals
+  const diffInMs = end.getTime() - start.getTime();
+  const diffInMinutes = Math.floor(diffInMs / (1000 * 60));
+  // Add 1 to include both start and end timestamps
+  return diffInMinutes + 1;
+}
 
 function getHorizonsBaseUrl(args: {
   start: Date;
@@ -73,7 +85,7 @@ function getHorizonsBaseUrl(args: {
 function parseOrbitEphemeris(text: string) {
   const ephemerisTable = text.split("$$SOE")[1].split("$$EOE")[0].trim();
 
-  const datePattern = /\d{4}-[A-Za-z]{3}-\d{2} \d{2}:\d{2}:\d{2}\.\d{4}/g;
+  const datePattern = /\d{4}-[A-Za-z]{3}-\d{2} \d{2}:\d{2}:\d{2}(\.\d{4})?/g;
   const pattern = new RegExp(
     `(${datePattern.source})` + "[\\s\\S]*?" + `(?=${datePattern.source}|$)`,
     "g"
@@ -89,7 +101,7 @@ function parseOrbitEphemeris(text: string) {
     const [fullMatch, dateString] = match;
 
     const date = moment
-      .utc(dateString, "YYYY-MMM-DD HH:mm:ss.SSSS")
+      .utc(dateString, ["YYYY-MMM-DD HH:mm:ss.SSSS", "YYYY-MMM-DD HH:mm:ss"])
       .toISOString();
 
     const ecMatch = [...fullMatch.matchAll(getPattern("EC"))][0][1];
@@ -157,15 +169,13 @@ export async function getOrbitEphemeris(args: {
     .toISOString(true)}`;
   const message = `orbit ephemeris 💫 for ${symbolByBody[body]} from ${timespan}`;
 
-  console.log(`🔭 Fetching ${message}`);
+  console.log(`🌐 Fetching ${message}`);
 
   const url = getOrbitEphemerisUrl({ body, end, start });
-  // console.log(`🌐 Orbit url:`, url.toString());
   const text = await fetchWithRetry(url.toString());
-  // console.log(`🏁 Orbit response:`, text);
   const orbitEphemeris = parseOrbitEphemeris(text);
 
-  console.log(`🔭 Fetched ${message}`);
+  console.log(`🌐 Fetched ${message}`);
 
   return orbitEphemeris;
 }
@@ -176,6 +186,37 @@ export async function getNodeCoordinatesEphemeris(args: {
   start: Date;
 }) {
   const { end, node, start } = args;
+
+  const timespan = `${moment
+    .tz(start, "America/New_York")
+    .toISOString(true)} to ${moment
+    .tz(end, "America/New_York")
+    .toISOString(true)}`;
+  const message = `coordinate ephemeris 🎯 for ${symbolByBody[node]} from ${timespan}`;
+
+  // Check if data exists in database
+  console.log(`🔍 Querying database for ${message}`);
+  const existingRecords = await getEphemerisRecords({
+    body: node,
+    start,
+    end,
+    type: "coordinate",
+  });
+
+  const expectedCount = getExpectedRecordCount(start, end);
+  const hasAllValues = existingRecords.every(
+    (record) => record.latitude !== undefined && record.longitude !== undefined
+  );
+  if (existingRecords.length === expectedCount && hasAllValues) {
+    console.log(`🛢️ Found complete database data for ${message}`);
+    return convertRecordsToCoordinateEphemeris(existingRecords);
+  } else if (existingRecords.length > 0) {
+    console.log(
+      `🛢️ Found incomplete database data (${existingRecords.length}/${expectedCount} records) for ${message}, fetching from API`
+    );
+  }
+
+  console.log(`🌐 Fetching ${message}`);
 
   const nodeOrbitEphemeris = await getOrbitEphemeris({
     body: "moon",
@@ -217,6 +258,14 @@ export async function getNodeCoordinatesEphemeris(args: {
     }
   );
 
+  console.log(`🌐 Fetched ${message}`);
+
+  console.log(`🛢️ Upserting ${message}`);
+  await upsertEphemerisValues(
+    convertCoordinateEphemerisToRecords(node, nodeEphemeris)
+  );
+  console.log(`🛢️ Upserted ${message}`);
+
   return nodeEphemeris;
 }
 
@@ -226,10 +275,15 @@ function parseCoordinatesEphemeris(text: string) {
   const ephemerisTable = text.split("$$SOE")[1].split("$$EOE")[0].trim();
 
   const ephemeris: CoordinateEphemeris = ephemerisTable
-    .split("\n ")
+    .split("\n")
+    .filter((line) => line.trim().length > 0)
     .reduce((ephemeris, ephemerisLine) => {
-      const [dateString, longitudeString, latitudeString] =
-        ephemerisLine.split(/\s{2,}/);
+      const parts = ephemerisLine.trim().split(/\s+/);
+
+      // Format: "YYYY-MMM-DD HH:mm longitude latitude"
+      const dateString = `${parts[0]} ${parts[1]}`;
+      const longitudeString = parts[2];
+      const latitudeString = parts[3];
 
       const date = moment.utc(dateString, "YYYY-MMM-DD HH:mm").toDate();
       const latitude: Latitude = Number(latitudeString);
@@ -253,6 +307,21 @@ function convertCoordinateEphemerisToRecords(
       latitude,
       longitude,
     })
+  );
+}
+
+function convertRecordsToCoordinateEphemeris(
+  records: EphemerisRecord[]
+): CoordinateEphemeris {
+  return records.reduce(
+    (acc, record) => ({
+      ...acc,
+      [record.timestamp.toISOString()]: {
+        latitude: record.latitude!,
+        longitude: record.longitude!,
+      },
+    }),
+    {} as CoordinateEphemeris
   );
 }
 
@@ -287,15 +356,35 @@ export async function getCoordinatesEphemeris(args: {
     .toISOString(true)}`;
   const message = `coordinate ephemeris 🎯 for ${symbolByBody[body]} from ${timespan}`;
 
-  console.log(`🔭 Fetching ${message}`);
+  // Check if data exists in database
+  console.log(`🔍 Querying database for ${message}`);
+  const existingRecords = await getEphemerisRecords({
+    body,
+    start,
+    end,
+    type: "coordinate",
+  });
+
+  const expectedCount = getExpectedRecordCount(start, end);
+  const hasAllValues = existingRecords.every(
+    (record) => record.latitude !== undefined && record.longitude !== undefined
+  );
+  if (existingRecords.length === expectedCount && hasAllValues) {
+    console.log(`🛢️ Found complete database data for ${message}`);
+    return convertRecordsToCoordinateEphemeris(existingRecords);
+  } else {
+    console.log(
+      `🛢️ Found incomplete database data (${existingRecords.length}/${expectedCount} records) for ${message}, fetching from API`
+    );
+  }
+
+  console.log(`🌐 Fetching ${message}`);
 
   const url = getCoordinatesEphemerisUrl({ body, start, end });
-  // console.log(`🌐 Ephemeris url:`, url.toString());
   const text = await fetchWithRetry(url.toString());
-  // console.log(`🏁 Ephemeris response:`, text);
   const ephemeris = parseCoordinatesEphemeris(text);
 
-  console.log(`🔭 Fetched ${message}`);
+  console.log(`🌐 Fetched ${message}`);
 
   console.log(`🛢️ Upserting ${message}`);
   await upsertEphemerisValues(
@@ -325,7 +414,7 @@ export async function getCoordinateEphemerisByBody(args: {
     .toISOString(true)}`;
   const message = `coordinate ephemerides 🎯 for ${bodiesString} from ${timespan}`;
 
-  console.log(`🔭 Fetching ${message}`);
+  console.log(`🔭 Getting ${message}`);
 
   const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
 
@@ -345,7 +434,7 @@ export async function getCoordinateEphemerisByBody(args: {
     }
   }
 
-  console.log(`🔭 Fetched ${message}`);
+  console.log(`🔭 Got ${message}`);
 
   return coordinateEphemerisByBody;
 }
@@ -392,6 +481,21 @@ function convertAzimuthElevationEphemerisToRecords(
   );
 }
 
+function convertRecordsToAzimuthElevationEphemeris(
+  records: EphemerisRecord[]
+): AzimuthElevationEphemeris {
+  return records.reduce(
+    (acc, record) => ({
+      ...acc,
+      [record.timestamp.toISOString()]: {
+        azimuth: record.azimuth!,
+        elevation: record.elevation!,
+      },
+    }),
+    {} as AzimuthElevationEphemeris
+  );
+}
+
 function getAzimuthElevationEphemerisUrl(args: {
   body: AzimuthElevationEphemerisBody;
   coordinates: Coordinates;
@@ -425,7 +529,29 @@ export async function getAzimuthElevationEphemeris(args: {
     .toISOString(true)}`;
   const message = `azimuth elevation ephemeris ⏫ for ${symbolByBody[body]} from ${timespan}`;
 
-  console.log(`🔭 Fetching ${message}`);
+  // Check if data exists in database
+  console.log(`🔍 Querying database for ${message}`);
+  const existingRecords = await getEphemerisRecords({
+    body,
+    start,
+    end,
+    type: "azimuthElevation",
+  });
+
+  const expectedCount = getExpectedRecordCount(start, end);
+  const hasAllValues = existingRecords.every(
+    (record) => record.azimuth !== undefined && record.elevation !== undefined
+  );
+  if (existingRecords.length === expectedCount && hasAllValues) {
+    console.log(`🛢️ Found complete database data for ${message}`);
+    return convertRecordsToAzimuthElevationEphemeris(existingRecords);
+  } else {
+    console.log(
+      `🛢️ Found incomplete database data (${existingRecords.length}/${expectedCount} records) for ${message}, fetching from API`
+    );
+  }
+
+  console.log(`🌐 Fetching ${message}`);
 
   const url = getAzimuthElevationEphemerisUrl({
     start,
@@ -436,7 +562,7 @@ export async function getAzimuthElevationEphemeris(args: {
   const text = await fetchWithRetry(url.toString());
   const ephemeris = parseAzimuthElevationEphemeris(text);
 
-  console.log(`🔭 Fetched ${message}`);
+  console.log(`🌐 Fetched ${message}`);
 
   console.log(`🛢️ Upserting ${message}`);
   await upsertEphemerisValues(
@@ -463,7 +589,7 @@ export async function getAzimuthElevationEphemerisByBody(args: {
     .toISOString(true)}`;
   const message = `azimuth elevation ephemerides ⏫ for ${bodiesString} from ${timespan}`;
 
-  console.log(`🔭 Fetching ${message}`);
+  console.log(`🔭 Getting ${message}`);
 
   const azimuthElevationEphemerisByBody = {} as Record<
     Body,
@@ -478,7 +604,7 @@ export async function getAzimuthElevationEphemerisByBody(args: {
     });
   }
 
-  console.log(`🔭 Fetched ${message}`);
+  console.log(`🔭 Got ${message}`);
 
   return azimuthElevationEphemerisByBody;
 }
@@ -523,6 +649,20 @@ function convertIlluminationEphemerisToRecords(
   );
 }
 
+function convertRecordsToIlluminationEphemeris(
+  records: EphemerisRecord[]
+): IlluminationEphemeris {
+  return records.reduce(
+    (acc, record) => ({
+      ...acc,
+      [record.timestamp.toISOString()]: {
+        illumination: record.illumination!,
+      },
+    }),
+    {} as IlluminationEphemeris
+  );
+}
+
 function getIlluminationEphemerisUrl(args: {
   body: IlluminationEphemerisBody;
   start: Date;
@@ -556,7 +696,29 @@ export async function getIlluminationEphemeris(args: {
     .toISOString(true)}`;
   const message = `illumination ephemeris 🌕 for ${symbolByBody[body]} from ${timespan}`;
 
-  console.log(`🔭 Fetching ${message}`);
+  // Check if data exists in database
+  console.log(`🔍 Querying database for ${message}`);
+  const existingRecords = await getEphemerisRecords({
+    body,
+    start,
+    end,
+    type: "illumination",
+  });
+
+  const expectedCount = getExpectedRecordCount(start, end);
+  const hasAllValues = existingRecords.every(
+    (record) => record.illumination !== undefined
+  );
+  if (existingRecords.length === expectedCount && hasAllValues) {
+    console.log(`🛢️ Found complete database data for ${message}`);
+    return convertRecordsToIlluminationEphemeris(existingRecords);
+  } else {
+    console.log(
+      `🛢️ Found incomplete database data (${existingRecords.length}/${expectedCount} records) for ${message}, fetching from API`
+    );
+  }
+
+  console.log(`🌐 Fetching ${message}`);
 
   const url = getIlluminationEphemerisUrl({
     body,
@@ -567,7 +729,7 @@ export async function getIlluminationEphemeris(args: {
   const text = await fetchWithRetry(url.toString());
   const ephemeris = parseIlluminationEphemeris(text);
 
-  console.log(`🔭 Fetched ${message}`);
+  console.log(`🌐 Fetched ${message}`);
 
   console.log(`🛢️ Upserting ${message}`);
   await upsertEphemerisValues(
@@ -593,7 +755,7 @@ export async function getIlluminationEphemerisByBody(args: {
     .tz(end, "America/New_York")
     .toISOString(true)}`;
   const message = `illumination ephemerides 🌕 for ${bodiesString} from ${timespan}`;
-  console.log(`🔭 Fetching ${message}`);
+  console.log(`🔭 Getting ${message}`);
 
   const illuminationEphemerisByBody = {} as Record<Body, IlluminationEphemeris>;
   for await (const body of bodies) {
@@ -605,7 +767,7 @@ export async function getIlluminationEphemerisByBody(args: {
     });
   }
 
-  console.log(`🔭 Fetched ${message}`);
+  console.log(`🔭 Got ${message}`);
 
   return illuminationEphemerisByBody;
 }
@@ -651,6 +813,20 @@ function convertDiameterEphemerisToRecords(
   );
 }
 
+function convertRecordsToDiameterEphemeris(
+  records: EphemerisRecord[]
+): DiameterEphemeris {
+  return records.reduce(
+    (acc, record) => ({
+      ...acc,
+      [record.timestamp.toISOString()]: {
+        diameter: record.diameter!,
+      },
+    }),
+    {} as DiameterEphemeris
+  );
+}
+
 function getDiameterEphemerisUrl(args: {
   start: Date;
   end: Date;
@@ -682,13 +858,35 @@ export async function getDiameterEphemeris(args: {
     .toISOString(true)}`;
   const message = `diameter ephemeris 🛟 for ${symbolByBody[body]} from ${timespan}`;
 
-  console.log(`🔭 Fetching ${message}`);
+  // Check if data exists in database
+  console.log(`🔍 Querying database for ${message}`);
+  const existingRecords = await getEphemerisRecords({
+    body,
+    start,
+    end,
+    type: "diameter",
+  });
+
+  const expectedCount = getExpectedRecordCount(start, end);
+  const hasAllValues = existingRecords.every(
+    (record) => record.diameter !== undefined
+  );
+  if (existingRecords.length === expectedCount && hasAllValues) {
+    console.log(`🛢️ Found complete database data for ${message}`);
+    return convertRecordsToDiameterEphemeris(existingRecords);
+  } else {
+    console.log(
+      `🛢️ Found incomplete database data (${existingRecords.length}/${expectedCount} records) for ${message}, fetching from API`
+    );
+  }
+
+  console.log(`🌐 Fetching ${message}`);
 
   const url = getDiameterEphemerisUrl({ start, end, body });
   const text = await fetchWithRetry(url.toString());
   const ephemeris = parseDiameterEphemeris(text);
 
-  console.log(`🔭 Fetched ${message}`);
+  console.log(`🌐 Fetched ${message}`);
 
   console.log(`🛢️ Upserting ${message}`);
   await upsertEphemerisValues(
@@ -713,7 +911,7 @@ export async function getDiameterEphemerisByBody(args: {
     .tz(end, "America/New_York")
     .toISOString(true)}`;
   const message = `diameter ephemerides 🛟 for ${bodiesString} from ${timespan}`;
-  console.log(`🔭 Fetching ${message}`);
+  console.log(`🔭 Getting ${message}`);
 
   const diameterEphemerisByBody = {} as Record<Body, DiameterEphemeris>;
   for await (const body of bodies) {
@@ -724,7 +922,7 @@ export async function getDiameterEphemerisByBody(args: {
     });
   }
 
-  console.log(`🔭 Fetched ${message}`);
+  console.log(`🔭 Got ${message}`);
 
   return diameterEphemerisByBody;
 }
@@ -770,6 +968,21 @@ function convertDistanceEphemerisToRecords(
   );
 }
 
+function convertRecordsToDistanceEphemeris(
+  records: EphemerisRecord[]
+): DistanceEphemeris {
+  return records.reduce(
+    (acc, record) => ({
+      ...acc,
+      [record.timestamp.toISOString()]: {
+        distance: record.distance!,
+        range: 0, // Note: range is not stored in database, using 0 as placeholder
+      },
+    }),
+    {} as DistanceEphemeris
+  );
+}
+
 function getDistanceEphemerisUrl(args: {
   body: DistanceEphemerisBody;
   end: Date;
@@ -801,13 +1014,35 @@ export async function getDistanceEphemeris(args: {
     .toISOString(true)}`;
   const message = `distance ephemeris 📏 for ${symbolByBody[body]} from ${timespan}`;
 
-  console.log(`🔭 Fetching ${message}`);
+  // Check if data exists in database
+  console.log(`🔍 Querying database for ${message}`);
+  const existingRecords = await getEphemerisRecords({
+    body,
+    start,
+    end,
+    type: "distance",
+  });
+
+  const expectedCount = getExpectedRecordCount(start, end);
+  const hasAllValues = existingRecords.every(
+    (record) => record.distance !== undefined
+  );
+  if (existingRecords.length === expectedCount && hasAllValues) {
+    console.log(`🛢️ Found complete database data for ${message}`);
+    return convertRecordsToDistanceEphemeris(existingRecords);
+  } else {
+    console.log(
+      `🛢️ Found incomplete database data (${existingRecords.length}/${expectedCount} records) for ${message}, fetching from API`
+    );
+  }
+
+  console.log(`🌐 Fetching ${message}`);
 
   const url = getDistanceEphemerisUrl({ body, end, start });
   const text = await fetchWithRetry(url.toString());
   const ephemeris = parseDistanceEphemeris(text);
 
-  console.log(`🔭 Fetched ${message}`);
+  console.log(`🌐 Fetched ${message}`);
 
   console.log(`🛢️ Upserting ${message}`);
   await upsertEphemerisValues(
@@ -833,7 +1068,7 @@ export async function getDistanceEphemerisByBody(args: {
     .toISOString(true)}`;
   const message = `distance ephemerides 📏 for ${bodiesString} from ${timespan}`;
 
-  console.log(`🔭 Fetching ${message}`);
+  console.log(`🔭 Getting ${message}`);
 
   const distanceEphemerisByBody = {} as Record<Body, DistanceEphemeris>;
   for await (const body of bodies) {
@@ -844,7 +1079,7 @@ export async function getDistanceEphemerisByBody(args: {
     });
   }
 
-  console.log(`🔭 Fetched ${message}`);
+  console.log(`🔭 Got ${message}`);
 
   return distanceEphemerisByBody;
 }

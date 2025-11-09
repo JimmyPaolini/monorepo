@@ -26,16 +26,11 @@ job:
 
 # Environment variables
 env:
-  - name: OUTPUT_DIR
-    value: "/app/data"
-
   # 🗺️ Location Configuration
   - name: LATITUDE
     value: "39.949309"
   - name: LONGITUDE
     value: "-75.17169"
-  - name: TIMEZONE
-    value: "America/New_York"
 
   # 📆 Date Range Configuration
   - name: START_DATE
