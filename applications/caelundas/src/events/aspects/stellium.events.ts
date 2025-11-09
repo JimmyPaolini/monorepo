@@ -1,197 +1,141 @@
 import _ from "lodash";
 import type { Moment } from "moment";
-import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
-import type { Body, Stellium, StelliumSymbol, AspectPhase } from "../../types";
+import type { Body, AspectPhase } from "../../types";
 import {
-  symbolByBody,
+  type AspectEdge,
+  parseAspectEvents,
+  groupAspectsByType,
+  haveAspect,
+  determineMultiBodyPhase,
+} from "./aspects.composition";
+import {
   symbolByStellium,
+  symbolByBody,
   stelliumBodies,
-  orbByAspect,
 } from "../../constants";
-import { type Event } from "../../calendar.utilities";
-import { getAngle, getCombinations } from "../../math.utilities";
-import { couldBeStellium } from "./aspects.cache";
+import type { Event } from "../../calendar.utilities";
 
-type StelliumDescription =
-  `${Capitalize<Stellium>}: ${string} (max separation: ${string}°, ${AspectPhase})`;
-
-type StelliumSummary =
-  `${StelliumSymbol} ${Capitalize<Stellium>} (${AspectPhase})`;
+// #region Types
 
 export interface StelliumEvent extends Event {
-  description: StelliumDescription;
-  summary: StelliumSummary;
-}
-
-// #region Stellium Detection
-
-/**
- * Calculate the tightness of a stellium (maximum separation between any two planets)
- */
-function calculateStelliumTightness(args: { longitudes: number[] }): number {
-  const { longitudes } = args;
-
-  if (longitudes.length < 3) {
-    return Infinity;
-  }
-
-  // Sort longitudes
-  const sorted = [...longitudes].sort((a, b) => a - b);
-
-  // Calculate maximum separation between any two consecutive planets
-  let maxSeparation = 0;
-  for (let i = 0; i < sorted.length - 1; i++) {
-    const separation = getAngle(sorted[i], sorted[i + 1]);
-    maxSeparation = Math.max(maxSeparation, separation);
-  }
-
-  return maxSeparation;
+  description: any;
+  summary: any;
 }
 
 /**
- * Detect if a group of planets forms a stellium
+ * Compose Stellium patterns from stored 2-body aspects
+ * Stellium = 4+ bodies all in conjunction with each other
  */
-function detectStellium(args: {
-  bodies: Body[];
-  longitudes: number[];
-}): boolean {
-  const { bodies, longitudes } = args;
-
-  if (bodies.length < 3 || bodies.length !== longitudes.length) {
-    return false;
-  }
-
-  const tightness = calculateStelliumTightness({ longitudes });
-
-  return tightness <= orbByAspect["conjunct"];
-}
-
-/**
- * Get the stellium type name based on the number of planets
- */
-function getStelliumType(planetCount: number): Stellium | null {
-  switch (planetCount) {
-    case 3:
-      return "triple stellium";
-    case 4:
-      return "quadruple stellium";
-    case 5:
-      return "quintuple stellium";
-    case 6:
-      return "sextuple stellium";
-    case 7:
-      return "septuple stellium";
-    case 8:
-      return "octuple stellium";
-    case 9:
-      return "nonuple stellium";
-    case 10:
-      return "decuple stellium";
-    case 11:
-      return "undecuple stellium";
-    case 12:
-      return "duodecuple stellium";
-    default:
-      return null;
-  }
-}
-
-// #endregion Stellium Detection
-
-// #region Stellium Events
-
-export function getStelliumEvents(args: {
-  coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
-  currentMinute: Moment;
-}): StelliumEvent[] {
-  const { coordinateEphemerisByBody, currentMinute } = args;
-
-  const previousMinute = currentMinute.clone().subtract(1, "minute");
-  const nextMinute = currentMinute.clone().add(1, "minute");
-
+function composeStelliums(
+  allEdges: AspectEdge[],
+  currentMinute: Moment
+): StelliumEvent[] {
   const events: StelliumEvent[] = [];
 
-  // Check all possible combinations of 3 to 12 planets
-  const maxStelliumSize = Math.min(12, stelliumBodies.length);
-  for (let size = 3; size <= maxStelliumSize; size++) {
-    const combinations = getCombinations(stelliumBodies, size);
+  // Filter to current minute for pattern detection
+  const currentTimestamp = currentMinute.toDate().getTime();
+  const edges = allEdges.filter(
+    (edge) =>
+      edge.event.start.getTime() <= currentTimestamp &&
+      edge.event.end.getTime() >= currentTimestamp
+  );
 
-    for (const bodies of combinations) {
-      const currentLongitudes = bodies.map(
-        (body) =>
-          coordinateEphemerisByBody[body][currentMinute.toISOString()].longitude
+  const aspectsByType = groupAspectsByType(edges);
+  const conjunctions = aspectsByType.get("conjunct") || [];
+
+  if (conjunctions.length < 6) return events;
+
+  // Build clusters of conjunct bodies using graph traversal
+  const clusters: Set<Body>[] = [];
+  const visited = new Set<Body>();
+
+  // Collect all unique bodies involved in conjunctions
+  const bodiesSet = new Set<Body>();
+  for (const edge of conjunctions) {
+    bodiesSet.add(edge.body1);
+    bodiesSet.add(edge.body2);
+  }
+
+  // For each unvisited body, explore its conjunction cluster
+  for (const startBody of bodiesSet) {
+    if (visited.has(startBody)) continue;
+
+    const cluster = new Set<Body>();
+    const queue: Body[] = [startBody];
+
+    // BFS to find all bodies conjunct (directly or transitively) with startBody
+    while (queue.length > 0) {
+      const current = queue.shift()!;
+      if (cluster.has(current)) continue;
+
+      cluster.add(current);
+      visited.add(current);
+
+      // Find all bodies conjunct with current
+      for (const edge of conjunctions) {
+        let other: Body | null = null;
+        if (edge.body1 === current) other = edge.body2;
+        else if (edge.body2 === current) other = edge.body1;
+
+        if (other && !cluster.has(other)) {
+          queue.push(other);
+        }
+      }
+    }
+
+    // Only keep clusters with 4+ bodies
+    if (cluster.size >= 4) {
+      clusters.push(cluster);
+    }
+  }
+
+  // For each cluster, verify it's a true stellium (all pairs are conjunct)
+  for (const cluster of clusters) {
+    const bodies = Array.from(cluster);
+
+    // Verify all pairs are in conjunction
+    let isStellium = true;
+    for (let i = 0; i < bodies.length && isStellium; i++) {
+      for (let j = i + 1; j < bodies.length && isStellium; j++) {
+        if (!haveAspect(bodies[i], bodies[j], "conjunct", edges)) {
+          isStellium = false;
+        }
+      }
+    }
+
+    if (isStellium) {
+      // Found a Stellium
+      const relatedEdges = conjunctions.filter((edge) =>
+        bodies.includes(edge.body1 as Body)
       );
 
-      // Quick pre-filter: skip if planets are too spread out to form a stellium
-      if (!couldBeStellium(currentLongitudes, orbByAspect["conjunct"])) {
-        continue;
-      }
-
-      const isStellium = detectStellium({
+      const phase = determineMultiBodyPhase(
+        allEdges,
+        currentMinute,
         bodies,
-        longitudes: currentLongitudes,
-      });
-
-      if (!isStellium) {
-        continue;
-      }
-
-      // Get previous and next longitudes for phase detection
-      const previousLongitudes = bodies.map(
-        (body) =>
-          coordinateEphemerisByBody[body][previousMinute.toISOString()]
-            .longitude
-      );
-      const nextLongitudes = bodies.map(
-        (body) =>
-          coordinateEphemerisByBody[body][nextMinute.toISOString()].longitude
+        // Check if Stellium pattern exists in given edges
+        (edgesAtTime) => {
+          // All pairs of bodies must be in conjunction
+          for (let i = 0; i < bodies.length; i++) {
+            for (let j = i + 1; j < bodies.length; j++) {
+              if (!haveAspect(bodies[i], bodies[j], "conjunct", edgesAtTime)) {
+                return false;
+              }
+            }
+          }
+          return true;
+        }
       );
 
-      const phase = getStelliumPhase({
-        currentLongitudes,
-        previousLongitudes,
-        nextLongitudes,
-      });
-
-      if (!phase) {
-        continue;
+      if (phase) {
+        events.push(
+          createStelliumEvent({
+            timestamp: currentMinute.toDate(),
+            bodies,
+            phase,
+          })
+        );
       }
-
-      const stelliumType = getStelliumType(bodies.length);
-      if (!stelliumType) {
-        continue;
-      }
-
-      const tightness = calculateStelliumTightness({
-        longitudes: currentLongitudes,
-      });
-
-      const bodiesString = bodies
-        .map((body) => `${symbolByBody[body]} ${_.startCase(body)}`)
-        .join(", ");
-
-      const summary = `${symbolByStellium[stelliumType]} ${_.startCase(
-        stelliumType
-      )} (${phase})`;
-
-      const description = `${_.startCase(
-        stelliumType
-      )}: ${bodiesString} (max separation: ${tightness.toFixed(2)}°, ${phase})`;
-
-      const event: StelliumEvent = {
-        summary: summary as StelliumSummary,
-        description: description as StelliumDescription,
-        start: currentMinute.toDate(),
-        end: currentMinute.toDate(),
-        categories: [
-          "Stellium",
-          _.startCase(stelliumType),
-          _.startCase(phase),
-          ...bodies.map(_.startCase),
-        ],
-      };
-
-      events.push(event);
     }
   }
 
@@ -199,47 +143,68 @@ export function getStelliumEvents(args: {
 }
 
 /**
- * Determine the phase of a stellium (forming, exact, or dissolving)
+ * Create a stellium event
  */
-function getStelliumPhase(args: {
-  currentLongitudes: number[];
-  previousLongitudes: number[];
-  nextLongitudes: number[];
-}): AspectPhase | null {
-  const { currentLongitudes, previousLongitudes, nextLongitudes } = args;
+function createStelliumEvent(params: {
+  timestamp: Date;
+  bodies: Body[];
+  phase: AspectPhase;
+}): StelliumEvent {
+  const { timestamp, bodies, phase } = params;
 
-  const currentTightness = calculateStelliumTightness({
-    longitudes: currentLongitudes,
-  });
-  const previousTightness = calculateStelliumTightness({
-    longitudes: previousLongitudes,
-  });
-  const nextTightness = calculateStelliumTightness({
-    longitudes: nextLongitudes,
-  });
+  const bodiesCapitalized = bodies.map((b) => _.startCase(b));
+  const bodySymbols = bodies.map((b) => symbolByBody[b]);
 
-  // If tightness is decreasing from previous to current, it's forming (getting tighter)
-  const isForming = currentTightness < previousTightness;
-  // If tightness is increasing from current to next, it's dissolving (getting looser)
-  const isDissolving = nextTightness > currentTightness;
+  const stelliumType = `${bodies.length}-body`;
+  const stelliumSymbol = (symbolByStellium as any)[stelliumType] || "✨";
 
-  if (isForming && !isDissolving) {
-    return "forming";
-  } else if (!isForming && isDissolving) {
-    return "dissolving";
-  } else if (
-    Math.abs(currentTightness - previousTightness) < 0.01 &&
-    Math.abs(currentTightness - nextTightness) < 0.01
-  ) {
-    return "exact";
-  }
+  const bodiesSorted = [...bodiesCapitalized].sort();
+  const description = `${bodiesSorted.join(", ")} stellium ${phase}`;
 
-  return null;
+  let phaseEmoji = "";
+  if (phase === "forming") phaseEmoji = "➡️ ";
+  else if (phase === "exact") phaseEmoji = "🎯 ";
+  else if (phase === "dissolving") phaseEmoji = "⬅️ ";
+
+  const summary = `${phaseEmoji}${stelliumSymbol} ${bodySymbols.join(
+    "-"
+  )} ${description}`;
+
+  const categories = [
+    "Astronomy",
+    "Astrology",
+    "Compound Aspect",
+    "Stellium",
+    _.startCase(stelliumType),
+    _.startCase(phase),
+    ...bodiesCapitalized,
+  ];
+
+  return {
+    start: timestamp,
+    end: timestamp,
+    description: description as any,
+    summary: summary as any,
+    categories,
+  };
 }
 
-// #endregion Stellium Events
+/**
+ * Main entry point: compose all stellium events from stored 2-body aspects
+ */
+export function getStelliumEvents(
+  aspectEvents: Event[],
+  currentMinute: Moment
+): StelliumEvent[] {
+  const edges = parseAspectEvents(aspectEvents);
+  const events: StelliumEvent[] = [];
 
-// #region Stellium Duration Events
+  events.push(...composeStelliums(edges, currentMinute));
+
+  return events;
+}
+
+// #region Duration Events
 
 export function getStelliumDurationEvents(events: Event[]): Event[] {
   const durationEvents: Event[] = [];
@@ -256,7 +221,7 @@ export function getStelliumDurationEvents(events: Event[]): Event[] {
       .sort();
 
     const stelliumType = event.categories.find(
-      (category) => category.includes("Stellium") && category !== "Stellium"
+      (category) => category.includes("Body") && category !== "Stellium"
     );
 
     return `${planets.join("-")}_${stelliumType}`;
@@ -281,10 +246,10 @@ export function getStelliumDurationEvents(events: Event[]): Event[] {
           durationEvents.push({
             start: currentEvent.start,
             end: potentialDissolvingEvent.start,
-            summary: currentEvent.summary.replace(/\s*\(forming\)$/i, ""),
+            summary: currentEvent.summary.replace(/^[➡️🎯⬅️]\s/, ""),
             description: currentEvent.description.replace(
-              /,\s*(forming|exact|dissolving)\)$/i,
-              ")"
+              / (forming|exact|dissolving)$/i,
+              ""
             ),
             categories: currentEvent.categories.filter(
               (c) => c !== "Forming" && c !== "Exact" && c !== "Dissolving"
@@ -299,5 +264,3 @@ export function getStelliumDurationEvents(events: Event[]): Event[] {
 
   return durationEvents;
 }
-
-// #endregion Stellium Duration Events

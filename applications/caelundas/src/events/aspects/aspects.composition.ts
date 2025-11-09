@@ -144,64 +144,60 @@ export function haveAspect(
 }
 
 /**
- * Calculate the overall tightness/phase of a multi-body aspect
- * based on the phases of its component aspects.
- * Returns null if pattern exists in all three time points without being at peak (no event needed).
+ * Determine the phase of a multi-body aspect pattern using stored aspect events.
+ * Returns the phase (forming/dissolving) based on temporal boundary detection.
+ * Returns null if pattern exists in all three time points (no event needed).
  */
 export function determineMultiBodyPhase(
-  componentAspects: AspectEdge[],
-  coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>,
+  allAspectEdges: AspectEdge[],
   currentMinute: Moment,
-  calculateTightness: (longitudes: number[]) => number,
   bodies: Body[],
-  checkPatternExists: (longitudes: number[]) => boolean
-): { phase: "forming" | "exact" | "dissolving"; tightness: number } | null {
-  // Get current longitudes for all involved bodies
-  const currentLongitudes = bodies.map(
-    (body) =>
-      coordinateEphemerisByBody[body][currentMinute.toISOString()].longitude
-  );
+  checkPatternExists: (edges: AspectEdge[]) => boolean
+): AspectPhase | null {
+  // Get edges at current, previous, and next minutes
+  const currentTimestamp = currentMinute.toDate().getTime();
+  const previousTimestamp = currentMinute
+    .clone()
+    .subtract(1, "minute")
+    .toDate()
+    .getTime();
+  const nextTimestamp = currentMinute
+    .clone()
+    .add(1, "minute")
+    .toDate()
+    .getTime();
 
-  // Check if pattern currently exists
-  const currentExists = checkPatternExists(currentLongitudes);
+  // Filter edges by timestamp and involved bodies
+  const bodySet = new Set(bodies);
+  const filterEdges = (timestamp: number) =>
+    allAspectEdges.filter(
+      (edge) =>
+        edge.event.start.getTime() <= timestamp &&
+        edge.event.end.getTime() >= timestamp &&
+        bodySet.has(edge.body1) &&
+        bodySet.has(edge.body2)
+    );
+
+  const currentEdges = filterEdges(currentTimestamp);
+  const previousEdges = filterEdges(previousTimestamp);
+  const nextEdges = filterEdges(nextTimestamp);
+
+  // Check if pattern exists at each time point
+  const currentExists = checkPatternExists(currentEdges);
   if (!currentExists) return null;
 
-  const currentTightness = calculateTightness(currentLongitudes);
+  const previousExists = checkPatternExists(previousEdges);
+  const nextExists = checkPatternExists(nextEdges);
 
-  // Get previous and next longitudes
-  const previousMinute = currentMinute.clone().subtract(1, "minute");
-  const nextMinute = currentMinute.clone().add(1, "minute");
-
-  const previousLongitudes = bodies.map(
-    (body) =>
-      coordinateEphemerisByBody[body][previousMinute.toISOString()].longitude
-  );
-
-  const nextLongitudes = bodies.map(
-    (body) =>
-      coordinateEphemerisByBody[body][nextMinute.toISOString()].longitude
-  );
-
-  // Check if pattern exists in previous and next minutes
-  const previousExists = checkPatternExists(previousLongitudes);
-  const nextExists = checkPatternExists(nextLongitudes);
-
-  const previousTightness = previousExists
-    ? calculateTightness(previousLongitudes)
-    : Infinity;
-  const nextTightness = nextExists
-    ? calculateTightness(nextLongitudes)
-    : Infinity;
-
-  // Determine phase based on existence and tightness
+  // Determine phase based on existence only
   // Note: "exact" phase removed to avoid duplicate events - only track forming/dissolving
 
   if (!previousExists && currentExists) {
-    return { phase: "forming", tightness: currentTightness };
+    return "forming";
   }
 
   if (currentExists && !nextExists) {
-    return { phase: "dissolving", tightness: currentTightness };
+    return "dissolving";
   }
 
   // Pattern exists in all three time points - no event needed

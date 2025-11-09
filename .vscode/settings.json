@@ -28,7 +28,8 @@
     "tsvector",
     "undecuple",
     "vcalendar",
-    "vevent"
+    "vevent",
+    "Yods"
   ],
   "cSpell.ignorePaths": [
     "package-lock.json",

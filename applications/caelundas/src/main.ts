@@ -40,11 +40,6 @@ import {
   getStelliumEvents,
   getStelliumDurationEvents,
 } from "./events/aspects/stellium.events";
-import { composeTripleAspectEvents } from "./events/aspects/tripleAspects.composition";
-import { composeQuadrupleAspectEvents } from "./events/aspects/quadrupleAspects.composition";
-import { composeQuintupleAspectEvents } from "./events/aspects/quintupleAspects.composition";
-import { composeSextupleAspectEvents } from "./events/aspects/sextupleAspects.composition";
-import { composeStelliumEvents } from "./events/aspects/stellium.composition";
 import {
   getRetrogradeDurationEvents,
   getRetrogradeEvents,
@@ -186,31 +181,11 @@ async function main() {
 
       /* @ts-ignore - Expression produces a union type that is too complex to represent */
       await upsertEvents([
-        ...composeTripleAspectEvents(
-          activeAspects,
-          coordinateEphemerisByBody,
-          currentMinute
-        ),
-        ...composeQuadrupleAspectEvents(
-          activeAspects,
-          coordinateEphemerisByBody,
-          currentMinute
-        ),
-        ...composeQuintupleAspectEvents(
-          activeAspects,
-          coordinateEphemerisByBody,
-          currentMinute
-        ),
-        ...composeSextupleAspectEvents(
-          activeAspects,
-          coordinateEphemerisByBody,
-          currentMinute
-        ),
-        ...composeStelliumEvents(
-          activeAspects,
-          coordinateEphemerisByBody,
-          currentMinute
-        ),
+        ...getTripleAspectEvents(activeAspects, currentMinute),
+        ...getQuadrupleAspectEvents(activeAspects, currentMinute),
+        ...getQuintupleAspectEvents(activeAspects, currentMinute),
+        ...getSextupleAspectEvents(activeAspects, currentMinute),
+        ...getStelliumEvents(activeAspects, currentMinute),
       ]);
     }
 
