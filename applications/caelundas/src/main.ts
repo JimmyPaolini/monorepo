@@ -21,6 +21,26 @@ import {
   getSpecialtyAspectDurationEvents,
 } from "./events/aspects/specialtyAspects.events";
 import {
+  getTripleAspectEvents,
+  getTripleAspectDurationEvents,
+} from "./events/aspects/tripleAspects.events";
+import {
+  getQuadrupleAspectEvents,
+  getQuadrupleAspectDurationEvents,
+} from "./events/aspects/quadrupleAspects.events";
+import {
+  getQuintupleAspectEvents,
+  getQuintupleAspectDurationEvents,
+} from "./events/aspects/quintupleAspects.events";
+import {
+  getSextupleAspectEvents,
+  getSextupleAspectDurationEvents,
+} from "./events/aspects/sextupleAspects.events";
+import {
+  getStelliumEvents,
+  getStelliumDurationEvents,
+} from "./events/aspects/stellium.events";
+import {
   getRetrogradeDurationEvents,
   getRetrogradeEvents,
 } from "./events/retrogrades/retrogrades.events";
@@ -110,6 +130,23 @@ async function main() {
           coordinateEphemerisByBody,
           currentMinute,
         }),
+        ...getTripleAspectEvents({ coordinateEphemerisByBody, currentMinute }),
+        ...getQuadrupleAspectEvents({
+          coordinateEphemerisByBody,
+          currentMinute,
+        }),
+        ...getQuintupleAspectEvents({
+          coordinateEphemerisByBody,
+          currentMinute,
+        }),
+        ...getSextupleAspectEvents({
+          coordinateEphemerisByBody,
+          currentMinute,
+        }),
+        ...getStelliumEvents({
+          coordinateEphemerisByBody,
+          currentMinute,
+        }),
         ...getRetrogradeEvents({ coordinateEphemerisByBody, currentMinute }),
         ...getPlanetaryPhaseEvents({
           coordinateEphemerisByBody,
@@ -168,6 +205,11 @@ async function main() {
     ...getMajorAspectDurationEvents(exactEvents),
     ...getMinorAspectDurationEvents(exactEvents),
     ...getSpecialtyAspectDurationEvents(exactEvents),
+    ...getTripleAspectDurationEvents(exactEvents),
+    ...getQuadrupleAspectDurationEvents(exactEvents),
+    ...getQuintupleAspectDurationEvents(exactEvents),
+    ...getSextupleAspectDurationEvents(exactEvents),
+    ...getStelliumDurationEvents(exactEvents),
     ...getMonthlyLunarCycleDurationEvents(exactEvents),
     ...getEclipseDurationEvents(exactEvents),
     ...getRetrogradeDurationEvents(exactEvents),
