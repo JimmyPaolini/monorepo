@@ -21,8 +21,9 @@ export async function getEphemerides(args: {
   coordinates: Coordinates;
   end: Date;
   start: Date;
+  timezone: string;
 }) {
-  const { coordinates, end, start } = args;
+  const { coordinates, end, start, timezone } = args;
 
   // Fetch coordinate ephemeris for all bodies
   const coordinateEphemerisBodies: CoordinateEphemerisBody[] = bodies;
@@ -56,6 +57,7 @@ export async function getEphemerides(args: {
     bodies: coordinateEphemerisBodies,
     start,
     end,
+    timezone,
   });
 
   const azimuthElevationEphemerisByBody =
@@ -64,6 +66,7 @@ export async function getEphemerides(args: {
       start,
       end,
       coordinates,
+      timezone,
     });
 
   const illuminationEphemerisByBody = await getIlluminationEphemerisByBody({
@@ -71,18 +74,21 @@ export async function getEphemerides(args: {
     start,
     end,
     coordinates,
+    timezone,
   });
 
   const diameterEphemerisByBody = await getDiameterEphemerisByBody({
     bodies: diameterEphemerisBodies,
     start,
     end,
+    timezone,
   });
 
   const distanceEphemerisByBody = await getDistanceEphemerisByBody({
     bodies: distanceEphemerisBodies,
     start,
     end,
+    timezone,
   });
 
   return {

@@ -66,7 +66,7 @@ async function main() {
       diameterEphemerisByBody,
       distanceEphemerisByBody,
       illuminationEphemerisByBody,
-    } = await getEphemerides({ coordinates, end, start });
+    } = await getEphemerides({ coordinates, end, start, timezone });
 
     // #region ⏱️ Minute Loop
     for (
