@@ -7,6 +7,7 @@ import {
   type Event,
   getCalendar,
 } from "../../calendar.utilities";
+import { pairDurationEvents } from "../../duration.utilities";
 import {
   symbolByMartianPhase,
   symbolByMercurianPhase,
@@ -42,7 +43,12 @@ import { MARGIN_MINUTES } from "../../calendar.utilities";
 import { getOutputPath } from "../../output.utilities";
 import { PLANETARY_PHASE_BODIES } from "../../constants";
 
-const categories = ["Astronomy", "Astrology", "Planetary Phases"];
+const categories = ["Astronomy", "Astrology", "Planetary Phase"];
+
+export type PlanetaryPhaseEvent =
+  | VenusianPhaseEvent
+  | MercurianPhaseEvent
+  | MartianPhaseEvent;
 
 export function getPlanetaryPhaseEvents(args: {
   currentMinute: Moment;
@@ -138,7 +144,7 @@ export function getVenusianPhaseEvent(args: {
 
   const venusianPhaseEvent: VenusianPhaseEvent = {
     start: timestamp,
-    categories: categories.concat(["Venusian"]),
+    categories: [...categories, "Venusian", phaseCapitalized],
     description,
     summary,
   };
@@ -343,7 +349,7 @@ export function getMercurianPhaseEvent(args: {
 
   const mercurianPhaseEvent: MercurianPhaseEvent = {
     start: timestamp,
-    categories: categories.concat(["Mercurian"]),
+    categories: [...categories, "Mercurian", phaseCapitalized],
     description,
     summary,
   };
@@ -547,7 +553,7 @@ export function getMartianPhaseEvent(args: {
 
   const martianPhaseEvent: MartianPhaseEvent = {
     start: timestamp,
-    categories: categories.concat(["Martian"]),
+    categories: [...categories, "Martian", phaseCapitalized],
     description,
     summary,
   };
@@ -683,12 +689,7 @@ export function getMartianPhaseEvents(args: {
   return martianPhaseEvents;
 }
 
-// #region Planetary Phases
-
-export type PlanetaryPhaseEvent =
-  | VenusianPhaseEvent
-  | MercurianPhaseEvent
-  | MartianPhaseEvent;
+// #region Planetary Phase
 
 export function writePlanetaryPhaseEvents(args: {
   end: Date;
@@ -708,7 +709,7 @@ export function writePlanetaryPhaseEvents(args: {
   const planetaryPhasesBodiesString = planetaryPhaseBodies.join(",");
   const planetaryPhasesCalendar = getCalendar({
     events: planetaryPhaseEvents,
-    name: "Planetary Phases 🌓",
+    name: "Planetary Phase 🌓",
   });
   fs.writeFileSync(
     getOutputPath(
@@ -718,4 +719,242 @@ export function writePlanetaryPhaseEvents(args: {
   );
 
   console.log(`🌓 Wrote ${message}`);
+}
+
+// #region 🕑 Duration Events
+
+export function getPlanetaryPhaseDurationEvents(events: Event[]): Event[] {
+  const durationEvents: Event[] = [];
+
+  // Filter to planetary phase events
+  const planetaryPhaseEvents = events.filter((event) =>
+    event.categories.includes("Planetary Phase")
+  );
+
+  // Process Venus phases
+  const venusianPhaseEvents = planetaryPhaseEvents.filter((event) =>
+    event.categories.includes("Venusian")
+  );
+  durationEvents.push(...getVenusianPhaseDurationEvents(venusianPhaseEvents));
+
+  // Process Mercury phases
+  const mercurianPhaseEvents = planetaryPhaseEvents.filter((event) =>
+    event.categories.includes("Mercurian")
+  );
+  durationEvents.push(...getMercurianPhaseDurationEvents(mercurianPhaseEvents));
+
+  // Process Mars phases
+  const martianPhaseEvents = planetaryPhaseEvents.filter((event) =>
+    event.categories.includes("Martian")
+  );
+  durationEvents.push(...getMartianPhaseDurationEvents(martianPhaseEvents));
+
+  return durationEvents;
+}
+
+function getVenusianPhaseDurationEvents(events: Event[]): Event[] {
+  const durationEvents: Event[] = [];
+
+  // Morning visibility: Morning Rise → Morning Set
+  const morningRiseEvents = events.filter((event) =>
+    event.categories.includes("Morning Rise")
+  );
+  const morningSetEvents = events.filter((event) =>
+    event.categories.includes("Morning Set")
+  );
+  const morningVisibilityPairs = pairDurationEvents(
+    morningRiseEvents,
+    morningSetEvents,
+    "Venus Morning Visibility"
+  );
+  for (const [beginning, ending] of morningVisibilityPairs) {
+    durationEvents.push(
+      getVenusMorningVisibilityDurationEvent(beginning, ending)
+    );
+  }
+
+  // Evening visibility: Evening Rise → Evening Set
+  const eveningRiseEvents = events.filter((event) =>
+    event.categories.includes("Evening Rise")
+  );
+  const eveningSetEvents = events.filter((event) =>
+    event.categories.includes("Evening Set")
+  );
+  const eveningVisibilityPairs = pairDurationEvents(
+    eveningRiseEvents,
+    eveningSetEvents,
+    "Venus Evening Visibility"
+  );
+  for (const [beginning, ending] of eveningVisibilityPairs) {
+    durationEvents.push(
+      getVenusEveningVisibilityDurationEvent(beginning, ending)
+    );
+  }
+
+  return durationEvents;
+}
+
+function getMercurianPhaseDurationEvents(events: Event[]): Event[] {
+  const durationEvents: Event[] = [];
+
+  // Morning visibility: Morning Rise → Morning Set
+  const morningRiseEvents = events.filter((event) =>
+    event.categories.includes("Morning Rise")
+  );
+  const morningSetEvents = events.filter((event) =>
+    event.categories.includes("Morning Set")
+  );
+  const morningVisibilityPairs = pairDurationEvents(
+    morningRiseEvents,
+    morningSetEvents,
+    "Mercury Morning Visibility"
+  );
+  for (const [beginning, ending] of morningVisibilityPairs) {
+    durationEvents.push(
+      getMercuryMorningVisibilityDurationEvent(beginning, ending)
+    );
+  }
+
+  // Evening visibility: Evening Rise → Evening Set
+  const eveningRiseEvents = events.filter((event) =>
+    event.categories.includes("Evening Rise")
+  );
+  const eveningSetEvents = events.filter((event) =>
+    event.categories.includes("Evening Set")
+  );
+  const eveningVisibilityPairs = pairDurationEvents(
+    eveningRiseEvents,
+    eveningSetEvents,
+    "Mercury Evening Visibility"
+  );
+  for (const [beginning, ending] of eveningVisibilityPairs) {
+    durationEvents.push(
+      getMercuryEveningVisibilityDurationEvent(beginning, ending)
+    );
+  }
+
+  return durationEvents;
+}
+
+function getMartianPhaseDurationEvents(events: Event[]): Event[] {
+  const durationEvents: Event[] = [];
+
+  // Morning visibility: Morning Rise → Morning Set
+  const morningRiseEvents = events.filter((event) =>
+    event.categories.includes("Morning Rise")
+  );
+  const morningSetEvents = events.filter((event) =>
+    event.categories.includes("Morning Set")
+  );
+  const morningVisibilityPairs = pairDurationEvents(
+    morningRiseEvents,
+    morningSetEvents,
+    "Mars Morning Visibility"
+  );
+  for (const [beginning, ending] of morningVisibilityPairs) {
+    durationEvents.push(
+      getMarsMorningVisibilityDurationEvent(beginning, ending)
+    );
+  }
+
+  // Evening visibility: Evening Rise → Evening Set
+  const eveningRiseEvents = events.filter((event) =>
+    event.categories.includes("Evening Rise")
+  );
+  const eveningSetEvents = events.filter((event) =>
+    event.categories.includes("Evening Set")
+  );
+  const eveningVisibilityPairs = pairDurationEvents(
+    eveningRiseEvents,
+    eveningSetEvents,
+    "Mars Evening Visibility"
+  );
+  for (const [beginning, ending] of eveningVisibilityPairs) {
+    durationEvents.push(
+      getMarsEveningVisibilityDurationEvent(beginning, ending)
+    );
+  }
+
+  return durationEvents;
+}
+
+// Venus duration event creators
+function getVenusMorningVisibilityDurationEvent(
+  beginning: Event,
+  ending: Event
+): Event {
+  return {
+    start: beginning.start,
+    end: ending.start,
+    summary: "♀️ 🌄 Venus Morning Star",
+    description: "Venus Morning Star (Morning Visibility)",
+    categories: [...categories, "Venusian", "Morning Visibility"],
+  };
+}
+
+function getVenusEveningVisibilityDurationEvent(
+  beginning: Event,
+  ending: Event
+): Event {
+  return {
+    start: beginning.start,
+    end: ending.start,
+    summary: "♀️ 🌇 Venus Evening Star",
+    description: "Venus Evening Star (Evening Visibility)",
+    categories: [...categories, "Venusian", "Evening Visibility"],
+  };
+}
+
+// Mercury duration event creators
+function getMercuryMorningVisibilityDurationEvent(
+  beginning: Event,
+  ending: Event
+): Event {
+  return {
+    start: beginning.start,
+    end: ending.start,
+    summary: "☿ 🌄 Mercury Morning Star",
+    description: "Mercury Morning Star (Morning Visibility)",
+    categories: [...categories, "Mercurian", "Morning Visibility"],
+  };
+}
+
+function getMercuryEveningVisibilityDurationEvent(
+  beginning: Event,
+  ending: Event
+): Event {
+  return {
+    start: beginning.start,
+    end: ending.start,
+    summary: "☿ 🌇 Mercury Evening Star",
+    description: "Mercury Evening Star (Evening Visibility)",
+    categories: [...categories, "Mercurian", "Evening Visibility"],
+  };
+}
+
+// Mars duration event creators
+function getMarsMorningVisibilityDurationEvent(
+  beginning: Event,
+  ending: Event
+): Event {
+  return {
+    start: beginning.start,
+    end: ending.start,
+    summary: "♂️ 🌄 Mars Morning Star",
+    description: "Mars Morning Star (Morning Visibility)",
+    categories: [...categories, "Martian", "Morning Visibility"],
+  };
+}
+
+function getMarsEveningVisibilityDurationEvent(
+  beginning: Event,
+  ending: Event
+): Event {
+  return {
+    start: beginning.start,
+    end: ending.start,
+    summary: "♂️ 🌇 Mars Evening Star",
+    description: "Mars Evening Star (Evening Visibility)",
+    categories: [...categories, "Martian", "Evening Visibility"],
+  };
 }

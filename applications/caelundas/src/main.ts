@@ -6,21 +6,47 @@ import {
   getSignIngressEvents,
   getDecanIngressEvents,
   getPeakIngressEvents,
+  getSignIngressDurationEvents,
 } from "./events/ingresses/ingresses.events";
-import { getMajorAspectEvents } from "./events/aspects/majorAspects.events";
-import { getMinorAspectEvents } from "./events/aspects/minorAspects.events";
-import { getSpecialtyAspectEvents } from "./events/aspects/specialtyAspects.events";
-import { getRetrogradeEvents } from "./events/retrogrades/retrogrades.events";
+import {
+  getMajorAspectEvents,
+  getMajorAspectDurationEvents,
+} from "./events/aspects/majorAspects.events";
+import {
+  getMinorAspectEvents,
+  getMinorAspectDurationEvents,
+} from "./events/aspects/minorAspects.events";
+import {
+  getSpecialtyAspectEvents,
+  getSpecialtyAspectDurationEvents,
+} from "./events/aspects/specialtyAspects.events";
+import {
+  getRetrogradeDurationEvents,
+  getRetrogradeEvents,
+} from "./events/retrogrades/retrogrades.events";
 import {
   getAnnualSolarCycleEvents,
   getSolarApsisEvents,
+  getSolarApsisDurationEvents,
 } from "./events/annualSolarCycle/annualSolarCycle.events";
-import { getMonthlyLunarCycleEvents } from "./events/monthlyLunarCycle/monthlyLunarCycle.events";
-import { getEclipseEvents } from "./events/eclipses/eclipses.events";
+import {
+  getMonthlyLunarCycleEvents,
+  getMonthlyLunarCycleDurationEvents,
+} from "./events/monthlyLunarCycle/monthlyLunarCycle.events";
+import {
+  getEclipseEvents,
+  getEclipseDurationEvents,
+} from "./events/eclipses/eclipses.events";
 import { getDailyLunarCycleEvents } from "./events/dailyCycles/dailyLunarCycle.events";
 import { getDailySolarCycleEvents } from "./events/dailyCycles/dailySolarCycle.events";
-import { getTwilightEvents } from "./events/twilights/twilights.events";
-import { getPlanetaryPhaseEvents } from "./events/phases/phases.events";
+import {
+  getTwilightEvents,
+  getTwilightDurationEvents,
+} from "./events/twilights/twilights.events";
+import {
+  getPlanetaryPhaseEvents,
+  getPlanetaryPhaseDurationEvents,
+} from "./events/phases/phases.events";
 import { getCalendar } from "./calendar.utilities";
 import { getOutputPath } from "./output.utilities";
 import { upsertEvents, getAllEvents } from "./database.utilities";
@@ -68,41 +94,23 @@ async function main() {
       illuminationEphemerisByBody,
     } = await getEphemerides({ coordinates, end, start, timezone });
 
-    // #region ⏱️ Minute Loop
+    // #region 🎯 Exact Events
     for (
       let currentMinute = moment.tz(thisDay, timezone);
       currentMinute.isBefore(nextDay);
       currentMinute = currentMinute.add(1, "minute")
     ) {
       await upsertEvents([
-        ...getSignIngressEvents({
-          coordinateEphemerisByBody,
-          currentMinute,
-        }),
-        ...getDecanIngressEvents({
-          coordinateEphemerisByBody,
-          currentMinute,
-        }),
-        ...getPeakIngressEvents({
-          coordinateEphemerisByBody,
-          currentMinute,
-        }),
-        ...getMajorAspectEvents({
-          coordinateEphemerisByBody,
-          currentMinute,
-        }),
-        ...getMinorAspectEvents({
-          coordinateEphemerisByBody,
-          currentMinute,
-        }),
+        ...getSignIngressEvents({ coordinateEphemerisByBody, currentMinute }),
+        ...getDecanIngressEvents({ coordinateEphemerisByBody, currentMinute }),
+        ...getPeakIngressEvents({ coordinateEphemerisByBody, currentMinute }),
+        ...getMajorAspectEvents({ coordinateEphemerisByBody, currentMinute }),
+        ...getMinorAspectEvents({ coordinateEphemerisByBody, currentMinute }),
         ...getSpecialtyAspectEvents({
           coordinateEphemerisByBody,
           currentMinute,
         }),
-        ...getRetrogradeEvents({
-          coordinateEphemerisByBody,
-          currentMinute,
-        }),
+        ...getRetrogradeEvents({ coordinateEphemerisByBody, currentMinute }),
         ...getPlanetaryPhaseEvents({
           coordinateEphemerisByBody,
           currentMinute,
@@ -111,7 +119,7 @@ async function main() {
         }),
         ...getAnnualSolarCycleEvents({
           currentMinute,
-          ephemeris: coordinateEphemerisByBody["sun"],
+          sunCoordinateEphemeris: coordinateEphemerisByBody["sun"],
         }),
         ...getSolarApsisEvents({
           currentMinute,
@@ -147,10 +155,35 @@ async function main() {
     console.log(`📅 Processed from ${timespan}`);
   }
 
+  // #region ⏱️ Duration Events
+  console.log(`🔍 Fetching exact events from the database`);
+  const exactEvents = await getAllEvents();
+  console.log(
+    `🔍 Fetched ${exactEvents.length} exact events from the database`
+  );
+
+  console.log(`⏱️ Creating duration events from exact events`);
+  const durationEvents = [
+    ...getSignIngressDurationEvents(exactEvents),
+    ...getMajorAspectDurationEvents(exactEvents),
+    ...getMinorAspectDurationEvents(exactEvents),
+    ...getSpecialtyAspectDurationEvents(exactEvents),
+    ...getMonthlyLunarCycleDurationEvents(exactEvents),
+    ...getEclipseDurationEvents(exactEvents),
+    ...getRetrogradeDurationEvents(exactEvents),
+    ...getTwilightDurationEvents(exactEvents),
+    ...getSolarApsisDurationEvents(exactEvents),
+    ...getPlanetaryPhaseDurationEvents(exactEvents),
+  ];
+  await upsertEvents(durationEvents);
+  console.log(
+    `⏱️ Created ${durationEvents.length} duration events from exact events`
+  );
+
   // #region 💾 Save Events
-  console.log(`🔍 Fetching all events from the database`);
+  // Fetch all events again including newly created duration events
   const allEvents = await getAllEvents();
-  console.log(`🔍 Fetched ${allEvents.length} events from the database`);
+  console.log(`🔍 Total events: ${allEvents.length}`);
 
   const calendar = getCalendar({
     events: allEvents,

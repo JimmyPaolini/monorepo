@@ -19,6 +19,7 @@ import { MARGIN_MINUTES } from "../../calendar.utilities";
 import { isDirect, isRetrograde } from "./retrogrades.utilities";
 import { upsertEvents } from "../../database.utilities";
 import { getOutputPath } from "../../output.utilities";
+import { pairDurationEvents } from "../../duration.utilities";
 
 type RetrogradeDescription =
   `${Capitalize<RetrogradeBody>} Stationary ${Capitalize<OrbitalDirection>}`;
@@ -89,6 +90,8 @@ export function getRetrogradeEvents(args: {
   return retrogradeEvents;
 }
 
+const categories = ["Astronomy", "Astrology", "Direction"];
+
 export function getRetrogradeEvent(args: {
   body: RetrogradeBody;
   timestamp: Date;
@@ -113,7 +116,9 @@ export function getRetrogradeEvent(args: {
 
   const retrogradeEvent: RetrogradeEvent = {
     start: timestamp,
-    categories: ["Astronomy", "Astrology", "Retrogrades"],
+    categories: categories.concat(
+      direction === "retrograde" ? ["Retrograde"] : ["Direct"]
+    ),
     summary,
     description,
   };
@@ -147,4 +152,59 @@ export function writeRetrogradeEvents(args: {
   );
 
   console.log(`↩️ Wrote ${message}`);
+}
+
+export function getRetrogradeDurationEvents(events: Event[]): Event[] {
+  const durationEvents: Event[] = [];
+
+  const retrogradeEvents = events.filter((event) =>
+    event.categories.includes("Direction")
+  ) as RetrogradeEvent[];
+
+  // Process each planet separately
+  for (const planet of RETROGRADE_BODIES) {
+    const beginnings = retrogradeEvents.filter((event) =>
+      event.description.includes(`Retrograde`)
+    );
+    const endings = retrogradeEvents.filter((event) =>
+      event.description.includes(`Direct`)
+    );
+
+    const pairs = pairDurationEvents(
+      beginnings,
+      endings,
+      `${planet} retrograde`
+    );
+
+    durationEvents.push(
+      ...pairs.map(([beginning, ending]) =>
+        getRetrogradeDurationEvent(beginning, ending, planet)
+      )
+    );
+  }
+
+  return durationEvents;
+}
+
+function getRetrogradeDurationEvent(
+  beginningEvent: RetrogradeEvent,
+  endingEvent: RetrogradeEvent,
+  planet: RetrogradeBody
+): Event {
+  const start = beginningEvent.start;
+  const end = endingEvent.start;
+
+  const planetCapitalized = planet.charAt(0).toUpperCase() + planet.slice(1);
+
+  // Extract planet symbol from beginning event summary (first non-whitespace character sequence)
+  const symbolMatch = beginningEvent.summary.match(/^(\S+)/);
+  const symbol = symbolMatch ? symbolMatch[1] : "";
+
+  return {
+    start,
+    end,
+    summary: `${symbol} ↩️ ${planetCapitalized} Retrograde`,
+    description: `${planetCapitalized} Retrograde`,
+    categories: ["Astronomy", "Astrology", "Retrogrades"],
+  };
 }

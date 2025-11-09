@@ -65,7 +65,10 @@ export function getMonthlyLunarCycleEvent(args: {
 }) {
   const { date, lunarPhase } = args;
 
-  const description = `${_.startCase(lunarPhase)} Moon`;
+  const lunarPhaseCapitalized = _.startCase(
+    lunarPhase
+  ) as Capitalize<LunarPhase>;
+  const description = `${lunarPhaseCapitalized} Moon`;
   const summary = `🌙 ${symbolByLunarPhase[lunarPhase]} ${description}`;
 
   const dateString = moment.tz(date, "America/New_York").toISOString(true);
@@ -75,7 +78,13 @@ export function getMonthlyLunarCycleEvent(args: {
     start: date,
     summary,
     description,
-    categories: ["Astronomy", "Astrology", "Monthly Lunar Cycle", "Lunar"],
+    categories: [
+      "Astronomy",
+      "Astrology",
+      "Monthly Lunar Cycle",
+      "Lunar",
+      lunarPhaseCapitalized,
+    ],
   };
   return monthlyLunarCycleEvent;
 }
@@ -104,4 +113,65 @@ export function writeMonthlyLunarCycleEvents(args: {
   );
 
   console.log(`🌒 Wrote ${message}`);
+}
+
+// #region 🕑 Duration Events
+
+export function getMonthlyLunarCycleDurationEvents(events: Event[]): Event[] {
+  const durationEvents: Event[] = [];
+
+  // Filter to monthly lunar cycle events only
+  const lunarCycleEvents = events.filter((event) =>
+    event.categories.includes("Monthly Lunar Cycle")
+  );
+
+  // Sort by time
+  const sortedEvents = _.sortBy(lunarCycleEvents, (event) =>
+    event.start.getTime()
+  );
+
+  // Pair consecutive lunar phases to create duration events
+  for (let i = 0; i < sortedEvents.length - 1; i++) {
+    const entering = sortedEvents[i];
+    const exiting = sortedEvents[i + 1];
+
+    durationEvents.push(getMonthlyLunarCycleDurationEvent(entering, exiting));
+  }
+
+  return durationEvents;
+}
+
+function getMonthlyLunarCycleDurationEvent(
+  entering: Event,
+  exiting: Event
+): Event {
+  const categories = entering.categories || [];
+
+  // Extract the lunar phase
+  const lunarPhaseCapitalized = categories.find((category) =>
+    lunarPhases.map(_.startCase).includes(category)
+  );
+
+  if (!lunarPhaseCapitalized) {
+    throw new Error(
+      `Could not extract lunar phase from categories: ${categories.join(", ")}`
+    );
+  }
+
+  const lunarPhase = lunarPhaseCapitalized.toLowerCase() as LunarPhase;
+  const lunarPhaseSymbol = symbolByLunarPhase[lunarPhase];
+
+  return {
+    start: entering.start,
+    end: exiting.start,
+    summary: `🌙 ${lunarPhaseSymbol} ${lunarPhaseCapitalized} Moon`,
+    description: `${lunarPhaseCapitalized} Moon`,
+    categories: [
+      "Astronomy",
+      "Astrology",
+      "Monthly Lunar Cycle",
+      "Lunar",
+      lunarPhaseCapitalized,
+    ],
+  };
 }

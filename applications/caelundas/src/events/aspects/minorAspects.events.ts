@@ -4,21 +4,29 @@ import type { Moment } from "moment";
 import type { EventTemplate } from "../../calendar.utilities";
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 import {
-  type MinorAspect,
-  type Body,
-  type BodySymbol,
-  type MinorAspectSymbol,
+  MinorAspect,
+  Body,
+  BodySymbol,
+  MinorAspectSymbol,
   symbolByBody,
   symbolByMinorAspect,
   MINOR_ASPECT_BODIES,
+  minorAspects,
 } from "../../constants";
 import { type Event, getCalendar } from "../../calendar.utilities";
-import { getMinorAspect, isMinorAspect } from "./aspects.utilities";
+import {
+  getMinorAspect,
+  getMinorAspectPhase,
+  type AspectPhase,
+} from "./aspects.utilities";
 import { upsertEvents } from "../../database.utilities";
 import { getOutputPath } from "../../output.utilities";
+import { pairDurationEvents } from "../../duration.utilities";
 
 type MinorAspectDescription =
-  `${Capitalize<Body>} ${MinorAspect} ${Capitalize<Body>}`;
+  | `${Capitalize<Body>} exact ${MinorAspect} ${Capitalize<Body>}`
+  | `${Capitalize<Body>} applying ${MinorAspect} ${Capitalize<Body>}`
+  | `${Capitalize<Body>} separating ${MinorAspect} ${Capitalize<Body>}`;
 type MinorAspectSummary =
   `${BodySymbol}${MinorAspectSymbol}${BodySymbol} ${string}`;
 
@@ -65,16 +73,16 @@ export function getMinorAspectEvents(args: {
       const { longitude: nextLongitudeBody2 } =
         ephemerisBody2[nextMinute.toISOString()];
 
-      if (
-        isMinorAspect({
-          currentLongitudeBody1,
-          currentLongitudeBody2,
-          previousLongitudeBody1,
-          previousLongitudeBody2,
-          nextLongitudeBody1,
-          nextLongitudeBody2,
-        })
-      ) {
+      const phase = getMinorAspectPhase({
+        currentLongitudeBody1,
+        currentLongitudeBody2,
+        previousLongitudeBody1,
+        previousLongitudeBody2,
+        nextLongitudeBody1,
+        nextLongitudeBody2,
+      });
+
+      if (phase) {
         minorAspectEvents.push(
           getMinorAspectEvent({
             timestamp: currentMinute.toDate(),
@@ -82,6 +90,7 @@ export function getMinorAspectEvents(args: {
             longitudeBody2: currentLongitudeBody2,
             body1,
             body2,
+            phase,
           })
         );
       }
@@ -97,8 +106,10 @@ export function getMinorAspectEvent(args: {
   timestamp: Date;
   body1: Body;
   body2: Body;
+  phase: AspectPhase;
 }) {
-  const { longitudeBody1, longitudeBody2, timestamp, body1, body2 } = args;
+  const { longitudeBody1, longitudeBody2, timestamp, body1, body2, phase } =
+    args;
   const minorAspect = getMinorAspect({ longitudeBody1, longitudeBody2 });
   if (!minorAspect) {
     console.error(
@@ -116,18 +127,45 @@ export function getMinorAspectEvent(args: {
     minorAspect
   ] as MinorAspectSymbol;
 
-  const description: MinorAspectDescription = `${body1Capitalized} ${minorAspect} ${body2Capitalized}`;
-  const summary =
-    // @ts-ignore: it's ok that the type is complicated
-    `${body1Symbol} ${minorAspectSymbol} ${body2Symbol} ${description}` as MinorAspectSummary;
+  let description: MinorAspectDescription;
+  let phaseEmoji: string;
+  let categories: string[];
+
+  const baseCategories = [
+    "Astronomy",
+    "Astrology",
+    "Minor Aspect",
+    body1Capitalized,
+    body2Capitalized,
+    _.startCase(minorAspect),
+  ];
+
+  if (phase === "exact") {
+    description =
+      `${body1Capitalized} exact ${minorAspect} ${body2Capitalized}` as MinorAspectDescription;
+    phaseEmoji = "🎯";
+    categories = [...baseCategories, "Exact"];
+  } else if (phase === "applying") {
+    description =
+      `${body1Capitalized} applying ${minorAspect} ${body2Capitalized}` as MinorAspectDescription;
+    phaseEmoji = "➡️";
+    categories = [...baseCategories, "Applying"];
+  } else {
+    description =
+      `${body1Capitalized} separating ${minorAspect} ${body2Capitalized}` as MinorAspectDescription;
+    phaseEmoji = "⬅️";
+    categories = [...baseCategories, "Separating"];
+  }
+
+  const summary = `${phaseEmoji} ${body1Symbol} ${minorAspectSymbol} ${body2Symbol} ${description}`;
 
   console.log(`${summary} at ${timestamp.toISOString()}`);
 
   const minorAspectEvent: MinorAspectEvent = {
     start: timestamp,
     description,
-    summary,
-    categories: ["Astronomy", "Astrology", "Minor Aspects"],
+    summary: summary as MinorAspectSummary,
+    categories,
   };
   return minorAspectEvent;
 }
@@ -150,7 +188,7 @@ export function writeMinorAspectEvents(args: {
   const minorAspectBodiesString = minorAspectBodies.join(",");
   const minorAspectsCalendar = getCalendar({
     events: minorAspectEvents,
-    name: "Minor Aspects 🖇️",
+    name: "Minor Aspect 🖇️",
   });
   fs.writeFileSync(
     getOutputPath(`minor-aspects_${minorAspectBodiesString}_${timespan}.ics`),
@@ -158,4 +196,106 @@ export function writeMinorAspectEvents(args: {
   );
 
   console.log(`🖇️ Wrote ${message}`);
+}
+
+export function getMinorAspectDurationEvents(events: Event[]): Event[] {
+  const durationEvents: Event[] = [];
+
+  // Filter to minor aspect events only
+  const minorAspectEvents = events.filter((event) =>
+    event.categories.includes("Minor Aspect")
+  ) as MinorAspectEvent[];
+
+  // Group by body pair and aspect type using categories
+  const groupedEvents = _.groupBy(minorAspectEvents, (event) => {
+    const planets = event.categories
+      .filter((category) =>
+        MINOR_ASPECT_BODIES.map(_.startCase).includes(category)
+      )
+      .sort();
+
+    const aspect = event.categories.find((category) =>
+      minorAspects.map(_.startCase).includes(category)
+    );
+
+    if (planets.length === 2 && aspect) {
+      return `${planets[0]}-${aspect}-${planets[1]}`;
+    }
+    return "";
+  });
+
+  // Process each group
+  for (const [key, groupEvents] of Object.entries(groupedEvents)) {
+    if (!key) continue;
+
+    const applyingEvents = groupEvents.filter((event) =>
+      event.categories.includes("Applying")
+    );
+    const separatingEvents = groupEvents.filter((event) =>
+      event.categories.includes("Separating")
+    );
+
+    const pairs = pairDurationEvents(
+      applyingEvents,
+      separatingEvents,
+      `minor aspect ${key}`
+    );
+
+    durationEvents.push(
+      ...pairs.map(([beginning, ending]) =>
+        getMinorAspectDurationEvent(beginning, ending)
+      )
+    );
+  }
+
+  return durationEvents;
+}
+
+function getMinorAspectDurationEvent(
+  beginning: MinorAspectEvent,
+  ending: MinorAspectEvent
+): Event {
+  const categories = beginning.categories || [];
+
+  const bodiesCapitalized = categories
+    .filter((category) =>
+      MINOR_ASPECT_BODIES.map(_.startCase).includes(category)
+    )
+    .sort();
+
+  const aspectCapitalized = categories.find((category) =>
+    minorAspects.map(_.startCase).includes(category)
+  );
+
+  if (bodiesCapitalized.length !== 2 || !aspectCapitalized) {
+    throw new Error(
+      `Could not extract aspect info from categories: ${categories.join(", ")}`
+    );
+  }
+
+  const body1Capitalized = bodiesCapitalized[0];
+  const body2Capitalized = bodiesCapitalized[1];
+  const aspect = aspectCapitalized.toLowerCase() as MinorAspect;
+
+  const body1 = body1Capitalized.toLowerCase() as Body;
+  const body2 = body2Capitalized.toLowerCase() as Body;
+
+  const body1Symbol = symbolByBody[body1] as BodySymbol;
+  const body2Symbol = symbolByBody[body2] as BodySymbol;
+  const aspectSymbol = symbolByMinorAspect[aspect] as MinorAspectSymbol;
+
+  return {
+    start: beginning.start,
+    end: ending.start,
+    summary: `${body1Symbol}${aspectSymbol}${body2Symbol} ${body1Capitalized} ${aspect} ${body2Capitalized}`,
+    description: `${body1Capitalized} ${aspect} ${body2Capitalized}`,
+    categories: [
+      "Astronomy",
+      "Astrology",
+      "Minor Aspect",
+      body1Capitalized,
+      body2Capitalized,
+      aspectCapitalized,
+    ],
+  };
 }

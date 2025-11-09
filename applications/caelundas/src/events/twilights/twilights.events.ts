@@ -6,6 +6,7 @@ import type { Event } from "../../calendar.utilities";
 import type { AzimuthElevationEphemeris } from "../../ephemeris/ephemeris.types";
 import { getCalendar } from "../../calendar.utilities";
 import { upsertEvents } from "../../database.utilities";
+import { pairDurationEvents } from "../../duration.utilities";
 import {
   isAstronomicalDawn,
   isAstronomicalDusk,
@@ -69,7 +70,7 @@ export function getAstronomicalDawnEvent(date: Date): Event {
     start: date,
     summary,
     description,
-    categories,
+    categories: [...categories, "Astronomical Dawn"],
   };
   return astronomicalDawnEvent;
 }
@@ -85,7 +86,7 @@ export function getNauticalDawnEvent(date: Date): Event {
     start: date,
     summary,
     description,
-    categories,
+    categories: [...categories, "Nautical Dawn"],
   };
   return nauticalDawnEvent;
 }
@@ -101,7 +102,7 @@ export function getCivilDawnEvent(date: Date): Event {
     start: date,
     summary,
     description,
-    categories,
+    categories: [...categories, "Civil Dawn"],
   };
   return civilDawnEvent;
 }
@@ -117,7 +118,7 @@ export function getCivilDuskEvent(date: Date): Event {
     start: date,
     summary,
     description,
-    categories,
+    categories: [...categories, "Civil Dusk"],
   };
   return civilDuskEvent;
 }
@@ -133,7 +134,7 @@ export function getNauticalDuskEvent(date: Date): Event {
     start: date,
     summary,
     description,
-    categories,
+    categories: [...categories, "Nautical Dusk"],
   };
   return nauticalDuskEvent;
 }
@@ -149,7 +150,7 @@ export function getAstronomicalDuskEvent(date: Date): Event {
     start: date,
     summary,
     description,
-    categories,
+    categories: [...categories, "Astronomical Dusk"],
   };
   return astronomicalDuskEvent;
 }
@@ -178,4 +179,175 @@ export function writeTwilightEvents(args: {
   );
 
   console.log(`🌠 Wrote ${message}`);
+}
+
+// #region 🕑 Duration Events
+
+export function getTwilightDurationEvents(events: Event[]): Event[] {
+  const durationEvents: Event[] = [];
+
+  // Filter to twilight events only
+  const twilightEvents = events.filter((event) =>
+    event.categories.includes("Twilight")
+  );
+
+  // Astronomical Twilight (morning): Astronomical Dawn → Nautical Dawn
+  const astronomicalDawnEvents = twilightEvents.filter((event) =>
+    event.categories.includes("Astronomical Dawn")
+  );
+  const nauticalDawnEvents = twilightEvents.filter((event) =>
+    event.categories.includes("Nautical Dawn")
+  );
+  const astronomicalTwilightMorningPairs = pairDurationEvents(
+    astronomicalDawnEvents,
+    nauticalDawnEvents,
+    "Astronomical Twilight (Morning)"
+  );
+  for (const [beginning, ending] of astronomicalTwilightMorningPairs) {
+    durationEvents.push(
+      getAstronomicalTwilightMorningDurationEvent(beginning, ending)
+    );
+  }
+
+  // Nautical Twilight (morning): Nautical Dawn → Civil Dawn
+  const civilDawnEvents = twilightEvents.filter((event) =>
+    event.categories.includes("Civil Dawn")
+  );
+  const nauticalTwilightMorningPairs = pairDurationEvents(
+    nauticalDawnEvents,
+    civilDawnEvents,
+    "Nautical Twilight (Morning)"
+  );
+  for (const [beginning, ending] of nauticalTwilightMorningPairs) {
+    durationEvents.push(
+      getNauticalTwilightMorningDurationEvent(beginning, ending)
+    );
+  }
+
+  // Daylight: Civil Dawn → Civil Dusk
+  const civilDuskEvents = twilightEvents.filter((event) =>
+    event.categories.includes("Civil Dusk")
+  );
+  const daylightPairs = pairDurationEvents(
+    civilDawnEvents,
+    civilDuskEvents,
+    "Daylight"
+  );
+  for (const [beginning, ending] of daylightPairs) {
+    durationEvents.push(getDaylightDurationEvent(beginning, ending));
+  }
+
+  // Nautical Twilight (evening): Civil Dusk → Nautical Dusk
+  const nauticalDuskEvents = twilightEvents.filter((event) =>
+    event.categories.includes("Nautical Dusk")
+  );
+  const nauticalTwilightEveningPairs = pairDurationEvents(
+    civilDuskEvents,
+    nauticalDuskEvents,
+    "Nautical Twilight (Evening)"
+  );
+  for (const [beginning, ending] of nauticalTwilightEveningPairs) {
+    durationEvents.push(
+      getNauticalTwilightEveningDurationEvent(beginning, ending)
+    );
+  }
+
+  // Astronomical Twilight (evening): Nautical Dusk → Astronomical Dusk
+  const astronomicalDuskEvents = twilightEvents.filter((event) =>
+    event.categories.includes("Astronomical Dusk")
+  );
+  const astronomicalTwilightEveningPairs = pairDurationEvents(
+    nauticalDuskEvents,
+    astronomicalDuskEvents,
+    "Astronomical Twilight (Evening)"
+  );
+  for (const [beginning, ending] of astronomicalTwilightEveningPairs) {
+    durationEvents.push(
+      getAstronomicalTwilightEveningDurationEvent(beginning, ending)
+    );
+  }
+
+  // Night: Astronomical Dusk → Astronomical Dawn (next day)
+  const nightPairs = pairDurationEvents(
+    astronomicalDuskEvents,
+    astronomicalDawnEvents,
+    "Night"
+  );
+  for (const [beginning, ending] of nightPairs) {
+    durationEvents.push(getNightDurationEvent(beginning, ending));
+  }
+
+  return durationEvents;
+}
+
+function getAstronomicalTwilightMorningDurationEvent(
+  beginning: Event,
+  ending: Event
+): Event {
+  return {
+    start: beginning.start,
+    end: ending.start,
+    summary: "🌠 Astronomical Twilight (Morning)",
+    description: "Astronomical Twilight (Morning)",
+    categories: [...categories, "Astronomical Twilight", "Morning"],
+  };
+}
+
+function getNauticalTwilightMorningDurationEvent(
+  beginning: Event,
+  ending: Event
+): Event {
+  return {
+    start: beginning.start,
+    end: ending.start,
+    summary: "🌅 Nautical Twilight (Morning)",
+    description: "Nautical Twilight (Morning)",
+    categories: [...categories, "Nautical Twilight", "Morning"],
+  };
+}
+
+function getDaylightDurationEvent(beginning: Event, ending: Event): Event {
+  return {
+    start: beginning.start,
+    end: ending.start,
+    summary: "☀️ Daylight",
+    description: "Daylight",
+    categories: [...categories, "Daylight"],
+  };
+}
+
+function getNauticalTwilightEveningDurationEvent(
+  beginning: Event,
+  ending: Event
+): Event {
+  return {
+    start: beginning.start,
+    end: ending.start,
+    summary: "🌉 Nautical Twilight (Evening)",
+    description: "Nautical Twilight (Evening)",
+    categories: [...categories, "Nautical Twilight", "Evening"],
+  };
+}
+
+function getAstronomicalTwilightEveningDurationEvent(
+  beginning: Event,
+  ending: Event
+): Event {
+  return {
+    start: beginning.start,
+    end: ending.start,
+    summary: "🌌 Astronomical Twilight (Evening)",
+    description: "Astronomical Twilight (Evening)",
+    categories: [...categories, "Astronomical Twilight", "Evening"],
+  };
+}
+
+function getNightDurationEvent(beginning: Event, ending: Event): Event {
+  return {
+    start: beginning.start,
+    end: ending.start,
+    summary: "🌃 Night",
+    description: "Night",
+    categories: [...categories, "Night"],
+  };
 }

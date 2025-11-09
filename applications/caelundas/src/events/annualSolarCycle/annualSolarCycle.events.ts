@@ -6,6 +6,7 @@ import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 import type { DistanceEphemeris } from "../../ephemeris/ephemeris.types";
 import { type Event, getCalendar } from "../../calendar.utilities";
 import { upsertEvents } from "../../database.utilities";
+import { pairDurationEvents } from "../../duration.utilities";
 import {
   isAutumnalEquinox,
   isBeltane,
@@ -32,10 +33,10 @@ const categories = ["Astronomy", "Astrology", "Annual Solar Cycle", "Solar"];
 // #region 📏 Annual Solar Cycle
 
 export function getAnnualSolarCycleEvents(args: {
-  ephemeris: CoordinateEphemeris;
+  sunCoordinateEphemeris: CoordinateEphemeris;
   currentMinute: Moment;
 }): Event[] {
-  const { ephemeris, currentMinute } = args;
+  const { sunCoordinateEphemeris: ephemeris, currentMinute } = args;
 
   const previousMinute = currentMinute.clone().subtract(1, "minute");
 
@@ -151,7 +152,7 @@ export function getAphelionEvent(date: Date): Event {
     start: date,
     summary,
     description,
-    categories,
+    categories: [...categories, "Aphelion"],
   };
   return aphelionEvent;
 }
@@ -167,7 +168,7 @@ export function getPerihelionEvent(date: Date): Event {
     start: date,
     summary,
     description,
-    categories,
+    categories: [...categories, "Perihelion"],
   };
   return perihelionEvent;
 }
@@ -448,4 +449,73 @@ export function writeAnnualSolarCycleEvents(args: {
   );
 
   console.log(`📏 Wrote ${message}`);
+}
+
+// #region 🕑 Duration Events
+
+export function getSolarApsisDurationEvents(events: Event[]): Event[] {
+  const durationEvents: Event[] = [];
+
+  // Filter to solar apsis events only
+  const solarApsisEvents = events.filter((event) =>
+    event.categories?.includes("Annual Solar Cycle")
+  );
+
+  // Perihelion (closest to sun, moving fastest)
+  const perihelionEvents = solarApsisEvents.filter((event) =>
+    event.categories?.includes("Perihelion")
+  );
+
+  // Aphelion (farthest from sun, moving slowest)
+  const aphelionEvents = solarApsisEvents.filter((event) =>
+    event.categories?.includes("Aphelion")
+  );
+
+  // Advancing: Aphelion → Perihelion (Earth moving closer to sun, speeding up)
+  const advancingPairs = pairDurationEvents(
+    aphelionEvents,
+    perihelionEvents,
+    "Solar Advancing"
+  );
+  for (const [beginning, ending] of advancingPairs) {
+    durationEvents.push(getSolarAdvancingDurationEvent(beginning, ending));
+  }
+
+  // Retreating: Perihelion → Aphelion (Earth moving away from sun, slowing down)
+  const retreatingPairs = pairDurationEvents(
+    perihelionEvents,
+    aphelionEvents,
+    "Solar Retreating"
+  );
+  for (const [beginning, ending] of retreatingPairs) {
+    durationEvents.push(getSolarRetreatingDurationEvent(beginning, ending));
+  }
+
+  return durationEvents;
+}
+
+function getSolarAdvancingDurationEvent(
+  beginning: Event,
+  ending: Event
+): Event {
+  return {
+    start: beginning.start,
+    end: ending.start,
+    summary: "☀️ 🔥 Solar Advancing",
+    description: "Solar Advancing (Aphelion to Perihelion)",
+    categories: [...categories, "Advancing"],
+  };
+}
+
+function getSolarRetreatingDurationEvent(
+  beginning: Event,
+  ending: Event
+): Event {
+  return {
+    start: beginning.start,
+    end: ending.start,
+    summary: "☀️ ❄️ Solar Retreating",
+    description: "Solar Retreating (Perihelion to Aphelion)",
+    categories: [...categories, "Retreating"],
+  };
 }

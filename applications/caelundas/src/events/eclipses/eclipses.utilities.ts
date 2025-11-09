@@ -1,5 +1,7 @@
 import { getAngle, isMaximum, isMinimum } from "../../math.utilities";
 
+export type EclipsePhase = "beginning" | "maximum" | "ending";
+
 export function isSolarEclipse(args: {
   currentDiameterMoon: number;
   currentDiameterSun: number;
@@ -11,7 +13,7 @@ export function isSolarEclipse(args: {
   nextLongitudeSun: number;
   previousLongitudeMoon: number;
   previousLongitudeSun: number;
-}) {
+}): EclipsePhase | null {
   const {
     currentDiameterMoon,
     currentDiameterSun,
@@ -47,10 +49,35 @@ export function isSolarEclipse(args: {
   );
 
   const currentDiameter = currentDiameterSun + currentDiameterMoon;
-  const isLatitudeAngleSmallEnough = currentLatitudeAngle < currentDiameter;
+  const isCurrentInEclipse = currentLatitudeAngle < currentDiameter;
 
-  const isSolarEclipse = isMinimumLongitudeAngle && isLatitudeAngleSmallEnough;
-  return isSolarEclipse;
+  const wasApproachingConjunction =
+    previousLongitudeAngle > currentLongitudeAngle;
+  const willBeLeavingConjunction = currentLongitudeAngle < nextLongitudeAngle;
+
+  if (isMinimumLongitudeAngle && isCurrentInEclipse) {
+    return "maximum";
+  }
+
+  if (
+    wasApproachingConjunction &&
+    isCurrentInEclipse &&
+    currentLongitudeAngle <= currentDiameter &&
+    previousLongitudeAngle > currentDiameter
+  ) {
+    return "beginning";
+  }
+
+  if (
+    willBeLeavingConjunction &&
+    isCurrentInEclipse &&
+    currentLongitudeAngle <= currentDiameter &&
+    nextLongitudeAngle > currentDiameter
+  ) {
+    return "ending";
+  }
+
+  return null;
 }
 
 export function isLunarEclipse(args: {
@@ -64,7 +91,7 @@ export function isLunarEclipse(args: {
   nextLongitudeSun: number;
   previousLongitudeMoon: number;
   previousLongitudeSun: number;
-}) {
+}): EclipsePhase | null {
   const {
     currentDiameterMoon,
     currentDiameterSun,
@@ -100,8 +127,34 @@ export function isLunarEclipse(args: {
   );
 
   const currentDiameter = currentDiameterSun + currentDiameterMoon;
-  const isLatitudeAngleSmallEnough = currentLatitudeAngle < currentDiameter;
+  const isCurrentInEclipse = currentLatitudeAngle < currentDiameter;
 
-  const isLunarEclipse = isMaximumLongitudeAngle && isLatitudeAngleSmallEnough;
-  return isLunarEclipse;
+  const wasApproachingOpposition =
+    previousLongitudeAngle < currentLongitudeAngle;
+  const willBeLeavingOpposition = currentLongitudeAngle > nextLongitudeAngle;
+
+  if (isMaximumLongitudeAngle && isCurrentInEclipse) {
+    return "maximum";
+  }
+
+  const oppositionThreshold = 180 - currentDiameter;
+  if (
+    wasApproachingOpposition &&
+    isCurrentInEclipse &&
+    previousLongitudeAngle < oppositionThreshold &&
+    currentLongitudeAngle >= oppositionThreshold
+  ) {
+    return "beginning";
+  }
+
+  if (
+    willBeLeavingOpposition &&
+    isCurrentInEclipse &&
+    nextLongitudeAngle < oppositionThreshold &&
+    currentLongitudeAngle >= oppositionThreshold
+  ) {
+    return "ending";
+  }
+
+  return null;
 }

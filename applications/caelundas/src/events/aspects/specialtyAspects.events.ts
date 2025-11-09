@@ -4,21 +4,29 @@ import type { Moment } from "moment";
 import type { EventTemplate } from "../../calendar.utilities";
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 import {
-  type Body,
-  type SpecialtyAspect,
-  type BodySymbol,
-  type SpecialtyAspectSymbol,
+  Body,
+  SpecialtyAspect,
+  BodySymbol,
+  SpecialtyAspectSymbol,
   symbolByBody,
   symbolBySpecialtyAspect,
   SPECIALTY_ASPECT_BODIES,
+  specialtyAspects,
 } from "../../constants";
 import { type Event, getCalendar } from "../../calendar.utilities";
-import { getSpecialtyAspect, isSpecialtyAspect } from "./aspects.utilities";
+import {
+  getSpecialtyAspect,
+  getSpecialtyAspectPhase,
+  type AspectPhase,
+} from "./aspects.utilities";
 import { upsertEvents } from "../../database.utilities";
 import { getOutputPath } from "../../output.utilities";
+import { pairDurationEvents } from "../../duration.utilities";
 
 type SpecialtyAspectDescription =
-  `${Capitalize<Body>} ${SpecialtyAspect} ${Capitalize<Body>}`;
+  | `${Capitalize<Body>} exact ${SpecialtyAspect} ${Capitalize<Body>}`
+  | `${Capitalize<Body>} applying ${SpecialtyAspect} ${Capitalize<Body>}`
+  | `${Capitalize<Body>} separating ${SpecialtyAspect} ${Capitalize<Body>}`;
 type SpecialtyAspectSummary =
   `${BodySymbol}${SpecialtyAspectSymbol}${BodySymbol} ${string}`;
 
@@ -65,16 +73,16 @@ export function getSpecialtyAspectEvents(args: {
       const { longitude: nextLongitudeBody2 } =
         ephemerisBody2[nextMinute.toISOString()];
 
-      if (
-        isSpecialtyAspect({
-          currentLongitudeBody1,
-          currentLongitudeBody2,
-          previousLongitudeBody1,
-          previousLongitudeBody2,
-          nextLongitudeBody1,
-          nextLongitudeBody2,
-        })
-      ) {
+      const phase = getSpecialtyAspectPhase({
+        currentLongitudeBody1,
+        currentLongitudeBody2,
+        previousLongitudeBody1,
+        previousLongitudeBody2,
+        nextLongitudeBody1,
+        nextLongitudeBody2,
+      });
+
+      if (phase) {
         specialtyAspectEvents.push(
           getSpecialtyAspectEvent({
             timestamp: currentMinute.toDate(),
@@ -82,6 +90,7 @@ export function getSpecialtyAspectEvents(args: {
             longitudeBody2: currentLongitudeBody2,
             body1,
             body2,
+            phase,
           })
         );
       }
@@ -97,8 +106,10 @@ export function getSpecialtyAspectEvent(args: {
   timestamp: Date;
   body1: Body;
   body2: Body;
+  phase: AspectPhase;
 }) {
-  const { longitudeBody1, longitudeBody2, timestamp, body1, body2 } = args;
+  const { longitudeBody1, longitudeBody2, timestamp, body1, body2, phase } =
+    args;
   const specialtyAspect = getSpecialtyAspect({
     longitudeBody1,
     longitudeBody2,
@@ -119,18 +130,45 @@ export function getSpecialtyAspectEvent(args: {
     specialtyAspect
   ] as SpecialtyAspectSymbol;
 
-  const description: SpecialtyAspectDescription = `${body1Capitalized} ${specialtyAspect} ${body2Capitalized}`;
-  const summary =
-    // @ts-ignore: it's ok that the type is complicated
-    `${body1Symbol} ${specialtyAspectSymbol} ${body2Symbol} ${description}` as SpecialtyAspectSummary;
+  let description: SpecialtyAspectDescription;
+  let phaseEmoji: string;
+  let categories: string[];
+
+  const baseCategories = [
+    "Astronomy",
+    "Astrology",
+    "Specialty Aspect",
+    body1Capitalized,
+    body2Capitalized,
+    _.startCase(specialtyAspect),
+  ];
+
+  if (phase === "exact") {
+    description =
+      `${body1Capitalized} exact ${specialtyAspect} ${body2Capitalized}` as SpecialtyAspectDescription;
+    phaseEmoji = "🎯";
+    categories = [...baseCategories, "Exact"];
+  } else if (phase === "applying") {
+    description =
+      `${body1Capitalized} applying ${specialtyAspect} ${body2Capitalized}` as SpecialtyAspectDescription;
+    phaseEmoji = "➡️";
+    categories = [...baseCategories, "Applying"];
+  } else {
+    description =
+      `${body1Capitalized} separating ${specialtyAspect} ${body2Capitalized}` as SpecialtyAspectDescription;
+    phaseEmoji = "⬅️";
+    categories = [...baseCategories, "Separating"];
+  }
+
+  const summary = `${phaseEmoji} ${body1Symbol} ${specialtyAspectSymbol} ${body2Symbol} ${description}`;
 
   console.log(`${summary} at ${timestamp.toISOString()}`);
 
   const specialtyAspectEvent: SpecialtyAspectEvent = {
     start: timestamp,
     description,
-    summary,
-    categories: ["Astronomy", "Astrology", "Specialty Aspects"],
+    summary: summary as SpecialtyAspectSummary,
+    categories,
   };
   return specialtyAspectEvent;
 }
@@ -153,7 +191,7 @@ export function writeSpecialtyAspectEvents(args: {
   const specialtyAspectBodiesString = specialtyAspectBodies.join(",");
   const specialtyAspectsCalendar = getCalendar({
     events: specialtyAspectEvents,
-    name: "Specialty Aspects 🧮",
+    name: "Specialty Aspect 🧮",
   });
   fs.writeFileSync(
     getOutputPath(
@@ -163,4 +201,106 @@ export function writeSpecialtyAspectEvents(args: {
   );
 
   console.log(`🧮 Wrote ${message}`);
+}
+
+export function getSpecialtyAspectDurationEvents(events: Event[]): Event[] {
+  const durationEvents: Event[] = [];
+
+  // Filter to specialty aspect events only
+  const specialtyAspectEvents = events.filter((event) =>
+    event.categories.includes("Specialty Aspect")
+  ) as SpecialtyAspectEvent[];
+
+  // Group by body pair and aspect type using categories
+  const groupedEvents = _.groupBy(specialtyAspectEvents, (event) => {
+    const planets = event.categories
+      .filter((category) =>
+        SPECIALTY_ASPECT_BODIES.map(_.startCase).includes(category)
+      )
+      .sort();
+
+    const aspect = event.categories.find((category) =>
+      specialtyAspects.map(_.startCase).includes(category)
+    );
+
+    if (planets.length === 2 && aspect) {
+      return `${planets[0]}-${aspect}-${planets[1]}`;
+    }
+    return "";
+  });
+
+  // Process each group
+  for (const [key, groupEvents] of Object.entries(groupedEvents)) {
+    if (!key) continue;
+
+    const applyingEvents = groupEvents.filter((event) =>
+      event.categories.includes("Applying")
+    );
+    const separatingEvents = groupEvents.filter((event) =>
+      event.categories.includes("Separating")
+    );
+
+    const pairs = pairDurationEvents(
+      applyingEvents,
+      separatingEvents,
+      `specialty aspect ${key}`
+    );
+
+    durationEvents.push(
+      ...pairs.map(([beginning, ending]) =>
+        getSpecialtyAspectDurationEvent(beginning, ending)
+      )
+    );
+  }
+
+  return durationEvents;
+}
+
+function getSpecialtyAspectDurationEvent(
+  beginning: SpecialtyAspectEvent,
+  ending: SpecialtyAspectEvent
+): Event {
+  const categories = beginning.categories || [];
+
+  const bodiesCapitalized = categories
+    .filter((category) =>
+      SPECIALTY_ASPECT_BODIES.map(_.startCase).includes(category)
+    )
+    .sort();
+
+  const aspectCapitalized = categories.find((category) =>
+    specialtyAspects.map(_.startCase).includes(category)
+  );
+
+  if (bodiesCapitalized.length !== 2 || !aspectCapitalized) {
+    throw new Error(
+      `Could not extract aspect info from categories: ${categories.join(", ")}`
+    );
+  }
+
+  const body1Capitalized = bodiesCapitalized[0];
+  const body2Capitalized = bodiesCapitalized[1];
+  const aspect = aspectCapitalized.toLowerCase() as SpecialtyAspect;
+
+  const body1 = body1Capitalized.toLowerCase() as Body;
+  const body2 = body2Capitalized.toLowerCase() as Body;
+
+  const body1Symbol = symbolByBody[body1] as BodySymbol;
+  const body2Symbol = symbolByBody[body2] as BodySymbol;
+  const aspectSymbol = symbolBySpecialtyAspect[aspect] as SpecialtyAspectSymbol;
+
+  return {
+    start: beginning.start,
+    end: ending.start,
+    summary: `${body1Symbol}${aspectSymbol}${body2Symbol} ${body1Capitalized} ${aspect} ${body2Capitalized}`,
+    description: `${body1Capitalized} ${aspect} ${body2Capitalized}`,
+    categories: [
+      "Astronomy",
+      "Astrology",
+      "Specialty Aspect",
+      body1Capitalized,
+      body2Capitalized,
+      aspectCapitalized,
+    ],
+  };
 }

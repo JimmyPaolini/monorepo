@@ -1,0 +1,34 @@
+{
+  "cSpell.words": [
+    "Hexadecan",
+    "Hexadecans",
+    "caelundas",
+    "circumfix",
+    "decan",
+    "Decans",
+    "devkit",
+    "fkey",
+    "fontsource",
+    "gtrgm",
+    "interfix",
+    "killport",
+    "lexico",
+    "multidetermines",
+    "Multivalued",
+    "nextjs",
+    "querykey",
+    "sqltools",
+    "Superkey",
+    "Swipeable",
+    "trgm",
+    "tsvector"
+  ],
+  "cSpell.ignorePaths": [
+    "package-lock.json",
+    "node_modules",
+    "vscode-extension",
+    ".git/{info,lfs,logs,refs,objects}/**",
+    ".git/{index,*refs,*HEAD}",
+    ".vscode"
+  ]
+}

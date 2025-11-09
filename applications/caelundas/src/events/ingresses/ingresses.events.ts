@@ -1,7 +1,16 @@
 import fs from "fs";
 import _ from "lodash";
 import type { Moment } from "moment";
-import type { Body, Sign, BodySymbol, SignSymbol } from "../../constants";
+import {
+  Body,
+  Sign,
+  BodySymbol,
+  SignSymbol,
+  SIGN_INGRESS_BODIES,
+  DECAN_INGRESS_BODIES,
+  PEAK_INGRESS_BODIES,
+  signs,
+} from "../../constants";
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 import {
   type Event,
@@ -15,18 +24,11 @@ import {
   isSignIngress,
   isPeakIngress,
 } from "../ingresses/ingresses.utilities";
-import {
-  symbolByBody,
-  symbolByDecan,
-  symbolBySign,
-  SIGN_INGRESS_BODIES,
-  DECAN_INGRESS_BODIES,
-  PEAK_INGRESS_BODIES,
-} from "../../constants";
+import { symbolByBody, symbolByDecan, symbolBySign } from "../../constants";
 import { upsertEvents } from "../../database.utilities";
 import { getOutputPath } from "../../output.utilities";
 
-const categories = ["Astronomy", "Astrology", "Ingresses"];
+const categories = ["Astronomy", "Astrology", "Ingress"];
 
 // #region 🪧 Signs
 
@@ -98,7 +100,7 @@ export function getSignIngressEvent(args: {
 
   const signIngressEvent: SignIngressEvent = {
     start: date,
-    categories,
+    categories: [...categories, bodyCapitalized, signCapitalized],
     description,
     summary,
   };
@@ -209,7 +211,7 @@ export function getDecanIngressEvent(args: {
 
   const decanIngressEvent: DecanIngressEvent = {
     start: date,
-    categories,
+    categories: [...categories, "Decan", bodyCapitalized, signCapitalized],
     description,
     summary,
   };
@@ -313,7 +315,7 @@ export function getPeakIngressEvent(args: {
 
   const peakIngressEvent: PeakIngressEvent = {
     start: date,
-    categories,
+    categories: [...categories, "Peak", bodyCapitalized, signCapitalized],
     description,
     summary,
   };
@@ -347,4 +349,89 @@ export function writePeakIngressEvents(args: {
   );
 
   console.log(`⛰️ Wrote ${message}`);
+}
+
+// #region 🕑 Duration Events
+
+export function getSignIngressDurationEvents(events: Event[]): Event[] {
+  const durationEvents: Event[] = [];
+
+  // Filter to sign ingress events only (exclude decan and peak)
+  const signIngressEvents = events.filter(
+    (event) =>
+      event.categories?.includes("Ingress") &&
+      !event.categories?.includes("Decan") &&
+      !event.categories?.includes("Peak")
+  ) as SignIngressEvent[];
+
+  // Group by body
+  const groupedByBody = _.groupBy(signIngressEvents, (event) => {
+    const bodyCapitalized = event.categories?.find((category) =>
+      SIGN_INGRESS_BODIES.map(_.startCase).includes(category)
+    );
+    return bodyCapitalized || "";
+  });
+
+  // Process each body
+  for (const [bodyCapitalized, bodyIngresses] of Object.entries(
+    groupedByBody
+  )) {
+    if (!bodyCapitalized) continue;
+
+    // Sort by time
+    const sortedIngresses = _.sortBy(bodyIngresses, (event) =>
+      event.start.getTime()
+    );
+
+    // Pair consecutive ingresses to create duration events
+    for (let i = 0; i < sortedIngresses.length - 1; i++) {
+      const entering = sortedIngresses[i];
+      const exiting = sortedIngresses[i + 1];
+
+      durationEvents.push(
+        getSignIngressDurationEvent(entering, exiting, bodyCapitalized)
+      );
+    }
+  }
+
+  return durationEvents;
+}
+
+function getSignIngressDurationEvent(
+  entering: SignIngressEvent,
+  exiting: SignIngressEvent,
+  bodyCapitalized: string
+): Event {
+  const categories = entering.categories || [];
+
+  // Extract the sign the body is entering
+  const signCapitalized = categories.find((category) =>
+    signs.map(_.startCase).includes(category)
+  );
+
+  if (!signCapitalized) {
+    throw new Error(
+      `Could not extract sign from categories: ${categories.join(", ")}`
+    );
+  }
+
+  const body = bodyCapitalized.toLowerCase() as Body;
+  const sign = signCapitalized.toLowerCase() as Sign;
+
+  const bodySymbol = symbolByBody[body] as BodySymbol;
+  const signSymbol = symbolBySign[sign] as SignSymbol;
+
+  return {
+    start: entering.start,
+    end: exiting.start,
+    summary: `${bodySymbol} ${signSymbol} ${bodyCapitalized} in ${signCapitalized}`,
+    description: `${bodyCapitalized} in ${signCapitalized}`,
+    categories: [
+      "Astronomy",
+      "Astrology",
+      "Ingress",
+      bodyCapitalized,
+      signCapitalized,
+    ],
+  };
 }

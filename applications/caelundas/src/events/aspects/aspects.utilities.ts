@@ -116,6 +116,8 @@ export const getSpecialtyAspect = (args: {
   return null;
 };
 
+export type AspectPhase = "applying" | "exact" | "separating";
+
 const getIsAspect = (aspects: Aspect[]) => {
   const isAspect = (args: {
     currentLongitudeBody1: number;
@@ -124,7 +126,7 @@ const getIsAspect = (aspects: Aspect[]) => {
     nextLongitudeBody2: number;
     previousLongitudeBody1: number;
     previousLongitudeBody2: number;
-  }) => {
+  }): AspectPhase | null => {
     const {
       currentLongitudeBody1,
       currentLongitudeBody2,
@@ -141,38 +143,81 @@ const getIsAspect = (aspects: Aspect[]) => {
     const currentAngle = getAngle(currentLongitudeBody1, currentLongitudeBody2);
     const nextAngle = getAngle(nextLongitudeBody1, nextLongitudeBody2);
 
-    const isAspect = aspects.some((aspect) => {
+    for (const aspect of aspects) {
       const aspectAngle = angleByAspect[aspect];
-
       const orb = orbByAspect[aspect];
-      const isOrb = Math.abs(currentAngle - aspectAngle) <= orb;
-      if (!isOrb) return false;
 
-      const previousDifference = previousAngle - aspectAngle;
-      const currentDifference = currentAngle - aspectAngle;
-      const nextDifference = nextAngle - aspectAngle;
+      const previousInOrb = Math.abs(previousAngle - aspectAngle) <= orb;
+      const currentInOrb = Math.abs(currentAngle - aspectAngle) <= orb;
+      const nextInOrb = Math.abs(nextAngle - aspectAngle) <= orb;
 
-      const isCrossing =
-        (previousDifference >= 0 && currentDifference <= 0) ||
-        (previousDifference <= 0 && currentDifference >= 0);
+      // Check for exact aspect (crossing the exact angle)
+      if (currentInOrb) {
+        const previousDifference = previousAngle - aspectAngle;
+        const currentDifference = currentAngle - aspectAngle;
+        const nextDifference = nextAngle - aspectAngle;
 
-      if (aspect === "conjunct") {
-        const isBouncing =
-          (previousDifference > currentDifference &&
-            nextDifference > currentDifference) ||
-          (previousDifference < currentDifference &&
-            nextDifference < currentDifference);
-        return isBouncing;
+        const isCrossing =
+          (previousDifference >= 0 && currentDifference <= 0) ||
+          (previousDifference <= 0 && currentDifference >= 0);
+
+        if (aspect === "conjunct") {
+          const isBouncing =
+            (previousDifference > currentDifference &&
+              nextDifference > currentDifference) ||
+            (previousDifference < currentDifference &&
+              nextDifference < currentDifference);
+          if (isBouncing) return "exact";
+        } else {
+          if (isCrossing) return "exact";
+        }
       }
 
-      return isCrossing;
-    });
-    return isAspect;
+      // Check for entering orb (applying)
+      if (!previousInOrb && currentInOrb) {
+        return "applying";
+      }
+
+      // Check for exiting orb (separating)
+      if (currentInOrb && !nextInOrb) {
+        return "separating";
+      }
+    }
+
+    return null;
   };
 
   return isAspect;
 };
 
-export const isMajorAspect = getIsAspect([...majorAspects]);
-export const isMinorAspect = getIsAspect([...minorAspects]);
-export const isSpecialtyAspect = getIsAspect([...specialtyAspects]);
+export const getMajorAspectPhase = getIsAspect([...majorAspects]);
+export const getMinorAspectPhase = getIsAspect([...minorAspects]);
+export const getSpecialtyAspectPhase = getIsAspect([...specialtyAspects]);
+
+// Backward compatibility - these now return boolean for "exact" phase only
+export const isMajorAspect = (args: {
+  currentLongitudeBody1: number;
+  currentLongitudeBody2: number;
+  nextLongitudeBody1: number;
+  nextLongitudeBody2: number;
+  previousLongitudeBody1: number;
+  previousLongitudeBody2: number;
+}) => getMajorAspectPhase(args) === "exact";
+
+export const isMinorAspect = (args: {
+  currentLongitudeBody1: number;
+  currentLongitudeBody2: number;
+  nextLongitudeBody1: number;
+  nextLongitudeBody2: number;
+  previousLongitudeBody1: number;
+  previousLongitudeBody2: number;
+}) => getMinorAspectPhase(args) === "exact";
+
+export const isSpecialtyAspect = (args: {
+  currentLongitudeBody1: number;
+  currentLongitudeBody2: number;
+  nextLongitudeBody1: number;
+  nextLongitudeBody2: number;
+  previousLongitudeBody1: number;
+  previousLongitudeBody2: number;
+}) => getSpecialtyAspectPhase(args) === "exact";
