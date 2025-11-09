@@ -1,3 +1,64 @@
+import type {
+  Sign,
+  SignSymbol,
+  Decan,
+  DecanSymbol,
+  Planet,
+  PlanetSymbol,
+  Asteroid,
+  AsteroidSymbol,
+  Comet,
+  CometSymbol,
+  Node,
+  NodeSymbol,
+  Body,
+  BodySymbol,
+  RetrogradeBody,
+  RetrogradeBodySymbol,
+  PhaseBody,
+  PhaseBodySymbol,
+  MajorAspect,
+  MajorAspectSymbol,
+  MinorAspect,
+  MinorAspectSymbol,
+  SpecialtyAspect,
+  SpecialtyAspectSymbol,
+  Aspect,
+  AspectSymbol,
+  TripleAspect,
+  TripleAspectSymbol,
+  QuadrupleAspect,
+  QuadrupleAspectSymbol,
+  QuintupleAspect,
+  QuintupleAspectSymbol,
+  SextupleAspect,
+  SextupleAspectSymbol,
+  Stellium,
+  StelliumSymbol,
+  OrbitalDirection,
+  OrbitalDirectionSymbol,
+  PlanetaryDirection,
+  PlanetaryDirectionSymbol,
+  Direction,
+  DirectionSymbol,
+  Apsis,
+  ApsisSymbol,
+  Position,
+  PositionSymbol,
+  LunarPhase,
+  LunarPhaseSymbol,
+  VenusianPhase,
+  VenusianPhaseSymbol,
+  MercurianPhase,
+  MercurianPhaseSymbol,
+  MartianPhase,
+  MartianPhaseSymbol,
+  Phase,
+  PhaseSymbol,
+  House,
+  HouseSymbol,
+} from "./types";
+
 // #region Signs 🪧
 
 export const symbolBySign = {
@@ -14,10 +75,8 @@ export const symbolBySign = {
   aquarius: "♒︎",
   pisces: "♓︎",
 } as const;
-export type Sign = keyof typeof symbolBySign;
 export const signs = Object.keys(symbolBySign) as Sign[];
-export const signSymbols = Object.values(symbolBySign);
-export type SignSymbol = (typeof signSymbols)[number];
+export const signSymbols: SignSymbol[] = Object.values(symbolBySign);
 
 // #region Decans 🔟
 
@@ -26,10 +85,8 @@ export const symbolByDecan = {
   "2": "2️⃣",
   "3": "3️⃣",
 } as const;
-export type Decan = keyof typeof symbolByDecan;
 export const decans = Object.keys(symbolByDecan) as Decan[];
-export const decanSymbols = Object.values(symbolByDecan);
-export type DecanSymbol = (typeof decanSymbols)[number];
+export const decanSymbols: DecanSymbol[] = Object.values(symbolByDecan);
 
 // #region Planets 🪐
 
@@ -45,10 +102,8 @@ export const symbolByPlanet = {
   neptune: "♆",
   pluto: "♇",
 } as const;
-export type Planet = keyof typeof symbolByPlanet;
 export const planets = Object.keys(symbolByPlanet) as Planet[];
-export const planetSymbols = Object.values(symbolByPlanet);
-export type PlanetSymbol = (typeof planetSymbols)[number];
+export const planetSymbols: PlanetSymbol[] = Object.values(symbolByPlanet);
 
 // #region Asteroids 💫
 
@@ -60,20 +115,17 @@ export const symbolByAsteroid = {
   juno: "⚵",
   vesta: "⚶",
 } as const;
-export type Asteroid = keyof typeof symbolByAsteroid;
 export const asteroids = Object.keys(symbolByAsteroid) as Asteroid[];
-export const asteroidSymbols = Object.values(symbolByAsteroid);
-export type AsteroidSymbol = (typeof asteroidSymbols)[number];
+export const asteroidSymbols: AsteroidSymbol[] =
+  Object.values(symbolByAsteroid);
 
 // #region Comets ☄️
 
 export const symbolByComet = {
   halley: "☄",
 } as const;
-export type Comet = keyof typeof symbolByComet;
 export const comets = Object.keys(symbolByComet) as Comet[];
-export const cometSymbols = Object.values(symbolByComet);
-export type CometSymbol = (typeof cometSymbols)[number];
+export const cometSymbols: CometSymbol[] = Object.values(symbolByComet);
 
 export const symbolByNode = {
   "north lunar node": "☊",
@@ -81,10 +133,8 @@ export const symbolByNode = {
   "lunar apogee": "🌚",
   "lunar perigee": "🌝",
 } as const;
-export type Node = keyof typeof symbolByNode;
 export const nodes = Object.keys(symbolByNode) as Node[];
-export const nodeSymbols = Object.values(symbolByNode);
-export type NodeSymbol = (typeof nodeSymbols)[number];
+export const nodeSymbols: NodeSymbol[] = Object.values(symbolByNode);
 
 // #region Bodies 🔭
 
@@ -94,299 +144,8 @@ export const symbolByBody = {
   ...symbolByComet,
   ...symbolByNode,
 } as const;
-export type Body = keyof typeof symbolByBody;
 export const bodies = Object.keys(symbolByBody) as Body[];
-export const bodySymbols = Object.values(symbolByBody);
-export type BodySymbol = (typeof bodySymbols)[number];
-
-// #region Retrograde Bodies ↩️
-
-export const retrogradeBodies = [
-  "mercury",
-  "venus",
-  "mars",
-  "jupiter",
-  "saturn",
-  "uranus",
-  "neptune",
-  "pluto",
-  ...asteroids,
-] as const;
-export type RetrogradeBody = (typeof retrogradeBodies)[number];
-export type RetrogradeBodySymbol = (typeof symbolByBody)[RetrogradeBody];
-export const retrogradeBodySymbols = retrogradeBodies.map(
-  (body) => symbolByBody[body]
-) as RetrogradeBodySymbol[];
-
-export const phaseBodies = ["venus", "mercury", "mars"] as const;
-export type PhaseBody = (typeof phaseBodies)[number];
-export type PhaseBodySymbol = (typeof symbolByBody)[PhaseBody];
-export const phaseBodySymbols = phaseBodies.map(
-  (body) => symbolByBody[body]
-) as PhaseBodySymbol[];
-
-// #region Body Arrays for Event Calculations 🔭
-
-export const SIGN_INGRESS_BODIES: Body[] = [
-  "sun",
-  "moon",
-  "mercury",
-  "venus",
-  "mars",
-  "jupiter",
-  "saturn",
-  "uranus",
-  "neptune",
-  "pluto",
-  "chiron",
-  "lilith",
-  "ceres",
-  "pallas",
-  "juno",
-  "vesta",
-  "halley",
-  "north lunar node",
-  "lunar apogee",
-];
-
-export const DECAN_INGRESS_BODIES: Body[] = [
-  "sun",
-  "moon",
-  "mercury",
-  "venus",
-  "mars",
-  "jupiter",
-  "saturn",
-  "uranus",
-  "neptune",
-  "pluto",
-  "chiron",
-  "lilith",
-  "ceres",
-  "pallas",
-  "juno",
-  "vesta",
-  "halley",
-  "north lunar node",
-  "lunar apogee",
-];
-
-export const PEAK_INGRESS_BODIES: Body[] = [
-  "sun",
-  "moon",
-  "mercury",
-  "venus",
-  "mars",
-  "jupiter",
-  "saturn",
-  "uranus",
-  "neptune",
-  "pluto",
-  "chiron",
-  "lilith",
-  "ceres",
-  "pallas",
-  "juno",
-  "vesta",
-  "halley",
-  "north lunar node",
-  "lunar apogee",
-];
-
-export const MAJOR_ASPECT_BODIES: Body[] = [
-  "sun",
-  "mercury",
-  "venus",
-  "mars",
-  "jupiter",
-  "saturn",
-  "uranus",
-  "neptune",
-  "pluto",
-  "chiron",
-  "lilith",
-  "ceres",
-  "pallas",
-  "juno",
-  "vesta",
-  "halley",
-  "north lunar node",
-  "lunar apogee",
-];
-
-export const MINOR_ASPECT_BODIES: Body[] = [
-  "sun",
-  "mercury",
-  "venus",
-  "mars",
-  "jupiter",
-  "saturn",
-  "uranus",
-  "neptune",
-  "pluto",
-  "chiron",
-  "lilith",
-  "ceres",
-  "pallas",
-  "juno",
-  "vesta",
-  "halley",
-  "north lunar node",
-  "lunar apogee",
-];
-
-export const SPECIALTY_ASPECT_BODIES: Body[] = [
-  "sun",
-  "mercury",
-  "venus",
-  "mars",
-  "jupiter",
-  "saturn",
-  "uranus",
-  "neptune",
-  "pluto",
-  "chiron",
-  "lilith",
-  "ceres",
-  "pallas",
-  "juno",
-  "vesta",
-  "halley",
-  "north lunar node",
-  "lunar apogee",
-];
-
-export const RETROGRADE_BODIES: RetrogradeBody[] = [
-  "mercury",
-  "venus",
-  "mars",
-  "jupiter",
-  "saturn",
-  "uranus",
-  "neptune",
-  "pluto",
-  "chiron",
-  "lilith",
-  "ceres",
-  "pallas",
-  "juno",
-  "vesta",
-];
-
-export const PLANETARY_PHASE_BODIES: Extract<
-  Body,
-  "mercury" | "venus" | "mars"
->[] = ["venus", "mercury", "mars"];
-
-export const TRIPLE_ASPECT_BODIES: Body[] = [
-  "sun",
-  "moon",
-  "mercury",
-  "venus",
-  "mars",
-  "jupiter",
-  "saturn",
-  "uranus",
-  "neptune",
-  "pluto",
-  "chiron",
-  "lilith",
-  "ceres",
-  "pallas",
-  "juno",
-  "vesta",
-  "halley",
-  "north lunar node",
-  "lunar apogee",
-];
-
-export const QUADRUPLE_ASPECT_BODIES: Body[] = [
-  "sun",
-  "moon",
-  "mercury",
-  "venus",
-  "mars",
-  "jupiter",
-  "saturn",
-  "uranus",
-  "neptune",
-  "pluto",
-  "chiron",
-  "lilith",
-  "ceres",
-  "pallas",
-  "juno",
-  "vesta",
-  "halley",
-  "north lunar node",
-  "lunar apogee",
-];
-
-export const QUINTUPLE_ASPECT_BODIES: Body[] = [
-  "sun",
-  "moon",
-  "mercury",
-  "venus",
-  "mars",
-  "jupiter",
-  "saturn",
-  "uranus",
-  "neptune",
-  "pluto",
-  "chiron",
-  "lilith",
-  "ceres",
-  "pallas",
-  "juno",
-  "vesta",
-  "halley",
-  "north lunar node",
-  "lunar apogee",
-];
-
-export const SEXTUPLE_ASPECT_BODIES: Body[] = [
-  "sun",
-  "moon",
-  "mercury",
-  "venus",
-  "mars",
-  "jupiter",
-  "saturn",
-  "uranus",
-  "neptune",
-  "pluto",
-  "chiron",
-  "lilith",
-  "ceres",
-  "pallas",
-  "juno",
-  "vesta",
-  "halley",
-  "north lunar node",
-  "lunar apogee",
-];
-
-export const STELLIUM_BODIES: Body[] = [
-  "sun",
-  "moon",
-  "mercury",
-  "venus",
-  "mars",
-  "jupiter",
-  "saturn",
-  "uranus",
-  "neptune",
-  "pluto",
-  "chiron",
-  "lilith",
-  "ceres",
-  "pallas",
-  "juno",
-  "vesta",
-  "halley",
-  "north lunar node",
-  "lunar apogee",
-];
+export const bodySymbols: BodySymbol[] = Object.values(symbolByBody);
 
 // #region Aspects 🧭
 
@@ -399,70 +158,171 @@ export const symbolByMajorAspect = {
   trine: "△",
   opposite: "☍",
 } as const;
-export type MajorAspect = keyof typeof symbolByMajorAspect;
 export const majorAspects = Object.keys(symbolByMajorAspect) as MajorAspect[];
-export const majorAspectSymbols = Object.values(symbolByMajorAspect);
-export type MajorAspectSymbol = (typeof majorAspectSymbols)[number];
+export const majorAspectSymbols: MajorAspectSymbol[] =
+  Object.values(symbolByMajorAspect);
 
-// #region Triple Aspects (3-Planet Patterns) 🔺
+// #region Minor Aspects 🖇️
+
+export const symbolByMinorAspect = {
+  semisextile: "⚺",
+  semisquare: "∠",
+  sesquiquadrate: "⚼",
+  quincunx: "⚻",
+} as const;
+export const minorAspects = Object.keys(symbolByMinorAspect) as MinorAspect[];
+export const minorAspectSymbols: MinorAspectSymbol[] =
+  Object.values(symbolByMinorAspect);
+
+// #region Specialty Aspects 🧮
+
+export const symbolBySpecialtyAspect = {
+  quintile: "⬠",
+  septile: "S",
+  decile: "⊥",
+  biquintile: "±",
+  undecile: "U",
+  novile: "N",
+  tredecile: "∓",
+} as const;
+export const specialtyAspects = Object.keys(
+  symbolBySpecialtyAspect
+) as SpecialtyAspect[];
+export const specialtyAspectSymbols: SpecialtyAspectSymbol[] = Object.values(
+  symbolBySpecialtyAspect
+);
+
+// #region Double Aspects 📐
+
+export const symbolByAspect = {
+  ...symbolByMajorAspect,
+  ...symbolByMinorAspect,
+  ...symbolBySpecialtyAspect,
+} as const;
+export const aspects = Object.keys(symbolByAspect) as Aspect[];
+export const aspectSymbols: AspectSymbol[] = Object.values(symbolByAspect);
+
+// #region Aspect Orbs 🔮
+
+export const angleByMajorAspect: Record<MajorAspect, number> = {
+  conjunct: 0,
+  sextile: 60,
+  square: 90,
+  trine: 120,
+  opposite: 180,
+};
+
+export const angleByMinorAspect: Record<MinorAspect, number> = {
+  semisextile: 30,
+  semisquare: 45,
+  sesquiquadrate: 135,
+  quincunx: 150,
+};
+
+export const angleBySpecialtyAspect: Record<SpecialtyAspect, number> = {
+  undecile: 32.72727272727273,
+  decile: 36,
+  novile: 40,
+  septile: 51.42857142857143,
+  quintile: 72,
+  tredecile: 108,
+  biquintile: 144,
+};
+
+export const angleByAspect: Record<Aspect, number> = {
+  ...angleByMajorAspect,
+  ...angleByMinorAspect,
+  ...angleBySpecialtyAspect,
+};
+
+export const orbByMajorAspect: Record<MajorAspect, number> = {
+  conjunct: 8,
+  opposite: 8,
+  trine: 6,
+  square: 6,
+  sextile: 4,
+};
+
+export const orbByMinorAspect: Record<MinorAspect, number> = {
+  semisextile: 2,
+  quincunx: 3,
+  semisquare: 2,
+  sesquiquadrate: 2,
+};
+
+export const orbBySpecialtyAspect: Record<SpecialtyAspect, number> = {
+  quintile: 2,
+  biquintile: 2,
+  septile: 1,
+  novile: 1,
+  undecile: 1,
+  decile: 1,
+  tredecile: 1,
+};
+
+export const orbByAspect: Record<Aspect, number> = {
+  ...orbByMajorAspect,
+  ...orbByMinorAspect,
+  ...orbBySpecialtyAspect,
+};
+
+// #region Triple Aspects 🔺
 
 export const symbolByTripleAspect = {
   "t-square": "⊤",
   "grand trine": "△",
   yod: "⚛",
-  "thor's hammer": "🔨",
+  hammer: "🔨",
 } as const;
-export type TripleAspect = keyof typeof symbolByTripleAspect;
 export const tripleAspects = Object.keys(
   symbolByTripleAspect
 ) as TripleAspect[];
-export const tripleAspectSymbols = Object.values(symbolByTripleAspect);
-export type TripleAspectSymbol = (typeof tripleAspectSymbols)[number];
+export const tripleAspectSymbols: TripleAspectSymbol[] =
+  Object.values(symbolByTripleAspect);
 
-// #region Quadruple Aspects (4-Planet Patterns) ✖️
+// #region Quadruple Aspects ✖️
 
 export const symbolByQuadrupleAspect = {
-  "grand cross": "✖",
+  "grand cross": "➕",
   kite: "🪁",
-  "mystic rectangle": "▭",
+  "mystic rectangle": "🚪",
   cradle: "🛏",
   boomerang: "🪃",
   butterfly: "🦋",
   hourglass: "⏳",
 } as const;
-export type QuadrupleAspect = keyof typeof symbolByQuadrupleAspect;
 export const quadrupleAspects = Object.keys(
   symbolByQuadrupleAspect
 ) as QuadrupleAspect[];
-export const quadrupleAspectSymbols = Object.values(symbolByQuadrupleAspect);
-export type QuadrupleAspectSymbol = (typeof quadrupleAspectSymbols)[number];
+export const quadrupleAspectSymbols: QuadrupleAspectSymbol[] = Object.values(
+  symbolByQuadrupleAspect
+);
 
-// #region Quintuple Aspects (5-Planet Patterns) ⭐
+// #region Quintuple Aspects ⭐
 
 export const symbolByQuintupleAspect = {
   pentagram: "⭐",
 } as const;
-export type QuintupleAspect = keyof typeof symbolByQuintupleAspect;
 export const quintupleAspects = Object.keys(
   symbolByQuintupleAspect
 ) as QuintupleAspect[];
-export const quintupleAspectSymbols = Object.values(symbolByQuintupleAspect);
-export type QuintupleAspectSymbol = (typeof quintupleAspectSymbols)[number];
+export const quintupleAspectSymbols: QuintupleAspectSymbol[] = Object.values(
+  symbolByQuintupleAspect
+);
 
-// #region Sextuple Aspects (6-Planet Patterns) 🔯
+// #region Sextuple Aspects 🔯
 
 export const symbolBySextupleAspect = {
   hexagram: "🔯",
-  "grand sextile": "✡️",
 } as const;
-export type SextupleAspect = keyof typeof symbolBySextupleAspect;
 export const sextupleAspects = Object.keys(
   symbolBySextupleAspect
 ) as SextupleAspect[];
-export const sextupleAspectSymbols = Object.values(symbolBySextupleAspect);
-export type SextupleAspectSymbol = (typeof sextupleAspectSymbols)[number];
+export const sextupleAspectSymbols: SextupleAspectSymbol[] = Object.values(
+  symbolBySextupleAspect
+);
 
-// #region Stellium (3+ Planet Conjunctions) ✨
+// #region Stellium ✨
 
 export const symbolByStellium = {
   "triple stellium": "✨",
@@ -476,53 +336,9 @@ export const symbolByStellium = {
   "undecuple stellium": "🌞",
   "duodecuple stellium": "🔥",
 } as const;
-export type Stellium = keyof typeof symbolByStellium;
 export const stelliums = Object.keys(symbolByStellium) as Stellium[];
-export const stelliumSymbols = Object.values(symbolByStellium);
-export type StelliumSymbol = (typeof stelliumSymbols)[number];
-
-// #region Minor Aspects 🖇️
-
-export const symbolByMinorAspect = {
-  semisextile: "⚺",
-  semisquare: "∠",
-  sesquiquadrate: "⚼",
-  quincunx: "⚻",
-} as const;
-export type MinorAspect = keyof typeof symbolByMinorAspect;
-export const minorAspects = Object.keys(symbolByMinorAspect) as MinorAspect[];
-export const minorAspectSymbols = Object.values(symbolByMinorAspect);
-export type MinorAspectSymbol = (typeof minorAspectSymbols)[number];
-
-// #region Specialty Aspects 🧮
-
-export const symbolBySpecialtyAspect = {
-  quintile: "⬠",
-  septile: "S",
-  decile: "⊥",
-  biquintile: "±",
-  undecile: "U",
-  novile: "N",
-  tredecile: "∓",
-} as const;
-export type SpecialtyAspect = keyof typeof symbolBySpecialtyAspect;
-export const specialtyAspects = Object.keys(
-  symbolBySpecialtyAspect
-) as SpecialtyAspect[];
-export const specialtyAspectSymbols = Object.values(symbolBySpecialtyAspect);
-export type SpecialtyAspectSymbol = (typeof specialtyAspectSymbols)[number];
-
-// #region Aspects 📐
-
-export const symbolByAspect = {
-  ...symbolByMajorAspect,
-  ...symbolByMinorAspect,
-  ...symbolBySpecialtyAspect,
-} as const;
-export type Aspect = keyof typeof symbolByAspect;
-export const aspects = Object.keys(symbolByAspect) as Aspect[];
-export const aspectSymbols = Object.values(symbolByAspect);
-export type AspectSymbol = (typeof aspectSymbols)[number];
+export const stelliumSymbols: StelliumSymbol[] =
+  Object.values(symbolByStellium);
 
 // #region Orbital Directions 🔁
 
@@ -531,12 +347,12 @@ export const symbolByOrbitalDirection = {
   direct: "↪️",
   prograde: "↪️",
 } as const;
-export type OrbitalDirection = keyof typeof symbolByOrbitalDirection;
 export const orbitalDirections = Object.keys(
   symbolByOrbitalDirection
 ) as OrbitalDirection[];
-export const orbitalDirectionSymbols = Object.values(symbolByOrbitalDirection);
-export type OrbitalDirectionSymbol = (typeof orbitalDirectionSymbols)[number];
+export const orbitalDirectionSymbols: OrbitalDirectionSymbol[] = Object.values(
+  symbolByOrbitalDirection
+);
 
 // #region Planetary Directions ⏫
 
@@ -555,15 +371,11 @@ export const symbolByPlanetaryDirection = {
   "imum coeli": "⏬",
   declination: "⏬",
 } as const;
-export type PlanetaryDirection = keyof typeof symbolByPlanetaryDirection;
 export const planetaryDirections = Object.keys(
   symbolByPlanetaryDirection
 ) as PlanetaryDirection[];
-export const planetaryDirectionSymbols = Object.values(
-  symbolByPlanetaryDirection
-);
-export type PlanetaryDirectionSymbol =
-  (typeof planetaryDirectionSymbols)[number];
+export const planetaryDirectionSymbols: PlanetaryDirectionSymbol[] =
+  Object.values(symbolByPlanetaryDirection);
 
 // #region Directions 🧭
 
@@ -571,10 +383,9 @@ export const symbolByDirection = {
   ...symbolByOrbitalDirection,
   ...symbolByPlanetaryDirection,
 };
-export type Direction = keyof typeof symbolByDirection;
 export const directions = Object.keys(symbolByDirection) as Direction[];
-export const directionSymbols = Object.values(symbolByDirection);
-export type DirectionSymbol = (typeof directionSymbols)[number];
+export const directionSymbols: DirectionSymbol[] =
+  Object.values(symbolByDirection);
 
 // #region Positions 🌐
 
@@ -586,10 +397,8 @@ export const symbolByApsis = {
   periapsis: "🔥",
   apoapsis: "❄️",
 } as const;
-export type Apsis = keyof typeof symbolByApsis;
 export const apsides = Object.keys(symbolByApsis) as Apsis[];
-export const apsisSymbols = Object.values(symbolByApsis);
-export type ApsisSymbol = (typeof apsisSymbols)[number];
+export const apsisSymbols: ApsisSymbol[] = Object.values(symbolByApsis);
 
 export const symbolByPosition = {
   ...symbolByApsis,
@@ -602,10 +411,9 @@ export const symbolByPosition = {
   "winter solstice": "☃️",
   imbolc: "🐑",
 } as const;
-export type Position = keyof typeof symbolByPosition;
 export const positions = Object.keys(symbolByPosition) as Position[];
-export const positionSymbols = Object.values(symbolByPosition);
-export type PositionSymbol = (typeof positionSymbols)[number];
+export const positionSymbols: PositionSymbol[] =
+  Object.values(symbolByPosition);
 
 // #region Phases 🌓
 
@@ -619,10 +427,9 @@ export const symbolByLunarPhase = {
   "last quarter": "🌗",
   "waning crescent": "🌘",
 } as const;
-export type LunarPhase = keyof typeof symbolByLunarPhase;
 export const lunarPhases = Object.keys(symbolByLunarPhase) as LunarPhase[];
-export const lunarPhaseSymbols = Object.values(symbolByLunarPhase);
-export type LunarPhaseSymbol = (typeof lunarPhaseSymbols)[number];
+export const lunarPhaseSymbols: LunarPhaseSymbol[] =
+  Object.values(symbolByLunarPhase);
 
 // #region Venusian Phases ♀️
 export const symbolByVenusianPhase = {
@@ -644,12 +451,12 @@ export const symbolByVenusianPhase = {
   "evening station": "🌇⏹️",
   "evening set": "🌇↧",
 } as const;
-export type VenusianPhase = keyof typeof symbolByVenusianPhase;
 export const venusianPhases = Object.keys(
   symbolByVenusianPhase
 ) as VenusianPhase[];
-export const venusianPhaseSymbols = Object.values(symbolByVenusianPhase);
-export type VenusianPhaseSymbol = (typeof venusianPhaseSymbols)[number];
+export const venusianPhaseSymbols: VenusianPhaseSymbol[] = Object.values(
+  symbolByVenusianPhase
+);
 
 // #region Mercurian Phases ☿️
 export const symbolByMercurianPhase = {
@@ -671,12 +478,12 @@ export const symbolByMercurianPhase = {
   "eastern brightest": "🔆",
   "evening set": "🌇↧",
 } as const;
-export type MercurianPhase = keyof typeof symbolByMercurianPhase;
 export const mercurianPhases = Object.keys(
   symbolByMercurianPhase
 ) as MercurianPhase[];
-export const mercurianPhaseSymbols = Object.values(symbolByMercurianPhase);
-export type MercurianPhaseSymbol = (typeof mercurianPhaseSymbols)[number];
+export const mercurianPhaseSymbols: MercurianPhaseSymbol[] = Object.values(
+  symbolByMercurianPhase
+);
 
 // #region Martian Phases ♂️
 export const symbolByMartianPhase = {
@@ -700,12 +507,11 @@ export const symbolByMartianPhase = {
   "evening set": "🌇↧",
   "evening last": "🌇🌘",
 } as const;
-export type MartianPhase = keyof typeof symbolByMartianPhase;
 export const martianPhases = Object.keys(
   symbolByMartianPhase
 ) as MartianPhase[];
-export const martianPhaseSymbols = Object.values(symbolByMartianPhase);
-export type MartianPhaseSymbol = (typeof martianPhaseSymbols)[number];
+export const martianPhaseSymbols: MartianPhaseSymbol[] =
+  Object.values(symbolByMartianPhase);
 
 export const symbolByPhase = {
   ...symbolByLunarPhase,
@@ -713,10 +519,8 @@ export const symbolByPhase = {
   ...symbolByMercurianPhase,
   ...symbolByMartianPhase,
 } as const;
-export type Phase = keyof typeof symbolByPhase;
 export const phases = Object.keys(symbolByPhase) as Phase[];
-export const phaseSymbols = Object.values(symbolByPhase);
-export type PhaseSymbol = (typeof phaseSymbols)[number];
+export const phaseSymbols: PhaseSymbol[] = Object.values(symbolByPhase);
 
 // #region Houses 🏠
 
@@ -734,7 +538,268 @@ export const symbolByHouse = {
   eleventh: "11",
   twelfth: "12",
 } as const;
-export type House = keyof typeof symbolByHouse;
 export const houses = Object.keys(symbolByHouse) as House[];
-export const houseSymbols = Object.values(symbolByHouse);
-export type HouseSymbol = (typeof houseSymbols)[number];
+export const houseSymbols: HouseSymbol[] = Object.values(symbolByHouse);
+
+// #region Event Phase Types 🔄
+
+export const aspectPhases = ["forming", "exact", "dissolving"] as const;
+
+export const eclipsePhases = ["beginning", "maximum", "ending"] as const;
+
+// #region Body Arrays 🔭
+
+export const signIngressBodies = [
+  "sun",
+  "moon",
+  "mercury",
+  "venus",
+  "mars",
+  "jupiter",
+  "saturn",
+  "uranus",
+  "neptune",
+  "pluto",
+  "chiron",
+  "lilith",
+  "ceres",
+  "pallas",
+  "juno",
+  "vesta",
+  "halley",
+  "north lunar node",
+  "lunar apogee",
+] as Body[];
+
+export const decanIngressBodies = [
+  "sun",
+  "moon",
+  "mercury",
+  "venus",
+  "mars",
+  "jupiter",
+  "saturn",
+  "uranus",
+  "neptune",
+  "pluto",
+  "chiron",
+  "lilith",
+  "ceres",
+  "pallas",
+  "juno",
+  "vesta",
+  "halley",
+  "north lunar node",
+  "lunar apogee",
+] as Body[];
+
+export const peakIngressBodies = [
+  "sun",
+  "moon",
+  "mercury",
+  "venus",
+  "mars",
+  "jupiter",
+  "saturn",
+  "uranus",
+  "neptune",
+  "pluto",
+  "chiron",
+  "lilith",
+  "ceres",
+  "pallas",
+  "juno",
+  "vesta",
+  "halley",
+  "north lunar node",
+  "lunar apogee",
+] as Body[];
+
+export const majorAspectBodies = [
+  "sun",
+  "mercury",
+  "venus",
+  "mars",
+  "jupiter",
+  "saturn",
+  "uranus",
+  "neptune",
+  "pluto",
+  "chiron",
+  "lilith",
+  "ceres",
+  "pallas",
+  "juno",
+  "vesta",
+  "halley",
+  "north lunar node",
+  "lunar apogee",
+] as Body[];
+
+export const minorAspectBodies = [
+  "sun",
+  "mercury",
+  "venus",
+  "mars",
+  "jupiter",
+  "saturn",
+  "uranus",
+  "neptune",
+  "pluto",
+  "chiron",
+  "lilith",
+  "ceres",
+  "pallas",
+  "juno",
+  "vesta",
+  "halley",
+  "north lunar node",
+  "lunar apogee",
+] as Body[];
+
+export const specialtyAspectBodies = [
+  "sun",
+  "mercury",
+  "venus",
+  "mars",
+  "jupiter",
+  "saturn",
+  "uranus",
+  "neptune",
+  "pluto",
+  "chiron",
+  "lilith",
+  "ceres",
+  "pallas",
+  "juno",
+  "vesta",
+  "halley",
+  "north lunar node",
+  "lunar apogee",
+] as Body[];
+
+export const planetaryPhaseBodies = ["venus", "mercury", "mars"] as PhaseBody[];
+
+export const tripleAspectBodies = [
+  "sun",
+  "moon",
+  "mercury",
+  "venus",
+  "mars",
+  "jupiter",
+  "saturn",
+  "uranus",
+  "neptune",
+  "pluto",
+  "chiron",
+  "lilith",
+  "ceres",
+  "pallas",
+  "juno",
+  "vesta",
+  "halley",
+  "north lunar node",
+  "lunar apogee",
+] as Body[];
+
+export const quadrupleAspectBodies = [
+  "sun",
+  "moon",
+  "mercury",
+  "venus",
+  "mars",
+  "jupiter",
+  "saturn",
+  "uranus",
+  "neptune",
+  "pluto",
+  "chiron",
+  "lilith",
+  "ceres",
+  "pallas",
+  "juno",
+  "vesta",
+  "halley",
+  "north lunar node",
+  "lunar apogee",
+] as Body[];
+
+export const quintupleAspectBodies = [
+  "sun",
+  "moon",
+  "mercury",
+  "venus",
+  "mars",
+  "jupiter",
+  "saturn",
+  "uranus",
+  "neptune",
+  "pluto",
+  "chiron",
+  "lilith",
+  "ceres",
+  "pallas",
+  "juno",
+  "vesta",
+  "halley",
+  "north lunar node",
+  "lunar apogee",
+] as Body[];
+
+export const sextupleAspectBodies = [
+  "sun",
+  "moon",
+  "mercury",
+  "venus",
+  "mars",
+  "jupiter",
+  "saturn",
+  "uranus",
+  "neptune",
+  "pluto",
+  "chiron",
+  "lilith",
+  "ceres",
+  "pallas",
+  "juno",
+  "vesta",
+  "halley",
+  "north lunar node",
+  "lunar apogee",
+] as Body[];
+
+export const stelliumBodies = [
+  "sun",
+  "moon",
+  "mercury",
+  "venus",
+  "mars",
+  "jupiter",
+  "saturn",
+  "uranus",
+  "neptune",
+  "pluto",
+  "chiron",
+  "lilith",
+  "ceres",
+  "pallas",
+  "juno",
+  "vesta",
+  "halley",
+  "north lunar node",
+  "lunar apogee",
+] as Body[];
+
+export const retrogradeBodies = [
+  "mercury",
+  "venus",
+  "mars",
+  "jupiter",
+  "saturn",
+  "uranus",
+  "neptune",
+  "pluto",
+  ...asteroids,
+] as const;
+
+export const phaseBodies = ["venus", "mercury", "mars"] as const;

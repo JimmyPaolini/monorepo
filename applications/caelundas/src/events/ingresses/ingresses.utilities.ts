@@ -1,4 +1,4 @@
-import type { Sign } from "../../constants";
+import type { Sign } from "../../types";
 
 export const degreeRangeBySign: Record<Sign, { min: number; max: number }> = {
   aries: { min: 0, max: 30 },

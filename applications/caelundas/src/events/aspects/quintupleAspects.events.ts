@@ -3,26 +3,32 @@ import _ from "lodash";
 import type { Moment } from "moment";
 import type { EventTemplate } from "../../calendar.utilities";
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
-import {
+import type {
   Body,
   BodySymbol,
   QuintupleAspect,
   QuintupleAspectSymbol,
+  AspectPhase,
+} from "../../types";
+import {
   symbolByBody,
   symbolByQuintupleAspect,
-  QUINTUPLE_ASPECT_BODIES,
+  quintupleAspectBodies,
 } from "../../constants";
 import { type Event, getCalendar } from "../../calendar.utilities";
 import { isAspect } from "./aspects.utilities";
-import { getAngle } from "../../math.utilities";
+import { getAngle, getCombinations } from "../../math.utilities";
 import { upsertEvents } from "../../database.utilities";
 import { getOutputPath } from "../../output.utilities";
+import { couldBePentagram } from "./aspects.cache";
 
-export type QuintupleAspectPhase = "forming" | "exact" | "dissolving";
+type QuintupleAspectDescription =
+  /* @ts-ignore - Expression produces a union type that is too complex to represent */
+  `${Capitalize<Body>}, ${Capitalize<Body>}, ${Capitalize<Body>}, ${Capitalize<Body>}, ${Capitalize<Body>} ${QuintupleAspect} ${AspectPhase}`;
 
-type QuintupleAspectDescription = string;
-
-type QuintupleAspectSummary = string;
+type QuintupleAspectSummary =
+  /* @ts-ignore - Expression produces a union type that is too complex to represent */
+  `${string}${QuintupleAspectSymbol} ${BodySymbol}-${BodySymbol}-${BodySymbol}-${BodySymbol}-${BodySymbol} ${QuintupleAspectDescription}`;
 
 export interface QuintupleAspectEventTemplate extends EventTemplate {
   description: QuintupleAspectDescription;
@@ -102,17 +108,9 @@ function detectPentagram(args: {
 
   // Check if all pairs have quintile or biquintile aspects
   return pairs.every(
-    ([lon1, lon2]) =>
-      isAspect({
-        longitudeBody1: lon1,
-        longitudeBody2: lon2,
-        aspect: "quintile",
-      }) ||
-      isAspect({
-        longitudeBody1: lon1,
-        longitudeBody2: lon2,
-        aspect: "biquintile",
-      })
+    ([longitudeBody1, longitudeBody2]) =>
+      isAspect({ longitudeBody1, longitudeBody2, aspect: "quintile" }) ||
+      isAspect({ longitudeBody1, longitudeBody2, aspect: "biquintile" })
   );
 }
 
@@ -154,7 +152,6 @@ export function getQuintupleAspectEvents(args: {
   currentMinute: Moment;
 }) {
   const { coordinateEphemerisByBody, currentMinute } = args;
-  const quintupleAspectBodies = QUINTUPLE_ASPECT_BODIES;
 
   const previousMinute = currentMinute.clone().subtract(1, "minute");
   const nextMinute = currentMinute.clone().add(1, "minute");
@@ -162,121 +159,122 @@ export function getQuintupleAspectEvents(args: {
   const quintupleAspectEvents: QuintupleAspectEvent[] = [];
 
   // Check all combinations of 5 bodies: C(10,5) = 252 combinations
-  for (let i = 0; i < quintupleAspectBodies.length; i++) {
-    for (let j = i + 1; j < quintupleAspectBodies.length; j++) {
-      for (let k = j + 1; k < quintupleAspectBodies.length; k++) {
-        for (let l = k + 1; l < quintupleAspectBodies.length; l++) {
-          for (let m = l + 1; m < quintupleAspectBodies.length; m++) {
-            const body1 = quintupleAspectBodies[i];
-            const body2 = quintupleAspectBodies[j];
-            const body3 = quintupleAspectBodies[k];
-            const body4 = quintupleAspectBodies[l];
-            const body5 = quintupleAspectBodies[m];
+  const combinations = getCombinations(quintupleAspectBodies, 5);
 
-            const ephemerisBody1 = coordinateEphemerisByBody[body1];
-            const ephemerisBody2 = coordinateEphemerisByBody[body2];
-            const ephemerisBody3 = coordinateEphemerisByBody[body3];
-            const ephemerisBody4 = coordinateEphemerisByBody[body4];
-            const ephemerisBody5 = coordinateEphemerisByBody[body5];
+  for (const [body1, body2, body3, body4, body5] of combinations) {
+    const ephemerisBody1 = coordinateEphemerisByBody[body1];
+    const ephemerisBody2 = coordinateEphemerisByBody[body2];
+    const ephemerisBody3 = coordinateEphemerisByBody[body3];
+    const ephemerisBody4 = coordinateEphemerisByBody[body4];
+    const ephemerisBody5 = coordinateEphemerisByBody[body5];
 
-            const { longitude: currentLongitude1 } =
-              ephemerisBody1[currentMinute.toISOString()];
-            const { longitude: currentLongitude2 } =
-              ephemerisBody2[currentMinute.toISOString()];
-            const { longitude: currentLongitude3 } =
-              ephemerisBody3[currentMinute.toISOString()];
-            const { longitude: currentLongitude4 } =
-              ephemerisBody4[currentMinute.toISOString()];
-            const { longitude: currentLongitude5 } =
-              ephemerisBody5[currentMinute.toISOString()];
+    const { longitude: currentLongitude1 } =
+      ephemerisBody1[currentMinute.toISOString()];
+    const { longitude: currentLongitude2 } =
+      ephemerisBody2[currentMinute.toISOString()];
+    const { longitude: currentLongitude3 } =
+      ephemerisBody3[currentMinute.toISOString()];
+    const { longitude: currentLongitude4 } =
+      ephemerisBody4[currentMinute.toISOString()];
+    const { longitude: currentLongitude5 } =
+      ephemerisBody5[currentMinute.toISOString()];
 
-            const { longitude: previousLongitude1 } =
-              ephemerisBody1[previousMinute.toISOString()];
-            const { longitude: previousLongitude2 } =
-              ephemerisBody2[previousMinute.toISOString()];
-            const { longitude: previousLongitude3 } =
-              ephemerisBody3[previousMinute.toISOString()];
-            const { longitude: previousLongitude4 } =
-              ephemerisBody4[previousMinute.toISOString()];
-            const { longitude: previousLongitude5 } =
-              ephemerisBody5[previousMinute.toISOString()];
+    // Quick pre-filter: skip this combination if it can't possibly form a pentagram
+    const currentLongitudes: [number, number, number, number, number] = [
+      currentLongitude1,
+      currentLongitude2,
+      currentLongitude3,
+      currentLongitude4,
+      currentLongitude5,
+    ];
 
-            const { longitude: nextLongitude1 } =
-              ephemerisBody1[nextMinute.toISOString()];
-            const { longitude: nextLongitude2 } =
-              ephemerisBody2[nextMinute.toISOString()];
-            const { longitude: nextLongitude3 } =
-              ephemerisBody3[nextMinute.toISOString()];
-            const { longitude: nextLongitude4 } =
-              ephemerisBody4[nextMinute.toISOString()];
-            const { longitude: nextLongitude5 } =
-              ephemerisBody5[nextMinute.toISOString()];
+    if (!couldBePentagram(currentLongitudes)) {
+      continue;
+    }
 
-            // Check for Pentagram
-            const currentPentagram = detectPentagram({
-              longitude1: currentLongitude1,
-              longitude2: currentLongitude2,
-              longitude3: currentLongitude3,
-              longitude4: currentLongitude4,
-              longitude5: currentLongitude5,
-            });
+    const { longitude: previousLongitude1 } =
+      ephemerisBody1[previousMinute.toISOString()];
+    const { longitude: previousLongitude2 } =
+      ephemerisBody2[previousMinute.toISOString()];
+    const { longitude: previousLongitude3 } =
+      ephemerisBody3[previousMinute.toISOString()];
+    const { longitude: previousLongitude4 } =
+      ephemerisBody4[previousMinute.toISOString()];
+    const { longitude: previousLongitude5 } =
+      ephemerisBody5[previousMinute.toISOString()];
 
-            if (currentPentagram) {
-              const previousPentagram = detectPentagram({
-                longitude1: previousLongitude1,
-                longitude2: previousLongitude2,
-                longitude3: previousLongitude3,
-                longitude4: previousLongitude4,
-                longitude5: previousLongitude5,
-              });
+    const { longitude: nextLongitude1 } =
+      ephemerisBody1[nextMinute.toISOString()];
+    const { longitude: nextLongitude2 } =
+      ephemerisBody2[nextMinute.toISOString()];
+    const { longitude: nextLongitude3 } =
+      ephemerisBody3[nextMinute.toISOString()];
+    const { longitude: nextLongitude4 } =
+      ephemerisBody4[nextMinute.toISOString()];
+    const { longitude: nextLongitude5 } =
+      ephemerisBody5[nextMinute.toISOString()];
 
-              const nextPentagram = detectPentagram({
-                longitude1: nextLongitude1,
-                longitude2: nextLongitude2,
-                longitude3: nextLongitude3,
-                longitude4: nextLongitude4,
-                longitude5: nextLongitude5,
-              });
+    // Check for Pentagram (only if pre-filter passed)
+    const currentPentagram = detectPentagram({
+      longitude1: currentLongitude1,
+      longitude2: currentLongitude2,
+      longitude3: currentLongitude3,
+      longitude4: currentLongitude4,
+      longitude5: currentLongitude5,
+    });
 
-              const phase = getQuintupleAspectPhase({
-                pattern: "pentagram",
-                previousLongitude1,
-                previousLongitude2,
-                previousLongitude3,
-                previousLongitude4,
-                previousLongitude5,
-                currentLongitude1,
-                currentLongitude2,
-                currentLongitude3,
-                currentLongitude4,
-                currentLongitude5,
-                nextLongitude1,
-                nextLongitude2,
-                nextLongitude3,
-                nextLongitude4,
-                nextLongitude5,
-                previousExists: previousPentagram,
-                currentExists: currentPentagram,
-                nextExists: nextPentagram,
-              });
+    if (currentPentagram) {
+      const previousPentagram = detectPentagram({
+        longitude1: previousLongitude1,
+        longitude2: previousLongitude2,
+        longitude3: previousLongitude3,
+        longitude4: previousLongitude4,
+        longitude5: previousLongitude5,
+      });
 
-              if (phase) {
-                quintupleAspectEvents.push(
-                  getQuintupleAspectEvent({
-                    timestamp: currentMinute.toDate(),
-                    body1,
-                    body2,
-                    body3,
-                    body4,
-                    body5,
-                    quintupleAspect: "pentagram",
-                    phase,
-                  })
-                );
-              }
-            }
-          }
-        }
+      const nextPentagram = detectPentagram({
+        longitude1: nextLongitude1,
+        longitude2: nextLongitude2,
+        longitude3: nextLongitude3,
+        longitude4: nextLongitude4,
+        longitude5: nextLongitude5,
+      });
+
+      const phase = getQuintupleAspectPhase({
+        pattern: "pentagram",
+        previousLongitude1,
+        previousLongitude2,
+        previousLongitude3,
+        previousLongitude4,
+        previousLongitude5,
+        currentLongitude1,
+        currentLongitude2,
+        currentLongitude3,
+        currentLongitude4,
+        currentLongitude5,
+        nextLongitude1,
+        nextLongitude2,
+        nextLongitude3,
+        nextLongitude4,
+        nextLongitude5,
+        previousExists: previousPentagram,
+        currentExists: currentPentagram,
+        nextExists: nextPentagram,
+      });
+
+      if (phase) {
+        quintupleAspectEvents.push(
+          getQuintupleAspectEvent({
+            timestamp: currentMinute.toDate(),
+            body1,
+            body2,
+            body3,
+            body4,
+            body5,
+            quintupleAspect: "pentagram",
+            phase,
+          })
+        );
       }
     }
   }
@@ -304,7 +302,7 @@ function getQuintupleAspectPhase(args: {
   previousExists: boolean;
   currentExists: boolean;
   nextExists: boolean;
-}): QuintupleAspectPhase | null {
+}): AspectPhase | null {
   const {
     pattern,
     previousLongitude1,
@@ -388,7 +386,7 @@ function getQuintupleAspectEvent(args: {
   body4: Body;
   body5: Body;
   quintupleAspect: QuintupleAspect;
-  phase: QuintupleAspectPhase;
+  phase: AspectPhase;
 }): QuintupleAspectEvent {
   const {
     timestamp,
@@ -457,8 +455,9 @@ function getQuintupleAspectEvent(args: {
 
   const quintupleAspectEvent: QuintupleAspectEvent = {
     start: timestamp,
+    end: timestamp,
     description,
-    summary: summary as QuintupleAspectSummary,
+    summary,
     categories,
   };
 
@@ -511,7 +510,7 @@ export function getQuintupleAspectDurationEvents(events: Event[]): Event[] {
   const groupedEvents = _.groupBy(quintupleAspectEvents, (event) => {
     const planets = event.categories
       .filter((category) =>
-        QUINTUPLE_ASPECT_BODIES.map(_.startCase).includes(category)
+        quintupleAspectBodies.map(_.startCase).includes(category)
       )
       .sort();
 

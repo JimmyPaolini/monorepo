@@ -11,15 +11,8 @@ import {
   QUANTITY_ILLUMINATED_FRACTION,
   QUANTITY_RANGE_RATE,
 } from "./ephemeris.constants";
-import {
-  nodes,
-  symbolByBody,
-  type Asteroid,
-  type Body,
-  type Comet,
-  type Node,
-  type Planet,
-} from "../constants";
+import type { Asteroid, Body, Comet, Node, Planet } from "../types";
+import { nodes, symbolByBody } from "../constants";
 import type {
   DiameterEphemeris,
   AzimuthElevationEphemerisBody,

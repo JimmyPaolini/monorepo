@@ -1,4 +1,4 @@
-import { LunarPhase } from "../../constants";
+import type { LunarPhase } from "../../types";
 
 export const illuminationByPhase: Record<LunarPhase, number> = {
   new: 0,

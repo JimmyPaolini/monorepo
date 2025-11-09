@@ -1,6 +1,6 @@
 import sqlite3 from "sqlite3";
 import { open, type Database } from "sqlite";
-import type { Body } from "./constants";
+import type { Body } from "./types";
 import type { Event } from "./calendar.utilities";
 import { getOutputPath } from "./output.utilities";
 
@@ -188,11 +188,11 @@ export async function getEphemerisRecords(args: {
 
   await db.exec(`
     CREATE TABLE IF NOT EXISTS events (
-      summary TEXT,
-      description TEXT,
-      start TEXT,
-      end TEXT,
-      categories TEXT,
+      summary TEXT NOT NULL,
+      description TEXT NOT NULL,
+      start TEXT NOT NULL,
+      end TEXT NOT NULL,
+      categories TEXT NOT NULL,
       location TEXT,
       latitude REAL,
       longitude REAL,
@@ -202,6 +202,18 @@ export async function getEphemerisRecords(args: {
       PRIMARY KEY (summary, start)
     );
   `);
+
+  // Create index on categories for faster LIKE queries
+  await db.exec(`
+    CREATE INDEX IF NOT EXISTS idx_events_categories
+    ON events(categories);
+  `);
+
+  // Create index on start/end timestamps for temporal queries
+  await db.exec(`
+    CREATE INDEX IF NOT EXISTS idx_events_time_range
+    ON events(start, end);
+  `);
 })();
 
 function mapRowToEvent(row: any): Event {
@@ -209,7 +221,7 @@ function mapRowToEvent(row: any): Event {
     summary: row.summary,
     description: row.description,
     start: new Date(row.start),
-    end: row.end ? new Date(row.end) : undefined,
+    end: row.end ? new Date(row.end) : new Date(row.start),
     categories: row.categories ? row.categories.split(",") : [],
     location: row.location || undefined,
     geography:
@@ -232,7 +244,7 @@ export async function upsertEvent(event: Event) {
       event.summary,
       event.description,
       event.start.toISOString(),
-      event.end?.toISOString() || null,
+      event.end.toISOString(),
       event.categories.join(","),
       event.location || null,
       event.geography?.latitude || null,
@@ -305,4 +317,31 @@ export async function getAllEvents(): Promise<Event[]> {
   const events: Event[] = rows.map(mapRowToEvent);
 
   return events;
+}
+
+/**
+ * Get active 2-body aspect events at a specific timestamp
+ * Used for composing multi-body aspects from existing aspect relationships
+ *
+ * Note: Queries for "Simple Aspect" category to get 2-body aspects only,
+ * excluding "Compound Aspect" (multi-body patterns like T-Squares, Grand Trines, etc.)
+ *
+ * Categories format: "Astronomy,Astrology,Simple Aspect,Major Aspect,Body1,Body2,AspectType,Phase"
+ */
+export async function getActiveAspectsAt(timestamp: Date): Promise<Event[]> {
+  const db = await databasePromise;
+  const timestampISO = timestamp.toISOString();
+
+  const rows = await db.all(
+    `SELECT summary, description, start, end, categories, location, latitude, longitude, url, priority, color
+     FROM events
+     WHERE categories LIKE '%Simple Aspect%'
+       AND categories NOT LIKE '%Compound Aspect%'
+       AND start <= ?
+       AND end >= ?
+     ORDER BY start ASC`,
+    [timestampISO, timestampISO]
+  );
+
+  return rows.map(mapRowToEvent);
 }

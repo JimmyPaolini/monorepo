@@ -4,29 +4,28 @@ import type { Moment } from "moment";
 import type { Event } from "../../calendar.utilities";
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 import { type EventTemplate, getCalendar } from "../../calendar.utilities";
-import {
+import type {
   Body,
   BodySymbol,
   MajorAspect,
   MajorAspectSymbol,
+  AspectPhase,
+} from "../../types";
+import {
   symbolByBody,
   symbolByMajorAspect,
-  MAJOR_ASPECT_BODIES,
+  majorAspectBodies,
   majorAspects,
 } from "../../constants";
 import { upsertEvents } from "../../database.utilities";
-import {
-  getMajorAspect,
-  getMajorAspectPhase,
-  type AspectPhase,
-} from "./aspects.utilities";
+import { getMajorAspect, getMajorAspectPhase } from "./aspects.utilities";
 import { getOutputPath } from "../../output.utilities";
 import { pairDurationEvents } from "../../duration.utilities";
 
 type MajorAspectDescription =
   | `${Capitalize<Body>} exact ${MajorAspect} ${Capitalize<Body>}`
-  | `${Capitalize<Body>} applying ${MajorAspect} ${Capitalize<Body>}`
-  | `${Capitalize<Body>} separating ${MajorAspect} ${Capitalize<Body>}`;
+  | `${Capitalize<Body>} forming ${MajorAspect} ${Capitalize<Body>}`
+  | `${Capitalize<Body>} dissolving ${MajorAspect} ${Capitalize<Body>}`;
 type MajorAspectSummary =
   `${BodySymbol}${MajorAspectSymbol}${BodySymbol} ${string}`;
 
@@ -45,7 +44,6 @@ export function getMajorAspectEvents(args: {
   currentMinute: Moment;
 }) {
   const { coordinateEphemerisByBody, currentMinute } = args;
-  const majorAspectBodies = MAJOR_ASPECT_BODIES;
 
   const previousMinute = currentMinute.clone().subtract(1, "minute");
   const nextMinute = currentMinute.clone().add(1, "minute");
@@ -144,16 +142,16 @@ export function getMajorAspectEvent(args: {
       `${body1Capitalized} exact ${majorAspect} ${body2Capitalized}` as MajorAspectDescription;
     phaseEmoji = "🎯";
     categories = [...baseCategories, "Exact"];
-  } else if (phase === "applying") {
+  } else if (phase === "forming") {
     description =
-      `${body1Capitalized} applying ${majorAspect} ${body2Capitalized}` as MajorAspectDescription;
+      `${body1Capitalized} forming ${majorAspect} ${body2Capitalized}` as MajorAspectDescription;
     phaseEmoji = "➡️";
-    categories = [...baseCategories, "Applying"];
+    categories = [...baseCategories, "Forming"];
   } else {
     description =
-      `${body1Capitalized} separating ${majorAspect} ${body2Capitalized}` as MajorAspectDescription;
+      `${body1Capitalized} dissolving ${majorAspect} ${body2Capitalized}` as MajorAspectDescription;
     phaseEmoji = "⬅️";
-    categories = [...baseCategories, "Separating"];
+    categories = [...baseCategories, "Dissolving"];
   }
 
   const summary = `${phaseEmoji} ${body1Symbol} ${majorAspectSymbol} ${body2Symbol} ${description}`;
@@ -162,6 +160,7 @@ export function getMajorAspectEvent(args: {
 
   const majorAspectEvent: MajorAspectEvent = {
     start: timestamp,
+    end: timestamp,
     description,
     summary: summary as MajorAspectSummary,
     categories,
@@ -209,7 +208,7 @@ export function getMajorAspectDurationEvents(events: Event[]): Event[] {
   const groupedEvents = _.groupBy(majorAspectEvents, (event) => {
     const planets = event.categories
       .filter((category) =>
-        MAJOR_ASPECT_BODIES.map(_.startCase).includes(category)
+        majorAspectBodies.map(_.startCase).includes(category)
       )
       .sort();
 
@@ -227,16 +226,16 @@ export function getMajorAspectDurationEvents(events: Event[]): Event[] {
   for (const [key, groupEvents] of Object.entries(groupedEvents)) {
     if (!key) continue;
 
-    const applyingEvents = groupEvents.filter((event) =>
-      event.categories.includes("Applying")
+    const formingEvents = groupEvents.filter((event) =>
+      event.categories.includes("Forming")
     );
-    const separatingEvents = groupEvents.filter((event) =>
-      event.categories.includes("Separating")
+    const dissolvingEvents = groupEvents.filter((event) =>
+      event.categories.includes("Dissolving")
     );
 
     const pairs = pairDurationEvents(
-      applyingEvents,
-      separatingEvents,
+      formingEvents,
+      dissolvingEvents,
       `major aspect ${key}`
     );
 
@@ -257,9 +256,7 @@ function getMajorAspectDurationEvent(
   const categories = beginning.categories || [];
 
   const bodiesCapitalized = categories
-    .filter((category) =>
-      MAJOR_ASPECT_BODIES.map(_.startCase).includes(category)
-    )
+    .filter((category) => majorAspectBodies.map(_.startCase).includes(category))
     .sort();
 
   const aspectCapitalized = categories.find((category) =>
@@ -291,6 +288,7 @@ function getMajorAspectDurationEvent(
     categories: [
       "Astronomy",
       "Astrology",
+      "Simple Aspect",
       "Major Aspect",
       body1Capitalized,
       body2Capitalized,

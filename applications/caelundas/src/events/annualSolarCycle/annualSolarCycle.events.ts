@@ -150,6 +150,7 @@ export function getAphelionEvent(date: Date): Event {
 
   const aphelionEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories: [...categories, "Aphelion"],
@@ -166,6 +167,7 @@ export function getPerihelionEvent(date: Date): Event {
 
   const perihelionEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories: [...categories, "Perihelion"],
@@ -184,6 +186,7 @@ export function getVernalEquinoxEvent(date: Date): Event {
 
   const vernalEquinoxEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories,
@@ -199,6 +202,7 @@ export function getFirstHexadecanEvent(date: Date): Event {
   console.log(`${summary} at ${dateString}`);
   const firstHexadecanEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories,
@@ -215,6 +219,7 @@ export function getBeltaneEvent(date: Date): Event {
 
   const beltaneEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories,
@@ -231,6 +236,7 @@ export function getThirdHexadecanEvent(date: Date): Event {
 
   const thirdHexadecanEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories,
@@ -247,6 +253,7 @@ export function getSummerSolsticeEvent(date: Date): Event {
 
   const summerSolsticeEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories,
@@ -263,6 +270,7 @@ export function getFifthHexadecanEvent(date: Date): Event {
 
   const fifthHexadecanEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories,
@@ -279,6 +287,7 @@ export function getLammasEvent(date: Date): Event {
 
   const lammasEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories,
@@ -294,6 +303,7 @@ export function getSeventhHexadecanEvent(date: Date): Event {
   console.log(`${summary} at ${dateString}`);
   const seventhHexadecanEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories,
@@ -310,6 +320,7 @@ export function getAutumnalEquinoxEvent(date: Date): Event {
 
   const autumnalEquinoxEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories,
@@ -325,6 +336,7 @@ export function getNinthHexadecanEvent(date: Date): Event {
   console.log(`${summary} at ${dateString}`);
   const ninthHexadecanEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories,
@@ -341,6 +353,7 @@ export function getSamhainEvent(date: Date): Event {
 
   const samhainEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories,
@@ -356,6 +369,7 @@ export function getEleventhHexadecanEvent(date: Date): Event {
   console.log(`${summary} at ${dateString}`);
   const eleventhHexadecanEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories,
@@ -372,6 +386,7 @@ export function getWinterSolsticeEvent(date: Date): Event {
 
   const winterSolsticeEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories,
@@ -386,6 +401,7 @@ export function getThirteenthHexadecanEvent(date: Date): Event {
   console.log(`${summary} at ${dateString}`);
   const thirteenthHexadecanEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories,
@@ -402,6 +418,7 @@ export function getImbolcEvent(date: Date): Event {
 
   const imbolcEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories,
@@ -418,6 +435,7 @@ export function getFifteenthHexadecanEvent(date: Date): Event {
 
   const fifteenthHexadecanEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories,

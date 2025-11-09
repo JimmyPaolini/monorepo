@@ -68,6 +68,7 @@ export function getAstronomicalDawnEvent(date: Date): Event {
 
   const astronomicalDawnEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories: [...categories, "Astronomical Dawn"],
@@ -84,6 +85,7 @@ export function getNauticalDawnEvent(date: Date): Event {
 
   const nauticalDawnEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories: [...categories, "Nautical Dawn"],
@@ -100,6 +102,7 @@ export function getCivilDawnEvent(date: Date): Event {
 
   const civilDawnEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories: [...categories, "Civil Dawn"],
@@ -116,6 +119,7 @@ export function getCivilDuskEvent(date: Date): Event {
 
   const civilDuskEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories: [...categories, "Civil Dusk"],
@@ -132,6 +136,7 @@ export function getNauticalDuskEvent(date: Date): Event {
 
   const nauticalDuskEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories: [...categories, "Nautical Dusk"],
@@ -148,6 +153,7 @@ export function getAstronomicalDuskEvent(date: Date): Event {
 
   const astronomicalDuskEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories: [...categories, "Astronomical Dusk"],

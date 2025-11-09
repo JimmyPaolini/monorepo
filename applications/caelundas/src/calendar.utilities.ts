@@ -4,7 +4,7 @@ export const MARGIN_MINUTES = 30;
 
 export interface Event {
   start: Date;
-  end?: Date;
+  end: Date;
   summary: string;
   description: string;
   categories: string[];
@@ -54,12 +54,11 @@ END:VCALENDAR
 export function getEvent(event: Event, timezone: string = "America/New_York") {
   const createdAt = moment().format("YYYYMMDDTHHmmss");
   const start = moment.tz(event.start, timezone).format("YYYYMMDDTHHmmss");
-  const end =
-    event.end && moment.tz(event.end, timezone).format("YYYYMMDDTHHmmss");
+  const end = moment.tz(event.end, timezone).format("YYYYMMDDTHHmmss");
 
   // Generate UID
   let id = `${event.summary}::${event.description}::${event.start}`;
-  if (end) id += `::${end}`;
+  if (event.end.getTime() !== event.start.getTime()) id += `::${event.end}`;
 
   // Build VEVENT
   let vevent = `BEGIN:VEVENT
@@ -67,7 +66,7 @@ UID:${id}
 DTSTAMP:${createdAt}Z
 DTSTART;TZID=${timezone}:${start}`;
 
-  if (end) vevent += `\nDTEND;TZID=${timezone}:${end}`;
+  vevent += `\nDTEND;TZID=${timezone}:${end}`;
 
   vevent += `
 SUMMARY:${event.summary}

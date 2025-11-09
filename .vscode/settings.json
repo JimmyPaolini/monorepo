@@ -5,6 +5,7 @@
     "decan",
     "Decans",
     "devkit",
+    "duodecuple",
     "fkey",
     "fontsource",
     "gtrgm",
@@ -17,12 +18,17 @@
     "Multivalued",
     "nextjs",
     "querykey",
+    "sesquisquare",
     "sqltools",
     "Stellium",
+    "stelliums",
     "Superkey",
     "Swipeable",
     "trgm",
-    "tsvector"
+    "tsvector",
+    "undecuple",
+    "vcalendar",
+    "vevent"
   ],
   "cSpell.ignorePaths": [
     "package-lock.json",

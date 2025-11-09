@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { type Body, bodies } from "../constants";
+import { bodies } from "../constants";
 import type {
   Coordinates,
   CoordinateEphemerisBody,

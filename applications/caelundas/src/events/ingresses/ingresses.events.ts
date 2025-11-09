@@ -1,15 +1,15 @@
 import fs from "fs";
 import _ from "lodash";
 import type { Moment } from "moment";
+import type { Body, Sign, BodySymbol, SignSymbol } from "../../types";
 import {
-  Body,
-  Sign,
-  BodySymbol,
-  SignSymbol,
-  SIGN_INGRESS_BODIES,
-  DECAN_INGRESS_BODIES,
-  PEAK_INGRESS_BODIES,
+  signIngressBodies,
+  decanIngressBodies,
+  peakIngressBodies,
   signs,
+  symbolByBody,
+  symbolByDecan,
+  symbolBySign,
 } from "../../constants";
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 import {
@@ -24,7 +24,6 @@ import {
   isSignIngress,
   isPeakIngress,
 } from "../ingresses/ingresses.utilities";
-import { symbolByBody, symbolByDecan, symbolBySign } from "../../constants";
 import { upsertEvents } from "../../database.utilities";
 import { getOutputPath } from "../../output.utilities";
 
@@ -52,7 +51,6 @@ export function getSignIngressEvents(args: {
   currentMinute: Moment;
 }) {
   const { coordinateEphemerisByBody, currentMinute } = args;
-  const signIngressBodies = SIGN_INGRESS_BODIES;
 
   const previousMinute = currentMinute.clone().subtract(1, "minute");
 
@@ -100,6 +98,7 @@ export function getSignIngressEvent(args: {
 
   const signIngressEvent: SignIngressEvent = {
     start: date,
+    end: date,
     categories: [...categories, bodyCapitalized, signCapitalized],
     description,
     summary,
@@ -157,7 +156,6 @@ export function getDecanIngressEvents(args: {
   currentMinute: Moment;
 }) {
   const { coordinateEphemerisByBody, currentMinute } = args;
-  const decanIngressBodies = DECAN_INGRESS_BODIES;
 
   const previousMinute = currentMinute.clone().subtract(1, "minute");
 
@@ -211,6 +209,7 @@ export function getDecanIngressEvent(args: {
 
   const decanIngressEvent: DecanIngressEvent = {
     start: date,
+    end: date,
     categories: [...categories, "Decan", bodyCapitalized, signCapitalized],
     description,
     summary,
@@ -267,7 +266,6 @@ export function getPeakIngressEvents(args: {
   currentMinute: Moment;
 }) {
   const { coordinateEphemerisByBody, currentMinute } = args;
-  const peakIngressBodies = PEAK_INGRESS_BODIES;
 
   const previousMinute = currentMinute.clone().subtract(1, "minute");
 
@@ -315,6 +313,7 @@ export function getPeakIngressEvent(args: {
 
   const peakIngressEvent: PeakIngressEvent = {
     start: date,
+    end: date,
     categories: [...categories, "Peak", bodyCapitalized, signCapitalized],
     description,
     summary,
@@ -367,7 +366,7 @@ export function getSignIngressDurationEvents(events: Event[]): Event[] {
   // Group by body
   const groupedByBody = _.groupBy(signIngressEvents, (event) => {
     const bodyCapitalized = event.categories?.find((category) =>
-      SIGN_INGRESS_BODIES.map(_.startCase).includes(category)
+      signIngressBodies.map(_.startCase).includes(category)
     );
     return bodyCapitalized || "";
   });

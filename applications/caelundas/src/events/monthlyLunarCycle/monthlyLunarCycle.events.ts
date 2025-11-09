@@ -4,7 +4,7 @@ import moment from "moment-timezone";
 import type { Moment } from "moment";
 import type { Event } from "../../calendar.utilities";
 import type { IlluminationEphemeris } from "../../ephemeris/ephemeris.types";
-import type { LunarPhase } from "../../constants";
+import type { LunarPhase } from "../../types";
 import { getCalendar, MARGIN_MINUTES } from "../../calendar.utilities";
 import { upsertEvents } from "../../database.utilities";
 import { lunarPhases } from "../../constants";
@@ -76,6 +76,7 @@ export function getMonthlyLunarCycleEvent(args: {
 
   const monthlyLunarCycleEvent = {
     start: date,
+    end: date,
     summary,
     description,
     categories: [
@@ -135,7 +136,10 @@ export function getMonthlyLunarCycleDurationEvents(events: Event[]): Event[] {
     const entering = sortedEvents[i];
     const exiting = sortedEvents[i + 1];
 
-    durationEvents.push(getMonthlyLunarCycleDurationEvent(entering, exiting));
+    const durationEvent = getMonthlyLunarCycleDurationEvent(entering, exiting);
+    if (durationEvent) {
+      durationEvents.push(durationEvent);
+    }
   }
 
   return durationEvents;
@@ -153,9 +157,12 @@ function getMonthlyLunarCycleDurationEvent(
   );
 
   if (!lunarPhaseCapitalized) {
-    throw new Error(
-      `Could not extract lunar phase from categories: ${categories.join(", ")}`
+    console.warn(
+      `⚠️ Could not extract lunar phase from categories: ${categories.join(
+        ", "
+      )} - skipping duration event for ${entering.summary}`
     );
+    return null as any; // Skip this invalid event
   }
 
   const lunarPhase = lunarPhaseCapitalized.toLowerCase() as LunarPhase;

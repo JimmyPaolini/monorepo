@@ -1,4 +1,4 @@
-import { Asteroid, Comet, Planet } from "../constants";
+import type { Asteroid, Comet, Planet } from "../types";
 
 export const horizonsUrl = "https://ssd.jpl.nasa.gov/api/horizons.api";
 

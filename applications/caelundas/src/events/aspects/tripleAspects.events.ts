@@ -3,27 +3,32 @@ import _ from "lodash";
 import type { Moment } from "moment";
 import type { EventTemplate } from "../../calendar.utilities";
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
-import {
+import type {
   Body,
   BodySymbol,
   TripleAspect,
   TripleAspectSymbol,
+  AspectPhase,
+} from "../../types";
+import {
   symbolByBody,
   symbolByTripleAspect,
-  TRIPLE_ASPECT_BODIES,
+  tripleAspectBodies,
 } from "../../constants";
 import { type Event, getCalendar } from "../../calendar.utilities";
 import { isAspect } from "./aspects.utilities";
-import { getAngle } from "../../math.utilities";
+import { getAngle, getCombinations } from "../../math.utilities";
 import { upsertEvents } from "../../database.utilities";
 import { getOutputPath } from "../../output.utilities";
+import { couldBeTSquare, couldBeYod, couldBeGrandTrine } from "./aspects.cache";
 
-export type TripleAspectPhase = "forming" | "exact" | "dissolving";
-
-type TripleAspectDescription = string;
+type TripleAspectDescription =
+  /* @ts-ignore - Expression produces a union type that is too complex to represent */
+  `${Capitalize<Body>}, ${Capitalize<Body>}, ${Capitalize<Body>} ${TripleAspect} ${AspectPhase}`;
 
 type TripleAspectSummary =
-  `${TripleAspectSymbol} ${BodySymbol}-${BodySymbol}-${BodySymbol} ${string}`;
+  /* @ts-ignore - Expression produces a union type that is too complex to represent */
+  `${TripleAspectSymbol} ${BodySymbol}-${BodySymbol}-${BodySymbol} ${TripleAspectDescription}`;
 
 export interface TripleAspectEventTemplate extends EventTemplate {
   description: TripleAspectDescription;
@@ -277,16 +282,16 @@ function detectYod(args: {
 
 // #endregion Yod
 
-// #region Thor's Hammer
+// #region Hammer
 
-function calculateThorsHammerTightness(args: {
+function calculateHammerTightness(args: {
   longitude1: number;
   longitude2: number;
   longitude3: number;
 }): number {
   const { longitude1, longitude2, longitude3 } = args;
 
-  // Thor's Hammer: 2 planets square to each other, both sesquisquare (135°) to a 3rd focal planet
+  // Hammer: 2 planets square to each other, both sesquisquare (135°) to a 3rd focal planet
   const angle12 = getAngle(longitude1, longitude2);
   const angle13 = getAngle(longitude1, longitude3);
   const angle23 = getAngle(longitude2, longitude3);
@@ -307,14 +312,14 @@ function calculateThorsHammerTightness(args: {
   return Math.min(dev1, dev2, dev3);
 }
 
-function detectThorsHammer(args: {
+function detectHammer(args: {
   body1: Body;
   body2: Body;
   body3: Body;
   longitude1: number;
   longitude2: number;
   longitude3: number;
-}): { isThorsHammer: boolean; focalBody?: Body } {
+}): { isHammer: boolean; focalBody?: Body } {
   const { body1, body2, body3, longitude1, longitude2, longitude3 } = args;
 
   // Check if body1 and body2 are square, both sesquisquare to body3 (focal)
@@ -335,7 +340,7 @@ function detectThorsHammer(args: {
       aspect: "sesquiquadrate",
     })
   ) {
-    return { isThorsHammer: true, focalBody: body3 };
+    return { isHammer: true, focalBody: body3 };
   }
 
   // Check if body1 and body3 are square, both sesquisquare to body2 (focal)
@@ -356,7 +361,7 @@ function detectThorsHammer(args: {
       aspect: "sesquiquadrate",
     })
   ) {
-    return { isThorsHammer: true, focalBody: body2 };
+    return { isHammer: true, focalBody: body2 };
   }
 
   // Check if body2 and body3 are square, both sesquisquare to body1 (focal)
@@ -377,13 +382,13 @@ function detectThorsHammer(args: {
       aspect: "sesquiquadrate",
     })
   ) {
-    return { isThorsHammer: true, focalBody: body1 };
+    return { isHammer: true, focalBody: body1 };
   }
 
-  return { isThorsHammer: false };
+  return { isHammer: false };
 }
 
-// #endregion Thor's Hammer
+// #endregion Hammer
 
 // #region Triple Aspects
 
@@ -401,8 +406,8 @@ function calculatePatternTightness(args: {
     return calculateGrandTrineTightness({ longitude1, longitude2, longitude3 });
   } else if (pattern === "yod") {
     return calculateYodTightness({ longitude1, longitude2, longitude3 });
-  } else if (pattern === "thor's hammer") {
-    return calculateThorsHammerTightness({
+  } else if (pattern === "hammer") {
+    return calculateHammerTightness({
       longitude1,
       longitude2,
       longitude3,
@@ -417,7 +422,6 @@ export function getTripleAspectEvents(args: {
   currentMinute: Moment;
 }) {
   const { coordinateEphemerisByBody, currentMinute } = args;
-  const tripleAspectBodies = TRIPLE_ASPECT_BODIES;
 
   const previousMinute = currentMinute.clone().subtract(1, "minute");
   const nextMinute = currentMinute.clone().add(1, "minute");
@@ -425,267 +429,283 @@ export function getTripleAspectEvents(args: {
   const tripleAspectEvents: TripleAspectEvent[] = [];
 
   // Check all combinations of 3 bodies
-  for (let i = 0; i < tripleAspectBodies.length; i++) {
-    for (let j = i + 1; j < tripleAspectBodies.length; j++) {
-      for (let k = j + 1; k < tripleAspectBodies.length; k++) {
-        const body1 = tripleAspectBodies[i];
-        const body2 = tripleAspectBodies[j];
-        const body3 = tripleAspectBodies[k];
+  const combinations = getCombinations(tripleAspectBodies, 3);
 
-        const ephemerisBody1 = coordinateEphemerisByBody[body1];
-        const ephemerisBody2 = coordinateEphemerisByBody[body2];
-        const ephemerisBody3 = coordinateEphemerisByBody[body3];
+  for (const [body1, body2, body3] of combinations) {
+    const ephemerisBody1 = coordinateEphemerisByBody[body1];
+    const ephemerisBody2 = coordinateEphemerisByBody[body2];
+    const ephemerisBody3 = coordinateEphemerisByBody[body3];
 
-        const { longitude: currentLongitude1 } =
-          ephemerisBody1[currentMinute.toISOString()];
-        const { longitude: currentLongitude2 } =
-          ephemerisBody2[currentMinute.toISOString()];
-        const { longitude: currentLongitude3 } =
-          ephemerisBody3[currentMinute.toISOString()];
+    const { longitude: currentLongitude1 } =
+      ephemerisBody1[currentMinute.toISOString()];
+    const { longitude: currentLongitude2 } =
+      ephemerisBody2[currentMinute.toISOString()];
+    const { longitude: currentLongitude3 } =
+      ephemerisBody3[currentMinute.toISOString()];
 
-        const { longitude: previousLongitude1 } =
-          ephemerisBody1[previousMinute.toISOString()];
-        const { longitude: previousLongitude2 } =
-          ephemerisBody2[previousMinute.toISOString()];
-        const { longitude: previousLongitude3 } =
-          ephemerisBody3[previousMinute.toISOString()];
+    // Quick pre-filter: skip this combination if it can't possibly form any triple aspect
+    const currentLongitudes: [number, number, number] = [
+      currentLongitude1,
+      currentLongitude2,
+      currentLongitude3,
+    ];
 
-        const { longitude: nextLongitude1 } =
-          ephemerisBody1[nextMinute.toISOString()];
-        const { longitude: nextLongitude2 } =
-          ephemerisBody2[nextMinute.toISOString()];
-        const { longitude: nextLongitude3 } =
-          ephemerisBody3[nextMinute.toISOString()];
+    const couldFormTSquare = couldBeTSquare(currentLongitudes);
+    const couldFormYod = couldBeYod(currentLongitudes);
+    const couldFormGrandTrine = couldBeGrandTrine(currentLongitudes);
 
-        // Check for T-Square
-        const currentTSquare = detectTSquare({
+    // Skip this combination entirely if it can't form any known triple aspect
+    if (!couldFormTSquare && !couldFormYod && !couldFormGrandTrine) {
+      continue;
+    }
+
+    const { longitude: previousLongitude1 } =
+      ephemerisBody1[previousMinute.toISOString()];
+    const { longitude: previousLongitude2 } =
+      ephemerisBody2[previousMinute.toISOString()];
+    const { longitude: previousLongitude3 } =
+      ephemerisBody3[previousMinute.toISOString()];
+
+    const { longitude: nextLongitude1 } =
+      ephemerisBody1[nextMinute.toISOString()];
+    const { longitude: nextLongitude2 } =
+      ephemerisBody2[nextMinute.toISOString()];
+    const { longitude: nextLongitude3 } =
+      ephemerisBody3[nextMinute.toISOString()];
+
+    // Check for T-Square (only if pre-filter passed)
+    if (couldFormTSquare) {
+      const currentTSquare = detectTSquare({
+        body1,
+        body2,
+        body3,
+        longitude1: currentLongitude1,
+        longitude2: currentLongitude2,
+        longitude3: currentLongitude3,
+      });
+
+      if (currentTSquare.isTSquare && currentTSquare.focalBody) {
+        const previousTSquare = detectTSquare({
           body1,
           body2,
           body3,
-          longitude1: currentLongitude1,
-          longitude2: currentLongitude2,
-          longitude3: currentLongitude3,
+          longitude1: previousLongitude1,
+          longitude2: previousLongitude2,
+          longitude3: previousLongitude3,
         });
 
-        if (currentTSquare.isTSquare && currentTSquare.focalBody) {
-          const previousTSquare = detectTSquare({
-            body1,
-            body2,
-            body3,
-            longitude1: previousLongitude1,
-            longitude2: previousLongitude2,
-            longitude3: previousLongitude3,
-          });
-
-          const nextTSquare = detectTSquare({
-            body1,
-            body2,
-            body3,
-            longitude1: nextLongitude1,
-            longitude2: nextLongitude2,
-            longitude3: nextLongitude3,
-          });
-
-          const phase = getTripleAspectPhase({
-            pattern: "t-square",
-            previousLongitude1,
-            previousLongitude2,
-            previousLongitude3,
-            currentLongitude1,
-            currentLongitude2,
-            currentLongitude3,
-            nextLongitude1,
-            nextLongitude2,
-            nextLongitude3,
-            previousExists: previousTSquare.isTSquare,
-            currentExists: currentTSquare.isTSquare,
-            nextExists: nextTSquare.isTSquare,
-          });
-
-          if (phase) {
-            tripleAspectEvents.push(
-              getTripleAspectEvent({
-                timestamp: currentMinute.toDate(),
-                body1,
-                body2,
-                body3,
-                tripleAspect: "t-square",
-                focalOrApexBody: currentTSquare.focalBody,
-                phase,
-              })
-            );
-          }
-        }
-
-        // Check for Grand Trine
-        const currentGrandTrine = detectGrandTrine({
-          longitude1: currentLongitude1,
-          longitude2: currentLongitude2,
-          longitude3: currentLongitude3,
-        });
-
-        if (currentGrandTrine) {
-          const previousGrandTrine = detectGrandTrine({
-            longitude1: previousLongitude1,
-            longitude2: previousLongitude2,
-            longitude3: previousLongitude3,
-          });
-
-          const nextGrandTrine = detectGrandTrine({
-            longitude1: nextLongitude1,
-            longitude2: nextLongitude2,
-            longitude3: nextLongitude3,
-          });
-
-          const phase = getTripleAspectPhase({
-            pattern: "grand trine",
-            previousLongitude1,
-            previousLongitude2,
-            previousLongitude3,
-            currentLongitude1,
-            currentLongitude2,
-            currentLongitude3,
-            nextLongitude1,
-            nextLongitude2,
-            nextLongitude3,
-            previousExists: previousGrandTrine,
-            currentExists: currentGrandTrine,
-            nextExists: nextGrandTrine,
-          });
-
-          if (phase) {
-            tripleAspectEvents.push(
-              getTripleAspectEvent({
-                timestamp: currentMinute.toDate(),
-                body1,
-                body2,
-                body3,
-                tripleAspect: "grand trine",
-                phase,
-              })
-            );
-          }
-        }
-
-        // Check for Yod
-        const currentYod = detectYod({
+        const nextTSquare = detectTSquare({
           body1,
           body2,
           body3,
-          longitude1: currentLongitude1,
-          longitude2: currentLongitude2,
-          longitude3: currentLongitude3,
+          longitude1: nextLongitude1,
+          longitude2: nextLongitude2,
+          longitude3: nextLongitude3,
         });
 
-        if (currentYod.isYod && currentYod.apexBody) {
-          const previousYod = detectYod({
-            body1,
-            body2,
-            body3,
-            longitude1: previousLongitude1,
-            longitude2: previousLongitude2,
-            longitude3: previousLongitude3,
-          });
+        const phase = getTripleAspectPhase({
+          pattern: "t-square",
+          previousLongitude1,
+          previousLongitude2,
+          previousLongitude3,
+          currentLongitude1,
+          currentLongitude2,
+          currentLongitude3,
+          nextLongitude1,
+          nextLongitude2,
+          nextLongitude3,
+          previousExists: previousTSquare.isTSquare,
+          currentExists: currentTSquare.isTSquare,
+          nextExists: nextTSquare.isTSquare,
+        });
 
-          const nextYod = detectYod({
-            body1,
-            body2,
-            body3,
-            longitude1: nextLongitude1,
-            longitude2: nextLongitude2,
-            longitude3: nextLongitude3,
-          });
-
-          const phase = getTripleAspectPhase({
-            pattern: "yod",
-            previousLongitude1,
-            previousLongitude2,
-            previousLongitude3,
-            currentLongitude1,
-            currentLongitude2,
-            currentLongitude3,
-            nextLongitude1,
-            nextLongitude2,
-            nextLongitude3,
-            previousExists: previousYod.isYod,
-            currentExists: currentYod.isYod,
-            nextExists: nextYod.isYod,
-          });
-
-          if (phase) {
-            tripleAspectEvents.push(
-              getTripleAspectEvent({
-                timestamp: currentMinute.toDate(),
-                body1,
-                body2,
-                body3,
-                tripleAspect: "yod",
-                focalOrApexBody: currentYod.apexBody,
-                phase,
-              })
-            );
-          }
+        if (phase) {
+          tripleAspectEvents.push(
+            getTripleAspectEvent({
+              timestamp: currentMinute.toDate(),
+              body1,
+              body2,
+              body3,
+              tripleAspect: "t-square",
+              focalOrApexBody: currentTSquare.focalBody,
+              phase,
+            })
+          );
         }
+      }
+    } // End T-Square check
 
-        // Check for Thor's Hammer
-        const currentThorsHammer = detectThorsHammer({
+    // Check for Grand Trine (only if pre-filter passed)
+    if (couldFormGrandTrine) {
+      const currentGrandTrine = detectGrandTrine({
+        longitude1: currentLongitude1,
+        longitude2: currentLongitude2,
+        longitude3: currentLongitude3,
+      });
+
+      if (currentGrandTrine) {
+        const previousGrandTrine = detectGrandTrine({
+          longitude1: previousLongitude1,
+          longitude2: previousLongitude2,
+          longitude3: previousLongitude3,
+        });
+
+        const nextGrandTrine = detectGrandTrine({
+          longitude1: nextLongitude1,
+          longitude2: nextLongitude2,
+          longitude3: nextLongitude3,
+        });
+
+        const phase = getTripleAspectPhase({
+          pattern: "grand trine",
+          previousLongitude1,
+          previousLongitude2,
+          previousLongitude3,
+          currentLongitude1,
+          currentLongitude2,
+          currentLongitude3,
+          nextLongitude1,
+          nextLongitude2,
+          nextLongitude3,
+          previousExists: previousGrandTrine,
+          currentExists: currentGrandTrine,
+          nextExists: nextGrandTrine,
+        });
+
+        if (phase) {
+          tripleAspectEvents.push(
+            getTripleAspectEvent({
+              timestamp: currentMinute.toDate(),
+              body1,
+              body2,
+              body3,
+              tripleAspect: "grand trine",
+              phase,
+            })
+          );
+        }
+      }
+    } // End Grand Trine check
+
+    // Check for Yod (only if pre-filter passed)
+    if (couldFormYod) {
+      const currentYod = detectYod({
+        body1,
+        body2,
+        body3,
+        longitude1: currentLongitude1,
+        longitude2: currentLongitude2,
+        longitude3: currentLongitude3,
+      });
+
+      if (currentYod.isYod && currentYod.apexBody) {
+        const previousYod = detectYod({
           body1,
           body2,
           body3,
-          longitude1: currentLongitude1,
-          longitude2: currentLongitude2,
-          longitude3: currentLongitude3,
+          longitude1: previousLongitude1,
+          longitude2: previousLongitude2,
+          longitude3: previousLongitude3,
         });
 
-        if (currentThorsHammer.isThorsHammer && currentThorsHammer.focalBody) {
-          const previousThorsHammer = detectThorsHammer({
-            body1,
-            body2,
-            body3,
-            longitude1: previousLongitude1,
-            longitude2: previousLongitude2,
-            longitude3: previousLongitude3,
-          });
+        const nextYod = detectYod({
+          body1,
+          body2,
+          body3,
+          longitude1: nextLongitude1,
+          longitude2: nextLongitude2,
+          longitude3: nextLongitude3,
+        });
 
-          const nextThorsHammer = detectThorsHammer({
-            body1,
-            body2,
-            body3,
-            longitude1: nextLongitude1,
-            longitude2: nextLongitude2,
-            longitude3: nextLongitude3,
-          });
+        const phase = getTripleAspectPhase({
+          pattern: "yod",
+          previousLongitude1,
+          previousLongitude2,
+          previousLongitude3,
+          currentLongitude1,
+          currentLongitude2,
+          currentLongitude3,
+          nextLongitude1,
+          nextLongitude2,
+          nextLongitude3,
+          previousExists: previousYod.isYod,
+          currentExists: currentYod.isYod,
+          nextExists: nextYod.isYod,
+        });
 
-          const phase = getTripleAspectPhase({
-            pattern: "thor's hammer",
-            previousLongitude1,
-            previousLongitude2,
-            previousLongitude3,
-            currentLongitude1,
-            currentLongitude2,
-            currentLongitude3,
-            nextLongitude1,
-            nextLongitude2,
-            nextLongitude3,
-            previousExists: previousThorsHammer.isThorsHammer,
-            currentExists: currentThorsHammer.isThorsHammer,
-            nextExists: nextThorsHammer.isThorsHammer,
-          });
-
-          if (phase) {
-            tripleAspectEvents.push(
-              getTripleAspectEvent({
-                timestamp: currentMinute.toDate(),
-                body1,
-                body2,
-                body3,
-                tripleAspect: "thor's hammer",
-                focalOrApexBody: currentThorsHammer.focalBody,
-                phase,
-              })
-            );
-          }
+        if (phase) {
+          tripleAspectEvents.push(
+            getTripleAspectEvent({
+              timestamp: currentMinute.toDate(),
+              body1,
+              body2,
+              body3,
+              tripleAspect: "yod",
+              focalOrApexBody: currentYod.apexBody,
+              phase,
+            })
+          );
         }
+      }
+    } // End Yod check
+
+    // Check for Hammer - no pre-filter for this pattern yet
+    const currentHammer = detectHammer({
+      body1,
+      body2,
+      body3,
+      longitude1: currentLongitude1,
+      longitude2: currentLongitude2,
+      longitude3: currentLongitude3,
+    });
+
+    if (currentHammer.isHammer && currentHammer.focalBody) {
+      const previousHammer = detectHammer({
+        body1,
+        body2,
+        body3,
+        longitude1: previousLongitude1,
+        longitude2: previousLongitude2,
+        longitude3: previousLongitude3,
+      });
+
+      const nextHammer = detectHammer({
+        body1,
+        body2,
+        body3,
+        longitude1: nextLongitude1,
+        longitude2: nextLongitude2,
+        longitude3: nextLongitude3,
+      });
+
+      const phase = getTripleAspectPhase({
+        pattern: "hammer",
+        previousLongitude1,
+        previousLongitude2,
+        previousLongitude3,
+        currentLongitude1,
+        currentLongitude2,
+        currentLongitude3,
+        nextLongitude1,
+        nextLongitude2,
+        nextLongitude3,
+        previousExists: previousHammer.isHammer,
+        currentExists: currentHammer.isHammer,
+        nextExists: nextHammer.isHammer,
+      });
+
+      if (phase) {
+        tripleAspectEvents.push(
+          getTripleAspectEvent({
+            timestamp: currentMinute.toDate(),
+            body1,
+            body2,
+            body3,
+            tripleAspect: "hammer",
+            focalOrApexBody: currentHammer.focalBody,
+            phase,
+          })
+        );
       }
     }
   }
@@ -707,7 +727,7 @@ function getTripleAspectPhase(args: {
   previousExists: boolean;
   currentExists: boolean;
   nextExists: boolean;
-}): TripleAspectPhase | null {
+}): AspectPhase | null {
   const {
     pattern,
     previousLongitude1,
@@ -778,7 +798,7 @@ function getTripleAspectEvent(args: {
   body3: Body;
   tripleAspect: TripleAspect;
   focalOrApexBody?: Body;
-  phase: TripleAspectPhase;
+  phase: AspectPhase;
 }): TripleAspectEvent {
   const {
     timestamp,
@@ -852,6 +872,7 @@ function getTripleAspectEvent(args: {
 
   const tripleAspectEvent: TripleAspectEvent = {
     start: timestamp,
+    end: timestamp,
     description,
     summary: summary as TripleAspectSummary,
     categories,
@@ -902,7 +923,7 @@ export function getTripleAspectDurationEvents(events: Event[]): Event[] {
   const groupedEvents = _.groupBy(tripleAspectEvents, (event) => {
     const planets = event.categories
       .filter((category) =>
-        TRIPLE_ASPECT_BODIES.map(_.startCase).includes(category)
+        tripleAspectBodies.map(_.startCase).includes(category)
       )
       .sort();
 
@@ -956,7 +977,7 @@ function getTripleAspectDurationEvent(
 
   const bodiesCapitalized = categories
     .filter((category) =>
-      TRIPLE_ASPECT_BODIES.map(_.startCase).includes(category)
+      tripleAspectBodies.map(_.startCase).includes(category)
     )
     .sort();
 

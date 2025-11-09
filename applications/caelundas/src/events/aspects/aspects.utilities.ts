@@ -1,75 +1,12 @@
+import type { Aspect, AspectPhase } from "../../types";
 import {
   majorAspects,
   minorAspects,
   specialtyAspects,
-  type Aspect,
-  type MajorAspect,
-  type MinorAspect,
-  type SpecialtyAspect,
+  angleByAspect,
+  orbByAspect,
 } from "../../constants";
 import { getAngle } from "../../math.utilities";
-
-const angleByMajorAspect: Record<MajorAspect, number> = {
-  conjunct: 0,
-  sextile: 60,
-  square: 90,
-  trine: 120,
-  opposite: 180,
-};
-
-const angleByMinorAspect: Record<MinorAspect, number> = {
-  semisextile: 30,
-  semisquare: 45,
-  sesquiquadrate: 135,
-  quincunx: 150,
-};
-
-const angleBySpecialtyAspect: Record<SpecialtyAspect, number> = {
-  undecile: 32.72727272727273,
-  decile: 36,
-  novile: 40,
-  septile: 51.42857142857143,
-  quintile: 72,
-  tredecile: 108,
-  biquintile: 144,
-};
-
-const angleByAspect: Record<Aspect, number> = {
-  ...angleByMajorAspect,
-  ...angleByMinorAspect,
-  ...angleBySpecialtyAspect,
-};
-
-const orbByMajorAspect: Record<MajorAspect, number> = {
-  conjunct: 8,
-  opposite: 8,
-  trine: 6,
-  square: 6,
-  sextile: 4,
-};
-
-const orbByMinorAspect: Record<MinorAspect, number> = {
-  semisextile: 2,
-  quincunx: 3,
-  semisquare: 2,
-  sesquiquadrate: 2,
-};
-
-const orbBySpecialtyAspect: Record<SpecialtyAspect, number> = {
-  quintile: 2,
-  biquintile: 2,
-  septile: 1,
-  novile: 1,
-  undecile: 1,
-  decile: 1,
-  tredecile: 1,
-};
-
-const orbByAspect: Record<Aspect, number> = {
-  ...orbByMajorAspect,
-  ...orbByMinorAspect,
-  ...orbBySpecialtyAspect,
-};
 
 export const isAspect = (args: {
   longitudeBody1: number;
@@ -115,8 +52,6 @@ export const getSpecialtyAspect = (args: {
   }
   return null;
 };
-
-export type AspectPhase = "applying" | "exact" | "separating";
 
 const getIsAspect = (aspects: Aspect[]) => {
   const isAspect = (args: {
@@ -173,14 +108,14 @@ const getIsAspect = (aspects: Aspect[]) => {
         }
       }
 
-      // Check for entering orb (applying)
+      // Check for entering orb (forming)
       if (!previousInOrb && currentInOrb) {
-        return "applying";
+        return "forming";
       }
 
-      // Check for exiting orb (separating)
+      // Check for exiting orb (dissolving)
       if (currentInOrb && !nextInOrb) {
-        return "separating";
+        return "dissolving";
       }
     }
 

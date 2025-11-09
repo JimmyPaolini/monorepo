@@ -65,6 +65,7 @@ export function getMoonriseEvent(date: Date): Event {
 
   const moonriseEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories,
@@ -81,6 +82,7 @@ export function getLunarZenithEvent(date: Date): Event {
 
   const lunarZenithEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories,
@@ -97,6 +99,7 @@ export function getMoonsetEvent(date: Date): Event {
 
   const moonsetEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories,
@@ -113,6 +116,7 @@ export function getLunarNadirEvent(date: Date): Event {
 
   const lunarNadirEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories,

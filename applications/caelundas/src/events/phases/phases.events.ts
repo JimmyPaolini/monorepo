@@ -8,17 +8,20 @@ import {
   getCalendar,
 } from "../../calendar.utilities";
 import { pairDurationEvents } from "../../duration.utilities";
+import type {
+  Body,
+  MartianPhase,
+  MartianPhaseSymbol,
+  MercurianPhase,
+  MercurianPhaseSymbol,
+  VenusianPhase,
+  VenusianPhaseSymbol,
+} from "../../types";
 import {
   symbolByMartianPhase,
   symbolByMercurianPhase,
   symbolByVenusianPhase,
-  type Body,
-  type MartianPhase,
-  type MartianPhaseSymbol,
-  type MercurianPhase,
-  type MercurianPhaseSymbol,
-  type VenusianPhase,
-  type VenusianPhaseSymbol,
+  planetaryPhaseBodies,
 } from "../../constants";
 import type {
   CoordinateEphemeris,
@@ -41,7 +44,6 @@ import {
 import { upsertEvents } from "../../database.utilities";
 import { MARGIN_MINUTES } from "../../calendar.utilities";
 import { getOutputPath } from "../../output.utilities";
-import { PLANETARY_PHASE_BODIES } from "../../constants";
 
 const categories = ["Astronomy", "Astrology", "Planetary Phase"];
 
@@ -69,7 +71,6 @@ export function getPlanetaryPhaseEvents(args: {
     illuminationEphemerisByBody,
   } = args;
 
-  const planetaryPhaseBodies = PLANETARY_PHASE_BODIES;
   const planetaryPhaseEvents: PlanetaryPhaseEvent[] = [];
 
   if (planetaryPhaseBodies.includes("venus")) {
@@ -144,6 +145,7 @@ export function getVenusianPhaseEvent(args: {
 
   const venusianPhaseEvent: VenusianPhaseEvent = {
     start: timestamp,
+    end: timestamp,
     categories: [...categories, "Venusian", phaseCapitalized],
     description,
     summary,
@@ -349,6 +351,7 @@ export function getMercurianPhaseEvent(args: {
 
   const mercurianPhaseEvent: MercurianPhaseEvent = {
     start: timestamp,
+    end: timestamp,
     categories: [...categories, "Mercurian", phaseCapitalized],
     description,
     summary,
@@ -553,6 +556,7 @@ export function getMartianPhaseEvent(args: {
 
   const martianPhaseEvent: MartianPhaseEvent = {
     start: timestamp,
+    end: timestamp,
     categories: [...categories, "Martian", phaseCapitalized],
     description,
     summary,

@@ -9,11 +9,11 @@ import type {
   RetrogradeBody,
   OrbitalDirectionSymbol,
   RetrogradeBodySymbol,
-} from "../../constants";
+} from "../../types";
 import {
   symbolByBody,
   symbolByOrbitalDirection,
-  RETROGRADE_BODIES,
+  retrogradeBodies,
 } from "../../constants";
 import { MARGIN_MINUTES } from "../../calendar.utilities";
 import { isDirect, isRetrograde } from "./retrogrades.utilities";
@@ -41,10 +41,9 @@ export function getRetrogradeEvents(args: {
   currentMinute: Moment;
 }) {
   const { coordinateEphemerisByBody, currentMinute } = args;
-  const retrogradeBodies = RETROGRADE_BODIES;
   const retrogradeEvents: RetrogradeEvent[] = [];
 
-  for (const body of retrogradeBodies as RetrogradeBody[]) {
+  for (const body of retrogradeBodies) {
     const ephemeris = coordinateEphemerisByBody[body];
 
     const { longitude: currentLongitude } =
@@ -116,6 +115,7 @@ export function getRetrogradeEvent(args: {
 
   const retrogradeEvent: RetrogradeEvent = {
     start: timestamp,
+    end: timestamp,
     categories: categories.concat(
       direction === "retrograde" ? ["Retrograde"] : ["Direct"]
     ),
@@ -162,7 +162,7 @@ export function getRetrogradeDurationEvents(events: Event[]): Event[] {
   ) as RetrogradeEvent[];
 
   // Process each planet separately
-  for (const planet of RETROGRADE_BODIES) {
+  for (const planet of retrogradeBodies) {
     const beginnings = retrogradeEvents.filter((event) =>
       event.description.includes(`Retrograde`)
     );

@@ -1,6 +1,6 @@
 import { getAngle, isMaximum, isMinimum } from "../../math.utilities";
-
-export type EclipsePhase = "beginning" | "maximum" | "ending";
+import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
+import type { EclipsePhase } from "../../types";
 
 export function isSolarEclipse(args: {
   currentDiameterMoon: number;

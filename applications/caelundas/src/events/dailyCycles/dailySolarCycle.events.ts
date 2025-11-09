@@ -66,6 +66,7 @@ export function getSunriseEvent(date: Date): Event {
 
   const sunriseEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories,
@@ -82,6 +83,7 @@ export function getSolarZenithEvent(date: Date): Event {
 
   const solarZenithEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories,
@@ -98,6 +100,7 @@ export function getSunsetEvent(date: Date): Event {
 
   const sunsetEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories,
@@ -114,6 +117,7 @@ export function getSolarNadirEvent(date: Date): Event {
 
   const solarNadirEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories,

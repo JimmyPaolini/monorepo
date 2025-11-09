@@ -113,6 +113,7 @@ export function getSolarEclipseEvent(args: {
 
   const solarEclipseEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories: categories.concat(["Solar"]),
@@ -146,6 +147,7 @@ export function getLunarEclipseEvent(args: {
 
   const lunarEclipseEvent: Event = {
     start: date,
+    end: date,
     summary,
     description,
     categories: categories.concat(["Lunar"]),

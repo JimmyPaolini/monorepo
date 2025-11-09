@@ -40,6 +40,11 @@ import {
   getStelliumEvents,
   getStelliumDurationEvents,
 } from "./events/aspects/stellium.events";
+import { composeTripleAspectEvents } from "./events/aspects/tripleAspects.composition";
+import { composeQuadrupleAspectEvents } from "./events/aspects/quadrupleAspects.composition";
+import { composeQuintupleAspectEvents } from "./events/aspects/quintupleAspects.composition";
+import { composeSextupleAspectEvents } from "./events/aspects/sextupleAspects.composition";
+import { composeStelliumEvents } from "./events/aspects/stellium.composition";
 import {
   getRetrogradeDurationEvents,
   getRetrogradeEvents,
@@ -69,7 +74,11 @@ import {
 } from "./events/phases/phases.events";
 import { getCalendar } from "./calendar.utilities";
 import { getOutputPath } from "./output.utilities";
-import { upsertEvents, getAllEvents } from "./database.utilities";
+import {
+  upsertEvents,
+  getAllEvents,
+  getActiveAspectsAt,
+} from "./database.utilities";
 import fs from "fs";
 import { inputSchema } from "./input.schema";
 
@@ -100,7 +109,7 @@ async function main() {
     const endMoment = nextDay.clone().add(MARGIN_MINUTES, "minutes");
 
     const timespan = `${startMoment.format()} to ${endMoment.format()}`;
-    console.log(`📅 Processing from ${timespan}`);
+    console.log(`📅 Processing day ${timespan}`);
 
     const start = startMoment.toDate();
     const end = endMoment.toDate();
@@ -115,11 +124,13 @@ async function main() {
     } = await getEphemerides({ coordinates, end, start, timezone });
 
     // #region 🎯 Exact Events
+
     for (
       let currentMinute = moment.tz(thisDay, timezone);
       currentMinute.isBefore(nextDay);
       currentMinute = currentMinute.add(1, "minute")
     ) {
+      /* @ts-ignore - Expression produces a union type that is too complex to represent */
       await upsertEvents([
         ...getSignIngressEvents({ coordinateEphemerisByBody, currentMinute }),
         ...getDecanIngressEvents({ coordinateEphemerisByBody, currentMinute }),
@@ -127,23 +138,6 @@ async function main() {
         ...getMajorAspectEvents({ coordinateEphemerisByBody, currentMinute }),
         ...getMinorAspectEvents({ coordinateEphemerisByBody, currentMinute }),
         ...getSpecialtyAspectEvents({
-          coordinateEphemerisByBody,
-          currentMinute,
-        }),
-        ...getTripleAspectEvents({ coordinateEphemerisByBody, currentMinute }),
-        ...getQuadrupleAspectEvents({
-          coordinateEphemerisByBody,
-          currentMinute,
-        }),
-        ...getQuintupleAspectEvents({
-          coordinateEphemerisByBody,
-          currentMinute,
-        }),
-        ...getSextupleAspectEvents({
-          coordinateEphemerisByBody,
-          currentMinute,
-        }),
-        ...getStelliumEvents({
           coordinateEphemerisByBody,
           currentMinute,
         }),
@@ -187,9 +181,40 @@ async function main() {
           sunAzimuthElevationEphemeris: azimuthElevationEphemerisByBody["sun"],
         }),
       ]);
+
+      const activeAspects = await getActiveAspectsAt(currentMinute.toDate());
+
+      /* @ts-ignore - Expression produces a union type that is too complex to represent */
+      await upsertEvents([
+        ...composeTripleAspectEvents(
+          activeAspects,
+          coordinateEphemerisByBody,
+          currentMinute
+        ),
+        ...composeQuadrupleAspectEvents(
+          activeAspects,
+          coordinateEphemerisByBody,
+          currentMinute
+        ),
+        ...composeQuintupleAspectEvents(
+          activeAspects,
+          coordinateEphemerisByBody,
+          currentMinute
+        ),
+        ...composeSextupleAspectEvents(
+          activeAspects,
+          coordinateEphemerisByBody,
+          currentMinute
+        ),
+        ...composeStelliumEvents(
+          activeAspects,
+          coordinateEphemerisByBody,
+          currentMinute
+        ),
+      ]);
     }
 
-    console.log(`📅 Processed from ${timespan}`);
+    console.log(`📅 Processed day ${timespan}`);
   }
 
   // #region ⏱️ Duration Events

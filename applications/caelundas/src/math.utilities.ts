@@ -44,3 +44,26 @@ export function isMinimum(args: {
   const { current, previous, next } = args;
   return previous > current && current < next;
 }
+
+/**
+ * Generate combinations of k elements from an array
+ */
+export function getCombinations<T>(array: T[], k: number): T[][] {
+  const result: T[][] = [];
+
+  function combine(start: number, chosen: T[]) {
+    if (chosen.length === k) {
+      result.push([...chosen]);
+      return;
+    }
+
+    for (let i = start; i < array.length; i++) {
+      chosen.push(array[i]);
+      combine(i + 1, chosen);
+      chosen.pop();
+    }
+  }
+
+  combine(0, []);
+  return result;
+}

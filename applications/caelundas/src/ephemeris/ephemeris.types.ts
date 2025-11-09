@@ -1,4 +1,4 @@
-import { type Body } from "../constants";
+import type { Body } from "../types";
 
 export type Latitude = number;
 export type Longitude = number;

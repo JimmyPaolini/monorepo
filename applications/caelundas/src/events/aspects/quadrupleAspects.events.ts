@@ -3,26 +3,32 @@ import _ from "lodash";
 import type { Moment } from "moment";
 import type { EventTemplate } from "../../calendar.utilities";
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
-import {
+import type {
   Body,
   BodySymbol,
   QuadrupleAspect,
   QuadrupleAspectSymbol,
+  AspectPhase,
+} from "../../types";
+import {
   symbolByBody,
   symbolByQuadrupleAspect,
-  QUADRUPLE_ASPECT_BODIES,
+  quadrupleAspectBodies,
 } from "../../constants";
 import { type Event, getCalendar } from "../../calendar.utilities";
 import { isAspect } from "./aspects.utilities";
-import { getAngle } from "../../math.utilities";
+import { getAngle, getCombinations } from "../../math.utilities";
 import { upsertEvents } from "../../database.utilities";
 import { getOutputPath } from "../../output.utilities";
+import { couldBeGrandCross, couldBeKite } from "./aspects.cache";
 
-export type QuadrupleAspectPhase = "forming" | "exact" | "dissolving";
+type QuadrupleAspectDescription =
+  /* @ts-ignore - Expression produces a union type that is too complex to represent */
+  `${Capitalize<Body>}, ${Capitalize<Body>}, ${Capitalize<Body>}, ${Capitalize<Body>} ${QuadrupleAspect} ${AspectPhase}`;
 
-type QuadrupleAspectDescription = string;
-
-type QuadrupleAspectSummary = string;
+type QuadrupleAspectSummary =
+  /* @ts-ignore - Expression produces a union type that is too complex to represent */
+  `${string}${QuadrupleAspectSymbol} ${BodySymbol}-${BodySymbol}-${BodySymbol}-${BodySymbol} ${QuadrupleAspectDescription}`;
 
 export interface QuadrupleAspectEventTemplate extends EventTemplate {
   description: QuadrupleAspectDescription;
@@ -1565,7 +1571,6 @@ export function getQuadrupleAspectEvents(args: {
   currentMinute: Moment;
 }) {
   const { coordinateEphemerisByBody, currentMinute } = args;
-  const quadrupleAspectBodies = QUADRUPLE_ASPECT_BODIES;
 
   const previousMinute = currentMinute.clone().subtract(1, "minute");
   const nextMinute = currentMinute.clone().add(1, "minute");
@@ -1573,446 +1578,457 @@ export function getQuadrupleAspectEvents(args: {
   const quadrupleAspectEvents: QuadrupleAspectEvent[] = [];
 
   // Check all combinations of 4 bodies: C(10,4) = 210 combinations
-  for (let i = 0; i < quadrupleAspectBodies.length; i++) {
-    for (let j = i + 1; j < quadrupleAspectBodies.length; j++) {
-      for (let k = j + 1; k < quadrupleAspectBodies.length; k++) {
-        for (let l = k + 1; l < quadrupleAspectBodies.length; l++) {
-          const body1 = quadrupleAspectBodies[i];
-          const body2 = quadrupleAspectBodies[j];
-          const body3 = quadrupleAspectBodies[k];
-          const body4 = quadrupleAspectBodies[l];
+  const combinations = getCombinations(quadrupleAspectBodies, 4);
 
-          const ephemerisBody1 = coordinateEphemerisByBody[body1];
-          const ephemerisBody2 = coordinateEphemerisByBody[body2];
-          const ephemerisBody3 = coordinateEphemerisByBody[body3];
-          const ephemerisBody4 = coordinateEphemerisByBody[body4];
+  for (const [body1, body2, body3, body4] of combinations) {
+    const ephemerisBody1 = coordinateEphemerisByBody[body1];
+    const ephemerisBody2 = coordinateEphemerisByBody[body2];
+    const ephemerisBody3 = coordinateEphemerisByBody[body3];
+    const ephemerisBody4 = coordinateEphemerisByBody[body4];
 
-          const { longitude: currentLongitude1 } =
-            ephemerisBody1[currentMinute.toISOString()];
-          const { longitude: currentLongitude2 } =
-            ephemerisBody2[currentMinute.toISOString()];
-          const { longitude: currentLongitude3 } =
-            ephemerisBody3[currentMinute.toISOString()];
-          const { longitude: currentLongitude4 } =
-            ephemerisBody4[currentMinute.toISOString()];
+    const { longitude: currentLongitude1 } =
+      ephemerisBody1[currentMinute.toISOString()];
+    const { longitude: currentLongitude2 } =
+      ephemerisBody2[currentMinute.toISOString()];
+    const { longitude: currentLongitude3 } =
+      ephemerisBody3[currentMinute.toISOString()];
+    const { longitude: currentLongitude4 } =
+      ephemerisBody4[currentMinute.toISOString()];
 
-          const { longitude: previousLongitude1 } =
-            ephemerisBody1[previousMinute.toISOString()];
-          const { longitude: previousLongitude2 } =
-            ephemerisBody2[previousMinute.toISOString()];
-          const { longitude: previousLongitude3 } =
-            ephemerisBody3[previousMinute.toISOString()];
-          const { longitude: previousLongitude4 } =
-            ephemerisBody4[previousMinute.toISOString()];
+    // Quick pre-filter: skip this combination if it can't possibly form any quadruple aspect
+    const currentLongitudes: [number, number, number, number] = [
+      currentLongitude1,
+      currentLongitude2,
+      currentLongitude3,
+      currentLongitude4,
+    ];
 
-          const { longitude: nextLongitude1 } =
-            ephemerisBody1[nextMinute.toISOString()];
-          const { longitude: nextLongitude2 } =
-            ephemerisBody2[nextMinute.toISOString()];
-          const { longitude: nextLongitude3 } =
-            ephemerisBody3[nextMinute.toISOString()];
-          const { longitude: nextLongitude4 } =
-            ephemerisBody4[nextMinute.toISOString()];
+    const couldFormGrandCross = couldBeGrandCross(currentLongitudes);
+    const couldFormKite = couldBeKite(currentLongitudes);
 
-          // Check for Grand Cross
-          const currentGrandCross = detectGrandCross({
-            longitude1: currentLongitude1,
-            longitude2: currentLongitude2,
-            longitude3: currentLongitude3,
-            longitude4: currentLongitude4,
-          });
+    // Skip if no quadruple aspect is possible
+    if (!couldFormGrandCross && !couldFormKite) {
+      continue;
+    }
 
-          if (currentGrandCross) {
-            const previousGrandCross = detectGrandCross({
-              longitude1: previousLongitude1,
-              longitude2: previousLongitude2,
-              longitude3: previousLongitude3,
-              longitude4: previousLongitude4,
-            });
+    const { longitude: previousLongitude1 } =
+      ephemerisBody1[previousMinute.toISOString()];
+    const { longitude: previousLongitude2 } =
+      ephemerisBody2[previousMinute.toISOString()];
+    const { longitude: previousLongitude3 } =
+      ephemerisBody3[previousMinute.toISOString()];
+    const { longitude: previousLongitude4 } =
+      ephemerisBody4[previousMinute.toISOString()];
 
-            const nextGrandCross = detectGrandCross({
-              longitude1: nextLongitude1,
-              longitude2: nextLongitude2,
-              longitude3: nextLongitude3,
-              longitude4: nextLongitude4,
-            });
+    const { longitude: nextLongitude1 } =
+      ephemerisBody1[nextMinute.toISOString()];
+    const { longitude: nextLongitude2 } =
+      ephemerisBody2[nextMinute.toISOString()];
+    const { longitude: nextLongitude3 } =
+      ephemerisBody3[nextMinute.toISOString()];
+    const { longitude: nextLongitude4 } =
+      ephemerisBody4[nextMinute.toISOString()];
 
-            const phase = getQuadrupleAspectPhase({
-              pattern: "grand cross",
-              previousLongitude1,
-              previousLongitude2,
-              previousLongitude3,
-              previousLongitude4,
-              currentLongitude1,
-              currentLongitude2,
-              currentLongitude3,
-              currentLongitude4,
-              nextLongitude1,
-              nextLongitude2,
-              nextLongitude3,
-              nextLongitude4,
-              previousExists: previousGrandCross,
-              currentExists: currentGrandCross,
-              nextExists: nextGrandCross,
-            });
+    // Check for Grand Cross (only if pre-filter passed)
+    if (couldFormGrandCross) {
+      const currentGrandCross = detectGrandCross({
+        longitude1: currentLongitude1,
+        longitude2: currentLongitude2,
+        longitude3: currentLongitude3,
+        longitude4: currentLongitude4,
+      });
 
-            if (phase) {
-              quadrupleAspectEvents.push(
-                getQuadrupleAspectEvent({
-                  timestamp: currentMinute.toDate(),
-                  body1,
-                  body2,
-                  body3,
-                  body4,
-                  quadrupleAspect: "grand cross",
-                  phase,
-                })
-              );
-            }
-          }
+      if (currentGrandCross) {
+        const previousGrandCross = detectGrandCross({
+          longitude1: previousLongitude1,
+          longitude2: previousLongitude2,
+          longitude3: previousLongitude3,
+          longitude4: previousLongitude4,
+        });
 
-          // Check for Kite
-          const currentKite = detectKite({
-            longitude1: currentLongitude1,
-            longitude2: currentLongitude2,
-            longitude3: currentLongitude3,
-            longitude4: currentLongitude4,
-          });
+        const nextGrandCross = detectGrandCross({
+          longitude1: nextLongitude1,
+          longitude2: nextLongitude2,
+          longitude3: nextLongitude3,
+          longitude4: nextLongitude4,
+        });
 
-          if (currentKite) {
-            const previousKite = detectKite({
-              longitude1: previousLongitude1,
-              longitude2: previousLongitude2,
-              longitude3: previousLongitude3,
-              longitude4: previousLongitude4,
-            });
+        const phase = getQuadrupleAspectPhase({
+          pattern: "grand cross",
+          previousLongitude1,
+          previousLongitude2,
+          previousLongitude3,
+          previousLongitude4,
+          currentLongitude1,
+          currentLongitude2,
+          currentLongitude3,
+          currentLongitude4,
+          nextLongitude1,
+          nextLongitude2,
+          nextLongitude3,
+          nextLongitude4,
+          previousExists: previousGrandCross,
+          currentExists: currentGrandCross,
+          nextExists: nextGrandCross,
+        });
 
-            const nextKite = detectKite({
-              longitude1: nextLongitude1,
-              longitude2: nextLongitude2,
-              longitude3: nextLongitude3,
-              longitude4: nextLongitude4,
-            });
-
-            const phase = getQuadrupleAspectPhase({
-              pattern: "kite",
-              previousLongitude1,
-              previousLongitude2,
-              previousLongitude3,
-              previousLongitude4,
-              currentLongitude1,
-              currentLongitude2,
-              currentLongitude3,
-              currentLongitude4,
-              nextLongitude1,
-              nextLongitude2,
-              nextLongitude3,
-              nextLongitude4,
-              previousExists: previousKite,
-              currentExists: currentKite,
-              nextExists: nextKite,
-            });
-
-            if (phase) {
-              quadrupleAspectEvents.push(
-                getQuadrupleAspectEvent({
-                  timestamp: currentMinute.toDate(),
-                  body1,
-                  body2,
-                  body3,
-                  body4,
-                  quadrupleAspect: "kite",
-                  phase,
-                })
-              );
-            }
-          }
-
-          // Check for Mystic Rectangle
-          const currentMysticRectangle = detectMysticRectangle({
-            longitude1: currentLongitude1,
-            longitude2: currentLongitude2,
-            longitude3: currentLongitude3,
-            longitude4: currentLongitude4,
-          });
-
-          if (currentMysticRectangle) {
-            const previousMysticRectangle = detectMysticRectangle({
-              longitude1: previousLongitude1,
-              longitude2: previousLongitude2,
-              longitude3: previousLongitude3,
-              longitude4: previousLongitude4,
-            });
-
-            const nextMysticRectangle = detectMysticRectangle({
-              longitude1: nextLongitude1,
-              longitude2: nextLongitude2,
-              longitude3: nextLongitude3,
-              longitude4: nextLongitude4,
-            });
-
-            const phase = getQuadrupleAspectPhase({
-              pattern: "mystic rectangle",
-              previousLongitude1,
-              previousLongitude2,
-              previousLongitude3,
-              previousLongitude4,
-              currentLongitude1,
-              currentLongitude2,
-              currentLongitude3,
-              currentLongitude4,
-              nextLongitude1,
-              nextLongitude2,
-              nextLongitude3,
-              nextLongitude4,
-              previousExists: previousMysticRectangle,
-              currentExists: currentMysticRectangle,
-              nextExists: nextMysticRectangle,
-            });
-
-            if (phase) {
-              quadrupleAspectEvents.push(
-                getQuadrupleAspectEvent({
-                  timestamp: currentMinute.toDate(),
-                  body1,
-                  body2,
-                  body3,
-                  body4,
-                  quadrupleAspect: "mystic rectangle",
-                  phase,
-                })
-              );
-            }
-          }
-
-          // Check for Cradle
-          const currentCradle = detectCradle({
-            longitude1: currentLongitude1,
-            longitude2: currentLongitude2,
-            longitude3: currentLongitude3,
-            longitude4: currentLongitude4,
-          });
-
-          if (currentCradle) {
-            const previousCradle = detectCradle({
-              longitude1: previousLongitude1,
-              longitude2: previousLongitude2,
-              longitude3: previousLongitude3,
-              longitude4: previousLongitude4,
-            });
-
-            const nextCradle = detectCradle({
-              longitude1: nextLongitude1,
-              longitude2: nextLongitude2,
-              longitude3: nextLongitude3,
-              longitude4: nextLongitude4,
-            });
-
-            const phase = getQuadrupleAspectPhase({
-              pattern: "cradle",
-              previousLongitude1,
-              previousLongitude2,
-              previousLongitude3,
-              previousLongitude4,
-              currentLongitude1,
-              currentLongitude2,
-              currentLongitude3,
-              currentLongitude4,
-              nextLongitude1,
-              nextLongitude2,
-              nextLongitude3,
-              nextLongitude4,
-              previousExists: previousCradle,
-              currentExists: currentCradle,
-              nextExists: nextCradle,
-            });
-
-            if (phase) {
-              quadrupleAspectEvents.push(
-                getQuadrupleAspectEvent({
-                  timestamp: currentMinute.toDate(),
-                  body1,
-                  body2,
-                  body3,
-                  body4,
-                  quadrupleAspect: "cradle",
-                  phase,
-                })
-              );
-            }
-          }
-
-          // Check for Boomerang
-          const currentBoomerang = detectBoomerang({
-            longitude1: currentLongitude1,
-            longitude2: currentLongitude2,
-            longitude3: currentLongitude3,
-            longitude4: currentLongitude4,
-          });
-
-          if (currentBoomerang) {
-            const previousBoomerang = detectBoomerang({
-              longitude1: previousLongitude1,
-              longitude2: previousLongitude2,
-              longitude3: previousLongitude3,
-              longitude4: previousLongitude4,
-            });
-
-            const nextBoomerang = detectBoomerang({
-              longitude1: nextLongitude1,
-              longitude2: nextLongitude2,
-              longitude3: nextLongitude3,
-              longitude4: nextLongitude4,
-            });
-
-            const phase = getQuadrupleAspectPhase({
-              pattern: "boomerang",
-              previousLongitude1,
-              previousLongitude2,
-              previousLongitude3,
-              previousLongitude4,
-              currentLongitude1,
-              currentLongitude2,
-              currentLongitude3,
-              currentLongitude4,
-              nextLongitude1,
-              nextLongitude2,
-              nextLongitude3,
-              nextLongitude4,
-              previousExists: previousBoomerang,
-              currentExists: currentBoomerang,
-              nextExists: nextBoomerang,
-            });
-
-            if (phase) {
-              quadrupleAspectEvents.push(
-                getQuadrupleAspectEvent({
-                  timestamp: currentMinute.toDate(),
-                  body1,
-                  body2,
-                  body3,
-                  body4,
-                  quadrupleAspect: "boomerang",
-                  phase,
-                })
-              );
-            }
-          }
-
-          // Check for Butterfly
-          const currentButterfly = detectButterfly({
-            longitude1: currentLongitude1,
-            longitude2: currentLongitude2,
-            longitude3: currentLongitude3,
-            longitude4: currentLongitude4,
-          });
-
-          if (currentButterfly) {
-            const previousButterfly = detectButterfly({
-              longitude1: previousLongitude1,
-              longitude2: previousLongitude2,
-              longitude3: previousLongitude3,
-              longitude4: previousLongitude4,
-            });
-
-            const nextButterfly = detectButterfly({
-              longitude1: nextLongitude1,
-              longitude2: nextLongitude2,
-              longitude3: nextLongitude3,
-              longitude4: nextLongitude4,
-            });
-
-            const phase = getQuadrupleAspectPhase({
-              pattern: "butterfly",
-              previousLongitude1,
-              previousLongitude2,
-              previousLongitude3,
-              previousLongitude4,
-              currentLongitude1,
-              currentLongitude2,
-              currentLongitude3,
-              currentLongitude4,
-              nextLongitude1,
-              nextLongitude2,
-              nextLongitude3,
-              nextLongitude4,
-              previousExists: previousButterfly,
-              currentExists: currentButterfly,
-              nextExists: nextButterfly,
-            });
-
-            if (phase) {
-              quadrupleAspectEvents.push(
-                getQuadrupleAspectEvent({
-                  timestamp: currentMinute.toDate(),
-                  body1,
-                  body2,
-                  body3,
-                  body4,
-                  quadrupleAspect: "butterfly",
-                  phase,
-                })
-              );
-            }
-          }
-
-          // Check for Hourglass
-          const currentHourglass = detectHourglass({
-            longitude1: currentLongitude1,
-            longitude2: currentLongitude2,
-            longitude3: currentLongitude3,
-            longitude4: currentLongitude4,
-          });
-
-          if (currentHourglass) {
-            const previousHourglass = detectHourglass({
-              longitude1: previousLongitude1,
-              longitude2: previousLongitude2,
-              longitude3: previousLongitude3,
-              longitude4: previousLongitude4,
-            });
-
-            const nextHourglass = detectHourglass({
-              longitude1: nextLongitude1,
-              longitude2: nextLongitude2,
-              longitude3: nextLongitude3,
-              longitude4: nextLongitude4,
-            });
-
-            const phase = getQuadrupleAspectPhase({
-              pattern: "hourglass",
-              previousLongitude1,
-              previousLongitude2,
-              previousLongitude3,
-              previousLongitude4,
-              currentLongitude1,
-              currentLongitude2,
-              currentLongitude3,
-              currentLongitude4,
-              nextLongitude1,
-              nextLongitude2,
-              nextLongitude3,
-              nextLongitude4,
-              previousExists: previousHourglass,
-              currentExists: currentHourglass,
-              nextExists: nextHourglass,
-            });
-
-            if (phase) {
-              quadrupleAspectEvents.push(
-                getQuadrupleAspectEvent({
-                  timestamp: currentMinute.toDate(),
-                  body1,
-                  body2,
-                  body3,
-                  body4,
-                  quadrupleAspect: "hourglass",
-                  phase,
-                })
-              );
-            }
-          }
+        if (phase) {
+          quadrupleAspectEvents.push(
+            getQuadrupleAspectEvent({
+              timestamp: currentMinute.toDate(),
+              body1,
+              body2,
+              body3,
+              body4,
+              quadrupleAspect: "grand cross",
+              phase,
+            })
+          );
         }
+      }
+    } // End Grand Cross check
+
+    // Check for Kite (only if pre-filter passed)
+    if (couldFormKite) {
+      const currentKite = detectKite({
+        longitude1: currentLongitude1,
+        longitude2: currentLongitude2,
+        longitude3: currentLongitude3,
+        longitude4: currentLongitude4,
+      });
+
+      if (currentKite) {
+        const previousKite = detectKite({
+          longitude1: previousLongitude1,
+          longitude2: previousLongitude2,
+          longitude3: previousLongitude3,
+          longitude4: previousLongitude4,
+        });
+
+        const nextKite = detectKite({
+          longitude1: nextLongitude1,
+          longitude2: nextLongitude2,
+          longitude3: nextLongitude3,
+          longitude4: nextLongitude4,
+        });
+
+        const phase = getQuadrupleAspectPhase({
+          pattern: "kite",
+          previousLongitude1,
+          previousLongitude2,
+          previousLongitude3,
+          previousLongitude4,
+          currentLongitude1,
+          currentLongitude2,
+          currentLongitude3,
+          currentLongitude4,
+          nextLongitude1,
+          nextLongitude2,
+          nextLongitude3,
+          nextLongitude4,
+          previousExists: previousKite,
+          currentExists: currentKite,
+          nextExists: nextKite,
+        });
+
+        if (phase) {
+          quadrupleAspectEvents.push(
+            getQuadrupleAspectEvent({
+              timestamp: currentMinute.toDate(),
+              body1,
+              body2,
+              body3,
+              body4,
+              quadrupleAspect: "kite",
+              phase,
+            })
+          );
+        }
+      }
+    } // End Kite check
+
+    // Check for Mystic Rectangle - no pre-filter for this pattern yet
+    const currentMysticRectangle = detectMysticRectangle({
+      longitude1: currentLongitude1,
+      longitude2: currentLongitude2,
+      longitude3: currentLongitude3,
+      longitude4: currentLongitude4,
+    });
+
+    if (currentMysticRectangle) {
+      const previousMysticRectangle = detectMysticRectangle({
+        longitude1: previousLongitude1,
+        longitude2: previousLongitude2,
+        longitude3: previousLongitude3,
+        longitude4: previousLongitude4,
+      });
+
+      const nextMysticRectangle = detectMysticRectangle({
+        longitude1: nextLongitude1,
+        longitude2: nextLongitude2,
+        longitude3: nextLongitude3,
+        longitude4: nextLongitude4,
+      });
+
+      const phase = getQuadrupleAspectPhase({
+        pattern: "mystic rectangle",
+        previousLongitude1,
+        previousLongitude2,
+        previousLongitude3,
+        previousLongitude4,
+        currentLongitude1,
+        currentLongitude2,
+        currentLongitude3,
+        currentLongitude4,
+        nextLongitude1,
+        nextLongitude2,
+        nextLongitude3,
+        nextLongitude4,
+        previousExists: previousMysticRectangle,
+        currentExists: currentMysticRectangle,
+        nextExists: nextMysticRectangle,
+      });
+
+      if (phase) {
+        quadrupleAspectEvents.push(
+          getQuadrupleAspectEvent({
+            timestamp: currentMinute.toDate(),
+            body1,
+            body2,
+            body3,
+            body4,
+            quadrupleAspect: "mystic rectangle",
+            phase,
+          })
+        );
+      }
+    }
+
+    // Check for Cradle
+    const currentCradle = detectCradle({
+      longitude1: currentLongitude1,
+      longitude2: currentLongitude2,
+      longitude3: currentLongitude3,
+      longitude4: currentLongitude4,
+    });
+
+    if (currentCradle) {
+      const previousCradle = detectCradle({
+        longitude1: previousLongitude1,
+        longitude2: previousLongitude2,
+        longitude3: previousLongitude3,
+        longitude4: previousLongitude4,
+      });
+
+      const nextCradle = detectCradle({
+        longitude1: nextLongitude1,
+        longitude2: nextLongitude2,
+        longitude3: nextLongitude3,
+        longitude4: nextLongitude4,
+      });
+
+      const phase = getQuadrupleAspectPhase({
+        pattern: "cradle",
+        previousLongitude1,
+        previousLongitude2,
+        previousLongitude3,
+        previousLongitude4,
+        currentLongitude1,
+        currentLongitude2,
+        currentLongitude3,
+        currentLongitude4,
+        nextLongitude1,
+        nextLongitude2,
+        nextLongitude3,
+        nextLongitude4,
+        previousExists: previousCradle,
+        currentExists: currentCradle,
+        nextExists: nextCradle,
+      });
+
+      if (phase) {
+        quadrupleAspectEvents.push(
+          getQuadrupleAspectEvent({
+            timestamp: currentMinute.toDate(),
+            body1,
+            body2,
+            body3,
+            body4,
+            quadrupleAspect: "cradle",
+            phase,
+          })
+        );
+      }
+    }
+
+    // Check for Boomerang
+    const currentBoomerang = detectBoomerang({
+      longitude1: currentLongitude1,
+      longitude2: currentLongitude2,
+      longitude3: currentLongitude3,
+      longitude4: currentLongitude4,
+    });
+
+    if (currentBoomerang) {
+      const previousBoomerang = detectBoomerang({
+        longitude1: previousLongitude1,
+        longitude2: previousLongitude2,
+        longitude3: previousLongitude3,
+        longitude4: previousLongitude4,
+      });
+
+      const nextBoomerang = detectBoomerang({
+        longitude1: nextLongitude1,
+        longitude2: nextLongitude2,
+        longitude3: nextLongitude3,
+        longitude4: nextLongitude4,
+      });
+
+      const phase = getQuadrupleAspectPhase({
+        pattern: "boomerang",
+        previousLongitude1,
+        previousLongitude2,
+        previousLongitude3,
+        previousLongitude4,
+        currentLongitude1,
+        currentLongitude2,
+        currentLongitude3,
+        currentLongitude4,
+        nextLongitude1,
+        nextLongitude2,
+        nextLongitude3,
+        nextLongitude4,
+        previousExists: previousBoomerang,
+        currentExists: currentBoomerang,
+        nextExists: nextBoomerang,
+      });
+
+      if (phase) {
+        quadrupleAspectEvents.push(
+          getQuadrupleAspectEvent({
+            timestamp: currentMinute.toDate(),
+            body1,
+            body2,
+            body3,
+            body4,
+            quadrupleAspect: "boomerang",
+            phase,
+          })
+        );
+      }
+    }
+
+    // Check for Butterfly
+    const currentButterfly = detectButterfly({
+      longitude1: currentLongitude1,
+      longitude2: currentLongitude2,
+      longitude3: currentLongitude3,
+      longitude4: currentLongitude4,
+    });
+
+    if (currentButterfly) {
+      const previousButterfly = detectButterfly({
+        longitude1: previousLongitude1,
+        longitude2: previousLongitude2,
+        longitude3: previousLongitude3,
+        longitude4: previousLongitude4,
+      });
+
+      const nextButterfly = detectButterfly({
+        longitude1: nextLongitude1,
+        longitude2: nextLongitude2,
+        longitude3: nextLongitude3,
+        longitude4: nextLongitude4,
+      });
+
+      const phase = getQuadrupleAspectPhase({
+        pattern: "butterfly",
+        previousLongitude1,
+        previousLongitude2,
+        previousLongitude3,
+        previousLongitude4,
+        currentLongitude1,
+        currentLongitude2,
+        currentLongitude3,
+        currentLongitude4,
+        nextLongitude1,
+        nextLongitude2,
+        nextLongitude3,
+        nextLongitude4,
+        previousExists: previousButterfly,
+        currentExists: currentButterfly,
+        nextExists: nextButterfly,
+      });
+
+      if (phase) {
+        quadrupleAspectEvents.push(
+          getQuadrupleAspectEvent({
+            timestamp: currentMinute.toDate(),
+            body1,
+            body2,
+            body3,
+            body4,
+            quadrupleAspect: "butterfly",
+            phase,
+          })
+        );
+      }
+    }
+
+    // Check for Hourglass
+    const currentHourglass = detectHourglass({
+      longitude1: currentLongitude1,
+      longitude2: currentLongitude2,
+      longitude3: currentLongitude3,
+      longitude4: currentLongitude4,
+    });
+
+    if (currentHourglass) {
+      const previousHourglass = detectHourglass({
+        longitude1: previousLongitude1,
+        longitude2: previousLongitude2,
+        longitude3: previousLongitude3,
+        longitude4: previousLongitude4,
+      });
+
+      const nextHourglass = detectHourglass({
+        longitude1: nextLongitude1,
+        longitude2: nextLongitude2,
+        longitude3: nextLongitude3,
+        longitude4: nextLongitude4,
+      });
+
+      const phase = getQuadrupleAspectPhase({
+        pattern: "hourglass",
+        previousLongitude1,
+        previousLongitude2,
+        previousLongitude3,
+        previousLongitude4,
+        currentLongitude1,
+        currentLongitude2,
+        currentLongitude3,
+        currentLongitude4,
+        nextLongitude1,
+        nextLongitude2,
+        nextLongitude3,
+        nextLongitude4,
+        previousExists: previousHourglass,
+        currentExists: currentHourglass,
+        nextExists: nextHourglass,
+      });
+
+      if (phase) {
+        quadrupleAspectEvents.push(
+          getQuadrupleAspectEvent({
+            timestamp: currentMinute.toDate(),
+            body1,
+            body2,
+            body3,
+            body4,
+            quadrupleAspect: "hourglass",
+            phase,
+          })
+        );
       }
     }
   }
@@ -2037,7 +2053,7 @@ function getQuadrupleAspectPhase(args: {
   previousExists: boolean;
   currentExists: boolean;
   nextExists: boolean;
-}): QuadrupleAspectPhase | null {
+}): AspectPhase | null {
   const {
     pattern,
     previousLongitude1,
@@ -2114,7 +2130,7 @@ function getQuadrupleAspectEvent(args: {
   body3: Body;
   body4: Body;
   quadrupleAspect: QuadrupleAspect;
-  phase: QuadrupleAspectPhase;
+  phase: AspectPhase;
 }): QuadrupleAspectEvent {
   const { timestamp, body1, body2, body3, body4, quadrupleAspect, phase } =
     args;
@@ -2171,8 +2187,9 @@ function getQuadrupleAspectEvent(args: {
 
   const quadrupleAspectEvent: QuadrupleAspectEvent = {
     start: timestamp,
+    end: timestamp,
     description,
-    summary: summary as QuadrupleAspectSummary,
+    summary,
     categories,
   };
 
@@ -2223,7 +2240,7 @@ export function getQuadrupleAspectDurationEvents(events: Event[]): Event[] {
   const groupedEvents = _.groupBy(quadrupleAspectEvents, (event) => {
     const planets = event.categories
       .filter((category) =>
-        QUADRUPLE_ASPECT_BODIES.map(_.startCase).includes(category)
+        quadrupleAspectBodies.map(_.startCase).includes(category)
       )
       .sort();
 
@@ -2279,7 +2296,7 @@ function getQuadrupleAspectDurationEvent(
 
   const bodiesCapitalized = categories
     .filter((category) =>
-      QUADRUPLE_ASPECT_BODIES.map(_.startCase).includes(category)
+      quadrupleAspectBodies.map(_.startCase).includes(category)
     )
     .sort();
 

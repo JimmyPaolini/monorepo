@@ -1,30 +1,27 @@
 import _ from "lodash";
 import type { Moment } from "moment";
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
+import type { Body, Stellium, StelliumSymbol, AspectPhase } from "../../types";
 import {
-  Body,
-  Stellium,
-  StelliumSymbol,
   symbolByBody,
   symbolByStellium,
-  STELLIUM_BODIES,
+  stelliumBodies,
+  orbByAspect,
 } from "../../constants";
 import { type Event } from "../../calendar.utilities";
-import { getAngle } from "../../math.utilities";
+import { getAngle, getCombinations } from "../../math.utilities";
+import { couldBeStellium } from "./aspects.cache";
 
-export type StelliumPhase = "forming" | "exact" | "dissolving";
+type StelliumDescription =
+  `${Capitalize<Stellium>}: ${string} (max separation: ${string}°, ${AspectPhase})`;
 
-type StelliumDescription = string;
-
-type StelliumSummary = string;
+type StelliumSummary =
+  `${StelliumSymbol} ${Capitalize<Stellium>} (${AspectPhase})`;
 
 export interface StelliumEvent extends Event {
   description: StelliumDescription;
   summary: StelliumSummary;
 }
-
-// Maximum orb (in degrees) for planets to be considered in a stellium
-const STELLIUM_MAX_SEPARATION = 10;
 
 // #region Stellium Detection
 
@@ -66,7 +63,7 @@ function detectStellium(args: {
 
   const tightness = calculateStelliumTightness({ longitudes });
 
-  return tightness <= STELLIUM_MAX_SEPARATION;
+  return tightness <= orbByAspect["conjunct"];
 }
 
 /**
@@ -113,7 +110,6 @@ export function getStelliumEvents(args: {
   const nextMinute = currentMinute.clone().add(1, "minute");
 
   const events: StelliumEvent[] = [];
-  const stelliumBodies = STELLIUM_BODIES;
 
   // Check all possible combinations of 3 to 12 planets
   const maxStelliumSize = Math.min(12, stelliumBodies.length);
@@ -125,6 +121,11 @@ export function getStelliumEvents(args: {
         (body) =>
           coordinateEphemerisByBody[body][currentMinute.toISOString()].longitude
       );
+
+      // Quick pre-filter: skip if planets are too spread out to form a stellium
+      if (!couldBeStellium(currentLongitudes, orbByAspect["conjunct"])) {
+        continue;
+      }
 
       const isStellium = detectStellium({
         bodies,
@@ -178,9 +179,10 @@ export function getStelliumEvents(args: {
       )}: ${bodiesString} (max separation: ${tightness.toFixed(2)}°, ${phase})`;
 
       const event: StelliumEvent = {
-        summary,
-        description,
+        summary: summary as StelliumSummary,
+        description: description as StelliumDescription,
         start: currentMinute.toDate(),
+        end: currentMinute.toDate(),
         categories: [
           "Stellium",
           _.startCase(stelliumType),
@@ -203,7 +205,7 @@ function getStelliumPhase(args: {
   currentLongitudes: number[];
   previousLongitudes: number[];
   nextLongitudes: number[];
-}): StelliumPhase | null {
+}): AspectPhase | null {
   const { currentLongitudes, previousLongitudes, nextLongitudes } = args;
 
   const currentTightness = calculateStelliumTightness({
@@ -235,29 +237,6 @@ function getStelliumPhase(args: {
   return null;
 }
 
-/**
- * Generate combinations of k elements from an array
- */
-function getCombinations<T>(array: T[], k: number): T[][] {
-  const result: T[][] = [];
-
-  function combine(start: number, chosen: T[]) {
-    if (chosen.length === k) {
-      result.push([...chosen]);
-      return;
-    }
-
-    for (let i = start; i < array.length; i++) {
-      chosen.push(array[i]);
-      combine(i + 1, chosen);
-      chosen.pop();
-    }
-  }
-
-  combine(0, []);
-  return result;
-}
-
 // #endregion Stellium Events
 
 // #region Stellium Duration Events
@@ -273,7 +252,7 @@ export function getStelliumDurationEvents(events: Event[]): Event[] {
   // Group by bodies and stellium type using categories
   const groupedEvents = _.groupBy(stelliumEvents, (event) => {
     const planets = event.categories
-      .filter((category) => STELLIUM_BODIES.map(_.startCase).includes(category))
+      .filter((category) => stelliumBodies.map(_.startCase).includes(category))
       .sort();
 
     const stelliumType = event.categories.find(
