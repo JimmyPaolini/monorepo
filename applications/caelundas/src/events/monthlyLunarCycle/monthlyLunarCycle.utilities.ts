@@ -54,16 +54,17 @@ export function isLunarPhase(args: {
   if (lunarPhase === "full") return isFullMoon({ ...illuminations });
 
   const { currentIllumination, previousIlluminations } = illuminations;
-  const previousIllumination =
-    previousIlluminations[previousIlluminations.length - 1];
+  const previousIllumination = previousIlluminations[0];
+
   const illumination = illuminationByPhase[lunarPhase] * 100;
 
   const isWaxing = currentIllumination > previousIllumination;
   const isWaning = currentIllumination < previousIllumination;
+  // Only trigger when crossing the threshold, not when remaining at/beyond it
   const isCrossingUp =
-    currentIllumination >= illumination && previousIllumination < illumination;
+    currentIllumination > illumination && previousIllumination <= illumination;
   const isCrossingDown =
-    currentIllumination <= illumination && previousIllumination > illumination;
+    currentIllumination < illumination && previousIllumination >= illumination;
   const isLunarPhase = isCrossingUp || isCrossingDown;
 
   const isWaxingLunarPhase = isLunarPhase && isWaxing;
