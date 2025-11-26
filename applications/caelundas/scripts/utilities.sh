@@ -10,7 +10,7 @@ set +a
 # Constants
 readonly SCRIPT_POD_NAME="caelundas-script"
 readonly SCRIPT_POD_IMAGE="busybox:latest"
-readonly MOUNT_PATH="/app/data"
+readonly MOUNT_PATH="/app/output"
 
 # List all Caelundas jobs with their metadata
 list_jobs() {

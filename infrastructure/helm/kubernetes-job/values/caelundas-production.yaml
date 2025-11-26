@@ -38,7 +38,11 @@ env:
   - name: END_DATE
     value: "2025-12-31"
 
-  # � Retry Configuration
+  # 📤 Output Configuration
+  - name: OUTPUT_DIRECTORY
+    value: "/app/output"
+
+  # 🔄 Retry Configuration
   - name: MAX_RETRIES
     value: "5"
   - name: INITIAL_DELAY_MS
