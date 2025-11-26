@@ -15,7 +15,7 @@ export const isAspect = (args: {
 }) => {
   const { aspect, longitudeBody1, longitudeBody2 } = args;
   const angle = getAngle(longitudeBody1, longitudeBody2);
-  const difference = angle - angleByAspect[aspect];
+  const difference = Math.abs(angle - angleByAspect[aspect]);
   const isAspect = difference < orbByAspect[aspect];
   return isAspect;
 };
