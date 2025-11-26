@@ -53,18 +53,18 @@
       },
       "description": "Deploy Caelundas job with Helm with auto-generated release name"
     },
-    "k8s-list-files": {
+    "kubernetes-list-files": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "./applications/caelundas/scripts/k8s-list-files.sh",
+        "command": "./applications/caelundas/scripts/kubernetes-list-files.sh",
         "cwd": "{workspaceRoot}"
       },
       "description": "List files in a Caelundas job's PVC (requires release name argument)"
     },
-    "k8s-copy-files": {
+    "kubernetes-copy-files": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "./applications/caelundas/scripts/k8s-copy-files.sh",
+        "command": "./applications/caelundas/scripts/kubernetes-copy-files.sh",
         "cwd": "{workspaceRoot}"
       },
       "description": "Copy files from a completed Caelundas job (requires release name argument)"
