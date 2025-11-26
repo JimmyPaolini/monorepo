@@ -414,7 +414,7 @@ export function getQuadrupleAspectDurationEvents(events: Event[]): Event[] {
           durationEvents.push({
             start: currentEvent.start,
             end: potentialDissolvingEvent.start,
-            summary: currentEvent.summary.replace(/^[➡️🎯⬅️]\s/, ""),
+            summary: currentEvent.summary.replace(/^(➡️|⬅️|🎯)\s/, ""),
             description: currentEvent.description.replace(
               / (forming|exact|dissolving)( \(.*\))?$/i,
               ""
