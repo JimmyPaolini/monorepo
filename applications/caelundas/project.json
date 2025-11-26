@@ -45,10 +45,10 @@
       },
       "description": "Build and push Docker image to GitHub Container Registry"
     },
-    "helm-deploy": {
+    "helm-upgrade": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "./applications/caelundas/scripts/helm-deploy.sh",
+        "command": "./applications/caelundas/scripts/helm-upgrade.sh",
         "cwd": "{workspaceRoot}"
       },
       "description": "Deploy Caelundas job with Helm with auto-generated release name"
