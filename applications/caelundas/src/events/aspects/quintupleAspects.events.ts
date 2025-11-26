@@ -14,6 +14,84 @@ import type { Event } from "../../calendar.utilities";
 import { getCombinations } from "../../math.utilities";
 
 /**
+ * Check if 5 bodies form a valid pentagram pattern (5-pointed star)
+ * A pentagram requires each body to have exactly 2 quintile connections,
+ * forming a cycle that skips one vertex each time.
+ *
+ * Returns the bodies in pentagram order if valid, null otherwise.
+ */
+function findPentagramPattern(
+  bodies: Body[],
+  edges: AspectEdge[]
+): Body[] | null {
+  // Build adjacency list of quintile connections
+  const connections = new Map<Body, Set<Body>>();
+  for (const body of bodies) {
+    connections.set(body, new Set());
+  }
+
+  // Add all quintile edges between these bodies
+  for (const edge of edges) {
+    if (edge.aspectType === "quintile") {
+      if (bodies.includes(edge.body1) && bodies.includes(edge.body2)) {
+        connections.get(edge.body1)!.add(edge.body2);
+        connections.get(edge.body2)!.add(edge.body1);
+      }
+    }
+  }
+
+  // Check if each body has exactly 2 connections (pentagram property)
+  for (const [body, connected] of connections) {
+    if (connected.size !== 2) {
+      return null; // Not a valid pentagram
+    }
+  }
+
+  // Verify it forms a proper 5-pointed star (not just a pentagon)
+  // In a pentagram, if you follow the connections, you visit each body once
+  // before returning to start, and each connection skips one body
+  const start = bodies[0];
+  const visited = new Set<Body>([start]);
+  let current = start;
+  const orderedBodies: Body[] = [start];
+
+  // Follow the path through the star
+  for (let i = 0; i < 4; i++) {
+    const neighbors = Array.from(connections.get(current)!);
+    // Pick the neighbor we haven't visited yet
+    const next = neighbors.find((n) => !visited.has(n));
+
+    if (!next) {
+      return null; // Dead end, not a valid star
+    }
+
+    visited.add(next);
+    orderedBodies.push(next);
+    current = next;
+  }
+
+  // Verify the last body connects back to the start
+  if (!connections.get(current)!.has(start)) {
+    return null;
+  }
+
+  // Verify this is a star pattern (each connection skips a body in sequence)
+  // by checking that we have exactly 5 quintiles total
+  const quintileCount = edges.filter(
+    (edge) =>
+      edge.aspectType === "quintile" &&
+      orderedBodies.includes(edge.body1) &&
+      orderedBodies.includes(edge.body2)
+  ).length;
+
+  if (quintileCount !== 5) {
+    return null;
+  }
+
+  return orderedBodies;
+}
+
+/**
  * Compose Pentagram patterns from stored 2-body aspects
  * Pentagram = 5 bodies forming a 5-pointed star with 5 quintiles
  */
@@ -50,35 +128,19 @@ function composePentagrams(
   const combinations = getCombinations(bodies, 5);
 
   for (const combo of combinations) {
-    // In a pentagram, we need exactly 5 quintiles connecting:
-    // body[0]-body[2], body[1]-body[3], body[2]-body[4], body[3]-body[0], body[4]-body[1]
-    const hasAllQuintiles =
-      haveAspect(combo[0], combo[2], "quintile", edges) &&
-      haveAspect(combo[1], combo[3], "quintile", edges) &&
-      haveAspect(combo[2], combo[4], "quintile", edges) &&
-      haveAspect(combo[3], combo[0], "quintile", edges) &&
-      haveAspect(combo[4], combo[1], "quintile", edges);
+    // Check if these 5 bodies form a pentagram pattern
+    // A pentagram is a 5-pointed star where each body connects to exactly 2 others,
+    // forming a cycle that skips one body each time (like a star)
+    const pentagramBodies = findPentagramPattern(combo, edges);
 
-    if (hasAllQuintiles) {
-      // Found a Pentagram
-      const relatedEdges = quintiles.filter((edge) =>
-        combo.includes(edge.body1 as Body)
-      );
-
+    if (pentagramBodies) {
       const phase = determineMultiBodyPhase(
         allEdges,
         currentMinute,
-        combo,
+        pentagramBodies,
         // Check if Pentagram pattern exists in given edges
         (edgesAtTime) => {
-          // Check all quintile connections in star pattern
-          return (
-            haveAspect(combo[0], combo[2], "quintile", edgesAtTime) &&
-            haveAspect(combo[1], combo[3], "quintile", edgesAtTime) &&
-            haveAspect(combo[2], combo[4], "quintile", edgesAtTime) &&
-            haveAspect(combo[3], combo[0], "quintile", edgesAtTime) &&
-            haveAspect(combo[4], combo[1], "quintile", edgesAtTime)
-          );
+          return findPentagramPattern(pentagramBodies, edgesAtTime) !== null;
         }
       );
 
@@ -86,11 +148,11 @@ function composePentagrams(
         events.push(
           getQuintupleAspectEvent({
             timestamp: currentMinute.toDate(),
-            body1: combo[0],
-            body2: combo[1],
-            body3: combo[2],
-            body4: combo[3],
-            body5: combo[4],
+            body1: pentagramBodies[0],
+            body2: pentagramBodies[1],
+            body3: pentagramBodies[2],
+            body4: pentagramBodies[3],
+            body5: pentagramBodies[4],
             quintupleAspect: "pentagram",
             phase,
           })
@@ -238,7 +300,7 @@ export function getQuintupleAspectDurationEvents(events: Event[]): Event[] {
           durationEvents.push({
             start: currentEvent.start,
             end: potentialDissolvingEvent.start,
-            summary: currentEvent.summary.replace(/^[➡️🎯⬅️]\s/, ""),
+            summary: currentEvent.summary.replace(/^(➡️|⬅️|🎯)\s/, ""),
             description: currentEvent.description.replace(
               / (forming|exact|dissolving)$/,
               ""

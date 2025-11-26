@@ -14,6 +14,107 @@ import type { Event } from "../../calendar.utilities";
 import { getCombinations } from "../../math.utilities";
 
 /**
+ * Check if 6 bodies form a valid hexagram (Star of David) pattern
+ * A hexagram consists of two interlocking grand trines plus sextiles forming a hexagon.
+ *
+ * Returns the bodies in hexagram order if valid, null otherwise.
+ */
+function findHexagramPattern(
+  bodies: Body[],
+  edges: AspectEdge[]
+): Body[] | null {
+  // Build adjacency lists for trines and sextiles
+  const trineConnections = new Map<Body, Set<Body>>();
+  const sextileConnections = new Map<Body, Set<Body>>();
+
+  for (const body of bodies) {
+    trineConnections.set(body, new Set());
+    sextileConnections.set(body, new Set());
+  }
+
+  // Populate connections
+  for (const edge of edges) {
+    if (bodies.includes(edge.body1) && bodies.includes(edge.body2)) {
+      if (edge.aspectType === "trine") {
+        trineConnections.get(edge.body1)!.add(edge.body2);
+        trineConnections.get(edge.body2)!.add(edge.body1);
+      } else if (edge.aspectType === "sextile") {
+        sextileConnections.get(edge.body1)!.add(edge.body2);
+        sextileConnections.get(edge.body2)!.add(edge.body1);
+      }
+    }
+  }
+
+  // Find two groups of 3 bodies (grand trines)
+  // Each body should have exactly 2 trine connections (to form two interlocking triangles)
+  const trineGroups: Body[][] = [];
+  const visited = new Set<Body>();
+
+  for (const body of bodies) {
+    if (visited.has(body)) continue;
+
+    const trineNeighbors = Array.from(trineConnections.get(body)!);
+    if (trineNeighbors.length !== 2) continue;
+
+    // Check if these 3 bodies form a complete triangle
+    const [b1, b2] = trineNeighbors;
+    if (trineConnections.get(b1)!.has(b2)) {
+      trineGroups.push([body, b1, b2]);
+      visited.add(body);
+      visited.add(b1);
+      visited.add(b2);
+    }
+  }
+
+  // Must have exactly 2 grand trines
+  if (trineGroups.length !== 2) return null;
+
+  // Now arrange bodies in hexagon order (alternating between the two trines)
+  // such that adjacent bodies (in hexagon) are connected by sextiles
+  const [trine1, trine2] = trineGroups;
+
+  // Try all possible interleavings of the two trines
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      for (let k = 0; k < 3; k++) {
+        if (k === i) continue;
+        for (let l = 0; l < 3; l++) {
+          if (l === j) continue;
+
+          // Try arrangement: trine1[i], trine2[j], trine1[k], trine2[l], trine1[remaining], trine2[remaining]
+          const i2 = [0, 1, 2].find((x) => x !== i && x !== k)!;
+          const j2 = [0, 1, 2].find((x) => x !== j && x !== l)!;
+
+          const arrangement = [
+            trine1[i],
+            trine2[j],
+            trine1[k],
+            trine2[l],
+            trine1[i2],
+            trine2[j2],
+          ];
+
+          // Check if this arrangement has all adjacent sextiles (forming hexagon)
+          const hasAllSextiles =
+            sextileConnections.get(arrangement[0])!.has(arrangement[1]) &&
+            sextileConnections.get(arrangement[1])!.has(arrangement[2]) &&
+            sextileConnections.get(arrangement[2])!.has(arrangement[3]) &&
+            sextileConnections.get(arrangement[3])!.has(arrangement[4]) &&
+            sextileConnections.get(arrangement[4])!.has(arrangement[5]) &&
+            sextileConnections.get(arrangement[5])!.has(arrangement[0]);
+
+          if (hasAllSextiles) {
+            return arrangement;
+          }
+        }
+      }
+    }
+  }
+
+  return null;
+}
+
+/**
  * Compose Hexagram (Star of David) patterns from stored 2-body aspects
  * Hexagram = 6 bodies forming two interlocking Grand Trines
  */
@@ -51,66 +152,17 @@ function composeHexagrams(
   const combinations = getCombinations(bodies, 6);
 
   for (const combo of combinations) {
-    // In a hexagram (Star of David):
-    // - Bodies 0, 2, 4 form a grand trine
-    // - Bodies 1, 3, 5 form another grand trine
-    // - Adjacent bodies are sextile: 0-1, 1-2, 2-3, 3-4, 4-5, 5-0
+    // Check if these 6 bodies form a hexagram pattern
+    const hexagramBodies = findHexagramPattern(combo, edges);
 
-    const hasFirstTrine =
-      haveAspect(combo[0], combo[2], "trine", edges) &&
-      haveAspect(combo[0], combo[4], "trine", edges) &&
-      haveAspect(combo[2], combo[4], "trine", edges);
-
-    if (!hasFirstTrine) continue;
-
-    const hasSecondTrine =
-      haveAspect(combo[1], combo[3], "trine", edges) &&
-      haveAspect(combo[1], combo[5], "trine", edges) &&
-      haveAspect(combo[3], combo[5], "trine", edges);
-
-    if (!hasSecondTrine) continue;
-
-    const hasSextiles =
-      haveAspect(combo[0], combo[1], "sextile", edges) &&
-      haveAspect(combo[1], combo[2], "sextile", edges) &&
-      haveAspect(combo[2], combo[3], "sextile", edges) &&
-      haveAspect(combo[3], combo[4], "sextile", edges) &&
-      haveAspect(combo[4], combo[5], "sextile", edges) &&
-      haveAspect(combo[5], combo[0], "sextile", edges);
-
-    if (hasSextiles) {
-      // Found a Hexagram!
-      const relatedEdges = [...trines, ...sextiles].filter((edge) =>
-        combo.includes(edge.body1 as Body)
-      );
-
+    if (hexagramBodies) {
       const phase = determineMultiBodyPhase(
         allEdges,
         currentMinute,
-        combo,
+        hexagramBodies,
         // Check if Hexagram pattern exists in given edges
         (edgesAtTime) => {
-          // Check two grand trines (0,2,4 and 1,3,5)
-          const hasTrine1 =
-            haveAspect(combo[0], combo[2], "trine", edgesAtTime) &&
-            haveAspect(combo[0], combo[4], "trine", edgesAtTime) &&
-            haveAspect(combo[2], combo[4], "trine", edgesAtTime);
-
-          const hasTrine2 =
-            haveAspect(combo[1], combo[3], "trine", edgesAtTime) &&
-            haveAspect(combo[1], combo[5], "trine", edgesAtTime) &&
-            haveAspect(combo[3], combo[5], "trine", edgesAtTime);
-
-          // Check sextiles between adjacent bodies
-          const hasSextiles =
-            haveAspect(combo[0], combo[1], "sextile", edgesAtTime) &&
-            haveAspect(combo[1], combo[2], "sextile", edgesAtTime) &&
-            haveAspect(combo[2], combo[3], "sextile", edgesAtTime) &&
-            haveAspect(combo[3], combo[4], "sextile", edgesAtTime) &&
-            haveAspect(combo[4], combo[5], "sextile", edgesAtTime) &&
-            haveAspect(combo[5], combo[0], "sextile", edgesAtTime);
-
-          return hasTrine1 && hasTrine2 && hasSextiles;
+          return findHexagramPattern(hexagramBodies, edgesAtTime) !== null;
         }
       );
 
@@ -118,12 +170,12 @@ function composeHexagrams(
         events.push(
           getSextupleAspectEvent({
             timestamp: currentMinute.toDate(),
-            body1: combo[0],
-            body2: combo[1],
-            body3: combo[2],
-            body4: combo[3],
-            body5: combo[4],
-            body6: combo[5],
+            body1: hexagramBodies[0],
+            body2: hexagramBodies[1],
+            body3: hexagramBodies[2],
+            body4: hexagramBodies[3],
+            body5: hexagramBodies[4],
+            body6: hexagramBodies[5],
             sextupleAspect: "hexagram",
             phase,
           })

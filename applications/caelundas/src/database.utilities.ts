@@ -9,31 +9,71 @@ const databasePromise: Promise<Database> = open({
   driver: sqlite3.Database,
 });
 
-export async function closeConnection() {
-  const db = await databasePromise;
-  await db.close();
+async function initializeDatabase() {
+  try {
+    const db = await databasePromise;
+
+    await db.exec(`
+      CREATE TABLE IF NOT EXISTS ephemeris (
+        body TEXT,
+        timestamp TEXT,
+        latitude REAL,
+        longitude REAL,
+        azimuth REAL,
+        elevation REAL,
+        illumination REAL,
+        diameter REAL,
+        distance REAL,
+        PRIMARY KEY (body, timestamp)
+      );
+    `);
+
+    await db.exec(`
+      CREATE TABLE IF NOT EXISTS events (
+        summary TEXT NOT NULL,
+        description TEXT NOT NULL,
+        start TEXT NOT NULL,
+        end TEXT NOT NULL,
+        categories TEXT NOT NULL,
+        location TEXT,
+        latitude REAL,
+        longitude REAL,
+        url TEXT,
+        priority INTEGER,
+        color TEXT,
+        PRIMARY KEY (summary, start)
+      );
+    `);
+
+    // Create index on categories for faster LIKE queries
+    await db.exec(`
+      CREATE INDEX IF NOT EXISTS idx_events_categories
+      ON events(categories);
+    `);
+
+    // Create index on start/end timestamps for temporal queries
+    await db.exec(`
+      CREATE INDEX IF NOT EXISTS idx_events_time_range
+      ON events(start, end);
+    `);
+  } catch (error) {
+    // Ignore errors if database is closed during initialization
+    if (
+      error &&
+      typeof error === "object" &&
+      "code" in error &&
+      error.code === "SQLITE_MISUSE"
+    ) {
+      return;
+    }
+    throw error;
+  }
 }
 
+// Initialize database on module load
+initializeDatabase();
+
 // #region Ephemeris
-
-(async () => {
-  const db = await databasePromise;
-
-  await db.exec(`
-    CREATE TABLE IF NOT EXISTS ephemeris (
-      body TEXT,
-      timestamp TEXT,
-      latitude REAL,
-      longitude REAL,
-      azimuth REAL,
-      elevation REAL,
-      illumination REAL,
-      diameter REAL,
-      distance REAL,
-      PRIMARY KEY (body, timestamp)
-    );
-  `);
-})();
 
 export interface EphemerisRecord {
   body: Body;
@@ -183,39 +223,6 @@ export async function getEphemerisRecords(args: {
 
 // #region Events
 
-(async () => {
-  const db = await databasePromise;
-
-  await db.exec(`
-    CREATE TABLE IF NOT EXISTS events (
-      summary TEXT NOT NULL,
-      description TEXT NOT NULL,
-      start TEXT NOT NULL,
-      end TEXT NOT NULL,
-      categories TEXT NOT NULL,
-      location TEXT,
-      latitude REAL,
-      longitude REAL,
-      url TEXT,
-      priority INTEGER,
-      color TEXT,
-      PRIMARY KEY (summary, start)
-    );
-  `);
-
-  // Create index on categories for faster LIKE queries
-  await db.exec(`
-    CREATE INDEX IF NOT EXISTS idx_events_categories
-    ON events(categories);
-  `);
-
-  // Create index on start/end timestamps for temporal queries
-  await db.exec(`
-    CREATE INDEX IF NOT EXISTS idx_events_time_range
-    ON events(start, end);
-  `);
-})();
-
 function mapRowToEvent(row: any): Event {
   return {
     summary: row.summary,
@@ -344,4 +351,11 @@ export async function getActiveAspectsAt(timestamp: Date): Promise<Event[]> {
   );
 
   return rows.map(mapRowToEvent);
+}
+
+// #region Cleanup
+
+export async function closeConnection() {
+  const db = await databasePromise;
+  await db.close();
 }
