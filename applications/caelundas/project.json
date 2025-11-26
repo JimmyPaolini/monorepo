@@ -29,6 +29,54 @@
       },
       "description": "Type-check the application without emitting files"
     },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm test",
+        "cwd": "applications/caelundas"
+      },
+      "description": "Run all tests"
+    },
+    "test:watch": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm test:watch",
+        "cwd": "applications/caelundas"
+      },
+      "description": "Run tests in watch mode"
+    },
+    "test:coverage": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm test:coverage",
+        "cwd": "applications/caelundas"
+      },
+      "description": "Run tests with coverage report"
+    },
+    "test:unit": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm test:unit",
+        "cwd": "applications/caelundas"
+      },
+      "description": "Run unit tests only"
+    },
+    "test:integration": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm test:integration",
+        "cwd": "applications/caelundas"
+      },
+      "description": "Run integration tests only"
+    },
+    "test:end-to-end": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm test:end-to-end",
+        "cwd": "applications/caelundas"
+      },
+      "description": "Run end-to-end tests only"
+    },
     "docker-build": {
       "executor": "nx:run-commands",
       "options": {

@@ -4,7 +4,13 @@
   "type": "module",
   "scripts": {
     "dev": "set -a && source .env && set +a && tsx src/main.ts",
-    "start": "tsx src/main.ts"
+    "start": "tsx src/main.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:unit": "vitest run --testPathPattern='unit\\.test\\.ts'",
+    "test:integration": "vitest run --testPathPattern='integration\\.test\\.ts'",
+    "test:end-to-end": "vitest run --testPathPattern='end-to-end\\.test\\.ts'"
   },
   "dependencies": {
     "@photostructure/tz-lookup": "^11.3.0",
@@ -17,7 +23,9 @@
   "devDependencies": {
     "@types/lodash": "^4.17.0",
     "@types/moment-timezone": "^0.5.30",
+    "@vitest/coverage-v8": "^2.0.0",
     "tsx": "^4.20.6",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "vitest": "^2.0.0"
   }
 }
