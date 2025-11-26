@@ -53,7 +53,7 @@ persistence:
   storageClassName: "linode-block-storage-retain"
   accessMode: ReadWriteOnce
   size: 1Gi
-  mountPath: /app/data
+  mountPath: /app/output
 
 resources:
   limits:
