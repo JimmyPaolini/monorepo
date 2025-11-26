@@ -10,12 +10,9 @@ import type {
   SpecialtyAspectSymbol,
   AspectPhase,
 } from "../../types";
-import {
-  symbolByBody,
-  symbolBySpecialtyAspect,
-  specialtyAspectBodies,
-  specialtyAspects,
-} from "../../constants";
+import { specialtyAspectBodies } from "../../types";
+import { symbolByBody, symbolBySpecialtyAspect } from "../../symbols";
+import { specialtyAspects } from "../../constants";
 import { type Event, getCalendar } from "../../calendar.utilities";
 import {
   getSpecialtyAspect,
@@ -24,23 +21,6 @@ import {
 import { upsertEvents } from "../../database.utilities";
 import { getOutputPath } from "../../output.utilities";
 import { pairDurationEvents } from "../../duration.utilities";
-
-type SpecialtyAspectDescription =
-  | `${Capitalize<Body>} exact ${SpecialtyAspect} ${Capitalize<Body>}`
-  | `${Capitalize<Body>} forming ${SpecialtyAspect} ${Capitalize<Body>}`
-  | `${Capitalize<Body>} dissolving ${SpecialtyAspect} ${Capitalize<Body>}`;
-type SpecialtyAspectSummary =
-  `${BodySymbol}${SpecialtyAspectSymbol}${BodySymbol} ${string}`;
-
-export interface SpecialtyAspectEventTemplate extends EventTemplate {
-  description: SpecialtyAspectDescription;
-  summary: SpecialtyAspectSummary;
-}
-
-export interface SpecialtyAspectEvent extends Event {
-  description: SpecialtyAspectDescription;
-  summary: SpecialtyAspectSummary;
-}
 
 export function getSpecialtyAspectEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
@@ -51,7 +31,7 @@ export function getSpecialtyAspectEvents(args: {
   const previousMinute = currentMinute.clone().subtract(1, "minute");
   const nextMinute = currentMinute.clone().add(1, "minute");
 
-  const specialtyAspectEvents: SpecialtyAspectEvent[] = [];
+  const specialtyAspectEvents: Event[] = [];
 
   for (const body1 of specialtyAspectBodies) {
     const index = specialtyAspectBodies.indexOf(body1);
@@ -131,7 +111,7 @@ export function getSpecialtyAspectEvent(args: {
     specialtyAspect
   ] as SpecialtyAspectSymbol;
 
-  let description: SpecialtyAspectDescription;
+  let description: string;
   let phaseEmoji: string;
   let categories: string[];
 
@@ -145,18 +125,15 @@ export function getSpecialtyAspectEvent(args: {
   ];
 
   if (phase === "exact") {
-    description =
-      `${body1Capitalized} exact ${specialtyAspect} ${body2Capitalized}` as SpecialtyAspectDescription;
+    description = `${body1Capitalized} exact ${specialtyAspect} ${body2Capitalized}`;
     phaseEmoji = "🎯";
     categories = [...baseCategories, "Exact"];
   } else if (phase === "forming") {
-    description =
-      `${body1Capitalized} forming ${specialtyAspect} ${body2Capitalized}` as SpecialtyAspectDescription;
+    description = `${body1Capitalized} forming ${specialtyAspect} ${body2Capitalized}`;
     phaseEmoji = "➡️";
     categories = [...baseCategories, "Forming"];
   } else {
-    description =
-      `${body1Capitalized} dissolving ${specialtyAspect} ${body2Capitalized}` as SpecialtyAspectDescription;
+    description = `${body1Capitalized} dissolving ${specialtyAspect} ${body2Capitalized}`;
     phaseEmoji = "⬅️";
     categories = [...baseCategories, "Dissolving"];
   }
@@ -165,11 +142,11 @@ export function getSpecialtyAspectEvent(args: {
 
   console.log(`${summary} at ${timestamp.toISOString()}`);
 
-  const specialtyAspectEvent: SpecialtyAspectEvent = {
+  const specialtyAspectEvent: Event = {
     start: timestamp,
     end: timestamp,
     description,
-    summary: summary as SpecialtyAspectSummary,
+    summary,
     categories,
   };
   return specialtyAspectEvent;
@@ -178,7 +155,7 @@ export function getSpecialtyAspectEvent(args: {
 export function writeSpecialtyAspectEvents(args: {
   end: Date;
   specialtyAspectBodies: Body[];
-  specialtyAspectEvents: SpecialtyAspectEvent[];
+  specialtyAspectEvents: Event[];
   start: Date;
 }) {
   const { end, specialtyAspectEvents, specialtyAspectBodies, start } = args;
@@ -211,7 +188,7 @@ export function getSpecialtyAspectDurationEvents(events: Event[]): Event[] {
   // Filter to specialty aspect events only
   const specialtyAspectEvents = events.filter((event) =>
     event.categories.includes("Specialty Aspect")
-  ) as SpecialtyAspectEvent[];
+  ) as Event[];
 
   // Group by body pair and aspect type using categories
   const groupedEvents = _.groupBy(specialtyAspectEvents, (event) => {
@@ -259,8 +236,8 @@ export function getSpecialtyAspectDurationEvents(events: Event[]): Event[] {
 }
 
 function getSpecialtyAspectDurationEvent(
-  beginning: SpecialtyAspectEvent,
-  ending: SpecialtyAspectEvent
+  beginning: Event,
+  ending: Event
 ): Event {
   const categories = beginning.categories || [];
 

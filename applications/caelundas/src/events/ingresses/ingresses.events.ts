@@ -1,16 +1,21 @@
 import fs from "fs";
 import _ from "lodash";
 import type { Moment } from "moment";
-import type { Body, Sign, BodySymbol, SignSymbol } from "../../types";
+import type {
+  Body,
+  Sign,
+  Decan,
+  BodySymbol,
+  SignSymbol,
+  DecanSymbol,
+} from "../../types";
 import {
   signIngressBodies,
   decanIngressBodies,
   peakIngressBodies,
-  signs,
-  symbolByBody,
-  symbolByDecan,
-  symbolBySign,
-} from "../../constants";
+} from "../../types";
+import { symbolByBody, symbolByDecan, symbolBySign } from "../../symbols";
+import { signs } from "../../constants";
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 import {
   type Event,
@@ -31,21 +36,6 @@ const categories = ["Astronomy", "Astrology", "Ingress"];
 
 // #region 🪧 Signs
 
-export type SignIngressDescription =
-  `${Capitalize<Body>} ingress ${Capitalize<Sign>}`;
-export type SignIngressSummary =
-  `${BodySymbol} → ${SignSymbol} ${SignIngressDescription}`;
-
-export interface SignIngressEventTemplate extends EventTemplate {
-  description: SignIngressDescription;
-  summary: SignIngressSummary;
-}
-
-export interface SignIngressEvent extends Event {
-  description: SignIngressDescription;
-  summary: SignIngressSummary;
-}
-
 export function getSignIngressEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
   currentMinute: Moment;
@@ -54,7 +44,7 @@ export function getSignIngressEvents(args: {
 
   const previousMinute = currentMinute.clone().subtract(1, "minute");
 
-  const signIngressEvents: SignIngressEvent[] = [];
+  const signIngressEvents: Event[] = [];
 
   for (const body of signIngressBodies) {
     const coordinateEphemeris = coordinateEphemerisByBody[body];
@@ -86,17 +76,17 @@ export function getSignIngressEvent(args: {
 }) {
   const { date, longitude, body } = args;
   const sign = getSign(longitude);
-  const bodyCapitalized = _.startCase(body) as Capitalize<Body>;
-  const signCapitalized = _.startCase(sign) as Capitalize<Sign>;
-  const bodySymbol = symbolByBody[body] as BodySymbol;
-  const signSymbol = symbolBySign[sign] as SignSymbol;
+  const bodyCapitalized = _.startCase(body);
+  const signCapitalized = _.startCase(sign);
+  const bodySymbol = symbolByBody[body];
+  const signSymbol = symbolBySign[sign];
 
-  const description: SignIngressDescription = `${bodyCapitalized} ingress ${signCapitalized}`;
-  const summary: SignIngressSummary = `${bodySymbol} → ${signSymbol} ${description}`;
+  const description = `${bodyCapitalized} ingress ${signCapitalized}`;
+  const summary = `${bodySymbol} → ${signSymbol} ${description}`;
 
   console.log(`${summary} at ${date.toISOString()}`);
 
-  const signIngressEvent: SignIngressEvent = {
+  const signIngressEvent: Event = {
     start: date,
     end: date,
     categories: [...categories, bodyCapitalized, signCapitalized],
@@ -110,7 +100,7 @@ export function getSignIngressEvent(args: {
 export function writeSignIngressEvents(args: {
   end: Date;
   signIngressBodies: Body[];
-  signIngressEvents: SignIngressEvent[];
+  signIngressEvents: Event[];
   start: Date;
 }) {
   const { signIngressEvents, signIngressBodies, start, end } = args;
@@ -137,19 +127,8 @@ export function writeSignIngressEvents(args: {
 
 // #region 🔟 Decans
 
-export type DecanIngressDescription =
-  `${Capitalize<Body>} ingress decan ${number} ${Capitalize<Sign>}`;
-export type DecanIngressSummary =
-  `${BodySymbol} → ${SignSymbol}${number} ${DecanIngressDescription}`;
-
-export interface DecanIngressEventTemplate extends EventTemplate {
-  description: DecanIngressDescription;
-  summary: DecanIngressSummary;
-}
-export interface DecanIngressEvent extends Event {
-  description: DecanIngressDescription;
-  summary: DecanIngressSummary;
-}
+export interface DecanIngressEventTemplate extends EventTemplate {}
+export interface DecanIngressEvent extends Event {}
 
 export function getDecanIngressEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
@@ -159,7 +138,7 @@ export function getDecanIngressEvents(args: {
 
   const previousMinute = currentMinute.clone().subtract(1, "minute");
 
-  const decanIngressEvents: DecanIngressEvent[] = [];
+  const decanIngressEvents: Event[] = [];
 
   for (const body of decanIngressBodies) {
     const coordinateEphemeris = coordinateEphemerisByBody[body];
@@ -194,7 +173,7 @@ export function getDecanIngressEvent(args: {
 }) {
   const { date, longitude, body } = args;
   const sign = getSign(longitude);
-  const decan = String(getDecan(longitude));
+  const decan = String(getDecan(longitude)) as Decan;
   const bodyCapitalized = _.startCase(body) as Capitalize<Body>;
   const signCapitalized = _.startCase(sign) as Capitalize<Sign>;
 
@@ -202,8 +181,8 @@ export function getDecanIngressEvent(args: {
   const signSymbol = symbolBySign[sign] as SignSymbol;
   const decanSymbol = symbolByDecan[decan] as DecanSymbol;
 
-  const description: DecanIngressDescription = `${bodyCapitalized} ingress decan ${decan} ${signCapitalized}`;
-  const summary: DecanIngressSummary = `${bodySymbol} → ${signSymbol}${decanSymbol} ${description}`;
+  const description = `${bodyCapitalized} ingress decan ${decan} ${signCapitalized}`;
+  const summary = `${bodySymbol} → ${signSymbol}${decanSymbol} ${description}`;
 
   console.log(`${summary} at ${date.toISOString()}`);
 
@@ -234,10 +213,10 @@ export function writeDecanIngressEvents(args: {
   upsertEvents(decanIngressEvents);
 
   const decanIngressBodiesString = decanIngressBodies.join(",");
-  const decanIngressesCalendar = getCalendar(
-    decanIngressEvents,
-    "Decan Ingresses 🔟"
-  );
+  const decanIngressesCalendar = getCalendar({
+    events: decanIngressEvents,
+    name: "Decan Ingresses 🔟",
+  });
   fs.writeFileSync(
     getOutputPath(`ingresses_${decanIngressBodiesString}_${timespan}.ics`),
     new TextEncoder().encode(decanIngressesCalendar)
@@ -248,19 +227,8 @@ export function writeDecanIngressEvents(args: {
 
 // #region ⛰️ Peaks
 
-export type PeakIngressDescription =
-  `${Capitalize<Body>} peak ingress ${Capitalize<Sign>}`;
-export type PeakIngressSummary =
-  `${BodySymbol} → ${SignSymbol}⛰️ ${PeakIngressDescription}`;
-
-export interface PeakIngressEventTemplate extends EventTemplate {
-  description: PeakIngressDescription;
-  summary: PeakIngressSummary;
-}
-export interface PeakIngressEvent extends Event {
-  description: PeakIngressDescription;
-  summary: PeakIngressSummary;
-}
+export interface PeakIngressEventTemplate extends EventTemplate {}
+export interface PeakIngressEvent extends Event {}
 export function getPeakIngressEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
   currentMinute: Moment;
@@ -269,7 +237,7 @@ export function getPeakIngressEvents(args: {
 
   const previousMinute = currentMinute.clone().subtract(1, "minute");
 
-  const peakIngressEvents: PeakIngressEvent[] = [];
+  const peakIngressEvents: Event[] = [];
 
   for (const body of peakIngressBodies) {
     const coordinateEphemeris = coordinateEphemerisByBody[body];
@@ -306,8 +274,8 @@ export function getPeakIngressEvent(args: {
   const bodySymbol = symbolByBody[body] as BodySymbol;
   const signSymbol = symbolBySign[sign] as SignSymbol;
 
-  const description: PeakIngressDescription = `${bodyCapitalized} peak ingress ${signCapitalized}`;
-  const summary: PeakIngressSummary = `${bodySymbol} → ${signSymbol}⛰️ ${description}`;
+  const description = `${bodyCapitalized} peak ingress ${signCapitalized}`;
+  const summary = `${bodySymbol} → ${signSymbol}⛰️ ${description}`;
 
   console.log(`${summary} at ${date.toISOString()}`);
 
@@ -361,7 +329,7 @@ export function getSignIngressDurationEvents(events: Event[]): Event[] {
       event.categories?.includes("Ingress") &&
       !event.categories?.includes("Decan") &&
       !event.categories?.includes("Peak")
-  ) as SignIngressEvent[];
+  ) as Event[];
 
   // Group by body
   const groupedByBody = _.groupBy(signIngressEvents, (event) => {
@@ -397,8 +365,8 @@ export function getSignIngressDurationEvents(events: Event[]): Event[] {
 }
 
 function getSignIngressDurationEvent(
-  entering: SignIngressEvent,
-  exiting: SignIngressEvent,
+  entering: Event,
+  exiting: Event,
   bodyCapitalized: string
 ): Event {
   const categories = entering.categories || [];

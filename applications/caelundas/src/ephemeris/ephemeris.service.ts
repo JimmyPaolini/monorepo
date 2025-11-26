@@ -12,7 +12,8 @@ import {
   QUANTITY_RANGE_RATE,
 } from "./ephemeris.constants";
 import type { Asteroid, Body, Comet, Node, Planet } from "../types";
-import { nodes, symbolByBody } from "../constants";
+import { nodes } from "../constants";
+import { symbolByBody } from "../symbols";
 import type {
   DiameterEphemeris,
   AzimuthElevationEphemerisBody,

@@ -22,19 +22,12 @@
       "description": "Start the Caelundas application"
     },
     "typecheck": {
-      "executor": "@nx/js:tsc",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "executor": "nx:run-commands",
       "options": {
-        "outputPath": "dist/applications/caelundas",
-        "main": "applications/caelundas/main.ts",
-        "tsConfig": "applications/caelundas/tsconfig.json",
-        "assets": [
-          "applications/caelundas/*.md"
-        ]
+        "command": "tsc --noEmit",
+        "cwd": "applications/caelundas"
       },
-      "description": "Type-check the application and compile TypeScript"
+      "description": "Type-check the application without emitting files"
     },
     "docker-build": {
       "executor": "nx:run-commands",

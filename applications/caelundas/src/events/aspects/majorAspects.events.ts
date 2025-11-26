@@ -11,33 +11,13 @@ import type {
   MajorAspectSymbol,
   AspectPhase,
 } from "../../types";
-import {
-  symbolByBody,
-  symbolByMajorAspect,
-  majorAspectBodies,
-  majorAspects,
-} from "../../constants";
+import { majorAspectBodies } from "../../types";
+import { symbolByBody, symbolByMajorAspect } from "../../symbols";
+import { majorAspects } from "../../constants";
 import { upsertEvents } from "../../database.utilities";
 import { getMajorAspect, getMajorAspectPhase } from "./aspects.utilities";
 import { getOutputPath } from "../../output.utilities";
 import { pairDurationEvents } from "../../duration.utilities";
-
-type MajorAspectDescription =
-  | `${Capitalize<Body>} exact ${MajorAspect} ${Capitalize<Body>}`
-  | `${Capitalize<Body>} forming ${MajorAspect} ${Capitalize<Body>}`
-  | `${Capitalize<Body>} dissolving ${MajorAspect} ${Capitalize<Body>}`;
-type MajorAspectSummary =
-  `${BodySymbol}${MajorAspectSymbol}${BodySymbol} ${string}`;
-
-export interface MajorAspectEventTemplate extends EventTemplate {
-  description: MajorAspectDescription;
-  summary: MajorAspectSummary;
-}
-
-export interface MajorAspectEvent extends Event {
-  description: MajorAspectDescription;
-  summary: MajorAspectSummary;
-}
 
 export function getMajorAspectEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
@@ -48,7 +28,7 @@ export function getMajorAspectEvents(args: {
   const previousMinute = currentMinute.clone().subtract(1, "minute");
   const nextMinute = currentMinute.clone().add(1, "minute");
 
-  const majorAspectEvents: MajorAspectEvent[] = [];
+  const majorAspectEvents: Event[] = [];
 
   for (const body1 of majorAspectBodies) {
     const index = majorAspectBodies.indexOf(body1);
@@ -124,7 +104,7 @@ export function getMajorAspectEvent(args: {
     majorAspect
   ] as MajorAspectSymbol;
 
-  let description: MajorAspectDescription;
+  let description: string;
   let phaseEmoji: string;
   let categories: string[];
 
@@ -138,18 +118,15 @@ export function getMajorAspectEvent(args: {
   ];
 
   if (phase === "exact") {
-    description =
-      `${body1Capitalized} exact ${majorAspect} ${body2Capitalized}` as MajorAspectDescription;
+    description = `${body1Capitalized} exact ${majorAspect} ${body2Capitalized}`;
     phaseEmoji = "🎯";
     categories = [...baseCategories, "Exact"];
   } else if (phase === "forming") {
-    description =
-      `${body1Capitalized} forming ${majorAspect} ${body2Capitalized}` as MajorAspectDescription;
+    description = `${body1Capitalized} forming ${majorAspect} ${body2Capitalized}`;
     phaseEmoji = "➡️";
     categories = [...baseCategories, "Forming"];
   } else {
-    description =
-      `${body1Capitalized} dissolving ${majorAspect} ${body2Capitalized}` as MajorAspectDescription;
+    description = `${body1Capitalized} dissolving ${majorAspect} ${body2Capitalized}`;
     phaseEmoji = "⬅️";
     categories = [...baseCategories, "Dissolving"];
   }
@@ -158,11 +135,11 @@ export function getMajorAspectEvent(args: {
 
   console.log(`${summary} at ${timestamp.toISOString()}`);
 
-  const majorAspectEvent: MajorAspectEvent = {
+  const majorAspectEvent: Event = {
     start: timestamp,
     end: timestamp,
     description,
-    summary: summary as MajorAspectSummary,
+    summary,
     categories,
   };
   return majorAspectEvent;
@@ -171,7 +148,7 @@ export function getMajorAspectEvent(args: {
 export function writeMajorAspectEvents(args: {
   end: Date;
   majorAspectBodies: Body[];
-  majorAspectEvents: MajorAspectEvent[];
+  majorAspectEvents: Event[];
   start: Date;
 }) {
   const { end, majorAspectEvents, majorAspectBodies, start } = args;
@@ -202,7 +179,7 @@ export function getMajorAspectDurationEvents(events: Event[]): Event[] {
   // Filter to major aspect events only
   const majorAspectEvents = events.filter((event) =>
     event.categories.includes("Major Aspect")
-  ) as MajorAspectEvent[];
+  );
 
   // Group by body pair and aspect type using categories
   const groupedEvents = _.groupBy(majorAspectEvents, (event) => {
@@ -249,10 +226,7 @@ export function getMajorAspectDurationEvents(events: Event[]): Event[] {
   return durationEvents;
 }
 
-function getMajorAspectDurationEvent(
-  beginning: MajorAspectEvent,
-  ending: MajorAspectEvent
-): Event {
+function getMajorAspectDurationEvent(beginning: Event, ending: Event): Event {
   const categories = beginning.categories || [];
 
   const bodiesCapitalized = categories

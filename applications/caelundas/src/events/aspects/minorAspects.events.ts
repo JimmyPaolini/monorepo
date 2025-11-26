@@ -10,34 +10,14 @@ import type {
   MinorAspectSymbol,
   AspectPhase,
 } from "../../types";
-import {
-  symbolByBody,
-  symbolByMinorAspect,
-  minorAspectBodies,
-  minorAspects,
-} from "../../constants";
+import { minorAspectBodies } from "../../types";
+import { symbolByBody, symbolByMinorAspect } from "../../symbols";
+import { minorAspects } from "../../constants";
 import { type Event, getCalendar } from "../../calendar.utilities";
 import { getMinorAspect, getMinorAspectPhase } from "./aspects.utilities";
 import { upsertEvents } from "../../database.utilities";
 import { getOutputPath } from "../../output.utilities";
 import { pairDurationEvents } from "../../duration.utilities";
-
-type MinorAspectDescription =
-  | `${Capitalize<Body>} exact ${MinorAspect} ${Capitalize<Body>}`
-  | `${Capitalize<Body>} forming ${MinorAspect} ${Capitalize<Body>}`
-  | `${Capitalize<Body>} dissolving ${MinorAspect} ${Capitalize<Body>}`;
-type MinorAspectSummary =
-  `${BodySymbol}${MinorAspectSymbol}${BodySymbol} ${string}`;
-
-export interface MinorAspectEventTemplate extends EventTemplate {
-  description: MinorAspectDescription;
-  summary: MinorAspectSummary;
-}
-
-export interface MinorAspectEvent extends Event {
-  description: MinorAspectDescription;
-  summary: MinorAspectSummary;
-}
 
 export function getMinorAspectEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
@@ -48,7 +28,7 @@ export function getMinorAspectEvents(args: {
   const previousMinute = currentMinute.clone().subtract(1, "minute");
   const nextMinute = currentMinute.clone().add(1, "minute");
 
-  const minorAspectEvents: MinorAspectEvent[] = [];
+  const minorAspectEvents: Event[] = [];
 
   for (const body1 of minorAspectBodies) {
     const index = minorAspectBodies.indexOf(body1);
@@ -125,7 +105,7 @@ export function getMinorAspectEvent(args: {
     minorAspect
   ] as MinorAspectSymbol;
 
-  let description: MinorAspectDescription;
+  let description: string;
   let phaseEmoji: string;
   let categories: string[];
 
@@ -139,18 +119,15 @@ export function getMinorAspectEvent(args: {
   ];
 
   if (phase === "exact") {
-    description =
-      `${body1Capitalized} exact ${minorAspect} ${body2Capitalized}` as MinorAspectDescription;
+    description = `${body1Capitalized} exact ${minorAspect} ${body2Capitalized}`;
     phaseEmoji = "🎯";
     categories = [...baseCategories, "Exact"];
   } else if (phase === "forming") {
-    description =
-      `${body1Capitalized} forming ${minorAspect} ${body2Capitalized}` as MinorAspectDescription;
+    description = `${body1Capitalized} forming ${minorAspect} ${body2Capitalized}`;
     phaseEmoji = "➡️";
     categories = [...baseCategories, "Forming"];
   } else {
-    description =
-      `${body1Capitalized} dissolving ${minorAspect} ${body2Capitalized}` as MinorAspectDescription;
+    description = `${body1Capitalized} dissolving ${minorAspect} ${body2Capitalized}`;
     phaseEmoji = "⬅️";
     categories = [...baseCategories, "Dissolving"];
   }
@@ -159,11 +136,11 @@ export function getMinorAspectEvent(args: {
 
   console.log(`${summary} at ${timestamp.toISOString()}`);
 
-  const minorAspectEvent: MinorAspectEvent = {
+  const minorAspectEvent: Event = {
     start: timestamp,
     end: timestamp,
     description,
-    summary: summary as MinorAspectSummary,
+    summary,
     categories,
   };
   return minorAspectEvent;
@@ -172,7 +149,7 @@ export function getMinorAspectEvent(args: {
 export function writeMinorAspectEvents(args: {
   end: Date;
   minorAspectBodies: Body[];
-  minorAspectEvents: MinorAspectEvent[];
+  minorAspectEvents: Event[];
   start: Date;
 }) {
   const { end, minorAspectEvents, minorAspectBodies, start } = args;
@@ -203,7 +180,7 @@ export function getMinorAspectDurationEvents(events: Event[]): Event[] {
   // Filter to minor aspect events only
   const minorAspectEvents = events.filter((event) =>
     event.categories.includes("Minor Aspect")
-  ) as MinorAspectEvent[];
+  ) as Event[];
 
   // Group by body pair and aspect type using categories
   const groupedEvents = _.groupBy(minorAspectEvents, (event) => {
@@ -250,10 +227,7 @@ export function getMinorAspectDurationEvents(events: Event[]): Event[] {
   return durationEvents;
 }
 
-function getMinorAspectDurationEvent(
-  beginning: MinorAspectEvent,
-  ending: MinorAspectEvent
-): Event {
+function getMinorAspectDurationEvent(beginning: Event, ending: Event): Event {
   const categories = beginning.categories || [];
 
   const bodiesCapitalized = categories

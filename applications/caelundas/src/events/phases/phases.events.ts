@@ -17,12 +17,12 @@ import type {
   VenusianPhase,
   VenusianPhaseSymbol,
 } from "../../types";
+import { planetaryPhaseBodies } from "../../types";
 import {
   symbolByMartianPhase,
   symbolByMercurianPhase,
   symbolByVenusianPhase,
-  planetaryPhaseBodies,
-} from "../../constants";
+} from "../../symbols";
 import type {
   CoordinateEphemeris,
   CoordinateEphemerisBody,
@@ -47,11 +47,6 @@ import { getOutputPath } from "../../output.utilities";
 
 const categories = ["Astronomy", "Astrology", "Planetary Phase"];
 
-export type PlanetaryPhaseEvent =
-  | VenusianPhaseEvent
-  | MercurianPhaseEvent
-  | MartianPhaseEvent;
-
 export function getPlanetaryPhaseEvents(args: {
   currentMinute: Moment;
   coordinateEphemerisByBody: Record<
@@ -71,7 +66,7 @@ export function getPlanetaryPhaseEvents(args: {
     illuminationEphemerisByBody,
   } = args;
 
-  const planetaryPhaseEvents: PlanetaryPhaseEvent[] = [];
+  const planetaryPhaseEvents: Event[] = [];
 
   if (planetaryPhaseBodies.includes("venus")) {
     planetaryPhaseEvents.push(
@@ -114,20 +109,6 @@ export function getPlanetaryPhaseEvents(args: {
 
 // #region ♀️ Venus
 
-type VenusianPhaseDescription = `Venus ${Capitalize<VenusianPhase>}`;
-type VenusianPhaseSummary =
-  `♀️${VenusianPhaseSymbol} ${VenusianPhaseDescription}`;
-
-export interface VenusianPhaseEventTemplate extends EventTemplate {
-  description: VenusianPhaseDescription;
-  summary: VenusianPhaseSummary;
-}
-
-export interface VenusianPhaseEvent extends Event {
-  description: VenusianPhaseDescription;
-  summary: VenusianPhaseSummary;
-}
-
 export function getVenusianPhaseEvent(args: {
   timestamp: Date;
   phase: VenusianPhase;
@@ -137,13 +118,13 @@ export function getVenusianPhaseEvent(args: {
   const phaseCapitalized = _.startCase(phase) as Capitalize<VenusianPhase>;
   const phaseSymbol = symbolByVenusianPhase[phase] as VenusianPhaseSymbol;
 
-  const description: VenusianPhaseDescription = `Venus ${phaseCapitalized}`;
-  const summary: VenusianPhaseSummary = `♀️${phaseSymbol} ${description}`;
+  const description = `Venus ${phaseCapitalized}`;
+  const summary = `♀️${phaseSymbol} ${description}`;
 
   const dateString = moment.tz(timestamp, "America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
-  const venusianPhaseEvent: VenusianPhaseEvent = {
+  const venusianPhaseEvent: Event = {
     start: timestamp,
     end: timestamp,
     categories: [...categories, "Venusian", phaseCapitalized],
@@ -241,7 +222,7 @@ export function getVenusianPhaseEvents(args: {
     previousIlluminations,
   };
 
-  const venusianPhaseEvents: VenusianPhaseEvent[] = [];
+  const venusianPhaseEvents: Event[] = [];
 
   if (isMorningRise({ ...params })) {
     venusianPhaseEvents.push(
@@ -320,20 +301,6 @@ export function getVenusianPhaseEvents(args: {
 
 // #region ☿ Mercury
 
-type MercurianPhaseDescription = `Mercury ${Capitalize<MercurianPhase>}`;
-type MercurianPhaseSummary =
-  `☿${MercurianPhaseSymbol} ${MercurianPhaseDescription}`;
-
-export interface MercurianPhaseEventTemplate extends EventTemplate {
-  description: MercurianPhaseDescription;
-  summary: MercurianPhaseSummary;
-}
-
-export interface MercurianPhaseEvent extends Event {
-  description: MercurianPhaseDescription;
-  summary: MercurianPhaseSummary;
-}
-
 export function getMercurianPhaseEvent(args: {
   timestamp: Date;
   phase: MercurianPhase;
@@ -343,13 +310,13 @@ export function getMercurianPhaseEvent(args: {
   const phaseCapitalized = _.startCase(phase) as Capitalize<MercurianPhase>;
   const phaseSymbol = symbolByMercurianPhase[phase] as MercurianPhaseSymbol;
 
-  const description: MercurianPhaseDescription = `Mercury ${phaseCapitalized}`;
-  const summary: MercurianPhaseSummary = `☿${phaseSymbol} ${description}`;
+  const description = `Mercury ${phaseCapitalized}`;
+  const summary = `☿${phaseSymbol} ${description}`;
 
   const dateString = moment.tz(timestamp, "America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
-  const mercurianPhaseEvent: MercurianPhaseEvent = {
+  const mercurianPhaseEvent: Event = {
     start: timestamp,
     end: timestamp,
     categories: [...categories, "Mercurian", phaseCapitalized],
@@ -447,7 +414,7 @@ export function getMercurianPhaseEvents(args: {
     previousIlluminations,
   };
 
-  const mercurianPhaseEvents: MercurianPhaseEvent[] = [];
+  const mercurianPhaseEvents: Event[] = [];
 
   if (isMorningRise({ ...params })) {
     mercurianPhaseEvents.push(
@@ -526,19 +493,6 @@ export function getMercurianPhaseEvents(args: {
 
 // #region ♂️ Mars
 
-type MartianPhaseDescription = `Mars ${Capitalize<MartianPhase>}`;
-type MartianPhaseSummary = `♂️${MartianPhaseSymbol} ${MartianPhaseDescription}`;
-
-export interface MartianPhaseEventTemplate extends EventTemplate {
-  description: MartianPhaseDescription;
-  summary: MartianPhaseSummary;
-}
-
-export interface MartianPhaseEvent extends Event {
-  description: MartianPhaseDescription;
-  summary: MartianPhaseSummary;
-}
-
 export function getMartianPhaseEvent(args: {
   timestamp: Date;
   phase: MartianPhase;
@@ -548,13 +502,13 @@ export function getMartianPhaseEvent(args: {
   const phaseCapitalized = _.startCase(phase) as Capitalize<MartianPhase>;
   const phaseSymbol = symbolByMartianPhase[phase] as MartianPhaseSymbol;
 
-  const description: MartianPhaseDescription = `Mars ${phaseCapitalized}`;
-  const summary: MartianPhaseSummary = `♂️${phaseSymbol} ${description}`;
+  const description = `Mars ${phaseCapitalized}`;
+  const summary = `♂️${phaseSymbol} ${description}`;
 
   const dateString = moment.tz(timestamp, "America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
-  const martianPhaseEvent: MartianPhaseEvent = {
+  const martianPhaseEvent: Event = {
     start: timestamp,
     end: timestamp,
     categories: [...categories, "Martian", phaseCapitalized],
@@ -652,7 +606,7 @@ export function getMartianPhaseEvents(args: {
     previousIlluminations,
   };
 
-  const martianPhaseEvents: MartianPhaseEvent[] = [];
+  const martianPhaseEvents: Event[] = [];
 
   if (isMorningRise({ ...params })) {
     martianPhaseEvents.push(
@@ -698,7 +652,7 @@ export function getMartianPhaseEvents(args: {
 export function writePlanetaryPhaseEvents(args: {
   end: Date;
   planetaryPhaseBodies: Extract<Body, "mercury" | "venus" | "mars">[];
-  planetaryPhaseEvents: PlanetaryPhaseEvent[];
+  planetaryPhaseEvents: Event[];
   start: Date;
 }) {
   const { planetaryPhaseEvents, planetaryPhaseBodies, start, end } = args;

@@ -1,5 +1,8 @@
 import moment from "moment-timezone";
-import { MARGIN_MINUTES } from "./calendar.utilities";
+import {
+  MARGIN_MINUTES,
+  type Event as CalendarEvent,
+} from "./calendar.utilities";
 import type { Coordinates } from "./ephemeris/ephemeris.types";
 import { getEphemerides } from "./ephemeris/ephemeris.aggregates";
 import {
@@ -125,8 +128,7 @@ async function main() {
       currentMinute.isBefore(nextDay);
       currentMinute = currentMinute.add(1, "minute")
     ) {
-      /* @ts-ignore - Expression produces a union type that is too complex to represent */
-      await upsertEvents([
+      const exactEvents: CalendarEvent[] = [
         ...getSignIngressEvents({ coordinateEphemerisByBody, currentMinute }),
         ...getDecanIngressEvents({ coordinateEphemerisByBody, currentMinute }),
         ...getPeakIngressEvents({ coordinateEphemerisByBody, currentMinute }),
@@ -175,18 +177,19 @@ async function main() {
           currentMinute,
           sunAzimuthElevationEphemeris: azimuthElevationEphemerisByBody["sun"],
         }),
-      ]);
+      ];
+      await upsertEvents(exactEvents);
 
       const activeAspects = await getActiveAspectsAt(currentMinute.toDate());
 
-      /* @ts-ignore - Expression produces a union type that is too complex to represent */
-      await upsertEvents([
+      const compoundAspectEvents: CalendarEvent[] = [
         ...getTripleAspectEvents(activeAspects, currentMinute),
         ...getQuadrupleAspectEvents(activeAspects, currentMinute),
         ...getQuintupleAspectEvents(activeAspects, currentMinute),
         ...getSextupleAspectEvents(activeAspects, currentMinute),
         ...getStelliumEvents(activeAspects, currentMinute),
-      ]);
+      ];
+      await upsertEvents(compoundAspectEvents);
     }
 
     console.log(`📅 Processed day ${timespan}`);

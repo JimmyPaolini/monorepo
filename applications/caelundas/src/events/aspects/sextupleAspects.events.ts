@@ -1,6 +1,7 @@
 import _ from "lodash";
 import type { Moment } from "moment";
 import type { Body, AspectPhase, SextupleAspect } from "../../types";
+import { sextupleAspectBodies } from "../../types";
 import {
   type AspectEdge,
   parseAspectEvents,
@@ -8,20 +9,9 @@ import {
   haveAspect,
   determineMultiBodyPhase,
 } from "./aspects.composition";
-import {
-  symbolBySextupleAspect,
-  symbolByBody,
-  sextupleAspectBodies,
-} from "../../constants";
+import { symbolBySextupleAspect, symbolByBody } from "../../symbols";
 import type { Event } from "../../calendar.utilities";
 import { getCombinations } from "../../math.utilities";
-
-// #region Types
-
-export interface SextupleAspectEvent extends Event {
-  description: any;
-  summary: any;
-}
 
 /**
  * Compose Hexagram (Star of David) patterns from stored 2-body aspects
@@ -30,8 +20,8 @@ export interface SextupleAspectEvent extends Event {
 function composeHexagrams(
   allEdges: AspectEdge[],
   currentMinute: Moment
-): SextupleAspectEvent[] {
-  const events: SextupleAspectEvent[] = [];
+): Event[] {
+  const events: Event[] = [];
 
   // Filter to current minute for pattern detection
   const currentTimestamp = currentMinute.toDate().getTime();
@@ -158,7 +148,7 @@ function getSextupleAspectEvent(params: {
   body6: Body;
   sextupleAspect: SextupleAspect;
   phase: AspectPhase;
-}): SextupleAspectEvent {
+}): Event {
   const {
     timestamp,
     body1,
@@ -234,9 +224,9 @@ function getSextupleAspectEvent(params: {
 export function getSextupleAspectEvents(
   aspectEvents: Event[],
   currentMinute: Moment
-): SextupleAspectEvent[] {
+): Event[] {
   const edges = parseAspectEvents(aspectEvents);
-  const events: SextupleAspectEvent[] = [];
+  const events: Event[] = [];
 
   events.push(...composeHexagrams(edges, currentMinute));
 
@@ -251,7 +241,7 @@ export function getSextupleAspectDurationEvents(events: Event[]): Event[] {
   // Filter to sextuple aspect events only
   const sextupleAspectEvents = events.filter((event) =>
     event.categories.includes("Sextuple Aspect")
-  ) as SextupleAspectEvent[];
+  ) as Event[];
 
   // Group by body sextet and aspect type using categories
   const groupedEvents = _.groupBy(sextupleAspectEvents, (event) => {

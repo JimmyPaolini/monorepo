@@ -9,7 +9,7 @@ import { getCalendar, MARGIN_MINUTES } from "../../calendar.utilities";
 import { upsertEvents } from "../../database.utilities";
 import { lunarPhases } from "../../constants";
 import { isLunarPhase } from "./monthlyLunarCycle.utilities";
-import { symbolByLunarPhase } from "../../constants";
+import { symbolByLunarPhase } from "../../symbols";
 import { getOutputPath } from "../../output.utilities";
 
 export function getMonthlyLunarCycleEvents(args: {

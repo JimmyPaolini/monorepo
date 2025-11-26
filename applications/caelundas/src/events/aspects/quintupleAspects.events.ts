@@ -1,6 +1,7 @@
 import _ from "lodash";
 import type { Moment } from "moment";
 import type { Body, AspectPhase, QuintupleAspect } from "../../types";
+import { quintupleAspectBodies } from "../../types";
 import {
   type AspectEdge,
   parseAspectEvents,
@@ -8,20 +9,9 @@ import {
   haveAspect,
   determineMultiBodyPhase,
 } from "./aspects.composition";
-import {
-  symbolByQuintupleAspect,
-  symbolByBody,
-  quintupleAspectBodies,
-} from "../../constants";
+import { symbolByQuintupleAspect, symbolByBody } from "../../symbols";
 import type { Event } from "../../calendar.utilities";
 import { getCombinations } from "../../math.utilities";
-
-// #region Types
-
-export interface QuintupleAspectEvent extends Event {
-  description: any;
-  summary: any;
-}
 
 /**
  * Compose Pentagram patterns from stored 2-body aspects
@@ -30,8 +20,8 @@ export interface QuintupleAspectEvent extends Event {
 function composePentagrams(
   allEdges: AspectEdge[],
   currentMinute: Moment
-): QuintupleAspectEvent[] {
-  const events: QuintupleAspectEvent[] = [];
+): Event[] {
+  const events: Event[] = [];
 
   // Filter to current minute for pattern detection
   const currentTimestamp = currentMinute.toDate().getTime();
@@ -124,7 +114,7 @@ function getQuintupleAspectEvent(params: {
   body5: Body;
   quintupleAspect: QuintupleAspect;
   phase: AspectPhase;
-}): QuintupleAspectEvent {
+}): Event {
   const {
     timestamp,
     body1,
@@ -186,7 +176,7 @@ function getQuintupleAspectEvent(params: {
     description: description as any,
     summary: summary as any,
     categories,
-  } as QuintupleAspectEvent;
+  } as Event;
 }
 
 /**
@@ -195,9 +185,9 @@ function getQuintupleAspectEvent(params: {
 export function getQuintupleAspectEvents(
   aspectEvents: Event[],
   currentMinute: Moment
-): QuintupleAspectEvent[] {
+): Event[] {
   const edges = parseAspectEvents(aspectEvents);
-  const events: QuintupleAspectEvent[] = [];
+  const events: Event[] = [];
 
   events.push(...composePentagrams(edges, currentMinute));
 
@@ -212,7 +202,7 @@ export function getQuintupleAspectDurationEvents(events: Event[]): Event[] {
   // Filter to quintuple aspect events only
   const quintupleAspectEvents = events.filter((event) =>
     event.categories.includes("Quintuple Aspect")
-  ) as QuintupleAspectEvent[];
+  ) as Event[];
 
   // Group by body quintet and aspect type using categories
   const groupedEvents = _.groupBy(quintupleAspectEvents, (event) => {

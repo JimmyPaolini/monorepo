@@ -6,8 +6,6 @@ import {
   symbolByComet,
   symbolByNode,
   symbolByBody,
-  retrogradeBodies,
-  phaseBodies,
   symbolByMajorAspect,
   symbolByMinorAspect,
   symbolBySpecialtyAspect,
@@ -30,7 +28,21 @@ import {
   symbolByHouse,
   aspectPhases,
   eclipsePhases,
-} from "./constants";
+  retrogradeBodies,
+  phaseBodies,
+  planetaryPhaseBodies,
+  signIngressBodies,
+  decanIngressBodies,
+  peakIngressBodies,
+  majorAspectBodies,
+  minorAspectBodies,
+  specialtyAspectBodies,
+  tripleAspectBodies,
+  quadrupleAspectBodies,
+  quintupleAspectBodies,
+  sextupleAspectBodies,
+  stelliumBodies,
+} from "./symbols";
 
 // #region Signs 🪧
 
@@ -57,7 +69,7 @@ export type AsteroidSymbol = (typeof symbolByAsteroid)[Asteroid];
 export type Comet = keyof typeof symbolByComet;
 export type CometSymbol = (typeof symbolByComet)[Comet];
 
-// #region Nodes 🌑
+// #region Nodes 🌕
 
 export type Node = keyof typeof symbolByNode;
 export type NodeSymbol = (typeof symbolByNode)[Node];
@@ -66,18 +78,6 @@ export type NodeSymbol = (typeof symbolByNode)[Node];
 
 export type Body = keyof typeof symbolByBody;
 export type BodySymbol = (typeof symbolByBody)[Body];
-
-// #region Retrograde Bodies ↩️
-
-export type RetrogradeBody = (typeof retrogradeBodies)[number];
-export type RetrogradeBodySymbol = (typeof symbolByBody)[RetrogradeBody];
-
-// #region Phase Bodies 🌓
-
-export type PhaseBody = (typeof phaseBodies)[number];
-export type PhaseBodySymbol = (typeof symbolByBody)[PhaseBody];
-
-// #region Aspects 🧭
 
 // #region Major Aspects 📐
 
@@ -177,13 +177,54 @@ export type MartianPhaseSymbol = (typeof symbolByMartianPhase)[MartianPhase];
 export type Phase = keyof typeof symbolByPhase;
 export type PhaseSymbol = (typeof symbolByPhase)[Phase];
 
-// #region Event Phase Types 🔄
-
-export type AspectPhase = (typeof aspectPhases)[number];
-
-export type EclipsePhase = (typeof eclipsePhases)[number];
-
 // #region Houses 🏠
 
 export type House = keyof typeof symbolByHouse;
 export type HouseSymbol = (typeof symbolByHouse)[House];
+
+// #region Event Phase Types 🔄
+
+export type AspectPhase = (typeof aspectPhases)[number];
+export type EclipsePhase = (typeof eclipsePhases)[number];
+
+// #region Body Types 🔭
+
+export type RetrogradeBody = (typeof retrogradeBodies)[number];
+export type RetrogradeBodySymbol = (typeof symbolByBody)[RetrogradeBody];
+
+export type PhaseBody = (typeof phaseBodies)[number];
+export type PhaseBodySymbol = (typeof symbolByBody)[PhaseBody];
+
+export type SignIngressBody = (typeof signIngressBodies)[number];
+export type DecanIngressBody = (typeof decanIngressBodies)[number];
+export type PeakIngressBody = (typeof peakIngressBodies)[number];
+
+export type MajorAspectBody = (typeof majorAspectBodies)[number];
+export type MinorAspectBody = (typeof minorAspectBodies)[number];
+export type SpecialtyAspectBody = (typeof specialtyAspectBodies)[number];
+
+export type TripleAspectBody = (typeof tripleAspectBodies)[number];
+export type QuadrupleAspectBody = (typeof quadrupleAspectBodies)[number];
+export type QuintupleAspectBody = (typeof quintupleAspectBodies)[number];
+export type SextupleAspectBody = (typeof sextupleAspectBodies)[number];
+export type StelliumBody = (typeof stelliumBodies)[number];
+
+// Re-export arrays from symbols for convenience
+export {
+  aspectPhases,
+  eclipsePhases,
+  retrogradeBodies,
+  phaseBodies,
+  planetaryPhaseBodies,
+  signIngressBodies,
+  decanIngressBodies,
+  peakIngressBodies,
+  majorAspectBodies,
+  minorAspectBodies,
+  specialtyAspectBodies,
+  tripleAspectBodies,
+  quadrupleAspectBodies,
+  quintupleAspectBodies,
+  sextupleAspectBodies,
+  stelliumBodies,
+};

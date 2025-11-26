@@ -1,6 +1,7 @@
 import _ from "lodash";
 import type { Moment } from "moment";
 import type { Body, AspectPhase, QuadrupleAspect } from "../../types";
+import { quadrupleAspectBodies } from "../../types";
 import {
   type AspectEdge,
   parseAspectEvents,
@@ -10,19 +11,8 @@ import {
   getOtherBody,
   determineMultiBodyPhase,
 } from "./aspects.composition";
-import {
-  symbolByBody,
-  symbolByQuadrupleAspect,
-  quadrupleAspectBodies,
-} from "../../constants";
+import { symbolByBody, symbolByQuadrupleAspect } from "../../symbols";
 import type { Event } from "../../calendar.utilities";
-
-// #region Types
-
-export interface QuadrupleAspectEvent extends Event {
-  description: any;
-  summary: any;
-}
 
 /**
  * Compose Grand Cross patterns from stored 2-body aspects
@@ -31,8 +21,8 @@ export interface QuadrupleAspectEvent extends Event {
 function composeGrandCrosses(
   allEdges: AspectEdge[],
   currentMinute: Moment
-): QuadrupleAspectEvent[] {
-  const events: QuadrupleAspectEvent[] = [];
+): Event[] {
+  const events: Event[] = [];
 
   // Filter to current minute for pattern detection
   const currentTimestamp = currentMinute.toDate().getTime();
@@ -171,11 +161,8 @@ function composeGrandCrosses(
  * Compose Kite patterns from stored 2-body aspects
  * Kite = Grand Trine + Opposition + 2 Sextiles
  */
-function composeKites(
-  allEdges: AspectEdge[],
-  currentMinute: Moment
-): QuadrupleAspectEvent[] {
-  const events: QuadrupleAspectEvent[] = [];
+function composeKites(allEdges: AspectEdge[], currentMinute: Moment): Event[] {
+  const events: Event[] = [];
 
   // Filter to current minute for pattern detection
   const currentTimestamp = currentMinute.toDate().getTime();
@@ -294,7 +281,7 @@ function getQuadrupleAspectEvent(params: {
   quadrupleAspect: QuadrupleAspect;
   focalOrApexBody?: Body;
   phase: AspectPhase;
-}): QuadrupleAspectEvent {
+}): Event {
   const {
     timestamp,
     body1,
@@ -360,7 +347,7 @@ function getQuadrupleAspectEvent(params: {
     description: description as any,
     summary: summary as any,
     categories,
-  } as QuadrupleAspectEvent;
+  } as Event;
 }
 
 /**
@@ -369,9 +356,9 @@ function getQuadrupleAspectEvent(params: {
 export function getQuadrupleAspectEvents(
   aspectEvents: Event[],
   currentMinute: Moment
-): QuadrupleAspectEvent[] {
+): Event[] {
   const edges = parseAspectEvents(aspectEvents);
-  const events: QuadrupleAspectEvent[] = [];
+  const events: Event[] = [];
 
   events.push(...composeGrandCrosses(edges, currentMinute));
   events.push(...composeKites(edges, currentMinute));
@@ -387,7 +374,7 @@ export function getQuadrupleAspectDurationEvents(events: Event[]): Event[] {
   // Filter to quadruple aspect events only
   const quadrupleAspectEvents = events.filter((event) =>
     event.categories.includes("Quadruple Aspect")
-  ) as QuadrupleAspectEvent[];
+  ) as Event[];
 
   // Group by body quartet and aspect type using categories
   const groupedEvents = _.groupBy(quadrupleAspectEvents, (event) => {

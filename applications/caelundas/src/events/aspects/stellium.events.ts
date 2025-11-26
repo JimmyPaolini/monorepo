@@ -1,6 +1,7 @@
 import _ from "lodash";
 import type { Moment } from "moment";
 import type { Body, AspectPhase } from "../../types";
+import { stelliumBodies } from "../../types";
 import {
   type AspectEdge,
   parseAspectEvents,
@@ -8,19 +9,8 @@ import {
   haveAspect,
   determineMultiBodyPhase,
 } from "./aspects.composition";
-import {
-  symbolByStellium,
-  symbolByBody,
-  stelliumBodies,
-} from "../../constants";
+import { symbolByStellium, symbolByBody } from "../../symbols";
 import type { Event } from "../../calendar.utilities";
-
-// #region Types
-
-export interface StelliumEvent extends Event {
-  description: any;
-  summary: any;
-}
 
 /**
  * Compose Stellium patterns from stored 2-body aspects
@@ -29,8 +19,8 @@ export interface StelliumEvent extends Event {
 function composeStelliums(
   allEdges: AspectEdge[],
   currentMinute: Moment
-): StelliumEvent[] {
-  const events: StelliumEvent[] = [];
+): Event[] {
+  const events: Event[] = [];
 
   // Filter to current minute for pattern detection
   const currentTimestamp = currentMinute.toDate().getTime();
@@ -149,7 +139,7 @@ function createStelliumEvent(params: {
   timestamp: Date;
   bodies: Body[];
   phase: AspectPhase;
-}): StelliumEvent {
+}): Event {
   const { timestamp, bodies, phase } = params;
 
   const bodiesCapitalized = bodies.map((b) => _.startCase(b));
@@ -195,9 +185,9 @@ function createStelliumEvent(params: {
 export function getStelliumEvents(
   aspectEvents: Event[],
   currentMinute: Moment
-): StelliumEvent[] {
+): Event[] {
   const edges = parseAspectEvents(aspectEvents);
-  const events: StelliumEvent[] = [];
+  const events: Event[] = [];
 
   events.push(...composeStelliums(edges, currentMinute));
 
@@ -212,7 +202,7 @@ export function getStelliumDurationEvents(events: Event[]): Event[] {
   // Filter to stellium events only
   const stelliumEvents = events.filter((event) =>
     event.categories.includes("Stellium")
-  ) as StelliumEvent[];
+  ) as Event[];
 
   // Group by bodies and stellium type using categories
   const groupedEvents = _.groupBy(stelliumEvents, (event) => {

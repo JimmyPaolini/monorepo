@@ -3,11 +3,8 @@ import type { Moment } from "moment";
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 import type { DiameterEphemeris } from "../../ephemeris/ephemeris.types";
 import type { Event } from "../../calendar.utilities";
-import {
-  isSolarEclipse,
-  isLunarEclipse,
-  EclipsePhase,
-} from "./eclipses.utilities";
+import type { EclipsePhase } from "../../types";
+import { isSolarEclipse, isLunarEclipse } from "./eclipses.utilities";
 import { pairDurationEvents } from "../../duration.utilities";
 
 const categories = ["Astronomy", "Astrology", "Eclipse"];

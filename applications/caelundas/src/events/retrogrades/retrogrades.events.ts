@@ -10,38 +10,24 @@ import type {
   OrbitalDirectionSymbol,
   RetrogradeBodySymbol,
 } from "../../types";
-import {
-  symbolByBody,
-  symbolByOrbitalDirection,
-  retrogradeBodies,
-} from "../../constants";
+import { retrogradeBodies } from "../../types";
+import { symbolByBody, symbolByOrbitalDirection } from "../../symbols";
 import { MARGIN_MINUTES } from "../../calendar.utilities";
 import { isDirect, isRetrograde } from "./retrogrades.utilities";
 import { upsertEvents } from "../../database.utilities";
 import { getOutputPath } from "../../output.utilities";
 import { pairDurationEvents } from "../../duration.utilities";
 
-type RetrogradeDescription =
-  `${Capitalize<RetrogradeBody>} Stationary ${Capitalize<OrbitalDirection>}`;
-type RetrogradeSummary =
-  `${RetrogradeBodySymbol} ${OrbitalDirectionSymbol} ${RetrogradeDescription}`;
+export interface RetrogradeEventTemplate extends EventTemplate {}
 
-export interface RetrogradeEventTemplate extends EventTemplate {
-  description: RetrogradeDescription;
-  summary: RetrogradeSummary;
-}
-
-export interface RetrogradeEvent extends Event {
-  description: RetrogradeDescription;
-  summary: RetrogradeSummary;
-}
+export interface RetrogradeEvent extends Event {}
 
 export function getRetrogradeEvents(args: {
   coordinateEphemerisByBody: Record<RetrogradeBody, CoordinateEphemeris>;
   currentMinute: Moment;
 }) {
   const { coordinateEphemerisByBody, currentMinute } = args;
-  const retrogradeEvents: RetrogradeEvent[] = [];
+  const retrogradeEvents: Event[] = [];
 
   for (const body of retrogradeBodies) {
     const ephemeris = coordinateEphemerisByBody[body];
@@ -108,12 +94,12 @@ export function getRetrogradeEvent(args: {
     direction
   ] as OrbitalDirectionSymbol;
 
-  const description: RetrogradeDescription = `${bodyCapitalized} Stationary ${orbitalDirectionCapitalized}`;
-  const summary: RetrogradeSummary = `${retrogradeBodySymbol} ${orbitalDirectionSymbol} ${description}`;
+  const description = `${bodyCapitalized} Stationary ${orbitalDirectionCapitalized}`;
+  const summary = `${retrogradeBodySymbol} ${orbitalDirectionSymbol} ${description}`;
 
   console.log(`${summary} at ${timestamp.toISOString()}`);
 
-  const retrogradeEvent: RetrogradeEvent = {
+  const retrogradeEvent: Event = {
     start: timestamp,
     end: timestamp,
     categories: categories.concat(
@@ -129,7 +115,7 @@ export function getRetrogradeEvent(args: {
 export function writeRetrogradeEvents(args: {
   end: Date;
   retrogradeBodies: RetrogradeBody[];
-  retrogradeEvents: RetrogradeEvent[];
+  retrogradeEvents: Event[];
   start: Date;
 }) {
   const { retrogradeBodies, retrogradeEvents, start, end } = args;
@@ -187,8 +173,8 @@ export function getRetrogradeDurationEvents(events: Event[]): Event[] {
 }
 
 function getRetrogradeDurationEvent(
-  beginningEvent: RetrogradeEvent,
-  endingEvent: RetrogradeEvent,
+  beginningEvent: Event,
+  endingEvent: Event,
   planet: RetrogradeBody
 ): Event {
   const start = beginningEvent.start;

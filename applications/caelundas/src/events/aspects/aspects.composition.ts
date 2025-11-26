@@ -2,7 +2,8 @@ import _ from "lodash";
 import type { Moment } from "moment";
 import type { Event } from "../../calendar.utilities";
 import type { Body, Aspect, AspectPhase } from "../../types";
-import { bodies, aspects, aspectPhases } from "../../constants";
+import { aspectPhases } from "../../types";
+import { bodies, aspects } from "../../constants";
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 
 /**

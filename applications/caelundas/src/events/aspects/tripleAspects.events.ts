@@ -1,6 +1,7 @@
 import _ from "lodash";
 import type { Moment } from "moment";
 import type { Body, AspectPhase, TripleAspect } from "../../types";
+import { tripleAspectBodies } from "../../types";
 import {
   type AspectEdge,
   parseAspectEvents,
@@ -11,19 +12,8 @@ import {
   getOtherBody,
   determineMultiBodyPhase,
 } from "./aspects.composition";
-import {
-  symbolByBody,
-  symbolByTripleAspect,
-  tripleAspectBodies,
-} from "../../constants";
+import { symbolByBody, symbolByTripleAspect } from "../../symbols";
 import type { Event } from "../../calendar.utilities";
-
-// #region Types
-
-export interface TripleAspectEvent extends Event {
-  description: any;
-  summary: any;
-}
 
 /**
  * Compose T-Squares from stored 2-body aspects
@@ -32,8 +22,8 @@ export interface TripleAspectEvent extends Event {
 function composeTSquares(
   allEdges: AspectEdge[],
   currentMinute: Moment
-): TripleAspectEvent[] {
-  const events: TripleAspectEvent[] = [];
+): Event[] {
+  const events: Event[] = [];
 
   // Filter to current minute for pattern detection
   const currentTimestamp = currentMinute.toDate().getTime();
@@ -105,11 +95,8 @@ function composeTSquares(
  * Compose Yods from stored 2-body aspects
  * Yod = 1 sextile + 2 quincunxes forming a finger
  */
-function composeYods(
-  allEdges: AspectEdge[],
-  currentMinute: Moment
-): TripleAspectEvent[] {
-  const events: TripleAspectEvent[] = [];
+function composeYods(allEdges: AspectEdge[], currentMinute: Moment): Event[] {
+  const events: Event[] = [];
 
   // Filter to current minute for pattern detection
   const currentTimestamp = currentMinute.toDate().getTime();
@@ -190,8 +177,8 @@ function composeYods(
 function composeGrandTrines(
   allEdges: AspectEdge[],
   currentMinute: Moment
-): TripleAspectEvent[] {
-  const events: TripleAspectEvent[] = [];
+): Event[] {
+  const events: Event[] = [];
 
   // Filter to current minute for pattern detection
   const currentTimestamp = currentMinute.toDate().getTime();
@@ -268,7 +255,7 @@ function composeGrandTrines(
 export function getTripleAspectEvents(
   storedAspects: Event[],
   currentMinute: Moment
-): TripleAspectEvent[] {
+): Event[] {
   const edges = parseAspectEvents(storedAspects);
 
   return [
@@ -288,7 +275,7 @@ function getTripleAspectEvent(args: {
   tripleAspect: TripleAspect;
   phase: AspectPhase;
   focalOrApexBody?: Body;
-}): TripleAspectEvent {
+}): Event {
   const {
     timestamp,
     body1,
@@ -351,7 +338,7 @@ function getTripleAspectEvent(args: {
     description: description as any,
     summary: summary as any,
     categories,
-  } as TripleAspectEvent;
+  } as Event;
 }
 
 // #region Duration Events
@@ -362,7 +349,7 @@ export function getTripleAspectDurationEvents(events: Event[]): Event[] {
   // Filter to triple aspect events only
   const tripleAspectEvents = events.filter((event) =>
     event.categories.includes("Triple Aspect")
-  ) as TripleAspectEvent[];
+  ) as Event[];
 
   // Group by body triplet and aspect type using categories
   const groupedEvents = _.groupBy(tripleAspectEvents, (event) => {
