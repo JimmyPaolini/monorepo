@@ -24,7 +24,7 @@ vi.mock("../../calendar.utilities", () => ({
 }));
 
 vi.mock("../../output.utilities", () => ({
-  getOutputPath: vi.fn((filename) => `/mock/output/${filename}`),
+  getOutputPath: vi.fn((filename: string) => `/mock/output/${filename}`),
 }));
 
 describe("ingresses.events", () => {
