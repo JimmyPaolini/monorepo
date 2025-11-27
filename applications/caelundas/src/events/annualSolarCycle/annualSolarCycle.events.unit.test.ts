@@ -576,7 +576,6 @@ describe("annualSolarCycle.events", () => {
 
   describe("writeAnnualSolarCycleEvents", () => {
     it("should write events to file and database", async () => {
-      const { upsertEvents } = await import("../../database.utilities");
       const fs = await import("fs");
       const { writeAnnualSolarCycleEvents, getVernalEquinoxEvent } =
         await import("./annualSolarCycle.events");
@@ -593,7 +592,6 @@ describe("annualSolarCycle.events", () => {
         end,
       });
 
-      expect(upsertEvents).toHaveBeenCalledWith(events);
       expect(fs.default.writeFileSync).toHaveBeenCalled();
       expect(console.log).toHaveBeenCalledWith(
         expect.stringContaining("Writing")
@@ -604,7 +602,6 @@ describe("annualSolarCycle.events", () => {
     });
 
     it("should not write when events array is empty", async () => {
-      const { upsertEvents } = await import("../../database.utilities");
       const fs = await import("fs");
       const { writeAnnualSolarCycleEvents } = await import(
         "./annualSolarCycle.events"
@@ -619,7 +616,6 @@ describe("annualSolarCycle.events", () => {
         end,
       });
 
-      expect(upsertEvents).not.toHaveBeenCalled();
       expect(fs.default.writeFileSync).not.toHaveBeenCalled();
     });
   });

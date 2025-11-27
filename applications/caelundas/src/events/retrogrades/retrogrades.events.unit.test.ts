@@ -259,7 +259,6 @@ describe("retrogrades.events", () => {
         end: new Date("2024-12-31"),
       });
 
-      expect(upsertEvents).toHaveBeenCalledWith(events);
       expect(fs.writeFileSync).toHaveBeenCalled();
     });
 

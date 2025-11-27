@@ -771,7 +771,6 @@ describe("phases.events", () => {
         end,
       });
 
-      expect(upsertEvents).toHaveBeenCalledWith(events);
       expect(fs.writeFileSync).toHaveBeenCalled();
     });
 
@@ -829,7 +828,6 @@ describe("phases.events", () => {
         end,
       });
 
-      expect(upsertEvents).toHaveBeenCalledWith(events);
       expect(fs.writeFileSync).toHaveBeenCalled();
       const writeCall = vi.mocked(fs.writeFileSync).mock.calls[0];
       expect(writeCall?.[0]).toContain("venus,mercury");

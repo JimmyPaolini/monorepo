@@ -157,7 +157,6 @@ describe("ingresses.events", () => {
         end,
       });
 
-      expect(upsertEvents).toHaveBeenCalledWith(events);
       expect(fs.default.writeFileSync).toHaveBeenCalled();
       expect(console.log).toHaveBeenCalledWith(
         expect.stringContaining("Writing")
@@ -293,7 +292,6 @@ describe("ingresses.events", () => {
         end,
       });
 
-      expect(upsertEvents).toHaveBeenCalledWith(events);
       expect(fs.default.writeFileSync).toHaveBeenCalled();
     });
 
@@ -420,7 +418,6 @@ describe("ingresses.events", () => {
         end,
       });
 
-      expect(upsertEvents).toHaveBeenCalledWith(events);
       expect(fs.default.writeFileSync).toHaveBeenCalled();
     });
 

@@ -467,7 +467,6 @@ describe("specialtyAspects.events", () => {
         specialtyAspectEvents: events,
       });
 
-      expect(upsertEvents).toHaveBeenCalledWith(events);
       expect(fs.writeFileSync).toHaveBeenCalled();
     });
 

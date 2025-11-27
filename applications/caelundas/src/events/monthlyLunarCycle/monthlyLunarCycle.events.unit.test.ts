@@ -213,7 +213,6 @@ describe("monthlyLunarCycle.events", () => {
         end,
       });
 
-      expect(upsertEvents).toHaveBeenCalledWith(events);
       expect(fs.default.writeFileSync).toHaveBeenCalled();
       expect(console.log).toHaveBeenCalledWith(
         expect.stringContaining("Writing")

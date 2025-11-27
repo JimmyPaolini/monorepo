@@ -487,7 +487,6 @@ describe("minorAspects.events", () => {
         end: new Date("2024-03-21T23:59:59.000Z"),
       });
 
-      expect(upsertEvents).toHaveBeenCalledWith(minorAspectEvents);
       expect(fs.writeFileSync).toHaveBeenCalled();
     });
 

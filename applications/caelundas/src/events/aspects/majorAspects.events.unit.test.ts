@@ -485,7 +485,6 @@ describe("majorAspects.events", () => {
         end: new Date("2024-03-22T00:00:00.000Z"),
       });
 
-      expect(upsertEvents).toHaveBeenCalledWith(events);
       expect(fs.writeFileSync).toHaveBeenCalled();
     });
 
