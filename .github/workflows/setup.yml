@@ -39,12 +39,10 @@ jobs:
 
       - name: 🔑 Generate cache key
         id: cache-key
-        run: echo "key=workspace-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ github.sha }}" >> $GITHUB_OUTPUT
+        run: echo "key=nx-cache-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ github.sha }}" >> $GITHUB_OUTPUT
 
-      - name: 💾 Cache workspace
+      - name: 💾 Cache Nx
         uses: actions/cache/save@v4
         with:
-          path: |
-            .nx/cache
-            **/node_modules
+          path: .nx/cache
           key: ${{ steps.cache-key.outputs.key }}

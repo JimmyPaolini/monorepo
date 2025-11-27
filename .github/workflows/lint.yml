@@ -30,21 +30,22 @@ jobs:
         with:
           version: 10.20.0
 
-      - name: 🟢 Setup Node.js
+      - name: 🟢 Setup node
         uses: actions/setup-node@v4
         with:
           node-version: "22.20.0"
 
-      - name: 🎯 Set Nx base and head SHAs
+      - name: 🎯 Set NX SHAs
         uses: nrwl/nx-set-shas@v4
 
-      - name: ♻️ Restore workspace cache
+      - name: ♻️ Restore cache
         uses: actions/cache/restore@v4
         with:
-          path: |
-            .nx/cache
-            **/node_modules
+          path: .nx/cache
           key: ${{ needs.setup.outputs.cache-key }}
 
-      - name: 🚀 Run lint on affected projects
+      - name: 📚 Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🧹 Lint
         run: npx nx affected -t lint --parallel=3
