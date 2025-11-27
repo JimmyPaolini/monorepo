@@ -1,6 +1,8 @@
-import { describe, it, expect } from "vitest";
-import { getCalendar, getEvent, type Event } from "./calendar.utilities";
+import { describe, expect, it } from "vitest";
+
 import { mockDates } from "../testing/mocks";
+
+import { type Event, getCalendar, getEvent } from "./calendar.utilities";
 
 describe("calendar.utilities", () => {
   mockDates();
@@ -85,7 +87,7 @@ describe("calendar.utilities", () => {
 
     it("should generate unique UID based on event details", () => {
       const vevent = getEvent(baseEvent);
-      const uidMatch = vevent.match(/UID:(.+)/);
+      const uidMatch = /UID:(.+)/.exec(vevent);
 
       expect(uidMatch).not.toBeNull();
       expect(uidMatch![1]).toContain(baseEvent.summary);
@@ -100,7 +102,7 @@ describe("calendar.utilities", () => {
       const vevent = getEvent(durationEvent);
 
       // UID should include both start and end when they differ
-      const uidMatch = vevent.match(/UID:(.+)/);
+      const uidMatch = /UID:(.+)/.exec(vevent);
       expect(uidMatch![1]).toContain(durationEvent.summary);
       // Verify both DTSTART and DTEND are present with different values
       expect(vevent).toContain("DTSTART");

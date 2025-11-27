@@ -1,20 +1,21 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
+
 import type {
-  Coordinates,
-  CoordinateEphemeris,
-  OrbitEphemeris,
   AzimuthElevationEphemeris,
-  IlluminationEphemeris,
-  DistanceEphemeris,
-  DiameterEphemeris,
-  CoordinateEphemerisBody,
-  OrbitEphemerisBody,
   AzimuthElevationEphemerisBody,
-  IlluminationEphemerisBody,
+  CoordinateEphemeris,
+  CoordinateEphemerisBody,
+  Coordinates,
+  DiameterEphemeris,
   DiameterEphemerisBody,
+  DistanceEphemeris,
   DistanceEphemerisBody,
+  IlluminationEphemeris,
+  IlluminationEphemerisBody,
   Latitude,
   Longitude,
+  OrbitEphemeris,
+  OrbitEphemerisBody,
 } from "./ephemeris.types";
 
 describe("ephemeris.types", () => {

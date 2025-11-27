@@ -1,34 +1,37 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import moment from "moment-timezone";
+import { describe, expect, it, vi } from "vitest";
+
+import { MARGIN_MINUTES } from "../../calendar.utilities";
+
+import {
+  getAnnualSolarCycleEvents,
+  getAphelionEvent,
+  getAutumnalEquinoxEvent,
+  getBeltaneEvent,
+  getEleventhHexadecanEvent,
+  getFifteenthHexadecanEvent,
+  getFifthHexadecanEvent,
+  getFirstHexadecanEvent,
+  getImbolcEvent,
+  getLammasEvent,
+  getNinthHexadecanEvent,
+  getPerihelionEvent,
+  getSamhainEvent,
+  getSeventhHexadecanEvent,
+  getSolarApsisDurationEvents,
+  getSolarApsisEvents,
+  getSummerSolsticeEvent,
+  getThirdHexadecanEvent,
+  getThirteenthHexadecanEvent,
+  getVernalEquinoxEvent,
+  getWinterSolsticeEvent,
+} from "./annualSolarCycle.events";
+
+import type { Event } from "../../calendar.utilities";
 import type {
   CoordinateEphemeris,
   DistanceEphemeris,
 } from "../../ephemeris/ephemeris.types";
-import {
-  getAnnualSolarCycleEvents,
-  getSolarApsisEvents,
-  getAphelionEvent,
-  getPerihelionEvent,
-  getVernalEquinoxEvent,
-  getFirstHexadecanEvent,
-  getBeltaneEvent,
-  getThirdHexadecanEvent,
-  getSummerSolsticeEvent,
-  getFifthHexadecanEvent,
-  getLammasEvent,
-  getSeventhHexadecanEvent,
-  getAutumnalEquinoxEvent,
-  getNinthHexadecanEvent,
-  getSamhainEvent,
-  getEleventhHexadecanEvent,
-  getWinterSolsticeEvent,
-  getThirteenthHexadecanEvent,
-  getImbolcEvent,
-  getFifteenthHexadecanEvent,
-  getSolarApsisDurationEvents,
-} from "./annualSolarCycle.events";
-import type { Event } from "../../calendar.utilities";
-import { MARGIN_MINUTES } from "../../calendar.utilities";
 
 // Mock dependencies
 vi.mock("../../database.utilities", () => ({

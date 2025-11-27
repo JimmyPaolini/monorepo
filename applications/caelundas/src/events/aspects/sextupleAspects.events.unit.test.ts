@@ -1,10 +1,13 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import moment from "moment-timezone";
-import type { Event } from "../../calendar.utilities";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+
 import {
-  getSextupleAspectEvents,
   getSextupleAspectDurationEvents,
+  getSextupleAspectEvents,
 } from "./sextupleAspects.events";
+
+import type { Event } from "../../calendar.utilities";
+
 
 describe("sextupleAspects.events", () => {
   describe("getSextupleAspectEvents", () => {

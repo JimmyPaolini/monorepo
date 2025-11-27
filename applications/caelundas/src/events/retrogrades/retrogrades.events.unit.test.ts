@@ -1,14 +1,17 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import moment from "moment-timezone";
+import { describe, expect, it, vi } from "vitest";
+
+import { MARGIN_MINUTES } from "../../calendar.utilities";
+
+import {
+  getRetrogradeDurationEvents,
+  getRetrogradeEvent,
+  getRetrogradeEvents,
+} from "./retrogrades.events";
+
+import type { Event } from "../../calendar.utilities";
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 import type { RetrogradeBody } from "../../types";
-import {
-  getRetrogradeEvents,
-  getRetrogradeEvent,
-  getRetrogradeDurationEvents,
-} from "./retrogrades.events";
-import type { Event } from "../../calendar.utilities";
-import { MARGIN_MINUTES } from "../../calendar.utilities";
 
 // Mock dependencies
 vi.mock("../../database.utilities", () => ({

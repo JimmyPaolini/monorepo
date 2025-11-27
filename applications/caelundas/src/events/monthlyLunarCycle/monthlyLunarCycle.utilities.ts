@@ -50,8 +50,8 @@ export function isLunarPhase(args: {
 }) {
   const { lunarPhase, ...illuminations } = args;
 
-  if (lunarPhase === "new") return isNewMoon({ ...illuminations });
-  if (lunarPhase === "full") return isFullMoon({ ...illuminations });
+  if (lunarPhase === "new") {return isNewMoon({ ...illuminations });}
+  if (lunarPhase === "full") {return isFullMoon({ ...illuminations });}
 
   const { currentIllumination, previousIlluminations } = illuminations;
   const previousIllumination = previousIlluminations[0];

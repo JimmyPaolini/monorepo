@@ -1,22 +1,24 @@
+import moment from "moment-timezone";
 import {
   describe,
-  it,
   expect,
-  vi,
-  beforeEach,
-  afterEach,
+  it,
   type TaskContext,
+  vi,
 } from "vitest";
-import moment from "moment-timezone";
-import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
-import type { Body } from "../../types";
+
 import {
-  getMajorAspectEvents,
-  getMajorAspectEvent,
   getMajorAspectDurationEvents,
+  getMajorAspectEvent,
+  getMajorAspectEvents,
   writeMajorAspectEvents,
 } from "./majorAspects.events";
+
 import type { Event } from "../../calendar.utilities";
+import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
+import type { Body } from "../../types";
+
+
 
 // Mock dependencies (common pattern - see __mocks__/common-mocks.ts for documentation)
 vi.mock("../../database.utilities", () => ({

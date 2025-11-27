@@ -19,7 +19,7 @@ export function getSign(longitude: number): Sign {
   const entry = Object.entries(degreeRangeBySign).find(([, { min, max }]) => {
     return longitude >= min && longitude < max;
   });
-  if (!entry) throw new Error(`🚫 Longitude ${longitude} not in any sign.`);
+  if (!entry) {throw new Error(`🚫 Longitude ${longitude} not in any sign.`);}
   return entry[0] as Sign;
 }
 

@@ -1,10 +1,12 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import moment from "moment-timezone";
-import type { Event } from "../../calendar.utilities";
+import { describe, expect, it } from "vitest";
+
 import {
-  getSextupleAspectEvents,
   getSextupleAspectDurationEvents,
+  getSextupleAspectEvents,
 } from "./sextupleAspects.events";
+
+import type { Event } from "../../calendar.utilities";
 
 /**
  * Integration tests for Sextuple Aspects (Hexagram/Star of David) detection

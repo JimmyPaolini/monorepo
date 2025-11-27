@@ -8,14 +8,14 @@ export function pairDurationEvents<E extends Event>(
   beginningEvents: E[],
   endingEvents: E[],
   eventName: string
-): Array<[E, E]> {
+): [E, E][] {
   const beginnings = [...beginningEvents].sort(
     (a, b) => a.start.getTime() - b.start.getTime()
   );
   const endings = [...endingEvents].sort(
     (a, b) => a.start.getTime() - b.start.getTime()
   );
-  const pairs: Array<[E, E]> = [];
+  const pairs: [E, E][] = [];
 
   // Pair each beginning with the next valid ending
   for (

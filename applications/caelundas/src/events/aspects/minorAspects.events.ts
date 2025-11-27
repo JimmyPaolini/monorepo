@@ -1,23 +1,26 @@
 import fs from "fs";
+
 import _ from "lodash";
-import type { Moment } from "moment";
-import type { EventTemplate } from "../../calendar.utilities";
+
+import { type Event, EventTemplate , getCalendar } from "../../calendar.utilities";
+import { minorAspects } from "../../constants";
+import { upsertEvents } from "../../database.utilities";
+import { pairDurationEvents } from "../../duration.utilities";
+import { getOutputPath } from "../../output.utilities";
+import { symbolByBody, symbolByMinorAspect } from "../../symbols";
+import { minorAspectBodies } from "../../types";
+
+import { getMinorAspect, getMinorAspectPhase } from "./aspects.utilities";
+
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 import type {
-  MinorAspect,
+  AspectPhase,
   Body,
   BodySymbol,
+  MinorAspect,
   MinorAspectSymbol,
-  AspectPhase,
 } from "../../types";
-import { minorAspectBodies } from "../../types";
-import { symbolByBody, symbolByMinorAspect } from "../../symbols";
-import { minorAspects } from "../../constants";
-import { type Event, getCalendar } from "../../calendar.utilities";
-import { getMinorAspect, getMinorAspectPhase } from "./aspects.utilities";
-import { upsertEvents } from "../../database.utilities";
-import { getOutputPath } from "../../output.utilities";
-import { pairDurationEvents } from "../../duration.utilities";
+import type { Moment } from "moment";
 
 export function getMinorAspectEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
@@ -33,7 +36,7 @@ export function getMinorAspectEvents(args: {
   for (const body1 of minorAspectBodies) {
     const index = minorAspectBodies.indexOf(body1);
     for (const body2 of minorAspectBodies.slice(index + 1)) {
-      if (body1 === body2) continue;
+      if (body1 === body2) {continue;}
 
       const ephemerisBody1 = coordinateEphemerisByBody[body1];
       const ephemerisBody2 = coordinateEphemerisByBody[body2];
@@ -153,7 +156,7 @@ export function writeMinorAspectEvents(args: {
   start: Date;
 }) {
   const { end, minorAspectEvents, minorAspectBodies, start } = args;
-  if (_.isEmpty(minorAspectEvents)) return;
+  if (_.isEmpty(minorAspectEvents)) {return;}
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${minorAspectEvents.length} minor aspect events from ${timespan}`;
@@ -180,7 +183,7 @@ export function getMinorAspectDurationEvents(events: Event[]): Event[] {
   // Filter to minor aspect events only
   const minorAspectEvents = events.filter((event) =>
     event.categories.includes("Minor Aspect")
-  ) as Event[];
+  );
 
   // Group by body pair and aspect type using categories
   const groupedEvents = _.groupBy(minorAspectEvents, (event) => {
@@ -202,7 +205,7 @@ export function getMinorAspectDurationEvents(events: Event[]): Event[] {
 
   // Process each group
   for (const [key, groupEvents] of Object.entries(groupedEvents)) {
-    if (!key) continue;
+    if (!key) {continue;}
 
     const formingEvents = groupEvents.filter((event) =>
       event.categories.includes("Forming")

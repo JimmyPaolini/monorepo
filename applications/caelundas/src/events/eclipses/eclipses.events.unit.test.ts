@@ -1,17 +1,20 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import moment from "moment-timezone";
+import { describe, expect, it, vi } from "vitest";
+
+import { MARGIN_MINUTES } from "../../calendar.utilities";
+
+import {
+  getEclipseDurationEvents,
+  getEclipseEvents,
+  getLunarEclipseEvent,
+  getSolarEclipseEvent,
+} from "./eclipses.events";
+
+import type { Event } from "../../calendar.utilities";
 import type {
   CoordinateEphemeris,
   DiameterEphemeris,
 } from "../../ephemeris/ephemeris.types";
-import {
-  getEclipseEvents,
-  getSolarEclipseEvent,
-  getLunarEclipseEvent,
-  getEclipseDurationEvents,
-} from "./eclipses.events";
-import type { Event } from "../../calendar.utilities";
-import { MARGIN_MINUTES } from "../../calendar.utilities";
 
 // Mock dependencies
 vi.mock("../../database.utilities", () => ({

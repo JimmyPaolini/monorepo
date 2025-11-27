@@ -1,36 +1,24 @@
 import fs from "fs";
+
 import _ from "lodash";
 import moment from "moment-timezone";
-import type { Moment } from "moment";
+
 import {
-  type EventTemplate,
   type Event,
+  type EventTemplate,
   getCalendar,
 } from "../../calendar.utilities";
+import { MARGIN_MINUTES } from "../../calendar.utilities";
+import { upsertEvents } from "../../database.utilities";
 import { pairDurationEvents } from "../../duration.utilities";
-import type {
-  Body,
-  MartianPhase,
-  MartianPhaseSymbol,
-  MercurianPhase,
-  MercurianPhaseSymbol,
-  VenusianPhase,
-  VenusianPhaseSymbol,
-} from "../../types";
-import { planetaryPhaseBodies } from "../../types";
+import { getOutputPath } from "../../output.utilities";
 import {
   symbolByMartianPhase,
   symbolByMercurianPhase,
   symbolByVenusianPhase,
 } from "../../symbols";
-import type {
-  CoordinateEphemeris,
-  CoordinateEphemerisBody,
-  DistanceEphemeris,
-  DistanceEphemerisBody,
-  IlluminationEphemeris,
-  IlluminationEphemerisBody,
-} from "../../ephemeris/ephemeris.types";
+import { planetaryPhaseBodies } from "../../types";
+
 import {
   isEasternBrightest,
   isEasternElongation,
@@ -41,9 +29,25 @@ import {
   isWesternBrightest,
   isWesternElongation,
 } from "./phases.utilities";
-import { upsertEvents } from "../../database.utilities";
-import { MARGIN_MINUTES } from "../../calendar.utilities";
-import { getOutputPath } from "../../output.utilities";
+
+import type {
+  CoordinateEphemeris,
+  CoordinateEphemerisBody,
+  DistanceEphemeris,
+  DistanceEphemerisBody,
+  IlluminationEphemeris,
+  IlluminationEphemerisBody,
+} from "../../ephemeris/ephemeris.types";
+import type {
+  Body,
+  MartianPhase,
+  MartianPhaseSymbol,
+  MercurianPhase,
+  MercurianPhaseSymbol,
+  VenusianPhase,
+  VenusianPhaseSymbol,
+} from "../../types";
+import type { Moment } from "moment";
 
 const categories = ["Astronomy", "Astrology", "Planetary Phase"];
 
@@ -72,10 +76,10 @@ export function getPlanetaryPhaseEvents(args: {
     planetaryPhaseEvents.push(
       ...getVenusianPhaseEvents({
         currentMinute,
-        venusCoordinateEphemeris: coordinateEphemerisByBody["venus"],
-        venusDistanceEphemeris: distanceEphemerisByBody["venus"],
-        venusIlluminationEphemeris: illuminationEphemerisByBody["venus"],
-        sunCoordinateEphemeris: coordinateEphemerisByBody["sun"],
+        venusCoordinateEphemeris: coordinateEphemerisByBody.venus,
+        venusDistanceEphemeris: distanceEphemerisByBody.venus,
+        venusIlluminationEphemeris: illuminationEphemerisByBody.venus,
+        sunCoordinateEphemeris: coordinateEphemerisByBody.sun,
       })
     );
   }
@@ -84,10 +88,10 @@ export function getPlanetaryPhaseEvents(args: {
     planetaryPhaseEvents.push(
       ...getMercurianPhaseEvents({
         currentMinute,
-        mercuryCoordinateEphemeris: coordinateEphemerisByBody["mercury"],
-        mercuryDistanceEphemeris: distanceEphemerisByBody["mercury"],
-        mercuryIlluminationEphemeris: illuminationEphemerisByBody["mercury"],
-        sunCoordinateEphemeris: coordinateEphemerisByBody["sun"],
+        mercuryCoordinateEphemeris: coordinateEphemerisByBody.mercury,
+        mercuryDistanceEphemeris: distanceEphemerisByBody.mercury,
+        mercuryIlluminationEphemeris: illuminationEphemerisByBody.mercury,
+        sunCoordinateEphemeris: coordinateEphemerisByBody.sun,
       })
     );
   }
@@ -96,10 +100,10 @@ export function getPlanetaryPhaseEvents(args: {
     planetaryPhaseEvents.push(
       ...getMartianPhaseEvents({
         currentMinute,
-        marsCoordinateEphemeris: coordinateEphemerisByBody["mars"],
-        marsDistanceEphemeris: distanceEphemerisByBody["mars"],
-        marsIlluminationEphemeris: illuminationEphemerisByBody["mars"],
-        sunCoordinateEphemeris: coordinateEphemerisByBody["sun"],
+        marsCoordinateEphemeris: coordinateEphemerisByBody.mars,
+        marsDistanceEphemeris: distanceEphemerisByBody.mars,
+        marsIlluminationEphemeris: illuminationEphemerisByBody.mars,
+        sunCoordinateEphemeris: coordinateEphemerisByBody.sun,
       })
     );
   }
@@ -656,7 +660,7 @@ export function writePlanetaryPhaseEvents(args: {
   start: Date;
 }) {
   const { planetaryPhaseEvents, planetaryPhaseBodies, start, end } = args;
-  if (_.isEmpty(planetaryPhaseEvents)) return;
+  if (_.isEmpty(planetaryPhaseEvents)) {return;}
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${planetaryPhaseEvents.length} planetary phase events from ${timespan}`;

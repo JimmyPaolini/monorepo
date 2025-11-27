@@ -1,11 +1,12 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
+
 import {
-  getSign,
-  isSignIngress,
+  degreeRangeBySign,
   getDecan,
+  getSign,
   isDecanIngress,
   isPeakIngress,
-  degreeRangeBySign,
+  isSignIngress,
 } from "./ingresses.utilities";
 
 describe("ingresses.utilities", () => {

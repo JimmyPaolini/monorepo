@@ -1,6 +1,8 @@
-import { describe, it, expect } from "vitest";
-import { inputSchema } from "./input.schema";
+import { describe, expect, it } from "vitest";
+
 import { mockDates } from "../testing/mocks";
+
+import { inputSchema } from "./input.schema";
 
 describe("input.schema", () => {
   // Mock moment to return a fixed date for default value testing

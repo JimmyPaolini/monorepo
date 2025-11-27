@@ -1,16 +1,20 @@
 import fs from "fs";
+
 import _ from "lodash";
 import moment from "moment-timezone";
-import type { Moment } from "moment";
+
+import { getCalendar, MARGIN_MINUTES } from "../../calendar.utilities";
+import { lunarPhases } from "../../constants";
+import { upsertEvents } from "../../database.utilities";
+import { getOutputPath } from "../../output.utilities";
+import { symbolByLunarPhase } from "../../symbols";
+
+import { isLunarPhase } from "./monthlyLunarCycle.utilities";
+
 import type { Event } from "../../calendar.utilities";
 import type { IlluminationEphemeris } from "../../ephemeris/ephemeris.types";
 import type { LunarPhase } from "../../types";
-import { getCalendar, MARGIN_MINUTES } from "../../calendar.utilities";
-import { upsertEvents } from "../../database.utilities";
-import { lunarPhases } from "../../constants";
-import { isLunarPhase } from "./monthlyLunarCycle.utilities";
-import { symbolByLunarPhase } from "../../symbols";
-import { getOutputPath } from "../../output.utilities";
+import type { Moment } from "moment";
 
 export function getMonthlyLunarCycleEvents(args: {
   currentMinute: Moment;
@@ -96,7 +100,7 @@ export function writeMonthlyLunarCycleEvents(args: {
   end: Date;
 }) {
   const { monthlyLunarCycleEvents, start, end } = args;
-  if (_.isEmpty(monthlyLunarCycleEvents)) return;
+  if (_.isEmpty(monthlyLunarCycleEvents)) {return;}
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${monthlyLunarCycleEvents.length} monthly lunar cycle events from ${timespan}`;

@@ -1,17 +1,18 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import moment from "moment-timezone";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+
 import {
-  getCoordinatesEphemeris,
-  getNodeCoordinatesEphemeris,
-  getCoordinateEphemerisByBody,
   getAzimuthElevationEphemeris,
   getAzimuthElevationEphemerisByBody,
-  getIlluminationEphemeris,
-  getIlluminationEphemerisByBody,
+  getCoordinateEphemerisByBody,
+  getCoordinatesEphemeris,
   getDiameterEphemeris,
   getDiameterEphemerisByBody,
   getDistanceEphemeris,
   getDistanceEphemerisByBody,
+  getIlluminationEphemeris,
+  getIlluminationEphemerisByBody,
+  getNodeCoordinatesEphemeris,
   getOrbitEphemeris,
 } from "./ephemeris.service";
 

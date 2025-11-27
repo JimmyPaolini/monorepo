@@ -1,14 +1,15 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
+
 import {
-  normalizeDegrees,
+  arcminutesPerDegree,
+  arcsecondsPerArcminute,
+  arcsecondsPerDegree,
   getAngle,
-  normalizeForComparison,
+  getCombinations,
   isMaximum,
   isMinimum,
-  getCombinations,
-  arcsecondsPerDegree,
-  arcsecondsPerArcminute,
-  arcminutesPerDegree,
+  normalizeDegrees,
+  normalizeForComparison,
 } from "./math.utilities";
 
 describe("math.utilities", () => {

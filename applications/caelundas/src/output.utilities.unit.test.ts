@@ -1,6 +1,8 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { getOutputPath } from "./output.utilities";
 import path from "path";
+
+import { afterEach, describe, expect, it, vi } from "vitest";
+
+import { getOutputPath } from "./output.utilities";
 
 describe("output.utilities", () => {
   const originalEnv = process.env.OUTPUT_DIRECTORY;

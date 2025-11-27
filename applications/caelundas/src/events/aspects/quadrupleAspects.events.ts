@@ -1,18 +1,21 @@
 import _ from "lodash";
-import type { Moment } from "moment";
-import type { Body, AspectPhase, QuadrupleAspect } from "../../types";
+
+import { symbolByBody, symbolByQuadrupleAspect } from "../../symbols";
 import { quadrupleAspectBodies } from "../../types";
+
 import {
   type AspectEdge,
-  parseAspectEvents,
+  determineMultiBodyPhase,
+  getOtherBody,
   groupAspectsByType,
   haveAspect,
   involvesBody,
-  getOtherBody,
-  determineMultiBodyPhase,
+  parseAspectEvents,
 } from "./aspects.composition";
-import { symbolByBody, symbolByQuadrupleAspect } from "../../symbols";
+
 import type { Event } from "../../calendar.utilities";
+import type { AspectPhase, Body, QuadrupleAspect } from "../../types";
+import type { Moment } from "moment";
 
 /**
  * Compose Grand Cross patterns from stored 2-body aspects
@@ -38,7 +41,7 @@ function composeGrandCrosses(
   const squares = aspectsByType.get("square") || [];
 
   // Need at least 2 oppositions and 4 squares
-  if (oppositions.length < 2 || squares.length < 4) return events;
+  if (oppositions.length < 2 || squares.length < 4) {return events;}
 
   // Try each pair of oppositions
   for (let i = 0; i < oppositions.length; i++) {
@@ -53,7 +56,7 @@ function composeGrandCrosses(
         opp2.body1,
         opp2.body2,
       ]);
-      if (bodies.size !== 4) continue;
+      if (bodies.size !== 4) {continue;}
 
       const bodyList = Array.from(bodies);
 
@@ -62,10 +65,10 @@ function composeGrandCrosses(
       for (const body of bodyList) {
         // Find which body is opposite to this one
         let oppositeBody: Body | null = null;
-        if (opp1.body1 === body) oppositeBody = opp1.body2;
-        else if (opp1.body2 === body) oppositeBody = opp1.body1;
-        else if (opp2.body1 === body) oppositeBody = opp2.body2;
-        else if (opp2.body2 === body) oppositeBody = opp2.body1;
+        if (opp1.body1 === body) {oppositeBody = opp1.body2;}
+        else if (opp1.body2 === body) {oppositeBody = opp1.body1;}
+        else if (opp2.body1 === body) {oppositeBody = opp2.body2;}
+        else if (opp2.body2 === body) {oppositeBody = opp2.body1;}
 
         if (!oppositeBody) {
           hasAllSquares = false;
@@ -82,7 +85,7 @@ function composeGrandCrosses(
             break;
           }
         }
-        if (!hasAllSquares) break;
+        if (!hasAllSquares) {break;}
       }
 
       if (hasAllSquares) {
@@ -111,17 +114,17 @@ function composeGrandCrosses(
               "opposite",
               oppositionsAtTime
             );
-            if (!hasOpp1 || !hasOpp2) return false;
+            if (!hasOpp1 || !hasOpp2) {return false;}
 
             // Verify all adjacent pairs are in square
             for (const body of bodyList) {
               let oppositeBody: Body | null = null;
-              if (opp1.body1 === body) oppositeBody = opp1.body2;
-              else if (opp1.body2 === body) oppositeBody = opp1.body1;
-              else if (opp2.body1 === body) oppositeBody = opp2.body2;
-              else if (opp2.body2 === body) oppositeBody = opp2.body1;
+              if (opp1.body1 === body) {oppositeBody = opp1.body2;}
+              else if (opp1.body2 === body) {oppositeBody = opp1.body1;}
+              else if (opp2.body1 === body) {oppositeBody = opp2.body2;}
+              else if (opp2.body2 === body) {oppositeBody = opp2.body1;}
 
-              if (!oppositeBody) return false;
+              if (!oppositeBody) {return false;}
 
               const adjacentBodies = bodyList.filter(
                 (b) => b !== body && b !== oppositeBody
@@ -179,7 +182,7 @@ function composeKites(allEdges: AspectEdge[], currentMinute: Moment): Event[] {
   const sextiles = aspectsByType.get("sextile") || [];
 
   if (trines.length < 3 || oppositions.length < 1 || sextiles.length < 2)
-    return events;
+    {return events;}
 
   // First find all grand trines (3 bodies all in trine with each other)
   const grandTrines: Set<Body>[] = [];
@@ -217,10 +220,10 @@ function composeKites(allEdges: AspectEdge[], currentMinute: Moment): Event[] {
       const otherTwo = gtList.filter((b) => b !== baseBody);
 
       for (const opp of oppositions) {
-        if (!involvesBody(opp, baseBody)) continue;
+        if (!involvesBody(opp, baseBody)) {continue;}
 
         const fourthBody = getOtherBody(opp, baseBody);
-        if (!fourthBody || gtBodies.has(fourthBody)) continue;
+        if (!fourthBody || gtBodies.has(fourthBody)) {continue;}
 
         if (
           haveAspect(fourthBody, otherTwo[0], "sextile", edges) &&
@@ -318,9 +321,9 @@ function getQuadrupleAspectEvent(params: {
     : `${bodiesSorted.join(", ")} ${quadrupleAspect} ${phase}`;
 
   let phaseEmoji = "";
-  if (phase === "forming") phaseEmoji = "➡️ ";
-  else if (phase === "exact") phaseEmoji = "🎯 ";
-  else if (phase === "dissolving") phaseEmoji = "⬅️ ";
+  if (phase === "forming") {phaseEmoji = "➡️ ";}
+  else if (phase === "exact") {phaseEmoji = "🎯 ";}
+  else if (phase === "dissolving") {phaseEmoji = "⬅️ ";}
 
   const summary = `${phaseEmoji}${quadrupleAspectSymbol} ${body1Symbol}-${body2Symbol}-${body3Symbol}-${body4Symbol} ${description}`;
 
@@ -374,7 +377,7 @@ export function getQuadrupleAspectDurationEvents(events: Event[]): Event[] {
   // Filter to quadruple aspect events only
   const quadrupleAspectEvents = events.filter((event) =>
     event.categories.includes("Quadruple Aspect")
-  ) as Event[];
+  );
 
   // Group by body quartet and aspect type using categories
   const groupedEvents = _.groupBy(quadrupleAspectEvents, (event) => {
@@ -399,7 +402,7 @@ export function getQuadrupleAspectDurationEvents(events: Event[]): Event[] {
       const currentEvent = sortedEvents[i];
 
       // Skip if not a forming event
-      if (!currentEvent.categories.includes("Forming")) continue;
+      if (!currentEvent.categories.includes("Forming")) {continue;}
 
       // Look for the next dissolving event
       for (let j = i + 1; j < sortedEvents.length; j++) {

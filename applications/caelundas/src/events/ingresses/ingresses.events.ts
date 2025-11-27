@@ -1,36 +1,39 @@
 import fs from "fs";
+
 import _ from "lodash";
-import type { Moment } from "moment";
-import type {
-  Body,
-  Sign,
-  Decan,
-  BodySymbol,
-  SignSymbol,
-  DecanSymbol,
-} from "../../types";
-import {
-  signIngressBodies,
-  decanIngressBodies,
-  peakIngressBodies,
-} from "../../types";
-import { symbolByBody, symbolByDecan, symbolBySign } from "../../symbols";
-import { signs } from "../../constants";
-import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
+
 import {
   type Event,
   type EventTemplate,
   getCalendar,
 } from "../../calendar.utilities";
+import { signs } from "../../constants";
+import { upsertEvents } from "../../database.utilities";
+import { getOutputPath } from "../../output.utilities";
+import { symbolByBody, symbolByDecan, symbolBySign } from "../../symbols";
+import {
+  decanIngressBodies,
+  peakIngressBodies,
+  signIngressBodies,
+} from "../../types";
 import {
   getDecan,
   getSign,
   isDecanIngress,
-  isSignIngress,
   isPeakIngress,
+  isSignIngress,
 } from "../ingresses/ingresses.utilities";
-import { upsertEvents } from "../../database.utilities";
-import { getOutputPath } from "../../output.utilities";
+
+import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
+import type {
+  Body,
+  BodySymbol,
+  Decan,
+  DecanSymbol,
+  Sign,
+  SignSymbol,
+} from "../../types";
+import type { Moment } from "moment";
 
 const categories = ["Astronomy", "Astrology", "Ingress"];
 
@@ -104,7 +107,7 @@ export function writeSignIngressEvents(args: {
   start: Date;
 }) {
   const { signIngressEvents, signIngressBodies, start, end } = args;
-  if (_.isEmpty(signIngressEvents)) return;
+  if (_.isEmpty(signIngressEvents)) {return;}
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${signIngressEvents.length} sign ingress events from ${timespan}`;
@@ -127,8 +130,8 @@ export function writeSignIngressEvents(args: {
 
 // #region 🔟 Decans
 
-export interface DecanIngressEventTemplate extends EventTemplate {}
-export interface DecanIngressEvent extends Event {}
+export type DecanIngressEventTemplate = EventTemplate
+export type DecanIngressEvent = Event
 
 export function getDecanIngressEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
@@ -204,7 +207,7 @@ export function writeDecanIngressEvents(args: {
   start: Date;
 }) {
   const { decanIngressEvents, decanIngressBodies, start, end } = args;
-  if (_.isEmpty(decanIngressEvents)) return;
+  if (_.isEmpty(decanIngressEvents)) {return;}
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${decanIngressEvents.length} decan ingress events from ${timespan}`;
@@ -227,8 +230,8 @@ export function writeDecanIngressEvents(args: {
 
 // #region ⛰️ Peaks
 
-export interface PeakIngressEventTemplate extends EventTemplate {}
-export interface PeakIngressEvent extends Event {}
+export type PeakIngressEventTemplate = EventTemplate
+export type PeakIngressEvent = Event
 export function getPeakIngressEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
   currentMinute: Moment;
@@ -297,7 +300,7 @@ export function writePeakIngressEvents(args: {
   start: Date;
 }) {
   const { peakIngressEvents, peakIngressBodies, start, end } = args;
-  if (_.isEmpty(peakIngressEvents)) return;
+  if (_.isEmpty(peakIngressEvents)) {return;}
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${peakIngressEvents.length} peak ingress events from ${timespan}`;
@@ -329,7 +332,7 @@ export function getSignIngressDurationEvents(events: Event[]): Event[] {
       event.categories?.includes("Ingress") &&
       !event.categories?.includes("Decan") &&
       !event.categories?.includes("Peak")
-  ) as Event[];
+  );
 
   // Group by body
   const groupedByBody = _.groupBy(signIngressEvents, (event) => {
@@ -343,7 +346,7 @@ export function getSignIngressDurationEvents(events: Event[]): Event[] {
   for (const [bodyCapitalized, bodyIngresses] of Object.entries(
     groupedByBody
   )) {
-    if (!bodyCapitalized) continue;
+    if (!bodyCapitalized) {continue;}
 
     // Sort by time
     const sortedIngresses = _.sortBy(bodyIngresses, (event) =>

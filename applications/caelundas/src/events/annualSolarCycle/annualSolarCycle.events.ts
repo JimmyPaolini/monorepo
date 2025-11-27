@@ -1,12 +1,14 @@
 import fs from "fs";
+
 import _ from "lodash";
 import moment from "moment-timezone";
-import type { Moment } from "moment";
-import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
-import type { DistanceEphemeris } from "../../ephemeris/ephemeris.types";
+
 import { type Event, getCalendar } from "../../calendar.utilities";
 import { upsertEvents } from "../../database.utilities";
 import { pairDurationEvents } from "../../duration.utilities";
+import { isMaximum, isMinimum } from "../../math.utilities";
+import { getOutputPath } from "../../output.utilities";
+
 import {
   isAutumnalEquinox,
   isBeltane,
@@ -25,8 +27,9 @@ import {
   isVernalEquinox,
   isWinterSolstice,
 } from "./annualSolarCycle.utilities";
-import { isMaximum, isMinimum } from "../../math.utilities";
-import { getOutputPath } from "../../output.utilities";
+
+import type { CoordinateEphemeris , DistanceEphemeris } from "../../ephemeris/ephemeris.types";
+import type { Moment } from "moment";
 
 const categories = ["Astronomy", "Astrology", "Annual Solar Cycle", "Solar"];
 
@@ -449,7 +452,7 @@ export function writeAnnualSolarCycleEvents(args: {
   end: Date;
 }) {
   const { annualSolarCycleEvents, start, end } = args;
-  if (_.isEmpty(annualSolarCycleEvents)) return;
+  if (_.isEmpty(annualSolarCycleEvents)) {return;}
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${annualSolarCycleEvents.length} annual solar cycle events from ${timespan}`;

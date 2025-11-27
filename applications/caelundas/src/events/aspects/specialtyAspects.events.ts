@@ -1,26 +1,29 @@
 import fs from "fs";
+
 import _ from "lodash";
-import type { Moment } from "moment";
-import type { EventTemplate } from "../../calendar.utilities";
-import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
-import type {
-  Body,
-  SpecialtyAspect,
-  BodySymbol,
-  SpecialtyAspectSymbol,
-  AspectPhase,
-} from "../../types";
-import { specialtyAspectBodies } from "../../types";
-import { symbolByBody, symbolBySpecialtyAspect } from "../../symbols";
+
+import { type Event, EventTemplate , getCalendar } from "../../calendar.utilities";
 import { specialtyAspects } from "../../constants";
-import { type Event, getCalendar } from "../../calendar.utilities";
+import { upsertEvents } from "../../database.utilities";
+import { pairDurationEvents } from "../../duration.utilities";
+import { getOutputPath } from "../../output.utilities";
+import { symbolByBody, symbolBySpecialtyAspect } from "../../symbols";
+import { specialtyAspectBodies } from "../../types";
+
 import {
   getSpecialtyAspect,
   getSpecialtyAspectPhase,
 } from "./aspects.utilities";
-import { upsertEvents } from "../../database.utilities";
-import { getOutputPath } from "../../output.utilities";
-import { pairDurationEvents } from "../../duration.utilities";
+
+import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
+import type {
+  AspectPhase,
+  Body,
+  BodySymbol,
+  SpecialtyAspect,
+  SpecialtyAspectSymbol,
+} from "../../types";
+import type { Moment } from "moment";
 
 export function getSpecialtyAspectEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
@@ -36,7 +39,7 @@ export function getSpecialtyAspectEvents(args: {
   for (const body1 of specialtyAspectBodies) {
     const index = specialtyAspectBodies.indexOf(body1);
     for (const body2 of specialtyAspectBodies.slice(index + 1)) {
-      if (body1 === body2) continue;
+      if (body1 === body2) {continue;}
 
       const ephemerisBody1 = coordinateEphemerisByBody[body1];
       const ephemerisBody2 = coordinateEphemerisByBody[body2];
@@ -159,7 +162,7 @@ export function writeSpecialtyAspectEvents(args: {
   start: Date;
 }) {
   const { end, specialtyAspectEvents, specialtyAspectBodies, start } = args;
-  if (_.isEmpty(specialtyAspectEvents)) return;
+  if (_.isEmpty(specialtyAspectEvents)) {return;}
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${specialtyAspectEvents.length} specialty aspect events from ${timespan}`;
@@ -188,7 +191,7 @@ export function getSpecialtyAspectDurationEvents(events: Event[]): Event[] {
   // Filter to specialty aspect events only
   const specialtyAspectEvents = events.filter((event) =>
     event.categories.includes("Specialty Aspect")
-  ) as Event[];
+  );
 
   // Group by body pair and aspect type using categories
   const groupedEvents = _.groupBy(specialtyAspectEvents, (event) => {
@@ -210,7 +213,7 @@ export function getSpecialtyAspectDurationEvents(events: Event[]): Event[] {
 
   // Process each group
   for (const [key, groupEvents] of Object.entries(groupedEvents)) {
-    if (!key) continue;
+    if (!key) {continue;}
 
     const formingEvents = groupEvents.filter((event) =>
       event.categories.includes("Forming")

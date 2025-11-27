@@ -1,14 +1,18 @@
 import fs from "fs";
+
 import _ from "lodash";
 import moment from "moment-timezone";
-import type { Moment } from "moment";
-import type { Event } from "../../calendar.utilities";
-import type { AzimuthElevationEphemeris } from "../../ephemeris/ephemeris.types";
+
 import { getCalendar } from "../../calendar.utilities";
 import { upsertEvents } from "../../database.utilities";
-import { isRise, isSet } from "./dailyCycle.utilities";
 import { isMaximum, isMinimum } from "../../math.utilities";
 import { getOutputPath } from "../../output.utilities";
+
+import { isRise, isSet } from "./dailyCycle.utilities";
+
+import type { Event } from "../../calendar.utilities";
+import type { AzimuthElevationEphemeris } from "../../ephemeris/ephemeris.types";
+import type { Moment } from "moment";
 
 const categories = ["Astronomy", "Astrology", "Daily Lunar Cycle", "Lunar"];
 
@@ -130,7 +134,7 @@ export function writeDailyLunarCycleEvents(args: {
   end: Date;
 }) {
   const { dailyLunarCycleEvents, start, end } = args;
-  if (_.isEmpty(dailyLunarCycleEvents)) return;
+  if (_.isEmpty(dailyLunarCycleEvents)) {return;}
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${dailyLunarCycleEvents.length} daily lunar cycle events from ${timespan}`;
   console.log(`🌙 Writing ${message}`);

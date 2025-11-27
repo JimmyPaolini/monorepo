@@ -1,5 +1,16 @@
 import _ from "lodash";
 import moment from "moment-timezone";
+
+import { nodes } from "../constants";
+import {
+  type EphemerisRecord,
+  getEphemerisRecords,
+  upsertEphemerisValues,
+} from "../database.utilities";
+import { fetchWithRetry } from "../fetch.utilities";
+import { arcsecondsPerDegree, normalizeDegrees } from "../math.utilities";
+import { symbolByBody } from "../symbols";
+
 import {
   commandIdByBody,
   dateRegex,
@@ -11,32 +22,25 @@ import {
   QUANTITY_ILLUMINATED_FRACTION,
   QUANTITY_RANGE_RATE,
 } from "./ephemeris.constants";
+
 import type { Asteroid, Body, Comet, Node, Planet } from "../types";
-import { nodes } from "../constants";
-import { symbolByBody } from "../symbols";
 import type {
-  DiameterEphemeris,
-  AzimuthElevationEphemerisBody,
-  Coordinates,
-  DiameterEphemerisBody,
-  DistanceEphemerisBody,
-  IlluminationEphemerisBody,
-  OrbitEphemerisBody,
-  DistanceEphemeris,
-  IlluminationEphemeris,
   AzimuthElevationEphemeris,
+  AzimuthElevationEphemerisBody,
   CoordinateEphemeris,
-  OrbitEphemeris,
+  Coordinates,
+  DiameterEphemeris,
+  DiameterEphemerisBody,
+  DistanceEphemeris,
+  DistanceEphemerisBody,
+  IlluminationEphemeris,
+  IlluminationEphemerisBody,
   Latitude,
   Longitude,
+  OrbitEphemeris,
+  OrbitEphemerisBody,
 } from "./ephemeris.types";
-import { arcsecondsPerDegree, normalizeDegrees } from "../math.utilities";
-import { fetchWithRetry } from "../fetch.utilities";
-import {
-  type EphemerisRecord,
-  upsertEphemerisValues,
-  getEphemerisRecords,
-} from "../database.utilities";
+
 
 // #region Utilities
 
@@ -91,7 +95,7 @@ function parseOrbitEphemeris(text: string) {
 
   const orbitEphemeris: OrbitEphemeris = [
     ...ephemerisTable.matchAll(pattern),
-  ].reduce((orbitEphemeris, match) => {
+  ].reduce<OrbitEphemeris>((orbitEphemeris, match) => {
     const [fullMatch, dateString] = match;
 
     const date = moment
@@ -128,7 +132,7 @@ function parseOrbitEphemeris(text: string) {
         siderealOrbitPeriod: parseFloat(prMatch),
       },
     };
-  }, {} as OrbitEphemeris);
+  }, {});
 
   return orbitEphemeris;
 }
@@ -270,7 +274,7 @@ function parseCoordinatesEphemeris(text: string) {
   const ephemeris: CoordinateEphemeris = ephemerisTable
     .split("\n")
     .filter((line) => line.trim().length > 0)
-    .reduce((ephemeris, ephemerisLine) => {
+    .reduce<CoordinateEphemeris>((ephemeris, ephemerisLine) => {
       const parts = ephemerisLine.trim().split(/\s+/);
 
       // Format: "YYYY-MMM-DD HH:mm longitude latitude"
@@ -283,7 +287,7 @@ function parseCoordinatesEphemeris(text: string) {
       const longitude: Longitude = Number(longitudeString);
 
       return { ...ephemeris, [date.toISOString()]: { latitude, longitude } };
-    }, {} as CoordinateEphemeris);
+    }, {});
 
   return ephemeris;
 }
@@ -295,7 +299,7 @@ function convertCoordinateEphemerisToRecords(
   return _.map(
     _.toPairs(coordinateEphemeris),
     ([timestampIso, { latitude, longitude }]) => ({
-      body: body as Body,
+      body,
       timestamp: new Date(timestampIso),
       latitude,
       longitude,
@@ -306,7 +310,7 @@ function convertCoordinateEphemerisToRecords(
 function convertRecordsToCoordinateEphemeris(
   records: EphemerisRecord[]
 ): CoordinateEphemeris {
-  return records.reduce(
+  return records.reduce<CoordinateEphemeris>(
     (acc, record) => ({
       ...acc,
       [record.timestamp.toISOString()]: {
@@ -314,7 +318,7 @@ function convertRecordsToCoordinateEphemeris(
         longitude: record.longitude!,
       },
     }),
-    {} as CoordinateEphemeris
+    {}
   );
 }
 
@@ -439,13 +443,13 @@ function parseAzimuthElevationEphemeris(text: string) {
 
   const ephemeris: AzimuthElevationEphemeris = ephemerisTable
     .split("\n ")
-    .reduce((ephemeris, ephemerisLine) => {
+    .reduce<AzimuthElevationEphemeris>((ephemeris, ephemerisLine) => {
       const regexString = `${dateRegex.source}.+?${decimalRegex.source}\\s+?${decimalRegex.source}`;
       const azimuthElevationRegex = new RegExp(regexString);
 
       const match = ephemerisLine.match(azimuthElevationRegex);
 
-      if (!match) return ephemeris;
+      if (!match) {return ephemeris;}
 
       const [, dateString, azimuthString, elevationString] = match;
 
@@ -454,7 +458,7 @@ function parseAzimuthElevationEphemeris(text: string) {
       const azimuth = Number(azimuthString);
 
       return { ...ephemeris, [date.toISOString()]: { elevation, azimuth } };
-    }, {} as AzimuthElevationEphemeris);
+    }, {});
 
   return ephemeris;
 }
@@ -466,7 +470,7 @@ function convertAzimuthElevationEphemerisToRecords(
   return _.map(
     _.toPairs(azimuthElevationEphemeris),
     ([timestampIso, { azimuth, elevation }]) => ({
-      body: body as Body,
+      body,
       timestamp: new Date(timestampIso),
       azimuth,
       elevation,
@@ -477,7 +481,7 @@ function convertAzimuthElevationEphemerisToRecords(
 function convertRecordsToAzimuthElevationEphemeris(
   records: EphemerisRecord[]
 ): AzimuthElevationEphemeris {
-  return records.reduce(
+  return records.reduce<AzimuthElevationEphemeris>(
     (acc, record) => ({
       ...acc,
       [record.timestamp.toISOString()]: {
@@ -485,7 +489,7 @@ function convertRecordsToAzimuthElevationEphemeris(
         elevation: record.elevation!,
       },
     }),
-    {} as AzimuthElevationEphemeris
+    {}
   );
 }
 
@@ -608,13 +612,13 @@ function parseIlluminationEphemeris(text: string) {
 
   const ephemeris: IlluminationEphemeris = ephemerisTable
     .split("\n ")
-    .reduce((ephemeris, ephemerisLine) => {
+    .reduce<IlluminationEphemeris>((ephemeris, ephemerisLine) => {
       const regexString = `${dateRegex.source}.+?${decimalRegex.source}`;
       const illuminatedFractionRegex = new RegExp(regexString);
 
       const match = ephemerisLine.match(illuminatedFractionRegex);
 
-      if (!match) return ephemeris;
+      if (!match) {return ephemeris;}
 
       const [, dateString, illuminationString] = match;
 
@@ -622,7 +626,7 @@ function parseIlluminationEphemeris(text: string) {
       const illumination = Number(illuminationString);
 
       return { ...ephemeris, [date.toISOString()]: { illumination } };
-    }, {} as IlluminationEphemeris);
+    }, {});
 
   return ephemeris;
 }
@@ -634,7 +638,7 @@ function convertIlluminationEphemerisToRecords(
   return _.map(
     _.toPairs(illuminationEphemeris),
     ([timestampIso, { illumination }]) => ({
-      body: body as Body,
+      body,
       timestamp: new Date(timestampIso),
       illumination,
     })
@@ -644,14 +648,14 @@ function convertIlluminationEphemerisToRecords(
 function convertRecordsToIlluminationEphemeris(
   records: EphemerisRecord[]
 ): IlluminationEphemeris {
-  return records.reduce(
+  return records.reduce<IlluminationEphemeris>(
     (acc, record) => ({
       ...acc,
       [record.timestamp.toISOString()]: {
         illumination: record.illumination!,
       },
     }),
-    {} as IlluminationEphemeris
+    {}
   );
 }
 
@@ -770,13 +774,13 @@ function parseDiameterEphemeris(text: string) {
 
   const diameterEphemeris: DiameterEphemeris = ephemerisTable
     .split("\n ")
-    .reduce((diameterEphemeris, ephemerisLine) => {
+    .reduce<DiameterEphemeris>((diameterEphemeris, ephemerisLine) => {
       const regexString = `${dateRegex.source}.+?${decimalRegex.source}`;
       const diameterRegex = new RegExp(regexString);
 
       const match = ephemerisLine.match(diameterRegex);
 
-      if (!match) return diameterEphemeris;
+      if (!match) {return diameterEphemeris;}
 
       const [, dateString, diameterString] = match;
 
@@ -785,7 +789,7 @@ function parseDiameterEphemeris(text: string) {
       const diameter = diameterArcseconds / arcsecondsPerDegree;
 
       return { ...diameterEphemeris, [date.toISOString()]: { diameter } };
-    }, {} as DiameterEphemeris);
+    }, {});
 
   return diameterEphemeris;
 }
@@ -807,14 +811,14 @@ function convertDiameterEphemerisToRecords(
 function convertRecordsToDiameterEphemeris(
   records: EphemerisRecord[]
 ): DiameterEphemeris {
-  return records.reduce(
+  return records.reduce<DiameterEphemeris>(
     (acc, record) => ({
       ...acc,
       [record.timestamp.toISOString()]: {
         diameter: record.diameter!,
       },
     }),
-    {} as DiameterEphemeris
+    {}
   );
 }
 
@@ -924,13 +928,13 @@ function parseDistanceEphemeris(text: string) {
 
   const ephemeris: DistanceEphemeris = ephemerisTable
     .split("\n ")
-    .reduce((ephemeris, ephemerisLine) => {
+    .reduce<DistanceEphemeris>((ephemeris, ephemerisLine) => {
       const regexString = `${dateRegex.source}.+?${decimalRegex.source}\\s+?${decimalRegex.source}`;
       const distanceRegex = new RegExp(regexString);
 
       const match = ephemerisLine.match(distanceRegex);
 
-      if (!match) return ephemeris;
+      if (!match) {return ephemeris;}
 
       const [, dateString, distanceString, rangeRateString] = match;
 
@@ -939,7 +943,7 @@ function parseDistanceEphemeris(text: string) {
       const distance = Number(distanceString);
 
       return { ...ephemeris, [date.toISOString()]: { range, distance } };
-    }, {} as DistanceEphemeris);
+    }, {});
 
   return ephemeris;
 }
@@ -951,7 +955,7 @@ function convertDistanceEphemerisToRecords(
   return _.map(
     _.toPairs(distanceEphemeris),
     ([timestampIso, { distance }]) => ({
-      body: body as Body,
+      body,
       timestamp: new Date(timestampIso),
       distance,
     })
@@ -961,7 +965,7 @@ function convertDistanceEphemerisToRecords(
 function convertRecordsToDistanceEphemeris(
   records: EphemerisRecord[]
 ): DistanceEphemeris {
-  return records.reduce(
+  return records.reduce<DistanceEphemeris>(
     (acc, record) => ({
       ...acc,
       [record.timestamp.toISOString()]: {
@@ -969,7 +973,7 @@ function convertRecordsToDistanceEphemeris(
         range: 0, // Note: range is not stored in database, using 0 as placeholder
       },
     }),
-    {} as DistanceEphemeris
+    {}
   );
 }
 

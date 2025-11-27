@@ -1,4 +1,4 @@
-import { beforeEach, afterEach, vi } from "vitest";
+import { afterEach, beforeEach, vi } from "vitest";
 
 /**
  * Common mock pattern documentation for event tests.

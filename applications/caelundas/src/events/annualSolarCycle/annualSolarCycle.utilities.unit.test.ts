@@ -1,21 +1,22 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
+
 import {
-  isVernalEquinox,
-  isFirstHexadecan,
-  isBeltane,
-  isThirdHexadecan,
-  isSummerSolstice,
-  isFifthHexadecan,
-  isLammas,
-  isSeventhHexadecan,
   isAutumnalEquinox,
+  isBeltane,
+  isEleventhHexadecan,
+  isFifteenthHexadecan,
+  isFifthHexadecan,
+  isFirstHexadecan,
+  isImbolc,
+  isLammas,
   isNinthHexadecan,
   isSamhain,
-  isEleventhHexadecan,
-  isWinterSolstice,
+  isSeventhHexadecan,
+  isSummerSolstice,
+  isThirdHexadecan,
   isThirteenthHexadecan,
-  isImbolc,
-  isFifteenthHexadecan,
+  isVernalEquinox,
+  isWinterSolstice,
 } from "./annualSolarCycle.utilities";
 
 describe("annualSolarCycle.utilities", () => {

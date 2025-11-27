@@ -1,12 +1,13 @@
 import fs from "fs";
+
 import _ from "lodash";
 import moment from "moment-timezone";
-import type { Moment } from "moment";
-import type { Event } from "../../calendar.utilities";
-import type { AzimuthElevationEphemeris } from "../../ephemeris/ephemeris.types";
+
 import { getCalendar } from "../../calendar.utilities";
 import { upsertEvents } from "../../database.utilities";
 import { pairDurationEvents } from "../../duration.utilities";
+import { getOutputPath } from "../../output.utilities";
+
 import {
   isAstronomicalDawn,
   isAstronomicalDusk,
@@ -15,7 +16,10 @@ import {
   isNauticalDawn,
   isNauticalDusk,
 } from "./twilights.utilities";
-import { getOutputPath } from "../../output.utilities";
+
+import type { Event } from "../../calendar.utilities";
+import type { AzimuthElevationEphemeris } from "../../ephemeris/ephemeris.types";
+import type { Moment } from "moment";
 
 const categories = ["Astronomy", "Astrology", "Twilight"];
 
@@ -167,7 +171,7 @@ export function writeTwilightEvents(args: {
   end: Date;
 }) {
   const { twilightEvents, start, end } = args;
-  if (_.isEmpty(twilightEvents)) return;
+  if (_.isEmpty(twilightEvents)) {return;}
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${twilightEvents.length} twilight events from ${timespan}`;

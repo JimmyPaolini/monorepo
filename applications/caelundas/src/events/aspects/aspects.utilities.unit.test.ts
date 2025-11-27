@@ -1,11 +1,12 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
+
 import {
-  isAspect,
   getMajorAspect,
-  getMinorAspect,
-  getSpecialtyAspect,
   getMajorAspectPhase,
+  getMinorAspect,
   getMinorAspectPhase,
+  getSpecialtyAspect,
+  isAspect,
   isMajorAspect,
 } from "./aspects.utilities";
 

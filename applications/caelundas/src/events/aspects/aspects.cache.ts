@@ -1,5 +1,6 @@
-import type { Body } from "../../types";
 import { getAngle } from "../../math.utilities";
+
+import type { Body } from "../../types";
 
 /**
  * Cache for angle calculations to avoid redundant computation
@@ -260,7 +261,7 @@ export function couldBeHexagram(
  */
 export function couldBeStellium(
   longitudes: number[],
-  maxOrb: number = 10
+  maxOrb = 10
 ): boolean {
   // Stellium: 3+ planets all within a tight orb (typically 8-10°)
   // Quick check: find the span from min to max longitude

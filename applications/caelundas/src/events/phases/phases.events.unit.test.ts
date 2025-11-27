@@ -1,21 +1,24 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import moment from "moment-timezone";
-import type { VenusianPhase, MercurianPhase, MartianPhase } from "../../types";
+import fs from "fs";
+
+import { describe, expect, it, vi } from "vitest";
+
+import { upsertEvents } from "../../database.utilities";
 import {
-  getVenusianPhaseEvent,
-  getMercurianPhaseEvent,
+  symbolByMartianPhase,
+  symbolByMercurianPhase,
+  symbolByVenusianPhase,
+} from "../../symbols";
+
+import {
   getMartianPhaseEvent,
+  getMercurianPhaseEvent,
   getPlanetaryPhaseDurationEvents,
+  getVenusianPhaseEvent,
   writePlanetaryPhaseEvents,
 } from "./phases.events";
+
 import type { Event } from "../../calendar.utilities";
-import {
-  symbolByVenusianPhase,
-  symbolByMercurianPhase,
-  symbolByMartianPhase,
-} from "../../symbols";
-import { upsertEvents } from "../../database.utilities";
-import fs from "fs";
+import type { MartianPhase, MercurianPhase, VenusianPhase } from "../../types";
 
 // Mock dependencies
 vi.mock("../../database.utilities", () => ({

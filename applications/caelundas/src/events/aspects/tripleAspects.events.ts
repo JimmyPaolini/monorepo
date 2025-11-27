@@ -1,19 +1,22 @@
 import _ from "lodash";
-import type { Moment } from "moment";
-import type { Body, AspectPhase, TripleAspect } from "../../types";
+
+import { symbolByBody, symbolByTripleAspect } from "../../symbols";
 import { tripleAspectBodies } from "../../types";
+
 import {
   type AspectEdge,
-  parseAspectEvents,
-  groupAspectsByType,
+  determineMultiBodyPhase,
   findBodiesWithAspectTo,
+  getOtherBody,
+  groupAspectsByType,
   haveAspect,
   involvesBody,
-  getOtherBody,
-  determineMultiBodyPhase,
+  parseAspectEvents,
 } from "./aspects.composition";
-import { symbolByBody, symbolByTripleAspect } from "../../symbols";
+
 import type { Event } from "../../calendar.utilities";
+import type { AspectPhase, Body, TripleAspect } from "../../types";
+import type { Moment } from "moment";
 
 /**
  * Compose T-Squares from stored 2-body aspects
@@ -308,9 +311,9 @@ function getTripleAspectEvent(args: {
     : `${bodiesSorted[0]}, ${bodiesSorted[1]}, ${bodiesSorted[2]} ${tripleAspect} ${phase}`;
 
   let phaseEmoji = "";
-  if (phase === "forming") phaseEmoji = "➡️ ";
-  else if (phase === "exact") phaseEmoji = "🎯 ";
-  else if (phase === "dissolving") phaseEmoji = "⬅️ ";
+  if (phase === "forming") {phaseEmoji = "➡️ ";}
+  else if (phase === "exact") {phaseEmoji = "🎯 ";}
+  else if (phase === "dissolving") {phaseEmoji = "⬅️ ";}
 
   const summary = `${phaseEmoji}${tripleAspectSymbol} ${body1Symbol}-${body2Symbol}-${body3Symbol} ${description}`;
 
@@ -349,7 +352,7 @@ export function getTripleAspectDurationEvents(events: Event[]): Event[] {
   // Filter to triple aspect events only
   const tripleAspectEvents = events.filter((event) =>
     event.categories.includes("Triple Aspect")
-  ) as Event[];
+  );
 
   // Group by body triplet and aspect type using categories
   const groupedEvents = _.groupBy(tripleAspectEvents, (event) => {
@@ -371,7 +374,7 @@ export function getTripleAspectDurationEvents(events: Event[]): Event[] {
 
   // Process each group
   for (const [key, groupEvents] of Object.entries(groupedEvents)) {
-    if (!key) continue;
+    if (!key) {continue;}
 
     const formingEvents = groupEvents.filter((event) =>
       event.categories.includes("Forming")

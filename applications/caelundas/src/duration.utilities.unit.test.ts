@@ -1,5 +1,7 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, expect, it } from "vitest";
+
 import { pairDurationEvents } from "./duration.utilities";
+
 import type { Event } from "./calendar.utilities";
 
 describe("duration.utilities", () => {

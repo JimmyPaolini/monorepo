@@ -1,17 +1,24 @@
 import _ from "lodash";
-import type { Moment } from "moment";
-import type { Body, AspectPhase, QuintupleAspect } from "../../types";
+
+import { getCombinations } from "../../math.utilities";
+import { symbolByBody, symbolByQuintupleAspect } from "../../symbols";
 import { quintupleAspectBodies } from "../../types";
+
 import {
   type AspectEdge,
-  parseAspectEvents,
+  determineMultiBodyPhase,
   groupAspectsByType,
   haveAspect,
-  determineMultiBodyPhase,
+  parseAspectEvents,
 } from "./aspects.composition";
-import { symbolByQuintupleAspect, symbolByBody } from "../../symbols";
+
 import type { Event } from "../../calendar.utilities";
-import { getCombinations } from "../../math.utilities";
+import type { AspectPhase, Body, QuintupleAspect } from "../../types";
+import type { Moment } from "moment";
+
+
+
+
 
 /**
  * Check if 5 bodies form a valid pentagram pattern (5-pointed star)
@@ -112,7 +119,7 @@ function composePentagrams(
   const aspectsByType = groupAspectsByType(edges);
   const quintiles = aspectsByType.get("quintile") || [];
 
-  if (quintiles.length < 5) return events;
+  if (quintiles.length < 5) {return events;}
 
   // Collect all unique bodies involved in quintiles
   const bodiesSet = new Set<Body>();
@@ -122,7 +129,7 @@ function composePentagrams(
   }
   const bodies = Array.from(bodiesSet);
 
-  if (bodies.length < 5) return events;
+  if (bodies.length < 5) {return events;}
 
   // Try all combinations of 5 bodies
   const combinations = getCombinations(bodies, 5);
@@ -212,9 +219,9 @@ function getQuintupleAspectEvent(params: {
   const description = `${bodiesSorted.join(", ")} ${quintupleAspect} ${phase}`;
 
   let phaseEmoji = "";
-  if (phase === "forming") phaseEmoji = "➡️ ";
-  else if (phase === "exact") phaseEmoji = "🎯 ";
-  else if (phase === "dissolving") phaseEmoji = "⬅️ ";
+  if (phase === "forming") {phaseEmoji = "➡️ ";}
+  else if (phase === "exact") {phaseEmoji = "🎯 ";}
+  else if (phase === "dissolving") {phaseEmoji = "⬅️ ";}
 
   const summary = `${phaseEmoji}${quintupleAspectSymbol} ${body1Symbol}-${body2Symbol}-${body3Symbol}-${body4Symbol}-${body5Symbol} ${description}`;
 
@@ -264,7 +271,7 @@ export function getQuintupleAspectDurationEvents(events: Event[]): Event[] {
   // Filter to quintuple aspect events only
   const quintupleAspectEvents = events.filter((event) =>
     event.categories.includes("Quintuple Aspect")
-  ) as Event[];
+  );
 
   // Group by body quintet and aspect type using categories
   const groupedEvents = _.groupBy(quintupleAspectEvents, (event) => {
@@ -289,7 +296,7 @@ export function getQuintupleAspectDurationEvents(events: Event[]): Event[] {
       const currentEvent = sortedEvents[i];
 
       // Skip if not a forming event
-      if (!currentEvent.categories.includes("Forming")) continue;
+      if (!currentEvent.categories.includes("Forming")) {continue;}
 
       // Look for the next dissolving event
       for (let j = i + 1; j < sortedEvents.length; j++) {

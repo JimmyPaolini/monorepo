@@ -1,17 +1,19 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import moment from "moment-timezone";
-import type { Event } from "../../calendar.utilities";
-import type { Body, Aspect } from "../../types";
+import { describe, expect, it, vi } from "vitest";
+
 import {
-  parseAspectEvents,
-  groupAspectsByType,
-  involvesBody,
-  getOtherBody,
-  findBodiesWithAspectTo,
-  haveAspect,
-  determineMultiBodyPhase,
   type AspectEdge,
+  determineMultiBodyPhase,
+  findBodiesWithAspectTo,
+  getOtherBody,
+  groupAspectsByType,
+  haveAspect,
+  involvesBody,
+  parseAspectEvents,
 } from "./aspects.composition";
+
+import type { Event } from "../../calendar.utilities";
+import type { Aspect, Body } from "../../types";
 
 describe("aspects.composition", () => {
   describe("parseAspectEvents", () => {

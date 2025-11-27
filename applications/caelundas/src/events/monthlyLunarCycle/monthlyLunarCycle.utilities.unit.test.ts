@@ -1,9 +1,10 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
+
 import {
-  isNewMoon,
+  illuminationByPhase,
   isFullMoon,
   isLunarPhase,
-  illuminationByPhase,
+  isNewMoon,
 } from "./monthlyLunarCycle.utilities";
 
 describe("monthlyLunarCycle.utilities", () => {

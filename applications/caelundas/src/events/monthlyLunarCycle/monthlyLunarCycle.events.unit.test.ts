@@ -1,15 +1,18 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import moment from "moment-timezone";
-import type { IlluminationEphemeris } from "../../ephemeris/ephemeris.types";
-import type { LunarPhase } from "../../types";
-import {
-  getMonthlyLunarCycleEvents,
-  getMonthlyLunarCycleEvent,
-  getMonthlyLunarCycleDurationEvents,
-} from "./monthlyLunarCycle.events";
-import type { Event } from "../../calendar.utilities";
+import { describe, expect, it, vi } from "vitest";
+
 import { MARGIN_MINUTES } from "../../calendar.utilities";
 import { symbolByLunarPhase } from "../../symbols";
+
+import {
+  getMonthlyLunarCycleDurationEvents,
+  getMonthlyLunarCycleEvent,
+  getMonthlyLunarCycleEvents,
+} from "./monthlyLunarCycle.events";
+
+import type { Event } from "../../calendar.utilities";
+import type { IlluminationEphemeris } from "../../ephemeris/ephemeris.types";
+import type { LunarPhase } from "../../types";
 
 // Mock dependencies
 vi.mock("../../database.utilities", () => ({
@@ -71,7 +74,7 @@ describe("monthlyLunarCycle.events", () => {
 
       const event = getMonthlyLunarCycleEvent({ date, lunarPhase: "new" });
 
-      expect(event.summary).toBe(`🌙 ${symbolByLunarPhase["new"]} New Moon`);
+      expect(event.summary).toBe(`🌙 ${symbolByLunarPhase.new} New Moon`);
       expect(event.description).toBe("New Moon");
       expect(event.start).toEqual(date);
       expect(event.end).toEqual(date);
@@ -87,7 +90,7 @@ describe("monthlyLunarCycle.events", () => {
 
       const event = getMonthlyLunarCycleEvent({ date, lunarPhase: "full" });
 
-      expect(event.summary).toBe(`🌙 ${symbolByLunarPhase["full"]} Full Moon`);
+      expect(event.summary).toBe(`🌙 ${symbolByLunarPhase.full} Full Moon`);
       expect(event.description).toBe("Full Moon");
       expect(event.categories).toContain("Full");
     });

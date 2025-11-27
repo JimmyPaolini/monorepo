@@ -1,11 +1,15 @@
 import moment from "moment-timezone";
-import type { Moment } from "moment";
-import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
-import type { DiameterEphemeris } from "../../ephemeris/ephemeris.types";
-import type { Event } from "../../calendar.utilities";
-import type { EclipsePhase } from "../../types";
-import { isSolarEclipse, isLunarEclipse } from "./eclipses.utilities";
+
 import { pairDurationEvents } from "../../duration.utilities";
+
+import { isLunarEclipse, isSolarEclipse } from "./eclipses.utilities";
+
+import type { Event } from "../../calendar.utilities";
+import type { CoordinateEphemeris , DiameterEphemeris } from "../../ephemeris/ephemeris.types";
+import type { EclipsePhase } from "../../types";
+import type { Moment } from "moment";
+
+
 
 const categories = ["Astronomy", "Astrology", "Eclipse"];
 

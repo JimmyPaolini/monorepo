@@ -1,13 +1,15 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import moment from "moment";
-import type { Body } from "../../types";
+import { describe, expect, it, vi } from "vitest";
+
 import {
-  signIngressBodies,
   decanIngressBodies,
   peakIngressBodies,
+  signIngressBodies,
 } from "../../types";
-import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
+
 import type { Event } from "../../calendar.utilities";
+import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
+import type { Body } from "../../types";
 
 vi.mock("fs", () => ({
   default: {

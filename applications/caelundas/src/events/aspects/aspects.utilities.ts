@@ -1,12 +1,13 @@
-import type { Aspect, AspectPhase } from "../../types";
 import {
+  angleByAspect,
   majorAspects,
   minorAspects,
-  specialtyAspects,
-  angleByAspect,
   orbByAspect,
+  specialtyAspects,
 } from "../../constants";
 import { getAngle } from "../../math.utilities";
+
+import type { Aspect, AspectPhase } from "../../types";
 
 export const isAspect = (args: {
   longitudeBody1: number;
@@ -26,7 +27,7 @@ export const getMajorAspect = (args: {
 }) => {
   const { longitudeBody1, longitudeBody2 } = args;
   for (const aspect of majorAspects) {
-    if (isAspect({ longitudeBody1, longitudeBody2, aspect })) return aspect;
+    if (isAspect({ longitudeBody1, longitudeBody2, aspect })) {return aspect;}
   }
   return null;
 };
@@ -37,7 +38,7 @@ export const getMinorAspect = (args: {
 }) => {
   const { longitudeBody1, longitudeBody2 } = args;
   for (const aspect of minorAspects) {
-    if (isAspect({ longitudeBody1, longitudeBody2, aspect })) return aspect;
+    if (isAspect({ longitudeBody1, longitudeBody2, aspect })) {return aspect;}
   }
   return null;
 };
@@ -48,7 +49,7 @@ export const getSpecialtyAspect = (args: {
 }) => {
   const { longitudeBody1, longitudeBody2 } = args;
   for (const aspect of specialtyAspects) {
-    if (isAspect({ longitudeBody1, longitudeBody2, aspect })) return aspect;
+    if (isAspect({ longitudeBody1, longitudeBody2, aspect })) {return aspect;}
   }
   return null;
 };
@@ -102,9 +103,9 @@ const getIsAspect = (aspects: Aspect[]) => {
               nextDifference > currentDifference) ||
             (previousDifference < currentDifference &&
               nextDifference < currentDifference);
-          if (isBouncing) return "exact";
+          if (isBouncing) {return "exact";}
         } else {
-          if (isCrossing) return "exact";
+          if (isCrossing) {return "exact";}
         }
       }
 

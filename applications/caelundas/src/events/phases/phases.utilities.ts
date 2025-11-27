@@ -189,7 +189,7 @@ export function isWesternElongation(args: {
 
 // #region 🌅 Rise/Set
 
-const RISE_SET_THRESHOLD = degreesByTwilight["civil"];
+const RISE_SET_THRESHOLD = degreesByTwilight.civil;
 
 function isRise(args: {
   currentLongitudePlanet: number;

@@ -13,7 +13,7 @@ const RETRYABLE_ERROR_CODES = [
   "UND_ERR_BODY_TIMEOUT",
 ];
 
-function delay(ms: number): Promise<void> {
+async function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 

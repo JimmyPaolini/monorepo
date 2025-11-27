@@ -1,8 +1,11 @@
+import { type Database, open } from "sqlite";
 import sqlite3 from "sqlite3";
-import { open, type Database } from "sqlite";
-import type { Body } from "./types";
-import type { Event } from "./calendar.utilities";
+
 import { getOutputPath } from "./output.utilities";
+
+import type { Event } from "./calendar.utilities";
+import type { Body } from "./types";
+
 
 const databasePromise: Promise<Database> = open({
   filename: getOutputPath("database.db"),
@@ -95,7 +98,7 @@ export interface EphemerisRecord {
 export async function upsertEphemerisValues(
   ephemerisValues: EphemerisRecord[]
 ) {
-  if (ephemerisValues.length === 0) return;
+  if (ephemerisValues.length === 0) {return;}
 
   const db = await databasePromise;
 
@@ -265,7 +268,7 @@ export async function upsertEvent(event: Event) {
 }
 
 export async function upsertEvents(events: Event[]) {
-  if (events.length === 0) return;
+  if (events.length === 0) {return;}
 
   const db = await databasePromise;
 

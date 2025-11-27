@@ -1,23 +1,26 @@
 import fs from "fs";
+
 import _ from "lodash";
-import type { Moment } from "moment";
-import type { Event } from "../../calendar.utilities";
+
+import { type Event, type EventTemplate , getCalendar } from "../../calendar.utilities";
+import { majorAspects } from "../../constants";
+import { upsertEvents } from "../../database.utilities";
+import { pairDurationEvents } from "../../duration.utilities";
+import { getOutputPath } from "../../output.utilities";
+import { symbolByBody, symbolByMajorAspect } from "../../symbols";
+import { majorAspectBodies } from "../../types";
+
+import { getMajorAspect, getMajorAspectPhase } from "./aspects.utilities";
+
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
-import { type EventTemplate, getCalendar } from "../../calendar.utilities";
 import type {
+  AspectPhase,
   Body,
   BodySymbol,
   MajorAspect,
   MajorAspectSymbol,
-  AspectPhase,
 } from "../../types";
-import { majorAspectBodies } from "../../types";
-import { symbolByBody, symbolByMajorAspect } from "../../symbols";
-import { majorAspects } from "../../constants";
-import { upsertEvents } from "../../database.utilities";
-import { getMajorAspect, getMajorAspectPhase } from "./aspects.utilities";
-import { getOutputPath } from "../../output.utilities";
-import { pairDurationEvents } from "../../duration.utilities";
+import type { Moment } from "moment";
 
 export function getMajorAspectEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
@@ -33,7 +36,7 @@ export function getMajorAspectEvents(args: {
   for (const body1 of majorAspectBodies) {
     const index = majorAspectBodies.indexOf(body1);
     for (const body2 of majorAspectBodies.slice(index + 1)) {
-      if (body1 === body2) continue;
+      if (body1 === body2) {continue;}
 
       const ephemerisBody1 = coordinateEphemerisByBody[body1];
       const ephemerisBody2 = coordinateEphemerisByBody[body2];
@@ -152,7 +155,7 @@ export function writeMajorAspectEvents(args: {
   start: Date;
 }) {
   const { end, majorAspectEvents, majorAspectBodies, start } = args;
-  if (_.isEmpty(majorAspectEvents)) return;
+  if (_.isEmpty(majorAspectEvents)) {return;}
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${majorAspectEvents.length} major aspect events from ${timespan}`;
@@ -201,7 +204,7 @@ export function getMajorAspectDurationEvents(events: Event[]): Event[] {
 
   // Process each group
   for (const [key, groupEvents] of Object.entries(groupedEvents)) {
-    if (!key) continue;
+    if (!key) {continue;}
 
     const formingEvents = groupEvents.filter((event) =>
       event.categories.includes("Forming")

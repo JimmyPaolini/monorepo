@@ -1,13 +1,6 @@
 import _ from "lodash";
+
 import { bodies } from "../constants";
-import type {
-  Coordinates,
-  CoordinateEphemerisBody,
-  DiameterEphemerisBody,
-  IlluminationEphemerisBody,
-  DistanceEphemerisBody,
-  AzimuthElevationEphemerisBody,
-} from "../ephemeris/ephemeris.types";
 import {
   getAzimuthElevationEphemerisByBody,
   getCoordinateEphemerisByBody,
@@ -15,6 +8,15 @@ import {
   getDistanceEphemerisByBody,
   getIlluminationEphemerisByBody,
 } from "../ephemeris/ephemeris.service";
+
+import type {
+  AzimuthElevationEphemerisBody,
+  CoordinateEphemerisBody,
+  Coordinates,
+  DiameterEphemerisBody,
+  DistanceEphemerisBody,
+  IlluminationEphemerisBody,
+} from "../ephemeris/ephemeris.types";
 
 // #region getEphemerides
 export async function getEphemerides(args: {

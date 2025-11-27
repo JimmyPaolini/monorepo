@@ -1,19 +1,22 @@
-import { describe, it, expect, vi } from "vitest";
 import moment from "moment-timezone";
-import type { Body } from "../../types";
+import { describe, expect, it } from "vitest";
+
 import {
-  signIngressBodies,
   decanIngressBodies,
   peakIngressBodies,
+  signIngressBodies,
 } from "../../types";
-import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
+
 import {
-  getSignIngressEvents,
   getDecanIngressEvents,
   getPeakIngressEvents,
   getSignIngressDurationEvents,
+  getSignIngressEvents,
 } from "./ingresses.events";
+
 import type { Event } from "../../calendar.utilities";
+import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
+import type { Body } from "../../types";
 
 // Helper to create full ephemeris for all required bodies with default stationary values
 function createFullEphemeris(

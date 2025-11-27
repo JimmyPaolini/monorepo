@@ -1,84 +1,87 @@
+import fs from "fs";
+
 import moment from "moment-timezone";
+
 import {
-  MARGIN_MINUTES,
   type Event as CalendarEvent,
+  MARGIN_MINUTES,
 } from "./calendar.utilities";
-import type { Coordinates } from "./ephemeris/ephemeris.types";
+import { getCalendar } from "./calendar.utilities";
+import {
+  getActiveAspectsAt,
+  getAllEvents,
+  upsertEvents,
+} from "./database.utilities";
 import { getEphemerides } from "./ephemeris/ephemeris.aggregates";
 import {
-  getSignIngressEvents,
+  getAnnualSolarCycleEvents,
+  getSolarApsisDurationEvents,
+  getSolarApsisEvents,
+} from "./events/annualSolarCycle/annualSolarCycle.events";
+import {
+  getMajorAspectDurationEvents,
+  getMajorAspectEvents,
+} from "./events/aspects/majorAspects.events";
+import {
+  getMinorAspectDurationEvents,
+  getMinorAspectEvents,
+} from "./events/aspects/minorAspects.events";
+import {
+  getQuadrupleAspectDurationEvents,
+  getQuadrupleAspectEvents,
+} from "./events/aspects/quadrupleAspects.events";
+import {
+  getQuintupleAspectDurationEvents,
+  getQuintupleAspectEvents,
+} from "./events/aspects/quintupleAspects.events";
+import {
+  getSextupleAspectDurationEvents,
+  getSextupleAspectEvents,
+} from "./events/aspects/sextupleAspects.events";
+import {
+  getSpecialtyAspectDurationEvents,
+  getSpecialtyAspectEvents,
+} from "./events/aspects/specialtyAspects.events";
+import {
+  getStelliumDurationEvents,
+  getStelliumEvents,
+} from "./events/aspects/stellium.events";
+import {
+  getTripleAspectDurationEvents,
+  getTripleAspectEvents,
+} from "./events/aspects/tripleAspects.events";
+import { getDailyLunarCycleEvents } from "./events/dailyCycles/dailyLunarCycle.events";
+import { getDailySolarCycleEvents } from "./events/dailyCycles/dailySolarCycle.events";
+import {
+  getEclipseDurationEvents,
+  getEclipseEvents,
+} from "./events/eclipses/eclipses.events";
+import {
   getDecanIngressEvents,
   getPeakIngressEvents,
   getSignIngressDurationEvents,
+  getSignIngressEvents,
 } from "./events/ingresses/ingresses.events";
 import {
-  getMajorAspectEvents,
-  getMajorAspectDurationEvents,
-} from "./events/aspects/majorAspects.events";
+  getMonthlyLunarCycleDurationEvents,
+  getMonthlyLunarCycleEvents,
+} from "./events/monthlyLunarCycle/monthlyLunarCycle.events";
 import {
-  getMinorAspectEvents,
-  getMinorAspectDurationEvents,
-} from "./events/aspects/minorAspects.events";
-import {
-  getSpecialtyAspectEvents,
-  getSpecialtyAspectDurationEvents,
-} from "./events/aspects/specialtyAspects.events";
-import {
-  getTripleAspectEvents,
-  getTripleAspectDurationEvents,
-} from "./events/aspects/tripleAspects.events";
-import {
-  getQuadrupleAspectEvents,
-  getQuadrupleAspectDurationEvents,
-} from "./events/aspects/quadrupleAspects.events";
-import {
-  getQuintupleAspectEvents,
-  getQuintupleAspectDurationEvents,
-} from "./events/aspects/quintupleAspects.events";
-import {
-  getSextupleAspectEvents,
-  getSextupleAspectDurationEvents,
-} from "./events/aspects/sextupleAspects.events";
-import {
-  getStelliumEvents,
-  getStelliumDurationEvents,
-} from "./events/aspects/stellium.events";
+  getPlanetaryPhaseDurationEvents,
+  getPlanetaryPhaseEvents,
+} from "./events/phases/phases.events";
 import {
   getRetrogradeDurationEvents,
   getRetrogradeEvents,
 } from "./events/retrogrades/retrogrades.events";
 import {
-  getAnnualSolarCycleEvents,
-  getSolarApsisEvents,
-  getSolarApsisDurationEvents,
-} from "./events/annualSolarCycle/annualSolarCycle.events";
-import {
-  getMonthlyLunarCycleEvents,
-  getMonthlyLunarCycleDurationEvents,
-} from "./events/monthlyLunarCycle/monthlyLunarCycle.events";
-import {
-  getEclipseEvents,
-  getEclipseDurationEvents,
-} from "./events/eclipses/eclipses.events";
-import { getDailyLunarCycleEvents } from "./events/dailyCycles/dailyLunarCycle.events";
-import { getDailySolarCycleEvents } from "./events/dailyCycles/dailySolarCycle.events";
-import {
-  getTwilightEvents,
   getTwilightDurationEvents,
+  getTwilightEvents,
 } from "./events/twilights/twilights.events";
-import {
-  getPlanetaryPhaseEvents,
-  getPlanetaryPhaseDurationEvents,
-} from "./events/phases/phases.events";
-import { getCalendar } from "./calendar.utilities";
-import { getOutputPath } from "./output.utilities";
-import {
-  upsertEvents,
-  getAllEvents,
-  getActiveAspectsAt,
-} from "./database.utilities";
-import fs from "fs";
 import { inputSchema } from "./input.schema";
+import { getOutputPath } from "./output.utilities";
+
+import type { Coordinates } from "./ephemeris/ephemeris.types";
 
 async function main() {
   // #region 🔮 Input
@@ -147,35 +150,35 @@ async function main() {
         }),
         ...getAnnualSolarCycleEvents({
           currentMinute,
-          sunCoordinateEphemeris: coordinateEphemerisByBody["sun"],
+          sunCoordinateEphemeris: coordinateEphemerisByBody.sun,
         }),
         ...getSolarApsisEvents({
           currentMinute,
-          sunDistanceEphemeris: distanceEphemerisByBody["sun"],
+          sunDistanceEphemeris: distanceEphemerisByBody.sun,
         }),
         ...getEclipseEvents({
           currentMinute,
-          moonCoordinateEphemeris: coordinateEphemerisByBody["moon"],
-          moonDiameterEphemeris: diameterEphemerisByBody["moon"],
-          sunCoordinateEphemeris: coordinateEphemerisByBody["sun"],
-          sunDiameterEphemeris: diameterEphemerisByBody["sun"],
+          moonCoordinateEphemeris: coordinateEphemerisByBody.moon,
+          moonDiameterEphemeris: diameterEphemerisByBody.moon,
+          sunCoordinateEphemeris: coordinateEphemerisByBody.sun,
+          sunDiameterEphemeris: diameterEphemerisByBody.sun,
         }),
         ...getMonthlyLunarCycleEvents({
           currentMinute,
-          moonIlluminationEphemeris: illuminationEphemerisByBody["moon"],
+          moonIlluminationEphemeris: illuminationEphemerisByBody.moon,
         }),
         ...getDailySolarCycleEvents({
           currentMinute,
-          sunAzimuthElevationEphemeris: azimuthElevationEphemerisByBody["sun"],
+          sunAzimuthElevationEphemeris: azimuthElevationEphemerisByBody.sun,
         }),
         ...getDailyLunarCycleEvents({
           currentMinute,
           moonAzimuthElevationEphemeris:
-            azimuthElevationEphemerisByBody["moon"],
+            azimuthElevationEphemerisByBody.moon,
         }),
         ...getTwilightEvents({
           currentMinute,
-          sunAzimuthElevationEphemeris: azimuthElevationEphemerisByBody["sun"],
+          sunAzimuthElevationEphemeris: azimuthElevationEphemerisByBody.sun,
         }),
       ];
       await upsertEvents(exactEvents);

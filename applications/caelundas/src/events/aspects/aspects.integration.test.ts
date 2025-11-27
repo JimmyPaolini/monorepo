@@ -1,13 +1,16 @@
-import { describe, it, expect, vi } from "vitest";
-import moment from "moment-timezone";
-import type { Body } from "../../types";
-import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
+import { describe, expect, it } from "vitest";
+
 import { majorAspectBodies, minorAspectBodies } from "../../types";
+
 import {
   getMajorAspect,
   getMajorAspectPhase,
   getMinorAspect,
 } from "./aspects.utilities";
+
+import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
+import type { Body } from "../../types";
+import type moment from "moment-timezone";
 
 // Helper to create a full ephemeris record for all bodies
 function createFullEphemeris(

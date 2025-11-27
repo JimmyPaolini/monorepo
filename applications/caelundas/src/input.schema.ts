@@ -1,6 +1,6 @@
-import { z } from "zod";
-import moment from "moment-timezone";
 import tzLookup from "@photostructure/tz-lookup";
+import moment from "moment-timezone";
+import { z } from "zod";
 
 const minDateString = "1900-01-01";
 const maxDateString = "2100-12-31";
@@ -29,7 +29,7 @@ export const inputSchema = z
     return {
       latitude: data.latitude,
       longitude: data.longitude,
-      timezone: timezone,
+      timezone,
       start: moment.tz(data.startDate, timezone).toDate(),
       end: moment.tz(data.endDate, timezone).toDate(),
     };

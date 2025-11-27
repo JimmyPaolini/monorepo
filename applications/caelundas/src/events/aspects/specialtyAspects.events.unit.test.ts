@@ -1,14 +1,16 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import moment from "moment-timezone";
-import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
-import type { Body } from "../../types";
+import { describe, expect, it, vi } from "vitest";
+
 import {
-  getSpecialtyAspectEvents,
-  getSpecialtyAspectEvent,
   getSpecialtyAspectDurationEvents,
+  getSpecialtyAspectEvent,
+  getSpecialtyAspectEvents,
   writeSpecialtyAspectEvents,
 } from "./specialtyAspects.events";
+
 import type { Event } from "../../calendar.utilities";
+import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
+import type { Body } from "../../types";
 
 // Mock dependencies
 vi.mock("../../database.utilities", () => ({

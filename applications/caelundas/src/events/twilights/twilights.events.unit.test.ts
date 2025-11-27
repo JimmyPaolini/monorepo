@@ -1,17 +1,19 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import moment from "moment-timezone";
-import type { AzimuthElevationEphemeris } from "../../ephemeris/ephemeris.types";
+import { describe, expect, it, vi } from "vitest";
+
 import {
-  getTwilightEvents,
+  getAstronomicalDawnEvent,
+  getAstronomicalDuskEvent,
   getCivilDawnEvent,
   getCivilDuskEvent,
   getNauticalDawnEvent,
   getNauticalDuskEvent,
-  getAstronomicalDawnEvent,
-  getAstronomicalDuskEvent,
   getTwilightDurationEvents,
+  getTwilightEvents,
 } from "./twilights.events";
+
 import type { Event } from "../../calendar.utilities";
+import type { AzimuthElevationEphemeris } from "../../ephemeris/ephemeris.types";
 
 // Mock dependencies
 vi.mock("../../database.utilities", () => ({

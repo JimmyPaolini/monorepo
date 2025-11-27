@@ -1,10 +1,12 @@
 import _ from "lodash";
-import type { Moment } from "moment";
-import type { Event } from "../../calendar.utilities";
-import type { Body, Aspect, AspectPhase } from "../../types";
+
+import { aspects, bodies } from "../../constants";
 import { aspectPhases } from "../../types";
-import { bodies, aspects } from "../../constants";
+
+import type { Event } from "../../calendar.utilities";
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
+import type { Aspect, AspectPhase, Body } from "../../types";
+import type { Moment } from "moment";
 
 /**
  * Represents a 2-body aspect relationship extracted from stored events
@@ -106,8 +108,8 @@ export function involvesBody(edge: AspectEdge, body: Body): boolean {
  * Get the other body in an aspect edge
  */
 export function getOtherBody(edge: AspectEdge, body: Body): Body | null {
-  if (edge.body1 === body) return edge.body2;
-  if (edge.body2 === body) return edge.body1;
+  if (edge.body1 === body) {return edge.body2;}
+  if (edge.body2 === body) {return edge.body1;}
   return null;
 }
 
@@ -185,7 +187,7 @@ export function determineMultiBodyPhase(
 
   // Check if pattern exists at each time point
   const currentExists = checkPatternExists(currentEdges);
-  if (!currentExists) return null;
+  if (!currentExists) {return null;}
 
   const previousExists = checkPatternExists(previousEdges);
   const nextExists = checkPatternExists(nextEdges);

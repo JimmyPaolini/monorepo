@@ -1,16 +1,17 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
+
 import {
+  degreesByTwilight,
+  isAstronomicalDawn,
+  isAstronomicalDusk,
+  isCivilDawn,
+  isCivilDusk,
   isDawn,
   isDusk,
-  isAstronomicalDawn,
   isNauticalDawn,
-  isCivilDawn,
-  isAstronomicalDusk,
   isNauticalDusk,
-  isCivilDusk,
-  degreesByTwilight,
-  twilights,
   sunRadiusDegrees,
+  twilights,
 } from "./twilights.utilities";
 
 describe("twilights.utilities", () => {

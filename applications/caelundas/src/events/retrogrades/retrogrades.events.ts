@@ -1,26 +1,29 @@
 import fs from "fs";
+
 import _ from "lodash";
-import type { Moment } from "moment";
-import { getCalendar, type Event } from "../../calendar.utilities";
-import type { EventTemplate } from "../../calendar.utilities";
+
+import { type Event, type EventTemplate , getCalendar } from "../../calendar.utilities";
+import { MARGIN_MINUTES } from "../../calendar.utilities";
+import { upsertEvents } from "../../database.utilities";
+import { pairDurationEvents } from "../../duration.utilities";
+import { getOutputPath } from "../../output.utilities";
+import { symbolByBody, symbolByOrbitalDirection } from "../../symbols";
+import { retrogradeBodies } from "../../types";
+
+import { isDirect, isRetrograde } from "./retrogrades.utilities";
+
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 import type {
   OrbitalDirection,
-  RetrogradeBody,
   OrbitalDirectionSymbol,
+  RetrogradeBody,
   RetrogradeBodySymbol,
 } from "../../types";
-import { retrogradeBodies } from "../../types";
-import { symbolByBody, symbolByOrbitalDirection } from "../../symbols";
-import { MARGIN_MINUTES } from "../../calendar.utilities";
-import { isDirect, isRetrograde } from "./retrogrades.utilities";
-import { upsertEvents } from "../../database.utilities";
-import { getOutputPath } from "../../output.utilities";
-import { pairDurationEvents } from "../../duration.utilities";
+import type { Moment } from "moment";
 
-export interface RetrogradeEventTemplate extends EventTemplate {}
+export type RetrogradeEventTemplate = EventTemplate
 
-export interface RetrogradeEvent extends Event {}
+export type RetrogradeEvent = Event
 
 export function getRetrogradeEvents(args: {
   coordinateEphemerisByBody: Record<RetrogradeBody, CoordinateEphemeris>;
@@ -119,7 +122,7 @@ export function writeRetrogradeEvents(args: {
   start: Date;
 }) {
   const { retrogradeBodies, retrogradeEvents, start, end } = args;
-  if (_.isEmpty(retrogradeEvents)) return;
+  if (_.isEmpty(retrogradeEvents)) {return;}
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${retrogradeEvents.length} retrograde events from ${timespan}`;
@@ -145,7 +148,7 @@ export function getRetrogradeDurationEvents(events: Event[]): Event[] {
 
   const retrogradeEvents = events.filter((event) =>
     event.categories.includes("Direction")
-  ) as RetrogradeEvent[];
+  );
 
   // Process each planet separately
   for (const planet of retrogradeBodies) {
@@ -183,7 +186,7 @@ function getRetrogradeDurationEvent(
   const planetCapitalized = planet.charAt(0).toUpperCase() + planet.slice(1);
 
   // Extract planet symbol from beginning event summary (first non-whitespace character sequence)
-  const symbolMatch = beginningEvent.summary.match(/^(\S+)/);
+  const symbolMatch = /^(\S+)/.exec(beginningEvent.summary);
   const symbol = symbolMatch ? symbolMatch[1] : "";
 
   return {

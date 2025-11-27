@@ -1,15 +1,17 @@
-import {
-  describe,
-  it,
-  expect,
-  beforeAll,
-  afterAll,
-  beforeEach,
-  afterEach,
-  vi,
-} from "vitest";
 import fs from "fs";
 import path from "path";
+
+import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  vi,
+} from "vitest";
+
 import type { Event } from "./calendar.utilities";
 import type { Body } from "./types";
 
@@ -21,7 +23,7 @@ vi.mock("./output.utilities", () => ({
 const TEST_DB_PATH = "./output/test-database.db";
 
 describe("database.utilities", () => {
-  let cleanupFns: Array<() => Promise<void>> = [];
+  let cleanupFns: (() => Promise<void>)[] = [];
 
   beforeAll(async () => {
     // Ensure output directory exists

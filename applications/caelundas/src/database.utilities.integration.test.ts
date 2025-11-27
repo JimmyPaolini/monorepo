@@ -1,19 +1,12 @@
-import {
-  describe,
-  it,
-  expect,
-  beforeAll,
-  afterAll,
-  beforeEach,
-  afterEach,
-  vi,
-} from "vitest";
-import sqlite3 from "sqlite3";
-import { open, type Database } from "sqlite";
-import type { Event } from "./calendar.utilities";
-import type { Body } from "./types";
 import fs from "fs";
 import path from "path";
+
+import { type Database, open } from "sqlite";
+import sqlite3 from "sqlite3";
+import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
+
+import type { Event } from "./calendar.utilities";
+import type { Body } from "./types";
 
 // Use a temporary database file for testing
 const TEST_DB_PATH = "./output/test-database.db";

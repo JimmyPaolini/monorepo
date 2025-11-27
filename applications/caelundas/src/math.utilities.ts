@@ -13,7 +13,7 @@ export function getAngle(longitude1: Longitude, longitude2: Longitude) {
   const normalizedLongitude2 = normalizeDegrees(longitude2);
 
   let angle = Math.abs(normalizedLongitude1 - normalizedLongitude2);
-  if (angle > 180) angle = 360 - angle;
+  if (angle > 180) {angle = 360 - angle;}
   return angle;
 }
 

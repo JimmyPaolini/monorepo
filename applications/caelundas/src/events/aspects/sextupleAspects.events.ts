@@ -1,17 +1,24 @@
 import _ from "lodash";
-import type { Moment } from "moment";
-import type { Body, AspectPhase, SextupleAspect } from "../../types";
+
+import { getCombinations } from "../../math.utilities";
+import { symbolByBody, symbolBySextupleAspect } from "../../symbols";
 import { sextupleAspectBodies } from "../../types";
+
 import {
   type AspectEdge,
-  parseAspectEvents,
+  determineMultiBodyPhase,
   groupAspectsByType,
   haveAspect,
-  determineMultiBodyPhase,
+  parseAspectEvents,
 } from "./aspects.composition";
-import { symbolBySextupleAspect, symbolByBody } from "../../symbols";
+
 import type { Event } from "../../calendar.utilities";
-import { getCombinations } from "../../math.utilities";
+import type { AspectPhase, Body, SextupleAspect } from "../../types";
+import type { Moment } from "moment";
+
+
+
+
 
 /**
  * Check if 6 bodies form a valid hexagram (Star of David) pattern
@@ -51,10 +58,10 @@ function findHexagramPattern(
   const visited = new Set<Body>();
 
   for (const body of bodies) {
-    if (visited.has(body)) continue;
+    if (visited.has(body)) {continue;}
 
     const trineNeighbors = Array.from(trineConnections.get(body)!);
-    if (trineNeighbors.length !== 2) continue;
+    if (trineNeighbors.length !== 2) {continue;}
 
     // Check if these 3 bodies form a complete triangle
     const [b1, b2] = trineNeighbors;
@@ -67,7 +74,7 @@ function findHexagramPattern(
   }
 
   // Must have exactly 2 grand trines
-  if (trineGroups.length !== 2) return null;
+  if (trineGroups.length !== 2) {return null;}
 
   // Now arrange bodies in hexagon order (alternating between the two trines)
   // such that adjacent bodies (in hexagon) are connected by sextiles
@@ -77,9 +84,9 @@ function findHexagramPattern(
   for (let i = 0; i < 3; i++) {
     for (let j = 0; j < 3; j++) {
       for (let k = 0; k < 3; k++) {
-        if (k === i) continue;
+        if (k === i) {continue;}
         for (let l = 0; l < 3; l++) {
-          if (l === j) continue;
+          if (l === j) {continue;}
 
           // Try arrangement: trine1[i], trine2[j], trine1[k], trine2[l], trine1[remaining], trine2[remaining]
           const i2 = [0, 1, 2].find((x) => x !== i && x !== k)!;
@@ -136,7 +143,7 @@ function composeHexagrams(
   const trines = aspectsByType.get("trine") || [];
   const sextiles = aspectsByType.get("sextile") || [];
 
-  if (trines.length < 6 || sextiles.length < 6) return events;
+  if (trines.length < 6 || sextiles.length < 6) {return events;}
 
   // Collect all unique bodies involved in trines
   const bodiesSet = new Set<Body>();
@@ -146,7 +153,7 @@ function composeHexagrams(
   }
   const bodies = Array.from(bodiesSet);
 
-  if (bodies.length < 6) return events;
+  if (bodies.length < 6) {return events;}
 
   // Try all combinations of 6 bodies
   const combinations = getCombinations(bodies, 6);
@@ -240,9 +247,9 @@ function getSextupleAspectEvent(params: {
   const description = `${bodiesSorted.join(", ")} ${sextupleAspect} ${phase}`;
 
   let phaseEmoji = "";
-  if (phase === "forming") phaseEmoji = "➡️ ";
-  else if (phase === "exact") phaseEmoji = "🎯 ";
-  else if (phase === "dissolving") phaseEmoji = "⬅️ ";
+  if (phase === "forming") {phaseEmoji = "➡️ ";}
+  else if (phase === "exact") {phaseEmoji = "🎯 ";}
+  else if (phase === "dissolving") {phaseEmoji = "⬅️ ";}
 
   const summary = `${phaseEmoji}${sextupleAspectSymbol} ${body1Symbol}-${body2Symbol}-${body3Symbol}-${body4Symbol}-${body5Symbol}-${body6Symbol} ${description}`;
 
@@ -293,7 +300,7 @@ export function getSextupleAspectDurationEvents(events: Event[]): Event[] {
   // Filter to sextuple aspect events only
   const sextupleAspectEvents = events.filter((event) =>
     event.categories.includes("Sextuple Aspect")
-  ) as Event[];
+  );
 
   // Group by body sextet and aspect type using categories
   const groupedEvents = _.groupBy(sextupleAspectEvents, (event) => {
@@ -318,7 +325,7 @@ export function getSextupleAspectDurationEvents(events: Event[]): Event[] {
       const currentEvent = sortedEvents[i];
 
       // Skip if not a forming event
-      if (!currentEvent.categories.includes("Forming")) continue;
+      if (!currentEvent.categories.includes("Forming")) {continue;}
 
       // Look for the next dissolving event
       for (let j = i + 1; j < sortedEvents.length; j++) {

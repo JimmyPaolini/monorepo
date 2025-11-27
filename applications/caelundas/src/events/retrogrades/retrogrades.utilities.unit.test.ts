@@ -1,5 +1,6 @@
-import { describe, it, expect } from "vitest";
-import { isRetrograde, isDirect } from "./retrogrades.utilities";
+import { describe, expect, it } from "vitest";
+
+import { isDirect, isRetrograde } from "./retrogrades.utilities";
 
 describe("retrogrades.utilities", () => {
   describe("isRetrograde", () => {

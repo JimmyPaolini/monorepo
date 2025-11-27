@@ -1,14 +1,16 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import moment from "moment";
+import { describe, expect, it, vi } from "vitest";
+
+import {
+  getMinorAspectDurationEvents,
+  getMinorAspectEvent,
+  getMinorAspectEvents,
+  writeMinorAspectEvents,
+} from "./minorAspects.events";
+
 import type { Event } from "../../calendar.utilities";
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 import type { Body, MinorAspect } from "../../types";
-import {
-  getMinorAspectEvent,
-  getMinorAspectEvents,
-  getMinorAspectDurationEvents,
-  writeMinorAspectEvents,
-} from "./minorAspects.events";
 
 vi.mock("../../database.utilities", () => ({
   upsertEvents: vi.fn(),

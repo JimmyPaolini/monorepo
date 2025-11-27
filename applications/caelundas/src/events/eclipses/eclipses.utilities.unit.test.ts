@@ -1,5 +1,6 @@
-import { describe, it, expect } from "vitest";
-import { isSolarEclipse, isLunarEclipse } from "./eclipses.utilities";
+import { describe, expect, it } from "vitest";
+
+import { isLunarEclipse, isSolarEclipse } from "./eclipses.utilities";
 
 describe("eclipses.utilities", () => {
   describe("isSolarEclipse", () => {

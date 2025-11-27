@@ -15,7 +15,7 @@ export interface Event {
   color?: string;
 }
 
-export interface EventTemplate extends Omit<Event, "start" | "end"> {}
+export type EventTemplate = Omit<Event, "start" | "end">
 
 export interface GetCalendarParameters {
   events: Event[];
@@ -39,10 +39,10 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALNAME:${name}`;
 
-  if (description) vcalendar += `\nX-WR-CALDESC:${description}`;
+  if (description) {vcalendar += `\nX-WR-CALDESC:${description}`;}
 
   if (timezone)
-    vcalendar += `\nX-WR-TIMEZONE:${timezone}\n${getTimezone(timezone)}`;
+    {vcalendar += `\nX-WR-TIMEZONE:${timezone}\n${getTimezone(timezone)}`;}
 
   vcalendar += `\n${events.map((event) => getEvent(event, timezone)).join("\n")}
 END:VCALENDAR
@@ -51,14 +51,14 @@ END:VCALENDAR
   return vcalendar;
 }
 
-export function getEvent(event: Event, timezone: string = "America/New_York") {
+export function getEvent(event: Event, timezone = "America/New_York") {
   const createdAt = moment().format("YYYYMMDDTHHmmss");
   const start = moment.tz(event.start, timezone).format("YYYYMMDDTHHmmss");
   const end = moment.tz(event.end, timezone).format("YYYYMMDDTHHmmss");
 
   // Generate UID
   let id = `${event.summary}::${event.description}::${event.start}`;
-  if (event.end.getTime() !== event.start.getTime()) id += `::${event.end}`;
+  if (event.end.getTime() !== event.start.getTime()) {id += `::${event.end}`;}
 
   // Build VEVENT
   let vevent = `BEGIN:VEVENT
@@ -76,13 +76,13 @@ CLASS:PUBLIC
 TRANSP:TRANSPARENT
 CATEGORIES:${event.categories.join(",")}`;
 
-  if (event.location) vevent += `\nLOCATION:${event.location}`;
+  if (event.location) {vevent += `\nLOCATION:${event.location}`;}
   if (event.geography) {
     vevent += `\nGEO:${event.geography.latitude};${event.geography.longitude}`;
   }
-  if (event.url) vevent += `\nURL:${event.url}`;
-  if (event.priority !== undefined) vevent += `\nPRIORITY:${event.priority}`;
-  if (event.color) vevent += `\nCOLOR:${event.color}`;
+  if (event.url) {vevent += `\nURL:${event.url}`;}
+  if (event.priority !== undefined) {vevent += `\nPRIORITY:${event.priority}`;}
+  if (event.color) {vevent += `\nCOLOR:${event.color}`;}
 
   vevent += `\nSEQUENCE:0
 LAST-MODIFIED:${createdAt}Z

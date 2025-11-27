@@ -1,15 +1,7 @@
-import {
-  describe,
-  it,
-  expect,
-  beforeAll,
-  afterAll,
-  beforeEach,
-  afterEach,
-  vi,
-} from "vitest";
 import fs from "fs";
 import path from "path";
+
+import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
 // Mock environment for testing
 const TEST_OUTPUT_DIR = "./output/e2e-test";

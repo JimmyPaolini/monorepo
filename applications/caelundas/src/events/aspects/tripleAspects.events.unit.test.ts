@@ -1,10 +1,12 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import moment from "moment-timezone";
-import type { Event } from "../../calendar.utilities";
+import { describe, expect, it, vi } from "vitest";
+
 import {
-  getTripleAspectEvents,
   getTripleAspectDurationEvents,
+  getTripleAspectEvents,
 } from "./tripleAspects.events";
+
+import type { Event } from "../../calendar.utilities";
 
 describe("tripleAspects.events", () => {
   describe("getTripleAspectEvents", () => {

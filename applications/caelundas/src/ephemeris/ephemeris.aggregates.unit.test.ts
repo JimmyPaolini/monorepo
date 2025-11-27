@@ -1,4 +1,5 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import { describe, expect, it, vi } from "vitest";
+
 import { getEphemerides } from "./ephemeris.aggregates";
 
 // Mock the ephemeris service functions

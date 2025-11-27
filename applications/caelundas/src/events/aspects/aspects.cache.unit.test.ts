@@ -1,25 +1,29 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+
+import * as mathUtilities from "../../math.utilities";
+
 import {
-  getCachedAngle,
-  clearAngleCache,
-  getAngleCacheStats,
   canFormAspect,
+  clearAngleCache,
+  couldBeGrandCross,
+  couldBeGrandTrine,
+  couldBeHexagram,
+  couldBeKite,
+  couldBePentagram,
+  couldBeStellium,
   couldBeTSquare,
   couldBeYod,
-  couldBeGrandTrine,
-  couldBeKite,
-  couldBeGrandCross,
-  couldBePentagram,
-  couldBeHexagram,
-  couldBeStellium,
+  getAngleCacheStats,
+  getCachedAngle,
 } from "./aspects.cache";
-import * as mathUtilities from "../../math.utilities";
 
 vi.mock("../../math.utilities", () => ({
   getAngle: vi.fn((lon1: number, lon2: number) => {
     // Simple mock implementation
     let angle = Math.abs(lon1 - lon2);
-    if (angle > 180) angle = 360 - angle;
+    if (angle > 180) {
+      angle = 360 - angle;
+    }
     return angle;
   }),
 }));

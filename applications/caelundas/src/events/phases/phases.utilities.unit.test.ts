@@ -1,14 +1,15 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
+
 import {
   isBrightest,
-  isWesternBrightest,
   isEasternBrightest,
   isEasternElongation,
-  isWesternElongation,
-  isMorningRise,
-  isMorningSet,
   isEveningRise,
   isEveningSet,
+  isMorningRise,
+  isMorningSet,
+  isWesternBrightest,
+  isWesternElongation,
 } from "./phases.utilities";
 
 describe("phases.utilities", () => {

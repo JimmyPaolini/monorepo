@@ -1,16 +1,19 @@
 import _ from "lodash";
-import type { Moment } from "moment";
-import type { Body, AspectPhase } from "../../types";
+
+import { symbolByBody, symbolByStellium } from "../../symbols";
 import { stelliumBodies } from "../../types";
+
 import {
   type AspectEdge,
-  parseAspectEvents,
+  determineMultiBodyPhase,
   groupAspectsByType,
   haveAspect,
-  determineMultiBodyPhase,
+  parseAspectEvents,
 } from "./aspects.composition";
-import { symbolByStellium, symbolByBody } from "../../symbols";
+
 import type { Event } from "../../calendar.utilities";
+import type { AspectPhase, Body } from "../../types";
+import type { Moment } from "moment";
 
 /**
  * Compose Stellium patterns from stored 2-body aspects
@@ -33,7 +36,7 @@ function composeStelliums(
   const aspectsByType = groupAspectsByType(edges);
   const conjunctions = aspectsByType.get("conjunct") || [];
 
-  if (conjunctions.length < 6) return events;
+  if (conjunctions.length < 6) {return events;}
 
   // Build clusters of conjunct bodies using graph traversal
   const clusters: Set<Body>[] = [];
@@ -48,7 +51,7 @@ function composeStelliums(
 
   // For each unvisited body, explore its conjunction cluster
   for (const startBody of bodiesSet) {
-    if (visited.has(startBody)) continue;
+    if (visited.has(startBody)) {continue;}
 
     const cluster = new Set<Body>();
     const queue: Body[] = [startBody];
@@ -56,7 +59,7 @@ function composeStelliums(
     // BFS to find all bodies conjunct (directly or transitively) with startBody
     while (queue.length > 0) {
       const current = queue.shift()!;
-      if (cluster.has(current)) continue;
+      if (cluster.has(current)) {continue;}
 
       cluster.add(current);
       visited.add(current);
@@ -64,8 +67,8 @@ function composeStelliums(
       // Find all bodies conjunct with current
       for (const edge of conjunctions) {
         let other: Body | null = null;
-        if (edge.body1 === current) other = edge.body2;
-        else if (edge.body2 === current) other = edge.body1;
+        if (edge.body1 === current) {other = edge.body2;}
+        else if (edge.body2 === current) {other = edge.body1;}
 
         if (other && !cluster.has(other)) {
           queue.push(other);
@@ -96,7 +99,7 @@ function composeStelliums(
     if (isStellium) {
       // Found a Stellium
       const relatedEdges = conjunctions.filter((edge) =>
-        bodies.includes(edge.body1 as Body)
+        bodies.includes(edge.body1)
       );
 
       const phase = determineMultiBodyPhase(
@@ -152,9 +155,9 @@ function createStelliumEvent(params: {
   const description = `${bodiesSorted.join(", ")} stellium ${phase}`;
 
   let phaseEmoji = "";
-  if (phase === "forming") phaseEmoji = "➡️ ";
-  else if (phase === "exact") phaseEmoji = "🎯 ";
-  else if (phase === "dissolving") phaseEmoji = "⬅️ ";
+  if (phase === "forming") {phaseEmoji = "➡️ ";}
+  else if (phase === "exact") {phaseEmoji = "🎯 ";}
+  else if (phase === "dissolving") {phaseEmoji = "⬅️ ";}
 
   const summary = `${phaseEmoji}${stelliumSymbol} ${bodySymbols.join(
     "-"
@@ -202,7 +205,7 @@ export function getStelliumDurationEvents(events: Event[]): Event[] {
   // Filter to stellium events only
   const stelliumEvents = events.filter((event) =>
     event.categories.includes("Stellium")
-  ) as Event[];
+  );
 
   // Group by bodies and stellium type using categories
   const groupedEvents = _.groupBy(stelliumEvents, (event) => {
@@ -225,7 +228,7 @@ export function getStelliumDurationEvents(events: Event[]): Event[] {
       const currentEvent = sortedEvents[i];
 
       // Skip if not a forming event
-      if (!currentEvent.categories.includes("Forming")) continue;
+      if (!currentEvent.categories.includes("Forming")) {continue;}
 
       // Look for the next dissolving event
       for (let j = i + 1; j < sortedEvents.length; j++) {

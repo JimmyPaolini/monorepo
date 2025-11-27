@@ -1,12 +1,14 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import moment from "moment-timezone";
-import {
-  getVenusianPhaseEvents,
-  getMercurianPhaseEvents,
-  getMartianPhaseEvents,
-  getPlanetaryPhaseEvents,
-} from "./phases.events";
+import { describe, expect, it, vi } from "vitest";
+
 import { MARGIN_MINUTES } from "../../calendar.utilities";
+
+import {
+  getMartianPhaseEvents,
+  getMercurianPhaseEvents,
+  getPlanetaryPhaseEvents,
+  getVenusianPhaseEvents,
+} from "./phases.events";
 
 // Mock dependencies
 vi.mock("../../database.utilities", () => ({
@@ -436,9 +438,15 @@ describe("phases.events integration", () => {
       // Should have events from different planets (if conditions are met)
       const planetNames = new Set(
         events.map((e) => {
-          if (e.summary.includes("♀️")) return "venus";
-          if (e.summary.includes("☿")) return "mercury";
-          if (e.summary.includes("♂️")) return "mars";
+          if (e.summary.includes("♀️")) {
+            return "venus";
+          }
+          if (e.summary.includes("☿")) {
+            return "mercury";
+          }
+          if (e.summary.includes("♂️")) {
+            return "mars";
+          }
           return "unknown";
         })
       );
