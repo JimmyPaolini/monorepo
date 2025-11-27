@@ -48,5 +48,12 @@ jobs:
       - name: 📚 Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: 🛅 Verify cache
+        run: |
+          echo "=== NX Cache Directory ==="
+          ls -lah .nx/cache 2>/dev/null || echo "No cache directory found (first run)"
+          echo "=== Cache Size ==="
+          du -sh .nx/cache 2>/dev/null || echo "No cache to measure"
+
       - name: 🎨 Check formatting
-        run: npx nx affected -t format:check --parallel=3
+        run: npx nx affected -t format:check --parallel=3 --verbose

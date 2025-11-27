@@ -48,8 +48,15 @@ jobs:
       - name: 📚 Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: 🛅 Verify cache
+        run: |
+          echo "=== NX Cache Directory ==="
+          ls -lah .nx/cache 2>/dev/null || echo "No cache directory found (first run)"
+          echo "=== Cache Size ==="
+          du -sh .nx/cache 2>/dev/null || echo "No cache to measure"
+
       - name: 🧪 Test Coverage
-        run: npx nx affected -t test --parallel=3 --coverage
+        run: npx nx affected -t test --parallel=3 --coverage --verbose
 
       - name: 📊 Upload Coverage
         uses: actions/upload-artifact@v4
