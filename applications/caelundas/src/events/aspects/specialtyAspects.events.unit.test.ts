@@ -12,11 +12,6 @@ import type { Event } from "../../calendar.utilities";
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 import type { Body } from "../../types";
 
-// Mock dependencies
-vi.mock("../../database.utilities", () => ({
-  upsertEvents: vi.fn(),
-}));
-
 vi.mock("fs", () => ({
   default: {
     writeFileSync: vi.fn(),
@@ -457,7 +452,6 @@ describe("specialtyAspects.events", () => {
         },
       ];
 
-      const { upsertEvents } = await import("../../database.utilities");
       const fs = (await import("fs")).default;
 
       writeSpecialtyAspectEvents({
@@ -471,7 +465,6 @@ describe("specialtyAspects.events", () => {
     });
 
     it("should not write if events array is empty", async () => {
-      const { upsertEvents } = await import("../../database.utilities");
       const fs = (await import("fs")).default;
 
       writeSpecialtyAspectEvents({
@@ -481,7 +474,6 @@ describe("specialtyAspects.events", () => {
         specialtyAspectEvents: [],
       });
 
-      expect(upsertEvents).not.toHaveBeenCalled();
       expect(fs.writeFileSync).not.toHaveBeenCalled();
     });
 

@@ -10,11 +10,6 @@ import {
   getVenusianPhaseEvents,
 } from "./phases.events";
 
-// Mock dependencies
-vi.mock("../../database.utilities", () => ({
-  upsertEvents: vi.fn(),
-}));
-
 vi.mock("fs", () => ({
   default: {
     writeFileSync: vi.fn(),

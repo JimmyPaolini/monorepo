@@ -12,10 +12,6 @@ import type { Event } from "../../calendar.utilities";
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 import type { Body } from "../../types";
 
-vi.mock("../../database.utilities", () => ({
-  upsertEvents: vi.fn(),
-}));
-
 vi.mock("fs", () => ({
   default: {
     writeFileSync: vi.fn(),
@@ -467,7 +463,6 @@ describe("minorAspects.events", () => {
 
   describe("writeMinorAspectEvents", () => {
     it("should write events to file and database", async () => {
-      const { upsertEvents } = await import("../../database.utilities");
       const fs = (await import("fs")).default;
 
       const minorAspectEvents: Event[] = [
@@ -491,7 +486,6 @@ describe("minorAspects.events", () => {
     });
 
     it("should not write if events array is empty", async () => {
-      const { upsertEvents } = await import("../../database.utilities");
       const fs = (await import("fs")).default;
 
       writeMinorAspectEvents({
@@ -501,7 +495,6 @@ describe("minorAspects.events", () => {
         end: new Date("2024-03-21T23:59:59.000Z"),
       });
 
-      expect(upsertEvents).not.toHaveBeenCalled();
       expect(fs.writeFileSync).not.toHaveBeenCalled();
     });
 

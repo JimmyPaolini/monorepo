@@ -12,11 +12,6 @@ import {
 import type { Event } from "../../calendar.utilities";
 import type { AzimuthElevationEphemeris } from "../../ephemeris/ephemeris.types";
 
-// Mock dependencies
-vi.mock("../../database.utilities", () => ({
-  upsertEvents: vi.fn(),
-}));
-
 vi.mock("fs", () => ({
   default: {
     writeFileSync: vi.fn(),
@@ -212,7 +207,6 @@ describe("dailyLunarCycle.events", () => {
 
   describe("writeDailyLunarCycleEvents", () => {
     it("should write events to database and file when events array is not empty", async () => {
-      const { upsertEvents } = await import("../../database.utilities");
       const fs = (await import("fs")).default;
 
       const events: Event[] = [
@@ -238,7 +232,6 @@ describe("dailyLunarCycle.events", () => {
     });
 
     it("should not write if events array is empty", async () => {
-      const { upsertEvents } = await import("../../database.utilities");
       const fs = (await import("fs")).default;
 
       const { writeDailyLunarCycleEvents } = await import(
@@ -250,7 +243,6 @@ describe("dailyLunarCycle.events", () => {
         end: new Date("2024-12-31"),
       });
 
-      expect(upsertEvents).not.toHaveBeenCalled();
       expect(fs.writeFileSync).not.toHaveBeenCalled();
     });
   });

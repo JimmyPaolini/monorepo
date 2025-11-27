@@ -16,10 +16,6 @@ vi.mock("fs", () => ({
   },
 }));
 
-vi.mock("../../database.utilities", () => ({
-  upsertEvents: vi.fn(),
-}));
-
 vi.mock("../../calendar.utilities", () => ({
   getCalendar: vi.fn(() => "MOCK_CALENDAR_CONTENT"),
 }));
@@ -134,7 +130,6 @@ describe("ingresses.events", () => {
 
   describe("writeSignIngressEvents", () => {
     it("should write events to file and database", async () => {
-      const { upsertEvents } = await import("../../database.utilities");
       const fs = await import("fs");
       const { writeSignIngressEvents, getSignIngressEvent } = await import(
         "./ingresses.events"
@@ -167,7 +162,6 @@ describe("ingresses.events", () => {
     });
 
     it("should not write when events array is empty", async () => {
-      const { upsertEvents } = await import("../../database.utilities");
       const fs = await import("fs");
       const { writeSignIngressEvents } = await import("./ingresses.events");
 
@@ -181,7 +175,6 @@ describe("ingresses.events", () => {
         end,
       });
 
-      expect(upsertEvents).not.toHaveBeenCalled();
       expect(fs.default.writeFileSync).not.toHaveBeenCalled();
     });
   });
@@ -269,7 +262,6 @@ describe("ingresses.events", () => {
 
   describe("writeDecanIngressEvents", () => {
     it("should write events to file and database", async () => {
-      const { upsertEvents } = await import("../../database.utilities");
       const fs = await import("fs");
       const { writeDecanIngressEvents, getDecanIngressEvent } = await import(
         "./ingresses.events"
@@ -296,7 +288,6 @@ describe("ingresses.events", () => {
     });
 
     it("should not write when events array is empty", async () => {
-      const { upsertEvents } = await import("../../database.utilities");
       const fs = await import("fs");
       const { writeDecanIngressEvents } = await import("./ingresses.events");
 
@@ -307,7 +298,6 @@ describe("ingresses.events", () => {
         end: new Date("2024-04-30T23:59:59.000Z"),
       });
 
-      expect(upsertEvents).not.toHaveBeenCalled();
       expect(fs.default.writeFileSync).not.toHaveBeenCalled();
     });
   });
@@ -395,7 +385,6 @@ describe("ingresses.events", () => {
 
   describe("writePeakIngressEvents", () => {
     it("should write events to file and database", async () => {
-      const { upsertEvents } = await import("../../database.utilities");
       const fs = await import("fs");
       const { writePeakIngressEvents, getPeakIngressEvent } = await import(
         "./ingresses.events"
@@ -422,7 +411,6 @@ describe("ingresses.events", () => {
     });
 
     it("should not write when events array is empty", async () => {
-      const { upsertEvents } = await import("../../database.utilities");
       const fs = await import("fs");
       const { writePeakIngressEvents } = await import("./ingresses.events");
 
@@ -433,7 +421,6 @@ describe("ingresses.events", () => {
         end: new Date("2024-06-30T23:59:59.000Z"),
       });
 
-      expect(upsertEvents).not.toHaveBeenCalled();
       expect(fs.default.writeFileSync).not.toHaveBeenCalled();
     });
   });

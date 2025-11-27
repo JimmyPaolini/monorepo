@@ -12,11 +12,6 @@ import type { Event } from "../../calendar.utilities";
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 import type { Body } from "../../types";
 
-// Mock dependencies (common pattern - see __mocks__/common-mocks.ts for documentation)
-vi.mock("../../database.utilities", () => ({
-  upsertEvents: vi.fn(),
-}));
-
 vi.mock("fs", () => ({
   default: {
     writeFileSync: vi.fn(),
@@ -465,7 +460,6 @@ describe("majorAspects.events", () => {
 
   describe("writeMajorAspectEvents", () => {
     it("should write events to file and database", async () => {
-      const { upsertEvents } = await import("../../database.utilities");
       const fs = (await import("fs")).default;
 
       const events: Event[] = [
@@ -489,7 +483,6 @@ describe("majorAspects.events", () => {
     });
 
     it("should not write if events array is empty", async () => {
-      const { upsertEvents } = await import("../../database.utilities");
       const fs = (await import("fs")).default;
 
       writeMajorAspectEvents({
@@ -499,7 +492,6 @@ describe("majorAspects.events", () => {
         end: new Date("2024-03-22T00:00:00.000Z"),
       });
 
-      expect(upsertEvents).not.toHaveBeenCalled();
       expect(fs.writeFileSync).not.toHaveBeenCalled();
     });
 

@@ -2,7 +2,6 @@ import fs from "fs";
 
 import { describe, expect, it, vi } from "vitest";
 
-import { upsertEvents } from "../../database.utilities";
 import {
   symbolByMartianPhase,
   symbolByMercurianPhase,
@@ -18,11 +17,6 @@ import {
 } from "./phases.events";
 
 import type { Event } from "../../calendar.utilities";
-
-// Mock dependencies
-vi.mock("../../database.utilities", () => ({
-  upsertEvents: vi.fn(),
-}));
 
 vi.mock("fs", () => ({
   default: {
@@ -785,7 +779,6 @@ describe("phases.events", () => {
         end,
       });
 
-      expect(upsertEvents).not.toHaveBeenCalled();
       expect(fs.writeFileSync).not.toHaveBeenCalled();
     });
 

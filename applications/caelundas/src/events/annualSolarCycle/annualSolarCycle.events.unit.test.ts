@@ -33,11 +33,6 @@ import type {
   DistanceEphemeris,
 } from "../../ephemeris/ephemeris.types";
 
-// Mock dependencies
-vi.mock("../../database.utilities", () => ({
-  upsertEvents: vi.fn(),
-}));
-
 vi.mock("fs", () => ({
   default: {
     writeFileSync: vi.fn(),

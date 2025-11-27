@@ -16,11 +16,6 @@ import type {
   DiameterEphemeris,
 } from "../../ephemeris/ephemeris.types";
 
-// Mock dependencies
-vi.mock("../../database.utilities", () => ({
-  upsertEvents: vi.fn(),
-}));
-
 vi.mock("fs", () => ({
   default: {
     writeFileSync: vi.fn(),

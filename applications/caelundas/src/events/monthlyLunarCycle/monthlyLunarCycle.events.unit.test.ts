@@ -14,11 +14,6 @@ import type { Event } from "../../calendar.utilities";
 import type { IlluminationEphemeris } from "../../ephemeris/ephemeris.types";
 import type { LunarPhase } from "../../types";
 
-// Mock dependencies
-vi.mock("../../database.utilities", () => ({
-  upsertEvents: vi.fn(),
-}));
-
 vi.mock("fs", () => ({
   default: {
     writeFileSync: vi.fn(),
@@ -191,7 +186,6 @@ describe("monthlyLunarCycle.events", () => {
 
   describe("writeMonthlyLunarCycleEvents", () => {
     it("should write events to file and database", async () => {
-      const { upsertEvents } = await import("../../database.utilities");
       const fs = await import("fs");
 
       const events = [
@@ -223,7 +217,6 @@ describe("monthlyLunarCycle.events", () => {
     });
 
     it("should not write when events array is empty", async () => {
-      const { upsertEvents } = await import("../../database.utilities");
       const fs = await import("fs");
 
       const start = new Date("2024-03-01T00:00:00.000Z");
@@ -239,7 +232,6 @@ describe("monthlyLunarCycle.events", () => {
         end,
       });
 
-      expect(upsertEvents).not.toHaveBeenCalled();
       expect(fs.default.writeFileSync).not.toHaveBeenCalled();
     });
   });
