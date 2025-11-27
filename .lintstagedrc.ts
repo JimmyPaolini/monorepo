@@ -1,0 +1,24 @@
+import { relative } from "node:path";
+
+const config = {
+  "*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}": (files: string[]) => {
+    // Convert absolute paths to relative paths for Nx
+    const relativePaths = files
+      .map((file: string) => relative(process.cwd(), file))
+      .join(",");
+    return [
+      `nx affected --target=format --files=${relativePaths}`,
+      `nx affected --target=lint --files=${relativePaths}`,
+      `nx affected --target=typecheck --files=${relativePaths}`,
+    ];
+  },
+
+  "*.{json,jsonc,json5,md,yml,yaml,css,scss,html}": (files: string[]) => {
+    const relativePaths = files
+      .map((file: string) => relative(process.cwd(), file))
+      .join(",");
+    return `nx affected --target=format --files=${relativePaths}`;
+  },
+};
+
+export default config;

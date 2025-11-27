@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "prepare": "husky",
-    "precommit-hooks": "lint-staged"
+    "lint-staged": "NODE_OPTIONS='--import=tsx' lint-staged"
   },
   "keywords": [],
   "author": "",
