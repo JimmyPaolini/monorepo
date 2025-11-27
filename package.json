@@ -4,7 +4,10 @@
   "type": "module",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "prepare": "husky",
+    "precommit-hooks": "lint-staged"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -45,6 +48,8 @@
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.0.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "nx": "21.6.5",
     "prettier": "^3.7.1",
     "tsx": "^4.20.6",

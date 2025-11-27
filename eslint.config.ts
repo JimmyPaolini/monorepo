@@ -30,6 +30,7 @@ export default [
       "**/*.min.js",
       "**/vite.config.*.timestamp*",
       "**/vitest.config.*.timestamp*",
+      ".lintstagedrc.js",
     ],
   },
 
