@@ -1,7 +1,7 @@
 import * as eslint from "@eslint/js";
 import * as nxPlugin from "@nx/eslint-plugin";
 import * as importPlugin from "eslint-plugin-import";
-// @ts-expect-error - No type definitions available
+import * as jsoncPlugin from "eslint-plugin-jsonc";
 import * as jsxA11yPlugin from "eslint-plugin-jsx-a11y";
 import * as reactPlugin from "eslint-plugin-react";
 import * as reactHooksPlugin from "eslint-plugin-react-hooks";
@@ -10,6 +10,8 @@ import tseslint from "typescript-eslint";
 import type { ConfigWithExtends } from "typescript-eslint";
 
 export default [
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ...([] as any[]),
   // Global ignores
   {
     ignores: [
@@ -35,6 +37,16 @@ export default [
 
   // Global configuration for all files
   {
+    files: [
+      "**/*.ts",
+      "**/*.tsx",
+      "**/*.mts",
+      "**/*.cts",
+      "**/*.js",
+      "**/*.mjs",
+      "**/*.cjs",
+      "**/*.jsx",
+    ],
     plugins: {
       import: importPlugin,
     },
@@ -205,8 +217,14 @@ export default [
   },
 
   // TypeScript-specific configuration
-  ...tseslint.configs.strictTypeChecked,
-  ...tseslint.configs.stylisticTypeChecked,
+  ...tseslint.configs.strictTypeChecked.map((config) => ({
+    ...config,
+    files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
+  })),
+  ...tseslint.configs.stylisticTypeChecked.map((config) => ({
+    ...config,
+    files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
+  })),
   {
     files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
     languageOptions: {
@@ -299,38 +317,18 @@ export default [
     },
   },
 
-  // JSON files configuration
+  // JSON files configuration - exclude from type-checked linting
+  ...jsoncPlugin.configs["flat/recommended-with-jsonc"],
   {
-    files: ["**/*.json"],
+    files: ["**/*.json", "**/*.jsonc", "**/*.json5"],
     rules: {
-      // Disable all TypeScript ESLint rules for JSON files (they require type information)
-      "@typescript-eslint/explicit-function-return-type": "off",
-      "@typescript-eslint/explicit-module-boundary-types": "off",
-      "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/no-unsafe-assignment": "off",
-      "@typescript-eslint/no-unsafe-call": "off",
-      "@typescript-eslint/no-unsafe-member-access": "off",
-      "@typescript-eslint/no-unsafe-return": "off",
-      "@typescript-eslint/no-unsafe-argument": "off",
-      "@typescript-eslint/no-floating-promises": "off",
-      "@typescript-eslint/await-thenable": "off",
-      "@typescript-eslint/no-misused-promises": "off",
-      "@typescript-eslint/promise-function-async": "off",
-      "@typescript-eslint/require-await": "off",
-      "@typescript-eslint/no-unnecessary-type-assertion": "off",
-      "@typescript-eslint/prefer-optional-chain": "off",
-      "@typescript-eslint/prefer-readonly": "off",
-      "@typescript-eslint/switch-exhaustiveness-check": "off",
-      "@typescript-eslint/consistent-type-imports": "off",
-      "@typescript-eslint/consistent-type-exports": "off",
-      "@typescript-eslint/no-import-type-side-effects": "off",
-      "@typescript-eslint/naming-convention": "off",
-      "@typescript-eslint/only-throw-error": "off",
-      "@typescript-eslint/no-unused-expressions": "off",
-      "@typescript-eslint/no-unused-vars": "off",
-      "@typescript-eslint/restrict-template-expressions": "off",
       // Keep Nx dependency checks enabled
       "@nx/dependency-checks": "error",
+      // JSONC style rules
+      "jsonc/sort-keys": "off", // Don't enforce key sorting by default
+      "jsonc/quotes": ["error", "double"],
+      "jsonc/comma-dangle": ["error", "never"],
+      "jsonc/indent": ["error", 2],
     },
   },
 
@@ -344,4 +342,4 @@ export default [
       "@typescript-eslint/no-unsafe-assignment": "off",
     },
   },
-] satisfies ConfigWithExtends[];
+] as ConfigWithExtends[];

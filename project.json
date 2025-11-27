@@ -3,6 +3,22 @@
   "$schema": "node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "targets": {
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "eslint --config eslint.config.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' 'scripts/' 'documentation/'",
+        "cwd": "{projectRoot}"
+      },
+      "description": "Lint workspace root files (config files, scripts, documentation)"
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc --noEmit",
+        "cwd": "{projectRoot}"
+      },
+      "description": "Type-check workspace root TypeScript files"
+    },
     "terraform:import": {
       "executor": "nx:run-commands",
       "options": {
