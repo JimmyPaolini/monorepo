@@ -46,5 +46,5 @@ jobs:
         with:
           path: |
             .nx/cache
-            node_modules
+            **/node_modules
           key: ${{ steps.cache-key.outputs.key }}

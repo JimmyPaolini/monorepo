@@ -43,7 +43,7 @@ jobs:
         with:
           path: |
             .nx/cache
-            node_modules
+            **/node_modules
           key: ${{ needs.setup.outputs.cache-key }}
 
       - name: 🚀 Run typecheck on affected projects
