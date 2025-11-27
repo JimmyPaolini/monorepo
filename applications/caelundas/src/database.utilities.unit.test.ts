@@ -17,10 +17,10 @@ import type { Body } from "./types";
 
 // Mock the output path to use a test database
 vi.mock("./output.utilities", () => ({
-  getOutputPath: (filename: string) => `./output/test-${filename}`,
+  getOutputPath: (filename: string) => `./output/test-unit-${filename}`,
 }));
 
-const TEST_DB_PATH = "./output/test-database.db";
+const TEST_DB_PATH = "./output/test-unit-database.db";
 
 describe("database.utilities", () => {
   let cleanupFns: (() => Promise<void>)[] = [];
@@ -43,10 +43,37 @@ describe("database.utilities", () => {
     }
   });
 
-  beforeEach(() => {
+  beforeEach(async () => {
     // Clear module cache to get fresh database connection
     vi.resetModules();
     cleanupFns = [];
+
+    // Ensure tables exist for tests that directly query the database
+    const { open } = await import("sqlite");
+    const sqlite3 = await import("sqlite3");
+    const db = await open({
+      filename: TEST_DB_PATH,
+      driver: sqlite3.default.Database,
+    });
+
+    await db.exec(`
+      CREATE TABLE IF NOT EXISTS events (
+        summary TEXT NOT NULL,
+        description TEXT NOT NULL,
+        start TEXT NOT NULL,
+        end TEXT NOT NULL,
+        categories TEXT NOT NULL,
+        location TEXT,
+        latitude REAL,
+        longitude REAL,
+        url TEXT,
+        priority INTEGER,
+        color TEXT,
+        PRIMARY KEY (summary, start)
+      );
+    `);
+
+    await db.close();
   });
 
   afterEach(async () => {

@@ -1,3 +1,6 @@
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+
 import * as eslint from "@eslint/js";
 import * as nxPlugin from "@nx/eslint-plugin";
 import eslintConfigPrettier from "eslint-config-prettier";
@@ -6,13 +9,11 @@ import * as jsoncPlugin from "eslint-plugin-jsonc";
 import * as jsxA11yPlugin from "eslint-plugin-jsx-a11y";
 import * as reactPlugin from "eslint-plugin-react";
 import * as reactHooksPlugin from "eslint-plugin-react-hooks";
-import { dirname } from "node:path";
-import { fileURLToPath } from "node:url";
 import tseslint from "typescript-eslint";
 
 import type { ConfigWithExtends } from "typescript-eslint";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const tsconfigRootDir = dirname(fileURLToPath(import.meta.url));
 
 export default [
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -235,7 +236,7 @@ export default [
     languageOptions: {
       parserOptions: {
         projectService: true,
-        tsconfigRootDir: __dirname,
+        tsconfigRootDir,
       },
     },
     rules: {

@@ -9,7 +9,7 @@ import type { Event } from "./calendar.utilities";
 import type { EphemerisRecord } from "./database.utilities";
 
 // Use a temporary database file for testing
-const TEST_DB_PATH = "./output/test-database.db";
+const TEST_DB_PATH = "./output/test-integration-database.db";
 
 describe("database.utilities integration", () => {
   let db: Database;
