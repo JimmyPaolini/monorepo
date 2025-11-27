@@ -5,10 +5,16 @@ export default defineConfig({
     globals: true,
     include: ["src/**/*.test.ts"],
     coverage: {
-      reporter: ["text"],
+      reporter: ["text", "json-summary", "lcov", "html"],
       include: ["src/**/*.ts"],
       exclude: ["src/**/*.test.ts"],
       reportOnFailure: true,
+      thresholds: {
+        lines: 80,
+        functions: 80,
+        branches: 80,
+        statements: 80,
+      },
     },
     clearMocks: true,
     restoreMocks: true,
