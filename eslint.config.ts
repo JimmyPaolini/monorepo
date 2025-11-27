@@ -1,13 +1,15 @@
-import eslint from "@eslint/js";
-import nxPlugin from "@nx/eslint-plugin";
-import { defineConfig } from "eslint/config";
-import importPlugin from "eslint-plugin-import";
-import jsxA11yPlugin from "eslint-plugin-jsx-a11y";
-import reactPlugin from "eslint-plugin-react";
-import reactHooksPlugin from "eslint-plugin-react-hooks";
+import * as eslint from "@eslint/js";
+import * as nxPlugin from "@nx/eslint-plugin";
+import * as importPlugin from "eslint-plugin-import";
+// @ts-expect-error - No type definitions available
+import * as jsxA11yPlugin from "eslint-plugin-jsx-a11y";
+import * as reactPlugin from "eslint-plugin-react";
+import * as reactHooksPlugin from "eslint-plugin-react-hooks";
 import tseslint from "typescript-eslint";
 
-export default defineConfig([
+import type { ConfigWithExtends } from "typescript-eslint";
+
+export default [
   // Global ignores
   {
     ignores: [
@@ -34,7 +36,6 @@ export default defineConfig([
   // Global configuration for all files
   {
     plugins: {
-      "@nx": nxPlugin,
       import: importPlugin,
     },
     rules: {
@@ -204,12 +205,10 @@ export default defineConfig([
   },
 
   // TypeScript-specific configuration
+  ...tseslint.configs.strictTypeChecked,
+  ...tseslint.configs.stylisticTypeChecked,
   {
     files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
-    extends: [
-      ...tseslint.configs.strictTypeChecked,
-      ...tseslint.configs.stylisticTypeChecked,
-    ],
     languageOptions: {
       parserOptions: {
         projectService: {
@@ -334,4 +333,15 @@ export default defineConfig([
       "@nx/dependency-checks": "error",
     },
   },
-]);
+
+  // Special configuration for the eslint.config.ts file itself
+  {
+    files: ["eslint.config.ts"],
+    rules: {
+      "@typescript-eslint/no-unnecessary-boolean-literal-compare": "off",
+      "@typescript-eslint/no-unnecessary-condition": "off",
+      "@typescript-eslint/no-unsafe-member-access": "off",
+      "@typescript-eslint/no-unsafe-assignment": "off",
+    },
+  },
+] satisfies ConfigWithExtends[];
