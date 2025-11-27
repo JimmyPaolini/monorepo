@@ -54,6 +54,7 @@ export default [
       "**/*.cjs",
       "**/*.jsx",
     ],
+    ignores: ["*.config.ts", ".lintstagedrc.ts", ".prettierrc.ts"],
     plugins: {
       import: importPlugin,
     },
@@ -227,13 +228,16 @@ export default [
   ...tseslint.configs.strictTypeChecked.map((config) => ({
     ...config,
     files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
+    ignores: ["*.config.ts", ".lintstagedrc.ts", ".prettierrc.ts"],
   })),
   ...tseslint.configs.stylisticTypeChecked.map((config) => ({
     ...config,
     files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
+    ignores: ["*.config.ts", ".lintstagedrc.ts", ".prettierrc.ts"],
   })),
   {
     files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
+    ignores: ["*.config.ts", ".lintstagedrc.ts", ".prettierrc.ts"],
     languageOptions: {
       parserOptions: {
         projectService: true,
