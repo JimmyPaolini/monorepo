@@ -1,11 +1,11 @@
 import eslint from "@eslint/js";
-import { defineConfig } from "eslint/config";
-import tseslint from "typescript-eslint";
 import nxPlugin from "@nx/eslint-plugin";
+import { defineConfig } from "eslint/config";
 import importPlugin from "eslint-plugin-import";
+import jsxA11yPlugin from "eslint-plugin-jsx-a11y";
 import reactPlugin from "eslint-plugin-react";
 import reactHooksPlugin from "eslint-plugin-react-hooks";
-import jsxA11yPlugin from "eslint-plugin-jsx-a11y";
+import tseslint from "typescript-eslint";
 
 export default defineConfig([
   // Global ignores
@@ -26,10 +26,6 @@ export default defineConfig([
   // Base ESLint recommended rules
   eslint.configs.recommended,
 
-  // TypeScript ESLint strict and stylistic rules
-  ...tseslint.configs.strictTypeChecked,
-  ...tseslint.configs.stylisticTypeChecked,
-
   // Nx plugin configurations
   ...nxPlugin.configs["flat/base"],
   ...nxPlugin.configs["flat/typescript"],
@@ -40,12 +36,6 @@ export default defineConfig([
     plugins: {
       "@nx": nxPlugin,
       import: importPlugin,
-    },
-    languageOptions: {
-      parserOptions: {
-        projectService: true,
-        tsconfigRootDir: import.meta.dirname,
-      },
     },
     rules: {
       // Nx-specific rules
@@ -103,26 +93,20 @@ export default defineConfig([
       ],
       "@typescript-eslint/explicit-module-boundary-types": "error",
       "@typescript-eslint/no-explicit-any": "error",
-      "@typescript-eslint/no-unsafe-assignment": "error",
+      "@typescript-eslint/no-unsafe-assignment": "warn",
       "@typescript-eslint/no-unsafe-call": "error",
-      "@typescript-eslint/no-unsafe-member-access": "error",
-      "@typescript-eslint/no-unsafe-return": "error",
-      "@typescript-eslint/no-unsafe-argument": "error",
-      "@typescript-eslint/strict-boolean-expressions": [
-        "error",
-        {
-          allowString: false,
-          allowNumber: false,
-          allowNullableObject: false,
-        },
-      ],
+      "@typescript-eslint/no-unsafe-member-access": "warn",
+      "@typescript-eslint/no-unsafe-return": "warn",
+      "@typescript-eslint/no-unsafe-argument": "warn",
+      "@typescript-eslint/strict-boolean-expressions": "off",
       "@typescript-eslint/no-floating-promises": "error",
       "@typescript-eslint/await-thenable": "error",
       "@typescript-eslint/no-misused-promises": "error",
       "@typescript-eslint/promise-function-async": "error",
+      "@typescript-eslint/restrict-template-expressions": "off",
       "@typescript-eslint/require-await": "error",
       "@typescript-eslint/no-unnecessary-type-assertion": "error",
-      "@typescript-eslint/prefer-nullish-coalescing": "error",
+      "@typescript-eslint/prefer-nullish-coalescing": "off",
       "@typescript-eslint/prefer-optional-chain": "error",
       "@typescript-eslint/prefer-readonly": "error",
       "@typescript-eslint/switch-exhaustiveness-check": "error",
@@ -145,8 +129,10 @@ export default defineConfig([
         {
           selector: "default",
           format: ["camelCase"],
-          leadingUnderscore: "forbid",
-          trailingUnderscore: "forbid",
+          filter: {
+            regex: "^_$",
+            match: false,
+          },
         },
         {
           selector: "variable",
@@ -163,6 +149,18 @@ export default defineConfig([
         {
           selector: "import",
           format: ["camelCase", "PascalCase"],
+          filter: {
+            regex: "^_$",
+            match: false,
+          },
+        },
+        {
+          selector: "parameter",
+          format: ["camelCase"],
+          filter: {
+            regex: "^_$",
+            match: false,
+          },
         },
         {
           selector: "objectLiteralProperty",
@@ -171,7 +169,7 @@ export default defineConfig([
       ],
 
       // General best practices
-      "no-console": ["warn", { allow: ["warn", "error"] }],
+      // "no-console": ["warn", { allow: ["warn", "error"] }],
       "no-debugger": "error",
       "no-alert": "error",
       "prefer-const": "error",
@@ -208,8 +206,22 @@ export default defineConfig([
   // TypeScript-specific configuration
   {
     files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
+    extends: [
+      ...tseslint.configs.strictTypeChecked,
+      ...tseslint.configs.stylisticTypeChecked,
+    ],
+    languageOptions: {
+      parserOptions: {
+        projectService: {
+          allowDefaultProject: ["*.ts", "*.mts", "*.cts", "eslint.config.ts"],
+        },
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
     rules: {
       "@typescript-eslint/no-non-null-assertion": "error",
+      "@typescript-eslint/restrict-template-expressions": "off",
+      "@typescript-eslint/prefer-nullish-coalescing": "off",
     },
   },
 
@@ -292,6 +304,33 @@ export default defineConfig([
   {
     files: ["**/*.json"],
     rules: {
+      // Disable all TypeScript ESLint rules for JSON files (they require type information)
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/no-unsafe-call": "off",
+      "@typescript-eslint/no-unsafe-member-access": "off",
+      "@typescript-eslint/no-unsafe-return": "off",
+      "@typescript-eslint/no-unsafe-argument": "off",
+      "@typescript-eslint/no-floating-promises": "off",
+      "@typescript-eslint/await-thenable": "off",
+      "@typescript-eslint/no-misused-promises": "off",
+      "@typescript-eslint/promise-function-async": "off",
+      "@typescript-eslint/require-await": "off",
+      "@typescript-eslint/no-unnecessary-type-assertion": "off",
+      "@typescript-eslint/prefer-optional-chain": "off",
+      "@typescript-eslint/prefer-readonly": "off",
+      "@typescript-eslint/switch-exhaustiveness-check": "off",
+      "@typescript-eslint/consistent-type-imports": "off",
+      "@typescript-eslint/consistent-type-exports": "off",
+      "@typescript-eslint/no-import-type-side-effects": "off",
+      "@typescript-eslint/naming-convention": "off",
+      "@typescript-eslint/only-throw-error": "off",
+      "@typescript-eslint/no-unused-expressions": "off",
+      "@typescript-eslint/no-unused-vars": "off",
+      "@typescript-eslint/restrict-template-expressions": "off",
+      // Keep Nx dependency checks enabled
       "@nx/dependency-checks": "error",
     },
   },

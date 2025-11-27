@@ -1,6 +1,5 @@
 import { getAngle, isMaximum, isMinimum } from "../../math.utilities";
 
-import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 import type { EclipsePhase } from "../../types";
 
 export function isSolarEclipse(args: {

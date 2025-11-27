@@ -83,14 +83,14 @@ import { getOutputPath } from "./output.utilities";
 
 import type { Coordinates } from "./ephemeris/ephemeris.types";
 
-async function main() {
+async function main(): Promise<void> {
   // #region 🔮 Input
   const input = inputSchema.parse({
-    latitude: process.env.LATITUDE,
-    longitude: process.env.LONGITUDE,
-    timezone: process.env.TIMEZONE,
-    startDate: process.env.START_DATE,
-    endDate: process.env.END_DATE,
+    latitude: process.env["LATITUDE"],
+    longitude: process.env["LONGITUDE"],
+    timezone: process.env["TIMEZONE"],
+    startDate: process.env["START_DATE"],
+    endDate: process.env["END_DATE"],
   });
 
   console.log(`🔭 Caelundas with input:`, JSON.stringify(input));
@@ -173,8 +173,7 @@ async function main() {
         }),
         ...getDailyLunarCycleEvents({
           currentMinute,
-          moonAzimuthElevationEphemeris:
-            azimuthElevationEphemerisByBody.moon,
+          moonAzimuthElevationEphemeris: azimuthElevationEphemerisByBody.moon,
         }),
         ...getTwilightEvents({
           currentMinute,
@@ -252,4 +251,4 @@ async function main() {
 
   process.exit(0);
 }
-main();
+void main();

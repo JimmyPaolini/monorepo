@@ -2,10 +2,14 @@ import fs from "fs";
 
 import _ from "lodash";
 
-import { type Event, type EventTemplate , getCalendar } from "../../calendar.utilities";
+import {
+  type Event,
+  type EventTemplate,
+  getCalendar,
+} from "../../calendar.utilities";
 import { MARGIN_MINUTES } from "../../calendar.utilities";
-import { upsertEvents } from "../../database.utilities";
 import { pairDurationEvents } from "../../duration.utilities";
+import { getCoordinateFromEphemeris } from "../../ephemeris/ephemeris.service";
 import { getOutputPath } from "../../output.utilities";
 import { symbolByBody, symbolByOrbitalDirection } from "../../symbols";
 import { retrogradeBodies } from "../../types";
@@ -21,22 +25,25 @@ import type {
 } from "../../types";
 import type { Moment } from "moment";
 
-export type RetrogradeEventTemplate = EventTemplate
+export type RetrogradeEventTemplate = EventTemplate;
 
-export type RetrogradeEvent = Event
+export type RetrogradeEvent = Event;
 
 export function getRetrogradeEvents(args: {
   coordinateEphemerisByBody: Record<RetrogradeBody, CoordinateEphemeris>;
   currentMinute: Moment;
-}) {
+}): Event[] {
   const { coordinateEphemerisByBody, currentMinute } = args;
   const retrogradeEvents: Event[] = [];
 
   for (const body of retrogradeBodies) {
     const ephemeris = coordinateEphemerisByBody[body];
 
-    const { longitude: currentLongitude } =
-      ephemeris[currentMinute.toISOString()];
+    const currentLongitude = getCoordinateFromEphemeris(
+      ephemeris,
+      currentMinute.toISOString(),
+      "longitude"
+    );
 
     const previousLongitudes = new Array(MARGIN_MINUTES)
       .fill(null)
@@ -44,16 +51,22 @@ export function getRetrogradeEvents(args: {
         const date = currentMinute
           .clone()
           .subtract(MARGIN_MINUTES - index, "minute");
-        const { longitude: previousLongitude } = ephemeris[date.toISOString()];
-        return previousLongitude;
+        return getCoordinateFromEphemeris(
+          ephemeris,
+          date.toISOString(),
+          "longitude"
+        );
       });
 
     const nextLongitudes = new Array(MARGIN_MINUTES)
       .fill(null)
       .map((_, index) => {
         const date = currentMinute.clone().add(index + 1, "minute");
-        const { longitude: nextLongitude } = ephemeris[date.toISOString()];
-        return nextLongitude;
+        return getCoordinateFromEphemeris(
+          ephemeris,
+          date.toISOString(),
+          "longitude"
+        );
       });
 
     const timestamp = currentMinute.toDate();
@@ -84,7 +97,7 @@ export function getRetrogradeEvent(args: {
   body: RetrogradeBody;
   timestamp: Date;
   direction: OrbitalDirection;
-}) {
+}): Event {
   const { body, timestamp, direction } = args;
 
   const bodyCapitalized = _.startCase(body) as Capitalize<RetrogradeBody>;
@@ -120,15 +133,15 @@ export function writeRetrogradeEvents(args: {
   retrogradeBodies: RetrogradeBody[];
   retrogradeEvents: Event[];
   start: Date;
-}) {
+}): void {
   const { retrogradeBodies, retrogradeEvents, start, end } = args;
-  if (_.isEmpty(retrogradeEvents)) {return;}
+  if (_.isEmpty(retrogradeEvents)) {
+    return;
+  }
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${retrogradeEvents.length} retrograde events from ${timespan}`;
   console.log(`↩️ Writing ${message}`);
-
-  upsertEvents(retrogradeEvents);
 
   const retrogradeBodiesString = retrogradeBodies.join(", ");
   const retrogradesCalendar = getCalendar({

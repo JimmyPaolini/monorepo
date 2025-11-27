@@ -44,8 +44,8 @@ describe("twilights.events", () => {
       });
 
       expect(events).toHaveLength(1);
-      expect(events[0].summary).toContain("Civil Dawn");
-      expect(events[0].categories).toContain("Civil Dawn");
+      expect(events[0]?.summary).toContain("Civil Dawn");
+      expect(events[0]?.categories).toContain("Civil Dawn");
     });
 
     it("should detect civil dusk when sun sets from above -6 to below -6 degrees", () => {
@@ -64,8 +64,8 @@ describe("twilights.events", () => {
       });
 
       expect(events).toHaveLength(1);
-      expect(events[0].summary).toContain("Civil Dusk");
-      expect(events[0].categories).toContain("Civil Dusk");
+      expect(events[0]?.summary).toContain("Civil Dusk");
+      expect(events[0]?.categories).toContain("Civil Dusk");
     });
 
     it("should detect nautical dawn when sun rises from -12 to above -12 degrees", () => {
@@ -84,8 +84,8 @@ describe("twilights.events", () => {
       });
 
       expect(events).toHaveLength(1);
-      expect(events[0].summary).toContain("Nautical Dawn");
-      expect(events[0].categories).toContain("Nautical Dawn");
+      expect(events[0]?.summary).toContain("Nautical Dawn");
+      expect(events[0]?.categories).toContain("Nautical Dawn");
     });
 
     it("should detect nautical dusk when sun sets from above -12 to below -12 degrees", () => {
@@ -104,8 +104,8 @@ describe("twilights.events", () => {
       });
 
       expect(events).toHaveLength(1);
-      expect(events[0].summary).toContain("Nautical Dusk");
-      expect(events[0].categories).toContain("Nautical Dusk");
+      expect(events[0]?.summary).toContain("Nautical Dusk");
+      expect(events[0]?.categories).toContain("Nautical Dusk");
     });
 
     it("should detect astronomical dawn when sun rises from -18 to above -18 degrees", () => {
@@ -124,8 +124,8 @@ describe("twilights.events", () => {
       });
 
       expect(events).toHaveLength(1);
-      expect(events[0].summary).toContain("Astronomical Dawn");
-      expect(events[0].categories).toContain("Astronomical Dawn");
+      expect(events[0]?.summary).toContain("Astronomical Dawn");
+      expect(events[0]?.categories).toContain("Astronomical Dawn");
     });
 
     it("should detect astronomical dusk when sun sets from above -18 to below -18 degrees", () => {
@@ -144,8 +144,8 @@ describe("twilights.events", () => {
       });
 
       expect(events).toHaveLength(1);
-      expect(events[0].summary).toContain("Astronomical Dusk");
-      expect(events[0].categories).toContain("Astronomical Dusk");
+      expect(events[0]?.summary).toContain("Astronomical Dusk");
+      expect(events[0]?.categories).toContain("Astronomical Dusk");
     });
 
     it("should return empty array when no twilight events occur", () => {

@@ -25,6 +25,9 @@ export function pairDurationEvents<E extends Event>(
   ) {
     const beginning = beginnings[beginningIndex];
     const ending = endings[endingIndex];
+    if (!beginning || !ending) {
+      continue;
+    }
 
     if (ending.start <= beginning.start) {
       console.warn(

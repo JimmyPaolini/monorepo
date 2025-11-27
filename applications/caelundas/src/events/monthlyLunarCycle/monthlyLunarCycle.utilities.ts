@@ -15,7 +15,7 @@ export function isNewMoon(args: {
   currentIllumination: number;
   previousIlluminations: number[];
   nextIlluminations: number[];
-}) {
+}): boolean {
   const { currentIllumination, previousIlluminations, nextIlluminations } =
     args;
   const isNewMoon =
@@ -30,7 +30,7 @@ export function isFullMoon(args: {
   currentIllumination: number;
   previousIlluminations: number[];
   nextIlluminations: number[];
-}) {
+}): boolean {
   const { currentIllumination, previousIlluminations, nextIlluminations } =
     args;
 
@@ -47,14 +47,19 @@ export function isLunarPhase(args: {
   previousIlluminations: number[];
   nextIlluminations: number[];
   lunarPhase: LunarPhase;
-}) {
+}): boolean {
   const { lunarPhase, ...illuminations } = args;
 
-  if (lunarPhase === "new") {return isNewMoon({ ...illuminations });}
-  if (lunarPhase === "full") {return isFullMoon({ ...illuminations });}
+  if (lunarPhase === "new") {
+    return isNewMoon({ ...illuminations });
+  }
+  if (lunarPhase === "full") {
+    return isFullMoon({ ...illuminations });
+  }
 
   const { currentIllumination, previousIlluminations } = illuminations;
   const previousIllumination = previousIlluminations[0];
+  if (!previousIllumination) {return false;}
 
   const illumination = illuminationByPhase[lunarPhase] * 100;
 

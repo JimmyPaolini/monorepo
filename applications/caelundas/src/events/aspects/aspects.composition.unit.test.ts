@@ -1,5 +1,5 @@
 import moment from "moment-timezone";
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 
 import {
   type AspectEdge,
@@ -40,11 +40,12 @@ describe("aspects.composition", () => {
       const edges = parseAspectEvents(events);
 
       expect(edges.length).toBe(1);
-      expect(edges[0].body1).toBe("sun");
-      expect(edges[0].body2).toBe("moon");
-      expect(edges[0].aspectType).toBe("conjunct");
-      expect(edges[0].phase).toBe("exact");
-      expect(edges[0].event).toBe(events[0]);
+      expect(edges[0]).toBeDefined();
+      expect(edges[0]?.body1).toBe("sun");
+      expect(edges[0]?.body2).toBe("moon");
+      expect(edges[0]?.aspectType).toBe("conjunct");
+      expect(edges[0]?.phase).toBe("exact");
+      expect(edges[0]?.event).toBe(events[0]);
     });
 
     it("should parse multiple aspect events", () => {
@@ -68,12 +69,14 @@ describe("aspects.composition", () => {
       const edges = parseAspectEvents(events);
 
       expect(edges.length).toBe(2);
-      expect(edges[0].body1).toBe("sun");
-      expect(edges[0].body2).toBe("moon");
-      expect(edges[0].aspectType).toBe("conjunct");
-      expect(edges[1].body1).toBe("mars");
-      expect(edges[1].body2).toBe("jupiter");
-      expect(edges[1].aspectType).toBe("trine");
+      expect(edges[0]).toBeDefined();
+      expect(edges[0]?.body1).toBe("sun");
+      expect(edges[0]?.body2).toBe("moon");
+      expect(edges[0]?.aspectType).toBe("conjunct");
+      expect(edges[1]).toBeDefined();
+      expect(edges[1]?.body1).toBe("mars");
+      expect(edges[1]?.body2).toBe("jupiter");
+      expect(edges[1]?.aspectType).toBe("trine");
     });
 
     it("should handle different phases", () => {
@@ -103,8 +106,10 @@ describe("aspects.composition", () => {
       const edges = parseAspectEvents(events);
 
       expect(edges.length).toBe(2);
-      expect(edges[0].phase).toBe("forming");
-      expect(edges[1].phase).toBe("dissolving");
+      expect(edges[0]).toBeDefined();
+      expect(edges[1]).toBeDefined();
+      expect(edges[0]?.phase).toBe("forming");
+      expect(edges[1]?.phase).toBe("dissolving");
     });
 
     it("should skip compound aspect events", () => {
@@ -207,10 +212,11 @@ describe("aspects.composition", () => {
       const edges = parseAspectEvents(events);
 
       expect(edges.length).toBe(1);
-      expect(edges[0].body1).toBe("sun");
-      expect(edges[0].body2).toBe("moon");
-      expect(edges[0].aspectType).toBe("conjunct");
-      expect(edges[0].phase).toBe("exact");
+      expect(edges[0]).toBeDefined();
+      expect(edges[0]?.body1).toBe("sun");
+      expect(edges[0]?.body2).toBe("moon");
+      expect(edges[0]?.aspectType).toBe("conjunct");
+      expect(edges[0]?.phase).toBe("exact");
     });
 
     it("should handle malformed events gracefully", () => {
@@ -220,7 +226,7 @@ describe("aspects.composition", () => {
           end: new Date("2024-03-21T12:00:00.000Z"),
           summary: "Malformed",
           description: "Malformed",
-          categories: null as any,
+          categories: null as unknown as string[],
         },
       ];
 
@@ -249,7 +255,8 @@ describe("aspects.composition", () => {
       const edges = parseAspectEvents(events);
 
       expect(edges.length).toBe(1);
-      expect(edges[0].aspectType).toBe("semisextile");
+      expect(edges[0]).toBeDefined();
+      expect(edges[0]?.aspectType).toBe("semisextile");
     });
 
     it("should handle specialty aspects", () => {
@@ -273,7 +280,8 @@ describe("aspects.composition", () => {
       const edges = parseAspectEvents(events);
 
       expect(edges.length).toBe(1);
-      expect(edges[0].aspectType).toBe("quintile");
+      expect(edges[0]).toBeDefined();
+      expect(edges[0]?.aspectType).toBe("quintile");
     });
   });
 

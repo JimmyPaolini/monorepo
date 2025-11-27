@@ -1,11 +1,5 @@
 import moment from "moment-timezone";
-import {
-  describe,
-  expect,
-  it,
-  type TaskContext,
-  vi,
-} from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import {
   getMajorAspectDurationEvents,
@@ -17,8 +11,6 @@ import {
 import type { Event } from "../../calendar.utilities";
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 import type { Body } from "../../types";
-
-
 
 // Mock dependencies (common pattern - see __mocks__/common-mocks.ts for documentation)
 vi.mock("../../database.utilities", () => ({
@@ -119,14 +111,14 @@ describe("majorAspects.events", () => {
           e.description.includes("Mercury")
       );
       expect(conjunctionEvent).toBeDefined();
-      expect(conjunctionEvent!.categories).toContain("Exact");
+      expect(conjunctionEvent?.categories).toContain("Exact");
 
       // Snapshot testing: validates complete event structure
       // Useful for catching unintended changes to event format
       expect(conjunctionEvent).toMatchSnapshot();
     });
 
-    it("should detect forming aspect", ({ task }: TaskContext) => {
+    it("should detect forming aspect", () => {
       // Test context provides debugging info and task metadata
       // Useful for logging test names in complex scenarios
       const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
@@ -283,10 +275,11 @@ describe("majorAspects.events", () => {
 
       const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       allBodies.forEach((body, index) => {
+        const longitude = safeLongitudes[index] ?? 0;
         coordinateEphemerisByBody[body] = createEphemeris({
-          [previousMinute.toISOString()]: safeLongitudes[index],
-          [currentMinute.toISOString()]: safeLongitudes[index],
-          [nextMinute.toISOString()]: safeLongitudes[index],
+          [previousMinute.toISOString()]: longitude,
+          [currentMinute.toISOString()]: longitude,
+          [nextMinute.toISOString()]: longitude,
         });
       });
 
@@ -614,13 +607,14 @@ describe("majorAspects.events", () => {
       const durationEvents = getMajorAspectDurationEvents(events);
 
       expect(durationEvents).toHaveLength(1);
-      expect(durationEvents[0].start).toEqual(forming.start);
-      expect(durationEvents[0].end).toEqual(dissolving.start);
-      expect(durationEvents[0].categories).toContain("Simple Aspect");
-      expect(durationEvents[0].categories).toContain("Major Aspect");
-      expect(durationEvents[0].summary).toContain("☀️");
-      expect(durationEvents[0].summary).toContain("☿");
-      expect(durationEvents[0].summary).toContain("☌");
+      expect(durationEvents[0]).toBeDefined();
+      expect(durationEvents[0]?.start).toEqual(forming.start);
+      expect(durationEvents[0]?.end).toEqual(dissolving.start);
+      expect(durationEvents[0]?.categories).toContain("Simple Aspect");
+      expect(durationEvents[0]?.categories).toContain("Major Aspect");
+      expect(durationEvents[0]?.summary).toContain("☀️");
+      expect(durationEvents[0]?.summary).toContain("☿");
+      expect(durationEvents[0]?.summary).toContain("☌");
     });
 
     it("should handle multiple aspect types for same body pair", () => {
@@ -771,9 +765,10 @@ describe("majorAspects.events", () => {
       const durationEvents = getMajorAspectDurationEvents(events);
 
       expect(durationEvents).toHaveLength(1);
+      expect(durationEvents[0]).toBeDefined();
       // Should normalize to alphabetical order (capitalized)
-      expect(durationEvents[0].description).toContain("Sun");
-      expect(durationEvents[0].description).toContain("Venus");
+      expect(durationEvents[0]?.description).toContain("Sun");
+      expect(durationEvents[0]?.description).toContain("Venus");
     });
   });
 });

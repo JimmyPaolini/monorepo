@@ -2,10 +2,10 @@ import fs from "fs";
 
 import _ from "lodash";
 
-import { type Event, type EventTemplate , getCalendar } from "../../calendar.utilities";
+import { type Event, getCalendar } from "../../calendar.utilities";
 import { majorAspects } from "../../constants";
-import { upsertEvents } from "../../database.utilities";
 import { pairDurationEvents } from "../../duration.utilities";
+import { getCoordinateFromEphemeris } from "../../ephemeris/ephemeris.service";
 import { getOutputPath } from "../../output.utilities";
 import { symbolByBody, symbolByMajorAspect } from "../../symbols";
 import { majorAspectBodies } from "../../types";
@@ -25,7 +25,7 @@ import type { Moment } from "moment";
 export function getMajorAspectEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
   currentMinute: Moment;
-}) {
+}): Event[] {
   const { coordinateEphemerisByBody, currentMinute } = args;
 
   const previousMinute = currentMinute.clone().subtract(1, "minute");
@@ -36,23 +36,43 @@ export function getMajorAspectEvents(args: {
   for (const body1 of majorAspectBodies) {
     const index = majorAspectBodies.indexOf(body1);
     for (const body2 of majorAspectBodies.slice(index + 1)) {
-      if (body1 === body2) {continue;}
+      if (body1 === body2) {
+        continue;
+      }
 
       const ephemerisBody1 = coordinateEphemerisByBody[body1];
       const ephemerisBody2 = coordinateEphemerisByBody[body2];
 
-      const { longitude: currentLongitudeBody1 } =
-        ephemerisBody1[currentMinute.toISOString()];
-      const { longitude: currentLongitudeBody2 } =
-        ephemerisBody2[currentMinute.toISOString()];
-      const { longitude: previousLongitudeBody1 } =
-        ephemerisBody1[previousMinute.toISOString()];
-      const { longitude: previousLongitudeBody2 } =
-        ephemerisBody2[previousMinute.toISOString()];
-      const { longitude: nextLongitudeBody1 } =
-        ephemerisBody1[nextMinute.toISOString()];
-      const { longitude: nextLongitudeBody2 } =
-        ephemerisBody2[nextMinute.toISOString()];
+      const currentLongitudeBody1 = getCoordinateFromEphemeris(
+        ephemerisBody1,
+        currentMinute.toISOString(),
+        "longitude"
+      );
+      const currentLongitudeBody2 = getCoordinateFromEphemeris(
+        ephemerisBody2,
+        currentMinute.toISOString(),
+        "longitude"
+      );
+      const previousLongitudeBody1 = getCoordinateFromEphemeris(
+        ephemerisBody1,
+        previousMinute.toISOString(),
+        "longitude"
+      );
+      const previousLongitudeBody2 = getCoordinateFromEphemeris(
+        ephemerisBody2,
+        previousMinute.toISOString(),
+        "longitude"
+      );
+      const nextLongitudeBody1 = getCoordinateFromEphemeris(
+        ephemerisBody1,
+        nextMinute.toISOString(),
+        "longitude"
+      );
+      const nextLongitudeBody2 = getCoordinateFromEphemeris(
+        ephemerisBody2,
+        nextMinute.toISOString(),
+        "longitude"
+      );
 
       const phase = getMajorAspectPhase({
         currentLongitudeBody1,
@@ -87,7 +107,7 @@ export function getMajorAspectEvent(args: {
   body1: Body;
   body2: Body;
   phase: AspectPhase;
-}) {
+}): Event {
   const { longitudeBody1, longitudeBody2, timestamp, body1, body2, phase } =
     args;
   const majorAspect = getMajorAspect({ longitudeBody1, longitudeBody2 });
@@ -103,9 +123,7 @@ export function getMajorAspectEvent(args: {
 
   const body1Symbol = symbolByBody[body1] as BodySymbol;
   const body2Symbol = symbolByBody[body2] as BodySymbol;
-  const majorAspectSymbol = symbolByMajorAspect[
-    majorAspect
-  ] as MajorAspectSymbol;
+  const majorAspectSymbol = symbolByMajorAspect[majorAspect as MajorAspect];
 
   let description: string;
   let phaseEmoji: string;
@@ -153,15 +171,15 @@ export function writeMajorAspectEvents(args: {
   majorAspectBodies: Body[];
   majorAspectEvents: Event[];
   start: Date;
-}) {
+}): void {
   const { end, majorAspectEvents, majorAspectBodies, start } = args;
-  if (_.isEmpty(majorAspectEvents)) {return;}
+  if (_.isEmpty(majorAspectEvents)) {
+    return;
+  }
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${majorAspectEvents.length} major aspect events from ${timespan}`;
   console.log(`📐 Writing ${message}`);
-
-  upsertEvents(majorAspectEvents);
 
   const majorAspectBodiesString = majorAspectBodies.join(",");
   const majorAspectsCalendar = getCalendar({
@@ -188,12 +206,16 @@ export function getMajorAspectDurationEvents(events: Event[]): Event[] {
   const groupedEvents = _.groupBy(majorAspectEvents, (event) => {
     const planets = event.categories
       .filter((category) =>
-        majorAspectBodies.map(_.startCase).includes(category)
+        majorAspectBodies
+          .map((majorAspectBody) => _.startCase(majorAspectBody))
+          .includes(category)
       )
       .sort();
 
     const aspect = event.categories.find((category) =>
-      majorAspects.map(_.startCase).includes(category)
+      majorAspects
+        .map((majorAspect) => _.startCase(majorAspect))
+        .includes(category)
     );
 
     if (planets.length === 2 && aspect) {
@@ -204,7 +226,9 @@ export function getMajorAspectDurationEvents(events: Event[]): Event[] {
 
   // Process each group
   for (const [key, groupEvents] of Object.entries(groupedEvents)) {
-    if (!key) {continue;}
+    if (!key) {
+      continue;
+    }
 
     const formingEvents = groupEvents.filter((event) =>
       event.categories.includes("Forming")
@@ -230,24 +254,30 @@ export function getMajorAspectDurationEvents(events: Event[]): Event[] {
 }
 
 function getMajorAspectDurationEvent(beginning: Event, ending: Event): Event {
-  const categories = beginning.categories || [];
-
-  const bodiesCapitalized = categories
-    .filter((category) => majorAspectBodies.map(_.startCase).includes(category))
+  const bodiesCapitalized = beginning.categories
+    .filter((category) =>
+      majorAspectBodies
+        .map((majorAspectBody) => _.startCase(majorAspectBody))
+        .includes(category)
+    )
     .sort();
 
-  const aspectCapitalized = categories.find((category) =>
-    majorAspects.map(_.startCase).includes(category)
+  const aspectCapitalized = beginning.categories.find((category) =>
+    majorAspects
+      .map((majorAspect) => _.startCase(majorAspect))
+      .includes(category)
   );
 
   if (bodiesCapitalized.length !== 2 || !aspectCapitalized) {
     throw new Error(
-      `Could not extract aspect info from categories: ${categories.join(", ")}`
+      `Could not extract aspect info from categories: ${beginning.categories.join(
+        ", "
+      )}`
     );
   }
 
-  const body1Capitalized = bodiesCapitalized[0];
-  const body2Capitalized = bodiesCapitalized[1];
+  const body1Capitalized = bodiesCapitalized[0] ?? "";
+  const body2Capitalized = bodiesCapitalized[1] ?? "";
   const aspect = aspectCapitalized.toLowerCase() as MajorAspect;
 
   const body1 = body1Capitalized.toLowerCase() as Body;

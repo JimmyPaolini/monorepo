@@ -2,10 +2,10 @@ import fs from "fs";
 
 import _ from "lodash";
 
-import { type Event, EventTemplate , getCalendar } from "../../calendar.utilities";
+import { type Event, getCalendar } from "../../calendar.utilities";
 import { specialtyAspects } from "../../constants";
-import { upsertEvents } from "../../database.utilities";
 import { pairDurationEvents } from "../../duration.utilities";
+import { getCoordinateFromEphemeris } from "../../ephemeris/ephemeris.service";
 import { getOutputPath } from "../../output.utilities";
 import { symbolByBody, symbolBySpecialtyAspect } from "../../symbols";
 import { specialtyAspectBodies } from "../../types";
@@ -28,7 +28,7 @@ import type { Moment } from "moment";
 export function getSpecialtyAspectEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
   currentMinute: Moment;
-}) {
+}): Event[] {
   const { coordinateEphemerisByBody, currentMinute } = args;
 
   const previousMinute = currentMinute.clone().subtract(1, "minute");
@@ -39,23 +39,43 @@ export function getSpecialtyAspectEvents(args: {
   for (const body1 of specialtyAspectBodies) {
     const index = specialtyAspectBodies.indexOf(body1);
     for (const body2 of specialtyAspectBodies.slice(index + 1)) {
-      if (body1 === body2) {continue;}
+      if (body1 === body2) {
+        continue;
+      }
 
       const ephemerisBody1 = coordinateEphemerisByBody[body1];
       const ephemerisBody2 = coordinateEphemerisByBody[body2];
 
-      const { longitude: currentLongitudeBody1 } =
-        ephemerisBody1[currentMinute.toISOString()];
-      const { longitude: currentLongitudeBody2 } =
-        ephemerisBody2[currentMinute.toISOString()];
-      const { longitude: previousLongitudeBody1 } =
-        ephemerisBody1[previousMinute.toISOString()];
-      const { longitude: previousLongitudeBody2 } =
-        ephemerisBody2[previousMinute.toISOString()];
-      const { longitude: nextLongitudeBody1 } =
-        ephemerisBody1[nextMinute.toISOString()];
-      const { longitude: nextLongitudeBody2 } =
-        ephemerisBody2[nextMinute.toISOString()];
+      const currentLongitudeBody1 = getCoordinateFromEphemeris(
+        ephemerisBody1,
+        currentMinute.toISOString(),
+        "longitude"
+      );
+      const currentLongitudeBody2 = getCoordinateFromEphemeris(
+        ephemerisBody2,
+        currentMinute.toISOString(),
+        "longitude"
+      );
+      const previousLongitudeBody1 = getCoordinateFromEphemeris(
+        ephemerisBody1,
+        previousMinute.toISOString(),
+        "longitude"
+      );
+      const previousLongitudeBody2 = getCoordinateFromEphemeris(
+        ephemerisBody2,
+        previousMinute.toISOString(),
+        "longitude"
+      );
+      const nextLongitudeBody1 = getCoordinateFromEphemeris(
+        ephemerisBody1,
+        nextMinute.toISOString(),
+        "longitude"
+      );
+      const nextLongitudeBody2 = getCoordinateFromEphemeris(
+        ephemerisBody2,
+        nextMinute.toISOString(),
+        "longitude"
+      );
 
       const phase = getSpecialtyAspectPhase({
         currentLongitudeBody1,
@@ -91,7 +111,7 @@ export function getSpecialtyAspectEvent(args: {
   body1: Body;
   body2: Body;
   phase: AspectPhase;
-}) {
+}): Event {
   const { longitudeBody1, longitudeBody2, timestamp, body1, body2, phase } =
     args;
   const specialtyAspect = getSpecialtyAspect({
@@ -110,9 +130,8 @@ export function getSpecialtyAspectEvent(args: {
 
   const body1Symbol = symbolByBody[body1] as BodySymbol;
   const body2Symbol = symbolByBody[body2] as BodySymbol;
-  const specialtyAspectSymbol = symbolBySpecialtyAspect[
-    specialtyAspect
-  ] as SpecialtyAspectSymbol;
+  const specialtyAspectSymbol: SpecialtyAspectSymbol =
+    symbolBySpecialtyAspect[specialtyAspect as SpecialtyAspect];
 
   let description: string;
   let phaseEmoji: string;
@@ -160,15 +179,15 @@ export function writeSpecialtyAspectEvents(args: {
   specialtyAspectBodies: Body[];
   specialtyAspectEvents: Event[];
   start: Date;
-}) {
+}): void {
   const { end, specialtyAspectEvents, specialtyAspectBodies, start } = args;
-  if (_.isEmpty(specialtyAspectEvents)) {return;}
+  if (_.isEmpty(specialtyAspectEvents)) {
+    return;
+  }
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${specialtyAspectEvents.length} specialty aspect events from ${timespan}`;
   console.log(`🧮 Writing ${message}`);
-
-  upsertEvents(specialtyAspectEvents);
 
   const specialtyAspectBodiesString = specialtyAspectBodies.join(",");
   const specialtyAspectsCalendar = getCalendar({
@@ -197,12 +216,16 @@ export function getSpecialtyAspectDurationEvents(events: Event[]): Event[] {
   const groupedEvents = _.groupBy(specialtyAspectEvents, (event) => {
     const planets = event.categories
       .filter((category) =>
-        specialtyAspectBodies.map(_.startCase).includes(category)
+        specialtyAspectBodies
+          .map((specialtyAspectBody) => _.startCase(specialtyAspectBody))
+          .includes(category)
       )
       .sort();
 
     const aspect = event.categories.find((category) =>
-      specialtyAspects.map(_.startCase).includes(category)
+      specialtyAspects
+        .map((specialtyAspect) => _.startCase(specialtyAspect))
+        .includes(category)
     );
 
     if (planets.length === 2 && aspect) {
@@ -213,7 +236,9 @@ export function getSpecialtyAspectDurationEvents(events: Event[]): Event[] {
 
   // Process each group
   for (const [key, groupEvents] of Object.entries(groupedEvents)) {
-    if (!key) {continue;}
+    if (!key) {
+      continue;
+    }
 
     const formingEvents = groupEvents.filter((event) =>
       event.categories.includes("Forming")
@@ -242,26 +267,30 @@ function getSpecialtyAspectDurationEvent(
   beginning: Event,
   ending: Event
 ): Event {
-  const categories = beginning.categories || [];
-
-  const bodiesCapitalized = categories
+  const bodiesCapitalized = beginning.categories
     .filter((category) =>
-      specialtyAspectBodies.map(_.startCase).includes(category)
+      specialtyAspectBodies
+        .map((specialtyAspectBody) => _.startCase(specialtyAspectBody))
+        .includes(category)
     )
     .sort();
 
-  const aspectCapitalized = categories.find((category) =>
-    specialtyAspects.map(_.startCase).includes(category)
+  const aspectCapitalized = beginning.categories.find((category) =>
+    specialtyAspects
+      .map((specialtyAspect) => _.startCase(specialtyAspect))
+      .includes(category)
   );
 
   if (bodiesCapitalized.length !== 2 || !aspectCapitalized) {
     throw new Error(
-      `Could not extract aspect info from categories: ${categories.join(", ")}`
+      `Could not extract aspect info from categories: ${beginning.categories.join(
+        ", "
+      )}`
     );
   }
 
-  const body1Capitalized = bodiesCapitalized[0];
-  const body2Capitalized = bodiesCapitalized[1];
+  const body1Capitalized = bodiesCapitalized[0] ?? "";
+  const body2Capitalized = bodiesCapitalized[1] ?? "";
   const aspect = aspectCapitalized.toLowerCase() as SpecialtyAspect;
 
   const body1 = body1Capitalized.toLowerCase() as Body;

@@ -10,7 +10,7 @@ import {
 
 import type { Event } from "../../calendar.utilities";
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
-import type { Body, MinorAspect } from "../../types";
+import type { Body } from "../../types";
 
 vi.mock("../../database.utilities", () => ({
   upsertEvents: vi.fn(),
@@ -185,10 +185,11 @@ describe("minorAspects.events", () => {
 
       const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       allBodies.forEach((body, index) => {
+        const longitude = safeLongitudes[index] ?? 0;
         coordinateEphemerisByBody[body] = createEphemeris({
-          [previousMinute.toISOString()]: safeLongitudes[index],
-          [currentMinute.toISOString()]: safeLongitudes[index],
-          [nextMinute.toISOString()]: safeLongitudes[index],
+          [previousMinute.toISOString()]: longitude,
+          [currentMinute.toISOString()]: longitude,
+          [nextMinute.toISOString()]: longitude,
         });
       });
 
@@ -301,10 +302,11 @@ describe("minorAspects.events", () => {
 
       const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       allBodies.forEach((body, index) => {
+        const longitude = safeLongitudes[index] ?? 0;
         coordinateEphemerisByBody[body] = createEphemeris({
-          [previousMinute.toISOString()]: safeLongitudes[index],
-          [currentMinute.toISOString()]: safeLongitudes[index],
-          [nextMinute.toISOString()]: safeLongitudes[index],
+          [previousMinute.toISOString()]: longitude,
+          [currentMinute.toISOString()]: longitude,
+          [nextMinute.toISOString()]: longitude,
         });
       });
 
@@ -525,7 +527,10 @@ describe("minorAspects.events", () => {
       });
 
       expect(fs.writeFileSync).toHaveBeenCalled();
-      const callArgs = (fs.writeFileSync as any).mock.calls[0];
+      const callArgs = vi.mocked(fs.writeFileSync).mock.calls[0];
+      if (!callArgs) {
+        throw new Error("callArgs is undefined");
+      }
       expect(callArgs[0]).toContain("sun,mercury");
     });
 
@@ -553,7 +558,10 @@ describe("minorAspects.events", () => {
       });
 
       expect(fs.writeFileSync).toHaveBeenCalled();
-      const callArgs = (fs.writeFileSync as any).mock.calls[0];
+      const callArgs = vi.mocked(fs.writeFileSync).mock.calls[0];
+      if (!callArgs) {
+        throw new Error("callArgs is undefined");
+      }
       expect(callArgs[0]).toContain(start.toISOString());
       expect(callArgs[0]).toContain(end.toISOString());
     });
@@ -605,11 +613,12 @@ describe("minorAspects.events", () => {
       const durationEvents = getMinorAspectDurationEvents(events);
 
       expect(durationEvents).toHaveLength(1);
-      expect(durationEvents[0].start).toEqual(forming.start);
-      expect(durationEvents[0].end).toEqual(dissolving.start);
-      expect(durationEvents[0].description).toContain("semisextile");
-      expect(durationEvents[0].categories).toContain("Minor Aspect");
-      expect(durationEvents[0].categories).toContain("Simple Aspect");
+      expect(durationEvents[0]).toBeDefined();
+      expect(durationEvents[0]?.start).toEqual(forming.start);
+      expect(durationEvents[0]?.end).toEqual(dissolving.start);
+      expect(durationEvents[0]?.description).toContain("semisextile");
+      expect(durationEvents[0]?.categories).toContain("Minor Aspect");
+      expect(durationEvents[0]?.categories).toContain("Simple Aspect");
     });
 
     it("should handle multiple aspect types for same body pair", () => {
@@ -752,9 +761,10 @@ describe("minorAspects.events", () => {
       const durationEvents = getMinorAspectDurationEvents(events);
 
       expect(durationEvents).toHaveLength(1);
+      expect(durationEvents[0]).toBeDefined();
       // Should normalize to alphabetical order (capitalized)
-      expect(durationEvents[0].description).toContain("Sun");
-      expect(durationEvents[0].description).toContain("Venus");
+      expect(durationEvents[0]?.description).toContain("Sun");
+      expect(durationEvents[0]?.description).toContain("Venus");
     });
   });
 });

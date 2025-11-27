@@ -8,17 +8,12 @@ import {
   type AspectEdge,
   determineMultiBodyPhase,
   groupAspectsByType,
-  haveAspect,
   parseAspectEvents,
 } from "./aspects.composition";
 
 import type { Event } from "../../calendar.utilities";
 import type { AspectPhase, Body, QuintupleAspect } from "../../types";
 import type { Moment } from "moment";
-
-
-
-
 
 /**
  * Check if 5 bodies form a valid pentagram pattern (5-pointed star)
@@ -41,14 +36,14 @@ function findPentagramPattern(
   for (const edge of edges) {
     if (edge.aspectType === "quintile") {
       if (bodies.includes(edge.body1) && bodies.includes(edge.body2)) {
-        connections.get(edge.body1)!.add(edge.body2);
-        connections.get(edge.body2)!.add(edge.body1);
+        connections.get(edge.body1)?.add(edge.body2);
+        connections.get(edge.body2)?.add(edge.body1);
       }
     }
   }
 
   // Check if each body has exactly 2 connections (pentagram property)
-  for (const [body, connected] of connections) {
+  for (const [, connected] of connections) {
     if (connected.size !== 2) {
       return null; // Not a valid pentagram
     }
@@ -58,13 +53,20 @@ function findPentagramPattern(
   // In a pentagram, if you follow the connections, you visit each body once
   // before returning to start, and each connection skips one body
   const start = bodies[0];
+  if (!start) {
+    return null;
+  }
   const visited = new Set<Body>([start]);
   let current = start;
   const orderedBodies: Body[] = [start];
 
   // Follow the path through the star
   for (let i = 0; i < 4; i++) {
-    const neighbors = Array.from(connections.get(current)!);
+    const currentConnections = connections.get(current);
+    if (!currentConnections) {
+      return null;
+    }
+    const neighbors = Array.from(currentConnections);
     // Pick the neighbor we haven't visited yet
     const next = neighbors.find((n) => !visited.has(n));
 
@@ -78,7 +80,8 @@ function findPentagramPattern(
   }
 
   // Verify the last body connects back to the start
-  if (!connections.get(current)!.has(start)) {
+  const finalConnections = connections.get(current);
+  if (!finalConnections?.has(start)) {
     return null;
   }
 
@@ -119,7 +122,9 @@ function composePentagrams(
   const aspectsByType = groupAspectsByType(edges);
   const quintiles = aspectsByType.get("quintile") || [];
 
-  if (quintiles.length < 5) {return events;}
+  if (quintiles.length < 5) {
+    return events;
+  }
 
   // Collect all unique bodies involved in quintiles
   const bodiesSet = new Set<Body>();
@@ -129,7 +134,9 @@ function composePentagrams(
   }
   const bodies = Array.from(bodiesSet);
 
-  if (bodies.length < 5) {return events;}
+  if (bodies.length < 5) {
+    return events;
+  }
 
   // Try all combinations of 5 bodies
   const combinations = getCombinations(bodies, 5);
@@ -152,14 +159,22 @@ function composePentagrams(
       );
 
       if (phase) {
+        const b0 = pentagramBodies[0];
+        const b1 = pentagramBodies[1];
+        const b2 = pentagramBodies[2];
+        const b3 = pentagramBodies[3];
+        const b4 = pentagramBodies[4];
+        if (!b0 || !b1 || !b2 || !b3 || !b4) {
+          continue;
+        }
         events.push(
           getQuintupleAspectEvent({
             timestamp: currentMinute.toDate(),
-            body1: pentagramBodies[0],
-            body2: pentagramBodies[1],
-            body3: pentagramBodies[2],
-            body4: pentagramBodies[3],
-            body5: pentagramBodies[4],
+            body1: b0,
+            body2: b1,
+            body3: b2,
+            body4: b3,
+            body5: b4,
             quintupleAspect: "pentagram",
             phase,
           })
@@ -189,8 +204,8 @@ function getQuintupleAspectEvent(params: {
     body1,
     body2,
     body3,
-    body4,
     body5,
+    body4,
     quintupleAspect,
     phase,
   } = params;
@@ -219,9 +234,13 @@ function getQuintupleAspectEvent(params: {
   const description = `${bodiesSorted.join(", ")} ${quintupleAspect} ${phase}`;
 
   let phaseEmoji = "";
-  if (phase === "forming") {phaseEmoji = "➡️ ";}
-  else if (phase === "exact") {phaseEmoji = "🎯 ";}
-  else if (phase === "dissolving") {phaseEmoji = "⬅️ ";}
+  if (phase === "forming") {
+    phaseEmoji = "➡️ ";
+  } else if (phase === "exact") {
+    phaseEmoji = "🎯 ";
+  } else {
+    phaseEmoji = "⬅️ ";
+  }
 
   const summary = `${phaseEmoji}${quintupleAspectSymbol} ${body1Symbol}-${body2Symbol}-${body3Symbol}-${body4Symbol}-${body5Symbol} ${description}`;
 
@@ -242,8 +261,8 @@ function getQuintupleAspectEvent(params: {
   return {
     start: timestamp,
     end: timestamp,
-    description: description as any,
-    summary: summary as any,
+    description,
+    summary,
     categories,
   } as Event;
 }
@@ -277,7 +296,9 @@ export function getQuintupleAspectDurationEvents(events: Event[]): Event[] {
   const groupedEvents = _.groupBy(quintupleAspectEvents, (event) => {
     const planets = event.categories
       .filter((category) =>
-        quintupleAspectBodies.map(_.startCase).includes(category)
+        quintupleAspectBodies
+          .map((quintupleAspectBody) => _.startCase(quintupleAspectBody))
+          .includes(category)
       )
       .sort();
 
@@ -294,13 +315,21 @@ export function getQuintupleAspectDurationEvents(events: Event[]): Event[] {
 
     for (let i = 0; i < sortedEvents.length; i++) {
       const currentEvent = sortedEvents[i];
+      if (!currentEvent) {
+        continue;
+      }
 
       // Skip if not a forming event
-      if (!currentEvent.categories.includes("Forming")) {continue;}
+      if (!currentEvent.categories.includes("Forming")) {
+        continue;
+      }
 
       // Look for the next dissolving event
       for (let j = i + 1; j < sortedEvents.length; j++) {
         const potentialDissolvingEvent = sortedEvents[j];
+        if (!potentialDissolvingEvent) {
+          continue;
+        }
 
         if (potentialDissolvingEvent.categories.includes("Dissolving")) {
           // Create duration event

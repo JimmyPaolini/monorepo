@@ -27,10 +27,20 @@ describe("duration.utilities", () => {
       const pairs = pairDurationEvents(beginnings, endings, "test aspect");
 
       expect(pairs).toHaveLength(2);
-      expect(pairs[0][0].start.toISOString()).toBe("2025-01-01T10:00:00.000Z");
-      expect(pairs[0][1].start.toISOString()).toBe("2025-01-02T10:00:00.000Z");
-      expect(pairs[1][0].start.toISOString()).toBe("2025-01-03T10:00:00.000Z");
-      expect(pairs[1][1].start.toISOString()).toBe("2025-01-04T10:00:00.000Z");
+      expect(pairs[0]).toBeDefined();
+      const pair0 = pairs[0];
+      if (!pair0) {
+        throw new Error("pair0 is undefined");
+      }
+      expect(pair0[0].start.toISOString()).toBe("2025-01-01T10:00:00.000Z");
+      expect(pair0[1].start.toISOString()).toBe("2025-01-02T10:00:00.000Z");
+      expect(pairs[1]).toBeDefined();
+      const pair1 = pairs[1];
+      if (!pair1) {
+        throw new Error("pair1 is undefined");
+      }
+      expect(pair1[0].start.toISOString()).toBe("2025-01-03T10:00:00.000Z");
+      expect(pair1[1].start.toISOString()).toBe("2025-01-04T10:00:00.000Z");
     });
 
     it("should handle unsorted inputs by sorting them", () => {
@@ -47,8 +57,13 @@ describe("duration.utilities", () => {
 
       expect(pairs).toHaveLength(2);
       // Should be sorted: first pair is Jan 1 -> Jan 2
-      expect(pairs[0][0].start.toISOString()).toBe("2025-01-01T10:00:00.000Z");
-      expect(pairs[0][1].start.toISOString()).toBe("2025-01-02T10:00:00.000Z");
+      expect(pairs[0]).toBeDefined();
+      const pair0 = pairs[0];
+      if (!pair0) {
+        throw new Error("pair0 is undefined");
+      }
+      expect(pair0[0].start.toISOString()).toBe("2025-01-01T10:00:00.000Z");
+      expect(pair0[1].start.toISOString()).toBe("2025-01-02T10:00:00.000Z");
     });
 
     it("should skip invalid endings that occur before or at beginning time", () => {
@@ -61,7 +76,12 @@ describe("duration.utilities", () => {
       const pairs = pairDurationEvents(beginnings, endings, "test aspect");
 
       expect(pairs).toHaveLength(1);
-      expect(pairs[0][1].start.toISOString()).toBe("2025-01-03T10:00:00.000Z");
+      expect(pairs[0]).toBeDefined();
+      const pair0 = pairs[0];
+      if (!pair0) {
+        throw new Error("pair0 is undefined");
+      }
+      expect(pair0[1].start.toISOString()).toBe("2025-01-03T10:00:00.000Z");
       expect(console.warn).toHaveBeenCalledWith(
         expect.stringContaining("Skipping invalid")
       );
@@ -126,7 +146,16 @@ describe("duration.utilities", () => {
       const pairs = pairDurationEvents(beginnings, endings, "test aspect");
 
       expect(pairs).toHaveLength(1);
-      expect(pairs[0][0]).toBe(beginnings[0]);
+      expect(pairs[0]).toBeDefined();
+      const pair0 = pairs[0];
+      if (!pair0) {
+        throw new Error("pair0 is undefined");
+      }
+      const beginning0 = beginnings[0];
+      if (!beginning0) {
+        throw new Error("beginning0 is undefined");
+      }
+      expect(pair0[0]).toBe(beginning0);
     });
   });
 });

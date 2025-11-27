@@ -1,5 +1,5 @@
 import moment from "moment-timezone";
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 
 import {
   getTripleAspectDurationEvents,
@@ -79,7 +79,6 @@ describe("tripleAspects.events", () => {
 
       it("should detect forming T-Square", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
-        const previousTime = new Date("2024-03-21T11:00:00.000Z");
         const currentTime = new Date("2024-03-21T12:00:00.000Z");
 
         // T-Square forming (not present in previous minute)
@@ -139,13 +138,12 @@ describe("tripleAspects.events", () => {
         expect(events.length).toBeGreaterThanOrEqual(1);
         const tSquare = events.find((e) => e.categories.includes("T Square"));
         expect(tSquare).toBeDefined();
-        expect(tSquare!.categories).toContain("Forming");
+        expect(tSquare?.categories).toContain("Forming");
       });
 
       it("should detect dissolving T-Square", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
         const currentTime = new Date("2024-03-21T12:00:00.000Z");
-        const nextTime = new Date("2024-03-21T13:00:00.000Z");
 
         // T-Square dissolving (will not be present in next minute)
         const storedAspects: Event[] = [
@@ -204,7 +202,7 @@ describe("tripleAspects.events", () => {
         expect(events.length).toBeGreaterThanOrEqual(1);
         const tSquare = events.find((e) => e.categories.includes("T Square"));
         expect(tSquare).toBeDefined();
-        expect(tSquare!.categories).toContain("Dissolving");
+        expect(tSquare?.categories).toContain("Dissolving");
       });
 
       it("should not detect T-Square with incomplete aspects", () => {
@@ -676,10 +674,10 @@ describe("tripleAspects.events", () => {
       ]);
 
       expect(durationEvents.length).toBe(1);
-      expect(durationEvents[0].start).toEqual(formingEvent.start);
-      expect(durationEvents[0].end).toEqual(dissolvingEvent.start);
-      expect(durationEvents[0].description).toContain("t-square");
-      expect(durationEvents[0].categories).toContain("Triple Aspect");
+      expect(durationEvents[0]?.start).toEqual(formingEvent.start);
+      expect(durationEvents[0]?.end).toEqual(dissolvingEvent.start);
+      expect(durationEvents[0]?.description).toContain("t-square");
+      expect(durationEvents[0]?.categories).toContain("Triple Aspect");
     });
 
     it("should handle multiple aspect types", () => {
@@ -962,14 +960,14 @@ describe("tripleAspects.events", () => {
 
       expect(durationEvents.length).toBe(1);
       // Bodies should be sorted: Jupiter, Saturn, Venus
-      expect(durationEvents[0].categories).toContain("Jupiter");
-      expect(durationEvents[0].categories).toContain("Saturn");
-      expect(durationEvents[0].categories).toContain("Venus");
-      const jupiterIndex = durationEvents[0].categories.indexOf("Jupiter");
-      const saturnIndex = durationEvents[0].categories.indexOf("Saturn");
-      const venusIndex = durationEvents[0].categories.indexOf("Venus");
-      expect(jupiterIndex).toBeLessThan(saturnIndex);
-      expect(saturnIndex).toBeLessThan(venusIndex);
+      expect(durationEvents[0]?.categories).toContain("Jupiter");
+      expect(durationEvents[0]?.categories).toContain("Saturn");
+      expect(durationEvents[0]?.categories).toContain("Venus");
+      const jupiterIndex = durationEvents[0]?.categories.indexOf("Jupiter");
+      const saturnIndex = durationEvents[0]?.categories.indexOf("Saturn");
+      const venusIndex = durationEvents[0]?.categories.indexOf("Venus");
+      expect(jupiterIndex).toBeLessThan(saturnIndex ?? 0);
+      expect(saturnIndex).toBeLessThan(venusIndex ?? 0);
     });
 
     it("should include focal/apex information in duration events", () => {
@@ -1011,7 +1009,7 @@ describe("tripleAspects.events", () => {
       ]);
 
       expect(durationEvents.length).toBe(1);
-      expect(durationEvents[0].summary).toContain("focal: Mars");
+      expect(durationEvents[0]?.summary).toContain("focal: Mars");
     });
   });
 });

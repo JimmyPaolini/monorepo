@@ -1,5 +1,5 @@
 import moment from "moment-timezone";
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 
 import {
   getQuadrupleAspectDurationEvents,
@@ -123,11 +123,11 @@ describe("quadrupleAspects.events", () => {
           e.categories.includes("Grand Cross")
         );
         expect(grandCross).toBeDefined();
-        expect(grandCross!.description).toContain("grand cross");
-        expect(grandCross!.categories).toContain("Sun");
-        expect(grandCross!.categories).toContain("Moon");
-        expect(grandCross!.categories).toContain("Mars");
-        expect(grandCross!.categories).toContain("Jupiter");
+        expect(grandCross?.description).toContain("grand cross");
+        expect(grandCross?.categories).toContain("Sun");
+        expect(grandCross?.categories).toContain("Moon");
+        expect(grandCross?.categories).toContain("Mars");
+        expect(grandCross?.categories).toContain("Jupiter");
       });
 
       it("should detect forming Grand Cross", () => {
@@ -241,7 +241,7 @@ describe("quadrupleAspects.events", () => {
           e.categories.includes("Grand Cross")
         );
         expect(grandCross).toBeDefined();
-        expect(grandCross!.categories).toContain("Forming");
+        expect(grandCross?.categories).toContain("Forming");
       });
 
       it("should detect dissolving Grand Cross", () => {
@@ -355,7 +355,7 @@ describe("quadrupleAspects.events", () => {
           e.categories.includes("Grand Cross")
         );
         expect(grandCross).toBeDefined();
-        expect(grandCross!.categories).toContain("Dissolving");
+        expect(grandCross?.categories).toContain("Dissolving");
       });
 
       it("should not detect Grand Cross with incomplete aspects", () => {
@@ -536,12 +536,12 @@ describe("quadrupleAspects.events", () => {
         expect(events.length).toBeGreaterThanOrEqual(1);
         const kite = events.find((e) => e.categories.includes("Kite"));
         expect(kite).toBeDefined();
-        expect(kite!.description).toContain("kite");
-        expect(kite!.categories).toContain("Sun");
-        expect(kite!.categories).toContain("Moon");
-        expect(kite!.categories).toContain("Mars");
-        expect(kite!.categories).toContain("Venus");
-        expect(kite!.description).toContain("Venus focal");
+        expect(kite?.description).toContain("kite");
+        expect(kite?.categories).toContain("Sun");
+        expect(kite?.categories).toContain("Moon");
+        expect(kite?.categories).toContain("Mars");
+        expect(kite?.categories).toContain("Venus");
+        expect(kite?.description).toContain("Venus focal");
       });
 
       it("should not detect Kite with incomplete aspects", () => {
@@ -814,10 +814,10 @@ describe("quadrupleAspects.events", () => {
       ]);
 
       expect(durationEvents.length).toBe(1);
-      expect(durationEvents[0].start).toEqual(formingEvent.start);
-      expect(durationEvents[0].end).toEqual(dissolvingEvent.start);
-      expect(durationEvents[0].description).toContain("grand cross");
-      expect(durationEvents[0].categories).toContain("Quadruple Aspect");
+      expect(durationEvents[0]?.start).toEqual(formingEvent.start);
+      expect(durationEvents[0]?.end).toEqual(dissolvingEvent.start);
+      expect(durationEvents[0]?.description).toContain("grand cross");
+      expect(durationEvents[0]?.categories).toContain("Quadruple Aspect");
     });
 
     it("should handle multiple aspect types", () => {
@@ -1079,7 +1079,7 @@ describe("quadrupleAspects.events", () => {
       const formingEvent: Event = {
         start: new Date("2024-03-21T10:00:00.000Z"),
         end: new Date("2024-03-21T10:00:00.000Z"),
-        summary: "➡️ Grand Cross forming" as any,
+        summary: "➡️ Grand Cross forming" as unknown as string,
         description: "Jupiter, Mars, Moon, Sun grand cross forming",
         categories: [
           "Quadruple Aspect",
@@ -1095,7 +1095,7 @@ describe("quadrupleAspects.events", () => {
       const dissolvingEvent: Event = {
         start: new Date("2024-03-21T14:00:00.000Z"),
         end: new Date("2024-03-21T14:00:00.000Z"),
-        summary: "⬅️ Grand Cross dissolving" as any,
+        summary: "⬅️ Grand Cross dissolving" as unknown as string,
         description: "Jupiter, Mars, Moon, Sun grand cross dissolving",
         categories: [
           "Quadruple Aspect",
@@ -1114,7 +1114,7 @@ describe("quadrupleAspects.events", () => {
       ]);
 
       expect(durationEvents.length).toBe(1);
-      expect(durationEvents[0].summary).toBe("Grand Cross forming");
+      expect(durationEvents[0]?.summary).toBe("Grand Cross forming");
     });
 
     it("should remove phase text from description", () => {
@@ -1156,7 +1156,7 @@ describe("quadrupleAspects.events", () => {
       ]);
 
       expect(durationEvents.length).toBe(1);
-      expect(durationEvents[0].description).not.toMatch(
+      expect(durationEvents[0]?.description).not.toMatch(
         /(forming|dissolving|exact)/i
       );
     });
@@ -1203,8 +1203,8 @@ describe("quadrupleAspects.events", () => {
 
       expect(durationEvents.length).toBe(1);
       // Focal info should be removed by the regex that removes phase text with optional focal info
-      expect(durationEvents[0].description).not.toContain("forming");
-      expect(durationEvents[0].description).not.toContain("dissolving");
+      expect(durationEvents[0]?.description).not.toContain("forming");
+      expect(durationEvents[0]?.description).not.toContain("dissolving");
     });
   });
 });

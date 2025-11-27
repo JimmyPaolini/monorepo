@@ -42,7 +42,7 @@ describe("ephemeris.constants", () => {
       const match = testString.match(dateRegex);
 
       expect(match).toBeDefined();
-      expect(match![1]).toBe("2024-Mar-21 06:30");
+      expect(match?.[1]).toBe("2024-Mar-21 06:30");
     });
 
     it("should not match invalid date formats", () => {
@@ -80,7 +80,7 @@ describe("ephemeris.constants", () => {
       const match = testString.match(decimalRegex);
 
       expect(match).toBeDefined();
-      expect(match![1]).toBe("-123.456");
+      expect(match?.[1]).toBe("-123.456");
     });
 
     it("should not match integers without decimal point", () => {
@@ -170,16 +170,12 @@ describe("ephemeris.constants", () => {
   });
 
   describe("centerIdByBody", () => {
-    it("should have center ID for Earth", () => {
-      expect(centerIdByBody.earth).toBe("500@399");
-    });
-
     it("should have center ID for Sun", () => {
       expect(centerIdByBody.sun).toBe("500@10");
     });
 
-    it("should have exactly 2 center entries", () => {
-      expect(Object.keys(centerIdByBody)).toHaveLength(2);
+    it("should have exactly 1 center entry", () => {
+      expect(Object.keys(centerIdByBody)).toHaveLength(1);
     });
   });
 

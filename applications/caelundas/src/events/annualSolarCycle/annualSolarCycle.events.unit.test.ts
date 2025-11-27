@@ -57,8 +57,9 @@ describe("annualSolarCycle.events", () => {
       const minute = currentMinute
         .clone()
         .subtract(MARGIN_MINUTES - i, "minutes");
+      const longitude = longitudes[i] ?? longitudes[longitudes.length - 1] ?? 0;
       ephemeris[minute.toISOString()] = {
-        longitude: longitudes[i] ?? longitudes[longitudes.length - 1],
+        longitude,
         latitude: 0,
       };
     }
@@ -78,8 +79,9 @@ describe("annualSolarCycle.events", () => {
       const minute = currentMinute
         .clone()
         .subtract(MARGIN_MINUTES - i, "minutes");
+      const distance = distances[i] ?? distances[distances.length - 1] ?? 0;
       ephemeris[minute.toISOString()] = {
-        distance: distances[i] ?? distances[distances.length - 1],
+        distance,
       };
     }
 
@@ -283,7 +285,9 @@ describe("annualSolarCycle.events", () => {
       const currentMinute = moment.utc("2024-03-15T12:00:00.000Z");
 
       // No event: sun at some random longitude
-      const longitudes = new Array(MARGIN_MINUTES * 2 + 1).fill(10);
+      const longitudes: number[] = new Array<number>(
+        MARGIN_MINUTES * 2 + 1
+      ).fill(10);
 
       const sunCoordinateEphemeris = createCoordinateEphemeris(
         currentMinute,

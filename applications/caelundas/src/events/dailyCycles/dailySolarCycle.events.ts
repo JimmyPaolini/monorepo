@@ -4,7 +4,7 @@ import _ from "lodash";
 import moment from "moment-timezone";
 
 import { getCalendar } from "../../calendar.utilities";
-import { upsertEvents } from "../../database.utilities";
+import { getAzimuthElevationFromEphemeris } from "../../ephemeris/ephemeris.service";
 import { isMaximum, isMinimum } from "../../math.utilities";
 import { getOutputPath } from "../../output.utilities";
 
@@ -19,7 +19,7 @@ const categories = ["Astronomy", "Astrology", "Daily Solar Cycle", "Solar"];
 export function getDailySolarCycleEvents(args: {
   currentMinute: Moment;
   sunAzimuthElevationEphemeris: AzimuthElevationEphemeris;
-}) {
+}): Event[] {
   const { currentMinute, sunAzimuthElevationEphemeris } = args;
 
   const dailySolarCycleEvents: Event[] = [];
@@ -27,12 +27,21 @@ export function getDailySolarCycleEvents(args: {
   const previousMinute = currentMinute.clone().subtract(1, "minutes");
   const nextMinute = currentMinute.clone().add(1, "minutes");
 
-  const { elevation: currentElevation } =
-    sunAzimuthElevationEphemeris[currentMinute.toISOString()];
-  const { elevation: previousElevation } =
-    sunAzimuthElevationEphemeris[previousMinute.toISOString()];
-  const { elevation: nextElevation } =
-    sunAzimuthElevationEphemeris[nextMinute.toISOString()];
+  const currentElevation = getAzimuthElevationFromEphemeris(
+    sunAzimuthElevationEphemeris,
+    currentMinute.toISOString(),
+    "elevation"
+  );
+  const previousElevation = getAzimuthElevationFromEphemeris(
+    sunAzimuthElevationEphemeris,
+    previousMinute.toISOString(),
+    "elevation"
+  );
+  const nextElevation = getAzimuthElevationFromEphemeris(
+    sunAzimuthElevationEphemeris,
+    nextMinute.toISOString(),
+    "elevation"
+  );
 
   const elevations = {
     currentElevation,
@@ -133,15 +142,15 @@ export function writeDailySolarCycleEvents(args: {
   dailySolarCycleEvents: Event[];
   start: Date;
   end: Date;
-}) {
+}): void {
   const { dailySolarCycleEvents, start, end } = args;
-  if (_.isEmpty(dailySolarCycleEvents)) {return;}
+  if (_.isEmpty(dailySolarCycleEvents)) {
+    return;
+  }
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${dailySolarCycleEvents.length} daily sun cycle events from ${timespan}`;
   console.log(`☀️ Writing ${message}`);
-
-  upsertEvents(dailySolarCycleEvents);
 
   const ingressCalendar = getCalendar({
     events: dailySolarCycleEvents,

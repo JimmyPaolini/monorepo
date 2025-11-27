@@ -36,7 +36,9 @@ function composeStelliums(
   const aspectsByType = groupAspectsByType(edges);
   const conjunctions = aspectsByType.get("conjunct") || [];
 
-  if (conjunctions.length < 6) {return events;}
+  if (conjunctions.length < 6) {
+    return events;
+  }
 
   // Build clusters of conjunct bodies using graph traversal
   const clusters: Set<Body>[] = [];
@@ -51,15 +53,19 @@ function composeStelliums(
 
   // For each unvisited body, explore its conjunction cluster
   for (const startBody of bodiesSet) {
-    if (visited.has(startBody)) {continue;}
+    if (visited.has(startBody)) {
+      continue;
+    }
 
     const cluster = new Set<Body>();
     const queue: Body[] = [startBody];
 
     // BFS to find all bodies conjunct (directly or transitively) with startBody
     while (queue.length > 0) {
-      const current = queue.shift()!;
-      if (cluster.has(current)) {continue;}
+      const current = queue.shift();
+      if (!current || cluster.has(current)) {
+        continue;
+      }
 
       cluster.add(current);
       visited.add(current);
@@ -67,8 +73,11 @@ function composeStelliums(
       // Find all bodies conjunct with current
       for (const edge of conjunctions) {
         let other: Body | null = null;
-        if (edge.body1 === current) {other = edge.body2;}
-        else if (edge.body2 === current) {other = edge.body1;}
+        if (edge.body1 === current) {
+          other = edge.body2;
+        } else if (edge.body2 === current) {
+          other = edge.body1;
+        }
 
         if (other && !cluster.has(other)) {
           queue.push(other);
@@ -89,8 +98,16 @@ function composeStelliums(
     // Verify all pairs are in conjunction
     let isStellium = true;
     for (let i = 0; i < bodies.length && isStellium; i++) {
+      const bodyI = bodies[i];
+      if (!bodyI) {
+        continue;
+      }
       for (let j = i + 1; j < bodies.length && isStellium; j++) {
-        if (!haveAspect(bodies[i], bodies[j], "conjunct", edges)) {
+        const bodyJ = bodies[j];
+        if (!bodyJ) {
+          continue;
+        }
+        if (!haveAspect(bodyI, bodyJ, "conjunct", edges)) {
           isStellium = false;
         }
       }
@@ -98,10 +115,6 @@ function composeStelliums(
 
     if (isStellium) {
       // Found a Stellium
-      const relatedEdges = conjunctions.filter((edge) =>
-        bodies.includes(edge.body1)
-      );
-
       const phase = determineMultiBodyPhase(
         allEdges,
         currentMinute,
@@ -110,8 +123,16 @@ function composeStelliums(
         (edgesAtTime) => {
           // All pairs of bodies must be in conjunction
           for (let i = 0; i < bodies.length; i++) {
+            const bodyI = bodies[i];
+            if (!bodyI) {
+              continue;
+            }
             for (let j = i + 1; j < bodies.length; j++) {
-              if (!haveAspect(bodies[i], bodies[j], "conjunct", edgesAtTime)) {
+              const bodyJ = bodies[j];
+              if (!bodyJ) {
+                continue;
+              }
+              if (!haveAspect(bodyI, bodyJ, "conjunct", edgesAtTime)) {
                 return false;
               }
             }
@@ -149,15 +170,20 @@ function createStelliumEvent(params: {
   const bodySymbols = bodies.map((b) => symbolByBody[b]);
 
   const stelliumType = `${bodies.length}-body`;
-  const stelliumSymbol = (symbolByStellium as any)[stelliumType] || "✨";
+  const stelliumSymbol =
+    symbolByStellium[stelliumType as keyof typeof symbolByStellium];
 
   const bodiesSorted = [...bodiesCapitalized].sort();
   const description = `${bodiesSorted.join(", ")} stellium ${phase}`;
 
   let phaseEmoji = "";
-  if (phase === "forming") {phaseEmoji = "➡️ ";}
-  else if (phase === "exact") {phaseEmoji = "🎯 ";}
-  else if (phase === "dissolving") {phaseEmoji = "⬅️ ";}
+  if (phase === "forming") {
+    phaseEmoji = "➡️ ";
+  } else if (phase === "exact") {
+    phaseEmoji = "🎯 ";
+  } else {
+    phaseEmoji = "⬅️ ";
+  }
 
   const summary = `${phaseEmoji}${stelliumSymbol} ${bodySymbols.join(
     "-"
@@ -176,8 +202,8 @@ function createStelliumEvent(params: {
   return {
     start: timestamp,
     end: timestamp,
-    description: description as any,
-    summary: summary as any,
+    description,
+    summary,
     categories,
   };
 }
@@ -210,7 +236,9 @@ export function getStelliumDurationEvents(events: Event[]): Event[] {
   // Group by bodies and stellium type using categories
   const groupedEvents = _.groupBy(stelliumEvents, (event) => {
     const planets = event.categories
-      .filter((category) => stelliumBodies.map(_.startCase).includes(category))
+      .filter((category) =>
+        stelliumBodies.map((b) => _.startCase(b)).includes(category)
+      )
       .sort();
 
     const stelliumType = event.categories.find(
@@ -226,20 +254,28 @@ export function getStelliumDurationEvents(events: Event[]): Event[] {
 
     for (let i = 0; i < sortedEvents.length; i++) {
       const currentEvent = sortedEvents[i];
+      if (!currentEvent) {
+        continue;
+      }
 
       // Skip if not a forming event
-      if (!currentEvent.categories.includes("Forming")) {continue;}
+      if (!currentEvent.categories.includes("Forming")) {
+        continue;
+      }
 
       // Look for the next dissolving event
       for (let j = i + 1; j < sortedEvents.length; j++) {
         const potentialDissolvingEvent = sortedEvents[j];
+        if (!potentialDissolvingEvent) {
+          continue;
+        }
 
         if (potentialDissolvingEvent.categories.includes("Dissolving")) {
           // Create duration event
           durationEvents.push({
             start: currentEvent.start,
             end: potentialDissolvingEvent.start,
-            summary: currentEvent.summary.replace(/^[➡️🎯⬅️]\s/, ""),
+            summary: currentEvent.summary.replace(/^(?:➡️|🎯|⬅️)\s/u, ""),
             description: currentEvent.description.replace(
               / (forming|exact|dissolving)$/i,
               ""

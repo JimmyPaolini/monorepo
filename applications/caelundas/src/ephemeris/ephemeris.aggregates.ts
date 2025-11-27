@@ -1,5 +1,3 @@
-import _ from "lodash";
-
 import { bodies } from "../constants";
 import {
   getAzimuthElevationEphemerisByBody,
@@ -10,13 +8,19 @@ import {
 } from "../ephemeris/ephemeris.service";
 
 import type {
+  AzimuthElevationEphemeris,
   AzimuthElevationEphemerisBody,
+  CoordinateEphemeris,
   CoordinateEphemerisBody,
   Coordinates,
+  DiameterEphemeris,
   DiameterEphemerisBody,
+  DistanceEphemeris,
   DistanceEphemerisBody,
+  IlluminationEphemeris,
   IlluminationEphemerisBody,
 } from "../ephemeris/ephemeris.types";
+import type { Body } from "../types";
 
 // #region getEphemerides
 export async function getEphemerides(args: {
@@ -24,7 +28,13 @@ export async function getEphemerides(args: {
   end: Date;
   start: Date;
   timezone: string;
-}) {
+}): Promise<{
+  azimuthElevationEphemerisByBody: Record<Body, AzimuthElevationEphemeris>;
+  coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
+  diameterEphemerisByBody: Record<Body, DiameterEphemeris>;
+  distanceEphemerisByBody: Record<Body, DistanceEphemeris>;
+  illuminationEphemerisByBody: Record<Body, IlluminationEphemeris>;
+}> {
   const { coordinates, end, start, timezone } = args;
 
   // Fetch coordinate ephemeris for all bodies

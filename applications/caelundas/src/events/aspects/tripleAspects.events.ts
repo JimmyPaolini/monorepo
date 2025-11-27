@@ -7,10 +7,8 @@ import {
   type AspectEdge,
   determineMultiBodyPhase,
   findBodiesWithAspectTo,
-  getOtherBody,
   groupAspectsByType,
   haveAspect,
-  involvesBody,
   parseAspectEvents,
 } from "./aspects.composition";
 
@@ -211,6 +209,9 @@ function composeGrandTrines(
         const body1 = bodiesArray[i];
         const body2 = bodiesArray[j];
         const body3 = bodiesArray[k];
+        if (!body1 || !body2 || !body3) {
+          continue;
+        }
 
         // Check if all three pairs are in trine
         if (
@@ -311,9 +312,13 @@ function getTripleAspectEvent(args: {
     : `${bodiesSorted[0]}, ${bodiesSorted[1]}, ${bodiesSorted[2]} ${tripleAspect} ${phase}`;
 
   let phaseEmoji = "";
-  if (phase === "forming") {phaseEmoji = "➡️ ";}
-  else if (phase === "exact") {phaseEmoji = "🎯 ";}
-  else if (phase === "dissolving") {phaseEmoji = "⬅️ ";}
+  if (phase === "forming") {
+    phaseEmoji = "➡️ ";
+  } else if (phase === "dissolving") {
+    phaseEmoji = "⬅️ ";
+  } else {
+    phaseEmoji = "🎯 ";
+  }
 
   const summary = `${phaseEmoji}${tripleAspectSymbol} ${body1Symbol}-${body2Symbol}-${body3Symbol} ${description}`;
 
@@ -338,8 +343,8 @@ function getTripleAspectEvent(args: {
   return {
     start: timestamp,
     end: timestamp,
-    description: description as any,
-    summary: summary as any,
+    description,
+    summary,
     categories,
   } as Event;
 }
@@ -358,7 +363,9 @@ export function getTripleAspectDurationEvents(events: Event[]): Event[] {
   const groupedEvents = _.groupBy(tripleAspectEvents, (event) => {
     const planets = event.categories
       .filter((category) =>
-        tripleAspectBodies.map(_.startCase).includes(category)
+        tripleAspectBodies
+          .map((tripleAspectBody) => _.startCase(tripleAspectBody))
+          .includes(category)
       )
       .sort();
 
@@ -374,7 +381,9 @@ export function getTripleAspectDurationEvents(events: Event[]): Event[] {
 
   // Process each group
   for (const [key, groupEvents] of Object.entries(groupedEvents)) {
-    if (!key) {continue;}
+    if (!key) {
+      continue;
+    }
 
     const formingEvents = groupEvents.filter((event) =>
       event.categories.includes("Forming")
@@ -393,18 +402,21 @@ export function getTripleAspectDurationEvents(events: Event[]): Event[] {
     for (let i = 0; i < minLength; i++) {
       const forming = formingEvents[i];
       const dissolving = dissolvingEvents[i];
+      if (!forming || !dissolving) {
+        continue;
+      }
 
       // Only create duration if dissolving comes after forming
       if (dissolving.start.getTime() > forming.start.getTime()) {
-        const categories = forming.categories || [];
-
-        const bodiesCapitalized = categories
+        const bodiesCapitalized = forming.categories
           .filter((category) =>
-            tripleAspectBodies.map(_.startCase).includes(category)
+            tripleAspectBodies
+              .map((tripleAspectBody) => _.startCase(tripleAspectBody))
+              .includes(category)
           )
           .sort();
 
-        const aspectCapitalized = categories.find((category) =>
+        const aspectCapitalized = forming.categories.find((category) =>
           ["T Square", "Grand Trine", "Yod"].includes(category)
         );
 
@@ -412,9 +424,9 @@ export function getTripleAspectDurationEvents(events: Event[]): Event[] {
           continue;
         }
 
-        const body1Capitalized = bodiesCapitalized[0];
-        const body2Capitalized = bodiesCapitalized[1];
-        const body3Capitalized = bodiesCapitalized[2];
+        const body1Capitalized = bodiesCapitalized[0] ?? "";
+        const body2Capitalized = bodiesCapitalized[1] ?? "";
+        const body3Capitalized = bodiesCapitalized[2] ?? "";
 
         // Convert aspect name back to the key format
         const aspectMap: Record<string, TripleAspect> = {
@@ -423,6 +435,10 @@ export function getTripleAspectDurationEvents(events: Event[]): Event[] {
           Yod: "yod",
         };
         const aspect = aspectMap[aspectCapitalized];
+        if (!aspect) {
+          console.warn(`Unknown aspect type: ${aspectCapitalized}`);
+          continue;
+        }
 
         const body1 = body1Capitalized.toLowerCase() as Body;
         const body2 = body2Capitalized.toLowerCase() as Body;
@@ -434,7 +450,9 @@ export function getTripleAspectDurationEvents(events: Event[]): Event[] {
         const aspectSymbol = symbolByTripleAspect[aspect];
 
         // Extract focal/apex info if present
-        const focalCategory = categories.find((cat) => cat.includes(" Focal"));
+        const focalCategory = forming.categories.find((cat) =>
+          cat.includes(" Focal")
+        );
         let extraInfo = "";
         if (focalCategory) {
           const focalBody = focalCategory.replace(" Focal", "");

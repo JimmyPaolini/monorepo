@@ -8,17 +8,12 @@ import {
   type AspectEdge,
   determineMultiBodyPhase,
   groupAspectsByType,
-  haveAspect,
   parseAspectEvents,
 } from "./aspects.composition";
 
 import type { Event } from "../../calendar.utilities";
 import type { AspectPhase, Body, SextupleAspect } from "../../types";
 import type { Moment } from "moment";
-
-
-
-
 
 /**
  * Check if 6 bodies form a valid hexagram (Star of David) pattern
@@ -43,11 +38,11 @@ function findHexagramPattern(
   for (const edge of edges) {
     if (bodies.includes(edge.body1) && bodies.includes(edge.body2)) {
       if (edge.aspectType === "trine") {
-        trineConnections.get(edge.body1)!.add(edge.body2);
-        trineConnections.get(edge.body2)!.add(edge.body1);
+        trineConnections.get(edge.body1)?.add(edge.body2);
+        trineConnections.get(edge.body2)?.add(edge.body1);
       } else if (edge.aspectType === "sextile") {
-        sextileConnections.get(edge.body1)!.add(edge.body2);
-        sextileConnections.get(edge.body2)!.add(edge.body1);
+        sextileConnections.get(edge.body1)?.add(edge.body2);
+        sextileConnections.get(edge.body2)?.add(edge.body1);
       }
     }
   }
@@ -58,14 +53,22 @@ function findHexagramPattern(
   const visited = new Set<Body>();
 
   for (const body of bodies) {
-    if (visited.has(body)) {continue;}
+    if (visited.has(body)) {
+      continue;
+    }
 
-    const trineNeighbors = Array.from(trineConnections.get(body)!);
-    if (trineNeighbors.length !== 2) {continue;}
+    const trineNeighbors = trineConnections.get(body);
+    if (trineNeighbors?.size !== 2) {
+      continue;
+    }
 
     // Check if these 3 bodies form a complete triangle
-    const [b1, b2] = trineNeighbors;
-    if (trineConnections.get(b1)!.has(b2)) {
+    const neighbors = Array.from(trineNeighbors);
+    const b1 = neighbors[0];
+    const b2 = neighbors[1];
+    if (!b1 || !b2) {continue;}
+    const b1Connections = trineConnections.get(b1);
+    if (b1Connections?.has(b2)) {
       trineGroups.push([body, b1, b2]);
       visited.add(body);
       visited.add(b1);
@@ -74,41 +77,62 @@ function findHexagramPattern(
   }
 
   // Must have exactly 2 grand trines
-  if (trineGroups.length !== 2) {return null;}
+  if (trineGroups.length !== 2) {
+    return null;
+  }
 
   // Now arrange bodies in hexagon order (alternating between the two trines)
   // such that adjacent bodies (in hexagon) are connected by sextiles
-  const [trine1, trine2] = trineGroups;
+  const trine1 = trineGroups[0];
+  const trine2 = trineGroups[1];
+  if (!trine1 || !trine2) {return null;}
 
   // Try all possible interleavings of the two trines
   for (let i = 0; i < 3; i++) {
     for (let j = 0; j < 3; j++) {
       for (let k = 0; k < 3; k++) {
-        if (k === i) {continue;}
+        if (k === i) {
+          continue;
+        }
         for (let l = 0; l < 3; l++) {
-          if (l === j) {continue;}
+          if (l === j) {
+            continue;
+          }
 
           // Try arrangement: trine1[i], trine2[j], trine1[k], trine2[l], trine1[remaining], trine2[remaining]
-          const i2 = [0, 1, 2].find((x) => x !== i && x !== k)!;
-          const j2 = [0, 1, 2].find((x) => x !== j && x !== l)!;
+          const i2 = [0, 1, 2].find((x) => x !== i && x !== k);
+          const j2 = [0, 1, 2].find((x) => x !== j && x !== l);
 
-          const arrangement = [
-            trine1[i],
-            trine2[j],
-            trine1[k],
-            trine2[l],
-            trine1[i2],
-            trine2[j2],
-          ];
+          if (i2 === undefined || j2 === undefined) {
+            continue;
+          }
+
+          const t1i = trine1[i];
+          const t2j = trine2[j];
+          const t1k = trine1[k];
+          const t2l = trine2[l];
+          const t1i2 = trine1[i2];
+          const t2j2 = trine2[j2];
+          if (!t1i || !t2j || !t1k || !t2l || !t1i2 || !t2j2) {continue;}
+
+          const arrangement = [t1i, t2j, t1k, t2l, t1i2, t2j2];
 
           // Check if this arrangement has all adjacent sextiles (forming hexagon)
+          const a0 = arrangement[0];
+          const a1 = arrangement[1];
+          const a2 = arrangement[2];
+          const a3 = arrangement[3];
+          const a4 = arrangement[4];
+          const a5 = arrangement[5];
+          if (!a0 || !a1 || !a2 || !a3 || !a4 || !a5) {continue;}
+
           const hasAllSextiles =
-            sextileConnections.get(arrangement[0])!.has(arrangement[1]) &&
-            sextileConnections.get(arrangement[1])!.has(arrangement[2]) &&
-            sextileConnections.get(arrangement[2])!.has(arrangement[3]) &&
-            sextileConnections.get(arrangement[3])!.has(arrangement[4]) &&
-            sextileConnections.get(arrangement[4])!.has(arrangement[5]) &&
-            sextileConnections.get(arrangement[5])!.has(arrangement[0]);
+            sextileConnections.get(a0)?.has(a1) &&
+            sextileConnections.get(a1)?.has(a2) &&
+            sextileConnections.get(a2)?.has(a3) &&
+            sextileConnections.get(a3)?.has(a4) &&
+            sextileConnections.get(a4)?.has(a5) &&
+            sextileConnections.get(a5)?.has(a0);
 
           if (hasAllSextiles) {
             return arrangement;
@@ -143,7 +167,9 @@ function composeHexagrams(
   const trines = aspectsByType.get("trine") || [];
   const sextiles = aspectsByType.get("sextile") || [];
 
-  if (trines.length < 6 || sextiles.length < 6) {return events;}
+  if (trines.length < 6 || sextiles.length < 6) {
+    return events;
+  }
 
   // Collect all unique bodies involved in trines
   const bodiesSet = new Set<Body>();
@@ -153,7 +179,9 @@ function composeHexagrams(
   }
   const bodies = Array.from(bodiesSet);
 
-  if (bodies.length < 6) {return events;}
+  if (bodies.length < 6) {
+    return events;
+  }
 
   // Try all combinations of 6 bodies
   const combinations = getCombinations(bodies, 6);
@@ -173,16 +201,22 @@ function composeHexagrams(
         }
       );
 
-      if (phase) {
+      const b0 = hexagramBodies[0];
+      const b1 = hexagramBodies[1];
+      const b2 = hexagramBodies[2];
+      const b3 = hexagramBodies[3];
+      const b4 = hexagramBodies[4];
+      const b5 = hexagramBodies[5];
+      if (phase && b0 && b1 && b2 && b3 && b4 && b5) {
         events.push(
           getSextupleAspectEvent({
             timestamp: currentMinute.toDate(),
-            body1: hexagramBodies[0],
-            body2: hexagramBodies[1],
-            body3: hexagramBodies[2],
-            body4: hexagramBodies[3],
-            body5: hexagramBodies[4],
-            body6: hexagramBodies[5],
+            body1: b0,
+            body2: b1,
+            body3: b2,
+            body4: b3,
+            body5: b4,
+            body6: b5,
             sextupleAspect: "hexagram",
             phase,
           })
@@ -247,9 +281,13 @@ function getSextupleAspectEvent(params: {
   const description = `${bodiesSorted.join(", ")} ${sextupleAspect} ${phase}`;
 
   let phaseEmoji = "";
-  if (phase === "forming") {phaseEmoji = "➡️ ";}
-  else if (phase === "exact") {phaseEmoji = "🎯 ";}
-  else if (phase === "dissolving") {phaseEmoji = "⬅️ ";}
+  if (phase === "forming") {
+    phaseEmoji = "➡️ ";
+  } else if (phase === "exact") {
+    phaseEmoji = "🎯 ";
+  } else {
+    phaseEmoji = "⬅️ ";
+  }
 
   const summary = `${phaseEmoji}${sextupleAspectSymbol} ${body1Symbol}-${body2Symbol}-${body3Symbol}-${body4Symbol}-${body5Symbol}-${body6Symbol} ${description}`;
 
@@ -271,8 +309,8 @@ function getSextupleAspectEvent(params: {
   return {
     start: timestamp,
     end: timestamp,
-    description: description as any,
-    summary: summary as any,
+    description,
+    summary,
     categories,
   };
 }
@@ -306,7 +344,9 @@ export function getSextupleAspectDurationEvents(events: Event[]): Event[] {
   const groupedEvents = _.groupBy(sextupleAspectEvents, (event) => {
     const planets = event.categories
       .filter((category) =>
-        sextupleAspectBodies.map(_.startCase).includes(category)
+        sextupleAspectBodies
+          .map((sextupleAspectBody) => _.startCase(sextupleAspectBody))
+          .includes(category)
       )
       .sort();
 
@@ -323,20 +363,24 @@ export function getSextupleAspectDurationEvents(events: Event[]): Event[] {
 
     for (let i = 0; i < sortedEvents.length; i++) {
       const currentEvent = sortedEvents[i];
+      if (!currentEvent) {continue;}
 
       // Skip if not a forming event
-      if (!currentEvent.categories.includes("Forming")) {continue;}
+      if (!currentEvent.categories.includes("Forming")) {
+        continue;
+      }
 
       // Look for the next dissolving event
       for (let j = i + 1; j < sortedEvents.length; j++) {
         const potentialDissolvingEvent = sortedEvents[j];
+        if (!potentialDissolvingEvent) {continue;}
 
         if (potentialDissolvingEvent.categories.includes("Dissolving")) {
           // Create duration event
           durationEvents.push({
             start: currentEvent.start,
             end: potentialDissolvingEvent.start,
-            summary: currentEvent.summary.replace(/^[➡️🎯⬅️]\s/, ""),
+            summary: currentEvent.summary.replace(/^(?:➡️|🎯|⬅️)\s/u, ""),
             description: currentEvent.description.replace(
               / (forming|exact|dissolving)$/,
               ""

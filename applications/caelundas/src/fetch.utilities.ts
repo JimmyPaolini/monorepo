@@ -1,7 +1,10 @@
-const MAX_RETRIES = parseInt(process.env.MAX_RETRIES || "5", 10);
-const INITIAL_DELAY_MS = parseInt(process.env.INITIAL_DELAY_MS || "1000", 10);
-const MAX_DELAY_MS = parseInt(process.env.MAX_DELAY_MS || "30000", 10);
-const BACKOFF_MULTIPLIER = parseFloat(process.env.BACKOFF_MULTIPLIER || "2");
+const MAX_RETRIES = parseInt(process.env["MAX_RETRIES"] || "5", 10);
+const INITIAL_DELAY_MS = parseInt(
+  process.env["INITIAL_DELAY_MS"] || "1000",
+  10
+);
+const MAX_DELAY_MS = parseInt(process.env["MAX_DELAY_MS"] || "30000", 10);
+const BACKOFF_MULTIPLIER = parseFloat(process.env["BACKOFF_MULTIPLIER"] || "2");
 
 const RETRYABLE_ERROR_CODES = [
   "UND_ERR_SOCKET",
@@ -19,8 +22,10 @@ async function delay(ms: number): Promise<void> {
 
 function getErrorCode(error: unknown): string {
   if (error && typeof error === "object") {
-    const err = error as any;
-    return err.cause?.code || err.code || "UNKNOWN";
+    const err = error as Record<string, unknown>;
+    const cause = err["cause"] as Record<string, unknown> | undefined;
+    const code = cause?.["code"] || err["code"];
+    return typeof code === "string" ? code : "UNKNOWN";
   }
   return "UNKNOWN";
 }
@@ -29,7 +34,7 @@ function isRetryableError(error: unknown): boolean {
   const errorCode = getErrorCode(error);
   return (
     RETRYABLE_ERROR_CODES.includes(errorCode) ||
-    (error instanceof TypeError && error.message?.includes("fetch failed"))
+    (error instanceof TypeError && error.message.includes("fetch failed"))
   );
 }
 

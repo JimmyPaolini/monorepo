@@ -43,8 +43,8 @@ describe("dailySolarCycle.events", () => {
       });
 
       expect(events).toHaveLength(1);
-      expect(events[0].summary).toContain("Sunrise");
-      expect(events[0].categories).toContain("Solar");
+      expect(events[0]?.summary).toContain("Sunrise");
+      expect(events[0]?.categories).toContain("Solar");
     });
 
     it("should detect sunset event when sun sets below horizon", () => {
@@ -65,8 +65,8 @@ describe("dailySolarCycle.events", () => {
       });
 
       expect(events).toHaveLength(1);
-      expect(events[0].summary).toContain("Sunset");
-      expect(events[0].categories).toContain("Solar");
+      expect(events[0]?.summary).toContain("Sunset");
+      expect(events[0]?.categories).toContain("Solar");
     });
 
     it("should detect solar zenith when sun reaches maximum elevation", () => {
@@ -87,8 +87,8 @@ describe("dailySolarCycle.events", () => {
       });
 
       expect(events).toHaveLength(1);
-      expect(events[0].summary).toContain("Solar Zenith");
-      expect(events[0].categories).toContain("Daily Solar Cycle");
+      expect(events[0]?.summary).toContain("Solar Zenith");
+      expect(events[0]?.categories).toContain("Daily Solar Cycle");
     });
 
     it("should detect solar nadir when sun reaches minimum elevation", () => {
@@ -109,8 +109,8 @@ describe("dailySolarCycle.events", () => {
       });
 
       expect(events).toHaveLength(1);
-      expect(events[0].summary).toContain("Solar Nadir");
-      expect(events[0].categories).toContain("Daily Solar Cycle");
+      expect(events[0]?.summary).toContain("Solar Nadir");
+      expect(events[0]?.categories).toContain("Daily Solar Cycle");
     });
 
     it("should return empty array when no events occur", () => {

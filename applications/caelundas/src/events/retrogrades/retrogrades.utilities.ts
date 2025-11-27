@@ -4,7 +4,7 @@ export function isRetrograde(args: {
   currentLongitude: number;
   previousLongitudes: number[];
   nextLongitudes: number[];
-}) {
+}): boolean {
   const { currentLongitude, previousLongitudes, nextLongitudes } = args;
 
   const hasBeenDirect = previousLongitudes.every((previousLongitude) => {
@@ -32,7 +32,7 @@ export function isDirect(args: {
   currentLongitude: number;
   previousLongitudes: number[];
   nextLongitudes: number[];
-}) {
+}): boolean {
   const { currentLongitude, previousLongitudes, nextLongitudes } = args;
 
   const hasBeenRetrograde = previousLongitudes.every((previousLongitude) => {

@@ -38,9 +38,10 @@ describe("monthlyLunarCycle.events", () => {
       const minute = currentMinute
         .clone()
         .subtract(MARGIN_MINUTES - i, "minutes");
+      const illumination =
+        illuminations[i] ?? illuminations[illuminations.length - 1] ?? 0;
       ephemeris[minute.toISOString()] = {
-        illumination:
-          illuminations[i] ?? illuminations[illuminations.length - 1],
+        illumination,
       };
     }
 
@@ -52,7 +53,9 @@ describe("monthlyLunarCycle.events", () => {
       const currentMinute = moment.utc("2024-03-15T12:00:00.000Z");
 
       // Illumination staying constant (no phase change)
-      const constantIlluminations = new Array(MARGIN_MINUTES * 2 + 1).fill(0.5);
+      const constantIlluminations: number[] = new Array<number>(
+        MARGIN_MINUTES * 2 + 1
+      ).fill(0.5);
 
       const moonIlluminationEphemeris = createIlluminationEphemeris(
         currentMinute,
@@ -293,15 +296,18 @@ describe("monthlyLunarCycle.events", () => {
       // Should have duration events between phases
       expect(durationEvents.length).toBe(2);
 
+      expect(durationEvents[0]).toBeDefined();
+      expect(durationEvents[1]).toBeDefined();
+
       // First duration: New → Waxing Crescent
-      expect(durationEvents[0].start).toEqual(newMoon.start);
-      expect(durationEvents[0].end).toEqual(waxingCrescent.start);
-      expect(durationEvents[0].description).toBe("New Moon");
+      expect(durationEvents[0]?.start).toEqual(newMoon.start);
+      expect(durationEvents[0]?.end).toEqual(waxingCrescent.start);
+      expect(durationEvents[0]?.description).toBe("New Moon");
 
       // Second duration: Waxing Crescent → First Quarter
-      expect(durationEvents[1].start).toEqual(waxingCrescent.start);
-      expect(durationEvents[1].end).toEqual(firstQuarter.start);
-      expect(durationEvents[1].description).toBe("Waxing Crescent Moon");
+      expect(durationEvents[1]?.start).toEqual(waxingCrescent.start);
+      expect(durationEvents[1]?.end).toEqual(firstQuarter.start);
+      expect(durationEvents[1]?.description).toBe("Waxing Crescent Moon");
     });
 
     it("should return empty array when no lunar cycle events provided", () => {

@@ -25,7 +25,7 @@ const TEST_DB_PATH = "./output/test-database.db";
 describe("database.utilities", () => {
   let cleanupFns: (() => Promise<void>)[] = [];
 
-  beforeAll(async () => {
+  beforeAll(() => {
     // Ensure output directory exists
     const outputDir = path.dirname(TEST_DB_PATH);
     if (!fs.existsSync(outputDir)) {
@@ -43,7 +43,7 @@ describe("database.utilities", () => {
     }
   });
 
-  beforeEach(async () => {
+  beforeEach(() => {
     // Clear module cache to get fresh database connection
     vi.resetModules();
     cleanupFns = [];
@@ -62,15 +62,18 @@ describe("database.utilities", () => {
   describe("closeConnection", () => {
     it(
       "should close database connection without error",
+      { timeout: 2000 },
       async () => {
         const { closeConnection } = await import("./database.utilities");
 
         // Suppress expected errors from async table creation after close
         const originalConsoleError = console.error;
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
         console.error = () => {};
 
         // Add unhandledRejection handler to suppress the expected error
-        const handler = () => {}; // Ignore the error
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        const handler = (): void => {}; // Ignore the error
         process.on("unhandledRejection", handler);
 
         try {
@@ -81,8 +84,7 @@ describe("database.utilities", () => {
           console.error = originalConsoleError;
           process.off("unhandledRejection", handler);
         }
-      },
-      { timeout: 2000 }
+      }
     );
   });
 
@@ -111,9 +113,9 @@ describe("database.utilities", () => {
       });
 
       expect(records.length).toBe(1);
-      expect(records[0].body).toBe("sun");
-      expect(records[0].longitude).toBe(0.5);
-      expect(records[0].latitude).toBe(0.1);
+      expect(records[0]?.body).toBe("sun");
+      expect(records[0]?.longitude).toBe(0.5);
+      expect(records[0]?.latitude).toBe(0.1);
     });
 
     it("should handle empty array", async () => {
@@ -183,8 +185,8 @@ describe("database.utilities", () => {
       });
 
       expect(records.length).toBe(1);
-      expect(records[0].longitude).toBe(46.0);
-      expect(records[0].latitude).toBe(1.0); // Should preserve original
+      expect(records[0]?.longitude).toBe(46.0);
+      expect(records[0]?.latitude).toBe(1.0); // Should preserve original
     });
 
     it("should store all ephemeris types", async () => {
@@ -217,8 +219,8 @@ describe("database.utilities", () => {
       });
 
       expect(coordRecords.length).toBe(1);
-      expect(coordRecords[0].longitude).toBe(120.5);
-      expect(coordRecords[0].latitude).toBe(2.3);
+      expect(coordRecords[0]?.longitude).toBe(120.5);
+      expect(coordRecords[0]?.latitude).toBe(2.3);
 
       // Retrieve as illumination type
       const illumRecords = await getEphemerisRecords({
@@ -229,7 +231,7 @@ describe("database.utilities", () => {
       });
 
       expect(illumRecords.length).toBe(1);
-      expect(illumRecords[0].illumination).toBe(0.85);
+      expect(illumRecords[0]?.illumination).toBe(0.85);
 
       // Retrieve as distance type
       const distRecords = await getEphemerisRecords({
@@ -240,7 +242,7 @@ describe("database.utilities", () => {
       });
 
       expect(distRecords.length).toBe(1);
-      expect(distRecords[0].distance).toBe(0.7);
+      expect(distRecords[0]?.distance).toBe(0.7);
     });
   });
 
@@ -295,8 +297,8 @@ describe("database.utilities", () => {
       });
 
       expect(records.length).toBe(1);
-      expect(records[0].azimuth).toBe(90);
-      expect(records[0].elevation).toBe(30);
+      expect(records[0]?.azimuth).toBe(90);
+      expect(records[0]?.elevation).toBe(30);
     });
 
     it("should filter by diameter type", async () => {
@@ -322,7 +324,7 @@ describe("database.utilities", () => {
       });
 
       expect(records.length).toBe(1);
-      expect(records[0].diameter).toBe(0.002);
+      expect(records[0]?.diameter).toBe(0.002);
     });
 
     it("should return records in ascending time order", async () => {
@@ -362,9 +364,9 @@ describe("database.utilities", () => {
       });
 
       expect(retrieved.length).toBe(3);
-      expect(retrieved[0].longitude).toBe(10);
-      expect(retrieved[1].longitude).toBe(20);
-      expect(retrieved[2].longitude).toBe(30);
+      expect(retrieved[0]?.longitude).toBe(10);
+      expect(retrieved[1]?.longitude).toBe(20);
+      expect(retrieved[2]?.longitude).toBe(30);
     });
   });
 
@@ -573,9 +575,9 @@ describe("database.utilities", () => {
 
       expect(testEvents.length).toBe(3);
       // Events should already be sorted by start time from query
-      expect(testEvents[0].summary).toBe("SortTest Event A");
-      expect(testEvents[1].summary).toBe("SortTest Event B");
-      expect(testEvents[2].summary).toBe("SortTest Event C");
+      expect(testEvents[0]?.summary).toBe("SortTest Event A");
+      expect(testEvents[1]?.summary).toBe("SortTest Event B");
+      expect(testEvents[2]?.summary).toBe("SortTest Event C");
     });
   });
 

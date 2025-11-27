@@ -1,5 +1,5 @@
 import moment from "moment-timezone";
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 
 import {
   getQuintupleAspectDurationEvents,
@@ -202,7 +202,7 @@ describe("quintupleAspects.events", () => {
 
         // Should detect forming event - pattern exists at current but not previous minute
         expect(events.length).toBe(1);
-        expect(events[0].description).toContain("pentagram forming");
+        expect(events[0]?.description).toContain("pentagram forming");
       });
 
       it("should detect dissolving Pentagram for events ending at current minute", () => {
@@ -298,7 +298,7 @@ describe("quintupleAspects.events", () => {
 
         // Should detect dissolving event - pattern exists at current but not next minute
         expect(events.length).toBe(1);
-        expect(events[0].description).toContain("pentagram dissolving");
+        expect(events[0]?.description).toContain("pentagram dissolving");
       });
 
       it("should not detect Pentagram with incomplete quintiles", () => {
@@ -591,10 +591,10 @@ describe("quintupleAspects.events", () => {
       ]);
 
       expect(durationEvents.length).toBe(1);
-      expect(durationEvents[0].start).toEqual(formingEvent.start);
-      expect(durationEvents[0].end).toEqual(dissolvingEvent.start);
-      expect(durationEvents[0].description).toContain("pentagram");
-      expect(durationEvents[0].categories).toContain("Quintuple Aspect");
+      expect(durationEvents[0]?.start).toEqual(formingEvent.start);
+      expect(durationEvents[0]?.end).toEqual(dissolvingEvent.start);
+      expect(durationEvents[0]?.description).toContain("pentagram");
+      expect(durationEvents[0]?.categories).toContain("Quintuple Aspect");
     });
 
     it("should handle multiple body quintets", () => {
@@ -786,7 +786,7 @@ describe("quintupleAspects.events", () => {
       const formingEvent: Event = {
         start: new Date("2024-03-21T10:00:00.000Z"),
         end: new Date("2024-03-21T10:00:00.000Z"),
-        summary: "➡️ Pentagram forming" as any,
+        summary: "➡️ Pentagram forming" as unknown as string,
         description: "Jupiter, Mars, Moon, Sun, Venus pentagram forming",
         categories: [
           "Quintuple Aspect",
@@ -803,7 +803,7 @@ describe("quintupleAspects.events", () => {
       const dissolvingEvent: Event = {
         start: new Date("2024-03-21T14:00:00.000Z"),
         end: new Date("2024-03-21T14:00:00.000Z"),
-        summary: "⬅️ Pentagram dissolving" as any,
+        summary: "⬅️ Pentagram dissolving" as unknown as string,
         description: "Jupiter, Mars, Moon, Sun, Venus pentagram dissolving",
         categories: [
           "Quintuple Aspect",
@@ -823,7 +823,7 @@ describe("quintupleAspects.events", () => {
       ]);
 
       expect(durationEvents.length).toBe(1);
-      expect(durationEvents[0].summary).toBe("Pentagram forming");
+      expect(durationEvents[0]?.summary).toBe("Pentagram forming");
     });
 
     it("should remove phase text from description", () => {
@@ -867,10 +867,10 @@ describe("quintupleAspects.events", () => {
       ]);
 
       expect(durationEvents.length).toBe(1);
-      expect(durationEvents[0].description).not.toMatch(
+      expect(durationEvents[0]?.description).not.toMatch(
         /(forming|dissolving|exact)$/i
       );
-      expect(durationEvents[0].description).toContain("pentagram");
+      expect(durationEvents[0]?.description).toContain("pentagram");
     });
   });
 });

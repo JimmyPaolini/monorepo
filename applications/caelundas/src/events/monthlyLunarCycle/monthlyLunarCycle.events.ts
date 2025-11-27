@@ -5,7 +5,7 @@ import moment from "moment-timezone";
 
 import { getCalendar, MARGIN_MINUTES } from "../../calendar.utilities";
 import { lunarPhases } from "../../constants";
-import { upsertEvents } from "../../database.utilities";
+import { getIlluminationFromEphemeris } from "../../ephemeris/ephemeris.service";
 import { getOutputPath } from "../../output.utilities";
 import { symbolByLunarPhase } from "../../symbols";
 
@@ -19,30 +19,37 @@ import type { Moment } from "moment";
 export function getMonthlyLunarCycleEvents(args: {
   currentMinute: Moment;
   moonIlluminationEphemeris: IlluminationEphemeris;
-}) {
+}): Event[] {
   const { currentMinute, moonIlluminationEphemeris } = args;
 
   const monthlyLunarCycleEvents: Event[] = [];
 
-  const { illumination: currentIllumination } =
-    moonIlluminationEphemeris[currentMinute.toISOString()];
+  const currentIllumination = getIlluminationFromEphemeris(
+    moonIlluminationEphemeris,
+    currentMinute.toISOString(),
+    "currentIllumination"
+  );
 
   const previousIlluminations = new Array(MARGIN_MINUTES)
     .fill(null)
     .map((_, marginIndex) => {
       const minute = currentMinute.clone().subtract(marginIndex + 1, "minutes");
-      const { illumination: previousIllumination } =
-        moonIlluminationEphemeris[minute.toISOString()];
-      return previousIllumination;
+      return getIlluminationFromEphemeris(
+        moonIlluminationEphemeris,
+        minute.toISOString(),
+        "previousIllumination"
+      );
     });
 
   const nextIlluminations = new Array(MARGIN_MINUTES)
     .fill(null)
     .map((_, marginIndex) => {
       const minute = currentMinute.clone().add(marginIndex + 1, "minutes");
-      const { illumination: nextIllumination } =
-        moonIlluminationEphemeris[minute.toISOString()];
-      return nextIllumination;
+      return getIlluminationFromEphemeris(
+        moonIlluminationEphemeris,
+        minute.toISOString(),
+        "nextIllumination"
+      );
     });
 
   const illuminations = {
@@ -66,7 +73,7 @@ export function getMonthlyLunarCycleEvents(args: {
 export function getMonthlyLunarCycleEvent(args: {
   date: Date;
   lunarPhase: LunarPhase;
-}) {
+}): Event {
   const { date, lunarPhase } = args;
 
   const lunarPhaseCapitalized = _.startCase(
@@ -98,15 +105,15 @@ export function writeMonthlyLunarCycleEvents(args: {
   monthlyLunarCycleEvents: Event[];
   start: Date;
   end: Date;
-}) {
+}): void {
   const { monthlyLunarCycleEvents, start, end } = args;
-  if (_.isEmpty(monthlyLunarCycleEvents)) {return;}
+  if (_.isEmpty(monthlyLunarCycleEvents)) {
+    return;
+  }
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${monthlyLunarCycleEvents.length} monthly lunar cycle events from ${timespan}`;
   console.log(`🌒 Writing ${message}`);
-
-  upsertEvents(monthlyLunarCycleEvents);
 
   const ingressCalendar = getCalendar({
     events: monthlyLunarCycleEvents,
@@ -139,11 +146,16 @@ export function getMonthlyLunarCycleDurationEvents(events: Event[]): Event[] {
   for (let i = 0; i < sortedEvents.length - 1; i++) {
     const entering = sortedEvents[i];
     const exiting = sortedEvents[i + 1];
+    if (!entering || !exiting) {
+      continue;
+    }
 
     const durationEvent = getMonthlyLunarCycleDurationEvent(entering, exiting);
-    if (durationEvent) {
-      durationEvents.push(durationEvent);
+    if (!durationEvent) {
+      continue;
     }
+
+    durationEvents.push(durationEvent);
   }
 
   return durationEvents;
@@ -152,12 +164,12 @@ export function getMonthlyLunarCycleDurationEvents(events: Event[]): Event[] {
 function getMonthlyLunarCycleDurationEvent(
   entering: Event,
   exiting: Event
-): Event {
-  const categories = entering.categories || [];
+): Event | null {
+  const categories = entering.categories;
 
   // Extract the lunar phase
   const lunarPhaseCapitalized = categories.find((category) =>
-    lunarPhases.map(_.startCase).includes(category)
+    lunarPhases.map((lunarPhase) => _.startCase(lunarPhase)).includes(category)
   );
 
   if (!lunarPhaseCapitalized) {
@@ -166,7 +178,7 @@ function getMonthlyLunarCycleDurationEvent(
         ", "
       )} - skipping duration event for ${entering.summary}`
     );
-    return null as any; // Skip this invalid event
+    return null; // Skip this invalid event
   }
 
   const lunarPhase = lunarPhaseCapitalized.toLowerCase() as LunarPhase;

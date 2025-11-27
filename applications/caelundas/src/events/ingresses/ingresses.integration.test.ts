@@ -70,11 +70,11 @@ describe("ingresses.events integration", () => {
       });
 
       expect(events.length).toBe(1);
-      expect(events[0].categories).toContain("Sun");
-      expect(events[0].categories).toContain("Aries");
-      expect(events[0].categories).toContain("Ingress");
-      expect(events[0].summary).toContain("☀️");
-      expect(events[0].summary).toContain("♈");
+      expect(events[0]?.categories).toContain("Sun");
+      expect(events[0]?.categories).toContain("Aries");
+      expect(events[0]?.categories).toContain("Ingress");
+      expect(events[0]?.summary).toContain("☀️");
+      expect(events[0]?.summary).toContain("♈");
     });
 
     it("should detect Moon sign changes", () => {
@@ -95,8 +95,8 @@ describe("ingresses.events integration", () => {
       });
 
       expect(events.length).toBe(1);
-      expect(events[0].categories).toContain("Moon");
-      expect(events[0].categories).toContain("Gemini");
+      expect(events[0]?.categories).toContain("Moon");
+      expect(events[0]?.categories).toContain("Gemini");
     });
 
     it("should not generate event when body stays in same sign", () => {
@@ -136,9 +136,9 @@ describe("ingresses.events integration", () => {
       });
 
       expect(events.length).toBe(1);
-      expect(events[0].categories).toContain("Decan");
-      expect(events[0].categories).toContain("Sun");
-      expect(events[0].categories).toContain("Aries");
+      expect(events[0]?.categories).toContain("Decan");
+      expect(events[0]?.categories).toContain("Sun");
+      expect(events[0]?.categories).toContain("Aries");
     });
 
     it("should NOT generate decan event when crossing sign boundary (sign event takes precedence)", () => {
@@ -182,9 +182,9 @@ describe("ingresses.events integration", () => {
       });
 
       expect(events.length).toBe(1);
-      expect(events[0].categories).toContain("Peak");
-      expect(events[0].categories).toContain("Sun");
-      expect(events[0].categories).toContain("Taurus");
+      expect(events[0]?.categories).toContain("Peak");
+      expect(events[0]?.categories).toContain("Sun");
+      expect(events[0]?.categories).toContain("Taurus");
     });
   });
 
@@ -219,20 +219,20 @@ describe("ingresses.events integration", () => {
       expect(durationEvents.length).toBe(2);
 
       // First duration: Sun in Aries
-      expect(durationEvents[0].start.toISOString()).toBe(
+      expect(durationEvents[0]?.start.toISOString()).toBe(
         "2025-03-20T09:06:00.000Z"
       );
-      expect(durationEvents[0].end.toISOString()).toBe(
+      expect(durationEvents[0]?.end.toISOString()).toBe(
         "2025-04-19T20:00:00.000Z"
       );
-      expect(durationEvents[0].description).toContain("Sun");
-      expect(durationEvents[0].description).toContain("Aries");
+      expect(durationEvents[0]?.description).toContain("Sun");
+      expect(durationEvents[0]?.description).toContain("Aries");
 
       // Second duration: Sun in Taurus
-      expect(durationEvents[1].start.toISOString()).toBe(
+      expect(durationEvents[1]?.start.toISOString()).toBe(
         "2025-04-19T20:00:00.000Z"
       );
-      expect(durationEvents[1].end.toISOString()).toBe(
+      expect(durationEvents[1]?.end.toISOString()).toBe(
         "2025-05-20T19:00:00.000Z"
       );
     });
@@ -284,13 +284,13 @@ describe("ingresses.events integration", () => {
       expect(sunDuration).toBeDefined();
       expect(moonDuration).toBeDefined();
 
-      expect(sunDuration!.start.toISOString()).toBe("2025-01-10T10:00:00.000Z");
-      expect(sunDuration!.end.toISOString()).toBe("2025-02-18T12:00:00.000Z");
+      expect(sunDuration?.start.toISOString()).toBe("2025-01-10T10:00:00.000Z");
+      expect(sunDuration?.end.toISOString()).toBe("2025-02-18T12:00:00.000Z");
 
-      expect(moonDuration!.start.toISOString()).toBe(
+      expect(moonDuration?.start.toISOString()).toBe(
         "2025-01-12T08:00:00.000Z"
       );
-      expect(moonDuration!.end.toISOString()).toBe("2025-01-14T15:00:00.000Z");
+      expect(moonDuration?.end.toISOString()).toBe("2025-01-14T15:00:00.000Z");
     });
   });
 });

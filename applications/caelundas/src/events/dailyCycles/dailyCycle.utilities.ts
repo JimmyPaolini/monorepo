@@ -6,7 +6,7 @@ export const sunRadiusDegrees = sunRadiusArcminutes / arcminutesPerDegree;
 export function isRise(args: {
   currentElevation: number;
   previousElevation: number;
-}) {
+}): boolean {
   const { currentElevation, previousElevation } = args;
   return (
     currentElevation > -sunRadiusDegrees &&
@@ -17,7 +17,7 @@ export function isRise(args: {
 export function isSet(args: {
   previousElevation: number;
   currentElevation: number;
-}) {
+}): boolean {
   const { previousElevation, currentElevation } = args;
   return (
     currentElevation < -sunRadiusDegrees &&

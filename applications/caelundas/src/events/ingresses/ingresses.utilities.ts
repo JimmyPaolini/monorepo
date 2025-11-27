@@ -19,14 +19,16 @@ export function getSign(longitude: number): Sign {
   const entry = Object.entries(degreeRangeBySign).find(([, { min, max }]) => {
     return longitude >= min && longitude < max;
   });
-  if (!entry) {throw new Error(`🚫 Longitude ${longitude} not in any sign.`);}
+  if (!entry) {
+    throw new Error(`🚫 Longitude ${longitude} not in any sign.`);
+  }
   return entry[0] as Sign;
 }
 
 export const isSignIngress = (args: {
   previousLongitude: number;
   currentLongitude: number;
-}) => {
+}): boolean => {
   const { currentLongitude, previousLongitude } = args;
   return getSign(currentLongitude) !== getSign(previousLongitude);
 };
@@ -40,7 +42,7 @@ export function getDecan(longitude: number): number {
 export function isDecanIngress(args: {
   previousLongitude: number;
   currentLongitude: number;
-}) {
+}): boolean {
   const { currentLongitude, previousLongitude } = args;
   return getDecan(currentLongitude) !== getDecan(previousLongitude);
 }
@@ -48,7 +50,7 @@ export function isDecanIngress(args: {
 export function isPeakIngress(args: {
   previousLongitude: number;
   currentLongitude: number;
-}) {
+}): boolean {
   const { currentLongitude, previousLongitude } = args;
 
   const previousSign = getSign(previousLongitude);

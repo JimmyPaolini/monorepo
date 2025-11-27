@@ -13,7 +13,7 @@ export const isAspect = (args: {
   longitudeBody1: number;
   longitudeBody2: number;
   aspect: Aspect;
-}) => {
+}): boolean => {
   const { aspect, longitudeBody1, longitudeBody2 } = args;
   const angle = getAngle(longitudeBody1, longitudeBody2);
   const difference = Math.abs(angle - angleByAspect[aspect]);
@@ -24,10 +24,12 @@ export const isAspect = (args: {
 export const getMajorAspect = (args: {
   longitudeBody1: number;
   longitudeBody2: number;
-}) => {
+}): Aspect | null => {
   const { longitudeBody1, longitudeBody2 } = args;
   for (const aspect of majorAspects) {
-    if (isAspect({ longitudeBody1, longitudeBody2, aspect })) {return aspect;}
+    if (isAspect({ longitudeBody1, longitudeBody2, aspect })) {
+      return aspect;
+    }
   }
   return null;
 };
@@ -35,10 +37,12 @@ export const getMajorAspect = (args: {
 export const getMinorAspect = (args: {
   longitudeBody1: number;
   longitudeBody2: number;
-}) => {
+}): Aspect | null => {
   const { longitudeBody1, longitudeBody2 } = args;
   for (const aspect of minorAspects) {
-    if (isAspect({ longitudeBody1, longitudeBody2, aspect })) {return aspect;}
+    if (isAspect({ longitudeBody1, longitudeBody2, aspect })) {
+      return aspect;
+    }
   }
   return null;
 };
@@ -46,15 +50,26 @@ export const getMinorAspect = (args: {
 export const getSpecialtyAspect = (args: {
   longitudeBody1: number;
   longitudeBody2: number;
-}) => {
+}): Aspect | null => {
   const { longitudeBody1, longitudeBody2 } = args;
   for (const aspect of specialtyAspects) {
-    if (isAspect({ longitudeBody1, longitudeBody2, aspect })) {return aspect;}
+    if (isAspect({ longitudeBody1, longitudeBody2, aspect })) {
+      return aspect;
+    }
   }
   return null;
 };
 
-const getIsAspect = (aspects: Aspect[]) => {
+const getIsAspect = (
+  aspects: Aspect[]
+): ((args: {
+  currentLongitudeBody1: number;
+  currentLongitudeBody2: number;
+  nextLongitudeBody1: number;
+  nextLongitudeBody2: number;
+  previousLongitudeBody1: number;
+  previousLongitudeBody2: number;
+}) => AspectPhase | null) => {
   const isAspect = (args: {
     currentLongitudeBody1: number;
     currentLongitudeBody2: number;
@@ -103,9 +118,13 @@ const getIsAspect = (aspects: Aspect[]) => {
               nextDifference > currentDifference) ||
             (previousDifference < currentDifference &&
               nextDifference < currentDifference);
-          if (isBouncing) {return "exact";}
+          if (isBouncing) {
+            return "exact";
+          }
         } else {
-          if (isCrossing) {return "exact";}
+          if (isCrossing) {
+            return "exact";
+          }
         }
       }
 
@@ -138,7 +157,7 @@ export const isMajorAspect = (args: {
   nextLongitudeBody2: number;
   previousLongitudeBody1: number;
   previousLongitudeBody2: number;
-}) => getMajorAspectPhase(args) === "exact";
+}): boolean => getMajorAspectPhase(args) === "exact";
 
 export const isMinorAspect = (args: {
   currentLongitudeBody1: number;
@@ -147,7 +166,7 @@ export const isMinorAspect = (args: {
   nextLongitudeBody2: number;
   previousLongitudeBody1: number;
   previousLongitudeBody2: number;
-}) => getMinorAspectPhase(args) === "exact";
+}): boolean => getMinorAspectPhase(args) === "exact";
 
 export const isSpecialtyAspect = (args: {
   currentLongitudeBody1: number;
@@ -156,4 +175,4 @@ export const isSpecialtyAspect = (args: {
   nextLongitudeBody2: number;
   previousLongitudeBody1: number;
   previousLongitudeBody2: number;
-}) => getSpecialtyAspectPhase(args) === "exact";
+}): boolean => getSpecialtyAspectPhase(args) === "exact";

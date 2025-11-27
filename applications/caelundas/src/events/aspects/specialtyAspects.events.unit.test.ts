@@ -30,8 +30,12 @@ describe("specialtyAspects.events", () => {
     ): CoordinateEphemeris => {
       const ephemeris: CoordinateEphemeris = {};
       Object.keys(longitudes).forEach((timestamp) => {
+        const longitude = longitudes[timestamp];
+        if (longitude === undefined) {
+          throw new Error(`longitude is undefined for timestamp ${timestamp}`);
+        }
         ephemeris[timestamp] = {
-          longitude: longitudes[timestamp],
+          longitude,
           latitude: 0,
         };
       });
@@ -279,10 +283,11 @@ describe("specialtyAspects.events", () => {
 
       const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       allBodies.forEach((body, index) => {
+        const longitude = safeLongitudes[index] ?? 0;
         coordinateEphemerisByBody[body] = createEphemeris({
-          [previousMinute.toISOString()]: safeLongitudes[index],
-          [currentMinute.toISOString()]: safeLongitudes[index],
-          [nextMinute.toISOString()]: safeLongitudes[index],
+          [previousMinute.toISOString()]: longitude,
+          [currentMinute.toISOString()]: longitude,
+          [nextMinute.toISOString()]: longitude,
         });
       });
 
@@ -501,7 +506,10 @@ describe("specialtyAspects.events", () => {
         specialtyAspectEvents: events,
       });
 
-      const writeCall = (fs.writeFileSync as any).mock.calls[0];
+      const writeCall = vi.mocked(fs.writeFileSync).mock.calls[0];
+      if (!writeCall) {
+        throw new Error("writeCall is undefined");
+      }
       const filename = writeCall[0];
       expect(filename).toContain("sun,moon,mars");
     });
@@ -526,7 +534,10 @@ describe("specialtyAspects.events", () => {
         specialtyAspectEvents: events,
       });
 
-      const writeCall = (fs.writeFileSync as any).mock.calls[0];
+      const writeCall = vi.mocked(fs.writeFileSync).mock.calls[0];
+      if (!writeCall) {
+        throw new Error("writeCall is undefined");
+      }
       const filename = writeCall[0];
       expect(filename).toContain(
         "2024-03-21T00:00:00.000Z-2024-03-22T00:00:00.000Z"
@@ -574,11 +585,12 @@ describe("specialtyAspects.events", () => {
       ]);
 
       expect(durationEvents.length).toBe(1);
-      expect(durationEvents[0].start).toEqual(formingEvent.start);
-      expect(durationEvents[0].end).toEqual(dissolvingEvent.start);
-      expect(durationEvents[0].description).toBe("Mercury quintile Sun");
-      expect(durationEvents[0].categories).toContain("Simple Aspect");
-      expect(durationEvents[0].categories).toContain("Specialty Aspect");
+      expect(durationEvents[0]).toBeDefined();
+      expect(durationEvents[0]?.start).toEqual(formingEvent.start);
+      expect(durationEvents[0]?.end).toEqual(dissolvingEvent.start);
+      expect(durationEvents[0]?.description).toBe("Mercury quintile Sun");
+      expect(durationEvents[0]?.categories).toContain("Simple Aspect");
+      expect(durationEvents[0]?.categories).toContain("Specialty Aspect");
     });
 
     it("should handle multiple aspect types for same body pair", () => {
@@ -794,11 +806,16 @@ describe("specialtyAspects.events", () => {
       ]);
 
       expect(durationEvents.length).toBe(1);
+      expect(durationEvents[0]).toBeDefined();
       // Mars comes before Venus alphabetically
-      expect(durationEvents[0].categories).toContain("Mars");
-      expect(durationEvents[0].categories).toContain("Venus");
-      const marsIndex = durationEvents[0].categories.indexOf("Mars");
-      const venusIndex = durationEvents[0].categories.indexOf("Venus");
+      expect(durationEvents[0]?.categories).toContain("Mars");
+      expect(durationEvents[0]?.categories).toContain("Venus");
+      const categories = durationEvents[0]?.categories;
+      if (!categories) {
+        throw new Error("categories is undefined");
+      }
+      const marsIndex = categories.indexOf("Mars");
+      const venusIndex = categories.indexOf("Venus");
       expect(marsIndex).toBeLessThan(venusIndex);
     });
   });

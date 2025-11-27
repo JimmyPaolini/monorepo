@@ -41,7 +41,6 @@ import type {
   OrbitEphemerisBody,
 } from "./ephemeris.types";
 
-
 // #region Utilities
 
 function getExpectedRecordCount(start: Date, end: Date): number {
@@ -52,11 +51,91 @@ function getExpectedRecordCount(start: Date, end: Date): number {
   return diffInMinutes + 1;
 }
 
+/**
+ * Safely extract coordinate data from ephemeris
+ * @throws Error if the coordinate data is missing
+ */
+export function getCoordinateFromEphemeris(
+  ephemeris: CoordinateEphemeris,
+  timestamp: string,
+  fieldName: "longitude" | "latitude"
+): number {
+  const data = ephemeris[timestamp];
+  if (data?.[fieldName] === undefined) {
+    throw new Error(`Missing ${fieldName} at ${timestamp}`);
+  }
+  return data[fieldName];
+}
+
+/**
+ * Safely extract azimuth/elevation data from ephemeris
+ * @throws Error if the data is missing
+ */
+export function getAzimuthElevationFromEphemeris(
+  ephemeris: AzimuthElevationEphemeris,
+  timestamp: string,
+  fieldName: "azimuth" | "elevation"
+): number {
+  const data = ephemeris[timestamp];
+  if (data?.[fieldName] === undefined) {
+    throw new Error(`Missing ${fieldName} at ${timestamp}`);
+  }
+  return data[fieldName];
+}
+
+/**
+ * Safely extract illumination data from ephemeris
+ * @throws Error if the data is missing
+ */
+export function getIlluminationFromEphemeris(
+  ephemeris: IlluminationEphemeris,
+  timestamp: string,
+  fieldName: string
+): number {
+  const data = ephemeris[timestamp];
+  if (data?.illumination === undefined) {
+    throw new Error(`Missing ${fieldName} at ${timestamp}`);
+  }
+  return data.illumination;
+}
+
+/**
+ * Safely extract distance data from ephemeris
+ * @throws Error if the data is missing
+ */
+export function getDistanceFromEphemeris(
+  ephemeris: DistanceEphemeris,
+  timestamp: string,
+  fieldName: string
+): number {
+  const data = ephemeris[timestamp];
+  if (data?.distance === undefined) {
+    throw new Error(`Missing ${fieldName} at ${timestamp}`);
+  }
+  return data.distance;
+}
+
+/**
+ * Safely extract diameter data from ephemeris
+ * @throws Error if the data is missing
+ */
+export function getDiameterFromEphemeris(
+  ephemeris: DiameterEphemeris,
+  timestamp: string,
+  fieldName: string
+): number {
+  const data = ephemeris[timestamp];
+  if (data?.diameter === undefined) {
+    throw new Error(`Missing ${fieldName} at ${timestamp}`);
+  }
+  return data.diameter;
+}
+
 function getHorizonsBaseUrl(args: {
   start: Date;
   end: Date;
   coordinates?: Coordinates;
-}) {
+}): URL {
   const { start, end, coordinates } = args;
 
   const url = new URL(horizonsUrl);
@@ -80,8 +159,8 @@ function getHorizonsBaseUrl(args: {
 
 // #region 💫 Orbit
 
-function parseOrbitEphemeris(text: string) {
-  const ephemerisTable = text.split("$$SOE")[1].split("$$EOE")[0].trim();
+function parseOrbitEphemeris(text: string): OrbitEphemeris {
+  const ephemerisTable = text.split("$$SOE")[1]?.split("$$EOE")[0]?.trim();
 
   const datePattern = /\d{4}-[A-Za-z]{3}-\d{2} \d{2}:\d{2}:\d{2}(\.\d{4})?/g;
   const pattern = new RegExp(
@@ -89,12 +168,12 @@ function parseOrbitEphemeris(text: string) {
     "g"
   );
 
-  const getPattern = (key: string) => {
+  const getPattern = (key: string): RegExp => {
     return new RegExp(`${key}.*?=.+?(\\d+\\.\\d+(E[+-]\\d{2})?)`, "g");
   };
 
   const orbitEphemeris: OrbitEphemeris = [
-    ...ephemerisTable.matchAll(pattern),
+    ...(ephemerisTable?.matchAll(pattern) ?? []),
   ].reduce<OrbitEphemeris>((orbitEphemeris, match) => {
     const [fullMatch, dateString] = match;
 
@@ -102,18 +181,18 @@ function parseOrbitEphemeris(text: string) {
       .utc(dateString, ["YYYY-MMM-DD HH:mm:ss.SSSS", "YYYY-MMM-DD HH:mm:ss"])
       .toISOString();
 
-    const ecMatch = [...fullMatch.matchAll(getPattern("EC"))][0][1];
-    const qrMatch = [...fullMatch.matchAll(getPattern("QR"))][0][1];
-    const inMatch = [...fullMatch.matchAll(getPattern("IN"))][0][1];
-    const omMatch = [...fullMatch.matchAll(getPattern("OM"))][0][1];
-    const wMatch = [...fullMatch.matchAll(getPattern("W"))][0][1];
-    const tpMatch = [...fullMatch.matchAll(getPattern("Tp"))][0][1];
-    const nMatch = [...fullMatch.matchAll(getPattern("N"))][0][1];
-    const maMatch = [...fullMatch.matchAll(getPattern("MA"))][0][1];
-    const taMatch = [...fullMatch.matchAll(getPattern("TA"))][0][1];
-    const aMatch = [...fullMatch.matchAll(getPattern("A"))][0][1];
-    const adMatch = [...fullMatch.matchAll(getPattern("AD"))][0][1];
-    const prMatch = [...fullMatch.matchAll(getPattern("PR"))][0][1];
+    const ecMatch = [...fullMatch.matchAll(getPattern("EC"))][0]?.[1] ?? "";
+    const qrMatch = [...fullMatch.matchAll(getPattern("QR"))][0]?.[1] ?? "";
+    const inMatch = [...fullMatch.matchAll(getPattern("IN"))][0]?.[1] ?? "";
+    const omMatch = [...fullMatch.matchAll(getPattern("OM"))][0]?.[1] ?? "";
+    const wMatch = [...fullMatch.matchAll(getPattern("W"))][0]?.[1] ?? "";
+    const tpMatch = [...fullMatch.matchAll(getPattern("Tp"))][0]?.[1] ?? "";
+    const nMatch = [...fullMatch.matchAll(getPattern("N"))][0]?.[1] ?? "";
+    const maMatch = [...fullMatch.matchAll(getPattern("MA"))][0]?.[1] ?? "";
+    const taMatch = [...fullMatch.matchAll(getPattern("TA"))][0]?.[1] ?? "";
+    const aMatch = [...fullMatch.matchAll(getPattern("A"))][0]?.[1] ?? "";
+    const adMatch = [...fullMatch.matchAll(getPattern("AD"))][0]?.[1] ?? "";
+    const prMatch = [...fullMatch.matchAll(getPattern("PR"))][0]?.[1] ?? "";
 
     return {
       ...orbitEphemeris,
@@ -141,7 +220,7 @@ function getOrbitEphemerisUrl(args: {
   body: OrbitEphemerisBody;
   end: Date;
   start: Date;
-}) {
+}): URL {
   const { body, end, start } = args;
 
   const url = getHorizonsBaseUrl({ end, start });
@@ -158,7 +237,7 @@ export async function getOrbitEphemeris(args: {
   end: Date;
   start: Date;
   timezone: string;
-}) {
+}): Promise<OrbitEphemeris> {
   const { body, end, start, timezone } = args;
 
   const timespan = `${moment.tz(start, timezone).toISOString(true)} to ${moment
@@ -182,7 +261,7 @@ export async function getNodeCoordinatesEphemeris(args: {
   node: Node;
   start: Date;
   timezone: string;
-}) {
+}): Promise<CoordinateEphemeris> {
   const { end, node, start, timezone } = args;
 
   const timespan = `${moment.tz(start, timezone).toISOString(true)} to ${moment
@@ -201,7 +280,7 @@ export async function getNodeCoordinatesEphemeris(args: {
 
   const expectedCount = getExpectedRecordCount(start, end);
   const hasAllValues = existingRecords.every(
-    (record) => record.latitude !== undefined && record.longitude !== undefined
+    (record) => record.latitude && record.longitude
   );
   if (existingRecords.length === expectedCount && hasAllValues) {
     console.log(`🛢️ Found complete database data for ${message}`);
@@ -268,8 +347,11 @@ export async function getNodeCoordinatesEphemeris(args: {
 
 // #region 📐 Coordinates
 
-function parseCoordinatesEphemeris(text: string) {
-  const ephemerisTable = text.split("$$SOE")[1].split("$$EOE")[0].trim();
+function parseCoordinatesEphemeris(text: string): CoordinateEphemeris {
+  const ephemerisTable = text.split("$$SOE")[1]?.split("$$EOE")[0]?.trim();
+  if (!ephemerisTable) {
+    throw new Error("No coordinate ephemeris data found");
+  }
 
   const ephemeris: CoordinateEphemeris = ephemerisTable
     .split("\n")
@@ -310,23 +392,27 @@ function convertCoordinateEphemerisToRecords(
 function convertRecordsToCoordinateEphemeris(
   records: EphemerisRecord[]
 ): CoordinateEphemeris {
-  return records.reduce<CoordinateEphemeris>(
-    (acc, record) => ({
+  return records.reduce<CoordinateEphemeris>((acc, record) => {
+    if (record.latitude === undefined || record.longitude === undefined) {
+      throw new Error(
+        `Record at ${record.timestamp.toISOString()} is missing latitude or longitude value`
+      );
+    }
+    return {
       ...acc,
       [record.timestamp.toISOString()]: {
-        latitude: record.latitude!,
-        longitude: record.longitude!,
+        latitude: record.latitude,
+        longitude: record.longitude,
       },
-    }),
-    {}
-  );
+    };
+  }, {});
 }
 
 function getCoordinatesEphemerisUrl(args: {
   body: Planet | Asteroid | Comet;
   start: Date;
   end: Date;
-}) {
+}): URL {
   const { body, start, end } = args;
 
   const url = getHorizonsBaseUrl({ start, end });
@@ -344,7 +430,7 @@ export async function getCoordinatesEphemeris(args: {
   start: Date;
   end: Date;
   timezone: string;
-}) {
+}): Promise<CoordinateEphemeris> {
   const { body, start, end, timezone } = args;
 
   const timespan = `${moment.tz(start, timezone).toISOString(true)} to ${moment
@@ -400,7 +486,7 @@ export async function getCoordinateEphemerisByBody(args: {
   start: Date;
   end: Date;
   timezone: string;
-}) {
+}): Promise<Record<Body, CoordinateEphemeris>> {
   const { bodies, start, end, timezone } = args;
 
   const bodiesString = bodies.map((body: Body) => symbolByBody[body]).join(" ");
@@ -413,7 +499,7 @@ export async function getCoordinateEphemerisByBody(args: {
 
   const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
 
-  for await (const body of bodies) {
+  for (const body of bodies) {
     if (isNode(body)) {
       coordinateEphemerisByBody[body] = await getNodeCoordinatesEphemeris({
         end,
@@ -438,8 +524,13 @@ export async function getCoordinateEphemerisByBody(args: {
 
 // #region ⏫ Azimuth Elevation
 
-function parseAzimuthElevationEphemeris(text: string) {
-  const ephemerisTable = text.split("$$SOE")[1].split("$$EOE")[0].trim();
+function parseAzimuthElevationEphemeris(
+  text: string
+): AzimuthElevationEphemeris {
+  const ephemerisTable = text.split("$$SOE")[1]?.split("$$EOE")[0]?.trim();
+  if (!ephemerisTable) {
+    throw new Error("No azimuth elevation ephemeris data found");
+  }
 
   const ephemeris: AzimuthElevationEphemeris = ephemerisTable
     .split("\n ")
@@ -449,7 +540,9 @@ function parseAzimuthElevationEphemeris(text: string) {
 
       const match = ephemerisLine.match(azimuthElevationRegex);
 
-      if (!match) {return ephemeris;}
+      if (!match) {
+        return ephemeris;
+      }
 
       const [, dateString, azimuthString, elevationString] = match;
 
@@ -481,16 +574,20 @@ function convertAzimuthElevationEphemerisToRecords(
 function convertRecordsToAzimuthElevationEphemeris(
   records: EphemerisRecord[]
 ): AzimuthElevationEphemeris {
-  return records.reduce<AzimuthElevationEphemeris>(
-    (acc, record) => ({
+  return records.reduce<AzimuthElevationEphemeris>((acc, record) => {
+    if (record.azimuth === undefined || record.elevation === undefined) {
+      throw new Error(
+        `Record at ${record.timestamp.toISOString()} is missing azimuth or elevation value`
+      );
+    }
+    return {
       ...acc,
       [record.timestamp.toISOString()]: {
-        azimuth: record.azimuth!,
-        elevation: record.elevation!,
+        azimuth: record.azimuth,
+        elevation: record.elevation,
       },
-    }),
-    {}
-  );
+    };
+  }, {});
 }
 
 function getAzimuthElevationEphemerisUrl(args: {
@@ -498,7 +595,7 @@ function getAzimuthElevationEphemerisUrl(args: {
   coordinates: Coordinates;
   end: Date;
   start: Date;
-}) {
+}): URL {
   const { body, coordinates, end, start } = args;
 
   const url = getHorizonsBaseUrl({ start, end, coordinates });
@@ -517,7 +614,7 @@ export async function getAzimuthElevationEphemeris(args: {
   end: Date;
   start: Date;
   timezone: string;
-}) {
+}): Promise<AzimuthElevationEphemeris> {
   const { body, coordinates, end, start, timezone } = args;
 
   const timespan = `${moment.tz(start, timezone).toISOString(true)} to ${moment
@@ -575,7 +672,7 @@ export async function getAzimuthElevationEphemerisByBody(args: {
   end: Date;
   coordinates: Coordinates;
   timezone: string;
-}) {
+}): Promise<Record<Body, AzimuthElevationEphemeris>> {
   const { bodies, start, end, coordinates, timezone } = args;
 
   const bodiesString = bodies.map((body: Body) => symbolByBody[body]).join(" ");
@@ -590,7 +687,7 @@ export async function getAzimuthElevationEphemerisByBody(args: {
     Body,
     AzimuthElevationEphemeris
   >;
-  for await (const body of bodies) {
+  for (const body of bodies) {
     azimuthElevationEphemerisByBody[body] = await getAzimuthElevationEphemeris({
       body,
       end,
@@ -607,8 +704,11 @@ export async function getAzimuthElevationEphemerisByBody(args: {
 
 // #region 🌒 Illumination
 
-function parseIlluminationEphemeris(text: string) {
-  const ephemerisTable = text.split("$$SOE")[1].split("$$EOE")[0].trim();
+function parseIlluminationEphemeris(text: string): IlluminationEphemeris {
+  const ephemerisTable = text.split("$$SOE")[1]?.split("$$EOE")[0]?.trim();
+  if (!ephemerisTable) {
+    throw new Error("No illumination ephemeris data found");
+  }
 
   const ephemeris: IlluminationEphemeris = ephemerisTable
     .split("\n ")
@@ -618,7 +718,9 @@ function parseIlluminationEphemeris(text: string) {
 
       const match = ephemerisLine.match(illuminatedFractionRegex);
 
-      if (!match) {return ephemeris;}
+      if (!match) {
+        return ephemeris;
+      }
 
       const [, dateString, illuminationString] = match;
 
@@ -648,15 +750,19 @@ function convertIlluminationEphemerisToRecords(
 function convertRecordsToIlluminationEphemeris(
   records: EphemerisRecord[]
 ): IlluminationEphemeris {
-  return records.reduce<IlluminationEphemeris>(
-    (acc, record) => ({
+  return records.reduce<IlluminationEphemeris>((acc, record) => {
+    if (record.illumination === undefined) {
+      throw new Error(
+        `Record at ${record.timestamp.toISOString()} is missing illumination value`
+      );
+    }
+    return {
       ...acc,
       [record.timestamp.toISOString()]: {
-        illumination: record.illumination!,
+        illumination: record.illumination,
       },
-    }),
-    {}
-  );
+    };
+  }, {});
 }
 
 function getIlluminationEphemerisUrl(args: {
@@ -664,7 +770,7 @@ function getIlluminationEphemerisUrl(args: {
   start: Date;
   end: Date;
   coordinates: Coordinates;
-}) {
+}): URL {
   const { body, start, end, coordinates } = args;
 
   const url = getHorizonsBaseUrl({ start, end, coordinates });
@@ -683,7 +789,7 @@ export async function getIlluminationEphemeris(args: {
   end: Date;
   start: Date;
   timezone: string;
-}) {
+}): Promise<IlluminationEphemeris> {
   const { body, start, end, coordinates, timezone } = args;
 
   const timespan = `${moment.tz(start, timezone).toISOString(true)} to ${moment
@@ -741,7 +847,7 @@ export async function getIlluminationEphemerisByBody(args: {
   end: Date;
   coordinates: Coordinates;
   timezone: string;
-}) {
+}): Promise<Record<Body, IlluminationEphemeris>> {
   const { bodies, start, end, coordinates, timezone } = args;
 
   const bodiesString = bodies.map((body: Body) => symbolByBody[body]).join(" ");
@@ -752,7 +858,7 @@ export async function getIlluminationEphemerisByBody(args: {
   console.log(`🔭 Getting ${message}`);
 
   const illuminationEphemerisByBody = {} as Record<Body, IlluminationEphemeris>;
-  for await (const body of bodies) {
+  for (const body of bodies) {
     illuminationEphemerisByBody[body] = await getIlluminationEphemeris({
       body,
       end,
@@ -769,8 +875,11 @@ export async function getIlluminationEphemerisByBody(args: {
 
 // #region 🛟 Diameter
 
-function parseDiameterEphemeris(text: string) {
-  const ephemerisTable = text.split("$$SOE")[1].split("$$EOE")[0].trim();
+function parseDiameterEphemeris(text: string): DiameterEphemeris {
+  const ephemerisTable = text.split("$$SOE")[1]?.split("$$EOE")[0]?.trim();
+  if (!ephemerisTable) {
+    throw new Error("No diameter ephemeris data found");
+  }
 
   const diameterEphemeris: DiameterEphemeris = ephemerisTable
     .split("\n ")
@@ -780,7 +889,9 @@ function parseDiameterEphemeris(text: string) {
 
       const match = ephemerisLine.match(diameterRegex);
 
-      if (!match) {return diameterEphemeris;}
+      if (!match) {
+        return diameterEphemeris;
+      }
 
       const [, dateString, diameterString] = match;
 
@@ -811,22 +922,26 @@ function convertDiameterEphemerisToRecords(
 function convertRecordsToDiameterEphemeris(
   records: EphemerisRecord[]
 ): DiameterEphemeris {
-  return records.reduce<DiameterEphemeris>(
-    (acc, record) => ({
+  return records.reduce<DiameterEphemeris>((acc, record) => {
+    if (record.diameter === undefined) {
+      throw new Error(
+        `Record at ${record.timestamp.toISOString()} is missing diameter value`
+      );
+    }
+    return {
       ...acc,
       [record.timestamp.toISOString()]: {
-        diameter: record.diameter!,
+        diameter: record.diameter,
       },
-    }),
-    {}
-  );
+    };
+  }, {});
 }
 
 function getDiameterEphemerisUrl(args: {
   start: Date;
   end: Date;
   body: DiameterEphemerisBody;
-}) {
+}): URL {
   const { start, end, body } = args;
 
   const url = getHorizonsBaseUrl({ start, end });
@@ -844,7 +959,7 @@ export async function getDiameterEphemeris(args: {
   end: Date;
   body: DiameterEphemerisBody;
   timezone: string;
-}) {
+}): Promise<DiameterEphemeris> {
   const { start, end, body, timezone } = args;
 
   const timespan = `${moment.tz(start, timezone).toISOString(true)} to ${moment
@@ -896,7 +1011,7 @@ export async function getDiameterEphemerisByBody(args: {
   start: Date;
   end: Date;
   timezone: string;
-}) {
+}): Promise<Record<Body, DiameterEphemeris>> {
   const { bodies, start, end, timezone } = args;
 
   const bodiesString = bodies.map((body: Body) => symbolByBody[body]).join(" ");
@@ -907,7 +1022,7 @@ export async function getDiameterEphemerisByBody(args: {
   console.log(`🔭 Getting ${message}`);
 
   const diameterEphemerisByBody = {} as Record<Body, DiameterEphemeris>;
-  for await (const body of bodies) {
+  for (const body of bodies) {
     diameterEphemerisByBody[body] = await getDiameterEphemeris({
       body,
       end,
@@ -923,8 +1038,11 @@ export async function getDiameterEphemerisByBody(args: {
 
 // #region 📏 Distance
 
-function parseDistanceEphemeris(text: string) {
-  const ephemerisTable = text.split("$$SOE")[1].split("$$EOE")[0].trim();
+function parseDistanceEphemeris(text: string): DistanceEphemeris {
+  const ephemerisTable = text.split("$$SOE")[1]?.split("$$EOE")[0]?.trim();
+  if (!ephemerisTable) {
+    throw new Error("No distance ephemeris data found");
+  }
 
   const ephemeris: DistanceEphemeris = ephemerisTable
     .split("\n ")
@@ -934,7 +1052,9 @@ function parseDistanceEphemeris(text: string) {
 
       const match = ephemerisLine.match(distanceRegex);
 
-      if (!match) {return ephemeris;}
+      if (!match) {
+        return ephemeris;
+      }
 
       const [, dateString, distanceString, rangeRateString] = match;
 
@@ -965,23 +1085,27 @@ function convertDistanceEphemerisToRecords(
 function convertRecordsToDistanceEphemeris(
   records: EphemerisRecord[]
 ): DistanceEphemeris {
-  return records.reduce<DistanceEphemeris>(
-    (acc, record) => ({
+  return records.reduce<DistanceEphemeris>((acc, record) => {
+    if (record.distance === undefined) {
+      throw new Error(
+        `Record at ${record.timestamp.toISOString()} is missing distance value`
+      );
+    }
+    return {
       ...acc,
       [record.timestamp.toISOString()]: {
-        distance: record.distance!,
+        distance: record.distance,
         range: 0, // Note: range is not stored in database, using 0 as placeholder
       },
-    }),
-    {}
-  );
+    };
+  }, {});
 }
 
 function getDistanceEphemerisUrl(args: {
   body: DistanceEphemerisBody;
   end: Date;
   start: Date;
-}) {
+}): URL {
   const { body, end, start } = args;
 
   const url = getHorizonsBaseUrl({ start, end });
@@ -999,7 +1123,7 @@ export async function getDistanceEphemeris(args: {
   end: Date;
   start: Date;
   timezone: string;
-}) {
+}): Promise<DistanceEphemeris> {
   const { body, end, start, timezone } = args;
 
   const timespan = `${moment.tz(start, timezone).toISOString(true)} to ${moment
@@ -1051,7 +1175,7 @@ export async function getDistanceEphemerisByBody(args: {
   start: Date;
   end: Date;
   timezone: string;
-}) {
+}): Promise<Record<Body, DistanceEphemeris>> {
   const { bodies, start, end, timezone } = args;
 
   const bodiesString = bodies.map((body: Body) => symbolByBody[body]).join(" ");
@@ -1063,7 +1187,7 @@ export async function getDistanceEphemerisByBody(args: {
   console.log(`🔭 Getting ${message}`);
 
   const distanceEphemerisByBody = {} as Record<Body, DistanceEphemeris>;
-  for await (const body of bodies) {
+  for (const body of bodies) {
     distanceEphemerisByBody[body] = await getDistanceEphemeris({
       body,
       end,

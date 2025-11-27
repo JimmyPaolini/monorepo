@@ -1,15 +1,20 @@
 import moment from "moment-timezone";
 
 import { pairDurationEvents } from "../../duration.utilities";
+import {
+  getCoordinateFromEphemeris,
+  getDiameterFromEphemeris,
+} from "../../ephemeris/ephemeris.service";
 
 import { isLunarEclipse, isSolarEclipse } from "./eclipses.utilities";
 
 import type { Event } from "../../calendar.utilities";
-import type { CoordinateEphemeris , DiameterEphemeris } from "../../ephemeris/ephemeris.types";
+import type {
+  CoordinateEphemeris,
+  DiameterEphemeris,
+} from "../../ephemeris/ephemeris.types";
 import type { EclipsePhase } from "../../types";
 import type { Moment } from "moment";
-
-
 
 const categories = ["Astronomy", "Astrology", "Eclipse"];
 
@@ -19,7 +24,7 @@ export function getEclipseEvents(args: {
   moonDiameterEphemeris: DiameterEphemeris;
   sunCoordinateEphemeris: CoordinateEphemeris;
   sunDiameterEphemeris: DiameterEphemeris;
-}) {
+}): Event[] {
   const {
     currentMinute,
     moonCoordinateEphemeris,
@@ -31,25 +36,59 @@ export function getEclipseEvents(args: {
   const previousMinute = currentMinute.clone().subtract(1, "minute");
   const nextMinute = currentMinute.clone().add(1, "minute");
 
-  const { longitude: currentLongitudeMoon, latitude: currentLatitudeMoon } =
-    moonCoordinateEphemeris[currentMinute.toISOString()];
-  const { longitude: currentLongitudeSun, latitude: currentLatitudeSun } =
-    sunCoordinateEphemeris[currentMinute.toISOString()];
+  const currentLongitudeMoon = getCoordinateFromEphemeris(
+    moonCoordinateEphemeris,
+    currentMinute.toISOString(),
+    "longitude"
+  );
+  const currentLatitudeMoon = getCoordinateFromEphemeris(
+    moonCoordinateEphemeris,
+    currentMinute.toISOString(),
+    "latitude"
+  );
+  const currentLongitudeSun = getCoordinateFromEphemeris(
+    sunCoordinateEphemeris,
+    currentMinute.toISOString(),
+    "longitude"
+  );
+  const currentLatitudeSun = getCoordinateFromEphemeris(
+    sunCoordinateEphemeris,
+    currentMinute.toISOString(),
+    "latitude"
+  );
 
-  const { longitude: nextLongitudeMoon } =
-    moonCoordinateEphemeris[nextMinute.toISOString()];
-  const { longitude: nextLongitudeSun } =
-    sunCoordinateEphemeris[nextMinute.toISOString()];
+  const nextLongitudeMoon = getCoordinateFromEphemeris(
+    moonCoordinateEphemeris,
+    nextMinute.toISOString(),
+    "longitude"
+  );
+  const nextLongitudeSun = getCoordinateFromEphemeris(
+    sunCoordinateEphemeris,
+    nextMinute.toISOString(),
+    "longitude"
+  );
 
-  const { longitude: previousLongitudeMoon } =
-    moonCoordinateEphemeris[previousMinute.toISOString()];
-  const { longitude: previousLongitudeSun } =
-    sunCoordinateEphemeris[previousMinute.toISOString()];
+  const previousLongitudeMoon = getCoordinateFromEphemeris(
+    moonCoordinateEphemeris,
+    previousMinute.toISOString(),
+    "longitude"
+  );
+  const previousLongitudeSun = getCoordinateFromEphemeris(
+    sunCoordinateEphemeris,
+    previousMinute.toISOString(),
+    "longitude"
+  );
 
-  const { diameter: currentDiameterMoon } =
-    moonDiameterEphemeris[currentMinute.toISOString()];
-  const { diameter: currentDiameterSun } =
-    sunDiameterEphemeris[currentMinute.toISOString()];
+  const currentDiameterMoon = getDiameterFromEphemeris(
+    moonDiameterEphemeris,
+    currentMinute.toISOString(),
+    "currentDiameterMoon"
+  );
+  const currentDiameterSun = getDiameterFromEphemeris(
+    sunDiameterEphemeris,
+    currentMinute.toISOString(),
+    "currentDiameterSun"
+  );
 
   const params = {
     currentDiameterMoon,
@@ -92,7 +131,7 @@ export function getSolarEclipseEvent(args: {
   date: Date;
   phase: EclipsePhase;
   // type: "partial" | "total" | "annular";
-}) {
+}): Event {
   const { date, phase } = args;
 
   let description: string;
@@ -126,7 +165,7 @@ export function getLunarEclipseEvent(args: {
   date: Date;
   phase: EclipsePhase;
   // type: "partial" | "total" | "penumbral";
-}) {
+}): Event {
   const { date, phase } = args;
 
   let description: string;
@@ -160,12 +199,12 @@ export function getEclipseDurationEvents(events: Event[]): Event[] {
   const durationEvents: Event[] = [];
 
   const eclipseEvents = events.filter((event) =>
-    event.categories?.includes("Eclipse")
+    event.categories.includes("Eclipse")
   );
 
   // Process solar eclipses
   const solarEvents = eclipseEvents.filter((event) =>
-    event.categories?.includes("Solar")
+    event.categories.includes("Solar")
   );
   const solarBeginnings = solarEvents.filter((event) =>
     event.description.includes("begins")
@@ -188,7 +227,7 @@ export function getEclipseDurationEvents(events: Event[]): Event[] {
 
   // Process lunar eclipses
   const lunarEvents = eclipseEvents.filter((event) =>
-    event.categories?.includes("Lunar")
+    event.categories.includes("Lunar")
   );
   const lunarBeginnings = lunarEvents.filter((event) =>
     event.description.includes("begins")

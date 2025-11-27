@@ -59,7 +59,7 @@ export const DEFAULT_TEST_DATE = new Date("2025-06-15T12:00:00Z");
  *
  * @param date - Optional custom date to use instead of DEFAULT_TEST_DATE
  */
-export function mockDates(date: Date = DEFAULT_TEST_DATE) {
+export function mockDates(date: Date = DEFAULT_TEST_DATE): void {
   beforeEach(() => {
     vi.useFakeTimers();
     vi.setSystemTime(date);

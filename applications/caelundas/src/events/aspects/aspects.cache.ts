@@ -53,7 +53,10 @@ export function clearAngleCache(): void {
 /**
  * Get cache statistics for debugging/monitoring
  */
-export function getAngleCacheStats() {
+export function getAngleCacheStats(): {
+  size: number;
+  ephemerisSize: number;
+} {
   return {
     size: angleCache.size,
     ephemerisSize: ephemerisCache.size,
@@ -77,10 +80,17 @@ export function canFormAspect(args: {
 
   if (longitudes.length === 3 && requiredAngles.length === 3) {
     // For triple aspects (T-Square, Yod, etc.)
+    const long0 = longitudes[0];
+    const long1 = longitudes[1];
+    const long2 = longitudes[2];
+    if (long0 === undefined || long1 === undefined || long2 === undefined) {
+      return true;
+    }
+
     const angles = [
-      getAngle(longitudes[0], longitudes[1]),
-      getAngle(longitudes[0], longitudes[2]),
-      getAngle(longitudes[1], longitudes[2]),
+      getAngle(long0, long1),
+      getAngle(long0, long2),
+      getAngle(long1, long2),
     ];
 
     // Check if any permutation of angles could match the required pattern
@@ -88,10 +98,28 @@ export function canFormAspect(args: {
     const buffer = maxOrb * 2;
 
     for (let i = 0; i < 3; i++) {
+      const angle0 = angles[0];
+      const angle1 = angles[1];
+      const angle2 = angles[2];
+      const req0 = requiredAngles[(i + 0) % 3];
+      const req1 = requiredAngles[(i + 1) % 3];
+      const req2 = requiredAngles[(i + 2) % 3];
+
+      if (
+        angle0 === undefined ||
+        angle1 === undefined ||
+        angle2 === undefined ||
+        req0 === undefined ||
+        req1 === undefined ||
+        req2 === undefined
+      ) {
+        continue;
+      }
+
       const deviations = [
-        Math.abs(angles[0] - requiredAngles[(i + 0) % 3]),
-        Math.abs(angles[1] - requiredAngles[(i + 1) % 3]),
-        Math.abs(angles[2] - requiredAngles[(i + 2) % 3]),
+        Math.abs(angle0 - req0),
+        Math.abs(angle1 - req1),
+        Math.abs(angle2 - req2),
       ];
 
       // If all angles are within buffer range, this could be an aspect
@@ -152,7 +180,12 @@ export function couldBeKite(
   // Quick check: need at least one pair ~180° apart
   for (let i = 0; i < 4; i++) {
     for (let j = i + 1; j < 4; j++) {
-      const angle = getAngle(longitudes[i], longitudes[j]);
+      const longI = longitudes[i];
+      const longJ = longitudes[j];
+      if (longI === undefined || longJ === undefined) {
+        continue;
+      }
+      const angle = getAngle(longI, longJ);
       if (Math.abs(angle - 180) <= 20) {
         // Generous pre-filter
         return true;
@@ -174,7 +207,12 @@ export function couldBeGrandCross(
 
   for (let i = 0; i < 4; i++) {
     for (let j = i + 1; j < 4; j++) {
-      const angle = getAngle(longitudes[i], longitudes[j]);
+      const longI = longitudes[i];
+      const longJ = longitudes[j];
+      if (longI === undefined || longJ === undefined) {
+        continue;
+      }
+      const angle = getAngle(longI, longJ);
       if (Math.abs(angle - 180) <= 20) {
         oppositionCount++;
       }
@@ -199,7 +237,12 @@ export function couldBePentagram(
 
   for (let i = 0; i < 5; i++) {
     for (let j = i + 1; j < 5; j++) {
-      const angle = getAngle(longitudes[i], longitudes[j]);
+      const longI = longitudes[i];
+      const longJ = longitudes[j];
+      if (longI === undefined || longJ === undefined) {
+        continue;
+      }
+      const angle = getAngle(longI, longJ);
       // Check if close to 72° or 144°
       if (Math.abs(angle - 72) <= buffer || Math.abs(angle - 144) <= buffer) {
         quintileCount++;
@@ -230,6 +273,9 @@ export function couldBeHexagram(
   for (let i = 0; i < 6; i++) {
     const current = sorted[i];
     const next = sorted[(i + 1) % 6];
+    if (current === undefined || next === undefined) {
+      return false; // Should never happen with valid input
+    }
     const spacing =
       i === 5
         ? 360 - current + next // Wrap around from last to first
@@ -245,7 +291,12 @@ export function couldBeHexagram(
   let oppositionCount = 0;
   for (let i = 0; i < 6; i++) {
     for (let j = i + 1; j < 6; j++) {
-      const angle = getAngle(longitudes[i], longitudes[j]);
+      const longI = longitudes[i];
+      const longJ = longitudes[j];
+      if (longI === undefined || longJ === undefined) {
+        continue;
+      }
+      const angle = getAngle(longI, longJ);
       if (Math.abs(angle - 180) <= buffer) {
         oppositionCount++;
       }
@@ -259,10 +310,7 @@ export function couldBeHexagram(
 /**
  * Pre-filter for Stellium: requires planets to be closely grouped (within conjunction orb)
  */
-export function couldBeStellium(
-  longitudes: number[],
-  maxOrb = 10
-): boolean {
+export function couldBeStellium(longitudes: number[], maxOrb = 10): boolean {
   // Stellium: 3+ planets all within a tight orb (typically 8-10°)
   // Quick check: find the span from min to max longitude
 
@@ -274,7 +322,12 @@ export function couldBeStellium(
   const sorted = [...longitudes].sort((a, b) => a - b);
 
   // Calculate the span (accounting for zodiac wrap-around at 0°/360°)
-  const span1 = sorted[sorted.length - 1] - sorted[0]; // Direct span
+  const sortedLast = sorted[sorted.length - 1];
+  const sortedFirst = sorted[0];
+  if (sortedLast === undefined || sortedFirst === undefined) {
+    return false;
+  }
+  const span1 = sortedLast - sortedFirst; // Direct span
   const span2 = 360 - span1; // Wrap-around span
 
   const minSpan = Math.min(span1, span2);

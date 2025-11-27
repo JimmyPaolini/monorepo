@@ -58,10 +58,14 @@ $$EOE`;
       expect(result).toBeDefined();
       expect(Object.keys(result)).toHaveLength(2);
       const firstKey = Object.keys(result)[0];
+      expect(firstKey).toBeDefined();
+      if (!firstKey) {
+        throw new Error("firstKey is undefined");
+      }
       expect(result[firstKey]).toHaveProperty("longitude");
       expect(result[firstKey]).toHaveProperty("latitude");
-      expect(result[firstKey].longitude).toBe(120.5);
-      expect(result[firstKey].latitude).toBe(-5.2);
+      expect(result[firstKey]?.longitude).toBe(120.5);
+      expect(result[firstKey]?.latitude).toBe(-5.2);
     });
 
     it("should handle planets, asteroids, and comets", async () => {
@@ -154,10 +158,14 @@ $$EOE`;
 
       expect(result).toBeDefined();
       const firstKey = Object.keys(result)[0];
+      expect(firstKey).toBeDefined();
+      if (!firstKey) {
+        throw new Error("firstKey is undefined");
+      }
       expect(result[firstKey]).toHaveProperty("longitude");
       expect(result[firstKey]).toHaveProperty("latitude");
-      expect(result[firstKey].latitude).toBe(0); // Nodes always have 0 latitude
-      expect(result[firstKey].longitude).toBe(144.525); // OM value
+      expect(result[firstKey]?.latitude).toBe(0); // Nodes always have 0 latitude
+      expect(result[firstKey]?.longitude).toBe(144.525); // OM value
     });
 
     it("should calculate south lunar node coordinates (opposite of north)", async () => {
@@ -179,8 +187,12 @@ $$EOE`;
       });
 
       const firstKey = Object.keys(result)[0];
-      expect(result[firstKey].longitude).toBe(324.525); // OM + 180
-      expect(result[firstKey].latitude).toBe(0);
+      expect(firstKey).toBeDefined();
+      if (!firstKey) {
+        throw new Error("firstKey is undefined");
+      }
+      expect(result[firstKey]?.longitude).toBe(324.525); // OM + 180
+      expect(result[firstKey]?.latitude).toBe(0);
     });
 
     it("should calculate lunar perigee coordinates (OM + W)", async () => {
@@ -202,8 +214,12 @@ $$EOE`;
       });
 
       const firstKey = Object.keys(result)[0];
-      expect(result[firstKey].longitude).toBeCloseTo(219.525, 2); // OM + W
-      expect(result[firstKey].latitude).toBe(0);
+      expect(firstKey).toBeDefined();
+      if (!firstKey) {
+        throw new Error("firstKey is undefined");
+      }
+      expect(result[firstKey]?.longitude).toBeCloseTo(219.525, 2); // OM + W
+      expect(result[firstKey]?.latitude).toBe(0);
     });
 
     it("should calculate lunar apogee coordinates (OM + W + 180)", async () => {
@@ -225,8 +241,12 @@ $$EOE`;
       });
 
       const firstKey = Object.keys(result)[0];
-      expect(result[firstKey].longitude).toBeCloseTo(39.525, 2); // OM + W + 180
-      expect(result[firstKey].latitude).toBe(0);
+      expect(firstKey).toBeDefined();
+      if (!firstKey) {
+        throw new Error("firstKey is undefined");
+      }
+      expect(result[firstKey]?.longitude).toBeCloseTo(39.525, 2); // OM + W + 180
+      expect(result[firstKey]?.latitude).toBe(0);
     });
   });
 
@@ -295,10 +315,14 @@ $$EOE`;
 
       expect(result).toBeDefined();
       const firstKey = Object.keys(result)[0];
+      expect(firstKey).toBeDefined();
+      if (!firstKey) {
+        throw new Error("firstKey is undefined");
+      }
       expect(result[firstKey]).toHaveProperty("azimuth");
       expect(result[firstKey]).toHaveProperty("elevation");
-      expect(result[firstKey].azimuth).toBe(90.5);
-      expect(result[firstKey].elevation).toBe(45.2);
+      expect(result[firstKey]?.azimuth).toBe(90.5);
+      expect(result[firstKey]?.elevation).toBe(45.2);
     });
 
     it("should use coordinates for observer location", async () => {
@@ -366,8 +390,12 @@ $$EOE`;
 
       expect(result).toBeDefined();
       const firstKey = Object.keys(result)[0];
+      expect(firstKey).toBeDefined();
+      if (!firstKey) {
+        throw new Error("firstKey is undefined");
+      }
       expect(result[firstKey]).toHaveProperty("illumination");
-      expect(result[firstKey].illumination).toBe(0.567);
+      expect(result[firstKey]?.illumination).toBe(0.567);
     });
 
     it("should handle different illumination bodies", async () => {
@@ -449,9 +477,13 @@ $$EOE`;
 
       expect(result).toBeDefined();
       const firstKey = Object.keys(result)[0];
+      expect(firstKey).toBeDefined();
+      if (!firstKey) {
+        throw new Error("firstKey is undefined");
+      }
       expect(result[firstKey]).toHaveProperty("diameter");
       // 1920.5 arcseconds / 3600 arcseconds per degree
-      expect(result[firstKey].diameter).toBeCloseTo(0.53347, 4);
+      expect(result[firstKey]?.diameter).toBeCloseTo(0.53347, 4);
     });
 
     it("should handle sun and moon bodies", async () => {
@@ -521,8 +553,12 @@ $$EOE`;
 
       expect(result).toBeDefined();
       const firstKey = Object.keys(result)[0];
+      expect(firstKey).toBeDefined();
+      if (!firstKey) {
+        throw new Error("firstKey is undefined");
+      }
       expect(result[firstKey]).toHaveProperty("distance");
-      expect(result[firstKey].distance).toBe(1.0001);
+      expect(result[firstKey]?.distance).toBe(1.0001);
     });
 
     it("should handle sun and inner planets", async () => {
@@ -609,6 +645,10 @@ $$EOE`;
 
       expect(result).toBeDefined();
       const firstKey = Object.keys(result)[0];
+      expect(firstKey).toBeDefined();
+      if (!firstKey) {
+        throw new Error("firstKey is undefined");
+      }
       expect(result[firstKey]).toHaveProperty("eccentricity");
       expect(result[firstKey]).toHaveProperty("periapsisDistance");
       expect(result[firstKey]).toHaveProperty("inclination");
@@ -622,10 +662,10 @@ $$EOE`;
       expect(result[firstKey]).toHaveProperty("apoapsisDistance");
       expect(result[firstKey]).toHaveProperty("siderealOrbitPeriod");
 
-      expect(result[firstKey].eccentricity).toBeCloseTo(0.05456, 4);
-      expect(result[firstKey].inclination).toBeCloseTo(5.1454, 4);
-      expect(result[firstKey].longitudeOfAscendingNode).toBe(144.525);
-      expect(result[firstKey].argumentOfPerifocus).toBe(75.0);
+      expect(result[firstKey]?.eccentricity).toBeCloseTo(0.05456, 4);
+      expect(result[firstKey]?.inclination).toBeCloseTo(5.1454, 4);
+      expect(result[firstKey]?.longitudeOfAscendingNode).toBe(144.525);
+      expect(result[firstKey]?.argumentOfPerifocus).toBe(75.0);
     });
 
     it("should handle scientific notation in orbital elements", async () => {
@@ -647,7 +687,11 @@ $$EOE`;
       });
 
       const firstKey = Object.keys(result)[0];
-      expect(result[firstKey].timeOfPeriapsis).toBeCloseTo(2460397.1, 1);
+      expect(firstKey).toBeDefined();
+      if (!firstKey) {
+        throw new Error("firstKey is undefined");
+      }
+      expect(result[firstKey]?.timeOfPeriapsis).toBeCloseTo(2460397.1, 1);
     });
   });
 });

@@ -4,7 +4,6 @@ import { aspects, bodies } from "../../constants";
 import { aspectPhases } from "../../types";
 
 import type { Event } from "../../calendar.utilities";
-import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 import type { Aspect, AspectPhase, Body } from "../../types";
 import type { Moment } from "moment";
 
@@ -45,7 +44,10 @@ export function parseAspectEvents(events: Event[]): AspectEdge[] {
       for (const category of normalizedCategories) {
         const bodyIndex = bodiesLowercase.indexOf(category);
         if (bodyIndex !== -1) {
-          bodiesInEvent.push(bodies[bodyIndex]);
+          const body = bodies[bodyIndex];
+          if (body) {
+            bodiesInEvent.push(body);
+          }
         }
       }
 
@@ -71,9 +73,15 @@ export function parseAspectEvents(events: Event[]): AspectEdge[] {
         continue; // No phase found
       }
 
+      const body1 = bodiesInEvent[0];
+      const body2 = bodiesInEvent[1];
+      if (!body1 || !body2) {
+        continue; // Invalid body assignment
+      }
+
       edges.push({
-        body1: bodiesInEvent[0],
-        body2: bodiesInEvent[1],
+        body1,
+        body2,
         aspectType,
         phase,
         event,
@@ -108,8 +116,12 @@ export function involvesBody(edge: AspectEdge, body: Body): boolean {
  * Get the other body in an aspect edge
  */
 export function getOtherBody(edge: AspectEdge, body: Body): Body | null {
-  if (edge.body1 === body) {return edge.body2;}
-  if (edge.body2 === body) {return edge.body1;}
+  if (edge.body1 === body) {
+    return edge.body2;
+  }
+  if (edge.body2 === body) {
+    return edge.body1;
+  }
   return null;
 }
 
@@ -172,7 +184,7 @@ export function determineMultiBodyPhase(
 
   // Filter edges by timestamp and involved bodies
   const bodySet = new Set(bodies);
-  const filterEdges = (timestamp: number) =>
+  const filterEdges = (timestamp: number): AspectEdge[] =>
     allAspectEdges.filter(
       (edge) =>
         edge.event.start.getTime() <= timestamp &&
@@ -187,7 +199,9 @@ export function determineMultiBodyPhase(
 
   // Check if pattern exists at each time point
   const currentExists = checkPatternExists(currentEdges);
-  if (!currentExists) {return null;}
+  if (!currentExists) {
+    return null;
+  }
 
   const previousExists = checkPatternExists(previousEdges);
   const nextExists = checkPatternExists(nextEdges);
@@ -195,11 +209,11 @@ export function determineMultiBodyPhase(
   // Determine phase based on existence only
   // Note: "exact" phase removed to avoid duplicate events - only track forming/dissolving
 
-  if (!previousExists && currentExists) {
+  if (!previousExists) {
     return "forming";
   }
 
-  if (currentExists && !nextExists) {
+  if (!nextExists) {
     return "dissolving";
   }
 

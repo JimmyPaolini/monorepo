@@ -43,8 +43,9 @@ describe("dailyLunarCycle.events", () => {
       });
 
       expect(events).toHaveLength(1);
-      expect(events[0].summary).toContain("Moonrise");
-      expect(events[0].categories).toContain("Lunar");
+      expect(events[0]).toBeDefined();
+      expect(events[0]?.summary).toContain("Moonrise");
+      expect(events[0]?.categories).toContain("Lunar");
     });
 
     it("should detect moonset event when moon sets below horizon", () => {
@@ -65,8 +66,9 @@ describe("dailyLunarCycle.events", () => {
       });
 
       expect(events).toHaveLength(1);
-      expect(events[0].summary).toContain("Moonset");
-      expect(events[0].categories).toContain("Lunar");
+      expect(events[0]).toBeDefined();
+      expect(events[0]?.summary).toContain("Moonset");
+      expect(events[0]?.categories).toContain("Lunar");
     });
 
     it("should detect lunar zenith when moon reaches maximum elevation", () => {
@@ -87,8 +89,9 @@ describe("dailyLunarCycle.events", () => {
       });
 
       expect(events).toHaveLength(1);
-      expect(events[0].summary).toContain("Lunar Zenith");
-      expect(events[0].categories).toContain("Daily Lunar Cycle");
+      expect(events[0]).toBeDefined();
+      expect(events[0]?.summary).toContain("Lunar Zenith");
+      expect(events[0]?.categories).toContain("Daily Lunar Cycle");
     });
 
     it("should detect lunar nadir when moon reaches minimum elevation", () => {
@@ -109,8 +112,9 @@ describe("dailyLunarCycle.events", () => {
       });
 
       expect(events).toHaveLength(1);
-      expect(events[0].summary).toContain("Lunar Nadir");
-      expect(events[0].categories).toContain("Daily Lunar Cycle");
+      expect(events[0]).toBeDefined();
+      expect(events[0]?.summary).toContain("Lunar Nadir");
+      expect(events[0]?.categories).toContain("Daily Lunar Cycle");
     });
 
     it("should return empty array when no events occur", () => {
@@ -153,7 +157,7 @@ describe("dailyLunarCycle.events", () => {
       // Should have at least moonrise or zenith (depends on exact threshold)
       expect(events.length).toBeGreaterThanOrEqual(1);
       expect(
-        events.some((e) => e.categories?.includes("Daily Lunar Cycle"))
+        events.some((e) => e.categories.includes("Daily Lunar Cycle"))
       ).toBe(true);
     });
   });

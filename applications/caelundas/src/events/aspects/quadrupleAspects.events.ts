@@ -41,13 +41,21 @@ function composeGrandCrosses(
   const squares = aspectsByType.get("square") || [];
 
   // Need at least 2 oppositions and 4 squares
-  if (oppositions.length < 2 || squares.length < 4) {return events;}
+  if (oppositions.length < 2 || squares.length < 4) {
+    return events;
+  }
 
   // Try each pair of oppositions
   for (let i = 0; i < oppositions.length; i++) {
     const opp1 = oppositions[i];
+    if (!opp1) {
+      continue;
+    }
     for (let j = i + 1; j < oppositions.length; j++) {
       const opp2 = oppositions[j];
+      if (!opp2) {
+        continue;
+      }
 
       // Collect all 4 unique bodies from both oppositions
       const bodies = new Set<Body>([
@@ -56,7 +64,9 @@ function composeGrandCrosses(
         opp2.body1,
         opp2.body2,
       ]);
-      if (bodies.size !== 4) {continue;}
+      if (bodies.size !== 4) {
+        continue;
+      }
 
       const bodyList = Array.from(bodies);
 
@@ -65,10 +75,15 @@ function composeGrandCrosses(
       for (const body of bodyList) {
         // Find which body is opposite to this one
         let oppositeBody: Body | null = null;
-        if (opp1.body1 === body) {oppositeBody = opp1.body2;}
-        else if (opp1.body2 === body) {oppositeBody = opp1.body1;}
-        else if (opp2.body1 === body) {oppositeBody = opp2.body2;}
-        else if (opp2.body2 === body) {oppositeBody = opp2.body1;}
+        if (opp1.body1 === body) {
+          oppositeBody = opp1.body2;
+        } else if (opp1.body2 === body) {
+          oppositeBody = opp1.body1;
+        } else if (opp2.body1 === body) {
+          oppositeBody = opp2.body2;
+        } else if (opp2.body2 === body) {
+          oppositeBody = opp2.body1;
+        }
 
         if (!oppositeBody) {
           hasAllSquares = false;
@@ -85,7 +100,9 @@ function composeGrandCrosses(
             break;
           }
         }
-        if (!hasAllSquares) {break;}
+        if (!hasAllSquares) {
+          break;
+        }
       }
 
       if (hasAllSquares) {
@@ -114,17 +131,26 @@ function composeGrandCrosses(
               "opposite",
               oppositionsAtTime
             );
-            if (!hasOpp1 || !hasOpp2) {return false;}
+            if (!hasOpp1 || !hasOpp2) {
+              return false;
+            }
 
             // Verify all adjacent pairs are in square
             for (const body of bodyList) {
               let oppositeBody: Body | null = null;
-              if (opp1.body1 === body) {oppositeBody = opp1.body2;}
-              else if (opp1.body2 === body) {oppositeBody = opp1.body1;}
-              else if (opp2.body1 === body) {oppositeBody = opp2.body2;}
-              else if (opp2.body2 === body) {oppositeBody = opp2.body1;}
+              if (opp1.body1 === body) {
+                oppositeBody = opp1.body2;
+              } else if (opp1.body2 === body) {
+                oppositeBody = opp1.body1;
+              } else if (opp2.body1 === body) {
+                oppositeBody = opp2.body2;
+              } else if (opp2.body2 === body) {
+                oppositeBody = opp2.body1;
+              }
 
-              if (!oppositeBody) {return false;}
+              if (!oppositeBody) {
+                return false;
+              }
 
               const adjacentBodies = bodyList.filter(
                 (b) => b !== body && b !== oppositeBody
@@ -140,7 +166,7 @@ function composeGrandCrosses(
           }
         );
 
-        if (phase) {
+        if (phase && bodyList[0] && bodyList[1] && bodyList[2] && bodyList[3]) {
           events.push(
             getQuadrupleAspectEvent({
               timestamp: currentMinute.toDate(),
@@ -181,29 +207,48 @@ function composeKites(allEdges: AspectEdge[], currentMinute: Moment): Event[] {
   const oppositions = aspectsByType.get("opposite") || [];
   const sextiles = aspectsByType.get("sextile") || [];
 
-  if (trines.length < 3 || oppositions.length < 1 || sextiles.length < 2)
-    {return events;}
+  if (trines.length < 3 || oppositions.length < 1 || sextiles.length < 2) {
+    return events;
+  }
 
   // First find all grand trines (3 bodies all in trine with each other)
   const grandTrines: Set<Body>[] = [];
   for (let i = 0; i < trines.length; i++) {
+    const trineI = trines[i];
+    if (!trineI) {
+      continue;
+    }
     for (let j = i + 1; j < trines.length; j++) {
+      const trineJ = trines[j];
+      if (!trineJ) {
+        continue;
+      }
       for (let k = j + 1; k < trines.length; k++) {
+        const trineK = trines[k];
+        if (!trineK) {
+          continue;
+        }
         const bodies = new Set<Body>([
-          trines[i].body1,
-          trines[i].body2,
-          trines[j].body1,
-          trines[j].body2,
-          trines[k].body1,
-          trines[k].body2,
+          trineI.body1,
+          trineI.body2,
+          trineJ.body1,
+          trineJ.body2,
+          trineK.body1,
+          trineK.body2,
         ]);
 
         if (bodies.size === 3) {
           const bodyList = Array.from(bodies);
+          const body0 = bodyList[0];
+          const body1 = bodyList[1];
+          const body2 = bodyList[2];
           if (
-            haveAspect(bodyList[0], bodyList[1], "trine", edges) &&
-            haveAspect(bodyList[0], bodyList[2], "trine", edges) &&
-            haveAspect(bodyList[1], bodyList[2], "trine", edges)
+            body0 &&
+            body1 &&
+            body2 &&
+            haveAspect(body0, body1, "trine", edges) &&
+            haveAspect(body0, body2, "trine", edges) &&
+            haveAspect(body1, body2, "trine", edges)
           ) {
             grandTrines.push(bodies);
           }
@@ -220,17 +265,25 @@ function composeKites(allEdges: AspectEdge[], currentMinute: Moment): Event[] {
       const otherTwo = gtList.filter((b) => b !== baseBody);
 
       for (const opp of oppositions) {
-        if (!involvesBody(opp, baseBody)) {continue;}
+        if (!involvesBody(opp, baseBody)) {
+          continue;
+        }
 
         const fourthBody = getOtherBody(opp, baseBody);
-        if (!fourthBody || gtBodies.has(fourthBody)) {continue;}
+        if (!fourthBody || gtBodies.has(fourthBody)) {
+          continue;
+        }
 
+        const other0 = otherTwo[0];
+        const other1 = otherTwo[1];
         if (
-          haveAspect(fourthBody, otherTwo[0], "sextile", edges) &&
-          haveAspect(fourthBody, otherTwo[1], "sextile", edges)
+          other0 &&
+          other1 &&
+          haveAspect(fourthBody, other0, "sextile", edges) &&
+          haveAspect(fourthBody, other1, "sextile", edges)
         ) {
           // Found a Kite!
-          const bodies = [baseBody, otherTwo[0], otherTwo[1], fourthBody];
+          const bodies = [baseBody, other0, other1, fourthBody];
 
           const phase = determineMultiBodyPhase(
             allEdges,
@@ -241,16 +294,16 @@ function composeKites(allEdges: AspectEdge[], currentMinute: Moment): Event[] {
               // Check if all required aspects exist
               return (
                 haveAspect(baseBody, fourthBody, "opposite", edgesAtTime) &&
-                haveAspect(baseBody, otherTwo[0], "trine", edgesAtTime) &&
-                haveAspect(baseBody, otherTwo[1], "trine", edgesAtTime) &&
-                haveAspect(otherTwo[0], otherTwo[1], "trine", edgesAtTime) &&
-                haveAspect(fourthBody, otherTwo[0], "sextile", edgesAtTime) &&
-                haveAspect(fourthBody, otherTwo[1], "sextile", edgesAtTime)
+                haveAspect(baseBody, other0, "trine", edgesAtTime) &&
+                haveAspect(baseBody, other1, "trine", edgesAtTime) &&
+                haveAspect(other0, other1, "trine", edgesAtTime) &&
+                haveAspect(fourthBody, other0, "sextile", edgesAtTime) &&
+                haveAspect(fourthBody, other1, "sextile", edgesAtTime)
               );
             }
           );
 
-          if (phase) {
+          if (phase && bodies[0] && bodies[1] && bodies[2] && bodies[3]) {
             events.push(
               getQuadrupleAspectEvent({
                 timestamp: currentMinute.toDate(),
@@ -321,9 +374,13 @@ function getQuadrupleAspectEvent(params: {
     : `${bodiesSorted.join(", ")} ${quadrupleAspect} ${phase}`;
 
   let phaseEmoji = "";
-  if (phase === "forming") {phaseEmoji = "➡️ ";}
-  else if (phase === "exact") {phaseEmoji = "🎯 ";}
-  else if (phase === "dissolving") {phaseEmoji = "⬅️ ";}
+  if (phase === "forming") {
+    phaseEmoji = "➡️ ";
+  } else if (phase === "exact") {
+    phaseEmoji = "🎯 ";
+  } else {
+    phaseEmoji = "⬅️ ";
+  }
 
   const summary = `${phaseEmoji}${quadrupleAspectSymbol} ${body1Symbol}-${body2Symbol}-${body3Symbol}-${body4Symbol} ${description}`;
 
@@ -347,8 +404,8 @@ function getQuadrupleAspectEvent(params: {
   return {
     start: timestamp,
     end: timestamp,
-    description: description as any,
-    summary: summary as any,
+    description,
+    summary,
     categories,
   } as Event;
 }
@@ -383,7 +440,9 @@ export function getQuadrupleAspectDurationEvents(events: Event[]): Event[] {
   const groupedEvents = _.groupBy(quadrupleAspectEvents, (event) => {
     const planets = event.categories
       .filter((category) =>
-        quadrupleAspectBodies.map(_.startCase).includes(category)
+        quadrupleAspectBodies
+          .map((quadrupleAspectBody) => _.startCase(quadrupleAspectBody))
+          .includes(category)
       )
       .sort();
 
@@ -400,13 +459,21 @@ export function getQuadrupleAspectDurationEvents(events: Event[]): Event[] {
 
     for (let i = 0; i < sortedEvents.length; i++) {
       const currentEvent = sortedEvents[i];
+      if (!currentEvent) {
+        continue;
+      }
 
       // Skip if not a forming event
-      if (!currentEvent.categories.includes("Forming")) {continue;}
+      if (!currentEvent.categories.includes("Forming")) {
+        continue;
+      }
 
       // Look for the next dissolving event
       for (let j = i + 1; j < sortedEvents.length; j++) {
         const potentialDissolvingEvent = sortedEvents[j];
+        if (!potentialDissolvingEvent) {
+          continue;
+        }
 
         if (potentialDissolvingEvent.categories.includes("Dissolving")) {
           // Create duration event

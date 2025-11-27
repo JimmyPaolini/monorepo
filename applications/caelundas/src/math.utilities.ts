@@ -8,19 +8,21 @@ export function normalizeDegrees(degrees: number): number {
   return ((degrees % 360) + 360) % 360;
 }
 
-export function getAngle(longitude1: Longitude, longitude2: Longitude) {
+export function getAngle(longitude1: Longitude, longitude2: Longitude): number {
   const normalizedLongitude1 = normalizeDegrees(longitude1);
   const normalizedLongitude2 = normalizeDegrees(longitude2);
 
   let angle = Math.abs(normalizedLongitude1 - normalizedLongitude2);
-  if (angle > 180) {angle = 360 - angle;}
+  if (angle > 180) {
+    angle = 360 - angle;
+  }
   return angle;
 }
 
 export function normalizeForComparison(
   current: Longitude,
   reference: Longitude
-) {
+): number {
   if (Math.abs(current - reference) > 180) {
     return current < reference ? current + 360 : current - 360;
   }
@@ -31,7 +33,7 @@ export function isMaximum(args: {
   current: number;
   previous: number;
   next: number;
-}) {
+}): boolean {
   const { current, previous, next } = args;
   return previous < current && current > next;
 }
@@ -40,7 +42,7 @@ export function isMinimum(args: {
   current: number;
   previous: number;
   next: number;
-}) {
+}): boolean {
   const { current, previous, next } = args;
   return previous > current && current < next;
 }
@@ -51,16 +53,19 @@ export function isMinimum(args: {
 export function getCombinations<T>(array: T[], k: number): T[][] {
   const result: T[][] = [];
 
-  function combine(start: number, chosen: T[]) {
+  function combine(start: number, chosen: T[]): void {
     if (chosen.length === k) {
       result.push([...chosen]);
       return;
     }
 
     for (let i = start; i < array.length; i++) {
-      chosen.push(array[i]);
-      combine(i + 1, chosen);
-      chosen.pop();
+      const element = array[i];
+      if (element) {
+        chosen.push(element);
+        combine(i + 1, chosen);
+        chosen.pop();
+      }
     }
   }
 

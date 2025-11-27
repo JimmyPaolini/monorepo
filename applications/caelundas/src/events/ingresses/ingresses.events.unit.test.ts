@@ -7,7 +7,6 @@ import {
   signIngressBodies,
 } from "../../types";
 
-import type { Event } from "../../calendar.utilities";
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 import type { Body } from "../../types";
 
@@ -30,20 +29,6 @@ vi.mock("../../output.utilities", () => ({
 }));
 
 describe("ingresses.events", () => {
-  function createCoordinateEphemeris(args: {
-    timestamps: string[];
-    longitude: number;
-  }): CoordinateEphemeris {
-    const ephemeris: CoordinateEphemeris = {};
-    args.timestamps.forEach((timestamp) => {
-      ephemeris[timestamp] = {
-        longitude: args.longitude,
-        latitude: 0,
-      };
-    });
-    return ephemeris;
-  }
-
   describe("getSignIngressEvent", () => {
     it("should create a sign ingress event for Sun entering Aries", async () => {
       const { getSignIngressEvent } = await import("./ingresses.events");
@@ -57,13 +42,13 @@ describe("ingresses.events", () => {
       expect(event).toMatchObject({
         start: new Date("2024-03-20T03:06:00.000Z"),
         end: new Date("2024-03-20T03:06:00.000Z"),
-        summary: expect.stringContaining("Aries"),
-        description: expect.stringContaining("Sun"),
-        categories: expect.arrayContaining([
+        summary: expect.stringContaining("Aries") as string,
+        description: expect.stringContaining("Sun") as string,
+        categories: expect.arrayContaining<string>([
           "Astronomy",
           "Astrology",
           "Ingress",
-        ]),
+        ]) as string[],
       });
       expect(event.categories).toContain("Aries");
       expect(event.categories).toContain("Sun");
@@ -113,8 +98,8 @@ describe("ingresses.events", () => {
       });
 
       expect(events).toHaveLength(1);
-      expect(events[0].summary).toContain("Aries");
-      expect(events[0].categories).toContain("Sun");
+      expect(events[0]?.summary).toContain("Aries");
+      expect(events[0]?.categories).toContain("Sun");
     });
 
     it("should not detect ingress when no boundary is crossed", async () => {
@@ -250,7 +235,7 @@ describe("ingresses.events", () => {
       });
 
       expect(events).toHaveLength(1);
-      expect(events[0].categories).toContain("Decan");
+      expect(events[0]?.categories).toContain("Decan");
     });
 
     it("should not detect ingress when no decan boundary is crossed", async () => {
@@ -377,7 +362,7 @@ describe("ingresses.events", () => {
       });
 
       expect(events).toHaveLength(1);
-      expect(events[0].categories).toContain("Peak");
+      expect(events[0]?.categories).toContain("Peak");
     });
 
     it("should not detect ingress when no peak boundary is crossed", async () => {
@@ -477,14 +462,14 @@ describe("ingresses.events", () => {
       const durationEvents = getSignIngressDurationEvents(events);
 
       expect(durationEvents).toHaveLength(1);
-      expect(durationEvents[0].start).toEqual(
+      expect(durationEvents[0]?.start).toEqual(
         new Date("2024-03-20T03:06:00.000Z")
       );
-      expect(durationEvents[0].end).toEqual(
+      expect(durationEvents[0]?.end).toEqual(
         new Date("2024-04-19T15:00:00.000Z")
       );
-      expect(durationEvents[0].categories).toContain("Sun");
-      expect(durationEvents[0].categories).toContain("Aries");
+      expect(durationEvents[0]?.categories).toContain("Sun");
+      expect(durationEvents[0]?.categories).toContain("Aries");
     });
 
     it("should handle empty array", async () => {

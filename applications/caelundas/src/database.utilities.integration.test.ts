@@ -6,7 +6,7 @@ import sqlite3 from "sqlite3";
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import type { Event } from "./calendar.utilities";
-import type { Body } from "./types";
+import type { EphemerisRecord } from "./database.utilities";
 
 // Use a temporary database file for testing
 const TEST_DB_PATH = "./output/test-database.db";
@@ -87,15 +87,15 @@ describe("database.utilities integration", () => {
         [body, timestamp.toISOString(), 0, 0.5]
       );
 
-      const rows = await db.all(
+      const rows: EphemerisRecord[] = await db.all(
         `SELECT * FROM ephemeris WHERE body = ? AND timestamp = ?`,
         [body, timestamp.toISOString()]
       );
 
       expect(rows).toHaveLength(1);
-      expect(rows[0].body).toBe("sun");
-      expect(rows[0].longitude).toBe(0.5);
-      expect(rows[0].latitude).toBe(0);
+      expect(rows[0]?.body).toBe("sun");
+      expect(rows[0]?.longitude).toBe(0.5);
+      expect(rows[0]?.latitude).toBe(0);
     });
 
     it("should upsert ephemeris data (update on conflict)", async () => {
@@ -118,13 +118,14 @@ describe("database.utilities integration", () => {
         [body, timestamp.toISOString(), 105]
       );
 
-      const rows = await db.all(`SELECT * FROM ephemeris WHERE body = ?`, [
-        body,
-      ]);
+      const rows: EphemerisRecord[] = await db.all(
+        `SELECT * FROM ephemeris WHERE body = ?`,
+        [body]
+      );
 
       expect(rows).toHaveLength(1);
-      expect(rows[0].longitude).toBe(105);
-      expect(rows[0].latitude).toBe(5); // Should preserve original value
+      expect(rows[0]?.longitude).toBe(105);
+      expect(rows[0]?.latitude).toBe(5); // Should preserve original value
     });
 
     it("should store and retrieve different ephemeris types", async () => {
@@ -137,18 +138,18 @@ describe("database.utilities integration", () => {
         [body, timestamp.toISOString(), 45.5, 1.2, 180, 45, 0.95, 0.004, 1.5]
       );
 
-      const row = await db.get(
+      const row: EphemerisRecord | undefined = await db.get(
         `SELECT * FROM ephemeris WHERE body = ? AND timestamp = ?`,
         [body, timestamp.toISOString()]
       );
 
-      expect(row.longitude).toBe(45.5);
-      expect(row.latitude).toBe(1.2);
-      expect(row.azimuth).toBe(180);
-      expect(row.elevation).toBe(45);
-      expect(row.illumination).toBe(0.95);
-      expect(row.diameter).toBe(0.004);
-      expect(row.distance).toBe(1.5);
+      expect(row?.longitude).toBe(45.5);
+      expect(row?.latitude).toBe(1.2);
+      expect(row?.azimuth).toBe(180);
+      expect(row?.elevation).toBe(45);
+      expect(row?.illumination).toBe(0.95);
+      expect(row?.diameter).toBe(0.004);
+      expect(row?.distance).toBe(1.5);
     });
   });
 
@@ -174,11 +175,11 @@ describe("database.utilities integration", () => {
         ]
       );
 
-      const rows = await db.all(`SELECT * FROM events`);
+      const rows: Event[] = await db.all(`SELECT * FROM events`);
 
       expect(rows).toHaveLength(1);
-      expect(rows[0].summary).toBe("☀️ → ♈ Sun ingress Aries");
-      expect(rows[0].categories).toBe("Astronomy,Astrology,Ingress,Sun,Aries");
+      expect(rows[0]?.summary).toBe("☀️ → ♈ Sun ingress Aries");
+      expect(rows[0]?.categories).toBe("Astronomy,Astrology,Ingress,Sun,Aries");
     });
 
     it("should upsert events (replace on conflict)", async () => {
@@ -217,10 +218,10 @@ describe("database.utilities integration", () => {
         ]
       );
 
-      const rows = await db.all(`SELECT * FROM events`);
+      const rows: Event[] = await db.all(`SELECT * FROM events`);
 
       expect(rows).toHaveLength(1);
-      expect(rows[0].description).toBe("Updated description");
+      expect(rows[0]?.description).toBe("Updated description");
     });
 
     it("should query events by category", async () => {
@@ -315,7 +316,7 @@ describe("database.utilities integration", () => {
         );
       }
 
-      const midMonthEvents = await db.all(
+      const midMonthEvents: Event[] = await db.all(
         `SELECT * FROM events
          WHERE start >= ? AND start <= ?
          ORDER BY start ASC`,
@@ -326,7 +327,7 @@ describe("database.utilities integration", () => {
       );
 
       expect(midMonthEvents.length).toBe(1);
-      expect(midMonthEvents[0].summary).toBe("Event 2");
+      expect(midMonthEvents[0]?.summary).toBe("Event 2");
     });
   });
 
@@ -397,7 +398,7 @@ describe("database.utilities integration", () => {
 
       // Query for aspects active on March 15
       const queryTime = new Date("2025-03-15T12:00:00Z");
-      const activeAspects = await db.all(
+      const activeAspects: Event[] = await db.all(
         `SELECT * FROM events
          WHERE categories LIKE '%Simple Aspect%'
            AND start <= ?

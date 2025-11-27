@@ -1,5 +1,5 @@
 import moment from "moment-timezone";
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 
 import {
   getStelliumDurationEvents,
@@ -975,16 +975,16 @@ describe("stellium.events", () => {
       ]);
 
       expect(durationEvents).toHaveLength(1);
-      expect(durationEvents[0].start).toEqual(formingEvent.start);
-      expect(durationEvents[0].end).toEqual(dissolvingEvent.start);
-      expect(durationEvents[0].summary).toContain(
+      expect(durationEvents[0]?.start).toEqual(formingEvent.start);
+      expect(durationEvents[0]?.end).toEqual(dissolvingEvent.start);
+      expect(durationEvents[0]?.summary).toContain(
         "Mars, Moon, Sun, Venus stellium"
       );
-      expect(durationEvents[0].description).toBe(
+      expect(durationEvents[0]?.description).toBe(
         "Mars, Moon, Sun, Venus stellium"
       );
-      expect(durationEvents[0].categories).not.toContain("Forming");
-      expect(durationEvents[0].categories).not.toContain("Dissolving");
+      expect(durationEvents[0]?.categories).not.toContain("Forming");
+      expect(durationEvents[0]?.categories).not.toContain("Dissolving");
     });
 
     it("should not create duration event when only forming exists", () => {
@@ -1116,16 +1116,16 @@ describe("stellium.events", () => {
       const durationEvents = getStelliumDurationEvents(events);
 
       expect(durationEvents).toHaveLength(2);
-      expect(durationEvents[0].start).toEqual(
+      expect(durationEvents[0]?.start).toEqual(
         new Date("2024-03-21T10:00:00.000Z")
       );
-      expect(durationEvents[0].end).toEqual(
+      expect(durationEvents[0]?.end).toEqual(
         new Date("2024-03-21T14:00:00.000Z")
       );
-      expect(durationEvents[1].start).toEqual(
+      expect(durationEvents[1]?.start).toEqual(
         new Date("2024-03-22T10:00:00.000Z")
       );
-      expect(durationEvents[1].end).toEqual(
+      expect(durationEvents[1]?.end).toEqual(
         new Date("2024-03-22T14:00:00.000Z")
       );
     });
@@ -1212,10 +1212,10 @@ describe("stellium.events", () => {
       const durationEvents = getStelliumDurationEvents(events);
 
       expect(durationEvents).toHaveLength(2);
-      expect(durationEvents[0].categories).toContain("Venus");
-      expect(durationEvents[0].categories).toContain("Moon");
-      expect(durationEvents[1].categories).toContain("Jupiter");
-      expect(durationEvents[1].categories).toContain("Saturn");
+      expect(durationEvents[0]?.categories).toContain("Venus");
+      expect(durationEvents[0]?.categories).toContain("Moon");
+      expect(durationEvents[1]?.categories).toContain("Jupiter");
+      expect(durationEvents[1]?.categories).toContain("Saturn");
     });
 
     it("should handle different stellium sizes separately", () => {
@@ -1303,8 +1303,8 @@ describe("stellium.events", () => {
       const durationEvents = getStelliumDurationEvents(events);
 
       expect(durationEvents).toHaveLength(2);
-      expect(durationEvents[0].categories).toContain("4 Body");
-      expect(durationEvents[1].categories).toContain("5 Body");
+      expect(durationEvents[0]?.categories).toContain("4 Body");
+      expect(durationEvents[1]?.categories).toContain("5 Body");
     });
   });
 });

@@ -37,8 +37,9 @@ describe("retrogrades.events", () => {
       const minute = currentMinute
         .clone()
         .subtract(MARGIN_MINUTES - i, "minutes");
+      const longitude = longitudes[i] ?? longitudes[longitudes.length - 1] ?? 0;
       ephemeris[minute.toISOString()] = {
-        longitude: longitudes[i] ?? longitudes[longitudes.length - 1],
+        longitude,
         latitude: 0,
       };
     }

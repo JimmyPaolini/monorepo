@@ -4,8 +4,11 @@ import _ from "lodash";
 import moment from "moment-timezone";
 
 import { type Event, getCalendar } from "../../calendar.utilities";
-import { upsertEvents } from "../../database.utilities";
 import { pairDurationEvents } from "../../duration.utilities";
+import {
+  getCoordinateFromEphemeris,
+  getDistanceFromEphemeris,
+} from "../../ephemeris/ephemeris.service";
 import { isMaximum, isMinimum } from "../../math.utilities";
 import { getOutputPath } from "../../output.utilities";
 
@@ -28,7 +31,10 @@ import {
   isWinterSolstice,
 } from "./annualSolarCycle.utilities";
 
-import type { CoordinateEphemeris , DistanceEphemeris } from "../../ephemeris/ephemeris.types";
+import type {
+  CoordinateEphemeris,
+  DistanceEphemeris,
+} from "../../ephemeris/ephemeris.types";
 import type { Moment } from "moment";
 
 const categories = ["Astronomy", "Astrology", "Annual Solar Cycle", "Solar"];
@@ -45,10 +51,16 @@ export function getAnnualSolarCycleEvents(args: {
 
   const annualSolarCycleEvents: Event[] = [];
 
-  const { longitude: currentLongitude } =
-    ephemeris[currentMinute.toISOString()];
-  const { longitude: previousLongitude } =
-    ephemeris[previousMinute.toISOString()];
+  const currentLongitude = getCoordinateFromEphemeris(
+    ephemeris,
+    currentMinute.toISOString(),
+    "longitude"
+  );
+  const previousLongitude = getCoordinateFromEphemeris(
+    ephemeris,
+    previousMinute.toISOString(),
+    "longitude"
+  );
 
   const longitudes = { currentLongitude, previousLongitude };
   const date = currentMinute.toDate();
@@ -110,7 +122,7 @@ export function getAnnualSolarCycleEvents(args: {
 export function getSolarApsisEvents(args: {
   currentMinute: Moment;
   sunDistanceEphemeris: DistanceEphemeris;
-}) {
+}): Event[] {
   const { currentMinute, sunDistanceEphemeris } = args;
 
   const previousMinute = currentMinute.clone().subtract(1, "minute");
@@ -118,12 +130,21 @@ export function getSolarApsisEvents(args: {
 
   const solarApsisEvents: Event[] = [];
 
-  const { distance: currentDistance } =
-    sunDistanceEphemeris[currentMinute.toISOString()];
-  const { distance: previousDistance } =
-    sunDistanceEphemeris[previousMinute.toISOString()];
-  const { distance: nextDistance } =
-    sunDistanceEphemeris[nextMinute.toISOString()];
+  const currentDistance = getDistanceFromEphemeris(
+    sunDistanceEphemeris,
+    currentMinute.toISOString(),
+    "distance"
+  );
+  const previousDistance = getDistanceFromEphemeris(
+    sunDistanceEphemeris,
+    previousMinute.toISOString(),
+    "distance"
+  );
+  const nextDistance = getDistanceFromEphemeris(
+    sunDistanceEphemeris,
+    nextMinute.toISOString(),
+    "distance"
+  );
 
   const distances = {
     current: currentDistance,
@@ -450,15 +471,15 @@ export function writeAnnualSolarCycleEvents(args: {
   annualSolarCycleEvents: Event[];
   start: Date;
   end: Date;
-}) {
+}): void {
   const { annualSolarCycleEvents, start, end } = args;
-  if (_.isEmpty(annualSolarCycleEvents)) {return;}
+  if (_.isEmpty(annualSolarCycleEvents)) {
+    return;
+  }
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${annualSolarCycleEvents.length} annual solar cycle events from ${timespan}`;
   console.log(`📏 Writing ${message}`);
-
-  upsertEvents(annualSolarCycleEvents);
 
   const ingressCalendar = getCalendar({
     events: annualSolarCycleEvents,
@@ -479,17 +500,17 @@ export function getSolarApsisDurationEvents(events: Event[]): Event[] {
 
   // Filter to solar apsis events only
   const solarApsisEvents = events.filter((event) =>
-    event.categories?.includes("Annual Solar Cycle")
+    event.categories.includes("Annual Solar Cycle")
   );
 
   // Perihelion (closest to sun, moving fastest)
   const perihelionEvents = solarApsisEvents.filter((event) =>
-    event.categories?.includes("Perihelion")
+    event.categories.includes("Perihelion")
   );
 
   // Aphelion (farthest from sun, moving slowest)
   const aphelionEvents = solarApsisEvents.filter((event) =>
-    event.categories?.includes("Aphelion")
+    event.categories.includes("Aphelion")
   );
 
   // Advancing: Aphelion → Perihelion (Earth moving closer to sun, speeding up)

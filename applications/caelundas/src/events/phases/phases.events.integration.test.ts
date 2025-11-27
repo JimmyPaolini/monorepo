@@ -32,14 +32,31 @@ describe("phases.events integration", () => {
       distance: number;
       illumination: number;
     }
-  ) {
-    const ephemeris: any = {};
+  ): Record<
+    string,
+    {
+      longitude: number;
+      latitude: number;
+      distance: number;
+      illumination: number;
+    }
+  > {
+    const ephemeris: Record<
+      string,
+      {
+        longitude: number;
+        latitude: number;
+        distance: number;
+        illumination: number;
+      }
+    > = {};
 
     // Create data for MARGIN_MINUTES before, current, and MARGIN_MINUTES after
     for (let i = -MARGIN_MINUTES; i <= MARGIN_MINUTES + 1; i++) {
       const time = baseTime.clone().add(i, "minutes");
       ephemeris[time.toISOString()] = {
         longitude: config.longitude + i * 0.1, // Slight variation over time
+        latitude: 0,
         distance: config.distance + i * 0.001,
         illumination: config.illumination + i * 0.01,
       };
@@ -409,14 +426,36 @@ describe("phases.events integration", () => {
         mercury: mercuryEphemeris,
         venus: venusEphemeris,
         mars: marsEphemeris,
-      } as any;
+      } as Record<
+        string,
+        Record<
+          string,
+          {
+            longitude: number;
+            latitude: number;
+            distance: number;
+            illumination: number;
+          }
+        >
+      >;
 
       const mockDistanceEphemeris = {
         sun: sunEphemeris,
         mercury: mercuryEphemeris,
         venus: venusEphemeris,
         mars: marsEphemeris,
-      } as any;
+      } as Record<
+        string,
+        Record<
+          string,
+          {
+            longitude: number;
+            latitude: number;
+            distance: number;
+            illumination: number;
+          }
+        >
+      >;
 
       const mockIlluminationEphemeris = {
         sun: sunEphemeris,
@@ -424,7 +463,18 @@ describe("phases.events integration", () => {
         mercury: mercuryEphemeris,
         venus: venusEphemeris,
         mars: marsEphemeris,
-      } as any;
+      } as Record<
+        string,
+        Record<
+          string,
+          {
+            longitude: number;
+            latitude: number;
+            distance: number;
+            illumination: number;
+          }
+        >
+      >;
 
       const events = getPlanetaryPhaseEvents({
         currentMinute,
@@ -490,20 +540,29 @@ describe("phases.events integration", () => {
           mercury: mercuryEphemeris,
           venus: venusEphemeris,
           mars: marsEphemeris,
-        } as any,
+        } as unknown as Record<
+          string,
+          Record<string, { longitude: number; latitude: number }>
+        >,
         distanceEphemerisByBody: {
           sun: sunEphemeris,
           mercury: mercuryEphemeris,
           venus: venusEphemeris,
           mars: marsEphemeris,
-        } as any,
+        } as unknown as Record<
+          string,
+          Record<string, { longitude: number; distance: number }>
+        >,
         illuminationEphemerisByBody: {
           sun: sunEphemeris,
           moon: sunEphemeris,
           mercury: mercuryEphemeris,
           venus: venusEphemeris,
           mars: marsEphemeris,
-        } as any,
+        } as unknown as Record<
+          string,
+          Record<string, { illumination: number }>
+        >,
       });
 
       // All events should have correct timestamp
@@ -530,20 +589,29 @@ describe("phases.events integration", () => {
           mercury: neutralEphemeris,
           venus: neutralEphemeris,
           mars: neutralEphemeris,
-        } as any,
+        } as unknown as Record<
+          string,
+          Record<string, { longitude: number; latitude: number }>
+        >,
         distanceEphemerisByBody: {
           sun: neutralEphemeris,
           mercury: neutralEphemeris,
           venus: neutralEphemeris,
           mars: neutralEphemeris,
-        } as any,
+        } as unknown as Record<
+          string,
+          Record<string, { longitude: number; distance: number }>
+        >,
         illuminationEphemerisByBody: {
           sun: neutralEphemeris,
           moon: neutralEphemeris,
           mercury: neutralEphemeris,
           venus: neutralEphemeris,
           mars: neutralEphemeris,
-        } as any,
+        } as unknown as Record<
+          string,
+          Record<string, { illumination: number }>
+        >,
       });
 
       expect(Array.isArray(events)).toBe(true);
@@ -584,11 +652,20 @@ describe("phases.events integration", () => {
       const currentMinute = moment.utc("2024-12-15T06:00:00.000Z");
 
       // Create ephemeris with larger variations
-      const venusEphemeris: any = {};
+      const venusEphemeris: Record<
+        string,
+        {
+          longitude: number;
+          latitude: number;
+          distance: number;
+          illumination: number;
+        }
+      > = {};
       for (let i = -MARGIN_MINUTES; i <= MARGIN_MINUTES + 1; i++) {
         const time = currentMinute.clone().add(i, "minutes");
         venusEphemeris[time.toISOString()] = {
           longitude: 100 + i * 5, // Rapid change
+          latitude: 0,
           distance: 0.5 + Math.abs(i) * 0.05,
           illumination: 50 + i * 2,
         };

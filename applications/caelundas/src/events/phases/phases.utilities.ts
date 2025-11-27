@@ -29,7 +29,10 @@ function isEvening(args: Parameters<typeof isEastern>[0]): boolean {
 
 // #region 🔆 Brightness
 
-function getBrightness(args: { distance: number; illumination: number }) {
+function getBrightness(args: {
+  distance: number;
+  illumination: number;
+}): number {
   const { distance, illumination } = args;
   return illumination / distance ** 2;
 }
@@ -41,7 +44,11 @@ function getBrightnesses(args: {
   nextIlluminations: number[];
   previousDistances: number[];
   previousIlluminations: number[];
-}) {
+}): {
+  currentBrightness: number;
+  nextBrightnesses: number[];
+  previousBrightnesses: number[];
+} {
   const {
     currentDistance,
     currentIllumination,
@@ -63,6 +70,9 @@ function getBrightnesses(args: {
 
   const previousBrightnesses = previousDistances.map((distance, index) => {
     const illumination = previousIlluminations[index];
+    if (illumination === undefined) {
+      throw new Error(`Missing illumination at index ${index}`);
+    }
     const brightness = getBrightness({ distance, illumination });
     return brightness;
   });
@@ -74,6 +84,9 @@ function getBrightnesses(args: {
 
   const nextBrightnesses = nextDistances.map((distance, index) => {
     const illumination = nextIlluminations[index];
+    if (illumination === undefined) {
+      throw new Error(`Missing illumination at index ${index}`);
+    }
     const brightness = getBrightness({ distance, illumination });
     return brightness;
   });

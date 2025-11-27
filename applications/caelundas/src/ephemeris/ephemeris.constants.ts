@@ -1,4 +1,4 @@
-import type { Asteroid, Comet, Planet } from "../types";
+import type { Asteroid, Body, Comet, Planet } from "../types";
 
 export const horizonsUrl = "https://ssd.jpl.nasa.gov/api/horizons.api";
 
@@ -38,9 +38,8 @@ export const commandIdByBody = {
 } satisfies Record<Planet | Asteroid | Comet, string>;
 
 export const centerIdByBody = {
-  earth: "500@399",
   sun: "500@10",
-} satisfies Record<Extract<Body, "sun" | "earth">, string>;
+} satisfies Record<Extract<Body, "sun">, string>;
 
 export const QUANTITY_APPARENT_AZIMUTH_ELEVATION = "4";
 export const QUANTITY_ILLUMINATED_FRACTION = "10";

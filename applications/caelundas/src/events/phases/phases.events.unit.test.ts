@@ -18,7 +18,6 @@ import {
 } from "./phases.events";
 
 import type { Event } from "../../calendar.utilities";
-import type { MartianPhase, MercurianPhase, VenusianPhase } from "../../types";
 
 // Mock dependencies
 vi.mock("../../database.utilities", () => ({
@@ -833,7 +832,7 @@ describe("phases.events", () => {
       expect(upsertEvents).toHaveBeenCalledWith(events);
       expect(fs.writeFileSync).toHaveBeenCalled();
       const writeCall = vi.mocked(fs.writeFileSync).mock.calls[0];
-      expect(writeCall[0]).toContain("venus,mercury");
+      expect(writeCall?.[0]).toContain("venus,mercury");
     });
   });
 });

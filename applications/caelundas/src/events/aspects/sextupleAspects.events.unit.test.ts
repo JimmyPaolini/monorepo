@@ -1,5 +1,5 @@
 import moment from "moment-timezone";
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 
 import {
   getSextupleAspectDurationEvents,
@@ -7,7 +7,6 @@ import {
 } from "./sextupleAspects.events";
 
 import type { Event } from "../../calendar.utilities";
-
 
 describe("sextupleAspects.events", () => {
   describe("getSextupleAspectEvents", () => {
@@ -1092,18 +1091,18 @@ describe("sextupleAspects.events", () => {
       ]);
 
       expect(durationEvents).toHaveLength(1);
-      expect(durationEvents[0].start).toEqual(formingEvent.start);
-      expect(durationEvents[0].end).toEqual(dissolvingEvent.start);
+      expect(durationEvents[0]?.start).toEqual(formingEvent.start);
+      expect(durationEvents[0]?.end).toEqual(dissolvingEvent.start);
       // Note: The emoji regex doesn't strip properly due to multi-byte chars
       // Just verify it's attempting to strip and categories are correct
-      expect(durationEvents[0].summary).toContain(
+      expect(durationEvents[0]?.summary).toContain(
         "Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram forming"
       );
-      expect(durationEvents[0].description).toBe(
+      expect(durationEvents[0]?.description).toBe(
         "Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram"
       );
-      expect(durationEvents[0].categories).not.toContain("Forming");
-      expect(durationEvents[0].categories).not.toContain("Dissolving");
+      expect(durationEvents[0]?.categories).not.toContain("Forming");
+      expect(durationEvents[0]?.categories).not.toContain("Dissolving");
     });
 
     it("should not create duration event when only forming exists", () => {
@@ -1258,16 +1257,16 @@ describe("sextupleAspects.events", () => {
       const durationEvents = getSextupleAspectDurationEvents(events);
 
       expect(durationEvents).toHaveLength(2);
-      expect(durationEvents[0].start).toEqual(
+      expect(durationEvents[0]?.start).toEqual(
         new Date("2024-03-21T10:00:00.000Z")
       );
-      expect(durationEvents[0].end).toEqual(
+      expect(durationEvents[0]?.end).toEqual(
         new Date("2024-03-21T14:00:00.000Z")
       );
-      expect(durationEvents[1].start).toEqual(
+      expect(durationEvents[1]?.start).toEqual(
         new Date("2024-03-22T10:00:00.000Z")
       );
-      expect(durationEvents[1].end).toEqual(
+      expect(durationEvents[1]?.end).toEqual(
         new Date("2024-03-22T14:00:00.000Z")
       );
     });
@@ -1369,10 +1368,10 @@ describe("sextupleAspects.events", () => {
       const durationEvents = getSextupleAspectDurationEvents(events);
 
       expect(durationEvents).toHaveLength(2);
-      expect(durationEvents[0].categories).toContain("Saturn");
-      expect(durationEvents[0].categories).toContain("Venus");
-      expect(durationEvents[1].categories).toContain("Neptune");
-      expect(durationEvents[1].categories).toContain("Uranus");
+      expect(durationEvents[0]?.categories).toContain("Saturn");
+      expect(durationEvents[0]?.categories).toContain("Venus");
+      expect(durationEvents[1]?.categories).toContain("Neptune");
+      expect(durationEvents[1]?.categories).toContain("Uranus");
     });
   });
 });

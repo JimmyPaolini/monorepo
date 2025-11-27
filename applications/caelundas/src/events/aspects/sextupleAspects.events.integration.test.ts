@@ -230,17 +230,18 @@ describe("sextupleAspects.events integration", () => {
       const events = getSextupleAspectEvents(storedAspects, currentMinute);
 
       expect(events).toHaveLength(1);
-      expect(events[0].categories).toContain("Hexagram");
-      expect(events[0].categories).toContain("Forming");
-      expect(events[0].categories).toContain("Jupiter");
-      expect(events[0].categories).toContain("Mars");
-      expect(events[0].categories).toContain("Moon");
-      expect(events[0].categories).toContain("Saturn");
-      expect(events[0].categories).toContain("Sun");
-      expect(events[0].categories).toContain("Venus");
-      expect(events[0].description).toContain("hexagram forming");
-      expect(events[0].summary).toContain("➡️"); // Forming emoji
-      expect(events[0].summary).toContain("🔯"); // Hexagram symbol
+      expect(events[0]).toBeDefined();
+      expect(events[0]?.categories).toContain("Hexagram");
+      expect(events[0]?.categories).toContain("Forming");
+      expect(events[0]?.categories).toContain("Jupiter");
+      expect(events[0]?.categories).toContain("Mars");
+      expect(events[0]?.categories).toContain("Moon");
+      expect(events[0]?.categories).toContain("Saturn");
+      expect(events[0]?.categories).toContain("Sun");
+      expect(events[0]?.categories).toContain("Venus");
+      expect(events[0]?.description).toContain("hexagram forming");
+      expect(events[0]?.summary).toContain("➡️"); // Forming emoji
+      expect(events[0]?.summary).toContain("🔯"); // Hexagram symbol
     });
 
     it("should detect dissolving Hexagram when pattern breaks apart", () => {
@@ -449,10 +450,11 @@ describe("sextupleAspects.events integration", () => {
       const events = getSextupleAspectEvents(storedAspects, currentMinute);
 
       expect(events).toHaveLength(1);
-      expect(events[0].categories).toContain("Hexagram");
-      expect(events[0].categories).toContain("Dissolving");
-      expect(events[0].description).toContain("hexagram dissolving");
-      expect(events[0].summary).toContain("⬅️"); // Dissolving emoji
+      expect(events[0]).toBeDefined();
+      expect(events[0]?.categories).toContain("Hexagram");
+      expect(events[0]?.categories).toContain("Dissolving");
+      expect(events[0]?.description).toContain("hexagram dissolving");
+      expect(events[0]?.summary).toContain("⬅️"); // Dissolving emoji
     });
 
     it("should create duration event from forming/dissolving Hexagram pair", () => {
@@ -507,18 +509,19 @@ describe("sextupleAspects.events integration", () => {
       ]);
 
       expect(durationEvents).toHaveLength(1);
-      expect(durationEvents[0].start).toEqual(
+      expect(durationEvents[0]).toBeDefined();
+      expect(durationEvents[0]?.start).toEqual(
         new Date("2024-09-22T18:42:00.000Z")
       );
-      expect(durationEvents[0].end).toEqual(
+      expect(durationEvents[0]?.end).toEqual(
         new Date("2024-09-22T19:00:00.000Z")
       );
-      expect(durationEvents[0].categories).toContain("Sextuple Aspect");
-      expect(durationEvents[0].categories).toContain("Hexagram");
-      expect(durationEvents[0].categories).not.toContain("Forming");
-      expect(durationEvents[0].categories).not.toContain("Dissolving");
-      expect(durationEvents[0].description).toContain("hexagram");
-      expect(durationEvents[0].description).not.toMatch(
+      expect(durationEvents[0]?.categories).toContain("Sextuple Aspect");
+      expect(durationEvents[0]?.categories).toContain("Hexagram");
+      expect(durationEvents[0]?.categories).not.toContain("Forming");
+      expect(durationEvents[0]?.categories).not.toContain("Dissolving");
+      expect(durationEvents[0]?.description).toContain("hexagram");
+      expect(durationEvents[0]?.description).not.toMatch(
         /(forming|dissolving)$/i
       );
     });
@@ -729,14 +732,15 @@ describe("sextupleAspects.events integration", () => {
       const events = getSextupleAspectEvents(storedAspects, currentMinute);
 
       expect(events).toHaveLength(1);
-      expect(events[0].categories).toContain("Hexagram");
-      expect(events[0].categories).toContain("Forming");
-      expect(events[0].categories).toContain("Mars");
-      expect(events[0].categories).toContain("Jupiter");
-      expect(events[0].categories).toContain("Saturn");
-      expect(events[0].categories).toContain("Uranus");
-      expect(events[0].categories).toContain("Neptune");
-      expect(events[0].categories).toContain("Pluto");
+      expect(events[0]).toBeDefined();
+      expect(events[0]?.categories).toContain("Hexagram");
+      expect(events[0]?.categories).toContain("Forming");
+      expect(events[0]?.categories).toContain("Mars");
+      expect(events[0]?.categories).toContain("Jupiter");
+      expect(events[0]?.categories).toContain("Saturn");
+      expect(events[0]?.categories).toContain("Uranus");
+      expect(events[0]?.categories).toContain("Neptune");
+      expect(events[0]?.categories).toContain("Pluto");
     });
   });
 

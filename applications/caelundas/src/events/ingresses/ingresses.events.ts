@@ -2,13 +2,9 @@ import fs from "fs";
 
 import _ from "lodash";
 
-import {
-  type Event,
-  type EventTemplate,
-  getCalendar,
-} from "../../calendar.utilities";
+import { type Event, getCalendar } from "../../calendar.utilities";
 import { signs } from "../../constants";
-import { upsertEvents } from "../../database.utilities";
+import { getCoordinateFromEphemeris } from "../../ephemeris/ephemeris.service";
 import { getOutputPath } from "../../output.utilities";
 import { symbolByBody, symbolByDecan, symbolBySign } from "../../symbols";
 import {
@@ -42,7 +38,7 @@ const categories = ["Astronomy", "Astrology", "Ingress"];
 export function getSignIngressEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
   currentMinute: Moment;
-}) {
+}): Event[] {
   const { coordinateEphemerisByBody, currentMinute } = args;
 
   const previousMinute = currentMinute.clone().subtract(1, "minute");
@@ -52,10 +48,16 @@ export function getSignIngressEvents(args: {
   for (const body of signIngressBodies) {
     const coordinateEphemeris = coordinateEphemerisByBody[body];
 
-    const { longitude: currentLongitude } =
-      coordinateEphemeris[currentMinute.toISOString()];
-    const { longitude: previousLongitude } =
-      coordinateEphemeris[previousMinute.toISOString()];
+    const currentLongitude = getCoordinateFromEphemeris(
+      coordinateEphemeris,
+      currentMinute.toISOString(),
+      "longitude"
+    );
+    const previousLongitude = getCoordinateFromEphemeris(
+      coordinateEphemeris,
+      previousMinute.toISOString(),
+      "longitude"
+    );
 
     if (Number.isNaN(currentLongitude) || Number.isNaN(previousLongitude)) {
       continue;
@@ -76,7 +78,7 @@ export function getSignIngressEvent(args: {
   date: Date;
   longitude: number;
   body: Body;
-}) {
+}): Event {
   const { date, longitude, body } = args;
   const sign = getSign(longitude);
   const bodyCapitalized = _.startCase(body);
@@ -105,15 +107,15 @@ export function writeSignIngressEvents(args: {
   signIngressBodies: Body[];
   signIngressEvents: Event[];
   start: Date;
-}) {
+}): void {
   const { signIngressEvents, signIngressBodies, start, end } = args;
-  if (_.isEmpty(signIngressEvents)) {return;}
+  if (_.isEmpty(signIngressEvents)) {
+    return;
+  }
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${signIngressEvents.length} sign ingress events from ${timespan}`;
   console.log(`🪧 Writing ${message}`);
-
-  upsertEvents(signIngressEvents);
 
   const signIngressBodiesString = signIngressBodies.join(",");
   const signIngressesCalendar = getCalendar({
@@ -130,13 +132,10 @@ export function writeSignIngressEvents(args: {
 
 // #region 🔟 Decans
 
-export type DecanIngressEventTemplate = EventTemplate
-export type DecanIngressEvent = Event
-
 export function getDecanIngressEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
   currentMinute: Moment;
-}) {
+}): Event[] {
   const { coordinateEphemerisByBody, currentMinute } = args;
 
   const previousMinute = currentMinute.clone().subtract(1, "minute");
@@ -146,10 +145,16 @@ export function getDecanIngressEvents(args: {
   for (const body of decanIngressBodies) {
     const coordinateEphemeris = coordinateEphemerisByBody[body];
 
-    const { longitude: currentLongitude } =
-      coordinateEphemeris[currentMinute.toISOString()];
-    const { longitude: previousLongitude } =
-      coordinateEphemeris[previousMinute.toISOString()];
+    const currentLongitude = getCoordinateFromEphemeris(
+      coordinateEphemeris,
+      currentMinute.toISOString(),
+      "longitude"
+    );
+    const previousLongitude = getCoordinateFromEphemeris(
+      coordinateEphemeris,
+      previousMinute.toISOString(),
+      "longitude"
+    );
 
     if (Number.isNaN(currentLongitude) || Number.isNaN(previousLongitude)) {
       continue;
@@ -173,7 +178,7 @@ export function getDecanIngressEvent(args: {
   date: Date;
   longitude: number;
   body: Body;
-}) {
+}): Event {
   const { date, longitude, body } = args;
   const sign = getSign(longitude);
   const decan = String(getDecan(longitude)) as Decan;
@@ -189,7 +194,7 @@ export function getDecanIngressEvent(args: {
 
   console.log(`${summary} at ${date.toISOString()}`);
 
-  const decanIngressEvent: DecanIngressEvent = {
+  const decanIngressEvent: Event = {
     start: date,
     end: date,
     categories: [...categories, "Decan", bodyCapitalized, signCapitalized],
@@ -203,17 +208,17 @@ export function getDecanIngressEvent(args: {
 export function writeDecanIngressEvents(args: {
   end: Date;
   decanIngressBodies: Body[];
-  decanIngressEvents: DecanIngressEvent[];
+  decanIngressEvents: Event[];
   start: Date;
-}) {
+}): void {
   const { decanIngressEvents, decanIngressBodies, start, end } = args;
-  if (_.isEmpty(decanIngressEvents)) {return;}
+  if (_.isEmpty(decanIngressEvents)) {
+    return;
+  }
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${decanIngressEvents.length} decan ingress events from ${timespan}`;
   console.log(`🔟 Writing ${message}`);
-
-  upsertEvents(decanIngressEvents);
 
   const decanIngressBodiesString = decanIngressBodies.join(",");
   const decanIngressesCalendar = getCalendar({
@@ -230,12 +235,10 @@ export function writeDecanIngressEvents(args: {
 
 // #region ⛰️ Peaks
 
-export type PeakIngressEventTemplate = EventTemplate
-export type PeakIngressEvent = Event
 export function getPeakIngressEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
   currentMinute: Moment;
-}) {
+}): Event[] {
   const { coordinateEphemerisByBody, currentMinute } = args;
 
   const previousMinute = currentMinute.clone().subtract(1, "minute");
@@ -245,10 +248,16 @@ export function getPeakIngressEvents(args: {
   for (const body of peakIngressBodies) {
     const coordinateEphemeris = coordinateEphemerisByBody[body];
 
-    const { longitude: currentLongitude } =
-      coordinateEphemeris[currentMinute.toISOString()];
-    const { longitude: previousLongitude } =
-      coordinateEphemeris[previousMinute.toISOString()];
+    const currentLongitude = getCoordinateFromEphemeris(
+      coordinateEphemeris,
+      currentMinute.toISOString(),
+      "longitude"
+    );
+    const previousLongitude = getCoordinateFromEphemeris(
+      coordinateEphemeris,
+      previousMinute.toISOString(),
+      "longitude"
+    );
 
     if (Number.isNaN(currentLongitude) || Number.isNaN(previousLongitude)) {
       continue;
@@ -269,7 +278,7 @@ export function getPeakIngressEvent(args: {
   date: Date;
   longitude: number;
   body: Body;
-}) {
+}): Event {
   const { date, longitude, body } = args;
   const sign = getSign(longitude);
   const bodyCapitalized = _.startCase(body) as Capitalize<Body>;
@@ -282,7 +291,7 @@ export function getPeakIngressEvent(args: {
 
   console.log(`${summary} at ${date.toISOString()}`);
 
-  const peakIngressEvent: PeakIngressEvent = {
+  const peakIngressEvent: Event = {
     start: date,
     end: date,
     categories: [...categories, "Peak", bodyCapitalized, signCapitalized],
@@ -296,17 +305,17 @@ export function getPeakIngressEvent(args: {
 export function writePeakIngressEvents(args: {
   end: Date;
   peakIngressBodies: Body[];
-  peakIngressEvents: PeakIngressEvent[];
+  peakIngressEvents: Event[];
   start: Date;
-}) {
+}): void {
   const { peakIngressEvents, peakIngressBodies, start, end } = args;
-  if (_.isEmpty(peakIngressEvents)) {return;}
+  if (_.isEmpty(peakIngressEvents)) {
+    return;
+  }
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${peakIngressEvents.length} peak ingress events from ${timespan}`;
   console.log(`⛰️ Writing ${message}`);
-
-  upsertEvents(peakIngressEvents);
 
   const peakIngressBodiesString = peakIngressBodies.join(",");
   const peakIngressesCalendar = getCalendar({
@@ -329,15 +338,17 @@ export function getSignIngressDurationEvents(events: Event[]): Event[] {
   // Filter to sign ingress events only (exclude decan and peak)
   const signIngressEvents = events.filter(
     (event) =>
-      event.categories?.includes("Ingress") &&
-      !event.categories?.includes("Decan") &&
-      !event.categories?.includes("Peak")
+      event.categories.includes("Ingress") &&
+      !event.categories.includes("Decan") &&
+      !event.categories.includes("Peak")
   );
 
   // Group by body
   const groupedByBody = _.groupBy(signIngressEvents, (event) => {
-    const bodyCapitalized = event.categories?.find((category) =>
-      signIngressBodies.map(_.startCase).includes(category)
+    const bodyCapitalized = event.categories.find((category) =>
+      signIngressBodies
+        .map((signIngressBody) => _.startCase(signIngressBody))
+        .includes(category)
     );
     return bodyCapitalized || "";
   });
@@ -346,7 +357,9 @@ export function getSignIngressDurationEvents(events: Event[]): Event[] {
   for (const [bodyCapitalized, bodyIngresses] of Object.entries(
     groupedByBody
   )) {
-    if (!bodyCapitalized) {continue;}
+    if (!bodyCapitalized) {
+      continue;
+    }
 
     // Sort by time
     const sortedIngresses = _.sortBy(bodyIngresses, (event) =>
@@ -357,6 +370,9 @@ export function getSignIngressDurationEvents(events: Event[]): Event[] {
     for (let i = 0; i < sortedIngresses.length - 1; i++) {
       const entering = sortedIngresses[i];
       const exiting = sortedIngresses[i + 1];
+      if (!entering || !exiting) {
+        continue;
+      }
 
       durationEvents.push(
         getSignIngressDurationEvent(entering, exiting, bodyCapitalized)
@@ -372,11 +388,9 @@ function getSignIngressDurationEvent(
   exiting: Event,
   bodyCapitalized: string
 ): Event {
-  const categories = entering.categories || [];
-
   // Extract the sign the body is entering
-  const signCapitalized = categories.find((category) =>
-    signs.map(_.startCase).includes(category)
+  const signCapitalized = entering.categories.find((category) =>
+    signs.map((sign) => _.startCase(sign)).includes(category)
   );
 
   if (!signCapitalized) {

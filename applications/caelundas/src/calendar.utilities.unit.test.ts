@@ -90,8 +90,10 @@ describe("calendar.utilities", () => {
       const uidMatch = /UID:(.+)/.exec(vevent);
 
       expect(uidMatch).not.toBeNull();
-      expect(uidMatch![1]).toContain(baseEvent.summary);
-      expect(uidMatch![1]).toContain(baseEvent.description);
+      if (uidMatch) {
+        expect(uidMatch[1]).toContain(baseEvent.summary);
+        expect(uidMatch[1]).toContain(baseEvent.description);
+      }
     });
 
     it("should handle events with different start and end times", () => {
@@ -103,7 +105,9 @@ describe("calendar.utilities", () => {
 
       // UID should include both start and end when they differ
       const uidMatch = /UID:(.+)/.exec(vevent);
-      expect(uidMatch![1]).toContain(durationEvent.summary);
+      if (uidMatch) {
+        expect(uidMatch[1]).toContain(durationEvent.summary);
+      }
       // Verify both DTSTART and DTEND are present with different values
       expect(vevent).toContain("DTSTART");
       expect(vevent).toContain("DTEND");

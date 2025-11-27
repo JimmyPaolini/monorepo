@@ -3,14 +3,14 @@ import fs from "fs";
 import _ from "lodash";
 import moment from "moment-timezone";
 
-import {
-  type Event,
-  type EventTemplate,
-  getCalendar,
-} from "../../calendar.utilities";
+import { type Event, getCalendar } from "../../calendar.utilities";
 import { MARGIN_MINUTES } from "../../calendar.utilities";
-import { upsertEvents } from "../../database.utilities";
 import { pairDurationEvents } from "../../duration.utilities";
+import {
+  getCoordinateFromEphemeris,
+  getDistanceFromEphemeris,
+  getIlluminationFromEphemeris,
+} from "../../ephemeris/ephemeris.service";
 import { getOutputPath } from "../../output.utilities";
 import {
   symbolByMartianPhase,
@@ -62,7 +62,7 @@ export function getPlanetaryPhaseEvents(args: {
     IlluminationEphemerisBody,
     IlluminationEphemeris
   >;
-}) {
+}): Event[] {
   const {
     currentMinute,
     coordinateEphemerisByBody,
@@ -116,7 +116,7 @@ export function getPlanetaryPhaseEvents(args: {
 export function getVenusianPhaseEvent(args: {
   timestamp: Date;
   phase: VenusianPhase;
-}) {
+}): Event {
   const { timestamp, phase } = args;
 
   const phaseCapitalized = _.startCase(phase) as Capitalize<VenusianPhase>;
@@ -144,7 +144,7 @@ export function getVenusianPhaseEvents(args: {
   venusDistanceEphemeris: DistanceEphemeris;
   venusIlluminationEphemeris: IlluminationEphemeris;
   sunCoordinateEphemeris: CoordinateEphemeris;
-}) {
+}): Event[] {
   const {
     currentMinute,
     sunCoordinateEphemeris,
@@ -156,28 +156,49 @@ export function getVenusianPhaseEvents(args: {
   const previousMinute = currentMinute.clone().subtract(1, "minute");
   const nextMinute = currentMinute.clone().add(1, "minute");
 
-  const { longitude: currentLongitudePlanet } =
-    venusCoordinateEphemeris[currentMinute.toISOString()];
-  const { longitude: currentLongitudeSun } =
-    sunCoordinateEphemeris[currentMinute.toISOString()];
-  const { illumination: currentIllumination } =
-    venusIlluminationEphemeris[currentMinute.toISOString()];
-  const { distance: currentDistance } =
-    venusDistanceEphemeris[currentMinute.toISOString()];
+  const currentLongitudePlanet = getCoordinateFromEphemeris(
+    venusCoordinateEphemeris,
+    currentMinute.toISOString(),
+    "longitude"
+  );
+  const currentLongitudeSun = getCoordinateFromEphemeris(
+    sunCoordinateEphemeris,
+    currentMinute.toISOString(),
+    "longitude"
+  );
+  const currentIllumination = getIlluminationFromEphemeris(
+    venusIlluminationEphemeris,
+    currentMinute.toISOString(),
+    "currentIllumination"
+  );
+  const currentDistance = getDistanceFromEphemeris(
+    venusDistanceEphemeris,
+    currentMinute.toISOString(),
+    "currentDistance"
+  );
 
-  const { longitude: previousLongitudePlanet } =
-    venusCoordinateEphemeris[previousMinute.toISOString()];
-  const { longitude: previousLongitudeSun } =
-    sunCoordinateEphemeris[previousMinute.toISOString()];
+  const previousLongitudePlanet = getCoordinateFromEphemeris(
+    venusCoordinateEphemeris,
+    previousMinute.toISOString(),
+    "longitude"
+  );
+  const previousLongitudeSun = getCoordinateFromEphemeris(
+    sunCoordinateEphemeris,
+    previousMinute.toISOString(),
+    "longitude"
+  );
+
   const previousDistances = new Array(MARGIN_MINUTES)
     .fill(null)
     .map((_, marginIndex) => {
       const minute = currentMinute
         .clone()
         .subtract(MARGIN_MINUTES - marginIndex, "minutes");
-      const { distance: previousDistance } =
-        venusDistanceEphemeris[minute.toISOString()];
-      return previousDistance;
+      return getDistanceFromEphemeris(
+        venusDistanceEphemeris,
+        minute.toISOString(),
+        "previousDistance"
+      );
     });
   const previousIlluminations = new Array(MARGIN_MINUTES)
     .fill(null)
@@ -185,30 +206,42 @@ export function getVenusianPhaseEvents(args: {
       const minute = currentMinute
         .clone()
         .subtract(MARGIN_MINUTES - marginIndex, "minutes");
-      const { illumination: previousIllumination } =
-        venusIlluminationEphemeris[minute.toISOString()];
-      return previousIllumination;
+      return getIlluminationFromEphemeris(
+        venusIlluminationEphemeris,
+        minute.toISOString(),
+        "previousIllumination"
+      );
     });
 
-  const { longitude: nextLongitudePlanet } =
-    venusCoordinateEphemeris[nextMinute.toISOString()];
-  const { longitude: nextLongitudeSun } =
-    sunCoordinateEphemeris[nextMinute.toISOString()];
+  const nextLongitudePlanet = getCoordinateFromEphemeris(
+    venusCoordinateEphemeris,
+    nextMinute.toISOString(),
+    "longitude"
+  );
+  const nextLongitudeSun = getCoordinateFromEphemeris(
+    sunCoordinateEphemeris,
+    nextMinute.toISOString(),
+    "longitude"
+  );
   const nextDistances = new Array(MARGIN_MINUTES)
     .fill(null)
     .map((_, marginIndex) => {
       const minute = currentMinute.clone().add(marginIndex + 1, "minute");
-      const { distance: nextDistance } =
-        venusDistanceEphemeris[minute.toISOString()];
-      return nextDistance;
+      return getDistanceFromEphemeris(
+        venusDistanceEphemeris,
+        minute.toISOString(),
+        "nextDistance"
+      );
     });
   const nextIlluminations = new Array(MARGIN_MINUTES)
     .fill(null)
     .map((_, marginIndex) => {
       const minute = currentMinute.clone().add(marginIndex + 1, "minute");
-      const { illumination: nextIllumination } =
-        venusIlluminationEphemeris[minute.toISOString()];
-      return nextIllumination;
+      return getIlluminationFromEphemeris(
+        venusIlluminationEphemeris,
+        minute.toISOString(),
+        "nextIllumination"
+      );
     });
 
   const params = {
@@ -308,7 +341,7 @@ export function getVenusianPhaseEvents(args: {
 export function getMercurianPhaseEvent(args: {
   timestamp: Date;
   phase: MercurianPhase;
-}) {
+}): Event {
   const { timestamp, phase } = args;
 
   const phaseCapitalized = _.startCase(phase) as Capitalize<MercurianPhase>;
@@ -336,7 +369,7 @@ export function getMercurianPhaseEvents(args: {
   mercuryDistanceEphemeris: DistanceEphemeris;
   mercuryIlluminationEphemeris: IlluminationEphemeris;
   sunCoordinateEphemeris: CoordinateEphemeris;
-}) {
+}): Event[] {
   const {
     currentMinute,
     sunCoordinateEphemeris,
@@ -348,28 +381,48 @@ export function getMercurianPhaseEvents(args: {
   const previousMinute = currentMinute.clone().subtract(1, "minute");
   const nextMinute = currentMinute.clone().add(1, "minute");
 
-  const { longitude: currentLongitudePlanet } =
-    mercuryCoordinateEphemeris[currentMinute.toISOString()];
-  const { longitude: currentLongitudeSun } =
-    sunCoordinateEphemeris[currentMinute.toISOString()];
-  const { illumination: currentIllumination } =
-    mercuryIlluminationEphemeris[currentMinute.toISOString()];
-  const { distance: currentDistance } =
-    mercuryDistanceEphemeris[currentMinute.toISOString()];
+  const currentLongitudePlanet = getCoordinateFromEphemeris(
+    mercuryCoordinateEphemeris,
+    currentMinute.toISOString(),
+    "longitude"
+  );
+  const currentLongitudeSun = getCoordinateFromEphemeris(
+    sunCoordinateEphemeris,
+    currentMinute.toISOString(),
+    "longitude"
+  );
+  const currentIllumination = getIlluminationFromEphemeris(
+    mercuryIlluminationEphemeris,
+    currentMinute.toISOString(),
+    "currentIllumination"
+  );
+  const currentDistance = getDistanceFromEphemeris(
+    mercuryDistanceEphemeris,
+    currentMinute.toISOString(),
+    "currentDistance"
+  );
 
-  const { longitude: previousLongitudePlanet } =
-    mercuryCoordinateEphemeris[previousMinute.toISOString()];
-  const { longitude: previousLongitudeSun } =
-    sunCoordinateEphemeris[previousMinute.toISOString()];
+  const previousLongitudePlanet = getCoordinateFromEphemeris(
+    mercuryCoordinateEphemeris,
+    previousMinute.toISOString(),
+    "longitude"
+  );
+  const previousLongitudeSun = getCoordinateFromEphemeris(
+    sunCoordinateEphemeris,
+    previousMinute.toISOString(),
+    "longitude"
+  );
   const previousDistances = new Array(MARGIN_MINUTES)
     .fill(null)
     .map((_, marginIndex) => {
       const minute = currentMinute
         .clone()
         .subtract(MARGIN_MINUTES - marginIndex, "minutes");
-      const { distance: previousDistance } =
-        mercuryDistanceEphemeris[minute.toISOString()];
-      return previousDistance;
+      return getDistanceFromEphemeris(
+        mercuryDistanceEphemeris,
+        minute.toISOString(),
+        "previousDistance"
+      );
     });
   const previousIlluminations = new Array(MARGIN_MINUTES)
     .fill(null)
@@ -377,30 +430,42 @@ export function getMercurianPhaseEvents(args: {
       const minute = currentMinute
         .clone()
         .subtract(MARGIN_MINUTES - marginIndex, "minutes");
-      const { illumination: previousIllumination } =
-        mercuryIlluminationEphemeris[minute.toISOString()];
-      return previousIllumination;
+      return getIlluminationFromEphemeris(
+        mercuryIlluminationEphemeris,
+        minute.toISOString(),
+        "previousIllumination"
+      );
     });
 
-  const { longitude: nextLongitudePlanet } =
-    mercuryCoordinateEphemeris[nextMinute.toISOString()];
-  const { longitude: nextLongitudeSun } =
-    sunCoordinateEphemeris[nextMinute.toISOString()];
+  const nextLongitudePlanet = getCoordinateFromEphemeris(
+    mercuryCoordinateEphemeris,
+    nextMinute.toISOString(),
+    "longitude"
+  );
+  const nextLongitudeSun = getCoordinateFromEphemeris(
+    sunCoordinateEphemeris,
+    nextMinute.toISOString(),
+    "longitude"
+  );
   const nextDistances = new Array(MARGIN_MINUTES)
     .fill(null)
     .map((_, marginIndex) => {
       const minute = currentMinute.clone().add(marginIndex + 1, "minute");
-      const { distance: nextDistance } =
-        mercuryDistanceEphemeris[minute.toISOString()];
-      return nextDistance;
+      return getDistanceFromEphemeris(
+        mercuryDistanceEphemeris,
+        minute.toISOString(),
+        "nextDistance"
+      );
     });
   const nextIlluminations = new Array(MARGIN_MINUTES)
     .fill(null)
     .map((_, marginIndex) => {
       const minute = currentMinute.clone().add(marginIndex + 1, "minute");
-      const { illumination: nextIllumination } =
-        mercuryIlluminationEphemeris[minute.toISOString()];
-      return nextIllumination;
+      return getIlluminationFromEphemeris(
+        mercuryIlluminationEphemeris,
+        minute.toISOString(),
+        "nextIllumination"
+      );
     });
 
   const params = {
@@ -500,7 +565,7 @@ export function getMercurianPhaseEvents(args: {
 export function getMartianPhaseEvent(args: {
   timestamp: Date;
   phase: MartianPhase;
-}) {
+}): Event {
   const { timestamp, phase } = args;
 
   const phaseCapitalized = _.startCase(phase) as Capitalize<MartianPhase>;
@@ -528,7 +593,7 @@ export function getMartianPhaseEvents(args: {
   marsDistanceEphemeris: DistanceEphemeris;
   marsIlluminationEphemeris: IlluminationEphemeris;
   sunCoordinateEphemeris: CoordinateEphemeris;
-}) {
+}): Event[] {
   const {
     currentMinute,
     sunCoordinateEphemeris,
@@ -540,28 +605,48 @@ export function getMartianPhaseEvents(args: {
   const previousMinute = currentMinute.clone().subtract(1, "minute");
   const nextMinute = currentMinute.clone().add(1, "minute");
 
-  const { longitude: currentLongitudePlanet } =
-    marsCoordinateEphemeris[currentMinute.toISOString()];
-  const { longitude: currentLongitudeSun } =
-    sunCoordinateEphemeris[currentMinute.toISOString()];
-  const { illumination: currentIllumination } =
-    marsIlluminationEphemeris[currentMinute.toISOString()];
-  const { distance: currentDistance } =
-    marsDistanceEphemeris[currentMinute.toISOString()];
+  const currentLongitudePlanet = getCoordinateFromEphemeris(
+    marsCoordinateEphemeris,
+    currentMinute.toISOString(),
+    "longitude"
+  );
+  const currentLongitudeSun = getCoordinateFromEphemeris(
+    sunCoordinateEphemeris,
+    currentMinute.toISOString(),
+    "longitude"
+  );
+  const currentIllumination = getIlluminationFromEphemeris(
+    marsIlluminationEphemeris,
+    currentMinute.toISOString(),
+    "currentIllumination"
+  );
+  const currentDistance = getDistanceFromEphemeris(
+    marsDistanceEphemeris,
+    currentMinute.toISOString(),
+    "currentDistance"
+  );
 
-  const { longitude: previousLongitudePlanet } =
-    marsCoordinateEphemeris[previousMinute.toISOString()];
-  const { longitude: previousLongitudeSun } =
-    sunCoordinateEphemeris[previousMinute.toISOString()];
+  const previousLongitudePlanet = getCoordinateFromEphemeris(
+    marsCoordinateEphemeris,
+    previousMinute.toISOString(),
+    "longitude"
+  );
+  const previousLongitudeSun = getCoordinateFromEphemeris(
+    sunCoordinateEphemeris,
+    previousMinute.toISOString(),
+    "longitude"
+  );
   const previousDistances = new Array(MARGIN_MINUTES)
     .fill(null)
     .map((_, marginIndex) => {
       const minute = currentMinute
         .clone()
         .subtract(MARGIN_MINUTES - marginIndex, "minutes");
-      const { distance: previousDistance } =
-        marsDistanceEphemeris[minute.toISOString()];
-      return previousDistance;
+      return getDistanceFromEphemeris(
+        marsDistanceEphemeris,
+        minute.toISOString(),
+        "previousDistance"
+      );
     });
   const previousIlluminations = new Array(MARGIN_MINUTES)
     .fill(null)
@@ -569,30 +654,42 @@ export function getMartianPhaseEvents(args: {
       const minute = currentMinute
         .clone()
         .subtract(MARGIN_MINUTES - marginIndex, "minutes");
-      const { illumination: previousIllumination } =
-        marsIlluminationEphemeris[minute.toISOString()];
-      return previousIllumination;
+      return getIlluminationFromEphemeris(
+        marsIlluminationEphemeris,
+        minute.toISOString(),
+        "previousIllumination"
+      );
     });
 
-  const { longitude: nextLongitudePlanet } =
-    marsCoordinateEphemeris[nextMinute.toISOString()];
-  const { longitude: nextLongitudeSun } =
-    sunCoordinateEphemeris[nextMinute.toISOString()];
+  const nextLongitudePlanet = getCoordinateFromEphemeris(
+    marsCoordinateEphemeris,
+    nextMinute.toISOString(),
+    "longitude"
+  );
+  const nextLongitudeSun = getCoordinateFromEphemeris(
+    sunCoordinateEphemeris,
+    nextMinute.toISOString(),
+    "longitude"
+  );
   const nextDistances = new Array(MARGIN_MINUTES)
     .fill(null)
     .map((_, marginIndex) => {
       const minute = currentMinute.clone().add(marginIndex + 1, "minute");
-      const { distance: nextDistance } =
-        marsDistanceEphemeris[minute.toISOString()];
-      return nextDistance;
+      return getDistanceFromEphemeris(
+        marsDistanceEphemeris,
+        minute.toISOString(),
+        "nextDistance"
+      );
     });
   const nextIlluminations = new Array(MARGIN_MINUTES)
     .fill(null)
     .map((_, marginIndex) => {
       const minute = currentMinute.clone().add(marginIndex + 1, "minute");
-      const { illumination: nextIllumination } =
-        marsIlluminationEphemeris[minute.toISOString()];
-      return nextIllumination;
+      return getIlluminationFromEphemeris(
+        marsIlluminationEphemeris,
+        minute.toISOString(),
+        "nextIllumination"
+      );
     });
 
   const params = {
@@ -658,15 +755,15 @@ export function writePlanetaryPhaseEvents(args: {
   planetaryPhaseBodies: Extract<Body, "mercury" | "venus" | "mars">[];
   planetaryPhaseEvents: Event[];
   start: Date;
-}) {
+}): void {
   const { planetaryPhaseEvents, planetaryPhaseBodies, start, end } = args;
-  if (_.isEmpty(planetaryPhaseEvents)) {return;}
+  if (_.isEmpty(planetaryPhaseEvents)) {
+    return;
+  }
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${planetaryPhaseEvents.length} planetary phase events from ${timespan}`;
   console.log(`🌓 Writing ${message}`);
-
-  upsertEvents(planetaryPhaseEvents);
 
   const planetaryPhasesBodiesString = planetaryPhaseBodies.join(",");
   const planetaryPhasesCalendar = getCalendar({

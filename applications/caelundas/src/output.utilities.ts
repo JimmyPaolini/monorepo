@@ -6,6 +6,6 @@ import path from "path";
  * otherwise defaults to ./output for local development.
  */
 export function getOutputPath(filename: string): string {
-  const outputDir = process.env.OUTPUT_DIRECTORY ?? "./output";
+  const outputDir = process.env["OUTPUT_DIRECTORY"] ?? "./output";
   return path.join(outputDir, filename);
 }

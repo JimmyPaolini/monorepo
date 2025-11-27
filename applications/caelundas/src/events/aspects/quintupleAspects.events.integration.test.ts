@@ -1,5 +1,5 @@
 import moment from "moment-timezone";
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it } from "vitest";
 
 import {
   getQuintupleAspectDurationEvents,
@@ -121,16 +121,16 @@ describe("quintupleAspects.events integration", () => {
       const events = getQuintupleAspectEvents(storedAspects, currentMinute);
 
       expect(events).toHaveLength(1);
-      expect(events[0].categories).toContain("Pentagram");
-      expect(events[0].categories).toContain("Forming");
-      expect(events[0].categories).toContain("Jupiter");
-      expect(events[0].categories).toContain("Mars");
-      expect(events[0].categories).toContain("Moon");
-      expect(events[0].categories).toContain("Sun");
-      expect(events[0].categories).toContain("Venus");
-      expect(events[0].description).toContain("pentagram forming");
-      expect(events[0].summary).toContain("➡️"); // Forming emoji
-      expect(events[0].summary).toContain("⭐"); // Pentagram symbol
+      expect(events[0]?.categories).toContain("Pentagram");
+      expect(events[0]?.categories).toContain("Forming");
+      expect(events[0]?.categories).toContain("Jupiter");
+      expect(events[0]?.categories).toContain("Mars");
+      expect(events[0]?.categories).toContain("Moon");
+      expect(events[0]?.categories).toContain("Sun");
+      expect(events[0]?.categories).toContain("Venus");
+      expect(events[0]?.description).toContain("pentagram forming");
+      expect(events[0]?.summary).toContain("➡️"); // Forming emoji
+      expect(events[0]?.summary).toContain("⭐"); // Pentagram symbol
     });
 
     it("should detect dissolving Pentagram when pattern breaks apart", () => {
@@ -228,10 +228,10 @@ describe("quintupleAspects.events integration", () => {
       const events = getQuintupleAspectEvents(storedAspects, currentMinute);
 
       expect(events).toHaveLength(1);
-      expect(events[0].categories).toContain("Pentagram");
-      expect(events[0].categories).toContain("Dissolving");
-      expect(events[0].description).toContain("pentagram dissolving");
-      expect(events[0].summary).toContain("⬅️"); // Dissolving emoji
+      expect(events[0]?.categories).toContain("Pentagram");
+      expect(events[0]?.categories).toContain("Dissolving");
+      expect(events[0]?.description).toContain("pentagram dissolving");
+      expect(events[0]?.summary).toContain("⬅️"); // Dissolving emoji
     });
 
     it("should create duration event from forming/dissolving Pentagram pair", () => {
@@ -283,18 +283,18 @@ describe("quintupleAspects.events integration", () => {
       ]);
 
       expect(durationEvents).toHaveLength(1);
-      expect(durationEvents[0].start).toEqual(
+      expect(durationEvents[0]?.start).toEqual(
         new Date("2024-06-15T14:23:00.000Z")
       );
-      expect(durationEvents[0].end).toEqual(
+      expect(durationEvents[0]?.end).toEqual(
         new Date("2024-06-15T14:30:00.000Z")
       );
-      expect(durationEvents[0].categories).toContain("Quintuple Aspect");
-      expect(durationEvents[0].categories).toContain("Pentagram");
-      expect(durationEvents[0].categories).not.toContain("Forming");
-      expect(durationEvents[0].categories).not.toContain("Dissolving");
-      expect(durationEvents[0].description).toContain("pentagram");
-      expect(durationEvents[0].description).not.toMatch(
+      expect(durationEvents[0]?.categories).toContain("Quintuple Aspect");
+      expect(durationEvents[0]?.categories).toContain("Pentagram");
+      expect(durationEvents[0]?.categories).not.toContain("Forming");
+      expect(durationEvents[0]?.categories).not.toContain("Dissolving");
+      expect(durationEvents[0]?.description).toContain("pentagram");
+      expect(durationEvents[0]?.description).not.toMatch(
         /(forming|dissolving)$/i
       );
     });
@@ -393,13 +393,13 @@ describe("quintupleAspects.events integration", () => {
       const events = getQuintupleAspectEvents(storedAspects, currentMinute);
 
       expect(events).toHaveLength(1);
-      expect(events[0].categories).toContain("Pentagram");
-      expect(events[0].categories).toContain("Forming");
-      expect(events[0].categories).toContain("Saturn");
-      expect(events[0].categories).toContain("Uranus");
-      expect(events[0].categories).toContain("Neptune");
-      expect(events[0].categories).toContain("Pluto");
-      expect(events[0].categories).toContain("Jupiter");
+      expect(events[0]?.categories).toContain("Pentagram");
+      expect(events[0]?.categories).toContain("Forming");
+      expect(events[0]?.categories).toContain("Saturn");
+      expect(events[0]?.categories).toContain("Uranus");
+      expect(events[0]?.categories).toContain("Neptune");
+      expect(events[0]?.categories).toContain("Pluto");
+      expect(events[0]?.categories).toContain("Jupiter");
     });
   });
 

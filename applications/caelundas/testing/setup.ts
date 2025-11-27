@@ -7,7 +7,13 @@ import { beforeEach, vi } from "vitest";
 
 // Suppress console output in tests by default
 beforeEach(() => {
-  vi.spyOn(console, "log").mockImplementation(() => {});
-  vi.spyOn(console, "error").mockImplementation(() => {});
-  vi.spyOn(console, "warn").mockImplementation(() => {});
+  vi.spyOn(console, "log").mockImplementation(() => {
+    /* no-op */
+  });
+  vi.spyOn(console, "error").mockImplementation(() => {
+    /* no-op */
+  });
+  vi.spyOn(console, "warn").mockImplementation(() => {
+    /* no-op */
+  });
 });

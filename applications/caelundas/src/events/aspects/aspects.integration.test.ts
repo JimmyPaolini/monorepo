@@ -1,43 +1,10 @@
 import { describe, expect, it } from "vitest";
 
-import { majorAspectBodies, minorAspectBodies } from "../../types";
-
 import {
   getMajorAspect,
   getMajorAspectPhase,
   getMinorAspect,
 } from "./aspects.utilities";
-
-import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
-import type { Body } from "../../types";
-import type moment from "moment-timezone";
-
-// Helper to create a full ephemeris record for all bodies
-function createFullEphemeris(
-  baseTime: moment.Moment,
-  overrides: Record<string, { longitude: number; latitude: number }>
-): Record<Body, CoordinateEphemeris> {
-  const defaultLongitude = 0;
-  const result: Record<string, CoordinateEphemeris> = {};
-
-  // Create ephemeris for all major aspect bodies with default values
-  for (const body of majorAspectBodies) {
-    const override = overrides[body];
-    result[body] = {
-      [baseTime.clone().subtract(1, "minute").toISOString()]: override
-        ? { longitude: override.longitude - 0.5, latitude: override.latitude }
-        : { longitude: defaultLongitude, latitude: 0 },
-      [baseTime.toISOString()]: override
-        ? { longitude: override.longitude, latitude: override.latitude }
-        : { longitude: defaultLongitude, latitude: 0 },
-      [baseTime.clone().add(1, "minute").toISOString()]: override
-        ? { longitude: override.longitude + 0.5, latitude: override.latitude }
-        : { longitude: defaultLongitude, latitude: 0 },
-    };
-  }
-
-  return result as Record<Body, CoordinateEphemeris>;
-}
 
 describe("majorAspects.events integration", () => {
   describe("getMajorAspect (unit-level integration)", () => {

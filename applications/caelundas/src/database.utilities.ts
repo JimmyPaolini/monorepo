@@ -6,13 +6,26 @@ import { getOutputPath } from "./output.utilities";
 import type { Event } from "./calendar.utilities";
 import type { Body } from "./types";
 
+interface EventRecord {
+  summary: string;
+  description: string;
+  start: string;
+  end: string;
+  categories: string;
+  location?: string;
+  latitude?: number;
+  longitude?: number;
+  url?: string;
+  priority?: number;
+  color?: string;
+}
 
 const databasePromise: Promise<Database> = open({
   filename: getOutputPath("database.db"),
   driver: sqlite3.Database,
 });
 
-async function initializeDatabase() {
+async function initializeDatabase(): Promise<void> {
   try {
     const db = await databasePromise;
 
@@ -74,7 +87,7 @@ async function initializeDatabase() {
 }
 
 // Initialize database on module load
-initializeDatabase();
+void initializeDatabase();
 
 // #region Ephemeris
 
@@ -82,23 +95,25 @@ export interface EphemerisRecord {
   body: Body;
   timestamp: Date;
   // Coordinate/Orbit ephemeris
-  latitude?: number;
-  longitude?: number;
+  latitude?: number | undefined;
+  longitude?: number | undefined;
   // Azimuth/Elevation ephemeris
-  azimuth?: number;
-  elevation?: number;
+  azimuth?: number | undefined;
+  elevation?: number | undefined;
   // Illumination ephemeris
-  illumination?: number;
+  illumination?: number | undefined;
   // Diameter ephemeris
-  diameter?: number;
+  diameter?: number | undefined;
   // Distance ephemeris
-  distance?: number;
+  distance?: number | undefined;
 }
 
 export async function upsertEphemerisValues(
   ephemerisValues: EphemerisRecord[]
-) {
-  if (ephemerisValues.length === 0) {return;}
+): Promise<void> {
+  if (ephemerisValues.length === 0) {
+    return;
+  }
 
   const db = await databasePromise;
 
@@ -205,28 +220,31 @@ export async function getEphemerisRecords(args: {
     ORDER BY timestamp ASC
   `;
 
-  const rows = await db.all(query, [
+  const rows: EphemerisRecord[] = await db.all(query, [
     body,
     start.toISOString(),
     end.toISOString(),
   ]);
 
-  return rows.map((row) => ({
-    body: row.body as Body,
-    timestamp: new Date(row.timestamp),
-    latitude: row.latitude ?? undefined,
-    longitude: row.longitude ?? undefined,
-    azimuth: row.azimuth ?? undefined,
-    elevation: row.elevation ?? undefined,
-    illumination: row.illumination ?? undefined,
-    diameter: row.diameter ?? undefined,
-    distance: row.distance ?? undefined,
-  }));
+  return rows.map((row) => {
+    const record: EphemerisRecord = {
+      body: row.body,
+      timestamp: new Date(row.timestamp),
+      latitude: row.latitude,
+      longitude: row.longitude,
+      azimuth: row.azimuth,
+      elevation: row.elevation,
+      illumination: row.illumination,
+      diameter: row.diameter,
+      distance: row.distance,
+    };
+    return record;
+  });
 }
 
 // #region Events
 
-function mapRowToEvent(row: any): Event {
+function mapRowToEvent(row: EventRecord): Event {
   return {
     summary: row.summary,
     description: row.description,
@@ -235,18 +253,18 @@ function mapRowToEvent(row: any): Event {
     categories: row.categories ? row.categories.split(",") : [],
     location: row.location || undefined,
     geography:
-      row.latitude !== null && row.longitude !== null
+      row.latitude && row.longitude
         ? { latitude: row.latitude, longitude: row.longitude }
         : undefined,
     url: row.url || undefined,
-    priority: row.priority !== null ? row.priority : undefined,
+    priority: row.priority ? row.priority : undefined,
     color: row.color || undefined,
   };
 }
 
-export async function upsertEvent(event: Event) {
+export async function upsertEvent(event: Event): Promise<void> {
   const db = await databasePromise;
-  const result = await db.run(
+  await db.run(
     `INSERT OR REPLACE INTO events
      (summary, description, start, end, categories, location, latitude, longitude, url, priority, color)
      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
@@ -264,11 +282,12 @@ export async function upsertEvent(event: Event) {
       event.color || null,
     ]
   );
-  return result;
 }
 
-export async function upsertEvents(events: Event[]) {
-  if (events.length === 0) {return;}
+export async function upsertEvents(events: Event[]): Promise<void> {
+  if (events.length === 0) {
+    return;
+  }
 
   const db = await databasePromise;
 
@@ -302,7 +321,7 @@ export async function upsertEvents(events: Event[]) {
       event.summary,
       event.description,
       event.start.toISOString(),
-      event.end?.toISOString() || null,
+      event.end.toISOString() || null,
       event.categories.join(","),
       event.location || null,
       event.geography?.latitude || null,
@@ -358,7 +377,7 @@ export async function getActiveAspectsAt(timestamp: Date): Promise<Event[]> {
 
 // #region Cleanup
 
-export async function closeConnection() {
+export async function closeConnection(): Promise<void> {
   const db = await databasePromise;
   await db.close();
 }

@@ -4,8 +4,8 @@ import _ from "lodash";
 import moment from "moment-timezone";
 
 import { getCalendar } from "../../calendar.utilities";
-import { upsertEvents } from "../../database.utilities";
 import { pairDurationEvents } from "../../duration.utilities";
+import { getAzimuthElevationFromEphemeris } from "../../ephemeris/ephemeris.service";
 import { getOutputPath } from "../../output.utilities";
 
 import {
@@ -26,17 +26,23 @@ const categories = ["Astronomy", "Astrology", "Twilight"];
 export function getTwilightEvents(args: {
   currentMinute: Moment;
   sunAzimuthElevationEphemeris: AzimuthElevationEphemeris;
-}) {
+}): Event[] {
   const { currentMinute, sunAzimuthElevationEphemeris } = args;
 
   const twilightEvents: Event[] = [];
 
   const previousMinute = currentMinute.clone().subtract(1, "minutes");
 
-  const { elevation: currentElevation } =
-    sunAzimuthElevationEphemeris[currentMinute.toISOString()];
-  const { elevation: previousElevation } =
-    sunAzimuthElevationEphemeris[previousMinute.toISOString()];
+  const currentElevation = getAzimuthElevationFromEphemeris(
+    sunAzimuthElevationEphemeris,
+    currentMinute.toISOString(),
+    "elevation"
+  );
+  const previousElevation = getAzimuthElevationFromEphemeris(
+    sunAzimuthElevationEphemeris,
+    previousMinute.toISOString(),
+    "elevation"
+  );
 
   const elevations = { currentElevation, previousElevation };
   const date = currentMinute.toDate();
@@ -169,15 +175,15 @@ export function writeTwilightEvents(args: {
   twilightEvents: Event[];
   start: Date;
   end: Date;
-}) {
+}): void {
   const { twilightEvents, start, end } = args;
-  if (_.isEmpty(twilightEvents)) {return;}
+  if (_.isEmpty(twilightEvents)) {
+    return;
+  }
 
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${twilightEvents.length} twilight events from ${timespan}`;
   console.log(`🌠 Writing ${message}`);
-
-  upsertEvents(twilightEvents);
 
   const ingressCalendar = getCalendar({
     events: twilightEvents,

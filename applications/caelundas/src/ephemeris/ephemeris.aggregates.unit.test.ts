@@ -2,6 +2,15 @@ import { describe, expect, it, vi } from "vitest";
 
 import { getEphemerides } from "./ephemeris.aggregates";
 
+import type {
+  AzimuthElevationEphemeris,
+  CoordinateEphemeris,
+  DiameterEphemeris,
+  DistanceEphemeris,
+  IlluminationEphemeris,
+} from "./ephemeris.types";
+import type { Body } from "../types";
+
 // Mock the ephemeris service functions
 vi.mock("./ephemeris.service", () => ({
   getCoordinateEphemerisByBody: vi.fn(),
@@ -31,31 +40,31 @@ describe("ephemeris.aggregates", () => {
       vi.mocked(getCoordinateEphemerisByBody).mockResolvedValue({
         sun: { "2024-03-21T00:00:00.000Z": { longitude: 0, latitude: 0 } },
         moon: { "2024-03-21T00:00:00.000Z": { longitude: 120, latitude: 5 } },
-      } as any);
+      } as unknown as Record<Body, CoordinateEphemeris>);
 
       vi.mocked(getAzimuthElevationEphemerisByBody).mockResolvedValue({
         sun: { "2024-03-21T00:00:00.000Z": { azimuth: 90, elevation: 45 } },
         moon: { "2024-03-21T00:00:00.000Z": { azimuth: 180, elevation: 30 } },
-      } as any);
+      } as unknown as Record<Body, AzimuthElevationEphemeris>);
 
       vi.mocked(getIlluminationEphemerisByBody).mockResolvedValue({
         moon: { "2024-03-21T00:00:00.000Z": { illumination: 0.5 } },
         mercury: { "2024-03-21T00:00:00.000Z": { illumination: 0.8 } },
         venus: { "2024-03-21T00:00:00.000Z": { illumination: 0.9 } },
         mars: { "2024-03-21T00:00:00.000Z": { illumination: 0.95 } },
-      } as any);
+      } as unknown as Record<Body, IlluminationEphemeris>);
 
       vi.mocked(getDiameterEphemerisByBody).mockResolvedValue({
         sun: { "2024-03-21T00:00:00.000Z": { diameter: 0.5334 } },
         moon: { "2024-03-21T00:00:00.000Z": { diameter: 0.5181 } },
-      } as any);
+      } as unknown as Record<Body, DiameterEphemeris>);
 
       vi.mocked(getDistanceEphemerisByBody).mockResolvedValue({
-        sun: { "2024-03-21T00:00:00.000Z": { distance: 1.0, range: 0.0 } },
-        mercury: { "2024-03-21T00:00:00.000Z": { distance: 0.5, range: 0.0 } },
-        venus: { "2024-03-21T00:00:00.000Z": { distance: 0.7, range: 0.0 } },
-        mars: { "2024-03-21T00:00:00.000Z": { distance: 1.5, range: 0.0 } },
-      } as any);
+        sun: { "2024-03-21T00:00:00.000Z": { distance: 1.0 } },
+        mercury: { "2024-03-21T00:00:00.000Z": { distance: 0.5 } },
+        venus: { "2024-03-21T00:00:00.000Z": { distance: 0.7 } },
+        mars: { "2024-03-21T00:00:00.000Z": { distance: 1.5 } },
+      } as unknown as Record<Body, DistanceEphemeris>);
 
       const result = await getEphemerides({
         coordinates,
@@ -74,7 +83,7 @@ describe("ephemeris.aggregates", () => {
       // Verify correct bodies were requested for each type
       expect(getCoordinateEphemerisByBody).toHaveBeenCalledWith(
         expect.objectContaining({
-          bodies: expect.arrayContaining([
+          bodies: expect.arrayContaining<string>([
             "sun",
             "mercury",
             "venus",
@@ -85,7 +94,7 @@ describe("ephemeris.aggregates", () => {
             "uranus",
             "neptune",
             "pluto",
-          ]),
+          ]) as string[],
           start,
           end,
           timezone,
@@ -142,35 +151,31 @@ describe("ephemeris.aggregates", () => {
 
       const mockCoordinates = {
         sun: { "2024-03-21T00:00:00.000Z": { longitude: 0, latitude: 0 } },
-      };
+      } as unknown as Record<Body, CoordinateEphemeris>;
       const mockAzimuthElevation = {
         sun: { "2024-03-21T00:00:00.000Z": { azimuth: 90, elevation: 45 } },
-      };
+      } as unknown as Record<Body, AzimuthElevationEphemeris>;
       const mockIllumination = {
         moon: { "2024-03-21T00:00:00.000Z": { illumination: 0.5 } },
-      };
+      } as unknown as Record<Body, IlluminationEphemeris>;
       const mockDiameter = {
         sun: { "2024-03-21T00:00:00.000Z": { diameter: 0.5334 } },
-      };
+      } as unknown as Record<Body, DiameterEphemeris>;
       const mockDistance = {
-        sun: { "2024-03-21T00:00:00.000Z": { distance: 1.0, range: 0.0 } },
-      };
+        sun: { "2024-03-21T00:00:00.000Z": { distance: 1.0 } },
+      } as unknown as Record<Body, DistanceEphemeris>;
 
       vi.mocked(getCoordinateEphemerisByBody).mockResolvedValue(
-        mockCoordinates as any
+        mockCoordinates
       );
       vi.mocked(getAzimuthElevationEphemerisByBody).mockResolvedValue(
-        mockAzimuthElevation as any
+        mockAzimuthElevation
       );
       vi.mocked(getIlluminationEphemerisByBody).mockResolvedValue(
-        mockIllumination as any
+        mockIllumination
       );
-      vi.mocked(getDiameterEphemerisByBody).mockResolvedValue(
-        mockDiameter as any
-      );
-      vi.mocked(getDistanceEphemerisByBody).mockResolvedValue(
-        mockDistance as any
-      );
+      vi.mocked(getDiameterEphemerisByBody).mockResolvedValue(mockDiameter);
+      vi.mocked(getDistanceEphemerisByBody).mockResolvedValue(mockDistance);
 
       const result = await getEphemerides({
         coordinates,
@@ -197,13 +202,21 @@ describe("ephemeris.aggregates", () => {
         getDistanceEphemerisByBody,
       } = await import("./ephemeris.service");
 
-      vi.mocked(getCoordinateEphemerisByBody).mockResolvedValue({} as any);
-      vi.mocked(getAzimuthElevationEphemerisByBody).mockResolvedValue(
-        {} as any
+      vi.mocked(getCoordinateEphemerisByBody).mockResolvedValue(
+        {} as Record<Body, CoordinateEphemeris>
       );
-      vi.mocked(getIlluminationEphemerisByBody).mockResolvedValue({} as any);
-      vi.mocked(getDiameterEphemerisByBody).mockResolvedValue({} as any);
-      vi.mocked(getDistanceEphemerisByBody).mockResolvedValue({} as any);
+      vi.mocked(getAzimuthElevationEphemerisByBody).mockResolvedValue(
+        {} as Record<Body, AzimuthElevationEphemeris>
+      );
+      vi.mocked(getIlluminationEphemerisByBody).mockResolvedValue(
+        {} as Record<Body, IlluminationEphemeris>
+      );
+      vi.mocked(getDiameterEphemerisByBody).mockResolvedValue(
+        {} as Record<Body, DiameterEphemeris>
+      );
+      vi.mocked(getDistanceEphemerisByBody).mockResolvedValue(
+        {} as Record<Body, DistanceEphemeris>
+      );
 
       const testCoordinates: [number, number] = [-118.2437, 34.0522]; // Los Angeles
 
@@ -230,7 +243,7 @@ describe("ephemeris.aggregates", () => {
       // Coordinate ephemeris doesn't use observer coordinates
       expect(getCoordinateEphemerisByBody).toHaveBeenCalledWith(
         expect.not.objectContaining({
-          coordinates: expect.anything(),
+          coordinates: expect.anything() as unknown,
         })
       );
     });
@@ -244,13 +257,21 @@ describe("ephemeris.aggregates", () => {
         getDistanceEphemerisByBody,
       } = await import("./ephemeris.service");
 
-      vi.mocked(getCoordinateEphemerisByBody).mockResolvedValue({} as any);
-      vi.mocked(getAzimuthElevationEphemerisByBody).mockResolvedValue(
-        {} as any
+      vi.mocked(getCoordinateEphemerisByBody).mockResolvedValue(
+        {} as Record<Body, CoordinateEphemeris>
       );
-      vi.mocked(getIlluminationEphemerisByBody).mockResolvedValue({} as any);
-      vi.mocked(getDiameterEphemerisByBody).mockResolvedValue({} as any);
-      vi.mocked(getDistanceEphemerisByBody).mockResolvedValue({} as any);
+      vi.mocked(getAzimuthElevationEphemerisByBody).mockResolvedValue(
+        {} as Record<Body, AzimuthElevationEphemeris>
+      );
+      vi.mocked(getIlluminationEphemerisByBody).mockResolvedValue(
+        {} as Record<Body, IlluminationEphemeris>
+      );
+      vi.mocked(getDiameterEphemerisByBody).mockResolvedValue(
+        {} as Record<Body, DiameterEphemeris>
+      );
+      vi.mocked(getDistanceEphemerisByBody).mockResolvedValue(
+        {} as Record<Body, DistanceEphemeris>
+      );
 
       const customStart = new Date("2024-06-21T00:00:00.000Z");
       const customEnd = new Date("2024-06-22T00:00:00.000Z");
@@ -308,13 +329,21 @@ describe("ephemeris.aggregates", () => {
         getDistanceEphemerisByBody,
       } = await import("./ephemeris.service");
 
-      vi.mocked(getCoordinateEphemerisByBody).mockResolvedValue({} as any);
-      vi.mocked(getAzimuthElevationEphemerisByBody).mockResolvedValue(
-        {} as any
+      vi.mocked(getCoordinateEphemerisByBody).mockResolvedValue(
+        {} as Record<Body, CoordinateEphemeris>
       );
-      vi.mocked(getIlluminationEphemerisByBody).mockResolvedValue({} as any);
-      vi.mocked(getDiameterEphemerisByBody).mockResolvedValue({} as any);
-      vi.mocked(getDistanceEphemerisByBody).mockResolvedValue({} as any);
+      vi.mocked(getAzimuthElevationEphemerisByBody).mockResolvedValue(
+        {} as Record<Body, AzimuthElevationEphemeris>
+      );
+      vi.mocked(getIlluminationEphemerisByBody).mockResolvedValue(
+        {} as Record<Body, IlluminationEphemeris>
+      );
+      vi.mocked(getDiameterEphemerisByBody).mockResolvedValue(
+        {} as Record<Body, DiameterEphemeris>
+      );
+      vi.mocked(getDistanceEphemerisByBody).mockResolvedValue(
+        {} as Record<Body, DistanceEphemeris>
+      );
 
       const customTimezone = "Europe/London";
 

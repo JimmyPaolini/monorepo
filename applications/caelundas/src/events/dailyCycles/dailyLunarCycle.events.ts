@@ -4,7 +4,7 @@ import _ from "lodash";
 import moment from "moment-timezone";
 
 import { getCalendar } from "../../calendar.utilities";
-import { upsertEvents } from "../../database.utilities";
+import { getAzimuthElevationFromEphemeris } from "../../ephemeris/ephemeris.service";
 import { isMaximum, isMinimum } from "../../math.utilities";
 import { getOutputPath } from "../../output.utilities";
 
@@ -19,7 +19,7 @@ const categories = ["Astronomy", "Astrology", "Daily Lunar Cycle", "Lunar"];
 export function getDailyLunarCycleEvents(args: {
   currentMinute: Moment;
   moonAzimuthElevationEphemeris: AzimuthElevationEphemeris;
-}) {
+}): Event[] {
   const { currentMinute, moonAzimuthElevationEphemeris } = args;
 
   const dailyLunarCycleEvents: Event[] = [];
@@ -27,12 +27,21 @@ export function getDailyLunarCycleEvents(args: {
   const previousMinute = currentMinute.clone().subtract(1, "minutes");
   const nextMinute = currentMinute.clone().add(1, "minutes");
 
-  const { elevation: currentElevation } =
-    moonAzimuthElevationEphemeris[currentMinute.toISOString()];
-  const { elevation: previousElevation } =
-    moonAzimuthElevationEphemeris[previousMinute.toISOString()];
-  const { elevation: nextElevation } =
-    moonAzimuthElevationEphemeris[nextMinute.toISOString()];
+  const currentElevation = getAzimuthElevationFromEphemeris(
+    moonAzimuthElevationEphemeris,
+    currentMinute.toISOString(),
+    "elevation"
+  );
+  const previousElevation = getAzimuthElevationFromEphemeris(
+    moonAzimuthElevationEphemeris,
+    previousMinute.toISOString(),
+    "elevation"
+  );
+  const nextElevation = getAzimuthElevationFromEphemeris(
+    moonAzimuthElevationEphemeris,
+    nextMinute.toISOString(),
+    "elevation"
+  );
 
   const elevations = {
     currentElevation,
@@ -132,14 +141,14 @@ export function writeDailyLunarCycleEvents(args: {
   dailyLunarCycleEvents: Event[];
   start: Date;
   end: Date;
-}) {
+}): void {
   const { dailyLunarCycleEvents, start, end } = args;
-  if (_.isEmpty(dailyLunarCycleEvents)) {return;}
+  if (_.isEmpty(dailyLunarCycleEvents)) {
+    return;
+  }
   const timespan = `${start.toISOString()}-${end.toISOString()}`;
   const message = `${dailyLunarCycleEvents.length} daily lunar cycle events from ${timespan}`;
   console.log(`🌙 Writing ${message}`);
-
-  upsertEvents(dailyLunarCycleEvents);
 
   const ingressCalendar = getCalendar({
     events: dailyLunarCycleEvents,
