@@ -140,32 +140,35 @@ export default defineConfig([
         },
       ],
       "@typescript-eslint/no-import-type-side-effects": "error",
-      // Naming convention - commented out object property requirement to allow API/JSON keys
-      // "@typescript-eslint/naming-convention": [
-      //   "error",
-      //   {
-      //     selector: "default",
-      //     format: ["camelCase"],
-      //     leadingUnderscore: "forbid",
-      //     trailingUnderscore: "forbid",
-      //   },
-      //   {
-      //     selector: "variable",
-      //     format: ["camelCase", "UPPER_CASE", "PascalCase"],
-      //   },
-      //   {
-      //     selector: "typeLike",
-      //     format: ["PascalCase"],
-      //   },
-      //   {
-      //     selector: "enumMember",
-      //     format: ["UPPER_CASE"],
-      //   },
-      //   {
-      //     selector: "import",
-      //     format: ["camelCase", "PascalCase"],
-      //   },
-      // ],
+      "@typescript-eslint/naming-convention": [
+        "error",
+        {
+          selector: "default",
+          format: ["camelCase"],
+          leadingUnderscore: "forbid",
+          trailingUnderscore: "forbid",
+        },
+        {
+          selector: "variable",
+          format: ["camelCase", "UPPER_CASE", "PascalCase"],
+        },
+        {
+          selector: "typeLike",
+          format: ["PascalCase"],
+        },
+        {
+          selector: "enumMember",
+          format: ["UPPER_CASE"],
+        },
+        {
+          selector: "import",
+          format: ["camelCase", "PascalCase"],
+        },
+        {
+          selector: "objectLiteralProperty",
+          format: null,
+        },
+      ],
 
       // General best practices
       "no-console": ["warn", { allow: ["warn", "error"] }],
