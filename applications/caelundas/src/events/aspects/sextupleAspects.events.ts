@@ -66,7 +66,9 @@ function findHexagramPattern(
     const neighbors = Array.from(trineNeighbors);
     const b1 = neighbors[0];
     const b2 = neighbors[1];
-    if (!b1 || !b2) {continue;}
+    if (!b1 || !b2) {
+      continue;
+    }
     const b1Connections = trineConnections.get(b1);
     if (b1Connections?.has(b2)) {
       trineGroups.push([body, b1, b2]);
@@ -85,7 +87,9 @@ function findHexagramPattern(
   // such that adjacent bodies (in hexagon) are connected by sextiles
   const trine1 = trineGroups[0];
   const trine2 = trineGroups[1];
-  if (!trine1 || !trine2) {return null;}
+  if (!trine1 || !trine2) {
+    return null;
+  }
 
   // Try all possible interleavings of the two trines
   for (let i = 0; i < 3; i++) {
@@ -113,7 +117,9 @@ function findHexagramPattern(
           const t2l = trine2[l];
           const t1i2 = trine1[i2];
           const t2j2 = trine2[j2];
-          if (!t1i || !t2j || !t1k || !t2l || !t1i2 || !t2j2) {continue;}
+          if (!t1i || !t2j || !t1k || !t2l || !t1i2 || !t2j2) {
+            continue;
+          }
 
           const arrangement = [t1i, t2j, t1k, t2l, t1i2, t2j2];
 
@@ -124,7 +130,9 @@ function findHexagramPattern(
           const a3 = arrangement[3];
           const a4 = arrangement[4];
           const a5 = arrangement[5];
-          if (!a0 || !a1 || !a2 || !a3 || !a4 || !a5) {continue;}
+          if (!a0 || !a1 || !a2 || !a3 || !a4 || !a5) {
+            continue;
+          }
 
           const hasAllSextiles =
             sextileConnections.get(a0)?.has(a1) &&
@@ -363,7 +371,9 @@ export function getSextupleAspectDurationEvents(events: Event[]): Event[] {
 
     for (let i = 0; i < sortedEvents.length; i++) {
       const currentEvent = sortedEvents[i];
-      if (!currentEvent) {continue;}
+      if (!currentEvent) {
+        continue;
+      }
 
       // Skip if not a forming event
       if (!currentEvent.categories.includes("Forming")) {
@@ -373,7 +383,9 @@ export function getSextupleAspectDurationEvents(events: Event[]): Event[] {
       // Look for the next dissolving event
       for (let j = i + 1; j < sortedEvents.length; j++) {
         const potentialDissolvingEvent = sortedEvents[j];
-        if (!potentialDissolvingEvent) {continue;}
+        if (!potentialDissolvingEvent) {
+          continue;
+        }
 
         if (potentialDissolvingEvent.categories.includes("Dissolving")) {
           // Create duration event

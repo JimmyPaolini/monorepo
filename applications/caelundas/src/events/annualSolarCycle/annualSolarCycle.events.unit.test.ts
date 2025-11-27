@@ -598,9 +598,8 @@ describe("annualSolarCycle.events", () => {
 
     it("should not write when events array is empty", async () => {
       const fs = await import("fs");
-      const { writeAnnualSolarCycleEvents } = await import(
-        "./annualSolarCycle.events"
-      );
+      const { writeAnnualSolarCycleEvents } =
+        await import("./annualSolarCycle.events");
 
       const start = new Date("2024-03-01T00:00:00.000Z");
       const end = new Date("2024-03-31T23:59:59.000Z");

@@ -59,7 +59,9 @@ export function isLunarPhase(args: {
 
   const { currentIllumination, previousIlluminations } = illuminations;
   const previousIllumination = previousIlluminations[0];
-  if (!previousIllumination) {return false;}
+  if (!previousIllumination) {
+    return false;
+  }
 
   const illumination = illuminationByPhase[lunarPhase] * 100;
 

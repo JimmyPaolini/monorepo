@@ -1,0 +1,58 @@
+# Dependencies
+node_modules
+**/node_modules
+
+# Build outputs
+dist
+**/dist
+build
+**/build
+.next
+**/.next
+out
+**/out
+
+# Nx cache
+.nx
+**/.nx
+
+# Coverage
+coverage
+**/coverage
+.nyc_output
+
+# Temporary files
+tmp
+**/tmp
+*.tmp
+*.log
+
+# Lock files
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Git
+.git
+
+# IDE
+.vscode
+.idea
+
+# Generated files
+*.min.js
+*.min.css
+
+# Compiled files
+**/*.d.ts
+!**/*.d.ts.map
+
+# Test snapshots (optional - uncomment if you don't want to format them)
+# **/__snapshots__
+
+# Specific config files that might have special formatting
+# calendars/**/*.ics
+
+# Helm templates with Go templating syntax
+infrastructure/helm/**/templates/**
+**/helm/**/templates/**

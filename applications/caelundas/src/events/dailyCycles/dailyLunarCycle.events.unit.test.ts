@@ -219,9 +219,8 @@ describe("dailyLunarCycle.events", () => {
         },
       ];
 
-      const { writeDailyLunarCycleEvents } = await import(
-        "./dailyLunarCycle.events"
-      );
+      const { writeDailyLunarCycleEvents } =
+        await import("./dailyLunarCycle.events");
       writeDailyLunarCycleEvents({
         dailyLunarCycleEvents: events,
         start: new Date("2024-01-01"),
@@ -234,9 +233,8 @@ describe("dailyLunarCycle.events", () => {
     it("should not write if events array is empty", async () => {
       const fs = (await import("fs")).default;
 
-      const { writeDailyLunarCycleEvents } = await import(
-        "./dailyLunarCycle.events"
-      );
+      const { writeDailyLunarCycleEvents } =
+        await import("./dailyLunarCycle.events");
       writeDailyLunarCycleEvents({
         dailyLunarCycleEvents: [],
         start: new Date("2024-01-01"),

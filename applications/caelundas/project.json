@@ -29,6 +29,22 @@
       },
       "description": "Type-check the application without emitting files"
     },
+    "format": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prettier --write .",
+        "cwd": "applications/caelundas"
+      },
+      "description": "Format all files in the project with Prettier"
+    },
+    "format:check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prettier --check .",
+        "cwd": "applications/caelundas"
+      },
+      "description": "Check formatting without making changes"
+    },
     "test": {
       "executor": "nx:run-commands",
       "options": {

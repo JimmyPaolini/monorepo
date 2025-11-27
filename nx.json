@@ -10,10 +10,7 @@
     }
   ],
   "namedInputs": {
-    "default": [
-      "{projectRoot}/**/*",
-      "sharedGlobals"
-    ],
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "production": [
       "default",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
@@ -31,34 +28,28 @@
   },
   "targetDefaults": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "inputs": [
-        "production",
-        "^production"
-      ],
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"],
       "cache": true
     },
     "test": {
-      "inputs": [
-        "default",
-        "^production"
-      ],
+      "inputs": ["default", "^production"],
       "cache": true
     },
     "lint": {
+      "inputs": ["default", "{workspaceRoot}/eslint.config.mjs"],
+      "cache": true
+    },
+    "format": {
       "inputs": [
         "default",
-        "{workspaceRoot}/eslint.config.mjs"
+        "{workspaceRoot}/.prettierrc.js",
+        "{workspaceRoot}/.prettierignore"
       ],
       "cache": true
     },
     "typecheck": {
-      "inputs": [
-        "default",
-        "^production"
-      ],
+      "inputs": ["default", "^production"],
       "cache": true
     }
   },
@@ -66,9 +57,7 @@
   "cacheDirectory": ".nx/cache",
   "projects": {
     "monorepo": {
-      "tags": [
-        "scripts"
-      ]
+      "tags": ["scripts"]
     },
     "caelundas": {
       "tags": []

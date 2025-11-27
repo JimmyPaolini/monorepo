@@ -1,5 +1,6 @@
 import * as eslint from "@eslint/js";
 import * as nxPlugin from "@nx/eslint-plugin";
+import eslintConfigPrettier from "eslint-config-prettier";
 import * as importPlugin from "eslint-plugin-import";
 import * as jsoncPlugin from "eslint-plugin-jsonc";
 import * as jsxA11yPlugin from "eslint-plugin-jsx-a11y";
@@ -342,4 +343,7 @@ export default [
       "@typescript-eslint/no-unsafe-assignment": "off",
     },
   },
+
+  // Prettier integration - must be last to override other configs
+  eslintConfigPrettier,
 ] as ConfigWithExtends[];

@@ -197,9 +197,8 @@ describe("monthlyLunarCycle.events", () => {
       const start = new Date("2024-03-01T00:00:00.000Z");
       const end = new Date("2024-03-31T23:59:59.000Z");
 
-      const { writeMonthlyLunarCycleEvents } = await import(
-        "./monthlyLunarCycle.events"
-      );
+      const { writeMonthlyLunarCycleEvents } =
+        await import("./monthlyLunarCycle.events");
 
       writeMonthlyLunarCycleEvents({
         monthlyLunarCycleEvents: events,
@@ -222,9 +221,8 @@ describe("monthlyLunarCycle.events", () => {
       const start = new Date("2024-03-01T00:00:00.000Z");
       const end = new Date("2024-03-31T23:59:59.000Z");
 
-      const { writeMonthlyLunarCycleEvents } = await import(
-        "./monthlyLunarCycle.events"
-      );
+      const { writeMonthlyLunarCycleEvents } =
+        await import("./monthlyLunarCycle.events");
 
       writeMonthlyLunarCycleEvents({
         monthlyLunarCycleEvents: [],
