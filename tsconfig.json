@@ -4,6 +4,6 @@
     "noEmit": true,
     "skipLibCheck": true
   },
-  "include": ["*.ts", "scripts/**/*.ts"],
+  "include": ["*.ts", ".prettierrc.ts", "scripts/**/*.ts"],
   "exclude": ["node_modules", "dist", "applications", "packages", "tmp"]
 }

@@ -230,9 +230,7 @@ export default [
     files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
     languageOptions: {
       parserOptions: {
-        projectService: {
-          allowDefaultProject: ["*.ts", "*.mts", "*.cts", "eslint.config.ts"],
-        },
+        projectService: true,
         tsconfigRootDir: import.meta.dirname,
       },
     },

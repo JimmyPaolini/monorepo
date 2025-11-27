@@ -20,10 +20,6 @@ vi.mock("../../calendar.utilities", () => ({
   getCalendar: vi.fn(() => "MOCK_CALENDAR_CONTENT"),
 }));
 
-vi.mock("../../output.utilities", () => ({
-  getOutputPath: vi.fn((filename: string) => `/mock/output/${filename}`),
-}));
-
 describe("ingresses.events", () => {
   describe("getSignIngressEvent", () => {
     it("should create a sign ingress event for Sun entering Aries", async () => {

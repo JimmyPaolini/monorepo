@@ -1,9 +1,10 @@
 /**
  * Prettier configuration for the monorepo
  * @see https://prettier.io/docs/configuration
- * @type {import("prettier").Config}
  */
-const config = {
+import type { Config } from "prettier";
+
+const config: Config = {
   // Line length that Prettier will wrap on
   printWidth: 80,
 
@@ -72,4 +73,4 @@ const config = {
   singleAttributePerLine: false,
 };
 
-module.exports = config;
+export default config;
