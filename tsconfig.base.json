@@ -23,7 +23,10 @@
     "noUncheckedSideEffectImports": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "paths": {},
+    "paths": {
+      "ui": ["packages/ui/src/index.ts"],
+      "@monorepo/lexico-components": ["packages/lexico-components/src/index.ts"]
+    },
     "resolveJsonModule": true,
     "rootDir": ".",
     "skipDefaultLibCheck": true,

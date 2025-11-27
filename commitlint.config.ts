@@ -31,6 +31,8 @@ const configuration: UserConfig = {
       [
         "monorepo", // Workspace root
         "caelundas", // Caelundas application
+        "lexico", // Lexico application
+        "lexico-components", // Lexico components package
         "JimmyPaolini", // JimmyPaolini application
         "documentation", // Documentation
         "dependencies", // Dependency updates

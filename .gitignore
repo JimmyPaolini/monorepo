@@ -37,3 +37,4 @@ applications/JimmyPaolini
 applications/caelundas/output
 coverage
 coverage/*
+vite.config.*.timestamp*

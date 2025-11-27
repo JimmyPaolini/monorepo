@@ -1,14 +1,14 @@
 import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
-import * as eslint from "@eslint/js";
-import * as nxPlugin from "@nx/eslint-plugin";
+import eslint from "@eslint/js";
+import nxPlugin from "@nx/eslint-plugin";
 import eslintConfigPrettier from "eslint-config-prettier";
-import * as importPlugin from "eslint-plugin-import";
-import * as jsoncPlugin from "eslint-plugin-jsonc";
-import * as jsxA11yPlugin from "eslint-plugin-jsx-a11y";
-import * as reactPlugin from "eslint-plugin-react";
-import * as reactHooksPlugin from "eslint-plugin-react-hooks";
+import importPlugin from "eslint-plugin-import";
+import jsoncPlugin from "eslint-plugin-jsonc";
+import jsxA11yPlugin from "eslint-plugin-jsx-a11y";
+import reactPlugin from "eslint-plugin-react";
+import reactHooksPlugin from "eslint-plugin-react-hooks";
 import tseslint from "typescript-eslint";
 
 import type { ConfigWithExtends } from "typescript-eslint";
@@ -165,6 +165,10 @@ export default [
         {
           selector: "variable",
           format: ["camelCase", "UPPER_CASE", "PascalCase"],
+        },
+        {
+          selector: "function",
+          format: ["camelCase", "PascalCase"],
         },
         {
           selector: "typeLike",
@@ -330,6 +334,32 @@ export default [
     files: ["**/*.js", "**/*.mjs", "**/*.cjs"],
     rules: {
       "@typescript-eslint/no-require-imports": "off",
+      // Disable ALL type-checked rules for JS files
+      "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/no-unsafe-call": "off",
+      "@typescript-eslint/no-unsafe-member-access": "off",
+      "@typescript-eslint/no-unsafe-return": "off",
+      "@typescript-eslint/no-unsafe-argument": "off",
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+      "@typescript-eslint/no-floating-promises": "off",
+      "@typescript-eslint/await-thenable": "off",
+      "@typescript-eslint/no-misused-promises": "off",
+      "@typescript-eslint/promise-function-async": "off",
+      "@typescript-eslint/require-await": "off",
+      "@typescript-eslint/no-unnecessary-type-assertion": "off",
+      "@typescript-eslint/prefer-optional-chain": "off",
+      "@typescript-eslint/prefer-readonly": "off",
+      "@typescript-eslint/prefer-reduce-type-parameter": "off",
+      "@typescript-eslint/prefer-return-this-type": "off",
+      "@typescript-eslint/switch-exhaustiveness-check": "off",
+      "@typescript-eslint/no-confusing-void-expression": "off",
+      "@typescript-eslint/no-meaningless-void-operator": "off",
+      "@typescript-eslint/only-throw-error": "off",
+      "@typescript-eslint/no-unnecessary-condition": "off",
+      "@typescript-eslint/no-unnecessary-boolean-literal-compare": "off",
+      "@typescript-eslint/consistent-type-exports": "off",
+      "@typescript-eslint/naming-convention": "off",
     },
   },
 
