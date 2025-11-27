@@ -1,7 +1,7 @@
 const MAX_RETRIES = parseInt(process.env["MAX_RETRIES"] || "5", 10);
 const INITIAL_DELAY_MS = parseInt(
   process.env["INITIAL_DELAY_MS"] || "1000",
-  10
+  10,
 );
 const MAX_DELAY_MS = parseInt(process.env["MAX_DELAY_MS"] || "30000", 10);
 const BACKOFF_MULTIPLIER = parseFloat(process.env["BACKOFF_MULTIPLIER"] || "2");
@@ -80,7 +80,7 @@ export async function fetchWithRetry(url: string): Promise<string> {
       const delayMs = calculateDelay(attempt);
       const errorCode = getErrorCode(error);
       console.log(
-        `⚠️  Retry ${attempt}/${MAX_RETRIES}: ${errorCode} - waiting ${delayMs}ms`
+        `⚠️  Retry ${attempt}/${MAX_RETRIES}: ${errorCode} - waiting ${delayMs}ms`,
       );
 
       await delay(delayMs);

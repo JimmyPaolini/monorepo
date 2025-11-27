@@ -453,7 +453,7 @@ describe("aspects.composition", () => {
       const bodiesWithTrine = findBodiesWithAspectTo(
         "sun" as Body,
         "trine" as Aspect,
-        edges
+        edges,
       );
 
       expect(bodiesWithTrine.length).toBe(2);
@@ -475,7 +475,7 @@ describe("aspects.composition", () => {
       const bodiesWithTrine = findBodiesWithAspectTo(
         "sun" as Body,
         "trine" as Aspect,
-        edges
+        edges,
       );
 
       expect(bodiesWithTrine.length).toBe(0);
@@ -495,7 +495,7 @@ describe("aspects.composition", () => {
       const bodiesWithTrine = findBodiesWithAspectTo(
         "mars" as Body,
         "trine" as Aspect,
-        edges
+        edges,
       );
 
       expect(bodiesWithTrine.length).toBe(0);
@@ -515,7 +515,7 @@ describe("aspects.composition", () => {
       ];
 
       expect(
-        haveAspect("sun" as Body, "moon" as Body, "conjunct" as Aspect, edges)
+        haveAspect("sun" as Body, "moon" as Body, "conjunct" as Aspect, edges),
       ).toBe(true);
     });
 
@@ -531,7 +531,7 @@ describe("aspects.composition", () => {
       ];
 
       expect(
-        haveAspect("moon" as Body, "sun" as Body, "conjunct" as Aspect, edges)
+        haveAspect("moon" as Body, "sun" as Body, "conjunct" as Aspect, edges),
       ).toBe(true);
     });
 
@@ -547,7 +547,7 @@ describe("aspects.composition", () => {
       ];
 
       expect(
-        haveAspect("sun" as Body, "moon" as Body, "trine" as Aspect, edges)
+        haveAspect("sun" as Body, "moon" as Body, "trine" as Aspect, edges),
       ).toBe(false);
     });
 
@@ -567,8 +567,8 @@ describe("aspects.composition", () => {
           "mars" as Body,
           "jupiter" as Body,
           "conjunct" as Aspect,
-          edges
-        )
+          edges,
+        ),
       ).toBe(false);
     });
 
@@ -591,7 +591,7 @@ describe("aspects.composition", () => {
       ];
 
       expect(
-        haveAspect("mars" as Body, "jupiter" as Body, "trine" as Aspect, edges)
+        haveAspect("mars" as Body, "jupiter" as Body, "trine" as Aspect, edges),
       ).toBe(true);
     });
   });
@@ -617,7 +617,7 @@ describe("aspects.composition", () => {
         edges,
         currentMinute,
         ["sun" as Body, "moon" as Body],
-        (edgesAtTime) => edgesAtTime.length > 0
+        (edgesAtTime) => edgesAtTime.length > 0,
       );
 
       expect(phase).toBe("forming");
@@ -643,7 +643,7 @@ describe("aspects.composition", () => {
         edges,
         currentMinute,
         ["sun" as Body, "moon" as Body],
-        (edgesAtTime) => edgesAtTime.length > 0
+        (edgesAtTime) => edgesAtTime.length > 0,
       );
 
       expect(phase).toBe("dissolving");
@@ -669,7 +669,7 @@ describe("aspects.composition", () => {
         edges,
         currentMinute,
         ["sun" as Body, "moon" as Body],
-        (edgesAtTime) => edgesAtTime.length > 0
+        (edgesAtTime) => edgesAtTime.length > 0,
       );
 
       expect(phase).toBeNull();
@@ -695,7 +695,7 @@ describe("aspects.composition", () => {
         edges,
         currentMinute,
         ["sun" as Body, "moon" as Body],
-        (edgesAtTime) => edgesAtTime.length > 0
+        (edgesAtTime) => edgesAtTime.length > 0,
       );
 
       expect(phase).toBeNull();
@@ -736,10 +736,10 @@ describe("aspects.composition", () => {
           const filtered = edgesAtTime.filter(
             (edge) =>
               (edge.body1 === "sun" || edge.body1 === "moon") &&
-              (edge.body2 === "sun" || edge.body2 === "moon")
+              (edge.body2 === "sun" || edge.body2 === "moon"),
           );
           return filtered.length > 0;
-        }
+        },
       );
 
       expect(phase).toBe("forming");
@@ -778,13 +778,13 @@ describe("aspects.composition", () => {
         (edgesAtTime) => {
           // Complex pattern: need both conjunct and square
           const hasConjunct = edgesAtTime.some(
-            (edge) => edge.aspectType === "conjunct"
+            (edge) => edge.aspectType === "conjunct",
           );
           const hasSquare = edgesAtTime.some(
-            (edge) => edge.aspectType === "square"
+            (edge) => edge.aspectType === "square",
           );
           return hasConjunct && hasSquare;
-        }
+        },
       );
 
       expect(phase).toBe("forming");
@@ -797,7 +797,7 @@ describe("aspects.composition", () => {
         [],
         currentMinute,
         ["sun" as Body, "moon" as Body],
-        (edgesAtTime) => edgesAtTime.length > 0
+        (edgesAtTime) => edgesAtTime.length > 0,
       );
 
       expect(phase).toBeNull();

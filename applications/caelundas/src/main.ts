@@ -201,7 +201,7 @@ async function main(): Promise<void> {
   console.log(`🔍 Fetching exact events from the database`);
   const exactEvents = await getAllEvents();
   console.log(
-    `🔍 Fetched ${exactEvents.length} exact events from the database`
+    `🔍 Fetched ${exactEvents.length} exact events from the database`,
   );
 
   console.log(`⏱️ Creating duration events from exact events`);
@@ -224,7 +224,7 @@ async function main(): Promise<void> {
   ];
   await upsertEvents(durationEvents);
   console.log(
-    `⏱️ Created ${durationEvents.length} duration events from exact events`
+    `⏱️ Created ${durationEvents.length} duration events from exact events`,
   );
 
   // #region 💾 Save Events

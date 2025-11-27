@@ -46,32 +46,32 @@ export function getMajorAspectEvents(args: {
       const currentLongitudeBody1 = getCoordinateFromEphemeris(
         ephemerisBody1,
         currentMinute.toISOString(),
-        "longitude"
+        "longitude",
       );
       const currentLongitudeBody2 = getCoordinateFromEphemeris(
         ephemerisBody2,
         currentMinute.toISOString(),
-        "longitude"
+        "longitude",
       );
       const previousLongitudeBody1 = getCoordinateFromEphemeris(
         ephemerisBody1,
         previousMinute.toISOString(),
-        "longitude"
+        "longitude",
       );
       const previousLongitudeBody2 = getCoordinateFromEphemeris(
         ephemerisBody2,
         previousMinute.toISOString(),
-        "longitude"
+        "longitude",
       );
       const nextLongitudeBody1 = getCoordinateFromEphemeris(
         ephemerisBody1,
         nextMinute.toISOString(),
-        "longitude"
+        "longitude",
       );
       const nextLongitudeBody2 = getCoordinateFromEphemeris(
         ephemerisBody2,
         nextMinute.toISOString(),
-        "longitude"
+        "longitude",
       );
 
       const phase = getMajorAspectPhase({
@@ -92,7 +92,7 @@ export function getMajorAspectEvents(args: {
             body1,
             body2,
             phase,
-          })
+          }),
         );
       }
     }
@@ -113,7 +113,7 @@ export function getMajorAspectEvent(args: {
   const majorAspect = getMajorAspect({ longitudeBody1, longitudeBody2 });
   if (!majorAspect) {
     console.error(
-      `No major aspect found between ${body1} and ${body2} at ${timestamp.toISOString()}: ${longitudeBody1} and ${longitudeBody2}`
+      `No major aspect found between ${body1} and ${body2} at ${timestamp.toISOString()}: ${longitudeBody1} and ${longitudeBody2}`,
     );
     throw new Error("No major aspect found");
   }
@@ -188,7 +188,7 @@ export function writeMajorAspectEvents(args: {
   });
   fs.writeFileSync(
     getOutputPath(`major-aspects_${majorAspectBodiesString}_${timespan}.ics`),
-    new TextEncoder().encode(majorAspectsCalendar)
+    new TextEncoder().encode(majorAspectsCalendar),
   );
 
   console.log(`📐 Wrote ${message}`);
@@ -199,7 +199,7 @@ export function getMajorAspectDurationEvents(events: Event[]): Event[] {
 
   // Filter to major aspect events only
   const majorAspectEvents = events.filter((event) =>
-    event.categories.includes("Major Aspect")
+    event.categories.includes("Major Aspect"),
   );
 
   // Group by body pair and aspect type using categories
@@ -208,14 +208,14 @@ export function getMajorAspectDurationEvents(events: Event[]): Event[] {
       .filter((category) =>
         majorAspectBodies
           .map((majorAspectBody) => _.startCase(majorAspectBody))
-          .includes(category)
+          .includes(category),
       )
       .sort();
 
     const aspect = event.categories.find((category) =>
       majorAspects
         .map((majorAspect) => _.startCase(majorAspect))
-        .includes(category)
+        .includes(category),
     );
 
     if (planets.length === 2 && aspect) {
@@ -231,22 +231,22 @@ export function getMajorAspectDurationEvents(events: Event[]): Event[] {
     }
 
     const formingEvents = groupEvents.filter((event) =>
-      event.categories.includes("Forming")
+      event.categories.includes("Forming"),
     );
     const dissolvingEvents = groupEvents.filter((event) =>
-      event.categories.includes("Dissolving")
+      event.categories.includes("Dissolving"),
     );
 
     const pairs = pairDurationEvents(
       formingEvents,
       dissolvingEvents,
-      `major aspect ${key}`
+      `major aspect ${key}`,
     );
 
     durationEvents.push(
       ...pairs.map(([beginning, ending]) =>
-        getMajorAspectDurationEvent(beginning, ending)
-      )
+        getMajorAspectDurationEvent(beginning, ending),
+      ),
     );
   }
 
@@ -258,21 +258,21 @@ function getMajorAspectDurationEvent(beginning: Event, ending: Event): Event {
     .filter((category) =>
       majorAspectBodies
         .map((majorAspectBody) => _.startCase(majorAspectBody))
-        .includes(category)
+        .includes(category),
     )
     .sort();
 
   const aspectCapitalized = beginning.categories.find((category) =>
     majorAspects
       .map((majorAspect) => _.startCase(majorAspect))
-      .includes(category)
+      .includes(category),
   );
 
   if (bodiesCapitalized.length !== 2 || !aspectCapitalized) {
     throw new Error(
       `Could not extract aspect info from categories: ${beginning.categories.join(
-        ", "
-      )}`
+        ", ",
+      )}`,
     );
   }
 

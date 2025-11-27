@@ -23,7 +23,7 @@ import type { Moment } from "moment";
  */
 function findHexagramPattern(
   bodies: Body[],
-  edges: AspectEdge[]
+  edges: AspectEdge[],
 ): Body[] | null {
   // Build adjacency lists for trines and sextiles
   const trineConnections = new Map<Body, Set<Body>>();
@@ -159,7 +159,7 @@ function findHexagramPattern(
  */
 function composeHexagrams(
   allEdges: AspectEdge[],
-  currentMinute: Moment
+  currentMinute: Moment,
 ): Event[] {
   const events: Event[] = [];
 
@@ -168,7 +168,7 @@ function composeHexagrams(
   const edges = allEdges.filter(
     (edge) =>
       edge.event.start.getTime() <= currentTimestamp &&
-      edge.event.end.getTime() >= currentTimestamp
+      edge.event.end.getTime() >= currentTimestamp,
   );
 
   const aspectsByType = groupAspectsByType(edges);
@@ -206,7 +206,7 @@ function composeHexagrams(
         // Check if Hexagram pattern exists in given edges
         (edgesAtTime) => {
           return findHexagramPattern(hexagramBodies, edgesAtTime) !== null;
-        }
+        },
       );
 
       const b0 = hexagramBodies[0];
@@ -227,7 +227,7 @@ function composeHexagrams(
             body6: b5,
             sextupleAspect: "hexagram",
             phase,
-          })
+          }),
         );
       }
     }
@@ -328,7 +328,7 @@ function getSextupleAspectEvent(params: {
  */
 export function getSextupleAspectEvents(
   aspectEvents: Event[],
-  currentMinute: Moment
+  currentMinute: Moment,
 ): Event[] {
   const edges = parseAspectEvents(aspectEvents);
   const events: Event[] = [];
@@ -345,7 +345,7 @@ export function getSextupleAspectDurationEvents(events: Event[]): Event[] {
 
   // Filter to sextuple aspect events only
   const sextupleAspectEvents = events.filter((event) =>
-    event.categories.includes("Sextuple Aspect")
+    event.categories.includes("Sextuple Aspect"),
   );
 
   // Group by body sextet and aspect type using categories
@@ -354,12 +354,12 @@ export function getSextupleAspectDurationEvents(events: Event[]): Event[] {
       .filter((category) =>
         sextupleAspectBodies
           .map((sextupleAspectBody) => _.startCase(sextupleAspectBody))
-          .includes(category)
+          .includes(category),
       )
       .sort();
 
     const aspect = event.categories.find((category) =>
-      ["Hexagram", "Grand Sextile"].includes(category)
+      ["Hexagram", "Grand Sextile"].includes(category),
     );
 
     return `${planets.join("-")}_${aspect}`;
@@ -395,10 +395,10 @@ export function getSextupleAspectDurationEvents(events: Event[]): Event[] {
             summary: currentEvent.summary.replace(/^(?:➡️|🎯|⬅️)\s/u, ""),
             description: currentEvent.description.replace(
               / (forming|exact|dissolving)$/,
-              ""
+              "",
             ),
             categories: currentEvent.categories.filter(
-              (c) => c !== "Forming" && c !== "Exact" && c !== "Dissolving"
+              (c) => c !== "Forming" && c !== "Exact" && c !== "Dissolving",
             ),
           });
 

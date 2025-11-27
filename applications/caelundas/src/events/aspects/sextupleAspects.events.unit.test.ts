@@ -1096,10 +1096,10 @@ describe("sextupleAspects.events", () => {
       // Note: The emoji regex doesn't strip properly due to multi-byte chars
       // Just verify it's attempting to strip and categories are correct
       expect(durationEvents[0]?.summary).toContain(
-        "Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram forming"
+        "Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram forming",
       );
       expect(durationEvents[0]?.description).toBe(
-        "Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram"
+        "Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram",
       );
       expect(durationEvents[0]?.categories).not.toContain("Forming");
       expect(durationEvents[0]?.categories).not.toContain("Dissolving");
@@ -1258,16 +1258,16 @@ describe("sextupleAspects.events", () => {
 
       expect(durationEvents).toHaveLength(2);
       expect(durationEvents[0]?.start).toEqual(
-        new Date("2024-03-21T10:00:00.000Z")
+        new Date("2024-03-21T10:00:00.000Z"),
       );
       expect(durationEvents[0]?.end).toEqual(
-        new Date("2024-03-21T14:00:00.000Z")
+        new Date("2024-03-21T14:00:00.000Z"),
       );
       expect(durationEvents[1]?.start).toEqual(
-        new Date("2024-03-22T10:00:00.000Z")
+        new Date("2024-03-22T10:00:00.000Z"),
       );
       expect(durationEvents[1]?.end).toEqual(
-        new Date("2024-03-22T14:00:00.000Z")
+        new Date("2024-03-22T14:00:00.000Z"),
       );
     });
 

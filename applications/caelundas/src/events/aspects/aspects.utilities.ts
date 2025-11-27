@@ -61,7 +61,7 @@ export const getSpecialtyAspect = (args: {
 };
 
 const getIsAspect = (
-  aspects: Aspect[]
+  aspects: Aspect[],
 ): ((args: {
   currentLongitudeBody1: number;
   currentLongitudeBody2: number;
@@ -89,7 +89,7 @@ const getIsAspect = (
 
     const previousAngle = getAngle(
       previousLongitudeBody1,
-      previousLongitudeBody2
+      previousLongitudeBody2,
     );
     const currentAngle = getAngle(currentLongitudeBody1, currentLongitudeBody2);
     const nextAngle = getAngle(nextLongitudeBody1, nextLongitudeBody2);

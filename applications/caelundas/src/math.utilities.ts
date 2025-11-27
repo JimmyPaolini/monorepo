@@ -21,7 +21,7 @@ export function getAngle(longitude1: Longitude, longitude2: Longitude): number {
 
 export function normalizeForComparison(
   current: Longitude,
-  reference: Longitude
+  reference: Longitude,
 ): number {
   if (Math.abs(current - reference) > 180) {
     return current < reference ? current + 360 : current - 360;

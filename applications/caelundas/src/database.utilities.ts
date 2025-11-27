@@ -109,7 +109,7 @@ export interface EphemerisRecord {
 }
 
 export async function upsertEphemerisValues(
-  ephemerisValues: EphemerisRecord[]
+  ephemerisValues: EphemerisRecord[],
 ): Promise<void> {
   if (ephemerisValues.length === 0) {
     return;
@@ -165,7 +165,7 @@ export async function upsertEphemerisValues(
         illumination ?? null,
         diameter ?? null,
         distance ?? null,
-      ]
+      ],
     );
 
     await db.run(query, parameters);
@@ -280,7 +280,7 @@ export async function upsertEvent(event: Event): Promise<void> {
       event.url || null,
       event.priority ?? null,
       event.color || null,
-    ]
+    ],
   );
 }
 
@@ -340,7 +340,7 @@ export async function getAllEvents(): Promise<Event[]> {
   const rows = await db.all(
     `SELECT summary, description, start, end, categories, location, latitude, longitude, url, priority, color
      FROM events
-     ORDER BY start ASC`
+     ORDER BY start ASC`,
   );
 
   const events: Event[] = rows.map(mapRowToEvent);
@@ -369,7 +369,7 @@ export async function getActiveAspectsAt(timestamp: Date): Promise<Event[]> {
        AND start <= ?
        AND end >= ?
      ORDER BY start ASC`,
-    [timestampISO, timestampISO]
+    [timestampISO, timestampISO],
   );
 
   return rows.map(mapRowToEvent);

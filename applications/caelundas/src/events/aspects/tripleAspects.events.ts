@@ -22,7 +22,7 @@ import type { Moment } from "moment";
  */
 function composeTSquares(
   allEdges: AspectEdge[],
-  currentMinute: Moment
+  currentMinute: Moment,
 ): Event[] {
   const events: Event[] = [];
 
@@ -31,7 +31,7 @@ function composeTSquares(
   const edges = allEdges.filter(
     (edge) =>
       edge.event.start.getTime() <= currentTimestamp &&
-      edge.event.end.getTime() >= currentTimestamp
+      edge.event.end.getTime() >= currentTimestamp,
   );
 
   const aspectsByType = groupAspectsByType(edges);
@@ -69,7 +69,7 @@ function composeTSquares(
               haveAspect(body1, focalBody, "square", edgesAtTime) &&
               haveAspect(body2, focalBody, "square", edgesAtTime)
             );
-          }
+          },
         );
 
         if (phase) {
@@ -82,7 +82,7 @@ function composeTSquares(
               tripleAspect: "t-square",
               focalOrApexBody: focalBody,
               phase,
-            })
+            }),
           );
         }
       }
@@ -104,7 +104,7 @@ function composeYods(allEdges: AspectEdge[], currentMinute: Moment): Event[] {
   const edges = allEdges.filter(
     (edge) =>
       edge.event.start.getTime() <= currentTimestamp &&
-      edge.event.end.getTime() >= currentTimestamp
+      edge.event.end.getTime() >= currentTimestamp,
   );
 
   const aspectsByType = groupAspectsByType(edges);
@@ -120,12 +120,12 @@ function composeYods(allEdges: AspectEdge[], currentMinute: Moment): Event[] {
     const quincunxToBody1 = findBodiesWithAspectTo(
       body1,
       "quincunx",
-      quincunxes
+      quincunxes,
     );
     const quincunxToBody2 = findBodiesWithAspectTo(
       body2,
       "quincunx",
-      quincunxes
+      quincunxes,
     );
 
     // Find common bodies (apex of Yod)
@@ -148,7 +148,7 @@ function composeYods(allEdges: AspectEdge[], currentMinute: Moment): Event[] {
               haveAspect(body1, apexBody, "quincunx", edgesAtTime) &&
               haveAspect(body2, apexBody, "quincunx", edgesAtTime)
             );
-          }
+          },
         );
 
         if (phase) {
@@ -161,7 +161,7 @@ function composeYods(allEdges: AspectEdge[], currentMinute: Moment): Event[] {
               tripleAspect: "yod",
               focalOrApexBody: apexBody,
               phase,
-            })
+            }),
           );
         }
       }
@@ -177,7 +177,7 @@ function composeYods(allEdges: AspectEdge[], currentMinute: Moment): Event[] {
  */
 function composeGrandTrines(
   allEdges: AspectEdge[],
-  currentMinute: Moment
+  currentMinute: Moment,
 ): Event[] {
   const events: Event[] = [];
 
@@ -186,7 +186,7 @@ function composeGrandTrines(
   const edges = allEdges.filter(
     (edge) =>
       edge.event.start.getTime() <= currentTimestamp &&
-      edge.event.end.getTime() >= currentTimestamp
+      edge.event.end.getTime() >= currentTimestamp,
   );
 
   const aspectsByType = groupAspectsByType(edges);
@@ -230,7 +230,7 @@ function composeGrandTrines(
                 haveAspect(body1, body3, "trine", edgesAtTime) &&
                 haveAspect(body2, body3, "trine", edgesAtTime)
               );
-            }
+            },
           );
 
           if (phase) {
@@ -242,7 +242,7 @@ function composeGrandTrines(
                 body3,
                 tripleAspect: "grand trine",
                 phase,
-              })
+              }),
             );
           }
         }
@@ -258,7 +258,7 @@ function composeGrandTrines(
  */
 export function getTripleAspectEvents(
   storedAspects: Event[],
-  currentMinute: Moment
+  currentMinute: Moment,
 ): Event[] {
   const edges = parseAspectEvents(storedAspects);
 
@@ -356,7 +356,7 @@ export function getTripleAspectDurationEvents(events: Event[]): Event[] {
 
   // Filter to triple aspect events only
   const tripleAspectEvents = events.filter((event) =>
-    event.categories.includes("Triple Aspect")
+    event.categories.includes("Triple Aspect"),
   );
 
   // Group by body triplet and aspect type using categories
@@ -365,12 +365,12 @@ export function getTripleAspectDurationEvents(events: Event[]): Event[] {
       .filter((category) =>
         tripleAspectBodies
           .map((tripleAspectBody) => _.startCase(tripleAspectBody))
-          .includes(category)
+          .includes(category),
       )
       .sort();
 
     const aspect = event.categories.find((category) =>
-      ["T Square", "Grand Trine", "Yod"].includes(category)
+      ["T Square", "Grand Trine", "Yod"].includes(category),
     );
 
     if (planets.length === 3 && aspect) {
@@ -386,10 +386,10 @@ export function getTripleAspectDurationEvents(events: Event[]): Event[] {
     }
 
     const formingEvents = groupEvents.filter((event) =>
-      event.categories.includes("Forming")
+      event.categories.includes("Forming"),
     );
     const dissolvingEvents = groupEvents.filter((event) =>
-      event.categories.includes("Dissolving")
+      event.categories.includes("Dissolving"),
     );
 
     // Sort events by start time
@@ -412,12 +412,12 @@ export function getTripleAspectDurationEvents(events: Event[]): Event[] {
           .filter((category) =>
             tripleAspectBodies
               .map((tripleAspectBody) => _.startCase(tripleAspectBody))
-              .includes(category)
+              .includes(category),
           )
           .sort();
 
         const aspectCapitalized = forming.categories.find((category) =>
-          ["T Square", "Grand Trine", "Yod"].includes(category)
+          ["T Square", "Grand Trine", "Yod"].includes(category),
         );
 
         if (bodiesCapitalized.length !== 3 || !aspectCapitalized) {
@@ -451,7 +451,7 @@ export function getTripleAspectDurationEvents(events: Event[]): Event[] {
 
         // Extract focal/apex info if present
         const focalCategory = forming.categories.find((cat) =>
-          cat.includes(" Focal")
+          cat.includes(" Focal"),
         );
         let extraInfo = "";
         if (focalCategory) {

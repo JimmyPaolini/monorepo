@@ -24,7 +24,7 @@ function createFullEphemeris(
   bodies: readonly Body[],
   overrides: Partial<
     Record<Body, { previous: number; current: number; next: number }>
-  > = {}
+  > = {},
 ): Record<Body, CoordinateEphemeris> {
   const result: Record<string, CoordinateEphemeris> = {};
   const defaultLongitude = 100; // Default position away from any boundaries
@@ -61,7 +61,7 @@ describe("ingresses.events integration", () => {
         signIngressBodies,
         {
           sun: { previous: 359.9, current: 0.1, next: 0.2 },
-        }
+        },
       );
 
       const events = getSignIngressEvents({
@@ -86,7 +86,7 @@ describe("ingresses.events integration", () => {
         signIngressBodies,
         {
           moon: { previous: 59.9, current: 60.1, next: 60.3 },
-        }
+        },
       );
 
       const events = getSignIngressEvents({
@@ -105,7 +105,7 @@ describe("ingresses.events integration", () => {
       // All bodies stay in their default positions (no boundary crossings)
       const coordinateEphemerisByBody = createFullEphemeris(
         baseTime,
-        signIngressBodies
+        signIngressBodies,
       );
 
       const events = getSignIngressEvents({
@@ -127,7 +127,7 @@ describe("ingresses.events integration", () => {
         decanIngressBodies,
         {
           sun: { previous: 9.9, current: 10.1, next: 10.2 },
-        }
+        },
       );
 
       const events = getDecanIngressEvents({
@@ -150,7 +150,7 @@ describe("ingresses.events integration", () => {
         decanIngressBodies,
         {
           sun: { previous: 29.9, current: 30.1, next: 30.2 },
-        }
+        },
       );
 
       const events = getDecanIngressEvents({
@@ -173,7 +173,7 @@ describe("ingresses.events integration", () => {
         peakIngressBodies,
         {
           sun: { previous: 44.9, current: 45.1, next: 45.2 },
-        }
+        },
       );
 
       const events = getPeakIngressEvents({
@@ -220,20 +220,20 @@ describe("ingresses.events integration", () => {
 
       // First duration: Sun in Aries
       expect(durationEvents[0]?.start.toISOString()).toBe(
-        "2025-03-20T09:06:00.000Z"
+        "2025-03-20T09:06:00.000Z",
       );
       expect(durationEvents[0]?.end.toISOString()).toBe(
-        "2025-04-19T20:00:00.000Z"
+        "2025-04-19T20:00:00.000Z",
       );
       expect(durationEvents[0]?.description).toContain("Sun");
       expect(durationEvents[0]?.description).toContain("Aries");
 
       // Second duration: Sun in Taurus
       expect(durationEvents[1]?.start.toISOString()).toBe(
-        "2025-04-19T20:00:00.000Z"
+        "2025-04-19T20:00:00.000Z",
       );
       expect(durationEvents[1]?.end.toISOString()).toBe(
-        "2025-05-20T19:00:00.000Z"
+        "2025-05-20T19:00:00.000Z",
       );
     });
 
@@ -275,10 +275,10 @@ describe("ingresses.events integration", () => {
       expect(durationEvents.length).toBe(2);
 
       const sunDuration = durationEvents.find((e) =>
-        e.categories.includes("Sun")
+        e.categories.includes("Sun"),
       );
       const moonDuration = durationEvents.find((e) =>
-        e.categories.includes("Moon")
+        e.categories.includes("Moon"),
       );
 
       expect(sunDuration).toBeDefined();
@@ -288,7 +288,7 @@ describe("ingresses.events integration", () => {
       expect(sunDuration?.end.toISOString()).toBe("2025-02-18T12:00:00.000Z");
 
       expect(moonDuration?.start.toISOString()).toBe(
-        "2025-01-12T08:00:00.000Z"
+        "2025-01-12T08:00:00.000Z",
       );
       expect(moonDuration?.end.toISOString()).toBe("2025-01-14T15:00:00.000Z");
     });

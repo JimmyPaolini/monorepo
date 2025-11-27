@@ -51,12 +51,12 @@ export function getSignIngressEvents(args: {
     const currentLongitude = getCoordinateFromEphemeris(
       coordinateEphemeris,
       currentMinute.toISOString(),
-      "longitude"
+      "longitude",
     );
     const previousLongitude = getCoordinateFromEphemeris(
       coordinateEphemeris,
       previousMinute.toISOString(),
-      "longitude"
+      "longitude",
     );
 
     if (Number.isNaN(currentLongitude) || Number.isNaN(previousLongitude)) {
@@ -124,7 +124,7 @@ export function writeSignIngressEvents(args: {
   });
   fs.writeFileSync(
     getOutputPath(`ingresses_${signIngressBodiesString}_${timespan}.ics`),
-    new TextEncoder().encode(signIngressesCalendar)
+    new TextEncoder().encode(signIngressesCalendar),
   );
 
   console.log(`🪧 Wrote ${message}`);
@@ -148,12 +148,12 @@ export function getDecanIngressEvents(args: {
     const currentLongitude = getCoordinateFromEphemeris(
       coordinateEphemeris,
       currentMinute.toISOString(),
-      "longitude"
+      "longitude",
     );
     const previousLongitude = getCoordinateFromEphemeris(
       coordinateEphemeris,
       previousMinute.toISOString(),
-      "longitude"
+      "longitude",
     );
 
     if (Number.isNaN(currentLongitude) || Number.isNaN(previousLongitude)) {
@@ -227,7 +227,7 @@ export function writeDecanIngressEvents(args: {
   });
   fs.writeFileSync(
     getOutputPath(`ingresses_${decanIngressBodiesString}_${timespan}.ics`),
-    new TextEncoder().encode(decanIngressesCalendar)
+    new TextEncoder().encode(decanIngressesCalendar),
   );
 
   console.log(`🔟 Wrote ${message}`);
@@ -251,12 +251,12 @@ export function getPeakIngressEvents(args: {
     const currentLongitude = getCoordinateFromEphemeris(
       coordinateEphemeris,
       currentMinute.toISOString(),
-      "longitude"
+      "longitude",
     );
     const previousLongitude = getCoordinateFromEphemeris(
       coordinateEphemeris,
       previousMinute.toISOString(),
-      "longitude"
+      "longitude",
     );
 
     if (Number.isNaN(currentLongitude) || Number.isNaN(previousLongitude)) {
@@ -324,7 +324,7 @@ export function writePeakIngressEvents(args: {
   });
   fs.writeFileSync(
     getOutputPath(`peak-ingresses_${peakIngressBodiesString}_${timespan}.ics`),
-    new TextEncoder().encode(peakIngressesCalendar)
+    new TextEncoder().encode(peakIngressesCalendar),
   );
 
   console.log(`⛰️ Wrote ${message}`);
@@ -340,7 +340,7 @@ export function getSignIngressDurationEvents(events: Event[]): Event[] {
     (event) =>
       event.categories.includes("Ingress") &&
       !event.categories.includes("Decan") &&
-      !event.categories.includes("Peak")
+      !event.categories.includes("Peak"),
   );
 
   // Group by body
@@ -348,14 +348,14 @@ export function getSignIngressDurationEvents(events: Event[]): Event[] {
     const bodyCapitalized = event.categories.find((category) =>
       signIngressBodies
         .map((signIngressBody) => _.startCase(signIngressBody))
-        .includes(category)
+        .includes(category),
     );
     return bodyCapitalized || "";
   });
 
   // Process each body
   for (const [bodyCapitalized, bodyIngresses] of Object.entries(
-    groupedByBody
+    groupedByBody,
   )) {
     if (!bodyCapitalized) {
       continue;
@@ -363,7 +363,7 @@ export function getSignIngressDurationEvents(events: Event[]): Event[] {
 
     // Sort by time
     const sortedIngresses = _.sortBy(bodyIngresses, (event) =>
-      event.start.getTime()
+      event.start.getTime(),
     );
 
     // Pair consecutive ingresses to create duration events
@@ -375,7 +375,7 @@ export function getSignIngressDurationEvents(events: Event[]): Event[] {
       }
 
       durationEvents.push(
-        getSignIngressDurationEvent(entering, exiting, bodyCapitalized)
+        getSignIngressDurationEvent(entering, exiting, bodyCapitalized),
       );
     }
   }
@@ -386,16 +386,16 @@ export function getSignIngressDurationEvents(events: Event[]): Event[] {
 function getSignIngressDurationEvent(
   entering: Event,
   exiting: Event,
-  bodyCapitalized: string
+  bodyCapitalized: string,
 ): Event {
   // Extract the sign the body is entering
   const signCapitalized = entering.categories.find((category) =>
-    signs.map((sign) => _.startCase(sign)).includes(category)
+    signs.map((sign) => _.startCase(sign)).includes(category),
   );
 
   if (!signCapitalized) {
     throw new Error(
-      `Could not extract sign from categories: ${categories.join(", ")}`
+      `Could not extract sign from categories: ${categories.join(", ")}`,
     );
   }
 

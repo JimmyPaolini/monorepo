@@ -29,7 +29,7 @@ describe("fetch.utilities", { timeout: 40000 }, () => {
       });
 
       await expect(fetchWithRetry("https://example.com/api")).rejects.toThrow(
-        "HTTP 404: Not Found"
+        "HTTP 404: Not Found",
       );
       expect(fetch).toHaveBeenCalledTimes(1);
     });
@@ -42,7 +42,7 @@ describe("fetch.utilities", { timeout: 40000 }, () => {
       });
 
       await expect(fetchWithRetry("https://example.com/api")).rejects.toThrow(
-        "HTTP 500: Internal Server Error"
+        "HTTP 500: Internal Server Error",
       );
       expect(fetch).toHaveBeenCalledTimes(1);
     });
@@ -136,7 +136,7 @@ describe("fetch.utilities", { timeout: 40000 }, () => {
       global.fetch = vi.fn().mockRejectedValue(nonRetryableError);
 
       await expect(fetchWithRetry("https://example.com/api")).rejects.toThrow(
-        "Some other error"
+        "Some other error",
       );
       expect(fetch).toHaveBeenCalledTimes(1);
     });
@@ -151,7 +151,7 @@ describe("fetch.utilities", { timeout: 40000 }, () => {
       global.fetch = vi.fn().mockRejectedValue(retryableError);
 
       await expect(fetchWithRetry("https://example.com/api")).rejects.toThrow(
-        "Connection reset"
+        "Connection reset",
       );
       // Default MAX_RETRIES is 5, so 6 total attempts (initial + 5 retries)
       expect(fetch).toHaveBeenCalledTimes(6);

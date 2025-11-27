@@ -342,7 +342,7 @@ $$EOE`;
       });
 
       expect(fetchWithRetry).toHaveBeenCalledWith(
-        expect.stringContaining("SITE_COORD")
+        expect.stringContaining("SITE_COORD"),
       );
     });
   });

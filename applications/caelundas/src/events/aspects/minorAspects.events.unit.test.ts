@@ -21,20 +21,20 @@ vi.mock("fs", () => ({
 describe("minorAspects.events", () => {
   describe("getMinorAspectEvents", () => {
     const createEphemeris = (
-      longitudes: Record<string, number>
+      longitudes: Record<string, number>,
     ): CoordinateEphemeris => {
       return Object.fromEntries(
         Object.entries(longitudes).map(([timestamp, longitude]) => [
           timestamp,
           { longitude, latitude: 0 },
-        ])
+        ]),
       );
     };
 
     const createDefaultEphemeris = (
       currentMinute: moment.Moment,
       previousMinute: moment.Moment,
-      nextMinute: moment.Moment
+      nextMinute: moment.Moment,
     ): Record<Body, CoordinateEphemeris> => {
       // Create ephemeris for all minor aspect bodies with far-apart longitudes
       const allBodies = [
@@ -80,7 +80,7 @@ describe("minorAspects.events", () => {
       const coordinateEphemerisByBody = createDefaultEphemeris(
         currentMinute,
         previousMinute,
-        nextMinute
+        nextMinute,
       );
 
       coordinateEphemerisByBody.sun = createEphemeris({
@@ -105,7 +105,7 @@ describe("minorAspects.events", () => {
           e.description.includes("semisextile") &&
           e.categories.includes("Exact") &&
           e.description.includes("Sun") &&
-          e.description.includes("Mercury")
+          e.description.includes("Mercury"),
       );
       expect(semisextileEvent).toBeDefined();
     });
@@ -118,7 +118,7 @@ describe("minorAspects.events", () => {
       const coordinateEphemerisByBody = createDefaultEphemeris(
         currentMinute,
         previousMinute,
-        nextMinute
+        nextMinute,
       );
 
       // Semisquare has 2° orb, so venus needs to enter from >47° or <43°
@@ -143,7 +143,7 @@ describe("minorAspects.events", () => {
           e.description.includes("semisquare") &&
           e.categories.includes("Forming") &&
           e.description.includes("Sun") &&
-          e.description.includes("Venus")
+          e.description.includes("Venus"),
       );
       expect(formingSemisquare).toBeDefined();
     });
@@ -211,7 +211,7 @@ describe("minorAspects.events", () => {
           e.description.includes("quincunx") &&
           e.categories.includes("Dissolving") &&
           e.description.includes("Sun") &&
-          e.description.includes("Mars")
+          e.description.includes("Mars"),
       );
       expect(dissolvingQuincunx).toBeDefined();
     });
@@ -224,7 +224,7 @@ describe("minorAspects.events", () => {
       const coordinateEphemerisByBody = createDefaultEphemeris(
         currentMinute,
         previousMinute,
-        nextMinute
+        nextMinute,
       );
 
       // Set Sun, Mercury, Venus with semisextile and semisquare aspects
@@ -254,10 +254,10 @@ describe("minorAspects.events", () => {
       expect(events.length).toBeGreaterThanOrEqual(2);
       const sunMercuryAspect = events.find(
         (e) =>
-          e.description.includes("Sun") && e.description.includes("Mercury")
+          e.description.includes("Sun") && e.description.includes("Mercury"),
       );
       const sunVenusAspect = events.find(
-        (e) => e.description.includes("Sun") && e.description.includes("Venus")
+        (e) => e.description.includes("Sun") && e.description.includes("Venus"),
       );
       expect(sunMercuryAspect).toBeDefined();
       expect(sunVenusAspect).toBeDefined();
@@ -322,7 +322,7 @@ describe("minorAspects.events", () => {
       const coordinateEphemerisByBody = createDefaultEphemeris(
         currentMinute,
         previousMinute,
-        nextMinute
+        nextMinute,
       );
 
       coordinateEphemerisByBody.sun = createEphemeris({
@@ -343,7 +343,7 @@ describe("minorAspects.events", () => {
 
       const sunMercuryEvents = events.filter(
         (e) =>
-          e.description.includes("Sun") && e.description.includes("Mercury")
+          e.description.includes("Sun") && e.description.includes("Mercury"),
       );
       expect(sunMercuryEvents).toHaveLength(1);
     });
@@ -442,7 +442,7 @@ describe("minorAspects.events", () => {
           body1: "sun",
           body2: "moon",
           phase: "exact",
-        })
+        }),
       ).toThrow("No minor aspect found");
     });
 
@@ -565,7 +565,7 @@ describe("minorAspects.events", () => {
       body2: string,
       aspect: string,
       phase: string,
-      timestamp: Date
+      timestamp: Date,
     ): Event => {
       return {
         start: timestamp,
@@ -591,14 +591,14 @@ describe("minorAspects.events", () => {
         "Mercury",
         "Semisextile",
         "Forming",
-        new Date("2024-03-21T10:00:00.000Z")
+        new Date("2024-03-21T10:00:00.000Z"),
       );
       const dissolving = createMinorAspectEvent(
         "Sun",
         "Mercury",
         "Semisextile",
         "Dissolving",
-        new Date("2024-03-21T14:00:00.000Z")
+        new Date("2024-03-21T14:00:00.000Z"),
       );
 
       const events = [forming, dissolving];
@@ -619,28 +619,28 @@ describe("minorAspects.events", () => {
         "Mercury",
         "Semisextile",
         "Forming",
-        new Date("2024-03-21T10:00:00.000Z")
+        new Date("2024-03-21T10:00:00.000Z"),
       );
       const semisextileDissolving = createMinorAspectEvent(
         "Sun",
         "Mercury",
         "Semisextile",
         "Dissolving",
-        new Date("2024-03-21T12:00:00.000Z")
+        new Date("2024-03-21T12:00:00.000Z"),
       );
       const semisquareForming = createMinorAspectEvent(
         "Sun",
         "Mercury",
         "Semisquare",
         "Forming",
-        new Date("2024-03-21T14:00:00.000Z")
+        new Date("2024-03-21T14:00:00.000Z"),
       );
       const semisquareDissolving = createMinorAspectEvent(
         "Sun",
         "Mercury",
         "Semisquare",
         "Dissolving",
-        new Date("2024-03-21T16:00:00.000Z")
+        new Date("2024-03-21T16:00:00.000Z"),
       );
 
       const events = [
@@ -660,28 +660,28 @@ describe("minorAspects.events", () => {
         "Mercury",
         "Semisextile",
         "Forming",
-        new Date("2024-03-21T10:00:00.000Z")
+        new Date("2024-03-21T10:00:00.000Z"),
       );
       const sunMercuryDissolving = createMinorAspectEvent(
         "Sun",
         "Mercury",
         "Semisextile",
         "Dissolving",
-        new Date("2024-03-21T12:00:00.000Z")
+        new Date("2024-03-21T12:00:00.000Z"),
       );
       const venusJupiterForming = createMinorAspectEvent(
         "Venus",
         "Jupiter",
         "Quincunx",
         "Forming",
-        new Date("2024-03-21T12:00:00.000Z")
+        new Date("2024-03-21T12:00:00.000Z"),
       );
       const venusJupiterDissolving = createMinorAspectEvent(
         "Venus",
         "Jupiter",
         "Quincunx",
         "Dissolving",
-        new Date("2024-03-21T16:00:00.000Z")
+        new Date("2024-03-21T16:00:00.000Z"),
       );
 
       const events = [
@@ -701,14 +701,14 @@ describe("minorAspects.events", () => {
         "Venus",
         "Semisextile",
         "Forming",
-        new Date("2024-03-21T10:00:00.000Z")
+        new Date("2024-03-21T10:00:00.000Z"),
       );
       const minorAspectDissolving = createMinorAspectEvent(
         "Sun",
         "Venus",
         "Semisextile",
         "Dissolving",
-        new Date("2024-03-21T14:00:00.000Z")
+        new Date("2024-03-21T14:00:00.000Z"),
       );
       const nonAspectEvent: Event = {
         start: new Date("2024-03-21T12:00:00.000Z"),
@@ -739,14 +739,14 @@ describe("minorAspects.events", () => {
         "Sun",
         "Semisextile",
         "Forming",
-        new Date("2024-03-21T10:00:00.000Z")
+        new Date("2024-03-21T10:00:00.000Z"),
       );
       const dissolving = createMinorAspectEvent(
         "Venus",
         "Sun",
         "Semisextile",
         "Dissolving",
-        new Date("2024-03-21T14:00:00.000Z")
+        new Date("2024-03-21T14:00:00.000Z"),
       );
 
       const events = [forming, dissolving];

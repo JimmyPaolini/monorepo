@@ -83,7 +83,7 @@ describe("duration.utilities", () => {
       }
       expect(pair0[1].start.toISOString()).toBe("2025-01-03T10:00:00.000Z");
       expect(console.warn).toHaveBeenCalledWith(
-        expect.stringContaining("Skipping invalid")
+        expect.stringContaining("Skipping invalid"),
       );
     });
 
@@ -102,7 +102,7 @@ describe("duration.utilities", () => {
 
       expect(pairs).toHaveLength(2);
       expect(console.warn).toHaveBeenCalledWith(
-        expect.stringContaining("1 unpaired test aspect beginning(s)")
+        expect.stringContaining("1 unpaired test aspect beginning(s)"),
       );
     });
 
@@ -117,7 +117,7 @@ describe("duration.utilities", () => {
 
       expect(pairs).toHaveLength(1);
       expect(console.warn).toHaveBeenCalledWith(
-        expect.stringContaining("1 unpaired test aspect ending(s)")
+        expect.stringContaining("1 unpaired test aspect ending(s)"),
       );
     });
 
@@ -127,15 +127,15 @@ describe("duration.utilities", () => {
         pairDurationEvents(
           [createEvent("2025-01-01T10:00:00Z", "forming")],
           [],
-          "test"
-        )
+          "test",
+        ),
       ).toEqual([]);
       expect(
         pairDurationEvents(
           [],
           [createEvent("2025-01-01T10:00:00Z", "dissolving")],
-          "test"
-        )
+          "test",
+        ),
       ).toEqual([]);
     });
 

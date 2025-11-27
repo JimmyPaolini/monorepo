@@ -138,10 +138,10 @@ export const minorAspectSymbols: MinorAspectSymbol[] =
 // #region Specialty Aspects 🧮
 
 export const specialtyAspects = Object.keys(
-  symbolBySpecialtyAspect
+  symbolBySpecialtyAspect,
 ) as SpecialtyAspect[];
 export const specialtyAspectSymbols: SpecialtyAspectSymbol[] = Object.values(
-  symbolBySpecialtyAspect
+  symbolBySpecialtyAspect,
 );
 
 // #region Double Aspects 📐
@@ -216,7 +216,7 @@ export const orbByAspect: Record<Aspect, number> = {
 // #region Triple Aspects 🔺
 
 export const tripleAspects = Object.keys(
-  symbolByTripleAspect
+  symbolByTripleAspect,
 ) as TripleAspect[];
 export const tripleAspectSymbols: TripleAspectSymbol[] =
   Object.values(symbolByTripleAspect);
@@ -224,28 +224,28 @@ export const tripleAspectSymbols: TripleAspectSymbol[] =
 // #region Quadruple Aspects ✖️
 
 export const quadrupleAspects = Object.keys(
-  symbolByQuadrupleAspect
+  symbolByQuadrupleAspect,
 ) as QuadrupleAspect[];
 export const quadrupleAspectSymbols: QuadrupleAspectSymbol[] = Object.values(
-  symbolByQuadrupleAspect
+  symbolByQuadrupleAspect,
 );
 
 // #region Quintuple Aspects ⭐
 
 export const quintupleAspects = Object.keys(
-  symbolByQuintupleAspect
+  symbolByQuintupleAspect,
 ) as QuintupleAspect[];
 export const quintupleAspectSymbols: QuintupleAspectSymbol[] = Object.values(
-  symbolByQuintupleAspect
+  symbolByQuintupleAspect,
 );
 
 // #region Sextuple Aspects 🔯
 
 export const sextupleAspects = Object.keys(
-  symbolBySextupleAspect
+  symbolBySextupleAspect,
 ) as SextupleAspect[];
 export const sextupleAspectSymbols: SextupleAspectSymbol[] = Object.values(
-  symbolBySextupleAspect
+  symbolBySextupleAspect,
 );
 
 // #region Stellium ✨
@@ -257,16 +257,16 @@ export const stelliumSymbols: StelliumSymbol[] =
 // #region Orbital Directions 🔁
 
 export const orbitalDirections = Object.keys(
-  symbolByOrbitalDirection
+  symbolByOrbitalDirection,
 ) as OrbitalDirection[];
 export const orbitalDirectionSymbols: OrbitalDirectionSymbol[] = Object.values(
-  symbolByOrbitalDirection
+  symbolByOrbitalDirection,
 );
 
 // #region Planetary Directions ⏫
 
 export const planetaryDirections = Object.keys(
-  symbolByPlanetaryDirection
+  symbolByPlanetaryDirection,
 ) as PlanetaryDirection[];
 export const planetaryDirectionSymbols: PlanetaryDirectionSymbol[] =
   Object.values(symbolByPlanetaryDirection);
@@ -295,25 +295,25 @@ export const lunarPhaseSymbols: LunarPhaseSymbol[] =
 // #region Venusian Phases ♀️
 
 export const venusianPhases = Object.keys(
-  symbolByVenusianPhase
+  symbolByVenusianPhase,
 ) as VenusianPhase[];
 export const venusianPhaseSymbols: VenusianPhaseSymbol[] = Object.values(
-  symbolByVenusianPhase
+  symbolByVenusianPhase,
 );
 
 // #region Mercurian Phases ☿️
 
 export const mercurianPhases = Object.keys(
-  symbolByMercurianPhase
+  symbolByMercurianPhase,
 ) as MercurianPhase[];
 export const mercurianPhaseSymbols: MercurianPhaseSymbol[] = Object.values(
-  symbolByMercurianPhase
+  symbolByMercurianPhase,
 );
 
 // #region Martian Phases ♂️
 
 export const martianPhases = Object.keys(
-  symbolByMartianPhase
+  symbolByMartianPhase,
 ) as MartianPhase[];
 export const martianPhaseSymbols: MartianPhaseSymbol[] =
   Object.values(symbolByMartianPhase);

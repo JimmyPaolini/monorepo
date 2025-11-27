@@ -24,7 +24,7 @@ import type { Moment } from "moment";
  */
 function findPentagramPattern(
   bodies: Body[],
-  edges: AspectEdge[]
+  edges: AspectEdge[],
 ): Body[] | null {
   // Build adjacency list of quintile connections
   const connections = new Map<Body, Set<Body>>();
@@ -91,7 +91,7 @@ function findPentagramPattern(
     (edge) =>
       edge.aspectType === "quintile" &&
       orderedBodies.includes(edge.body1) &&
-      orderedBodies.includes(edge.body2)
+      orderedBodies.includes(edge.body2),
   ).length;
 
   if (quintileCount !== 5) {
@@ -107,7 +107,7 @@ function findPentagramPattern(
  */
 function composePentagrams(
   allEdges: AspectEdge[],
-  currentMinute: Moment
+  currentMinute: Moment,
 ): Event[] {
   const events: Event[] = [];
 
@@ -116,7 +116,7 @@ function composePentagrams(
   const edges = allEdges.filter(
     (edge) =>
       edge.event.start.getTime() <= currentTimestamp &&
-      edge.event.end.getTime() >= currentTimestamp
+      edge.event.end.getTime() >= currentTimestamp,
   );
 
   const aspectsByType = groupAspectsByType(edges);
@@ -155,7 +155,7 @@ function composePentagrams(
         // Check if Pentagram pattern exists in given edges
         (edgesAtTime) => {
           return findPentagramPattern(pentagramBodies, edgesAtTime) !== null;
-        }
+        },
       );
 
       if (phase) {
@@ -177,7 +177,7 @@ function composePentagrams(
             body5: b4,
             quintupleAspect: "pentagram",
             phase,
-          })
+          }),
         );
       }
     }
@@ -272,7 +272,7 @@ function getQuintupleAspectEvent(params: {
  */
 export function getQuintupleAspectEvents(
   aspectEvents: Event[],
-  currentMinute: Moment
+  currentMinute: Moment,
 ): Event[] {
   const edges = parseAspectEvents(aspectEvents);
   const events: Event[] = [];
@@ -289,7 +289,7 @@ export function getQuintupleAspectDurationEvents(events: Event[]): Event[] {
 
   // Filter to quintuple aspect events only
   const quintupleAspectEvents = events.filter((event) =>
-    event.categories.includes("Quintuple Aspect")
+    event.categories.includes("Quintuple Aspect"),
   );
 
   // Group by body quintet and aspect type using categories
@@ -298,12 +298,12 @@ export function getQuintupleAspectDurationEvents(events: Event[]): Event[] {
       .filter((category) =>
         quintupleAspectBodies
           .map((quintupleAspectBody) => _.startCase(quintupleAspectBody))
-          .includes(category)
+          .includes(category),
       )
       .sort();
 
     const aspect = event.categories.find((category) =>
-      ["Pentagram"].includes(category)
+      ["Pentagram"].includes(category),
     );
 
     return `${planets.join("-")}_${aspect}`;
@@ -339,10 +339,10 @@ export function getQuintupleAspectDurationEvents(events: Event[]): Event[] {
             summary: currentEvent.summary.replace(/^(➡️|⬅️|🎯)\s/, ""),
             description: currentEvent.description.replace(
               / (forming|exact|dissolving)$/,
-              ""
+              "",
             ),
             categories: currentEvent.categories.filter(
-              (c) => c !== "Forming" && c !== "Exact" && c !== "Dissolving"
+              (c) => c !== "Forming" && c !== "Exact" && c !== "Dissolving",
             ),
           });
 

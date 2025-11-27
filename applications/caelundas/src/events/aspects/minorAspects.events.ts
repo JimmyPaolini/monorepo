@@ -46,32 +46,32 @@ export function getMinorAspectEvents(args: {
       const currentLongitudeBody1 = getCoordinateFromEphemeris(
         ephemerisBody1,
         currentMinute.toISOString(),
-        "longitude"
+        "longitude",
       );
       const currentLongitudeBody2 = getCoordinateFromEphemeris(
         ephemerisBody2,
         currentMinute.toISOString(),
-        "longitude"
+        "longitude",
       );
       const previousLongitudeBody1 = getCoordinateFromEphemeris(
         ephemerisBody1,
         previousMinute.toISOString(),
-        "longitude"
+        "longitude",
       );
       const previousLongitudeBody2 = getCoordinateFromEphemeris(
         ephemerisBody2,
         previousMinute.toISOString(),
-        "longitude"
+        "longitude",
       );
       const nextLongitudeBody1 = getCoordinateFromEphemeris(
         ephemerisBody1,
         nextMinute.toISOString(),
-        "longitude"
+        "longitude",
       );
       const nextLongitudeBody2 = getCoordinateFromEphemeris(
         ephemerisBody2,
         nextMinute.toISOString(),
-        "longitude"
+        "longitude",
       );
 
       const phase = getMinorAspectPhase({
@@ -92,7 +92,7 @@ export function getMinorAspectEvents(args: {
             body1,
             body2,
             phase,
-          })
+          }),
         );
       }
     }
@@ -114,7 +114,7 @@ export function getMinorAspectEvent(args: {
   const minorAspect = getMinorAspect({ longitudeBody1, longitudeBody2 });
   if (!minorAspect) {
     console.error(
-      `No minor aspect found between ${body1} and ${body2} at ${timestamp.toISOString()}: ${longitudeBody1} and ${longitudeBody2}`
+      `No minor aspect found between ${body1} and ${body2} at ${timestamp.toISOString()}: ${longitudeBody1} and ${longitudeBody2}`,
     );
     throw new Error("No minor aspect found");
   }
@@ -189,7 +189,7 @@ export function writeMinorAspectEvents(args: {
   });
   fs.writeFileSync(
     getOutputPath(`minor-aspects_${minorAspectBodiesString}_${timespan}.ics`),
-    new TextEncoder().encode(minorAspectsCalendar)
+    new TextEncoder().encode(minorAspectsCalendar),
   );
 
   console.log(`🖇️ Wrote ${message}`);
@@ -200,7 +200,7 @@ export function getMinorAspectDurationEvents(events: Event[]): Event[] {
 
   // Filter to minor aspect events only
   const minorAspectEvents = events.filter((event) =>
-    event.categories.includes("Minor Aspect")
+    event.categories.includes("Minor Aspect"),
   );
 
   // Group by body pair and aspect type using categories
@@ -209,14 +209,14 @@ export function getMinorAspectDurationEvents(events: Event[]): Event[] {
       .filter((category) =>
         minorAspectBodies
           .map((minorAspectBody) => _.startCase(minorAspectBody))
-          .includes(category)
+          .includes(category),
       )
       .sort();
 
     const aspect = event.categories.find((category) =>
       minorAspects
         .map((minorAspect) => _.startCase(minorAspect))
-        .includes(category)
+        .includes(category),
     );
 
     if (planets.length === 2 && aspect) {
@@ -232,22 +232,22 @@ export function getMinorAspectDurationEvents(events: Event[]): Event[] {
     }
 
     const formingEvents = groupEvents.filter((event) =>
-      event.categories.includes("Forming")
+      event.categories.includes("Forming"),
     );
     const dissolvingEvents = groupEvents.filter((event) =>
-      event.categories.includes("Dissolving")
+      event.categories.includes("Dissolving"),
     );
 
     const pairs = pairDurationEvents(
       formingEvents,
       dissolvingEvents,
-      `minor aspect ${key}`
+      `minor aspect ${key}`,
     );
 
     durationEvents.push(
       ...pairs.map(([beginning, ending]) =>
-        getMinorAspectDurationEvent(beginning, ending)
-      )
+        getMinorAspectDurationEvent(beginning, ending),
+      ),
     );
   }
 
@@ -259,21 +259,21 @@ function getMinorAspectDurationEvent(beginning: Event, ending: Event): Event {
     .filter((category) =>
       minorAspectBodies
         .map((minorAspectBody) => _.startCase(minorAspectBody))
-        .includes(category)
+        .includes(category),
     )
     .sort();
 
   const aspectCapitalized = beginning.categories.find((category) =>
     minorAspects
       .map((minorAspect) => _.startCase(minorAspect))
-      .includes(category)
+      .includes(category),
   );
 
   if (bodiesCapitalized.length !== 2 || !aspectCapitalized) {
     throw new Error(
       `Could not extract aspect info from categories: ${beginning.categories.join(
-        ", "
-      )}`
+        ", ",
+      )}`,
     );
   }
 

@@ -80,7 +80,7 @@ export function getPlanetaryPhaseEvents(args: {
         venusDistanceEphemeris: distanceEphemerisByBody.venus,
         venusIlluminationEphemeris: illuminationEphemerisByBody.venus,
         sunCoordinateEphemeris: coordinateEphemerisByBody.sun,
-      })
+      }),
     );
   }
 
@@ -92,7 +92,7 @@ export function getPlanetaryPhaseEvents(args: {
         mercuryDistanceEphemeris: distanceEphemerisByBody.mercury,
         mercuryIlluminationEphemeris: illuminationEphemerisByBody.mercury,
         sunCoordinateEphemeris: coordinateEphemerisByBody.sun,
-      })
+      }),
     );
   }
 
@@ -104,7 +104,7 @@ export function getPlanetaryPhaseEvents(args: {
         marsDistanceEphemeris: distanceEphemerisByBody.mars,
         marsIlluminationEphemeris: illuminationEphemerisByBody.mars,
         sunCoordinateEphemeris: coordinateEphemerisByBody.sun,
-      })
+      }),
     );
   }
 
@@ -159,33 +159,33 @@ export function getVenusianPhaseEvents(args: {
   const currentLongitudePlanet = getCoordinateFromEphemeris(
     venusCoordinateEphemeris,
     currentMinute.toISOString(),
-    "longitude"
+    "longitude",
   );
   const currentLongitudeSun = getCoordinateFromEphemeris(
     sunCoordinateEphemeris,
     currentMinute.toISOString(),
-    "longitude"
+    "longitude",
   );
   const currentIllumination = getIlluminationFromEphemeris(
     venusIlluminationEphemeris,
     currentMinute.toISOString(),
-    "currentIllumination"
+    "currentIllumination",
   );
   const currentDistance = getDistanceFromEphemeris(
     venusDistanceEphemeris,
     currentMinute.toISOString(),
-    "currentDistance"
+    "currentDistance",
   );
 
   const previousLongitudePlanet = getCoordinateFromEphemeris(
     venusCoordinateEphemeris,
     previousMinute.toISOString(),
-    "longitude"
+    "longitude",
   );
   const previousLongitudeSun = getCoordinateFromEphemeris(
     sunCoordinateEphemeris,
     previousMinute.toISOString(),
-    "longitude"
+    "longitude",
   );
 
   const previousDistances = new Array(MARGIN_MINUTES)
@@ -197,7 +197,7 @@ export function getVenusianPhaseEvents(args: {
       return getDistanceFromEphemeris(
         venusDistanceEphemeris,
         minute.toISOString(),
-        "previousDistance"
+        "previousDistance",
       );
     });
   const previousIlluminations = new Array(MARGIN_MINUTES)
@@ -209,19 +209,19 @@ export function getVenusianPhaseEvents(args: {
       return getIlluminationFromEphemeris(
         venusIlluminationEphemeris,
         minute.toISOString(),
-        "previousIllumination"
+        "previousIllumination",
       );
     });
 
   const nextLongitudePlanet = getCoordinateFromEphemeris(
     venusCoordinateEphemeris,
     nextMinute.toISOString(),
-    "longitude"
+    "longitude",
   );
   const nextLongitudeSun = getCoordinateFromEphemeris(
     sunCoordinateEphemeris,
     nextMinute.toISOString(),
-    "longitude"
+    "longitude",
   );
   const nextDistances = new Array(MARGIN_MINUTES)
     .fill(null)
@@ -230,7 +230,7 @@ export function getVenusianPhaseEvents(args: {
       return getDistanceFromEphemeris(
         venusDistanceEphemeris,
         minute.toISOString(),
-        "nextDistance"
+        "nextDistance",
       );
     });
   const nextIlluminations = new Array(MARGIN_MINUTES)
@@ -240,7 +240,7 @@ export function getVenusianPhaseEvents(args: {
       return getIlluminationFromEphemeris(
         venusIlluminationEphemeris,
         minute.toISOString(),
-        "nextIllumination"
+        "nextIllumination",
       );
     });
 
@@ -266,7 +266,7 @@ export function getVenusianPhaseEvents(args: {
       getVenusianPhaseEvent({
         timestamp: currentMinute.toDate(),
         phase: "morning rise",
-      })
+      }),
     );
   }
 
@@ -275,7 +275,7 @@ export function getVenusianPhaseEvents(args: {
       getVenusianPhaseEvent({
         timestamp: currentMinute.toDate(),
         phase: "western brightest",
-      })
+      }),
     );
   }
 
@@ -284,7 +284,7 @@ export function getVenusianPhaseEvents(args: {
       getVenusianPhaseEvent({
         timestamp: currentMinute.toDate(),
         phase: "western elongation",
-      })
+      }),
     );
   }
 
@@ -293,7 +293,7 @@ export function getVenusianPhaseEvents(args: {
       getVenusianPhaseEvent({
         timestamp: currentMinute.toDate(),
         phase: "morning set",
-      })
+      }),
     );
   }
 
@@ -302,7 +302,7 @@ export function getVenusianPhaseEvents(args: {
       getVenusianPhaseEvent({
         timestamp: currentMinute.toDate(),
         phase: "evening rise",
-      })
+      }),
     );
   }
 
@@ -311,7 +311,7 @@ export function getVenusianPhaseEvents(args: {
       getVenusianPhaseEvent({
         timestamp: currentMinute.toDate(),
         phase: "eastern elongation",
-      })
+      }),
     );
   }
 
@@ -320,7 +320,7 @@ export function getVenusianPhaseEvents(args: {
       getVenusianPhaseEvent({
         timestamp: currentMinute.toDate(),
         phase: "eastern brightest",
-      })
+      }),
     );
   }
 
@@ -329,7 +329,7 @@ export function getVenusianPhaseEvents(args: {
       getVenusianPhaseEvent({
         timestamp: currentMinute.toDate(),
         phase: "evening set",
-      })
+      }),
     );
   }
 
@@ -384,33 +384,33 @@ export function getMercurianPhaseEvents(args: {
   const currentLongitudePlanet = getCoordinateFromEphemeris(
     mercuryCoordinateEphemeris,
     currentMinute.toISOString(),
-    "longitude"
+    "longitude",
   );
   const currentLongitudeSun = getCoordinateFromEphemeris(
     sunCoordinateEphemeris,
     currentMinute.toISOString(),
-    "longitude"
+    "longitude",
   );
   const currentIllumination = getIlluminationFromEphemeris(
     mercuryIlluminationEphemeris,
     currentMinute.toISOString(),
-    "currentIllumination"
+    "currentIllumination",
   );
   const currentDistance = getDistanceFromEphemeris(
     mercuryDistanceEphemeris,
     currentMinute.toISOString(),
-    "currentDistance"
+    "currentDistance",
   );
 
   const previousLongitudePlanet = getCoordinateFromEphemeris(
     mercuryCoordinateEphemeris,
     previousMinute.toISOString(),
-    "longitude"
+    "longitude",
   );
   const previousLongitudeSun = getCoordinateFromEphemeris(
     sunCoordinateEphemeris,
     previousMinute.toISOString(),
-    "longitude"
+    "longitude",
   );
   const previousDistances = new Array(MARGIN_MINUTES)
     .fill(null)
@@ -421,7 +421,7 @@ export function getMercurianPhaseEvents(args: {
       return getDistanceFromEphemeris(
         mercuryDistanceEphemeris,
         minute.toISOString(),
-        "previousDistance"
+        "previousDistance",
       );
     });
   const previousIlluminations = new Array(MARGIN_MINUTES)
@@ -433,19 +433,19 @@ export function getMercurianPhaseEvents(args: {
       return getIlluminationFromEphemeris(
         mercuryIlluminationEphemeris,
         minute.toISOString(),
-        "previousIllumination"
+        "previousIllumination",
       );
     });
 
   const nextLongitudePlanet = getCoordinateFromEphemeris(
     mercuryCoordinateEphemeris,
     nextMinute.toISOString(),
-    "longitude"
+    "longitude",
   );
   const nextLongitudeSun = getCoordinateFromEphemeris(
     sunCoordinateEphemeris,
     nextMinute.toISOString(),
-    "longitude"
+    "longitude",
   );
   const nextDistances = new Array(MARGIN_MINUTES)
     .fill(null)
@@ -454,7 +454,7 @@ export function getMercurianPhaseEvents(args: {
       return getDistanceFromEphemeris(
         mercuryDistanceEphemeris,
         minute.toISOString(),
-        "nextDistance"
+        "nextDistance",
       );
     });
   const nextIlluminations = new Array(MARGIN_MINUTES)
@@ -464,7 +464,7 @@ export function getMercurianPhaseEvents(args: {
       return getIlluminationFromEphemeris(
         mercuryIlluminationEphemeris,
         minute.toISOString(),
-        "nextIllumination"
+        "nextIllumination",
       );
     });
 
@@ -490,7 +490,7 @@ export function getMercurianPhaseEvents(args: {
       getMercurianPhaseEvent({
         timestamp: currentMinute.toDate(),
         phase: "morning rise",
-      })
+      }),
     );
   }
 
@@ -499,7 +499,7 @@ export function getMercurianPhaseEvents(args: {
       getMercurianPhaseEvent({
         timestamp: currentMinute.toDate(),
         phase: "western brightest",
-      })
+      }),
     );
   }
 
@@ -508,7 +508,7 @@ export function getMercurianPhaseEvents(args: {
       getMercurianPhaseEvent({
         timestamp: currentMinute.toDate(),
         phase: "western elongation",
-      })
+      }),
     );
   }
 
@@ -517,7 +517,7 @@ export function getMercurianPhaseEvents(args: {
       getMercurianPhaseEvent({
         timestamp: currentMinute.toDate(),
         phase: "morning set",
-      })
+      }),
     );
   }
 
@@ -526,7 +526,7 @@ export function getMercurianPhaseEvents(args: {
       getMercurianPhaseEvent({
         timestamp: currentMinute.toDate(),
         phase: "evening rise",
-      })
+      }),
     );
   }
 
@@ -535,7 +535,7 @@ export function getMercurianPhaseEvents(args: {
       getMercurianPhaseEvent({
         timestamp: currentMinute.toDate(),
         phase: "eastern elongation",
-      })
+      }),
     );
   }
 
@@ -544,7 +544,7 @@ export function getMercurianPhaseEvents(args: {
       getMercurianPhaseEvent({
         timestamp: currentMinute.toDate(),
         phase: "eastern brightest",
-      })
+      }),
     );
   }
 
@@ -553,7 +553,7 @@ export function getMercurianPhaseEvents(args: {
       getMercurianPhaseEvent({
         timestamp: currentMinute.toDate(),
         phase: "evening set",
-      })
+      }),
     );
   }
 
@@ -608,33 +608,33 @@ export function getMartianPhaseEvents(args: {
   const currentLongitudePlanet = getCoordinateFromEphemeris(
     marsCoordinateEphemeris,
     currentMinute.toISOString(),
-    "longitude"
+    "longitude",
   );
   const currentLongitudeSun = getCoordinateFromEphemeris(
     sunCoordinateEphemeris,
     currentMinute.toISOString(),
-    "longitude"
+    "longitude",
   );
   const currentIllumination = getIlluminationFromEphemeris(
     marsIlluminationEphemeris,
     currentMinute.toISOString(),
-    "currentIllumination"
+    "currentIllumination",
   );
   const currentDistance = getDistanceFromEphemeris(
     marsDistanceEphemeris,
     currentMinute.toISOString(),
-    "currentDistance"
+    "currentDistance",
   );
 
   const previousLongitudePlanet = getCoordinateFromEphemeris(
     marsCoordinateEphemeris,
     previousMinute.toISOString(),
-    "longitude"
+    "longitude",
   );
   const previousLongitudeSun = getCoordinateFromEphemeris(
     sunCoordinateEphemeris,
     previousMinute.toISOString(),
-    "longitude"
+    "longitude",
   );
   const previousDistances = new Array(MARGIN_MINUTES)
     .fill(null)
@@ -645,7 +645,7 @@ export function getMartianPhaseEvents(args: {
       return getDistanceFromEphemeris(
         marsDistanceEphemeris,
         minute.toISOString(),
-        "previousDistance"
+        "previousDistance",
       );
     });
   const previousIlluminations = new Array(MARGIN_MINUTES)
@@ -657,19 +657,19 @@ export function getMartianPhaseEvents(args: {
       return getIlluminationFromEphemeris(
         marsIlluminationEphemeris,
         minute.toISOString(),
-        "previousIllumination"
+        "previousIllumination",
       );
     });
 
   const nextLongitudePlanet = getCoordinateFromEphemeris(
     marsCoordinateEphemeris,
     nextMinute.toISOString(),
-    "longitude"
+    "longitude",
   );
   const nextLongitudeSun = getCoordinateFromEphemeris(
     sunCoordinateEphemeris,
     nextMinute.toISOString(),
-    "longitude"
+    "longitude",
   );
   const nextDistances = new Array(MARGIN_MINUTES)
     .fill(null)
@@ -678,7 +678,7 @@ export function getMartianPhaseEvents(args: {
       return getDistanceFromEphemeris(
         marsDistanceEphemeris,
         minute.toISOString(),
-        "nextDistance"
+        "nextDistance",
       );
     });
   const nextIlluminations = new Array(MARGIN_MINUTES)
@@ -688,7 +688,7 @@ export function getMartianPhaseEvents(args: {
       return getIlluminationFromEphemeris(
         marsIlluminationEphemeris,
         minute.toISOString(),
-        "nextIllumination"
+        "nextIllumination",
       );
     });
 
@@ -714,7 +714,7 @@ export function getMartianPhaseEvents(args: {
       getMartianPhaseEvent({
         timestamp: currentMinute.toDate(),
         phase: "morning rise",
-      })
+      }),
     );
   }
 
@@ -723,7 +723,7 @@ export function getMartianPhaseEvents(args: {
       getMartianPhaseEvent({
         timestamp: currentMinute.toDate(),
         phase: "morning set",
-      })
+      }),
     );
   }
 
@@ -732,7 +732,7 @@ export function getMartianPhaseEvents(args: {
       getMartianPhaseEvent({
         timestamp: currentMinute.toDate(),
         phase: "evening rise",
-      })
+      }),
     );
   }
 
@@ -741,7 +741,7 @@ export function getMartianPhaseEvents(args: {
       getMartianPhaseEvent({
         timestamp: currentMinute.toDate(),
         phase: "evening set",
-      })
+      }),
     );
   }
 
@@ -772,9 +772,9 @@ export function writePlanetaryPhaseEvents(args: {
   });
   fs.writeFileSync(
     getOutputPath(
-      `planetary-phases_${planetaryPhasesBodiesString}_${timespan}.ics`
+      `planetary-phases_${planetaryPhasesBodiesString}_${timespan}.ics`,
     ),
-    new TextEncoder().encode(planetaryPhasesCalendar)
+    new TextEncoder().encode(planetaryPhasesCalendar),
   );
 
   console.log(`🌓 Wrote ${message}`);
@@ -787,24 +787,24 @@ export function getPlanetaryPhaseDurationEvents(events: Event[]): Event[] {
 
   // Filter to planetary phase events
   const planetaryPhaseEvents = events.filter((event) =>
-    event.categories.includes("Planetary Phase")
+    event.categories.includes("Planetary Phase"),
   );
 
   // Process Venus phases
   const venusianPhaseEvents = planetaryPhaseEvents.filter((event) =>
-    event.categories.includes("Venusian")
+    event.categories.includes("Venusian"),
   );
   durationEvents.push(...getVenusianPhaseDurationEvents(venusianPhaseEvents));
 
   // Process Mercury phases
   const mercurianPhaseEvents = planetaryPhaseEvents.filter((event) =>
-    event.categories.includes("Mercurian")
+    event.categories.includes("Mercurian"),
   );
   durationEvents.push(...getMercurianPhaseDurationEvents(mercurianPhaseEvents));
 
   // Process Mars phases
   const martianPhaseEvents = planetaryPhaseEvents.filter((event) =>
-    event.categories.includes("Martian")
+    event.categories.includes("Martian"),
   );
   durationEvents.push(...getMartianPhaseDurationEvents(martianPhaseEvents));
 
@@ -816,37 +816,37 @@ function getVenusianPhaseDurationEvents(events: Event[]): Event[] {
 
   // Morning visibility: Morning Rise → Morning Set
   const morningRiseEvents = events.filter((event) =>
-    event.categories.includes("Morning Rise")
+    event.categories.includes("Morning Rise"),
   );
   const morningSetEvents = events.filter((event) =>
-    event.categories.includes("Morning Set")
+    event.categories.includes("Morning Set"),
   );
   const morningVisibilityPairs = pairDurationEvents(
     morningRiseEvents,
     morningSetEvents,
-    "Venus Morning Visibility"
+    "Venus Morning Visibility",
   );
   for (const [beginning, ending] of morningVisibilityPairs) {
     durationEvents.push(
-      getVenusMorningVisibilityDurationEvent(beginning, ending)
+      getVenusMorningVisibilityDurationEvent(beginning, ending),
     );
   }
 
   // Evening visibility: Evening Rise → Evening Set
   const eveningRiseEvents = events.filter((event) =>
-    event.categories.includes("Evening Rise")
+    event.categories.includes("Evening Rise"),
   );
   const eveningSetEvents = events.filter((event) =>
-    event.categories.includes("Evening Set")
+    event.categories.includes("Evening Set"),
   );
   const eveningVisibilityPairs = pairDurationEvents(
     eveningRiseEvents,
     eveningSetEvents,
-    "Venus Evening Visibility"
+    "Venus Evening Visibility",
   );
   for (const [beginning, ending] of eveningVisibilityPairs) {
     durationEvents.push(
-      getVenusEveningVisibilityDurationEvent(beginning, ending)
+      getVenusEveningVisibilityDurationEvent(beginning, ending),
     );
   }
 
@@ -858,37 +858,37 @@ function getMercurianPhaseDurationEvents(events: Event[]): Event[] {
 
   // Morning visibility: Morning Rise → Morning Set
   const morningRiseEvents = events.filter((event) =>
-    event.categories.includes("Morning Rise")
+    event.categories.includes("Morning Rise"),
   );
   const morningSetEvents = events.filter((event) =>
-    event.categories.includes("Morning Set")
+    event.categories.includes("Morning Set"),
   );
   const morningVisibilityPairs = pairDurationEvents(
     morningRiseEvents,
     morningSetEvents,
-    "Mercury Morning Visibility"
+    "Mercury Morning Visibility",
   );
   for (const [beginning, ending] of morningVisibilityPairs) {
     durationEvents.push(
-      getMercuryMorningVisibilityDurationEvent(beginning, ending)
+      getMercuryMorningVisibilityDurationEvent(beginning, ending),
     );
   }
 
   // Evening visibility: Evening Rise → Evening Set
   const eveningRiseEvents = events.filter((event) =>
-    event.categories.includes("Evening Rise")
+    event.categories.includes("Evening Rise"),
   );
   const eveningSetEvents = events.filter((event) =>
-    event.categories.includes("Evening Set")
+    event.categories.includes("Evening Set"),
   );
   const eveningVisibilityPairs = pairDurationEvents(
     eveningRiseEvents,
     eveningSetEvents,
-    "Mercury Evening Visibility"
+    "Mercury Evening Visibility",
   );
   for (const [beginning, ending] of eveningVisibilityPairs) {
     durationEvents.push(
-      getMercuryEveningVisibilityDurationEvent(beginning, ending)
+      getMercuryEveningVisibilityDurationEvent(beginning, ending),
     );
   }
 
@@ -900,37 +900,37 @@ function getMartianPhaseDurationEvents(events: Event[]): Event[] {
 
   // Morning visibility: Morning Rise → Morning Set
   const morningRiseEvents = events.filter((event) =>
-    event.categories.includes("Morning Rise")
+    event.categories.includes("Morning Rise"),
   );
   const morningSetEvents = events.filter((event) =>
-    event.categories.includes("Morning Set")
+    event.categories.includes("Morning Set"),
   );
   const morningVisibilityPairs = pairDurationEvents(
     morningRiseEvents,
     morningSetEvents,
-    "Mars Morning Visibility"
+    "Mars Morning Visibility",
   );
   for (const [beginning, ending] of morningVisibilityPairs) {
     durationEvents.push(
-      getMarsMorningVisibilityDurationEvent(beginning, ending)
+      getMarsMorningVisibilityDurationEvent(beginning, ending),
     );
   }
 
   // Evening visibility: Evening Rise → Evening Set
   const eveningRiseEvents = events.filter((event) =>
-    event.categories.includes("Evening Rise")
+    event.categories.includes("Evening Rise"),
   );
   const eveningSetEvents = events.filter((event) =>
-    event.categories.includes("Evening Set")
+    event.categories.includes("Evening Set"),
   );
   const eveningVisibilityPairs = pairDurationEvents(
     eveningRiseEvents,
     eveningSetEvents,
-    "Mars Evening Visibility"
+    "Mars Evening Visibility",
   );
   for (const [beginning, ending] of eveningVisibilityPairs) {
     durationEvents.push(
-      getMarsEveningVisibilityDurationEvent(beginning, ending)
+      getMarsEveningVisibilityDurationEvent(beginning, ending),
     );
   }
 
@@ -940,7 +940,7 @@ function getMartianPhaseDurationEvents(events: Event[]): Event[] {
 // Venus duration event creators
 function getVenusMorningVisibilityDurationEvent(
   beginning: Event,
-  ending: Event
+  ending: Event,
 ): Event {
   return {
     start: beginning.start,
@@ -953,7 +953,7 @@ function getVenusMorningVisibilityDurationEvent(
 
 function getVenusEveningVisibilityDurationEvent(
   beginning: Event,
-  ending: Event
+  ending: Event,
 ): Event {
   return {
     start: beginning.start,
@@ -967,7 +967,7 @@ function getVenusEveningVisibilityDurationEvent(
 // Mercury duration event creators
 function getMercuryMorningVisibilityDurationEvent(
   beginning: Event,
-  ending: Event
+  ending: Event,
 ): Event {
   return {
     start: beginning.start,
@@ -980,7 +980,7 @@ function getMercuryMorningVisibilityDurationEvent(
 
 function getMercuryEveningVisibilityDurationEvent(
   beginning: Event,
-  ending: Event
+  ending: Event,
 ): Event {
   return {
     start: beginning.start,
@@ -994,7 +994,7 @@ function getMercuryEveningVisibilityDurationEvent(
 // Mars duration event creators
 function getMarsMorningVisibilityDurationEvent(
   beginning: Event,
-  ending: Event
+  ending: Event,
 ): Event {
   return {
     start: beginning.start,
@@ -1007,7 +1007,7 @@ function getMarsMorningVisibilityDurationEvent(
 
 function getMarsEveningVisibilityDurationEvent(
   beginning: Event,
-  ending: Event
+  ending: Event,
 ): Event {
   return {
     start: beginning.start,

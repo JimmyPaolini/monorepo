@@ -14,56 +14,64 @@ describe("aspects.utilities", () => {
   describe("isAspect", () => {
     it("should return true for conjunction within orb", () => {
       expect(
-        isAspect({ longitudeBody1: 0, longitudeBody2: 5, aspect: "conjunct" })
+        isAspect({ longitudeBody1: 0, longitudeBody2: 5, aspect: "conjunct" }),
       ).toBe(true);
       expect(
         isAspect({
           longitudeBody1: 100,
           longitudeBody2: 107,
           aspect: "conjunct",
-        })
+        }),
       ).toBe(true);
     });
 
     it("should return false for conjunction outside orb", () => {
       expect(
-        isAspect({ longitudeBody1: 0, longitudeBody2: 10, aspect: "conjunct" })
+        isAspect({ longitudeBody1: 0, longitudeBody2: 10, aspect: "conjunct" }),
       ).toBe(false);
     });
 
     it("should return true for opposition within orb", () => {
       expect(
-        isAspect({ longitudeBody1: 0, longitudeBody2: 180, aspect: "opposite" })
+        isAspect({
+          longitudeBody1: 0,
+          longitudeBody2: 180,
+          aspect: "opposite",
+        }),
       ).toBe(true);
       expect(
-        isAspect({ longitudeBody1: 0, longitudeBody2: 175, aspect: "opposite" })
+        isAspect({
+          longitudeBody1: 0,
+          longitudeBody2: 175,
+          aspect: "opposite",
+        }),
       ).toBe(true);
     });
 
     it("should return true for trine within orb", () => {
       expect(
-        isAspect({ longitudeBody1: 0, longitudeBody2: 120, aspect: "trine" })
+        isAspect({ longitudeBody1: 0, longitudeBody2: 120, aspect: "trine" }),
       ).toBe(true);
       expect(
-        isAspect({ longitudeBody1: 0, longitudeBody2: 115, aspect: "trine" })
+        isAspect({ longitudeBody1: 0, longitudeBody2: 115, aspect: "trine" }),
       ).toBe(true);
     });
 
     it("should return true for square within orb", () => {
       expect(
-        isAspect({ longitudeBody1: 0, longitudeBody2: 90, aspect: "square" })
+        isAspect({ longitudeBody1: 0, longitudeBody2: 90, aspect: "square" }),
       ).toBe(true);
       expect(
-        isAspect({ longitudeBody1: 0, longitudeBody2: 85, aspect: "square" })
+        isAspect({ longitudeBody1: 0, longitudeBody2: 85, aspect: "square" }),
       ).toBe(true);
     });
 
     it("should return true for sextile within orb", () => {
       expect(
-        isAspect({ longitudeBody1: 0, longitudeBody2: 60, aspect: "sextile" })
+        isAspect({ longitudeBody1: 0, longitudeBody2: 60, aspect: "sextile" }),
       ).toBe(true);
       expect(
-        isAspect({ longitudeBody1: 0, longitudeBody2: 57, aspect: "sextile" })
+        isAspect({ longitudeBody1: 0, longitudeBody2: 57, aspect: "sextile" }),
       ).toBe(true);
     });
   });
@@ -71,46 +79,46 @@ describe("aspects.utilities", () => {
   describe("getMajorAspect", () => {
     it("should return conjunct for bodies at same longitude", () => {
       expect(getMajorAspect({ longitudeBody1: 45, longitudeBody2: 45 })).toBe(
-        "conjunct"
+        "conjunct",
       );
     });
 
     it("should return conjunct for bodies within conjunction orb", () => {
       expect(getMajorAspect({ longitudeBody1: 45, longitudeBody2: 50 })).toBe(
-        "conjunct"
+        "conjunct",
       );
     });
 
     it("should return opposite for bodies 180° apart", () => {
       expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 180 })).toBe(
-        "opposite"
+        "opposite",
       );
     });
 
     it("should return trine for bodies 120° apart", () => {
       expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 120 })).toBe(
-        "trine"
+        "trine",
       );
       expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 240 })).toBe(
-        "trine"
+        "trine",
       );
     });
 
     it("should return square for bodies 90° apart", () => {
       expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 90 })).toBe(
-        "square"
+        "square",
       );
       expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 270 })).toBe(
-        "square"
+        "square",
       );
     });
 
     it("should return sextile for bodies 60° apart", () => {
       expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 60 })).toBe(
-        "sextile"
+        "sextile",
       );
       expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 300 })).toBe(
-        "sextile"
+        "sextile",
       );
     });
 
@@ -118,18 +126,18 @@ describe("aspects.utilities", () => {
       // 45° is within semisquare orb but not a major aspect
       // 25° is not within any major aspect orb
       expect(
-        getMajorAspect({ longitudeBody1: 0, longitudeBody2: 25 })
+        getMajorAspect({ longitudeBody1: 0, longitudeBody2: 25 }),
       ).toBeNull();
       // 150° is quincunx (minor aspect), not major
       expect(
-        getMajorAspect({ longitudeBody1: 0, longitudeBody2: 150 })
+        getMajorAspect({ longitudeBody1: 0, longitudeBody2: 150 }),
       ).toBeNull();
     });
 
     it("should handle wrapping around 360°", () => {
       // Conjunction at 0/360 boundary - 355° and 2° are 7° apart
       expect(getMajorAspect({ longitudeBody1: 355, longitudeBody2: 2 })).toBe(
-        "conjunct"
+        "conjunct",
       );
     });
   });
@@ -137,36 +145,36 @@ describe("aspects.utilities", () => {
   describe("getMinorAspect", () => {
     it("should return semisextile for bodies 30° apart", () => {
       expect(getMinorAspect({ longitudeBody1: 0, longitudeBody2: 30 })).toBe(
-        "semisextile"
+        "semisextile",
       );
     });
 
     it("should return semisquare for bodies 45° apart", () => {
       expect(getMinorAspect({ longitudeBody1: 0, longitudeBody2: 45 })).toBe(
-        "semisquare"
+        "semisquare",
       );
     });
 
     it("should return sesquiquadrate for bodies 135° apart", () => {
       expect(getMinorAspect({ longitudeBody1: 0, longitudeBody2: 135 })).toBe(
-        "sesquiquadrate"
+        "sesquiquadrate",
       );
     });
 
     it("should return quincunx for bodies 150° apart", () => {
       expect(getMinorAspect({ longitudeBody1: 0, longitudeBody2: 150 })).toBe(
-        "quincunx"
+        "quincunx",
       );
     });
 
     it("should return null when no minor aspect is within orb", () => {
       // 10° is not within any minor aspect orb (semisextile=30±2, semisquare=45±2, etc)
       expect(
-        getMinorAspect({ longitudeBody1: 0, longitudeBody2: 10 })
+        getMinorAspect({ longitudeBody1: 0, longitudeBody2: 10 }),
       ).toBeNull();
       // 120° is trine (major), not a minor aspect
       expect(
-        getMinorAspect({ longitudeBody1: 0, longitudeBody2: 120 })
+        getMinorAspect({ longitudeBody1: 0, longitudeBody2: 120 }),
       ).toBeNull();
     });
   });
@@ -174,20 +182,20 @@ describe("aspects.utilities", () => {
   describe("getSpecialtyAspect", () => {
     it("should return quintile for bodies 72° apart", () => {
       expect(
-        getSpecialtyAspect({ longitudeBody1: 0, longitudeBody2: 72 })
+        getSpecialtyAspect({ longitudeBody1: 0, longitudeBody2: 72 }),
       ).toBe("quintile");
     });
 
     it("should return biquintile for bodies 144° apart", () => {
       expect(
-        getSpecialtyAspect({ longitudeBody1: 0, longitudeBody2: 144 })
+        getSpecialtyAspect({ longitudeBody1: 0, longitudeBody2: 144 }),
       ).toBe("biquintile");
     });
 
     it("should return null when no specialty aspect is within orb", () => {
       // 10° is not within any specialty aspect orb
       expect(
-        getSpecialtyAspect({ longitudeBody1: 0, longitudeBody2: 10 })
+        getSpecialtyAspect({ longitudeBody1: 0, longitudeBody2: 10 }),
       ).toBeNull();
     });
   });

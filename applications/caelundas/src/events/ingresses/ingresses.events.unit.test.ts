@@ -149,10 +149,10 @@ describe("ingresses.events", () => {
 
       expect(fs.default.writeFileSync).toHaveBeenCalled();
       expect(console.log).toHaveBeenCalledWith(
-        expect.stringContaining("Writing")
+        expect.stringContaining("Writing"),
       );
       expect(console.log).toHaveBeenCalledWith(
-        expect.stringContaining("Wrote")
+        expect.stringContaining("Wrote"),
       );
     });
 
@@ -440,10 +440,10 @@ describe("ingresses.events", () => {
 
       expect(durationEvents).toHaveLength(1);
       expect(durationEvents[0]?.start).toEqual(
-        new Date("2024-03-20T03:06:00.000Z")
+        new Date("2024-03-20T03:06:00.000Z"),
       );
       expect(durationEvents[0]?.end).toEqual(
-        new Date("2024-04-19T15:00:00.000Z")
+        new Date("2024-04-19T15:00:00.000Z"),
       );
       expect(durationEvents[0]?.categories).toContain("Sun");
       expect(durationEvents[0]?.categories).toContain("Aries");

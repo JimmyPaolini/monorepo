@@ -30,17 +30,17 @@ export function getDailySolarCycleEvents(args: {
   const currentElevation = getAzimuthElevationFromEphemeris(
     sunAzimuthElevationEphemeris,
     currentMinute.toISOString(),
-    "elevation"
+    "elevation",
   );
   const previousElevation = getAzimuthElevationFromEphemeris(
     sunAzimuthElevationEphemeris,
     previousMinute.toISOString(),
-    "elevation"
+    "elevation",
   );
   const nextElevation = getAzimuthElevationFromEphemeris(
     sunAzimuthElevationEphemeris,
     nextMinute.toISOString(),
-    "elevation"
+    "elevation",
   );
 
   const elevations = {
@@ -158,7 +158,7 @@ export function writeDailySolarCycleEvents(args: {
   });
   fs.writeFileSync(
     getOutputPath(`daily-solar-cycle_${timespan}.ics`),
-    new TextEncoder().encode(ingressCalendar)
+    new TextEncoder().encode(ingressCalendar),
   );
 
   console.log(`☀️ Wrote ${message}`);

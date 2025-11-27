@@ -29,12 +29,12 @@ export function isSolarEclipse(args: {
 
   const currentLongitudeAngle = getAngle(
     currentLongitudeMoon,
-    currentLongitudeSun
+    currentLongitudeSun,
   );
   const nextLongitudeAngle = getAngle(nextLongitudeMoon, nextLongitudeSun);
   const previousLongitudeAngle = getAngle(
     previousLongitudeMoon,
-    previousLongitudeSun
+    previousLongitudeSun,
   );
 
   const isMinimumLongitudeAngle = isMinimum({
@@ -45,7 +45,7 @@ export function isSolarEclipse(args: {
 
   const currentLatitudeAngle = getAngle(
     currentLatitudeMoon,
-    currentLatitudeSun
+    currentLatitudeSun,
   );
 
   const currentDiameter = currentDiameterSun + currentDiameterMoon;
@@ -107,12 +107,12 @@ export function isLunarEclipse(args: {
 
   const currentLongitudeAngle = getAngle(
     currentLongitudeMoon,
-    currentLongitudeSun
+    currentLongitudeSun,
   );
   const nextLongitudeAngle = getAngle(nextLongitudeMoon, nextLongitudeSun);
   const previousLongitudeAngle = getAngle(
     previousLongitudeMoon,
-    previousLongitudeSun
+    previousLongitudeSun,
   );
 
   const isMaximumLongitudeAngle = isMaximum({
@@ -123,7 +123,7 @@ export function isLunarEclipse(args: {
 
   const currentLatitudeAngle = getAngle(
     currentLatitudeMoon,
-    currentLatitudeSun
+    currentLatitudeSun,
   );
 
   const currentDiameter = currentDiameterSun + currentDiameterMoon;

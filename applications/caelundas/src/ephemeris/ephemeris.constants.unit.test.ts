@@ -143,7 +143,7 @@ describe("ephemeris.constants", () => {
     it("should contain all planet command IDs", () => {
       Object.entries(commandIdByPlanet).forEach(([planet, id]) => {
         expect(commandIdByBody[planet as keyof typeof commandIdByPlanet]).toBe(
-          id
+          id,
         );
       });
     });
@@ -151,7 +151,7 @@ describe("ephemeris.constants", () => {
     it("should contain all asteroid command IDs", () => {
       Object.entries(commandIdByAsteroid).forEach(([asteroid, id]) => {
         expect(
-          commandIdByBody[asteroid as keyof typeof commandIdByAsteroid]
+          commandIdByBody[asteroid as keyof typeof commandIdByAsteroid],
         ).toBe(id);
       });
     });
@@ -159,7 +159,7 @@ describe("ephemeris.constants", () => {
     it("should contain all comet command IDs", () => {
       Object.entries(commandIdByComet).forEach(([comet, id]) => {
         expect(commandIdByBody[comet as keyof typeof commandIdByComet]).toBe(
-          id
+          id,
         );
       });
     });

@@ -10,7 +10,7 @@ export function isRetrograde(args: {
   const hasBeenDirect = previousLongitudes.every((previousLongitude) => {
     const previousLongitudeNormalized = normalizeForComparison(
       previousLongitude,
-      currentLongitude
+      currentLongitude,
     );
     return previousLongitudeNormalized < currentLongitude;
   });
@@ -18,7 +18,7 @@ export function isRetrograde(args: {
   const willBeRetrograde = nextLongitudes.every((nextLongitude) => {
     const nextLongitudeNormalized = normalizeForComparison(
       nextLongitude,
-      currentLongitude
+      currentLongitude,
     );
     return nextLongitudeNormalized <= currentLongitude;
   });
@@ -38,7 +38,7 @@ export function isDirect(args: {
   const hasBeenRetrograde = previousLongitudes.every((previousLongitude) => {
     const previousLongitudeNormalized = normalizeForComparison(
       previousLongitude,
-      currentLongitude
+      currentLongitude,
     );
     return previousLongitudeNormalized > currentLongitude;
   });
@@ -46,7 +46,7 @@ export function isDirect(args: {
   const willBeDirect = nextLongitudes.every((nextLongitude) => {
     const nextLongitudeNormalized = normalizeForComparison(
       nextLongitude,
-      currentLongitude
+      currentLongitude,
     );
     return nextLongitudeNormalized >= currentLongitude;
   });

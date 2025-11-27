@@ -7,13 +7,13 @@ import type { Event } from "./calendar.utilities";
 export function pairDurationEvents<E extends Event>(
   beginningEvents: E[],
   endingEvents: E[],
-  eventName: string
+  eventName: string,
 ): [E, E][] {
   const beginnings = [...beginningEvents].sort(
-    (a, b) => a.start.getTime() - b.start.getTime()
+    (a, b) => a.start.getTime() - b.start.getTime(),
   );
   const endings = [...endingEvents].sort(
-    (a, b) => a.start.getTime() - b.start.getTime()
+    (a, b) => a.start.getTime() - b.start.getTime(),
   );
   const pairs: [E, E][] = [];
 
@@ -33,7 +33,7 @@ export function pairDurationEvents<E extends Event>(
       console.warn(
         `⚠️ Skipping invalid ${eventName} ending: ` +
           `ending (${ending.start.toISOString()}) is before or equal to ` +
-          `beginning (${beginning.start.toISOString()})`
+          `beginning (${beginning.start.toISOString()})`,
       );
       beginningIndex--;
       continue;
@@ -48,14 +48,14 @@ export function pairDurationEvents<E extends Event>(
   if (unpairedBeginnings > 0) {
     console.warn(
       `⚠️ ${unpairedBeginnings} unpaired ${eventName} beginning(s) ` +
-        `(likely extends beyond date range)`
+        `(likely extends beyond date range)`,
     );
   }
 
   if (unpairedEndings > 0) {
     console.warn(
       `⚠️ ${unpairedEndings} unpaired ${eventName} ending(s) ` +
-        `(likely started before date range)`
+        `(likely started before date range)`,
     );
   }
 

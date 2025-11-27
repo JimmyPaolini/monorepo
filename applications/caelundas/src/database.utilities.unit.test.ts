@@ -111,7 +111,7 @@ describe("database.utilities", () => {
           console.error = originalConsoleError;
           process.off("unhandledRejection", handler);
         }
-      }
+      },
     );
   });
 
@@ -157,8 +157,8 @@ describe("database.utilities", () => {
         body: "moon" as Body,
         timestamp: new Date(
           `2025-03-20T${String(i % 24).padStart(2, "0")}:${String(
-            i % 60
-          ).padStart(2, "0")}:00Z`
+            i % 60,
+          ).padStart(2, "0")}:00Z`,
         ),
         longitude: i * 2.4,
         latitude: Math.sin(i) * 5,
@@ -485,10 +485,10 @@ describe("database.utilities", () => {
         summary: `Event ${i}`,
         description: `Description ${i}`,
         start: new Date(
-          `2025-03-${String((i % 28) + 1).padStart(2, "0")}T10:00:00Z`
+          `2025-03-${String((i % 28) + 1).padStart(2, "0")}T10:00:00Z`,
         ),
         end: new Date(
-          `2025-03-${String((i % 28) + 1).padStart(2, "0")}T11:00:00Z`
+          `2025-03-${String((i % 28) + 1).padStart(2, "0")}T11:00:00Z`,
         ),
         categories: ["Test", `Batch${i}`],
       }));
@@ -583,7 +583,7 @@ describe("database.utilities", () => {
 
       const retrieved = await getAllEvents();
       const testEvents = retrieved.filter((e) =>
-        e.categories.includes("SortTest")
+        e.categories.includes("SortTest"),
       );
 
       expect(testEvents.length).toBe(3);
@@ -650,15 +650,15 @@ describe("database.utilities", () => {
       await upsertEvents(aspects);
 
       const activeAt = await getActiveAspectsAt(
-        new Date("2025-03-15T12:00:00Z")
+        new Date("2025-03-15T12:00:00Z"),
       );
 
       expect(activeAt.length).toBe(2);
       expect(activeAt.map((a) => a.summary)).toContain(
-        "☀️☌♃ Sun conjunct Jupiter"
+        "☀️☌♃ Sun conjunct Jupiter",
       );
       expect(activeAt.map((a) => a.summary)).toContain(
-        "♀️□♂️ Venus square Mars"
+        "♀️□♂️ Venus square Mars",
       );
     });
 
@@ -694,11 +694,11 @@ describe("database.utilities", () => {
       await upsertEvents(events);
 
       const activeAt = await getActiveAspectsAt(
-        new Date("2025-03-15T12:00:00Z")
+        new Date("2025-03-15T12:00:00Z"),
       );
 
       expect(activeAt.map((a) => a.summary)).toContain(
-        "☀️☌♃ Sun conjunct Jupiter"
+        "☀️☌♃ Sun conjunct Jupiter",
       );
       expect(activeAt.map((a) => a.summary)).not.toContain("T-Square");
     });
@@ -727,7 +727,7 @@ describe("database.utilities", () => {
       await upsertEvents(aspects);
 
       const activeAt = await getActiveAspectsAt(
-        new Date("2025-03-15T12:00:00Z")
+        new Date("2025-03-15T12:00:00Z"),
       );
 
       expect(activeAt.map((a) => a.summary)).not.toContain("Past aspect");

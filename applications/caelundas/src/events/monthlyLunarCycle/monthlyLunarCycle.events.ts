@@ -27,7 +27,7 @@ export function getMonthlyLunarCycleEvents(args: {
   const currentIllumination = getIlluminationFromEphemeris(
     moonIlluminationEphemeris,
     currentMinute.toISOString(),
-    "currentIllumination"
+    "currentIllumination",
   );
 
   const previousIlluminations = new Array(MARGIN_MINUTES)
@@ -37,7 +37,7 @@ export function getMonthlyLunarCycleEvents(args: {
       return getIlluminationFromEphemeris(
         moonIlluminationEphemeris,
         minute.toISOString(),
-        "previousIllumination"
+        "previousIllumination",
       );
     });
 
@@ -48,7 +48,7 @@ export function getMonthlyLunarCycleEvents(args: {
       return getIlluminationFromEphemeris(
         moonIlluminationEphemeris,
         minute.toISOString(),
-        "nextIllumination"
+        "nextIllumination",
       );
     });
 
@@ -62,7 +62,7 @@ export function getMonthlyLunarCycleEvents(args: {
   for (const lunarPhase of lunarPhases) {
     if (isLunarPhase({ ...illuminations, lunarPhase })) {
       monthlyLunarCycleEvents.push(
-        getMonthlyLunarCycleEvent({ date, lunarPhase })
+        getMonthlyLunarCycleEvent({ date, lunarPhase }),
       );
     }
   }
@@ -77,7 +77,7 @@ export function getMonthlyLunarCycleEvent(args: {
   const { date, lunarPhase } = args;
 
   const lunarPhaseCapitalized = _.startCase(
-    lunarPhase
+    lunarPhase,
   ) as Capitalize<LunarPhase>;
   const description = `${lunarPhaseCapitalized} Moon`;
   const summary = `🌙 ${symbolByLunarPhase[lunarPhase]} ${description}`;
@@ -121,7 +121,7 @@ export function writeMonthlyLunarCycleEvents(args: {
   });
   fs.writeFileSync(
     getOutputPath(`monthly-lunar-cycle_${timespan}.ics`),
-    new TextEncoder().encode(ingressCalendar)
+    new TextEncoder().encode(ingressCalendar),
   );
 
   console.log(`🌒 Wrote ${message}`);
@@ -134,12 +134,12 @@ export function getMonthlyLunarCycleDurationEvents(events: Event[]): Event[] {
 
   // Filter to monthly lunar cycle events only
   const lunarCycleEvents = events.filter((event) =>
-    event.categories.includes("Monthly Lunar Cycle")
+    event.categories.includes("Monthly Lunar Cycle"),
   );
 
   // Sort by time
   const sortedEvents = _.sortBy(lunarCycleEvents, (event) =>
-    event.start.getTime()
+    event.start.getTime(),
   );
 
   // Pair consecutive lunar phases to create duration events
@@ -163,20 +163,20 @@ export function getMonthlyLunarCycleDurationEvents(events: Event[]): Event[] {
 
 function getMonthlyLunarCycleDurationEvent(
   entering: Event,
-  exiting: Event
+  exiting: Event,
 ): Event | null {
   const categories = entering.categories;
 
   // Extract the lunar phase
   const lunarPhaseCapitalized = categories.find((category) =>
-    lunarPhases.map((lunarPhase) => _.startCase(lunarPhase)).includes(category)
+    lunarPhases.map((lunarPhase) => _.startCase(lunarPhase)).includes(category),
   );
 
   if (!lunarPhaseCapitalized) {
     console.warn(
       `⚠️ Could not extract lunar phase from categories: ${categories.join(
-        ", "
-      )} - skipping duration event for ${entering.summary}`
+        ", ",
+      )} - skipping duration event for ${entering.summary}`,
     );
     return null; // Skip this invalid event
   }

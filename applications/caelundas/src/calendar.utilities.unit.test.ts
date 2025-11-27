@@ -31,7 +31,7 @@ describe("calendar.utilities", () => {
       expect(vevent).toContain("CLASS:PUBLIC");
       expect(vevent).toContain("TRANSP:TRANSPARENT");
       expect(vevent).toContain(
-        "CATEGORIES:Astronomy,Astrology,Ingress,Sun,Aries"
+        "CATEGORIES:Astronomy,Astrology,Ingress,Sun,Aries",
       );
     });
 
@@ -149,7 +149,7 @@ describe("calendar.utilities", () => {
       expect(calendar).toContain("END:VCALENDAR");
       expect(calendar).toContain("VERSION:2.0");
       expect(calendar).toContain(
-        "PRODID:-//Caelundas//Astronomical Calendar//EN"
+        "PRODID:-//Caelundas//Astronomical Calendar//EN",
       );
       expect(calendar).toContain("CALSCALE:GREGORIAN");
       expect(calendar).toContain("METHOD:PUBLISH");

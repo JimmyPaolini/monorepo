@@ -114,11 +114,11 @@ export default [
       ],
       "@typescript-eslint/explicit-module-boundary-types": "error",
       "@typescript-eslint/no-explicit-any": "error",
-      "@typescript-eslint/no-unsafe-assignment": "warn",
+      "@typescript-eslint/no-unsafe-assignment": "error",
       "@typescript-eslint/no-unsafe-call": "error",
-      "@typescript-eslint/no-unsafe-member-access": "warn",
-      "@typescript-eslint/no-unsafe-return": "warn",
-      "@typescript-eslint/no-unsafe-argument": "warn",
+      "@typescript-eslint/no-unsafe-member-access": "error",
+      "@typescript-eslint/no-unsafe-return": "error",
+      "@typescript-eslint/no-unsafe-argument": "error",
       "@typescript-eslint/strict-boolean-expressions": "off",
       "@typescript-eslint/no-floating-promises": "error",
       "@typescript-eslint/await-thenable": "error",
@@ -130,7 +130,14 @@ export default [
       "@typescript-eslint/prefer-nullish-coalescing": "off",
       "@typescript-eslint/prefer-optional-chain": "error",
       "@typescript-eslint/prefer-readonly": "error",
+      "@typescript-eslint/prefer-reduce-type-parameter": "error",
+      "@typescript-eslint/prefer-return-this-type": "error",
       "@typescript-eslint/switch-exhaustiveness-check": "error",
+      "@typescript-eslint/no-confusing-void-expression": [
+        "error",
+        { ignoreArrowShorthand: true, ignoreVoidOperator: true },
+      ],
+      "@typescript-eslint/no-meaningless-void-operator": "error",
       "@typescript-eslint/consistent-type-imports": [
         "error",
         {
@@ -190,7 +197,7 @@ export default [
       ],
 
       // General best practices
-      // "no-console": ["warn", { allow: ["warn", "error"] }],
+      // "no-console": ["warn", { allow: ["warn", "error", "info"] }],
       "no-debugger": "error",
       "no-alert": "error",
       "prefer-const": "error",

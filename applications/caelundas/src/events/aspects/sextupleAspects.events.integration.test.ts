@@ -511,10 +511,10 @@ describe("sextupleAspects.events integration", () => {
       expect(durationEvents).toHaveLength(1);
       expect(durationEvents[0]).toBeDefined();
       expect(durationEvents[0]?.start).toEqual(
-        new Date("2024-09-22T18:42:00.000Z")
+        new Date("2024-09-22T18:42:00.000Z"),
       );
       expect(durationEvents[0]?.end).toEqual(
-        new Date("2024-09-22T19:00:00.000Z")
+        new Date("2024-09-22T19:00:00.000Z"),
       );
       expect(durationEvents[0]?.categories).toContain("Sextuple Aspect");
       expect(durationEvents[0]?.categories).toContain("Hexagram");
@@ -522,7 +522,7 @@ describe("sextupleAspects.events integration", () => {
       expect(durationEvents[0]?.categories).not.toContain("Dissolving");
       expect(durationEvents[0]?.description).toContain("hexagram");
       expect(durationEvents[0]?.description).not.toMatch(
-        /(forming|dissolving)$/i
+        /(forming|dissolving)$/i,
       );
     });
   });

@@ -360,7 +360,7 @@ describe("quintupleAspects.events", () => {
         const events = getQuintupleAspectEvents(storedAspects, currentMinute);
 
         const pentagram = events.find((e) =>
-          e.categories.includes("Pentagram")
+          e.categories.includes("Pentagram"),
         );
         expect(pentagram).toBeUndefined();
       });
@@ -408,7 +408,7 @@ describe("quintupleAspects.events", () => {
         const events = getQuintupleAspectEvents(storedAspects, currentMinute);
 
         const pentagram = events.find((e) =>
-          e.categories.includes("Pentagram")
+          e.categories.includes("Pentagram"),
         );
         expect(pentagram).toBeUndefined();
       });
@@ -683,8 +683,8 @@ describe("quintupleAspects.events", () => {
             e.description.includes("Moon") &&
             e.description.includes("Mars") &&
             e.description.includes("Jupiter") &&
-            e.description.includes("Venus")
-        )
+            e.description.includes("Venus"),
+        ),
       ).toBeDefined();
       expect(
         durationEvents.find(
@@ -693,8 +693,8 @@ describe("quintupleAspects.events", () => {
             e.description.includes("Saturn") &&
             e.description.includes("Uranus") &&
             e.description.includes("Neptune") &&
-            e.description.includes("Pluto")
-        )
+            e.description.includes("Pluto"),
+        ),
       ).toBeDefined();
     });
 
@@ -730,7 +730,7 @@ describe("quintupleAspects.events", () => {
       ]);
 
       expect(
-        durationEvents.every((e) => e.categories.includes("Quintuple Aspect"))
+        durationEvents.every((e) => e.categories.includes("Quintuple Aspect")),
       ).toBe(true);
     });
 
@@ -868,7 +868,7 @@ describe("quintupleAspects.events", () => {
 
       expect(durationEvents.length).toBe(1);
       expect(durationEvents[0]?.description).not.toMatch(
-        /(forming|dissolving|exact)$/i
+        /(forming|dissolving|exact)$/i,
       );
       expect(durationEvents[0]?.description).toContain("pentagram");
     });

@@ -27,7 +27,7 @@ const config: Config = {
   jsxSingleQuote: false,
 
   // Print trailing commas wherever possible in multi-line comma-separated syntactic structures
-  trailingComma: "es5",
+  trailingComma: "all",
 
   // Print spaces between brackets in object literals
   bracketSpacing: true,
@@ -70,7 +70,7 @@ const config: Config = {
   embeddedLanguageFormatting: "auto",
 
   // Enforce single attribute per line in HTML, Vue and JSX
-  singleAttributePerLine: false,
+  singleAttributePerLine: true,
 };
 
 export default config;

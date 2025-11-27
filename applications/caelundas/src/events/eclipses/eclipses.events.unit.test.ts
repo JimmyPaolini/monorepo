@@ -27,7 +27,7 @@ describe("eclipses.events", () => {
   function createCoordinateEphemeris(
     currentMinute: moment.Moment,
     longitudes: number[],
-    latitudes: number[]
+    latitudes: number[],
   ): CoordinateEphemeris {
     const ephemeris: CoordinateEphemeris = {};
     const totalMinutes = MARGIN_MINUTES * 2 + 1;
@@ -48,7 +48,7 @@ describe("eclipses.events", () => {
   // Helper to create diameter ephemeris
   function createDiameterEphemeris(
     currentMinute: moment.Moment,
-    diameters: number[]
+    diameters: number[],
   ): DiameterEphemeris {
     const ephemeris: DiameterEphemeris = {};
     const totalMinutes = MARGIN_MINUTES * 2 + 1;
@@ -71,41 +71,41 @@ describe("eclipses.events", () => {
 
       // No eclipse: sun and moon far apart
       const sunLongitudes: number[] = new Array<number>(
-        MARGIN_MINUTES * 2 + 1
+        MARGIN_MINUTES * 2 + 1,
       ).fill(0);
       const moonLongitudes: number[] = new Array<number>(
-        MARGIN_MINUTES * 2 + 1
+        MARGIN_MINUTES * 2 + 1,
       ).fill(90);
       const sunLatitudes: number[] = new Array<number>(
-        MARGIN_MINUTES * 2 + 1
+        MARGIN_MINUTES * 2 + 1,
       ).fill(0);
       const moonLatitudes: number[] = new Array<number>(
-        MARGIN_MINUTES * 2 + 1
+        MARGIN_MINUTES * 2 + 1,
       ).fill(5);
       const sunDiameters: number[] = new Array<number>(
-        MARGIN_MINUTES * 2 + 1
+        MARGIN_MINUTES * 2 + 1,
       ).fill(0.533);
       const moonDiameters: number[] = new Array<number>(
-        MARGIN_MINUTES * 2 + 1
+        MARGIN_MINUTES * 2 + 1,
       ).fill(0.518);
 
       const moonCoordinateEphemeris = createCoordinateEphemeris(
         currentMinute,
         moonLongitudes,
-        moonLatitudes
+        moonLatitudes,
       );
       const sunCoordinateEphemeris = createCoordinateEphemeris(
         currentMinute,
         sunLongitudes,
-        sunLatitudes
+        sunLatitudes,
       );
       const moonDiameterEphemeris = createDiameterEphemeris(
         currentMinute,
-        moonDiameters
+        moonDiameters,
       );
       const sunDiameterEphemeris = createDiameterEphemeris(
         currentMinute,
-        sunDiameters
+        sunDiameters,
       );
 
       const events = getEclipseEvents({
@@ -239,7 +239,7 @@ describe("eclipses.events", () => {
         (e) =>
           e.description.includes("Solar Eclipse") &&
           !e.description.includes("begins") &&
-          !e.description.includes("ends")
+          !e.description.includes("ends"),
       );
       expect(solarDuration).toBeDefined();
       if (solarDuration) {
@@ -277,7 +277,7 @@ describe("eclipses.events", () => {
         (e) =>
           e.description.includes("Lunar Eclipse") &&
           !e.description.includes("begins") &&
-          !e.description.includes("ends")
+          !e.description.includes("ends"),
       );
       expect(lunarDuration).toBeDefined();
       if (lunarDuration) {
@@ -336,10 +336,10 @@ describe("eclipses.events", () => {
       expect(durationEvents.length).toBeGreaterThanOrEqual(2);
 
       const solarDuration = durationEvents.find((e) =>
-        e.categories.includes("Solar")
+        e.categories.includes("Solar"),
       );
       const lunarDuration = durationEvents.find((e) =>
-        e.categories.includes("Lunar")
+        e.categories.includes("Lunar"),
       );
 
       expect(solarDuration).toBeDefined();

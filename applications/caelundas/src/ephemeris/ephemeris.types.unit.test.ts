@@ -96,10 +96,10 @@ describe("ephemeris.types", () => {
 
       expect(ephemeris["2024-03-21T00:00:00.000Z"]?.eccentricity).toBeCloseTo(
         0.0545,
-        4
+        4,
       );
       expect(ephemeris["2024-03-21T00:00:00.000Z"]?.semiMajorAxis).toBe(
-        384400.0
+        384400.0,
       );
     });
 
@@ -173,10 +173,10 @@ describe("ephemeris.types", () => {
       };
 
       expect(darkMoon["2024-03-21T00:00:00.000Z"]?.illumination).toBeLessThan(
-        0.1
+        0.1,
       );
       expect(
-        fullMoon["2024-03-21T00:00:00.000Z"]?.illumination
+        fullMoon["2024-03-21T00:00:00.000Z"]?.illumination,
       ).toBeGreaterThan(0.9);
     });
   });
@@ -201,11 +201,11 @@ describe("ephemeris.types", () => {
 
       expect(sunDistance["2024-03-21T00:00:00.000Z"]?.distance).toBeCloseTo(
         1.0,
-        1
+        1,
       );
       expect(marsDistance["2024-03-21T00:00:00.000Z"]?.distance).toBeCloseTo(
         1.5,
-        1
+        1,
       );
     });
   });
@@ -229,10 +229,10 @@ describe("ephemeris.types", () => {
       };
 
       expect(sunDiameter["2024-03-21T00:00:00.000Z"]?.diameter).toBeGreaterThan(
-        0.5
+        0.5,
       );
       expect(
-        moonDiameter["2024-03-21T00:00:00.000Z"]?.diameter
+        moonDiameter["2024-03-21T00:00:00.000Z"]?.diameter,
       ).toBeGreaterThan(0.5);
     });
   });

@@ -21,20 +21,20 @@ vi.mock("fs", () => ({
 describe("majorAspects.events", () => {
   describe("getMajorAspectEvents", () => {
     const createEphemeris = (
-      longitudes: Record<string, number>
+      longitudes: Record<string, number>,
     ): CoordinateEphemeris => {
       return Object.fromEntries(
         Object.entries(longitudes).map(([timestamp, longitude]) => [
           timestamp,
           { longitude, latitude: 0 },
-        ])
+        ]),
       );
     };
 
     const createDefaultEphemeris = (
       currentMinute: moment.Moment,
       previousMinute: moment.Moment,
-      nextMinute: moment.Moment
+      nextMinute: moment.Moment,
     ): Record<Body, CoordinateEphemeris> => {
       // Create ephemeris for all major aspect bodies with far-apart longitudes
       const allBodies = [
@@ -78,7 +78,7 @@ describe("majorAspects.events", () => {
       const coordinateEphemerisByBody = createDefaultEphemeris(
         currentMinute,
         previousMinute,
-        nextMinute
+        nextMinute,
       );
 
       // Override sun and mercury to be in conjunction
@@ -103,7 +103,7 @@ describe("majorAspects.events", () => {
         (e) =>
           e.description.includes("conjunct") &&
           e.description.includes("Sun") &&
-          e.description.includes("Mercury")
+          e.description.includes("Mercury"),
       );
       expect(conjunctionEvent).toBeDefined();
       expect(conjunctionEvent?.categories).toContain("Exact");
@@ -123,7 +123,7 @@ describe("majorAspects.events", () => {
       const coordinateEphemerisByBody = createDefaultEphemeris(
         currentMinute,
         previousMinute,
-        nextMinute
+        nextMinute,
       );
 
       // Opposition has 8° orb, so venus needs to enter from >188° or <172°
@@ -148,7 +148,7 @@ describe("majorAspects.events", () => {
           e.description.includes("opposite") &&
           e.categories.includes("Forming") &&
           e.description.includes("Sun") &&
-          e.description.includes("Venus")
+          e.description.includes("Venus"),
       );
       expect(formingOpposition).toBeDefined();
     });
@@ -161,7 +161,7 @@ describe("majorAspects.events", () => {
       const coordinateEphemerisByBody = createDefaultEphemeris(
         currentMinute,
         previousMinute,
-        nextMinute
+        nextMinute,
       );
 
       // Trine has 6° orb, so mars needs to exit beyond >126° or <114°
@@ -186,7 +186,7 @@ describe("majorAspects.events", () => {
           e.description.includes("trine") &&
           e.categories.includes("Dissolving") &&
           e.description.includes("Sun") &&
-          e.description.includes("Mars")
+          e.description.includes("Mars"),
       );
       expect(dissolvingTrine).toBeDefined();
     });
@@ -199,7 +199,7 @@ describe("majorAspects.events", () => {
       const coordinateEphemerisByBody = createDefaultEphemeris(
         currentMinute,
         previousMinute,
-        nextMinute
+        nextMinute,
       );
 
       coordinateEphemerisByBody.sun = createEphemeris({
@@ -226,10 +226,10 @@ describe("majorAspects.events", () => {
       expect(events.length).toBeGreaterThanOrEqual(2);
       const sunMercuryAspect = events.find(
         (e) =>
-          e.description.includes("Sun") && e.description.includes("Mercury")
+          e.description.includes("Sun") && e.description.includes("Mercury"),
       );
       const sunVenusAspect = events.find(
-        (e) => e.description.includes("Sun") && e.description.includes("Venus")
+        (e) => e.description.includes("Sun") && e.description.includes("Venus"),
       );
       expect(sunMercuryAspect).toBeDefined();
       expect(sunVenusAspect).toBeDefined();
@@ -294,7 +294,7 @@ describe("majorAspects.events", () => {
       const coordinateEphemerisByBody = createDefaultEphemeris(
         currentMinute,
         previousMinute,
-        nextMinute
+        nextMinute,
       );
 
       coordinateEphemerisByBody.sun = createEphemeris({
@@ -316,7 +316,7 @@ describe("majorAspects.events", () => {
       // Should only have one sun-jupiter conjunction, not two (sun-jupiter and jupiter-sun)
       const sunJupiterEvents = events.filter(
         (e) =>
-          e.description.includes("Sun") && e.description.includes("Jupiter")
+          e.description.includes("Sun") && e.description.includes("Jupiter"),
       );
       expect(sunJupiterEvents).toHaveLength(1);
     });
@@ -439,7 +439,7 @@ describe("majorAspects.events", () => {
           body1: "sun",
           body2: "moon",
           phase: "exact",
-        })
+        }),
       ).toThrow("No major aspect found");
     });
 
@@ -517,7 +517,7 @@ describe("majorAspects.events", () => {
 
       expect(fs.writeFileSync).toHaveBeenCalledWith(
         expect.stringContaining("venus,jupiter,mars"),
-        expect.anything()
+        expect.anything(),
       );
     });
 
@@ -546,11 +546,11 @@ describe("majorAspects.events", () => {
 
       expect(fs.writeFileSync).toHaveBeenCalledWith(
         expect.stringContaining(start.toISOString()),
-        expect.anything()
+        expect.anything(),
       );
       expect(fs.writeFileSync).toHaveBeenCalledWith(
         expect.stringContaining(end.toISOString()),
-        expect.anything()
+        expect.anything(),
       );
     });
   });
@@ -561,7 +561,7 @@ describe("majorAspects.events", () => {
       body2: string,
       aspect: string,
       phase: string,
-      timestamp: Date
+      timestamp: Date,
     ): Event => ({
       start: timestamp,
       end: timestamp,
@@ -584,14 +584,14 @@ describe("majorAspects.events", () => {
         "Mercury",
         "Conjunct",
         "Forming",
-        new Date("2024-03-21T10:00:00.000Z")
+        new Date("2024-03-21T10:00:00.000Z"),
       );
       const dissolving = createMajorAspectEvent(
         "Sun",
         "Mercury",
         "Conjunct",
         "Dissolving",
-        new Date("2024-03-21T14:00:00.000Z")
+        new Date("2024-03-21T14:00:00.000Z"),
       );
 
       const events = [forming, dissolving];
@@ -614,28 +614,28 @@ describe("majorAspects.events", () => {
         "Mercury",
         "Conjunct",
         "Forming",
-        new Date("2024-03-21T10:00:00.000Z")
+        new Date("2024-03-21T10:00:00.000Z"),
       );
       const dissolvingConjunct = createMajorAspectEvent(
         "Sun",
         "Mercury",
         "Conjunct",
         "Dissolving",
-        new Date("2024-03-21T14:00:00.000Z")
+        new Date("2024-03-21T14:00:00.000Z"),
       );
       const formingOpposite = createMajorAspectEvent(
         "Sun",
         "Mercury",
         "Opposite",
         "Forming",
-        new Date("2024-03-21T20:00:00.000Z")
+        new Date("2024-03-21T20:00:00.000Z"),
       );
       const dissolvingOpposite = createMajorAspectEvent(
         "Sun",
         "Mercury",
         "Opposite",
         "Dissolving",
-        new Date("2024-03-22T00:00:00.000Z")
+        new Date("2024-03-22T00:00:00.000Z"),
       );
 
       const events = [
@@ -648,10 +648,10 @@ describe("majorAspects.events", () => {
 
       expect(durationEvents).toHaveLength(2);
       const conjunctDuration = durationEvents.find((e) =>
-        e.description.includes("conjunct")
+        e.description.includes("conjunct"),
       );
       const oppositeDuration = durationEvents.find((e) =>
-        e.description.includes("opposite")
+        e.description.includes("opposite"),
       );
       expect(conjunctDuration).toBeDefined();
       expect(oppositeDuration).toBeDefined();
@@ -663,28 +663,28 @@ describe("majorAspects.events", () => {
         "Mercury",
         "Conjunct",
         "Forming",
-        new Date("2024-03-21T10:00:00.000Z")
+        new Date("2024-03-21T10:00:00.000Z"),
       );
       const sunMercuryDissolving = createMajorAspectEvent(
         "Sun",
         "Mercury",
         "Conjunct",
         "Dissolving",
-        new Date("2024-03-21T14:00:00.000Z")
+        new Date("2024-03-21T14:00:00.000Z"),
       );
       const venusJupiterForming = createMajorAspectEvent(
         "Venus",
         "Jupiter",
         "Trine",
         "Forming",
-        new Date("2024-03-21T12:00:00.000Z")
+        new Date("2024-03-21T12:00:00.000Z"),
       );
       const venusJupiterDissolving = createMajorAspectEvent(
         "Venus",
         "Jupiter",
         "Trine",
         "Dissolving",
-        new Date("2024-03-21T16:00:00.000Z")
+        new Date("2024-03-21T16:00:00.000Z"),
       );
 
       const events = [
@@ -704,14 +704,14 @@ describe("majorAspects.events", () => {
         "Venus",
         "Conjunct",
         "Forming",
-        new Date("2024-03-21T10:00:00.000Z")
+        new Date("2024-03-21T10:00:00.000Z"),
       );
       const majorAspectDissolving = createMajorAspectEvent(
         "Sun",
         "Venus",
         "Conjunct",
         "Dissolving",
-        new Date("2024-03-21T14:00:00.000Z")
+        new Date("2024-03-21T14:00:00.000Z"),
       );
       const nonAspectEvent: Event = {
         start: new Date("2024-03-21T12:00:00.000Z"),
@@ -742,14 +742,14 @@ describe("majorAspects.events", () => {
         "Sun",
         "Conjunct",
         "Forming",
-        new Date("2024-03-21T10:00:00.000Z")
+        new Date("2024-03-21T10:00:00.000Z"),
       );
       const dissolving = createMajorAspectEvent(
         "Venus",
         "Sun",
         "Conjunct",
         "Dissolving",
-        new Date("2024-03-21T14:00:00.000Z")
+        new Date("2024-03-21T14:00:00.000Z"),
       );
 
       const events = [forming, dissolving];

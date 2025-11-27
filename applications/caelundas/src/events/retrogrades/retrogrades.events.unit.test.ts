@@ -23,7 +23,7 @@ describe("retrogrades.events", () => {
   // Helper to create ephemeris data with margin
   function createCoordinateEphemeris(
     currentMinute: moment.Moment,
-    longitudes: number[]
+    longitudes: number[],
   ): CoordinateEphemeris {
     const ephemeris: CoordinateEphemeris = {};
     const totalMinutes = MARGIN_MINUTES * 2 + 1;
@@ -61,7 +61,7 @@ describe("retrogrades.events", () => {
 
       const mercuryEphemeris = createCoordinateEphemeris(
         currentMinute,
-        longitudes
+        longitudes,
       );
 
       // Create empty ephemeris for other bodies
@@ -99,7 +99,7 @@ describe("retrogrades.events", () => {
       const mercuryRetrograde = events.find(
         (e) =>
           e.description.includes("Mercury") &&
-          e.description.includes("Retrograde")
+          e.description.includes("Retrograde"),
       );
       expect(mercuryRetrograde).toBeDefined();
     });
@@ -115,7 +115,7 @@ describe("retrogrades.events", () => {
 
       const directEphemeris = createCoordinateEphemeris(
         currentMinute,
-        directLongitudes
+        directLongitudes,
       );
 
       const coordinateEphemerisByBody: Record<
@@ -299,7 +299,7 @@ describe("retrogrades.events", () => {
       const mercuryDuration = durationEvents.find(
         (e) =>
           e.description.includes("Mercury") &&
-          e.description.includes("Retrograde")
+          e.description.includes("Retrograde"),
       );
       expect(mercuryDuration).toBeDefined();
       if (mercuryDuration) {

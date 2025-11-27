@@ -69,7 +69,7 @@ describe("calendar generation e2e", { timeout: 10000 }, () => {
       expect(content).toContain("END:VCALENDAR");
       expect(content).toContain("VERSION:2.0");
       expect(content).toContain(
-        "PRODID:-//Caelundas//Astronomical Calendar//EN"
+        "PRODID:-//Caelundas//Astronomical Calendar//EN",
       );
       expect(content).toContain("CALSCALE:GREGORIAN");
       expect(content).toContain("METHOD:PUBLISH");
@@ -225,27 +225,27 @@ describe("calendar generation e2e", { timeout: 10000 }, () => {
 
       // Test exact aspects
       expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 0 })).toBe(
-        "conjunct"
+        "conjunct",
       );
       expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 60 })).toBe(
-        "sextile"
+        "sextile",
       );
       expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 90 })).toBe(
-        "square"
+        "square",
       );
       expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 120 })).toBe(
-        "trine"
+        "trine",
       );
       expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 180 })).toBe(
-        "opposite"
+        "opposite",
       );
 
       // Test aspects with orb
       expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 5 })).toBe(
-        "conjunct"
+        "conjunct",
       ); // 5° orb
       expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 175 })).toBe(
-        "opposite"
+        "opposite",
       ); // 5° orb
     });
 
@@ -290,16 +290,16 @@ describe("calendar generation e2e", { timeout: 10000 }, () => {
 
       expect(pairs.length).toBe(2);
       expect(pairs[0]?.[0]?.start.toISOString()).toBe(
-        "2025-03-01T10:00:00.000Z"
+        "2025-03-01T10:00:00.000Z",
       );
       expect(pairs[0]?.[1]?.start.toISOString()).toBe(
-        "2025-03-03T10:00:00.000Z"
+        "2025-03-03T10:00:00.000Z",
       );
       expect(pairs[1]?.[0]?.start.toISOString()).toBe(
-        "2025-03-05T10:00:00.000Z"
+        "2025-03-05T10:00:00.000Z",
       );
       expect(pairs[1]?.[1]?.start.toISOString()).toBe(
-        "2025-03-07T10:00:00.000Z"
+        "2025-03-07T10:00:00.000Z",
       );
     });
   });

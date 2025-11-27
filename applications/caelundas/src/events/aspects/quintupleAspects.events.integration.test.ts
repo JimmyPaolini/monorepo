@@ -284,10 +284,10 @@ describe("quintupleAspects.events integration", () => {
 
       expect(durationEvents).toHaveLength(1);
       expect(durationEvents[0]?.start).toEqual(
-        new Date("2024-06-15T14:23:00.000Z")
+        new Date("2024-06-15T14:23:00.000Z"),
       );
       expect(durationEvents[0]?.end).toEqual(
-        new Date("2024-06-15T14:30:00.000Z")
+        new Date("2024-06-15T14:30:00.000Z"),
       );
       expect(durationEvents[0]?.categories).toContain("Quintuple Aspect");
       expect(durationEvents[0]?.categories).toContain("Pentagram");
@@ -295,7 +295,7 @@ describe("quintupleAspects.events integration", () => {
       expect(durationEvents[0]?.categories).not.toContain("Dissolving");
       expect(durationEvents[0]?.description).toContain("pentagram");
       expect(durationEvents[0]?.description).not.toMatch(
-        /(forming|dissolving)$/i
+        /(forming|dissolving)$/i,
       );
     });
   });

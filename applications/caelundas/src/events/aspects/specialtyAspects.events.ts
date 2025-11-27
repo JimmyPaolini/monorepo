@@ -49,32 +49,32 @@ export function getSpecialtyAspectEvents(args: {
       const currentLongitudeBody1 = getCoordinateFromEphemeris(
         ephemerisBody1,
         currentMinute.toISOString(),
-        "longitude"
+        "longitude",
       );
       const currentLongitudeBody2 = getCoordinateFromEphemeris(
         ephemerisBody2,
         currentMinute.toISOString(),
-        "longitude"
+        "longitude",
       );
       const previousLongitudeBody1 = getCoordinateFromEphemeris(
         ephemerisBody1,
         previousMinute.toISOString(),
-        "longitude"
+        "longitude",
       );
       const previousLongitudeBody2 = getCoordinateFromEphemeris(
         ephemerisBody2,
         previousMinute.toISOString(),
-        "longitude"
+        "longitude",
       );
       const nextLongitudeBody1 = getCoordinateFromEphemeris(
         ephemerisBody1,
         nextMinute.toISOString(),
-        "longitude"
+        "longitude",
       );
       const nextLongitudeBody2 = getCoordinateFromEphemeris(
         ephemerisBody2,
         nextMinute.toISOString(),
-        "longitude"
+        "longitude",
       );
 
       const phase = getSpecialtyAspectPhase({
@@ -95,7 +95,7 @@ export function getSpecialtyAspectEvents(args: {
             body1,
             body2,
             phase,
-          })
+          }),
         );
       }
     }
@@ -120,7 +120,7 @@ export function getSpecialtyAspectEvent(args: {
   });
   if (!specialtyAspect) {
     console.error(
-      `No specialty aspect found between ${body1} and ${body2} at ${timestamp.toISOString()}: ${longitudeBody1} and ${longitudeBody2}`
+      `No specialty aspect found between ${body1} and ${body2} at ${timestamp.toISOString()}: ${longitudeBody1} and ${longitudeBody2}`,
     );
     throw new Error("No specialty aspect found");
   }
@@ -196,9 +196,9 @@ export function writeSpecialtyAspectEvents(args: {
   });
   fs.writeFileSync(
     getOutputPath(
-      `specialty-aspects_${specialtyAspectBodiesString}_${timespan}.ics`
+      `specialty-aspects_${specialtyAspectBodiesString}_${timespan}.ics`,
     ),
-    new TextEncoder().encode(specialtyAspectsCalendar)
+    new TextEncoder().encode(specialtyAspectsCalendar),
   );
 
   console.log(`🧮 Wrote ${message}`);
@@ -209,7 +209,7 @@ export function getSpecialtyAspectDurationEvents(events: Event[]): Event[] {
 
   // Filter to specialty aspect events only
   const specialtyAspectEvents = events.filter((event) =>
-    event.categories.includes("Specialty Aspect")
+    event.categories.includes("Specialty Aspect"),
   );
 
   // Group by body pair and aspect type using categories
@@ -218,14 +218,14 @@ export function getSpecialtyAspectDurationEvents(events: Event[]): Event[] {
       .filter((category) =>
         specialtyAspectBodies
           .map((specialtyAspectBody) => _.startCase(specialtyAspectBody))
-          .includes(category)
+          .includes(category),
       )
       .sort();
 
     const aspect = event.categories.find((category) =>
       specialtyAspects
         .map((specialtyAspect) => _.startCase(specialtyAspect))
-        .includes(category)
+        .includes(category),
     );
 
     if (planets.length === 2 && aspect) {
@@ -241,22 +241,22 @@ export function getSpecialtyAspectDurationEvents(events: Event[]): Event[] {
     }
 
     const formingEvents = groupEvents.filter((event) =>
-      event.categories.includes("Forming")
+      event.categories.includes("Forming"),
     );
     const dissolvingEvents = groupEvents.filter((event) =>
-      event.categories.includes("Dissolving")
+      event.categories.includes("Dissolving"),
     );
 
     const pairs = pairDurationEvents(
       formingEvents,
       dissolvingEvents,
-      `specialty aspect ${key}`
+      `specialty aspect ${key}`,
     );
 
     durationEvents.push(
       ...pairs.map(([beginning, ending]) =>
-        getSpecialtyAspectDurationEvent(beginning, ending)
-      )
+        getSpecialtyAspectDurationEvent(beginning, ending),
+      ),
     );
   }
 
@@ -265,27 +265,27 @@ export function getSpecialtyAspectDurationEvents(events: Event[]): Event[] {
 
 function getSpecialtyAspectDurationEvent(
   beginning: Event,
-  ending: Event
+  ending: Event,
 ): Event {
   const bodiesCapitalized = beginning.categories
     .filter((category) =>
       specialtyAspectBodies
         .map((specialtyAspectBody) => _.startCase(specialtyAspectBody))
-        .includes(category)
+        .includes(category),
     )
     .sort();
 
   const aspectCapitalized = beginning.categories.find((category) =>
     specialtyAspects
       .map((specialtyAspect) => _.startCase(specialtyAspect))
-      .includes(category)
+      .includes(category),
   );
 
   if (bodiesCapitalized.length !== 2 || !aspectCapitalized) {
     throw new Error(
       `Could not extract aspect info from categories: ${beginning.categories.join(
-        ", "
-      )}`
+        ", ",
+      )}`,
     );
   }
 

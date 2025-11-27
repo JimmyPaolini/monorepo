@@ -63,7 +63,7 @@ describe("phases.utilities", () => {
             previousIlluminations: [0.5], // 1 element
             nextDistances: [1.0],
             nextIlluminations: [0.5],
-          })
+          }),
         ).toThrow("same length");
       });
 
@@ -76,7 +76,7 @@ describe("phases.utilities", () => {
             previousIlluminations: [0.5],
             nextDistances: [1.0, 1.1], // 2 elements
             nextIlluminations: [0.5], // 1 element
-          })
+          }),
         ).toThrow("same length");
       });
     });

@@ -46,7 +46,7 @@ describe("phases.events", () => {
       });
 
       expect(event.summary).toBe(
-        `♀️${symbolByVenusianPhase["morning rise"]} Venus Morning Rise`
+        `♀️${symbolByVenusianPhase["morning rise"]} Venus Morning Rise`,
       );
       expect(event.description).toBe("Venus Morning Rise");
       expect(event.start).toEqual(timestamp);
@@ -67,7 +67,7 @@ describe("phases.events", () => {
       });
 
       expect(event.summary).toBe(
-        `♀️${symbolByVenusianPhase["western brightest"]} Venus Western Brightest`
+        `♀️${symbolByVenusianPhase["western brightest"]} Venus Western Brightest`,
       );
       expect(event.description).toBe("Venus Western Brightest");
       expect(event.categories).toContain("Western Brightest");
@@ -82,7 +82,7 @@ describe("phases.events", () => {
       });
 
       expect(event.summary).toBe(
-        `♀️${symbolByVenusianPhase["western elongation"]} Venus Western Elongation`
+        `♀️${symbolByVenusianPhase["western elongation"]} Venus Western Elongation`,
       );
       expect(event.description).toBe("Venus Western Elongation");
       expect(event.categories).toContain("Western Elongation");
@@ -97,7 +97,7 @@ describe("phases.events", () => {
       });
 
       expect(event.summary).toBe(
-        `♀️${symbolByVenusianPhase["morning set"]} Venus Morning Set`
+        `♀️${symbolByVenusianPhase["morning set"]} Venus Morning Set`,
       );
       expect(event.description).toBe("Venus Morning Set");
       expect(event.categories).toContain("Morning Set");
@@ -112,7 +112,7 @@ describe("phases.events", () => {
       });
 
       expect(event.summary).toBe(
-        `♀️${symbolByVenusianPhase["evening rise"]} Venus Evening Rise`
+        `♀️${symbolByVenusianPhase["evening rise"]} Venus Evening Rise`,
       );
       expect(event.description).toBe("Venus Evening Rise");
       expect(event.categories).toContain("Evening Rise");
@@ -127,7 +127,7 @@ describe("phases.events", () => {
       });
 
       expect(event.summary).toBe(
-        `♀️${symbolByVenusianPhase["eastern elongation"]} Venus Eastern Elongation`
+        `♀️${symbolByVenusianPhase["eastern elongation"]} Venus Eastern Elongation`,
       );
       expect(event.description).toBe("Venus Eastern Elongation");
       expect(event.categories).toContain("Eastern Elongation");
@@ -142,7 +142,7 @@ describe("phases.events", () => {
       });
 
       expect(event.summary).toBe(
-        `♀️${symbolByVenusianPhase["eastern brightest"]} Venus Eastern Brightest`
+        `♀️${symbolByVenusianPhase["eastern brightest"]} Venus Eastern Brightest`,
       );
       expect(event.description).toBe("Venus Eastern Brightest");
       expect(event.categories).toContain("Eastern Brightest");
@@ -157,7 +157,7 @@ describe("phases.events", () => {
       });
 
       expect(event.summary).toBe(
-        `♀️${symbolByVenusianPhase["evening set"]} Venus Evening Set`
+        `♀️${symbolByVenusianPhase["evening set"]} Venus Evening Set`,
       );
       expect(event.description).toBe("Venus Evening Set");
       expect(event.categories).toContain("Evening Set");
@@ -174,7 +174,7 @@ describe("phases.events", () => {
       });
 
       expect(event.summary).toBe(
-        `☿${symbolByMercurianPhase["morning rise"]} Mercury Morning Rise`
+        `☿${symbolByMercurianPhase["morning rise"]} Mercury Morning Rise`,
       );
       expect(event.description).toBe("Mercury Morning Rise");
       expect(event.start).toEqual(timestamp);
@@ -195,7 +195,7 @@ describe("phases.events", () => {
       });
 
       expect(event.summary).toBe(
-        `☿${symbolByMercurianPhase["western brightest"]} Mercury Western Brightest`
+        `☿${symbolByMercurianPhase["western brightest"]} Mercury Western Brightest`,
       );
       expect(event.description).toBe("Mercury Western Brightest");
       expect(event.categories).toContain("Western Brightest");
@@ -210,7 +210,7 @@ describe("phases.events", () => {
       });
 
       expect(event.summary).toBe(
-        `☿${symbolByMercurianPhase["western elongation"]} Mercury Western Elongation`
+        `☿${symbolByMercurianPhase["western elongation"]} Mercury Western Elongation`,
       );
       expect(event.description).toBe("Mercury Western Elongation");
       expect(event.categories).toContain("Western Elongation");
@@ -225,7 +225,7 @@ describe("phases.events", () => {
       });
 
       expect(event.summary).toBe(
-        `☿${symbolByMercurianPhase["morning set"]} Mercury Morning Set`
+        `☿${symbolByMercurianPhase["morning set"]} Mercury Morning Set`,
       );
       expect(event.description).toBe("Mercury Morning Set");
       expect(event.categories).toContain("Morning Set");
@@ -240,7 +240,7 @@ describe("phases.events", () => {
       });
 
       expect(event.summary).toBe(
-        `☿${symbolByMercurianPhase["evening rise"]} Mercury Evening Rise`
+        `☿${symbolByMercurianPhase["evening rise"]} Mercury Evening Rise`,
       );
       expect(event.description).toBe("Mercury Evening Rise");
       expect(event.categories).toContain("Evening Rise");
@@ -255,7 +255,7 @@ describe("phases.events", () => {
       });
 
       expect(event.summary).toBe(
-        `☿${symbolByMercurianPhase["eastern elongation"]} Mercury Eastern Elongation`
+        `☿${symbolByMercurianPhase["eastern elongation"]} Mercury Eastern Elongation`,
       );
       expect(event.description).toBe("Mercury Eastern Elongation");
       expect(event.categories).toContain("Eastern Elongation");
@@ -270,7 +270,7 @@ describe("phases.events", () => {
       });
 
       expect(event.summary).toBe(
-        `☿${symbolByMercurianPhase["eastern brightest"]} Mercury Eastern Brightest`
+        `☿${symbolByMercurianPhase["eastern brightest"]} Mercury Eastern Brightest`,
       );
       expect(event.description).toBe("Mercury Eastern Brightest");
       expect(event.categories).toContain("Eastern Brightest");
@@ -285,7 +285,7 @@ describe("phases.events", () => {
       });
 
       expect(event.summary).toBe(
-        `☿${symbolByMercurianPhase["evening set"]} Mercury Evening Set`
+        `☿${symbolByMercurianPhase["evening set"]} Mercury Evening Set`,
       );
       expect(event.description).toBe("Mercury Evening Set");
       expect(event.categories).toContain("Evening Set");
@@ -302,7 +302,7 @@ describe("phases.events", () => {
       });
 
       expect(event.summary).toBe(
-        `♂️${symbolByMartianPhase["morning rise"]} Mars Morning Rise`
+        `♂️${symbolByMartianPhase["morning rise"]} Mars Morning Rise`,
       );
       expect(event.description).toBe("Mars Morning Rise");
       expect(event.start).toEqual(timestamp);
@@ -323,7 +323,7 @@ describe("phases.events", () => {
       });
 
       expect(event.summary).toBe(
-        `♂️${symbolByMartianPhase["morning set"]} Mars Morning Set`
+        `♂️${symbolByMartianPhase["morning set"]} Mars Morning Set`,
       );
       expect(event.description).toBe("Mars Morning Set");
       expect(event.categories).toContain("Morning Set");
@@ -338,7 +338,7 @@ describe("phases.events", () => {
       });
 
       expect(event.summary).toBe(
-        `♂️${symbolByMartianPhase["evening rise"]} Mars Evening Rise`
+        `♂️${symbolByMartianPhase["evening rise"]} Mars Evening Rise`,
       );
       expect(event.description).toBe("Mars Evening Rise");
       expect(event.categories).toContain("Evening Rise");
@@ -353,7 +353,7 @@ describe("phases.events", () => {
       });
 
       expect(event.summary).toBe(
-        `♂️${symbolByMartianPhase["evening set"]} Mars Evening Set`
+        `♂️${symbolByMartianPhase["evening set"]} Mars Evening Set`,
       );
       expect(event.description).toBe("Mars Evening Set");
       expect(event.categories).toContain("Evening Set");
@@ -397,7 +397,7 @@ describe("phases.events", () => {
       expect(durationEvents.length).toBeGreaterThanOrEqual(1);
       const venusMorning = durationEvents.find(
         (e) =>
-          e.description.includes("Venus") && e.description.includes("Morning")
+          e.description.includes("Venus") && e.description.includes("Morning"),
       );
       expect(venusMorning).toBeDefined();
       if (venusMorning) {
@@ -443,7 +443,7 @@ describe("phases.events", () => {
       expect(durationEvents.length).toBeGreaterThanOrEqual(1);
       const venusEvening = durationEvents.find(
         (e) =>
-          e.description.includes("Venus") && e.description.includes("Evening")
+          e.description.includes("Venus") && e.description.includes("Evening"),
       );
       expect(venusEvening).toBeDefined();
       if (venusEvening) {
@@ -489,7 +489,8 @@ describe("phases.events", () => {
       expect(durationEvents.length).toBeGreaterThanOrEqual(1);
       const mercuryMorning = durationEvents.find(
         (e) =>
-          e.description.includes("Mercury") && e.description.includes("Morning")
+          e.description.includes("Mercury") &&
+          e.description.includes("Morning"),
       );
       expect(mercuryMorning).toBeDefined();
       if (mercuryMorning) {
@@ -535,7 +536,7 @@ describe("phases.events", () => {
       expect(durationEvents.length).toBeGreaterThanOrEqual(1);
       const marsMorning = durationEvents.find(
         (e) =>
-          e.description.includes("Mars") && e.description.includes("Morning")
+          e.description.includes("Mars") && e.description.includes("Morning"),
       );
       expect(marsMorning).toBeDefined();
       if (marsMorning) {
@@ -635,10 +636,10 @@ describe("phases.events", () => {
       expect(durationEvents.length).toBeGreaterThanOrEqual(2);
 
       const venusDuration = durationEvents.find((e) =>
-        e.description.includes("Venus")
+        e.description.includes("Venus"),
       );
       const mercuryDuration = durationEvents.find((e) =>
-        e.description.includes("Mercury")
+        e.description.includes("Mercury"),
       );
 
       expect(venusDuration).toBeDefined();
@@ -681,7 +682,8 @@ describe("phases.events", () => {
       expect(durationEvents.length).toBeGreaterThanOrEqual(1);
       const mercuryEvening = durationEvents.find(
         (e) =>
-          e.description.includes("Mercury") && e.description.includes("Evening")
+          e.description.includes("Mercury") &&
+          e.description.includes("Evening"),
       );
       expect(mercuryEvening).toBeDefined();
       if (mercuryEvening) {
@@ -727,7 +729,7 @@ describe("phases.events", () => {
       expect(durationEvents.length).toBeGreaterThanOrEqual(1);
       const marsEvening = durationEvents.find(
         (e) =>
-          e.description.includes("Mars") && e.description.includes("Evening")
+          e.description.includes("Mars") && e.description.includes("Evening"),
       );
       expect(marsEvening).toBeDefined();
       if (marsEvening) {

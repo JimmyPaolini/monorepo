@@ -32,6 +32,7 @@ const configuration: UserConfig = {
         "monorepo", // Workspace root
         "caelundas", // Caelundas application
         "JimmyPaolini", // JimmyPaolini application
+        "documentation", // Documentation
         "dependencies", // Dependency updates
         "infrastructure", // Infrastructure changes
         "ci", // CI/CD workflows
@@ -40,7 +41,7 @@ const configuration: UserConfig = {
 
     // Length limits
     "header-max-length": [2, "always", 100],
-    "body-max-length": [2, "always", 500],
+    "body-max-length": [1, "always", 1000],
 
     // Case enforcement
     "type-case": [2, "always", "lower-case"],

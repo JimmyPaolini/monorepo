@@ -58,7 +58,7 @@ function getExpectedRecordCount(start: Date, end: Date): number {
 export function getCoordinateFromEphemeris(
   ephemeris: CoordinateEphemeris,
   timestamp: string,
-  fieldName: "longitude" | "latitude"
+  fieldName: "longitude" | "latitude",
 ): number {
   const data = ephemeris[timestamp];
   if (data?.[fieldName] === undefined) {
@@ -74,7 +74,7 @@ export function getCoordinateFromEphemeris(
 export function getAzimuthElevationFromEphemeris(
   ephemeris: AzimuthElevationEphemeris,
   timestamp: string,
-  fieldName: "azimuth" | "elevation"
+  fieldName: "azimuth" | "elevation",
 ): number {
   const data = ephemeris[timestamp];
   if (data?.[fieldName] === undefined) {
@@ -90,7 +90,7 @@ export function getAzimuthElevationFromEphemeris(
 export function getIlluminationFromEphemeris(
   ephemeris: IlluminationEphemeris,
   timestamp: string,
-  fieldName: string
+  fieldName: string,
 ): number {
   const data = ephemeris[timestamp];
   if (data?.illumination === undefined) {
@@ -106,7 +106,7 @@ export function getIlluminationFromEphemeris(
 export function getDistanceFromEphemeris(
   ephemeris: DistanceEphemeris,
   timestamp: string,
-  fieldName: string
+  fieldName: string,
 ): number {
   const data = ephemeris[timestamp];
   if (data?.distance === undefined) {
@@ -122,7 +122,7 @@ export function getDistanceFromEphemeris(
 export function getDiameterFromEphemeris(
   ephemeris: DiameterEphemeris,
   timestamp: string,
-  fieldName: string
+  fieldName: string,
 ): number {
   const data = ephemeris[timestamp];
   if (data?.diameter === undefined) {
@@ -165,7 +165,7 @@ function parseOrbitEphemeris(text: string): OrbitEphemeris {
   const datePattern = /\d{4}-[A-Za-z]{3}-\d{2} \d{2}:\d{2}:\d{2}(\.\d{4})?/g;
   const pattern = new RegExp(
     `(${datePattern.source})` + "[\\s\\S]*?" + `(?=${datePattern.source}|$)`,
-    "g"
+    "g",
   );
 
   const getPattern = (key: string): RegExp => {
@@ -280,14 +280,14 @@ export async function getNodeCoordinatesEphemeris(args: {
 
   const expectedCount = getExpectedRecordCount(start, end);
   const hasAllValues = existingRecords.every(
-    (record) => record.latitude && record.longitude
+    (record) => record.latitude && record.longitude,
   );
   if (existingRecords.length === expectedCount && hasAllValues) {
     console.log(`🛢️ Found complete database data for ${message}`);
     return convertRecordsToCoordinateEphemeris(existingRecords);
   } else if (existingRecords.length > 0) {
     console.log(
-      `🛢️ Found incomplete database data (${existingRecords.length}/${expectedCount} records) for ${message}, fetching from API`
+      `🛢️ Found incomplete database data (${existingRecords.length}/${expectedCount} records) for ${message}, fetching from API`,
     );
   }
 
@@ -317,28 +317,28 @@ export async function getNodeCoordinatesEphemeris(args: {
         case "lunar perigee":
           return {
             longitude: normalizeDegrees(
-              longitudeOfAscendingNode + argumentOfPerifocus
+              longitudeOfAscendingNode + argumentOfPerifocus,
             ),
             latitude: 0,
           };
         case "lunar apogee":
           return {
             longitude: normalizeDegrees(
-              longitudeOfAscendingNode + argumentOfPerifocus + 180
+              longitudeOfAscendingNode + argumentOfPerifocus + 180,
             ),
             latitude: 0,
           };
         default:
           throw new Error(`Unknown node: ${node}`);
       }
-    }
+    },
   );
 
   console.log(`🌐 Fetched ${message}`);
 
   console.log(`🛢️ Upserting ${message}`);
   await upsertEphemerisValues(
-    convertCoordinateEphemerisToRecords(node, nodeEphemeris)
+    convertCoordinateEphemerisToRecords(node, nodeEphemeris),
   );
   console.log(`🛢️ Upserted ${message}`);
 
@@ -376,7 +376,7 @@ function parseCoordinatesEphemeris(text: string): CoordinateEphemeris {
 
 function convertCoordinateEphemerisToRecords(
   body: Body,
-  coordinateEphemeris: CoordinateEphemeris
+  coordinateEphemeris: CoordinateEphemeris,
 ): EphemerisRecord[] {
   return _.map(
     _.toPairs(coordinateEphemeris),
@@ -385,17 +385,17 @@ function convertCoordinateEphemerisToRecords(
       timestamp: new Date(timestampIso),
       latitude,
       longitude,
-    })
+    }),
   );
 }
 
 function convertRecordsToCoordinateEphemeris(
-  records: EphemerisRecord[]
+  records: EphemerisRecord[],
 ): CoordinateEphemeris {
   return records.reduce<CoordinateEphemeris>((acc, record) => {
     if (record.latitude === undefined || record.longitude === undefined) {
       throw new Error(
-        `Record at ${record.timestamp.toISOString()} is missing latitude or longitude value`
+        `Record at ${record.timestamp.toISOString()} is missing latitude or longitude value`,
       );
     }
     return {
@@ -449,14 +449,14 @@ export async function getCoordinatesEphemeris(args: {
 
   const expectedCount = getExpectedRecordCount(start, end);
   const hasAllValues = existingRecords.every(
-    (record) => record.latitude !== undefined && record.longitude !== undefined
+    (record) => record.latitude !== undefined && record.longitude !== undefined,
   );
   if (existingRecords.length === expectedCount && hasAllValues) {
     console.log(`🛢️ Found complete database data for ${message}`);
     return convertRecordsToCoordinateEphemeris(existingRecords);
   } else {
     console.log(
-      `🛢️ Found incomplete database data (${existingRecords.length}/${expectedCount} records) for ${message}, fetching from API`
+      `🛢️ Found incomplete database data (${existingRecords.length}/${expectedCount} records) for ${message}, fetching from API`,
     );
   }
 
@@ -470,7 +470,7 @@ export async function getCoordinatesEphemeris(args: {
 
   console.log(`🛢️ Upserting ${message}`);
   await upsertEphemerisValues(
-    convertCoordinateEphemerisToRecords(body, ephemeris)
+    convertCoordinateEphemerisToRecords(body, ephemeris),
   );
   console.log(`🛢️ Upserted ${message}`);
 
@@ -525,7 +525,7 @@ export async function getCoordinateEphemerisByBody(args: {
 // #region ⏫ Azimuth Elevation
 
 function parseAzimuthElevationEphemeris(
-  text: string
+  text: string,
 ): AzimuthElevationEphemeris {
   const ephemerisTable = text.split("$$SOE")[1]?.split("$$EOE")[0]?.trim();
   if (!ephemerisTable) {
@@ -558,7 +558,7 @@ function parseAzimuthElevationEphemeris(
 
 function convertAzimuthElevationEphemerisToRecords(
   body: Body,
-  azimuthElevationEphemeris: AzimuthElevationEphemeris
+  azimuthElevationEphemeris: AzimuthElevationEphemeris,
 ): EphemerisRecord[] {
   return _.map(
     _.toPairs(azimuthElevationEphemeris),
@@ -567,17 +567,17 @@ function convertAzimuthElevationEphemerisToRecords(
       timestamp: new Date(timestampIso),
       azimuth,
       elevation,
-    })
+    }),
   );
 }
 
 function convertRecordsToAzimuthElevationEphemeris(
-  records: EphemerisRecord[]
+  records: EphemerisRecord[],
 ): AzimuthElevationEphemeris {
   return records.reduce<AzimuthElevationEphemeris>((acc, record) => {
     if (record.azimuth === undefined || record.elevation === undefined) {
       throw new Error(
-        `Record at ${record.timestamp.toISOString()} is missing azimuth or elevation value`
+        `Record at ${record.timestamp.toISOString()} is missing azimuth or elevation value`,
       );
     }
     return {
@@ -633,14 +633,14 @@ export async function getAzimuthElevationEphemeris(args: {
 
   const expectedCount = getExpectedRecordCount(start, end);
   const hasAllValues = existingRecords.every(
-    (record) => record.azimuth !== undefined && record.elevation !== undefined
+    (record) => record.azimuth !== undefined && record.elevation !== undefined,
   );
   if (existingRecords.length === expectedCount && hasAllValues) {
     console.log(`🛢️ Found complete database data for ${message}`);
     return convertRecordsToAzimuthElevationEphemeris(existingRecords);
   } else {
     console.log(
-      `🛢️ Found incomplete database data (${existingRecords.length}/${expectedCount} records) for ${message}, fetching from API`
+      `🛢️ Found incomplete database data (${existingRecords.length}/${expectedCount} records) for ${message}, fetching from API`,
     );
   }
 
@@ -659,7 +659,7 @@ export async function getAzimuthElevationEphemeris(args: {
 
   console.log(`🛢️ Upserting ${message}`);
   await upsertEphemerisValues(
-    convertAzimuthElevationEphemerisToRecords(body, ephemeris)
+    convertAzimuthElevationEphemerisToRecords(body, ephemeris),
   );
   console.log(`🛢️ Upserted ${message}`);
 
@@ -735,7 +735,7 @@ function parseIlluminationEphemeris(text: string): IlluminationEphemeris {
 
 function convertIlluminationEphemerisToRecords(
   body: Body,
-  illuminationEphemeris: IlluminationEphemeris
+  illuminationEphemeris: IlluminationEphemeris,
 ): EphemerisRecord[] {
   return _.map(
     _.toPairs(illuminationEphemeris),
@@ -743,17 +743,17 @@ function convertIlluminationEphemerisToRecords(
       body,
       timestamp: new Date(timestampIso),
       illumination,
-    })
+    }),
   );
 }
 
 function convertRecordsToIlluminationEphemeris(
-  records: EphemerisRecord[]
+  records: EphemerisRecord[],
 ): IlluminationEphemeris {
   return records.reduce<IlluminationEphemeris>((acc, record) => {
     if (record.illumination === undefined) {
       throw new Error(
-        `Record at ${record.timestamp.toISOString()} is missing illumination value`
+        `Record at ${record.timestamp.toISOString()} is missing illumination value`,
       );
     }
     return {
@@ -808,14 +808,14 @@ export async function getIlluminationEphemeris(args: {
 
   const expectedCount = getExpectedRecordCount(start, end);
   const hasAllValues = existingRecords.every(
-    (record) => record.illumination !== undefined
+    (record) => record.illumination !== undefined,
   );
   if (existingRecords.length === expectedCount && hasAllValues) {
     console.log(`🛢️ Found complete database data for ${message}`);
     return convertRecordsToIlluminationEphemeris(existingRecords);
   } else {
     console.log(
-      `🛢️ Found incomplete database data (${existingRecords.length}/${expectedCount} records) for ${message}, fetching from API`
+      `🛢️ Found incomplete database data (${existingRecords.length}/${expectedCount} records) for ${message}, fetching from API`,
     );
   }
 
@@ -834,7 +834,7 @@ export async function getIlluminationEphemeris(args: {
 
   console.log(`🛢️ Upserting ${message}`);
   await upsertEphemerisValues(
-    convertIlluminationEphemerisToRecords(body, ephemeris)
+    convertIlluminationEphemerisToRecords(body, ephemeris),
   );
   console.log(`🛢️ Upserted ${message}`);
 
@@ -907,7 +907,7 @@ function parseDiameterEphemeris(text: string): DiameterEphemeris {
 
 function convertDiameterEphemerisToRecords(
   body: Body,
-  diameterEphemeris: DiameterEphemeris
+  diameterEphemeris: DiameterEphemeris,
 ): EphemerisRecord[] {
   return _.map(
     _.toPairs(diameterEphemeris),
@@ -915,17 +915,17 @@ function convertDiameterEphemerisToRecords(
       body,
       timestamp: new Date(timestampIso),
       diameter,
-    })
+    }),
   );
 }
 
 function convertRecordsToDiameterEphemeris(
-  records: EphemerisRecord[]
+  records: EphemerisRecord[],
 ): DiameterEphemeris {
   return records.reduce<DiameterEphemeris>((acc, record) => {
     if (record.diameter === undefined) {
       throw new Error(
-        `Record at ${record.timestamp.toISOString()} is missing diameter value`
+        `Record at ${record.timestamp.toISOString()} is missing diameter value`,
       );
     }
     return {
@@ -978,14 +978,14 @@ export async function getDiameterEphemeris(args: {
 
   const expectedCount = getExpectedRecordCount(start, end);
   const hasAllValues = existingRecords.every(
-    (record) => record.diameter !== undefined
+    (record) => record.diameter !== undefined,
   );
   if (existingRecords.length === expectedCount && hasAllValues) {
     console.log(`🛢️ Found complete database data for ${message}`);
     return convertRecordsToDiameterEphemeris(existingRecords);
   } else {
     console.log(
-      `🛢️ Found incomplete database data (${existingRecords.length}/${expectedCount} records) for ${message}, fetching from API`
+      `🛢️ Found incomplete database data (${existingRecords.length}/${expectedCount} records) for ${message}, fetching from API`,
     );
   }
 
@@ -999,7 +999,7 @@ export async function getDiameterEphemeris(args: {
 
   console.log(`🛢️ Upserting ${message}`);
   await upsertEphemerisValues(
-    convertDiameterEphemerisToRecords(body, ephemeris)
+    convertDiameterEphemerisToRecords(body, ephemeris),
   );
   console.log(`🛢️ Upserted ${message}`);
 
@@ -1070,7 +1070,7 @@ function parseDistanceEphemeris(text: string): DistanceEphemeris {
 
 function convertDistanceEphemerisToRecords(
   body: Body,
-  distanceEphemeris: DistanceEphemeris
+  distanceEphemeris: DistanceEphemeris,
 ): EphemerisRecord[] {
   return _.map(
     _.toPairs(distanceEphemeris),
@@ -1078,17 +1078,17 @@ function convertDistanceEphemerisToRecords(
       body,
       timestamp: new Date(timestampIso),
       distance,
-    })
+    }),
   );
 }
 
 function convertRecordsToDistanceEphemeris(
-  records: EphemerisRecord[]
+  records: EphemerisRecord[],
 ): DistanceEphemeris {
   return records.reduce<DistanceEphemeris>((acc, record) => {
     if (record.distance === undefined) {
       throw new Error(
-        `Record at ${record.timestamp.toISOString()} is missing distance value`
+        `Record at ${record.timestamp.toISOString()} is missing distance value`,
       );
     }
     return {
@@ -1142,14 +1142,14 @@ export async function getDistanceEphemeris(args: {
 
   const expectedCount = getExpectedRecordCount(start, end);
   const hasAllValues = existingRecords.every(
-    (record) => record.distance !== undefined
+    (record) => record.distance !== undefined,
   );
   if (existingRecords.length === expectedCount && hasAllValues) {
     console.log(`🛢️ Found complete database data for ${message}`);
     return convertRecordsToDistanceEphemeris(existingRecords);
   } else {
     console.log(
-      `🛢️ Found incomplete database data (${existingRecords.length}/${expectedCount} records) for ${message}, fetching from API`
+      `🛢️ Found incomplete database data (${existingRecords.length}/${expectedCount} records) for ${message}, fetching from API`,
     );
   }
 
@@ -1163,7 +1163,7 @@ export async function getDistanceEphemeris(args: {
 
   console.log(`🛢️ Upserting ${message}`);
   await upsertEphemerisValues(
-    convertDistanceEphemerisToRecords(body, ephemeris)
+    convertDistanceEphemerisToRecords(body, ephemeris),
   );
   console.log(`🛢️ Upserted ${message}`);
 

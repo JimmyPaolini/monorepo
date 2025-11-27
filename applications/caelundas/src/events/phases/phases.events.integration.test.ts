@@ -26,7 +26,7 @@ describe("phases.events integration", () => {
       longitude: number;
       distance: number;
       illumination: number;
-    }
+    },
   ): Record<
     string,
     {
@@ -124,7 +124,7 @@ describe("phases.events integration", () => {
       events.forEach((event) => {
         expect(event.start).toEqual(currentMinute.toDate());
         expect(event.description).toMatch(
-          /Venus (Morning|Evening|Western|Eastern)/
+          /Venus (Morning|Evening|Western|Eastern)/,
         );
       });
     });
@@ -167,7 +167,7 @@ describe("phases.events integration", () => {
 
       events.forEach((event) => {
         const hasValidPhase = validPhases.some((phase) =>
-          event.description.includes(phase)
+          event.description.includes(phase),
         );
         expect(hasValidPhase).toBe(true);
       });
@@ -235,7 +235,7 @@ describe("phases.events integration", () => {
       events.forEach((event) => {
         expect(event.start).toEqual(currentMinute.toDate());
         expect(event.description).toMatch(
-          /Mercury (Morning|Evening|Western|Eastern)/
+          /Mercury (Morning|Evening|Western|Eastern)/,
         );
       });
     });
@@ -276,7 +276,7 @@ describe("phases.events integration", () => {
 
       events.forEach((event) => {
         const hasValidPhase = validPhases.some((phase) =>
-          event.description.includes(phase)
+          event.description.includes(phase),
         );
         expect(hasValidPhase).toBe(true);
       });
@@ -380,7 +380,7 @@ describe("phases.events integration", () => {
 
       events.forEach((event) => {
         const hasValidPhase = validPhases.some((phase) =>
-          event.description.includes(phase)
+          event.description.includes(phase),
         );
         expect(hasValidPhase).toBe(true);
       });
@@ -493,7 +493,7 @@ describe("phases.events integration", () => {
             return "mars";
           }
           return "unknown";
-        })
+        }),
       );
 
       // All events should be from valid planets

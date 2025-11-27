@@ -54,12 +54,12 @@ export function getAnnualSolarCycleEvents(args: {
   const currentLongitude = getCoordinateFromEphemeris(
     ephemeris,
     currentMinute.toISOString(),
-    "longitude"
+    "longitude",
   );
   const previousLongitude = getCoordinateFromEphemeris(
     ephemeris,
     previousMinute.toISOString(),
-    "longitude"
+    "longitude",
   );
 
   const longitudes = { currentLongitude, previousLongitude };
@@ -133,17 +133,17 @@ export function getSolarApsisEvents(args: {
   const currentDistance = getDistanceFromEphemeris(
     sunDistanceEphemeris,
     currentMinute.toISOString(),
-    "distance"
+    "distance",
   );
   const previousDistance = getDistanceFromEphemeris(
     sunDistanceEphemeris,
     previousMinute.toISOString(),
-    "distance"
+    "distance",
   );
   const nextDistance = getDistanceFromEphemeris(
     sunDistanceEphemeris,
     nextMinute.toISOString(),
-    "distance"
+    "distance",
   );
 
   const distances = {
@@ -487,7 +487,7 @@ export function writeAnnualSolarCycleEvents(args: {
   });
   fs.writeFileSync(
     getOutputPath(`annual-solar-cycle_${timespan}.ics`),
-    new TextEncoder().encode(ingressCalendar)
+    new TextEncoder().encode(ingressCalendar),
   );
 
   console.log(`📏 Wrote ${message}`);
@@ -500,24 +500,24 @@ export function getSolarApsisDurationEvents(events: Event[]): Event[] {
 
   // Filter to solar apsis events only
   const solarApsisEvents = events.filter((event) =>
-    event.categories.includes("Annual Solar Cycle")
+    event.categories.includes("Annual Solar Cycle"),
   );
 
   // Perihelion (closest to sun, moving fastest)
   const perihelionEvents = solarApsisEvents.filter((event) =>
-    event.categories.includes("Perihelion")
+    event.categories.includes("Perihelion"),
   );
 
   // Aphelion (farthest from sun, moving slowest)
   const aphelionEvents = solarApsisEvents.filter((event) =>
-    event.categories.includes("Aphelion")
+    event.categories.includes("Aphelion"),
   );
 
   // Advancing: Aphelion → Perihelion (Earth moving closer to sun, speeding up)
   const advancingPairs = pairDurationEvents(
     aphelionEvents,
     perihelionEvents,
-    "Solar Advancing"
+    "Solar Advancing",
   );
   for (const [beginning, ending] of advancingPairs) {
     durationEvents.push(getSolarAdvancingDurationEvent(beginning, ending));
@@ -527,7 +527,7 @@ export function getSolarApsisDurationEvents(events: Event[]): Event[] {
   const retreatingPairs = pairDurationEvents(
     perihelionEvents,
     aphelionEvents,
-    "Solar Retreating"
+    "Solar Retreating",
   );
   for (const [beginning, ending] of retreatingPairs) {
     durationEvents.push(getSolarRetreatingDurationEvent(beginning, ending));
@@ -538,7 +538,7 @@ export function getSolarApsisDurationEvents(events: Event[]): Event[] {
 
 function getSolarAdvancingDurationEvent(
   beginning: Event,
-  ending: Event
+  ending: Event,
 ): Event {
   return {
     start: beginning.start,
@@ -551,7 +551,7 @@ function getSolarAdvancingDurationEvent(
 
 function getSolarRetreatingDurationEvent(
   beginning: Event,
-  ending: Event
+  ending: Event,
 ): Event {
   return {
     start: beginning.start,

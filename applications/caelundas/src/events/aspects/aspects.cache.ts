@@ -161,7 +161,7 @@ export function couldBeYod(longitudes: [number, number, number]): boolean {
  * Pre-filter for Grand Trine: requires three trines (120°)
  */
 export function couldBeGrandTrine(
-  longitudes: [number, number, number]
+  longitudes: [number, number, number],
 ): boolean {
   return canFormAspect({
     longitudes,
@@ -174,7 +174,7 @@ export function couldBeGrandTrine(
  * Pre-filter for Kite: requires specific angle pattern
  */
 export function couldBeKite(
-  longitudes: [number, number, number, number]
+  longitudes: [number, number, number, number],
 ): boolean {
   // Kite: Grand Trine plus one opposition
   // Quick check: need at least one pair ~180° apart
@@ -199,7 +199,7 @@ export function couldBeKite(
  * Pre-filter for Grand Cross: requires four squares forming a cross
  */
 export function couldBeGrandCross(
-  longitudes: [number, number, number, number]
+  longitudes: [number, number, number, number],
 ): boolean {
   // Grand Cross: two oppositions at 90° to each other
   // Quick check: need at least two pairs ~180° apart
@@ -226,7 +226,7 @@ export function couldBeGrandCross(
  * Pre-filter for Pentagram: requires all pairs in quintile (72°) or biquintile (144°)
  */
 export function couldBePentagram(
-  longitudes: [number, number, number, number, number]
+  longitudes: [number, number, number, number, number],
 ): boolean {
   // Pentagram: All 10 pairs should be ~72° or ~144° apart
   // Quick check: planets should be roughly evenly distributed with 72° spacing
@@ -259,7 +259,7 @@ export function couldBePentagram(
  * Pre-filter for Hexagram/Grand Sextile: requires six planets evenly spaced at 60°
  */
 export function couldBeHexagram(
-  longitudes: [number, number, number, number, number, number]
+  longitudes: [number, number, number, number, number, number],
 ): boolean {
   // Hexagram: 6 planets evenly spaced at 60° intervals
   // Quick check: sort longitudes and check if consecutive spacing is ~60°

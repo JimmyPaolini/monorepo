@@ -30,17 +30,17 @@ export function getDailyLunarCycleEvents(args: {
   const currentElevation = getAzimuthElevationFromEphemeris(
     moonAzimuthElevationEphemeris,
     currentMinute.toISOString(),
-    "elevation"
+    "elevation",
   );
   const previousElevation = getAzimuthElevationFromEphemeris(
     moonAzimuthElevationEphemeris,
     previousMinute.toISOString(),
-    "elevation"
+    "elevation",
   );
   const nextElevation = getAzimuthElevationFromEphemeris(
     moonAzimuthElevationEphemeris,
     nextMinute.toISOString(),
-    "elevation"
+    "elevation",
   );
 
   const elevations = {
@@ -156,7 +156,7 @@ export function writeDailyLunarCycleEvents(args: {
   });
   fs.writeFileSync(
     getOutputPath(`daily-lunar-cycle_${timespan}.ics`),
-    new TextEncoder().encode(ingressCalendar)
+    new TextEncoder().encode(ingressCalendar),
   );
 
   console.log(`🌙 Wrote ${message}`);

@@ -978,10 +978,10 @@ describe("stellium.events", () => {
       expect(durationEvents[0]?.start).toEqual(formingEvent.start);
       expect(durationEvents[0]?.end).toEqual(dissolvingEvent.start);
       expect(durationEvents[0]?.summary).toContain(
-        "Mars, Moon, Sun, Venus stellium"
+        "Mars, Moon, Sun, Venus stellium",
       );
       expect(durationEvents[0]?.description).toBe(
-        "Mars, Moon, Sun, Venus stellium"
+        "Mars, Moon, Sun, Venus stellium",
       );
       expect(durationEvents[0]?.categories).not.toContain("Forming");
       expect(durationEvents[0]?.categories).not.toContain("Dissolving");
@@ -1117,16 +1117,16 @@ describe("stellium.events", () => {
 
       expect(durationEvents).toHaveLength(2);
       expect(durationEvents[0]?.start).toEqual(
-        new Date("2024-03-21T10:00:00.000Z")
+        new Date("2024-03-21T10:00:00.000Z"),
       );
       expect(durationEvents[0]?.end).toEqual(
-        new Date("2024-03-21T14:00:00.000Z")
+        new Date("2024-03-21T14:00:00.000Z"),
       );
       expect(durationEvents[1]?.start).toEqual(
-        new Date("2024-03-22T10:00:00.000Z")
+        new Date("2024-03-22T10:00:00.000Z"),
       );
       expect(durationEvents[1]?.end).toEqual(
-        new Date("2024-03-22T14:00:00.000Z")
+        new Date("2024-03-22T14:00:00.000Z"),
       );
     });
 

@@ -23,7 +23,7 @@ import type { Moment } from "moment";
  */
 function composeGrandCrosses(
   allEdges: AspectEdge[],
-  currentMinute: Moment
+  currentMinute: Moment,
 ): Event[] {
   const events: Event[] = [];
 
@@ -32,7 +32,7 @@ function composeGrandCrosses(
   const edges = allEdges.filter(
     (edge) =>
       edge.event.start.getTime() <= currentTimestamp &&
-      edge.event.end.getTime() >= currentTimestamp
+      edge.event.end.getTime() >= currentTimestamp,
   );
 
   const aspectsByType = groupAspectsByType(edges);
@@ -92,7 +92,7 @@ function composeGrandCrosses(
 
         // This body should be square to the two bodies that are NOT opposite to it
         const adjacentBodies = bodyList.filter(
-          (b) => b !== body && b !== oppositeBody
+          (b) => b !== body && b !== oppositeBody,
         );
         for (const adjBody of adjacentBodies) {
           if (!haveAspect(body, adjBody, "square", edges)) {
@@ -123,13 +123,13 @@ function composeGrandCrosses(
               opp1.body1,
               opp1.body2,
               "opposite",
-              oppositionsAtTime
+              oppositionsAtTime,
             );
             const hasOpp2 = haveAspect(
               opp2.body1,
               opp2.body2,
               "opposite",
-              oppositionsAtTime
+              oppositionsAtTime,
             );
             if (!hasOpp1 || !hasOpp2) {
               return false;
@@ -153,7 +153,7 @@ function composeGrandCrosses(
               }
 
               const adjacentBodies = bodyList.filter(
-                (b) => b !== body && b !== oppositeBody
+                (b) => b !== body && b !== oppositeBody,
               );
               for (const adjBody of adjacentBodies) {
                 if (!haveAspect(body, adjBody, "square", squaresAtTime)) {
@@ -163,7 +163,7 @@ function composeGrandCrosses(
             }
 
             return true;
-          }
+          },
         );
 
         if (phase && bodyList[0] && bodyList[1] && bodyList[2] && bodyList[3]) {
@@ -176,7 +176,7 @@ function composeGrandCrosses(
               body4: bodyList[3],
               quadrupleAspect: "grand cross",
               phase,
-            })
+            }),
           );
         }
       }
@@ -198,7 +198,7 @@ function composeKites(allEdges: AspectEdge[], currentMinute: Moment): Event[] {
   const edges = allEdges.filter(
     (edge) =>
       edge.event.start.getTime() <= currentTimestamp &&
-      edge.event.end.getTime() >= currentTimestamp
+      edge.event.end.getTime() >= currentTimestamp,
   );
 
   const aspectsByType = groupAspectsByType(edges);
@@ -300,7 +300,7 @@ function composeKites(allEdges: AspectEdge[], currentMinute: Moment): Event[] {
                 haveAspect(fourthBody, other0, "sextile", edgesAtTime) &&
                 haveAspect(fourthBody, other1, "sextile", edgesAtTime)
               );
-            }
+            },
           );
 
           if (phase && bodies[0] && bodies[1] && bodies[2] && bodies[3]) {
@@ -314,7 +314,7 @@ function composeKites(allEdges: AspectEdge[], currentMinute: Moment): Event[] {
                 quadrupleAspect: "kite",
                 focalOrApexBody: fourthBody,
                 phase,
-              })
+              }),
             );
           }
         }
@@ -369,7 +369,7 @@ function getQuadrupleAspectEvent(params: {
 
   const description = focalOrApexBody
     ? `${bodiesSorted.join(", ")} ${quadrupleAspect} ${phase} (${_.startCase(
-        focalOrApexBody
+        focalOrApexBody,
       )} focal)`
     : `${bodiesSorted.join(", ")} ${quadrupleAspect} ${phase}`;
 
@@ -415,7 +415,7 @@ function getQuadrupleAspectEvent(params: {
  */
 export function getQuadrupleAspectEvents(
   aspectEvents: Event[],
-  currentMinute: Moment
+  currentMinute: Moment,
 ): Event[] {
   const edges = parseAspectEvents(aspectEvents);
   const events: Event[] = [];
@@ -433,7 +433,7 @@ export function getQuadrupleAspectDurationEvents(events: Event[]): Event[] {
 
   // Filter to quadruple aspect events only
   const quadrupleAspectEvents = events.filter((event) =>
-    event.categories.includes("Quadruple Aspect")
+    event.categories.includes("Quadruple Aspect"),
   );
 
   // Group by body quartet and aspect type using categories
@@ -442,12 +442,12 @@ export function getQuadrupleAspectDurationEvents(events: Event[]): Event[] {
       .filter((category) =>
         quadrupleAspectBodies
           .map((quadrupleAspectBody) => _.startCase(quadrupleAspectBody))
-          .includes(category)
+          .includes(category),
       )
       .sort();
 
     const aspect = event.categories.find((category) =>
-      ["Grand Cross", "Kite"].includes(category)
+      ["Grand Cross", "Kite"].includes(category),
     );
 
     return `${planets.join("-")}_${aspect}`;
@@ -478,7 +478,7 @@ export function getQuadrupleAspectDurationEvents(events: Event[]): Event[] {
         if (potentialDissolvingEvent.categories.includes("Dissolving")) {
           // Create duration event
           const categories = currentEvent.categories.filter(
-            (c) => c !== "Forming" && c !== "Exact" && c !== "Dissolving"
+            (c) => c !== "Forming" && c !== "Exact" && c !== "Dissolving",
           );
 
           durationEvents.push({
@@ -487,7 +487,7 @@ export function getQuadrupleAspectDurationEvents(events: Event[]): Event[] {
             summary: currentEvent.summary.replace(/^(➡️|⬅️|🎯)\s/, ""),
             description: currentEvent.description.replace(
               / (forming|exact|dissolving)( \(.*\))?$/i,
-              ""
+              "",
             ),
             categories,
           });

@@ -84,22 +84,22 @@ describe("ingresses.utilities", () => {
     it("should return true when crossing sign boundary", () => {
       // Aries to Taurus
       expect(
-        isSignIngress({ previousLongitude: 29.9, currentLongitude: 30.1 })
+        isSignIngress({ previousLongitude: 29.9, currentLongitude: 30.1 }),
       ).toBe(true);
 
       // Pisces to Aries (crossing 0/360)
       expect(
-        isSignIngress({ previousLongitude: 359.9, currentLongitude: 0.1 })
+        isSignIngress({ previousLongitude: 359.9, currentLongitude: 0.1 }),
       ).toBe(true);
     });
 
     it("should return false when staying in same sign", () => {
       expect(
-        isSignIngress({ previousLongitude: 15, currentLongitude: 16 })
+        isSignIngress({ previousLongitude: 15, currentLongitude: 16 }),
       ).toBe(false);
 
       expect(
-        isSignIngress({ previousLongitude: 29, currentLongitude: 29.5 })
+        isSignIngress({ previousLongitude: 29, currentLongitude: 29.5 }),
       ).toBe(false);
     });
   });
@@ -131,28 +131,28 @@ describe("ingresses.utilities", () => {
     it("should return true when crossing decan boundary within same sign", () => {
       // Decan 1 to Decan 2
       expect(
-        isDecanIngress({ previousLongitude: 9.9, currentLongitude: 10.1 })
+        isDecanIngress({ previousLongitude: 9.9, currentLongitude: 10.1 }),
       ).toBe(true);
 
       // Decan 2 to Decan 3
       expect(
-        isDecanIngress({ previousLongitude: 19.9, currentLongitude: 20.1 })
+        isDecanIngress({ previousLongitude: 19.9, currentLongitude: 20.1 }),
       ).toBe(true);
     });
 
     it("should return true when crossing sign boundary (also decan boundary)", () => {
       expect(
-        isDecanIngress({ previousLongitude: 29.9, currentLongitude: 30.1 })
+        isDecanIngress({ previousLongitude: 29.9, currentLongitude: 30.1 }),
       ).toBe(true);
     });
 
     it("should return false when staying in same decan", () => {
       expect(
-        isDecanIngress({ previousLongitude: 5, currentLongitude: 6 })
+        isDecanIngress({ previousLongitude: 5, currentLongitude: 6 }),
       ).toBe(false);
 
       expect(
-        isDecanIngress({ previousLongitude: 15, currentLongitude: 16 })
+        isDecanIngress({ previousLongitude: 15, currentLongitude: 16 }),
       ).toBe(false);
     });
   });
@@ -161,22 +161,22 @@ describe("ingresses.utilities", () => {
     it("should return true when crossing 15 degrees within a sign", () => {
       // Crossing 15° in Aries
       expect(
-        isPeakIngress({ previousLongitude: 14.9, currentLongitude: 15.1 })
+        isPeakIngress({ previousLongitude: 14.9, currentLongitude: 15.1 }),
       ).toBe(true);
 
       // Crossing 15° in Taurus (30 + 15 = 45)
       expect(
-        isPeakIngress({ previousLongitude: 44.9, currentLongitude: 45.1 })
+        isPeakIngress({ previousLongitude: 44.9, currentLongitude: 45.1 }),
       ).toBe(true);
     });
 
     it("should return false when not crossing 15 degrees", () => {
       expect(
-        isPeakIngress({ previousLongitude: 10, currentLongitude: 11 })
+        isPeakIngress({ previousLongitude: 10, currentLongitude: 11 }),
       ).toBe(false);
 
       expect(
-        isPeakIngress({ previousLongitude: 16, currentLongitude: 17 })
+        isPeakIngress({ previousLongitude: 16, currentLongitude: 17 }),
       ).toBe(false);
     });
 
@@ -184,7 +184,7 @@ describe("ingresses.utilities", () => {
       // Crossing from Aries (29.9°) to Taurus (30.1°) is NOT a peak ingress
       // because 30.1 - 30 = 0.1, which is < 15
       expect(
-        isPeakIngress({ previousLongitude: 29.9, currentLongitude: 30.1 })
+        isPeakIngress({ previousLongitude: 29.9, currentLongitude: 30.1 }),
       ).toBe(false);
     });
   });

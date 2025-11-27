@@ -26,7 +26,7 @@ describe("input.schema", () => {
           longitude: "0",
           startDate: "2025-01-01",
           endDate: "2025-01-02",
-        }).latitude
+        }).latitude,
       ).toBe(-90);
 
       expect(
@@ -35,7 +35,7 @@ describe("input.schema", () => {
           longitude: "0",
           startDate: "2025-01-01",
           endDate: "2025-01-02",
-        }).latitude
+        }).latitude,
       ).toBe(90);
     });
 
@@ -46,7 +46,7 @@ describe("input.schema", () => {
           longitude: "0",
           startDate: "2025-01-01",
           endDate: "2025-01-02",
-        })
+        }),
       ).toThrow();
 
       expect(() =>
@@ -55,7 +55,7 @@ describe("input.schema", () => {
           longitude: "0",
           startDate: "2025-01-01",
           endDate: "2025-01-02",
-        })
+        }),
       ).toThrow();
     });
 
@@ -86,7 +86,7 @@ describe("input.schema", () => {
           longitude: "-180",
           startDate: "2025-01-01",
           endDate: "2025-01-02",
-        }).longitude
+        }).longitude,
       ).toBe(-180);
 
       expect(
@@ -95,7 +95,7 @@ describe("input.schema", () => {
           longitude: "180",
           startDate: "2025-01-01",
           endDate: "2025-01-02",
-        }).longitude
+        }).longitude,
       ).toBe(180);
     });
 
@@ -106,7 +106,7 @@ describe("input.schema", () => {
           longitude: "181",
           startDate: "2025-01-01",
           endDate: "2025-01-02",
-        })
+        }),
       ).toThrow();
 
       expect(() =>
@@ -115,7 +115,7 @@ describe("input.schema", () => {
           longitude: "-181",
           startDate: "2025-01-01",
           endDate: "2025-01-02",
-        })
+        }),
       ).toThrow();
     });
 
@@ -179,7 +179,7 @@ describe("input.schema", () => {
           longitude: "-74",
           startDate: "2025-03-21",
           endDate: "2025-03-20",
-        })
+        }),
       ).toThrow();
     });
 
@@ -190,7 +190,7 @@ describe("input.schema", () => {
           longitude: "-74",
           startDate: "2025-03-20",
           endDate: "2025-03-20",
-        })
+        }),
       ).toThrow();
     });
 
@@ -201,7 +201,7 @@ describe("input.schema", () => {
           longitude: "-74",
           startDate: "1899-12-31",
           endDate: "1900-01-02",
-        })
+        }),
       ).toThrow();
     });
 
@@ -212,7 +212,7 @@ describe("input.schema", () => {
           longitude: "-74",
           startDate: "2100-12-30",
           endDate: "2101-01-01",
-        })
+        }),
       ).toThrow();
     });
   });

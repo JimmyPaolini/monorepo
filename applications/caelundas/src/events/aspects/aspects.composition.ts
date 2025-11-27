@@ -31,7 +31,7 @@ export function parseAspectEvents(events: Event[]): AspectEdge[] {
     try {
       // Normalize categories once
       const normalizedCategories = event.categories.map((category) =>
-        category.toLowerCase().trim()
+        category.toLowerCase().trim(),
       );
 
       // Validate this is a simple aspect event (not compound)
@@ -57,7 +57,7 @@ export function parseAspectEvents(events: Event[]): AspectEdge[] {
 
       // Extract aspect type from categories
       const aspectType = normalizedCategories.find((category) =>
-        aspects.includes(category as Aspect)
+        aspects.includes(category as Aspect),
       ) as Aspect | undefined;
 
       if (!aspectType) {
@@ -66,7 +66,7 @@ export function parseAspectEvents(events: Event[]): AspectEdge[] {
 
       // Extract phase from categories
       const phase = normalizedCategories.find((category) =>
-        aspectPhases.includes(category as AspectPhase)
+        aspectPhases.includes(category as AspectPhase),
       ) as AspectPhase | undefined;
 
       if (!phase) {
@@ -99,7 +99,7 @@ export function parseAspectEvents(events: Event[]): AspectEdge[] {
  * Group aspect edges by aspect type for efficient lookup
  */
 export function groupAspectsByType(
-  edges: AspectEdge[]
+  edges: AspectEdge[],
 ): Map<Aspect, AspectEdge[]> {
   const grouped = _.groupBy(edges, "aspectType");
   return new Map(Object.entries(grouped)) as Map<Aspect, AspectEdge[]>;
@@ -131,11 +131,11 @@ export function getOtherBody(edge: AspectEdge, body: Body): Body | null {
 export function findBodiesWithAspectTo(
   body: Body,
   aspectType: Aspect,
-  edges: AspectEdge[]
+  edges: AspectEdge[],
 ): Body[] {
   return edges
     .filter(
-      (edge) => edge.aspectType === aspectType && involvesBody(edge, body)
+      (edge) => edge.aspectType === aspectType && involvesBody(edge, body),
     )
     .map((edge) => getOtherBody(edge, body))
     .filter((b): b is Body => b !== null);
@@ -148,13 +148,13 @@ export function haveAspect(
   body1: Body,
   body2: Body,
   aspectType: Aspect,
-  edges: AspectEdge[]
+  edges: AspectEdge[],
 ): boolean {
   return edges.some(
     (edge) =>
       edge.aspectType === aspectType &&
       ((edge.body1 === body1 && edge.body2 === body2) ||
-        (edge.body1 === body2 && edge.body2 === body1))
+        (edge.body1 === body2 && edge.body2 === body1)),
   );
 }
 
@@ -167,7 +167,7 @@ export function determineMultiBodyPhase(
   allAspectEdges: AspectEdge[],
   currentMinute: Moment,
   bodies: Body[],
-  checkPatternExists: (edges: AspectEdge[]) => boolean
+  checkPatternExists: (edges: AspectEdge[]) => boolean,
 ): AspectPhase | null {
   // Get edges at current, previous, and next minutes
   const currentTimestamp = currentMinute.toDate().getTime();
@@ -190,7 +190,7 @@ export function determineMultiBodyPhase(
         edge.event.start.getTime() <= timestamp &&
         edge.event.end.getTime() >= timestamp &&
         bodySet.has(edge.body1) &&
-        bodySet.has(edge.body2)
+        bodySet.has(edge.body2),
     );
 
   const currentEdges = filterEdges(currentTimestamp);

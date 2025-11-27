@@ -152,7 +152,7 @@ describe("dailyLunarCycle.events", () => {
       // Should have at least moonrise or zenith (depends on exact threshold)
       expect(events.length).toBeGreaterThanOrEqual(1);
       expect(
-        events.some((e) => e.categories.includes("Daily Lunar Cycle"))
+        events.some((e) => e.categories.includes("Daily Lunar Cycle")),
       ).toBe(true);
     });
   });

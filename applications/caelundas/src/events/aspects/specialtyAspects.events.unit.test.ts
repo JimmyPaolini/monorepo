@@ -21,7 +21,7 @@ vi.mock("fs", () => ({
 describe("specialtyAspects.events", () => {
   describe("getSpecialtyAspectEvents", () => {
     const createEphemeris = (
-      longitudes: Record<string, number>
+      longitudes: Record<string, number>,
     ): CoordinateEphemeris => {
       const ephemeris: CoordinateEphemeris = {};
       Object.keys(longitudes).forEach((timestamp) => {
@@ -40,7 +40,7 @@ describe("specialtyAspects.events", () => {
     const createDefaultEphemeris = (
       currentMinute: moment.Moment,
       previousMinute: moment.Moment,
-      nextMinute: moment.Moment
+      nextMinute: moment.Moment,
     ): Record<Body, CoordinateEphemeris> => {
       const allBodies = [
         "sun",
@@ -86,7 +86,7 @@ describe("specialtyAspects.events", () => {
       const coordinateEphemerisByBody = createDefaultEphemeris(
         currentMinute,
         previousMinute,
-        nextMinute
+        nextMinute,
       );
 
       coordinateEphemerisByBody.sun = createEphemeris({
@@ -111,7 +111,7 @@ describe("specialtyAspects.events", () => {
           e.description.includes("quintile") &&
           e.categories.includes("Exact") &&
           e.description.includes("Sun") &&
-          e.description.includes("Mercury")
+          e.description.includes("Mercury"),
       );
       expect(quintileEvent).toBeDefined();
     });
@@ -124,7 +124,7 @@ describe("specialtyAspects.events", () => {
       const coordinateEphemerisByBody = createDefaultEphemeris(
         currentMinute,
         previousMinute,
-        nextMinute
+        nextMinute,
       );
 
       // Sun at 72°, Venus moving from 357° to 358.5° (entering 2° quintile orb)
@@ -151,7 +151,7 @@ describe("specialtyAspects.events", () => {
           e.description.includes("quintile") &&
           e.categories.includes("Forming") &&
           e.description.includes("Sun") &&
-          e.description.includes("Venus")
+          e.description.includes("Venus"),
       );
       expect(formingQuintile).toBeDefined();
     });
@@ -164,7 +164,7 @@ describe("specialtyAspects.events", () => {
       const coordinateEphemerisByBody = createDefaultEphemeris(
         currentMinute,
         previousMinute,
-        nextMinute
+        nextMinute,
       );
 
       // Sun at 0°, Mars moving from 40.5° to 41.5° (exiting 1° novile orb at 40°)
@@ -191,7 +191,7 @@ describe("specialtyAspects.events", () => {
           e.description.includes("novile") &&
           e.categories.includes("Dissolving") &&
           e.description.includes("Sun") &&
-          e.description.includes("Mars")
+          e.description.includes("Mars"),
       );
       expect(dissolvingNovile).toBeDefined();
     });
@@ -204,7 +204,7 @@ describe("specialtyAspects.events", () => {
       const coordinateEphemerisByBody = createDefaultEphemeris(
         currentMinute,
         previousMinute,
-        nextMinute
+        nextMinute,
       );
 
       // Set Sun, Mercury, Venus with quintile and novile aspects
@@ -234,10 +234,10 @@ describe("specialtyAspects.events", () => {
       expect(events.length).toBeGreaterThanOrEqual(2);
       const sunMercuryAspect = events.find(
         (e) =>
-          e.description.includes("Sun") && e.description.includes("Mercury")
+          e.description.includes("Sun") && e.description.includes("Mercury"),
       );
       const sunVenusAspect = events.find(
-        (e) => e.description.includes("Sun") && e.description.includes("Venus")
+        (e) => e.description.includes("Sun") && e.description.includes("Venus"),
       );
       expect(sunMercuryAspect).toBeDefined();
       expect(sunVenusAspect).toBeDefined();
@@ -302,7 +302,7 @@ describe("specialtyAspects.events", () => {
       const coordinateEphemerisByBody = createDefaultEphemeris(
         currentMinute,
         previousMinute,
-        nextMinute
+        nextMinute,
       );
 
       coordinateEphemerisByBody.sun = createEphemeris({
@@ -323,7 +323,7 @@ describe("specialtyAspects.events", () => {
 
       const sunMercuryEvents = events.filter(
         (e) =>
-          e.description.includes("Sun") && e.description.includes("Mercury")
+          e.description.includes("Sun") && e.description.includes("Mercury"),
       );
 
       expect(sunMercuryEvents.length).toBe(1);
@@ -420,7 +420,7 @@ describe("specialtyAspects.events", () => {
           body1: "sun",
           body2: "moon",
           phase: "exact",
-        })
+        }),
       ).toThrow("No specialty aspect found");
     });
 
@@ -531,7 +531,7 @@ describe("specialtyAspects.events", () => {
       }
       const filename = writeCall[0];
       expect(filename).toContain(
-        "2024-03-21T00:00:00.000Z-2024-03-22T00:00:00.000Z"
+        "2024-03-21T00:00:00.000Z-2024-03-22T00:00:00.000Z",
       );
     });
   });
@@ -650,10 +650,10 @@ describe("specialtyAspects.events", () => {
 
       expect(durationEvents.length).toBe(2);
       expect(
-        durationEvents.find((e) => e.description.includes("quintile"))
+        durationEvents.find((e) => e.description.includes("quintile")),
       ).toBeDefined();
       expect(
-        durationEvents.find((e) => e.description.includes("biquintile"))
+        durationEvents.find((e) => e.description.includes("biquintile")),
       ).toBeDefined();
     });
 
@@ -719,14 +719,14 @@ describe("specialtyAspects.events", () => {
       expect(
         durationEvents.find(
           (e) =>
-            e.description.includes("Sun") && e.description.includes("Mercury")
-        )
+            e.description.includes("Sun") && e.description.includes("Mercury"),
+        ),
       ).toBeDefined();
       expect(
         durationEvents.find(
           (e) =>
-            e.description.includes("Venus") && e.description.includes("Mars")
-        )
+            e.description.includes("Venus") && e.description.includes("Mars"),
+        ),
       ).toBeDefined();
     });
 
@@ -753,7 +753,7 @@ describe("specialtyAspects.events", () => {
       ]);
 
       expect(
-        durationEvents.every((e) => e.categories.includes("Specialty Aspect"))
+        durationEvents.every((e) => e.categories.includes("Specialty Aspect")),
       ).toBe(true);
     });
 

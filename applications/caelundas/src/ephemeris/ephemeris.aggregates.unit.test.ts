@@ -98,7 +98,7 @@ describe("ephemeris.aggregates", () => {
           start,
           end,
           timezone,
-        })
+        }),
       );
 
       expect(getAzimuthElevationEphemerisByBody).toHaveBeenCalledWith(
@@ -108,7 +108,7 @@ describe("ephemeris.aggregates", () => {
           start,
           end,
           timezone,
-        })
+        }),
       );
 
       expect(getIlluminationEphemerisByBody).toHaveBeenCalledWith(
@@ -118,7 +118,7 @@ describe("ephemeris.aggregates", () => {
           start,
           end,
           timezone,
-        })
+        }),
       );
 
       expect(getDiameterEphemerisByBody).toHaveBeenCalledWith(
@@ -127,7 +127,7 @@ describe("ephemeris.aggregates", () => {
           start,
           end,
           timezone,
-        })
+        }),
       );
 
       expect(getDistanceEphemerisByBody).toHaveBeenCalledWith(
@@ -136,7 +136,7 @@ describe("ephemeris.aggregates", () => {
           start,
           end,
           timezone,
-        })
+        }),
       );
     });
 
@@ -166,13 +166,13 @@ describe("ephemeris.aggregates", () => {
       } as unknown as Record<Body, DistanceEphemeris>;
 
       vi.mocked(getCoordinateEphemerisByBody).mockResolvedValue(
-        mockCoordinates
+        mockCoordinates,
       );
       vi.mocked(getAzimuthElevationEphemerisByBody).mockResolvedValue(
-        mockAzimuthElevation
+        mockAzimuthElevation,
       );
       vi.mocked(getIlluminationEphemerisByBody).mockResolvedValue(
-        mockIllumination
+        mockIllumination,
       );
       vi.mocked(getDiameterEphemerisByBody).mockResolvedValue(mockDiameter);
       vi.mocked(getDistanceEphemerisByBody).mockResolvedValue(mockDistance);
@@ -186,7 +186,7 @@ describe("ephemeris.aggregates", () => {
 
       expect(result.coordinateEphemerisByBody).toEqual(mockCoordinates);
       expect(result.azimuthElevationEphemerisByBody).toEqual(
-        mockAzimuthElevation
+        mockAzimuthElevation,
       );
       expect(result.illuminationEphemerisByBody).toEqual(mockIllumination);
       expect(result.diameterEphemerisByBody).toEqual(mockDiameter);
@@ -203,19 +203,19 @@ describe("ephemeris.aggregates", () => {
       } = await import("./ephemeris.service");
 
       vi.mocked(getCoordinateEphemerisByBody).mockResolvedValue(
-        {} as Record<Body, CoordinateEphemeris>
+        {} as Record<Body, CoordinateEphemeris>,
       );
       vi.mocked(getAzimuthElevationEphemerisByBody).mockResolvedValue(
-        {} as Record<Body, AzimuthElevationEphemeris>
+        {} as Record<Body, AzimuthElevationEphemeris>,
       );
       vi.mocked(getIlluminationEphemerisByBody).mockResolvedValue(
-        {} as Record<Body, IlluminationEphemeris>
+        {} as Record<Body, IlluminationEphemeris>,
       );
       vi.mocked(getDiameterEphemerisByBody).mockResolvedValue(
-        {} as Record<Body, DiameterEphemeris>
+        {} as Record<Body, DiameterEphemeris>,
       );
       vi.mocked(getDistanceEphemerisByBody).mockResolvedValue(
-        {} as Record<Body, DistanceEphemeris>
+        {} as Record<Body, DistanceEphemeris>,
       );
 
       const testCoordinates: [number, number] = [-118.2437, 34.0522]; // Los Angeles
@@ -231,20 +231,20 @@ describe("ephemeris.aggregates", () => {
       expect(getAzimuthElevationEphemerisByBody).toHaveBeenCalledWith(
         expect.objectContaining({
           coordinates: testCoordinates,
-        })
+        }),
       );
 
       expect(getIlluminationEphemerisByBody).toHaveBeenCalledWith(
         expect.objectContaining({
           coordinates: testCoordinates,
-        })
+        }),
       );
 
       // Coordinate ephemeris doesn't use observer coordinates
       expect(getCoordinateEphemerisByBody).toHaveBeenCalledWith(
         expect.not.objectContaining({
           coordinates: expect.anything() as unknown,
-        })
+        }),
       );
     });
 
@@ -258,19 +258,19 @@ describe("ephemeris.aggregates", () => {
       } = await import("./ephemeris.service");
 
       vi.mocked(getCoordinateEphemerisByBody).mockResolvedValue(
-        {} as Record<Body, CoordinateEphemeris>
+        {} as Record<Body, CoordinateEphemeris>,
       );
       vi.mocked(getAzimuthElevationEphemerisByBody).mockResolvedValue(
-        {} as Record<Body, AzimuthElevationEphemeris>
+        {} as Record<Body, AzimuthElevationEphemeris>,
       );
       vi.mocked(getIlluminationEphemerisByBody).mockResolvedValue(
-        {} as Record<Body, IlluminationEphemeris>
+        {} as Record<Body, IlluminationEphemeris>,
       );
       vi.mocked(getDiameterEphemerisByBody).mockResolvedValue(
-        {} as Record<Body, DiameterEphemeris>
+        {} as Record<Body, DiameterEphemeris>,
       );
       vi.mocked(getDistanceEphemerisByBody).mockResolvedValue(
-        {} as Record<Body, DistanceEphemeris>
+        {} as Record<Body, DistanceEphemeris>,
       );
 
       const customStart = new Date("2024-06-21T00:00:00.000Z");
@@ -288,35 +288,35 @@ describe("ephemeris.aggregates", () => {
         expect.objectContaining({
           start: customStart,
           end: customEnd,
-        })
+        }),
       );
 
       expect(getAzimuthElevationEphemerisByBody).toHaveBeenCalledWith(
         expect.objectContaining({
           start: customStart,
           end: customEnd,
-        })
+        }),
       );
 
       expect(getIlluminationEphemerisByBody).toHaveBeenCalledWith(
         expect.objectContaining({
           start: customStart,
           end: customEnd,
-        })
+        }),
       );
 
       expect(getDiameterEphemerisByBody).toHaveBeenCalledWith(
         expect.objectContaining({
           start: customStart,
           end: customEnd,
-        })
+        }),
       );
 
       expect(getDistanceEphemerisByBody).toHaveBeenCalledWith(
         expect.objectContaining({
           start: customStart,
           end: customEnd,
-        })
+        }),
       );
     });
 
@@ -330,19 +330,19 @@ describe("ephemeris.aggregates", () => {
       } = await import("./ephemeris.service");
 
       vi.mocked(getCoordinateEphemerisByBody).mockResolvedValue(
-        {} as Record<Body, CoordinateEphemeris>
+        {} as Record<Body, CoordinateEphemeris>,
       );
       vi.mocked(getAzimuthElevationEphemerisByBody).mockResolvedValue(
-        {} as Record<Body, AzimuthElevationEphemeris>
+        {} as Record<Body, AzimuthElevationEphemeris>,
       );
       vi.mocked(getIlluminationEphemerisByBody).mockResolvedValue(
-        {} as Record<Body, IlluminationEphemeris>
+        {} as Record<Body, IlluminationEphemeris>,
       );
       vi.mocked(getDiameterEphemerisByBody).mockResolvedValue(
-        {} as Record<Body, DiameterEphemeris>
+        {} as Record<Body, DiameterEphemeris>,
       );
       vi.mocked(getDistanceEphemerisByBody).mockResolvedValue(
-        {} as Record<Body, DistanceEphemeris>
+        {} as Record<Body, DistanceEphemeris>,
       );
 
       const customTimezone = "Europe/London";
@@ -358,31 +358,31 @@ describe("ephemeris.aggregates", () => {
       expect(getCoordinateEphemerisByBody).toHaveBeenCalledWith(
         expect.objectContaining({
           timezone: customTimezone,
-        })
+        }),
       );
 
       expect(getAzimuthElevationEphemerisByBody).toHaveBeenCalledWith(
         expect.objectContaining({
           timezone: customTimezone,
-        })
+        }),
       );
 
       expect(getIlluminationEphemerisByBody).toHaveBeenCalledWith(
         expect.objectContaining({
           timezone: customTimezone,
-        })
+        }),
       );
 
       expect(getDiameterEphemerisByBody).toHaveBeenCalledWith(
         expect.objectContaining({
           timezone: customTimezone,
-        })
+        }),
       );
 
       expect(getDistanceEphemerisByBody).toHaveBeenCalledWith(
         expect.objectContaining({
           timezone: customTimezone,
-        })
+        }),
       );
     });
   });

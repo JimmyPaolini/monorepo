@@ -120,7 +120,7 @@ describe("quadrupleAspects.events", () => {
 
         expect(events.length).toBeGreaterThanOrEqual(1);
         const grandCross = events.find((e) =>
-          e.categories.includes("Grand Cross")
+          e.categories.includes("Grand Cross"),
         );
         expect(grandCross).toBeDefined();
         expect(grandCross?.description).toContain("grand cross");
@@ -238,7 +238,7 @@ describe("quadrupleAspects.events", () => {
 
         expect(events.length).toBeGreaterThanOrEqual(1);
         const grandCross = events.find((e) =>
-          e.categories.includes("Grand Cross")
+          e.categories.includes("Grand Cross"),
         );
         expect(grandCross).toBeDefined();
         expect(grandCross?.categories).toContain("Forming");
@@ -352,7 +352,7 @@ describe("quadrupleAspects.events", () => {
 
         expect(events.length).toBeGreaterThanOrEqual(1);
         const grandCross = events.find((e) =>
-          e.categories.includes("Grand Cross")
+          e.categories.includes("Grand Cross"),
         );
         expect(grandCross).toBeDefined();
         expect(grandCross?.categories).toContain("Dissolving");
@@ -417,7 +417,7 @@ describe("quadrupleAspects.events", () => {
         const events = getQuadrupleAspectEvents(storedAspects, currentMinute);
 
         const grandCross = events.find((e) =>
-          e.categories.includes("Grand Cross")
+          e.categories.includes("Grand Cross"),
         );
         expect(grandCross).toBeUndefined();
       });
@@ -894,10 +894,10 @@ describe("quadrupleAspects.events", () => {
 
       expect(durationEvents.length).toBe(2);
       expect(
-        durationEvents.find((e) => e.description.includes("grand cross"))
+        durationEvents.find((e) => e.description.includes("grand cross")),
       ).toBeDefined();
       expect(
-        durationEvents.find((e) => e.description.includes("kite"))
+        durationEvents.find((e) => e.description.includes("kite")),
       ).toBeDefined();
     });
 
@@ -980,8 +980,8 @@ describe("quadrupleAspects.events", () => {
             e.description.includes("Sun") &&
             e.description.includes("Moon") &&
             e.description.includes("Mars") &&
-            e.description.includes("Jupiter")
-        )
+            e.description.includes("Jupiter"),
+        ),
       ).toBeDefined();
       expect(
         durationEvents.find(
@@ -989,8 +989,8 @@ describe("quadrupleAspects.events", () => {
             e.description.includes("Venus") &&
             e.description.includes("Mercury") &&
             e.description.includes("Saturn") &&
-            e.description.includes("Uranus")
-        )
+            e.description.includes("Uranus"),
+        ),
       ).toBeDefined();
     });
 
@@ -1025,7 +1025,7 @@ describe("quadrupleAspects.events", () => {
       ]);
 
       expect(
-        durationEvents.every((e) => e.categories.includes("Quadruple Aspect"))
+        durationEvents.every((e) => e.categories.includes("Quadruple Aspect")),
       ).toBe(true);
     });
 
@@ -1157,7 +1157,7 @@ describe("quadrupleAspects.events", () => {
 
       expect(durationEvents.length).toBe(1);
       expect(durationEvents[0]?.description).not.toMatch(
-        /(forming|dissolving|exact)/i
+        /(forming|dissolving|exact)/i,
       );
     });
 

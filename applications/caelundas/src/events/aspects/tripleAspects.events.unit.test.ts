@@ -475,7 +475,7 @@ describe("tripleAspects.events", () => {
         const events = getTripleAspectEvents(storedAspects, currentMinute);
 
         const grandTrine = events.find((e) =>
-          e.categories.includes("Grand Trine")
+          e.categories.includes("Grand Trine"),
         );
         expect(grandTrine).toBeUndefined();
       });
@@ -750,10 +750,10 @@ describe("tripleAspects.events", () => {
 
       expect(durationEvents.length).toBe(2);
       expect(
-        durationEvents.find((e) => e.description.includes("t-square"))
+        durationEvents.find((e) => e.description.includes("t-square")),
       ).toBeDefined();
       expect(
-        durationEvents.find((e) => e.description.includes("grand trine"))
+        durationEvents.find((e) => e.description.includes("grand trine")),
       ).toBeDefined();
     });
 
@@ -831,16 +831,16 @@ describe("tripleAspects.events", () => {
           (e) =>
             e.description.includes("Sun") &&
             e.description.includes("Moon") &&
-            e.description.includes("Mars")
-        )
+            e.description.includes("Mars"),
+        ),
       ).toBeDefined();
       expect(
         durationEvents.find(
           (e) =>
             e.description.includes("Venus") &&
             e.description.includes("Jupiter") &&
-            e.description.includes("Saturn")
-        )
+            e.description.includes("Saturn"),
+        ),
       ).toBeDefined();
     });
 
@@ -874,7 +874,7 @@ describe("tripleAspects.events", () => {
       ]);
 
       expect(
-        durationEvents.every((e) => e.categories.includes("Triple Aspect"))
+        durationEvents.every((e) => e.categories.includes("Triple Aspect")),
       ).toBe(true);
     });
 

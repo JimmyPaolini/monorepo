@@ -40,7 +40,7 @@ describe("twilights.utilities", () => {
           currentElevation: -5, // Above -6°
           previousElevation: -7, // Below -6°
           twilight: "civil",
-        })
+        }),
       ).toBe(true);
     });
 
@@ -50,7 +50,7 @@ describe("twilights.utilities", () => {
           currentElevation: -8,
           previousElevation: -10,
           twilight: "civil",
-        })
+        }),
       ).toBe(false);
     });
 
@@ -60,7 +60,7 @@ describe("twilights.utilities", () => {
           currentElevation: -4,
           previousElevation: -5,
           twilight: "civil",
-        })
+        }),
       ).toBe(false);
     });
 
@@ -70,7 +70,7 @@ describe("twilights.utilities", () => {
           currentElevation: -7,
           previousElevation: -5,
           twilight: "civil",
-        })
+        }),
       ).toBe(false);
     });
 
@@ -80,7 +80,7 @@ describe("twilights.utilities", () => {
           currentElevation: -11,
           previousElevation: -13,
           twilight: "nautical",
-        })
+        }),
       ).toBe(true);
     });
 
@@ -90,7 +90,7 @@ describe("twilights.utilities", () => {
           currentElevation: -17,
           previousElevation: -19,
           twilight: "astronomical",
-        })
+        }),
       ).toBe(true);
     });
   });
@@ -103,7 +103,7 @@ describe("twilights.utilities", () => {
           currentElevation: -7, // Below -6°
           previousElevation: -5, // Above -6°
           twilight: "civil",
-        })
+        }),
       ).toBe(true);
     });
 
@@ -113,7 +113,7 @@ describe("twilights.utilities", () => {
           currentElevation: -4,
           previousElevation: -5,
           twilight: "civil",
-        })
+        }),
       ).toBe(false);
     });
 
@@ -123,7 +123,7 @@ describe("twilights.utilities", () => {
           currentElevation: -8,
           previousElevation: -10,
           twilight: "civil",
-        })
+        }),
       ).toBe(false);
     });
 
@@ -133,7 +133,7 @@ describe("twilights.utilities", () => {
           currentElevation: -5,
           previousElevation: -7,
           twilight: "civil",
-        })
+        }),
       ).toBe(false);
     });
 
@@ -143,7 +143,7 @@ describe("twilights.utilities", () => {
           currentElevation: -13,
           previousElevation: -11,
           twilight: "nautical",
-        })
+        }),
       ).toBe(true);
     });
 
@@ -153,7 +153,7 @@ describe("twilights.utilities", () => {
           currentElevation: -19,
           previousElevation: -17,
           twilight: "astronomical",
-        })
+        }),
       ).toBe(true);
     });
   });
@@ -164,14 +164,14 @@ describe("twilights.utilities", () => {
         isAstronomicalDawn({
           currentElevation: -17,
           previousElevation: -19,
-        })
+        }),
       ).toBe(true);
 
       expect(
         isAstronomicalDawn({
           currentElevation: -19,
           previousElevation: -20,
-        })
+        }),
       ).toBe(false);
     });
 
@@ -180,14 +180,14 @@ describe("twilights.utilities", () => {
         isNauticalDawn({
           currentElevation: -11,
           previousElevation: -13,
-        })
+        }),
       ).toBe(true);
 
       expect(
         isNauticalDawn({
           currentElevation: -13,
           previousElevation: -14,
-        })
+        }),
       ).toBe(false);
     });
 
@@ -196,14 +196,14 @@ describe("twilights.utilities", () => {
         isCivilDawn({
           currentElevation: -5,
           previousElevation: -7,
-        })
+        }),
       ).toBe(true);
 
       expect(
         isCivilDawn({
           currentElevation: -7,
           previousElevation: -8,
-        })
+        }),
       ).toBe(false);
     });
   });
@@ -214,14 +214,14 @@ describe("twilights.utilities", () => {
         isAstronomicalDusk({
           currentElevation: -19,
           previousElevation: -17,
-        })
+        }),
       ).toBe(true);
 
       expect(
         isAstronomicalDusk({
           currentElevation: -17,
           previousElevation: -19,
-        })
+        }),
       ).toBe(false);
     });
 
@@ -230,14 +230,14 @@ describe("twilights.utilities", () => {
         isNauticalDusk({
           currentElevation: -13,
           previousElevation: -11,
-        })
+        }),
       ).toBe(true);
 
       expect(
         isNauticalDusk({
           currentElevation: -11,
           previousElevation: -13,
-        })
+        }),
       ).toBe(false);
     });
 
@@ -246,14 +246,14 @@ describe("twilights.utilities", () => {
         isCivilDusk({
           currentElevation: -7,
           previousElevation: -5,
-        })
+        }),
       ).toBe(true);
 
       expect(
         isCivilDusk({
           currentElevation: -5,
           previousElevation: -7,
-        })
+        }),
       ).toBe(false);
     });
   });

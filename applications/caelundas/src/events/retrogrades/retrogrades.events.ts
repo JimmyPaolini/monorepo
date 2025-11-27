@@ -42,7 +42,7 @@ export function getRetrogradeEvents(args: {
     const currentLongitude = getCoordinateFromEphemeris(
       ephemeris,
       currentMinute.toISOString(),
-      "longitude"
+      "longitude",
     );
 
     const previousLongitudes = new Array(MARGIN_MINUTES)
@@ -54,7 +54,7 @@ export function getRetrogradeEvents(args: {
         return getCoordinateFromEphemeris(
           ephemeris,
           date.toISOString(),
-          "longitude"
+          "longitude",
         );
       });
 
@@ -65,7 +65,7 @@ export function getRetrogradeEvents(args: {
         return getCoordinateFromEphemeris(
           ephemeris,
           date.toISOString(),
-          "longitude"
+          "longitude",
         );
       });
 
@@ -78,12 +78,12 @@ export function getRetrogradeEvents(args: {
 
     if (isRetrograde({ ...longitudes })) {
       retrogradeEvents.push(
-        getRetrogradeEvent({ body, timestamp, direction: "retrograde" })
+        getRetrogradeEvent({ body, timestamp, direction: "retrograde" }),
       );
     }
     if (isDirect({ ...longitudes })) {
       retrogradeEvents.push(
-        getRetrogradeEvent({ body, timestamp, direction: "direct" })
+        getRetrogradeEvent({ body, timestamp, direction: "direct" }),
       );
     }
   }
@@ -102,7 +102,7 @@ export function getRetrogradeEvent(args: {
 
   const bodyCapitalized = _.startCase(body) as Capitalize<RetrogradeBody>;
   const orbitalDirectionCapitalized = _.startCase(
-    direction
+    direction,
   ) as Capitalize<OrbitalDirection>;
 
   const retrogradeBodySymbol = symbolByBody[body] as RetrogradeBodySymbol;
@@ -119,7 +119,7 @@ export function getRetrogradeEvent(args: {
     start: timestamp,
     end: timestamp,
     categories: categories.concat(
-      direction === "retrograde" ? ["Retrograde"] : ["Direct"]
+      direction === "retrograde" ? ["Retrograde"] : ["Direct"],
     ),
     summary,
     description,
@@ -150,7 +150,7 @@ export function writeRetrogradeEvents(args: {
   });
   fs.writeFileSync(
     getOutputPath(`retrogrades_${retrogradeBodiesString}_${timespan}.ics`),
-    new TextEncoder().encode(retrogradesCalendar)
+    new TextEncoder().encode(retrogradesCalendar),
   );
 
   console.log(`↩️ Wrote ${message}`);
@@ -160,28 +160,28 @@ export function getRetrogradeDurationEvents(events: Event[]): Event[] {
   const durationEvents: Event[] = [];
 
   const retrogradeEvents = events.filter((event) =>
-    event.categories.includes("Direction")
+    event.categories.includes("Direction"),
   );
 
   // Process each planet separately
   for (const planet of retrogradeBodies) {
     const beginnings = retrogradeEvents.filter((event) =>
-      event.description.includes(`Retrograde`)
+      event.description.includes(`Retrograde`),
     );
     const endings = retrogradeEvents.filter((event) =>
-      event.description.includes(`Direct`)
+      event.description.includes(`Direct`),
     );
 
     const pairs = pairDurationEvents(
       beginnings,
       endings,
-      `${planet} retrograde`
+      `${planet} retrograde`,
     );
 
     durationEvents.push(
       ...pairs.map(([beginning, ending]) =>
-        getRetrogradeDurationEvent(beginning, ending, planet)
-      )
+        getRetrogradeDurationEvent(beginning, ending, planet),
+      ),
     );
   }
 
@@ -191,7 +191,7 @@ export function getRetrogradeDurationEvents(events: Event[]): Event[] {
 function getRetrogradeDurationEvent(
   beginningEvent: Event,
   endingEvent: Event,
-  planet: RetrogradeBody
+  planet: RetrogradeBody,
 ): Event {
   const start = beginningEvent.start;
   const end = endingEvent.start;

@@ -21,7 +21,7 @@ import type { Moment } from "moment";
  */
 function composeStelliums(
   allEdges: AspectEdge[],
-  currentMinute: Moment
+  currentMinute: Moment,
 ): Event[] {
   const events: Event[] = [];
 
@@ -30,7 +30,7 @@ function composeStelliums(
   const edges = allEdges.filter(
     (edge) =>
       edge.event.start.getTime() <= currentTimestamp &&
-      edge.event.end.getTime() >= currentTimestamp
+      edge.event.end.getTime() >= currentTimestamp,
   );
 
   const aspectsByType = groupAspectsByType(edges);
@@ -138,7 +138,7 @@ function composeStelliums(
             }
           }
           return true;
-        }
+        },
       );
 
       if (phase) {
@@ -147,7 +147,7 @@ function composeStelliums(
             timestamp: currentMinute.toDate(),
             bodies,
             phase,
-          })
+          }),
         );
       }
     }
@@ -186,7 +186,7 @@ function createStelliumEvent(params: {
   }
 
   const summary = `${phaseEmoji}${stelliumSymbol} ${bodySymbols.join(
-    "-"
+    "-",
   )} ${description}`;
 
   const categories = [
@@ -213,7 +213,7 @@ function createStelliumEvent(params: {
  */
 export function getStelliumEvents(
   aspectEvents: Event[],
-  currentMinute: Moment
+  currentMinute: Moment,
 ): Event[] {
   const edges = parseAspectEvents(aspectEvents);
   const events: Event[] = [];
@@ -230,19 +230,19 @@ export function getStelliumDurationEvents(events: Event[]): Event[] {
 
   // Filter to stellium events only
   const stelliumEvents = events.filter((event) =>
-    event.categories.includes("Stellium")
+    event.categories.includes("Stellium"),
   );
 
   // Group by bodies and stellium type using categories
   const groupedEvents = _.groupBy(stelliumEvents, (event) => {
     const planets = event.categories
       .filter((category) =>
-        stelliumBodies.map((b) => _.startCase(b)).includes(category)
+        stelliumBodies.map((b) => _.startCase(b)).includes(category),
       )
       .sort();
 
     const stelliumType = event.categories.find(
-      (category) => category.includes("Body") && category !== "Stellium"
+      (category) => category.includes("Body") && category !== "Stellium",
     );
 
     return `${planets.join("-")}_${stelliumType}`;
@@ -278,10 +278,10 @@ export function getStelliumDurationEvents(events: Event[]): Event[] {
             summary: currentEvent.summary.replace(/^(?:➡️|🎯|⬅️)\s/u, ""),
             description: currentEvent.description.replace(
               / (forming|exact|dissolving)$/i,
-              ""
+              "",
             ),
             categories: currentEvent.categories.filter(
-              (c) => c !== "Forming" && c !== "Exact" && c !== "Dissolving"
+              (c) => c !== "Forming" && c !== "Exact" && c !== "Dissolving",
             ),
           });
 

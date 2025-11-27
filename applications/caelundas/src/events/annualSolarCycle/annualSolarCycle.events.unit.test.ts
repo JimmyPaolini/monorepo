@@ -43,7 +43,7 @@ describe("annualSolarCycle.events", () => {
   // Helper to create coordinate ephemeris
   function createCoordinateEphemeris(
     currentMinute: moment.Moment,
-    longitudes: number[]
+    longitudes: number[],
   ): CoordinateEphemeris {
     const ephemeris: CoordinateEphemeris = {};
     const totalMinutes = MARGIN_MINUTES * 2 + 1;
@@ -65,7 +65,7 @@ describe("annualSolarCycle.events", () => {
   // Helper to create distance ephemeris
   function createDistanceEphemeris(
     currentMinute: moment.Moment,
-    distances: number[]
+    distances: number[],
   ): DistanceEphemeris {
     const ephemeris: DistanceEphemeris = {};
     const totalMinutes = MARGIN_MINUTES * 2 + 1;
@@ -281,12 +281,12 @@ describe("annualSolarCycle.events", () => {
 
       // No event: sun at some random longitude
       const longitudes: number[] = new Array<number>(
-        MARGIN_MINUTES * 2 + 1
+        MARGIN_MINUTES * 2 + 1,
       ).fill(10);
 
       const sunCoordinateEphemeris = createCoordinateEphemeris(
         currentMinute,
-        longitudes
+        longitudes,
       );
 
       const events = getAnnualSolarCycleEvents({
@@ -314,7 +314,7 @@ describe("annualSolarCycle.events", () => {
 
       const sunDistanceEphemeris = createDistanceEphemeris(
         currentMinute,
-        distances
+        distances,
       );
 
       const events = getSolarApsisEvents({
@@ -324,7 +324,7 @@ describe("annualSolarCycle.events", () => {
 
       expect(events.length).toBeGreaterThanOrEqual(1);
       const aphelionEvent = events.find((e) =>
-        e.description.includes("Aphelion")
+        e.description.includes("Aphelion"),
       );
       expect(aphelionEvent).toBeDefined();
       if (aphelionEvent) {
@@ -347,7 +347,7 @@ describe("annualSolarCycle.events", () => {
 
       const sunDistanceEphemeris = createDistanceEphemeris(
         currentMinute,
-        distances
+        distances,
       );
 
       const events = getSolarApsisEvents({
@@ -357,7 +357,7 @@ describe("annualSolarCycle.events", () => {
 
       expect(events.length).toBeGreaterThanOrEqual(1);
       const perihelionEvent = events.find((e) =>
-        e.description.includes("Perihelion")
+        e.description.includes("Perihelion"),
       );
       expect(perihelionEvent).toBeDefined();
       if (perihelionEvent) {
@@ -376,7 +376,7 @@ describe("annualSolarCycle.events", () => {
 
       const sunDistanceEphemeris = createDistanceEphemeris(
         currentMinute,
-        distances
+        distances,
       );
 
       const events = getSolarApsisEvents({
@@ -424,7 +424,7 @@ describe("annualSolarCycle.events", () => {
 
       expect(durationEvents.length).toBeGreaterThanOrEqual(1);
       const advancingDuration = durationEvents.find((e) =>
-        e.description.includes("Advancing")
+        e.description.includes("Advancing"),
       );
       expect(advancingDuration).toBeDefined();
       if (advancingDuration) {
@@ -432,7 +432,7 @@ describe("annualSolarCycle.events", () => {
         expect(advancingDuration.end).toEqual(perihelionEvent.start);
         expect(advancingDuration.summary).toBe("☀️ 🔥 Solar Advancing");
         expect(advancingDuration.description).toBe(
-          "Solar Advancing (Aphelion to Perihelion)"
+          "Solar Advancing (Aphelion to Perihelion)",
         );
         expect(advancingDuration.categories).toContain("Advancing");
       }
@@ -473,7 +473,7 @@ describe("annualSolarCycle.events", () => {
 
       expect(durationEvents.length).toBeGreaterThanOrEqual(1);
       const retreatingDuration = durationEvents.find((e) =>
-        e.description.includes("Retreating")
+        e.description.includes("Retreating"),
       );
       expect(retreatingDuration).toBeDefined();
       if (retreatingDuration) {
@@ -481,7 +481,7 @@ describe("annualSolarCycle.events", () => {
         expect(retreatingDuration.end).toEqual(aphelionEvent.start);
         expect(retreatingDuration.summary).toBe("☀️ ❄️ Solar Retreating");
         expect(retreatingDuration.description).toBe(
-          "Solar Retreating (Perihelion to Aphelion)"
+          "Solar Retreating (Perihelion to Aphelion)",
         );
         expect(retreatingDuration.categories).toContain("Retreating");
       }
@@ -544,10 +544,10 @@ describe("annualSolarCycle.events", () => {
       expect(durationEvents.length).toBeGreaterThanOrEqual(2);
 
       const retreating = durationEvents.find((e) =>
-        e.description.includes("Retreating")
+        e.description.includes("Retreating"),
       );
       const advancing = durationEvents.find((e) =>
-        e.description.includes("Advancing")
+        e.description.includes("Advancing"),
       );
 
       expect(retreating).toBeDefined();
@@ -589,10 +589,10 @@ describe("annualSolarCycle.events", () => {
 
       expect(fs.default.writeFileSync).toHaveBeenCalled();
       expect(console.log).toHaveBeenCalledWith(
-        expect.stringContaining("Writing")
+        expect.stringContaining("Writing"),
       );
       expect(console.log).toHaveBeenCalledWith(
-        expect.stringContaining("Wrote")
+        expect.stringContaining("Wrote"),
       );
     });
 

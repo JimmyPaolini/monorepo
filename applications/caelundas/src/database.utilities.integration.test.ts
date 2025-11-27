@@ -84,12 +84,12 @@ describe("database.utilities integration", () => {
       await db.run(
         `INSERT INTO ephemeris (body, timestamp, latitude, longitude)
          VALUES (?, ?, ?, ?)`,
-        [body, timestamp.toISOString(), 0, 0.5]
+        [body, timestamp.toISOString(), 0, 0.5],
       );
 
       const rows: EphemerisRecord[] = await db.all(
         `SELECT * FROM ephemeris WHERE body = ? AND timestamp = ?`,
-        [body, timestamp.toISOString()]
+        [body, timestamp.toISOString()],
       );
 
       expect(rows).toHaveLength(1);
@@ -106,7 +106,7 @@ describe("database.utilities integration", () => {
       await db.run(
         `INSERT INTO ephemeris (body, timestamp, longitude, latitude)
          VALUES (?, ?, ?, ?)`,
-        [body, timestamp.toISOString(), 100, 5]
+        [body, timestamp.toISOString(), 100, 5],
       );
 
       // Upsert with new longitude
@@ -115,12 +115,12 @@ describe("database.utilities integration", () => {
          VALUES (?, ?, ?)
          ON CONFLICT(body, timestamp) DO UPDATE SET
            longitude = COALESCE(excluded.longitude, longitude)`,
-        [body, timestamp.toISOString(), 105]
+        [body, timestamp.toISOString(), 105],
       );
 
       const rows: EphemerisRecord[] = await db.all(
         `SELECT * FROM ephemeris WHERE body = ?`,
-        [body]
+        [body],
       );
 
       expect(rows).toHaveLength(1);
@@ -135,12 +135,12 @@ describe("database.utilities integration", () => {
       await db.run(
         `INSERT INTO ephemeris (body, timestamp, longitude, latitude, azimuth, elevation, illumination, diameter, distance)
          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-        [body, timestamp.toISOString(), 45.5, 1.2, 180, 45, 0.95, 0.004, 1.5]
+        [body, timestamp.toISOString(), 45.5, 1.2, 180, 45, 0.95, 0.004, 1.5],
       );
 
       const row: EphemerisRecord | undefined = await db.get(
         `SELECT * FROM ephemeris WHERE body = ? AND timestamp = ?`,
-        [body, timestamp.toISOString()]
+        [body, timestamp.toISOString()],
       );
 
       expect(row?.longitude).toBe(45.5);
@@ -172,7 +172,7 @@ describe("database.utilities integration", () => {
           event.start.toISOString(),
           event.end.toISOString(),
           event.categories.join(","),
-        ]
+        ],
       );
 
       const rows: Event[] = await db.all(`SELECT * FROM events`);
@@ -200,7 +200,7 @@ describe("database.utilities integration", () => {
           event1.start.toISOString(),
           event1.end.toISOString(),
           event1.categories.join(","),
-        ]
+        ],
       );
 
       // Upsert with updated description
@@ -215,7 +215,7 @@ describe("database.utilities integration", () => {
           event1.start.toISOString(),
           event1.end.toISOString(),
           event1.categories.join(","),
-        ]
+        ],
       );
 
       const rows: Event[] = await db.all(`SELECT * FROM events`);
@@ -260,19 +260,19 @@ describe("database.utilities integration", () => {
             event.start.toISOString(),
             event.end.toISOString(),
             event.categories.join(","),
-          ]
+          ],
         );
       }
 
       // Query events containing Sun
       const sunEvents = await db.all(
-        `SELECT * FROM events WHERE categories LIKE '%Sun%'`
+        `SELECT * FROM events WHERE categories LIKE '%Sun%'`,
       );
       expect(sunEvents.length).toBe(2);
 
       // Query aspects only
       const aspectEvents = await db.all(
-        `SELECT * FROM events WHERE categories LIKE '%Major Aspect%'`
+        `SELECT * FROM events WHERE categories LIKE '%Major Aspect%'`,
       );
       expect(aspectEvents.length).toBe(1);
     });
@@ -312,7 +312,7 @@ describe("database.utilities integration", () => {
             event.start.toISOString(),
             event.end.toISOString(),
             event.categories.join(","),
-          ]
+          ],
         );
       }
 
@@ -323,7 +323,7 @@ describe("database.utilities integration", () => {
         [
           new Date("2025-03-10T00:00:00Z").toISOString(),
           new Date("2025-03-20T00:00:00Z").toISOString(),
-        ]
+        ],
       );
 
       expect(midMonthEvents.length).toBe(1);
@@ -392,7 +392,7 @@ describe("database.utilities integration", () => {
             aspect.start.toISOString(),
             aspect.end.toISOString(),
             aspect.categories.join(","),
-          ]
+          ],
         );
       }
 
@@ -404,15 +404,15 @@ describe("database.utilities integration", () => {
            AND start <= ?
            AND end >= ?
          ORDER BY start ASC`,
-        [queryTime.toISOString(), queryTime.toISOString()]
+        [queryTime.toISOString(), queryTime.toISOString()],
       );
 
       expect(activeAspects.length).toBe(2);
       expect(activeAspects.map((a) => a.summary)).toContain(
-        "☀️☌♃ Sun conjunct Jupiter"
+        "☀️☌♃ Sun conjunct Jupiter",
       );
       expect(activeAspects.map((a) => a.summary)).toContain(
-        "♀️□♂️ Venus square Mars"
+        "♀️□♂️ Venus square Mars",
       );
     });
   });

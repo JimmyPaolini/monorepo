@@ -24,7 +24,7 @@ describe("monthlyLunarCycle.events", () => {
   // Helper to create illumination ephemeris with margin
   function createIlluminationEphemeris(
     currentMinute: moment.Moment,
-    illuminations: number[]
+    illuminations: number[],
   ): IlluminationEphemeris {
     const ephemeris: IlluminationEphemeris = {};
     const totalMinutes = MARGIN_MINUTES * 2 + 1;
@@ -49,12 +49,12 @@ describe("monthlyLunarCycle.events", () => {
 
       // Illumination staying constant (no phase change)
       const constantIlluminations: number[] = new Array<number>(
-        MARGIN_MINUTES * 2 + 1
+        MARGIN_MINUTES * 2 + 1,
       ).fill(0.5);
 
       const moonIlluminationEphemeris = createIlluminationEphemeris(
         currentMinute,
-        constantIlluminations
+        constantIlluminations,
       );
 
       const events = getMonthlyLunarCycleEvents({
@@ -102,7 +102,7 @@ describe("monthlyLunarCycle.events", () => {
       });
 
       expect(event.summary).toBe(
-        `🌙 ${symbolByLunarPhase["first quarter"]} First Quarter Moon`
+        `🌙 ${symbolByLunarPhase["first quarter"]} First Quarter Moon`,
       );
       expect(event.description).toBe("First Quarter Moon");
       expect(event.categories).toContain("First Quarter");
@@ -117,7 +117,7 @@ describe("monthlyLunarCycle.events", () => {
       });
 
       expect(event.summary).toBe(
-        `🌙 ${symbolByLunarPhase["last quarter"]} Last Quarter Moon`
+        `🌙 ${symbolByLunarPhase["last quarter"]} Last Quarter Moon`,
       );
       expect(event.description).toBe("Last Quarter Moon");
       expect(event.categories).toContain("Last Quarter");
@@ -132,7 +132,7 @@ describe("monthlyLunarCycle.events", () => {
       });
 
       expect(event.summary).toBe(
-        `🌙 ${symbolByLunarPhase["waxing crescent"]} Waxing Crescent Moon`
+        `🌙 ${symbolByLunarPhase["waxing crescent"]} Waxing Crescent Moon`,
       );
       expect(event.description).toBe("Waxing Crescent Moon");
       expect(event.categories).toContain("Waxing Crescent");
@@ -147,7 +147,7 @@ describe("monthlyLunarCycle.events", () => {
       });
 
       expect(event.summary).toBe(
-        `🌙 ${symbolByLunarPhase["waxing gibbous"]} Waxing Gibbous Moon`
+        `🌙 ${symbolByLunarPhase["waxing gibbous"]} Waxing Gibbous Moon`,
       );
       expect(event.description).toBe("Waxing Gibbous Moon");
       expect(event.categories).toContain("Waxing Gibbous");
@@ -162,7 +162,7 @@ describe("monthlyLunarCycle.events", () => {
       });
 
       expect(event.summary).toBe(
-        `🌙 ${symbolByLunarPhase["waning gibbous"]} Waning Gibbous Moon`
+        `🌙 ${symbolByLunarPhase["waning gibbous"]} Waning Gibbous Moon`,
       );
       expect(event.description).toBe("Waning Gibbous Moon");
       expect(event.categories).toContain("Waning Gibbous");
@@ -177,7 +177,7 @@ describe("monthlyLunarCycle.events", () => {
       });
 
       expect(event.summary).toBe(
-        `🌙 ${symbolByLunarPhase["waning crescent"]} Waning Crescent Moon`
+        `🌙 ${symbolByLunarPhase["waning crescent"]} Waning Crescent Moon`,
       );
       expect(event.description).toBe("Waning Crescent Moon");
       expect(event.categories).toContain("Waning Crescent");
@@ -208,10 +208,10 @@ describe("monthlyLunarCycle.events", () => {
 
       expect(fs.default.writeFileSync).toHaveBeenCalled();
       expect(console.log).toHaveBeenCalledWith(
-        expect.stringContaining("Writing")
+        expect.stringContaining("Writing"),
       );
       expect(console.log).toHaveBeenCalledWith(
-        expect.stringContaining("Wrote")
+        expect.stringContaining("Wrote"),
       );
     });
 
@@ -337,7 +337,7 @@ describe("monthlyLunarCycle.events", () => {
         getMonthlyLunarCycleEvent({
           date: new Date(date),
           lunarPhase: phase,
-        })
+        }),
       );
 
       const durationEvents = getMonthlyLunarCycleDurationEvents(events);
@@ -376,7 +376,7 @@ describe("monthlyLunarCycle.events", () => {
       // Should skip the invalid event
       expect(durationEvents).toHaveLength(0);
       expect(console.warn).toHaveBeenCalledWith(
-        expect.stringContaining("Could not extract lunar phase")
+        expect.stringContaining("Could not extract lunar phase"),
       );
     });
   });

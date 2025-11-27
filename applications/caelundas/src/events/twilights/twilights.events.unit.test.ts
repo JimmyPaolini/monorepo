@@ -318,7 +318,7 @@ describe("twilights.events", () => {
 
       // Should have Daylight duration
       const daylightEvents = durationEvents.filter(
-        (e) => e.description === "Daylight"
+        (e) => e.description === "Daylight",
       );
       expect(daylightEvents.length).toBeGreaterThanOrEqual(1);
     });
@@ -345,7 +345,7 @@ describe("twilights.events", () => {
       ]);
 
       const nauticalMorningEvents = durationEvents.filter(
-        (e) => e.description === "Nautical Twilight (Morning)"
+        (e) => e.description === "Nautical Twilight (Morning)",
       );
       expect(nauticalMorningEvents.length).toBeGreaterThanOrEqual(1);
     });
@@ -372,7 +372,7 @@ describe("twilights.events", () => {
       ]);
 
       const astronomicalMorningEvents = durationEvents.filter(
-        (e) => e.description === "Astronomical Twilight (Morning)"
+        (e) => e.description === "Astronomical Twilight (Morning)",
       );
       expect(astronomicalMorningEvents.length).toBeGreaterThanOrEqual(1);
     });
@@ -401,7 +401,7 @@ describe("twilights.events", () => {
       ]);
 
       const nightEvents = durationEvents.filter(
-        (e) => e.description === "Night"
+        (e) => e.description === "Night",
       );
       expect(nightEvents.length).toBeGreaterThanOrEqual(1);
     });
