@@ -1,21 +1,28 @@
 {
   "servers": {
-    "io.github.upstash/context7": {
-      "type": "stdio",
+    "context7": {
+      "type": "http",
+      "url": "https://mcp.context7.com/mcp"
+    },
+    "supabase": {
       "command": "npx",
-      "args": ["@upstash/context7-mcp@1.0.30"],
+      "args": [
+        "-y",
+        "@supabase/mcp-server-supabase@latest",
+        "--project-ref",
+        "dydlnpcsdqgjlkrkneoh",
+        "--read-only"
+      ],
       "env": {
-        "CONTEXT7_API_KEY": "${input:CONTEXT7_API_KEY}"
-      },
-      "gallery": "https://api.mcp.github.com",
-      "version": "1.0.30"
+        "SUPABASE_ACCESS_TOKEN": "${input:SUPABASE_ACCESS_TOKEN}"
+      }
     }
   },
   "inputs": [
     {
-      "id": "CONTEXT7_API_KEY",
+      "id": "SUPABASE_ACCESS_TOKEN",
       "type": "promptString",
-      "description": "API key for authentication",
+      "description": "Supabase access token for MCP server",
       "password": true
     }
   ]

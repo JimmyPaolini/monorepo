@@ -61,6 +61,46 @@
         "cwd": "applications/lexico"
       },
       "description": "Check formatting without making changes"
+    },
+    "supabase:start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "supabase start",
+        "cwd": "applications/lexico"
+      },
+      "description": "Start local Supabase development environment"
+    },
+    "supabase:stop": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "supabase stop",
+        "cwd": "applications/lexico"
+      },
+      "description": "Stop local Supabase development environment"
+    },
+    "supabase:generate-types": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "supabase gen types typescript --local > src/lib/database.types.ts",
+        "cwd": "applications/lexico"
+      },
+      "description": "Generate TypeScript types from local Supabase schema"
+    },
+    "supabase:db-reset": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "supabase db reset",
+        "cwd": "applications/lexico"
+      },
+      "description": "Reset local database and apply all migrations"
+    },
+    "supabase:db-diff": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "supabase db diff --use-migra",
+        "cwd": "applications/lexico"
+      },
+      "description": "Generate migration from local database changes"
     }
   }
 }
