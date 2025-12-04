@@ -3,23 +3,23 @@
   "defaultBase": "main",
   "plugins": [
     {
-      "plugin": "@nx/eslint/plugin",
-      "options": {
-        "targetName": "lint"
-      }
-    },
-    {
       "plugin": "@nx/vite/plugin",
       "options": {
         "buildTargetName": "build",
-        "testTargetName": "vite:test",
-        "serveTargetName": "serve",
         "devTargetName": "develop",
-        "previewTargetName": "preview",
-        "serveStaticTargetName": "serve-static",
-        "typecheckTargetName": "vite:typecheck",
-        "buildDepsTargetName": "build-deps",
-        "watchDepsTargetName": "watch-deps"
+        "e2eTestTargetName": false,
+        "previewTargetName": false,
+        "serveStaticTargetName": false,
+        "serveTargetName": false,
+        "typecheckTargetName": "typecheck",
+        "buildDepsTargetName": false,
+        "watchDepsTargetName": false
+      }
+    },
+    {
+      "plugin": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
       }
     }
   ],
@@ -80,7 +80,11 @@
       }
     },
     "typecheck": {
-      "inputs": ["default", "^production"],
+      "inputs": [
+        "default",
+        "^production",
+        { "externalDependencies": ["typescript"] }
+      ],
       "cache": true
     }
   },

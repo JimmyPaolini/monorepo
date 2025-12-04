@@ -30,21 +30,13 @@
       },
       "description": "Start the production server"
     },
-    "preview": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm preview",
-        "cwd": "applications/lexico"
-      },
-      "description": "Preview the production build locally"
-    },
     "typecheck": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm typecheck",
+        "command": "tsc --noEmit",
         "cwd": "applications/lexico"
       },
-      "description": "Type-check the application without emitting files"
+      "description": "Type-check the application"
     },
     "format": {
       "executor": "nx:run-commands",
@@ -77,7 +69,7 @@
       },
       "description": "Generate TypeScript types from local Supabase schema"
     },
-    "supabase:db-reset": {
+    "supabase:database-reset": {
       "executor": "nx:run-commands",
       "options": {
         "command": "supabase db reset",
@@ -85,10 +77,10 @@
       },
       "description": "Reset local database and apply all migrations"
     },
-    "supabase:db-diff": {
+    "supabase:database-diff": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "supabase db diff --use-migra",
+        "command": "supabase db diff --use-migra-py",
         "cwd": "applications/lexico"
       },
       "description": "Generate migration from local database changes"

@@ -1,14 +1,22 @@
 {
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "jsx": "react-jsx",
     "allowJs": false,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "types": ["vite/client", "node"],
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "target": "ES2022",
+    "outDir": "../../dist/out-tsc",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": [
+      "node",
+      "vite/client",
+      "@nx/react/typings/cssmodule.d.ts",
+      "@nx/react/typings/image.d.ts"
+    ],
     "baseUrl": ".",
     "paths": {
       "~/*": ["./src/*"],
@@ -17,12 +25,21 @@
       ]
     }
   },
-  "files": [],
-  "include": [],
-  "references": [
-    {
-      "path": "./tsconfig.app.json"
-    }
+  "include": [
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "vite.config.mts"
   ],
-  "extends": "../../tsconfig.base.json"
+  "exclude": [
+    "src/**/*.spec.ts",
+    "src/**/*.test.ts",
+    "src/**/*.spec.tsx",
+    "src/**/*.test.tsx",
+    "src/**/*.spec.js",
+    "src/**/*.test.js",
+    "src/**/*.spec.jsx",
+    "src/**/*.test.jsx"
+  ]
 }
