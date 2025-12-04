@@ -15,7 +15,7 @@
     "typecheck": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "tsc --noEmit -p tsconfig.lib.json",
+        "command": "tsc --noEmit",
         "cwd": "packages/lexico-components"
       },
       "description": "Type-check the library"

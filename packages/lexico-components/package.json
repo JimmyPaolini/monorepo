@@ -21,7 +21,7 @@
   ],
   "scripts": {
     "build": "vite build",
-    "typecheck": "tsc --noEmit -p tsconfig.lib.json"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",

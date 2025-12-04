@@ -3,13 +3,15 @@
   "compilerOptions": {
     "module": "ESNext",
     "moduleResolution": "Bundler",
-    "jsx": "react-jsx"
-  },
-  "files": [],
-  "include": [],
-  "references": [
-    {
-      "path": "./tsconfig.lib.json"
+    "jsx": "react-jsx",
+    "outDir": "../../dist/out-tsc",
+    "declaration": true,
+    "types": ["node", "vite/client"],
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
     }
-  ]
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "vite.config.mts"]
 }

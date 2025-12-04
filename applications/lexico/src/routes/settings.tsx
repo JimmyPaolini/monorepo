@@ -23,8 +23,10 @@ function SettingsPage(): ReactNode {
 
   const handleSignIn = async (): Promise<void> => {
     const redirectTo = `${location.origin}/settings`;
-    const url = await getGoogleSignInUrl({ data: { redirectTo } });
-    location.href = url;
+    const { url } = await getGoogleSignInUrl({ data: { redirectTo } });
+    if (url) {
+      location.href = url;
+    }
   };
 
   const handleSignOut = async (): Promise<void> => {
