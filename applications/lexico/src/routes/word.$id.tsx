@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-confusing-void-expression */
 import {
   AdjectiveFormsTable,
   Card,
@@ -28,7 +28,6 @@ export const Route = createFileRoute("/word/$id")({
 });
 
 function WordPage(): ReactNode {
-  // eslint-disable-next-line @typescript-eslint/no-confusing-void-expression -- TanStack Router type inference
   const loaderData = Route.useLoaderData();
   const { entry } = loaderData;
 
