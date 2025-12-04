@@ -1,5 +1,5 @@
 // Utilities
-export { cn } from "./lib/utils";
+export { cn } from "./generated/utils/utils";
 
 // Hooks
 export {
@@ -13,7 +13,7 @@ export {
   Button,
   buttonVariants,
   type ButtonProps,
-} from "./components/ui/button";
+} from "./generated/ui/button";
 export {
   Card,
   CardHeader,
@@ -21,7 +21,7 @@ export {
   CardTitle,
   CardDescription,
   CardContent,
-} from "./components/ui/card";
+} from "./generated/ui/card";
 export {
   Dialog,
   DialogPortal,
@@ -33,11 +33,11 @@ export {
   DialogFooter,
   DialogTitle,
   DialogDescription,
-} from "./components/ui/dialog";
-export { Input } from "./components/ui/input";
-export { Label } from "./components/ui/label";
-export { Separator } from "./components/ui/separator";
-export { Textarea } from "./components/ui/textarea";
+} from "./generated/ui/dialog";
+export { Input } from "./generated/ui/input";
+export { Label } from "./generated/ui/label";
+export { Separator } from "./generated/ui/separator";
+export { Textarea } from "./generated/ui/textarea";
 
 // Entry Components
 export {

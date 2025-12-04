@@ -6,36 +6,34 @@
  * Lexico Theme
  * Primary: Burgundy #66023C (HSL: 330 97% 20%)
  * Secondary: Green #02662C (HSL: 150 97% 20%)
- * Background: Dark gray for dark mode, light for light mode
- * Card/Paper: #424242 (HSL: 0 0% 26%) for dark mode
  */
 
 @layer base {
   :root {
-    /* Light mode - inverted colors for accessibility */
-    --background: 0 0% 98%;
-    --foreground: 330 20% 10%;
+    /* Light mode - neutral backgrounds with Lexico colors */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
-    --card-foreground: 330 20% 10%;
+    --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
-    --popover-foreground: 330 20% 10%;
+    --popover-foreground: 0 0% 3.9%;
     /* Burgundy primary */
     --primary: 330 97% 20%;
     --primary-foreground: 0 0% 98%;
     /* Green secondary */
     --secondary: 150 97% 20%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 330 10% 90%;
-    --muted-foreground: 330 10% 40%;
-    --accent: 150 40% 90%;
-    --accent-foreground: 150 97% 15%;
-    --destructive: 0 84% 60%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 330 10% 85%;
-    --input: 330 10% 85%;
-    --ring: 330 97% 20%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
     --radius: 0.5rem;
-    /* Chart colors */
+    /* Chart colors - Lexico theme */
     --chart-1: 330 97% 20%;
     --chart-2: 150 97% 20%;
     --chart-3: 330 60% 40%;
@@ -44,30 +42,29 @@
   }
 
   .dark {
-    /* Dark mode - Lexico's native theme */
-    --background: 330 97% 20%;
-    --foreground: 0 0% 95%;
-    /* Card/Paper background: #424242 */
-    --card: 0 0% 26%;
-    --card-foreground: 0 0% 95%;
-    --popover: 0 0% 26%;
-    --popover-foreground: 0 0% 95%;
+    /* Dark mode - neutral backgrounds with Lexico colors */
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
     /* Burgundy primary - lighter for dark mode visibility */
     --primary: 330 80% 55%;
     --primary-foreground: 0 0% 10%;
     /* Green secondary - lighter for dark mode visibility */
     --secondary: 150 80% 45%;
     --secondary-foreground: 0 0% 10%;
-    --muted: 0 0% 20%;
-    --muted-foreground: 0 0% 65%;
-    --accent: 150 40% 25%;
-    --accent-foreground: 0 0% 95%;
-    --destructive: 0 62% 30%;
-    --destructive-foreground: 0 0% 95%;
-    --border: 0 0% 35%;
-    --input: 0 0% 30%;
-    --ring: 330 80% 55%;
-    /* Chart colors for dark mode */
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    /* Chart colors - Lexico theme for dark mode */
     --chart-1: 330 80% 55%;
     --chart-2: 150 80% 45%;
     --chart-3: 330 60% 65%;

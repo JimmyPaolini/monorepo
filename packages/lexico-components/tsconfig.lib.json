@@ -4,7 +4,11 @@
     "outDir": "../../dist/out-tsc",
     "declaration": true,
     "types": ["node", "vite/client"],
-    "lib": ["ES2022", "DOM", "DOM.Iterable"]
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "vite.config.mts"]
 }

@@ -1,9 +1,9 @@
 import { Loader2, Search } from "lucide-react";
 import * as React from "react";
 
-import { cn } from "../../lib/utils";
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
+import { Button } from "../../generated/ui/button";
+import { Input } from "../../generated/ui/input";
+import { cn } from "../../generated/utils/utils";
 
 export interface SearchBarProps {
   /** Initial search value */

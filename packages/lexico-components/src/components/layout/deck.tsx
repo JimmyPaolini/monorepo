@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { cn } from "../../lib/utils";
+import { cn } from "../../generated/utils/utils";
 
 export interface DeckProps {
   /** Children to render in the grid */

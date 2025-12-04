@@ -1,8 +1,8 @@
 import * as React from "react";
 
-import { cn } from "../../lib/utils";
-import { Card } from "../ui/card";
-import { Separator } from "../ui/separator";
+import { Card } from "../../generated/ui/card";
+import { Separator } from "../../generated/ui/separator";
+import { cn } from "../../generated/utils/utils";
 
 import { PrincipalParts } from "./principal-parts";
 import { Translations } from "./translations";
