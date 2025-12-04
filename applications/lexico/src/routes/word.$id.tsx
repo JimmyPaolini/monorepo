@@ -1,6 +1,6 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-confusing-void-expression */
 import {
   AdjectiveFormsTable,
+  Button,
   Card,
   CardContent,
   CardHeader,
@@ -12,7 +12,11 @@ import {
   VerbFormsTable,
 } from "@monorepo/lexico-components";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Bookmark, BookmarkCheck } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
 
+import { PronunciationButton } from "../components/pronunciation-button";
+import { isBookmarked, toggleBookmark } from "../lib/bookmarks";
 import { transformForms } from "../lib/forms";
 import { getEntry } from "../lib/search";
 
@@ -20,7 +24,7 @@ import type { EntryFull } from "../lib/types";
 import type { ReactNode } from "react";
 
 export const Route = createFileRoute("/word/$id")({
-  loader: async ({ params }): Promise<{ entry: EntryFull | null }> => {
+  loader: async ({ params }) => {
     const entry = await getEntry({ data: { id: params.id } });
     return { entry };
   },
@@ -30,6 +34,21 @@ export const Route = createFileRoute("/word/$id")({
 function WordPage(): ReactNode {
   const loaderData = Route.useLoaderData();
   const { entry } = loaderData;
+  const [bookmarked, setBookmarked] = useState(false);
+
+  useEffect(() => {
+    if (entry) {
+      void isBookmarked({ data: { entryId: entry.id } }).then(setBookmarked);
+    }
+  }, [entry]);
+
+  const handleBookmarkToggle = useCallback(async () => {
+    if (!entry) return;
+    const result = await toggleBookmark({ data: { entryId: entry.id } });
+    if (result.success) {
+      setBookmarked(result.bookmarked);
+    }
+  }, [entry]);
 
   if (!entry) {
     return (
@@ -50,13 +69,27 @@ function WordPage(): ReactNode {
 
   return (
     <div className="mx-auto max-w-4xl space-y-6 px-4 py-6">
-      {/* Back link */}
-      <Link
-        to="/search"
-        className="text-muted-foreground hover:text-foreground"
-      >
-        ← Back to Search
-      </Link>
+      {/* Back link and bookmark */}
+      <div className="flex items-center justify-between">
+        <Link
+          to="/search"
+          className="text-muted-foreground hover:text-foreground"
+        >
+          ← Back to Search
+        </Link>
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => void handleBookmarkToggle()}
+          title={bookmarked ? "Remove bookmark" : "Add bookmark"}
+        >
+          {bookmarked ? (
+            <BookmarkCheck className="h-5 w-5 text-primary" />
+          ) : (
+            <Bookmark className="h-5 w-5" />
+          )}
+        </Button>
+      </div>
 
       {/* Main entry card */}
       <Card>
@@ -76,6 +109,7 @@ function WordPage(): ReactNode {
       </Card>
 
       {/* Pronunciation section */}
+      {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- pronunciation can be null from DB */}
       {entry.pronunciation &&
         (entry.pronunciation.classical ||
           entry.pronunciation.ecclesiastical) && (
@@ -83,21 +117,29 @@ function WordPage(): ReactNode {
             <CardHeader>
               <CardTitle className="text-lg">Pronunciation</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-2">
+            <CardContent className="space-y-3">
               {entry.pronunciation.classical?.phonetic && (
-                <div>
+                <div className="flex items-center gap-2">
                   <span className="font-medium">Classical: </span>
                   <span className="font-mono">
                     {entry.pronunciation.classical.phonetic}
                   </span>
+                  <PronunciationButton
+                    text={entry.principal_parts.present ?? entry.id}
+                    dialect="classical"
+                  />
                 </div>
               )}
               {entry.pronunciation.ecclesiastical?.phonetic && (
-                <div>
+                <div className="flex items-center gap-2">
                   <span className="font-medium">Ecclesiastical: </span>
                   <span className="font-mono">
                     {entry.pronunciation.ecclesiastical.phonetic}
                   </span>
+                  <PronunciationButton
+                    text={entry.principal_parts.present ?? entry.id}
+                    dialect="ecclesiastical"
+                  />
                 </div>
               )}
             </CardContent>
@@ -123,7 +165,7 @@ function WordPage(): ReactNode {
 }
 
 function FormsSection({ entry }: { entry: EntryFull }): ReactNode {
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- forms may be null from DB
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- forms can be null from DB
   const transformed = entry.forms
     ? transformForms(entry.part_of_speech, entry.forms)
     : null;

@@ -22,9 +22,22 @@ export {
   CardDescription,
   CardContent,
 } from "./components/ui/card";
+export {
+  Dialog,
+  DialogPortal,
+  DialogOverlay,
+  DialogClose,
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogFooter,
+  DialogTitle,
+  DialogDescription,
+} from "./components/ui/dialog";
 export { Input } from "./components/ui/input";
 export { Label } from "./components/ui/label";
 export { Separator } from "./components/ui/separator";
+export { Textarea } from "./components/ui/textarea";
 
 // Entry Components
 export {

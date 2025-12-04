@@ -3,6 +3,10 @@ import baseConfig from "../../eslint.config.ts";
 export default [
   ...baseConfig,
   {
+    // Ignore Supabase Edge Functions (Deno runtime, separate tsconfig)
+    ignores: ["supabase/functions/**"],
+  },
+  {
     files: ["**/*.json"],
     rules: {
       "@nx/dependency-checks": [

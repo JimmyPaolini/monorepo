@@ -158,7 +158,7 @@ export interface EntrySearchResult {
   id: string;
   principal_parts: PrincipalParts;
   part_of_speech: PartOfSpeech;
-  inflection: Record<string, unknown>;
+  inflection: Record<string, object>;
   pronunciation: Pronunciation;
   forms: Forms;
   translations: string[];
@@ -171,7 +171,7 @@ export interface EntryFull {
   id: string;
   principal_parts: PrincipalParts;
   part_of_speech: PartOfSpeech;
-  inflection: Record<string, unknown>;
+  inflection: Record<string, object>;
   pronunciation: Pronunciation;
   forms: Forms;
   etymology: string | null;
