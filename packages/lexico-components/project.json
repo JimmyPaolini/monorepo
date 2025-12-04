@@ -12,6 +12,13 @@
         "outputPath": "dist/packages/lexico-components"
       }
     },
+    "format": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prettier {args} packages/lexico-components"
+      },
+      "description": "Format files in the package with Prettier"
+    },
     "typecheck": {
       "executor": "nx:run-commands",
       "options": {

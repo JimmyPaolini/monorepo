@@ -6,7 +6,7 @@
   "tags": ["type:app", "framework:react", "stack:tanstack-start"],
   "implicitDependencies": ["lexico-components"],
   "targets": {
-    "dev": {
+    "develop": {
       "executor": "nx:run-commands",
       "options": {
         "command": "pnpm dev",
@@ -49,18 +49,9 @@
     "format": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "prettier --write .",
-        "cwd": "applications/lexico"
+        "command": "prettier {args} applications/lexico"
       },
-      "description": "Format all files in the project with Prettier"
-    },
-    "format:check": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "prettier --check .",
-        "cwd": "applications/lexico"
-      },
-      "description": "Check formatting without making changes"
+      "description": "Format files in the project with Prettier"
     },
     "supabase:start": {
       "executor": "nx:run-commands",

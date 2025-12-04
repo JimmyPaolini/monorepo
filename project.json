@@ -6,7 +6,7 @@
     "lint": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "eslint --config eslint.config.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' 'scripts/' 'documentation/'",
+        "command": "eslint {args} --config eslint.config.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' 'scripts/' 'documentation/'",
         "cwd": "{projectRoot}"
       },
       "description": "Lint workspace root files (config files, scripts, documentation)"
@@ -22,18 +22,10 @@
     "format": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "prettier --write --ignore-unknown .",
+        "command": "prettier {args} --ignore-unknown .",
         "cwd": "{projectRoot}"
       },
       "description": "Format workspace root files with Prettier"
-    },
-    "format:check": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "prettier --check --ignore-unknown .",
-        "cwd": "{projectRoot}"
-      },
-      "description": "Check formatting of workspace root files without making changes"
     },
     "terraform:import": {
       "executor": "nx:run-commands",

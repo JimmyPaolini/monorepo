@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "set -a && source .env && set +a && tsx src/main.ts",
+    "develop": "set -a && source .env && set +a && tsx src/main.ts",
     "start": "tsx src/main.ts",
     "test": "vitest run",
     "test:watch": "vitest",

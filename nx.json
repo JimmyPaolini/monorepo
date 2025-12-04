@@ -14,7 +14,7 @@
         "buildTargetName": "build",
         "testTargetName": "vite:test",
         "serveTargetName": "serve",
-        "devTargetName": "dev",
+        "devTargetName": "develop",
         "previewTargetName": "preview",
         "serveStaticTargetName": "serve-static",
         "typecheckTargetName": "vite:typecheck",
@@ -53,7 +53,14 @@
     },
     "lint": {
       "inputs": ["default", "{workspaceRoot}/eslint.config.mjs"],
-      "cache": true
+      "cache": true,
+      "defaultConfiguration": "check",
+      "configurations": {
+        "check": {},
+        "write": {
+          "args": "--fix"
+        }
+      }
     },
     "format": {
       "inputs": [
@@ -61,7 +68,16 @@
         "{workspaceRoot}/.prettierrc.js",
         "{workspaceRoot}/.prettierignore"
       ],
-      "cache": true
+      "cache": true,
+      "defaultConfiguration": "write",
+      "configurations": {
+        "write": {
+          "args": "--write"
+        },
+        "check": {
+          "args": "--check"
+        }
+      }
     },
     "typecheck": {
       "inputs": ["default", "^production"],
