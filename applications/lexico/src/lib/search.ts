@@ -2,7 +2,7 @@ import { createServerFn } from "@tanstack/react-start";
 
 import { getSupabaseServerClient } from "./supabase-server";
 
-import type { EntrySearchResult } from "./types";
+import type { EntryFull, EntrySearchResult } from "./types";
 
 // Helper to detect if query is likely Latin
 function isLatinQuery(query: string): boolean {
@@ -55,4 +55,54 @@ export const searchEntries = createServerFn({ method: "GET" })
     }
 
     return results as EntrySearchResult[];
+  });
+
+interface GetEntryInput {
+  id: string;
+}
+
+export const getEntry = createServerFn({ method: "GET" })
+  .inputValidator((data: GetEntryInput) => data)
+  .handler(async ({ data }): Promise<EntryFull | null> => {
+    const supabase = getSupabaseServerClient();
+
+    const { data: entry, error } = await supabase
+      .from("entries")
+      .select(
+        `
+        id,
+        principal_parts,
+        part_of_speech,
+        inflection,
+        pronunciation,
+        forms,
+        etymology
+      `,
+      )
+      .eq("id", data.id)
+      .single();
+
+    if (error) {
+      if (error.code === "PGRST116") {
+        // No rows returned - entry not found
+        return null;
+      }
+      console.error("Get entry error:", error);
+      throw new Error(`Failed to fetch entry: ${error.message}`);
+    }
+
+    // Fetch translations separately from the translations table
+    const { data: translations, error: transError } = await supabase
+      .from("translations")
+      .select("translation")
+      .eq("entry_id", data.id);
+
+    if (transError) {
+      console.error("Get translations error:", transError);
+    }
+
+    return {
+      ...entry,
+      translations: translations?.map((t) => t.translation) ?? [],
+    } as EntryFull;
   });

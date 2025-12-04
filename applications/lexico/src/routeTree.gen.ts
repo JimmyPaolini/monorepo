@@ -15,6 +15,7 @@ import { Route as SearchRouteImport } from './routes/search'
 import { Route as LibraryRouteImport } from './routes/library'
 import { Route as BookmarksRouteImport } from './routes/bookmarks'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as WordIdRouteImport } from './routes/word.$id'
 
 const ToolsRoute = ToolsRouteImport.update({
   id: '/tools',
@@ -46,6 +47,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WordIdRoute = WordIdRouteImport.update({
+  id: '/word/$id',
+  path: '/word/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/search': typeof SearchRoute
   '/settings': typeof SettingsRoute
   '/tools': typeof ToolsRoute
+  '/word/$id': typeof WordIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/search': typeof SearchRoute
   '/settings': typeof SettingsRoute
   '/tools': typeof ToolsRoute
+  '/word/$id': typeof WordIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,6 +79,7 @@ export interface FileRoutesById {
   '/search': typeof SearchRoute
   '/settings': typeof SettingsRoute
   '/tools': typeof ToolsRoute
+  '/word/$id': typeof WordIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,8 +90,16 @@ export interface FileRouteTypes {
     | '/search'
     | '/settings'
     | '/tools'
+    | '/word/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/bookmarks' | '/library' | '/search' | '/settings' | '/tools'
+  to:
+    | '/'
+    | '/bookmarks'
+    | '/library'
+    | '/search'
+    | '/settings'
+    | '/tools'
+    | '/word/$id'
   id:
     | '__root__'
     | '/'
@@ -91,6 +108,7 @@ export interface FileRouteTypes {
     | '/search'
     | '/settings'
     | '/tools'
+    | '/word/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -100,6 +118,7 @@ export interface RootRouteChildren {
   SearchRoute: typeof SearchRoute
   SettingsRoute: typeof SettingsRoute
   ToolsRoute: typeof ToolsRoute
+  WordIdRoute: typeof WordIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -146,6 +165,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/word/$id': {
+      id: '/word/$id'
+      path: '/word/$id'
+      fullPath: '/word/$id'
+      preLoaderRoute: typeof WordIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -156,6 +182,7 @@ const rootRouteChildren: RootRouteChildren = {
   SearchRoute: SearchRoute,
   SettingsRoute: SettingsRoute,
   ToolsRoute: ToolsRoute,
+  WordIdRoute: WordIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

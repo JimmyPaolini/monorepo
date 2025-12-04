@@ -3,9 +3,10 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
+  EntryCard,
   Input,
 } from "@monorepo/lexico-components";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useCallback, useEffect, useState } from "react";
 
 import { searchEntries } from "../lib/search";
@@ -88,12 +89,22 @@ function SearchPage(): ReactNode {
       )}
 
       {!isLoading && !error && results.length > 0 && (
-        <div className="space-y-4">
+        <div className="mx-auto max-w-2xl space-y-4">
           {results.map((entry) => (
-            <EntryCard
+            <Link
               key={entry.id}
-              entry={entry}
-            />
+              to="/word/$id"
+              params={{ id: entry.id }}
+              className="block transition-transform hover:scale-[1.01]"
+            >
+              <EntryCard
+                id={entry.id}
+                partOfSpeech={entry.part_of_speech}
+                principalParts={entry.principal_parts}
+                inflection={entry.inflection}
+                translations={entry.translations}
+              />
+            </Link>
           ))}
         </div>
       )}
@@ -130,37 +141,5 @@ function SearchPage(): ReactNode {
         </Card>
       )}
     </div>
-  );
-}
-
-// Simple entry card component - will be moved to lexico-components later
-function EntryCard({ entry }: { entry: EntrySearchResult }): ReactNode {
-  const principalPartsText = Object.values(entry.principal_parts)
-    .filter(Boolean)
-    .join(", ");
-
-  return (
-    <Card className="mx-auto max-w-2xl">
-      <CardHeader>
-        <CardTitle className="flex items-baseline gap-2">
-          <span className="text-primary">{principalPartsText}</span>
-          <span className="text-sm text-muted-foreground">
-            ({entry.part_of_speech})
-          </span>
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
-        <ul className="list-inside list-disc space-y-1 text-muted-foreground">
-          {entry.translations.slice(0, 5).map((translation) => (
-            <li key={translation}>{translation}</li>
-          ))}
-          {entry.translations.length > 5 && (
-            <li className="text-sm">
-              ...and {entry.translations.length - 5} more
-            </li>
-          )}
-        </ul>
-      </CardContent>
-    </Card>
   );
 }
