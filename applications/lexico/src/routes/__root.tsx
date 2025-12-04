@@ -1,7 +1,7 @@
 /// <reference types="vite/client" />
 import { Button } from "@monorepo/lexico-components";
 import {
-  createRootRouteWithContext,
+  createRootRoute,
   HeadContent,
   Link,
   Outlet,
@@ -9,17 +9,16 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 
-import type { SupabaseClient, User } from "@supabase/supabase-js";
 import type { ReactNode } from "react";
 
+import { getCurrentUser } from "~/lib/auth";
 import appCss from "~/styles/app.css?url";
 
-export interface RouterContext {
-  supabase: SupabaseClient;
-  user: User | null;
-}
-
-export const Route = createRootRouteWithContext<RouterContext>()({
+export const Route = createRootRoute({
+  beforeLoad: async () => {
+    const user = await getCurrentUser();
+    return { user };
+  },
   head: () => ({
     meta: [
       {
@@ -30,11 +29,12 @@ export const Route = createRootRouteWithContext<RouterContext>()({
         content: "width=device-width, initial-scale=1",
       },
       {
-        title: "Lexico",
+        title: "Lexico - Latin Dictionary & Reader",
       },
       {
         name: "description",
-        content: "Lexico - Built with TanStack Start and Supabase",
+        content:
+          "Lexico is a Latin dictionary and reader application for students and scholars.",
       },
     ],
     links: [
@@ -72,8 +72,13 @@ function RootComponent(): ReactNode {
 function RootDocument({
   children,
 }: Readonly<{ children: ReactNode }>): ReactNode {
+  const { user } = Route.useRouteContext();
+
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className="dark"
+    >
       <head>
         <HeadContent />
       </head>
@@ -88,11 +93,51 @@ function RootDocument({
             </Link>
             <div className="flex gap-4">
               <Link
-                to="/"
-                className="text-muted-foreground hover:text-foreground [&.active]:font-semibold [&.active]:text-primary"
+                to="/search"
+                className="text-muted-foreground hover:text-foreground [&.active]:font-semibold [&.active]:text-secondary"
               >
-                Home
+                Search
               </Link>
+              <Link
+                to="/library"
+                className="text-muted-foreground hover:text-foreground [&.active]:font-semibold [&.active]:text-secondary"
+              >
+                Library
+              </Link>
+              <Link
+                to="/bookmarks"
+                className="text-muted-foreground hover:text-foreground [&.active]:font-semibold [&.active]:text-secondary"
+              >
+                Bookmarks
+              </Link>
+              <Link
+                to="/tools"
+                className="text-muted-foreground hover:text-foreground [&.active]:font-semibold [&.active]:text-secondary"
+              >
+                Tools
+              </Link>
+            </div>
+            <div className="ml-auto flex items-center gap-4">
+              {user ? (
+                <>
+                  <span className="text-sm text-muted-foreground">
+                    {user.email}
+                  </span>
+                  <Link
+                    to="/settings"
+                    className="text-muted-foreground hover:text-foreground"
+                  >
+                    Settings
+                  </Link>
+                </>
+              ) : (
+                <Link
+                  to="/settings"
+                  className="text-muted-foreground hover:text-foreground"
+                >
+                  Login
+                </Link>
+              )}
             </div>
           </nav>
         </header>

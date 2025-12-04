@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@monorepo/lexico-components": "workspace:*",
+    "@supabase/ssr": "^0.8.0",
     "@supabase/supabase-js": "^2.49.0",
     "@tanstack/react-router": "^1.120.5",
     "@tanstack/react-router-devtools": "^1.120.5",

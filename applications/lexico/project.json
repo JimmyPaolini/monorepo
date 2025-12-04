@@ -9,7 +9,7 @@
     "develop": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm dev",
+        "command": "pnpm develop",
         "cwd": "applications/lexico"
       },
       "description": "Start development server with hot reload"

@@ -33,6 +33,7 @@ crash.log
 
 # Other 🗑️
 tmp
+dist
 applications/JimmyPaolini
 applications/caelundas/output
 coverage
