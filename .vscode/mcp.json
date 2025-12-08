@@ -16,6 +16,10 @@
       "env": {
         "SUPABASE_ACCESS_TOKEN": "${input:SUPABASE_ACCESS_TOKEN}"
       }
+    },
+    "shadcn": {
+      "command": "npx",
+      "args": ["shadcn@latest", "mcp"]
     }
   },
   "inputs": [

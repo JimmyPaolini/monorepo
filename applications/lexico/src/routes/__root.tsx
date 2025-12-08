@@ -1,18 +1,58 @@
 /// <reference types="vite/client" />
-import { Button } from "@monorepo/lexico-components";
+import {
+  Button,
+  Logo,
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarHeader,
+  SidebarInset,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarProvider,
+  SidebarTrigger,
+  useSidebar,
+} from "@monorepo/lexico-components";
+import appCss from "@monorepo/lexico-components/styles/globals.css?url";
 import {
   createRootRoute,
   HeadContent,
   Link,
   Outlet,
   Scripts,
+  useMatches,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
+import { Bookmark, BookOpen, Info, Search, User, Wrench } from "lucide-react";
+import { useState } from "react";
 
 import type { ReactNode } from "react";
 
 import { getCurrentUser } from "~/lib/auth";
-import appCss from "~/styles/app.css?url";
+
+interface NavItem {
+  href: string;
+  label: string;
+  icon: ReactNode;
+}
+
+const navItems: NavItem[] = [
+  { href: "/search", label: "Search", icon: <Search className="h-5 w-5" /> },
+  {
+    href: "/bookmarks",
+    label: "Bookmarks",
+    icon: <Bookmark className="h-5 w-5" />,
+  },
+  {
+    href: "/library",
+    label: "Literature",
+    icon: <BookOpen className="h-5 w-5" />,
+  },
+  { href: "/tools", label: "Grammar", icon: <Wrench className="h-5 w-5" /> },
+  { href: "/settings", label: "User", icon: <User className="h-5 w-5" /> },
+  { href: "/about", label: "About", icon: <Info className="h-5 w-5" /> },
+];
 
 export const Route = createRootRoute({
   beforeLoad: async () => {
@@ -38,8 +78,8 @@ export const Route = createRootRoute({
       },
     ],
     links: [
-      { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico" },
+      { rel: "stylesheet", href: appCss },
     ],
   }),
   component: RootComponent,
@@ -72,7 +112,7 @@ function RootComponent(): ReactNode {
 function RootDocument({
   children,
 }: Readonly<{ children: ReactNode }>): ReactNode {
-  const { user } = Route.useRouteContext();
+  const [open, setOpen] = useState(false);
 
   return (
     <html
@@ -83,68 +123,81 @@ function RootDocument({
         <HeadContent />
       </head>
       <body className="min-h-screen bg-background text-foreground antialiased">
-        <header className="border-b border-border bg-card">
-          <nav className="mx-auto flex max-w-7xl items-center gap-6 px-4 py-4">
-            <Link
-              to="/"
-              className="text-xl font-bold text-primary hover:text-primary/80"
-            >
-              Lexico
-            </Link>
-            <div className="flex gap-4">
-              <Link
-                to="/search"
-                className="text-muted-foreground hover:text-foreground [&.active]:font-semibold [&.active]:text-secondary"
-              >
-                Search
-              </Link>
-              <Link
-                to="/library"
-                className="text-muted-foreground hover:text-foreground [&.active]:font-semibold [&.active]:text-secondary"
-              >
-                Library
-              </Link>
-              <Link
-                to="/bookmarks"
-                className="text-muted-foreground hover:text-foreground [&.active]:font-semibold [&.active]:text-secondary"
-              >
-                Bookmarks
-              </Link>
-              <Link
-                to="/tools"
-                className="text-muted-foreground hover:text-foreground [&.active]:font-semibold [&.active]:text-secondary"
-              >
-                Tools
-              </Link>
-            </div>
-            <div className="ml-auto flex items-center gap-4">
-              {user ? (
-                <>
-                  <span className="text-sm text-muted-foreground">
-                    {user.email}
-                  </span>
-                  <Link
-                    to="/settings"
-                    className="text-muted-foreground hover:text-foreground"
-                  >
-                    Settings
-                  </Link>
-                </>
-              ) : (
-                <Link
-                  to="/settings"
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  Login
-                </Link>
-              )}
-            </div>
-          </nav>
-        </header>
-        <main className="mx-auto max-w-7xl px-4 py-8">{children}</main>
+        <SidebarProvider
+          open={open}
+          onOpenChange={setOpen}
+        >
+          <AppSidebar onHoverChange={setOpen} />
+          <SidebarInset>
+            {/* Mobile header with hamburger */}
+            <header className="flex h-14 items-center border-b border-border bg-card px-4 md:hidden">
+              <SidebarTrigger />
+              <span className="ml-3 text-lg font-semibold">Lexico</span>
+            </header>
+            {/* Page content */}
+            <div className="flex-1 px-4 py-8 md:px-8">{children}</div>
+          </SidebarInset>
+        </SidebarProvider>
         <TanStackRouterDevtools position="bottom-right" />
         <Scripts />
       </body>
     </html>
+  );
+}
+
+function AppSidebar({
+  onHoverChange,
+}: {
+  onHoverChange: (hovered: boolean) => void;
+}): ReactNode {
+  const matches = useMatches();
+  const currentPath = matches[matches.length - 1]?.pathname ?? "/";
+  const { isMobile } = useSidebar();
+
+  return (
+    <Sidebar
+      collapsible="icon"
+      onMouseEnter={() => !isMobile && onHoverChange(true)}
+      onMouseLeave={() => !isMobile && onHoverChange(false)}
+    >
+      <SidebarHeader className="border-b border-sidebar-border">
+        <Link
+          to="/"
+          className="flex h-8 items-center gap-2 text-lg font-semibold text-sidebar-foreground transition-colors hover:text-sidebar-accent-foreground cursor-pointer"
+        >
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-[#66023C] transition-opacity hover:opacity-90">
+            <Logo width={18} />
+          </span>
+          <span className="truncate group-data-[collapsible=icon]:hidden">
+            Lexico
+          </span>
+        </Link>
+      </SidebarHeader>
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarMenu>
+            {navItems.map((item) => {
+              const isActive =
+                currentPath === item.href ||
+                (item.href === "/search" && currentPath === "/");
+              return (
+                <SidebarMenuItem key={item.href}>
+                  <SidebarMenuButton
+                    asChild
+                    isActive={isActive}
+                    tooltip={item.label}
+                  >
+                    <Link to={item.href}>
+                      {item.icon}
+                      <span>{item.label}</span>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              );
+            })}
+          </SidebarMenu>
+        </SidebarGroup>
+      </SidebarContent>
+    </Sidebar>
   );
 }

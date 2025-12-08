@@ -27,5 +27,9 @@ export default defineConfig({
     commonjsOptions: {
       transformMixedEsModules: true,
     },
+    cssCodeSplit: false,
+  },
+  css: {
+    devSourcemap: true,
   },
 });
