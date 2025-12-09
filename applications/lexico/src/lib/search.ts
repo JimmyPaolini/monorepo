@@ -54,7 +54,8 @@ export const searchEntries = createServerFn({ method: "GET" })
       throw new Error(`Search failed: ${error.message}`);
     }
 
-    return results as EntrySearchResult[];
+    // Use unknown intermediate type for safe casting
+    return results as unknown as EntrySearchResult[];
   });
 
 interface GetEntryInput {

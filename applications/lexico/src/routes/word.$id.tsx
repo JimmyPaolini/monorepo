@@ -1,14 +1,9 @@
 import {
   AdjectiveFormsTable,
   Button,
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
   NounFormsTable,
   PrincipalParts,
   Separator,
-  Translations,
   VerbFormsTable,
 } from "@monorepo/lexico-components";
 import { createFileRoute, Link } from "@tanstack/react-router";
@@ -20,7 +15,6 @@ import { isBookmarked, toggleBookmark } from "../lib/bookmarks";
 import { transformForms } from "../lib/forms";
 import { getEntry } from "../lib/search";
 
-import type { EntryFull } from "../lib/types";
 import type { ReactNode } from "react";
 
 export const Route = createFileRoute("/word/$id")({
@@ -67,9 +61,15 @@ function WordPage(): ReactNode {
     );
   }
 
+  // Transform forms data
+  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- forms can be null from DB
+  const transformed = entry.forms
+    ? transformForms(entry.part_of_speech, entry.forms)
+    : null;
+
   return (
-    <div className="mx-auto max-w-4xl space-y-6 px-4 py-6">
-      {/* Back link and bookmark */}
+    <div className="mx-auto max-w-4xl space-y-8 px-4 py-6">
+      {/* Navigation bar */}
       <div className="flex items-center justify-between">
         <Link
           to="/search"
@@ -91,101 +91,110 @@ function WordPage(): ReactNode {
         </Button>
       </div>
 
-      {/* Main entry card */}
-      <Card>
+      {/* Page header with principal parts */}
+      <header className="space-y-2">
         <PrincipalParts
           id={entry.id}
           partOfSpeech={entry.part_of_speech}
           principalParts={entry.principal_parts}
           inflection={entry.inflection}
+          className="border-none p-0"
         />
-        <Separator className="mx-4" />
-        <CardContent className="pt-3">
-          <Translations
-            translations={entry.translations}
-            defaultExpanded
-          />
-        </CardContent>
-      </Card>
+      </header>
 
-      {/* Pronunciation section */}
-      {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- pronunciation can be null from DB */}
-      {entry.pronunciation &&
-        (entry.pronunciation.classical ||
-          entry.pronunciation.ecclesiastical) && (
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-lg">Pronunciation</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              {entry.pronunciation.classical?.phonetic && (
-                <div className="flex items-center gap-2">
-                  <span className="font-medium">Classical: </span>
-                  <span className="font-mono">
-                    {entry.pronunciation.classical.phonetic}
-                  </span>
-                  <PronunciationButton
-                    text={entry.principal_parts.present ?? entry.id}
-                    dialect="classical"
-                  />
+      <Separator />
+
+      {/* Main content sections */}
+      <article className="space-y-10">
+        {/* Translations section */}
+        <section className="space-y-3">
+          <h2 className="text-2xl font-semibold">Definitions</h2>
+          <ul className="space-y-2">
+            {entry.translations.map((translation) => (
+              <li
+                key={translation}
+                className="flex items-start gap-3"
+              >
+                <span className="mt-2.5 h-2 w-2 shrink-0 rounded-full bg-foreground" />
+                <span className="text-lg">{translation}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* Pronunciation section */}
+        {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- pronunciation can be null from DB */}
+        {entry.pronunciation &&
+          (entry.pronunciation.classical ||
+            entry.pronunciation.ecclesiastical) && (
+            <>
+              <Separator />
+              <section className="space-y-3">
+                <h2 className="text-2xl font-semibold">Pronunciation</h2>
+                <div className="space-y-3">
+                  {entry.pronunciation.classical?.phonetic && (
+                    <div className="flex items-center gap-3">
+                      <span className="min-w-32 font-medium text-muted-foreground">
+                        Classical:
+                      </span>
+                      <span className="font-mono text-lg">
+                        {entry.pronunciation.classical.phonetic}
+                      </span>
+                      <PronunciationButton
+                        text={entry.principal_parts.present ?? entry.id}
+                        dialect="classical"
+                      />
+                    </div>
+                  )}
+                  {entry.pronunciation.ecclesiastical?.phonetic && (
+                    <div className="flex items-center gap-3">
+                      <span className="min-w-32 font-medium text-muted-foreground">
+                        Ecclesiastical:
+                      </span>
+                      <span className="font-mono text-lg">
+                        {entry.pronunciation.ecclesiastical.phonetic}
+                      </span>
+                      <PronunciationButton
+                        text={entry.principal_parts.present ?? entry.id}
+                        dialect="ecclesiastical"
+                      />
+                    </div>
+                  )}
                 </div>
+              </section>
+            </>
+          )}
+
+        {/* Forms section */}
+        {transformed && (
+          <>
+            <Separator />
+            <section className="space-y-4">
+              <h2 className="text-2xl font-semibold">Forms</h2>
+              {transformed.type === "noun" && (
+                <NounFormsTable forms={transformed.forms} />
               )}
-              {entry.pronunciation.ecclesiastical?.phonetic && (
-                <div className="flex items-center gap-2">
-                  <span className="font-medium">Ecclesiastical: </span>
-                  <span className="font-mono">
-                    {entry.pronunciation.ecclesiastical.phonetic}
-                  </span>
-                  <PronunciationButton
-                    text={entry.principal_parts.present ?? entry.id}
-                    dialect="ecclesiastical"
-                  />
-                </div>
+              {transformed.type === "verb" && (
+                <VerbFormsTable forms={transformed.forms} />
               )}
-            </CardContent>
-          </Card>
+              {transformed.type === "adjective" && (
+                <AdjectiveFormsTable forms={transformed.forms} />
+              )}
+            </section>
+          </>
         )}
 
-      {/* Forms section */}
-      <FormsSection entry={entry} />
-
-      {/* Etymology section */}
-      {entry.etymology && (
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-lg">Etymology</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <p className="text-foreground">{entry.etymology}</p>
-          </CardContent>
-        </Card>
-      )}
+        {/* Etymology section */}
+        {entry.etymology && (
+          <>
+            <Separator />
+            <section className="space-y-3">
+              <h2 className="text-2xl font-semibold">Etymology</h2>
+              <p className="text-lg leading-relaxed">{entry.etymology}</p>
+            </section>
+          </>
+        )}
+      </article>
     </div>
-  );
-}
-
-function FormsSection({ entry }: { entry: EntryFull }): ReactNode {
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- forms can be null from DB
-  const transformed = entry.forms
-    ? transformForms(entry.part_of_speech, entry.forms)
-    : null;
-
-  if (!transformed) {
-    return null;
-  }
-
-  const { type, forms } = transformed;
-
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-lg">Forms</CardTitle>
-      </CardHeader>
-      <CardContent>
-        {type === "noun" && <NounFormsTable forms={forms} />}
-        {type === "verb" && <VerbFormsTable forms={forms} />}
-        {type === "adjective" && <AdjectiveFormsTable forms={forms} />}
-      </CardContent>
-    </Card>
   );
 }

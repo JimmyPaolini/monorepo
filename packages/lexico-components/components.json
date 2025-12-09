@@ -12,11 +12,11 @@
   },
   "iconLibrary": "lucide",
   "aliases": {
-    "components": "packages/lexico-components/src/generated/components",
-    "utils": "packages/lexico-components/src/generated/utils",
-    "ui": "packages/lexico-components/src/generated/ui",
-    "lib": "packages/lexico-components/src/generated/lib",
-    "hooks": "packages/lexico-components/src/generated/hooks"
+    "components": "src/generated/components",
+    "utils": "src/generated/utils",
+    "ui": "src/generated/ui",
+    "lib": "src/generated/lib",
+    "hooks": "src/generated/hooks"
   },
   "registries": {}
 }

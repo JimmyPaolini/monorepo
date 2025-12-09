@@ -1,6 +1,11 @@
-import { ChevronDown } from "lucide-react";
 import * as React from "react";
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../../generated/ui/accordion";
 import { cn } from "../../generated/utils/utils";
 
 export interface TranslationsProps {
@@ -14,15 +19,10 @@ export interface TranslationsProps {
 
 const Translations = React.forwardRef<HTMLDivElement, TranslationsProps>(
   ({ translations, defaultExpanded = false, className }, ref) => {
-    const [expanded, setExpanded] = React.useState(defaultExpanded);
     const expandable = translations.length > 2;
-    const visibleCount = expanded || !expandable ? translations.length : 2;
-
-    const handleToggle = (): void => {
-      if (expandable) {
-        setExpanded(!expanded);
-      }
-    };
+    const previewTranslations = expandable
+      ? translations.slice(0, 2)
+      : translations;
 
     if (translations.length === 0) {
       return (
@@ -35,23 +35,14 @@ const Translations = React.forwardRef<HTMLDivElement, TranslationsProps>(
       );
     }
 
-    return (
-      <div
-        ref={ref}
-        className={className}
-      >
-        <button
-          type="button"
-          onClick={handleToggle}
-          disabled={!expandable}
-          className={cn(
-            "flex w-full items-start gap-2 text-left",
-            expandable &&
-              "cursor-pointer hover:bg-muted/50 rounded-md -mx-2 px-2 py-1",
-          )}
+    if (!expandable) {
+      return (
+        <div
+          ref={ref}
+          className={className}
         >
-          <div className="flex-1 space-y-1">
-            {translations.slice(0, visibleCount).map((translation) => (
+          <div className="space-y-1">
+            {translations.map((translation) => (
               <div
                 key={translation}
                 className="flex items-start gap-2"
@@ -60,21 +51,58 @@ const Translations = React.forwardRef<HTMLDivElement, TranslationsProps>(
                 <span className="text-foreground">{translation}</span>
               </div>
             ))}
-            {!expanded && expandable && (
-              <div className="text-sm text-muted-foreground">
-                ...and {translations.length - 2} more
-              </div>
-            )}
           </div>
-          {expandable && (
-            <ChevronDown
-              className={cn(
-                "h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200",
-                expanded && "rotate-180",
-              )}
-            />
-          )}
-        </button>
+        </div>
+      );
+    }
+
+    return (
+      <div
+        ref={ref}
+        className={className}
+      >
+        <Accordion
+          type="single"
+          collapsible
+          {...(defaultExpanded ? { defaultValue: "translations" } : {})}
+        >
+          <AccordionItem
+            value="translations"
+            className="border-b-0"
+          >
+            <AccordionTrigger className="px-0 text-sm font-medium hover:no-underline">
+              <div className="flex-1 space-y-1 text-left">
+                {previewTranslations.map((translation) => (
+                  <div
+                    key={translation}
+                    className="flex items-start gap-2"
+                  >
+                    <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-foreground" />
+                    <span className="text-foreground font-normal">
+                      {translation}
+                    </span>
+                  </div>
+                ))}
+                <div className="text-sm text-muted-foreground font-normal">
+                  ...and {translations.length - 2} more
+                </div>
+              </div>
+            </AccordionTrigger>
+            <AccordionContent className="px-0">
+              <div className="space-y-1">
+                {translations.slice(2).map((translation) => (
+                  <div
+                    key={translation}
+                    className="flex items-start gap-2"
+                  >
+                    <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-foreground" />
+                    <span className="text-foreground">{translation}</span>
+                  </div>
+                ))}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </div>
     );
   },

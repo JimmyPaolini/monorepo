@@ -6,15 +6,22 @@ import {
   EntryCard,
   Input,
 } from "@monorepo/lexico-components";
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { useCallback, useEffect, useState } from "react";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { z } from "zod";
 
+import { transformForms } from "../lib/forms";
 import { searchEntries } from "../lib/search";
 
 import type { EntrySearchResult } from "../lib/types";
 import type { ReactNode } from "react";
 
+const searchSchema = z.object({
+  query: z.string().optional(),
+});
+
 export const Route = createFileRoute("/search")({
+  validateSearch: searchSchema,
   component: SearchPage,
 });
 
@@ -30,12 +37,36 @@ function useDebounce<T>(value: T, delay: number): T {
 }
 
 function SearchPage(): ReactNode {
-  const [query, setQuery] = useState<string>("");
+  const navigate = useNavigate({ from: "/search" });
+  const { query: urlQuery } = Route.useSearch();
+  const [query, setQuery] = useState<string>(urlQuery ?? "");
   const [results, setResults] = useState<EntrySearchResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const debouncedQuery = useDebounce(query, 300);
+  // Sync query state with URL
+  useEffect(() => {
+    setQuery(urlQuery ?? "");
+  }, [urlQuery]);
+
+  // Select all text in the input on mount
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.select();
+    }
+  }, []);
+
+  // Update URL when debounced query changes
+  useEffect(() => {
+    if (debouncedQuery !== urlQuery) {
+      void navigate({
+        search: debouncedQuery ? { query: debouncedQuery } : {},
+        replace: true,
+      });
+    }
+  }, [debouncedQuery, urlQuery, navigate]);
 
   const performSearch = useCallback(async (searchQuery: string) => {
     if (!searchQuery.trim()) {
@@ -68,6 +99,7 @@ function SearchPage(): ReactNode {
     <div className="space-y-6">
       <div className="mx-auto max-w-2xl">
         <Input
+          ref={inputRef}
           type="search"
           placeholder="Search Latin or English..."
           value={query}
@@ -90,22 +122,28 @@ function SearchPage(): ReactNode {
 
       {!isLoading && !error && results.length > 0 && (
         <div className="mx-auto max-w-2xl space-y-4">
-          {results.map((entry) => (
-            <Link
-              key={entry.id}
-              to="/word/$id"
-              params={{ id: entry.id }}
-              className="block transition-transform hover:scale-[1.01]"
-            >
-              <EntryCard
-                id={entry.id}
-                partOfSpeech={entry.part_of_speech}
-                principalParts={entry.principal_parts}
-                inflection={entry.inflection}
-                translations={entry.translations}
-              />
-            </Link>
-          ))}
+          {results.map((entry) => {
+            // Transform forms for the entry card
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- forms can be null from DB
+            const transformedForms = entry.forms
+              ? transformForms(entry.part_of_speech, entry.forms)
+              : null;
+
+            return (
+              <div key={entry.id}>
+                <EntryCard
+                  id={entry.id}
+                  partOfSpeech={entry.part_of_speech}
+                  principalParts={entry.principal_parts}
+                  inflection={entry.inflection}
+                  translations={entry.translations}
+                  forms={transformedForms}
+                  etymology={entry.etymology}
+                  pronunciation={entry.pronunciation}
+                />
+              </div>
+            );
+          })}
         </div>
       )}
 

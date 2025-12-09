@@ -161,6 +161,7 @@ export interface EntrySearchResult {
   inflection: Record<string, object>;
   pronunciation: Pronunciation;
   forms: Forms;
+  etymology: string | null;
   translations: string[];
   words: string[];
   similarities: number[];

@@ -3,7 +3,13 @@ export {
   type AdjectiveForm,
   type AdjectiveFormsTableProps,
 } from "./adjective-forms-table";
-export { EntryCard, type EntryCardProps } from "./entry-card";
+export {
+  EntryCard,
+  type EntryCardProps,
+  type FormsData as EntryFormsData,
+  type Pronunciation,
+  type PronunciationDialect,
+} from "./entry-card";
 export {
   FormCell,
   type FormCellProps,

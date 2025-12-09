@@ -40,6 +40,17 @@ export { Separator } from "./generated/ui/separator";
 export { Skeleton } from "./generated/ui/skeleton";
 export { Textarea } from "./generated/ui/textarea";
 export {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "./generated/ui/accordion";
+export {
+  Collapsible,
+  CollapsibleTrigger,
+  CollapsibleContent,
+} from "./generated/ui/collapsible";
+export {
   Sheet,
   SheetPortal,
   SheetOverlay,
@@ -94,6 +105,9 @@ export {
   type AdjectiveFormsTableProps,
   EntryCard,
   type EntryCardProps,
+  type EntryFormsData,
+  type Pronunciation,
+  type PronunciationDialect,
   FormCell,
   type FormCellProps,
   type FormCellPosition,
