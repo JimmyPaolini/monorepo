@@ -165,7 +165,7 @@ function AppSidebar({
           to="/"
           className="flex h-8 items-center gap-2 text-lg font-semibold text-sidebar-foreground transition-colors hover:text-sidebar-accent-foreground cursor-pointer"
         >
-          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-[#66023C] transition-opacity hover:opacity-90">
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-[#66023C]">
             <Logo width={18} />
           </span>
           <span className="truncate group-data-[collapsible=icon]:hidden">
