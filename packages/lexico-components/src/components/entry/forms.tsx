@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { cn } from "../../generated/utils/utils";
+import { cn } from "../../lib/utils";
 
 import { AdjectiveFormsTable } from "./adjective-forms-table";
 import { NounFormsTable } from "./noun-forms-table";

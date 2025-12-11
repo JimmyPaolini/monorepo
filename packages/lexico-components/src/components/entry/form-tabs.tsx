@@ -5,8 +5,8 @@ import {
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "../../generated/ui/tabs";
-import { cn } from "../../generated/utils/utils";
+} from "../../components/ui/tabs";
+import { cn } from "../../lib/utils";
 
 import { Identifier } from "./identifier";
 

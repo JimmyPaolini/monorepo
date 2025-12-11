@@ -146,13 +146,13 @@ function restructureAdjectiveForms(forms: AdjectiveForm[]): FormCellProps[] {
     // Singular cell (left column)
     cells.push({
       topLeftText: CASE_ABBREVIATIONS[caseName] || caseName,
-      topRightText: "S.",
+      topRightText: "SG",
       centerText: caseData.singular || "-",
     });
 
     // Plural cell (right column)
     cells.push({
-      topRightText: "P.",
+      topRightText: "PL",
       centerText: caseData.plural || "-",
     });
   }

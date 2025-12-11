@@ -3,6 +3,15 @@ import baseConfig from "../../eslint.config.ts";
 export default [
   ...baseConfig,
   {
+    ignores: [
+      "src/components",
+      "src/lib/utils",
+      "src/components/ui",
+      "src/lib",
+      "src/hooks",
+    ],
+  },
+  {
     files: ["**/*.json"],
     rules: {
       "@nx/dependency-checks": [

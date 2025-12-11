@@ -22,7 +22,8 @@
       "~/*": ["./src/*"],
       "@monorepo/lexico-components": [
         "../../packages/lexico-components/src/index.ts"
-      ]
+      ],
+      "@/*": ["../../packages/lexico-components/src/*"]
     }
   },
   "include": [

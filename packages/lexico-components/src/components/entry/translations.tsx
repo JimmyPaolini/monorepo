@@ -5,8 +5,8 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "../../generated/ui/accordion";
-import { cn } from "../../generated/utils/utils";
+} from "../../components/ui/accordion";
+import { cn } from "../../lib/utils";
 
 export interface TranslationsProps {
   /** Array of translation strings */

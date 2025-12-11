@@ -51,8 +51,8 @@ const PERSON_ABBREVIATIONS: Record<string, string> = {
 };
 
 const NUMBER_ABBREVIATIONS: Record<string, string> = {
-  singular: "S.",
-  plural: "P.",
+  singular: "SG",
+  plural: "PL",
 };
 
 interface VerbFormGroup {

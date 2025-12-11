@@ -6,10 +6,10 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "../../generated/ui/accordion";
-import { Card } from "../../generated/ui/card";
-import { Separator } from "../../generated/ui/separator";
-import { cn } from "../../generated/utils/utils";
+} from "../../components/ui/accordion";
+import { Card } from "../../components/ui/card";
+import { Separator } from "../../components/ui/separator";
+import { cn } from "../../lib/utils";
 
 import { AdjectiveFormsTable } from "./adjective-forms-table";
 import { NounFormsTable } from "./noun-forms-table";

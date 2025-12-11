@@ -31,6 +31,12 @@ export default [
       "**/vite.config.*.timestamp*",
       "**/vitest.config.*.timestamp*",
       ".lintstagedrc.ts",
+      // Shadcn generated components
+      "packages/lexico-components/src/components",
+      "packages/lexico-components/src/lib/utils",
+      "packages/lexico-components/src/components/ui",
+      "packages/lexico-components/src/lib",
+      "packages/lexico-components/src/hooks",
     ],
   },
 
