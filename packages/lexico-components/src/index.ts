@@ -19,9 +19,5 @@ export * from "./components/ui/sidebar";
 export * from "./components/ui/skeleton";
 export * from "./components/ui/textarea";
 export * from "./components/ui/tooltip";
-
-// Entry Components
-export * from "./components/entry";
-
-// Layout Components
-export * from "./components/layout";
+export * from "./components/ui/badge";
+export * from "./components/ui/tabs";

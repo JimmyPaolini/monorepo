@@ -1,12 +1,11 @@
-import * as React from "react";
-
 import {
+  cn,
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "../../components/ui/tabs";
-import { cn } from "../../lib/utils";
+} from "@monorepo/lexico-components";
+import * as React from "react";
 
 import { Identifier } from "./identifier";
 
@@ -54,8 +53,7 @@ const FormTabs = React.forwardRef<HTMLDivElement, FormTabsProps>(
             >
               <Identifier
                 identifier={tab}
-                size="md"
-                className="flex h-full w-full items-center justify-center rounded-[inherit]"
+                className="flex text-md h-full w-full items-center justify-center rounded-[inherit]"
               />
             </TabsTrigger>
           ))}

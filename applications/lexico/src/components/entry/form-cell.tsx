@@ -1,6 +1,5 @@
+import { cn } from "@monorepo/lexico-components";
 import * as React from "react";
-
-import { cn } from "../../lib/utils";
 
 import { Identifier } from "./identifier";
 
@@ -76,13 +75,13 @@ const FormCell = React.forwardRef<HTMLDivElement, FormCellProps>(
           {topLeftText && (
             <Identifier
               identifier={topLeftText}
-              size="sm"
+              className="text-sm"
             />
           )}
           {bottomLeftText && (
             <Identifier
               identifier={bottomLeftText}
-              size="sm"
+              className="text-sm"
             />
           )}
         </div>
@@ -104,13 +103,13 @@ const FormCell = React.forwardRef<HTMLDivElement, FormCellProps>(
           {topRightText && (
             <Identifier
               identifier={topRightText}
-              size="sm"
+              className="text-sm"
             />
           )}
           {bottomRightText && (
             <Identifier
               identifier={bottomRightText}
-              size="sm"
+              className="text-sm"
             />
           )}
         </div>

@@ -1,15 +1,13 @@
-import {
-  AdjectiveFormsTable,
-  Button,
-  NounFormsTable,
-  PrincipalParts,
-  Separator,
-  VerbFormsTable,
-} from "@monorepo/lexico-components";
+import { Button, Separator } from "@monorepo/lexico-components";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import _ from "lodash";
 import { Bookmark, BookmarkCheck } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 
+import { AdjectiveFormsTable } from "../components/entry/adjective-forms-table";
+import { NounFormsTable } from "../components/entry/noun-forms-table";
+import { PrincipalParts } from "../components/entry/principal-parts";
+import { VerbFormsTable } from "../components/entry/verb-forms-table";
 import { PronunciationButton } from "../components/pronunciation-button";
 import { isBookmarked, toggleBookmark } from "../lib/bookmarks";
 import { transformForms } from "../lib/forms";
@@ -99,6 +97,7 @@ function WordPage(): ReactNode {
           principalParts={entry.principal_parts}
           inflection={entry.inflection}
           className="border-none p-0"
+          onBookmarkToggle={() => _.noop()}
         />
       </header>
 

@@ -1,9 +1,6 @@
+import { Button, cn, Input } from "@monorepo/lexico-components";
 import { Loader2, Search } from "lucide-react";
 import * as React from "react";
-
-import { Button } from "../../components/ui/button";
-import { Input } from "../../components/ui/input";
-import { cn } from "../../lib/utils";
 
 export interface SearchBarProps {
   /** Initial search value */

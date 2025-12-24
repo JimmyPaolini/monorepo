@@ -1,9 +1,7 @@
 import type { AdjectiveForms, Forms, NounForms, VerbForms } from "./types";
-import type {
-  AdjectiveForm,
-  NounForm,
-  VerbForm,
-} from "@monorepo/lexico-components";
+import type { AdjectiveForm } from "../components/entry/adjective-forms-table";
+import type { NounForm } from "../components/entry/noun-forms-table";
+import type { VerbForm } from "../components/entry/verb-forms-table";
 
 // Case order for declensions
 const CASE_ORDER = [

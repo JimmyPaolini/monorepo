@@ -1,29 +1,27 @@
-import { Link } from "@tanstack/react-router";
-import * as React from "react";
-
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "../../components/ui/accordion";
-import { Card } from "../../components/ui/card";
-import { Separator } from "../../components/ui/separator";
-import { cn } from "../../lib/utils";
+  Card,
+  CardContent,
+  CardHeader,
+  cn,
+  Separator,
+} from "@monorepo/lexico-components";
+import { type ReactElement, useState } from "react";
 
 import { AdjectiveFormsTable } from "./adjective-forms-table";
 import { NounFormsTable } from "./noun-forms-table";
 import { PrincipalParts } from "./principal-parts";
+import { Translations } from "./translations";
 import { VerbFormsTable } from "./verb-forms-table";
 
 import type { AdjectiveForm } from "./adjective-forms-table";
 import type { NounForm } from "./noun-forms-table";
-import type {
-  Inflection,
-  PartOfSpeech,
-  PrincipalPart,
-} from "./principal-parts";
+import type { Inflection, PrincipalPart } from "./principal-parts";
 import type { VerbForm } from "./verb-forms-table";
+import type { PartOfSpeech } from "../../lib/supabase";
 
 // Forms union type
 export type FormsData =
@@ -63,7 +61,7 @@ export interface EntryCardProps {
   /** Whether entry is bookmarked */
   bookmarked?: boolean;
   /** Callback when bookmark is toggled */
-  onBookmarkToggle?: (id: string) => void;
+  onBookmarkToggle: (id: string) => void;
   /** Whether translations are expanded by default */
   translationsExpanded?: boolean;
   /** Whether this result is from a Latin search (adds accent border) */
@@ -72,59 +70,61 @@ export interface EntryCardProps {
   className?: string;
 }
 
-const EntryCard = React.forwardRef<HTMLDivElement, EntryCardProps>(
-  (
-    {
-      id,
-      partOfSpeech,
-      principalParts,
-      inflection,
-      translations,
-      forms,
-      etymology,
-      pronunciation,
-      bookmarked,
-      onBookmarkToggle,
-      translationsExpanded = false,
-      isLatinSearchResult = true,
-      className,
-    },
-    ref,
-  ) => {
-    const hasPronunciation =
-      pronunciation?.classical || pronunciation?.ecclesiastical;
+export function EntryCard(props: EntryCardProps): ReactElement {
+  const {
+    id,
+    partOfSpeech,
+    principalParts,
+    inflection,
+    translations,
+    forms,
+    etymology,
+    pronunciation,
+    bookmarked,
+    onBookmarkToggle,
+    translationsExpanded = false,
+    // isLatinSearchResult = true,
+    className,
+  } = props;
 
-    const hasForms = Boolean(forms);
+  // 🪝 Hooks
+  const [accordionValue, setAccordionValue] = useState(
+    translationsExpanded ? "translations" : "",
+  );
 
-    const hasTranslations = translations.length > 0;
-    const hasExpandableTranslations = translations.length > 2;
+  // 🏗️ Setup
+  const hasPronunciation =
+    pronunciation?.classical || pronunciation?.ecclesiastical;
 
-    const [accordionValue, setAccordionValue] = React.useState<string>(
-      translationsExpanded ? "translations" : "",
-    );
+  const hasForms = Boolean(forms);
 
-    return (
-      <Card
-        ref={ref}
-        className={cn(
-          "overflow-hidden",
-          !isLatinSearchResult && "border-t-4 border-t-secondary",
-          className,
-        )}
-      >
-        <Link
-          to="/word/$id"
-          params={{ id }}
-        >
-          <PrincipalParts
-            id={id}
-            partOfSpeech={partOfSpeech}
-            principalParts={principalParts}
-            inflection={inflection}
-            bookmarked={bookmarked}
-            onBookmarkToggle={onBookmarkToggle}
-          />
-        </Link>
+  // const hasTranslations = translations.length > 0;
+  // const hasExpandableTranslations = translations.length > 2;
+
+  // 💪 Handlers
+
+  // 🎨 Markup
+
+  // 🔌 Short Circuits
+
+  return (
+    <Card className={cn(className)}>
+      <CardHeader className="p-0">
+        <PrincipalParts
+          id={id}
+          partOfSpeech={partOfSpeech}
+          principalParts={principalParts}
+          inflection={inflection}
+          bookmarked={bookmarked}
+          onBookmarkToggle={onBookmarkToggle}
+        />
+      </CardHeader>
+      <Separator />
+      <CardContent>
+        <Translations
+          translations={translations}
+          defaultOpen={translationsExpanded}
+        />
         <Separator />
         <Accordion
           type="single"
@@ -132,62 +132,6 @@ const EntryCard = React.forwardRef<HTMLDivElement, EntryCardProps>(
           {...(accordionValue ? { value: accordionValue } : {})}
           onValueChange={(value: string) => setAccordionValue(value || "")}
         >
-          {/* Translations Section */}
-          {hasTranslations && (
-            <>
-              {hasExpandableTranslations ? (
-                <AccordionItem
-                  value="translations"
-                  className="border-b-0"
-                >
-                  <AccordionTrigger className="px-4 text-sm font-medium">
-                    <div className="flex-1 space-y-1 text-left">
-                      {translations.slice(0, 2).map((translation) => (
-                        <div
-                          key={translation}
-                          className="flex items-start gap-2"
-                        >
-                          <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-foreground" />
-                          <span className="text-foreground font-normal">
-                            {translation}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </AccordionTrigger>
-                  <AccordionContent className="px-4 pb-4 pt-0">
-                    <div className="space-y-1 -mt-1">
-                      {translations.slice(2).map((translation) => (
-                        <div
-                          key={translation}
-                          className="flex items-start gap-2"
-                        >
-                          <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-foreground" />
-                          <span className="text-foreground">{translation}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              ) : (
-                <div className="px-4 py-4">
-                  <div className="space-y-1">
-                    {translations.map((translation) => (
-                      <div
-                        key={translation}
-                        className="flex items-start gap-2"
-                      >
-                        <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-foreground" />
-                        <span className="text-foreground">{translation}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-              {(hasPronunciation || hasForms || etymology) && <Separator />}
-            </>
-          )}
-
           {/* Pronunciation Section */}
           {hasPronunciation && (
             <>
@@ -266,10 +210,7 @@ const EntryCard = React.forwardRef<HTMLDivElement, EntryCardProps>(
             </AccordionItem>
           )}
         </Accordion>
-      </Card>
-    );
-  },
-);
-EntryCard.displayName = "EntryCard";
-
-export { EntryCard };
+      </CardContent>
+    </Card>
+  );
+}

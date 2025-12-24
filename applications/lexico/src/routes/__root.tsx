@@ -1,7 +1,6 @@
 /// <reference types="vite/client" />
 import {
   Button,
-  Logo,
   Sidebar,
   SidebarContent,
   SidebarGroup,
@@ -26,6 +25,8 @@ import {
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { Bookmark, BookOpen, Info, Search, User, Wrench } from "lucide-react";
 import { useState } from "react";
+
+import { Logo } from "../components/layout";
 
 import type { ReactNode } from "react";
 

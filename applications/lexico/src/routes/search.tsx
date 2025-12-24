@@ -3,13 +3,14 @@ import {
   CardContent,
   CardHeader,
   CardTitle,
-  EntryCard,
   Input,
 } from "@monorepo/lexico-components";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import _ from "lodash";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { z } from "zod";
 
+import { EntryCard } from "../components/entry/entry-card";
 import { transformForms } from "../lib/forms";
 import { searchEntries } from "../lib/search";
 
@@ -140,6 +141,7 @@ function SearchPage(): ReactNode {
                   forms={transformedForms}
                   etymology={entry.etymology}
                   pronunciation={entry.pronunciation}
+                  onBookmarkToggle={() => _.noop()}
                 />
               </div>
             );

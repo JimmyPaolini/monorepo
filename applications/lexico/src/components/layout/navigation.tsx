@@ -1,3 +1,4 @@
+import { Button, cn } from "@monorepo/lexico-components";
 import {
   Bookmark,
   BookOpen,
@@ -9,9 +10,6 @@ import {
   X,
 } from "lucide-react";
 import * as React from "react";
-
-import { Button } from "../../components/ui/button";
-import { cn } from "../../lib/utils";
 
 export interface NavItem {
   /** Route path */

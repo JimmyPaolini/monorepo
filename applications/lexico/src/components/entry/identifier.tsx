@@ -1,6 +1,13 @@
-import * as React from "react";
+import {
+  Badge,
+  cn,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@monorepo/lexico-components";
+import _ from "lodash";
 
-import { cn } from "../../lib/utils";
+import type { ReactElement } from "react";
 
 // Abbreviation mappings
 const abbreviations: Record<string, string> = {
@@ -57,6 +64,17 @@ const abbreviations: Record<string, string> = {
   first: "1",
   second: "2",
   third: "3",
+  // Declensions
+  "first declension": "1ST DECL",
+  "second declension": "2ND DECL",
+  "third declension": "3RD DECL",
+  "fourth declension": "4TH DECL",
+  "fifth declension": "5TH DECL",
+  // Conjugations
+  "first conjugation": "1ST CONJ",
+  "second conjugation": "2ND CONJ",
+  "third conjugation": "3RD CONJ",
+  "fourth conjugation": "4TH CONJ",
 };
 
 // Color styles for each identifier type
@@ -130,43 +148,40 @@ const identifierStyles: Record<
 export interface IdentifierProps {
   /** The identifier name (e.g., "noun", "nominative", "singular") */
   identifier: string;
-  /** Size variant */
-  size?: "sm" | "md";
   /** Additional class names */
   className?: string;
 }
 
-const Identifier = React.forwardRef<HTMLSpanElement, IdentifierProps>(
-  ({ identifier, size = "md", className }, ref) => {
-    const normalizedId = identifier.toLowerCase();
-    const abbreviation =
-      abbreviations[normalizedId] ?? identifier.toUpperCase().slice(0, 4);
-    const styles = identifierStyles[normalizedId] ?? {
-      bg: "bg-gray-600",
-      text: "text-white",
-    };
+export function Identifier(props: IdentifierProps): ReactElement {
+  const { identifier, className } = props;
 
-    return (
-      <span
-        ref={ref}
-        title={identifier}
-        className={cn(
-          "inline-flex items-center justify-center font-semibold",
-          size === "sm"
-            ? "h-4 min-w-4 px-1 text-[0.625rem]"
-            : "h-5 min-w-5 px-1.5 text-xs",
-          styles.bg,
-          styles.text,
-          styles.border,
-          styles.rounded ? "rounded-md" : "rounded-sm",
-          className,
-        )}
-      >
-        {abbreviation}
-      </span>
-    );
-  },
-);
-Identifier.displayName = "Identifier";
+  const identifierLowercase = identifier.toLowerCase();
+  const abbreviation =
+    abbreviations[identifierLowercase] ?? identifier.toUpperCase().slice(0, 4);
+  const styles = identifierStyles[identifierLowercase] ?? {
+    bg: "bg-gray-600",
+    text: "text-white",
+  };
 
-export { Identifier, abbreviations, identifierStyles };
+  return (
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <Badge
+          variant="outline"
+          className={cn(
+            "cursor-default px-1 justify-center",
+            styles.bg,
+            styles.text,
+            styles.border,
+            className,
+          )}
+        >
+          {abbreviation}
+        </Badge>
+      </TooltipTrigger>
+      <TooltipContent side="right">{_(identifier).startCase()}</TooltipContent>
+    </Tooltip>
+  );
+}
+
+export { abbreviations, identifierStyles };
