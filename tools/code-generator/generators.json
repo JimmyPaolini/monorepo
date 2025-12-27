@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "generators": {
+    "component": {
+      "factory": "./src/generators/component/generator#generateComponent",
+      "schema": "./src/generators/component/schema.json",
+      "description": "Generate a React component with test file",
+      "aliases": ["c"]
+    }
+  }
+}

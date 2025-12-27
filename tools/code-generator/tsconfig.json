@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "NodeNext",
+    "outDir": "../../dist/tools/code-generator",
+    "declaration": true,
+    "rootDir": "src"
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["**/*.test.ts", "**/*.spec.ts", "**/files/**"]
+}

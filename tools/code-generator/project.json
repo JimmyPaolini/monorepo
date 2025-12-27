@@ -1,0 +1,38 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "code-generator",
+  "projectType": "library",
+  "sourceRoot": "tools/code-generator/src",
+  "prefix": "lib",
+  "tags": ["type:util"],
+  "targets": {
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "eslint tools/code-generator --no-error-on-unmatched-pattern --ignore-pattern '**/code-generator/**/files/**'"
+      },
+      "inputs": ["default", "{workspaceRoot}/eslint.config.mjs"]
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc --noEmit",
+        "cwd": "tools/code-generator"
+      },
+      "description": "Type-check the generator"
+    },
+    "format": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prettier {args} tools/code-generator"
+      },
+      "description": "Format files in the generator with Prettier"
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "vitest tools/code-generator"
+      }
+    }
+  }
+}

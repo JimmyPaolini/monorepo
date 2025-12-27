@@ -63,3 +63,6 @@ packages/lexico-components/src/lib/utils
 packages/lexico-components/src/components/ui
 packages/lexico-components/src/lib
 packages/lexico-components/src/hooks
+
+# Code generator template files
+tools/code-generator/**/files/**
