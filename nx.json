@@ -86,6 +86,21 @@
         { "externalDependencies": ["typescript"] }
       ],
       "cache": true
+    },
+    "markdown-lint": {
+      "inputs": [
+        "default",
+        "{workspaceRoot}/.markdownlintrc.json",
+        "{workspaceRoot}/.markdownlintignore"
+      ],
+      "cache": true,
+      "defaultConfiguration": "check",
+      "configurations": {
+        "check": {},
+        "write": {
+          "args": "--fix"
+        }
+      }
     }
   },
   "parallel": 3,

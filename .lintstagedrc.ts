@@ -26,7 +26,9 @@ const config = {
         .filter((file) => file.endsWith(".md"))
         .map((file) => `"${relative(process.cwd(), file)}"`)
         .join(" ");
-      commands.push(`nx run monorepo:markdown-lint -- --fix ${mdFiles}`);
+      commands.push(
+        `nx run monorepo:markdown-lint --configuration=write -- ${mdFiles}`,
+      );
     }
     return commands;
   },
