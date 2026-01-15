@@ -37,7 +37,30 @@ Husky + lint-staged automatically runs on staged files:
 - Lint (ESLint with strict type checking)
 - Typecheck (tsc --noEmit)
 
-Commits must follow [Conventional Commits](https://www.conventionalcommits.org/) with gitmoji prefixes. Valid scopes: `monorepo`, `caelundas`, `lexico`, `lexico-components`, `JimmyPaolini`, `documentation`, `dependencies`, `infrastructure`, `ci`. See [commitlint.config.ts](commitlint.config.ts).
+Commits must follow [Conventional Commits](https://www.conventionalcommits.org/)
+with gitmoji prefixes. Valid scopes: `monorepo`, `caelundas`, `lexico`,
+`lexico-components`, `JimmyPaolini`, `documentation`, `dependencies`,
+`infrastructure`, `ci`. See [commitlint.config.ts](commitlint.config.ts).
+
+**IMPORTANT: Subject line must be under 50 characters** (Conventional Commits
+best practice)
+
+Examples:
+
+- ✅ `chore(infrastructure): enforce markdown styles` (48 chars)
+- ❌ `chore(infrastructure): enforce specific markdown formatting styles` (72 chars - TOO LONG)
+
+Format: `<type>(<scope>): <subject>` where subject is max 49 characters, imperative mood, no period.
+
+Optional body (wrap at 72 chars, blank line after subject):
+
+```
+chore(infrastructure): enforce markdown styles
+
+- Require backticks for code fences
+- Use ATX-style headers (# ## ###)
+- Use dash (-) for list bullets
+```
 
 ### Supabase Development (lexico)
 
@@ -112,14 +135,16 @@ Run specific types: `nx run caelundas:test:unit`
 
 ### lexico Component Library
 
-- **Never modify files in** `packages/lexico-components/src/components/ui` (shadcn-generated)
+- **Never modify files in** `packages/lexico-components/src/components/ui`
+  (shadcn-generated)
 - Add custom components to `packages/lexico-components/src/components`
 - Uses New York shadcn style with gray base color
 - Import via path alias: `import { Button } from '@monorepo/lexico-components'`
 
 ### Nx Implicit Dependencies
 
-Defined in `project.json` files (e.g., lexico depends on lexico-components). Nx rebuilds dependencies automatically when running build targets.
+Defined in `project.json` files (e.g., lexico depends on lexico-components). Nx
+rebuilds dependencies automatically when running build targets.
 
 ## CI/CD
 

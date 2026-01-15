@@ -4,16 +4,22 @@ This monorepo uses a shared base Vitest configuration to maintain consistency ac
 
 ## Overview
 
-The base configuration is defined in [vitest.config.base.ts](/vitest.config.base.ts) at the workspace root and provides standardized settings for all test suites. All projects should extend this base configuration to inherit common settings and maintain consistency.
+The base configuration is defined in [vitest.config.base.ts](/vitest.config.base.ts)
+at the workspace root and provides standardized settings for all test suites.
+All projects should extend this base configuration to inherit common settings
+and maintain consistency.
 
 ## Base Configuration Details
 
 The workspace-level `vitest.config.base.ts` provides:
 
-- **Global test utilities**: `test`, `describe`, `it`, `expect`, and other globals are available without imports (no need to import from `vitest`)
+- **Global test utilities**: `test`, `describe`, `it`, `expect`, and other
+  globals are available without imports (no need to import from `vitest`)
 - **Mock management**:
-  - `clearMocks: true` - clears mock state between tests, preventing test pollution
-  - `restoreMocks: true` - restores mock implementations to original between tests, ensuring clean test environment
+  - `clearMocks: true` - clears mock state between tests, preventing test
+    pollution
+  - `restoreMocks: true` - restores mock implementations to original between
+    tests, ensuring clean test environment
 - **Coverage provider**: Uses v8 (fast, built-in coverage provider)
 - **Coverage reporters**: Generates multiple formats:
   - `text`: Terminal output during test run
@@ -136,9 +142,11 @@ All projects inherit 80% thresholds from the base config. Projects must meet the
 └─────────────┴──────────┘
 ```
 
-If a project fails to meet thresholds, the test command will fail and display detailed coverage information showing which files are below the threshold.
+If a project fails to meet thresholds, the test command will fail and display
+detailed coverage information showing which files are below the threshold.
 
-**To override thresholds** for a specific project (not recommended), you can define custom thresholds in the project's `vitest.config.ts`:
+**To override thresholds** for a specific project (not recommended), you can
+define custom thresholds in the project's `vitest.config.ts`:
 
 ```typescript
 coverage: {
@@ -201,10 +209,13 @@ Common patterns to exclude from coverage:
 
 1. Create `vitest.config.ts` in project root
 2. Add dependency (if not present in monorepo root `package.json`):
+
    ```bash
    pnpm add -D vitest @vitest/coverage-v8
    ```
+
 3. Create `src/__tests__/example.test.ts`:
+
    ```typescript
    describe("example", () => {
      it("works", () => {
@@ -212,6 +223,7 @@ Common patterns to exclude from coverage:
      });
    });
    ```
+
 4. Update `project.json` to add test target
 
 ### Complete Example

@@ -1,0 +1,8 @@
+node_modules/
+dist/
+coverage/
+.next/
+build/
+tmp/
+calendars/
+*.min.md

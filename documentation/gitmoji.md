@@ -1,6 +1,9 @@
 # Gitmoji — emoji guide for commit messages
 
-This file summarizes the canonical Gitmoji list (see [gitmoji.dev](https://gitmoji.dev)) with short descriptions and example usages. Use the emoji or the short code in your commit messages to convey intent quickly.
+This file summarizes the canonical Gitmoji list (see
+[gitmoji.dev](https://gitmoji.dev)) with short descriptions and example
+usages. Use the emoji or the short code in your commit messages to convey
+intent quickly.
 
 Format: emoji | short code | meaning | example commit
 

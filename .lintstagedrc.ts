@@ -20,7 +20,15 @@ const config = {
     const relativePaths = files
       .map((file: string) => relative(process.cwd(), file))
       .join(",");
-    return `nx affected --target=format --files=${relativePaths}`;
+    const commands = [`nx affected --target=format --files=${relativePaths}`];
+    if (files.some((file) => file.endsWith(".md"))) {
+      const mdFiles = files
+        .filter((file) => file.endsWith(".md"))
+        .map((file) => `"${relative(process.cwd(), file)}"`)
+        .join(" ");
+      commands.push(`nx run monorepo:markdown-lint -- --fix ${mdFiles}`);
+    }
+    return commands;
   },
 };
 

@@ -1,6 +1,7 @@
 # Abbreviations
 
-I dislike abbreviations. I think they add friction to communication, and make code more difficult to understand. Here are some common abbreviations that I like to complete.
+I dislike abbreviations. I think they add friction to communication, and make code more
+difficult to understand. Here are some common abbreviations that I like to complete.
 
 - a11y : accessibility
 - app : application

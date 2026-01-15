@@ -41,6 +41,10 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
+  // Markdownlint configuration
+  "markdownlint.configFile": ".markdownlintrc.json",
+  "markdownlint.run": "onSave",
+
   // ESLint configuration
   "eslint.enable": true,
   "eslint.validate": [
@@ -52,13 +56,10 @@
     "jsonc"
   ],
   "eslint.useFlatConfig": true,
-  "eslint.experimental.useFlatConfig": true,
   "eslint.format.enable": false,
   "eslint.codeActionsOnSave.mode": "all",
 
   // TypeScript configuration
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.preferences.importModuleSpecifier": "relative",
   "typescript.preferences.preferTypeOnlyAutoImports": true,
   "typescript.updateImportsOnFileMove.enabled": "always",

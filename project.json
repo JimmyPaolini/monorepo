@@ -42,6 +42,22 @@
         "cwd": "{projectRoot}"
       },
       "description": "Run terraform plan to preview infrastructure changes"
+    },
+    "check-lockfile": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "bash scripts/check-lockfile.sh",
+        "cwd": "{projectRoot}"
+      },
+      "description": "Verify that pnpm-lock.yaml is in sync with package.json files"
+    },
+    "markdown-lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "markdownlint --config {projectRoot}/.markdownlintrc.json {args} '**/*.md'",
+        "cwd": "{projectRoot}"
+      },
+      "description": "Lint markdown files (pass --fix to auto-fix)"
     }
   }
 }
