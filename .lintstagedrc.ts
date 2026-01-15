@@ -1,6 +1,10 @@
 import { relative } from "node:path";
 
 const config = {
+  // Check lockfile sync if any package.json or workspace config changes
+  "**/package.json": () => ["./scripts/check-lockfile.sh"],
+  "pnpm-workspace.yaml": () => ["./scripts/check-lockfile.sh"],
+
   "*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}": (files: string[]) => {
     // Convert absolute paths to relative paths for Nx
     const relativePaths = files
