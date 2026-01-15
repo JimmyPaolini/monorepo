@@ -57,7 +57,7 @@
         "command": "markdownlint --config {projectRoot}/.markdownlintrc.json {args} '**/*.md'",
         "cwd": "{projectRoot}"
       },
-      "description": "Lint markdown files (use --configuration=write to auto-fix)"
+      "description": "Lint markdown files (use --fix to auto-fix)"
     }
   }
 }

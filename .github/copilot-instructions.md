@@ -38,9 +38,10 @@ Husky + lint-staged automatically runs on staged files:
 - Typecheck (tsc --noEmit)
 
 Commits must follow [Conventional Commits](https://www.conventionalcommits.org/)
-with gitmoji prefixes. Valid scopes: `monorepo`, `caelundas`, `lexico`,
+with gitmoji prefixes. Valid scopes are defined in
+[commitlint.config.ts](commitlint.config.ts): `monorepo`, `caelundas`, `lexico`,
 `lexico-components`, `JimmyPaolini`, `documentation`, `dependencies`,
-`infrastructure`, `ci`. See [commitlint.config.ts](commitlint.config.ts).
+`infrastructure`, `ci`.
 
 **IMPORTANT: Subject line must be under 50 characters** (Conventional Commits
 best practice)
