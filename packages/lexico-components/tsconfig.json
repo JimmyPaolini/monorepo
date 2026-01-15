@@ -13,7 +13,12 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "vite.config.mts"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "vite.config.mts",
+    "eslint.config.ts"
+  ],
   "exclude": [
     "src/components",
     "src/lib/utils",

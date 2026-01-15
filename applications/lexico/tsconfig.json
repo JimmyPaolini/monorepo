@@ -31,7 +31,8 @@
     "src/**/*.jsx",
     "src/**/*.ts",
     "src/**/*.tsx",
-    "vite.config.mts"
+    "vite.config.mts",
+    "eslint.config.ts"
   ],
   "exclude": [
     "src/**/*.spec.ts",

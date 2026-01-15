@@ -134,7 +134,7 @@ All workflows use `nrwl/nx-set-shas` to calculate affected projects from git dif
 
 1. **Don't bypass Nx**: Running `pnpm test` directly skips caching and dependency checks
 2. **TypeScript strictness**: Index signatures require null checks (`arr[0]?.prop` not `arr[0].prop`)
-3. **ESLint in JS files**: Type-checked rules disabled for `.js` config files (see [eslint.config.ts](eslint.config.ts))
+3. **ESLint in JS files**: Type-checked rules disabled for `.js` config files (see [eslint.config.base.ts](eslint.config.base.ts))
 4. **Supabase types**: Regenerate after every schema change or migrations will fail type checking
 5. **Docker platform**: Always build for linux/amd64 when deploying to k8s (Apple Silicon mismatch)
 6. **Shadcn updates**: Use `pnpx shadcn@latest add <component>` in lexico-components, never edit ui/ directly
@@ -143,7 +143,7 @@ All workflows use `nrwl/nx-set-shas` to calculate affected projects from git dif
 
 - [nx.json](nx.json): Task defaults, caching, affected computation
 - [tsconfig.base.json](tsconfig.base.json): Path mappings for monorepo packages
-- [eslint.config.ts](eslint.config.ts): Flat config with strict rules, import sorting
+- [eslint.config.base.ts](eslint.config.base.ts): Flat config with strict rules, import sorting
 - [AGENTS.md](AGENTS.md): Nx-specific MCP tool guidance
 - [applications/caelundas/src/main.ts](applications/caelundas/src/main.ts): Ephemeris pipeline entry point
 - [packages/lexico-components/components.json](packages/lexico-components/components.json): shadcn configuration

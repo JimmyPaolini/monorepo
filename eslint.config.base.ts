@@ -60,7 +60,7 @@ export default [
       "**/*.cjs",
       "**/*.jsx",
     ],
-    ignores: ["*.config.ts", ".lintstagedrc.ts", ".prettierrc.ts"],
+    ignores: [".lintstagedrc.ts", ".prettierrc.ts", "eslint.config.base.ts"],
     plugins: {
       import: importPlugin,
     },
@@ -245,16 +245,16 @@ export default [
   ...tseslint.configs.strictTypeChecked.map((config) => ({
     ...config,
     files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
-    ignores: ["*.config.ts", ".lintstagedrc.ts", ".prettierrc.ts"],
+    ignores: [".lintstagedrc.ts", ".prettierrc.ts"],
   })),
   ...tseslint.configs.stylisticTypeChecked.map((config) => ({
     ...config,
     files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
-    ignores: ["*.config.ts", ".lintstagedrc.ts", ".prettierrc.ts"],
+    ignores: [".lintstagedrc.ts", ".prettierrc.ts"],
   })),
   {
     files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
-    ignores: ["*.config.ts", ".lintstagedrc.ts", ".prettierrc.ts"],
+    ignores: [".lintstagedrc.ts", ".prettierrc.ts"],
     languageOptions: {
       parserOptions: {
         projectService: true,
@@ -384,9 +384,34 @@ export default [
     },
   },
 
-  // Special configuration for the eslint.config.ts file itself
+  // Config files - allow workspace imports without module boundary violations
   {
-    files: ["eslint.config.ts"],
+    files: [
+      "**/*.config.ts",
+      "**/*.config.js",
+      "**/*.config.mjs",
+      "**/*.config.cjs",
+    ],
+    rules: {
+      "@nx/enforce-module-boundaries": "off",
+    },
+  },
+
+  // Vitest config files - disable type-checked rules due to circular imports
+  {
+    files: ["**/vitest.config.ts", "**/vitest.config.base.ts"],
+    rules: {
+      "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/no-unsafe-call": "off",
+      "@typescript-eslint/no-unsafe-member-access": "off",
+      "@typescript-eslint/no-unsafe-return": "off",
+      "@typescript-eslint/no-unsafe-argument": "off",
+    },
+  },
+
+  // Special configuration for the eslint.config.base.ts file itself
+  {
+    files: ["eslint.config.base.ts"],
     rules: {
       "@typescript-eslint/no-unnecessary-boolean-literal-compare": "off",
       "@typescript-eslint/no-unnecessary-condition": "off",

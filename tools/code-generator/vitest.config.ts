@@ -7,7 +7,6 @@ export default mergeConfig(
   defineConfig({
     test: {
       include: ["src/**/*.test.ts"],
-      setupFiles: ["./testing/setup.ts"],
       coverage: {
         include: ["src/**/*.ts"],
         exclude: ["src/**/*.test.ts"],

@@ -6,7 +6,7 @@
     "lint": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "eslint {args} --config eslint.config.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' 'scripts/' 'documentation/'",
+        "command": "eslint {args} --config eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' 'scripts/' 'documentation/'",
         "cwd": "{projectRoot}"
       },
       "description": "Lint workspace root files (config files, scripts, documentation)"

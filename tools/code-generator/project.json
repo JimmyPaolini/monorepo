@@ -11,7 +11,7 @@
       "options": {
         "command": "eslint tools/code-generator --no-error-on-unmatched-pattern --ignore-pattern '**/code-generator/**/files/**'"
       },
-      "inputs": ["default", "{workspaceRoot}/eslint.config.mjs"]
+      "inputs": ["default", "{workspaceRoot}/eslint.config.base.mjs"]
     },
     "typecheck": {
       "executor": "nx:run-commands",
@@ -31,7 +31,8 @@
     "test": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "vitest tools/code-generator"
+        "command": "vitest run {args.args}",
+        "cwd": "tools/code-generator"
       }
     }
   }

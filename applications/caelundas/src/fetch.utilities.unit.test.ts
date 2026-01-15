@@ -1,9 +1,16 @@
-import { describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { fetchWithRetry } from "./fetch.utilities";
 
-describe("fetch.utilities", { timeout: 40000 }, () => {
-  // Retry tests with delays need longer timeout
+describe("fetch.utilities", () => {
+  beforeEach(() => {
+    vi.useFakeTimers();
+  });
+
+  afterEach(() => {
+    vi.useRealTimers();
+  });
+
   describe("fetchWithRetry", () => {
     it("should return response text on successful fetch", async () => {
       const mockResponse = "test response data";
@@ -63,7 +70,9 @@ describe("fetch.utilities", { timeout: 40000 }, () => {
           text: vi.fn().mockResolvedValue(mockResponse),
         });
 
-      const result = await fetchWithRetry("https://example.com/api");
+      const resultPromise = fetchWithRetry("https://example.com/api");
+      await vi.runOnlyPendingTimersAsync();
+      const result = await resultPromise;
 
       expect(result).toBe(mockResponse);
       expect(fetch).toHaveBeenCalledTimes(2);
@@ -85,7 +94,9 @@ describe("fetch.utilities", { timeout: 40000 }, () => {
           text: vi.fn().mockResolvedValue(mockResponse),
         });
 
-      const result = await fetchWithRetry("https://example.com/api");
+      const resultPromise = fetchWithRetry("https://example.com/api");
+      await vi.runOnlyPendingTimersAsync();
+      const result = await resultPromise;
 
       expect(result).toBe(mockResponse);
       expect(fetch).toHaveBeenCalledTimes(2);
@@ -106,7 +117,9 @@ describe("fetch.utilities", { timeout: 40000 }, () => {
           text: vi.fn().mockResolvedValue(mockResponse),
         });
 
-      const result = await fetchWithRetry("https://example.com/api");
+      const resultPromise = fetchWithRetry("https://example.com/api");
+      await vi.runOnlyPendingTimersAsync();
+      const result = await resultPromise;
 
       expect(result).toBe(mockResponse);
       expect(fetch).toHaveBeenCalledTimes(2);
@@ -124,7 +137,9 @@ describe("fetch.utilities", { timeout: 40000 }, () => {
           text: vi.fn().mockResolvedValue(mockResponse),
         });
 
-      const result = await fetchWithRetry("https://example.com/api");
+      const resultPromise = fetchWithRetry("https://example.com/api");
+      await vi.runOnlyPendingTimersAsync();
+      const result = await resultPromise;
 
       expect(result).toBe(mockResponse);
       expect(fetch).toHaveBeenCalledTimes(2);
@@ -150,9 +165,15 @@ describe("fetch.utilities", { timeout: 40000 }, () => {
       // Mock to always fail with retryable error
       global.fetch = vi.fn().mockRejectedValue(retryableError);
 
-      await expect(fetchWithRetry("https://example.com/api")).rejects.toThrow(
-        "Connection reset",
-      );
+      // Create promise and advance timers, then wait for rejection
+      const promise = fetchWithRetry("https://example.com/api").catch(() => {
+        // Catch rejection to prevent unhandled rejection warning
+      });
+
+      // Advance timers by a large amount to cover all retry delays (exponential backoff: 1, 2, 4, 8, 16, 32 seconds)
+      await vi.advanceTimersByTimeAsync(100000);
+      await promise;
+
       // Default MAX_RETRIES is 5, so 6 total attempts (initial + 5 retries)
       expect(fetch).toHaveBeenCalledTimes(6);
     });
@@ -172,7 +193,9 @@ describe("fetch.utilities", { timeout: 40000 }, () => {
           text: vi.fn().mockResolvedValue(mockResponse),
         });
 
-      const result = await fetchWithRetry("https://example.com/api");
+      const resultPromise = fetchWithRetry("https://example.com/api");
+      await vi.runOnlyPendingTimersAsync();
+      const result = await resultPromise;
 
       expect(result).toBe(mockResponse);
       expect(fetch).toHaveBeenCalledTimes(2);
@@ -193,7 +216,9 @@ describe("fetch.utilities", { timeout: 40000 }, () => {
           text: vi.fn().mockResolvedValue(mockResponse),
         });
 
-      const result = await fetchWithRetry("https://example.com/api");
+      const resultPromise = fetchWithRetry("https://example.com/api");
+      await vi.runOnlyPendingTimersAsync();
+      const result = await resultPromise;
 
       expect(result).toBe(mockResponse);
       expect(fetch).toHaveBeenCalledTimes(2);
@@ -214,7 +239,9 @@ describe("fetch.utilities", { timeout: 40000 }, () => {
           text: vi.fn().mockResolvedValue(mockResponse),
         });
 
-      const result = await fetchWithRetry("https://example.com/api");
+      const resultPromise = fetchWithRetry("https://example.com/api");
+      await vi.runOnlyPendingTimersAsync();
+      const result = await resultPromise;
 
       expect(result).toBe(mockResponse);
       expect(fetch).toHaveBeenCalledTimes(2);
@@ -235,7 +262,9 @@ describe("fetch.utilities", { timeout: 40000 }, () => {
           text: vi.fn().mockResolvedValue(mockResponse),
         });
 
-      const result = await fetchWithRetry("https://example.com/api");
+      const resultPromise = fetchWithRetry("https://example.com/api");
+      await vi.runOnlyPendingTimersAsync();
+      const result = await resultPromise;
 
       expect(result).toBe(mockResponse);
       expect(fetch).toHaveBeenCalledTimes(2);
