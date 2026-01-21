@@ -9,18 +9,15 @@ runs:
       uses: pnpm/action-setup@v4
       with:
         version: 10.20.0
-      shell: bash
 
     - name: 🟢 Setup node
       uses: actions/setup-node@v4
       with:
         node-version: 22.20.0
         cache: pnpm
-      shell: bash
 
     - name: 🎯 Set NX SHAs
       uses: nrwl/nx-set-shas@v4
-      shell: bash
 
     - name: ♻️ Restore/Save Nx cache
       uses: actions/cache@v4
@@ -30,7 +27,6 @@ runs:
         restore-keys: |
           nx-cache-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}-
           nx-cache-${{ runner.os }}-
-      shell: bash
 
     - name: 📚 Install dependencies
       run: pnpm install --frozen-lockfile
