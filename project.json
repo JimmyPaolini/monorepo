@@ -176,6 +176,29 @@
         "{workspaceRoot}/cspell.config.yaml"
       ],
       "description": "Check spelling across the entire codebase"
+    },
+    "markdown-lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "markdownlint-cli2 \"**/*.md\"",
+        "cwd": "{workspaceRoot}"
+      },
+      "configurations": {
+        "check": {
+          "command": "markdownlint-cli2 \"**/*.md\""
+        },
+        "fix": {
+          "command": "markdownlint-cli2 --fix \"**/*.md\""
+        }
+      },
+      "defaultConfiguration": "check",
+      "cache": true,
+      "inputs": [
+        "default",
+        "{workspaceRoot}/**/*.md",
+        "{workspaceRoot}/.markdownlint-cli2.jsonc"
+      ],
+      "description": "Lint markdown files across the entire codebase"
     }
   }
 }

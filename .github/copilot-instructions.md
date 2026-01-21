@@ -55,7 +55,7 @@ Format: `<type>(<scope>): <subject>` where subject is max 49 characters, imperat
 
 Optional body (wrap at 72 chars, blank line after subject):
 
-```
+```text
 chore(infrastructure): enforce markdown styles
 
 - Require backticks for code fences

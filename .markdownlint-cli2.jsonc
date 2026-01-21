@@ -1,0 +1,57 @@
+{
+  // Configuration for markdownlint-cli2
+  // See: https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
+  "config": {
+    // Default state for all rules
+    "default": true,
+
+    // MD013: Line length - disabled (too restrictive for technical docs)
+    "MD013": false,
+
+    // MD024: Multiple headings with the same content - allow duplicate headings in different sections
+    "MD024": {
+      "siblings_only": true,
+    },
+
+    // MD033: Inline HTML - allow HTML for complex formatting
+    "MD033": false,
+
+    // MD034: Bare URL - allow bare URLs without angle brackets
+    "MD034": false,
+
+    // MD041: First line in file should be a top level heading - disabled for flexibility
+    "MD041": false,
+
+    // MD046: Code block style - enforce fenced code blocks
+    "MD046": {
+      "style": "fenced",
+    },
+
+    // MD049: Emphasis style - enforce asterisk style
+    "MD049": {
+      "style": "asterisk",
+    },
+
+    // MD050: Strong style - enforce asterisk style
+    "MD050": {
+      "style": "asterisk",
+    },
+  },
+
+  // Globs to ignore
+  "ignores": [
+    "node_modules/**",
+    "**/node_modules/**",
+    "dist/**",
+    "**/dist/**",
+    "coverage/**",
+    "**/coverage/**",
+    ".nx/**",
+    "pnpm-lock.yaml",
+    "planning/**",
+    "**/.terraform/**",
+  ],
+
+  // Fix mode configuration
+  "fix": false,
+}

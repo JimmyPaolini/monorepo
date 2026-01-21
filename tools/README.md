@@ -70,7 +70,7 @@ tools/hook-generator/
 
 ## Project Structure
 
-```
+```text
 tools/
 ├── component-generator/     # React component generator
 │   ├── src/
@@ -116,7 +116,7 @@ nx generate component-generator:component \
 
 ### Structure for New Generator
 
-```
+```text
 tools/my-generator/
 ├── src/
 │   ├── generators/
