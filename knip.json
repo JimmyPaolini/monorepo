@@ -77,7 +77,8 @@
     "tools/code-generator": {
       "entry": "src/generators/*/generator.ts",
       "project": "src/**/*.ts",
-      "ignore": ["src/**/files/**", "src/**/*.test.ts"]
+      "ignore": ["src/**/files/**", "src/**/*.test.ts"],
+      "ignoreDependencies": ["react"]
     }
   },
   "ignoreWorkspaces": ["applications/JimmyPaolini"],

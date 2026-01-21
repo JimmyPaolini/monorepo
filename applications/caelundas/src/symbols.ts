@@ -370,6 +370,7 @@ export const ingressBodies = [
 
 export const aspectBodies = [
   "sun",
+  "moon",
   "mercury",
   "venus",
   "mars",

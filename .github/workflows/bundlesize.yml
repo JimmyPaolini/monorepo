@@ -25,7 +25,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: �🔧 Setup Nx workspace
+      - name: 🔧 Setup Nx workspace
         uses: ./.github/actions/nx-setup
 
       - name: 📦 Check Bundle Size

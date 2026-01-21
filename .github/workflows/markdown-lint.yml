@@ -16,12 +16,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: � Checkout repository
+      - name: 📥 Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: �🔧 Setup Nx workspace
+      - name: 🔧 Setup Nx workspace
         uses: ./.github/actions/nx-setup
 
       - name: 🖼️ Markdown Lint
