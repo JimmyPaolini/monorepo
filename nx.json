@@ -94,17 +94,6 @@
       ],
       "cache": true
     },
-    "yaml-lint": {
-      "inputs": ["default", "{workspaceRoot}/eslint.config.base.ts"],
-      "cache": true,
-      "defaultConfiguration": "check",
-      "configurations": {
-        "check": {},
-        "write": {
-          "args": "--fix"
-        }
-      }
-    },
     "knip": {
       "inputs": ["default", "{workspaceRoot}/knip.json"],
       "cache": true,

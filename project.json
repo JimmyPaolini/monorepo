@@ -71,24 +71,6 @@
       },
       "description": "Verify that pnpm-lock.yaml is in sync with package.json files"
     },
-    "yaml-lint": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "eslint {args} --config eslint.config.base.ts --no-error-on-unmatched-pattern '**/*.{yml,yaml}'",
-        "cwd": "{projectRoot}"
-      },
-      "configurations": {
-        "check": {
-          "command": "eslint {args} --config eslint.config.base.ts --no-error-on-unmatched-pattern '**/*.{yml,yaml}'"
-        },
-        "write": {
-          "command": "eslint {args} --fix --config eslint.config.base.ts --no-error-on-unmatched-pattern '**/*.{yml,yaml}'"
-        }
-      },
-      "defaultConfiguration": "check",
-      "cache": true,
-      "description": "Lint YAML files"
-    },
     "knip": {
       "executor": "nx:run-commands",
       "options": {
@@ -114,8 +96,7 @@
           "nx run monorepo:typecheck",
           "nx run monorepo:lint:{args.configuration}",
           "nx run monorepo:format:{args.configuration}",
-          "nx run monorepo:knip:{args.configuration}",
-          "nx run monorepo:yaml-lint:{args.configuration}"
+          "nx run monorepo:knip:{args.configuration}"
         ],
         "cwd": "{projectRoot}"
       },
@@ -129,7 +110,7 @@
       },
       "defaultConfiguration": "check",
       "cache": true,
-      "description": "Run all static code analysis tools (typecheck, lint, format, knip, yaml-lint)"
+      "description": "Run all static code analysis tools (typecheck, lint, format, knip)"
     },
     "audit": {
       "executor": "nx:run-commands",

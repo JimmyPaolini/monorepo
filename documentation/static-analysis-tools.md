@@ -77,7 +77,8 @@ nx run monorepo:typecheck
 - **React + Hooks rules** - React 19 best practices
 - **Accessibility checks** - jsx-a11y plugin
 - **Markdown linting** - Code blocks in documentation
-- **JSON/YAML support** - Configuration file validation
+- **JSON linting** - Configuration file validation via eslint-plugin-jsonc
+- **YAML linting** - Full YAML syntax and style enforcement via eslint-plugin-yml
 
 **Major Rule Categories:**
 
@@ -120,8 +121,8 @@ nx run caelundas:lint:write
 **Supported File Types:**
 
 - TypeScript/JavaScript (`.ts`, `.tsx`, `.js`, `.jsx`, `.mts`, `.cts`)
-- JSON/JSONC/JSON5
-- YAML/YML
+- JSON/JSONC/JSON5 (using eslint-plugin-jsonc)
+- YAML/YML (using eslint-plugin-yml)
 - CSS/SCSS
 - Markdown
 - HTML
