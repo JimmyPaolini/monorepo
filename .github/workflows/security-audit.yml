@@ -1,0 +1,49 @@
+name: 🔒 Security Audit
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  schedule:
+    - cron: "0 6 * * 1" # Weekly Monday 6am UTC
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  setup:
+    uses: ./.github/workflows/setup.yml
+
+  audit:
+    name: 🔒 Security Audit
+    runs-on: ubuntu-latest
+    needs: setup
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.20.0
+
+      - name: 🟢 Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.20.0
+          cache: pnpm
+
+      - name: ♻️ Restore cache
+        uses: actions/cache/restore@v4
+        with:
+          path: .nx/cache
+          key: ${{ needs.setup.outputs.cache-key }}
+
+      - name: 📚 Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🔒 Run security audit
+        run: pnpm audit --audit-level=moderate

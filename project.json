@@ -130,6 +130,22 @@
       "defaultConfiguration": "check",
       "cache": true,
       "description": "Run all static code analysis tools (typecheck, lint, format, knip, yaml-lint)"
+    },
+    "audit": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm audit --audit-level=moderate"
+      },
+      "cache": false,
+      "description": "Scan for security vulnerabilities in dependencies"
+    },
+    "audit-fix": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm audit --fix"
+      },
+      "cache": false,
+      "description": "Automatically fix security vulnerabilities where possible"
     }
   }
 }
