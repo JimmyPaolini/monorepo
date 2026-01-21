@@ -30,14 +30,19 @@ const configuration: UserConfig = {
       "always",
       [
         "monorepo", // Workspace root
+        "applications", // All applications
+        "packages", // All packages
+        "tools", // Build or development tooling
+        // Projects
         "caelundas", // Caelundas application
         "lexico", // Lexico application
         "lexico-components", // Lexico components package
         "JimmyPaolini", // JimmyPaolini application
+        // Other
         "documentation", // Documentation
         "dependencies", // Dependency updates
         "infrastructure", // Infrastructure changes
-        "ci", // CI/CD workflows
+        "deployments", // CI/CD workflows
       ],
     ],
 
