@@ -1,4 +1,4 @@
-name: Markdown Lint
+name: 🖼️ Markdown Lint
 
 on:
   pull_request:
@@ -8,6 +8,7 @@ on:
 
 jobs:
   markdown-lint:
+    name: 🖼️ Markdown Lint
     runs-on: ubuntu-latest
 
     steps:
@@ -22,5 +23,5 @@ jobs:
       - name: Set SHAs for Nx
         uses: nrwl/nx-set-shas@v4
 
-      - name: Run markdown lint
+      - name: Markdown lint
         run: pnpm exec nx run monorepo:markdown-lint

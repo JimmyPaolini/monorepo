@@ -39,3 +39,5 @@ applications/caelundas/output
 coverage
 coverage/*
 vite.config.*.timestamp*
+type-coverage-report.txt
+**/type-coverage-report.txt

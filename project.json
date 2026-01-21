@@ -3,31 +3,69 @@
   "$schema": "node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "targets": {
-    "lint": {
+    "audit": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "eslint {args} --config eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'",
+        "command": "pnpm audit --audit-level=moderate"
+      },
+      "configurations": {
+        "check": {
+          "command": "pnpm audit --audit-level=moderate"
+        },
+        "write": {
+          "command": "pnpm audit --fix"
+        }
+      },
+      "defaultConfiguration": "check",
+      "cache": false,
+      "description": "Scan for security vulnerabilities (check) or auto-fix them (write)"
+    },
+    "check-lockfile": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "bash scripts/check-lockfile.sh",
+        "cwd": "{projectRoot}"
+      },
+      "description": "Verify that pnpm-lock.yaml is in sync with package.json files"
+    },
+    "dependency-analysis": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx run monorepo:dependency-lint:{args.configuration}",
+          "nx run monorepo:audit:{args.configuration}",
+          "nx run monorepo:license-check"
+        ],
         "cwd": "{projectRoot}"
       },
       "configurations": {
         "check": {
-          "command": "eslint {args} --config eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
+          "parallel": true
         },
         "write": {
-          "command": "eslint {args} --fix --config eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
+          "parallel": false
         }
       },
       "defaultConfiguration": "check",
-      "cache": true,
-      "description": "Lint workspace root files (config files, scripts, documentation, infrastructure, markdown) excluding NX projects"
+      "cache": false,
+      "description": "Run all dependency management tools (audit, dependency-lint, license-check)"
     },
-    "typecheck": {
+    "dependency-lint": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "tsc --noEmit",
-        "cwd": "{projectRoot}"
+        "command": "ncu --workspaces --root"
       },
-      "description": "Type-check workspace root TypeScript files"
+      "configurations": {
+        "check": {
+          "command": "ncu --workspaces --root"
+        },
+        "write": {
+          "command": "ncu --workspaces --root -u && pnpm install"
+        }
+      },
+      "defaultConfiguration": "check",
+      "cache": false,
+      "description": "Check for dependency updates (check) or update to latest versions (write)"
     },
     "format": {
       "executor": "nx:run-commands",
@@ -47,30 +85,6 @@
       "cache": true,
       "description": "Format workspace root files with Prettier (excluding NX projects)"
     },
-    "terraform:import": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "./scripts/terraform-import.sh",
-        "cwd": "{projectRoot}"
-      },
-      "description": "Import existing infrastructure resources into Terraform state"
-    },
-    "terraform:plan": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "./scripts/terraform-plan.sh",
-        "cwd": "{projectRoot}"
-      },
-      "description": "Run terraform plan to preview infrastructure changes"
-    },
-    "check-lockfile": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "bash scripts/check-lockfile.sh",
-        "cwd": "{projectRoot}"
-      },
-      "description": "Verify that pnpm-lock.yaml is in sync with package.json files"
-    },
     "knip": {
       "executor": "nx:run-commands",
       "options": {
@@ -89,60 +103,61 @@
       "cache": true,
       "description": "Check for unused files, dependencies, and exports in workspace root only"
     },
-    "static-code-analysis": {
+    "license-check": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": [
-          "nx run monorepo:typecheck",
-          "nx run monorepo:lint:{args.configuration}",
-          "nx run monorepo:format:{args.configuration}",
-          "nx run monorepo:knip:{args.configuration}"
-        ],
+        "command": "license-checker --json --onlyAllow 'MIT;Apache-2.0;BSD-2-Clause;BSD-3-Clause;ISC;0BSD;CC0-1.0;Unlicense;Python-2.0;CC-BY-3.0;CC-BY-4.0' --production --excludePrivatePackages",
+        "cwd": "{workspaceRoot}"
+      },
+      "cache": true,
+      "inputs": [
+        "default",
+        "{workspaceRoot}/package.json",
+        "{workspaceRoot}/pnpm-lock.yaml",
+        "{workspaceRoot}/.license-checker.json"
+      ],
+      "description": "Check licenses of production dependencies"
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "eslint {args} --config eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'",
         "cwd": "{projectRoot}"
       },
       "configurations": {
         "check": {
-          "parallel": true
+          "command": "eslint {args} --config eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
         },
         "write": {
-          "parallel": false
+          "command": "eslint {args} --fix --config eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
         }
       },
       "defaultConfiguration": "check",
       "cache": true,
-      "description": "Run all static code analysis tools (typecheck, lint, format, knip)"
+      "description": "Lint workspace root files (config files, scripts, documentation, infrastructure, markdown) excluding NX projects"
     },
-    "audit": {
+    "markdown-lint": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm audit --audit-level=moderate"
+        "command": "markdownlint-cli2 \"**/*.md\"",
+        "cwd": "{workspaceRoot}"
       },
-      "cache": false,
-      "description": "Scan for security vulnerabilities in dependencies"
-    },
-    "audit-fix": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm audit --fix"
+      "configurations": {
+        "check": {
+          "command": "markdownlint-cli2 \"**/*.md\""
+        },
+        "write": {
+          "command": "markdownlint-cli2 --fix \"**/*.md\""
+        }
       },
-      "cache": false,
-      "description": "Automatically fix security vulnerabilities where possible"
-    },
-    "check-updates": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "ncu --workspaces --root"
-      },
-      "cache": false,
-      "description": "Check for dependency updates across all workspaces"
-    },
-    "update-deps": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "ncu --workspaces --root -u && pnpm install"
-      },
-      "cache": false,
-      "description": "Update dependencies to latest versions"
+      "defaultConfiguration": "check",
+      "cache": true,
+      "inputs": [
+        "default",
+        "{workspaceRoot}/**/*.md",
+        "{workspaceRoot}/.markdownlint-cli2.jsonc"
+      ],
+      "description": "Lint markdown files across the entire codebase"
     },
     "spell-check": {
       "executor": "nx:run-commands",
@@ -158,43 +173,56 @@
       ],
       "description": "Check spelling across the entire codebase"
     },
-    "markdown-lint": {
+    "static-code-analysis": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "markdownlint-cli2 \"**/*.md\"",
-        "cwd": "{workspaceRoot}"
+        "commands": [
+          "nx run monorepo:typecheck",
+          "nx run monorepo:lint:{args.configuration}",
+          "nx run monorepo:markdown-lint:{args.configuration}",
+          "nx run monorepo:format:{args.configuration}",
+          "nx run monorepo:knip:{args.configuration}",
+          "nx run monorepo:spell-check"
+        ],
+        "cwd": "{projectRoot}"
       },
       "configurations": {
         "check": {
-          "command": "markdownlint-cli2 \"**/*.md\""
+          "parallel": true
         },
-        "fix": {
-          "command": "markdownlint-cli2 --fix \"**/*.md\""
+        "write": {
+          "parallel": false
         }
       },
       "defaultConfiguration": "check",
       "cache": true,
-      "inputs": [
-        "default",
-        "{workspaceRoot}/**/*.md",
-        "{workspaceRoot}/.markdownlint-cli2.jsonc"
-      ],
-      "description": "Lint markdown files across the entire codebase"
+      "description": "Run all static code analysis tools for workspace root (typecheck, lint, format, knip, spell-check, markdown-lint)"
     },
-    "license-check": {
+    "terraform": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "license-checker --json --onlyAllow 'MIT;Apache-2.0;BSD-2-Clause;BSD-3-Clause;ISC;0BSD;CC0-1.0;Unlicense;Python-2.0;CC-BY-3.0;CC-BY-4.0' --production --excludePrivatePackages",
-        "cwd": "{workspaceRoot}"
+        "command": "terraform plan",
+        "cwd": "infrastructure/terraform"
       },
-      "cache": true,
-      "inputs": [
-        "default",
-        "{workspaceRoot}/package.json",
-        "{workspaceRoot}/pnpm-lock.yaml",
-        "{workspaceRoot}/.license-checker.json"
-      ],
-      "description": "Check licenses of production dependencies"
+      "configurations": {
+        "plan": {
+          "command": "terraform plan"
+        },
+        "import": {
+          "command": "terraform import -input=false linode_lke_cluster.my_cluster $TF_VAR_linode_kubernetes_engine_cluster_id"
+        }
+      },
+      "defaultConfiguration": "plan",
+      "cache": false,
+      "description": "Run Terraform commands (plan, import)"
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc --noEmit",
+        "cwd": "{projectRoot}"
+      },
+      "description": "Type-check workspace root TypeScript files"
     }
   }
 }

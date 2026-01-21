@@ -6,14 +6,6 @@
   "tags": ["type:app", "framework:react", "stack:tanstack-start"],
   "implicitDependencies": ["lexico-components"],
   "targets": {
-    "develop": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm develop",
-        "cwd": "applications/lexico"
-      },
-      "description": "Start development server with hot reload"
-    },
     "build": {
       "executor": "nx:run-commands",
       "options": {
@@ -21,87 +13,6 @@
         "cwd": "applications/lexico"
       },
       "description": "Build the application for production"
-    },
-    "start": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm start",
-        "cwd": "applications/lexico"
-      },
-      "description": "Start the production server"
-    },
-    "typecheck": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "tsc --noEmit",
-        "cwd": "applications/lexico"
-      },
-      "description": "Type-check the application"
-    },
-    "format": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "prettier {args} applications/lexico"
-      },
-      "description": "Format files in the project with Prettier"
-    },
-    "supabase:start": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "supabase start",
-        "cwd": "applications/lexico"
-      },
-      "description": "Start local Supabase development environment"
-    },
-    "supabase:stop": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "supabase stop",
-        "cwd": "applications/lexico"
-      },
-      "description": "Stop local Supabase development environment"
-    },
-    "supabase:generate-types": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "supabase gen types typescript --local > src/lib/database.types.ts",
-        "cwd": "applications/lexico"
-      },
-      "description": "Generate TypeScript types from local Supabase schema"
-    },
-    "supabase:database-reset": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "supabase db reset",
-        "cwd": "applications/lexico"
-      },
-      "description": "Reset local database and apply all migrations"
-    },
-    "supabase:database-diff": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "supabase db diff --use-migra-py",
-        "cwd": "applications/lexico"
-      },
-      "description": "Generate migration from local database changes"
-    },
-    "knip": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace applications/lexico",
-        "cwd": "{workspaceRoot}"
-      },
-      "configurations": {
-        "check": {
-          "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace applications/lexico"
-        },
-        "write": {
-          "command": "NODE_OPTIONS='--import=tsx/esm' knip --fix --workspace applications/lexico"
-        }
-      },
-      "defaultConfiguration": "check",
-      "cache": true,
-      "description": "Check for unused files, dependencies, and exports"
     },
     "bundlesize": {
       "executor": "nx:run-commands",
@@ -130,10 +41,115 @@
       ],
       "description": "Validate dependency architecture"
     },
+    "develop": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm develop",
+        "cwd": "applications/lexico"
+      },
+      "description": "Start development server with hot reload"
+    },
+    "format": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prettier {args} applications/lexico"
+      },
+      "description": "Format files in the project with Prettier"
+    },
+    "knip": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace applications/lexico",
+        "cwd": "{workspaceRoot}"
+      },
+      "configurations": {
+        "check": {
+          "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace applications/lexico"
+        },
+        "write": {
+          "command": "NODE_OPTIONS='--import=tsx/esm' knip --fix --workspace applications/lexico"
+        }
+      },
+      "defaultConfiguration": "check",
+      "cache": true,
+      "description": "Check for unused files, dependencies, and exports"
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm start",
+        "cwd": "applications/lexico"
+      },
+      "description": "Start the production server"
+    },
+    "static-code-analysis": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx run lexico:typecheck",
+          "nx run lexico:lint:{args.configuration}",
+          "nx run lexico:format:{args.configuration}",
+          "nx run lexico:knip:{args.configuration}",
+          "nx run lexico:type-coverage",
+          "nx run lexico:dependency-check"
+        ]
+      },
+      "configurations": {
+        "check": {
+          "parallel": true
+        },
+        "write": {
+          "parallel": false
+        }
+      },
+      "defaultConfiguration": "check",
+      "cache": true,
+      "description": "Run all static code analysis tools (typecheck, lint, format, knip, type-coverage, dependency-check)"
+    },
+    "supabase:database-diff": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "supabase db diff --use-migra-py",
+        "cwd": "applications/lexico"
+      },
+      "description": "Generate migration from local database changes"
+    },
+    "supabase:database-reset": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "supabase db reset",
+        "cwd": "applications/lexico"
+      },
+      "description": "Reset local database and apply all migrations"
+    },
+    "supabase:generate-types": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "supabase gen types typescript --local > src/lib/database.types.ts",
+        "cwd": "applications/lexico"
+      },
+      "description": "Generate TypeScript types from local Supabase schema"
+    },
+    "supabase:start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "supabase start",
+        "cwd": "applications/lexico"
+      },
+      "description": "Start local Supabase development environment"
+    },
+    "supabase:stop": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "supabase stop",
+        "cwd": "applications/lexico"
+      },
+      "description": "Stop local Supabase development environment"
+    },
     "type-coverage": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "type-coverage",
+        "command": "type-coverage --detail > type-coverage-report.txt 2>&1 || (cat type-coverage-report.txt && exit 1)",
         "cwd": "applications/lexico"
       },
       "cache": true,
@@ -144,6 +160,14 @@
         "{projectRoot}/tsconfig.json"
       ],
       "description": "Check TypeScript type coverage"
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc --noEmit",
+        "cwd": "applications/lexico"
+      },
+      "description": "Type-check the application"
     }
   }
 }

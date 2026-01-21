@@ -104,6 +104,37 @@
           "args": "--fix"
         }
       }
+    },
+    "static-code-analysis": {
+      "cache": true,
+      "defaultConfiguration": "check",
+      "configurations": {
+        "check": {
+          "parallel": true
+        },
+        "write": {
+          "parallel": false
+        }
+      }
+    },
+    "dependency-check": {
+      "inputs": [
+        "default",
+        "^default",
+        "{projectRoot}/**/*.ts",
+        "{projectRoot}/**/*.tsx",
+        "{workspaceRoot}/.dependency-cruiser.cjs"
+      ],
+      "cache": true
+    },
+    "type-coverage": {
+      "inputs": [
+        "default",
+        "{projectRoot}/**/*.ts",
+        "{projectRoot}/**/*.tsx",
+        "{projectRoot}/tsconfig.json"
+      ],
+      "cache": true
     }
   },
   "parallel": 3,

@@ -1,4 +1,4 @@
-name: 🎨 Format
+name: 🎨 Format Check
 
 on:
   push:
@@ -15,7 +15,7 @@ jobs:
     uses: ./.github/workflows/setup.yml
 
   format:
-    name: 🎨 Format
+    name: 🎨 Format Check
     runs-on: ubuntu-latest
     needs: setup
 
@@ -55,5 +55,5 @@ jobs:
           echo "=== Cache Size ==="
           du -sh .nx/cache 2>/dev/null || echo "No cache to measure"
 
-      - name: 🎨 Check formatting
+      - name: 🎨 Format Check
         run: npx nx affected -t format --configuration=check --parallel=3 --verbose

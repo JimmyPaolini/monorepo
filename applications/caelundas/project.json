@@ -5,6 +5,22 @@
   "projectType": "application",
   "tags": [],
   "targets": {
+    "dependency-check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "depcruise applications/caelundas/src --config .dependency-cruiser.cjs",
+        "cwd": "{workspaceRoot}"
+      },
+      "cache": true,
+      "inputs": [
+        "default",
+        "^default",
+        "{projectRoot}/**/*.ts",
+        "{projectRoot}/**/*.tsx",
+        "{workspaceRoot}/.dependency-cruiser.cjs"
+      ],
+      "description": "Validate dependency architecture"
+    },
     "develop": {
       "executor": "nx:run-commands",
       "options": {
@@ -12,6 +28,79 @@
         "cwd": "applications/caelundas"
       },
       "description": "Run Caelundas locally with .env file"
+    },
+    "docker-build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "docker buildx build --platform linux/amd64 -f applications/caelundas/Dockerfile -t caelundas:1.0.0 -t ghcr.io/jimmypaolini/caelundas:1.0.0 --load .",
+        "cwd": "{workspaceRoot}"
+      },
+      "description": "Build Docker image for linux/amd64 and load it locally"
+    },
+    "docker-push": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "docker buildx build --platform linux/amd64 -f applications/caelundas/Dockerfile -t ghcr.io/jimmypaolini/caelundas:1.0.0 --push .",
+        "cwd": "{workspaceRoot}"
+      },
+      "description": "Build and push Docker image to GitHub Container Registry"
+    },
+    "format": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prettier {args} applications/caelundas"
+      },
+      "description": "Format files in the project with Prettier"
+    },
+    "helm-uninstall": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "./applications/caelundas/scripts/helm-uninstall.sh",
+        "cwd": "{workspaceRoot}"
+      },
+      "description": "Uninstall a Caelundas Helm release and clean up PVC (requires release name argument)"
+    },
+    "helm-upgrade": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "./applications/caelundas/scripts/helm-upgrade.sh",
+        "cwd": "{workspaceRoot}"
+      },
+      "description": "Deploy Caelundas job with Helm with auto-generated release name"
+    },
+    "knip": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace applications/caelundas",
+        "cwd": "{workspaceRoot}"
+      },
+      "configurations": {
+        "check": {
+          "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace applications/caelundas"
+        },
+        "write": {
+          "command": "NODE_OPTIONS='--import=tsx/esm' knip --fix --workspace applications/caelundas"
+        }
+      },
+      "defaultConfiguration": "check",
+      "cache": true,
+      "description": "Check for unused files, dependencies, and exports"
+    },
+    "kubernetes-copy-files": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "./applications/caelundas/scripts/kubernetes-copy-files.sh",
+        "cwd": "{workspaceRoot}"
+      },
+      "description": "Copy files from a completed Caelundas job (requires release name argument)"
+    },
+    "kubernetes-list-files": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "./applications/caelundas/scripts/kubernetes-list-files.sh",
+        "cwd": "{workspaceRoot}"
+      },
+      "description": "List files in a Caelundas job's PVC (requires release name argument)"
     },
     "start": {
       "executor": "nx:run-commands",
@@ -21,20 +110,29 @@
       },
       "description": "Start the Caelundas application"
     },
-    "typecheck": {
+    "static-code-analysis": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "tsc --noEmit",
-        "cwd": "applications/caelundas"
+        "commands": [
+          "nx run caelundas:typecheck",
+          "nx run caelundas:lint:{args.configuration}",
+          "nx run caelundas:format:{args.configuration}",
+          "nx run caelundas:knip:{args.configuration}",
+          "nx run caelundas:type-coverage",
+          "nx run caelundas:dependency-check"
+        ]
       },
-      "description": "Type-check the application without emitting files"
-    },
-    "format": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "prettier {args} applications/caelundas"
+      "configurations": {
+        "check": {
+          "parallel": true
+        },
+        "write": {
+          "parallel": false
+        }
       },
-      "description": "Format files in the project with Prettier"
+      "defaultConfiguration": "check",
+      "cache": true,
+      "description": "Run all static code analysis tools (typecheck, lint, format, knip, type-coverage, dependency-check)"
     },
     "test": {
       "executor": "nx:run-commands",
@@ -84,76 +182,10 @@
       },
       "description": "Run end-to-end tests only"
     },
-    "docker-build": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "docker buildx build --platform linux/amd64 -f applications/caelundas/Dockerfile -t caelundas:1.0.0 -t ghcr.io/jimmypaolini/caelundas:1.0.0 --load .",
-        "cwd": "{workspaceRoot}"
-      },
-      "description": "Build Docker image for linux/amd64 and load it locally"
-    },
-    "docker-push": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "docker buildx build --platform linux/amd64 -f applications/caelundas/Dockerfile -t ghcr.io/jimmypaolini/caelundas:1.0.0 --push .",
-        "cwd": "{workspaceRoot}"
-      },
-      "description": "Build and push Docker image to GitHub Container Registry"
-    },
-    "helm-upgrade": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "./applications/caelundas/scripts/helm-upgrade.sh",
-        "cwd": "{workspaceRoot}"
-      },
-      "description": "Deploy Caelundas job with Helm with auto-generated release name"
-    },
-    "kubernetes-list-files": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "./applications/caelundas/scripts/kubernetes-list-files.sh",
-        "cwd": "{workspaceRoot}"
-      },
-      "description": "List files in a Caelundas job's PVC (requires release name argument)"
-    },
-    "kubernetes-copy-files": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "./applications/caelundas/scripts/kubernetes-copy-files.sh",
-        "cwd": "{workspaceRoot}"
-      },
-      "description": "Copy files from a completed Caelundas job (requires release name argument)"
-    },
-    "helm-uninstall": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "./applications/caelundas/scripts/helm-uninstall.sh",
-        "cwd": "{workspaceRoot}"
-      },
-      "description": "Uninstall a Caelundas Helm release and clean up PVC (requires release name argument)"
-    },
-    "knip": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace applications/caelundas",
-        "cwd": "{workspaceRoot}"
-      },
-      "configurations": {
-        "check": {
-          "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace applications/caelundas"
-        },
-        "write": {
-          "command": "NODE_OPTIONS='--import=tsx/esm' knip --fix --workspace applications/caelundas"
-        }
-      },
-      "defaultConfiguration": "check",
-      "cache": true,
-      "description": "Check for unused files, dependencies, and exports"
-    },
     "type-coverage": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "type-coverage",
+        "command": "type-coverage --detail > type-coverage-report.txt 2>&1 || (cat type-coverage-report.txt && exit 1)",
         "cwd": "applications/caelundas"
       },
       "cache": true,
@@ -165,21 +197,13 @@
       ],
       "description": "Check TypeScript type coverage"
     },
-    "dependency-check": {
+    "typecheck": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "depcruise applications/caelundas/src --config .dependency-cruiser.cjs",
-        "cwd": "{workspaceRoot}"
+        "command": "tsc --noEmit",
+        "cwd": "applications/caelundas"
       },
-      "cache": true,
-      "inputs": [
-        "default",
-        "^default",
-        "{projectRoot}/**/*.ts",
-        "{projectRoot}/**/*.tsx",
-        "{workspaceRoot}/.dependency-cruiser.cjs"
-      ],
-      "description": "Validate dependency architecture"
+      "description": "Type-check the application without emitting files"
     }
   }
 }

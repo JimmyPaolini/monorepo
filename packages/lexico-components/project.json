@@ -12,13 +12,21 @@
         "outputPath": "dist/packages/lexico-components"
       }
     },
-    "typecheck": {
+    "dependency-check": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "tsc --noEmit",
-        "cwd": "packages/lexico-components"
+        "command": "depcruise packages/lexico-components/src --config .dependency-cruiser.cjs",
+        "cwd": "{workspaceRoot}"
       },
-      "description": "Type-check the library"
+      "cache": true,
+      "inputs": [
+        "default",
+        "^default",
+        "{projectRoot}/**/*.ts",
+        "{projectRoot}/**/*.tsx",
+        "{workspaceRoot}/.dependency-cruiser.cjs"
+      ],
+      "description": "Validate dependency architecture"
     },
     "format": {
       "executor": "nx:run-commands",
@@ -45,10 +53,34 @@
       "cache": true,
       "description": "Check for unused files, dependencies, and exports"
     },
+    "static-code-analysis": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx run lexico-components:typecheck",
+          "nx run lexico-components:lint:{args.configuration}",
+          "nx run lexico-components:format:{args.configuration}",
+          "nx run lexico-components:knip:{args.configuration}",
+          "nx run lexico-components:type-coverage",
+          "nx run lexico-components:dependency-check"
+        ]
+      },
+      "configurations": {
+        "check": {
+          "parallel": true
+        },
+        "write": {
+          "parallel": false
+        }
+      },
+      "defaultConfiguration": "check",
+      "cache": true,
+      "description": "Run all static code analysis tools (typecheck, lint, format, knip, type-coverage, dependency-check)"
+    },
     "type-coverage": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "type-coverage",
+        "command": "type-coverage --detail > type-coverage-report.txt 2>&1 || (cat type-coverage-report.txt && exit 1)",
         "cwd": "packages/lexico-components"
       },
       "cache": true,
@@ -60,21 +92,13 @@
       ],
       "description": "Check TypeScript type coverage"
     },
-    "dependency-check": {
+    "typecheck": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "depcruise packages/lexico-components/src --config .dependency-cruiser.cjs",
-        "cwd": "{workspaceRoot}"
+        "command": "tsc --noEmit",
+        "cwd": "packages/lexico-components"
       },
-      "cache": true,
-      "inputs": [
-        "default",
-        "^default",
-        "{projectRoot}/**/*.ts",
-        "{projectRoot}/**/*.tsx",
-        "{workspaceRoot}/.dependency-cruiser.cjs"
-      ],
-      "description": "Validate dependency architecture"
+      "description": "Type-check the library"
     }
   }
 }

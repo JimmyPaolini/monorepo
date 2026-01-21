@@ -45,5 +45,5 @@ jobs:
       - name: 📚 Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: 🔒 Run security audit
+      - name: 🔒 Security Audit
         run: pnpm audit --audit-level=moderate

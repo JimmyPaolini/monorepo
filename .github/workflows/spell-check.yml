@@ -1,4 +1,4 @@
-name: Spell Check
+name: 🧙‍♂️ Spell Check
 
 on:
   pull_request:
@@ -8,6 +8,7 @@ on:
 
 jobs:
   spell-check:
+    name: 🧙‍♂️ Spell Check
     runs-on: ubuntu-latest
 
     steps:
@@ -22,5 +23,5 @@ jobs:
       - name: Set SHAs for Nx
         uses: nrwl/nx-set-shas@v4
 
-      - name: Run spell check
+      - name: 🧙‍♂️ Spell Check
         run: pnpm exec nx run monorepo:spell-check

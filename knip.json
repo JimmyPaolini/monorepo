@@ -100,5 +100,5 @@
     "eslint-plugin-tsdoc",
     "eslint-plugin-jsdoc"
   ],
-  "ignoreBinaries": ["depcruise"]
+  "ignoreBinaries": ["depcruise", "terraform"]
 }

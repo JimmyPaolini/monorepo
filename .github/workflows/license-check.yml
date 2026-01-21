@@ -1,4 +1,4 @@
-name: License Check
+name: 📃 License Check
 
 on:
   pull_request:
@@ -11,6 +11,7 @@ on:
 
 jobs:
   license-check:
+    name: 📃 License Check
     runs-on: ubuntu-latest
 
     steps:
@@ -25,5 +26,5 @@ jobs:
       - name: Set SHAs for Nx
         uses: nrwl/nx-set-shas@v4
 
-      - name: Check licenses
+      - name: 📃 License Check
         run: pnpm exec nx run monorepo:license-check
