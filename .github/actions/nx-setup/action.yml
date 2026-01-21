@@ -1,14 +1,9 @@
 name: NX Setup
-description: Self-contained Nx monorepo setup with pnpm, node, and cache management
+description: Nx monorepo setup with pnpm, node, and cache management (requires checkout first)
 
 runs:
   using: composite
   steps:
-    - name: 📥 Checkout repository
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-
     # Centralized version management - update here to upgrade all workflows
     - name: 📦 Setup pnpm
       uses: pnpm/action-setup@v4

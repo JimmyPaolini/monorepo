@@ -16,7 +16,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🔧 Setup Nx workspace
+      - name: � Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: �🔧 Setup Nx workspace
         uses: ./.github/actions/nx-setup
 
       - name: ✂️ Knip

@@ -4,26 +4,40 @@ This document describes the GitHub Actions workflow architecture used in this mo
 
 ## Composite Action Pattern
 
-All task workflows in this repository use a self-contained composite action for setup and execution:
+All task workflows in this repository use a composite action for consistent setup:
 
-- **[.github/actions/nx-setup](/.github/actions/nx-setup)**: Handles checkout, pnpm/node setup, Nx cache management, dependency installation, and prepares the workspace for task execution
+- **Checkout step**: Each workflow checks out the repository with full git history
+- **[.github/actions/nx-setup](/.github/actions/nx-setup)**: Handles pnpm/node setup, Nx cache management, dependency installation, and prepares the workspace for task execution
 
-This pattern reduces workflow file sizes by ~70% (from ~60 lines to ~18 lines) while maintaining consistency across all workflows.
+This pattern reduces workflow file sizes by ~65% (from ~60 lines to ~21 lines) while maintaining consistency across all workflows.
 
 ## The nx-setup Composite Action
 
-The [.github/actions/nx-setup/action.yml](/.github/actions/nx-setup/action.yml) composite action is completely self-contained and handles:
+The [.github/actions/nx-setup/action.yml](/.github/actions/nx-setup/action.yml) composite action handles the common setup steps (requires repository checkout first):
 
-1. Checkout repository with full git history (`fetch-depth: 0`)
-2. Setup pnpm (version: 10.20.0)
-3. Setup Node.js (version: 22.20.0) with pnpm caching
-4. Set Nx SHAs for affected computation
-5. Restore/save Nx cache automatically
-6. Install dependencies with `pnpm install --frozen-lockfile`
+1. Setup pnpm (version: 10.20.0)
+2. Setup Node.js (version: 22.20.0) with pnpm caching
+3. Set Nx SHAs for affected computation
+4. Restore/save Nx cache automatically
+5. Install dependencies with `pnpm install --frozen-lockfile`
 
-### No Inputs Required
+### Prerequisites
 
-The composite action is fully self-contained with no required inputs. It automatically:
+The composite action requires the repository to be checked out first (with `fetch-depth: 0` for Nx affected computation):
+
+```yaml
+- name: 📥 Checkout repository
+  uses: actions/checkout@v4
+  with:
+    fetch-depth: 0
+
+- name: 🔧 Setup Nx workspace
+  uses: ./.github/actions/nx-setup
+```
+
+### No Additional Inputs Required
+
+The composite action has no inputs. It automatically:
 
 - Generates cache keys based on `pnpm-lock.yaml` hash and commit SHA
 - Uses restore-keys for cache fallback across branches
@@ -59,7 +73,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🔧 Setup Nx workspace
+      - name: � Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: �🔧 Setup Nx workspace
         uses: ./.github/actions/nx-setup
 
       - name: 🎯 Run Task
