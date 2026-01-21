@@ -146,6 +146,22 @@
       },
       "cache": false,
       "description": "Automatically fix security vulnerabilities where possible"
+    },
+    "check-updates": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "ncu --workspaces --root"
+      },
+      "cache": false,
+      "description": "Check for dependency updates across all workspaces"
+    },
+    "update-deps": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "ncu --workspaces --root -u && pnpm install"
+      },
+      "cache": false,
+      "description": "Update dependencies to latest versions"
     }
   }
 }

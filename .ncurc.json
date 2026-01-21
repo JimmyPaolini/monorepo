@@ -1,0 +1,7 @@
+{
+  "upgrade": false,
+  "reject": ["@types/*"],
+  "target": "minor",
+  "workspaces": true,
+  "root": true
+}

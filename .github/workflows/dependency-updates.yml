@@ -1,0 +1,39 @@
+name: 🔄 Dependency Updates
+
+on:
+  schedule:
+    - cron: "0 10 * * 1" # Weekly Monday 10am UTC
+  workflow_dispatch: # Manual trigger
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check-updates:
+    name: 🔄 Check for Updates
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.20.0
+
+      - name: 🟢 Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.20.0
+          cache: pnpm
+
+      - name: 📚 Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: 🔄 Check for updates
+        run: |
+          pnpm exec ncu --workspaces --root --format group
+          echo ""
+          echo "ℹ️ Run 'nx run monorepo:update-deps' locally to apply updates"
