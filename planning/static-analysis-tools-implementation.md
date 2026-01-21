@@ -50,10 +50,10 @@ This document outlines the implementation plan for integrating additional static
    - CI: `.github/workflows/dependency-updates.yml` (weekly reports)
    - Targets: `check-updates`, `update-deps`
 
-4. **size-limit** (v12.2.0) - Bundle size tracking for lexico
-   - Config: `applications/lexico/package.json`
-   - Limits: 180KB JS, 20KB CSS (gzipped)
-   - Target: `bundlesize` in lexico project
+4. **size-limit** (v12.2.0) - Bundle size tracking for web projects
+   - Config: `applications/lexico/package.json`, `packages/lexico-components/package.json`
+   - Limits: lexico (180KB JS, 20KB CSS), lexico-components (25KB JS) - all gzipped
+   - Target: `bundlesize` in both projects
 
 5. **type-coverage** (v2.29.7) - TypeScript type safety metrics
    - Baselines: caelundas 99.46%, lexico 99.36%, lexico-components 99.84%, code-generator 100%
@@ -120,7 +120,7 @@ Comprehensive documentation available:
 
 2. 🟡 **Phase 2: Performance & Quality** ✅ (Medium Priority)
    - ~~bundlesize (lexico only)~~ Replaced with size-limit ✅
-   - size-limit (lexico only) ✅
+   - size-limit (lexico + lexico-components) ✅
    - type-coverage (baseline measurement first) ✅
    - cspell ✅
 

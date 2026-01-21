@@ -407,6 +407,9 @@ importers:
         specifier: ^1.1.2
         version: 1.1.2(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
     devDependencies:
+      '@size-limit/file':
+        specifier: ^12.0.0
+        version: 12.0.0(size-limit@12.0.0(jiti@2.6.1))
       '@types/react':
         specifier: ^19.0.0
         version: 19.2.7
@@ -419,6 +422,9 @@ importers:
       postcss:
         specifier: ^8.4.49
         version: 8.5.6
+      size-limit:
+        specifier: ^12.0.0
+        version: 12.0.0(jiti@2.6.1)
       tailwindcss:
         specifier: ^3.4.17
         version: 3.4.18

@@ -12,6 +12,17 @@
         "outputPath": "dist/packages/lexico-components"
       }
     },
+    "bundlesize": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "command": "npx size-limit",
+        "cwd": "packages/lexico-components"
+      },
+      "cache": true,
+      "inputs": ["default", "{workspaceRoot}/dist/packages/lexico-components/**/*"],
+      "description": "Check bundle size limits"
+    },
     "dependency-check": {
       "executor": "nx:run-commands",
       "options": {
