@@ -3,7 +3,11 @@
   "ignoreExportsUsedInFile": true,
   "workspaces": {
     ".": {
-      "entry": ["scripts/**/*.{js,ts,sh}", "vitest.config.base.ts"],
+      "entry": [
+        "scripts/**/*.{js,ts,sh}",
+        "vitest.config.base.ts",
+        ".dependency-cruiser.cjs"
+      ],
       "project": "**/*.{js,ts,mjs,cjs}",
       "ignore": [
         "**/*.test.ts",
@@ -85,5 +89,11 @@
     "**/.nx/**",
     "**/coverage/**"
   ],
-  "ignoreDependencies": ["@nx/eslint-plugin", "@nx/js", "@nx/web", "tsx"]
+  "ignoreDependencies": [
+    "@nx/eslint-plugin",
+    "@nx/js",
+    "@nx/web",
+    "tsx",
+    "dependency-cruiser"
+  ]
 }

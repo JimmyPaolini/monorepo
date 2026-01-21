@@ -402,6 +402,9 @@ importers:
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
+      react:
+        specifier: ^19.0.0
+        version: 19.2.0
       vitest:
         specifier: ^2.1.8
         version: 2.1.9(@types/node@20.19.27)(@vitest/ui@2.1.9)(jsdom@22.1.0)(terser@5.44.1)
