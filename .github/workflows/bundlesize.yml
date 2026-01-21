@@ -59,8 +59,5 @@ jobs:
           echo "=== Cache Size ==="
           du -sh .nx/cache 2>/dev/null || echo "No cache to measure"
 
-      - name: 🏗️ Build lexico
-        run: npx nx run lexico:build --verbose
-
-      - name: 📦 Bundle Size
-        run: npx nx run lexico:bundlesize --verbose
+      - name: 📦 Check Bundle Size
+        run: npx nx affected -t bundlesize --parallel=2 --verbose
