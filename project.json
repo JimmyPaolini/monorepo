@@ -162,6 +162,20 @@
       },
       "cache": false,
       "description": "Update dependencies to latest versions"
+    },
+    "spell-check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cspell \"**/*.{ts,tsx,js,jsx,md,yaml,yml,json}\" --no-progress",
+        "cwd": "{workspaceRoot}"
+      },
+      "cache": true,
+      "inputs": [
+        "default",
+        "{workspaceRoot}/**/*.{ts,tsx,js,jsx,md,yaml,yml,json}",
+        "{workspaceRoot}/cspell.config.yaml"
+      ],
+      "description": "Check spelling across the entire codebase"
     }
   }
 }

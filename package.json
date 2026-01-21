@@ -52,6 +52,7 @@
     "@types/node": "^22.19.1",
     "@typescript-eslint/parser": "^8.48.0",
     "@vitest/ui": "^2.1.8",
+    "cspell": "^9.6.0",
     "eslint": "^9.39.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
