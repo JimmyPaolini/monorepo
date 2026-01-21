@@ -1,7 +1,10 @@
 import { relative } from "node:path";
 
 const config = {
-  "**/package.json": () => ["./scripts/check-lockfile.sh"],
+  "**/package.json": () => [
+    "./scripts/check-lockfile.sh",
+    "nx run monorepo:license-check",
+  ],
   "pnpm-workspace.yaml": () => ["./scripts/check-lockfile.sh"],
 
   "*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}": (files: string[]) => {
@@ -14,6 +17,8 @@ const config = {
       `nx affected --target=lint --files=${relativePaths}`,
       `nx affected --target=typecheck --files=${relativePaths}`,
       `nx affected --target=knip --files=${relativePaths}`,
+      `nx affected --target=type-coverage --files=${relativePaths}`,
+      "nx run monorepo:spell-check",
     ];
   },
 
@@ -21,7 +26,10 @@ const config = {
     const relativePaths = files
       .map((file: string) => relative(process.cwd(), file))
       .join(",");
-    return [`nx affected --target=format --files=${relativePaths}`];
+    return [
+      `nx affected --target=format --files=${relativePaths}`,
+      "nx run monorepo:spell-check",
+    ];
   },
 
   "*.md": (files: string[]) => {
@@ -31,6 +39,8 @@ const config = {
     return [
       `nx affected --target=format --files=${relativePaths}`,
       `nx affected --target=lint --files=${relativePaths}`,
+      "nx run monorepo:spell-check",
+      "nx run monorepo:markdown-lint",
     ];
   },
 };

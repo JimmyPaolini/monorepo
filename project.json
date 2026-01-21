@@ -199,6 +199,21 @@
         "{workspaceRoot}/.markdownlint-cli2.jsonc"
       ],
       "description": "Lint markdown files across the entire codebase"
+    },
+    "license-check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "license-checker --json --onlyAllow 'MIT;Apache-2.0;BSD-2-Clause;BSD-3-Clause;ISC;0BSD;CC0-1.0;Unlicense;Python-2.0;CC-BY-3.0;CC-BY-4.0' --production --excludePrivatePackages",
+        "cwd": "{workspaceRoot}"
+      },
+      "cache": true,
+      "inputs": [
+        "default",
+        "{workspaceRoot}/package.json",
+        "{workspaceRoot}/pnpm-lock.yaml",
+        "{workspaceRoot}/.license-checker.json"
+      ],
+      "description": "Check licenses of production dependencies"
     }
   }
 }

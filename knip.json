@@ -94,6 +94,8 @@
     "@nx/js",
     "@nx/web",
     "tsx",
-    "dependency-cruiser"
+    "dependency-cruiser",
+    "type-coverage",
+    "license-checker"
   ]
 }
