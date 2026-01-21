@@ -6,10 +6,12 @@ import markdown from "@eslint/markdown";
 import nxPlugin from "@nx/eslint-plugin";
 import eslintConfigPrettier from "eslint-config-prettier";
 import importPlugin from "eslint-plugin-import";
+import jsdocPlugin from "eslint-plugin-jsdoc";
 import jsoncPlugin from "eslint-plugin-jsonc";
 import jsxA11yPlugin from "eslint-plugin-jsx-a11y";
 import reactPlugin from "eslint-plugin-react";
 import reactHooksPlugin from "eslint-plugin-react-hooks";
+import tsdocPlugin from "eslint-plugin-tsdoc";
 import eslintPluginYml from "eslint-plugin-yml";
 import tseslint from "typescript-eslint";
 
@@ -290,6 +292,47 @@ export default [
       "@typescript-eslint/no-non-null-assertion": "error",
       "@typescript-eslint/restrict-template-expressions": "off",
       "@typescript-eslint/prefer-nullish-coalescing": "off",
+    },
+  },
+
+  // TSDoc documentation linting
+  {
+    files: ["**/*.ts", "**/*.tsx"],
+    ignores: [
+      "**/*.test.ts",
+      "**/*.test.tsx",
+      "**/*.spec.ts",
+      "**/*.spec.tsx",
+      ".lintstagedrc.ts",
+      ".prettierrc.ts",
+    ],
+    plugins: {
+      tsdoc: tsdocPlugin,
+      jsdoc: jsdocPlugin,
+    },
+    rules: {
+      "tsdoc/syntax": "warn",
+      "jsdoc/require-jsdoc": [
+        "warn",
+        {
+          require: {
+            FunctionDeclaration: true,
+            MethodDefinition: true,
+            ClassDeclaration: true,
+            ArrowFunctionExpression: false,
+            FunctionExpression: false,
+          },
+          contexts: [
+            "TSInterfaceDeclaration",
+            "TSTypeAliasDeclaration",
+            "TSEnumDeclaration",
+          ],
+          publicOnly: true,
+          exemptEmptyConstructors: true,
+          exemptEmptyFunctions: false,
+          checkConstructors: false,
+        },
+      ],
     },
   },
 

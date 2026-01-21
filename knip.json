@@ -96,6 +96,9 @@
     "tsx",
     "dependency-cruiser",
     "type-coverage",
-    "license-checker"
-  ]
+    "license-checker",
+    "eslint-plugin-tsdoc",
+    "eslint-plugin-jsdoc"
+  ],
+  "ignoreBinaries": ["depcruise"]
 }
