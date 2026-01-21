@@ -1,6 +1,8 @@
 import moment from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
 
+import { specialtyAspectBodies } from "../../types";
+
 import {
   getSpecialtyAspectDurationEvents,
   getSpecialtyAspectEvent,
@@ -42,26 +44,7 @@ describe("specialtyAspects.events", () => {
       previousMinute: moment.Moment,
       nextMinute: moment.Moment,
     ): Record<Body, CoordinateEphemeris> => {
-      const allBodies = [
-        "sun",
-        "mercury",
-        "venus",
-        "mars",
-        "jupiter",
-        "saturn",
-        "uranus",
-        "neptune",
-        "pluto",
-        "chiron",
-        "lilith",
-        "ceres",
-        "pallas",
-        "juno",
-        "vesta",
-        "halley",
-        "north lunar node",
-        "lunar apogee",
-      ] as Body[];
+      const allBodies = specialtyAspectBodies;
 
       const ephemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       // Position all bodies at 200° - a safe angle that doesn't create specialty aspects
@@ -253,28 +236,9 @@ describe("specialtyAspects.events", () => {
       // Positions: 50° through 60° (10° span, no pairs will match specialty aspect angles)
       const safeLongitudes = [
         50, 52, 54, 56, 58, 60, 51, 53, 55, 57, 59, 50.5, 52.5, 54.5, 56.5,
-        58.5, 60.5, 51.5,
+        58.5, 60.5, 51.5, 53.5,
       ];
-      const allBodies = [
-        "sun",
-        "mercury",
-        "venus",
-        "mars",
-        "jupiter",
-        "saturn",
-        "uranus",
-        "neptune",
-        "pluto",
-        "chiron",
-        "lilith",
-        "ceres",
-        "pallas",
-        "juno",
-        "vesta",
-        "halley",
-        "north lunar node",
-        "lunar apogee",
-      ] as Body[];
+      const allBodies = specialtyAspectBodies;
 
       const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       allBodies.forEach((body, index) => {
