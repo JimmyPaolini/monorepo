@@ -9,22 +9,18 @@ on:
     # Weekly license check on Mondays at 9 AM UTC
     - cron: "0 9 * * 1"
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   license-check:
     name: 📃 License Check
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Setup
-        uses: ./.github/actions/setup
-
-      - name: Set SHAs for Nx
-        uses: nrwl/nx-set-shas@v4
+      - name: 🔧 Setup Nx workspace
+        uses: ./.github/actions/nx-setup
 
       - name: 📃 License Check
         run: pnpm exec nx run monorepo:license-check

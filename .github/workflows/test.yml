@@ -11,49 +11,13 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  setup:
-    uses: ./.github/workflows/setup.yml
-
   test:
     name: 🧪 Test
     runs-on: ubuntu-latest
-    needs: setup
 
     steps:
-      - name: 📥 Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: 📦 Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10.20.0
-
-      - name: 🟢 Setup node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22.20.0
-          cache: pnpm
-
-      - name: 🎯 Set NX SHAs
-        uses: nrwl/nx-set-shas@v4
-
-      - name: ♻️ Restore cache
-        uses: actions/cache/restore@v4
-        with:
-          path: .nx/cache
-          key: ${{ needs.setup.outputs.cache-key }}
-
-      - name: 📚 Install dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: 🛅 Verify cache
-        run: |
-          echo "=== NX Cache Directory ==="
-          ls -lah .nx/cache 2>/dev/null || echo "No cache directory found (first run)"
-          echo "=== Cache Size ==="
-          du -sh .nx/cache 2>/dev/null || echo "No cache to measure"
+      - name: 🔧 Setup Nx workspace
+        uses: ./.github/actions/nx-setup
 
       - name: 🧪 Test Coverage
         run: npx nx affected -t test --parallel=3 --coverage --verbose

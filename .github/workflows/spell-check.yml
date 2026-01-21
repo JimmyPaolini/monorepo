@@ -6,22 +6,18 @@ on:
     branches:
       - main
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   spell-check:
     name: 🧙‍♂️ Spell Check
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Setup
-        uses: ./.github/actions/setup
-
-      - name: Set SHAs for Nx
-        uses: nrwl/nx-set-shas@v4
+      - name: 🔧 Setup Nx workspace
+        uses: ./.github/actions/nx-setup
 
       - name: 🧙‍♂️ Spell Check
         run: pnpm exec nx run monorepo:spell-check
