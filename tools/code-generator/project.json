@@ -52,6 +52,37 @@
       "defaultConfiguration": "check",
       "cache": true,
       "description": "Check for unused files, dependencies, and exports"
+    },
+    "type-coverage": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "type-coverage",
+        "cwd": "tools/code-generator"
+      },
+      "cache": true,
+      "inputs": [
+        "default",
+        "{projectRoot}/**/*.ts",
+        "{projectRoot}/**/*.tsx",
+        "{projectRoot}/tsconfig.json"
+      ],
+      "description": "Check TypeScript type coverage"
+    },
+    "dependency-check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "depcruise tools/code-generator/src --config .dependency-cruiser.cjs",
+        "cwd": "{workspaceRoot}"
+      },
+      "cache": true,
+      "inputs": [
+        "default",
+        "^default",
+        "{projectRoot}/**/*.ts",
+        "{projectRoot}/**/*.tsx",
+        "{workspaceRoot}/.dependency-cruiser.cjs"
+      ],
+      "description": "Validate dependency architecture"
     }
   }
 }

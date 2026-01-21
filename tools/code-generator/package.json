@@ -19,5 +19,10 @@
     "@types/node": "^20.0.0",
     "@vitest/coverage-v8": "^2.1.8",
     "typescript": "^5.0.0"
+  },
+  "typeCoverage": {
+    "atLeast": 100,
+    "strict": true,
+    "ignoreCatch": true
   }
 }

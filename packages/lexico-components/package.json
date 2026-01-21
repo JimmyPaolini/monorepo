@@ -78,5 +78,10 @@
     "typescript": "^5.9.3",
     "vite": "^7.0.0",
     "vite-plugin-dts": "^4.5.0"
+  },
+  "typeCoverage": {
+    "atLeast": 99.84,
+    "strict": true,
+    "ignoreCatch": true
   }
 }

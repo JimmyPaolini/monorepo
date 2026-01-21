@@ -129,6 +129,21 @@
         "{workspaceRoot}/.dependency-cruiser.cjs"
       ],
       "description": "Validate dependency architecture"
+    },
+    "type-coverage": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "type-coverage",
+        "cwd": "applications/lexico"
+      },
+      "cache": true,
+      "inputs": [
+        "default",
+        "{projectRoot}/**/*.ts",
+        "{projectRoot}/**/*.tsx",
+        "{projectRoot}/tsconfig.json"
+      ],
+      "description": "Check TypeScript type coverage"
     }
   }
 }

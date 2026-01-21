@@ -29,5 +29,15 @@
     "tsx": "^4.20.6",
     "typescript": "^5.0.0",
     "vitest": "^2.0.0"
+  },
+  "typeCoverage": {
+    "atLeast": 99.46,
+    "strict": true,
+    "ignoreCatch": true,
+    "ignoreFiles": [
+      "**/*.test.ts",
+      "**/*.spec.ts",
+      "**/testing/**"
+    ]
   }
 }

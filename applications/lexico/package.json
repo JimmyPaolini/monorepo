@@ -38,6 +38,18 @@
     "vite": "^7.0.0",
     "vite-tsconfig-paths": "^5.1.4"
   },
+  "typeCoverage": {
+    "atLeast": 99.36,
+    "strict": true,
+    "ignoreCatch": true,
+    "ignoreFiles": [
+      "**/*.test.ts",
+      "**/*.test.tsx",
+      "**/*.spec.ts",
+      "**/*.spec.tsx",
+      "**/routeTree.gen.ts"
+    ]
+  },
   "size-limit": [
     {
       "name": "Client JS (main bundle)",
