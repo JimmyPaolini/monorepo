@@ -17,7 +17,6 @@
     "ctf0.inline-fold-new", // Inline fold (new)
     "cweijan.dbclient-jdbc", // Database Client JDBC
     "cweijan.vscode-database-client2", // Database Client
-    "DavidAnson.vscode-markdownlint", // markdownlint
     "dbaeumer.vscode-eslint", // ESLint
     "docker.docker", // Docker DX
     "donjayamanne.githistory", // Git History

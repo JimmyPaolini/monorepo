@@ -37,7 +37,7 @@ The workspace-level `vitest.config.base.ts` provides:
 
 When adding Vitest to a new project or updating an existing one, extend the base configuration in your project's `vitest.config.ts`:
 
-```typescript
+```texttypescript
 import { mergeConfig, defineConfig } from "vitest/config";
 import baseConfig from "../../vitest.config.base";
 
@@ -101,7 +101,7 @@ nx run-many -t test --all --parallel=3
 
 After running tests with `--coverage`, each project generates reports in its `coverage/` directory:
 
-```
+```text
 project-root/
 └── coverage/
     ├── coverage-final.json      # Machine-readable results
@@ -131,7 +131,7 @@ This ensures:
 
 All projects inherit 80% thresholds from the base config. Projects must meet these minimums:
 
-```
+```text
 ┌─────────────┬──────────┐
 │ Metric      │ Minimum  │
 ├─────────────┼──────────┤

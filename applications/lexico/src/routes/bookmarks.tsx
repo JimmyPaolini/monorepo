@@ -6,7 +6,7 @@ import {
   CardTitle,
 } from "@monorepo/lexico-components";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import _ from "lodash";
+import { noop } from "lodash";
 import { Bookmark, BookmarkX } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 
@@ -87,7 +87,7 @@ function BookmarksPage(): ReactNode {
                 className="block transition-transform hover:scale-[1.01]"
               >
                 <EntryCard
-                  onBookmarkToggle={() => _.noop()}
+                  onBookmarkToggle={noop}
                   id={entry.id}
                   partOfSpeech={entry.part_of_speech}
                   principalParts={entry.principal_parts}

@@ -2,6 +2,7 @@ import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import eslint from "@eslint/js";
+import markdown from "@eslint/markdown";
 import nxPlugin from "@nx/eslint-plugin";
 import eslintConfigPrettier from "eslint-config-prettier";
 import importPlugin from "eslint-plugin-import";
@@ -9,6 +10,7 @@ import jsoncPlugin from "eslint-plugin-jsonc";
 import jsxA11yPlugin from "eslint-plugin-jsx-a11y";
 import reactPlugin from "eslint-plugin-react";
 import reactHooksPlugin from "eslint-plugin-react-hooks";
+import eslintPluginYml from "eslint-plugin-yml";
 import tseslint from "typescript-eslint";
 
 import type { ConfigWithExtends } from "typescript-eslint";
@@ -37,11 +39,34 @@ export default [
       "packages/lexico-components/src/components/ui",
       "packages/lexico-components/src/lib",
       "packages/lexico-components/src/hooks",
+      // Lock files and Helm templates use formats that can't be linted
+      "**/pnpm-lock.yaml",
+      "**/helm/**/templates/**",
+      // Terraform providers and generated files
+      "**/.terraform/**",
+      ".github/copilot-instructions.md",
     ],
   },
 
-  // Base ESLint recommended rules
-  eslint.configs.recommended,
+  // Base ESLint recommended rules - but not for markdown files
+  {
+    ...eslint.configs.recommended,
+    files: [
+      "**/*.ts",
+      "**/*.tsx",
+      "**/*.mts",
+      "**/*.cts",
+      "**/*.js",
+      "**/*.mjs",
+      "**/*.cjs",
+      "**/*.jsx",
+      "**/*.json",
+      "**/*.jsonc",
+      "**/*.json5",
+      "**/*.yaml",
+      "**/*.yml",
+    ],
+  },
 
   // Nx plugin configurations
   ...nxPlugin.configs["flat/base"],
@@ -370,7 +395,10 @@ export default [
   },
 
   // JSON files configuration - exclude from type-checked linting
-  ...jsoncPlugin.configs["flat/recommended-with-jsonc"],
+  ...jsoncPlugin.configs["flat/recommended-with-jsonc"].map((config) => ({
+    ...config,
+    files: ["**/*.json", "**/*.jsonc", "**/*.json5"],
+  })),
   {
     files: ["**/*.json", "**/*.jsonc", "**/*.json5"],
     rules: {
@@ -381,6 +409,42 @@ export default [
       "jsonc/quotes": ["error", "double"],
       "jsonc/comma-dangle": ["error", "never"],
       "jsonc/indent": ["error", 2],
+    },
+  },
+
+  // YAML files configuration
+  ...eslintPluginYml.configs["flat/standard"].map((config) => ({
+    ...config,
+    files: ["**/*.yaml", "**/*.yml"],
+  })),
+  ...eslintPluginYml.configs["flat/prettier"].map((config) => ({
+    ...config,
+    files: ["**/*.yaml", "**/*.yml"],
+  })),
+  {
+    files: ["**/*.yaml", "**/*.yml"],
+    rules: {
+      // Style rules
+      "yml/indent": ["error", 2],
+      "yml/quotes": ["error", { prefer: "double", avoidEscape: false }],
+      "yml/no-multiple-empty-lines": [
+        "error",
+        { max: 1, maxEOF: 0, maxBOF: 0 },
+      ],
+      "yml/key-spacing": ["error", { beforeColon: false, afterColon: true }],
+      "yml/spaced-comment": ["error", "always"],
+
+      // Best practices
+      "yml/no-empty-document": "error",
+      "yml/no-empty-key": "error",
+      "yml/no-empty-mapping-value": "off", // Allow empty values (common in GitHub Actions triggers)
+      "yml/no-empty-sequence-entry": "error",
+      "yml/no-tab-indent": "error",
+      "yml/plain-scalar": ["error", "always"],
+
+      // Disable sorting by default (can be enabled per-project)
+      "yml/sort-keys": "off",
+      "yml/sort-sequence-values": "off",
     },
   },
 
@@ -417,6 +481,41 @@ export default [
       "@typescript-eslint/no-unnecessary-condition": "off",
       "@typescript-eslint/no-unsafe-member-access": "off",
       "@typescript-eslint/no-unsafe-assignment": "off",
+    },
+  },
+
+  // Markdown files configuration - define before other languages to prevent conflicts
+  {
+    files: ["**/*.md"],
+    plugins: {
+      markdown,
+    },
+    language: "markdown/gfm",
+    languageOptions: {
+      frontmatter: "yaml",
+    },
+    rules: {
+      // Enable markdown-specific rules
+      "markdown/fenced-code-language": "warn",
+      "markdown/heading-increment": "error",
+      "markdown/no-duplicate-definitions": "error",
+      "markdown/no-duplicate-headings": "warn",
+      "markdown/no-empty-definitions": "error",
+      "markdown/no-empty-images": "error",
+      "markdown/no-empty-links": "error",
+      "markdown/no-html": ["error", { allowed: ["img", "a"] }],
+      "markdown/no-invalid-label-refs": "error",
+      "markdown/no-missing-atx-heading-space": "error",
+      "markdown/no-missing-label-refs": "error",
+      "markdown/no-missing-link-fragments": "error",
+      "markdown/no-multiple-h1": "error",
+      "markdown/no-reference-like-urls": "error",
+      "markdown/no-reversed-media-syntax": "error",
+      "markdown/no-space-in-emphasis": "error",
+      "markdown/no-unused-definitions": "error",
+      "markdown/require-alt-text": "error",
+      "markdown/table-column-count": "error",
+      "markdown/no-bare-urls": "off",
     },
   },
 

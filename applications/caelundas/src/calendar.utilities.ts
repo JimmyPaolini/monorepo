@@ -15,7 +15,7 @@ export interface Event {
   color?: string | undefined;
 }
 
-export type EventTemplate = Omit<Event, "start" | "end">;
+// export type EventTemplate = Omit<Event, "start" | "end">;
 
 export interface GetCalendarParameters {
   events: Event[];

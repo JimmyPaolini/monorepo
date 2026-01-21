@@ -131,6 +131,24 @@
         "cwd": "{workspaceRoot}"
       },
       "description": "Uninstall a Caelundas Helm release and clean up PVC (requires release name argument)"
+    },
+    "knip": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace applications/caelundas",
+        "cwd": "{workspaceRoot}"
+      },
+      "configurations": {
+        "check": {
+          "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace applications/caelundas"
+        },
+        "write": {
+          "command": "NODE_OPTIONS='--import=tsx/esm' knip --fix --workspace applications/caelundas"
+        }
+      },
+      "defaultConfiguration": "check",
+      "cache": true,
+      "description": "Check for unused files, dependencies, and exports"
     }
   }
 }

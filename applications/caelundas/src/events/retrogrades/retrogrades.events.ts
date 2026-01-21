@@ -2,11 +2,7 @@ import fs from "fs";
 
 import _ from "lodash";
 
-import {
-  type Event,
-  type EventTemplate,
-  getCalendar,
-} from "../../calendar.utilities";
+import { type Event, getCalendar } from "../../calendar.utilities";
 import { MARGIN_MINUTES } from "../../calendar.utilities";
 import { pairDurationEvents } from "../../duration.utilities";
 import { getCoordinateFromEphemeris } from "../../ephemeris/ephemeris.service";
@@ -24,10 +20,6 @@ import type {
   RetrogradeBodySymbol,
 } from "../../types";
 import type { Moment } from "moment";
-
-export type RetrogradeEventTemplate = EventTemplate;
-
-export type RetrogradeEvent = Event;
 
 export function getRetrogradeEvents(args: {
   coordinateEphemerisByBody: Record<RetrogradeBody, CoordinateEphemeris>;

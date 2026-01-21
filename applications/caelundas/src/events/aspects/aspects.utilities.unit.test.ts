@@ -7,7 +7,6 @@ import {
   getMinorAspectPhase,
   getSpecialtyAspect,
   isAspect,
-  isMajorAspect,
 } from "./aspects.utilities";
 
 describe("aspects.utilities", () => {
@@ -263,34 +262,6 @@ describe("aspects.utilities", () => {
         nextLongitudeBody2: 30,
       });
       expect(phase).toBe("forming");
-    });
-  });
-
-  describe("isMajorAspect (backward compatibility)", () => {
-    it("should return true only for exact phase", () => {
-      // Exact opposition
-      const isExact = isMajorAspect({
-        previousLongitudeBody1: 0,
-        previousLongitudeBody2: 179,
-        currentLongitudeBody1: 0,
-        currentLongitudeBody2: 180,
-        nextLongitudeBody1: 0,
-        nextLongitudeBody2: 181,
-      });
-      expect(isExact).toBe(true);
-    });
-
-    it("should return false for forming/dissolving phases", () => {
-      // Forming (not exact)
-      const isExact = isMajorAspect({
-        previousLongitudeBody1: 0,
-        previousLongitudeBody2: 171,
-        currentLongitudeBody1: 0,
-        currentLongitudeBody2: 173,
-        nextLongitudeBody1: 0,
-        nextLongitudeBody2: 175,
-      });
-      expect(isExact).toBe(false);
     });
   });
 });

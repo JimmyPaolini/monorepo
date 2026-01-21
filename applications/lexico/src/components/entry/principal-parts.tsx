@@ -5,7 +5,7 @@ import {
   cn,
 } from "@monorepo/lexico-components";
 import { Link } from "@tanstack/react-router";
-import _ from "lodash";
+import { startCase } from "lodash";
 import { Bookmark, BookmarkCheck } from "lucide-react";
 
 import { Identifier } from "./identifier";
@@ -60,7 +60,7 @@ function getInflectionLabel(
   inflection: Inflection | null | undefined,
   partOfSpeech: PartOfSpeech,
 ): string {
-  if (!inflection) return _(partOfSpeech).startCase().toLowerCase();
+  if (!inflection) return startCase(partOfSpeech).toLowerCase();
 
   let label = "";
 
@@ -91,7 +91,7 @@ function getInflectionLabel(
   }
 
   const result =
-    `${_(partOfSpeech).startCase().toLowerCase()}, ${label}`.replace(
+    `${startCase(partOfSpeech).toLowerCase()}, ${label}`.replace(
       /, ?$|^, ?/,
       "",
     );

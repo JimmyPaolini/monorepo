@@ -49,5 +49,3 @@ export const inputSchema = z
   .refine((data) => data.end > data.start, {
     message: "End date must be after start date",
   });
-
-export type Input = z.infer<typeof inputSchema>;

@@ -1,6 +1,6 @@
 import { Button, Separator } from "@monorepo/lexico-components";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import _ from "lodash";
+import { noop } from "lodash";
 import { Bookmark, BookmarkCheck } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 
@@ -97,7 +97,7 @@ function WordPage(): ReactNode {
           principalParts={entry.principal_parts}
           inflection={entry.inflection}
           className="border-none p-0"
-          onBookmarkToggle={() => _.noop()}
+          onBookmarkToggle={noop}
         />
       </header>
 

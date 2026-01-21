@@ -1,4 +1,4 @@
-name: 🧪 Test
+name: ✂️ Knip
 
 on:
   push:
@@ -14,8 +14,8 @@ jobs:
   setup:
     uses: ./.github/workflows/setup.yml
 
-  test:
-    name: 🧪 Test
+  knip:
+    name: ✂️ Knip
     runs-on: ubuntu-latest
     needs: setup
 
@@ -55,13 +55,5 @@ jobs:
           echo "=== Cache Size ==="
           du -sh .nx/cache 2>/dev/null || echo "No cache to measure"
 
-      - name: 🧪 Test Coverage
-        run: npx nx affected -t test --parallel=3 --coverage --verbose
-
-      - name: 📊 Upload Coverage
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: coverage-reports
-          path: coverage/
-          retention-days: 30
+      - name: ✂️ Knip
+        run: pnpm exec nx affected -t knip --parallel=3 --verbose

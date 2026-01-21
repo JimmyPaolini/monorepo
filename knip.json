@@ -1,0 +1,89 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "ignoreExportsUsedInFile": true,
+  "workspaces": {
+    ".": {
+      "entry": ["scripts/**/*.{js,ts,sh}", "vitest.config.base.ts"],
+      "project": "**/*.{js,ts,mjs,cjs}",
+      "ignore": [
+        "**/*.test.ts",
+        "**/*.spec.ts",
+        "**/dist/**",
+        "**/coverage/**",
+        "applications/JimmyPaolini/**"
+      ]
+    },
+    "applications/caelundas": {
+      "project": "src/**/*.ts",
+      "ignore": [
+        "src/**/*.test.ts",
+        "src/**/*.integration.test.ts",
+        "src/**/*.end-to-end.test.ts",
+        "output/**",
+        "testing/**"
+      ]
+    },
+    "applications/lexico": {
+      "entry": ["src/client.tsx", "src/router.tsx", "src/routes/**/*.tsx"],
+      "project": "src/**/*.{ts,tsx}",
+      "ignore": [
+        "src/routeTree.gen.ts",
+        "src/lib/database.types.ts",
+        "src/lib/auth.ts",
+        "src/lib/bookmarks.ts",
+        "src/lib/supabase.ts",
+        "src/components/entry/principal-parts.tsx"
+      ],
+      "ignoreBinaries": ["supabase"]
+    },
+    "packages/lexico-components": {
+      "project": "src/**/*.{ts,tsx}",
+      "ignore": ["src/components/**", "src/lib/**", "src/hooks/**"],
+      "ignoreDependencies": [
+        "@radix-ui/react-alert-dialog",
+        "@radix-ui/react-aspect-ratio",
+        "@radix-ui/react-avatar",
+        "@radix-ui/react-checkbox",
+        "@radix-ui/react-context-menu",
+        "@radix-ui/react-dropdown-menu",
+        "@radix-ui/react-hover-card",
+        "@radix-ui/react-menubar",
+        "@radix-ui/react-navigation-menu",
+        "@radix-ui/react-popover",
+        "@radix-ui/react-progress",
+        "@radix-ui/react-radio-group",
+        "@radix-ui/react-scroll-area",
+        "@radix-ui/react-select",
+        "@radix-ui/react-slider",
+        "@radix-ui/react-switch",
+        "@radix-ui/react-toggle",
+        "@radix-ui/react-toggle-group",
+        "cmdk",
+        "embla-carousel-react",
+        "input-otp",
+        "next-themes",
+        "react-day-picker",
+        "react-hook-form",
+        "react-resizable-panels",
+        "recharts",
+        "sonner",
+        "vaul"
+      ]
+    },
+    "tools/code-generator": {
+      "entry": "src/generators/*/generator.ts",
+      "project": "src/**/*.ts",
+      "ignore": ["src/**/files/**", "src/**/*.test.ts"]
+    }
+  },
+  "ignoreWorkspaces": ["applications/JimmyPaolini"],
+  "ignore": [
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "**/dist/**",
+    "**/node_modules/**",
+    "**/.nx/**",
+    "**/coverage/**"
+  ],
+  "ignoreDependencies": ["@nx/eslint-plugin", "@nx/js", "@nx/web", "tsx"]
+}

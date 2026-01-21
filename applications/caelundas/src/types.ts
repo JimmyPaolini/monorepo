@@ -1,27 +1,15 @@
 import {
+  aspectBodies,
   aspectPhases,
-  decanIngressBodies,
-  eclipsePhases,
-  majorAspectBodies,
-  minorAspectBodies,
-  peakIngressBodies,
+  type eclipsePhases,
+  ingressBodies,
   phaseBodies,
-  planetaryPhaseBodies,
-  quadrupleAspectBodies,
-  quintupleAspectBodies,
   retrogradeBodies,
-  sextupleAspectBodies,
-  signIngressBodies,
-  specialtyAspectBodies,
-  stelliumBodies,
-  type symbolByApsis,
   type symbolByAspect,
   type symbolByAsteroid,
   type symbolByBody,
   type symbolByComet,
   type symbolByDecan,
-  type symbolByDirection,
-  type symbolByHouse,
   type symbolByLunarPhase,
   type symbolByMajorAspect,
   type symbolByMartianPhase,
@@ -29,19 +17,14 @@ import {
   type symbolByMinorAspect,
   type symbolByNode,
   type symbolByOrbitalDirection,
-  type symbolByPhase,
   type symbolByPlanet,
-  type symbolByPlanetaryDirection,
-  type symbolByPosition,
   type symbolByQuadrupleAspect,
   type symbolByQuintupleAspect,
   type symbolBySextupleAspect,
   type symbolBySign,
   type symbolBySpecialtyAspect,
-  type symbolByStellium,
   type symbolByTripleAspect,
   type symbolByVenusianPhase,
-  tripleAspectBodies,
 } from "./symbols";
 
 // #region Signs 🪧
@@ -57,22 +40,22 @@ export type DecanSymbol = (typeof symbolByDecan)[Decan];
 // #region Planets 🪐
 
 export type Planet = keyof typeof symbolByPlanet;
-export type PlanetSymbol = (typeof symbolByPlanet)[Planet];
+// export type PlanetSymbol = (typeof symbolByPlanet)[Planet];
 
 // #region Asteroids 💫
 
 export type Asteroid = keyof typeof symbolByAsteroid;
-export type AsteroidSymbol = (typeof symbolByAsteroid)[Asteroid];
+// export type AsteroidSymbol = (typeof symbolByAsteroid)[Asteroid];
 
 // #region Comets ☄️
 
 export type Comet = keyof typeof symbolByComet;
-export type CometSymbol = (typeof symbolByComet)[Comet];
+// export type CometSymbol = (typeof symbolByComet)[Comet];
 
 // #region Nodes 🌕
 
 export type Node = keyof typeof symbolByNode;
-export type NodeSymbol = (typeof symbolByNode)[Node];
+// export type NodeSymbol = (typeof symbolByNode)[Node];
 
 // #region Bodies 🔭
 
@@ -98,35 +81,35 @@ export type SpecialtyAspectSymbol =
 // #region Double Aspects 📐
 
 export type Aspect = keyof typeof symbolByAspect;
-export type AspectSymbol = (typeof symbolByAspect)[Aspect];
+// export type AspectSymbol = (typeof symbolByAspect)[Aspect];
 
 // #region Triple Aspects 🔺
 
 export type TripleAspect = keyof typeof symbolByTripleAspect;
-export type TripleAspectSymbol = (typeof symbolByTripleAspect)[TripleAspect];
+// export type TripleAspectSymbol = (typeof symbolByTripleAspect)[TripleAspect];
 
 // #region Quadruple Aspects ✖️
 
 export type QuadrupleAspect = keyof typeof symbolByQuadrupleAspect;
-export type QuadrupleAspectSymbol =
-  (typeof symbolByQuadrupleAspect)[QuadrupleAspect];
+// export type QuadrupleAspectSymbol =
+//   (typeof symbolByQuadrupleAspect)[QuadrupleAspect];
 
 // #region Quintuple Aspects ⭐
 
 export type QuintupleAspect = keyof typeof symbolByQuintupleAspect;
-export type QuintupleAspectSymbol =
-  (typeof symbolByQuintupleAspect)[QuintupleAspect];
+// export type QuintupleAspectSymbol =
+//   (typeof symbolByQuintupleAspect)[QuintupleAspect];
 
 // #region Sextuple Aspects 🔯
 
 export type SextupleAspect = keyof typeof symbolBySextupleAspect;
-export type SextupleAspectSymbol =
-  (typeof symbolBySextupleAspect)[SextupleAspect];
+// export type SextupleAspectSymbol =
+//   (typeof symbolBySextupleAspect)[SextupleAspect];
 
 // #region Stellium ✨
 
-export type Stellium = keyof typeof symbolByStellium;
-export type StelliumSymbol = (typeof symbolByStellium)[Stellium];
+// export type Stellium = keyof typeof symbolByStellium;
+// export type StelliumSymbol = (typeof symbolByStellium)[Stellium];
 
 // #region Orbital Directions 🔁
 
@@ -136,27 +119,27 @@ export type OrbitalDirectionSymbol =
 
 // #region Planetary Directions ⏫
 
-export type PlanetaryDirection = keyof typeof symbolByPlanetaryDirection;
-export type PlanetaryDirectionSymbol =
-  (typeof symbolByPlanetaryDirection)[PlanetaryDirection];
+// export type PlanetaryDirection = keyof typeof symbolByPlanetaryDirection;
+// export type PlanetaryDirectionSymbol =
+//   (typeof symbolByPlanetaryDirection)[PlanetaryDirection];
 
 // #region Directions 🧭
 
-export type Direction = keyof typeof symbolByDirection;
-export type DirectionSymbol = (typeof symbolByDirection)[Direction];
+// export type Direction = keyof typeof symbolByDirection;
+// export type DirectionSymbol = (typeof symbolByDirection)[Direction];
 
 // #region Positions 🌐
 
-export type Apsis = keyof typeof symbolByApsis;
-export type ApsisSymbol = (typeof symbolByApsis)[Apsis];
+// export type Apsis = keyof typeof symbolByApsis;
+// export type ApsisSymbol = (typeof symbolByApsis)[Apsis];
 
-export type Position = keyof typeof symbolByPosition;
-export type PositionSymbol = (typeof symbolByPosition)[Position];
+// export type Position = keyof typeof symbolByPosition;
+// export type PositionSymbol = (typeof symbolByPosition)[Position];
 
 // #region Phases 🌓
 
 export type LunarPhase = keyof typeof symbolByLunarPhase;
-export type LunarPhaseSymbol = (typeof symbolByLunarPhase)[LunarPhase];
+// export type LunarPhaseSymbol = (typeof symbolByLunarPhase)[LunarPhase];
 
 // #region Venusian Phases ♀️
 
@@ -174,13 +157,13 @@ export type MercurianPhaseSymbol =
 export type MartianPhase = keyof typeof symbolByMartianPhase;
 export type MartianPhaseSymbol = (typeof symbolByMartianPhase)[MartianPhase];
 
-export type Phase = keyof typeof symbolByPhase;
-export type PhaseSymbol = (typeof symbolByPhase)[Phase];
+// export type Phase = keyof typeof symbolByPhase;
+// export type PhaseSymbol = (typeof symbolByPhase)[Phase];
 
 // #region Houses 🏠
 
-export type House = keyof typeof symbolByHouse;
-export type HouseSymbol = (typeof symbolByHouse)[House];
+// export type House = keyof typeof symbolByHouse;
+// export type HouseSymbol = (typeof symbolByHouse)[House];
 
 // #region Event Phase Types 🔄
 
@@ -192,39 +175,37 @@ export type EclipsePhase = (typeof eclipsePhases)[number];
 export type RetrogradeBody = (typeof retrogradeBodies)[number];
 export type RetrogradeBodySymbol = (typeof symbolByBody)[RetrogradeBody];
 
-export type PhaseBody = (typeof phaseBodies)[number];
-export type PhaseBodySymbol = (typeof symbolByBody)[PhaseBody];
+// export type PhaseBody = (typeof phaseBodies)[number];
+// export type PhaseBodySymbol = (typeof symbolByBody)[PhaseBody];
 
-export type SignIngressBody = (typeof signIngressBodies)[number];
-export type DecanIngressBody = (typeof decanIngressBodies)[number];
-export type PeakIngressBody = (typeof peakIngressBodies)[number];
+// export type SignIngressBody = (typeof ingressBodies)[number];
+// export type DecanIngressBody = (typeof ingressBodies)[number];
+// export type PeakIngressBody = (typeof ingressBodies)[number];
 
-export type MajorAspectBody = (typeof majorAspectBodies)[number];
-export type MinorAspectBody = (typeof minorAspectBodies)[number];
-export type SpecialtyAspectBody = (typeof specialtyAspectBodies)[number];
+// export type MajorAspectBody = (typeof aspectBodies)[number];
+// export type MinorAspectBody = (typeof aspectBodies)[number];
+// export type SpecialtyAspectBody = (typeof aspectBodies)[number];
 
-export type TripleAspectBody = (typeof tripleAspectBodies)[number];
-export type QuadrupleAspectBody = (typeof quadrupleAspectBodies)[number];
-export type QuintupleAspectBody = (typeof quintupleAspectBodies)[number];
-export type SextupleAspectBody = (typeof sextupleAspectBodies)[number];
-export type StelliumBody = (typeof stelliumBodies)[number];
+// export type TripleAspectBody = (typeof aspectBodies)[number];
+// export type QuadrupleAspectBody = (typeof aspectBodies)[number];
+// export type QuintupleAspectBody = (typeof aspectBodies)[number];
+// export type SextupleAspectBody = (typeof aspectBodies)[number];
+// export type StelliumBody = (typeof aspectBodies)[number];
 
 // Re-export arrays from symbols for convenience
 export {
   aspectPhases,
-  eclipsePhases,
   retrogradeBodies,
-  phaseBodies,
-  planetaryPhaseBodies,
-  signIngressBodies,
-  decanIngressBodies,
-  peakIngressBodies,
-  majorAspectBodies,
-  minorAspectBodies,
-  specialtyAspectBodies,
-  tripleAspectBodies,
-  quadrupleAspectBodies,
-  quintupleAspectBodies,
-  sextupleAspectBodies,
-  stelliumBodies,
+  phaseBodies as planetaryPhaseBodies,
+  ingressBodies as signIngressBodies,
+  ingressBodies as decanIngressBodies,
+  ingressBodies as peakIngressBodies,
+  aspectBodies as majorAspectBodies,
+  aspectBodies as minorAspectBodies,
+  aspectBodies as specialtyAspectBodies,
+  aspectBodies as tripleAspectBodies,
+  aspectBodies as quadrupleAspectBodies,
+  aspectBodies as quintupleAspectBodies,
+  aspectBodies as sextupleAspectBodies,
+  aspectBodies as stelliumBodies,
 };

@@ -6,10 +6,20 @@
     "lint": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "eslint {args} --config eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' 'scripts/' 'documentation/'",
+        "command": "eslint {args} --config eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'",
         "cwd": "{projectRoot}"
       },
-      "description": "Lint workspace root files (config files, scripts, documentation)"
+      "configurations": {
+        "check": {
+          "command": "eslint {args} --config eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
+        },
+        "write": {
+          "command": "eslint {args} --fix --config eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
+        }
+      },
+      "defaultConfiguration": "check",
+      "cache": true,
+      "description": "Lint workspace root files (config files, scripts, documentation, infrastructure, markdown) excluding NX projects"
     },
     "typecheck": {
       "executor": "nx:run-commands",
@@ -25,7 +35,17 @@
         "command": "prettier {args} --ignore-unknown .",
         "cwd": "{projectRoot}"
       },
-      "description": "Format workspace root files with Prettier"
+      "configurations": {
+        "check": {
+          "command": "prettier {args} --check --ignore-unknown ."
+        },
+        "write": {
+          "command": "prettier {args} --write --ignore-unknown ."
+        }
+      },
+      "defaultConfiguration": "write",
+      "cache": true,
+      "description": "Format workspace root files with Prettier (excluding NX projects)"
     },
     "terraform:import": {
       "executor": "nx:run-commands",
@@ -51,13 +71,65 @@
       },
       "description": "Verify that pnpm-lock.yaml is in sync with package.json files"
     },
-    "markdown-lint": {
+    "yaml-lint": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "markdownlint --config {projectRoot}/.markdownlintrc.json {args} '**/*.md'",
+        "command": "eslint {args} --config eslint.config.base.ts --no-error-on-unmatched-pattern '**/*.{yml,yaml}'",
         "cwd": "{projectRoot}"
       },
-      "description": "Lint markdown files (use --fix to auto-fix)"
+      "configurations": {
+        "check": {
+          "command": "eslint {args} --config eslint.config.base.ts --no-error-on-unmatched-pattern '**/*.{yml,yaml}'"
+        },
+        "write": {
+          "command": "eslint {args} --fix --config eslint.config.base.ts --no-error-on-unmatched-pattern '**/*.{yml,yaml}'"
+        }
+      },
+      "defaultConfiguration": "check",
+      "cache": true,
+      "description": "Lint YAML files"
+    },
+    "knip": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace .",
+        "cwd": "{projectRoot}"
+      },
+      "configurations": {
+        "check": {
+          "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace ."
+        },
+        "write": {
+          "command": "NODE_OPTIONS='--import=tsx/esm' knip --fix --workspace ."
+        }
+      },
+      "defaultConfiguration": "check",
+      "cache": true,
+      "description": "Check for unused files, dependencies, and exports in workspace root only"
+    },
+    "static-code-analysis": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx run monorepo:typecheck",
+          "nx run monorepo:lint:{args.configuration}",
+          "nx run monorepo:format:{args.configuration}",
+          "nx run monorepo:knip:{args.configuration}",
+          "nx run monorepo:yaml-lint:{args.configuration}"
+        ],
+        "cwd": "{projectRoot}"
+      },
+      "configurations": {
+        "check": {
+          "parallel": true
+        },
+        "write": {
+          "parallel": false
+        }
+      },
+      "defaultConfiguration": "check",
+      "cache": true,
+      "description": "Run all static code analysis tools (typecheck, lint, format, knip, yaml-lint)"
     }
   }
 }

@@ -4,7 +4,7 @@ on:
   workflow_call:
     outputs:
       cache-key:
-        description: "The cache key for the workspace"
+        description: The cache key for the workspace
         value: ${{ jobs.setup.outputs.cache-key }}
 
 jobs:
@@ -28,8 +28,8 @@ jobs:
       - name: 🟢 Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "22.20.0"
-          cache: "pnpm"
+          node-version: 22.20.0
+          cache: pnpm
 
       - name: 🎯 Set Nx base and head SHAs
         uses: nrwl/nx-set-shas@v4

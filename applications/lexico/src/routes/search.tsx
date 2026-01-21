@@ -6,7 +6,7 @@ import {
   Input,
 } from "@monorepo/lexico-components";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import _ from "lodash";
+import { noop } from "lodash";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { z } from "zod";
 
@@ -141,7 +141,7 @@ function SearchPage(): ReactNode {
                   forms={transformedForms}
                   etymology={entry.etymology}
                   pronunciation={entry.pronunciation}
-                  onBookmarkToggle={() => _.noop()}
+                  onBookmarkToggle={noop}
                 />
               </div>
             );

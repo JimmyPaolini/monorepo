@@ -172,51 +172,51 @@ export const symbolByOrbitalDirection = {
 
 // #region Planetary Directions ⏫
 
-export const symbolByPlanetaryDirection = {
-  rise: "🔼",
-  ascendant: "🔼",
+// export const symbolByPlanetaryDirection = {
+//   rise: "🔼",
+//   ascendant: "🔼",
 
-  zenith: "⏫",
-  "medium coeli": "⏫",
-  culmination: "⏫",
+//   zenith: "⏫",
+//   "medium coeli": "⏫",
+//   culmination: "⏫",
 
-  set: "🔽",
-  descendant: "🔽",
+//   set: "🔽",
+//   descendant: "🔽",
 
-  nadir: "⏬",
-  "imum coeli": "⏬",
-  declination: "⏬",
-} as const;
+//   nadir: "⏬",
+//   "imum coeli": "⏬",
+//   declination: "⏬",
+// } as const;
 
 // #region Directions 🧭
 
-export const symbolByDirection = {
-  ...symbolByOrbitalDirection,
-  ...symbolByPlanetaryDirection,
-};
+// export const symbolByDirection = {
+//   ...symbolByOrbitalDirection,
+//   ...symbolByPlanetaryDirection,
+// };
 
 // #region Positions 🌐
 
-export const symbolByApsis = {
-  perihelion: "🔥",
-  aphelion: "❄️",
-  perigee: "🔥",
-  apogee: "❄️",
-  periapsis: "🔥",
-  apoapsis: "❄️",
-} as const;
+// export const symbolByApsis = {
+//   perihelion: "🔥",
+//   aphelion: "❄️",
+//   perigee: "🔥",
+//   apogee: "❄️",
+//   periapsis: "🔥",
+//   apoapsis: "❄️",
+// } as const;
 
-export const symbolByPosition = {
-  ...symbolByApsis,
-  "vernal equinox": "🌸",
-  beltane: "🌼",
-  "summer solstice": "🌞",
-  lammas: "🌾",
-  "autumn equinox": "🍂",
-  samhain: "🎃",
-  "winter solstice": "☃️",
-  imbolc: "🐑",
-} as const;
+// export const symbolByPosition = {
+//   ...symbolByApsis,
+//   "vernal equinox": "🌸",
+//   beltane: "🌼",
+//   "summer solstice": "🌞",
+//   lammas: "🌾",
+//   "autumn equinox": "🍂",
+//   samhain: "🎃",
+//   "winter solstice": "☃️",
+//   imbolc: "🐑",
+// } as const;
 
 // #region Phases 🌓
 
@@ -296,29 +296,29 @@ export const symbolByMartianPhase = {
   "evening last": "🌇🌘",
 } as const;
 
-export const symbolByPhase = {
-  ...symbolByLunarPhase,
-  ...symbolByVenusianPhase,
-  ...symbolByMercurianPhase,
-  ...symbolByMartianPhase,
-} as const;
+// export const symbolByPhase = {
+//   ...symbolByLunarPhase,
+//   ...symbolByVenusianPhase,
+//   ...symbolByMercurianPhase,
+//   ...symbolByMartianPhase,
+// } as const;
 
 // #region Houses 🏠
 
-export const symbolByHouse = {
-  first: "1",
-  second: "2",
-  third: "3",
-  fourth: "4",
-  fifth: "5",
-  sixth: "6",
-  seventh: "7",
-  eighth: "8",
-  ninth: "9",
-  tenth: "10",
-  eleventh: "11",
-  twelfth: "12",
-} as const;
+// export const symbolByHouse = {
+//   first: "1",
+//   second: "2",
+//   third: "3",
+//   fourth: "4",
+//   fifth: "5",
+//   sixth: "6",
+//   seventh: "7",
+//   eighth: "8",
+//   ninth: "9",
+//   tenth: "10",
+//   eleventh: "11",
+//   twelfth: "12",
+// } as const;
 
 // #region Event Phase Types 🔄
 
@@ -345,9 +345,8 @@ export const retrogradeBodies = [
 ] as const;
 
 export const phaseBodies = ["venus", "mercury", "mars"] as const;
-export const planetaryPhaseBodies = phaseBodies;
 
-export const signIngressBodies = [
+export const ingressBodies = [
   "sun",
   "moon",
   "mercury",
@@ -369,10 +368,7 @@ export const signIngressBodies = [
   "lunar apogee",
 ] as const;
 
-export const decanIngressBodies = signIngressBodies;
-export const peakIngressBodies = signIngressBodies;
-
-export const majorAspectBodies = [
+export const aspectBodies = [
   "sun",
   "mercury",
   "venus",
@@ -392,33 +388,3 @@ export const majorAspectBodies = [
   "north lunar node",
   "lunar apogee",
 ] as const;
-
-export const minorAspectBodies = majorAspectBodies;
-export const specialtyAspectBodies = majorAspectBodies;
-
-export const tripleAspectBodies = [
-  "sun",
-  "moon",
-  "mercury",
-  "venus",
-  "mars",
-  "jupiter",
-  "saturn",
-  "uranus",
-  "neptune",
-  "pluto",
-  "chiron",
-  "lilith",
-  "ceres",
-  "pallas",
-  "juno",
-  "vesta",
-  "halley",
-  "north lunar node",
-  "lunar apogee",
-] as const;
-
-export const quadrupleAspectBodies = tripleAspectBodies;
-export const quintupleAspectBodies = tripleAspectBodies;
-export const sextupleAspectBodies = tripleAspectBodies;
-export const stelliumBodies = tripleAspectBodies;

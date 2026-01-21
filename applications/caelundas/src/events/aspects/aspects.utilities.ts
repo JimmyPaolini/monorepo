@@ -148,31 +148,3 @@ const getIsAspect = (
 export const getMajorAspectPhase = getIsAspect([...majorAspects]);
 export const getMinorAspectPhase = getIsAspect([...minorAspects]);
 export const getSpecialtyAspectPhase = getIsAspect([...specialtyAspects]);
-
-// Backward compatibility - these now return boolean for "exact" phase only
-export const isMajorAspect = (args: {
-  currentLongitudeBody1: number;
-  currentLongitudeBody2: number;
-  nextLongitudeBody1: number;
-  nextLongitudeBody2: number;
-  previousLongitudeBody1: number;
-  previousLongitudeBody2: number;
-}): boolean => getMajorAspectPhase(args) === "exact";
-
-export const isMinorAspect = (args: {
-  currentLongitudeBody1: number;
-  currentLongitudeBody2: number;
-  nextLongitudeBody1: number;
-  nextLongitudeBody2: number;
-  previousLongitudeBody1: number;
-  previousLongitudeBody2: number;
-}): boolean => getMinorAspectPhase(args) === "exact";
-
-export const isSpecialtyAspect = (args: {
-  currentLongitudeBody1: number;
-  currentLongitudeBody2: number;
-  nextLongitudeBody1: number;
-  nextLongitudeBody2: number;
-  previousLongitudeBody1: number;
-  previousLongitudeBody2: number;
-}): boolean => getSpecialtyAspectPhase(args) === "exact";

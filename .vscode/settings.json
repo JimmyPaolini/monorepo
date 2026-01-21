@@ -38,12 +38,11 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    }
   },
-
-  // Markdownlint configuration
-  "markdownlint.configFile": ".markdownlintrc.json",
-  "markdownlint.run": "onSave",
 
   // ESLint configuration
   "eslint.enable": true,
@@ -53,7 +52,10 @@
     "typescript",
     "typescriptreact",
     "json",
-    "jsonc"
+    "jsonc",
+    "yaml",
+    "markdown",
+    "github-actions-workflow"
   ],
   "eslint.useFlatConfig": true,
   "eslint.format.enable": false,
@@ -107,6 +109,8 @@
     "interfix",
     "killport",
     "lexico",
+    "lintstagedrc",
+    "markdownlintrc",
     "multidetermines",
     "Multivalued",
     "nextjs",

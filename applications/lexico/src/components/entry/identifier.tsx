@@ -5,7 +5,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@monorepo/lexico-components";
-import _ from "lodash";
+import { startCase } from "lodash";
 
 import type { ReactElement } from "react";
 
@@ -179,7 +179,7 @@ export function Identifier(props: IdentifierProps): ReactElement {
           {abbreviation}
         </Badge>
       </TooltipTrigger>
-      <TooltipContent side="right">{_(identifier).startCase()}</TooltipContent>
+      <TooltipContent side="right">{startCase(identifier)}</TooltipContent>
     </Tooltip>
   );
 }

@@ -1,3 +1,8 @@
+# NX project directories (formatted by their own format targets)
+applications/**
+packages/**
+tools/**
+
 # Dependencies
 node_modules
 **/node_modules
@@ -66,3 +71,6 @@ packages/lexico-components/src/hooks
 
 # Code generator template files
 tools/code-generator/**/files/**
+
+# Terraform providers
+**/.terraform/**

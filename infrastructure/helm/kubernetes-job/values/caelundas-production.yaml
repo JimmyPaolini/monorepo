@@ -5,7 +5,7 @@
 # Note: Release names are auto-generated using git commit + timestamp
 # This allows multiple jobs to run concurrently with separate PVCs
 
-nameOverride: "caelundas"
+nameOverride: caelundas
 # fullnameOverride removed - using dynamic release names instead
 
 # Metadata for tracking job provenance
@@ -16,7 +16,7 @@ metadata:
 image:
   repository: ghcr.io/jimmypaolini/caelundas
   pullPolicy: Always
-  tag: "1.0.0"
+  tag: 1.0.0
 
 job:
   backoffLimit: 3
@@ -34,13 +34,13 @@ env:
 
   # 📆 Date Range Configuration
   - name: START_DATE
-    value: "2025-01-01"
+    value: 2025-01-01
   - name: END_DATE
-    value: "2025-12-31"
+    value: 2025-12-31
 
   # 📤 Output Configuration
   - name: OUTPUT_DIRECTORY
-    value: "/app/output"
+    value: /app/output
 
   # 🔄 Retry Configuration
   - name: MAX_RETRIES
@@ -54,7 +54,7 @@ env:
 
 persistence:
   enabled: true
-  storageClassName: "linode-block-storage-retain"
+  storageClassName: linode-block-storage-retain
   accessMode: ReadWriteOnce
   size: 1Gi
   mountPath: /app/output
