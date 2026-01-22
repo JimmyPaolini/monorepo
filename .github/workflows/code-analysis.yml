@@ -1,0 +1,135 @@
+name: 🔍 Code Analysis
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  typecheck:
+    name: 🏷️ Type Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔧 Setup Nx workspace
+        uses: ./.github/actions/nx-setup
+
+      - name: 🏷️ Type Check
+        run: npx nx affected -t typecheck --parallel=3 --verbose
+
+  lint:
+    name: 🧹 Lint Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔧 Setup Nx workspace
+        uses: ./.github/actions/nx-setup
+
+      - name: 🧹 Lint Check
+        run: npx nx affected -t lint --parallel=3 --verbose
+
+  markdown-lint:
+    name: 🖼️ Markdown Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔧 Setup Nx workspace
+        uses: ./.github/actions/nx-setup
+
+      - name: 🖼️ Markdown Lint
+        run: pnpm exec nx run monorepo:markdown-lint
+
+  format:
+    name: 🎨 Format Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔧 Setup Nx workspace
+        uses: ./.github/actions/nx-setup
+
+      - name: 🎨 Format Check
+        run: npx nx affected -t format --configuration=check --parallel=3 --verbose
+
+  knip:
+    name: ✂️ Knip Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔧 Setup Nx workspace
+        uses: ./.github/actions/nx-setup
+
+      - name: ✂️ Knip Check
+        run: pnpm exec nx affected -t knip --parallel=3 --verbose
+
+  spell-check:
+    name: 🧙‍♂️ Spell Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔧 Setup Nx workspace
+        uses: ./.github/actions/nx-setup
+
+      - name: 🧙‍♂️ Spell Check
+        run: pnpm exec nx run monorepo:spell-check
+
+  type-coverage:
+    name: 🔖 Type Coverage
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔧 Setup Nx workspace
+        uses: ./.github/actions/nx-setup
+
+      - name: 🔖 Type Coverage
+        run: npx nx affected -t type-coverage --parallel=3 --verbose
+
+      - name: 📊 Upload Type Coverage
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: type-coverage-reports
+          path: |
+            applications/**/type-coverage-report.txt
+            packages/**/type-coverage-report.txt
+            tools/**/type-coverage-report.txt
+          retention-days: 30

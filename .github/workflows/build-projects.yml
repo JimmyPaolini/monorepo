@@ -1,0 +1,49 @@
+name: 🏗️ Build Projects
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: 🏗️ Build Projects
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔧 Setup Nx workspace
+        uses: ./.github/actions/nx-setup
+
+      - name: 🏗️ Build Projects
+        run: npx nx affected -t build --parallel=3 --verbose
+
+  bundlesize:
+    name: 📦 Bundle Check
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'pull_request' &&
+      (contains(github.event.pull_request.changed_files.*.filename, 'applications/lexico/') ||
+       contains(github.event.pull_request.changed_files.*.filename, 'packages/lexico-components/') ||
+       contains(github.event.pull_request.changed_files.*.filename, 'pnpm-lock.yaml'))
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔧 Setup Nx workspace
+        uses: ./.github/actions/nx-setup
+
+      - name: 📦 Bundle Check
+        run: npx nx affected -t bundlesize --parallel=2 --verbose
