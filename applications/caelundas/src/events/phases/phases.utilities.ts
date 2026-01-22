@@ -108,12 +108,12 @@ function getBrightnesses(args: {
  * in the margin window.
  *
  * @param args - Brightness calculation parameters
- * @param args.currentDistance - Planet's distance from Earth at current time
- * @param args.currentIllumination - Planet's illumination percentage (0-100)
- * @param args.nextDistances - Distance values for following minutes
- * @param args.nextIlluminations - Illumination values for following minutes
- * @param args.previousDistances - Distance values for preceding minutes
- * @param args.previousIlluminations - Illumination values for preceding minutes
+ * @param currentDistance - Planet's distance from Earth at current time
+ * @param currentIllumination - Planet's illumination percentage (0-100)
+ * @param nextDistances - Distance values for following minutes
+ * @param nextIlluminations - Illumination values for following minutes
+ * @param previousDistances - Distance values for preceding minutes
+ * @param previousIlluminations - Illumination values for preceding minutes
  * @returns True if current minute is a local brightness maximum
  * @remarks Uses MARGIN_MINUTES before/after for accurate extrema detection
  * @see {@link MARGIN_MINUTES} for margin window size
@@ -225,12 +225,12 @@ function isElongation(args: {
  * For Venus: max ~47°, For Mercury: max ~28°
  *
  * @param args - Elongation calculation parameters
- * @param args.currentLongitudeSun - Sun's ecliptic longitude in degrees
- * @param args.currentLongitudePlanet - Planet's ecliptic longitude in degrees
- * @param args.nextLongitudeSun - Sun's longitude at next minute
- * @param args.nextLongitudePlanet - Planet's longitude at next minute
- * @param args.previousLongitudeSun - Sun's longitude at previous minute
- * @param args.previousLongitudePlanet - Planet's longitude at previous minute
+ * @param currentLongitudeSun - Sun's ecliptic longitude in degrees
+ * @param currentLongitudePlanet - Planet's ecliptic longitude in degrees
+ * @param nextLongitudeSun - Sun's longitude at next minute
+ * @param nextLongitudePlanet - Planet's longitude at next minute
+ * @param previousLongitudeSun - Sun's longitude at previous minute
+ * @param previousLongitudePlanet - Planet's longitude at previous minute
  * @returns True if current minute is maximum eastern elongation
  * @see {@link isMaximum} for extrema detection
  */
@@ -256,12 +256,12 @@ export function isEasternElongation(args: {
  * For Venus: max ~47°, For Mercury: max ~28°
  *
  * @param args - Elongation calculation parameters
- * @param args.currentLongitudeSun - Sun's ecliptic longitude in degrees
- * @param args.currentLongitudePlanet - Planet's ecliptic longitude in degrees
- * @param args.nextLongitudeSun - Sun's longitude at next minute
- * @param args.nextLongitudePlanet - Planet's longitude at next minute
- * @param args.previousLongitudeSun - Sun's longitude at previous minute
- * @param args.previousLongitudePlanet - Planet's longitude at previous minute
+ * @param currentLongitudeSun - Sun's ecliptic longitude in degrees
+ * @param currentLongitudePlanet - Planet's ecliptic longitude in degrees
+ * @param nextLongitudeSun - Sun's longitude at next minute
+ * @param nextLongitudePlanet - Planet's longitude at next minute
+ * @param previousLongitudeSun - Sun's longitude at previous minute
+ * @param previousLongitudePlanet - Planet's longitude at previous minute
  * @returns True if current minute is maximum western elongation
  * @see {@link isMaximum} for extrema detection
  */
@@ -331,10 +331,10 @@ function isSet(args: {
  * the civil twilight threshold (~6°) while planet is west of Sun.
  *
  * @param args - Rise detection parameters
- * @param args.currentLongitudePlanet - Planet's longitude at current minute
- * @param args.currentLongitudeSun - Sun's longitude at current minute
- * @param args.previousLongitudePlanet - Planet's longitude at previous minute
- * @param args.previousLongitudeSun - Sun's longitude at previous minute
+ * @param currentLongitudePlanet - Planet's longitude at current minute
+ * @param currentLongitudeSun - Sun's longitude at current minute
+ * @param previousLongitudePlanet - Planet's longitude at previous minute
+ * @param previousLongitudeSun - Sun's longitude at previous minute
  * @returns True if planet just became visible as morning star
  * @see {@link degreesByTwilight} for visibility threshold
  */
@@ -356,10 +356,10 @@ export function isMorningRise(args: {
  * crosses below the civil twilight threshold while planet is west of Sun.
  *
  * @param args - Set detection parameters
- * @param args.currentLongitudePlanet - Planet's longitude at current minute
- * @param args.currentLongitudeSun - Sun's longitude at current minute
- * @param args.previousLongitudePlanet - Planet's longitude at previous minute
- * @param args.previousLongitudeSun - Sun's longitude at previous minute
+ * @param currentLongitudePlanet - Planet's longitude at current minute
+ * @param currentLongitudeSun - Sun's longitude at current minute
+ * @param previousLongitudePlanet - Planet's longitude at previous minute
+ * @param previousLongitudeSun - Sun's longitude at previous minute
  * @returns True if planet just became invisible as morning star
  * @see {@link degreesByTwilight} for visibility threshold
  */
@@ -381,10 +381,10 @@ export function isMorningSet(args: {
  * the civil twilight threshold while planet is east of Sun.
  *
  * @param args - Rise detection parameters
- * @param args.currentLongitudePlanet - Planet's longitude at current minute
- * @param args.currentLongitudeSun - Sun's longitude at current minute
- * @param args.previousLongitudePlanet - Planet's longitude at previous minute
- * @param args.previousLongitudeSun - Sun's longitude at previous minute
+ * @param currentLongitudePlanet - Planet's longitude at current minute
+ * @param currentLongitudeSun - Sun's longitude at current minute
+ * @param previousLongitudePlanet - Planet's longitude at previous minute
+ * @param previousLongitudeSun - Sun's longitude at previous minute
  * @returns True if planet just became visible as evening star
  * @see {@link degreesByTwilight} for visibility threshold
  */
@@ -406,10 +406,10 @@ export function isEveningRise(args: {
  * crosses below the civil twilight threshold while planet is east of Sun.
  *
  * @param args - Set detection parameters
- * @param args.currentLongitudePlanet - Planet's longitude at current minute
- * @param args.currentLongitudeSun - Sun's longitude at current minute
- * @param args.previousLongitudePlanet - Planet's longitude at previous minute
- * @param args.previousLongitudeSun - Sun's longitude at previous minute
+ * @param currentLongitudePlanet - Planet's longitude at current minute
+ * @param currentLongitudeSun - Sun's longitude at current minute
+ * @param previousLongitudePlanet - Planet's longitude at previous minute
+ * @param previousLongitudeSun - Sun's longitude at previous minute
  * @returns True if planet just became invisible as evening star
  * @see {@link degreesByTwilight} for visibility threshold
  */

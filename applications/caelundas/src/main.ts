@@ -129,9 +129,9 @@ import type { Coordinates } from "./ephemeris/ephemeris.types";
  * - Filename format: `caelundas_<start>_to_<end>.ics`
  * - Saved to output/ directory
  *
- * @throws {z.ZodError} When environment variables fail validation
- * @throws {Error} When NASA JPL Horizons API is unavailable
- * @throws {Error} When database operations fail
+ * @throws When environment variables fail validation
+ * @throws When NASA JPL Horizons API is unavailable
+ * @throws When database operations fail
  *
  * @see {@link inputSchema} for environment variable validation
  * @see {@link getEphemerides} for ephemeris aggregation

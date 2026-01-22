@@ -25,9 +25,9 @@ import type { Aspect, AspectPhase } from "../../types";
  * with an 8° orb is considered valid if bodies are separated by 0°-8°.
  *
  * @param args - Aspect detection parameters
- * @param args.longitudeBody1 - Ecliptic longitude of first body in degrees (0-360)
- * @param args.longitudeBody2 - Ecliptic longitude of second body in degrees (0-360)
- * @param args.aspect - Aspect type to check (e.g., "conjunct", "trine", "square")
+ * @param longitudeBody1 - Ecliptic longitude of first body in degrees (0-360)
+ * @param longitudeBody2 - Ecliptic longitude of second body in degrees (0-360)
+ * @param aspect - Aspect type to check (e.g., "conjunct", "trine", "square")
  * @returns True if bodies form the specified aspect within orb tolerance
  *
  * @remarks
@@ -70,8 +70,8 @@ export const isAspect = (args: {
  * most significant angular relationships in astrological interpretation.
  *
  * @param args - Body longitude parameters
- * @param args.longitudeBody1 - Ecliptic longitude of first body in degrees (0-360)
- * @param args.longitudeBody2 - Ecliptic longitude of second body in degrees (0-360)
+ * @param longitudeBody1 - Ecliptic longitude of first body in degrees (0-360)
+ * @param longitudeBody2 - Ecliptic longitude of second body in degrees (0-360)
  * @returns The major aspect type if detected, or null if no major aspect exists
  *
  * @remarks
@@ -114,8 +114,8 @@ export const getMajorAspect = (args: {
  * subtle angular relationships with smaller orb allowances than major aspects.
  *
  * @param args - Body longitude parameters
- * @param args.longitudeBody1 - Ecliptic longitude of first body in degrees (0-360)
- * @param args.longitudeBody2 - Ecliptic longitude of second body in degrees (0-360)
+ * @param longitudeBody1 - Ecliptic longitude of first body in degrees (0-360)
+ * @param longitudeBody2 - Ecliptic longitude of second body in degrees (0-360)
  * @returns The minor aspect type if detected, or null if no minor aspect exists
  *
  * @remarks
@@ -158,8 +158,8 @@ export const getMinorAspect = (args: {
  * divisions of the zodiac circle (5th, 7th, and 9th harmonics).
  *
  * @param args - Body longitude parameters
- * @param args.longitudeBody1 - Ecliptic longitude of first body in degrees (0-360)
- * @param args.longitudeBody2 - Ecliptic longitude of second body in degrees (0-360)
+ * @param longitudeBody1 - Ecliptic longitude of first body in degrees (0-360)
+ * @param longitudeBody2 - Ecliptic longitude of second body in degrees (0-360)
  * @returns The specialty aspect type if detected, or null if no specialty aspect exists
  *
  * @remarks
@@ -325,12 +325,12 @@ const getIsAspect = (
  * real-time aspect monitoring in the ephemeris pipeline.
  *
  * @param args - Three consecutive body positions
- * @param args.previousLongitudeBody1 - First body longitude at t-1 (degrees)
- * @param args.currentLongitudeBody1 - First body longitude at t (degrees)
- * @param args.nextLongitudeBody1 - First body longitude at t+1 (degrees)
- * @param args.previousLongitudeBody2 - Second body longitude at t-1 (degrees)
- * @param args.currentLongitudeBody2 - Second body longitude at t (degrees)
- * @param args.nextLongitudeBody2 - Second body longitude at t+1 (degrees)
+ * @param previousLongitudeBody1 - First body longitude at t-1 (degrees)
+ * @param currentLongitudeBody1 - First body longitude at t (degrees)
+ * @param nextLongitudeBody1 - First body longitude at t+1 (degrees)
+ * @param previousLongitudeBody2 - Second body longitude at t-1 (degrees)
+ * @param currentLongitudeBody2 - Second body longitude at t (degrees)
+ * @param nextLongitudeBody2 - Second body longitude at t+1 (degrees)
  * @returns "forming", "exact", "dissolving", or null if no phase transition
  *
  * @remarks
@@ -360,12 +360,12 @@ export const getMajorAspectPhase = getIsAspect([...majorAspects]);
  * orbs than major aspects.
  *
  * @param args - Three consecutive body positions
- * @param args.previousLongitudeBody1 - First body longitude at t-1 (degrees)
- * @param args.currentLongitudeBody1 - First body longitude at t (degrees)
- * @param args.nextLongitudeBody1 - First body longitude at t+1 (degrees)
- * @param args.previousLongitudeBody2 - Second body longitude at t-1 (degrees)
- * @param args.currentLongitudeBody2 - Second body longitude at t (degrees)
- * @param args.nextLongitudeBody2 - Second body longitude at t+1 (degrees)
+ * @param previousLongitudeBody1 - First body longitude at t-1 (degrees)
+ * @param currentLongitudeBody1 - First body longitude at t (degrees)
+ * @param nextLongitudeBody1 - First body longitude at t+1 (degrees)
+ * @param previousLongitudeBody2 - Second body longitude at t-1 (degrees)
+ * @param currentLongitudeBody2 - Second body longitude at t (degrees)
+ * @param nextLongitudeBody2 - Second body longitude at t+1 (degrees)
  * @returns "forming", "exact", "dissolving", or null if no phase transition
  *
  * @see {@link getIsAspect} for phase detection algorithm
@@ -381,12 +381,12 @@ export const getMinorAspectPhase = getIsAspect([...minorAspects]);
  * due to harmonic precision requirements.
  *
  * @param args - Three consecutive body positions
- * @param args.previousLongitudeBody1 - First body longitude at t-1 (degrees)
- * @param args.currentLongitudeBody1 - First body longitude at t (degrees)
- * @param args.nextLongitudeBody1 - First body longitude at t+1 (degrees)
- * @param args.previousLongitudeBody2 - Second body longitude at t-1 (degrees)
- * @param args.currentLongitudeBody2 - Second body longitude at t (degrees)
- * @param args.nextLongitudeBody2 - Second body longitude at t+1 (degrees)
+ * @param previousLongitudeBody1 - First body longitude at t-1 (degrees)
+ * @param currentLongitudeBody1 - First body longitude at t (degrees)
+ * @param nextLongitudeBody1 - First body longitude at t+1 (degrees)
+ * @param previousLongitudeBody2 - Second body longitude at t-1 (degrees)
+ * @param currentLongitudeBody2 - Second body longitude at t (degrees)
+ * @param nextLongitudeBody2 - Second body longitude at t+1 (degrees)
  * @returns "forming", "exact", "dissolving", or null if no phase transition
  *
  * @see {@link getIsAspect} for phase detection algorithm

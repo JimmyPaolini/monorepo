@@ -39,8 +39,8 @@ import type { Moment } from "moment";
  * {@link MARGIN_MINUTES} to detect direction reversals in ecliptic longitude.
  *
  * @param args - Ephemeris data and current time
- * @param args.coordinateEphemerisByBody - Pre-computed ephemeris for retrograde-capable bodies
- * @param args.currentMinute - Time point to check for station events (minute precision)
+ * @param coordinateEphemerisByBody - Pre-computed ephemeris for retrograde-capable bodies
+ * @param currentMinute - Time point to check for station events (minute precision)
  * @returns Array of calendar events for detected stationary points (retrograde or direct)
  *
  * @remarks
@@ -143,9 +143,9 @@ const categories = ["Astronomy", "Astrology", "Direction"];
  * retrograde stations from direct stations.
  *
  * @param args - Station event parameters
- * @param args.body - Celestial body entering station (e.g., "mercury", "venus", "mars")
- * @param args.timestamp - Exact time of the stationary point
- * @param args.direction - Orbital direction: "retrograde" or "direct"
+ * @param body - Celestial body entering station (e.g., "mercury", "venus", "mars")
+ * @param timestamp - Exact time of the stationary point
+ * @param direction - Orbital direction: "retrograde" or "direct"
  * @returns Calendar event with summary, description, and direction-specific categories
  *
  * @remarks
@@ -214,10 +214,10 @@ export function getRetrogradeEvent(args: {
  * if no events exist.
  *
  * @param args - Output parameters
- * @param args.end - End date of the event range (inclusive)
- * @param args.retrogradeBodies - List of bodies checked for retrograde motion
- * @param args.retrogradeEvents - Array of station events to write
- * @param args.start - Start date of the event range (inclusive)
+ * @param end - End date of the event range (inclusive)
+ * @param retrogradeBodies - List of bodies checked for retrograde motion
+ * @param retrogradeEvents - Array of station events to write
+ * @param start - Start date of the event range (inclusive)
  *
  * @remarks
  * - Filename format: `retrogrades_[bodies]_[start]-[end].ics`

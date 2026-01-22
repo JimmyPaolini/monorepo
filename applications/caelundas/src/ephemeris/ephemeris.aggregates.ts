@@ -15,8 +15,8 @@
  * - Distance ephemeris: Distance from Earth for phase and apsis detection
  *
  * @see {@link getEphemerides} for main aggregation function
- * @see {@link ./ephemeris.service} for individual ephemeris queries
- * @see {@link ./ephemeris.types} for ephemeris data structures
+ * @see {@link ./ephemeris.service#} for individual ephemeris queries
+ * @see {@link ./ephemeris.types#} for ephemeris data structures
  */
 
 import { bodies } from "../constants";
@@ -52,10 +52,10 @@ import type { Body } from "../types";
  * Results are organized by body for efficient lookup during event generation.
  *
  * @param args - Ephemeris query parameters
- * @param args.coordinates - Observer location [longitude, latitude] in degrees
- * @param args.start - Range start date (inclusive)
- * @param args.end - Range end date (inclusive)
- * @param args.timezone - IANA timezone identifier for the observer
+ * @param coordinates - Observer location [longitude, latitude] in degrees
+ * @param start - Range start date (inclusive)
+ * @param end - Range end date (inclusive)
+ * @param timezone - IANA timezone identifier for the observer
  * @returns Object containing ephemeris data organized by body and type
  *
  * @remarks
@@ -69,8 +69,8 @@ import type { Body } from "../types";
  * All queries use 1-minute interval sampling for high temporal resolution.
  * Data is cached in SQLite to minimize redundant API calls.
  *
- * @throws {Error} When NASA JPL Horizons API is unavailable
- * @throws {Error} When date range exceeds ephemeris data availability
+ * @throws When NASA JPL Horizons API is unavailable
+ * @throws When date range exceeds ephemeris data availability
  *
  * @see {@link getCoordinateEphemerisByBody} for coordinate ephemeris retrieval
  * @see {@link getAzimuthElevationEphemerisByBody} for horizon coordinate retrieval

@@ -34,8 +34,8 @@ import type { Moment } from "moment";
  * window for robust extrema detection.
  *
  * @param args - Ephemeris data and current time
- * @param args.currentMinute - Time point to check for phase events (minute precision)
- * @param args.moonIlluminationEphemeris - Pre-computed Moon illumination data
+ * @param currentMinute - Time point to check for phase events (minute precision)
+ * @param moonIlluminationEphemeris - Pre-computed Moon illumination data
  * @returns Array of calendar events for detected lunar phases (0-1 events per call)
  *
  * @remarks
@@ -123,8 +123,8 @@ export function getMonthlyLunarCycleEvents(args: {
  * distinction in calendar applications.
  *
  * @param args - Lunar phase event parameters
- * @param args.date - Exact time of the lunar phase
- * @param args.lunarPhase - Phase type: "new", "first", "full", or "third"
+ * @param date - Exact time of the lunar phase
+ * @param lunarPhase - Phase type: "new", "first", "full", or "third"
  * @returns Calendar event with summary, description, and phase-specific categories
  *
  * @remarks
@@ -187,9 +187,9 @@ export function getMonthlyLunarCycleEvent(args: {
  * events exist.
  *
  * @param args - Output parameters
- * @param args.monthlyLunarCycleEvents - Array of lunar phase events to write
- * @param args.start - Start date of the event range (inclusive)
- * @param args.end - End date of the event range (inclusive)
+ * @param monthlyLunarCycleEvents - Array of lunar phase events to write
+ * @param start - Start date of the event range (inclusive)
+ * @param end - End date of the event range (inclusive)
  *
  * @remarks
  * - Filename format: `monthly-lunar-cycle_[start]-[end].ics`

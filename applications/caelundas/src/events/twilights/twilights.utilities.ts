@@ -45,9 +45,9 @@ export const degreesByTwilight: Record<Twilight, number> = {
  * Each twilight type has a specific depression angle threshold.
  *
  * @param args - Configuration object
- * @param args.currentElevation - Current solar elevation in degrees
- * @param args.previousElevation - Previous minute's solar elevation in degrees
- * @param args.twilight - Type of twilight to detect
+ * @param currentElevation - Current solar elevation in degrees
+ * @param previousElevation - Previous minute's solar elevation in degrees
+ * @param twilight - Type of twilight to detect
  * @returns True if crossing the dawn threshold for the specified twilight type
  * @see {@link degreesByTwilight} for threshold values
  */
@@ -68,8 +68,8 @@ export function isDawn(args: {
  * This is when the faintest stars start to disappear as the sky begins to lighten.
  *
  * @param args - Configuration object
- * @param args.currentElevation - Current solar elevation in degrees
- * @param args.previousElevation - Previous minute's solar elevation in degrees
+ * @param currentElevation - Current solar elevation in degrees
+ * @param previousElevation - Previous minute's solar elevation in degrees
  * @returns True if crossing astronomical dawn threshold
  * @see {@link isDawn} for detection algorithm
  */
@@ -135,9 +135,9 @@ export function isCivilDawn(args: {
  * Dusk marks the transition from lighter to darker conditions as the Sun sets.
  *
  * @param args - Configuration object
- * @param args.currentElevation - Current solar elevation in degrees
- * @param args.previousElevation - Previous minute's solar elevation in degrees
- * @param args.twilight - Type of twilight to detect
+ * @param currentElevation - Current solar elevation in degrees
+ * @param previousElevation - Previous minute's solar elevation in degrees
+ * @param twilight - Type of twilight to detect
  * @returns True if crossing the dusk threshold for the specified twilight type
  */
 export function isDusk(args: {

@@ -10,16 +10,16 @@ import type { EclipsePhase } from "../../types";
  * Checks angular separation in both longitude and latitude against combined apparent diameters.
  *
  * @param args - Configuration object
- * @param args.currentDiameterMoon - Moon's apparent angular diameter in degrees
- * @param args.currentDiameterSun - Sun's apparent angular diameter in degrees
- * @param args.currentLatitudeMoon - Moon's ecliptic latitude in degrees
- * @param args.currentLatitudeSun - Sun's ecliptic latitude in degrees
- * @param args.currentLongitudeMoon - Moon's ecliptic longitude in degrees
- * @param args.currentLongitudeSun - Sun's ecliptic longitude in degrees
- * @param args.nextLongitudeMoon - Next minute's Moon longitude
- * @param args.nextLongitudeSun - Next minute's Sun longitude
- * @param args.previousLongitudeMoon - Previous minute's Moon longitude
- * @param args.previousLongitudeSun - Previous minute's Sun longitude
+ * @param currentDiameterMoon - Moon's apparent angular diameter in degrees
+ * @param currentDiameterSun - Sun's apparent angular diameter in degrees
+ * @param currentLatitudeMoon - Moon's ecliptic latitude in degrees
+ * @param currentLatitudeSun - Sun's ecliptic latitude in degrees
+ * @param currentLongitudeMoon - Moon's ecliptic longitude in degrees
+ * @param currentLongitudeSun - Sun's ecliptic longitude in degrees
+ * @param nextLongitudeMoon - Next minute's Moon longitude
+ * @param nextLongitudeSun - Next minute's Sun longitude
+ * @param previousLongitudeMoon - Previous minute's Moon longitude
+ * @param previousLongitudeSun - Previous minute's Sun longitude
  * @returns Eclipse phase ('beginning' | 'maximum' | 'ending') or null if no eclipse
  * @see {@link getAngle} for angular separation calculation
  * @see {@link isMinimum} for maximum eclipse detection

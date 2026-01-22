@@ -22,9 +22,10 @@ const maxDateString = "2100-12-31";
  * Validates geographic coordinates and date ranges, automatically determines timezone
  * based on location, and transforms string dates into timezone-aware Date objects.
  *
- * Input: latitude, longitude, startDate, endDate
- * Output: latitude, longitude, timezone, start (Date), end (Date)
- */
+ * **Validation rules:**
+ * 1. Latitude must be between -90 and 90
+ * 2. Longitude must be between -180 and 180
+ * 3. Start date must be \>= 1900-01-01
  * 4. Start date must be \<= 2100-12-31
  * 5. End date must be \>= 1900-01-01
  * 6. End date must be \<= 2100-12-31

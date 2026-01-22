@@ -43,8 +43,8 @@ const categories = ["Astronomy", "Astrology", "Ingress"];
  * events when they cross sign boundaries.
  *
  * @param args - Configuration object
- * @param args.coordinateEphemerisByBody - Position data for all tracked bodies
- * @param args.currentMinute - The specific minute to analyze
+ * @param coordinateEphemerisByBody - Position data for all tracked bodies
+ * @param currentMinute - The specific minute to analyze
  * @returns Array of detected sign ingress events (0-N events per minute)
  * @see {@link isSignIngress} for crossing detection
  * @see {@link getSign} for sign determination
@@ -93,9 +93,9 @@ export function getSignIngressEvents(args: {
  * Creates a zodiac sign ingress calendar event.
  *
  * @param args - Configuration object
- * @param args.date - Precise UTC time of ingress
- * @param args.longitude - Ecliptic longitude in degrees (0-360)
- * @param args.body - Celestial body entering new sign
+ * @param date - Precise UTC time of ingress
+ * @param longitude - Ecliptic longitude in degrees (0-360)
+ * @param body - Celestial body entering new sign
  * @returns Calendar event for sign ingress with body and sign symbols
  * @see {@link getSign} to derive sign from longitude
  */
@@ -168,8 +168,8 @@ export function writeSignIngressEvents(args: {
  * (which are sign ingresses, not decan ingresses).
  *
  * @param args - Configuration object
- * @param args.coordinateEphemerisByBody - Position data for all tracked bodies
- * @param args.currentMinute - The specific minute to analyze
+ * @param coordinateEphemerisByBody - Position data for all tracked bodies
+ * @param currentMinute - The specific minute to analyze
  * @returns Array of detected decan ingress events
  * @see {@link isDecanIngress} for crossing detection
  * @see {@link getDecan} for decan number (1-3) determination

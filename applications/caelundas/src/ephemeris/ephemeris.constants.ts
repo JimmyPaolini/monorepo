@@ -79,7 +79,7 @@ export const commandIdByBody = {
  * Maps bodies to their center point ID for coordinate frame calculations.
  *
  * Currently only configured for heliocentric Sun calculations.
- * Format: "500@10" means geocentric (500) relative to Sun (10).
+ * Format: "500\@10" means geocentric (500) relative to Sun (10).
  */
 export const centerIdByBody = {
   sun: "500@10",

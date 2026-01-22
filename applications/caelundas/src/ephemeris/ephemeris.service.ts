@@ -21,8 +21,8 @@
  * - Distance: Distance from Earth for phase and apsis events
  *
  * @see {@link https://ssd.jpl.nasa.gov/horizons/manual.html} for Horizons documentation
- * @see {@link ./ephemeris.constants} for API configuration
- * @see {@link ./ephemeris.types} for data structures
+ * @see {@link ./ephemeris.constants#} for API configuration
+ * @see {@link ./ephemeris.types#} for data structures
  */
 
 import _ from "lodash";
@@ -110,8 +110,8 @@ function getExpectedRecordCount(start: Date, end: Date): number {
  * @param timestamp - ISO 8601 timestamp string (e.g., "2026-01-21T12:00:00.000Z")
  * @param fieldName - Field to extract ("longitude" or "latitude")
  * @returns Coordinate value in degrees
- * @throws {Error} When timestamp is missing from ephemeris
- * @throws {Error} When specified field is undefined at timestamp
+ * @throws When timestamp is missing from ephemeris
+ * @throws When specified field is undefined at timestamp
  *
  * @remarks
  * - Longitude: 0-360° along ecliptic (0° = vernal equinox)
@@ -152,8 +152,8 @@ export function getCoordinateFromEphemeris(
  * @param timestamp - ISO 8601 timestamp string
  * @param fieldName - Field to extract ("azimuth" or "elevation")
  * @returns Coordinate value in degrees
- * @throws {Error} When timestamp is missing from ephemeris
- * @throws {Error} When specified field is undefined at timestamp
+ * @throws When timestamp is missing from ephemeris
+ * @throws When specified field is undefined at timestamp
  *
  * @remarks
  * - Azimuth: 0-360° measured clockwise from north (0°=N, 90°=E, 180°=S, 270°=W)
@@ -196,8 +196,8 @@ export function getAzimuthElevationFromEphemeris(
  * @param timestamp - ISO 8601 timestamp string
  * @param fieldName - Field description (unused but kept for API consistency)
  * @returns Illuminated fraction as a decimal (0.0 to 1.0)
- * @throws {Error} When timestamp is missing from ephemeris
- * @throws {Error} When illumination value is undefined at timestamp
+ * @throws When timestamp is missing from ephemeris
+ * @throws When illumination value is undefined at timestamp
  *
  * @remarks
  * Illumination values:
@@ -245,8 +245,8 @@ export function getIlluminationFromEphemeris(
  * @param timestamp - ISO 8601 timestamp string
  * @param fieldName - Field description (unused but kept for API consistency)
  * @returns Distance from Earth in astronomical units (AU)
- * @throws {Error} When timestamp is missing from ephemeris
- * @throws {Error} When distance value is undefined at timestamp
+ * @throws When timestamp is missing from ephemeris
+ * @throws When distance value is undefined at timestamp
  *
  * @remarks
  * Distance values are heliocentric for planets and geocentric for the Moon.
@@ -293,8 +293,8 @@ export function getDistanceFromEphemeris(
  * @param timestamp - ISO 8601 timestamp string
  * @param fieldName - Field description (unused but kept for API consistency)
  * @returns Angular diameter in degrees
- * @throws {Error} When timestamp is missing from ephemeris
- * @throws {Error} When diameter value is undefined at timestamp
+ * @throws When timestamp is missing from ephemeris
+ * @throws When diameter value is undefined at timestamp
  *
  * @remarks
  * Angular diameter represents the apparent size of a body as seen from Earth.
@@ -305,8 +305,8 @@ export function getDistanceFromEphemeris(
  * - Moon: ~0.52° (29.3-34.1 arcminutes, varies with lunar distance)
  *
  * Eclipse classification:
- * - Total solar eclipse: Moon's diameter > Sun's diameter
- * - Annular solar eclipse: Moon's diameter < Sun's diameter
+ * - Total solar eclipse: Moon's diameter \> Sun's diameter
+ * - Annular solar eclipse: Moon's diameter \< Sun's diameter
  * - Total lunar eclipse: Moon fully within Earth's umbral shadow
  *
  * @see {@link getDiameterEphemeris} for ephemeris retrieval

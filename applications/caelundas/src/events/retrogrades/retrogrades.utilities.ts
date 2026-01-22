@@ -10,9 +10,9 @@ import { normalizeForComparison } from "../../math.utilities";
  * retrograde (backward).
  *
  * @param args - Configuration object
- * @param args.currentLongitude - Current ecliptic longitude in degrees
- * @param args.previousLongitudes - Array of previous longitudes for trend confirmation
- * @param args.nextLongitudes - Array of future longitudes for trend confirmation
+ * @param currentLongitude - Current ecliptic longitude in degrees
+ * @param previousLongitudes - Array of previous longitudes for trend confirmation
+ * @param nextLongitudes - Array of future longitudes for trend confirmation
  * @returns True if retrograde motion is beginning at current moment
  * @see {@link normalizeForComparison} for handling 0°/360° wraparound
  *
@@ -56,9 +56,9 @@ export function isRetrograde(args: {
  * retrograde back to direct motion (called a "station direct").
  *
  * @param args - Configuration object
- * @param args.currentLongitude - Current ecliptic longitude in degrees
- * @param args.previousLongitudes - Array of previous longitudes
- * @param args.nextLongitudes - Array of future longitudes
+ * @param currentLongitude - Current ecliptic longitude in degrees
+ * @param previousLongitudes - Array of previous longitudes
+ * @param nextLongitudes - Array of future longitudes
  * @returns True if direct motion is resuming at current moment
  * @see {@link normalizeForComparison} for wraparound handling
  * @see {@link isRetrograde} for retrograde detection

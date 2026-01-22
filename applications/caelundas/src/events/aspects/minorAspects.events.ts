@@ -35,8 +35,8 @@ import type { Moment } from "moment";
  * (typically ±2-3° vs ±8-10°).
  *
  * @param args - Configuration object
- * @param args.coordinateEphemerisByBody - Pre-computed ephemeris data for all bodies
- * @param args.currentMinute - The minute to check for aspect events
+ * @param coordinateEphemerisByBody - Pre-computed ephemeris data for all bodies
+ * @param currentMinute - The minute to check for aspect events
  * @returns Array of calendar events for all detected minor aspects at this minute
  * @see {@link getMinorAspect} for aspect type detection
  * @see {@link getMinorAspectPhase} for phase determination
@@ -128,14 +128,14 @@ export function getMinorAspectEvents(args: {
  * and categorization for filtering and organization.
  *
  * @param args - Event parameters
- * @param args.longitudeBody1 - Ecliptic longitude of first body in degrees
- * @param args.longitudeBody2 - Ecliptic longitude of second body in degrees
- * @param args.timestamp - Exact moment of the aspect phase
- * @param args.body1 - First celestial body
- * @param args.body2 - Second celestial body
- * @param args.phase - Aspect phase: forming, exact, or dissolving
+ * @param longitudeBody1 - Ecliptic longitude of first body in degrees
+ * @param longitudeBody2 - Ecliptic longitude of second body in degrees
+ * @param timestamp - Exact moment of the aspect phase
+ * @param body1 - First celestial body
+ * @param body2 - Second celestial body
+ * @param phase - Aspect phase: forming, exact, or dissolving
  * @returns Formatted calendar event with summary, description, and categories
- * @throws {Error} When no valid minor aspect is detected between the bodies
+ * @throws When no valid minor aspect is detected between the bodies
  * @see {@link getMinorAspect} for aspect type determination
  */
 export function getMinorAspectEvent(args: {
@@ -212,10 +212,10 @@ export function getMinorAspectEvent(args: {
  * the body configuration and timespan for easy identification.
  *
  * @param args - Output parameters
- * @param args.end - Range end date
- * @param args.minorAspectBodies - Bodies included in aspect detection
- * @param args.minorAspectEvents - Events to write to calendar file
- * @param args.start - Range start date
+ * @param end - Range end date
+ * @param minorAspectBodies - Bodies included in aspect detection
+ * @param minorAspectEvents - Events to write to calendar file
+ * @param start - Range start date
  * @see {@link getCalendar} for iCal generation
  * @see {@link getOutputPath} for file path resolution
  */

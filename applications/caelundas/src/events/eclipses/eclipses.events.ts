@@ -26,11 +26,11 @@ const categories = ["Astronomy", "Astrology", "Eclipse"];
  * Solar eclipses occur at new moon (conjunction), lunar eclipses at full moon (opposition).
  *
  * @param args - Configuration object
- * @param args.currentMinute - The specific minute to analyze
- * @param args.moonCoordinateEphemeris - Moon position data
- * @param args.moonDiameterEphemeris - Moon apparent diameter data
- * @param args.sunCoordinateEphemeris - Sun position data
- * @param args.sunDiameterEphemeris - Sun apparent diameter data
+ * @param currentMinute - The specific minute to analyze
+ * @param moonCoordinateEphemeris - Moon position data
+ * @param moonDiameterEphemeris - Moon apparent diameter data
+ * @param sunCoordinateEphemeris - Sun position data
+ * @param sunDiameterEphemeris - Sun apparent diameter data
  * @returns Array of detected eclipse events (0-1 events per minute)
  * @see {@link isSolarEclipse} for solar eclipse detection
  * @see {@link isLunarEclipse} for lunar eclipse detection
@@ -156,8 +156,8 @@ export function getEclipseEvents(args: {
  * casting a shadow on Earth's surface.
  *
  * @param args - Configuration object
- * @param args.date - Precise UTC time of eclipse phase
- * @param args.phase - Eclipse phase: beginning, maximum, or ending
+ * @param date - Precise UTC time of eclipse phase
+ * @param phase - Eclipse phase: beginning, maximum, or ending
  * @returns Calendar event for solar eclipse phase
  * @see {@link isSolarEclipse} for detection algorithm
  */
@@ -202,8 +202,8 @@ export function getSolarEclipseEvent(args: {
  * casting Earth's shadow on the Moon.
  *
  * @param args - Configuration object
- * @param args.date - Precise UTC time of eclipse phase
- * @param args.phase - Eclipse phase: beginning, maximum, or ending
+ * @param date - Precise UTC time of eclipse phase
+ * @param phase - Eclipse phase: beginning, maximum, or ending
  * @returns Calendar event for lunar eclipse phase
  * @see {@link isLunarEclipse} for detection algorithm
  */

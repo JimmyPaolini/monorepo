@@ -50,8 +50,8 @@ const categories = ["Astronomy", "Astrology", "Annual Solar Cycle", "Solar"];
  * to determine precise crossing times.
  *
  * @param args - Configuration object
- * @param args.sunCoordinateEphemeris - Pre-computed Sun position data
- * @param args.currentMinute - The specific minute to analyze
+ * @param sunCoordinateEphemeris - Pre-computed Sun position data
+ * @param currentMinute - The specific minute to analyze
  * @returns Array of detected annual cycle events (0-1 events per minute)
  * @see {@link getCoordinateFromEphemeris} for position retrieval
  * @see {@link isVernalEquinox} for equinox detection algorithms
@@ -71,7 +71,7 @@ const categories = ["Astronomy", "Astrology", "Annual Solar Cycle", "Solar"];
  *   sunCoordinateEphemeris,
  *   currentMinute: moment('2025-03-20T09:01')
  * });
- * // Returns [vernalEquinoxEvent] when Sun crosses 0° longitude
+ * Returns [vernalEquinoxEvent] when Sun crosses 0° longitude
  * ```
  */
 export function getAnnualSolarCycleEvents(args: {
@@ -161,8 +161,8 @@ export function getAnnualSolarCycleEvents(args: {
  * aphelion in early July.
  *
  * @param args - Configuration object
- * @param args.currentMinute - The specific minute to analyze
- * @param args.sunDistanceEphemeris - Pre-computed Sun-Earth distance data
+ * @param currentMinute - The specific minute to analyze
+ * @param sunDistanceEphemeris - Pre-computed Sun-Earth distance data
  * @returns Array of detected apsis events (0-1 events per minute)
  * @see {@link getDistanceFromEphemeris} for distance retrieval
  * @see {@link isMaximum} for aphelion detection
@@ -692,9 +692,9 @@ export function getFifteenthHexadecanEvent(date: Date): Event {
  * and hexadecans for the specified date range.
  *
  * @param args - Configuration object
- * @param args.annualSolarCycleEvents - Array of events to write
- * @param args.start - Start date of event range
- * @param args.end - End date of event range
+ * @param annualSolarCycleEvents - Array of events to write
+ * @param start - Start date of event range
+ * @param end - End date of event range
  * @see {@link getCalendar} for iCal generation
  */
 export function writeAnnualSolarCycleEvents(args: {

@@ -25,12 +25,12 @@ const ephemerisCache = new Map<
  * (alphabetically sorted) to handle both (body1, body2) and (body2, body1) lookups.
  *
  * @param args - Calculation parameters
- * @param args.timestamp1 - ISO timestamp for first body position
- * @param args.timestamp2 - ISO timestamp for second body position
- * @param args.body1 - First celestial body
- * @param args.body2 - Second celestial body
- * @param args.longitude1 - Ecliptic longitude of first body in degrees
- * @param args.longitude2 - Ecliptic longitude of second body in degrees
+ * @param timestamp1 - ISO timestamp for first body position
+ * @param timestamp2 - ISO timestamp for second body position
+ * @param body1 - First celestial body
+ * @param body2 - Second celestial body
+ * @param longitude1 - Ecliptic longitude of first body in degrees
+ * @param longitude2 - Ecliptic longitude of second body in degrees
  * @returns Angle between bodies in degrees (0-180°)
  * @see {@link getAngle} for angle calculation algorithm
  */
@@ -97,9 +97,9 @@ export function getAngleCacheStats(): {
  * a generous buffer), we can skip detailed validation.
  *
  * @param args - Filter parameters
- * @param args.longitudes - Ecliptic longitudes of all bodies in degrees
- * @param args.requiredAngles - Expected angles for the pattern in degrees
- * @param args.maxOrb - Maximum orb tolerance in degrees
+ * @param longitudes - Ecliptic longitudes of all bodies in degrees
+ * @param requiredAngles - Expected angles for the pattern in degrees
+ * @param maxOrb - Maximum orb tolerance in degrees
  * @returns True if pattern is possible, false if definitely impossible
  */
 export function canFormAspect(args: {

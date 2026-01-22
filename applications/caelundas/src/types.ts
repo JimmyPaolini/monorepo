@@ -178,7 +178,9 @@ export type Aspect = keyof typeof symbolByAspect;
 
 /**
  * Three-body aspect patterns: grand trine, t-square, yod.
- */
+ *
+ * Complex geometric configurations formed when multiple planets create
+ * specific angular relationships. These patterns are evaluated in real-time
  * for geometric completion with a third body.
  *
  * @see {@link getTripleAspectEvents} for pattern detection algorithm
@@ -266,11 +268,8 @@ export type OrbitalDirection = keyof typeof symbolByOrbitalDirection;
 export type OrbitalDirectionSymbol =
   (typeof symbolByOrbitalDirection)[OrbitalDirection];
 
-/**
- * Unicode symbol representing orbital direction.
- *
- * @example
- * ```typescript
+
+
 /**
  * Lunar phase representing the Moon's illumination state as seen from Earth.
  *
@@ -301,7 +300,25 @@ export type VenusianPhaseSymbol = (typeof symbolByVenusianPhase)[VenusianPhase];
  *
  * Mercury exhibits phases similar to Venus due to its orbit inside Earth's orbit.
  * Phases cycle more quickly than Venus (approximately 116 days per synodic period).
+ */
+export type MercurianPhase = keyof typeof symbolByMercurianPhase;
+
+// #endregion
+
+// #region Martian Phases ♂
+
+/**
+ * Mars phase representing its illumination and visibility state from Earth.
  *
+ * Mars exhibits limited phase variation (never appears as a crescent) because
+ * it orbits outside Earth's orbit.
+ */
+export type MartianPhase = keyof typeof symbolByMartianPhase;
+
+// #endregion
+
+// #region Aspect Phases 📐
+
 /**
  * Phase of an aspect's lifecycle (applying, exact, or separating).
  *

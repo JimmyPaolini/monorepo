@@ -30,8 +30,8 @@ export const sunRadiusDegrees = sunRadiusArcminutes / arcminutesPerDegree;
  * this marks the moment the upper limb appears above the horizon.
  *
  * @param args - Configuration object
- * @param args.currentElevation - Current elevation in degrees
- * @param args.previousElevation - Previous minute's elevation in degrees
+ * @param currentElevation - Current elevation in degrees
+ * @param previousElevation - Previous minute's elevation in degrees
  * @returns True if the body is currently rising
  * @see {@link sunRadiusDegrees} for the threshold value
  *
@@ -60,8 +60,8 @@ export function isRise(args: {
  * this marks the moment the upper limb dips below the horizon.
  *
  * @param args - Configuration object
- * @param args.previousElevation - Previous minute's elevation in degrees
- * @param args.currentElevation - Current elevation in degrees
+ * @param previousElevation - Previous minute's elevation in degrees
+ * @param currentElevation - Current elevation in degrees
  * @returns True if the body is currently setting
  * @see {@link sunRadiusDegrees} for the threshold value
  *

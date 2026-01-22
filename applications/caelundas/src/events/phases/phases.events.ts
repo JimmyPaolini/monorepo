@@ -41,9 +41,7 @@ import type {
 import type {
   Body,
   MartianPhase,
-  MartianPhaseSymbol,
   MercurianPhase,
-  MercurianPhaseSymbol,
   VenusianPhase,
   VenusianPhaseSymbol,
 } from "../../types";
@@ -64,10 +62,10 @@ const categories = ["Astronomy", "Astrology", "Planetary Phase"];
  * and astrologically (for timing and interpretation).
  *
  * @param args - Detection parameters
- * @param args.currentMinute - The minute to check for phase events
- * @param args.coordinateEphemerisByBody - Ephemeris data for all coordinate bodies
- * @param args.distanceEphemerisByBody - Distance data for inner planets
- * @param args.illuminationEphemerisByBody - Illumination data for phase calculations
+ * @param currentMinute - The minute to check for phase events
+ * @param coordinateEphemerisByBody - Ephemeris data for all coordinate bodies
+ * @param distanceEphemerisByBody - Distance data for inner planets
+ * @param illuminationEphemerisByBody - Illumination data for phase calculations
  * @returns Array of all detected planetary phase events at this minute
  * @see {@link getVenusianPhaseEvents} for Venus-specific phases
  * @see {@link getMercurianPhaseEvents} for Mercury-specific phases
@@ -149,8 +147,8 @@ export function getPlanetaryPhaseEvents(args: {
  * - Evening Set: Venus disappears into Sun's glare (inferior conjunction)
  *
  * @param args - Event parameters
- * @param args.timestamp - Exact moment of the phase
- * @param args.phase - Specific Venusian phase type
+ * @param timestamp - Exact moment of the phase
+ * @param phase - Specific Venusian phase type
  * @returns Formatted calendar event with Venus symbol and phase indicator
  * @see {@link symbolByVenusianPhase} for phase symbols
  */
@@ -188,11 +186,11 @@ export function getVenusianPhaseEvent(args: {
  * elongation).
  *
  * @param args - Detection parameters
- * @param args.currentMinute - The minute to check
- * @param args.venusCoordinateEphemeris - Venus position data
- * @param args.venusDistanceEphemeris - Venus distance from Earth
- * @param args.venusIlluminationEphemeris - Venus illumination percentage
- * @param args.sunCoordinateEphemeris - Sun position for relative calculations
+ * @param currentMinute - The minute to check
+ * @param venusCoordinateEphemeris - Venus position data
+ * @param venusDistanceEphemeris - Venus distance from Earth
+ * @param venusIlluminationEphemeris - Venus illumination percentage
+ * @param sunCoordinateEphemeris - Sun position for relative calculations
  * @returns Array of detected Venusian phase events
  * @see {@link isMorningRise} for morning rise detection
  * @see {@link isWesternElongation} for western elongation detection
@@ -412,8 +410,8 @@ export function getVenusianPhaseEvents(args: {
  * - Evening Set: Mercury disappears into Sun's glare
  *
  * @param args - Event parameters
- * @param args.timestamp - Exact moment of the phase
- * @param args.phase - Specific Mercurian phase type
+ * @param timestamp - Exact moment of the phase
+ * @param phase - Specific Mercurian phase type
  * @returns Formatted calendar event with Mercury symbol and phase indicator
  * @see {@link symbolByMercurianPhase} for phase symbols
  */
@@ -424,7 +422,7 @@ export function getMercurianPhaseEvent(args: {
   const { timestamp, phase } = args;
 
   const phaseCapitalized = _.startCase(phase) as Capitalize<MercurianPhase>;
-  const phaseSymbol = symbolByMercurianPhase[phase] as MercurianPhaseSymbol;
+  const phaseSymbol = symbolByMercurianPhase[phase];
 
   const description = `Mercury ${phaseCapitalized}`;
   const summary = `☿${phaseSymbol} ${description}`;
@@ -450,11 +448,11 @@ export function getMercurianPhaseEvent(args: {
  * phases more frequently than Venus due to its shorter orbital period.
  *
  * @param args - Detection parameters
- * @param args.currentMinute - The minute to check
- * @param args.mercuryCoordinateEphemeris - Mercury position data
- * @param args.mercuryDistanceEphemeris - Mercury distance from Earth
- * @param args.mercuryIlluminationEphemeris - Mercury illumination percentage
- * @param args.sunCoordinateEphemeris - Sun position for relative calculations
+ * @param currentMinute - The minute to check
+ * @param mercuryCoordinateEphemeris - Mercury position data
+ * @param mercuryDistanceEphemeris - Mercury distance from Earth
+ * @param mercuryIlluminationEphemeris - Mercury illumination percentage
+ * @param sunCoordinateEphemeris - Sun position for relative calculations
  * @returns Array of detected Mercurian phase events
  * @see {@link isMorningRise} for morning rise detection
  * @see {@link isEasternElongation} for eastern elongation detection
@@ -672,8 +670,8 @@ export function getMercurianPhaseEvents(args: {
  * at opposition).
  *
  * @param args - Event parameters
- * @param args.timestamp - Exact moment of the phase
- * @param args.phase - Specific Martian phase type
+ * @param timestamp - Exact moment of the phase
+ * @param phase - Specific Martian phase type
  * @returns Formatted calendar event with Mars symbol and phase indicator
  * @see {@link symbolByMartianPhase} for phase symbols
  */
@@ -684,7 +682,7 @@ export function getMartianPhaseEvent(args: {
   const { timestamp, phase } = args;
 
   const phaseCapitalized = _.startCase(phase) as Capitalize<MartianPhase>;
-  const phaseSymbol = symbolByMartianPhase[phase] as MartianPhaseSymbol;
+  const phaseSymbol = symbolByMartianPhase[phase];
 
   const description = `Mars ${phaseCapitalized}`;
   const summary = `♂️${phaseSymbol} ${description}`;
@@ -710,11 +708,11 @@ export function getMartianPhaseEvent(args: {
  * maxima are calculated since Mars can appear anywhere in the sky.
  *
  * @param args - Detection parameters
- * @param args.currentMinute - The minute to check
- * @param args.marsCoordinateEphemeris - Mars position data
- * @param args.marsDistanceEphemeris - Mars distance from Earth
- * @param args.marsIlluminationEphemeris - Mars illumination percentage
- * @param args.sunCoordinateEphemeris - Sun position for relative calculations
+ * @param currentMinute - The minute to check
+ * @param marsCoordinateEphemeris - Mars position data
+ * @param marsDistanceEphemeris - Mars distance from Earth
+ * @param marsIlluminationEphemeris - Mars illumination percentage
+ * @param sunCoordinateEphemeris - Sun position for relative calculations
  * @returns Array of detected Martian phase events
  * @see {@link isMorningRise} for morning rise detection
  * @see {@link isEveningSet} for evening set detection
@@ -889,10 +887,10 @@ export function getMartianPhaseEvents(args: {
  * phase events for the specified time range and body configuration.
  *
  * @param args - Output parameters
- * @param args.end - Range end date
- * @param args.planetaryPhaseBodies - Planets included (venus, mercury, mars)
- * @param args.planetaryPhaseEvents - Events to write to calendar file
- * @param args.start - Range start date
+ * @param end - Range end date
+ * @param planetaryPhaseBodies - Planets included (venus, mercury, mars)
+ * @param planetaryPhaseEvents - Events to write to calendar file
+ * @param start - Range start date
  * @see {@link getCalendar} for iCal generation
  * @see {@link getOutputPath} for file path resolution
  */

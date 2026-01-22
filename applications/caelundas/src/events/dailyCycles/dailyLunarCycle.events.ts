@@ -26,8 +26,8 @@ const categories = ["Astronomy", "Astrology", "Daily Lunar Cycle", "Lunar"];
  * apparent diameter.
  *
  * @param args - Configuration object
- * @param args.currentMinute - The specific minute to analyze
- * @param args.moonAzimuthElevationEphemeris - Pre-computed Moon azimuth/elevation data
+ * @param currentMinute - The specific minute to analyze
+ * @param moonAzimuthElevationEphemeris - Pre-computed Moon azimuth/elevation data
  * @returns Array of detected lunar cycle events (0-4 events per minute)
  * @see {@link getAzimuthElevationFromEphemeris} for ephemeris data retrieval
  * @see {@link isRise} for rise detection algorithm
@@ -239,9 +239,9 @@ export function getLunarNadirEvent(date: Date): Event {
  * and written to the configured output directory.
  *
  * @param args - Configuration object
- * @param args.dailyLunarCycleEvents - Array of lunar cycle events to write
- * @param args.start - Start date of the event range
- * @param args.end - End date of the event range
+ * @param dailyLunarCycleEvents - Array of lunar cycle events to write
+ * @param start - Start date of the event range
+ * @param end - End date of the event range
  * @returns void - Writes to filesystem
  * @see {@link getCalendar} for iCal generation
  * @see {@link getOutputPath} for output directory resolution

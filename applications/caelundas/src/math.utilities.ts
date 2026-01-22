@@ -103,7 +103,7 @@ export function normalizeForComparison(
  * Determines whether a value is a local maximum in a discrete sequence.
  *
  * @param args - Object containing current, previous, and next values for comparison
- * @returns `true` if current is a local maximum (previous < current > next)
+ * @returns `true` if current is a local maximum (previous \< current \> next)
  *
  * @example
  * ```typescript
@@ -124,7 +124,7 @@ export function isMaximum(args: {
  * Determines whether a value is a local minimum in a discrete sequence.
  *
  * @param args - Object containing current, previous, and next values for comparison
- * @returns `true` if current is a local minimum (previous > current < next)
+ * @returns `true` if current is a local minimum (previous \> current \< next)
  *
  * @example
  * ```typescript

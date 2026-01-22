@@ -32,8 +32,8 @@ const categories = ["Astronomy", "Astrology", "Twilight"];
  * - Civil dawn/dusk (6° below horizon)
  *
  * @param args - Configuration object
- * @param args.currentMinute - The specific minute to analyze
- * @param args.sunAzimuthElevationEphemeris - Pre-computed Sun position data
+ * @param currentMinute - The specific minute to analyze
+ * @param sunAzimuthElevationEphemeris - Pre-computed Sun position data
  * @returns Array of detected twilight events (0-1 events per minute)
  * @see {@link isAstronomicalDawn} and related functions for detection
  * @see {@link degreesByTwilight} for threshold definitions
@@ -218,9 +218,9 @@ export function getAstronomicalDuskEvent(date: Date): Event {
  * Writes twilight events to an iCalendar file.
  *
  * @param args - Configuration object
- * @param args.twilightEvents - Array of twilight events
- * @param args.start - Start date of event range
- * @param args.end - End date of event range
+ * @param twilightEvents - Array of twilight events
+ * @param start - Start date of event range
+ * @param end - End date of event range
  * @see {@link getCalendar} for iCal generation
  */
 export function writeTwilightEvents(args: {

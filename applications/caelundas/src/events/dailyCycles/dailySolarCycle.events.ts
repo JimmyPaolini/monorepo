@@ -39,8 +39,8 @@ const categories = ["Astronomy", "Astrology", "Daily Solar Cycle", "Solar"];
  * nadir (local minimum elevation).
  *
  * @param args - Ephemeris data and current time
- * @param args.currentMinute - Time point to check for solar events (minute precision)
- * @param args.sunAzimuthElevationEphemeris - Pre-computed Sun position data with azimuth/elevation
+ * @param currentMinute - Time point to check for solar events (minute precision)
+ * @param sunAzimuthElevationEphemeris - Pre-computed Sun position data with azimuth/elevation
  * @returns Array of calendar events for detected solar cycle points (0-1 events per call)
  *
  * @remarks
@@ -312,9 +312,9 @@ export function getSolarNadirEvent(date: Date): Event {
  * identification. Skips writing if no events exist.
  *
  * @param args - Output parameters
- * @param args.dailySolarCycleEvents - Array of solar cycle events to write
- * @param args.start - Start date of the event range (inclusive)
- * @param args.end - End date of the event range (inclusive)
+ * @param dailySolarCycleEvents - Array of solar cycle events to write
+ * @param start - Start date of the event range (inclusive)
+ * @param end - End date of the event range (inclusive)
  *
  * @remarks
  * - Filename format: `daily-solar-cycle_[start]-[end].ics`

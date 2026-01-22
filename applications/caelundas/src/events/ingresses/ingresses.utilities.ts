@@ -28,7 +28,7 @@ export const degreeRangeBySign: Record<Sign, { min: number; max: number }> = {
  *
  * @param longitude - Ecliptic longitude in degrees (0-360)
  * @returns The zodiac sign name
- * @throws {Error} If longitude is outside valid range
+ * @throws If longitude is outside valid range
  * @see {@link degreeRangeBySign} for sign boundaries
  */
 export function getSign(longitude: number): Sign {
@@ -47,8 +47,8 @@ export function getSign(longitude: number): Sign {
  * A sign ingress occurs when the body's sign changes between consecutive minutes.
  *
  * @param args - Configuration object
- * @param args.previousLongitude - Previous minute's longitude in degrees
- * @param args.currentLongitude - Current longitude in degrees
+ * @param previousLongitude - Previous minute's longitude in degrees
+ * @param currentLongitude - Current longitude in degrees
  * @returns True if crossing a sign boundary
  */
 export const isSignIngress = (args: {

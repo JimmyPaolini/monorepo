@@ -7,12 +7,12 @@
  * transitioning from Pisces to Aries. This marks the beginning of astronomical spring.
  *
  * @param args - Configuration object
- * @param args.currentLongitude - Current solar longitude in degrees (0-360)
- * @param args.previousLongitude - Previous minute's solar longitude in degrees
+ * @param currentLongitude - Current solar longitude in degrees (0-360)
+ * @param previousLongitude - Previous minute's solar longitude in degrees
  * @returns True if crossing the vernal equinox point
  *
  * @remarks
- * Uses wraparound detection: current < 180 && previous > 180 indicates
+ * Uses wraparound detection: current \< 180 && previous \> 180 indicates
  * a crossing from ~360° to ~0° (Pisces to Aries boundary)
  */
 export function isVernalEquinox(args: {
@@ -26,8 +26,8 @@ export function isVernalEquinox(args: {
 /**
  * Determines if the Sun is crossing the first hexadecan point (22.5°).
  * @param args - Configuration object
- * @param args.currentLongitude - Current solar longitude in degrees
- * @param args.previousLongitude - Previous minute's solar longitude in degrees
+ * @param currentLongitude - Current solar longitude in degrees
+ * @param previousLongitude - Previous minute's solar longitude in degrees
  * @returns True if crossing 22.5° longitude
  */
 export function isFirstHexadecan(args: {
@@ -42,8 +42,8 @@ export function isFirstHexadecan(args: {
  * Determines if the Sun is crossing the Beltane point (45°).
  * Celtic cross-quarter day between spring equinox and summer solstice.
  * @param args - Configuration object
- * @param args.currentLongitude - Current solar longitude in degrees
- * @param args.previousLongitude - Previous minute's solar longitude in degrees
+ * @param currentLongitude - Current solar longitude in degrees
+ * @param previousLongitude - Previous minute's solar longitude in degrees
  * @returns True if crossing 45° longitude
  */
 export function isBeltane(args: {

@@ -53,7 +53,7 @@ function calculateDelay(attempt: number): number {
  *
  * @param url - The URL to fetch
  * @returns Promise resolving to the response body text
- * @throws {Error} For non-retryable errors or after max retries exceeded
+ * @throws For non-retryable errors or after max retries exceeded
  *
  * @remarks
  * Configuration via environment variables:

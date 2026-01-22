@@ -22,12 +22,12 @@ export const illuminationByPhase: Record<LunarPhase, number> = {
  * Determines if a new moon is occurring.
  *
  * New moon is the phase when the Moon is between Earth and Sun (conjunction).
- * Illumination is at its minimum (<50% and decreasing to lowest point).
+ * Illumination is at its minimum (\<50% and decreasing to lowest point).
  *
  * @param args - Configuration object
- * @param args.currentIllumination - Current illumination percentage (0-100)
- * @param args.previousIlluminations - Array of previous illumination values
- * @param args.nextIlluminations - Array of future illumination values
+ * @param currentIllumination - Current illumination percentage (0-100)
+ * @param previousIlluminations - Array of previous illumination values
+ * @param nextIlluminations - Array of future illumination values
  * @returns True if new moon is occurring
  * @see {@link isLunarPhase} for other phase detection
  */
@@ -50,7 +50,7 @@ export function isNewMoon(args: {
  * Determines if a full moon is occurring.
  *
  * Full moon is the phase when the Moon is opposite the Sun (opposition).
- * Illumination is at its maximum (>50% and increasing to highest point).
+ * Illumination is at its maximum (\>50% and increasing to highest point).
  *
  * @param args - Configuration object
  * @returns True if full moon is occurring
@@ -79,10 +79,10 @@ export function isFullMoon(args: {
  * waxing (increasing) from waning (decreasing) phases.
  *
  * @param args - Configuration object
- * @param args.currentIllumination - Current illumination percentage
- * @param args.previousIlluminations - Previous illumination values
- * @param args.nextIlluminations - Future illumination values
- * @param args.lunarPhase - Specific phase to detect
+ * @param currentIllumination - Current illumination percentage
+ * @param previousIlluminations - Previous illumination values
+ * @param nextIlluminations - Future illumination values
+ * @param lunarPhase - Specific phase to detect
  * @returns True if the specified lunar phase is occurring
  * @see {@link illuminationByPhase} for threshold values
  * @see {@link isNewMoon} for new moon detection

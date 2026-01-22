@@ -40,8 +40,8 @@ import type { Moment } from "moment";
  * are forming, exact, or dissolving.
  *
  * @param args - Ephemeris data and current time
- * @param args.coordinateEphemerisByBody - Pre-computed ephemeris data for all bodies
- * @param args.currentMinute - Time point to check for aspect events (minute precision)
+ * @param coordinateEphemerisByBody - Pre-computed ephemeris data for all bodies
+ * @param currentMinute - Time point to check for aspect events (minute precision)
  * @returns Array of calendar events for detected aspect phase transitions
  *
  * @remarks
@@ -151,14 +151,14 @@ export function getMajorAspectEvents(args: {
  * to distinguish forming, exact, and dissolving aspects.
  *
  * @param args - Aspect event parameters
- * @param args.longitudeBody1 - Ecliptic longitude of first body in degrees (0-360)
- * @param args.longitudeBody2 - Ecliptic longitude of second body in degrees (0-360)
- * @param args.timestamp - Exact time of the aspect phase event
- * @param args.body1 - First celestial body (e.g., "sun", "moon", "mercury")
- * @param args.body2 - Second celestial body
- * @param args.phase - Aspect phase: "forming", "exact", or "dissolving"
+ * @param longitudeBody1 - Ecliptic longitude of first body in degrees (0-360)
+ * @param longitudeBody2 - Ecliptic longitude of second body in degrees (0-360)
+ * @param timestamp - Exact time of the aspect phase event
+ * @param body1 - First celestial body (e.g., "sun", "moon", "mercury")
+ * @param body2 - Second celestial body
+ * @param phase - Aspect phase: "forming", "exact", or "dissolving"
  * @returns Calendar event with summary, description, categories, and timing
- * @throws {Error} When no major aspect is found at the given longitudes
+ * @throws When no major aspect is found at the given longitudes
  *
  * @remarks
  * - **Exact phase**: Uses 🎯 emoji, adds "Exact" category
@@ -260,10 +260,10 @@ export function getMajorAspectEvent(args: {
  * if no events exist.
  *
  * @param args - Output parameters
- * @param args.end - End date of the event range (inclusive)
- * @param args.majorAspectBodies - List of bodies included in aspect calculations
- * @param args.majorAspectEvents - Array of calendar events to write
- * @param args.start - Start date of the event range (inclusive)
+ * @param end - End date of the event range (inclusive)
+ * @param majorAspectBodies - List of bodies included in aspect calculations
+ * @param majorAspectEvents - Array of calendar events to write
+ * @param start - Start date of the event range (inclusive)
  *
  * @remarks
  * - Filename format: `major-aspects_[bodies]_[start]-[end].ics`
@@ -416,7 +416,7 @@ export function getMajorAspectDurationEvents(events: Event[]): Event[] {
  * @param beginning - Forming aspect event (marks entry into orb)
  * @param ending - Dissolving aspect event (marks exit from orb)
  * @returns Duration event spanning from forming to dissolving
- * @throws {Error} When categories don't contain exactly 2 bodies and 1 aspect type
+ * @throws When categories don't contain exactly 2 bodies and 1 aspect type
  *
  * @remarks
  * - Assumes beginning and ending events have matching body pairs and aspect type
