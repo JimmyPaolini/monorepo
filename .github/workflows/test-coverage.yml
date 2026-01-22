@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
+  test-coverage:
     name: 🧪 Test Coverage
     runs-on: ubuntu-latest
 

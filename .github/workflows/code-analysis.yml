@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  typecheck:
+  type-check:
     name: 🏷️ Type Check
     runs-on: ubuntu-latest
 
@@ -27,7 +27,7 @@ jobs:
       - name: 🏷️ Type Check
         run: npx nx affected -t typecheck --parallel=3 --verbose
 
-  lint:
+  lint-check:
     name: 🧹 Lint Check
     runs-on: ubuntu-latest
 
@@ -59,7 +59,7 @@ jobs:
       - name: 🖼️ Markdown Lint
         run: pnpm exec nx run monorepo:markdown-lint
 
-  format:
+  format-check:
     name: 🎨 Format Check
     runs-on: ubuntu-latest
 
@@ -75,7 +75,7 @@ jobs:
       - name: 🎨 Format Check
         run: npx nx affected -t format --configuration=check --parallel=3 --verbose
 
-  knip:
+  knip-check:
     name: ✂️ Knip Check
     runs-on: ubuntu-latest
 
