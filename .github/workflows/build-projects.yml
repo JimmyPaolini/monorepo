@@ -25,7 +25,7 @@ jobs:
         uses: ./.github/actions/setup-monorepo
 
       - name: 🏗️ Build Projects
-        run: npx nx affected -t build --parallel=3 --verbose
+        run: npx nx affected -t build --parallel=3
 
   bundlesize:
     name: 📦 Bundle Check
@@ -46,4 +46,4 @@ jobs:
         uses: ./.github/actions/setup-monorepo
 
       - name: 📦 Bundle Check
-        run: npx nx affected -t bundlesize --parallel=2 --verbose
+        run: npx nx affected -t bundlesize --parallel=2

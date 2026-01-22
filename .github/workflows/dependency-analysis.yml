@@ -27,7 +27,7 @@ jobs:
         uses: ./.github/actions/setup-monorepo
 
       - name: 🔗 Dependency Check
-        run: pnpm exec nx affected -t dependency-check --parallel=3 --verbose
+        run: pnpm exec nx affected -t dependency-check --parallel=3
 
   security-audit:
     name: 🔒 Security Audit

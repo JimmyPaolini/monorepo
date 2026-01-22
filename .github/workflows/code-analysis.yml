@@ -25,7 +25,7 @@ jobs:
         uses: ./.github/actions/setup-monorepo
 
       - name: 🏷️ Type Check
-        run: npx nx affected -t typecheck --parallel=3 --verbose
+        run: npx nx affected -t typecheck --parallel=3
 
   lint-check:
     name: 🧹 Lint Check
@@ -41,7 +41,7 @@ jobs:
         uses: ./.github/actions/setup-monorepo
 
       - name: 🧹 Lint Check
-        run: npx nx affected -t lint --parallel=3 --verbose
+        run: npx nx affected -t lint --parallel=3
 
   markdown-lint:
     name: 🖼️ Markdown Lint
@@ -73,7 +73,7 @@ jobs:
         uses: ./.github/actions/setup-monorepo
 
       - name: 🎨 Format Check
-        run: npx nx affected -t format --configuration=check --parallel=3 --verbose
+        run: npx nx affected -t format --configuration=check --parallel=3
 
   knip-check:
     name: ✂️ Knip Check
@@ -89,7 +89,7 @@ jobs:
         uses: ./.github/actions/setup-monorepo
 
       - name: ✂️ Knip Check
-        run: pnpm exec nx affected -t knip --parallel=3 --verbose
+        run: pnpm exec nx affected -t knip --parallel=3
 
   spell-check:
     name: 🧙‍♂️ Spell Check
@@ -121,7 +121,7 @@ jobs:
         uses: ./.github/actions/setup-monorepo
 
       - name: 🔖 Type Coverage
-        run: npx nx affected -t type-coverage --parallel=3 --verbose
+        run: npx nx affected -t type-coverage --parallel=3
 
       - name: 📊 Upload Type Coverage
         uses: actions/upload-artifact@v4
