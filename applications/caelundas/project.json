@@ -6,19 +6,6 @@
   "tags": [],
   "targets": {
     "dependency-check": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "depcruise applications/caelundas/src --config .dependency-cruiser.cjs",
-        "cwd": "{workspaceRoot}"
-      },
-      "cache": true,
-      "inputs": [
-        "default",
-        "^default",
-        "{projectRoot}/**/*.ts",
-        "{projectRoot}/**/*.tsx",
-        "{workspaceRoot}/.dependency-cruiser.cjs"
-      ],
       "description": "Validate dependency architecture"
     },
     "develop": {
@@ -46,10 +33,6 @@
       "description": "Build and push Docker image to GitHub Container Registry"
     },
     "format": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "prettier {args} applications/caelundas"
-      },
       "description": "Format files in the project with Prettier"
     },
     "helm-uninstall": {
@@ -69,21 +52,6 @@
       "description": "Deploy Caelundas job with Helm with auto-generated release name"
     },
     "knip": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace applications/caelundas",
-        "cwd": "{workspaceRoot}"
-      },
-      "configurations": {
-        "check": {
-          "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace applications/caelundas"
-        },
-        "write": {
-          "command": "NODE_OPTIONS='--import=tsx/esm' knip --fix --workspace applications/caelundas"
-        }
-      },
-      "defaultConfiguration": "check",
-      "cache": true,
       "description": "Check for unused files, dependencies, and exports"
     },
     "kubernetes-copy-files": {
@@ -111,7 +79,6 @@
       "description": "Start the Caelundas application"
     },
     "static-code-analysis": {
-      "executor": "nx:run-commands",
       "options": {
         "commands": [
           "nx run caelundas:typecheck",
@@ -122,16 +89,6 @@
           "nx run caelundas:dependency-check"
         ]
       },
-      "configurations": {
-        "check": {
-          "parallel": true
-        },
-        "write": {
-          "parallel": false
-        }
-      },
-      "defaultConfiguration": "check",
-      "cache": true,
       "description": "Run all static code analysis tools (typecheck, lint, format, knip, type-coverage, dependency-check)"
     },
     "test": {
@@ -183,26 +140,9 @@
       "description": "Run end-to-end tests only"
     },
     "type-coverage": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "type-coverage --detail > type-coverage-report.txt 2>&1 || (cat type-coverage-report.txt && exit 1)",
-        "cwd": "applications/caelundas"
-      },
-      "cache": true,
-      "inputs": [
-        "default",
-        "{projectRoot}/**/*.ts",
-        "{projectRoot}/**/*.tsx",
-        "{projectRoot}/tsconfig.json"
-      ],
       "description": "Check TypeScript type coverage"
     },
     "typecheck": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "tsc --noEmit",
-        "cwd": "applications/caelundas"
-      },
       "description": "Type-check the application without emitting files"
     }
   }

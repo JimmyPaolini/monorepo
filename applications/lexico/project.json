@@ -26,19 +26,6 @@
       "description": "Check bundle size limits"
     },
     "dependency-check": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "depcruise applications/lexico/src --config .dependency-cruiser.cjs",
-        "cwd": "{workspaceRoot}"
-      },
-      "cache": true,
-      "inputs": [
-        "default",
-        "^default",
-        "{projectRoot}/**/*.ts",
-        "{projectRoot}/**/*.tsx",
-        "{workspaceRoot}/.dependency-cruiser.cjs"
-      ],
       "description": "Validate dependency architecture"
     },
     "develop": {
@@ -50,28 +37,9 @@
       "description": "Start development server with hot reload"
     },
     "format": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "prettier {args} applications/lexico"
-      },
       "description": "Format files in the project with Prettier"
     },
     "knip": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace applications/lexico",
-        "cwd": "{workspaceRoot}"
-      },
-      "configurations": {
-        "check": {
-          "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace applications/lexico"
-        },
-        "write": {
-          "command": "NODE_OPTIONS='--import=tsx/esm' knip --fix --workspace applications/lexico"
-        }
-      },
-      "defaultConfiguration": "check",
-      "cache": true,
       "description": "Check for unused files, dependencies, and exports"
     },
     "start": {
@@ -83,7 +51,6 @@
       "description": "Start the production server"
     },
     "static-code-analysis": {
-      "executor": "nx:run-commands",
       "options": {
         "commands": [
           "nx run lexico:typecheck",
@@ -94,16 +61,6 @@
           "nx run lexico:dependency-check"
         ]
       },
-      "configurations": {
-        "check": {
-          "parallel": true
-        },
-        "write": {
-          "parallel": false
-        }
-      },
-      "defaultConfiguration": "check",
-      "cache": true,
       "description": "Run all static code analysis tools (typecheck, lint, format, knip, type-coverage, dependency-check)"
     },
     "supabase:database-diff": {
@@ -147,26 +104,9 @@
       "description": "Stop local Supabase development environment"
     },
     "type-coverage": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "type-coverage --detail > type-coverage-report.txt 2>&1 || (cat type-coverage-report.txt && exit 1)",
-        "cwd": "applications/lexico"
-      },
-      "cache": true,
-      "inputs": [
-        "default",
-        "{projectRoot}/**/*.ts",
-        "{projectRoot}/**/*.tsx",
-        "{projectRoot}/tsconfig.json"
-      ],
       "description": "Check TypeScript type coverage"
     },
     "typecheck": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "tsc --noEmit",
-        "cwd": "applications/lexico"
-      },
       "description": "Type-check the application"
     }
   }
