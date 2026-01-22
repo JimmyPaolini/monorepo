@@ -171,7 +171,7 @@
         "{workspaceRoot}/**/*.{ts,tsx,js,jsx,md,yaml,yml,json}",
         "{workspaceRoot}/cspell.config.yaml"
       ],
-      "description": "Check spelling across the entire codebase"
+      "description": "Check spelling across the entire workspace (use project-level spell-check for individual projects)"
     },
     "static-code-analysis": {
       "options": {

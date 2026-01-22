@@ -34,11 +34,13 @@
           "nx run lexico-components:format:{args.configuration}",
           "nx run lexico-components:knip:{args.configuration}",
           "nx run lexico-components:type-coverage",
-          "nx run lexico-components:dependency-check"
+          "nx run lexico-components:dependency-check",
+          "nx run lexico-components:spell-check"
         ]
       }
     },
     "type-coverage": {},
-    "typecheck": {}
+    "typecheck": {},
+    "spell-check": {}
   }
 }

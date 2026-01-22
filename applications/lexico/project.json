@@ -52,7 +52,8 @@
           "nx run lexico:format:{args.configuration}",
           "nx run lexico:knip:{args.configuration}",
           "nx run lexico:type-coverage",
-          "nx run lexico:dependency-check"
+          "nx run lexico:dependency-check",
+          "nx run lexico:spell-check"
         ]
       }
     },
@@ -97,6 +98,7 @@
       "description": "Stop local Supabase development environment"
     },
     "type-coverage": {},
-    "typecheck": {}
+    "typecheck": {},
+    "spell-check": {}
   }
 }

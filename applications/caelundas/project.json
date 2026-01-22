@@ -80,10 +80,12 @@
           "nx run caelundas:format:{args.configuration}",
           "nx run caelundas:knip:{args.configuration}",
           "nx run caelundas:type-coverage",
-          "nx run caelundas:dependency-check"
+          "nx run caelundas:type-coverage",
+          "nx run caelundas:spell-check"
         ]
       }
     },
+    "spell-check": {},
     "test": {
       "executor": "nx:run-commands",
       "options": {

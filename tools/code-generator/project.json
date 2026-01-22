@@ -32,7 +32,8 @@
           "nx run code-generator:format:{args.configuration}",
           "nx run code-generator:knip:{args.configuration}",
           "nx run code-generator:type-coverage",
-          "nx run code-generator:dependency-check"
+          "nx run code-generator:dependency-check",
+          "nx run code-generator:spell-check"
         ]
       }
     },
@@ -44,6 +45,7 @@
       }
     },
     "type-coverage": {},
-    "typecheck": {}
+    "typecheck": {},
+    "spell-check": {}
   }
 }
