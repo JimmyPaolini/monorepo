@@ -6,6 +6,9 @@ import { getSupabaseServerClient } from "./supabase-server";
  * Represents a user's saved text in the library.
  */
 /* eslint-disable @typescript-eslint/naming-convention */
+/**
+ *
+ */
 export interface UserText {
   /** Text UUID */
   id: string;

@@ -425,6 +425,9 @@ export type Tables<
       : never
     : never;
 
+/**
+ *
+ */
 export type TablesInsert<
   DefaultSchemaTableNameOrOptions extends
     | keyof DefaultSchema["Tables"]

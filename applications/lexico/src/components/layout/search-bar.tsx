@@ -2,6 +2,9 @@ import { Button, cn, Input } from "@monorepo/lexico-components";
 import { Loader2, Search } from "lucide-react";
 import * as React from "react";
 
+/**
+ *
+ */
 export interface SearchBarProps {
   /** Initial search value */
   value?: string | undefined;

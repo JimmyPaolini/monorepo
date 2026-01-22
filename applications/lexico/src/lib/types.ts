@@ -214,6 +214,9 @@ export type Forms =
  * Entry search result from Supabase RPC search function.
  */
 /* eslint-disable @typescript-eslint/naming-convention */
+/**
+ *
+ */
 export interface EntrySearchResult {
   id: string;
   principal_parts: PrincipalParts;

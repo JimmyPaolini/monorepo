@@ -20,6 +20,9 @@ export interface TranslationsProps {
   className?: string;
 }
 
+/**
+ *
+ */
 export function Translations(props: TranslationsProps): ReactElement {
   const { translations, defaultOpen = false, className } = props;
 

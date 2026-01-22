@@ -1,4 +1,3 @@
-/// <reference types="vite/client" />
 import {
   Button,
   Sidebar,
@@ -121,15 +120,21 @@ function RootComponent(): ReactNode {
 }
 
 /**
+ * Props for the RootDocument component.
+ */
+interface RootDocumentProps {
+  /** Child elements to render */
+  children: ReactNode;
+}
+
+/**
  * Root document component that provides HTML structure and sidebar.
  *
  * @param props - Component props
- * @param props.children - Child elements to render
  * @returns React node
  */
-function RootDocument({
-  children,
-}: Readonly<{ children: ReactNode }>): ReactNode {
+function RootDocument(props: Readonly<RootDocumentProps>): ReactNode {
+  const { children } = props;
   const [open, setOpen] = useState(false);
 
   return (
@@ -164,17 +169,21 @@ function RootDocument({
 }
 
 /**
+ * Props for the AppSidebar component.
+ */
+interface AppSidebarProps {
+  /** Callback when hover state changes */
+  onHoverChange: (hovered: boolean) => void;
+}
+
+/**
  * Application sidebar component with navigation items.
  *
  * @param props - Component props
- * @param props.onHoverChange - Callback when hover state changes
  * @returns React node
  */
-function AppSidebar({
-  onHoverChange,
-}: {
-  onHoverChange: (hovered: boolean) => void;
-}): ReactNode {
+function AppSidebar(props: Readonly<AppSidebarProps>): ReactNode {
+  const { onHoverChange } = props;
   const matches = useMatches();
   const currentPath = matches[matches.length - 1]?.pathname ?? "/";
   const { isMobile } = useSidebar();

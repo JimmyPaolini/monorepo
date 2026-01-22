@@ -8,6 +8,9 @@ import type { PartOfSpeech, PrincipalParts } from "./types";
  * Represents a bookmarked lexical entry from the database.
  */
 /* eslint-disable @typescript-eslint/naming-convention */
+/**
+ *
+ */
 export interface BookmarkedEntry {
   /** Entry UUID */
   id: string;

@@ -85,6 +85,9 @@ export interface EntryCardProps {
   className?: string;
 }
 
+/**
+ *
+ */
 export function EntryCard(props: EntryCardProps): ReactElement {
   const {
     id,
