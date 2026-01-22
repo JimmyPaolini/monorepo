@@ -174,7 +174,6 @@
       "description": "Check spelling across the entire codebase"
     },
     "static-code-analysis": {
-      "executor": "nx:run-commands",
       "options": {
         "commands": [
           "nx run monorepo:typecheck",
@@ -183,19 +182,8 @@
           "nx run monorepo:format:{args.configuration}",
           "nx run monorepo:knip:{args.configuration}",
           "nx run monorepo:spell-check"
-        ],
-        "cwd": "{projectRoot}"
+        ]
       },
-      "configurations": {
-        "check": {
-          "parallel": true
-        },
-        "write": {
-          "parallel": false
-        }
-      },
-      "defaultConfiguration": "check",
-      "cache": true,
       "description": "Run all static code analysis tools for workspace root (typecheck, lint, format, knip, spell-check, markdown-lint)"
     },
     "terraform": {
@@ -217,11 +205,6 @@
       "description": "Run Terraform commands (plan, import)"
     },
     "typecheck": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "tsc --noEmit",
-        "cwd": "{projectRoot}"
-      },
       "description": "Type-check workspace root TypeScript files"
     }
   }
