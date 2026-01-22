@@ -70,6 +70,10 @@
       }
     },
     "format": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prettier {args} {projectRoot}"
+      },
       "inputs": [
         "default",
         "{workspaceRoot}/.prettierrc.js",
@@ -87,6 +91,11 @@
       }
     },
     "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc --noEmit",
+        "cwd": "{projectRoot}"
+      },
       "inputs": [
         "default",
         "^production",
@@ -95,17 +104,25 @@
       "cache": true
     },
     "knip": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace {projectRoot}",
+        "cwd": "{workspaceRoot}"
+      },
       "inputs": ["default", "{workspaceRoot}/knip.json"],
       "cache": true,
       "defaultConfiguration": "check",
       "configurations": {
-        "check": {},
+        "check": {
+          "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace {projectRoot}"
+        },
         "write": {
-          "args": "--fix"
+          "command": "NODE_OPTIONS='--import=tsx/esm' knip --fix --workspace {projectRoot}"
         }
       }
     },
     "static-code-analysis": {
+      "executor": "nx:run-commands",
       "cache": true,
       "defaultConfiguration": "check",
       "configurations": {
@@ -118,6 +135,11 @@
       }
     },
     "dependency-check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "depcruise {projectRoot}/src --config .dependency-cruiser.cjs",
+        "cwd": "{workspaceRoot}"
+      },
       "inputs": [
         "default",
         "^default",
@@ -128,6 +150,11 @@
       "cache": true
     },
     "type-coverage": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "type-coverage --detail > type-coverage-report.txt 2>&1 || (cat type-coverage-report.txt && exit 1)",
+        "cwd": "{projectRoot}"
+      },
       "inputs": [
         "default",
         "{projectRoot}/**/*.ts",
