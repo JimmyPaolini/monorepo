@@ -6,6 +6,14 @@
   "prefix": "lib",
   "tags": ["type:util"],
   "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "echo 'code-generator is a development tool and does not require building'"
+      },
+      "cache": true,
+      "description": "No-op build target for development tool"
+    },
     "dependency-check": {
       "executor": "nx:run-commands",
       "options": {
