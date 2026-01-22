@@ -1,4 +1,4 @@
-name: NX Setup
+name: 🕋 Setup Monorepo
 description: Nx monorepo setup with pnpm, node, and cache management (requires checkout first)
 
 runs:
@@ -28,6 +28,6 @@ runs:
           nx-cache-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}-
           nx-cache-${{ runner.os }}-
 
-    - name: 📚 Install dependencies
+    - name: 📚 Install Dependencies
       run: pnpm install --frozen-lockfile
       shell: bash

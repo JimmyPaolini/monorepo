@@ -7,13 +7,13 @@ This document describes the GitHub Actions workflow architecture used in this mo
 All task workflows in this repository use a composite action for consistent setup:
 
 - **Checkout step**: Each workflow checks out the repository with full git history
-- **[.github/actions/nx-setup](/.github/actions/nx-setup)**: Handles pnpm/node setup, Nx cache management, dependency installation, and prepares the workspace for task execution
+- **[.github/actions/setup-monorepo](/.github/actions/setup-monorepo)**: Handles pnpm/node setup, Nx cache management, dependency installation, and prepares the workspace for task execution
 
 This pattern reduces workflow file sizes by ~65% (from ~60 lines to ~21 lines) while maintaining consistency across all workflows.
 
 ## The nx-setup Composite Action
 
-The [.github/actions/nx-setup/action.yml](/.github/actions/nx-setup/action.yml) composite action handles the common setup steps (requires repository checkout first):
+The [.github/actions/setup-monorepo/action.yml](/.github/actions/setup-monorepo/action.yml) composite action handles the common setup steps (requires repository checkout first):
 
 1. Setup pnpm (version: 10.20.0)
 2. Setup Node.js (version: 22.20.0) with pnpm caching
@@ -31,8 +31,8 @@ The composite action requires the repository to be checked out first (with `fetc
   with:
     fetch-depth: 0
 
-- name: 🔧 Setup Nx workspace
-  uses: ./.github/actions/nx-setup
+- name: 🕋 Setup Monorepo
+  uses: ./.github/actions/setup-monorepo
 ```
 
 ### No Additional Inputs Required
@@ -47,7 +47,7 @@ The composite action has no inputs. It automatically:
 
 The composite action hardcodes pnpm and Node.js versions, providing a single source of truth for version upgrades. To upgrade these tools across all workflows:
 
-1. Update the version numbers in [.github/actions/nx-setup/action.yml](/.github/actions/nx-setup/action.yml)
+1. Update the version numbers in [.github/actions/setup-monorepo/action.yml](/.github/actions/setup-monorepo/action.yml)
 2. Commit the changes - all workflows will automatically use the new versions
 
 ## Minimal Workflow Template
@@ -78,8 +78,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: 🔧 Setup Nx workspace
-        uses: ./.github/actions/nx-setup
+      - name: 🕋 Setup Monorepo
+        uses: ./.github/actions/setup-monorepo
 
       - name: 🎯 Run Task
         run: npx nx affected -t task-name --parallel=3 --verbose
@@ -183,6 +183,6 @@ The self-contained approach:
 
 **Workflow fails with "action not found":**
 
-- Confirm the path `./.github/actions/nx-setup` is correct
+- Confirm the path `./.github/actions/setup-monorepo` is correct
 - Verify the action.yml file exists in the composite action directory
 - Check that the workflow has access to the repository (not running from a fork without appropriate permissions)
