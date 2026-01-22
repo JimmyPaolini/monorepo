@@ -15,44 +15,12 @@
       "description": "No-op build target for development tool"
     },
     "dependency-check": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "depcruise tools/code-generator/src --config .dependency-cruiser.cjs",
-        "cwd": "{workspaceRoot}"
-      },
-      "cache": true,
-      "inputs": [
-        "default",
-        "^default",
-        "{projectRoot}/**/*.ts",
-        "{projectRoot}/**/*.tsx",
-        "{workspaceRoot}/.dependency-cruiser.cjs"
-      ],
       "description": "Validate dependency architecture"
     },
     "format": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "prettier {args} tools/code-generator"
-      },
       "description": "Format files in the generator with Prettier"
     },
     "knip": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace tools/code-generator",
-        "cwd": "{workspaceRoot}"
-      },
-      "configurations": {
-        "check": {
-          "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace tools/code-generator"
-        },
-        "write": {
-          "command": "NODE_OPTIONS='--import=tsx/esm' knip --fix --workspace tools/code-generator"
-        }
-      },
-      "defaultConfiguration": "check",
-      "cache": true,
       "description": "Check for unused files, dependencies, and exports"
     },
     "lint": {
@@ -63,7 +31,6 @@
       "inputs": ["default", "{workspaceRoot}/eslint.config.base.mjs"]
     },
     "static-code-analysis": {
-      "executor": "nx:run-commands",
       "options": {
         "commands": [
           "nx run code-generator:typecheck",
@@ -74,16 +41,6 @@
           "nx run code-generator:dependency-check"
         ]
       },
-      "configurations": {
-        "check": {
-          "parallel": true
-        },
-        "write": {
-          "parallel": false
-        }
-      },
-      "defaultConfiguration": "check",
-      "cache": true,
       "description": "Run all static code analysis tools (typecheck, lint, format, knip, type-coverage, dependency-check)"
     },
     "test": {
@@ -94,26 +51,9 @@
       }
     },
     "type-coverage": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "type-coverage --detail > type-coverage-report.txt 2>&1 || (cat type-coverage-report.txt && exit 1)",
-        "cwd": "tools/code-generator"
-      },
-      "cache": true,
-      "inputs": [
-        "default",
-        "{projectRoot}/**/*.ts",
-        "{projectRoot}/**/*.tsx",
-        "{projectRoot}/tsconfig.json"
-      ],
       "description": "Check TypeScript type coverage"
     },
     "typecheck": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "tsc --noEmit",
-        "cwd": "tools/code-generator"
-      },
       "description": "Type-check the generator"
     }
   }
