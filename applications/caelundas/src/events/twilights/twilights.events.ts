@@ -23,6 +23,28 @@ import type { Moment } from "moment";
 
 const categories = ["Astronomy", "Astrology", "Twilight"];
 
+/**
+ * Detects twilight transition events at a specific minute.
+ *
+ * Identifies six daily twilight transitions based on solar depression angles:
+ * - Astronomical dawn/dusk (18° below horizon)
+ * - Nautical dawn/dusk (12° below horizon)
+ * - Civil dawn/dusk (6° below horizon)
+ *
+ * @param args - Configuration object
+ * @param args.currentMinute - The specific minute to analyze
+ * @param args.sunAzimuthElevationEphemeris - Pre-computed Sun position data
+ * @returns Array of detected twilight events (0-1 events per minute)
+ * @see {@link isAstronomicalDawn} and related functions for detection
+ * @see {@link degreesByTwilight} for threshold definitions
+ *
+ * @remarks
+ * Twilight periods are important for:
+ * - Photography (golden hour, blue hour)
+ * - Astronomy (observing windows)
+ * - Navigation (marine twilight)
+ * - Daily rhythm (circadian cycles)
+ */
 export function getTwilightEvents(args: {
   currentMinute: Moment;
   sunAzimuthElevationEphemeris: AzimuthElevationEphemeris;
@@ -69,6 +91,12 @@ export function getTwilightEvents(args: {
   return twilightEvents;
 }
 
+/**
+ * Creates an astronomical dawn calendar event.
+ * Marks when the sky begins to lighten (Sun at -18° elevation).
+ * @param date - Precise UTC time
+ * @returns Calendar event for astronomical dawn
+ */
 export function getAstronomicalDawnEvent(date: Date): Event {
   const description = "Astronomical Dawn";
   const summary = `🌠 ${description}`;
@@ -86,6 +114,9 @@ export function getAstronomicalDawnEvent(date: Date): Event {
   return astronomicalDawnEvent;
 }
 
+/**
+ *
+ */
 export function getNauticalDawnEvent(date: Date): Event {
   const description = "Nautical Dawn";
   const summary = `🌅 ${description}`;
@@ -103,6 +134,9 @@ export function getNauticalDawnEvent(date: Date): Event {
   return nauticalDawnEvent;
 }
 
+/**
+ *
+ */
 export function getCivilDawnEvent(date: Date): Event {
   const description = "Civil Dawn";
   const summary = `🌄 ${description}`;
@@ -120,6 +154,9 @@ export function getCivilDawnEvent(date: Date): Event {
   return civilDawnEvent;
 }
 
+/**
+ *
+ */
 export function getCivilDuskEvent(date: Date): Event {
   const description = "Civil Dusk";
   const summary = `🌇 ${description}`;
@@ -137,6 +174,9 @@ export function getCivilDuskEvent(date: Date): Event {
   return civilDuskEvent;
 }
 
+/**
+ *
+ */
 export function getNauticalDuskEvent(date: Date): Event {
   const description = "Nautical Dusk";
   const summary = `🌉 ${description}`;
@@ -154,6 +194,9 @@ export function getNauticalDuskEvent(date: Date): Event {
   return nauticalDuskEvent;
 }
 
+/**
+ *
+ */
 export function getAstronomicalDuskEvent(date: Date): Event {
   const description = "Astronomical Dusk";
   const summary = `🌌 ${description}`;
@@ -171,6 +214,15 @@ export function getAstronomicalDuskEvent(date: Date): Event {
   return astronomicalDuskEvent;
 }
 
+/**
+ * Writes twilight events to an iCalendar file.
+ *
+ * @param args - Configuration object
+ * @param args.twilightEvents - Array of twilight events
+ * @param args.start - Start date of event range
+ * @param args.end - End date of event range
+ * @see {@link getCalendar} for iCal generation
+ */
 export function writeTwilightEvents(args: {
   twilightEvents: Event[];
   start: Date;
@@ -199,6 +251,19 @@ export function writeTwilightEvents(args: {
 
 // #region 🕑 Duration Events
 
+/**
+ * Generates duration events for twilight periods.
+ *
+ * Creates span events for six twilight periods plus full night and daylight:
+ * - Astronomical twilight (morning/evening)
+ * - Nautical twilight (morning/evening)
+ * - Daylight (civil dawn to civil dusk)
+ * - Night (astronomical dusk to astronomical dawn)
+ *
+ * @param events - Array of all twilight events
+ * @returns Array of duration events representing twilight spans
+ * @see {@link pairDurationEvents} for pairing logic
+ */
 export function getTwilightDurationEvents(events: Event[]): Event[] {
   const durationEvents: Event[] = [];
 

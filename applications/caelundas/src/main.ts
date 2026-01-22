@@ -1,3 +1,15 @@
+/**
+ * Caelundas application entry point - astronomical calendar generator.
+ *
+ * Orchestrates ephemeris calculation and event generation pipeline:
+ * 1. Input validation from environment variables
+ * 2. Day-by-day ephemeris retrieval with temporal margins
+ * 3. Minute-by-minute exact event detection
+ * 4. Compound aspect pattern detection
+ * 5. Duration event synthesis from exact event pairs
+ * 6. iCalendar file generation and export
+ */
+
 import fs from "fs";
 
 import moment from "moment-timezone";
@@ -83,6 +95,64 @@ import { getOutputPath } from "./output.utilities";
 
 import type { Coordinates } from "./ephemeris/ephemeris.types";
 
+/**
+ * Main application function - orchestrates the complete ephemeris calculation pipeline.
+ *
+ * Executes the following stages:
+ * 1. Validates environment variables (location, timezone, date range)
+ * 2. Iterates through each day in the date range
+ * 3. Fetches ephemeris data with temporal margins for accuracy
+ * 4. Detects exact events at 1-minute resolution
+ * 5. Identifies compound aspect patterns from active aspects
+ * 6. Synthesizes duration events from exact event pairs
+ * 7. Generates and exports iCalendar file
+ *
+ * @returns Promise that resolves when calendar generation completes
+ *
+ * @remarks
+ * Environment variables required:
+ * - LATITUDE: Observer latitude in decimal degrees (-90 to 90)
+ * - LONGITUDE: Observer longitude in decimal degrees (-180 to 180)
+ * - TIMEZONE: IANA timezone identifier (e.g., "America/New_York")
+ * - START_DATE: Range start in ISO 8601 format
+ * - END_DATE: Range end in ISO 8601 format
+ *
+ * Processing approach:
+ * - Day-by-day iteration manages memory efficiently for long date ranges
+ * - 30-minute margins ensure events near midnight are captured correctly
+ * - Minute-by-minute sampling provides high temporal resolution
+ * - Database caching minimizes redundant ephemeris API calls
+ * - Compound aspects detected after simple aspects are saved
+ *
+ * Output:
+ * - Single .ics file containing all detected events
+ * - Filename format: `caelundas_<start>_to_<end>.ics`
+ * - Saved to output/ directory
+ *
+ * @throws {z.ZodError} When environment variables fail validation
+ * @throws {Error} When NASA JPL Horizons API is unavailable
+ * @throws {Error} When database operations fail
+ *
+ * @see {@link inputSchema} for environment variable validation
+ * @see {@link getEphemerides} for ephemeris aggregation
+ * @see {@link upsertEvents} for database persistence
+ * @see {@link getCalendar} for iCalendar generation
+ *
+ * @example
+ * ```bash
+ * # Set environment variables
+ * export LATITUDE=40.7128
+ * export LONGITUDE=-74.0060
+ * export TIMEZONE=America/New_York
+ * export START_DATE=2026-01-21
+ * export END_DATE=2026-01-22
+ *
+ * # Run application
+ * npm run develop
+ *
+ * # Output: output/caelundas_2026-01-21T00:00:00-05:00_to_2026-01-22T00:00:00-05:00.ics
+ * ```
+ */
 async function main(): Promise<void> {
   // #region 🔮 Input
   const input = inputSchema.parse({

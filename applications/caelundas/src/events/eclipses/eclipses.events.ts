@@ -18,6 +18,28 @@ import type { Moment } from "moment";
 
 const categories = ["Astronomy", "Astrology", "Eclipse"];
 
+/**
+ * Detects solar and lunar eclipse events at a specific minute.
+ *
+ * Identifies eclipse phases (beginning, maximum, ending) by analyzing the alignment
+ * of Sun, Earth, and Moon, accounting for angular diameters and ecliptic latitudes.
+ * Solar eclipses occur at new moon (conjunction), lunar eclipses at full moon (opposition).
+ *
+ * @param args - Configuration object
+ * @param args.currentMinute - The specific minute to analyze
+ * @param args.moonCoordinateEphemeris - Moon position data
+ * @param args.moonDiameterEphemeris - Moon apparent diameter data
+ * @param args.sunCoordinateEphemeris - Sun position data
+ * @param args.sunDiameterEphemeris - Sun apparent diameter data
+ * @returns Array of detected eclipse events (0-1 events per minute)
+ * @see {@link isSolarEclipse} for solar eclipse detection
+ * @see {@link isLunarEclipse} for lunar eclipse detection
+ *
+ * @remarks
+ * Eclipse types:
+ * - Solar: Partial, total, or annular (depends on Moon's distance)
+ * - Lunar: Penumbral, partial, or total (depends on Earth's shadow depth)
+ */
 export function getEclipseEvents(args: {
   currentMinute: Moment;
   moonCoordinateEphemeris: CoordinateEphemeris;
@@ -127,6 +149,18 @@ export function getEclipseEvents(args: {
   return [];
 }
 
+/**
+ * Creates a solar eclipse calendar event.
+ *
+ * Solar eclipses occur when the Moon passes between Earth and Sun,
+ * casting a shadow on Earth's surface.
+ *
+ * @param args - Configuration object
+ * @param args.date - Precise UTC time of eclipse phase
+ * @param args.phase - Eclipse phase: beginning, maximum, or ending
+ * @returns Calendar event for solar eclipse phase
+ * @see {@link isSolarEclipse} for detection algorithm
+ */
 export function getSolarEclipseEvent(args: {
   date: Date;
   phase: EclipsePhase;
@@ -161,6 +195,18 @@ export function getSolarEclipseEvent(args: {
   return solarEclipseEvent;
 }
 
+/**
+ * Creates a lunar eclipse calendar event.
+ *
+ * Lunar eclipses occur when Earth passes between Sun and Moon,
+ * casting Earth's shadow on the Moon.
+ *
+ * @param args - Configuration object
+ * @param args.date - Precise UTC time of eclipse phase
+ * @param args.phase - Eclipse phase: beginning, maximum, or ending
+ * @returns Calendar event for lunar eclipse phase
+ * @see {@link isLunarEclipse} for detection algorithm
+ */
 export function getLunarEclipseEvent(args: {
   date: Date;
   phase: EclipsePhase;
@@ -195,6 +241,9 @@ export function getLunarEclipseEvent(args: {
   return lunarEclipseEvent;
 }
 
+/**
+ *
+ */
 export function getEclipseDurationEvents(events: Event[]): Event[] {
   const durationEvents: Event[] = [];
 

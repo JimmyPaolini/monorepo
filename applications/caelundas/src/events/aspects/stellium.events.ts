@@ -16,8 +16,27 @@ import type { AspectPhase, Body } from "../../types";
 import type { Moment } from "moment";
 
 /**
- * Compose Stellium patterns from stored 2-body aspects
- * Stellium = 4+ bodies all in conjunction with each other
+ * Composes Stellium patterns from stored 2-body aspects.
+ *
+ * A Stellium is a concentration of 4 or more celestial bodies within
+ * a small area of the zodiac (typically within 8° in the same sign).
+ * All bodies must be in conjunction (0° ± orb) with each other.
+ *
+ * Uses graph traversal to identify clusters of conjunct bodies:
+ * - Starts with each unvisited body
+ * - Breadth-first search to find all transitively conjunct bodies
+ * - Validates that all pairs in cluster are directly conjunct
+ * - Only accepts clusters with 4+ bodies
+ *
+ * Stelliums represent focused energy and emphasis in a particular
+ * area of life or zodiac sign. The concentration of planetary energies
+ * can indicate both talent and challenge in the associated domain.
+ *
+ * @param allEdges - All aspect edges across time for phase detection
+ * @param currentMinute - The minute to check for Stellium patterns
+ * @returns Array of Stellium events detected at this minute
+ * @see {@link determineMultiBodyPhase} for phase calculation
+ * @see {@link haveAspect} for verifying conjunction relationships
  */
 function composeStelliums(
   allEdges: AspectEdge[],
@@ -209,7 +228,21 @@ function createStelliumEvent(params: {
 }
 
 /**
- * Main entry point: compose all stellium events from stored 2-body aspects
+ * Detects all stellium patterns from stored 2-body aspect events.
+ *
+ * A stellium occurs when 4 or more bodies cluster together in conjunction,
+ * typically within the same zodiac sign. This represents an area of
+ * concentrated energy and focus in astrological interpretation.
+ *
+ * The function uses graph traversal to identify all conjunction clusters
+ * and validates that each cluster forms a complete stellium (all pairs
+ * must be in conjunction, not just transitively connected).
+ *
+ * @param aspectEvents - Previously detected simple aspect events
+ * @param currentMinute - The minute to check for stellium patterns
+ * @returns Array of all detected stellium events at this minute
+ * @see {@link parseAspectEvents} for extracting aspect relationships
+ * @see {@link composeStelliums} for stellium detection logic
  */
 export function getStelliumEvents(
   aspectEvents: Event[],
@@ -225,6 +258,17 @@ export function getStelliumEvents(
 
 // #region Duration Events
 
+/**
+ * Converts instantaneous stellium events into duration events.
+ *
+ * Pairs forming and dissolving events for the same body group and
+ * stellium size to create events spanning the entire active period.
+ * Duration events show when a stellium is in effect rather than just
+ * boundary moments.
+ *
+ * @param events - All events to process (non-stellium events are filtered out)
+ * @returns Array of duration events spanning from forming to dissolving
+ */
 export function getStelliumDurationEvents(events: Event[]): Event[] {
   const durationEvents: Event[] = [];
 

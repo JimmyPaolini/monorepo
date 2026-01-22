@@ -25,6 +25,19 @@ import type {
 } from "../../types";
 import type { Moment } from "moment";
 
+/**
+ * Detects specialty aspect events within a single minute time window.
+ *
+ * Scans all configured body pairs for specialty aspects (quintile 72°,
+ * biquintile 144°, septile 51.43°, novile 40°) and determines
+ * the phase (forming, exact, or dissolving) based on comparison with
+ * adjacent minutes.
+ *
+ * @param args - Configuration object
+ * @param args.coordinateEphemerisByBody - Pre-computed ephemeris data for all bodies
+ * @param args.currentMinute - The minute to check for aspect events
+ * @returns Array of calendar events for all detected specialty aspects at this minute
+ */
 export function getSpecialtyAspectEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
   currentMinute: Moment;
@@ -104,6 +117,24 @@ export function getSpecialtyAspectEvents(args: {
   return specialtyAspectEvents;
 }
 
+/**
+ * Creates a calendar event for a specific specialty aspect occurrence.
+ *
+ * Formats the event with appropriate emoji indicators, body symbols,
+ * and categorization. Specialty aspects use distinct Unicode symbols
+ * for each aspect type.
+ *
+ * @param args - Event parameters
+ * @param args.longitudeBody1 - Ecliptic longitude of first body in degrees
+ * @param args.longitudeBody2 - Ecliptic longitude of second body in degrees
+ * @param args.timestamp - Exact moment of the aspect phase
+ * @param args.body1 - First celestial body
+ * @param args.body2 - Second celestial body
+ * @param args.phase - Aspect phase: forming, exact, or dissolving
+ * @returns Formatted calendar event with summary, description, and categories
+ * @throws {Error} When no valid specialty aspect is detected between the bodies
+ * @see {@link getSpecialtyAspect} for aspect type determination
+ */
 export function getSpecialtyAspectEvent(args: {
   longitudeBody1: number;
   longitudeBody2: number;
@@ -174,6 +205,21 @@ export function getSpecialtyAspectEvent(args: {
   return specialtyAspectEvent;
 }
 
+/**
+ * Writes specialty aspect events to an iCalendar file.
+ *
+ * Generates a .ics file in the output directory containing all specialty
+ * aspect events for the specified time range. File naming includes
+ * the body configuration and timespan for easy identification.
+ *
+ * @param args - Output parameters
+ * @param args.end - Range end date
+ * @param args.specialtyAspectBodies - Bodies included in aspect detection
+ * @param args.specialtyAspectEvents - Events to write to calendar file
+ * @param args.start - Range start date
+ * @see {@link getCalendar} for iCal generation
+ * @see {@link getOutputPath} for file path resolution
+ */
 export function writeSpecialtyAspectEvents(args: {
   end: Date;
   specialtyAspectBodies: Body[];
@@ -204,6 +250,17 @@ export function writeSpecialtyAspectEvents(args: {
   console.log(`🧮 Wrote ${message}`);
 }
 
+/**
+ * Converts instantaneous specialty aspect events into duration events.
+ *
+ * Pairs forming and dissolving events for the same body-aspect combination
+ * to create events spanning the entire active period of each aspect.
+ * Duration events show when an aspect is in orb rather than just boundary moments.
+ *
+ * @param events - All events to process (non-aspect events are filtered out)
+ * @returns Array of duration events spanning from forming to dissolving
+ * @see {@link pairDurationEvents} for forming/dissolving pairing logic
+ */
 export function getSpecialtyAspectDurationEvents(events: Event[]): Event[] {
   const durationEvents: Event[] = [];
 

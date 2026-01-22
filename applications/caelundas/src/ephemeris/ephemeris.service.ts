@@ -1,3 +1,30 @@
+/**
+ * Core ephemeris calculation service using NASA JPL Horizons data.
+ *
+ * This module provides functions to query NASA's JPL Horizons system for precise
+ * celestial body positions and properties. It handles data retrieval, parsing,
+ * caching, and type-safe access to ephemeris values.
+ *
+ * @remarks
+ * Data sources:
+ * - NASA JPL Horizons API (https://ssd.jpl.nasa.gov/horizons/)
+ * - DE431 ephemeris for planetary positions
+ * - 1-minute sampling interval for high temporal resolution
+ * - SQLite caching to minimize API calls and improve performance
+ *
+ * Ephemeris types:
+ * - Coordinate: Ecliptic longitude/latitude for aspect calculations
+ * - Orbit: Orbital elements for lunar nodes and apsides
+ * - Azimuth/Elevation: Horizon coordinates for rise/set/culmination
+ * - Illumination: Illuminated fraction for phase detection
+ * - Diameter: Angular diameter for eclipse calculations
+ * - Distance: Distance from Earth for phase and apsis events
+ *
+ * @see {@link https://ssd.jpl.nasa.gov/horizons/manual.html} for Horizons documentation
+ * @see {@link ./ephemeris.constants} for API configuration
+ * @see {@link ./ephemeris.types} for data structures
+ */
+
 import _ from "lodash";
 import moment from "moment-timezone";
 
@@ -43,6 +70,28 @@ import type {
 
 // #region Utilities
 
+/**
+ * Calculates the expected number of ephemeris records for a date range.
+ *
+ * Ephemeris data is sampled at 1-minute intervals, so this returns the number
+ * of minutes between start and end (inclusive).
+ *
+ * @param start - Range start date
+ * @param end - Range end date
+ * @returns Expected number of 1-minute interval records
+ *
+ * @remarks
+ * Used for cache validation to detect incomplete data requiring API refetch.
+ * Adds 1 to include both boundary timestamps (inclusive range).
+ *
+ * @example
+ * ```typescript
+ * const start = new Date('2026-01-21T00:00:00');
+ * const end = new Date('2026-01-21T01:00:00');
+ * const count = getExpectedRecordCount(start, end);
+ * // count === 61 (0:00, 0:01, 0:02, ..., 1:00)
+ * ```
+ */
 function getExpectedRecordCount(start: Date, end: Date): number {
   // Ephemeris data is fetched at 1-minute intervals
   const diffInMs = end.getTime() - start.getTime();
@@ -52,8 +101,35 @@ function getExpectedRecordCount(start: Date, end: Date): number {
 }
 
 /**
- * Safely extract coordinate data from ephemeris
- * @throws Error if the coordinate data is missing
+ * Safely extracts coordinate data (longitude or latitude) from ephemeris at a timestamp.
+ *
+ * Provides type-safe access to ephemeris values with null-checking to prevent
+ * runtime errors from missing data.
+ *
+ * @param ephemeris - Coordinate ephemeris object indexed by ISO timestamp
+ * @param timestamp - ISO 8601 timestamp string (e.g., "2026-01-21T12:00:00.000Z")
+ * @param fieldName - Field to extract ("longitude" or "latitude")
+ * @returns Coordinate value in degrees
+ * @throws {Error} When timestamp is missing from ephemeris
+ * @throws {Error} When specified field is undefined at timestamp
+ *
+ * @remarks
+ * - Longitude: 0-360° along ecliptic (0° = vernal equinox)
+ * - Latitude: -90° to +90° perpendicular to ecliptic
+ *
+ * @see {@link getCoordinatesEphemeris} for ephemeris retrieval
+ * @see {@link CoordinateEphemeris} for data structure
+ *
+ * @example
+ * ```typescript
+ * const ephemeris = await getCoordinatesEphemeris({...});
+ * const longitude = getCoordinateFromEphemeris(
+ *   ephemeris,
+ *   '2026-01-21T12:00:00.000Z',
+ *   'longitude'
+ * );
+ * // Returns: 125.4 (degrees along ecliptic)
+ * ```
  */
 export function getCoordinateFromEphemeris(
   ephemeris: CoordinateEphemeris,
@@ -68,8 +144,35 @@ export function getCoordinateFromEphemeris(
 }
 
 /**
- * Safely extract azimuth/elevation data from ephemeris
- * @throws Error if the data is missing
+ * Safely extracts azimuth or elevation data from horizon coordinate ephemeris.
+ *
+ * Provides type-safe access to horizon coordinate values for rise/set/culmination calculations.
+ *
+ * @param ephemeris - Azimuth/elevation ephemeris indexed by ISO timestamp
+ * @param timestamp - ISO 8601 timestamp string
+ * @param fieldName - Field to extract ("azimuth" or "elevation")
+ * @returns Coordinate value in degrees
+ * @throws {Error} When timestamp is missing from ephemeris
+ * @throws {Error} When specified field is undefined at timestamp
+ *
+ * @remarks
+ * - Azimuth: 0-360° measured clockwise from north (0°=N, 90°=E, 180°=S, 270°=W)
+ * - Elevation: -90° to +90° above horizon (0°=horizon, 90°=zenith, -90°=nadir)
+ * - Negative elevation indicates body is below horizon (not visible)
+ *
+ * @see {@link getAzimuthElevationEphemeris} for ephemeris retrieval
+ * @see {@link getDailySolarCycleEvents} for sunrise/sunset detection using elevation
+ *
+ * @example
+ * ```typescript
+ * const sunEphemeris = await getAzimuthElevationEphemeris({body: 'sun', ...});
+ * const elevation = getAzimuthElevationFromEphemeris(
+ *   sunEphemeris,
+ *   '2026-01-21T06:30:00.000Z',
+ *   'elevation'
+ * );
+ * // Returns: -6.2 (degrees below horizon, civil twilight)
+ * ```
  */
 export function getAzimuthElevationFromEphemeris(
   ephemeris: AzimuthElevationEphemeris,
@@ -84,8 +187,41 @@ export function getAzimuthElevationFromEphemeris(
 }
 
 /**
- * Safely extract illumination data from ephemeris
- * @throws Error if the data is missing
+ * Safely extracts illumination fraction from ephemeris for phase calculations.
+ *
+ * Provides type-safe access to illuminated fraction values used for detecting
+ * lunar phases and planetary phase events.
+ *
+ * @param ephemeris - Illumination ephemeris indexed by ISO timestamp
+ * @param timestamp - ISO 8601 timestamp string
+ * @param fieldName - Field description (unused but kept for API consistency)
+ * @returns Illuminated fraction as a decimal (0.0 to 1.0)
+ * @throws {Error} When timestamp is missing from ephemeris
+ * @throws {Error} When illumination value is undefined at timestamp
+ *
+ * @remarks
+ * Illumination values:
+ * - 0.0: New moon (not illuminated)
+ * - 0.5: First/last quarter (half illuminated)
+ * - 1.0: Full moon (fully illuminated)
+ *
+ * For inner planets (Venus, Mercury, Mars), illumination varies based on
+ * their position relative to Earth and Sun.
+ *
+ * @see {@link getIlluminationEphemeris} for ephemeris retrieval
+ * @see {@link getMonthlyLunarCycleEvents} for lunar phase detection
+ * @see {@link getPlanetaryPhaseEvents} for planetary phase detection
+ *
+ * @example
+ * ```typescript
+ * const moonEphemeris = await getIlluminationEphemeris({body: 'moon', ...});
+ * const illumination = getIlluminationFromEphemeris(
+ *   moonEphemeris,
+ *   '2026-01-21T12:00:00.000Z',
+ *   'illumination'
+ * );
+ * // Returns: 0.87 (87% illuminated, waxing gibbous)
+ * ```
  */
 export function getIlluminationFromEphemeris(
   ephemeris: IlluminationEphemeris,
@@ -100,8 +236,40 @@ export function getIlluminationFromEphemeris(
 }
 
 /**
- * Safely extract distance data from ephemeris
- * @throws Error if the data is missing
+ * Safely extracts distance from Earth from ephemeris for apsis and phase calculations.
+ *
+ * Provides type-safe access to distance values used for detecting perihelion/aphelion
+ * and determining planetary phase transitions.
+ *
+ * @param ephemeris - Distance ephemeris indexed by ISO timestamp
+ * @param timestamp - ISO 8601 timestamp string
+ * @param fieldName - Field description (unused but kept for API consistency)
+ * @returns Distance from Earth in astronomical units (AU)
+ * @throws {Error} When timestamp is missing from ephemeris
+ * @throws {Error} When distance value is undefined at timestamp
+ *
+ * @remarks
+ * Distance values are heliocentric for planets and geocentric for the Moon.
+ * 1 AU ≈ 149,597,871 km (average Earth-Sun distance).
+ *
+ * Typical distances:
+ * - Sun: 0.983-1.017 AU (perihelion-aphelion)
+ * - Venus: 0.27-1.72 AU (varies greatly with orbital position)
+ * - Mars: 0.37-2.68 AU (large variation due to orbital eccentricity)
+ *
+ * @see {@link getDistanceEphemeris} for ephemeris retrieval
+ * @see {@link getSolarApsisEvents} for perihelion/aphelion detection
+ *
+ * @example
+ * ```typescript
+ * const sunEphemeris = await getDistanceEphemeris({body: 'sun', ...});
+ * const distance = getDistanceFromEphemeris(
+ *   sunEphemeris,
+ *   '2026-01-21T12:00:00.000Z',
+ *   'distance'
+ * );
+ * // Returns: 0.984 (AU, near perihelion)
+ * ```
  */
 export function getDistanceFromEphemeris(
   ephemeris: DistanceEphemeris,
@@ -116,8 +284,44 @@ export function getDistanceFromEphemeris(
 }
 
 /**
- * Safely extract diameter data from ephemeris
- * @throws Error if the data is missing
+ * Safely extracts angular diameter from ephemeris for eclipse calculations.
+ *
+ * Provides type-safe access to apparent angular diameter values used for
+ * determining eclipse types (total vs. annular vs. partial).
+ *
+ * @param ephemeris - Diameter ephemeris indexed by ISO timestamp
+ * @param timestamp - ISO 8601 timestamp string
+ * @param fieldName - Field description (unused but kept for API consistency)
+ * @returns Angular diameter in degrees
+ * @throws {Error} When timestamp is missing from ephemeris
+ * @throws {Error} When diameter value is undefined at timestamp
+ *
+ * @remarks
+ * Angular diameter represents the apparent size of a body as seen from Earth.
+ * Values are converted from arcseconds to degrees internally.
+ *
+ * Typical values:
+ * - Sun: ~0.53° (31.6-32.7 arcminutes, varies with Earth's distance)
+ * - Moon: ~0.52° (29.3-34.1 arcminutes, varies with lunar distance)
+ *
+ * Eclipse classification:
+ * - Total solar eclipse: Moon's diameter > Sun's diameter
+ * - Annular solar eclipse: Moon's diameter < Sun's diameter
+ * - Total lunar eclipse: Moon fully within Earth's umbral shadow
+ *
+ * @see {@link getDiameterEphemeris} for ephemeris retrieval
+ * @see {@link getEclipseEvents} for eclipse detection and classification
+ *
+ * @example
+ * ```typescript
+ * const moonEphemeris = await getDiameterEphemeris({body: 'moon', ...});
+ * const diameter = getDiameterFromEphemeris(
+ *   moonEphemeris,
+ *   '2026-01-21T12:00:00.000Z',
+ *   'diameter'
+ * );
+ * // Returns: 0.518 (degrees, ~31 arcminutes)
+ * ```
  */
 export function getDiameterFromEphemeris(
   ephemeris: DiameterEphemeris,
@@ -232,6 +436,9 @@ function getOrbitEphemerisUrl(args: {
   return url;
 }
 
+/**
+ *
+ */
 export async function getOrbitEphemeris(args: {
   body: OrbitEphemerisBody;
   end: Date;
@@ -256,6 +463,9 @@ export async function getOrbitEphemeris(args: {
   return orbitEphemeris;
 }
 
+/**
+ *
+ */
 export async function getNodeCoordinatesEphemeris(args: {
   end: Date;
   node: Node;
@@ -425,6 +635,9 @@ function getCoordinatesEphemerisUrl(args: {
   return url;
 }
 
+/**
+ *
+ */
 export async function getCoordinatesEphemeris(args: {
   body: Planet | Asteroid | Comet;
   start: Date;
@@ -481,6 +694,9 @@ function isNode(body: string): body is Node {
   return nodes.includes(body as Node);
 }
 
+/**
+ *
+ */
 export async function getCoordinateEphemerisByBody(args: {
   bodies: Body[];
   start: Date;
@@ -608,6 +824,9 @@ function getAzimuthElevationEphemerisUrl(args: {
   return url;
 }
 
+/**
+ *
+ */
 export async function getAzimuthElevationEphemeris(args: {
   body: AzimuthElevationEphemerisBody;
   coordinates: Coordinates;
@@ -666,6 +885,9 @@ export async function getAzimuthElevationEphemeris(args: {
   return ephemeris;
 }
 
+/**
+ *
+ */
 export async function getAzimuthElevationEphemerisByBody(args: {
   bodies: AzimuthElevationEphemerisBody[];
   start: Date;
@@ -783,6 +1005,9 @@ function getIlluminationEphemerisUrl(args: {
   return url;
 }
 
+/**
+ *
+ */
 export async function getIlluminationEphemeris(args: {
   body: IlluminationEphemerisBody;
   coordinates: Coordinates;
@@ -841,6 +1066,9 @@ export async function getIlluminationEphemeris(args: {
   return ephemeris;
 }
 
+/**
+ *
+ */
 export async function getIlluminationEphemerisByBody(args: {
   bodies: IlluminationEphemerisBody[];
   start: Date;
@@ -954,6 +1182,9 @@ function getDiameterEphemerisUrl(args: {
   return url;
 }
 
+/**
+ *
+ */
 export async function getDiameterEphemeris(args: {
   start: Date;
   end: Date;
@@ -1006,6 +1237,9 @@ export async function getDiameterEphemeris(args: {
   return ephemeris;
 }
 
+/**
+ *
+ */
 export async function getDiameterEphemerisByBody(args: {
   bodies: DiameterEphemerisBody[];
   start: Date;
@@ -1118,6 +1352,9 @@ function getDistanceEphemerisUrl(args: {
   return url;
 }
 
+/**
+ *
+ */
 export async function getDistanceEphemeris(args: {
   body: DistanceEphemerisBody;
   end: Date;
@@ -1170,6 +1407,9 @@ export async function getDistanceEphemeris(args: {
   return ephemeris;
 }
 
+/**
+ *
+ */
 export async function getDistanceEphemerisByBody(args: {
   bodies: DistanceEphemerisBody[];
   start: Date;

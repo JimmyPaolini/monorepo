@@ -22,6 +22,10 @@ import type {
 
 // #region Signs 🪧
 
+/**
+ * Array of all zodiac sign names in tropical zodiac order.
+ * Starts with Aries (0°) and proceeds counter-clockwise around the ecliptic.
+ */
 export const signs = Object.keys(symbolBySign) as Sign[];
 // export const signSymbols: SignSymbol[] = Object.values(symbolBySign);
 
@@ -48,7 +52,15 @@ export const signs = Object.keys(symbolBySign) as Sign[];
 
 // #region Nodes 🌕
 
+/**
+ * Array of lunar node names.
+ * Includes ascending/descending nodes and apogee/perigee points.
+ */
 export const nodes = Object.keys(symbolByNode) as Node[];
+/**
+ * Array of all tracked celestial bodies.
+ * Combines planets, asteroids, comets, and lunar nodes.
+ */
 // export const nodeSymbols: NodeSymbol[] = Object.values(symbolByNode);
 
 // #region Bodies 🔭
@@ -56,14 +68,26 @@ export const nodes = Object.keys(symbolByNode) as Node[];
 export const bodies = Object.keys(symbolByBody) as Body[];
 // export const bodySymbols: BodySymbol[] = Object.values(symbolByBody);
 
+/**
+ * Array of major aspect names.
+ * The five Ptolemaic aspects: conjunction, sextile, square, trine, opposition.
+ */
 // #region Aspects 🧭
 
 // #region Major Aspects 📐
 
 export const majorAspects = Object.keys(symbolByMajorAspect) as MajorAspect[];
 // export const majorAspectSymbols: MajorAspectSymbol[] =
+/**
+ * Array of minor aspect names.
+ * Includes semi-sextile, semi-square, sesquiquadrate, quincunx.
+ */
 //   Object.values(symbolByMajorAspect);
 
+/**
+ * Array of specialty aspect names.
+ * Harmonic aspects based on divisions by 5, 7, 9, etc.
+ */
 // #region Minor Aspects 🖇️
 
 export const minorAspects = Object.keys(symbolByMinorAspect) as MinorAspect[];
@@ -73,7 +97,14 @@ export const minorAspects = Object.keys(symbolByMinorAspect) as MinorAspect[];
 // #region Specialty Aspects 🧮
 
 export const specialtyAspects = Object.keys(
+/**
+ * Array of all aspect names.
+ * Combines major, minor, and specialty aspects.
+ */
   symbolBySpecialtyAspect,
+/**
+ * Maps each major aspect to its exact angle in degrees.
+ */
 ) as SpecialtyAspect[];
 // export const specialtyAspectSymbols: SpecialtyAspectSymbol[] = Object.values(
 //   symbolBySpecialtyAspect,
@@ -83,6 +114,9 @@ export const specialtyAspects = Object.keys(
 
 export const aspects = Object.keys(symbolByAspect) as Aspect[];
 // export const aspectSymbols: AspectSymbol[] = Object.values(symbolByAspect);
+/**
+ * Maps each minor aspect to its exact angle in degrees.
+ */
 
 // #region Aspect Orbs 🔮
 
@@ -91,12 +125,19 @@ const angleByMajorAspect: Record<MajorAspect, number> = {
   sextile: 60,
   square: 90,
   trine: 120,
+/**
+ * Maps each specialty aspect to its exact angle in degrees.
+ * Based on harmonic divisions of the circle.
+ */
   opposite: 180,
 };
 
 const angleByMinorAspect: Record<MinorAspect, number> = {
   semisextile: 30,
   semisquare: 45,
+/**
+ * Complete mapping of all aspects to their exact angles in degrees.
+ */
   sesquiquadrate: 135,
   quincunx: 150,
 };
@@ -104,16 +145,28 @@ const angleByMinorAspect: Record<MinorAspect, number> = {
 const angleBySpecialtyAspect: Record<SpecialtyAspect, number> = {
   undecile: 32.72727272727273,
   decile: 36,
+/**
+ * Maps each major aspect to its allowable orb (tolerance) in degrees.
+ * Larger orbs for more significant aspects.
+ */
   novile: 40,
   septile: 51.42857142857143,
   quintile: 72,
   tredecile: 108,
+/**
+ * Maps each minor aspect to its allowable orb in degrees.
+ * Smaller orbs for minor aspects.
+ */
   biquintile: 144,
 };
 
 export const angleByAspect: Record<Aspect, number> = {
   ...angleByMajorAspect,
   ...angleByMinorAspect,
+/**
+ * Maps each specialty aspect to its allowable orb in degrees.
+ * Very tight orbs for harmonic aspects.
+ */
   ...angleBySpecialtyAspect,
 };
 
@@ -123,6 +176,10 @@ const orbByMajorAspect: Record<MajorAspect, number> = {
   trine: 6,
   square: 6,
   sextile: 4,
+/**
+ * Complete mapping of all aspects to their orb tolerances in degrees.
+ * Used in aspect detection algorithms to determine if an aspect is active.
+ */
 };
 
 const orbByMinorAspect: Record<MinorAspect, number> = {
@@ -200,6 +257,9 @@ export const orbByAspect: Record<Aspect, number> = {
 
 // #region Planetary Directions ⏫
 
+/**
+ * Array of lunar phase names in order through the lunar month.
+ */
 // export const planetaryDirections = Object.keys(
 //   symbolByPlanetaryDirection,
 // ) as PlanetaryDirection[];

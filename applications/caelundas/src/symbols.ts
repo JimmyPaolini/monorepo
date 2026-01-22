@@ -1,5 +1,9 @@
 // #region Signs 🪧
 
+/**
+ * Maps each zodiac sign to its Unicode symbol.
+ * Uses standard astrological glyphs from the Unicode Miscellaneous Symbols block.
+ */
 export const symbolBySign = {
   aries: "♈",
   taurus: "♉︎",
@@ -17,6 +21,10 @@ export const symbolBySign = {
 
 // #region Decans 🔟
 
+/**
+ * Maps each decan number (1-3) to its emoji representation.
+ * Each zodiac sign is divided into three decans of 10° each.
+ */
 export const symbolByDecan = {
   "1": "1️⃣",
   "2": "2️⃣",
@@ -25,6 +33,10 @@ export const symbolByDecan = {
 
 // #region Planets 🪐
 
+/**
+ * Maps each classical and modern planet to its Unicode symbol.
+ * Includes Sun and Moon as luminaries in traditional astrological usage.
+ */
 export const symbolByPlanet = {
   sun: "☀️",
   moon: "🌙",
@@ -40,6 +52,10 @@ export const symbolByPlanet = {
 
 // #region Asteroids 💫
 
+/**
+ * Maps each asteroid to its Unicode symbol.
+ * Includes Chiron (centaur) and the four main belt asteroids used in modern astrology.
+ */
 export const symbolByAsteroid = {
   chiron: "⚷",
   lilith: "⚸",
@@ -51,12 +67,20 @@ export const symbolByAsteroid = {
 
 // #region Comets ☄️
 
+/**
+ * Maps each comet to its emoji representation.
+ * Currently includes Halley's comet as the most notable periodic comet.
+ */
 export const symbolByComet = {
   halley: "☄",
 } as const;
 
 // #region Nodes 🌕
 
+/**
+ * Maps lunar nodes and lunar apsides to their symbols.
+ * Nodes mark lunar orbit crossings with the ecliptic; apsides mark near/far points from Earth.
+ */
 export const symbolByNode = {
   "north lunar node": "☊",
   "south lunar node": "☋",
@@ -66,6 +90,10 @@ export const symbolByNode = {
 
 // #region Bodies 🔭
 
+/**
+ * Complete mapping of all celestial bodies to their symbols.
+ * Combines planets, asteroids, comets, and lunar nodes.
+ */
 export const symbolByBody = {
   ...symbolByPlanet,
   ...symbolByAsteroid,
@@ -77,6 +105,10 @@ export const symbolByBody = {
 
 // #region Major Aspects 📐
 
+/**
+ * Maps each of the five Ptolemaic aspects to its Unicode symbol.
+ * These are the classical aspects used since ancient times.
+ */
 export const symbolByMajorAspect = {
   conjunct: "☌",
   sextile: "⚹",
@@ -87,6 +119,10 @@ export const symbolByMajorAspect = {
 
 // #region Minor Aspects 🖇️
 
+/**
+ * Maps each minor aspect to its Unicode symbol.
+ * Minor aspects are used in modern psychological astrology.
+ */
 export const symbolByMinorAspect = {
   semisextile: "⚺",
   semisquare: "∠",
@@ -96,6 +132,10 @@ export const symbolByMinorAspect = {
 
 // #region Specialty Aspects 🧮
 
+/**
+ * Maps each harmonic aspect to its symbol.
+ * Based on harmonic divisions (5ths, 7ths, 9ths) of the zodiac circle.
+ */
 export const symbolBySpecialtyAspect = {
   quintile: "⬠",
   septile: "S",
@@ -108,6 +148,10 @@ export const symbolBySpecialtyAspect = {
 
 // #region Double Aspects 📐
 
+/**
+ * Complete mapping of all two-body aspects to their symbols.
+ * Combines major, minor, and specialty aspects.
+ */
 export const symbolByAspect = {
   ...symbolByMajorAspect,
   ...symbolByMinorAspect,
@@ -116,6 +160,10 @@ export const symbolByAspect = {
 
 // #region Triple Aspects 🔺
 
+/**
+ * Maps three-planet aspect patterns to their symbols.
+ * Includes T-square, grand trine, yod (finger of God), and hammer patterns.
+ */
 export const symbolByTripleAspect = {
   "t-square": "⊤",
   "grand trine": "△",
@@ -125,6 +173,10 @@ export const symbolByTripleAspect = {
 
 // #region Quadruple Aspects ✖️
 
+/**
+ * Maps four-planet aspect patterns to their symbols.
+ * Includes grand cross, kite, mystic rectangle, and other complex configurations.
+ */
 export const symbolByQuadrupleAspect = {
   "grand cross": "➕",
   kite: "🪁",
@@ -137,18 +189,31 @@ export const symbolByQuadrupleAspect = {
 
 // #region Quintuple Aspects ⭐
 
+/**
+ * Maps five-planet aspect patterns to their symbols.
+ * The pentagram configuration forms a five-pointed star.
+ */
 export const symbolByQuintupleAspect = {
   pentagram: "⭐",
 } as const;
 
 // #region Sextuple Aspects 🔯
 
+/**
+ * Maps six-planet aspect patterns to their symbols.
+ * The hexagram configuration forms a six-pointed star.
+ */
 export const symbolBySextupleAspect = {
   hexagram: "🔯",
 } as const;
 
 // #region Stellium ✨
 
+/**
+ * Maps stellium configurations to their emoji symbols.
+ * Stelliums are clusters of 3+ planets in the same sign or house.
+ * Symbol brightness increases with the number of planets involved.
+ */
 export const symbolByStellium = {
   "triple stellium": "✨",
   "quadruple stellium": "🌟",
@@ -164,6 +229,10 @@ export const symbolByStellium = {
 
 // #region Orbital Directions 🔁
 
+/**
+ * Maps orbital motion directions to their emoji symbols.
+ * Retrograde indicates apparent backward motion from Earth's perspective.
+ */
 export const symbolByOrbitalDirection = {
   retrograde: "↩️",
   direct: "↪️",
@@ -220,6 +289,10 @@ export const symbolByOrbitalDirection = {
 
 // #region Phases 🌓
 
+/**
+ * Maps lunar phases to their emoji representations.
+ * Ordered from new moon through the synodic month back to new moon.
+ */
 export const symbolByLunarPhase = {
   new: "🌑",
   "waxing crescent": "🌒",
@@ -232,6 +305,11 @@ export const symbolByLunarPhase = {
 } as const;
 
 // #region Venusian Phases ♀️
+
+/**
+ * Maps Venus's phases and synodic cycle events to their emoji combinations.
+ * Tracks Venus as morning/evening star with stations, elongations, and brightest points.
+ */
 export const symbolByVenusianPhase = {
   new: "🌑",
   "inferior conjunction": "🌑☌",
@@ -253,6 +331,11 @@ export const symbolByVenusianPhase = {
 } as const;
 
 // #region Mercurian Phases ☿️
+
+/**
+ * Maps Mercury's phases and synodic cycle events to their emoji combinations.
+ * Includes Promethean (morning) and Epimethean (evening) conjunctions in Hellenistic tradition.
+ */
 export const symbolByMercurianPhase = {
   new: "🌑",
   "inferior conjunction": "🌑☌",
@@ -274,6 +357,11 @@ export const symbolByMercurianPhase = {
 } as const;
 
 // #region Martian Phases ♂️
+
+/**
+ * Maps Mars's phases and synodic cycle events to their emoji combinations.
+ * Tracks visibility as morning/evening star with retrograde stations.
+ */
 export const symbolByMartianPhase = {
   new: "🌑",
   conjunction: "🌑☌",
@@ -322,11 +410,23 @@ export const symbolByMartianPhase = {
 
 // #region Event Phase Types 🔄
 
+/**
+ * Array of aspect lifecycle phases.
+ * Aspects form as bodies approach, become exact at peak, then dissolve as bodies separate.
+ */
 export const aspectPhases = ["forming", "exact", "dissolving"] as const;
+/**
+ * Array of eclipse event phases.
+ * Tracks the start, peak, and end of solar/lunar eclipses.
+ */
 export const eclipsePhases = ["beginning", "maximum", "ending"] as const;
 
 // #region Body Arrays 🔭
 
+/**
+ * Array of bodies that can exhibit retrograde motion.
+ * Excludes Sun, Moon (always direct), and nodes (different calculation).
+ */
 export const retrogradeBodies = [
   "mercury",
   "venus",
@@ -344,8 +444,16 @@ export const retrogradeBodies = [
   "vesta",
 ] as const;
 
+/**
+ * Array of inferior/superior planets tracked for synodic phases.
+ * Venus and Mercury have interior orbits; Mars has observable evening star phases.
+ */
 export const phaseBodies = ["venus", "mercury", "mars"] as const;
 
+/**
+ * Array of bodies tracked for sign/decan ingress events.
+ * Includes planets, asteroids, selected comets, and lunar nodes.
+ */
 export const ingressBodies = [
   "sun",
   "moon",
@@ -368,6 +476,10 @@ export const ingressBodies = [
   "lunar apogee",
 ] as const;
 
+/**
+ * Array of bodies used in aspect calculations.
+ * Matches ingressBodies; all tracked bodies can form aspects with each other.
+ */
 export const aspectBodies = [
   "sun",
   "moon",

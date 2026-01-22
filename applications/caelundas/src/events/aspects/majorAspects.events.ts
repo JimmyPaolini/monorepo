@@ -1,3 +1,12 @@
+/**
+ * Major aspect event detection for the five primary angular relationships.
+ *
+ * This module generates calendar events for major aspects between celestial bodies:
+ * conjunction (0°), sextile (60°), square (90°), trine (120°), and opposition (180°).
+ * Major aspects are the most significant angular relationships in astrology and use
+ * an 8° orb tolerance for detection.
+ */
+
 import fs from "fs";
 
 import _ from "lodash";
@@ -22,6 +31,40 @@ import type {
 } from "../../types";
 import type { Moment } from "moment";
 
+/**
+ * Detects major aspect phase transitions at a specific time point.
+ *
+ * Checks all pairs of bodies from {@link majorAspectBodies} for major aspect formations
+ * (conjunction, sextile, square, trine, opposition) by analyzing positions at three
+ * consecutive minutes (previous, current, next). Generates calendar events when aspects
+ * are forming, exact, or dissolving.
+ *
+ * @param args - Ephemeris data and current time
+ * @param args.coordinateEphemerisByBody - Pre-computed ephemeris data for all bodies
+ * @param args.currentMinute - Time point to check for aspect events (minute precision)
+ * @returns Array of calendar events for detected aspect phase transitions
+ *
+ * @remarks
+ * - Checks all unique body pairs (avoiding duplicates like Sun-Moon and Moon-Sun)
+ * - Skips identical body pairs (body cannot aspect itself)
+ * - Uses ±1 minute window for phase transition detection
+ * - Returns empty array if no aspects are detected at this time
+ * - Typically called once per minute in main ephemeris loop
+ *
+ * @see {@link getMajorAspectPhase} for phase detection algorithm
+ * @see {@link getMajorAspectEvent} for event formatting
+ * @see {@link majorAspectBodies} for list of bodies checked
+ * @see {@link getCoordinateFromEphemeris} for position interpolation
+ *
+ * @example
+ * ```typescript
+ * const events = getMajorAspectEvents({
+ *   coordinateEphemerisByBody: ephemerides,
+ *   currentMinute: moment('2026-01-21T12:00:00Z')
+ * });
+ * // Returns: [{ summary: "☉ □ ♃ Sun exact square Jupiter", start: ..., ... }]
+ * ```
+ */
 export function getMajorAspectEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
   currentMinute: Moment;
@@ -100,6 +143,49 @@ export function getMajorAspectEvents(args: {
   return majorAspectEvents;
 }
 
+/**
+ * Creates a formatted calendar event for a major aspect at a specific phase.
+ *
+ * Generates a calendar event with Unicode symbols, descriptive text, and categorization
+ * for a major aspect between two bodies. Includes phase-specific emoji and categories
+ * to distinguish forming, exact, and dissolving aspects.
+ *
+ * @param args - Aspect event parameters
+ * @param args.longitudeBody1 - Ecliptic longitude of first body in degrees (0-360)
+ * @param args.longitudeBody2 - Ecliptic longitude of second body in degrees (0-360)
+ * @param args.timestamp - Exact time of the aspect phase event
+ * @param args.body1 - First celestial body (e.g., "sun", "moon", "mercury")
+ * @param args.body2 - Second celestial body
+ * @param args.phase - Aspect phase: "forming", "exact", or "dissolving"
+ * @returns Calendar event with summary, description, categories, and timing
+ * @throws {Error} When no major aspect is found at the given longitudes
+ *
+ * @remarks
+ * - **Exact phase**: Uses 🎯 emoji, adds "Exact" category
+ * - **Forming phase**: Uses ➡️ emoji, adds "Forming" category
+ * - **Dissolving phase**: Uses ⬅️ emoji, adds "Dissolving" category
+ * - Summary format: `[phaseEmoji] [body1Symbol] [aspectSymbol] [body2Symbol] [description]`
+ * - Example: "🎯 ☉ ☌ ☽ Sun exact conjunct Moon"
+ * - Logs event to console with ISO timestamp
+ *
+ * @see {@link getMajorAspect} for aspect type detection
+ * @see {@link symbolByBody} for body Unicode symbols
+ * @see {@link symbolByMajorAspect} for aspect Unicode symbols
+ * @see {@link Event} for calendar event structure
+ *
+ * @example
+ * ```typescript
+ * const event = getMajorAspectEvent({
+ *   longitudeBody1: 120.5,
+ *   longitudeBody2: 240.3,
+ *   timestamp: new Date('2026-01-21T12:00:00Z'),
+ *   body1: "venus",
+ *   body2: "mars",
+ *   phase: "exact"
+ * });
+ * // Returns: { summary: "🎯 ♀ △ ♂ Venus exact trine Mars", ... }
+ * ```
+ */
 export function getMajorAspectEvent(args: {
   longitudeBody1: number;
   longitudeBody2: number;
@@ -166,6 +252,40 @@ export function getMajorAspectEvent(args: {
   return majorAspectEvent;
 }
 
+/**
+ * Writes major aspect events to an iCalendar file.
+ *
+ * Generates an `.ics` file containing all major aspect events for a date range.
+ * File is named with body list and timespan for easy identification. Skips writing
+ * if no events exist.
+ *
+ * @param args - Output parameters
+ * @param args.end - End date of the event range (inclusive)
+ * @param args.majorAspectBodies - List of bodies included in aspect calculations
+ * @param args.majorAspectEvents - Array of calendar events to write
+ * @param args.start - Start date of the event range (inclusive)
+ *
+ * @remarks
+ * - Filename format: `major-aspects_[bodies]_[start]-[end].ics`
+ * - Example: `major-aspects_sun,moon,mercury_2026-01-01T00:00:00Z-2026-02-01T00:00:00Z.ics`
+ * - Uses UTF-8 encoding via TextEncoder
+ * - Calendar name: "Major Aspect 📐"
+ * - Logs write operation with event count and timespan
+ * - Early return if event array is empty
+ *
+ * @see {@link getCalendar} for iCalendar generation
+ * @see {@link getOutputPath} for output directory resolution
+ *
+ * @example
+ * ```typescript
+ * writeMajorAspectEvents({
+ *   majorAspectEvents: events,
+ *   majorAspectBodies: ["sun", "moon", "mercury"],
+ *   start: new Date('2026-01-01'),
+ *   end: new Date('2026-02-01')
+ * }); // Writes major-aspects_sun,moon,mercury_2026-01-01T00:00:00Z-2026-02-01T00:00:00Z.ics
+ * ```
+ */
 export function writeMajorAspectEvents(args: {
   end: Date;
   majorAspectBodies: Body[];
@@ -194,6 +314,40 @@ export function writeMajorAspectEvents(args: {
   console.log(`📐 Wrote ${message}`);
 }
 
+/**
+ * Generates duration events showing how long aspects remain in orb.
+ *
+ * Pairs "forming" and "dissolving" events for the same body pair and aspect type
+ * to create duration events spanning the period when the aspect is within orb.
+ * This shows the active window of aspect influence.
+ *
+ * @param events - Array of all calendar events (will be filtered to major aspects)
+ * @returns Array of duration events with start (forming) and end (dissolving) times
+ *
+ * @remarks
+ * - Filters to events with "Major Aspect" category
+ * - Groups by body pair and aspect type (e.g., "Sun-Square-Mars")
+ * - Pairs consecutive forming/dissolving events using {@link pairDurationEvents}
+ * - Skips unpaired events (e.g., aspect still active at end of range)
+ * - Duration events use simplified categories without "Forming"/"Dissolving"/"Exact"
+ * - Event summary format: `[body1Symbol][aspectSymbol][body2Symbol] [Body1] [aspect] [Body2]`
+ *
+ * @see {@link pairDurationEvents} for pairing algorithm
+ * @see {@link getMajorAspectDurationEvent} for event formatting
+ * @see {@link majorAspectBodies} for valid bodies
+ * @see {@link majorAspects} for valid aspects
+ *
+ * @example
+ * ```typescript
+ * const allEvents = [
+ *   { summary: "➡️ ☉ □ ♃ Sun forming square Jupiter", start: Jan 1, ... },
+ *   { summary: "🎯 ☉ □ ♃ Sun exact square Jupiter", start: Jan 5, ... },
+ *   { summary: "⬅️ ☉ □ ♃ Sun dissolving square Jupiter", start: Jan 10, ... }
+ * ];
+ * const durations = getMajorAspectDurationEvents(allEvents);
+ * // Returns: [{ summary: "☉□♃ Sun square Jupiter", start: Jan 1, end: Jan 10, ... }]
+ * ```
+ */
 export function getMajorAspectDurationEvents(events: Event[]): Event[] {
   const durationEvents: Event[] = [];
 
@@ -253,6 +407,36 @@ export function getMajorAspectDurationEvents(events: Event[]): Event[] {
   return durationEvents;
 }
 
+/**
+ * Creates a duration event from paired forming and dissolving aspect events.
+ *
+ * Extracts body names and aspect type from event categories, then formats a duration
+ * event showing the span of time when the aspect remained within orb.
+ *
+ * @param beginning - Forming aspect event (marks entry into orb)
+ * @param ending - Dissolving aspect event (marks exit from orb)
+ * @returns Duration event spanning from forming to dissolving
+ * @throws {Error} When categories don't contain exactly 2 bodies and 1 aspect type
+ *
+ * @remarks
+ * - Assumes beginning and ending events have matching body pairs and aspect type
+ * - Uses alphabetically sorted body names for consistency
+ * - Summary format: `[body1Symbol][aspectSymbol][body2Symbol] [Body1] [aspect] [Body2]`
+ * - Categories: Astronomy, Astrology, Simple Aspect, Major Aspect, [Body1], [Body2], [Aspect]
+ * - Duration spans from beginning.start to ending.start (not ending.end)
+ *
+ * @see {@link majorAspectBodies} for extracting body categories
+ * @see {@link majorAspects} for extracting aspect category
+ *
+ * @example
+ * ```typescript
+ * const duration = getMajorAspectDurationEvent(
+ *   { summary: "➡️ ☉ □ ♃ ...", start: Jan 1, categories: ["Sun", "Jupiter", "Square", ...] },
+ *   { summary: "⬅️ ☉ □ ♃ ...", start: Jan 10, categories: ["Sun", "Jupiter", "Square", ...] }
+ * );
+ * // Returns: { summary: "☉□♃ Sun square Jupiter", start: Jan 1, end: Jan 10, ... }
+ * ```
+ */
 function getMajorAspectDurationEvent(beginning: Event, ending: Event): Event {
   const bodiesCapitalized = beginning.categories
     .filter((category) =>

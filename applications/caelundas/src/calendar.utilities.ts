@@ -1,29 +1,120 @@
+/**
+ * Calendar generation utilities for converting astronomical events to iCalendar (ICS) format.
+ *
+ * Generates RFC 5545-compliant iCalendar files from caelundas event data.
+ *
+ * @see {@link https://tools.ietf.org/html/rfc5545} for iCalendar specification
+ * @see {@link getCalendar} for main calendar generation function
+ */
+
 import moment from "moment-timezone";
 
+/**
+ * Margin in minutes added before/after date ranges for ephemeris queries (30).
+ */
 export const MARGIN_MINUTES = 30;
 
+/**
+ * Represents a calendar event with timing, description, and metadata.
+ *
+ * Defines the structure for astronomical events converted to VEVENT components in iCalendar.
+ *
+ * @see {@link getEvent} for conversion to VEVENT format
+ */
 export interface Event {
+  /** Event start time (local timezone). */
   start: Date;
+
+  /** Event end time (local timezone). For instantaneous events, set equal to start. */
   end: Date;
+
+  /**
+   * Brief event title displayed in calendar views.
+   * @example "☽ ☌ ♃ Moon Conjunction Jupiter"
+   */
   summary: string;
+
+  /**
+   * Detailed event description with additional context.
+   * @example "Exact: 2026-01-21 14:23 EST"
+   */
   description: string;
+
+  /**
+   * Category tags for filtering and organization.
+   * @example ["aspects", "major", "moon", "jupiter"]
+   */
   categories: string[];
+
+  /** Human-readable location string (optional). */
   location?: string | undefined;
+
+  /** Geographic coordinates for map integration (optional). */
   geography?: { latitude: number; longitude: number } | undefined;
+
+  /** External URL with related information (optional). */
   url?: string | undefined;
+
+  /**
+   * Event priority from 0 (undefined) to 9 (highest) (optional).
+   * @remarks Use 1 for high, 5 for medium, 9 for low priority.
+   */
   priority?: number | undefined;
+
+  /** Color hint for calendar display (optional). */
   color?: string | undefined;
 }
 
 // export type EventTemplate = Omit<Event, "start" | "end">;
 
+/**
+ * Parameters for generating a complete iCalendar file.
+ */
 export interface GetCalendarParameters {
+  /** Array of events to include in the calendar. */
   events: Event[];
+
+  /**
+   * Calendar name displayed in calendar applications.
+   * @example "Caelundas Astronomical Calendar"
+   */
   name: string;
+
+  /** Calendar description (optional). */
   description?: string;
+
+  /**
+   * IANA timezone identifier for event times (optional).
+   * @remarks Defaults to "America/New_York". Must match timezone used for ephemeris calculations.
+   */
   timezone?: string;
 }
 
+/**
+ * Generates a complete iCalendar (ICS) file from an array of events.
+ *
+ * Creates an RFC 5545-compliant VCALENDAR container with VTIMEZONE and VEVENT components.
+ *
+ * @param parameters - Calendar generation configuration
+ * @returns Complete iCalendar file content as a string
+ *
+ * @see {@link getEvent} for individual VEVENT generation
+ *
+ * @example
+ * ```typescript
+ * const calendar = getCalendar({
+ *   events: [{
+ *     start: new Date('2026-01-21T14:23:00'),
+ *     end: new Date('2026-01-21T14:23:00'),
+ *     summary: '☽ ☌ ♃ Moon Conjunction Jupiter',
+ *     description: 'Exact: 2026-01-21 14:23 EST',
+ *     categories: ['aspects', 'major', 'moon'],
+ *   }],
+ *   name: 'Astronomical Events',
+ *   timezone: 'America/New_York',
+ * });
+ * ```
+ */
 export function getCalendar(parameters: GetCalendarParameters): string {
   const {
     events,
@@ -54,6 +145,18 @@ END:VCALENDAR
   return vcalendar;
 }
 
+/**
+ * Converts a single Event to VEVENT format for iCalendar inclusion.
+ *
+ * Generates an RFC 5545-compliant VEVENT component. UIDs are deterministic based on
+ * event content to ensure idempotent imports.
+ *
+ * @param event - Event to convert
+ * @param timezone - IANA timezone identifier (defaults to "America/New_York")
+ * @returns VEVENT component as a string
+ *
+ * @see {@link getCalendar} for VCALENDAR container generation
+ */
 export function getEvent(event: Event, timezone = "America/New_York"): string {
   const createdAt = moment().format("YYYYMMDDTHHmmss");
   const start = moment.tz(event.start, timezone).format("YYYYMMDDTHHmmss");
@@ -106,7 +209,12 @@ END:VEVENT`;
 }
 
 /**
- * Get timezone definition for ICS file
+ * Generates VTIMEZONE definition for iCalendar timezone support.
+ *
+ * @param timezone - IANA timezone identifier
+ * @returns VTIMEZONE component as a string
+ *
+ * @remarks Only America/New_York has complete DST rules; others return minimal VTIMEZONE.
  */
 function getTimezone(timezone: string): string {
   if (timezone === "America/New_York") {
