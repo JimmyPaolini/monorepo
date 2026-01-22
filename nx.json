@@ -88,8 +88,7 @@
         "check": {
           "args": "--check"
         }
-      },
-      "description": "Format files with Prettier"
+      }
     },
     "typecheck": {
       "executor": "nx:run-commands",
@@ -102,8 +101,7 @@
         "^production",
         { "externalDependencies": ["typescript"] }
       ],
-      "cache": true,
-      "description": "Type-check with TypeScript"
+      "cache": true
     },
     "knip": {
       "executor": "nx:run-commands",
@@ -121,8 +119,7 @@
         "write": {
           "command": "NODE_OPTIONS='--import=tsx/esm' knip --fix --workspace {projectRoot}"
         }
-      },
-      "description": "Check for unused files, dependencies, and exports"
+      }
     },
     "static-code-analysis": {
       "executor": "nx:run-commands",
@@ -135,8 +132,7 @@
         "write": {
           "parallel": false
         }
-      },
-      "description": "Run all static code analysis tools"
+      }
     },
     "dependency-check": {
       "executor": "nx:run-commands",
@@ -151,8 +147,7 @@
         "{projectRoot}/**/*.tsx",
         "{workspaceRoot}/.dependency-cruiser.cjs"
       ],
-      "cache": true,
-      "description": "Validate dependency architecture"
+      "cache": true
     },
     "type-coverage": {
       "executor": "nx:run-commands",
@@ -166,8 +161,7 @@
         "{projectRoot}/**/*.tsx",
         "{projectRoot}/tsconfig.json"
       ],
-      "cache": true,
-      "description": "Check TypeScript type coverage"
+      "cache": true
     },
     "spell-check": {
       "executor": "nx:run-commands",
@@ -180,8 +174,7 @@
         "{projectRoot}/**/*.{ts,tsx,js,jsx,md,yaml,yml,json}",
         "{workspaceRoot}/cspell.config.yaml"
       ],
-      "cache": true,
-      "description": "Check spelling in project files"
+      "cache": true
     }
   },
   "parallel": 3,
