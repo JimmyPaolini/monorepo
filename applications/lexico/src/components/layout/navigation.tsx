@@ -11,6 +11,9 @@ import {
 } from "lucide-react";
 import * as React from "react";
 
+/**
+ * Represents a navigation item in the sidebar.
+ */
 export interface NavItem {
   /** Route path */
   href: string;
@@ -20,6 +23,9 @@ export interface NavItem {
   icon: React.ReactNode;
 }
 
+/**
+ * Props for the Navigation component that displays the app sidebar.
+ */
 export interface NavigationProps {
   /** Current pathname for active state */
   currentPath?: string | undefined;

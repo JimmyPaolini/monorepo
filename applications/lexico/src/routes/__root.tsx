@@ -87,6 +87,11 @@ export const Route = createRootRoute({
   notFoundComponent: NotFound,
 });
 
+/**
+ * 404 Not Found page component.
+ *
+ * @returns React node
+ */
 function NotFound(): ReactNode {
   return (
     <div className="flex min-h-[50vh] flex-col items-center justify-center text-center">
@@ -102,6 +107,11 @@ function NotFound(): ReactNode {
   );
 }
 
+/**
+ * Root component that wraps the entire application.
+ *
+ * @returns React node
+ */
 function RootComponent(): ReactNode {
   return (
     <RootDocument>
@@ -110,6 +120,13 @@ function RootComponent(): ReactNode {
   );
 }
 
+/**
+ * Root document component that provides HTML structure and sidebar.
+ *
+ * @param props - Component props
+ * @param props.children - Child elements to render
+ * @returns React node
+ */
 function RootDocument({
   children,
 }: Readonly<{ children: ReactNode }>): ReactNode {
@@ -146,6 +163,13 @@ function RootDocument({
   );
 }
 
+/**
+ * Application sidebar component with navigation items.
+ *
+ * @param props - Component props
+ * @param props.onHoverChange - Callback when hover state changes
+ * @returns React node
+ */
 function AppSidebar({
   onHoverChange,
 }: {

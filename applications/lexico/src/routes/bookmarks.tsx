@@ -20,6 +20,11 @@ export const Route = createFileRoute("/bookmarks")({
   component: BookmarksPage,
 });
 
+/**
+ * Bookmarks page component that displays user's bookmarked entries.
+ *
+ * @returns React node
+ */
 function BookmarksPage(): ReactNode {
   const [bookmarks, setBookmarks] = useState<BookmarkedEntry[]>([]);
   const [isLoading, setIsLoading] = useState(true);

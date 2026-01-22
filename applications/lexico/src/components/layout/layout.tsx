@@ -6,6 +6,9 @@ import { Navigation } from "./navigation";
 
 import type { NavItem } from "./navigation";
 
+/**
+ * Props for the Layout component that provides app structure with navigation.
+ */
 export interface LayoutProps {
   /** Current pathname for navigation active state */
   currentPath?: string | undefined;

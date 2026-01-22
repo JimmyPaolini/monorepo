@@ -7,6 +7,9 @@
  * mcp_supabase_generate_typescript_types
  */
 
+/**
+ * JSON value type used in Supabase database columns.
+ */
 export type Json =
   | string
   | number
@@ -15,6 +18,9 @@ export type Json =
   | { [key: string]: Json | undefined }
   | Json[];
 
+/**
+ * Main database schema type generated from Supabase.
+ */
 export type Database = {
   // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
@@ -379,11 +385,17 @@ export type Database = {
 
 type DatabaseWithoutInternals = Omit<Database, "__InternalSupabase">;
 
+/**
+ * Default schema type (public schema).
+ */
 type DefaultSchema = DatabaseWithoutInternals[Extract<
   keyof Database,
   "public"
 >];
 
+/**
+ * Helper type to extract table row types from the database schema.
+ */
 export type Tables<
   DefaultSchemaTableNameOrOptions extends
     | keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
@@ -438,6 +450,9 @@ export type TablesInsert<
       : never
     : never;
 
+/**
+ * Helper type to extract table update types from the database schema.
+ */
 export type TablesUpdate<
   DefaultSchemaTableNameOrOptions extends
     | keyof DefaultSchema["Tables"]
@@ -463,6 +478,9 @@ export type TablesUpdate<
       : never
     : never;
 
+/**
+ * Helper type to extract enum types from the database schema.
+ */
 export type Enums<
   DefaultSchemaEnumNameOrOptions extends
     | keyof DefaultSchema["Enums"]
@@ -480,6 +498,9 @@ export type Enums<
     ? DefaultSchema["Enums"][DefaultSchemaEnumNameOrOptions]
     : never;
 
+/**
+ * Helper type to extract composite types from the database schema.
+ */
 export type CompositeTypes<
   PublicCompositeTypeNameOrOptions extends
     | keyof DefaultSchema["CompositeTypes"]
@@ -531,20 +552,33 @@ export const Constants = {
 } as const;
 
 /**
- * Convenience type aliases for common table types
+ * Convenience type aliases for common table types.
  */
+
+/** Author table row type. */
 export type Author = Tables<"authors">;
+/** Bookmark table row type. */
 export type Bookmark = Tables<"bookmarks">;
+/** Book table row type. */
 export type Book = Tables<"books">;
+/** Entry table row type. */
 export type Entry = Tables<"entries">;
+/** LineWord table row type. */
 export type LineWord = Tables<"line_words">;
+/** Line table row type. */
 export type Line = Tables<"lines">;
+/** Text table row type. */
 export type Text = Tables<"texts">;
+/** TranslationWord table row type. */
 export type TranslationWord = Tables<"translation_words">;
+/** Translation table row type. */
 export type Translation = Tables<"translations">;
+/** UserText table row type. */
 export type UserText = Tables<"user_texts">;
+/** Word table row type. */
 export type Word = Tables<"words">;
 
+/** Part of speech enum type. */
 export type PartOfSpeech = Enums<"part_of_speech">;
 
 /**

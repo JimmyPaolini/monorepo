@@ -4,12 +4,20 @@ import { getSupabaseServerClient } from "./supabase-server";
 
 import type { PartOfSpeech, PrincipalParts } from "./types";
 
+/**
+ * Represents a bookmarked lexical entry from the database.
+ */
 /* eslint-disable @typescript-eslint/naming-convention */
 export interface BookmarkedEntry {
+  /** Entry UUID */
   id: string;
+  /** Principal parts of the entry */
   principal_parts: PrincipalParts;
+  /** Part of speech classification */
   part_of_speech: PartOfSpeech;
+  /** Inflection metadata */
   inflection: Record<string, object>;
+  /** Translation strings */
   translations: string[];
 }
 /* eslint-enable @typescript-eslint/naming-convention */

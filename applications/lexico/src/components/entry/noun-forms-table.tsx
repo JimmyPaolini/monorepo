@@ -4,12 +4,21 @@ import { FormsTable } from "./forms-table";
 
 import type { FormCellProps } from "./form-cell";
 
+/**
+ * Represents a single declined form of a noun.
+ */
 export interface NounForm {
+  /** Grammatical case (nominative, genitive, etc.) */
   case: string;
+  /** Grammatical number (singular or plural) */
   number: string;
+  /** The declined form text */
   form: string;
 }
 
+/**
+ * Props for the NounFormsTable component.
+ */
 export interface NounFormsTableProps {
   /** Noun forms data */
   forms: NounForm[];

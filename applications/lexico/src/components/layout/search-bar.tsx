@@ -17,6 +17,9 @@ export interface SearchBarProps {
   className?: string | undefined;
 }
 
+/**
+ * SearchBar component for performing searches with loading state.
+ */
 const SearchBar = React.forwardRef<HTMLDivElement, SearchBarProps>(
   (
     {

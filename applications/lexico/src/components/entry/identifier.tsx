@@ -145,6 +145,9 @@ const identifierStyles: Record<
   third: { bg: "bg-yellow-400", text: "text-black" },
 };
 
+/**
+ * Props for the Identifier component that displays labeled badges.
+ */
 export interface IdentifierProps {
   /** The identifier name (e.g., "noun", "nominative", "singular") */
   identifier: string;
@@ -152,6 +155,12 @@ export interface IdentifierProps {
   className?: string;
 }
 
+/**
+ * Badge component that displays abbreviated identifiers with tooltips.
+ *
+ * @param props - Component props
+ * @returns React element
+ */
 export function Identifier(props: IdentifierProps): ReactElement {
   const { identifier, className } = props;
 

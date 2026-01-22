@@ -1,6 +1,9 @@
 import { cn } from "@monorepo/lexico-components";
 import * as React from "react";
 
+/**
+ * Props for the Deck component that displays a responsive grid layout.
+ */
 export interface DeckProps {
   /** Children to render in the grid */
   children: React.ReactNode;

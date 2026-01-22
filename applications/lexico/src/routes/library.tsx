@@ -34,6 +34,11 @@ export const Route = createFileRoute("/library")({
   component: LibraryPage,
 });
 
+/**
+ * Library page component that displays and manages user's saved texts.
+ *
+ * @returns React node
+ */
 function LibraryPage(): ReactNode {
   const [texts, setTexts] = useState<UserText[]>([]);
   const [isLoading, setIsLoading] = useState(true);

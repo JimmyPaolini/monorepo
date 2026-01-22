@@ -17,6 +17,11 @@ export const Route = createFileRoute("/settings")({
   component: SettingsPage,
 });
 
+/**
+ * Settings page component for user account management.
+ *
+ * @returns React node
+ */
 function SettingsPage(): ReactNode {
   const router = useRouter();
   const { user } = Route.useRouteContext();

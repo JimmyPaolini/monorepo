@@ -2,6 +2,11 @@ import { createRouter, type Router } from "@tanstack/react-router";
 
 import { routeTree } from "./routeTree.gen";
 
+/**
+ * Creates and configures the application router.
+ *
+ * @returns Configured TanStack Router instance
+ */
 export function getRouter(): Router<typeof routeTree> {
   const router = createRouter({
     routeTree,

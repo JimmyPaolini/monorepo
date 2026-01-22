@@ -1,6 +1,9 @@
 import { cn } from "@monorepo/lexico-components";
 import * as React from "react";
 
+/**
+ * Props for the Logo component that displays the Lexico logo.
+ */
 export interface LogoProps {
   /** Width of the logo in pixels */
   width?: number | undefined;

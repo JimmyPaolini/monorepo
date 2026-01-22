@@ -6,12 +6,21 @@ import { getPronunciation } from "../lib/pronunciation";
 
 import type { ReactNode } from "react";
 
+/**
+ * Props for PronunciationButton component that plays Latin audio.
+ */
 interface PronunciationButtonProps {
+  /** The Latin text to pronounce */
   text: string;
+  /** Pronunciation dialect (classical or ecclesiastical) */
   dialect?: "classical" | "ecclesiastical";
+  /** Additional class names */
   className?: string;
 }
 
+/**
+ * Button component that plays pronunciation audio for Latin text.
+ */
 export function PronunciationButton({
   text,
   dialect = "classical",

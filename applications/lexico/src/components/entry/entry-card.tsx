@@ -23,24 +23,39 @@ import type { Inflection, PrincipalPart } from "./principal-parts";
 import type { VerbForm } from "./verb-forms-table";
 import type { PartOfSpeech } from "../../lib/supabase";
 
-// Forms union type
+/**
+ * Union type for different word form data structures.
+ */
 export type FormsData =
   | { type: "verb"; forms: VerbForm[] }
   | { type: "noun"; forms: NounForm[] }
   | { type: "adjective"; forms: AdjectiveForm[] };
 
-// Pronunciation type
+/**
+ * Pronunciation data for a specific dialect.
+ */
 export interface PronunciationDialect {
+  /** Phoneme representation */
   phonemes?: string;
+  /** Phonemic transcription */
   phonemic?: string;
+  /** Phonetic transcription */
   phonetic?: string;
 }
 
+/**
+ * Pronunciation data for both Classical and Ecclesiastical Latin.
+ */
 export interface Pronunciation {
+  /** Classical Latin pronunciation */
   classical?: PronunciationDialect;
+  /** Ecclesiastical Latin pronunciation */
   ecclesiastical?: PronunciationDialect;
 }
 
+/**
+ * Props for the EntryCard component that displays a lexical entry.
+ */
 export interface EntryCardProps {
   /** Entry ID */
   id: string;

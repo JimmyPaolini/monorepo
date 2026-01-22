@@ -8,6 +8,9 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 
+/**
+ * Props for the Translations component that displays entry translations.
+ */
 export interface TranslationsProps {
   /** Array of translation strings */
   translations: string[];

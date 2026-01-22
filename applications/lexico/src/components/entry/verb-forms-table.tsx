@@ -5,15 +5,27 @@ import { FormsTable } from "./forms-table";
 
 import type { FormCellProps } from "./form-cell";
 
+/**
+ * Represents a single conjugated form of a verb.
+ */
 export interface VerbForm {
+  /** Grammatical mood (indicative, subjunctive, imperative) */
   mood: string;
+  /** Tense (present, imperfect, future, etc.) */
   tense: string;
+  /** Voice (active, passive) */
   voice: string;
+  /** Grammatical person (first, second, third) */
   person?: string | undefined;
+  /** Grammatical number (singular or plural) */
   number?: string | undefined;
+  /** The conjugated form text */
   form: string;
 }
 
+/**
+ * Props for the VerbFormsTable component.
+ */
 export interface VerbFormsTableProps {
   /** Verb forms data */
   forms: VerbForm[];

@@ -5,6 +5,9 @@ import { FormCell } from "./form-cell";
 
 import type { FormCellPosition, FormCellProps } from "./form-cell";
 
+/**
+ * Props for the FormsTable component that displays a grid of form cells.
+ */
 export interface FormsTableProps {
   /** Array of form cell data */
   forms: Omit<FormCellProps, "position" | "search">[];
