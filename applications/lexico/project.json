@@ -25,9 +25,7 @@
       "inputs": ["default", "{workspaceRoot}/dist/applications/lexico/**/*"],
       "description": "Check bundle size limits"
     },
-    "dependency-check": {
-      "description": "Validate dependency architecture"
-    },
+    "dependency-check": {},
     "develop": {
       "executor": "nx:run-commands",
       "options": {
@@ -36,12 +34,8 @@
       },
       "description": "Start development server with hot reload"
     },
-    "format": {
-      "description": "Format files in the project with Prettier"
-    },
-    "knip": {
-      "description": "Check for unused files, dependencies, and exports"
-    },
+    "format": {},
+    "knip": {},
     "start": {
       "executor": "nx:run-commands",
       "options": {
@@ -60,8 +54,7 @@
           "nx run lexico:type-coverage",
           "nx run lexico:dependency-check"
         ]
-      },
-      "description": "Run all static code analysis tools (typecheck, lint, format, knip, type-coverage, dependency-check)"
+      }
     },
     "supabase:database-diff": {
       "executor": "nx:run-commands",
@@ -103,11 +96,7 @@
       },
       "description": "Stop local Supabase development environment"
     },
-    "type-coverage": {
-      "description": "Check TypeScript type coverage"
-    },
-    "typecheck": {
-      "description": "Type-check the application"
-    }
+    "type-coverage": {},
+    "typecheck": {}
   }
 }

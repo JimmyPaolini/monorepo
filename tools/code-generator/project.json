@@ -14,15 +14,9 @@
       "cache": true,
       "description": "No-op build target for development tool"
     },
-    "dependency-check": {
-      "description": "Validate dependency architecture"
-    },
-    "format": {
-      "description": "Format files in the generator with Prettier"
-    },
-    "knip": {
-      "description": "Check for unused files, dependencies, and exports"
-    },
+    "dependency-check": {},
+    "format": {},
+    "knip": {},
     "lint": {
       "executor": "nx:run-commands",
       "options": {
@@ -40,8 +34,7 @@
           "nx run code-generator:type-coverage",
           "nx run code-generator:dependency-check"
         ]
-      },
-      "description": "Run all static code analysis tools (typecheck, lint, format, knip, type-coverage, dependency-check)"
+      }
     },
     "test": {
       "executor": "nx:run-commands",
@@ -50,11 +43,7 @@
         "cwd": "tools/code-generator"
       }
     },
-    "type-coverage": {
-      "description": "Check TypeScript type coverage"
-    },
-    "typecheck": {
-      "description": "Type-check the generator"
-    }
+    "type-coverage": {},
+    "typecheck": {}
   }
 }

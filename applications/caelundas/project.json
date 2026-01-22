@@ -5,9 +5,7 @@
   "projectType": "application",
   "tags": [],
   "targets": {
-    "dependency-check": {
-      "description": "Validate dependency architecture"
-    },
+    "dependency-check": {},
     "develop": {
       "executor": "nx:run-commands",
       "options": {
@@ -32,9 +30,7 @@
       },
       "description": "Build and push Docker image to GitHub Container Registry"
     },
-    "format": {
-      "description": "Format files in the project with Prettier"
-    },
+    "format": {},
     "helm-uninstall": {
       "executor": "nx:run-commands",
       "options": {
@@ -51,9 +47,7 @@
       },
       "description": "Deploy Caelundas job with Helm with auto-generated release name"
     },
-    "knip": {
-      "description": "Check for unused files, dependencies, and exports"
-    },
+    "knip": {},
     "kubernetes-copy-files": {
       "executor": "nx:run-commands",
       "options": {
@@ -88,8 +82,7 @@
           "nx run caelundas:type-coverage",
           "nx run caelundas:dependency-check"
         ]
-      },
-      "description": "Run all static code analysis tools (typecheck, lint, format, knip, type-coverage, dependency-check)"
+      }
     },
     "test": {
       "executor": "nx:run-commands",
@@ -139,11 +132,7 @@
       },
       "description": "Run end-to-end tests only"
     },
-    "type-coverage": {
-      "description": "Check TypeScript type coverage"
-    },
-    "typecheck": {
-      "description": "Type-check the application without emitting files"
-    }
+    "type-coverage": {},
+    "typecheck": {}
   }
 }
