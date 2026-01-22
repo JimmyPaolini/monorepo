@@ -54,7 +54,7 @@ interface AdjectiveFormGroup {
 }
 
 /**
- * Group adjective forms by degree -> gender for tabs
+ * Group adjective forms by degree -\> gender for tabs
  */
 function groupAdjectiveForms(forms: AdjectiveForm[]): AdjectiveFormGroup[] {
   // Check if forms have degrees

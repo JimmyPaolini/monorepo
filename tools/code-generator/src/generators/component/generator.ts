@@ -10,6 +10,12 @@ interface GenerateComponentOptions {
   directory: string;
 }
 
+/**
+ * Generates a new React component with TypeScript and test files.
+ *
+ * @param tree - The Nx virtual file system tree
+ * @param options - Configuration options for the component generator
+ */
 export async function generateComponent(
   tree: Tree,
   options: GenerateComponentOptions,

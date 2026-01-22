@@ -67,7 +67,7 @@ interface VerbFormGroup {
 }
 
 /**
- * Group verb forms by mood -> tense -> voice for nested tabs
+ * Group verb forms by mood -\> tense -\> voice for nested tabs
  */
 function groupVerbForms(forms: VerbForm[]): VerbFormGroup[] {
   // Create nested structure

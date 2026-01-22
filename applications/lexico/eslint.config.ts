@@ -20,6 +20,7 @@ export default [
             "vite",
             "@vitejs/plugin-react",
             "vite-tsconfig-paths",
+            "lodash",
           ],
         },
       ],
