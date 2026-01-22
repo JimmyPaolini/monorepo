@@ -162,16 +162,20 @@
     "spell-check": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "cspell \"**/*.{ts,tsx,js,jsx,md,yaml,yml,json}\" --no-progress",
+        "command": "cspell '*.{ts,tsx,js,jsx,md,yaml,yml,json}' 'scripts/**' 'documentation/**' 'infrastructure/**' 'planning/**' --no-progress",
         "cwd": "{workspaceRoot}"
       },
       "cache": true,
       "inputs": [
         "default",
-        "{workspaceRoot}/**/*.{ts,tsx,js,jsx,md,yaml,yml,json}",
+        "{workspaceRoot}/*.{ts,tsx,js,jsx,md,yaml,yml,json}",
+        "{workspaceRoot}/scripts/**",
+        "{workspaceRoot}/documentation/**",
+        "{workspaceRoot}/infrastructure/**",
+        "{workspaceRoot}/planning/**",
         "{workspaceRoot}/cspell.config.yaml"
       ],
-      "description": "Check spelling across the entire workspace (use project-level spell-check for individual projects)"
+      "description": "Check spelling in workspace root files only (excludes projects - use project-level spell-check for those)"
     },
     "static-code-analysis": {
       "options": {

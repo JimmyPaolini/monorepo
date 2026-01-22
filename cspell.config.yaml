@@ -186,6 +186,7 @@ words:
   - interfix
   - interleavings
   - joor
+  - killport
   - langchain
   - langflow
   - langgraph
@@ -203,6 +204,8 @@ words:
   - serializers
   - subquery
   - tanstack
+  - tolower
+  - toupper
   - transpiler
   - upsert
   - upserts
