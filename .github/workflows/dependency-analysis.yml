@@ -13,7 +13,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  dependency-check:
+  dependency-analysis:
     name: 🔗 Dependency Check
     runs-on: ubuntu-latest
 
@@ -27,7 +27,7 @@ jobs:
         uses: ./.github/actions/setup-monorepo
 
       - name: 🔗 Dependency Check
-        run: pnpm exec nx affected -t dependency-check --parallel=3
+        run: pnpm exec nx affected -t dependency-analysis --parallel=3
 
   security-audit:
     name: 🔒 Security Audit

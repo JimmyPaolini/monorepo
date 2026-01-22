@@ -14,7 +14,7 @@
       "cache": true,
       "description": "No-op build target for development tool"
     },
-    "dependency-check": {},
+    "dependency-analysis": {},
     "format": {},
     "knip": {},
     "lint": {
@@ -24,7 +24,7 @@
       },
       "inputs": ["default", "{workspaceRoot}/eslint.config.base.mjs"]
     },
-    "static-code-analysis": {
+    "code-analysis": {
       "options": {
         "commands": [
           "nx run code-generator:typecheck",
@@ -32,7 +32,7 @@
           "nx run code-generator:format:{args.configuration}",
           "nx run code-generator:knip:{args.configuration}",
           "nx run code-generator:type-coverage",
-          "nx run code-generator:dependency-check",
+          "nx run code-generator:dependency-analysis",
           "nx run code-generator:spell-check"
         ]
       }

@@ -177,7 +177,7 @@
       ],
       "description": "Check spelling in workspace root files only (excludes projects - use project-level spell-check for those)"
     },
-    "static-code-analysis": {
+    "code-analysis": {
       "options": {
         "commands": [
           "nx run monorepo:typecheck",

@@ -3,7 +3,7 @@ import baseConfig from "../../eslint.config.base.ts";
 export default [
   ...baseConfig,
   {
-    files: ["**/*.json"],
+    files: ["**/*.{json}"],
     rules: {
       "@nx/dependency-checks": [
         "error",

@@ -25,7 +25,7 @@
       "inputs": ["default", "{workspaceRoot}/dist/applications/lexico/**/*"],
       "description": "Check bundle size limits"
     },
-    "dependency-check": {},
+    "dependency-analysis": {},
     "develop": {
       "executor": "nx:run-commands",
       "options": {
@@ -44,7 +44,7 @@
       },
       "description": "Start the production server"
     },
-    "static-code-analysis": {
+    "code-analysis": {
       "options": {
         "commands": [
           "nx run lexico:typecheck",
@@ -52,7 +52,7 @@
           "nx run lexico:format:{args.configuration}",
           "nx run lexico:knip:{args.configuration}",
           "nx run lexico:type-coverage",
-          "nx run lexico:dependency-check",
+          "nx run lexico:dependency-analysis",
           "nx run lexico:spell-check"
         ]
       }

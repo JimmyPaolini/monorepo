@@ -120,7 +120,7 @@ All task workflows use the composite action pattern:
 - [knip.yml](.github/workflows/knip.yml) - Unused exports/dependencies detection
 - [bundlesize.yml](.github/workflows/bundlesize.yml) - Bundle size analysis
 - [type-coverage.yml](.github/workflows/type-coverage.yml) - TypeScript type coverage reports
-- [dependency-check.yml](.github/workflows/dependency-check.yml) - Dependency constraint validation
+- [dependency-analysis.yml](.github/workflows/dependency-analysis.yml) - Dependency constraint validation
 - [security-audit.yml](.github/workflows/security-audit.yml) - npm security audit
 - [markdown-lint.yml](.github/workflows/markdown-lint.yml) - Markdown style enforcement
 - [spell-check.yml](.github/workflows/spell-check.yml) - Spell checking with cspell

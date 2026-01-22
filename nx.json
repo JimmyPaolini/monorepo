@@ -121,9 +121,12 @@
         }
       }
     },
-    "static-code-analysis": {
+    "code-analysis": {
       "executor": "nx:run-commands",
       "cache": true,
+      "options": {
+        "outputStyle": "stream"
+      },
       "defaultConfiguration": "check",
       "configurations": {
         "check": {
@@ -134,7 +137,7 @@
         }
       }
     },
-    "dependency-check": {
+    "dependency-analysis": {
       "executor": "nx:run-commands",
       "options": {
         "command": "depcruise {projectRoot}/src --config .dependency-cruiser.cjs",

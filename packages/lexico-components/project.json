@@ -23,10 +23,10 @@
       "inputs": ["default", "{workspaceRoot}/dist/packages/lexico-components/**/*"],
       "description": "Check bundle size limits"
     },
-    "dependency-check": {},
+    "dependency-analysis": {},
     "format": {},
     "knip": {},
-    "static-code-analysis": {
+    "code-analysis": {
       "options": {
         "commands": [
           "nx run lexico-components:typecheck",
@@ -34,7 +34,7 @@
           "nx run lexico-components:format:{args.configuration}",
           "nx run lexico-components:knip:{args.configuration}",
           "nx run lexico-components:type-coverage",
-          "nx run lexico-components:dependency-check",
+          "nx run lexico-components:dependency-analysis",
           "nx run lexico-components:spell-check"
         ]
       }

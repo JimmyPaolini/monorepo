@@ -37,8 +37,8 @@ This document outlines the implementation plan for integrating additional static
 
 1. **dependency-cruiser** (v17.3.6) - Validates architectural boundaries and circular dependencies
    - Config: `.dependency-cruiser.cjs`
-   - CI: `.github/workflows/dependency-check.yml`
-   - All 4 projects have `dependency-check` targets
+   - CI: `.github/workflows/dependency-analysis.yml`
+   - All 4 projects have `dependency-analysis` targets
 
 2. **npm audit** (pnpm built-in) - Security vulnerability scanning
    - Config: Root `project.json` with `audit` and `audit-fix` targets
@@ -244,7 +244,7 @@ Add to `applications/caelundas/project.json`:
 ```json
 {
   "targets": {
-    "dependency-check": {
+    "dependency-analysis": {
       "executor": "nx:run-commands",
       "options": {
         "command": "depcruise applications/caelundas/src --config .dependency-cruiser.cjs"
@@ -266,7 +266,7 @@ Repeat for `lexico`, `lexico-components`, and root `project.json`.
 
 **CI Integration:**
 
-Create `.github/workflows/dependency-check.yml`:
+Create `.github/workflows/dependency-analysis.yml`:
 
 ```yaml
 name: 🏗️ Dependency Architecture
@@ -285,7 +285,7 @@ jobs:
   setup:
     uses: ./.github/workflows/setup.yml
 
-  dependency-check:
+  dependency-analysis:
     name: 🏗️ Check Dependencies
     runs-on: ubuntu-latest
     needs: setup
@@ -320,7 +320,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: 🏗️ Validate architecture
-        run: npx nx affected -t dependency-check --parallel=3 --verbose
+        run: npx nx affected -t dependency-analysis --parallel=3 --verbose
 ```
 
 **Effort Estimate:** 4-6 hours (including rule refinement)

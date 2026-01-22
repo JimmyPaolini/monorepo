@@ -211,15 +211,15 @@ pnpm knip --workspace applications/caelundas
 
 ```bash
 # Check specific project
-nx run caelundas:dependency-check
-nx run lexico:dependency-check
-nx run lexico-components:dependency-check
+nx run caelundas:dependency-analysis
+nx run lexico:dependency-analysis
+nx run lexico-components:dependency-analysis
 
 # Check all projects
-nx run-many -t dependency-check --all
+nx run-many -t dependency-analysis --all
 ```
 
-**CI:** `.github/workflows/dependency-check.yml` (runs on PR and push to main)
+**CI:** `.github/workflows/dependency-analysis.yml` (runs on PR and push to main)
 
 **Files Modified:**
 
@@ -228,7 +228,7 @@ nx run-many -t dependency-check --all
 - `applications/lexico/project.json` (added target)
 - `packages/lexico-components/project.json` (added target)
 - `tools/code-generator/project.json` (added target)
-- `.github/workflows/dependency-check.yml` (new)
+- `.github/workflows/dependency-analysis.yml` (new)
 
 ---
 
@@ -606,7 +606,7 @@ All workflows are in `.github/workflows/`:
 3. **typecheck.yml** - TypeScript type checking
 4. **test.yml** - Unit/integration/e2e tests with coverage
 5. **knip.yml** - Dead code detection
-6. **dependency-check.yml** - Architecture validation
+6. **dependency-analysis.yml** - Architecture validation
 7. **spell-check.yml** - Spelling validation
 8. **markdown-lint.yml** - Markdown linting
 9. **type-coverage.yml** - TypeScript coverage tracking (new)
