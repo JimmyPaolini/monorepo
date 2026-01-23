@@ -138,38 +138,30 @@ words:
   - deps
   - devdeps
   # Technical terms
-  - Arcminute
-  - Arcminutes
-  - arcminutes
-  - Catilinarian
-  - Elipssis
-  - Embla
-  - Epimethean
-  - FUTP
-  - Giorgio
-  - Keplerian
-  - Licen
-  - Lughnasadh
-  - Macronizer
-  - NONF
-  - PGRST
-  - PLUP
-  - Paolini
-  - Postgrest
-  - Yods
+  - āēīōūȳ
+  - ĀĒĪŌŪȲ
   - apikey
   - archi
+  - Arcminute
+  - arcminutes
+  - Arcminutes
   - ation
   - bento
   - bitnami
   - bullmq
   - bundlesize
+  - caelundas
+  - Catilinarian
   - circumfix
   - cmdk
   - coeli
   - cssmodule
   - dbeaver
+  - devkit
   - duodecuple
+  - Elipssis
+  - Embla
+  - Epimethean
   - epimethian
   - esconfig
   - expressjs
@@ -177,7 +169,12 @@ words:
   - fastapi
   - feathersjs
   - fkey
+  - fkey
   - fluentbit
+  - fontsource
+  - FUTP
+  - Giorgio
+  - gtrgm
   - hackathon
   - healthcheck
   - huggingface
@@ -186,67 +183,85 @@ words:
   - interfix
   - interleavings
   - joor
+  - Keplerian
+  - killport
   - killport
   - langchain
   - langflow
   - langgraph
+  - langsmith
+  - Licen
+  - licenseignore
+  - lintstagedrc
+  - Lughnasadh
+  - Macronizer
+  - mapbox
+  - maplibre
+  - materialui
   - middlewares
+  - midheaven
+  - migra
+  - mnyk
+  - multidetermines
+  - Multivalued
+  - musescore
+  - ncurc
+  - nextjs
+  - nindent
+  - NONF
   - nonfiction
+  - nums
+  - ollama
   - ologies
   - operands
+  - Paolini
+  - pbundlesize
+  - peaceiris
   - periphrastic
+  - PGRST
+  - PLUP
   - polyglot
   - polymorphic
+  - Postgrest
   - precompiled
   - preflight
+  - prograde
+  - promethian
+  - pydantic
+  - querykey
   - radix
+  - raspberrypi
   - readonly
+  - refinementness
+  - sendgrid
   - serializers
+  - seroval
+  - shiftsmart
+  - sqltools
+  - stackoverflow
+  - stringcase
   - subquery
+  - Superkey
+  - Swipeable
   - tanstack
+  - texttypescript
+  - tfstate
   - tolower
+  - toon
   - toupper
   - transpiler
+  - trgm
+  - trgm
+  - tsvector
+  - tsvector
+  - undecuple
+  - upenn
   - upsert
   - upserts
   - vaul
   - wording
+  - Yods
   - zodiac
-  - langsmith
-  - licenseignore
-  - lintstagedrc
-  - mapbox
-  - maplibre
-  - materialui
-  - midheaven
-  - migra
-  - mnyk
-  - musescore
-  - ncurc
-  - nindent
-  - nums
-  - ollama
-  - pbundlesize
-  - peaceiris
-  - prograde
-  - promethian
-  - pydantic
-  - raspberrypi
-  - refinementness
-  - sendgrid
-  - seroval
-  - shiftsmart
-  - stackoverflow
-  - stringcase
-  - texttypescript
-  - tfstate
-  - toon
-  - trgm
-  - tsvector
-  - undecuple
-  - upenn
-  - ĀĒĪŌŪȲ
-  - āēīōūȳ
 
 # Enable file type checking
 enableFiletypes:
