@@ -41,7 +41,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "cSpell.import": [
-    "../cspell.config.yaml"
+    "${workspaceFolder}/cspell.config.yaml"
   ],
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.codeActionsOnSave": {

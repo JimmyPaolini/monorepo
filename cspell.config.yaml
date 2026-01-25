@@ -136,6 +136,13 @@ words:
   - kubeconfig
   - Dockerfiles
   - buildx
+  - adduser
+  - cves
+  - nanode
+  - opencontainers
+  - preemptible
+  - storageclasses
+  - tolerations
   # Common abbreviations
   - automerge
   - repo
@@ -162,6 +169,7 @@ words:
   - cssmodule
   - dbeaver
   - devkit
+  - domcontentloaded
   - duodecuple
   - Elipssis
   - Embla
@@ -172,6 +180,7 @@ words:
   - fakerjs
   - fastapi
   - feathersjs
+  - frontmatter
   - fkey
   - fkey
   - fluentbit
@@ -183,6 +192,7 @@ words:
   - healthcheck
   - huggingface
   - ical
+  - icalendar
   - imum
   - interfix
   - interleavings
@@ -209,7 +219,9 @@ words:
   - multidetermines
   - Multivalued
   - musescore
+  - myorg
   - ncurc
+  - networkidle
   - nextjs
   - nindent
   - NONF
@@ -226,6 +238,7 @@ words:
   - PGRST
   - PLUP
   - polyglot
+  - svgs
   - polymorphic
   - Postgrest
   - precompiled
@@ -233,6 +246,9 @@ words:
   - prograde
   - promethian
   - pydantic
+  - plainto
+  - plpgsql
+  - psql
   - querykey
   - radix
   - raspberrypi
@@ -249,8 +265,10 @@ words:
   - Superkey
   - Swipeable
   - tanstack
+  - tsquery
   - texttypescript
   - tfstate
+  - tfvars
   - tolower
   - toon
   - toupper
@@ -259,11 +277,14 @@ words:
   - trgm
   - tsvector
   - tsvector
+  - timestamptz
   - undecuple
   - upenn
+  - untaint
   - upsert
   - upserts
   - vaul
+  - vinxi
   - wording
   - Yods
   - zodiac

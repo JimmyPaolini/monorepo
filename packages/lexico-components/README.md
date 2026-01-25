@@ -1,0 +1,396 @@
+# Lexico Components
+
+**Shared React component library built on shadcn/ui and Radix UI primitives.**
+
+A collection of accessible, customizable UI components for the monorepo, providing a consistent design system across applications. Built with Tailwind CSS, TypeScript, and shadcn/ui (New York style).
+
+## Features
+
+- **50+ UI Components**: Buttons, cards, forms, dialogs, navigation, feedback, and more
+- **Accessible**: WCAG 2.1 AA compliant, keyboard navigation, screen reader support
+- **Themeable**: CSS variables for light/dark mode, customizable colors
+- **Type-Safe**: Full TypeScript support with strict mode
+- **Tree-Shakeable**: Only bundle components you actually use
+- **Radix UI Primitives**: Built on high-quality, unstyled component primitives
+
+## Quick Start
+
+### Installation
+
+This package is already available in the monorepo via workspace protocol. Import from consuming applications:
+
+```tsx
+// In applications/lexico/src/routes/example.tsx
+import { Button, Card, Input } from '@monorepo/lexico-components';
+import '@monorepo/lexico-components/styles/globals.css'; // Import once in root layout
+
+function ExamplePage() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Example Card</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <Input placeholder="Enter text..." />
+        <Button>Submit</Button>
+      </CardContent>
+    </Card>
+  );
+}
+```
+
+### Import Styles
+
+Add global CSS import to your root layout:
+
+```tsx
+// applications/lexico/src/routes/__root.tsx
+import '@monorepo/lexico-components/styles/globals.css';
+```
+
+## Component Categories
+
+### Layout & Structure
+
+- **Card**: Content containers with header, content, footer sections
+- **Separator**: Divider lines for visual separation
+- **Accordion**: Collapsible content sections
+- **Tabs**: Tabbed navigation and content
+- **Sidebar**: Navigation sidebar with collapsible sections
+- **Resizable**: Resizable panel layouts
+
+### Form Controls
+
+- **Input**: Text input field
+- **Textarea**: Multi-line text input
+- **Select**: Dropdown selection menu
+- **Checkbox**: Boolean selection control
+- **Radio Group**: Single selection from multiple options
+- **Switch**: Toggle control for binary states
+- **Slider**: Range selection control
+- **Label**: Form field labels with accessibility
+
+### Buttons & Navigation
+
+- **Button**: Primary action buttons with variants
+- **Button Group**: Grouped button controls
+- **Navigation Menu**: Multi-level navigation menus
+- **Breadcrumb**: Hierarchical path display
+- **Dropdown Menu**: Context menus with actions
+- **Command**: Cmd+K style command palette
+
+### Feedback & Status
+
+- **Badge**: Status indicators and labels
+- **Spinner**: Loading indicator
+- **Skeleton**: Loading placeholder animation
+- **Progress**: Progress bar indicator
+- **Alert**: Informational messages
+- **Toast (Sonner)**: Temporary notification messages
+
+### Overlays & Dialogs
+
+- **Dialog**: Modal dialogs
+- **Sheet**: Slide-over panels
+- **Drawer**: Mobile-friendly bottom sheets
+- **Popover**: Floating content containers
+- **Tooltip**: Hover hints and descriptions
+- **Hover Card**: Rich hover previews
+
+## Adding Components
+
+### Add from shadcn Registry
+
+```bash
+# Navigate to package directory
+cd packages/lexico-components
+
+# Add component
+pnpx shadcn@latest add <component-name>
+
+# Examples
+pnpx shadcn@latest add dropdown-menu
+pnpx shadcn@latest add command
+pnpx shadcn@latest add sonner
+```
+
+### Export in Index
+
+After adding a component, export it in [src/index.ts](src/index.ts):
+
+```typescript
+export * from "./components/ui/dropdown-menu";
+```
+
+### Create Custom Components
+
+For project-specific components, create in `src/components/` (not `ui/`):
+
+```tsx
+// src/components/word-card.tsx
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
+export interface WordCardProps {
+  word: string;
+  definition: string;
+}
+
+export function WordCard({ word, definition }: WordCardProps) {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>{word}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <p>{definition}</p>
+      </CardContent>
+    </Card>
+  );
+}
+```
+
+**⚠️ Important**: Never modify files in `src/components/ui/` directly - they are managed by shadcn CLI and will be overwritten on updates.
+
+## Theming
+
+### CSS Variables
+
+Customize colors by editing [src/styles/globals.css](src/styles/globals.css):
+
+```css
+:root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 3.9%;
+  --primary: 0 0% 9%;
+  --primary-foreground: 0 0% 98%;
+  /* ... more colors */
+}
+
+[data-theme="dark"] {
+  --background: 0 0% 3.9%;
+  --foreground: 0 0% 98%;
+  /* ... dark mode colors */
+}
+```
+
+### Using Theme Colors
+
+```tsx
+<div className="bg-background text-foreground">
+  <button className="bg-primary text-primary-foreground hover:bg-primary/90">
+    Button
+  </button>
+</div>
+```
+
+### Dark Mode
+
+Set `data-theme` attribute on root element:
+
+```tsx
+document.documentElement.setAttribute('data-theme', 'dark');
+```
+
+Or use next-themes for automatic theme switching:
+
+```tsx
+import { ThemeProvider } from 'next-themes';
+
+<ThemeProvider attribute="data-theme" defaultTheme="system">
+  {children}
+</ThemeProvider>
+```
+
+## Development
+
+### Build Library
+
+```bash
+nx run lexico-components:build
+```
+
+### Type Checking
+
+```bash
+nx run lexico-components:typecheck
+```
+
+### Type Coverage
+
+```bash
+nx run lexico-components:type-coverage
+# Target: 99.84%
+```
+
+### Bundle Size Analysis
+
+```bash
+nx run lexico-components:bundlesize
+# Limit: 25 KB gzipped
+```
+
+## Usage Examples
+
+### Button Variants
+
+```tsx
+<Button variant="default">Default</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="destructive">Delete</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="link">Link</Button>
+
+<Button size="sm">Small</Button>
+<Button size="default">Default</Button>
+<Button size="lg">Large</Button>
+```
+
+### Form with Validation
+
+```tsx
+import { Input, Label, Button } from '@monorepo/lexico-components';
+
+function LoginForm() {
+  return (
+    <form>
+      <div>
+        <Label htmlFor="email">Email</Label>
+        <Input id="email" type="email" placeholder="you@example.com" />
+      </div>
+      <div>
+        <Label htmlFor="password">Password</Label>
+        <Input id="password" type="password" />
+      </div>
+      <Button type="submit">Sign In</Button>
+    </form>
+  );
+}
+```
+
+### Dialog
+
+```tsx
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, Button } from '@monorepo/lexico-components';
+
+function ConfirmDialog() {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button>Open Dialog</Button>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Are you sure?</DialogTitle>
+        </DialogHeader>
+        <p>This action cannot be undone.</p>
+        <Button>Confirm</Button>
+      </DialogContent>
+    </Dialog>
+  );
+}
+```
+
+### Dropdown Menu
+
+```tsx
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, Button } from '@monorepo/lexico-components';
+
+function UserMenu() {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost">Menu</Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuItem>Profile</DropdownMenuItem>
+        <DropdownMenuItem>Settings</DropdownMenuItem>
+        <DropdownMenuItem>Sign Out</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+```
+
+## Configuration
+
+### shadcn Config ([components.json](components.json))
+
+```json
+{
+  "style": "new-york",
+  "tailwind": {
+    "baseColor": "gray",
+    "cssVariables": true
+  },
+  "iconLibrary": "lucide"
+}
+```
+
+### Tailwind Config ([tailwind.config.cjs](tailwind.config.cjs))
+
+Extends shared Tailwind configuration with component-specific patterns:
+
+```js
+content: [
+  "./src/**/*.{ts,tsx}",
+  "../../packages/lexico-components/src/**/*.{ts,tsx}"
+]
+```
+
+## Accessibility
+
+All components follow WCAG 2.1 Level AA standards:
+
+- ✅ Keyboard navigation (Tab, Enter, Space, Arrow keys)
+- ✅ Focus management (visible focus indicators)
+- ✅ ARIA attributes (screen reader announcements)
+- ✅ Color contrast (4.5:1 for text, 3:1 for UI)
+
+Built on Radix UI primitives which handle complex accessibility patterns automatically:
+- Focus trapping in dialogs
+- Roving focus in menus
+- Screen reader announcements
+- Keyboard shortcuts
+
+## Troubleshooting
+
+### Styles Not Applied
+
+Import global CSS in your root layout:
+
+```tsx
+import '@monorepo/lexico-components/styles/globals.css';
+```
+
+### Import Errors
+
+Verify TypeScript path mapping in `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "paths": {
+      "@monorepo/lexico-components": ["../../packages/lexico-components/src/index.ts"]
+    }
+  }
+}
+```
+
+### Dark Mode Not Working
+
+Set `data-theme` attribute on `<html>` or use ThemeProvider.
+
+## Documentation
+
+For detailed architecture, component patterns, and development workflows:
+- **[AGENTS.md](AGENTS.md)**: Complete architectural documentation
+- **[Main AGENTS.md](../../AGENTS.md)**: Monorepo architecture and Nx workflows
+
+External resources:
+- [shadcn/ui Documentation](https://ui.shadcn.com/docs): Component reference and CLI
+- [Radix UI Documentation](https://www.radix-ui.com/primitives): Primitive APIs
+- [Tailwind CSS Documentation](https://tailwindcss.com/docs): Utility classes
+
+## License
+
+See [LICENSE](../../LICENSE) for licensing information.
