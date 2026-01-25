@@ -1,1 +1,352 @@
-../../../documentation/commit-messages.md
+---
+name: commit-messages
+description: Write commit messages following this monorepo's Conventional Commits standard with Gitmoji support. Use this skill when creating commits or when asked about commit message formatting.
+license: MIT
+---
+
+# Commit Message Conventions
+
+This skill teaches how to write commit messages for this monorepo. All commits **must** follow these rules to pass pre-commit checks and CI validation.
+
+## Format
+
+```text
+<type>(<scope>): <gitmoji> <subject>
+
+[optional body]
+
+[optional footer]
+```
+
+### Structure Rules
+
+1. **Header**: `<type>(<scope>): <gitmoji> <subject>` (required)
+   - Must start with gitmoji emoji (`gitmoji-required`, error level 2)
+   - Max 100 characters (`header-max-length: 100`)
+   - Subject must not be empty (`subject-empty: never`)
+2. **Body**: Optional, must be separated by blank line (`body-leading-blank: always`)
+   - Max 1000 characters total (`body-max-length: 1000`, warning level 1)
+   - Wrap at 72 characters per line (best practice)
+3. **Footer**: Optional, must be separated by blank line (`footer-leading-blank: always`)
+
+## Type
+
+**Required.** Must be one of the allowed types defined in [conventional.config.cjs](../conventional.config.cjs) (enforced by `type-enum` rule, error level 2).
+
+**Case:** Must be lowercase (`type-case: lower-case`, error level 2)
+
+## Scope
+
+**Required.** Must be one of the allowed scopes defined in [conventional.config.cjs](../conventional.config.cjs) (enforced by `scope-enum` rule, error level 2).
+
+**Case:** Must be lowercase (`scope-case: lower-case`, error level 2)
+
+Scopes are organized into categories:
+
+- **Project Scopes**: Individual projects/applications (e.g., `caelundas`, `lexico`, `lexico-components`, `JimmyPaolini`)
+- **Category Scopes**: Groups of projects (e.g., `monorepo`, `applications`, `packages`, `tools`)
+- **Meta Scopes**: Cross-cutting concerns (e.g., `documentation`, `dependencies`, `infrastructure`, `deployments`)
+
+See [commitlint.config.ts](../commitlint.config.ts) for the complete list of allowed scopes.
+
+### Scope Selection Guidelines
+
+1. **Single project change**: Use project scope (`caelundas`, `lexico`, etc.)
+2. **Multiple projects of same type**: Use category scope (`applications`, `packages`)
+3. **Workspace config**: Use `monorepo`
+4. **CI/CD**: Use `deployments`
+5. **Docs**: Use `documentation`
+6. **Dependencies**: Use `dependencies`
+
+## Subject
+
+**Required.** The subject line must:
+
+- **Start with gitmoji** (`gitmoji-required`, error level 2) - see Gitmoji section below
+- Be **lowercase** after the emoji (`subject-case: lower-case`, error level 2)
+- Use **imperative mood** (`tense/subject-tense: imperative`, error level 2)
+  - ✅ "add feature" ✅ "fix bug" ✅ "update docs"
+  - ❌ "added feature" ❌ "fixes bug" ❌ "updating docs"
+- Be **under 45 characters** (best practice for readability with emoji)
+  - Hard limit is 100 chars total for entire header (`header-max-length: 100`)
+- **Not end with a period** (`subject-full-stop: never`, error level 2)
+- **Not be empty** (`subject-empty: never`, error level 2)
+- Be **concise and descriptive**
+
+### Examples
+
+✅ **Good:**
+
+```text
+feat(lexico): ✨ add user profile page
+fix(caelundas): 🐛 correct aspect angle calculation
+docs(monorepo): 📝 update nx workspace guide
+chore(dependencies): ⬆️ upgrade react to v19
+```
+
+❌ **Bad:**
+
+```text
+feat(lexico): add user profile page             # Missing gitmoji
+feat(lexico): ✨ Added profile page.             # Wrong tense, period
+Fix(Caelundas): 🐛 fix bug                       # Wrong case (type)
+fix(caelundas): 🐛 Fix bug                       # Wrong case (subject)
+docs: 📝 updated docs                            # Missing scope, wrong tense
+chore(deps): ⬆️ bump                             # Invalid scope (use 'dependencies')
+```
+
+## Gitmoji
+
+**Required.** Must add a gitmoji emoji at the start of the subject line (`gitmoji-required`, error level 2). Use either the emoji glyph or short code.
+
+Format: `<type>(<scope>): <gitmoji> <subject>`
+
+### Common Gitmojis
+
+| Emoji | Code                    | Type         | Meaning                  |
+| ----- | ----------------------- | ------------ | ------------------------ |
+| ✨    | `:sparkles:`            | `feat`       | Introduce new features   |
+| 🐛    | `:bug:`                 | `fix`        | Fix a bug                |
+| 📝    | `:memo:`                | `docs`       | Add/update documentation |
+| ✅    | `:white_check_mark:`    | `test`       | Add/update tests         |
+| ♻️    | `:recycle:`             | `refactor`   | Refactor code            |
+| 💄    | `:lipstick:`            | `style`      | UI and style files       |
+| 🎨    | `:art:`                 | `style`      | Improve code structure   |
+| ⚡️    | `:zap:`                 | `perf`       | Improve performance      |
+| 🔧    | `:wrench:`              | `chore`      | Configuration files      |
+| 👷    | `:construction_worker:` | `ci`         | CI build system          |
+| ⬆️    | `:arrow_up:`            | `chore`      | Upgrade dependencies     |
+| 🗃️    | `:card_file_box:`       | `feat`/`fix` | Database changes         |
+
+See [gitmoji.md](gitmoji.md) for the complete emoji guide.
+
+## Body
+
+**Optional.** Use the body to explain:
+
+- **What** changed (if not obvious from subject)
+- **Why** the change was made
+- **Breaking changes** or important notes
+
+### Body Guidelines
+
+- Separate from subject with a **blank line**
+- Wrap text at **72 characters** per line
+- Use **bullet points** with `-` for lists
+- Reference issues with `#123` or `fixes #123`
+
+**Example:**
+
+```text
+feat(lexico): ✨ add user profile page
+
+Add a dedicated profile page where users can:
+- View and edit their personal information
+- Upload a profile picture
+- Manage account settings
+
+This replaces the old inline profile editor which had
+poor UX on mobile devices.
+
+Fixes #234
+```
+
+## Footer
+
+**Optional.** Use the footer for:
+
+- Breaking changes: `BREAKING CHANGE: <description>`
+- Issue references: `Fixes #123`, `Closes #456`
+- Co-authors: `Co-authored-by: Name <email>`
+
+**Example:**
+
+```text
+feat(lexico): 💥 migrate to new auth API
+
+BREAKING CHANGE: The old /api/login endpoint is removed.
+Use /api/auth/login instead.
+
+Fixes #789
+```
+
+## Full Examples
+
+### Simple Feature
+
+```text
+feat(caelundas): ✨ add moon phase calculations
+```
+
+### Bug Fix with Body
+
+```text
+fix(lexico): 🐛 prevent crash on null user data
+
+Check for null user object before accessing properties.
+This crash occurred when the authentication token expired
+during an active session.
+
+Fixes #456
+```
+
+### Feature with Breaking Change
+
+```text
+feat(lexico): 💥 migrate to new auth API
+
+Replace legacy authentication system with OAuth2.
+Provides better security and supports social login.
+
+BREAKING CHANGE: The old /api/login endpoint is removed.
+Use /api/auth/login instead.
+
+Fixes #789
+```
+
+## Git CLI Usage
+
+### Committing from the Command Line
+
+There are several ways to commit messages using git CLI:
+
+#### 1. Interactive Editor (Recommended for Multi-line Messages)
+
+```bash
+git commit
+```
+
+Opens your default editor (vim, nano, VS Code, etc.) where you can write the full commit message with proper formatting. This is the **most reliable method** for multi-line commits as it avoids shell quoting issues.
+
+#### 2. Single-line Commits
+
+```bash
+git commit -m "feat(monorepo): ✨ add new feature"
+```
+
+Use `-m` flag for simple commits with just a subject line. Great for quick commits without body or footer.
+
+#### 3. Multi-line Commits with Multiple `-m` Flags
+
+```bash
+git commit -m "feat(monorepo): ✨ add new feature" \
+           -m "This is the body paragraph explaining the change." \
+           -m "Fixes #123"
+```
+
+Each `-m` flag adds a new paragraph. Git automatically adds blank lines between paragraphs. **Note:** Be careful with shell quoting when using special characters or line breaks.
+
+#### 4. Heredoc for Complex Messages (Advanced)
+
+```bash
+git commit -F - << 'EOF'
+feat(monorepo): ✨ add yamllint integration
+
+Integrate yamllint across the monorepo to validate YAML
+files for consistent formatting and catch syntax errors.
+
+Changes:
+- Add .yamllint config with relaxed base rules
+- Integrate yamllint into GitHub Actions CI pipeline
+- Update lint-staged to run yaml-lint on staged files
+
+Fixes #123
+EOF
+```
+
+Useful for scripts or when you need precise control over formatting without invoking an editor.
+
+### Common Pitfalls
+
+❌ **Avoid:** Using newlines with `-m` flag in a single string:
+
+```bash
+# This doesn't work as expected
+git commit -m "feat(monorepo): ✨ add feature
+This is the body"
+```
+
+❌ **Avoid:** Unclosed quotes or complex shell escaping:
+
+```bash
+# Shell may interpret this incorrectly
+git commit -m "feat(monorepo): ✨ add feature" -m "Body with
+multiple lines"
+```
+
+✅ **Use instead:** Interactive editor (`git commit`) or heredoc for complex messages.
+
+### Tips
+
+- Configure your preferred editor: `git config --global core.editor "code --wait"`
+- Use `git commit --amend` to edit the last commit message
+- Use `git commit --verbose` to see the diff while writing the message
+- Test commit messages locally before pushing: `git log --oneline -1`
+
+## Commitlint Rules Summary
+
+All rules defined in [../commitlint.config.ts](../commitlint.config.ts):
+
+**Error (level 2) - Will fail commit:**
+
+- `gitmoji-required`: Must start with valid gitmoji
+- `tense/subject-tense`: Must use imperative tense ("add" not "added")
+- `type-enum`, `type-case`: Valid lowercase type required
+- `scope-enum`, `scope-case`: Valid lowercase scope required
+- `subject-case`: Subject must be lowercase
+- `subject-full-stop`: No period at end
+- `subject-empty`: Subject cannot be empty
+- `header-max-length`: Max 100 characters
+- `body-leading-blank`, `footer-leading-blank`: Blank lines required
+
+**Warning (level 1) - Won't fail commit:**
+
+- `body-max-length`: Max 1000 characters
+
+## Validation
+
+Commit messages are validated by:
+
+1. **Husky pre-commit hook** — Runs commitlint locally before commit
+2. **GitHub Actions CI** — Validates all commits in PRs
+
+Configuration files:
+
+- [../commitlint.config.ts](../commitlint.config.ts) — Complete rules and validation config
+- [../.husky/commit-msg](../.husky/commit-msg) — Git hook script
+
+## Quick Reference
+
+```bash
+# Basic format
+<type>(<scope>): <gitmoji> <subject>    # Required
+                                        # Blank line
+<body>                                  # Optional
+                                        # Blank line
+<footer>                                # Optional
+
+# Rules (all enforced at error level 2)
+- Gitmoji: required at start of subject
+- Tense: imperative mood (add/fix/update, not added/fixed/updated)
+- Type: lowercase, from allowed list
+- Scope: lowercase, from allowed list
+- Subject: lowercase, imperative, no period, <45 chars
+- Header: <100 chars total
+- Body: blank line before, wrap at 72 chars, <1000 chars (warning)
+- Footer: blank line before, for breaking changes/issue refs
+
+# Common patterns
+feat(project): ✨ add feature
+fix(project): 🐛 fix bug
+docs(documentation): 📝 update docs
+chore(dependencies): ⬆️ upgrade deps
+test(project): ✅ add tests
+refactor(project): ♻️ refactor code
+```
+
+## Resources
+
+- [Conventional Commits](https://www.conventionalcommits.org/)
+- [Gitmoji Guide](https://gitmoji.dev)
+- [commitlint](https://commitlint.js.org/)
+- [gitmoji.md](gitmoji.md) — Full emoji reference
