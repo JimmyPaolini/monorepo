@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   dependency-checks:
-    name: 🕵️ ${{ matrix.check.name }}
+    name: ${{ matrix.check.name }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false

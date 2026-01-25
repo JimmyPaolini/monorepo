@@ -12,9 +12,10 @@ concurrency:
 
 jobs:
   code-analysis:
-    name: 🧑‍💻 ${{ matrix.check.name }}
+    name: ${{ matrix.check.name }}
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         check:
           - name: 🏷️ Type Check

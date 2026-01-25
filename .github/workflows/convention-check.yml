@@ -1,17 +1,31 @@
-name: 🎋 Branch Validation
+name: 🏛️ Convention Check
 
 on:
   pull_request:
-    types: [opened, reopened, synchronize]
+    types: [opened, reopened, synchronize, edited]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  branch-validation:
-    name: 🎋 Branch Validation
+  convention-check:
+    name: ${{ matrix.name }}
     runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: 🎋 Branch Validation
+            input: $BRANCH_NAME
+            input_label: Branch Name
+            command: pnpm exec validate-branch-name -t "$BRANCH_NAME"
+
+          - name: 📝 Pull Request Title Validation
+            input: $PULL_REQUEST_TITLE
+            input_label: Pull Request Title
+            command: echo "$PULL_REQUEST_TITLE" | pnpm exec commitlint
 
     steps:
       - name: 📥 Checkout Repository
@@ -20,13 +34,14 @@ jobs:
       - name: 🕋 Setup Monorepo
         uses: ./.github/actions/setup-monorepo
 
-      - name: 🎋 Branch Validation
+      - name: ${{ matrix.name }}
         env:
           BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+          PULL_REQUEST_TITLE: ${{ github.event.pull_request.title }}
         run: |
-          if [ -z "$BRANCH_NAME" ]; then
-            echo "❌ Unable to determine branch name"
+          if [ -z "${{ matrix.input }}" ]; then
+            echo "❌ Unable to determine ${{ matrix.input_label }}"
             exit 1
           fi
-          echo "Validating branch: $BRANCH_NAME"
-          pnpm exec validate-branch-name -t "$BRANCH_NAME"
+          echo "Validating ${{ matrix.input_label }}: ${{ matrix.input }}"
+          ${{ matrix.command }}
