@@ -21,4 +21,12 @@ jobs:
         uses: ./.github/actions/setup-monorepo
 
       - name: 🎋 Branch Validation
-        run: pnpm exec validate-branch-name
+        env:
+          BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+        run: |
+          if [ -z "$BRANCH_NAME" ]; then
+            echo "❌ Unable to determine branch name"
+            exit 1
+          fi
+          echo "Validating branch: $BRANCH_NAME"
+          pnpm exec validate-branch-name -t "$BRANCH_NAME"

@@ -6,7 +6,9 @@
       "entry": [
         "scripts/**/*.{js,ts,sh}",
         "vitest.config.base.ts",
-        ".dependency-cruiser.cjs"
+        ".dependency-cruiser.cjs",
+        ".releaserc.json",
+        "validate-branch-name.config.cjs"
       ],
       "project": "**/*.{js,ts,mjs,cjs}",
       "ignore": [
@@ -99,7 +101,11 @@
     "type-coverage",
     "license-checker",
     "eslint-plugin-tsdoc",
-    "eslint-plugin-jsdoc"
+    "eslint-plugin-jsdoc",
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/github",
+    "@semantic-release/npm"
   ],
-  "ignoreBinaries": ["depcruise", "terraform"]
+  "ignoreBinaries": ["depcruise", "terraform", "validate-branch-name"]
 }
