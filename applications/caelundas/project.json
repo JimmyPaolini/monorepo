@@ -5,6 +5,19 @@
   "projectType": "application",
   "tags": [],
   "targets": {
+    "code-analysis": {
+      "options": {
+        "commands": [
+          "nx run caelundas:typecheck",
+          "nx run caelundas:lint:{args.configuration}",
+          "nx run caelundas:format:{args.configuration}",
+          "nx run caelundas:knip:{args.configuration}",
+          "nx run caelundas:type-coverage",
+          "nx run caelundas:markdown-lint:{args.configuration}",
+          "nx run caelundas:spell-check"
+        ]
+      }
+    },
     "dependency-analysis": {},
     "develop": {
       "executor": "nx:run-commands",
@@ -64,6 +77,8 @@
       },
       "description": "List files in a Caelundas job's PVC (requires release name argument)"
     },
+    "markdown-lint": {},
+    "spell-check": {},
     "start": {
       "executor": "nx:run-commands",
       "options": {
@@ -72,70 +87,33 @@
       },
       "description": "Start the Caelundas application"
     },
-    "code-analysis": {
-      "options": {
-        "commands": [
-          "nx run caelundas:typecheck",
-          "nx run caelundas:lint:{args.configuration}",
-          "nx run caelundas:format:{args.configuration}",
-          "nx run caelundas:knip:{args.configuration}",
-          "nx run caelundas:type-coverage",
-          "nx run caelundas:markdown-lint:{args.configuration}",
-          "nx run caelundas:spell-check"
-        ]
-      }
-    },
     "test": {
       "executor": "nx:run-commands",
       "options": {
         "command": "pnpm test",
         "cwd": "applications/caelundas"
       },
+      "configurations": {
+        "watch": {
+          "command": "pnpm test:watch"
+        },
+        "coverage": {
+          "command": "pnpm test:coverage"
+        },
+        "unit": {
+          "command": "pnpm test:unit"
+        },
+        "integration": {
+          "command": "pnpm test:integration"
+        },
+        "end-to-end": {
+          "command": "pnpm test:end-to-end"
+        }
+      },
       "description": "Run all tests"
-    },
-    "test:watch": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm test:watch",
-        "cwd": "applications/caelundas"
-      },
-      "description": "Run tests in watch mode"
-    },
-    "test:coverage": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm test:coverage",
-        "cwd": "applications/caelundas"
-      },
-      "description": "Run tests with coverage report"
-    },
-    "test:unit": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm test:unit",
-        "cwd": "applications/caelundas"
-      },
-      "description": "Run unit tests only"
-    },
-    "test:integration": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm test:integration",
-        "cwd": "applications/caelundas"
-      },
-      "description": "Run integration tests only"
-    },
-    "test:end-to-end": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm test:end-to-end",
-        "cwd": "applications/caelundas"
-      },
-      "description": "Run end-to-end tests only"
     },
     "type-coverage": {},
     "typecheck": {},
-    "markdown-lint": {},
-    "spell-check": {}
+    "yaml-lint": {}
   }
 }

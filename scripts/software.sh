@@ -54,3 +54,16 @@ else
     echo "🔄 Terraform is outdated. To update, run: brew upgrade terraform"
   fi
 fi
+
+echo "🔍 Checking for yamllint installation..."
+if ! command -v yamllint &> /dev/null; then
+  echo "📦 yamllint not found. Installing via Homebrew..."
+  brew install yamllint
+  echo "✅ yamllint installed via Homebrew, version: $(yamllint --version)"
+else
+  echo "👍 yamllint is already installed via Homebrew, version: $(yamllint --version)"
+  echo "⬆️ Checking for yamllint updates..."
+  if brew outdated | grep -q '^yamllint$'; then
+    echo "🔄 yamllint is outdated. To update, run: brew upgrade yamllint"
+  fi
+fi

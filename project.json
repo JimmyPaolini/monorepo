@@ -186,12 +186,13 @@
           "nx run monorepo:typecheck",
           "nx run monorepo:lint:{args.configuration}",
           "nx run monorepo:markdown-lint:{args.configuration}",
+          "nx run monorepo:yaml-lint",
           "nx run monorepo:format:{args.configuration}",
           "nx run monorepo:knip:{args.configuration}",
           "nx run monorepo:spell-check"
         ]
       },
-      "description": "Run all static code analysis tools for workspace root (typecheck, lint, format, knip, spell-check, markdown-lint)"
+      "description": "Run all static code analysis tools for workspace root (typecheck, lint, format, knip, spell-check, markdown-lint, yaml-lint)"
     },
     "terraform": {
       "executor": "nx:run-commands",

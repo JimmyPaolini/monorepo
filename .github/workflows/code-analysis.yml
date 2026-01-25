@@ -29,6 +29,10 @@ jobs:
             run: npx nx affected -t markdown-lint --parallel=3
             upload_artifacts: false
 
+          - name: 📄 YAML Lint
+            run: npx nx affected -t yaml-lint --parallel=3
+            upload_artifacts: false
+
           - name: 🎨 Format Check
             run: npx nx affected -t format --configuration=check --parallel=3
             upload_artifacts: false

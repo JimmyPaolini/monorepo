@@ -25,25 +25,6 @@
       "inputs": ["default", "{workspaceRoot}/dist/applications/lexico/**/*"],
       "description": "Check bundle size limits"
     },
-    "dependency-analysis": {},
-    "develop": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm develop",
-        "cwd": "applications/lexico"
-      },
-      "description": "Start development server with hot reload"
-    },
-    "format": {},
-    "knip": {},
-    "start": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm start",
-        "cwd": "applications/lexico"
-      },
-      "description": "Start the production server"
-    },
     "code-analysis": {
       "options": {
         "commands": [
@@ -57,6 +38,27 @@
           "nx run lexico:spell-check"
         ]
       }
+    },
+    "dependency-analysis": {},
+    "develop": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm develop",
+        "cwd": "applications/lexico"
+      },
+      "description": "Start development server with hot reload"
+    },
+    "format": {},
+    "knip": {},
+    "markdown-lint": {},
+    "spell-check": {},
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm start",
+        "cwd": "applications/lexico"
+      },
+      "description": "Start the production server"
     },
     "supabase:database-diff": {
       "executor": "nx:run-commands",
@@ -100,7 +102,6 @@
     },
     "type-coverage": {},
     "typecheck": {},
-    "spell-check": {},
-    "markdown-lint": {}
+    "yaml-lint": {}
   }
 }

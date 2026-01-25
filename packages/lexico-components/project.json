@@ -23,9 +23,6 @@
       "inputs": ["default", "{workspaceRoot}/dist/packages/lexico-components/**/*"],
       "description": "Check bundle size limits"
     },
-    "dependency-analysis": {},
-    "format": {},
-    "knip": {},
     "code-analysis": {
       "options": {
         "commands": [
@@ -40,9 +37,13 @@
         ]
       }
     },
+    "dependency-analysis": {},
+    "format": {},
+    "knip": {},
+    "markdown-lint": {},
+    "spell-check": {},
     "type-coverage": {},
     "typecheck": {},
-    "spell-check": {},
-    "markdown-lint": {}
+    "yaml-lint": {}
   }
 }

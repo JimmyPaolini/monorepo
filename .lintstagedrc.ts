@@ -22,12 +22,23 @@ const config = {
     ];
   },
 
-  "*.{json,jsonc,json5,yml,yaml,css,scss,html}": (files: string[]) => {
+  "*.{json,jsonc,json5,css,scss,html}": (files: string[]) => {
     const relativePaths = files
       .map((file: string) => relative(process.cwd(), file))
       .join(",");
     return [
       `nx affected --target=format --files=${relativePaths}`,
+      "nx run monorepo:spell-check",
+    ];
+  },
+
+  "*.{yml,yaml}": (files: string[]) => {
+    const relativePaths = files
+      .map((file: string) => relative(process.cwd(), file))
+      .join(",");
+    return [
+      `nx affected --target=format --files=${relativePaths}`,
+      `nx affected --target=yaml-lint --files=${relativePaths}`,
       "nx run monorepo:spell-check",
     ];
   },

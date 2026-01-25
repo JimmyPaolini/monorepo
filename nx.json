@@ -200,6 +200,19 @@
           "command": "markdownlint-cli2 --fix '{projectRoot}/**/*.md'"
         }
       }
+    },
+    "yaml-lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "yamllint '{projectRoot}'",
+        "cwd": "{workspaceRoot}"
+      },
+      "inputs": [
+        "default",
+        "{projectRoot}/**/*.{yaml,yml}",
+        "{workspaceRoot}/.yamllint"
+      ],
+      "cache": true
     }
   },
   "parallel": 3,

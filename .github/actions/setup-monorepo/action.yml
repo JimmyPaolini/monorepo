@@ -19,6 +19,13 @@ runs:
     - name: 🎯 Set NX SHAs
       uses: nrwl/nx-set-shas@v4
 
+    - name: 🔧 Setup Homebrew
+      uses: Homebrew/actions/setup-homebrew@master
+
+    - name: 📄 Install yamllint
+      run: brew install yamllint
+      shell: bash
+
     - name: ♻️ Restore/Save Nx cache
       uses: actions/cache@v4
       with:
