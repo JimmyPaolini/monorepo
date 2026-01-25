@@ -17,10 +17,10 @@ const configuration: UserConfig = {
     ],
 
     // 🏷️ Type enforcement
-    "type-enum": [2, "always", [...types]],
+    "type-enum": [2, "always", [...(types as string[])]],
 
     // 🔭 Scope enforcement
-    "scope-enum": [2, "always", [...scopes]],
+    "scope-enum": [2, "always", [...(scopes as string[])]],
 
     // 📏 Length limits
     "header-max-length": [2, "always", 100],
