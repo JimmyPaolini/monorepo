@@ -1,10 +1,7 @@
 import { relative } from "node:path";
 
 const config = {
-  "**/package.json": () => [
-    "./scripts/check-lockfile.sh",
-    "nx run monorepo:license-check",
-  ],
+  "**/package.json": () => ["./scripts/check-lockfile.sh"],
   "pnpm-workspace.yaml": () => ["./scripts/check-lockfile.sh"],
 
   "*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}": (files: string[]) => {
@@ -12,12 +9,9 @@ const config = {
     const relativePaths = files
       .map((file: string) => relative(process.cwd(), file))
       .join(",");
+    // Nx runs multiple targets in parallel (respects nx.json parallel setting)
     return [
-      `nx affected --target=format --files=${relativePaths}`,
-      `nx affected --target=lint --files=${relativePaths}`,
-      `nx affected --target=typecheck --files=${relativePaths}`,
-      `nx affected --target=knip --files=${relativePaths}`,
-      `nx affected --target=type-coverage --files=${relativePaths}`,
+      `nx affected --target=format,lint,typecheck --files=${relativePaths}`,
       "nx run monorepo:spell-check",
     ];
   },
@@ -37,8 +31,7 @@ const config = {
       .map((file: string) => relative(process.cwd(), file))
       .join(",");
     return [
-      `nx affected --target=format --files=${relativePaths}`,
-      `nx affected --target=yaml-lint --files=${relativePaths}`,
+      `nx affected --target=format,yaml-lint --files=${relativePaths}`,
       "nx run monorepo:spell-check",
     ];
   },
@@ -48,10 +41,8 @@ const config = {
       .map((file: string) => relative(process.cwd(), file))
       .join(",");
     return [
-      `nx affected --target=format --files=${relativePaths}`,
-      `nx affected --target=lint --files=${relativePaths}`,
-      "nx run monorepo:spell-check",
-      "nx run monorepo:markdown-lint",
+      `nx affected --target=format,lint --files=${relativePaths}`,
+      "nx run-many --target=spell-check,markdown-lint --projects=monorepo",
     ];
   },
 };

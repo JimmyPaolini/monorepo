@@ -60,7 +60,7 @@ test(api): add tests
 fix(no-release): temporary debug  # Use no-release scope
 ```
 
-## Configuration
+## Current Configuration
 
 **Current setup**: Fixed versioning (entire monorepo shares one version)
 

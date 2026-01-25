@@ -127,6 +127,9 @@ words:
   - Gitmojis
   - commitlint
   - husky
+  - releaserc
+  - ENOCHANGE
+  - EINVALIDGHTOKEN
   # Infrastructure terms
   - kubernetes
   - kubectl

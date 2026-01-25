@@ -64,7 +64,7 @@ monorepo/
 ### Basic Commands
 
 ```bash
-# Create feature branch
+# Create feature branch (see branch naming conventions)
 git checkout -b feat/your-feature-name
 
 # Run development server
@@ -97,6 +97,14 @@ nx affected --target=test
 - **Documentation**: TSDoc for public APIs, update docs with code changes
 
 See [eslint.config.base.ts](eslint.config.base.ts) for complete rules.
+
+## Branch Naming Guidelines
+
+**Required format:** `<type>/<scope>-<description>` (lowercase, kebab-case)
+
+**Examples**: `feat/lexico-user-auth`, `fix/monorepo-routing`, `docs/caelundas-api`
+
+Validated by Husky pre-push hook and GitHub Actions. See [branch-names.md](documentation/branch-names.md) for details.
 
 ## Commit Guidelines
 

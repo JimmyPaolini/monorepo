@@ -31,50 +31,23 @@ This skill teaches how to write commit messages for this monorepo. All commits *
 
 ## Type
 
-**Required.** Must be one of the following (enforced by `type-enum` rule, error level 2):
+**Required.** Must be one of the allowed types defined in [conventional.config.cjs](../conventional.config.cjs) (enforced by `type-enum` rule, error level 2).
 
 **Case:** Must be lowercase (`type-case: lower-case`, error level 2)
 
-| Type       | Description                                                   | Example Use Case                  |
-| ---------- | ------------------------------------------------------------- | --------------------------------- |
-| `build`    | Changes that affect the build system or external dependencies | Update webpack, vite configs      |
-| `chore`    | Other changes that don't modify src or test files             | Update .gitignore, housekeeping   |
-| `ci`       | Changes to CI configuration files and scripts                 | Modify GitHub Actions workflows   |
-| `docs`     | Documentation only changes                                    | Update README, add code comments  |
-| `feat`     | A new feature                                                 | Add user authentication           |
-| `fix`      | A bug fix                                                     | Fix null pointer exception        |
-| `perf`     | A code change that improves performance                       | Optimize database queries         |
-| `refactor` | A code change that neither fixes a bug nor adds a feature     | Rename variables, extract methods |
-| `revert`   | Reverts a previous commit                                     | Revert commit abc123              |
-| `style`    | Changes that do not affect the meaning of the code            | Format code, fix linting          |
-| `test`     | Adding missing tests or correcting existing tests             | Add unit tests for utils          |
-
 ## Scope
 
-**Required.** Must be one of the following (enforced by `scope-enum` rule, error level 2):
+**Required.** Must be one of the allowed scopes defined in [conventional.config.cjs](../conventional.config.cjs) (enforced by `scope-enum` rule, error level 2).
 
 **Case:** Must be lowercase (`scope-case: lower-case`, error level 2)
 
-### Project Scopes
+Scopes are organized into categories:
 
-- `caelundas` — Caelundas application
-- `lexico` — Lexico application
-- `lexico-components` — Lexico components package
-- `JimmyPaolini` — JimmyPaolini application
+- **Project Scopes**: Individual projects/applications (e.g., `caelundas`, `lexico`, `lexico-components`, `JimmyPaolini`)
+- **Category Scopes**: Groups of projects (e.g., `monorepo`, `applications`, `packages`, `tools`)
+- **Meta Scopes**: Cross-cutting concerns (e.g., `documentation`, `dependencies`, `infrastructure`, `deployments`)
 
-### Category Scopes
-
-- `monorepo` — Workspace root (nx.json, pnpm-workspace.yaml, etc.)
-- `applications` — All applications (cross-cutting changes)
-- `packages` — All packages (cross-cutting changes)
-- `tools` — Build or development tooling
-
-### Meta Scopes
-
-- `documentation` — Documentation files
-- `dependencies` — Dependency updates (package.json, pnpm-lock.yaml)
-- `infrastructure` — Infrastructure changes (Terraform, Helm, Kubernetes)
-- `deployments` — CI/CD workflows and deployment configs
+See [commitlint.config.ts](../commitlint.config.ts) for the complete list of allowed scopes.
 
 ### Scope Selection Guidelines
 
