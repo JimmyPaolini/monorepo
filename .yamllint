@@ -1,0 +1,85 @@
+---
+extends: relaxed
+
+yaml-files:
+  - "*.yaml"
+  - "*.yml"
+  - ".yamllint"
+
+ignore: |
+  **/pnpm-lock.yaml
+  **/node_modules/
+  **/dist/
+  **/.nx/
+  **/.terraform/
+  **/coverage/
+
+rules:
+  # Style rules (matching eslint-plugin-yml + Prettier)
+  indentation:
+    spaces: 2
+    indent-sequences: true
+
+  line-length:
+    max: 80 # Matches Prettier printWidth
+    level: warning # Warning only to match ESLint behavior
+
+  quoted-strings:
+    quote-type: double # Matches yml/quotes in eslint.config.base.ts
+    required: only-when-needed
+
+  comments-indentation: enable
+
+  empty-lines:
+    max: 1
+    max-start: 0
+    max-end: 0
+
+  # Enable YAML-specific validation rules
+  document-start: disable # Don't require --- (uncommon in configs)
+  document-end: disable # Don't require ...
+
+  truthy:
+    allowed-values: ["true", "false"]
+    check-keys: true
+    level: error
+
+  key-duplicates:
+    level: error
+
+  octal-values:
+    forbid-implicit-octal: true
+    forbid-explicit-octal: true
+    level: error
+
+  # Allow empty values (common in GitHub Actions triggers, etc.)
+  empty-values: disable
+
+  # Structure and formatting (non-conflicting with ESLint)
+  anchors:
+    forbid-undeclared-aliases: true
+    forbid-duplicated-anchors: true
+    forbid-unused-anchors: true
+
+  braces:
+    min-spaces-inside: 0
+    max-spaces-inside: 0
+
+  brackets:
+    min-spaces-inside: 0
+    max-spaces-inside: 0
+
+  colons:
+    max-spaces-before: 0
+    max-spaces-after: 1
+
+  commas:
+    max-spaces-before: 0
+    min-spaces-after: 1
+    max-spaces-after: 1
+
+  hyphens:
+    max-spaces-after: 1
+
+  new-line-at-end-of-file: enable
+  trailing-spaces: enable

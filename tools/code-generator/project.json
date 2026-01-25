@@ -6,6 +6,17 @@
   "prefix": "lib",
   "tags": ["type:util"],
   "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "echo 'code-generator is a development tool and does not require building'"
+      },
+      "cache": true,
+      "description": "No-op build target for development tool"
+    },
+    "dependency-analysis": {},
+    "format": {},
+    "knip": {},
     "lint": {
       "executor": "nx:run-commands",
       "options": {
@@ -13,20 +24,18 @@
       },
       "inputs": ["default", "{workspaceRoot}/eslint.config.base.mjs"]
     },
-    "typecheck": {
-      "executor": "nx:run-commands",
+    "code-analysis": {
       "options": {
-        "command": "tsc --noEmit",
-        "cwd": "tools/code-generator"
-      },
-      "description": "Type-check the generator"
-    },
-    "format": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "prettier {args} tools/code-generator"
-      },
-      "description": "Format files in the generator with Prettier"
+        "commands": [
+          "nx run code-generator:typecheck",
+          "nx run code-generator:lint:{args.configuration}",
+          "nx run code-generator:format:{args.configuration}",
+          "nx run code-generator:knip:{args.configuration}",
+          "nx run code-generator:type-coverage",
+          "nx run code-generator:dependency-analysis",
+          "nx run code-generator:spell-check"
+        ]
+      }
     },
     "test": {
       "executor": "nx:run-commands",
@@ -35,23 +44,8 @@
         "cwd": "tools/code-generator"
       }
     },
-    "knip": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace tools/code-generator",
-        "cwd": "{workspaceRoot}"
-      },
-      "configurations": {
-        "check": {
-          "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace tools/code-generator"
-        },
-        "write": {
-          "command": "NODE_OPTIONS='--import=tsx/esm' knip --fix --workspace tools/code-generator"
-        }
-      },
-      "defaultConfiguration": "check",
-      "cache": true,
-      "description": "Check for unused files, dependencies, and exports"
-    }
+    "type-coverage": {},
+    "typecheck": {},
+    "spell-check": {}
   }
 }

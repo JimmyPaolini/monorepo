@@ -41,9 +41,7 @@ import type {
 import type {
   Body,
   MartianPhase,
-  MartianPhaseSymbol,
   MercurianPhase,
-  MercurianPhaseSymbol,
   VenusianPhase,
   VenusianPhaseSymbol,
 } from "../../types";
@@ -51,6 +49,28 @@ import type { Moment } from "moment";
 
 const categories = ["Astronomy", "Astrology", "Planetary Phase"];
 
+/**
+ * Detects planetary phase events for Venus, Mercury, and Mars.
+ *
+ * Planetary phases track the visibility and brightness cycles of inner planets
+ * as they orbit the Sun from Earth's perspective:
+ * - Morning/Evening visibility (rise/set relative to Sun)
+ * - Maximum elongation (greatest angular separation from Sun)
+ * - Maximum brightness (optimal viewing conditions)
+ *
+ * These events are significant both astronomically (for observation planning)
+ * and astrologically (for timing and interpretation).
+ *
+ * @param args - Detection parameters
+ * @param currentMinute - The minute to check for phase events
+ * @param coordinateEphemerisByBody - Ephemeris data for all coordinate bodies
+ * @param distanceEphemerisByBody - Distance data for inner planets
+ * @param illuminationEphemerisByBody - Illumination data for phase calculations
+ * @returns Array of all detected planetary phase events at this minute
+ * @see {@link getVenusianPhaseEvents} for Venus-specific phases
+ * @see {@link getMercurianPhaseEvents} for Mercury-specific phases
+ * @see {@link getMartianPhaseEvents} for Mars-specific phases
+ */
 export function getPlanetaryPhaseEvents(args: {
   currentMinute: Moment;
   coordinateEphemerisByBody: Record<
@@ -113,6 +133,25 @@ export function getPlanetaryPhaseEvents(args: {
 
 // #region ♀️ Venus
 
+/**
+ * Creates a calendar event for a specific Venusian phase.
+ *
+ * Venus exhibits an 8-phase cycle as it orbits the Sun:
+ * - Morning Rise: Venus becomes visible before sunrise
+ * - Western Brightest: Maximum brilliance as morning star
+ * - Western Elongation: Greatest angular distance west of Sun
+ * - Morning Set: Venus sets with the Sun (superior conjunction approaching)
+ * - Evening Rise: Venus becomes visible after sunset
+ * - Eastern Elongation: Greatest angular distance east of Sun
+ * - Eastern Brightest: Maximum brilliance as evening star
+ * - Evening Set: Venus disappears into Sun's glare (inferior conjunction)
+ *
+ * @param args - Event parameters
+ * @param timestamp - Exact moment of the phase
+ * @param phase - Specific Venusian phase type
+ * @returns Formatted calendar event with Venus symbol and phase indicator
+ * @see {@link symbolByVenusianPhase} for phase symbols
+ */
 export function getVenusianPhaseEvent(args: {
   timestamp: Date;
   phase: VenusianPhase;
@@ -138,6 +177,24 @@ export function getVenusianPhaseEvent(args: {
   return venusianPhaseEvent;
 }
 
+/**
+ * Detects all Venusian phase events at the current minute.
+ *
+ * Evaluates Venus's position relative to the Sun, along with distance
+ * and illumination data, to identify phase transitions. Uses a margin
+ * of minutes before and after for accurate extrema detection (brightest,
+ * elongation).
+ *
+ * @param args - Detection parameters
+ * @param currentMinute - The minute to check
+ * @param venusCoordinateEphemeris - Venus position data
+ * @param venusDistanceEphemeris - Venus distance from Earth
+ * @param venusIlluminationEphemeris - Venus illumination percentage
+ * @param sunCoordinateEphemeris - Sun position for relative calculations
+ * @returns Array of detected Venusian phase events
+ * @see {@link isMorningRise} for morning rise detection
+ * @see {@link isWesternElongation} for western elongation detection
+ */
 export function getVenusianPhaseEvents(args: {
   currentMinute: Moment;
   venusCoordinateEphemeris: CoordinateEphemeris;
@@ -338,6 +395,26 @@ export function getVenusianPhaseEvents(args: {
 
 // #region ☿ Mercury
 
+/**
+ * Creates a calendar event for a specific Mercurian phase.
+ *
+ * Mercury exhibits an 8-phase cycle similar to Venus but with shorter duration
+ * due to its faster orbit (88 days vs 225 days):
+ * - Morning Rise: Mercury becomes visible before sunrise
+ * - Western Brightest: Maximum brilliance as morning star
+ * - Western Elongation: Greatest angular distance west of Sun (max 28°)
+ * - Morning Set: Mercury sets with the Sun
+ * - Evening Rise: Mercury becomes visible after sunset
+ * - Eastern Elongation: Greatest angular distance east of Sun (max 28°)
+ * - Eastern Brightest: Maximum brilliance as evening star
+ * - Evening Set: Mercury disappears into Sun's glare
+ *
+ * @param args - Event parameters
+ * @param timestamp - Exact moment of the phase
+ * @param phase - Specific Mercurian phase type
+ * @returns Formatted calendar event with Mercury symbol and phase indicator
+ * @see {@link symbolByMercurianPhase} for phase symbols
+ */
 export function getMercurianPhaseEvent(args: {
   timestamp: Date;
   phase: MercurianPhase;
@@ -345,7 +422,7 @@ export function getMercurianPhaseEvent(args: {
   const { timestamp, phase } = args;
 
   const phaseCapitalized = _.startCase(phase) as Capitalize<MercurianPhase>;
-  const phaseSymbol = symbolByMercurianPhase[phase] as MercurianPhaseSymbol;
+  const phaseSymbol = symbolByMercurianPhase[phase];
 
   const description = `Mercury ${phaseCapitalized}`;
   const summary = `☿${phaseSymbol} ${description}`;
@@ -363,6 +440,23 @@ export function getMercurianPhaseEvent(args: {
   return mercurianPhaseEvent;
 }
 
+/**
+ * Detects all Mercurian phase events at the current minute.
+ *
+ * Evaluates Mercury's position relative to the Sun, along with distance
+ * and illumination data, to identify phase transitions. Mercury changes
+ * phases more frequently than Venus due to its shorter orbital period.
+ *
+ * @param args - Detection parameters
+ * @param currentMinute - The minute to check
+ * @param mercuryCoordinateEphemeris - Mercury position data
+ * @param mercuryDistanceEphemeris - Mercury distance from Earth
+ * @param mercuryIlluminationEphemeris - Mercury illumination percentage
+ * @param sunCoordinateEphemeris - Sun position for relative calculations
+ * @returns Array of detected Mercurian phase events
+ * @see {@link isMorningRise} for morning rise detection
+ * @see {@link isEasternElongation} for eastern elongation detection
+ */
 export function getMercurianPhaseEvents(args: {
   currentMinute: Moment;
   mercuryCoordinateEphemeris: CoordinateEphemeris;
@@ -562,6 +656,25 @@ export function getMercurianPhaseEvents(args: {
 
 // #region ♂️ Mars
 
+/**
+ * Creates a calendar event for a specific Martian phase.
+ *
+ * Mars, being an outer planet, has a simpler phase cycle than Venus/Mercury:
+ * - Morning Rise: Mars becomes visible before sunrise
+ * - Morning Set: Mars sets with the Sun (approaching conjunction)
+ * - Evening Rise: Mars becomes visible after sunset
+ * - Evening Set: Mars disappears into Sun's glare (conjunction)
+ *
+ * Mars doesn't have elongation or brightness maxima like inner planets
+ * because it can appear at any angular distance from the Sun (up to 180°
+ * at opposition).
+ *
+ * @param args - Event parameters
+ * @param timestamp - Exact moment of the phase
+ * @param phase - Specific Martian phase type
+ * @returns Formatted calendar event with Mars symbol and phase indicator
+ * @see {@link symbolByMartianPhase} for phase symbols
+ */
 export function getMartianPhaseEvent(args: {
   timestamp: Date;
   phase: MartianPhase;
@@ -569,7 +682,7 @@ export function getMartianPhaseEvent(args: {
   const { timestamp, phase } = args;
 
   const phaseCapitalized = _.startCase(phase) as Capitalize<MartianPhase>;
-  const phaseSymbol = symbolByMartianPhase[phase] as MartianPhaseSymbol;
+  const phaseSymbol = symbolByMartianPhase[phase];
 
   const description = `Mars ${phaseCapitalized}`;
   const summary = `♂️${phaseSymbol} ${description}`;
@@ -587,6 +700,23 @@ export function getMartianPhaseEvent(args: {
   return martianPhaseEvent;
 }
 
+/**
+ * Detects all Martian phase events at the current minute.
+ *
+ * Mars has a simpler visibility cycle than inner planets, tracking only
+ * rise and set times relative to the Sun. No elongation or brightness
+ * maxima are calculated since Mars can appear anywhere in the sky.
+ *
+ * @param args - Detection parameters
+ * @param currentMinute - The minute to check
+ * @param marsCoordinateEphemeris - Mars position data
+ * @param marsDistanceEphemeris - Mars distance from Earth
+ * @param marsIlluminationEphemeris - Mars illumination percentage
+ * @param sunCoordinateEphemeris - Sun position for relative calculations
+ * @returns Array of detected Martian phase events
+ * @see {@link isMorningRise} for morning rise detection
+ * @see {@link isEveningSet} for evening set detection
+ */
 export function getMartianPhaseEvents(args: {
   currentMinute: Moment;
   marsCoordinateEphemeris: CoordinateEphemeris;
@@ -750,6 +880,20 @@ export function getMartianPhaseEvents(args: {
 
 // #region Planetary Phase
 
+/**
+ * Writes planetary phase events to an iCalendar file.
+ *
+ * Generates a .ics file in the output directory containing all planetary
+ * phase events for the specified time range and body configuration.
+ *
+ * @param args - Output parameters
+ * @param end - Range end date
+ * @param planetaryPhaseBodies - Planets included (venus, mercury, mars)
+ * @param planetaryPhaseEvents - Events to write to calendar file
+ * @param start - Range start date
+ * @see {@link getCalendar} for iCal generation
+ * @see {@link getOutputPath} for file path resolution
+ */
 export function writePlanetaryPhaseEvents(args: {
   end: Date;
   planetaryPhaseBodies: Extract<Body, "mercury" | "venus" | "mars">[];
@@ -782,6 +926,21 @@ export function writePlanetaryPhaseEvents(args: {
 
 // #region 🕑 Duration Events
 
+/**
+ * Converts instantaneous planetary phase events into duration events.
+ *
+ * Creates visibility period events by pairing:
+ * - Morning Rise → Morning Set (morning star period)
+ * - Evening Rise → Evening Set (evening star period)
+ *
+ * Duration events span the entire time a planet is visible as a morning
+ * or evening star, useful for planning observations or understanding
+ * astrological timing.
+ *
+ * @param events - All events to process (non-planetary-phase events filtered out)
+ * @returns Array of visibility duration events
+ * @see {@link pairDurationEvents} for rise/set pairing logic
+ */
 export function getPlanetaryPhaseDurationEvents(events: Event[]): Event[] {
   const durationEvents: Event[] = [];
 

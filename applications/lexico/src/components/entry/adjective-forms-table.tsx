@@ -5,14 +5,25 @@ import { FormsTable } from "./forms-table";
 
 import type { FormCellProps } from "./form-cell";
 
+/**
+ * Represents a single declined form of an adjective.
+ */
 export interface AdjectiveForm {
+  /** Grammatical case (nominative, genitive, etc.) */
   case: string;
+  /** Grammatical number (singular or plural) */
   number: string;
+  /** Grammatical gender (masculine, feminine, neuter) */
   gender: string;
+  /** Degree of comparison (positive, comparative, superlative) */
   degree?: string | undefined;
+  /** The declined form text */
   form: string;
 }
 
+/**
+ * Props for the AdjectiveFormsTable component.
+ */
 export interface AdjectiveFormsTableProps {
   /** Adjective forms data */
   forms: AdjectiveForm[];
@@ -54,7 +65,7 @@ interface AdjectiveFormGroup {
 }
 
 /**
- * Group adjective forms by degree -> gender for tabs
+ * Group adjective forms by degree -\> gender for tabs
  */
 function groupAdjectiveForms(forms: AdjectiveForm[]): AdjectiveFormGroup[] {
   // Check if forms have degrees

@@ -1,0 +1,36 @@
+name: 🧑‍🔬 Test Code
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test-coverage:
+    name: 🧪 Test Coverage
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: � Setup Monorepo
+        uses: ./.github/actions/setup-monorepo
+
+      - name: 🧪 Test Coverage
+        run: npx nx affected -t test --parallel=3 --coverage
+
+      - name: 📊 Upload Test Coverage
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: coverage-reports
+          path: coverage/
+          retention-days: 30

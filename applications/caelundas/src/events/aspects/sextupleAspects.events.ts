@@ -16,10 +16,36 @@ import type { AspectPhase, Body, SextupleAspect } from "../../types";
 import type { Moment } from "moment";
 
 /**
- * Check if 6 bodies form a valid hexagram (Star of David) pattern
- * A hexagram consists of two interlocking grand trines plus sextiles forming a hexagon.
+ * Checks if 6 bodies form a valid hexagram (Star of David) pattern.
  *
- * Returns the bodies in hexagram order if valid, null otherwise.
+ * A hexagram consists of two interlocking Grand Trines plus sextiles
+ * forming a hexagon:
+ * - 6 trines (120°) forming two separate triangles
+ * - 6 sextiles (60°) forming a hexagon connecting the triangles
+ *
+ * Visual pattern:
+ * ```
+ *       Body1
+ *      / | \
+ *     /  |  \
+ * Body6  |  Body2
+ *    |   |   |
+ * Body5  |  Body3
+ *     \  |  /
+ *      \ | /
+ *      Body4
+ * ```
+ *
+ * Each body has exactly 2 trine connections (to same-element signs)
+ * and 2 sextile connections (to adjacent bodies in the hexagon).
+ *
+ * This extremely rare pattern represents perfect balance and harmony,
+ * with bodies evenly distributed at 60° intervals around the zodiac.
+ * Associated with spiritual attainment and manifestation of divine order.
+ *
+ * @param bodies - Array of 6 celestial bodies to check
+ * @param edges - All aspect edges available at current time
+ * @returns Bodies in hexagram order if valid pattern exists, null otherwise
  */
 function findHexagramPattern(
   bodies: Body[],
@@ -154,8 +180,27 @@ function findHexagramPattern(
 }
 
 /**
- * Compose Hexagram (Star of David) patterns from stored 2-body aspects
- * Hexagram = 6 bodies forming two interlocking Grand Trines
+ * Composes Hexagram (Star of David) patterns from stored 2-body aspects.
+ *
+ * A Hexagram is one of the rarest configurations in astrology, consisting
+ * of 6 bodies forming:
+ * - Two interlocking Grand Trines (6 trine aspects total)
+ * - A hexagon of sextile connections (6 sextile aspects)
+ *
+ * The bodies are evenly distributed at 60° intervals around the zodiac,
+ * creating a perfectly balanced configuration. This pattern represents
+ * the harmonic division of 360° by 6.
+ *
+ * In astrological interpretation, the hexagram signifies a state of
+ * perfect balance, divine order, and the potential for spiritual
+ * manifestation. It's also known as the Grand Sextile.
+ *
+ * @param allEdges - All aspect edges across time for phase detection
+ * @param currentMinute - The minute to check for Hexagram patterns
+ * @returns Array of Hexagram events detected at this minute
+ * @see {@link findHexagramPattern} for pattern validation logic
+ * @see {@link determineMultiBodyPhase} for phase calculation
+ * @see {@link getCombinations} for generating body combinations
  */
 function composeHexagrams(
   allEdges: AspectEdge[],
@@ -324,7 +369,17 @@ function getSextupleAspectEvent(params: {
 }
 
 /**
- * Main entry point: compose all sextuple aspect events from stored 2-body aspects
+ * Detects all sextuple aspect patterns from stored 2-body aspect events.
+ *
+ * Currently detects the Hexagram (Star of David) pattern, which is one
+ * of the rarest and most spiritually significant configurations. Requires
+ * 6 bodies evenly distributed at 60° intervals with specific aspect relationships.
+ *
+ * @param aspectEvents - Previously detected simple aspect events
+ * @param currentMinute - The minute to check for sextuple aspect patterns
+ * @returns Array of all detected sextuple aspect events at this minute
+ * @see {@link parseAspectEvents} for extracting aspect relationships
+ * @see {@link composeHexagrams} for Hexagram detection
  */
 export function getSextupleAspectEvents(
   aspectEvents: Event[],
@@ -340,6 +395,17 @@ export function getSextupleAspectEvents(
 
 // #region Duration Events
 
+/**
+ * Converts instantaneous sextuple aspect events into duration events.
+ *
+ * Pairs forming and dissolving events for the same body sextet and
+ * pattern type to create events spanning the entire active period.
+ * Duration events show when a pattern is in effect rather than just
+ * boundary moments.
+ *
+ * @param events - All events to process (non-sextuple-aspect events are filtered out)
+ * @returns Array of duration events spanning from forming to dissolving
+ */
 export function getSextupleAspectDurationEvents(events: Event[]): Event[] {
   const durationEvents: Event[] = [];
 

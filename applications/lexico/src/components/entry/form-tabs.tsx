@@ -9,6 +9,9 @@ import * as React from "react";
 
 import { Identifier } from "./identifier";
 
+/**
+ * Props for the FormTabs component that displays tabbed form navigation.
+ */
 export interface FormTabsProps {
   /** Tab labels */
   tabs: string[];

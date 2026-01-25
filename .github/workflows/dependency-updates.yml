@@ -1,0 +1,90 @@
+name: 🧑‍🚒 Dependency Updates
+
+on:
+  schedule:
+    - cron: "0 10 * * 0"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check-updates:
+    name: ⬆️ Dependency Updates
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.20.0
+
+      - name: 🟢 Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.20.0
+          cache: pnpm
+
+      - name: 📚 Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: ⬆️ Check for dependency updates
+        id: check
+        run: |
+          pnpm exec ncu --workspaces --root --format group
+          if pnpm exec ncu --workspaces --root --errorLevel 2 > /dev/null 2>&1; then
+            echo "has_dependency_updates=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_dependency_updates=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: 📝 Update Dependencies
+        if: steps.check.outputs.has_dependency_updates == 'true'
+        run: pnpm exec ncu --workspaces --root -u
+
+      - name: 🔐 Update Lockfile
+        if: steps.check.outputs.has_dependency_updates == 'true'
+        run: pnpm install --no-frozen-lockfile
+
+      - name: ⛔ Close Pull Requests
+        if: steps.check.outputs.has_dependency_updates == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr list --head chore/dependency-updates --state open --json number --jq '.[].number' | while read -r pr_number; do
+            echo "Closing stale PR #$pr_number"
+            gh pr close "$pr_number" --comment "Closing in favor of new automated dependency updates."
+          done
+
+      - name: 🔀 Open Pull Request
+        if: steps.check.outputs.has_dependency_updates == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore(dependencies): update dependencies"
+          branch: chore/dependency-updates
+          delete-branch: true
+          title: "chore(dependencies): update dependencies"
+          body: |
+            ## ⬆️ Dependency Updates
+
+            This PR contains automated dependency updates detected by the weekly dependency check.
+
+            ### 📋 Changes
+            - Updated dependencies across all workspace packages
+            - Updated pnpm lockfile
+
+            ### ✅ Checklist
+            - [ ] Review dependency changes
+            - [ ] Verify all checks pass
+            - [ ] Test critical functionality
+
+            ---
+            🤖 This PR was automatically created by the dependency updates workflow.
+          labels: |
+            dependencies
+            automated

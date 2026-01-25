@@ -18,8 +18,21 @@ const ephemerisCache = new Map<
 >();
 
 /**
- * Get cached angle between two bodies at specific timestamps
- * This reduces redundant getAngle() calls
+ * Retrieves cached angle between two bodies or calculates and caches if not present.
+ *
+ * Caching reduces redundant calculations when the same body pairs are checked
+ * multiple times during aspect detection. The cache key is deterministic
+ * (alphabetically sorted) to handle both (body1, body2) and (body2, body1) lookups.
+ *
+ * @param args - Calculation parameters
+ * @param timestamp1 - ISO timestamp for first body position
+ * @param timestamp2 - ISO timestamp for second body position
+ * @param body1 - First celestial body
+ * @param body2 - Second celestial body
+ * @param longitude1 - Ecliptic longitude of first body in degrees
+ * @param longitude2 - Ecliptic longitude of second body in degrees
+ * @returns Angle between bodies in degrees (0-180°)
+ * @see {@link getAngle} for angle calculation algorithm
  */
 export function getCachedAngle(args: {
   timestamp1: string;
@@ -44,14 +57,23 @@ export function getCachedAngle(args: {
 }
 
 /**
- * Clear the angle cache (call this at the start of processing each day)
+ * Clears the angle calculation cache.
+ *
+ * Should be called at the start of processing each day or time period
+ * to prevent unbounded memory growth. The cache is effective for a single
+ * processing batch but shouldn't persist indefinitely.
  */
 export function clearAngleCache(): void {
   angleCache.clear();
 }
 
 /**
- * Get cache statistics for debugging/monitoring
+ * Retrieves cache size statistics for monitoring and debugging.
+ *
+ * Useful for understanding cache effectiveness and identifying potential
+ * memory issues or optimization opportunities.
+ *
+ * @returns Object containing cache sizes for different data types
  */
 export function getAngleCacheStats(): {
   size: number;
@@ -64,8 +86,21 @@ export function getAngleCacheStats(): {
 }
 
 /**
- * Pre-check if a combination of bodies could possibly form an aspect
- * This uses rough angle calculations to quickly eliminate impossible combinations
+ * Pre-checks if a combination of bodies could possibly form an aspect pattern.
+ *
+ * Uses rough angle calculations to quickly eliminate impossible combinations
+ * before performing expensive detailed checks. This is a performance optimization
+ * for multi-body aspects (3+ bodies).
+ *
+ * For example, a T-Square requires specific angles (180°, 90°, 90°). If the
+ * actual angles between bodies don't approximately match this pattern (within
+ * a generous buffer), we can skip detailed validation.
+ *
+ * @param args - Filter parameters
+ * @param longitudes - Ecliptic longitudes of all bodies in degrees
+ * @param requiredAngles - Expected angles for the pattern in degrees
+ * @param maxOrb - Maximum orb tolerance in degrees
+ * @returns True if pattern is possible, false if definitely impossible
  */
 export function canFormAspect(args: {
   longitudes: number[];
@@ -136,7 +171,14 @@ export function canFormAspect(args: {
 }
 
 /**
- * Pre-filter for T-Square: requires one opposition (180°) and two squares (90°)
+ * Pre-filters for T-Square pattern possibility.
+ *
+ * A T-Square requires one opposition (180°) and two squares (90°).
+ * Uses generous orb for initial filtering to avoid false negatives.
+ *
+ * @param longitudes - Ecliptic longitudes of 3 bodies in degrees
+ * @returns True if T-Square is geometrically possible
+ * @see {@link canFormAspect} for generic filtering logic
  */
 export function couldBeTSquare(longitudes: [number, number, number]): boolean {
   return canFormAspect({
@@ -147,7 +189,14 @@ export function couldBeTSquare(longitudes: [number, number, number]): boolean {
 }
 
 /**
- * Pre-filter for Yod: requires one sextile (60°) and two quincunxes (150°)
+ * Pre-filters for Yod pattern possibility.
+ *
+ * A Yod requires one sextile (60°) and two quincunxes (150°).
+ * Uses generous orb for initial filtering to avoid false negatives.
+ *
+ * @param longitudes - Ecliptic longitudes of 3 bodies in degrees
+ * @returns True if Yod is geometrically possible
+ * @see {@link canFormAspect} for generic filtering logic
  */
 export function couldBeYod(longitudes: [number, number, number]): boolean {
   return canFormAspect({
@@ -158,7 +207,14 @@ export function couldBeYod(longitudes: [number, number, number]): boolean {
 }
 
 /**
- * Pre-filter for Grand Trine: requires three trines (120°)
+ * Pre-filters for Grand Trine pattern possibility.
+ *
+ * A Grand Trine requires three trines (120° each) forming an equilateral triangle.
+ * Uses generous orb for initial filtering to avoid false negatives.
+ *
+ * @param longitudes - Ecliptic longitudes of 3 bodies in degrees
+ * @returns True if Grand Trine is geometrically possible
+ * @see {@link canFormAspect} for generic filtering logic
  */
 export function couldBeGrandTrine(
   longitudes: [number, number, number],
@@ -223,7 +279,14 @@ export function couldBeGrandCross(
 }
 
 /**
- * Pre-filter for Pentagram: requires all pairs in quintile (72°) or biquintile (144°)
+ * Pre-filters for Pentagram pattern possibility.
+ *
+ * A Pentagram requires 5 bodies with all pairs at quintile (72°) or
+ * biquintile (144°) aspects, forming a 5-pointed star. Checks if at least
+ * 7 out of 10 possible pairs are roughly in quintile relationship.
+ *
+ * @param longitudes - Ecliptic longitudes of 5 bodies in degrees
+ * @returns True if Pentagram is geometrically possible
  */
 export function couldBePentagram(
   longitudes: [number, number, number, number, number],
@@ -256,7 +319,15 @@ export function couldBePentagram(
 }
 
 /**
- * Pre-filter for Hexagram/Grand Sextile: requires six planets evenly spaced at 60°
+ * Pre-filters for Hexagram/Grand Sextile pattern possibility.
+ *
+ * A Hexagram requires 6 bodies evenly spaced at 60° intervals around
+ * the zodiac. Checks for:
+ * - Consecutive spacing of approximately 60°
+ * - At least 2 opposition (180°) relationships
+ *
+ * @param longitudes - Ecliptic longitudes of 6 bodies in degrees
+ * @returns True if Hexagram is geometrically possible
  */
 export function couldBeHexagram(
   longitudes: [number, number, number, number, number, number],
@@ -308,7 +379,15 @@ export function couldBeHexagram(
 }
 
 /**
- * Pre-filter for Stellium: requires planets to be closely grouped (within conjunction orb)
+ * Pre-filters for Stellium pattern possibility.
+ *
+ * A Stellium requires 3+ bodies closely grouped together (within
+ * conjunction orb). Calculates the span from minimum to maximum
+ * longitude, accounting for zodiac wrap-around at 0°/360°.
+ *
+ * @param longitudes - Ecliptic longitudes of bodies in degrees
+ * @param maxOrb - Maximum orb for conjunction (default 10°)
+ * @returns True if bodies are close enough to form a stellium
  */
 export function couldBeStellium(longitudes: number[], maxOrb = 10): boolean {
   // Stellium: 3+ planets all within a tight orb (typically 8-10°)

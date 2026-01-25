@@ -1,6 +1,8 @@
 import moment from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
 
+import { majorAspectBodies } from "../../types";
+
 import {
   getMajorAspectDurationEvents,
   getMajorAspectEvent,
@@ -37,26 +39,7 @@ describe("majorAspects.events", () => {
       nextMinute: moment.Moment,
     ): Record<Body, CoordinateEphemeris> => {
       // Create ephemeris for all major aspect bodies with far-apart longitudes
-      const allBodies = [
-        "sun",
-        "mercury",
-        "venus",
-        "mars",
-        "jupiter",
-        "saturn",
-        "uranus",
-        "neptune",
-        "pluto",
-        "chiron",
-        "lilith",
-        "ceres",
-        "pallas",
-        "juno",
-        "vesta",
-        "halley",
-        "north lunar node",
-        "lunar apogee",
-      ] as Body[];
+      const allBodies = majorAspectBodies;
 
       const ephemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       allBodies.forEach((body, index) => {
@@ -245,28 +228,9 @@ describe("majorAspects.events", () => {
       // If all bodies are within a ~35° range, no pairs will have angles matching major aspects
       // Positions: 10° through 45° (35° span, all angles < 56° which is outside all aspect orbs)
       const safeLongitudes = [
-        10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44,
+        10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46,
       ];
-      const allBodies = [
-        "sun",
-        "mercury",
-        "venus",
-        "mars",
-        "jupiter",
-        "saturn",
-        "uranus",
-        "neptune",
-        "pluto",
-        "chiron",
-        "lilith",
-        "ceres",
-        "pallas",
-        "juno",
-        "vesta",
-        "halley",
-        "north lunar node",
-        "lunar apogee",
-      ] as Body[];
+      const allBodies = majorAspectBodies;
 
       const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       allBodies.forEach((body, index) => {

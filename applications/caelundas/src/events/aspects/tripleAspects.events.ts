@@ -17,8 +17,29 @@ import type { AspectPhase, Body, TripleAspect } from "../../types";
 import type { Moment } from "moment";
 
 /**
- * Compose T-Squares from stored 2-body aspects
- * T-Square = 1 opposition + 2 squares forming a T
+ * Composes T-Square patterns from stored 2-body aspects.
+ *
+ * A T-Square is a challenging configuration consisting of:
+ * - 1 opposition (180°) between two bodies
+ * - 2 squares (90°) from both opposition bodies to a third focal body
+ *
+ * Visual pattern:
+ * ```
+ *     Body1
+ *       |
+ *       | square (90°)
+ *       |
+ *    FocalBody -------- Body2
+ *              opposition (180°)
+ * ```
+ *
+ * The focal body receives tension from both opposition bodies and
+ * represents the point of release or action in astrological interpretation.
+ *
+ * @param allEdges - All aspect edges across time for phase detection
+ * @param currentMinute - The minute to check for T-Square patterns
+ * @returns Array of T-Square events detected at this minute
+ * @see {@link determineMultiBodyPhase} for phase calculation
  */
 function composeTSquares(
   allEdges: AspectEdge[],
@@ -93,8 +114,29 @@ function composeTSquares(
 }
 
 /**
- * Compose Yods from stored 2-body aspects
- * Yod = 1 sextile + 2 quincunxes forming a finger
+ * Composes Yod patterns from stored 2-body aspects.
+ *
+ * A Yod ("Finger of God") is a spiritual configuration consisting of:
+ * - 1 sextile (60°) at the base between two bodies
+ * - 2 quincunxes (150°) from both base bodies to a third apex body
+ *
+ * Visual pattern:
+ * ```
+ *       ApexBody
+ *         /  \
+ *   150° /    \ 150°
+ *       /      \
+ *   Body1 --- Body2
+ *      sextile (60°)
+ * ```
+ *
+ * The apex body represents a fated point requiring adjustment and
+ * integration of the energies from the sextile base.
+ *
+ * @param allEdges - All aspect edges across time for phase detection
+ * @param currentMinute - The minute to check for Yod patterns
+ * @returns Array of Yod events detected at this minute
+ * @see {@link determineMultiBodyPhase} for phase calculation
  */
 function composeYods(allEdges: AspectEdge[], currentMinute: Moment): Event[] {
   const events: Event[] = [];
@@ -172,8 +214,29 @@ function composeYods(allEdges: AspectEdge[], currentMinute: Moment): Event[] {
 }
 
 /**
- * Compose Grand Trines from stored 2-body aspects
- * Grand Trine = 3 trines forming a triangle
+ * Composes Grand Trine patterns from stored 2-body aspects.
+ *
+ * A Grand Trine is a harmonious configuration consisting of:
+ * - 3 trines (120°) forming an equilateral triangle
+ *
+ * Visual pattern:
+ * ```
+ *       Body1
+ *       /   \
+ * 120° /     \ 120°
+ *     /       \
+ * Body2 ----- Body3
+ *      120°
+ * ```
+ *
+ * All three bodies are in the same element (fire/earth/air/water),
+ * creating a flow of harmonious energy. Can indicate talent but
+ * may lack motivation without challenging aspects.
+ *
+ * @param allEdges - All aspect edges across time for phase detection
+ * @param currentMinute - The minute to check for Grand Trine patterns
+ * @returns Array of Grand Trine events detected at this minute
+ * @see {@link determineMultiBodyPhase} for phase calculation
  */
 function composeGrandTrines(
   allEdges: AspectEdge[],
@@ -254,7 +317,24 @@ function composeGrandTrines(
 }
 
 /**
- * Main composition function for triple aspects
+ * Detects all triple aspect patterns from stored 2-body aspect events.
+ *
+ * Analyzes combinations of simple aspects to identify higher-order patterns:
+ * - T-Square (1 opposition + 2 squares)
+ * - Yod (1 sextile + 2 quincunxes)
+ * - Grand Trine (3 trines)
+ *
+ * These compound aspects represent significant configurations where
+ * the whole is greater than the sum of parts, indicating major themes
+ * in astrological interpretation.
+ *
+ * @param storedAspects - Previously detected simple aspect events
+ * @param currentMinute - The minute to check for triple aspect patterns
+ * @returns Array of all detected triple aspect events at this minute
+ * @see {@link parseAspectEvents} for extracting aspect relationships
+ * @see {@link composeTSquares} for T-Square detection
+ * @see {@link composeYods} for Yod detection
+ * @see {@link composeGrandTrines} for Grand Trine detection
  */
 export function getTripleAspectEvents(
   storedAspects: Event[],
@@ -351,6 +431,18 @@ function getTripleAspectEvent(args: {
 
 // #region Duration Events
 
+/**
+ * Converts instantaneous triple aspect events into duration events.
+ *
+ * Pairs forming and dissolving events for the same body triplet and
+ * pattern type to create events spanning the entire active period.
+ * Duration events show when a pattern is in effect rather than just
+ * boundary moments.
+ *
+ * @param events - All events to process (non-triple-aspect events are filtered out)
+ * @returns Array of duration events spanning from forming to dissolving
+ * @see {@link pairDurationEvents} for forming/dissolving pairing logic
+ */
 export function getTripleAspectDurationEvents(events: Event[]): Event[] {
   const durationEvents: Event[] = [];
 

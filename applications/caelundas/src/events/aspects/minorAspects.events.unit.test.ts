@@ -1,6 +1,8 @@
 import moment from "moment";
 import { describe, expect, it, vi } from "vitest";
 
+import { minorAspectBodies } from "../../types";
+
 import {
   getMinorAspectDurationEvents,
   getMinorAspectEvent,
@@ -37,26 +39,7 @@ describe("minorAspects.events", () => {
       nextMinute: moment.Moment,
     ): Record<Body, CoordinateEphemeris> => {
       // Create ephemeris for all minor aspect bodies with far-apart longitudes
-      const allBodies = [
-        "sun",
-        "mercury",
-        "venus",
-        "mars",
-        "jupiter",
-        "saturn",
-        "uranus",
-        "neptune",
-        "pluto",
-        "chiron",
-        "lilith",
-        "ceres",
-        "pallas",
-        "juno",
-        "vesta",
-        "halley",
-        "north lunar node",
-        "lunar apogee",
-      ] as Body[];
+      const allBodies = minorAspectBodies;
 
       const ephemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       // Position all bodies at 200° - a safe angle that doesn't create minor aspects
@@ -156,28 +139,9 @@ describe("minorAspects.events", () => {
       // Use clustered positions to avoid accidental aspects from default ephemeris
       const safeLongitudes = [
         200, 202, 204, 206, 208, 210, 212, 214, 216, 218, 220, 201, 203, 205,
-        207, 209, 211, 213,
+        207, 209, 211, 213, 215,
       ];
-      const allBodies = [
-        "sun",
-        "mercury",
-        "venus",
-        "mars",
-        "jupiter",
-        "saturn",
-        "uranus",
-        "neptune",
-        "pluto",
-        "chiron",
-        "lilith",
-        "ceres",
-        "pallas",
-        "juno",
-        "vesta",
-        "halley",
-        "north lunar node",
-        "lunar apogee",
-      ] as Body[];
+      const allBodies = minorAspectBodies;
 
       const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       allBodies.forEach((body, index) => {
@@ -273,28 +237,9 @@ describe("minorAspects.events", () => {
       // If all bodies are within a ~20° range, no pairs will have angles matching minor aspects
       // Positions: 50° through 70° (20° span, all angles < 28° which is outside all aspect orbs)
       const safeLongitudes = [
-        50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 51, 53, 55, 57, 59, 61, 63,
+        50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 51, 53, 55, 57, 59, 61, 63, 65,
       ];
-      const allBodies = [
-        "sun",
-        "mercury",
-        "venus",
-        "mars",
-        "jupiter",
-        "saturn",
-        "uranus",
-        "neptune",
-        "pluto",
-        "chiron",
-        "lilith",
-        "ceres",
-        "pallas",
-        "juno",
-        "vesta",
-        "halley",
-        "north lunar node",
-        "lunar apogee",
-      ] as Body[];
+      const allBodies = minorAspectBodies;
 
       const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       allBodies.forEach((body, index) => {

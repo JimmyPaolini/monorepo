@@ -12,38 +12,38 @@
         "outputPath": "dist/packages/lexico-components"
       }
     },
-    "typecheck": {
+    "bundlesize": {
       "executor": "nx:run-commands",
+      "dependsOn": ["build"],
       "options": {
-        "command": "tsc --noEmit",
+        "command": "npx size-limit",
         "cwd": "packages/lexico-components"
       },
-      "description": "Type-check the library"
-    },
-    "format": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "prettier {args} packages/lexico-components"
-      },
-      "description": "Format files in the package with Prettier"
-    },
-    "knip": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace packages/lexico-components",
-        "cwd": "{workspaceRoot}"
-      },
-      "configurations": {
-        "check": {
-          "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace packages/lexico-components"
-        },
-        "write": {
-          "command": "NODE_OPTIONS='--import=tsx/esm' knip --fix --workspace packages/lexico-components"
-        }
-      },
-      "defaultConfiguration": "check",
       "cache": true,
-      "description": "Check for unused files, dependencies, and exports"
-    }
+      "inputs": ["default", "{workspaceRoot}/dist/packages/lexico-components/**/*"],
+      "description": "Check bundle size limits"
+    },
+    "code-analysis": {
+      "options": {
+        "commands": [
+          "nx run lexico-components:typecheck",
+          "nx run lexico-components:lint:{args.configuration}",
+          "nx run lexico-components:format:{args.configuration}",
+          "nx run lexico-components:knip:{args.configuration}",
+          "nx run lexico-components:type-coverage",
+          "nx run lexico-components:dependency-analysis",
+          "nx run lexico-components:markdown-lint:{args.configuration}",
+          "nx run lexico-components:spell-check"
+        ]
+      }
+    },
+    "dependency-analysis": {},
+    "format": {},
+    "knip": {},
+    "markdown-lint": {},
+    "spell-check": {},
+    "type-coverage": {},
+    "typecheck": {},
+    "yaml-lint": {}
   }
 }

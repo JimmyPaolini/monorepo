@@ -46,8 +46,36 @@ function calculateDelay(attempt: number): number {
 
 /**
  * Fetches a URL with exponential backoff retry logic.
- * Handles transient network errors like socket closures, timeouts, and connection resets.
- * Uses Connection: close header to prevent connection reuse issues.
+ *
+ * Automatically retries transient network errors (socket closures, timeouts,
+ * connection resets) using exponential backoff. Uses "Connection: close" header
+ * to prevent HTTP connection reuse issues that can cause socket errors.
+ *
+ * @param url - The URL to fetch
+ * @returns Promise resolving to the response body text
+ * @throws For non-retryable errors or after max retries exceeded
+ *
+ * @remarks
+ * Configuration via environment variables:
+ * - MAX_RETRIES: Maximum retry attempts (default: 5)
+ * - INITIAL_DELAY_MS: Starting delay in milliseconds (default: 1000)
+ * - MAX_DELAY_MS: Maximum delay cap (default: 30000)
+ * - BACKOFF_MULTIPLIER: Exponential growth factor (default: 2)
+ *
+ * Retryable error codes:
+ * - UND_ERR_SOCKET, ECONNRESET, ETIMEDOUT, ENOTFOUND
+ * - UND_ERR_CONNECT_TIMEOUT, UND_ERR_HEADERS_TIMEOUT, UND_ERR_BODY_TIMEOUT
+ *
+ * @example
+ * ```typescript
+ * const data = await fetchWithRetry('https://api.example.com/data');
+ * // Automatically retries on socket errors with exponential backoff:
+ * // Attempt 1: immediate
+ * // Attempt 2: wait 1s
+ * // Attempt 3: wait 2s
+ * // Attempt 4: wait 4s
+ * // etc.
+ * ```
  */
 export async function fetchWithRetry(url: string): Promise<string> {
   let lastError: unknown;

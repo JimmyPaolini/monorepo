@@ -26,6 +26,13 @@ export const Route = createFileRoute("/search")({
   component: SearchPage,
 });
 
+/**
+ * Custom hook that debounces a value by the specified delay.
+ *
+ * @param value - Value to debounce
+ * @param delay - Delay in milliseconds
+ * @returns Debounced value
+ */
 function useDebounce<T>(value: T, delay: number): T {
   const [debouncedValue, setDebouncedValue] = useState<T>(value);
 
@@ -37,6 +44,11 @@ function useDebounce<T>(value: T, delay: number): T {
   return debouncedValue;
 }
 
+/**
+ * Search page component that allows users to search for Latin entries.
+ *
+ * @returns React node
+ */
 function SearchPage(): ReactNode {
   const navigate = useNavigate({ from: "/search" });
   const { query: urlQuery } = Route.useSearch();

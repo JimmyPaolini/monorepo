@@ -8,6 +8,9 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 
+/**
+ * Props for the Translations component that displays entry translations.
+ */
 export interface TranslationsProps {
   /** Array of translation strings */
   translations: string[];
@@ -17,6 +20,9 @@ export interface TranslationsProps {
   className?: string;
 }
 
+/**
+ *
+ */
 export function Translations(props: TranslationsProps): ReactElement {
   const { translations, defaultOpen = false, className } = props;
 

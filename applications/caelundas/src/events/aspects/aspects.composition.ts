@@ -8,7 +8,13 @@ import type { Aspect, AspectPhase, Body } from "../../types";
 import type { Moment } from "moment";
 
 /**
- * Represents a 2-body aspect relationship extracted from stored events
+ * Represents a 2-body aspect relationship extracted from stored events.
+ *
+ * This simplified representation is used for graph-based analysis when
+ * composing multi-body aspect patterns. Each edge connects two bodies
+ * with a specific aspect type and phase.
+ *
+ * @see {@link parseAspectEvents} for extraction from event data
  */
 export interface AspectEdge {
   body1: Body;
@@ -19,7 +25,21 @@ export interface AspectEdge {
 }
 
 /**
- * Parse stored aspect events to extract aspect relationships
+ * Parses stored aspect events to extract simplified aspect relationships.
+ *
+ * Converts calendar events with rich metadata into lightweight edge
+ * representations suitable for graph algorithms. Filters to simple
+ * 2-body aspects (not compound patterns) and extracts:
+ * - Body pair involved
+ * - Aspect type (conjunction, trine, square, etc.)
+ * - Phase (forming, exact, dissolving)
+ * - Original event reference
+ *
+ * Malformed events are skipped with warnings logged to console.
+ *
+ * @param events - All calendar events to parse
+ * @returns Array of aspect edges suitable for pattern composition
+ * @see {@link AspectEdge} for edge data structure
  */
 export function parseAspectEvents(events: Event[]): AspectEdge[] {
   const edges: AspectEdge[] = [];
@@ -96,7 +116,15 @@ export function parseAspectEvents(events: Event[]): AspectEdge[] {
 }
 
 /**
- * Group aspect edges by aspect type for efficient lookup
+ * Groups aspect edges by aspect type for efficient lookup.
+ *
+ * Creates a map where keys are aspect types (conjunction, trine, etc.)
+ * and values are arrays of all edges with that aspect. This enables
+ * O(1) lookup when searching for specific aspect types during pattern
+ * composition.
+ *
+ * @param edges - Aspect edges to group
+ * @returns Map of aspect type to edges of that type
  */
 export function groupAspectsByType(
   edges: AspectEdge[],
@@ -106,14 +134,22 @@ export function groupAspectsByType(
 }
 
 /**
- * Check if an aspect edge involves a specific body
+ * Checks if an aspect edge involves a specific body.
+ *
+ * @param edge - Aspect edge to check
+ * @param body - Body to search for
+ * @returns True if body is either body1 or body2 in the edge
  */
 export function involvesBody(edge: AspectEdge, body: Body): boolean {
   return edge.body1 === body || edge.body2 === body;
 }
 
 /**
- * Get the other body in an aspect edge
+ * Retrieves the other body in an aspect edge.
+ *
+ * @param edge - Aspect edge
+ * @param body - Known body in the edge
+ * @returns The other body in the edge, or null if body not found
  */
 export function getOtherBody(edge: AspectEdge, body: Body): Body | null {
   if (edge.body1 === body) {
@@ -126,7 +162,15 @@ export function getOtherBody(edge: AspectEdge, body: Body): Body | null {
 }
 
 /**
- * Find all bodies that have a specific aspect to a given body
+ * Finds all bodies that have a specific aspect to a given body.
+ *
+ * Useful for building adjacency lists when analyzing aspect patterns.
+ * For example, finding all bodies in trine to Jupiter.
+ *
+ * @param body - The reference body
+ * @param aspectType - Type of aspect to search for
+ * @param edges - Edges to search through
+ * @returns Array of bodies with the specified aspect to the reference body
  */
 export function findBodiesWithAspectTo(
   body: Body,
@@ -142,7 +186,16 @@ export function findBodiesWithAspectTo(
 }
 
 /**
- * Check if two bodies have a specific aspect between them
+ * Checks if two bodies have a specific aspect between them.
+ *
+ * Searches edges for an aspect of the given type connecting the two bodies.
+ * Order-independent: checks both (body1, body2) and (body2, body1).
+ *
+ * @param body1 - First body
+ * @param body2 - Second body
+ * @param aspectType - Type of aspect to check for
+ * @param edges - Edges to search through
+ * @returns True if aspect exists between the bodies
  */
 export function haveAspect(
   body1: Body,
@@ -159,9 +212,23 @@ export function haveAspect(
 }
 
 /**
- * Determine the phase of a multi-body aspect pattern using stored aspect events.
- * Returns the phase (forming/dissolving) based on temporal boundary detection.
- * Returns null if pattern exists in all three time points (no event needed).
+ * Determines the phase of a multi-body aspect pattern using temporal boundaries.
+ *
+ * Checks if a pattern exists at current, previous, and next minutes to determine
+ * whether it's forming (didn't exist before), dissolving (won't exist after),
+ * or stable (exists at all three times, no event needed).
+ *
+ * This temporal boundary detection ensures we only create events at the exact
+ * moments when patterns enter or exit their active period, avoiding duplicate
+ * events during stable periods.
+ *
+ * @param allAspectEdges - All aspect edges across time for temporal analysis
+ * @param currentMinute - The current minute to check
+ * @param bodies - Bodies involved in the pattern
+ * @param checkPatternExists - Function that validates if pattern exists given edges
+ * @returns Phase (forming/dissolving) or null if no event needed
+ * @remarks Returns null when pattern exists at all three time points to avoid
+ *          generating duplicate events during stable periods
  */
 export function determineMultiBodyPhase(
   allAspectEdges: AspectEdge[],

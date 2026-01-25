@@ -17,13 +17,14 @@
     "@tanstack/react-router": "^1.120.5",
     "@tanstack/react-router-devtools": "^1.120.5",
     "@tanstack/react-start": "^1.120.5",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "lucide-react": "^0.555.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "zod": "^4.1.12"
   },
   "devDependencies": {
+    "@size-limit/file": "^12.0.0",
     "@types/lodash": "^4.17.0",
     "@types/node": "^22.19.1",
     "@types/react": "^19.1.0",
@@ -31,9 +32,36 @@
     "@vitejs/plugin-react": "^4.4.1",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",
+    "size-limit": "^12.0.0",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.9.3",
     "vite": "^7.0.0",
     "vite-tsconfig-paths": "^5.1.4"
-  }
+  },
+  "typeCoverage": {
+    "atLeast": 99.36,
+    "strict": true,
+    "ignoreCatch": true,
+    "ignoreFiles": [
+      "**/*.test.ts",
+      "**/*.test.tsx",
+      "**/*.spec.ts",
+      "**/*.spec.tsx",
+      "**/routeTree.gen.ts"
+    ]
+  },
+  "size-limit": [
+    {
+      "name": "Client JS (main bundle)",
+      "path": "../../dist/applications/lexico/client/assets/main-*.js",
+      "limit": "180 KB",
+      "gzip": true
+    },
+    {
+      "name": "Client CSS",
+      "path": "../../dist/applications/lexico/client/assets/*.css",
+      "limit": "20 KB",
+      "gzip": true
+    }
+  ]
 }

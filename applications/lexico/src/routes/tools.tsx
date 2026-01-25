@@ -12,6 +12,11 @@ export const Route = createFileRoute("/tools")({
   component: ToolsPage,
 });
 
+/**
+ * Tools page component displaying available Latin learning utilities.
+ *
+ * @returns React node
+ */
 function ToolsPage(): ReactNode {
   return (
     <div className="space-y-6">

@@ -18,8 +18,34 @@ import type { AspectPhase, Body, QuadrupleAspect } from "../../types";
 import type { Moment } from "moment";
 
 /**
- * Compose Grand Cross patterns from stored 2-body aspects
- * Grand Cross = 2 oppositions + 4 squares forming a cross
+ * Composes Grand Cross patterns from stored 2-body aspects.
+ *
+ * A Grand Cross is an intense configuration consisting of:
+ * - 2 oppositions (180°) at right angles to each other
+ * - 4 squares (90°) connecting adjacent bodies
+ *
+ * Visual pattern:
+ * ```
+ *     Body1
+ *       |
+ *       | square
+ *       |
+ * Body4 + Body2
+ *       |
+ *       | square
+ *       |
+ *     Body3
+ * ```
+ *
+ * The four bodies form a cross with all cardinal/fixed/mutable signs.
+ * Represents maximum tension and dynamic energy requiring integration
+ * of four conflicting forces. Often indicates major life challenges
+ * and potential for significant achievement.
+ *
+ * @param allEdges - All aspect edges across time for phase detection
+ * @param currentMinute - The minute to check for Grand Cross patterns
+ * @returns Array of Grand Cross events detected at this minute
+ * @see {@link determineMultiBodyPhase} for phase calculation
  */
 function composeGrandCrosses(
   allEdges: AspectEdge[],
@@ -187,8 +213,34 @@ function composeGrandCrosses(
 }
 
 /**
- * Compose Kite patterns from stored 2-body aspects
- * Kite = Grand Trine + Opposition + 2 Sextiles
+ * Composes Kite patterns from stored 2-body aspects.
+ *
+ * A Kite is a mixed configuration consisting of:
+ * - 1 Grand Trine (3 trines forming a triangle)
+ * - 1 opposition from one trine body to a fourth focal body
+ * - 2 sextiles from the focal body to the other two trine bodies
+ *
+ * Visual pattern:
+ * ```
+ *        Body1
+ *        /   \
+ *  trine/     \trine
+ *      /       \
+ *  Body2 ----- Body3
+ *      \  trine /
+ * sextile\   /sextile
+ *         \ /
+ *      FocalBody
+ * ```
+ *
+ * The focal body provides direction and motivation to the harmonious
+ * Grand Trine, creating a configuration that balances ease with drive.
+ * Often indicates talent with opportunity for manifestation.
+ *
+ * @param allEdges - All aspect edges across time for phase detection
+ * @param currentMinute - The minute to check for Kite patterns
+ * @returns Array of Kite events detected at this minute
+ * @see {@link determineMultiBodyPhase} for phase calculation
  */
 function composeKites(allEdges: AspectEdge[], currentMinute: Moment): Event[] {
   const events: Event[] = [];
@@ -411,7 +463,21 @@ function getQuadrupleAspectEvent(params: {
 }
 
 /**
- * Main entry point: compose all quadruple aspect events from stored 2-body aspects
+ * Detects all quadruple aspect patterns from stored 2-body aspect events.
+ *
+ * Analyzes combinations of simple aspects to identify 4-body patterns:
+ * - Grand Cross (2 oppositions + 4 squares)
+ * - Kite (Grand Trine + opposition + 2 sextiles)
+ *
+ * These rare configurations represent major life themes and turning points,
+ * indicating either intense challenge (Grand Cross) or channeled talent (Kite).
+ *
+ * @param aspectEvents - Previously detected simple aspect events
+ * @param currentMinute - The minute to check for quadruple aspect patterns
+ * @returns Array of all detected quadruple aspect events at this minute
+ * @see {@link parseAspectEvents} for extracting aspect relationships
+ * @see {@link composeGrandCrosses} for Grand Cross detection
+ * @see {@link composeKites} for Kite detection
  */
 export function getQuadrupleAspectEvents(
   aspectEvents: Event[],
@@ -428,6 +494,17 @@ export function getQuadrupleAspectEvents(
 
 // #region Duration Events
 
+/**
+ * Converts instantaneous quadruple aspect events into duration events.
+ *
+ * Pairs forming and dissolving events for the same body quartet and
+ * pattern type to create events spanning the entire active period.
+ * Duration events show when a pattern is in effect rather than just
+ * boundary moments.
+ *
+ * @param events - All events to process (non-quadruple-aspect events are filtered out)
+ * @returns Array of duration events spanning from forming to dissolving
+ */
 export function getQuadrupleAspectDurationEvents(events: Event[]): Event[] {
   const durationEvents: Event[] = [];
 

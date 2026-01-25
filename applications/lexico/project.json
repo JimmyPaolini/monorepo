@@ -6,14 +6,6 @@
   "tags": ["type:app", "framework:react", "stack:tanstack-start"],
   "implicitDependencies": ["lexico-components"],
   "targets": {
-    "develop": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm develop",
-        "cwd": "applications/lexico"
-      },
-      "description": "Start development server with hot reload"
-    },
     "build": {
       "executor": "nx:run-commands",
       "options": {
@@ -22,6 +14,44 @@
       },
       "description": "Build the application for production"
     },
+    "bundlesize": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "command": "npx size-limit",
+        "cwd": "applications/lexico"
+      },
+      "cache": true,
+      "inputs": ["default", "{workspaceRoot}/dist/applications/lexico/**/*"],
+      "description": "Check bundle size limits"
+    },
+    "code-analysis": {
+      "options": {
+        "commands": [
+          "nx run lexico:typecheck",
+          "nx run lexico:lint:{args.configuration}",
+          "nx run lexico:format:{args.configuration}",
+          "nx run lexico:knip:{args.configuration}",
+          "nx run lexico:type-coverage",
+          "nx run lexico:dependency-analysis",
+          "nx run lexico:markdown-lint:{args.configuration}",
+          "nx run lexico:spell-check"
+        ]
+      }
+    },
+    "dependency-analysis": {},
+    "develop": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm develop",
+        "cwd": "applications/lexico"
+      },
+      "description": "Start development server with hot reload"
+    },
+    "format": {},
+    "knip": {},
+    "markdown-lint": {},
+    "spell-check": {},
     "start": {
       "executor": "nx:run-commands",
       "options": {
@@ -30,20 +60,29 @@
       },
       "description": "Start the production server"
     },
-    "typecheck": {
+    "supabase:database-diff": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "tsc --noEmit",
+        "command": "supabase db diff --use-migra-py",
         "cwd": "applications/lexico"
       },
-      "description": "Type-check the application"
+      "description": "Generate migration from local database changes"
     },
-    "format": {
+    "supabase:database-reset": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "prettier {args} applications/lexico"
+        "command": "supabase db reset",
+        "cwd": "applications/lexico"
       },
-      "description": "Format files in the project with Prettier"
+      "description": "Reset local database and apply all migrations"
+    },
+    "supabase:generate-types": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "supabase gen types typescript --local > src/lib/database.types.ts",
+        "cwd": "applications/lexico"
+      },
+      "description": "Generate TypeScript types from local Supabase schema"
     },
     "supabase:start": {
       "executor": "nx:run-commands",
@@ -61,47 +100,8 @@
       },
       "description": "Stop local Supabase development environment"
     },
-    "supabase:generate-types": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "supabase gen types typescript --local > src/lib/database.types.ts",
-        "cwd": "applications/lexico"
-      },
-      "description": "Generate TypeScript types from local Supabase schema"
-    },
-    "supabase:database-reset": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "supabase db reset",
-        "cwd": "applications/lexico"
-      },
-      "description": "Reset local database and apply all migrations"
-    },
-    "supabase:database-diff": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "supabase db diff --use-migra-py",
-        "cwd": "applications/lexico"
-      },
-      "description": "Generate migration from local database changes"
-    },
-    "knip": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace applications/lexico",
-        "cwd": "{workspaceRoot}"
-      },
-      "configurations": {
-        "check": {
-          "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace applications/lexico"
-        },
-        "write": {
-          "command": "NODE_OPTIONS='--import=tsx/esm' knip --fix --workspace applications/lexico"
-        }
-      },
-      "defaultConfiguration": "check",
-      "cache": true,
-      "description": "Check for unused files, dependencies, and exports"
-    }
+    "type-coverage": {},
+    "typecheck": {},
+    "yaml-lint": {}
   }
 }

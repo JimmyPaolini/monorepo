@@ -16,11 +16,33 @@ import type { AspectPhase, Body, QuintupleAspect } from "../../types";
 import type { Moment } from "moment";
 
 /**
- * Check if 5 bodies form a valid pentagram pattern (5-pointed star)
- * A pentagram requires each body to have exactly 2 quintile connections,
- * forming a cycle that skips one vertex each time.
+ * Checks if 5 bodies form a valid pentagram pattern (5-pointed star).
  *
- * Returns the bodies in pentagram order if valid, null otherwise.
+ * A pentagram consists of 5 bodies where each body connects to exactly
+ * 2 others via quintile aspects (72°), forming a 5-pointed star shape
+ * rather than a simple pentagon.
+ *
+ * Visual pattern:
+ * ```
+ *       Body1
+ *       /    \
+ *      /      \
+ *  Body5      Body2
+ *     \        /
+ *      \      /
+ *   Body4--Body3
+ * ```
+ *
+ * Each line represents a quintile (72°) aspect, and the pattern skips
+ * one body each connection (star pattern vs circle pattern).
+ *
+ * In astrological interpretation, the pentagram represents a powerful
+ * creative configuration based on the harmonic division of the circle
+ * by 5, associated with manifestation of creative potential.
+ *
+ * @param bodies - Array of 5 celestial bodies to check
+ * @param edges - All aspect edges available at current time
+ * @returns Bodies in pentagram order if valid pattern exists, null otherwise
  */
 function findPentagramPattern(
   bodies: Body[],
@@ -102,8 +124,22 @@ function findPentagramPattern(
 }
 
 /**
- * Compose Pentagram patterns from stored 2-body aspects
- * Pentagram = 5 bodies forming a 5-pointed star with 5 quintiles
+ * Composes Pentagram patterns from stored 2-body aspects.
+ *
+ * A Pentagram is an extremely rare configuration of 5 bodies forming
+ * a 5-pointed star with 5 quintile aspects (72° each). This pattern
+ * represents the harmonic division of 360° by 5.
+ *
+ * The pentagram is associated with creativity, talent, and the golden
+ * ratio in sacred geometry. Its occurrence indicates a powerful alignment
+ * for manifestation and creative expression.
+ *
+ * @param allEdges - All aspect edges across time for phase detection
+ * @param currentMinute - The minute to check for Pentagram patterns
+ * @returns Array of Pentagram events detected at this minute
+ * @see {@link findPentagramPattern} for pattern validation logic
+ * @see {@link determineMultiBodyPhase} for phase calculation
+ * @see {@link getCombinations} for generating body combinations
  */
 function composePentagrams(
   allEdges: AspectEdge[],
@@ -268,7 +304,17 @@ function getQuintupleAspectEvent(params: {
 }
 
 /**
- * Main entry point: compose all quintuple aspect events from stored 2-body aspects
+ * Detects all quintuple aspect patterns from stored 2-body aspect events.
+ *
+ * Currently detects the Pentagram pattern (5 bodies in quintile relationships
+ * forming a 5-pointed star). This is one of the rarest and most significant
+ * configurations in astrology.
+ *
+ * @param aspectEvents - Previously detected simple aspect events
+ * @param currentMinute - The minute to check for quintuple aspect patterns
+ * @returns Array of all detected quintuple aspect events at this minute
+ * @see {@link parseAspectEvents} for extracting aspect relationships
+ * @see {@link composePentagrams} for Pentagram detection
  */
 export function getQuintupleAspectEvents(
   aspectEvents: Event[],
@@ -284,6 +330,17 @@ export function getQuintupleAspectEvents(
 
 // #region Duration Events
 
+/**
+ * Converts instantaneous quintuple aspect events into duration events.
+ *
+ * Pairs forming and dissolving events for the same body quintet and
+ * pattern type to create events spanning the entire active period.
+ * Duration events show when a pattern is in effect rather than just
+ * boundary moments.
+ *
+ * @param events - All events to process (non-quintuple-aspect events are filtered out)
+ * @returns Array of duration events spanning from forming to dissolving
+ */
 export function getQuintupleAspectDurationEvents(events: Event[]): Event[] {
   const durationEvents: Event[] = [];
 

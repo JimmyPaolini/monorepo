@@ -99,6 +99,25 @@ function getBrightnesses(args: {
   return brightnesses;
 }
 
+/**
+ * Tests if current minute represents maximum brightness for a planet.
+ *
+ * Brightness is calculated as illumination divided by distance squared
+ * (inverse square law). A maximum occurs when current brightness exceeds
+ * all previous values and is greater than or equal to all future values
+ * in the margin window.
+ *
+ * @param args - Brightness calculation parameters
+ * @param currentDistance - Planet's distance from Earth at current time
+ * @param currentIllumination - Planet's illumination percentage (0-100)
+ * @param nextDistances - Distance values for following minutes
+ * @param nextIlluminations - Illumination values for following minutes
+ * @param previousDistances - Distance values for preceding minutes
+ * @param previousIlluminations - Illumination values for preceding minutes
+ * @returns True if current minute is a local brightness maximum
+ * @remarks Uses MARGIN_MINUTES before/after for accurate extrema detection
+ * @see {@link MARGIN_MINUTES} for margin window size
+ */
 export function isBrightest(args: {
   currentDistance: number;
   currentIllumination: number;
@@ -117,6 +136,16 @@ export function isBrightest(args: {
   return isBrightest;
 }
 
+/**
+ * Tests if current minute represents western (morning) maximum brightness.
+ *
+ * Combines position check (planet west of Sun) with brightness maximum.
+ * Western position means planet rises before the Sun (morning star).
+ *
+ * @param args - Combined position and brightness parameters
+ * @returns True if planet is at maximum morning star brightness
+ * @see {@link isBrightest} for brightness calculation
+ */
 export function isWesternBrightest(args: {
   currentDistance: number;
   currentIllumination: number;
@@ -131,6 +160,16 @@ export function isWesternBrightest(args: {
   return isWesternBrightest;
 }
 
+/**
+ * Tests if current minute represents eastern (evening) maximum brightness.
+ *
+ * Combines position check (planet east of Sun) with brightness maximum.
+ * Eastern position means planet sets after the Sun (evening star).
+ *
+ * @param args - Combined position and brightness parameters
+ * @returns True if planet is at maximum evening star brightness
+ * @see {@link isBrightest} for brightness calculation
+ */
 export function isEasternBrightest(args: {
   currentDistance: number;
   currentIllumination: number;
@@ -176,6 +215,25 @@ function isElongation(args: {
   return isElongation;
 }
 
+/**
+ * Tests if current minute represents maximum eastern elongation.
+ *
+ * Eastern elongation is the greatest angular distance a planet reaches
+ * east of the Sun (evening star position). This is the optimal time for
+ * evening observations before the planet begins moving back toward the Sun.
+ *
+ * For Venus: max ~47°, For Mercury: max ~28°
+ *
+ * @param args - Elongation calculation parameters
+ * @param currentLongitudeSun - Sun's ecliptic longitude in degrees
+ * @param currentLongitudePlanet - Planet's ecliptic longitude in degrees
+ * @param nextLongitudeSun - Sun's longitude at next minute
+ * @param nextLongitudePlanet - Planet's longitude at next minute
+ * @param previousLongitudeSun - Sun's longitude at previous minute
+ * @param previousLongitudePlanet - Planet's longitude at previous minute
+ * @returns True if current minute is maximum eastern elongation
+ * @see {@link isMaximum} for extrema detection
+ */
 export function isEasternElongation(args: {
   currentLongitudeSun: number;
   currentLongitudePlanet: number;
@@ -188,6 +246,25 @@ export function isEasternElongation(args: {
   return isEasternElongation;
 }
 
+/**
+ * Tests if current minute represents maximum western elongation.
+ *
+ * Western elongation is the greatest angular distance a planet reaches
+ * west of the Sun (morning star position). This is the optimal time for
+ * morning observations before the planet begins moving back toward the Sun.
+ *
+ * For Venus: max ~47°, For Mercury: max ~28°
+ *
+ * @param args - Elongation calculation parameters
+ * @param currentLongitudeSun - Sun's ecliptic longitude in degrees
+ * @param currentLongitudePlanet - Planet's ecliptic longitude in degrees
+ * @param nextLongitudeSun - Sun's longitude at next minute
+ * @param nextLongitudePlanet - Planet's longitude at next minute
+ * @param previousLongitudeSun - Sun's longitude at previous minute
+ * @param previousLongitudePlanet - Planet's longitude at previous minute
+ * @returns True if current minute is maximum western elongation
+ * @see {@link isMaximum} for extrema detection
+ */
 export function isWesternElongation(args: {
   currentLongitudeSun: number;
   currentLongitudePlanet: number;
@@ -246,6 +323,21 @@ function isSet(args: {
   return isSet;
 }
 
+/**
+ * Tests if current minute represents morning rise (heliacal rising).
+ *
+ * Morning rise occurs when a planet emerges from the Sun's glare and
+ * becomes visible before sunrise. Detected when angular separation crosses
+ * the civil twilight threshold (~6°) while planet is west of Sun.
+ *
+ * @param args - Rise detection parameters
+ * @param currentLongitudePlanet - Planet's longitude at current minute
+ * @param currentLongitudeSun - Sun's longitude at current minute
+ * @param previousLongitudePlanet - Planet's longitude at previous minute
+ * @param previousLongitudeSun - Sun's longitude at previous minute
+ * @returns True if planet just became visible as morning star
+ * @see {@link degreesByTwilight} for visibility threshold
+ */
 export function isMorningRise(args: {
   currentLongitudePlanet: number;
   currentLongitudeSun: number;
@@ -256,6 +348,21 @@ export function isMorningRise(args: {
   return isMorningRise;
 }
 
+/**
+ * Tests if current minute represents morning set (heliacal setting).
+ *
+ * Morning set occurs when a planet disappears into the Sun's glare,
+ * no longer visible before sunrise. Detected when angular separation
+ * crosses below the civil twilight threshold while planet is west of Sun.
+ *
+ * @param args - Set detection parameters
+ * @param currentLongitudePlanet - Planet's longitude at current minute
+ * @param currentLongitudeSun - Sun's longitude at current minute
+ * @param previousLongitudePlanet - Planet's longitude at previous minute
+ * @param previousLongitudeSun - Sun's longitude at previous minute
+ * @returns True if planet just became invisible as morning star
+ * @see {@link degreesByTwilight} for visibility threshold
+ */
 export function isMorningSet(args: {
   currentLongitudePlanet: number;
   currentLongitudeSun: number;
@@ -266,6 +373,21 @@ export function isMorningSet(args: {
   return isMorningSet;
 }
 
+/**
+ * Tests if current minute represents evening rise (heliacal rising).
+ *
+ * Evening rise occurs when a planet emerges from the Sun's glare and
+ * becomes visible after sunset. Detected when angular separation crosses
+ * the civil twilight threshold while planet is east of Sun.
+ *
+ * @param args - Rise detection parameters
+ * @param currentLongitudePlanet - Planet's longitude at current minute
+ * @param currentLongitudeSun - Sun's longitude at current minute
+ * @param previousLongitudePlanet - Planet's longitude at previous minute
+ * @param previousLongitudeSun - Sun's longitude at previous minute
+ * @returns True if planet just became visible as evening star
+ * @see {@link degreesByTwilight} for visibility threshold
+ */
 export function isEveningRise(args: {
   currentLongitudePlanet: number;
   currentLongitudeSun: number;
@@ -276,6 +398,21 @@ export function isEveningRise(args: {
   return isEveningRise;
 }
 
+/**
+ * Tests if current minute represents evening set (heliacal setting).
+ *
+ * Evening set occurs when a planet disappears into the Sun's glare,
+ * no longer visible after sunset. Detected when angular separation
+ * crosses below the civil twilight threshold while planet is east of Sun.
+ *
+ * @param args - Set detection parameters
+ * @param currentLongitudePlanet - Planet's longitude at current minute
+ * @param currentLongitudeSun - Sun's longitude at current minute
+ * @param previousLongitudePlanet - Planet's longitude at previous minute
+ * @param previousLongitudeSun - Sun's longitude at previous minute
+ * @returns True if planet just became invisible as evening star
+ * @see {@link degreesByTwilight} for visibility threshold
+ */
 export function isEveningSet(args: {
   currentLongitudePlanet: number;
   currentLongitudeSun: number;

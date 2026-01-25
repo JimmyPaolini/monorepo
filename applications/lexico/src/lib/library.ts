@@ -2,11 +2,21 @@ import { createServerFn } from "@tanstack/react-start";
 
 import { getSupabaseServerClient } from "./supabase-server";
 
+/**
+ * Represents a user's saved text in the library.
+ */
 /* eslint-disable @typescript-eslint/naming-convention */
+/**
+ *
+ */
 export interface UserText {
+  /** Text UUID */
   id: string;
+  /** Title of the text */
   title: string;
+  /** Content of the text */
   text: string;
+  /** ID of the user who owns the text */
   user_id: string;
 }
 /* eslint-enable @typescript-eslint/naming-convention */

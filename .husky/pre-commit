@@ -1,5 +1,3 @@
 set -e
 
-nx run monorepo:check-lockfile
-
-NODE_OPTIONS='--import=tsx' pnpm exec lint-staged
+NODE_OPTIONS='--import=tsx' pnpm exec lint-staged --no-stash

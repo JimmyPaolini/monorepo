@@ -13,34 +13,63 @@ import { Identifier } from "./identifier";
 import type { PartOfSpeech } from "../../lib/supabase";
 import type { ReactElement } from "react";
 
-// Inflection types matching database structure
+/**
+ * Inflection data for noun entries.
+ */
 export interface NounInflection {
+  /** Declension pattern (first, second, third, etc.) */
   declension?: string;
+  /** Grammatical gender (masculine, feminine, neuter) */
   gender?: string;
 }
 
+/**
+ * Inflection data for verb entries.
+ */
 export interface VerbInflection {
+  /** Conjugation pattern (first, second, third, fourth) */
   conjugation?: string;
 }
 
+/**
+ * Inflection data for adjective entries.
+ */
 export interface AdjectiveInflection {
+  /** Declension pattern */
   declension?: string;
+  /** Degree of comparison */
   degree?: string;
 }
 
+/**
+ * Inflection data for adverb entries.
+ */
 export interface AdverbInflection {
+  /** Adverb type */
   type?: string;
+  /** Degree of comparison */
   degree?: string;
 }
 
+/**
+ * Inflection data for preposition entries.
+ */
 export interface PrepositionInflection {
+  /** Grammatical case governed by the preposition */
   case?: string;
 }
 
+/**
+ * Inflection data for uninflected parts of speech.
+ */
 export interface Uninflected {
+  /** Additional classification */
   other?: string;
 }
 
+/**
+ * Union type for all inflection data structures.
+ */
 export type Inflection =
   | NounInflection
   | VerbInflection
@@ -49,13 +78,23 @@ export type Inflection =
   | PrepositionInflection
   | Uninflected;
 
-// Principal part structure from database
+/**
+ * Represents a principal part of a word (e.g., nominative, genitive for nouns).
+ */
 export interface PrincipalPart {
+  /** Name of the principal part */
   name: string;
+  /** Text forms of the principal part */
   text: string[];
 }
 
-// Get inflection label based on part of speech
+/**
+ * Gets a human-readable inflection label for display.
+ *
+ * @param inflection - Inflection data for the entry
+ * @param partOfSpeech - Part of speech of the entry
+ * @returns Formatted label string (e.g., "first declension, feminine")
+ */
 function getInflectionLabel(
   inflection: Inflection | null | undefined,
   partOfSpeech: PartOfSpeech,
@@ -98,7 +137,12 @@ function getInflectionLabel(
   return result;
 }
 
-// Get principal parts label
+/**
+ * Gets a formatted label from principal parts data.
+ *
+ * @param principalParts - Principal parts array or object
+ * @returns Comma-separated string of principal parts
+ */
 function getPrincipalPartsLabel(
   principalParts: PrincipalPart[] | Record<string, string | undefined>,
 ): string {
@@ -111,6 +155,9 @@ function getPrincipalPartsLabel(
   return Object.values(principalParts).filter(Boolean).join(", ");
 }
 
+/**
+ * Props for the PrincipalParts component that displays entry header information.
+ */
 export interface PrincipalPartsProps {
   bookmarked?: boolean | undefined;
   /** Callback when bookmark is toggled */
@@ -128,6 +175,12 @@ export interface PrincipalPartsProps {
   principalParts: PrincipalPart[] | Record<string, string | undefined>;
 }
 
+/**
+ * Component that displays principal parts, part of speech, and inflection info.
+ *
+ * @param props - Component props
+ * @returns React element
+ */
 export function PrincipalParts(props: PrincipalPartsProps): ReactElement {
   const {
     bookmarked,

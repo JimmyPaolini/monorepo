@@ -3,6 +3,9 @@ import * as React from "react";
 
 import { Identifier } from "./identifier";
 
+/**
+ * Position in the forms grid for border styling.
+ */
 export type FormCellPosition =
   | "topLeft"
   | "topRight"
@@ -11,6 +14,9 @@ export type FormCellPosition =
   | "bottomLeft"
   | "bottomRight";
 
+/**
+ * Props for the FormCell component that displays a single form with labels.
+ */
 export interface FormCellProps {
   /** Position in the grid for border styling */
   position?: FormCellPosition | undefined;

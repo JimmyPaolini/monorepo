@@ -3,7 +3,13 @@
   "ignoreExportsUsedInFile": true,
   "workspaces": {
     ".": {
-      "entry": ["scripts/**/*.{js,ts,sh}", "vitest.config.base.ts"],
+      "entry": [
+        "scripts/**/*.{js,ts,sh}",
+        "vitest.config.base.ts",
+        ".dependency-cruiser.cjs",
+        ".releaserc.json",
+        "validate-branch-name.config.cjs"
+      ],
       "project": "**/*.{js,ts,mjs,cjs}",
       "ignore": [
         "**/*.test.ts",
@@ -73,7 +79,8 @@
     "tools/code-generator": {
       "entry": "src/generators/*/generator.ts",
       "project": "src/**/*.ts",
-      "ignore": ["src/**/files/**", "src/**/*.test.ts"]
+      "ignore": ["src/**/files/**", "src/**/*.test.ts"],
+      "ignoreDependencies": ["react"]
     }
   },
   "ignoreWorkspaces": ["applications/JimmyPaolini"],
@@ -85,5 +92,20 @@
     "**/.nx/**",
     "**/coverage/**"
   ],
-  "ignoreDependencies": ["@nx/eslint-plugin", "@nx/js", "@nx/web", "tsx"]
+  "ignoreDependencies": [
+    "@nx/eslint-plugin",
+    "@nx/js",
+    "@nx/web",
+    "tsx",
+    "dependency-cruiser",
+    "type-coverage",
+    "license-checker",
+    "eslint-plugin-tsdoc",
+    "eslint-plugin-jsdoc",
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/github",
+    "@semantic-release/npm"
+  ],
+  "ignoreBinaries": ["depcruise", "terraform", "validate-branch-name"]
 }

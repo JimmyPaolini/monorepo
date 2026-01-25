@@ -41,6 +41,39 @@ const categories = ["Astronomy", "Astrology", "Annual Solar Cycle", "Solar"];
 
 // #region 📏 Annual Solar Cycle
 
+/**
+ * Detects annual solar cycle events at a specific minute.
+ *
+ * Identifies key solar positions throughout the year: solstices (longest/shortest
+ * days), equinoxes (equal day/night), cross-quarter days (Celtic festivals), and
+ * hexadecans (16-part division of the ecliptic). Uses the Sun's ecliptic longitude
+ * to determine precise crossing times.
+ *
+ * @param args - Configuration object
+ * @param sunCoordinateEphemeris - Pre-computed Sun position data
+ * @param currentMinute - The specific minute to analyze
+ * @returns Array of detected annual cycle events (0-1 events per minute)
+ * @see {@link getCoordinateFromEphemeris} for position retrieval
+ * @see {@link isVernalEquinox} for equinox detection algorithms
+ *
+ * @remarks
+ * Solar longitude markers:
+ * - 0° = Vernal Equinox
+ * - 90° = Summer Solstice
+ * - 180° = Autumnal Equinox
+ * - 270° = Winter Solstice
+ * - Cross-quarters at 45° increments (Beltane, Lammas, Samhain, Imbolc)
+ * - Hexadecans at 22.5° increments
+ *
+ * @example
+ * ```typescript
+ * const events = getAnnualSolarCycleEvents({
+ *   sunCoordinateEphemeris,
+ *   currentMinute: moment('2025-03-20T09:01')
+ * });
+ * Returns [vernalEquinoxEvent] when Sun crosses 0° longitude
+ * ```
+ */
 export function getAnnualSolarCycleEvents(args: {
   sunCoordinateEphemeris: CoordinateEphemeris;
   currentMinute: Moment;
@@ -119,6 +152,35 @@ export function getAnnualSolarCycleEvents(args: {
 
 // #region 🌞 Solar Apsis
 
+/**
+ * Detects solar apsis events (perihelion and aphelion).
+ *
+ * Identifies when Earth reaches its closest (perihelion) and farthest (aphelion)
+ * points from the Sun. These occur once per year and affect Earth's orbital speed
+ * and apparent solar diameter. Perihelion typically occurs in early January,
+ * aphelion in early July.
+ *
+ * @param args - Configuration object
+ * @param currentMinute - The specific minute to analyze
+ * @param sunDistanceEphemeris - Pre-computed Sun-Earth distance data
+ * @returns Array of detected apsis events (0-1 events per minute)
+ * @see {@link getDistanceFromEphemeris} for distance retrieval
+ * @see {@link isMaximum} for aphelion detection
+ * @see {@link isMinimum} for perihelion detection
+ *
+ * @remarks
+ * Perihelion: ~147.1 million km (Earth moving fastest, ~30.3 km/s)
+ * Aphelion: ~152.1 million km (Earth moving slowest, ~29.3 km/s)
+ *
+ * @example
+ * ```typescript
+ * const events = getSolarApsisEvents({
+ *   currentMinute: moment('2025-01-04T12:00'),
+ *   sunDistanceEphemeris
+ * });
+ * // Returns [perihelionEvent] when Earth is closest to Sun
+ * ```
+ */
 export function getSolarApsisEvents(args: {
   currentMinute: Moment;
   sunDistanceEphemeris: DistanceEphemeris;
@@ -165,6 +227,17 @@ export function getSolarApsisEvents(args: {
   return solarApsisEvents;
 }
 
+/**
+ * Creates an aphelion calendar event.
+ *
+ * Aphelion is Earth's farthest point from the Sun in its elliptical orbit.
+ * Occurs around July 4th annually. Earth moves slowest at aphelion due to
+ * Kepler's second law of planetary motion.
+ *
+ * @param date - Precise UTC time of aphelion
+ * @returns Calendar event for aphelion
+ * @see {@link isMaximum} for distance maximum detection
+ */
 export function getAphelionEvent(date: Date): Event {
   const description = "Solar Aphelion";
   const summary = `☀️ ❄️ ${description}`;
@@ -182,6 +255,17 @@ export function getAphelionEvent(date: Date): Event {
   return aphelionEvent;
 }
 
+/**
+ * Creates a perihelion calendar event.
+ *
+ * Perihelion is Earth's closest point to the Sun in its elliptical orbit.
+ * Occurs around January 3rd annually. Earth moves fastest at perihelion due to
+ * Kepler's second law of planetary motion.
+ *
+ * @param date - Precise UTC time of perihelion
+ * @returns Calendar event for perihelion
+ * @see {@link isMinimum} for distance minimum detection
+ */
 export function getPerihelionEvent(date: Date): Event {
   const description = "Solar Perihelion";
   const summary = `☀️ 🔥 ${description}`;
@@ -201,6 +285,19 @@ export function getPerihelionEvent(date: Date): Event {
 
 // #region 🕰️ Solstices, Equinoxes, Quarter days, Hexadecans
 
+/**
+ * Creates a vernal (spring) equinox calendar event.
+ *
+ * The vernal equinox marks the beginning of astronomical spring when the Sun
+ * crosses the celestial equator from south to north (ecliptic longitude 0°).
+ * Day and night are approximately equal length worldwide.
+ *
+ * @param date - Precise UTC time of vernal equinox
+ * @returns Calendar event for vernal equinox
+ * @see {@link isVernalEquinox} for detection algorithm
+ *
+ * @remarks Occurs around March 20-21 annually
+ */
 export function getVernalEquinoxEvent(date: Date): Event {
   const description = "Vernal Equinox";
   const summary = `🌸 ${description}`;
@@ -218,6 +315,16 @@ export function getVernalEquinoxEvent(date: Date): Event {
   return vernalEquinoxEvent;
 }
 
+/**
+ * Creates a first hexadecan calendar event.
+ *
+ * Hexadecans divide the ecliptic into 16 equal parts of 22.5° each.
+ * The first hexadecan occurs at solar longitude 22.5°.
+ *
+ * @param date - Precise UTC time of first hexadecan
+ * @returns Calendar event for first hexadecan
+ * @remarks Occurs approximately April 10th
+ */
 export function getFirstHexadecanEvent(date: Date): Event {
   const description = "First Hexadecan";
   const summary = `🌳 ${description}`;
@@ -234,6 +341,16 @@ export function getFirstHexadecanEvent(date: Date): Event {
   return firstHexadecanEvent;
 }
 
+/**
+ * Creates a Beltane calendar event.
+ *
+ * Beltane is a Celtic cross-quarter day marking the midpoint between spring
+ * equinox and summer solstice (solar longitude 45°). Traditional May Day celebration.
+ *
+ * @param date - Precise UTC time of Beltane
+ * @returns Calendar event for Beltane
+ * @remarks Occurs around May 5th annually
+ */
 export function getBeltaneEvent(date: Date): Event {
   const description = "Beltane";
   const summary = `🐦‍🔥 ${description}`;
@@ -251,6 +368,15 @@ export function getBeltaneEvent(date: Date): Event {
   return beltaneEvent;
 }
 
+/**
+ * Creates a third hexadecan calendar event.
+ *
+ * The third hexadecan occurs at solar longitude 67.5°.
+ *
+ * @param date - Precise UTC time of third hexadecan
+ * @returns Calendar event for third hexadecan
+ * @remarks Occurs approximately June 1st
+ */
 export function getThirdHexadecanEvent(date: Date): Event {
   const description = "Third Hexadecan";
   const summary = `🌻 ${description}`;
@@ -268,6 +394,17 @@ export function getThirdHexadecanEvent(date: Date): Event {
   return thirdHexadecanEvent;
 }
 
+/**
+ * Creates a summer solstice calendar event.
+ *
+ * The summer solstice marks the longest day of the year in the Northern Hemisphere
+ * when the Sun reaches its highest declination at ecliptic longitude 90°.
+ *
+ * @param date - Precise UTC time of summer solstice
+ * @returns Calendar event for summer solstice
+ * @see {@link isSummerSolstice} for detection algorithm
+ * @remarks Occurs around June 20-21 annually
+ */
 export function getSummerSolsticeEvent(date: Date): Event {
   const description = "Summer Solstice";
   const summary = `🌞 ${description}`;
@@ -285,6 +422,12 @@ export function getSummerSolsticeEvent(date: Date): Event {
   return summerSolsticeEvent;
 }
 
+/**
+ * Creates a fifth hexadecan calendar event at solar longitude 112.5°.
+ * @param date - Precise UTC time of fifth hexadecan
+ * @returns Calendar event for fifth hexadecan
+ * @remarks Occurs approximately July 22nd
+ */
 export function getFifthHexadecanEvent(date: Date): Event {
   const description = "Fifth Hexadecan";
   const summary = `⛱️ ${description}`;
@@ -302,6 +445,16 @@ export function getFifthHexadecanEvent(date: Date): Event {
   return fifthHexadecanEvent;
 }
 
+/**
+ * Creates a Lammas calendar event.
+ *
+ * Lammas (Lughnasadh) is a Celtic cross-quarter day marking the midpoint between
+ * summer solstice and autumn equinox (solar longitude 135°). Traditional harvest festival.
+ *
+ * @param date - Precise UTC time of Lammas
+ * @returns Calendar event for Lammas
+ * @remarks Occurs around August 7th annually
+ */
 export function getLammasEvent(date: Date): Event {
   const description = "Lammas";
   const summary = `🌾 ${description}`;
@@ -319,6 +472,12 @@ export function getLammasEvent(date: Date): Event {
   return lammasEvent;
 }
 
+/**
+ * Creates a seventh hexadecan calendar event at solar longitude 157.5°.
+ * @param date - Precise UTC time of seventh hexadecan
+ * @returns Calendar event for seventh hexadecan
+ * @remarks Occurs approximately September 12th
+ */
 export function getSeventhHexadecanEvent(date: Date): Event {
   const description = "Seventh Hexadecan";
   const summary = `🎑 ${description}`;
@@ -335,6 +494,18 @@ export function getSeventhHexadecanEvent(date: Date): Event {
   return seventhHexadecanEvent;
 }
 
+/**
+ * Creates an autumnal equinox calendar event.
+ *
+ * The autumnal equinox marks the beginning of astronomical autumn when the Sun
+ * crosses the celestial equator from north to south (ecliptic longitude 180°).
+ * Day and night are approximately equal length worldwide.
+ *
+ * @param date - Precise UTC time of autumnal equinox
+ * @returns Calendar event for autumnal equinox
+ * @see {@link isAutumnalEquinox} for detection algorithm
+ * @remarks Occurs around September 22-23 annually
+ */
 export function getAutumnalEquinoxEvent(date: Date): Event {
   const description = "Autumnal Equinox";
   const summary = `🍂 ${description}`;
@@ -352,6 +523,11 @@ export function getAutumnalEquinoxEvent(date: Date): Event {
   return autumnalEquinoxEvent;
 }
 
+/**
+ * Creates a ninth hexadecan calendar event at solar longitude 202.5°.
+ * @param date - Precise UTC time
+ * @returns Calendar event
+ */
 export function getNinthHexadecanEvent(date: Date): Event {
   const description = "Ninth Hexadecan";
   const summary = `🍁 ${description}`;
@@ -368,6 +544,14 @@ export function getNinthHexadecanEvent(date: Date): Event {
   return ninthHexadecanEvent;
 }
 
+/**
+ * Creates a Samhain calendar event.
+ *
+ * Celtic cross-quarter day at solar longitude 225°. Traditional Halloween/ancestor festival.
+ * @param date - Precise UTC time
+ * @returns Calendar event
+ * @remarks Occurs around November 7th
+ */
 export function getSamhainEvent(date: Date): Event {
   const description = "Samhain";
   const summary = `🎃 ${description}`;
@@ -385,6 +569,11 @@ export function getSamhainEvent(date: Date): Event {
   return samhainEvent;
 }
 
+/**
+ * Creates an eleventh hexadecan calendar event at solar longitude 247.5°.
+ * @param date - Precise UTC time
+ * @returns Calendar event
+ */
 export function getEleventhHexadecanEvent(date: Date): Event {
   const description = "Eleventh Hexadecan";
   const summary = `🧤 ${description}`;
@@ -401,6 +590,17 @@ export function getEleventhHexadecanEvent(date: Date): Event {
   return eleventhHexadecanEvent;
 }
 
+/**
+ * Creates a winter solstice calendar event.
+ *
+ * The winter solstice marks the shortest day in the Northern Hemisphere
+ * at ecliptic longitude 270°.
+ *
+ * @param date - Precise UTC time
+ * @returns Calendar event
+ * @see {@link isWinterSolstice}
+ * @remarks Occurs around December 21-22
+ */
 export function getWinterSolsticeEvent(date: Date): Event {
   const description = "Winter Solstice";
   const summary = `☃️ ${description}`;
@@ -418,6 +618,11 @@ export function getWinterSolsticeEvent(date: Date): Event {
   return winterSolsticeEvent;
 }
 
+/**
+ * Creates a thirteenth hexadecan calendar event at solar longitude 292.5°.
+ * @param date - Precise UTC time
+ * @returns Calendar event
+ */
 export function getThirteenthHexadecanEvent(date: Date): Event {
   const description = "Thirteenth Hexadecan";
   const summary = `❄️ ${description}`;
@@ -433,6 +638,14 @@ export function getThirteenthHexadecanEvent(date: Date): Event {
   return thirteenthHexadecanEvent;
 }
 
+/**
+ * Creates an Imbolc calendar event.
+ *
+ * Celtic cross-quarter day at solar longitude 315°. Traditional spring purification festival.
+ * @param date - Precise UTC time
+ * @returns Calendar event
+ * @remarks Occurs around February 4th
+ */
 export function getImbolcEvent(date: Date): Event {
   const description = "Imbolc";
   const summary = `🐑 ${description}`;
@@ -450,6 +663,11 @@ export function getImbolcEvent(date: Date): Event {
   return imbolcEvent;
 }
 
+/**
+ * Creates a fifteenth hexadecan calendar event at solar longitude 337.5°.
+ * @param date - Precise UTC time
+ * @returns Calendar event
+ */
 export function getFifteenthHexadecanEvent(date: Date): Event {
   const description = "Fifteenth Hexadecan";
   const summary = `🌨️ ${description}`;
@@ -467,6 +685,18 @@ export function getFifteenthHexadecanEvent(date: Date): Event {
   return fifteenthHexadecanEvent;
 }
 
+/**
+ * Writes annual solar cycle events to an iCalendar file.
+ *
+ * Generates a calendar file containing all solstices, equinoxes, cross-quarter days,
+ * and hexadecans for the specified date range.
+ *
+ * @param args - Configuration object
+ * @param annualSolarCycleEvents - Array of events to write
+ * @param start - Start date of event range
+ * @param end - End date of event range
+ * @see {@link getCalendar} for iCal generation
+ */
 export function writeAnnualSolarCycleEvents(args: {
   annualSolarCycleEvents: Event[];
   start: Date;
@@ -495,6 +725,21 @@ export function writeAnnualSolarCycleEvents(args: {
 
 // #region 🕑 Duration Events
 
+/**
+ * Generates duration events for Earth's orbit between apsis points.
+ *
+ * Creates two types of duration events based on Earth's orbital position:
+ * - Advancing: Aphelion to Perihelion (Earth moving closer to Sun, speeding up)
+ * - Retreating: Perihelion to Aphelion (Earth moving away from Sun, slowing down)
+ *
+ * @param events - Array of all solar events including apsis points
+ * @returns Array of duration events representing orbital segments
+ * @see {@link pairDurationEvents} for event pairing logic
+ *
+ * @remarks
+ * Based on Kepler's second law: planets sweep out equal areas in equal times,
+ * so Earth moves faster when closer to the Sun (perihelion).
+ */
 export function getSolarApsisDurationEvents(events: Event[]): Event[] {
   const durationEvents: Event[] = [];
 

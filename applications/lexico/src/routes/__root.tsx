@@ -1,4 +1,3 @@
-/// <reference types="vite/client" />
 import {
   Button,
   Sidebar,
@@ -87,6 +86,11 @@ export const Route = createRootRoute({
   notFoundComponent: NotFound,
 });
 
+/**
+ * 404 Not Found page component.
+ *
+ * @returns React node
+ */
 function NotFound(): ReactNode {
   return (
     <div className="flex min-h-[50vh] flex-col items-center justify-center text-center">
@@ -102,6 +106,11 @@ function NotFound(): ReactNode {
   );
 }
 
+/**
+ * Root component that wraps the entire application.
+ *
+ * @returns React node
+ */
 function RootComponent(): ReactNode {
   return (
     <RootDocument>
@@ -110,9 +119,22 @@ function RootComponent(): ReactNode {
   );
 }
 
-function RootDocument({
-  children,
-}: Readonly<{ children: ReactNode }>): ReactNode {
+/**
+ * Props for the RootDocument component.
+ */
+interface RootDocumentProps {
+  /** Child elements to render */
+  children: ReactNode;
+}
+
+/**
+ * Root document component that provides HTML structure and sidebar.
+ *
+ * @param props - Component props
+ * @returns React node
+ */
+function RootDocument(props: Readonly<RootDocumentProps>): ReactNode {
+  const { children } = props;
   const [open, setOpen] = useState(false);
 
   return (
@@ -146,11 +168,22 @@ function RootDocument({
   );
 }
 
-function AppSidebar({
-  onHoverChange,
-}: {
+/**
+ * Props for the AppSidebar component.
+ */
+interface AppSidebarProps {
+  /** Callback when hover state changes */
   onHoverChange: (hovered: boolean) => void;
-}): ReactNode {
+}
+
+/**
+ * Application sidebar component with navigation items.
+ *
+ * @param props - Component props
+ * @returns React node
+ */
+function AppSidebar(props: Readonly<AppSidebarProps>): ReactNode {
+  const { onHoverChange } = props;
   const matches = useMatches();
   const currentPath = matches[matches.length - 1]?.pathname ?? "/";
   const { isMobile } = useSidebar();

@@ -6,6 +6,7 @@
 
 # Dependencies 📦
 node_modules/
+.pnpm-store
 
 # Environment variables 🎛️
 .env
@@ -31,11 +32,19 @@ crash.log
 # Calendar files 📆
 *.ics
 
+# Subrepositories 📚
+applications/JimmyPaolini
+
+# Test Coverage 🧪
+coverage
+coverage/*
+
+# Type Coverage 🏷️
+type-coverage-report.txt
+**/type-coverage-report.txt
+
 # Other 🗑️
 tmp
 dist
-applications/JimmyPaolini
 applications/caelundas/output
-coverage
-coverage/*
 vite.config.*.timestamp*

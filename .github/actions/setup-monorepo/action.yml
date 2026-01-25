@@ -1,0 +1,40 @@
+name: 🕋 Setup Monorepo
+description: Nx monorepo setup with pnpm, node, and cache management (requires checkout first)
+
+runs:
+  using: composite
+  steps:
+    # Centralized version management - update here to upgrade all workflows
+    - name: 📦 Setup pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: 10.20.0
+
+    - name: 🟢 Setup node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22.20.0
+        cache: pnpm
+
+    - name: 🎯 Set NX SHAs
+      uses: nrwl/nx-set-shas@v4
+
+    - name: 🔧 Setup Homebrew
+      uses: Homebrew/actions/setup-homebrew@master
+
+    - name: 📄 Install yamllint
+      run: brew install yamllint
+      shell: bash
+
+    - name: ♻️ Restore/Save Nx cache
+      uses: actions/cache@v4
+      with:
+        path: .nx/cache
+        key: nx-cache-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ github.sha }}
+        restore-keys: |
+          nx-cache-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}-
+          nx-cache-${{ runner.os }}-
+
+    - name: 📚 Install Dependencies
+      run: pnpm install --frozen-lockfile
+      shell: bash

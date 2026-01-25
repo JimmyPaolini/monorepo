@@ -68,7 +68,7 @@ export const signOut = createServerFn({ method: "POST" }).handler(
  * Returns the URL to redirect the user to for authentication.
  *
  * TODO: Configure Google OAuth in Supabase dashboard:
- * 1. Go to Supabase Dashboard > Authentication > Providers
+ * 1. Go to Supabase Dashboard -\> Authentication -\> Providers
  * 2. Enable Google provider
  * 3. Add your Google OAuth credentials (Client ID and Secret)
  * 4. Configure the redirect URL in Google Cloud Console

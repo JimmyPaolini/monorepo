@@ -5,6 +5,20 @@
   "projectType": "application",
   "tags": [],
   "targets": {
+    "code-analysis": {
+      "options": {
+        "commands": [
+          "nx run caelundas:typecheck",
+          "nx run caelundas:lint:{args.configuration}",
+          "nx run caelundas:format:{args.configuration}",
+          "nx run caelundas:knip:{args.configuration}",
+          "nx run caelundas:type-coverage",
+          "nx run caelundas:markdown-lint:{args.configuration}",
+          "nx run caelundas:spell-check"
+        ]
+      }
+    },
+    "dependency-analysis": {},
     "develop": {
       "executor": "nx:run-commands",
       "options": {
@@ -12,77 +26,6 @@
         "cwd": "applications/caelundas"
       },
       "description": "Run Caelundas locally with .env file"
-    },
-    "start": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm start",
-        "cwd": "applications/caelundas"
-      },
-      "description": "Start the Caelundas application"
-    },
-    "typecheck": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "tsc --noEmit",
-        "cwd": "applications/caelundas"
-      },
-      "description": "Type-check the application without emitting files"
-    },
-    "format": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "prettier {args} applications/caelundas"
-      },
-      "description": "Format files in the project with Prettier"
-    },
-    "test": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm test",
-        "cwd": "applications/caelundas"
-      },
-      "description": "Run all tests"
-    },
-    "test:watch": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm test:watch",
-        "cwd": "applications/caelundas"
-      },
-      "description": "Run tests in watch mode"
-    },
-    "test:coverage": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm test:coverage",
-        "cwd": "applications/caelundas"
-      },
-      "description": "Run tests with coverage report"
-    },
-    "test:unit": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm test:unit",
-        "cwd": "applications/caelundas"
-      },
-      "description": "Run unit tests only"
-    },
-    "test:integration": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm test:integration",
-        "cwd": "applications/caelundas"
-      },
-      "description": "Run integration tests only"
-    },
-    "test:end-to-end": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm test:end-to-end",
-        "cwd": "applications/caelundas"
-      },
-      "description": "Run end-to-end tests only"
     },
     "docker-build": {
       "executor": "nx:run-commands",
@@ -100,6 +43,15 @@
       },
       "description": "Build and push Docker image to GitHub Container Registry"
     },
+    "format": {},
+    "helm-uninstall": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "./applications/caelundas/scripts/helm-uninstall.sh",
+        "cwd": "{workspaceRoot}"
+      },
+      "description": "Uninstall a Caelundas Helm release and clean up PVC (requires release name argument)"
+    },
     "helm-upgrade": {
       "executor": "nx:run-commands",
       "options": {
@@ -107,6 +59,15 @@
         "cwd": "{workspaceRoot}"
       },
       "description": "Deploy Caelundas job with Helm with auto-generated release name"
+    },
+    "knip": {},
+    "kubernetes-copy-files": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "./applications/caelundas/scripts/kubernetes-copy-files.sh",
+        "cwd": "{workspaceRoot}"
+      },
+      "description": "Copy files from a completed Caelundas job (requires release name argument)"
     },
     "kubernetes-list-files": {
       "executor": "nx:run-commands",
@@ -116,39 +77,43 @@
       },
       "description": "List files in a Caelundas job's PVC (requires release name argument)"
     },
-    "kubernetes-copy-files": {
+    "markdown-lint": {},
+    "spell-check": {},
+    "start": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "./applications/caelundas/scripts/kubernetes-copy-files.sh",
-        "cwd": "{workspaceRoot}"
+        "command": "pnpm start",
+        "cwd": "applications/caelundas"
       },
-      "description": "Copy files from a completed Caelundas job (requires release name argument)"
+      "description": "Start the Caelundas application"
     },
-    "helm-uninstall": {
+    "test": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "./applications/caelundas/scripts/helm-uninstall.sh",
-        "cwd": "{workspaceRoot}"
-      },
-      "description": "Uninstall a Caelundas Helm release and clean up PVC (requires release name argument)"
-    },
-    "knip": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace applications/caelundas",
-        "cwd": "{workspaceRoot}"
+        "command": "pnpm test",
+        "cwd": "applications/caelundas"
       },
       "configurations": {
-        "check": {
-          "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace applications/caelundas"
+        "watch": {
+          "command": "pnpm test:watch"
         },
-        "write": {
-          "command": "NODE_OPTIONS='--import=tsx/esm' knip --fix --workspace applications/caelundas"
+        "coverage": {
+          "command": "pnpm test:coverage"
+        },
+        "unit": {
+          "command": "pnpm test:unit"
+        },
+        "integration": {
+          "command": "pnpm test:integration"
+        },
+        "end-to-end": {
+          "command": "pnpm test:end-to-end"
         }
       },
-      "defaultConfiguration": "check",
-      "cache": true,
-      "description": "Check for unused files, dependencies, and exports"
-    }
+      "description": "Run all tests"
+    },
+    "type-coverage": {},
+    "typecheck": {},
+    "yaml-lint": {}
   }
 }

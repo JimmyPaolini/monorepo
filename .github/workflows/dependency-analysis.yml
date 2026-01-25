@@ -1,0 +1,42 @@
+name: 🕵️ Dependency Analysis
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  schedule:
+    - cron: "0 6 * * 1" # Weekly Monday 6am UTC
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  dependency-checks:
+    name: ${{ matrix.check.name }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        check:
+          - name: 🔗 Dependency Check
+            run: pnpm exec nx affected -t dependency-analysis --parallel=3
+
+          - name: 🔒 Security Audit
+            run: pnpm audit --audit-level=moderate
+
+          - name: 📃 License Check
+            run: pnpm exec nx run monorepo:license-check
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🕋 Setup Monorepo
+        uses: ./.github/actions/setup-monorepo
+
+      - name: ${{ matrix.check.name }}
+        run: ${{ matrix.check.run }}

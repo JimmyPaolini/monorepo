@@ -6,6 +6,12 @@ import { getOutputPath } from "./output.utilities";
 import type { Event } from "./calendar.utilities";
 import type { Body } from "./types";
 
+/**
+ * Database record structure for calendar events.
+ *
+ * Represents the schema of the `events` table. Differs from Event type by storing
+ * categories as CSV string and geographic data as separate latitude/longitude columns.
+ */
 interface EventRecord {
   summary: string;
   description: string;
@@ -20,11 +26,24 @@ interface EventRecord {
   color?: string;
 }
 
+/**
+ * Database connection promise for SQLite database.
+ *
+ * Created on module load, shared across all operations, stored in output directory.
+ */
 const databasePromise: Promise<Database> = open({
   filename: getOutputPath("database.db"),
   driver: sqlite3.Database,
 });
 
+/**
+ * Initializes the SQLite database schema for ephemeris and event caching.
+ *
+ * Creates tables and indices: ephemeris (planetary data), events (calendar events).
+ * Silently ignores SQLITE_MISUSE errors during initialization.
+ *
+ * @throws Error - SQLite errors other than SQLITE_MISUSE
+ */
 async function initializeDatabase(): Promise<void> {
   try {
     const db = await databasePromise;
@@ -91,6 +110,13 @@ void initializeDatabase();
 
 // #region Ephemeris
 
+/**
+ * Ephemeris data record for database storage.
+ *
+ * Represents a single ephemeris data point for a celestial body at a specific timestamp.
+ * Different ephemeris types populate different fields (coordinate, azimuthElevation,
+ * illumination, diameter, distance).
+ */
 export interface EphemerisRecord {
   body: Body;
   timestamp: Date;
@@ -108,6 +134,14 @@ export interface EphemerisRecord {
   distance?: number | undefined;
 }
 
+/**
+ * Inserts or updates ephemeris values in the database in batched transactions.
+ *
+ * Performs bulk upserts with automatic batching (96 records per batch) to respect
+ * SQLite's variable limit. Uses COALESCE to preserve existing non-NULL values.
+ *
+ * @param ephemerisValues - Array of ephemeris records to insert or update
+ */
 export async function upsertEphemerisValues(
   ephemerisValues: EphemerisRecord[],
 ): Promise<void> {
@@ -172,6 +206,19 @@ export async function upsertEphemerisValues(
   }
 }
 
+/**
+ * Types of ephemeris data available in the database.
+ *
+ * Each type corresponds to a specific set of fields in the ephemeris table:
+ * - `coordinate`: Ecliptic latitude and longitude
+ * - `azimuthElevation`: Horizontal coordinates (azimuth and elevation)
+ * - `illumination`: Percent of disk illuminated
+ * - `diameter`: Angular diameter in arcseconds
+ * - `distance`: Distance from Earth in astronomical units
+ *
+ * @see EphemerisRecord for the complete record structure
+ * @see getEphemerisRecords for type-specific queries
+ */
 export type EphemerisType =
   | "coordinate"
   | "azimuthElevation"
@@ -179,6 +226,44 @@ export type EphemerisType =
   | "diameter"
   | "distance";
 
+/**
+ * Retrieves ephemeris records for a specific body, time range, and data type.
+ *
+ * This function queries the SQLite cache for ephemeris data, filtering by
+ * ephemeris type to ensure only records with the required fields are returned.
+ * Results are ordered chronologically.
+ *
+ * @param args - Query parameters object with body, start, end, and type properties
+ * @returns Array of ephemeris records matching the query, sorted by timestamp
+ *
+ * @remarks
+ * **Performance note:**
+ * Queries include type-specific WHERE clauses to filter out incomplete records:
+ * - `coordinate`: Requires non-NULL latitude AND longitude
+ * - `azimuthElevation`: Requires non-NULL azimuth AND elevation
+ * - `illumination`: Requires non-NULL illumination
+ * - `diameter`: Requires non-NULL diameter
+ * - `distance`: Requires non-NULL distance
+ *
+ * **Use cases:**
+ * - Retrieving cached ephemeris to avoid redundant API calls
+ * - Loading data for aspect detection algorithms
+ * - Fetching specific data types for specialized calculations
+ *
+ * @see EphemerisType for available data types
+ * @see upsertEphemerisValues for populating the cache
+ *
+ * @example
+ * ```typescript
+ * const sunPositions = await getEphemerisRecords({
+ *   body: 'Sun',
+ *   start: new Date('2026-01-01'),
+ *   end: new Date('2026-01-31'),
+ *   type: 'coordinate'
+ * });
+ * // Returns array of Sun ephemeris with longitude/latitude for January 2026
+ * ```
+ */
 export async function getEphemerisRecords(args: {
   body: Body;
   start: Date;
@@ -244,6 +329,25 @@ export async function getEphemerisRecords(args: {
 
 // #region Events
 
+/**
+ * Converts a database event record to an application Event object.
+ *
+ * This helper function transforms the database representation (CSV categories,
+ * separate lat/lon columns) to the application format (array categories,
+ * geography object).
+ *
+ * @param row - Event record from database query
+ * @returns Event object for application use
+ *
+ * @remarks
+ * **Transformations:**
+ * - `categories`: Split CSV string into array
+ * - `geography`: Combine latitude/longitude into object (if both present)
+ * - Optional fields: Convert null to undefined
+ *
+ * @see EventRecord for database schema
+ * @see Event for application type
+ */
 function mapRowToEvent(row: EventRecord): Event {
   return {
     summary: row.summary,
@@ -262,6 +366,38 @@ function mapRowToEvent(row: EventRecord): Event {
   };
 }
 
+/**
+ * Inserts or updates a single event in the database.
+ *
+ * If an event with the same summary and start time exists, it is replaced
+ * with the new event data.
+ *
+ * @param event - Calendar event to insert or update
+ *
+ * @remarks
+ * **Primary key:** (summary, start)
+ * - Events are uniquely identified by their summary and start timestamp
+ * - Use {@link upsertEvents} for bulk operations (more efficient)
+ *
+ * **Data transformation:**
+ * - Categories array joined to CSV string
+ * - Geography object split into latitude/longitude columns
+ * - Undefined optional fields stored as NULL
+ *
+ * @see upsertEvents for bulk insertion (preferred for performance)
+ * @see Event for event structure
+ *
+ * @example
+ * ```typescript
+ * await upsertEvent({
+ *   summary: 'Sun conjunct Moon',
+ *   description: 'New Moon at 0° Aries',
+ *   start: new Date('2026-03-20T12:00:00Z'),
+ *   end: new Date('2026-03-20T18:00:00Z'),
+ *   categories: ['Astronomy', 'Lunar Phase'],
+ * });
+ * ```
+ */
 export async function upsertEvent(event: Event): Promise<void> {
   const db = await databasePromise;
   await db.run(
@@ -284,6 +420,40 @@ export async function upsertEvent(event: Event): Promise<void> {
   );
 }
 
+/**
+ * Inserts or updates multiple events in the database using batched transactions.
+ *
+ * This is the preferred method for bulk event insertion. It automatically
+ * batches the upserts to respect SQLite's parameter limit while maximizing
+ * throughput.
+ *
+ * @param events - Array of calendar events to insert or update
+ *
+ * @remarks
+ * **Performance optimization:**
+ * - Batches inserts to avoid SQLite's 999-variable limit
+ * - Batch size: 80 events (11 fields × 80 = 880 parameters)
+ * - Uses single transaction per batch for speed
+ *
+ * **Upsert behavior:**
+ * - ON CONFLICT: Replaces all fields of existing event
+ * - Primary key: (summary, start)
+ *
+ * **Empty array handling:**
+ * Returns immediately without database access if input is empty.
+ *
+ * @see upsertEvent for single event insertion
+ * @see Event for event structure
+ *
+ * @example
+ * ```typescript
+ * const events = [
+ *   { summary: 'Mars square Jupiter', start: new Date(), end: new Date(), ... },
+ *   { summary: 'Venus trine Saturn', start: new Date(), end: new Date(), ... },
+ * ];
+ * await upsertEvents(events); // Efficiently batched
+ * ```
+ */
 export async function upsertEvents(events: Event[]): Promise<void> {
   if (events.length === 0) {
     return;
@@ -335,6 +505,35 @@ export async function upsertEvents(events: Event[]): Promise<void> {
   }
 }
 
+/**
+ * Retrieves all events from the database, ordered chronologically.
+ *
+ * This function fetches the complete event set, sorted by start time.
+ * Use this for generating full calendar exports or analyzing all detected
+ * astronomical events.
+ *
+ * @returns Array of all calendar events, sorted by start time (ascending)
+ *
+ * @remarks
+ * **Performance consideration:**
+ * For large databases, consider filtering by date range or categories
+ * instead of fetching all events.
+ *
+ * **Use cases:**
+ * - Generating iCal calendar files
+ * - Exporting events to JSON
+ * - Analyzing complete event sets
+ *
+ * @see getActiveAspectsAt for time-specific queries
+ *
+ * @example
+ * ```typescript
+ * const allEvents = await getAllEvents();
+ * console.log(`Total events: ${allEvents.length}`);
+ * // Export to calendar format
+ * const ical = getCalendar(allEvents);
+ * ```
+ */
 export async function getAllEvents(): Promise<Event[]> {
   const db = await databasePromise;
   const rows = await db.all(
@@ -349,13 +548,47 @@ export async function getAllEvents(): Promise<Event[]> {
 }
 
 /**
- * Get active 2-body aspect events at a specific timestamp
- * Used for composing multi-body aspects from existing aspect relationships
+ * Retrieves all active 2-body aspect events at a specific timestamp.
  *
- * Note: Queries for "Simple Aspect" category to get 2-body aspects only,
- * excluding "Compound Aspect" (multi-body patterns like T-Squares, Grand Trines, etc.)
+ * This function queries for aspects that are active (ongoing) at the given
+ * timestamp, filtering for simple 2-body aspects only. It excludes compound
+ * multi-body patterns like Grand Trines, T-Squares, etc.
  *
- * Categories format: "Astronomy,Astrology,Simple Aspect,Major Aspect,Body1,Body2,AspectType,Phase"
+ * @param timestamp - The moment in time to query for active aspects
+ * @returns Array of active 2-body aspect events at the specified timestamp
+ *
+ * @remarks
+ * **Category filtering:**
+ * - Includes: Events with "Simple Aspect" category (2-body aspects)
+ * - Excludes: Events with "Compound Aspect" category (multi-body patterns)
+ *
+ * **Category format example:**
+ * `"Astronomy,Astrology,Simple Aspect,Major Aspect,Sun,Mars,Square,Applying"`
+ *
+ * **Active event criteria:**
+ * - Event start time ≤ timestamp
+ * - Event end time ≥ timestamp
+ *
+ * **Use cases:**
+ * - Composing multi-body aspect patterns from 2-body aspects
+ * - Determining which aspects are active for stellium detection
+ * - Caching aspect states for complex pattern recognition
+ *
+ * **Performance note:**
+ * Uses indexed queries on `categories`, `start`, and `end` columns for
+ * efficient temporal filtering.
+ *
+ * @see upsertEvents for storing aspect events
+ * @see Event for event structure
+ *
+ * @example
+ * ```typescript
+ * const activeAspects = await getActiveAspectsAt(new Date('2026-01-21T12:00:00Z'));
+ * // Returns: [Sun square Mars, Venus trine Jupiter, ...]
+ *
+ * // Use for composing compound patterns
+ * const grandTrines = detectGrandTrines(activeAspects);
+ * ```
  */
 export async function getActiveAspectsAt(timestamp: Date): Promise<Event[]> {
   const db = await databasePromise;
@@ -377,6 +610,34 @@ export async function getActiveAspectsAt(timestamp: Date): Promise<Event[]> {
 
 // #region Cleanup
 
+/**
+ * Closes the SQLite database connection.
+ *
+ * This function should be called at application shutdown to gracefully close
+ * the database connection and release resources.
+ *
+ * @remarks
+ * **Cleanup lifecycle:**
+ * - Call this in the application's shutdown handler
+ * - After closing, subsequent database operations will fail
+ * - Connection is shared across all database functions via {@link databasePromise}
+ *
+ * **Error handling:**
+ * Any errors during close are propagated to the caller.
+ *
+ * @see databasePromise for the connection being closed
+ *
+ * @example
+ * ```typescript
+ * // In main.ts cleanup
+ * try {
+ *   await closeConnection();
+ *   console.log('Database closed successfully');
+ * } catch (error) {
+ *   console.error('Error closing database:', error);
+ * }
+ * ```
+ */
 export async function closeConnection(): Promise<void> {
   const db = await databasePromise;
   await db.close();

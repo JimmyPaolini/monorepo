@@ -23,6 +23,11 @@ export const Route = createFileRoute("/word/$id")({
   component: WordPage,
 });
 
+/**
+ * Word detail page component that displays full entry information.
+ *
+ * @returns React node
+ */
 function WordPage(): ReactNode {
   const loaderData = Route.useLoaderData();
   const { entry } = loaderData;
