@@ -50,6 +50,7 @@ words:
   - vite
   - tailwindcss
   - photostructure
+  - Inbucket
   # Common TypeScript/JavaScript terms
   - typeof
   - instanceof
@@ -84,8 +85,11 @@ words:
   - biquintile
   - Mercurian
   - mercurian
+  - arcsecond
   - arcseconds
   - Arcseconds
+  - astrometric
+  - topocentric
   - EPHEM
   - Perifocus
   - Periapsis
@@ -107,6 +111,7 @@ words:
   - vevent
   - VEVENT
   - VTIMEZONE
+  - VALARM
   - PRODID
   - CALSCALE
   - CALNAME
@@ -130,6 +135,7 @@ words:
   - releaserc
   - ENOCHANGE
   - EINVALIDGHTOKEN
+  - ESOCKETTIMEDOUT
   # Infrastructure terms
   - kubernetes
   - kubectl
@@ -148,6 +154,8 @@ words:
   - repo
   - deps
   - devdeps
+  - TTFB
+  - WCAG
   # Technical terms
   - āēīōūȳ
   - ĀĒĪŌŪȲ

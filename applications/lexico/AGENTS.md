@@ -14,9 +14,10 @@ Lexico is a server-side rendered (SSR) Latin dictionary web application built wi
 
 ### Core Architecture Patterns
 
-**Server-Side Rendering (SSR)**
+#### Server-Side Rendering (SSR)
 
 All routes render on the server first, then hydrate on the client:
+
 - Initial page load: Full HTML rendered server-side (faster first paint, SEO-friendly)
 - Client-side navigation: React takes over (SPA-like experience)
 - Server functions: Type-safe RPC calls from client to server
@@ -39,7 +40,7 @@ routes/
 
 Generated route tree: [src/routeTree.gen.ts](src/routeTree.gen.ts) (auto-generated, never edit)
 
-**Authentication Flow**
+#### Authentication Flow
 
 ```text
 User → OAuth Provider (Google, GitHub) → Supabase Auth → Server Cookie → RLS Policies
@@ -49,23 +50,25 @@ Login Button                                          Authentication    Database
 Redirect to Provider → Callback → Set Cookie → getUser() → Query Data
 ```
 
-**Authentication Implementation**
+#### Authentication Implementation
 
 1. **Client-Side** ([src/lib/supabase.ts](src/lib/supabase.ts)): Browser Supabase client for OAuth redirects
 2. **Server-Side** ([src/lib/supabase-server.ts](src/lib/supabase-server.ts)): Cookie-based Supabase client for server functions
 3. **Auth Functions** ([src/lib/auth.ts](src/lib/auth.ts)): `getCurrentUser()`, `signOut()` server functions
 4. **Route Guards**: TanStack Router `beforeLoad` hooks check authentication state
 
-**Cookie-Based Sessions**
+#### Cookie-Based Sessions
 
 Supabase stores auth sessions in HTTP-only cookies:
+
 - **Security**: Cookies are HTTP-only (not accessible via JavaScript), secure (HTTPS only), SameSite=Lax
 - **SSR Compatibility**: Server functions read cookies from request headers, set cookies in response headers
 - **Auto-Refresh**: Supabase SSR library automatically refreshes expired tokens
 
-**Row-Level Security (RLS)**
+#### Row-Level Security (RLS)
 
 PostgreSQL RLS policies enforce data access rules:
+
 - Public data: Words, definitions, examples (no auth required)
 - Private data: Bookmarks, library entries, settings (user ID must match)
 - RLS policies: [supabase/migrations/20251203000002_rls_policies.sql](supabase/migrations/20251203000002_rls_policies.sql)
@@ -75,6 +78,7 @@ PostgreSQL RLS policies enforce data access rules:
 **Core Tables** (from migrations in [supabase/migrations/](supabase/migrations/))
 
 **`words`**: Latin word entries
+
 - `id` (bigint, PK): Unique word ID
 - `word` (text): Latin word headword
 - `part_of_speech` (text): Noun, verb, adjective, etc.
@@ -83,6 +87,7 @@ PostgreSQL RLS policies enforce data access rules:
 - `examples` (jsonb): Array of usage examples with translations
 
 **`user_bookmarks`**: User-saved words
+
 - `id` (uuid, PK): Unique bookmark ID
 - `user_id` (uuid, FK): References `auth.users(id)`
 - `word_id` (bigint, FK): References `words(id)`
@@ -90,6 +95,7 @@ PostgreSQL RLS policies enforce data access rules:
 - RLS: User can only access own bookmarks (`user_id = auth.uid()`)
 
 **`user_library`**: User's personal vocabulary lists
+
 - `id` (uuid, PK): Unique library entry ID
 - `user_id` (uuid, FK): References `auth.users(id)`
 - `word_id` (bigint, FK): References `words(id)`
@@ -99,6 +105,7 @@ PostgreSQL RLS policies enforce data access rules:
 - RLS: User can only access own library entries
 
 **`user_settings`**: User preferences
+
 - `user_id` (uuid, PK, FK): References `auth.users(id)`
 - `theme` (text): UI theme preference (light, dark, system)
 - `default_search_mode` (text): Latin-to-English or English-to-Latin
@@ -111,9 +118,10 @@ PostgreSQL RLS policies enforce data access rules:
 - `search_words_with_etymology(query text, mode text)`: Search including etymology field (added in [20251208000001_add_etymology_to_search.sql](supabase/migrations/20251208000001_add_etymology_to_search.sql))
 - `get_word_details(word_id bigint)`: Fetch word with related data (conjugations, declensions, derived words)
 
-**Type Generation**
+#### Type Generation
 
 Supabase schema → TypeScript types:
+
 ```bash
 nx run lexico:supabase:generate-types
 # Outputs: src/lib/database.types.ts
@@ -123,9 +131,10 @@ Types are auto-generated from local Supabase schema and used throughout the app 
 
 ### Supabase Architecture
 
-**Local Development Environment**
+#### Local Development Environment
 
 Supabase CLI runs Docker containers for local development:
+
 - **PostgreSQL**: Database server (port 54322)
 - **PostgREST**: Auto-generated REST API (port 54321)
 - **GoTrue**: Authentication server (port 54324)
@@ -142,7 +151,7 @@ Start local stack: `nx run lexico:supabase:start`
 - API settings: Max rows, schema exposure, CORS
 - Storage settings: File size limits, allowed MIME types
 
-**Migrations Workflow**
+#### Migrations Workflow
 
 1. **Make Schema Changes**: Edit database via Supabase Studio (http://localhost:54323)
 2. **Generate Migration**: `nx run lexico:supabase:database-diff` (creates SQL file in [supabase/migrations/](supabase/migrations/))
@@ -151,7 +160,7 @@ Start local stack: `nx run lexico:supabase:start`
 5. **Test Migration**: `nx run lexico:supabase:database-reset` (applies all migrations from scratch)
 6. **Commit Migration**: Add migration file to git
 
-**Migration Naming Convention**
+#### Migration Naming Convention
 
 `YYYYMMDDHHMMSS_description.sql` (e.g., `20251203000001_user_settings.sql`)
 
@@ -160,6 +169,7 @@ Supabase CLI generates timestamp automatically: `supabase db diff --use-migra-py
 **Seed Data** ([supabase/seed.sql](supabase/seed.sql))
 
 Populate development database with test data:
+
 - Sample words with definitions, etymology, examples
 - Test user accounts (via `auth.users` table inserts)
 - User bookmarks and library entries for testing
@@ -189,7 +199,7 @@ export const searchWords = createServerFn({ method: "GET" })
 const results = await searchWords({ query: 'amor', mode: 'latin' });
 ```
 
-**Server Function Patterns**
+#### Server Function Patterns
 
 - **Authentication**: Use `getSupabaseServerClient()` to access current user session
 - **Validation**: Use Zod schemas for input validation (throws 400 error on invalid input)
@@ -229,7 +239,7 @@ export const Route = createFileRoute('/bookmarks')({
 });
 ```
 
-**Preloading Strategies**
+#### Preloading Strategies
 
 - `defaultPreload: 'intent'`: Preload on hover/focus (set in [src/router.tsx](src/router.tsx))
 - Route-specific: Override per route with `preload: 'viewport'` or `preload: false`
@@ -239,12 +249,13 @@ export const Route = createFileRoute('/bookmarks')({
 **lexico-components** ([../../packages/lexico-components](../../packages/lexico-components))
 
 Shared React components built with shadcn/ui:
+
 - UI primitives: Button, Input, Card, Dialog, Dropdown
 - Form components: Label, Checkbox, RadioGroup, Select
 - Layout components: Container, Flex, Grid
 - Theme system: CSS variables, dark mode support
 
-**Import Pattern**
+#### Import Pattern
 
 ```typescript
 import { Button, Card, Input } from '@monorepo/lexico-components';
@@ -252,9 +263,10 @@ import { Button, Card, Input } from '@monorepo/lexico-components';
 
 **Never Duplicate Components**: Always import from lexico-components, never copy UI code into lexico
 
-**Theming**
+#### Theming
 
 Tailwind CSS with CSS variables defined in [src/index.css](src/index.css):
+
 - Light/dark mode via `data-theme` attribute
 - Color tokens: `--primary`, `--secondary`, `--accent`, `--muted`
 - Component-specific tokens: `--card-bg`, `--input-border`
@@ -264,6 +276,7 @@ Tailwind CSS with CSS variables defined in [src/index.css](src/index.css):
 **Search Functionality** ([src/lib/search.ts](src/lib/search.ts))
 
 Two search modes:
+
 - **Latin → English**: Search Latin headwords, return definitions
 - **English → Latin**: Search English definitions/etymology, return Latin words
 - **Full-text search**: PostgreSQL `ts_vector` indexes on `word`, `definitions`, `etymology`
@@ -271,6 +284,7 @@ Two search modes:
 **Bookmarks** ([src/lib/bookmarks.ts](src/lib/bookmarks.ts))
 
 Save words for quick reference:
+
 - Add bookmark: Insert into `user_bookmarks` (RLS enforces user ID match)
 - Remove bookmark: Delete from `user_bookmarks`
 - List bookmarks: Join `user_bookmarks` with `words` table
@@ -278,6 +292,7 @@ Save words for quick reference:
 **Library** ([src/lib/library.ts](src/lib/library.ts))
 
 Personal vocabulary management:
+
 - Add to library: Insert into `user_library` with notes and proficiency level
 - Update entry: Edit notes or proficiency
 - Remove from library: Delete from `user_library`
@@ -286,6 +301,7 @@ Personal vocabulary management:
 **Pronunciation** ([src/lib/pronunciation.ts](src/lib/pronunciation.ts))
 
 Text-to-speech for Latin words:
+
 - **Service**: AWS Polly (Latin voice)
 - **Caching**: Audio files stored in Supabase Storage
 - **Fallback**: Browser Web Speech API if AWS unavailable
@@ -293,6 +309,7 @@ Text-to-speech for Latin words:
 **User Settings** ([src/lib/forms.ts](src/lib/forms.ts))
 
 Persistent user preferences:
+
 - Theme (light/dark/system)
 - Default search mode
 - Pronunciation auto-play
@@ -302,12 +319,13 @@ Persistent user preferences:
 
 ### Local Development Setup
 
-**Prerequisites**
+#### Prerequisites
+
 - Docker (for Supabase local stack)
 - pnpm (for package management)
 - Supabase CLI (`brew install supabase/tap/supabase` on macOS)
 
-**Initial Setup**
+#### Initial Setup
 
 ```bash
 cd applications/lexico
@@ -347,13 +365,14 @@ AWS_POLLY_SECRET_ACCESS_KEY=<aws-secret-key>
 AWS_POLLY_REGION=us-east-1
 ```
 
-**Development Server**
+#### Development Server
 
 ```bash
 nx run lexico:develop    # Start with hot reload (port 3000)
 ```
 
 Features:
+
 - Hot reload: File changes trigger immediate rebuild
 - Server function updates: Automatically restart server
 - Type checking: Errors shown in terminal and browser
@@ -361,7 +380,7 @@ Features:
 
 ### Database Workflows
 
-**Making Schema Changes**
+#### Making Schema Changes
 
 1. **Edit Schema**: Use Supabase Studio (http://localhost:54323) or write SQL directly
 2. **Generate Migration**: `nx run lexico:supabase:database-diff`
@@ -371,7 +390,7 @@ Features:
 6. **Update Types**: `nx run lexico:supabase:generate-types`
 7. **Test Application**: Verify TypeScript errors resolved, queries work correctly
 
-**Migration Best Practices**
+#### Migration Best Practices
 
 - One migration per logical change (e.g., "add user settings table", "add etymology column")
 - Always include RLS policies for new tables with user data
@@ -379,7 +398,7 @@ Features:
 - Use `IF NOT EXISTS` for idempotent create statements (safe to re-run)
 - Test migrations on clean database before committing
 
-**Viewing Database**
+#### Viewing Database
 
 - **Supabase Studio**: http://localhost:54323 (visual editor, table browser)
 - **psql**: `supabase db shell` (PostgreSQL CLI)
@@ -387,7 +406,7 @@ Features:
 
 ### Testing Strategy
 
-**Type Checking**
+#### Type Checking
 
 ```bash
 nx run lexico:typecheck    # Full TypeScript compilation check (no output files)
@@ -395,13 +414,13 @@ nx run lexico:typecheck    # Full TypeScript compilation check (no output files)
 
 Strict mode enabled: `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `verbatimModuleSyntax`
 
-**Type Coverage**
+#### Type Coverage
 
 ```bash
 nx run lexico:type-coverage    # Check percentage of typed code (target: 99.36%)
 ```
 
-**Bundle Size Analysis**
+#### Bundle Size Analysis
 
 ```bash
 nx run lexico:build            # Build production bundle
@@ -409,10 +428,11 @@ nx run lexico:bundlesize       # Check size limits with size-limit
 ```
 
 Limits defined in [package.json](package.json):
+
 - Client JS (main bundle): 180 KB gzipped
 - Client CSS: 20 KB gzipped
 
-**Manual Testing Checklist**
+#### Manual Testing Checklist
 
 - [ ] Authentication: Sign in with Google, GitHub, sign out
 - [ ] Search: Latin → English, English → Latin, empty query handling
@@ -425,7 +445,7 @@ Limits defined in [package.json](package.json):
 
 ### Deployment
 
-**Production Supabase Setup**
+#### Production Supabase Setup
 
 1. **Create Supabase Project**: https://app.supabase.com (select region, tier)
 2. **Link CLI to Project**: `supabase link --project-ref <project-ref>`
@@ -435,7 +455,7 @@ Limits defined in [package.json](package.json):
    - GitHub: Add OAuth app client ID/secret in Supabase dashboard
 5. **Set Environment Variables**: Production `SUPABASE_URL` and `SUPABASE_ANON_KEY`
 
-**Build & Deploy Application**
+#### Build & Deploy Application
 
 ```bash
 # 1. Build production bundle
@@ -449,16 +469,17 @@ nx run lexico:bundlesize
 # (e.g., Vercel, Netlify, Cloudflare Pages, fly.io)
 ```
 
-**Deployment Platforms**
+#### Deployment Platforms
 
 - **Vercel**: Zero-config deployment (detects Vite + TanStack Start)
 - **Netlify**: Add `nitro` preset in [vite.config.mts](vite.config.mts)
 - **Cloudflare Pages**: Use Cloudflare Workers preset
 - **Self-hosted**: Deploy `.output/server/index.mjs` with Node.js
 
-**Environment Variables in Production**
+#### Environment Variables in Production
 
 Set in hosting platform dashboard:
+
 - `SUPABASE_URL`: Production Supabase project URL
 - `SUPABASE_ANON_KEY`: Public anonymous key (safe to expose)
 - `AWS_POLLY_*`: AWS credentials (if using pronunciation)
@@ -466,28 +487,28 @@ Set in hosting platform dashboard:
 
 ### Performance Optimization
 
-**SSR Optimizations**
+#### SSR Optimizations
 
 - **Streaming**: TanStack Start streams HTML as it's generated (faster TTFB)
 - **Selective Hydration**: Only interactive components hydrate on client
 - **Route-based Code Splitting**: Each route loaded on demand
 - **Preloading**: Hover/focus triggers route preload (instant navigation)
 
-**Database Query Optimization**
+#### Database Query Optimization
 
 - **Indexes**: Add indexes on frequently queried columns (e.g., `user_id`, `word_id`)
 - **Joins**: Use Supabase query builder to minimize round trips
 - **Pagination**: Use `range(start, end)` for large result sets
 - **RPC Functions**: Complex queries should use database functions for performance
 
-**Bundle Size Optimization**
+#### Bundle Size Optimization
 
 - **Tree Shaking**: Vite removes unused code automatically
 - **Code Splitting**: Dynamic imports for large dependencies (e.g., `lodash`)
 - **CSS Purging**: Tailwind removes unused classes in production
 - **Image Optimization**: Use WebP format, responsive images with `srcset`
 
-**Caching Strategies**
+#### Caching Strategies
 
 - **Server Functions**: Cache results with `cache: true` option
 - **Route Loaders**: TanStack Router caches loader data by route
@@ -496,7 +517,7 @@ Set in hosting platform dashboard:
 
 ## Troubleshooting
 
-**Supabase Local Stack Won't Start**
+### Supabase Local Stack Won't Start
 
 - **Symptom**: `supabase start` fails with Docker errors
 - **Cause**: Docker not running, or port conflicts
@@ -506,7 +527,7 @@ Set in hosting platform dashboard:
   3. Stop conflicting services or change ports in [supabase/config.toml](supabase/config.toml)
   4. Reset Supabase: `supabase stop --no-backup && supabase start`
 
-**Type Generation Fails**
+#### Type Generation Fails
 
 - **Symptom**: `nx run lexico:supabase:generate-types` errors
 - **Cause**: Local Supabase not running, or schema has errors
@@ -516,7 +537,7 @@ Set in hosting platform dashboard:
   3. Reset database: `nx run lexico:supabase:database-reset`
   4. Regenerate types: `nx run lexico:supabase:generate-types`
 
-**Authentication Redirects to Wrong URL**
+#### Authentication Redirects to Wrong URL
 
 - **Symptom**: OAuth callback fails, user not logged in
 - **Cause**: Site URL mismatch in Supabase settings
@@ -524,7 +545,7 @@ Set in hosting platform dashboard:
   1. Local: Verify `supabase/config.toml` has `site_url = "http://localhost:3000"`
   2. Production: Set Site URL in Supabase dashboard → Authentication → URL Configuration
 
-**RLS Policies Block Legitimate Queries**
+#### RLS Policies Block Legitimate Queries
 
 - **Symptom**: Database queries return empty results despite data existing
 - **Cause**: RLS policy not matching current user context
@@ -533,7 +554,7 @@ Set in hosting platform dashboard:
   2. Test without RLS: `supabase db shell`, run `SET request.jwt.claim.sub = '<user-id>';` then query
   3. Review policy: Check migration file for correct `auth.uid()` usage
 
-**Server Function Type Errors**
+#### Server Function Type Errors
 
 - **Symptom**: TypeScript errors when calling server functions from client
 - **Cause**: Type mismatch between server function definition and call site
@@ -542,7 +563,7 @@ Set in hosting platform dashboard:
   2. Check input validator: Zod schema must match call site arguments
   3. Restart dev server: Type changes require server restart
 
-**Build Fails with Module Not Found**
+#### Build Fails with Module Not Found
 
 - **Symptom**: `nx run lexico:build` errors with missing module
 - **Cause**: Import path incorrect, or file not included in build
@@ -553,13 +574,13 @@ Set in hosting platform dashboard:
 
 ## Code Patterns & Conventions
 
-**Server Function Organization**
+### Server Function Organization
 
 - One server function per file or group related functions
 - File location: `src/lib/<feature>.ts` (e.g., `search.ts`, `bookmarks.ts`, `library.ts`)
 - Export server functions, not internal helpers
 
-**Route File Structure**
+#### Route File Structure
 
 ```typescript
 // src/routes/example.tsx
@@ -590,7 +611,7 @@ function ExamplePage() {
 }
 ```
 
-**Database Query Patterns**
+#### Database Query Patterns
 
 ```typescript
 // Good: Type-safe with auto-generated types
@@ -610,7 +631,7 @@ const { data } = await supabase.rpc('search_words', {
 const { data } = await supabase.rpc('raw_sql', { sql: 'SELECT * FROM words' });
 ```
 
-**Error Handling**
+#### Error Handling
 
 ```typescript
 // Server functions: Throw errors for client to catch
@@ -632,7 +653,7 @@ try {
 }
 ```
 
-**Form Handling**
+#### Form Handling
 
 - Use Zod schemas for validation ([src/lib/forms.ts](src/lib/forms.ts))
 - Server functions validate input with `.validator()`

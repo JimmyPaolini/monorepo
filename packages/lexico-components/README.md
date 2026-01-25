@@ -347,6 +347,7 @@ All components follow WCAG 2.1 Level AA standards:
 - ✅ Color contrast (4.5:1 for text, 3:1 for UI)
 
 Built on Radix UI primitives which handle complex accessibility patterns automatically:
+
 - Focus trapping in dialogs
 - Roving focus in menus
 - Screen reader announcements
@@ -383,10 +384,12 @@ Set `data-theme` attribute on `<html>` or use ThemeProvider.
 ## Documentation
 
 For detailed architecture, component patterns, and development workflows:
+
 - **[AGENTS.md](AGENTS.md)**: Complete architectural documentation
 - **[Main AGENTS.md](../../AGENTS.md)**: Monorepo architecture and Nx workflows
 
 External resources:
+
 - [shadcn/ui Documentation](https://ui.shadcn.com/docs): Component reference and CLI
 - [Radix UI Documentation](https://www.radix-ui.com/primitives): Primitive APIs
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs): Utility classes

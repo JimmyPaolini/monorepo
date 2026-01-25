@@ -15,7 +15,7 @@ lexico-components is a shared React component library for the monorepo, providin
 
 ### Design Philosophy
 
-**Component Ownership Model**
+#### Component Ownership Model
 
 - **`src/components/ui/`**: **NEVER modify these files directly** - managed by shadcn CLI
 - **`src/components/`**: Custom components built on ui/ primitives (safe to create/edit)
@@ -27,19 +27,22 @@ lexico-components is a shared React component library for the monorepo, providin
 shadcn/ui is **not a traditional component library** - it's a CLI tool that generates component code. When you run `pnpx shadcn@latest add <component>`, it copies the component source into `src/components/ui/`. This means:
 
 ✅ **Pros**:
+
 - Full control over component code (no black-box dependencies)
 - Zero runtime overhead (no library wrapper)
 - Easy customization (edit the source directly)
 - Tree-shakeable (only bundle what you use)
 
 ⚠️ **Cons**:
+
 - Updates require re-running CLI command (overwrites your changes)
 - Must track upstream shadcn changes manually
 - Convention: **Never modify ui/ files, only compose them**
 
-**Theming Strategy**
+#### Theming Strategy
 
 CSS variables + Tailwind classes = flexible theming:
+
 - Light/dark mode via `data-theme` attribute
 - Color tokens: `--primary`, `--secondary`, `--accent`, `--muted`
 - Component-specific tokens: `--card`, `--input`, `--popover`
@@ -49,32 +52,38 @@ CSS variables + Tailwind classes = flexible theming:
 
 **Shadcn UI Components** (50+ components in [src/components/ui/](src/components/ui/))
 
-**Layout & Structure**
+#### Layout & Structure
+
 - Card, Separator, Resizable, Sidebar
 - Accordion, Collapsible, Tabs
 - Sheet (slide-over panel), Dialog (modal)
 
-**Form Controls**
+#### Form Controls
+
 - Input, Textarea, Select, Checkbox, Radio Group, Switch, Slider
 - Input OTP, Input Group, Field (form field wrapper)
 - Label, Form (react-hook-form integration)
 
-**Navigation**
+#### Navigation
+
 - Button, Button Group, Navigation Menu, Menubar
 - Breadcrumb, Pagination, Tabs
 - Context Menu, Dropdown Menu, Command (cmd+k menu)
 
-**Feedback & Status**
+#### Feedback & Status
+
 - Alert, Alert Dialog, Toast (Sonner)
 - Badge, Spinner, Skeleton, Progress
 - Tooltip, Hover Card, Popover
 
-**Data Display**
+#### Data Display
+
 - Table, Calendar, Chart (Recharts integration)
 - Avatar, Carousel, Aspect Ratio
 - Empty (empty state placeholder), Item (list item)
 
-**Utility**
+#### Utility
+
 - Scroll Area, Drawer (mobile-friendly bottom sheet)
 - Toggle, Toggle Group, Kbd (keyboard key display)
 
@@ -120,7 +129,7 @@ CSS variables + Tailwind classes = flexible theming:
 }
 ```
 
-**Using Theme Colors in Components**
+#### Using Theme Colors in Components
 
 ```tsx
 // Tailwind classes map to CSS variables
@@ -131,23 +140,24 @@ CSS variables + Tailwind classes = flexible theming:
 </div>
 ```
 
-**Customizing Colors**
+#### Customizing Colors
 
 1. **Edit CSS variables** in [src/styles/globals.css](src/styles/globals.css)
 2. **Keep HSL format**: `hue saturation lightness` (e.g., `0 0% 9%` for dark gray)
 3. **Update both light and dark modes**: Ensure contrast ratios meet WCAG standards
 4. **Use opacity modifiers**: `bg-primary/50` = 50% opacity
 
-**Gray Base Color**
+#### Gray Base Color
 
 shadcn config uses `gray` as base color (neutral, not warm or cool):
+
 - Defined in [components.json](components.json): `"baseColor": "gray"`
 - Used for: Backgrounds, borders, muted text, disabled states
 - Alternative: `slate` (cooler), `neutral` (warmer), `zinc` (bluer)
 
 ### Adding New Components
 
-**Adding Shadcn Components**
+#### Adding Shadcn Components
 
 ```bash
 # Navigate to package directory
@@ -166,6 +176,7 @@ pnpx shadcn@latest add
 ```
 
 This will:
+
 1. Download component source to `src/components/ui/<component-name>.tsx`
 2. Install required dependencies (e.g., `@radix-ui/react-dropdown-menu`)
 3. Update `package.json` with new dependencies
@@ -179,7 +190,7 @@ After adding a shadcn component, export it in the main index file:
 export * from "./components/ui/dropdown-menu";
 ```
 
-**Creating Custom Components**
+#### Creating Custom Components
 
 For project-specific components that compose ui/ primitives:
 
@@ -221,7 +232,7 @@ Then export from [src/index.ts](src/index.ts):
 export * from "./components/word-card";
 ```
 
-**Component Guidelines**
+#### Component Guidelines
 
 - **TypeScript**: All components must have typed props (no `any`)
 - **Accessibility**: Use ARIA attributes, keyboard navigation, focus management
@@ -231,7 +242,7 @@ export * from "./components/word-card";
 
 ### Usage in Applications
 
-**Import from Monorepo Package**
+#### Import from Monorepo Package
 
 ```tsx
 // In applications/lexico/src/routes/example.tsx
@@ -247,7 +258,7 @@ function ExamplePage() {
 }
 ```
 
-**Import Styles**
+#### Import Styles
 
 Root layout must import global styles:
 
@@ -256,7 +267,7 @@ Root layout must import global styles:
 import '@monorepo/lexico-components/styles/globals.css';
 ```
 
-**TypeScript Path Mapping**
+#### TypeScript Path Mapping
 
 Monorepo uses path alias defined in [tsconfig.base.json](../../tsconfig.base.json):
 
@@ -298,13 +309,14 @@ Monorepo uses path alias defined in [tsconfig.base.json](../../tsconfig.base.jso
 }
 ```
 
-**Style Variants**
+#### Style Variants
 
 shadcn offers two style variants:
+
 - **default**: Minimalist, flat design (tailwind-first)
 - **new-york**: Slightly more styled, shadowed, rounded (this package uses this)
 
-**Updating Shadcn Components**
+#### Updating Shadcn Components
 
 When shadcn releases updates:
 
@@ -323,7 +335,7 @@ nx run lexico-components:typecheck
 
 ### Development Workflows
 
-**Local Development**
+#### Local Development
 
 This package is a library, not a standalone app - develop in context of consuming applications:
 
@@ -339,7 +351,7 @@ nx run lexico:develop
 # Changes to lexico-components trigger hot reload in lexico
 ```
 
-**Building Library**
+#### Building Library
 
 ```bash
 nx run lexico-components:build
@@ -347,11 +359,12 @@ nx run lexico-components:build
 ```
 
 Build creates:
+
 - Bundled JavaScript (`index.js`)
 - TypeScript declarations (`index.d.ts`)
 - CSS bundle (`styles.css`)
 
-**Type Checking**
+#### Type Checking
 
 ```bash
 nx run lexico-components:typecheck
@@ -359,14 +372,14 @@ nx run lexico-components:typecheck
 
 Strict mode enabled: All props must be typed, no implicit any
 
-**Type Coverage**
+#### Type Coverage
 
 ```bash
 nx run lexico-components:type-coverage
 # Target: 99.84% (very high bar)
 ```
 
-**Bundle Size Analysis**
+#### Bundle Size Analysis
 
 ```bash
 nx run lexico-components:build
@@ -378,7 +391,7 @@ Size limit enforced via size-limit in [package.json](package.json)
 
 ### Performance Optimization
 
-**Tree Shaking**
+#### Tree Shaking
 
 Only imported components are bundled in consuming apps:
 
@@ -387,7 +400,7 @@ Only imported components are bundled in consuming apps:
 import { Button, Card } from '@monorepo/lexico-components';
 ```
 
-**Code Splitting**
+#### Code Splitting
 
 Large components can be lazy-loaded:
 
@@ -396,32 +409,35 @@ import { lazy } from 'react';
 const Chart = lazy(() => import('@monorepo/lexico-components').then(m => ({ default: m.Chart })));
 ```
 
-**CSS Optimization**
+#### CSS Optimization
 
 Tailwind purges unused styles in production:
+
 - Scans all component files for class names
 - Removes unused CSS (reduces file size by ~95%)
 - Configured in [tailwind.config.cjs](tailwind.config.cjs)
 
 ### Accessibility Standards
 
-**WCAG Compliance**
+#### WCAG Compliance
 
 All components follow WCAG 2.1 Level AA guidelines:
+
 - Keyboard navigation: Tab, Enter, Space, Arrow keys
 - Focus management: Visible focus indicators, logical tab order
 - ARIA attributes: `aria-label`, `aria-describedby`, `aria-expanded`
 - Color contrast: 4.5:1 for text, 3:1 for UI components
 
-**Radix UI Benefits**
+#### Radix UI Benefits
 
 Radix UI primitives handle accessibility automatically:
+
 - Focus trapping in dialogs/modals
 - Roving focus in menus/tabs
 - Screen reader announcements
 - Keyboard shortcuts (e.g., Escape to close)
 
-**Testing Accessibility**
+#### Testing Accessibility
 
 - Manual: Test with keyboard only (no mouse)
 - Automated: Use axe DevTools browser extension
@@ -429,7 +445,7 @@ Radix UI primitives handle accessibility automatically:
 
 ## Common Patterns
 
-**Variant-Based Components**
+### Variant-Based Components
 
 Use `class-variance-authority` (CVA) for variant patterns:
 
@@ -471,7 +487,7 @@ export function Button({ variant, size, className, ...props }: ButtonProps) {
 }
 ```
 
-**Composition Pattern**
+#### Composition Pattern
 
 Build complex components by composing primitives:
 
@@ -499,7 +515,7 @@ Build complex components by composing primitives:
 />
 ```
 
-**Polymorphic Components**
+#### Polymorphic Components
 
 Use `asChild` prop for rendering as different element:
 
@@ -520,7 +536,7 @@ export function Button({ asChild, ...props }: ButtonProps) {
 
 ## Troubleshooting
 
-**Component Import Errors**
+### Component Import Errors
 
 ```typescript
 // Error: Cannot find module '@monorepo/lexico-components'
@@ -537,7 +553,7 @@ export function Button({ asChild, ...props }: ButtonProps) {
 export * from "./components/ui/button";
 ```
 
-**Styles Not Applied**
+#### Styles Not Applied
 
 ```tsx
 // Error: Components render but have no styling
@@ -545,7 +561,7 @@ export * from "./components/ui/button";
 import '@monorepo/lexico-components/styles/globals.css';
 ```
 
-**Dark Mode Not Working**
+#### Dark Mode Not Working
 
 ```tsx
 // Error: Dark mode classes don't apply
@@ -560,7 +576,7 @@ import { ThemeProvider } from 'next-themes';
 </ThemeProvider>
 ```
 
-**Shadcn CLI Fails**
+#### Shadcn CLI Fails
 
 ```bash
 # Error: "Could not find components.json"
@@ -575,7 +591,7 @@ pnpx shadcn@latest add button
 }
 ```
 
-**Type Errors After Adding Component**
+#### Type Errors After Adding Components
 
 ```bash
 # Error: TypeScript can't find component types
@@ -586,7 +602,7 @@ pnpx shadcn@latest add button
 nx run lexico-components:build
 ```
 
-**Bundle Size Exceeds Limit**
+#### Bundle Size Exceeds Limit
 
 ```bash
 # Error: Bundle size 30 KB (limit: 25 KB)

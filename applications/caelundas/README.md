@@ -50,7 +50,7 @@ OUTPUT_FORMAT=ical             # Output format: ical or json
 EVENT_TYPES=majorAspects,phases,retrogrades,eclipses
 ```
 
-**Available Event Types**
+#### Available Event Types
 
 - `majorAspects`: Conjunctions, oppositions, squares, trines, sextiles
 - `minorAspects`: Semi-sextiles, quincunxes
@@ -164,6 +164,7 @@ src/
 ## Performance
 
 Typical execution times (1-year date range, all event types):
+
 - **First run** (empty cache): 8-12 minutes (NASA API calls dominate)
 - **Subsequent runs** (warm cache): 1-2 minutes (local computation only)
 
@@ -173,7 +174,7 @@ Ephemeris cache hit rate: ~95% for repeated runs on same date range.
 
 For in-depth architectural documentation, domain concepts, and development workflows, see [AGENTS.md](AGENTS.md).
 
-**Pipeline Overview**
+### Pipeline Overview
 
 ```text
 Input Validation → Ephemeris Retrieval → Event Detection → Duration Synthesis → iCal Output
@@ -181,6 +182,7 @@ Input Validation → Ephemeris Retrieval → Event Detection → Duration Synthe
 ```
 
 See [AGENTS.md](AGENTS.md) for:
+
 - NASA JPL Horizons API integration patterns
 - SQLite caching strategy
 - Event detection algorithms
@@ -192,10 +194,12 @@ See [AGENTS.md](AGENTS.md) for:
 ## Etymology
 
 **Caelundas** (Latin-inspired portmanteau):
+
 - *Caelum* (Latin): Sky, heavens
 - *Calendar* (English): System for organizing dates
 
 Alternative names considered:
+
 - **Caelendars**: Closer to "Calendars"
 - **Caelundae**: Latin feminine plural *-ae* ending
 - **Caelunday**: Latin root + "day" suffix

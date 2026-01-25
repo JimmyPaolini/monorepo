@@ -11,7 +11,7 @@ const config = {
       .join(",");
     // Nx runs multiple targets in parallel (respects nx.json parallel setting)
     return [
-      `nx affected --target=format,lint,typecheck --files=${relativePaths}`,
+      `nx affected --target=format,lint,typecheck,spell-check --files=${relativePaths}`,
       "nx run monorepo:spell-check",
     ];
   },
@@ -21,8 +21,18 @@ const config = {
       .map((file: string) => relative(process.cwd(), file))
       .join(",");
     return [
-      `nx affected --target=format --files=${relativePaths}`,
+      `nx affected --target=format,spell-check --files=${relativePaths}`,
       "nx run monorepo:spell-check",
+    ];
+  },
+
+  "*.{md,mdx}": (files: string[]) => {
+    const relativePaths = files
+      .map((file: string) => relative(process.cwd(), file))
+      .join(",");
+    return [
+      `nx affected --target=format,lint,markdown-lint,spell-check --files=${relativePaths}`,
+      "nx run-many --target=spell-check,markdown-lint --projects=monorepo",
     ];
   },
 
@@ -31,18 +41,8 @@ const config = {
       .map((file: string) => relative(process.cwd(), file))
       .join(",");
     return [
-      `nx affected --target=format,yaml-lint --files=${relativePaths}`,
+      `nx affected --target=format,yaml-lint,spell-check --files=${relativePaths}`,
       "nx run monorepo:spell-check",
-    ];
-  },
-
-  "*.md": (files: string[]) => {
-    const relativePaths = files
-      .map((file: string) => relative(process.cwd(), file))
-      .join(",");
-    return [
-      `nx affected --target=format,lint --files=${relativePaths}`,
-      "nx run-many --target=spell-check,markdown-lint --projects=monorepo",
     ];
   },
 };

@@ -114,7 +114,7 @@ nx run lexico:start
 
 ### Database Management
 
-**Making Schema Changes**
+#### Making Schema Changes
 
 ```bash
 # 1. Edit schema in Supabase Studio (http://localhost:54323)
@@ -132,7 +132,7 @@ nx run lexico:supabase:generate-types
 nx run lexico:supabase:database-reset
 ```
 
-**Viewing Database**
+#### Viewing Database
 
 - **Supabase Studio**: http://localhost:54323 (visual table editor)
 - **PostgreSQL CLI**: `supabase db shell` (direct SQL access)
@@ -187,21 +187,23 @@ nx run lexico:supabase:generate-types
 
 ### Key Patterns
 
-**Server-Side Rendering (SSR)**
+#### Server-Side Rendering (SSR)
 
 All routes render on the server first for fast initial load:
+
 - Server functions: Type-safe RPC calls from client to server
 - Route loaders: Fetch data before rendering (runs on server)
 - SSR benefits: Faster first paint, SEO-friendly, better perceived performance
 
-**File-Based Routing**
+#### File-Based Routing
 
 Routes are defined by file structure in `src/routes/`:
+
 - `src/routes/index.tsx` → `/`
 - `src/routes/search.tsx` → `/search`
 - `src/routes/word.$id.tsx` → `/word/:id` (dynamic parameter)
 
-**Authentication Flow**
+#### Authentication Flow
 
 1. User clicks "Sign in with Google/GitHub"
 2. Redirect to OAuth provider (Google/GitHub)
@@ -210,7 +212,7 @@ Routes are defined by file structure in `src/routes/`:
 5. Server functions read cookie to get authenticated user
 6. Database queries use Row-Level Security (RLS) policies
 
-**Database Access**
+#### Database Access
 
 - **Client-side**: Use `supabase.ts` client for OAuth redirects only
 - **Server-side**: Use `supabase-server.ts` client for all data queries
@@ -218,7 +220,7 @@ Routes are defined by file structure in `src/routes/`:
 
 ### Database Schema
 
-**Core Tables**
+#### Core Tables
 
 - `words`: Latin word entries (word, definitions, etymology, examples)
 - `user_bookmarks`: User-saved words (user_id, word_id)
@@ -251,16 +253,17 @@ nx run lexico:build
 # Output location: dist/applications/lexico/
 ```
 
-**Environment Variables (Production)**
+#### Environment Variables (Production)
 
 Set in hosting platform dashboard:
+
 - `SUPABASE_URL`: Production Supabase project URL
 - `SUPABASE_ANON_KEY`: Public anonymous key (safe to expose)
 - `AWS_POLLY_*`: Optional, for pronunciation feature
 
 ## Troubleshooting
 
-**Supabase Won't Start**
+### Supabase Won't Start
 
 ```bash
 # Verify Docker is running
@@ -271,7 +274,7 @@ supabase stop --no-backup
 supabase start
 ```
 
-**Type Errors After Schema Changes**
+#### Type Errors After Schema Changes
 
 ```bash
 # Regenerate types from updated schema
@@ -281,13 +284,13 @@ nx run lexico:supabase:generate-types
 # Press Ctrl+C and run `nx run lexico:develop` again
 ```
 
-**Authentication Not Working**
+#### Authentication Not Working
 
 1. Check `SUPABASE_URL` and `SUPABASE_ANON_KEY` in `.env`
 2. Verify Supabase is running: `supabase status`
 3. Check OAuth configuration in Supabase Studio → Authentication
 
-**Database Queries Return Empty**
+#### Database Queries Return Empty
 
 1. Verify RLS policies: May be blocking access incorrectly
 2. Check authentication: `getCurrentUser()` should return user object
@@ -296,11 +299,13 @@ nx run lexico:supabase:generate-types
 ## Documentation
 
 For in-depth architecture, development patterns, and troubleshooting:
+
 - **[AGENTS.md](AGENTS.md)**: Complete architectural documentation
 - **[lexico-components](../../packages/lexico-components)**: Shared UI components
 - **[Main AGENTS.md](../../AGENTS.md)**: Monorepo architecture and Nx workflows
 
 External resources:
+
 - [TanStack Start](https://tanstack.com/router/latest/docs/framework/react/start/overview): SSR framework
 - [Supabase](https://supabase.com/docs): Backend services
 - [TanStack Router](https://tanstack.com/router/latest): Client-side routing
