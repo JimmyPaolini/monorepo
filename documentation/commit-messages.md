@@ -231,6 +231,85 @@ Use /api/auth/login instead.
 Fixes #789
 ```
 
+## Git CLI Usage
+
+### Committing from the Command Line
+
+There are several ways to commit messages using git CLI:
+
+#### 1. Interactive Editor (Recommended for Multi-line Messages)
+
+```bash
+git commit
+```
+
+Opens your default editor (vim, nano, VS Code, etc.) where you can write the full commit message with proper formatting. This is the **most reliable method** for multi-line commits as it avoids shell quoting issues.
+
+#### 2. Single-line Commits
+
+```bash
+git commit -m "feat(monorepo): ✨ add new feature"
+```
+
+Use `-m` flag for simple commits with just a subject line. Great for quick commits without body or footer.
+
+#### 3. Multi-line Commits with Multiple `-m` Flags
+
+```bash
+git commit -m "feat(monorepo): ✨ add new feature" \
+           -m "This is the body paragraph explaining the change." \
+           -m "Fixes #123"
+```
+
+Each `-m` flag adds a new paragraph. Git automatically adds blank lines between paragraphs. **Note:** Be careful with shell quoting when using special characters or line breaks.
+
+#### 4. Heredoc for Complex Messages (Advanced)
+
+```bash
+git commit -F - << 'EOF'
+feat(monorepo): ✨ add yamllint integration
+
+Integrate yamllint across the monorepo to validate YAML
+files for consistent formatting and catch syntax errors.
+
+Changes:
+- Add .yamllint config with relaxed base rules
+- Integrate yamllint into GitHub Actions CI pipeline
+- Update lint-staged to run yaml-lint on staged files
+
+Fixes #123
+EOF
+```
+
+Useful for scripts or when you need precise control over formatting without invoking an editor.
+
+### Common Pitfalls
+
+❌ **Avoid:** Using newlines with `-m` flag in a single string:
+
+```bash
+# This doesn't work as expected
+git commit -m "feat(monorepo): ✨ add feature
+This is the body"
+```
+
+❌ **Avoid:** Unclosed quotes or complex shell escaping:
+
+```bash
+# Shell may interpret this incorrectly
+git commit -m "feat(monorepo): ✨ add feature" -m "Body with
+multiple lines"
+```
+
+✅ **Use instead:** Interactive editor (`git commit`) or heredoc for complex messages.
+
+### Tips
+
+- Configure your preferred editor: `git config --global core.editor "code --wait"`
+- Use `git commit --amend` to edit the last commit message
+- Use `git commit --verbose` to see the diff while writing the message
+- Test commit messages locally before pushing: `git log --oneline -1`
+
 ## Commitlint Rules Summary
 
 All rules defined in [../commitlint.config.ts](../commitlint.config.ts):
