@@ -2,10 +2,19 @@ import type { UserConfig } from "@commitlint/types";
 
 const configuration: UserConfig = {
   extends: ["@commitlint/config-conventional"],
+  plugins: ["commitlint-plugin-gitmoji", "commitlint-plugin-tense"],
   rules: {
-    // Allow emoji in subject (after the colon)
     "subject-exclamation-mark": [0],
-    // Type enforcement
+    "start-with-gitmoji": [2, "always"],
+
+    // 💬 Enforce present imperative verb tense
+    "tense/subject-tense": [
+      2,
+      "always",
+      { allowedTenses: "present-imperative" },
+    ],
+
+    // 🏷️ Type enforcement
     "type-enum": [
       2,
       "always",
@@ -24,21 +33,22 @@ const configuration: UserConfig = {
       ],
     ],
 
-    // Scope enforcement
+    // 🔭 Scope enforcement
     "scope-enum": [
       2,
       "always",
       [
+        // 🕋 Root
         "monorepo", // Workspace root
         "applications", // All applications
         "packages", // All packages
         "tools", // Build or development tooling
-        // Projects
+        // 🏢 Projects
         "caelundas", // Caelundas application
         "lexico", // Lexico application
         "lexico-components", // Lexico components package
         "JimmyPaolini", // JimmyPaolini application
-        // Other
+        // 🗑️ Other
         "documentation", // Documentation
         "dependencies", // Dependency updates
         "infrastructure", // Infrastructure changes
@@ -46,16 +56,16 @@ const configuration: UserConfig = {
       ],
     ],
 
-    // Length limits
+    // 📏 Length limits
     "header-max-length": [2, "always", 100],
     "body-max-length": [1, "always", 1000],
 
-    // Case enforcement
+    // 🔡 Case enforcement
     "type-case": [2, "always", "lower-case"],
     "scope-case": [2, "always", "lower-case"],
     "subject-case": [2, "always", "lower-case"],
 
-    // Format rules
+    // 🎨 Format rules
     "subject-full-stop": [2, "never", "."],
     "subject-empty": [2, "never"],
     "body-leading-blank": [2, "always"],

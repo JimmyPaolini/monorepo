@@ -11,9 +11,39 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  type-check:
-    name: 🏷️ Type Check
+  code-analysis:
+    name: 🧑‍💻 ${{ matrix.check.name }}
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        check:
+          - name: 🏷️ Type Check
+            run: npx nx affected -t typecheck --parallel=3
+            upload_artifacts: false
+
+          - name: 🧹 Lint Check
+            run: npx nx affected -t lint --parallel=3
+            upload_artifacts: false
+
+          - name: 🖼️ Markdown Lint
+            run: npx nx affected -t markdown-lint --parallel=3
+            upload_artifacts: false
+
+          - name: 🎨 Format Check
+            run: npx nx affected -t format --configuration=check --parallel=3
+            upload_artifacts: false
+
+          - name: ✂️ Knip Check
+            run: pnpm exec nx affected -t knip --parallel=3
+            upload_artifacts: false
+
+          - name: 🧙‍♂️ Spell Check
+            run: npx nx affected -t spell-check --parallel=3
+            upload_artifacts: false
+
+          - name: 🔖 Type Coverage
+            run: npx nx affected -t type-coverage --parallel=3
+            upload_artifacts: true
 
     steps:
       - name: 📥 Checkout Repository
@@ -24,108 +54,12 @@ jobs:
       - name: 🕋 Setup Monorepo
         uses: ./.github/actions/setup-monorepo
 
-      - name: 🏷️ Type Check
-        run: npx nx affected -t typecheck --parallel=3
-
-  lint-check:
-    name: 🧹 Lint Check
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: 📥 Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: 🕋 Setup Monorepo
-        uses: ./.github/actions/setup-monorepo
-
-      - name: 🧹 Lint Check
-        run: npx nx affected -t lint --parallel=3
-
-  markdown-lint:
-    name: 🖼️ Markdown Lint
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: 📥 Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: 🕋 Setup Monorepo
-        uses: ./.github/actions/setup-monorepo
-
-      - name: 🖼️ Markdown Lint
-        run: pnpm exec nx run monorepo:markdown-lint
-
-  format-check:
-    name: 🎨 Format Check
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: 📥 Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: 🕋 Setup Monorepo
-        uses: ./.github/actions/setup-monorepo
-
-      - name: 🎨 Format Check
-        run: npx nx affected -t format --configuration=check --parallel=3
-
-  knip-check:
-    name: ✂️ Knip Check
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: 📥 Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: 🕋 Setup Monorepo
-        uses: ./.github/actions/setup-monorepo
-
-      - name: ✂️ Knip Check
-        run: pnpm exec nx affected -t knip --parallel=3
-
-  spell-check:
-    name: 🧙‍♂️ Spell Check
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: 📥 Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: 🕋 Setup Monorepo
-        uses: ./.github/actions/setup-monorepo
-
-      - name: 🧙‍♂️ Spell Check
-        run: pnpm exec nx run monorepo:spell-check
-
-  type-coverage:
-    name: 🔖 Type Coverage
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: 📥 Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: 🕋 Setup Monorepo
-        uses: ./.github/actions/setup-monorepo
-
-      - name: 🔖 Type Coverage
-        run: npx nx affected -t type-coverage --parallel=3
+      - name: ${{ matrix.check.name }}
+        run: ${{ matrix.check.run }}
 
       - name: 📊 Upload Type Coverage
+        if: matrix.check.upload_artifacts && always()
         uses: actions/upload-artifact@v4
-        if: always()
         with:
           name: type-coverage-reports
           path: |

@@ -139,43 +139,46 @@
     "markdown-lint": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "markdownlint-cli2 \"**/*.md\"",
-        "cwd": "{workspaceRoot}"
+        "command": "markdownlint-cli2 '*.md' 'scripts/**/*.md' 'documentation/**/*.md' 'infrastructure/**/*.md'",
+        "cwd": "{projectRoot}"
       },
       "configurations": {
         "check": {
-          "command": "markdownlint-cli2 \"**/*.md\""
+          "command": "markdownlint-cli2 '*.md' 'scripts/**/*.md' 'documentation/**/*.md' 'infrastructure/**/*.md'"
         },
         "write": {
-          "command": "markdownlint-cli2 --fix \"**/*.md\""
+          "command": "markdownlint-cli2 --fix '*.md' 'scripts/**/*.md' 'documentation/**/*.md' 'infrastructure/**/*.md'"
         }
       },
       "defaultConfiguration": "check",
       "cache": true,
       "inputs": [
         "default",
-        "{workspaceRoot}/**/*.md",
+        "{projectRoot}/*.md",
+        "{projectRoot}/scripts/**/*.md",
+        "{projectRoot}/documentation/**/*.md",
+        "{projectRoot}/infrastructure/**/*.md",
         "{workspaceRoot}/.markdownlint-cli2.jsonc"
       ],
-      "description": "Lint markdown files across the entire codebase"
+      "description": "Lint markdown files in workspace root (scripts, documentation, infrastructure)"
     },
     "spell-check": {
       "executor": "nx:run-commands",
       "options": {
         "command": "cspell '*.{ts,tsx,js,jsx,md,yaml,yml,json}' 'scripts/**' 'documentation/**' 'infrastructure/**' 'planning/**' --no-progress",
-        "cwd": "{workspaceRoot}"
+        "cwd": "{projectRoot}"
       },
       "cache": true,
       "inputs": [
         "default",
-        "{workspaceRoot}/*.{ts,tsx,js,jsx,md,yaml,yml,json}",
-        "{workspaceRoot}/scripts/**",
-        "{workspaceRoot}/documentation/**",
-        "{workspaceRoot}/infrastructure/**",
-        "{workspaceRoot}/planning/**",
+        "{projectRoot}/*.{ts,tsx,js,jsx,md,yaml,yml,json}",
+        "{projectRoot}/scripts/**",
+        "{projectRoot}/documentation/**",
+        "{projectRoot}/infrastructure/**",
+        "{projectRoot}/planning/**",
         "{workspaceRoot}/cspell.config.yaml"
       ],
-      "description": "Check spelling in workspace root files only (excludes projects - use project-level spell-check for those)"
+      "description": "Check spelling in workspace root files (scripts, documentation, infrastructure, planning)"
     },
     "code-analysis": {
       "options": {
@@ -207,6 +210,20 @@
       "defaultConfiguration": "plan",
       "cache": false,
       "description": "Run Terraform commands (plan, import)"
+    },
+    "type-coverage": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "type-coverage --at-least 95 --detail --project tsconfig.json",
+        "cwd": "{projectRoot}"
+      },
+      "cache": true,
+      "inputs": [
+        "default",
+        "{projectRoot}/**/*.{ts,tsx}",
+        "{projectRoot}/tsconfig.json"
+      ],
+      "description": "Check TypeScript type coverage for workspace root (minimum 95%)"
     },
     "typecheck": {
       "description": "Type-check workspace root TypeScript files"

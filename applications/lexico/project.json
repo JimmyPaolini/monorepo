@@ -53,6 +53,7 @@
           "nx run lexico:knip:{args.configuration}",
           "nx run lexico:type-coverage",
           "nx run lexico:dependency-analysis",
+          "nx run lexico:markdown-lint:{args.configuration}",
           "nx run lexico:spell-check"
         ]
       }
@@ -99,6 +100,7 @@
     },
     "type-coverage": {},
     "typecheck": {},
-    "spell-check": {}
+    "spell-check": {},
+    "markdown-lint": {}
   }
 }

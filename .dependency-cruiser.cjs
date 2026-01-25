@@ -17,13 +17,16 @@ module.exports = {
       from: {
         orphan: true,
         pathNot: [
-          "(^|/)\\.[^/]+\\.(js|cjs|mjs|ts|cts|mts|json)$", // dot files
-          "\\.d\\.ts$",
-          "(^|/)tsconfig\\.json$",
+          "(^|/)\\.[^/]+\\.(js|cjs|mjs|ts|cts|mts|json)$",
           "(^|/)package\\.json$",
-          "^applications/.+/vitest\\.config\\.ts$",
+          "(^|/)tsconfig\\.json$",
+          "\\.d\\.ts$",
           "^applications/.+/project\\.json$",
+          "^applications/.+/vitest\\.config\\.ts$",
+          "^documentation/.*\\.md$",
           "^packages/.+/project\\.json$",
+          "^planning/.*\\.md$",
+          "^scripts/.*\\.sh$",
           "^tools/.+/project\\.json$",
         ],
       },
@@ -60,6 +63,17 @@ module.exports = {
       to: {
         dependencyTypes: ["npm-dev"],
         pathNot: ["node_modules/@types/"],
+      },
+    },
+    {
+      name: "no-esm-in-cjs",
+      severity: "error",
+      comment: "Don't import ESM in CommonJS files",
+      from: {
+        path: "\\.cjs$",
+      },
+      to: {
+        path: "\\.mjs$",
       },
     },
   ],

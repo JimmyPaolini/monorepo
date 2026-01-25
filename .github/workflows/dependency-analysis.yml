@@ -13,9 +13,21 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  dependency-analysis:
-    name: 🔗 Dependency Check
+  dependency-checks:
+    name: 🕵️ ${{ matrix.check.name }}
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        check:
+          - name: 🔗 Dependency Check
+            run: pnpm exec nx affected -t dependency-analysis --parallel=3
+
+          - name: 🔒 Security Audit
+            run: pnpm audit --audit-level=moderate
+
+          - name: 📃 License Check
+            run: pnpm exec nx run monorepo:license-check
 
     steps:
       - name: 📥 Checkout Repository
@@ -26,37 +38,5 @@ jobs:
       - name: 🕋 Setup Monorepo
         uses: ./.github/actions/setup-monorepo
 
-      - name: 🔗 Dependency Check
-        run: pnpm exec nx affected -t dependency-analysis --parallel=3
-
-  security-audit:
-    name: 🔒 Security Audit
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: 📥 Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: 🕋 Setup Monorepo
-        uses: ./.github/actions/setup-monorepo
-
-      - name: 🔒 Security Audit
-        run: pnpm audit --audit-level=moderate
-
-  license-check:
-    name: 📃 License Check
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: 📥 Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: 🕋 Setup Monorepo
-        uses: ./.github/actions/setup-monorepo
-
-      - name: 📃 License Check
-        run: pnpm exec nx run monorepo:license-check
+      - name: ${{ matrix.check.name }}
+        run: ${{ matrix.check.run }}

@@ -80,12 +80,11 @@
           "nx run caelundas:format:{args.configuration}",
           "nx run caelundas:knip:{args.configuration}",
           "nx run caelundas:type-coverage",
-          "nx run caelundas:type-coverage",
+          "nx run caelundas:markdown-lint:{args.configuration}",
           "nx run caelundas:spell-check"
         ]
       }
     },
-    "spell-check": {},
     "test": {
       "executor": "nx:run-commands",
       "options": {
@@ -135,6 +134,8 @@
       "description": "Run end-to-end tests only"
     },
     "type-coverage": {},
-    "typecheck": {}
+    "typecheck": {},
+    "markdown-lint": {},
+    "spell-check": {}
   }
 }

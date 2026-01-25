@@ -178,6 +178,28 @@
         "{workspaceRoot}/cspell.config.yaml"
       ],
       "cache": true
+    },
+    "markdown-lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "markdownlint-cli2 '{projectRoot}/**/*.md'",
+        "cwd": "{workspaceRoot}"
+      },
+      "inputs": [
+        "default",
+        "{projectRoot}/**/*.md",
+        "{workspaceRoot}/.markdownlint-cli2.jsonc"
+      ],
+      "cache": true,
+      "defaultConfiguration": "check",
+      "configurations": {
+        "check": {
+          "command": "markdownlint-cli2 '{projectRoot}/**/*.md'"
+        },
+        "write": {
+          "command": "markdownlint-cli2 --fix '{projectRoot}/**/*.md'"
+        }
+      }
     }
   },
   "parallel": 3,

@@ -124,6 +124,7 @@ words:
   - Hmmss
   # Git/CI terms
   - gitmoji
+  - Gitmojis
   - commitlint
   - husky
   # Infrastructure terms
