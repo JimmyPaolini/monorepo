@@ -1,0 +1,104 @@
+{
+  "$schema": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainer.base.schema.json",
+  "containerUser": "node",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "nrwl.angular-console",
+        "streetsidesoftware.code-spell-checker",
+        "eamodio.gitlens",
+        "ms-azuretools.vscode-docker",
+        "github.vscode-github-actions",
+        "redhat.vscode-yaml",
+        "mikestead.dotenv",
+        "vitest.explorer"
+      ],
+      "settings": {
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit",
+          "source.organizeImports": "never"
+        },
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "eslint.validate": [
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact",
+          "json",
+          "jsonc",
+          "yaml",
+          "markdown"
+        ],
+        "files.associations": {
+          "*.css": "tailwindcss"
+        },
+        "tailwindCSS.experimental.classRegex": [
+          ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+          ["cn\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+        ],
+        "typescript.preferences.importModuleSpecifier": "non-relative",
+        "typescript.tsdk": "node_modules/typescript/lib"
+      }
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+      "installDockerBuildx": true,
+      "installDockerComposeSwitch": true,
+      "moby": true,
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+      "helm": "latest",
+      "minikube": "none",
+      "version": "latest"
+    }
+  },
+  "forwardPorts": [3000, 54321, 54322, 54323, 54324, 54325],
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:22",
+  "name": "Monorepo Development",
+  "portsAttributes": {
+    "3000": {
+      "label": "Lexico Dev Server",
+      "onAutoForward": "notify"
+    },
+    "54321": {
+      "label": "Supabase API (PostgREST)",
+      "onAutoForward": "silent"
+    },
+    "54322": {
+      "label": "Supabase PostgreSQL",
+      "onAutoForward": "silent"
+    },
+    "54323": {
+      "label": "Supabase Studio",
+      "onAutoForward": "notify"
+    },
+    "54324": {
+      "label": "Supabase Inbucket (Email)",
+      "onAutoForward": "silent"
+    },
+    "54325": {
+      "label": "Supabase Analytics",
+      "onAutoForward": "silent"
+    }
+  },
+  "postAttachCommand": {
+    "verify-tools": "echo '📦 Node:' $(node --version) '| pnpm:' $(pnpm --version) '| Supabase:' $(supabase --version 2>/dev/null || echo 'not installed') '| gh:' $(gh --version | head -1) '| helm:' $(helm version --short)"
+  },
+  "postCreateCommand": {
+    "pnpm-install": "corepack enable && corepack prepare pnpm@10.20.0 --activate && pnpm install --frozen-lockfile",
+    "supabase-install": ".devcontainer/scripts/install-supabase.sh"
+  },
+  "remoteEnv": {
+    "NODE_OPTIONS": "--max-old-space-size=4096"
+  },
+  "remoteUser": "node"
+}

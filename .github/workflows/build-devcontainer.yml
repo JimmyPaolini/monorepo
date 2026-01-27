@@ -1,0 +1,83 @@
+name: 🐳 Build Devcontainer
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".devcontainer/**"
+  pull_request:
+    paths:
+      - ".devcontainer/**"
+  workflow_dispatch:
+    inputs:
+      run_tests:
+        description: "Run tests inside container"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  packages: write
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-devcontainer:
+    name: 🐳 Build Devcontainer
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🔐 Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🐳 Build Devcontainer
+        uses: devcontainers/ci@v0.3
+        with:
+          imageName: ghcr.io/jimmypaolini/monorepo-devcontainer
+          cacheFrom: ghcr.io/jimmypaolini/monorepo-devcontainer
+          push: filter
+          eventFilterForPush: |
+            push:
+              branches:
+                - main
+
+  test-devcontainer:
+    name: 🧪 Test Devcontainer
+    runs-on: ubuntu-latest
+    needs: build-devcontainer
+    if: |
+      github.event_name == 'workflow_dispatch' && github.event.inputs.run_tests == 'true' ||
+      contains(github.event.pull_request.labels.*.name, 'test-devcontainer')
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔐 Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🧪 Test Devcontainer
+        uses: devcontainers/ci@v0.3
+        with:
+          imageName: ghcr.io/jimmypaolini/monorepo-devcontainer
+          cacheFrom: ghcr.io/jimmypaolini/monorepo-devcontainer
+          push: never
+          runCmd: |
+            pnpm install --frozen-lockfile
+            pnpm exec nx run-many --target=lint --all --parallel=3
