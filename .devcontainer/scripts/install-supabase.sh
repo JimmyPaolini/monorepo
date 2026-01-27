@@ -25,9 +25,33 @@ check_existing_installation() {
     return 1
 }
 
+# Wait for network connectivity with retries
+wait_for_network() {
+    local max_attempts=10
+    local delay=3
+    local attempt=1
+
+    info "Waiting for network connectivity..."
+    while [[ ${attempt} -le ${max_attempts} ]]; do
+        if curl -fsSL --connect-timeout 5 -o /dev/null https://cli.supabase.com 2>/dev/null; then
+            success "Network is available"
+            return 0
+        fi
+        warn "Network not ready (attempt ${attempt}/${max_attempts}), retrying in ${delay}s..."
+        sleep ${delay}
+        ((attempt++))
+    done
+
+    error "Network connectivity check failed after ${max_attempts} attempts"
+    return 1
+}
+
 # Install Supabase CLI using official installation script
 install_supabase() {
     info "Installing Supabase CLI..."
+
+    # Wait for network before attempting installation
+    wait_for_network || return 1
 
     # Create installation directory
     mkdir -p "${INSTALL_DIR}"

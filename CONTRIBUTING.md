@@ -50,7 +50,7 @@ The fastest way to get started is using the included dev container, which provid
 | kubectl      | latest  | Kubernetes cluster management        |
 | Helm         | latest  | Kubernetes package manager           |
 | GitHub CLI   | latest  | Repository operations                |
-| Docker       | (host)  | Container operations via host socket |
+| Docker       | (DinD)  | Isolated Docker daemon in container  |
 
 **Port Forwarding:**
 

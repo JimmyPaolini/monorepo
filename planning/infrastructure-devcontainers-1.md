@@ -1,8 +1,8 @@
 ---
 goal: Implement Dev Container for Reproducible Development Environment
-version: 1.1
+version: 1.2
 date_created: 2026-01-26
-last_updated: 2026-01-26
+last_updated: 2026-01-27
 owner: Infrastructure
 status: "Completed"
 tags: [infrastructure, developer-experience, docker, devcontainers]
@@ -20,7 +20,7 @@ This plan implements a single Development Container (devcontainer) for the entir
 
 - **REQ-001**: Container must include Node.js 22.20.0 matching `engines.node` in root `package.json`
 - **REQ-002**: Container must include pnpm 10.20.0 matching `packageManager` in root `package.json`
-- **REQ-003**: Container must support Docker-outside-of-Docker (sibling containers) for running Supabase local stack (PostgreSQL, PostgREST, GoTrue containers) via host Docker socket mount
+- **REQ-003**: Container must support Docker-in-Docker (DinD) for running Supabase local stack (PostgreSQL, PostgREST, GoTrue containers) via isolated Docker daemon inside the container
 - **REQ-004**: Container must include Supabase CLI for database migrations and type generation
 - **REQ-005**: Container must include Helm and kubectl for caelundas Kubernetes deployments
 - **REQ-006**: Container must include GitHub CLI for repository operations
@@ -30,8 +30,9 @@ This plan implements a single Development Container (devcontainer) for the entir
 ### Security Requirements
 
 - **SEC-001**: Container must run as non-root user (`devcontainer` or `node`)
-- **SEC-002**: Docker socket mount (`/var/run/docker.sock`) must have appropriate permissions for non-root user
+- **SEC-002**: Docker-in-Docker daemon runs in privileged mode within container; no host socket exposure required
 - **SEC-003**: No secrets or credentials stored in devcontainer configuration files
+- **SEC-004**: Container isolation maintained - DinD daemon is completely separate from host Docker
 
 ### Constraints
 
@@ -60,15 +61,15 @@ This plan implements a single Development Container (devcontainer) for the entir
 
 - GOAL-001: Create devcontainer.json with Node.js, pnpm, and essential Features for all monorepo projects
 
-| Task     | Description                                                                                                    | Completed | Date       |
-| -------- | -------------------------------------------------------------------------------------------------------------- | --------- | ---------- |
-| TASK-001 | Create `.devcontainer/devcontainer.json` with `mcr.microsoft.com/devcontainers/typescript-node:22` base image  | ✅        | 2026-01-26 |
-| TASK-002 | Add Features: `docker-outside-of-docker:1`, `github-cli:1`, `kubectl-helm-minikube:1` (helm only, no minikube) | ✅        | 2026-01-26 |
-| TASK-003 | Configure `forwardPorts` array: `[3000, 54321, 54322, 54323, 54324, 54325]` with descriptive labels            | ✅        | 2026-01-26 |
-| TASK-004 | Add `postCreateCommand` object with parallel tasks: pnpm install, Supabase CLI install                         | ✅        | 2026-01-26 |
-| TASK-005 | Configure `customizations.vscode.extensions` array with required extension IDs                                 | ✅        | 2026-01-26 |
-| TASK-006 | Configure `customizations.vscode.settings` for formatOnSave, default formatter, eslint validation              | ✅        | 2026-01-26 |
-| TASK-007 | Set `remoteUser: node` and `containerUser: node` for non-root execution                                        | ✅        | 2026-01-26 |
+| Task     | Description                                                                                                   | Completed | Date       |
+| -------- | ------------------------------------------------------------------------------------------------------------- | --------- | ---------- |
+| TASK-001 | Create `.devcontainer/devcontainer.json` with `mcr.microsoft.com/devcontainers/typescript-node:22` base image | ✅        | 2026-01-26 |
+| TASK-002 | Add Features: `docker-in-docker:1`, `github-cli:1`, `kubectl-helm-minikube:1` (helm only, no minikube)        | ✅        | 2026-01-27 |
+| TASK-003 | Configure `forwardPorts` array: `[3000, 54321, 54322, 54323, 54324, 54325]` with descriptive labels           | ✅        | 2026-01-26 |
+| TASK-004 | Add `postCreateCommand` object with parallel tasks: pnpm install, Supabase CLI install                        | ✅        | 2026-01-26 |
+| TASK-005 | Configure `customizations.vscode.extensions` array with required extension IDs                                | ✅        | 2026-01-26 |
+| TASK-006 | Configure `customizations.vscode.settings` for formatOnSave, default formatter, eslint validation             | ✅        | 2026-01-26 |
+| TASK-007 | Set `remoteUser: node` and `containerUser: node` for non-root execution                                       | ✅        | 2026-01-26 |
 
 ### Implementation Phase 2: Supabase CLI Installation
 
@@ -104,19 +105,19 @@ This plan implements a single Development Container (devcontainer) for the entir
 
 ## 3. Alternatives
 
-- **ALT-001**: Docker-in-Docker (DinD) instead of sibling containers - rejected because DinD has higher overhead (nested daemon ~200-500MB RAM), slower startup, separate image cache (Supabase images download twice), and storage driver complexity; sibling containers via socket mount are faster and share host cache
+- **ALT-001**: Docker-outside-of-Docker (sibling containers) via host socket mount - rejected because GitHub Codespaces does not provide host socket access, DooD creates security concerns by exposing host Docker daemon, file permission issues between container and host can cause complications, and DinD provides better isolation and portability across all environments
 - **ALT-002**: Custom Dockerfile without devcontainer Features - rejected because Features provide modular, maintained tool installations with automatic updates and cross-platform support
 - **ALT-003**: Docker Compose for development environment - rejected because devcontainers integrate natively with VS Code/Codespaces and provide richer lifecycle hooks
 - **ALT-004**: Nix flakes for reproducible environments - rejected because team familiarity with Docker is higher and VS Code integration is more mature for devcontainers
 - **ALT-005**: asdf/mise version manager on host - rejected because it doesn't solve environment parity issues across different host operating systems
 - **ALT-006**: Per-project devcontainers (lexico, caelundas, etc.) - rejected because Nx monorepo development typically spans multiple projects simultaneously, shared tooling is more efficient, configuration maintenance is simplified with a single container, and Nx task orchestration benefits from unified access to all projects
-- **ALT-007**: Support GitHub Codespaces in v1 - deferred because Codespaces requires Docker-in-Docker (no host socket available), adding performance overhead; can be added later with separate config if needed
+- **ALT-007**: Continue using Docker-outside-of-Docker - rejected in favor of DinD for better portability and GitHub Codespaces compatibility without configuration changes
 
 ## 4. Dependencies
 
 - **DEP-001**: Docker Desktop or Docker Engine (Linux) - required for container execution
 - **DEP-002**: VS Code with Dev Containers extension (`ms-vscode-remote.remote-containers`) - required for local development
-- **DEP-003**: GitHub Codespaces - not supported in v1 (requires Docker-in-Docker, may be added later)
+- **DEP-003**: GitHub Codespaces - fully supported with Docker-in-Docker configuration
 - **DEP-004**: Microsoft devcontainer base images from `mcr.microsoft.com/devcontainers/` - foundation for container
 - **DEP-005**: Dev Container Features from `ghcr.io/devcontainers/features/` - modular tool installation
 - **DEP-006**: Supabase CLI binary - required for lexico database workflows
@@ -143,7 +144,7 @@ This plan implements a single Development Container (devcontainer) for the entir
 - **TEST-002**: Build devcontainer from scratch and verify completion under 5 minutes
 - **TEST-003**: Verify Node.js version `node --version` outputs `v22.20.0`
 - **TEST-004**: Verify pnpm version `pnpm --version` outputs `10.20.0`
-- **TEST-005**: Verify Docker socket access by running `docker run hello-world` inside container
+- **TEST-005**: Verify Docker-in-Docker daemon by running `docker run hello-world` inside container (uses isolated DinD daemon)
 - **TEST-006**: Verify Supabase CLI by running `supabase --version` inside container
 - **TEST-007**: Verify kubectl/helm by running `kubectl version --client` and `helm version` inside container
 - **TEST-008**: Verify GitHub CLI by running `gh --version` inside container
@@ -158,11 +159,13 @@ This plan implements a single Development Container (devcontainer) for the entir
 
 ### Risks
 
-- **RISK-001**: Docker socket permissions may prevent non-root container user from running Docker commands - Mitigation: `docker-outside-of-docker` Feature automatically adds user to docker group
+- **RISK-001**: DinD requires privileged container mode which has security implications - Mitigation: Container isolation is still maintained; privileged mode only affects the container, not the host
 - **RISK-002**: Large container image size (>5GB) increases initial pull time - Mitigation: Use multi-stage builds, prebuild and cache image on GHCR
 - **RISK-003**: Supabase CLI installation may fail on architecture mismatch - Mitigation: Use official install script which detects architecture
 - **RISK-004**: Port conflicts if host already runs services on forwarded ports - Mitigation: Document port requirements, use `onAutoForward: notify` for awareness
 - **RISK-005**: Apple Silicon (ARM64) compatibility issues with some tools - Mitigation: Test on M1/M2/M3 Macs, use `platform: linux/amd64` emulation if needed
+- **RISK-006**: DinD has separate image cache from host (~200-500MB RAM overhead, Supabase images download separately) - Mitigation: Use volume mounts for Docker data persistence, prebuild common images
+- **RISK-007**: DinD startup adds ~5-10 seconds to container initialization - Mitigation: Acceptable tradeoff for portability and Codespaces support
 
 ### Assumptions
 
@@ -170,7 +173,7 @@ This plan implements a single Development Container (devcontainer) for the entir
 - **ASSUMPTION-002**: Developers use VS Code as primary IDE (devcontainers work with JetBrains but configuration differs)
 - **ASSUMPTION-003**: Network connectivity available for pulling base images and Features from container registries
 - **ASSUMPTION-004**: Developers have at least 8GB RAM available for container and Supabase stack
-- **ASSUMPTION-005**: GitHub Codespaces usage is optional, not required for development
+- **ASSUMPTION-005**: GitHub Codespaces is optionally supported with the same configuration (no separate config needed)
 
 ## 8. Related Specifications / Further Reading
 
@@ -178,8 +181,8 @@ This plan implements a single Development Container (devcontainer) for the entir
 - [devcontainer.json Reference](https://containers.dev/implementors/json_reference/)
 - [Dev Container Features](https://containers.dev/features)
 - [Microsoft Dev Container Images](https://github.com/devcontainers/images)
-- [Docker-outside-of-Docker Feature](https://github.com/devcontainers/features/tree/main/src/docker-outside-of-docker)
-- [GitHub Codespaces Documentation](https://docs.github.com/en/codespaces) (not supported in v1, requires DinD)
+- [Docker-in-Docker Feature](https://github.com/devcontainers/features/tree/main/src/docker-in-docker)
+- [GitHub Codespaces Documentation](https://docs.github.com/en/codespaces) (fully supported with DinD)
 - [Supabase CLI Installation](https://supabase.com/docs/guides/cli)
 - [Monorepo AGENTS.md](../AGENTS.md) - Existing development workflow documentation
 - [Lexico AGENTS.md](../applications/lexico/AGENTS.md) - Supabase local development requirements
