@@ -6,14 +6,16 @@ const configuration: UserConfig = {
   extends: ["@commitlint/config-conventional"],
   plugins: ["commitlint-plugin-gitmoji", "commitlint-plugin-tense"],
   rules: {
+    // ❗
     "subject-exclamation-mark": [0],
+    // 😀 Enforce gitmoji at start of commit message
     "start-with-gitmoji": [2, "always"],
 
     // 💬 Enforce present imperative verb tense
     "tense/subject-tense": [
       2,
       "always",
-      { allowedTenses: "present-imperative" },
+      { allowedTenses: ["present-imperative"] },
     ],
 
     // 🏷️ Type enforcement
