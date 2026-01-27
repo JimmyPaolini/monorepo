@@ -89,6 +89,57 @@ For detailed architecture, workflows, and domain knowledge:
 - **[infrastructure/AGENTS.md](infrastructure/AGENTS.md)**: Helm charts, Terraform, Kubernetes deployment workflows
 - **[tools/code-generator/AGENTS.md](tools/code-generator/AGENTS.md)**: Generator development, template syntax, creating new generators
 
+### Git Workflow Rules
+
+#### Branch Naming (CRITICAL)
+
+Branch names **must** follow the pattern:
+
+```text
+<type>/<scope>-<description>
+```
+
+**All three parts are required.** The description must be kebab-case.
+
+| Component   | Valid Values                                                                                                                                                                                                                    |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| type        | `build`, `chore`, `ci`, `docs`, `feat`, `fix`, `perf`, `refactor`, `revert`, `style`, `test`                                                                                                                                    |
+| scope       | `monorepo`, `caelundas`, `lexico`, `lexico-components`, `JimmyPaolini`, `infrastructure`, `dependencies`, `documentation`, `applications`, `packages`, `tools`, `deployments`, `testing`, `linting`, `scripts`, `configuration` |
+| description | lowercase kebab-case, e.g., `user-auth`, `build-script`, `devcontainer`                                                                                                                                                         |
+
+**Examples:**
+
+```bash
+# ✅ CORRECT - includes type, scope, AND description
+git checkout -b feat/infrastructure-devcontainer
+git checkout -b fix/lexico-auth-redirect
+git checkout -b docs/caelundas-api-guide
+
+# ❌ WRONG - missing description
+git checkout -b feat/devcontainers        # No scope or description!
+git checkout -b feat/infrastructure       # Missing description!
+```
+
+Validation runs on `git push` via `.husky/pre-push` hook. See [documentation/branch-names.md](documentation/branch-names.md) for full details.
+
+#### Git Hooks (NEVER BYPASS)
+
+**Do NOT use `--no-verify` to skip git hooks.**
+
+```bash
+# ❌ NEVER DO THIS
+git commit --no-verify  # Bypasses linting, formatting, commitlint
+git push --no-verify    # Bypasses branch name validation
+
+# ✅ INSTEAD: Fix the underlying issue
+# - If linting fails: run `nx run-many --target=lint --all` and fix errors
+# - If formatting fails: run `pnpm format` to auto-fix
+# - If commitlint fails: fix the commit message format
+# - If branch name fails: rename the branch with `git branch -m <new-name>`
+```
+
+If a hook is genuinely broken (e.g., dependency issue), fix the hook configuration rather than bypassing it.
+
 ### Common Workflows
 
 #### Adding New Dependencies

@@ -29,6 +29,45 @@ nx run-many --target=lint --all      # Lint everything
 # Use Nx MCP tools when available (nx_workspace, nx_project_details, nx_docs)
 ```
 
+### Branch Naming (CRITICAL)
+
+Branch names **must** follow: `<type>/<scope>-<description>`
+
+**All three parts are required.** The description must be kebab-case.
+
+```bash
+# ✅ CORRECT
+git checkout -b feat/infrastructure-devcontainer
+git checkout -b fix/lexico-auth-redirect
+
+# ❌ WRONG - missing description
+git checkout -b feat/devcontainers        # No scope!
+git checkout -b feat/infrastructure       # Missing description!
+```
+
+| Component | Valid Values                                                                                                   |
+| --------- | -------------------------------------------------------------------------------------------------------------- |
+| type      | `build`, `chore`, `ci`, `docs`, `feat`, `fix`, `perf`, `refactor`, `revert`, `style`, `test`                   |
+| scope     | `monorepo`, `caelundas`, `lexico`, `lexico-components`, `JimmyPaolini`, `infrastructure`, `dependencies`, etc. |
+
+See [documentation/branch-names.md](documentation/branch-names.md) for full list of scopes.
+
+### Git Hooks (NEVER BYPASS)
+
+**NEVER use `--no-verify` to skip hooks.**
+
+```bash
+# ❌ NEVER DO THIS
+git commit --no-verify
+git push --no-verify
+
+# ✅ INSTEAD: Fix the underlying issue
+pnpm install              # If dependencies are missing
+nx run-many --target=lint # Fix lint errors
+pnpm format               # Auto-fix formatting
+git branch -m <new-name>  # Rename invalid branch
+```
+
 ### Pre-commit Automation
 
 Husky + lint-staged automatically runs on staged files:
