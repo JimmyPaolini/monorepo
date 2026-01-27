@@ -170,3 +170,22 @@ CI workflows use affected commands to test only changed projects:
 # Test only projects affected by changes since main branch
 nx affected --target=test --base=main
 ```
+
+### Dev Container Environment
+
+This monorepo includes a dev container for consistent, reproducible development environments.
+
+**Quick Start:**
+
+1. Open repo in VS Code with Dev Containers extension
+2. Click "Reopen in Container" when prompted
+3. Container includes: Node.js 22.20.0, pnpm 10.20.0, Supabase CLI, kubectl, Helm, GitHub CLI
+
+**When to use:**
+
+- New contributors getting started quickly
+- Ensuring consistent tooling versions across team
+- Avoiding "works on my machine" issues
+- Development on non-macOS systems
+
+See [.devcontainer/README.md](.devcontainer/README.md) for full configuration details and troubleshooting.
