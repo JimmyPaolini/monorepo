@@ -27,6 +27,23 @@ jobs:
             input_label: Pull Request Title
             command: echo "$PULL_REQUEST_TITLE" | pnpm exec commitlint
 
+          - name: 🪢 Pull Request Body Validation
+            input: $PULL_REQUEST_BODY
+            input_label: Pull Request Body
+            command: |
+              MISSING=""
+              echo "$PULL_REQUEST_BODY" | grep -q "^## Summary" || MISSING="$MISSING Summary"
+              echo "$PULL_REQUEST_BODY" | grep -q "^## Details" || MISSING="$MISSING Details"
+              echo "$PULL_REQUEST_BODY" | grep -q "^## Testing" || MISSING="$MISSING Testing"
+              if [ -n "$MISSING" ]; then
+                echo "❌ Missing required sections:$MISSING"
+                echo ""
+                echo "PR description must include: ## Summary, ## Details, ## Testing"
+                echo "See: .github/PULL_REQUEST_TEMPLATE.md"
+                exit 1
+              fi
+              echo "✅ All required sections present"
+
     steps:
       - name: 📥 Checkout Repository
         uses: actions/checkout@v4
@@ -38,6 +55,7 @@ jobs:
         env:
           BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
           PULL_REQUEST_TITLE: ${{ github.event.pull_request.title }}
+          PULL_REQUEST_BODY: ${{ github.event.pull_request.body }}
         run: |
           if [ -z "${{ matrix.input }}" ]; then
             echo "❌ Unable to determine ${{ matrix.input_label }}"

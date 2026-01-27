@@ -11,7 +11,7 @@ This is an **Nx monorepo** with strict TypeScript, pnpm workspace management, an
 Key architectural principles:
 
 - Nx handles all task execution (`nx run`, `nx affected`, never run tooling directly)
-- Shared TypeScript path mappings via [tsconfig.base.json](tsconfig.base.json)
+- Shared TypeScript path mappings via [tsconfig.base.json](../tsconfig.base.json)
 - Type-safe imports enforced with `verbatimModuleSyntax` and `consistent-type-imports`
 - Strict null checks enabled: `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`
 
@@ -50,7 +50,7 @@ git checkout -b feat/infrastructure       # Missing description!
 | type      | `build`, `chore`, `ci`, `docs`, `feat`, `fix`, `perf`, `refactor`, `revert`, `style`, `test`                   |
 | scope     | `monorepo`, `caelundas`, `lexico`, `lexico-components`, `JimmyPaolini`, `infrastructure`, `dependencies`, etc. |
 
-See [documentation/branch-names.md](documentation/branch-names.md) for full list of scopes.
+See [branch-naming skill](../documentation/skills/branch-naming/SKILL.md) for full list of scopes.
 
 ### Git Hooks (NEVER BYPASS)
 
@@ -78,7 +78,7 @@ Husky + lint-staged automatically runs on staged files:
 
 Commits must follow [Conventional Commits](https://www.conventionalcommits.org/)
 with gitmoji prefixes. Valid scopes are defined in
-[commitlint.config.ts](commitlint.config.ts): `monorepo`, `caelundas`, `lexico`,
+[commitlint.config.ts](../commitlint.config.ts): `monorepo`, `caelundas`, `lexico`,
 `lexico-components`, `JimmyPaolini`, `documentation`, `dependencies`,
 `infrastructure`, `ci`.
 
@@ -120,7 +120,7 @@ nx run caelundas:helm-upgrade         # Deploys to k8s with auto-generated name
 nx run caelundas:kubernetes-copy-files # Retrieves output from completed job
 ```
 
-Uses [infrastructure/helm/kubernetes-job](infrastructure/helm/kubernetes-job) chart. Jobs mount PVCs for input/output.
+Uses [infrastructure/helm/kubernetes-job](../infrastructure/helm/kubernetes-job) chart. Jobs mount PVCs for input/output.
 
 ## Code Conventions
 
@@ -170,7 +170,7 @@ Run specific types: `nx run caelundas:test:unit`
 - Calculates planetary positions and aspects using NASA JPL data
 - Event types: Major/minor/specialty aspects, stelliums, solar cycles
 - Timezone-aware calculations using `moment-timezone` and `@photostructure/tz-lookup`
-- Output formats: iCal, JSON (see [output.utilities.ts](applications/caelundas/src/output.utilities.ts))
+- Output formats: iCal, JSON (see [output.utilities.ts](../applications/caelundas/src/output.utilities.ts))
 - Database: SQLite for caching ephemerides and active aspects
 
 ### lexico Component Library
@@ -199,16 +199,16 @@ All workflows use `nrwl/nx-set-shas` to calculate affected projects from git dif
 
 1. **Don't bypass Nx**: Running `pnpm test` directly skips caching and dependency checks
 2. **TypeScript strictness**: Index signatures require null checks (`arr[0]?.prop` not `arr[0].prop`)
-3. **ESLint in JS files**: Type-checked rules disabled for `.js` config files (see [eslint.config.base.ts](eslint.config.base.ts))
+3. **ESLint in JS files**: Type-checked rules disabled for `.js` config files (see [eslint.config.base.ts](../eslint.config.base.ts))
 4. **Supabase types**: Regenerate after every schema change or migrations will fail type checking
 5. **Docker platform**: Always build for linux/amd64 when deploying to k8s (Apple Silicon mismatch)
 6. **Shadcn updates**: Use `pnpx shadcn@latest add <component>` in lexico-components, never edit ui/ directly
 
 ## Key Files
 
-- [nx.json](nx.json): Task defaults, caching, affected computation
-- [tsconfig.base.json](tsconfig.base.json): Path mappings for monorepo packages
-- [eslint.config.base.ts](eslint.config.base.ts): Flat config with strict rules, import sorting
-- [AGENTS.md](AGENTS.md): Nx-specific MCP tool guidance
-- [applications/caelundas/src/main.ts](applications/caelundas/src/main.ts): Ephemeris pipeline entry point
-- [packages/lexico-components/components.json](packages/lexico-components/components.json): shadcn configuration
+- [nx.json](../nx.json): Task defaults, caching, affected computation
+- [tsconfig.base.json](../tsconfig.base.json): Path mappings for monorepo packages
+- [eslint.config.base.ts](../eslint.config.base.ts): Flat config with strict rules, import sorting
+- [AGENTS.md](../AGENTS.md): Nx-specific MCP tool guidance
+- [applications/caelundas/src/main.ts](../applications/caelundas/src/main.ts): Ephemeris pipeline entry point
+- [packages/lexico-components/components.json](../packages/lexico-components/components.json): shadcn configuration

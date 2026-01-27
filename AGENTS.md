@@ -120,7 +120,7 @@ git checkout -b feat/devcontainers        # No scope or description!
 git checkout -b feat/infrastructure       # Missing description!
 ```
 
-Validation runs on `git push` via `.husky/pre-push` hook. See [documentation/branch-names.md](documentation/branch-names.md) for full details.
+Validation runs on `git push` via `.husky/pre-push` hook. See [branch-naming skill](.github/skills/branch-naming/SKILL.md) for full details.
 
 #### Git Hooks (NEVER BYPASS)
 
