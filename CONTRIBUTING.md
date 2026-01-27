@@ -150,7 +150,7 @@ See [eslint.config.base.ts](eslint.config.base.ts) for complete rules.
 
 **Examples**: `feat/lexico-user-auth`, `fix/monorepo-routing`, `docs/caelundas-api`
 
-Validated by Husky pre-push hook and GitHub Actions. See [branch-names.md](documentation/branch-names.md) for details.
+Validated by Husky pre-push hook and GitHub Actions. See [branch-naming skill](.github/skills/branch-naming/SKILL.md) for details.
 
 ## Commit Guidelines
 
