@@ -216,9 +216,7 @@
         "cSpell.diagnosticLevelFlaggedWords": "Information",
         "cSpell.enabled": true,
         "cSpell.hideIssuesWhileTyping": "Line",
-        "cSpell.import": [
-          "${workspaceFolder}/cspell.config.yaml"
-        ],
+        "cSpell.import": ["${workspaceFolder}/cspell.config.yaml"],
         "cSpell.maxDuplicateProblems": 5,
         "cSpell.numSuggestions": 3,
         "cSpell.revealIssuesAfterDelayMS": 2500,
@@ -232,11 +230,7 @@
         "database-client.queryWithSchema": true,
         "database-client.showTrigger": true,
         "database-client.splitEditorWhenQuery": false,
-        "database-client.variableIndicator": [
-          ":",
-          "$",
-          "@"
-        ],
+        "database-client.variableIndicator": [":", "$", "@"],
         "editor.acceptSuggestionOnCommitCharacter": false,
         "editor.codeActionsOnSave": {
           "source.fixAll.eslint": "explicit",
@@ -272,10 +266,7 @@
         "editor.minimap.sectionHeaderFontSize": 10,
         "editor.minimap.sectionHeaderLetterSpacing": 1,
         "editor.minimap.showSlider": "always",
-        "editor.rulers": [
-          80,
-          120
-        ],
+        "editor.rulers": [80, 120],
         "editor.scrollBeyondLastLine": false,
         "editor.showFoldingControls": "always",
         "editor.stickyScroll.defaultModel": "outlineModel",
@@ -406,10 +397,7 @@
         "githubPullRequests.experimental.useQuickChat": true,
         "githubPullRequests.fileListLayout": "tree",
         "githubPullRequests.focusedMode": "overview",
-        "githubPullRequests.ignoredPullRequestBranches": [
-          "develop",
-          "main"
-        ],
+        "githubPullRequests.ignoredPullRequestBranches": ["develop", "main"],
         "githubPullRequests.ignoreSubmodules": true,
         "githubPullRequests.notifications": "pullRequests",
         "githubPullRequests.postCreate": "openOverview",
@@ -567,14 +555,7 @@
       "version": "latest"
     }
   },
-  "forwardPorts": [
-    3000,
-    54321,
-    54322,
-    54323,
-    54324,
-    54325
-  ],
+  "forwardPorts": [3000, 54321, 54322, 54323, 54324, 54325],
   "image": "mcr.microsoft.com/devcontainers/typescript-node:22-bookworm",
   "name": "Monorepo Devcontainer",
   "portsAttributes": {
@@ -604,18 +585,14 @@
     }
   },
   "postAttachCommand": {
-    "supabase-install": ".devcontainer/scripts/install-supabase.sh",
-    "verify-tools": "echo '📦 Node:' $(node --version) '| pnpm:' $(pnpm --version) '| Supabase:' $(supabase --version 2>/dev/null || echo 'not installed') '| gh:' $(gh --version | head -1) '| helm:' $(helm version --short)"
+    "post-attach-command": ".devcontainer/scripts/post-attach-command.sh"
   },
   "postCreateCommand": {
-    "pnpm-install": "sudo corepack enable && corepack prepare pnpm@10.20.0 --activate && pnpm install --frozen-lockfile"
+    "post-create-command": ".devcontainer/scripts/post-create-command.sh"
   },
   "remoteEnv": {
     "NODE_OPTIONS": "--max-old-space-size=4096"
   },
   "remoteUser": "node",
-  "runArgs": [
-    "--name",
-    "monorepo-devcontainer"
-  ]
+  "runArgs": ["--name", "monorepo-devcontainer"]
 }

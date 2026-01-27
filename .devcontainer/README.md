@@ -34,7 +34,7 @@ The container uses [Dev Container Features](https://containers.dev/features) for
 
 ### Custom Installations
 
-- **Supabase CLI**: Installed via `scripts/install-supabase.sh` when attaching to container (ensures network availability)
+- **Supabase CLI**: Installed from GitHub releases in `postCreateCommand` (npm wrapper is broken for global installs)
 - **pnpm**: Activated via Corepack with exact version 10.20.0
 
 ## VS Code Extensions
@@ -70,10 +70,21 @@ Ports are automatically forwarded to your host machine:
 
 ## Lifecycle Scripts
 
-| Hook                | Tasks                                           |
-| ------------------- | ----------------------------------------------- |
-| `postCreateCommand` | `pnpm install --frozen-lockfile`                |
-| `postAttachCommand` | Supabase CLI installation, verify tool versions |
+| Hook                | Tasks                                                                |
+| ------------------- | -------------------------------------------------------------------- |
+| `postCreateCommand` | Enable pnpm via Corepack, install dependencies, install Supabase CLI |
+| `postAttachCommand` | Verify tool versions (node, pnpm, supabase, gh, helm)                |
+
+## Scripts
+
+The `.devcontainer/scripts` directory contains helper scripts for container setup:
+
+| Script                   | Purpose                                                              | Called From         |
+| ------------------------ | -------------------------------------------------------------------- | ------------------- |
+| `post-create-command.sh` | Enables pnpm, installs dependencies, installs Supabase CLI           | `postCreateCommand` |
+| `post-attach-command.sh` | Verifies installed tool versions (Node.js, pnpm, Supabase CLI, etc.) | `postAttachCommand` |
+
+All scripts are executable and can be run manually if needed.
 
 ## Customization
 
@@ -136,12 +147,27 @@ The container uses Docker-in-Docker (DinD) with an isolated Docker daemon:
 2. If daemon not running, rebuild the container: `Dev Containers: Rebuild Container`
 3. Container user (`node`) should have docker group membership automatically
 
+### DNS/Network issues in Docker-in-Docker
+
+The devcontainer includes DNS configuration to fix common Docker-in-Docker networking issues:
+
+- **Container DNS**: Configured via `runArgs` with `--dns` flags (Google DNS: 8.8.8.8, 8.8.4.4 and Cloudflare: 1.1.1.1)
+- **Docker Daemon DNS**: Configured via `/etc/docker/daemon.json` in `configure-docker-dns.sh`
+
+If you still encounter `Could not resolve host` errors:
+
+1. Verify DNS is working: `nslookup google.com`
+2. Check `/etc/resolv.conf` has nameservers
+3. Test basic connectivity: `ping -c 3 8.8.8.8`
+4. Rebuild container completely: `Dev Containers: Rebuild Container Without Cache`
+
 ### Supabase CLI not found
 
-Run the install script manually:
+Install manually from GitHub releases:
 
 ```bash
-.devcontainer/scripts/install-supabase.sh
+VERSION=$(curl -s https://api.github.com/repos/supabase/cli/releases/latest | grep '"tag_name":' | cut -d '"' -f 4)
+curl -fsSL "https://github.com/supabase/cli/releases/download/${VERSION}/supabase_linux_amd64.tar.gz" | sudo tar -xz -C /usr/local/bin
 ```
 
 ### pnpm version mismatch
