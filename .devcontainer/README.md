@@ -11,7 +11,7 @@ The dev container eliminates "works on my machine" issues by standardizing:
 - **Supabase CLI** - For database migrations and type generation (lexico)
 - **kubectl & Helm** - For Kubernetes deployments (caelundas)
 - **GitHub CLI** - For repository operations
-- **Docker** - Access to host Docker socket for running Supabase local stack
+- **Docker** - Docker-in-Docker daemon for running Supabase local stack (isolated from host)
 
 ## Quick Start
 
@@ -25,16 +25,16 @@ The dev container eliminates "works on my machine" issues by standardizing:
 
 The container uses [Dev Container Features](https://containers.dev/features) for modular tool installation:
 
-| Feature                    | Version | Purpose                                                |
-| -------------------------- | ------- | ------------------------------------------------------ |
-| `typescript-node:22`       | Base    | Node.js 22 with TypeScript support                     |
-| `docker-outside-of-docker` | 1       | Docker CLI with host socket mount (sibling containers) |
-| `github-cli`               | 1       | `gh` command for GitHub operations                     |
-| `kubectl-helm-minikube`    | 1       | kubectl and Helm (minikube disabled)                   |
+| Feature                 | Version | Purpose                                        |
+| ----------------------- | ------- | ---------------------------------------------- |
+| `typescript-node:22`    | Base    | Node.js 22 with TypeScript support             |
+| `docker-in-docker`      | 1       | Isolated Docker daemon inside container (DinD) |
+| `github-cli`            | 1       | `gh` command for GitHub operations             |
+| `kubectl-helm-minikube` | 1       | kubectl and Helm (minikube disabled)           |
 
 ### Custom Installations
 
-- **Supabase CLI**: Installed via `scripts/install-supabase.sh` during container creation
+- **Supabase CLI**: Installed via `scripts/install-supabase.sh` when attaching to container (ensures network availability)
 - **pnpm**: Activated via Corepack with exact version 10.20.0
 
 ## VS Code Extensions
@@ -70,10 +70,10 @@ Ports are automatically forwarded to your host machine:
 
 ## Lifecycle Scripts
 
-| Hook                | Tasks                                                       |
-| ------------------- | ----------------------------------------------------------- |
-| `postCreateCommand` | `pnpm install --frozen-lockfile`, Supabase CLI installation |
-| `postAttachCommand` | Verify tool versions (Node, pnpm, Supabase, gh, Helm)       |
+| Hook                | Tasks                                           |
+| ------------------- | ----------------------------------------------- |
+| `postCreateCommand` | `pnpm install --frozen-lockfile`                |
+| `postAttachCommand` | Supabase CLI installation, verify tool versions |
 
 ## Customization
 
@@ -130,11 +130,11 @@ For secrets, create `.devcontainer/.env` (gitignored) and reference in `remoteEn
 
 ### Docker commands fail inside container
 
-The container uses Docker-outside-of-Docker (sibling containers) via host socket mount:
+The container uses Docker-in-Docker (DinD) with an isolated Docker daemon:
 
-1. Verify Docker Desktop is running on host
-2. Check socket permissions: `ls -la /var/run/docker.sock`
-3. Container user (`node`) should have docker group membership
+1. Verify the DinD daemon is running: `docker info`
+2. If daemon not running, rebuild the container: `Dev Containers: Rebuild Container`
+3. Container user (`node`) should have docker group membership automatically
 
 ### Supabase CLI not found
 
@@ -198,14 +198,20 @@ nx run-many --target=test --all  # Tests should pass
 
 ## Architecture Notes
 
-### Why Docker-outside-of-Docker?
+### Why Docker-in-Docker?
 
-The container mounts the host Docker socket (`/var/run/docker.sock`) instead of running Docker-in-Docker (DinD). Benefits:
+The container runs an isolated Docker daemon inside the container instead of mounting the host Docker socket. Benefits:
 
-- **Faster startup**: No nested Docker daemon
-- **Shared cache**: Supabase images pulled once, shared with host
-- **Lower overhead**: No additional ~200-500MB RAM for DinD daemon
-- **Simpler networking**: Containers share host Docker network
+- **GitHub Codespaces compatible**: Works identically in local dev and Codespaces (no host socket available in Codespaces)
+- **Better isolation**: Container Docker is completely separate from host Docker
+- **No permission issues**: Avoids socket permission complexities between host and container
+- **Portable configuration**: Same setup works across all environments without modification
+
+Tradeoffs:
+
+- **Separate image cache**: Supabase images download separately (~5-10 minute first pull)
+- **Slight RAM overhead**: DinD daemon uses ~200-500MB additional RAM
+- **Startup delay**: ~5-10 seconds for DinD daemon initialization
 
 ### Why a single monorepo container?
 
