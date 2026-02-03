@@ -1,0 +1,260 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+  // #region 🎨 Palettes
+
+  {
+    "key": "cmd+k",
+    "command": "workbench.action.showCommands"
+  },
+  {
+    "key": "cmd+e",
+    "command": "workbench.action.tasks.runTask"
+  },
+  {
+    "key": "cmd+r",
+    "command": "workbench.action.debug.selectandstart"
+  },
+  {
+    "key": "cmd+t",
+    "command": "workbench.action.toggleMaximizedPanel"
+  },
+
+  // #region ▶️ Cmd+Enter
+
+  {
+    "key": "cmd+enter",
+    "command": "mdb.runAllPlaygroundBlocks",
+    "when": "mdb.isPlayground"
+  },
+  {
+    "key": "cmd+enter",
+    "command": "pr.saveComment",
+    "when": "commentEditorFocused || commentFocused"
+  },
+
+  // #region Code Comments 💬
+  // {
+  //   "key": "cmd+backspace",
+  //   "command": "workbench.action.commentedi",
+  //   "when": "commentFocus && commentController == 'github-comment-controller'"
+  // },
+  // {
+  //   "key": "shift+cmd+backspace",
+  //   "command": "github.comment.delete",
+  //   "when": "commentFocus && commentController == 'github-comment-controller'"
+  // },
+
+  // #region 🔀 Tab switching
+
+  {
+    "key": "cmd+alt+left",
+    "command": "workbench.action.previousEditor"
+  },
+  {
+    "key": "cmd+alt+right",
+    "command": "workbench.action.nextEditor"
+  },
+  {
+    "key": "cmd+alt+up",
+    "command": "workbench.action.terminal.focusPrevious"
+  },
+  {
+    "key": "cmd+alt+down",
+    "command": "workbench.action.terminal.focusNext"
+  },
+  {
+    "key": "cmd+alt+w",
+    "command": "workbench.action.terminal.focusPrevious"
+  },
+  {
+    "key": "cmd+alt+s",
+    "command": "workbench.action.terminal.focusNext"
+  },
+
+  // #region 🛠️ Sidebar Tabs
+
+  {
+    "key": "shift+cmd+a",
+    "command": "workbench.view.extension.github-actions"
+  },
+  {
+    "key": "shift+cmd+b",
+    "command": "workbench.view.extension.bigqueryRunner"
+  },
+  {
+    "key": "shift+cmd+c",
+    "command": "workbench.view.extension.containersView"
+  },
+  {
+    "key": "ctrl+cmd+e",
+    "command": "outline.focus"
+  },
+  {
+    "key": "shift+cmd+g",
+    "command": "pr:github.focus"
+  },
+  {
+    "key": "shift+cmd+i",
+    "command": "workbench.panel.chat.view.copilot.focus"
+  },
+  {
+    "key": "shift+cmd+j",
+    "command": "atlascode.views.jira.customJqlTreeView.focus"
+  },
+  {
+    "key": "shift+cmd+k",
+    "command": "workbench.view.extension.kubernetesView"
+  },
+  {
+    "key": "shift+cmd+m",
+    "command": "mongoDBConnectionExplorer.focus"
+  },
+  {
+    "key": "shift+cmd+n",
+    "command": "nxProjects.focus"
+  },
+  {
+    "key": "shift+cmd+o",
+    "command": "outline.focus"
+  },
+  {
+    "key": "shift+cmd+p",
+    "command": "postman-for-vscode.sidebar-panel.setActiveView"
+  },
+  {
+    "key": "shift+cmd+r",
+    "command": "prStatus:github.focus"
+  },
+  {
+    "key": "shift+cmd+s",
+    "command": "github.cweijan.mysql.focus"
+  },
+  {
+    "key": "shift+cmd+t",
+    "command": "workbench.view.testing.focus"
+  },
+  {
+    "key": "shift+cmd+u",
+    "command": "workbench.view.chat.sessions"
+  },
+  {
+    "key": "shift+cmd+v",
+    "command": "workbench.view.scm"
+  },
+  {
+    "key": "shift+cmd+w",
+    "command": "workbench.action.closeAllGroups"
+  },
+  {
+    "key": "shift+cmd+x",
+    "command": "workbench.view.extensions"
+  },
+  {
+    "key": "shift+cmd+y",
+    "command": "workbench.view.extension.typescript-explorer"
+  },
+
+  // #region 📑 Bottombar Tabs
+
+  {
+    "key": "ctrl+cmd+c",
+    "command": "workbench.action.focusCommentsPanel"
+  },
+  {
+    "key": "ctrl+cmd+d",
+    "command": "workbench.view.debug.console" // TODO: fix
+  },
+  {
+    "key": "ctrl+cmd+o",
+    "command": "workbench.panel.output.focus"
+  },
+  {
+    "key": "ctrl+cmd+p",
+    "command": "workbench.action.problems.focus"
+  },
+  {
+    "key": "ctrl+cmd+t",
+    "command": "terminal.focus"
+  },
+
+  // #region 📝 Editor Tabs
+
+  {
+    "key": "cmd+1",
+    "command": "workbench.action.openEditorAtIndex1"
+  },
+  {
+    "key": "cmd+2",
+    "command": "workbench.action.openEditorAtIndex2"
+  },
+  {
+    "key": "cmd+3",
+    "command": "workbench.action.openEditorAtIndex3"
+  },
+  {
+    "key": "cmd+4",
+    "command": "workbench.action.openEditorAtIndex4"
+  },
+  {
+    "key": "cmd+5",
+    "command": "workbench.action.openEditorAtIndex5"
+  },
+  {
+    "key": "cmd+6",
+    "command": "workbench.action.openEditorAtIndex6"
+  },
+  {
+    "key": "cmd+7",
+    "command": "workbench.action.openEditorAtIndex7"
+  },
+  {
+    "key": "cmd+8",
+    "command": "workbench.action.openEditorAtIndex8"
+  },
+  {
+    "key": "cmd+9",
+    "command": "workbench.action.openEditorAtIndex9"
+  },
+
+  // #region 🤖 Cursor
+
+  {
+    "key": "cmd+l",
+    "command": "expandLineSelection"
+  },
+  {
+    "key": "shift+cmd+l",
+    "command": "-aichat.insertselectionintochat"
+  },
+
+  // #region 🗑️ Other
+
+  {
+    "key": "alt+w",
+    "command": "workbench.action.terminal.kill"
+  },
+  {
+    "key": "shift+cmd+w",
+    "command": "-workbench.action.closeWindow"
+  },
+  {
+    "key": "shift+alt+down",
+    "command": "editor.action.insertCursorBelow"
+  },
+  {
+    "key": "shift+alt+up",
+    "command": "editor.action.insertCursorAbove"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "markdown.showPreview"
+  },
+  {
+    "key": "cmd+g",
+    "command": "workbench.action.joinAllGroups"
+  },
+  {
+    "key": "cmd+;",
+    "command": "workbench.action.toggleSidebarVisibility"
+  }
+]
