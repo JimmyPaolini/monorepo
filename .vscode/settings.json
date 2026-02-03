@@ -1,62 +1,49 @@
 {
   "[javascript]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit"
-    },
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascriptreact]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit"
-    },
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[json]": {
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "never"
+      // "source.fixAll.eslint": "never"
     },
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
   },
   "[jsonc]": {
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "never"
+      // "source.fixAll.eslint": "never"
     },
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
   },
   "[markdown]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit"
-    },
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit",
-      "source.organizeImports": "never"
-    },
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescriptreact]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit",
-      "source.organizeImports": "never"
-    },
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+  "[jupyter]": {
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
+  "atlascode.rovodev.showEntitlementNotifications": false,
   "chat.agent.maxRequests": 96,
   "chat.agent.thinkingStyle": "collapsedPreview",
-  "chat.agentSessionsViewLocation": "single-view",
   "chat.checkpoints.enabled": true,
   "chat.checkpoints.showFileChanges": true,
   "chat.customAgentInSubagent.enabled": true,
   "chat.detectParticipant.enabled": true,
   "chat.editRequests": "inline",
   "chat.edits2.enabled": true,
-  "chat.emptyChatState.enabled": true,
-  "chat.emptyState.history.enabled": true,
   "chat.extensionTools.enabled": true,
   "chat.implicitContext.enabled": {
     "panel": "always"
@@ -155,11 +142,26 @@
   ],
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
-    "source.removeUnusedImports": "always",
-    "source.sort.json": "always"
+    // "source.addMissingImports.ts": "explicit",
+    // "source.addTypeAnnotation": "never",
+    // "source.convertImportFormat": "explicit",
+    // "source.convertImportStar": "explicit",
+    // "source.fixAll": "explicit",
+    // "source.fixAll.eslint": "explicit",
+    // "source.fixAll.prettier": "never",
+    // "source.fixAll.pylance": "never",
+    // "source.fixAll.ruff": "explicit",
+    // "source.fixAll.ts": "explicit",
+    // "source.formatAll.terraform": "explicit",
+    // "source.organizeImports": "explicit",
+    // "source.organizeImports.ruff": "explicit",
+    // "source.removeUnused.ts": "never",
+    // "source.removeUnusedImports": "explicit",
+    // "source.sort.json": "explicit",
+    // "source.sortImports": "explicit",
+    // "source.unusedImports": "explicit"
   },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultformatter": "false",
   "editor.detectIndentation": false,
   "editor.dragAndDrop": false,
   "editor.experimental.asyncTokenization": false,
@@ -170,8 +172,8 @@
   "editor.fontLigatures": false,
   "editor.fontSize": 14,
   "editor.formatOnPaste": true,
-  "editor.formatOnSave": true,
-  "editor.formatOnSaveMode": "file",
+  // "editor.formatOnSave": true,
+  // "editor.formatOnSaveMode": "file",
   "editor.guides.bracketPairs": true,
   "editor.guides.bracketPairsHorizontal": "active",
   "editor.guides.highlightActiveBracketPair": true,
@@ -201,7 +203,7 @@
   "editor.suggest.preview": true,
   "editor.suggestSelection": "recentlyUsedByPrefix",
   "editor.tabSize": 2,
-  "eslint.codeActionsOnSave.mode": "all",
+  // "eslint.codeActionsOnSave.mode": "problems",
   "eslint.enable": true,
   "eslint.format.enable": false,
   "eslint.useFlatConfig": true,
@@ -305,8 +307,16 @@
   "github.copilot.chat.terminalChatLocation": "chatView",
   "github.copilot.chat.tools.defaultToolsGrouped": true,
   "github.copilot.chat.tools.memory.enabled": true,
-  "github.copilot.editor.enableCodeActions": true,
   "github.copilot.nextEditSuggestions.enabled": true,
+  "conventionalCommits.showNewVersionNotes": false,
+  "dataWrangler.debug": true,
+  "dataWrangler.defaultViewingFilterOptions": "advanced",
+  "dataWrangler.outputRenderer.columnInsights.displayByDefault": true,
+  "dataWrangler.panels.displayOnTabFocus": false,
+  "docker.extension.enableComposeLanguageServer": false,
+  "githubPullRequests.devMode": true,
+  "mdb.mcp.server": "autoStartDisabled",
+  "terminal.integrated.cursorStyle": "line",
   "github.copilot.nextEditSuggestions.fixes": true,
   "githubPullRequests.allowFetch": true,
   "githubPullRequests.assignCreated": "${user}",
@@ -347,6 +357,8 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
   "jest.runMode": "on-demand",
   "material-icon-theme.files.associations": {
+    ".code-workspace*": "vscode",
+    "*.command.ts": "exe",
     "*.constants.ts": "3d",
     "*.env.default": "tune",
     "*.env.template": "tune",
@@ -360,12 +372,24 @@
     "*.service.test.ts": "test-ts",
     "*.service.ts": "brainfuck",
     "*.utils.ts": "gemini",
-    "routes/*.tsx": "routing",
+    "extensions.json": "cake",
+    "keybindings.json": "pawn",
+    "sessions.json": "exe",
+    "mcp.json": "copilot",
+    "settings.json": "controller",
     "tsconfig*.json": "tsconfig"
   },
   "material-icon-theme.folders.associations": {
     ".nx": "tools",
     "datasources": "database",
+    "dto": "connection",
+    "entities": "bloc",
+    "factories": "pipe",
+    "infrastructure": "terraform",
+    "instructions": "custom",
+    "nestjs-seeder": "seeders",
+    "processors": "queue",
+    "rbac": "guard",
     "routing": "element"
   },
   "notebook.cellToolbarLocation": {
@@ -373,11 +397,11 @@
     "jupyter-notebook": "right"
   },
   "notebook.codeActionsOnSave": {
-    "notebook.source.fixAll": "explicit",
-    "notebook.source.organizeImports": "explicit"
+    // "notebook.source.fixAll": "explicit",
+    // "notebook.source.organizeImports": "explicit"
   },
   "notebook.defaultFormatter": "charliermarsh.ruff",
-  "notebook.formatOnSave.enabled": true,
+  // "notebook.formatOnSave.enabled": true,
   "notebook.lineNumbers": "on",
   "notebook.output.textLineLimit": 32,
   "npm-intellisense.importQuotes": "\"",
@@ -387,6 +411,8 @@
   "outline.showFields": false,
   "outline.showProperties": false,
   "outline.showVariables": false,
+  "postman.mcp.notifications.postmanMCP": false,
+  "postman.settings.dotenv-detection-notification-visibility": false,
   "scm.alwaysShowActions": true,
   "scm.alwaysShowRepositories": true,
   "scm.autoReveal": true,
@@ -459,7 +485,8 @@
   "workbench.editor.tabSizing": "shrink",
   "workbench.editorAssociations": {
     "*.html": "default",
-    "git-rebase-todo": "gitlens.rebase"
+    "git-rebase-todo": "gitlens.rebase",
+    "*.csv": "jupyter-data-wrangler",
   },
   "workbench.experimental.share.enabled": true,
   "workbench.iconTheme": "material-icon-theme",
