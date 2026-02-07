@@ -61,7 +61,7 @@
     "njpwerner.autodocstring", // autoDocstring - Python Docstring Generator
     "nrwl.angular-console", // Nx Console
     "oderwat.indent-rainbow", // indent-rainbow
-    "pflannery.vscode-versionlens", // Version Lens
+    "legalfina.npm-version-lens", // Version Lens
     "PKief.material-icon-theme", // Material Icon Theme
     "Postman.postman-for-vscode", // Postman
     "ptweir.python-string-sql", // python-string-sql
