@@ -7,18 +7,24 @@
   },
   "[json]": {
     "editor.codeActionsOnSave": {
-      // "source.fixAll.eslint": "never"
+      "source.fixAll.eslint": "never"
     },
     "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
   },
   "[jsonc]": {
     "editor.codeActionsOnSave": {
-      // "source.fixAll.eslint": "never"
+      "source.fixAll.eslint": "never"
     },
     "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
   },
+  "[jupyter]": {
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  },
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff"
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -28,12 +34,6 @@
   },
   "[yaml]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[python]": {
-    "editor.defaultFormatter": "charliermarsh.ruff"
-  },
-  "[jupyter]": {
-    "editor.defaultFormatter": "charliermarsh.ruff"
   },
   "atlascode.rovodev.showEntitlementNotifications": false,
   "chat.agent.maxRequests": 96,
@@ -115,6 +115,7 @@
   "containers.containers.label": "ContainerName",
   "containers.containers.sortBy": "Label",
   "containers.images.label": "FullTag",
+  "conventionalCommits.showNewVersionNotes": false,
   "cSpell.blockCheckingWhenLineLengthGreaterThan": 5000,
   "cSpell.diagnosticLevelFlaggedWords": "Information",
   "cSpell.enabled": true,
@@ -140,26 +141,28 @@
     "$",
     "@"
   ],
+  "dataWrangler.debug": true,
+  "dataWrangler.defaultViewingFilterOptions": "advanced",
+  "dataWrangler.outputRenderer.columnInsights.displayByDefault": true,
+  "dataWrangler.panels.displayOnTabFocus": false,
+  "docker.extension.enableComposeLanguageServer": false,
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.codeActionsOnSave": {
-    // "source.addMissingImports.ts": "explicit",
-    // "source.addTypeAnnotation": "never",
-    // "source.convertImportFormat": "explicit",
-    // "source.convertImportStar": "explicit",
-    // "source.fixAll": "explicit",
-    // "source.fixAll.eslint": "explicit",
-    // "source.fixAll.prettier": "never",
-    // "source.fixAll.pylance": "never",
-    // "source.fixAll.ruff": "explicit",
-    // "source.fixAll.ts": "explicit",
-    // "source.formatAll.terraform": "explicit",
-    // "source.organizeImports": "explicit",
-    // "source.organizeImports.ruff": "explicit",
-    // "source.removeUnused.ts": "never",
-    // "source.removeUnusedImports": "explicit",
-    // "source.sort.json": "explicit",
-    // "source.sortImports": "explicit",
-    // "source.unusedImports": "explicit"
+    "source.addTypeAnnotation": "never",
+    "source.convertImportFormat": "explicit",
+    "source.convertImportStar": "explicit",
+    "source.fixAll": "explicit",
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.prettier": "never",
+    "source.fixAll.pylance": "never",
+    "source.fixAll.ruff": "explicit",
+    "source.fixAll.ts": "explicit",
+    "source.formatAll.terraform": "explicit",
+    "source.organizeImports.ruff": "explicit",
+    "source.removeUnused.ts": "never",
+    "source.removeUnusedImports": "explicit",
+    "source.sort.json": "explicit",
+    "source.unusedImports": "explicit"
   },
   "editor.defaultformatter": "false",
   "editor.detectIndentation": false,
@@ -170,7 +173,7 @@
   "editor.foldingImportsByDefault": true,
   "editor.fontFamily": "Fira Code",
   "editor.fontLigatures": false,
-  "editor.fontSize": 14,
+  "editor.fontSize": 12,
   "editor.formatOnPaste": true,
   // "editor.formatOnSave": true,
   // "editor.formatOnSaveMode": "file",
@@ -308,15 +311,6 @@
   "github.copilot.chat.tools.defaultToolsGrouped": true,
   "github.copilot.chat.tools.memory.enabled": true,
   "github.copilot.nextEditSuggestions.enabled": true,
-  "conventionalCommits.showNewVersionNotes": false,
-  "dataWrangler.debug": true,
-  "dataWrangler.defaultViewingFilterOptions": "advanced",
-  "dataWrangler.outputRenderer.columnInsights.displayByDefault": true,
-  "dataWrangler.panels.displayOnTabFocus": false,
-  "docker.extension.enableComposeLanguageServer": false,
-  "githubPullRequests.devMode": true,
-  "mdb.mcp.server": "autoStartDisabled",
-  "terminal.integrated.cursorStyle": "line",
   "github.copilot.nextEditSuggestions.fixes": true,
   "githubPullRequests.allowFetch": true,
   "githubPullRequests.assignCreated": "${user}",
@@ -330,6 +324,7 @@
   "githubPullRequests.defaultCommentType": "review",
   "githubPullRequests.defaultCreateOption": "createDraft",
   "githubPullRequests.defaultDeletionMethod.selectLocalBranch": true,
+  "githubPullRequests.devMode": true,
   "githubPullRequests.experimental.notificationsMarkPullRequests": "markAsDone",
   "githubPullRequests.experimental.useQuickChat": true,
   "githubPullRequests.fileListLayout": "tree",
@@ -374,8 +369,8 @@
     "*.utils.ts": "gemini",
     "extensions.json": "cake",
     "keybindings.json": "pawn",
-    "sessions.json": "exe",
     "mcp.json": "copilot",
+    "sessions.json": "exe",
     "settings.json": "controller",
     "tsconfig*.json": "tsconfig"
   },
@@ -392,6 +387,7 @@
     "rbac": "guard",
     "routing": "element"
   },
+  "mdb.mcp.server": "autoStartDisabled",
   "notebook.cellToolbarLocation": {
     "default": "right",
     "jupyter-notebook": "right"
@@ -454,6 +450,7 @@
     "shell": true
   },
   "task.reconnection": true,
+  "terminal.integrated.cursorStyle": "line",
   "typescript.inlayHints.enumMemberValues.enabled": true,
   "typescript.inlayHints.functionLikeReturnTypes.enabled": false,
   "typescript.inlayHints.parameterNames.enabled": "literals",
@@ -484,9 +481,9 @@
   "workbench.editor.limit.value": 16,
   "workbench.editor.tabSizing": "shrink",
   "workbench.editorAssociations": {
-    "*.html": "default",
-    "git-rebase-todo": "gitlens.rebase",
     "*.csv": "jupyter-data-wrangler",
+    "*.html": "default",
+    "git-rebase-todo": "gitlens.rebase"
   },
   "workbench.experimental.share.enabled": true,
   "workbench.iconTheme": "material-icon-theme",
