@@ -130,6 +130,8 @@ words:
   - joor
   - Keplerian
   - keyof
+  - killallnode
+  - killallvscodeextensions
   - killport
   - kubeconfig
   - kubectl

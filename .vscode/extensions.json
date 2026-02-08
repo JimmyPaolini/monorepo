@@ -3,8 +3,6 @@
     "aaron-bond.better-comments", // Better Comments
     "adamhartford.vscode-base64", // vscode-base64
     "adpyke.vscode-sql-formatter", // SQL Formatter
-    "altimateai.vscode-altimate-mcp-server", // Datamates
-    "atlassian.atlascode", // Atlassian: Jira, Rovo Dev, Bitbucket
     "bierner.comment-tagged-templates", // Comment tagged templates
     "bierner.markdown-mermaid", // Markdown Preview Mermaid Support
     "bradlc.vscode-tailwindcss", // Tailwind CSS IntelliSense
@@ -39,7 +37,6 @@
     "mechatroner.rainbow-csv", // Rainbow CSV
     "meganrogge.template-string-converter", // Template String Converter
     "mikestead.dotenv", // DotENV
-    "mongodb.mongodb-vscode", // MongoDB for VS Code
     "ms-azuretools.vscode-containers", // Container Tools
     "ms-azuretools.vscode-docker", // Docker
     "ms-kubernetes-tools.vscode-kubernetes-tools", // Kubernetes
@@ -58,7 +55,6 @@
     "oderwat.indent-rainbow", // indent-rainbow
     "pflannery.vscode-versionlens", // Version Lens
     "PKief.material-icon-theme", // Material Icon Theme
-    "Postman.postman-for-vscode", // Postman
     "quicktype.quicktype", // Paste JSON as Code
     "redhat.vscode-yaml", // YAML
     "Redis.redis-for-vscode", // Redis for VS Code
@@ -73,21 +69,27 @@
     "wholroyd.jinja", // Jinja
     "YoavBls.pretty-ts-errors", // Pretty TypeScript Errors
     "yzhang.markdown-all-in-one" // Markdown All in One
-    // "alefragnani.Bookmarks", // Bookmarks
-    // "aljazsim.tsco", // TypeScript Code Organizer
-    // "apollographql.vscode-apollo", // Apollo GraphQL
-    // "datadog.datadog-vscode", // Datadog
-    // "denoland.vscode-deno", // Deno
-    // "eamodio.gitlens", // GitLens - Git supercharged
-    // "inferrinizzard.prettier-sql-vscode", // Prettier SQL VSCode
-    // "janisdd.vscode-edit-csv", // Edit CSV
-    // "ms-python.black-formatter", // Black Formatter
-    // "ms-toolsai.vscode-jupyter-slideshow", // Jupyter Slide Show
-    // "mxsdev.typescript-explorer", // TypeScript Explorer
-    // "njpwerner.autodocstring", // autoDocstring - Python Docstring Generator
-    // "Orta.vscode-jest", // Jest
-    // "ptweir.python-string-sql", // python-string-sql
-    // "SanjulaGanepola.github-local-actions", // GitHub Local Actions
-    // "shinichi-takii.sql-bigquery", // SQL BigQuery
   ],
+  "unwantedRecommendations": [
+    "alefragnani.Bookmarks", // Bookmarks
+    "aljazsim.tsco", // TypeScript Code Organizer
+    "altimateai.vscode-altimate-mcp-server", // Datamates
+    "apollographql.vscode-apollo", // Apollo GraphQL
+    "atlassian.atlascode", // Atlassian: Jira, Rovo Dev, Bitbucket
+    "datadog.datadog-vscode", // Datadog
+    "denoland.vscode-deno", // Deno
+    "eamodio.gitlens", // GitLens - Git supercharged
+    "inferrinizzard.prettier-sql-vscode", // Prettier SQL VSCode
+    "janisdd.vscode-edit-csv", // Edit CSV
+    "mongodb.mongodb-vscode", // MongoDB for VS Code
+    "ms-python.black-formatter", // Black Formatter
+    "ms-toolsai.vscode-jupyter-slideshow", // Jupyter Slide Show
+    "mxsdev.typescript-explorer", // TypeScript Explorer
+    "njpwerner.autodocstring", // autoDocstring - Python Docstring Generator
+    "Orta.vscode-jest", // Jest
+    "Postman.postman-for-vscode", // Postman
+    "ptweir.python-string-sql", // python-string-sql
+    "SanjulaGanepola.github-local-actions", // GitHub Local Actions
+    "shinichi-takii.sql-bigquery", // SQL BigQuery
+  ]
 }
