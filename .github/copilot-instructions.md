@@ -77,30 +77,26 @@ Husky + lint-staged automatically runs on staged files:
 - Typecheck (tsc --noEmit)
 
 Commits must follow [Conventional Commits](https://www.conventionalcommits.org/)
-with gitmoji prefixes. Valid scopes are defined in
-[commitlint.config.ts](../commitlint.config.ts): `monorepo`, `caelundas`, `lexico`,
-`lexico-components`, `JimmyPaolini`, `documentation`, `dependencies`,
-`infrastructure`, `ci`.
+with gitmoji prefixes. Valid types and scopes are defined in
+[conventional.config.cjs](../conventional.config.cjs).
 
-**IMPORTANT: Subject line must be under 50 characters** (Conventional Commits
-best practice)
+See [.github/skills/commit-messages/SKILL.md](.github/skills/commit-messages/SKILL.md)
+for complete commit message formatting rules.
+
+**IMPORTANT: Commits must be single-line only (no body or footer sections)**
+
+Format: `<type>(<scope>): <gitmoji> <subject>`
+
+- Subject line must be under 50 characters (Conventional Commits best practice)
+- Imperative mood required (e.g., "add" not "added")
+- No period at end
 
 Examples:
 
-- ✅ `chore(infrastructure): enforce markdown styles` (48 chars)
-- ❌ `chore(infrastructure): enforce specific markdown formatting styles` (72 chars - TOO LONG)
-
-Format: `<type>(<scope>): <subject>` where subject is max 49 characters, imperative mood, no period.
-
-Optional body (wrap at 72 chars, blank line after subject):
-
-```text
-chore(infrastructure): enforce markdown styles
-
-- Require backticks for code fences
-- Use ATX-style headers (# ## ###)
-- Use dash (-) for list bullets
-```
+- ✅ `feat(infrastructure): 🏗️ add devcontainer support` (48 chars)
+- ✅ `chore(infrastructure): 🔧 enforce markdown styles` (50 chars)
+- ❌ `chore(infrastructure): enforce specific markdown formatting styles` (72 chars - TOO LONG, missing gitmoji)
+- ❌ `feat(infrastructure): ✨ added devcontainer support` (wrong tense)
 
 ### Supabase Development (lexico)
 

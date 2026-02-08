@@ -25,9 +25,9 @@ const configuration: UserConfig = {
 
     // 📏 Limit lengths
     "header-max-length": [2, "always", 100],
-    "body-max-length": [1, "always", 1000],
 
-    // 🦶 Forbid footer
+    // 🚫 Forbid body and footer
+    "body-empty": [2, "always"],
     "footer-empty": [2, "always"],
 
     // 🔡 Enforce case
@@ -38,7 +38,6 @@ const configuration: UserConfig = {
     // 🎨 Format rules
     "subject-full-stop": [2, "never", "."],
     "subject-empty": [2, "never"],
-    "body-leading-blank": [2, "always"],
   },
 };
 
