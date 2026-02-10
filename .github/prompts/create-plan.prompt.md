@@ -62,10 +62,10 @@ Plans must consist of discrete, atomic phases containing executable tasks. Each 
 
 ## Output File Specifications
 
-- Save implementation plan files in `/plan/` directory
-- Use naming convention: `[purpose]-[component]-[version].md`
+- Save implementation plan files in `documentation/planning` directory
+- Use naming convention: `[purpose]-[component]-[version].prompt.md`
 - Purpose prefixes: `upgrade|refactor|feature|data|infrastructure|process|architecture|design`
-- Example: `upgrade-system-command-4.md`, `feature-auth-module-1.md`
+- Example: `upgrade-system-command-4.prompt.md`, `feature-auth-module-1.prompt.md`
 - File must be valid Markdown with proper front matter structure
 
 ## Mandatory Template Structure

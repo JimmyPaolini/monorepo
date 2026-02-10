@@ -11,7 +11,7 @@
                 "loadMetaDataWhenExpandTreeView": true
             },
             "connectionKey": "database.connections",
-            "dbPath": "/Users/jimmypaolini/Personal/monorepo/applications/caelundas/output/database.db",
+            "dbPath": "../monorepo/applications/caelundas/output/database.db",
             "dbType": "SQLite",
             "fs": {
                 "encoding": "utf8",

@@ -1,7 +1,7 @@
 ---
 agent: "agent"
 description: "Generate a Conventional Commits message with Gitmoji for staged changes, following this monorepo's commitlint rules."
-model: "Claude Haiku 4.5"
+model: Claude Haiku 4.5 (copilot)
 name: "commit-code"
 tools: ["execute/runInTerminal", "read", "search", "web"]
 ---
@@ -21,7 +21,7 @@ Analyze the staged changes and commit them with a valid commit message that:
 
 ## Commit Message Rules
 
-**All commit message rules, validation requirements, allowed types/scopes, and gitmoji guidelines are documented in [../skills/commit-messages/SKILL.md](../skills/commit-messages/SKILL.md).**
+**All commit message rules, validation requirements, allowed types/scopes, and gitmoji guidelines are documented in [../skills/commit-code/SKILL.md](../skills/commit-code/SKILL.md).**
 
 ### Key Requirements
 
@@ -43,7 +43,7 @@ git commit -m "<type>(<scope>): <gitmoji> <subject>"
 
 ## Instructions
 
-1. **Read the commit message rules** from [../skills/commit-messages/SKILL.md](../skills/commit-messages/SKILL.md) for complete validation requirements
+1. **Read the commit message rules** from [../skills/commit-code/SKILL.md](../skills/commit-code/SKILL.md) for complete validation requirements
 2. Analyze the staged changes to understand what was modified
 3. Determine the most appropriate type based on the nature of changes
 4. Select the correct scope based on which project(s) are affected

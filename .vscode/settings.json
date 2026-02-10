@@ -231,6 +231,7 @@
   "files.autoSave": "afterDelay",
   "files.eol": "\n",
   "files.exclude": {
+    ".github/copilot-instructions.md": true,
     "**/.DS_Store": true,
     "dist": true
   },
@@ -275,14 +276,15 @@
   "github.copilot.chat.anthropic.tools.websearch.maxUses": 12,
   "github.copilot.chat.anthropic.toolSearchTool.enabled": true,
   "github.copilot.chat.claudeCode.debug": true,
-  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+  "github.copilot.chat.codeGeneration.useInstructionFiles": false,
   "github.copilot.chat.codesearch.enabled": true,
   "github.copilot.chat.commitMessageGeneration.instructions": [
     {
-      "file": "../documentation/skills/commit-messages/SKILL.md"
+      "file": "../documentation/skills/commit-code/SKILL.md"
     }
   ],
   "github.copilot.chat.completionsFetcher": "node-fetch",
+  "github.copilot.chat.customInstructionsInSystemMessage": true,
   "github.copilot.chat.editor.temporalContext.enabled": true,
   "github.copilot.chat.edits.suggestRelatedFilesForTests": true,
   "github.copilot.chat.edits.suggestRelatedFilesFromGitHistory": true,
@@ -299,6 +301,11 @@
   "github.copilot.chat.nesFetcher": "node-fetch",
   "github.copilot.chat.newWorkspace.useContext7": true,
   "github.copilot.chat.newWorkspaceCreation.enabled": true,
+  "github.copilot.chat.pullRequestDescriptionGeneration.instructions": [
+    {
+      "file": "../documentation/skills/create-pull-request/SKILL.md"
+    },
+  ],
   "github.copilot.chat.responsesApiReasoningEffort": "default",
   "github.copilot.chat.review.intent": true,
   "github.copilot.chat.reviewAgent.enabled": true,
@@ -393,11 +400,11 @@
     "jupyter-notebook": "right"
   },
   "notebook.codeActionsOnSave": {
-    // "notebook.source.fixAll": "explicit",
-    // "notebook.source.organizeImports": "explicit"
+    "notebook.source.fixAll": "explicit",
+    "notebook.source.organizeImports": "explicit"
   },
   "notebook.defaultFormatter": "charliermarsh.ruff",
-  // "notebook.formatOnSave.enabled": true,
+  "notebook.formatOnSave.enabled": true,
   "notebook.lineNumbers": "on",
   "notebook.output.textLineLimit": 32,
   "npm-intellisense.importQuotes": "\"",
@@ -431,6 +438,7 @@
   "scm.workingSets.default": "current",
   "scm.workingSets.enabled": true,
   "search.exclude": {
+    ".github/copilot-instructions.md": true,
     ".next": true,
     ".tox": true,
     ".venv": true,
@@ -483,11 +491,11 @@
   "workbench.editorAssociations": {
     "*.csv": "jupyter-data-wrangler",
     "*.html": "default",
-    "git-rebase-todo": "gitlens.rebase"
   },
   "workbench.experimental.share.enabled": true,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.panel.showLabels": false,
   "workbench.sideBar.location": "right",
+
   "workbench.startupEditor": "none"
 }

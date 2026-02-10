@@ -1,5 +1,5 @@
 ---
-name: branch-naming
+name: checkout-branch
 description: Create and validate Git branch names following this monorepo's Conventional Commits naming convention. Use this skill when creating branches, renaming branches, or when asked about branch naming rules and validation.
 license: MIT
 ---

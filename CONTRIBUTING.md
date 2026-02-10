@@ -13,6 +13,7 @@ Thank you for contributing! This guide covers the development workflow, code sta
   - [Development Workflow](#development-workflow)
     - [Basic Commands](#basic-commands)
   - [Code Standards](#code-standards)
+  - [Branch Naming Guidelines](#branch-naming-guidelines)
   - [Commit Guidelines](#commit-guidelines)
   - [Pull Request Process](#pull-request-process)
   - [Release Process](#release-process)
@@ -150,7 +151,7 @@ See [eslint.config.base.ts](eslint.config.base.ts) for complete rules.
 
 **Examples**: `feat/lexico-user-auth`, `fix/monorepo-routing`, `docs/caelundas-api`
 
-Validated by Husky pre-push hook and GitHub Actions. See [branch-naming skill](.github/skills/branch-naming/SKILL.md) for details.
+Validated by Husky pre-push hook and GitHub Actions. See [checkout-branch skill](.github/skills/checkout-branch/SKILL.md) for details.
 
 ## Commit Guidelines
 
@@ -170,7 +171,7 @@ fix(lexico): resolve mobile layout overflow
 feat(api)!: redesign authentication  # Breaking change
 ```
 
-Commits are validated by commitlint + Husky. See [commit-messages.md](documentation/commit-messages.md) for details.
+Commits are validated by commitlint + Husky. See [commit-code skill](.github/skills/commit-code/SKILL.md) for details.
 
 ## Pull Request Process
 
@@ -202,7 +203,7 @@ Pull requests require owner approval before merging.
 
 ## Additional Resources
 
-- [Commit Messages Guide](documentation/commit-messages.md)
+- [Commit Messages Guide](.github/skills/commit-code/SKILL.md)
 - [Semantic Release Guide](documentation/semantic-release.md)
 - [GitHub Actions Guide](documentation/github-actions.md)
 - [Static Analysis Tools](documentation/static-analysis-tools.md)

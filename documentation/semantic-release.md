@@ -93,5 +93,5 @@ fix(no-release): temporary debug  # Use no-release scope
 
 - [semantic-release docs](https://semantic-release.gitbook.io/)
 - [Conventional Commits](https://www.conventionalcommits.org/)
-- [Commit guidelines](commit-messages.md)
+- [Commit guidelines](../skills/commit-code/SKILL.md)
 - [Configuration](../commitlint.config.ts)

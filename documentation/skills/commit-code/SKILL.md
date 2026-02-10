@@ -1,5 +1,5 @@
 ---
-name: commit-messages
+name: commit-code
 description: Write commit messages following this monorepo's Conventional Commits standard with Gitmoji support. Use this skill when creating commits or when asked about commit message formatting.
 license: MIT
 ---

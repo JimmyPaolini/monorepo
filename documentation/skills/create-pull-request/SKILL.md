@@ -1,6 +1,6 @@
 ````skill
 ---
-name: pull-requests
+name: create-pull-request
 description: Create and manage pull requests following this monorepo's conventions. Use this skill when creating PRs, opening PRs for review, writing PR descriptions, or asked about PR workflows and best practices.
 license: MIT
 ---
@@ -53,7 +53,7 @@ Add new feature                                # Missing type, scope, gitmoji
 fix: 🐛 fix bug                               # Missing scope
 ```
 
-See [commit-messages skill](../commit-messages/SKILL.md) for complete formatting rules.
+See [commit-code skill](../commit-code/SKILL.md) for complete formatting rules.
 
 ## PR Description
 
@@ -100,7 +100,7 @@ Fixes #456
 
 ### 1. Create Feature Branch
 
-Branch name must follow conventions. See [branch-naming skill](../branch-naming/SKILL.md).
+Branch name must follow conventions. See [checkout-branch skill](../checkout-branch/SKILL.md).
 
 ```bash
 # Create branch from main
@@ -111,7 +111,7 @@ git checkout -b feat/lexico-user-profile
 
 ### 2. Make Changes and Commit
 
-Commits must follow conventions. See [commit-messages skill](../commit-messages/SKILL.md).
+Commits must follow conventions. See [commit-code skill](../commit-code/SKILL.md).
 
 ```bash
 # Stage and commit changes
@@ -393,8 +393,8 @@ gh pr merge --squash --delete-branch
 ## Resources
 
 - [PR template](../../../.github/PULL_REQUEST_TEMPLATE.md) — Default PR description template
-- [commit-messages skill](../commit-messages/SKILL.md) — Commit and PR title format
-- [branch-naming skill](../branch-naming/SKILL.md) — Branch naming conventions
+- [commit-code skill](../commit-code/SKILL.md) — Commit and PR title format
+- [checkout-branch skill](../checkout-branch/SKILL.md) — Branch naming conventions
 - [mcp-github skill](../mcp-github/SKILL.md) — GitHub MCP automation
 - [github-actions skill](../github-actions/SKILL.md) — CI workflow details
 - [Conventional Commits](https://www.conventionalcommits.org/)

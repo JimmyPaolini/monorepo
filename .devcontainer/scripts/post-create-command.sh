@@ -14,3 +14,6 @@ sudo ln -sf "$HOME/.local/bin/yamllint" /usr/local/bin/yamllint
 
 SUPABASE_VERSION=$(curl -s https://api.github.com/repos/supabase/cli/releases/latest | grep '"tag_name":' | cut -d '"' -f 4)
 curl -fsSL "https://github.com/supabase/cli/releases/download/${SUPABASE_VERSION}/supabase_linux_amd64.tar.gz" | sudo tar -xz -C /usr/local/bin
+
+
+chmod +x /workspaces/monorepo/scripts/*.sh

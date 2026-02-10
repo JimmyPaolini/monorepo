@@ -11,7 +11,7 @@ documentation/skills/
 ├── README.md (this file)
 ├── code-generator-patterns/
 │   └── SKILL.md
-├── commit-messages/
+├── commit-code/
 │   └── SKILL.md
 ├── docker-workflows/
 │   └── SKILL.md
@@ -116,21 +116,21 @@ documentation/skills/
 
 ### Process Skills
 
-**[branch-naming](branch-naming/SKILL.md)**
+**[checkout-branch](checkout-branch/SKILL.md)**
 
 - Git branch naming conventions
 - Type/scope/description format
 - Validation and troubleshooting
 - Renaming invalid branches
 
-**[commit-messages](commit-messages/SKILL.md)**
+**[commit-code](commit-code/SKILL.md)**
 
 - Conventional Commits format
 - Gitmoji integration
 - Scope selection
 - Subject line rules (50 char max)
 
-**[pull-requests](pull-requests/SKILL.md)**
+**[create-pull-request](create-pull-request/SKILL.md)**
 
 - PR title and description conventions
 - PR creation workflow with GitHub CLI and MCP tools

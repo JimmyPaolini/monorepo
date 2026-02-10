@@ -53,7 +53,7 @@ nx run-many --target=code-analysis --all
 ## 📚 Documentation
 
 - **[Contributing Guide](CONTRIBUTING.md)** - Development workflow, code standards, and release process
-- **[Commit Messages](documentation/commit-messages.md)** - Conventional Commits format and examples
+- **[Commit Messages](.github/skills/commit-code/SKILL.md)** - Conventional Commits format and examples
 - **[Release Process](documentation/semantic-release.md)** - Automated versioning and changelog generation
 - **[GitHub Actions](documentation/github-actions.md)** - CI/CD workflows and patterns
 - **[Static Analysis](documentation/static-analysis-tools.md)** - Code quality tools configuration
