@@ -132,6 +132,31 @@ This runs the following in sequence:
 - `0` - Lockfile is valid
 - `1` - Lockfile is out of sync
 
+### sync-extensions.ts
+
+**Purpose:** Sync VS Code extensions between `.vscode/extensions.json` and `.devcontainer/devcontainer.json`
+
+**Usage:**
+
+```bash
+# Via Nx (recommended)
+nx run monorepo:sync-extensions:check    # Validate (default)
+nx run monorepo:sync-extensions:write    # Update devcontainer.json
+
+# Direct
+tsx scripts/sync-extensions.ts [check|write]
+```
+
+**Use cases:**
+
+- Pre-commit hook (auto-runs when `.vscode/extensions.json` is staged)
+- Manual sync after adding extensions
+
+**Exit codes:**
+
+- `0` - In sync or successfully synced
+- `1` - Out of sync (check mode) or failed
+
 ### utilities.sh
 
 **Purpose:** Common utilities and helper functions

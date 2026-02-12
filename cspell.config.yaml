@@ -2,34 +2,35 @@ version: "0.2"
 language: en
 $schema: https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json
 ignorePaths:
-  - node_modules
-  - "**/node_modules"
-  - dist
-  - "**/dist"
-  - coverage
-  - "**/coverage"
-  - .nx
+  - ./.devcontainer/devcontainer.json
   - .git
-  - pnpm-lock.yaml
-  - "*.lock"
-  - "*.svg"
-  - "*.png"
-  - "*.jpg"
-  - "*.jpeg"
+  - .nx
+  - "*.eot"
   - "*.gif"
   - "*.ico"
+  - "*.jpeg"
+  - "*.jpg"
+  - "*.lock"
+  - "*.png"
+  - "*.svg"
+  - "*.ttf"
   - "*.woff"
   - "*.woff2"
-  - "*.ttf"
-  - "*.eot"
-  - "**/*.min.js"
-  - "**/*.min.css"
-  - "**/*.gen.ts"
-  - "**/routeTree.gen.ts"
-  - "**/pnpm-lock.yaml"
   - "**/.terraform/**"
+  - "**/*.gen.ts"
+  - "**/*.min.css"
+  - "**/*.min.js"
+  - "**/coverage"
+  - "**/dist"
+  - "**/node_modules"
+  - "**/pnpm-lock.yaml"
+  - "**/routeTree.gen.ts"
   - "**/terraform.tfstate*"
-  - planning/**
+  - coverage
+  - dist
+  - documentation/planning/**
+  - node_modules
+  - pnpm-lock.yaml
 words:
   - adduser
   - āēīōūȳ

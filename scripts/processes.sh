@@ -40,7 +40,3 @@ function killallvscodeextensions() {
 
   echo "⚰️ Killed all VSCode Extension helper processes"
 }
-
-# rm -rf ~/Library/Application\ Support/Code/CachedExtensionVSIXs
-# rm -rf ~/Library/Application\ Support/Code/CachedExtensions
-# rm -rf ~/Library/Application\ Support/Code/User/workspaceStorage

@@ -191,13 +191,17 @@ export default [
           selector: "default",
           format: ["camelCase"],
           filter: {
-            regex: "^_$",
+            regex: "^(_|__(filename|dirname))$",
             match: false,
           },
         },
         {
           selector: "variable",
           format: ["camelCase", "UPPER_CASE", "PascalCase"],
+          filter: {
+            regex: "^__(filename|dirname)$",
+            match: false,
+          },
         },
         {
           selector: "function",

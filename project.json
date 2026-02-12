@@ -180,6 +180,27 @@
       ],
       "description": "Check spelling in workspace root files (scripts, documentation, infrastructure, planning)"
     },
+    "sync-extensions": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsx scripts/sync-extensions.ts"
+      },
+      "configurations": {
+        "check": {
+          "command": "tsx scripts/sync-extensions.ts check"
+        },
+        "write": {
+          "command": "tsx scripts/sync-extensions.ts write"
+        }
+      },
+      "defaultConfiguration": "check",
+      "cache": true,
+      "inputs": [
+        "{projectRoot}/.vscode/extensions.json",
+        "{projectRoot}/.devcontainer/devcontainer.json"
+      ],
+      "description": "Validate that VS Code extensions are synchronized between .vscode/extensions.json and .devcontainer/devcontainer.json (check) or sync them (write)"
+    },
     "code-analysis": {
       "options": {
         "commands": [

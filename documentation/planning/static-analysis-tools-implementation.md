@@ -668,17 +668,18 @@ Add to each project's `package.json` (example for caelundas):
   CI_COMMIT_SHA: ${{ github.sha }}
   CI: true
 
-```
-
+```markdown
 **Effort Estimate:** 2-3 hours
 
 ---
 
-### 2.2 ath": "dist/public/**/*.css",
+### 2.2 ath": "dist/public/\*_/_.css",
+
       "limit": "50 KB",
       "gzip": true
     }
-  ]
+
+]
 }
 ```
 
@@ -1220,9 +1221,10 @@ echo "✅ All licenses are compliant"
 
 Create `.licenseignore`:
 
-```
+```markdown
 # Internal packages
-@monorepo/*
+
+@monorepo/\*
 ```
 
 **CI Integration:**
@@ -1291,8 +1293,7 @@ For each tool implemented:
    nx run <project>:<target> # Should use cache on second run
    ```
 
-```
-
+```markdown
 2. **CI Testing:**
    - Create feature branch
    - Make small change to one project
@@ -1346,7 +1347,7 @@ For each tool implemented:
 
 **Per PR:**
 
-- Implementation Approach:** One tool at a time, fully tested before moving to next.
+- Implementation Approach:\*\* One tool at a time, fully tested before moving to next.
 
 **Week 1: Phase 1 (Security & Architecture)**
 
@@ -1361,7 +1362,7 @@ For each tool implemented:
 
 **Monthly:**
 
-- Licen4: Phase 3 (Documentation & Compliance)**
+- Licen4: Phase 3 (Documentation & Compliance)\*\*
 
 - Day 1: TSDoc ESLint Plugin
 - Days 2-3: markdownlint
@@ -1386,12 +1387,14 @@ For each tool implemented:
 
 - Developers find tools helpful (survey after 1 month)
 - PR reviews focus on logic, not style (fewer nitpicks)
-- Onboarding time reduced (new devs catch  (lexico only)
+- Onboarding time reduced (new devs catch (lexico only)
+
 ---
 
 ## Estimated Total Effort
 
 **Actual Time Spent:**
+
 - **Phase 1:** ~6 hours (Dependency Cruiser, npm audit, npm-check-updates)
 - **Phase 2:** ~8 hours (size-limit, type-coverage, cspell)
 - **Phase 3:** ~7 hours (TSDoc, markdownlint, license-checker)
@@ -1402,7 +1405,6 @@ For each tool implemented:
 **Original Estimate:** 22-34 hours ✅ Under budget!
 
 ---
-
 
 - [Dependency Cruiser Documentation](https://github.com/sverweij/dependency-cruiser)
 - [Snyk Documentation](https://docs.snyk.io/)
@@ -1420,10 +1422,10 @@ For each tool implemented:
 
 2. **Type Coverage:** What's acceptable baseline? (Recommend measuring current level first, then set 90%+)
 1. **Budget:** Is there budget for Snyk paid plan, or should we stick with Socket?
-2. **Thresholds:** What's acceptable type coverage baseline? (Recommend starting at current level)
-3. **Bundle Limits:** What's acceptable bundle size for lexico? (Suggest 500KB gzipped)
-4. **Enforcement:** Should all checks be blocking in CI, or warnings initially?
-5. **Scope:** Should code-generator project get full tool suite, or minimal?
+1. **Thresholds:** What's acceptable type coverage baseline? (Recommend starting at current level)
+1. **Bundle Limits:** What's acceptable bundle size for lexico? (Suggest 500KB gzipped)
+1. **Enforcement:** Should all checks be blocking in CI, or warnings initially?
+1. **Scope:** Should code-generator project get full tool suite, or minimal?
 
 ---
 

@@ -3,6 +3,7 @@ import { relative } from "node:path";
 const config = {
   "**/package.json": () => ["./scripts/check-lockfile.sh"],
   "pnpm-workspace.yaml": () => ["./scripts/check-lockfile.sh"],
+  ".vscode/extensions.json": () => ["nx run monorepo:sync-extensions:check"],
 
   "*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}": (files: string[]) => {
     // Convert absolute paths to relative paths for Nx

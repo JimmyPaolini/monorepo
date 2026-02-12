@@ -19,8 +19,7 @@
     "earshinov.permute-lines", // Permute Lines
     "ecmel.vscode-html-css", // HTML CSS Support
     "esbenp.prettier-vscode", // Prettier - Code formatter
-    "formulahendry.auto-close-tag", // Auto Close Tag
-    "formulahendry.auto-rename-tag", // Auto Rename Tag
+    "firsttris.vscode-jest-runner", // Jest / Vitest Runner
     "GitHub.copilot-chat", // GitHub Copilot Chat
     "github.vscode-github-actions", // GitHub Actions
     "GitHub.vscode-pull-request-github", // GitHub Pull Requests
@@ -29,6 +28,7 @@
     "hashicorp.terraform", // HashiCorp Terraform
     "IBM.output-colorizer", // Output Colorizer
     "iliazeus.vscode-ansi", // ANSI Colors
+    "inferrinizzard.prettier-sql-vscode", // Prettier SQL VSCode
     "jasonnutter.vscode-codeowners", // CODEOWNERS
     "jsynowiec.vscode-insertdatestring", // Insert Date String
     "KevinRose.vsc-python-indent", // Python Indent
@@ -37,7 +37,6 @@
     "meganrogge.template-string-converter", // Template String Converter
     "mikestead.dotenv", // DotENV
     "ms-azuretools.vscode-containers", // Container Tools
-    "ms-azuretools.vscode-docker", // Docker
     "ms-kubernetes-tools.vscode-kubernetes-tools", // Kubernetes
     "ms-python.debugpy", // Python Debugger
     "ms-python.isort", // isort
@@ -62,7 +61,6 @@
     "streetsidesoftware.code-spell-checker", // Code Spell Checker
     "stringham.copy-with-imports", // Copy With Imports
     "tamasfe.even-better-toml", // Even Better TOML
-    "vitest.explorer", // Vitest
     "vivaxy.vscode-conventional-commits", // Conventional Commits
     "wholroyd.jinja", // Jinja
     "YoavBls.pretty-ts-errors", // Pretty TypeScript Errors
@@ -82,6 +80,7 @@
     "innoverio.vscode-dbt-power-user", // Power User for dbt
     "janisdd.vscode-edit-csv", // Edit CSV
     "mongodb.mongodb-vscode", // MongoDB for VS Code
+    "ms-azuretools.vscode-docker", // Docker
     "ms-edgedevtools.vscode-edge-devtools", // Microsoft Edge Tools for VS Code
     "ms-mssql.mssql", // SQL Server (mssql)
     "ms-python.black-formatter", // Black Formatter
@@ -95,6 +94,7 @@
     "Redis.redis-for-vscode", // Redis for VS Code
     "SanjulaGanepola.github-local-actions", // GitHub Local Actions
     "shinichi-takii.sql-bigquery", // SQL BigQuery
-    "vscodevim.vim", // VIM
+    "vitest.explorer", // Vitest
+    "vscodevim.vim" // VIM
   ]
 }
