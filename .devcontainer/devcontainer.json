@@ -110,21 +110,12 @@
     "ghcr.io/devcontainers-extra/features/pnpm:2": {
       "version": "latest"
     },
-    "ghcr.io/devcontainers-extra/features/terraform-asdf:0": {
-      "version": "latest"
-    },
     "ghcr.io/devcontainers/features/docker-in-docker:2": {
       "azureDnsAutoDetection": true,
       "dockerDashComposeVersion": "v2",
       "installDockerBuildx": true,
       "installDockerComposeSwitch": true,
       "moby": true,
-      "version": "latest"
-    },
-    "ghcr.io/devcontainers/features/docker-in-docker:2.14.0": {
-      "dockerDashComposeVersion": "v2",
-      "installDockerBuildx": true,
-      "installDockerComposeSwitch": true,
       "version": "latest"
     },
     "ghcr.io/devcontainers/features/github-cli:1": {
@@ -147,6 +138,12 @@
       "installJupyterlab": true,
       "installTools": true,
       "optimize": true,
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/terraform:1": {
+      "installTFsec": false,
+      "installTerraformLS": false,
+      "tflint": "latest",
       "version": "latest"
     }
   },

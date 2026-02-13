@@ -33,7 +33,7 @@ The container uses [Dev Container Features](https://containers.dev/features) for
 | `docker-in-docker`      | 1       | Isolated Docker daemon inside container (DinD) |
 | `github-cli`            | 1       | `gh` command for GitHub operations             |
 | `kubectl-helm-minikube` | 1       | kubectl and Helm (minikube disabled)           |
-| `terraform-asdf`        | 0       | Terraform CLI for infrastructure provisioning  |
+| `terraform`             | 1       | Terraform CLI + tflint for infrastructure      |
 
 ### Custom Installations
 
