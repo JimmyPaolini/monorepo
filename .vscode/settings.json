@@ -118,7 +118,40 @@
   "containers.containers.label": "ContainerName",
   "containers.containers.sortBy": "Label",
   "containers.images.label": "FullTag",
+  "conventionalCommits.autoCommit": false,
+  "conventionalCommits.editor.keepAfterSave": true,
+  "conventionalCommits.emojiFormat": "emoji",
+  "conventionalCommits.gitmoji": true,
+  "conventionalCommits.lineBreak": "",
+  "conventionalCommits.promptBody": false,
+  "conventionalCommits.promptCI": false,
+  "conventionalCommits.promptFooter": false,
+  "conventionalCommits.promptScopes": true,
+  "conventionalCommits.scopes": [
+    // 🕋 Root
+    "monorepo", // Workspace root
+    "applications", // All applications
+    "packages", // All packages
+    "tools", // Build or development tooling
+    // 🏢 Projects
+    "caelundas", // Caelundas application
+    "lexico", // Lexico application
+    "lexico-components", // Lexico components package
+    "JimmyPaolini", // JimmyPaolini application
+    // 🗑️ Other
+    "documentation", // Documentation
+    "dependencies", // Dependency updates
+    "infrastructure", // Infrastructure changes
+    "deployments", // CI/CD workflows
+    "testing", // Testing-related changes
+    "linting", // Linting-related changes
+    "scripts", // Build or dev scripts
+    "configuration" // Config files
+  ],
+  "conventionalCommits.showEditor": true,
   "conventionalCommits.showNewVersionNotes": false,
+  "conventionalCommits.silentAutoCommit": false,
+  "conventionalCommits.storeScopesGlobally": false,
   "cSpell.blockCheckingWhenLineLengthGreaterThan": 5000,
   "cSpell.diagnosticLevelFlaggedWords": "Information",
   "cSpell.enabled": true,
@@ -425,6 +458,7 @@
     "extensions.json": "cake",
     "jest.config.e2e.ts": "jest",
     "keybindings.json": "pawn",
+    "lint-staged.config.ts": "lintstaged",
     "mcp.json": "copilot",
     "project.json": "nx",
     "sessions.json": "exe",

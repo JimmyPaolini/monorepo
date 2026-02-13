@@ -85,7 +85,7 @@ This document outlines the implementation plan for integrating additional static
 
 ### 🔧 Pre-commit Integration
 
-All tools integrated into `.lintstagedrc.ts`:
+All tools integrated into `lint-staged.config.ts`:
 
 - TypeScript/JavaScript: format, lint, typecheck, knip, **type-coverage**, **spell-check**
 - JSON/YAML/CSS: format, **spell-check**
@@ -1134,7 +1134,7 @@ jobs:
 
 **lint-staged Integration:**
 
-Add to `.lintstagedrc.ts`:
+Add to `lint-staged.config.ts`:
 
 ```typescript
 {
@@ -1267,7 +1267,7 @@ For each tool implemented:
 - [ ] Add NX target to appropriate `project.json` files
 - [ ] Enable caching in NX target (if applicable)
 - [ ] Add GitHub Actions workflow
-- [ ] Update `.lintstagedrc.ts` if tool should run pre-commit
+- [ ] Update `lint-staged.config.ts` if tool should run pre-commit
 - [ ] Document in `CONTRIBUTING.md` or tool-specific docs
 - [ ] Add to monorepo README badges (optional)
 - [ ] Test with `nx affected` and `nx run-many`

@@ -61,9 +61,30 @@ See [conventional.config.cjs](../../../conventional.config.cjs) for the complete
   - ❌ "added feature" ❌ "fixes bug" ❌ "updating docs"
 - Be **under 45 characters** (best practice for readability with emoji)
   - Hard limit is 100 chars total for entire header (`header-max-length: 100`)
+  - See **Character Budget** section below for calculating available space
 - **Not end with a period** (`subject-full-stop: never`, error level 2)
 - **Not be empty** (`subject-empty: never`, error level 2)
 - Be **concise and descriptive**
+- **Describe ONE logical change** — never list multiple changes with commas or "and"
+
+### Character Budget & Multi-Change Commits
+
+The prefix `type(scope): <gitmoji>` eats into the 100-char header limit. Long scopes like `infrastructure` (~27 chars) or `lexico-components` (~35 chars) leave as few as **65–73 characters** for the subject. Always count the full header.
+
+When a commit touches multiple concerns, **summarize or split** — never list changes with commas/"and":
+
+```text
+# ❌ FAILS (143 chars) — lists multiple changes
+feat(infrastructure): 🏗️ migrate lint-staged configuration to new file, add sync scripts for VS Code extensions and conventional commit scopes
+
+# ✅ Summarize at a higher level
+feat(infrastructure): 🏗️ add lint-staged config and sync scripts
+
+# ✅ Or split into separate commits
+feat(infrastructure): 🏗️ migrate lint-staged to standalone config
+feat(scripts): ✨ add vscode extension sync script
+feat(scripts): ✨ add conventional scopes sync script
+```
 
 ### Examples
 
@@ -85,6 +106,7 @@ Fix(Caelundas): 🐛 fix bug                       # Wrong case (type)
 fix(caelundas): 🐛 Fix bug                       # Wrong case (subject)
 docs: 📝 updated docs                            # Missing scope, wrong tense
 chore(deps): ⬆️ bump                             # Invalid scope (use 'dependencies')
+feat(infrastructure): 🏗️ add config, scripts, and sync tools  # Too verbose, lists multiple changes
 ```
 
 ## Gitmoji
@@ -110,7 +132,7 @@ Format: `<type>(<scope>): <gitmoji> <subject>`
 | ⬆️    | `:arrow_up:`            | `chore`      | Upgrade dependencies     |
 | 🗃️    | `:card_file_box:`       | `feat`/`fix` | Database changes         |
 
-See [gitmoji.md](gitmoji.md) for the complete emoji guide.
+See [gitmoji.md](../../gitmoji.md) for the complete emoji guide.
 
 ## Body and Footer
 
@@ -168,12 +190,6 @@ git commit -m "feat(monorepo): ✨ add feature
 This is the body"
 ```
 
-✅ **Use instead:** Single-line commit with all info in the subject:
-
-```bash
-git commit -m "feat(monorepo): ✨ add feature with specific details"
-```
-
 ### Tips
 
 - Use `git commit --amend` to edit the last commit message
@@ -182,7 +198,7 @@ git commit -m "feat(monorepo): ✨ add feature with specific details"
 
 ## Commitlint Rules Summary
 
-All rules defined in [../commitlint.config.ts](../commitlint.config.ts):
+All rules defined in [../commitlint.config.ts](../../../commitlint.config.ts):
 
 **Error (level 2) - Will fail commit:**
 
@@ -206,8 +222,8 @@ Commit messages are validated by:
 
 Configuration files:
 
-- [../commitlint.config.ts](../commitlint.config.ts) — Complete rules and validation config
-- [../.husky/commit-msg](../.husky/commit-msg) — Git hook script
+- [../../../commitlint.config.ts](../../../commitlint.config.ts) — Complete rules and validation config
+- [../../../.husky/commit-msg](../../../.husky/commit-msg) — Git hook script
 
 ## Quick Reference
 
@@ -221,9 +237,10 @@ Configuration files:
 - Type: lowercase, from allowed list
 - Scope: lowercase, from allowed list
 - Subject: lowercase, imperative, no period, <45 chars
-- Header: <100 chars total
+- Header: <100 chars total (count prefix + subject!)
 - Body: forbidden
 - Footer: forbidden
+- NEVER list multiple changes with commas/"and" — summarize or split commits
 
 # Common patterns
 feat(project): ✨ add feature
@@ -239,4 +256,4 @@ refactor(project): ♻️ refactor code
 - [Conventional Commits](https://www.conventionalcommits.org/)
 - [Gitmoji Guide](https://gitmoji.dev)
 - [commitlint](https://commitlint.js.org/)
-- [gitmoji.md](gitmoji.md) — Full emoji reference
+- [gitmoji.md](../../gitmoji.md) — Full emoji reference

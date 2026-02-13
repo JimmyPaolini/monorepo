@@ -2,7 +2,7 @@
 
 /**
  * Sync VS Code extensions between .vscode/extensions.json and .devcontainer/devcontainer.json
- * Usage: tsx scripts/sync-extensions.ts [check|write]
+ * Usage: tsx scripts/sync-vscode-extensions.ts [check|write]
  *   check (default): Validate that files are in sync, exit 1 if not
  *   write: Update devcontainer.json from extensions.json
  */
@@ -78,7 +78,9 @@ function checkSync(
       showDifference(unwantedRecommendations, dcUnwanted);
       console.log("");
     }
-    console.log("💡 Run 'nx run monorepo:sync-extensions:write' to sync");
+    console.log(
+      "💡 Run 'nx run monorepo:sync-vscode-extensions:write' to sync",
+    );
     return false;
   }
   return true;
@@ -121,7 +123,9 @@ function main(): void {
     }
   } else {
     console.error(`❌ Invalid mode: ${MODE}`);
-    console.error("💡 Usage: tsx scripts/sync-extensions.ts [check|write]");
+    console.error(
+      "💡 Usage: tsx scripts/sync-vscode-extensions.ts [check|write]",
+    );
     process.exit(1);
   }
 }

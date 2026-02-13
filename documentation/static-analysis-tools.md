@@ -543,7 +543,7 @@ export function calculateAspects(
 
 All tools are automatically enforced via lint-staged on commit.
 
-**Configuration:** `.lintstagedrc.ts`
+**Configuration:** `lint-staged.config.ts`
 
 ### File Type Checks
 

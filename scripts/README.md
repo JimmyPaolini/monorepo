@@ -136,7 +136,7 @@ The devcontainer handles equivalent setup automatically.
 - `0` - Lockfile is valid
 - `1` - Lockfile is out of sync
 
-### sync-extensions.ts
+### sync-vscode-extensions.ts
 
 **Purpose:** Sync VS Code extensions between `.vscode/extensions.json` and `.devcontainer/devcontainer.json`
 
@@ -144,11 +144,11 @@ The devcontainer handles equivalent setup automatically.
 
 ```bash
 # Via Nx (recommended)
-nx run monorepo:sync-extensions:check    # Validate (default)
-nx run monorepo:sync-extensions:write    # Update devcontainer.json
+nx run monorepo:sync-vscode-extensions:check    # Validate (default)
+nx run monorepo:sync-vscode-extensions:write    # Update devcontainer.json
 
 # Direct
-tsx scripts/sync-extensions.ts [check|write]
+tsx scripts/sync-vscode-extensions.ts [check|write]
 ```
 
 **Use cases:**

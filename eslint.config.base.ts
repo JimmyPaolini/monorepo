@@ -34,7 +34,7 @@ export default [
       "**/*.min.js",
       "**/vite.config.*.timestamp*",
       "**/vitest.config.*.timestamp*",
-      ".lintstagedrc.ts",
+      "lint-staged.config.ts",
       // Shadcn generated components
       "packages/lexico-components/src/components",
       "packages/lexico-components/src/lib/utils",
@@ -87,7 +87,11 @@ export default [
       "**/*.cjs",
       "**/*.jsx",
     ],
-    ignores: [".lintstagedrc.ts", ".prettierrc.ts", "eslint.config.base.ts"],
+    ignores: [
+      "lint-staged.config.ts",
+      ".prettierrc.ts",
+      "eslint.config.base.ts",
+    ],
     plugins: {
       import: importPlugin,
     },
@@ -276,16 +280,16 @@ export default [
   ...tseslint.configs.strictTypeChecked.map((config) => ({
     ...config,
     files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
-    ignores: [".lintstagedrc.ts", ".prettierrc.ts"],
+    ignores: ["lint-staged.config.ts", ".prettierrc.ts"],
   })),
   ...tseslint.configs.stylisticTypeChecked.map((config) => ({
     ...config,
     files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
-    ignores: [".lintstagedrc.ts", ".prettierrc.ts"],
+    ignores: ["lint-staged.config.ts", ".prettierrc.ts"],
   })),
   {
     files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
-    ignores: [".lintstagedrc.ts", ".prettierrc.ts"],
+    ignores: ["lint-staged.config.ts", ".prettierrc.ts"],
     languageOptions: {
       parserOptions: {
         projectService: true,
@@ -307,7 +311,7 @@ export default [
       "**/*.test.tsx",
       "**/*.spec.ts",
       "**/*.spec.tsx",
-      ".lintstagedrc.ts",
+      "lint-staged.config.ts",
       ".prettierrc.ts",
     ],
     plugins: {
