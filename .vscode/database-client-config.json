@@ -1,36 +1,36 @@
 {
-    "$schema": "https://cdn.database-client.com/dbclient/schema.json",
-    "database": {
-        "1762394017487": {
-            "advance": {
-                "groupingTables": false,
-                "hideSystemSchema": true,
-                "idleConfig": {
-                    "enable": true
-                },
-                "loadMetaDataWhenExpandTreeView": true
-            },
-            "connectionKey": "database.connections",
-            "dbPath": "../monorepo/applications/caelundas/output/database.db",
-            "dbType": "SQLite",
-            "fs": {
-                "encoding": "utf8",
-                "showHidden": true
-            },
-            "global": false,
-            "host": "127.0.0.1",
-            "key": "1762394017487",
-            "name": "caelundas",
-            "port": 3306,
-            "readonly": false,
-            "remark": "Dev",
-            "savePassword": "Forever",
-            "sort": 11,
-            "treeFeatures": [],
-            "useHTTPProxy": false,
-            "useSocksProxy": false,
-            "useSSL": false,
-            "usingSSH": false
-        }
+  "$schema": "https://cdn.database-client.com/dbclient/schema.json",
+  "database": {
+    "caelundas": {
+      "advance": {
+        "groupingTables": false,
+        "hideSystemSchema": true,
+        "idleConfig": {
+          "enable": true
+        },
+        "loadMetaDataWhenExpandTreeView": true
+      },
+      "connectionKey": "database.connections",
+      "dbPath": "/workspaces/monorepo/applications/caelundas/output/database.db",
+      "dbType": "SQLite",
+      "fs": {
+        "encoding": "utf8",
+        "showHidden": true
+      },
+      "global": false,
+      "host": "127.0.0.1",
+      "key": "caelundas",
+      "name": "caelundas",
+      "port": 3306,
+      "readonly": false,
+      "remark": "Dev",
+      "savePassword": "Forever",
+      "sort": 11,
+      "treeFeatures": [],
+      "useHTTPProxy": false,
+      "useSocksProxy": false,
+      "useSSL": false,
+      "usingSSH": false
     }
+  }
 }

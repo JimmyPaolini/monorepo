@@ -47,6 +47,7 @@ The fastest way to get started is using the included dev container, which provid
 | ------------ | ------- | ------------------------------------ |
 | Node.js      | 22.20.0 | JavaScript runtime                   |
 | pnpm         | 10.20.0 | Package manager                      |
+| Terraform    | latest  | Infrastructure provisioning (Linode) |
 | Supabase CLI | latest  | Database migrations, type generation |
 | kubectl      | latest  | Kubernetes cluster management        |
 | Helm         | latest  | Kubernetes package manager           |
@@ -82,7 +83,7 @@ Run the setup script to install all dependencies:
 ```bash
 git clone https://github.com/JimmyPaolini/monorepo.git
 cd monorepo
-./scripts/setup.sh
+./scripts/local-setup/setup.sh
 ```
 
 This script:

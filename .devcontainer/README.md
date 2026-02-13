@@ -10,8 +10,10 @@ The dev container eliminates "works on my machine" issues by standardizing:
 - **pnpm 10.20.0** - Matching `packageManager` in root `package.json`
 - **Supabase CLI** - For database migrations and type generation (lexico)
 - **kubectl & Helm** - For Kubernetes deployments (caelundas)
+- **Terraform** - For Linode LKE cluster provisioning
 - **GitHub CLI** - For repository operations
 - **Docker** - Docker-in-Docker daemon for running Supabase local stack (isolated from host)
+- **SQLite** - CLI tool for querying and managing SQLite databases (caelundas ephemeris caching)
 
 ## Quick Start
 
@@ -31,10 +33,12 @@ The container uses [Dev Container Features](https://containers.dev/features) for
 | `docker-in-docker`      | 1       | Isolated Docker daemon inside container (DinD) |
 | `github-cli`            | 1       | `gh` command for GitHub operations             |
 | `kubectl-helm-minikube` | 1       | kubectl and Helm (minikube disabled)           |
+| `terraform-asdf`        | 0       | Terraform CLI for infrastructure provisioning  |
 
 ### Custom Installations
 
 - **Supabase CLI**: Installed from GitHub releases in `postCreateCommand` (npm wrapper is broken for global installs)
+- **SQLite**: Installed via `apt-get` in `postCreateCommand` for database querying and management
 - **pnpm**: Activated via Corepack with exact version 10.20.0
 
 ## VS Code Extensions
