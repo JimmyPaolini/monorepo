@@ -336,6 +336,13 @@
   "git.terminalGitEditor": true,
   "git.verboseCommit": true,
   "github-actions.use-enterprise": false,
+  "github-actions.workflows.pinned.workflows": [
+    ".github/workflows/dependency-analysis.yml",
+    ".github/workflows/code-analysis.yml",
+    ".github/workflows/test-coverage.yml",
+    ".github/workflows/build-devcontainer.yml",
+    ".github/workflows/convention-check.yml"
+  ],
   "github.copilot.chat.agent.currentEditorContext.enabled": true,
   "github.copilot.chat.agent.omitFileAttachmentContents": true,
   "github.copilot.chat.agentHistorySummarizationWithPromptCache": true,

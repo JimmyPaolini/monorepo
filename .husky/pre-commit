@@ -1,3 +1,5 @@
 set -e
 
+unset NO_COLOR
+
 NODE_OPTIONS='--import=tsx' pnpm exec lint-staged --no-stash

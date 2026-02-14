@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
     inputs:
       run_tests:
-        description: "Run tests inside container"
+        description: Run tests inside container
         type: boolean
         default: false
 
@@ -33,6 +33,9 @@ jobs:
       - name: 📥 Checkout Repository
         uses: actions/checkout@v4
 
+      - name: 🔧 Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
       - name: 🔐 Login to GitHub Container Registry
         uses: docker/login-action@v3
         with:
@@ -44,7 +47,10 @@ jobs:
         uses: devcontainers/ci@v0.3
         with:
           imageName: ghcr.io/jimmypaolini/monorepo-devcontainer
-          cacheFrom: ghcr.io/jimmypaolini/monorepo-devcontainer
+          cacheFrom: |
+            type=gha,scope=devcontainer
+            ghcr.io/jimmypaolini/monorepo-devcontainer
+          cacheTo: type=gha,mode=max,scope=devcontainer
           push: filter
           eventFilterForPush: |
             push:
@@ -65,6 +71,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: 🔧 Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
       - name: 🔐 Login to GitHub Container Registry
         uses: docker/login-action@v3
         with:
@@ -76,7 +85,9 @@ jobs:
         uses: devcontainers/ci@v0.3
         with:
           imageName: ghcr.io/jimmypaolini/monorepo-devcontainer
-          cacheFrom: ghcr.io/jimmypaolini/monorepo-devcontainer
+          cacheFrom: |
+            type=gha,scope=devcontainer
+            ghcr.io/jimmypaolini/monorepo-devcontainer
           push: never
           runCmd: |
             pnpm install --frozen-lockfile
