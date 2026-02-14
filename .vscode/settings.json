@@ -341,7 +341,8 @@
     ".github/workflows/code-analysis.yml",
     ".github/workflows/test-coverage.yml",
     ".github/workflows/build-devcontainer.yml",
-    ".github/workflows/convention-check.yml"
+    ".github/workflows/convention-check.yml",
+    ".github/workflows/build-code.yml"
   ],
   "github.copilot.chat.agent.currentEditorContext.enabled": true,
   "github.copilot.chat.agent.omitFileAttachmentContents": true,
