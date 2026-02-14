@@ -44,6 +44,9 @@ coverage/*
 type-coverage-report.txt
 **/type-coverage-report.txt
 
+# Kubernetes ☸️
+.kube/config
+
 # Other 🗑️
 tmp
 dist

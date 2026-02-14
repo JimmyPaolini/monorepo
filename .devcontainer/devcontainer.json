@@ -207,6 +207,7 @@
     "post-create-command": ".devcontainer/scripts/post-create-command.sh"
   },
   "remoteEnv": {
+    "KUBECONFIG": "${containerWorkspaceFolder}/.kube/config",
     "NODE_OPTIONS": "--max-old-space-size=4096",
     "UV_THREADPOOL_SIZE": "4",
     "VSCODE_EXTENSION_HOST_WORKER_CONCURRENCY": "4"
