@@ -1,45 +1,36 @@
 {
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
   },
   "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
   },
   "[json]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "never"
-    },
     "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
   },
   "[jsonc]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "never"
-    },
     "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
   },
   "[jsonl]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "never"
-    },
     "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
   },
   "[jupyter]": {
     "editor.defaultFormatter": "charliermarsh.ruff"
   },
   "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
   },
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff"
   },
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
   },
   "[yaml]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
   },
   "atlascode.rovodev.showEntitlementNotifications": false,
   "chat.agent.maxRequests": 96,
@@ -337,12 +328,11 @@
   "git.verboseCommit": true,
   "github-actions.use-enterprise": false,
   "github-actions.workflows.pinned.workflows": [
-    ".github/workflows/dependency-analysis.yml",
-    ".github/workflows/code-analysis.yml",
-    ".github/workflows/test-coverage.yml",
+    ".github/workflows/build-code.yml",
     ".github/workflows/build-devcontainer.yml",
-    ".github/workflows/convention-check.yml",
-    ".github/workflows/build-code.yml"
+    ".github/workflows/code-analysis.yml",
+    ".github/workflows/dependency-analysis.yml",
+    ".github/workflows/test-coverage.yml"
   ],
   "github.copilot.chat.agent.currentEditorContext.enabled": true,
   "github.copilot.chat.agent.omitFileAttachmentContents": true,
