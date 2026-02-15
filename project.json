@@ -21,7 +21,7 @@
           "nx run monorepo:format:{args.configuration}",
           "nx run monorepo:knip:{args.configuration}",
           "nx run monorepo:spell-check",
-          "nx run monorepo:sync-conventional-scopes:{args.configuration}",
+          "nx run monorepo:sync-conventional-config:{args.configuration}",
           "nx run monorepo:sync-vscode-extensions:{args.configuration}"
         ]
       }
@@ -195,25 +195,26 @@
         "cwd": "{projectRoot}"
       }
     },
-    "sync-conventional-scopes": {
+    "sync-conventional-config": {
       "cache": true,
       "configurations": {
         "check": {
-          "command": "tsx scripts/sync-conventional-scopes.ts check"
+          "command": "tsx scripts/sync-conventional-config.ts check"
         },
         "write": {
-          "command": "tsx scripts/sync-conventional-scopes.ts write"
+          "command": "tsx scripts/sync-conventional-config.ts write"
         }
       },
       "defaultConfiguration": "check",
-      "description": "Validate that conventional commit scopes are synchronized from conventional.config.cjs into .vscode/settings.json (check) or sync them (write)",
+      "description": "Validate that conventional commit config (types/scopes) is synchronized from conventional.config.cjs into .vscode/settings.json and SKILL.md (check) or sync them (write)",
       "executor": "nx:run-commands",
       "inputs": [
         "{projectRoot}/conventional.config.cjs",
-        "{projectRoot}/.vscode/settings.json"
+        "{projectRoot}/.vscode/settings.json",
+        "{projectRoot}/documentation/skills/commit-code/SKILL.md"
       ],
       "options": {
-        "command": "tsx scripts/sync-conventional-scopes.ts"
+        "command": "tsx scripts/sync-conventional-config.ts"
       }
     },
     "sync-vscode-extensions": {

@@ -7,9 +7,8 @@ const config = {
   "{.vscode/extensions.json,.devcontainer/devcontainer.json}": () => [
     "nx run monorepo:sync-vscode-extensions:check",
   ],
-  "{conventional.config.cjs,.vscode/settings.json}": () => [
-    "nx run monorepo:sync-conventional-scopes:check",
-  ],
+  "{conventional.config.cjs,.vscode/settings.json,documentation/skills/commit-code/SKILL.md}":
+    () => ["nx run monorepo:sync-conventional-config:check"],
 
   "*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}": (files: string[]) => {
     // Convert absolute paths to relative paths for Nx

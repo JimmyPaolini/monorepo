@@ -24,7 +24,7 @@ const configuration: UserConfig = {
     "scope-enum": [2, "always", [...(scopes as string[])]],
 
     // 📏 Limit lengths
-    "header-max-length": [2, "always", 100],
+    "header-max-length": [2, "always", 128],
 
     // 🚫 Forbid body and footer
     "body-empty": [2, "always"],
