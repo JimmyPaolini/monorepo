@@ -50,10 +50,13 @@ jobs:
         run: |
           # Run bundlesize on affected projects and capture output
           npx nx affected -t bundlesize --parallel=2 > bundle-size-pr.txt 2>&1 || true
-          cat bundle-size-pr.txt
 
-          # Extract sizes from size-limit output (format: "Package size: X KB")
-          PR_OUTPUT=$(cat bundle-size-pr.txt)
+          # Strip ANSI color codes and filter to relevant bundle size info
+          # Remove color codes, progress indicators, and verbose build logs
+          PR_OUTPUT=$(cat bundle-size-pr.txt | \
+            sed 's/\x1B\[[0-9;]*[JKmsu]//g' | \
+            grep -E '(^>|NX|Successfully ran target|Package size|gzip size|brotli size|Total size|^\s+[0-9]+\.[0-9]+ (kB|MB)|Build completed|size-limit)' || echo "No bundle size data available")
+
           echo "pr_output<<EOF" >> $GITHUB_OUTPUT
           echo "$PR_OUTPUT" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
@@ -72,9 +75,12 @@ jobs:
         run: |
           # Build and check bundle size for base branch
           npx nx affected -t bundlesize --parallel=2 --base=${{ github.base_ref }} --head=${{ github.base_ref }} > bundle-size-base.txt 2>&1 || true
-          cat bundle-size-base.txt
 
-          BASE_OUTPUT=$(cat bundle-size-base.txt)
+          # Strip ANSI color codes and filter to relevant bundle size info
+          BASE_OUTPUT=$(cat bundle-size-base.txt | \
+            sed 's/\x1B\[[0-9;]*[JKmsu]//g' | \
+            grep -E '(^>|NX|Successfully ran target|Package size|gzip size|brotli size|Total size|^\s+[0-9]+\.[0-9]+ (kB|MB)|Build completed|size-limit)' || echo "No bundle size data available")
+
           echo "base_output<<EOF" >> $GITHUB_OUTPUT
           echo "$BASE_OUTPUT" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
