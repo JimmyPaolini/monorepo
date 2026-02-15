@@ -51,14 +51,20 @@ jobs:
           # Run bundlesize on affected projects and capture output
           npx nx affected -t bundlesize --parallel=2 > bundle-size-pr.txt 2>&1 || true
 
-          # Strip ANSI color codes and filter to relevant bundle size info
-          # Remove color codes, progress indicators, and verbose build logs
-          PR_OUTPUT=$(cat bundle-size-pr.txt | \
+          # Strip ANSI color codes and remove verbose Vite build file listings
+          PULL_REQUEST_OUTPUT=$(cat bundle-size-pr.txt | \
             sed 's/\x1B\[[0-9;]*[JKmsu]//g' | \
-            grep -E '(^>|NX|Successfully ran target|Package size|gzip size|brotli size|Total size|^\s+[0-9]+\.[0-9]+ (kB|MB)|Build completed|size-limit)' || echo "No bundle size data available")
+            grep -v 'dist/application' | \
+            grep -v 'dist/client' | \
+            grep -v 'dist/server' | \
+            grep -v '\.css$' | \
+            grep -v '\.js$' | \
+            grep -v 'rendering chunks' | \
+            grep -v 'computing gzip size' | \
+            grep -v 'modules transformed' || echo "No bundle size data available")
 
-          echo "pr_output<<EOF" >> $GITHUB_OUTPUT
-          echo "$PR_OUTPUT" >> $GITHUB_OUTPUT
+          echo "pull_request_output<<EOF" >> $GITHUB_OUTPUT
+          echo "$PULL_REQUEST_OUTPUT" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
       - name: 📥 Checkout Main Branch
@@ -76,10 +82,17 @@ jobs:
           # Build and check bundle size for base branch
           npx nx affected -t bundlesize --parallel=2 --base=${{ github.base_ref }} --head=${{ github.base_ref }} > bundle-size-base.txt 2>&1 || true
 
-          # Strip ANSI color codes and filter to relevant bundle size info
+          # Strip ANSI color codes and remove verbose Vite build file listings
           BASE_OUTPUT=$(cat bundle-size-base.txt | \
             sed 's/\x1B\[[0-9;]*[JKmsu]//g' | \
-            grep -E '(^>|NX|Successfully ran target|Package size|gzip size|brotli size|Total size|^\s+[0-9]+\.[0-9]+ (kB|MB)|Build completed|size-limit)' || echo "No bundle size data available")
+            grep -v 'dist/application' | \
+            grep -v 'dist/client' | \
+            grep -v 'dist/server' | \
+            grep -v '\.css$' | \
+            grep -v '\.js$' | \
+            grep -v 'rendering chunks' | \
+            grep -v 'computing gzip size' | \
+            grep -v 'modules transformed' || echo "No bundle size data available")
 
           echo "base_output<<EOF" >> $GITHUB_OUTPUT
           echo "$BASE_OUTPUT" >> $GITHUB_OUTPUT
@@ -88,55 +101,138 @@ jobs:
       - name: 📊 Analyze Bundle Size Changes
         id: analyze-changes
         env:
-          PR_OUTPUT: ${{ steps.pr-bundle-size.outputs.pr_output }}
+          PULL_REQUEST_OUTPUT: ${{ steps.pr-bundle-size.outputs.pull_request_output }}
           BASE_OUTPUT: ${{ steps.base-bundle-size.outputs.base_output }}
         run: |
-          # Compare outputs to see if there are changes
-          if [ "$PR_OUTPUT" = "$BASE_OUTPUT" ]; then
-            echo "has_changes=false" >> $GITHUB_OUTPUT
-            echo "No bundle size changes detected"
-          else
+          # Function to extract size in KB from size-limit output
+          extract_sizes() {
+            local output="$1"
+            # Extract lines with "Package size:" and convert to KB
+            echo "$output" | grep -oP 'Package size:\s+\K[0-9.]+\s+(KB|B|MB)' | while read size unit; do
+              case $unit in
+                B) echo "scale=2; $size / 1024" | bc ;;
+                KB) echo "$size" ;;
+                MB) echo "scale=2; $size * 1024" | bc ;;
+              esac
+            done | paste -sd+ - | bc 2>/dev/null || echo "0"
+          }
+
+          # Function to extract bundle names and sizes
+          extract_bundle_data() {
+            local output="$1"
+            echo "$output" | awk '
+              /name:/ { name=$2; for(i=3;i<=NF;i++) name=name" "$i }
+              /Package size:/ {
+                gsub(/,/, "", $3);
+                size=$3;
+                unit=$4;
+                printf "%s: %s %s\n", name, size, unit
+              }
+            '
+          }
+
+          # Extract total sizes
+          BASE_SIZE=$(extract_sizes "$BASE_OUTPUT")
+          PR_SIZE=$(extract_sizes "$PULL_REQUEST_OUTPUT")
+
+          echo "Base branch total: ${BASE_SIZE} KB"
+          echo "Pull request total: ${PR_SIZE} KB"
+
+          # Calculate difference if both have valid sizes
+          if [ "$BASE_SIZE" != "0" ] && [ "$PR_SIZE" != "0" ]; then
+            DIFF=$(echo "scale=2; $PR_SIZE - $BASE_SIZE" | bc)
+            PERCENT=$(echo "scale=2; ($DIFF / $BASE_SIZE) * 100" | bc)
+
+            echo "size_diff=${DIFF}" >> $GITHUB_OUTPUT
+            echo "size_percent=${PERCENT}" >> $GITHUB_OUTPUT
+            echo "base_size=${BASE_SIZE}" >> $GITHUB_OUTPUT
+            echo "pr_size=${PR_SIZE}" >> $GITHUB_OUTPUT
             echo "has_changes=true" >> $GITHUB_OUTPUT
-            echo "Bundle size changes detected"
+
+            echo "Difference: ${DIFF} KB (${PERCENT}%)"
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No valid bundle size data to compare"
           fi
 
-          # Store outputs for comment
-          echo "pr_output<<BUNDLE_EOF" >> $GITHUB_OUTPUT
-          echo "$PR_OUTPUT" >> $GITHUB_OUTPUT
+          # Extract detailed bundle data
+          BASE_BUNDLES=$(extract_bundle_data "$BASE_OUTPUT")
+          PR_BUNDLES=$(extract_bundle_data "$PULL_REQUEST_OUTPUT")
+
+          echo "base_bundles<<BUNDLE_EOF" >> $GITHUB_OUTPUT
+          echo "$BASE_BUNDLES" >> $GITHUB_OUTPUT
           echo "BUNDLE_EOF" >> $GITHUB_OUTPUT
 
-          echo "base_output<<BUNDLE_EOF" >> $GITHUB_OUTPUT
-          echo "$BASE_OUTPUT" >> $GITHUB_OUTPUT
+          echo "pr_bundles<<BUNDLE_EOF" >> $GITHUB_OUTPUT
+          echo "$PR_BUNDLES" >> $GITHUB_OUTPUT
           echo "BUNDLE_EOF" >> $GITHUB_OUTPUT
 
       - name: 💬 Comment Report on Pull Request
         if: steps.analyze-changes.outputs.has_changes == 'true'
         uses: actions/github-script@v7
         env:
-          PR_OUTPUT: ${{ steps.analyze-changes.outputs.pr_output }}
-          BASE_OUTPUT: ${{ steps.analyze-changes.outputs.base_output }}
+          BASE_SIZE: ${{ steps.analyze-changes.outputs.base_size }}
+          PR_SIZE: ${{ steps.analyze-changes.outputs.pr_size }}
+          SIZE_DIFF: ${{ steps.analyze-changes.outputs.size_diff }}
+          SIZE_PERCENT: ${{ steps.analyze-changes.outputs.size_percent }}
+          BASE_BUNDLES: ${{ steps.analyze-changes.outputs.base_bundles }}
+          PR_BUNDLES: ${{ steps.analyze-changes.outputs.pr_bundles }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const prOutput = process.env.PR_OUTPUT;
-            const baseOutput = process.env.BASE_OUTPUT;
+            const baseSize = process.env.BASE_SIZE;
+            const prSize = process.env.PR_SIZE;
+            const sizeDiff = parseFloat(process.env.SIZE_DIFF);
+            const sizePercent = parseFloat(process.env.SIZE_PERCENT);
+            const baseBundles = process.env.BASE_BUNDLES;
+            const prBundles = process.env.PR_BUNDLES;
+
+            // Determine status emoji
+            let statusEmoji = '✅';
+            let statusText = 'No change';
+            if (sizeDiff > 0) {
+              if (sizePercent > 5) {
+                statusEmoji = '❌';
+                statusText = 'Increased significantly';
+              } else {
+                statusEmoji = '⚠️';
+                statusText = 'Increased slightly';
+              }
+            } else if (sizeDiff < 0) {
+              statusEmoji = '✅';
+              statusText = 'Decreased';
+            }
+
+            const diffSign = sizeDiff > 0 ? '+' : '';
 
             const comment = `## 📦 Bundle Size Report
 
-            Bundle size has changed for affected projects.
+            ${statusEmoji} **${statusText}**: ${diffSign}${sizeDiff.toFixed(2)} KB (${diffSign}${sizePercent.toFixed(2)}%)
 
-            ### Main Branch (${context.payload.pull_request.base.ref})
-            \`\`\`
-            ${baseOutput}
-            \`\`\`
-
-            ### Pull Request (${context.payload.pull_request.head.ref})
-            \`\`\`
-            ${prOutput}
-            \`\`\`
+            | Branch | Total Size |
+            |--------|-----------|
+            | **${context.payload.pull_request.base.ref}** (base) | ${baseSize} KB |
+            | **${context.payload.pull_request.head.ref}** (PR) | ${prSize} KB |
+            | **Difference** | ${diffSign}${sizeDiff.toFixed(2)} KB (${diffSign}${sizePercent.toFixed(2)}%) |
 
             <details>
-            <summary>📊 Bundle Size Guidelines</summary>
+            <summary>📋 Bundle Breakdown - Base Branch</summary>
+
+            \`\`\`
+            ${baseBundles}
+            \`\`\`
+            </details>
+
+            <details>
+            <summary>📋 Bundle Breakdown - Pull Request</summary>
+
+            \`\`\`
+            ${prBundles}
+            \`\`\`
+            </details>
+
+            <details>
+            <summary>📊 Guidelines</summary>
 
             - ✅ **Good**: Bundle size decreased or stayed the same
             - ⚠️ **Warning**: Bundle size increased by less than 5%
