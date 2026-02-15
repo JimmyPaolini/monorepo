@@ -2,6 +2,16 @@
 
 /**
  * Sync VS Code extensions between .vscode/extensions.json and .devcontainer/devcontainer.json
+ *
+ * Source: .vscode/extensions.json
+ *   - recommendations: Extensions to recommend (gets copied to BOTH arrays below)
+ *   - unwantedRecommendations: Extensions to discourage
+ *
+ * Target: .devcontainer/devcontainer.json
+ *   - extensions: Auto-installed in devcontainers (copied from recommendations)
+ *   - recommendations: Shown as suggestions (copied from recommendations)
+ *   - unwantedRecommendations: Extensions to discourage (copied as-is)
+ *
  * Usage: tsx scripts/sync-vscode-extensions.ts [check|write]
  *   check (default): Validate that files are in sync, exit 1 if not
  *   write: Update devcontainer.json from extensions.json
@@ -32,6 +42,7 @@ interface ExtensionsJson {
 interface DevcontainerJson {
   customizations: {
     vscode: {
+      extensions: string[];
       recommendations: string[];
       unwantedRecommendations: string[];
     };
@@ -57,25 +68,52 @@ function checkSync(
   devcontainer: DevcontainerJson,
 ): boolean {
   const { recommendations, unwantedRecommendations } = extensions;
-  const { recommendations: dcRecs, unwantedRecommendations: dcUnwanted } =
-    devcontainer.customizations.vscode;
+  const {
+    extensions: devcontainerExtensions,
+    recommendations: devcontainerRecommendations,
+    unwantedRecommendations: devcontainerUnwantedRecommendations,
+  } = devcontainer.customizations.vscode;
 
-  const recsMatch = _.isEqual([...recommendations].sort(), [...dcRecs].sort());
-  const unwantedMatch = _.isEqual(
+  // Both extensions and recommendations in devcontainer should match recommendations from extensions.json
+  const extensionsMatch = _.isEqual(
+    [...recommendations].sort(),
+    [...devcontainerExtensions].sort(),
+  );
+  const recommendationsMatch = _.isEqual(
+    [...recommendations].sort(),
+    [...devcontainerRecommendations].sort(),
+  );
+  const unwantedRecommendationsMatch = _.isEqual(
     [...unwantedRecommendations].sort(),
-    [...dcUnwanted].sort(),
+    [...devcontainerUnwantedRecommendations].sort(),
   );
 
-  if (!recsMatch || !unwantedMatch) {
+  if (
+    !extensionsMatch ||
+    !recommendationsMatch ||
+    !unwantedRecommendationsMatch
+  ) {
     console.log("❌ VS Code extensions are out of sync\n");
-    if (!recsMatch) {
-      console.log("📋 Differences in recommendations:");
-      showDifference(recommendations, dcRecs);
+    if (!extensionsMatch) {
+      console.log(
+        "🔧 Differences in devcontainer extensions (should match recommendations):",
+      );
+      showDifference(recommendations, devcontainerExtensions);
       console.log("");
     }
-    if (!unwantedMatch) {
+    if (!recommendationsMatch) {
+      console.log(
+        "📋 Differences in devcontainer recommendations (should match recommendations):",
+      );
+      showDifference(recommendations, devcontainerRecommendations);
+      console.log("");
+    }
+    if (!unwantedRecommendationsMatch) {
       console.log("🚫 Differences in unwantedRecommendations:");
-      showDifference(unwantedRecommendations, dcUnwanted);
+      showDifference(
+        unwantedRecommendations,
+        devcontainerUnwantedRecommendations,
+      );
       console.log("");
     }
     console.log(
@@ -91,6 +129,8 @@ function writeSync(
   devcontainer: DevcontainerJson,
 ): void {
   console.log("🔄 Syncing extensions...");
+  // Copy recommendations to both extensions and recommendations in devcontainer
+  devcontainer.customizations.vscode.extensions = extensions.recommendations;
   devcontainer.customizations.vscode.recommendations =
     extensions.recommendations;
   devcontainer.customizations.vscode.unwantedRecommendations =
@@ -100,7 +140,9 @@ function writeSync(
     `${JSON.stringify(devcontainer, null, 2)}\n`,
     "utf-8",
   );
-  console.log("✅ Extensions synced successfully");
+  console.log(
+    "✅ Extensions synced successfully (recommendations copied to both arrays)",
+  );
 }
 
 function main(): void {

@@ -102,7 +102,11 @@
   },
   "chat.tools.terminal.autoReplyToPrompts": true,
   "chat.tools.terminal.outputLocation": "terminal",
-  "chat.tools.urls.autoApprove": {},
+  "chat.tools.urls.autoApprove": {
+    "https://*.containers.dev": true,
+    "https://*.github.com": true,
+    "https://*.visualstudio.com": true
+  },
   "chat.useAgentSkills": true,
   "chat.useNestedAgentsMdFiles": true,
   "chat.viewSessions.orientation": "stacked",
@@ -327,13 +331,6 @@
   "git.terminalGitEditor": true,
   "git.verboseCommit": true,
   "github-actions.use-enterprise": false,
-  "github-actions.workflows.pinned.workflows": [
-    ".github/workflows/build-code.yml",
-    ".github/workflows/build-devcontainer.yml",
-    ".github/workflows/code-analysis.yml",
-    ".github/workflows/dependency-analysis.yml",
-    ".github/workflows/test-coverage.yml"
-  ],
   "github.copilot.chat.agent.currentEditorContext.enabled": true,
   "github.copilot.chat.agent.omitFileAttachmentContents": true,
   "github.copilot.chat.agentHistorySummarizationWithPromptCache": true,
