@@ -6,19 +6,18 @@ Utility scripts for monorepo setup, maintenance, and development workflows.
 
 This directory contains shell scripts for:
 
-- **Environment setup** - Initial monorepo configuration
-- **Dependency management** - Installing and updating packages
+- **Local setup** - macOS-specific initial monorepo configuration (in `local-setup/`)
 - **Shell utilities** - Common terminal operations
 - **Database operations** - SQL utilities and queries
 
 ## Quick Start
 
-### Initial Setup
+### Initial Setup (macOS)
 
-Run the main setup script to configure your development environment:
+Run the main setup script to configure your local development environment:
 
 ```bash
-./scripts/setup.sh
+./scripts/local-setup/setup.sh
 ```
 
 This runs the following in sequence:
@@ -27,7 +26,12 @@ This runs the following in sequence:
 2. `environment.sh` - Configures environment variables
 3. `dependencies.sh` - Installs npm dependencies
 
-## Core Scripts
+> **Note:** If using a devcontainer, these scripts are not needed — the devcontainer handles setup automatically via `.devcontainer/scripts/post-create-command.sh`.
+
+## Local Setup Scripts
+
+These scripts live in `scripts/local-setup/` and are intended for **macOS local development only**.
+The devcontainer handles equivalent setup automatically.
 
 ### setup.sh
 
@@ -36,7 +40,7 @@ This runs the following in sequence:
 **Usage:**
 
 ```bash
-./scripts/setup.sh
+./scripts/local-setup/setup.sh
 ```
 
 **What it does:**
@@ -59,7 +63,7 @@ This runs the following in sequence:
 **Usage:**
 
 ```bash
-./scripts/software.sh
+./scripts/local-setup/software.sh
 ```
 
 **Checks/Installs:**
@@ -81,7 +85,7 @@ This runs the following in sequence:
 **Usage:**
 
 ```bash
-./scripts/dependencies.sh
+./scripts/local-setup/dependencies.sh
 ```
 
 **What it does:**
@@ -97,7 +101,7 @@ This runs the following in sequence:
 **Usage:**
 
 ```bash
-./scripts/environment.sh
+./scripts/local-setup/environment.sh
 ```
 
 **What it does:**
@@ -131,6 +135,31 @@ This runs the following in sequence:
 
 - `0` - Lockfile is valid
 - `1` - Lockfile is out of sync
+
+### sync-vscode-extensions.ts
+
+**Purpose:** Sync VS Code extensions between `.vscode/extensions.json` and `.devcontainer/devcontainer.json`
+
+**Usage:**
+
+```bash
+# Via Nx (recommended)
+nx run monorepo:sync-vscode-extensions:check    # Validate (default)
+nx run monorepo:sync-vscode-extensions:write    # Update devcontainer.json
+
+# Direct
+tsx scripts/sync-vscode-extensions.ts [check|write]
+```
+
+**Use cases:**
+
+- Pre-commit hook (auto-runs when `.vscode/extensions.json` is staged)
+- Manual sync after adding extensions
+
+**Exit codes:**
+
+- `0` - In sync or successfully synced
+- `1` - Out of sync (check mode) or failed
 
 ### utilities.sh
 
@@ -323,7 +352,7 @@ See file for specific SQL queries and documentation.
 ```bash
 # ✅ Correct
 cd ~/Personal/monorepo
-./scripts/setup.sh
+./scripts/local-setup/setup.sh
 
 # ❌ Wrong
 cd scripts
@@ -343,7 +372,7 @@ Or use the utilities.sh automatic behavior (makes all `.sh` files executable).
 **Execute scripts** (standalone):
 
 ```bash
-./scripts/setup.sh
+./scripts/local-setup/setup.sh
 ```
 
 **Source scripts** (use functions in current shell):
@@ -398,7 +427,7 @@ cp .env.example .env
 # Edit .env with your values
 
 # 3. Run setup
-./scripts/setup.sh
+./scripts/local-setup/setup.sh
 ```
 
 ### Update Dependencies
@@ -410,7 +439,7 @@ Update npm packages:
 pnpm update
 
 # Or run dependencies script
-./scripts/dependencies.sh
+./scripts/local-setup/dependencies.sh
 ```
 
 ### Clean Install
@@ -422,7 +451,7 @@ Remove node_modules and reinstall:
 pnpm clean
 
 # Reinstall
-./scripts/dependencies.sh
+./scripts/local-setup/dependencies.sh
 ```
 
 ### Validate Lockfile
@@ -537,7 +566,7 @@ brew install pnpm
 Or run software setup:
 
 ```bash
-./scripts/software.sh
+./scripts/local-setup/software.sh
 ```
 
 ### Lockfile out of sync

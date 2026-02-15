@@ -28,10 +28,22 @@ Modern TypeScript monorepo with Nx, featuring automated releases, comprehensive 
 
 ## 🚀 Quick Start
 
-```bash
-# Automated setup (installs tools & dependencies)
-./scripts/setup.sh
+### Dev Container (Recommended)
 
+1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) and the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+2. Open the repo in VS Code and click **Reopen in Container** when prompted
+3. All tools and dependencies are installed automatically
+
+### Local Setup (macOS)
+
+```bash
+# Automated setup (installs tools & dependencies via Homebrew)
+./scripts/local-setup/setup.sh
+```
+
+### Development
+
+```bash
 # Run development server
 nx run lexico:develop
 nx run caelundas:develop
@@ -53,7 +65,7 @@ nx run-many --target=code-analysis --all
 ## 📚 Documentation
 
 - **[Contributing Guide](CONTRIBUTING.md)** - Development workflow, code standards, and release process
-- **[Commit Messages](documentation/commit-messages.md)** - Conventional Commits format and examples
+- **[Commit Messages](.github/skills/commit-code/SKILL.md)** - Conventional Commits format and examples
 - **[Release Process](documentation/semantic-release.md)** - Automated versioning and changelog generation
 - **[GitHub Actions](documentation/github-actions.md)** - CI/CD workflows and patterns
 - **[Static Analysis](documentation/static-analysis-tools.md)** - Code quality tools configuration

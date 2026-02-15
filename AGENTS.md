@@ -20,6 +20,17 @@
 
 <!-- nx configuration end-->
 
+## Architecture Overview
+
+This is an **Nx monorepo** with strict TypeScript, pnpm workspace management, and multiple application types:
+
+Key architectural principles:
+
+- Nx handles all task execution (`nx run`, `nx affected`, never run tooling directly)
+- Shared TypeScript path mappings via [tsconfig.base.json](tsconfig.base.json)
+- Type-safe imports enforced with `verbatimModuleSyntax` and `consistent-type-imports`
+- Strict null checks enabled: `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`
+
 ## Monorepo Architecture
 
 This workspace uses Nx to manage three distinct application types and shared libraries:
@@ -88,6 +99,57 @@ For detailed architecture, workflows, and domain knowledge:
 - **[packages/lexico-components/AGENTS.md](packages/lexico-components/AGENTS.md)**: Component library patterns, shadcn integration, theming
 - **[infrastructure/AGENTS.md](infrastructure/AGENTS.md)**: Helm charts, Terraform, Kubernetes deployment workflows
 - **[tools/code-generator/AGENTS.md](tools/code-generator/AGENTS.md)**: Generator development, template syntax, creating new generators
+
+### Git Workflow Rules
+
+#### Branch Naming (CRITICAL)
+
+Branch names **must** follow the pattern:
+
+```text
+<type>/<scope>-<description>
+```
+
+**All three parts are required.** The description must be kebab-case.
+
+| Component   | Valid Values                                                                                                                                                                                                                    |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| type        | `build`, `chore`, `ci`, `docs`, `feat`, `fix`, `perf`, `refactor`, `revert`, `style`, `test`                                                                                                                                    |
+| scope       | `monorepo`, `caelundas`, `lexico`, `lexico-components`, `JimmyPaolini`, `infrastructure`, `dependencies`, `documentation`, `applications`, `packages`, `tools`, `deployments`, `testing`, `linting`, `scripts`, `configuration` |
+| description | lowercase kebab-case, e.g., `user-auth`, `build-script`, `devcontainer`                                                                                                                                                         |
+
+**Examples:**
+
+```bash
+# ✅ CORRECT - includes type, scope, AND description
+git checkout -b feat/infrastructure-devcontainer
+git checkout -b fix/lexico-auth-redirect
+git checkout -b docs/caelundas-api-guide
+
+# ❌ WRONG - missing description
+git checkout -b feat/devcontainers        # No scope or description!
+git checkout -b feat/infrastructure       # Missing description!
+```
+
+Validation runs on `git push` via `.husky/pre-push` hook. See [checkout-branch skill](.github/skills/checkout-branch/SKILL.md) for full details.
+
+#### Git Hooks (NEVER BYPASS)
+
+**Do NOT use `--no-verify` to skip git hooks.**
+
+```bash
+# ❌ NEVER DO THIS
+git commit --no-verify  # Bypasses linting, formatting, commitlint
+git push --no-verify    # Bypasses branch name validation
+
+# ✅ INSTEAD: Fix the underlying issue
+# - If linting fails: run `nx run-many --target=lint --all` and fix errors
+# - If formatting fails: run `pnpm format` to auto-fix
+# - If commitlint fails: fix the commit message format
+# - If branch name fails: rename the branch with `git branch -m <new-name>`
+```
+
+If a hook is genuinely broken (e.g., dependency issue), fix the hook configuration rather than bypassing it.
 
 ### Common Workflows
 
@@ -170,3 +232,148 @@ CI workflows use affected commands to test only changed projects:
 # Test only projects affected by changes since main branch
 nx affected --target=test --base=main
 ```
+
+### Dev Container Environment
+
+This monorepo includes a dev container for consistent, reproducible development environments.
+
+**Quick Start:**
+
+1. Open repo in VS Code with Dev Containers extension
+2. Click "Reopen in Container" when prompted
+3. Container includes: Node.js 22.20.0, pnpm 10.20.0, Supabase CLI, kubectl, Helm, GitHub CLI
+
+**When to use:**
+
+- New contributors getting started quickly
+- Ensuring consistent tooling versions across team
+- Avoiding "works on my machine" issues
+- Development on non-macOS systems
+
+See [.devcontainer/README.md](.devcontainer/README.md) for full configuration details and troubleshooting.
+
+## Code Conventions
+
+### TypeScript Standards
+
+- **Explicit return types required** for all functions (`@typescript-eslint/explicit-function-return-type`)
+- **No `any` types** - use `unknown` or proper typing
+- **Type imports only**: `import { type Foo } from './foo'` (enforced by `consistent-type-imports`)
+- **Naming conventions**:
+  - PascalCase: Types, interfaces, classes, React components
+  - camelCase: Variables, functions
+  - UPPER_CASE: Enum members, constants
+
+### Import Organization
+
+Auto-sorted by eslint-plugin-import in this order:
+
+1. Node builtins (`node:fs`, `node:path`)
+2. External packages (`react`, `moment`)
+3. Internal paths (`@monorepo/lexico-components`)
+4. Parent/sibling relative imports
+5. Type imports (always last)
+
+Add blank lines between groups (enforced by `import/order`).
+
+### React Patterns
+
+- Use **React 19** with new JSX transform (no React import needed)
+- **TanStack Router** for routing in lexico (file-based routes)
+- **shadcn/ui components** via lexico-components (never copy components between apps)
+- **Tailwind CSS** with CSS variables for theming (see `packages/lexico-components/components.json`)
+
+### Pre-commit Automation
+
+Husky + lint-staged automatically runs on staged files:
+
+- Format (Prettier)
+- Lint (ESLint with strict type checking)
+- Typecheck (tsc --noEmit)
+
+Commits must follow [Conventional Commits](https://www.conventionalcommits.org/)
+with gitmoji prefixes. Valid types and scopes are defined in
+[conventional.config.cjs](conventional.config.cjs).
+**IMPORTANT: Commits must be single-line only (no body or footer sections)**
+
+Format: `<type>(<scope>): <gitmoji> <subject>`
+
+- Subject line must be under 50 characters (Conventional Commits best practice)
+- Imperative mood required (e.g., "add" not "added")
+- No period at end
+
+Examples:
+
+- ✅ `feat(infrastructure): 🏗️ add devcontainer support` (48 chars)
+- ✅ `chore(infrastructure): 🔧 enforce markdown styles` (50 chars)
+- ❌ `chore(infrastructure): enforce specific markdown formatting styles` (72 chars - TOO LONG, missing gitmoji)
+- ❌ `feat(infrastructure): ✨ added devcontainer support` (wrong tense)
+
+### Supabase Development (lexico)
+
+```bash
+nx run lexico:supabase:start          # Starts local Docker environment
+nx run lexico:supabase:generate-types # Generates TypeScript types from schema
+nx run lexico:supabase:database-diff  # Creates migration from local changes
+```
+
+Migrations live in `applications/lexico/supabase/migrations/`. Always generate types after schema changes.
+
+### Docker & Kubernetes (caelundas)
+
+```bash
+nx run caelundas:docker-build         # Builds for linux/amd64
+nx run caelundas:helm-upgrade         # Deploys to k8s with auto-generated name
+nx run caelundas:kubernetes-copy-files # Retrieves output from completed job
+```
+
+Uses [infrastructure/helm/kubernetes-job](infrastructure/helm/kubernetes-job) chart. Jobs mount PVCs for input/output.
+
+## Project-Specific Details
+
+### caelundas Ephemeris Domain
+
+- Calculates planetary positions and aspects using NASA JPL data
+- Event types: Major/minor/specialty aspects, stelliums, solar cycles
+- Timezone-aware calculations using `moment-timezone` and `@photostructure/tz-lookup`
+- Output formats: iCal, JSON (see [output.utilities.ts](applications/caelundas/src/output.utilities.ts))
+- Database: SQLite for caching ephemerides and active aspects
+
+### lexico Component Library
+
+- **Never modify files in** `packages/lexico-components/src/components/ui`
+  (shadcn-generated)
+- Add custom components to `packages/lexico-components/src/components`
+- Uses New York shadcn style with gray base color
+- Import via path alias: `import { Button } from '@monorepo/lexico-components'`
+
+### Nx Implicit Dependencies
+
+Defined in `project.json` files (e.g., lexico depends on lexico-components). Nx
+rebuilds dependencies automatically when running build targets.
+
+## CI/CD
+
+GitHub Actions workflows in `.github/workflows/`:
+
+- **setup.yml**: Reusable workflow for pnpm install + Nx caching
+- **lint.yml**, **typecheck.yml**, **test.yml**, **format.yml**: Run on affected projects
+
+All workflows use `nrwl/nx-set-shas` to calculate affected projects from git diff.
+
+## Common Gotchas
+
+1. **Don't bypass Nx**: Running `pnpm test` directly skips caching and dependency checks
+2. **TypeScript strictness**: Index signatures require null checks (`arr[0]?.prop` not `arr[0].prop`)
+3. **ESLint in JS files**: Type-checked rules disabled for `.js` config files (see [eslint.config.base.ts](eslint.config.base.ts))
+4. **Supabase types**: Regenerate after every schema change or migrations will fail type checking
+5. **Docker platform**: Always build for linux/amd64 when deploying to k8s (Apple Silicon mismatch)
+6. **Shadcn updates**: Use `pnpx shadcn@latest add <component>` in lexico-components, never edit ui/ directly
+
+## Key Files
+
+- [nx.json](nx.json): Task defaults, caching, affected computation
+- [tsconfig.base.json](tsconfig.base.json): Path mappings for monorepo packages
+- [eslint.config.base.ts](eslint.config.base.ts): Flat config with strict rules, import sorting
+- [applications/caelundas/src/main.ts](applications/caelundas/src/main.ts): Ephemeris pipeline entry point
+- [packages/lexico-components/components.json](packages/lexico-components/components.json): shadcn configuration

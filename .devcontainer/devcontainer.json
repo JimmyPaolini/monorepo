@@ -1,0 +1,307 @@
+{
+  "$schema": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainer.base.schema.json",
+  "containerUser": "node",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "aaron-bond.better-comments",
+        "adamhartford.vscode-base64",
+        "adpyke.vscode-sql-formatter",
+        "bierner.comment-tagged-templates",
+        "bierner.markdown-mermaid",
+        "bradlc.vscode-tailwindcss",
+        "ChakrounAnas.turbo-console-log",
+        "charliermarsh.ruff",
+        "christian-kohler.npm-intellisense",
+        "christian-kohler.path-intellisense",
+        "ctf0.inline-fold-new",
+        "cweijan.dbclient-jdbc",
+        "cweijan.vscode-database-client2",
+        "dbaeumer.vscode-eslint",
+        "docker.docker",
+        "donjayamanne.githistory",
+        "earshinov.permute-lines",
+        "ecmel.vscode-html-css",
+        "esbenp.prettier-vscode",
+        "firsttris.vscode-jest-runner",
+        "GitHub.copilot-chat",
+        "github.vscode-github-actions",
+        "GitHub.vscode-pull-request-github",
+        "GraphQL.vscode-graphql-syntax",
+        "GraphQL.vscode-graphql",
+        "hashicorp.terraform",
+        "IBM.output-colorizer",
+        "iliazeus.vscode-ansi",
+        "inferrinizzard.prettier-sql-vscode",
+        "jasonnutter.vscode-codeowners",
+        "jsynowiec.vscode-insertdatestring",
+        "KevinRose.vsc-python-indent",
+        "khaeransori.json2csv",
+        "mechatroner.rainbow-csv",
+        "meganrogge.template-string-converter",
+        "mikestead.dotenv",
+        "ms-azuretools.vscode-containers",
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "ms-python.debugpy",
+        "ms-python.isort",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.vscode-python-envs",
+        "ms-toolsai.datawrangler",
+        "ms-toolsai.jupyter-keymap",
+        "ms-toolsai.jupyter-renderers",
+        "ms-toolsai.jupyter",
+        "ms-toolsai.vscode-jupyter-cell-tags",
+        "nguyenngoclong.terminal-keeper",
+        "nrwl.angular-console",
+        "oderwat.indent-rainbow",
+        "pflannery.vscode-versionlens",
+        "PKief.material-icon-theme",
+        "quicktype.quicktype",
+        "redhat.vscode-yaml",
+        "rvest.vs-code-prettier-eslint",
+        "samuelcolvin.jinjahtml",
+        "sleistner.vscode-fileutils",
+        "streetsidesoftware.code-spell-checker",
+        "stringham.copy-with-imports",
+        "tamasfe.even-better-toml",
+        "vivaxy.vscode-conventional-commits",
+        "wholroyd.jinja",
+        "YoavBls.pretty-ts-errors",
+        "yzhang.markdown-all-in-one"
+      ],
+      "recommendations": [
+        "aaron-bond.better-comments",
+        "adamhartford.vscode-base64",
+        "adpyke.vscode-sql-formatter",
+        "bierner.comment-tagged-templates",
+        "bierner.markdown-mermaid",
+        "bradlc.vscode-tailwindcss",
+        "ChakrounAnas.turbo-console-log",
+        "charliermarsh.ruff",
+        "christian-kohler.npm-intellisense",
+        "christian-kohler.path-intellisense",
+        "ctf0.inline-fold-new",
+        "cweijan.dbclient-jdbc",
+        "cweijan.vscode-database-client2",
+        "dbaeumer.vscode-eslint",
+        "docker.docker",
+        "donjayamanne.githistory",
+        "earshinov.permute-lines",
+        "ecmel.vscode-html-css",
+        "esbenp.prettier-vscode",
+        "firsttris.vscode-jest-runner",
+        "GitHub.copilot-chat",
+        "github.vscode-github-actions",
+        "GitHub.vscode-pull-request-github",
+        "GraphQL.vscode-graphql-syntax",
+        "GraphQL.vscode-graphql",
+        "hashicorp.terraform",
+        "IBM.output-colorizer",
+        "iliazeus.vscode-ansi",
+        "inferrinizzard.prettier-sql-vscode",
+        "jasonnutter.vscode-codeowners",
+        "jsynowiec.vscode-insertdatestring",
+        "KevinRose.vsc-python-indent",
+        "khaeransori.json2csv",
+        "mechatroner.rainbow-csv",
+        "meganrogge.template-string-converter",
+        "mikestead.dotenv",
+        "ms-azuretools.vscode-containers",
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "ms-python.debugpy",
+        "ms-python.isort",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-python.vscode-python-envs",
+        "ms-toolsai.datawrangler",
+        "ms-toolsai.jupyter-keymap",
+        "ms-toolsai.jupyter-renderers",
+        "ms-toolsai.jupyter",
+        "ms-toolsai.vscode-jupyter-cell-tags",
+        "nguyenngoclong.terminal-keeper",
+        "nrwl.angular-console",
+        "oderwat.indent-rainbow",
+        "pflannery.vscode-versionlens",
+        "PKief.material-icon-theme",
+        "quicktype.quicktype",
+        "redhat.vscode-yaml",
+        "rvest.vs-code-prettier-eslint",
+        "samuelcolvin.jinjahtml",
+        "sleistner.vscode-fileutils",
+        "streetsidesoftware.code-spell-checker",
+        "stringham.copy-with-imports",
+        "tamasfe.even-better-toml",
+        "vivaxy.vscode-conventional-commits",
+        "wholroyd.jinja",
+        "YoavBls.pretty-ts-errors",
+        "yzhang.markdown-all-in-one"
+      ],
+      "unwantedRecommendations": [
+        "alefragnani.Bookmarks",
+        "aljazsim.tsco",
+        "altimateai.vscode-altimate-mcp-server",
+        "apollographql.vscode-apollo",
+        "atlassian.atlascode",
+        "datadog.datadog-vscode",
+        "denoland.vscode-deno",
+        "eamodio.gitlens",
+        "firefox-devtools.vscode-firefox-debug",
+        "inferrinizzard.prettier-sql-vscode",
+        "innoverio.vscode-dbt-power-user",
+        "janisdd.vscode-edit-csv",
+        "mongodb.mongodb-vscode",
+        "ms-azuretools.vscode-docker",
+        "ms-edgedevtools.vscode-edge-devtools",
+        "ms-mssql.mssql",
+        "ms-python.black-formatter",
+        "ms-toolsai.vscode-jupyter-slideshow",
+        "mtxr.sqltools",
+        "mxsdev.typescript-explorer",
+        "njpwerner.autodocstring",
+        "Orta.vscode-jest",
+        "Postman.postman-for-vscode",
+        "ptweir.python-string-sql",
+        "Redis.redis-for-vscode",
+        "SanjulaGanepola.github-local-actions",
+        "shinichi-takii.sql-bigquery",
+        "vitest.explorer",
+        "vscodevim.vim"
+      ]
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers-extra/features/nx-npm:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers-extra/features/pnpm:2": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers-extra/features/supabase-cli:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers-extra/features/yamllint:2": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "azureDnsAutoDetection": true,
+      "dockerDashComposeVersion": "v2",
+      "installDockerBuildx": true,
+      "installDockerComposeSwitch": true,
+      "moby": true,
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "installDirectlyFromGitHubRelease": true,
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+      "helm": "latest",
+      "minikube": "latest",
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "nodeGypDependencies": true,
+      "nvmVersion": "latest",
+      "pnpmVersion": "latest",
+      "version": "lts"
+    },
+    "ghcr.io/devcontainers/features/python:1": {
+      "enableShared": true,
+      "installJupyterlab": true,
+      "installTools": true,
+      "optimize": true,
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/terraform:1": {
+      "installTerraformLS": false,
+      "installTFsec": false,
+      "tflint": "latest",
+      "version": "latest"
+    },
+    "ghcr.io/eitsupi/devcontainer-features/jq-likes:2": {
+      "gojqVersion": "none",
+      "jaqVersion": "none",
+      "jqVersion": "latest",
+      "xqVersion": "none",
+      "yqVersion": "none"
+    },
+    "ghcr.io/warrenbuckley/codespace-features/sqlite:1": {
+      "version": "latest"
+    }
+  },
+  "forwardPorts": [3000, 54321, 54322, 54323, 54324, 54325],
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:22-bookworm",
+  "mounts": [
+    {
+      "source": "monorepo-node-modules",
+      "target": "${containerWorkspaceFolder}/node_modules",
+      "type": "volume"
+    },
+    {
+      "source": "monorepo-pnpm",
+      "target": "/home/node/.local/share/pnpm",
+      "type": "volume"
+    },
+    {
+      "source": "monorepo-nx-cache",
+      "target": "${containerWorkspaceFolder}/.nx/cache",
+      "type": "volume"
+    },
+    {
+      "source": "monorepo-extensions-${devcontainerId}",
+      "target": "/root/.vscode-server/extensions",
+      "type": "volume"
+    }
+  ],
+  "name": "Monorepo Devcontainer",
+  "portsAttributes": {
+    "3000": {
+      "label": "Lexico Dev Server",
+      "onAutoForward": "notify"
+    },
+    "54321": {
+      "label": "Supabase API (PostgREST)",
+      "onAutoForward": "silent"
+    },
+    "54322": {
+      "label": "Supabase PostgreSQL",
+      "onAutoForward": "silent"
+    },
+    "54323": {
+      "label": "Supabase Studio",
+      "onAutoForward": "notify"
+    },
+    "54324": {
+      "label": "Supabase Inbucket (Email)",
+      "onAutoForward": "silent"
+    },
+    "54325": {
+      "label": "Supabase Analytics",
+      "onAutoForward": "silent"
+    }
+  },
+  "postAttachCommand": {
+    "post-attach-command": ".devcontainer/scripts/post-attach-command.sh"
+  },
+  "postCreateCommand": {
+    "nx-graph": "npx nx graph --file=.nx/graph.json 2>/dev/null || true",
+    "pnpm-install": "pnpm install --frozen-lockfile --prefer-offline",
+    "post-create-command": ".devcontainer/scripts/post-create-command.sh"
+  },
+  "remoteEnv": {
+    "KUBECONFIG": "${containerWorkspaceFolder}/.kube/config",
+    "NODE_OPTIONS": "--max-old-space-size=4096",
+    "UV_THREADPOOL_SIZE": "4",
+    "VSCODE_EXTENSION_HOST_WORKER_CONCURRENCY": "4"
+  },
+  "remoteUser": "node",
+  "runArgs": [
+    "--name",
+    "monorepo-devcontainer",
+    "--cpus=6",
+    "--memory=12g",
+    "--memory-swap=16g"
+  ],
+  "waitFor": "postCreateCommand"
+}

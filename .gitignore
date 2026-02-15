@@ -7,6 +7,7 @@
 # Dependencies 📦
 node_modules/
 .pnpm-store
+.nx
 
 # Environment variables 🎛️
 .env
@@ -42,6 +43,9 @@ coverage/*
 # Type Coverage 🏷️
 type-coverage-report.txt
 **/type-coverage-report.txt
+
+# Kubernetes ☸️
+.kube/config
 
 # Other 🗑️
 tmp

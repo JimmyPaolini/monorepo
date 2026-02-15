@@ -1,5 +1,5 @@
 ---
-name: commit-messages
+name: commit-code
 description: Write commit messages following this monorepo's Conventional Commits standard with Gitmoji support. Use this skill when creating commits or when asked about commit message formatting.
 license: MIT
 ---
@@ -12,11 +12,9 @@ This skill teaches how to write commit messages for this monorepo. All commits *
 
 ```text
 <type>(<scope>): <gitmoji> <subject>
-
-[optional body]
-
-[optional footer]
 ```
+
+**Note:** Body and footer sections are **forbidden** by commitlint configuration.
 
 ### Structure Rules
 
@@ -24,30 +22,61 @@ This skill teaches how to write commit messages for this monorepo. All commits *
    - Must start with gitmoji emoji (`gitmoji-required`, error level 2)
    - Max 100 characters (`header-max-length: 100`)
    - Subject must not be empty (`subject-empty: never`)
-2. **Body**: Optional, must be separated by blank line (`body-leading-blank: always`)
-   - Max 1000 characters total (`body-max-length: 1000`, warning level 1)
-   - Wrap at 72 characters per line (best practice)
-3. **Footer**: Optional, must be separated by blank line (`footer-leading-blank: always`)
+2. **Body**: Forbidden (`body-empty: always`, error level 2)
+3. **Footer**: Forbidden (`footer-empty: always`, error level 2)
 
 ## Type
 
-**Required.** Must be one of the allowed types defined in [conventional.config.cjs](../conventional.config.cjs) (enforced by `type-enum` rule, error level 2).
+**Required.** Must be one of the allowed types defined in [conventional.config.cjs](../../../conventional.config.cjs) (enforced by `type-enum` rule, error level 2).
 
 **Case:** Must be lowercase (`type-case: lower-case`, error level 2)
 
+<!-- types-start -->
+
+| Type       | Description                                                   |
+| ---------- | ------------------------------------------------------------- |
+| `build`    | Changes that affect the build system or external dependencies |
+| `chore`    | Other changes that don't modify src or test files             |
+| `ci`       | Changes to CI configuration files and scripts                 |
+| `docs`     | Documentation only changes                                    |
+| `feat`     | A new feature                                                 |
+| `fix`      | A bug fix                                                     |
+| `perf`     | A code change that improves performance                       |
+| `refactor` | A code change that neither fixes a bug nor adds a feature     |
+| `revert`   | Reverts a previous commit                                     |
+| `style`    | Changes that do not affect the meaning of the code            |
+| `test`     | Adding missing tests or correcting existing tests             |
+
+<!-- types-end -->
+
 ## Scope
 
-**Required.** Must be one of the allowed scopes defined in [conventional.config.cjs](../conventional.config.cjs) (enforced by `scope-enum` rule, error level 2).
+**Required.** Must be one of the allowed scopes defined in [conventional.config.cjs](../../../conventional.config.cjs) (enforced by `scope-enum` rule, error level 2).
 
 **Case:** Must be lowercase (`scope-case: lower-case`, error level 2)
 
-Scopes are organized into categories:
+<!-- scopes-start -->
 
-- **Project Scopes**: Individual projects/applications (e.g., `caelundas`, `lexico`, `lexico-components`, `JimmyPaolini`)
-- **Category Scopes**: Groups of projects (e.g., `monorepo`, `applications`, `packages`, `tools`)
-- **Meta Scopes**: Cross-cutting concerns (e.g., `documentation`, `dependencies`, `infrastructure`, `deployments`)
+| Scope               | Description                  |
+| ------------------- | ---------------------------- |
+| `monorepo`          | Workspace root               |
+| `applications`      | All applications             |
+| `packages`          | All packages                 |
+| `tools`             | Build or development tooling |
+| `caelundas`         | Caelundas application        |
+| `lexico`            | Lexico application           |
+| `lexico-components` | Lexico components package    |
+| `JimmyPaolini`      | JimmyPaolini application     |
+| `documentation`     | Documentation                |
+| `dependencies`      | Dependency updates           |
+| `infrastructure`    | Infrastructure changes       |
+| `deployments`       | CI/CD workflows              |
+| `testing`           | Testing-related changes      |
+| `linting`           | Linting-related changes      |
+| `scripts`           | Build or dev scripts         |
+| `configuration`     | Config files                 |
 
-See [commitlint.config.ts](../commitlint.config.ts) for the complete list of allowed scopes.
+<!-- scopes-end -->
 
 ### Scope Selection Guidelines
 
@@ -69,9 +98,30 @@ See [commitlint.config.ts](../commitlint.config.ts) for the complete list of all
   - ❌ "added feature" ❌ "fixes bug" ❌ "updating docs"
 - Be **under 45 characters** (best practice for readability with emoji)
   - Hard limit is 100 chars total for entire header (`header-max-length: 100`)
+  - See **Character Budget** section below for calculating available space
 - **Not end with a period** (`subject-full-stop: never`, error level 2)
 - **Not be empty** (`subject-empty: never`, error level 2)
 - Be **concise and descriptive**
+- **Describe ONE logical change** — never list multiple changes with commas or "and"
+
+### Character Budget & Multi-Change Commits
+
+The prefix `type(scope): <gitmoji>` eats into the 100-char header limit. Long scopes like `infrastructure` (~27 chars) or `lexico-components` (~35 chars) leave as few as **65–73 characters** for the subject. Always count the full header.
+
+When a commit touches multiple concerns, **summarize or split** — never list changes with commas/"and":
+
+```text
+# ❌ FAILS (143 chars) — lists multiple changes
+feat(infrastructure): 🏗️ migrate lint-staged configuration to new file, add sync scripts for VS Code extensions and conventional commit scopes
+
+# ✅ Summarize at a higher level
+feat(infrastructure): 🏗️ add lint-staged config and sync scripts
+
+# ✅ Or split into separate commits
+feat(infrastructure): 🏗️ migrate lint-staged to standalone config
+feat(scripts): ✨ add vscode extension sync script
+feat(scripts): ✨ add conventional scopes sync script
+```
 
 ### Examples
 
@@ -93,6 +143,7 @@ Fix(Caelundas): 🐛 fix bug                       # Wrong case (type)
 fix(caelundas): 🐛 Fix bug                       # Wrong case (subject)
 docs: 📝 updated docs                            # Missing scope, wrong tense
 chore(deps): ⬆️ bump                             # Invalid scope (use 'dependencies')
+feat(infrastructure): 🏗️ add config, scripts, and sync tools  # Too verbose, lists multiple changes
 ```
 
 ## Gitmoji
@@ -118,57 +169,17 @@ Format: `<type>(<scope>): <gitmoji> <subject>`
 | ⬆️    | `:arrow_up:`            | `chore`      | Upgrade dependencies     |
 | 🗃️    | `:card_file_box:`       | `feat`/`fix` | Database changes         |
 
-See [gitmoji.md](gitmoji.md) for the complete emoji guide.
+See [gitmoji.md](../../gitmoji.md) for the complete emoji guide.
 
-## Body
+## Body and Footer
 
-**Optional.** Use the body to explain:
+**Forbidden.** Body and footer sections are not allowed in commit messages in this repository. All information must be conveyed in the subject line.
 
-- **What** changed (if not obvious from subject)
-- **Why** the change was made
-- **Breaking changes** or important notes
+If you need to provide:
 
-### Body Guidelines
-
-- Separate from subject with a **blank line**
-- Wrap text at **72 characters** per line
-- Use **bullet points** with `-` for lists
-- Reference issues with `#123` or `fixes #123`
-
-**Example:**
-
-```text
-feat(lexico): ✨ add user profile page
-
-Add a dedicated profile page where users can:
-- View and edit their personal information
-- Upload a profile picture
-- Manage account settings
-
-This replaces the old inline profile editor which had
-poor UX on mobile devices.
-
-Fixes #234
-```
-
-## Footer
-
-**Optional.** Use the footer for:
-
-- Breaking changes: `BREAKING CHANGE: <description>`
-- Issue references: `Fixes #123`, `Closes #456`
-- Co-authors: `Co-authored-by: Name <email>`
-
-**Example:**
-
-```text
-feat(lexico): 💥 migrate to new auth API
-
-BREAKING CHANGE: The old /api/login endpoint is removed.
-Use /api/auth/login instead.
-
-Fixes #789
-```
+- **Issue references**: Link the PR to issues in GitHub UI, or use commit description in GitHub
+- **Breaking changes**: Prefix subject with 💥 gitmoji
+- **Detailed explanations**: Add to PR description instead of commit message
 
 ## Full Examples
 
@@ -178,114 +189,53 @@ Fixes #789
 feat(caelundas): ✨ add moon phase calculations
 ```
 
-### Bug Fix with Body
+### Bug Fix
 
 ```text
 fix(lexico): 🐛 prevent crash on null user data
-
-Check for null user object before accessing properties.
-This crash occurred when the authentication token expired
-during an active session.
-
-Fixes #456
 ```
 
-### Feature with Breaking Change
+### Breaking Change
 
 ```text
 feat(lexico): 💥 migrate to new auth API
-
-Replace legacy authentication system with OAuth2.
-Provides better security and supports social login.
-
-BREAKING CHANGE: The old /api/login endpoint is removed.
-Use /api/auth/login instead.
-
-Fixes #789
 ```
 
 ## Git CLI Usage
 
 ### Committing from the Command Line
 
-There are several ways to commit messages using git CLI:
-
-#### 1. Interactive Editor (Recommended for Multi-line Messages)
-
-```bash
-git commit
-```
-
-Opens your default editor (vim, nano, VS Code, etc.) where you can write the full commit message with proper formatting. This is the **most reliable method** for multi-line commits as it avoids shell quoting issues.
-
-#### 2. Single-line Commits
+Since body and footer sections are forbidden, all commits must be single-line:
 
 ```bash
 git commit -m "feat(monorepo): ✨ add new feature"
 ```
 
-Use `-m` flag for simple commits with just a subject line. Great for quick commits without body or footer.
-
-#### 3. Multi-line Commits with Multiple `-m` Flags
-
-```bash
-git commit -m "feat(monorepo): ✨ add new feature" \
-           -m "This is the body paragraph explaining the change." \
-           -m "Fixes #123"
-```
-
-Each `-m` flag adds a new paragraph. Git automatically adds blank lines between paragraphs. **Note:** Be careful with shell quoting when using special characters or line breaks.
-
-#### 4. Heredoc for Complex Messages (Advanced)
-
-```bash
-git commit -F - << 'EOF'
-feat(monorepo): ✨ add yamllint integration
-
-Integrate yamllint across the monorepo to validate YAML
-files for consistent formatting and catch syntax errors.
-
-Changes:
-- Add .yamllint config with relaxed base rules
-- Integrate yamllint into GitHub Actions CI pipeline
-- Update lint-staged to run yaml-lint on staged files
-
-Fixes #123
-EOF
-```
-
-Useful for scripts or when you need precise control over formatting without invoking an editor.
+Use the `-m` flag with your complete commit message in the proper format.
 
 ### Common Pitfalls
 
-❌ **Avoid:** Using newlines with `-m` flag in a single string:
+❌ **Avoid:** Using multiple `-m` flags or newlines:
 
 ```bash
-# This doesn't work as expected
+# This will fail - no body allowed
+git commit -m "feat(monorepo): ✨ add feature" \
+           -m "This is the body paragraph"
+
+# This will also fail
 git commit -m "feat(monorepo): ✨ add feature
 This is the body"
 ```
 
-❌ **Avoid:** Unclosed quotes or complex shell escaping:
-
-```bash
-# Shell may interpret this incorrectly
-git commit -m "feat(monorepo): ✨ add feature" -m "Body with
-multiple lines"
-```
-
-✅ **Use instead:** Interactive editor (`git commit`) or heredoc for complex messages.
-
 ### Tips
 
-- Configure your preferred editor: `git config --global core.editor "code --wait"`
 - Use `git commit --amend` to edit the last commit message
-- Use `git commit --verbose` to see the diff while writing the message
 - Test commit messages locally before pushing: `git log --oneline -1`
+- Put detailed explanations in the PR description, not the commit message
 
 ## Commitlint Rules Summary
 
-All rules defined in [../commitlint.config.ts](../commitlint.config.ts):
+All rules defined in [../commitlint.config.ts](../../../commitlint.config.ts):
 
 **Error (level 2) - Will fail commit:**
 
@@ -297,11 +247,8 @@ All rules defined in [../commitlint.config.ts](../commitlint.config.ts):
 - `subject-full-stop`: No period at end
 - `subject-empty`: Subject cannot be empty
 - `header-max-length`: Max 100 characters
-- `body-leading-blank`, `footer-leading-blank`: Blank lines required
-
-**Warning (level 1) - Won't fail commit:**
-
-- `body-max-length`: Max 1000 characters
+- `body-empty`: Body is forbidden
+- `footer-empty`: Footer is forbidden
 
 ## Validation
 
@@ -312,18 +259,14 @@ Commit messages are validated by:
 
 Configuration files:
 
-- [../commitlint.config.ts](../commitlint.config.ts) — Complete rules and validation config
-- [../.husky/commit-msg](../.husky/commit-msg) — Git hook script
+- [../../../commitlint.config.ts](../../../commitlint.config.ts) — Complete rules and validation config
+- [../../../.husky/commit-msg](../../../.husky/commit-msg) — Git hook script
 
 ## Quick Reference
 
 ```bash
 # Basic format
-<type>(<scope>): <gitmoji> <subject>    # Required
-                                        # Blank line
-<body>                                  # Optional
-                                        # Blank line
-<footer>                                # Optional
+<type>(<scope>): <gitmoji> <subject>    # Required (single line only)
 
 # Rules (all enforced at error level 2)
 - Gitmoji: required at start of subject
@@ -331,9 +274,10 @@ Configuration files:
 - Type: lowercase, from allowed list
 - Scope: lowercase, from allowed list
 - Subject: lowercase, imperative, no period, <45 chars
-- Header: <100 chars total
-- Body: blank line before, wrap at 72 chars, <1000 chars (warning)
-- Footer: blank line before, for breaking changes/issue refs
+- Header: <100 chars total (count prefix + subject!)
+- Body: forbidden
+- Footer: forbidden
+- NEVER list multiple changes with commas/"and" — summarize or split commits
 
 # Common patterns
 feat(project): ✨ add feature
@@ -349,4 +293,4 @@ refactor(project): ♻️ refactor code
 - [Conventional Commits](https://www.conventionalcommits.org/)
 - [Gitmoji Guide](https://gitmoji.dev)
 - [commitlint](https://commitlint.js.org/)
-- [gitmoji.md](gitmoji.md) — Full emoji reference
+- [gitmoji.md](../../gitmoji.md) — Full emoji reference

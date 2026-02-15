@@ -1,217 +1,147 @@
 version: "0.2"
 language: en
 $schema: https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json
-
-# Global ignore patterns
 ignorePaths:
-  - node_modules
-  - "**/node_modules"
-  - dist
-  - "**/dist"
-  - coverage
-  - "**/coverage"
-  - .nx
+  - ./.devcontainer/devcontainer.json
   - .git
-  - pnpm-lock.yaml
-  - "*.lock"
-  - "*.svg"
-  - "*.png"
-  - "*.jpg"
-  - "*.jpeg"
+  - .nx
+  - "*.eot"
   - "*.gif"
   - "*.ico"
+  - "*.jpeg"
+  - "*.jpg"
+  - "*.lock"
+  - "*.png"
+  - "*.svg"
+  - "*.ttf"
   - "*.woff"
   - "*.woff2"
-  - "*.ttf"
-  - "*.eot"
-  - "**/*.min.js"
-  - "**/*.min.css"
-  - "**/*.gen.ts"
-  - "**/routeTree.gen.ts"
-  - "**/pnpm-lock.yaml"
   - "**/.terraform/**"
+  - "**/*.gen.ts"
+  - "**/*.min.css"
+  - "**/*.min.js"
+  - "**/coverage"
+  - "**/dist"
+  - "**/node_modules"
+  - "**/pnpm-lock.yaml"
+  - "**/routeTree.gen.ts"
   - "**/terraform.tfstate*"
-  - "planning/**"
-
-# Custom words
+  - coverage
+  - dist
+  - documentation/planning/**
+  - node_modules
+  - pnpm-lock.yaml
 words:
-  # Project names
-  - caelundas
-  - lexico
-  - monorepo
-  - jimmypaolini
-  # Framework/Library names
-  - tanstack
-  - supabase
-  - vitest
-  - pnpm
-  - tsconfig
-  - eslint
-  - vite
-  - tailwindcss
-  - photostructure
-  - Inbucket
-  # Common TypeScript/JavaScript terms
-  - typeof
-  - instanceof
-  - readonly
-  - keyof
-  - infer
-  - satisfies
-  # Nx terms
-  - workspaces
-  - depcruise
-  # Astronomical terms (for caelundas)
-  - ephemeris
-  - ephemerides
-  - stellium
-  - stelliums
-  - sextile
-  - trine
-  - semisextile
-  - semisquare
-  - sesquiquadrate
-  - quincunx
-  - decans
-  - Decan
-  - decan
-  - Caelendars
-  - Caelundae
-  - Caelunday
-  - undecile
-  - novile
-  - septile
-  - tredecile
-  - biquintile
-  - Mercurian
-  - mercurian
-  - arcsecond
-  - arcseconds
-  - Arcseconds
-  - astrometric
-  - topocentric
-  - EPHEM
-  - Perifocus
-  - Periapsis
-  - periapsis
-  - apoapsis
-  - timespan
-  - Upserting
-  - Upserted
-  - Hexadecan
-  - Hexadecans
-  - Imbolc
-  - imbolc
-  - Samhain
-  - samhain
-  - illum
-  # iCalendar terms
-  - vcalendar
-  - VCALENDAR
-  - vevent
-  - VEVENT
-  - VTIMEZONE
-  - VALARM
-  - PRODID
-  - CALSCALE
-  - CALNAME
-  - CALDESC
-  - DTSTAMP
-  - DTSTART
-  - DTEND
-  - TZOFFSETFROM
-  - TZOFFSETTO
-  - TZNAME
-  - RRULE
-  - BYMONTH
-  - BYDAY
-  - YYYYMMDDTH
-  - Hmmss
-  # Git/CI terms
-  - gitmoji
-  - Gitmojis
-  - commitlint
-  - husky
-  - releaserc
-  - ENOCHANGE
-  - EINVALIDGHTOKEN
-  - ESOCKETTIMEDOUT
-  # Infrastructure terms
-  - kubernetes
-  - kubectl
-  - kubeconfig
-  - Dockerfiles
-  - buildx
   - adduser
-  - cves
-  - nanode
-  - opencontainers
-  - preemptible
-  - storageclasses
-  - tolerations
-  # Common abbreviations
-  - automerge
-  - repo
-  - deps
-  - devdeps
-  - TTFB
-  - WCAG
-  # Technical terms
   - āēīōūȳ
   - ĀĒĪŌŪȲ
   - apikey
+  - apoapsis
   - archi
   - Arcminute
   - arcminutes
   - Arcminutes
+  - arcsecond
+  - arcseconds
+  - Arcseconds
+  - astrometric
   - ation
+  - automerge
   - bento
+  - biquintile
   - bitnami
+  - buildx
   - bullmq
   - bundlesize
+  - BYDAY
+  - BYMONTH
+  - Caelendars
+  - Caelundae
   - caelundas
+  - Caelunday
+  - CALDESC
+  - CALNAME
+  - CALSCALE
   - Catilinarian
   - circumfix
   - cmdk
   - coeli
+  - commitlint
   - cssmodule
+  - cves
   - dbeaver
+  - decan
+  - Decan
+  - decans
+  - depcruise
+  - deps
+  - devdeps
   - devkit
+  - Dockerfiles
   - domcontentloaded
+  - DTEND
+  - DTSTAMP
+  - DTSTART
   - duodecuple
+  - EINVALIDGHTOKEN
   - Elipssis
   - Embla
+  - ENOCHANGE
+  - ensurepath
+  - EPHEM
+  - ephemerides
+  - ephemeris
   - Epimethean
   - epimethian
   - esconfig
+  - eslint
+  - ESOCKETTIMEDOUT
   - expressjs
   - fakerjs
   - fastapi
   - feathersjs
-  - frontmatter
-  - fkey
   - fkey
   - fluentbit
   - fontsource
+  - frontmatter
   - FUTP
   - Giorgio
+  - gitmoji
+  - Gitmojis
   - gtrgm
   - hackathon
   - healthcheck
+  - Hexadecan
+  - Hexadecans
+  - Hmmss
   - huggingface
+  - husky
   - ical
   - icalendar
+  - illum
+  - imbolc
+  - Imbolc
   - imum
+  - Inbucket
+  - infer
+  - instanceof
   - interfix
   - interleavings
+  - jimmypaolini
   - joor
   - Keplerian
+  - keyof
+  - killallnode
+  - killallvscodeextensions
   - killport
-  - killport
+  - kubeconfig
+  - kubectl
+  - kubernetes
   - langchain
   - langflow
   - langgraph
   - langsmith
+  - lexico
   - Licen
   - licenseignore
   - lintstagedrc
@@ -220,92 +150,145 @@ words:
   - mapbox
   - maplibre
   - materialui
+  - Meeus
+  - Meeus's
+  - mercurian
+  - Mercurian
   - middlewares
   - midheaven
   - migra
   - mnyk
+  - monorepo
   - multidetermines
   - Multivalued
   - musescore
   - myorg
+  - nanode
   - ncurc
   - networkidle
   - nextjs
   - nindent
   - NONF
   - nonfiction
+  - novile
   - nums
   - ollama
   - ologies
   - oneline
+  - opencontainers
   - operands
   - Paolini
   - pbundlesize
   - peaceiris
+  - periapsis
+  - Periapsis
+  - Perifocus
   - periphrastic
   - PGRST
+  - photostructure
+  - pipx
+  - plainto
+  - plpgsql
   - PLUP
+  - pnpm
   - polyglot
-  - svgs
   - polymorphic
   - Postgrest
   - precompiled
+  - preemptible
   - preflight
+  - PRODID
   - prograde
   - promethian
-  - pydantic
-  - plainto
-  - plpgsql
   - psql
+  - pydantic
   - querykey
+  - quincunx
   - radix
   - raspberrypi
   - readonly
   - refinementness
+  - releaserc
+  - repo
+  - RRULE
+  - samhain
+  - Samhain
+  - satisfies
+  - semisextile
+  - semisquare
   - sendgrid
+  - septile
   - serializers
   - seroval
+  - sesquiquadrate
+  - sextile
   - shiftsmart
   - sqltools
   - stackoverflow
+  - stellium
+  - stelliums
+  - storageclasses
   - stringcase
   - subquery
+  - Subrepositories
+  - supabase
   - Superkey
+  - svgs
   - Swipeable
+  - tailwindcss
   - tanstack
-  - tsquery
   - texttypescript
   - tfstate
   - tfvars
+  - timespan
+  - timestamptz
+  - tolerations
   - tolower
   - toon
+  - topocentric
   - toupper
   - transpiler
+  - tredecile
   - trgm
-  - trgm
+  - trine
+  - tsconfig
+  - tsquery
   - tsvector
-  - tsvector
-  - timestamptz
+  - TTFB
+  - typeof
+  - TZNAME
+  - TZOFFSETFROM
+  - TZOFFSETTO
+  - undecile
   - undecuple
-  - upenn
   - untaint
+  - upenn
   - upsert
+  - Upserted
+  - Upserting
   - upserts
+  - VALARM
   - vaul
+  - vcalendar
+  - VCALENDAR
+  - vevent
+  - VEVENT
   - vinxi
+  - vite
+  - vitest
+  - VTIMEZONE
+  - WCAG
   - wording
+  - workspaces
   - Yods
+  - YYYYMMDDTH
   - zodiac
-
-# Enable file type checking
 enableFiletypes:
   - markdown
   - typescript
   - javascript
   - yaml
   - json
-
-# Dictionaries to use
 dictionaries:
   - typescript
   - node

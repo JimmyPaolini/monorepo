@@ -1,43 +1,33 @@
 {
-  "name": "monorepo",
   "$schema": "node_modules/nx/schemas/project-schema.json",
+  "name": "monorepo",
   "projectType": "application",
   "targets": {
-    "audit": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm audit --audit-level=moderate"
-      },
-      "configurations": {
-        "check": {
-          "command": "pnpm audit --audit-level=moderate"
-        },
-        "write": {
-          "command": "pnpm audit --fix"
-        }
-      },
-      "defaultConfiguration": "check",
-      "cache": false,
-      "description": "Scan for security vulnerabilities (check) or auto-fix them (write)"
-    },
     "check-lockfile": {
+      "description": "Verify that pnpm-lock.yaml is in sync with package.json files",
       "executor": "nx:run-commands",
       "options": {
         "command": "bash scripts/check-lockfile.sh",
         "cwd": "{projectRoot}"
-      },
-      "description": "Verify that pnpm-lock.yaml is in sync with package.json files"
+      }
     },
-    "dependency-analysis": {
-      "executor": "nx:run-commands",
+    "code-analysis": {
+      "description": "Run all static code analysis tools for workspace root (typecheck, lint, format, knip, spell-check, markdown-lint, yaml-lint)",
       "options": {
         "commands": [
-          "nx run monorepo:dependency-lint:{args.configuration}",
-          "nx run monorepo:audit:{args.configuration}",
-          "nx run monorepo:license-check"
-        ],
-        "cwd": "{projectRoot}"
-      },
+          "nx run monorepo:typecheck",
+          "nx run monorepo:lint:{args.configuration}",
+          "nx run monorepo:markdown-lint:{args.configuration}",
+          "nx run monorepo:format:{args.configuration}",
+          "nx run monorepo:knip:{args.configuration}",
+          "nx run monorepo:spell-check",
+          "nx run monorepo:sync-conventional-config:{args.configuration}",
+          "nx run monorepo:sync-vscode-extensions:{args.configuration}"
+        ]
+      }
+    },
+    "dependency-analysis": {
+      "cache": false,
       "configurations": {
         "check": {
           "parallel": true
@@ -47,14 +37,19 @@
         }
       },
       "defaultConfiguration": "check",
-      "cache": false,
-      "description": "Run all dependency management tools (audit, dependency-lint, license-check)"
-    },
-    "dependency-lint": {
+      "description": "Run all dependency management tools (pnpm-audit, dependency-lint, license-check)",
       "executor": "nx:run-commands",
       "options": {
-        "command": "ncu --workspaces --root"
-      },
+        "commands": [
+          "nx run monorepo:dependency-lint:{args.configuration}",
+          "nx run monorepo:pnpm-audit:{args.configuration}",
+          "nx run monorepo:license-check"
+        ],
+        "cwd": "{projectRoot}"
+      }
+    },
+    "dependency-lint": {
+      "cache": false,
       "configurations": {
         "check": {
           "command": "ncu --workspaces --root"
@@ -64,15 +59,14 @@
         }
       },
       "defaultConfiguration": "check",
-      "cache": false,
-      "description": "Check for dependency updates (check) or update to latest versions (write)"
-    },
-    "format": {
+      "description": "Check for dependency updates (check) or update to latest versions (write)",
       "executor": "nx:run-commands",
       "options": {
-        "command": "prettier {args} --ignore-unknown .",
-        "cwd": "{projectRoot}"
-      },
+        "command": "ncu --workspaces --root"
+      }
+    },
+    "format": {
+      "cache": true,
       "configurations": {
         "check": {
           "command": "prettier {args} --check --ignore-unknown ."
@@ -82,15 +76,15 @@
         }
       },
       "defaultConfiguration": "write",
-      "cache": true,
-      "description": "Format workspace root files with Prettier (excluding NX projects)"
-    },
-    "knip": {
+      "description": "Format workspace root files with Prettier (excluding NX projects)",
       "executor": "nx:run-commands",
       "options": {
-        "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace .",
+        "command": "prettier {args} --ignore-unknown .",
         "cwd": "{projectRoot}"
-      },
+      }
+    },
+    "knip": {
+      "cache": true,
       "configurations": {
         "check": {
           "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace ."
@@ -100,30 +94,30 @@
         }
       },
       "defaultConfiguration": "check",
-      "cache": true,
-      "description": "Check for unused files, dependencies, and exports in workspace root only"
-    },
-    "license-check": {
+      "description": "Check for unused files, dependencies, and exports in workspace root only",
       "executor": "nx:run-commands",
       "options": {
-        "command": "license-checker --json --onlyAllow 'MIT;Apache-2.0;BSD-2-Clause;BSD-3-Clause;ISC;0BSD;CC0-1.0;Unlicense;Python-2.0;CC-BY-3.0;CC-BY-4.0' --production --excludePrivatePackages",
-        "cwd": "{workspaceRoot}"
-      },
+        "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace .",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "license-check": {
       "cache": true,
+      "description": "Check licenses of production dependencies",
+      "executor": "nx:run-commands",
       "inputs": [
         "default",
         "{workspaceRoot}/package.json",
         "{workspaceRoot}/pnpm-lock.yaml",
         "{workspaceRoot}/.license-checker.json"
       ],
-      "description": "Check licenses of production dependencies"
+      "options": {
+        "command": "license-checker --json --onlyAllow 'MIT;Apache-2.0;BSD-2-Clause;BSD-3-Clause;ISC;0BSD;CC0-1.0;Unlicense;Python-2.0;CC-BY-3.0;CC-BY-4.0' --production --excludePrivatePackages",
+        "cwd": "{workspaceRoot}"
+      }
     },
     "lint": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "eslint {args} --config eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'",
-        "cwd": "{projectRoot}"
-      },
+      "cache": true,
       "configurations": {
         "check": {
           "command": "eslint {args} --config eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
@@ -133,15 +127,15 @@
         }
       },
       "defaultConfiguration": "check",
-      "cache": true,
-      "description": "Lint workspace root files (config files, scripts, documentation, infrastructure, markdown) excluding NX projects"
-    },
-    "markdown-lint": {
+      "description": "Lint workspace root files (config files, scripts, documentation, infrastructure, markdown) excluding NX projects",
       "executor": "nx:run-commands",
       "options": {
-        "command": "markdownlint-cli2 '*.md' 'scripts/**/*.md' 'documentation/**/*.md' 'infrastructure/**/*.md'",
+        "command": "eslint {args} --config eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'",
         "cwd": "{projectRoot}"
-      },
+      }
+    },
+    "markdown-lint": {
+      "cache": true,
       "configurations": {
         "check": {
           "command": "markdownlint-cli2 '*.md' 'scripts/**/*.md' 'documentation/**/*.md' 'infrastructure/**/*.md'"
@@ -151,7 +145,8 @@
         }
       },
       "defaultConfiguration": "check",
-      "cache": true,
+      "description": "Lint markdown files in workspace root (scripts, documentation, infrastructure)",
+      "executor": "nx:run-commands",
       "inputs": [
         "default",
         "{projectRoot}/*.md",
@@ -160,15 +155,32 @@
         "{projectRoot}/infrastructure/**/*.md",
         "{workspaceRoot}/.markdownlint-cli2.jsonc"
       ],
-      "description": "Lint markdown files in workspace root (scripts, documentation, infrastructure)"
+      "options": {
+        "command": "markdownlint-cli2 '*.md' 'scripts/**/*.md' 'documentation/**/*.md' 'infrastructure/**/*.md'",
+        "cwd": "{projectRoot}"
+      }
     },
-    "spell-check": {
+    "pnpm-audit": {
+      "cache": false,
+      "configurations": {
+        "check": {
+          "command": "pnpm audit --audit-level=moderate"
+        },
+        "write": {
+          "command": "pnpm audit --fix"
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "Scan for security vulnerabilities (check) or auto-fix them (write)",
       "executor": "nx:run-commands",
       "options": {
-        "command": "cspell '*.{ts,tsx,js,jsx,md,yaml,yml,json}' 'scripts/**' 'documentation/**' 'infrastructure/**' 'planning/**' --no-progress",
-        "cwd": "{projectRoot}"
-      },
+        "command": "pnpm audit --audit-level=moderate"
+      }
+    },
+    "spell-check": {
       "cache": true,
+      "description": "Check spelling in workspace root files (scripts, documentation, infrastructure, planning)",
+      "executor": "nx:run-commands",
       "inputs": [
         "default",
         "{projectRoot}/*.{ts,tsx,js,jsx,md,yaml,yml,json}",
@@ -178,53 +190,85 @@
         "{projectRoot}/planning/**",
         "{workspaceRoot}/cspell.config.yaml"
       ],
-      "description": "Check spelling in workspace root files (scripts, documentation, infrastructure, planning)"
-    },
-    "code-analysis": {
       "options": {
-        "commands": [
-          "nx run monorepo:typecheck",
-          "nx run monorepo:lint:{args.configuration}",
-          "nx run monorepo:markdown-lint:{args.configuration}",
-          "nx run monorepo:yaml-lint",
-          "nx run monorepo:format:{args.configuration}",
-          "nx run monorepo:knip:{args.configuration}",
-          "nx run monorepo:spell-check"
-        ]
+        "command": "cspell '*.{ts,tsx,js,jsx,md,yaml,yml,json}' 'scripts/**' 'documentation/**' 'infrastructure/**' 'planning/**' --no-progress",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "sync-conventional-config": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "command": "tsx scripts/sync-conventional-config.ts check"
+        },
+        "write": {
+          "command": "tsx scripts/sync-conventional-config.ts write"
+        }
       },
-      "description": "Run all static code analysis tools for workspace root (typecheck, lint, format, knip, spell-check, markdown-lint, yaml-lint)"
+      "defaultConfiguration": "check",
+      "description": "Validate that conventional commit config (types/scopes) is synchronized from conventional.config.cjs into .vscode/settings.json and SKILL.md (check) or sync them (write)",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/conventional.config.cjs",
+        "{projectRoot}/.vscode/settings.json",
+        "{projectRoot}/documentation/skills/commit-code/SKILL.md"
+      ],
+      "options": {
+        "command": "tsx scripts/sync-conventional-config.ts"
+      }
+    },
+    "sync-vscode-extensions": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "command": "tsx scripts/sync-vscode-extensions.ts check"
+        },
+        "write": {
+          "command": "tsx scripts/sync-vscode-extensions.ts write"
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "Validate that VS Code extensions are synchronized between .vscode/extensions.json and .devcontainer/devcontainer.json (check) or sync them (write)",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/.vscode/extensions.json",
+        "{projectRoot}/.devcontainer/devcontainer.json"
+      ],
+      "options": {
+        "command": "tsx scripts/sync-vscode-extensions.ts"
+      }
     },
     "terraform": {
+      "cache": false,
+      "configurations": {
+        "import": {
+          "command": "terraform import -input=false linode_lke_cluster.my_cluster $TF_VAR_linode_kubernetes_engine_cluster_id"
+        },
+        "plan": {
+          "command": "terraform plan"
+        }
+      },
+      "defaultConfiguration": "plan",
+      "description": "Run Terraform commands (plan, import)",
       "executor": "nx:run-commands",
       "options": {
         "command": "terraform plan",
         "cwd": "infrastructure/terraform"
-      },
-      "configurations": {
-        "plan": {
-          "command": "terraform plan"
-        },
-        "import": {
-          "command": "terraform import -input=false linode_lke_cluster.my_cluster $TF_VAR_linode_kubernetes_engine_cluster_id"
-        }
-      },
-      "defaultConfiguration": "plan",
-      "cache": false,
-      "description": "Run Terraform commands (plan, import)"
+      }
     },
     "type-coverage": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "type-coverage --at-least 95 --detail --project tsconfig.json",
-        "cwd": "{projectRoot}"
-      },
       "cache": true,
+      "description": "Check TypeScript type coverage for workspace root (minimum 95%)",
+      "executor": "nx:run-commands",
       "inputs": [
         "default",
         "{projectRoot}/**/*.{ts,tsx}",
         "{projectRoot}/tsconfig.json"
       ],
-      "description": "Check TypeScript type coverage for workspace root (minimum 95%)"
+      "options": {
+        "command": "type-coverage --at-least 95 --detail --project tsconfig.json",
+        "cwd": "{projectRoot}"
+      }
     },
     "typecheck": {
       "description": "Type-check workspace root TypeScript files"

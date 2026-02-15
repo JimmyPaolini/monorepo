@@ -11,7 +11,7 @@ documentation/skills/
 ├── README.md (this file)
 ├── code-generator-patterns/
 │   └── SKILL.md
-├── commit-messages/
+├── commit-code/
 │   └── SKILL.md
 ├── docker-workflows/
 │   └── SKILL.md
@@ -116,12 +116,26 @@ documentation/skills/
 
 ### Process Skills
 
-**[commit-messages](commit-messages/SKILL.md)**
+**[checkout-branch](checkout-branch/SKILL.md)**
+
+- Git branch naming conventions
+- Type/scope/description format
+- Validation and troubleshooting
+- Renaming invalid branches
+
+**[commit-code](commit-code/SKILL.md)**
 
 - Conventional Commits format
 - Gitmoji integration
 - Scope selection
 - Subject line rules (50 char max)
+
+**[create-pull-request](create-pull-request/SKILL.md)**
+
+- PR title and description conventions
+- PR creation workflow with GitHub CLI and MCP tools
+- CI requirements and checks
+- Issue linking and review requests
 
 **[github-actions](github-actions/SKILL.md)**
 
@@ -252,9 +266,9 @@ Current coverage by category:
 - ✅ **Domain-specific**: 4 skills (caelundas, lexico, generators)
 - ✅ **Infrastructure**: 2 skills (K8s, Docker)
 - ✅ **MCP Servers**: 6 skills (shadcn, Supabase, Chrome, Figma, Terraform, GitHub)
-- ✅ **Processes**: 2 skills (commits, CI/CD)
+- ✅ **Processes**: 4 skills (commits, pull requests, CI/CD, branch naming)
 
-**Total**: 14 skills
+**Total**: 16 skills
 
 ## Related Documentation
 

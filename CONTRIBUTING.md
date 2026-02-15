@@ -7,12 +7,13 @@ Thank you for contributing! This guide covers the development workflow, code sta
 - [Contributing to Monorepo](#contributing-to-monorepo)
   - [Table of Contents](#table-of-contents)
   - [Getting Started](#getting-started)
-    - [Prerequisites](#prerequisites)
-    - [Automated Setup](#automated-setup)
+    - [Option 1: Dev Container (Recommended)](#option-1-dev-container-recommended)
+    - [Option 2: Local Setup (macOS)](#option-2-local-setup-macos)
     - [Workspace Structure](#workspace-structure)
   - [Development Workflow](#development-workflow)
     - [Basic Commands](#basic-commands)
   - [Code Standards](#code-standards)
+  - [Branch Naming Guidelines](#branch-naming-guidelines)
   - [Commit Guidelines](#commit-guidelines)
   - [Pull Request Process](#pull-request-process)
   - [Release Process](#release-process)
@@ -23,19 +24,66 @@ Thank you for contributing! This guide covers the development workflow, code sta
 
 ## Getting Started
 
-### Prerequisites
+### Option 1: Dev Container (Recommended)
+
+The fastest way to get started is using the included dev container, which provides a fully configured development environment with all required tools.
+
+**Prerequisites:**
+
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) (or Docker Engine on Linux)
+- [VS Code](https://code.visualstudio.com/) with [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+
+**Setup:**
+
+1. Clone the repository: `git clone https://github.com/JimmyPaolini/monorepo.git`
+2. Open the folder in VS Code
+3. When prompted "Reopen in Container", click **Reopen in Container** (or run `Dev Containers: Reopen in Container` from command palette)
+4. Wait for container build (~2-3 minutes first time)
+5. Start developing!
+
+**Included Tools:**
+
+| Tool         | Version | Purpose                              |
+| ------------ | ------- | ------------------------------------ |
+| Node.js      | 22.20.0 | JavaScript runtime                   |
+| pnpm         | 10.20.0 | Package manager                      |
+| Terraform    | latest  | Infrastructure provisioning (Linode) |
+| Supabase CLI | latest  | Database migrations, type generation |
+| kubectl      | latest  | Kubernetes cluster management        |
+| Helm         | latest  | Kubernetes package manager           |
+| GitHub CLI   | latest  | Repository operations                |
+| Docker       | (DinD)  | Isolated Docker daemon in container  |
+
+**Port Forwarding:**
+
+| Port  | Service           | Auto-Forward |
+| ----- | ----------------- | ------------ |
+| 3000  | Lexico Dev Server | Notify       |
+| 54321 | Supabase API      | Silent       |
+| 54322 | PostgreSQL        | Silent       |
+| 54323 | Supabase Studio   | Notify       |
+| 54324 | Inbucket (Email)  | Silent       |
+| 54325 | Analytics         | Silent       |
+
+See [.devcontainer/README.md](.devcontainer/README.md) for detailed configuration and troubleshooting.
+
+### Option 2: Local Setup (macOS)
+
+For local development without containers:
+
+**Prerequisites:**
 
 - **macOS** with Homebrew installed
 - **Git**: Latest stable version
 
-### Automated Setup
+**Setup:**
 
 Run the setup script to install all dependencies:
 
 ```bash
 git clone https://github.com/JimmyPaolini/monorepo.git
 cd monorepo
-./scripts/setup.sh
+./scripts/local-setup/setup.sh
 ```
 
 This script:
@@ -104,7 +152,7 @@ See [eslint.config.base.ts](eslint.config.base.ts) for complete rules.
 
 **Examples**: `feat/lexico-user-auth`, `fix/monorepo-routing`, `docs/caelundas-api`
 
-Validated by Husky pre-push hook and GitHub Actions. See [branch-names.md](documentation/branch-names.md) for details.
+Validated by Husky pre-push hook and GitHub Actions. See [checkout-branch skill](.github/skills/checkout-branch/SKILL.md) for details.
 
 ## Commit Guidelines
 
@@ -124,7 +172,7 @@ fix(lexico): resolve mobile layout overflow
 feat(api)!: redesign authentication  # Breaking change
 ```
 
-Commits are validated by commitlint + Husky. See [commit-messages.md](documentation/commit-messages.md) for details.
+Commits are validated by commitlint + Husky. See [commit-code skill](.github/skills/commit-code/SKILL.md) for details.
 
 ## Pull Request Process
 
@@ -156,7 +204,7 @@ Pull requests require owner approval before merging.
 
 ## Additional Resources
 
-- [Commit Messages Guide](documentation/commit-messages.md)
+- [Commit Messages Guide](.github/skills/commit-code/SKILL.md)
 - [Semantic Release Guide](documentation/semantic-release.md)
 - [GitHub Actions Guide](documentation/github-actions.md)
 - [Static Analysis Tools](documentation/static-analysis-tools.md)

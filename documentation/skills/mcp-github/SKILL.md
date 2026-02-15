@@ -546,10 +546,10 @@ for (const result of results.items) {
 ## Related Documentation
 
 - [CONTRIBUTING.md](../../CONTRIBUTING.md) - Contribution guidelines
-- [commit-messages skill](../commit-messages/SKILL.md) - Commit message format
+- [commit-code skill](../commit-code/SKILL.md) - Commit message format
 - [github-actions skill](../github-actions/SKILL.md) - CI/CD workflows
 
 ## See Also
 
 - **github-actions skill** - For workflow automation
-- **commit-messages skill** - For proper commit formatting
+- **commit-code skill** - For proper commit formatting

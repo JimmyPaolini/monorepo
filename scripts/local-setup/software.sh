@@ -67,3 +67,16 @@ else
     echo "🔄 yamllint is outdated. To update, run: brew upgrade yamllint"
   fi
 fi
+
+echo "🔍 Checking for Supabase CLI installation..."
+if ! command -v supabase &> /dev/null; then
+  echo "📦 Supabase CLI not found. Installing via Homebrew..."
+  brew install supabase/tap/supabase
+  echo "✅ Supabase CLI installed via Homebrew, version: $(supabase --version)"
+else
+  echo "👍 Supabase CLI is already installed, version: $(supabase --version)"
+  echo "⬆️ Checking for supabase updates..."
+  if brew outdated | grep -q 'supabase'; then
+    echo "🔄 Supabase CLI is outdated. To update, run: brew upgrade supabase"
+  fi
+fi

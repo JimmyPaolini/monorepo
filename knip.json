@@ -1,6 +1,31 @@
 {
   "$schema": "https://unpkg.com/knip@5/schema.json",
+  "ignore": [
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "**/dist/**",
+    "**/node_modules/**",
+    "**/.nx/**",
+    "**/coverage/**"
+  ],
+  "ignoreBinaries": ["depcruise", "terraform", "validate-branch-name"],
+  "ignoreDependencies": [
+    "@nx/eslint-plugin",
+    "@nx/js",
+    "@nx/web",
+    "tsx",
+    "dependency-cruiser",
+    "type-coverage",
+    "license-checker",
+    "eslint-plugin-tsdoc",
+    "eslint-plugin-jsdoc",
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/github",
+    "@semantic-release/npm"
+  ],
   "ignoreExportsUsedInFile": true,
+  "ignoreWorkspaces": ["applications/JimmyPaolini"],
   "workspaces": {
     ".": {
       "entry": [
@@ -10,28 +35,27 @@
         ".releaserc.json",
         "validate-branch-name.config.cjs"
       ],
-      "project": "**/*.{js,ts,mjs,cjs}",
       "ignore": [
         "**/*.test.ts",
         "**/*.spec.ts",
         "**/dist/**",
         "**/coverage/**",
         "applications/JimmyPaolini/**"
-      ]
+      ],
+      "project": "**/*.{js,ts,mjs,cjs}"
     },
     "applications/caelundas": {
-      "project": "src/**/*.ts",
       "ignore": [
         "src/**/*.test.ts",
         "src/**/*.integration.test.ts",
         "src/**/*.end-to-end.test.ts",
         "output/**",
         "testing/**"
-      ]
+      ],
+      "project": "src/**/*.ts"
     },
     "applications/lexico": {
       "entry": ["src/client.tsx", "src/router.tsx", "src/routes/**/*.tsx"],
-      "project": "src/**/*.{ts,tsx}",
       "ignore": [
         "src/routeTree.gen.ts",
         "src/lib/database.types.ts",
@@ -40,10 +64,10 @@
         "src/lib/supabase.ts",
         "src/components/entry/principal-parts.tsx"
       ],
-      "ignoreBinaries": ["supabase"]
+      "ignoreBinaries": ["supabase"],
+      "project": "src/**/*.{ts,tsx}"
     },
     "packages/lexico-components": {
-      "project": "src/**/*.{ts,tsx}",
       "ignore": ["src/components/**", "src/lib/**", "src/hooks/**"],
       "ignoreDependencies": [
         "@radix-ui/react-alert-dialog",
@@ -74,38 +98,14 @@
         "recharts",
         "sonner",
         "vaul"
-      ]
+      ],
+      "project": "src/**/*.{ts,tsx}"
     },
     "tools/code-generator": {
       "entry": "src/generators/*/generator.ts",
-      "project": "src/**/*.ts",
       "ignore": ["src/**/files/**", "src/**/*.test.ts"],
-      "ignoreDependencies": ["react"]
+      "ignoreDependencies": ["react"],
+      "project": "src/**/*.ts"
     }
-  },
-  "ignoreWorkspaces": ["applications/JimmyPaolini"],
-  "ignore": [
-    "**/*.test.ts",
-    "**/*.spec.ts",
-    "**/dist/**",
-    "**/node_modules/**",
-    "**/.nx/**",
-    "**/coverage/**"
-  ],
-  "ignoreDependencies": [
-    "@nx/eslint-plugin",
-    "@nx/js",
-    "@nx/web",
-    "tsx",
-    "dependency-cruiser",
-    "type-coverage",
-    "license-checker",
-    "eslint-plugin-tsdoc",
-    "eslint-plugin-jsdoc",
-    "@semantic-release/commit-analyzer",
-    "@semantic-release/release-notes-generator",
-    "@semantic-release/github",
-    "@semantic-release/npm"
-  ],
-  "ignoreBinaries": ["depcruise", "terraform", "validate-branch-name"]
+  }
 }
