@@ -26,8 +26,8 @@ Analyze the current branch's changes and create a pull request that:
 ### Quick Reference
 
 - **Title Format**: `<type>(<scope>): <gitmoji> <subject>` (max 100 chars)
-- **Types**: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`
-- **Scopes**: Project names (`caelundas`, `lexico`, `lexico-components`, `JimmyPaolini`) or categories (`monorepo`, `applications`, `packages`, `tools`, `documentation`, `dependencies`, `infrastructure`, `deployments`, `testing`, `linting`, `scripts`, `configuration`)
+- **Type**: Must be from allowed list (see [SKILL.md](../../documentation/skills/create-pull-request/SKILL.md))
+- **Scope**: Must be from allowed list (see [SKILL.md](../../documentation/skills/create-pull-request/SKILL.md))
 - **Subject**: Imperative mood, lowercase after gitmoji, no period
 - **Gitmoji**: Must match the type (✨ feat, 🐛 fix, 📝 docs, etc.)
 

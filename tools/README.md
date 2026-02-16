@@ -4,45 +4,42 @@ This directory contains Nx plugins and generators for the monorepo.
 
 ## Available Generators
 
-### Component Generator (`component-generator`)
+### Code Generator (`code-generator`)
 
 **Purpose:** Generate React components with test files following monorepo conventions
 
 **Quick Start:**
 
 ```bash
-nx build component-generator
-nx generate component-generator:component --name=Button
+nx build code-generator
+nx generate code-generator:component --name=Button
 ```
 
 **Features:**
 
-- ✅ React component with TypeScript
-- ✅ Vitest test file
-- ✅ Barrel exports (optional)
-- ✅ Auto-formatted code
-- ✅ Monorepo conventions
+- React component with TypeScript
+- Vitest test file
+- Barrel exports (optional)
+- Auto-formatted code
+- Monorepo conventions
 
 **Documentation:**
 
-- [README.md](./component-generator/README.md) - Plugin overview
-- [USAGE.md](./component-generator/USAGE.md) - Detailed usage guide
-- [EXAMPLES.md](./component-generator/EXAMPLES.md) - Real-world examples
-- [TESTING.md](./component-generator/TESTING.md) - Testing & troubleshooting
+- [README.md](./code-generator/README.md) - Plugin overview and usage
 
 **Example Usage:**
 
 ```bash
 # Basic component
-nx generate component-generator:component --name=Button
+nx generate code-generator:component --name=Button
 
 # With custom directory
-nx generate component-generator:component \
+nx generate code-generator:component \
   --name=FormInput \
   --directory=src/components/form
 
 # Without barrel export
-nx generate component-generator:component \
+nx generate code-generator:component \
   --name=Modal \
   --export=direct
 ```
@@ -52,31 +49,23 @@ nx generate component-generator:component \
 To add more generators to this workspace:
 
 1. Create new generator directory: `tools/new-generator/`
-2. Follow the structure of `component-generator`
+2. Follow the structure of `code-generator`
 3. Define schema, templates, and implementation
 4. Register in `generators.json`
 5. Build and test
 
-Example:
-
-```bash
-# Create a hook generator
-tools/hook-generator/
-├── src/generators/hook/
-├── generators.json
-├── package.json
-└── README.md
-```
+See [tools/code-generator/AGENTS.md](./code-generator/AGENTS.md) for detailed generator development patterns.
 
 ## Project Structure
 
 ```text
 tools/
-├── component-generator/     # React component generator
+├── code-generator/          # React component generator
 │   ├── src/
 │   │   └── generators/
 │   ├── package.json
 │   ├── generators.json
+│   ├── AGENTS.md
 │   └── README.md
 └── (more generators as needed)
 ```
@@ -85,13 +74,10 @@ tools/
 
 ```bash
 # Build specific generator
-nx build component-generator
-
-# Build all generators
-nx build-generators  # if you create this target
+nx build code-generator
 
 # Watch mode
-nx build component-generator --watch
+nx build code-generator --watch
 ```
 
 ## Using in Projects
@@ -99,7 +85,7 @@ nx build component-generator --watch
 ### In lexico-components
 
 ```bash
-nx generate component-generator:component \
+nx generate code-generator:component \
   --name=Button \
   --directory=packages/lexico-components/src/components
 ```
@@ -107,7 +93,7 @@ nx generate component-generator:component \
 ### In lexico App
 
 ```bash
-nx generate component-generator:component \
+nx generate code-generator:component \
   --name=HomePage \
   --directory=applications/lexico/src/components
 ```
@@ -150,17 +136,17 @@ tools/my-generator/
 2. **Template everything** - Don't hardcode file content
 3. **Type your generators** - Use TypeScript interfaces
 4. **Include tests** - Generate valid, tested code
-5. **Document thoroughly** - README, USAGE, EXAMPLES
-6. **Follow monorepo conventions** - See copilot-instructions.md
+5. **Document thoroughly** - README + AGENTS.md
+6. **Follow monorepo conventions** - See [AGENTS.md](../AGENTS.md)
 
 ## Troubleshooting
 
 **Generator not found?**
 
 ```bash
-nx build component-generator
+nx build code-generator
 nx reset
-nx generate component-generator:component --name=Test
+nx generate code-generator:component --name=Test
 ```
 
 **Build failed?**
@@ -170,7 +156,7 @@ nx generate component-generator:component --name=Test
 pnpm install
 
 # Rebuild with verbose output
-nx build component-generator --verbose
+nx build code-generator --verbose
 ```
 
 **Template syntax issues?**
@@ -182,8 +168,6 @@ nx build component-generator --verbose
 ## References
 
 - [Nx Generators Documentation](https://nx.dev/docs/extending-nx/intro)
-- [Component Generator Docs](./component-generator/USAGE.md)
-- [Monorepo Conventions](../.github/copilot-instructions.md)
 - [Nx Plugin API](https://nx.dev/docs/extending-nx/create-sync-generator)
 
 ## Contributing
@@ -199,5 +183,4 @@ When adding new generators:
 
 ---
 
-**Current Generators:** 1 (component-generator)
-**Last Updated:** December 26, 2025
+**Current Generators:** 1 (code-generator)

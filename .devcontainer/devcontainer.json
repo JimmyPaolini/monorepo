@@ -20,6 +20,7 @@
         "dbaeumer.vscode-eslint",
         "docker.docker",
         "donjayamanne.githistory",
+        "eamodio.gitlens",
         "earshinov.permute-lines",
         "ecmel.vscode-html-css",
         "esbenp.prettier-vscode",
@@ -87,6 +88,7 @@
         "dbaeumer.vscode-eslint",
         "docker.docker",
         "donjayamanne.githistory",
+        "eamodio.gitlens",
         "earshinov.permute-lines",
         "ecmel.vscode-html-css",
         "esbenp.prettier-vscode",
@@ -145,7 +147,6 @@
         "atlassian.atlascode",
         "datadog.datadog-vscode",
         "denoland.vscode-deno",
-        "eamodio.gitlens",
         "firefox-devtools.vscode-firefox-debug",
         "inferrinizzard.prettier-sql-vscode",
         "innoverio.vscode-dbt-power-user",
@@ -285,9 +286,10 @@
     "post-attach-command": ".devcontainer/scripts/post-attach-command.sh"
   },
   "postCreateCommand": {
-    "nx-graph": "npx nx graph --file=.nx/graph.json 2>/dev/null || true",
+    "nx-setup": "pnpm exec nx reset && pnpm exec nx graph --file=.nx/graph.json 2>/dev/null || true",
     "pnpm-install": "pnpm install --frozen-lockfile --prefer-offline",
-    "post-create-command": ".devcontainer/scripts/post-create-command.sh"
+    "post-create-command": ".devcontainer/scripts/post-create-command.sh",
+    "sync-settings": "pnpm exec tsx .devcontainer/scripts/sync-vscode-settings.ts write"
   },
   "remoteEnv": {
     "KUBECONFIG": "${containerWorkspaceFolder}/.kube/config",

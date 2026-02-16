@@ -85,13 +85,5 @@
     "atLeast": 99.84,
     "strict": true,
     "ignoreCatch": true
-  },
-  "size-limit": [
-    {
-      "name": "Library bundle",
-      "path": "../../dist/packages/lexico-components/index.js",
-      "limit": "25 KB",
-      "gzip": true
-    }
-  ]
+  }
 }

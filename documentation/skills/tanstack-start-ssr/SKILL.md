@@ -24,7 +24,7 @@ For comprehensive patterns and examples, see [applications/lexico/AGENTS.md](../
 
 ```text
 applications/lexico/
-  app/
+  src/
     routes/          # File-based routes
       __root.tsx     # Root layout
       index.tsx      # Home page (/)
@@ -42,7 +42,7 @@ applications/lexico/
 
 ### Route Files
 
-Routes are defined by file names in `app/routes/`:
+Routes are defined by file names in `src/routes/`:
 
 - `index.tsx` → `/`
 - `search.tsx` → `/search`
@@ -54,7 +54,7 @@ Routes are defined by file names in `app/routes/`:
 Each route exports configuration:
 
 ```tsx
-// app/routes/word.$id.tsx
+// src/routes/word.$id.tsx
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/word/$id")({
@@ -85,7 +85,7 @@ function WordPage() {
 Use `$` prefix for dynamic segments:
 
 ```tsx
-// app/routes/word.$id.tsx
+// src/routes/word.$id.tsx
 function WordPage() {
   const { id } = Route.useParams(); // Type-safe params
   // ...
@@ -350,7 +350,7 @@ export const signIn = createServerFn({ method: "POST" })
 **Auth Callback:**
 
 ```tsx
-// app/routes/auth/callback.tsx
+// src/routes/auth/callback.tsx
 export const Route = createFileRoute("/auth/callback")({
   loader: async ({ request }) => {
     const url = new URL(request.url);

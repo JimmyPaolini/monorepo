@@ -1,4 +1,7 @@
 {
+  "development": false,
+  "excludePackages": "",
+  "excludePrivatePackages": true,
   "licenseWhitelist": [
     "MIT",
     "Apache-2.0",
@@ -15,8 +18,5 @@
     "Zlib",
     "BlueOak-1.0.0"
   ],
-  "excludePackages": "",
-  "excludePrivatePackages": true,
-  "production": true,
-  "development": false
+  "production": true
 }

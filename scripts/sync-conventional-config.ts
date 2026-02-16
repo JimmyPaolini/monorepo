@@ -4,6 +4,11 @@
  * Sync conventional commit config from conventional.config.cjs into:
  * - .vscode/settings.json (scopes array)
  * - documentation/skills/commit-code/SKILL.md (types and scopes tables)
+ * - documentation/skills/checkout-branch/SKILL.md (types and scopes tables)
+ * - documentation/skills/create-pull-request/SKILL.md (types and scopes tables)
+ * - .github/prompts/submit-changes.prompt.md (types and scopes tables)
+ * - .github/ISSUE_TEMPLATE/bug-report.yml (scopes dropdown)
+ * - .github/ISSUE_TEMPLATE/feature-request.yml (scopes dropdown)
  *
  * Usage: tsx scripts/sync-conventional-config.ts [check|write]
  *   check (default): Validate that targets are in sync, exit 1 if not
@@ -12,7 +17,7 @@
 
 import { readFileSync, writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
-import { dirname, join } from "node:path";
+import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import JSON5 from "json5";
@@ -23,10 +28,16 @@ const __dirname = dirname(__filename);
 const WORKSPACE_ROOT = join(__dirname, "..");
 const CONVENTIONAL_CONFIG = join(WORKSPACE_ROOT, "conventional.config.cjs");
 const SETTINGS_FILE = join(WORKSPACE_ROOT, ".vscode/settings.json");
-const SKILL_FILE = join(
-  WORKSPACE_ROOT,
-  "documentation/skills/commit-code/SKILL.md",
-);
+const SKILL_FILES = [
+  join(WORKSPACE_ROOT, "documentation/skills/commit-code/SKILL.md"),
+  join(WORKSPACE_ROOT, "documentation/skills/checkout-branch/SKILL.md"),
+  join(WORKSPACE_ROOT, "documentation/skills/create-pull-request/SKILL.md"),
+  join(WORKSPACE_ROOT, ".github/prompts/submit-changes.prompt.md"),
+];
+const ISSUE_TEMPLATE_FILES = [
+  join(WORKSPACE_ROOT, ".github/ISSUE_TEMPLATE/bug-report.yml"),
+  join(WORKSPACE_ROOT, ".github/ISSUE_TEMPLATE/feature-request.yml"),
+];
 const MODE = process.argv[2] || "check";
 
 interface EntryWithDescription {
@@ -52,7 +63,7 @@ function loadConventionalConfig(): ConventionalConfig {
 
 /**
  * Parse entries with inline comments from conventional.config.cjs.
- * Each line like `"build", // Description` becomes { value, description }.
+ * Each line like `"build", // Description` becomes an EntryWithDescription object.
  */
 function parseEntriesWithDescriptions(
   arrayName: "types" | "scopes",
@@ -155,6 +166,36 @@ function generateMarkdownTable(
   return lines.join("\n");
 }
 
+// ─── Issue Template Sync ────────────────────────────────────────────────────
+
+/**
+ * Generate a YAML dropdown options block from scope values.
+ * Returns indented lines like `        - caelundas`.
+ */
+function generateYamlScopeOptions(scopes: string[]): string {
+  return scopes.map((scope) => `        - ${scope}`).join("\n");
+}
+
+/**
+ * Extract scope options from an issue template YAML file.
+ * Looks for content between `# <!-- scopes-start -->` and `# <!-- scopes-end -->` markers.
+ */
+function parseIssueTemplateScopes(content: string): string[] {
+  const pattern =
+    /# <!-- scopes-start -->\n[\s\S]*?options:\n([\s\S]*?)\n\s*validations:[\s\S]*?# <!-- scopes-end -->/;
+  const match = pattern.exec(content);
+  if (!match?.[1]) return [];
+
+  const scopes: string[] = [];
+  for (const line of match[1].split("\n")) {
+    const scopeMatch = /^\s{8}-\s+(.+)$/.exec(line);
+    if (scopeMatch?.[1]) {
+      scopes.push(scopeMatch[1]);
+    }
+  }
+  return scopes;
+}
+
 /**
  * Extract content between marker comments in a file.
  * Markers are HTML comments like `<!-- types-start -->` and `<!-- types-end -->`.
@@ -242,14 +283,20 @@ function checkSettingsSync(
   return true;
 }
 
-function checkSkillSync(config: ConventionalConfig): boolean {
-  const skillContent = readFileSync(SKILL_FILE, "utf-8");
+function checkSkillSync(
+  config: ConventionalConfig,
+  skillFile: string,
+): boolean {
+  const skillName = relative(WORKSPACE_ROOT, skillFile);
+  const skillContent = readFileSync(skillFile, "utf-8");
   let inSync = true;
 
   for (const marker of ["types", "scopes"] as const) {
     const markerContent = extractMarkerContent(skillContent, marker);
     if (!markerContent) {
-      console.log(`❌ SKILL.md missing <!-- ${marker}-start/end --> markers\n`);
+      console.log(
+        `❌ ${skillName} missing <!-- ${marker}-start/end --> markers\n`,
+      );
       inSync = false;
       continue;
     }
@@ -260,20 +307,54 @@ function checkSkillSync(config: ConventionalConfig): boolean {
     const sortedSkill = [...skillValues].sort();
 
     if (!_.isEqual(sortedSource, sortedSkill)) {
-      console.log(`❌ SKILL.md ${marker} table is out of sync\n`);
+      console.log(`❌ ${skillName} ${marker} table is out of sync\n`);
       console.log("📋 Differences:");
-      showDifference(sourceValues, skillValues, "SKILL.md");
+      showDifference(sourceValues, skillValues, skillName);
       console.log("");
       inSync = false;
     } else if (!_.isEqual(sourceValues, skillValues)) {
       console.log(
-        `🔀 SKILL.md ${marker} have matching values but different ordering\n`,
+        `🔀 ${skillName} ${marker} have matching values but different ordering\n`,
       );
       inSync = false;
     }
   }
 
   return inSync;
+}
+
+function checkIssueTemplateSync(
+  sourceScopes: string[],
+  templateFile: string,
+): boolean {
+  const templateName = relative(WORKSPACE_ROOT, templateFile);
+  const templateContent = readFileSync(templateFile, "utf-8");
+  const templateScopes = parseIssueTemplateScopes(templateContent);
+
+  if (templateScopes.length === 0) {
+    console.log(
+      `❌ ${templateName} missing <!-- scopes-start/end --> markers\n`,
+    );
+    return false;
+  }
+
+  const sortedSource = [...sourceScopes].sort();
+  const sortedTemplate = [...templateScopes].sort();
+
+  if (!_.isEqual(sortedSource, sortedTemplate)) {
+    console.log(`❌ ${templateName} scopes dropdown is out of sync\n`);
+    console.log("📋 Differences:");
+    showDifference(sourceScopes, templateScopes, templateName);
+    console.log("");
+    return false;
+  } else if (!_.isEqual(sourceScopes, templateScopes)) {
+    console.log(
+      `🔀 ${templateName} scopes have matching values but different ordering\n`,
+    );
+    return false;
+  }
+
+  return true;
 }
 
 function writeSettingsSync(): void {
@@ -300,9 +381,10 @@ function writeSettingsSync(): void {
   console.log("✅ settings.json scopes synced");
 }
 
-function writeSkillSync(): void {
-  console.log("🔄 Syncing SKILL.md types and scopes...");
-  let skillContent = readFileSync(SKILL_FILE, "utf-8");
+function writeSkillSync(skillFile: string): void {
+  const skillName = relative(WORKSPACE_ROOT, skillFile);
+  console.log(`🔄 Syncing ${skillName} types and scopes...`);
+  let skillContent = readFileSync(skillFile, "utf-8");
 
   const typesEntries = parseEntriesWithDescriptions("types");
   const scopesEntries = parseEntriesWithDescriptions("scopes");
@@ -319,8 +401,33 @@ function writeSkillSync(): void {
   skillContent = replaceMarkerContent(skillContent, "types", typesTable);
   skillContent = replaceMarkerContent(skillContent, "scopes", scopesTable);
 
-  writeFileSync(SKILL_FILE, skillContent, "utf-8");
-  console.log("✅ SKILL.md types and scopes synced");
+  writeFileSync(skillFile, skillContent, "utf-8");
+  console.log(`✅ ${skillName} types and scopes synced`);
+}
+
+function writeIssueTemplateSync(
+  sourceScopes: string[],
+  templateFile: string,
+): void {
+  const templateName = relative(WORKSPACE_ROOT, templateFile);
+  console.log(`🔄 Syncing ${templateName} scopes dropdown...`);
+  const templateContent = readFileSync(templateFile, "utf-8");
+  const scopeOptions = generateYamlScopeOptions(sourceScopes);
+
+  const pattern =
+    /(# <!-- scopes-start -->\n[\s\S]*?options:\n)[\s\S]*?(\s*validations:[\s\S]*?# <!-- scopes-end -->)/;
+  const match = pattern.exec(templateContent);
+  if (!match) {
+    throw new Error(`Could not find scopes markers in ${templateName}`);
+  }
+
+  const updatedContent = templateContent.replace(
+    pattern,
+    `$1${scopeOptions}\n$2`,
+  );
+
+  writeFileSync(templateFile, updatedContent, "utf-8");
+  console.log(`✅ ${templateName} scopes synced`);
 }
 
 function main(): void {
@@ -330,9 +437,20 @@ function main(): void {
 
   if (MODE === "check") {
     const settingsOk = checkSettingsSync(config.scopes, settingsScopes);
-    const skillOk = checkSkillSync(config);
+    let skillsOk = true;
+    for (const skillFile of SKILL_FILES) {
+      if (!checkSkillSync(config, skillFile)) {
+        skillsOk = false;
+      }
+    }
+    let templatesOk = true;
+    for (const templateFile of ISSUE_TEMPLATE_FILES) {
+      if (!checkIssueTemplateSync(config.scopes, templateFile)) {
+        templatesOk = false;
+      }
+    }
 
-    if (!settingsOk || !skillOk) {
+    if (!settingsOk || !skillsOk || !templatesOk) {
       console.log(
         "💡 Run 'nx run monorepo:sync-conventional-config:write' to sync",
       );
@@ -341,13 +459,27 @@ function main(): void {
     console.log("✅ Conventional commit config is in sync");
   } else if (MODE === "write") {
     const settingsOk = checkSettingsSync(config.scopes, settingsScopes);
-    const skillOk = checkSkillSync(config);
+    const outOfSyncSkills = SKILL_FILES.filter(
+      (skillFile) => !checkSkillSync(config, skillFile),
+    );
+    const outOfSyncTemplates = ISSUE_TEMPLATE_FILES.filter(
+      (templateFile) => !checkIssueTemplateSync(config.scopes, templateFile),
+    );
 
-    if (settingsOk && skillOk) {
+    if (
+      settingsOk &&
+      outOfSyncSkills.length === 0 &&
+      outOfSyncTemplates.length === 0
+    ) {
       console.log("✅ Already in sync");
     } else {
       if (!settingsOk) writeSettingsSync();
-      if (!skillOk) writeSkillSync();
+      for (const skillFile of outOfSyncSkills) {
+        writeSkillSync(skillFile);
+      }
+      for (const templateFile of outOfSyncTemplates) {
+        writeIssueTemplateSync(config.scopes, templateFile);
+      }
     }
   } else {
     console.error(`❌ Invalid mode: ${MODE}`);

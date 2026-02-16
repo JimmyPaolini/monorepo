@@ -20,7 +20,7 @@ This skill teaches how to write commit messages for this monorepo. All commits *
 
 1. **Header**: `<type>(<scope>): <gitmoji> <subject>` (required)
    - Must start with gitmoji emoji (`gitmoji-required`, error level 2)
-   - Max 100 characters (`header-max-length: 100`)
+   - Max 128 characters (`header-max-length: 128`)
    - Subject must not be empty (`subject-empty: never`)
 2. **Body**: Forbidden (`body-empty: always`, error level 2)
 3. **Footer**: Forbidden (`footer-empty: always`, error level 2)
@@ -33,19 +33,19 @@ This skill teaches how to write commit messages for this monorepo. All commits *
 
 <!-- types-start -->
 
-| Type       | Description                                                   |
-| ---------- | ------------------------------------------------------------- |
-| `build`    | Changes that affect the build system or external dependencies |
-| `chore`    | Other changes that don't modify src or test files             |
-| `ci`       | Changes to CI configuration files and scripts                 |
-| `docs`     | Documentation only changes                                    |
-| `feat`     | A new feature                                                 |
-| `fix`      | A bug fix                                                     |
-| `perf`     | A code change that improves performance                       |
-| `refactor` | A code change that neither fixes a bug nor adds a feature     |
-| `revert`   | Reverts a previous commit                                     |
-| `style`    | Changes that do not affect the meaning of the code            |
-| `test`     | Adding missing tests or correcting existing tests             |
+| Type       | Description                                                                         |
+| ---------- | ----------------------------------------------------------------------------------- |
+| `build`    | Build system, Vite/Docker/Helm config, or external dependency integration           |
+| `chore`    | Housekeeping that doesn't modify src or test files (gitignore, editor config, etc.) |
+| `ci`       | GitHub Actions workflows, composite actions, and CI/CD scripts                      |
+| `docs`     | Documentation, AGENTS.md, SKILL.md, README, and planning files                      |
+| `feat`     | A new feature or capability                                                         |
+| `fix`      | A bug fix                                                                           |
+| `perf`     | A code change that improves performance (caching, query optimization, etc.)         |
+| `refactor` | Code restructuring that neither fixes a bug nor adds a feature                      |
+| `revert`   | Reverts a previous commit                                                           |
+| `style`    | Formatting, whitespace, or code structure changes with no semantic effect           |
+| `test`     | Adding or correcting unit, integration, or end-to-end tests                         |
 
 <!-- types-end -->
 
@@ -57,24 +57,24 @@ This skill teaches how to write commit messages for this monorepo. All commits *
 
 <!-- scopes-start -->
 
-| Scope               | Description                  |
-| ------------------- | ---------------------------- |
-| `monorepo`          | Workspace root               |
-| `applications`      | All applications             |
-| `packages`          | All packages                 |
-| `tools`             | Build or development tooling |
-| `caelundas`         | Caelundas application        |
-| `lexico`            | Lexico application           |
-| `lexico-components` | Lexico components package    |
-| `JimmyPaolini`      | JimmyPaolini application     |
-| `documentation`     | Documentation                |
-| `dependencies`      | Dependency updates           |
-| `infrastructure`    | Infrastructure changes       |
-| `deployments`       | CI/CD workflows              |
-| `testing`           | Testing-related changes      |
-| `linting`           | Linting-related changes      |
-| `scripts`           | Build or dev scripts         |
-| `configuration`     | Config files                 |
+| Scope               | Description                                                                   |
+| ------------------- | ----------------------------------------------------------------------------- |
+| `applications`      | Changes spanning multiple apps (caelundas, lexico, JimmyPaolini)              |
+| `caelundas`         | Node.js CLI for astronomical calendar generation (NASA JPL ephemeris)         |
+| `configuration`     | Workspace root config files (tsconfig, eslint, vitest, nx.json, etc.)         |
+| `dependencies`      | Dependency version changes (upgrades, additions, removals via pnpm)           |
+| `deployments`       | GitHub Actions workflows and CI/CD pipeline configuration                     |
+| `documentation`     | Markdown docs, skills, planning files, and AGENTS.md files                    |
+| `infrastructure`    | Helm charts, Terraform configs, and Kubernetes resources                      |
+| `JimmyPaolini`      | Static GitHub profile README project (markdown and assets)                    |
+| `lexico-components` | Shared React/shadcn component library in packages/                            |
+| `lexico`            | TanStack Start SSR Latin dictionary web app with Supabase backend             |
+| `linting`           | ESLint configs, rules, plugins, and lint-related tooling                      |
+| `monorepo`          | Workspace root concerns (pnpm-workspace, root package.json, Nx orchestration) |
+| `packages`          | Changes spanning multiple shared packages                                     |
+| `scripts`           | Shell and TypeScript scripts in scripts/ (sync, setup, utilities)             |
+| `testing`           | Vitest configuration, shared test utilities, and coverage setup               |
+| `tools`             | Nx custom generators and developer tooling in tools/                          |
 
 <!-- scopes-end -->
 
@@ -96,8 +96,8 @@ This skill teaches how to write commit messages for this monorepo. All commits *
 - Use **imperative mood** (`tense/subject-tense: imperative`, error level 2)
   - ✅ "add feature" ✅ "fix bug" ✅ "update docs"
   - ❌ "added feature" ❌ "fixes bug" ❌ "updating docs"
-- Be **under 45 characters** (best practice for readability with emoji)
-  - Hard limit is 100 chars total for entire header (`header-max-length: 100`)
+- Be **under 72 characters** (best practice for readability with emoji)
+  - Hard limit is 128 chars total for entire header (`header-max-length: 128`)
   - See **Character Budget** section below for calculating available space
 - **Not end with a period** (`subject-full-stop: never`, error level 2)
 - **Not be empty** (`subject-empty: never`, error level 2)
@@ -106,12 +106,12 @@ This skill teaches how to write commit messages for this monorepo. All commits *
 
 ### Character Budget & Multi-Change Commits
 
-The prefix `type(scope): <gitmoji>` eats into the 100-char header limit. Long scopes like `infrastructure` (~27 chars) or `lexico-components` (~35 chars) leave as few as **65–73 characters** for the subject. Always count the full header.
+The prefix `type(scope): <gitmoji>` eats into the 128-char header limit. Long scopes like `infrastructure` (~27 chars) or `lexico-components` (~35 chars) leave as few as **93–101 characters** for the subject. Always count the full header.
 
 When a commit touches multiple concerns, **summarize or split** — never list changes with commas/"and":
 
 ```text
-# ❌ FAILS (143 chars) — lists multiple changes
+# ❌ BAD — lists multiple changes with commas/"and"
 feat(infrastructure): 🏗️ migrate lint-staged configuration to new file, add sync scripts for VS Code extensions and conventional commit scopes
 
 # ✅ Summarize at a higher level
@@ -246,7 +246,7 @@ All rules defined in [../commitlint.config.ts](../../../commitlint.config.ts):
 - `subject-case`: Subject must be lowercase
 - `subject-full-stop`: No period at end
 - `subject-empty`: Subject cannot be empty
-- `header-max-length`: Max 100 characters
+- `header-max-length`: Max 128 characters
 - `body-empty`: Body is forbidden
 - `footer-empty`: Footer is forbidden
 
@@ -273,8 +273,8 @@ Configuration files:
 - Tense: imperative mood (add/fix/update, not added/fixed/updated)
 - Type: lowercase, from allowed list
 - Scope: lowercase, from allowed list
-- Subject: lowercase, imperative, no period, <45 chars
-- Header: <100 chars total (count prefix + subject!)
+- Subject: lowercase, imperative, no period, <72 chars
+- Header: <128 chars total (count prefix + subject!)
 - Body: forbidden
 - Footer: forbidden
 - NEVER list multiple changes with commas/"and" — summarize or split commits

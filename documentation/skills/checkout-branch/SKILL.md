@@ -27,49 +27,50 @@ This skill teaches how to name Git branches for this monorepo. All branch names 
 
 **Required.** Must be one of the allowed types defined in [conventional.config.cjs](../../../conventional.config.cjs):
 
-| Type       | Purpose                  |
-| ---------- | ------------------------ |
-| `build`    | Build system changes     |
-| `chore`    | Maintenance tasks        |
-| `ci`       | CI/CD configuration      |
-| `docs`     | Documentation only       |
-| `feat`     | New features             |
-| `fix`      | Bug fixes                |
-| `perf`     | Performance improvements |
-| `refactor` | Code refactoring         |
-| `revert`   | Reverting changes        |
-| `style`    | Code style/formatting    |
-| `test`     | Adding/updating tests    |
+<!-- types-start -->
+
+| Type       | Description                                                                         |
+| ---------- | ----------------------------------------------------------------------------------- |
+| `build`    | Build system, Vite/Docker/Helm config, or external dependency integration           |
+| `chore`    | Housekeeping that doesn't modify src or test files (gitignore, editor config, etc.) |
+| `ci`       | GitHub Actions workflows, composite actions, and CI/CD scripts                      |
+| `docs`     | Documentation, AGENTS.md, SKILL.md, README, and planning files                      |
+| `feat`     | A new feature or capability                                                         |
+| `fix`      | A bug fix                                                                           |
+| `perf`     | A code change that improves performance (caching, query optimization, etc.)         |
+| `refactor` | Code restructuring that neither fixes a bug nor adds a feature                      |
+| `revert`   | Reverts a previous commit                                                           |
+| `style`    | Formatting, whitespace, or code structure changes with no semantic effect           |
+| `test`     | Adding or correcting unit, integration, or end-to-end tests                         |
+
+<!-- types-end -->
 
 ## Scope
 
-**Required.** Must be one of the allowed scopes:
+**Required.** Must be one of the allowed scopes defined in [conventional.config.cjs](../../../conventional.config.cjs):
 
-### Project Scopes
+<!-- scopes-start -->
 
-Individual projects/applications:
+| Scope               | Description                                                                   |
+| ------------------- | ----------------------------------------------------------------------------- |
+| `applications`      | Changes spanning multiple apps (caelundas, lexico, JimmyPaolini)              |
+| `caelundas`         | Node.js CLI for astronomical calendar generation (NASA JPL ephemeris)         |
+| `configuration`     | Workspace root config files (tsconfig, eslint, vitest, nx.json, etc.)         |
+| `dependencies`      | Dependency version changes (upgrades, additions, removals via pnpm)           |
+| `deployments`       | GitHub Actions workflows and CI/CD pipeline configuration                     |
+| `documentation`     | Markdown docs, skills, planning files, and AGENTS.md files                    |
+| `infrastructure`    | Helm charts, Terraform configs, and Kubernetes resources                      |
+| `JimmyPaolini`      | Static GitHub profile README project (markdown and assets)                    |
+| `lexico-components` | Shared React/shadcn component library in packages/                            |
+| `lexico`            | TanStack Start SSR Latin dictionary web app with Supabase backend             |
+| `linting`           | ESLint configs, rules, plugins, and lint-related tooling                      |
+| `monorepo`          | Workspace root concerns (pnpm-workspace, root package.json, Nx orchestration) |
+| `packages`          | Changes spanning multiple shared packages                                     |
+| `scripts`           | Shell and TypeScript scripts in scripts/ (sync, setup, utilities)             |
+| `testing`           | Vitest configuration, shared test utilities, and coverage setup               |
+| `tools`             | Nx custom generators and developer tooling in tools/                          |
 
-- `caelundas` — Astronomical calendar CLI
-- `lexico` — Latin dictionary web app
-- `lexico-components` — Shared UI component library
-- `JimmyPaolini` — Portfolio website
-
-### Category Scopes
-
-Groups of projects or cross-cutting concerns:
-
-- `monorepo` — Workspace-level configuration
-- `applications` — Multiple apps affected
-- `packages` — Multiple packages affected
-- `tools` — Tooling changes
-- `documentation` — Documentation updates
-- `dependencies` — Dependency updates
-- `infrastructure` — Helm, Terraform, Docker
-- `deployments` — CI/CD and deployment
-- `testing` — Test infrastructure
-- `linting` — Lint configuration
-- `scripts` — Build/utility scripts
-- `configuration` — Config files
+<!-- scopes-end -->
 
 ## Description
 

@@ -25,8 +25,8 @@ For complete details on branch naming rules, types, scopes, and validation, refe
 ### Quick Reference
 
 - **Format**: `<type>/<scope>-<description>` (all three parts required)
-- **Type**: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`
-- **Scope**: Project names (`caelundas`, `lexico`, `lexico-components`, `JimmyPaolini`) or categories (`monorepo`, `applications`, `packages`, `tools`, `documentation`, `dependencies`, `infrastructure`, `deployments`, `testing`, `linting`, `scripts`, `configuration`)
+- **Type**: Must be from allowed list (see [SKILL.md](../../documentation/skills/checkout-branch/SKILL.md))
+- **Scope**: Must be from allowed list (see [SKILL.md](../../documentation/skills/checkout-branch/SKILL.md))
 - **Description**: Lowercase kebab-case, concise but descriptive
 
 ### Examples

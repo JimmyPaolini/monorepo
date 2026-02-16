@@ -29,6 +29,8 @@ export default defineConfig({
       reporter: ["text", "json-summary", "lcov", "html"],
       exclude: ["node_modules/", "dist/", "**/*.test.ts"],
       reportOnFailure: true,
+      // Coverage thresholds — tests fail if coverage drops below these percentages.
+      // See documentation/vitest.md for rationale and per-project override guidance.
       thresholds: {
         lines: 80,
         functions: 80,

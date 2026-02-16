@@ -1,6 +1,6 @@
 ---
 name: docker-workflows
-description: Build and deploy Docker images in the monorepo - multi-stage builds, platform targeting, GHCR integration, and container optimization. Use this skill when working with Docker.
+description: Build and deploy Docker images in the monorepo - platform targeting, GHCR integration, and container optimization. Use this skill when working with Docker.
 license: MIT
 ---
 
@@ -23,55 +23,45 @@ The monorepo uses Docker for:
 
 ```text
 applications/caelundas/
-  Dockerfile              # Multi-stage build
+  Dockerfile              # Single-stage build (runs TypeScript directly)
   .dockerignore          # Exclude node_modules, etc.
-  docker-compose.yml     # Local development
 ```
 
-### Multi-Stage Build
+### Single-Stage Build
 
-Caelundas uses multi-stage builds for optimal image size:
+Caelundas uses a single-stage build that runs TypeScript directly via pnpm (no compilation step):
 
 ```dockerfile
-# Stage 1: Build
-FROM node:20-alpine AS builder
+# Base Image - Alpine for minimal size
+FROM node:22.20.0-alpine
+
+# Install build tools needed for native modules like sqlite3
+RUN apk add --no-cache python3 make g++
+
+# Setup Environment
 WORKDIR /app
+RUN npm install -g pnpm
 
-# Copy package files
-COPY package*.json ./
-COPY pnpm-lock.yaml ./
+# Install Dependencies (layer caching - copy package files first)
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY applications/caelundas/package.json ./applications/caelundas/
+RUN pnpm install --filter caelundas
 
-# Install dependencies
-RUN npm install -g pnpm && pnpm install --frozen-lockfile
-
-# Copy source
+# Copy Source Code (entire monorepo for workspace resolution)
 COPY . .
 
-# Build application
-RUN pnpm build
-
-# Stage 2: Runtime
-FROM node:20-alpine AS runner
-WORKDIR /app
-
-# Copy only production dependencies and built app
-COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./
-
-# Set production environment
-ENV NODE_ENV=production
-
-# Run application
-CMD ["node", "dist/main.js"]
+# Run the application
+WORKDIR /app/applications/caelundas
+CMD ["pnpm", "start"]
 ```
 
-### Benefits of Multi-Stage Builds
+### Design Decisions
 
-- **Smaller image size**: Final image only includes runtime dependencies
-- **Faster deployments**: Less data to transfer
-- **Security**: Build tools not included in production image
-- **Clear separation**: Build vs runtime concerns
+- **Single-stage**: No build step needed — TypeScript is executed directly via `tsx`/`ts-node`
+- **Native build tools**: `python3 make g++` required for `sqlite3` native module compilation
+- **Full monorepo copy**: Workspace resolution requires root-level package files
+- **Filter install**: `pnpm install --filter caelundas` installs only the app's dependencies
+- **Layer caching**: Package files copied before source for efficient rebuilds
 
 ## Platform Targeting
 
@@ -209,11 +199,10 @@ docker-compose logs -f app
 
 ### Reduce Image Size
 
-1. **Use Alpine base images**: `node:20-alpine` vs `node:20` (~100MB vs ~900MB)
-2. **Multi-stage builds**: Only include runtime dependencies
-3. **Layer caching**: Copy package files before source
-4. **Remove dev dependencies**: `pnpm install --prod`
-5. **Clean build artifacts**: `RUN rm -rf /tmp/* ~/.npm`
+1. **Use Alpine base images**: `node:22.20.0-alpine` vs `node:22` (~100MB vs ~900MB)
+2. **Layer caching**: Copy package files before source
+3. **Filter dependencies**: `pnpm install --filter <project>` for smaller installs
+4. **Clean build artifacts**: `RUN rm -rf /tmp/* ~/.npm`
 
 ### Layer Caching Strategy
 
@@ -290,7 +279,7 @@ FROM node:latest
 ✅ **Do:**
 
 ```dockerfile
-FROM node:20.11-alpine3.19
+FROM node:22.20.0-alpine
 ```
 
 ### 4. Scan for Vulnerabilities
@@ -466,10 +455,10 @@ COPY src ./src
 
 ## Best Practices Summary
 
-1. **Use multi-stage builds** for smaller images
+1. **Use Alpine base images** for size reduction
 2. **Target linux/amd64** when deploying to K8s
 3. **Push to GHCR** with semantic tags
-4. **Use Alpine base images** for size reduction
+4. **Install native build tools** when needed (sqlite3, etc.)
 5. **Don't include secrets** in images
 6. **Run as non-root user** for security
 7. **Scan for vulnerabilities** regularly

@@ -1,4 +1,21 @@
-/** @type {import('dependency-cruiser').IConfiguration} */
+/**
+ * Dependency Cruiser Configuration
+ *
+ * Validates architectural boundaries and prevents problematic dependency patterns
+ * across the monorepo. Rules enforce circular dependency prevention, orphan detection,
+ * test isolation, production/dev dependency separation, and module system consistency.
+ *
+ * Each rule's `comment` field documents its purpose.
+ *
+ * Usage:
+ *   nx run <project>:dependency-analysis
+ *
+ * CI: Runs automatically via .github/workflows/dependency-analysis.yml
+ *     (on PRs affecting source files + weekly scheduled run)
+ *
+ * @type {import('dependency-cruiser').IConfiguration}
+ * @see https://github.com/sverweij/dependency-cruiser
+ */
 module.exports = {
   forbidden: [
     {

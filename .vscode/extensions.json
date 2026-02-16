@@ -16,6 +16,7 @@
     "dbaeumer.vscode-eslint", // ESLint
     "docker.docker", // Docker DX
     "donjayamanne.githistory", // Git History
+    "eamodio.gitlens", // GitLens - Git supercharged
     "earshinov.permute-lines", // Permute Lines
     "ecmel.vscode-html-css", // HTML CSS Support
     "esbenp.prettier-vscode", // Prettier - Code formatter
@@ -74,7 +75,6 @@
     "atlassian.atlascode", // Atlassian: Jira, Rovo Dev, Bitbucket
     "datadog.datadog-vscode", // Datadog
     "denoland.vscode-deno", // Deno
-    "eamodio.gitlens", // GitLens - Git supercharged
     "firefox-devtools.vscode-firefox-debug", // Debugger for Firefox
     "inferrinizzard.prettier-sql-vscode", // Prettier SQL VSCode
     "innoverio.vscode-dbt-power-user", // Power User for dbt
