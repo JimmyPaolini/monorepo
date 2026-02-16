@@ -95,7 +95,7 @@ export default [
     ],
     ignores: [
       "lint-staged.config.ts",
-      ".prettierrc.ts",
+      "prettier.config.ts",
       "eslint.config.base.ts",
     ],
     plugins: {
@@ -288,16 +288,16 @@ export default [
   ...tseslint.configs.strictTypeChecked.map((config) => ({
     ...config,
     files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
-    ignores: ["lint-staged.config.ts", ".prettierrc.ts"],
+    ignores: ["lint-staged.config.ts", "prettier.config.ts"],
   })),
   ...tseslint.configs.stylisticTypeChecked.map((config) => ({
     ...config,
     files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
-    ignores: ["lint-staged.config.ts", ".prettierrc.ts"],
+    ignores: ["lint-staged.config.ts", "prettier.config.ts"],
   })),
   {
     files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
-    ignores: ["lint-staged.config.ts", ".prettierrc.ts"],
+    ignores: ["lint-staged.config.ts", "prettier.config.ts"],
     languageOptions: {
       parserOptions: {
         projectService: true,
@@ -322,7 +322,7 @@ export default [
       "**/*.spec.ts",
       "**/*.spec.tsx",
       "lint-staged.config.ts",
-      ".prettierrc.ts",
+      "prettier.config.ts",
     ],
     plugins: {
       tsdoc: tsdocPlugin,

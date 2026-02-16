@@ -119,7 +119,7 @@
       "executor": "nx:run-commands",
       "inputs": [
         "default",
-        "{workspaceRoot}/.prettierrc.ts",
+        "{workspaceRoot}/prettier.config.ts",
         "{workspaceRoot}/.prettierignore"
       ],
       "options": {

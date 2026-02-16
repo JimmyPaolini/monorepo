@@ -429,7 +429,7 @@ const children = tree.children("src/components");
 Always call `formatFiles(tree)` at end:
 - Applies Prettier formatting
 - Ensures consistent code style
-- Respects .prettierrc configuration
+- Respects prettier.config.ts configuration
 
 ### Advanced Patterns
 

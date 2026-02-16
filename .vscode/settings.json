@@ -431,6 +431,7 @@
     ".code-workspace*": "vscode",
     ".ncurc.cjs": "npm",
     ".size-limit.cjs": "disc",
+    ".yamllint": "yaml",
     "*.args.js": "excalidraw",
     "*.args.ts": "excalidraw",
     "*.command.ts": "exe",
@@ -466,6 +467,8 @@
     "*.utils.ts": "gemini",
     "*enum.ts": "lib",
     "auth.guard.js": "authors",
+    "database-client-config.json": "database",
+    "eslint.config.base.ts": "eslint",
     "extensions.json": "cake",
     "jest.config.e2e.ts": "jest",
     "keybindings.json": "pawn",
@@ -474,7 +477,8 @@
     "project.json": "nx",
     "sessions.json": "exe",
     "settings.json": "settings",
-    "tsconfig*.json": "tsconfig"
+    "tsconfig*.json": "tsconfig",
+    "vitest.config.base.ts": "vitest"
   },
   "material-icon-theme.folders.associations": {
     ".nx": "tools",
