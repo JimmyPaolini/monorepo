@@ -206,7 +206,7 @@ Releases use [semantic-release](https://semantic-release.gitbook.io/) - fully au
 
 **Prevent release**: Use `docs`/`test`/`ci`/`chore` types or `no-release` scope
 
-See [semantic-release.md](documentation/semantic-release.md) for complete guide.
+See [release.config.cjs](release.config.cjs) for complete configuration and guide.
 
 ## Code Ownership
 
@@ -268,7 +268,7 @@ pnpx npm-check-updates -u  # Update to latest versions (breaking changes possibl
 ## Additional Resources
 
 - [Commit Messages Guide](.github/skills/commit-code/SKILL.md)
-- [Semantic Release Guide](documentation/semantic-release.md)
+- [Semantic Release Config](release.config.cjs)
 - [GitHub Actions Guide](documentation/github-actions.md) - CI/CD workflows and composite actions
 - [Gitmoji Reference](documentation/gitmoji.md)
 - [Nx Documentation](https://nx.dev)

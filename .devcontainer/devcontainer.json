@@ -288,7 +288,8 @@
   "postCreateCommand": {
     "nx-setup": "pnpm exec nx reset && pnpm exec nx graph --file=.nx/graph.json 2>/dev/null || true",
     "pnpm-install": "pnpm install --frozen-lockfile --prefer-offline",
-    "post-create-command": ".devcontainer/scripts/post-create-command.sh"
+    "post-create-command": ".devcontainer/scripts/post-create-command.sh",
+    "sync-settings": "pnpm exec tsx scripts/sync-vscode-settings.ts write"
   },
   "remoteEnv": {
     "KUBECONFIG": "${containerWorkspaceFolder}/.kube/config",

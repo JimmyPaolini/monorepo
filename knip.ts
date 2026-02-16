@@ -23,7 +23,7 @@ const config: KnipConfig = {
     "@nx/eslint-plugin", // Loaded dynamically by Nx ESLint integration
     "@nx/js", // Nx JavaScript/TypeScript plugin (auto-detected by Nx)
     "@nx/web", // Nx web plugin (auto-detected by Nx)
-    "@semantic-release/commit-analyzer", // semantic-release plugin, referenced in .releaserc.json
+    "@semantic-release/commit-analyzer", // semantic-release plugin, referenced in release.config.cjs
     "@semantic-release/release-notes-generator", // semantic-release plugin
     "@semantic-release/github", // semantic-release plugin
     "@semantic-release/npm", // semantic-release plugin
@@ -41,7 +41,7 @@ const config: KnipConfig = {
       entry: [
         "scripts/**/*.{js,ts,sh}",
         "vitest.config.base.ts",
-        ".releaserc.json",
+        "release.config.cjs",
         ".ncurc.cjs",
         "validate-branch-name.config.cjs",
       ],

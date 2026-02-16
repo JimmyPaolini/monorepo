@@ -511,6 +511,7 @@
   "outline.showVariables": false,
   "postman.mcp.notifications.postmanMCP": false,
   "postman.settings.dotenv-detection-notification-visibility": false,
+  "python.defaultInterpreterPath": "/usr/local/python/current/bin/python",
   "remote.portsAttributes": {
     "3000": {
       "label": "Lexico Dev Server",
@@ -579,6 +580,10 @@
   },
   "task.reconnection": true,
   "terminal.integrated.cursorStyle": "line",
+  "terraform.languageServer.args": [
+    "serve"
+  ],
+  "terraform.languageServer.enable": true,
   "typescript.autoClosingTags": true,
   "typescript.inlayHints.enumMemberValues.enabled": true,
   "typescript.inlayHints.functionLikeReturnTypes.enabled": false,

@@ -66,7 +66,7 @@ nx run-many --target=code-analysis --all
 
 - **[Contributing Guide](CONTRIBUTING.md)** - Development workflow, code standards, and release process
 - **[Commit Messages](.github/skills/commit-code/SKILL.md)** - Conventional Commits format and examples
-- **[Release Process](documentation/semantic-release.md)** - Automated versioning and changelog generation
+- **[Release Process](release.config.cjs)** - Automated versioning and changelog generation
 - **[GitHub Actions](documentation/github-actions.md)** - CI/CD workflows, composite actions, and pipeline architecture
 
 ## 🛠️ Development
@@ -159,7 +159,7 @@ Releases are fully automated using [semantic-release](https://semantic-release.g
 - `fix:` commits → patch version (1.0.0 → 1.0.1)
 - `BREAKING CHANGE:` → major version (1.0.0 → 2.0.0)
 
-See [documentation/semantic-release.md](documentation/semantic-release.md) for complete guide.
+See [release.config.cjs](release.config.cjs) for complete configuration and guide.
 
 ## 🤝 Contributing
 
