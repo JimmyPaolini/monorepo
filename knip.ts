@@ -39,18 +39,19 @@ const config: KnipConfig = {
     // Root workspace: scripts, base configs, and Nx configuration files
     ".": {
       entry: [
-        "scripts/**/*.{js,ts,sh}",
         ".devcontainer/scripts/**/*.{js,ts,sh}",
-        "vitest.config.base.ts",
-        "release.config.cjs",
         ".ncurc.cjs",
+        "release.config.cjs",
+        "scripts/**/*.{js,ts,sh}",
         "validate-branch-name.config.cjs",
+        "vitest.config.base.ts",
       ],
       ignore: [
-        "**/*.test.ts",
+        "*.config.ts",
         "**/*.spec.ts",
-        "**/dist/**",
+        "**/*.test.ts",
         "**/coverage/**",
+        "**/dist/**",
         "applications/JimmyPaolini/**",
       ],
       project: "**/*.{js,ts,mjs,cjs}",
