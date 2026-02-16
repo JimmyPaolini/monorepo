@@ -286,7 +286,7 @@
     "post-attach-command": ".devcontainer/scripts/post-attach-command.sh"
   },
   "postCreateCommand": {
-    "nx-graph": "npx nx graph --file=.nx/graph.json 2>/dev/null || true",
+    "nx-setup": "pnpm exec nx reset && pnpm exec nx graph --file=.nx/graph.json 2>/dev/null || true",
     "pnpm-install": "pnpm install --frozen-lockfile --prefer-offline",
     "post-create-command": ".devcontainer/scripts/post-create-command.sh"
   },
