@@ -176,6 +176,7 @@
   "dataWrangler.panels.displayOnTabFocus": false,
   "docker.extension.enableComposeLanguageServer": false,
   "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.aiStats.enabled": true,
   "editor.autoClosingBrackets": "always",
   "editor.codeActionsOnSave": {
     "source.addTypeAnnotation": "never",
@@ -611,16 +612,25 @@
   "vscode-kubernetes.log-viewer.timestamp": true,
   "vscode-kubernetes.log-viewer.wrap": true,
   "window.customTitleBarVisibility": "windowed",
+  "window.density.editorTabHeight": "compact",
   "window.title": "${rootName}",
   "workbench.activityBar.location": "top",
   "workbench.browser.openLocalhostLinks": true,
   "workbench.colorCustomizations": {
     "editorRuler.foreground": "#282828"
   },
+  "workbench.editor.alwaysShowEditorActions": true,
+  "workbench.editor.editorActionsLocation": "titleBar",
   "workbench.editor.focusRecentEditorAfterClose": false,
+  "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.limit.enabled": true,
   "workbench.editor.limit.value": 16,
-  "workbench.editor.tabSizing": "shrink",
+  "workbench.editor.pinnedTabSizing": "compact",
+  "workbench.editor.pinnedTabsOnSeparateRow": true,
+  "workbench.editor.preferHistoryBasedLanguageDetection": false,
+  "workbench.editor.showTabIndex": false,
+  "workbench.editor.tabSizing": "fit",
+  "workbench.editor.wrapTabs": true,
   "workbench.editorAssociations": {
     "*.csv": "jupyter-data-wrangler",
     "*.html": "default"
@@ -630,5 +640,5 @@
   "workbench.panel.showLabels": false,
   "workbench.settings.alwaysShowAdvancedSettings": true,
   "workbench.sideBar.location": "right",
-  "workbench.startupEditor": "none"
+  "workbench.startupEditor": "agentSessionsWelcomePage"
 }
