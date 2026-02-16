@@ -9,6 +9,17 @@
  */
 import { relative } from "node:path";
 
+const syncConventionalConfigFiles = [
+  "conventional.config.cjs",
+  ".vscode/settings.json",
+  "documentation/skills/commit-code/SKILL.md",
+  "documentation/skills/checkout-branch/SKILL.md",
+  "documentation/skills/create-pull-request/SKILL.md",
+  ".github/prompts/submit-changes.prompt.md",
+  ".github/ISSUE_TEMPLATE/bug-report.yml",
+  ".github/ISSUE_TEMPLATE/feature-request.yml",
+];
+
 const config = {
   // ── Lockfile integrity ──
   // When package.json or workspace config changes, verify the lockfile is in sync
@@ -20,9 +31,10 @@ const config = {
   "{.vscode/extensions.json,.devcontainer/devcontainer.json}": () => [
     "nx run monorepo:sync-vscode-extensions:check",
   ],
-  // Keep conventional commit types/scopes consistent across config, settings, and docs
-  "{conventional.config.cjs,.vscode/settings.json,documentation/skills/commit-code/SKILL.md}":
-    () => ["nx run monorepo:sync-conventional-config:check"],
+  // Keep conventional commit types/scopes consistent across config, settings, docs, and issue templates
+  [`{${syncConventionalConfigFiles.join(",")}}`]: () => [
+    "nx run monorepo:sync-conventional-config:check",
+  ],
 
   // ── TypeScript / JavaScript source files ──
   // Runs format, lint, typecheck, and spell-check on affected projects,

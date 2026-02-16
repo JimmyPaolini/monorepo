@@ -7,6 +7,8 @@
  * - documentation/skills/checkout-branch/SKILL.md (types and scopes tables)
  * - documentation/skills/create-pull-request/SKILL.md (types and scopes tables)
  * - .github/prompts/submit-changes.prompt.md (types and scopes tables)
+ * - .github/ISSUE_TEMPLATE/bug-report.yml (scopes dropdown)
+ * - .github/ISSUE_TEMPLATE/feature-request.yml (scopes dropdown)
  *
  * Usage: tsx scripts/sync-conventional-config.ts [check|write]
  *   check (default): Validate that targets are in sync, exit 1 if not
@@ -31,6 +33,10 @@ const SKILL_FILES = [
   join(WORKSPACE_ROOT, "documentation/skills/checkout-branch/SKILL.md"),
   join(WORKSPACE_ROOT, "documentation/skills/create-pull-request/SKILL.md"),
   join(WORKSPACE_ROOT, ".github/prompts/submit-changes.prompt.md"),
+];
+const ISSUE_TEMPLATE_FILES = [
+  join(WORKSPACE_ROOT, ".github/ISSUE_TEMPLATE/bug-report.yml"),
+  join(WORKSPACE_ROOT, ".github/ISSUE_TEMPLATE/feature-request.yml"),
 ];
 const MODE = process.argv[2] || "check";
 
@@ -160,6 +166,36 @@ function generateMarkdownTable(
   return lines.join("\n");
 }
 
+// ─── Issue Template Sync ────────────────────────────────────────────────────
+
+/**
+ * Generate a YAML dropdown options block from scope values.
+ * Returns indented lines like `        - caelundas`.
+ */
+function generateYamlScopeOptions(scopes: string[]): string {
+  return scopes.map((scope) => `        - ${scope}`).join("\n");
+}
+
+/**
+ * Extract scope options from an issue template YAML file.
+ * Looks for content between `# <!-- scopes-start -->` and `# <!-- scopes-end -->` markers.
+ */
+function parseIssueTemplateScopes(content: string): string[] {
+  const pattern =
+    /# <!-- scopes-start -->\n[\s\S]*?options:\n([\s\S]*?)\n\s*validations:[\s\S]*?# <!-- scopes-end -->/;
+  const match = pattern.exec(content);
+  if (!match?.[1]) return [];
+
+  const scopes: string[] = [];
+  for (const line of match[1].split("\n")) {
+    const scopeMatch = /^\s{8}-\s+(.+)$/.exec(line);
+    if (scopeMatch?.[1]) {
+      scopes.push(scopeMatch[1]);
+    }
+  }
+  return scopes;
+}
+
 /**
  * Extract content between marker comments in a file.
  * Markers are HTML comments like `<!-- types-start -->` and `<!-- types-end -->`.
@@ -287,6 +323,40 @@ function checkSkillSync(
   return inSync;
 }
 
+function checkIssueTemplateSync(
+  sourceScopes: string[],
+  templateFile: string,
+): boolean {
+  const templateName = relative(WORKSPACE_ROOT, templateFile);
+  const templateContent = readFileSync(templateFile, "utf-8");
+  const templateScopes = parseIssueTemplateScopes(templateContent);
+
+  if (templateScopes.length === 0) {
+    console.log(
+      `❌ ${templateName} missing <!-- scopes-start/end --> markers\n`,
+    );
+    return false;
+  }
+
+  const sortedSource = [...sourceScopes].sort();
+  const sortedTemplate = [...templateScopes].sort();
+
+  if (!_.isEqual(sortedSource, sortedTemplate)) {
+    console.log(`❌ ${templateName} scopes dropdown is out of sync\n`);
+    console.log("📋 Differences:");
+    showDifference(sourceScopes, templateScopes, templateName);
+    console.log("");
+    return false;
+  } else if (!_.isEqual(sourceScopes, templateScopes)) {
+    console.log(
+      `🔀 ${templateName} scopes have matching values but different ordering\n`,
+    );
+    return false;
+  }
+
+  return true;
+}
+
 function writeSettingsSync(): void {
   console.log("🔄 Syncing settings.json scopes...");
   const settingsContent = readFileSync(SETTINGS_FILE, "utf-8");
@@ -335,6 +405,31 @@ function writeSkillSync(skillFile: string): void {
   console.log(`✅ ${skillName} types and scopes synced`);
 }
 
+function writeIssueTemplateSync(
+  sourceScopes: string[],
+  templateFile: string,
+): void {
+  const templateName = relative(WORKSPACE_ROOT, templateFile);
+  console.log(`🔄 Syncing ${templateName} scopes dropdown...`);
+  const templateContent = readFileSync(templateFile, "utf-8");
+  const scopeOptions = generateYamlScopeOptions(sourceScopes);
+
+  const pattern =
+    /(# <!-- scopes-start -->\n[\s\S]*?options:\n)[\s\S]*?(\s*validations:[\s\S]*?# <!-- scopes-end -->)/;
+  const match = pattern.exec(templateContent);
+  if (!match) {
+    throw new Error(`Could not find scopes markers in ${templateName}`);
+  }
+
+  const updatedContent = templateContent.replace(
+    pattern,
+    `$1${scopeOptions}\n$2`,
+  );
+
+  writeFileSync(templateFile, updatedContent, "utf-8");
+  console.log(`✅ ${templateName} scopes synced`);
+}
+
 function main(): void {
   const config = loadConventionalConfig();
   const settingsContent = readFileSync(SETTINGS_FILE, "utf-8");
@@ -348,8 +443,14 @@ function main(): void {
         skillsOk = false;
       }
     }
+    let templatesOk = true;
+    for (const templateFile of ISSUE_TEMPLATE_FILES) {
+      if (!checkIssueTemplateSync(config.scopes, templateFile)) {
+        templatesOk = false;
+      }
+    }
 
-    if (!settingsOk || !skillsOk) {
+    if (!settingsOk || !skillsOk || !templatesOk) {
       console.log(
         "💡 Run 'nx run monorepo:sync-conventional-config:write' to sync",
       );
@@ -361,13 +462,23 @@ function main(): void {
     const outOfSyncSkills = SKILL_FILES.filter(
       (skillFile) => !checkSkillSync(config, skillFile),
     );
+    const outOfSyncTemplates = ISSUE_TEMPLATE_FILES.filter(
+      (templateFile) => !checkIssueTemplateSync(config.scopes, templateFile),
+    );
 
-    if (settingsOk && outOfSyncSkills.length === 0) {
+    if (
+      settingsOk &&
+      outOfSyncSkills.length === 0 &&
+      outOfSyncTemplates.length === 0
+    ) {
       console.log("✅ Already in sync");
     } else {
       if (!settingsOk) writeSettingsSync();
       for (const skillFile of outOfSyncSkills) {
         writeSkillSync(skillFile);
+      }
+      for (const templateFile of outOfSyncTemplates) {
+        writeIssueTemplateSync(config.scopes, templateFile);
       }
     }
   } else {
