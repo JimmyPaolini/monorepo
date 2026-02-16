@@ -138,7 +138,7 @@
       },
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
-      "inputs": ["default", "{workspaceRoot}/knip.ts"],
+      "inputs": ["default", "{workspaceRoot}/knip.config.ts"],
       "options": {
         "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace {projectRoot}",
         "cwd": "{workspaceRoot}"
