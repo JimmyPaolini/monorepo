@@ -4,6 +4,9 @@
  * Sync conventional commit config from conventional.config.cjs into:
  * - .vscode/settings.json (scopes array)
  * - documentation/skills/commit-code/SKILL.md (types and scopes tables)
+ * - documentation/skills/checkout-branch/SKILL.md (types and scopes tables)
+ * - documentation/skills/create-pull-request/SKILL.md (types and scopes tables)
+ * - .github/prompts/submit-changes.prompt.md (types and scopes tables)
  *
  * Usage: tsx scripts/sync-conventional-config.ts [check|write]
  *   check (default): Validate that targets are in sync, exit 1 if not
@@ -12,7 +15,7 @@
 
 import { readFileSync, writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
-import { dirname, join } from "node:path";
+import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
 import JSON5 from "json5";
@@ -23,10 +26,12 @@ const __dirname = dirname(__filename);
 const WORKSPACE_ROOT = join(__dirname, "..");
 const CONVENTIONAL_CONFIG = join(WORKSPACE_ROOT, "conventional.config.cjs");
 const SETTINGS_FILE = join(WORKSPACE_ROOT, ".vscode/settings.json");
-const SKILL_FILE = join(
-  WORKSPACE_ROOT,
-  "documentation/skills/commit-code/SKILL.md",
-);
+const SKILL_FILES = [
+  join(WORKSPACE_ROOT, "documentation/skills/commit-code/SKILL.md"),
+  join(WORKSPACE_ROOT, "documentation/skills/checkout-branch/SKILL.md"),
+  join(WORKSPACE_ROOT, "documentation/skills/create-pull-request/SKILL.md"),
+  join(WORKSPACE_ROOT, ".github/prompts/submit-changes.prompt.md"),
+];
 const MODE = process.argv[2] || "check";
 
 interface EntryWithDescription {
@@ -52,7 +57,7 @@ function loadConventionalConfig(): ConventionalConfig {
 
 /**
  * Parse entries with inline comments from conventional.config.cjs.
- * Each line like `"build", // Description` becomes { value, description }.
+ * Each line like `"build", // Description` becomes an EntryWithDescription object.
  */
 function parseEntriesWithDescriptions(
   arrayName: "types" | "scopes",
@@ -242,14 +247,20 @@ function checkSettingsSync(
   return true;
 }
 
-function checkSkillSync(config: ConventionalConfig): boolean {
-  const skillContent = readFileSync(SKILL_FILE, "utf-8");
+function checkSkillSync(
+  config: ConventionalConfig,
+  skillFile: string,
+): boolean {
+  const skillName = relative(WORKSPACE_ROOT, skillFile);
+  const skillContent = readFileSync(skillFile, "utf-8");
   let inSync = true;
 
   for (const marker of ["types", "scopes"] as const) {
     const markerContent = extractMarkerContent(skillContent, marker);
     if (!markerContent) {
-      console.log(`❌ SKILL.md missing <!-- ${marker}-start/end --> markers\n`);
+      console.log(
+        `❌ ${skillName} missing <!-- ${marker}-start/end --> markers\n`,
+      );
       inSync = false;
       continue;
     }
@@ -260,14 +271,14 @@ function checkSkillSync(config: ConventionalConfig): boolean {
     const sortedSkill = [...skillValues].sort();
 
     if (!_.isEqual(sortedSource, sortedSkill)) {
-      console.log(`❌ SKILL.md ${marker} table is out of sync\n`);
+      console.log(`❌ ${skillName} ${marker} table is out of sync\n`);
       console.log("📋 Differences:");
-      showDifference(sourceValues, skillValues, "SKILL.md");
+      showDifference(sourceValues, skillValues, skillName);
       console.log("");
       inSync = false;
     } else if (!_.isEqual(sourceValues, skillValues)) {
       console.log(
-        `🔀 SKILL.md ${marker} have matching values but different ordering\n`,
+        `🔀 ${skillName} ${marker} have matching values but different ordering\n`,
       );
       inSync = false;
     }
@@ -300,9 +311,10 @@ function writeSettingsSync(): void {
   console.log("✅ settings.json scopes synced");
 }
 
-function writeSkillSync(): void {
-  console.log("🔄 Syncing SKILL.md types and scopes...");
-  let skillContent = readFileSync(SKILL_FILE, "utf-8");
+function writeSkillSync(skillFile: string): void {
+  const skillName = relative(WORKSPACE_ROOT, skillFile);
+  console.log(`🔄 Syncing ${skillName} types and scopes...`);
+  let skillContent = readFileSync(skillFile, "utf-8");
 
   const typesEntries = parseEntriesWithDescriptions("types");
   const scopesEntries = parseEntriesWithDescriptions("scopes");
@@ -319,8 +331,8 @@ function writeSkillSync(): void {
   skillContent = replaceMarkerContent(skillContent, "types", typesTable);
   skillContent = replaceMarkerContent(skillContent, "scopes", scopesTable);
 
-  writeFileSync(SKILL_FILE, skillContent, "utf-8");
-  console.log("✅ SKILL.md types and scopes synced");
+  writeFileSync(skillFile, skillContent, "utf-8");
+  console.log(`✅ ${skillName} types and scopes synced`);
 }
 
 function main(): void {
@@ -330,9 +342,14 @@ function main(): void {
 
   if (MODE === "check") {
     const settingsOk = checkSettingsSync(config.scopes, settingsScopes);
-    const skillOk = checkSkillSync(config);
+    let skillsOk = true;
+    for (const skillFile of SKILL_FILES) {
+      if (!checkSkillSync(config, skillFile)) {
+        skillsOk = false;
+      }
+    }
 
-    if (!settingsOk || !skillOk) {
+    if (!settingsOk || !skillsOk) {
       console.log(
         "💡 Run 'nx run monorepo:sync-conventional-config:write' to sync",
       );
@@ -341,13 +358,17 @@ function main(): void {
     console.log("✅ Conventional commit config is in sync");
   } else if (MODE === "write") {
     const settingsOk = checkSettingsSync(config.scopes, settingsScopes);
-    const skillOk = checkSkillSync(config);
+    const outOfSyncSkills = SKILL_FILES.filter(
+      (skillFile) => !checkSkillSync(config, skillFile),
+    );
 
-    if (settingsOk && skillOk) {
+    if (settingsOk && outOfSyncSkills.length === 0) {
       console.log("✅ Already in sync");
     } else {
       if (!settingsOk) writeSettingsSync();
-      if (!skillOk) writeSkillSync();
+      for (const skillFile of outOfSyncSkills) {
+        writeSkillSync(skillFile);
+      }
     }
   } else {
     console.error(`❌ Invalid mode: ${MODE}`);

@@ -1,41 +1,51 @@
 {
+  // Base TypeScript configuration inherited by all projects in the monorepo.
+  // Projects extend this via their own tsconfig.json → { "extends": "../../tsconfig.base.json" }
   "compileOnSave": false,
   "compilerOptions": {
+    // ── Strict Safety ──
+    // All strict flags are on; these additional flags catch more bugs:
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
-    "allowImportingTsExtensions": true,
-    "baseUrl": ".",
-    "declaration": false,
-    "emitDecoratorMetadata": true,
-    "esModuleInterop": true,
-    "exactOptionalPropertyTypes": true,
-    "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true,
-    "importHelpers": true,
-    "isolatedModules": true,
-    "lib": ["ES2022"],
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "exactOptionalPropertyTypes": true, // { x?: string } means string|undefined, not string|undefined|missing
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noUncheckedIndexedAccess": true,
+    "noPropertyAccessFromIndexSignature": true, // Forces bracket notation for index signatures
+    "noUncheckedIndexedAccess": true, // arr[0] is T|undefined, not T — prevents runtime crashes
     "noUncheckedSideEffectImports": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "paths": {
-      "ui": ["packages/ui/src/index.ts"],
-      "@monorepo/lexico-components": ["packages/lexico-components/src/index.ts"]
-    },
+    "strict": true,
+
+    // ── Module System ──
+    "allowImportingTsExtensions": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true, // Required for tools like esbuild/swc that compile files independently
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "resolveJsonModule": true,
+    "verbatimModuleSyntax": true, // Enforces `import type` for type-only imports
+
+    // ── Build ──
+    "baseUrl": ".",
+    "declaration": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "lib": ["ES2022"],
     "rootDir": ".",
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "sourceMap": true,
-    "strict": true,
     "target": "ES2022",
-    "verbatimModuleSyntax": true
+
+    // ── Monorepo Path Aliases ──
+    // Enables `import { Button } from "@monorepo/lexico-components"` across projects
+    "paths": {
+      "@monorepo/lexico-components": ["packages/lexico-components/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp", "dist", "build", ".nx"]
 }

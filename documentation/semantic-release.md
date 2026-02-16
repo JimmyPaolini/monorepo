@@ -36,7 +36,7 @@ git checkout main && git pull
 pnpm semantic-release
 ```
 
-**Automated** (recommended): Merging to `main` triggers [release.yml](../.github/workflows/release.yml) workflow automatically
+**Automated** (recommended): Merging to `main` triggers [release-projects.yml](../.github/workflows/release-projects.yml) workflow automatically
 
 ## Examples
 

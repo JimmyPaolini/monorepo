@@ -93,7 +93,7 @@ Which tools does this prompt need? Common options include:
 Based on analysis of existing prompts, I will ensure your prompt includes:
 
 ✅ **Clear Structure**: Well-organized sections with logical flow
-✅ **Specific Instructions**: Actionable, unambiguous directions  
+✅ **Specific Instructions**: Actionable, unambiguous directions
 ✅ **Proper Context**: All necessary information for task completion
 ✅ **Tool Integration**: Appropriate tool selection for the task
 ✅ **Error Handling**: Guidance for edge cases and failures

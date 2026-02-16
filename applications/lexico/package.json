@@ -49,19 +49,5 @@
       "**/*.spec.tsx",
       "**/routeTree.gen.ts"
     ]
-  },
-  "size-limit": [
-    {
-      "name": "Client JS (main bundle)",
-      "path": "../../dist/applications/lexico/client/assets/main-*.js",
-      "limit": "180 KB",
-      "gzip": true
-    },
-    {
-      "name": "Client CSS",
-      "path": "../../dist/applications/lexico/client/assets/*.css",
-      "limit": "20 KB",
-      "gzip": true
-    }
-  ]
+  }
 }

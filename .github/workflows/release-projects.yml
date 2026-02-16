@@ -1,10 +1,14 @@
-name: 🚀 Release
+name: 🚀 Release Projects
 
 on:
   push:
     branches:
       - main
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: write
@@ -13,19 +17,20 @@ permissions:
 
 jobs:
   release:
-    name: 📦 Create Release
+    name: 🚀 Release Projects
     runs-on: ubuntu-latest
+
     steps:
-      - name: 📥 Checkout
+      - name: 📥 Checkout Repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
           persist-credentials: false
 
-      - name: 🔧 Setup
-        uses: ./.github/actions/setup
+      - name: 🕋 Setup Monorepo
+        uses: ./.github/actions/setup-monorepo
 
-      - name: 🚀 Release
+      - name: 🚀 Release Projects
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: pnpm semantic-release

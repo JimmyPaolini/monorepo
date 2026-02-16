@@ -43,7 +43,7 @@ nx run caelundas:helm-upgrade
 nx run caelundas:kubernetes-copy-files
 
 # Clean up completed jobs
-nx run caelundas:kubernetes-uninstall
+nx run caelundas:helm-uninstall
 ```
 
 ### PVC Strategy
@@ -61,7 +61,7 @@ The `kubernetes-copy-files` target synchronizes output files back to local files
 
 See [applications/caelundas/AGENTS.md](../../applications/caelundas/AGENTS.md) for detailed caelundas deployment workflows, including:
 
-- Docker multi-stage build patterns
+- Docker build configuration for monorepo workspace
 - Environment variable management in K8s
 - Output file retrieval from completed jobs
 - Debugging failed K8s jobs
@@ -71,7 +71,7 @@ Key targets:
 - `nx run caelundas:docker-build` - Builds for linux/amd64
 - `nx run caelundas:helm-upgrade` - Deploys with auto-generated name
 - `nx run caelundas:kubernetes-copy-files` - Retrieves output from PVC
-- `nx run caelundas:kubernetes-uninstall` - Removes completed jobs
+- `nx run caelundas:helm-uninstall` - Removes completed jobs
 
 ## Infrastructure Configuration
 
@@ -162,6 +162,43 @@ kubectl cp <pod-name>:/app/output ./output
 - Check node capacity: `kubectl describe nodes`
 - Adjust resource limits in values.yaml
 - Consider node selectors for specific workloads
+
+## Rollback Procedures
+
+### Helm Rollback
+
+If a deployment causes issues, rollback to a previous revision:
+
+```bash
+# List release history
+helm history <release-name>
+
+# Rollback to previous revision
+helm rollback <release-name> <revision-number>
+
+# Rollback to the most recent successful revision
+helm rollback <release-name> 0
+```
+
+### Kubernetes Job Rollback
+
+Since caelundas runs as a K8s job (not a long-running deployment), rollback means:
+
+1. **Delete the failed job**: `nx run caelundas:helm-uninstall`
+2. **Revert the Docker image**: Tag the previous working image as `latest`
+3. **Redeploy**: `nx run caelundas:helm-upgrade`
+
+```bash
+# Check which image version was running
+kubectl get jobs -o jsonpath='{.items[*].spec.template.spec.containers[*].image}'
+
+# Retag previous image as latest
+docker tag ghcr.io/jimmypaolini/caelundas:<previous-sha> ghcr.io/jimmypaolini/caelundas:latest
+docker push ghcr.io/jimmypaolini/caelundas:latest
+
+# Redeploy
+nx run caelundas:helm-upgrade
+```
 
 ## Related Documentation
 

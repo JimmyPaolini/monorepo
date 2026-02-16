@@ -22,7 +22,9 @@ const tsconfigRootDir = dirname(fileURLToPath(import.meta.url));
 export default [
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ...([] as any[]),
-  // Global ignores
+
+  // ━━━━━━━━━━━━━━━━━━━ Global Ignores ━━━━━━━━━━━━━━━━━━━
+  // Patterns excluded from ALL linting (build output, generated code, locks)
   {
     ignores: [
       "**/dist",
@@ -50,7 +52,8 @@ export default [
     ],
   },
 
-  // Base ESLint recommended rules - but not for markdown files
+  // ━━━━━━━━━━━━━━━━━━━ Base ESLint Recommended ━━━━━━━━━━━━━━━━━━━
+  // Core ESLint recommended rules applied to all non-markdown source files
   {
     ...eslint.configs.recommended,
     files: [
@@ -70,12 +73,15 @@ export default [
     ],
   },
 
-  // Nx plugin configurations
+  // ━━━━━━━━━━━━━━━━━━━ Nx Plugin ━━━━━━━━━━━━━━━━━━━
+  // Module boundary enforcement and dependency validation
   ...nxPlugin.configs["flat/base"],
   ...nxPlugin.configs["flat/typescript"],
   ...nxPlugin.configs["flat/javascript"],
 
-  // Global configuration for all files
+  // ━━━━━━━━━━━━━━━━━━━ Main Configuration ━━━━━━━━━━━━━━━━━━━
+  // Core rules for all TS/JS source files: module boundaries, import ordering,
+  // strict TypeScript type safety, naming conventions, and best practices
   {
     files: [
       "**/*.ts",
@@ -276,7 +282,9 @@ export default [
     },
   },
 
-  // TypeScript-specific configuration
+  // ━━━━━━━━━━━━━━━━━━━ TypeScript Strict Type-Checked ━━━━━━━━━━━━━━━━━━━
+  // Enables strict + stylistic type-checked rule sets from typescript-eslint.
+  // Requires parserOptions.projectService for type-aware linting.
   ...tseslint.configs.strictTypeChecked.map((config) => ({
     ...config,
     files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
@@ -303,7 +311,9 @@ export default [
     },
   },
 
-  // TSDoc documentation linting
+  // ━━━━━━━━━━━━━━━━━━━ TSDoc / JSDoc Documentation ━━━━━━━━━━━━━━━━━━━
+  // Enforces TSDoc syntax and requires JSDoc on public declarations
+  // (functions, methods, classes, interfaces, types, enums)
   {
     files: ["**/*.ts", "**/*.tsx"],
     ignores: [
@@ -344,7 +354,8 @@ export default [
     },
   },
 
-  // React-specific configuration
+  // ━━━━━━━━━━━━━━━━━━━ React / Hooks / Accessibility ━━━━━━━━━━━━━━━━━━━
+  // React 19 (new JSX transform), hooks rules, and WCAG accessibility checks
   {
     files: ["**/*.tsx", "**/*.jsx"],
     plugins: {
@@ -391,7 +402,8 @@ export default [
     },
   },
 
-  // Test files configuration
+  // ━━━━━━━━━━━━━━━━━━━ Test Files ━━━━━━━━━━━━━━━━━━━
+  // Relaxed rules for test files: allow `any`, unsafe operations, and console
   {
     files: [
       "**/*.spec.ts",
@@ -411,7 +423,9 @@ export default [
     },
   },
 
-  // JavaScript-specific configuration (for config files)
+  // ━━━━━━━━━━━━━━━━━━━ JavaScript Config Files ━━━━━━━━━━━━━━━━━━━
+  // Disables ALL type-checked rules for .js/.mjs/.cjs files since they
+  // lack TypeScript type information (e.g., *.config.cjs, commitlint.config.ts)
   {
     files: ["**/*.js", "**/*.mjs", "**/*.cjs"],
     rules: {
@@ -445,7 +459,8 @@ export default [
     },
   },
 
-  // JSON files configuration - exclude from type-checked linting
+  // ━━━━━━━━━━━━━━━━━━━ JSON Files ━━━━━━━━━━━━━━━━━━━
+  // JSON/JSONC/JSON5 linting with style enforcement and Nx dependency checks
   ...jsoncPlugin.configs["flat/recommended-with-jsonc"].map((config) => ({
     ...config,
     files: ["**/*.json", "**/*.jsonc", "**/*.json5"],
@@ -463,7 +478,8 @@ export default [
     },
   },
 
-  // YAML files configuration
+  // ━━━━━━━━━━━━━━━━━━━ YAML Files ━━━━━━━━━━━━━━━━━━━
+  // YAML/YML linting with indent, quoting, and best practice rules
   ...eslintPluginYml.configs["flat/standard"].map((config) => ({
     ...config,
     files: ["**/*.yaml", "**/*.yml"],
@@ -499,7 +515,8 @@ export default [
     },
   },
 
-  // Config files - allow workspace imports without module boundary violations
+  // ━━━━━━━━━━━━━━━━━━━ Config File Overrides ━━━━━━━━━━━━━━━━━━━
+  // Allow workspace imports in *.config.* files without module boundary errors
   {
     files: [
       "**/*.config.ts",
@@ -512,7 +529,8 @@ export default [
     },
   },
 
-  // Vitest config files - disable type-checked rules due to circular imports
+  // ━━━━━━━━━━━━━━━━━━━ Vitest Config Files ━━━━━━━━━━━━━━━━━━━
+  // Disable type-checked rules for vitest configs (circular dependency issues)
   {
     files: ["**/vitest.config.ts", "**/vitest.config.base.ts"],
     rules: {
@@ -524,7 +542,8 @@ export default [
     },
   },
 
-  // Special configuration for the eslint.config.base.ts file itself
+  // ━━━━━━━━━━━━━━━━━━━ Self-Config ━━━━━━━━━━━━━━━━━━━
+  // Relaxed rules for eslint.config.base.ts itself (plugin typing limitations)
   {
     files: ["eslint.config.base.ts"],
     rules: {
@@ -535,7 +554,8 @@ export default [
     },
   },
 
-  // Markdown files configuration - define before other languages to prevent conflicts
+  // ━━━━━━━━━━━━━━━━━━━ Markdown Files ━━━━━━━━━━━━━━━━━━━
+  // GitHub Flavored Markdown (GFM) with YAML frontmatter support
   {
     files: ["**/*.md"],
     plugins: {
@@ -570,6 +590,7 @@ export default [
     },
   },
 
-  // Prettier integration - must be last to override other configs
+  // ━━━━━━━━━━━━━━━━━━━ Prettier (must be last) ━━━━━━━━━━━━━━━━━━━
+  // Disables all formatting rules that conflict with Prettier
   eslintConfigPrettier,
 ] as ConfigWithExtends[];

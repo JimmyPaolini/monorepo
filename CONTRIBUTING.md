@@ -113,7 +113,7 @@ monorepo/
 
 ```bash
 # Create feature branch (see branch naming conventions)
-git checkout -b feat/your-feature-name
+git checkout -b feat/lexico-your-feature
 
 # Run development server
 nx run <project>:develop          # caelundas, lexico, JimmyPaolini
@@ -146,6 +146,18 @@ nx affected --target=test
 
 See [eslint.config.base.ts](eslint.config.base.ts) for complete rules.
 
+## Git Hooks (Husky)
+
+Three Husky hooks enforce quality gates locally. **Never bypass them with `--no-verify`** — fix the underlying issue instead.
+
+| Hook         | Trigger      | What it runs                                                                         | Config                                                             |
+| ------------ | ------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `pre-commit` | `git commit` | **lint-staged**: format, lint, typecheck, spell-check, and more on staged files      | [lint-staged.config.ts](lint-staged.config.ts)                     |
+| `commit-msg` | `git commit` | **commitlint**: validates Conventional Commits format (`<type>(<scope>): <subject>`) | [commitlint.config.ts](commitlint.config.ts)                       |
+| `pre-push`   | `git push`   | **validate-branch-name**: enforces `<type>/<scope>-<description>` pattern            | [validate-branch-name.config.cjs](validate-branch-name.config.cjs) |
+
+If a hook fails, the git operation is blocked until you fix the error. See the config files linked above for details on what each hook checks.
+
 ## Branch Naming Guidelines
 
 **Required format:** `<type>/<scope>-<description>` (lowercase, kebab-case)
@@ -156,7 +168,7 @@ Validated by Husky pre-push hook and GitHub Actions. See [checkout-branch skill]
 
 ## Commit Guidelines
 
-Use [Conventional Commits](https://www.conventionalcommits.org/): `<type>(<scope>): <subject>` (max 50 chars, imperative mood, lowercase)
+Use [Conventional Commits](https://www.conventionalcommits.org/): `<type>(<scope>): <gitmoji> <subject>` (max 128 chars, imperative mood, lowercase)
 
 **Types**: `feat` (minor release), `fix`/`perf`/`refactor`/`build` (patch), `docs`/`test`/`ci`/`chore` (no release)
 
@@ -202,12 +214,62 @@ All files are owned by `@JimmyPaolini` (see [.github/CODEOWNERS](.github/CODEOWN
 
 Pull requests require owner approval before merging.
 
+## Environment Variables
+
+Each project uses `.env.default` files as templates for required environment variables. Copy `.env.default` to `.env` in each directory and fill in values.
+
+### Root (`.env.default`)
+
+| Variable                                     | Purpose                                     |
+| -------------------------------------------- | ------------------------------------------- |
+| `TF_VAR_linode_token`                        | Linode API token for Terraform provisioning |
+| `TF_VAR_linode_kubernetes_engine_cluster_id` | LKE cluster ID for deployments              |
+
+### caelundas (`applications/caelundas/.env.default`)
+
+| Variable             | Default     | Purpose                                       |
+| -------------------- | ----------- | --------------------------------------------- |
+| `LATITUDE`           | `39.949309` | Observer latitude for ephemeris calculations  |
+| `LONGITUDE`          | `-75.17169` | Observer longitude for ephemeris calculations |
+| `START_DATE`         | (dynamic)   | Calculation start date (YYYY-MM-DD)           |
+| `END_DATE`           | (dynamic)   | Calculation end date (YYYY-MM-DD)             |
+| `OUTPUT_DIRECTORY`   | `./output`  | Directory for generated calendar files        |
+| `MAX_RETRIES`        | `5`         | NASA JPL API retry attempts                   |
+| `INITIAL_DELAY_MS`   | `1000`      | Initial retry backoff delay                   |
+| `MAX_DELAY_MS`       | `30000`     | Maximum retry backoff delay                   |
+| `BACKOFF_MULTIPLIER` | `2`         | Exponential backoff factor                    |
+
+### lexico (`applications/lexico/.env.default`)
+
+| Variable                    | Purpose                                                    |
+| --------------------------- | ---------------------------------------------------------- |
+| `SUPABASE_URL`              | Supabase project URL                                       |
+| `SUPABASE_ANON_KEY`         | Supabase anonymous/public key (safe for client)            |
+| `SUPABASE_SERVICE_ROLE_KEY` | Supabase service role key (server-side only, never expose) |
+
+## Dependency Update Workflow
+
+Weekly automated dependency updates are handled by the [`dependency-updates.yml`](.github/workflows/dependency-updates.yml) workflow:
+
+1. **Schedule**: Runs every Monday at 6:00 UTC
+2. **Detection**: Uses `npm-check-updates` to find outdated dependencies
+3. **PR creation**: Automatically creates a PR with the updates
+4. **Review**: All CI checks run against the update PR
+5. **Merge**: Requires manual review and approval before merging
+
+To check for updates manually:
+
+```bash
+pnpm outdated              # See which packages are outdated
+pnpm update                # Update within semver ranges
+pnpx npm-check-updates -u  # Update to latest versions (breaking changes possible)
+```
+
 ## Additional Resources
 
 - [Commit Messages Guide](.github/skills/commit-code/SKILL.md)
 - [Semantic Release Guide](documentation/semantic-release.md)
-- [GitHub Actions Guide](documentation/github-actions.md)
-- [Static Analysis Tools](documentation/static-analysis-tools.md)
+- [GitHub Actions Guide](documentation/github-actions.md) - CI/CD workflows and composite actions
 - [Gitmoji Reference](documentation/gitmoji.md)
 - [Nx Documentation](https://nx.dev)
 - [Conventional Commits](https://www.conventionalcommits.org/)
@@ -220,4 +282,4 @@ Pull requests require owner approval before merging.
 
 ## License
 
-See [LICENSE](LICENSE) file for details.
+MIT License. Copyright (c) Jimmy Paolini.

@@ -7,8 +7,8 @@
 [![Repo Size](https://img.shields.io/github/repo-size/JimmyPaolini/monorepo)](https://github.com/JimmyPaolini/monorepo)
 [![Last Commit](https://img.shields.io/github/last-commit/JimmyPaolini/monorepo)](https://github.com/JimmyPaolini/monorepo/commits)
 
-[![Build](https://github.com/JimmyPaolini/monorepo/actions/workflows/build-projects.yml/badge.svg)](https://github.com/JimmyPaolini/monorepo/actions/workflows/build-projects.yml)
-[![Release](https://github.com/JimmyPaolini/monorepo/actions/workflows/release.yml/badge.svg)](https://github.com/JimmyPaolini/monorepo/actions/workflows/release.yml)
+[![Build](https://github.com/JimmyPaolini/monorepo/actions/workflows/build-code.yml/badge.svg)](https://github.com/JimmyPaolini/monorepo/actions/workflows/build-code.yml)
+[![Release](https://github.com/JimmyPaolini/monorepo/actions/workflows/release-projects.yml/badge.svg)](https://github.com/JimmyPaolini/monorepo/actions/workflows/release-projects.yml)
 [![Conventional Commits](https://github.com/JimmyPaolini/monorepo/actions/workflows/convention-check.yml/badge.svg)](https://github.com/JimmyPaolini/monorepo/actions/workflows/convention-check.yml)
 [![Dependency Check](https://img.shields.io/github/actions/workflow/status/JimmyPaolini/monorepo/dependency-analysis.yml?job=%F0%9F%95%B5%EF%B8%8F%20%F0%9F%94%97%20Dependency%20Check&label=dependencies)](https://github.com/JimmyPaolini/monorepo/actions/workflows/dependency-analysis.yml)
 [![Security Audit](https://img.shields.io/github/actions/workflow/status/JimmyPaolini/monorepo/dependency-analysis.yml?job=%F0%9F%95%B5%EF%B8%8F%20%F0%9F%94%92%20Security%20Audit&label=security&logo=npm)](https://github.com/JimmyPaolini/monorepo/actions/workflows/dependency-analysis.yml)
@@ -67,8 +67,7 @@ nx run-many --target=code-analysis --all
 - **[Contributing Guide](CONTRIBUTING.md)** - Development workflow, code standards, and release process
 - **[Commit Messages](.github/skills/commit-code/SKILL.md)** - Conventional Commits format and examples
 - **[Release Process](documentation/semantic-release.md)** - Automated versioning and changelog generation
-- **[GitHub Actions](documentation/github-actions.md)** - CI/CD workflows and patterns
-- **[Static Analysis](documentation/static-analysis-tools.md)** - Code quality tools configuration
+- **[GitHub Actions](documentation/github-actions.md)** - CI/CD workflows, composite actions, and pipeline architecture
 
 ## 🛠️ Development
 
@@ -188,4 +187,4 @@ All files are owned by [@JimmyPaolini](https://github.com/JimmyPaolini). See [.g
 
 ## 📝 License
 
-See [LICENSE](LICENSE) file for details.
+MIT License. Copyright (c) Jimmy Paolini.

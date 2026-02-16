@@ -1,3 +1,16 @@
+/**
+ * Commitlint configuration — enforces Conventional Commits with Gitmoji support.
+ *
+ * Commit format: `<type>(<scope>): <gitmoji> <subject>`
+ *
+ * - Header max: 128 characters (aim for &lt;72 for readability)
+ * - Body and footer: forbidden (single-line commits only)
+ * - Subject: lowercase, imperative mood, no trailing period
+ * - Gitmoji required at start of subject
+ *
+ * Types and scopes are defined in conventional.config.cjs.
+ * See: documentation/skills/commit-code/SKILL.md for full documentation.
+ */
 import { scopes, types } from "./conventional.config.cjs";
 
 import type { UserConfig } from "@commitlint/types";

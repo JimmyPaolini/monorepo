@@ -34,6 +34,7 @@
   },
   "atlascode.rovodev.showEntitlementNotifications": false,
   "chat.agent.maxRequests": 96,
+  "chat.agent.thinking.terminalTools": true,
   "chat.agent.thinkingStyle": "collapsedPreview",
   "chat.checkpoints.enabled": true,
   "chat.checkpoints.showFileChanges": true,
@@ -60,6 +61,7 @@
   },
   "chat.notifyWindowOnConfirmation": true,
   "chat.sendElementsToChat.enabled": true,
+  "chat.tools.global.autoApprove": true,
   "chat.tools.terminal.autoApprove": {
     "/.*\\.sql/": true,
     "/(npm|npx) (add|eslint|install|lint-staged|madge|markdownlint|prettier|test|tsc)/": true,
@@ -85,6 +87,7 @@
     "eval": false,
     "find": true,
     "gh run view": true,
+    "git reset": false,
     "grep": true,
     "head": true,
     "jq": true,
@@ -123,25 +126,22 @@
   "conventionalCommits.promptFooter": false,
   "conventionalCommits.promptScopes": true,
   "conventionalCommits.scopes": [
-    // 🕋 Root
-    "monorepo", // Workspace root
-    "applications", // All applications
-    "packages", // All packages
-    "tools", // Build or development tooling
-    // 🏢 Projects
-    "caelundas", // Caelundas application
-    "lexico", // Lexico application
-    "lexico-components", // Lexico components package
-    "JimmyPaolini", // JimmyPaolini application
-    // 🗑️ Other
-    "documentation", // Documentation
-    "dependencies", // Dependency updates
-    "infrastructure", // Infrastructure changes
-    "deployments", // CI/CD workflows
-    "testing", // Testing-related changes
-    "linting", // Linting-related changes
-    "scripts", // Build or dev scripts
-    "configuration" // Config files
+    "applications", // Changes spanning multiple apps (caelundas, lexico, JimmyPaolini)
+    "caelundas", // Node.js CLI for astronomical calendar generation (NASA JPL ephemeris)
+    "configuration", // Workspace root config files (tsconfig, eslint, vitest, nx.json, etc.)
+    "dependencies", // Dependency version changes (upgrades, additions, removals via pnpm)
+    "deployments", // GitHub Actions workflows and CI/CD pipeline configuration
+    "documentation", // Markdown docs, skills, planning files, and AGENTS.md files
+    "infrastructure", // Helm charts, Terraform configs, and Kubernetes resources
+    "JimmyPaolini", // Static GitHub profile README project (markdown and assets)
+    "lexico-components", // Shared React/shadcn component library in packages/
+    "lexico", // TanStack Start SSR Latin dictionary web app with Supabase backend
+    "linting", // ESLint configs, rules, plugins, and lint-related tooling
+    "monorepo", // Workspace root concerns (pnpm-workspace, root package.json, Nx orchestration)
+    "packages", // Changes spanning multiple shared packages
+    "scripts", // Shell and TypeScript scripts in scripts/ (sync, setup, utilities)
+    "testing", // Vitest configuration, shared test utilities, and coverage setup
+    "tools" // Nx custom generators and developer tooling in tools/
   ],
   "conventionalCommits.showEditor": true,
   "conventionalCommits.showNewVersionNotes": false,
@@ -174,6 +174,7 @@
   "dataWrangler.defaultViewingFilterOptions": "advanced",
   "dataWrangler.outputRenderer.columnInsights.displayByDefault": true,
   "dataWrangler.panels.displayOnTabFocus": false,
+  "docker.extension.enableComposeLanguageServer": false,
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.autoClosingBrackets": "always",
   "editor.codeActionsOnSave": {
@@ -286,7 +287,6 @@
   "files.autoSave": "afterDelay",
   "files.eol": "\n",
   "files.exclude": {
-    ".github/copilot-instructions.md": true,
     "**/.DS_Store": true,
     "dist": true
   },
@@ -402,6 +402,20 @@
   "githubPullRequests.pullBranch": "never",
   "githubPullRequests.pullPullRequestBranchBeforeCheckout": "pull",
   "githubPullRequests.pushBranch": "prompt",
+  "gitlens.views.commits.files.layout": "tree",
+  "gitlens.views.scm.grouped.views": {
+    "branches": true,
+    "commits": true,
+    "contributors": true,
+    "fileHistory": false,
+    "launchpad": false,
+    "remotes": true,
+    "repositories": true,
+    "searchAndCompare": false,
+    "stashes": false,
+    "tags": true,
+    "worktrees": true
+  },
   "indentRainbow.colorOnWhiteSpaceOnly": true,
   "inlineChat.enableV2": true,
   "inlineChat.finishOnType": true,
@@ -415,6 +429,8 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
   "material-icon-theme.files.associations": {
     ".code-workspace*": "vscode",
+    ".ncurc.cjs": "npm",
+    ".size-limit.cjs": "disc",
     "*.args.js": "excalidraw",
     "*.args.ts": "excalidraw",
     "*.command.ts": "exe",
@@ -474,7 +490,6 @@
     "rbac": "guard",
     "routing": "element"
   },
-  "mdb.mcp.server": "autoStartDisabled",
   "notebook.cellToolbarLocation": {
     "default": "right",
     "jupyter-notebook": "right"
@@ -496,6 +511,32 @@
   "outline.showVariables": false,
   "postman.mcp.notifications.postmanMCP": false,
   "postman.settings.dotenv-detection-notification-visibility": false,
+  "remote.portsAttributes": {
+    "3000": {
+      "label": "Lexico Dev Server",
+      "onAutoForward": "notify"
+    },
+    "54321": {
+      "label": "Supabase API (PostgREST)",
+      "onAutoForward": "silent"
+    },
+    "54322": {
+      "label": "Supabase PostgreSQL",
+      "onAutoForward": "silent"
+    },
+    "54323": {
+      "label": "Supabase Studio",
+      "onAutoForward": "notify"
+    },
+    "54324": {
+      "label": "Supabase Inbucket (Email)",
+      "onAutoForward": "silent"
+    },
+    "54325": {
+      "label": "Supabase Analytics",
+      "onAutoForward": "silent"
+    }
+  },
   "scm.alwaysShowActions": true,
   "scm.alwaysShowRepositories": true,
   "scm.autoReveal": true,
@@ -560,8 +601,10 @@
   "vscode-kubernetes.log-viewer.tail": -1,
   "vscode-kubernetes.log-viewer.timestamp": true,
   "vscode-kubernetes.log-viewer.wrap": true,
+  "window.customTitleBarVisibility": "windowed",
   "window.title": "${rootName}",
   "workbench.activityBar.location": "top",
+  "workbench.browser.openLocalhostLinks": true,
   "workbench.colorCustomizations": {
     "editorRuler.foreground": "#282828"
   },
@@ -576,6 +619,7 @@
   "workbench.experimental.share.enabled": true,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.panel.showLabels": false,
+  "workbench.settings.alwaysShowAdvancedSettings": true,
   "workbench.sideBar.location": "right",
   "workbench.startupEditor": "none"
 }

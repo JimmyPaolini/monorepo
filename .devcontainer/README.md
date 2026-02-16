@@ -43,21 +43,24 @@ The container uses [Dev Container Features](https://containers.dev/features) for
 
 ## VS Code Extensions
 
-The following extensions auto-install when the container starts:
+The container auto-installs **66 extensions** organized by category. The full list is in [`devcontainer.json`](devcontainer.json) under `customizations.vscode.extensions`.
 
-| Extension                               | Purpose                         |
-| --------------------------------------- | ------------------------------- |
-| `dbaeumer.vscode-eslint`                | ESLint integration              |
-| `esbenp.prettier-vscode`                | Prettier formatting             |
-| `bradlc.vscode-tailwindcss`             | Tailwind CSS IntelliSense       |
-| `nrwl.angular-console`                  | Nx Console                      |
-| `streetsidesoftware.code-spell-checker` | Spell checking                  |
-| `eamodio.gitlens`                       | Git history and annotations     |
-| `ms-azuretools.vscode-docker`           | Docker file support             |
-| `github.vscode-github-actions`          | GitHub Actions workflow editing |
-| `redhat.vscode-yaml`                    | YAML language support           |
-| `mikestead.dotenv`                      | `.env` file syntax              |
-| `vitest.explorer`                       | Vitest test explorer            |
+**Key categories:**
+
+| Category            | Extensions                                                                 |
+| ------------------- | -------------------------------------------------------------------------- |
+| **Code Quality**    | ESLint, Prettier, Prettier-ESLint, Ruff                                    |
+| **Web Development** | Tailwind CSS, HTML-CSS, GraphQL, Template String Converter                 |
+| **Monorepo/Build**  | Nx Console, Version Lens, NPM Intellisense                                 |
+| **Database**        | Database Client, SQL Formatter, Prettier SQL                               |
+| **Git/GitHub**      | Git History, GitHub Actions, GitHub PRs, Conventional Commits, Codeowners  |
+| **Testing**         | Jest Runner                                                                |
+| **Infrastructure**  | Docker, Kubernetes Tools, Terraform, HashiCorp HCL                         |
+| **Languages**       | Python, Pylance, YAML, TOML, Jinja, Markdown                               |
+| **Productivity**    | Better Comments, Path Intellisense, File Utils, Rainbow CSV, Spell Checker |
+| **Visual**          | Material Icon Theme, Indent Rainbow, Pretty TS Errors, Output Colorizer    |
+
+**Note:** Some extensions like GitLens, Docker (legacy), and Vitest Explorer are in `unwantedRecommendations` to prevent VS Code from suggesting them, as they conflict with preferred alternatives or are not needed in this environment.
 
 ## Port Forwarding
 

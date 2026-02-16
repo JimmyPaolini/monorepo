@@ -114,7 +114,7 @@ Open `coverage/index.html` in a browser to view detailed line-by-line coverage a
 
 ## CI Integration
 
-The CI workflow ([`.github/workflows/test.yml`](/.github/workflows/test.yml)) runs:
+The CI workflow ([`.github/workflows/test-coverage.yml`](/.github/workflows/test-coverage.yml)) runs:
 
 ```bash
 npx nx affected -t test --parallel=3 --coverage

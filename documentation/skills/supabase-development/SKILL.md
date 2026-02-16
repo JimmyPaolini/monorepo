@@ -49,7 +49,7 @@ After any schema changes, regenerate TypeScript types:
 nx run lexico:supabase:generate-types
 ```
 
-This creates/updates `applications/lexico/src/types/supabase.types.ts` with:
+This creates/updates `applications/lexico/src/lib/database.types.ts` with:
 
 - Table definitions
 - RPC function signatures

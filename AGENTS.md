@@ -104,34 +104,11 @@ For detailed architecture, workflows, and domain knowledge:
 
 #### Branch Naming (CRITICAL)
 
-Branch names **must** follow the pattern:
+Branch names **must** follow the pattern: `<type>/<scope>-<description>` (all three parts required, kebab-case).
 
-```text
-<type>/<scope>-<description>
-```
+Example: `feat/lexico-user-auth`, `fix/monorepo-build-script`, `docs/caelundas-api-guide`
 
-**All three parts are required.** The description must be kebab-case.
-
-| Component   | Valid Values                                                                                                                                                                                                                    |
-| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| type        | `build`, `chore`, `ci`, `docs`, `feat`, `fix`, `perf`, `refactor`, `revert`, `style`, `test`                                                                                                                                    |
-| scope       | `monorepo`, `caelundas`, `lexico`, `lexico-components`, `JimmyPaolini`, `infrastructure`, `dependencies`, `documentation`, `applications`, `packages`, `tools`, `deployments`, `testing`, `linting`, `scripts`, `configuration` |
-| description | lowercase kebab-case, e.g., `user-auth`, `build-script`, `devcontainer`                                                                                                                                                         |
-
-**Examples:**
-
-```bash
-# ✅ CORRECT - includes type, scope, AND description
-git checkout -b feat/infrastructure-devcontainer
-git checkout -b fix/lexico-auth-redirect
-git checkout -b docs/caelundas-api-guide
-
-# ❌ WRONG - missing description
-git checkout -b feat/devcontainers        # No scope or description!
-git checkout -b feat/infrastructure       # Missing description!
-```
-
-Validation runs on `git push` via `.husky/pre-push` hook. See [checkout-branch skill](.github/skills/checkout-branch/SKILL.md) for full details.
+Validation runs on `git push` via `.husky/pre-push` hook. Valid types, scopes, and full details in [checkout-branch skill](documentation/skills/checkout-branch/SKILL.md).
 
 #### Git Hooks (NEVER BYPASS)
 
@@ -285,11 +262,28 @@ Add blank lines between groups (enforced by `import/order`).
 
 ### Pre-commit Automation
 
-Husky + lint-staged automatically runs on staged files:
+Husky + lint-staged automatically runs on staged files (see `lint-staged.config.ts`):
 
-- Format (Prettier)
-- Lint (ESLint with strict type checking)
-- Typecheck (tsc --noEmit)
+- **TypeScript/JavaScript**: format, lint, typecheck, spell-check (per affected project + monorepo)
+- **JSON/CSS/HTML**: format, spell-check
+- **Markdown**: format, lint, markdown-lint, spell-check
+- **YAML**: format, yaml-lint, spell-check
+- **package.json / pnpm-workspace.yaml**: lockfile integrity check
+- **Config syncs**: VSCode extensions sync, conventional config sync
+
+Additional Husky hooks:
+
+- `commit-msg`: commitlint (enforces Conventional Commits with gitmoji)
+- `pre-push`: validate-branch-name (enforces `<type>/<scope>-<description>`)
+
+### Error Handling
+
+- **Zod schemas** for input validation — parse user/API inputs at boundaries, let TypeScript handle internal types
+- **Early returns** with descriptive error messages — avoid deep nesting of try/catch
+- **No swallowed errors** — always log or re-throw; never use empty catch blocks
+- **Typed errors** — avoid `catch (e: any)`; use `unknown` and narrow with type guards
+- **Graceful degradation** in API calls — use retry logic with exponential backoff (see caelundas `MAX_RETRIES` / `BACKOFF_MULTIPLIER` env vars)
+- **Server functions** (lexico) — throw errors that TanStack Start surfaces to `errorComponent`
 
 Commits must follow [Conventional Commits](https://www.conventionalcommits.org/)
 with gitmoji prefixes. Valid types and scopes are defined in
@@ -298,16 +292,12 @@ with gitmoji prefixes. Valid types and scopes are defined in
 
 Format: `<type>(<scope>): <gitmoji> <subject>`
 
-- Subject line must be under 50 characters (Conventional Commits best practice)
+- Header must be under 128 characters (enforced by `commitlint.config.ts`)
+- Aim for under 72 characters for readability
 - Imperative mood required (e.g., "add" not "added")
 - No period at end
 
-Examples:
-
-- ✅ `feat(infrastructure): 🏗️ add devcontainer support` (48 chars)
-- ✅ `chore(infrastructure): 🔧 enforce markdown styles` (50 chars)
-- ❌ `chore(infrastructure): enforce specific markdown formatting styles` (72 chars - TOO LONG, missing gitmoji)
-- ❌ `feat(infrastructure): ✨ added devcontainer support` (wrong tense)
+See [commit-code skill](documentation/skills/commit-code/SKILL.md) for full gitmoji reference, type/scope tables, and examples.
 
 ### Supabase Development (lexico)
 
@@ -356,10 +346,18 @@ rebuilds dependencies automatically when running build targets.
 
 GitHub Actions workflows in `.github/workflows/`:
 
-- **setup.yml**: Reusable workflow for pnpm install + Nx caching
-- **lint.yml**, **typecheck.yml**, **test.yml**, **format.yml**: Run on affected projects
+- **build-code.yml**: Builds affected projects and posts bundle size reports on PRs
+- **build-devcontainer.yml**: Builds/pushes dev container image on `.devcontainer/` changes
+- **code-analysis.yml**: Matrix of 8 checks (type check, lint, markdown lint, YAML lint, format, knip, spell check, type coverage)
+- **convention-check.yml**: Validates PR branch name, title (commitlint), and body sections
+- **dependency-analysis.yml**: Dependency cruiser, security audit, license check (also weekly)
+- **dependency-updates.yml**: Weekly automated dependency update PRs via npm-check-updates
+- **knip-cleanup.yml**: Weekly automated dead code removal PRs
+- **release-projects.yml**: Semantic-release on push to main
+- **test-coverage.yml**: Runs affected tests with coverage and uploads artifacts
 
-All workflows use `nrwl/nx-set-shas` to calculate affected projects from git diff.
+All workflows use the `.github/actions/setup-monorepo` composite action (pnpm, Node.js, yamllint,
+Nx SHAs via `nrwl/nx-set-shas`, and Nx cache).
 
 ## Common Gotchas
 

@@ -115,28 +115,24 @@ jobs:
 
 All task workflows use the composite action pattern:
 
-- [lint.yml](.github/workflows/lint.yml) - ESLint checks
-- [test.yml](.github/workflows/test.yml) - Unit/integration tests with coverage
-- [typecheck.yml](.github/workflows/typecheck.yml) - TypeScript type checking
-- [format.yml](.github/workflows/format.yml) - Prettier formatting checks
-- [knip.yml](.github/workflows/knip.yml) - Unused exports/dependencies detection
-- [bundlesize.yml](.github/workflows/bundlesize.yml) - Bundle size analysis
-- [type-coverage.yml](.github/workflows/type-coverage.yml) - TypeScript type coverage reports
-- [dependency-analysis.yml](.github/workflows/dependency-analysis.yml) - Dependency constraint validation
-- [security-audit.yml](.github/workflows/security-audit.yml) - npm security audit
-- [markdown-lint.yml](.github/workflows/markdown-lint.yml) - Markdown style enforcement
-- [spell-check.yml](.github/workflows/spell-check.yml) - Spell checking with cspell
-- [license-check.yml](.github/workflows/license-check.yml) - License compliance validation
+- [build-code.yml](.github/workflows/build-code.yml) - Build affected projects and post bundle size reports on PRs
+- [build-devcontainer.yml](.github/workflows/build-devcontainer.yml) - Build/push dev container image on `.devcontainer/` changes
+- [code-analysis.yml](.github/workflows/code-analysis.yml) - Matrix of 8 checks (type check, lint, markdown lint, YAML lint, format, knip, spell check, type coverage)
+- [convention-check.yml](.github/workflows/convention-check.yml) - Validate PR branch name, title (commitlint), and body sections
+- [dependency-analysis.yml](.github/workflows/dependency-analysis.yml) - Dependency cruiser, security audit, license check (also weekly scheduled)
+- [dependency-updates.yml](.github/workflows/dependency-updates.yml) - Weekly automated dependency update PRs via npm-check-updates
+- [knip-cleanup.yml](.github/workflows/knip-cleanup.yml) - Weekly automated dead code removal PRs
+- [release-projects.yml](.github/workflows/release-projects.yml) - Semantic-release on push to main
+- [test-coverage.yml](.github/workflows/test-coverage.yml) - Run affected tests with coverage and upload artifacts
 
 ### Workflow-Specific Steps
 
 Some workflows include additional steps after the composite action:
 
-- **test.yml**: Uploads coverage reports to artifacts
-- **type-coverage.yml**: Uploads type coverage reports to artifacts
-- **bundlesize.yml**: Restricted path triggers for web-related changes only
-- **security-audit.yml**: Runs `pnpm audit` instead of Nx affected tasks
-- **license-check.yml**: Weekly scheduled runs for compliance monitoring
+- **test-coverage.yml**: Uploads coverage reports to artifacts
+- **code-analysis.yml**: Runs 8 parallel matrix jobs for different quality checks
+- **dependency-analysis.yml**: Includes weekly scheduled runs for compliance monitoring
+- **build-code.yml**: Restricted path triggers and posts bundle size PR comments
 
 These workflow-specific steps are preserved in individual workflow files, maintaining flexibility for unique requirements.
 

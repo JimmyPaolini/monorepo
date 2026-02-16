@@ -1,13 +1,13 @@
-# Component Generator
+# Code Generator
 
 Nx generator for creating React components with corresponding test files following the monorepo conventions.
 
 ## Usage
 
 ```bash
-nx generate component-generator:component --name=my-component
-nx generate component-generator:component --name=my-component --directory=src/components/ui
-nx generate component-generator:component --name=my-component --export=barrel
+nx generate code-generator:component --name=my-component
+nx generate code-generator:component --name=my-component --directory=src/components/ui
+nx generate code-generator:component --name=my-component --export=barrel
 ```
 
 ## Options
