@@ -205,7 +205,7 @@
       "nodeGypDependencies": true,
       "nvmVersion": "latest",
       "pnpmVersion": "latest",
-      "version": "lts"
+      "version": "22"
     },
     "ghcr.io/devcontainers/features/python:1": {
       "enableShared": true,
