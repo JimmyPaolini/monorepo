@@ -667,12 +667,13 @@
   "workbench.editor.preferHistoryBasedLanguageDetection": false,
   "workbench.editor.showTabIndex": false,
   "workbench.editor.tabSizing": "fit",
-  "workbench.editor.wrapTabs": true,
+  "workbench.editor.wrapTabs": false,
   "workbench.editorAssociations": {
     "*.csv": "jupyter-data-wrangler",
     "*.html": "default"
   },
   "workbench.experimental.share.enabled": true,
+  "workbench.externalBrowser": "safari",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.panel.showLabels": false,
   "workbench.settings.alwaysShowAdvancedSettings": true,

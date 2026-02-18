@@ -61,9 +61,10 @@ Plans must consist of discrete, atomic phases containing executable tasks. Each 
 ## Output File Specifications
 
 - Save implementation plan files in `documentation/planning` directory
-- Use naming convention: `[purpose]-[component]-[version].prompt.md`
+- Use naming convention: `[date]-[purpose]-[component].plan.md`
+- Date must be in `YYYY-MM-DD` format
 - Purpose prefixes: `upgrade|refactor|feature|data|infrastructure|process|architecture|design`
-- Example: `upgrade-system-command-4.prompt.md`, `feature-auth-module-1.prompt.md`
+- Example: `upgrade-system-command-4.plan.md`, `feature-auth-module-1.plan.md`
 - File must be valid Markdown with proper front matter structure
 
 ## Mandatory Template Structure
@@ -84,13 +85,11 @@ The status of the implementation plan must be clearly defined in the front matte
 
 ```md
 ---
-goal: [Concise Title Describing the Package Implementation Plan's Goal]
-version: [Optional: e.g., 1.0, Date]
-date_created: [YYYY-MM-DD]
-last_updated: [Optional: YYYY-MM-DD]
-owner: [Optional: Team/Individual responsible for this spec]
-status: 'Completed'|'In progress'|'Planned'|'Deprecated'|'On Hold'
-tags: [Optional: List of relevant tags or categories, e.g., `feature`, `upgrade`, `chore`, `architecture`, `migration`, `bug` etc]
+name: [Concise Title Describing the Package Implementation Plan's Goal]
+description: [Short description of the plan's purpose]
+created: [YYYY-MM-DD]
+updated: [YYYY-MM-DD]
+status: 'Completed'|'In progress'|'Planned'
 ---
 
 # Introduction
