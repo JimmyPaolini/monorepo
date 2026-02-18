@@ -334,6 +334,7 @@
   "github-actions.use-enterprise": false,
   "github.copilot.chat.agent.currentEditorContext.enabled": true,
   "github.copilot.chat.agent.omitFileAttachmentContents": true,
+  "github.copilot.chat.agentCustomizationSkill.enabled": true,
   "github.copilot.chat.agentHistorySummarizationWithPromptCache": true,
   "github.copilot.chat.anthropic.contextEditing.enabled": true,
   "github.copilot.chat.anthropic.thinking.budgetTokens": 4096,
@@ -347,19 +348,32 @@
     }
   ],
   "github.copilot.chat.completionsFetcher": "node-fetch",
+  "github.copilot.chat.copilotMemory.enabled": true,
   "github.copilot.chat.customInstructionsInSystemMessage": true,
   "github.copilot.chat.enableUserPreferences": true,
   "github.copilot.chat.generateTests.codeLens": true,
   "github.copilot.chat.githubMcpServer.enabled": true,
+  "github.copilot.chat.implementAgent.model": "Claude Sonnet 4.6 (copilot)",
   "github.copilot.chat.inlineEdits.chatSessionContextProvider.enabled": true,
   "github.copilot.chat.inlineEdits.diagnosticsContextProvider.enabled": true,
   "github.copilot.chat.languageContext.fix.typescript.enabled": true,
   "github.copilot.chat.languageContext.inline.typescript.enabled": true,
   "github.copilot.chat.languageContext.typescript.enabled": true,
   "github.copilot.chat.languageContext.typescript.includeDocumentation": true,
+  "github.copilot.chat.mcpServers.disabled": [
+    "Nx Mcp Server",
+    "Container Tools",
+    "Database Client",
+    "GitHub Pull Requests",
+    "Jupyter",
+    "Postman",
+    "Python",
+    "GitHub"
+  ],
   "github.copilot.chat.nesFetcher": "node-fetch",
   "github.copilot.chat.newWorkspace.useContext7": true,
   "github.copilot.chat.newWorkspaceCreation.enabled": true,
+  "github.copilot.chat.planAgent.model": "Claude Opus 4.5 (copilot)",
   "github.copilot.chat.pullRequestDescriptionGeneration.instructions": [
     {
       "file": "../documentation/skills/create-pull-request/SKILL.md"
@@ -371,11 +385,15 @@
   "github.copilot.chat.reviewSelection.enabled": true,
   "github.copilot.chat.scopeSelection": true,
   "github.copilot.chat.searchSubagent.enabled": true,
+  "github.copilot.chat.searchSubagent.model": "Claude Haiku 4.5 (copilot)",
   "github.copilot.chat.setupTests.enabled": true,
+  "github.copilot.chat.switchAgent.enabled": true,
   "github.copilot.chat.terminalChatLocation": "chatView",
   "github.copilot.chat.tools.defaultToolsGrouped": true,
+  "github.copilot.editor.enableCodeActions": false,
   "github.copilot.nextEditSuggestions.enabled": true,
   "github.copilot.nextEditSuggestions.fixes": true,
+  "github.copilot.selectedCompletionModel": "Claude Haiku 4.5 (copilot)",
   "githubPullRequests.allowFetch": true,
   "githubPullRequests.assignCreated": "${user}",
   "githubPullRequests.codingAgent.autoCommitAndPush": true,
@@ -403,6 +421,25 @@
   "githubPullRequests.pullBranch": "never",
   "githubPullRequests.pullPullRequestBranchBeforeCheckout": "pull",
   "githubPullRequests.pushBranch": "prompt",
+  "githubPullRequests.queries": [
+    {
+      "label": "Local 🧑‍💻",
+      "query": "repo:${owner}/${repository} is:open author:${user}"
+    },
+    {
+      "label": "Agent 👤",
+      "query": "repo:${owner}/${repository} is:open author:copilot"
+    },
+    {
+      "label": "Open 📑",
+      "query": "repo:${owner}/${repository} is:open"
+    },
+    {
+      "label": "Closed 🚪",
+      "query": "repo:${owner}/${repository} -is:open"
+    }
+  ],
+  "gitlens.plusFeatures.enabled": true,
   "gitlens.views.commits.files.layout": "tree",
   "gitlens.views.scm.grouped.views": {
     "branches": true,
