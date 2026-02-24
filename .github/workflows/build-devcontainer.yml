@@ -65,26 +65,6 @@ jobs:
     steps:
       - name: 📥 Checkout Repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: 📦 Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10.20.0
-
-      - name: 🟢 Setup node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22.20.0
-
-      - name: ♻️ Cache pnpm store
-        uses: actions/cache@v4
-        with:
-          path: ~/.local/share/pnpm/store
-          key: pnpm-store-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            pnpm-store-${{ runner.os }}-
 
       - name: 🔧 Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -97,7 +77,21 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: 🩹 Patch Configuration for Test
-        run: jq 'del(.runArgs) | del(.mounts)' .devcontainer/devcontainer.json > /tmp/devcontainer.json && mv /tmp/devcontainer.json .devcontainer/devcontainer.json
+        run: |
+          # Remove resource-limiting Docker run args unsupported in CI environments.
+          # Remove named volume mounts so the pnpm store pre-baked into the image
+          # is visible (volumes would otherwise shadow it with empty directories).
+          JQ_FILTER='
+            .runArgs |= map(
+              select(
+                # Exclude --cpus, --memory, and --memory-swap flags
+                test("^--(cpus|memory|memory-swap)") | not
+              )
+            ) |
+            .mounts = []
+          '
+          jq "$JQ_FILTER" .devcontainer/devcontainer.json > /tmp/devcontainer.json
+          mv /tmp/devcontainer.json .devcontainer/devcontainer.json
 
       - name: 🔬 Test Devcontainer
         uses: devcontainers/ci@v0.3
