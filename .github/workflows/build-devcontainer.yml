@@ -43,9 +43,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 🩹 Patch Devcontainer Configuration for CI
-        run: jq 'del(.runArgs)' .devcontainer/devcontainer.json > /tmp/devcontainer.json && mv /tmp/devcontainer.json .devcontainer/devcontainer.json
-
       - name: 🐳 Build Devcontainer
         uses: devcontainers/ci@v0.3
         with:
@@ -98,6 +95,10 @@ jobs:
           if [ -d "node_modules" ]; then
             docker run --rm -v monorepo-node-modules:/node-modules-volume -v "$(pwd)"/node_modules:/host-modules busybox sh -c 'cp -r /host-modules/. /node-modules-volume/ 2>/dev/null || true'
           fi
+
+          # Fix ownership — devcontainer runs as node (UID 1000)
+          docker run --rm -v monorepo-pnpm:/vol busybox chown -R 1000:1000 /vol
+          docker run --rm -v monorepo-node-modules:/vol busybox chown -R 1000:1000 /vol
 
       - name: 🩹 Patch Devcontainer Configuration for CI
         run: jq 'del(.runArgs)' .devcontainer/devcontainer.json > /tmp/devcontainer.json && mv /tmp/devcontainer.json .devcontainer/devcontainer.json
