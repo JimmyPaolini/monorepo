@@ -91,6 +91,33 @@ The `.devcontainer/scripts` directory contains helper scripts for container setu
 | `post-create-command.sh`  | Enables pnpm, installs dependencies                                                                   | `postCreateCommand` |
 | `post-attach-command.sh`  | Verifies installed tool versions (Node.js, pnpm, Supabase CLI, etc.)                                  | `postAttachCommand` |
 | `sync-vscode-settings.ts` | Merges `.vscode/settings.json` into VS Code Machine settings so workspace settings apply in-container | `postCreateCommand` |
+| `test-devcontainer.sh`    | Validates tool versions and configuration; runnable locally and in CI                                 | Manual / CI         |
+
+## Testing
+
+The `test-devcontainer.sh` script in `.devcontainer/scripts/` validates tool installations and configuration. It can be run both locally inside the container and in CI.
+
+| Check                         | What it validates                                                                                                    |
+| ----------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Node.js version               | `node --version` starts with `v22.` (matches `package.json` `engines`)                                               |
+| pnpm version                  | `pnpm --version` is exactly `10.20.0` (matches `package.json` `packageManager`)                                      |
+| Tool availability             | `nx`, `gh`, `supabase`, `kubectl`, `helm`, `terraform`, `tflint`, `python3`, `jq`, `yamllint`, `sqlite3` all respond |
+| Docker (DinD)                 | Docker daemon is reachable and `docker compose` is available                                                         |
+| VS Code Machine settings sync | `.vscode/settings.json` is applied to Machine settings (skipped when VS Code is not attached)                        |
+
+### Run tests locally
+
+Open a terminal inside the devcontainer and run:
+
+```bash
+bash .devcontainer/scripts/test-devcontainer.sh
+```
+
+Exit code is `0` if all tests pass, `1` if any fail.
+
+### Run tests in CI
+
+The `test-devcontainer` job in `.github/workflows/build-devcontainer.yml` runs these tests automatically on every PR that touches `.devcontainer/**`. It builds the container image (or pulls from cache) and executes the test script inside it.
 
 ## Customization
 
