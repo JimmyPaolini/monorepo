@@ -68,11 +68,23 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: 🕋 Setup Monorepo
-        uses: ./.github/actions/setup-monorepo
+      - name: 📦 Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.20.0
 
-      - name: 🛂 Change node_modules ownership
-        run: sudo chown -R 1000:1000 node_modules
+      - name: 🟢 Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.20.0
+
+      - name: ♻️ Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: ~/.local/share/pnpm/store
+          key: pnpm-store-${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            pnpm-store-${{ runner.os }}-
 
       - name: 🔧 Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
