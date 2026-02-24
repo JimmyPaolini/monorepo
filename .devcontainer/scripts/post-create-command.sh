@@ -15,7 +15,7 @@ else
 fi
 
 echo "📦 Installing dependencies..."
-pnpm install --frozen-lockfile
+CI=true pnpm install --frozen-lockfile
 
 echo "⚙️  Syncing VS Code settings..."
 pnpm exec tsx .devcontainer/scripts/sync-vscode-settings.ts write || true
