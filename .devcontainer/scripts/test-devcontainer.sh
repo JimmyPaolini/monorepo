@@ -12,9 +12,9 @@ set -uo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WORKSPACE_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 
-# ── Expected pinned versions (kept in sync with package.json) ────────────────
+# ── Expected pinned versions (read from package.json as the single source of truth) ─
 NODE_MAJOR="22"
-PNPM_VERSION="10.20.0"
+PNPM_VERSION="$(node -e "console.log(require('${WORKSPACE_ROOT}/package.json').packageManager.split('@')[1])")"
 
 # ── Assertion helpers ────────────────────────────────────────────────────────
 PASS=0
