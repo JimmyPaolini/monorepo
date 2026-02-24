@@ -68,6 +68,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: � Setup Monorepo
+        uses: ./.github/actions/setup-monorepo
+
       - name: 🔧 Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -77,6 +80,21 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 📦 Create Docker Volumes for Dev Container
+        run: |
+          docker volume create monorepo-node-modules || true
+          docker volume create monorepo-pnpm || true
+
+      - name: 💾 Populate Docker Volumes with Cache
+        run: |
+          # Copy pnpm cache from host to Docker volume
+          docker run --rm -v monorepo-pnpm:/pnpm-volume -v ~/.local/share/pnpm:/host-pnpm -w /host-pnpm busybox sh -c 'cp -r . /pnpm-volume/ 2>/dev/null || true'
+
+          # Copy node_modules from host to Docker volume (if cache was restored)
+          if [ -d "node_modules" ]; then
+            docker run --rm -v monorepo-node-modules:/node-modules-volume -v "$(pwd)"/node_modules:/host-modules busybox sh -c 'cp -r /host-modules/. /node-modules-volume/ 2>/dev/null || true'
+          fi
 
       - name: 🔬 Test Devcontainer
         uses: devcontainers/ci@v0.3
