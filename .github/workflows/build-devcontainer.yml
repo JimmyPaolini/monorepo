@@ -43,6 +43,9 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: 🩹 Patch Devcontainer Configuration for CI
+        run: jq 'del(.runArgs)' .devcontainer/devcontainer.json > /tmp/devcontainer.json && mv /tmp/devcontainer.json .devcontainer/devcontainer.json
+
       - name: 🐳 Build Devcontainer
         uses: devcontainers/ci@v0.3
         with:
@@ -68,7 +71,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: � Setup Monorepo
+      - name: 🕋 Setup Monorepo
         uses: ./.github/actions/setup-monorepo
 
       - name: 🔧 Set up Docker Buildx
@@ -81,7 +84,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 📦 Create Docker Volumes for Dev Container
+      - name: 📦 Create Docker Volumes for Devcontainer
         run: |
           docker volume create monorepo-node-modules || true
           docker volume create monorepo-pnpm || true
@@ -95,6 +98,9 @@ jobs:
           if [ -d "node_modules" ]; then
             docker run --rm -v monorepo-node-modules:/node-modules-volume -v "$(pwd)"/node_modules:/host-modules busybox sh -c 'cp -r /host-modules/. /node-modules-volume/ 2>/dev/null || true'
           fi
+
+      - name: 🩹 Patch Devcontainer Configuration for CI
+        run: jq 'del(.runArgs)' .devcontainer/devcontainer.json > /tmp/devcontainer.json && mv /tmp/devcontainer.json .devcontainer/devcontainer.json
 
       - name: 🔬 Test Devcontainer
         uses: devcontainers/ci@v0.3
