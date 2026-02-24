@@ -243,16 +243,6 @@
       "source": "monorepo-pnpm",
       "target": "/home/node/.local/share/pnpm",
       "type": "volume"
-    },
-    {
-      "source": "monorepo-nx-cache",
-      "target": "${containerWorkspaceFolder}/.nx/cache",
-      "type": "volume"
-    },
-    {
-      "source": "monorepo-extensions-${devcontainerId}",
-      "target": "/root/.vscode-server/extensions",
-      "type": "volume"
     }
   ],
   "name": "Monorepo Devcontainer",

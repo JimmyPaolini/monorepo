@@ -77,21 +77,20 @@ Ports are automatically forwarded to your host machine:
 
 ## Lifecycle Scripts
 
-| Hook                | Tasks                                                                |
-| ------------------- | -------------------------------------------------------------------- |
-| `postCreateCommand` | Enable pnpm via Corepack, install dependencies, install Supabase CLI |
-| `postAttachCommand` | Verify tool versions (node, pnpm, supabase, gh, helm)                |
+| Hook                | Tasks                                                                         |
+| ------------------- | ----------------------------------------------------------------------------- |
+| `postCreateCommand` | Enable pnpm via Corepack, install dependencies, sync VS Code Machine settings |
+| `postAttachCommand` | Verify tool versions (node, pnpm, supabase, gh, helm)                         |
 
 ## Scripts
 
 The `.devcontainer/scripts` directory contains helper scripts for container setup:
 
-| Script                   | Purpose                                                              | Called From         |
-| ------------------------ | -------------------------------------------------------------------- | ------------------- |
-| `post-create-command.sh` | Enables pnpm, installs dependencies, installs Supabase CLI           | `postCreateCommand` |
-| `post-attach-command.sh` | Verifies installed tool versions (Node.js, pnpm, Supabase CLI, etc.) | `postAttachCommand` |
-
-All scripts are executable and can be run manually if needed.
+| Script                    | Purpose                                                                                               | Called From         |
+| ------------------------- | ----------------------------------------------------------------------------------------------------- | ------------------- |
+| `post-create-command.sh`  | Enables pnpm, installs dependencies                                                                   | `postCreateCommand` |
+| `post-attach-command.sh`  | Verifies installed tool versions (Node.js, pnpm, Supabase CLI, etc.)                                  | `postAttachCommand` |
+| `sync-vscode-settings.ts` | Merges `.vscode/settings.json` into VS Code Machine settings so workspace settings apply in-container | `postCreateCommand` |
 
 ## Customization
 
