@@ -276,7 +276,7 @@
   },
   "postCreateCommand": {
     "nx-setup": "pnpm exec nx reset && pnpm exec nx graph --file=.nx/graph.json 2>/dev/null || true",
-    "pnpm-install": "pnpm install --frozen-lockfile --prefer-offline",
+    "pnpm-install": "pnpm install --frozen-lockfile",
     "post-create-command": ".devcontainer/scripts/post-create-command.sh",
     "sync-settings": "pnpm exec tsx .devcontainer/scripts/sync-vscode-settings.ts write"
   },
