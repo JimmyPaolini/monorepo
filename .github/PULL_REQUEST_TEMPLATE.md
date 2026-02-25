@@ -4,15 +4,11 @@
 
 ## Details
 
-<!-- List of specific changes made -->
-
--
+- <!-- List of specific changes made -->
 
 ## Testing
 
-<!-- How to manually verify these changes work correctly -->
-
-1.
+1. <!-- How to manually verify these changes work correctly -->
 
 ## Related Issues
 
