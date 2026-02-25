@@ -46,6 +46,14 @@ jobs:
             run: npx nx affected -t spell-check --parallel=3
             upload_artifacts: false
 
+          - name: 🏛️ Sync Conventional Config
+            run: npx nx run monorepo:sync-conventional-config:check
+            upload_artifacts: false
+
+          - name: 🧩 Sync VS Code Extensions
+            run: npx nx run monorepo:sync-vscode-extensions:check
+            upload_artifacts: false
+
           - name: 🔖 Type Coverage
             run: npx nx affected -t type-coverage --parallel=3
             upload_artifacts: true
