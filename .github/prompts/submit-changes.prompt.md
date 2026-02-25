@@ -130,7 +130,7 @@ Skip if working tree is clean (`git status --porcelain` returns nothing).
 Skip if a PR already exists: `mcp_github_list_pull_requests(owner, repo, head: "<owner>:<branch>", state: "open")`
 
 - **Title**: Same as commit message
-- **Body**: Auto-generate Summary, Changes, Testing, and Related Issues sections from the diff
+- **Body**: Auto-generate Summary, Details, Testing, and Related Issues sections from the diff
 - **Create**: `mcp_github_create_pull_request(owner, repo, title, head, base: "main", body, draft: false)`
 - **Fallback**: `gh pr create --title "<title>" --body "<body>"`
 
