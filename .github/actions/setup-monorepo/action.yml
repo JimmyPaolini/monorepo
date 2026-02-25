@@ -4,7 +4,6 @@ description: Nx monorepo setup with pnpm, node, and cache management (requires c
 runs:
   using: composite
   steps:
-    # Centralized version management - update here to upgrade all workflows
     - name: 📦 Setup pnpm
       uses: pnpm/action-setup@v4
       with:

@@ -117,6 +117,7 @@ Fix the root cause directly in source code:
 
 **Guidelines:**
 
+- **Never commit or push changes** — only apply fixes locally; the user will review and commit/push manually
 - Prefer fixing the source over suppressing the error
 - If a lint rule must be disabled, use the narrowest possible scope (`// eslint-disable-next-line`)
 - For multiple related errors, fix them all in one pass

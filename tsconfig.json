@@ -3,7 +3,14 @@
     "noEmit": true,
     "skipLibCheck": true
   },
-  "exclude": ["node_modules", "dist", "applications", "packages", "tmp"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "applications",
+    "packages",
+    "tools",
+    "tmp"
+  ],
   "extends": "./tsconfig.base.json",
-  "include": ["*.ts", "scripts/**/*.ts"]
+  "include": ["*.ts", "scripts/**/*.ts", ".devcontainer/scripts/**/*.ts"]
 }

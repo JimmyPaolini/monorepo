@@ -77,21 +77,55 @@ Ports are automatically forwarded to your host machine:
 
 ## Lifecycle Scripts
 
-| Hook                | Tasks                                                                |
-| ------------------- | -------------------------------------------------------------------- |
-| `postCreateCommand` | Enable pnpm via Corepack, install dependencies, install Supabase CLI |
-| `postAttachCommand` | Verify tool versions (node, pnpm, supabase, gh, helm)                |
+| Hook                | Tasks                                                                         |
+| ------------------- | ----------------------------------------------------------------------------- |
+| `postCreateCommand` | Enable pnpm via Corepack, install dependencies, sync VS Code Machine settings |
+| `postAttachCommand` | Verify tool versions (node, pnpm, supabase, gh, helm)                         |
 
 ## Scripts
 
 The `.devcontainer/scripts` directory contains helper scripts for container setup:
 
-| Script                   | Purpose                                                              | Called From         |
-| ------------------------ | -------------------------------------------------------------------- | ------------------- |
-| `post-create-command.sh` | Enables pnpm, installs dependencies, installs Supabase CLI           | `postCreateCommand` |
-| `post-attach-command.sh` | Verifies installed tool versions (Node.js, pnpm, Supabase CLI, etc.) | `postAttachCommand` |
+| Script                    | Purpose                                                                                               | Called From         |
+| ------------------------- | ----------------------------------------------------------------------------------------------------- | ------------------- |
+| `post-create-command.sh`  | Enables pnpm, installs dependencies                                                                   | `postCreateCommand` |
+| `post-attach-command.sh`  | Verifies installed tool versions (Node.js, pnpm, Supabase CLI, etc.)                                  | `postAttachCommand` |
+| `sync-vscode-settings.ts` | Merges `.vscode/settings.json` into VS Code Machine settings so workspace settings apply in-container | `postCreateCommand` |
+| `test-devcontainer.sh`    | Validates tool versions and configuration; runnable locally and in CI                                 | Manual / CI         |
 
-All scripts are executable and can be run manually if needed.
+## Testing
+
+The `test-devcontainer.sh` script in `.devcontainer/scripts/` validates tool installations and configuration. It can be run both locally inside the container and in CI.
+
+| Check                         | What it validates                                                                             |
+| ----------------------------- | --------------------------------------------------------------------------------------------- |
+| Node.js version               | `node --version` starts with `v22.` (matches `package.json` `engines`)                        |
+| pnpm version                  | `pnpm --version` is exactly `10.20.0` (matches `package.json` `packageManager`)               |
+| Tool availability             | `nx`, `supabase`, `jq`, `yamllint`, `sqlite3` all respond                                     |
+| Container user                | Running as `node` (not root), confirming `containerUser`/`remoteUser`                         |
+| Environment variables         | `KUBECONFIG`, `NODE_OPTIONS`, `UV_THREADPOOL_SIZE` are set from `remoteEnv`                   |
+| Pinned feature versions       | `gh`, `terraform`, `tflint`, `helm`, `kubectl`, `python3` match `devcontainer.json` pins      |
+| Toolchain dependencies        | `corepack`, `tsx`, `git`, `npm`, `npx` are available                                          |
+| Post-create artifacts         | `node_modules/` and `.nx/graph.json` exist (validates `postCreateCommand` ran)                |
+| Script permissions            | All `.devcontainer/scripts/*.sh` files are executable                                         |
+| Extensions sync               | `extensions` and `recommendations` arrays in `devcontainer.json` match                        |
+| Workspace structure           | `applications/`, `packages/`, `infrastructure/`, `tools/` dirs exist (mount sanity)           |
+| Docker (DinD)                 | Docker daemon is reachable and `docker compose` is available                                  |
+| VS Code Machine settings sync | `.vscode/settings.json` is applied to Machine settings (skipped when VS Code is not attached) |
+
+### Run tests locally
+
+Open a terminal inside the devcontainer and run:
+
+```bash
+bash .devcontainer/scripts/test-devcontainer.sh
+```
+
+Exit code is `0` if all tests pass, `1` if any fail.
+
+### Run tests in CI
+
+The `test-devcontainer` job in `.github/workflows/build-devcontainer.yml` runs these tests automatically on every PR that touches `.devcontainer/**`. It builds the container image (or pulls from cache) and executes the test script inside it.
 
 ## Customization
 

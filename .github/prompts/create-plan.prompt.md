@@ -143,13 +143,11 @@ Populate every section of this template. No section may be omitted or left as pl
 
 ```md
 ---
-goal: [Concise Title Describing the Package Implementation Plan's Goal]
-version: [Optional: e.g., 1.0, Date]
-date_created: [YYYY-MM-DD]
-last_updated: [Optional: YYYY-MM-DD]
-owner: [Optional: Team/Individual responsible for this spec]
-status: 'Completed'|'In progress'|'Planned'|'Deprecated'|'On Hold'
-tags: [Optional: List of relevant tags or categories, e.g., `feature`, `upgrade`, `chore`, `architecture`, `migration`, `bug` etc]
+name: [Concise Title Describing the Package Implementation Plan's Goal]
+description: [Short description of the plan's purpose]
+created: [YYYY-MM-DD]
+updated: [YYYY-MM-DD]
+status: 'Completed'|'In progress'|'Planned'
 ---
 
 # Introduction

@@ -13,3 +13,11 @@ if [ ! -f ".env" ]; then
 else
   echo "👍 .env file already exists"
 fi
+
+pnpm install --frozen-lockfile
+
+pnpm exec tsx .devcontainer/scripts/sync-vscode-settings.ts write
+
+pnpm exec nx reset
+
+pnpm exec nx graph --file=.nx/graph.json 2>/dev/null

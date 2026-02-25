@@ -1,4 +1,4 @@
-name: 🚀 Release Projects
+name: 🦸 Release Projects
 
 on:
   push:
@@ -17,7 +17,7 @@ permissions:
 
 jobs:
   release:
-    name: 🚀 Release Projects
+    name: 🦸 Release Projects
     runs-on: ubuntu-latest
 
     steps:
