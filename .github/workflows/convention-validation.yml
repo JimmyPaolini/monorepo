@@ -64,8 +64,8 @@ jobs:
           echo "Validating ${{ matrix.input_label }}: ${{ matrix.input }}"
           ${{ matrix.command }}
 
-  sync-conventional-config:
-    name: 🏛️ Sync Conventional Config
+  conventional-config-validation:
+    name: 🏛️ Conventional Config Validation
     runs-on: ubuntu-latest
     steps:
       - name: 📥 Checkout Repository
@@ -74,5 +74,5 @@ jobs:
       - name: 🕋 Setup Monorepo
         uses: ./.github/actions/setup-monorepo
 
-      - name: 🏛️ Sync Conventional Config
+      - name: 🏛️ Conventional Config Validation
         run: npx nx run monorepo:sync-conventional-config:check
