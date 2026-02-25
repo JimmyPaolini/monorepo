@@ -423,19 +423,19 @@
   "githubPullRequests.pushBranch": "prompt",
   "githubPullRequests.queries": [
     {
-      "label": "Local 🧑‍💻",
+      "label": "🧑‍💻 Local",
       "query": "repo:${owner}/${repository} is:open author:${user}"
     },
     {
-      "label": "Agent 👤",
+      "label": "🤖 Agent",
       "query": "repo:${owner}/${repository} is:open author:copilot"
     },
     {
-      "label": "Open 📑",
+      "label": "📑 Open",
       "query": "repo:${owner}/${repository} is:open"
     },
     {
-      "label": "Closed 🚪",
+      "label": "🚪 Closed",
       "query": "repo:${owner}/${repository} -is:open"
     }
   ],

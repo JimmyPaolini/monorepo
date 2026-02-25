@@ -4,16 +4,12 @@
 
 ## Details
 
-<!-- List of specific changes made -->
-
--
+- <!-- List of specific changes made -->
 
 ## Testing
 
-<!-- How to manually verify these changes work correctly -->
-
-1.
+1. <!-- How to manually verify these changes work correctly -->
 
 ## Related Issues
 
-<!-- Link any related issues using keywords: Closes #123, Fixes #456, Related to #789 -->
+- <!-- Link any related issues using keywords: Closes #123, Fixes #456, Related to #789 -->

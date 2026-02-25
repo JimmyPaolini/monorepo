@@ -1,4 +1,4 @@
-name: 🧑‍🔧 Build Devcontainer
+name: 🧑‍🔧 Make Devcontainer
 
 on:
   push:
@@ -9,6 +9,7 @@ on:
   pull_request:
     paths:
       - ".devcontainer/**"
+      - .vscode/extensions.json
   workflow_dispatch:
     inputs:
       run_tests:
@@ -25,8 +26,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build-devcontainer:
-    name: 🐳 Build Devcontainer
+  make-devcontainer:
+    name: 🐳 Make Devcontainer
     runs-on: ubuntu-latest
 
     steps:
@@ -43,7 +44,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 🐳 Build Devcontainer
+      - name: 🐳 Make Devcontainer
         uses: devcontainers/ci@v0.3
         with:
           imageName: ghcr.io/jimmypaolini/monorepo-devcontainer
@@ -57,10 +58,23 @@ jobs:
               branches:
                 - main
 
+  vscode-extensions-validation:
+    name: 🧩 VSCode Extensions Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🕋 Setup Monorepo
+        uses: ./.github/actions/setup-monorepo
+
+      - name: 🧩 VSCode Extensions Validation
+        run: npx nx run monorepo:sync-vscode-extensions:check
+
   test-devcontainer:
     name: 🔬 Test Devcontainer
     runs-on: ubuntu-latest
-    needs: build-devcontainer
+    needs: make-devcontainer
 
     steps:
       - name: 📥 Checkout Repository

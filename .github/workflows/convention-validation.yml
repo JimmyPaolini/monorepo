@@ -17,7 +17,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - name: 🎋 Branch Validation
+          - name: 🎋 Branch Name Validation
             input: $BRANCH_NAME
             input_label: Branch Name
             command: pnpm exec validate-branch-name -t "$BRANCH_NAME"
@@ -63,3 +63,16 @@ jobs:
           fi
           echo "Validating ${{ matrix.input_label }}: ${{ matrix.input }}"
           ${{ matrix.command }}
+
+  conventional-config-validation:
+    name: 🏛️ Conventional Config Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🕋 Setup Monorepo
+        uses: ./.github/actions/setup-monorepo
+
+      - name: 🏛️ Conventional Config Validation
+        run: npx nx run monorepo:sync-conventional-config:check
