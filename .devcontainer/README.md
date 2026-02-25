@@ -102,7 +102,7 @@ The `test-devcontainer.sh` script in `.devcontainer/scripts/` validates tool ins
 | Node.js version               | `node --version` starts with `v22.` (matches `package.json` `engines`)                        |
 | pnpm version                  | `pnpm --version` is exactly `10.20.0` (matches `package.json` `packageManager`)               |
 | Tool availability             | `nx`, `supabase`, `jq`, `yamllint`, `sqlite3` all respond                                     |
-| Container user                | Running as `node` (not root), confirming `containerUser`/`remoteUser`                         |
+| Container user                | Running as `root`, confirming `containerUser`/`remoteUser`                                    |
 | Environment variables         | `KUBECONFIG`, `NODE_OPTIONS`, `UV_THREADPOOL_SIZE` are set from `remoteEnv`                   |
 | Pinned feature versions       | `gh`, `terraform`, `tflint`, `helm`, `kubectl`, `python3` match `devcontainer.json` pins      |
 | Toolchain dependencies        | `corepack`, `tsx`, `git`, `npm`, `npx` are available                                          |
@@ -186,7 +186,7 @@ The container uses Docker-in-Docker (DinD) with an isolated Docker daemon:
 
 1. Verify the DinD daemon is running: `docker info`
 2. If daemon not running, rebuild the container: `Dev Containers: Rebuild Container`
-3. Container user (`node`) should have docker group membership automatically
+3. Container user (`root`) should have docker group membership automatically
 
 ### DNS/Network issues in Docker-in-Docker
 
