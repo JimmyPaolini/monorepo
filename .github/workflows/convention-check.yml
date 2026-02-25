@@ -51,19 +51,6 @@ jobs:
       - name: 🕋 Setup Monorepo
         uses: ./.github/actions/setup-monorepo
 
-  sync-conventional-config:
-    name: 🏛️ Sync Conventional Config
-    runs-on: ubuntu-latest
-    steps:
-      - name: 📥 Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: 🕋 Setup Monorepo
-        uses: ./.github/actions/setup-monorepo
-
-      - name: 🏛️ Sync Conventional Config
-        run: npx nx run monorepo:sync-conventional-config:check
-
       - name: ${{ matrix.name }}
         env:
           BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
@@ -76,3 +63,16 @@ jobs:
           fi
           echo "Validating ${{ matrix.input_label }}: ${{ matrix.input }}"
           ${{ matrix.command }}
+
+  sync-conventional-config:
+    name: 🏛️ Sync Conventional Config
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🕋 Setup Monorepo
+        uses: ./.github/actions/setup-monorepo
+
+      - name: 🏛️ Sync Conventional Config
+        run: npx nx run monorepo:sync-conventional-config:check
