@@ -9,6 +9,7 @@ on:
   pull_request:
     paths:
       - ".devcontainer/**"
+      - .vscode/extensions.json
   workflow_dispatch:
     inputs:
       run_tests:
@@ -56,6 +57,19 @@ jobs:
             push:
               branches:
                 - main
+
+  sync-vscode-extensions:
+    name: 🧩 Sync VSCode Extensions
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🕋 Setup Monorepo
+        uses: ./.github/actions/setup-monorepo
+
+      - name: 🧩 Sync VS Code Extensions
+        run: npx nx run monorepo:sync-vscode-extensions:check
 
   test-devcontainer:
     name: 🔬 Test Devcontainer
