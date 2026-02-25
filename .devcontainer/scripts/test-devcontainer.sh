@@ -11,12 +11,26 @@ set -uo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WORKSPACE_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
+DEVCONTAINER_JSON="${WORKSPACE_ROOT}/.devcontainer/devcontainer.json"
+PACKAGE_JSON="${WORKSPACE_ROOT}/package.json"
 
-# ── Expected pinned versions (read from package.json as the single source of truth) ─
-NODE_MAJOR="22"
-PNPM_VERSION="$(node -e "console.log(require('${WORKSPACE_ROOT}/package.json').packageManager.split('@')[1])")"
+#region 📌 Expected pinned versions (single sources of truth: package.json & devcontainer.json)
+NODE_MAJOR="$(jq -r '.features["ghcr.io/devcontainers/features/node:1"].version' "${DEVCONTAINER_JSON}")"
+PNPM_VERSION="$(jq -r '.packageManager | split("@")[1]' "${PACKAGE_JSON}")"
+EXPECTED_NX_VERSION="$(jq -r '.features["ghcr.io/devcontainers-extra/features/nx-npm:1"].version' "${DEVCONTAINER_JSON}")"
+EXPECTED_GH_VERSION="$(jq -r '.features["ghcr.io/devcontainers/features/github-cli:1"].version' "${DEVCONTAINER_JSON}")"
+EXPECTED_SUPABASE_VERSION="$(jq -r '.features["ghcr.io/devcontainers-extra/features/supabase-cli:1"].version' "${DEVCONTAINER_JSON}")"
+EXPECTED_TERRAFORM_VERSION="$(jq -r '.features["ghcr.io/devcontainers/features/terraform:1"].version' "${DEVCONTAINER_JSON}")"
+EXPECTED_TFLINT_VERSION="$(jq -r '.features["ghcr.io/devcontainers/features/terraform:1"].tflint' "${DEVCONTAINER_JSON}")"
+EXPECTED_HELM_VERSION="$(jq -r '.features["ghcr.io/devcontainers/features/kubectl-helm-minikube:1"].helm' "${DEVCONTAINER_JSON}")"
+EXPECTED_KUBECTL_VERSION="$(jq -r '.features["ghcr.io/devcontainers/features/kubectl-helm-minikube:1"].version' "${DEVCONTAINER_JSON}")"
+EXPECTED_PYTHON_MAJOR_MINOR="$(jq -r '.features["ghcr.io/devcontainers/features/python:1"].version' "${DEVCONTAINER_JSON}")"
+EXPECTED_YAMLLINT_VERSION="$(jq -r '.features["ghcr.io/devcontainers-extra/features/yamllint:2"].version' "${DEVCONTAINER_JSON}")"
+EXPECTED_JQ_VERSION="$(jq -r '.features["ghcr.io/eitsupi/devcontainer-features/jq-likes:2"].jqVersion' "${DEVCONTAINER_JSON}")"
+EXPECTED_SQLITE_VERSION="$(jq -r '.features["ghcr.io/warrenbuckley/codespace-features/sqlite:1"].version' "${DEVCONTAINER_JSON}")"
+#endregion
 
-# ── Assertion helpers ────────────────────────────────────────────────────────
+#region 🛠️ Assertion helpers
 PASS=0
 FAIL=0
 
@@ -45,25 +59,28 @@ assert_available() {
 }
 
 # assert_version_contains <label> <expected_substring> <command>
-# Checks that the first output line of <command> contains <expected_substring>.
+# Checks that the output of <command> contains <expected_substring>.
 assert_version_contains() {
   local label="$1"
   local expected="$2"
   local cmd="$3"
-  local all_output actual
+  local all_output
   all_output=$(eval "$cmd" 2>&1) || true
-  actual=$(echo "$all_output" | head -1)
-  if echo "$actual" | grep -qF "$expected"; then
-    pass "$label version matches ($actual)"
+  if echo "$all_output" | grep -qF "$expected"; then
+    local match_line
+    match_line=$(echo "$all_output" | grep -F "$expected" | head -1 | xargs)
+    pass "$label version matches ($match_line)"
   else
-    fail "$label version mismatch: expected '$expected', got '$actual'"
+    local first_line
+    first_line=$(echo "$all_output" | head -1)
+    fail "$label version mismatch: expected '$expected', got '$first_line'"
   fi
 }
+#endregion
 
-# ── Tests ────────────────────────────────────────────────────────────────────
-
+#region 🟢 Version-pinned tools
 echo ""
-echo "🟢 Node.js — must be v${NODE_MAJOR}.x (matches package.json engines)"
+echo "🟢 Node.js — must be v${NODE_MAJOR}.x (matches devcontainer.json node feature)"
 assert_version_contains "node" "v${NODE_MAJOR}." "node --version"
 
 echo ""
@@ -71,49 +88,51 @@ echo "📦 pnpm — must be ${PNPM_VERSION} (matches package.json packageManager
 assert_version_contains "pnpm" "${PNPM_VERSION}" "pnpm --version"
 
 echo ""
-echo "🕋 Nx CLI"
-assert_available "nx" "nx --version"
+echo "🕋 Nx CLI — must be ${EXPECTED_NX_VERSION}"
+assert_version_contains "nx" "${EXPECTED_NX_VERSION}" "nx --version"
 
 echo ""
-echo "🐙 GitHub CLI"
-assert_available "gh" "gh --version"
+echo "🐙 GitHub CLI — must be ${EXPECTED_GH_VERSION}"
+assert_version_contains "gh" "${EXPECTED_GH_VERSION}" "gh --version"
 
 echo ""
-echo "⚡ Supabase CLI"
-assert_available "supabase" "supabase --version"
+echo "⚡ Supabase CLI — must be ${EXPECTED_SUPABASE_VERSION}"
+assert_version_contains "supabase" "${EXPECTED_SUPABASE_VERSION}" "supabase --version"
 
 echo ""
-echo "☸️  kubectl"
-assert_available "kubectl" "kubectl version --client"
+echo "🏗️  Terraform — must be ${EXPECTED_TERRAFORM_VERSION}"
+assert_version_contains "terraform" "${EXPECTED_TERRAFORM_VERSION}" "terraform version"
 
 echo ""
-echo "⛵ Helm"
-assert_available "helm" "helm version --short"
+echo "🧪 tflint — must be ${EXPECTED_TFLINT_VERSION}"
+assert_version_contains "tflint" "${EXPECTED_TFLINT_VERSION}" "tflint --version"
 
 echo ""
-echo "🏗️  Terraform"
-assert_available "terraform" "terraform version"
+echo "⛵ Helm — must be ${EXPECTED_HELM_VERSION}"
+assert_version_contains "helm" "${EXPECTED_HELM_VERSION}" "helm version --short"
 
 echo ""
-echo "🧪 tflint"
-assert_available "tflint" "tflint --version"
+echo "☸️  kubectl — must be v${EXPECTED_KUBECTL_VERSION}"
+assert_version_contains "kubectl" "v${EXPECTED_KUBECTL_VERSION}" "kubectl version --client"
 
 echo ""
-echo "💻 Python"
-assert_available "python3" "python3 --version"
+echo "🐍 Python — must be ${EXPECTED_PYTHON_MAJOR_MINOR}.x"
+assert_version_contains "python3" "Python ${EXPECTED_PYTHON_MAJOR_MINOR}." "python3 --version"
 
 echo ""
-echo "📋 jq"
-assert_available "jq" "jq --version"
+echo "📋 jq — must be ${EXPECTED_JQ_VERSION}"
+assert_version_contains "jq" "${EXPECTED_JQ_VERSION}" "jq --version"
 
 echo ""
-echo "📄 yamllint"
-assert_available "yamllint" "yamllint --version"
+echo "📄 yamllint — must be ${EXPECTED_YAMLLINT_VERSION}"
+assert_version_contains "yamllint" "${EXPECTED_YAMLLINT_VERSION}" "yamllint --version"
 
 echo ""
-echo "🗄️  SQLite"
-assert_available "sqlite3" "sqlite3 --version"
+echo "🗄️  SQLite — must be ${EXPECTED_SQLITE_VERSION}"
+assert_version_contains "sqlite3" "${EXPECTED_SQLITE_VERSION}" "sqlite3 --version"
+#endregion
 
+#region 🐳 Docker (DinD)
 echo ""
 echo "🐳 Docker (DinD)"
 if docker info > /dev/null 2>&1; then
@@ -124,24 +143,137 @@ if docker info > /dev/null 2>&1; then
 else
   echo "  ⚠️  Docker daemon not reachable — skipping Docker tests (DinD only runs inside the devcontainer)"
 fi
+#endregion
+
+#region 🔒 Security
+echo ""
+echo "🔒 Container user (must be 'node', not root)"
+CURRENT_USER="$(whoami)"
+CURRENT_UID="$(id -u)"
+if [ "${CURRENT_USER}" = "node" ]; then
+  pass "running as user '${CURRENT_USER}' (uid=${CURRENT_UID})"
+else
+  fail "expected user 'node', got '${CURRENT_USER}' (uid=${CURRENT_UID})"
+fi
+#endregion
+
+#region 🌍 Environment variables
+echo ""
+echo "🌍 Environment variables (remoteEnv)"
+for ENV_VAR in KUBECONFIG NODE_OPTIONS UV_THREADPOOL_SIZE; do
+  if [ -n "${!ENV_VAR+x}" ]; then
+    pass "${ENV_VAR} is set (${!ENV_VAR})"
+  else
+    fail "${ENV_VAR} is not set"
+  fi
+done
+#endregion
+
+#region 🔧 Toolchain dependencies
+echo ""
+echo "🔧 Corepack (pnpm activation)"
+assert_available "corepack" "corepack --version"
 
 echo ""
-echo "⚙️  VS Code Machine settings sync"
-MACHINE_SETTINGS="/home/node/.vscode-server/data/Machine/settings.json"
-if [ ! -f "${MACHINE_SETTINGS}" ]; then
-  echo "  ⚠️  Machine settings file not found — skipping (only applies when VS Code is attached)"
-elif [ ! -d "${WORKSPACE_ROOT}/node_modules" ]; then
-  echo "  ⚠️  node_modules not installed — skipping (run pnpm install first)"
+echo "⚙️  tsx (lifecycle scripts)"
+assert_available "tsx" "pnpm exec tsx --version"
+
+echo ""
+echo "📝 Git"
+assert_available "git" "git --version"
+
+echo ""
+echo "📦 npm/npx"
+assert_available "npm" "npm --version"
+assert_available "npx" "npx --version"
+#endregion
+
+#region 📂 Post-create artifacts
+echo ""
+echo "📂 Post-create artifacts"
+if [ -d "${WORKSPACE_ROOT}/node_modules" ]; then
+  pass "node_modules/ exists"
 else
-  SYNC_OUTPUT=$(cd "${WORKSPACE_ROOT}" && pnpm exec tsx .devcontainer/scripts/sync-vscode-settings.ts check 2>&1) || true
-  if echo "${SYNC_OUTPUT}" | grep -q "✅"; then
-    pass "VS Code Machine settings are in sync"
+  fail "node_modules/ not found (postCreateCommand may not have run)"
+fi
+if [ -f "${WORKSPACE_ROOT}/.nx/graph.json" ]; then
+  pass ".nx/graph.json exists"
+else
+  fail ".nx/graph.json not found (nx graph may not have run)"
+fi
+#endregion
+
+#region 🔑 Script permissions
+echo ""
+echo "🔑 Script permissions"
+SCRIPTS_DIR="${WORKSPACE_ROOT}/.devcontainer/scripts"
+for SCRIPT in "${SCRIPTS_DIR}"/*.sh; do
+  SCRIPT_NAME="$(basename "${SCRIPT}")"
+  if [ -x "${SCRIPT}" ]; then
+    pass "${SCRIPT_NAME} is executable"
   else
-    fail "VS Code Machine settings are out of sync — run: pnpm exec tsx .devcontainer/scripts/sync-vscode-settings.ts write"
+    fail "${SCRIPT_NAME} is not executable"
+  fi
+done
+#endregion
+
+#region 🗂️ Workspace structure
+echo ""
+echo "🗂️  Workspace structure (mount sanity check)"
+for DIR in applications packages infrastructure tools; do
+  if [ -d "${WORKSPACE_ROOT}/${DIR}" ]; then
+    pass "${DIR}/ exists"
+  else
+    fail "${DIR}/ not found (workspace mount may be incorrect)"
+  fi
+done
+#endregion
+
+#region 🧩 Extensions list consistency
+echo ""
+echo "🧩 VS Code extensions / recommendations sync"
+if SYNC_OUTPUT=$(cd "${WORKSPACE_ROOT}" && pnpm exec tsx scripts/sync-vscode-extensions.ts check 2>&1); then
+  pass "VS Code extensions are in sync"
+else
+  fail "VS Code extensions are out of sync — run: pnpm exec tsx scripts/sync-vscode-extensions.ts write"
+fi
+#endregion
+
+#region 🧩 Extensions installation verification
+echo ""
+echo "🧩 VS Code extensions installation verification"
+if ! command -v code &> /dev/null; then
+  echo "  ⚠️  'code' CLI not available — skipping (only available when VS Code Server is running)"
+else
+  EXPECTED_EXTENSIONS=$(jq -r '.customizations.vscode.extensions[]' "${DEVCONTAINER_JSON}" | tr '[:upper:]' '[:lower:]' | sort)
+  INSTALLED_EXTENSIONS=$(code --list-extensions 2>&1 | tail -n +2 | tr '[:upper:]' '[:lower:]' | sort)
+  MISSING_EXTENSIONS=$(comm -23 <(echo "${EXPECTED_EXTENSIONS}") <(echo "${INSTALLED_EXTENSIONS}"))
+  MISSING_COUNT=$(echo "${MISSING_EXTENSIONS}" | grep -c . || true)
+
+  if [ "${MISSING_COUNT}" -eq 0 ]; then
+    EXPECTED_COUNT=$(echo "${EXPECTED_EXTENSIONS}" | wc -l | tr -d ' ')
+    INSTALLED_COUNT=$(echo "${INSTALLED_EXTENSIONS}" | wc -l | tr -d ' ')
+    pass "all ${EXPECTED_COUNT} expected extensions are installed (${INSTALLED_COUNT} total)"
+  else
+    fail "${MISSING_COUNT} extension(s) not installed:"
+    echo "${MISSING_EXTENSIONS}" | while IFS= read -r ext; do
+      echo "         - ${ext}"
+    done
   fi
 fi
+#endregion
 
-# ── Summary ──────────────────────────────────────────────────────────────────
+#region ⚙️ VS Code Machine settings sync
+echo ""
+echo "⚙️  VS Code Machine settings sync"
+if SYNC_OUTPUT=$(cd "${WORKSPACE_ROOT}" && pnpm exec tsx .devcontainer/scripts/sync-vscode-settings.ts check 2>&1); then
+  pass "VS Code Machine settings are in sync"
+else
+  fail "VS Code Machine settings are out of sync — run: pnpm exec tsx .devcontainer/scripts/sync-vscode-settings.ts write"
+fi
+#endregion
+
+#region 📊 Summary
 echo ""
 echo "────────────────────────────────────────"
 TOTAL=$((PASS + FAIL))
@@ -154,3 +286,4 @@ if [ "${FAIL}" -gt 0 ]; then
 fi
 
 echo "✅ All ${PASS} tests passed"
+#endregion

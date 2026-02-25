@@ -97,13 +97,21 @@ The `.devcontainer/scripts` directory contains helper scripts for container setu
 
 The `test-devcontainer.sh` script in `.devcontainer/scripts/` validates tool installations and configuration. It can be run both locally inside the container and in CI.
 
-| Check                         | What it validates                                                                                                    |
-| ----------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Node.js version               | `node --version` starts with `v22.` (matches `package.json` `engines`)                                               |
-| pnpm version                  | `pnpm --version` is exactly `10.20.0` (matches `package.json` `packageManager`)                                      |
-| Tool availability             | `nx`, `gh`, `supabase`, `kubectl`, `helm`, `terraform`, `tflint`, `python3`, `jq`, `yamllint`, `sqlite3` all respond |
-| Docker (DinD)                 | Docker daemon is reachable and `docker compose` is available                                                         |
-| VS Code Machine settings sync | `.vscode/settings.json` is applied to Machine settings (skipped when VS Code is not attached)                        |
+| Check                         | What it validates                                                                             |
+| ----------------------------- | --------------------------------------------------------------------------------------------- |
+| Node.js version               | `node --version` starts with `v22.` (matches `package.json` `engines`)                        |
+| pnpm version                  | `pnpm --version` is exactly `10.20.0` (matches `package.json` `packageManager`)               |
+| Tool availability             | `nx`, `supabase`, `jq`, `yamllint`, `sqlite3` all respond                                     |
+| Container user                | Running as `node` (not root), confirming `containerUser`/`remoteUser`                         |
+| Environment variables         | `KUBECONFIG`, `NODE_OPTIONS`, `UV_THREADPOOL_SIZE` are set from `remoteEnv`                   |
+| Pinned feature versions       | `gh`, `terraform`, `tflint`, `helm`, `kubectl`, `python3` match `devcontainer.json` pins      |
+| Toolchain dependencies        | `corepack`, `tsx`, `git`, `npm`, `npx` are available                                          |
+| Post-create artifacts         | `node_modules/` and `.nx/graph.json` exist (validates `postCreateCommand` ran)                |
+| Script permissions            | All `.devcontainer/scripts/*.sh` files are executable                                         |
+| Extensions sync               | `extensions` and `recommendations` arrays in `devcontainer.json` match                        |
+| Workspace structure           | `applications/`, `packages/`, `infrastructure/`, `tools/` dirs exist (mount sanity)           |
+| Docker (DinD)                 | Docker daemon is reachable and `docker compose` is available                                  |
+| VS Code Machine settings sync | `.vscode/settings.json` is applied to Machine settings (skipped when VS Code is not attached) |
 
 ### Run tests locally
 
