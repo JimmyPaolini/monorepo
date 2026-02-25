@@ -1,0 +1,244 @@
+---
+name: Static Analysis Tools Expansion — Gitleaks, eslint-plugin-unicorn, Sherif, Syncpack, Trivy, Stylelint
+description: Add six new static analysis tools to the monorepo across secret detection, code quality, monorepo hygiene, dependency consistency, container security, and CSS linting
+created: 2026-02-25
+updated: 2026-02-25
+status: 'Planned'
+---
+
+# Introduction
+
+![Status: Planned](https://img.shields.io/badge/status-Planned-blue)
+
+This plan adds six new static analysis tools to the monorepo, organized in seven implementation phases by priority. The tools address critical gaps in secret detection (Gitleaks), code quality (eslint-plugin-unicorn), monorepo hygiene (Sherif), dependency consistency (Syncpack), container security (Trivy), and CSS linting (Stylelint). Each tool integrates with the existing Nx task runner, CI/CD workflows, and pre-commit/pre-push hooks following established patterns from the first static analysis expansion (`documentation/planning/static-analysis-tools-implementation.md`).
+
+Key scope adjustments from the original prompt (`documentation/planning/feature-static-analysis-tools-expansion-1.prompt.md`):
+
+- **Stylelint targets `lexico-components`** (where `globals.css` actually lives), not `applications/lexico` (which has zero CSS files)
+- **Documentation lives in config file comments** — no centralized `documentation/static-analysis-tools.md` file. Each tool's config file includes JSDoc/comment header blocks following the established `.dependency-cruiser.cjs` and `eslint.config.base.ts` pattern (purpose, usage, CI reference, `@see` link)
+- **Syncpack and Stylelint use `.cjs` config format** (`.syncpackrc.cjs`, `.stylelintrc.cjs`) instead of `.json` — enables inline documentation comments matching the `.dependency-cruiser.cjs` pattern
+- **Gitleaks local scanning** uses `pnpm dlx @gitleaks/gitleaks` npm wrapper for pre-push hook integration (no Go toolchain required)
+- **Trivy scope** covers only the caelundas Dockerfile and `infrastructure/terraform/` (Helm charts excluded)
+
+## 1. Requirements & Constraints
+
+- **REQ-001**: All new tools must integrate as Nx targets with caching support via `nx.json` `targetDefaults` using the `executor: "nx:run-commands"` pattern established in the existing `spell-check`, `markdown-lint`, `yaml-lint`, `format`, `knip`, `license-check` targets
+- **REQ-002**: Each tool must have a CI workflow job — either a new dedicated workflow (Gitleaks, Trivy) or a matrix entry in the existing `code-analysis.yml` (Sherif, Syncpack, Stylelint)
+- **REQ-003**: Tools with auto-fix capability must support the existing `configurations.check` / `configurations.write` pattern (read-only in CI, auto-fix locally) — applies to eslint-plugin-unicorn (via existing lint target), Stylelint
+- **REQ-004**: All npm packages for workspace-wide tools must be installed as root `devDependencies` using `pnpm add -w -D`. Project-specific tools (Stylelint for `lexico-components`) use `pnpm add --filter <project> -D`
+- **REQ-005**: Binary tools (Gitleaks, Sherif, Trivy) must be invoked via `pnpm dlx` or GitHub Actions — no Go/Rust toolchain required in the dev container
+- **REQ-006**: All new tool configuration files must include comprehensive inline documentation comments following the established codebase pattern (see `.dependency-cruiser.cjs`, `eslint.config.base.ts`, `.markdownlint-cli2.jsonc`, `prettier.config.ts`). Each config file must include: tool purpose, usage commands (`check`/`fix`), CI workflow reference, and `@see` link to official documentation. Syncpack and Stylelint configs use `.cjs` format (not `.json`) to enable comments
+- **REQ-007**: New cspell dictionary words must be added to `cspell.config.yaml` for all tool-specific terminology: `gitleaks`, `gitleaksignore`, `sherif`, `syncpack`, `syncpackrc`, `stylelint`, `stylelintrc`, `trivy`, `trivyignore`, `iac`
+- **SEC-001**: Gitleaks must scan the full git history on CI (`actions/checkout@v4` with `fetch-depth: 0`) and staged changes in the pre-push hook
+- **SEC-002**: Trivy must scan the caelundas Dockerfile (`applications/caelundas/Dockerfile`) for image vulnerabilities and `infrastructure/terraform/` for IaC misconfigurations
+- **CON-001**: ESLint flat config only — no legacy `.eslintrc` formats. `eslint-plugin-unicorn` v63.0.0 requires ESLint >= 9.20.0; current version is 9.39.1, which satisfies the requirement. The plugin config must be inserted between the Nx plugin configs and the main TS/JS configuration block, before `eslintConfigPrettier` (which must remain last)
+- **CON-002**: Stylelint applies only to `packages/lexico-components` (the only project with CSS files — `src/styles/globals.css`). The original prompt specified `applications/lexico` but that project has zero CSS files
+- **CON-003**: Sherif v1.10.0 is a Rust binary distributed via npm platform-specific packages — invoked via `pnpm dlx sherif@1.10.0` with no native compilation needed
+- **CON-004**: Syncpack v13.0.4 is the stable JavaScript release; v14 alpha is a Rust rewrite and not production-ready
+- **CON-005**: Gitleaks GitHub Action v2 is free for personal GitHub accounts (no `GITLEAKS_LICENSE` secret required). The monorepo is under `JimmyPaolini` personal account
+- **CON-006**: No `--no-verify` usage allowed — all hooks and checks must pass legitimately (enforced by `AGENTS.md`)
+- **CON-007**: Security scan targets (`gitleaks`, `pnpm-audit`) use `cache: false` in Nx since security scans must always run fresh. The existing `pnpm-audit` target in `project.json` sets this precedent
+- **CON-008**: Tailwind CSS v3.4 (not v4) is used in `lexico-components`; Stylelint Tailwind config must be compatible with v3 directives (`@tailwind`, `@apply`, `@layer`, `@config`, `@screen`, `@variants`, `@responsive`, `@utility`)
+- **GUD-001**: Follow the existing Nx `targetDefaults` pattern: `executor: "nx:run-commands"`, `cache: true|false`, `inputs` array for cache invalidation, optional `configurations.check`/`configurations.write`
+- **GUD-002**: Follow the existing CI matrix pattern from `code-analysis.yml`: `{ name: "<emoji> <Name>", run: "<command>", upload_artifacts: false }` with `fail-fast: false`
+- **GUD-003**: Use the `recommended` preset for `eslint-plugin-unicorn` and disable rules that conflict with existing conventions (PascalCase components, null usage, CJS config files, CLI `process.exit`)
+- **GUD-004**: New workflow files (Gitleaks, Trivy) follow the established pattern: `actions/checkout@v4` → `.github/actions/setup-monorepo` composite action (where applicable) → run check
+- **PAT-001**: Git hook integration pattern: `lint-staged.config.ts` for pre-commit (per-file-type globs returning `nx affected` commands), `.husky/pre-push` for pre-push (direct command execution — currently just `pnpm exec validate-branch-name`)
+- **PAT-002**: Monorepo-level tools (Sherif, Syncpack) are added as targets in root `project.json` (like `license-check`, `pnpm-audit`) and optionally in `code-analysis` composite target
+- **PAT-003**: Project-level tools (Stylelint) are added to the specific project's `project.json` with an empty `{}` target that inherits from `nx.json` `targetDefaults`
+- **PAT-004**: Tool config files that need inline documentation use `.cjs` or `.ts` format (not `.json`) to enable comments. Existing examples: `.dependency-cruiser.cjs`, `eslint.config.base.ts`, `knip.config.ts`, `prettier.config.ts`. TOML (`.gitleaks.toml`) and ignore files (`.gitleaksignore`, `.trivyignore`) natively support `#` comments
+
+## 2. Implementation Steps
+
+### Implementation Phase 1: Secret Detection (Gitleaks)
+
+- GOAL-001: Add Gitleaks secret scanning to the monorepo as both a CI workflow and local pre-push check, scanning the full git history in CI and staged changes locally
+
+| Task     | Description | Completed | Date |
+| -------- | ----------- | --------- | ---- |
+| TASK-001 | Create `.gitleaks.toml` at workspace root. Extend the default config with `[extend] useDefault = true`. Add `[[allowlists]]` entries to ignore `pnpm-lock.yaml`, `*.tfstate`, `*.tfstate.backup`, test fixtures (`**/testing/**`), and paths matching `*.snap`. Add `[allowlist]` for the `.gitleaksignore` file itself | | |
+| TASK-002 | Create `.gitleaksignore` at workspace root with a header comment explaining usage: `# Add Gitleaks fingerprints for known false positives (one per line)`. Initially empty | | |
+| TASK-003 | Create `.github/workflows/gitleaks.yml` workflow with: `name: "🔐 Gitleaks Secret Scan"`, trigger on `push` (branches: `main`) and `pull_request`, concurrency group, `actions/checkout@v4` with `fetch-depth: 0`, `gitleaks/gitleaks-action@v2` with env `GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}` | | |
+| TASK-004 | Update `.husky/pre-push` to run `pnpm dlx @gitleaks/gitleaks git --staged --verbose --redact --exit-code 1` **before** the existing `pnpm exec validate-branch-name` command. This ensures secrets are caught before branch name validation | | |
+| TASK-005 | Add `gitleaks`, `gitleaksignore` to the `words` list in `cspell.config.yaml` (alphabetically sorted, matching existing convention) | | |
+
+### Implementation Phase 2: ESLint Plugin Unicorn
+
+- GOAL-002: Add `eslint-plugin-unicorn` v63.0.0 to the ESLint flat config with the `recommended` preset, selectively disabling rules that conflict with existing conventions, and fix all auto-fixable lint errors
+
+| Task     | Description | Completed | Date |
+| -------- | ----------- | --------- | ---- |
+| TASK-006 | Install `eslint-plugin-unicorn` as a root devDependency: `pnpm add -w -D eslint-plugin-unicorn@^63.0.0` | | |
+| TASK-007 | Add import statement to `eslint.config.base.ts`: `import eslintPluginUnicorn from "eslint-plugin-unicorn";` — insert after the existing `eslint-plugin-yml` import (currently the last plugin import near line 16) | | |
+| TASK-008 | Add `eslintPluginUnicorn.configs.recommended` spread to the ESLint config array in `eslint.config.base.ts`. Scope it to `files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts", "**/*.js", "**/*.mjs", "**/*.cjs", "**/*.jsx"]`. Place it after the Nx plugin configs (`nxPlugin.configs["flat/react-typescript"]`, `nxPlugin.configs["flat/javascript"]`) and before the global TS/JS configuration block. It must come before `eslintConfigPrettier` which must remain the last entry | | |
+| TASK-009 | Add a unicorn rule override block immediately after the recommended config spread in `eslint.config.base.ts`. Disable conflicting rules: `"unicorn/filename-case": "off"` (conflicts with PascalCase React components and kebab-case filenames), `"unicorn/no-null": "off"` (null is used extensively throughout the codebase), `"unicorn/prevent-abbreviations": "off"` (conflicts with existing naming like `ctx`, `env`, `req`, `res`), `"unicorn/no-array-reduce": "off"` (reduce is used in pipeline code), `"unicorn/no-array-for-each": "off"` (forEach used in some patterns), `"unicorn/prefer-module": "off"` (CJS config files exist: `.cjs` files), `"unicorn/no-process-exit": "off"` (caelundas CLI uses `process.exit`), `"unicorn/prefer-top-level-await": "off"` (not all entry points support TLA), `"unicorn/no-nested-ternary": "off"` (ESLint core rule handles this) | | |
+| TASK-010 | Add unicorn rule relaxations for test files in `eslint.config.base.ts` — scope to `files: ["**/*.test.ts", "**/*.spec.ts", "**/testing/**"]`: `"unicorn/consistent-function-scoping": "off"`, `"unicorn/no-useless-undefined": "off"` | | |
+| TASK-011 | Add unicorn rule relaxations for JS config files in `eslint.config.base.ts` — scope to `files: ["**/*.js", "**/*.mjs", "**/*.cjs"]`: `"unicorn/prefer-module": "off"` (redundant with TASK-009 global disable but explicit for clarity in config file scope) | | |
+| TASK-012 | Run `nx run-many -t lint --all` to identify new lint errors. Fix auto-fixable issues with `nx run-many -t lint --all --configuration=write`. Document and manually fix remaining errors. Iterate until `nx run-many -t lint --all --configuration=check` exits cleanly | | |
+
+### Implementation Phase 3: Sherif (Monorepo Linter)
+
+- GOAL-003: Add Sherif v1.10.0 as a zero-config monorepo structure linter to enforce consistent `package.json` conventions across all workspaces
+
+| Task     | Description | Completed | Date |
+| -------- | ----------- | --------- | ---- |
+| TASK-013 | Add Sherif configuration to root `package.json` under `"sherif"` field: `{ "ignoreRule": ["root-package-private-field"], "ignoreDependency": [] }`. Ignore `root-package-private-field` since the root package is implicitly private via `pnpm-workspace.yaml` | | |
+| TASK-014 | Run `pnpm dlx sherif@1.10.0` locally to identify existing issues. Fix all errors using `pnpm dlx sherif@1.10.0 --fix` where possible. For issues that cannot be auto-fixed (e.g., root `dependencies` that should be `devDependencies`), manually move `@types/lodash`, `jiti`, `json5`, `lodash`, `tslib` from `dependencies` to `devDependencies` in root `package.json` if Sherif flags them. Run `pnpm install` after changes | | |
+| TASK-015 | Add `sherif` as a matrix entry in `.github/workflows/code-analysis.yml`: `{ name: "🤠 Monorepo Lint (Sherif)", run: "pnpm dlx sherif@1.10.0", upload_artifacts: false }` — insert after the existing Spell Check entry | | |
+| TASK-016 | Add `sherif` to the `words` list in `cspell.config.yaml` | | |
+
+### Implementation Phase 4: Syncpack (Dependency Version Consistency)
+
+- GOAL-004: Add Syncpack v13.0.4 to enforce consistent dependency versions and semver range formats across all workspace packages
+
+| Task     | Description | Completed | Date |
+| -------- | ----------- | --------- | ---- |
+| TASK-017 | Install `syncpack` as a root devDependency: `pnpm add -w -D syncpack@^13.0.4` | | |
+| TASK-018 | Create `.syncpackrc.cjs` at workspace root (CJS format for inline documentation comments). Include a JSDoc header block with: tool purpose ("Enforce consistent dependency versions and semver range formats"), usage commands (`syncpack lint`, `syncpack fix-mismatches`, `syncpack set-semver-ranges`), CI workflow reference (`code-analysis.yml`), and `@see https://jamiemason.github.io/syncpack/`. Export config: `source: ["package.json", "applications/*/package.json", "packages/*/package.json", "tools/*/package.json"]`, `versionGroups: [{ label: "Use workspace protocol for internal packages", packages: ["**"], dependencies: ["@monorepo/*"], dependencyTypes: ["dev", "prod"], pinVersion: "workspace:*" }]`, `semverGroups: [{ range: "^", dependencies: ["**"], packages: ["**"] }]` | | |
+| TASK-019 | Run `pnpm exec syncpack lint` locally to identify existing version mismatches. Fix issues using `pnpm exec syncpack fix-mismatches` and `pnpm exec syncpack set-semver-ranges`. Run `pnpm install` afterward to update the lockfile | | |
+| TASK-020 | Add `syncpack-lint` as a matrix entry in `.github/workflows/code-analysis.yml`: `{ name: "📦 Syncpack Lint", run: "pnpm exec syncpack lint", upload_artifacts: false }` — insert after the Sherif entry | | |
+| TASK-021 | Add `syncpack`, `syncpackrc` to the `words` list in `cspell.config.yaml` | | |
+
+### Implementation Phase 5: Trivy (Container & IaC Security Scanning)
+
+- GOAL-005: Add Trivy security scanning for the caelundas Docker image and Terraform IaC configurations in a dedicated CI workflow that triggers only on relevant file changes
+
+| Task     | Description | Completed | Date |
+| -------- | ----------- | --------- | ---- |
+| TASK-022 | Create `.github/workflows/security-scan.yml` workflow with: `name: "🛡️ Security Scan"`, trigger on `push` (branches: `main`, paths: `applications/caelundas/Dockerfile`, `infrastructure/terraform/**`) and `pull_request` (same paths filter), `concurrency` group. Define two jobs: `trivy-docker` and `trivy-iac` | | |
+| TASK-023 | `trivy-docker` job definition: `runs-on: ubuntu-latest`, steps: `actions/checkout@v4`, `.github/actions/setup-monorepo`, `docker build -t caelundas:scan -f applications/caelundas/Dockerfile .`, then `aquasecurity/trivy-action@master` with `image-ref: caelundas:scan`, `format: table`, `severity: CRITICAL,HIGH`, `exit-code: 1`. The setup-monorepo action is needed because the Dockerfile `COPY` requires workspace files | | |
+| TASK-024 | `trivy-iac` job definition: `runs-on: ubuntu-latest`, steps: `actions/checkout@v4`, then `aquasecurity/trivy-action@master` with `scan-type: config`, `scan-ref: infrastructure/terraform`, `format: table`, `severity: CRITICAL,HIGH`, `exit-code: 1`. No setup-monorepo needed for IaC scanning | | |
+| TASK-025 | Create `.trivyignore` at workspace root with header comment: `# Add Trivy CVE IDs for known false positives (one per line)`. Initially empty | | |
+| TASK-026 | Add `trivy`, `trivyignore`, `iac` to the `words` list in `cspell.config.yaml` | | |
+
+### Implementation Phase 6: Stylelint (CSS/Tailwind Linting)
+
+- GOAL-006: Add Stylelint v17.3.0 with Tailwind CSS v3 support to the `lexico-components` package for CSS linting of `src/styles/globals.css`
+
+| Task     | Description | Completed | Date |
+| -------- | ----------- | --------- | ---- |
+| TASK-027 | Install Stylelint and plugins in the `lexico-components` package: `pnpm add --filter lexico-components -D stylelint@^17.3.0 stylelint-config-standard@^38.0.0 stylelint-config-tailwindcss@^1.0.0` | | |
+| TASK-028 | Create `packages/lexico-components/.stylelintrc.cjs` configuration (CJS format for inline documentation comments). Include a JSDoc header block with: tool purpose ("CSS linting with Tailwind CSS v3 support for lexico-components"), usage commands (`nx run lexico-components:stylelint`, `nx run lexico-components:stylelint --configuration=write`), CI workflow reference (`code-analysis.yml`), and `@see https://stylelint.io/`. Export config with `extends: ["stylelint-config-standard", "stylelint-config-tailwindcss"]`, rules: `"at-rule-no-unknown": [true, { ignoreAtRules: ["tailwind", "apply", "layer", "config", "screen", "variants", "responsive", "utility"] }]`, `"selector-class-pattern": null`, `"custom-property-pattern": null`, `"declaration-block-no-redundant-longhand-properties": null`. Add inline comments on each rule explaining the rationale | | |
+| TASK-029 | Add `stylelint` target to `nx.json` `targetDefaults`: `{ "stylelint": { "cache": true, "configurations": { "check": { "command": "stylelint 'src/**/*.css'" }, "write": { "command": "stylelint --fix 'src/**/*.css'" } }, "defaultConfiguration": "check", "executor": "nx:run-commands", "inputs": ["{projectRoot}/src/**/*.css", "{projectRoot}/.stylelintrc.cjs"], "options": { "command": "stylelint 'src/**/*.css'", "cwd": "{projectRoot}" } } }` | | |
+| TASK-030 | Add `"stylelint": {}` empty target to `packages/lexico-components/project.json` targets (inherits from `targetDefaults`). Also add `"nx run lexico-components:stylelint:{args.configuration}"` to the `code-analysis` composite target commands list | | |
+| TASK-031 | Add Stylelint as a matrix entry in `.github/workflows/code-analysis.yml`: `{ name: "🎨 Stylelint", run: "npx nx run lexico-components:stylelint", upload_artifacts: false }` | | |
+| TASK-032 | Update `lint-staged.config.ts` to add a dedicated CSS file pattern that runs Stylelint. Add `"*.css"` pattern that returns `nx affected --target=stylelint --files=${relativePaths}` command. Remove `css` and `scss` from the existing `*.{json,jsonc,json5,css,scss,html}` pattern to avoid duplicate processing | | |
+| TASK-033 | Run `nx run lexico-components:stylelint` locally to identify existing CSS issues. Fix auto-fixable issues with `nx run lexico-components:stylelint --configuration=write`. Manually fix remaining issues | | |
+| TASK-034 | Add `stylelint`, `stylelintrc` to the `words` list in `cspell.config.yaml` | | |
+
+### Implementation Phase 7: Integration, Documentation, & Validation
+
+- GOAL-007: Verify all new config files have comprehensive inline documentation comments, update `AGENTS.md`, fix broken links in existing planning docs, and validate all tools work together with no CI regressions
+
+| Task     | Description | Completed | Date |
+| -------- | ----------- | --------- | ---- |
+| TASK-035 | Audit all new config files for inline documentation completeness. Verify each file has a JSDoc/comment header block with: tool purpose, usage commands (`check`/`fix`), CI workflow reference, and `@see` link. Files to audit: `.gitleaks.toml` (TOML `#` comments), `.gitleaksignore` (`#` header), `.syncpackrc.cjs` (JSDoc header), `packages/lexico-components/.stylelintrc.cjs` (JSDoc header), `.trivyignore` (`#` header), `.github/workflows/gitleaks.yml` (YAML `#` header), `.github/workflows/security-scan.yml` (YAML `#` header). Pattern reference: `.dependency-cruiser.cjs`, `eslint.config.base.ts` | | |
+| TASK-036 | Update root `AGENTS.md` to mention new tools: add Gitleaks to security-related sections, note eslint-plugin-unicorn rule overrides in ESLint patterns, mention Sherif for monorepo hygiene, Syncpack for dependency consistency. Add a "Static Analysis" subsection under "Common Gotchas" noting that tool documentation lives in config file comments (not a separate doc file) | | |
+| TASK-037 | Run full CI pipeline locally: `nx run-many -t lint,typecheck,format,spell-check,markdown-lint,yaml-lint --all --configuration=check` to verify no regressions from eslint-plugin-unicorn or other changes | | |
+| TASK-038 | Run `pnpm dlx sherif@1.10.0` to verify monorepo consistency passes with all changes applied | | |
+| TASK-039 | Run `pnpm exec syncpack lint` to verify dependency version consistency after all `package.json` modifications | | |
+| TASK-040 | Run `nx run lexico-components:stylelint` to verify CSS linting passes | | |
+| TASK-041 | Test pre-commit hook by staging a `.css` file change and running `pnpm exec lint-staged --no-stash` to verify Stylelint runs | | |
+| TASK-042 | Test pre-push hook by verifying `pnpm dlx @gitleaks/gitleaks git --staged --verbose --redact --exit-code 1` runs successfully and the existing `pnpm exec validate-branch-name` still executes after it | | |
+| TASK-043 | Run `nx run-many -t typecheck --all` to verify no TypeScript errors introduced by new dependencies or config changes | | |
+| TASK-044 | Fix broken link in `documentation/planning/static-analysis-tools-implementation.md` (line 103): remove or update the reference to the never-created `../documentation/static-analysis-tools.md`. Replace with a note that tool documentation lives in each tool's config file comments | | |
+| TASK-045 | Fix broken link in `documentation/planning/caelundas-tsdoc-implementation.md` (line 486): remove or update the reference to the never-created `../documentation/static-analysis-tools.md`. Replace with a note that tool documentation lives in each tool's config file comments | | |
+
+## 3. Alternatives
+
+- **ALT-001**: **Oxlint instead of eslint-plugin-unicorn** — Oxlint is a Rust-based linter 50-100x faster than ESLint but lacks plugin ecosystem coverage (400 rules vs ESLint's thousands). Cannot replace ESLint's TypeScript type-checked rules, jsx-a11y, import ordering, Nx module boundaries, or tsdoc rules. Deferred to future evaluation when Oxlint supports the full plugin ecosystem.
+- **ALT-002**: **Biome instead of ESLint + Prettier** — All-in-one Rust formatter and linter. Significantly faster but lacks support for many ESLint plugins (`jsdoc`, `jsx-a11y`, `tsdoc`, `import` ordering, Nx module boundaries, YAML, Markdown, JSON-specific rules). Not viable as a full replacement today.
+- **ALT-003**: **GitHub Advanced Security secret scanning instead of Gitleaks** — GitHub's built-in scanning is limited to known provider patterns and requires GitHub Enterprise for private repos. Gitleaks provides custom rules, local pre-push support, and full git history scanning in any environment.
+- **ALT-004**: **Manypkg instead of Sherif** — JavaScript-based monorepo linter that is slower and requires more configuration. Sherif is Rust-native, requires zero config, and has a simpler rule set focused on the most impactful monorepo hygiene checks.
+- **ALT-005**: **Custom ESLint rules for `package.json` validation instead of Sherif** — Higher maintenance burden for equivalent functionality. Sherif is purpose-built and battle-tested for this specific use case.
+- **ALT-006**: **postcss-lint instead of Stylelint** — PostCSS has no dedicated linting tool. Stylelint is the de facto standard for CSS linting with 100+ built-in rules and first-class Tailwind CSS support via `stylelint-config-tailwindcss`.
+- **ALT-007**: **Install Gitleaks via Go toolchain** — Would require adding Go to the dev container, increasing container size and complexity. The `pnpm dlx @gitleaks/gitleaks` npm wrapper provides equivalent functionality without toolchain dependencies.
+- **ALT-008**: **Centralized `documentation/static-analysis-tools.md` reference file** — A single doc listing all tools, commands, and CI workflows. Rejected because the codebase already follows a strong "documentation lives in config file comments" pattern (see `.dependency-cruiser.cjs`, `eslint.config.base.ts`, `.markdownlint-cli2.jsonc`, `prettier.config.ts`). A centralized doc would duplicate config-file comments and risk going stale as tools are added or changed. Tool documentation in config comments is co-located with the code it describes and stays in sync naturally.
+
+## 4. Dependencies
+
+- **DEP-001**: `eslint-plugin-unicorn@^63.0.0` — npm package. Requires ESLint >= 9.20.0 (current: 9.39.1 ✓). Adds ~80 recommended rules to the flat config
+- **DEP-002**: `syncpack@^13.0.4` — npm package. Requires Node.js >= 18 (current: 22.20.0 ✓). JavaScript-based dependency version consistency checker
+- **DEP-003**: `stylelint@^17.3.0` — npm package. CSS linter with PostCSS under the hood
+- **DEP-004**: `stylelint-config-standard@^38.0.0` — Stylelint shared config with sensible defaults (60+ rules)
+- **DEP-005**: `stylelint-config-tailwindcss@^1.0.0` — Stylelint config that recognizes Tailwind CSS directives (`@tailwind`, `@apply`, `@layer`, etc.)
+- **DEP-006**: `@gitleaks/gitleaks` (npm wrapper) — platform-specific binary distribution of Gitleaks Go binary via npm. Used via `pnpm dlx` for local pre-push scanning. Version determined at runtime
+- **DEP-007**: `gitleaks/gitleaks-action@v2` — GitHub Action for Gitleaks CI scanning. Free for personal accounts, requires `GITLEAKS_LICENSE` for organization repos
+- **DEP-008**: Sherif v1.10.0 — Rust binary distributed via npm as platform-specific packages. Invoked via `pnpm dlx sherif@1.10.0` (not installed as devDependency since it's a standalone binary)
+- **DEP-009**: `aquasecurity/trivy-action@master` — GitHub Action for Trivy container image and IaC scanning. No local install required
+- **DEP-010**: `.github/actions/setup-monorepo` — existing composite action (pnpm 10.20.0, Node.js 22.20.0, yamllint, Nx SHAs, Nx cache). Used by all CI workflows. No modifications needed
+
+## 5. Files
+
+### New Files
+
+- **FILE-001**: `.gitleaks.toml` — Gitleaks configuration extending default rules with monorepo-specific allowlists for lockfiles, Terraform state, test fixtures, and snapshots
+- **FILE-002**: `.gitleaksignore` — Fingerprint-based false positive ignores for Gitleaks (initially empty with usage comment)
+- **FILE-003**: `.github/workflows/gitleaks.yml` — GitHub Actions workflow for Gitleaks secret scanning on push to `main` and on pull requests (full git history scan)
+- **FILE-004**: `.github/workflows/security-scan.yml` — GitHub Actions workflow for Trivy Docker image scanning (caelundas) and IaC scanning (Terraform), with path filters to trigger only on relevant changes
+- **FILE-005**: `.trivyignore` — CVE-based false positive ignores for Trivy (initially empty with usage comment)
+- **FILE-006**: `.syncpackrc.cjs` — Syncpack configuration (CJS for inline comments) defining version groups (workspace protocol for internal packages) and semver range format rules (caret `^` for all dependencies)
+- **FILE-007**: `packages/lexico-components/.stylelintrc.cjs` — Stylelint configuration (CJS for inline comments) extending `stylelint-config-standard` and `stylelint-config-tailwindcss` with Tailwind v3 at-rule ignores
+
+### Modified Files
+
+- **FILE-009**: `eslint.config.base.ts` — Add `eslint-plugin-unicorn` import, recommended config spread (scoped to TS/JS files), rule override block (9 disabled rules), test file relaxations (2 disabled rules), JS config file relaxations
+- **FILE-010**: `nx.json` — Add `stylelint` entry to `targetDefaults` with `executor`, `cache`, `inputs`, `configurations.check`/`configurations.write`, `defaultConfiguration`, and `options`
+- **FILE-011**: `package.json` (root) — Add `eslint-plugin-unicorn` and `syncpack` to `devDependencies`; add `sherif` config field with `ignoreRule` array; possibly move items from `dependencies` to `devDependencies` per Sherif findings
+- **FILE-012**: `packages/lexico-components/package.json` — Add `stylelint`, `stylelint-config-standard`, `stylelint-config-tailwindcss` to `devDependencies`
+- **FILE-013**: `packages/lexico-components/project.json` — Add `"stylelint": {}` target and add Stylelint to `code-analysis` composite target commands
+- **FILE-014**: `.github/workflows/code-analysis.yml` — Add three new matrix entries: Sherif (`pnpm dlx sherif@1.10.0`), Syncpack (`pnpm exec syncpack lint`), Stylelint (`npx nx run lexico-components:stylelint`)
+- **FILE-015**: `.husky/pre-push` — Add `pnpm dlx @gitleaks/gitleaks git --staged --verbose --redact --exit-code 1` before the existing `pnpm exec validate-branch-name`
+- **FILE-016**: `lint-staged.config.ts` — Add dedicated `*.css` pattern for Stylelint pre-commit integration; remove `css`/`scss` from the JSON/CSS/HTML grouping to avoid duplicate processing
+- **FILE-009a**: `eslint.config.base.ts` — (also listed above) unicorn plugin sections include inline comments explaining each disabled rule's rationale
+- **FILE-017**: `cspell.config.yaml` — Add 10 new words: `gitleaks`, `gitleaksignore`, `iac`, `sherif`, `stylelint`, `stylelintrc`, `syncpack`, `syncpackrc`, `trivy`, `trivyignore`
+- **FILE-018**: `AGENTS.md` — Add mentions of new tools in relevant sections (security scanning, ESLint plugins, monorepo hygiene, dependency consistency)
+- **FILE-019**: `documentation/planning/static-analysis-tools-implementation.md` — Fix broken link to never-created `../documentation/static-analysis-tools.md` (line 103)
+- **FILE-020**: `documentation/planning/caelundas-tsdoc-implementation.md` — Fix broken link to never-created `../documentation/static-analysis-tools.md` (line 486)
+
+## 6. Testing
+
+- **TEST-001**: Run `pnpm dlx @gitleaks/gitleaks dir .` from workspace root — verify exit code 0 (no secrets detected in current codebase)
+- **TEST-002**: Create a temporary test file containing a fake API key pattern (`AKIA...` style), verify `pnpm dlx @gitleaks/gitleaks dir .` detects it (exit code 1), then delete the file
+- **TEST-003**: Run `nx run-many -t lint --all --configuration=check` — verify eslint-plugin-unicorn rules apply correctly and no unexpected errors remain after disabling conflicting rules (TASK-012)
+- **TEST-004**: Run `pnpm dlx sherif@1.10.0` — verify exit code 0 after fixing initial issues (TASK-014)
+- **TEST-005**: Run `pnpm exec syncpack lint` — verify exit code 0 after fixing version mismatches (TASK-019)
+- **TEST-006**: Run `nx run lexico-components:stylelint` — verify `packages/lexico-components/src/styles/globals.css` passes Stylelint checks
+- **TEST-007**: Push changes to a feature branch and verify all GitHub Actions workflows pass: `code-analysis.yml` (with 3 new matrix entries), `gitleaks.yml`, `security-scan.yml`
+- **TEST-008**: Stage a `.css` file modification, run `pnpm exec lint-staged --no-stash` — verify Stylelint runs as part of pre-commit
+- **TEST-009**: Run the updated `.husky/pre-push` hook — verify Gitleaks scans staged changes, then `validate-branch-name` still executes afterward
+- **TEST-010**: Run `nx run-many -t typecheck --all` — verify no TypeScript errors introduced by new `eslint-plugin-unicorn` dependency types or `syncpack` configuration changes
+- **TEST-011**: Run `nx run-many -t spell-check --all` — verify all new tool names are recognized by cspell after adding dictionary words
+
+## 7. Risks & Assumptions
+
+- **RISK-001**: `eslint-plugin-unicorn` `recommended` preset may produce a large volume of initial lint errors across the codebase. **Mitigation**: Run `--fix` first for auto-fixable errors (~60% of rules are auto-fixable), then selectively disable rules with high manual fix counts that don't align with existing conventions. Iterate in TASK-012 until clean
+- **RISK-002**: Gitleaks may flag false positives in test fixtures, documentation examples, or encoded strings. **Mitigation**: Configure `[[allowlists]]` in `.gitleaks.toml` for known safe patterns; add individual fingerprints to `.gitleaksignore` for edge cases
+- **RISK-003**: Sherif may flag root `package.json` `dependencies` that should be `devDependencies` (e.g., `@types/lodash`, `jiti`, `json5`, `lodash`, `tslib`). **Mitigation**: Evaluate each dependency — since the root package is private and never published, all can safely be moved to `devDependencies`. Apply fix in TASK-014
+- **RISK-004**: Syncpack may flag intentional version mismatches between root and application-level dependencies (e.g., different TypeScript exact versions). **Mitigation**: Use `versionGroups` in `.syncpackrc.cjs` to define exception rules for intentional divergences
+- **RISK-005**: Trivy Docker scanning adds ~2-5 minutes to CI. **Mitigation**: Dedicated `security-scan.yml` workflow with `paths` filter triggers only when `applications/caelundas/Dockerfile` or `infrastructure/terraform/**` files change
+- **RISK-006**: `stylelint-config-tailwindcss@^1.0.0` may not fully support all Tailwind v3 custom directives. **Mitigation**: The `at-rule-no-unknown` rule override in `.stylelintrc.cjs` explicitly allows all known Tailwind directives (`@tailwind`, `@apply`, `@layer`, `@config`, `@screen`, `@variants`, `@responsive`, `@utility`). Add any additional directives as discovered
+- **RISK-007**: `pnpm dlx @gitleaks/gitleaks` npm wrapper may not exist or may be outdated. **Mitigation**: Verify the package exists on npm before implementing TASK-004. If unavailable, fall back to CI-only Gitleaks scanning and document manual local installation via Homebrew for contributors who want local scanning
+- **ASSUMPTION-001**: The monorepo is a personal GitHub account repository (`JimmyPaolini`), so `GITLEAKS_LICENSE` secret is not required for the Gitleaks GitHub Action
+- **ASSUMPTION-002**: The `@gitleaks/gitleaks` npm wrapper package exists and distributes platform-specific binaries compatible with the dev container environment (Debian bookworm, linux/amd64)
+- **ASSUMPTION-003**: All existing CI workflows can accommodate 3 additional matrix entries (Sherif, Syncpack, Stylelint) without exceeding GitHub Actions timeout limits (current matrix has 8 entries)
+- **ASSUMPTION-004**: The `lexico-components` CSS files are exclusively in `packages/lexico-components/src/**/*.css` — the glob `src/**/*.css` from `{projectRoot}` will capture all relevant files
+- **ASSUMPTION-005**: Sherif v1.10.0 is compatible with pnpm v10 workspace format and the `pnpm-workspace.yaml` structure used in this monorepo
+
+## 8. Related Specifications / Further Reading
+
+- [Gitleaks Documentation](https://github.com/gitleaks/gitleaks)
+- [Gitleaks GitHub Action](https://github.com/gitleaks/gitleaks-action)
+- [eslint-plugin-unicorn Documentation](https://github.com/sindresorhus/eslint-plugin-unicorn)
+- [Sherif Documentation](https://github.com/QuiiBz/sherif)
+- [Syncpack Documentation](https://jamiemason.github.io/syncpack/)
+- [Trivy Documentation](https://aquasecurity.github.io/trivy/)
+- [Trivy GitHub Action](https://github.com/aquasecurity/trivy-action)
+- [Stylelint Documentation](https://stylelint.io/)
+- [stylelint-config-tailwindcss](https://github.com/zhilidali/stylelint-config-tailwindcss)
+- [Previous static analysis implementation plan](static-analysis-tools-implementation.md)
+- [Original feature prompt](feature-static-analysis-tools-expansion-1.prompt.md)
+- [ESLint flat config](../../eslint.config.base.ts)
+- [Nx task runner config](../../nx.json)
+- [CI code-analysis workflow](../../.github/workflows/code-analysis.yml)
+- [Root project.json](../../project.json)

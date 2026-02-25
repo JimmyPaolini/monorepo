@@ -12,6 +12,7 @@ import jsxA11yPlugin from "eslint-plugin-jsx-a11y";
 import reactPlugin from "eslint-plugin-react";
 import reactHooksPlugin from "eslint-plugin-react-hooks";
 import tsdocPlugin from "eslint-plugin-tsdoc";
+import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import eslintPluginYml from "eslint-plugin-yml";
 import tseslint from "typescript-eslint";
 
@@ -78,6 +79,79 @@ export default [
   ...nxPlugin.configs["flat/base"],
   ...nxPlugin.configs["flat/typescript"],
   ...nxPlugin.configs["flat/javascript"],
+
+  // ━━━━━━━━━━━━━━━━━━━ Unicorn Recommended Rules ━━━━━━━━━━━━━━━━━━━
+  // Code quality and modern JavaScript patterns
+  {
+    ...eslintPluginUnicorn.configs.recommended,
+    files: [
+      "**/*.ts",
+      "**/*.tsx",
+      "**/*.mts",
+      "**/*.cts",
+      "**/*.js",
+      "**/*.mjs",
+      "**/*.cjs",
+      "**/*.jsx",
+    ],
+  },
+
+  // ━━━━━━━━━━━━━━━━━━━ Unicorn Rule Overrides ━━━━━━━━━━━━━━━━━━━
+  // Disable rules that conflict with existing conventions
+  {
+    files: [
+      "**/*.ts",
+      "**/*.tsx",
+      "**/*.mts",
+      "**/*.cts",
+      "**/*.js",
+      "**/*.mjs",
+      "**/*.cjs",
+      "**/*.jsx",
+    ],
+    rules: {
+      // PascalCase React components and kebab-case filenames are used throughout
+      "unicorn/filename-case": "off",
+      // null is used extensively in the codebase (React refs, database nulls, API contracts)
+      "unicorn/no-null": "off",
+      // Common abbreviations are acceptable (ctx, env, req, res, db, fn)
+      "unicorn/prevent-abbreviations": "off",
+      // reduce() is used in pipeline transformations and aggregations
+      "unicorn/no-array-reduce": "off",
+      // forEach() is acceptable for imperative operations with side effects
+      "unicorn/no-array-for-each": "off",
+      // CJS config files exist (.cjs extensions for tools that don't support ESM)
+      "unicorn/prefer-module": "off",
+      // CLI applications (caelundas) use process.exit() for clean shutdown
+      "unicorn/no-process-exit": "off",
+      // Not all entry points support top-level await (CJS configs, legacy tooling)
+      "unicorn/prefer-top-level-await": "off",
+      // ESLint core rule no-nested-ternary already handles this
+      "unicorn/no-nested-ternary": "off",
+    },
+  },
+
+  // ━━━━━━━━━━━━━━━━━━━ Unicorn Test File Relaxations ━━━━━━━━━━━━━━━━━━━
+  // Allow test-specific patterns
+  {
+    files: ["**/*.test.ts", "**/*.spec.ts", "**/testing/**"],
+    rules: {
+      // Test helpers are often defined inline for clarity
+      "unicorn/consistent-function-scoping": "off",
+      // Explicit undefined in test assertions is acceptable
+      "unicorn/no-useless-undefined": "off",
+    },
+  },
+
+  // ━━━━━━━━━━━━━━━━━━━ Unicorn Config File Relaxations ━━━━━━━━━━━━━━━━━━━
+  // Allow CommonJS patterns in config files
+  {
+    files: ["**/*.js", "**/*.mjs", "**/*.cjs"],
+    rules: {
+      // Config files explicitly use .cjs extension when CommonJS is required
+      "unicorn/prefer-module": "off",
+    },
+  },
 
   // ━━━━━━━━━━━━━━━━━━━ Main Configuration ━━━━━━━━━━━━━━━━━━━
   // Core rules for all TS/JS source files: module boundaries, import ordering,

@@ -58,9 +58,9 @@ function LibraryPage(): ReactNode {
     try {
       const data = await getUserTexts();
       setTexts(data);
-    } catch (err: unknown) {
+    } catch (error_: unknown) {
       const message =
-        err instanceof Error ? err.message : "Failed to load texts";
+        error_ instanceof Error ? error_.message : "Failed to load texts";
       setError(message);
     } finally {
       setIsLoading(false);
@@ -88,8 +88,8 @@ function LibraryPage(): ReactNode {
         setFormText("");
         setIsCreateOpen(false);
       }
-    } catch (err) {
-      console.error("Failed to create text:", err);
+    } catch (error_) {
+      console.error("Failed to create text:", error_);
     } finally {
       setIsSubmitting(false);
     }
@@ -117,8 +117,8 @@ function LibraryPage(): ReactNode {
         setFormText("");
         setEditingText(null);
       }
-    } catch (err) {
-      console.error("Failed to update text:", err);
+    } catch (error_) {
+      console.error("Failed to update text:", error_);
     } finally {
       setIsSubmitting(false);
     }
@@ -134,8 +134,8 @@ function LibraryPage(): ReactNode {
             setSelectedText(null);
           }
         }
-      } catch (err) {
-        console.error("Failed to delete text:", err);
+      } catch (error_) {
+        console.error("Failed to delete text:", error_);
       }
     },
     [selectedText],
@@ -315,7 +315,7 @@ function LibraryPage(): ReactNode {
                   </div>
                 </div>
                 <CardDescription className="line-clamp-2">
-                  {text.text.substring(0, 150)}...
+                  {text.text.slice(0, 150)}...
                 </CardDescription>
               </CardHeader>
             </Card>

@@ -368,12 +368,12 @@ function parseOrbitEphemeris(text: string): OrbitEphemeris {
 
   const datePattern = /\d{4}-[A-Za-z]{3}-\d{2} \d{2}:\d{2}:\d{2}(\.\d{4})?/g;
   const pattern = new RegExp(
-    `(${datePattern.source})` + "[\\s\\S]*?" + `(?=${datePattern.source}|$)`,
+    `(${datePattern.source})${  String.raw`[\s\S]*?`  }(?=${datePattern.source}|$)`,
     "g",
   );
 
   const getPattern = (key: string): RegExp => {
-    return new RegExp(`${key}.*?=.+?(\\d+\\.\\d+(E[+-]\\d{2})?)`, "g");
+    return new RegExp(String.raw`${key}.*?=.+?(\d+\.\d+(E[+-]\d{2})?)`, "g");
   };
 
   const orbitEphemeris: OrbitEphemeris = [
@@ -401,18 +401,18 @@ function parseOrbitEphemeris(text: string): OrbitEphemeris {
     return {
       ...orbitEphemeris,
       [date]: {
-        argumentOfPerifocus: parseFloat(wMatch),
-        eccentricity: parseFloat(ecMatch),
-        inclination: parseFloat(inMatch),
-        timeOfPeriapsis: parseFloat(tpMatch),
-        longitudeOfAscendingNode: parseFloat(omMatch),
-        meanAnomaly: parseFloat(maMatch),
-        periapsisDistance: parseFloat(qrMatch),
-        meanMotion: parseFloat(nMatch),
-        trueAnomaly: parseFloat(taMatch),
-        semiMajorAxis: parseFloat(aMatch),
-        apoapsisDistance: parseFloat(adMatch),
-        siderealOrbitPeriod: parseFloat(prMatch),
+        argumentOfPerifocus: Number.parseFloat(wMatch),
+        eccentricity: Number.parseFloat(ecMatch),
+        inclination: Number.parseFloat(inMatch),
+        timeOfPeriapsis: Number.parseFloat(tpMatch),
+        longitudeOfAscendingNode: Number.parseFloat(omMatch),
+        meanAnomaly: Number.parseFloat(maMatch),
+        periapsisDistance: Number.parseFloat(qrMatch),
+        meanMotion: Number.parseFloat(nMatch),
+        trueAnomaly: Number.parseFloat(taMatch),
+        semiMajorAxis: Number.parseFloat(aMatch),
+        apoapsisDistance: Number.parseFloat(adMatch),
+        siderealOrbitPeriod: Number.parseFloat(prMatch),
       },
     };
   }, {});
@@ -517,29 +517,34 @@ export async function getNodeCoordinatesEphemeris(args: {
         nodeOrbitEphemerisValue;
 
       switch (node) {
-        case "north lunar node":
+        case "north lunar node": {
           return { longitude: longitudeOfAscendingNode, latitude: 0 };
-        case "south lunar node":
+        }
+        case "south lunar node": {
           return {
             longitude: normalizeDegrees(longitudeOfAscendingNode + 180),
             latitude: 0,
           };
-        case "lunar perigee":
+        }
+        case "lunar perigee": {
           return {
             longitude: normalizeDegrees(
               longitudeOfAscendingNode + argumentOfPerifocus,
             ),
             latitude: 0,
           };
-        case "lunar apogee":
+        }
+        case "lunar apogee": {
           return {
             longitude: normalizeDegrees(
               longitudeOfAscendingNode + argumentOfPerifocus + 180,
             ),
             latitude: 0,
           };
-        default:
+        }
+        default: {
           throw new Error(`Unknown node: ${node}`);
+        }
       }
     },
   );
@@ -716,21 +721,17 @@ export async function getCoordinateEphemerisByBody(args: {
   const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
 
   for (const body of bodies) {
-    if (isNode(body)) {
-      coordinateEphemerisByBody[body] = await getNodeCoordinatesEphemeris({
+    coordinateEphemerisByBody[body] = await (isNode(body) ? getNodeCoordinatesEphemeris({
         end,
         node: body,
         start,
         timezone,
-      });
-    } else {
-      coordinateEphemerisByBody[body] = await getCoordinatesEphemeris({
+      }) : getCoordinatesEphemeris({
         body,
         end,
         start,
         timezone,
-      });
-    }
+      }));
   }
 
   console.log(`🔭 Got ${message}`);
@@ -751,7 +752,7 @@ function parseAzimuthElevationEphemeris(
   const ephemeris: AzimuthElevationEphemeris = ephemerisTable
     .split("\n ")
     .reduce<AzimuthElevationEphemeris>((ephemeris, ephemerisLine) => {
-      const regexString = `${dateRegex.source}.+?${decimalRegex.source}\\s+?${decimalRegex.source}`;
+      const regexString = String.raw`${dateRegex.source}.+?${decimalRegex.source}\s+?${decimalRegex.source}`;
       const azimuthElevationRegex = new RegExp(regexString);
 
       const match = ephemerisLine.match(azimuthElevationRegex);
@@ -1281,7 +1282,7 @@ function parseDistanceEphemeris(text: string): DistanceEphemeris {
   const ephemeris: DistanceEphemeris = ephemerisTable
     .split("\n ")
     .reduce<DistanceEphemeris>((ephemeris, ephemerisLine) => {
-      const regexString = `${dateRegex.source}.+?${decimalRegex.source}\\s+?${decimalRegex.source}`;
+      const regexString = String.raw`${dateRegex.source}.+?${decimalRegex.source}\s+?${decimalRegex.source}`;
       const distanceRegex = new RegExp(regexString);
 
       const match = ephemerisLine.match(distanceRegex);

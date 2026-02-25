@@ -10,7 +10,7 @@
  * 6. iCalendar file generation and export
  */
 
-import fs from "fs";
+import fs from "node:fs";
 
 import moment from "moment-timezone";
 

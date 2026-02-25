@@ -263,7 +263,7 @@ function composeGrandTrines(
     bodiesInTrines.add(trine.body2);
   }
 
-  const bodiesArray = Array.from(bodiesInTrines);
+  const bodiesArray = [...bodiesInTrines];
 
   // Check all combinations of 3 bodies
   for (let i = 0; i < bodiesArray.length; i++) {

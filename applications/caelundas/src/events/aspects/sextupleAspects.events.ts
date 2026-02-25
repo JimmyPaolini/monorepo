@@ -89,7 +89,7 @@ function findHexagramPattern(
     }
 
     // Check if these 3 bodies form a complete triangle
-    const neighbors = Array.from(trineNeighbors);
+    const neighbors = [...trineNeighbors];
     const b1 = neighbors[0];
     const b2 = neighbors[1];
     if (!b1 || !b2) {
@@ -230,7 +230,7 @@ function composeHexagrams(
     bodiesSet.add(edge.body1);
     bodiesSet.add(edge.body2);
   }
-  const bodies = Array.from(bodiesSet);
+  const bodies = [...bodiesSet];
 
   if (bodies.length < 6) {
     return events;

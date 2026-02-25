@@ -108,6 +108,8 @@ words:
   - frontmatter
   - FUTP
   - Giorgio
+  - gitleaks
+  - gitleaksignore
   - gitmoji
   - Gitmojis
   - gtrgm
@@ -120,6 +122,7 @@ words:
   - husky
   - ical
   - icalendar
+  - iac
   - illum
   - imbolc
   - Imbolc
@@ -224,6 +227,7 @@ words:
   - seroval
   - sesquiquadrate
   - sextile
+  - sherif
   - shiftsmart
   - sqltools
   - stackoverflow
@@ -231,12 +235,16 @@ words:
   - stelliums
   - storageclasses
   - stringcase
+  - stylelint
+  - stylelintrc
   - subquery
   - Subrepositories
   - supabase
   - Superkey
   - svgs
   - Swipeable
+  - syncpack
+  - syncpackrc
   - tailwindcss
   - tanstack
   - texttypescript
@@ -253,6 +261,8 @@ words:
   - tredecile
   - trgm
   - trine
+  - trivy
+  - trivyignore
   - tsconfig
   - tsquery
   - tsvector

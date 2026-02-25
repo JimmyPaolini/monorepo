@@ -179,10 +179,7 @@ function restructureVerbForms(forms: VerbForm[]): FormCellProps[] {
         topLeftText: PERSON_ABBREVIATIONS[person] || person,
         topRightText: NUMBER_ABBREVIATIONS["singular"],
         centerText: singularForm || "-",
-      });
-
-      // Plural cell (right column)
-      cells.push({
+      }, {
         topRightText: NUMBER_ABBREVIATIONS["plural"],
         centerText: pluralForm || "-",
       });

@@ -1,0 +1,4 @@
+# Trivy CVE-Based False Positive Ignores
+# Add Trivy CVE IDs for known false positives (one per line)
+# Format: CVE-YYYY-NNNNN or GHSA-xxxx-xxxx-xxxx
+# Use with caution: only ignore verified false positives after investigation

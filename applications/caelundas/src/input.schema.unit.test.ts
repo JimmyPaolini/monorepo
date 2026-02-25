@@ -64,7 +64,7 @@ describe("input.schema", () => {
         startDate: "2025-01-01",
         endDate: "2025-01-02",
       });
-      expect(result.latitude).toBe(39.949309); // Philadelphia
+      expect(result.latitude).toBe(39.949_309); // Philadelphia
     });
   });
 
@@ -124,7 +124,7 @@ describe("input.schema", () => {
         startDate: "2025-01-01",
         endDate: "2025-01-02",
       });
-      expect(result.longitude).toBe(-75.17169); // Philadelphia
+      expect(result.longitude).toBe(-75.171_69); // Philadelphia
     });
   });
 

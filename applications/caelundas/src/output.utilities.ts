@@ -1,4 +1,4 @@
-import path from "path";
+import path from "node:path";
 
 /**
  * Resolves the full path for an output file.

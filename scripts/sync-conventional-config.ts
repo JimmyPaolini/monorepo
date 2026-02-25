@@ -69,7 +69,7 @@ function parseEntriesWithDescriptions(
   arrayName: "types" | "scopes",
 ): EntryWithDescription[] {
   const content = readFileSync(CONVENTIONAL_CONFIG, "utf-8");
-  const pattern = new RegExp(`const ${arrayName} = \\[([\\s\\S]*?)\\];`);
+  const pattern = new RegExp(String.raw`const ${arrayName} = \[([\s\S]*?)\];`);
   const match = pattern.exec(content);
   if (!match?.[1]) {
     throw new Error(
@@ -99,7 +99,7 @@ function parseSettingsScopes(content: string): string[] {
   const settings = JSON5.parse<Record<string, unknown>>(content);
   const scopes = settings["conventionalCommits.scopes"];
   if (!Array.isArray(scopes)) {
-    throw new Error(
+    throw new TypeError(
       'Could not find "conventionalCommits.scopes" array in settings.json',
     );
   }
@@ -205,7 +205,7 @@ function extractMarkerContent(
   markerName: string,
 ): string | undefined {
   const pattern = new RegExp(
-    `<!-- ${markerName}-start -->\\n([\\s\\S]*?)<!-- ${markerName}-end -->`,
+    String.raw`<!-- ${markerName}-start -->\n([\s\S]*?)<!-- ${markerName}-end -->`,
   );
   const match = pattern.exec(content);
   return match?.[1];
@@ -220,7 +220,7 @@ function replaceMarkerContent(
   newContent: string,
 ): string {
   const pattern = new RegExp(
-    `(<!-- ${markerName}-start -->\\n)[\\s\\S]*?(<!-- ${markerName}-end -->)`,
+    String.raw`(<!-- ${markerName}-start -->\n)[\s\S]*?(<!-- ${markerName}-end -->)`,
   );
   return content.replace(pattern, `$1\n${newContent}\n\n$2`);
 }

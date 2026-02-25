@@ -79,17 +79,17 @@ describe("ephemeris.types", () => {
     it("should accept valid orbital elements", () => {
       const ephemeris: OrbitEphemeris = {
         "2024-03-21T00:00:00.000Z": {
-          argumentOfPerifocus: 75.0,
+          argumentOfPerifocus: 75,
           eccentricity: 0.0545,
           inclination: 5.145,
-          timeOfPeriapsis: 2460397.1,
+          timeOfPeriapsis: 2_460_397.1,
           longitudeOfAscendingNode: 144.525,
           meanAnomaly: 151.2,
-          periapsisDistance: 363309.23,
+          periapsisDistance: 363_309.23,
           meanMotion: 13.36,
           trueAnomaly: 153.34,
-          semiMajorAxis: 384400.0,
-          apoapsisDistance: 405490.77,
+          semiMajorAxis: 384_400,
+          apoapsisDistance: 405_490.77,
           siderealOrbitPeriod: 27.32,
         },
       };
@@ -99,23 +99,23 @@ describe("ephemeris.types", () => {
         4,
       );
       expect(ephemeris["2024-03-21T00:00:00.000Z"]?.semiMajorAxis).toBe(
-        384400.0,
+        384_400,
       );
     });
 
     it("should have all required orbital element properties", () => {
       const orbitValue: OrbitEphemeris[string] = {
-        argumentOfPerifocus: 75.0,
+        argumentOfPerifocus: 75,
         eccentricity: 0.0545,
         inclination: 5.145,
-        timeOfPeriapsis: 2460397.1,
+        timeOfPeriapsis: 2_460_397.1,
         longitudeOfAscendingNode: 144.525,
         meanAnomaly: 151.2,
-        periapsisDistance: 363309.23,
+        periapsisDistance: 363_309.23,
         meanMotion: 13.36,
         trueAnomaly: 153.34,
-        semiMajorAxis: 384400.0,
-        apoapsisDistance: 405490.77,
+        semiMajorAxis: 384_400,
+        apoapsisDistance: 405_490.77,
         siderealOrbitPeriod: 27.32,
       };
 
@@ -138,7 +138,7 @@ describe("ephemeris.types", () => {
     it("should accept valid azimuth and elevation values", () => {
       const ephemeris: AzimuthElevationEphemeris = {
         "2024-03-21T00:00:00.000Z": { azimuth: 90.5, elevation: 45.2 },
-        "2024-03-21T00:01:00.000Z": { azimuth: 91.0, elevation: 46.0 },
+        "2024-03-21T00:01:00.000Z": { azimuth: 91, elevation: 46 },
       };
 
       expect(ephemeris["2024-03-21T00:00:00.000Z"]?.azimuth).toBe(90.5);
@@ -193,14 +193,14 @@ describe("ephemeris.types", () => {
 
     it("should accept distance in astronomical units", () => {
       const sunDistance: DistanceEphemeris = {
-        "2024-03-21T00:00:00.000Z": { distance: 1.0 }, // ~1 AU
+        "2024-03-21T00:00:00.000Z": { distance: 1 }, // ~1 AU
       };
       const marsDistance: DistanceEphemeris = {
         "2024-03-21T00:00:00.000Z": { distance: 1.5 }, // ~1.5 AU
       };
 
       expect(sunDistance["2024-03-21T00:00:00.000Z"]?.distance).toBeCloseTo(
-        1.0,
+        1,
         1,
       );
       expect(marsDistance["2024-03-21T00:00:00.000Z"]?.distance).toBeCloseTo(

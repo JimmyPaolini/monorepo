@@ -276,23 +276,28 @@ export async function getEphemerisRecords(args: {
   // Build WHERE clause based on ephemeris type
   let additionalConditions = "";
   switch (type) {
-    case "coordinate":
+    case "coordinate": {
       additionalConditions =
         "AND latitude IS NOT NULL AND longitude IS NOT NULL";
       break;
-    case "azimuthElevation":
+    }
+    case "azimuthElevation": {
       additionalConditions =
         "AND azimuth IS NOT NULL AND elevation IS NOT NULL";
       break;
-    case "illumination":
+    }
+    case "illumination": {
       additionalConditions = "AND illumination IS NOT NULL";
       break;
-    case "diameter":
+    }
+    case "diameter": {
       additionalConditions = "AND diameter IS NOT NULL";
       break;
-    case "distance":
+    }
+    case "distance": {
       additionalConditions = "AND distance IS NOT NULL";
       break;
+    }
   }
 
   const query = `

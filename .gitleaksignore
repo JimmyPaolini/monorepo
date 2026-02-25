@@ -1,0 +1,4 @@
+# Gitleaks Fingerprint-Based False Positive Ignores
+# Add Gitleaks fingerprints for known false positives (one per line)
+# Generate fingerprints using: pnpm dlx @gitleaks/gitleaks dir . --verbose
+# Each fingerprint uniquely identifies a specific finding in a specific file at a specific commit

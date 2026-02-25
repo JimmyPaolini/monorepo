@@ -408,7 +408,7 @@ describe("minorAspects.events", () => {
 
   describe("writeMinorAspectEvents", () => {
     it("should write events to file and database", async () => {
-      const fs = (await import("fs")).default;
+      const fs = (await import("node:fs")).default;
 
       const minorAspectEvents: Event[] = [
         {
@@ -431,7 +431,7 @@ describe("minorAspects.events", () => {
     });
 
     it("should not write if events array is empty", async () => {
-      const fs = (await import("fs")).default;
+      const fs = (await import("node:fs")).default;
 
       writeMinorAspectEvents({
         minorAspectEvents: [],
@@ -444,7 +444,7 @@ describe("minorAspects.events", () => {
     });
 
     it("should include body names in filename", async () => {
-      const fs = (await import("fs")).default;
+      const fs = (await import("node:fs")).default;
 
       const minorAspectEvents: Event[] = [
         {
@@ -472,7 +472,7 @@ describe("minorAspects.events", () => {
     });
 
     it("should include date range in filename", async () => {
-      const fs = (await import("fs")).default;
+      const fs = (await import("node:fs")).default;
 
       const minorAspectEvents: Event[] = [
         {

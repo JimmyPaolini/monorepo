@@ -60,7 +60,7 @@ describe("ephemeris.aggregates", () => {
       } as unknown as Record<Body, DiameterEphemeris>);
 
       vi.mocked(getDistanceEphemerisByBody).mockResolvedValue({
-        sun: { "2024-03-21T00:00:00.000Z": { distance: 1.0 } },
+        sun: { "2024-03-21T00:00:00.000Z": { distance: 1 } },
         mercury: { "2024-03-21T00:00:00.000Z": { distance: 0.5 } },
         venus: { "2024-03-21T00:00:00.000Z": { distance: 0.7 } },
         mars: { "2024-03-21T00:00:00.000Z": { distance: 1.5 } },
@@ -162,7 +162,7 @@ describe("ephemeris.aggregates", () => {
         sun: { "2024-03-21T00:00:00.000Z": { diameter: 0.5334 } },
       } as unknown as Record<Body, DiameterEphemeris>;
       const mockDistance = {
-        sun: { "2024-03-21T00:00:00.000Z": { distance: 1.0 } },
+        sun: { "2024-03-21T00:00:00.000Z": { distance: 1 } },
       } as unknown as Record<Body, DistanceEphemeris>;
 
       vi.mocked(getCoordinateEphemerisByBody).mockResolvedValue(

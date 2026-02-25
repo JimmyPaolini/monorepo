@@ -1,1 +1,2 @@
+pnpm dlx @gitleaks/gitleaks git --staged --verbose --redact --exit-code 1
 pnpm exec validate-branch-name

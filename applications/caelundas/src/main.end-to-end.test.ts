@@ -1,12 +1,12 @@
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
 // Mock environment for testing
 const TEST_OUTPUT_DIR = "./output/e2e-test";
 
-describe("calendar generation e2e", { timeout: 10000 }, () => {
+describe("calendar generation e2e", { timeout: 10_000 }, () => {
   // E2E tests may need more time
   beforeAll(() => {
     // Ensure test output directory exists
@@ -62,7 +62,7 @@ describe("calendar generation e2e", { timeout: 10000 }, () => {
       expect(fs.existsSync(outputPath)).toBe(true);
 
       // Read and validate content
-      const content = fs.readFileSync(outputPath, "utf-8");
+      const content = fs.readFileSync(outputPath, "utf8");
 
       // Check required ICS components
       expect(content).toContain("BEGIN:VCALENDAR");

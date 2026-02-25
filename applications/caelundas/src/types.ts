@@ -7,11 +7,11 @@
 
 import {
   aspectBodies,
-  aspectPhases,
+  type aspectPhases,
   type eclipsePhases,
-  ingressBodies,
-  phaseBodies,
-  retrogradeBodies,
+  
+  
+  type retrogradeBodies,
   type symbolByAspect,
   type symbolByAsteroid,
   type symbolByBody,
@@ -445,18 +445,20 @@ export type RetrogradeBodySymbol = (typeof symbolByBody)[RetrogradeBody];
 
 // Re-export arrays from symbols for convenience
 export {
-  aspectPhases,
-  retrogradeBodies,
-  phaseBodies as planetaryPhaseBodies,
-  ingressBodies as signIngressBodies,
-  ingressBodies as decanIngressBodies,
-  ingressBodies as peakIngressBodies,
-  aspectBodies as majorAspectBodies,
-  aspectBodies as minorAspectBodies,
-  aspectBodies as specialtyAspectBodies,
-  aspectBodies as tripleAspectBodies,
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   aspectBodies as quadrupleAspectBodies,
   aspectBodies as quintupleAspectBodies,
   aspectBodies as sextupleAspectBodies,
   aspectBodies as stelliumBodies,
 };
+
+export {phaseBodies as planetaryPhaseBodies, aspectPhases, retrogradeBodies, ingressBodies as signIngressBodies, ingressBodies as decanIngressBodies, ingressBodies as peakIngressBodies, aspectBodies as majorAspectBodies, aspectBodies as minorAspectBodies, aspectBodies as specialtyAspectBodies, aspectBodies as tripleAspectBodies} from "./symbols";

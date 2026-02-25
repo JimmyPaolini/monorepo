@@ -74,7 +74,7 @@ describe("dailyLunarCycle.events", () => {
       // Moon at local maximum elevation
       const moonAzimuthElevationEphemeris: AzimuthElevationEphemeris = {
         [previousMinute.toISOString()]: { azimuth: 178, elevation: 39.9 },
-        [currentMinute.toISOString()]: { azimuth: 180, elevation: 40.0 },
+        [currentMinute.toISOString()]: { azimuth: 180, elevation: 40 },
         [nextMinute.toISOString()]: { azimuth: 182, elevation: 39.9 },
       };
 
@@ -97,7 +97,7 @@ describe("dailyLunarCycle.events", () => {
       // Moon at local minimum elevation (below horizon during day)
       const moonAzimuthElevationEphemeris: AzimuthElevationEphemeris = {
         [previousMinute.toISOString()]: { azimuth: 358, elevation: -39.9 },
-        [currentMinute.toISOString()]: { azimuth: 0, elevation: -40.0 },
+        [currentMinute.toISOString()]: { azimuth: 0, elevation: -40 },
         [nextMinute.toISOString()]: { azimuth: 2, elevation: -39.9 },
       };
 
@@ -207,7 +207,7 @@ describe("dailyLunarCycle.events", () => {
 
   describe("writeDailyLunarCycleEvents", () => {
     it("should write events to database and file when events array is not empty", async () => {
-      const fs = (await import("fs")).default;
+      const fs = (await import("node:fs")).default;
 
       const events: Event[] = [
         {
@@ -231,7 +231,7 @@ describe("dailyLunarCycle.events", () => {
     });
 
     it("should not write if events array is empty", async () => {
-      const fs = (await import("fs")).default;
+      const fs = (await import("node:fs")).default;
 
       const { writeDailyLunarCycleEvents } =
         await import("./dailyLunarCycle.events");

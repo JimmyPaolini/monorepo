@@ -51,14 +51,26 @@ const config = {
     ];
   },
 
-  // ── JSON / CSS / HTML data files ──
+  // ── JSON / HTML data files ──
   // Format and spell-check only (no lint or typecheck needed)
-  "*.{json,jsonc,json5,css,scss,html}": (files: string[]) => {
+  "*.{json,jsonc,json5,html}": (files: string[]) => {
     const relativePaths = files
       .map((file: string) => relative(process.cwd(), file))
       .join(",");
     return [
       `nx affected --target=format,spell-check --files=${relativePaths}`,
+      "nx run monorepo:spell-check",
+    ];
+  },
+
+  // ── CSS files ──
+  // Runs Stylelint, format, and spell-check
+  "*.css": (files: string[]) => {
+    const relativePaths = files
+      .map((file: string) => relative(process.cwd(), file))
+      .join(",");
+    return [
+      `nx affected --target=stylelint,format,spell-check --files=${relativePaths}`,
       "nx run monorepo:spell-check",
     ];
   },

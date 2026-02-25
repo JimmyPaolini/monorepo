@@ -194,6 +194,27 @@
         "cwd": "{workspaceRoot}"
       }
     },
+    "stylelint": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "command": "stylelint 'src/**/*.css'"
+        },
+        "write": {
+          "command": "stylelint --fix 'src/**/*.css'"
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/src/**/*.css",
+        "{projectRoot}/.stylelintrc.cjs"
+      ],
+      "options": {
+        "command": "stylelint 'src/**/*.css'",
+        "cwd": "{projectRoot}"
+      }
+    },
     "test": {
       "cache": true,
       "inputs": ["default", "^production"]

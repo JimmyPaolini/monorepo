@@ -46,6 +46,18 @@ jobs:
             run: npx nx affected -t spell-check --parallel=3
             upload_artifacts: false
 
+          - name: 🤠 Monorepo Lint (Sherif)
+            run: pnpm dlx sherif@1.10.0
+            upload_artifacts: false
+
+          - name: 📦 Syncpack Lint
+            run: pnpm exec syncpack lint
+            upload_artifacts: false
+
+          - name: 🎨 Stylelint
+            run: npx nx run lexico-components:stylelint
+            upload_artifacts: false
+
           - name: 🔖 Type Coverage
             run: npx nx affected -t type-coverage --parallel=3
             upload_artifacts: true

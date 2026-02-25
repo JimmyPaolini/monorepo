@@ -7,7 +7,7 @@
  * Events are detected by analyzing Sun's altitude/elevation angle over time.
  */
 
-import fs from "fs";
+import fs from "node:fs";
 
 import _ from "lodash";
 import moment from "moment-timezone";

@@ -159,10 +159,7 @@ function restructureAdjectiveForms(forms: AdjectiveForm[]): FormCellProps[] {
       topLeftText: CASE_ABBREVIATIONS[caseName] || caseName,
       topRightText: "SG",
       centerText: caseData.singular || "-",
-    });
-
-    // Plural cell (right column)
-    cells.push({
+    }, {
       topRightText: "PL",
       centerText: caseData.plural || "-",
     });

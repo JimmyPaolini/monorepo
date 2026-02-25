@@ -8,7 +8,7 @@
  * Moon never do.
  */
 
-import fs from "fs";
+import fs from "node:fs";
 
 import _ from "lodash";
 

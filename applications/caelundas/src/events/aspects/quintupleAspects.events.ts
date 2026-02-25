@@ -56,12 +56,10 @@ function findPentagramPattern(
 
   // Add all quintile edges between these bodies
   for (const edge of edges) {
-    if (edge.aspectType === "quintile") {
-      if (bodies.includes(edge.body1) && bodies.includes(edge.body2)) {
+    if (edge.aspectType === "quintile" && bodies.includes(edge.body1) && bodies.includes(edge.body2)) {
         connections.get(edge.body1)?.add(edge.body2);
         connections.get(edge.body2)?.add(edge.body1);
       }
-    }
   }
 
   // Check if each body has exactly 2 connections (pentagram property)
@@ -88,7 +86,7 @@ function findPentagramPattern(
     if (!currentConnections) {
       return null;
     }
-    const neighbors = Array.from(currentConnections);
+    const neighbors = [...currentConnections];
     // Pick the neighbor we haven't visited yet
     const next = neighbors.find((n) => !visited.has(n));
 
@@ -168,7 +166,7 @@ function composePentagrams(
     bodiesSet.add(edge.body1);
     bodiesSet.add(edge.body2);
   }
-  const bodies = Array.from(bodiesSet);
+  const bodies = [...bodiesSet];
 
   if (bodies.length < 5) {
     return events;

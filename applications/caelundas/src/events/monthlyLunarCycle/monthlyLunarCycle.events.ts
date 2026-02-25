@@ -7,7 +7,7 @@
  * illumination percentage from NASA JPL ephemeris data.
  */
 
-import fs from "fs";
+import fs from "node:fs";
 
 import _ from "lodash";
 import moment from "moment-timezone";

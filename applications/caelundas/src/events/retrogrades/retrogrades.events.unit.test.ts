@@ -32,7 +32,7 @@ describe("retrogrades.events", () => {
       const minute = currentMinute
         .clone()
         .subtract(MARGIN_MINUTES - i, "minutes");
-      const longitude = longitudes[i] ?? longitudes[longitudes.length - 1] ?? 0;
+      const longitude = longitudes[i] ?? longitudes.at(-1) ?? 0;
       ephemeris[minute.toISOString()] = {
         longitude,
         latitude: 0,
@@ -233,7 +233,7 @@ describe("retrogrades.events", () => {
 
   describe("writeRetrogradeEvents", () => {
     it("should write events to database and file when events array is not empty", async () => {
-      const fs = (await import("fs")).default;
+      const fs = (await import("node:fs")).default;
 
       const events: Event[] = [
         {
@@ -257,7 +257,7 @@ describe("retrogrades.events", () => {
     });
 
     it("should not write if events array is empty", async () => {
-      const fs = (await import("fs")).default;
+      const fs = (await import("node:fs")).default;
 
       const { writeRetrogradeEvents } = await import("./retrogrades.events");
       writeRetrogradeEvents({

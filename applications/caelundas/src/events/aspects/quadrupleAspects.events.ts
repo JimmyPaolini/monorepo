@@ -94,21 +94,35 @@ function composeGrandCrosses(
         continue;
       }
 
-      const bodyList = Array.from(bodies);
+      const bodyList = [...bodies];
 
       // Verify all adjacent pairs (in cross configuration) are in square
       let hasAllSquares = true;
       for (const body of bodyList) {
         // Find which body is opposite to this one
         let oppositeBody: Body | null = null;
-        if (opp1.body1 === body) {
+        switch (body) {
+        case opp1.body1: {
           oppositeBody = opp1.body2;
-        } else if (opp1.body2 === body) {
+        
+        break;
+        }
+        case opp1.body2: {
           oppositeBody = opp1.body1;
-        } else if (opp2.body1 === body) {
+        
+        break;
+        }
+        case opp2.body1: {
           oppositeBody = opp2.body2;
-        } else if (opp2.body2 === body) {
+        
+        break;
+        }
+        case opp2.body2: {
           oppositeBody = opp2.body1;
+        
+        break;
+        }
+        // No default
         }
 
         if (!oppositeBody) {
@@ -164,14 +178,28 @@ function composeGrandCrosses(
             // Verify all adjacent pairs are in square
             for (const body of bodyList) {
               let oppositeBody: Body | null = null;
-              if (opp1.body1 === body) {
+              switch (body) {
+              case opp1.body1: {
                 oppositeBody = opp1.body2;
-              } else if (opp1.body2 === body) {
+              
+              break;
+              }
+              case opp1.body2: {
                 oppositeBody = opp1.body1;
-              } else if (opp2.body1 === body) {
+              
+              break;
+              }
+              case opp2.body1: {
                 oppositeBody = opp2.body2;
-              } else if (opp2.body2 === body) {
+              
+              break;
+              }
+              case opp2.body2: {
                 oppositeBody = opp2.body1;
+              
+              break;
+              }
+              // No default
               }
 
               if (!oppositeBody) {
@@ -259,7 +287,7 @@ function composeKites(allEdges: AspectEdge[], currentMinute: Moment): Event[] {
   const oppositions = aspectsByType.get("opposite") || [];
   const sextiles = aspectsByType.get("sextile") || [];
 
-  if (trines.length < 3 || oppositions.length < 1 || sextiles.length < 2) {
+  if (trines.length < 3 || oppositions.length === 0 || sextiles.length < 2) {
     return events;
   }
 
@@ -290,7 +318,7 @@ function composeKites(allEdges: AspectEdge[], currentMinute: Moment): Event[] {
         ]);
 
         if (bodies.size === 3) {
-          const bodyList = Array.from(bodies);
+          const bodyList = [...bodies];
           const body0 = bodyList[0];
           const body1 = bodyList[1];
           const body2 = bodyList[2];
@@ -311,7 +339,7 @@ function composeKites(allEdges: AspectEdge[], currentMinute: Moment): Event[] {
 
   // For each grand trine, look for a 4th body that forms a kite
   for (const gtBodies of grandTrines) {
-    const gtList = Array.from(gtBodies);
+    const gtList = [...gtBodies];
 
     for (const baseBody of gtList) {
       const otherTwo = gtList.filter((b) => b !== baseBody);

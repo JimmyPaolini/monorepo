@@ -7,7 +7,7 @@
  * an 8° orb tolerance for detection.
  */
 
-import fs from "fs";
+import fs from "node:fs";
 
 import _ from "lodash";
 

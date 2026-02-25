@@ -401,7 +401,7 @@ export function couldBeStellium(longitudes: number[], maxOrb = 10): boolean {
   const sorted = [...longitudes].sort((a, b) => a - b);
 
   // Calculate the span (accounting for zodiac wrap-around at 0°/360°)
-  const sortedLast = sorted[sorted.length - 1];
+  const sortedLast = sorted.at(-1);
   const sortedFirst = sorted[0];
   if (sortedLast === undefined || sortedFirst === undefined) {
     return false;

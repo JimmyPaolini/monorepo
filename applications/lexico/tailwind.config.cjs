@@ -1,4 +1,4 @@
-const { join } = require("path");
+const { join } = require("node:path");
 
 const baseConfig = require("../../packages/lexico-components/tailwind.config.cjs");
 

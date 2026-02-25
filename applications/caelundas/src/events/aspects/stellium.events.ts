@@ -112,7 +112,7 @@ function composeStelliums(
 
   // For each cluster, verify it's a true stellium (all pairs are conjunct)
   for (const cluster of clusters) {
-    const bodies = Array.from(cluster);
+    const bodies = [...cluster];
 
     // Verify all pairs are in conjunction
     let isStellium = true;

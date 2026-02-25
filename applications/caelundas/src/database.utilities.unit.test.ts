@@ -1,5 +1,5 @@
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 
 import {
   afterAll,
@@ -187,8 +187,8 @@ describe("database.utilities", () => {
         {
           body: "mars",
           timestamp,
-          longitude: 45.0,
-          latitude: 1.0,
+          longitude: 45,
+          latitude: 1,
         },
       ]);
 
@@ -197,7 +197,7 @@ describe("database.utilities", () => {
         {
           body: "mars",
           timestamp,
-          longitude: 46.0,
+          longitude: 46,
         },
       ]);
 
@@ -209,8 +209,8 @@ describe("database.utilities", () => {
       });
 
       expect(records.length).toBe(1);
-      expect(records[0]?.longitude).toBe(46.0);
-      expect(records[0]?.latitude).toBe(1.0); // Should preserve original
+      expect(records[0]?.longitude).toBe(46);
+      expect(records[0]?.latitude).toBe(1); // Should preserve original
     });
 
     it("should store all ephemeris types", async () => {

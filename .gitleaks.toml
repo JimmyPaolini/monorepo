@@ -1,0 +1,40 @@
+# Gitleaks Configuration
+# Purpose: Detect hardcoded secrets (API keys, passwords, tokens) in git history and staged changes
+# Usage (CI): GitHub Action runs on push/PR with full history scan
+# Usage (Local): pnpm dlx @gitleaks/gitleaks git --staged --verbose --redact --exit-code 1
+# CI Workflow: .github/workflows/gitleaks.yml
+# @see https://github.com/gitleaks/gitleaks
+
+[extend]
+# Use Gitleaks built-in rules for all common secret patterns
+useDefault = true
+
+# Allowlists: Ignore known safe patterns and file types
+[[allowlists]]
+description = "Ignore lockfiles"
+paths = [
+  "pnpm-lock.yaml",
+  "package-lock.json",
+  "yarn.lock"
+]
+
+[[allowlists]]
+description = "Ignore Terraform state files"
+paths = [
+  "**/*.tfstate",
+  "**/*.tfstate.backup"
+]
+
+[[allowlists]]
+description = "Ignore test fixtures and snapshots"
+paths = [
+  "**/testing/**",
+  "**/*.snap",
+  "**/__snapshots__/**"
+]
+
+[[allowlists]]
+description = "Ignore Gitleaks configuration itself"
+paths = [
+  ".gitleaksignore"
+]

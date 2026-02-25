@@ -124,19 +124,26 @@ export function isLunarPhase(args: {
   const isWaningLunarPhase = isLunarPhase && isWaning;
 
   switch (lunarPhase) {
-    case "waxing crescent":
+    case "waxing crescent": {
       return isWaxingLunarPhase;
-    case "first quarter":
+    }
+    case "first quarter": {
       return isWaxingLunarPhase;
-    case "waxing gibbous":
+    }
+    case "waxing gibbous": {
       return isWaxingLunarPhase;
-    case "waning gibbous":
+    }
+    case "waning gibbous": {
       return isWaningLunarPhase;
-    case "last quarter":
+    }
+    case "last quarter": {
       return isWaningLunarPhase;
-    case "waning crescent":
+    }
+    case "waning crescent": {
       return isWaningLunarPhase;
-    default:
+    }
+    default: {
       return false;
+    }
   }
 }
