@@ -1,7 +1,7 @@
 ---
 agent: "agent"
 description: "Automatically fetch failing GitHub Action checks on the current branch, diagnose root causes, apply fixes, and verify locally."
-name: "fix-github-action"
+name: "fix-deployment"
 model: Claude Haiku 4.5 (copilot)
 tools:
   [
