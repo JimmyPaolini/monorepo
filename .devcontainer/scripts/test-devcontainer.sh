@@ -147,13 +147,13 @@ fi
 
 #region 🔒 Security
 echo ""
-echo "🔒 Container user (must be 'node', not root)"
+echo "🔒 Container user (must be 'root')"
 CURRENT_USER="$(whoami)"
 CURRENT_UID="$(id -u)"
-if [ "${CURRENT_USER}" = "node" ]; then
+if [ "${CURRENT_USER}" = "root" ]; then
   pass "running as user '${CURRENT_USER}' (uid=${CURRENT_UID})"
 else
-  fail "expected user 'node', got '${CURRENT_USER}' (uid=${CURRENT_UID})"
+  fail "expected user 'root', got '${CURRENT_USER}' (uid=${CURRENT_UID})"
 fi
 #endregion
 

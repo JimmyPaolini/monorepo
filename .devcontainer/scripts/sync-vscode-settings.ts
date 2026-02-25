@@ -25,7 +25,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const WORKSPACE_ROOT = join(__dirname, "../..");
 const WORKSPACE_SETTINGS_FILE = join(WORKSPACE_ROOT, ".vscode/settings.json");
-const MACHINE_SETTINGS_DIR = "/home/node/.vscode-server/data/Machine";
+const MACHINE_SETTINGS_DIR = "/root/.vscode-server/data/Machine";
 const MACHINE_SETTINGS_FILE = join(MACHINE_SETTINGS_DIR, "settings.json");
 const MODE = process.argv[2] || "check";
 

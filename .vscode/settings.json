@@ -423,7 +423,7 @@
   "githubPullRequests.pushBranch": "prompt",
   "githubPullRequests.queries": [
     {
-      "label": "🧑‍💻 Local",
+      "label": "🧑‍💻 Mine",
       "query": "repo:${owner}/${repository} is:open author:${user}"
     },
     {

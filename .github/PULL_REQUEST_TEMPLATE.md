@@ -10,6 +10,6 @@
 
 1. <!-- How to manually verify these changes work correctly -->
 
-## Related Issues
+## Related
 
 - <!-- Link any related issues using keywords: Closes #123, Fixes #456, Related to #789 -->

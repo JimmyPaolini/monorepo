@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainer.base.schema.json",
-  "containerUser": "node",
+  "containerUser": "root",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -240,7 +240,7 @@
     },
     {
       "source": "monorepo-pnpm",
-      "target": "/home/node/.local/share/pnpm",
+      "target": "/root/.local/share/pnpm",
       "type": "volume"
     }
   ],
@@ -279,7 +279,7 @@
     "UV_THREADPOOL_SIZE": "4",
     "VSCODE_EXTENSION_HOST_WORKER_CONCURRENCY": "4"
   },
-  "remoteUser": "node",
+  "remoteUser": "root",
   "runArgs": [
     "--name",
     "monorepo-devcontainer",
