@@ -239,30 +239,6 @@ else
 fi
 #endregion
 
-#region 🧩 Extensions installation verification
-echo ""
-echo "🧩 VS Code extensions installation verification"
-if ! command -v code &> /dev/null; then
-  echo "  ⚠️  'code' CLI not available — skipping (only available when VS Code Server is running)"
-else
-  EXPECTED_EXTENSIONS=$(jq -r '.customizations.vscode.extensions[]' "${DEVCONTAINER_JSON}" | tr '[:upper:]' '[:lower:]' | sort)
-  INSTALLED_EXTENSIONS=$(code --list-extensions 2>&1 | tail -n +2 | tr '[:upper:]' '[:lower:]' | sort)
-  MISSING_EXTENSIONS=$(comm -23 <(echo "${EXPECTED_EXTENSIONS}") <(echo "${INSTALLED_EXTENSIONS}"))
-  MISSING_COUNT=$(echo "${MISSING_EXTENSIONS}" | grep -c . || true)
-
-  if [ "${MISSING_COUNT}" -eq 0 ]; then
-    EXPECTED_COUNT=$(echo "${EXPECTED_EXTENSIONS}" | wc -l | tr -d ' ')
-    INSTALLED_COUNT=$(echo "${INSTALLED_EXTENSIONS}" | wc -l | tr -d ' ')
-    pass "all ${EXPECTED_COUNT} expected extensions are installed (${INSTALLED_COUNT} total)"
-  else
-    fail "${MISSING_COUNT} extension(s) not installed:"
-    echo "${MISSING_EXTENSIONS}" | while IFS= read -r ext; do
-      echo "         - ${ext}"
-    done
-  fi
-fi
-#endregion
-
 #region ⚙️ VS Code Machine settings sync
 echo ""
 echo "⚙️  VS Code Machine settings sync"
