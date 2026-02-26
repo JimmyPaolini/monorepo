@@ -7,7 +7,7 @@
 # @see https://github.com/gitleaks/gitleaks-action
 # @see https://github.com/aquasecurity/trivy-action
 
-name: 🔒 Security Audit
+name: 🕵️ Security Audit
 
 on:
   push:
@@ -39,7 +39,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   dependency-audit:
-    name: 🕵️ Dependency Audit
+    name: 📚 Dependency Audit
     runs-on: ubuntu-latest
 
     steps:
@@ -51,7 +51,7 @@ jobs:
       - name: 🕋 Setup monorepo
         uses: ./.github/actions/setup-monorepo
 
-      - name: 🔗 Dependency Audit
+      - name: 📚 Dependency Audit
         run: pnpm exec nx affected -t dependency-audit --parallel=3
 
   trivy-docker-scan:
