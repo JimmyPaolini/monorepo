@@ -1,5 +1,5 @@
 # Security Audit Workflow
-# Purpose: Combined security audit running four parallel jobs:
+# Purpose: Combined security audit running four steps sequentially:
 #   - 🔐 Gitleaks secret scanning (push to main + PRs)
 #   - 🕵️ pnpm dependency audit (push to main + PRs + weekly schedule)
 #   - 🐳 Trivy Docker scanning for caelundas image (only on Dockerfile changes)
@@ -22,10 +22,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  secrets-scan:
-    name: 🔐 Gitleaks Secret Scan
+  security-audit:
+    name: 🕵️ Security Audit
     runs-on: ubuntu-latest
-    if: github.event_name != 'schedule'
 
     steps:
       - name: 📥 Checkout repository
@@ -38,49 +37,31 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-  dependency-audit:
-    name: 📚 Dependency Audit
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: 📥 Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
       - name: 🕋 Setup monorepo
         uses: ./.github/actions/setup-monorepo
 
       - name: 📚 Dependency Audit
         run: pnpm exec nx affected --target=dependency-audit --parallel=3
 
-  trivy-docker-scan:
-    name: 🐳 Trivy Docker Scan
-    runs-on: ubuntu-latest
-    if: github.event_name != 'schedule'
-
-    steps:
-      - name: 📥 Checkout Repository
-        uses: actions/checkout@v4
-
       - name: 🔍 Check Changes
+        if: github.event_name != 'schedule'
         id: paths
+        # paths-filter has no diff context on schedule events, so Trivy steps
+        # fall back to the `github.event_name == 'schedule'` condition instead
         uses: dorny/paths-filter@v3
         with:
           filters: |
             dockerfile:
               - applications/caelundas/Dockerfile
-
-      - name: 🕋 Setup Monorepo
-        if: steps.paths.outputs.dockerfile == 'true'
-        uses: ./.github/actions/setup-monorepo
+            terraform:
+              - infrastructure/terraform/**
 
       - name: 🐳 Build caelundas Docker image
-        if: steps.paths.outputs.dockerfile == 'true'
+        if: github.event_name == 'schedule' || steps.paths.outputs.dockerfile == 'true'
         run: docker build --target=caelundas:scan -f applications/caelundas/Dockerfile .
 
       - name: 🛡️ Trivy Docker Scan
-        if: steps.paths.outputs.dockerfile == 'true'
+        if: github.event_name == 'schedule' || steps.paths.outputs.dockerfile == 'true'
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: caelundas:scan
@@ -88,25 +69,8 @@ jobs:
           severity: CRITICAL,HIGH
           exit-code: 1
 
-  trivy-infrastructure-scan:
-    name: 🏗️ Trivy Infrastructure Scan
-    runs-on: ubuntu-latest
-    if: github.event_name != 'schedule'
-
-    steps:
-      - name: 📥 Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: 🔍 Check Changes
-        id: paths
-        uses: dorny/paths-filter@v3
-        with:
-          filters: |
-            terraform:
-              - infrastructure/terraform/**
-
       - name: 🏗️ Trivy Infrastructure Scan
-        if: steps.paths.outputs.terraform == 'true'
+        if: github.event_name == 'schedule' || steps.paths.outputs.terraform == 'true'
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: config
