@@ -57,6 +57,7 @@ Analyze the current branch's changes and create a pull request that:
    ```bash
    gh pr create \
      --title "<type>(<scope>): <gitmoji> <subject>" \
+     --assignee @me \
      --body "## Summary
    ```
 
@@ -95,6 +96,7 @@ Before creating the PR, verify:
 ```bash
 gh pr create \
 --title "feat(lexico): ✨ add user profile page" \
+--assignee @me \
 --body "## Summary
 
 Adds a user profile page where users can view and edit their account information.
@@ -125,6 +127,7 @@ Closes #123"
 ```bash
 gh pr create \
   --title "fix(caelundas): 🐛 correct timezone handling" \
+  --assignee @me \
   --body "## Summary
 
 Fixes incorrect timezone handling for ephemeris calculations near DST boundaries.
@@ -152,6 +155,7 @@ Fixes #456"
 ```bash
 gh pr create --draft \
   --title "feat(lexico): ✨ [WIP] add user profile" \
+  --assignee @me \
   --body "..."
 ```
 
