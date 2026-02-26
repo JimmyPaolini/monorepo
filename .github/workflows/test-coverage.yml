@@ -1,4 +1,4 @@
-name: 🧑‍🔬 Test Code
+name: 🧑‍🔬 Test Coverage
 
 on:
   push:
@@ -12,7 +12,7 @@ concurrency:
 
 jobs:
   test-coverage:
-    name: 🧪 Test Coverage
+    name: 🧑‍🔬 Test Coverage
     runs-on: ubuntu-latest
 
     steps:
@@ -21,7 +21,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: � Setup Monorepo
+      - name: 🕋 Setup Monorepo
         uses: ./.github/actions/setup-monorepo
 
       - name: 🧪 Test Coverage
