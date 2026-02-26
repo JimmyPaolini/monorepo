@@ -11,11 +11,11 @@ on:
       - main
     paths:
       - applications/caelundas/Dockerfile
-      - "infrastructure/terraform/**"
+      - infrastructure/terraform/**
   pull_request:
     paths:
       - applications/caelundas/Dockerfile
-      - "infrastructure/terraform/**"
+      - infrastructure/terraform/**
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

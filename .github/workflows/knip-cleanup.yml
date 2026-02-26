@@ -2,7 +2,7 @@ name: ✂️ Knip Cleanup
 
 on:
   schedule:
-    - cron: "0 6 * * 0" # Weekly Sunday 6am UTC
+    - cron: 0 6 * * 0 # Weekly Sunday 6am UTC
   workflow_dispatch: # Allow manual trigger
 
 concurrency:

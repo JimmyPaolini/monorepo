@@ -5,10 +5,10 @@ on:
     branches:
       - main
     paths:
-      - ".devcontainer/**"
+      - .devcontainer/**
   pull_request:
     paths:
-      - ".devcontainer/**"
+      - .devcontainer/**
       - .vscode/extensions.json
   workflow_dispatch:
     inputs:
