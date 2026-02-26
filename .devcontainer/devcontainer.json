@@ -283,6 +283,8 @@
   "runArgs": [
     "--name",
     "monorepo-devcontainer",
+    "--env-file",
+    "${localWorkspaceFolder}/.env",
     "--cpus=6",
     "--memory=12g",
     "--memory-swap=16g"

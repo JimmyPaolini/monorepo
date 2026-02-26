@@ -177,6 +177,7 @@ git push -u origin feat/lexico-user-profile
 ```bash
 gh pr create \
   --title "feat(lexico): ✨ add user profile page" \
+  --assignee @me \
   --body "## Summary
 
 Adds a user profile page where users can view and edit their information.
@@ -208,6 +209,14 @@ mcp_github_create_pull_request({
   base: "main",
   body: "## Summary\n\nAdds user profile page...",
   draft: false,
+});
+
+// Always assign the PR to yourself after creation
+mcp_github_add_issue_assignees({
+  owner: "JimmyPaolini",
+  repo: "monorepo",
+  issue_number: <pr_number>,
+  assignees: ["JimmyPaolini"],
 });
 ```
 
@@ -259,7 +268,7 @@ Use draft PRs for work in progress:
 
 ```bash
 # Create draft PR
-gh pr create --draft --title "feat(lexico): ✨ [WIP] add user profile"
+gh pr create --draft --assignee @me --title "feat(lexico): ✨ [WIP] add user profile"
 
 # Mark ready for review when complete
 gh pr ready
@@ -275,6 +284,25 @@ Reference issues in PR description:
 | `Fixes #123`      | Closes issue when PR merges |
 | `Resolves #123`   | Closes issue when PR merges |
 | `Related to #123` | Links without closing       |
+
+## Assignees
+
+Always assign PRs to yourself:
+
+```bash
+gh pr create --assignee @me
+```
+
+Or with MCP tools after creation:
+
+```typescript
+mcp_github_add_issue_assignees({
+  owner: "JimmyPaolini",
+  repo: "monorepo",
+  issue_number: <pr_number>,
+  assignees: ["JimmyPaolini"],
+});
+```
 
 ## Review Requests
 
@@ -423,7 +451,7 @@ All routes should work as before.
 git checkout -b <type>/<scope>-<description>
 
 # Create PR with GitHub CLI
-gh pr create --title "<type>(<scope>): <gitmoji> <subject>" --body "..."
+gh pr create --title "<type>(<scope>): <gitmoji> <subject>" --assignee @me --body "..."
 
 # Run CI checks locally
 nx affected --target=lint && nx affected --target=typecheck && nx affected --target=test
