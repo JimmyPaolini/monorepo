@@ -61,7 +61,7 @@ jobs:
           github.event_name == 'schedule' ||
           steps.paths.outputs.dockerfile == 'true'
         run: |
-          docker build --target=caelundas:scan \
+          docker build -t caelundas:scan \
             -f applications/caelundas/Dockerfile .
 
       - name: 🛡️ Trivy Docker Scan

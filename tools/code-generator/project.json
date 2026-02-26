@@ -42,6 +42,7 @@
       }
     },
     "format": {},
+    "knip": {},
     "lint": {},
     "oxlint": {
       "executor": "nx:run-commands",
