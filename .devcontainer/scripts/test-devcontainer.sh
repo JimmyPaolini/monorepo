@@ -249,6 +249,30 @@ else
 fi
 #endregion
 
+#region 🔐 GPG commit signing configuration
+echo ""
+echo "🔐 GPG commit signing configuration"
+
+if grep -q 'GPG_TTY' /root/.bashrc 2>/dev/null; then
+  pass "GPG_TTY export configured in .bashrc"
+else
+  fail "GPG_TTY export missing from .bashrc"
+fi
+
+if git config --global commit.gpgsign 2>/dev/null | grep -q true; then
+  pass "git commit.gpgsign is enabled"
+else
+  echo "  ⚠️  commit.gpgsign not set globally — skipping (depends on host GPG forwarding)"
+fi
+
+if [ -n "$(git config --global user.signingkey 2>/dev/null)" ]; then
+  SIGNING_KEY="$(git config --global user.signingkey)"
+  pass "git user.signingkey is set (${SIGNING_KEY})"
+else
+  echo "  ⚠️  user.signingkey not set globally — skipping (depends on host GPG forwarding)"
+fi
+#endregion
+
 #region 📊 Summary
 echo ""
 echo "────────────────────────────────────────"
