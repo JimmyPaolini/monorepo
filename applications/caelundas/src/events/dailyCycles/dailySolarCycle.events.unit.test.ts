@@ -212,8 +212,9 @@ describe("dailySolarCycle.events", () => {
         },
       ];
 
-      const { writeDailySolarCycleEvents } =
-        await import("./dailySolarCycle.events");
+      const { writeDailySolarCycleEvents } = await import(
+        "./dailySolarCycle.events"
+      );
       writeDailySolarCycleEvents({
         dailySolarCycleEvents: events,
         start: new Date("2024-01-01"),
@@ -226,8 +227,9 @@ describe("dailySolarCycle.events", () => {
     it("should not write if events array is empty", async () => {
       const { default: fs } = await import("node:fs");
 
-      const { writeDailySolarCycleEvents } =
-        await import("./dailySolarCycle.events");
+      const { writeDailySolarCycleEvents } = await import(
+        "./dailySolarCycle.events"
+      );
       writeDailySolarCycleEvents({
         dailySolarCycleEvents: [],
         start: new Date("2024-01-01"),

@@ -67,7 +67,7 @@
         "command": "ncu --workspaces --root"
       }
     },
-    "format": {
+    "prettier": {
       "cache": true,
       "configurations": {
         "check": {
@@ -117,7 +117,7 @@
         "cwd": "{workspaceRoot}"
       }
     },
-    "lint": {
+    "eslint": {
       "cache": true,
       "configurations": {
         "check": {
@@ -128,7 +128,7 @@
         }
       },
       "defaultConfiguration": "check",
-      "description": "Lint workspace root files (config files, scripts, documentation, infrastructure, markdown) excluding NX projects",
+      "description": "Lint workspace root files with ESLint (config files, scripts, documentation, infrastructure, markdown)",
       "executor": "nx:run-commands",
       "options": {
         "command": "eslint {args} --config eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'",
@@ -307,6 +307,44 @@
     "typecheck": {
       "description": "Type-check workspace root TypeScript files"
     },
-    "yaml-lint": {}
+    "yaml-lint": {},
+    "lint": {},
+    "format": {},
+    "oxlint": {
+      "cache": true,
+      "configurations": {
+        "check": {},
+        "write": {
+          "command": "oxlint --fix --config=.oxlintrc.jsonc '*.ts' '*.js' 'scripts/' 'documentation/' 'infrastructure/' --ignore-pattern='infrastructure/helm/**/templates'"
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "Run Oxlint on workspace root files (config files, scripts, documentation, infrastructure)",
+      "executor": "nx:run-commands",
+      "inputs": ["default", "{workspaceRoot}/.oxlintrc.jsonc"],
+      "options": {
+        "command": "oxlint --config=.oxlintrc.jsonc '*.ts' '*.js' 'scripts/' 'documentation/' 'infrastructure/' --ignore-pattern='infrastructure/helm/**/templates'",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "biome": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "command": "biome check '*.ts' '*.js' '*.json' 'scripts/' 'documentation/' 'infrastructure/'"
+        },
+        "write": {
+          "command": "biome check --write '*.ts' '*.js' '*.json' 'scripts/' 'documentation/' 'infrastructure/'"
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "Run Biome supplementary format check and lint on workspace root files",
+      "executor": "nx:run-commands",
+      "inputs": ["default", "{workspaceRoot}/biome.jsonc"],
+      "options": {
+        "command": "biome check '*.ts' '*.js' '*.json' 'scripts/' 'documentation/' 'infrastructure/'",
+        "cwd": "{projectRoot}"
+      }
+    }
   }
 }

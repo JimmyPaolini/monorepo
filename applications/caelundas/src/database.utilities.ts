@@ -547,7 +547,9 @@ export async function getAllEvents(): Promise<Event[]> {
      ORDER BY start ASC`,
   );
 
-  const events: Event[] = (rows as EventRecord[]).map((row) => mapRowToEvent(row));
+  const events: Event[] = (rows as EventRecord[]).map((row) =>
+    mapRowToEvent(row),
+  );
 
   return events;
 }

@@ -282,6 +282,8 @@ The monorepo uses comprehensive static analysis for code quality, security, and 
 
 **Code Quality:**
 
+- **Oxlint**: Fast Rust-based supplementary linter running before ESLint in `code-analysis` targets (~50–100× faster). Covers a large subset of ESLint rules as a first pass. ESLint remains authoritative for any overlap — both tools run independently. Configuration in `.oxlintrc.jsonc`.
+- **Biome**: Supplementary Rust-based format checker and linter running as its own `biome` Nx target alongside Prettier. Verifies formatting consistency with Prettier output and catches Biome-exclusive issues. Configuration in `biome.jsonc`. **Prettier remains the primary formatter and is unchanged.**
 - **ESLint** with `eslint-plugin-unicorn`: Modern JavaScript/TypeScript patterns and best practices. 9 unicorn rules disabled to match existing conventions (PascalCase components, null usage, abbreviations, etc.). Configuration in `eslint.config.base.ts`.
 - **Prettier**: Opinionated code formatting
 - **TSDoc**: Documentation comment linting

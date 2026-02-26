@@ -96,7 +96,8 @@ function SearchPage(): ReactNode {
       });
       setResults(searchResults);
     } catch (error_: unknown) {
-      const message = error_ instanceof Error ? error_.message : "Search failed";
+      const message =
+        error_ instanceof Error ? error_.message : "Search failed";
       setError(message);
       setResults([]);
     } finally {

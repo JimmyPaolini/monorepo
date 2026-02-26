@@ -55,7 +55,7 @@
     },
     {
       "options": {
-        "targetName": "lint"
+        "targetName": "eslint"
       },
       "plugin": "@nx/eslint/plugin"
     }
@@ -69,6 +69,22 @@
     }
   },
   "targetDefaults": {
+    "biome": {
+      "cache": true,
+      "configurations": {
+        "check": {},
+        "write": {
+          "args": "--write"
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands",
+      "inputs": ["default", "{workspaceRoot}/biome.jsonc"],
+      "options": {
+        "command": "biome check {args} {projectRoot}/src",
+        "cwd": "{workspaceRoot}"
+      }
+    },
     "build": {
       "cache": true,
       "dependsOn": ["^build"],
@@ -105,26 +121,41 @@
         "cwd": "{workspaceRoot}"
       }
     },
+    "eslint": {
+      "cache": true,
+      "configurations": {
+        "check": {},
+        "write": {
+          "args": "--fix"
+        }
+      },
+      "defaultConfiguration": "check",
+      "inputs": [
+        "default",
+        "{workspaceRoot}/eslint.config.base.ts",
+        "{projectRoot}/**/*.md"
+      ]
+    },
     "format": {
       "cache": true,
       "configurations": {
         "check": {
-          "args": "--check"
+          "commands": [
+            "nx run {projectName}:prettier:check",
+            "nx run {projectName}:biome:check"
+          ],
+          "parallel": true
         },
         "write": {
-          "args": "--write"
+          "commands": [
+            "nx run {projectName}:prettier:write",
+            "nx run {projectName}:biome:write"
+          ],
+          "parallel": false
         }
       },
       "defaultConfiguration": "write",
-      "executor": "nx:run-commands",
-      "inputs": [
-        "default",
-        "{workspaceRoot}/prettier.config.ts",
-        "{workspaceRoot}/.prettierignore"
-      ],
-      "options": {
-        "command": "prettier {args} {projectRoot}"
-      }
+      "executor": "nx:run-commands"
     },
     "knip": {
       "cache": true,
@@ -147,17 +178,23 @@
     "lint": {
       "cache": true,
       "configurations": {
-        "check": {},
+        "check": {
+          "commands": [
+            "nx run {projectName}:eslint:check",
+            "nx run {projectName}:oxlint:check"
+          ],
+          "parallel": true
+        },
         "write": {
-          "args": "--fix"
+          "commands": [
+            "nx run {projectName}:eslint:write",
+            "nx run {projectName}:oxlint:write"
+          ],
+          "parallel": false
         }
       },
       "defaultConfiguration": "check",
-      "inputs": [
-        "default",
-        "{workspaceRoot}/eslint.config.base.ts",
-        "{projectRoot}/**/*.md"
-      ]
+      "executor": "nx:run-commands"
     },
     "markdown-lint": {
       "cache": true,
@@ -179,6 +216,43 @@
       "options": {
         "command": "markdownlint-cli2 '{projectRoot}/**/*.md'",
         "cwd": "{workspaceRoot}"
+      }
+    },
+    "oxlint": {
+      "cache": true,
+      "configurations": {
+        "check": {},
+        "write": {
+          "args": "--fix"
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands",
+      "inputs": ["default", "{workspaceRoot}/.oxlintrc.jsonc"],
+      "options": {
+        "command": "oxlint {args} --config=.oxlintrc.jsonc {projectRoot}/src",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "prettier": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "args": "--check"
+        },
+        "write": {
+          "args": "--write"
+        }
+      },
+      "defaultConfiguration": "write",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "default",
+        "{workspaceRoot}/prettier.config.ts",
+        "{workspaceRoot}/.prettierignore"
+      ],
+      "options": {
+        "command": "prettier {args} {projectRoot}"
       }
     },
     "spell-check": {

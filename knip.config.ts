@@ -16,6 +16,8 @@ const config: KnipConfig = {
   // Binaries invoked via project.json targets or scripts, not imported in code
   ignoreBinaries: [
     "terraform", // Terraform CLI, used for infrastructure provisioning
+    "biome", // Biome CLI, invoked via nx:run-commands biome target
+    "oxlint", // Oxlint CLI, invoked via nx:run-commands oxlint target
   ],
 
   // devDependencies used via npx, CLI, or ESLint config (not directly imported)

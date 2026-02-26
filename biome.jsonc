@@ -1,0 +1,192 @@
+{
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  // Biome — Supplementary format checker and linter
+  // https://biomejs.dev/reference/configuration/
+  //
+  // Biome runs as a SUPPLEMENTARY tool alongside Prettier (primary formatter)
+  // and ESLint/Oxlint (primary linters). Its purpose:
+  //   1. Format verification — confirms Prettier's output is consistent
+  //      (catches mismatches without reformatting; Prettier remains authoritative)
+  //   2. Biome-exclusive lint rules — catches issues that only Biome detects
+  //      (all rules overlapping ESLint/Oxlint are disabled below)
+  //
+  // Biome v2 changed several configuration keys:
+  //   - `files.ignore` → `files.includes` with `!` negation patterns
+  //   - `--config-path` accepts a DIRECTORY, not a file path
+  //   - Auto-discovers `biome.json` or `biome.jsonc` from the working directory
+  //
+  // Related configs:
+  //   - prettier.config.ts — primary formatter (this file MUST mirror its settings)
+  //   - eslint.config.base.ts — primary linter
+  //   - .oxlintrc.jsonc — fast supplementary linter
+  //
+  // Nx targets:
+  //   - `biome:check` (read-only): `biome check {projectRoot}/src`
+  //   - `biome:write`: auto-fixes where possible
+  // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  "$schema": "https://biomejs.dev/schemas/2.4.4/schema.json",
+
+  // ── VCS Integration ────────────────────────────────────────────────────────
+  // Biome reads .gitignore so git-ignored files (dist, node_modules, etc.)
+  // are automatically excluded without duplicating patterns here.
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true,
+  },
+
+  // ── File Scope ─────────────────────────────────────────────────────────────
+  // Biome handles JS/TS/JSON only. Other formats are covered by dedicated tools:
+  //   - CSS/SCSS → Stylelint + Prettier
+  //   - Markdown → markdownlint + Prettier
+  //   - YAML → yamllint + Prettier
+  //   - HTML → Prettier
+  //
+  // Biome v2 uses `includes` with `!` negations instead of a separate `ignore` key.
+  // The leading `"**"` matches all files, then `!` patterns subtract exclusions.
+  "files": {
+    // Skip file types Biome doesn't understand (e.g., images, fonts)
+    "ignoreUnknown": true,
+    "includes": [
+      "**",
+
+      // Build artifacts and tooling caches
+      "!**/dist/**",
+      "!**/node_modules/**",
+      "!**/coverage/**",
+      "!**/.nx/**",
+      "!**/build/**",
+      "!**/tmp/**",
+
+      // Shadcn generated components — managed by `pnpx shadcn@latest add`,
+      // never manually edited or linted (see packages/lexico-components/AGENTS.md)
+      "!packages/lexico-components/src/components/ui/**",
+      "!packages/lexico-components/src/lib/**",
+      "!packages/lexico-components/src/hooks/**",
+
+      // Binary/lock files
+      "!**/pnpm-lock.yaml",
+
+      // Formats handled by other tools (not JS/TS/JSON)
+      "!**/*.yaml",
+      "!**/*.yml",
+      "!**/*.md",
+      "!**/*.mdx",
+      "!**/*.html",
+      "!**/*.css",
+      "!**/*.scss",
+
+      // Infrastructure templates use Go/Helm templating syntax, not valid JS/JSON
+      "!**/helm/**/templates/**",
+      // Terraform state and generated files
+      "!**/.terraform/**",
+      // Code generator EJS templates contain <%= %> syntax Biome can't parse
+      "!tools/code-generator/**/files/**",
+      // TanStack Router auto-generated route tree (uses single quotes, no semicolons)
+      "!**/routeTree.gen.ts",
+    ],
+  },
+
+  // ── Formatter ──────────────────────────────────────────────────────────────
+  // These settings MUST stay in sync with prettier.config.ts.
+  // Biome's format checker verifies files match Prettier output;
+  // if these diverge, biome-check will report false positives.
+  //
+  // Mapping from prettier.config.ts:
+  //   printWidth: 80        → lineWidth: 80
+  //   tabWidth: 2           → indentWidth: 2
+  //   useTabs: false        → indentStyle: "space"
+  //   endOfLine: "lf"       → lineEnding: "lf"
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 80,
+    "lineEnding": "lf",
+  },
+
+  // ── JavaScript/TypeScript/JSX Formatter ────────────────────────────────────
+  // Additional JS-specific settings mirroring prettier.config.ts:
+  //   singleQuote: false       → quoteStyle: "double"
+  //   jsxSingleQuote: false    → jsxQuoteStyle: "double"
+  //   semi: true               → semicolons: "always"
+  //   trailingComma: "all"     → trailingCommas: "all"
+  //   arrowParens: "always"    → arrowParentheses: "always"
+  //   bracketSpacing: true     → bracketSpacing: true
+  //   bracketSameLine: false   → bracketSameLine: false
+  //   quoteProps: "as-needed"  → quoteProperties: "asNeeded"
+  //   singleAttributePerLine   → attributePosition: "multiline"
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "double",
+      "jsxQuoteStyle": "double",
+      "semicolons": "always",
+      "trailingCommas": "all",
+      "arrowParentheses": "always",
+      "bracketSpacing": true,
+      "bracketSameLine": false,
+      "quoteProperties": "asNeeded",
+      // Biome's "multiline" puts each JSX/HTML attribute on its own line,
+      // equivalent to Prettier's singleAttributePerLine: true
+      "attributePosition": "multiline",
+    },
+  },
+
+  // ── JSON Formatter ─────────────────────────────────────────────────────────
+  // JSON doesn't support trailing commas in standard spec; match Prettier behavior.
+  "json": {
+    "formatter": {
+      "trailingCommas": "none",
+    },
+  },
+
+  // ── Linter ─────────────────────────────────────────────────────────────────
+  // Only Biome-exclusive rules are enabled. All categories are set to
+  // recommended: false to prevent overlap with ESLint and Oxlint.
+  //
+  // ESLint is the authoritative linter; Oxlint is the fast first pass.
+  // Biome's linter only catches things neither of those tools cover.
+  "linter": {
+    "enabled": true,
+    "rules": {
+      // Disable all recommended rule sets to avoid duplicate diagnostics
+      "recommended": false,
+      "correctness": {
+        // These two rules are Biome-specific but produce false positives
+        // in Nx monorepos with TypeScript path mappings (@monorepo/*)
+        "noUndeclaredDependencies": "off",
+        "useImportExtensions": "off",
+      },
+      "complexity": {
+        "recommended": false,
+      },
+      "nursery": {
+        "recommended": false,
+      },
+      "performance": {
+        "recommended": false,
+        // Barrel files (index.ts re-exports) are the monorepo's public API pattern
+        "noBarrelFile": "off",
+        "noReExportAll": "off",
+      },
+      "security": {
+        "recommended": false,
+      },
+      "style": {
+        "recommended": false,
+      },
+      "suspicious": {
+        "recommended": false,
+      },
+    },
+  },
+
+  // ── Assist (Import Organization) ───────────────────────────────────────────
+  // Disabled — eslint-plugin-import handles import sorting and organization
+  // via the import/order rule in eslint.config.base.ts. Enabling Biome's
+  // import organizer would conflict with ESLint's ordering.
+  "assist": {
+    "enabled": false,
+  },
+}

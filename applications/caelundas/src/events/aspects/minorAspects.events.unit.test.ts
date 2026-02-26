@@ -237,7 +237,8 @@ describe("minorAspects.events", () => {
       // If all bodies are within a ~20° range, no pairs will have angles matching minor aspects
       // Positions: 50° through 70° (20° span, all angles < 28° which is outside all aspect orbs)
       const safeLongitudes = [
-        50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 51, 53, 55, 57, 59, 61, 63, 65,
+        50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 51, 53, 55, 57, 59, 61, 63,
+        65,
       ];
       const allBodies = minorAspectBodies;
 

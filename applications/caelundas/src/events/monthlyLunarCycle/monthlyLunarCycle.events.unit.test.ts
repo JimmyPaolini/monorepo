@@ -33,8 +33,7 @@ describe("monthlyLunarCycle.events", () => {
       const minute = currentMinute
         .clone()
         .subtract(MARGIN_MINUTES - i, "minutes");
-      const illumination =
-        illuminations[i] ?? illuminations.at(-1) ?? 0;
+      const illumination = illuminations[i] ?? illuminations.at(-1) ?? 0;
       ephemeris[minute.toISOString()] = {
         illumination,
       };
@@ -48,7 +47,9 @@ describe("monthlyLunarCycle.events", () => {
       const currentMinute = moment.utc("2024-03-15T12:00:00.000Z");
 
       // Illumination staying constant (no phase change)
-      const constantIlluminations = Array.from<number>({length: MARGIN_MINUTES * 2 + 1}).fill(0.5);
+      const constantIlluminations = Array.from<number>({
+        length: MARGIN_MINUTES * 2 + 1,
+      }).fill(0.5);
 
       const moonIlluminationEphemeris = createIlluminationEphemeris(
         currentMinute,
@@ -195,8 +196,9 @@ describe("monthlyLunarCycle.events", () => {
       const start = new Date("2024-03-01T00:00:00.000Z");
       const end = new Date("2024-03-31T23:59:59.000Z");
 
-      const { writeMonthlyLunarCycleEvents } =
-        await import("./monthlyLunarCycle.events");
+      const { writeMonthlyLunarCycleEvents } = await import(
+        "./monthlyLunarCycle.events"
+      );
 
       writeMonthlyLunarCycleEvents({
         monthlyLunarCycleEvents: events,
@@ -219,8 +221,9 @@ describe("monthlyLunarCycle.events", () => {
       const start = new Date("2024-03-01T00:00:00.000Z");
       const end = new Date("2024-03-31T23:59:59.000Z");
 
-      const { writeMonthlyLunarCycleEvents } =
-        await import("./monthlyLunarCycle.events");
+      const { writeMonthlyLunarCycleEvents } = await import(
+        "./monthlyLunarCycle.events"
+      );
 
       writeMonthlyLunarCycleEvents({
         monthlyLunarCycleEvents: [],

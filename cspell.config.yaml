@@ -49,6 +49,8 @@ words:
   - ation
   - automerge
   - bento
+  - biome
+  - biomejs
   - biquintile
   - bitnami
   - brightgreen
@@ -185,6 +187,9 @@ words:
   - oneline
   - opencontainers
   - operands
+  - oxfmt
+  - oxlint
+  - oxlintrc
   - Paolini
   - pbundlesize
   - peaceiris

@@ -175,14 +175,17 @@ function restructureVerbForms(forms: VerbForm[]): FormCellProps[] {
     // Only add if at least one form exists
     if (singularForm || pluralForm) {
       // Singular cell (left column)
-      cells.push({
-        topLeftText: PERSON_ABBREVIATIONS[person] || person,
-        topRightText: NUMBER_ABBREVIATIONS["singular"],
-        centerText: singularForm || "-",
-      }, {
-        topRightText: NUMBER_ABBREVIATIONS["plural"],
-        centerText: pluralForm || "-",
-      });
+      cells.push(
+        {
+          topLeftText: PERSON_ABBREVIATIONS[person] || person,
+          topRightText: NUMBER_ABBREVIATIONS["singular"],
+          centerText: singularForm || "-",
+        },
+        {
+          topRightText: NUMBER_ABBREVIATIONS["plural"],
+          centerText: pluralForm || "-",
+        },
+      );
     }
   }
 

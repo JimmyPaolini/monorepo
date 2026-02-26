@@ -265,8 +265,6 @@ export type OrbitalDirection = keyof typeof symbolByOrbitalDirection;
 export type OrbitalDirectionSymbol =
   (typeof symbolByOrbitalDirection)[OrbitalDirection];
 
-
-
 /**
  * Lunar phase representing the Moon's illumination state as seen from Earth.
  *

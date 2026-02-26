@@ -103,6 +103,10 @@
     },
     "type-coverage": {},
     "typecheck": {},
-    "yaml-lint": {}
+    "yaml-lint": {},
+    "prettier": {},
+    "lint": {},
+    "oxlint": {},
+    "biome": {}
   }
 }

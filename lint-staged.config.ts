@@ -37,8 +37,8 @@ const config = {
   ],
 
   // ── TypeScript / JavaScript source files ──
-  // Runs format, lint, typecheck, and spell-check on affected projects,
-  // plus monorepo-level spell-check for root-level words
+  // Runs format (prettier + biome), lint (eslint + oxlint), typecheck, and spell-check
+  // on affected projects, plus monorepo-level spell-check for root-level words
   "*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}": (files: string[]) => {
     // Convert absolute paths to relative paths for Nx
     const relativePaths = files

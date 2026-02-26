@@ -47,7 +47,7 @@ export function PronunciationButton({
         const url = URL.createObjectURL(blob);
         const audio = new Audio(url);
 
-        audio.addEventListener('ended', () => {
+        audio.addEventListener("ended", () => {
           URL.revokeObjectURL(url);
         });
 

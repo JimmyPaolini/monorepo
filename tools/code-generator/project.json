@@ -15,15 +15,16 @@
       "description": "No-op build target for development tool"
     },
     "dependency-analysis": {},
-    "format": {},
-    "knip": {},
-    "lint": {
+    "prettier": {},
+    "eslint": {
       "executor": "nx:run-commands",
       "options": {
         "command": "eslint tools/code-generator --no-error-on-unmatched-pattern --ignore-pattern '**/code-generator/**/files/**'"
       },
       "inputs": ["default", "{workspaceRoot}/eslint.config.base.mjs"]
     },
+    "lint": {},
+    "format": {},
     "code-analysis": {
       "options": {
         "commands": [
@@ -46,6 +47,14 @@
     },
     "type-coverage": {},
     "typecheck": {},
-    "spell-check": {}
+    "spell-check": {},
+    "oxlint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "oxlint --config=.oxlintrc.jsonc --ignore-pattern='**/files/**' tools/code-generator/src",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "biome": {}
   }
 }

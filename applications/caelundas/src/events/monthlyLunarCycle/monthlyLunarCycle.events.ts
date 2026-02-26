@@ -75,23 +75,29 @@ export function getMonthlyLunarCycleEvents(args: {
     "currentIllumination",
   );
 
-  const previousIlluminations = Array.from({length: MARGIN_MINUTES}, (_, marginIndex) => {
+  const previousIlluminations = Array.from(
+    { length: MARGIN_MINUTES },
+    (_, marginIndex) => {
       const minute = currentMinute.clone().subtract(marginIndex + 1, "minutes");
       return getIlluminationFromEphemeris(
         moonIlluminationEphemeris,
         minute.toISOString(),
         "previousIllumination",
       );
-    });
+    },
+  );
 
-  const nextIlluminations = Array.from({length: MARGIN_MINUTES}, (_, marginIndex) => {
+  const nextIlluminations = Array.from(
+    { length: MARGIN_MINUTES },
+    (_, marginIndex) => {
       const minute = currentMinute.clone().add(marginIndex + 1, "minutes");
       return getIlluminationFromEphemeris(
         moonIlluminationEphemeris,
         minute.toISOString(),
         "nextIllumination",
       );
-    });
+    },
+  );
 
   const illuminations = {
     currentIllumination,

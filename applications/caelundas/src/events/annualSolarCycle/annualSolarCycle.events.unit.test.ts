@@ -280,7 +280,9 @@ describe("annualSolarCycle.events", () => {
       const currentMinute = moment.utc("2024-03-15T12:00:00.000Z");
 
       // No event: sun at some random longitude
-      const longitudes = Array.from<number>({length: MARGIN_MINUTES * 2 + 1}).fill(10);
+      const longitudes = Array.from<number>({
+        length: MARGIN_MINUTES * 2 + 1,
+      }).fill(10);
 
       const sunCoordinateEphemeris = createCoordinateEphemeris(
         currentMinute,
@@ -596,8 +598,9 @@ describe("annualSolarCycle.events", () => {
 
     it("should not write when events array is empty", async () => {
       const fs = await import("node:fs");
-      const { writeAnnualSolarCycleEvents } =
-        await import("./annualSolarCycle.events");
+      const { writeAnnualSolarCycleEvents } = await import(
+        "./annualSolarCycle.events"
+      );
 
       const start = new Date("2024-03-01T00:00:00.000Z");
       const end = new Date("2024-03-31T23:59:59.000Z");

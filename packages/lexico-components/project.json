@@ -34,19 +34,30 @@
           "nx run lexico-components:dependency-analysis",
           "nx run lexico-components:markdown-lint:{args.configuration}",
           "nx run lexico-components:yaml-lint",
-          "nx run lexico-components:spell-check",
-          "nx run lexico-components:stylelint:{args.configuration}"
+          "nx run lexico-components:spell-check"
         ]
       }
     },
     "dependency-analysis": {},
-    "format": {},
     "knip": {},
     "markdown-lint": {},
+    "prettier": {},
+    "lint": {
+      "options": {
+        "commands": [
+          "nx run lexico-components:eslint:{args.configuration}",
+          "nx run lexico-components:oxlint:{args.configuration}",
+          "nx run lexico-components:stylelint:{args.configuration}"
+        ]
+      }
+    },
+    "format": {},
     "spell-check": {},
     "stylelint": {},
     "type-coverage": {},
     "typecheck": {},
-    "yaml-lint": {}
+    "yaml-lint": {},
+    "oxlint": {},
+    "biome": {}
   }
 }

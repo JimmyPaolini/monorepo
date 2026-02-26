@@ -3,8 +3,13 @@ const INITIAL_DELAY_MS = Number.parseInt(
   process.env["INITIAL_DELAY_MS"] || "1000",
   10,
 );
-const MAX_DELAY_MS = Number.parseInt(process.env["MAX_DELAY_MS"] || "30000", 10);
-const BACKOFF_MULTIPLIER = Number.parseFloat(process.env["BACKOFF_MULTIPLIER"] || "2");
+const MAX_DELAY_MS = Number.parseInt(
+  process.env["MAX_DELAY_MS"] || "30000",
+  10,
+);
+const BACKOFF_MULTIPLIER = Number.parseFloat(
+  process.env["BACKOFF_MULTIPLIER"] || "2",
+);
 
 const RETRYABLE_ERROR_CODES = new Set([
   "UND_ERR_SOCKET",

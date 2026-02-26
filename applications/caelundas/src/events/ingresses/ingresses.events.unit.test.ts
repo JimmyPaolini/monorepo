@@ -73,7 +73,10 @@ describe("ingresses.events", () => {
       const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       for (const body of signIngressBodies) {
         coordinateEphemerisByBody[body] = {
-          [previousMinute.toISOString()]: { longitude: Number.NaN, latitude: 0 },
+          [previousMinute.toISOString()]: {
+            longitude: Number.NaN,
+            latitude: 0,
+          },
           [currentMinute.toISOString()]: { longitude: Number.NaN, latitude: 0 },
         };
       }
@@ -104,7 +107,10 @@ describe("ingresses.events", () => {
       const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       for (const body of signIngressBodies) {
         coordinateEphemerisByBody[body] = {
-          [previousMinute.toISOString()]: { longitude: Number.NaN, latitude: 0 },
+          [previousMinute.toISOString()]: {
+            longitude: Number.NaN,
+            latitude: 0,
+          },
           [currentMinute.toISOString()]: { longitude: Number.NaN, latitude: 0 },
         };
       }
@@ -127,8 +133,9 @@ describe("ingresses.events", () => {
   describe("writeSignIngressEvents", () => {
     it("should write events to file and database", async () => {
       const fs = await import("node:fs");
-      const { writeSignIngressEvents, getSignIngressEvent } =
-        await import("./ingresses.events");
+      const { writeSignIngressEvents, getSignIngressEvent } = await import(
+        "./ingresses.events"
+      );
 
       const events = [
         getSignIngressEvent({
@@ -205,7 +212,10 @@ describe("ingresses.events", () => {
       const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       for (const body of decanIngressBodies) {
         coordinateEphemerisByBody[body] = {
-          [previousMinute.toISOString()]: { longitude: Number.NaN, latitude: 0 },
+          [previousMinute.toISOString()]: {
+            longitude: Number.NaN,
+            latitude: 0,
+          },
           [currentMinute.toISOString()]: { longitude: Number.NaN, latitude: 0 },
         };
       }
@@ -235,7 +245,10 @@ describe("ingresses.events", () => {
       const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       for (const body of decanIngressBodies) {
         coordinateEphemerisByBody[body] = {
-          [previousMinute.toISOString()]: { longitude: Number.NaN, latitude: 0 },
+          [previousMinute.toISOString()]: {
+            longitude: Number.NaN,
+            latitude: 0,
+          },
           [currentMinute.toISOString()]: { longitude: Number.NaN, latitude: 0 },
         };
       }
@@ -258,8 +271,9 @@ describe("ingresses.events", () => {
   describe("writeDecanIngressEvents", () => {
     it("should write events to file and database", async () => {
       const fs = await import("node:fs");
-      const { writeDecanIngressEvents, getDecanIngressEvent } =
-        await import("./ingresses.events");
+      const { writeDecanIngressEvents, getDecanIngressEvent } = await import(
+        "./ingresses.events"
+      );
 
       const events = [
         getDecanIngressEvent({
@@ -327,7 +341,10 @@ describe("ingresses.events", () => {
       const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       for (const body of peakIngressBodies) {
         coordinateEphemerisByBody[body] = {
-          [previousMinute.toISOString()]: { longitude: Number.NaN, latitude: 0 },
+          [previousMinute.toISOString()]: {
+            longitude: Number.NaN,
+            latitude: 0,
+          },
           [currentMinute.toISOString()]: { longitude: Number.NaN, latitude: 0 },
         };
       }
@@ -357,7 +374,10 @@ describe("ingresses.events", () => {
       const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       for (const body of peakIngressBodies) {
         coordinateEphemerisByBody[body] = {
-          [previousMinute.toISOString()]: { longitude: Number.NaN, latitude: 0 },
+          [previousMinute.toISOString()]: {
+            longitude: Number.NaN,
+            latitude: 0,
+          },
           [currentMinute.toISOString()]: { longitude: Number.NaN, latitude: 0 },
         };
       }
@@ -380,8 +400,9 @@ describe("ingresses.events", () => {
   describe("writePeakIngressEvents", () => {
     it("should write events to file and database", async () => {
       const fs = await import("node:fs");
-      const { writePeakIngressEvents, getPeakIngressEvent } =
-        await import("./ingresses.events");
+      const { writePeakIngressEvents, getPeakIngressEvent } = await import(
+        "./ingresses.events"
+      );
 
       const events = [
         getPeakIngressEvent({
@@ -450,8 +471,9 @@ describe("ingresses.events", () => {
     });
 
     it("should handle empty array", async () => {
-      const { getSignIngressDurationEvents } =
-        await import("./ingresses.events");
+      const { getSignIngressDurationEvents } = await import(
+        "./ingresses.events"
+      );
 
       const durationEvents = getSignIngressDurationEvents([]);
 

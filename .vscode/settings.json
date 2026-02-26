@@ -688,7 +688,8 @@
   "workbench.editor.wrapTabs": false,
   "workbench.editorAssociations": {
     "*.csv": "jupyter-data-wrangler",
-    "*.html": "default"
+    "*.html": "default",
+    "file:/**/*.csv": "jupyter-data-wrangler"
   },
   "workbench.experimental.share.enabled": true,
   "workbench.externalBrowser": "safari",

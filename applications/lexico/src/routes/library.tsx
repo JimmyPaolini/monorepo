@@ -82,9 +82,7 @@ function LibraryPage(): ReactNode {
       });
       if (result.success && result.text) {
         const newText = result.text;
-        setTexts((prev) =>
-          _.orderBy([...prev, newText], [(t) => t.title]),
-        );
+        setTexts((prev) => _.orderBy([...prev, newText], [(t) => t.title]));
         setFormTitle("");
         setFormText("");
         setIsCreateOpen(false);

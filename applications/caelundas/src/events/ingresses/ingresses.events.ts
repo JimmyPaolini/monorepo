@@ -37,7 +37,7 @@ const categories = ["Astronomy", "Astrology", "Ingress"];
 
 /**
  * Detects zodiacal sign ingress events for celestial bodies.
-*
+ *
  * A sign ingress occurs when a body crosses from one zodiac sign into the next
  * (every 30° of ecliptic longitude). Monitors all configured bodies and generates
  * events when they cross sign boundaries.

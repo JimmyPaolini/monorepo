@@ -368,7 +368,7 @@ function parseOrbitEphemeris(text: string): OrbitEphemeris {
 
   const datePattern = /\d{4}-[A-Za-z]{3}-\d{2} \d{2}:\d{2}:\d{2}(\.\d{4})?/g;
   const pattern = new RegExp(
-    `(${datePattern.source})${  String.raw`[\s\S]*?`  }(?=${datePattern.source}|$)`,
+    `(${datePattern.source})${String.raw`[\s\S]*?`}(?=${datePattern.source}|$)`,
     "g",
   );
 
@@ -721,17 +721,19 @@ export async function getCoordinateEphemerisByBody(args: {
   const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
 
   for (const body of bodies) {
-    coordinateEphemerisByBody[body] = await (isNode(body) ? getNodeCoordinatesEphemeris({
-        end,
-        node: body,
-        start,
-        timezone,
-      }) : getCoordinatesEphemeris({
-        body,
-        end,
-        start,
-        timezone,
-      }));
+    coordinateEphemerisByBody[body] = await (isNode(body)
+      ? getNodeCoordinatesEphemeris({
+          end,
+          node: body,
+          start,
+          timezone,
+        })
+      : getCoordinatesEphemeris({
+          body,
+          end,
+          start,
+          timezone,
+        }));
   }
 
   console.log(`🔭 Got ${message}`);
