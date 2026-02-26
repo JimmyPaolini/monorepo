@@ -10,40 +10,8 @@ concurrency:
 
 jobs:
   convention-validation:
-    name: ${{ matrix.name }}
+    name: 🧑‍⚖️ Convention Validation
     runs-on: ubuntu-latest
-
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - name: 🎋 Branch Name Validation
-            input: $BRANCH_NAME
-            input_label: Branch Name
-            command: pnpm exec validate-branch-name -t "$BRANCH_NAME"
-
-          - name: 📝 Pull Request Title Validation
-            input: $PULL_REQUEST_TITLE
-            input_label: Pull Request Title
-            command: echo "$PULL_REQUEST_TITLE" | pnpm exec commitlint
-
-          - name: 🪢 Pull Request Body Validation
-            input: $PULL_REQUEST_BODY
-            input_label: Pull Request Body
-            command: |
-              MISSING=""
-              echo "$PULL_REQUEST_BODY" | grep -q "^## Summary" || MISSING="$MISSING Summary"
-              echo "$PULL_REQUEST_BODY" | grep -q "^## Details" || MISSING="$MISSING Details"
-              echo "$PULL_REQUEST_BODY" | grep -q "^## Testing" || MISSING="$MISSING Testing"
-              echo "$PULL_REQUEST_BODY" | grep -q "^## Related" || MISSING="$MISSING Related"
-              if [ -n "$MISSING" ]; then
-                echo "❌ Missing required sections:$MISSING"
-                echo ""
-                echo "PR description must include: ## Summary, ## Details, ## Testing, ## Related"
-                echo "See: .github/PULL_REQUEST_TEMPLATE.md"
-                exit 1
-              fi
-              echo "✅ All required sections present"
 
     steps:
       - name: 📥 Checkout Repository
@@ -52,28 +20,47 @@ jobs:
       - name: 🕋 Setup Monorepo
         uses: ./.github/actions/setup-monorepo
 
-      - name: ${{ matrix.name }}
+      - name: 🎋 Branch Name Validation
         env:
           BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
-          PULL_REQUEST_TITLE: ${{ github.event.pull_request.title }}
-          PULL_REQUEST_BODY: ${{ github.event.pull_request.body }}
         run: |
-          if [ -z "${{ matrix.input }}" ]; then
-            echo "❌ Unable to determine ${{ matrix.input_label }}"
+          if [ -z "$BRANCH_NAME" ]; then
+            echo "❌ Unable to determine Branch Name"
             exit 1
           fi
-          echo "Validating ${{ matrix.input_label }}: ${{ matrix.input }}"
-          ${{ matrix.command }}
+          pnpm exec validate-branch-name -t "$BRANCH_NAME"
 
-  conventional-config-validation:
-    name: 🏛️ Conventional Config Validation
-    runs-on: ubuntu-latest
-    steps:
-      - name: 📥 Checkout Repository
-        uses: actions/checkout@v4
+      - name: 📝 Pull Request Title Validation
+        env:
+          PULL_REQUEST_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          if [ -z "$PULL_REQUEST_TITLE" ]; then
+            echo "❌ Unable to determine Pull Request Title"
+            exit 1
+          fi
+          echo "$PULL_REQUEST_TITLE" | pnpm exec commitlint
 
-      - name: 🕋 Setup Monorepo
-        uses: ./.github/actions/setup-monorepo
+      - name: 🪢 Pull Request Body Validation
+        env:
+          PULL_REQUEST_BODY: ${{ github.event.pull_request.body }}
+        run: |
+          if [ -z "$PULL_REQUEST_BODY" ]; then
+            echo "❌ Unable to determine Pull Request Body"
+            exit 1
+          fi
+          MISSING=""
+          echo "$PULL_REQUEST_BODY" | grep -q "^## Summary" || MISSING="$MISSING Summary"
+          echo "$PULL_REQUEST_BODY" | grep -q "^## Details" || MISSING="$MISSING Details"
+          echo "$PULL_REQUEST_BODY" | grep -q "^## Testing" || MISSING="$MISSING Testing"
+          echo "$PULL_REQUEST_BODY" | grep -q "^## Related" || MISSING="$MISSING Related"
+          if [ -n "$MISSING" ]; then
+            echo "❌ Missing required sections:$MISSING"
+            echo ""
+            echo "PR description must include: ## Summary, ## Details, ## Testing, ## Related"
+            echo "See: .github/PULL_REQUEST_TEMPLATE.md"
+            exit 1
+          fi
+          echo "✅ All required sections present"
 
       - name: 🏛️ Conventional Config Validation
         run: npx nx run monorepo:sync-conventional-config:check
