@@ -65,7 +65,7 @@
           "nx run monorepo:dependency-lint:{args.configuration}",
           "nx run monorepo:license-check",
           "nx run monorepo:pnpm-audit:{args.configuration}",
-          "nx run monorepo:sherif",
+          "nx run monorepo:sherif:{args.configuration}",
           "nx run monorepo:syncpack:{args.configuration}"
         ],
         "cwd": "{projectRoot}"
@@ -220,6 +220,15 @@
     },
     "sherif": {
       "cache": true,
+      "configurations": {
+        "check": {
+          "command": "pnpm dlx sherif@1.10.0"
+        },
+        "write": {
+          "command": "pnpm dlx sherif@1.10.0 --fix"
+        }
+      },
+      "defaultConfiguration": "check",
       "description": "Lint monorepo for consistent package.json conventions",
       "executor": "nx:run-commands",
       "inputs": ["{workspaceRoot}/**/package.json"],

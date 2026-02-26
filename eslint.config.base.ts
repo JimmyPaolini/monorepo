@@ -537,10 +537,10 @@ export default [
   // JSON/JSONC/JSON5 linting with style enforcement and Nx dependency checks
   ...jsoncPlugin.configs["flat/recommended-with-jsonc"].map((config) => ({
     ...config,
-    files: ["**/*.json", "**/*.jsonc", "**/*.json5"],
+    files: ["**/*.json", "**/*.jsonc", "**/*.jsonl", "**/*.json5"],
   })),
   {
-    files: ["**/*.json", "**/*.jsonc", "**/*.json5"],
+    files: ["**/*.json", "**/*.jsonc", "**/*.jsonl", "**/*.json5"],
     rules: {
       // Keep Nx dependency checks enabled
       "@nx/dependency-checks": "error",
@@ -553,14 +553,29 @@ export default [
       "jsonc/sort-array-values": [
         "error",
         {
-          pathPattern: ".*",
-          order: { type: "asc", caseSensitive: false, natural: true },
           minValues: 2,
+          order: { type: "asc", caseSensitive: false, natural: true },
+          pathPattern: ".*",
         },
       ],
       "jsonc/quotes": ["error", "double"],
       "jsonc/comma-dangle": ["error", "never"],
       "jsonc/indent": ["error", 2],
+    },
+  },
+
+  // ━━━━━━━━━━━━━━━━━━━ Package.json files ━━━━━━━━━━━━━━━━━━━
+  // Allow line-separated groups in package.json for security audit tool flexibility
+  {
+    files: ["**/package.json"],
+    rules: {
+      "jsonc/sort-keys": [
+        "error",
+        {
+          order: { caseSensitive: false, natural: true, type: "asc" },
+          pathPattern: "^(!devDependencies)$",
+        },
+      ],
     },
   },
 

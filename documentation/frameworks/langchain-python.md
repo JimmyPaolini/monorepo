@@ -61,7 +61,7 @@ print(response.content)
 - Use `tools` argument for function/tool calling (OpenAI, Anthropic, etc.).
 - Use `response_format="json"` for structured outputs (OpenAI models).
 
-### Best Practices
+### Message Best Practices
 
 - Always validate model outputs before using them in downstream tasks.
 - Prefer explicit message types for clarity and reliability.
