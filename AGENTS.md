@@ -274,7 +274,35 @@ Husky + lint-staged automatically runs on staged files (see `lint-staged.config.
 Additional Husky hooks:
 
 - `commit-msg`: commitlint (enforces Conventional Commits with gitmoji)
-- `pre-push`: validate-branch-name (enforces `<type>/<scope>-<description>`)
+- `pre-push`: Gitleaks secret scan (staged changes), validate-branch-name (enforces `<type>/<scope>-<description>`)
+
+### Static Analysis Tools
+
+The monorepo uses comprehensive static analysis for code quality, security, and consistency:
+
+**Code Quality:**
+- **ESLint** with `eslint-plugin-unicorn`: Modern JavaScript/TypeScript patterns and best practices. 9 unicorn rules disabled to match existing conventions (PascalCase components, null usage, abbreviations, etc.). Configuration in `eslint.config.base.ts`.
+- **Prettier**: Opinionated code formatting
+- **TSDoc**: Documentation comment linting
+- **Stylelint**: CSS linting with Tailwind CSS v3 support (lexico-components only)
+
+**Security:**
+- **Gitleaks**: Secret detection in git history (CI) and staged changes (pre-push hook)
+- **Trivy**: Container image and Infrastructure-as-Code security scanning
+- **pnpm audit**: Dependency vulnerability scanning
+
+**Monorepo Hygiene:**
+- **Sherif**: Zero-config monorepo linter enforcing consistent package.json conventions
+- **Syncpack**: Dependency version consistency and semver range enforcement
+- **Dependency Cruiser**: Module dependency validation and circular dependency detection
+- **Knip**: Dead code detection
+
+**Documentation & Standards:**
+- **markdownlint**: Markdown style consistency
+- **yamllint**: YAML validation for GitHub Actions and Helm charts
+- **cspell**: Spell checking across all file types
+
+**Tool Documentation Pattern**: Configuration and usage documentation lives in each tool's config file comments (`.gitleaks.toml`, `eslint.config.base.ts`, `.syncpackrc.cjs`, `.stylelintrc.cjs`, etc.). This ensures docs stay in sync with configuration changes.
 
 ### Error Handling
 

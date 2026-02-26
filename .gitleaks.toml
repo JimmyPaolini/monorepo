@@ -1,7 +1,8 @@
 # Gitleaks Configuration
 # Purpose: Detect hardcoded secrets (API keys, passwords, tokens) in git history and staged changes
 # Usage (CI): GitHub Action runs on push/PR with full history scan
-# Usage (Local): pnpm dlx @gitleaks/gitleaks git --staged --verbose --redact --exit-code 1
+# Usage (Local): Install via brew/apt/binary, then run: gitleaks git --staged --verbose --redact --exit-code 1
+# Installation: https://github.com/gitleaks/gitleaks#installing
 # CI Workflow: .github/workflows/gitleaks.yml
 # @see https://github.com/gitleaks/gitleaks
 

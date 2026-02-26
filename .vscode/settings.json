@@ -241,7 +241,7 @@
   "eslint.codeActionsOnSave.mode": "problems",
   "eslint.enable": true,
   "eslint.format.enable": false,
-  "eslint.run": "onSave",
+  "eslint.run": "onType",
   "eslint.useFlatConfig": true,
   "eslint.validate": [
     "javascript",

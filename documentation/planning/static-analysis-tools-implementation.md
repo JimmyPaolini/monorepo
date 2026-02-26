@@ -100,7 +100,7 @@ All planned static analysis tools have been successfully integrated into the mon
 
 Comprehensive documentation available:
 
-- [Static Analysis Tools Guide](../documentation/static-analysis-tools.md) - Complete usage guide for all 9 tools
+- **Tool Configuration Documentation** - Each tool's documentation lives in its config file comments (`.dependency-cruiser.cjs`, `eslint.config.base.ts`, `.markdownlint-cli2.jsonc`, `prettier.config.ts`, `knip.config.ts`, etc.). This pattern ensures documentation stays in sync with configuration changes.
 
 ### �📊 Impact
 
