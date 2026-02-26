@@ -42,8 +42,8 @@
       "options": {
         "commands": [
           "nx run monorepo:dependency-lint:{args.configuration}",
-          "nx run monorepo:pnpm-audit:{args.configuration}",
           "nx run monorepo:license-check",
+          "nx run monorepo:pnpm-audit:{args.configuration}",
           "nx run monorepo:sherif",
           "nx run monorepo:syncpack:{args.configuration}"
         ],

@@ -345,7 +345,7 @@
   "github.copilot.chat.codesearch.enabled": true,
   "github.copilot.chat.commitMessageGeneration.instructions": [
     {
-      "file": "../documentation/skills/commit-code/SKILL.md"
+      "file": "documentation/skills/commit-code/SKILL.md"
     }
   ],
   "github.copilot.chat.completionsFetcher": "node-fetch",
@@ -377,7 +377,7 @@
   "github.copilot.chat.planAgent.model": "Claude Opus 4.5 (copilot)",
   "github.copilot.chat.pullRequestDescriptionGeneration.instructions": [
     {
-      "file": "../documentation/skills/create-pull-request/SKILL.md"
+      "file": "documentation/skills/create-pull-request/SKILL.md"
     }
   ],
   "github.copilot.chat.responsesApiReasoningEffort": "default",

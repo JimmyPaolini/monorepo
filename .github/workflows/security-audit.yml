@@ -1,0 +1,116 @@
+# Security Audit Workflow
+# Purpose: Combined security audit running four parallel jobs:
+#   - 🔐 Gitleaks secret scanning (push to main + PRs)
+#   - 🕵️ pnpm dependency audit (push to main + PRs + weekly schedule)
+#   - 🐳 Trivy Docker scanning for caelundas image (only on Dockerfile changes)
+#   - 🏗️ Trivy IaC scanning for Terraform configs (only on terraform/** changes)
+# @see https://github.com/gitleaks/gitleaks-action
+# @see https://github.com/aquasecurity/trivy-action
+
+name: 🔒 Security Audit
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  schedule:
+    - cron: 0 6 * * 1 # Weekly Monday 6am UTC
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  secrets-scan:
+    name: 🔐 Gitleaks Secret Scan
+    runs-on: ubuntu-latest
+    if: github.event_name != 'schedule'
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🚰 Gitleaks Check
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  dependency-audit:
+    name: 🕵️ Dependency Audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🕋 Setup monorepo
+        uses: ./.github/actions/setup-monorepo
+
+      - name: 🔗 Dependency Audit
+        run: pnpm exec nx affected -t dependency-audit --parallel=3
+
+  trivy-docker-scan:
+    name: 🐳 Trivy Docker Scan
+    runs-on: ubuntu-latest
+    if: github.event_name != 'schedule'
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🔍 Check Changes
+        id: paths
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            dockerfile:
+              - applications/caelundas/Dockerfile
+
+      - name: 🕋 Setup Monorepo
+        if: steps.paths.outputs.dockerfile == 'true'
+        uses: ./.github/actions/setup-monorepo
+
+      - name: 🐳 Build caelundas Docker image
+        if: steps.paths.outputs.dockerfile == 'true'
+        run: docker build -t caelundas:scan -f applications/caelundas/Dockerfile .
+
+      - name: 🛡️ Trivy Docker Scan
+        if: steps.paths.outputs.dockerfile == 'true'
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: caelundas:scan
+          format: table
+          severity: CRITICAL,HIGH
+          exit-code: 1
+
+  trivy-infrastructure-scan:
+    name: 🏗️ Trivy Infrastructure Scan
+    runs-on: ubuntu-latest
+    if: github.event_name != 'schedule'
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: 🔍 Check Changes
+        id: paths
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            terraform:
+              - infrastructure/terraform/**
+
+      - name: 🏗️ Trivy Infrastructure Scan
+        if: steps.paths.outputs.terraform == 'true'
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: config
+          scan-ref: infrastructure/terraform
+          format: table
+          severity: CRITICAL,HIGH
+          exit-code: 1

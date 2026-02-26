@@ -33,23 +33,23 @@ Analyze the current branch's diff against the base branch and update the existin
 ### Description Template
 
 ```markdown
-## Summary
+## 🌰 Summary
 
 <!-- 1-2 sentence overview synthesized from the diff -->
 
-## Details
+## 📝 Details
 
 <!-- Bulleted list of every meaningful change, present tense ("Add", "Update", "Remove") -->
 
 -
 
-## Testing
+## 🧪 Testing
 
 <!-- Nx commands and manual verification steps -->
 
 1.
 
-## Related Issues
+## 🔗 Related
 
 <!-- Linking keywords: Closes #, Fixes #, Related to # -->
 ```

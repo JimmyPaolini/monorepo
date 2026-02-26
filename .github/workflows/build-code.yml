@@ -29,3 +29,133 @@ jobs:
 
       - name: 👷 Build Code
         run: npx nx affected -t build --parallel=3
+
+  bundle-report:
+    name: 📦 Bundle Report
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: 📥 Checkout Repository - Pull Request
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🕋 Setup Monorepo
+        uses: ./.github/actions/setup-monorepo
+
+      - name: 👷 Build Code - Pull Request
+        run: npx nx run-many --all -t build --parallel=3
+
+      - name: 📦 Measure Bundle - Pull Request
+        id: pr-sizes
+        run: |
+          LEXICO=$(cd applications/lexico && npx size-limit --json 2>/dev/null || echo '[]')
+          COMPONENTS=$(cd packages/lexico-components && npx size-limit --json 2>/dev/null || echo '[]')
+          COMBINED=$(printf '%s\n%s' "$LEXICO" "$COMPONENTS" | jq -s 'add // []')
+          echo "data<<EOF" >> $GITHUB_OUTPUT
+          echo "$COMBINED" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: 📥 Checkout Repository - Main
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.base_ref }}
+          clean: false
+
+      - name: 📚 Install Dependencies - Main
+        run: pnpm install --frozen-lockfile
+
+      - name: 👷 Build Code - Main
+        run: npx nx run-many --all -t build --parallel=3
+
+      - name: 📦 Measure Bundle - Main
+        id: base-sizes
+        run: |
+          LEXICO=$(cd applications/lexico && npx size-limit --json 2>/dev/null || echo '[]')
+          COMPONENTS=$(cd packages/lexico-components && npx size-limit --json 2>/dev/null || echo '[]')
+          COMBINED=$(printf '%s\n%s' "$LEXICO" "$COMPONENTS" | jq -s 'add // []')
+          echo "data<<EOF" >> $GITHUB_OUTPUT
+          echo "$COMBINED" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: 💬 Post bundle report
+        uses: actions/github-script@v7
+        env:
+          PR_DATA: ${{ steps.pr-sizes.outputs.data }}
+          BASE_DATA: ${{ steps.base-sizes.outputs.data }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const prData = JSON.parse(process.env.PR_DATA || '[]');
+            const baseData = JSON.parse(process.env.BASE_DATA || '[]');
+
+            const toKB = bytes => (bytes / 1024).toFixed(2);
+            const sign = n => n >= 0 ? '+' : '';
+            const baseMap = Object.fromEntries(baseData.map(e => [e.name, e]));
+
+            const rows = prData.map(pr => {
+              const base = baseMap[pr.name];
+              const diff = base != null ? pr.size - base.size : null;
+              const pct = diff !== null && base.size > 0 ? (diff / base.size) * 100 : null;
+              const status = !pr.passed ? '❌' : diff === null ? '🆕' : diff > 0 ? (pct > 5 ? '📈' : '⚠️') : '✅';
+              const diffCol = diff !== null ? `${sign(diff)}${toKB(diff)} kB` : '—';
+              const baseCol = base != null ? `${toKB(base.size)} kB` : '—';
+              return `| ${status} | ${pr.name} | ${toKB(pr.size)} kB | ${baseCol} | ${diffCol} | ${toKB(pr.sizeLimit)} kB |`;
+            });
+
+            const totalPR = prData.reduce((s, e) => s + e.size, 0);
+            const totalBase = baseData.reduce((s, e) => s + e.size, 0);
+            const totalDiff = totalPR - totalBase;
+            const totalPct = totalBase > 0 ? (totalDiff / totalBase) * 100 : 0;
+            const overallStatus = prData.some(e => !e.passed) ? '❌' : totalDiff > 0 && totalPct > 5 ? '📈' : totalDiff > 0 ? '⚠️' : '✅';
+
+            const body = [
+              '## 📦 Bundle Size Report',
+              '',
+              `${overallStatus} **${toKB(totalPR)} kB** total (${sign(totalDiff)}${toKB(totalDiff)} kB, ${sign(totalPct)}${totalPct.toFixed(1)}% vs base)`,
+              '',
+              '| | Bundle | PR Size | Base Size | Diff | Limit |',
+              '|--|--------|---------|-----------|------|-------|',
+              ...rows,
+              '',
+              '<details>',
+              '<summary>📊 Guidelines</summary>',
+              '',
+              '- ✅ Size decreased or unchanged',
+              '- ⚠️ Increased < 5%',
+              '- 📈 Increased ≥ 5%',
+              '- ❌ Exceeds limit',
+              '</details>',
+              '',
+              '---',
+              '*Updated automatically when you push new commits.*',
+            ].join('\n');
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+            });
+
+            const existing = comments.find(c => c.user.type === 'Bot' && c.body.includes('Bundle Size Report'));
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.payload.pull_request.number,
+                body,
+              });
+            }

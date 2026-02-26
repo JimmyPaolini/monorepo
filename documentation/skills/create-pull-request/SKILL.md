@@ -107,39 +107,36 @@ Write clear, comprehensive descriptions that help reviewers understand changes. 
 ### Recommended Structure
 
 ```markdown
-## Summary
+## 🌰 Summary
 
 Brief description of what this PR does (1-2 sentences).
 
-## Changes
+## 📝 Details
 
 - List of specific changes made
 - Each change on its own line
 - Use present tense ("Add", "Update", "Remove")
 
-## Testing
+## 🧪 Testing
 
-How to test these changes:
+1. How to test these changes
+1. `nx run <project>:test`
+1. Manual testing steps if applicable
 
-- `nx run <project>:test`
-- Manual testing steps if applicable
+## 🔗 Related
 
-## Related Issues
-
-Closes #123
-Fixes #456
+- Closes #123
+- Fixes #456
 ```
 
 ### Description Guidelines
 
-| Section          | Purpose                           | Required      |
-| ---------------- | --------------------------------- | ------------- |
-| Summary          | Brief overview of the PR          | Yes           |
-| Changes          | Bulleted list of changes          | Yes           |
-| Testing          | How to verify the changes         | Yes           |
-| Related Issues   | Links to issues this PR addresses | If applicable |
-| Screenshots      | Visual changes                    | If UI changes |
-| Breaking Changes | API or behavior changes           | If applicable |
+| Section    | Purpose                           | Required      |
+| ---------- | --------------------------------- | ------------- |
+| 🌰 Summary | Brief overview of the PR          | Yes           |
+| 📝 Details | Bulleted list of changes          | Yes           |
+| 🧪 Testing | How to verify the changes         | Yes           |
+| 🔗 Related | Links to issues this PR addresses | If applicable |
 
 ## Step-by-Step Workflow
 
@@ -178,24 +175,26 @@ git push -u origin feat/lexico-user-profile
 gh pr create \
   --title "feat(lexico): ✨ add user profile page" \
   --assignee @me \
-  --body "## Summary
+  --body "## 🌰 Summary
 
 Adds a user profile page where users can view and edit their information.
 
-## Changes
+## 📝 Details
 
 - Add UserProfile component
 - Add profile API endpoint
 - Add profile route to router
 
-## Testing
+## 🧪 Testing
 
 \`\`\`bash
 nx run lexico:test
 nx run lexico:develop  # Navigate to /profile
 \`\`\`
 
-Closes #123"
+## 🔗 Related
+
+- Closes #123"
 ```
 
 #### Using GitHub MCP Tools
@@ -207,7 +206,7 @@ mcp_github_create_pull_request({
   title: "feat(lexico): ✨ add user profile page",
   head: "feat/lexico-user-profile",
   base: "main",
-  body: "## Summary\n\nAdds user profile page...",
+  body: "## 🌰 Summary\n\nAdds user profile page...",
   draft: false,
 });
 
@@ -242,15 +241,15 @@ gh pr merge --squash --delete-branch
 
 All PRs must pass these checks before merging:
 
-| Check       | Command                          | Description                                  |
-| ----------- | -------------------------------- | -------------------------------------------- |
-| Branch Name | `validate-branch-name`           | Branch follows naming conventions            |
-| PR Title    | `commitlint`                     | Title follows commit message format          |
-| PR Body     | Section validation               | Required sections: Summary, Details, Testing |
-| Lint        | `nx affected --target=lint`      | ESLint validation                            |
-| Typecheck   | `nx affected --target=typecheck` | TypeScript compilation                       |
-| Test        | `nx affected --target=test`      | Unit and integration tests                   |
-| Format      | `nx format:check`                | Prettier formatting                          |
+| Check       | Command                          | Description                                                       |
+| ----------- | -------------------------------- | ----------------------------------------------------------------- |
+| Branch Name | `validate-branch-name`           | Branch follows naming conventions                                 |
+| PR Title    | `commitlint`                     | Title follows commit message format                               |
+| PR Body     | Section validation               | Required sections: 🌰 Summary, 📝 Details, 🧪 Testing, 🔗 Related |
+| Lint        | `nx affected --target=lint`      | ESLint validation                                                 |
+| Typecheck   | `nx affected --target=typecheck` | TypeScript compilation                                            |
+| Test        | `nx affected --target=test`      | Unit and integration tests                                        |
+| Format      | `nx format:check`                | Prettier formatting                                               |
 
 Run locally before pushing:
 
@@ -340,27 +339,29 @@ This monorepo uses **squash merging** by default:
 ````text
 Title: feat(lexico): ✨ add dictionary search autocomplete
 
-## Summary
+## 🌰 Summary
 
 Adds autocomplete suggestions to the dictionary search input.
 
-## Changes
+## 📝 Details
 
 - Add SearchAutocomplete component
 - Integrate with search API for suggestions
 - Add keyboard navigation support
 - Add loading and empty states
 
-## Testing
+## 🧪 Testing
 
 ```bash
 nx run lexico:test
 nx run lexico:develop
 ```
 
-Navigate to search page and type a query.
+1. Navigate to search page and type a query.
 
-Closes #234
+## 🔗 Related
+
+- Closes #234
 ````
 
 ### Bug Fix PR
@@ -368,24 +369,26 @@ Closes #234
 ````text
 Title: fix(caelundas): 🐛 correct timezone offset in ephemeris
 
-## Summary
+## 🌰 Summary
 
 Fixes incorrect timezone handling for ephemeris calculations near DST boundaries.
 
-## Changes
+## 📝 Details
 
 - Use moment-timezone for DST-aware calculations
 - Add edge case handling for DST transitions
 - Add regression tests
 
-## Testing
+## 🧪 Testing
 
 ```bash
 nx run caelundas:test:unit
 nx run caelundas:test:integration
 ```
 
-Fixes #456
+## 🔗 Related
+
+- Fixes #456
 ````
 
 ### Documentation PR
@@ -393,19 +396,23 @@ Fixes #456
 ```text
 Title: docs(monorepo): 📝 add contributing guide
 
-## Summary
+## 🌰 Summary
 
 Adds comprehensive CONTRIBUTING.md with setup instructions and guidelines.
 
-## Changes
+## 📝 Details
 
 - Add CONTRIBUTING.md
 - Update README.md with link to contributing guide
 - Add development setup section
 
-## Testing
+## 🧪 Testing
 
-Review the documentation changes in the PR diff.
+1. Review the documentation changes in the PR diff.
+
+## 🔗 Related
+
+- <!-- No related issues -->
 ```
 
 ### Dependency Update PR
@@ -413,36 +420,40 @@ Review the documentation changes in the PR diff.
 ````text
 Title: chore(dependencies): ⬆️ upgrade tanstack router to v1.50
 
-## Summary
+## 🌰 Summary
 
 Updates TanStack Router to latest version with bug fixes.
 
-## Changes
+## 📝 Details
 
 - Upgrade @tanstack/react-router from 1.45.0 to 1.50.0
 - Update peer dependencies
 - Fix breaking changes in route definitions
 
-## Testing
+## 🧪 Testing
 
 ```bash
 nx run lexico:test
 nx run lexico:develop
 ```
 
-All routes should work as before.
+1. All routes should work as before.
+
+## 🔗 Related
+
+- <!-- No related issues -->
 ````
 
 ## Troubleshooting
 
-| Issue             | Cause                     | Solution                                        |
-| ----------------- | ------------------------- | ----------------------------------------------- |
-| CI failing        | Code issues               | Run lint, typecheck, test locally               |
-| Merge conflicts   | Branch out of date        | Rebase on main                                  |
-| PR title rejected | Format incorrect          | Follow commit message conventions               |
-| PR body rejected  | Missing required sections | Add ## Summary, ## Details, ## Testing sections |
-| Tests failing     | Missing dependencies      | Run `pnpm install`                              |
-| Typecheck errors  | Type issues               | Fix TypeScript errors                           |
+| Issue             | Cause                     | Solution                                                                |
+| ----------------- | ------------------------- | ----------------------------------------------------------------------- |
+| CI failing        | Code issues               | Run lint, typecheck, test locally                                       |
+| Merge conflicts   | Branch out of date        | Rebase on main                                                          |
+| PR title rejected | Format incorrect          | Follow commit message conventions                                       |
+| PR body rejected  | Missing required sections | Add ## 🌰 Summary, ## 📝 Details, ## 🧪 Testing, ## 🔗 Related sections |
+| Tests failing     | Missing dependencies      | Run `pnpm install`                                                      |
+| Typecheck errors  | Type issues               | Fix TypeScript errors                                                   |
 
 ## Quick Reference
 
