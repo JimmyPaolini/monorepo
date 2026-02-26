@@ -28,7 +28,7 @@ jobs:
             echo "❌ Unable to determine Branch Name"
             exit 1
           fi
-          pnpm exec validate-branch-name -t "$BRANCH_NAME"
+          pnpm exec validate-branch-name --target="$BRANCH_NAME"
 
       - name: 📝 Pull Request Title Validation
         env:

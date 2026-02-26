@@ -25,7 +25,7 @@ jobs:
         uses: ./.github/actions/setup-monorepo
 
       - name: 🧑‍💻 Code Analysis
-        run: pnpm exec nx affected -t code-analysis
+        run: pnpm exec nx affected --target=code-analysis
 
       - name: 📊 Upload Type Coverage
         if: always()

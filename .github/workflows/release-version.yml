@@ -1,4 +1,4 @@
-name: 🦸 Release Projects
+name: 🦸 Release Version
 
 on:
   push:
@@ -16,8 +16,8 @@ permissions:
   pull-requests: write
 
 jobs:
-  release:
-    name: 🦸 Release Projects
+  release-version:
+    name: 🦸 Release Version
     runs-on: ubuntu-latest
 
     steps:
@@ -30,7 +30,7 @@ jobs:
       - name: 🕋 Setup Monorepo
         uses: ./.github/actions/setup-monorepo
 
-      - name: 🚀 Release Projects
+      - name: 🦸 Release Version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: pnpm semantic-release

@@ -52,7 +52,7 @@ jobs:
         uses: ./.github/actions/setup-monorepo
 
       - name: 📚 Dependency Audit
-        run: pnpm exec nx affected -t dependency-audit --parallel=3
+        run: pnpm exec nx affected --target=dependency-audit --parallel=3
 
   trivy-docker-scan:
     name: 🐳 Trivy Docker Scan
@@ -77,7 +77,7 @@ jobs:
 
       - name: 🐳 Build caelundas Docker image
         if: steps.paths.outputs.dockerfile == 'true'
-        run: docker build -t caelundas:scan -f applications/caelundas/Dockerfile .
+        run: docker build --target=caelundas:scan -f applications/caelundas/Dockerfile .
 
       - name: 🛡️ Trivy Docker Scan
         if: steps.paths.outputs.dockerfile == 'true'
