@@ -1,11 +1,6 @@
----
-description: "Instructions for using LangChain with Python"
-applyTo: "**/*.py"
----
+# LangChain Python Guide
 
-# LangChain Python Instructions
-
-These instructions guide GitHub Copilot in generating code and documentation for LangChain applications in Python. Focus on LangChain-specific patterns, APIs, and best practices.
+Guidelines for using LangChain with Python. Focus on LangChain-specific patterns, APIs, and best practices.
 
 ## Runnable Interface (LangChain-specific)
 
@@ -34,14 +29,16 @@ LangChain's `Runnable` interface is the foundation for composing and executing c
 - For custom logic, wrap functions with `RunnableLambda` or `RunnableGenerator` instead of subclassing.
 - For advanced configuration, expose fields and alternatives via `configurable_fields` and `configurable_alternatives`.
 
-- Use LangChain's chat model integrations for conversational AI:
+## Chat Models
+
+Use LangChain's chat model integrations for conversational AI:
 
 - Import from `langchain.chat_models` or `langchain_openai` (e.g., `ChatOpenAI`).
 - Compose messages using `SystemMessage`, `HumanMessage`, `AIMessage`.
 - For tool calling, use `bind_tools(tools)` method.
 - For structured outputs, use `with_structured_output(schema)`.
 
-Example:
+### Example
 
 ```python
 from langchain_openai import ChatOpenAI
@@ -56,37 +53,41 @@ response = chat.invoke(messages)
 print(response.content)
 ```
 
+### Message Composition
+
 - Compose messages as a list of `SystemMessage`, `HumanMessage`, and optionally `AIMessage` objects.
 - For RAG, combine chat models with retrievers/vectorstores for context injection.
 - Use `streaming=True` for real-time token streaming (if supported).
 - Use `tools` argument for function/tool calling (OpenAI, Anthropic, etc.).
 - Use `response_format="json"` for structured outputs (OpenAI models).
 
-Best practices:
+### Best Practices
 
 - Always validate model outputs before using them in downstream tasks.
 - Prefer explicit message types for clarity and reliability.
 - For Copilot, provide clear, actionable prompts and document expected outputs.
 
-- LLM client factory: centralize provider configs (API keys), timeouts, retries, and telemetry. Provide a single place to switch providers or client settings.
-- Prompt templates: store templates under `prompts/` and load via a safe helper. Keep templates small and testable.
-- Chains vs Agents: prefer Chains for deterministic pipelines (RAG, summarization). Use Agents when you require planning or dynamic tool selection.
-- Tools: implement typed adapter interfaces for tools; validate inputs and outputs strictly.
-- Memory: default to stateless design. When memory is needed, store minimal context and document retention/erasure policies.
-- Retrievers: build retrieval + rerank pipelines. Keep vectorstore schema stable (id, text, metadata).
+## Architecture Best Practices
+
+- **LLM client factory**: Centralize provider configs (API keys), timeouts, retries, and telemetry. Provide a single place to switch providers or client settings.
+- **Prompt templates**: Store templates under `prompts/` and load via a safe helper. Keep templates small and testable.
+- **Chains vs Agents**: Prefer Chains for deterministic pipelines (RAG, summarization). Use Agents when you require planning or dynamic tool selection.
+- **Tools**: Implement typed adapter interfaces for tools; validate inputs and outputs strictly.
+- **Memory**: Default to stateless design. When memory is needed, store minimal context and document retention/erasure policies.
+- **Retrievers**: Build retrieval + rerank pipelines. Keep vectorstore schema stable (id, text, metadata).
 
 ### Patterns
 
-- Callbacks & tracing: use LangChain callbacks and integrate with LangSmith or your tracing system to capture request/response lifecycle.
-- Separation of concerns: keep prompt construction, LLM wiring, and business logic separate to simplify testing and reduce accidental prompt changes.
+- **Callbacks & tracing**: Use LangChain callbacks and integrate with LangSmith or your tracing system to capture request/response lifecycle.
+- **Separation of concerns**: Keep prompt construction, LLM wiring, and business logic separate to simplify testing and reduce accidental prompt changes.
 
-## Embeddings & vectorstores
+## Embeddings & Vector Stores
 
 - Use consistent chunking and metadata fields (source, page, chunk_index).
 - Cache embeddings to avoid repeated cost for unchanged documents.
 - Local/dev: Chroma or FAISS. Production: managed vector DBs (Pinecone, Qdrant, Milvus, Weaviate) depending on scale and SLAs.
 
-## Vector stores (LangChain-specific)
+### LangChain Vector Store Integrations
 
 - Use LangChain's vectorstore integrations for semantic search, retrieval-augmented generation (RAG), and document similarity workflows.
 - Always initialize vectorstores with a supported embedding model (e.g., OpenAIEmbeddings, HuggingFaceEmbeddings).
@@ -98,7 +99,8 @@ Best practices:
 - For RAG, connect your vectorstore to a retriever and chain with an LLM (see LangChain Retriever and RAGChain docs).
 - For advanced search, use vectorstore-specific options: Pinecone supports hybrid search and metadata filtering; Chroma supports filtering and custom distance metrics.
 - Always validate the vectorstore integration and API version in your environment; breaking changes are common between LangChain releases.
-- Example (InMemoryVectorStore):
+
+### Example (InMemoryVectorStore)
 
 ```python
 from langchain_core.vectorstores import InMemoryVectorStore
@@ -116,31 +118,26 @@ for doc in results:
     print(doc.page_content, doc.metadata)
 ```
 
-- For production, prefer persistent vectorstores (Chroma, Pinecone, Qdrant, Weaviate) and configure authentication, scaling, and backup as per provider docs.
-- Reference: https://python.langchain.com/docs/integrations/vectorstores/
+For production, prefer persistent vectorstores (Chroma, Pinecone, Qdrant, Weaviate) and configure authentication, scaling, and backup as per provider docs. See [LangChain vectorstore integrations](https://python.langchain.com/docs/integrations/vectorstores/).
 
-## Prompt engineering & governance
+## Prompt Engineering & Governance
 
 - Store canonical prompts under `prompts/` and reference them by filename from code.
 - Write unit tests that assert required placeholders exist and that rendered prompts fit expected patterns (length, variables present).
 - Maintain a CHANGELOG for prompt and schema changes that affect behavior.
 
-## Chat models
-
-LangChain offers a consistent interface for chat models with additional features for monitoring, debugging, and optimization.
-
-### Integrations
+## Chat Model Integrations
 
 Integrations are either:
 
-1. Official: packaged `langchain-<provider>` integrations maintained by the LangChain team or provider.
-2. Community: contributed integrations (in `langchain-community`).
+1. **Official**: Packaged `langchain-<provider>` integrations maintained by the LangChain team or provider.
+2. **Community**: Contributed integrations (in `langchain-community`).
 
 Chat models typically follow a naming convention with a `Chat` prefix (e.g., `ChatOpenAI`, `ChatAnthropic`, `ChatOllama`). Models without the `Chat` prefix (or with an `LLM` suffix) often implement the older string-in/string-out interface and are less preferred for modern chat workflows.
 
 ### Interface
 
-Chat models implement `BaseChatModel` and support the Runnable interface: streaming, async, batching, and more. Many operations accept and return LangChain `messages` (roles like `system`, `user`, `assistant`). See the BaseChatModel API reference for details.
+Chat models implement `BaseChatModel` and support the Runnable interface: streaming, async, batching, and more. Many operations accept and return LangChain `messages` (roles like `system`, `user`, `assistant`).
 
 Key methods include:
 
@@ -150,27 +147,27 @@ Key methods include:
 - `bind_tools(tools)` — attach tool adapters for tool calling.
 - `with_structured_output(schema)` — helper to request structured responses.
 
-### Inputs and outputs
+### Message Format
 
 - LangChain supports its own message format and OpenAI's message format; pick one consistently in your codebase.
 - Messages include a `role` and `content` blocks; content can include structured or multimodal payloads where supported.
 
-### Standard parameters
+### Standard Parameters
 
 Commonly supported parameters (provider-dependent):
 
-- `model`: model identifier (eg. `gpt-4o`, `gpt-3.5-turbo`).
-- `temperature`: randomness control (0.0 deterministic — 1.0 creative).
-- `timeout`: seconds to wait before canceling.
-- `max_tokens`: response token limit.
-- `stop`: stop sequences.
-- `max_retries`: retry attempts for network/limit failures.
-- `api_key`, `base_url`: provider auth and endpoint configuration.
-- `rate_limiter`: optional BaseRateLimiter to space requests and avoid provider quota errors.
+- `model`: Model identifier (e.g., `gpt-4o`, `gpt-3.5-turbo`).
+- `temperature`: Randomness control (0.0 deterministic → 1.0 creative).
+- `timeout`: Seconds to wait before canceling.
+- `max_tokens`: Response token limit.
+- `stop`: Stop sequences.
+- `max_retries`: Retry attempts for network/limit failures.
+- `api_key`, `base_url`: Provider auth and endpoint configuration.
+- `rate_limiter`: Optional BaseRateLimiter to space requests and avoid provider quota errors.
 
 > Note: Not all parameters are implemented by every provider. Always consult the provider integration docs.
 
-### Tool calling
+### Tool Calling
 
 Chat models can call tools (APIs, DBs, system adapters). Use LangChain's tool-calling APIs to:
 
@@ -178,9 +175,9 @@ Chat models can call tools (APIs, DBs, system adapters). Use LangChain's tool-ca
 - Observe and log tool call requests and results.
 - Validate tool outputs before passing them back to the model or executing side effects.
 
-See the tool-calling guide in the LangChain docs for examples and safe patterns.
+See the [tool-calling guide](https://python.langchain.com/docs/modules/tools/) in the LangChain docs for examples and safe patterns.
 
-### Structured outputs
+### Structured Outputs
 
 Use `with_structured_output` or schema-enforced methods to request JSON or typed outputs from the model. Structured outputs are essential for reliable extraction and downstream processing (parsers, DB writes, analytics).
 
@@ -188,7 +185,7 @@ Use `with_structured_output` or schema-enforced methods to request JSON or typed
 
 Some models support multimodal inputs (images, audio). Check provider docs for supported input types and limitations. Multimodal outputs are rare — treat them as experimental and validate rigorously.
 
-### Context window
+### Context Window
 
 Models have a finite context window measured in tokens. When designing conversational flows:
 
@@ -196,7 +193,7 @@ Models have a finite context window measured in tokens. When designing conversat
 - Trim old context (summarize or archive) outside the model when it exceeds the window.
 - Use a retriever + RAG pattern to surface relevant long-form context instead of pasting large documents into the chat.
 
-## Advanced topics
+## Advanced Topics
 
 ### Rate-limiting
 
@@ -209,7 +206,7 @@ Models have a finite context window measured in tokens. When designing conversat
 - Semantic caching introduces dependency on embeddings and is not universally suitable.
 - Cache only where it reduces cost and meets correctness requirements (e.g., FAQ bots).
 
-## Best practices
+## Best Practices
 
 - Use type hints and dataclasses for public APIs.
 - Validate inputs before calling LLMs or tools.
@@ -219,7 +216,7 @@ Models have a finite context window measured in tokens. When designing conversat
 - Observability: log request_id, model name, latency, and sanitized token counts.
 - Implement exponential backoff and idempotency for external calls.
 
-## Security & privacy
+## Security & Privacy
 
 - Treat model outputs as untrusted. Sanitize before executing generated code or system commands.
 - Validate any user-supplied URLs and inputs to avoid SSRF and injection attacks.

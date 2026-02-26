@@ -17,7 +17,31 @@ The monorepo includes custom Nx generators in `tools/code-generator/` for scaffo
 - Configuration files
 - Documentation
 
-For detailed generator development guide, see [tools/code-generator/AGENTS.md](../../tools/code-generator/AGENTS.md).
+For detailed generator development guide, see [tools/code-generator/AGENTS.md](../../../tools/code-generator/AGENTS.md).
+
+For workspace task execution, see [tool-execution-model](../tool-execution-model/SKILL.md).
+
+## Component Generator (Monorepo Standard)
+
+The component generator enforces these conventions:
+
+- Component names are **PascalCase** (validated)
+- File names are **kebab-case**
+- Generated files are auto-formatted
+
+Example:
+
+```bash
+nx generate code-generator:component --name=Dialog --directory=src/components
+```
+
+Generates:
+
+```text
+src/components/
+├── dialog.tsx
+└── dialog.test.tsx
+```
 
 ## Generator Structure
 

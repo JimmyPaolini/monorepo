@@ -39,6 +39,7 @@
           "nx run monorepo:lint:{args.configuration}",
           "nx run monorepo:markdown-lint:{args.configuration}",
           "nx run monorepo:spell-check",
+          "nx run monorepo:sync-agent-skills:{args.configuration}",
           "nx run monorepo:sync-conventional-config:{args.configuration}",
           "nx run monorepo:sync-pull-request-template:{args.configuration}",
           "nx run monorepo:sync-vscode-extensions:{args.configuration}",
@@ -243,6 +244,27 @@
       "options": {
         "command": "cspell '*.{ts,tsx,js,jsx,md,yaml,yml,json}' 'scripts/**' 'documentation/**' 'infrastructure/**' 'planning/**' --no-progress",
         "cwd": "{projectRoot}"
+      }
+    },
+    "sync-agent-skills": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "command": "tsx scripts/sync-agent-skills.ts check"
+        },
+        "write": {
+          "command": "tsx scripts/sync-agent-skills.ts write"
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "Validate that agent skills table of contents is synchronized from documentation/skills/*/SKILL.md into AGENTS.md (check) or sync them (write)",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/AGENTS.md",
+        "{projectRoot}/documentation/skills/**/*.md"
+      ],
+      "options": {
+        "command": "tsx scripts/sync-agent-skills.ts"
       }
     },
     "sync-conventional-config": {

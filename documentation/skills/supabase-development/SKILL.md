@@ -17,7 +17,7 @@ The lexico application uses Supabase for:
 - **Edge Functions** for server-side logic
 - **Storage** for user-generated content
 
-For comprehensive architecture and patterns, see [applications/lexico/AGENTS.md](../../applications/lexico/AGENTS.md).
+For comprehensive architecture and patterns, see [applications/lexico/AGENTS.md](../../../applications/lexico/AGENTS.md).
 
 ## Development Workflow
 
@@ -57,6 +57,16 @@ This creates/updates `applications/lexico/src/lib/database.types.ts` with:
 - View definitions
 
 **IMPORTANT**: Always regenerate types after schema changes or your build will fail type checking.
+
+### After Schema Changes (Checklist)
+
+```bash
+nx run lexico:supabase:database-diff
+nx run lexico:supabase:generate-types
+nx run lexico:test:integration
+```
+
+See [testing-strategy](../testing-strategy/SKILL.md) for test naming and target patterns.
 
 ## Database Migrations
 

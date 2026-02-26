@@ -33,8 +33,11 @@ ignorePaths:
   - pnpm-lock.yaml
 words:
   - adduser
+  - abatch
   - āēīōūȳ
   - ĀĒĪŌŪȲ
+  - ainvoke
+  - Alertmanager
   - apikey
   - apoapsis
   - aquasecurity
@@ -46,6 +49,7 @@ words:
   - arcseconds
   - Arcseconds
   - astrometric
+  - astream
   - ation
   - automerge
   - bento
@@ -57,6 +61,7 @@ words:
   - buildx
   - bullmq
   - bundlesize
+  - Burstable
   - BYDAY
   - BYMONTH
   - Caelendars
@@ -74,6 +79,7 @@ words:
   - context7
   - cssmodule
   - cves
+  - dataclasses
   - dbeaver
   - decan
   - Decan
@@ -82,6 +88,7 @@ words:
   - deps
   - devdeps
   - devkit
+  - distroless
   - Dockerfiles
   - domcontentloaded
   - DTEND
@@ -102,6 +109,7 @@ words:
   - eslint
   - ESOCKETTIMEDOUT
   - expressjs
+  - FAISS
   - fakerjs
   - fastapi
   - feathersjs
@@ -119,6 +127,7 @@ words:
   - gtrgm
   - hackathon
   - healthcheck
+  - healthz
   - Hexadecan
   - Hexadecans
   - Hmmss
@@ -150,6 +159,7 @@ words:
   - langflow
   - langgraph
   - langsmith
+  - LCEL
   - lexico
   - Licen
   - licenseignore
@@ -166,13 +176,17 @@ words:
   - middlewares
   - midheaven
   - migra
+  - Milvus
   - mnyk
   - monorepo
   - multibody
   - multidetermines
+  - Multimodality
   - Multivalued
   - musescore
+  - myapp
   - myorg
+  - myrelease
   - nanode
   - ncurc
   - networkidle
@@ -215,13 +229,16 @@ words:
   - promethian
   - psql
   - pydantic
+  - Qdrant
   - querykey
   - quincunx
   - radix
   - raspberrypi
   - readonly
+  - readyz
   - refinementness
   - repo
+  - rerank
   - Retag
   - RRULE
   - samhain
@@ -245,6 +262,7 @@ words:
   - stringcase
   - stylelint
   - stylelintrc
+  - subclassing
   - subquery
   - Subrepositories
   - supabase
@@ -282,6 +300,7 @@ words:
   - undecile
   - undecuple
   - untaint
+  - unredacted
   - upenn
   - upsert
   - Upserted
@@ -290,6 +309,8 @@ words:
   - VALARM
   - vaul
   - vcalendar
+  - vectorstore
+  - vectorstores
   - VCALENDAR
   - vevent
   - VEVENT
@@ -297,6 +318,7 @@ words:
   - vite
   - vitest
   - VTIMEZONE
+  - Warshall
   - WCAG
   - wording
   - workspaces

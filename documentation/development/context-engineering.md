@@ -1,9 +1,6 @@
----
-description: "Guidelines for structuring code and projects to maximize GitHub Copilot effectiveness through better context management"
-applyTo: "**"
----
-
 # Context Engineering
+
+Guidelines for structuring code and projects to maximize GitHub Copilot effectiveness through better context management.
 
 Principles for helping GitHub Copilot understand your codebase and provide better suggestions.
 

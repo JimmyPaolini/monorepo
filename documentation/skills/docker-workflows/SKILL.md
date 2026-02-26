@@ -8,6 +8,8 @@ license: MIT
 
 This skill covers Docker workflows in the monorepo, including multi-stage builds, platform targeting, GitHub Container Registry (GHCR) integration, and container optimization.
 
+See [tool-execution-model](../tool-execution-model/SKILL.md) for when to run Docker directly vs. Nx wrappers.
+
 ## Overview
 
 The monorepo uses Docker for:

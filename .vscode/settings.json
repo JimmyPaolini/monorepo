@@ -9,13 +9,13 @@
     "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
     "editor.quickSuggestions": {
       "strings": true
-    },
+    }
   },
   "[jsonc]": {
     "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
     "editor.quickSuggestions": {
       "strings": true
-    },
+    }
   },
   "[jsonl]": {
     "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
@@ -358,7 +358,7 @@
   "github.copilot.chat.commitMessageGeneration.instructions": [
     {
       "file": "documentation/skills/commit-code/SKILL.md"
-    },
+    }
   ],
   "github.copilot.chat.completionsFetcher": "node-fetch",
   "github.copilot.chat.copilotMemory.enabled": true,
@@ -390,7 +390,7 @@
   "github.copilot.chat.pullRequestDescriptionGeneration.instructions": [
     {
       "file": "documentation/skills/create-pull-request/SKILL.md"
-    },
+    }
   ],
   "github.copilot.chat.responsesApiReasoningEffort": "default",
   "github.copilot.chat.review.intent": true,
@@ -451,7 +451,7 @@
     {
       "label": "🚪 Closed",
       "query": "repo:${owner}/${repository} -is:open"
-    },
+    }
   ],
   "gitlens.ai.model": "vscode",
   "gitlens.ai.vscode.model": "copilot:gpt-4.1",
@@ -496,6 +496,14 @@
   "javascript.suggest.autoImports": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "json.schemaDownload.enable": true,
+  "json.schemaDownload.trustedDomains": {
+    "https://biomejs.dev": true,
+    "https://json.schemastore.org/": true,
+    "https://json-schema.org/": true,
+    "https://raw.githubusercontent.com/": true,
+    "https://schemastore.azurewebsites.net/": true,
+    "https://www.schemastore.org/": true
+  },
   "json.validate.enable": true,
   "jsonc.format.enable": true,
   "jsonc.validate.enable": false,
@@ -613,7 +621,7 @@
     "54325": {
       "label": "Supabase Analytics",
       "onAutoForward": "silent"
-    },
+    }
   },
   "scm.alwaysShowActions": true,
   "scm.alwaysShowRepositories": true,

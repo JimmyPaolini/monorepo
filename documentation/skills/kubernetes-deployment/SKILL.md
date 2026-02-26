@@ -19,6 +19,8 @@ The monorepo uses Kubernetes for deploying the caelundas ephemeris calendar gene
 
 For comprehensive deployment patterns and infrastructure details, see [infrastructure/AGENTS.md](../../infrastructure/AGENTS.md).
 
+See [Deployment Models](../../architecture/deployment-models.md) for Job vs. Deployment decisions and PVC lifecycle guidance.
+
 ## Key Concepts
 
 ### Helm Charts
@@ -29,6 +31,8 @@ The monorepo includes a reusable Helm chart at [infrastructure/helm/kubernetes-j
 - **PVC management**: Mounts input and output volumes
 - **Image pull secrets**: Supports private registries (GHCR)
 - **Resource limits**: Configurable CPU and memory constraints
+
+Jobs are preferred for batch workloads like caelundas. Deployments are for long-running services.
 
 ### Deployment Workflow
 

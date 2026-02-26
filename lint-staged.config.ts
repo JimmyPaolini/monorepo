@@ -27,6 +27,8 @@ const syncPullRequestTemplateFiles = [
   ".github/prompts/update-pull-request.prompt.md",
 ];
 
+const syncAgentSkillsFiles = ["AGENTS.md", "documentation/skills/**/*.md"];
+
 const config = {
   // ── Lockfile integrity ──
   // When package.json or workspace config changes, verify the lockfile is in sync
@@ -45,6 +47,10 @@ const config = {
   // Keep PR template in sync across skills and prompt files
   [`{${syncPullRequestTemplateFiles.join(",")}}`]: () => [
     "nx run monorepo:sync-pull-request-template:check",
+  ],
+  // Keep agent skills table of contents in sync in AGENTS.md
+  [`{${syncAgentSkillsFiles.join(",")}}`]: () => [
+    "nx run monorepo:sync-agent-skills:check",
   ],
 
   // ── TypeScript / JavaScript source files ──
