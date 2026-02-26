@@ -18,24 +18,24 @@ jobs:
       fail-fast: false
       matrix:
         check:
-          - name: 🏷️ Type Check
-            run: npx nx affected -t typecheck --parallel=3
+          - name: 🏷️ Typescript Check
+            run: pnpm exec nx affected -t typecheck --parallel=3
             upload_artifacts: false
 
-          - name: 🧹 Lint Check
-            run: npx nx affected -t lint --parallel=3
+          - name: 🧹 ESLint Check
+            run: pnpm exec nx affected -t lint --parallel=3
             upload_artifacts: false
 
           - name: 🖼️ Markdown Lint
-            run: npx nx affected -t markdown-lint --parallel=3
+            run: pnpm exec nx affected -t markdown-lint --parallel=3
             upload_artifacts: false
 
           - name: 📄 YAML Lint
-            run: npx nx affected -t yaml-lint --parallel=3
+            run: pnpm exec nx affected -t yaml-lint --parallel=3
             upload_artifacts: false
 
           - name: 🎨 Format Check
-            run: npx nx affected -t format --configuration=check --parallel=3
+            run: pnpm exec nx affected -t format --configuration=check --parallel=3
             upload_artifacts: false
 
           - name: ✂️ Knip Check
@@ -43,23 +43,15 @@ jobs:
             upload_artifacts: false
 
           - name: 🧙‍♂️ Spell Check
-            run: npx nx affected -t spell-check --parallel=3
-            upload_artifacts: false
-
-          - name: 🤠 Monorepo Lint (Sherif)
-            run: pnpm dlx sherif@1.10.0
-            upload_artifacts: false
-
-          - name: 📦 Syncpack Lint
-            run: pnpm exec syncpack lint
+            run: pnpm exec nx affected -t spell-check --parallel=3
             upload_artifacts: false
 
           - name: 🎨 Stylelint
-            run: npx nx run lexico-components:stylelint
+            run: pnpm exec nx affected -t stylelint --parallel=3
             upload_artifacts: false
 
           - name: 🔖 Type Coverage
-            run: npx nx affected -t type-coverage --parallel=3
+            run: pnpm exec nx affected -t type-coverage --parallel=3
             upload_artifacts: true
 
     steps:

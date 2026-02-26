@@ -132,7 +132,8 @@ Skip if a PR already exists: `mcp_github_list_pull_requests(owner, repo, head: "
 - **Title**: Same as commit message
 - **Body**: Auto-generate Summary, Details, Testing, and Related sections from the diff
 - **Create**: `mcp_github_create_pull_request(owner, repo, title, head, base: "main", body, draft: false)`
-- **Fallback**: `gh pr create --title "<title>" --body "<body>"`
+- **Assign**: `mcp_github_add_issue_assignees(owner, repo, issue_number: <pr_number>, assignees: ["@me"])` — always assign the PR to yourself after creation
+- **Fallback**: `gh pr create --title "<title>" --body "<body>" --assignee @me`
 
 ---
 

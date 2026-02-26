@@ -32,23 +32,15 @@ jobs:
       - name: 📚 Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: ⬆️ Check for dependency updates
+      - name: ⬆️ Check & Update Dependencies
         id: check
         run: |
-          pnpm exec ncu --workspaces --root --format group
-          if pnpm exec ncu --workspaces --root --errorLevel 2 > /dev/null 2>&1; then
+          nx run monorepo:dependency-lint:write
+          if git diff --quiet; then
             echo "has_dependency_updates=false" >> $GITHUB_OUTPUT
           else
             echo "has_dependency_updates=true" >> $GITHUB_OUTPUT
           fi
-
-      - name: 📝 Update Dependencies
-        if: steps.check.outputs.has_dependency_updates == 'true'
-        run: pnpm exec ncu --workspaces --root -u
-
-      - name: 🔐 Update Lockfile
-        if: steps.check.outputs.has_dependency_updates == 'true'
-        run: pnpm install --no-frozen-lockfile
 
       - name: ⛔ Close Pull Requests
         if: steps.check.outputs.has_dependency_updates == 'true'

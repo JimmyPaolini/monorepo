@@ -48,9 +48,9 @@ words:
   - ation
   - automerge
   - bento
-  - brightgreen
   - biquintile
   - bitnami
+  - brightgreen
   - buildx
   - bullmq
   - bundlesize
@@ -110,6 +110,7 @@ words:
   - Giorgio
   - gitleaks
   - gitleaksignore
+  - gitmodules
   - gitmoji
   - Gitmojis
   - gtrgm
@@ -164,6 +165,7 @@ words:
   - migra
   - mnyk
   - monorepo
+  - multibody
   - multidetermines
   - Multivalued
   - musescore
@@ -292,6 +294,7 @@ words:
   - WCAG
   - wording
   - workspaces
+  - worktree
   - Yods
   - YYYYMMDDTH
   - zodiac

@@ -1,8 +1,8 @@
 /**
  * Stylelint Configuration
- * Purpose: CSS linting with Tailwind CSS v3 support for lexico-components
- * Usage (Check): nx run lexico-components:stylelint
- * Usage (Fix): nx run lexico-components:stylelint --configuration=write
+ * Purpose: CSS linting with Tailwind CSS v3 support for all projects in the monorepo
+ * Usage (Check): nx run <project>:stylelint
+ * Usage (Fix): nx run <project>:stylelint --configuration=write
  * CI Workflow: .github/workflows/code-analysis.yml
  * @see https://stylelint.io/
  */

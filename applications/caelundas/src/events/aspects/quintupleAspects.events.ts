@@ -319,9 +319,8 @@ export function getQuintupleAspectEvents(
   currentMinute: Moment,
 ): Event[] {
   const edges = parseAspectEvents(aspectEvents);
-  const events: Event[] = [];
+  const events: Event[] = composePentagrams(edges, currentMinute);
 
-  events.push(...composePentagrams(edges, currentMinute));
 
   return events;
 }

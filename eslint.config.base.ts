@@ -1,4 +1,4 @@
-import { dirname } from "node:path";
+import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import eslint from "@eslint/js";
@@ -18,7 +18,7 @@ import tseslint from "typescript-eslint";
 
 import type { ConfigWithExtends } from "typescript-eslint";
 
-const tsconfigRootDir = dirname(fileURLToPath(import.meta.url));
+const tsconfigRootDir = path.dirname(fileURLToPath(import.meta.url));
 
 export default [
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

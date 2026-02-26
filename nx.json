@@ -208,7 +208,7 @@
       "executor": "nx:run-commands",
       "inputs": [
         "{projectRoot}/src/**/*.css",
-        "{projectRoot}/.stylelintrc.cjs"
+        "{workspaceRoot}/.stylelintrc.cjs"
       ],
       "options": {
         "command": "stylelint 'src/**/*.css'",

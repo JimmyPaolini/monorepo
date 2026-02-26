@@ -26,7 +26,7 @@
         ]
       }
     },
-    "dependency-analysis": {
+    "dependency-audit": {
       "cache": false,
       "configurations": {
         "check": {
@@ -37,13 +37,15 @@
         }
       },
       "defaultConfiguration": "check",
-      "description": "Run all dependency management tools (pnpm-audit, dependency-lint, license-check)",
+      "description": "Run all dependency management tools (dependency-lint, pnpm-audit, license-check, sherif, syncpack)",
       "executor": "nx:run-commands",
       "options": {
         "commands": [
           "nx run monorepo:dependency-lint:{args.configuration}",
           "nx run monorepo:pnpm-audit:{args.configuration}",
-          "nx run monorepo:license-check"
+          "nx run monorepo:license-check",
+          "nx run monorepo:sherif",
+          "nx run monorepo:syncpack:{args.configuration}"
         ],
         "cwd": "{projectRoot}"
       }
@@ -55,7 +57,7 @@
           "command": "ncu --workspaces --root"
         },
         "write": {
-          "command": "ncu --workspaces --root -u && pnpm install"
+          "command": "ncu --workspaces --root -u && pnpm install --no-frozen-lockfile"
         }
       },
       "defaultConfiguration": "check",
@@ -176,6 +178,16 @@
         "command": "pnpm audit --audit-level=moderate"
       }
     },
+    "sherif": {
+      "cache": true,
+      "description": "Lint monorepo for consistent package.json conventions",
+      "executor": "nx:run-commands",
+      "inputs": ["{workspaceRoot}/**/package.json"],
+      "options": {
+        "command": "pnpm dlx sherif@1.10.0",
+        "cwd": "{workspaceRoot}"
+      }
+    },
     "spell-check": {
       "cache": true,
       "description": "Check spelling in workspace root files (scripts, documentation, infrastructure, planning)",
@@ -235,6 +247,29 @@
       ],
       "options": {
         "command": "tsx scripts/sync-vscode-extensions.ts"
+      }
+    },
+    "syncpack": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "command": "pnpm exec syncpack lint"
+        },
+        "write": {
+          "command": "pnpm exec syncpack fix-mismatches"
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "Check dependency version consistency across packages (check) or fix mismatches (write)",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{workspaceRoot}/**/package.json",
+        "{workspaceRoot}/pnpm-lock.yaml",
+        "{workspaceRoot}/.syncpackrc.cjs"
+      ],
+      "options": {
+        "command": "pnpm exec syncpack lint",
+        "cwd": "{workspaceRoot}"
       }
     },
     "terraform": {

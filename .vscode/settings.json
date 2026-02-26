@@ -110,6 +110,7 @@
     "https://*.github.com": true,
     "https://*.visualstudio.com": true
   },
+  "chat.unifiedAgentsBar.enabled": true,
   "chat.useAgentSkills": true,
   "chat.useNestedAgentsMdFiles": true,
   "chat.viewSessions.orientation": "stacked",
@@ -439,8 +440,23 @@
       "query": "repo:${owner}/${repository} -is:open"
     }
   ],
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
   "gitlens.plusFeatures.enabled": true,
   "gitlens.views.commits.files.layout": "tree",
+  "gitlens.views.scm.grouped.hiddenViews": {
+    "branches": false,
+    "commits": false,
+    "contributors": false,
+    "fileHistory": false,
+    "launchpad": false,
+    "remotes": false,
+    "repositories": false,
+    "searchAndCompare": false,
+    "stashes": false,
+    "tags": false,
+    "worktrees": false
+  },
   "gitlens.views.scm.grouped.views": {
     "branches": true,
     "commits": true,
@@ -454,6 +470,7 @@
     "tags": true,
     "worktrees": true
   },
+  "gitlens.views.worktrees.showStashes": true,
   "indentRainbow.colorOnWhiteSpaceOnly": true,
   "inlineChat.enableV2": true,
   "inlineChat.finishOnType": true,
@@ -554,6 +571,7 @@
   "postman.mcp.notifications.postmanMCP": false,
   "postman.settings.dotenv-detection-notification-visibility": false,
   "python.defaultInterpreterPath": "/usr/local/python/current/bin/python",
+  "remote.autoForwardPortsSource": "hybrid",
   "remote.portsAttributes": {
     "3000": {
       "label": "Lexico Dev Server",

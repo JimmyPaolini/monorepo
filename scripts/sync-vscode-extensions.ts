@@ -18,17 +18,17 @@
  */
 
 import { readFileSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import JSON5 from "json5";
 import _ from "lodash";
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const WORKSPACE_ROOT = join(__dirname, "..");
-const EXTENSIONS_FILE = join(WORKSPACE_ROOT, ".vscode/extensions.json");
-const DEVCONTAINER_FILE = join(
+const __dirname = path.dirname(__filename);
+const WORKSPACE_ROOT = path.join(__dirname, "..");
+const EXTENSIONS_FILE = path.join(WORKSPACE_ROOT, ".vscode/extensions.json");
+const DEVCONTAINER_FILE = path.join(
   WORKSPACE_ROOT,
   ".devcontainer/devcontainer.json",
 );
@@ -76,16 +76,16 @@ function checkSync(
 
   // Both extensions and recommendations in devcontainer should match recommendations from extensions.json
   const extensionsMatch = _.isEqual(
-    [...recommendations].sort(),
-    [...devcontainerExtensions].sort(),
+    _.sortBy([...recommendations]),
+    _.sortBy([...devcontainerExtensions]),
   );
   const recommendationsMatch = _.isEqual(
-    [...recommendations].sort(),
-    [...devcontainerRecommendations].sort(),
+    _.sortBy([...recommendations]),
+    _.sortBy([...devcontainerRecommendations]),
   );
   const unwantedRecommendationsMatch = _.isEqual(
-    [...unwantedRecommendations].sort(),
-    [...devcontainerUnwantedRecommendations].sort(),
+    _.sortBy([...unwantedRecommendations]),
+    _.sortBy([...devcontainerUnwantedRecommendations]),
   );
 
   if (
@@ -138,7 +138,7 @@ function writeSync(
   writeFileSync(
     DEVCONTAINER_FILE,
     `${JSON.stringify(devcontainer, null, 2)}\n`,
-    "utf-8",
+    "utf8",
   );
   console.log(
     "✅ Extensions synced successfully (recommendations copied to both arrays)",
@@ -147,10 +147,10 @@ function writeSync(
 
 function main(): void {
   const extensions: ExtensionsJson = JSON5.parse(
-    readFileSync(EXTENSIONS_FILE, "utf-8"),
+    readFileSync(EXTENSIONS_FILE, "utf8"),
   );
   const devcontainer: DevcontainerJson = JSON5.parse(
-    readFileSync(DEVCONTAINER_FILE, "utf-8"),
+    readFileSync(DEVCONTAINER_FILE, "utf8"),
   );
 
   if (MODE === "check") {
