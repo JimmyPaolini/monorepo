@@ -268,13 +268,13 @@ export function getMinorAspectDurationEvents(events: Event[]): Event[] {
 
   // Group by body pair and aspect type using categories
   const groupedEvents = _.groupBy(minorAspectEvents, (event) => {
-    const planets = event.categories
-      .filter((category) =>
+    const planets = _.sortBy(
+      event.categories.filter((category) =>
         minorAspectBodies
           .map((minorAspectBody) => _.startCase(minorAspectBody))
           .includes(category),
-      )
-      .sort();
+      ),
+    );
 
     const aspect = event.categories.find((category) =>
       minorAspects
@@ -318,13 +318,13 @@ export function getMinorAspectDurationEvents(events: Event[]): Event[] {
 }
 
 function getMinorAspectDurationEvent(beginning: Event, ending: Event): Event {
-  const bodiesCapitalized = beginning.categories
-    .filter((category) =>
+  const bodiesCapitalized = _.sortBy(
+    beginning.categories.filter((category) =>
       minorAspectBodies
         .map((minorAspectBody) => _.startCase(minorAspectBody))
         .includes(category),
-    )
-    .sort();
+    ),
+  );
 
   const aspectCapitalized = beginning.categories.find((category) =>
     minorAspects

@@ -233,7 +233,7 @@ describe("retrogrades.events", () => {
 
   describe("writeRetrogradeEvents", () => {
     it("should write events to database and file when events array is not empty", async () => {
-      const fs = (await import("node:fs")).default;
+      const { default: fs } = await import("node:fs");
 
       const events: Event[] = [
         {
@@ -257,7 +257,7 @@ describe("retrogrades.events", () => {
     });
 
     it("should not write if events array is empty", async () => {
-      const fs = (await import("node:fs")).default;
+      const { default: fs } = await import("node:fs");
 
       const { writeRetrogradeEvents } = await import("./retrogrades.events");
       writeRetrogradeEvents({

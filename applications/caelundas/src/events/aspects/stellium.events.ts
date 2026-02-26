@@ -192,7 +192,7 @@ function createStelliumEvent(params: {
   const stelliumSymbol =
     symbolByStellium[stelliumType as keyof typeof symbolByStellium];
 
-  const bodiesSorted = [...bodiesCapitalized].sort();
+  const bodiesSorted = _.sortBy([...bodiesCapitalized]);
   const description = `${bodiesSorted.join(", ")} stellium ${phase}`;
 
   let phaseEmoji = "";
@@ -249,11 +249,7 @@ export function getStelliumEvents(
   currentMinute: Moment,
 ): Event[] {
   const edges = parseAspectEvents(aspectEvents);
-  const events: Event[] = [];
-
-  events.push(...composeStelliums(edges, currentMinute));
-
-  return events;
+  return [...composeStelliums(edges, currentMinute)];
 }
 
 // #region Duration Events
@@ -279,11 +275,11 @@ export function getStelliumDurationEvents(events: Event[]): Event[] {
 
   // Group by bodies and stellium type using categories
   const groupedEvents = _.groupBy(stelliumEvents, (event) => {
-    const planets = event.categories
-      .filter((category) =>
+    const planets = _.sortBy(
+      event.categories.filter((category) =>
         stelliumBodies.map((b) => _.startCase(b)).includes(category),
-      )
-      .sort();
+      ),
+    );
 
     const stelliumType = event.categories.find(
       (category) => category.includes("Body") && category !== "Stellium",

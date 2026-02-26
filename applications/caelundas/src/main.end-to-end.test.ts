@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
+import _ from "lodash";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
 // Mock environment for testing
@@ -335,7 +336,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
       expect(triplets.length).toBe(10); // C(5,3) = 10
 
       // Verify no duplicates in pairs
-      const pairStrings = pairs.map((p) => p.sort().join("-"));
+      const pairStrings = pairs.map((p) => _.sortBy(p).join("-"));
       const uniquePairs = new Set(pairStrings);
       expect(uniquePairs.size).toBe(10);
     });

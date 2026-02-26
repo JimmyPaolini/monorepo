@@ -257,13 +257,13 @@ function getQuintupleAspectEvent(params: {
   const body5Symbol = symbolByBody[body5];
   const quintupleAspectSymbol = symbolByQuintupleAspect[quintupleAspect];
 
-  const bodiesSorted = [
+  const bodiesSorted = _.sortBy([
     body1Capitalized,
     body2Capitalized,
     body3Capitalized,
     body4Capitalized,
     body5Capitalized,
-  ].sort();
+  ]);
 
   const description = `${bodiesSorted.join(", ")} ${quintupleAspect} ${phase}`;
 
@@ -348,13 +348,12 @@ export function getQuintupleAspectDurationEvents(events: Event[]): Event[] {
 
   // Group by body quintet and aspect type using categories
   const groupedEvents = _.groupBy(quintupleAspectEvents, (event) => {
-    const planets = event.categories
-      .filter((category) =>
-        quintupleAspectBodies
-          .map((quintupleAspectBody) => _.startCase(quintupleAspectBody))
-          .includes(category),
-      )
-      .sort();
+    const filteredPlanets = event.categories.filter((category) =>
+      quintupleAspectBodies
+        .map((quintupleAspectBody) => _.startCase(quintupleAspectBody))
+        .includes(category),
+    );
+    const planets = _.sortBy(filteredPlanets);
 
     const aspect = event.categories.find((category) =>
       ["Pentagram"].includes(category),

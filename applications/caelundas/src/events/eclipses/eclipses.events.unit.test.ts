@@ -70,12 +70,12 @@ describe("eclipses.events", () => {
       const currentMinute = moment.utc("2024-03-01T12:00:00.000Z");
 
       // No eclipse: sun and moon far apart
-      const sunLongitudes: number[] = Array.from({length: MARGIN_MINUTES * 2 + 1}).fill(0);
-      const moonLongitudes: number[] = Array.from({length: MARGIN_MINUTES * 2 + 1}).fill(90);
-      const sunLatitudes: number[] = Array.from({length: MARGIN_MINUTES * 2 + 1}).fill(0);
-      const moonLatitudes: number[] = Array.from({length: MARGIN_MINUTES * 2 + 1}).fill(5);
-      const sunDiameters: number[] = Array.from({length: MARGIN_MINUTES * 2 + 1}).fill(0.533);
-      const moonDiameters: number[] = Array.from({length: MARGIN_MINUTES * 2 + 1}).fill(0.518);
+      const sunLongitudes = Array.from<number>({length: MARGIN_MINUTES * 2 + 1}).fill(0);
+      const moonLongitudes = Array.from<number>({length: MARGIN_MINUTES * 2 + 1}).fill(90);
+      const sunLatitudes = Array.from<number>({length: MARGIN_MINUTES * 2 + 1}).fill(0);
+      const moonLatitudes = Array.from<number>({length: MARGIN_MINUTES * 2 + 1}).fill(5);
+      const sunDiameters = Array.from<number>({length: MARGIN_MINUTES * 2 + 1}).fill(0.533);
+      const moonDiameters = Array.from<number>({length: MARGIN_MINUTES * 2 + 1}).fill(0.518);
 
       const moonCoordinateEphemeris = createCoordinateEphemeris(
         currentMinute,

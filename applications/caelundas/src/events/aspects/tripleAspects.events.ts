@@ -379,11 +379,11 @@ function getTripleAspectEvent(args: {
   const body3Symbol = symbolByBody[body3];
   const tripleAspectSymbol = symbolByTripleAspect[tripleAspect];
 
-  const bodiesSorted = [
+  const bodiesSorted = _.sortBy([
     body1Capitalized,
     body2Capitalized,
     body3Capitalized,
-  ].sort();
+  ]);
 
   const description = focalOrApexBody
     ? `${bodiesSorted[0]}, ${bodiesSorted[1]}, ${
@@ -453,13 +453,13 @@ export function getTripleAspectDurationEvents(events: Event[]): Event[] {
 
   // Group by body triplet and aspect type using categories
   const groupedEvents = _.groupBy(tripleAspectEvents, (event) => {
-    const planets = event.categories
-      .filter((category) =>
+    const planets = _.sortBy(
+      event.categories.filter((category) =>
         tripleAspectBodies
           .map((tripleAspectBody) => _.startCase(tripleAspectBody))
           .includes(category),
-      )
-      .sort();
+      ),
+    );
 
     const aspect = event.categories.find((category) =>
       ["T Square", "Grand Trine", "Yod"].includes(category),
@@ -500,13 +500,13 @@ export function getTripleAspectDurationEvents(events: Event[]): Event[] {
 
       // Only create duration if dissolving comes after forming
       if (dissolving.start.getTime() > forming.start.getTime()) {
-        const bodiesCapitalized = forming.categories
-          .filter((category) =>
+        const bodiesCapitalized = _.sortBy(
+          forming.categories.filter((category) =>
             tripleAspectBodies
               .map((tripleAspectBody) => _.startCase(tripleAspectBody))
               .includes(category),
-          )
-          .sort();
+          ),
+        );
 
         const aspectCapitalized = forming.categories.find((category) =>
           ["T Square", "Grand Trine", "Yod"].includes(category),

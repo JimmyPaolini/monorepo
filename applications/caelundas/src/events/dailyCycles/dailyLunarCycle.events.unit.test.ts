@@ -207,7 +207,7 @@ describe("dailyLunarCycle.events", () => {
 
   describe("writeDailyLunarCycleEvents", () => {
     it("should write events to database and file when events array is not empty", async () => {
-      const fs = (await import("node:fs")).default;
+      const { default: fs } = await import("node:fs");
 
       const events: Event[] = [
         {
@@ -231,7 +231,7 @@ describe("dailyLunarCycle.events", () => {
     });
 
     it("should not write if events array is empty", async () => {
-      const fs = (await import("node:fs")).default;
+      const { default: fs } = await import("node:fs");
 
       const { writeDailyLunarCycleEvents } =
         await import("./dailyLunarCycle.events");

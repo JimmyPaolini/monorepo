@@ -261,7 +261,7 @@ describe("twilights.events", () => {
 
   describe("writeTwilightEvents", () => {
     it("should write events to database and file when events array is not empty", async () => {
-      const fs = (await import("node:fs")).default;
+      const { default: fs } = await import("node:fs");
 
       const events: Event[] = [
         {
@@ -284,7 +284,7 @@ describe("twilights.events", () => {
     });
 
     it("should not write if events array is empty", async () => {
-      const fs = (await import("node:fs")).default;
+      const { default: fs } = await import("node:fs");
 
       const { writeTwilightEvents } = await import("./twilights.events");
       writeTwilightEvents({

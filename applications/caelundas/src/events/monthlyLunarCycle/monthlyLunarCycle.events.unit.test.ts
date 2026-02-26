@@ -48,7 +48,7 @@ describe("monthlyLunarCycle.events", () => {
       const currentMinute = moment.utc("2024-03-15T12:00:00.000Z");
 
       // Illumination staying constant (no phase change)
-      const constantIlluminations: number[] = Array.from({length: MARGIN_MINUTES * 2 + 1}).fill(0.5);
+      const constantIlluminations = Array.from<number>({length: MARGIN_MINUTES * 2 + 1}).fill(0.5);
 
       const moonIlluminationEphemeris = createIlluminationEphemeris(
         currentMinute,

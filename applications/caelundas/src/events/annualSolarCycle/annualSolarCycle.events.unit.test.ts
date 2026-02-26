@@ -280,7 +280,7 @@ describe("annualSolarCycle.events", () => {
       const currentMinute = moment.utc("2024-03-15T12:00:00.000Z");
 
       // No event: sun at some random longitude
-      const longitudes: number[] = Array.from({length: MARGIN_MINUTES * 2 + 1}).fill(10);
+      const longitudes = Array.from<number>({length: MARGIN_MINUTES * 2 + 1}).fill(10);
 
       const sunCoordinateEphemeris = createCoordinateEphemeris(
         currentMinute,

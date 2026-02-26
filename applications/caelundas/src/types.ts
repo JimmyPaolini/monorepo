@@ -5,33 +5,30 @@
  * and type definitions.
  */
 
-import {
-  aspectBodies,
-  type aspectPhases,
-  type eclipsePhases,
-  
-  
-  type retrogradeBodies,
-  type symbolByAspect,
-  type symbolByAsteroid,
-  type symbolByBody,
-  type symbolByComet,
-  type symbolByDecan,
-  type symbolByLunarPhase,
-  type symbolByMajorAspect,
-  type symbolByMartianPhase,
-  type symbolByMercurianPhase,
-  type symbolByMinorAspect,
-  type symbolByNode,
-  type symbolByOrbitalDirection,
-  type symbolByPlanet,
-  type symbolByQuadrupleAspect,
-  type symbolByQuintupleAspect,
-  type symbolBySextupleAspect,
-  type symbolBySign,
-  type symbolBySpecialtyAspect,
-  type symbolByTripleAspect,
-  type symbolByVenusianPhase,
+import type {
+  aspectPhases,
+  eclipsePhases,
+  retrogradeBodies,
+  symbolByAspect,
+  symbolByAsteroid,
+  symbolByBody,
+  symbolByComet,
+  symbolByDecan,
+  symbolByLunarPhase,
+  symbolByMajorAspect,
+  symbolByMartianPhase,
+  symbolByMercurianPhase,
+  symbolByMinorAspect,
+  symbolByNode,
+  symbolByOrbitalDirection,
+  symbolByPlanet,
+  symbolByQuadrupleAspect,
+  symbolByQuintupleAspect,
+  symbolBySextupleAspect,
+  symbolBySign,
+  symbolBySpecialtyAspect,
+  symbolByTripleAspect,
+  symbolByVenusianPhase,
 } from "./symbols";
 
 // #region Signs 🪧
@@ -445,20 +442,18 @@ export type RetrogradeBodySymbol = (typeof symbolByBody)[RetrogradeBody];
 
 // Re-export arrays from symbols for convenience
 export {
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  phaseBodies as planetaryPhaseBodies,
+  aspectPhases,
+  retrogradeBodies,
+  ingressBodies as signIngressBodies,
+  ingressBodies as decanIngressBodies,
+  ingressBodies as peakIngressBodies,
+  aspectBodies as majorAspectBodies,
+  aspectBodies as minorAspectBodies,
+  aspectBodies as specialtyAspectBodies,
+  aspectBodies as tripleAspectBodies,
   aspectBodies as quadrupleAspectBodies,
   aspectBodies as quintupleAspectBodies,
   aspectBodies as sextupleAspectBodies,
   aspectBodies as stelliumBodies,
-};
-
-export {phaseBodies as planetaryPhaseBodies, aspectPhases, retrogradeBodies, ingressBodies as signIngressBodies, ingressBodies as decanIngressBodies, ingressBodies as peakIngressBodies, aspectBodies as majorAspectBodies, aspectBodies as minorAspectBodies, aspectBodies as specialtyAspectBodies, aspectBodies as tripleAspectBodies} from "./symbols";
+} from "./symbols";

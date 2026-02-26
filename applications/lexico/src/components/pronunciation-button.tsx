@@ -40,7 +40,7 @@ export function PronunciationButton({
         const audioData = atob(result.audio);
         const audioArray = new Uint8Array(audioData.length);
         for (let i = 0; i < audioData.length; i++) {
-          audioArray[i] = audioData.charCodeAt(i);
+          audioArray[i] = audioData.codePointAt(i) ?? 0;
         }
 
         const blob = new Blob([audioArray], { type: result.contentType });

@@ -96,34 +96,18 @@ function composeGrandCrosses(
 
       const bodyList = [...bodies];
 
+      const oppositeBodyMap = new Map<Body, Body>([
+        [opp1.body1, opp1.body2],
+        [opp1.body2, opp1.body1],
+        [opp2.body1, opp2.body2],
+        [opp2.body2, opp2.body1],
+      ]);
+
       // Verify all adjacent pairs (in cross configuration) are in square
       let hasAllSquares = true;
       for (const body of bodyList) {
         // Find which body is opposite to this one
-        let oppositeBody: Body | null = null;
-        switch (body) {
-        case opp1.body1: {
-          oppositeBody = opp1.body2;
-        
-        break;
-        }
-        case opp1.body2: {
-          oppositeBody = opp1.body1;
-        
-        break;
-        }
-        case opp2.body1: {
-          oppositeBody = opp2.body2;
-        
-        break;
-        }
-        case opp2.body2: {
-          oppositeBody = opp2.body1;
-        
-        break;
-        }
-        // No default
-        }
+        const oppositeBody = oppositeBodyMap.get(body) ?? null;
 
         if (!oppositeBody) {
           hasAllSquares = false;
@@ -176,31 +160,14 @@ function composeGrandCrosses(
             }
 
             // Verify all adjacent pairs are in square
+            const innerOppositeBodyMap = new Map<Body, Body>([
+              [opp1.body1, opp1.body2],
+              [opp1.body2, opp1.body1],
+              [opp2.body1, opp2.body2],
+              [opp2.body2, opp2.body1],
+            ]);
             for (const body of bodyList) {
-              let oppositeBody: Body | null = null;
-              switch (body) {
-              case opp1.body1: {
-                oppositeBody = opp1.body2;
-              
-              break;
-              }
-              case opp1.body2: {
-                oppositeBody = opp1.body1;
-              
-              break;
-              }
-              case opp2.body1: {
-                oppositeBody = opp2.body2;
-              
-              break;
-              }
-              case opp2.body2: {
-                oppositeBody = opp2.body1;
-              
-              break;
-              }
-              // No default
-              }
+              const oppositeBody = innerOppositeBodyMap.get(body) ?? null;
 
               if (!oppositeBody) {
                 return false;
@@ -440,12 +407,12 @@ function getQuadrupleAspectEvent(params: {
   const body4Symbol = symbolByBody[body4];
   const quadrupleAspectSymbol = symbolByQuadrupleAspect[quadrupleAspect];
 
-  const bodiesSorted = [
+  const bodiesSorted = _.sortBy([
     body1Capitalized,
     body2Capitalized,
     body3Capitalized,
     body4Capitalized,
-  ].sort();
+  ]);
 
   const description = focalOrApexBody
     ? `${bodiesSorted.join(", ")} ${quadrupleAspect} ${phase} (${_.startCase(
@@ -512,12 +479,10 @@ export function getQuadrupleAspectEvents(
   currentMinute: Moment,
 ): Event[] {
   const edges = parseAspectEvents(aspectEvents);
-  const events: Event[] = [];
-
-  events.push(...composeGrandCrosses(edges, currentMinute));
-  events.push(...composeKites(edges, currentMinute));
-
-  return events;
+  return [
+    ...composeGrandCrosses(edges, currentMinute),
+    ...composeKites(edges, currentMinute),
+  ];
 }
 
 // #region Duration Events
@@ -543,13 +508,13 @@ export function getQuadrupleAspectDurationEvents(events: Event[]): Event[] {
 
   // Group by body quartet and aspect type using categories
   const groupedEvents = _.groupBy(quadrupleAspectEvents, (event) => {
-    const planets = event.categories
-      .filter((category) =>
+    const planets = _.sortBy(
+      event.categories.filter((category) =>
         quadrupleAspectBodies
           .map((quadrupleAspectBody) => _.startCase(quadrupleAspectBody))
           .includes(category),
-      )
-      .sort();
+      ),
+    );
 
     const aspect = event.categories.find((category) =>
       ["Grand Cross", "Kite"].includes(category),

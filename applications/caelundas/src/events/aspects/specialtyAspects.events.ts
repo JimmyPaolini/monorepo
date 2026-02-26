@@ -271,13 +271,13 @@ export function getSpecialtyAspectDurationEvents(events: Event[]): Event[] {
 
   // Group by body pair and aspect type using categories
   const groupedEvents = _.groupBy(specialtyAspectEvents, (event) => {
-    const planets = event.categories
-      .filter((category) =>
+    const planets = _.sortBy(
+      event.categories.filter((category) =>
         specialtyAspectBodies
           .map((specialtyAspectBody) => _.startCase(specialtyAspectBody))
           .includes(category),
-      )
-      .sort();
+      ),
+    );
 
     const aspect = event.categories.find((category) =>
       specialtyAspects
@@ -324,13 +324,13 @@ function getSpecialtyAspectDurationEvent(
   beginning: Event,
   ending: Event,
 ): Event {
-  const bodiesCapitalized = beginning.categories
-    .filter((category) =>
+  const bodiesCapitalized = _.sortBy(
+    beginning.categories.filter((category) =>
       specialtyAspectBodies
         .map((specialtyAspectBody) => _.startCase(specialtyAspectBody))
         .includes(category),
-    )
-    .sort();
+    ),
+  );
 
   const aspectCapitalized = beginning.categories.find((category) =>
     specialtyAspects

@@ -416,7 +416,7 @@ describe("specialtyAspects.events", () => {
         },
       ];
 
-      const fs = (await import("node:fs")).default;
+      const { default: fs } = await import("node:fs");
 
       writeSpecialtyAspectEvents({
         start: new Date("2024-03-21T00:00:00.000Z"),
@@ -429,7 +429,7 @@ describe("specialtyAspects.events", () => {
     });
 
     it("should not write if events array is empty", async () => {
-      const fs = (await import("node:fs")).default;
+      const { default: fs } = await import("node:fs");
 
       writeSpecialtyAspectEvents({
         start: new Date("2024-03-21T00:00:00.000Z"),
@@ -452,7 +452,7 @@ describe("specialtyAspects.events", () => {
         },
       ];
 
-      const fs = (await import("node:fs")).default;
+      const { default: fs } = await import("node:fs");
 
       writeSpecialtyAspectEvents({
         start: new Date("2024-03-21T00:00:00.000Z"),
@@ -480,7 +480,7 @@ describe("specialtyAspects.events", () => {
         },
       ];
 
-      const fs = (await import("node:fs")).default;
+      const { default: fs } = await import("node:fs");
 
       writeSpecialtyAspectEvents({
         start: new Date("2024-03-21T00:00:00.000Z"),

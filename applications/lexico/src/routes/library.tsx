@@ -17,6 +17,7 @@ import {
   Textarea,
 } from "@monorepo/lexico-components";
 import { createFileRoute } from "@tanstack/react-router";
+import _ from "lodash";
 import { BookOpen, Edit, Plus, Trash2 } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 
@@ -82,7 +83,7 @@ function LibraryPage(): ReactNode {
       if (result.success && result.text) {
         const newText = result.text;
         setTexts((prev) =>
-          [...prev, newText].sort((a, b) => a.title.localeCompare(b.title)),
+          _.orderBy([...prev, newText], [(t) => t.title]),
         );
         setFormTitle("");
         setFormText("");
@@ -105,13 +106,14 @@ function LibraryPage(): ReactNode {
       });
       if (result.success) {
         setTexts((prev) =>
-          prev
-            .map((t) =>
+          _.orderBy(
+            prev.map((t) =>
               t.id === editingText.id
                 ? { ...t, title: formTitle, text: formText }
                 : t,
-            )
-            .sort((a, b) => a.title.localeCompare(b.title)),
+            ),
+            [(t) => t.title],
+          ),
         );
         setFormTitle("");
         setFormText("");

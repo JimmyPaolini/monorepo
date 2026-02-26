@@ -3,8 +3,8 @@ import baseConfig from "../../eslint.config.base.ts";
 export default [
   ...baseConfig,
   {
-    // Ignore Supabase Edge Functions (Deno runtime, separate tsconfig)
-    ignores: ["supabase/functions/**"],
+    // Ignore Supabase Edge Functions (Deno runtime, separate tsconfig) and generated files
+    ignores: ["supabase/functions/**", "src/routeTree.gen.ts"],
   },
   {
     files: ["**/*.json"],

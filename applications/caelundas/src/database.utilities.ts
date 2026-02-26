@@ -366,7 +366,7 @@ function mapRowToEvent(row: EventRecord): Event {
         ? { latitude: row.latitude, longitude: row.longitude }
         : undefined,
     url: row.url || undefined,
-    priority: row.priority ? row.priority : undefined,
+    priority: row.priority || undefined,
     color: row.color || undefined,
   };
 }
@@ -547,7 +547,7 @@ export async function getAllEvents(): Promise<Event[]> {
      ORDER BY start ASC`,
   );
 
-  const events: Event[] = rows.map(mapRowToEvent);
+  const events: Event[] = (rows as EventRecord[]).map((row) => mapRowToEvent(row));
 
   return events;
 }
@@ -610,7 +610,7 @@ export async function getActiveAspectsAt(timestamp: Date): Promise<Event[]> {
     [timestampISO, timestampISO],
   );
 
-  return rows.map(mapRowToEvent);
+  return (rows as EventRecord[]).map((row) => mapRowToEvent(row));
 }
 
 // #region Cleanup

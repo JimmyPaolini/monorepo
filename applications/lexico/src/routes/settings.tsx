@@ -17,6 +17,14 @@ export const Route = createFileRoute("/settings")({
   component: SettingsPage,
 });
 
+async function handleSignIn(): Promise<void> {
+  const redirectTo = `${location.origin}/settings`;
+  const { url } = await getGoogleSignInUrl({ data: { redirectTo } });
+  if (url) {
+    location.href = url;
+  }
+}
+
 /**
  * Settings page component for user account management.
  *
@@ -25,14 +33,6 @@ export const Route = createFileRoute("/settings")({
 function SettingsPage(): ReactNode {
   const router = useRouter();
   const { user } = Route.useRouteContext();
-
-  const handleSignIn = async (): Promise<void> => {
-    const redirectTo = `${location.origin}/settings`;
-    const { url } = await getGoogleSignInUrl({ data: { redirectTo } });
-    if (url) {
-      location.href = url;
-    }
-  };
 
   const handleSignOut = async (): Promise<void> => {
     await signOut();

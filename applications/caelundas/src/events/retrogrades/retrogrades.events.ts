@@ -81,9 +81,7 @@ export function getRetrogradeEvents(args: {
       "longitude",
     );
 
-    const previousLongitudes = new Array(MARGIN_MINUTES)
-      .fill(null)
-      .map((_, index) => {
+    const previousLongitudes = Array.from({length: MARGIN_MINUTES}, (_, index) => {
         const date = currentMinute
           .clone()
           .subtract(MARGIN_MINUTES - index, "minute");
@@ -94,9 +92,7 @@ export function getRetrogradeEvents(args: {
         );
       });
 
-    const nextLongitudes = new Array(MARGIN_MINUTES)
-      .fill(null)
-      .map((_, index) => {
+    const nextLongitudes = Array.from({length: MARGIN_MINUTES}, (_, index) => {
         const date = currentMinute.clone().add(index + 1, "minute");
         return getCoordinateFromEphemeris(
           ephemeris,
@@ -196,9 +192,10 @@ export function getRetrogradeEvent(args: {
   const retrogradeEvent: Event = {
     start: timestamp,
     end: timestamp,
-    categories: categories.concat(
-      direction === "retrograde" ? ["Retrograde"] : ["Direct"],
-    ),
+    categories: [
+      ...categories,
+      ...(direction === "retrograde" ? ["Retrograde"] : ["Direct"]),
+    ],
     summary,
     description,
   };
