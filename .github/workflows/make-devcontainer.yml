@@ -6,10 +6,6 @@ on:
       - main
     paths:
       - .devcontainer/**
-  pull_request:
-    paths:
-      - .devcontainer/**
-      - .vscode/extensions.json
   workflow_dispatch:
     inputs:
       run_tests:
