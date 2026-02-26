@@ -7,11 +7,6 @@ on:
     paths:
       - .devcontainer/**
   workflow_dispatch:
-    inputs:
-      run_tests:
-        description: Run tests inside container
-        type: boolean
-        default: false
 
 permissions:
   contents: read
