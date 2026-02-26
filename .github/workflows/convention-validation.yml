@@ -49,10 +49,10 @@ jobs:
             exit 1
           fi
           MISSING=""
-          echo "$PULL_REQUEST_BODY" | grep -q "^## 🌰 Summary" || MISSING="$MISSING Summary"
-          echo "$PULL_REQUEST_BODY" | grep -q "^## 📝 Details" || MISSING="$MISSING Details"
-          echo "$PULL_REQUEST_BODY" | grep -q "^## 🧪 Testing" || MISSING="$MISSING Testing"
-          echo "$PULL_REQUEST_BODY" | grep -q "^## 🔗 Related" || MISSING="$MISSING Related"
+          echo "$PULL_REQUEST_BODY" | grep -q "^## 🌰 Summary" || MISSING="$MISSING 🌰 Summary"
+          echo "$PULL_REQUEST_BODY" | grep -q "^## 📝 Details" || MISSING="$MISSING 📝 Details"
+          echo "$PULL_REQUEST_BODY" | grep -q "^## 🧪 Testing" || MISSING="$MISSING 🧪 Testing"
+          echo "$PULL_REQUEST_BODY" | grep -q "^## 🔗 Related" || MISSING="$MISSING 🔗 Related"
           if [ -n "$MISSING" ]; then
             echo "❌ Missing required sections:$MISSING"
             echo ""

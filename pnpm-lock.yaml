@@ -187,6 +187,9 @@ importers:
       semantic-release:
         specifier: ^25.0.2
         version: 25.0.2(typescript@5.9.3)
+      size-limit:
+        specifier: ^12.0.0
+        version: 12.0.0(jiti@2.6.1)
       stylelint:
         specifier: ^17.4.0
         version: 17.4.0(typescript@5.9.3)
