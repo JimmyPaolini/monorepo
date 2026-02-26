@@ -1,4 +1,4 @@
-name: 📦 Bundle Report
+name: 🧑‍💼 Bundle Report
 
 on:
   pull_request:
@@ -13,7 +13,7 @@ concurrency:
 
 jobs:
   bundle-report:
-    name: 📦 Bundle Report
+    name: 🧑‍💼 Bundle Report
     runs-on: ubuntu-latest
 
     steps:

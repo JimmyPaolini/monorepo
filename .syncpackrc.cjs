@@ -31,6 +31,14 @@ module.exports = {
   // Semver groups: use caret (^) ranges for all external dependencies
   semverGroups: [
     {
+      // pnpm.overrides use selector syntax (e.g., "package@<1.0.0": ">=1.0.0") for security patches
+      // that syncpack cannot validate with standard semver ranges
+      isIgnored: true,
+      dependencyTypes: ["pnpmOverrides"],
+      dependencies: ["**"],
+      packages: ["**"],
+    },
+    {
       range: "^",
       dependencies: ["**"],
       packages: ["**"],
