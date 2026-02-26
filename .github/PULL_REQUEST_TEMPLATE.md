@@ -12,4 +12,4 @@
 
 ## 🔗 Related
 
-- <!-- Link any related issues using keywords: Closes #123, Fixes #456, Related to #789 -->
+- <!-- Link any relevant documentation or related resources like internal documentation, GitHub issues/pull requests -->

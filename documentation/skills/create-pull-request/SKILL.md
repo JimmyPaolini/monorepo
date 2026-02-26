@@ -127,16 +127,17 @@ Brief description of what this PR does (1-2 sentences).
 
 - Closes #123
 - Fixes #456
+- https://docs.example.com/relevant-page
 ```
 
 ### Description Guidelines
 
-| Section    | Purpose                           | Required      |
-| ---------- | --------------------------------- | ------------- |
-| 🌰 Summary | Brief overview of the PR          | Yes           |
-| 📝 Details | Bulleted list of changes          | Yes           |
-| 🧪 Testing | How to verify the changes         | Yes           |
-| 🔗 Related | Links to issues this PR addresses | If applicable |
+| Section    | Purpose                                                 | Required      |
+| ---------- | ------------------------------------------------------- | ------------- |
+| 🌰 Summary | Brief overview of the PR                                | Yes           |
+| 📝 Details | Bulleted list of changes                                | Yes           |
+| 🧪 Testing | How to verify the changes                               | Yes           |
+| 🔗 Related | Links to issues and/or documentation this PR references | If applicable |
 
 ## Step-by-Step Workflow
 
@@ -273,9 +274,11 @@ gh pr create --draft --assignee @me --title "feat(lexico): ✨ [WIP] add user pr
 gh pr ready
 ```
 
-## Linking Issues
+## Linking Issues and Documentation
 
-Reference issues in PR description:
+Reference issues and relevant documentation in the PR description:
+
+### Issues
 
 | Keyword           | Effect                      |
 | ----------------- | --------------------------- |
@@ -283,6 +286,14 @@ Reference issues in PR description:
 | `Fixes #123`      | Closes issue when PR merges |
 | `Resolves #123`   | Closes issue when PR merges |
 | `Related to #123` | Links without closing       |
+
+### Documentation
+
+Include relevant links to help reviewers understand context:
+
+- Internal docs: links to AGENTS.md, SKILL.md, planning files, or ADRs
+- External docs: library documentation, RFCs, specifications
+- Related PRs: links to dependent or prerequisite pull requests
 
 ## Assignees
 
@@ -412,7 +423,7 @@ Adds comprehensive CONTRIBUTING.md with setup instructions and guidelines.
 
 ## 🔗 Related
 
-- <!-- No related issues -->
+- <!-- No related issues or documentation links -->
 ```
 
 ### Dependency Update PR
@@ -441,7 +452,7 @@ nx run lexico:develop
 
 ## 🔗 Related
 
-- <!-- No related issues -->
+- <!-- No related issues or documentation links -->
 ````
 
 ## Troubleshooting
