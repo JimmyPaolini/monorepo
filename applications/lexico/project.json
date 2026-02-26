@@ -35,6 +35,7 @@
           "nx run lexico:type-coverage",
           "nx run lexico:dependency-analysis",
           "nx run lexico:markdown-lint:{args.configuration}",
+          "nx run lexico:yaml-lint",
           "nx run lexico:spell-check"
         ]
       }

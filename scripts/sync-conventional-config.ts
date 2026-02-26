@@ -26,12 +26,18 @@ import _ from "lodash";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const WORKSPACE_ROOT = path.join(__dirname, "..");
-const CONVENTIONAL_CONFIG = path.join(WORKSPACE_ROOT, "conventional.config.cjs");
+const CONVENTIONAL_CONFIG = path.join(
+  WORKSPACE_ROOT,
+  "conventional.config.cjs",
+);
 const SETTINGS_FILE = path.join(WORKSPACE_ROOT, ".vscode/settings.json");
 const SKILL_FILES = [
   path.join(WORKSPACE_ROOT, "documentation/skills/commit-code/SKILL.md"),
   path.join(WORKSPACE_ROOT, "documentation/skills/checkout-branch/SKILL.md"),
-  path.join(WORKSPACE_ROOT, "documentation/skills/create-pull-request/SKILL.md"),
+  path.join(
+    WORKSPACE_ROOT,
+    "documentation/skills/create-pull-request/SKILL.md",
+  ),
   path.join(WORKSPACE_ROOT, ".github/prompts/submit-changes.prompt.md"),
 ];
 const ISSUE_TEMPLATE_FILES = [

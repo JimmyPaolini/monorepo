@@ -12,47 +12,8 @@ concurrency:
 
 jobs:
   code-analysis:
-    name: ${{ matrix.check.name }}
+    name: 🧑‍💻 Code Analysis
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        check:
-          - name: 🏷️ Typescript Check
-            run: pnpm exec nx affected -t typecheck --parallel=3
-            upload_artifacts: false
-
-          - name: 🧹 ESLint Check
-            run: pnpm exec nx affected -t lint --parallel=3
-            upload_artifacts: false
-
-          - name: 🖼️ Markdown Lint
-            run: pnpm exec nx affected -t markdown-lint --parallel=3
-            upload_artifacts: false
-
-          - name: 📄 YAML Lint
-            run: pnpm exec nx affected -t yaml-lint --parallel=3
-            upload_artifacts: false
-
-          - name: 🎨 Format Check
-            run: pnpm exec nx affected -t format --configuration=check --parallel=3
-            upload_artifacts: false
-
-          - name: ✂️ Knip Check
-            run: pnpm exec nx affected -t knip --parallel=3
-            upload_artifacts: false
-
-          - name: 🧙‍♂️ Spell Check
-            run: pnpm exec nx affected -t spell-check --parallel=3
-            upload_artifacts: false
-
-          - name: 🎨 Stylelint
-            run: pnpm exec nx affected -t stylelint --parallel=3
-            upload_artifacts: false
-
-          - name: 🔖 Type Coverage
-            run: pnpm exec nx affected -t type-coverage --parallel=3
-            upload_artifacts: true
 
     steps:
       - name: 📥 Checkout Repository
@@ -63,11 +24,11 @@ jobs:
       - name: 🕋 Setup Monorepo
         uses: ./.github/actions/setup-monorepo
 
-      - name: ${{ matrix.check.name }}
-        run: ${{ matrix.check.run }}
+      - name: 🧑‍💻 Code Analysis
+        run: pnpm exec nx affected -t code-analysis
 
       - name: 📊 Upload Type Coverage
-        if: matrix.check.upload_artifacts && always()
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: type-coverage-reports

@@ -306,6 +306,7 @@
     },
     "typecheck": {
       "description": "Type-check workspace root TypeScript files"
-    }
+    },
+    "yaml-lint": {}
   }
 }
