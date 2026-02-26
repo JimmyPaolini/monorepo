@@ -58,7 +58,7 @@ jobs:
 
       - name: 🐳 Build caelundas Docker image
         if: github.event_name == 'schedule' || steps.paths.outputs.dockerfile == 'true'
-        run: docker build -t caelundas:scan -f applications/caelundas/Dockerfile .
+        run: docker build --target=caelundas:scan -f applications/caelundas/Dockerfile .
 
       - name: 🛡️ Trivy Docker Scan
         if: github.event_name == 'schedule' || steps.paths.outputs.dockerfile == 'true'
