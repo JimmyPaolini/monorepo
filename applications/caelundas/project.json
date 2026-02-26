@@ -5,17 +5,18 @@
   "sourceRoot": "applications/caelundas",
   "tags": [],
   "targets": {
+    "biome": {},
     "code-analysis": {
       "options": {
         "commands": [
-          "nx run caelundas:typecheck",
-          "nx run caelundas:lint:{args.configuration}",
           "nx run caelundas:format:{args.configuration}",
           "nx run caelundas:knip:{args.configuration}",
-          "nx run caelundas:type-coverage",
+          "nx run caelundas:lint:{args.configuration}",
           "nx run caelundas:markdown-lint:{args.configuration}",
-          "nx run caelundas:yaml-lint",
-          "nx run caelundas:spell-check"
+          "nx run caelundas:spell-check",
+          "nx run caelundas:type-coverage",
+          "nx run caelundas:typecheck",
+          "nx run caelundas:yaml-lint"
         ]
       }
     },
@@ -78,7 +79,10 @@
         "cwd": "{workspaceRoot}"
       }
     },
+    "lint": {},
     "markdown-lint": {},
+    "oxlint": {},
+    "prettier": {},
     "spell-check": {},
     "start": {
       "description": "Start the Caelundas application",
@@ -115,10 +119,6 @@
     },
     "type-coverage": {},
     "typecheck": {},
-    "yaml-lint": {},
-    "prettier": {},
-    "lint": {},
-    "oxlint": {},
-    "biome": {}
+    "yaml-lint": {}
   }
 }

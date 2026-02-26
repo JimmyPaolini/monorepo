@@ -31,8 +31,8 @@ const scopes = [
   "documentation", // Markdown docs, skills, planning files, and AGENTS.md files
   "infrastructure", // Helm charts, Terraform configs, and Kubernetes resources
   "JimmyPaolini", // Static GitHub profile README project (markdown and assets)
-  "lexico-components", // Shared React/shadcn component library in packages/
   "lexico", // TanStack Start SSR Latin dictionary web app with Supabase backend
+  "lexico-components", // Shared React/shadcn component library in packages/
   "linting", // ESLint configs, rules, plugins, and lint-related tooling
   "monorepo", // Workspace root concerns (pnpm-workspace, root package.json, Nx orchestration)
   "packages", // Changes spanning multiple shared packages

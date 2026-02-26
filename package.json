@@ -1,8 +1,6 @@
 {
-  "name": "monorepo",
-  "description": "",
-  "version": "1.0.0",
   "author": "Jimmy Paolini",
+  "description": "",
   "devDependencies": {
     "@biomejs/biome": "^2.4.4",
     "@commitlint/cli": "^20.4.2",
@@ -22,8 +20,8 @@
     "@semantic-release/github": "^12.0.6",
     "@semantic-release/npm": "^13.1.4",
     "@semantic-release/release-notes-generator": "^14.1.0",
-    "@swc-node/register": "^1.11.1",
     "@swc/core": "^1.15.13",
+    "@swc-node/register": "^1.11.1",
     "@types/eslint-plugin-jsx-a11y": "^6.10.1",
     "@types/lodash": "^4.17.23",
     "@types/node": "^22.19.1",
@@ -78,6 +76,7 @@
   },
   "keywords": [],
   "license": "MIT",
+  "name": "monorepo",
   "packageManager": "pnpm@10.30.3",
   "pnpm": {
     "onlyBuiltDependencies": [
@@ -126,5 +125,6 @@
       "root-package-private-field"
     ]
   },
-  "type": "module"
+  "type": "module",
+  "version": "1.0.0"
 }

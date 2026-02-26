@@ -1,6 +1,4 @@
 {
-  "name": "lexico",
-  "version": "0.0.1",
   "dependencies": {
     "@monorepo/lexico-components": "workspace:*",
     "@supabase/ssr": "^0.8.0",
@@ -8,10 +6,13 @@
     "@tanstack/react-router": "^1.163.2",
     "@tanstack/react-router-devtools": "^1.163.2",
     "@tanstack/react-start": "^1.163.2",
+    "@vitejs/plugin-react": "4.7.0",
     "lodash": "^4.17.23",
     "lucide-react": "^0.575.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
+    "vite": "^7.3.1",
+    "vite-tsconfig-paths": "5.1.4",
     "zod": "^4.3.6"
   },
   "devDependencies": {
@@ -29,6 +30,7 @@
     "vite": "^7.3.1",
     "vite-tsconfig-paths": "^5.1.4"
   },
+  "name": "lexico",
   "private": true,
   "scripts": {
     "build": "vite build",
@@ -42,12 +44,13 @@
     "atLeast": 99.36,
     "ignoreCatch": true,
     "ignoreFiles": [
-      "**/*.test.ts",
-      "**/*.test.tsx",
       "**/*.spec.ts",
       "**/*.spec.tsx",
+      "**/*.test.ts",
+      "**/*.test.tsx",
       "**/routeTree.gen.ts"
     ],
     "strict": true
-  }
+  },
+  "version": "0.0.1"
 }

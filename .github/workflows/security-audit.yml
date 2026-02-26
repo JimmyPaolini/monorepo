@@ -57,11 +57,17 @@ jobs:
               - infrastructure/terraform/**
 
       - name: 🐳 Build caelundas Docker image
-        if: github.event_name == 'schedule' || steps.paths.outputs.dockerfile == 'true'
-        run: docker build --target=caelundas:scan -f applications/caelundas/Dockerfile .
+        if: |
+          github.event_name == 'schedule' ||
+          steps.paths.outputs.dockerfile == 'true'
+        run: |
+          docker build --target=caelundas:scan \
+            -f applications/caelundas/Dockerfile .
 
       - name: 🛡️ Trivy Docker Scan
-        if: github.event_name == 'schedule' || steps.paths.outputs.dockerfile == 'true'
+        if: |
+          github.event_name == 'schedule' ||
+          steps.paths.outputs.dockerfile == 'true'
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: caelundas:scan
@@ -70,7 +76,9 @@ jobs:
           exit-code: 1
 
       - name: 🏗️ Trivy Infrastructure Scan
-        if: github.event_name == 'schedule' || steps.paths.outputs.terraform == 'true'
+        if: |
+          github.event_name == 'schedule' ||
+          steps.paths.outputs.terraform == 'true'
         uses: aquasecurity/trivy-action@master
         with:
           scan-type: config

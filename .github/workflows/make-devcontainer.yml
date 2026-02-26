@@ -52,6 +52,8 @@ jobs:
 
       - name: 🐳 Make Devcontainer
         uses: devcontainers/ci@v0.3
+        env:
+          CI: true
         with:
           imageName: ghcr.io/jimmypaolini/monorepo-devcontainer
           cacheFrom: |
@@ -66,9 +68,10 @@ jobs:
 
       - name: 🩹 Patch Configuration for Test
         run: |
-          # Remove resource-limiting Docker run args unsupported in CI environments.
-          # Remove named volume mounts so the pnpm store pre-baked into the image
-          # is visible (volumes would otherwise shadow it with empty directories).
+          # Remove resource-limiting Docker run args unsupported in
+          # CI environments. Remove named volume mounts so the pnpm
+          # store pre-baked into the image is visible (volumes would
+          # otherwise shadow it with empty directories).
           JQ_FILTER='
             .runArgs |= map(select(
               . != "--env-file" and
@@ -77,11 +80,15 @@ jobs:
             )) |
             .mounts = []
           '
-          jq "$JQ_FILTER" .devcontainer/devcontainer.json > /tmp/devcontainer.json
-          mv /tmp/devcontainer.json .devcontainer/devcontainer.json
+          jq "$JQ_FILTER" .devcontainer/devcontainer.json > \
+            /tmp/devcontainer.json
+          mv /tmp/devcontainer.json \
+            .devcontainer/devcontainer.json
 
       - name: 🔬 Test Devcontainer
         uses: devcontainers/ci@v0.3
+        env:
+          CI: true
         with:
           imageName: ghcr.io/jimmypaolini/monorepo-devcontainer
           cacheFrom: |

@@ -66,8 +66,8 @@ PR titles **must** follow the same format as commit messages:
 | `documentation`     | Markdown docs, skills, planning files, and AGENTS.md files                    |
 | `infrastructure`    | Helm charts, Terraform configs, and Kubernetes resources                      |
 | `JimmyPaolini`      | Static GitHub profile README project (markdown and assets)                    |
-| `lexico-components` | Shared React/shadcn component library in packages/                            |
 | `lexico`            | TanStack Start SSR Latin dictionary web app with Supabase backend             |
+| `lexico-components` | Shared React/shadcn component library in packages/                            |
 | `linting`           | ESLint configs, rules, plugins, and lint-related tooling                      |
 | `monorepo`          | Workspace root concerns (pnpm-workspace, root package.json, Nx orchestration) |
 | `packages`          | Changes spanning multiple shared packages                                     |
@@ -106,29 +106,27 @@ Write clear, comprehensive descriptions that help reviewers understand changes. 
 
 ### Recommended Structure
 
+<!-- pr-template-start -->
+
 ```markdown
 ## 🌰 Summary
 
-Brief description of what this PR does (1-2 sentences).
+<!-- Brief description of what this PR does (1-2 sentences) -->
 
 ## 📝 Details
 
-- List of specific changes made
-- Each change on its own line
-- Use present tense ("Add", "Update", "Remove")
+- <!-- List of specific changes made -->
 
 ## 🧪 Testing
 
-1. How to test these changes
-1. `nx run <project>:test`
-1. Manual testing steps if applicable
+1. <!-- How to manually verify these changes work correctly -->
 
 ## 🔗 Related
 
-- Closes #123
-- Fixes #456
-- https://docs.example.com/relevant-page
+- <!-- Link any relevant documentation or related resources like internal documentation, GitHub issues/pull requests -->
 ```
+
+<!-- pr-template-end -->
 
 ### Description Guidelines
 

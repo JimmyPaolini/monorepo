@@ -31,6 +31,30 @@ Analyze the current branch's changes and create a pull request that:
 - **Subject**: Imperative mood, lowercase after gitmoji, no period
 - **Gitmoji**: Must match the type (✨ feat, 🐛 fix, 📝 docs, etc.)
 
+### PR Description Template
+
+<!-- pr-template-start -->
+
+```markdown
+## 🌰 Summary
+
+<!-- Brief description of what this PR does (1-2 sentences) -->
+
+## 📝 Details
+
+- <!-- List of specific changes made -->
+
+## 🧪 Testing
+
+1. <!-- How to manually verify these changes work correctly -->
+
+## 🔗 Related
+
+- <!-- Link any relevant documentation or related resources like internal documentation, GitHub issues/pull requests -->
+```
+
+<!-- pr-template-end -->
+
 ## Workflow
 
 1. **Read the PR conventions** from [../skills/create-pull-request/SKILL.md](../skills/create-pull-request/SKILL.md) for complete requirements

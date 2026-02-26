@@ -32,27 +32,27 @@ Analyze the current branch's diff against the base branch and update the existin
 
 ### Description Template
 
+<!-- pr-template-start -->
+
 ```markdown
 ## 🌰 Summary
 
-<!-- 1-2 sentence overview synthesized from the diff -->
+<!-- Brief description of what this PR does (1-2 sentences) -->
 
 ## 📝 Details
 
-<!-- Bulleted list of every meaningful change, present tense ("Add", "Update", "Remove") -->
-
--
+- <!-- List of specific changes made -->
 
 ## 🧪 Testing
 
-<!-- Nx commands and manual verification steps -->
-
-1.
+1. <!-- How to manually verify these changes work correctly -->
 
 ## 🔗 Related
 
-<!-- Linking keywords: Closes #, Fixes #, Related to #; also include relevant documentation links -->
+- <!-- Link any relevant documentation or related resources like internal documentation, GitHub issues/pull requests -->
 ```
+
+<!-- pr-template-end -->
 
 ## Workflow
 

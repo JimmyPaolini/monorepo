@@ -22,19 +22,19 @@
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "production": [
-      "default",
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
       "!{projectRoot}/.eslintrc.json",
       "!{projectRoot}/jest.config.[jt]s",
+      "!{projectRoot}/src/test-setup.[jt]s",
       "!{projectRoot}/tsconfig.spec.json",
       "!{projectRoot}/vitest.config.base.ts",
-      "!{projectRoot}/src/test-setup.[jt]s"
+      "default"
     ],
     "sharedGlobals": [
+      "{workspaceRoot}/.github/workflows/*.yml",
       "{workspaceRoot}/nx.json",
-      "{workspaceRoot}/tsconfig.base.json",
       "{workspaceRoot}/pnpm-lock.yaml",
-      "{workspaceRoot}/.github/workflows/*.yml"
+      "{workspaceRoot}/tsconfig.base.json"
     ]
   },
   "parallel": 3,
@@ -79,7 +79,7 @@
       },
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
-      "inputs": ["default", "{workspaceRoot}/biome.jsonc"],
+      "inputs": ["{workspaceRoot}/biome.jsonc", "default"],
       "options": {
         "command": "biome check {args} {projectRoot}/src",
         "cwd": "{workspaceRoot}"
@@ -88,7 +88,7 @@
     "build": {
       "cache": true,
       "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "inputs": ["^production", "production"]
     },
     "code-analysis": {
       "cache": true,
@@ -110,11 +110,11 @@
       "cache": true,
       "executor": "nx:run-commands",
       "inputs": [
-        "default",
         "^default",
         "{projectRoot}/**/*.ts",
         "{projectRoot}/**/*.tsx",
-        "{workspaceRoot}/.dependency-cruiser.cjs"
+        "{workspaceRoot}/.dependency-cruiser.cjs",
+        "default"
       ],
       "options": {
         "command": "depcruise {projectRoot}/src --config .dependency-cruiser.cjs",
@@ -131,9 +131,9 @@
       },
       "defaultConfiguration": "check",
       "inputs": [
-        "default",
+        "{projectRoot}/**/*.md",
         "{workspaceRoot}/eslint.config.base.ts",
-        "{projectRoot}/**/*.md"
+        "default"
       ]
     },
     "format": {
@@ -141,20 +141,20 @@
       "configurations": {
         "check": {
           "commands": [
-            "nx run {projectName}:prettier:check",
-            "nx run {projectName}:biome:check"
+            "nx run {projectName}:biome:check",
+            "nx run {projectName}:prettier:check"
           ],
           "parallel": true
         },
         "write": {
           "commands": [
-            "nx run {projectName}:prettier:write",
-            "nx run {projectName}:biome:write"
+            "nx run {projectName}:biome:write",
+            "nx run {projectName}:prettier:write"
           ],
           "parallel": false
         }
       },
-      "defaultConfiguration": "write",
+      "defaultConfiguration": "check",
       "executor": "nx:run-commands"
     },
     "knip": {
@@ -169,7 +169,7 @@
       },
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
-      "inputs": ["default", "{workspaceRoot}/knip.config.ts"],
+      "inputs": ["{workspaceRoot}/knip.config.ts", "default"],
       "options": {
         "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace {projectRoot}",
         "cwd": "{workspaceRoot}"
@@ -209,9 +209,9 @@
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
       "inputs": [
-        "default",
         "{projectRoot}/**/*.md",
-        "{workspaceRoot}/.markdownlint-cli2.jsonc"
+        "{workspaceRoot}/.markdownlint-cli2.jsonc",
+        "default"
       ],
       "options": {
         "command": "markdownlint-cli2 '{projectRoot}/**/*.md'",
@@ -228,7 +228,7 @@
       },
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
-      "inputs": ["default", "{workspaceRoot}/.oxlintrc.jsonc"],
+      "inputs": ["{workspaceRoot}/.oxlintrc.jsonc", "default"],
       "options": {
         "command": "oxlint {args} --config=.oxlintrc.jsonc {projectRoot}/src",
         "cwd": "{workspaceRoot}"
@@ -247,9 +247,9 @@
       "defaultConfiguration": "write",
       "executor": "nx:run-commands",
       "inputs": [
-        "default",
+        "{workspaceRoot}/.prettierignore",
         "{workspaceRoot}/prettier.config.ts",
-        "{workspaceRoot}/.prettierignore"
+        "default"
       ],
       "options": {
         "command": "prettier {args} {projectRoot}"
@@ -259,9 +259,9 @@
       "cache": true,
       "executor": "nx:run-commands",
       "inputs": [
-        "default",
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,css,scss,html,yaml,yml,md,mdx}",
-        "{workspaceRoot}/cspell.config.yaml"
+        "{workspaceRoot}/cspell.config.yaml",
+        "default"
       ],
       "options": {
         "command": "cspell '{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,css,scss,html,yaml,yml,md,mdx}' --no-progress",
@@ -291,16 +291,16 @@
     },
     "test": {
       "cache": true,
-      "inputs": ["default", "^production"]
+      "inputs": ["^production", "default"]
     },
     "type-coverage": {
       "cache": true,
       "executor": "nx:run-commands",
       "inputs": [
-        "default",
         "{projectRoot}/**/*.ts",
         "{projectRoot}/**/*.tsx",
-        "{projectRoot}/tsconfig.json"
+        "{projectRoot}/tsconfig.json",
+        "default"
       ],
       "options": {
         "command": "type-coverage --detail > type-coverage-report.txt 2>&1 || (cat type-coverage-report.txt && exit 1)",
@@ -311,8 +311,8 @@
       "cache": true,
       "executor": "nx:run-commands",
       "inputs": [
-        "default",
         "^production",
+        "default",
         {
           "externalDependencies": ["typescript"]
         }
@@ -326,9 +326,9 @@
       "cache": true,
       "executor": "nx:run-commands",
       "inputs": [
-        "default",
         "{projectRoot}/**/*.{yaml,yml}",
-        "{workspaceRoot}/.yamllint"
+        "{workspaceRoot}/.yamllint",
+        "default"
       ],
       "options": {
         "command": "yamllint '{projectRoot}'",

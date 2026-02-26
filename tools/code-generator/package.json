@@ -1,6 +1,4 @@
 {
-  "name": "code-generator",
-  "version": "0.0.1",
   "dependencies": {
     "@nx/devkit": "^22.5.2",
     "lodash": "^4.17.23",
@@ -14,15 +12,13 @@
     "typescript": "^5.9.3"
   },
   "generators": "./generators.json",
-  "scripts": {
-    "build": "nx build",
-    "lint": "nx lint",
-    "test": "nx test"
-  },
+  "name": "code-generator",
+  "scripts": {},
   "type": "module",
   "typeCoverage": {
     "atLeast": 100,
-    "strict": true,
-    "ignoreCatch": true
-  }
+    "ignoreCatch": true,
+    "strict": true
+  },
+  "version": "0.0.1"
 }

@@ -1,33 +1,33 @@
 {
+  "inputs": [
+    {
+      "description": "Supabase access token for MCP server",
+      "id": "SUPABASE_ACCESS_TOKEN",
+      "password": true,
+      "type": "promptString"
+    }
+  ],
   "servers": {
     "context7": {
       "type": "http",
       "url": "https://mcp.context7.com/mcp"
     },
+    "shadcn": {
+      "args": [ "mcp","shadcn@latest"],
+      "command": "npx"
+    },
     "supabase": {
-      "command": "npx",
       "args": [
-        "-y",
         "@supabase/mcp-server-supabase@latest",
         "--project-ref",
-        "dydlnpcsdqgjlkrkneoh",
-        "--read-only"
+        "--read-only",
+        "-y",
+        "dydlnpcsdqgjlkrkneoh"
       ],
+      "command": "npx",
       "env": {
         "SUPABASE_ACCESS_TOKEN": "${input:SUPABASE_ACCESS_TOKEN}"
       }
-    },
-    "shadcn": {
-      "command": "npx",
-      "args": ["shadcn@latest", "mcp"]
     }
-  },
-  "inputs": [
-    {
-      "id": "SUPABASE_ACCESS_TOKEN",
-      "type": "promptString",
-      "description": "Supabase access token for MCP server",
-      "password": true
-    }
-  ]
+  }
 }

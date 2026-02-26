@@ -49,14 +49,19 @@ jobs:
             exit 1
           fi
           MISSING=""
-          echo "$PULL_REQUEST_BODY" | grep -q "^## 🌰 Summary" || MISSING="$MISSING 🌰 Summary"
-          echo "$PULL_REQUEST_BODY" | grep -q "^## 📝 Details" || MISSING="$MISSING 📝 Details"
-          echo "$PULL_REQUEST_BODY" | grep -q "^## 🧪 Testing" || MISSING="$MISSING 🧪 Testing"
-          echo "$PULL_REQUEST_BODY" | grep -q "^## 🔗 Related" || MISSING="$MISSING 🔗 Related"
+          echo "$PULL_REQUEST_BODY" | grep -q "^## 🌰 Summary" || \
+            MISSING="$MISSING 🌰 Summary"
+          echo "$PULL_REQUEST_BODY" | grep -q "^## 📝 Details" || \
+            MISSING="$MISSING 📝 Details"
+          echo "$PULL_REQUEST_BODY" | grep -q "^## 🧪 Testing" || \
+            MISSING="$MISSING 🧪 Testing"
+          echo "$PULL_REQUEST_BODY" | grep -q "^## 🔗 Related" || \
+            MISSING="$MISSING 🔗 Related"
           if [ -n "$MISSING" ]; then
             echo "❌ Missing required sections:$MISSING"
             echo ""
-            echo "PR description must include: ## 🌰 Summary, ## 📝 Details, ## 🧪 Testing, ## 🔗 Related"
+            echo "PR description must include: ## 🌰 Summary, " \
+              "## 📝 Details, ## 🧪 Testing, ## 🔗 Related"
             echo "See: .github/PULL_REQUEST_TEMPLATE.md"
             exit 1
           fi
@@ -64,3 +69,6 @@ jobs:
 
       - name: 🏛️ Conventional Config Validation
         run: npx nx run monorepo:sync-conventional-config:check
+
+      - name: 📋 Pull Request Template Validation
+        run: npx nx run monorepo:sync-pull-request-template:check

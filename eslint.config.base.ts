@@ -545,7 +545,19 @@ export default [
       // Keep Nx dependency checks enabled
       "@nx/dependency-checks": "error",
       // JSONC style rules
-      "jsonc/sort-keys": "off", // Don't enforce key sorting by default
+      "jsonc/sort-keys": [
+        "error",
+        "asc",
+        { caseSensitive: false, natural: true, minKeys: 2 },
+      ],
+      "jsonc/sort-array-values": [
+        "error",
+        {
+          pathPattern: ".*",
+          order: { type: "asc", caseSensitive: false, natural: true },
+          minValues: 2,
+        },
+      ],
       "jsonc/quotes": ["error", "double"],
       "jsonc/comma-dangle": ["error", "never"],
       "jsonc/indent": ["error", 2],

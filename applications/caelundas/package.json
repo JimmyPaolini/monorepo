@@ -1,6 +1,4 @@
 {
-  "name": "caelundas",
-  "version": "0.0.1",
   "dependencies": {
     "@photostructure/tz-lookup": "^11.4.0",
     "lodash": "^4.17.23",
@@ -19,6 +17,7 @@
     "typescript": "^5.9.3",
     "vitest": "^2.1.9"
   },
+  "name": "caelundas",
   "scripts": {
     "develop": "set -a && source .env && set +a && tsx src/main.ts",
     "start": "tsx src/main.ts",
@@ -32,12 +31,13 @@
   "type": "module",
   "typeCoverage": {
     "atLeast": 99.46,
-    "strict": true,
     "ignoreCatch": true,
     "ignoreFiles": [
-      "**/*.test.ts",
       "**/*.spec.ts",
+      "**/*.test.ts",
       "**/testing/**"
-    ]
-  }
+    ],
+    "strict": true
+  },
+  "version": "0.0.1"
 }
