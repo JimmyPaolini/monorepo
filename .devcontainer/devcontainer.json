@@ -234,6 +234,12 @@
   "image": "mcr.microsoft.com/devcontainers/typescript-node:22-bookworm",
   "mounts": [
     {
+      "source": "${localEnv:HOME}/.gnupg/S.gpg-agent",
+      "target": "/root/.gnupg/S.gpg-agent",
+      "type": "bind",
+      "consistency": "cached"
+    },
+    {
       "source": "monorepo-node-modules",
       "target": "${containerWorkspaceFolder}/node_modules",
       "type": "volume"
@@ -272,7 +278,7 @@
     }
   },
   "postAttachCommand": ".devcontainer/scripts/post-attach-command.sh",
-  "postCreateCommand": ".devcontainer/scripts/post-create-command.sh",
+  "postCreateCommand": "gpgconf --kill all 2>/dev/null; .devcontainer/scripts/post-create-command.sh",
   "remoteEnv": {
     "KUBECONFIG": "${containerWorkspaceFolder}/.kube/config",
     "NODE_OPTIONS": "--max-old-space-size=4096",
