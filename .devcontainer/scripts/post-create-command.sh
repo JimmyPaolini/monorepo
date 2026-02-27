@@ -2,6 +2,9 @@
 
 set -euo pipefail
 
+# Clean up any stale GPG agent processes
+gpgconf --kill all 2>/dev/null || true
+
 echo "🔎 Checking for .env file..."
 if [ ! -f ".env" ]; then
   if [ -f ".env.default" ]; then
