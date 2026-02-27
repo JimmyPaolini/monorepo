@@ -16,7 +16,9 @@ const automatedPrefixes = ["renovate", "dependabot"];
 const typePattern = types.map((type) => type.name).join("|");
 const scopePattern = scopes.map((scope) => scope.name).join("|");
 const specialPattern = specialBranches.join("|");
-const automatedPattern = automatedPrefixes.map((p) => String.raw`${p}\/.*`).join("|");
+const automatedPattern = automatedPrefixes
+  .map((p) => String.raw`${p}\/.*`)
+  .join("|");
 
 module.exports = {
   pattern: String.raw`^((${typePattern})\/(${scopePattern})-[a-z0-9-]+|${specialPattern}|${automatedPattern})$`,
