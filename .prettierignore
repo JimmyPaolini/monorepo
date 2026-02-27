@@ -48,6 +48,7 @@ yarn.lock
 *.min.js
 *.min.css
 **/routeTree.gen.ts
+CHANGELOG.md
 
 # Compiled files
 **/*.d.ts

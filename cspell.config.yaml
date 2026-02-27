@@ -16,10 +16,12 @@ ignorePaths:
   - "*.ttf"
   - "*.woff"
   - "*.woff2"
+  - CHANGELOG.md
   - "**/.terraform/**"
   - "**/*.gen.ts"
   - "**/*.min.css"
   - "**/*.min.js"
+  - "**/CHANGELOG.md"
   - "**/coverage"
   - "**/dist"
   - "**/node_modules"

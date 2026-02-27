@@ -37,6 +37,7 @@ export default [
       "**/*.min.js",
       "**/vite.config.*.timestamp*",
       "**/vitest.config.*.timestamp*",
+      "CHANGELOG.md",
       "lint-staged.config.ts",
       // Shadcn generated components
       "packages/lexico-components/src/components",
