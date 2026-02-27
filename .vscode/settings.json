@@ -6,16 +6,10 @@
     "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
   },
   "[json]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
-    "editor.quickSuggestions": {
-      "strings": true
-    }
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
-    "editor.quickSuggestions": {
-      "strings": true
-    }
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
   },
   "[jsonl]": {
     "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
@@ -193,7 +187,7 @@
     "source.convertImportStar": "explicit",
     "source.fixAll": "explicit",
     "source.fixAll.eslint": "explicit",
-    "source.fixAll.prettier": "never",
+    "source.fixAll.prettier": "explicit",
     "source.fixAll.pylance": "never",
     "source.fixAll.ruff": "explicit",
     "source.fixAll.ts": "explicit",
