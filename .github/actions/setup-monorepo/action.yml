@@ -17,8 +17,12 @@ runs:
         node-version: 22.20.0
         cache: pnpm
 
-    - name: 🎯 Set NX SHAs
+    - name: 🎯 Set Nx SHAs
       uses: nrwl/nx-set-shas@v4
+
+    - name: 🗃️ Configure Nx Cache
+      run: echo "NX_REJECT_UNKNOWN_LOCAL_CACHE=0" >> $GITHUB_ENV
+      shell: bash
 
     - name: 🔧 Setup Homebrew
       uses: Homebrew/actions/setup-homebrew@master
@@ -27,7 +31,7 @@ runs:
       run: brew install yamllint
       shell: bash
 
-    - name: ♻️ Restore/Save Nx cache
+    - name: ♻️ Sync Nx Cache
       uses: actions/cache@v4
       with:
         path: .nx/cache

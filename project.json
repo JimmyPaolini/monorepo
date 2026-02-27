@@ -239,7 +239,7 @@
           "command": "pnpm dlx sherif@1.10.0"
         },
         "write": {
-          "command": "pnpm dlx sherif@1.10.0 --fix"
+          "command": "pnpm dlx sherif@1.10.0 --fix && nx run monorepo:format:write"
         }
       },
       "defaultConfiguration": "check",
@@ -276,7 +276,7 @@
           "command": "tsx scripts/sync-agent-skills.ts check"
         },
         "write": {
-          "command": "tsx scripts/sync-agent-skills.ts write"
+          "command": "tsx scripts/sync-agent-skills.ts write && nx run monorepo:format:write"
         }
       },
       "defaultConfiguration": "check",
@@ -297,7 +297,7 @@
           "command": "tsx scripts/sync-conventional-config.ts check"
         },
         "write": {
-          "command": "tsx scripts/sync-conventional-config.ts write"
+          "command": "tsx scripts/sync-conventional-config.ts write && nx run monorepo:format:write"
         }
       },
       "defaultConfiguration": "check",
@@ -319,7 +319,7 @@
           "command": "tsx scripts/sync-pull-request-template.ts check"
         },
         "write": {
-          "command": "tsx scripts/sync-pull-request-template.ts write"
+          "command": "tsx scripts/sync-pull-request-template.ts write && nx run monorepo:format:write"
         }
       },
       "defaultConfiguration": "check",
@@ -342,7 +342,7 @@
           "command": "tsx scripts/sync-vscode-extensions.ts check"
         },
         "write": {
-          "command": "tsx scripts/sync-vscode-extensions.ts write"
+          "command": "tsx scripts/sync-vscode-extensions.ts write && nx run monorepo:format:write"
         }
       },
       "defaultConfiguration": "check",
@@ -363,7 +363,7 @@
           "command": "pnpm exec syncpack lint"
         },
         "write": {
-          "command": "pnpm exec syncpack fix-mismatches && pnpm exec syncpack format"
+          "command": "pnpm exec syncpack fix-mismatches && pnpm exec syncpack format && nx run monorepo:format:write"
         }
       },
       "defaultConfiguration": "check",

@@ -1,44 +1,180 @@
 /**
  * Shared conventional commit configuration
  *
- * This file is the single source of truth for types and scopes used across:
+ * This file is the single source of truth for types, scopes, and emoji mappings used across:
  * - commitlint.config.ts (commit message validation)
  * - validate-branch-name.config.js (branch name validation)
+ * - release.config.cjs (release rules and changelog sections)
+ * - .vscode/settings.json (scope autocomplete)
+ * - documentation/skills/commit-code/SKILL.md (reference tables)
  *
- * When adding/removing types or scopes, update this file only.
+ * When adding/removing types, scopes, or emojis, update this file only.
+ * Run `nx run monorepo:sync-conventional-config:write` to propagate changes.
  */
 
+/**
+ * Canonical gitmoji — one emoji per commit type.
+ * Each entry is the source of truth for the type key, its description, and its canonical emoji.
+ * See documentation/gitmoji.md for the full list of available emojis.
+ */
 const types = [
-  "build", // Build system, Vite/Docker/Helm config, or external dependency integration
-  "chore", // Housekeeping that doesn't modify src or test files (gitignore, editor config, etc.)
-  "ci", // GitHub Actions workflows, composite actions, and CI/CD scripts
-  "docs", // Documentation, AGENTS.md, SKILL.md, README, and planning files
-  "feat", // A new feature or capability
-  "fix", // A bug fix
-  "perf", // A code change that improves performance (caching, query optimization, etc.)
-  "refactor", // Code restructuring that neither fixes a bug nor adds a feature
-  "revert", // Reverts a previous commit
-  "style", // Formatting, whitespace, or code structure changes with no semantic effect
-  "test", // Adding or correcting unit, integration, or end-to-end tests
+  {
+    emoji: "✨",
+    code: ":sparkles:",
+    name: "feat",
+    description: "A new feature or capability that adds value for users",
+  },
+  {
+    emoji: "🐛",
+    code: ":bug:",
+    name: "fix",
+    description: "A bug fix that addresses a specific issue or problem",
+  },
+  {
+    emoji: "📝",
+    code: ":memo:",
+    name: "docs",
+    description:
+      "Documentation, AGENTS.md, SKILL.md, README, and planning files",
+  },
+  {
+    emoji: "🧪",
+    code: ":test_tube:",
+    name: "test",
+    description: "Adding or correcting unit, integration, or end-to-end tests",
+  },
+  {
+    emoji: "♻️",
+    code: ":recycle:",
+    name: "refactor",
+    description:
+      "Code restructuring that neither fixes a bug nor adds a feature",
+  },
+  {
+    emoji: "🎨",
+    code: ":art:",
+    name: "style",
+    description:
+      "Formatting, whitespace, or code structure changes with no semantic effect",
+  },
+  {
+    emoji: "⚡️",
+    code: ":zap:",
+    name: "perf",
+    description:
+      "A code change that improves performance (caching, query optimization, etc.)",
+  },
+  {
+    emoji: "🔧",
+    code: ":wrench:",
+    name: "chore",
+    description:
+      "Housekeeping that doesn't modify src or test files (gitignore, editor config, etc.)",
+  },
+  {
+    emoji: "👷",
+    code: ":construction_worker:",
+    name: "ci",
+    description:
+      "GitHub Actions workflows, composite actions, and CI/CD scripts",
+  },
+  {
+    emoji: "📦",
+    code: ":package:",
+    name: "build",
+    description:
+      "Build system, Vite/Docker/Helm config, or external dependency integration",
+  },
+  {
+    emoji: "⏪",
+    code: ":rewind:",
+    name: "revert",
+    description: "Reverts a previous commit",
+  },
 ];
 
 const scopes = [
-  "applications", // Changes spanning multiple apps (caelundas, lexico, JimmyPaolini)
-  "caelundas", // Node.js CLI for astronomical calendar generation (NASA JPL ephemeris)
-  "configuration", // Workspace root config files (tsconfig, eslint, vitest, nx.json, etc.)
-  "dependencies", // Dependency version changes (upgrades, additions, removals via pnpm)
-  "deployments", // GitHub Actions workflows and CI/CD pipeline configuration
-  "documentation", // Markdown docs, skills, planning files, and AGENTS.md files
-  "infrastructure", // Helm charts, Terraform configs, and Kubernetes resources
-  "JimmyPaolini", // Static GitHub profile README project (markdown and assets)
-  "lexico", // TanStack Start SSR Latin dictionary web app with Supabase backend
-  "lexico-components", // Shared React/shadcn component library in packages/
-  "linting", // ESLint configs, rules, plugins, and lint-related tooling
-  "monorepo", // Workspace root concerns (pnpm-workspace, root package.json, Nx orchestration)
-  "packages", // Changes spanning multiple shared packages
-  "scripts", // Shell and TypeScript scripts in scripts/ (sync, setup, utilities)
-  "testing", // Vitest configuration, shared test utilities, and coverage setup
-  "tools", // Nx custom generators and developer tooling in tools/
+  {
+    name: "applications",
+    description:
+      "Changes spanning multiple apps (caelundas, lexico, JimmyPaolini)",
+  },
+  {
+    name: "caelundas",
+    description:
+      "Node.js CLI for astronomical calendar generation (NASA JPL ephemeris)",
+  },
+  {
+    name: "configuration",
+    description:
+      "Workspace root config files (tsconfig, eslint, vitest, nx.json, etc.)",
+  },
+  {
+    name: "dependencies",
+    description:
+      "Dependency version changes (upgrades, additions, removals via pnpm)",
+  },
+  {
+    name: "deployments",
+    description: "GitHub Actions workflows and CI/CD pipeline configuration",
+  },
+  {
+    name: "documentation",
+    description: "Markdown docs, skills, planning files, and AGENTS.md files",
+  },
+  {
+    name: "infrastructure",
+    description: "Helm charts, Terraform configs, and Kubernetes resources",
+  },
+  {
+    name: "JimmyPaolini",
+    description: "Static GitHub profile README project (markdown and assets)",
+  },
+  {
+    name: "lexico",
+    description:
+      "TanStack Start SSR Latin dictionary web app with Supabase backend",
+  },
+  {
+    name: "lexico-components",
+    description: "Shared React/shadcn component library in packages/",
+  },
+  {
+    name: "linting",
+    description: "ESLint configs, rules, plugins, and lint-related tooling",
+  },
+  {
+    name: "monorepo",
+    description:
+      "Workspace root concerns (pnpm-workspace, root package.json, Nx orchestration)",
+  },
+  {
+    name: "no-release",
+    description: "Escape hatch: suppress semantic-release for any commit type",
+  },
+  {
+    name: "packages",
+    description: "Changes spanning multiple shared packages",
+  },
+  {
+    name: "release",
+    description:
+      "Version bumps and release commits generated by semantic-release",
+  },
+  {
+    name: "scripts",
+    description:
+      "Shell and TypeScript scripts in scripts/ (sync, setup, utilities)",
+  },
+  {
+    name: "testing",
+    description:
+      "Vitest configuration, shared test utilities, and coverage setup",
+  },
+  {
+    name: "tools",
+    description: "Nx custom generators and developer tooling in tools/",
+  },
 ];
 
 module.exports = { types, scopes };
