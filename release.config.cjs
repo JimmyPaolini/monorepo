@@ -148,6 +148,7 @@ module.exports = {
       {
         assets: ["CHANGELOG.md", "package.json", "pnpm-lock.yaml"],
         message: "chore(release): 🔖 release ${nextRelease.version}",
+        signingKey: process.env.GPG_PRIVATE_KEY,
       },
     ],
 
