@@ -349,7 +349,7 @@
           "command": "pnpm exec syncpack lint"
         },
         "write": {
-          "command": "pnpm exec syncpack fix-mismatches"
+          "command": "pnpm exec syncpack fix-mismatches && pnpm exec syncpack format"
         }
       },
       "defaultConfiguration": "check",

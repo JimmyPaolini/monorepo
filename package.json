@@ -1,6 +1,8 @@
 {
-  "author": "Jimmy Paolini",
+  "name": "monorepo",
   "description": "",
+  "version": "1.0.0",
+  "author": "Jimmy Paolini",
   "devDependencies": {
     "@biomejs/biome": "^2.4.4",
     "@commitlint/cli": "^20.4.2",
@@ -76,7 +78,6 @@
   },
   "keywords": [],
   "license": "MIT",
-  "name": "monorepo",
   "packageManager": "pnpm@10.30.3",
   "pnpm": {
     "onlyBuiltDependencies": [
@@ -126,6 +127,5 @@
       "root-package-private-field"
     ]
   },
-  "type": "module",
-  "version": "1.0.0"
+  "type": "module"
 }

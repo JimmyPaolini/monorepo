@@ -1,4 +1,6 @@
 {
+  "name": "lexico",
+  "version": "0.0.1",
   "dependencies": {
     "@monorepo/lexico-components": "workspace:*",
     "@supabase/ssr": "^0.8.0",
@@ -30,7 +32,6 @@
     "vite": "^7.3.1",
     "vite-tsconfig-paths": "^5.1.4"
   },
-  "name": "lexico",
   "private": true,
   "scripts": {
     "build": "vite build",
@@ -51,6 +52,5 @@
       "**/routeTree.gen.ts"
     ],
     "strict": true
-  },
-  "version": "0.0.1"
+  }
 }
