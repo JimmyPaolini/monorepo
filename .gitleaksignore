@@ -2,5 +2,10 @@
 # Add Gitleaks fingerprints for known false positives (one per line)
 # Generate fingerprints using: pnpm dlx @gitleaks/gitleaks dir . --verbose
 # Each fingerprint uniquely identifies a specific finding in a specific file at a specific commit
+
+# False positives in keybindings.json (VSCode keyboard shortcut bindings, not API keys)
+# These are valid keyboard binding patterns that trigger generic-api-key rule
 d4645a64239bdcfd165c945c140b225363212d75:.vscode/keybindings.json:generic-api-key:242
 5ffd9380d46335282bca3c135c2271848acda00a:.vscode/keybindings.json:generic-api-key:242
+d1d3799a9387064d5de251887a46b4c97d0937dd:.vscode/keybindings.json:generic-api-key:242
+329e746e983bd854771475bff5d9df48f35f377c:.vscode/keybindings.json:generic-api-key:241

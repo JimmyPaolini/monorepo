@@ -7,23 +7,15 @@
 [![Repo Size](https://img.shields.io/github/repo-size/JimmyPaolini/monorepo)](https://github.com/JimmyPaolini/monorepo)
 [![Last Commit](https://img.shields.io/github/last-commit/JimmyPaolini/monorepo)](https://github.com/JimmyPaolini/monorepo/commits)
 
-[![Build Code](https://github.com/JimmyPaolini/monorepo/actions/workflows/build-code.yml/badge.svg)](https://github.com/JimmyPaolini/monorepo/actions/workflows/build-code.yml)
-[![Build Devcontainer](https://github.com/JimmyPaolini/monorepo/actions/workflows/build-devcontainer.yml/badge.svg)](https://github.com/JimmyPaolini/monorepo/actions/workflows/build-devcontainer.yml)
-[![Dependency Analysis](https://github.com/JimmyPaolini/monorepo/actions/workflows/dependency-analysis.yml/badge.svg)](https://github.com/JimmyPaolini/monorepo/actions/workflows/dependency-analysis.yml)
-[![Convention Check](https://github.com/JimmyPaolini/monorepo/actions/workflows/convention-check.yml/badge.svg)](https://github.com/JimmyPaolini/monorepo/actions/workflows/convention-check.yml)
-[![Release Projects](https://github.com/JimmyPaolini/monorepo/actions/workflows/release-projects.yml/badge.svg)](https://github.com/JimmyPaolini/monorepo/actions/workflows/release-projects.yml)
+[![Code Analysis](https://github.com/JimmyPaolini/monorepo/actions/workflows/code-analysis.yml/badge.svg)](https://github.com/JimmyPaolini/monorepo/actions/workflows/code-analysis.yml)
+[![Test Coverage](https://github.com/JimmyPaolini/monorepo/actions/workflows/test-coverage.yml/badge.svg)](https://github.com/JimmyPaolini/monorepo/actions/workflows/test-coverage.yml)
+[![Security Audit](https://github.com/JimmyPaolini/monorepo/actions/workflows/security-audit.yml/badge.svg)](https://github.com/JimmyPaolini/monorepo/actions/workflows/security-audit.yml)
+[![Convention Validation](https://github.com/JimmyPaolini/monorepo/actions/workflows/convention-validation.yml/badge.svg)](https://github.com/JimmyPaolini/monorepo/actions/workflows/convention-validation.yml)
+[![Build Projects](https://github.com/JimmyPaolini/monorepo/actions/workflows/build-projects.yml/badge.svg)](https://github.com/JimmyPaolini/monorepo/actions/workflows/build-projects.yml)
+[![Make Devcontainer](https://github.com/JimmyPaolini/monorepo/actions/workflows/make-devcontainer.yml/badge.svg)](https://github.com/JimmyPaolini/monorepo/actions/workflows/make-devcontainer.yml)
+[![Release Version](https://github.com/JimmyPaolini/monorepo/actions/workflows/release-version.yml/badge.svg)](https://github.com/JimmyPaolini/monorepo/actions/workflows/release-version.yml)
 
-[![Type Check](https://img.shields.io/github/actions/workflow/status/JimmyPaolini/monorepo/code-analysis.yml?job=%F0%9F%A7%91%E2%80%8D%F0%9F%92%BB%20%F0%9F%8F%B7%EF%B8%8F%20Type%20Check&label=Type%20Check&logo=typescript)](https://github.com/JimmyPaolini/monorepo/actions/workflows/code-analysis.yml)
-[![Lint](https://img.shields.io/github/actions/workflow/status/JimmyPaolini/monorepo/code-analysis.yml?job=%F0%9F%A7%91%E2%80%8D%F0%9F%92%BB%20%F0%9F%A7%B9%20Lint%20Check&label=Lint%20Check&logo=eslint)](https://github.com/JimmyPaolini/monorepo/actions/workflows/code-analysis.yml)
-[![Format](https://img.shields.io/github/actions/workflow/status/JimmyPaolini/monorepo/code-analysis.yml?job=%F0%9F%A7%91%E2%80%8D%F0%9F%92%BB%20%F0%9F%8E%A8%20Format%20Check&label=Format%20Check&logo=prettier)](https://github.com/JimmyPaolini/monorepo/actions/workflows/code-analysis.yml)
-[![Markdown](https://img.shields.io/github/actions/workflow/status/JimmyPaolini/monorepo/code-analysis.yml?job=%F0%9F%A7%91%E2%80%8D%F0%9F%92%BB%20%F0%9F%96%BC%EF%B8%8F%20Markdown%20Lint&label=Markdown%20Lint&logo=markdown)](https://github.com/JimmyPaolini/monorepo/actions/workflows/code-analysis.yml)
-[![Knip](https://img.shields.io/github/actions/workflow/status/JimmyPaolini/monorepo/code-analysis.yml?job=%F0%9F%A7%91%E2%80%8D%F0%9F%92%BB%20%E2%9C%82%EF%B8%8F%20Knip%20Check&label=Knip%20Check&logo=knip)](https://github.com/JimmyPaolini/monorepo/actions/workflows/code-analysis.yml)
-[![Spell Check](https://img.shields.io/github/actions/workflow/status/JimmyPaolini/monorepo/code-analysis.yml?job=%F0%9F%A7%91%E2%80%8D%F0%9F%92%BB%20%F0%9F%A7%99%E2%80%8D%E2%99%82%EF%B8%8F%20Spell%20Check&label=Spell%20Check&logo=cspell)](https://github.com/JimmyPaolini/monorepo/actions/workflows/code-analysis.yml)
-
-[![Tests](https://github.com/JimmyPaolini/monorepo/actions/workflows/test-coverage.yml/badge.svg)](https://github.com/JimmyPaolini/monorepo/actions/workflows/test-coverage.yml)
-[![codecov](https://codecov.io/gh/JimmyPaolini/monorepo/branch/main/graph/badge.svg)](https://codecov.io/gh/JimmyPaolini/monorepo)
-
-Modern TypeScript monorepo with Nx, featuring automated releases, comprehensive code quality tools, and strict type safety.
+A modern TypeScript monorepo with Nx, featuring automated releases, comprehensive code quality tools, and strict type safety.
 
 ## 🚀 Quick Start
 

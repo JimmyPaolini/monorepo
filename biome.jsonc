@@ -67,6 +67,8 @@
       "!**/node_modules/**",
       // Binary/lock files
       "!**/pnpm-lock.yaml",
+      // Auto-generated changelog from semantic-release
+      "!CHANGELOG.md",
       // TanStack Router auto-generated route tree (uses single quotes, no semicolons)
       "!**/routeTree.gen.ts",
       "!**/tmp/**",

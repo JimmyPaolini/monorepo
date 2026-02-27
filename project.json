@@ -107,6 +107,20 @@
       }
     },
     "format": {},
+    "gitleaks": {
+      "cache": true,
+      "description": "Detect hardcoded secrets in git history using Gitleaks (detection only)",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{workspaceRoot}/.gitleaks.toml",
+        "{workspaceRoot}/.gitleaksignore",
+        "default"
+      ],
+      "options": {
+        "command": "pnpm gitleaks",
+        "cwd": "{projectRoot}"
+      }
+    },
     "knip": {
       "cache": true,
       "configurations": {

@@ -13,16 +13,16 @@ useDefault = true
 # Allowlists: Ignore known safe patterns and file types
 [[allowlists]]
 description = "Ignore lockfiles"
-paths = ["pnpm-lock.yaml", "package-lock.json", "yarn.lock"]
+paths = ["pnpm-lock\\.yaml$", "package-lock\\.json$", "yarn\\.lock$"]
 
 [[allowlists]]
 description = "Ignore Terraform state files"
-paths = ["**/*.tfstate", "**/*.tfstate.backup"]
+paths = [".*\\.tfstate$", ".*\\.tfstate\\.backup$"]
 
 [[allowlists]]
 description = "Ignore test fixtures and snapshots"
-paths = ["**/testing/**", "**/*.snap", "**/__snapshots__/**"]
+paths = [".*/testing/.*", ".*\\.snap$", ".*/__snapshots__/.*"]
 
 [[allowlists]]
 description = "Ignore Gitleaks configuration itself"
-paths = [".gitleaksignore"]
+paths = ["\\.gitleaksignore$"]
