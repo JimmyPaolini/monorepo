@@ -155,17 +155,17 @@ function restructureAdjectiveForms(forms: AdjectiveForm[]): FormCellProps[] {
     const caseData = byCase[caseName] || {};
 
     // Singular cell (left column)
-    cells.push({
-      topLeftText: CASE_ABBREVIATIONS[caseName] || caseName,
-      topRightText: "SG",
-      centerText: caseData.singular || "-",
-    });
-
-    // Plural cell (right column)
-    cells.push({
-      topRightText: "PL",
-      centerText: caseData.plural || "-",
-    });
+    cells.push(
+      {
+        topLeftText: CASE_ABBREVIATIONS[caseName] || caseName,
+        topRightText: "SG",
+        centerText: caseData.singular || "-",
+      },
+      {
+        topRightText: "PL",
+        centerText: caseData.plural || "-",
+      },
+    );
   }
 
   return cells;

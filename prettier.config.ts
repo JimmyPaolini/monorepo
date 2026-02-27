@@ -71,6 +71,32 @@ const config: Config = {
 
   // Enforce single attribute per line in HTML, Vue and JSX
   singleAttributePerLine: true,
+
+  // File-specific overrides
+  overrides: [
+    {
+      // Config files that support JSONC (trailing commas and comments)
+      files: [
+        "**/*.jsonc",
+        "**/nx.json",
+        "**/project.json",
+        "**/tsconfig*.json",
+        "**/.vscode/*.json",
+        ".devcontainer/**/*.json",
+      ],
+      options: {
+        parser: "jsonc",
+        trailingComma: "all",
+      },
+    },
+    {
+      // Standard JSON files (package.json, etc) - no trailing commas
+      files: ["**/package.json", "**/biome.jsonc", "**/*.json"],
+      options: {
+        trailingComma: "none",
+      },
+    },
+  ],
 };
 
 export default config;

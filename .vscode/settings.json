@@ -6,10 +6,16 @@
     "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
   },
   "[json]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+    "editor.quickSuggestions": {
+      "strings": true
+    }
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+    "editor.quickSuggestions": {
+      "strings": true
+    }
   },
   "[jsonl]": {
     "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
@@ -63,9 +69,9 @@
   "chat.sendElementsToChat.enabled": true,
   "chat.tools.global.autoApprove": true,
   "chat.tools.terminal.autoApprove": {
-    "/.*\\.sql/": true,
     "/(npm|npx) (add|eslint|install|lint-staged|madge|markdownlint|prettier|test|tsc)/": true,
     "/(pnpm )?(yarn )?(npx )?(exec )?(run )?nx/": true,
+    "/.*\\.sql/": true,
     "/^Remove-Item\\b/i": false,
     "/bq (ls|show|query)/": true,
     "/docker (ps|images|logs|inspect|stats|exec|pull|info)/": true,
@@ -135,8 +141,8 @@
     "documentation", // Markdown docs, skills, planning files, and AGENTS.md files
     "infrastructure", // Helm charts, Terraform configs, and Kubernetes resources
     "JimmyPaolini", // Static GitHub profile README project (markdown and assets)
-    "lexico-components", // Shared React/shadcn component library in packages/
     "lexico", // TanStack Start SSR Latin dictionary web app with Supabase backend
+    "lexico-components", // Shared React/shadcn component library in packages/
     "linting", // ESLint configs, rules, plugins, and lint-related tooling
     "monorepo", // Workspace root concerns (pnpm-workspace, root package.json, Nx orchestration)
     "packages", // Changes spanning multiple shared packages
@@ -167,8 +173,8 @@
   "database-client.showTrigger": true,
   "database-client.splitEditorWhenQuery": false,
   "database-client.variableIndicator": [
-    ":",
     "$",
+    ":",
     "@"
   ],
   "dataWrangler.debug": true,
@@ -193,7 +199,7 @@
     "source.organizeImports.ruff": "explicit",
     "source.removeUnused.ts": "never",
     "source.removeUnusedImports": "explicit",
-    "source.sort.json": "explicit",
+    "source.sort.json": "never",
     "source.unusedImports": "explicit"
   },
   "editor.detectIndentation": false,
@@ -242,18 +248,18 @@
   "eslint.codeActionsOnSave.mode": "problems",
   "eslint.enable": true,
   "eslint.format.enable": false,
-  "eslint.run": "onSave",
+  "eslint.run": "onType",
   "eslint.useFlatConfig": true,
   "eslint.validate": [
+    "github-actions-workflow",
     "javascript",
     "javascriptreact",
-    "typescript",
-    "typescriptreact",
     "json",
     "jsonc",
-    "yaml",
     "markdown",
-    "github-actions-workflow"
+    "typescript",
+    "typescriptreact",
+    "yaml"
   ],
   "evenBetterToml.formatter.arrayAutoExpand": true,
   "evenBetterToml.formatter.inlineTableExpand": true,
@@ -286,6 +292,13 @@
   },
   "extensions.ignoreRecommendations": true,
   "extensions.webWorker": false,
+  "files.associations": {
+    "**/*.jsonc": "jsonc",
+    "**/.vscode/*.json": "jsonc",
+    "**/nx.json": "jsonc",
+    "**/project.json": "jsonc",
+    "**/tsconfig*.json": "jsonc"
+  },
   "files.autoSave": "afterDelay",
   "files.eol": "\n",
   "files.exclude": {
@@ -296,10 +309,10 @@
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
   "files.watcherExclude": {
-    "**/__pycache__/**": true,
     "**/.git/objects/**": true,
     "**/.git/subtree-cache/**": true,
     "**/.venv/**": true,
+    "**/__pycache__/**": true,
     "**/build/**": true,
     "**/dist/**": true,
     "**/env/**": true,
@@ -332,7 +345,6 @@
   "git.showProgress": true,
   "git.terminalGitEditor": true,
   "git.verboseCommit": true,
-  "github-actions.use-enterprise": false,
   "github.copilot.chat.agent.currentEditorContext.enabled": true,
   "github.copilot.chat.agent.omitFileAttachmentContents": true,
   "github.copilot.chat.agentCustomizationSkill.enabled": true,
@@ -345,7 +357,7 @@
   "github.copilot.chat.codesearch.enabled": true,
   "github.copilot.chat.commitMessageGeneration.instructions": [
     {
-      "file": "../documentation/skills/commit-code/SKILL.md"
+      "file": "documentation/skills/commit-code/SKILL.md"
     }
   ],
   "github.copilot.chat.completionsFetcher": "node-fetch",
@@ -362,14 +374,14 @@
   "github.copilot.chat.languageContext.typescript.enabled": true,
   "github.copilot.chat.languageContext.typescript.includeDocumentation": true,
   "github.copilot.chat.mcpServers.disabled": [
-    "Nx Mcp Server",
     "Container Tools",
     "Database Client",
+    "GitHub",
     "GitHub Pull Requests",
     "Jupyter",
+    "Nx Mcp Server",
     "Postman",
-    "Python",
-    "GitHub"
+    "Python"
   ],
   "github.copilot.chat.nesFetcher": "node-fetch",
   "github.copilot.chat.newWorkspace.useContext7": true,
@@ -377,7 +389,7 @@
   "github.copilot.chat.planAgent.model": "Claude Opus 4.5 (copilot)",
   "github.copilot.chat.pullRequestDescriptionGeneration.instructions": [
     {
-      "file": "../documentation/skills/create-pull-request/SKILL.md"
+      "file": "documentation/skills/create-pull-request/SKILL.md"
     }
   ],
   "github.copilot.chat.responsesApiReasoningEffort": "default",
@@ -395,6 +407,7 @@
   "github.copilot.nextEditSuggestions.enabled": true,
   "github.copilot.nextEditSuggestions.fixes": true,
   "github.copilot.selectedCompletionModel": "Claude Haiku 4.5 (copilot)",
+  "github-actions.use-enterprise": false,
   "githubPullRequests.allowFetch": true,
   "githubPullRequests.assignCreated": "${user}",
   "githubPullRequests.codingAgent.autoCommitAndPush": true,
@@ -482,11 +495,19 @@
   "javascript.preferences.importModuleSpecifier": "relative",
   "javascript.suggest.autoImports": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
+  "json.schemaDownload.enable": true,
+  "json.schemaDownload.trustedDomains": {
+    "https://biomejs.dev": true,
+    "https://json.schemastore.org/": true,
+    "https://json-schema.org/": true,
+    "https://raw.githubusercontent.com/": true,
+    "https://schemastore.azurewebsites.net/": true,
+    "https://www.schemastore.org/": true
+  },
+  "json.validate.enable": true,
+  "jsonc.format.enable": true,
+  "jsonc.validate.enable": false,
   "material-icon-theme.files.associations": {
-    ".code-workspace*": "vscode",
-    ".ncurc.cjs": "npm",
-    ".size-limit.cjs": "disc",
-    ".yamllint": "yaml",
     "*.args.js": "excalidraw",
     "*.args.ts": "excalidraw",
     "*.command.ts": "exe",
@@ -521,6 +542,10 @@
     "*.utilities.ts": "gemini",
     "*.utils.ts": "gemini",
     "*enum.ts": "lib",
+    ".code-workspace*": "vscode",
+    ".ncurc.cjs": "npm",
+    ".size-limit.cjs": "disc",
+    ".yamllint": "yaml",
     "auth.guard.js": "authors",
     "database-client-config.json": "database",
     "eslint.config.base.ts": "eslint",
@@ -620,14 +645,14 @@
   "scm.workingSets.default": "current",
   "scm.workingSets.enabled": true,
   "search.exclude": {
+    "**build**": true,
+    "**dist**": true,
+    "**public**": true,
+    "*.code-search": true,
     ".github/copilot-instructions.md": true,
     ".next": true,
     ".tox": true,
     ".venv": true,
-    "*.code-search": true,
-    "**build**": true,
-    "**dist**": true,
-    "**public**": true,
     "bower_components": true,
     "dist": true,
     "legacy": true,
@@ -688,7 +713,8 @@
   "workbench.editor.wrapTabs": false,
   "workbench.editorAssociations": {
     "*.csv": "jupyter-data-wrangler",
-    "*.html": "default"
+    "*.html": "default",
+    "file:/**/*.csv": "jupyter-data-wrangler"
   },
   "workbench.experimental.share.enabled": true,
   "workbench.externalBrowser": "safari",

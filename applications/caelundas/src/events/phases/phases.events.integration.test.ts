@@ -73,7 +73,7 @@ describe("phases.events integration", () => {
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
         longitude: 315, // Sun ahead of Venus
-        distance: 1.0,
+        distance: 1,
         illumination: 100,
       });
 
@@ -108,7 +108,7 @@ describe("phases.events integration", () => {
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
         longitude: 0, // Sun behind Venus
-        distance: 1.0,
+        distance: 1,
         illumination: 100,
       });
 
@@ -140,7 +140,7 @@ describe("phases.events integration", () => {
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
         longitude: 120,
-        distance: 1.0,
+        distance: 1,
         illumination: 100,
       });
 
@@ -187,7 +187,7 @@ describe("phases.events integration", () => {
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
         longitude: 330,
-        distance: 1.0,
+        distance: 1,
         illumination: 100,
       });
 
@@ -219,7 +219,7 @@ describe("phases.events integration", () => {
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
         longitude: 10,
-        distance: 1.0,
+        distance: 1,
         illumination: 100,
       });
 
@@ -251,7 +251,7 @@ describe("phases.events integration", () => {
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
         longitude: 170,
-        distance: 1.0,
+        distance: 1,
         illumination: 100,
       });
 
@@ -296,7 +296,7 @@ describe("phases.events integration", () => {
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
         longitude: 240,
-        distance: 1.0,
+        distance: 1,
         illumination: 100,
       });
 
@@ -322,13 +322,13 @@ describe("phases.events integration", () => {
       // Mars in evening sky
       const marsEphemeris = createMockEphemeris(currentMinute, {
         longitude: 90,
-        distance: 2.0,
+        distance: 2,
         illumination: 88,
       });
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
         longitude: 60,
-        distance: 1.0,
+        distance: 1,
         illumination: 100,
       });
 
@@ -358,7 +358,7 @@ describe("phases.events integration", () => {
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
         longitude: 290,
-        distance: 1.0,
+        distance: 1,
         illumination: 100,
       });
 
@@ -411,7 +411,7 @@ describe("phases.events integration", () => {
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
         longitude: 110,
-        distance: 1.0,
+        distance: 1,
         illumination: 100,
       });
 
@@ -524,7 +524,7 @@ describe("phases.events integration", () => {
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
         longitude: 0,
-        distance: 1.0,
+        distance: 1,
         illumination: 100,
       });
 
@@ -573,7 +573,7 @@ describe("phases.events integration", () => {
       // Configuration unlikely to trigger any phases
       const neutralEphemeris = createMockEphemeris(currentMinute, {
         longitude: 180,
-        distance: 1.0,
+        distance: 1,
         illumination: 50,
       });
 
@@ -627,7 +627,7 @@ describe("phases.events integration", () => {
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
         longitude: 1,
-        distance: 1.0,
+        distance: 1,
         illumination: 100,
       });
 
@@ -668,7 +668,7 @@ describe("phases.events integration", () => {
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
         longitude: 120,
-        distance: 1.0,
+        distance: 1,
         illumination: 100,
       });
 
@@ -695,7 +695,7 @@ describe("phases.events integration", () => {
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
         longitude: 0,
-        distance: 1.0,
+        distance: 1,
         illumination: 100,
       });
 

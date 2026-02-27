@@ -8,12 +8,15 @@
  * Moon never do.
  */
 
-import fs from "fs";
+import fs from "node:fs";
 
 import _ from "lodash";
 
-import { type Event, getCalendar } from "../../calendar.utilities";
-import { MARGIN_MINUTES } from "../../calendar.utilities";
+import {
+  type Event,
+  getCalendar,
+  MARGIN_MINUTES,
+} from "../../calendar.utilities";
 import { pairDurationEvents } from "../../duration.utilities";
 import { getCoordinateFromEphemeris } from "../../ephemeris/ephemeris.service";
 import { getOutputPath } from "../../output.utilities";
@@ -81,9 +84,9 @@ export function getRetrogradeEvents(args: {
       "longitude",
     );
 
-    const previousLongitudes = new Array(MARGIN_MINUTES)
-      .fill(null)
-      .map((_, index) => {
+    const previousLongitudes = Array.from(
+      { length: MARGIN_MINUTES },
+      (_, index) => {
         const date = currentMinute
           .clone()
           .subtract(MARGIN_MINUTES - index, "minute");
@@ -92,18 +95,20 @@ export function getRetrogradeEvents(args: {
           date.toISOString(),
           "longitude",
         );
-      });
+      },
+    );
 
-    const nextLongitudes = new Array(MARGIN_MINUTES)
-      .fill(null)
-      .map((_, index) => {
+    const nextLongitudes = Array.from(
+      { length: MARGIN_MINUTES },
+      (_, index) => {
         const date = currentMinute.clone().add(index + 1, "minute");
         return getCoordinateFromEphemeris(
           ephemeris,
           date.toISOString(),
           "longitude",
         );
-      });
+      },
+    );
 
     const timestamp = currentMinute.toDate();
     const longitudes = {
@@ -196,9 +201,10 @@ export function getRetrogradeEvent(args: {
   const retrogradeEvent: Event = {
     start: timestamp,
     end: timestamp,
-    categories: categories.concat(
-      direction === "retrograde" ? ["Retrograde"] : ["Direct"],
-    ),
+    categories: [
+      ...categories,
+      ...(direction === "retrograde" ? ["Retrograde"] : ["Direct"]),
+    ],
     summary,
     description,
   };

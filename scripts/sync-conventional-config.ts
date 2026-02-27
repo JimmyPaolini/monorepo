@@ -17,26 +17,32 @@
 
 import { readFileSync, writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
-import { dirname, join, relative } from "node:path";
+import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import JSON5 from "json5";
 import _ from "lodash";
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const WORKSPACE_ROOT = join(__dirname, "..");
-const CONVENTIONAL_CONFIG = join(WORKSPACE_ROOT, "conventional.config.cjs");
-const SETTINGS_FILE = join(WORKSPACE_ROOT, ".vscode/settings.json");
+const __dirname = path.dirname(__filename);
+const WORKSPACE_ROOT = path.join(__dirname, "..");
+const CONVENTIONAL_CONFIG = path.join(
+  WORKSPACE_ROOT,
+  "conventional.config.cjs",
+);
+const SETTINGS_FILE = path.join(WORKSPACE_ROOT, ".vscode/settings.json");
 const SKILL_FILES = [
-  join(WORKSPACE_ROOT, "documentation/skills/commit-code/SKILL.md"),
-  join(WORKSPACE_ROOT, "documentation/skills/checkout-branch/SKILL.md"),
-  join(WORKSPACE_ROOT, "documentation/skills/create-pull-request/SKILL.md"),
-  join(WORKSPACE_ROOT, ".github/prompts/submit-changes.prompt.md"),
+  path.join(WORKSPACE_ROOT, "documentation/skills/commit-code/SKILL.md"),
+  path.join(WORKSPACE_ROOT, "documentation/skills/checkout-branch/SKILL.md"),
+  path.join(
+    WORKSPACE_ROOT,
+    "documentation/skills/create-pull-request/SKILL.md",
+  ),
+  path.join(WORKSPACE_ROOT, ".github/prompts/submit-changes.prompt.md"),
 ];
 const ISSUE_TEMPLATE_FILES = [
-  join(WORKSPACE_ROOT, ".github/ISSUE_TEMPLATE/bug-report.yml"),
-  join(WORKSPACE_ROOT, ".github/ISSUE_TEMPLATE/feature-request.yml"),
+  path.join(WORKSPACE_ROOT, ".github/ISSUE_TEMPLATE/bug-report.yml"),
+  path.join(WORKSPACE_ROOT, ".github/ISSUE_TEMPLATE/feature-request.yml"),
 ];
 const MODE = process.argv[2] || "check";
 
@@ -68,8 +74,8 @@ function loadConventionalConfig(): ConventionalConfig {
 function parseEntriesWithDescriptions(
   arrayName: "types" | "scopes",
 ): EntryWithDescription[] {
-  const content = readFileSync(CONVENTIONAL_CONFIG, "utf-8");
-  const pattern = new RegExp(`const ${arrayName} = \\[([\\s\\S]*?)\\];`);
+  const content = readFileSync(CONVENTIONAL_CONFIG, "utf8");
+  const pattern = new RegExp(String.raw`const ${arrayName} = \[([\s\S]*?)\];`);
   const match = pattern.exec(content);
   if (!match?.[1]) {
     throw new Error(
@@ -99,7 +105,7 @@ function parseSettingsScopes(content: string): string[] {
   const settings = JSON5.parse<Record<string, unknown>>(content);
   const scopes = settings["conventionalCommits.scopes"];
   if (!Array.isArray(scopes)) {
-    throw new Error(
+    throw new TypeError(
       'Could not find "conventionalCommits.scopes" array in settings.json',
     );
   }
@@ -111,7 +117,7 @@ function parseSettingsScopes(content: string): string[] {
  * Returns the inner content between the brackets.
  */
 function extractScopesBlock(): string {
-  const content = readFileSync(CONVENTIONAL_CONFIG, "utf-8");
+  const content = readFileSync(CONVENTIONAL_CONFIG, "utf8");
   const match = /const scopes = \[([\s\S]*?)\];/.exec(content);
   if (!match?.[1]) {
     throw new Error("Could not find scopes array in conventional.config.cjs");
@@ -136,7 +142,7 @@ function formatScopesBlockForSettings(scopesBlock: string): string {
     .filter((line) => line !== "");
 
   // Remove trailing comma from the last value line (not a comment-only line)
-  const reversed = [...lines].reverse();
+  const reversed = _.reverse([...lines]);
   for (const [i, line] of reversed.entries()) {
     if (line.trimStart().startsWith("//")) continue;
     reversed[i] = line.replace(/,(\s*\/\/.*)$/, "$1");
@@ -205,7 +211,7 @@ function extractMarkerContent(
   markerName: string,
 ): string | undefined {
   const pattern = new RegExp(
-    `<!-- ${markerName}-start -->\\n([\\s\\S]*?)<!-- ${markerName}-end -->`,
+    String.raw`<!-- ${markerName}-start -->\n([\s\S]*?)<!-- ${markerName}-end -->`,
   );
   const match = pattern.exec(content);
   return match?.[1];
@@ -220,7 +226,7 @@ function replaceMarkerContent(
   newContent: string,
 ): string {
   const pattern = new RegExp(
-    `(<!-- ${markerName}-start -->\\n)[\\s\\S]*?(<!-- ${markerName}-end -->)`,
+    String.raw`(<!-- ${markerName}-start -->\n)[\s\S]*?(<!-- ${markerName}-end -->)`,
   );
   return content.replace(pattern, `$1\n${newContent}\n\n$2`);
 }
@@ -263,8 +269,8 @@ function checkSettingsSync(
   sourceScopes: string[],
   settingsScopes: string[],
 ): boolean {
-  const sortedSource = [...sourceScopes].sort();
-  const sortedTarget = [...settingsScopes].sort();
+  const sortedSource = _.sortBy([...sourceScopes]);
+  const sortedTarget = _.sortBy([...settingsScopes]);
   const valuesMatch = _.isEqual(sortedSource, sortedTarget);
   const orderMatches = _.isEqual(sourceScopes, settingsScopes);
 
@@ -287,8 +293,8 @@ function checkSkillSync(
   config: ConventionalConfig,
   skillFile: string,
 ): boolean {
-  const skillName = relative(WORKSPACE_ROOT, skillFile);
-  const skillContent = readFileSync(skillFile, "utf-8");
+  const skillName = path.relative(WORKSPACE_ROOT, skillFile);
+  const skillContent = readFileSync(skillFile, "utf8");
   let inSync = true;
 
   for (const marker of ["types", "scopes"] as const) {
@@ -303,8 +309,8 @@ function checkSkillSync(
 
     const skillValues = parseMarkdownTableValues(markerContent);
     const sourceValues = config[marker];
-    const sortedSource = [...sourceValues].sort();
-    const sortedSkill = [...skillValues].sort();
+    const sortedSource = _.sortBy([...sourceValues]);
+    const sortedSkill = _.sortBy([...skillValues]);
 
     if (!_.isEqual(sortedSource, sortedSkill)) {
       console.log(`❌ ${skillName} ${marker} table is out of sync\n`);
@@ -327,8 +333,8 @@ function checkIssueTemplateSync(
   sourceScopes: string[],
   templateFile: string,
 ): boolean {
-  const templateName = relative(WORKSPACE_ROOT, templateFile);
-  const templateContent = readFileSync(templateFile, "utf-8");
+  const templateName = path.relative(WORKSPACE_ROOT, templateFile);
+  const templateContent = readFileSync(templateFile, "utf8");
   const templateScopes = parseIssueTemplateScopes(templateContent);
 
   if (templateScopes.length === 0) {
@@ -338,8 +344,8 @@ function checkIssueTemplateSync(
     return false;
   }
 
-  const sortedSource = [...sourceScopes].sort();
-  const sortedTemplate = [...templateScopes].sort();
+  const sortedSource = _.sortBy([...sourceScopes]);
+  const sortedTemplate = _.sortBy([...templateScopes]);
 
   if (!_.isEqual(sortedSource, sortedTemplate)) {
     console.log(`❌ ${templateName} scopes dropdown is out of sync\n`);
@@ -359,7 +365,7 @@ function checkIssueTemplateSync(
 
 function writeSettingsSync(): void {
   console.log("🔄 Syncing settings.json scopes...");
-  const settingsContent = readFileSync(SETTINGS_FILE, "utf-8");
+  const settingsContent = readFileSync(SETTINGS_FILE, "utf8");
   const scopesBlock = extractScopesBlock();
   const formattedBlock = formatScopesBlockForSettings(scopesBlock);
 
@@ -377,14 +383,14 @@ function writeSettingsSync(): void {
     `$1\n${formattedBlock}\n  ]`,
   );
 
-  writeFileSync(SETTINGS_FILE, updatedContent, "utf-8");
+  writeFileSync(SETTINGS_FILE, updatedContent, "utf8");
   console.log("✅ settings.json scopes synced");
 }
 
 function writeSkillSync(skillFile: string): void {
-  const skillName = relative(WORKSPACE_ROOT, skillFile);
+  const skillName = path.relative(WORKSPACE_ROOT, skillFile);
   console.log(`🔄 Syncing ${skillName} types and scopes...`);
-  let skillContent = readFileSync(skillFile, "utf-8");
+  let skillContent = readFileSync(skillFile, "utf8");
 
   const typesEntries = parseEntriesWithDescriptions("types");
   const scopesEntries = parseEntriesWithDescriptions("scopes");
@@ -401,7 +407,7 @@ function writeSkillSync(skillFile: string): void {
   skillContent = replaceMarkerContent(skillContent, "types", typesTable);
   skillContent = replaceMarkerContent(skillContent, "scopes", scopesTable);
 
-  writeFileSync(skillFile, skillContent, "utf-8");
+  writeFileSync(skillFile, skillContent, "utf8");
   console.log(`✅ ${skillName} types and scopes synced`);
 }
 
@@ -409,9 +415,9 @@ function writeIssueTemplateSync(
   sourceScopes: string[],
   templateFile: string,
 ): void {
-  const templateName = relative(WORKSPACE_ROOT, templateFile);
+  const templateName = path.relative(WORKSPACE_ROOT, templateFile);
   console.log(`🔄 Syncing ${templateName} scopes dropdown...`);
-  const templateContent = readFileSync(templateFile, "utf-8");
+  const templateContent = readFileSync(templateFile, "utf8");
   const scopeOptions = generateYamlScopeOptions(sourceScopes);
 
   const pattern =
@@ -426,13 +432,13 @@ function writeIssueTemplateSync(
     `$1${scopeOptions}\n$2`,
   );
 
-  writeFileSync(templateFile, updatedContent, "utf-8");
+  writeFileSync(templateFile, updatedContent, "utf8");
   console.log(`✅ ${templateName} scopes synced`);
 }
 
 function main(): void {
   const config = loadConventionalConfig();
-  const settingsContent = readFileSync(SETTINGS_FILE, "utf-8");
+  const settingsContent = readFileSync(SETTINGS_FILE, "utf8");
   const settingsScopes = parseSettingsScopes(settingsContent);
 
   if (MODE === "check") {

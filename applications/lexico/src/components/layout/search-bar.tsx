@@ -39,7 +39,7 @@ const SearchBar = React.forwardRef<HTMLDivElement, SearchBarProps>(
       controlledValue || "",
     );
     const value =
-      controlledValue !== undefined ? controlledValue : internalValue;
+      controlledValue === undefined ? internalValue : controlledValue;
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
       const newValue = e.target.value;

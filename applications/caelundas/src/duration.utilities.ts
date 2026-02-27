@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 import type { Event } from "./calendar.utilities";
 
 /**
@@ -75,12 +77,8 @@ export function pairDurationEvents<E extends Event>(
   endingEvents: E[],
   eventName: string,
 ): [E, E][] {
-  const beginnings = [...beginningEvents].sort(
-    (a, b) => a.start.getTime() - b.start.getTime(),
-  );
-  const endings = [...endingEvents].sort(
-    (a, b) => a.start.getTime() - b.start.getTime(),
-  );
+  const beginnings = _.sortBy(beginningEvents, (e) => e.start.getTime());
+  const endings = _.sortBy(endingEvents, (e) => e.start.getTime());
   const pairs: [E, E][] = [];
 
   // Pair each beginning with the next valid ending

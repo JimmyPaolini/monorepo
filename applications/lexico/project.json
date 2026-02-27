@@ -1,104 +1,109 @@
 {
-  "name": "lexico",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "applications/lexico/src",
-  "projectType": "application",
-  "tags": ["type:app", "framework:react", "stack:tanstack-start"],
   "implicitDependencies": ["lexico-components"],
+  "name": "lexico",
+  "projectType": "application",
+  "sourceRoot": "applications/lexico/src",
+  "tags": [ "framework:react", "stack:tanstack-start","type:app"],
   "targets": {
+    "biome": {},
     "build": {
+      "description": "Build the application for production",
       "executor": "nx:run-commands",
       "options": {
         "command": "pnpm build",
         "cwd": "applications/lexico"
-      },
-      "description": "Build the application for production"
+      }
     },
     "bundlesize": {
-      "executor": "nx:run-commands",
+      "cache": true,
       "dependsOn": ["build"],
+      "description": "Check bundle size limits",
+      "executor": "nx:run-commands",
+      "inputs": [ "{workspaceRoot}/dist/applications/lexico/**/*","default"],
       "options": {
         "command": "npx size-limit",
         "cwd": "applications/lexico"
-      },
-      "cache": true,
-      "inputs": ["default", "{workspaceRoot}/dist/applications/lexico/**/*"],
-      "description": "Check bundle size limits"
+      }
     },
     "code-analysis": {
       "options": {
         "commands": [
-          "nx run lexico:typecheck",
-          "nx run lexico:lint:{args.configuration}",
+          "nx run lexico:dependency-analysis",
           "nx run lexico:format:{args.configuration}",
           "nx run lexico:knip:{args.configuration}",
-          "nx run lexico:type-coverage",
-          "nx run lexico:dependency-analysis",
+          "nx run lexico:lint:{args.configuration}",
           "nx run lexico:markdown-lint:{args.configuration}",
-          "nx run lexico:spell-check"
+          "nx run lexico:spell-check",
+          "nx run lexico:type-coverage",
+          "nx run lexico:typecheck",
+          "nx run lexico:yaml-lint"
         ]
       }
     },
     "dependency-analysis": {},
     "develop": {
+      "description": "Start development server with hot reload",
       "executor": "nx:run-commands",
       "options": {
         "command": "pnpm develop",
         "cwd": "applications/lexico"
-      },
-      "description": "Start development server with hot reload"
+      }
     },
     "format": {},
     "knip": {},
+    "lint": {},
     "markdown-lint": {},
+    "oxlint": {},
+    "prettier": {},
     "spell-check": {},
     "start": {
+      "description": "Start the production server",
       "executor": "nx:run-commands",
       "options": {
         "command": "pnpm start",
         "cwd": "applications/lexico"
-      },
-      "description": "Start the production server"
+      }
     },
     "supabase:database-diff": {
+      "description": "Generate migration from local database changes",
       "executor": "nx:run-commands",
       "options": {
         "command": "supabase db diff --use-migra-py",
         "cwd": "applications/lexico"
-      },
-      "description": "Generate migration from local database changes"
+      }
     },
     "supabase:database-reset": {
+      "description": "Reset local database and apply all migrations",
       "executor": "nx:run-commands",
       "options": {
         "command": "supabase db reset",
         "cwd": "applications/lexico"
-      },
-      "description": "Reset local database and apply all migrations"
+      }
     },
     "supabase:generate-types": {
+      "description": "Generate TypeScript types from local Supabase schema",
       "executor": "nx:run-commands",
       "options": {
         "command": "supabase gen types typescript --local > src/lib/database.types.ts",
         "cwd": "applications/lexico"
-      },
-      "description": "Generate TypeScript types from local Supabase schema"
+      }
     },
     "supabase:start": {
+      "description": "Start local Supabase development environment",
       "executor": "nx:run-commands",
       "options": {
         "command": "supabase start",
         "cwd": "applications/lexico"
-      },
-      "description": "Start local Supabase development environment"
+      }
     },
     "supabase:stop": {
+      "description": "Stop local Supabase development environment",
       "executor": "nx:run-commands",
       "options": {
         "command": "supabase stop",
         "cwd": "applications/lexico"
-      },
-      "description": "Stop local Supabase development environment"
+      }
     },
     "type-coverage": {},
     "typecheck": {},

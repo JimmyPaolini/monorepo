@@ -52,7 +52,7 @@ describe("annualSolarCycle.events", () => {
       const minute = currentMinute
         .clone()
         .subtract(MARGIN_MINUTES - i, "minutes");
-      const longitude = longitudes[i] ?? longitudes[longitudes.length - 1] ?? 0;
+      const longitude = longitudes[i] ?? longitudes.at(-1) ?? 0;
       ephemeris[minute.toISOString()] = {
         longitude,
         latitude: 0,
@@ -74,7 +74,7 @@ describe("annualSolarCycle.events", () => {
       const minute = currentMinute
         .clone()
         .subtract(MARGIN_MINUTES - i, "minutes");
-      const distance = distances[i] ?? distances[distances.length - 1] ?? 0;
+      const distance = distances[i] ?? distances.at(-1) ?? 0;
       ephemeris[minute.toISOString()] = {
         distance,
       };
@@ -280,9 +280,9 @@ describe("annualSolarCycle.events", () => {
       const currentMinute = moment.utc("2024-03-15T12:00:00.000Z");
 
       // No event: sun at some random longitude
-      const longitudes: number[] = new Array<number>(
-        MARGIN_MINUTES * 2 + 1,
-      ).fill(10);
+      const longitudes = Array.from<number>({
+        length: MARGIN_MINUTES * 2 + 1,
+      }).fill(10);
 
       const sunCoordinateEphemeris = createCoordinateEphemeris(
         currentMinute,
@@ -305,11 +305,11 @@ describe("annualSolarCycle.events", () => {
       // Distance increasing then decreasing (maximum at current)
       const distances: number[] = [];
       for (let i = 0; i < MARGIN_MINUTES; i++) {
-        distances.push(1.016 + i * 0.000001);
+        distances.push(1.016 + i * 0.000_001);
       }
       distances.push(1.0167); // Current (maximum)
       for (let i = 0; i < MARGIN_MINUTES; i++) {
-        distances.push(1.0167 - (i + 1) * 0.000001);
+        distances.push(1.0167 - (i + 1) * 0.000_001);
       }
 
       const sunDistanceEphemeris = createDistanceEphemeris(
@@ -338,11 +338,11 @@ describe("annualSolarCycle.events", () => {
       // Distance decreasing then increasing (minimum at current)
       const distances: number[] = [];
       for (let i = 0; i < MARGIN_MINUTES; i++) {
-        distances.push(0.9833 - i * 0.000001);
+        distances.push(0.9833 - i * 0.000_001);
       }
       distances.push(0.9832); // Current (minimum)
       for (let i = 0; i < MARGIN_MINUTES; i++) {
-        distances.push(0.9832 + (i + 1) * 0.000001);
+        distances.push(0.9832 + (i + 1) * 0.000_001);
       }
 
       const sunDistanceEphemeris = createDistanceEphemeris(
@@ -371,7 +371,7 @@ describe("annualSolarCycle.events", () => {
       // Distance constantly increasing (no extrema)
       const distances: number[] = [];
       for (let i = 0; i < MARGIN_MINUTES * 2 + 1; i++) {
-        distances.push(1.0 + i * 0.000001);
+        distances.push(1 + i * 0.000_001);
       }
 
       const sunDistanceEphemeris = createDistanceEphemeris(
@@ -571,7 +571,7 @@ describe("annualSolarCycle.events", () => {
 
   describe("writeAnnualSolarCycleEvents", () => {
     it("should write events to file and database", async () => {
-      const fs = await import("fs");
+      const fs = await import("node:fs");
       const { writeAnnualSolarCycleEvents, getVernalEquinoxEvent } =
         await import("./annualSolarCycle.events");
 
@@ -597,9 +597,10 @@ describe("annualSolarCycle.events", () => {
     });
 
     it("should not write when events array is empty", async () => {
-      const fs = await import("fs");
-      const { writeAnnualSolarCycleEvents } =
-        await import("./annualSolarCycle.events");
+      const fs = await import("node:fs");
+      const { writeAnnualSolarCycleEvents } = await import(
+        "./annualSolarCycle.events"
+      );
 
       const start = new Date("2024-03-01T00:00:00.000Z");
       const end = new Date("2024-03-31T23:59:59.000Z");

@@ -17,7 +17,7 @@ describe("phases.utilities", () => {
     describe("isBrightest", () => {
       it("should return true when current brightness is maximum", () => {
         const result = isBrightest({
-          currentDistance: 1.0,
+          currentDistance: 1,
           currentIllumination: 0.9,
           previousDistances: [1.1, 1.05],
           previousIlluminations: [0.8, 0.85],
@@ -30,7 +30,7 @@ describe("phases.utilities", () => {
 
       it("should return false when previous was brighter", () => {
         const result = isBrightest({
-          currentDistance: 1.0,
+          currentDistance: 1,
           currentIllumination: 0.5,
           previousDistances: [0.8], // Closer = brighter
           previousIlluminations: [0.9],
@@ -43,7 +43,7 @@ describe("phases.utilities", () => {
 
       it("should return false when next will be brighter", () => {
         const result = isBrightest({
-          currentDistance: 1.0,
+          currentDistance: 1,
           currentIllumination: 0.5,
           previousDistances: [1.2],
           previousIlluminations: [0.4],
@@ -57,11 +57,11 @@ describe("phases.utilities", () => {
       it("should throw when previous arrays have different lengths", () => {
         expect(() =>
           isBrightest({
-            currentDistance: 1.0,
+            currentDistance: 1,
             currentIllumination: 0.5,
-            previousDistances: [1.0, 1.1], // 2 elements
+            previousDistances: [1, 1.1], // 2 elements
             previousIlluminations: [0.5], // 1 element
-            nextDistances: [1.0],
+            nextDistances: [1],
             nextIlluminations: [0.5],
           }),
         ).toThrow("same length");
@@ -70,11 +70,11 @@ describe("phases.utilities", () => {
       it("should throw when next arrays have different lengths", () => {
         expect(() =>
           isBrightest({
-            currentDistance: 1.0,
+            currentDistance: 1,
             currentIllumination: 0.5,
-            previousDistances: [1.0],
+            previousDistances: [1],
             previousIlluminations: [0.5],
-            nextDistances: [1.0, 1.1], // 2 elements
+            nextDistances: [1, 1.1], // 2 elements
             nextIlluminations: [0.5], // 1 element
           }),
         ).toThrow("same length");
@@ -84,7 +84,7 @@ describe("phases.utilities", () => {
     describe("isWesternBrightest", () => {
       it("should return true when planet is western and brightest", () => {
         const result = isWesternBrightest({
-          currentDistance: 1.0,
+          currentDistance: 1,
           currentIllumination: 0.9,
           previousDistances: [1.1],
           previousIlluminations: [0.8],
@@ -99,7 +99,7 @@ describe("phases.utilities", () => {
 
       it("should return false when planet is eastern", () => {
         const result = isWesternBrightest({
-          currentDistance: 1.0,
+          currentDistance: 1,
           currentIllumination: 0.9,
           previousDistances: [1.1],
           previousIlluminations: [0.8],
@@ -116,7 +116,7 @@ describe("phases.utilities", () => {
     describe("isEasternBrightest", () => {
       it("should return true when planet is eastern and brightest", () => {
         const result = isEasternBrightest({
-          currentDistance: 1.0,
+          currentDistance: 1,
           currentIllumination: 0.9,
           previousDistances: [1.1],
           previousIlluminations: [0.8],
@@ -131,7 +131,7 @@ describe("phases.utilities", () => {
 
       it("should return false when planet is western", () => {
         const result = isEasternBrightest({
-          currentDistance: 1.0,
+          currentDistance: 1,
           currentIllumination: 0.9,
           previousDistances: [1.1],
           previousIlluminations: [0.8],

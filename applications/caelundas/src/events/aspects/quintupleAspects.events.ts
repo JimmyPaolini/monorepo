@@ -56,11 +56,13 @@ function findPentagramPattern(
 
   // Add all quintile edges between these bodies
   for (const edge of edges) {
-    if (edge.aspectType === "quintile") {
-      if (bodies.includes(edge.body1) && bodies.includes(edge.body2)) {
-        connections.get(edge.body1)?.add(edge.body2);
-        connections.get(edge.body2)?.add(edge.body1);
-      }
+    if (
+      edge.aspectType === "quintile" &&
+      bodies.includes(edge.body1) &&
+      bodies.includes(edge.body2)
+    ) {
+      connections.get(edge.body1)?.add(edge.body2);
+      connections.get(edge.body2)?.add(edge.body1);
     }
   }
 
@@ -88,7 +90,7 @@ function findPentagramPattern(
     if (!currentConnections) {
       return null;
     }
-    const neighbors = Array.from(currentConnections);
+    const neighbors = [...currentConnections];
     // Pick the neighbor we haven't visited yet
     const next = neighbors.find((n) => !visited.has(n));
 
@@ -168,7 +170,7 @@ function composePentagrams(
     bodiesSet.add(edge.body1);
     bodiesSet.add(edge.body2);
   }
-  const bodies = Array.from(bodiesSet);
+  const bodies = [...bodiesSet];
 
   if (bodies.length < 5) {
     return events;
@@ -259,13 +261,13 @@ function getQuintupleAspectEvent(params: {
   const body5Symbol = symbolByBody[body5];
   const quintupleAspectSymbol = symbolByQuintupleAspect[quintupleAspect];
 
-  const bodiesSorted = [
+  const bodiesSorted = _.sortBy([
     body1Capitalized,
     body2Capitalized,
     body3Capitalized,
     body4Capitalized,
     body5Capitalized,
-  ].sort();
+  ]);
 
   const description = `${bodiesSorted.join(", ")} ${quintupleAspect} ${phase}`;
 
@@ -321,9 +323,7 @@ export function getQuintupleAspectEvents(
   currentMinute: Moment,
 ): Event[] {
   const edges = parseAspectEvents(aspectEvents);
-  const events: Event[] = [];
-
-  events.push(...composePentagrams(edges, currentMinute));
+  const events: Event[] = composePentagrams(edges, currentMinute);
 
   return events;
 }
@@ -351,13 +351,12 @@ export function getQuintupleAspectDurationEvents(events: Event[]): Event[] {
 
   // Group by body quintet and aspect type using categories
   const groupedEvents = _.groupBy(quintupleAspectEvents, (event) => {
-    const planets = event.categories
-      .filter((category) =>
-        quintupleAspectBodies
-          .map((quintupleAspectBody) => _.startCase(quintupleAspectBody))
-          .includes(category),
-      )
-      .sort();
+    const filteredPlanets = event.categories.filter((category) =>
+      quintupleAspectBodies
+        .map((quintupleAspectBody) => _.startCase(quintupleAspectBody))
+        .includes(category),
+    );
+    const planets = _.sortBy(filteredPlanets);
 
     const aspect = event.categories.find((category) =>
       ["Pentagram"].includes(category),

@@ -14,7 +14,7 @@ describe("fetch.utilities", () => {
   describe("fetchWithRetry", () => {
     it("should return response text on successful fetch", async () => {
       const mockResponse = "test response data";
-      global.fetch = vi.fn().mockResolvedValue({
+      globalThis.fetch = vi.fn().mockResolvedValue({
         ok: true,
         text: vi.fn().mockResolvedValue(mockResponse),
       });
@@ -29,7 +29,7 @@ describe("fetch.utilities", () => {
     });
 
     it("should throw on non-OK HTTP response without retrying", async () => {
-      global.fetch = vi.fn().mockResolvedValue({
+      globalThis.fetch = vi.fn().mockResolvedValue({
         ok: false,
         status: 404,
         statusText: "Not Found",
@@ -42,7 +42,7 @@ describe("fetch.utilities", () => {
     });
 
     it("should throw on 500 server error without retrying", async () => {
-      global.fetch = vi.fn().mockResolvedValue({
+      globalThis.fetch = vi.fn().mockResolvedValue({
         ok: false,
         status: 500,
         statusText: "Internal Server Error",
@@ -62,7 +62,7 @@ describe("fetch.utilities", () => {
       };
       retryableError.code = "ECONNRESET";
 
-      global.fetch = vi
+      globalThis.fetch = vi
         .fn()
         .mockRejectedValueOnce(retryableError)
         .mockResolvedValueOnce({
@@ -86,7 +86,7 @@ describe("fetch.utilities", () => {
       };
       retryableError.code = "ETIMEDOUT";
 
-      global.fetch = vi
+      globalThis.fetch = vi
         .fn()
         .mockRejectedValueOnce(retryableError)
         .mockResolvedValueOnce({
@@ -109,7 +109,7 @@ describe("fetch.utilities", () => {
       };
       retryableError.cause = { code: "UND_ERR_SOCKET" };
 
-      global.fetch = vi
+      globalThis.fetch = vi
         .fn()
         .mockRejectedValueOnce(retryableError)
         .mockResolvedValueOnce({
@@ -129,7 +129,7 @@ describe("fetch.utilities", () => {
       const mockResponse = "success after fetch failed retry";
       const retryableError = new TypeError("fetch failed");
 
-      global.fetch = vi
+      globalThis.fetch = vi
         .fn()
         .mockRejectedValueOnce(retryableError)
         .mockResolvedValueOnce({
@@ -148,7 +148,7 @@ describe("fetch.utilities", () => {
     it("should not retry on non-retryable errors", async () => {
       const nonRetryableError = new Error("Some other error");
 
-      global.fetch = vi.fn().mockRejectedValue(nonRetryableError);
+      globalThis.fetch = vi.fn().mockRejectedValue(nonRetryableError);
 
       await expect(fetchWithRetry("https://example.com/api")).rejects.toThrow(
         "Some other error",
@@ -163,7 +163,7 @@ describe("fetch.utilities", () => {
       retryableError.code = "ECONNRESET";
 
       // Mock to always fail with retryable error
-      global.fetch = vi.fn().mockRejectedValue(retryableError);
+      globalThis.fetch = vi.fn().mockRejectedValue(retryableError);
 
       // Create promise and advance timers, then wait for rejection
       const promise = fetchWithRetry("https://example.com/api").catch(() => {
@@ -171,7 +171,7 @@ describe("fetch.utilities", () => {
       });
 
       // Advance timers by a large amount to cover all retry delays (exponential backoff: 1, 2, 4, 8, 16, 32 seconds)
-      await vi.advanceTimersByTimeAsync(100000);
+      await vi.advanceTimersByTimeAsync(100_000);
       await promise;
 
       // Default MAX_RETRIES is 5, so 6 total attempts (initial + 5 retries)
@@ -185,7 +185,7 @@ describe("fetch.utilities", () => {
       };
       retryableError.code = "ENOTFOUND";
 
-      global.fetch = vi
+      globalThis.fetch = vi
         .fn()
         .mockRejectedValueOnce(retryableError)
         .mockResolvedValueOnce({
@@ -208,7 +208,7 @@ describe("fetch.utilities", () => {
       };
       retryableError.code = "UND_ERR_CONNECT_TIMEOUT";
 
-      global.fetch = vi
+      globalThis.fetch = vi
         .fn()
         .mockRejectedValueOnce(retryableError)
         .mockResolvedValueOnce({
@@ -231,7 +231,7 @@ describe("fetch.utilities", () => {
       };
       retryableError.code = "UND_ERR_HEADERS_TIMEOUT";
 
-      global.fetch = vi
+      globalThis.fetch = vi
         .fn()
         .mockRejectedValueOnce(retryableError)
         .mockResolvedValueOnce({
@@ -254,7 +254,7 @@ describe("fetch.utilities", () => {
       };
       retryableError.code = "UND_ERR_BODY_TIMEOUT";
 
-      global.fetch = vi
+      globalThis.fetch = vi
         .fn()
         .mockRejectedValueOnce(retryableError)
         .mockResolvedValueOnce({

@@ -36,9 +36,9 @@ function BookmarksPage(): ReactNode {
     try {
       const data = await getBookmarks();
       setBookmarks(data);
-    } catch (err: unknown) {
+    } catch (error_: unknown) {
       const message =
-        err instanceof Error ? err.message : "Failed to load bookmarks";
+        error_ instanceof Error ? error_.message : "Failed to load bookmarks";
       setError(message);
     } finally {
       setIsLoading(false);
@@ -55,8 +55,8 @@ function BookmarksPage(): ReactNode {
       if (result.success) {
         setBookmarks((prev) => prev.filter((b) => b.id !== entryId));
       }
-    } catch (err) {
-      console.error("Failed to remove bookmark:", err);
+    } catch (error_) {
+      console.error("Failed to remove bookmark:", error_);
     }
   }, []);
 

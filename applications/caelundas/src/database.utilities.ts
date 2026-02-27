@@ -276,23 +276,28 @@ export async function getEphemerisRecords(args: {
   // Build WHERE clause based on ephemeris type
   let additionalConditions = "";
   switch (type) {
-    case "coordinate":
+    case "coordinate": {
       additionalConditions =
         "AND latitude IS NOT NULL AND longitude IS NOT NULL";
       break;
-    case "azimuthElevation":
+    }
+    case "azimuthElevation": {
       additionalConditions =
         "AND azimuth IS NOT NULL AND elevation IS NOT NULL";
       break;
-    case "illumination":
+    }
+    case "illumination": {
       additionalConditions = "AND illumination IS NOT NULL";
       break;
-    case "diameter":
+    }
+    case "diameter": {
       additionalConditions = "AND diameter IS NOT NULL";
       break;
-    case "distance":
+    }
+    case "distance": {
       additionalConditions = "AND distance IS NOT NULL";
       break;
+    }
   }
 
   const query = `
@@ -361,7 +366,7 @@ function mapRowToEvent(row: EventRecord): Event {
         ? { latitude: row.latitude, longitude: row.longitude }
         : undefined,
     url: row.url || undefined,
-    priority: row.priority ? row.priority : undefined,
+    priority: row.priority || undefined,
     color: row.color || undefined,
   };
 }
@@ -542,7 +547,9 @@ export async function getAllEvents(): Promise<Event[]> {
      ORDER BY start ASC`,
   );
 
-  const events: Event[] = rows.map(mapRowToEvent);
+  const events: Event[] = (rows as EventRecord[]).map((row) =>
+    mapRowToEvent(row),
+  );
 
   return events;
 }
@@ -605,7 +612,7 @@ export async function getActiveAspectsAt(timestamp: Date): Promise<Event[]> {
     [timestampISO, timestampISO],
   );
 
-  return rows.map(mapRowToEvent);
+  return (rows as EventRecord[]).map((row) => mapRowToEvent(row));
 }
 
 // #region Cleanup

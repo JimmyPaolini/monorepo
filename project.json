@@ -3,6 +3,25 @@
   "name": "monorepo",
   "projectType": "application",
   "targets": {
+    "biome": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "command": "biome check '*.ts' '*.js' '*.json' 'scripts/' 'documentation/' 'infrastructure/'"
+        },
+        "write": {
+          "command": "biome check --write '*.ts' '*.js' '*.json' 'scripts/' 'documentation/' 'infrastructure/'"
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "Run Biome supplementary format check and lint on workspace root files",
+      "executor": "nx:run-commands",
+      "inputs": ["{workspaceRoot}/biome.jsonc", "default"],
+      "options": {
+        "command": "biome check '*.ts' '*.js' '*.json' 'scripts/' 'documentation/' 'infrastructure/'",
+        "cwd": "{projectRoot}"
+      }
+    },
     "check-lockfile": {
       "description": "Verify that pnpm-lock.yaml is in sync with package.json files",
       "executor": "nx:run-commands",
@@ -15,14 +34,16 @@
       "description": "Run all static code analysis tools for workspace root (typecheck, lint, format, knip, spell-check, markdown-lint, yaml-lint)",
       "options": {
         "commands": [
-          "nx run monorepo:typecheck",
-          "nx run monorepo:lint:{args.configuration}",
-          "nx run monorepo:markdown-lint:{args.configuration}",
           "nx run monorepo:format:{args.configuration}",
           "nx run monorepo:knip:{args.configuration}",
+          "nx run monorepo:lint:{args.configuration}",
+          "nx run monorepo:markdown-lint:{args.configuration}",
           "nx run monorepo:spell-check",
+          "nx run monorepo:sync-agent-skills:{args.configuration}",
           "nx run monorepo:sync-conventional-config:{args.configuration}",
-          "nx run monorepo:sync-vscode-extensions:{args.configuration}"
+          "nx run monorepo:sync-pull-request-template:{args.configuration}",
+          "nx run monorepo:sync-vscode-extensions:{args.configuration}",
+          "nx run monorepo:typecheck"
         ]
       }
     },
@@ -37,13 +58,15 @@
         }
       },
       "defaultConfiguration": "check",
-      "description": "Run all dependency management tools (pnpm-audit, dependency-lint, license-check)",
+      "description": "Run all dependency management tools (dependency-lint, pnpm-audit, license-check, sherif, syncpack)",
       "executor": "nx:run-commands",
       "options": {
         "commands": [
           "nx run monorepo:dependency-lint:{args.configuration}",
+          "nx run monorepo:license-check",
           "nx run monorepo:pnpm-audit:{args.configuration}",
-          "nx run monorepo:license-check"
+          "nx run monorepo:sherif:{args.configuration}",
+          "nx run monorepo:syncpack:{args.configuration}"
         ],
         "cwd": "{projectRoot}"
       }
@@ -55,7 +78,7 @@
           "command": "ncu --workspaces --root"
         },
         "write": {
-          "command": "ncu --workspaces --root -u && pnpm install"
+          "command": "ncu --workspaces --root -u && pnpm install --no-frozen-lockfile"
         }
       },
       "defaultConfiguration": "check",
@@ -65,24 +88,25 @@
         "command": "ncu --workspaces --root"
       }
     },
-    "format": {
+    "eslint": {
       "cache": true,
       "configurations": {
         "check": {
-          "command": "prettier {args} --check --ignore-unknown ."
+          "command": "eslint {args} --config eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
         },
         "write": {
-          "command": "prettier {args} --write --ignore-unknown ."
+          "command": "eslint {args} --fix --config eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
         }
       },
-      "defaultConfiguration": "write",
-      "description": "Format workspace root files with Prettier (excluding NX projects)",
+      "defaultConfiguration": "check",
+      "description": "Lint workspace root files with ESLint (config files, scripts, documentation, infrastructure, markdown)",
       "executor": "nx:run-commands",
       "options": {
-        "command": "prettier {args} --ignore-unknown .",
+        "command": "eslint {args} --config eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'",
         "cwd": "{projectRoot}"
       }
     },
+    "format": {},
     "knip": {
       "cache": true,
       "configurations": {
@@ -106,33 +130,16 @@
       "description": "Check licenses of production dependencies",
       "executor": "nx:run-commands",
       "inputs": [
-        "default",
         "{workspaceRoot}/package.json",
-        "{workspaceRoot}/pnpm-lock.yaml"
+        "{workspaceRoot}/pnpm-lock.yaml",
+        "default"
       ],
       "options": {
         "command": "license-checker --json --onlyAllow 'MIT;Apache-2.0;BSD-2-Clause;BSD-3-Clause;ISC;0BSD;CC0-1.0;Unlicense;Python-2.0;CC-BY-3.0;CC-BY-4.0;WTFPL;Zlib;BlueOak-1.0.0' --production --excludePrivatePackages",
         "cwd": "{workspaceRoot}"
       }
     },
-    "lint": {
-      "cache": true,
-      "configurations": {
-        "check": {
-          "command": "eslint {args} --config eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
-        },
-        "write": {
-          "command": "eslint {args} --fix --config eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
-        }
-      },
-      "defaultConfiguration": "check",
-      "description": "Lint workspace root files (config files, scripts, documentation, infrastructure, markdown) excluding NX projects",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "eslint {args} --config eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'",
-        "cwd": "{projectRoot}"
-      }
-    },
+    "lint": {},
     "markdown-lint": {
       "cache": true,
       "configurations": {
@@ -147,15 +154,32 @@
       "description": "Lint markdown files in workspace root (scripts, documentation, infrastructure)",
       "executor": "nx:run-commands",
       "inputs": [
-        "default",
         "{projectRoot}/*.md",
-        "{projectRoot}/scripts/**/*.md",
         "{projectRoot}/documentation/**/*.md",
         "{projectRoot}/infrastructure/**/*.md",
-        "{workspaceRoot}/.markdownlint-cli2.jsonc"
+        "{projectRoot}/scripts/**/*.md",
+        "{workspaceRoot}/.markdownlint-cli2.jsonc",
+        "default"
       ],
       "options": {
         "command": "markdownlint-cli2 '*.md' 'scripts/**/*.md' 'documentation/**/*.md' 'infrastructure/**/*.md'",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "oxlint": {
+      "cache": true,
+      "configurations": {
+        "check": {},
+        "write": {
+          "command": "oxlint --fix --config=.oxlintrc.jsonc '*.ts' '*.js' 'scripts/' 'documentation/' 'infrastructure/' --ignore-pattern='infrastructure/helm/**/templates'"
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "Run Oxlint on workspace root files (config files, scripts, documentation, infrastructure)",
+      "executor": "nx:run-commands",
+      "inputs": ["{workspaceRoot}/.oxlintrc.jsonc", "default"],
+      "options": {
+        "command": "oxlint --config=.oxlintrc.jsonc '*.ts' '*.js' 'scripts/' 'documentation/' 'infrastructure/' --ignore-pattern='infrastructure/helm/**/templates'",
         "cwd": "{projectRoot}"
       }
     },
@@ -176,22 +200,80 @@
         "command": "pnpm audit --audit-level=moderate"
       }
     },
+    "prettier": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "command": "prettier {args} --check --ignore-unknown ."
+        },
+        "write": {
+          "command": "prettier {args} --write --ignore-unknown ."
+        }
+      },
+      "defaultConfiguration": "write",
+      "description": "Format workspace root files with Prettier (excluding NX projects)",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "prettier {args} --ignore-unknown .",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "sherif": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "command": "pnpm dlx sherif@1.10.0"
+        },
+        "write": {
+          "command": "pnpm dlx sherif@1.10.0 --fix"
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "Lint monorepo for consistent package.json conventions",
+      "executor": "nx:run-commands",
+      "inputs": ["{workspaceRoot}/**/package.json"],
+      "options": {
+        "command": "pnpm dlx sherif@1.10.0",
+        "cwd": "{workspaceRoot}"
+      }
+    },
     "spell-check": {
       "cache": true,
       "description": "Check spelling in workspace root files (scripts, documentation, infrastructure, planning)",
       "executor": "nx:run-commands",
       "inputs": [
-        "default",
         "{projectRoot}/*.{ts,tsx,js,jsx,md,yaml,yml,json}",
-        "{projectRoot}/scripts/**",
         "{projectRoot}/documentation/**",
         "{projectRoot}/infrastructure/**",
         "{projectRoot}/planning/**",
-        "{workspaceRoot}/cspell.config.yaml"
+        "{projectRoot}/scripts/**",
+        "{workspaceRoot}/cspell.config.yaml",
+        "default"
       ],
       "options": {
         "command": "cspell '*.{ts,tsx,js,jsx,md,yaml,yml,json}' 'scripts/**' 'documentation/**' 'infrastructure/**' 'planning/**' --no-progress",
         "cwd": "{projectRoot}"
+      }
+    },
+    "sync-agent-skills": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "command": "tsx scripts/sync-agent-skills.ts check"
+        },
+        "write": {
+          "command": "tsx scripts/sync-agent-skills.ts write"
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "Validate that agent skills table of contents is synchronized from documentation/skills/*/SKILL.md into AGENTS.md (check) or sync them (write)",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/AGENTS.md",
+        "{projectRoot}/documentation/skills/**/*.md"
+      ],
+      "options": {
+        "command": "tsx scripts/sync-agent-skills.ts"
       }
     },
     "sync-conventional-config": {
@@ -208,12 +290,35 @@
       "description": "Validate that conventional commit config (types/scopes) is synchronized from conventional.config.cjs into .vscode/settings.json and SKILL.md (check) or sync them (write)",
       "executor": "nx:run-commands",
       "inputs": [
-        "{projectRoot}/conventional.config.cjs",
         "{projectRoot}/.vscode/settings.json",
+        "{projectRoot}/conventional.config.cjs",
         "{projectRoot}/documentation/skills/commit-code/SKILL.md"
       ],
       "options": {
         "command": "tsx scripts/sync-conventional-config.ts"
+      }
+    },
+    "sync-pull-request-template": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "command": "tsx scripts/sync-pull-request-template.ts check"
+        },
+        "write": {
+          "command": "tsx scripts/sync-pull-request-template.ts write"
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "Validate that the PR template is synchronized from .github/PULL_REQUEST_TEMPLATE.md into skills and prompt files (check) or sync them (write)",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/.github/prompts/create-pull-request.prompt.md",
+        "{projectRoot}/.github/prompts/update-pull-request.prompt.md",
+        "{projectRoot}/.github/PULL_REQUEST_TEMPLATE.md",
+        "{projectRoot}/documentation/skills/create-pull-request/SKILL.md"
+      ],
+      "options": {
+        "command": "tsx scripts/sync-pull-request-template.ts"
       }
     },
     "sync-vscode-extensions": {
@@ -230,11 +335,34 @@
       "description": "Validate that VS Code extensions are synchronized between .vscode/extensions.json and .devcontainer/devcontainer.json (check) or sync them (write)",
       "executor": "nx:run-commands",
       "inputs": [
-        "{projectRoot}/.vscode/extensions.json",
-        "{projectRoot}/.devcontainer/devcontainer.json"
+        "{projectRoot}/.devcontainer/devcontainer.json",
+        "{projectRoot}/.vscode/extensions.json"
       ],
       "options": {
         "command": "tsx scripts/sync-vscode-extensions.ts"
+      }
+    },
+    "syncpack": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "command": "pnpm exec syncpack lint"
+        },
+        "write": {
+          "command": "pnpm exec syncpack fix-mismatches && pnpm exec syncpack format"
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "Check dependency version consistency across packages (check) or fix mismatches (write)",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{workspaceRoot}/**/package.json",
+        "{workspaceRoot}/.syncpackrc.cjs",
+        "{workspaceRoot}/pnpm-lock.yaml"
+      ],
+      "options": {
+        "command": "pnpm exec syncpack lint",
+        "cwd": "{workspaceRoot}"
       }
     },
     "terraform": {
@@ -260,9 +388,9 @@
       "description": "Check TypeScript type coverage for workspace root (minimum 95%)",
       "executor": "nx:run-commands",
       "inputs": [
-        "default",
         "{projectRoot}/**/*.{ts,tsx}",
-        "{projectRoot}/tsconfig.json"
+        "{projectRoot}/tsconfig.json",
+        "default"
       ],
       "options": {
         "command": "type-coverage --at-least 95 --detail --project tsconfig.json",
@@ -271,6 +399,7 @@
     },
     "typecheck": {
       "description": "Type-check workspace root TypeScript files"
-    }
+    },
+    "yaml-lint": {}
   }
 }

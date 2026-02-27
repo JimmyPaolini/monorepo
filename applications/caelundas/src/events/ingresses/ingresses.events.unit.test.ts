@@ -73,8 +73,11 @@ describe("ingresses.events", () => {
       const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       for (const body of signIngressBodies) {
         coordinateEphemerisByBody[body] = {
-          [previousMinute.toISOString()]: { longitude: NaN, latitude: 0 },
-          [currentMinute.toISOString()]: { longitude: NaN, latitude: 0 },
+          [previousMinute.toISOString()]: {
+            longitude: Number.NaN,
+            latitude: 0,
+          },
+          [currentMinute.toISOString()]: { longitude: Number.NaN, latitude: 0 },
         };
       }
 
@@ -104,8 +107,11 @@ describe("ingresses.events", () => {
       const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       for (const body of signIngressBodies) {
         coordinateEphemerisByBody[body] = {
-          [previousMinute.toISOString()]: { longitude: NaN, latitude: 0 },
-          [currentMinute.toISOString()]: { longitude: NaN, latitude: 0 },
+          [previousMinute.toISOString()]: {
+            longitude: Number.NaN,
+            latitude: 0,
+          },
+          [currentMinute.toISOString()]: { longitude: Number.NaN, latitude: 0 },
         };
       }
 
@@ -126,9 +132,10 @@ describe("ingresses.events", () => {
 
   describe("writeSignIngressEvents", () => {
     it("should write events to file and database", async () => {
-      const fs = await import("fs");
-      const { writeSignIngressEvents, getSignIngressEvent } =
-        await import("./ingresses.events");
+      const fs = await import("node:fs");
+      const { writeSignIngressEvents, getSignIngressEvent } = await import(
+        "./ingresses.events"
+      );
 
       const events = [
         getSignIngressEvent({
@@ -157,7 +164,7 @@ describe("ingresses.events", () => {
     });
 
     it("should not write when events array is empty", async () => {
-      const fs = await import("fs");
+      const fs = await import("node:fs");
       const { writeSignIngressEvents } = await import("./ingresses.events");
 
       const start = new Date("2024-03-01T00:00:00.000Z");
@@ -205,8 +212,11 @@ describe("ingresses.events", () => {
       const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       for (const body of decanIngressBodies) {
         coordinateEphemerisByBody[body] = {
-          [previousMinute.toISOString()]: { longitude: NaN, latitude: 0 },
-          [currentMinute.toISOString()]: { longitude: NaN, latitude: 0 },
+          [previousMinute.toISOString()]: {
+            longitude: Number.NaN,
+            latitude: 0,
+          },
+          [currentMinute.toISOString()]: { longitude: Number.NaN, latitude: 0 },
         };
       }
 
@@ -235,8 +245,11 @@ describe("ingresses.events", () => {
       const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       for (const body of decanIngressBodies) {
         coordinateEphemerisByBody[body] = {
-          [previousMinute.toISOString()]: { longitude: NaN, latitude: 0 },
-          [currentMinute.toISOString()]: { longitude: NaN, latitude: 0 },
+          [previousMinute.toISOString()]: {
+            longitude: Number.NaN,
+            latitude: 0,
+          },
+          [currentMinute.toISOString()]: { longitude: Number.NaN, latitude: 0 },
         };
       }
 
@@ -257,9 +270,10 @@ describe("ingresses.events", () => {
 
   describe("writeDecanIngressEvents", () => {
     it("should write events to file and database", async () => {
-      const fs = await import("fs");
-      const { writeDecanIngressEvents, getDecanIngressEvent } =
-        await import("./ingresses.events");
+      const fs = await import("node:fs");
+      const { writeDecanIngressEvents, getDecanIngressEvent } = await import(
+        "./ingresses.events"
+      );
 
       const events = [
         getDecanIngressEvent({
@@ -282,7 +296,7 @@ describe("ingresses.events", () => {
     });
 
     it("should not write when events array is empty", async () => {
-      const fs = await import("fs");
+      const fs = await import("node:fs");
       const { writeDecanIngressEvents } = await import("./ingresses.events");
 
       writeDecanIngressEvents({
@@ -327,8 +341,11 @@ describe("ingresses.events", () => {
       const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       for (const body of peakIngressBodies) {
         coordinateEphemerisByBody[body] = {
-          [previousMinute.toISOString()]: { longitude: NaN, latitude: 0 },
-          [currentMinute.toISOString()]: { longitude: NaN, latitude: 0 },
+          [previousMinute.toISOString()]: {
+            longitude: Number.NaN,
+            latitude: 0,
+          },
+          [currentMinute.toISOString()]: { longitude: Number.NaN, latitude: 0 },
         };
       }
 
@@ -357,8 +374,11 @@ describe("ingresses.events", () => {
       const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       for (const body of peakIngressBodies) {
         coordinateEphemerisByBody[body] = {
-          [previousMinute.toISOString()]: { longitude: NaN, latitude: 0 },
-          [currentMinute.toISOString()]: { longitude: NaN, latitude: 0 },
+          [previousMinute.toISOString()]: {
+            longitude: Number.NaN,
+            latitude: 0,
+          },
+          [currentMinute.toISOString()]: { longitude: Number.NaN, latitude: 0 },
         };
       }
 
@@ -379,9 +399,10 @@ describe("ingresses.events", () => {
 
   describe("writePeakIngressEvents", () => {
     it("should write events to file and database", async () => {
-      const fs = await import("fs");
-      const { writePeakIngressEvents, getPeakIngressEvent } =
-        await import("./ingresses.events");
+      const fs = await import("node:fs");
+      const { writePeakIngressEvents, getPeakIngressEvent } = await import(
+        "./ingresses.events"
+      );
 
       const events = [
         getPeakIngressEvent({
@@ -404,7 +425,7 @@ describe("ingresses.events", () => {
     });
 
     it("should not write when events array is empty", async () => {
-      const fs = await import("fs");
+      const fs = await import("node:fs");
       const { writePeakIngressEvents } = await import("./ingresses.events");
 
       writePeakIngressEvents({
@@ -450,8 +471,9 @@ describe("ingresses.events", () => {
     });
 
     it("should handle empty array", async () => {
-      const { getSignIngressDurationEvents } =
-        await import("./ingresses.events");
+      const { getSignIngressDurationEvents } = await import(
+        "./ingresses.events"
+      );
 
       const durationEvents = getSignIngressDurationEvents([]);
 

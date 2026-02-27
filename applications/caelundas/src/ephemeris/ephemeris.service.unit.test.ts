@@ -483,7 +483,7 @@ $$EOE`;
       }
       expect(result[firstKey]).toHaveProperty("diameter");
       // 1920.5 arcseconds / 3600 arcseconds per degree
-      expect(result[firstKey]?.diameter).toBeCloseTo(0.53347, 4);
+      expect(result[firstKey]?.diameter).toBeCloseTo(0.533_47, 4);
     });
 
     it("should handle sun and moon bodies", async () => {
@@ -662,10 +662,10 @@ $$EOE`;
       expect(result[firstKey]).toHaveProperty("apoapsisDistance");
       expect(result[firstKey]).toHaveProperty("siderealOrbitPeriod");
 
-      expect(result[firstKey]?.eccentricity).toBeCloseTo(0.05456, 4);
+      expect(result[firstKey]?.eccentricity).toBeCloseTo(0.054_56, 4);
       expect(result[firstKey]?.inclination).toBeCloseTo(5.1454, 4);
       expect(result[firstKey]?.longitudeOfAscendingNode).toBe(144.525);
-      expect(result[firstKey]?.argumentOfPerifocus).toBe(75.0);
+      expect(result[firstKey]?.argumentOfPerifocus).toBe(75);
     });
 
     it("should handle scientific notation in orbital elements", async () => {
@@ -691,7 +691,7 @@ $$EOE`;
       if (!firstKey) {
         throw new Error("firstKey is undefined");
       }
-      expect(result[firstKey]?.timeOfPeriapsis).toBeCloseTo(2460397.1, 1);
+      expect(result[firstKey]?.timeOfPeriapsis).toBeCloseTo(2_460_397.1, 1);
     });
   });
 });

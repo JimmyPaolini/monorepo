@@ -72,7 +72,7 @@ describe("dailySolarCycle.events", () => {
       // Sun at local maximum elevation
       const sunAzimuthElevationEphemeris: AzimuthElevationEphemeris = {
         [previousMinute.toISOString()]: { azimuth: 178, elevation: 44.9 },
-        [currentMinute.toISOString()]: { azimuth: 180, elevation: 45.0 },
+        [currentMinute.toISOString()]: { azimuth: 180, elevation: 45 },
         [nextMinute.toISOString()]: { azimuth: 182, elevation: 44.9 },
       };
 
@@ -94,7 +94,7 @@ describe("dailySolarCycle.events", () => {
       // Sun at local minimum elevation (below horizon at night)
       const sunAzimuthElevationEphemeris: AzimuthElevationEphemeris = {
         [previousMinute.toISOString()]: { azimuth: 358, elevation: -44.9 },
-        [currentMinute.toISOString()]: { azimuth: 0, elevation: -45.0 },
+        [currentMinute.toISOString()]: { azimuth: 0, elevation: -45 },
         [nextMinute.toISOString()]: { azimuth: 2, elevation: -44.9 },
       };
 
@@ -200,7 +200,7 @@ describe("dailySolarCycle.events", () => {
 
   describe("writeDailySolarCycleEvents", () => {
     it("should write events to database and file when events array is not empty", async () => {
-      const fs = (await import("fs")).default;
+      const { default: fs } = await import("node:fs");
 
       const events: Event[] = [
         {
@@ -212,8 +212,9 @@ describe("dailySolarCycle.events", () => {
         },
       ];
 
-      const { writeDailySolarCycleEvents } =
-        await import("./dailySolarCycle.events");
+      const { writeDailySolarCycleEvents } = await import(
+        "./dailySolarCycle.events"
+      );
       writeDailySolarCycleEvents({
         dailySolarCycleEvents: events,
         start: new Date("2024-01-01"),
@@ -224,10 +225,11 @@ describe("dailySolarCycle.events", () => {
     });
 
     it("should not write if events array is empty", async () => {
-      const fs = (await import("fs")).default;
+      const { default: fs } = await import("node:fs");
 
-      const { writeDailySolarCycleEvents } =
-        await import("./dailySolarCycle.events");
+      const { writeDailySolarCycleEvents } = await import(
+        "./dailySolarCycle.events"
+      );
       writeDailySolarCycleEvents({
         dailySolarCycleEvents: [],
         start: new Date("2024-01-01"),

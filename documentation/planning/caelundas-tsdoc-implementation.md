@@ -483,7 +483,7 @@ export interface TypeName {
 
 ### Internal Documentation
 
-- [Static Analysis Tools](../documentation/static-analysis-tools.md) - ESLint and TSDoc configuration
+- **Static Analysis Configuration** - ESLint and TSDoc configuration documented in `eslint.config.base.ts` config file comments
 - [GitHub Actions Workflows](../documentation/github-actions-workflows.md) - CI/CD pipeline
 - [Abbreviations](../documentation/abbreviations.md) - Common acronyms
 

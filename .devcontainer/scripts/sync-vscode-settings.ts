@@ -15,31 +15,34 @@
  */
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import JSON5 from "json5";
 import _ from "lodash";
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const WORKSPACE_ROOT = join(__dirname, "../..");
-const WORKSPACE_SETTINGS_FILE = join(WORKSPACE_ROOT, ".vscode/settings.json");
+const __dirname = path.dirname(__filename);
+const WORKSPACE_ROOT = path.join(__dirname, "../..");
+const WORKSPACE_SETTINGS_FILE = path.join(
+  WORKSPACE_ROOT,
+  ".vscode/settings.json",
+);
 const MACHINE_SETTINGS_DIR = "/root/.vscode-server/data/Machine";
-const MACHINE_SETTINGS_FILE = join(MACHINE_SETTINGS_DIR, "settings.json");
+const MACHINE_SETTINGS_FILE = path.join(MACHINE_SETTINGS_DIR, "settings.json");
 const MODE = process.argv[2] || "check";
 
 type Settings = Record<string, unknown>;
 
 function loadWorkspaceSettings(): Settings {
-  return JSON5.parse<Settings>(readFileSync(WORKSPACE_SETTINGS_FILE, "utf-8"));
+  return JSON5.parse<Settings>(readFileSync(WORKSPACE_SETTINGS_FILE, "utf8"));
 }
 
 function loadMachineSettings(): Settings {
   if (!existsSync(MACHINE_SETTINGS_FILE)) {
     return {};
   }
-  return JSON5.parse<Settings>(readFileSync(MACHINE_SETTINGS_FILE, "utf-8"));
+  return JSON5.parse<Settings>(readFileSync(MACHINE_SETTINGS_FILE, "utf8"));
 }
 
 function checkSync(workspace: Settings, machine: Settings): boolean {
@@ -85,7 +88,7 @@ function writeSync(workspace: Settings, machine: Settings): void {
   writeFileSync(
     MACHINE_SETTINGS_FILE,
     `${JSON.stringify(merged, null, 2)}\n`,
-    "utf-8",
+    "utf8",
   );
   console.log("✅ Machine settings synced successfully");
 }

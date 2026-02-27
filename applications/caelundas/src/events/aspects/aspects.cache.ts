@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 import { getAngle } from "../../math.utilities";
 
 import type { Body } from "../../types";
@@ -45,7 +47,7 @@ export function getCachedAngle(args: {
   const { timestamp1, timestamp2, body1, body2, longitude1, longitude2 } = args;
 
   // Create a deterministic cache key (alphabetically sorted to handle reversed pairs)
-  const key = [timestamp1, timestamp2, body1, body2].sort().join(":");
+  const key = _.sortBy([timestamp1, timestamp2, body1, body2]).join(":");
 
   let angle = angleCache.get(key);
   if (angle === undefined) {
@@ -335,7 +337,7 @@ export function couldBeHexagram(
   // Hexagram: 6 planets evenly spaced at 60° intervals
   // Quick check: sort longitudes and check if consecutive spacing is ~60°
 
-  const sorted = [...longitudes].sort((a, b) => a - b);
+  const sorted = _.sortBy([...longitudes]);
   const buffer = 15; // Generous buffer for pre-filtering
 
   let validSpacingCount = 0;
@@ -398,10 +400,10 @@ export function couldBeStellium(longitudes: number[], maxOrb = 10): boolean {
   }
 
   // Sort longitudes to find the span
-  const sorted = [...longitudes].sort((a, b) => a - b);
+  const sorted = _.sortBy([...longitudes]);
 
   // Calculate the span (accounting for zodiac wrap-around at 0°/360°)
-  const sortedLast = sorted[sorted.length - 1];
+  const sortedLast = sorted.at(-1);
   const sortedFirst = sorted[0];
   if (sortedLast === undefined || sortedFirst === undefined) {
     return false;

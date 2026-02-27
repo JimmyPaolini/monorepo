@@ -190,7 +190,7 @@ export function getSolarEclipseEvent(args: {
     end: date,
     summary,
     description,
-    categories: categories.concat(["Solar"]),
+    categories: [...categories, "Solar"],
   };
   return solarEclipseEvent;
 }
@@ -236,7 +236,7 @@ export function getLunarEclipseEvent(args: {
     end: date,
     summary,
     description,
-    categories: categories.concat(["Lunar"]),
+    categories: [...categories, "Lunar"],
   };
   return lunarEclipseEvent;
 }
@@ -306,7 +306,7 @@ function getSolarEclipseDurationEvent(beginning: Event, ending: Event): Event {
     end: ending.start,
     summary: "☀️🐉 Solar Eclipse",
     description: "Solar Eclipse",
-    categories: categories.concat(["Solar"]),
+    categories: [...categories, "Solar"],
   };
 }
 
@@ -316,6 +316,6 @@ function getLunarEclipseDurationEvent(beginning: Event, ending: Event): Event {
     end: ending.start,
     summary: "🌙🐉 Lunar Eclipse",
     description: "Lunar Eclipse",
-    categories: categories.concat(["Lunar"]),
+    categories: [...categories, "Lunar"],
   };
 }

@@ -1,0 +1,6 @@
+# Gitleaks Fingerprint-Based False Positive Ignores
+# Add Gitleaks fingerprints for known false positives (one per line)
+# Generate fingerprints using: pnpm dlx @gitleaks/gitleaks dir . --verbose
+# Each fingerprint uniquely identifies a specific finding in a specific file at a specific commit
+d4645a64239bdcfd165c945c140b225363212d75:.vscode/keybindings.json:generic-api-key:242
+5ffd9380d46335282bca3c135c2271848acda00a:.vscode/keybindings.json:generic-api-key:242

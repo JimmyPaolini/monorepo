@@ -94,22 +94,20 @@ function composeGrandCrosses(
         continue;
       }
 
-      const bodyList = Array.from(bodies);
+      const bodyList = [...bodies];
+
+      const oppositeBodyMap = new Map<Body, Body>([
+        [opp1.body1, opp1.body2],
+        [opp1.body2, opp1.body1],
+        [opp2.body1, opp2.body2],
+        [opp2.body2, opp2.body1],
+      ]);
 
       // Verify all adjacent pairs (in cross configuration) are in square
       let hasAllSquares = true;
       for (const body of bodyList) {
         // Find which body is opposite to this one
-        let oppositeBody: Body | null = null;
-        if (opp1.body1 === body) {
-          oppositeBody = opp1.body2;
-        } else if (opp1.body2 === body) {
-          oppositeBody = opp1.body1;
-        } else if (opp2.body1 === body) {
-          oppositeBody = opp2.body2;
-        } else if (opp2.body2 === body) {
-          oppositeBody = opp2.body1;
-        }
+        const oppositeBody = oppositeBodyMap.get(body) ?? null;
 
         if (!oppositeBody) {
           hasAllSquares = false;
@@ -162,17 +160,14 @@ function composeGrandCrosses(
             }
 
             // Verify all adjacent pairs are in square
+            const innerOppositeBodyMap = new Map<Body, Body>([
+              [opp1.body1, opp1.body2],
+              [opp1.body2, opp1.body1],
+              [opp2.body1, opp2.body2],
+              [opp2.body2, opp2.body1],
+            ]);
             for (const body of bodyList) {
-              let oppositeBody: Body | null = null;
-              if (opp1.body1 === body) {
-                oppositeBody = opp1.body2;
-              } else if (opp1.body2 === body) {
-                oppositeBody = opp1.body1;
-              } else if (opp2.body1 === body) {
-                oppositeBody = opp2.body2;
-              } else if (opp2.body2 === body) {
-                oppositeBody = opp2.body1;
-              }
+              const oppositeBody = innerOppositeBodyMap.get(body) ?? null;
 
               if (!oppositeBody) {
                 return false;
@@ -259,7 +254,7 @@ function composeKites(allEdges: AspectEdge[], currentMinute: Moment): Event[] {
   const oppositions = aspectsByType.get("opposite") || [];
   const sextiles = aspectsByType.get("sextile") || [];
 
-  if (trines.length < 3 || oppositions.length < 1 || sextiles.length < 2) {
+  if (trines.length < 3 || oppositions.length === 0 || sextiles.length < 2) {
     return events;
   }
 
@@ -290,7 +285,7 @@ function composeKites(allEdges: AspectEdge[], currentMinute: Moment): Event[] {
         ]);
 
         if (bodies.size === 3) {
-          const bodyList = Array.from(bodies);
+          const bodyList = [...bodies];
           const body0 = bodyList[0];
           const body1 = bodyList[1];
           const body2 = bodyList[2];
@@ -311,7 +306,7 @@ function composeKites(allEdges: AspectEdge[], currentMinute: Moment): Event[] {
 
   // For each grand trine, look for a 4th body that forms a kite
   for (const gtBodies of grandTrines) {
-    const gtList = Array.from(gtBodies);
+    const gtList = [...gtBodies];
 
     for (const baseBody of gtList) {
       const otherTwo = gtList.filter((b) => b !== baseBody);
@@ -412,12 +407,12 @@ function getQuadrupleAspectEvent(params: {
   const body4Symbol = symbolByBody[body4];
   const quadrupleAspectSymbol = symbolByQuadrupleAspect[quadrupleAspect];
 
-  const bodiesSorted = [
+  const bodiesSorted = _.sortBy([
     body1Capitalized,
     body2Capitalized,
     body3Capitalized,
     body4Capitalized,
-  ].sort();
+  ]);
 
   const description = focalOrApexBody
     ? `${bodiesSorted.join(", ")} ${quadrupleAspect} ${phase} (${_.startCase(
@@ -484,12 +479,10 @@ export function getQuadrupleAspectEvents(
   currentMinute: Moment,
 ): Event[] {
   const edges = parseAspectEvents(aspectEvents);
-  const events: Event[] = [];
-
-  events.push(...composeGrandCrosses(edges, currentMinute));
-  events.push(...composeKites(edges, currentMinute));
-
-  return events;
+  return [
+    ...composeGrandCrosses(edges, currentMinute),
+    ...composeKites(edges, currentMinute),
+  ];
 }
 
 // #region Duration Events
@@ -515,13 +508,13 @@ export function getQuadrupleAspectDurationEvents(events: Event[]): Event[] {
 
   // Group by body quartet and aspect type using categories
   const groupedEvents = _.groupBy(quadrupleAspectEvents, (event) => {
-    const planets = event.categories
-      .filter((category) =>
+    const planets = _.sortBy(
+      event.categories.filter((category) =>
         quadrupleAspectBodies
           .map((quadrupleAspectBody) => _.startCase(quadrupleAspectBody))
           .includes(category),
-      )
-      .sort();
+      ),
+    );
 
     const aspect = event.categories.find((category) =>
       ["Grand Cross", "Kite"].includes(category),

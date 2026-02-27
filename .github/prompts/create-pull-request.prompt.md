@@ -31,6 +31,30 @@ Analyze the current branch's changes and create a pull request that:
 - **Subject**: Imperative mood, lowercase after gitmoji, no period
 - **Gitmoji**: Must match the type (✨ feat, 🐛 fix, 📝 docs, etc.)
 
+### PR Description Template
+
+<!-- pr-template-start -->
+
+```markdown
+## 🌰 Summary
+
+<!-- Brief description of what this PR does (1-2 sentences) -->
+
+## 📝 Details
+
+- <!-- List of specific changes made -->
+
+## 🧪 Testing
+
+1. <!-- How to manually verify these changes work correctly -->
+
+## 🔗 Related
+
+- <!-- Link any relevant documentation or related resources like internal documentation, GitHub issues/pull requests -->
+```
+
+<!-- pr-template-end -->
+
 ## Workflow
 
 1. **Read the PR conventions** from [../skills/create-pull-request/SKILL.md](../skills/create-pull-request/SKILL.md) for complete requirements
@@ -52,29 +76,29 @@ Analyze the current branch's changes and create a pull request that:
    - **Summary**: Synthesize the overall purpose from commits
    - **Details**: List all meaningful changes
    - **Testing**: Include relevant Nx commands and manual steps
-   - **Issues**: Reference any related issues with linking keywords
+   - **Related**: Reference any related issues with linking keywords and/or relevant documentation links
 6. **Create the PR** using GitHub CLI:
    ```bash
    gh pr create \
      --title "<type>(<scope>): <gitmoji> <subject>" \
      --assignee @me \
-     --body "## Summary
+     --body "## 🌰 Summary
    ```
 
 <summary text>
 
-## Details
+## 📝 Details
 
 - <change 1>
 - <change 2>
 
-## Testing
+## 🧪 Testing
 
 <testing instructions>
 
-## Related Issues
+## 🔗 Related
 
-<issue links>"
+<issue links and documentation links>"
 
 ````
 
@@ -87,7 +111,7 @@ Before creating the PR, verify:
 - [ ] Title follows `<type>(<scope>): <gitmoji> <subject>` format (max 100 chars)
 - [ ] Subject uses imperative mood and lowercase after gitmoji
 - [ ] Description includes Summary, Details, and Testing sections
-- [ ] Related issues are linked with appropriate keywords (`Closes #`, `Fixes #`)
+- [ ] Related issues and documentation are linked in the Related section
 - [ ] Local CI checks pass: `nx affected --target=lint,typecheck,test`
 
 ## Examples
@@ -117,7 +141,7 @@ nx run lexico:develop
 
 Navigate to /profile after logging in.
 
-## Related Issues
+## 🔗 Related
 
 Closes #123"
 ````
@@ -145,7 +169,7 @@ nx run caelundas:test:unit
 nx run caelundas:test:integration
 \`\`\`
 
-## Related Issues
+## 🔗 Related
 
 Fixes #456"
 ```

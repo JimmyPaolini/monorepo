@@ -228,7 +228,8 @@ describe("majorAspects.events", () => {
       // If all bodies are within a ~35° range, no pairs will have angles matching major aspects
       // Positions: 10° through 45° (35° span, all angles < 56° which is outside all aspect orbs)
       const safeLongitudes = [
-        10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46,
+        10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44,
+        46,
       ];
       const allBodies = majorAspectBodies;
 
@@ -424,7 +425,7 @@ describe("majorAspects.events", () => {
 
   describe("writeMajorAspectEvents", () => {
     it("should write events to file and database", async () => {
-      const fs = (await import("fs")).default;
+      const { default: fs } = await import("node:fs");
 
       const events: Event[] = [
         {
@@ -447,7 +448,7 @@ describe("majorAspects.events", () => {
     });
 
     it("should not write if events array is empty", async () => {
-      const fs = (await import("fs")).default;
+      const { default: fs } = await import("node:fs");
 
       writeMajorAspectEvents({
         majorAspectEvents: [],
@@ -460,7 +461,7 @@ describe("majorAspects.events", () => {
     });
 
     it("should include body names in filename", async () => {
-      const fs = (await import("fs")).default;
+      const { default: fs } = await import("node:fs");
 
       const events: Event[] = [
         {
@@ -486,7 +487,7 @@ describe("majorAspects.events", () => {
     });
 
     it("should include date range in filename", async () => {
-      const fs = (await import("fs")).default;
+      const { default: fs } = await import("node:fs");
 
       const events: Event[] = [
         {

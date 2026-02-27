@@ -16,7 +16,7 @@ Analyze the current branch's diff against the base branch and update the existin
 
 1. The **title** follows `<type>(<scope>): <gitmoji> <subject>` and accurately describes the changes
 2. The **description** follows the [PR template](../PULL_REQUEST_TEMPLATE.md) with factual, diff-derived content
-3. Related issues are discovered and linked automatically
+3. Related issues and documentation are discovered and linked automatically
 
 ## Pull Request Conventions
 
@@ -32,27 +32,27 @@ Analyze the current branch's diff against the base branch and update the existin
 
 ### Description Template
 
+<!-- pr-template-start -->
+
 ```markdown
-## Summary
+## 🌰 Summary
 
-<!-- 1-2 sentence overview synthesized from the diff -->
+<!-- Brief description of what this PR does (1-2 sentences) -->
 
-## Details
+## 📝 Details
 
-<!-- Bulleted list of every meaningful change, present tense ("Add", "Update", "Remove") -->
+- <!-- List of specific changes made -->
 
--
+## 🧪 Testing
 
-## Testing
+1. <!-- How to manually verify these changes work correctly -->
 
-<!-- Nx commands and manual verification steps -->
+## 🔗 Related
 
-1.
-
-## Related Issues
-
-<!-- Linking keywords: Closes #, Fixes #, Related to # -->
+- <!-- Link any relevant documentation or related resources like internal documentation, GitHub issues/pull requests -->
 ```
+
+<!-- pr-template-end -->
 
 ## Workflow
 
@@ -99,13 +99,14 @@ From the diff, determine:
 6. **Testing strategy** — Relevant `nx` commands and manual verification steps
 7. **Affected projects** — Which Nx projects are touched (for testing commands)
 
-### Step 4 — Discover Related Issues
+### Step 4 — Discover Related Issues and Documentation
 
-Search for issues that may be related to this PR:
+Search for issues and documentation that may be related to this PR:
 
 - Parse the branch name for issue numbers (e.g., `feat/lexico-fix-123` → `#123`)
 - Scan commit messages for issue references
 - Use `mcp_github_search_issues` to find open issues matching keywords from the changes
+- Look for relevant documentation links: AGENTS.md, SKILL.md, planning files, ADRs, or external library docs referenced in the changes
 
 Use appropriate linking keywords:
 
@@ -113,7 +114,7 @@ Use appropriate linking keywords:
 - `Fixes #N` — for bug fix issues
 - `Related to #N` — for issues partially addressed
 
-If no related issues are found, omit the Related Issues section content.
+If no related issues or documentation are found, omit the Related section content.
 
 ### Step 5 — Generate Updated Title
 
@@ -133,7 +134,7 @@ Structure:
 - **Summary**: Synthesize the overall purpose from the actual changes
 - **Details**: One bullet per meaningful change, present tense, specific file/component names
 - **Testing**: Include `nx run <project>:<target>` commands for affected projects, plus manual steps
-- **Related Issues**: Include discovered issue links, or omit section if none found
+- **Related**: Include discovered issue links and relevant documentation links, or omit section if none found
 
 ### Step 7 — Update the Pull Request
 
@@ -173,7 +174,7 @@ Before submitting the update, verify:
 - [ ] Summary accurately reflects the diff (no speculative content)
 - [ ] Details list covers all meaningful changes from the diff
 - [ ] Testing section includes relevant `nx` commands for affected projects
-- [ ] Related issues use correct linking keywords
+- [ ] Related issues use correct linking keywords and documentation links are included where relevant
 - [ ] Description uses present tense ("Add", "Update", "Remove")
 
 ## Error Recovery

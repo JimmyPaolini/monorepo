@@ -33,10 +33,14 @@ ignorePaths:
   - pnpm-lock.yaml
 words:
   - adduser
+  - abatch
   - āēīōūȳ
   - ĀĒĪŌŪȲ
+  - ainvoke
+  - Alertmanager
   - apikey
   - apoapsis
+  - aquasecurity
   - archi
   - Arcminute
   - arcminutes
@@ -45,15 +49,19 @@ words:
   - arcseconds
   - Arcseconds
   - astrometric
+  - astream
   - ation
   - automerge
   - bento
+  - biome
+  - biomejs
   - biquintile
   - bitnami
   - brightgreen
   - buildx
   - bullmq
   - bundlesize
+  - Burstable
   - BYDAY
   - BYMONTH
   - Caelendars
@@ -71,6 +79,7 @@ words:
   - context7
   - cssmodule
   - cves
+  - dataclasses
   - dbeaver
   - decan
   - Decan
@@ -79,6 +88,7 @@ words:
   - deps
   - devdeps
   - devkit
+  - distroless
   - Dockerfiles
   - domcontentloaded
   - DTEND
@@ -99,6 +109,7 @@ words:
   - eslint
   - ESOCKETTIMEDOUT
   - expressjs
+  - FAISS
   - fakerjs
   - fastapi
   - feathersjs
@@ -108,17 +119,21 @@ words:
   - frontmatter
   - FUTP
   - Giorgio
+  - gitleaks
+  - gitleaksignore
   - gitmodules
   - gitmoji
   - Gitmojis
   - gtrgm
   - hackathon
   - healthcheck
+  - healthz
   - Hexadecan
   - Hexadecans
   - Hmmss
   - huggingface
   - husky
+  - iac
   - ical
   - icalendar
   - illum
@@ -144,6 +159,7 @@ words:
   - langflow
   - langgraph
   - langsmith
+  - LCEL
   - lexico
   - Licen
   - licenseignore
@@ -160,13 +176,17 @@ words:
   - middlewares
   - midheaven
   - migra
+  - Milvus
   - mnyk
   - monorepo
   - multibody
   - multidetermines
+  - Multimodality
   - Multivalued
   - musescore
+  - myapp
   - myorg
+  - myrelease
   - nanode
   - ncurc
   - networkidle
@@ -181,6 +201,9 @@ words:
   - oneline
   - opencontainers
   - operands
+  - oxfmt
+  - oxlint
+  - oxlintrc
   - Paolini
   - pbundlesize
   - peaceiris
@@ -206,13 +229,16 @@ words:
   - promethian
   - psql
   - pydantic
+  - Qdrant
   - querykey
   - quincunx
   - radix
   - raspberrypi
   - readonly
+  - readyz
   - refinementness
   - repo
+  - rerank
   - Retag
   - RRULE
   - samhain
@@ -226,6 +252,7 @@ words:
   - seroval
   - sesquiquadrate
   - sextile
+  - sherif
   - shiftsmart
   - sqltools
   - stackoverflow
@@ -233,12 +260,17 @@ words:
   - stelliums
   - storageclasses
   - stringcase
+  - stylelint
+  - stylelintrc
+  - subclassing
   - subquery
   - Subrepositories
   - supabase
   - Superkey
   - svgs
   - Swipeable
+  - syncpack
+  - syncpackrc
   - tailwindcss
   - tanstack
   - texttypescript
@@ -255,6 +287,8 @@ words:
   - tredecile
   - trgm
   - trine
+  - trivy
+  - trivyignore
   - tsconfig
   - tsquery
   - tsvector
@@ -266,6 +300,7 @@ words:
   - undecile
   - undecuple
   - untaint
+  - unredacted
   - upenn
   - upsert
   - Upserted
@@ -274,6 +309,8 @@ words:
   - VALARM
   - vaul
   - vcalendar
+  - vectorstore
+  - vectorstores
   - VCALENDAR
   - vevent
   - VEVENT
@@ -281,6 +318,7 @@ words:
   - vite
   - vitest
   - VTIMEZONE
+  - Warshall
   - WCAG
   - wording
   - workspaces

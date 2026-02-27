@@ -4,7 +4,7 @@ extends: relaxed
 yaml-files:
   - "*.yaml"
   - "*.yml"
-  - ".yamllint"
+  - .yamllint
 
 ignore: |
   **/pnpm-lock.yaml
@@ -13,6 +13,11 @@ ignore: |
   **/.nx/
   **/.terraform/
   **/coverage/
+  **/templates/
+  # Shadcn-ui generated components
+  packages/lexico-components/src/components/ui/
+  packages/lexico-components/src/hooks/use-mobile.tsx
+  packages/lexico-components/src/lib/utils.ts
 
 rules:
   # Style rules (matching eslint-plugin-yml + Prettier)
@@ -41,7 +46,7 @@ rules:
 
   truthy:
     allowed-values: ["true", "false"]
-    check-keys: true
+    check-keys: false
     level: error
 
   key-duplicates:

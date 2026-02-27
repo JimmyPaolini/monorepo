@@ -129,11 +129,10 @@ function getInflectionLabel(
     if (other) label = other;
   }
 
-  const result =
-    `${startCase(partOfSpeech).toLowerCase()}, ${label}`.replace(
-      /, ?$|^, ?/,
-      "",
-    );
+  const result = `${startCase(partOfSpeech).toLowerCase()}, ${label}`.replace(
+    /, ?$|^, ?/,
+    "",
+  );
   return result;
 }
 

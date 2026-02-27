@@ -7,7 +7,7 @@
  * illumination percentage from NASA JPL ephemeris data.
  */
 
-import fs from "fs";
+import fs from "node:fs";
 
 import _ from "lodash";
 import moment from "moment-timezone";
@@ -75,27 +75,29 @@ export function getMonthlyLunarCycleEvents(args: {
     "currentIllumination",
   );
 
-  const previousIlluminations = new Array(MARGIN_MINUTES)
-    .fill(null)
-    .map((_, marginIndex) => {
+  const previousIlluminations = Array.from(
+    { length: MARGIN_MINUTES },
+    (_, marginIndex) => {
       const minute = currentMinute.clone().subtract(marginIndex + 1, "minutes");
       return getIlluminationFromEphemeris(
         moonIlluminationEphemeris,
         minute.toISOString(),
         "previousIllumination",
       );
-    });
+    },
+  );
 
-  const nextIlluminations = new Array(MARGIN_MINUTES)
-    .fill(null)
-    .map((_, marginIndex) => {
+  const nextIlluminations = Array.from(
+    { length: MARGIN_MINUTES },
+    (_, marginIndex) => {
       const minute = currentMinute.clone().add(marginIndex + 1, "minutes");
       return getIlluminationFromEphemeris(
         moonIlluminationEphemeris,
         minute.toISOString(),
         "nextIllumination",
       );
-    });
+    },
+  );
 
   const illuminations = {
     currentIllumination,

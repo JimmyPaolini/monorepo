@@ -107,14 +107,18 @@ export function transformAdjectiveForms(
  */
 function personDisplay(person: string): string {
   switch (person) {
-    case "first":
+    case "first": {
       return "1st";
-    case "second":
+    }
+    case "second": {
       return "2nd";
-    case "third":
+    }
+    case "third": {
       return "3rd";
-    default:
+    }
+    default: {
       return person;
+    }
   }
 }
 

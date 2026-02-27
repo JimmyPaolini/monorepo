@@ -95,8 +95,9 @@ function SearchPage(): ReactNode {
         data: { query: searchQuery, language: "auto" },
       });
       setResults(searchResults);
-    } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : "Search failed";
+    } catch (error_: unknown) {
+      const message =
+        error_ instanceof Error ? error_.message : "Search failed";
       setError(message);
       setResults([]);
     } finally {

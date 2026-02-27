@@ -1,4 +1,4 @@
-import path from "path";
+import path from "node:path";
 
 import { afterEach, describe, expect, it } from "vitest";
 
@@ -8,10 +8,10 @@ describe("output.utilities", () => {
   const originalEnv = process.env["OUTPUT_DIRECTORY"];
 
   afterEach(() => {
-    if (originalEnv !== undefined) {
-      process.env["OUTPUT_DIRECTORY"] = originalEnv;
-    } else {
+    if (originalEnv === undefined) {
       delete process.env["OUTPUT_DIRECTORY"];
+    } else {
+      process.env["OUTPUT_DIRECTORY"] = originalEnv;
     }
   });
 

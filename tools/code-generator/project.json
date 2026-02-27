@@ -1,42 +1,58 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "name": "code-generator",
+  "prefix": "lib",
   "projectType": "library",
   "sourceRoot": "tools/code-generator/src",
-  "prefix": "lib",
-  "tags": ["type:util"],
+  "tags": [
+    "type:util"
+  ],
   "targets": {
+    "biome": {},
     "build": {
+      "cache": true,
+      "description": "No-op build target for development tool",
       "executor": "nx:run-commands",
       "options": {
         "command": "echo 'code-generator is a development tool and does not require building'"
-      },
-      "cache": true,
-      "description": "No-op build target for development tool"
-    },
-    "dependency-analysis": {},
-    "format": {},
-    "knip": {},
-    "lint": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "eslint tools/code-generator --no-error-on-unmatched-pattern --ignore-pattern '**/code-generator/**/files/**'"
-      },
-      "inputs": ["default", "{workspaceRoot}/eslint.config.base.mjs"]
+      }
     },
     "code-analysis": {
       "options": {
         "commands": [
-          "nx run code-generator:typecheck",
-          "nx run code-generator:lint:{args.configuration}",
+          "nx run code-generator:dependency-analysis",
           "nx run code-generator:format:{args.configuration}",
           "nx run code-generator:knip:{args.configuration}",
+          "nx run code-generator:lint:{args.configuration}",
+          "nx run code-generator:spell-check",
           "nx run code-generator:type-coverage",
-          "nx run code-generator:dependency-analysis",
-          "nx run code-generator:spell-check"
+          "nx run code-generator:typecheck"
         ]
       }
     },
+    "dependency-analysis": {},
+    "eslint": {
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{workspaceRoot}/eslint.config.base.mjs",
+        "default"
+      ],
+      "options": {
+        "command": "eslint tools/code-generator --no-error-on-unmatched-pattern --ignore-pattern '**/code-generator/**/files/**'"
+      }
+    },
+    "format": {},
+    "knip": {},
+    "lint": {},
+    "oxlint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "oxlint --config=.oxlintrc.jsonc --ignore-pattern='**/files/**' tools/code-generator/src",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "prettier": {},
+    "spell-check": {},
     "test": {
       "executor": "nx:run-commands",
       "options": {
@@ -45,7 +61,6 @@
       }
     },
     "type-coverage": {},
-    "typecheck": {},
-    "spell-check": {}
+    "typecheck": {}
   }
 }

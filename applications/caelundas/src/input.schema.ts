@@ -83,13 +83,13 @@ const maxDateString = "2100-12-31";
  */
 export const inputSchema = z
   .object({
-    latitude: z.coerce.number().min(-90).max(90).optional().default(39.949309),
+    latitude: z.coerce.number().min(-90).max(90).optional().default(39.949_309),
     longitude: z.coerce
       .number()
       .min(-180)
       .max(180)
       .optional()
-      .default(-75.17169),
+      .default(-75.171_69),
     startDate: z
       .string()
       .optional()

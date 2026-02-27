@@ -1,12 +1,13 @@
-import fs from "fs";
-import path from "path";
+import fs from "node:fs";
+import path from "node:path";
 
+import _ from "lodash";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
 // Mock environment for testing
 const TEST_OUTPUT_DIR = "./output/e2e-test";
 
-describe("calendar generation e2e", { timeout: 10000 }, () => {
+describe("calendar generation e2e", { timeout: 10_000 }, () => {
   // E2E tests may need more time
   beforeAll(() => {
     // Ensure test output directory exists
@@ -62,7 +63,7 @@ describe("calendar generation e2e", { timeout: 10000 }, () => {
       expect(fs.existsSync(outputPath)).toBe(true);
 
       // Read and validate content
-      const content = fs.readFileSync(outputPath, "utf-8");
+      const content = fs.readFileSync(outputPath, "utf8");
 
       // Check required ICS components
       expect(content).toContain("BEGIN:VCALENDAR");
@@ -201,8 +202,9 @@ describe("calendar generation e2e", { timeout: 10000 }, () => {
 
   describe("event detection e2e", () => {
     it("should correctly identify zodiac signs from longitude", async () => {
-      const { getSign } =
-        await import("./events/ingresses/ingresses.utilities");
+      const { getSign } = await import(
+        "./events/ingresses/ingresses.utilities"
+      );
 
       // Test all 12 signs at their starting degrees
       expect(getSign(0)).toBe("aries");
@@ -220,8 +222,9 @@ describe("calendar generation e2e", { timeout: 10000 }, () => {
     });
 
     it("should correctly identify aspects from angular separation", async () => {
-      const { getMajorAspect } =
-        await import("./events/aspects/aspects.utilities");
+      const { getMajorAspect } = await import(
+        "./events/aspects/aspects.utilities"
+      );
 
       // Test exact aspects
       expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 0 })).toBe(
@@ -335,7 +338,7 @@ describe("calendar generation e2e", { timeout: 10000 }, () => {
       expect(triplets.length).toBe(10); // C(5,3) = 10
 
       // Verify no duplicates in pairs
-      const pairStrings = pairs.map((p) => p.sort().join("-"));
+      const pairStrings = pairs.map((p) => _.sortBy(p).join("-"));
       const uniquePairs = new Set(pairStrings);
       expect(uniquePairs.size).toBe(10);
     });

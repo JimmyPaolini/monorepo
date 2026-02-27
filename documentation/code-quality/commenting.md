@@ -1,20 +1,18 @@
----
-description: "Guidelines for GitHub Copilot to write comments to achieve self-explanatory code with less comments. Examples are in JavaScript but it should work on any language that has comments."
-applyTo: "**"
----
+# Code Commenting Best Practices
 
-# Self-explanatory Code Commenting Instructions
+Guidelines for writing self-explanatory code with minimal comments. Examples in JavaScript but applicable to any language with comments.
 
 ## Core Principle
 
 **Write code that speaks for itself. Comment only when necessary to explain WHY, not WHAT.**
+
 We do not need comments most of the time.
 
 ## Commenting Guidelines
 
 ### ❌ AVOID These Comment Types
 
-**Obvious Comments**
+#### Obvious Comments
 
 ```javascript
 // Bad: States the obvious
@@ -22,7 +20,7 @@ let counter = 0; // Initialize counter to zero
 counter++; // Increment counter by one
 ```
 
-**Redundant Comments**
+#### Redundant Comments
 
 ```javascript
 // Bad: Comment repeats the code
@@ -31,7 +29,7 @@ function getUserName() {
 }
 ```
 
-**Outdated Comments**
+#### Outdated Comments
 
 ```javascript
 // Bad: Comment doesn't match the code
@@ -41,7 +39,7 @@ const tax = price * 0.08; // Actually 8%
 
 ### ✅ WRITE These Comment Types
 
-**Complex Business Logic**
+#### Complex Business Logic
 
 ```javascript
 // Good: Explains WHY this specific calculation
@@ -49,7 +47,7 @@ const tax = price * 0.08; // Actually 8%
 const tax = calculateProgressiveTax(income, [0.1, 0.2], [10000]);
 ```
 
-**Non-obvious Algorithms**
+#### Non-obvious Algorithms
 
 ```javascript
 // Good: Explains the algorithm choice
@@ -64,7 +62,7 @@ for (let k = 0; k < vertices; k++) {
 }
 ```
 
-**Regex Patterns**
+#### Regex Patterns
 
 ```javascript
 // Good: Explains what the regex matches
@@ -72,7 +70,7 @@ for (let k = 0; k < vertices; k++) {
 const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 ```
 
-**API Constraints or Gotchas**
+#### API Constraints or Gotchas
 
 ```javascript
 // Good: Explains external constraint

@@ -62,7 +62,7 @@ export const Route = createRootRoute({
   head: () => ({
     meta: [
       {
-        charSet: "utf-8",
+        charSet: "utf8",
       },
       {
         name: "viewport",
@@ -185,7 +185,7 @@ interface AppSidebarProps {
 function AppSidebar(props: Readonly<AppSidebarProps>): ReactNode {
   const { onHoverChange } = props;
   const matches = useMatches();
-  const currentPath = matches[matches.length - 1]?.pathname ?? "/";
+  const currentPath = matches.at(-1)?.pathname ?? "/";
   const { isMobile } = useSidebar();
 
   return (

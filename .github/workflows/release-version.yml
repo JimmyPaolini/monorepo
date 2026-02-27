@@ -1,20 +1,23 @@
-name: 🕵️ Dependency Audit
+name: 🦸 Release Version
 
 on:
   push:
     branches:
       - main
-  pull_request:
-  schedule:
-    - cron: "0 6 * * 1" # Weekly Monday 6am UTC
+  workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
 jobs:
-  dependency-audit:
-    name: 🕵️ Dependency Audit
+  release-version:
+    name: 🦸 Release Version
     runs-on: ubuntu-latest
 
     steps:
@@ -22,9 +25,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: 🕋 Setup Monorepo
         uses: ./.github/actions/setup-monorepo
 
-      - name: 🔗 Dependency Audit
-        run: pnpm exec nx affected -t dependency-audit --parallel=3
+      - name: 🦸 Release Version
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: pnpm semantic-release

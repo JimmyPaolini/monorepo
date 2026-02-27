@@ -89,7 +89,7 @@ function findHexagramPattern(
     }
 
     // Check if these 3 bodies form a complete triangle
-    const neighbors = Array.from(trineNeighbors);
+    const neighbors = [...trineNeighbors];
     const b1 = neighbors[0];
     const b2 = neighbors[1];
     if (!b1 || !b2) {
@@ -230,7 +230,7 @@ function composeHexagrams(
     bodiesSet.add(edge.body1);
     bodiesSet.add(edge.body2);
   }
-  const bodies = Array.from(bodiesSet);
+  const bodies = [...bodiesSet];
 
   if (bodies.length < 6) {
     return events;
@@ -322,14 +322,14 @@ function getSextupleAspectEvent(params: {
   const body6Symbol = symbolByBody[body6];
   const sextupleAspectSymbol = symbolBySextupleAspect[sextupleAspect];
 
-  const bodiesSorted = [
+  const bodiesSorted = _.sortBy([
     body1Capitalized,
     body2Capitalized,
     body3Capitalized,
     body4Capitalized,
     body5Capitalized,
     body6Capitalized,
-  ].sort();
+  ]);
 
   const description = `${bodiesSorted.join(", ")} ${sextupleAspect} ${phase}`;
 
@@ -386,11 +386,7 @@ export function getSextupleAspectEvents(
   currentMinute: Moment,
 ): Event[] {
   const edges = parseAspectEvents(aspectEvents);
-  const events: Event[] = [];
-
-  events.push(...composeHexagrams(edges, currentMinute));
-
-  return events;
+  return composeHexagrams(edges, currentMinute);
 }
 
 // #region Duration Events
@@ -416,13 +412,12 @@ export function getSextupleAspectDurationEvents(events: Event[]): Event[] {
 
   // Group by body sextet and aspect type using categories
   const groupedEvents = _.groupBy(sextupleAspectEvents, (event) => {
-    const planets = event.categories
-      .filter((category) =>
-        sextupleAspectBodies
-          .map((sextupleAspectBody) => _.startCase(sextupleAspectBody))
-          .includes(category),
-      )
-      .sort();
+    const filteredPlanets = event.categories.filter((category) =>
+      sextupleAspectBodies
+        .map((sextupleAspectBody) => _.startCase(sextupleAspectBody))
+        .includes(category),
+    );
+    const planets = _.sortBy(filteredPlanets);
 
     const aspect = event.categories.find((category) =>
       ["Hexagram", "Grand Sextile"].includes(category),

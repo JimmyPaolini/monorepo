@@ -10,15 +10,15 @@
  * 6. iCalendar file generation and export
  */
 
-import fs from "fs";
+import fs from "node:fs";
 
 import moment from "moment-timezone";
 
 import {
   type Event as CalendarEvent,
+  getCalendar,
   MARGIN_MINUTES,
 } from "./calendar.utilities";
-import { getCalendar } from "./calendar.utilities";
 import {
   getActiveAspectsAt,
   getAllEvents,

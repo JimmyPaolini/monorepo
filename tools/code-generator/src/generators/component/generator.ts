@@ -1,4 +1,4 @@
-import * as path from "path";
+import path from "node:path";
 
 import { formatFiles, generateFiles } from "@nx/devkit";
 import _ from "lodash";

@@ -54,7 +54,7 @@ export function Translations(props: TranslationsProps): ReactElement {
   if (!isExpandable) {
     return (
       <ul className={unorderedListClassName}>
-        {translations.map(renderTranslation)}
+        {translations.map((t) => renderTranslation(t))}
       </ul>
     );
   }
@@ -63,12 +63,12 @@ export function Translations(props: TranslationsProps): ReactElement {
     <Collapsible defaultOpen={defaultOpen}>
       <CollapsibleTrigger asChild>
         <ul className={unorderedListClassName}>
-          {translations.slice(0, 2).map(renderTranslation)}
+          {translations.slice(0, 2).map((t) => renderTranslation(t))}
         </ul>
       </CollapsibleTrigger>
       <CollapsibleContent>
         <ul className={unorderedListClassName}>
-          {translations.slice(2).map(renderTranslation)}
+          {translations.slice(2).map((t) => renderTranslation(t))}
         </ul>
       </CollapsibleContent>
     </Collapsible>

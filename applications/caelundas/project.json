@@ -1,116 +1,121 @@
 {
-  "name": "caelundas",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "applications/caelundas",
+  "name": "caelundas",
   "projectType": "application",
+  "sourceRoot": "applications/caelundas",
   "tags": [],
   "targets": {
+    "biome": {},
     "code-analysis": {
       "options": {
         "commands": [
-          "nx run caelundas:typecheck",
-          "nx run caelundas:lint:{args.configuration}",
           "nx run caelundas:format:{args.configuration}",
           "nx run caelundas:knip:{args.configuration}",
-          "nx run caelundas:type-coverage",
+          "nx run caelundas:lint:{args.configuration}",
           "nx run caelundas:markdown-lint:{args.configuration}",
-          "nx run caelundas:spell-check"
+          "nx run caelundas:spell-check",
+          "nx run caelundas:type-coverage",
+          "nx run caelundas:typecheck",
+          "nx run caelundas:yaml-lint"
         ]
       }
     },
     "dependency-analysis": {},
     "develop": {
+      "description": "Run Caelundas locally with .env file",
       "executor": "nx:run-commands",
       "options": {
         "command": "pnpm develop",
         "cwd": "applications/caelundas"
-      },
-      "description": "Run Caelundas locally with .env file"
+      }
     },
     "docker-build": {
+      "description": "Build Docker image for linux/amd64 and load it locally",
       "executor": "nx:run-commands",
       "options": {
         "command": "docker buildx build --platform linux/amd64 -f applications/caelundas/Dockerfile -t caelundas:1.0.0 -t ghcr.io/jimmypaolini/caelundas:1.0.0 --load .",
         "cwd": "{workspaceRoot}"
-      },
-      "description": "Build Docker image for linux/amd64 and load it locally"
+      }
     },
     "docker-push": {
+      "description": "Build and push Docker image to GitHub Container Registry",
       "executor": "nx:run-commands",
       "options": {
         "command": "docker buildx build --platform linux/amd64 -f applications/caelundas/Dockerfile -t ghcr.io/jimmypaolini/caelundas:1.0.0 --push .",
         "cwd": "{workspaceRoot}"
-      },
-      "description": "Build and push Docker image to GitHub Container Registry"
+      }
     },
     "format": {},
     "helm-uninstall": {
+      "description": "Uninstall a Caelundas Helm release and clean up PVC (requires release name argument)",
       "executor": "nx:run-commands",
       "options": {
         "command": "./applications/caelundas/scripts/helm-uninstall.sh",
         "cwd": "{workspaceRoot}"
-      },
-      "description": "Uninstall a Caelundas Helm release and clean up PVC (requires release name argument)"
+      }
     },
     "helm-upgrade": {
+      "description": "Deploy Caelundas job with Helm with auto-generated release name",
       "executor": "nx:run-commands",
       "options": {
         "command": "./applications/caelundas/scripts/helm-upgrade.sh",
         "cwd": "{workspaceRoot}"
-      },
-      "description": "Deploy Caelundas job with Helm with auto-generated release name"
+      }
     },
     "knip": {},
     "kubernetes-copy-files": {
+      "description": "Copy files from a completed Caelundas job (requires release name argument)",
       "executor": "nx:run-commands",
       "options": {
         "command": "./applications/caelundas/scripts/kubernetes-copy-files.sh",
         "cwd": "{workspaceRoot}"
-      },
-      "description": "Copy files from a completed Caelundas job (requires release name argument)"
+      }
     },
     "kubernetes-list-files": {
+      "description": "List files in a Caelundas job's PVC (requires release name argument)",
       "executor": "nx:run-commands",
       "options": {
         "command": "./applications/caelundas/scripts/kubernetes-list-files.sh",
         "cwd": "{workspaceRoot}"
-      },
-      "description": "List files in a Caelundas job's PVC (requires release name argument)"
+      }
     },
+    "lint": {},
     "markdown-lint": {},
+    "oxlint": {},
+    "prettier": {},
     "spell-check": {},
     "start": {
+      "description": "Start the Caelundas application",
       "executor": "nx:run-commands",
       "options": {
         "command": "pnpm start",
         "cwd": "applications/caelundas"
-      },
-      "description": "Start the Caelundas application"
+      }
     },
     "test": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm test",
-        "cwd": "applications/caelundas"
-      },
       "configurations": {
-        "watch": {
-          "command": "pnpm test:watch"
-        },
         "coverage": {
           "command": "pnpm test:coverage"
         },
-        "unit": {
-          "command": "pnpm test:unit"
+        "end-to-end": {
+          "command": "pnpm test:end-to-end"
         },
         "integration": {
           "command": "pnpm test:integration"
         },
-        "end-to-end": {
-          "command": "pnpm test:end-to-end"
+        "unit": {
+          "command": "pnpm test:unit"
+        },
+        "watch": {
+          "command": "pnpm test:watch"
         }
       },
-      "description": "Run all tests"
+      "description": "Run all tests",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm test",
+        "cwd": "applications/caelundas"
+      }
     },
     "type-coverage": {},
     "typecheck": {},

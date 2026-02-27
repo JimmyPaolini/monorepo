@@ -17,7 +17,6 @@ fi
 pnpm install --frozen-lockfile
 
 pnpm exec nx reset
+pnpm exec nx graph --file=.nx/graph.json 2>/dev/null
 
 pnpm exec tsx .devcontainer/scripts/sync-vscode-settings.ts write
-
-pnpm exec nx graph --file=.nx/graph.json 2>/dev/null

@@ -140,10 +140,10 @@ const angleByMinorAspect: Record<MinorAspect, number> = {
  * Based on harmonic divisions of the circle.
  */
 const angleBySpecialtyAspect: Record<SpecialtyAspect, number> = {
-  undecile: 32.72727272727273,
+  undecile: 32.727_272_727_272_73,
   decile: 36,
   novile: 40,
-  septile: 51.42857142857143,
+  septile: 51.428_571_428_571_43,
   quintile: 72,
   tredecile: 108,
   biquintile: 144,

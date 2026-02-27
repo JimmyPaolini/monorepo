@@ -17,6 +17,7 @@ import {
   Textarea,
 } from "@monorepo/lexico-components";
 import { createFileRoute } from "@tanstack/react-router";
+import _ from "lodash";
 import { BookOpen, Edit, Plus, Trash2 } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 
@@ -58,9 +59,9 @@ function LibraryPage(): ReactNode {
     try {
       const data = await getUserTexts();
       setTexts(data);
-    } catch (err: unknown) {
+    } catch (error_: unknown) {
       const message =
-        err instanceof Error ? err.message : "Failed to load texts";
+        error_ instanceof Error ? error_.message : "Failed to load texts";
       setError(message);
     } finally {
       setIsLoading(false);
@@ -81,15 +82,13 @@ function LibraryPage(): ReactNode {
       });
       if (result.success && result.text) {
         const newText = result.text;
-        setTexts((prev) =>
-          [...prev, newText].sort((a, b) => a.title.localeCompare(b.title)),
-        );
+        setTexts((prev) => _.orderBy([...prev, newText], [(t) => t.title]));
         setFormTitle("");
         setFormText("");
         setIsCreateOpen(false);
       }
-    } catch (err) {
-      console.error("Failed to create text:", err);
+    } catch (error_) {
+      console.error("Failed to create text:", error_);
     } finally {
       setIsSubmitting(false);
     }
@@ -105,20 +104,21 @@ function LibraryPage(): ReactNode {
       });
       if (result.success) {
         setTexts((prev) =>
-          prev
-            .map((t) =>
+          _.orderBy(
+            prev.map((t) =>
               t.id === editingText.id
                 ? { ...t, title: formTitle, text: formText }
                 : t,
-            )
-            .sort((a, b) => a.title.localeCompare(b.title)),
+            ),
+            [(t) => t.title],
+          ),
         );
         setFormTitle("");
         setFormText("");
         setEditingText(null);
       }
-    } catch (err) {
-      console.error("Failed to update text:", err);
+    } catch (error_) {
+      console.error("Failed to update text:", error_);
     } finally {
       setIsSubmitting(false);
     }
@@ -134,8 +134,8 @@ function LibraryPage(): ReactNode {
             setSelectedText(null);
           }
         }
-      } catch (err) {
-        console.error("Failed to delete text:", err);
+      } catch (error_) {
+        console.error("Failed to delete text:", error_);
       }
     },
     [selectedText],
@@ -315,7 +315,7 @@ function LibraryPage(): ReactNode {
                   </div>
                 </div>
                 <CardDescription className="line-clamp-2">
-                  {text.text.substring(0, 150)}...
+                  {text.text.slice(0, 150)}...
                 </CardDescription>
               </CardHeader>
             </Card>

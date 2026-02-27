@@ -20,6 +20,15 @@ const syncConventionalConfigFiles = [
   ".github/ISSUE_TEMPLATE/feature-request.yml",
 ];
 
+const syncPullRequestTemplateFiles = [
+  ".github/PULL_REQUEST_TEMPLATE.md",
+  "documentation/skills/create-pull-request/SKILL.md",
+  ".github/prompts/create-pull-request.prompt.md",
+  ".github/prompts/update-pull-request.prompt.md",
+];
+
+const syncAgentSkillsFiles = ["AGENTS.md", "documentation/skills/**/*.md"];
+
 const config = {
   // ── Lockfile integrity ──
   // When package.json or workspace config changes, verify the lockfile is in sync
@@ -35,10 +44,18 @@ const config = {
   [`{${syncConventionalConfigFiles.join(",")}}`]: () => [
     "nx run monorepo:sync-conventional-config:check",
   ],
+  // Keep PR template in sync across skills and prompt files
+  [`{${syncPullRequestTemplateFiles.join(",")}}`]: () => [
+    "nx run monorepo:sync-pull-request-template:check",
+  ],
+  // Keep agent skills table of contents in sync in AGENTS.md
+  [`{${syncAgentSkillsFiles.join(",")}}`]: () => [
+    "nx run monorepo:sync-agent-skills:check",
+  ],
 
   // ── TypeScript / JavaScript source files ──
-  // Runs format, lint, typecheck, and spell-check on affected projects,
-  // plus monorepo-level spell-check for root-level words
+  // Runs format (prettier + biome), lint (eslint + oxlint), typecheck, and spell-check
+  // on affected projects, plus monorepo-level spell-check for root-level words
   "*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}": (files: string[]) => {
     // Convert absolute paths to relative paths for Nx
     const relativePaths = files
@@ -46,19 +63,31 @@ const config = {
       .join(",");
     // Nx runs multiple targets in parallel (respects nx.json parallel setting)
     return [
-      `nx affected --target=format,lint,typecheck,spell-check --files=${relativePaths}`,
+      `nx affected --target=format,lint,typecheck,spell-check --configuration=check --files=${relativePaths}`,
       "nx run monorepo:spell-check",
     ];
   },
 
-  // ── JSON / CSS / HTML data files ──
+  // ── JSON / HTML data files ──
   // Format and spell-check only (no lint or typecheck needed)
-  "*.{json,jsonc,json5,css,scss,html}": (files: string[]) => {
+  "*.{json,jsonc,json5,html}": (files: string[]) => {
     const relativePaths = files
       .map((file: string) => relative(process.cwd(), file))
       .join(",");
     return [
-      `nx affected --target=format,spell-check --files=${relativePaths}`,
+      `nx affected --target=format,spell-check --configuration=check --files=${relativePaths}`,
+      "nx run monorepo:spell-check",
+    ];
+  },
+
+  // ── CSS files ──
+  // Runs Stylelint, format, and spell-check
+  "*.css": (files: string[]) => {
+    const relativePaths = files
+      .map((file: string) => relative(process.cwd(), file))
+      .join(",");
+    return [
+      `nx affected --target=stylelint,format,spell-check --configuration=check --files=${relativePaths}`,
       "nx run monorepo:spell-check",
     ];
   },
@@ -70,8 +99,8 @@ const config = {
       .map((file: string) => relative(process.cwd(), file))
       .join(",");
     return [
-      `nx affected --target=format,lint,markdown-lint,spell-check --files=${relativePaths}`,
-      "nx run-many --target=spell-check,markdown-lint --projects=monorepo",
+      `nx affected --target=format,lint,markdown-lint,spell-check --configuration=check --files=${relativePaths}`,
+      "nx run-many --target=spell-check,markdown-lint --configuration=check --projects=monorepo",
     ];
   },
 
@@ -82,7 +111,7 @@ const config = {
       .map((file: string) => relative(process.cwd(), file))
       .join(",");
     return [
-      `nx affected --target=format,yaml-lint,spell-check --files=${relativePaths}`,
+      `nx affected --target=format,yaml-lint,spell-check --configuration=check --files=${relativePaths}`,
       "nx run monorepo:spell-check",
     ];
   },

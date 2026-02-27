@@ -39,7 +39,7 @@ export function getSign(longitude: number): Sign {
     throw new Error(`🚫 Longitude ${longitude} not in any sign.`);
   }
   return entry[0] as Sign;
-};
+}
 
 /**
  * Determines if a sign ingress is occurring.

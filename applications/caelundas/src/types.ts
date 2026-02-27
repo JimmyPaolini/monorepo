@@ -5,33 +5,30 @@
  * and type definitions.
  */
 
-import {
-  aspectBodies,
+import type {
   aspectPhases,
-  type eclipsePhases,
-  ingressBodies,
-  phaseBodies,
+  eclipsePhases,
   retrogradeBodies,
-  type symbolByAspect,
-  type symbolByAsteroid,
-  type symbolByBody,
-  type symbolByComet,
-  type symbolByDecan,
-  type symbolByLunarPhase,
-  type symbolByMajorAspect,
-  type symbolByMartianPhase,
-  type symbolByMercurianPhase,
-  type symbolByMinorAspect,
-  type symbolByNode,
-  type symbolByOrbitalDirection,
-  type symbolByPlanet,
-  type symbolByQuadrupleAspect,
-  type symbolByQuintupleAspect,
-  type symbolBySextupleAspect,
-  type symbolBySign,
-  type symbolBySpecialtyAspect,
-  type symbolByTripleAspect,
-  type symbolByVenusianPhase,
+  symbolByAspect,
+  symbolByAsteroid,
+  symbolByBody,
+  symbolByComet,
+  symbolByDecan,
+  symbolByLunarPhase,
+  symbolByMajorAspect,
+  symbolByMartianPhase,
+  symbolByMercurianPhase,
+  symbolByMinorAspect,
+  symbolByNode,
+  symbolByOrbitalDirection,
+  symbolByPlanet,
+  symbolByQuadrupleAspect,
+  symbolByQuintupleAspect,
+  symbolBySextupleAspect,
+  symbolBySign,
+  symbolBySpecialtyAspect,
+  symbolByTripleAspect,
+  symbolByVenusianPhase,
 } from "./symbols";
 
 // #region Signs 🪧
@@ -268,8 +265,6 @@ export type OrbitalDirection = keyof typeof symbolByOrbitalDirection;
 export type OrbitalDirectionSymbol =
   (typeof symbolByOrbitalDirection)[OrbitalDirection];
 
-
-
 /**
  * Lunar phase representing the Moon's illumination state as seen from Earth.
  *
@@ -445,9 +440,9 @@ export type RetrogradeBodySymbol = (typeof symbolByBody)[RetrogradeBody];
 
 // Re-export arrays from symbols for convenience
 export {
+  phaseBodies as planetaryPhaseBodies,
   aspectPhases,
   retrogradeBodies,
-  phaseBodies as planetaryPhaseBodies,
   ingressBodies as signIngressBodies,
   ingressBodies as decanIngressBodies,
   ingressBodies as peakIngressBodies,
@@ -459,4 +454,4 @@ export {
   aspectBodies as quintupleAspectBodies,
   aspectBodies as sextupleAspectBodies,
   aspectBodies as stelliumBodies,
-};
+} from "./symbols";
