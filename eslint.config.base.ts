@@ -565,16 +565,32 @@ export default [
     },
   },
 
-  // ━━━━━━━━━━━━━━━━━━━ Package.json files ━━━━━━━━━━━━━━━━━━━
+  // ━━━━━━━━━━━━━━━━━━━ package.json files ━━━━━━━━━━━━━━━━━━━
   // Allow line-separated groups in package.json for security audit tool flexibility
   {
-    files: ["**/package.json"],
+    files: ["**/package.json", "**/devcontainer.json"],
     rules: {
       "jsonc/sort-keys": [
         "error",
         {
           order: { caseSensitive: false, natural: true, type: "asc" },
-          pathPattern: "^(!devDependencies)$",
+          pathPattern: "^!(devDependencies)$",
+        },
+      ],
+    },
+  },
+
+  // ━━━━━━━━━━━━━━━━━━━ devcontainer.json files ━━━━━━━━━━━━━━━━━━━
+  // Allow line-separated groups in devcontainer.json for security audit tool flexibility
+  {
+    files: ["**/package.json", "**/devcontainer.json"],
+    rules: {
+      "jsonc/sort-array-values": [
+        "error",
+        {
+          minValues: 2,
+          order: { type: "asc", caseSensitive: false, natural: true },
+          pathPattern: "^!(runArgs)$",
         },
       ],
     },

@@ -9,6 +9,7 @@
  * - .github/prompts/submit-changes.prompt.md (types and scopes tables)
  * - .github/ISSUE_TEMPLATE/bug-report.yml (scopes dropdown)
  * - .github/ISSUE_TEMPLATE/feature-request.yml (scopes dropdown)
+ * - release.config.cjs (releaseRules and presetConfig.types arrays)
  *
  * Usage: tsx scripts/sync-conventional-config.ts [check|write]
  *   check (default): Validate that targets are in sync, exit 1 if not
@@ -23,6 +24,9 @@ import { fileURLToPath } from "node:url";
 import JSON5 from "json5";
 import _ from "lodash";
 
+import type { Scope, Type } from "../conventional.config.d.cts";
+
+const require = createRequire(import.meta.url);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const WORKSPACE_ROOT = path.join(__dirname, "..");
@@ -44,16 +48,45 @@ const ISSUE_TEMPLATE_FILES = [
   path.join(WORKSPACE_ROOT, ".github/ISSUE_TEMPLATE/bug-report.yml"),
   path.join(WORKSPACE_ROOT, ".github/ISSUE_TEMPLATE/feature-request.yml"),
 ];
+const RELEASE_CONFIG_FILE = path.join(WORKSPACE_ROOT, "release.config.cjs");
 const MODE = process.argv[2] || "check";
+
+/**
+ * Types that are handled via special properties in releaseRules (not `type:`),
+ * so they are excluded from the releaseRules type-coverage check.
+ */
+const RELEASE_RULES_SPECIAL_TYPES = new Set(["revert"]);
 
 interface EntryWithDescription {
   value: string;
   description: string;
 }
 
+interface ReleaseRule {
+  type?: string;
+  breaking?: boolean;
+  revert?: boolean;
+  scope?: string;
+  release: string | false;
+}
+
+interface PresetConfigType {
+  type: string;
+  section: string;
+  hidden?: boolean;
+}
+
+interface ReleaseConfig {
+  plugins: [
+    [string, { releaseRules: ReleaseRule[] }],
+    [string, { presetConfig: { types: PresetConfigType[] } }],
+    ...unknown[],
+  ];
+}
+
 interface ConventionalConfig {
-  types: string[];
-  scopes: string[];
+  types: Type[];
+  scopes: Scope[];
 }
 
 // ─── Config Loading ──────────────────────────────────────────────────────────
@@ -62,38 +95,7 @@ interface ConventionalConfig {
  * Load conventional.config.cjs using require() since it's a CommonJS module.
  */
 function loadConventionalConfig(): ConventionalConfig {
-  const require = createRequire(import.meta.url);
-
   return require(CONVENTIONAL_CONFIG) as ConventionalConfig;
-}
-
-/**
- * Parse entries with inline comments from conventional.config.cjs.
- * Each line like `"build", // Description` becomes an EntryWithDescription object.
- */
-function parseEntriesWithDescriptions(
-  arrayName: "types" | "scopes",
-): EntryWithDescription[] {
-  const content = readFileSync(CONVENTIONAL_CONFIG, "utf8");
-  const pattern = new RegExp(String.raw`const ${arrayName} = \[([\s\S]*?)\];`);
-  const match = pattern.exec(content);
-  if (!match?.[1]) {
-    throw new Error(
-      `Could not find ${arrayName} array in conventional.config.cjs`,
-    );
-  }
-
-  const entries: EntryWithDescription[] = [];
-  for (const line of match[1].split("\n")) {
-    const entryMatch = /^\s*"([^"]+)",?\s*\/\/\s*(.+)$/.exec(line);
-    if (entryMatch?.[1] && entryMatch[2]) {
-      entries.push({
-        value: entryMatch[1],
-        description: entryMatch[2].trim(),
-      });
-    }
-  }
-  return entries;
 }
 
 // ─── Settings.json Sync ─────────────────────────────────────────────────────
@@ -113,44 +115,17 @@ function parseSettingsScopes(content: string): string[] {
 }
 
 /**
- * Extract the raw scopes array block (with comments) from conventional.config.cjs.
- * Returns the inner content between the brackets.
+ * Generate the conventionalCommits.scopes array block for settings.json (JSONC).
+ * Produces lines like `    "caelundas", // Description` (4-space indent).
+ * The last entry has no trailing comma (required for valid JSON).
  */
-function extractScopesBlock(): string {
-  const content = readFileSync(CONVENTIONAL_CONFIG, "utf8");
-  const match = /const scopes = \[([\s\S]*?)\];/.exec(content);
-  if (!match?.[1]) {
-    throw new Error("Could not find scopes array in conventional.config.cjs");
-  }
-  return match[1];
-}
-
-/**
- * Re-indent the scopes block from conventional.config.cjs (2-space indented)
- * to settings.json format (4-space indented within the array).
- * Removes trailing comma from the last value entry for valid JSON.
- */
-function formatScopesBlockForSettings(scopesBlock: string): string {
-  const lines = scopesBlock
-    .split("\n")
-    .map((line) => {
-      const trimmed = line.trimEnd();
-      if (!trimmed) return "";
-      // Remove leading whitespace and re-indent with 4 spaces
-      return `    ${trimmed.trimStart()}`;
+function formatScopesForSettings(scopes: Scope[]): string {
+  return scopes
+    .map((scope, i) => {
+      const comma = i < scopes.length - 1 ? "," : "";
+      return `    "${scope.name}"${comma} // ${scope.description}`;
     })
-    .filter((line) => line !== "");
-
-  // Remove trailing comma from the last value line (not a comment-only line)
-  const reversed = _.reverse([...lines]);
-  for (const [i, line] of reversed.entries()) {
-    if (line.trimStart().startsWith("//")) continue;
-    reversed[i] = line.replace(/,(\s*\/\/.*)$/, "$1");
-    break;
-  }
-  reversed.reverse();
-
-  return reversed.join("\n");
+    .join("\n");
 }
 
 // ─── SKILL.md Sync ─────────────────────────────────────────────────────────
@@ -170,6 +145,25 @@ function generateMarkdownTable(
     lines.push(`| \`${entry.value}\` | ${entry.description} |`);
   }
   return lines.join("\n");
+}
+
+// ─── release.config.cjs Sync ──────────────────────────────────────────────
+
+/**
+ * Load release.config.cjs using require() since it's a CommonJS module.
+ */
+function loadReleaseConfig(): ReleaseConfig {
+  return require(RELEASE_CONFIG_FILE) as ReleaseConfig;
+}
+
+function getReleaseRulesTypes(config: ReleaseConfig): string[] {
+  return config.plugins[0][1].releaseRules
+    .map((r) => r.type)
+    .filter((t): t is string => t !== undefined);
+}
+
+function getPresetConfigTypes(config: ReleaseConfig): string[] {
+  return config.plugins[1][1].presetConfig.types.map((t) => t.type);
 }
 
 // ─── Issue Template Sync ────────────────────────────────────────────────────
@@ -247,6 +241,96 @@ function parseMarkdownTableValues(tableContent: string): string[] {
 
 // ─── Check / Write Logic ───────────────────────────────────────────────────
 
+function checkReleaseConfigSync(sourceTypes: string[]): boolean {
+  const releaseConfig = loadReleaseConfig();
+  const releaseRulesTypes = getReleaseRulesTypes(releaseConfig);
+  const presetConfigTypes = getPresetConfigTypes(releaseConfig);
+  const relativeFile = path.relative(WORKSPACE_ROOT, RELEASE_CONFIG_FILE);
+  let inSync = true;
+
+  // Exclude types handled by special releaseRules keys (e.g. `{ revert: true }`)
+  const releaseRulesCheckTypes = sourceTypes.filter(
+    (t) => !RELEASE_RULES_SPECIAL_TYPES.has(t),
+  );
+
+  const missingFromReleaseRules = _.difference(
+    releaseRulesCheckTypes,
+    releaseRulesTypes,
+  );
+  if (missingFromReleaseRules.length > 0) {
+    console.log(`❌ ${relativeFile} releaseRules is missing types:\n`);
+    missingFromReleaseRules.forEach((t) => console.log(`    + ${t}`));
+    console.log("");
+    inSync = false;
+  }
+
+  const missingFromPresetTypes = _.difference(sourceTypes, presetConfigTypes);
+  if (missingFromPresetTypes.length > 0) {
+    console.log(`❌ ${relativeFile} presetConfig.types is missing types:\n`);
+    missingFromPresetTypes.forEach((t) => console.log(`    + ${t}`));
+    console.log("");
+    inSync = false;
+  }
+
+  return inSync;
+}
+
+function writeReleaseConfigSync(sourceTypes: Type[]): void {
+  const relativeFile = path.relative(WORKSPACE_ROOT, RELEASE_CONFIG_FILE);
+  console.log(`🔄 Syncing ${relativeFile} types...`);
+
+  const releaseConfig = loadReleaseConfig();
+  const releaseRulesCheckTypes = sourceTypes
+    .map((sourceType) => sourceType.name)
+    .filter((sourceType) => !RELEASE_RULES_SPECIAL_TYPES.has(sourceType));
+  const missingFromReleaseRules = _.difference(
+    releaseRulesCheckTypes,
+    getReleaseRulesTypes(releaseConfig),
+  );
+  const missingFromPresetTypes = _.difference(
+    sourceTypes.map((t) => t.name),
+    getPresetConfigTypes(releaseConfig),
+  );
+
+  let content = readFileSync(RELEASE_CONFIG_FILE, "utf8");
+
+  if (missingFromReleaseRules.length > 0) {
+    const newEntries = missingFromReleaseRules
+      .map(
+        (sourceType) =>
+          `          { type: "${sourceType}", release: false }, // ⚠️ Added by sync — set appropriate release level`,
+      )
+      .join("\n");
+    content = content.replace(
+      /(releaseRules:\s*\[[\s\S]*?)(\s*\],)/,
+      `$1\n${newEntries}$2`,
+    );
+  }
+
+  if (missingFromPresetTypes.length > 0) {
+    const capitalize = (s: string): string =>
+      s.charAt(0).toUpperCase() + s.slice(1);
+    const newEntries = missingFromPresetTypes
+      .map((missingFromPresetType) => {
+        const entry = sourceTypes.find(
+          (sourceType) => sourceType.name === missingFromPresetType,
+        );
+        const description = entry
+          ? ` // ${entry.description}`
+          : " // ⚠️ Added by sync — add description";
+        return `            { type: "${missingFromPresetType}", section: "⚠️ ${capitalize(missingFromPresetType)}", hidden: true },${description}`;
+      })
+      .join("\n");
+    content = content.replace(
+      /(presetConfig:\s*\{[\s\S]*?types:\s*\[[\s\S]*?)(\s*\],\s*\})/,
+      `$1\n${newEntries}$2`,
+    );
+  }
+
+  writeFileSync(RELEASE_CONFIG_FILE, content, "utf8");
+  console.log(`✅ ${relativeFile} types synced`);
+}
+
 function showDifference(
   source: string[],
   target: string[],
@@ -308,7 +392,10 @@ function checkSkillSync(
     }
 
     const skillValues = parseMarkdownTableValues(markerContent);
-    const sourceValues = config[marker];
+    const sourceValues: string[] =
+      marker === "types"
+        ? config.types.map((type) => type.name)
+        : config.scopes.map((scope) => scope.name);
     const sortedSource = _.sortBy([...sourceValues]);
     const sortedSkill = _.sortBy([...skillValues]);
 
@@ -363,11 +450,10 @@ function checkIssueTemplateSync(
   return true;
 }
 
-function writeSettingsSync(): void {
+function writeSettingsSync(scopes: Scope[]): void {
   console.log("🔄 Syncing settings.json scopes...");
   const settingsContent = readFileSync(SETTINGS_FILE, "utf8");
-  const scopesBlock = extractScopesBlock();
-  const formattedBlock = formatScopesBlockForSettings(scopesBlock);
+  const formattedBlock = formatScopesForSettings(scopes);
 
   const scopesPattern =
     /("conventionalCommits\.scopes":\s*\[)([\s\S]*?)(\s*\])/;
@@ -387,13 +473,19 @@ function writeSettingsSync(): void {
   console.log("✅ settings.json scopes synced");
 }
 
-function writeSkillSync(skillFile: string): void {
+function writeSkillSync(config: ConventionalConfig, skillFile: string): void {
   const skillName = path.relative(WORKSPACE_ROOT, skillFile);
   console.log(`🔄 Syncing ${skillName} types and scopes...`);
   let skillContent = readFileSync(skillFile, "utf8");
 
-  const typesEntries = parseEntriesWithDescriptions("types");
-  const scopesEntries = parseEntriesWithDescriptions("scopes");
+  const typesEntries: EntryWithDescription[] = config.types.map((type) => ({
+    value: type.name,
+    description: type.description,
+  }));
+  const scopesEntries: EntryWithDescription[] = config.scopes.map((scope) => ({
+    value: scope.name,
+    description: scope.description,
+  }));
 
   const typesTable = generateMarkdownTable(typesEntries, {
     col1: "Type",
@@ -442,7 +534,10 @@ function main(): void {
   const settingsScopes = parseSettingsScopes(settingsContent);
 
   if (MODE === "check") {
-    const settingsOk = checkSettingsSync(config.scopes, settingsScopes);
+    const settingsOk = checkSettingsSync(
+      config.scopes.map((scope) => scope.name),
+      settingsScopes,
+    );
     let skillsOk = true;
     for (const skillFile of SKILL_FILES) {
       if (!checkSkillSync(config, skillFile)) {
@@ -451,12 +546,20 @@ function main(): void {
     }
     let templatesOk = true;
     for (const templateFile of ISSUE_TEMPLATE_FILES) {
-      if (!checkIssueTemplateSync(config.scopes, templateFile)) {
+      if (
+        !checkIssueTemplateSync(
+          config.scopes.map((scope) => scope.name),
+          templateFile,
+        )
+      ) {
         templatesOk = false;
       }
     }
+    const releaseConfigOk = checkReleaseConfigSync(
+      config.types.map((type) => type.name),
+    );
 
-    if (!settingsOk || !skillsOk || !templatesOk) {
+    if (!settingsOk || !skillsOk || !templatesOk || !releaseConfigOk) {
       console.log(
         "💡 Run 'nx run monorepo:sync-conventional-config:write' to sync",
       );
@@ -464,28 +567,43 @@ function main(): void {
     }
     console.log("✅ Conventional commit config is in sync");
   } else if (MODE === "write") {
-    const settingsOk = checkSettingsSync(config.scopes, settingsScopes);
+    const settingsOk = checkSettingsSync(
+      config.scopes.map((scope) => scope.name),
+      settingsScopes,
+    );
     const outOfSyncSkills = SKILL_FILES.filter(
       (skillFile) => !checkSkillSync(config, skillFile),
     );
     const outOfSyncTemplates = ISSUE_TEMPLATE_FILES.filter(
-      (templateFile) => !checkIssueTemplateSync(config.scopes, templateFile),
+      (templateFile) =>
+        !checkIssueTemplateSync(
+          config.scopes.map((scope) => scope.name),
+          templateFile,
+        ),
+    );
+    const releaseConfigOk = checkReleaseConfigSync(
+      config.types.map((type) => type.name),
     );
 
     if (
       settingsOk &&
       outOfSyncSkills.length === 0 &&
-      outOfSyncTemplates.length === 0
+      outOfSyncTemplates.length === 0 &&
+      releaseConfigOk
     ) {
       console.log("✅ Already in sync");
     } else {
-      if (!settingsOk) writeSettingsSync();
+      if (!settingsOk) writeSettingsSync(config.scopes);
       for (const skillFile of outOfSyncSkills) {
-        writeSkillSync(skillFile);
+        writeSkillSync(config, skillFile);
       }
       for (const templateFile of outOfSyncTemplates) {
-        writeIssueTemplateSync(config.scopes, templateFile);
+        writeIssueTemplateSync(
+          config.scopes.map((scope) => scope.name),
+          templateFile,
+        );
       }
+      if (!releaseConfigOk) writeReleaseConfigSync(config.types);
     }
   } else {
     console.error(`❌ Invalid mode: ${MODE}`);
