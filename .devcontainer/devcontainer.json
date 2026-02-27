@@ -236,8 +236,7 @@
     {
       "source": "${localEnv:HOME}/.gnupg/S.gpg-agent",
       "target": "/root/.gnupg/S.gpg-agent",
-      "type": "bind",
-      "consistency": "cached"
+      "type": "bind"
     },
     {
       "source": "monorepo-node-modules",
