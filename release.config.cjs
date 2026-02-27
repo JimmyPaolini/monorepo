@@ -130,8 +130,7 @@ module.exports = {
       "@semantic-release/changelog",
       {
         changelogFile: "CHANGELOG.md",
-        changelogTitle:
-          "# Changelog\n\nAll notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.",
+        changelogTitle: `# Changelog\n\nAll notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.`,
       },
     ],
 
@@ -148,8 +147,7 @@ module.exports = {
       "@semantic-release/git",
       {
         assets: ["CHANGELOG.md", "package.json", "pnpm-lock.yaml"],
-        message:
-          "chore(release): 🔖 release ${nextRelease.version}\n\n${nextRelease.notes}",
+        message: "chore(release): 🔖 release ${nextRelease.version}",
       },
     ],
 
