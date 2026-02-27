@@ -33,8 +33,8 @@ const configuration: UserConfig = {
     ],
 
     // 🏷️ Enforce enums
-    "type-enum": [2, "always", [...(types as string[])]],
-    "scope-enum": [2, "always", [...(scopes as string[])]],
+    "type-enum": [2, "always", [...types.map((type) => type.name)]],
+    "scope-enum": [2, "always", [...scopes.map((scope) => scope.name)]],
 
     // 📏 Limit lengths
     "header-max-length": [2, "always", 128],

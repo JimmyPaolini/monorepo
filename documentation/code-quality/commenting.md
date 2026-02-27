@@ -159,11 +159,63 @@ function processData() {
 ### Divider Comments
 
 ```javascript
-// Bad: Don't use decorative comments
+// Bad: Don't use decorative comments or dash dividers
 //=====================================
 // UTILITY FUNCTIONS
 //=====================================
+
+// Also bad: plain section markers with dashes
+// --- Utility Functions ---
+// ---- Helpers ----
 ```
+
+Instead, use `#region` with an emoji and a name to organize code into named sections:
+
+```typescript
+// Good: Use #region with an emoji and descriptive name
+//#region 🛠️ Utility Functions
+
+function formatDate() { ... }
+function parseDate() { ... }
+
+//#endregion
+```
+
+The format is: `#region <emoji> <name>` — the emoji conveys the purpose at a glance, and the name describes the section's contents. Most editors (including VS Code) support folding these regions.
+
+## Code Sections
+
+When a file benefits from logical groupings, use `#region` blocks with an emoji and a descriptive name:
+
+```typescript
+//#region 🔧 Configuration
+
+const MAX_RETRIES = 3;
+const API_TIMEOUT = 5000;
+
+//#endregion
+
+//#region 📡 API Handlers
+
+export function handleRequest() { ... }
+export function handleResponse() { ... }
+
+//#endregion
+
+//#region 🛠️ Utilities
+
+function formatDate() { ... }
+function parseDate() { ... }
+
+//#endregion
+```
+
+**Rules for `#region` sections:**
+
+- Format: `//#region <emoji> <name>` — emoji first, then a short descriptive name
+- Always close with `//#endregion`
+- Use an emoji that conveys the section's purpose (e.g., 🔧 for config, 🛠️ for utilities, 📡 for networking, 🧪 for tests)
+- Never use dashes, equals signs, or other ASCII art as section dividers
 
 ## Quality Checklist
 

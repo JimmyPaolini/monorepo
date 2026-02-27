@@ -109,17 +109,17 @@ module.exports = {
         preset: "conventionalcommits",
         presetConfig: {
           types: [
-            { type: "feat", section: "✨ Features" },
-            { type: "fix", section: "🐛 Bug Fixes" },
-            { type: "perf", section: "⚡ Performance Improvements" },
-            { type: "revert", section: "⏪ Reverts" },
-            { type: "docs", section: "📝 Documentation", hidden: false },
-            { type: "style", section: "💄 Styles", hidden: true },
-            { type: "refactor", section: "♻️ Code Refactoring" },
-            { type: "test", section: "✅ Tests", hidden: true },
-            { type: "build", section: "📦 Build System" },
-            { type: "ci", section: "👷 CI/CD", hidden: true },
-            { type: "chore", section: "🔧 Chores", hidden: true },
+            { type: "feat", section: "✨ Features" }, // A new feature or capability that adds value for users
+            { type: "fix", section: "🐛 Bug Fixes" }, // A bug fix that addresses a specific issue or problem
+            { type: "perf", section: "⚡ Performance Improvements" }, // A code change that improves performance (caching, query optimization, etc.)
+            { type: "revert", section: "⏪ Reverts" }, // Reverts a previous commit
+            { type: "docs", section: "📝 Documentation", hidden: false }, // Documentation, AGENTS.md, SKILL.md, README, and planning files
+            { type: "style", section: "💄 Styles", hidden: true }, // Formatting, whitespace, or code structure changes with no semantic effect
+            { type: "refactor", section: "♻️ Code Refactoring" }, // Code restructuring that neither fixes a bug nor adds a feature
+            { type: "test", section: "🧪 Tests", hidden: true }, // Adding or correcting unit, integration, or end-to-end tests
+            { type: "build", section: "📦 Build System" }, // Build system, Vite/Docker/Helm config, or external dependency integration
+            { type: "ci", section: "👷 CI/CD", hidden: true }, // GitHub Actions workflows, composite actions, and CI/CD scripts
+            { type: "chore", section: "🔧 Chores", hidden: true }, // Housekeeping that doesn't modify src or test files (gitignore, editor config, etc.)
           ],
         },
       },
@@ -149,7 +149,7 @@ module.exports = {
       {
         assets: ["CHANGELOG.md", "package.json", "pnpm-lock.yaml"],
         message:
-          "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}",
+          "chore(release): 🔖 release ${nextRelease.version}\n\n${nextRelease.notes}",
       },
     ],
 

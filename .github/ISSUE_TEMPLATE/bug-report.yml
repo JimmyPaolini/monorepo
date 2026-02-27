@@ -28,7 +28,9 @@ body:
         - lexico-components
         - linting
         - monorepo
+        - no-release
         - packages
+        - release
         - scripts
         - testing
         - tools

@@ -9,6 +9,7 @@
  * - .github/prompts/submit-changes.prompt.md (types and scopes tables)
  * - .github/ISSUE_TEMPLATE/bug-report.yml (scopes dropdown)
  * - .github/ISSUE_TEMPLATE/feature-request.yml (scopes dropdown)
+ * - release.config.cjs (releaseRules and presetConfig.types arrays)
  *
  * Usage: tsx scripts/sync-conventional-config.ts [check|write]
  *   check (default): Validate that targets are in sync, exit 1 if not
@@ -23,6 +24,13 @@ import { fileURLToPath } from "node:url";
 import JSON5 from "json5";
 import _ from "lodash";
 
+import type { Scope, Type } from "../conventional.config.d.cts";
+
+// ════════════════════════════════════════════════════════════════════════════
+// RUNTIME ENVIRONMENT & CONSTANTS
+// ════════════════════════════════════════════════════════════════════════════
+
+const require = createRequire(import.meta.url);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const WORKSPACE_ROOT = path.join(__dirname, "..");
@@ -44,62 +52,85 @@ const ISSUE_TEMPLATE_FILES = [
   path.join(WORKSPACE_ROOT, ".github/ISSUE_TEMPLATE/bug-report.yml"),
   path.join(WORKSPACE_ROOT, ".github/ISSUE_TEMPLATE/feature-request.yml"),
 ];
+const RELEASE_CONFIG_FILE = path.join(WORKSPACE_ROOT, "release.config.cjs");
 const MODE = process.argv[2] || "check";
 
+/**
+ * Types that are handled via special properties in releaseRules (not `type:`),
+ * so they are excluded from the releaseRules type-coverage check.
+ */
+const RELEASE_RULES_SPECIAL_TYPES = new Set(["revert"]);
+
+// ════════════════════════════════════════════════════════════════════════════
+// TYPE DEFINITIONS & INTERFACES
+// ════════════════════════════════════════════════════════════════════════════
+
+/** Represents an entry with a value and description, used for markdown tables. */
 interface EntryWithDescription {
   value: string;
   description: string;
 }
 
-interface ConventionalConfig {
-  types: string[];
-  scopes: string[];
+/** Release rule configuration from release.config.cjs. */
+interface ReleaseRule {
+  type?: string;
+  breaking?: boolean;
+  revert?: boolean;
+  scope?: string;
+  release: string | false;
 }
 
-// ─── Config Loading ──────────────────────────────────────────────────────────
+/** Type configuration in presetConfig from release.config.cjs. */
+interface PresetConfigType {
+  type: string;
+  section: string;
+  hidden?: boolean;
+}
+
+/** Release configuration structure from release.config.cjs. */
+interface ReleaseConfig {
+  plugins: [
+    [string, { releaseRules: ReleaseRule[] }],
+    [string, { presetConfig: { types: PresetConfigType[] } }],
+    ...unknown[],
+  ];
+}
+
+/** Conventional commit configuration loaded from conventional.config.cjs. */
+interface ConventionalConfig {
+  types: Type[];
+  scopes: Scope[];
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+// CONFIG LOADING HELPERS
+// ════════════════════════════════════════════════════════════════════════════
 
 /**
  * Load conventional.config.cjs using require() since it's a CommonJS module.
+ * @returns The parsed conventional commit configuration.
  */
 function loadConventionalConfig(): ConventionalConfig {
-  const require = createRequire(import.meta.url);
-
   return require(CONVENTIONAL_CONFIG) as ConventionalConfig;
 }
 
 /**
- * Parse entries with inline comments from conventional.config.cjs.
- * Each line like `"build", // Description` becomes an EntryWithDescription object.
+ * Load release.config.cjs using require() since it's a CommonJS module.
+ * @returns The parsed release configuration.
  */
-function parseEntriesWithDescriptions(
-  arrayName: "types" | "scopes",
-): EntryWithDescription[] {
-  const content = readFileSync(CONVENTIONAL_CONFIG, "utf8");
-  const pattern = new RegExp(String.raw`const ${arrayName} = \[([\s\S]*?)\];`);
-  const match = pattern.exec(content);
-  if (!match?.[1]) {
-    throw new Error(
-      `Could not find ${arrayName} array in conventional.config.cjs`,
-    );
-  }
-
-  const entries: EntryWithDescription[] = [];
-  for (const line of match[1].split("\n")) {
-    const entryMatch = /^\s*"([^"]+)",?\s*\/\/\s*(.+)$/.exec(line);
-    if (entryMatch?.[1] && entryMatch[2]) {
-      entries.push({
-        value: entryMatch[1],
-        description: entryMatch[2].trim(),
-      });
-    }
-  }
-  return entries;
+function loadReleaseConfig(): ReleaseConfig {
+  return require(RELEASE_CONFIG_FILE) as ReleaseConfig;
 }
 
-// ─── Settings.json Sync ─────────────────────────────────────────────────────
+// ════════════════════════════════════════════════════════════════════════════
+// SETTINGS.JSON UTILITIES
+// ════════════════════════════════════════════════════════════════════════════
 
 /**
- * Parse the settings.json (JSONC) and extract the conventionalCommits.scopes array.
+ * Parse the settings.json (JSONC) file and extract the conventionalCommits.scopes array.
+ * @param content - The raw content of settings.json
+ * @returns Array of scope names
+ * @throws {TypeError} If the scopes array is not found
  */
 function parseSettingsScopes(content: string): string[] {
   const settings = JSON5.parse<Record<string, unknown>>(content);
@@ -113,158 +144,28 @@ function parseSettingsScopes(content: string): string[] {
 }
 
 /**
- * Extract the raw scopes array block (with comments) from conventional.config.cjs.
- * Returns the inner content between the brackets.
+ * Generate the conventionalCommits.scopes array block for settings.json (JSONC).
+ * Each entry is formatted as `    "name", // description` (4-space indent).
+ * The last entry has no trailing comma (required for valid JSON).
+ * @param scopes - Array of scope objects
+ * @returns Formatted JSONC string for the scopes array
  */
-function extractScopesBlock(): string {
-  const content = readFileSync(CONVENTIONAL_CONFIG, "utf8");
-  const match = /const scopes = \[([\s\S]*?)\];/.exec(content);
-  if (!match?.[1]) {
-    throw new Error("Could not find scopes array in conventional.config.cjs");
-  }
-  return match[1];
-}
-
-/**
- * Re-indent the scopes block from conventional.config.cjs (2-space indented)
- * to settings.json format (4-space indented within the array).
- * Removes trailing comma from the last value entry for valid JSON.
- */
-function formatScopesBlockForSettings(scopesBlock: string): string {
-  const lines = scopesBlock
-    .split("\n")
-    .map((line) => {
-      const trimmed = line.trimEnd();
-      if (!trimmed) return "";
-      // Remove leading whitespace and re-indent with 4 spaces
-      return `    ${trimmed.trimStart()}`;
+function formatScopesForSettings(scopes: Scope[]): string {
+  return scopes
+    .map((scope, i) => {
+      const comma = i < scopes.length - 1 ? "," : "";
+      return `    "${scope.name}"${comma} // ${scope.description}`;
     })
-    .filter((line) => line !== "");
-
-  // Remove trailing comma from the last value line (not a comment-only line)
-  const reversed = _.reverse([...lines]);
-  for (const [i, line] of reversed.entries()) {
-    if (line.trimStart().startsWith("//")) continue;
-    reversed[i] = line.replace(/,(\s*\/\/.*)$/, "$1");
-    break;
-  }
-  reversed.reverse();
-
-  return reversed.join("\n");
-}
-
-// ─── SKILL.md Sync ─────────────────────────────────────────────────────────
-
-/**
- * Generate a markdown table from entries with descriptions.
- */
-function generateMarkdownTable(
-  entries: EntryWithDescription[],
-  header: { col1: string; col2: string },
-): string {
-  const lines = [
-    `| ${header.col1} | ${header.col2} |`,
-    `| ${"-".repeat(header.col1.length)} | ${"-".repeat(header.col2.length)} |`,
-  ];
-  for (const entry of entries) {
-    lines.push(`| \`${entry.value}\` | ${entry.description} |`);
-  }
-  return lines.join("\n");
-}
-
-// ─── Issue Template Sync ────────────────────────────────────────────────────
-
-/**
- * Generate a YAML dropdown options block from scope values.
- * Returns indented lines like `        - caelundas`.
- */
-function generateYamlScopeOptions(scopes: string[]): string {
-  return scopes.map((scope) => `        - ${scope}`).join("\n");
+    .join("\n");
 }
 
 /**
- * Extract scope options from an issue template YAML file.
- * Looks for content between `# <!-- scopes-start -->` and `# <!-- scopes-end -->` markers.
+ * Validate that settings.json scopes match the source configuration.
+ * Checks both values and ordering.
+ * @param sourceScopes - Expected scope names from conventional.config.cjs
+ * @param settingsScopes - Actual scope names from settings.json
+ * @returns True if in sync, false otherwise
  */
-function parseIssueTemplateScopes(content: string): string[] {
-  const pattern =
-    /# <!-- scopes-start -->\n[\s\S]*?options:\n([\s\S]*?)\n\s*validations:[\s\S]*?# <!-- scopes-end -->/;
-  const match = pattern.exec(content);
-  if (!match?.[1]) return [];
-
-  const scopes: string[] = [];
-  for (const line of match[1].split("\n")) {
-    const scopeMatch = /^\s{8}-\s+(.+)$/.exec(line);
-    if (scopeMatch?.[1]) {
-      scopes.push(scopeMatch[1]);
-    }
-  }
-  return scopes;
-}
-
-/**
- * Extract content between marker comments in a file.
- * Markers are HTML comments like `<!-- types-start -->` and `<!-- types-end -->`.
- */
-function extractMarkerContent(
-  content: string,
-  markerName: string,
-): string | undefined {
-  const pattern = new RegExp(
-    String.raw`<!-- ${markerName}-start -->\n([\s\S]*?)<!-- ${markerName}-end -->`,
-  );
-  const match = pattern.exec(content);
-  return match?.[1];
-}
-
-/**
- * Replace content between marker comments, preserving the markers.
- */
-function replaceMarkerContent(
-  content: string,
-  markerName: string,
-  newContent: string,
-): string {
-  const pattern = new RegExp(
-    String.raw`(<!-- ${markerName}-start -->\n)[\s\S]*?(<!-- ${markerName}-end -->)`,
-  );
-  return content.replace(pattern, `$1\n${newContent}\n\n$2`);
-}
-
-/**
- * Parse values from a markdown table (first column, backtick-wrapped).
- */
-function parseMarkdownTableValues(tableContent: string): string[] {
-  const values: string[] = [];
-  for (const line of tableContent.split("\n")) {
-    const match = /^\|\s*`([^`]+)`\s*\|/.exec(line);
-    if (match?.[1]) {
-      values.push(match[1]);
-    }
-  }
-  return values;
-}
-
-// ─── Check / Write Logic ───────────────────────────────────────────────────
-
-function showDifference(
-  source: string[],
-  target: string[],
-  targetName: string,
-): void {
-  const missing = _.difference(source, target);
-  const extra = _.difference(target, source);
-
-  if (missing.length > 0) {
-    console.log(`  Missing in ${targetName} (${missing.length} items):`);
-    missing.forEach((item) => console.log(`    + ${item}`));
-  }
-  if (extra.length > 0) {
-    console.log(`  Extra in ${targetName} (${extra.length} items):`);
-    extra.forEach((item) => console.log(`    - ${item}`));
-  }
-}
-
 function checkSettingsSync(
   sourceScopes: string[],
   settingsScopes: string[],
@@ -289,6 +190,65 @@ function checkSettingsSync(
   return true;
 }
 
+/**
+ * Update settings.json with the latest scope configuration.
+ * @param scopes - Array of scopes to write
+ */
+function writeSettingsSync(scopes: Scope[]): void {
+  console.log("🔄 Syncing settings.json scopes...");
+  const settingsContent = readFileSync(SETTINGS_FILE, "utf8");
+  const formattedBlock = formatScopesForSettings(scopes);
+
+  const scopesPattern =
+    /("conventionalCommits\.scopes":\s*\[)([\s\S]*?)(\s*\])/;
+  const match = scopesPattern.exec(settingsContent);
+  if (!match) {
+    throw new Error(
+      'Could not find "conventionalCommits.scopes" array in settings.json',
+    );
+  }
+
+  const updatedContent = settingsContent.replace(
+    scopesPattern,
+    `$1\n${formattedBlock}\n  ]`,
+  );
+
+  writeFileSync(SETTINGS_FILE, updatedContent, "utf8");
+  console.log("✅ settings.json scopes synced");
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+// SKILL.MD UTILITIES (Markdown Documentation)
+// ════════════════════════════════════════════════════════════════════════════
+
+/**
+ * Generate a markdown table from entries with descriptions.
+ * Each entry is formatted as a table row with backtick-escaped values.
+ * @param entries - Array of entries with value and description
+ * @param header - Header configuration with column titles
+ * @returns Formatted markdown table string
+ */
+function generateMarkdownTable(
+  entries: EntryWithDescription[],
+  header: { col1: string; col2: string },
+): string {
+  const lines = [
+    `| ${header.col1} | ${header.col2} |`,
+    `| ${"-".repeat(header.col1.length)} | ${"-".repeat(header.col2.length)} |`,
+  ];
+  for (const entry of entries) {
+    lines.push(`| \`${entry.value}\` | ${entry.description} |`);
+  }
+  return lines.join("\n");
+}
+
+/**
+ * Validate that a skill markdown file contains up-to-date types and scopes tables.
+ * Checks both values and ordering.
+ * @param config - The conventional commit configuration
+ * @param skillFile - Path to the skill markdown file
+ * @returns True if in sync, false otherwise
+ */
 function checkSkillSync(
   config: ConventionalConfig,
   skillFile: string,
@@ -308,7 +268,10 @@ function checkSkillSync(
     }
 
     const skillValues = parseMarkdownTableValues(markerContent);
-    const sourceValues = config[marker];
+    const sourceValues: string[] =
+      marker === "types"
+        ? config.types.map((type) => type.name)
+        : config.scopes.map((scope) => scope.name);
     const sortedSource = _.sortBy([...sourceValues]);
     const sortedSkill = _.sortBy([...skillValues]);
 
@@ -329,6 +292,212 @@ function checkSkillSync(
   return inSync;
 }
 
+/**
+ * Update a skill markdown file with the latest types and scopes tables.
+ * Replaces content between marker comments while preserving the markers.
+ * @param config - The conventional commit configuration
+ * @param skillFile - Path to the skill markdown file
+ */
+function writeSkillSync(config: ConventionalConfig, skillFile: string): void {
+  const skillName = path.relative(WORKSPACE_ROOT, skillFile);
+  console.log(`🔄 Syncing ${skillName} types and scopes...`);
+  let skillContent = readFileSync(skillFile, "utf8");
+
+  const typesEntries: EntryWithDescription[] = config.types.map((type) => ({
+    value: type.name,
+    description: type.description,
+  }));
+  const scopesEntries: EntryWithDescription[] = config.scopes.map((scope) => ({
+    value: scope.name,
+    description: scope.description,
+  }));
+
+  const typesTable = generateMarkdownTable(typesEntries, {
+    col1: "Type",
+    col2: "Description",
+  });
+  const scopesTable = generateMarkdownTable(scopesEntries, {
+    col1: "Scope",
+    col2: "Description",
+  });
+
+  skillContent = replaceMarkerContent(skillContent, "types", typesTable);
+  skillContent = replaceMarkerContent(skillContent, "scopes", scopesTable);
+
+  writeFileSync(skillFile, skillContent, "utf8");
+  console.log(`✅ ${skillName} types and scopes synced`);
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+// RELEASE CONFIG UTILITIES
+// ════════════════════════════════════════════════════════════════════════════
+
+/**
+ * Extract type names from the releaseRules array in release.config.cjs.
+ * Filters out undefined type values.
+ * @param config - The release configuration
+ * @returns Array of type names found in releaseRules
+ */
+function getReleaseRulesTypes(config: ReleaseConfig): string[] {
+  return config.plugins[0][1].releaseRules
+    .map((r) => r.type)
+    .filter((t): t is string => t !== undefined);
+}
+
+/**
+ * Extract type names from the presetConfig.types array in release.config.cjs.
+ * @param config - The release configuration
+ * @returns Array of type names found in presetConfig.types
+ */
+function getPresetConfigTypes(config: ReleaseConfig): string[] {
+  return config.plugins[1][1].presetConfig.types.map((t) => t.type);
+}
+
+/**
+ * Validate that release.config.cjs releaseRules and presetConfig.types
+ * contain all types from the conventional configuration.
+ * @param sourceTypes - Type names from conventional.config.cjs
+ * @returns True if in sync, false otherwise
+ */
+function checkReleaseConfigSync(sourceTypes: string[]): boolean {
+  const releaseConfig = loadReleaseConfig();
+  const releaseRulesTypes = getReleaseRulesTypes(releaseConfig);
+  const presetConfigTypes = getPresetConfigTypes(releaseConfig);
+  const relativeFile = path.relative(WORKSPACE_ROOT, RELEASE_CONFIG_FILE);
+  let inSync = true;
+
+  // Exclude types handled by special releaseRules keys (e.g. `{ revert: true }`)
+  const releaseRulesCheckTypes = sourceTypes.filter(
+    (t) => !RELEASE_RULES_SPECIAL_TYPES.has(t),
+  );
+
+  const missingFromReleaseRules = _.difference(
+    releaseRulesCheckTypes,
+    releaseRulesTypes,
+  );
+  if (missingFromReleaseRules.length > 0) {
+    console.log(`❌ ${relativeFile} releaseRules is missing types:\n`);
+    missingFromReleaseRules.forEach((t) => console.log(`    + ${t}`));
+    console.log("");
+    inSync = false;
+  }
+
+  const missingFromPresetTypes = _.difference(sourceTypes, presetConfigTypes);
+  if (missingFromPresetTypes.length > 0) {
+    console.log(`❌ ${relativeFile} presetConfig.types is missing types:\n`);
+    missingFromPresetTypes.forEach((t) => console.log(`    + ${t}`));
+    console.log("");
+    inSync = false;
+  }
+
+  return inSync;
+}
+
+/**
+ * Update release.config.cjs with missing types in releaseRules and presetConfig.types.
+ * Appends new entries with placeholder configurations and comments.
+ * @param sourceTypes - Type objects from conventional.config.cjs
+ */
+function writeReleaseConfigSync(sourceTypes: Type[]): void {
+  const relativeFile = path.relative(WORKSPACE_ROOT, RELEASE_CONFIG_FILE);
+  console.log(`🔄 Syncing ${relativeFile} types...`);
+
+  const releaseConfig = loadReleaseConfig();
+  const sourceTypeNames = sourceTypes.map((t) => t.name);
+  const releaseRulesCheckTypes = sourceTypeNames.filter(
+    (t) => !RELEASE_RULES_SPECIAL_TYPES.has(t),
+  );
+  const missingFromReleaseRules = _.difference(
+    releaseRulesCheckTypes,
+    getReleaseRulesTypes(releaseConfig),
+  );
+  const missingFromPresetTypes = _.difference(
+    sourceTypeNames,
+    getPresetConfigTypes(releaseConfig),
+  );
+
+  let content = readFileSync(RELEASE_CONFIG_FILE, "utf8");
+
+  if (missingFromReleaseRules.length > 0) {
+    const newEntries = missingFromReleaseRules
+      .map(
+        (sourceType) =>
+          `          { type: "${sourceType}", release: false }, // ⚠️ Added by sync — set appropriate release level`,
+      )
+      .join("\n");
+    content = content.replace(
+      /(releaseRules:\s*\[[\s\S]*?)(\s*\],)/,
+      `$1\n${newEntries}$2`,
+    );
+  }
+
+  if (missingFromPresetTypes.length > 0) {
+    const capitalize = (s: string): string =>
+      s.charAt(0).toUpperCase() + s.slice(1);
+    const newEntries = missingFromPresetTypes
+      .map((missingFromPresetType) => {
+        const entry = sourceTypes.find(
+          (sourceType) => sourceType.name === missingFromPresetType,
+        );
+        const description = entry
+          ? ` // ${entry.description}`
+          : " // ⚠️ Added by sync — add description";
+        return `            { type: "${missingFromPresetType}", section: "⚠️ ${capitalize(missingFromPresetType)}", hidden: true },${description}`;
+      })
+      .join("\n");
+    content = content.replace(
+      /(presetConfig:\s*\{[\s\S]*?types:\s*\[[\s\S]*?)(\s*\],\s*\})/,
+      `$1\n${newEntries}$2`,
+    );
+  }
+
+  writeFileSync(RELEASE_CONFIG_FILE, content, "utf8");
+  console.log(`✅ ${relativeFile} types synced`);
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+// ISSUE TEMPLATE UTILITIES (YAML Configuration)
+// ════════════════════════════════════════════════════════════════════════════
+
+/**
+ * Generate a YAML dropdown options block from scope values.
+ * Returns indented lines like `        - caelundas` (8-space indent).
+ * @param scopes - Array of scope names
+ * @returns Formatted YAML options string
+ */
+function generateYamlScopeOptions(scopes: string[]): string {
+  return scopes.map((scope) => `        - ${scope}`).join("\n");
+}
+
+/**
+ * Parse scope options from an issue template YAML file.
+ * Extracts content between `# <!-- scopes-start -->` and `# <!-- scopes-end -->` markers.
+ * @param content - The raw content of the issue template file
+ * @returns Array of scope names found in the YAML
+ */
+function parseIssueTemplateScopes(content: string): string[] {
+  const pattern =
+    /# <!-- scopes-start -->\n[\s\S]*?options:\n([\s\S]*?)\n\s*validations:[\s\S]*?# <!-- scopes-end -->/;
+  const match = pattern.exec(content);
+  if (!match?.[1]) return [];
+
+  const scopes: string[] = [];
+  for (const line of match[1].split("\n")) {
+    const scopeMatch = /^\s{8}-\s+(.+)$/.exec(line);
+    if (scopeMatch?.[1]) {
+      scopes.push(scopeMatch[1]);
+    }
+  }
+  return scopes;
+}
+
+/**
+ * Validate that an issue template YAML file has up-to-date scope dropdown options.
+ * Checks both values and ordering.
+ * @param sourceScopes - Expected scope names from conventional.config.cjs
+ * @param templateFile - Path to the issue template YAML file
+ * @returns True if in sync, false otherwise
+ */
 function checkIssueTemplateSync(
   sourceScopes: string[],
   templateFile: string,
@@ -363,54 +532,12 @@ function checkIssueTemplateSync(
   return true;
 }
 
-function writeSettingsSync(): void {
-  console.log("🔄 Syncing settings.json scopes...");
-  const settingsContent = readFileSync(SETTINGS_FILE, "utf8");
-  const scopesBlock = extractScopesBlock();
-  const formattedBlock = formatScopesBlockForSettings(scopesBlock);
-
-  const scopesPattern =
-    /("conventionalCommits\.scopes":\s*\[)([\s\S]*?)(\s*\])/;
-  const match = scopesPattern.exec(settingsContent);
-  if (!match) {
-    throw new Error(
-      'Could not find "conventionalCommits.scopes" array in settings.json',
-    );
-  }
-
-  const updatedContent = settingsContent.replace(
-    scopesPattern,
-    `$1\n${formattedBlock}\n  ]`,
-  );
-
-  writeFileSync(SETTINGS_FILE, updatedContent, "utf8");
-  console.log("✅ settings.json scopes synced");
-}
-
-function writeSkillSync(skillFile: string): void {
-  const skillName = path.relative(WORKSPACE_ROOT, skillFile);
-  console.log(`🔄 Syncing ${skillName} types and scopes...`);
-  let skillContent = readFileSync(skillFile, "utf8");
-
-  const typesEntries = parseEntriesWithDescriptions("types");
-  const scopesEntries = parseEntriesWithDescriptions("scopes");
-
-  const typesTable = generateMarkdownTable(typesEntries, {
-    col1: "Type",
-    col2: "Description",
-  });
-  const scopesTable = generateMarkdownTable(scopesEntries, {
-    col1: "Scope",
-    col2: "Description",
-  });
-
-  skillContent = replaceMarkerContent(skillContent, "types", typesTable);
-  skillContent = replaceMarkerContent(skillContent, "scopes", scopesTable);
-
-  writeFileSync(skillFile, skillContent, "utf8");
-  console.log(`✅ ${skillName} types and scopes synced`);
-}
-
+/**
+ * Update an issue template YAML file with the latest scope dropdown options.
+ * Replaces content between marker comments while preserving the markers.
+ * @param sourceScopes - Scope names to write
+ * @param templateFile - Path to the issue template YAML file
+ */
 function writeIssueTemplateSync(
   sourceScopes: string[],
   templateFile: string,
@@ -436,13 +563,110 @@ function writeIssueTemplateSync(
   console.log(`✅ ${templateName} scopes synced`);
 }
 
+// ════════════════════════════════════════════════════════════════════════════
+// MARKER & COMPARISON UTILITIES
+// ════════════════════════════════════════════════════════════════════════════
+
+/**
+ * Extract content between marker comments in a file.
+ * Markers are HTML comments like `<!-- types-start -->` and `<!-- types-end -->`.
+ * @param content - The file content to search
+ * @param markerName - The marker name (e.g., "types", "scopes")
+ * @returns The content between markers, or undefined if markers not found
+ */
+function extractMarkerContent(
+  content: string,
+  markerName: string,
+): string | undefined {
+  const pattern = new RegExp(
+    String.raw`<!-- ${markerName}-start -->\n([\s\S]*?)<!-- ${markerName}-end -->`,
+  );
+  const match = pattern.exec(content);
+  return match?.[1];
+}
+
+/**
+ * Replace content between marker comments, preserving the markers themselves.
+ * @param content - The file content to modify
+ * @param markerName - The marker name (e.g., "types", "scopes")
+ * @param newContent - The new content to insert between markers
+ * @returns The updated file content
+ */
+function replaceMarkerContent(
+  content: string,
+  markerName: string,
+  newContent: string,
+): string {
+  const pattern = new RegExp(
+    String.raw`(<!-- ${markerName}-start -->\n)[\s\S]*?(<!-- ${markerName}-end -->)`,
+  );
+  return content.replace(pattern, `$1\n${newContent}\n\n$2`);
+}
+
+/**
+ * Parse values from a markdown table (first column, backtick-wrapped).
+ * Extracts all backtick-wrapped values from the first column of a markdown table.
+ * @param tableContent - The markdown table content
+ * @returns Array of values from the first column
+ */
+function parseMarkdownTableValues(tableContent: string): string[] {
+  const values: string[] = [];
+  for (const line of tableContent.split("\n")) {
+    const match = /^\|\s*`([^`]+)`\s*\|/.exec(line);
+    if (match?.[1]) {
+      values.push(match[1]);
+    }
+  }
+  return values;
+}
+
+/**
+ * Display the differences between two arrays in a human-readable format.
+ * Shows missing and extra items with clear indicators.
+ * @param source - The expected array
+ * @param target - The actual array
+ * @param targetName - Display name for the target (for messages)
+ */
+function showDifference(
+  source: string[],
+  target: string[],
+  targetName: string,
+): void {
+  const missing = _.difference(source, target);
+  const extra = _.difference(target, source);
+
+  if (missing.length > 0) {
+    console.log(`  Missing in ${targetName} (${missing.length} items):`);
+    missing.forEach((item) => console.log(`    + ${item}`));
+  }
+  if (extra.length > 0) {
+    console.log(`  Extra in ${targetName} (${extra.length} items):`);
+    extra.forEach((item) => console.log(`    - ${item}`));
+  }
+}
+
+// ════════════════════════════════════════════════════════════════════════════
+// MAIN ENTRY POINT
+// ════════════════════════════════════════════════════════════════════════════
+
+/**
+ * Main orchestrator function. Determines whether to run in check or write mode.
+ *
+ * Check mode: Validates that all configuration files are in sync with
+ * conventional.config.cjs. Exits with code 1 if any file is out of sync.
+ *
+ * Write mode: Updates all out-of-sync configuration files with the latest
+ * types and scopes from conventional.config.cjs.
+ */
 function main(): void {
   const config = loadConventionalConfig();
+  const scopeNames = config.scopes.map((scope) => scope.name);
+  const typeNames = config.types.map((type) => type.name);
   const settingsContent = readFileSync(SETTINGS_FILE, "utf8");
   const settingsScopes = parseSettingsScopes(settingsContent);
 
   if (MODE === "check") {
-    const settingsOk = checkSettingsSync(config.scopes, settingsScopes);
+    const settingsOk = checkSettingsSync(scopeNames, settingsScopes);
     let skillsOk = true;
     for (const skillFile of SKILL_FILES) {
       if (!checkSkillSync(config, skillFile)) {
@@ -451,12 +675,13 @@ function main(): void {
     }
     let templatesOk = true;
     for (const templateFile of ISSUE_TEMPLATE_FILES) {
-      if (!checkIssueTemplateSync(config.scopes, templateFile)) {
+      if (!checkIssueTemplateSync(scopeNames, templateFile)) {
         templatesOk = false;
       }
     }
+    const releaseConfigOk = checkReleaseConfigSync(typeNames);
 
-    if (!settingsOk || !skillsOk || !templatesOk) {
+    if (!settingsOk || !skillsOk || !templatesOk || !releaseConfigOk) {
       console.log(
         "💡 Run 'nx run monorepo:sync-conventional-config:write' to sync",
       );
@@ -464,28 +689,29 @@ function main(): void {
     }
     console.log("✅ Conventional commit config is in sync");
   } else if (MODE === "write") {
-    const settingsOk = checkSettingsSync(config.scopes, settingsScopes);
+    const settingsOk = checkSettingsSync(scopeNames, settingsScopes);
     const outOfSyncSkills = SKILL_FILES.filter(
       (skillFile) => !checkSkillSync(config, skillFile),
     );
     const outOfSyncTemplates = ISSUE_TEMPLATE_FILES.filter(
-      (templateFile) => !checkIssueTemplateSync(config.scopes, templateFile),
+      (templateFile) => !checkIssueTemplateSync(scopeNames, templateFile),
     );
+    const releaseConfigOk = checkReleaseConfigSync(typeNames);
 
     if (
       settingsOk &&
       outOfSyncSkills.length === 0 &&
-      outOfSyncTemplates.length === 0
+      outOfSyncTemplates.length === 0 &&
+      releaseConfigOk
     ) {
       console.log("✅ Already in sync");
     } else {
-      if (!settingsOk) writeSettingsSync();
-      for (const skillFile of outOfSyncSkills) {
-        writeSkillSync(skillFile);
-      }
-      for (const templateFile of outOfSyncTemplates) {
-        writeIssueTemplateSync(config.scopes, templateFile);
-      }
+      if (!settingsOk) writeSettingsSync(config.scopes);
+      outOfSyncSkills.forEach((skillFile) => writeSkillSync(config, skillFile));
+      outOfSyncTemplates.forEach((templateFile) =>
+        writeIssueTemplateSync(scopeNames, templateFile),
+      );
+      if (!releaseConfigOk) writeReleaseConfigSync(config.types);
     }
   } else {
     console.error(`❌ Invalid mode: ${MODE}`);
