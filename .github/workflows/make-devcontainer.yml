@@ -43,8 +43,6 @@ jobs:
 
       - name: 🐳 Make Devcontainer
         uses: devcontainers/ci@v0.3
-        env:
-          CI: true
         with:
           imageName: ghcr.io/jimmypaolini/monorepo-devcontainer
           cacheFrom: |
@@ -56,6 +54,7 @@ jobs:
             push:
               branches:
                 - main
+          env: CI=true
 
       - name: 🩹 Patch Configuration for Test
         run: |
@@ -78,13 +77,12 @@ jobs:
 
       - name: 🔬 Test Devcontainer
         uses: devcontainers/ci@v0.3
-        env:
-          CI: true
         with:
           imageName: ghcr.io/jimmypaolini/monorepo-devcontainer
           cacheFrom: |
             type=gha,scope=devcontainer
             ghcr.io/jimmypaolini/monorepo-devcontainer
           push: never
+          env: CI=true
           runCmd: |
             bash .devcontainer/scripts/test-devcontainer.sh
