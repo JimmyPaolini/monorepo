@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "module": "NodeNext",
+    "noEmit": true
+  },
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.test.ts",
+    "**/files/**",
+    "dist",
+    "node_modules"
+  ],
+  "extends": "../../tsconfig.base.json",
+  "include": [
+    "eslint.config.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "vitest.config.ts"
+  ]
+}

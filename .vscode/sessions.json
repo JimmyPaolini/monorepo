@@ -1,0 +1,72 @@
+{
+  "$schema": "https://cdn.statically.io/gh/nguyenngoclongdev/cdn/main/schema/v11/terminal-keeper.json",
+  "activateOnStartup": true,
+  "active": "default",
+  "keepExistingTerminals": false,
+  "noClear": false,
+  "sessions": {
+    "caelundas": [
+      {
+        "color": "terminal.ansiBlue",
+        "commands": [],
+        "cwd": "monorepo",
+        "icon": "repo",
+        "name": "monorepo"
+      },
+      {
+        "color": "terminal.ansiCyan",
+        "commands": [],
+        "cwd": "applications/caelundas",
+        "icon": "telescope",
+        "name": "caelundas"
+      }
+    ],
+    "default": [
+      {
+        "color": "terminal.ansiBlue",
+        "commands": [],
+        "cwd": "monorepo",
+        "icon": "repo",
+        "name": "monorepo"
+      },
+      {
+        "color": "terminal.ansiBlue",
+        "commands": [],
+        "cwd": "monorepo",
+        "icon": "repo",
+        "name": "monorepo"
+      },
+      {
+        "color": "terminal.ansiBlue",
+        "commands": [],
+        "cwd": "monorepo",
+        "icon": "repo",
+        "name": "monorepo"
+      }
+    ],
+    "lexico": [
+      {
+        "color": "terminal.ansiBlue",
+        "commands": [],
+        "cwd": "monorepo",
+        "icon": "repo",
+        "name": "monorepo"
+      },
+      {
+        "color": "terminal.ansiBrightGreen",
+        "commands": [],
+        "cwd": "packages/lexico-components",
+        "icon": "paintcan",
+        "name": "lexico-components"
+      },
+      {
+        "color": "terminal.ansiBrightMagenta",
+        "commands": [],
+        "cwd": "applications/lexico",
+        "icon": "book",
+        "name": "lexico"
+      }
+    ]
+  },
+  "theme": "tribe"
+}

@@ -1,0 +1,19 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`majorAspects.events > getMajorAspectEvents > should detect exact conjunction 1`] = `
+{
+  "categories": [
+    "Astronomy",
+    "Astrology",
+    "Major Aspect",
+    "Sun",
+    "Mercury",
+    "Conjunct",
+    "Exact",
+  ],
+  "description": "Sun exact conjunct Mercury",
+  "end": 2024-03-21T12:00:00.000Z,
+  "start": 2024-03-21T12:00:00.000Z,
+  "summary": "🎯 ☀️ ☌ ☿ Sun exact conjunct Mercury",
+}
+`;

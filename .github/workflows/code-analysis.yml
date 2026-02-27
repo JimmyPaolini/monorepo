@@ -1,0 +1,39 @@
+name: 🧑‍💻 Code Analysis
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  code-analysis:
+    name: 🧑‍💻 Code Analysis
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🕋 Setup Monorepo
+        uses: ./.github/actions/setup-monorepo
+
+      - name: 🧑‍💻 Code Analysis
+        run: pnpm exec nx affected --target=code-analysis
+
+      - name: 📊 Upload Type Coverage
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: type-coverage-reports
+          path: |
+            applications/**/type-coverage-report.txt
+            packages/**/type-coverage-report.txt
+            tools/**/type-coverage-report.txt
+          retention-days: 30

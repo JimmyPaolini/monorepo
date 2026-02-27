@@ -1,0 +1,342 @@
+{
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "cacheDirectory": ".nx/cache",
+  "defaultBase": "main",
+  "generators": {
+    "@nx/react": {
+      "application": {
+        "babel": true,
+        "bundler": "vite",
+        "linter": "eslint",
+        "style": "tailwind"
+      },
+      "component": {
+        "style": "tailwind"
+      },
+      "library": {
+        "linter": "eslint",
+        "style": "tailwind"
+      }
+    }
+  },
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "production": [
+      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+      "!{projectRoot}/.eslintrc.json",
+      "!{projectRoot}/jest.config.[jt]s",
+      "!{projectRoot}/src/test-setup.[jt]s",
+      "!{projectRoot}/tsconfig.spec.json",
+      "!{projectRoot}/vitest.config.base.ts",
+      "default"
+    ],
+    "sharedGlobals": [
+      "{workspaceRoot}/.github/workflows/*.yml",
+      "{workspaceRoot}/nx.json",
+      "{workspaceRoot}/pnpm-lock.yaml",
+      "{workspaceRoot}/tsconfig.base.json"
+    ]
+  },
+  "parallel": 3,
+  "plugins": [
+    {
+      "options": {
+        "buildDepsTargetName": false,
+        "buildTargetName": "build",
+        "devTargetName": "develop",
+        "e2eTestTargetName": false,
+        "previewTargetName": false,
+        "serveStaticTargetName": false,
+        "serveTargetName": false,
+        "typecheckTargetName": "typecheck",
+        "watchDepsTargetName": false
+      },
+      "plugin": "@nx/vite/plugin"
+    },
+    {
+      "options": {
+        "targetName": "eslint"
+      },
+      "plugin": "@nx/eslint/plugin"
+    }
+  ],
+  "projects": {
+    "caelundas": {
+      "tags": []
+    },
+    "monorepo": {
+      "tags": ["scripts"]
+    }
+  },
+  "targetDefaults": {
+    "biome": {
+      "cache": true,
+      "configurations": {
+        "check": {},
+        "write": {
+          "args": "--write"
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands",
+      "inputs": ["{workspaceRoot}/biome.jsonc", "default"],
+      "options": {
+        "command": "biome check {args} {projectRoot}/src",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "build": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["^production", "production"]
+    },
+    "code-analysis": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "parallel": true
+        },
+        "write": {
+          "parallel": false
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands",
+      "options": {
+        "outputStyle": "stream"
+      }
+    },
+    "dependency-analysis": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "inputs": [
+        "^default",
+        "{projectRoot}/**/*.ts",
+        "{projectRoot}/**/*.tsx",
+        "{workspaceRoot}/.dependency-cruiser.cjs",
+        "default"
+      ],
+      "options": {
+        "command": "depcruise {projectRoot}/src --config .dependency-cruiser.cjs",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "eslint": {
+      "cache": true,
+      "configurations": {
+        "check": {},
+        "write": {
+          "args": "--fix"
+        }
+      },
+      "defaultConfiguration": "check",
+      "inputs": [
+        "{projectRoot}/**/*.md",
+        "{workspaceRoot}/eslint.config.base.ts",
+        "default"
+      ]
+    },
+    "format": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "commands": [
+            "nx run {projectName}:biome:check",
+            "nx run {projectName}:prettier:check"
+          ],
+          "parallel": true
+        },
+        "write": {
+          "commands": [
+            "nx run {projectName}:biome:write",
+            "nx run {projectName}:prettier:write"
+          ],
+          "parallel": false
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands"
+    },
+    "knip": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace {projectRoot}"
+        },
+        "write": {
+          "command": "NODE_OPTIONS='--import=tsx/esm' knip --fix --workspace {projectRoot}"
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands",
+      "inputs": ["{workspaceRoot}/knip.config.ts", "default"],
+      "options": {
+        "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace {projectRoot}",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "lint": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "commands": [
+            "nx run {projectName}:eslint:check",
+            "nx run {projectName}:oxlint:check"
+          ],
+          "parallel": true
+        },
+        "write": {
+          "commands": [
+            "nx run {projectName}:eslint:write",
+            "nx run {projectName}:oxlint:write"
+          ],
+          "parallel": false
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands"
+    },
+    "markdown-lint": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "command": "markdownlint-cli2 '{projectRoot}/**/*.md'"
+        },
+        "write": {
+          "command": "markdownlint-cli2 --fix '{projectRoot}/**/*.md'"
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.md",
+        "{workspaceRoot}/.markdownlint-cli2.jsonc",
+        "default"
+      ],
+      "options": {
+        "command": "markdownlint-cli2 '{projectRoot}/**/*.md'",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "oxlint": {
+      "cache": true,
+      "configurations": {
+        "check": {},
+        "write": {
+          "args": "--fix"
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands",
+      "inputs": ["{workspaceRoot}/.oxlintrc.jsonc", "default"],
+      "options": {
+        "command": "oxlint {args} --config=.oxlintrc.jsonc {projectRoot}/src",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "prettier": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "args": "--check"
+        },
+        "write": {
+          "args": "--write"
+        }
+      },
+      "defaultConfiguration": "write",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{workspaceRoot}/.prettierignore",
+        "{workspaceRoot}/prettier.config.ts",
+        "default"
+      ],
+      "options": {
+        "command": "prettier {args} {projectRoot}"
+      }
+    },
+    "spell-check": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,css,scss,html,yaml,yml,md,mdx}",
+        "{workspaceRoot}/cspell.config.yaml",
+        "default"
+      ],
+      "options": {
+        "command": "cspell '{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,css,scss,html,yaml,yml,md,mdx}' --no-progress",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "stylelint": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "command": "stylelint 'src/**/*.css'"
+        },
+        "write": {
+          "command": "stylelint --fix 'src/**/*.css'"
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/src/**/*.css",
+        "{workspaceRoot}/.stylelintrc.cjs"
+      ],
+      "options": {
+        "command": "stylelint 'src/**/*.css'",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "test": {
+      "cache": true,
+      "inputs": ["^production", "default"]
+    },
+    "type-coverage": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.ts",
+        "{projectRoot}/**/*.tsx",
+        "{projectRoot}/tsconfig.json",
+        "default"
+      ],
+      "options": {
+        "command": "type-coverage --detail > type-coverage-report.txt 2>&1 || (cat type-coverage-report.txt && exit 1)",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "typecheck": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "inputs": [
+        "^production",
+        "default",
+        {
+          "externalDependencies": ["typescript"]
+        }
+      ],
+      "options": {
+        "command": "tsc --noEmit",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "yaml-lint": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.{yaml,yml}",
+        "{workspaceRoot}/.yamllint",
+        "default"
+      ],
+      "options": {
+        "command": "yamllint '{projectRoot}'",
+        "cwd": "{workspaceRoot}"
+      }
+    }
+  },
+  "tui": {
+    "enabled": false
+  }
+}

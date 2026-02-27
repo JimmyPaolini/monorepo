@@ -1,0 +1,6 @@
+# Supabase CLI working directories
+.branches
+.temp
+
+# Large data dumps (not for version control)
+data.sql

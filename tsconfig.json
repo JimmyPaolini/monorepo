@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "noEmit": true,
+    "skipLibCheck": true
+  },
+  "exclude": [
+    "applications",
+    "dist",
+    "node_modules",
+    "packages",
+    "tmp",
+    "tools"
+  ],
+  "extends": "./tsconfig.base.json",
+  "include": ["*.ts", ".devcontainer/scripts/**/*.ts", "scripts/**/*.ts"]
+}

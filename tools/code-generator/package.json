@@ -1,0 +1,24 @@
+{
+  "name": "code-generator",
+  "version": "0.0.1",
+  "dependencies": {
+    "@nx/devkit": "^22.5.2",
+    "lodash": "^4.17.23",
+    "react": "^19.2.4",
+    "vitest": "^2.1.9"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.23",
+    "@types/node": "^22.19.1",
+    "@vitest/coverage-v8": "^2.1.9",
+    "typescript": "^5.9.3"
+  },
+  "generators": "./generators.json",
+  "scripts": {},
+  "type": "module",
+  "typeCoverage": {
+    "atLeast": 100,
+    "ignoreCatch": true,
+    "strict": true
+  }
+}
