@@ -277,7 +277,7 @@
     }
   },
   "postAttachCommand": ".devcontainer/scripts/post-attach-command.sh",
-  "postCreateCommand": "gpgconf --kill all 2>/dev/null; .devcontainer/scripts/post-create-command.sh",
+  "postCreateCommand": ".devcontainer/scripts/post-create-command.sh",
   "remoteEnv": {
     "KUBECONFIG": "${containerWorkspaceFolder}/.kube/config",
     "NODE_OPTIONS": "--max-old-space-size=4096",
