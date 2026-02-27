@@ -18,6 +18,7 @@ const config: KnipConfig = {
     "terraform", // Terraform CLI, used for infrastructure provisioning
     "biome", // Biome CLI, invoked via nx:run-commands biome target
     "oxlint", // Oxlint CLI, invoked via nx:run-commands oxlint target
+    "gitleaks", // Gitleaks CLI, used for detecting hardcoded secrets
   ],
 
   // devDependencies used via npx, CLI, or ESLint config (not directly imported)
