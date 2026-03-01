@@ -216,6 +216,9 @@
     "ghcr.io/devcontainers-extra/features/supabase-cli:1": {
       "version": "2.76.8"
     },
+    "ghcr.io/devcontainers-extra/features/uv:1": {
+      "version": "latest"
+    },
     "ghcr.io/devcontainers-extra/features/yamllint:2": {
       "version": "1.38.0"
     },
@@ -230,7 +233,7 @@
       "version": "3.40.1"
     }
   },
-  "forwardPorts": [3000, 54321, 54322, 54323, 54324, 54325],
+  "forwardPorts": [3000, 3001, 8889, 11434, 54321, 54322, 54323, 54324, 54325],
   "image": "mcr.microsoft.com/devcontainers/typescript-node:22-bookworm",
   "mounts": [
     {
@@ -242,13 +245,30 @@
       "source": "monorepo-pnpm",
       "target": "/root/.local/share/pnpm",
       "type": "volume"
+    },
+    {
+      "source": "monorepo-docker",
+      "target": "/var/lib/docker",
+      "type": "volume"
     }
   ],
   "name": "Monorepo Devcontainer",
   "portsAttributes": {
     "3000": {
-      "label": "Lexico Dev Server",
+      "label": "Lexico Development Server",
       "onAutoForward": "notify"
+    },
+    "3001": {
+      "label": "Open WebUI",
+      "onAutoForward": "notify"
+    },
+    "8889": {
+      "label": "SearxNG",
+      "onAutoForward": "notify"
+    },
+    "11434": {
+      "label": "Ollama API",
+      "onAutoForward": "silent"
     },
     "54321": {
       "label": "Supabase API (PostgREST)",
@@ -276,6 +296,7 @@
   "remoteEnv": {
     "KUBECONFIG": "${containerWorkspaceFolder}/.kube/config",
     "NODE_OPTIONS": "--max-old-space-size=4096",
+    "OLLAMA_HOST": "http://localhost:11434",
     "UV_THREADPOOL_SIZE": "4",
     "VSCODE_EXTENSION_HOST_WORKER_CONCURRENCY": "4"
   },
@@ -283,9 +304,9 @@
   "runArgs": [
     "--name",
     "monorepo-devcontainer",
-    "--cpus=6",
     "--env-file",
     "${localWorkspaceFolder}/.env",
+    "--cpus=8",
     "--memory=12g",
     "--memory-swap=16g"
   ],

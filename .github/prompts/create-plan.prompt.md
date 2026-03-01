@@ -119,7 +119,7 @@ Synthesize research findings from Phase 1 and user answers from Phase 2 into the
 ### Output File Specifications
 
 - Save to `documentation/planning/` directory
-- Naming convention: `[YYYY-MM-DD]-[type]-[subject]-[version].plan.md`
+- Naming convention: `[YYYY-MM-DDTHH:MM:SSZ]-[type]-[subject]-[version].plan.md`
 - Type prefixes: `feature` | `refactor` | `fix` | `data` | `infrastructure` | `process` | `architecture` | `design`
 - Example: `2026-02-18-feature-lexico-auth-1.plan.md`
 
@@ -145,8 +145,8 @@ Populate every section of this template. No section may be omitted or left as pl
 ---
 name: [Concise Title Describing the Package Implementation Plan's Goal]
 description: [Short description of the plan's purpose]
-created: [YYYY-MM-DD]
-updated: [YYYY-MM-DD]
+created: [YYYY-MM-DDTHH:MM:SSZ]
+updated: [YYYY-MM-DDTHH:MM:SSZ]
 status: 'Completed'|'In progress'|'Planned'
 ---
 
@@ -173,11 +173,11 @@ status: 'Completed'|'In progress'|'Planned'
 
 - GOAL-001: [Describe the goal of this phase, e.g., "Implement feature X", "Refactor module Y", etc.]
 
-| Task     | Description           | Completed | Date       |
-| -------- | --------------------- | --------- | ---------- |
-| TASK-001 | Description of task 1 | ✅        | 2025-04-25 |
-| TASK-002 | Description of task 2 |           |            |
-| TASK-003 | Description of task 3 |           |            |
+| Task     | Description           | Completed | Date                 |
+| -------- | --------------------- | --------- | -------------------- |
+| TASK-001 | Description of task 1 | ✅        | 2025-07-05T08:18:38Z |
+| TASK-002 | Description of task 2 |           |                      |
+| TASK-003 | Description of task 3 |           |                      |
 
 ### Implementation Phase 2
 
@@ -232,6 +232,20 @@ status: 'Completed'|'In progress'|'Planned'
 
 ---
 
-## Further Iteration
+## Phase 4 — Iteration: Plan Updates
 
-Once the plan file is saved, **do not continue refining the plan in chat**. Any subsequent changes to requirements, scope, or implementation steps should be made by running the [update-plan prompt](update-plan.prompt.md) against the generated plan file. This keeps the plan file as the single source of truth.
+After the plan file is saved, the user may request updates to the plan — treat new messages after Phase 3 as update requests.
+
+When processing an update request:
+
+1. **Read the existing plan file** using `#tool:read` to load its current content.
+2. **Clarify scope if needed** — if the update request is ambiguous, ask at most 2 focused questions using `#tool:vscode/askQuestions` before proceeding.
+3. **Apply changes** using `#tool:edit/editFiles`:
+   - Update the `updated` frontmatter field to the current UTC timestamp (ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`).
+   - Update the `status` badge if the new status differs (use the Status Badge Colors table above).
+   - Add, modify, or remove tasks, requirements, risks, files, or any other section content as directed.
+   - Preserve all existing content not explicitly targeted by the update.
+   - Keep identifier numbering consistent — append new identifiers sequentially (e.g. if `TASK-006` is the last task, the next is `TASK-007`).
+4. **Confirm** the changes made in a brief summary.
+
+The plan file is the single source of truth. All iterations must be written back to the same file.

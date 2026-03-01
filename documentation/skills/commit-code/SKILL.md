@@ -59,6 +59,7 @@ This skill teaches how to write commit messages for this monorepo. All commits *
 
 | Scope               | Description                                                                   |
 | ------------------- | ----------------------------------------------------------------------------- |
+| `affirmations`      | Python Jupyter notebook application for LangGraph affirmation generation      |
 | `applications`      | Changes spanning multiple apps (caelundas, lexico, JimmyPaolini)              |
 | `caelundas`         | Node.js CLI for astronomical calendar generation (NASA JPL ephemeris)         |
 | `configuration`     | Workspace root config files (tsconfig, eslint, vitest, nx.json, etc.)         |

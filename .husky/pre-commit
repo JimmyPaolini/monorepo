@@ -7,4 +7,4 @@ set -e
 unset NO_COLOR
 export FORCE_COLOR=1
 
-NODE_OPTIONS='--import=tsx' pnpm exec lint-staged --no-stash
+nx run monorepo:lint-staged
