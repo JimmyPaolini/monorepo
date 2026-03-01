@@ -34,10 +34,12 @@ ignorePaths:
   - node_modules
   - pnpm-lock.yaml
 words:
-  - adduser
   - abatch
+  - adduser
   - āēīōūȳ
   - ĀĒĪŌŪȲ
+  - affirmation
+  - affirmations
   - ainvoke
   - Alertmanager
   - apikey
@@ -50,8 +52,9 @@ words:
   - arcsecond
   - arcseconds
   - Arcseconds
-  - astrometric
   - astream
+  - astrology
+  - astrometric
   - ation
   - automerge
   - bento
@@ -74,6 +77,8 @@ words:
   - CALNAME
   - CALSCALE
   - Catilinarian
+  - chakra
+  - chakras
   - circumfix
   - cmdk
   - coeli
@@ -96,6 +101,7 @@ words:
   - DTEND
   - DTSTAMP
   - DTSTART
+  - duckduckgo
   - duodecuple
   - EINVALIDGHTOKEN
   - Elipssis
@@ -120,6 +126,7 @@ words:
   - fontsource
   - frontmatter
   - FUTP
+  - gemma
   - Giorgio
   - gitleaks
   - gitleaksignore
@@ -147,8 +154,14 @@ words:
   - instanceof
   - interfix
   - interleavings
+  - ipykernel
+  - ipynb
   - jimmypaolini
+  - jina
   - joor
+  - jupyter
+  - jupyterlab
+  - kabbalah
   - Keplerian
   - keyof
   - killallnode
@@ -162,6 +175,7 @@ words:
   - langgraph
   - langsmith
   - LCEL
+  - lenormand
   - lexico
   - Licen
   - licenseignore
@@ -175,6 +189,7 @@ words:
   - Meeus's
   - mercurian
   - Mercurian
+  - metasearch
   - middlewares
   - midheaven
   - migra
@@ -190,6 +205,7 @@ words:
   - myorg
   - myrelease
   - nanode
+  - navs
   - ncurc
   - networkidle
   - nextjs
@@ -202,6 +218,7 @@ words:
   - ologies
   - oneline
   - opencontainers
+  - openwebui
   - operands
   - oxfmt
   - oxlint
@@ -231,6 +248,9 @@ words:
   - promethian
   - psql
   - pydantic
+  - pyproject
+  - pyright
+  - pytest
   - Qdrant
   - querykey
   - quincunx
@@ -238,17 +258,25 @@ words:
   - raspberrypi
   - readonly
   - readyz
+  - reagent
   - refinementness
   - repo
   - rerank
   - Retag
   - RRULE
+  - ruff
+  - rune
+  - runes
   - samhain
   - Samhain
   - satisfies
+  - searx
+  - searxng
   - semisextile
   - semisquare
   - sendgrid
+  - sephirah
+  - sephirot
   - septile
   - serializers
   - seroval
@@ -275,6 +303,7 @@ words:
   - syncpackrc
   - tailwindcss
   - tanstack
+  - tarot
   - texttypescript
   - tfstate
   - tfvars
@@ -285,6 +314,7 @@ words:
   - toon
   - topocentric
   - toupper
+  - trafilatura
   - transpiler
   - tredecile
   - trgm
@@ -301,8 +331,8 @@ words:
   - TZOFFSETTO
   - undecile
   - undecuple
-  - untaint
   - unredacted
+  - untaint
   - upenn
   - upsert
   - Upserted
@@ -311,17 +341,20 @@ words:
   - VALARM
   - vaul
   - vcalendar
+  - VCALENDAR
   - vectorstore
   - vectorstores
-  - VCALENDAR
+  - venv
   - vevent
   - VEVENT
   - vinxi
   - vite
   - vitest
   - VTIMEZONE
+  - vulture
   - Warshall
   - WCAG
+  - webui
   - wording
   - workspaces
   - worktree
