@@ -47,6 +47,15 @@
         ]
       }
     },
+    "commitlint": {
+      "cache": false,
+      "description": "Validate commit message format with commitlint (invoked by the commit-msg git hook)",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "NODE_OPTIONS='--import=tsx' commitlint --edit {args.edit}",
+        "cwd": "{projectRoot}"
+      }
+    },
     "dependency-audit": {
       "cache": false,
       "configurations": {
@@ -154,6 +163,15 @@
       }
     },
     "lint": {},
+    "lint-staged": {
+      "cache": false,
+      "description": "Run lint-staged on staged files (invoked by the pre-commit git hook)",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "NODE_OPTIONS='--import=tsx' lint-staged --no-stash",
+        "cwd": "{projectRoot}"
+      }
+    },
     "markdown-lint": {
       "cache": true,
       "configurations": {
@@ -413,6 +431,15 @@
     },
     "typecheck": {
       "description": "Type-check workspace root TypeScript files"
+    },
+    "validate-branch-name": {
+      "cache": false,
+      "description": "Validate the current branch name against the configured naming convention (invoked by the pre-push git hook)",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "validate-branch-name",
+        "cwd": "{projectRoot}"
+      }
     },
     "yaml-lint": {}
   }

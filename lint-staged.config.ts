@@ -68,6 +68,17 @@ const config = {
     ];
   },
 
+  // ── Python files ──
+  // Runs format (Ruff), lint (Ruff), typecheck (pyright), and dead-code detection (vulture)
+  "*.py": (files: string[]) => {
+    const relativePaths = files
+      .map((file: string) => relative(process.cwd(), file))
+      .join(",");
+    return [
+      `nx affected --target=format,lint,spell-check,typecheck,vulture --configuration=check --files=${relativePaths}`,
+    ];
+  },
+
   // ── JSON / HTML data files ──
   // Format and spell-check only (no lint or typecheck needed)
   "*.{json,jsonc,json5,html}": (files: string[]) => {

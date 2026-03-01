@@ -73,6 +73,7 @@ Specialized domain knowledge for working on specific systems or patterns:
 
 ## Projects
 
+- **[affirmations](applications/affirmations/AGENTS.md)**: Python Jupyter notebook application for LangChain + LangGraph affirmation generation (Ollama Gemma 3, ReAct agent, DuckDuckGo/SearxNG/Wikipedia tools)
 - **[caelundas](applications/caelundas/AGENTS.md)**: Node.js CLI for astronomical calendar generation (NASA JPL API, Kubernetes Job)
 - **[lexico](applications/lexico/AGENTS.md)**: SSR web app (React 19, TanStack Start, Supabase)
 - **[lexico-components](packages/lexico-components/AGENTS.md)**: Shared React component library (shadcn/ui, Radix UI)
@@ -207,6 +208,20 @@ nx run caelundas:kubernetes-copy-files # Retrieve output
 nx run lexico:supabase:start           # Start local
 nx run lexico:supabase:generate-types  # After schema changes
 nx run lexico:supabase:database-diff   # Create migration
+```
+
+### Affirmations (Python + Ollama)
+
+```bash
+nx run affirmations:ollama           # Start Ollama container (default: start)
+nx run affirmations:searxng          # Start SearxNG container (default: start)
+nx run affirmations:open-webui       # Start Open WebUI container (default: start)
+nx run affirmations:test             # Run unit tests
+nx run affirmations:lint             # Ruff linting
+nx run affirmations:typecheck        # pyright type checking
+nx run affirmations:vulture        # Detect unused code (vulture)
+nx run affirmations:open-webui --configuration=open  # Open Ollama chat UI
+nx run affirmations:searxng --configuration=open     # Open SearxNG search UI
 ```
 
 ## Project Architecture

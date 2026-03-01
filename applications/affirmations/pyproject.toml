@@ -1,0 +1,69 @@
+[project]
+name = "affirmations"
+version = "0.1.0"
+description = "LangChain + LangGraph affirmation generation for spiritual practices via local Ollama"
+requires-python = ">=3.11"
+dependencies = [
+  "langchain>=0.3",
+  "langchain-ollama>=0.3",
+  "langchain-community>=0.3",
+  "langgraph>=0.3",
+  "pydantic>=2.0",
+  "jupyter>=1.1",
+  "ipykernel>=6.29",
+  "wikipedia>=1.4",
+  "trafilatura>=2.0",
+]
+
+[dependency-groups]
+dev = [
+  "ruff>=0.9",
+  "pyright>=1.1",
+  "vulture>=2.14",
+  "pytest>=8.0",
+  "pytest-cov>=6.0",
+  "types-requests>=2.32",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+exclude = ["notebooks/**", ".vulture_whitelist.py"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "TCH"]
+ignore = ["E501"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.pyright]
+pythonVersion = "3.11"
+typeCheckingMode = "strict"
+venvPath = "."
+venv = ".venv"
+# LangChain/LangGraph packages don't ship complete type stubs; suppress false positives
+reportMissingTypeStubs = "none"
+reportMissingModuleSource = "none"
+reportUnknownVariableType = "none"
+reportUnknownMemberType = "none"
+reportUnknownLambdaType = "none"
+reportUnknownArgumentType = "none"
+reportDeprecated = "none"
+
+[tool.pytest.ini_options]
+testpaths = ["testing"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+markers = [
+  "unit: fast unit tests with mocked I/O",
+  "integration: integration tests requiring real services",
+]

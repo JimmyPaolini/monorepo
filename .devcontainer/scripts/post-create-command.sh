@@ -14,9 +14,19 @@ else
   echo "👍 .env file already exists"
 fi
 
+
+echo "�📦 Installing dependencies with pnpm..."
 pnpm install --frozen-lockfile
+echo "✅ Dependencies installed"
 
+echo "🦭 Resetting Nx cache..."
 pnpm exec nx reset
-pnpm exec nx graph --file=.nx/graph.json 2>/dev/null
+echo "✅ Nx cache reset"
 
+echo "🕸️ Generating Nx project graph..."
+pnpm exec nx graph --file=.nx/graph.json 2>/dev/null
+echo "✅ Nx project graph generated"
+
+echo "⚙️ Syncing VSCode settings..."
 pnpm exec tsx .devcontainer/scripts/sync-vscode-settings.ts write
+echo "✅ VSCode settings synced"
