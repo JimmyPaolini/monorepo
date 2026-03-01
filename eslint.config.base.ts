@@ -565,6 +565,15 @@ export default [
     },
   },
 
+  // ━━━━━━━━━━━━━━━━━━━ JSONC Files ━━━━━━━━━━━━━━━━━━━
+  // JSONC files support trailing commas; align with Prettier's trailingComma: "all" + jsonc parser
+  {
+    files: ["**/*.jsonc"],
+    rules: {
+      "jsonc/comma-dangle": ["error", "always-multiline"],
+    },
+  },
+
   // ━━━━━━━━━━━━━━━━━━━ package.json files ━━━━━━━━━━━━━━━━━━━
   // Allow line-separated groups in package.json for security audit tool flexibility
   {

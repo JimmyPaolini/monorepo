@@ -33,7 +33,10 @@
   "fix": false,
   // Globs to ignore
   "ignores": [
+    "**/.pytest_cache",
+    "**/.ruff_cache",
     "**/.terraform/**",
+    "**/.venv/**",
     "**/coverage/**",
     "**/dist/**",
     "**/node_modules/**",
@@ -42,10 +45,9 @@
     "dist/**",
     "documentation/planning/**",
     "node_modules/**",
-    "pnpm-lock.yaml",
-    // Shadcn-ui generated components
     "packages/lexico-components/src/components/ui/**",
     "packages/lexico-components/src/hooks/use-mobile.tsx",
     "packages/lexico-components/src/lib/utils.ts",
+    "pnpm-lock.yaml",
   ],
 }

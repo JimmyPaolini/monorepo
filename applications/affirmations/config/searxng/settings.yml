@@ -1,0 +1,63 @@
+# SearxNG configuration for affirmations application
+# Enables key search engines for spiritual practice research
+
+use_default_settings: true
+
+general:
+  debug: false
+  instance_name: Affirmations SearxNG
+
+server:
+  secret_key: affirmations-searxng-secret-key-change-in-production
+  limiter: false
+  public_instance: false
+
+ui:
+  static_use_hash: false
+  default_locale: en
+  default_theme: simple
+
+search:
+  safe_search: 0
+  autocomplete: ""
+  default_lang: en
+  formats:
+    - html
+    - json
+
+engines:
+  - name: wikipedia
+    engine: wikipedia
+    categories: general
+    shortcut: wp
+    disabled: false
+
+  - name: duckduckgo
+    engine: duckduckgo
+    categories: general
+    shortcut: ddg
+    disabled: false
+
+  - name: google scholar
+    engine: google_scholar
+    categories: science
+    shortcut: gs
+    disabled: false
+
+  - name: arxiv
+    engine: arxiv
+    categories: science
+    shortcut: arxiv
+    disabled: false
+
+  - name: github
+    engine: github
+    categories: it
+    shortcut: gh
+    disabled: false
+
+  - name: wikidata
+    engine: wikidata
+    categories: general
+    shortcut: wd
+    disabled: false

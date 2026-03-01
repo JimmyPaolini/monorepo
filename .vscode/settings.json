@@ -127,6 +127,7 @@
   "conventionalCommits.promptFooter": false,
   "conventionalCommits.promptScopes": true,
   "conventionalCommits.scopes": [
+    "affirmations", // Python Jupyter notebook application for LangGraph affirmation generation
     "applications", // Changes spanning multiple apps (caelundas, lexico, JimmyPaolini)
     "caelundas", // Node.js CLI for astronomical calendar generation (NASA JPL ephemeris)
     "configuration", // Workspace root config files (tsconfig, eslint, vitest, nx.json, etc.)
@@ -188,14 +189,17 @@
     "source.fixAll": "explicit",
     "source.fixAll.eslint": "explicit",
     "source.fixAll.prettier": "explicit",
-    "source.fixAll.pylance": "never",
+    "source.fixAll.pylance": "explicit",
     "source.fixAll.ruff": "explicit",
     "source.fixAll.ts": "explicit",
     "source.formatAll.terraform": "explicit",
+    "source.organizeImports": "explicit",
     "source.organizeImports.ruff": "explicit",
+    "source.organizeLinkDefinitions": "explicit",
     "source.removeUnused.ts": "never",
     "source.removeUnusedImports": "explicit",
     "source.sort.json": "never",
+    "source.sortImports": "explicit",
     "source.unusedImports": "explicit"
   },
   "editor.detectIndentation": false,
@@ -455,6 +459,7 @@
   ],
   "gitlens.ai.model": "vscode",
   "gitlens.ai.vscode.model": "copilot:gpt-4.1",
+  "gitlens.gitkraken.mcp.autoEnabled": false,
   "gitlens.plusFeatures.enabled": true,
   "gitlens.views.commits.files.layout": "tree",
   "gitlens.views.scm.grouped.hiddenViews": {
@@ -471,17 +476,17 @@
     "worktrees": false
   },
   "gitlens.views.scm.grouped.views": {
-    "branches": true,
     "commits": true,
+    "branches": true,
+    "remotes": true,
+    "stashes": true,
+    "tags": true,
+    "worktrees": true,
     "contributors": true,
     "fileHistory": false,
-    "launchpad": false,
-    "remotes": true,
     "repositories": true,
     "searchAndCompare": false,
-    "stashes": false,
-    "tags": true,
-    "worktrees": true
+    "launchpad": false
   },
   "gitlens.views.worktrees.showStashes": true,
   "indentRainbow.colorOnWhiteSpaceOnly": true,
@@ -498,6 +503,7 @@
   "json.schemaDownload.enable": true,
   "json.schemaDownload.trustedDomains": {
     "https://biomejs.dev": true,
+    "https://cdn.statically.io": true,
     "https://json.schemastore.org/": true,
     "https://json-schema.org/": true,
     "https://raw.githubusercontent.com/": true,
@@ -659,12 +665,18 @@
     "node_modules": true
   },
   "search.useIgnoreFiles": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "simpleBrowser.useIntegratedBrowser": true,
   "task.autoDetect": "on",
   "task.problemMatchers.neverPrompt": {
     "shell": true
   },
   "task.reconnection": true,
   "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.env.osx": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "NO_COLOR": "0"
+  },
   "terraform.languageServer.args": [
     "serve"
   ],
@@ -712,7 +724,6 @@
   "workbench.editor.tabSizing": "fit",
   "workbench.editor.wrapTabs": false,
   "workbench.editorAssociations": {
-    "*.csv": "jupyter-data-wrangler",
     "*.html": "default",
     "file:/**/*.csv": "jupyter-data-wrangler"
   },

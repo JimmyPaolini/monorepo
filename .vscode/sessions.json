@@ -1,10 +1,33 @@
 {
   "$schema": "https://cdn.statically.io/gh/nguyenngoclongdev/cdn/main/schema/v11/terminal-keeper.json",
   "activateOnStartup": true,
-  "active": "default",
+  "active": "affirmations",
   "keepExistingTerminals": false,
   "noClear": false,
   "sessions": {
+    "affirmations": [
+      {
+        "color": "terminal.ansiBlue",
+        "commands": [],
+        "cwd": "monorepo",
+        "icon": "repo",
+        "name": "monorepo"
+      },
+      {
+        "color": "terminal.ansiBrightYellow",
+        "commands": [],
+        "cwd": "applications/affirmations",
+        "icon": "compass",
+        "name": "affirmations"
+      },
+      {
+        "color": "terminal.ansiBrightYellow",
+        "commands": [],
+        "cwd": "applications/affirmations",
+        "icon": "compass",
+        "name": "affirmations"
+      }
+    ],
     "caelundas": [
       {
         "color": "terminal.ansiBlue",

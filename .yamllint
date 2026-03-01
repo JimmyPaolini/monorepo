@@ -7,15 +7,17 @@ yaml-files:
   - .yamllint
 
 ignore: |
-  **/pnpm-lock.yaml
-  CHANGELOG.md
-  **/node_modules/
-  **/dist/
   **/.nx/
+  **/.pytest_cache
+  **/.ruff_cache
   **/.terraform/
+  **/.venv
   **/coverage/
+  **/dist/
+  **/node_modules/
+  **/pnpm-lock.yaml
   **/templates/
-  # Shadcn-ui generated components
+  CHANGELOG.md
   packages/lexico-components/src/components/ui/
   packages/lexico-components/src/hooks/use-mobile.tsx
   packages/lexico-components/src/lib/utils.ts
