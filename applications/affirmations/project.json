@@ -8,12 +8,12 @@
     "code-analysis": {
       "options": {
         "commands": [
-          "nx run affirmations:vulture",
           "nx run affirmations:format:{args.configuration}",
           "nx run affirmations:lint:{args.configuration}",
           "nx run affirmations:markdown-lint",
           "nx run affirmations:spell-check",
           "nx run affirmations:typecheck",
+          "nx run affirmations:vulture",
           "nx run affirmations:yaml-lint"
         ]
       }

@@ -16,7 +16,7 @@
  *   - recommendations: Shown as suggestions (copied from recommendations)
  *   - unwantedRecommendations: Extensions to discourage (copied as-is)
  *
- * Usage: tsx scripts/sync-vscode-extensions.ts [check|write]
+ * Usage: tsx .devcontainer/scripts/sync-vscode-extensions.ts [check|write]
  *   check (default): Validate that both configs are in sync with extensions.json, exit 1 if not
  *   write: Update both devcontainer.json files from extensions.json
  */
@@ -30,7 +30,7 @@ import _ from "lodash";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const WORKSPACE_ROOT = path.join(__dirname, "..");
+const WORKSPACE_ROOT = path.join(__dirname, "../..");
 const EXTENSIONS_FILE = path.join(WORKSPACE_ROOT, ".vscode/extensions.json");
 const DEVCONTAINER_FILES = [
   path.join(WORKSPACE_ROOT, ".devcontainer/local/devcontainer.json"),
@@ -185,7 +185,7 @@ function main(): void {
   } else {
     console.error(`❌ Invalid mode: ${MODE}`);
     console.error(
-      "💡 Usage: tsx scripts/sync-vscode-extensions.ts [check|write]",
+      "💡 Usage: tsx .devcontainer/scripts/sync-vscode-extensions.ts [check|write]",
     );
     process.exit(1);
   }

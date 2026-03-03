@@ -1,7 +1,7 @@
 """LangGraph ReAct agent for research-augmented affirmation generation.
 
-The agent uses web search, SearxNG, Wikipedia, and optionally Jina Reader to
-research a spiritual practice before generating an affirmation informed by
+The agent uses SearxNG metasearch (which aggregates Wikipedia and 135+ engines)
+to research a spiritual practice before generating an affirmation informed by
 the processed research context.
 """
 
@@ -17,10 +17,7 @@ RESEARCH_AGENT_SYSTEM_PROMPT = """You are an expert researcher and affirmation w
 
 Your workflow for generating affirmations:
 1. RESEARCH: Use the available tools to gather information about the spiritual practice and topic.
-   - Use web_search for general information and symbolism
-   - Use searxng_search for comprehensive results across multiple sources
-   - Use wikipedia_lookup for authoritative reference material
-   - Use jina_reader (if available) to get detailed content from specific URLs
+   - Use searxng_search for comprehensive results across multiple sources including Wikipedia
 
 2. GENERATE: Based on your research, create a rich, meaningful affirmation that incorporates
    the authentic symbolism, history, and spiritual significance of the topic.
@@ -47,7 +44,7 @@ def create_research_agent(
 
     Args:
         llm: A configured ChatOllama instance.
-        tools: List of research tools (from create_tools()).
+        tools: List of research tools (SearxNG Tool instances).
 
     Returns:
         A compiled LangGraph StateGraph ready to invoke with {"messages": [...]}.

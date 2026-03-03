@@ -1,13 +1,13 @@
 # Affirmations Application
 
-Python application that generates structured affirmations for spiritual practices (tarot, astrology, chakras, kabbalah, runes, lenormand, and more) using LangChain, LangGraph, and a local Ollama (Gemma 3) LLM. Features a LangGraph ReAct agent with SearxNG and Wikipedia tools, plus a Trafilatura-powered research processing layer. Output is structured JSON organized by practice.
+Python application that generates structured affirmations for spiritual practices (tarot, astrology, chakras, kabbalah, runes, lenormand, and more) using LangChain, LangGraph, and a local Ollama (Gemma 3) LLM. Features a LangGraph ReAct agent with a SearxNG metasearch tool (aggregating Wikipedia and 135+ engines), plus a Trafilatura-powered research processing layer. Output is structured JSON organized by practice.
 
 ## Architecture
 
 - **LLM**: `ChatOllama` → `gemma3:4b` running in a local Docker container
 - **Chains**: LCEL pipe syntax (`ChatPromptTemplate | llm.with_structured_output(Affirmation)`)
 - **Agent**: LangGraph `create_react_agent` with research tools
-- **Research tools**: SearxNG self-hosted (always), Wikipedia (always)
+- **Research tools**: SearxNG self-hosted (aggregates Wikipedia, DuckDuckGo, Google Scholar, ArXiv, and more)
 - **Research processing**: Trafilatura HTML extraction → relevance truncation → deduplication → context budgeting
 - **Output**: Pydantic-validated JSON files in `output/{practice}.json`
 
@@ -23,8 +23,7 @@ applications/affirmations/
 │   ├── models.py            # Pydantic models (Affirmation, AffirmationSet)
 │   ├── output.py            # JSON read/write utilities
 │   ├── practices.py         # Spiritual practice configuration
-│   ├── research.py          # Research processing layer (Trafilatura)
-│   └── tools.py             # LangChain tools (SearxNG, Wikipedia)
+│   └── research.py          # Research processing layer (Trafilatura)
 ├── notebooks/
 │   └── example-affirmation-generation.ipynb
 ├── testing/

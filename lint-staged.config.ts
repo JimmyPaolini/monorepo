@@ -36,10 +36,13 @@ const config = {
   "pnpm-workspace.yaml": () => ["./scripts/check-lockfile.sh"],
 
   // ── Config synchronization ──
-  // Keep VS Code extensions list in sync between .vscode and .devcontainer
-  "{.vscode/extensions.json,.devcontainer/devcontainer.json}": () => [
+  // Keep VS Code extensions list in sync between .vscode and local devcontainer config
+  "{.vscode/extensions.json,.devcontainer/local/devcontainer.json}": () => [
     "nx run monorepo:sync-vscode-extensions:check",
   ],
+  // Keep cloud devcontainer config in sync with local config for common fields
+  "{.devcontainer/cloud/devcontainer.json,.devcontainer/local/devcontainer.json}":
+    () => ["nx run monorepo:sync-devcontainer-configuration:check"],
   // Keep conventional commit types/scopes consistent across config, settings, docs, and issue templates
   [`{${syncConventionalConfigFiles.join(",")}}`]: () => [
     "nx run monorepo:sync-conventional-config:check",

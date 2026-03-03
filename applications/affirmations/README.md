@@ -1,6 +1,6 @@
 # Affirmations
 
-Python application that generates structured affirmations for spiritual practices using LangChain, LangGraph, and a locally-hosted Gemma 3 LLM via Ollama. A LangGraph ReAct agent researches spiritual topics using SearxNG and Wikipedia (with Trafilatura-powered content extraction), then generates Pydantic-validated affirmations saved as structured JSON.
+Python application that generates structured affirmations for spiritual practices using LangChain, LangGraph, and a locally-hosted Gemma 3 LLM via Ollama. A LangGraph ReAct agent researches spiritual topics using SearxNG metasearch (aggregating Wikipedia, DuckDuckGo, Google Scholar, and more) with Trafilatura-powered content extraction, then generates Pydantic-validated affirmations saved as structured JSON.
 
 ## Prerequisites
 
@@ -34,8 +34,7 @@ applications/affirmations/
 │   ├── models.py            # Pydantic: Affirmation, AffirmationSet, ResearchResult
 │   ├── output.py            # save_affirmations() / load_affirmations() JSON I/O
 │   ├── practices.py         # Spiritual practice config (tarot, astrology, etc.)
-│   ├── research.py          # Trafilatura-powered research processing layer
-│   └── tools.py             # LangChain tools: SearxNG, Wikipedia
+│   └── research.py          # Trafilatura-powered research processing layer
 ├── notebooks/
 │   └── example-affirmation-generation.ipynb
 ├── testing/
@@ -96,10 +95,9 @@ Generated affirmations are saved to `output/{practice}.json`:
 
 ## Research Tools
 
-| Tool               | Type          | Description                                    |
-| ------------------ | ------------- | ---------------------------------------------- |
-| `searxng_search`   | Always active | Self-hosted SearxNG at `http://localhost:8889` |
-| `wikipedia_lookup` | Always active | Wikipedia API (no API key required)            |
+| Tool             | Type          | Description                                                              |
+| ---------------- | ------------- | ------------------------------------------------------------------------ |
+| `searxng_search` | Always active | Self-hosted SearxNG at `http://localhost:8889`, aggregates 135+ engines  |
 
 ## Research Processing Layer
 
