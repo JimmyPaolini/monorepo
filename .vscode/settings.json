@@ -190,7 +190,6 @@
     "source.fixAll.eslint": "explicit",
     "source.fixAll.prettier": "explicit",
     "source.fixAll.pylance": "explicit",
-    "source.fixAll.ruff": "explicit",
     "source.fixAll.ts": "explicit",
     "source.formatAll.terraform": "explicit",
     "source.organizeImports": "explicit",
@@ -588,11 +587,11 @@
   },
   "notebook.codeActionsOnSave": {
     "notebook.source.fixAll": "explicit",
+    "notebook.source.fixAll.ruff": "explicit",
     "notebook.source.organizeImports": "explicit",
     "source.convertImportFormat": "explicit",
     "source.fixAll": "explicit",
     "source.fixAll.pylance": "explicit",
-    "source.fixAll.ruff": "explicit",
     "source.sortImports": "explicit",
     "source.unusedImports": "explicit"
   },
@@ -742,5 +741,5 @@
   "workbench.panel.showLabels": false,
   "workbench.settings.alwaysShowAdvancedSettings": true,
   "workbench.sideBar.location": "right",
-  "workbench.startupEditor": "agentSessionsWelcomePage"
+  "workbench.startupEditor": "welcomePage"
 }

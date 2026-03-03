@@ -11,23 +11,25 @@ set -uo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WORKSPACE_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
-DEVCONTAINER_JSON="${WORKSPACE_ROOT}/.devcontainer/devcontainer.json"
+LOCAL_DEVCONTAINER_JSON="${WORKSPACE_ROOT}/.devcontainer/local/devcontainer.json"
+CLOUD_DEVCONTAINER_JSON="${WORKSPACE_ROOT}/.devcontainer/cloud/devcontainer.json"
 PACKAGE_JSON="${WORKSPACE_ROOT}/package.json"
 
 #region 📌 Expected pinned versions (single sources of truth: package.json & devcontainer.json)
-NODE_MAJOR="$(jq -r '.features["ghcr.io/devcontainers/features/node:1"].version' "${DEVCONTAINER_JSON}")"
+# Version pins are read from the local config (source of truth); cloud is kept in sync by sync-devcontainer-configuration.ts
+NODE_MAJOR="$(jq -r '.features["ghcr.io/devcontainers/features/node:1"].version' "${LOCAL_DEVCONTAINER_JSON}")"
 PNPM_VERSION="$(jq -r '.packageManager | split("@")[1]' "${PACKAGE_JSON}")"
-EXPECTED_NX_VERSION="$(jq -r '.features["ghcr.io/devcontainers-extra/features/nx-npm:1"].version' "${DEVCONTAINER_JSON}")"
-EXPECTED_GH_VERSION="$(jq -r '.features["ghcr.io/devcontainers/features/github-cli:1"].version' "${DEVCONTAINER_JSON}")"
-EXPECTED_SUPABASE_VERSION="$(jq -r '.features["ghcr.io/devcontainers-extra/features/supabase-cli:1"].version' "${DEVCONTAINER_JSON}")"
-EXPECTED_TERRAFORM_VERSION="$(jq -r '.features["ghcr.io/devcontainers/features/terraform:1"].version' "${DEVCONTAINER_JSON}")"
-EXPECTED_TFLINT_VERSION="$(jq -r '.features["ghcr.io/devcontainers/features/terraform:1"].tflint' "${DEVCONTAINER_JSON}")"
-EXPECTED_HELM_VERSION="$(jq -r '.features["ghcr.io/devcontainers/features/kubectl-helm-minikube:1"].helm' "${DEVCONTAINER_JSON}")"
-EXPECTED_KUBECTL_VERSION="$(jq -r '.features["ghcr.io/devcontainers/features/kubectl-helm-minikube:1"].version' "${DEVCONTAINER_JSON}")"
-EXPECTED_PYTHON_MAJOR_MINOR="$(jq -r '.features["ghcr.io/devcontainers/features/python:1"].version' "${DEVCONTAINER_JSON}")"
-EXPECTED_YAMLLINT_VERSION="$(jq -r '.features["ghcr.io/devcontainers-extra/features/yamllint:2"].version' "${DEVCONTAINER_JSON}")"
-EXPECTED_JQ_VERSION="$(jq -r '.features["ghcr.io/eitsupi/devcontainer-features/jq-likes:2"].jqVersion' "${DEVCONTAINER_JSON}")"
-EXPECTED_SQLITE_VERSION="$(jq -r '.features["ghcr.io/warrenbuckley/codespace-features/sqlite:1"].version' "${DEVCONTAINER_JSON}")"
+EXPECTED_NX_VERSION="$(jq -r '.features["ghcr.io/devcontainers-extra/features/nx-npm:1"].version' "${LOCAL_DEVCONTAINER_JSON}")"
+EXPECTED_GH_VERSION="$(jq -r '.features["ghcr.io/devcontainers/features/github-cli:1"].version' "${LOCAL_DEVCONTAINER_JSON}")"
+EXPECTED_SUPABASE_VERSION="$(jq -r '.features["ghcr.io/devcontainers-extra/features/supabase-cli:1"].version' "${LOCAL_DEVCONTAINER_JSON}")"
+EXPECTED_TERRAFORM_VERSION="$(jq -r '.features["ghcr.io/devcontainers/features/terraform:1"].version' "${LOCAL_DEVCONTAINER_JSON}")"
+EXPECTED_TFLINT_VERSION="$(jq -r '.features["ghcr.io/devcontainers/features/terraform:1"].tflint' "${LOCAL_DEVCONTAINER_JSON}")"
+EXPECTED_HELM_VERSION="$(jq -r '.features["ghcr.io/devcontainers/features/kubectl-helm-minikube:1"].helm' "${LOCAL_DEVCONTAINER_JSON}")"
+EXPECTED_KUBECTL_VERSION="$(jq -r '.features["ghcr.io/devcontainers/features/kubectl-helm-minikube:1"].version' "${LOCAL_DEVCONTAINER_JSON}")"
+EXPECTED_PYTHON_MAJOR_MINOR="$(jq -r '.features["ghcr.io/devcontainers/features/python:1"].version' "${LOCAL_DEVCONTAINER_JSON}")"
+EXPECTED_YAMLLINT_VERSION="$(jq -r '.features["ghcr.io/devcontainers-extra/features/yamllint:2"].version' "${LOCAL_DEVCONTAINER_JSON}")"
+EXPECTED_JQ_VERSION="$(jq -r '.features["ghcr.io/eitsupi/devcontainer-features/jq-likes:2"].jqVersion' "${LOCAL_DEVCONTAINER_JSON}")"
+EXPECTED_SQLITE_VERSION="$(jq -r '.features["ghcr.io/warrenbuckley/codespace-features/sqlite:1"].version' "${LOCAL_DEVCONTAINER_JSON}")"
 #endregion
 
 #region 🛠️ Assertion helpers
@@ -132,16 +134,16 @@ echo "🗄️  SQLite — must be ${EXPECTED_SQLITE_VERSION}"
 assert_version_contains "sqlite3" "${EXPECTED_SQLITE_VERSION}" "sqlite3 --version"
 #endregion
 
-#region 🐳 Docker (DinD)
+#region 🐳 Docker
 echo ""
-echo "🐳 Docker (DinD)"
+echo "🐳 Docker (DinD inside container / DooD on local machine)"
 if docker info > /dev/null 2>&1; then
   DOCKER_SERVER_VERSION=$(docker version --format '{{.Server.Version}}' 2>/dev/null || echo "unknown")
   pass "docker daemon reachable (server v${DOCKER_SERVER_VERSION})"
   COMPOSE_VERSION=$(docker compose version --short 2>/dev/null || echo "unknown")
   pass "docker compose available (v${COMPOSE_VERSION})"
 else
-  echo "  ⚠️  Docker daemon not reachable — skipping Docker tests (DinD only runs inside the devcontainer)"
+  echo "  ⚠️  Docker daemon not reachable — skipping Docker tests (daemon starts after container is fully up)"
 fi
 #endregion
 
@@ -232,10 +234,61 @@ done
 #region 🧩 Extensions list consistency
 echo ""
 echo "🧩 VS Code extensions / recommendations sync"
-if SYNC_OUTPUT=$(cd "${WORKSPACE_ROOT}" && pnpm exec tsx scripts/sync-vscode-extensions.ts check 2>&1); then
+if SYNC_OUTPUT=$(cd "${WORKSPACE_ROOT}" && pnpm exec tsx .devcontainer/scripts/sync-vscode-extensions.ts check 2>&1); then
   pass "VS Code extensions are in sync"
 else
-  fail "VS Code extensions are out of sync — run: pnpm exec tsx scripts/sync-vscode-extensions.ts write"
+  fail "VS Code extensions are out of sync — run: pnpm exec tsx .devcontainer/scripts/sync-vscode-extensions.ts write"
+fi
+#endregion
+
+#region ⚙️ Devcontainer configuration structure
+echo ""
+echo "⚙️  Devcontainer configuration structure (local ↔ cloud)"
+
+# Common fields: cloud must be in sync with local (source of truth)
+if cd "${WORKSPACE_ROOT}" && pnpm exec tsx scripts/sync-devcontainer-configuration.ts check > /dev/null 2>&1; then
+  pass "cloud config common fields are in sync with local config"
+else
+  fail "cloud config is out of sync with local config — run: pnpm exec tsx scripts/sync-devcontainer-configuration.ts write"
+fi
+
+# local: must have docker-outside-of-docker, must not have docker-in-docker, must not have docker-storage mount
+if jq -e '.features | has("ghcr.io/devcontainers/features/docker-outside-of-docker:1")' "${LOCAL_DEVCONTAINER_JSON}" > /dev/null 2>&1; then
+  pass "local config has docker-outside-of-docker feature"
+else
+  fail "local config missing docker-outside-of-docker feature"
+fi
+if jq -e '.features | has("ghcr.io/devcontainers/features/docker-in-docker:2") | not' "${LOCAL_DEVCONTAINER_JSON}" > /dev/null 2>&1; then
+  pass "local config does not have docker-in-docker feature"
+else
+  fail "local config must not have docker-in-docker feature"
+fi
+if jq -e '[.mounts[] | select(.target == "/var/lib/docker")] | length == 0' "${LOCAL_DEVCONTAINER_JSON}" > /dev/null 2>&1; then
+  pass "local config does not have docker-storage mount"
+else
+  fail "local config must not have docker-storage mount (/var/lib/docker)"
+fi
+
+# cloud: must have docker-in-docker, must not have docker-outside-of-docker, must have docker-storage mount and memory runArgs
+if jq -e '.features | has("ghcr.io/devcontainers/features/docker-in-docker:2")' "${CLOUD_DEVCONTAINER_JSON}" > /dev/null 2>&1; then
+  pass "cloud config has docker-in-docker feature"
+else
+  fail "cloud config missing docker-in-docker feature"
+fi
+if jq -e '.features | has("ghcr.io/devcontainers/features/docker-outside-of-docker:1") | not' "${CLOUD_DEVCONTAINER_JSON}" > /dev/null 2>&1; then
+  pass "cloud config does not have docker-outside-of-docker feature"
+else
+  fail "cloud config must not have docker-outside-of-docker feature"
+fi
+if jq -e '[.mounts[] | select(.target == "/var/lib/docker")] | length > 0' "${CLOUD_DEVCONTAINER_JSON}" > /dev/null 2>&1; then
+  pass "cloud config has docker-storage mount (/var/lib/docker)"
+else
+  fail "cloud config missing docker-storage mount (/var/lib/docker)"
+fi
+if jq -e '[.runArgs[] | select(startswith("--memory"))] | length > 0' "${CLOUD_DEVCONTAINER_JSON}" > /dev/null 2>&1; then
+  pass "cloud config has memory runArgs"
+else
+  fail "cloud config missing memory runArgs (--memory)"
 fi
 #endregion
 

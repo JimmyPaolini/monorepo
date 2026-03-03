@@ -43,6 +43,7 @@
           "nx run monorepo:sync-conventional-config:{args.configuration}",
           "nx run monorepo:sync-pull-request-template:{args.configuration}",
           "nx run monorepo:sync-vscode-extensions:{args.configuration}",
+          "nx run monorepo:sync-vscode-settings:{args.configuration}",
           "nx run monorepo:typecheck"
         ]
       }
@@ -330,6 +331,27 @@
         "command": "tsx scripts/sync-conventional-config.ts"
       }
     },
+    "sync-devcontainer-configuration": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "command": "tsx scripts/sync-devcontainer-configuration.ts check"
+        },
+        "write": {
+          "command": "tsx scripts/sync-devcontainer-configuration.ts write && nx run monorepo:format:write"
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "Validate that common fields in cloud devcontainer.json are in sync with the local config (check) or propagate them (write)",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/.devcontainer/cloud/devcontainer.json",
+        "{projectRoot}/.devcontainer/local/devcontainer.json"
+      ],
+      "options": {
+        "command": "tsx scripts/sync-devcontainer-configuration.ts"
+      }
+    },
     "sync-pull-request-template": {
       "cache": true,
       "configurations": {
@@ -357,21 +379,40 @@
       "cache": true,
       "configurations": {
         "check": {
-          "command": "tsx scripts/sync-vscode-extensions.ts check"
+          "command": "tsx .devcontainer/scripts/sync-vscode-extensions.ts check"
         },
         "write": {
-          "command": "tsx scripts/sync-vscode-extensions.ts write && nx run monorepo:format:write"
+          "command": "tsx .devcontainer/scripts/sync-vscode-extensions.ts write && nx run monorepo:format:write"
         }
       },
       "defaultConfiguration": "check",
-      "description": "Validate that VS Code extensions are synchronized between .vscode/extensions.json and .devcontainer/devcontainer.json (check) or sync them (write)",
+      "description": "Validate that VS Code extensions are synchronized between .vscode/extensions.json and both devcontainer configurations (check) or sync them (write)",
       "executor": "nx:run-commands",
       "inputs": [
-        "{projectRoot}/.devcontainer/devcontainer.json",
+        "{projectRoot}/.devcontainer/cloud/devcontainer.json",
+        "{projectRoot}/.devcontainer/local/devcontainer.json",
         "{projectRoot}/.vscode/extensions.json"
       ],
       "options": {
-        "command": "tsx scripts/sync-vscode-extensions.ts"
+        "command": "tsx .devcontainer/scripts/sync-vscode-extensions.ts"
+      }
+    },
+    "sync-vscode-settings": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "command": "tsx .devcontainer/scripts/sync-vscode-settings.ts check"
+        },
+        "write": {
+          "command": "tsx .devcontainer/scripts/sync-vscode-settings.ts write"
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "Validate that VS Code Machine settings contain all workspace settings (check) or merge workspace settings into Machine settings (write)",
+      "executor": "nx:run-commands",
+      "inputs": ["{projectRoot}/.vscode/settings.json"],
+      "options": {
+        "command": "tsx .devcontainer/scripts/sync-vscode-settings.ts"
       }
     },
     "syncpack": {

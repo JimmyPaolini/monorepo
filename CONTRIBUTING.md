@@ -37,22 +37,25 @@ The fastest way to get started is using the included dev container, which provid
 
 1. Clone the repository: `git clone https://github.com/JimmyPaolini/monorepo.git`
 2. Open the folder in VS Code
-3. When prompted "Reopen in Container", click **Reopen in Container** (or run `Dev Containers: Reopen in Container` from command palette)
-4. Wait for container build (~2-3 minutes first time)
-5. Start developing!
+3. Open the command palette (`Ctrl/Cmd+Shift+P`) → **Dev Containers: Reopen in Container**
+4. Select a configuration when prompted:
+   - **Monorepo Devcontainer (Local)** — local machine (Docker-outside-of-Docker, recommended)
+   - **Monorepo Devcontainer (Cloud)** — GitHub Codespaces or when full Docker isolation is needed (Docker-in-Docker)
+5. Wait for container build (~2-3 minutes first time)
+6. Start developing!
 
 **Included Tools:**
 
-| Tool         | Version | Purpose                              |
-| ------------ | ------- | ------------------------------------ |
-| Node.js      | 22.20.0 | JavaScript runtime                   |
-| pnpm         | 10.20.0 | Package manager                      |
-| Terraform    | latest  | Infrastructure provisioning (Linode) |
-| Supabase CLI | latest  | Database migrations, type generation |
-| kubectl      | latest  | Kubernetes cluster management        |
-| Helm         | latest  | Kubernetes package manager           |
-| GitHub CLI   | latest  | Repository operations                |
-| Docker       | (DinD)  | Isolated Docker daemon in container  |
+| Tool         | Version                     | Purpose                                                      |
+| ------------ | --------------------------- | ------------------------------------------------------------ |
+| Node.js      | 22.20.0                     | JavaScript runtime                                           |
+| pnpm         | 10.20.0                     | Package manager                                              |
+| Terraform    | latest                      | Infrastructure provisioning (Linode)                         |
+| Supabase CLI | latest                      | Database migrations, type generation                         |
+| kubectl      | latest                      | Kubernetes cluster management                                |
+| Helm         | latest                      | Kubernetes package manager                                   |
+| GitHub CLI   | latest                      | Repository operations                                        |
+| Docker       | DooD (local) / DinD (cloud) | Docker-outside-of-Docker on local; Docker-in-Docker in cloud |
 
 **Port Forwarding:**
 
