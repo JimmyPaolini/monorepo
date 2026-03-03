@@ -172,14 +172,6 @@
     }
   },
   "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {
-      "azureDnsAutoDetection": true,
-      "dockerDashComposeVersion": "v2",
-      "installDockerBuildx": true,
-      "installDockerComposeSwitch": true,
-      "moby": true,
-      "version": "29"
-    },
     "ghcr.io/devcontainers/features/github-cli:1": {
       "installDirectlyFromGitHubRelease": true,
       "version": "2.87.3"
@@ -231,28 +223,17 @@
     },
     "ghcr.io/warrenbuckley/codespace-features/sqlite:1": {
       "version": "3.40.1"
+    },
+    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+      "dockerDashComposeVersion": "v2",
+      "installDockerBuildx": true,
+      "moby": false,
+      "version": "latest"
     }
   },
+  "dockerComposeFile": ["../../docker-compose.yml", "docker-compose.yml"],
   "forwardPorts": [3000, 3001, 8889, 11434, 54321, 54322, 54323, 54324, 54325],
-  "image": "mcr.microsoft.com/devcontainers/typescript-node:22-bookworm",
-  "mounts": [
-    {
-      "source": "monorepo-node-modules",
-      "target": "${containerWorkspaceFolder}/node_modules",
-      "type": "volume"
-    },
-    {
-      "source": "monorepo-pnpm",
-      "target": "/root/.local/share/pnpm",
-      "type": "volume"
-    },
-    {
-      "source": "monorepo-docker",
-      "target": "/var/lib/docker",
-      "type": "volume"
-    }
-  ],
-  "name": "Monorepo Devcontainer",
+  "name": "Monorepo Devcontainer (Local)",
   "portsAttributes": {
     "3000": {
       "label": "Lexico Development Server",
@@ -295,20 +276,16 @@
   "postCreateCommand": ".devcontainer/scripts/post-create-command.sh",
   "remoteEnv": {
     "KUBECONFIG": "${containerWorkspaceFolder}/.kube/config",
+    "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}",
     "NODE_OPTIONS": "--max-old-space-size=4096",
     "OLLAMA_HOST": "http://localhost:11434",
     "UV_THREADPOOL_SIZE": "4",
     "VSCODE_EXTENSION_HOST_WORKER_CONCURRENCY": "4"
   },
   "remoteUser": "root",
-  "runArgs": [
-    "--name",
-    "monorepo-devcontainer",
-    "--env-file",
-    "${localWorkspaceFolder}/.env",
-    "--cpus=8",
-    "--memory=12g",
-    "--memory-swap=16g"
-  ],
-  "waitFor": "postCreateCommand"
+  "runServices": ["devcontainer"],
+  "service": "devcontainer",
+  "shutdownAction": "stopCompose",
+  "waitFor": "postCreateCommand",
+  "workspaceFolder": "/workspaces/monorepo"
 }

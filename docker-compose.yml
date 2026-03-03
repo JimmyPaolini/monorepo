@@ -1,9 +1,8 @@
 name: monorepo
-version: "3.8"
 services:
   caelundas:
     build:
-      context: ../..
+      context: .
       dockerfile: applications/caelundas/Dockerfile
     image: caelundas
     container_name: caelundas
@@ -17,10 +16,26 @@ services:
       - ollama_data:/root/.ollama
     environment:
       OLLAMA_HOST: 0.0.0.0:11434
-      OLLAMA_KEEP_ALIVE: 10m
+      OLLAMA_KEEP_ALIVE: 1m
       OLLAMA_NUM_PARALLEL: "1"
       OLLAMA_MAX_LOADED_MODELS: "1"
       OLLAMA_NO_CLOUD: "1"
+      OLLAMA_FLASH_ATTENTION: "1"
+    deploy:
+      resources:
+        reservations:
+          memory: 4g
+    healthcheck:
+      test: [CMD, curl, -f, http://localhost:11434/api/version]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 15s
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
     restart: unless-stopped
 
   searxng:
@@ -29,9 +44,20 @@ services:
     ports:
       - 8889:8080
     volumes:
-      - ./applications/affirmations/config/searxng:/etc/searxng
+      - ${LOCAL_WORKSPACE_FOLDER}/applications/affirmations/config/searxng:/etc/searxng
     environment:
       SEARXNG_BASE_URL: http://localhost:8889
+    healthcheck:
+      test: [CMD, wget, -qO-, http://localhost:8080/]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
     restart: unless-stopped
 
   open-webui:
@@ -43,8 +69,21 @@ services:
       - open-webui_data:/app/backend/data
     environment:
       OLLAMA_BASE_URL: http://ollama:11434
+      ENABLE_WEBSOCKET_SUPPORT: "false"
     depends_on:
-      - ollama
+      ollama:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, curl, -f, http://localhost:8080/health]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
     restart: unless-stopped
 
 volumes:
