@@ -476,17 +476,17 @@
     "worktrees": false
   },
   "gitlens.views.scm.grouped.views": {
-    "commits": true,
     "branches": true,
-    "remotes": true,
-    "stashes": true,
-    "tags": true,
-    "worktrees": true,
+    "commits": true,
     "contributors": true,
     "fileHistory": false,
+    "launchpad": false,
+    "remotes": true,
     "repositories": true,
     "searchAndCompare": false,
-    "launchpad": false
+    "stashes": true,
+    "tags": true,
+    "worktrees": true
   },
   "gitlens.views.worktrees.showStashes": true,
   "indentRainbow.colorOnWhiteSpaceOnly": true,
@@ -554,6 +554,7 @@
     ".yamllint": "yaml",
     "auth.guard.js": "authors",
     "database-client-config.json": "database",
+    "devcontainer.json": "3d",
     "eslint.config.base.ts": "eslint",
     "extensions.json": "cake",
     "jest.config.e2e.ts": "jest",
@@ -580,14 +581,22 @@
     "rbac": "guard",
     "routing": "element"
   },
+  "notebook.breadcrumbs.showCodeCells": true,
   "notebook.cellToolbarLocation": {
     "default": "right",
     "jupyter-notebook": "right"
   },
   "notebook.codeActionsOnSave": {
     "notebook.source.fixAll": "explicit",
-    "notebook.source.organizeImports": "explicit"
+    "notebook.source.organizeImports": "explicit",
+    "source.convertImportFormat": "explicit",
+    "source.fixAll": "explicit",
+    "source.fixAll.pylance": "explicit",
+    "source.fixAll.ruff": "explicit",
+    "source.sortImports": "explicit",
+    "source.unusedImports": "explicit"
   },
+  "notebook.compactView": true,
   "notebook.defaultFormatter": "charliermarsh.ruff",
   "notebook.formatOnSave.enabled": true,
   "notebook.lineNumbers": "on",

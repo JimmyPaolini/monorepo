@@ -1,0 +1,3 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}/applications/affirmations/.venv/bin/python"
+}
