@@ -74,3 +74,19 @@ promethian
 solfeggios
 tarot
 #endregion
+
+#region 🌐 SearxNG Configuration
+astrostyle
+biddytarot
+cafeastrology
+crystalvaults
+energymuse
+labyrinthos
+learntarot
+mindbodygreen
+recaptcha
+startpage
+SXNG
+tarotbyarwen
+wikihow
+#endregion

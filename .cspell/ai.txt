@@ -9,6 +9,7 @@ lcel
 #region 🤖 Models & Runtimes
 gemma
 ollama
+qwen
 #endregion
 
 #region 🔍 Search & Retrieval
