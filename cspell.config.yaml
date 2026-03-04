@@ -28,345 +28,73 @@ ignorePaths:
   - "**/pnpm-lock.yaml"
   - "**/routeTree.gen.ts"
   - "**/terraform.tfstate*"
+  - "**/supabase/data.sql"
   - coverage
   - dist
   - documentation/planning/**
   - node_modules
   - pnpm-lock.yaml
+dictionaryDefinitions:
+  - name: astronomy
+    path: .cspell/astronomy.txt
+  - name: ics
+    path: .cspell/ics.txt
+  - name: nasa-horizons
+    path: .cspell/nasa-horizons.txt
+  - name: lexico
+    path: .cspell/lexico.txt
+  - name: affirmations
+    path: .cspell/affirmations.txt
+  - name: ai
+    path: .cspell/ai.txt
+  - name: python
+    path: .cspell/python.txt
+  - name: infrastructure
+    path: .cspell/infrastructure.txt
+  - name: tooling
+    path: .cspell/tooling.txt
+    addWords: true
 words:
-  - abatch
-  - adduser
-  - āēīōūȳ
-  - ĀĒĪŌŪȲ
-  - affirmation
-  - affirmations
-  - ainvoke
-  - Alertmanager
-  - apikey
-  - apoapsis
-  - aquasecurity
-  - archi
-  - Arcminute
-  - arcminutes
-  - Arcminutes
-  - arcsecond
-  - arcseconds
-  - Arcseconds
-  - astream
-  - astrology
-  - astrometric
-  - ation
-  - automerge
-  - bento
-  - biome
-  - biomejs
-  - biquintile
-  - bitnami
-  - brightgreen
-  - buildx
-  - bullmq
-  - bundlesize
-  - Burstable
-  - BYDAY
-  - BYMONTH
-  - Caelendars
-  - Caelundae
-  - caelundas
-  - Caelunday
-  - CALDESC
-  - CALNAME
-  - CALSCALE
-  - Catilinarian
-  - chakra
-  - chakras
-  - circumfix
-  - cmdk
-  - coeli
-  - commitlint
-  - context7
-  - cssmodule
-  - cves
-  - dataclasses
-  - dbeaver
-  - decan
-  - Decan
-  - decans
-  - depcruise
-  - deps
-  - devdeps
-  - devkit
-  - distroless
-  - Dockerfiles
-  - domcontentloaded
-  - DTEND
-  - DTSTAMP
-  - DTSTART
-  - duckduckgo
-  - duodecuple
-  - EINVALIDGHTOKEN
-  - Elipssis
-  - Embla
-  - ENOCHANGE
-  - ensurepath
-  - EPHEM
-  - ephemerides
-  - ephemeris
-  - Epimethean
-  - epimethian
-  - esconfig
-  - eslint
-  - ESOCKETTIMEDOUT
-  - expressjs
-  - FAISS
-  - fakerjs
-  - fastapi
-  - feathersjs
-  - fkey
-  - fluentbit
-  - fontsource
-  - frontmatter
-  - FUTP
-  - gemma
-  - Giorgio
-  - gitleaks
-  - gitleaksignore
-  - gitmodules
-  - gitmoji
-  - Gitmojis
-  - gtrgm
-  - hackathon
-  - healthcheck
-  - healthz
-  - Hexadecan
-  - Hexadecans
-  - Hmmss
-  - huggingface
-  - husky
-  - iac
-  - ical
-  - icalendar
-  - illum
-  - imbolc
-  - Imbolc
-  - imum
-  - Inbucket
-  - infer
-  - instanceof
-  - interfix
-  - interleavings
-  - ipykernel
-  - ipynb
+  # Personal names & project-specific identifiers
   - jimmypaolini
-  - jina
   - joor
-  - jupyter
-  - jupyterlab
-  - kabbalah
-  - Keplerian
-  - keyof
+  - musescore
+  - paolini
+  - shiftsmart
+  - upenn
+  # Miscellaneous uncategorized
+  - apikey
+  - elipssis
+  - futp
+  - hackathon
   - killallnode
   - killallvscodeextensions
   - killport
-  - kubeconfig
-  - kubectl
-  - kubernetes
-  - langchain
-  - langflow
-  - langgraph
-  - langsmith
-  - LCEL
-  - lenormand
-  - lexico
-  - Licen
-  - licenseignore
-  - lintstagedrc
-  - Lughnasadh
-  - Macronizer
-  - mapbox
-  - maplibre
-  - materialui
-  - Meeus
-  - Meeus's
-  - mercurian
-  - Mercurian
-  - metasearch
-  - middlewares
-  - midheaven
-  - migra
-  - Milvus
-  - mnyk
-  - monorepo
-  - multibody
-  - multidetermines
-  - Multimodality
-  - Multivalued
-  - musescore
-  - myapp
-  - myorg
-  - myrelease
-  - nanode
+  - multivalued
   - navs
-  - ncurc
-  - networkidle
-  - nextjs
   - nindent
-  - NONF
-  - nonfiction
-  - novile
+  - nonf
   - nums
-  - ollama
-  - ologies
   - oneline
-  - opencontainers
-  - openwebui
-  - operands
-  - oxfmt
-  - oxlint
-  - oxlintrc
-  - Paolini
-  - pbundlesize
-  - peaceiris
-  - periapsis
-  - Periapsis
-  - Perifocus
-  - periphrastic
-  - PGRST
-  - photostructure
-  - pipx
-  - plainto
-  - plpgsql
-  - PLUP
-  - pnpm
-  - polyglot
-  - polymorphic
-  - Postgrest
-  - precompiled
-  - preemptible
-  - preflight
-  - PRODID
-  - prograde
-  - promethian
-  - psql
-  - pydantic
-  - pyproject
-  - pyright
-  - pytest
-  - Qdrant
   - querykey
-  - quincunx
-  - radix
-  - raspberrypi
-  - readonly
-  - readyz
   - reagent
-  - refinementness
-  - repo
-  - rerank
-  - Retag
-  - RRULE
-  - ruff
-  - rune
-  - runes
-  - samhain
-  - Samhain
   - satisfies
-  - searx
-  - searxng
-  - semisextile
-  - semisquare
-  - sendgrid
-  - sephirah
-  - sephirot
-  - septile
-  - serializers
-  - seroval
-  - sesquiquadrate
-  - sextile
-  - sherif
-  - shiftsmart
-  - sqltools
-  - stackoverflow
-  - stellium
-  - stelliums
-  - storageclasses
-  - stringcase
-  - stylelint
-  - stylelintrc
-  - subclassing
-  - subquery
-  - Subrepositories
-  - supabase
-  - Superkey
-  - svgs
-  - Swipeable
-  - syncpack
-  - syncpackrc
-  - tailwindcss
-  - tanstack
-  - tarot
-  - texttypescript
-  - tfstate
-  - tfvars
   - timespan
-  - timestamptz
-  - tolerations
   - tolower
   - toon
-  - topocentric
   - toupper
-  - trafilatura
-  - transpiler
-  - tredecile
-  - trgm
-  - trine
-  - trivy
-  - trivyignore
-  - tsconfig
-  - tsquery
-  - tsvector
-  - TTFB
-  - typeof
-  - TZNAME
-  - TZOFFSETFROM
-  - TZOFFSETTO
-  - undecile
-  - undecuple
-  - unredacted
-  - untaint
-  - upenn
-  - upsert
-  - Upserted
-  - Upserting
-  - upserts
-  - VALARM
-  - vaul
-  - vcalendar
-  - VCALENDAR
-  - vectorstore
-  - vectorstores
-  - venv
-  - vevent
-  - VEVENT
-  - vinxi
-  - vite
-  - vitest
-  - VTIMEZONE
-  - vulture
-  - Warshall
-  - WCAG
-  - webui
-  - wording
-  - workspaces
-  - worktree
-  - Yods
-  - YYYYMMDDTH
-  - zodiac
 enableFiletypes:
   - markdown
   - typescript
   - javascript
   - yaml
   - json
+  - jsonc
+  - python
+  - shellscript
+  - sql
+  - terraform
+  - toml
 dictionaries:
   - typescript
   - node
@@ -374,3 +102,12 @@ dictionaries:
   - html
   - css
   - bash
+  - astronomy
+  - ics
+  - nasa-horizons
+  - lexico
+  - affirmations
+  - ai
+  - python
+  - infrastructure
+  - tooling

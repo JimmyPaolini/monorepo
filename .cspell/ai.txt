@@ -1,0 +1,34 @@
+#region 🦜 LangChain
+langchain
+langflow
+langgraph
+langsmith
+lcel
+#endregion
+
+#region 🤖 Models & Runtimes
+gemma
+ollama
+#endregion
+
+#region 🔍 Search & Retrieval
+duckduckgo
+faiss
+jina
+metasearch
+milvus
+qdrant
+rerank
+searx
+searxng
+trafilatura
+vectorstore
+vectorstores
+#endregion
+
+#region 🌐 Interfaces & Hubs
+huggingface
+multimodality
+openwebui
+webui
+#endregion
