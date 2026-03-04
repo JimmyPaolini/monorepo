@@ -1,0 +1,76 @@
+#region 𐤀 Hebrew Letters
+dalet
+chet
+resh
+tsadi
+#endregion
+
+#region 🌳 Kabbalah — Sephirot
+binah
+chesed
+chokmah
+geburah
+kether
+malkuth
+netzach
+sephirah
+sephirot
+tiphareth
+yesod
+#endregion
+
+#region 🌍 Kabbalah - Worlds
+atziluth
+briah
+yetzirah
+assiah
+#endregion
+
+#region ᚠ Norse Runes — Elder Futhark
+algiz
+ansuz
+berkano
+dagaz
+ehwaz
+eihwaz
+fehu
+gebo
+hagalaz
+ingwaz
+jera
+kenaz
+laguz
+mannaz
+nauthiz
+othala
+raidho
+rune
+runes
+sowilo
+thurisaz
+tiwaz
+uruz
+wunjo
+#endregion
+
+#region 🪷 Chakras
+ajna
+anahata
+chakra
+chakras
+manipura
+muladhara
+sahasrara
+svadhisthana
+vishuddha
+#endregion
+
+#region 🔮 Divination & Spiritual Practice
+affirmation
+affirmations
+kabbalah
+lenormand
+promethian
+solfeggios
+tarot
+#endregion
