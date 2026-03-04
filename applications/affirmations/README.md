@@ -65,7 +65,7 @@ applications/affirmations/
 | `vulture`       | `nx run affirmations:vulture`                          | Vulture dead code analysis |
 | `ollama`        | `nx run affirmations:ollama --configuration=start`     | Start Ollama container     |
 | `ollama`        | `nx run affirmations:ollama --configuration=stop`      | Stop Ollama container      |
-| `ollama`        | `nx run affirmations:ollama --configuration=pull`      | Pull gemma3:4b model       |
+| `ollama`        | `nx run affirmations:ollama --configuration=pull`      | Pull qwen3.5:9b model      |
 | `searxng`       | `nx run affirmations:searxng --configuration=start`    | Start SearxNG container    |
 | `searxng`       | `nx run affirmations:searxng --configuration=stop`     | Stop SearxNG container     |
 | `searxng`       | `nx run affirmations:searxng --configuration=open`     | Open SearxNG in browser    |
@@ -138,7 +138,7 @@ PRACTICES["numerology"] = PracticeConfig(
 
 | Service    | Port    | Description                           |
 | ---------- | ------- | ------------------------------------- |
-| Ollama     | `11434` | Local LLM server (Gemma 3 4B)         |
+| Ollama     | `11434` | Local LLM server (Qwen3.5 9B)         |
 | Open WebUI | `3001`  | Browser-based Ollama chat interface   |
 | SearxNG    | `8889`  | Self-hosted metasearch (135+ engines) |
 | JupyterLab | `8888`  | Notebook interface                    |
@@ -151,7 +151,7 @@ PRACTICES["numerology"] = PracticeConfig(
 
 ## Performance Notes
 
-- **CPU-only inference**: Gemma 3 4B takes ~30–60s per generation on CPU
+- **CPU-only inference**: Qwen3.5 9B takes ~5–15s per generation on CPU
 - **Model keepalive**: `OLLAMA_KEEP_ALIVE=10m` avoids repeated model loads
-- **Fallback**: Use `gemma3:1b` (815MB) for faster iteration during development
+- **Smaller alternative**: Use `qwen3.5:1.5b` for even faster iteration during development
 - **Simple chain**: Use `create_affirmation_chain()` (no research) for quick generation without tool overhead

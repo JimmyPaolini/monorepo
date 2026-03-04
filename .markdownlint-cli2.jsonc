@@ -41,6 +41,7 @@
     "**/dist/**",
     "**/node_modules/**",
     ".nx/**",
+    "applications/affirmations/output/**",
     "coverage/**",
     "dist/**",
     "documentation/planning/**",
