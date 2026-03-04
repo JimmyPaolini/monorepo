@@ -1,0 +1,55 @@
+#region ♈ Aspects
+binovile
+biquintile
+biseptile
+duodecuple
+novile
+quincunx
+semisextile
+semisquare
+septile
+sesquiquadrate
+sextile
+tredecile
+tredicile
+trine
+undecile
+undecuple
+#endregion
+
+#region 📐 Measurements
+arcminute
+arcminutes
+arcsecond
+arcseconds
+#endregion
+
+#region 🌿 Sabbats
+imbolc
+lughnasadh
+samhain
+#endregion
+
+#region 🔭 Celestial & Astrological
+astrology
+coeli
+decan
+decans
+hexadecan
+hexadecans
+illum
+imum
+mercurian
+midheaven
+stellium
+stelliums
+yods
+zodiac
+#endregion
+
+#region ✨ Caelundas
+caelendars
+caelundae
+caelundas
+caelunday
+#endregion

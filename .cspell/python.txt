@@ -1,0 +1,24 @@
+#region 🐍 LangChain Async
+abatch
+ainvoke
+astream
+#endregion
+
+#region 📓 Notebook Formats
+ipykernel
+ipynb
+#endregion
+
+#region 📦 Packaging & Environment
+pyproject
+venv
+#endregion
+
+#region 📚 Standard Library
+dataclasses
+pathlib
+#endregion
+
+#region 🔧 Configuration Keys
+testpaths
+#endregion

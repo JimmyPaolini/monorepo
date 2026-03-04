@@ -1041,7 +1041,7 @@ Create `.markdownlint.json`:
 }
 ```
 
-\*\*Create `.mnyk Security integration
+\*\*Create `.snyk Security integration
 
 - Day 5: npm-check-updates and CI workflows
 
