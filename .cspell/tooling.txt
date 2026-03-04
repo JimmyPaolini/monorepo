@@ -108,6 +108,7 @@ subquery
 jupyter
 jupyterlab
 pipx
+pkill
 pydantic
 #endregion
 

@@ -62,6 +62,7 @@
     "streetsidesoftware.code-spell-checker", // Code Spell Checker
     "stringham.copy-with-imports", // Copy With Imports
     "tamasfe.even-better-toml", // Even Better TOML
+    "thinker.data-size-count", // Data Size Count
     "vivaxy.vscode-conventional-commits", // Conventional Commits
     "wholroyd.jinja", // Jinja
     "YoavBls.pretty-ts-errors", // Pretty TypeScript Errors
