@@ -38,28 +38,6 @@ services:
         max-file: "3"
     restart: unless-stopped
 
-  searxng:
-    image: searxng/searxng:latest
-    container_name: searxng
-    ports:
-      - 8889:8080
-    volumes:
-      - ${LOCAL_WORKSPACE_FOLDER}/applications/affirmations/config/searxng:/etc/searxng
-    environment:
-      SEARXNG_BASE_URL: http://localhost:8889
-    healthcheck:
-      test: [CMD, wget, -qO-, http://localhost:8080/]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 15s
-    logging:
-      driver: json-file
-      options:
-        max-size: 10m
-        max-file: "3"
-    restart: unless-stopped
-
   open-webui:
     image: ghcr.io/open-webui/open-webui:main
     container_name: open-webui
@@ -79,6 +57,28 @@ services:
       timeout: 10s
       retries: 5
       start_period: 60s
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+    restart: unless-stopped
+
+  searxng:
+    image: searxng/searxng:latest
+    container_name: searxng
+    ports:
+      - 8889:8080
+    volumes:
+      - ${LOCAL_WORKSPACE_FOLDER}/applications/affirmations/config/searxng:/etc/searxng
+    environment:
+      SEARXNG_BASE_URL: http://localhost:8889
+    healthcheck:
+      test: [CMD, wget, -qO-, http://localhost:8080/]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
     logging:
       driver: json-file
       options:
