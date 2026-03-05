@@ -65,7 +65,7 @@ applications/affirmations/
 | `vulture`       | `nx run affirmations:vulture`                          | Vulture dead code analysis |
 | `ollama`        | `nx run affirmations:ollama --configuration=start`     | Start Ollama container     |
 | `ollama`        | `nx run affirmations:ollama --configuration=stop`      | Stop Ollama container      |
-| `ollama`        | `nx run affirmations:ollama --configuration=pull`      | Pull qwen3.5:9b model      |
+| `ollama`        | `nx run affirmations:ollama --configuration=pull`      | Pull qwen3.5:4b model      |
 | `searxng`       | `nx run affirmations:searxng --configuration=start`    | Start SearxNG container    |
 | `searxng`       | `nx run affirmations:searxng --configuration=stop`     | Stop SearxNG container     |
 | `searxng`       | `nx run affirmations:searxng --configuration=open`     | Open SearxNG in browser    |

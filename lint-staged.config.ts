@@ -29,6 +29,10 @@ const syncPullRequestTemplateFiles = [
 
 const syncAgentSkillsFiles = ["AGENTS.md", "documentation/skills/**/*.md"];
 
+function getPaths(files: string[]): string {
+  return files.map((file) => relative(process.cwd(), file)).join(",");
+}
+
 const config = {
   // ── Lockfile integrity ──
   // When package.json or workspace config changes, verify the lockfile is in sync
@@ -58,75 +62,50 @@ const config = {
 
   // ── TypeScript / JavaScript source files ──
   // Runs format (prettier + biome), lint (eslint + oxlint), typecheck, and spell-check
-  // on affected projects, plus monorepo-level spell-check for root-level words
+  // on affected projects. nx affected includes monorepo when root-level files change.
   "*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}": (files: string[]) => {
-    // Convert absolute paths to relative paths for Nx
-    const relativePaths = files
-      .map((file: string) => relative(process.cwd(), file))
-      .join(",");
-    // Nx runs multiple targets in parallel (respects nx.json parallel setting)
     return [
-      `nx affected --target=format,lint,typecheck,spell-check --configuration=check --files=${relativePaths}`,
-      "nx run monorepo:spell-check",
+      `nx affected --target=format,lint,typecheck,spell-check --configuration=check --files=${getPaths(files)}`,
     ];
   },
 
   // ── Python files ──
   // Runs format (Ruff), lint (Ruff), typecheck (pyright), and dead-code detection (vulture)
   "*.py": (files: string[]) => {
-    const relativePaths = files
-      .map((file: string) => relative(process.cwd(), file))
-      .join(",");
     return [
-      `nx affected --target=format,lint,spell-check,typecheck,vulture --configuration=check --files=${relativePaths}`,
+      `nx affected --target=format,lint,spell-check,typecheck,vulture --configuration=check --files=${getPaths(files)}`,
     ];
   },
 
   // ── JSON / HTML data files ──
   // Format and spell-check only (no lint or typecheck needed)
   "*.{json,jsonc,json5,html}": (files: string[]) => {
-    const relativePaths = files
-      .map((file: string) => relative(process.cwd(), file))
-      .join(",");
     return [
-      `nx affected --target=format,spell-check --configuration=check --files=${relativePaths}`,
-      "nx run monorepo:spell-check",
+      `nx affected --target=format,spell-check --configuration=check --files=${getPaths(files)}`,
     ];
   },
 
   // ── CSS files ──
   // Runs Stylelint, format, and spell-check
   "*.css": (files: string[]) => {
-    const relativePaths = files
-      .map((file: string) => relative(process.cwd(), file))
-      .join(",");
     return [
-      `nx affected --target=stylelint,format,spell-check --configuration=check --files=${relativePaths}`,
-      "nx run monorepo:spell-check",
+      `nx affected --target=stylelint,format,spell-check --configuration=check --files=${getPaths(files)}`,
     ];
   },
 
   // ── Markdown files ──
   // Runs format, ESLint markdown plugin, markdownlint, and spell-check
   "*.{md,mdx}": (files: string[]) => {
-    const relativePaths = files
-      .map((file: string) => relative(process.cwd(), file))
-      .join(",");
     return [
-      `nx affected --target=format,lint,markdown-lint,spell-check --configuration=check --files=${relativePaths}`,
-      "nx run-many --target=spell-check,markdown-lint --configuration=check --projects=monorepo",
+      `nx affected --target=format,lint,markdown-lint,spell-check --configuration=check --files=${getPaths(files)}`,
     ];
   },
 
   // ── YAML files ──
   // Runs format, yamllint, and spell-check (GitHub Actions, Helm values, etc.)
   "*.{yml,yaml}": (files: string[]) => {
-    const relativePaths = files
-      .map((file: string) => relative(process.cwd(), file))
-      .join(",");
     return [
-      `nx affected --target=format,yaml-lint,spell-check --configuration=check --files=${relativePaths}`,
-      "nx run monorepo:spell-check",
+      `nx affected --target=format,yaml-lint,spell-check --configuration=check --files=${getPaths(files)}`,
     ];
   },
 };

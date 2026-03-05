@@ -50,6 +50,8 @@ hostnames:
     - (.*\\.)?learntarot\\.com$
     - (.*\\.)?tarotbyarwen\\.com$
     - (.*\\.)?llewellyn\\.com$
+    - (.*\\.)?thetarotguide\\.com$
+    - (.*\\.)?tarotinstitute\\.com$
     # Astrology — widely cited
     - (.*\\.)?astro\\.com$
     - (.*\\.)?cafeastrology\\.com$
@@ -64,6 +66,8 @@ hostnames:
   low_priority:
     # SEO farms and content mills
     - (.*\\.)?wikihow\\.com$
+  remove:
+    - (.*\\.)?zhihu\\.com$
 
 # Higher timeouts for LLM use: slow engines still return useful content
 # and the LLM can tolerate extra latency better than a human waiting for a UI

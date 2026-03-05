@@ -4,7 +4,7 @@ Python application that generates structured affirmations for spiritual practice
 
 ## Architecture
 
-- **LLM**: `ChatOllama` → `qwen3.5:9b` running in a local Docker container
+- **LLM**: `ChatOllama` → `qwen3.5:4b` running in a local Docker container
 - **Chains**: LCEL pipe syntax (`ChatPromptTemplate | llm.with_structured_output(Affirmation)`)
 - **Agent**: LangGraph `create_react_agent` with research tools
 - **Research tools**: SearxNG self-hosted (aggregates Wikipedia, DuckDuckGo, Google Scholar, ArXiv, and more)

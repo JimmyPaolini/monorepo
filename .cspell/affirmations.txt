@@ -1,8 +1,9 @@
 #region 𐤀 Hebrew Letters
-dalet
 chet
+dalet
 resh
 tsadi
+
 #endregion
 
 #region 🌳 Kabbalah — Sephirot
@@ -15,15 +16,18 @@ malkuth
 netzach
 sephirah
 sephirot
+sephiroth
 tiphareth
 yesod
+
 #endregion
 
 #region 🌍 Kabbalah - Worlds
+assiah
 atziluth
 briah
 yetzirah
-assiah
+
 #endregion
 
 #region ᚠ Norse Runes — Elder Futhark
@@ -51,6 +55,7 @@ thurisaz
 tiwaz
 uruz
 wunjo
+
 #endregion
 
 #region 🪷 Chakras
@@ -63,6 +68,7 @@ muladhara
 sahasrara
 svadhisthana
 vishuddha
+
 #endregion
 
 #region 🔮 Divination & Spiritual Practice
@@ -73,6 +79,7 @@ lenormand
 promethian
 solfeggios
 tarot
+
 #endregion
 
 #region 🌐 SearxNG Configuration
@@ -88,5 +95,8 @@ recaptcha
 startpage
 SXNG
 tarotbyarwen
+tarotinstitute
+thetarotguide
 wikihow
+
 #endregion
