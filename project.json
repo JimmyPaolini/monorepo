@@ -169,7 +169,7 @@
       "description": "Run lint-staged on staged files (invoked by the pre-commit git hook)",
       "executor": "nx:run-commands",
       "options": {
-        "command": "NODE_OPTIONS='--import=tsx' lint-staged --no-stash",
+        "command": "NODE_OPTIONS='--import=tsx' lint-staged --no-stash --continue-on-error",
         "cwd": "{projectRoot}"
       }
     },

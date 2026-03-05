@@ -5,7 +5,7 @@
 
 set -euo pipefail
 
-OLLAMA_MODEL="qwen3.5:9b"
+OLLAMA_MODEL="gemma3:1b"
 
 echo "🦙 Checking Ollama..."
 
