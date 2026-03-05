@@ -1,9 +1,56 @@
 name: monorepo
-version: "3.8"
 services:
   caelundas:
     build:
-      context: ../..
+      context: .
       dockerfile: applications/caelundas/Dockerfile
     image: caelundas
     container_name: caelundas
+
+  open-webui:
+    image: ghcr.io/open-webui/open-webui:main
+    container_name: open-webui
+    ports:
+      - 3001:8080
+    volumes:
+      - open-webui_data:/app/backend/data
+    environment:
+      OLLAMA_BASE_URL: http://host.docker.internal:11434
+      ENABLE_WEBSOCKET_SUPPORT: "false"
+    healthcheck:
+      test: [CMD, curl, -f, http://localhost:8080/health]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+    restart: unless-stopped
+
+  searxng:
+    image: searxng/searxng:latest
+    container_name: searxng
+    ports:
+      - 8889:8080
+    volumes:
+      - ${LOCAL_WORKSPACE_FOLDER}/applications/affirmations/config/searxng:/etc/searxng
+    environment:
+      SEARXNG_BASE_URL: http://localhost:8889
+    healthcheck:
+      test: [CMD, wget, -qO-, http://localhost:8080/]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+    restart: unless-stopped
+
+volumes:
+  open-webui_data:

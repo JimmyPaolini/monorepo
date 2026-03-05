@@ -113,7 +113,6 @@
   },
   "repository": "JimmyPaolini/monorepo.git",
   "scripts": {
-    "lint-staged": "NODE_OPTIONS='--import=tsx' lint-staged --no-stash",
     "prepare": "husky",
     "semantic-release": "semantic-release",
     "semantic-release:dry-run": "semantic-release --dry-run"

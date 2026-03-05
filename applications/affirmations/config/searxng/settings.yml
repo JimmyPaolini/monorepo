@@ -1,0 +1,130 @@
+# SearxNG configuration for affirmations application
+# Enables key search engines for spiritual practice research
+
+use_default_settings: true
+
+general:
+  debug: false
+  instance_name: Affirmations SearxNG
+
+server:
+  secret_key: affirmations-searxng-secret-key-change-in-production
+  limiter: false
+  public_instance: false
+
+ui:
+  static_use_hash: false
+  default_locale: en
+  default_theme: simple
+
+search:
+  safe_search: 0
+  autocomplete: ""
+  default_lang: en
+  formats:
+    - html
+    - json
+  # Reduce suspend times so engines recover quickly in dev
+  ban_time_on_fail: 5
+  max_ban_time_on_fail: 30
+  suspended_times:
+    SearxEngineAccessDenied: 3600     # 1h (default: 24h)
+    SearxEngineCaptcha: 3600          # 1h (default: 24h)
+    SearxEngineTooManyRequests: 600   # 10m (default: 1h)
+    cf_SearxEngineCaptcha: 3600
+    cf_SearxEngineAccessDenied: 3600
+    recaptcha_SearxEngineCaptcha: 3600
+
+# Hostnames plugin: boost trusted sources to the top of results.
+# The plugin only activates when a `hostnames:` key is present.
+# Patterns are Python regexes matched against the full hostname.
+plugins:
+  searx.plugins.hostnames.SXNGPlugin:
+    active: true
+
+hostnames:
+  high_priority:
+    # Tarot — authoritative reference sites
+    - (.*\\.)?biddytarot\\.com$
+    - (.*\\.)?labyrinthos\\.co$
+    - (.*\\.)?learntarot\\.com$
+    - (.*\\.)?tarotbyarwen\\.com$
+    - (.*\\.)?llewellyn\\.com$
+    - (.*\\.)?thetarotguide\\.com$
+    - (.*\\.)?tarotinstitute\\.com$
+    # Astrology — widely cited
+    - (.*\\.)?astro\\.com$
+    - (.*\\.)?cafeastrology\\.com$
+    - (.*\\.)?astrostyle\\.com$
+    # Spiritual / wellness encyclopedias
+    - (.*\\.)?crystalvaults\\.com$
+    - (.*\\.)?energymuse\\.com$
+    - (.*\\.)?mindbodygreen\\.com$
+    # Wikipedia / Wikidata always reliable for background facts
+    - (.*\\.)?wikipedia\\.org$
+    - (.*\\.)?wikidata\\.org$
+  low_priority:
+    # SEO farms and content mills
+    - (.*\\.)?wikihow\\.com$
+  remove:
+    - (.*\\.)?zhihu\\.com$
+
+# Higher timeouts for LLM use: slow engines still return useful content
+# and the LLM can tolerate extra latency better than a human waiting for a UI
+outgoing:
+  request_timeout: 8.0     # default is 2.0 — too low, causes many engine timeouts
+  max_request_timeout: 15.0
+
+engines:
+  - name: wikipedia
+    engine: wikipedia
+    categories: general
+    shortcut: wp
+    disabled: false
+
+  - name: duckduckgo
+    engine: duckduckgo
+    categories: general
+    shortcut: ddg
+    disabled: false
+
+  # Proxies Google results via an official partnership — Google quality without scraping
+  - name: startpage
+    engine: startpage
+    categories: general
+    shortcut: sp
+    disabled: false
+
+  # Bing: second-largest index, more scraper-tolerant than Google
+  - name: bing
+    engine: bing
+    categories: general
+    shortcut: bi
+    disabled: false
+
+  # Reddit: tarot/spiritual communities are large and active; real practitioner discussions
+  - name: reddit
+    engine: reddit
+    categories: social_media
+    shortcut: re
+    disabled: false
+
+  # Google: best index but rate-limited/CAPTCHAd aggressively; lower weight, used as fallback
+  - name: google
+    engine: google
+    categories: general
+    shortcut: go
+    weight: 0.5
+    disabled: false
+
+  - name: brave
+    engine: brave
+    categories: general
+    shortcut: brave
+    disabled: false
+
+  - name: wikidata
+    engine: wikidata
+    categories: general
+    shortcut: wd
+    disabled: false

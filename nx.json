@@ -1,5 +1,6 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "bail": false,
   "cacheDirectory": ".nx/cache",
   "defaultBase": "main",
   "generators": {

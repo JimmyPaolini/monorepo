@@ -1,0 +1,23 @@
+services:
+  devcontainer:
+    image: mcr.microsoft.com/devcontainers/typescript-node:22-bookworm
+    container_name: monorepo-devcontainer
+    volumes:
+      - .:/workspaces/monorepo:cached
+      - monorepo-node-modules:/workspaces/monorepo/node_modules
+      - monorepo-pnpm:/root/.local/share/pnpm
+    env_file:
+      # The monorepo root level .env file
+      - .env
+    deploy:
+      resources:
+        limits:
+          cpus: "8"
+          memory: 6g
+    command: sleep infinity
+
+volumes:
+  monorepo-node-modules:
+    name: monorepo-node-modules
+  monorepo-pnpm:
+    name: monorepo-pnpm

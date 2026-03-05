@@ -95,6 +95,11 @@ const types = [
 
 const scopes = [
   {
+    name: "affirmations",
+    description:
+      "Python Jupyter notebook application for LangGraph affirmation generation",
+  },
+  {
     name: "applications",
     description:
       "Changes spanning multiple apps (caelundas, lexico, JimmyPaolini)",

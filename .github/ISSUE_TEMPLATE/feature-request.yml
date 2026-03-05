@@ -15,6 +15,7 @@ body:
       label: Scope
       description: Which area of the monorepo does this apply to?
       options:
+        - affirmations
         - applications
         - caelundas
         - configuration

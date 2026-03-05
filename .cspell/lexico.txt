@@ -1,0 +1,22 @@
+#region 🔤 Latin Macrons & Diacritics
+āēīōūȳ
+ĀĒĪŌŪȲ
+#endregion
+
+#region 📖 Linguistics
+ation
+catilinarian
+circumfix
+giorgio
+interfix
+macronizer
+ologies
+periphrastic
+polyglot
+#endregion
+
+#region 📱 Lexico Application
+lexico
+refinementness
+wording
+#endregion
