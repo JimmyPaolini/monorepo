@@ -58,7 +58,7 @@
     "ollama": {
       "configurations": {
         "pull": {
-          "command": "curl -s http://host.docker.internal:11434/api/pull -d '{\"name\":\"qwen3.5:9b\"}'"
+          "command": "curl -s http://host.docker.internal:11434/api/pull -d '{\"name\":\"gemma3:1b\"}'"
         },
         "start": {
           "command": "echo 'Start Ollama on your host machine: ollama serve (or: brew services start ollama)'"

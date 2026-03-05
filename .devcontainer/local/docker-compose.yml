@@ -9,6 +9,11 @@ services:
     env_file:
       # The monorepo root level .env file
       - .env
+    deploy:
+      resources:
+        limits:
+          cpus: "8"
+          memory: 6g
     command: sleep infinity
 
 volumes:
