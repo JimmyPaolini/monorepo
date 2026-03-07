@@ -7,6 +7,12 @@ astream
 #region 📓 Notebook Formats
 ipykernel
 ipynb
+ipython
+kernelspec
+nbconvert
+nbformat
+pprint
+pygments
 #endregion
 
 #region 📦 Packaging & Environment
