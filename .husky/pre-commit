@@ -1,10 +1,8 @@
 set -e
 
-# VS Code's SCM panel sets NO_COLOR=1, which conflicts with FORCE_COLOR set by Nx
-# when it spawns task processes (both set simultaneously triggers a Node.js warning).
-# Explicitly unset NO_COLOR and force FORCE_COLOR=1 so lint-staged detects color=true
-# and passes FORCE_COLOR to child processes instead of NO_COLOR.
-unset NO_COLOR
-export FORCE_COLOR=1
+# Disable colors so lint-staged output is readable in VS Code's SCM error panel
+# without needing an ANSI preview renderer.
+unset FORCE_COLOR
+export NO_COLOR=1
 
 nx run monorepo:lint-staged

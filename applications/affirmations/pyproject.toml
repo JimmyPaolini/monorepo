@@ -13,6 +13,7 @@ dependencies = [
   "ipykernel>=6.29",
   "wikipedia>=1.4",
   "trafilatura>=2.0",
+  "inflect>=7.5.0",
 ]
 
 [dependency-groups]
