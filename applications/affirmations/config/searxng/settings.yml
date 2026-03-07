@@ -44,30 +44,108 @@ plugins:
 
 hostnames:
   high_priority:
-    # Tarot — authoritative reference sites
-    - (.*\\.)?biddytarot\\.com$
-    - (.*\\.)?labyrinthos\\.co$
-    - (.*\\.)?learntarot\\.com$
-    - (.*\\.)?tarotbyarwen\\.com$
-    - (.*\\.)?llewellyn\\.com$
-    - (.*\\.)?thetarotguide\\.com$
-    - (.*\\.)?tarotinstitute\\.com$
-    # Astrology — widely cited
-    - (.*\\.)?astro\\.com$
-    - (.*\\.)?cafeastrology\\.com$
-    - (.*\\.)?astrostyle\\.com$
-    # Spiritual / wellness encyclopedias
-    - (.*\\.)?crystalvaults\\.com$
-    - (.*\\.)?energymuse\\.com$
-    - (.*\\.)?mindbodygreen\\.com$
-    # Wikipedia / Wikidata always reliable for background facts
-    - (.*\\.)?wikipedia\\.org$
-    - (.*\\.)?wikidata\\.org$
+    # Span all subject categories with authoritative primary and secondary source texts
+    - (.*\.)?sacred-texts\.com$
+    - (.*\.)?hermetic\.com$
+
+    # tarot
+    - (.*\.)?biddytarot\.com$
+    - (.*\.)?labyrinthos\.co$
+    - (.*\.)?learntarot\.com$
+    - (.*\.)?tarot\.com$
+    - (.*\.)?thetarotguide\.com$
+    - (.*\.)?tarotinstitute\.com$
+    - (.*\.)?selfgazer\.com$
+    - (.*\.)?tarotprophetess\.com$
+    - (.*\.)?tarotteachings\.com$
+
+    # lenormand
+    - (.*\.)?thecartomancer\.com$
+    - (.*\.)?learnlenormand\.com$
+
+    # astrology
+    - (.*\.)?astro\.com$
+    - (.*\.)?cafeastrology\.com$
+    - (.*\.)?astrostyle\.com$
+    - (.*\.)?astrotheme\.com$
+    - (.*\.)?astrology42\.com$
+    - (.*\.)?darkstarastrology\.com$
+    - (.*\.)?astrologyhub\.com$
+    - (.*\.)?skyscript\.co\.uk$
+    - (.*\.)?astro-seek\.com$
+    - (.*\.)?theoi\.com$              # Greek mythology site; included for asteroid names (Ceres, Pallas, Juno, Vesta)
+
+    # chakras
+    - (.*\.)?yogajournal\.com$
+    - (.*\.)?yogainternational\.com$
+    - (.*\.)?chopra\.com$
+    - (.*\.)?mindbodygreen\.com$
+    - (.*\.)?ekhartyoga\.com$
+    - (.*\.)?gaia\.com$
+
+    # runes
+    - (.*\.)?runesecrets\.com$
+    - (.*\.)?vikingrune\.com$
+    - (.*\.)?norse-mythology\.org$
+    - (.*\.)?symbolsandmeanings\.net$  # Covers runes, alchemy, and chakra symbols across categories
+
+    # kabbalah
+    - (.*\.)?chabad\.org$
+    - (.*\.)?sefaria\.org$
+    - (.*\.)?inner\.org$              # Gal Einai Institute — Kabbalistic commentary on Hebrew letters
+    - (.*\.)?kabbalahcentre\.org$
+    - (.*\.)?jewishvirtuallibrary\.org$
+
+    # Agrippa, Dee, and Ficino primary texts — foundational Western correspondences between
+    # planets, metals, colors, days, and Sephiroth used across multiple subject categories
+    - (.*\.)?esotericarchives\.com$
+    - (.*\.)?llewellyn\.com$
+
+    # gemstones
+    - (.*\.)?crystalvaults\.com$
+    - (.*\.)?energymuse\.com$
+    - (.*\.)?healingcrystals\.com$
+    - (.*\.)?gia\.edu$                # Scientific grading authority, not metaphysical — balances practitioner sites
+    - (.*\.)?mindat\.org$
+
+    # numerology
+    - (.*\.)?numerology\.com$
+    - (.*\.)?worldnumerology\.com$    # Hans Decoz — most cited numerology authority
+    - (.*\.)?affinitynumerology\.com$
+    - (.*\.)?numerologist\.com$
+
+    # alchemy
+    - (.*\.)?alchemywebsite\.com$
+    - (.*\.)?rexresearch\.com$
+
+    # elements, colors, weekdays, metals
+    - (.*\.)?witchipedia\.com$
+    - (.*\.)?learnreligions\.com$
+    - (.*\.)?thoughtco\.com$
+    - (.*\.)?ancient-symbols\.com$
+
+    # solfeggio
+    - (.*\.)?musictheory\.net$
+    - (.*\.)?somaenergetics\.com$     # Solfeggio frequency research — not a general music theory site
+
+    - (.*\.)?wikipedia\.org$
+    - (.*\.)?wikidata\.org$
   low_priority:
-    # SEO farms and content mills
-    - (.*\\.)?wikihow\\.com$
+    - (.*\.)?tarostarot\.com$
+    - (.*\.)?thetarotlady\.com$
+    # Deprioritised because they generate low-quality SEO content rather than authoritative guidance
+    - (.*\.)?wikihow\.com$
+    - (.*\.)?quora\.com$
+    - (.*\.)?facebook\.com$
+    - (.*\.)?coursera\.org$
+    # Deprioritised because dictionary definitions lack the interpretive depth needed for affirmations
+    - (.*\.)?dictionary\.cambridge\.org$
+    - (.*\.)?dictionary\.com$
+    - (.*\.)?vocabulary\.com$
+    - (.*\.)?merriam-webster\.com$
   remove:
-    - (.*\\.)?zhihu\\.com$
+    - (.*\.)?zhihu\.com$
+    - (.*\.)?health\.clevelandclinic\.org$
 
 # Higher timeouts for LLM use: slow engines still return useful content
 # and the LLM can tolerate extra latency better than a human waiting for a UI

@@ -1,5 +1,25 @@
 """Spiritual practice configuration: topics and affirmation grammatical structures."""
 
+from typing import TypeAlias
+
+from pydantic import BaseModel
+
+Primitive: TypeAlias = str | int | float | bool | None
+
+
+class SubjectCategory(BaseModel):
+    name: str
+    slug: str
+
+
+class Subject(BaseModel):
+    category: SubjectCategory
+    metadata: dict[str, Primitive] = {}
+    name: str
+    order: int
+    slug: str
+
+
 TAROT_CARDS = [
     {
         "name": "The Fool",
@@ -883,86 +903,103 @@ ASTROLOGY_ASPECTS = [
     {
         "name": "Conjunction",
         "slug": "conjunction",
+        "order": 1,
         "category": {"name": "Astrology Aspect", "slug": "astrology-aspect"},
     },
     {
         "name": "Sextile",
         "slug": "sextile",
+        "order": 2,
         "category": {"name": "Astrology Aspect", "slug": "astrology-aspect"},
     },
     {
         "name": "Square",
         "slug": "square",
+        "order": 3,
         "category": {"name": "Astrology Aspect", "slug": "astrology-aspect"},
     },
     {
         "name": "Trine",
         "slug": "trine",
+        "order": 4,
         "category": {"name": "Astrology Aspect", "slug": "astrology-aspect"},
     },
     {
         "name": "Opposition",
         "slug": "opposition",
+        "order": 5,
         "category": {"name": "Astrology Aspect", "slug": "astrology-aspect"},
     },
     {
         "name": "Quincunx",
         "slug": "quincunx",
+        "order": 6,
         "category": {"name": "Astrology Aspect", "slug": "astrology-aspect"},
     },
     {
         "name": "Semisextile",
         "slug": "semisextile",
+        "order": 7,
         "category": {"name": "Astrology Aspect", "slug": "astrology-aspect"},
     },
     {
         "name": "Semisquare",
         "slug": "semisquare",
+        "order": 8,
         "category": {"name": "Astrology Aspect", "slug": "astrology-aspect"},
     },
     {
         "name": "Sesquiquadrate",
         "slug": "sesquiquadrate",
+        "order": 9,
         "category": {"name": "Astrology Aspect", "slug": "astrology-aspect"},
     },
     {
         "name": "Quintile",
         "slug": "quintile",
+        "order": 10,
         "category": {"name": "Astrology Aspect", "slug": "astrology-aspect"},
     },
     {
         "name": "Biquintile",
         "slug": "biquintile",
+        "order": 11,
         "category": {"name": "Astrology Aspect", "slug": "astrology-aspect"},
     },
     {
         "name": "Novile",
         "slug": "novile",
+        "order": 12,
         "category": {"name": "Astrology Aspect", "slug": "astrology-aspect"},
     },
     {
         "name": "Binovile",
         "slug": "binovile",
+        "order": 13,
         "category": {"name": "Astrology Aspect", "slug": "astrology-aspect"},
     },
     {
         "name": "Tredecile",
         "slug": "tredecile",
+        "order": 14,
         "category": {"name": "Astrology Aspect", "slug": "astrology-aspect"},
     },
     {
         "name": "Septile",
         "slug": "septile",
+        "order": 15,
         "category": {"name": "Astrology Aspect", "slug": "astrology-aspect"},
     },
     {
         "name": "Biseptile",
         "slug": "biseptile",
+        "order": 16,
         "category": {"name": "Astrology Aspect", "slug": "astrology-aspect"},
     },
     {
         "name": "Tredecile",
         "slug": "tredicile",
+        "order": 17,
         "category": {"name": "Astrology Aspect", "slug": "astrology-aspect"},
     },
 ]
@@ -1046,23 +1083,36 @@ MODALITIES = [
     {
         "name": "Cardinal",
         "slug": "cardinal",
+        "order": 1,
         "category": {"name": "Modality", "slug": "modality"},
     },
     {
         "name": "Fixed",
         "slug": "fixed",
+        "order": 2,
         "category": {"name": "Modality", "slug": "modality"},
     },
     {
         "name": "Mutable",
         "slug": "mutable",
+        "order": 3,
         "category": {"name": "Modality", "slug": "modality"},
     },
 ]
 
 POLARITIES = [
-    {"name": "Positive", "slug": "positive", "category": {"name": "Polarity", "slug": "polarity"}},
-    {"name": "Negative", "slug": "negative", "category": {"name": "Polarity", "slug": "polarity"}},
+    {
+        "name": "Negative",
+        "slug": "negative",
+        "order": 0,
+        "category": {"name": "Polarity", "slug": "polarity"},
+    },
+    {
+        "name": "Positive",
+        "slug": "positive",
+        "order": 1,
+        "category": {"name": "Polarity", "slug": "polarity"},
+    },
 ]
 
 
@@ -1070,73 +1120,192 @@ CHAKRAS = [
     {
         "name": "Root Chakra (Muladhara)",
         "slug": "root",
+        "order": 1,
         "category": {"name": "Chakra", "slug": "chakra"},
     },
     {
         "name": "Sacral Chakra (Svadhisthana)",
         "slug": "sacral",
+        "order": 2,
         "category": {"name": "Chakra", "slug": "chakra"},
     },
     {
         "name": "Solar Plexus Chakra (Manipura)",
         "slug": "solar-plexus",
+        "order": 3,
         "category": {"name": "Chakra", "slug": "chakra"},
     },
     {
         "name": "Heart Chakra (Anahata)",
         "slug": "heart",
+        "order": 4,
         "category": {"name": "Chakra", "slug": "chakra"},
     },
     {
         "name": "Throat Chakra (Vishuddha)",
         "slug": "throat",
+        "order": 5,
         "category": {"name": "Chakra", "slug": "chakra"},
     },
     {
         "name": "Third Eye Chakra (Ajna)",
         "slug": "third-eye",
+        "order": 6,
         "category": {"name": "Chakra", "slug": "chakra"},
     },
     {
         "name": "Crown Chakra (Sahasrara)",
         "slug": "crown",
+        "order": 7,
         "category": {"name": "Chakra", "slug": "chakra"},
     },
 ]
 
 RUNES = [
-    {"name": "Fehu (Wealth)", "slug": "fehu", "category": {"name": "Rune", "slug": "rune"}},
-    {"name": "Uruz (Strength)", "slug": "uruz", "category": {"name": "Rune", "slug": "rune"}},
+    {
+        "name": "Fehu (Wealth)",
+        "slug": "fehu",
+        "order": 1,
+        "category": {"name": "Rune", "slug": "rune"},
+    },
+    {
+        "name": "Uruz (Strength)",
+        "slug": "uruz",
+        "order": 2,
+        "category": {"name": "Rune", "slug": "rune"},
+    },
     {
         "name": "Thurisaz (Protection)",
         "slug": "thurisaz",
+        "order": 3,
         "category": {"name": "Rune", "slug": "rune"},
     },
-    {"name": "Ansuz (Wisdom)", "slug": "ansuz", "category": {"name": "Rune", "slug": "rune"}},
-    {"name": "Raidho (Journey)", "slug": "raidho", "category": {"name": "Rune", "slug": "rune"}},
-    {"name": "Kenaz (Knowledge)", "slug": "kenaz", "category": {"name": "Rune", "slug": "rune"}},
-    {"name": "Gebo (Partnership)", "slug": "gebo", "category": {"name": "Rune", "slug": "rune"}},
-    {"name": "Wunjo (Joy)", "slug": "wunjo", "category": {"name": "Rune", "slug": "rune"}},
+    {
+        "name": "Ansuz (Wisdom)",
+        "slug": "ansuz",
+        "order": 4,
+        "category": {"name": "Rune", "slug": "rune"},
+    },
+    {
+        "name": "Raidho (Journey)",
+        "slug": "raidho",
+        "order": 5,
+        "category": {"name": "Rune", "slug": "rune"},
+    },
+    {
+        "name": "Kenaz (Knowledge)",
+        "slug": "kenaz",
+        "order": 6,
+        "category": {"name": "Rune", "slug": "rune"},
+    },
+    {
+        "name": "Gebo (Partnership)",
+        "slug": "gebo",
+        "order": 7,
+        "category": {"name": "Rune", "slug": "rune"},
+    },
+    {
+        "name": "Wunjo (Joy)",
+        "slug": "wunjo",
+        "order": 8,
+        "category": {"name": "Rune", "slug": "rune"},
+    },
     {
         "name": "Hagalaz (Transformation)",
         "slug": "hagalaz",
+        "order": 9,
         "category": {"name": "Rune", "slug": "rune"},
     },
-    {"name": "Nauthiz (Need)", "slug": "nauthiz", "category": {"name": "Rune", "slug": "rune"}},
-    {"name": "Isa (Stillness)", "slug": "isa", "category": {"name": "Rune", "slug": "rune"}},
-    {"name": "Jera (Harvest)", "slug": "jera", "category": {"name": "Rune", "slug": "rune"}},
-    {"name": "Eihwaz (Connection)", "slug": "eihwaz", "category": {"name": "Rune", "slug": "rune"}},
-    {"name": "Perth (Mystery)", "slug": "perth", "category": {"name": "Rune", "slug": "rune"}},
-    {"name": "Algiz (Protection)", "slug": "algiz", "category": {"name": "Rune", "slug": "rune"}},
-    {"name": "Sowilo (Success)", "slug": "sowilo", "category": {"name": "Rune", "slug": "rune"}},
-    {"name": "Tiwaz (Victory)", "slug": "tiwaz", "category": {"name": "Rune", "slug": "rune"}},
-    {"name": "Berkano (Growth)", "slug": "berkano", "category": {"name": "Rune", "slug": "rune"}},
-    {"name": "Ehwaz (Movement)", "slug": "ehwaz", "category": {"name": "Rune", "slug": "rune"}},
-    {"name": "Mannaz (Humanity)", "slug": "mannaz", "category": {"name": "Rune", "slug": "rune"}},
-    {"name": "Laguz (Flow)", "slug": "laguz", "category": {"name": "Rune", "slug": "rune"}},
-    {"name": "Ingwaz (Potential)", "slug": "ingwaz", "category": {"name": "Rune", "slug": "rune"}},
-    {"name": "Dagaz (Breakthrough)", "slug": "dagaz", "category": {"name": "Rune", "slug": "rune"}},
-    {"name": "Othala (Heritage)", "slug": "othala", "category": {"name": "Rune", "slug": "rune"}},
+    {
+        "name": "Nauthiz (Need)",
+        "slug": "nauthiz",
+        "order": 10,
+        "category": {"name": "Rune", "slug": "rune"},
+    },
+    {
+        "name": "Isa (Stillness)",
+        "slug": "isa",
+        "order": 11,
+        "category": {"name": "Rune", "slug": "rune"},
+    },
+    {
+        "name": "Jera (Harvest)",
+        "slug": "jera",
+        "order": 12,
+        "category": {"name": "Rune", "slug": "rune"},
+    },
+    {
+        "name": "Eihwaz (Connection)",
+        "slug": "eihwaz",
+        "order": 13,
+        "category": {"name": "Rune", "slug": "rune"},
+    },
+    {
+        "name": "Perth (Mystery)",
+        "slug": "perth",
+        "order": 14,
+        "category": {"name": "Rune", "slug": "rune"},
+    },
+    {
+        "name": "Algiz (Protection)",
+        "slug": "algiz",
+        "order": 15,
+        "category": {"name": "Rune", "slug": "rune"},
+    },
+    {
+        "name": "Sowilo (Success)",
+        "slug": "sowilo",
+        "order": 16,
+        "category": {"name": "Rune", "slug": "rune"},
+    },
+    {
+        "name": "Tiwaz (Victory)",
+        "slug": "tiwaz",
+        "order": 17,
+        "category": {"name": "Rune", "slug": "rune"},
+    },
+    {
+        "name": "Berkano (Growth)",
+        "slug": "berkano",
+        "order": 18,
+        "category": {"name": "Rune", "slug": "rune"},
+    },
+    {
+        "name": "Ehwaz (Movement)",
+        "slug": "ehwaz",
+        "order": 19,
+        "category": {"name": "Rune", "slug": "rune"},
+    },
+    {
+        "name": "Mannaz (Humanity)",
+        "slug": "mannaz",
+        "order": 20,
+        "category": {"name": "Rune", "slug": "rune"},
+    },
+    {
+        "name": "Laguz (Flow)",
+        "slug": "laguz",
+        "order": 21,
+        "category": {"name": "Rune", "slug": "rune"},
+    },
+    {
+        "name": "Ingwaz (Potential)",
+        "slug": "ingwaz",
+        "order": 22,
+        "category": {"name": "Rune", "slug": "rune"},
+    },
+    {
+        "name": "Dagaz (Breakthrough)",
+        "slug": "dagaz",
+        "order": 23,
+        "category": {"name": "Rune", "slug": "rune"},
+    },
+    {
+        "name": "Othala (Heritage)",
+        "slug": "othala",
+        "order": 24,
+        "category": {"name": "Rune", "slug": "rune"},
+    },
 ]
 
 SEPHIROTH = [
@@ -1149,46 +1318,55 @@ SEPHIROTH = [
     {
         "name": "Chokmah (Wisdom)",
         "slug": "chokmah",
+        "order": 2,
         "category": {"name": "Sephiroth", "slug": "sephiroth"},
     },
     {
         "name": "Binah (Understanding)",
         "slug": "binah",
+        "order": 3,
         "category": {"name": "Sephiroth", "slug": "sephiroth"},
     },
     {
         "name": "Chesed (Mercy)",
         "slug": "chesed",
+        "order": 4,
         "category": {"name": "Sephiroth", "slug": "sephiroth"},
     },
     {
         "name": "Geburah (Strength)",
         "slug": "geburah",
+        "order": 5,
         "category": {"name": "Sephiroth", "slug": "sephiroth"},
     },
     {
         "name": "Tiphareth (Beauty)",
         "slug": "tiphareth",
+        "order": 6,
         "category": {"name": "Sephiroth", "slug": "sephiroth"},
     },
     {
         "name": "Netzach (Victory)",
         "slug": "netzach",
+        "order": 7,
         "category": {"name": "Sephiroth", "slug": "sephiroth"},
     },
     {
         "name": "Hod (Splendor)",
         "slug": "hod",
+        "order": 8,
         "category": {"name": "Sephiroth", "slug": "sephiroth"},
     },
     {
         "name": "Yesod (Foundation)",
         "slug": "yesod",
+        "order": 9,
         "category": {"name": "Sephiroth", "slug": "sephiroth"},
     },
     {
         "name": "Malkuth (Kingdom)",
         "slug": "malkuth",
+        "order": 10,
         "category": {"name": "Sephiroth", "slug": "sephiroth"},
     },
 ]
@@ -1197,134 +1375,156 @@ HEBREW_LETTERS = [
     {
         "name": "Aleph",
         "slug": "aleph",
-        "letter": "א",
+        "order": 1,
         "category": {"name": "Hebrew Letter", "slug": "hebrew-letter"},
+        "metadata": {"letter": "א"},
     },
     {
         "name": "Beth",
         "slug": "beth",
-        "letter": "ב",
+        "order": 2,
         "category": {"name": "Hebrew Letter", "slug": "hebrew-letter"},
+        "metadata": {"letter": "ב"},
     },
     {
         "name": "Gimel",
         "slug": "gimel",
-        "letter": "ג",
+        "order": 3,
         "category": {"name": "Hebrew Letter", "slug": "hebrew-letter"},
+        "metadata": {"letter": "ג"},
     },
     {
         "name": "Daleth",
         "slug": "daleth",
-        "letter": "ד",
+        "order": 4,
         "category": {"name": "Hebrew Letter", "slug": "hebrew-letter"},
+        "metadata": {"letter": "ד"},
     },
     {
         "name": "He",
         "slug": "he",
-        "letter": "ה",
+        "order": 5,
         "category": {"name": "Hebrew Letter", "slug": "hebrew-letter"},
+        "metadata": {"letter": "ה"},
     },
     {
         "name": "Vav",
         "slug": "vav",
-        "letter": "ו",
+        "order": 6,
         "category": {"name": "Hebrew Letter", "slug": "hebrew-letter"},
+        "metadata": {"letter": "ו"},
     },
     {
         "name": "Zayin",
         "slug": "zayin",
-        "letter": "ז",
+        "order": 7,
         "category": {"name": "Hebrew Letter", "slug": "hebrew-letter"},
+        "metadata": {"letter": "ז"},
     },
     {
         "name": "Chet",
         "slug": "chet",
-        "letter": "ח",
+        "order": 8,
         "category": {"name": "Hebrew Letter", "slug": "hebrew-letter"},
+        "metadata": {"letter": "ח"},
     },
     {
         "name": "Tet",
         "slug": "tet",
-        "letter": "ט",
+        "order": 9,
         "category": {"name": "Hebrew Letter", "slug": "hebrew-letter"},
+        "metadata": {"letter": "ט"},
     },
     {
         "name": "Yod",
         "slug": "yod",
-        "letter": "י",
+        "order": 10,
         "category": {"name": "Hebrew Letter", "slug": "hebrew-letter"},
+        "metadata": {"letter": "י"},
     },
     {
         "name": "Kaf",
         "slug": "kaf",
-        "letter": "כ",
+        "order": 11,
         "category": {"name": "Hebrew Letter", "slug": "hebrew-letter"},
+        "metadata": {"letter": "כ"},
     },
     {
         "name": "Lamed",
         "slug": "lamed",
-        "letter": "ל",
+        "order": 12,
         "category": {"name": "Hebrew Letter", "slug": "hebrew-letter"},
+        "metadata": {"letter": "ל"},
     },
     {
         "name": "Mem",
         "slug": "mem",
-        "letter": "מ",
+        "order": 13,
         "category": {"name": "Hebrew Letter", "slug": "hebrew-letter"},
+        "metadata": {"letter": "מ"},
     },
     {
         "name": "Nun",
         "slug": "nun",
-        "letter": "נ",
+        "order": 14,
         "category": {"name": "Hebrew Letter", "slug": "hebrew-letter"},
+        "metadata": {"letter": "נ"},
     },
     {
         "name": "Samekh",
         "slug": "samekh",
-        "letter": "ס",
+        "order": 15,
         "category": {"name": "Hebrew Letter", "slug": "hebrew-letter"},
+        "metadata": {"letter": "ס"},
     },
     {
         "name": "Ayin",
         "slug": "ayin",
-        "letter": "ע",
+        "order": 16,
         "category": {"name": "Hebrew Letter", "slug": "hebrew-letter"},
+        "metadata": {"letter": "ע"},
     },
     {
         "name": "Pe",
         "slug": "pe",
-        "letter": "פ",
+        "order": 17,
         "category": {"name": "Hebrew Letter", "slug": "hebrew-letter"},
+        "metadata": {"letter": "פ"},
     },
     {
         "name": "Tsadi",
         "slug": "tsadi",
-        "letter": "צ",
+        "order": 18,
         "category": {"name": "Hebrew Letter", "slug": "hebrew-letter"},
+        "metadata": {"letter": "צ"},
     },
     {
         "name": "Qof",
         "slug": "qof",
-        "letter": "ק",
+        "order": 19,
         "category": {"name": "Hebrew Letter", "slug": "hebrew-letter"},
+        "metadata": {"letter": "ק"},
     },
     {
         "name": "Resh",
         "slug": "resh",
-        "letter": "ר",
+        "order": 20,
         "category": {"name": "Hebrew Letter", "slug": "hebrew-letter"},
+        "metadata": {"letter": "ר"},
     },
     {
         "name": "Shin",
         "slug": "shin",
-        "letter": "ש",
+        "order": 21,
         "category": {"name": "Hebrew Letter", "slug": "hebrew-letter"},
+        "metadata": {"letter": "ש"},
     },
     {
         "name": "Tav",
         "slug": "tav",
-        "letter": "ת",
+        "order": 22,
         "category": {"name": "Hebrew Letter", "slug": "hebrew-letter"},
+        "metadata": {"letter": "ת"},
     },
 ]
 
@@ -1332,155 +1532,456 @@ KABBALAH_WORLDS = [
     {
         "name": "Atziluth (Emanation)",
         "slug": "atziluth",
+        "order": 1,
         "category": {"name": "Kabbalah World", "slug": "kabbalah-world"},
     },
     {
         "name": "Briah (Creation)",
         "slug": "briah",
+        "order": 2,
         "category": {"name": "Kabbalah World", "slug": "kabbalah-world"},
     },
     {
         "name": "Yetzirah (Formation)",
         "slug": "yetzirah",
+        "order": 3,
         "category": {"name": "Kabbalah World", "slug": "kabbalah-world"},
     },
     {
         "name": "Assiah (Action)",
         "slug": "assiah",
+        "order": 4,
         "category": {"name": "Kabbalah World", "slug": "kabbalah-world"},
     },
 ]
 
 SOLFEGGIOS = [
-    {"name": "Do", "slug": "do", "category": {"name": "Solfeggio", "slug": "solfeggio"}},
-    {"name": "Re", "slug": "re", "category": {"name": "Solfeggio", "slug": "solfeggio"}},
-    {"name": "Mi", "slug": "mi", "category": {"name": "Solfeggio", "slug": "solfeggio"}},
-    {"name": "Fa", "slug": "fa", "category": {"name": "Solfeggio", "slug": "solfeggio"}},
-    {"name": "Sol", "slug": "sol", "category": {"name": "Solfeggio", "slug": "solfeggio"}},
-    {"name": "La", "slug": "la", "category": {"name": "Solfeggio", "slug": "solfeggio"}},
-    {"name": "Ti", "slug": "ti", "category": {"name": "Solfeggio", "slug": "solfeggio"}},
+    {
+        "name": "Do",
+        "slug": "do",
+        "order": 1,
+        "category": {"name": "Solfeggio", "slug": "solfeggio"},
+    },
+    {
+        "name": "Re",
+        "slug": "re",
+        "order": 2,
+        "category": {"name": "Solfeggio", "slug": "solfeggio"},
+    },
+    {
+        "name": "Mi",
+        "slug": "mi",
+        "order": 3,
+        "category": {"name": "Solfeggio", "slug": "solfeggio"},
+    },
+    {
+        "name": "Fa",
+        "slug": "fa",
+        "order": 4,
+        "category": {"name": "Solfeggio", "slug": "solfeggio"},
+    },
+    {
+        "name": "Sol",
+        "slug": "sol",
+        "order": 5,
+        "category": {"name": "Solfeggio", "slug": "solfeggio"},
+    },
+    {
+        "name": "La",
+        "slug": "la",
+        "order": 6,
+        "category": {"name": "Solfeggio", "slug": "solfeggio"},
+    },
+    {
+        "name": "Ti",
+        "slug": "ti",
+        "order": 7,
+        "category": {"name": "Solfeggio", "slug": "solfeggio"},
+    },
 ]
 
 WEEKDAYS = [
-    {"name": "Monday", "slug": "monday", "category": {"name": "Weekday", "slug": "weekday"}},
-    {"name": "Tuesday", "slug": "tuesday", "category": {"name": "Weekday", "slug": "weekday"}},
-    {"name": "Wednesday", "slug": "wednesday", "category": {"name": "Weekday", "slug": "weekday"}},
-    {"name": "Thursday", "slug": "thursday", "category": {"name": "Weekday", "slug": "weekday"}},
-    {"name": "Friday", "slug": "friday", "category": {"name": "Weekday", "slug": "weekday"}},
-    {"name": "Saturday", "slug": "saturday", "category": {"name": "Weekday", "slug": "weekday"}},
-    {"name": "Sunday", "slug": "sunday", "category": {"name": "Weekday", "slug": "weekday"}},
+    {
+        "name": "Monday",
+        "slug": "monday",
+        "order": 1,
+        "category": {"name": "Weekday", "slug": "weekday"},
+    },
+    {
+        "name": "Tuesday",
+        "slug": "tuesday",
+        "order": 2,
+        "category": {"name": "Weekday", "slug": "weekday"},
+    },
+    {
+        "name": "Wednesday",
+        "slug": "wednesday",
+        "order": 3,
+        "category": {"name": "Weekday", "slug": "weekday"},
+    },
+    {
+        "name": "Thursday",
+        "slug": "thursday",
+        "order": 4,
+        "category": {"name": "Weekday", "slug": "weekday"},
+    },
+    {
+        "name": "Friday",
+        "slug": "friday",
+        "order": 5,
+        "category": {"name": "Weekday", "slug": "weekday"},
+    },
+    {
+        "name": "Saturday",
+        "slug": "saturday",
+        "order": 6,
+        "category": {"name": "Weekday", "slug": "weekday"},
+    },
+    {
+        "name": "Sunday",
+        "slug": "sunday",
+        "order": 7,
+        "category": {"name": "Weekday", "slug": "weekday"},
+    },
 ]
 
 ELEMENTS = [
-    {"name": "Earth", "slug": "earth", "category": {"name": "Element", "slug": "element"}},
-    {"name": "Air", "slug": "air", "category": {"name": "Element", "slug": "element"}},
-    {"name": "Fire", "slug": "fire", "category": {"name": "Element", "slug": "element"}},
-    {"name": "Water", "slug": "water", "category": {"name": "Element", "slug": "element"}},
+    {
+        "name": "Earth",
+        "slug": "earth",
+        "order": 1,
+        "category": {"name": "Element", "slug": "element"},
+    },
+    {"name": "Air", "slug": "air", "order": 2, "category": {"name": "Element", "slug": "element"}},
+    {
+        "name": "Fire",
+        "slug": "fire",
+        "order": 3,
+        "category": {"name": "Element", "slug": "element"},
+    },
+    {
+        "name": "Water",
+        "slug": "water",
+        "order": 4,
+        "category": {"name": "Element", "slug": "element"},
+    },
 ]
 
 COLORS = [
-    {"name": "Black", "slug": "black", "category": {"name": "Color", "slug": "color"}},
-    {"name": "White", "slug": "white", "category": {"name": "Color", "slug": "color"}},
-    {"name": "Red", "slug": "red", "category": {"name": "Color", "slug": "color"}},
-    {"name": "Orange", "slug": "orange", "category": {"name": "Color", "slug": "color"}},
-    {"name": "Yellow", "slug": "yellow", "category": {"name": "Color", "slug": "color"}},
-    {"name": "Green", "slug": "green", "category": {"name": "Color", "slug": "color"}},
-    {"name": "Blue", "slug": "blue", "category": {"name": "Color", "slug": "color"}},
-    {"name": "Indigo", "slug": "indigo", "category": {"name": "Color", "slug": "color"}},
-    {"name": "Violet", "slug": "violet", "category": {"name": "Color", "slug": "color"}},
-    {"name": "Pink", "slug": "pink", "category": {"name": "Color", "slug": "color"}},
-    {"name": "Brown", "slug": "brown", "category": {"name": "Color", "slug": "color"}},
-    {"name": "Gray", "slug": "gray", "category": {"name": "Color", "slug": "color"}},
+    {"name": "Black", "slug": "black", "order": 1, "category": {"name": "Color", "slug": "color"}},
+    {"name": "White", "slug": "white", "order": 2, "category": {"name": "Color", "slug": "color"}},
+    {"name": "Red", "slug": "red", "order": 3, "category": {"name": "Color", "slug": "color"}},
+    {
+        "name": "Orange",
+        "slug": "orange",
+        "order": 4,
+        "category": {"name": "Color", "slug": "color"},
+    },
+    {
+        "name": "Yellow",
+        "slug": "yellow",
+        "order": 5,
+        "category": {"name": "Color", "slug": "color"},
+    },
+    {"name": "Green", "slug": "green", "order": 6, "category": {"name": "Color", "slug": "color"}},
+    {"name": "Blue", "slug": "blue", "order": 7, "category": {"name": "Color", "slug": "color"}},
+    {
+        "name": "Indigo",
+        "slug": "indigo",
+        "order": 8,
+        "category": {"name": "Color", "slug": "color"},
+    },
+    {
+        "name": "Violet",
+        "slug": "violet",
+        "order": 9,
+        "category": {"name": "Color", "slug": "color"},
+    },
+    {"name": "Pink", "slug": "pink", "order": 10, "category": {"name": "Color", "slug": "color"}},
+    {"name": "Brown", "slug": "brown", "order": 11, "category": {"name": "Color", "slug": "color"}},
+    {"name": "Gray", "slug": "gray", "order": 12, "category": {"name": "Color", "slug": "color"}},
 ]
 
 GEMSTONES = [
-    {"name": "Garnet", "slug": "garnet", "category": {"name": "Gemstone", "slug": "gemstone"}},
-    {"name": "Amethyst", "slug": "amethyst", "category": {"name": "Gemstone", "slug": "gemstone"}},
+    {
+        "name": "Garnet",
+        "slug": "garnet",
+        "order": 1,
+        "category": {"name": "Gemstone", "slug": "gemstone"},
+    },
+    {
+        "name": "Amethyst",
+        "slug": "amethyst",
+        "order": 2,
+        "category": {"name": "Gemstone", "slug": "gemstone"},
+    },
     {
         "name": "Aquamarine",
         "slug": "aquamarine",
+        "order": 3,
         "category": {"name": "Gemstone", "slug": "gemstone"},
     },
-    {"name": "Diamond", "slug": "diamond", "category": {"name": "Gemstone", "slug": "gemstone"}},
-    {"name": "Emerald", "slug": "emerald", "category": {"name": "Gemstone", "slug": "gemstone"}},
-    {"name": "Pearl", "slug": "pearl", "category": {"name": "Gemstone", "slug": "gemstone"}},
-    {"name": "Ruby", "slug": "ruby", "category": {"name": "Gemstone", "slug": "gemstone"}},
-    {"name": "Peridot", "slug": "peridot", "category": {"name": "Gemstone", "slug": "gemstone"}},
-    {"name": "Sapphire", "slug": "sapphire", "category": {"name": "Gemstone", "slug": "gemstone"}},
-    {"name": "Opal", "slug": "opal", "category": {"name": "Gemstone", "slug": "gemstone"}},
-    {"name": "Topaz", "slug": "topaz", "category": {"name": "Gemstone", "slug": "gemstone"}},
+    {
+        "name": "Diamond",
+        "slug": "diamond",
+        "order": 4,
+        "category": {"name": "Gemstone", "slug": "gemstone"},
+    },
+    {
+        "name": "Emerald",
+        "slug": "emerald",
+        "order": 5,
+        "category": {"name": "Gemstone", "slug": "gemstone"},
+    },
+    {
+        "name": "Pearl",
+        "slug": "pearl",
+        "order": 6,
+        "category": {"name": "Gemstone", "slug": "gemstone"},
+    },
+    {
+        "name": "Ruby",
+        "slug": "ruby",
+        "order": 7,
+        "category": {"name": "Gemstone", "slug": "gemstone"},
+    },
+    {
+        "name": "Peridot",
+        "slug": "peridot",
+        "order": 8,
+        "category": {"name": "Gemstone", "slug": "gemstone"},
+    },
+    {
+        "name": "Sapphire",
+        "slug": "sapphire",
+        "order": 9,
+        "category": {"name": "Gemstone", "slug": "gemstone"},
+    },
+    {
+        "name": "Opal",
+        "slug": "opal",
+        "order": 10,
+        "category": {"name": "Gemstone", "slug": "gemstone"},
+    },
+    {
+        "name": "Topaz",
+        "slug": "topaz",
+        "order": 11,
+        "category": {"name": "Gemstone", "slug": "gemstone"},
+    },
     {
         "name": "Turquoise",
         "slug": "turquoise",
+        "order": 12,
         "category": {"name": "Gemstone", "slug": "gemstone"},
     },
 ]
 
 METALS = [
-    {"name": "Gold", "slug": "gold", "category": {"name": "Metal", "slug": "metal"}},
-    {"name": "Mercury", "slug": "mercury", "category": {"name": "Metal", "slug": "metal"}},
-    {"name": "Copper", "slug": "copper", "category": {"name": "Metal", "slug": "metal"}},
-    {"name": "Silver", "slug": "silver", "category": {"name": "Metal", "slug": "metal"}},
-    {"name": "Iron", "slug": "iron", "category": {"name": "Metal", "slug": "metal"}},
-    {"name": "Tin", "slug": "tin", "category": {"name": "Metal", "slug": "metal"}},
-    {"name": "Lead", "slug": "lead", "category": {"name": "Metal", "slug": "metal"}},
+    {"name": "Gold", "slug": "gold", "order": 1, "category": {"name": "Metal", "slug": "metal"}},
+    {
+        "name": "Mercury",
+        "slug": "mercury",
+        "order": 2,
+        "category": {"name": "Metal", "slug": "metal"},
+    },
+    {
+        "name": "Copper",
+        "slug": "copper",
+        "order": 3,
+        "category": {"name": "Metal", "slug": "metal"},
+    },
+    {
+        "name": "Silver",
+        "slug": "silver",
+        "order": 4,
+        "category": {"name": "Metal", "slug": "metal"},
+    },
+    {"name": "Iron", "slug": "iron", "order": 5, "category": {"name": "Metal", "slug": "metal"}},
+    {"name": "Tin", "slug": "tin", "order": 6, "category": {"name": "Metal", "slug": "metal"}},
+    {"name": "Lead", "slug": "lead", "order": 7, "category": {"name": "Metal", "slug": "metal"}},
 ]
 
 NUMBERS = [
-    {"name": "One", "slug": "one", "category": {"name": "Number", "slug": "number"}},
-    {"name": "Two", "slug": "two", "category": {"name": "Number", "slug": "number"}},
-    {"name": "Three", "slug": "three", "category": {"name": "Number", "slug": "number"}},
-    {"name": "Four", "slug": "four", "category": {"name": "Number", "slug": "number"}},
-    {"name": "Five", "slug": "five", "category": {"name": "Number", "slug": "number"}},
-    {"name": "Six", "slug": "six", "category": {"name": "Number", "slug": "number"}},
-    {"name": "Seven", "slug": "seven", "category": {"name": "Number", "slug": "number"}},
-    {"name": "Eight", "slug": "eight", "category": {"name": "Number", "slug": "number"}},
-    {"name": "Nine", "slug": "nine", "category": {"name": "Number", "slug": "number"}},
-    {"name": "Ten", "slug": "ten", "category": {"name": "Number", "slug": "number"}},
-    {"name": "Eleven", "slug": "eleven", "category": {"name": "Number", "slug": "number"}},
-    {"name": "Twelve", "slug": "twelve", "category": {"name": "Number", "slug": "number"}},
-    {"name": "Thirteen", "slug": "thirteen", "category": {"name": "Number", "slug": "number"}},
-    {"name": "Fourteen", "slug": "fourteen", "category": {"name": "Number", "slug": "number"}},
-    {"name": "Fifteen", "slug": "fifteen", "category": {"name": "Number", "slug": "number"}},
-    {"name": "Sixteen", "slug": "sixteen", "category": {"name": "Number", "slug": "number"}},
-    {"name": "Seventeen", "slug": "seventeen", "category": {"name": "Number", "slug": "number"}},
-    {"name": "Eighteen", "slug": "eighteen", "category": {"name": "Number", "slug": "number"}},
-    {"name": "Nineteen", "slug": "nineteen", "category": {"name": "Number", "slug": "number"}},
-    {"name": "Twenty", "slug": "twenty", "category": {"name": "Number", "slug": "number"}},
-    {"name": "Twenty One", "slug": "twenty-one", "category": {"name": "Number", "slug": "number"}},
-    {"name": "Twenty Two", "slug": "twenty-two", "category": {"name": "Number", "slug": "number"}},
+    {"name": "One", "slug": "one", "order": 1, "category": {"name": "Number", "slug": "number"}},
+    {"name": "Two", "slug": "two", "order": 2, "category": {"name": "Number", "slug": "number"}},
+    {
+        "name": "Three",
+        "slug": "three",
+        "order": 3,
+        "category": {"name": "Number", "slug": "number"},
+    },
+    {"name": "Four", "slug": "four", "order": 4, "category": {"name": "Number", "slug": "number"}},
+    {"name": "Five", "slug": "five", "order": 5, "category": {"name": "Number", "slug": "number"}},
+    {"name": "Six", "slug": "six", "order": 6, "category": {"name": "Number", "slug": "number"}},
+    {
+        "name": "Seven",
+        "slug": "seven",
+        "order": 7,
+        "category": {"name": "Number", "slug": "number"},
+    },
+    {
+        "name": "Eight",
+        "slug": "eight",
+        "order": 8,
+        "category": {"name": "Number", "slug": "number"},
+    },
+    {"name": "Nine", "slug": "nine", "order": 9, "category": {"name": "Number", "slug": "number"}},
+    {"name": "Ten", "slug": "ten", "order": 10, "category": {"name": "Number", "slug": "number"}},
+    {
+        "name": "Eleven",
+        "slug": "eleven",
+        "order": 11,
+        "category": {"name": "Number", "slug": "number"},
+    },
+    {
+        "name": "Twelve",
+        "slug": "twelve",
+        "order": 12,
+        "category": {"name": "Number", "slug": "number"},
+    },
+    {
+        "name": "Thirteen",
+        "slug": "thirteen",
+        "order": 13,
+        "category": {"name": "Number", "slug": "number"},
+    },
+    {
+        "name": "Fourteen",
+        "slug": "fourteen",
+        "order": 14,
+        "category": {"name": "Number", "slug": "number"},
+    },
+    {
+        "name": "Fifteen",
+        "slug": "fifteen",
+        "order": 15,
+        "category": {"name": "Number", "slug": "number"},
+    },
+    {
+        "name": "Sixteen",
+        "slug": "sixteen",
+        "order": 16,
+        "category": {"name": "Number", "slug": "number"},
+    },
+    {
+        "name": "Seventeen",
+        "slug": "seventeen",
+        "order": 17,
+        "category": {"name": "Number", "slug": "number"},
+    },
+    {
+        "name": "Eighteen",
+        "slug": "eighteen",
+        "order": 18,
+        "category": {"name": "Number", "slug": "number"},
+    },
+    {
+        "name": "Nineteen",
+        "slug": "nineteen",
+        "order": 19,
+        "category": {"name": "Number", "slug": "number"},
+    },
+    {
+        "name": "Twenty",
+        "slug": "twenty",
+        "order": 20,
+        "category": {"name": "Number", "slug": "number"},
+    },
+    {
+        "name": "Twenty One",
+        "slug": "twenty-one",
+        "order": 21,
+        "category": {"name": "Number", "slug": "number"},
+    },
+    {
+        "name": "Twenty Two",
+        "slug": "twenty-two",
+        "order": 22,
+        "category": {"name": "Number", "slug": "number"},
+    },
     {
         "name": "Twenty Three",
         "slug": "twenty-three",
+        "order": 23,
         "category": {"name": "Number", "slug": "number"},
     },
     {
         "name": "Twenty Four",
         "slug": "twenty-four",
+        "order": 24,
         "category": {"name": "Number", "slug": "number"},
     },
     {
         "name": "Twenty Five",
         "slug": "twenty-five",
+        "order": 25,
         "category": {"name": "Number", "slug": "number"},
     },
-    {"name": "Twenty Six", "slug": "twenty-six", "category": {"name": "Number", "slug": "number"}},
+    {
+        "name": "Twenty Six",
+        "slug": "twenty-six",
+        "order": 26,
+        "category": {"name": "Number", "slug": "number"},
+    },
     {
         "name": "Twenty Seven",
         "slug": "twenty-seven",
+        "order": 27,
         "category": {"name": "Number", "slug": "number"},
     },
     {
         "name": "Twenty Eight",
         "slug": "twenty-eight",
+        "order": 28,
         "category": {"name": "Number", "slug": "number"},
     },
     {
         "name": "Twenty Nine",
         "slug": "twenty-nine",
+        "order": 29,
         "category": {"name": "Number", "slug": "number"},
     },
-    {"name": "Thirty", "slug": "thirty", "category": {"name": "Number", "slug": "number"}},
-    {"name": "Thirty One", "slug": "thirty-one", "category": {"name": "Number", "slug": "number"}},
-    {"name": "Thirty Two", "slug": "thirty-two", "category": {"name": "Number", "slug": "number"}},
+    {
+        "name": "Thirty",
+        "slug": "thirty",
+        "order": 30,
+        "category": {"name": "Number", "slug": "number"},
+    },
+    {
+        "name": "Thirty One",
+        "slug": "thirty-one",
+        "order": 31,
+        "category": {"name": "Number", "slug": "number"},
+    },
+    {
+        "name": "Thirty Two",
+        "slug": "thirty-two",
+        "order": 32,
+        "category": {"name": "Number", "slug": "number"},
+    },
 ]
+
+SUBJECTS = (
+    TAROT_CARDS
+    + LENORMAND_CARDS
+    + ASTROLOGY_SIGNS
+    + ASTROLOGY_PLANETS
+    + ASTROLOGY_ASTEROIDS
+    + ASTROLOGY_ASPECTS
+    + ASTROLOGY_HOUSES
+    + MODALITIES
+    + POLARITIES
+    + CHAKRAS
+    + RUNES
+    + SEPHIROTH
+    + HEBREW_LETTERS
+    + KABBALAH_WORLDS
+    + SOLFEGGIOS
+    + WEEKDAYS
+    + ELEMENTS
+    + COLORS
+    + GEMSTONES
+    + METALS
+    + NUMBERS
+)
