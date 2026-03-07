@@ -71,6 +71,30 @@ vishuddha
 
 #endregion
 
+#region 👅 Linguistics — Mood & Modality
+benedictive
+commissive
+debitive
+deontic
+dubitative
+irrealis
+necessitative
+nonpast
+nonfuture
+paucal
+precative
+realis
+superplural
+volative
+
+#endregion
+
+#region 📍 Linguistics — Deixis
+Deixis
+origo
+
+#endregion
+
 #region 🔮 Divination & Spiritual Practice
 affirmation
 affirmations
