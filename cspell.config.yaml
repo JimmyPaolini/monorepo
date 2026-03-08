@@ -55,34 +55,33 @@ dictionaryDefinitions:
     path: .cspell/tooling.txt
     addWords: true
 words:
-  # Personal names & project-specific identifiers
-  - jimmypaolini
-  - joor
-  - musescore
-  - paolini
-  - shiftsmart
-  - upenn
-  # Miscellaneous uncategorized
   - apikey
   - elipssis
   - futp
   - hackathon
+  - jimmypaolini
+  - joor
   - killallnode
   - killallvscodeextensions
   - killport
   - multivalued
+  - musescore
   - navs
   - nindent
   - nonf
+  - noqa
   - nums
   - oneline
+  - paolini
   - querykey
   - reagent
   - satisfies
+  - shiftsmart
   - timespan
   - tolower
   - toon
   - toupper
+  - upenn
 enableFiletypes:
   - markdown
   - typescript

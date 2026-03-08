@@ -57,7 +57,13 @@
     "markdown-lint": {},
     "ollama": {
       "configurations": {
-        "pull": {
+        "pull-large": {
+          "command": "curl -s http://host.docker.internal:11434/api/pull -d '{\"name\":\"gemma3:12b\"}'"
+        },
+        "pull-medium": {
+          "command": "curl -s http://host.docker.internal:11434/api/pull -d '{\"name\":\"gemma3:4b\"}'"
+        },
+        "pull-small": {
           "command": "curl -s http://host.docker.internal:11434/api/pull -d '{\"name\":\"gemma3:1b\"}'"
         },
         "start": {

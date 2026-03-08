@@ -1,6 +1,6 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
-  // #region 🎨 Palettes
+  // 🎨 Palettes
 
   {
     "command": "workbench.action.showCommands",
@@ -19,7 +19,7 @@
     "key": "cmd+t"
   },
 
-  // #region ▶️ Cmd+Enter
+  // ▶️ Cmd+Enter
 
   {
     "command": "mdb.runAllPlaygroundBlocks",
@@ -32,7 +32,7 @@
     "when": "commentEditorFocused || commentFocused"
   },
 
-  // #region Code Comments 💬
+  // 💬 Code Comments
   // {
   //   "key": "cmd+backspace",
   //   "command": "workbench.action.commentedi",
@@ -44,7 +44,7 @@
   //   "when": "commentFocus && commentController == 'github-comment-controller'"
   // },
 
-  // #region 🔀 Tab switching
+  // 🔀 Tab switching
 
   {
     "command": "workbench.action.previousEditor",
@@ -71,7 +71,7 @@
     "key": "cmd+alt+s"
   },
 
-  // #region 🛠️ Sidebar Tabs
+  // 🛠️ Sidebar Tabs
 
   {
     "command": "workbench.view.extension.github-actions",
@@ -154,7 +154,7 @@
     "key": "shift+cmd+y"
   },
 
-  // #region 📑 Bottombar Tabs
+  // 📑 Bottombar Tabs
 
   {
     "command": "workbench.action.focusCommentsPanel",
@@ -177,7 +177,7 @@
     "key": "ctrl+cmd+t"
   },
 
-  // #region 📝 Editor Tabs
+  // 📝 Editor Tabs
 
   {
     "command": "workbench.action.openEditorAtIndex1",
@@ -216,7 +216,7 @@
     "key": "cmd+9"
   },
 
-  // #region 🤖 Cursor
+  // 🤖 Cursor
 
   {
     "command": "expandLineSelection",
@@ -227,7 +227,7 @@
     "key": "shift+cmd+l"
   },
 
-  // #region 🗑️ Other
+  // 🗑️ Other
 
   {
     "command": "workbench.action.terminal.kill",
