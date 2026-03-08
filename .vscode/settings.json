@@ -60,7 +60,7 @@
     "windsurf": false
   },
   "chat.notifyWindowOnConfirmation": "windowNotFocused",
-  "chat.planAgent.defaultModel": "Claude Opus 4.5 (copilot)",
+  "chat.planAgent.defaultModel": "Claude Opus 4.6 (copilot)",
   "chat.sendElementsToChat.enabled": true,
   "chat.tools.global.autoApprove": true,
   "chat.tools.terminal.autoApprove": {
@@ -230,11 +230,15 @@
   "editor.matchBrackets": "always",
   "editor.maxTokenizationLineLength": 10000,
   "editor.minimap.enabled": true,
+  "editor.minimap.markSectionHeaderRegex": "[#/]\\s*(?<label>[^\\u0000-\\u007F].*)",
   "editor.minimap.renderCharacters": true,
   "editor.minimap.scale": 2,
   "editor.minimap.sectionHeaderFontSize": 10,
   "editor.minimap.sectionHeaderLetterSpacing": 1,
+  "editor.minimap.showMarkSectionHeaders": true,
+  "editor.minimap.showRegionSectionHeaders": true,
   "editor.minimap.showSlider": "always",
+  "editor.minimap.size": "proportional",
   "editor.rulers": [
     80,
     120
@@ -611,6 +615,7 @@
   "notebook.defaultFormatter": "charliermarsh.ruff",
   "notebook.formatOnSave.enabled": true,
   "notebook.lineNumbers": "on",
+  "notebook.outline.showCodeCells": true,
   "notebook.output.linkifyFilePaths": true,
   "notebook.output.scrolling": true,
   "notebook.output.textLineLimit": 32,
@@ -618,9 +623,10 @@
   "npm-intellisense.importQuotes": "\"",
   "npm-intellisense.scanDevDependencies": true,
   "npm-intellisense.showBuildInLibs": true,
-  "outline.showEnumMembers": false,
-  "outline.showFields": false,
-  "outline.showProperties": false,
+  "outline.collapseItems": "alwaysCollapse",
+  "outline.showEnumMembers": true,
+  "outline.showFields": true,
+  "outline.showProperties": true,
   "outline.showVariables": false,
   "postman.mcp.notifications.postmanMCP": false,
   "postman.settings.dotenv-detection-notification-visibility": false,
@@ -716,6 +722,7 @@
   "window.density.editorTabHeight": "compact",
   "window.title": "${rootName}",
   "workbench.activityBar.location": "top",
+  "workbench.browser.enableChatTools": true,
   "workbench.browser.openLocalhostLinks": true,
   "workbench.colorCustomizations": {
     "editorRuler.foreground": "#282828"

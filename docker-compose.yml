@@ -36,7 +36,7 @@ services:
     ports:
       - 8889:8080
     volumes:
-      - ${LOCAL_WORKSPACE_FOLDER}/applications/affirmations/config/searxng:/etc/searxng
+      - ${LOCAL_WORKSPACE_FOLDER}/applications/affirmations/searxng.settings.yml:/etc/searxng/settings.yml
     environment:
       SEARXNG_BASE_URL: http://localhost:8889
     healthcheck:

@@ -16,8 +16,10 @@ nx run affirmations:ollama --configuration=start
 nx run affirmations:searxng --configuration=start
 nx run affirmations:open-webui --configuration=start
 
-# 2. Pull the Gemma 3 model (~3.3GB one-time download)
-nx run affirmations:ollama --configuration=pull
+# 2. Pull the Gemma 3 model (one-time download)
+nx run affirmations:ollama --configuration=pull-small   # gemma3:1b (~815MB, fast)
+# nx run affirmations:ollama --configuration=pull-medium  # gemma3:4b (~3.3GB, balanced)
+# nx run affirmations:ollama --configuration=pull-large   # gemma3:12b (~8.1GB, quality)
 
 # 3. Open notebooks/example-affirmation-generation.ipynb in VSCode to explore the full pipeline
 ```
@@ -56,24 +58,26 @@ applications/affirmations/
 
 ## Nx Targets
 
-| Target          | Command                                                | Description                |
-| --------------- | ------------------------------------------------------ | -------------------------- |
-| `lint`          | `nx run affirmations:lint`                             | Ruff linting               |
-| `format`        | `nx run affirmations:format`                           | Ruff formatting            |
-| `typecheck`     | `nx run affirmations:typecheck`                        | pyright type checking      |
-| `test`          | `nx run affirmations:test`                             | pytest unit tests          |
-| `vulture`       | `nx run affirmations:vulture`                          | Vulture dead code analysis |
-| `ollama`        | `nx run affirmations:ollama --configuration=start`     | Start Ollama container     |
-| `ollama`        | `nx run affirmations:ollama --configuration=stop`      | Stop Ollama container      |
-| `ollama`        | `nx run affirmations:ollama --configuration=pull`      | Pull qwen3.5:4b model      |
-| `searxng`       | `nx run affirmations:searxng --configuration=start`    | Start SearxNG container    |
-| `searxng`       | `nx run affirmations:searxng --configuration=stop`     | Stop SearxNG container     |
-| `searxng`       | `nx run affirmations:searxng --configuration=open`     | Open SearxNG in browser    |
-| `open-webui`    | `nx run affirmations:open-webui --configuration=start` | Start Open WebUI container |
-| `open-webui`    | `nx run affirmations:open-webui --configuration=stop`  | Stop Open WebUI container  |
-| `open-webui`    | `nx run affirmations:open-webui --configuration=open`  | Open Open WebUI in browser |
-| `spell-check`   | `nx run affirmations:spell-check`                      | cspell spell check         |
-| `markdown-lint` | `nx run affirmations:markdown-lint`                    | Markdown linting           |
+| Target          | Command                                                  | Description                |
+| --------------- | ------------------------------------------------------   | -------------------------- |
+| `lint`          | `nx run affirmations:lint`                               | Ruff linting               |
+| `format`        | `nx run affirmations:format`                             | Ruff formatting            |
+| `typecheck`     | `nx run affirmations:typecheck`                          | pyright type checking      |
+| `test`          | `nx run affirmations:test`                               | pytest unit tests          |
+| `vulture`       | `nx run affirmations:vulture`                            | Vulture dead code analysis |
+| `ollama`        | `nx run affirmations:ollama --configuration=start`       | Start Ollama container     |
+| `ollama`        | `nx run affirmations:ollama --configuration=stop`        | Stop Ollama container      |
+| `ollama`        | `nx run affirmations:ollama --configuration=pull-small`  | Pull gemma3:1b (small)     |
+| `ollama`        | `nx run affirmations:ollama --configuration=pull-medium` | Pull gemma3:4b (medium)    |
+| `ollama`        | `nx run affirmations:ollama --configuration=pull-large`  | Pull gemma3:12b (large)    |
+| `searxng`       | `nx run affirmations:searxng --configuration=start`      | Start SearxNG container    |
+| `searxng`       | `nx run affirmations:searxng --configuration=stop`       | Stop SearxNG container     |
+| `searxng`       | `nx run affirmations:searxng --configuration=open`       | Open SearxNG in browser    |
+| `open-webui`    | `nx run affirmations:open-webui --configuration=start`   | Start Open WebUI container |
+| `open-webui`    | `nx run affirmations:open-webui --configuration=stop`    | Stop Open WebUI container  |
+| `open-webui`    | `nx run affirmations:open-webui --configuration=open`    | Open Open WebUI in browser |
+| `spell-check`   | `nx run affirmations:spell-check`                        | cspell spell check         |
+| `markdown-lint` | `nx run affirmations:markdown-lint`                      | Markdown linting           |
 
 ## Output Format
 
