@@ -1,9 +1,9 @@
 ---
 agent: "agent"
-description: "Create a new implementation plan file for new features, refactoring existing code or upgrading packages, design, architecture or infrastructure."
+description: "Create an implementation plan file for new features, fixes, or refactors."
 model: Claude Opus 4.6 (copilot)
 name: "create-plan"
-argument-hint: "Outline the goal implement"
+argument-hint: "Outline the outcome to achieve"
 tools:
   [
     vscode/extensions,
