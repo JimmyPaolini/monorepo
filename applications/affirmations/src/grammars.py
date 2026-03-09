@@ -676,3 +676,22 @@ NEGATIVE = Grammar(
     number=Number.SINGULAR,
     polarity=Polarity.NEGATIVE,
 )
+
+GRAMMARS = [
+    PAST,
+    PRESENT,
+    FUTURE,
+    PERFECT_PROGRESSIVE,
+    FUTURE_PERFECT,
+    FIRST_PLURAL,
+    THIRD_PRESENT,
+    POTENTIAL,
+    OPTATIVE,
+    IMPERATIVE,
+    INTERROGATIVE,
+    INFINITIVE,
+    GERUND,
+    PASSIVE,
+    HABITUAL,
+    NEGATIVE,
+]

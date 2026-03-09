@@ -80,7 +80,7 @@ Replace `...` with actual values. Remove rows with no known correspondence.
     ]
 )
 
-analysis_prompt_template: ChatPromptTemplate = ChatPromptTemplate.from_messages(
+analyze_sources_prompt_template: ChatPromptTemplate = ChatPromptTemplate.from_messages(
     [
         SystemMessagePromptTemplate.from_template(
             "You are an expert researcher. Analyze web search results and extract a concise, factual research brief. "
@@ -104,7 +104,7 @@ Analyze the results above and produce a concise research brief:
 hebrew letter, kabbalah world, gemstone, metal, weekday, cardinality, polarity, lenormand, tarot). \
 Format each as "category: value". Omit categories with no evidence in the results.
 
-Be concise. Note any conflicts or uncertainties between sources.\
+Be concise.\"
 """
         ),
     ]
@@ -150,6 +150,7 @@ Highlight key symbols, imagery, and archetypes associated with "{subject_name}" 
 ## Correspondences
 
 List the factual cross-system correspondences for "{subject_name}" in other spiritual and esoteric traditions. \
+Output ONLY a markdown table — do NOT use bullet points, numbered lists, bold text, or prose. \
 Include ONLY rows with a specific, factual correspondence found in the research brief. \
 Do NOT include life domains such as love, relationships, career, health, finances, or fortune — those belong in Application. \
 Replace `...` with actual values. Remove rows with no known correspondence.
