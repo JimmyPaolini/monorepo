@@ -6,16 +6,17 @@ name: "create-plan"
 argument-hint: "Outline the goal implement"
 tools:
   [
-    "read",
-    "search",
-    "agent",
-    "vscode/askQuestions",
-    "vscode/getProjectSetupInfo",
-    "vscode/extensions",
+    vscode/extensions,
+    vscode/askQuestions,
+    vscode/memory,
+    vscode/switchAgent,
+    read,
+    agent,
+    edit/createFile,
+    edit/editFiles,
+    search,
+    web,
     "context7/*",
-    "web/fetch",
-    "edit/createFile",
-    "edit/editFiles",
   ]
 ---
 
