@@ -21,10 +21,12 @@ venv
 #endregion
 
 #region 📚 Standard Library
+classmethod
 dataclasses
 kwargs
 logprobs
 pathlib
+rstrip
 #endregion
 
 #region 🔧 Configuration Keys
