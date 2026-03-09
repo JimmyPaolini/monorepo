@@ -1,0 +1,162 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "affirmations",
+  "projectType": "application",
+  "sourceRoot": "applications/affirmations/src",
+  "tags": [ "lang:python","scope:affirmations", "type:application"],
+  "targets": {
+    "code-analysis": {
+      "options": {
+        "commands": [
+          "nx run affirmations:format:{args.configuration}",
+          "nx run affirmations:lint:{args.configuration}",
+          "nx run affirmations:markdown-lint",
+          "nx run affirmations:spell-check",
+          "nx run affirmations:typecheck",
+          "nx run affirmations:vulture",
+          "nx run affirmations:yaml-lint"
+        ]
+      }
+    },
+    "format": {
+      "configurations": {
+        "check": {
+          "commands": ["uv run ruff format --check ."],
+          "parallel": false
+        },
+        "write": {
+          "commands": ["uv run ruff format ."],
+          "parallel": false
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "Format Python source with Ruff",
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "applications/affirmations"
+      }
+    },
+    "lint": {
+      "configurations": {
+        "check": {
+          "commands": ["uv run ruff check ."],
+          "parallel": false
+        },
+        "write": {
+          "commands": ["uv run ruff check --fix ."],
+          "parallel": false
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "Lint Python source with Ruff",
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "applications/affirmations"
+      }
+    },
+    "markdown-lint": {},
+    "ollama": {
+      "configurations": {
+        "pull-large": {
+          "command": "curl -s http://host.docker.internal:11434/api/pull -d '{\"name\":\"gemma3:12b\"}'"
+        },
+        "pull-medium": {
+          "command": "curl -s http://host.docker.internal:11434/api/pull -d '{\"name\":\"gemma3:4b\"}'"
+        },
+        "pull-small": {
+          "command": "curl -s http://host.docker.internal:11434/api/pull -d '{\"name\":\"gemma3:1b\"}'"
+        },
+        "start": {
+          "command": "echo 'Start Ollama on your host machine: ollama serve (or: brew services start ollama)'"
+        },
+        "stop": {
+          "command": "echo 'Stop Ollama on your host machine: pkill ollama (or: brew services stop ollama)'"
+        }
+      },
+      "defaultConfiguration": "start",
+      "description": "Manage the native Ollama service running on the host machine",
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "applications/affirmations"
+      }
+    },
+    "open-webui": {
+      "configurations": {
+        "open": {
+          "command": "$BROWSER http://localhost:3001"
+        },
+        "start": {
+          "command": "docker compose -f ../../docker-compose.yml up -d open-webui"
+        },
+        "stop": {
+          "command": "docker compose -f ../../docker-compose.yml rm -sf open-webui"
+        }
+      },
+      "defaultConfiguration": "start",
+      "description": "Manage the Open WebUI Docker service",
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "applications/affirmations"
+      }
+    },
+    "searxng": {
+      "configurations": {
+        "open": {
+          "command": "$BROWSER http://localhost:8889"
+        },
+        "start": {
+          "command": "docker compose -f ../../docker-compose.yml up -d searxng"
+        },
+        "stop": {
+          "command": "docker compose -f ../../docker-compose.yml rm -sf searxng"
+        }
+      },
+      "defaultConfiguration": "start",
+      "description": "Manage the SearxNG Docker service",
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "applications/affirmations"
+      }
+    },
+    "spell-check": {},
+    "test": {
+      "configurations": {
+        "coverage": {
+          "command": "uv run pytest --cov=src --cov-report=term-missing"
+        },
+        "integration": {
+          "command": "uv run pytest -m integration"
+        },
+        "unit": {
+          "command": "uv run pytest -m unit"
+        },
+        "watch": {
+          "command": "uv run pytest-watch"
+        }
+      },
+      "description": "Run pytest tests",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "uv run pytest",
+        "cwd": "applications/affirmations"
+      }
+    },
+    "typecheck": {
+      "description": "Type-check Python source with pyright",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "uv run pyright src/",
+        "cwd": "applications/affirmations"
+      }
+    },
+    "vulture": {
+      "description": "Detect unused code with vulture",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "uv run vulture src/ .vulture_whitelist.py --min-confidence 80",
+        "cwd": "applications/affirmations"
+      }
+    },
+    "yaml-lint": {}
+  }
+}

@@ -1,20 +1,24 @@
 #!/usr/bin/env tsx
 
 /**
- * Sync VS Code extensions between .vscode/extensions.json and .devcontainer/devcontainer.json
+ * Sync VS Code extensions from .vscode/extensions.json into both devcontainer configs.
  *
  * Source: .vscode/extensions.json
  *   - recommendations: Extensions to recommend (gets copied to BOTH arrays below)
  *   - unwantedRecommendations: Extensions to discourage
  *
- * Target: .devcontainer/devcontainer.json
+ * Targets:
+ *   - .devcontainer/local/devcontainer.json
+ *   - .devcontainer/cloud/devcontainer.json
+ *
+ * Each target receives:
  *   - extensions: Auto-installed in devcontainers (copied from recommendations)
  *   - recommendations: Shown as suggestions (copied from recommendations)
  *   - unwantedRecommendations: Extensions to discourage (copied as-is)
  *
  * Usage: tsx scripts/sync-vscode-extensions.ts [check|write]
- *   check (default): Validate that files are in sync, exit 1 if not
- *   write: Update devcontainer.json from extensions.json
+ *   check (default): Validate that both configs are in sync with extensions.json, exit 1 if not
+ *   write: Update both devcontainer.json files from extensions.json
  */
 
 import { readFileSync, writeFileSync } from "node:fs";
@@ -28,10 +32,10 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const WORKSPACE_ROOT = path.join(__dirname, "..");
 const EXTENSIONS_FILE = path.join(WORKSPACE_ROOT, ".vscode/extensions.json");
-const DEVCONTAINER_FILE = path.join(
-  WORKSPACE_ROOT,
-  ".devcontainer/devcontainer.json",
-);
+const DEVCONTAINER_FILES = [
+  path.join(WORKSPACE_ROOT, ".devcontainer/local/devcontainer.json"),
+  path.join(WORKSPACE_ROOT, ".devcontainer/cloud/devcontainer.json"),
+];
 const MODE = process.argv[2] || "check";
 
 interface ExtensionsJson {
@@ -66,7 +70,9 @@ function showDifference(source: string[], target: string[]): void {
 function checkSync(
   extensions: ExtensionsJson,
   devcontainer: DevcontainerJson,
+  devcontainerFile: string,
 ): boolean {
+  const label = path.relative(WORKSPACE_ROOT, devcontainerFile);
   const { recommendations, unwantedRecommendations } = extensions;
   const {
     extensions: devcontainerExtensions,
@@ -93,7 +99,7 @@ function checkSync(
     !recommendationsMatch ||
     !unwantedRecommendationsMatch
   ) {
-    console.log("❌ VS Code extensions are out of sync\n");
+    console.log(`❌ VS Code extensions are out of sync in ${label}\n`);
     if (!extensionsMatch) {
       console.log(
         "🔧 Differences in devcontainer extensions (should match recommendations):",
@@ -117,7 +123,7 @@ function checkSync(
       console.log("");
     }
     console.log(
-      "💡 Run 'nx run monorepo:sync-vscode-extensions:write' to sync",
+      "💡 Run 'nx run monorepo:sync-vscode-extensions:write' to sync both devcontainer configs",
     );
     return false;
   }
@@ -127,8 +133,10 @@ function checkSync(
 function writeSync(
   extensions: ExtensionsJson,
   devcontainer: DevcontainerJson,
+  devcontainerFile: string,
 ): void {
-  console.log("🔄 Syncing extensions...");
+  const label = path.relative(WORKSPACE_ROOT, devcontainerFile);
+  console.log(`🔄 Syncing extensions to ${label}...`);
   // Copy recommendations to both extensions and recommendations in devcontainer
   devcontainer.customizations.vscode.extensions = extensions.recommendations;
   devcontainer.customizations.vscode.recommendations =
@@ -136,32 +144,43 @@ function writeSync(
   devcontainer.customizations.vscode.unwantedRecommendations =
     extensions.unwantedRecommendations;
   writeFileSync(
-    DEVCONTAINER_FILE,
+    devcontainerFile,
     `${JSON.stringify(devcontainer, null, 2)}\n`,
     "utf8",
   );
-  console.log(
-    "✅ Extensions synced successfully (recommendations copied to both arrays)",
-  );
+  console.log(`✅ Extensions synced to ${label}`);
 }
 
 function main(): void {
   const extensions: ExtensionsJson = JSON5.parse(
     readFileSync(EXTENSIONS_FILE, "utf8"),
   );
-  const devcontainer: DevcontainerJson = JSON5.parse(
-    readFileSync(DEVCONTAINER_FILE, "utf8"),
-  );
 
   if (MODE === "check") {
-    const inSync = checkSync(extensions, devcontainer);
-    if (!inSync) process.exit(1);
-    console.log("✅ VS Code extensions are in sync");
+    let allInSync = true;
+    for (const devcontainerFile of DEVCONTAINER_FILES) {
+      const devcontainer: DevcontainerJson = JSON5.parse(
+        readFileSync(devcontainerFile, "utf8"),
+      );
+      if (!checkSync(extensions, devcontainer, devcontainerFile)) {
+        allInSync = false;
+      }
+    }
+    if (!allInSync) process.exit(1);
+    console.log(
+      "✅ VS Code extensions are in sync with both devcontainer configurations",
+    );
   } else if (MODE === "write") {
-    if (checkSync(extensions, devcontainer)) {
-      console.log("✅ Extensions already in sync");
-    } else {
-      writeSync(extensions, devcontainer);
+    for (const devcontainerFile of DEVCONTAINER_FILES) {
+      const devcontainer: DevcontainerJson = JSON5.parse(
+        readFileSync(devcontainerFile, "utf8"),
+      );
+      if (checkSync(extensions, devcontainer, devcontainerFile)) {
+        const label = path.relative(WORKSPACE_ROOT, devcontainerFile);
+        console.log(`✅ ${label} already in sync`);
+      } else {
+        writeSync(extensions, devcontainer, devcontainerFile);
+      }
     }
   } else {
     console.error(`❌ Invalid mode: ${MODE}`);

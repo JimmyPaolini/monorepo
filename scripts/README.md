@@ -138,27 +138,64 @@ The devcontainer handles equivalent setup automatically.
 
 ### sync-vscode-extensions.ts
 
-**Purpose:** Sync VS Code extensions between `.vscode/extensions.json` and `.devcontainer/devcontainer.json`
+> Located in `.devcontainer/scripts/sync-vscode-extensions.ts`
+
+**Purpose:** Sync VS Code extensions between `.vscode/extensions.json` and both devcontainer configurations (`.devcontainer/local/devcontainer.json` and `.devcontainer/cloud/devcontainer.json`).
 
 **Usage:**
 
 ```bash
 # Via Nx (recommended)
-nx run monorepo:sync-vscode-extensions:check    # Validate (default)
-nx run monorepo:sync-vscode-extensions:write    # Update devcontainer.json
+nx run monorepo:sync-vscode-extensions:check    # Validate both configs are in sync (default)
+nx run monorepo:sync-vscode-extensions:write    # Update both devcontainer.json files
 
 # Direct
-tsx scripts/sync-vscode-extensions.ts [check|write]
+tsx .devcontainer/scripts/sync-vscode-extensions.ts [check|write]
 ```
 
 **Use cases:**
 
-- Pre-commit hook (auto-runs when `.vscode/extensions.json` is staged)
+- Pre-commit hook (auto-runs when `.vscode/extensions.json` or either devcontainer file is staged)
 - Manual sync after adding extensions
 
 **Exit codes:**
 
 - `0` - In sync or successfully synced
+- `1` - Out of sync (check mode) or failed
+
+### sync-devcontainer-configuration.ts
+
+**Purpose:** Propagate common fields from the local devcontainer config into the cloud config. Local is the source of truth for shared settings; cloud is edited directly only for its Docker feature and `runArgs`.
+
+**Synced fields** (local is source of truth):
+
+- `customizations`, `remoteEnv`, `forwardPorts`, `portsAttributes`, `image`, `containerUser`, `remoteUser`, lifecycle scripts, `$schema`
+- Shared features (github-cli, kubectl, terraform, etc.) — each config's Docker feature is preserved
+- Shared mounts (node-modules, pnpm) — cloud's docker-storage volume is preserved
+
+**Preserved fields** (each config is source of truth):
+
+- `name`, `runArgs`, Docker feature (`docker-in-docker` / `docker-outside-of-docker`)
+
+**Usage:**
+
+```bash
+# Via Nx (recommended)
+nx run monorepo:sync-devcontainer-configuration:check    # Validate cloud config is in sync (default)
+nx run monorepo:sync-devcontainer-configuration:write    # Propagate common fields from local into cloud
+
+# Direct
+tsx scripts/sync-devcontainer-configuration.ts [check|write]
+```
+
+**Use cases:**
+
+- Pre-commit hook (auto-runs when any devcontainer file is staged)
+- After editing shared settings in `local/devcontainer.json` (run `write` to propagate)
+
+**Exit codes:**
+
+- `0` - In sync or successfully updated
 - `1` - Out of sync (check mode) or failed
 
 ### utilities.sh

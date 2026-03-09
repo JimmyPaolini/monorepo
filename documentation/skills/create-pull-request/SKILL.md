@@ -58,6 +58,7 @@ PR titles **must** follow the same format as commit messages:
 
 | Scope               | Description                                                                   |
 | ------------------- | ----------------------------------------------------------------------------- |
+| `affirmations`      | Python Jupyter notebook application for LangGraph affirmation generation      |
 | `applications`      | Changes spanning multiple apps (caelundas, lexico, JimmyPaolini)              |
 | `caelundas`         | Node.js CLI for astronomical calendar generation (NASA JPL ephemeris)         |
 | `configuration`     | Workspace root config files (tsconfig, eslint, vitest, nx.json, etc.)         |
