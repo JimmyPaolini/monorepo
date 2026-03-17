@@ -6,18 +6,20 @@ attributes (name, description, func).
 """
 
 # Pydantic model fields accessed at runtime by Pydantic internals
-from src.models import Affirmation, AffirmationSet, ResearchResult
-from src.practices import PracticeConfig
+from src.models import (Affirmation, GeneratedAffirmations,
+                        GrammarAffirmations, SubjectAffirmations,
+                        ValidationResult)
 
 Affirmation.text
-Affirmation.practice
-Affirmation.structure
-Affirmation.keywords
-AffirmationSet.practice
-AffirmationSet.affirmations
-ResearchResult.query
-ResearchResult.source
-ResearchResult.summary
-PracticeConfig.name
-PracticeConfig.topics
-PracticeConfig.structures
+Affirmation.grammar_slug
+Affirmation.subject_slug
+Affirmation.subject_name
+Affirmation.grammar_name
+GrammarAffirmations.subject
+GrammarAffirmations.grammar
+GrammarAffirmations.affirmations
+SubjectAffirmations.subject
+SubjectAffirmations.affirmation_sets
+GeneratedAffirmations.affirmations
+ValidationResult.valid
+ValidationResult.reason

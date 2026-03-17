@@ -747,6 +747,7 @@
   "vscode-kubernetes.log-viewer.wrap": true,
   "window.customTitleBarVisibility": "windowed",
   "window.density.editorTabHeight": "compact",
+  "window.openFoldersInNewWindow": "off",
   "window.title": "${rootName}",
   "workbench.activityBar.location": "top",
   "workbench.browser.enableChatTools": true,

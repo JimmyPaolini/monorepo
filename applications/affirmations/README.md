@@ -1,6 +1,6 @@
 # Affirmations
 
-Python application that generates structured affirmations for spiritual practices using LangChain, LangGraph, and a locally-hosted Gemma 3 LLM via Ollama. A LangGraph ReAct agent researches spiritual topics using SearxNG metasearch (aggregating Wikipedia, DuckDuckGo, Google Scholar, and more) with Trafilatura-powered content extraction, then generates Pydantic-validated affirmations saved as structured JSON.
+Python application that generates structured affirmations for spiritual practices using LangChain, LangGraph, and a locally-hosted Qwen 3.5 LLM via Ollama. A LangGraph ReAct agent researches spiritual topics using SearxNG metasearch (aggregating Wikipedia, DuckDuckGo, Google Scholar, and more) with Trafilatura-powered content extraction, then generates Pydantic-validated affirmations saved as structured JSON.
 
 ## Prerequisites
 
@@ -16,10 +16,10 @@ nx run affirmations:ollama --configuration=start
 nx run affirmations:searxng --configuration=start
 nx run affirmations:open-webui --configuration=start
 
-# 2. Pull the Gemma 3 model (one-time download)
-nx run affirmations:ollama --configuration=pull-small   # gemma3:1b (~815MB, fast)
-# nx run affirmations:ollama --configuration=pull-medium  # gemma3:4b (~3.3GB, balanced)
-# nx run affirmations:ollama --configuration=pull-large   # gemma3:12b (~8.1GB, quality)
+# 2. Pull the Qwen 3.5 model (one-time download)
+nx run affirmations:ollama --configuration=pull-small   # qwen3.5:0.8b (~815MB, fast)
+# nx run affirmations:ollama --configuration=pull-medium  # qwen3.5:4b (~3.3GB, balanced)
+# nx run affirmations:ollama --configuration=pull-large   # qwen3.5:9b (~8.1GB, quality)
 
 # 3. Open notebooks/example-affirmation-generation.ipynb in VSCode to explore the full pipeline
 ```
@@ -67,9 +67,9 @@ applications/affirmations/
 | `vulture`       | `nx run affirmations:vulture`                            | Vulture dead code analysis |
 | `ollama`        | `nx run affirmations:ollama --configuration=start`       | Start Ollama container     |
 | `ollama`        | `nx run affirmations:ollama --configuration=stop`        | Stop Ollama container      |
-| `ollama`        | `nx run affirmations:ollama --configuration=pull-small`  | Pull gemma3:1b (small)     |
-| `ollama`        | `nx run affirmations:ollama --configuration=pull-medium` | Pull gemma3:4b (medium)    |
-| `ollama`        | `nx run affirmations:ollama --configuration=pull-large`  | Pull gemma3:12b (large)    |
+| `ollama`        | `nx run affirmations:ollama --configuration=pull-small`  | Pull qwen3.5:0.8b (small)  |
+| `ollama`        | `nx run affirmations:ollama --configuration=pull-medium` | Pull qwen3.5:4b (medium)   |
+| `ollama`        | `nx run affirmations:ollama --configuration=pull-large`  | Pull qwen3.5:9b (large)    |
 | `searxng`       | `nx run affirmations:searxng --configuration=start`      | Start SearxNG container    |
 | `searxng`       | `nx run affirmations:searxng --configuration=stop`       | Stop SearxNG container     |
 | `searxng`       | `nx run affirmations:searxng --configuration=open`       | Open SearxNG in browser    |

@@ -337,7 +337,7 @@ Tradeoffs:
 - **Separate image cache**: Images download separately, not shared with host
 - **RAM overhead**: DinD daemon uses ~200–500 MB additional RAM
 - **Startup delay**: ~5–10 seconds for DinD daemon initialization
-- **Memory pressure**: On memory-constrained machines, running both the DinD daemon and models like `gemma3:4b` (~3.3 GB) can exhaust available RAM
+- **Memory pressure**: On memory-constrained machines, running both the DinD daemon and models like `qwen3.5:4b` (~3.3 GB) can exhaust available RAM
 
 The local configuration (`local/devcontainer.json`) **mounts the host Docker socket** (DooD):
 

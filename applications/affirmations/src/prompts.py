@@ -5,11 +5,11 @@ from langchain_core.prompts import (
     SystemMessagePromptTemplate,
 )
 
-search_query_prompt_template: PromptTemplate = PromptTemplate.from_template(
+search_sources_prompt_template: PromptTemplate = PromptTemplate.from_template(
     '"{subject_name}" {category_name} meaning interpretation significance symbolism themes correspondences'
 )
 
-ingest_document_prompt_template: ChatPromptTemplate = ChatPromptTemplate.from_messages(
+generate_document_from_sources_prompt_template: ChatPromptTemplate = ChatPromptTemplate.from_messages(
     [
         SystemMessagePromptTemplate.from_template(
             "You are a reference document writer for spiritual subjects. Summarize web search results into a structured markdown reference document. "
@@ -22,7 +22,7 @@ ingest_document_prompt_template: ChatPromptTemplate = ChatPromptTemplate.from_me
             """\
 Web search results for "{subject_name}" ({category_name}):
 
-{search_results}
+{sources}
 
 ---
 
@@ -90,7 +90,7 @@ analyze_sources_prompt_template: ChatPromptTemplate = ChatPromptTemplate.from_me
             """\
 Web search results for "{subject_name}" ({category_name}):
 
-{search_results}
+{sources}
 
 ---
 
@@ -110,7 +110,7 @@ Be concise.\"
     ]
 )
 
-write_document_prompt_template: ChatPromptTemplate = ChatPromptTemplate.from_messages(
+generate_document_prompt_template: ChatPromptTemplate = ChatPromptTemplate.from_messages(
     [
         SystemMessagePromptTemplate.from_template(
             "You are a reference document writer for spiritual subjects. Summarize a research brief into a structured markdown reference document. "
@@ -123,7 +123,7 @@ write_document_prompt_template: ChatPromptTemplate = ChatPromptTemplate.from_mes
             """\
 Research brief for "{subject_name}" ({category_name}):
 
-{analysis}
+{source_analysis}
 
 ---
 
@@ -178,6 +178,80 @@ Replace `...` with actual values. Remove rows with no known correspondence.
 | metal | ... | ... |
 | weekday | ... | ... |\
 """
+        ),
+    ]
+)
+
+analyze_document_prompt_template: ChatPromptTemplate = ChatPromptTemplate.from_messages(
+    [
+        SystemMessagePromptTemplate.from_template(
+            "You are a spiritual subject analyst. Distill a reference document into a concise thematic brief for affirmation generation. "
+            "Output a plain text brief of at most 300 words. No markdown, no headers, no bullet points. "
+            "Focus only on: core themes, emotional tone, key symbols, and spiritual lessons."
+        ),
+        HumanMessagePromptTemplate.from_template(
+            """\
+Reference document for "{subject_name}" ({category_name}):
+
+{document}
+
+---
+
+Write a concise thematic brief for "{subject_name}" ({category_name}) covering core themes, emotional tone, key symbols, and spiritual lessons. \
+Maximum 300 words. Plain text only — no markdown, no headers."""
+        ),
+    ]
+)
+
+generate_affirmations_prompt_template: ChatPromptTemplate = ChatPromptTemplate.from_messages(
+    [
+        SystemMessagePromptTemplate.from_template(
+            "You are an affirmation writer specializing in spirituality and personal growth. "
+            "Generate exactly 3 affirmations for the given tarot card that match a specific grammatical form. "
+            "Each affirmation must conform to the grammar's mood, voice, tense, aspect, person, number, polarity, and form. "
+            "Each affirmation must be thematically connected to the card's meaning, symbolism, and spiritual lessons. "
+            "Do not end affirmations with a period."
+        ),
+        HumanMessagePromptTemplate.from_template(
+            """\
+Tarot card: {subject_name}
+Thematic brief: {document_analysis}
+
+Grammar: {grammar_name}
+Grammatical constraints: {grammar_specifiers}
+Example affirmations for this grammar: {grammar_examples}
+Grammar emoji: {grammar_emoji}
+
+---
+
+Generate exactly 3 affirmations for "{subject_name}" that:
+1. Match the grammatical form: {grammar_name} ({grammar_specifiers})
+2. Are thematically connected to {subject_name}'s meaning and symbolism
+3. Follow the style of the examples: {grammar_examples}
+4. Do not end with a period
+
+Return a JSON object with an "affirmations" key containing a list of exactly 3 affirmation strings."""
+        ),
+    ]
+)
+
+validate_affirmation_prompt_template: ChatPromptTemplate = ChatPromptTemplate.from_messages(
+    [
+        SystemMessagePromptTemplate.from_template(
+            "You are a grammar validator. Check whether an affirmation matches specific grammatical constraints. "
+            "Return a JSON object with 'valid' (boolean) and 'reason' (string explaining the validation result)."
+        ),
+        HumanMessagePromptTemplate.from_template(
+            """\
+Affirmation: "{affirmation_text}"
+Target grammar: {grammar_name}
+Grammatical constraints: {grammar_specifiers}
+
+---
+
+Does this affirmation match the grammatical constraints ({grammar_specifiers})?
+
+Return JSON: {{"valid": true/false, "reason": "explanation"}}"""
         ),
     ]
 )
