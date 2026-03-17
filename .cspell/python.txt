@@ -23,6 +23,7 @@ venv
 #region 📚 Standard Library
 classmethod
 dataclasses
+isinstance
 kwargs
 logprobs
 pathlib

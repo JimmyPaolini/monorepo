@@ -4,7 +4,7 @@ Python application that generates structured affirmations for spiritual practice
 
 ## Architecture
 
-- **LLM**: `ChatOllama` → `gemma3:1b` (fast, default) or `gemma3:12b` (quality) — toggle the `MODEL` variable in the notebook
+- **LLM**: `ChatOllama` → `qwen3.5:0.8b` (fast, default) or `qwen3.5:9b` (quality) — toggle the `MODEL` variable in the notebook
 - **Chains**: LCEL pipe syntax (`ChatPromptTemplate | llm.with_structured_output(Affirmation)`)
 - **Agent**: LangGraph `create_react_agent` with research tools
 - **Research tools**: SearxNG self-hosted (aggregates Wikipedia, DuckDuckGo, Google Scholar, ArXiv, and more)
@@ -66,9 +66,9 @@ nx run affirmations:searxng --configuration=open
 # Docker service management
 nx run affirmations:ollama --configuration=start
 nx run affirmations:ollama --configuration=stop
-nx run affirmations:ollama --configuration=pull-small   # pull gemma3:1b (small)
-nx run affirmations:ollama --configuration=pull-medium  # pull gemma3:4b (medium)
-nx run affirmations:ollama --configuration=pull-large   # pull gemma3:12b (large)
+nx run affirmations:ollama --configuration=pull-small   # pull qwen3.5:0.8b (small)
+nx run affirmations:ollama --configuration=pull-medium  # pull qwen3.5:4b (medium)
+nx run affirmations:ollama --configuration=pull-large   # pull qwen3.5:9b (large)
 nx run affirmations:searxng --configuration=start
 nx run affirmations:searxng --configuration=stop
 nx run affirmations:open-webui --configuration=start
@@ -94,9 +94,9 @@ nx run affirmations:open-webui --configuration=stop
 
 ## Services
 
-| Service    | URL                      | Description                                                 |
-| ---------- | ------------------------ | ----------------------------------------------------------- |
-| Ollama     | `http://localhost:11434` | Local LLM server (`gemma3:1b` fast / `gemma3:12b` quality)  |
-| Open WebUI | `http://localhost:3001`  | Browser-based Ollama chat interface                         |
-| SearxNG    | `http://localhost:8889`  | Self-hosted metasearch engine (135+ engines)                |
-| JupyterLab | `http://localhost:8888`  | Notebook interface (open `.ipynb` files directly in VSCode) |
+| Service    | URL                      | Description                                                    |
+| ---------- | ------------------------ | -------------------------------------------------------------- |
+| Ollama     | `http://localhost:11434` | Local LLM server (`qwen3.5:0.8b` fast / `qwen3.5:9b` quality)  |
+| Open WebUI | `http://localhost:3001`  | Browser-based Ollama chat interface                            |
+| SearxNG    | `http://localhost:8889`  | Self-hosted metasearch engine (135+ engines)                   |
+| JupyterLab | `http://localhost:8888`  | Notebook interface (open `.ipynb` files directly in VSCode)    |

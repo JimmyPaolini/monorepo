@@ -73,7 +73,7 @@ Specialized domain knowledge for working on specific systems or patterns:
 
 ## Projects
 
-- **[affirmations](applications/affirmations/AGENTS.md)**: Python Jupyter notebook application for LangChain + LangGraph affirmation generation (Ollama Gemma 3, ReAct agent, DuckDuckGo/SearxNG/Wikipedia tools)
+- **[affirmations](applications/affirmations/AGENTS.md)**: Python Jupyter notebook application for LangChain + LangGraph affirmation generation (Ollama Qwen 3.5, ReAct agent, DuckDuckGo/SearxNG/Wikipedia tools)
 - **[caelundas](applications/caelundas/AGENTS.md)**: Node.js CLI for astronomical calendar generation (NASA JPL API, Kubernetes Job)
 - **[lexico](applications/lexico/AGENTS.md)**: SSR web app (React 19, TanStack Start, Supabase)
 - **[lexico-components](packages/lexico-components/AGENTS.md)**: Shared React component library (shadcn/ui, Radix UI)

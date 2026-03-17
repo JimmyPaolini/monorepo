@@ -5,7 +5,7 @@
 
 set -euo pipefail
 
-OLLAMA_MODEL="gemma3:1b"
+OLLAMA_MODEL="qwen3.5:0.8b"
 
 echo "🦙 Checking Ollama..."
 
@@ -43,12 +43,3 @@ if ! curl -sf http://localhost:11434/api/version &>/dev/null; then
 fi
 
 echo "✅ Ollama is running"
-
-# Pull model if not already present
-if ! ollama list | grep -q "^${OLLAMA_MODEL}"; then
-  echo "📥 Pulling ${OLLAMA_MODEL}..."
-  ollama pull "${OLLAMA_MODEL}"
-  echo "✅ ${OLLAMA_MODEL} ready"
-else
-  echo "✅ ${OLLAMA_MODEL} already present"
-fi
