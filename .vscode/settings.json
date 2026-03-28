@@ -1,36 +1,36 @@
 {
   "[javascript]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[javascriptreact]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[json]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[jsonl]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[jupyter]": {
     "editor.defaultFormatter": "charliermarsh.ruff"
   },
   "[markdown]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[python]": {
     "editor.defaultFormatter": "charliermarsh.ruff"
   },
   "[typescript]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[yaml]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "atlascode.rovodev.showEntitlementNotifications": false,
   "chat.agent.maxRequests": 96,
@@ -197,10 +197,12 @@
     "source.convertImportStar": "explicit",
     "source.fixAll": "explicit",
     "source.fixAll.eslint": "explicit",
+    "source.fixAll.oxc": "explicit",
     "source.fixAll.prettier": "explicit",
     "source.fixAll.pylance": "never",
     "source.fixAll.ruff": "explicit",
     "source.fixAll.ts": "explicit",
+    "source.format.oxc":"explicit",
     "source.formatAll.terraform": "explicit",
     "source.organizeImports": "explicit",
     "source.organizeImports.ruff": "explicit",
@@ -211,6 +213,7 @@
     "source.sortImports": "explicit",
     "source.unusedImports": "explicit"
   },
+  "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.detectIndentation": false,
   "editor.dragAndDrop": false,
   "editor.experimental.asyncTokenization": true,
@@ -655,6 +658,8 @@
   "outline.showFields": true,
   "outline.showProperties": true,
   "outline.showVariables": false,
+  "oxc.enable": true,
+  "oxc.enable.oxlint": true,
   "postman.mcp.notifications.postmanMCP": false,
   "postman.settings.dotenv-detection-notification-visibility": false,
   "python.defaultInterpreterPath": "/usr/local/python/current/bin/python",
