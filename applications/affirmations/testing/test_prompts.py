@@ -5,6 +5,7 @@ from src.prompts import (
     analyze_document_prompt_template,
     analyze_sources_prompt_template,
     generate_affirmations_prompt_template,
+    generate_document_from_sources_prompt_template,
     generate_document_prompt_template,
     search_sources_prompt_template,
     validate_affirmation_prompt_template,
@@ -74,16 +75,34 @@ def test_analyze_sources_prompt_format() -> None:
     messages = analyze_sources_prompt_template.format_messages(
         subject_name="The Fool",
         category_name="Tarot Card",
-        search_results="Some web content about The Fool...",
+        sources="Some web content about The Fool...",
     )
     assert len(messages) == 2
     assert isinstance(messages[0], SystemMessage)
     assert isinstance(messages[1], HumanMessage)
     assert "The Fool" in str(messages[1].content)
+    assert "Some web content" in str(messages[1].content)
 
 
 @pytest.mark.unit
-def test_write_document_prompt_format() -> None:
+def test_generate_document_from_sources_prompt_format() -> None:
+    messages = generate_document_from_sources_prompt_template.format_messages(
+        subject_name="The Fool",
+        category_name="Tarot Card",
+        category_name_plural="Tarot Cards",
+        sources="Web content about The Fool...",
+    )
+    assert len(messages) == 2
+    assert isinstance(messages[0], SystemMessage)
+    assert isinstance(messages[1], HumanMessage)
+    content = str(messages[1].content)
+    assert "The Fool" in content
+    assert "Tarot Cards" in content
+    assert "Web content" in content
+
+
+@pytest.mark.unit
+def test_generate_document_prompt_format() -> None:
     messages = generate_document_prompt_template.format_messages(
         subject_name="The Fool",
         category_name="Tarot Card",
