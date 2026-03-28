@@ -1,0 +1,208 @@
+# SearxNG configuration for affirmations application
+# Enables key search engines for spiritual practice research
+
+use_default_settings: true
+
+general:
+  debug: false
+  instance_name: Affirmations SearxNG
+
+server:
+  secret_key: affirmations-searxng-secret-key-change-in-production
+  limiter: false
+  public_instance: false
+
+ui:
+  static_use_hash: false
+  default_locale: en
+  default_theme: simple
+
+search:
+  safe_search: 0
+  autocomplete: ""
+  default_lang: en
+  formats:
+    - html
+    - json
+  # Reduce suspend times so engines recover quickly in dev
+  ban_time_on_fail: 5
+  max_ban_time_on_fail: 30
+  suspended_times:
+    SearxEngineAccessDenied: 3600     # 1h (default: 24h)
+    SearxEngineCaptcha: 3600          # 1h (default: 24h)
+    SearxEngineTooManyRequests: 600   # 10m (default: 1h)
+    cf_SearxEngineCaptcha: 3600
+    cf_SearxEngineAccessDenied: 3600
+    recaptcha_SearxEngineCaptcha: 3600
+
+# Hostnames plugin: boost trusted sources to the top of results.
+# The plugin only activates when a `hostnames:` key is present.
+# Patterns are Python regexes matched against the full hostname.
+plugins:
+  searx.plugins.hostnames.SXNGPlugin:
+    active: true
+
+hostnames:
+  high_priority:
+    # Span all subject categories with authoritative primary and secondary source texts
+    - (.*\.)?sacred-texts\.com$
+    - (.*\.)?hermetic\.com$
+
+    # tarot
+    - (.*\.)?biddytarot\.com$
+    - (.*\.)?labyrinthos\.co$
+    - (.*\.)?learntarot\.com$
+    - (.*\.)?tarot\.com$
+    - (.*\.)?thetarotguide\.com$
+    - (.*\.)?tarotinstitute\.com$
+    - (.*\.)?selfgazer\.com$
+    - (.*\.)?tarotprophetess\.com$
+    - (.*\.)?tarotteachings\.com$
+
+    # lenormand
+    - (.*\.)?thecartomancer\.com$
+    - (.*\.)?learnlenormand\.com$
+
+    # astrology
+    - (.*\.)?astro\.com$
+    - (.*\.)?cafeastrology\.com$
+    - (.*\.)?astrostyle\.com$
+    - (.*\.)?astrotheme\.com$
+    - (.*\.)?astrology42\.com$
+    - (.*\.)?darkstarastrology\.com$
+    - (.*\.)?astrologyhub\.com$
+    - (.*\.)?skyscript\.co\.uk$
+    - (.*\.)?astro-seek\.com$
+    - (.*\.)?theoi\.com$              # Greek mythology site; included for asteroid names (Ceres, Pallas, Juno, Vesta)
+
+    # chakras
+    - (.*\.)?yogajournal\.com$
+    - (.*\.)?yogainternational\.com$
+    - (.*\.)?chopra\.com$
+    - (.*\.)?mindbodygreen\.com$
+    - (.*\.)?ekhartyoga\.com$
+    - (.*\.)?gaia\.com$
+
+    # runes
+    - (.*\.)?runesecrets\.com$
+    - (.*\.)?vikingrune\.com$
+    - (.*\.)?norse-mythology\.org$
+    - (.*\.)?symbolsandmeanings\.net$  # Covers runes, alchemy, and chakra symbols across categories
+
+    # kabbalah
+    - (.*\.)?chabad\.org$
+    - (.*\.)?sefaria\.org$
+    - (.*\.)?inner\.org$              # Gal Einai Institute — Kabbalistic commentary on Hebrew letters
+    - (.*\.)?kabbalahcentre\.org$
+    - (.*\.)?jewishvirtuallibrary\.org$
+
+    # Agrippa, Dee, and Ficino primary texts — foundational Western correspondences between
+    # planets, metals, colors, days, and Sephiroth used across multiple subject categories
+    - (.*\.)?esotericarchives\.com$
+    - (.*\.)?llewellyn\.com$
+
+    # gemstones
+    - (.*\.)?crystalvaults\.com$
+    - (.*\.)?energymuse\.com$
+    - (.*\.)?healingcrystals\.com$
+    - (.*\.)?gia\.edu$                # Scientific grading authority, not metaphysical — balances practitioner sites
+    - (.*\.)?mindat\.org$
+
+    # numerology
+    - (.*\.)?numerology\.com$
+    - (.*\.)?worldnumerology\.com$    # Hans Decoz — most cited numerology authority
+    - (.*\.)?affinitynumerology\.com$
+    - (.*\.)?numerologist\.com$
+
+    # alchemy
+    - (.*\.)?alchemywebsite\.com$
+    - (.*\.)?rexresearch\.com$
+
+    # elements, colors, weekdays, metals
+    - (.*\.)?witchipedia\.com$
+    - (.*\.)?learnreligions\.com$
+    - (.*\.)?thoughtco\.com$
+    - (.*\.)?ancient-symbols\.com$
+
+    # solfeggio
+    - (.*\.)?musictheory\.net$
+    - (.*\.)?somaenergetics\.com$     # Solfeggio frequency research — not a general music theory site
+
+    - (.*\.)?wikipedia\.org$
+    - (.*\.)?wikidata\.org$
+  low_priority:
+    - (.*\.)?tarostarot\.com$
+    - (.*\.)?thetarotlady\.com$
+    # Deprioritised because they generate low-quality SEO content rather than authoritative guidance
+    - (.*\.)?wikihow\.com$
+    - (.*\.)?quora\.com$
+    - (.*\.)?facebook\.com$
+    - (.*\.)?coursera\.org$
+    # Deprioritised because dictionary definitions lack the interpretive depth needed for affirmations
+    - (.*\.)?dictionary\.cambridge\.org$
+    - (.*\.)?dictionary\.com$
+    - (.*\.)?vocabulary\.com$
+    - (.*\.)?merriam-webster\.com$
+  remove:
+    - (.*\.)?zhihu\.com$
+    - (.*\.)?health\.clevelandclinic\.org$
+
+# Higher timeouts for LLM use: slow engines still return useful content
+# and the LLM can tolerate extra latency better than a human waiting for a UI
+outgoing:
+  request_timeout: 8.0     # default is 2.0 — too low, causes many engine timeouts
+  max_request_timeout: 15.0
+
+engines:
+  - name: wikipedia
+    engine: wikipedia
+    categories: general
+    shortcut: wp
+    disabled: false
+
+  - name: duckduckgo
+    engine: duckduckgo
+    categories: general
+    shortcut: ddg
+    disabled: false
+
+  # Proxies Google results via an official partnership — Google quality without scraping
+  - name: startpage
+    engine: startpage
+    categories: general
+    shortcut: sp
+    disabled: false
+
+  # Bing: second-largest index, more scraper-tolerant than Google
+  - name: bing
+    engine: bing
+    categories: general
+    shortcut: bi
+    disabled: false
+
+  # Reddit: tarot/spiritual communities are large and active; real practitioner discussions
+  - name: reddit
+    engine: reddit
+    categories: social_media
+    shortcut: re
+    disabled: false
+
+  # Google: best index but rate-limited/CAPTCHAd aggressively; lower weight, used as fallback
+  - name: google
+    engine: google
+    categories: general
+    shortcut: go
+    weight: 0.5
+    disabled: false
+
+  - name: brave
+    engine: brave
+    categories: general
+    shortcut: brave
+    disabled: false
+
+  - name: wikidata
+    engine: wikidata
+    categories: general
+    shortcut: wd
+    disabled: false

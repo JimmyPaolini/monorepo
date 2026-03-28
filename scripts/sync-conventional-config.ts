@@ -130,7 +130,7 @@ function loadReleaseConfig(): ReleaseConfig {
  * Parse the settings.json (JSONC) file and extract the conventionalCommits.scopes array.
  * @param content - The raw content of settings.json
  * @returns Array of scope names
- * @throws {TypeError} If the scopes array is not found
+ * @throws TypeError If the scopes array is not found
  */
 function parseSettingsScopes(content: string): string[] {
   const settings = JSON5.parse<Record<string, unknown>>(content);

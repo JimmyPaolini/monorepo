@@ -12,28 +12,87 @@ The dev container eliminates "works on my machine" issues by standardizing:
 - **kubectl & Helm** - For Kubernetes deployments (caelundas)
 - **Terraform** - For Linode LKE cluster provisioning
 - **GitHub CLI** - For repository operations
-- **Docker** - Docker-in-Docker daemon for running Supabase local stack (isolated from host)
+- **Docker** - Docker-in-Docker (Codespaces) or Docker-outside-of-Docker (local machine) for running Supabase local stack
 - **SQLite** - CLI tool for querying and managing SQLite databases (caelundas ephemeris caching)
 
 ## Quick Start
 
 1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) and [VS Code Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 2. Open the monorepo folder in VS Code
-3. Click **Reopen in Container** when prompted (or `Ctrl/Cmd+Shift+P` → `Dev Containers: Reopen in Container`)
-4. Wait for container build (~2-3 minutes first time, cached after)
-5. Terminal opens with all tools ready
+3. Open the command palette (`Ctrl/Cmd+Shift+P`) → **Dev Containers: Reopen in Container**
+4. When prompted to select a configuration, choose:
+   - **Monorepo Devcontainer (Local)** — for local development (Docker outside of Docker)
+   - **Monorepo Devcontainer (Cloud)** — for GitHub Codespaces or if you want isolated Docker (Docker in Docker)
+5. Wait for container build (~2-3 minutes first time, cached after)
+6. Terminal opens with all tools ready
+
+> **Tip:** On a local machine, the `Local` configuration is strongly recommended. It shares your host's Docker daemon (faster builds, shared image cache, no memory overhead from a second Docker daemon). Codespaces must use the `Cloud` configuration since no host Docker socket is available.
+
+## Configurations
+
+Two named configurations are provided. Select the appropriate one when opening in a container.
+
+| Configuration                   | File                      | Docker mode                     | Use when                                             |
+| ------------------------------- | ------------------------- | ------------------------------- | ---------------------------------------------------- |
+| `Monorepo Devcontainer (Cloud)` | `cloud/devcontainer.json` | Docker-in-Docker (DinD)         | GitHub Codespaces, CI, or when isolation is required |
+| `Monorepo Devcontainer (Local)` | `local/devcontainer.json` | Docker-outside-of-Docker (DooD) | Local machine with Docker Desktop running            |
+
+**DooD advantages on a local machine:**
+
+- Shared image/layer cache with the host — no re-pulling Supabase or Ollama images
+- No second Docker daemon — saves ~200–500 MB RAM and eliminates DinD startup delay
+- Host OS manages container memory directly — no `--memory` cap needed in `runArgs`
+
+**DinD advantages:**
+
+- Completely isolated Docker environment — no interference with host containers
+- Works in environments without a host socket (Codespaces, CI runners)
+
+## Architecture
+
+Two named configs live side-by-side, each edited directly. Common fields are kept in sync by the `sync-devcontainer-configuration` script.
+
+```
+.devcontainer/
+├── local/
+│   └── devcontainer.json      ← Primary: DooD (source of truth for common fields)
+└── cloud/
+    └── devcontainer.json      ← Secondary: DinD (edit docker feature / runArgs directly)
+```
+
+**What is synced** (local is source of truth, propagated into cloud):
+
+- `customizations` (extensions, recommendations), `remoteEnv`, `forwardPorts`, `portsAttributes`,
+  `image`, `containerUser`/`remoteUser`, lifecycle scripts (`postCreateCommand`, etc.), `$schema`
+- Shared features (github-cli, kubectl, terraform, etc.) — each config's Docker feature is preserved
+- Shared mounts (node-modules, pnpm) — cloud's docker-storage volume is preserved
+
+**What is not synced** (each config is source of truth):
+
+- `name`, `runArgs`, Docker feature (`docker-in-docker` / `docker-outside-of-docker`)
+
+To make changes:
+
+1. Edit `local/devcontainer.json` for common settings (extensions, ports, env, feature versions, etc.) and run:
+   ```bash
+   nx run monorepo:sync-devcontainer-configuration:write
+   ```
+2. Edit `cloud/devcontainer.json` or `local/devcontainer.json` directly for environment-specific settings — no sync needed
+
+The pre-commit hook automatically validates that common fields are in sync whenever any devcontainer file is staged.
 
 ## Included Features
 
 The container uses [Dev Container Features](https://containers.dev/features) for modular tool installation:
 
-| Feature                 | Version | Purpose                                        |
-| ----------------------- | ------- | ---------------------------------------------- |
-| `typescript-node:22`    | Base    | Node.js 22 with TypeScript support             |
-| `docker-in-docker`      | 1       | Isolated Docker daemon inside container (DinD) |
-| `github-cli`            | 1       | `gh` command for GitHub operations             |
-| `kubectl-helm-minikube` | 1       | kubectl and Helm (minikube disabled)           |
-| `terraform`             | 1       | Terraform CLI + tflint for infrastructure      |
+| Feature                    | Version | Purpose                                        | Config     |
+| -------------------------- | ------- | ---------------------------------------------- | ---------- |
+| `typescript-node:22`       | Base    | Node.js 22 with TypeScript support             | Both       |
+| `docker-in-docker`         | 2       | Isolated Docker daemon inside container (DinD) | Cloud only |
+| `docker-outside-of-docker` | 1       | Mounts host Docker socket (DooD)               | Local only |
+| `github-cli`               | 1       | `gh` command for GitHub operations             | Both       |
+| `kubectl-helm-minikube`    | 1       | kubectl and Helm (minikube disabled)           | Both       |
+| `terraform`                | 1       | Terraform CLI + tflint for infrastructure      | Both       |
 
 ### Custom Installations
 
@@ -265,20 +324,26 @@ nx run-many --target=test --all  # Tests should pass
 
 ## Architecture Notes
 
-### Why Docker-in-Docker?
+### Docker-in-Docker vs Docker-outside-of-Docker
 
-The container runs an isolated Docker daemon inside the container instead of mounting the host Docker socket. Benefits:
+The default (`devcontainer.json`) runs an **isolated Docker daemon** inside the container (DinD):
 
-- **GitHub Codespaces compatible**: Works identically in local dev and Codespaces (no host socket available in Codespaces)
+- **Codespaces compatible**: Required when no host Docker socket is available
 - **Better isolation**: Container Docker is completely separate from host Docker
-- **No permission issues**: Avoids socket permission complexities between host and container
-- **Portable configuration**: Same setup works across all environments without modification
+- **Portable**: Same setup works in CI and cloud environments without modification
 
 Tradeoffs:
 
-- **Separate image cache**: Supabase images download separately (~5-10 minute first pull)
-- **Slight RAM overhead**: DinD daemon uses ~200-500MB additional RAM
-- **Startup delay**: ~5-10 seconds for DinD daemon initialization
+- **Separate image cache**: Images download separately, not shared with host
+- **RAM overhead**: DinD daemon uses ~200–500 MB additional RAM
+- **Startup delay**: ~5–10 seconds for DinD daemon initialization
+- **Memory pressure**: On memory-constrained machines, running both the DinD daemon and models like `qwen3.5:4b` (~3.3 GB) can exhaust available RAM
+
+The local configuration (`local/devcontainer.json`) **mounts the host Docker socket** (DooD):
+
+- **Faster builds**: Shares host image/layer cache — no re-pulling Supabase, Ollama images
+- **No memory overhead**: No second daemon; host OS manages all container memory directly
+- **Prerequisite**: Docker Desktop must be running on the host machine
 
 ### Why a single monorepo container?
 

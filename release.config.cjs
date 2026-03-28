@@ -147,7 +147,7 @@ module.exports = {
       "@semantic-release/git",
       {
         assets: ["CHANGELOG.md", "package.json", "pnpm-lock.yaml"],
-        message: "chore(release): 🔖 release ${nextRelease.version}",
+        message: "chore(release): 🔖 version ${nextRelease.version}",
         signingKey: process.env.GPG_PRIVATE_KEY,
       },
     ],
