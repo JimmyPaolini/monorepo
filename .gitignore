@@ -52,3 +52,6 @@ tmp
 dist
 applications/caelundas/output
 vite.config.*.timestamp*
+
+.claude/worktrees
+.claude/settings.local.json
