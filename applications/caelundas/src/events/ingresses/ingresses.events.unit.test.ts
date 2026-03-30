@@ -133,6 +133,7 @@ describe("ingresses.events", () => {
   describe("writeSignIngressEvents", () => {
     it("should write events to file and database", async () => {
       const fs = await import("node:fs");
+      // biome-ignore format: oxfmt is the primary formatter
       const { writeSignIngressEvents, getSignIngressEvent } =
         await import("./ingresses.events");
 
@@ -270,6 +271,7 @@ describe("ingresses.events", () => {
   describe("writeDecanIngressEvents", () => {
     it("should write events to file and database", async () => {
       const fs = await import("node:fs");
+      // biome-ignore format: oxfmt is the primary formatter
       const { writeDecanIngressEvents, getDecanIngressEvent } =
         await import("./ingresses.events");
 
@@ -398,6 +400,7 @@ describe("ingresses.events", () => {
   describe("writePeakIngressEvents", () => {
     it("should write events to file and database", async () => {
       const fs = await import("node:fs");
+      // biome-ignore format: oxfmt is the primary formatter
       const { writePeakIngressEvents, getPeakIngressEvent } =
         await import("./ingresses.events");
 
@@ -438,6 +441,7 @@ describe("ingresses.events", () => {
 
   describe("getSignIngressDurationEvents", () => {
     it("should create duration events for consecutive sign ingresses", async () => {
+      // biome-ignore format: oxfmt is the primary formatter
       const { getSignIngressEvent, getSignIngressDurationEvents } =
         await import("./ingresses.events");
 
@@ -468,6 +472,7 @@ describe("ingresses.events", () => {
     });
 
     it("should handle empty array", async () => {
+      // biome-ignore format: oxfmt is the primary formatter
       const { getSignIngressDurationEvents } =
         await import("./ingresses.events");
 

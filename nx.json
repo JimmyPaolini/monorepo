@@ -71,7 +71,7 @@
     }
   },
   "targetDefaults": {
-    "biome": {
+    "biome-format": {
       "cache": true,
       "configurations": {
         "check": {},
@@ -83,7 +83,23 @@
       "executor": "nx:run-commands",
       "inputs": ["{workspaceRoot}/biome.jsonc", "default"],
       "options": {
-        "command": "biome check {args} {projectRoot}/src",
+        "command": "biome format {args} {projectRoot}/src",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "biome-lint": {
+      "cache": true,
+      "configurations": {
+        "check": {},
+        "write": {
+          "args": "--write"
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands",
+      "inputs": ["{workspaceRoot}/biome.jsonc", "default"],
+      "options": {
+        "command": "biome lint {args} {projectRoot}/src",
         "cwd": "{workspaceRoot}"
       }
     },
@@ -143,17 +159,21 @@
       "configurations": {
         "check": {
           "commands": [
-            "nx run {projectName}:biome:check",
-            "nx run {projectName}:oxfmt:check",
-            "nx run {projectName}:prettier:check"
+            /* eslint-disable jsonc/sort-array-values */
+            "nx run {projectName}:biome-format:check",
+            "nx run {projectName}:prettier:check",
+            "nx run {projectName}:oxfmt:check"
+            /* eslint-enable jsonc/sort-array-values */
           ],
           "parallel": true
         },
         "write": {
           "commands": [
-            "nx run {projectName}:biome:write",
-            "nx run {projectName}:oxfmt:write",
-            "nx run {projectName}:prettier:write"
+            /* eslint-disable jsonc/sort-array-values */
+            "nx run {projectName}:biome-format:write",
+            "nx run {projectName}:prettier:write",
+            "nx run {projectName}:oxfmt:write"
+            /* eslint-enable jsonc/sort-array-values */
           ],
           "parallel": false
         }
@@ -184,6 +204,7 @@
       "configurations": {
         "check": {
           "commands": [
+            "nx run {projectName}:biome-lint:check",
             "nx run {projectName}:eslint:check",
             "nx run {projectName}:oxlint:check"
           ],
@@ -191,6 +212,7 @@
         },
         "write": {
           "commands": [
+            "nx run {projectName}:biome-lint:write",
             "nx run {projectName}:eslint:write",
             "nx run {projectName}:oxlint:write"
           ],

@@ -572,6 +572,7 @@ describe("annualSolarCycle.events", () => {
   describe("writeAnnualSolarCycleEvents", () => {
     it("should write events to file and database", async () => {
       const fs = await import("node:fs");
+      // biome-ignore format: oxfmt is the primary formatter
       const { writeAnnualSolarCycleEvents, getVernalEquinoxEvent } =
         await import("./annualSolarCycle.events");
 
@@ -598,6 +599,7 @@ describe("annualSolarCycle.events", () => {
 
     it("should not write when events array is empty", async () => {
       const fs = await import("node:fs");
+      // biome-ignore format: oxfmt is the primary formatter
       const { writeAnnualSolarCycleEvents } =
         await import("./annualSolarCycle.events");
 

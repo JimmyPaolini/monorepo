@@ -6,7 +6,8 @@
   "sourceRoot": "tools/code-generator/src",
   "tags": ["type:util"],
   "targets": {
-    "biome": {},
+    "biome-format": {},
+    "biome-lint": {},
     "build": {
       "cache": true,
       "description": "No-op build target for development tool",

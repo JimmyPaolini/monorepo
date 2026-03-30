@@ -202,6 +202,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
   describe("event detection e2e", () => {
     it("should correctly identify zodiac signs from longitude", async () => {
+      // biome-ignore format: oxfmt is the primary formatter
       const { getSign } =
         await import("./events/ingresses/ingresses.utilities");
 
@@ -221,6 +222,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
     });
 
     it("should correctly identify aspects from angular separation", async () => {
+      // biome-ignore format: oxfmt is the primary formatter
       const { getMajorAspect } =
         await import("./events/aspects/aspects.utilities");
 

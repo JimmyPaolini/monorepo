@@ -219,6 +219,7 @@ describe("dailyLunarCycle.events", () => {
         },
       ];
 
+      // biome-ignore format: oxfmt is the primary formatter
       const { writeDailyLunarCycleEvents } =
         await import("./dailyLunarCycle.events");
       writeDailyLunarCycleEvents({
@@ -233,6 +234,7 @@ describe("dailyLunarCycle.events", () => {
     it("should not write if events array is empty", async () => {
       const { default: fs } = await import("node:fs");
 
+      // biome-ignore format: oxfmt is the primary formatter
       const { writeDailyLunarCycleEvents } =
         await import("./dailyLunarCycle.events");
       writeDailyLunarCycleEvents({

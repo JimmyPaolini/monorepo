@@ -23,8 +23,10 @@
   //   - oxlint.config.ts — fast supplementary linter
   //
   // Nx targets:
-  //   - `biome:check` (read-only): `biome check {projectRoot}/src`
-  //   - `biome:write`: auto-fixes where possible
+  //   - `biome-format:check` (read-only): `biome format {projectRoot}/src`
+  //   - `biome-format:write`: reformats files
+  //   - `biome-lint:check` (read-only): `biome lint {projectRoot}/src`
+  //   - `biome-lint:write`: auto-fixes lint issues
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   "$schema": "https://biomejs.dev/schemas/2.4.4/schema.json",
   // ── Assist (Import Organization) ───────────────────────────────────────────
@@ -32,10 +34,9 @@
   // via the import/order rule in eslint.config.base.ts. Enabling Biome's
   // import organizer would conflict with ESLint's ordering.
   "assist": {
-    "enabled": false
+    "enabled": false,
   },
-  // ── File Scope ───false,
-  }─────────────────────────────────────────────────
+  // ── File Scope ─────────────────────────────────────────────────────────────
   // Biome handles JS/TS/JSON only. Other formats are covered by dedicated tools:
   //   - CSS/SCSS → Stylelint + Prettier
   //   - Markdown → markdownlint + Prettier
@@ -80,8 +81,10 @@
       "!**/packages/lexico-components/src/hooks/**",
       "!**/packages/lexico-components/src/lib/**",
       // Code generator EJS templates contain <%= %> syntax Biome can't parse
-      "!**/tools/code-generator/**/file"!**/tools/code-generator/**/files/**",
-    ]──────────────────────────────────────────────────────
+      "!**/tools/code-generator/**/files/**",
+    ],
+  },
+  // ── Formatter ──────────────────────────────────────────────────────────────
   // These settings MUST stay in sync with oxfmt.config.ts and prettier.config.ts.
   // Biome's format checker verifies files match Oxfmt/Prettier output;
   // if these diverge, biome-check will report false positives.
@@ -96,9 +99,9 @@
     "indentStyle": "space",
     "indentWidth": 2,
     "lineEnding": "lf",
-    "lineWidth": 80
-  80,
-  }/ ── JavaScript/TypeScript/JSX Formatter ────────────────────────────────────
+    "lineWidth": 80,
+  },
+  // ── JavaScript/TypeScript/JSX Formatter ────────────────────────────────────
   // Additional JS-specific settings mirroring prettier.config.ts:
   //   singleQuote: false       → quoteStyle: "double"
   //   jsxSingleQuote: false    → jsxQuoteStyle: "double"
@@ -121,14 +124,16 @@
       "quoteProperties": "asNeeded",
       "quoteStyle": "double",
       "semicolons": "always",
-      "trailingCommas": "all""all",
+      "trailingCommas": "all",
     },
+  },
   // ── JSON Formatter ─────────────────────────────────────────────────────────
   // JSON doesn't support trailing commas in standard spec; match Prettier behavior.
   "json": {
     "formatter": {
-      "trailingCommas": "non"none",
-    }},
+      "trailingCommas": "none",
+    },
+  },
   // ── Linter ─────────────────────────────────────────────────────────────────
   // Only Biome-exclusive rules are enabled. All categories are set to
   // recommended: false to prevent overlap with ESLint and Oxlint.
@@ -139,35 +144,35 @@
     "enabled": true,
     "rules": {
       "complexity": {
-        "recommended": falfalse,
-      }      "correctness": {
+        "recommended": false,
+      },
+      "correctness": {
         // These two rules are Biome-specific but produce false positives
         // in Nx monorepos with TypeScript path mappings (@monorepo/*)
         "noUndeclaredDependencies": "off",
-        "useImportExtensions": "o"off",
-      }
+        "useImportExtensions": "off",
+      },
       "nursery": {
-        "recommended": ffalse,
+        "recommended": false,
       },
       "performance": {
         // Barrel files (index.ts re-exports) are the monorepo's public API pattern
         "noBarrelFile": "off",
         "noReExportAll": "off",
         "recommended": false,
-      }},
+      },
       // Disable all recommended rule sets to avoid duplicate diagnostics
       "recommended": false,
       "security": {
-        "recommended":false,
-      } },
+        "recommended": false,
+      },
       "style": {
-        "recommended"false,
-      }  },
+        "recommended": false,
+      },
       "suspicious": {
-        "recommendedfalse,
-      }   }
-},
-  }
+        "recommended": false,
+      },
+    },
   },
   // ── VCS Integration ────────────────────────────────────────────────────────
   // Biome reads .gitignore so git-ignored files (dist, node_modules, etc.)
@@ -175,7 +180,6 @@
   "vcs": {
     "clientKind": "git",
     "enabled": true,
-    "useIgnoreFitrue,
-  }e
-  }
+    "useIgnoreFile": true,
+  },
 }

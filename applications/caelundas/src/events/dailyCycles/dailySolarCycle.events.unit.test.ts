@@ -212,6 +212,7 @@ describe("dailySolarCycle.events", () => {
         },
       ];
 
+      // biome-ignore format: oxfmt is the primary formatter
       const { writeDailySolarCycleEvents } =
         await import("./dailySolarCycle.events");
       writeDailySolarCycleEvents({
@@ -226,6 +227,7 @@ describe("dailySolarCycle.events", () => {
     it("should not write if events array is empty", async () => {
       const { default: fs } = await import("node:fs");
 
+      // biome-ignore format: oxfmt is the primary formatter
       const { writeDailySolarCycleEvents } =
         await import("./dailySolarCycle.events");
       writeDailySolarCycleEvents({

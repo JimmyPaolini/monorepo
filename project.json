@@ -3,22 +3,41 @@
   "name": "monorepo",
   "projectType": "application",
   "targets": {
-    "biome": {
+    "biome-format": {
       "cache": true,
       "configurations": {
         "check": {
-          "command": "biome check '*.ts' '*.js' '*.json' 'scripts/' 'documentation/' 'infrastructure/'"
+          "command": "biome format '*.ts' '*.js' '*.json' 'scripts/' 'documentation/' 'infrastructure/'"
         },
         "write": {
-          "command": "biome check --write '*.ts' '*.js' '*.json' 'scripts/' 'documentation/' 'infrastructure/'"
+          "command": "biome format --write '*.ts' '*.js' '*.json' 'scripts/' 'documentation/' 'infrastructure/'"
         }
       },
       "defaultConfiguration": "check",
-      "description": "Run Biome supplementary format check and lint on workspace root files",
+      "description": "Run Biome supplementary formatter on workspace root files",
       "executor": "nx:run-commands",
       "inputs": ["{workspaceRoot}/biome.jsonc", "default"],
       "options": {
-        "command": "biome check '*.ts' '*.js' '*.json' 'scripts/' 'documentation/' 'infrastructure/'",
+        "command": "biome format '*.ts' '*.js' '*.json' 'scripts/' 'documentation/' 'infrastructure/'",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "biome-lint": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "command": "biome lint '*.ts' '*.js' '*.json' 'scripts/' 'documentation/' 'infrastructure/'"
+        },
+        "write": {
+          "command": "biome lint --write '*.ts' '*.js' '*.json' 'scripts/' 'documentation/' 'infrastructure/'"
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "Run Biome supplementary linter on workspace root files",
+      "executor": "nx:run-commands",
+      "inputs": ["{workspaceRoot}/biome.jsonc", "default"],
+      "options": {
+        "command": "biome lint '*.ts' '*.js' '*.json' 'scripts/' 'documentation/' 'infrastructure/'",
         "cwd": "{projectRoot}"
       }
     },
@@ -169,7 +188,7 @@
       "description": "Run lint-staged on staged files (invoked by the pre-commit git hook)",
       "executor": "nx:run-commands",
       "options": {
-        "command": "NODE_OPTIONS='--import=tsx' lint-staged --continue-on-error",
+        "command": "NODE_OPTIONS='--import=tsx' lint-staged --continue-on-error --concurrent false",
         "cwd": "{projectRoot}"
       }
     },

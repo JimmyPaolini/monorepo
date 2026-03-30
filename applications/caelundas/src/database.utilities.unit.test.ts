@@ -118,6 +118,7 @@ describe("database.utilities", () => {
   describe("upsertEphemerisValues", () => {
     it("should insert single ephemeris record", async () => {
       expect.assertions(4);
+      // biome-ignore format: oxfmt is the primary formatter
       const { upsertEphemerisValues, getEphemerisRecords } =
         await import("./database.utilities");
 
@@ -150,6 +151,7 @@ describe("database.utilities", () => {
     });
 
     it("should batch insert multiple ephemeris records", async () => {
+      // biome-ignore format: oxfmt is the primary formatter
       const { upsertEphemerisValues, getEphemerisRecords } =
         await import("./database.utilities");
 
@@ -177,6 +179,7 @@ describe("database.utilities", () => {
     });
 
     it("should update existing ephemeris record on conflict", async () => {
+      // biome-ignore format: oxfmt is the primary formatter
       const { upsertEphemerisValues, getEphemerisRecords } =
         await import("./database.utilities");
 
@@ -214,6 +217,7 @@ describe("database.utilities", () => {
     });
 
     it("should store all ephemeris types", async () => {
+      // biome-ignore format: oxfmt is the primary formatter
       const { upsertEphemerisValues, getEphemerisRecords } =
         await import("./database.utilities");
 
@@ -271,6 +275,7 @@ describe("database.utilities", () => {
 
   describe("getEphemerisRecords", () => {
     it("should filter by coordinate type", async () => {
+      // biome-ignore format: oxfmt is the primary formatter
       const { upsertEphemerisValues, getEphemerisRecords } =
         await import("./database.utilities");
 
@@ -296,6 +301,7 @@ describe("database.utilities", () => {
     });
 
     it("should filter by azimuthElevation type", async () => {
+      // biome-ignore format: oxfmt is the primary formatter
       const { upsertEphemerisValues, getEphemerisRecords } =
         await import("./database.utilities");
 
@@ -323,6 +329,7 @@ describe("database.utilities", () => {
     });
 
     it("should filter by diameter type", async () => {
+      // biome-ignore format: oxfmt is the primary formatter
       const { upsertEphemerisValues, getEphemerisRecords } =
         await import("./database.utilities");
 
@@ -348,6 +355,7 @@ describe("database.utilities", () => {
     });
 
     it("should return records in ascending time order", async () => {
+      // biome-ignore format: oxfmt is the primary formatter
       const { upsertEphemerisValues, getEphemerisRecords } =
         await import("./database.utilities");
 
@@ -391,6 +399,7 @@ describe("database.utilities", () => {
 
   describe("upsertEvent", () => {
     it("should insert single event", async () => {
+      // biome-ignore format: oxfmt is the primary formatter
       const { upsertEvent, getAllEvents } =
         await import("./database.utilities");
 
@@ -412,6 +421,7 @@ describe("database.utilities", () => {
     });
 
     it("should update event on conflict", async () => {
+      // biome-ignore format: oxfmt is the primary formatter
       const { upsertEvent, getAllEvents } =
         await import("./database.utilities");
 
@@ -442,6 +452,7 @@ describe("database.utilities", () => {
     });
 
     it("should handle event with all optional fields", async () => {
+      // biome-ignore format: oxfmt is the primary formatter
       const { upsertEvent, getAllEvents } =
         await import("./database.utilities");
 
@@ -478,6 +489,7 @@ describe("database.utilities", () => {
     });
 
     it("should batch insert multiple events", async () => {
+      // biome-ignore format: oxfmt is the primary formatter
       const { upsertEvents, getAllEvents } =
         await import("./database.utilities");
 
@@ -500,6 +512,7 @@ describe("database.utilities", () => {
     });
 
     it("should update existing events in batch", async () => {
+      // biome-ignore format: oxfmt is the primary formatter
       const { upsertEvents, getAllEvents } =
         await import("./database.utilities");
 
@@ -552,6 +565,7 @@ describe("database.utilities", () => {
 
   describe("getAllEvents", () => {
     it("should return all events sorted by start time", async () => {
+      // biome-ignore format: oxfmt is the primary formatter
       const { upsertEvents, getAllEvents } =
         await import("./database.utilities");
 
@@ -596,6 +610,7 @@ describe("database.utilities", () => {
 
   describe("getActiveAspectsAt", () => {
     it("should find aspects active at specific timestamp", async () => {
+      // biome-ignore format: oxfmt is the primary formatter
       const { upsertEvents, getActiveAspectsAt } =
         await import("./database.utilities");
 
@@ -654,15 +669,18 @@ describe("database.utilities", () => {
       );
 
       expect(activeAt.length).toBe(2);
+      // biome-ignore format: oxfmt is the primary formatter
       expect(activeAt.map((a) => a.summary)).toContain(
         "☀️☌♃ Sun conjunct Jupiter",
       );
+      // biome-ignore format: oxfmt is the primary formatter
       expect(activeAt.map((a) => a.summary)).toContain(
         "♀️□♂️ Venus square Mars",
       );
     });
 
     it("should exclude compound aspects", async () => {
+      // biome-ignore format: oxfmt is the primary formatter
       const { upsertEvents, getActiveAspectsAt } =
         await import("./database.utilities");
 
@@ -697,6 +715,7 @@ describe("database.utilities", () => {
         new Date("2025-03-15T12:00:00Z"),
       );
 
+      // biome-ignore format: oxfmt is the primary formatter
       expect(activeAt.map((a) => a.summary)).toContain(
         "☀️☌♃ Sun conjunct Jupiter",
       );
@@ -704,6 +723,7 @@ describe("database.utilities", () => {
     });
 
     it("should only return aspects within time range", async () => {
+      // biome-ignore format: oxfmt is the primary formatter
       const { upsertEvents, getActiveAspectsAt } =
         await import("./database.utilities");
 

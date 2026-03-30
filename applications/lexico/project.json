@@ -6,7 +6,8 @@
   "sourceRoot": "applications/lexico/src",
   "tags": ["framework:react", "stack:tanstack-start", "type:app"],
   "targets": {
-    "biome": {},
+    "biome-format": {},
+    "biome-lint": {},
     "build": {
       "description": "Build the application for production",
       "executor": "nx:run-commands",
