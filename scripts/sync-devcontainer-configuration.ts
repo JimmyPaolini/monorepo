@@ -16,6 +16,7 @@
  *
  * Merged fields (local is canonical, but config-specific entries are preserved):
  *   features  — shared features synced from local; docker feature in each config is preserved
+ *   remoteEnv — synced from local; MONOREPO_ENVIRONMENT preserved per-config
  *
  * Cloud-only fields (cloud is source of truth, skipped during check and sync):
  *   mounts    — only used in the cloud config; local config has no mounts
@@ -67,6 +68,9 @@ const SYNCED_KEYS = new Set([
 // Fields that belong exclusively to the cloud config and are never overwritten or checked.
 const CLOUD_ONLY_KEYS = new Set(["mounts"]);
 
+// Keys within remoteEnv that are config-specific and preserved per-environment.
+const REMOTE_ENV_PRESERVED_KEYS = new Set(["MONOREPO_ENVIRONMENT"]);
+
 const MODE = process.argv[2] ?? "check";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -98,6 +102,19 @@ function applySync(
   for (const key of SYNCED_KEYS) {
     if (key in localConfig) mergedConfig[key] = localConfig[key];
     else Reflect.deleteProperty(mergedConfig, key);
+  }
+
+  // Preserve config-specific remoteEnv variables from cloud config.
+  const cloudRemoteEnv = cloudConfig["remoteEnv"] as
+    | Record<string, unknown>
+    | undefined;
+  const mergedRemoteEnv = mergedConfig["remoteEnv"] as
+    | Record<string, unknown>
+    | undefined;
+  if (cloudRemoteEnv && mergedRemoteEnv) {
+    for (const key of REMOTE_ENV_PRESERVED_KEYS) {
+      if (key in cloudRemoteEnv) mergedRemoteEnv[key] = cloudRemoteEnv[key];
+    }
   }
 
   // Features: sync all non-docker features from local; preserve each config's docker feature.

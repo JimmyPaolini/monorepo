@@ -280,8 +280,10 @@
   "remoteEnv": {
     "KUBECONFIG": "${containerWorkspaceFolder}/.kube/config",
     "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}",
+    "MONOREPO_ENVIRONMENT": "devcontainer-local",
     "NODE_OPTIONS": "--max-old-space-size=2048",
     "OLLAMA_HOST": "http://host.docker.internal:11434",
+    "SEARXNG_HOST": "http://searxng:8080",
     "UV_THREADPOOL_SIZE": "4",
     "VSCODE_EXTENSION_HOST_WORKER_CONCURRENCY": "4"
   },

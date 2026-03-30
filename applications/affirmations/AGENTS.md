@@ -17,32 +17,25 @@ Python application that generates structured affirmations for spiritual practice
 applications/affirmations/
 ├── src/
 │   ├── __init__.py          # Package marker
-│   ├── agent.py             # LangGraph ReAct agent
-│   ├── chains.py            # Simple LCEL chain (no tools)
-│   ├── llm.py               # ChatOllama factory
-│   ├── models.py            # Pydantic models (Affirmation, AffirmationSet)
-│   ├── output.py            # JSON read/write utilities
-│   ├── practices.py         # Spiritual practice configuration
-│   └── research.py          # Research processing layer (Trafilatura)
-├── notebooks/
-│   └── example-affirmation-generation.ipynb
+│   ├── affirmations.ipynb   # Main Jupyter notebook pipeline
+│   ├── grammars.py          # Grammar enums (Mood, Voice, Tense, etc.) and Grammar model
+│   ├── models.py            # Pydantic models (Affirmation, SubjectAffirmations, etc.)
+│   ├── output.py            # JSON/Markdown file I/O utilities
+│   ├── prompts.py           # LangChain prompt templates
+│   └── subjects.py          # Spiritual subject configuration (Subject, SubjectCategory)
 ├── testing/
 │   ├── __init__.py
-│   ├── test_agent_unit.py
-│   ├── test_chains_unit.py
-│   ├── test_models_unit.py
-│   ├── test_output_unit.py
-│   ├── test_practices_unit.py
-│   ├── test_research_unit.py
-│   └── test_tools_unit.py
-├── config/
-│   └── searxng/
-│       └── settings.yml
+│   ├── test_grammars.py
+│   ├── test_models.py
+│   ├── test_output.py
+│   ├── test_prompts.py
+│   └── test_subjects.py
 ├── output/
 │   └── .gitkeep
 ├── AGENTS.md
 ├── pyproject.toml
 ├── uv.lock
+├── searxng.settings.yml
 └── README.md
 ```
 
@@ -88,15 +81,15 @@ nx run affirmations:open-webui --configuration=stop
 
 ## Environment Variables
 
-| Variable      | Required | Description                                           |
-| ------------- | -------- | ----------------------------------------------------- |
-| `OLLAMA_HOST` | No       | Ollama server URL (default: `http://localhost:11434`) |
+| Variable       | Required | Description                                           |
+| -------------- | -------- | ----------------------------------------------------- |
+| `OLLAMA_HOST`  | No       | Ollama server URL (default: `http://localhost:11434`) |
+| `SEARXNG_HOST` | No       | SearxNG server URL (default: `http://localhost:8889`) |
 
 ## Services
 
-| Service    | URL                      | Description                                                    |
-| ---------- | ------------------------ | -------------------------------------------------------------- |
-| Ollama     | `http://localhost:11434` | Local LLM server (`qwen3.5:0.8b` fast / `qwen3.5:9b` quality)  |
-| Open WebUI | `http://localhost:3001`  | Browser-based Ollama chat interface                            |
-| SearxNG    | `http://localhost:8889`  | Self-hosted metasearch engine (135+ engines)                   |
-| JupyterLab | `http://localhost:8888`  | Notebook interface (open `.ipynb` files directly in VSCode)    |
+| Service    | URL                      | Description                                                   |
+| ---------- | ------------------------ | ------------------------------------------------------------- |
+| Ollama     | `http://localhost:11434` | Local LLM server (`qwen3.5:0.8b` fast / `qwen3.5:9b` quality) |
+| Open WebUI | `http://localhost:3001`  | Browser-based Ollama chat interface                           |
+| SearxNG    | `http://localhost:8889`  | Self-hosted metasearch engine (135+ engines)                  |

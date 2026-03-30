@@ -2,6 +2,7 @@
 buildx
 distroless
 dockerfiles
+
 #endregion
 
 #region ☸️ Kubernetes
@@ -10,6 +11,7 @@ kubectl
 kubernetes
 storageclasses
 tolerations
+
 #endregion
 
 #region 🗄️ Database
@@ -38,6 +40,7 @@ upsert
 upserted
 upserting
 upserts
+
 #endregion
 
 #region 🔒 Security
@@ -47,6 +50,7 @@ gitleaks
 gitleaksignore
 trivy
 trivyignore
+
 #endregion
 
 #region ☁️ Cloud & Providers
@@ -66,6 +70,7 @@ signups
 textlocal
 vonage
 workos
+
 #endregion
 
 #region 🧰 Operations & CI
@@ -84,4 +89,6 @@ retag
 sendgrid
 tfstate
 tfvars
+
 #endregion
+lockfiles

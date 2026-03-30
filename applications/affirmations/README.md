@@ -21,7 +21,7 @@ nx run affirmations:ollama --configuration=pull-small   # qwen3.5:0.8b (~815MB, 
 # nx run affirmations:ollama --configuration=pull-medium  # qwen3.5:4b (~3.3GB, balanced)
 # nx run affirmations:ollama --configuration=pull-large   # qwen3.5:9b (~8.1GB, quality)
 
-# 3. Open notebooks/example-affirmation-generation.ipynb in VSCode to explore the full pipeline
+# 3. Open src/affirmations.ipynb in VSCode to explore the full pipeline
 ```
 
 ## Project Structure
@@ -30,29 +30,24 @@ nx run affirmations:ollama --configuration=pull-small   # qwen3.5:0.8b (~815MB, 
 applications/affirmations/
 ├── src/
 │   ├── __init__.py          # Package marker
-│   ├── agent.py             # LangGraph ReAct agent (research + generate)
-│   ├── chains.py            # Simple LCEL chain (direct generation, no tools)
-│   ├── llm.py               # ChatOllama factory
-│   ├── models.py            # Pydantic: Affirmation, AffirmationSet, ResearchResult
-│   ├── output.py            # save_affirmations() / load_affirmations() JSON I/O
-│   ├── practices.py         # Spiritual practice config (tarot, astrology, etc.)
-│   └── research.py          # Trafilatura-powered research processing layer
-├── notebooks/
-│   └── example-affirmation-generation.ipynb
+│   ├── affirmations.ipynb   # Main Jupyter notebook pipeline
+│   ├── grammars.py          # Grammar enums (Mood, Voice, Tense, etc.) and Grammar model
+│   ├── models.py            # Pydantic models (Affirmation, SubjectAffirmations, etc.)
+│   ├── output.py            # JSON/Markdown file I/O utilities
+│   ├── prompts.py           # LangChain prompt templates
+│   └── subjects.py          # Spiritual subject configuration (Subject, SubjectCategory)
 ├── testing/
-│   ├── test_agent_unit.py
-│   ├── test_chains_unit.py
-│   ├── test_models_unit.py
-│   ├── test_output_unit.py
-│   ├── test_practices_unit.py
-│   ├── test_research_unit.py
-│   └── test_tools_unit.py
-├── config/
-│   └── searxng/
-│       └── settings.yml     # SearxNG engine configuration
-├── output/                   # Generated JSON files (gitignored except .gitkeep)
+│   ├── __init__.py
+│   ├── test_grammars.py
+│   ├── test_models.py
+│   ├── test_output.py
+│   ├── test_prompts.py
+│   └── test_subjects.py
+├── output/                   # Generated JSON/Markdown files (gitignored except .gitkeep)
 ├── AGENTS.md
 ├── pyproject.toml
+├── uv.lock
+├── searxng.settings.yml
 └── README.md
 ```
 
@@ -125,7 +120,7 @@ Raw search results pass through `src/research.py` before reaching the LLM:
 
 ## Adding New Spiritual Practices
 
-Add entries to `src/practices.py`:
+Add entries to `src/subjects.py`:
 
 ```python
 PRACTICES["numerology"] = PracticeConfig(
@@ -140,22 +135,22 @@ PRACTICES["numerology"] = PracticeConfig(
 
 ## Services
 
-| Service    | Port    | Description                           |
-| ---------- | ------- | ------------------------------------- |
-| Ollama     | `11434` | Local LLM server (Qwen3.5 9B)         |
-| Open WebUI | `3001`  | Browser-based Ollama chat interface   |
-| SearxNG    | `8889`  | Self-hosted metasearch (135+ engines) |
-| JupyterLab | `8888`  | Notebook interface                    |
+| Service    | Port    | Description                                                   |
+| ---------- | ------- | ------------------------------------------------------------- |
+| Ollama     | `11434` | Local LLM server (`qwen3.5:0.8b` default, `qwen3.5:9b` max)   |
+| Open WebUI | `3001`  | Browser-based Ollama chat interface                           |
+| SearxNG    | `8889`  | Self-hosted metasearch (135+ engines)                         |
 
 ## Environment Variables
 
-| Variable      | Default                  | Description       |
-| ------------- | ------------------------ | ----------------- |
-| `OLLAMA_HOST` | `http://localhost:11434` | Ollama server URL |
+| Variable       | Default                  | Description        |
+| -------------- | ------------------------ | ------------------ |
+| `OLLAMA_HOST`  | `http://localhost:11434` | Ollama server URL  |
+| `SEARXNG_HOST` | `http://localhost:8889`  | SearxNG server URL |
 
 ## Performance Notes
 
 - **CPU-only inference**: Qwen3.5 9B takes ~5–15s per generation on CPU
 - **Model keepalive**: `OLLAMA_KEEP_ALIVE=10m` avoids repeated model loads
-- **Smaller alternative**: Use `qwen3.5:1.5b` for even faster iteration during development
-- **Simple chain**: Use `create_affirmation_chain()` (no research) for quick generation without tool overhead
+- **Smaller alternative**: Use `qwen3.5:0.8b` (default) for fast iteration during development
+- **Simple chain**: Use LCEL chains (no research) for quick generation without tool overhead

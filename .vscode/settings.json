@@ -665,6 +665,7 @@
   "oxc.enable.oxlint": true,
   "postman.mcp.notifications.postmanMCP": false,
   "postman.settings.dotenv-detection-notification-visibility": false,
+  "python.analysis.typeCheckingMode": "standard",
   "python.defaultInterpreterPath": "/usr/local/python/current/bin/python",
   "remote.autoForwardPortsSource": "hybrid",
   "remote.portsAttributes": {

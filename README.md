@@ -29,7 +29,7 @@ A modern TypeScript monorepo with Nx, featuring automated releases, comprehensiv
 
 ```bash
 # Automated setup (installs tools & dependencies via Homebrew)
-./scripts/local-setup/setup.sh
+./scripts/local/setup.sh
 ```
 
 ### Development
@@ -48,6 +48,7 @@ nx run-many --target=code-analysis --all
 
 ## 📦 Projects
 
+- **[affirmations](applications/affirmations)** - Python LangChain + Ollama affirmation generator (LangGraph ReAct agent, SearxNG)
 - **[caelundas](applications/caelundas)** - CLI ephemeris calendar generator with astronomical calculations
 - **[lexico](applications/lexico)** - TanStack Start + Supabase dictionary web application
 - **[lexico-components](packages/lexico-components)** - Shared React component library using shadcn/ui
