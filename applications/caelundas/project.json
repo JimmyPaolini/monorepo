@@ -81,6 +81,7 @@
     },
     "lint": {},
     "markdown-lint": {},
+    "oxfmt": {},
     "oxlint": {},
     "prettier": {},
     "spell-check": {},

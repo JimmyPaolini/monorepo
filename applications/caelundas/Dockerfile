@@ -2,7 +2,7 @@
 
 # 1. Base Image
 # Using a lightweight node image
-FROM node:22.20.0-alpine
+FROM node:22.22.2-alpine
 
 # Install build tools needed for native modules like sqlite3
 RUN apk add --no-cache python3 make g++

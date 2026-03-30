@@ -17,6 +17,7 @@ const config: KnipConfig = {
   ignoreBinaries: [
     "terraform", // Terraform CLI, used for infrastructure provisioning
     "biome", // Biome CLI, invoked via nx:run-commands biome target
+    "oxfmt", // Oxfmt CLI, invoked via nx:run-commands oxfmt target
     "oxlint", // Oxlint CLI, invoked via nx:run-commands oxlint target
     "gitleaks", // Gitleaks CLI, used for detecting hardcoded secrets
   ],

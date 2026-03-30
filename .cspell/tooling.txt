@@ -34,8 +34,11 @@ cssmodule
 esconfig
 eslint
 oxfmt
+nonconstructor
+nonoctal
 oxlint
 oxlintrc
+proptypes
 pyright
 ruff
 sherif
@@ -70,6 +73,7 @@ svgs
 swipeable
 tailwindcss
 tanstack
+textnodes
 vaul
 vinxi
 vite
@@ -99,6 +103,8 @@ feathersjs
 middlewares
 operands
 preflight
+smol
+srvx
 sqltools
 subclassing
 subquery
@@ -118,6 +124,7 @@ gitmodules
 gitmoji
 gitmojis
 licen
+tootallnate
 licenseignore
 nonfiction
 peaceiris

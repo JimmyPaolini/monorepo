@@ -61,7 +61,7 @@ const config = {
   ],
 
   // ── TypeScript / JavaScript source files ──
-  // Runs format (prettier + biome), lint (eslint + oxlint), typecheck, and spell-check
+  // Runs format (oxfmt + prettier + biome), lint (eslint + oxlint), typecheck, and spell-check
   // on affected projects. nx affected includes monorepo when root-level files change.
   "*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}": (files: string[]) => {
     return [

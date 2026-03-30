@@ -14,7 +14,7 @@ runs:
     - name: 🟢 Setup node
       uses: actions/setup-node@v4
       with:
-        node-version: 22.20.0
+        node-version: 22.22.2
         cache: pnpm
 
     - name: 🎯 Set Nx SHAs
@@ -43,6 +43,16 @@ runs:
           '**/pnpm-lock.yaml') }}-
           nx-cache-${{ runner.os }}-
 
-    - name: 📚 Install Dependencies
+    - name: 🌌 Setup uv
+      uses: astral-sh/setup-uv@v6
+      with:
+        enable-cache: true
+        cache-dependency-glob: "**/pyproject.toml"
+
+    - name: 🐍 Install Python Dependencies
+      run: uv sync --frozen --project applications/affirmations
+      shell: bash
+
+    - name: 📚 Install Node Dependencies
       run: pnpm install --frozen-lockfile
       shell: bash

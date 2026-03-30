@@ -4,7 +4,7 @@
   "name": "lexico",
   "projectType": "application",
   "sourceRoot": "applications/lexico/src",
-  "tags": [ "framework:react", "stack:tanstack-start","type:app"],
+  "tags": ["framework:react", "stack:tanstack-start", "type:app"],
   "targets": {
     "biome": {},
     "build": {
@@ -20,7 +20,7 @@
       "dependsOn": ["build"],
       "description": "Check bundle size limits",
       "executor": "nx:run-commands",
-      "inputs": [ "{workspaceRoot}/dist/applications/lexico/**/*","default"],
+      "inputs": ["{workspaceRoot}/dist/applications/lexico/**/*", "default"],
       "options": {
         "command": "npx size-limit",
         "cwd": "applications/lexico"
@@ -54,6 +54,7 @@
     "knip": {},
     "lint": {},
     "markdown-lint": {},
+    "oxfmt": {},
     "oxlint": {},
     "prettier": {},
     "spell-check": {},

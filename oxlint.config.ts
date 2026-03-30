@@ -1,4 +1,6 @@
-{
+import { defineConfig } from "oxlint";
+
+export default defineConfig({
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   // Oxlint — Fast supplementary linter (~50–100× faster than ESLint)
   // https://oxc.rs/docs/guide/usage/linter/config
@@ -13,42 +15,42 @@
   //
   // Related configs:
   //   - eslint.config.base.ts — primary linter (authoritative)
+  //   - oxfmt.config.ts — primary formatter
+  //   - prettier.config.ts — supplementary formatter
   //   - biome.jsonc — supplementary format checker
-  //   - prettier.config.ts — primary formatter
   //
   // Nx targets:
-  //   - `oxlint` (read-only): `oxlint --config=.oxlintrc.jsonc {projectRoot}/src`
+  //   - `oxlint` (read-only): `oxlint {projectRoot}/src`
   //   - `oxlint` with `--fix` flag: auto-fixes where possible
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
   // ── Categories ──────────────────────────────────────────────────────────
   // All categories off — rules are configured explicitly in the overrides
   // array below. This prevents Oxlint's built-in rule sets from enabling
   // rules we haven't explicitly opted into via @oxlint/migrate.
-  "categories": {
-    "correctness": "off",
-    "nursery": "off",
-    "pedantic": "off",
-    "restriction": "off",
-    "style": "off",
-    "suspicious": "off",
+  categories: {
+    correctness: "off",
+    nursery: "off",
+    pedantic: "off",
+    restriction: "off",
+    style: "off",
+    suspicious: "off",
   },
   // ── Environments ────────────────────────────────────────────────────────
   // Declares which global variables are available (prevents no-undef errors).
   // Matches the ESLint env settings for this monorepo's runtime targets.
-  "env": {
+  env: {
     // Browser globals for lexico (web app) and lexico-components
-    "browser": true,
-    "builtin": true,
-    "commonjs": true,
-    "es2020": true,
+    browser: true,
+    builtin: true,
+    commonjs: true,
+    es2020: true,
     // Node globals for caelundas (CLI), build scripts, and config files
-    "node": true,
+    node: true,
   },
   // ── Ignore Patterns ─────────────────────────────────────────────────────
   // Mirrors the global ignores from eslint.config.base.ts.
   // Files matching these patterns are completely skipped by Oxlint.
-  "ignorePatterns": [
+  ignorePatterns: [
     "**/*.min.js",
     "**/.nx",
     // Terraform state and generated files
@@ -101,13 +103,13 @@
   //   [11] JSON rules — disable inapplicable rules for JSON files
   //   [12] YAML rules — disable inapplicable rules for YAML files
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  "overrides": [
+  overrides: [
     // ── [0] ESLint recommended — base rules for ALL file types ────────────
     // Maps to: eslint.configs.recommended (eslint.config.base.ts)
     // Covers fundamental correctness rules (no-debugger, no-unused-vars, etc.)
     // that apply universally across TS, JS, JSON, and YAML files.
     {
-      "files": [
+      files: [
         "**/*.cjs",
         "**/*.cts",
         "**/*.js",
@@ -122,7 +124,7 @@
         "**/*.yaml",
         "**/*.yml",
       ],
-      "rules": {
+      rules: {
         "constructor-super": "error",
         "for-direction": "error",
         "no-async-promise-executor": "error",
@@ -187,9 +189,9 @@
     // Adds @typescript-eslint rules for TS-specific correctness.
     // Some rules set to "warn" here are escalated to "error" in override [7].
     {
-      "files": ["**/*.cts", "**/*.mts", "**/*.ts", "**/*.tsx"],
-      "plugins": ["typescript"],
-      "rules": {
+      files: ["**/*.cts", "**/*.mts", "**/*.ts", "**/*.tsx"],
+      plugins: ["typescript"],
+      rules: {
         "@typescript-eslint/adjacent-overload-signatures": "error",
         // @typescript-eslint recommended rules
         "@typescript-eslint/ban-ts-comment": "error",
@@ -288,9 +290,9 @@
     // plugin rules because ESLint's TS plugin still validates JS files
     // (e.g., JSDoc type annotations, import syntax).
     {
-      "files": ["**/*.cjs", "**/*.js", "**/*.jsx", "**/*.mjs"],
-      "plugins": ["typescript"],
-      "rules": {
+      files: ["**/*.cjs", "**/*.js", "**/*.jsx", "**/*.mjs"],
+      plugins: ["typescript"],
+      rules: {
         "@typescript-eslint/adjacent-overload-signatures": "error",
         "@typescript-eslint/ban-ts-comment": "error",
         "@typescript-eslint/explicit-function-return-type": "off",
@@ -393,10 +395,10 @@
     //   - prefer-top-level-await: off — not all entry points support TLA
     //   - consistent-function-scoping: off — React render helpers pattern
     {
-      "env": {
-        "es2026": true,
+      env: {
+        es2026: true,
       },
-      "files": [
+      files: [
         "**/*.cjs",
         "**/*.cts",
         "**/*.js",
@@ -406,7 +408,7 @@
         "**/*.ts",
         "**/*.tsx",
       ],
-      "rules": {
+      rules: {
         // Disabled to allow unicorn/no-negated-condition to take precedence
         "no-negated-condition": "off",
         "no-nested-ternary": "off",
@@ -535,8 +537,8 @@
     // ── [4] Test file relaxations (unicorn) ────────────────────────────────
     // Tests often need factory functions and explicit undefined assertions
     {
-      "files": ["**/*.spec.ts", "**/*.test.ts", "**/testing/**"],
-      "rules": {
+      files: ["**/*.spec.ts", "**/*.test.ts", "**/testing/**"],
+      rules: {
         "unicorn/consistent-function-scoping": "off",
         "unicorn/no-useless-undefined": "off",
       },
@@ -544,8 +546,8 @@
     // ── [5] JS/config file relaxations ─────────────────────────────────────
     // CommonJS config files (eslint.config.js, *.cjs) can't use ES modules
     {
-      "files": ["**/*.cjs", "**/*.js", "**/*.mjs"],
-      "rules": {
+      files: ["**/*.cjs", "**/*.js", "**/*.mjs"],
+      rules: {
         "unicorn/prefer-module": "off",
       },
     },
@@ -557,7 +559,7 @@
     //   - No duplicate imports (use single import statement per module)
     //   - Unused vars with _ prefix pattern for intentional ignoring
     {
-      "files": [
+      files: [
         "**/*.cjs",
         "**/*.cts",
         "**/*.js",
@@ -567,27 +569,27 @@
         "**/*.ts",
         "**/*.tsx",
       ],
-      "plugins": ["import", "typescript"],
-      "rules": {
+      plugins: ["import", "typescript"],
+      rules: {
         "@typescript-eslint/consistent-type-imports": [
           "error",
           {
-            "fixStyle": "inline-type-imports",
-            "prefer": "type-imports",
+            fixStyle: "inline-type-imports",
+            prefer: "type-imports",
           },
         ],
         "@typescript-eslint/explicit-function-return-type": [
           "error",
           {
-            "allowExpressions": true,
-            "allowHigherOrderFunctions": true,
-            "allowTypedFunctionExpressions": true,
+            allowExpressions: true,
+            allowHigherOrderFunctions: true,
+            allowTypedFunctionExpressions: true,
           },
         ],
         "@typescript-eslint/explicit-module-boundary-types": "error",
         "@typescript-eslint/no-explicit-any": "error",
         "@typescript-eslint/no-import-type-side-effects": "error",
-        "eqeqeq": ["error", "always"],
+        eqeqeq: ["error", "always"],
         "import/default": "off",
         "import/namespace": "off",
         "import/no-duplicates": "error",
@@ -600,9 +602,9 @@
         "no-unused-vars": [
           "error",
           {
-            "argsIgnorePattern": "^_",
-            "caughtErrorsIgnorePattern": "^_",
-            "varsIgnorePattern": "^_",
+            argsIgnorePattern: "^_",
+            caughtErrorsIgnorePattern: "^_",
+            varsIgnorePattern: "^_",
           },
         ],
         "no-var": "error",
@@ -611,8 +613,8 @@
         "sort-imports": [
           "error",
           {
-            "ignoreCase": true,
-            "ignoreDeclarationSort": true,
+            ignoreCase: true,
+            ignoreDeclarationSort: true,
           },
         ],
       },
@@ -623,16 +625,16 @@
     // Adds strict rules: no-dynamic-delete, no-extraneous-class, etc.
     // Adds stylistic rules: array-type, consistent-type-definitions, etc.
     {
-      "files": ["**/*.cts", "**/*.mts", "**/*.ts", "**/*.tsx"],
-      "plugins": ["typescript"],
-      "rules": {
+      files: ["**/*.cts", "**/*.mts", "**/*.ts", "**/*.tsx"],
+      plugins: ["typescript"],
+      rules: {
         "@typescript-eslint/adjacent-overload-signatures": "error",
         "@typescript-eslint/array-type": "error",
         // Stricter ban-ts-comment — require 10+ char justification
         "@typescript-eslint/ban-ts-comment": [
           "error",
           {
-            "minimumDescriptionLength": 10,
+            minimumDescriptionLength: 10,
           },
         ],
         "@typescript-eslint/ban-tslint-comment": "error",
@@ -707,9 +709,9 @@
     //   - react/jsx-curly-brace-presence (clean JSX syntax)
     //   - react/react-in-jsx-scope: off (React 19 new JSX transform)
     {
-      "files": ["**/*.jsx", "**/*.tsx"],
-      "plugins": ["jsx-a11y", "react"],
-      "rules": {
+      files: ["**/*.jsx", "**/*.tsx"],
+      plugins: ["jsx-a11y", "react"],
+      rules: {
         "jsx-a11y/alt-text": "error",
         "jsx-a11y/anchor-ambiguous-text": "off",
         "jsx-a11y/anchor-has-content": "error",
@@ -734,17 +736,17 @@
         "jsx-a11y/no-noninteractive-tabindex": [
           "error",
           {
-            "allowExpressionValues": true,
-            "roles": ["tabpanel"],
-            "tags": [],
+            allowExpressionValues: true,
+            roles: ["tabpanel"],
+            tags: [],
           },
         ],
         "jsx-a11y/no-redundant-roles": "error",
         "jsx-a11y/no-static-element-interactions": [
           "error",
           {
-            "allowExpressionValues": true,
-            "handlers": [
+            allowExpressionValues: true,
+            handlers: [
               "onClick",
               "onKeyDown",
               "onKeyPress",
@@ -765,8 +767,8 @@
         "react/jsx-curly-brace-presence": [
           "error",
           {
-            "children": "never",
-            "props": "never",
+            children: "never",
+            props: "never",
           },
         ],
         "react/jsx-key": "error",
@@ -794,7 +796,7 @@
     // Relax strictness in test files: allow `any` (warn instead of error)
     // and console.log for debugging test output.
     {
-      "files": [
+      files: [
         "**/*.spec.ts",
         "**/*.spec.tsx",
         "**/*.test.ts",
@@ -802,8 +804,8 @@
         "**/__tests__/**",
         "**/testing/**",
       ],
-      "plugins": ["typescript"],
-      "rules": {
+      plugins: ["typescript"],
+      rules: {
         "@typescript-eslint/no-explicit-any": "warn",
         "no-console": "off",
       },
@@ -813,9 +815,9 @@
     // TS-specific rules: require-imports (CommonJS needs require()),
     // explicit return types, and module boundary types.
     {
-      "files": ["**/*.cjs", "**/*.js", "**/*.mjs"],
-      "plugins": ["typescript"],
-      "rules": {
+      files: ["**/*.cjs", "**/*.js", "**/*.mjs"],
+      plugins: ["typescript"],
+      rules: {
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/explicit-module-boundary-types": "off",
         "@typescript-eslint/no-require-imports": "off",
@@ -825,8 +827,8 @@
     // JSON files don't have expressions or variables — disable rules that
     // would produce false positives on JSON syntax.
     {
-      "files": ["**/*.json", "**/*.json5", "**/*.jsonc"],
-      "rules": {
+      files: ["**/*.json", "**/*.json5", "**/*.jsonc"],
+      rules: {
         "no-unused-expressions": "off",
         "no-unused-vars": "off",
       },
@@ -835,8 +837,8 @@
     // YAML uses significant whitespace differently — disable rules that
     // conflict with YAML syntax (e.g., irregular whitespace is normal in YAML).
     {
-      "files": ["**/*.yaml", "**/*.yml"],
-      "rules": {
+      files: ["**/*.yaml", "**/*.yml"],
+      rules: {
         "no-irregular-whitespace": "off",
         "no-unused-vars": "off",
       },
@@ -849,7 +851,7 @@
   //   - typescript → @typescript-eslint/eslint-plugin
   //   - jsx-a11y → eslint-plugin-jsx-a11y (accessibility)
   //   - import → eslint-plugin-import (import/export validation)
-  "plugins": ["import", "jsx-a11y", "react", "typescript", "unicorn"],
+  plugins: ["import", "jsx-a11y", "react", "typescript", "unicorn"],
   // No top-level rules — all rules are scoped via overrides for file-type specificity
-  "rules": {},
-}
+  rules: {},
+});

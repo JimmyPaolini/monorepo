@@ -32,7 +32,9 @@ The [.github/actions/setup-monorepo/action.yml](/.github/actions/setup-monorepo/
 2. Setup Node.js (version: 22.20.0) with pnpm caching
 3. Set Nx SHAs for affected computation
 4. Restore/save Nx cache automatically
-5. Install dependencies with `pnpm install --frozen-lockfile`
+5. Setup uv (Python package manager) with pyproject.toml-based caching
+6. Install Python dependencies with `uv sync --frozen`
+7. Install dependencies with `pnpm install --frozen-lockfile`
 
 **Prerequisites:** The composite action requires the repository to be checked out first with `fetch-depth: 0` for Nx affected computation:
 

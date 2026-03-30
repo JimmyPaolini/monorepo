@@ -3,7 +3,7 @@
   "name": "lexico-components",
   "projectType": "library",
   "sourceRoot": "packages/lexico-components/src",
-  "tags": [ "framework:react", "scope:shared","type:lib"],
+  "tags": ["framework:react", "scope:shared", "type:lib"],
   "targets": {
     "biome": {},
     "build": {
@@ -18,7 +18,10 @@
       "dependsOn": ["build"],
       "description": "Check bundle size limits",
       "executor": "nx:run-commands",
-      "inputs": [ "{workspaceRoot}/dist/packages/lexico-components/**/*","default"],
+      "inputs": [
+        "{workspaceRoot}/dist/packages/lexico-components/**/*",
+        "default"
+      ],
       "options": {
         "command": "npx size-limit",
         "cwd": "packages/lexico-components"
@@ -52,6 +55,7 @@
       }
     },
     "markdown-lint": {},
+    "oxfmt": {},
     "oxlint": {},
     "prettier": {},
     "spell-check": {},

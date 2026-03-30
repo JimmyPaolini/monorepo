@@ -199,20 +199,39 @@
         "cwd": "{projectRoot}"
       }
     },
+    "oxfmt": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "command": "oxfmt --check '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
+        },
+        "write": {
+          "command": "oxfmt --write '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "Format workspace root files with oxfmt (config files, scripts, documentation, infrastructure)",
+      "executor": "nx:run-commands",
+      "inputs": ["{workspaceRoot}/oxfmt.config.ts", "default"],
+      "options": {
+        "command": "oxfmt --check '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'",
+        "cwd": "{projectRoot}"
+      }
+    },
     "oxlint": {
       "cache": true,
       "configurations": {
         "check": {},
         "write": {
-          "command": "oxlint --fix --config=.oxlintrc.jsonc '*.ts' '*.js' 'scripts/' 'documentation/' 'infrastructure/' --ignore-pattern='infrastructure/helm/**/templates'"
+          "command": "oxlint --fix '*.ts' '*.js' 'scripts/' 'documentation/' 'infrastructure/' --ignore-pattern='infrastructure/helm/**/templates'"
         }
       },
       "defaultConfiguration": "check",
       "description": "Run Oxlint on workspace root files (config files, scripts, documentation, infrastructure)",
       "executor": "nx:run-commands",
-      "inputs": ["{workspaceRoot}/.oxlintrc.jsonc", "default"],
+      "inputs": ["{workspaceRoot}/oxlint.config.ts", "default"],
       "options": {
-        "command": "oxlint --config=.oxlintrc.jsonc '*.ts' '*.js' 'scripts/' 'documentation/' 'infrastructure/' --ignore-pattern='infrastructure/helm/**/templates'",
+        "command": "oxlint '*.ts' '*.js' 'scripts/' 'documentation/' 'infrastructure/' --ignore-pattern='infrastructure/helm/**/templates'",
         "cwd": "{projectRoot}"
       }
     },
@@ -220,17 +239,17 @@
       "cache": false,
       "configurations": {
         "check": {
-          "command": "pnpm audit --audit-level=moderate"
+          "command": "pnpm audit --audit-level=moderate --ignore-unfixable"
         },
         "write": {
-          "command": "pnpm audit --fix"
+          "command": "jq 'del(.pnpm.overrides)' package.json > package.tmp.json && mv package.tmp.json package.json && pnpm install --no-frozen-lockfile && pnpm audit --fix; pnpm install --no-frozen-lockfile"
         }
       },
       "defaultConfiguration": "check",
-      "description": "Scan for security vulnerabilities (check) or auto-fix them (write)",
+      "description": "Scan for fixable security vulnerabilities (check) or clean stale overrides and re-fix (write)",
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm audit --audit-level=moderate"
+        "command": "pnpm audit --audit-level=moderate --ignore-unfixable"
       }
     },
     "prettier": {

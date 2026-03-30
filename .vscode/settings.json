@@ -540,6 +540,7 @@
   "js/ts.suggest.autoImports": true,
   "js/ts.suggest.paths": true,
   "js/ts.tsserver.experimental.enableProjectDiagnostics": false,
+  "js/ts.tsserver.maxMemory": 2048,
   "js/ts.tsserver.maxTsServerMemory": 3072,
   "js/ts.updateImportsOnFileMove.enabled": "always",
   "json.schemaDownload.enable": true,
@@ -603,6 +604,8 @@
     "keybindings.json": "pawn",
     "lint-staged.config.ts": "lintstaged",
     "mcp.json": "copilot",
+    "oxfmt.config.ts": "oxc",
+    "oxlint.config.ts": "oxc",
     "project.json": "nx",
     "sessions.json": "exe",
     "settings.json": "settings",
@@ -782,5 +785,5 @@
   "workbench.panel.showLabels": false,
   "workbench.settings.alwaysShowAdvancedSettings": true,
   "workbench.sideBar.location": "right",
-  "workbench.startupEditor": "welcomePage"
+  "workbench.startupEditor": "agentSessionsWelcomePage"
 }

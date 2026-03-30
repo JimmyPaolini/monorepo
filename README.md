@@ -85,7 +85,9 @@ nx affected --target=test
 All projects use strict TypeScript configuration and comprehensive linting:
 
 - **ESLint** - Code linting with strict rules
-- **Prettier** - Code formatting
+- **Oxfmt** - Primary code formatter
+- **Prettier** - Supplementary code formatting
+- **Biome** - Supplementary format checking and linting
 - **TypeScript** - Strict type checking
 - **Knip** - Unused code detection
 - **cspell** - Spell checking

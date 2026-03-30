@@ -1,12 +1,13 @@
-{
-  "$schema": "./node_modules/oxfmt/configuration_schema.json",
-  "arrowParens": "always",
-  "bracketSameLine": false,
-  "bracketSpacing": true,
-  "embeddedLanguageFormatting": "auto",
-  "endOfLine": "lf",
-  "htmlWhitespaceSensitivity": "css",
-  "ignorePatterns": [
+import { defineConfig } from "oxfmt";
+
+export default defineConfig({
+  arrowParens: "always",
+  bracketSameLine: false,
+  bracketSpacing: true,
+  embeddedLanguageFormatting: "auto",
+  endOfLine: "lf",
+  htmlWhitespaceSensitivity: "css",
+  ignorePatterns: [
     "!**/*.d.ts.map",
     "**/*.d.ts",
     "**/.next",
@@ -45,22 +46,22 @@
     "pnpm-lock.yaml",
     "tmp",
     "tools/code-generator/**/files/**",
-    "yarn.lock"
+    "yarn.lock",
   ],
-  "insertPragma": false,
-  "jsxSingleQuote": false,
-  "printWidth": 80,
-  "proseWrap": "preserve",
-  "quoteProps": "as-needed",
-  "rangeEnd": null,
-  "rangeStart": 0,
-  "requirePragma": false,
-  "semi": true,
-  "singleAttributePerLine": true,
-  "singleQuote": false,
-  "sortPackageJson": false,
-  "tabWidth": 2,
-  "trailingComma": "all",
-  "useTabs": false,
-  "vueIndentScriptAndStyle": false
-}
+  insertPragma: false,
+  jsxSingleQuote: false,
+  printWidth: 80,
+  proseWrap: "preserve",
+  quoteProps: "as-needed",
+  rangeEnd: null,
+  rangeStart: 0,
+  requirePragma: false,
+  semi: true,
+  singleAttributePerLine: true,
+  singleQuote: false,
+  sortPackageJson: false,
+  tabWidth: 2,
+  trailingComma: "all",
+  useTabs: false,
+  vueIndentScriptAndStyle: false,
+});

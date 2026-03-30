@@ -16,10 +16,11 @@ Add **Oxlint** and **Biome** as supplementary tools alongside the existing ESLin
 
 1. **`eslint-plugin-oxlint` removed** — Originally planned to add this plugin to disable overlapping ESLint rules (TASK-003, REQ-003). Removed per user preference: ESLint should remain the authoritative linter with all rules enabled. Both tools run independently as separate Nx targets. The package was uninstalled.
 2. **`@oxlint/migrate` uninstalled** — One-time setup tool removed after config generation to keep dependencies clean.
-3. **JSONC config format** — Config files are `.oxlintrc.jsonc` and `biome.jsonc` (not `.json`) per user request for inline documentation support.
+3. **JSONC config format** — Config files are `.oxlintrc.jsonc` and `biome.jsonc` (not `.json`) per user request for inline documentation support. Oxlint config was later migrated to TypeScript (`oxlint.config.ts`) using `defineConfig` from `oxlint`, and `.oxlintrc.jsonc` was deleted.
 4. **`unicorn/consistent-function-scoping` disabled** — Rule removed per user preference (conflicts with React render helper pattern).
-5. **Biome v2 schema changes** — `files.ignore` → `files.includes` with `!` negation patterns; `--config-path` accepts directory only; auto-discovers config from cwd.
-6. **Duplicate diagnostics accepted** — Without `eslint-plugin-oxlint`, both tools report overlapping rules. This is acceptable since they run as separate Nx targets.
+5. **Oxfmt adopted as primary formatter** — Despite being rejected in ALT-005 as too new, Oxfmt matured and was adopted as the primary formatter, with Prettier becoming a supplementary formatter. Added as an Nx `oxfmt` target with `check`/`write` configurations. Config uses TypeScript (`oxfmt.config.ts`) with `defineConfig` from `oxfmt`.
+6. **Biome v2 schema changes** — `files.ignore` → `files.includes` with `!` negation patterns; `--config-path` accepts directory only; auto-discovers config from cwd.
+7. **Duplicate diagnostics accepted** — Without `eslint-plugin-oxlint`, both tools report overlapping rules. This is acceptable since they run as separate Nx targets.
 
 ## 1. Requirements & Constraints
 
@@ -100,7 +101,7 @@ Add **Oxlint** and **Biome** as supplementary tools alongside the existing ESLin
 - **ALT-002**: **Biome only (no Oxlint)** — Use Biome for supplementary linting and format checking without Oxlint. Rejected because Oxlint has broader ESLint rule coverage (695+ rules vs. Biome's smaller set) and provides the largest linting speed improvement.
 - **ALT-003**: **Replace ESLint with Oxlint** — Remove ESLint entirely and use only Oxlint + Biome. Rejected because critical ESLint plugins have no equivalent: `@nx/eslint-plugin` (module boundaries), `eslint-plugin-tsdoc`, `eslint-plugin-jsdoc`, `eslint-plugin-jsonc`, `eslint-plugin-yml`, `@eslint/markdown`. Also rejected because the user explicitly wants existing tools preserved.
 - **ALT-004**: **Replace Prettier with Biome formatter** — Use Biome as the primary formatter instead of Prettier, modifying the `format` Nx target. Rejected because the user wants existing tools (including Prettier) to remain unchanged. Biome runs as a supplementary check only.
-- **ALT-005**: **Oxfmt instead of Biome for formatting** — Use Oxlint's companion formatter (Oxfmt, beta since 2026-02-24). Rejected because Oxfmt is 2 days old and still beta, while Biome's formatter is mature and stable.
+- **ALT-005**: **Oxfmt instead of Biome for formatting** — Use Oxlint's companion formatter (Oxfmt, beta since 2026-02-24). Rejected at the time because Oxfmt was 2 days old and still beta, while Biome's formatter was mature and stable. **Update**: Oxfmt was later adopted as the primary formatter (see Deviation 5).
 - **ALT-006**: **Biome with linter disabled** — Use Biome purely as a format checker with no lint rules. Rejected because Biome has some exclusive lint rules not covered by ESLint or Oxlint that provide additional value at minimal cost.
 
 ## 4. Dependencies
@@ -110,14 +111,14 @@ Add **Oxlint** and **Biome** as supplementary tools alongside the existing ESLin
 - **DEP-003**: ~~`@oxlint/migrate`~~ — **Removed**: One-time setup tool, uninstalled after generating `.oxlintrc.jsonc`.
 - **DEP-004**: `@biomejs/biome` — Rust-based supplementary format checker and linter. Installed as workspace root devDependency.
 - **DEP-005**: Existing `eslint@^9.39.3` — Fully retained and unchanged (primary linter).
-- **DEP-006**: Existing `prettier@^3.8.1` — Fully retained and unchanged (primary formatter).
+- **DEP-006**: Existing `prettier@^3.8.1` — Retained as supplementary formatter (Oxfmt is now primary).
 - **DEP-007**: Existing `eslint-config-prettier@^10.1.8` — Retained as last ESLint config entry.
 - **DEP-008**: Existing `stylelint@^17.4.0` — Retained unchanged for CSS linting.
 
 ## 5. Files
 
 - **FILE-001**: `biome.jsonc` (new) — Biome configuration file at workspace root (JSONC for inline documentation). Formatter settings match Prettier config exactly. Linter enabled for Biome-exclusive rules only. Import organization disabled.
-- **FILE-002**: `.oxlintrc.jsonc` (new) — Oxlint configuration file at workspace root (JSONC for inline documentation). Generated from ESLint config via `@oxlint/migrate`, manually refined. 13 override blocks with comprehensive inline docs.
+- **FILE-002**: `.oxlintrc.jsonc` → `oxlint.config.ts` (new, later migrated) — Oxlint configuration file at workspace root. Originally JSONC for inline documentation, later migrated to TypeScript using `defineConfig` from `oxlint` (Node.js ≥22.6 native TS execution). 13 override blocks with comprehensive inline docs.
 - **FILE-003**: `eslint.config.base.ts` (unchanged) — `eslint-plugin-oxlint` was NOT added per user preference. ESLint retains all rules.
 - **FILE-004**: `nx.json` (modified) — Add `oxlint` and `biome-check` targets to `targetDefaults`. No changes to existing `lint` or `format` targets.
 - **FILE-005**: `project.json` (root, modified) — Add `oxlint` and `biome-check` targets. Add both to `code-analysis` composite.

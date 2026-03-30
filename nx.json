@@ -1,5 +1,6 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "analytics": false,
   "bail": false,
   "cacheDirectory": ".nx/cache",
   "defaultBase": "main",
@@ -38,7 +39,7 @@
       "{workspaceRoot}/tsconfig.base.json"
     ]
   },
-  "parallel": 3,
+  "parallel": 1,
   "plugins": [
     {
       "options": {
@@ -143,6 +144,7 @@
         "check": {
           "commands": [
             "nx run {projectName}:biome:check",
+            "nx run {projectName}:oxfmt:check",
             "nx run {projectName}:prettier:check"
           ],
           "parallel": true
@@ -150,6 +152,7 @@
         "write": {
           "commands": [
             "nx run {projectName}:biome:write",
+            "nx run {projectName}:oxfmt:write",
             "nx run {projectName}:prettier:write"
           ],
           "parallel": false
@@ -219,6 +222,24 @@
         "cwd": "{workspaceRoot}"
       }
     },
+    "oxfmt": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "args": "--check"
+        },
+        "write": {
+          "args": "--write"
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands",
+      "inputs": ["{workspaceRoot}/oxfmt.config.ts", "default"],
+      "options": {
+        "command": "oxfmt {args} .",
+        "cwd": "{projectRoot}"
+      }
+    },
     "oxlint": {
       "cache": true,
       "configurations": {
@@ -229,9 +250,9 @@
       },
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
-      "inputs": ["{workspaceRoot}/.oxlintrc.jsonc", "default"],
+      "inputs": ["{workspaceRoot}/oxlint.config.ts", "default"],
       "options": {
-        "command": "oxlint {args} --config=.oxlintrc.jsonc {projectRoot}/src",
+        "command": "oxlint {args} {projectRoot}/src",
         "cwd": "{workspaceRoot}"
       }
     },

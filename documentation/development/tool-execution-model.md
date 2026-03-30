@@ -37,7 +37,7 @@ tsc
 - `typecheck`: Type checking without emitting
 - `lint`: ESLint, Oxlint, Biome
 - `test`: Vitest, Jest
-- `format`: Prettier, formatting checks
+- `format`: Oxfmt (primary), Prettier, Biome
 - `code-analysis`: Static analysis suites
 - Any custom target defined in `project.json`
 
