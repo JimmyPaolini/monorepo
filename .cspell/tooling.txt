@@ -118,6 +118,13 @@ pkill
 pydantic
 #endregion
 
+#region 🔐 GPG & Git Signing
+gpgsign
+keyid
+pinentry
+signingkey
+#endregion
+
 #region 📝 Git & Documentation
 frontmatter
 gitmodules

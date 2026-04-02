@@ -1,4 +1,14 @@
 #!/bin/bash
+# environment.sh — Bootstrap .env files for all projects from their defaults.
+#
+# Each project ships a .env.default containing safe placeholder values.
+# This script copies .env.default → .env for any project that doesn't already
+# have a .env, so developers can immediately run the stack without manually
+# creating env files. Existing .env files are never overwritten.
+#
+# Also injects LOCAL_WORKSPACE_FOLDER into the root .env so that docker-compose
+# volume mounts resolve correctly on the host (devcontainer sets this via
+# remoteEnv; local runs derive it from the current working directory).
 
 # Helper: copy .env.default → .env if missing
 setup_env_file() {

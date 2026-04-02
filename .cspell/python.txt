@@ -28,6 +28,7 @@ kwargs
 logprobs
 pathlib
 rstrip
+tomllib
 #endregion
 
 #region 🔧 Configuration Keys

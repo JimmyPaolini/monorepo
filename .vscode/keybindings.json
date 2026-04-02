@@ -215,6 +215,16 @@
     "command": "workbench.action.openEditorAtIndex9",
     "key": "cmd+9"
   },
+  {
+    "command": "workbench.action.pinEditor",
+    "key": "alt+p",
+    "when": "!activeEditorIsPinned"
+  },
+  {
+    "command": "workbench.action.unpinEditor",
+    "key": "alt+p",
+    "when": "activeEditorIsPinned"
+  },
 
   // 🤖 Cursor
 
@@ -256,5 +266,9 @@
   {
     "command": "workbench.action.toggleSidebarVisibility",
     "key": "cmd+;"
+  },
+  {
+    "command": "workbench.action.chat.openInEditor",
+    "key": "alt+m"
   }
 ]

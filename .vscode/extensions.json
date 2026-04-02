@@ -15,7 +15,6 @@
     "cweijan.vscode-database-client2", // Database Client
     "dbaeumer.vscode-eslint", // ESLint
     "docker.docker", // Docker DX
-    "donjayamanne.githistory", // Git History
     "eamodio.gitlens", // GitLens - Git supercharged
     "earshinov.permute-lines", // Permute Lines
     "ecmel.vscode-html-css", // HTML CSS Support
