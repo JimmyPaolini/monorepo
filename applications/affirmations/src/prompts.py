@@ -12,11 +12,10 @@ search_sources_prompt_template: PromptTemplate = PromptTemplate.from_template(
 generate_document_from_sources_prompt_template: ChatPromptTemplate = ChatPromptTemplate.from_messages(
     [
         SystemMessagePromptTemplate.from_template(
-            "You are a reference document writer for spiritual subjects. Summarize web search results into a structured markdown reference document. "
-            "Output ONLY raw markdown. Do NOT wrap your response in code fences or backtick blocks. "
-            "Start your response directly with the `# {subject_name}` heading. Target length 1600 words. "
-            "Use only the provided search results as the source of truth. Do not use prior knowledge. "
-            "Do not add sections beyond the ones specified."
+            "You are a reference document writer for spiritual subjects. Summarize web search results into a flowing prose reference document. "
+            "Output ONLY plain text in flowing paragraphs. Do NOT use any markdown formatting — no headings, no bullet points, no tables, no bold, no italic, no code fences. "
+            "Target length 1600 words. "
+            "Use only the provided search results as the source of truth. Do not use prior knowledge."
         ),
         HumanMessagePromptTemplate.from_template(
             """\
@@ -28,53 +27,20 @@ Web search results for "{subject_name}" ({category_name}):
 
 Write a reference document about the meaning of "{subject_name}" ({category_name_plural}) using the search results above.
 
-Your response must be raw markdown with EXACTLY the four sections below — no more, no fewer. \
-Do NOT add extra sections. Do NOT use code fences. Start directly with `# {subject_name}`.
+Your response must be plain flowing prose with NO markdown formatting whatsoever — no headings, no bullet points, \
+no numbered lists, no tables, no bold, no italic, no code fences. Write in connected paragraphs only.
 
-# {subject_name}
+The document should thoroughly cover these topics, weaving them together naturally rather than treating them as separate sections:
 
-## Meaning
+- The meaning, interpretation, and significance of "{subject_name}" within {category_name_plural} and how it relates to other subjects in the category. Ignore history and origins; focus on interpretation.
+- How the themes of "{subject_name}" apply to life: love, relationships, work, finances, health, and fortune.
+- Key symbols, imagery, and archetypes associated with "{subject_name}" and what they represent.
+- Cross-system correspondences in other spiritual and esoteric traditions \
+(tarot, lenormand, numerology, zodiac, planets, elements, cardinality, polarity, runes, chakras, colors, \
+solfeggio frequencies, sephirot, hebrew letters, kabbalah worlds, gemstones, metals, weekdays). \
+Include only correspondences with specific, factual values found in the search results.
 
-Explain the meaning and interpretation of "{subject_name}". Ignore its history and origins; focus on interpretation. \
-Describe its significance within {category_name_plural} and how it relates to other subjects in the category.
-
-## Application
-
-Summarize how the themes of "{subject_name}" apply to different aspects of life: love, relationships, work, finances, health, and fortune.
-
-## Symbolism
-
-Highlight key symbols, imagery, and archetypes associated with "{subject_name}" and what they represent.
-
-## Correspondences
-
-List the factual cross-system correspondences for "{subject_name}" in other spiritual and esoteric traditions. \
-Include ONLY rows with a specific, factual correspondence found in the search results. \
-Do NOT include life domains such as love, relationships, career, health, finances, or fortune — those belong in Application. \
-Replace `...` with actual values. Remove rows with no known correspondence.
-
-| Category | Subject | Notes |
-| -------- | ------- | ----- |
-| tarot | ... | ... |
-| lenormand | ... | ... |
-| number | ... | ... |
-| suit | ... | ... |
-| rank | ... | ... |
-| zodiac | ... | ... |
-| planet | ... | ... |
-| element | ... | ... |
-| cardinality | ... | ... |
-| polarity | ... | ... |
-| rune | ... | ... |
-| chakra | ... | ... |
-| color | ... | ... |
-| solfeggio | ... | ... |
-| sephirot | ... | ... |
-| hebrew letter | ... | ... |
-| kabbalah world | ... | ... |
-| gemstone | ... | ... |
-| metal | ... | ... |
-| weekday | ... | ... |\
+Interleave these topics freely wherever connections arise. Let the structure emerge from the content.\
 """
         ),
     ]
@@ -113,11 +79,10 @@ Be concise.\"
 generate_document_prompt_template: ChatPromptTemplate = ChatPromptTemplate.from_messages(
     [
         SystemMessagePromptTemplate.from_template(
-            "You are a reference document writer for spiritual subjects. Summarize a research brief into a structured markdown reference document. "
-            "Output ONLY raw markdown. Do NOT wrap your response in code fences or backtick blocks. "
-            "Start your response directly with the `# {subject_name}` heading. Target length 1600 words. "
-            "Use only the provided research brief as the source of truth. Do not use prior knowledge. "
-            "Do not add sections beyond the ones specified."
+            "You are a reference document writer for spiritual subjects. Summarize a research brief into a flowing prose reference document. "
+            "Output ONLY plain text in flowing paragraphs. Do NOT use any markdown formatting — no headings, no bullet points, no tables, no bold, no italic, no code fences. "
+            "Target length 1600 words. "
+            "Use only the provided research brief as the source of truth. Do not use prior knowledge."
         ),
         HumanMessagePromptTemplate.from_template(
             """\
@@ -129,54 +94,22 @@ Research brief for "{subject_name}" ({category_name}):
 
 Write a reference document about the meaning of "{subject_name}" ({category_name_plural}) using the research brief above.
 
-Your response must be raw markdown with EXACTLY the four sections below — no more, no fewer. \
-Do NOT add extra sections. Do NOT use code fences. Start directly with `# {subject_name}`.
+Your response must be plain flowing prose with NO markdown formatting whatsoever — no headings, no bullet points, \
+no numbered lists, no tables, no bold, no italic, no code fences. Write in connected paragraphs only.
 
-# {subject_name}
+Cover the following topics in order, transitioning naturally between them:
 
-## Meaning
-
-Explain the meaning and interpretation of "{subject_name}". Ignore its history and origins; focus on interpretation. \
+Begin by explaining the meaning and interpretation of "{subject_name}". Ignore its history and origins; focus on interpretation. \
 Describe its significance within {category_name_plural} and how it relates to other subjects in the category.
 
-## Application
+Then discuss how the themes of "{subject_name}" apply to different aspects of life: love, relationships, work, finances, health, and fortune.
 
-Summarize how the themes of "{subject_name}" apply to different aspects of life: love, relationships, work, finances, health, and fortune.
+Next, highlight key symbols, imagery, and archetypes associated with "{subject_name}" and what they represent.
 
-## Symbolism
-
-Highlight key symbols, imagery, and archetypes associated with "{subject_name}" and what they represent.
-
-## Correspondences
-
-List the factual cross-system correspondences for "{subject_name}" in other spiritual and esoteric traditions. \
-Output ONLY a markdown table — do NOT use bullet points, numbered lists, bold text, or prose. \
-Include ONLY rows with a specific, factual correspondence found in the research brief. \
-Do NOT include life domains such as love, relationships, career, health, finances, or fortune — those belong in Application. \
-Replace `...` with actual values. Remove rows with no known correspondence.
-
-| Category | Subject | Notes |
-| -------- | ------- | ----- |
-| tarot | ... | ... |
-| lenormand | ... | ... |
-| number | ... | ... |
-| suit | ... | ... |
-| rank | ... | ... |
-| zodiac | ... | ... |
-| planet | ... | ... |
-| element | ... | ... |
-| cardinality | ... | ... |
-| polarity | ... | ... |
-| rune | ... | ... |
-| chakra | ... | ... |
-| color | ... | ... |
-| solfeggio | ... | ... |
-| sephirot | ... | ... |
-| hebrew letter | ... | ... |
-| kabbalah world | ... | ... |
-| gemstone | ... | ... |
-| metal | ... | ... |
-| weekday | ... | ... |\
+Finally, weave in the cross-system correspondences for "{subject_name}" in other spiritual and esoteric traditions, \
+such as tarot, lenormand, numerology, zodiac, planets, elements, cardinality, polarity, runes, chakras, colors, \
+solfeggio frequencies, sephirot, hebrew letters, kabbalah worlds, gemstones, metals, and weekdays. \
+Include only correspondences with specific, factual values found in the research brief.\
 """
         ),
     ]

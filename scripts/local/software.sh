@@ -47,6 +47,25 @@ nvm install
 nvm use
 echo "👍 Node.js $(nvm current)"
 
+# ── Husky (git hooks) ──────────────────────────────────────────────
+# Husky runs hooks in a restricted shell that doesn't load shell profiles,
+# so node (nvm) and python tools (pyenv/uv) won't be in PATH without this init file.
+echo "🔍 Setting up husky init..."
+mkdir -p "$HOME/.config/husky"
+HUSKY_INIT_FILE="$HOME/.config/husky/init.sh"
+if [ ! -f "$HUSKY_INIT_FILE" ] || ! grep -q 'local/bin' "$HUSKY_INIT_FILE"; then
+  cat > "$HUSKY_INIT_FILE" << 'HUSKY_INIT'
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+# uv is installed to ~/.local/bin by its installer
+export PATH="$HOME/.local/bin:$PATH"
+HUSKY_INIT
+  echo "✅ Updated ~/.config/husky/init.sh to source nvm and uv in git hooks"
+else
+  echo "👍 ~/.config/husky/init.sh already configured"
+fi
+
 # ── JavaScript / Monorepo tools ────────────────────────────────────
 brew_install_or_check "pnpm"
 
