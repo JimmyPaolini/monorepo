@@ -10,7 +10,7 @@ fi
 echo "🚪 Setting script to exit immediately on error..."
 set -e
 
-echo "🎛️ Exporting environment variables from .env file..."
+echo "🎛️  Exporting environment variables from .env file..."
 if [ -f ".env" ]; then
   set -a
   source .env
