@@ -13,13 +13,14 @@ def strip_markdown_fences(content: str) -> str:
     return content.strip()
 
 
-def write_document(subject: Subject, content: str) -> None:
-    output_directory = Path(f"../../output/{subject.category.slug}")
+def write_document(subject: Subject, content: str, subfolder: str | None = None) -> None:
+    base = f"../../output/{subfolder}" if subfolder else "../../output"
+    output_directory = Path(f"{base}/{subject.category.slug}")
     output_directory.mkdir(parents=True, exist_ok=True)
     output_filename = f"{subject.order}-{subject.slug}.md"
     output_path = output_directory / output_filename
     output_path.write_text(content, encoding="utf-8")
-    print(f"\nWritten to: {output_path.resolve()}\n")
+    print(f"Wrote document to: {output_path.resolve()}")
 
 
 def write_affirmations_json(
@@ -31,7 +32,7 @@ def write_affirmations_json(
     output_directory.mkdir(parents=True, exist_ok=True)
     output_path = output_directory / f"{subject.slug}.json"
     output_path.write_text(subject_affirmations.model_dump_json(indent=2), encoding="utf-8")
-    print(f"\nWritten to: {output_path.resolve()}\n")
+    print(f"Wrote affirmations JSON to: {output_path.resolve()}")
 
 
 def write_affirmations_markdown(
@@ -48,4 +49,4 @@ def write_affirmations_markdown(
         for i, affirmation in enumerate(grammar_affirmations.affirmations, start=1):
             lines.append(f"{i}. {affirmation.text}")
     output_path.write_text("\n".join(lines), encoding="utf-8")
-    print(f"\nWritten to: {output_path.resolve()}\n")
+    print(f"Wrote affirmations Markdown to: {output_path.resolve()}\n")

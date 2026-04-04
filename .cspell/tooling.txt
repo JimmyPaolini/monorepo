@@ -33,9 +33,10 @@ commitlint
 cssmodule
 esconfig
 eslint
-oxfmt
+nbstripout
 nonconstructor
 nonoctal
+oxfmt
 oxlint
 oxlintrc
 proptypes

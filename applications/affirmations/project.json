@@ -118,7 +118,19 @@
         "cwd": "applications/affirmations"
       }
     },
-    "spell-check": {},
+    "spell-check": {
+      "inputs": [
+        "{projectRoot}/*.{md,yaml,yml,json}",
+        "{projectRoot}/src/**/*.{py,ipynb,md,yaml,yml,json}",
+        "{projectRoot}/testing/**/*.{py,md}",
+        "{workspaceRoot}/cspell.config.yaml",
+        "sharedGlobals"
+      ],
+      "options": {
+        "command": "cspell 'src/**/*.{py,ipynb,md,yaml,yml,json}' 'testing/**/*.{py,md}' '*.{md,yaml,yml,json}' --no-progress",
+        "cwd": "applications/affirmations"
+      }
+    },
     "test": {
       "configurations": {
         "coverage": {

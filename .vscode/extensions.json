@@ -51,6 +51,7 @@
     "nguyenngoclong.terminal-keeper", // Terminal Keeper
     "nrwl.angular-console", // Nx Console
     "oderwat.indent-rainbow", // indent-rainbow
+    "oxc.oxc-vscode", // Oxc
     "pflannery.vscode-versionlens", // Version Lens
     "PKief.material-icon-theme", // Material Icon Theme
     "quicktype.quicktype", // Paste JSON as Code

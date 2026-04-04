@@ -14,16 +14,18 @@ dependencies = [
   "wikipedia>=1.4",
   "trafilatura>=2.0",
   "inflect>=7.5.0",
+  "pandas>=2.0",
 ]
 
 [dependency-groups]
 dev = [
-  "ruff>=0.9",
+  "nbstripout>=0.8",
   "pyright>=1.1",
-  "vulture>=2.14",
   "pytest>=8.0",
   "pytest-cov>=6.0",
+  "ruff>=0.9",
   "types-requests>=2.32",
+  "vulture>=2.14",
 ]
 
 [build-system]

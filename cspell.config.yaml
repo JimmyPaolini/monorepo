@@ -1,5 +1,6 @@
 version: "0.2"
 language: en
+useGitignore: true
 $schema: https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json
 ignorePaths:
   - ./.devcontainer/devcontainer.json
@@ -110,3 +111,10 @@ dictionaries:
   - python
   - infrastructure
   - tooling
+patterns:
+  - name: notebook-outputs
+    pattern: /"outputs"\s*:\s*\[(?:[^\[\]]*|\[(?:[^\[\]]*|\[(?:[^\[\]]*|\[[^\[\]]*\])*[^\[\]]*\])*[^\[\]]*\])*[^\[\]]*\]/g
+overrides:
+  - filename: "**/*.ipynb"
+    ignoreRegExpList:
+      - notebook-outputs

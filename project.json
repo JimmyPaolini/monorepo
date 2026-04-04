@@ -188,7 +188,7 @@
       "description": "Run lint-staged on staged files (invoked by the pre-commit git hook)",
       "executor": "nx:run-commands",
       "options": {
-        "command": "NODE_OPTIONS='--import=tsx' lint-staged --continue-on-error --concurrent false",
+        "command": "unset FORCE_COLOR && NODE_OPTIONS='--import=tsx' lint-staged --continue-on-error",
         "cwd": "{projectRoot}"
       }
     },
@@ -322,7 +322,7 @@
         "default"
       ],
       "options": {
-        "command": "cspell '*.{ts,tsx,js,jsx,md,yaml,yml,json}' 'scripts/**' 'documentation/**' 'infrastructure/**' 'planning/**' --no-progress",
+        "command": "cspell '*.{ts,tsx,js,jsx,md,yaml,yml,json}' 'scripts/**' 'documentation/**' 'infrastructure/**' 'planning/**' --no-progress --gitignore",
         "cwd": "{projectRoot}"
       }
     },

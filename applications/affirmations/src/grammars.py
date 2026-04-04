@@ -426,6 +426,98 @@ class Grammar(BaseModel):
         """
         return "-".join(specifier.replace("_", "-").lower() for specifier in self.specifiers)
 
+    @computed_field  # type: ignore[prop-decorator]
+    @property
+    def description(self) -> str:
+        """Clear, imperative generation instructions for each active grammatical constraint."""
+        lines: list[str] = []
+
+        if self.form == Form.FINITE:
+            lines.append("Use a fully conjugated (finite) verb that agrees with its subject.")
+        elif self.form == Form.INFINITIVE:
+            lines.append(
+                "Start with the base infinitive: 'To [verb]...' — no subject or conjugation."
+            )
+        elif self.form == Form.GERUND:
+            lines.append("Begin with a gerund (-ing form as a noun), e.g., 'Being brave is...'.")
+        elif self.form == Form.PARTICIPLE:
+            lines.append("Begin with a participial phrase (-ing or past-participle as a modifier).")
+        elif self.form == Form.SUPINE:
+            lines.append(
+                "Use a purposive infinitive structure, e.g., 'I walk forward to discover...'."
+            )
+
+        if self.mood == Mood.INDICATIVE:
+            lines.append("State a direct fact or present truth (indicative mood).")
+        elif self.mood == Mood.INTERROGATIVE:
+            lines.append(
+                "CRITICAL: The sentence MUST be phrased as a QUESTION ending with '?', "
+                "e.g., 'Am I not...?', 'Have I not...?', 'Can I not...?'. "
+                "Do NOT write a declarative statement."
+            )
+        elif self.mood == Mood.IMPERATIVE:
+            lines.append("Give a direct command (imperative mood), e.g., 'Be bold!'.")
+        elif self.mood == Mood.OPTATIVE:
+            lines.append("Express a wish or hope, e.g., 'May I find...', 'If only I could...'.")
+        elif self.mood == Mood.POTENTIAL:
+            lines.append("Express capability or possibility using 'can' or 'could'.")
+        elif self.mood == Mood.SUBJUNCTIVE:
+            lines.append(
+                "Express a wish or hypothetical using 'may', 'might', or subjunctive form."
+            )
+        elif self.mood == Mood.CONDITIONAL:
+            lines.append("Express a condition using 'would', e.g., 'I would be... if...'.")
+        elif self.mood == Mood.HORTATIVE:
+            lines.append("Use an exhortation with 'let us', e.g., 'Let us embrace...'.")
+        elif self.mood == Mood.JUSSIVE:
+            lines.append(
+                "Express an order to a third party, e.g., 'Let her be...', 'Let them find...'."
+            )
+
+        if self.voice == Voice.ACTIVE:
+            lines.append("Use ACTIVE voice: the subject ('I'/'we') performs the action.")
+        elif self.voice == Voice.PASSIVE:
+            lines.append(
+                "CRITICAL: Use PASSIVE voice — the subject receives the action. "
+                "Pattern: 'I am/was/have been [past participle]', "
+                "e.g., 'I am loved', 'I am guided', 'I am supported by...'. "
+                "Do NOT write active sentences like 'I trust' or 'I choose'."
+            )
+
+        if self.polarity == Polarity.NEGATIVE:
+            lines.append("Include negation using 'not', 'never', 'no longer', or 'without'.")
+        elif self.polarity == Polarity.POSITIVE:
+            lines.append("Do not include any negation words ('not', 'never', 'no').")
+
+        if self.aspect == Aspect.HABITUAL:
+            lines.append(
+                "Express a recurring action using 'always', 'regularly', 'consistently', or 'every day'."
+            )
+        elif self.aspect == Aspect.PERFECT_PROGRESSIVE:
+            lines.append("Use the perfect progressive: 'I have been [verb]ing...'.")
+        elif self.aspect == Aspect.PROGRESSIVE:
+            lines.append("Use the progressive: 'I am [verb]ing...'.")
+
+        if self.tense == Tense.FUTURE_PERFECT:
+            lines.append("Use the future perfect tense: 'I will have [past participle]...'.")
+        elif self.tense == Tense.FUTURE:
+            lines.append("Use the future tense with 'will': 'I will...'.")
+        elif self.tense == Tense.PAST:
+            lines.append("Use the past tense, e.g., 'I was...', 'I chose...'.")
+        elif self.tense == Tense.PRESENT:
+            lines.append("Use the present tense, e.g., 'I am...', 'I trust...'.")
+
+        if self.person == Person.FIRST and self.number == Number.SINGULAR:
+            lines.append("Subject is 'I' (first person singular).")
+        elif self.person == Person.FIRST and self.number == Number.PLURAL:
+            lines.append("Subject is 'we' (first person plural).")
+        elif self.person == Person.SECOND:
+            lines.append("Subject/address is 'you' (second person).")
+        elif self.person == Person.THIRD:
+            lines.append("Subject is third-person: 'he', 'she', 'it', or 'they'.")
+
+        return "\n".join(f"- {line}" for line in lines)
+
     def __str__(self) -> str:
         return self.slug
 

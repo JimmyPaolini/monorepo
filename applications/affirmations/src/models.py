@@ -29,4 +29,4 @@ class GeneratedAffirmations(BaseModel):
 
 class ValidationResult(BaseModel):
     valid: bool
-    reason: str
+    reason: str | None = None

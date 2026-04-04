@@ -42,22 +42,24 @@ const config = {
   // ── Config synchronization ──
   // Keep VS Code extensions list in sync between .vscode and local devcontainer config
   "{.vscode/extensions.json,.devcontainer/local/devcontainer.json}": () => [
-    "nx run monorepo:sync-vscode-extensions:check",
+    "nx run monorepo:sync-vscode-extensions:check --outputStyle=dynamic-legacy",
   ],
   // Keep cloud devcontainer config in sync with local config for common fields
   "{.devcontainer/cloud/devcontainer.json,.devcontainer/local/devcontainer.json}":
-    () => ["nx run monorepo:sync-devcontainer-configuration:check"],
+    () => [
+      "nx run monorepo:sync-devcontainer-configuration:check --outputStyle=dynamic-legacy",
+    ],
   // Keep conventional commit types/scopes consistent across config, settings, docs, and issue templates
   [`{${syncConventionalConfigFiles.join(",")}}`]: () => [
-    "nx run monorepo:sync-conventional-config:check",
+    "nx run monorepo:sync-conventional-config:check --outputStyle=dynamic-legacy",
   ],
   // Keep PR template in sync across skills and prompt files
   [`{${syncPullRequestTemplateFiles.join(",")}}`]: () => [
-    "nx run monorepo:sync-pull-request-template:check",
+    "nx run monorepo:sync-pull-request-template:check --outputStyle=dynamic-legacy",
   ],
   // Keep agent skills table of contents in sync in AGENTS.md
   [`{${syncAgentSkillsFiles.join(",")}}`]: () => [
-    "nx run monorepo:sync-agent-skills:check",
+    "nx run monorepo:sync-agent-skills:check --outputStyle=dynamic-legacy",
   ],
 
   // ── TypeScript / JavaScript source files ──
@@ -65,7 +67,17 @@ const config = {
   // on affected projects. nx affected includes monorepo when root-level files change.
   "*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}": (files: string[]) => {
     return [
-      `nx affected --target=format,lint,typecheck,spell-check --configuration=check --files=${getPaths(files)}`,
+      `nx affected --target=format,lint,typecheck,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
+    ];
+  },
+
+  // ── Jupyter notebooks ──
+  // Strip outputs first (nbstripout modifies in-place; lint-staged re-stages the
+  // clean file), then spell-check the now-output-free notebook.
+  "*.ipynb": (files: string[]) => {
+    return [
+      `uv run --directory applications/affirmations nbstripout ${files.join(" ")}`,
+      `nx affected --target=spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
     ];
   },
 
@@ -73,7 +85,7 @@ const config = {
   // Runs format (Ruff), lint (Ruff), typecheck (pyright), and dead-code detection (vulture)
   "*.py": (files: string[]) => {
     return [
-      `nx affected --target=format,lint,spell-check,typecheck,vulture --configuration=check --files=${getPaths(files)}`,
+      `nx affected --target=format,lint,spell-check,typecheck,vulture --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
     ];
   },
 
@@ -81,7 +93,7 @@ const config = {
   // Format and spell-check only (no lint or typecheck needed)
   "*.{json,jsonc,json5,html}": (files: string[]) => {
     return [
-      `nx affected --target=format,spell-check --configuration=check --files=${getPaths(files)}`,
+      `nx affected --target=format,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
     ];
   },
 
@@ -89,7 +101,7 @@ const config = {
   // Runs Stylelint, format, and spell-check
   "*.css": (files: string[]) => {
     return [
-      `nx affected --target=stylelint,format,spell-check --configuration=check --files=${getPaths(files)}`,
+      `nx affected --target=stylelint,format,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
     ];
   },
 
@@ -97,15 +109,16 @@ const config = {
   // Runs format, ESLint markdown plugin, markdownlint, and spell-check
   "*.{md,mdx}": (files: string[]) => {
     return [
-      `nx affected --target=format,lint,markdown-lint,spell-check --configuration=check --files=${getPaths(files)}`,
+      `nx affected --target=format,lint,markdown-lint,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
     ];
   },
 
   // ── YAML files ──
   // Runs format, yamllint, and spell-check (GitHub Actions, Helm values, etc.)
-  "*.{yml,yaml}": (files: string[]) => {
+  // pnpm-lock.yaml is excluded: it's auto-generated and should not be linted.
+  "{*.yml,!(pnpm-lock).yaml}": (files: string[]) => {
     return [
-      `nx affected --target=format,yaml-lint,spell-check --configuration=check --files=${getPaths(files)}`,
+      `nx affected --target=format,yaml-lint,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
     ];
   },
 };

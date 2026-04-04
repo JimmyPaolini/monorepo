@@ -23,12 +23,25 @@ venv
 #region 📚 Standard Library
 classmethod
 dataclasses
+getattr
+hasattr
 isinstance
+iterdir
+iterrows
 kwargs
 logprobs
 pathlib
 rstrip
 tomllib
+#endregion
+
+#region 🔢 NumPy
+argsort
+dtype
+keepdims
+linalg
+ndarray
+numpy
 #endregion
 
 #region 🔧 Configuration Keys
