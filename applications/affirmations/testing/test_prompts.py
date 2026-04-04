@@ -2,13 +2,25 @@ import pytest
 from langchain_core.messages import HumanMessage, SystemMessage
 
 from src.prompts import (
-    analyze_document_prompt_template,
-    analyze_sources_prompt_template,
-    generate_affirmations_prompt_template,
-    generate_document_from_sources_prompt_template,
-    generate_document_prompt_template,
+    affirmations_analyze_document_prompt_template as analyze_document_prompt_template,
+)
+from src.prompts import (
+    affirmations_analyze_sources_prompt_template as analyze_sources_prompt_template,
+)
+from src.prompts import (
+    affirmations_generate_affirmations_prompt_template as generate_affirmations_prompt_template,
+)
+from src.prompts import (
+    affirmations_generate_document_from_sources_prompt_template as generate_document_from_sources_prompt_template,
+)
+from src.prompts import (
+    affirmations_generate_document_prompt_template as generate_document_prompt_template,
+)
+from src.prompts import (
+    affirmations_validate_affirmation_prompt_template as validate_affirmation_prompt_template,
+)
+from src.prompts import (
     search_sources_prompt_template,
-    validate_affirmation_prompt_template,
 )
 
 
@@ -33,6 +45,7 @@ def test_generate_affirmations_prompt_format() -> None:
         document_analysis="Core themes: freedom, adventure, new beginnings.",
         grammar_name="⭐ Indicative Active Present Simple First Singular",
         grammar_specifiers="Indicative, Active, Present, Simple, First, Singular",
+        grammar_description="Use simple present tense, first person singular, active voice.",
         grammar_examples="I am free; I trust myself; I embrace the journey",
         grammar_emoji="⭐",
     )
@@ -51,6 +64,8 @@ def test_validate_affirmation_prompt_format() -> None:
         affirmation_text="I trust the universe.",
         grammar_name="⭐ Indicative Active Present Simple First Singular",
         grammar_specifiers="Indicative, Active, Present, Simple, First, Singular",
+        grammar_description="Use simple present tense, first person singular, active voice.",
+        grammar_examples="I am free; I trust myself; I embrace the journey",
     )
     assert len(messages) == 2
     assert isinstance(messages[0], SystemMessage)

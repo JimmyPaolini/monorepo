@@ -6,29 +6,36 @@ from src.subjects import Subject
 
 
 def strip_markdown_fences(content: str) -> str:
-    """Strip leading/trailing markdown code fences that small LLMs sometimes emit."""
     content = content.strip()
     content = re.sub(r"^```(?:markdown)?\s*\n", "", content)
     content = re.sub(r"\n```\s*$", "", content)
-    return content.strip()
+    return content
 
 
-def write_document(subject: Subject, content: str, subfolder: str | None = None) -> None:
-    base = f"../../output/{subfolder}" if subfolder else "../../output"
-    output_directory = Path(f"{base}/{subject.category.slug}")
+def write_affirmations_document_markdown(subject: Subject, content: str) -> None:
+    output_directory = Path(f"../../output/affirmations/documents/{subject.category.slug}")
+    output_directory.mkdir(parents=True, exist_ok=True)
+    output_filename = f"{subject.order}-{subject.slug}.md"
+    output_path = output_directory / output_filename
+    content = strip_markdown_fences(content)
+    output_path.write_text(content, encoding="utf-8")
+    print(f"Wrote affirmations document Markdown to: {output_path.resolve()}")
+
+
+def write_semantics_document_markdown(subject: Subject, content: str) -> None:
+    output_directory = Path(f"../../output/semantic-documents/{subject.category.slug}")
     output_directory.mkdir(parents=True, exist_ok=True)
     output_filename = f"{subject.order}-{subject.slug}.md"
     output_path = output_directory / output_filename
     output_path.write_text(content, encoding="utf-8")
-    print(f"Wrote document to: {output_path.resolve()}")
+    print(f"Wrote semantics document to: {output_path.resolve()}")
 
 
 def write_affirmations_json(
-    subject: Subject,
     subject_affirmations: SubjectAffirmations,
-    output_dir: Path | None = None,
 ) -> None:
-    output_directory = output_dir if output_dir is not None else Path("../../output/affirmations")
+    subject = subject_affirmations.subject
+    output_directory = Path("../../output/affirmations")
     output_directory.mkdir(parents=True, exist_ok=True)
     output_path = output_directory / f"{subject.slug}.json"
     output_path.write_text(subject_affirmations.model_dump_json(indent=2), encoding="utf-8")
@@ -36,11 +43,10 @@ def write_affirmations_json(
 
 
 def write_affirmations_markdown(
-    subject: Subject,
     subject_affirmations: SubjectAffirmations,
-    output_dir: Path | None = None,
 ) -> None:
-    output_directory = output_dir if output_dir is not None else Path("../../output/affirmations")
+    subject = subject_affirmations.subject
+    output_directory = Path("../../output/affirmations")
     output_directory.mkdir(parents=True, exist_ok=True)
     output_path = output_directory / f"{subject.slug}.md"
     lines: list[str] = [f"# {subject.name} Affirmations\n"]

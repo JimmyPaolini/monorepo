@@ -195,13 +195,13 @@ See [AGENTS.md](AGENTS.md) for:
 
 **Caelundas** (Latin-inspired portmanteau):
 
-- _Caelum_ (Latin): Sky, heavens
-- _Calendar_ (English): System for organizing dates
+- *Caelum* (Latin): Sky, heavens
+- *Calendar* (English): System for organizing dates
 
 Alternative names considered:
 
 - **Caelendars**: Closer to "Calendars"
-- **Caelundae**: Latin feminine plural _-ae_ ending
+- **Caelundae**: Latin feminine plural *-ae* ending
 - **Caelunday**: Latin root + "day" suffix
 
 ## License

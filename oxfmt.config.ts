@@ -10,6 +10,8 @@ export default defineConfig({
   ignorePatterns: [
     "!**/*.d.ts.map",
     "**/*.d.ts",
+    "**/*.md",
+    "**/*.mdx",
     "**/.next",
     "**/.nx",
     "**/.terraform/**",

@@ -62,7 +62,6 @@
           "nx run {projectName}:sync-conventional-config:{args.configuration}",
           "nx run {projectName}:sync-pull-request-template:{args.configuration}",
           "nx run {projectName}:sync-vscode-extensions:{args.configuration}",
-          "nx run {projectName}:sync-vscode-settings:{args.configuration}",
           "nx run {projectName}:typecheck"
         ]
       }
