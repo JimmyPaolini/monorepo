@@ -4,7 +4,12 @@
   "name": "lexico",
   "projectType": "application",
   "sourceRoot": "applications/lexico/src",
-  "tags": ["framework:react", "stack:tanstack-start", "type:app"],
+  "tags": [
+    "framework:react",
+    "language:typescript",
+    "stack:tanstack-start",
+    "type:app"
+  ],
   "targets": {
     "biome-format": {},
     "biome-lint": {},
@@ -30,15 +35,15 @@
     "code-analysis": {
       "options": {
         "commands": [
-          "nx run lexico:dependency-analysis",
-          "nx run lexico:format:{args.configuration}",
-          "nx run lexico:knip:{args.configuration}",
-          "nx run lexico:lint:{args.configuration}",
-          "nx run lexico:markdown-lint:{args.configuration}",
-          "nx run lexico:spell-check",
-          "nx run lexico:type-coverage",
-          "nx run lexico:typecheck",
-          "nx run lexico:yaml-lint"
+          "nx run {projectName}:dependency-analysis",
+          "nx run {projectName}:format:{args.configuration}",
+          "nx run {projectName}:knip:{args.configuration}",
+          "nx run {projectName}:lint:{args.configuration}",
+          "nx run {projectName}:markdown-lint:{args.configuration}",
+          "nx run {projectName}:spell-check",
+          "nx run {projectName}:type-coverage",
+          "nx run {projectName}:typecheck",
+          "nx run {projectName}:yaml-lint"
         ]
       }
     },

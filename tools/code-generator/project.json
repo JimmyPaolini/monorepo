@@ -4,7 +4,7 @@
   "prefix": "lib",
   "projectType": "library",
   "sourceRoot": "tools/code-generator/src",
-  "tags": ["type:util"],
+  "tags": ["language:typescript", "type:util"],
   "targets": {
     "biome-format": {},
     "biome-lint": {},
@@ -19,13 +19,13 @@
     "code-analysis": {
       "options": {
         "commands": [
-          "nx run code-generator:dependency-analysis",
-          "nx run code-generator:format:{args.configuration}",
-          "nx run code-generator:knip:{args.configuration}",
-          "nx run code-generator:lint:{args.configuration}",
-          "nx run code-generator:spell-check",
-          "nx run code-generator:type-coverage",
-          "nx run code-generator:typecheck"
+          "nx run {projectName}:dependency-analysis",
+          "nx run {projectName}:format:{args.configuration}",
+          "nx run {projectName}:knip:{args.configuration}",
+          "nx run {projectName}:lint:{args.configuration}",
+          "nx run {projectName}:spell-check",
+          "nx run {projectName}:type-coverage",
+          "nx run {projectName}:typecheck"
         ]
       }
     },

@@ -40,6 +40,9 @@ jobs:
       - name: 🕋 Setup monorepo
         uses: ./.github/actions/setup-monorepo
 
+      - name: 🥷 Bandit Security Scan
+        run: pnpm exec nx affected --target=bandit --base=$NX_BASE --head=$NX_HEAD --parallel=3
+
       - name: 📚 Dependency Audit
         run: pnpm exec nx affected --target=dependency-audit --parallel=3
 

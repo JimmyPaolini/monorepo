@@ -83,6 +83,15 @@ Specialized domain knowledge for working on specific systems or patterns:
 
 ## Key Conventions
 
+### Project Tags
+
+- **`language:typescript`** — applied to all TypeScript projects (caelundas, lexico, lexico-components, code-generator, monorepo)
+- **`language:python`** — applied to all Python projects (affirmations)
+
+These tags enable conditional sub-target composition in composite targets (`format`, `lint`, `typecheck`, `test`). Python projects override the TS-default composite targets to compose Python sub-targets (`ruff-format`, `ruff-lint`, `pyright`, `py-test`) instead of TS ones.
+
+See [Python Conventions](documentation/conventions/python.md) for the full Python tooling setup.
+
 ### TypeScript
 
 - **Strict mode enabled**: `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `verbatimModuleSyntax`
@@ -216,10 +225,13 @@ nx run lexico:supabase:database-diff   # Create migration
 nx run affirmations:ollama           # Start Ollama container (default: start)
 nx run affirmations:searxng          # Start SearxNG container (default: start)
 nx run affirmations:open-webui       # Start Open WebUI container (default: start)
-nx run affirmations:test             # Run unit tests
+nx run affirmations:test             # Run all tests
+nx run affirmations:test:unit        # Run unit tests
 nx run affirmations:lint             # Ruff linting
-nx run affirmations:typecheck        # pyright type checking
-nx run affirmations:vulture        # Detect unused code (vulture)
+nx run affirmations:typecheck        # pyright + ty type checking (parallel)
+nx run affirmations:ty               # ty type checker (standalone)
+nx run affirmations:bandit           # Security linting
+nx run affirmations:vulture          # Detect unused code
 nx run affirmations:open-webui --configuration=open  # Open Ollama chat UI
 nx run affirmations:searxng --configuration=open     # Open SearxNG search UI
 ```

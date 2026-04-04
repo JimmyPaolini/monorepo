@@ -53,17 +53,17 @@
       "description": "Run all static code analysis tools for workspace root (typecheck, lint, format, knip, spell-check, markdown-lint, yaml-lint)",
       "options": {
         "commands": [
-          "nx run monorepo:format:{args.configuration}",
-          "nx run monorepo:knip:{args.configuration}",
-          "nx run monorepo:lint:{args.configuration}",
-          "nx run monorepo:markdown-lint:{args.configuration}",
-          "nx run monorepo:spell-check",
-          "nx run monorepo:sync-agent-skills:{args.configuration}",
-          "nx run monorepo:sync-conventional-config:{args.configuration}",
-          "nx run monorepo:sync-pull-request-template:{args.configuration}",
-          "nx run monorepo:sync-vscode-extensions:{args.configuration}",
-          "nx run monorepo:sync-vscode-settings:{args.configuration}",
-          "nx run monorepo:typecheck"
+          "nx run {projectName}:format:{args.configuration}",
+          "nx run {projectName}:knip:{args.configuration}",
+          "nx run {projectName}:lint:{args.configuration}",
+          "nx run {projectName}:markdown-lint:{args.configuration}",
+          "nx run {projectName}:spell-check",
+          "nx run {projectName}:sync-agent-skills:{args.configuration}",
+          "nx run {projectName}:sync-conventional-config:{args.configuration}",
+          "nx run {projectName}:sync-pull-request-template:{args.configuration}",
+          "nx run {projectName}:sync-vscode-extensions:{args.configuration}",
+          "nx run {projectName}:sync-vscode-settings:{args.configuration}",
+          "nx run {projectName}:typecheck"
         ]
       }
     },
@@ -91,11 +91,11 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          "nx run monorepo:dependency-lint:{args.configuration}",
-          "nx run monorepo:license-check",
-          "nx run monorepo:pnpm-audit:{args.configuration}",
-          "nx run monorepo:sherif:{args.configuration}",
-          "nx run monorepo:syncpack:{args.configuration}"
+          "nx run {projectName}:dependency-lint:{args.configuration}",
+          "nx run {projectName}:license-check",
+          "nx run {projectName}:pnpm-audit:{args.configuration}",
+          "nx run {projectName}:sherif:{args.configuration}",
+          "nx run {projectName}:syncpack:{args.configuration}"
         ],
         "cwd": "{projectRoot}"
       }

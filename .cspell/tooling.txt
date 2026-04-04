@@ -29,10 +29,12 @@ worktree
 #endregion
 
 #region 🔍 Linting & Code Quality
+bandit
 commitlint
 cssmodule
 esconfig
 eslint
+hatchling
 nbstripout
 nonconstructor
 nonoctal
@@ -46,6 +48,7 @@ sherif
 stringcase
 stylelint
 stylelintrc
+ty
 vulture
 #endregion
 

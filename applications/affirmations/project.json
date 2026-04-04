@@ -3,55 +3,43 @@
   "name": "affirmations",
   "projectType": "application",
   "sourceRoot": "applications/affirmations/src",
-  "tags": [ "lang:python","scope:affirmations", "type:application"],
+  "tags": ["language:python", "scope:affirmations", "type:application"],
   "targets": {
     "code-analysis": {
       "options": {
         "commands": [
-          "nx run affirmations:format:{args.configuration}",
-          "nx run affirmations:lint:{args.configuration}",
-          "nx run affirmations:markdown-lint",
-          "nx run affirmations:spell-check",
-          "nx run affirmations:typecheck",
-          "nx run affirmations:vulture",
-          "nx run affirmations:yaml-lint"
+          "nx run {projectName}:format:check",
+          "nx run {projectName}:lint:check",
+          "nx run {projectName}:markdown-lint",
+          "nx run {projectName}:spell-check",
+          "nx run {projectName}:typecheck",
+          "nx run {projectName}:vulture",
+          "nx run {projectName}:yaml-lint"
         ]
       }
     },
     "format": {
       "configurations": {
         "check": {
-          "commands": ["uv run ruff format --check ."],
-          "parallel": false
+          "commands": ["nx run {projectName}:ruff-format:check"],
+          "parallel": true
         },
         "write": {
-          "commands": ["uv run ruff format ."],
+          "commands": ["nx run {projectName}:ruff-format:write"],
           "parallel": false
         }
-      },
-      "defaultConfiguration": "check",
-      "description": "Format Python source with Ruff",
-      "executor": "nx:run-commands",
-      "options": {
-        "cwd": "applications/affirmations"
       }
     },
     "lint": {
       "configurations": {
         "check": {
-          "commands": ["uv run ruff check ."],
-          "parallel": false
+          "commands": ["nx run {projectName}:ruff-lint:check"],
+          "parallel": true
         },
         "write": {
-          "commands": ["uv run ruff check --fix ."],
+          "commands": ["nx run {projectName}:ruff-lint:write"],
           "parallel": false
         }
-      },
-      "defaultConfiguration": "check",
-      "description": "Lint Python source with Ruff",
-      "executor": "nx:run-commands",
-      "options": {
-        "cwd": "applications/affirmations"
       }
     },
     "markdown-lint": {},
@@ -134,41 +122,34 @@
     "test": {
       "configurations": {
         "coverage": {
-          "command": "uv run pytest --cov=src --cov-report=term-missing"
+          "commands": ["nx run {projectName}:py-test:coverage"]
         },
         "integration": {
-          "command": "uv run pytest -m integration"
+          "commands": ["nx run {projectName}:py-test:integration"]
         },
         "unit": {
-          "command": "uv run pytest -m unit"
-        },
-        "watch": {
-          "command": "uv run pytest-watch"
+          "commands": ["nx run {projectName}:py-test:unit"]
         }
       },
-      "description": "Run pytest tests",
       "executor": "nx:run-commands",
       "options": {
-        "command": "uv run pytest",
-        "cwd": "applications/affirmations"
+        "commands": ["nx run {projectName}:py-test"]
       }
     },
     "typecheck": {
-      "description": "Type-check Python source with pyright",
       "executor": "nx:run-commands",
       "options": {
-        "command": "uv run pyright src/",
-        "cwd": "applications/affirmations"
+        "commands": ["nx run {projectName}:pyright", "nx run {projectName}:ty"],
+        "parallel": true
       }
     },
-    "vulture": {
-      "description": "Detect unused code with vulture",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "uv run vulture src/ .vulture_whitelist.py --min-confidence 80",
-        "cwd": "applications/affirmations"
-      }
-    },
+    "bandit": {},
+    "py-test": {},
+    "pyright": {},
+    "ruff-format": {},
+    "ruff-lint": {},
+    "ty": {},
+    "vulture": {},
     "yaml-lint": {}
   }
 }

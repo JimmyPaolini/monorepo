@@ -3,24 +3,10 @@
   "name": "caelundas",
   "projectType": "application",
   "sourceRoot": "applications/caelundas",
-  "tags": [],
+  "tags": ["language:typescript"],
   "targets": {
     "biome-format": {},
     "biome-lint": {},
-    "code-analysis": {
-      "options": {
-        "commands": [
-          "nx run caelundas:format:{args.configuration}",
-          "nx run caelundas:knip:{args.configuration}",
-          "nx run caelundas:lint:{args.configuration}",
-          "nx run caelundas:markdown-lint:{args.configuration}",
-          "nx run caelundas:spell-check",
-          "nx run caelundas:type-coverage",
-          "nx run caelundas:typecheck",
-          "nx run caelundas:yaml-lint"
-        ]
-      }
-    },
     "dependency-analysis": {},
     "develop": {
       "description": "Run Caelundas locally with .env file",
