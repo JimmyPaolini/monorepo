@@ -6,10 +6,8 @@ name: "create-plan"
 argument-hint: "Outline the outcome to achieve"
 tools:
   [
-    vscode/extensions,
     vscode/askQuestions,
     vscode/memory,
-    vscode/switchAgent,
     read,
     agent,
     edit/createFile,
@@ -120,9 +118,9 @@ Synthesize research findings from Phase 1 and user answers from Phase 2 into the
 ### Output File Specifications
 
 - Save to `documentation/planning/` directory
-- Naming convention: `[YYYY-MM-DDTHH:MM:SSZ]-[type]-[subject]-[version].plan.md`
+- Naming convention: `[YYYY-MM-DDTHH:MM:SSZ]-[type]-[subject].plan.md`
 - Type prefixes: `feature` | `refactor` | `fix` | `data` | `infrastructure` | `process` | `architecture` | `design`
-- Example: `2026-02-18-feature-lexico-auth-1.plan.md`
+- Example: `2026-02-18-feature-lexico-auth.plan.md`
 
 ### Status Badge Colors
 
