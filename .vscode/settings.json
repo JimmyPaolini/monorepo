@@ -14,15 +14,27 @@
   "[jsonl]": {
     "editor.defaultFormatter": "oxc.oxc-vscode"
   },
-  "[jupyter]": {
+  "[jupyter-notebook]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.ruff": "explicit",
+      "source.organizeImports": "never",
+      "source.organizeImports.ruff": "explicit"
+    },
     "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
     "editor.tabSize": 4
   },
   "[markdown]": {
     "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[python]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.ruff": "explicit",
+      "source.organizeImports": "never",
+      "source.organizeImports.ruff": "explicit"
+    },
     "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
     "editor.tabSize": 4
   },
   "[typescript]": {
@@ -215,7 +227,6 @@
     "source.sortImports": "explicit",
     "source.unusedImports": "explicit"
   },
-  "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.detectIndentation": false,
   "editor.dragAndDrop": false,
   "editor.experimental.asyncTokenization": true,
@@ -644,7 +655,6 @@
     "source.sortImports": "never"
   },
   "notebook.compactView": true,
-  "notebook.defaultFormatter": "charliermarsh.ruff",
   "notebook.diff.experimental.toggleInline": true,
   "notebook.diff.ignoreOutputs": true,
   "notebook.formatOnSave.enabled": true,
@@ -667,8 +677,20 @@
   "oxc.enable.oxlint": true,
   "postman.mcp.notifications.postmanMCP": false,
   "postman.settings.dotenv-detection-notification-visibility": false,
+  "python.analysis.diagnosticSeverityOverrides": {
+    "reportMissingModuleSource": "none",
+    "reportMissingTypeStubs": "none",
+    "reportUnknownArgumentType": "none",
+    "reportUnknownLambdaType": "none",
+    "reportUnknownMemberType": "none",
+    "reportUnknownParameterType": "none",
+    "reportUnknownReturnType": "none",
+    "reportUnknownVariableType": "none",
+    "reportUnusedImport": "none",
+    "reportUnusedParameter": "none"
+  },
   "python.analysis.typeCheckingMode": "standard",
-  "python.defaultInterpreterPath": "/usr/local/python/current/bin/python",
+  "python.defaultInterpreterPath": "${workspaceFolder}/applications/affirmations/.venv/bin/python",
   "remote.autoForwardPortsSource": "hybrid",
   "remote.portsAttributes": {
     "3000": {
@@ -696,6 +718,11 @@
       "onAutoForward": "silent"
     }
   },
+  "ruff.interpreter": [
+    "${workspaceFolder}/applications/affirmations/.venv/bin/python"
+  ],
+  "ruff.nativeServer": "auto",
+  "ruff.organizeImports": true,
   "scm.alwaysShowActions": true,
   "scm.alwaysShowRepositories": true,
   "scm.autoReveal": true,

@@ -48,6 +48,7 @@ def test_generate_affirmations_prompt_format() -> None:
         grammar_description="Use simple present tense, first person singular, active voice.",
         grammar_examples="I am free; I trust myself; I embrace the journey",
         grammar_emoji="⭐",
+        grammar_specifier_descriptions="- State a direct fact or present truth (indicative mood).",
     )
     assert len(messages) == 2
     assert isinstance(messages[0], SystemMessage)
@@ -66,6 +67,7 @@ def test_validate_affirmation_prompt_format() -> None:
         grammar_specifiers="Indicative, Active, Present, Simple, First, Singular",
         grammar_description="Use simple present tense, first person singular, active voice.",
         grammar_examples="I am free; I trust myself; I embrace the journey",
+        grammar_specifier_descriptions="- State a direct fact or present truth (indicative mood).",
     )
     assert len(messages) == 2
     assert isinstance(messages[0], SystemMessage)

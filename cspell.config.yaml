@@ -83,6 +83,7 @@ words:
   - toon
   - toupper
   - upenn
+  - verbing
 enableFiletypes:
   - markdown
   - typescript

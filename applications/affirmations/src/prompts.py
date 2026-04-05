@@ -13,7 +13,8 @@ affirmations_generate_document_from_sources_prompt_template: ChatPromptTemplate 
     ChatPromptTemplate.from_messages(
         [
             SystemMessagePromptTemplate.from_template(
-                """You are a reference document writer for spiritual subjects. Summarize web search results into a flowing prose reference document.
+                """\
+You are a reference document writer for spiritual subjects. Summarize web search results into a flowing prose reference document.
 Output ONLY plain text in flowing paragraphs. Do NOT use any markdown formatting — no headings, no bullet points, no tables, no bold, no italic, no code fences.
 Target length 1000 words maximum.
 Use only the provided search results as the source of truth. Do not use prior knowledge."""
@@ -48,7 +49,8 @@ semantic_generate_document_from_sources_prompt_template: ChatPromptTemplate = (
     ChatPromptTemplate.from_messages(
         [
             SystemMessagePromptTemplate.from_template(
-                """You are a reference document writer for spiritual subjects. Summarize web search results into a flowing prose reference document.
+                """\
+You are a reference document writer for spiritual subjects. Summarize web search results into a flowing prose reference document.
 Output ONLY plain text in flowing paragraphs. Do NOT use any markdown formatting — no headings, no bullet points, no tables, no bold, no italic, no code fences.
 Target length 1000 words maximum.
 This document will be used for semantic vector embedding, so use a controlled, consistent vocabulary of archetypal and psychological terms (e.g., active/receptive, expanding/contracting, light/shadow, structured/formless, conscious/unconscious, ascending/descending, individual/collective).
@@ -91,11 +93,12 @@ and what aspect of the core archetype it embodies.\
 affirmations_analyze_sources_prompt_template: ChatPromptTemplate = ChatPromptTemplate.from_messages(
     [
         SystemMessagePromptTemplate.from_template(
-            """You are an expert researcher. Analyze web search results and extract a concise, factual research brief.
+            """\
+You are an expert researcher. Analyze web search results and extract a concise, factual research brief.
 Identify what is well-supported by the sources and flag anything uncertain or contradicted."""
         ),
         HumanMessagePromptTemplate.from_template(
-            """
+            """\
 Web search results for "{subject_name}" ({category_name}):
 
 {sources}
@@ -116,7 +119,8 @@ Be concise."""
 semantic_analyze_sources_prompt_template: ChatPromptTemplate = ChatPromptTemplate.from_messages(
     [
         SystemMessagePromptTemplate.from_template(
-            """You are an expert researcher. Analyze web search results and extract a concise, factual research brief.
+            """\
+You are an expert researcher. Analyze web search results and extract a concise, factual research brief.
 Identify what is well-supported by the sources and flag anything uncertain or contradicted."""
         ),
         HumanMessagePromptTemplate.from_template(
@@ -145,7 +149,8 @@ affirmations_generate_document_prompt_template: ChatPromptTemplate = (
     ChatPromptTemplate.from_messages(
         [
             SystemMessagePromptTemplate.from_template(
-                """You are a reference document writer for spiritual subjects. Summarize a research brief into a flowing prose reference document.
+                """\
+You are a reference document writer for spiritual subjects. Summarize a research brief into a flowing prose reference document.
 Output ONLY plain text in flowing paragraphs. Do NOT use any markdown formatting — no headings, no bullet points, no tables, no bold, no italic, no code fences.
 Target length 1000 words maximum.
 Use only the provided research brief as the source of truth. Do not use prior knowledge."""
@@ -180,7 +185,8 @@ Finally, highlight key symbols, imagery, and archetypes associated with "{subjec
 semantic_generate_document_prompt_template: ChatPromptTemplate = ChatPromptTemplate.from_messages(
     [
         SystemMessagePromptTemplate.from_template(
-            """You are a reference document writer for spiritual subjects. Summarize a research brief into a flowing prose reference document.
+            """\
+You are a reference document writer for spiritual subjects. Summarize a research brief into a flowing prose reference document.
 Output ONLY plain text in flowing paragraphs. Do NOT use any markdown formatting — no headings, no bullet points, no tables, no bold, no italic, no code fences.
 Target length 1000 words maximum.
 This document will be used for semantic vector embedding, so use a controlled, consistent vocabulary of archetypal and psychological terms (e.g., active/receptive, expanding/contracting, light/shadow, structured/formless, conscious/unconscious, ascending/descending, individual/collective).
@@ -223,7 +229,8 @@ affirmations_analyze_document_prompt_template: ChatPromptTemplate = (
     ChatPromptTemplate.from_messages(
         [
             SystemMessagePromptTemplate.from_template(
-                """You are a spiritual subject analyst. Distill a reference document into a concise thematic brief for affirmation generation.
+                """\
+You are a spiritual subject analyst. Distill a reference document into a concise thematic brief for affirmation generation.
 Output a plain text brief of at most 300 words. No markdown, no headers, no bullet points.
 Focus only on: core themes, emotional tone, key symbols, and spiritual lessons."""
             ),
@@ -249,6 +256,7 @@ affirmations_generate_affirmations_prompt_template: ChatPromptTemplate = ChatPro
 Generate exactly 3 affirmations for the given tarot card that match a specific grammatical form.
 Each affirmation must conform to the grammar's mood, voice, tense, aspect, person, number, polarity, and form.
 Each affirmation must be thematically connected to the card's meaning, symbolism, and spiritual lessons.
+Each affirmation must be 12 words or fewer — be concise and direct.
 Do not end affirmations with a period."""
         ),
         HumanMessagePromptTemplate.from_template(
@@ -257,10 +265,11 @@ Tarot card: {subject_name}
 Thematic brief: {document_analysis}
 
 Grammar: {grammar_name}
-Grammatical constraints: {grammar_specifiers}
-Grammar rules — follow every rule below exactly:
-{grammar_description}
+Grammar description: {grammar_description}
 Example affirmations for this grammar: {grammar_examples}
+Grammatical specifiers: {grammar_specifiers}
+Grammatical specifier descriptions — follow every rule below exactly:
+{grammar_specifier_descriptions}
 Grammar emoji: {grammar_emoji}
 
 ---
@@ -270,7 +279,8 @@ Generate exactly 3 affirmations for "{subject_name}" that:
 2. Follow every grammar rule listed above — these are hard requirements, not suggestions
 3. Are thematically connected to {subject_name}'s meaning and symbolism
 4. Follow the style of the examples: {grammar_examples}
-5. Do not end with a period
+5. Are 12 words or fewer — be concise and direct
+6. Do not end with a period
 
 Return a JSON object with an "affirmations" key containing a list of exactly 3 affirmation strings."""
         ),
@@ -280,21 +290,50 @@ Return a JSON object with an "affirmations" key containing a list of exactly 3 a
 affirmations_validate_affirmation_prompt_template: ChatPromptTemplate = ChatPromptTemplate.from_messages(
     [
         SystemMessagePromptTemplate.from_template(
-            """You are a grammar validator. Check whether an affirmation matches specific grammatical constraints.
+            """\
+You are a grammar validator. Check whether an affirmation matches specific grammatical constraints.
 If valid, return {{"valid": true}}. If invalid, return {{"valid": false, "reason": "brief explanation"}}."""
         ),
         HumanMessagePromptTemplate.from_template(
             """\
 Affirmation: "{affirmation_text}"
 Target grammar: {grammar_name}
+Grammar description: {grammar_description}
 Grammatical constraints: {grammar_specifiers}
-Constraint descriptions:
-{grammar_description}
+Specifier descriptions:
+{grammar_specifier_descriptions}
 Valid examples of this grammar form: {grammar_examples}
 
 ---
 
 Does this affirmation match the grammatical constraints ({grammar_specifiers})?
+
+If valid: {{"valid": true}}
+If invalid: {{"valid": false, "reason": "brief explanation"}}"""
+        ),
+    ]
+)
+
+affirmations_validate_affirmation_subject_prompt_template: ChatPromptTemplate = ChatPromptTemplate.from_messages(
+    [
+        SystemMessagePromptTemplate.from_template(
+            """\
+You are a subject relevance validator. Check whether an affirmation is thematically appropriate for a given subject.
+An affirmation is valid if its themes, imagery, and meaning are genuinely rooted in the subject's symbolism as described in the reference document.
+An affirmation is invalid if it is too generic, contradicts the subject's meaning, or could apply equally to any subject.
+If valid, return {{"valid": true}}. If invalid, return {{"valid": false, "reason": "brief explanation"}}."""
+        ),
+        HumanMessagePromptTemplate.from_template(
+            """\
+Affirmation: "{affirmation_text}"
+Subject: "{subject_name}" ({category_name})
+
+Reference document about "{subject_name}":
+{document}
+
+---
+
+Is this affirmation thematically grounded in the meaning and symbolism of "{subject_name}" as described in the reference document above?
 
 If valid: {{"valid": true}}
 If invalid: {{"valid": false, "reason": "brief explanation"}}"""

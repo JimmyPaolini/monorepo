@@ -42,7 +42,9 @@ def test_grammar_str_returns_slug() -> None:
 
 @pytest.mark.unit
 def test_grammar_specifiers_omit_none() -> None:
-    minimal = Grammar(emoji="🔹", mood=Mood.INDICATIVE)
+    minimal = Grammar(
+        emoji="🔹", description="A minimal grammar.", examples=["I am."], mood=Mood.INDICATIVE
+    )
     assert minimal.specifiers == ["INDICATIVE"]
 
 
@@ -86,6 +88,8 @@ def test_all_predefined_grammars_have_examples() -> None:
 def test_grammar_slug_matches_specifiers() -> None:
     grammar = Grammar(
         emoji="🔹",
+        description="A full grammar.",
+        examples=["I am here."],
         form=Form.FINITE,
         mood=Mood.INDICATIVE,
         voice=Voice.ACTIVE,
@@ -95,3 +99,36 @@ def test_grammar_slug_matches_specifiers() -> None:
         number=Number.SINGULAR,
     )
     assert grammar.slug == "finite-indicative-active-present-simple-first-singular"
+
+
+@pytest.mark.unit
+def test_described_enum_examples_property() -> None:
+    examples = Mood.INDICATIVE.examples
+    assert len(examples) == 3
+    assert all(isinstance(ex, str) for ex in examples)
+
+
+@pytest.mark.unit
+def test_specifier_descriptions_first_person_plural() -> None:
+    grammar = Grammar(
+        emoji="🔹",
+        description="First person plural grammar.",
+        examples=["We are {adjective}.", "We {verb}.", "We will {verb}."],
+        mood=Mood.INDICATIVE,
+        person=Person.FIRST,
+        number=Number.PLURAL,
+    )
+    assert "Subject is 'we' (first person plural)." in grammar.specifier_descriptions
+
+
+@pytest.mark.unit
+def test_specifier_descriptions_non_first_person() -> None:
+    grammar = Grammar(
+        emoji="🔹",
+        description="Second person grammar.",
+        examples=["You are {adjective}.", "You {verb}.", "You will {verb}."],
+        mood=Mood.INDICATIVE,
+        person=Person.SECOND,
+        number=Number.SINGULAR,
+    )
+    assert Person.SECOND.description in grammar.specifier_descriptions

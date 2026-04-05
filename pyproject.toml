@@ -19,6 +19,15 @@ quote-style = "double"
 [tool.pyright]
 pythonVersion = "3.11"
 typeCheckingMode = "strict"
+reportMissingTypeStubs = "none"
+reportMissingModuleSource = "none"
+reportUnknownVariableType = "none"
+reportUnknownMemberType = "none"
+reportUnknownLambdaType = "none"
+reportUnknownArgumentType = "none"
+reportUnknownParameterType = "none"
+reportUnknownReturnType = "none"
+reportUnusedParameter = "none"
 
 [tool.pytest.ini_options]
 markers = [

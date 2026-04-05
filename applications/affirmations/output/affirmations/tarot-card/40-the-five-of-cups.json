@@ -1,0 +1,673 @@
+{
+  "subject": {
+    "category": {
+      "name": "Tarot Card",
+      "slug": "tarot-card"
+    },
+    "metadata": {},
+    "name": "The Five of Cups",
+    "order": 40,
+    "slug": "the-five-of-cups"
+  },
+  "grammars": [
+    {
+      "grammar": {
+        "emoji": "✅",
+        "examples": [
+          "I was brave.",
+          "I chose courage.",
+          "I found my strength."
+        ],
+        "form": "FINITE",
+        "mood": "INDICATIVE",
+        "tense": "PAST",
+        "person": "FIRST",
+        "voice": "ACTIVE",
+        "aspect": "SIMPLE",
+        "number": "SINGULAR",
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "FINITE",
+          "INDICATIVE",
+          "ACTIVE",
+          "PAST",
+          "SIMPLE",
+          "FIRST",
+          "SINGULAR"
+        ],
+        "name": "✅ Finite Indicative Active Past Simple First Singular",
+        "slug": "finite-indicative-active-past-simple-first-singular",
+        "description": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time: 'I run', 'I choose', 'I am strong.'\n- Use the past tense, e.g., 'I was...', 'I chose...'.\n- Subject is 'I' (first person singular)."
+      },
+      "affirmations": [
+        {
+          "text": "I was gentle enough to accept the loss of the cup"
+        },
+        {
+          "text": "I chose to find strength in the bridge of the river"
+        },
+        {
+          "text": "I found my courage in the spilled cups of the past"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "⭐",
+        "examples": [
+          "I am confident.",
+          "I trust myself.",
+          "I am worthy of love."
+        ],
+        "form": "FINITE",
+        "mood": "INDICATIVE",
+        "tense": "PRESENT",
+        "person": "FIRST",
+        "voice": "ACTIVE",
+        "aspect": "SIMPLE",
+        "number": "SINGULAR",
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "FINITE",
+          "INDICATIVE",
+          "ACTIVE",
+          "PRESENT",
+          "SIMPLE",
+          "FIRST",
+          "SINGULAR"
+        ],
+        "name": "⭐ Finite Indicative Active Present Simple First Singular",
+        "slug": "finite-indicative-active-present-simple-first-singular",
+        "description": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time: 'I run', 'I choose', 'I am strong.'\n- Use the present tense, e.g., 'I am...', 'I trust...'.\n- Subject is 'I' (first person singular)."
+      },
+      "affirmations": [
+        {
+          "text": "I am ready to let go of the past"
+        },
+        {
+          "text": "I trust that the future is open to me"
+        },
+        {
+          "text": "I am whole enough to welcome new beginnings"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "⏭️",
+        "examples": [
+          "I will succeed.",
+          "I will embrace my potential.",
+          "I will find peace."
+        ],
+        "form": "FINITE",
+        "mood": "INDICATIVE",
+        "tense": "FUTURE",
+        "person": "FIRST",
+        "voice": "ACTIVE",
+        "aspect": "SIMPLE",
+        "number": "SINGULAR",
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "FINITE",
+          "INDICATIVE",
+          "ACTIVE",
+          "FUTURE",
+          "SIMPLE",
+          "FIRST",
+          "SINGULAR"
+        ],
+        "name": "⏭️ Finite Indicative Active Future Simple First Singular",
+        "slug": "finite-indicative-active-future-simple-first-singular",
+        "description": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time: 'I run', 'I choose', 'I am strong.'\n- Use the future tense with 'will': 'I will be strong', 'I will achieve...', 'I will find...'\n- Subject is 'I' (first person singular)."
+      },
+      "affirmations": [
+        {
+          "text": "I will find peace in the quiet of the cup"
+        },
+        {
+          "text": "I will embrace the loss of the cup"
+        },
+        {
+          "text": "I will find healing in the bridge of the cup"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "🔄",
+        "examples": [
+          "I have been building my resilience.",
+          "I have been choosing kindness.",
+          "I have been growing every day."
+        ],
+        "form": "FINITE",
+        "mood": "INDICATIVE",
+        "tense": "PRESENT",
+        "person": "FIRST",
+        "voice": "ACTIVE",
+        "aspect": "PERFECT_PROGRESSIVE",
+        "number": "SINGULAR",
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "FINITE",
+          "INDICATIVE",
+          "ACTIVE",
+          "PRESENT",
+          "PERFECT_PROGRESSIVE",
+          "FIRST",
+          "SINGULAR"
+        ],
+        "name": "🔄 Finite Indicative Active Present Perfect Progressive First Singular",
+        "slug": "finite-indicative-active-present-perfect-progressive-first-singular",
+        "description": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Use the perfect progressive: 'I have been [verb]ing...'. The sentence must open with 'I have been'. Coordinated verbs must also use the -ing form, e.g., 'I have been growing and becoming...'.\n- Use the present tense, e.g., 'I am...', 'I trust...'.\n- Subject is 'I' (first person singular)."
+      },
+      "affirmations": [
+        {
+          "text": "I have been learning to let go of the fear of losing my friends"
+        },
+        {
+          "text": "I have been choosing kindness over the pain of missing loved ones"
+        },
+        {
+          "text": "I have been growing every day in the quiet of the empty cup"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "🎯",
+        "examples": [
+          "I will have overcome this challenge.",
+          "I will have become the person I am meant to be.",
+          "I will have created a life I love."
+        ],
+        "form": "FINITE",
+        "mood": "INDICATIVE",
+        "tense": "FUTURE_PERFECT",
+        "person": "FIRST",
+        "voice": "ACTIVE",
+        "aspect": "PERFECTIVE",
+        "number": "SINGULAR",
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "FINITE",
+          "INDICATIVE",
+          "ACTIVE",
+          "FUTURE_PERFECT",
+          "PERFECTIVE",
+          "FIRST",
+          "SINGULAR"
+        ],
+        "name": "🎯 Finite Indicative Active Future Perfect Perfective First Singular",
+        "slug": "finite-indicative-active-future-perfect-perfective-first-singular",
+        "description": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action as a complete, bounded whole — viewed start-to-finish: 'I ran (and finished)', 'I achieved my goal', 'I overcame it.'\n- Use FUTURE PERFECT tense: 'I will have [past participle]...'. This is DIFFERENT from present perfect ('I have [past participle]'). 'I will have become...', 'I will have achieved...', 'I will have created...' are all valid future perfect. The 'will have' structure is mandatory.\n- Subject is 'I' (first person singular)."
+      },
+      "affirmations": [
+        {
+          "text": "I will have overcome the loss of the cup that fell"
+        },
+        {
+          "text": "I will have become the person who learned to accept the cup that fell"
+        },
+        {
+          "text": "I will have created a life that flows through the depths of the cup that fell"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "🤝",
+        "examples": [
+          "We are stronger together.",
+          "We support each other.",
+          "We create positive change."
+        ],
+        "form": "FINITE",
+        "mood": "INDICATIVE",
+        "tense": "PRESENT",
+        "person": "FIRST",
+        "voice": "ACTIVE",
+        "aspect": "SIMPLE",
+        "number": "PLURAL",
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "FINITE",
+          "INDICATIVE",
+          "ACTIVE",
+          "PRESENT",
+          "SIMPLE",
+          "FIRST",
+          "PLURAL"
+        ],
+        "name": "🤝 Finite Indicative Active Present Simple First Plural",
+        "slug": "finite-indicative-active-present-simple-first-plural",
+        "description": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time: 'I run', 'I choose', 'I am strong.'\n- Use the present tense, e.g., 'I am...', 'I trust...'.\n- Subject is 'we' (first person plural)."
+      },
+      "affirmations": [
+        {
+          "text": "We are healing together"
+        },
+        {
+          "text": "We are connected"
+        },
+        {
+          "text": "We are resilient"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "👤",
+        "examples": [
+          "They believe in their own power.",
+          "She embraces her uniqueness.",
+          "He is worthy of respect."
+        ],
+        "form": "FINITE",
+        "mood": "INDICATIVE",
+        "tense": "PRESENT",
+        "person": "THIRD",
+        "voice": "ACTIVE",
+        "aspect": "SIMPLE",
+        "number": null,
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "FINITE",
+          "INDICATIVE",
+          "ACTIVE",
+          "PRESENT",
+          "SIMPLE",
+          "THIRD"
+        ],
+        "name": "👤 Finite Indicative Active Present Simple Third",
+        "slug": "finite-indicative-active-present-simple-third",
+        "description": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time: 'I run', 'I choose', 'I am strong.'\n- Use the present tense, e.g., 'I am...', 'I trust...'.\n- CRITICAL: Do NOT use 'I'. The subject must be third-person: 'he', 'she', 'it', or 'they'. Never start the sentence with 'I'."
+      },
+      "affirmations": [
+        {
+          "text": "They are ready to move forward despite the heavy weight of their past"
+        },
+        {
+          "text": "She finds peace in knowing that her struggles are part of a healing journey"
+        },
+        {
+          "text": "They trust that the capacity to heal is a natural outcome of the process itself"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "💪",
+        "examples": [
+          "I could achieve great things.",
+          "I can handle whatever comes my way.",
+          "I could become who I dream of being."
+        ],
+        "form": "FINITE",
+        "mood": "POTENTIAL",
+        "tense": "PRESENT",
+        "person": "FIRST",
+        "voice": "ACTIVE",
+        "aspect": "SIMPLE",
+        "number": "SINGULAR",
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "FINITE",
+          "POTENTIAL",
+          "ACTIVE",
+          "PRESENT",
+          "SIMPLE",
+          "FIRST",
+          "SINGULAR"
+        ],
+        "name": "💪 Finite Potential Active Present Simple First Singular",
+        "slug": "finite-potential-active-present-simple-first-singular",
+        "description": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- CRITICAL: The main verb structure MUST use 'can' or 'could' or 'able to': 'I can...', 'I could...', 'I am able to...'. Do NOT use indicative verbs like 'trust', 'believe', or 'know' without 'can'/'could'.\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time: 'I run', 'I choose', 'I am strong.'\n- Use the present tense, e.g., 'I am...', 'I trust...'.\n- Subject is 'I' (first person singular)."
+      },
+      "affirmations": [
+        {
+          "text": "I can heal my heart by letting go of the past"
+        },
+        {
+          "text": "I am able to find peace in the present moment"
+        },
+        {
+          "text": "I could become the vessel of healing"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "🙏",
+        "examples": [
+          "May I find clarity in this moment.",
+          "If only I could feel at peace.",
+          "Would that I might know my own worth."
+        ],
+        "form": "FINITE",
+        "mood": "OPTATIVE",
+        "tense": null,
+        "person": "FIRST",
+        "voice": "ACTIVE",
+        "aspect": null,
+        "number": "SINGULAR",
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "FINITE",
+          "OPTATIVE",
+          "ACTIVE",
+          "FIRST",
+          "SINGULAR"
+        ],
+        "name": "🙏 Finite Optative Active First Singular",
+        "slug": "finite-optative-active-first-singular",
+        "description": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- Express a wish or hope, e.g., 'May I find...', 'If only I could...'.\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Subject is 'I' (first person singular)."
+      },
+      "affirmations": [
+        {
+          "text": "May I find peace within the black cocoon that waits for me"
+        },
+        {
+          "text": "If only I could see the spilled cups as real gifts rather than lost things"
+        },
+        {
+          "text": "Would that I might know that healing is a flowing river, not a static shore"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "❗",
+        "examples": [
+          "Be bold!",
+          "Trust yourself!",
+          "Embrace your greatness!"
+        ],
+        "form": "FINITE",
+        "mood": "IMPERATIVE",
+        "tense": null,
+        "person": "SECOND",
+        "voice": "ACTIVE",
+        "aspect": null,
+        "number": "SINGULAR",
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "FINITE",
+          "IMPERATIVE",
+          "ACTIVE",
+          "SECOND",
+          "SINGULAR"
+        ],
+        "name": "❗ Finite Imperative Active Second Singular",
+        "slug": "finite-imperative-active-second-singular",
+        "description": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- Use the imperative mood: start the sentence with a bare infinitive verb — NO explicit subject. The implicit (unstated) subject is always 'you'. Examples: 'Be bold!', 'Trust yourself!', 'Embrace your strength!'. Subordinate clauses in the same sentence may use any voice, tense, or person — only the MAIN verb (the one that starts the sentence) must be bare imperative. Do NOT write 'You should...', 'You must...', or any sentence that starts with 'I'.\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Subject/address is 'you' (second person)."
+      },
+      "affirmations": [
+        {
+          "text": "Be gentle with your heart today"
+        },
+        {
+          "text": "Trust that your healing is flowing"
+        },
+        {
+          "text": "Embrace the flow of your journey"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "❓",
+        "examples": [
+          "Am I not capable of this?",
+          "Have I not already proven my resilience?",
+          "Can I not rise to this challenge?"
+        ],
+        "form": "FINITE",
+        "mood": "INTERROGATIVE",
+        "tense": "PRESENT",
+        "person": "FIRST",
+        "voice": "ACTIVE",
+        "aspect": null,
+        "number": "SINGULAR",
+        "deixis": null,
+        "polarity": "NEGATIVE",
+        "specifiers": [
+          "FINITE",
+          "INTERROGATIVE",
+          "ACTIVE",
+          "PRESENT",
+          "FIRST",
+          "SINGULAR",
+          "NEGATIVE"
+        ],
+        "name": "❓ Finite Interrogative Active Present First Singular Negative",
+        "slug": "finite-interrogative-active-present-first-singular-negative",
+        "description": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- CRITICAL: The sentence MUST be a QUESTION and MUST end with '?'. Required patterns: 'Am I not...?', 'Have I not...?', 'Can I not...?', 'Do I not...?'. The '?' at the very end of the sentence is MANDATORY — never omit it. Do NOT write a declarative statement. 'Can' and 'have' are valid finite auxiliaries.\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Include negation using 'not', 'never', 'no longer', or 'without'.\n- Use the present tense, e.g., 'I am...', 'I trust...'.\n- Subject is 'I' (first person singular)."
+      },
+      "affirmations": [
+        {
+          "text": "Am I not capable of letting go of the past?"
+        },
+        {
+          "text": "Have I not already found peace within the cup?"
+        },
+        {
+          "text": "Can I not trust that healing flows forward?"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "♾️",
+        "examples": [
+          "To be courageous.",
+          "To live fully.",
+          "To love without fear."
+        ],
+        "form": "INFINITIVE",
+        "mood": null,
+        "tense": null,
+        "person": null,
+        "voice": "ACTIVE",
+        "aspect": "SIMPLE",
+        "number": null,
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "INFINITIVE",
+          "ACTIVE",
+          "SIMPLE"
+        ],
+        "name": "♾️ Infinitive Active Simple",
+        "slug": "infinitive-active-simple",
+        "description": "- Start with the base infinitive: 'To [verb]...' — no subject or conjugation.\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time: 'I run', 'I choose', 'I am strong.'"
+      },
+      "affirmations": [
+        {
+          "text": "To let go of the fear of losing again"
+        },
+        {
+          "text": "To embrace the reality of what has been lost"
+        },
+        {
+          "text": "To choose connection over judgment"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "💡",
+        "examples": [
+          "Being compassionate is my strength.",
+          "Choosing growth every day.",
+          "Embracing uncertainty with grace."
+        ],
+        "form": "GERUND",
+        "mood": null,
+        "tense": null,
+        "person": null,
+        "voice": "ACTIVE",
+        "aspect": null,
+        "number": null,
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "GERUND",
+          "ACTIVE"
+        ],
+        "name": "💡 Gerund Active",
+        "slug": "gerund-active",
+        "description": "- Begin with a gerund (-ing form as a noun), e.g., 'Being brave is...'.\n- Use ACTIVE voice: the subject ('I'/'we') performs the action."
+      },
+      "affirmations": [
+        {
+          "text": "Being gentle with loss is my strength"
+        },
+        {
+          "text": "Accepting disappointment is my power"
+        },
+        {
+          "text": "Finding healing in the cup is my way"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "🌊",
+        "examples": [
+          "I am loved and appreciated.",
+          "I am guided by wisdom.",
+          "I am supported by those around me."
+        ],
+        "form": "FINITE",
+        "mood": "INDICATIVE",
+        "tense": "PRESENT",
+        "person": "FIRST",
+        "voice": "PASSIVE",
+        "aspect": "SIMPLE",
+        "number": "SINGULAR",
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "FINITE",
+          "INDICATIVE",
+          "PASSIVE",
+          "PRESENT",
+          "SIMPLE",
+          "FIRST",
+          "SINGULAR"
+        ],
+        "name": "🌊 Finite Indicative Passive Present Simple First Singular",
+        "slug": "finite-indicative-passive-present-simple-first-singular",
+        "description": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- CRITICAL: The MAIN clause must use PASSIVE voice — the subject receives the action. Pattern: 'I am/was/have been [past participle]', e.g., 'I am loved', 'I am guided', 'I am supported by...'. Subordinate clauses and infinitive phrases (e.g., 'ready to feel', 'able to see') may use active voice. Do NOT write active main clauses like 'I trust', 'I choose', or 'I feel'.\n- Express the action plainly without specifying duration or extent over time: 'I run', 'I choose', 'I am strong.'\n- Use the present tense, e.g., 'I am...', 'I trust...'.\n- Subject is 'I' (first person singular)."
+      },
+      "affirmations": [
+        {
+          "text": "I am supported by the wisdom of the past"
+        },
+        {
+          "text": "I am guided by the flow of the present"
+        },
+        {
+          "text": "I am loved by the grace of the future"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "🔁",
+        "examples": [
+          "I always choose kindness.",
+          "I regularly practice gratitude.",
+          "I consistently show up for myself."
+        ],
+        "form": "FINITE",
+        "mood": "INDICATIVE",
+        "tense": "PRESENT",
+        "person": "FIRST",
+        "voice": "ACTIVE",
+        "aspect": "HABITUAL",
+        "number": "SINGULAR",
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "FINITE",
+          "INDICATIVE",
+          "ACTIVE",
+          "PRESENT",
+          "HABITUAL",
+          "FIRST",
+          "SINGULAR"
+        ],
+        "name": "🔁 Finite Indicative Active Present Habitual First Singular",
+        "slug": "finite-indicative-active-present-habitual-first-singular",
+        "description": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express a recurring action using 'always', 'regularly', 'consistently', or 'every day'.\n- Use the present tense, e.g., 'I am...', 'I trust...'.\n- Subject is 'I' (first person singular)."
+      },
+      "affirmations": [
+        {
+          "text": "I always choose kindness when I feel lost"
+        },
+        {
+          "text": "I regularly practice gratitude even when things are disappointing"
+        },
+        {
+          "text": "I consistently show up for myself during the darkest times"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "🫷",
+        "examples": [
+          "I am not defined by my past.",
+          "I am not afraid of change.",
+          "I do not limit my own potential."
+        ],
+        "form": "FINITE",
+        "mood": "INDICATIVE",
+        "tense": "PRESENT",
+        "person": "FIRST",
+        "voice": "ACTIVE",
+        "aspect": "SIMPLE",
+        "number": "SINGULAR",
+        "deixis": null,
+        "polarity": "NEGATIVE",
+        "specifiers": [
+          "FINITE",
+          "INDICATIVE",
+          "ACTIVE",
+          "PRESENT",
+          "SIMPLE",
+          "FIRST",
+          "SINGULAR",
+          "NEGATIVE"
+        ],
+        "name": "🫷 Finite Indicative Active Present Simple First Singular Negative",
+        "slug": "finite-indicative-active-present-simple-first-singular-negative",
+        "description": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Include negation using 'not', 'never', 'no longer', or 'without'.\n- Express the action plainly without specifying duration or extent over time: 'I run', 'I choose', 'I am strong.'\n- Use the present tense, e.g., 'I am...', 'I trust...'.\n- Subject is 'I' (first person singular)."
+      },
+      "affirmations": [
+        {
+          "text": "I am not defined by the loss of my loved ones"
+        },
+        {
+          "text": "I am not afraid of the disappointment of my past choices"
+        },
+        {
+          "text": "I am not limited by the fear of the future's outcome"
+        }
+      ]
+    }
+  ]
+}

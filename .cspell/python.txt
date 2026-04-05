@@ -2,6 +2,7 @@
 abatch
 ainvoke
 astream
+
 #endregion
 
 #region 📓 Notebook Formats
@@ -13,11 +14,13 @@ nbconvert
 nbformat
 pprint
 pygments
+
 #endregion
 
 #region 📦 Packaging & Environment
 pyproject
 venv
+
 #endregion
 
 #region 📚 Standard Library
@@ -32,7 +35,10 @@ kwargs
 logprobs
 pathlib
 rstrip
+setattr
+staticmethod
 tomllib
+
 #endregion
 
 #region 🔢 NumPy
@@ -42,8 +48,10 @@ keepdims
 linalg
 ndarray
 numpy
+
 #endregion
 
 #region 🔧 Configuration Keys
 testpaths
+
 #endregion
