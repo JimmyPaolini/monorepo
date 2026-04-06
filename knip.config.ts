@@ -20,6 +20,8 @@ const config: KnipConfig = {
     "oxfmt", // Oxfmt CLI, invoked via nx:run-commands oxfmt target
     "oxlint", // Oxlint CLI, invoked via nx:run-commands oxlint target
     "gitleaks", // Gitleaks CLI, used for detecting hardcoded secrets
+    "uv", // uv Python package manager, used in lint-staged for nbstripout
+    "unset", // Shell builtin, used in project.json pre-commit command
   ],
 
   // devDependencies used via npx, CLI, or ESLint config (not directly imported)
@@ -49,6 +51,8 @@ const config: KnipConfig = {
         "release.config.cjs",
         ".ncurc.cjs",
         "validate-branch-name.config.cjs",
+        "oxfmt.config.ts",
+        "oxlint.config.ts",
       ],
       ignore: [
         "**/*.test.ts",

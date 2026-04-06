@@ -21,14 +21,16 @@ runs:
       uses: nrwl/nx-set-shas@v4
 
     - name: 🗃️ Configure Nx Cache
-      run: echo "NX_REJECT_UNKNOWN_LOCAL_CACHE=0" >> $GITHUB_ENV
+      run: |
+        echo "NX_REJECT_UNKNOWN_LOCAL_CACHE=0" >> $GITHUB_ENV
+        echo "NX_DEFAULT_OUTPUT_STYLE=static" >> $GITHUB_ENV
       shell: bash
 
     - name: 🔧 Setup Homebrew
       uses: Homebrew/actions/setup-homebrew@master
 
     - name: 📄 Install yamllint
-      run: brew install yamllint
+      run: brew install yamllint --quiet
       shell: bash
 
     - name: ♻️ Sync Nx Cache
@@ -48,11 +50,12 @@ runs:
       with:
         enable-cache: true
         cache-dependency-glob: "**/pyproject.toml"
+        add-problem-matchers: "false"
 
     - name: 🐍 Install Python Dependencies
-      run: uv sync --frozen --project applications/affirmations
+      run: uv sync --frozen --quiet --project applications/affirmations
       shell: bash
 
     - name: 📚 Install Node Dependencies
-      run: pnpm install --frozen-lockfile
+      run: pnpm install --frozen-lockfile --reporter=silent
       shell: bash

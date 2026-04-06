@@ -257,7 +257,7 @@
       "cache": false,
       "configurations": {
         "check": {
-          "command": "pnpm audit --audit-level=moderate --ignore-unfixable"
+          "command": "pnpm audit --audit-level=moderate"
         },
         "write": {
           "command": "jq 'del(.pnpm.overrides)' package.json > package.tmp.json && mv package.tmp.json package.json && pnpm install --no-frozen-lockfile && pnpm audit --fix; pnpm install --no-frozen-lockfile"
@@ -267,7 +267,7 @@
       "description": "Scan for fixable security vulnerabilities (check) or clean stale overrides and re-fix (write)",
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm audit --audit-level=moderate --ignore-unfixable"
+        "command": "pnpm audit --audit-level=moderate"
       }
     },
     "prettier": {

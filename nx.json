@@ -324,7 +324,7 @@
       "cache": true,
       "configurations": {
         "coverage": {
-          "command": "uv run pytest --cov=src --cov-report=term-missing"
+          "command": "uv run pytest --cov=src --cov-report=xml:coverage/python.xml --cov-report=term-missing"
         },
         "integration": {
           "command": "uv run pytest -m integration"
