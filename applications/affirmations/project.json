@@ -159,7 +159,7 @@
       "executor": "nx:run-commands",
       "inputs": ["{projectRoot}/src/**/*.ipynb"],
       "options": {
-        "command": "uv run nbstripout {args} src/**/*.ipynb",
+        "command": "find src -name '*.ipynb' -exec uv run nbstripout {args} {} +",
         "cwd": "{projectRoot}"
       }
     },
