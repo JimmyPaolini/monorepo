@@ -73,11 +73,11 @@ const config = {
 
   // ── Jupyter notebooks ──
   // Strip outputs first (nbstripout modifies in-place; lint-staged re-stages the
-  // clean file), then spell-check the now-output-free notebook.
+  // clean file), then run ruff format/lint and spell-check on the stripped notebook.
   "*.ipynb": (files: string[]) => {
     return [
-      `uv run --directory applications/affirmations nbstripout ${files.join(" ")}`,
-      `nx affected --target=spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
+      `nx affected --target=nbstripout --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
+      `nx affected --target=format,lint,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
     ];
   },
 

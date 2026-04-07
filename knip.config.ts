@@ -26,6 +26,7 @@ const config: KnipConfig = {
 
   // devDependencies used via npx, CLI, or ESLint config (not directly imported)
   ignoreDependencies: [
+    "@biomejs/biome", // Biome CLI, invoked via nx:run-commands biome target
     "@nx/eslint-plugin", // Loaded dynamically by Nx ESLint integration
     "@nx/js", // Nx JavaScript/TypeScript plugin (auto-detected by Nx)
     "@nx/web", // Nx web plugin (auto-detected by Nx)
@@ -33,6 +34,8 @@ const config: KnipConfig = {
     "@semantic-release/release-notes-generator", // semantic-release plugin
     "@semantic-release/github", // semantic-release plugin
     "@semantic-release/npm", // semantic-release plugin
+    "markdownlint-cli2", // Markdown linter CLI, invoked via nx:run-commands in project.json
+    "npm-check-updates", // Dependency update CLI (ncu), invoked via GitHub Actions workflow
   ],
 
   // Allow exports that are only used in the same file (common for barrel re-exports)

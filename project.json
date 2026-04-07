@@ -6,36 +6,30 @@
     "biome-format": {
       "cache": true,
       "configurations": {
-        "check": {
-          "command": "biome format '*.ts' '*.js' '*.json' 'scripts/' 'documentation/' 'infrastructure/'"
-        },
-        "write": {
-          "command": "biome format --write '*.ts' '*.js' '*.json' 'scripts/' 'documentation/' 'infrastructure/'"
-        }
+        "check": {},
+        "write": {}
       },
       "defaultConfiguration": "check",
       "description": "Run Biome supplementary formatter on workspace root files",
       "executor": "nx:run-commands",
       "inputs": ["{workspaceRoot}/biome.jsonc", "default"],
       "options": {
+        "command": "biome format {args} '*.ts' '*.js' '*.json' 'scripts/' 'documentation/' 'infrastructure/'",
         "cwd": "{projectRoot}"
       }
     },
     "biome-lint": {
       "cache": true,
       "configurations": {
-        "check": {
-          "command": "biome lint '*.ts' '*.js' '*.json' 'scripts/' 'documentation/' 'infrastructure/'"
-        },
-        "write": {
-          "command": "biome lint --write '*.ts' '*.js' '*.json' 'scripts/' 'documentation/' 'infrastructure/'"
-        }
+        "check": {},
+        "write": {}
       },
       "defaultConfiguration": "check",
       "description": "Run Biome supplementary linter on workspace root files",
       "executor": "nx:run-commands",
       "inputs": ["{workspaceRoot}/biome.jsonc", "default"],
       "options": {
+        "command": "biome lint {args} '*.ts' '*.js' '*.json' 'scripts/' 'documentation/' 'infrastructure/'",
         "cwd": "{projectRoot}"
       }
     },
@@ -168,7 +162,7 @@
         "default"
       ],
       "options": {
-        "command": "pnpm gitleaks",
+        "command": "gitleaks git --staged --verbose --redact",
         "cwd": "{projectRoot}"
       }
     },

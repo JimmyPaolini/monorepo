@@ -1,6 +1,6 @@
-import { defineWorkspace } from "vitest/config";
+import type { UserProjectConfigExport } from "vitest/config";
 
-export default defineWorkspace([
+export default [
   "applications/caelundas/vitest.config.ts",
   "tools/code-generator/vitest.config.ts",
-]);
+] satisfies (string | UserProjectConfigExport)[];

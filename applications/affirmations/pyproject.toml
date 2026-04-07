@@ -42,6 +42,7 @@ reproducible = true
 # Extend base config from root pyproject.toml (mirrors tsconfig.base.json pattern)
 extend = "../../pyproject.toml"
 exclude = ["notebooks/**", ".vulture_whitelist.py"]
+extend-include = ["*.ipynb"]
 
 [tool.pyright]
 # Venv settings and LangChain/LangGraph suppressions are project-specific

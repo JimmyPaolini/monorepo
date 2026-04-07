@@ -11,6 +11,7 @@
 #
 # Depends on: brew.sh (brew_install_or_check must be defined)
 
+brew_install_or_check "gitleaks"
 brew_install_or_check "terraform"
 brew_install_or_check "yamllint"
 brew_install_or_check "supabase" "supabase/tap/supabase"
@@ -26,6 +27,7 @@ echo "   pnpm:        $(pnpm --version)"
 echo "   Python:      $(python3 --version 2>&1)"
 echo "   uv:          $(uv --version)"
 echo "   Ollama:      $(ollama --version 2>&1)"
+echo "   Gitleaks:    $(gitleaks version 2>&1 || echo 'not installed')"
 echo "   Terraform:   $(terraform version -json 2>/dev/null | jq -r '.terraform_version' 2>/dev/null || terraform version | head -n 1)"
 echo "   Supabase:    $(supabase --version 2>&1)"
 echo "   Helm:        $(helm version --short 2>&1)"

@@ -5,12 +5,14 @@
   "sourceRoot": "applications/affirmations/src",
   "tags": ["language:python", "scope:affirmations", "type:application"],
   "targets": {
+    "bandit": {},
     "code-analysis": {
       "options": {
         "commands": [
           "nx run {projectName}:format:check",
           "nx run {projectName}:lint:check",
           "nx run {projectName}:markdown-lint",
+          "nx run {projectName}:nbstripout",
           "nx run {projectName}:spell-check",
           "nx run {projectName}:typecheck",
           "nx run {projectName}:vulture",
@@ -143,7 +145,24 @@
         "parallel": true
       }
     },
-    "bandit": {},
+    "nbstripout": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "args": "--verify"
+        },
+        "write": {
+          "args": ""
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands",
+      "inputs": ["{projectRoot}/src/**/*.ipynb"],
+      "options": {
+        "command": "uv run nbstripout {args} src/**/*.ipynb",
+        "cwd": "{projectRoot}"
+      }
+    },
     "py-test": {},
     "pyright": {},
     "ruff-format": {},

@@ -30,6 +30,7 @@ EXPECTED_PYTHON_MAJOR_MINOR="$(jq -r '.features["ghcr.io/devcontainers/features/
 EXPECTED_YAMLLINT_VERSION="$(jq -r '.features["ghcr.io/devcontainers-extra/features/yamllint:2"].version' "${LOCAL_DEVCONTAINER_JSON}")"
 EXPECTED_JQ_VERSION="$(jq -r '.features["ghcr.io/eitsupi/devcontainer-features/jq-likes:2"].jqVersion' "${LOCAL_DEVCONTAINER_JSON}")"
 EXPECTED_SQLITE_VERSION="$(jq -r '.features["ghcr.io/warrenbuckley/codespace-features/sqlite:1"].version' "${LOCAL_DEVCONTAINER_JSON}")"
+EXPECTED_GITLEAKS_VERSION="$(jq -r '.features["ghcr.io/devcontainers-extra/features/gitleaks:1"].version' "${LOCAL_DEVCONTAINER_JSON}")"
 #endregion
 
 #region 🛠️ Assertion helpers
@@ -132,6 +133,10 @@ assert_version_contains "yamllint" "${EXPECTED_YAMLLINT_VERSION}" "yamllint --ve
 echo ""
 echo "🗄️  SQLite — must be ${EXPECTED_SQLITE_VERSION}"
 assert_version_contains "sqlite3" "${EXPECTED_SQLITE_VERSION}" "sqlite3 --version"
+
+echo ""
+echo "🔑 Gitleaks — must be ${EXPECTED_GITLEAKS_VERSION}"
+assert_version_contains "gitleaks" "${EXPECTED_GITLEAKS_VERSION}" "gitleaks version"
 #endregion
 
 #region 🐳 Docker

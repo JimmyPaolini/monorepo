@@ -35,11 +35,11 @@ Read the full plan file. Extract and index:
 
 Partition all tasks into three buckets:
 
-| Bucket      | Criteria                                                                                   |
-| ----------- | ------------------------------------------------------------------------------------------ |
-| `Completed` | Has ✅ checkmark — skip deep verification, surface-check only                              |
-| `Pending`   | No checkmark — requires codebase verification                                              |
-| `Uncertain` | Has ✅ but also a "Known Bug", "will fail", or "Deviation" note — requires re-verification |
+| Bucket      | Criteria                                                                     |
+| ----------- | ---------------------------------------------------------------------------- |
+| `Completed` | Has ✅ checkmark — skip deep verification, surface-check only                |
+| `Pending`   | No checkmark — requires codebase verification                                |
+| `Uncertain` | Has ✅ but also a "Known Bug" or "will fail" note — requires re-verification |
 
 ---
 
@@ -55,7 +55,7 @@ Use this as the sub-agent prompt:
 > Plan file: **[insert plan file path]**
 >
 > **Pending & Uncertain Tasks to verify:**
-> [Insert each TASK-XXX identifier, its description, and any "Known Bug" / "Deviation" notes verbatim]
+> [Insert each TASK-XXX identifier, its description, and any "Known Bug" notes verbatim]
 >
 > **Expected files (FILE-XXX):**
 > [Insert each FILE-XXX entry verbatim]
@@ -67,7 +67,7 @@ Use this as the sub-agent prompt:
 >
 > 1. For each FILE-XXX entry: check whether the file exists at the specified path. If it exists, read enough content to assess correctness (functions present, class structure, key logic).
 > 2. For each pending TASK-XXX: search the codebase for evidence that the task was implemented — look for the specific function names, class names, state keys, node names, and file paths mentioned in the task description.
-> 3. For each uncertain TASK-XXX (has ✅ but also has a known bug or deviation note): verify whether the known bug has been fixed or remains unresolved, and whether the deviation note still accurately describes the code.
+> 3. For each uncertain TASK-XXX (has ✅ but also has a known bug note): verify whether the known bug has been fixed or remains unresolved.
 > 4. Check test files for any tests marked as failing or skipped (look for `pytest.mark.skip`, `// @ts-ignore`, `xtest`, `xit`, `it.skip`, comments like "will fail").
 > 5. For each TASK-XXX, produce a verdict:
 >    - `IMPLEMENTED` — The task is complete and matches the description
@@ -162,7 +162,7 @@ For each task in the implementation steps tables, apply the appropriate update b
 
 - Set the `Completed` column to `✅`
 - Set the `Date` column to today's date in `YYYY-MM-DD` format (if not already set)
-- **Rewrite the task description** to accurately describe what was actually implemented. The plan is a record of what was built, not what was originally envisioned. Replace the original description text with the factual implementation. Remove any existing `**Deviation**:` notes — the description itself should now be accurate and need no annotations. Keep the same level of detail and specificity as the original description (file paths, function names, variable names, structure).
+- **Rewrite the task description** to accurately describe what was actually implemented. The plan is a record of what was built, not what was originally envisioned. Replace the original description text with the factual implementation. Keep the same level of detail and specificity as the original description (file paths, function names, variable names, structure).
 
 **`NOT_IMPLEMENTED` (was marked ✅ erroneously):**
 

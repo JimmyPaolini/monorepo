@@ -32,7 +32,11 @@
       "!{projectRoot}/vitest.config.base.ts",
       "default"
     ],
-    "pythonSource": ["{projectRoot}/**/*.py", "{projectRoot}/pyproject.toml"],
+    "pythonSource": [
+      "{projectRoot}/**/*.ipynb",
+      "{projectRoot}/**/*.py",
+      "{projectRoot}/pyproject.toml"
+    ],
     "pythonTests": ["{projectRoot}/testing/**/*.py"],
     "sharedGlobals": [
       "{workspaceRoot}/.github/workflows/*.yml",

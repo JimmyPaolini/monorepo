@@ -67,7 +67,13 @@
     "spell-check": {},
     "stylelint": {},
     "type-coverage": {},
-    "typecheck": {},
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc --noEmit",
+        "cwd": "{projectRoot}"
+      }
+    },
     "yaml-lint": {}
   }
 }
