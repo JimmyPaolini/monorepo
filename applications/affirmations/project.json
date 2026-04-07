@@ -45,6 +45,24 @@
       }
     },
     "markdown-lint": {},
+    "nbstripout": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "args": "--verify"
+        },
+        "write": {
+          "args": ""
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands",
+      "inputs": ["{projectRoot}/src/**/*.ipynb"],
+      "options": {
+        "command": "find src -name '*.ipynb' -exec uv run nbstripout {args} {} +",
+        "cwd": "{projectRoot}"
+      }
+    },
     "ollama": {
       "configurations": {
         "pull-large": {
@@ -89,6 +107,10 @@
         "cwd": "applications/affirmations"
       }
     },
+    "py-test": {},
+    "pyright": {},
+    "ruff-format": {},
+    "ruff-lint": {},
     "searxng": {
       "configurations": {
         "open": {
@@ -138,6 +160,7 @@
         "commands": ["nx run {projectName}:py-test"]
       }
     },
+    "ty": {},
     "typecheck": {
       "executor": "nx:run-commands",
       "options": {
@@ -145,29 +168,6 @@
         "parallel": true
       }
     },
-    "nbstripout": {
-      "cache": true,
-      "configurations": {
-        "check": {
-          "args": "--verify"
-        },
-        "write": {
-          "args": ""
-        }
-      },
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands",
-      "inputs": ["{projectRoot}/src/**/*.ipynb"],
-      "options": {
-        "command": "find src -name '*.ipynb' -exec uv run nbstripout {args} {} +",
-        "cwd": "{projectRoot}"
-      }
-    },
-    "py-test": {},
-    "pyright": {},
-    "ruff-format": {},
-    "ruff-lint": {},
-    "ty": {},
     "vulture": {},
     "yaml-lint": {}
   }

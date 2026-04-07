@@ -1,36 +1,51 @@
 # Dockerfile for caelundas application
 
-# 1. Base Image
-# Using a lightweight node image
-FROM node:22.22.2-alpine
+# Stage 1: Build
+# Using a lightweight node image for building
+FROM node:22.22.2-alpine AS builder
 
 # Install build tools needed for native modules like sqlite3
 RUN apk add --no-cache python3 make g++
 
-# 2. Setup Environment
+# Enable pnpm via corepack (avoids npm install and its bundled vulnerable dependencies)
+RUN corepack enable
+
 # Set working directory
 WORKDIR /app
 
-# Install pnpm
-RUN npm install -g pnpm
-
-# 3. Install Dependencies
 # Copy dependency definition files from the root
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+
+# Copy root tsconfig so caelundas/tsconfig.json can resolve its extends path at runtime
+COPY tsconfig.base.json ./
 
 # Copy application-specific package.json to leverage Docker layer caching
 COPY applications/caelundas/package.json ./applications/caelundas/
 
-# Install dependencies for the caelundas application only
-RUN pnpm install --filter caelundas
+# Install workspace dependencies (required for pnpm deploy resolution)
+RUN pnpm install --frozen-lockfile
 
-# 4. Copy Source Code
-# Copy the rest of the source code for the monorepo
-COPY . .
+# Copy caelundas source code
+COPY applications/caelundas ./applications/caelundas
 
-# 5. Set Command
-# Change to the application's directory
-WORKDIR /app/applications/caelundas
+# Deploy caelundas with only its own dependencies, excluding root devDependencies
+# (e.g., @semantic-release/npm → npm@11.8.0, @nx/react → @module-federation)
+RUN pnpm deploy --filter caelundas /deploy
+
+# Stage 2: Production runtime
+FROM node:22.22.2-alpine
+
+# Upgrade OS packages to patch known vulnerabilities (e.g., zlib CVE-2026-22184)
+RUN apk upgrade --no-cache
+
+WORKDIR /app
+
+# Copy the deployed package with its isolated node_modules
+COPY --from=builder /deploy .
+
+# caelundas/tsconfig.json has `extends: "../../tsconfig.base.json"`.
+# With WORKDIR /app, that resolves to /tsconfig.base.json in the container.
+COPY --from=builder /app/tsconfig.base.json /tsconfig.base.json
 
 # Command to run the application
-CMD ["pnpm", "start"]
+CMD ["node_modules/.bin/tsx", "src/main.ts"]
