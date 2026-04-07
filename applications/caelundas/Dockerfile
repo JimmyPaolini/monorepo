@@ -22,16 +22,20 @@ COPY tsconfig.base.json ./
 # Copy application-specific package.json to leverage Docker layer caching
 COPY applications/caelundas/package.json ./applications/caelundas/
 
+# Configure pnpm inject mode so pnpm deploy works in pnpm v10+ without --legacy.
+# Without --legacy, deploy creates a clean isolated node_modules with only
+# caelundas' production dependencies, keeping root devDependencies out of the image.
+# This .npmrc is scoped to the Docker build context only (not checked into source).
+RUN echo "inject-workspace-packages=true" > .npmrc
+
 # Install workspace dependencies (required for pnpm deploy resolution)
 RUN pnpm install --frozen-lockfile
 
 # Copy caelundas source code
 COPY applications/caelundas ./applications/caelundas
 
-# Deploy caelundas with only its own dependencies, excluding root devDependencies
-# (e.g., @semantic-release/npm → npm@11.8.0, @nx/react → @module-federation)
-# --legacy flag required for pnpm v10+ when inject-workspace-packages is not set
-RUN pnpm deploy --filter caelundas --legacy /deploy
+# Deploy caelundas with only its production dependencies
+RUN pnpm deploy --filter caelundas /deploy
 
 # Stage 2: Production runtime
 FROM node:22.22.2-alpine
