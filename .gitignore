@@ -8,6 +8,7 @@
 node_modules/
 .pnpm-store
 .nx
+.venv
 
 # Environment variables 🎛️
 .env
@@ -39,6 +40,7 @@ applications/JimmyPaolini
 # Test Coverage 🧪
 coverage
 coverage/*
+**/.coverage
 
 # Type Coverage 🏷️
 type-coverage-report.txt
@@ -52,3 +54,6 @@ tmp
 dist
 applications/caelundas/output
 vite.config.*.timestamp*
+
+.claude/worktrees
+.claude/settings.local.json

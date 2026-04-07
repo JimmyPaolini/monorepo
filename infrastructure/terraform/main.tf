@@ -28,3 +28,8 @@ resource "linode_lke_cluster" "cluster" {
 
   timeouts {}
 }
+
+output "kubeconfig" {
+  value     = linode_lke_cluster.cluster.kubeconfig
+  sensitive = true
+}

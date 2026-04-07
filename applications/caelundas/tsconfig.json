@@ -6,7 +6,7 @@
     "noEmit": true,
     "target": "esnext"
   },
-  "exclude": [ "dist","node_modules", "output"],
+  "exclude": ["dist", "node_modules", "output"],
   "extends": "../../tsconfig.base.json",
   "include": [
     "src/**/*.ts",

@@ -4,11 +4,10 @@
   "prefix": "lib",
   "projectType": "library",
   "sourceRoot": "tools/code-generator/src",
-  "tags": [
-    "type:util"
-  ],
+  "tags": ["language:typescript", "type:util"],
   "targets": {
-    "biome": {},
+    "biome-format": {},
+    "biome-lint": {},
     "build": {
       "cache": true,
       "description": "No-op build target for development tool",
@@ -20,23 +19,20 @@
     "code-analysis": {
       "options": {
         "commands": [
-          "nx run code-generator:dependency-analysis",
-          "nx run code-generator:format:{args.configuration}",
-          "nx run code-generator:knip:{args.configuration}",
-          "nx run code-generator:lint:{args.configuration}",
-          "nx run code-generator:spell-check",
-          "nx run code-generator:type-coverage",
-          "nx run code-generator:typecheck"
+          "nx run {projectName}:dependency-analysis",
+          "nx run {projectName}:format:{args.configuration}",
+          "nx run {projectName}:knip:{args.configuration}",
+          "nx run {projectName}:lint:{args.configuration}",
+          "nx run {projectName}:spell-check",
+          "nx run {projectName}:type-coverage",
+          "nx run {projectName}:typecheck"
         ]
       }
     },
     "dependency-analysis": {},
     "eslint": {
       "executor": "nx:run-commands",
-      "inputs": [
-        "{workspaceRoot}/eslint.config.base.mjs",
-        "default"
-      ],
+      "inputs": ["{workspaceRoot}/eslint.config.base.mjs", "default"],
       "options": {
         "command": "eslint tools/code-generator --no-error-on-unmatched-pattern --ignore-pattern '**/code-generator/**/files/**'"
       }
@@ -44,10 +40,11 @@
     "format": {},
     "knip": {},
     "lint": {},
+    "oxfmt": {},
     "oxlint": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "oxlint --config=.oxlintrc.jsonc --ignore-pattern='**/files/**' tools/code-generator/src",
+        "command": "oxlint --ignore-pattern='**/files/**' tools/code-generator/src",
         "cwd": "{workspaceRoot}"
       }
     },

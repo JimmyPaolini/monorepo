@@ -1,0 +1,689 @@
+{
+  "subject": {
+    "category": {
+      "name": "Lenormand",
+      "slug": "lenormand"
+    },
+    "metadata": {},
+    "name": "Child",
+    "order": 13,
+    "slug": "child"
+  },
+  "grammars": [
+    {
+      "grammar": {
+        "emoji": "✅",
+        "description": "Grounds the affirmation in a completed past action or state — celebrating past strength and achievement.",
+        "examples": [
+          "I was {adjective}...",
+          "I {verb-past}...",
+          "I {verb-past} {noun}..."
+        ],
+        "form": "FINITE",
+        "mood": "INDICATIVE",
+        "tense": "PAST",
+        "person": "FIRST",
+        "voice": "ACTIVE",
+        "aspect": "SIMPLE",
+        "number": "SINGULAR",
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "FINITE",
+          "INDICATIVE",
+          "ACTIVE",
+          "PAST",
+          "SIMPLE",
+          "FIRST",
+          "SINGULAR"
+        ],
+        "name": "✅ Finite Indicative Active Past Simple First Singular",
+        "slug": "finite-indicative-active-past-simple-first-singular",
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time.\n- Use the past tense.\n- Subject is 'I' (first person singular)."
+      },
+      "affirmations": [
+        {
+          "text": "I was strong to build my life"
+        },
+        {
+          "text": "I created my children with love"
+        },
+        {
+          "text": "I walked with purpose"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "⭐",
+        "description": "Asserts a present-moment truth directly and simply — the most fundamental form of affirmation.",
+        "examples": [
+          "I am {adjective}...",
+          "I {verb}...",
+          "I am {adjective} of {noun}..."
+        ],
+        "form": "FINITE",
+        "mood": "INDICATIVE",
+        "tense": "PRESENT",
+        "person": "FIRST",
+        "voice": "ACTIVE",
+        "aspect": "SIMPLE",
+        "number": "SINGULAR",
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "FINITE",
+          "INDICATIVE",
+          "ACTIVE",
+          "PRESENT",
+          "SIMPLE",
+          "FIRST",
+          "SINGULAR"
+        ],
+        "name": "⭐ Finite Indicative Active Present Simple First Singular",
+        "slug": "finite-indicative-active-present-simple-first-singular",
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time.\n- Use the present tense.\n- Subject is 'I' (first person singular)."
+      },
+      "affirmations": [
+        {
+          "text": "I am the potential that creates life"
+        },
+        {
+          "text": "I am the ground from which action springs"
+        },
+        {
+          "text": "I am the living cycle that flows from feet to hands"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "⏭️",
+        "description": "Projects confident intention toward the future — affirming what one will be or achieve.",
+        "examples": [
+          "I will {verb}...",
+          "I will {verb} my {noun}...",
+          "I will {verb} {noun}..."
+        ],
+        "form": "FINITE",
+        "mood": "INDICATIVE",
+        "tense": "FUTURE",
+        "person": "FIRST",
+        "voice": "ACTIVE",
+        "aspect": "SIMPLE",
+        "number": "SINGULAR",
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "FINITE",
+          "INDICATIVE",
+          "ACTIVE",
+          "FUTURE",
+          "SIMPLE",
+          "FIRST",
+          "SINGULAR"
+        ],
+        "name": "⏭️ Finite Indicative Active Future Simple First Singular",
+        "slug": "finite-indicative-active-future-simple-first-singular",
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time.\n- Use the future tense with 'will'.\n- Subject is 'I' (first person singular)."
+      },
+      "affirmations": [
+        {
+          "text": "I will build a foundation of potential"
+        },
+        {
+          "text": "I will create life from the ground"
+        },
+        {
+          "text": "I will act as the creation from the feet"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "🔄",
+        "description": "Affirms continuous progress that began in the past and is still unfolding — capturing momentum and sustained effort.",
+        "examples": [
+          "I have been {verbing}...",
+          "I have been {verbing} my {noun}...",
+          "I have been {verbing} every {time-unit}..."
+        ],
+        "form": "FINITE",
+        "mood": "INDICATIVE",
+        "tense": "PRESENT",
+        "person": "FIRST",
+        "voice": "ACTIVE",
+        "aspect": "PERFECT_PROGRESSIVE",
+        "number": "SINGULAR",
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "FINITE",
+          "INDICATIVE",
+          "ACTIVE",
+          "PRESENT",
+          "PERFECT_PROGRESSIVE",
+          "FIRST",
+          "SINGULAR"
+        ],
+        "name": "🔄 Finite Indicative Active Present Perfect Progressive First Singular",
+        "slug": "finite-indicative-active-present-perfect-progressive-first-singular",
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Use the perfect progressive: 'I have been [verb]ing...'. The sentence must open with 'I have been'. Coordinated verbs must also use the -ing form, e.g., 'I have been growing and becoming...'\n- Use the present tense.\n- Subject is 'I' (first person singular)."
+      },
+      "affirmations": [
+        {
+          "text": "I have been building a foundation of love from the ground"
+        },
+        {
+          "text": "I have been working daily to bring life from the feet"
+        },
+        {
+          "text": "I have been creating growth every day in the hands"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "🎯",
+        "description": "Visualizes a future moment where something is already accomplished — affirming from the vantage point of completion.",
+        "examples": [
+          "I will have {verb-past} {noun}...",
+          "I will have become {description}...",
+          "I will have {verb-past} a {noun}..."
+        ],
+        "form": "FINITE",
+        "mood": "INDICATIVE",
+        "tense": "FUTURE_PERFECT",
+        "person": "FIRST",
+        "voice": "ACTIVE",
+        "aspect": "PERFECTIVE",
+        "number": "SINGULAR",
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "FINITE",
+          "INDICATIVE",
+          "ACTIVE",
+          "FUTURE_PERFECT",
+          "PERFECTIVE",
+          "FIRST",
+          "SINGULAR"
+        ],
+        "name": "🎯 Finite Indicative Active Future Perfect Perfective First Singular",
+        "slug": "finite-indicative-active-future-perfect-perfective-first-singular",
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action as a complete, bounded whole — viewed start-to-finish.\n- Use FUTURE PERFECT tense: 'I will have [past participle]...'. This is DIFFERENT from present perfect ('I have [past participle]'). 'I will have become...', 'I will have achieved...', 'I will have created...' are all valid future perfect. The 'will have' structure is mandatory.\n- Subject is 'I' (first person singular)."
+      },
+      "affirmations": [
+        {
+          "text": "I will have grown up to be a powerful creator"
+        },
+        {
+          "text": "I will have realized that action flows from the ground"
+        },
+        {
+          "text": "I will have become the source of new life"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "🤝",
+        "description": "Affirms shared strength and collective identity — embracing connection and belonging with others.",
+        "examples": [
+          "We are {adjective} together...",
+          "We {verb} each other...",
+          "We {verb} {noun}..."
+        ],
+        "form": "FINITE",
+        "mood": "INDICATIVE",
+        "tense": "PRESENT",
+        "person": "FIRST",
+        "voice": "ACTIVE",
+        "aspect": "SIMPLE",
+        "number": "PLURAL",
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "FINITE",
+          "INDICATIVE",
+          "ACTIVE",
+          "PRESENT",
+          "SIMPLE",
+          "FIRST",
+          "PLURAL"
+        ],
+        "name": "🤝 Finite Indicative Active Present Simple First Plural",
+        "slug": "finite-indicative-active-present-simple-first-plural",
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time.\n- Use the present tense.\n- Subject is 'we' (first person plural)."
+      },
+      "affirmations": [
+        {
+          "text": "We gather to create life from the ground"
+        },
+        {
+          "text": "We build our home with our hands"
+        },
+        {
+          "text": "We stand together as a living cycle"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "👤",
+        "description": "Speaks a present truth about another person — broadening perspective beyond the self.",
+        "examples": [
+          "They {verb} in their own {noun}...",
+          "She {verbs} her {noun}...",
+          "He is {adjective} of {noun}..."
+        ],
+        "form": "FINITE",
+        "mood": "INDICATIVE",
+        "tense": "PRESENT",
+        "person": "THIRD",
+        "voice": "ACTIVE",
+        "aspect": "SIMPLE",
+        "number": null,
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "FINITE",
+          "INDICATIVE",
+          "ACTIVE",
+          "PRESENT",
+          "SIMPLE",
+          "THIRD"
+        ],
+        "name": "👤 Finite Indicative Active Present Simple Third",
+        "slug": "finite-indicative-active-present-simple-third",
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time.\n- Use the present tense.\n- CRITICAL: Do NOT use 'I'. The subject must be third-person: 'he', 'she', 'it', or 'they'. Never start the sentence with 'I'."
+      },
+      "affirmations": [
+        {
+          "text": "He steps into the ground to create the future"
+        },
+        {
+          "text": "She walks the path of potential toward action"
+        },
+        {
+          "text": "The feet and hands work together to build life"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "💪",
+        "description": "Affirms capability and possibility — what the speaker can do or is able to accomplish.",
+        "examples": [
+          "I can {verb}...",
+          "I could {verb} {noun}...",
+          "I am able to {verb}..."
+        ],
+        "form": "FINITE",
+        "mood": "POTENTIAL",
+        "tense": "PRESENT",
+        "person": "FIRST",
+        "voice": "ACTIVE",
+        "aspect": "SIMPLE",
+        "number": "SINGULAR",
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "FINITE",
+          "POTENTIAL",
+          "ACTIVE",
+          "PRESENT",
+          "SIMPLE",
+          "FIRST",
+          "SINGULAR"
+        ],
+        "name": "💪 Finite Potential Active Present Simple First Singular",
+        "slug": "finite-potential-active-present-simple-first-singular",
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- CRITICAL: The main verb structure MUST use 'can' or 'could' or 'able to': 'I can...', 'I could...', 'I am able to...'. Do NOT use indicative verbs like 'trust', 'believe', or 'know' without 'can'/'could'.\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time.\n- Use the present tense.\n- Subject is 'I' (first person singular)."
+      },
+      "affirmations": [
+        {
+          "text": "I can create life from the ground"
+        },
+        {
+          "text": "I am able to nurture potential"
+        },
+        {
+          "text": "I can act to bring life to the world"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "🙏",
+        "description": "Expresses a sincere wish or deep longing — voicing the heart's desire with openness and hope.",
+        "examples": [
+          "May I {verb} {noun}...",
+          "If only I could {verb}...",
+          "Would that I might {verb}..."
+        ],
+        "form": "FINITE",
+        "mood": "OPTATIVE",
+        "tense": null,
+        "person": "FIRST",
+        "voice": "ACTIVE",
+        "aspect": null,
+        "number": "SINGULAR",
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "FINITE",
+          "OPTATIVE",
+          "ACTIVE",
+          "FIRST",
+          "SINGULAR"
+        ],
+        "name": "🙏 Finite Optative Active First Singular",
+        "slug": "finite-optative-active-first-singular",
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- Express a wish or hope.\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Subject is 'I' (first person singular)."
+      },
+      "affirmations": [
+        {
+          "text": "May I walk through the ground to begin my creation"
+        },
+        {
+          "text": "If only I could stand with the feet of the earth"
+        },
+        {
+          "text": "Would that I might feel the life of the child in my heart"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "❗",
+        "description": "Commands the self or another to act — activating, direct, and rousing.",
+        "examples": [
+          "Be {adjective}!",
+          "{Verb} yourself!",
+          "{Verb} your {noun}!"
+        ],
+        "form": "FINITE",
+        "mood": "IMPERATIVE",
+        "tense": null,
+        "person": "SECOND",
+        "voice": "ACTIVE",
+        "aspect": null,
+        "number": "SINGULAR",
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "FINITE",
+          "IMPERATIVE",
+          "ACTIVE",
+          "SECOND",
+          "SINGULAR"
+        ],
+        "name": "❗ Finite Imperative Active Second Singular",
+        "slug": "finite-imperative-active-second-singular",
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- Use the imperative mood: start the sentence with a bare infinitive verb — NO explicit subject. The implicit (unstated) subject is always 'you'. Subordinate clauses in the same sentence may use any voice, tense, or person — only the MAIN verb (the one that starts the sentence) must be bare imperative. Do NOT write 'You should...', 'You must...', or any sentence that starts with 'I'.\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Subject/address is 'you' (second person)."
+      },
+      "affirmations": [
+        {
+          "text": "Your feet create life from the ground"
+        },
+        {
+          "text": "Your hands create life from the ground"
+        },
+        {
+          "text": "Your feet create life from the ground"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "❓",
+        "description": "Challenges limiting beliefs through a rhetorical question — confronting self-doubt head-on.",
+        "examples": [
+          "Am I not {adjective}?",
+          "Have I not {verb-past} {noun}?",
+          "Can I not {verb}?"
+        ],
+        "form": "FINITE",
+        "mood": "INTERROGATIVE",
+        "tense": "PRESENT",
+        "person": "FIRST",
+        "voice": "ACTIVE",
+        "aspect": null,
+        "number": "SINGULAR",
+        "deixis": null,
+        "polarity": "NEGATIVE",
+        "specifiers": [
+          "FINITE",
+          "INTERROGATIVE",
+          "ACTIVE",
+          "PRESENT",
+          "FIRST",
+          "SINGULAR",
+          "NEGATIVE"
+        ],
+        "name": "❓ Finite Interrogative Active Present First Singular Negative",
+        "slug": "finite-interrogative-active-present-first-singular-negative",
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- CRITICAL: The sentence MUST be a QUESTION and MUST end with '?'. Required patterns: 'Am I not...?', 'Have I not...?', 'Can I not...?', 'Do I not...?'. The '?' at the very end of the sentence is MANDATORY — never omit it. Do NOT write a declarative statement. 'Can' and 'have' are valid finite auxiliaries.\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Include negation using 'not', 'never', 'no longer', or 'without'.\n- Use the present tense.\n- Subject is 'I' (first person singular)."
+      },
+      "affirmations": [
+        {
+          "text": "Can I not build a foundation with my own hands?"
+        },
+        {
+          "text": "Have I not found the potential in my own feet?"
+        },
+        {
+          "text": "Am I not creating life without my own feet?"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "♾️",
+        "description": "Names a purpose or aspiration in its purest infinitive form — to be, to do, to become.",
+        "examples": [
+          "To {verb}...",
+          "To {verb} {adverb}...",
+          "To {verb} without {noun}..."
+        ],
+        "form": "INFINITIVE",
+        "mood": null,
+        "tense": null,
+        "person": null,
+        "voice": "ACTIVE",
+        "aspect": "SIMPLE",
+        "number": null,
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "INFINITIVE",
+          "ACTIVE",
+          "SIMPLE"
+        ],
+        "name": "♾️ Infinitive Active Simple",
+        "slug": "infinitive-active-simple",
+        "specifier_descriptions": "- Start with the base infinitive: 'To [verb]...' — no subject or conjugation.\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time."
+      },
+      "affirmations": [
+        {
+          "text": "To walk with the ground and create life"
+        },
+        {
+          "text": "To build a future rooted in potential and strength"
+        },
+        {
+          "text": "To act without hesitation on every step"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "💡",
+        "description": "Affirms through process and action — celebrating the doing and becoming, not merely the state of being.",
+        "examples": [
+          "Being {adjective} is {noun}...",
+          "{Verbing} {noun} every day...",
+          "{Verbing} {noun} with {noun}..."
+        ],
+        "form": "GERUND",
+        "mood": null,
+        "tense": null,
+        "person": null,
+        "voice": "ACTIVE",
+        "aspect": null,
+        "number": null,
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "GERUND",
+          "ACTIVE"
+        ],
+        "name": "💡 Gerund Active",
+        "slug": "gerund-active",
+        "specifier_descriptions": "- Begin with a gerund (-ing form as a noun).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action."
+      },
+      "affirmations": [
+        {
+          "text": "You begin your journey by standing firmly on the soil that holds all life"
+        },
+        {
+          "text": "You grow up to create everything that flows from your feet with your hands"
+        },
+        {
+          "text": "Your daily action is the natural response to the ground beneath your feet"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "🌊",
+        "description": "Affirms being received, held, or supported — openness to grace, love, and forces beyond the self.",
+        "examples": [
+          "I am {past-participle}...",
+          "I am {past-participle} by {noun}...",
+          "I am {past-participle} by {description}..."
+        ],
+        "form": "FINITE",
+        "mood": "INDICATIVE",
+        "tense": "PRESENT",
+        "person": "FIRST",
+        "voice": "PASSIVE",
+        "aspect": "SIMPLE",
+        "number": "SINGULAR",
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "FINITE",
+          "INDICATIVE",
+          "PASSIVE",
+          "PRESENT",
+          "SIMPLE",
+          "FIRST",
+          "SINGULAR"
+        ],
+        "name": "🌊 Finite Indicative Passive Present Simple First Singular",
+        "slug": "finite-indicative-passive-present-simple-first-singular",
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- CRITICAL: The MAIN clause must use PASSIVE voice — the subject receives the action. Pattern: 'I am/was/have been [past participle]'. Subordinate clauses and infinitive phrases (e.g., 'ready to feel', 'able to see') may use active voice. Do NOT write active main clauses like 'I trust', 'I choose', or 'I feel'.\n- Express the action plainly without specifying duration or extent over time.\n- Use the present tense.\n- Subject is 'I' (first person singular)."
+      },
+      "affirmations": [
+        {
+          "text": "I am received by the ground to create life"
+        },
+        {
+          "text": "I am held by the potential to act"
+        },
+        {
+          "text": "I am created by the feet to live"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "🔁",
+        "description": "Reinforces a repeated practice or pattern — affirming what the speaker consistently does or believes.",
+        "examples": [
+          "I always {verb} {noun}...",
+          "I regularly {verb} {noun}...",
+          "I consistently {verb} {noun}..."
+        ],
+        "form": "FINITE",
+        "mood": "INDICATIVE",
+        "tense": "PRESENT",
+        "person": "FIRST",
+        "voice": "ACTIVE",
+        "aspect": "HABITUAL",
+        "number": "SINGULAR",
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "FINITE",
+          "INDICATIVE",
+          "ACTIVE",
+          "PRESENT",
+          "HABITUAL",
+          "FIRST",
+          "SINGULAR"
+        ],
+        "name": "🔁 Finite Indicative Active Present Habitual First Singular",
+        "slug": "finite-indicative-active-present-habitual-first-singular",
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express a recurring action using 'always', 'regularly', 'consistently', or 'every day'.\n- Use the present tense.\n- Subject is 'I' (first person singular)."
+      },
+      "affirmations": [
+        {
+          "text": "I always create life from the ground with my hands"
+        },
+        {
+          "text": "I consistently bring potential into action daily"
+        },
+        {
+          "text": "I always grow out of the potential that exists with my feet"
+        }
+      ]
+    },
+    {
+      "grammar": {
+        "emoji": "🫷",
+        "description": "Affirms by negating a false belief or limitation — releasing what is not true about the self.",
+        "examples": [
+          "I am not {adjective}...",
+          "I am not {adjective} of {noun}...",
+          "I do not {verb} {noun}..."
+        ],
+        "form": "FINITE",
+        "mood": "INDICATIVE",
+        "tense": "PRESENT",
+        "person": "FIRST",
+        "voice": "ACTIVE",
+        "aspect": "SIMPLE",
+        "number": "SINGULAR",
+        "deixis": null,
+        "polarity": "NEGATIVE",
+        "specifiers": [
+          "FINITE",
+          "INDICATIVE",
+          "ACTIVE",
+          "PRESENT",
+          "SIMPLE",
+          "FIRST",
+          "SINGULAR",
+          "NEGATIVE"
+        ],
+        "name": "🫷 Finite Indicative Active Present Simple First Singular Negative",
+        "slug": "finite-indicative-active-present-simple-first-singular-negative",
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Include negation using 'not', 'never', 'no longer', or 'without'.\n- Express the action plainly without specifying duration or extent over time.\n- Use the present tense.\n- Subject is 'I' (first person singular)."
+      },
+      "affirmations": [
+        {
+          "text": "I do not believe I am an obstacle"
+        },
+        {
+          "text": "I do not believe I am weak"
+        },
+        {
+          "text": "I do not believe I cannot act"
+        }
+      ]
+    }
+  ]
+}

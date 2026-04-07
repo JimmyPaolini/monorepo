@@ -1,0 +1,29 @@
+#region 📦 Components
+ical
+icalendar
+valarm
+vcalendar
+vevent
+vtimezone
+#endregion
+
+#region 🕐 Date & Time
+byday
+bymonth
+dtend
+dtstamp
+dtstart
+hmmss
+yyyymmddth
+#endregion
+
+#region 🏷️ Properties
+caldesc
+calname
+calscale
+prodid
+rrule
+tzname
+tzoffsetfrom
+tzoffsetto
+#endregion

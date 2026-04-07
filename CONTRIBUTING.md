@@ -13,11 +13,17 @@ Thank you for contributing! This guide covers the development workflow, code sta
   - [Development Workflow](#development-workflow)
     - [Basic Commands](#basic-commands)
   - [Code Standards](#code-standards)
+  - [Git Hooks (Husky)](#git-hooks-husky)
   - [Branch Naming Guidelines](#branch-naming-guidelines)
   - [Commit Guidelines](#commit-guidelines)
   - [Pull Request Process](#pull-request-process)
   - [Release Process](#release-process)
   - [Code Ownership](#code-ownership)
+  - [Environment Variables](#environment-variables)
+    - [Root (`.env.default`)](#root-envdefault)
+    - [caelundas (`applications/caelundas/.env.default`)](#caelundas-applicationscaelundasenvdefault)
+    - [lexico (`applications/lexico/.env.default`)](#lexico-applicationslexicoenvdefault)
+  - [Dependency Update Workflow](#dependency-update-workflow)
   - [Additional Resources](#additional-resources)
   - [Getting Help](#getting-help)
   - [License](#license)
@@ -37,28 +43,34 @@ The fastest way to get started is using the included dev container, which provid
 
 1. Clone the repository: `git clone https://github.com/JimmyPaolini/monorepo.git`
 2. Open the folder in VS Code
-3. When prompted "Reopen in Container", click **Reopen in Container** (or run `Dev Containers: Reopen in Container` from command palette)
-4. Wait for container build (~2-3 minutes first time)
-5. Start developing!
+3. Open the command palette (`Ctrl/Cmd+Shift+P`) → **Dev Containers: Reopen in Container**
+4. Select a configuration when prompted:
+   - **Monorepo Devcontainer (Local)** — local machine (Docker-outside-of-Docker, recommended)
+   - **Monorepo Devcontainer (Cloud)** — GitHub Codespaces or when full Docker isolation is needed (Docker-in-Docker)
+5. Wait for container build (~2-3 minutes first time)
+6. Start developing!
 
 **Included Tools:**
 
-| Tool         | Version | Purpose                              |
-| ------------ | ------- | ------------------------------------ |
-| Node.js      | 22.20.0 | JavaScript runtime                   |
-| pnpm         | 10.20.0 | Package manager                      |
-| Terraform    | latest  | Infrastructure provisioning (Linode) |
-| Supabase CLI | latest  | Database migrations, type generation |
-| kubectl      | latest  | Kubernetes cluster management        |
-| Helm         | latest  | Kubernetes package manager           |
-| GitHub CLI   | latest  | Repository operations                |
-| Docker       | (DinD)  | Isolated Docker daemon in container  |
+| Tool         | Version                     | Purpose                                                      |
+| ------------ | --------------------------- | ------------------------------------------------------------ |
+| Node.js      | 22.20.0                     | JavaScript runtime                                           |
+| pnpm         | 10.20.0                     | Package manager                                              |
+| Terraform    | latest                      | Infrastructure provisioning (Linode)                         |
+| Supabase CLI | latest                      | Database migrations, type generation                         |
+| kubectl      | latest                      | Kubernetes cluster management                                |
+| Helm         | latest                      | Kubernetes package manager                                   |
+| GitHub CLI   | latest                      | Repository operations                                        |
+| Docker       | DooD (local) / DinD (cloud) | Docker-outside-of-Docker on local; Docker-in-Docker in cloud |
 
 **Port Forwarding:**
 
 | Port  | Service           | Auto-Forward |
 | ----- | ----------------- | ------------ |
 | 3000  | Lexico Dev Server | Notify       |
+| 3001  | Open WebUI        | Notify       |
+| 8889  | SearxNG           | Notify       |
+| 11434 | Ollama API        | Silent       |
 | 54321 | Supabase API      | Silent       |
 | 54322 | PostgreSQL        | Silent       |
 | 54323 | Supabase Studio   | Notify       |
@@ -73,8 +85,9 @@ For local development without containers:
 
 **Prerequisites:**
 
-- **macOS** with Homebrew installed
+- **macOS** with [Homebrew](https://brew.sh/) installed
 - **Git**: Latest stable version
+- **[Docker Desktop](https://www.docker.com/products/docker-desktop/)**: Required for SearxNG, Open WebUI, and caelundas containers
 
 **Setup:**
 
@@ -83,20 +96,23 @@ Run the setup script to install all dependencies:
 ```bash
 git clone https://github.com/JimmyPaolini/monorepo.git
 cd monorepo
-./scripts/local-setup/setup.sh
+./scripts/local/setup.sh
 ```
 
 This script:
 
-- Installs **pnpm** (10.20.0+), **nvm**, **Node.js** (22.20.0), **Terraform**
-- Creates `.env` file from `.env.default` template
-- Runs `pnpm install` to install all project dependencies
+- Installs **nvm**, **Node.js** (22), **pnpm**, **uv**, **Python** (3.11+), **Ollama** (+ pulls `qwen3.5:0.8b`)
+- Installs **Terraform**, **Supabase CLI**, **Helm**, **kubectl**, **GitHub CLI**, **jq**, **yamllint**
+- Creates `.env` files from `.env.default` templates (root, lexico, caelundas)
+- Sets `LOCAL_WORKSPACE_FOLDER` for docker-compose volume mounts
+- Runs `pnpm install` and `uv sync` (Python venv for affirmations)
 
 ### Workspace Structure
 
 ```text
 monorepo/
 ├── applications/           # Deployable applications
+│   ├── affirmations/      # Python LangChain + Ollama affirmation generator
 │   ├── caelundas/         # CLI ephemeris calendar generator
 │   ├── lexico/            # TanStack Start + Supabase web app
 │   └── JimmyPaolini/      # Personal website
@@ -220,10 +236,13 @@ Each project uses `.env.default` files as templates for required environment var
 
 ### Root (`.env.default`)
 
-| Variable                                     | Purpose                                     |
-| -------------------------------------------- | ------------------------------------------- |
-| `TF_VAR_linode_token`                        | Linode API token for Terraform provisioning |
-| `TF_VAR_linode_kubernetes_engine_cluster_id` | LKE cluster ID for deployments              |
+| Variable                                     | Purpose                                                             |
+| -------------------------------------------- | ------------------------------------------------------------------- |
+| `MONOREPO_ENVIRONMENT`                       | Environment: `local`, `devcontainer-local`, or `devcontainer-cloud` |
+| `OLLAMA_HOST`                                | Ollama server URL (default: `http://localhost:11434`)               |
+| `SEARXNG_HOST`                               | SearxNG server URL (default: `http://localhost:8889`)               |
+| `TF_VAR_linode_token`                        | Linode API token for Terraform provisioning                         |
+| `TF_VAR_linode_kubernetes_engine_cluster_id` | LKE cluster ID for deployments                                      |
 
 ### caelundas (`applications/caelundas/.env.default`)
 

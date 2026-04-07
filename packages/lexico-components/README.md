@@ -21,8 +21,8 @@ This package is already available in the monorepo via workspace protocol. Import
 
 ```tsx
 // In applications/lexico/src/routes/example.tsx
-import { Button, Card, Input } from '@monorepo/lexico-components';
-import '@monorepo/lexico-components/styles/globals.css'; // Import once in root layout
+import { Button, Card, Input } from "@monorepo/lexico-components";
+import "@monorepo/lexico-components/styles/globals.css"; // Import once in root layout
 
 function ExamplePage() {
   return (
@@ -45,7 +45,7 @@ Add global CSS import to your root layout:
 
 ```tsx
 // applications/lexico/src/routes/__root.tsx
-import '@monorepo/lexico-components/styles/globals.css';
+import "@monorepo/lexico-components/styles/globals.css";
 ```
 
 ## Component Categories
@@ -188,17 +188,20 @@ Customize colors by editing [src/styles/globals.css](src/styles/globals.css):
 Set `data-theme` attribute on root element:
 
 ```tsx
-document.documentElement.setAttribute('data-theme', 'dark');
+document.documentElement.setAttribute("data-theme", "dark");
 ```
 
 Or use next-themes for automatic theme switching:
 
 ```tsx
-import { ThemeProvider } from 'next-themes';
+import { ThemeProvider } from "next-themes";
 
-<ThemeProvider attribute="data-theme" defaultTheme="system">
+<ThemeProvider
+  attribute="data-theme"
+  defaultTheme="system"
+>
   {children}
-</ThemeProvider>
+</ThemeProvider>;
 ```
 
 ## Development
@@ -248,18 +251,25 @@ nx run lexico-components:bundlesize
 ### Form with Validation
 
 ```tsx
-import { Input, Label, Button } from '@monorepo/lexico-components';
+import { Input, Label, Button } from "@monorepo/lexico-components";
 
 function LoginForm() {
   return (
     <form>
       <div>
         <Label htmlFor="email">Email</Label>
-        <Input id="email" type="email" placeholder="you@example.com" />
+        <Input
+          id="email"
+          type="email"
+          placeholder="you@example.com"
+        />
       </div>
       <div>
         <Label htmlFor="password">Password</Label>
-        <Input id="password" type="password" />
+        <Input
+          id="password"
+          type="password"
+        />
       </div>
       <Button type="submit">Sign In</Button>
     </form>
@@ -270,7 +280,14 @@ function LoginForm() {
 ### Dialog
 
 ```tsx
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, Button } from '@monorepo/lexico-components';
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  Button,
+} from "@monorepo/lexico-components";
 
 function ConfirmDialog() {
   return (
@@ -293,7 +310,13 @@ function ConfirmDialog() {
 ### Dropdown Menu
 
 ```tsx
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, Button } from '@monorepo/lexico-components';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  Button,
+} from "@monorepo/lexico-components";
 
 function UserMenu() {
   return (
@@ -333,8 +356,8 @@ Extends shared Tailwind configuration with component-specific patterns:
 ```js
 content: [
   "./src/**/*.{ts,tsx}",
-  "../../packages/lexico-components/src/**/*.{ts,tsx}"
-]
+  "../../packages/lexico-components/src/**/*.{ts,tsx}",
+];
 ```
 
 ## Accessibility
@@ -360,7 +383,7 @@ Built on Radix UI primitives which handle complex accessibility patterns automat
 Import global CSS in your root layout:
 
 ```tsx
-import '@monorepo/lexico-components/styles/globals.css';
+import "@monorepo/lexico-components/styles/globals.css";
 ```
 
 ### Import Errors
@@ -371,7 +394,9 @@ Verify TypeScript path mapping in `tsconfig.json`:
 {
   "compilerOptions": {
     "paths": {
-      "@monorepo/lexico-components": ["../../packages/lexico-components/src/index.ts"]
+      "@monorepo/lexico-components": [
+        "../../packages/lexico-components/src/index.ts"
+      ]
     }
   }
 }

@@ -15,7 +15,6 @@
     "cweijan.vscode-database-client2", // Database Client
     "dbaeumer.vscode-eslint", // ESLint
     "docker.docker", // Docker DX
-    "donjayamanne.githistory", // Git History
     "eamodio.gitlens", // GitLens - Git supercharged
     "earshinov.permute-lines", // Permute Lines
     "ecmel.vscode-html-css", // HTML CSS Support
@@ -52,6 +51,7 @@
     "nguyenngoclong.terminal-keeper", // Terminal Keeper
     "nrwl.angular-console", // Nx Console
     "oderwat.indent-rainbow", // indent-rainbow
+    "oxc.oxc-vscode", // Oxc
     "pflannery.vscode-versionlens", // Version Lens
     "PKief.material-icon-theme", // Material Icon Theme
     "quicktype.quicktype", // Paste JSON as Code
@@ -62,6 +62,7 @@
     "streetsidesoftware.code-spell-checker", // Code Spell Checker
     "stringham.copy-with-imports", // Copy With Imports
     "tamasfe.even-better-toml", // Even Better TOML
+    "thinker.data-size-count", // Data Size Count
     "vivaxy.vscode-conventional-commits", // Conventional Commits
     "wholroyd.jinja", // Jinja
     "YoavBls.pretty-ts-errors", // Pretty TypeScript Errors

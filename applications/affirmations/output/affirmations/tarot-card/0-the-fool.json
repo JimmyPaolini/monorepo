@@ -1,0 +1,57 @@
+{
+  "subject": {
+    "category": {
+      "name": "Tarot Card",
+      "slug": "tarot-card"
+    },
+    "metadata": {},
+    "name": "The Fool",
+    "order": 0,
+    "slug": "the-fool"
+  },
+  "grammars": [
+    {
+      "grammar": {
+        "emoji": "⭐",
+        "description": "Asserts a present-moment truth directly and simply — the most fundamental form of affirmation.",
+        "examples": [
+          "I am {adjective}...",
+          "I {verb}...",
+          "I am {adjective} of {noun}..."
+        ],
+        "form": "FINITE",
+        "mood": "INDICATIVE",
+        "tense": "PRESENT",
+        "person": "FIRST",
+        "voice": "ACTIVE",
+        "aspect": "SIMPLE",
+        "number": "SINGULAR",
+        "deixis": null,
+        "polarity": null,
+        "specifiers": [
+          "FINITE",
+          "INDICATIVE",
+          "ACTIVE",
+          "PRESENT",
+          "SIMPLE",
+          "FIRST",
+          "SINGULAR"
+        ],
+        "name": "⭐ Finite Indicative Active Present Simple First Singular",
+        "slug": "finite-indicative-active-present-simple-first-singular",
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time.\n- Use the present tense.\n- Subject is 'I' (first person singular)."
+      },
+      "affirmations": [
+        {
+          "text": "I am affirmation 1."
+        },
+        {
+          "text": "I am affirmation 2."
+        },
+        {
+          "text": "I am affirmation 3."
+        }
+      ]
+    }
+  ]
+}

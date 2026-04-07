@@ -1,36 +1,50 @@
 {
   "[javascript]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[javascriptreact]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[json]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[jsonl]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
-  "[jupyter]": {
-    "editor.defaultFormatter": "charliermarsh.ruff"
+  "[jupyter-notebook]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.ruff": "explicit",
+      "source.organizeImports": "never",
+      "source.organizeImports.ruff": "explicit"
+    },
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4
   },
   "[markdown]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[python]": {
-    "editor.defaultFormatter": "charliermarsh.ruff"
+    "editor.codeActionsOnSave": {
+      "source.fixAll.ruff": "explicit",
+      "source.organizeImports": "never",
+      "source.organizeImports.ruff": "explicit"
+    },
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4
   },
   "[typescript]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[yaml]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "atlascode.rovodev.showEntitlementNotifications": false,
   "chat.agent.maxRequests": 96,
@@ -42,16 +56,19 @@
   "chat.detectParticipant.enabled": true,
   "chat.editRequests": "inline",
   "chat.edits2.enabled": true,
+  "chat.experimental.useSkillAdherencePrompt": true,
   "chat.extensionTools.enabled": true,
   "chat.implicitContext.enabled": {
     "panel": "always"
   },
   "chat.implicitContext.suggestedContext": true,
+  "chat.includeReferencedInstructions": true,
   "chat.instructionsFilesLocations": {
     ".github/instructions": true
   },
   "chat.math.enabled": true,
   "chat.mcp.access": "all",
+  "chat.mcp.apps.enabled": true,
   "chat.mcp.autostart": "newAndOutdated",
   "chat.mcp.discovery.enabled": {
     "claude-desktop": false,
@@ -59,7 +76,12 @@
     "cursor-workspace": false,
     "windsurf": false
   },
-  "chat.notifyWindowOnConfirmation": true,
+  "chat.mcp.gallery.enabled": true,
+  "chat.notifyWindowOnConfirmation": "always",
+  "chat.notifyWindowOnResponseReceived": "always",
+  "chat.planAgent.defaultModel": "Claude Opus 4.6 (copilot)",
+  "chat.requestQueuing.defaultAction": "queue",
+  "chat.restoreLastPanelSession": true,
   "chat.sendElementsToChat.enabled": true,
   "chat.tools.global.autoApprove": true,
   "chat.tools.terminal.autoApprove": {
@@ -113,6 +135,7 @@
   "chat.unifiedAgentsBar.enabled": true,
   "chat.useAgentSkills": true,
   "chat.useNestedAgentsMdFiles": true,
+  "chat.viewProgressBadge.enabled": true,
   "chat.viewSessions.orientation": "stacked",
   "containers.containers.label": "ContainerName",
   "containers.containers.sortBy": "Label",
@@ -127,6 +150,7 @@
   "conventionalCommits.promptFooter": false,
   "conventionalCommits.promptScopes": true,
   "conventionalCommits.scopes": [
+    "affirmations", // Python Jupyter notebook application for LangGraph affirmation generation
     "applications", // Changes spanning multiple apps (caelundas, lexico, JimmyPaolini)
     "caelundas", // Node.js CLI for astronomical calendar generation (NASA JPL ephemeris)
     "configuration", // Workspace root config files (tsconfig, eslint, vitest, nx.json, etc.)
@@ -187,15 +211,20 @@
     "source.convertImportStar": "explicit",
     "source.fixAll": "explicit",
     "source.fixAll.eslint": "explicit",
-    "source.fixAll.prettier": "explicit",
+    "source.fixAll.oxc": "explicit",
+    "source.fixAll.prettier": "never",
     "source.fixAll.pylance": "never",
     "source.fixAll.ruff": "explicit",
     "source.fixAll.ts": "explicit",
+    "source.format.oxc":"explicit",
     "source.formatAll.terraform": "explicit",
+    "source.organizeImports": "explicit",
     "source.organizeImports.ruff": "explicit",
+    "source.organizeLinkDefinitions": "explicit",
     "source.removeUnused.ts": "never",
     "source.removeUnusedImports": "explicit",
     "source.sort.json": "never",
+    "source.sortImports": "explicit",
     "source.unusedImports": "explicit"
   },
   "editor.detectIndentation": false,
@@ -225,11 +254,15 @@
   "editor.matchBrackets": "always",
   "editor.maxTokenizationLineLength": 10000,
   "editor.minimap.enabled": true,
+  "editor.minimap.markSectionHeaderRegex": "[#/]\\s*(?<label>[^\\u0000-\\u007F].*)",
   "editor.minimap.renderCharacters": true,
   "editor.minimap.scale": 2,
   "editor.minimap.sectionHeaderFontSize": 10,
   "editor.minimap.sectionHeaderLetterSpacing": 1,
+  "editor.minimap.showMarkSectionHeaders": true,
+  "editor.minimap.showRegionSectionHeaders": true,
   "editor.minimap.showSlider": "always",
+  "editor.minimap.size": "proportional",
   "editor.rulers": [
     80,
     120
@@ -263,28 +296,29 @@
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
   "extensions.experimental.affinity": {
-    "charliermarsh.ruff": 2,
-    "cweijan.dbclient-jdbc": 5,
-    "cweijan.vscode-database-client2": 5,
-    "dbaeumer.vscode-eslint": 3,
-    "docker.docker": 4,
-    "esbenp.prettier-vscode": 3,
-    "GitHub.copilot": 1,
-    "GitHub.copilot-chat": 1,
-    "ms-azuretools.vscode-containers": 4,
-    "ms-azuretools.vscode-docker": 4,
-    "ms-kubernetes-tools.vscode-kubernetes-tools": 4,
-    "ms-python.debugpy": 2,
-    "ms-python.isort": 2,
-    "ms-python.python": 2,
-    "ms-python.vscode-pylance": 2,
-    "ms-python.vscode-python-envs": 2,
-    "ms-toolsai.datawrangler": 6,
-    "ms-toolsai.jupyter": 6,
-    "ms-toolsai.jupyter-keymap": 6,
-    "ms-toolsai.jupyter-renderers": 6,
-    "ms-toolsai.vscode-jupyter-cell-tags": 6,
-    "rvest.vs-code-prettier-eslint": 3
+    "charliermarsh.ruff": 1,
+    "cweijan.dbclient-jdbc": 4,
+    "cweijan.vscode-database-client2": 4,
+    "dbaeumer.vscode-eslint": 2,
+    "docker.docker": 3,
+    "esbenp.prettier-vscode": 2,
+    // "github.copilot": 1,
+    // "github.copilot-chat": 1,
+    "ms-azuretools.vscode-containers": 3,
+    "ms-azuretools.vscode-docker": 3,
+    "ms-dotnettools.vscode-dotnet-runtime": 1,
+    "ms-kubernetes-tools.vscode-kubernetes-tools": 3,
+    "ms-python.debugpy": 1,
+    "ms-python.isort": 1,
+    "ms-python.python": 1,
+    "ms-python.vscode-pylance": 1,
+    "ms-python.vscode-python-envs": 1,
+    "ms-toolsai.datawrangler": 1,
+    "ms-toolsai.jupyter": 1,
+    "ms-toolsai.jupyter-keymap": 1,
+    "ms-toolsai.jupyter-renderers": 1,
+    "ms-toolsai.vscode-jupyter-cell-tags": 1,
+    "rvest.vs-code-prettier-eslint": 2
   },
   "extensions.ignoreRecommendations": true,
   "extensions.webWorker": false,
@@ -345,24 +379,32 @@
   "git.showProgress": true,
   "git.terminalGitEditor": true,
   "git.verboseCommit": true,
+  "github.copilot.chat.agent.autoFix": true,
   "github.copilot.chat.agent.currentEditorContext.enabled": true,
   "github.copilot.chat.agent.omitFileAttachmentContents": true,
   "github.copilot.chat.agentCustomizationSkill.enabled": true,
   "github.copilot.chat.agentHistorySummarizationWithPromptCache": true,
   "github.copilot.chat.anthropic.contextEditing.enabled": true,
-  "github.copilot.chat.anthropic.thinking.budgetTokens": 4096,
+  "github.copilot.chat.anthropic.contextEditing.mode": "clear-tooluse",
+  "github.copilot.chat.anthropic.thinking.budgetTokens": 2048,
   "github.copilot.chat.anthropic.tools.websearch.maxUses": 12,
   "github.copilot.chat.anthropic.toolSearchTool.enabled": true,
-  "github.copilot.chat.codeGeneration.useInstructionFiles": false,
+  "github.copilot.chat.backgroundCompaction": true,
+  "github.copilot.chat.cli.branchSupport.enabled": true,
+  "github.copilot.chat.cli.isolationOption.enabled": true,
+  "github.copilot.chat.cli.mcp.enabled": true,
+  "github.copilot.chat.cli.planMode.enabled": true,
+  "github.copilot.chat.codeGeneration.useInstructionFiles": true,
   "github.copilot.chat.codesearch.enabled": true,
   "github.copilot.chat.commitMessageGeneration.instructions": [
     {
-      "file": "documentation/skills/commit-code/SKILL.md"
+      "file": "./documentation/skills/commit-code/SKILL.md"
     }
   ],
   "github.copilot.chat.completionsFetcher": "node-fetch",
   "github.copilot.chat.copilotMemory.enabled": true,
   "github.copilot.chat.customInstructionsInSystemMessage": true,
+  "github.copilot.chat.editRecording.enabled": true,
   "github.copilot.chat.enableUserPreferences": true,
   "github.copilot.chat.generateTests.codeLens": true,
   "github.copilot.chat.githubMcpServer.enabled": true,
@@ -386,7 +428,8 @@
   "github.copilot.chat.nesFetcher": "node-fetch",
   "github.copilot.chat.newWorkspace.useContext7": true,
   "github.copilot.chat.newWorkspaceCreation.enabled": true,
-  "github.copilot.chat.planAgent.model": "Claude Opus 4.5 (copilot)",
+  "github.copilot.chat.notebook.followCellExecution.enabled": true,
+  "github.copilot.chat.projectSetupInfoSkill.enabled": true,
   "github.copilot.chat.pullRequestDescriptionGeneration.instructions": [
     {
       "file": "documentation/skills/create-pull-request/SKILL.md"
@@ -399,13 +442,16 @@
   "github.copilot.chat.scopeSelection": true,
   "github.copilot.chat.searchSubagent.enabled": true,
   "github.copilot.chat.searchSubagent.model": "Claude Haiku 4.5 (copilot)",
+  "github.copilot.chat.searchSubagent.useAgenticProxy": true,
   "github.copilot.chat.setupTests.enabled": true,
   "github.copilot.chat.switchAgent.enabled": true,
   "github.copilot.chat.terminalChatLocation": "chatView",
   "github.copilot.chat.tools.defaultToolsGrouped": true,
   "github.copilot.editor.enableCodeActions": false,
+  "github.copilot.nextEditSuggestions.eagerness": "high",
   "github.copilot.nextEditSuggestions.enabled": true,
   "github.copilot.nextEditSuggestions.fixes": true,
+  "github.copilot.nextEditSuggestions.preferredModel": "Claude Haiku 4.5 (copilot)",
   "github.copilot.selectedCompletionModel": "Claude Haiku 4.5 (copilot)",
   "github-actions.use-enterprise": false,
   "githubPullRequests.allowFetch": true,
@@ -455,6 +501,7 @@
   ],
   "gitlens.ai.model": "vscode",
   "gitlens.ai.vscode.model": "copilot:gpt-4.1",
+  "gitlens.gitkraken.mcp.autoEnabled": false,
   "gitlens.plusFeatures.enabled": true,
   "gitlens.views.commits.files.layout": "tree",
   "gitlens.views.scm.grouped.hiddenViews": {
@@ -485,19 +532,34 @@
   },
   "gitlens.views.worktrees.showStashes": true,
   "indentRainbow.colorOnWhiteSpaceOnly": true,
+  "inlineChat.affordance": "gutter",
+  "inlineChat.defaultModel": "Claude Haiku 4.5 (copilot)",
   "inlineChat.enableV2": true,
   "inlineChat.finishOnType": true,
   "inlineChat.notebookAgent": true,
   "inlineFold.disableInDiffEditor": true,
   "inlineFold.unfoldOnLineSelect": true,
   "insertDateString.format": "iso",
-  "javascript.autoClosingTags": true,
-  "javascript.preferences.importModuleSpecifier": "relative",
-  "javascript.suggest.autoImports": true,
-  "javascript.updateImportsOnFileMove.enabled": "always",
+  "js/ts.autoClosingTags": true,
+  "js/ts.autoClosingTags.enabled": true,
+  "js/ts.inlayHints.enumMemberValues.enabled": true,
+  "js/ts.inlayHints.functionLikeReturnTypes.enabled": false,
+  "js/ts.inlayHints.parameterNames.enabled": "literals",
+  "js/ts.inlayHints.parameterTypes.enabled": false,
+  "js/ts.inlayHints.propertyDeclarationTypes.enabled": false,
+  "js/ts.inlayHints.variableTypes.enabled": false,
+  "js/ts.preferences.importModuleSpecifier": "relative",
+  "js/ts.preferences.preferTypeOnlyAutoImports": true,
+  "js/ts.suggest.autoImports": true,
+  "js/ts.suggest.paths": true,
+  "js/ts.tsserver.experimental.enableProjectDiagnostics": false,
+  "js/ts.tsserver.maxMemory": 2048,
+  "js/ts.tsserver.maxTsServerMemory": 3072,
+  "js/ts.updateImportsOnFileMove.enabled": "always",
   "json.schemaDownload.enable": true,
   "json.schemaDownload.trustedDomains": {
     "https://biomejs.dev": true,
+    "https://cdn.statically.io": true,
     "https://json.schemastore.org/": true,
     "https://json-schema.org/": true,
     "https://raw.githubusercontent.com/": true,
@@ -548,12 +610,15 @@
     ".yamllint": "yaml",
     "auth.guard.js": "authors",
     "database-client-config.json": "database",
+    "devcontainer.json": "3d",
     "eslint.config.base.ts": "eslint",
     "extensions.json": "cake",
     "jest.config.e2e.ts": "jest",
     "keybindings.json": "pawn",
     "lint-staged.config.ts": "lintstaged",
     "mcp.json": "copilot",
+    "oxfmt.config.ts": "oxc",
+    "oxlint.config.ts": "oxc",
     "project.json": "nx",
     "sessions.json": "exe",
     "settings.json": "settings",
@@ -574,28 +639,58 @@
     "rbac": "guard",
     "routing": "element"
   },
+  "notebook.breadcrumbs.showCodeCells": true,
   "notebook.cellToolbarLocation": {
     "default": "right",
     "jupyter-notebook": "right"
   },
   "notebook.codeActionsOnSave": {
     "notebook.source.fixAll": "explicit",
-    "notebook.source.organizeImports": "explicit"
+    "notebook.source.fixAll.ruff": "explicit",
+    "notebook.source.organizeImports.ruff": "explicit",
+    "source.convertImportFormat": "never",
+    "source.fixAll": "never",
+    "source.fixAll.pylance": "never",
+    "source.removeUnusedImports": "explicit",
+    "source.sortImports": "never"
   },
-  "notebook.defaultFormatter": "charliermarsh.ruff",
+  "notebook.compactView": true,
+  "notebook.diff.experimental.toggleInline": true,
+  "notebook.diff.ignoreOutputs": true,
   "notebook.formatOnSave.enabled": true,
   "notebook.lineNumbers": "on",
+  "notebook.outline.showCodeCells": true,
+  "notebook.output.linkifyFilePaths": true,
+  "notebook.output.scrolling": true,
   "notebook.output.textLineLimit": 32,
+  "notebook.output.wordWrap": true,
+  "notebook.variablesView": true,
   "npm-intellisense.importQuotes": "\"",
   "npm-intellisense.scanDevDependencies": true,
   "npm-intellisense.showBuildInLibs": true,
-  "outline.showEnumMembers": false,
-  "outline.showFields": false,
-  "outline.showProperties": false,
+  "outline.collapseItems": "alwaysCollapse",
+  "outline.showEnumMembers": true,
+  "outline.showFields": true,
+  "outline.showProperties": true,
   "outline.showVariables": false,
+  "oxc.enable": true,
+  "oxc.enable.oxlint": true,
   "postman.mcp.notifications.postmanMCP": false,
   "postman.settings.dotenv-detection-notification-visibility": false,
-  "python.defaultInterpreterPath": "/usr/local/python/current/bin/python",
+  "python.analysis.diagnosticSeverityOverrides": {
+    "reportMissingModuleSource": "none",
+    "reportMissingTypeStubs": "none",
+    "reportUnknownArgumentType": "none",
+    "reportUnknownLambdaType": "none",
+    "reportUnknownMemberType": "none",
+    "reportUnknownParameterType": "none",
+    "reportUnknownReturnType": "none",
+    "reportUnknownVariableType": "none",
+    "reportUnusedImport": "none",
+    "reportUnusedParameter": "none"
+  },
+  "python.analysis.typeCheckingMode": "standard",
+  "python.defaultInterpreterPath": "${workspaceFolder}/applications/affirmations/.venv/bin/python",
   "remote.autoForwardPortsSource": "hybrid",
   "remote.portsAttributes": {
     "3000": {
@@ -623,6 +718,11 @@
       "onAutoForward": "silent"
     }
   },
+  "ruff.interpreter": [
+    "${workspaceFolder}/applications/affirmations/.venv/bin/python"
+  ],
+  "ruff.nativeServer": "auto",
+  "ruff.organizeImports": true,
   "scm.alwaysShowActions": true,
   "scm.alwaysShowRepositories": true,
   "scm.autoReveal": true,
@@ -659,30 +759,21 @@
     "node_modules": true
   },
   "search.useIgnoreFiles": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "simpleBrowser.useIntegratedBrowser": true,
   "task.autoDetect": "on",
   "task.problemMatchers.neverPrompt": {
     "shell": true
   },
   "task.reconnection": true,
   "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.env.osx": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
   "terraform.languageServer.args": [
     "serve"
   ],
   "terraform.languageServer.enable": true,
-  "typescript.autoClosingTags": true,
-  "typescript.inlayHints.enumMemberValues.enabled": true,
-  "typescript.inlayHints.functionLikeReturnTypes.enabled": false,
-  "typescript.inlayHints.parameterNames.enabled": "literals",
-  "typescript.inlayHints.parameterTypes.enabled": false,
-  "typescript.inlayHints.propertyDeclarationTypes.enabled": false,
-  "typescript.inlayHints.variableTypes.enabled": false,
-  "typescript.preferences.importModuleSpecifier": "relative",
-  "typescript.preferences.preferTypeOnlyAutoImports": true,
-  "typescript.suggest.autoImports": true,
-  "typescript.suggest.paths": true,
-  "typescript.tsserver.experimental.enableProjectDiagnostics": false,
-  "typescript.tsserver.maxTsServerMemory": 3072,
-  "typescript.updateImportsOnFileMove.enabled": "always",
   "vitest.maximumConfigs": 24,
   "vscode-kubernetes.log-viewer.autorun": true,
   "vscode-kubernetes.log-viewer.destination": "Webview",
@@ -693,8 +784,10 @@
   "vscode-kubernetes.log-viewer.wrap": true,
   "window.customTitleBarVisibility": "windowed",
   "window.density.editorTabHeight": "compact",
+  "window.openFoldersInNewWindow": "off",
   "window.title": "${rootName}",
   "workbench.activityBar.location": "top",
+  "workbench.browser.enableChatTools": true,
   "workbench.browser.openLocalhostLinks": true,
   "workbench.colorCustomizations": {
     "editorRuler.foreground": "#282828"
@@ -705,14 +798,13 @@
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.limit.enabled": true,
   "workbench.editor.limit.value": 16,
-  "workbench.editor.pinnedTabSizing": "compact",
+  "workbench.editor.pinnedTabSizing": "shrink",
   "workbench.editor.pinnedTabsOnSeparateRow": true,
   "workbench.editor.preferHistoryBasedLanguageDetection": false,
   "workbench.editor.showTabIndex": false,
   "workbench.editor.tabSizing": "fit",
   "workbench.editor.wrapTabs": false,
   "workbench.editorAssociations": {
-    "*.csv": "jupyter-data-wrangler",
     "*.html": "default",
     "file:/**/*.csv": "jupyter-data-wrangler"
   },

@@ -73,6 +73,7 @@ Specialized domain knowledge for working on specific systems or patterns:
 
 ## Projects
 
+- **[affirmations](applications/affirmations/AGENTS.md)**: Python Jupyter notebook application for LangChain + LangGraph affirmation generation (Ollama Qwen 3.5, ReAct agent, DuckDuckGo/SearxNG/Wikipedia tools)
 - **[caelundas](applications/caelundas/AGENTS.md)**: Node.js CLI for astronomical calendar generation (NASA JPL API, Kubernetes Job)
 - **[lexico](applications/lexico/AGENTS.md)**: SSR web app (React 19, TanStack Start, Supabase)
 - **[lexico-components](packages/lexico-components/AGENTS.md)**: Shared React component library (shadcn/ui, Radix UI)
@@ -81,6 +82,15 @@ Specialized domain knowledge for working on specific systems or patterns:
 - **[code-generator](tools/code-generator/AGENTS.md)**: Nx generators for scaffolding code
 
 ## Key Conventions
+
+### Project Tags
+
+- **`language:typescript`** — applied to all TypeScript projects (caelundas, lexico, lexico-components, code-generator, monorepo)
+- **`language:python`** — applied to all Python projects (affirmations)
+
+These tags enable conditional sub-target composition in composite targets (`format`, `lint`, `typecheck`, `test`). Python projects override the TS-default composite targets to compose Python sub-targets (`ruff-format`, `ruff-lint`, `pyright`, `py-test`) instead of TS ones.
+
+See [Python Conventions](documentation/conventions/python.md) for the full Python tooling setup.
 
 ### TypeScript
 
@@ -207,6 +217,23 @@ nx run caelundas:kubernetes-copy-files # Retrieve output
 nx run lexico:supabase:start           # Start local
 nx run lexico:supabase:generate-types  # After schema changes
 nx run lexico:supabase:database-diff   # Create migration
+```
+
+### Affirmations (Python + Ollama)
+
+```bash
+nx run affirmations:ollama           # Start Ollama container (default: start)
+nx run affirmations:searxng          # Start SearxNG container (default: start)
+nx run affirmations:open-webui       # Start Open WebUI container (default: start)
+nx run affirmations:test             # Run all tests
+nx run affirmations:test:unit        # Run unit tests
+nx run affirmations:lint             # Ruff linting
+nx run affirmations:typecheck        # pyright + ty type checking (parallel)
+nx run affirmations:ty               # ty type checker (standalone)
+nx run affirmations:bandit           # Security linting
+nx run affirmations:vulture          # Detect unused code
+nx run affirmations:open-webui --configuration=open  # Open Ollama chat UI
+nx run affirmations:searxng --configuration=open     # Open SearxNG search UI
 ```
 
 ## Project Architecture

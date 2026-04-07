@@ -6,7 +6,7 @@ Utility scripts for monorepo setup, maintenance, and development workflows.
 
 This directory contains shell scripts for:
 
-- **Local setup** - macOS-specific initial monorepo configuration (in `local-setup/`)
+- **Local setup** - macOS-specific initial monorepo configuration (in `local/`)
 - **Shell utilities** - Common terminal operations
 - **Database operations** - SQL utilities and queries
 
@@ -17,20 +17,20 @@ This directory contains shell scripts for:
 Run the main setup script to configure your local development environment:
 
 ```bash
-./scripts/local-setup/setup.sh
+./scripts/local/setup.sh
 ```
 
 This runs the following in sequence:
 
-1. `software.sh` - Installs required software (Homebrew, pnpm, nvm)
-2. `environment.sh` - Configures environment variables
-3. `dependencies.sh` - Installs npm dependencies
+1. `software.sh` - Installs required software (Homebrew, nvm, Node.js, pnpm, uv, Python, Ollama, Terraform, and more)
+2. `environment.sh` - Creates `.env` files and configures environment variables
+3. `dependencies.sh` - Installs npm and Python dependencies
 
 > **Note:** If using a devcontainer, these scripts are not needed — the devcontainer handles setup automatically via `.devcontainer/scripts/post-create-command.sh`.
 
 ## Local Setup Scripts
 
-These scripts live in `scripts/local-setup/` and are intended for **macOS local development only**.
+These scripts live in `scripts/local/` and are intended for **macOS local development only**.
 The devcontainer handles equivalent setup automatically.
 
 ### setup.sh
@@ -40,16 +40,16 @@ The devcontainer handles equivalent setup automatically.
 **Usage:**
 
 ```bash
-./scripts/local-setup/setup.sh
+./scripts/local/setup.sh
 ```
 
 **What it does:**
 
 - Validates monorepo root directory
 - Sources utilities for common functions
-- Installs required software (Homebrew, pnpm, nvm)
+- Installs required software (Homebrew, nvm, Node.js, pnpm, uv, Python, Ollama, etc.)
 - Configures environment from `.env`
-- Installs all npm dependencies
+- Installs all npm and Python dependencies
 
 **Prerequisites:**
 
@@ -63,14 +63,25 @@ The devcontainer handles equivalent setup automatically.
 **Usage:**
 
 ```bash
-./scripts/local-setup/software.sh
+./scripts/local/software.sh
 ```
 
 **Checks/Installs:**
 
 - **Homebrew** - Package manager for macOS/Linux
-- **pnpm** - Fast, disk space efficient package manager
 - **nvm** - Node Version Manager
+- **Node.js** - Runtime (version from `.nvmrc`)
+- **pnpm** - Fast, disk space efficient package manager
+- **uv** - Python package manager
+- **Python** - 3.11+ (via Homebrew)
+- **Ollama** - Local LLM server (starts service, pulls `qwen3.5:0.8b`)
+- **Terraform** - Infrastructure as code
+- **yamllint** - YAML linting
+- **Supabase CLI** - Supabase local development
+- **jq** - JSON processor
+- **GitHub CLI** - GitHub operations from terminal
+- **Helm** - Kubernetes package manager
+- **kubectl** - Kubernetes CLI
 
 **Behavior:**
 
@@ -80,35 +91,36 @@ The devcontainer handles equivalent setup automatically.
 
 ### dependencies.sh
 
-**Purpose:** Install npm dependencies across the monorepo
+**Purpose:** Install all project dependencies (Node.js and Python)
 
 **Usage:**
 
 ```bash
-./scripts/local-setup/dependencies.sh
+./scripts/local/dependencies.sh
 ```
 
 **What it does:**
 
 - Runs `pnpm install` in monorepo root
 - Installs dependencies for all workspace packages
-- Respects `pnpm-lock.yaml` for reproducible builds
+- Runs `uv sync` in `applications/affirmations/` for Python dependencies
+- Respects lockfiles for reproducible builds
 
 ### environment.sh
 
-**Purpose:** Configure environment variables and shell settings
+**Purpose:** Configure environment variables and create `.env` files
 
 **Usage:**
 
 ```bash
-./scripts/local-setup/environment.sh
+./scripts/local/environment.sh
 ```
 
 **What it does:**
 
-- Sources `.env` file
-- Exports environment variables
-- Configures shell environment for development
+- Creates `.env` from `.env.default` for root, lexico, and caelundas (if not already present)
+- Appends `LOCAL_WORKSPACE_FOLDER=$(pwd)` to root `.env` for docker-compose volume mounts
+- Sources `.env` file and exports environment variables
 
 ### check-lockfile.sh
 
@@ -138,27 +150,64 @@ The devcontainer handles equivalent setup automatically.
 
 ### sync-vscode-extensions.ts
 
-**Purpose:** Sync VS Code extensions between `.vscode/extensions.json` and `.devcontainer/devcontainer.json`
+> Located in `.devcontainer/scripts/sync-vscode-extensions.ts`
+
+**Purpose:** Sync VS Code extensions between `.vscode/extensions.json` and both devcontainer configurations (`.devcontainer/local/devcontainer.json` and `.devcontainer/cloud/devcontainer.json`).
 
 **Usage:**
 
 ```bash
 # Via Nx (recommended)
-nx run monorepo:sync-vscode-extensions:check    # Validate (default)
-nx run monorepo:sync-vscode-extensions:write    # Update devcontainer.json
+nx run monorepo:sync-vscode-extensions:check    # Validate both configs are in sync (default)
+nx run monorepo:sync-vscode-extensions:write    # Update both devcontainer.json files
 
 # Direct
-tsx scripts/sync-vscode-extensions.ts [check|write]
+tsx .devcontainer/scripts/sync-vscode-extensions.ts [check|write]
 ```
 
 **Use cases:**
 
-- Pre-commit hook (auto-runs when `.vscode/extensions.json` is staged)
+- Pre-commit hook (auto-runs when `.vscode/extensions.json` or either devcontainer file is staged)
 - Manual sync after adding extensions
 
 **Exit codes:**
 
 - `0` - In sync or successfully synced
+- `1` - Out of sync (check mode) or failed
+
+### sync-devcontainer-configuration.ts
+
+**Purpose:** Propagate common fields from the local devcontainer config into the cloud config. Local is the source of truth for shared settings; cloud is edited directly only for its Docker feature and `runArgs`.
+
+**Synced fields** (local is source of truth):
+
+- `customizations`, `remoteEnv`, `forwardPorts`, `portsAttributes`, `image`, `containerUser`, `remoteUser`, lifecycle scripts, `$schema`
+- Shared features (github-cli, kubectl, terraform, etc.) — each config's Docker feature is preserved
+- Shared mounts (node-modules, pnpm) — cloud's docker-storage volume is preserved
+
+**Preserved fields** (each config is source of truth):
+
+- `name`, `runArgs`, Docker feature (`docker-in-docker` / `docker-outside-of-docker`)
+
+**Usage:**
+
+```bash
+# Via Nx (recommended)
+nx run monorepo:sync-devcontainer-configuration:check    # Validate cloud config is in sync (default)
+nx run monorepo:sync-devcontainer-configuration:write    # Propagate common fields from local into cloud
+
+# Direct
+tsx scripts/sync-devcontainer-configuration.ts [check|write]
+```
+
+**Use cases:**
+
+- Pre-commit hook (auto-runs when any devcontainer file is staged)
+- After editing shared settings in `local/devcontainer.json` (run `write` to propagate)
+
+**Exit codes:**
+
+- `0` - In sync or successfully updated
 - `1` - Out of sync (check mode) or failed
 
 ### utilities.sh
@@ -352,7 +401,7 @@ See file for specific SQL queries and documentation.
 ```bash
 # ✅ Correct
 cd ~/Personal/monorepo
-./scripts/local-setup/setup.sh
+./scripts/local/setup.sh
 
 # ❌ Wrong
 cd scripts
@@ -372,7 +421,7 @@ Or use the utilities.sh automatic behavior (makes all `.sh` files executable).
 **Execute scripts** (standalone):
 
 ```bash
-./scripts/local-setup/setup.sh
+./scripts/local/setup.sh
 ```
 
 **Source scripts** (use functions in current shell):
@@ -427,7 +476,7 @@ cp .env.example .env
 # Edit .env with your values
 
 # 3. Run setup
-./scripts/local-setup/setup.sh
+./scripts/local/setup.sh
 ```
 
 ### Update Dependencies
@@ -439,7 +488,7 @@ Update npm packages:
 pnpm update
 
 # Or run dependencies script
-./scripts/local-setup/dependencies.sh
+./scripts/local/dependencies.sh
 ```
 
 ### Clean Install
@@ -451,7 +500,7 @@ Remove node_modules and reinstall:
 pnpm clean
 
 # Reinstall
-./scripts/local-setup/dependencies.sh
+./scripts/local/dependencies.sh
 ```
 
 ### Validate Lockfile
@@ -566,7 +615,7 @@ brew install pnpm
 Or run software setup:
 
 ```bash
-./scripts/local-setup/software.sh
+./scripts/local/software.sh
 ```
 
 ### Lockfile out of sync

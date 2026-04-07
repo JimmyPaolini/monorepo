@@ -1,0 +1,36 @@
+# Root pyproject.toml — shared Python tool configuration only.
+# No [project] or [build-system] sections — tool config only to avoid
+# interfering with uv dependency resolution in individual projects.
+# Mirrors tsconfig.base.json / eslint.config.base.ts pattern.
+#
+# Python projects extend this via [tool.ruff] extend = "../../pyproject.toml"
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "TCH"]
+ignore = ["E501"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.pyright]
+pythonVersion = "3.11"
+typeCheckingMode = "strict"
+reportMissingTypeStubs = "none"
+reportMissingModuleSource = "none"
+reportUnknownVariableType = "none"
+reportUnknownMemberType = "none"
+reportUnknownLambdaType = "none"
+reportUnknownArgumentType = "none"
+reportUnknownParameterType = "none"
+reportUnknownReturnType = "none"
+reportUnusedParameter = "none"
+
+[tool.pytest.ini_options]
+markers = [
+  "unit: fast unit tests with mocked I/O",
+  "integration: integration tests requiring real services",
+]

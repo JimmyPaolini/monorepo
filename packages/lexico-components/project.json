@@ -3,9 +3,15 @@
   "name": "lexico-components",
   "projectType": "library",
   "sourceRoot": "packages/lexico-components/src",
-  "tags": [ "framework:react", "scope:shared","type:lib"],
+  "tags": [
+    "framework:react",
+    "language:typescript",
+    "scope:shared",
+    "type:lib"
+  ],
   "targets": {
-    "biome": {},
+    "biome-format": {},
+    "biome-lint": {},
     "build": {
       "executor": "@nx/vite:build",
       "options": {
@@ -18,7 +24,10 @@
       "dependsOn": ["build"],
       "description": "Check bundle size limits",
       "executor": "nx:run-commands",
-      "inputs": [ "{workspaceRoot}/dist/packages/lexico-components/**/*","default"],
+      "inputs": [
+        "{workspaceRoot}/dist/packages/lexico-components/**/*",
+        "default"
+      ],
       "options": {
         "command": "npx size-limit",
         "cwd": "packages/lexico-components"
@@ -27,15 +36,15 @@
     "code-analysis": {
       "options": {
         "commands": [
-          "nx run lexico-components:dependency-analysis",
-          "nx run lexico-components:format:{args.configuration}",
-          "nx run lexico-components:knip:{args.configuration}",
-          "nx run lexico-components:lint:{args.configuration}",
-          "nx run lexico-components:markdown-lint:{args.configuration}",
-          "nx run lexico-components:spell-check",
-          "nx run lexico-components:type-coverage",
-          "nx run lexico-components:typecheck",
-          "nx run lexico-components:yaml-lint"
+          "nx run {projectName}:dependency-analysis",
+          "nx run {projectName}:format:{args.configuration}",
+          "nx run {projectName}:knip:{args.configuration}",
+          "nx run {projectName}:lint:{args.configuration}",
+          "nx run {projectName}:markdown-lint:{args.configuration}",
+          "nx run {projectName}:spell-check",
+          "nx run {projectName}:type-coverage",
+          "nx run {projectName}:typecheck",
+          "nx run {projectName}:yaml-lint"
         ]
       }
     },
@@ -45,19 +54,26 @@
     "lint": {
       "options": {
         "commands": [
-          "nx run lexico-components:eslint:{args.configuration}",
-          "nx run lexico-components:oxlint:{args.configuration}",
-          "nx run lexico-components:stylelint:{args.configuration}"
+          "nx run {projectName}:eslint:{args.configuration}",
+          "nx run {projectName}:oxlint:{args.configuration}",
+          "nx run {projectName}:stylelint:{args.configuration}"
         ]
       }
     },
     "markdown-lint": {},
+    "oxfmt": {},
     "oxlint": {},
     "prettier": {},
     "spell-check": {},
     "stylelint": {},
     "type-coverage": {},
-    "typecheck": {},
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc --noEmit",
+        "cwd": "{projectRoot}"
+      }
+    },
     "yaml-lint": {}
   }
 }

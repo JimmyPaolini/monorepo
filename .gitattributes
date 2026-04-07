@@ -35,6 +35,9 @@
 *.db binary
 *.sqlite binary
 
+# Jupyter notebooks — strip outputs on commit to prevent large diffs
+*.ipynb filter=nbstripout diff=ipynb
+
 # Lockfile handling — treat as generated, non-diffable
 pnpm-lock.yaml -diff linguist-generated
 
