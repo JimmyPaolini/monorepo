@@ -14,19 +14,15 @@ RUN corepack enable
 WORKDIR /app
 
 # Copy dependency definition files from the root
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+# .npmrc sets inject-workspace-packages=true so pnpm deploy creates a clean
+# isolated node_modules with only caelundas' production dependencies (no devDeps)
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
 
 # Copy root tsconfig so caelundas/tsconfig.json can resolve its extends path at runtime
 COPY tsconfig.base.json ./
 
 # Copy application-specific package.json to leverage Docker layer caching
 COPY applications/caelundas/package.json ./applications/caelundas/
-
-# Configure pnpm inject mode so pnpm deploy works in pnpm v10+ without --legacy.
-# Without --legacy, deploy creates a clean isolated node_modules with only
-# caelundas' production dependencies, keeping root devDependencies out of the image.
-# This .npmrc is scoped to the Docker build context only (not checked into source).
-RUN echo "inject-workspace-packages=true" > .npmrc
 
 # Install workspace dependencies (required for pnpm deploy resolution)
 RUN pnpm install --frozen-lockfile
