@@ -37,7 +37,8 @@ RUN pnpm deploy --filter caelundas /deploy
 FROM node:22.22.2-alpine
 
 # Upgrade OS packages to patch known vulnerabilities (e.g., zlib CVE-2026-22184)
-RUN apk upgrade --no-cache
+RUN apk upgrade --no-cache \
+    && rm -rf /usr/local/lib/node_modules/npm /usr/local/bin/npm /usr/local/bin/npx
 
 WORKDIR /app
 
