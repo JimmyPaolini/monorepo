@@ -30,7 +30,8 @@ COPY applications/caelundas ./applications/caelundas
 
 # Deploy caelundas with only its own dependencies, excluding root devDependencies
 # (e.g., @semantic-release/npm → npm@11.8.0, @nx/react → @module-federation)
-RUN pnpm deploy --filter caelundas /deploy
+# --legacy flag required for pnpm v10+ when inject-workspace-packages is not set
+RUN pnpm deploy --filter caelundas --legacy /deploy
 
 # Stage 2: Production runtime
 FROM node:22.22.2-alpine
