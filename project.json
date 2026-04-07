@@ -18,7 +18,6 @@
       "executor": "nx:run-commands",
       "inputs": ["{workspaceRoot}/biome.jsonc", "default"],
       "options": {
-        "command": "biome format '*.ts' '*.js' '*.json' 'scripts/' 'documentation/' 'infrastructure/'",
         "cwd": "{projectRoot}"
       }
     },
@@ -37,7 +36,6 @@
       "executor": "nx:run-commands",
       "inputs": ["{workspaceRoot}/biome.jsonc", "default"],
       "options": {
-        "command": "biome lint '*.ts' '*.js' '*.json' 'scripts/' 'documentation/' 'infrastructure/'",
         "cwd": "{projectRoot}"
       }
     },
@@ -50,21 +48,42 @@
       }
     },
     "code-analysis": {
+      "configurations": {
+        "check": {
+          "commands": [
+            "nx run {projectName}:format:check",
+            "nx run {projectName}:knip:check",
+            "nx run {projectName}:lint:check",
+            "nx run {projectName}:markdown-lint:check",
+            "nx run {projectName}:spell-check",
+            "nx run {projectName}:sync-agent-skills:check",
+            "nx run {projectName}:sync-conventional-config:check",
+            "nx run {projectName}:sync-pull-request-template:check",
+            "nx run {projectName}:sync-vscode-extensions:check",
+            "nx run {projectName}:typecheck"
+          ],
+          "parallel": true
+        },
+        "write": {
+          "commands": [
+            "nx run {projectName}:format:write",
+            "nx run {projectName}:knip:write",
+            "nx run {projectName}:lint:write",
+            "nx run {projectName}:markdown-lint:write",
+            "nx run {projectName}:spell-check",
+            "nx run {projectName}:sync-agent-skills:write",
+            "nx run {projectName}:sync-conventional-config:write",
+            "nx run {projectName}:sync-pull-request-template:write",
+            "nx run {projectName}:sync-vscode-extensions:write",
+            "nx run {projectName}:typecheck"
+          ],
+          "parallel": false
+        }
+      },
+      "defaultConfiguration": "check",
       "description": "Run all static code analysis tools for workspace root (typecheck, lint, format, knip, spell-check, markdown-lint, yaml-lint)",
-      "options": {
-        "commands": [
-          "nx run {projectName}:format:{args.configuration}",
-          "nx run {projectName}:knip:{args.configuration}",
-          "nx run {projectName}:lint:{args.configuration}",
-          "nx run {projectName}:markdown-lint:{args.configuration}",
-          "nx run {projectName}:spell-check",
-          "nx run {projectName}:sync-agent-skills:{args.configuration}",
-          "nx run {projectName}:sync-conventional-config:{args.configuration}",
-          "nx run {projectName}:sync-pull-request-template:{args.configuration}",
-          "nx run {projectName}:sync-vscode-extensions:{args.configuration}",
-          "nx run {projectName}:typecheck"
-        ]
-      }
+      "executor": "nx:run-commands",
+      "options": {}
     },
     "commitlint": {
       "cache": false,
@@ -79,9 +98,23 @@
       "cache": false,
       "configurations": {
         "check": {
+          "commands": [
+            "nx run {projectName}:dependency-lint:check",
+            "nx run {projectName}:license-check",
+            "nx run {projectName}:pnpm-audit:check",
+            "nx run {projectName}:sherif:check",
+            "nx run {projectName}:syncpack:check"
+          ],
           "parallel": true
         },
         "write": {
+          "commands": [
+            "nx run {projectName}:dependency-lint:write",
+            "nx run {projectName}:license-check",
+            "nx run {projectName}:pnpm-audit:write",
+            "nx run {projectName}:sherif:write",
+            "nx run {projectName}:syncpack:write"
+          ],
           "parallel": false
         }
       },
@@ -89,13 +122,6 @@
       "description": "Run all dependency management tools (dependency-lint, pnpm-audit, license-check, sherif, syncpack)",
       "executor": "nx:run-commands",
       "options": {
-        "commands": [
-          "nx run {projectName}:dependency-lint:{args.configuration}",
-          "nx run {projectName}:license-check",
-          "nx run {projectName}:pnpm-audit:{args.configuration}",
-          "nx run {projectName}:sherif:{args.configuration}",
-          "nx run {projectName}:syncpack:{args.configuration}"
-        ],
         "cwd": "{projectRoot}"
       }
     },
@@ -112,9 +138,7 @@
       "defaultConfiguration": "check",
       "description": "Check for dependency updates (check) or update to latest versions (write)",
       "executor": "nx:run-commands",
-      "options": {
-        "command": "ncu --workspaces --root"
-      }
+      "options": {}
     },
     "eslint": {
       "cache": true,
@@ -130,7 +154,6 @@
       "description": "Lint workspace root files with ESLint (config files, scripts, documentation, infrastructure, markdown)",
       "executor": "nx:run-commands",
       "options": {
-        "command": "eslint {args} --config eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'",
         "cwd": "{projectRoot}"
       }
     },
@@ -163,7 +186,6 @@
       "description": "Check for unused files, dependencies, and exports in workspace root only",
       "executor": "nx:run-commands",
       "options": {
-        "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace .",
         "cwd": "{projectRoot}"
       }
     },
@@ -213,7 +235,6 @@
         "default"
       ],
       "options": {
-        "command": "markdownlint-cli2 '*.md' 'scripts/**/*.md' 'documentation/**/*.md' 'infrastructure/**/*.md'",
         "cwd": "{projectRoot}"
       }
     },
@@ -221,10 +242,10 @@
       "cache": true,
       "configurations": {
         "check": {
-          "command": "oxfmt --check '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
+          "command": "oxfmt {args} '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
         },
         "write": {
-          "command": "oxfmt --write '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
+          "command": "oxfmt {args} '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
         }
       },
       "defaultConfiguration": "check",
@@ -232,14 +253,15 @@
       "executor": "nx:run-commands",
       "inputs": ["{workspaceRoot}/oxfmt.config.ts", "default"],
       "options": {
-        "command": "oxfmt --check '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'",
         "cwd": "{projectRoot}"
       }
     },
     "oxlint": {
       "cache": true,
       "configurations": {
-        "check": {},
+        "check": {
+          "command": "oxlint '*.ts' '*.js' 'scripts/' 'documentation/' 'infrastructure/' --ignore-pattern='infrastructure/helm/**/templates'"
+        },
         "write": {
           "command": "oxlint --fix '*.ts' '*.js' 'scripts/' 'documentation/' 'infrastructure/' --ignore-pattern='infrastructure/helm/**/templates'"
         }
@@ -249,7 +271,6 @@
       "executor": "nx:run-commands",
       "inputs": ["{workspaceRoot}/oxlint.config.ts", "default"],
       "options": {
-        "command": "oxlint '*.ts' '*.js' 'scripts/' 'documentation/' 'infrastructure/' --ignore-pattern='infrastructure/helm/**/templates'",
         "cwd": "{projectRoot}"
       }
     },
@@ -257,18 +278,16 @@
       "cache": false,
       "configurations": {
         "check": {
-          "command": "pnpm audit --audit-level=moderate"
+          "command": "pnpm audit --audit-level=moderate --ignore-unfixable"
         },
         "write": {
-          "command": "jq 'del(.pnpm.overrides)' package.json > package.tmp.json && mv package.tmp.json package.json && pnpm install --no-frozen-lockfile && pnpm audit --fix; pnpm install --no-frozen-lockfile"
+          "command": "jq 'del(.pnpm.overrides)' package.json > package.tmp.json && mv package.tmp.json package.json && pnpm update --no-frozen-lockfile && pnpm audit --fix --ignore-unfixable; pnpm install --no-frozen-lockfile"
         }
       },
       "defaultConfiguration": "check",
       "description": "Scan for fixable security vulnerabilities (check) or clean stale overrides and re-fix (write)",
       "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm audit --audit-level=moderate"
-      }
+      "options": {}
     },
     "prettier": {
       "cache": true,
@@ -303,7 +322,6 @@
       "executor": "nx:run-commands",
       "inputs": ["{workspaceRoot}/**/package.json"],
       "options": {
-        "command": "pnpm dlx sherif@1.10.0",
         "cwd": "{workspaceRoot}"
       }
     },

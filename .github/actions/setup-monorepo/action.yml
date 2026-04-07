@@ -22,7 +22,6 @@ runs:
 
     - name: 🗃️ Configure Nx Cache
       run: |
-        echo "NX_REJECT_UNKNOWN_LOCAL_CACHE=0" >> $GITHUB_ENV
         echo "NX_DEFAULT_OUTPUT_STYLE=static" >> $GITHUB_ENV
       shell: bash
 
