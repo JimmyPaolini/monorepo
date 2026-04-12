@@ -556,7 +556,7 @@ export default [
         {
           minValues: 2,
           order: { type: "asc", caseSensitive: false, natural: true },
-          pathPattern: ".*",
+          pathPattern: "^!(command)$",
         },
       ],
       "jsonc/quotes": ["error", "double"],

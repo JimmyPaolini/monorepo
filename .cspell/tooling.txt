@@ -1,28 +1,37 @@
 #region 🧩 Nx & Monorepo
 archi
 automerge
+Biome
 biome
 biomejs
+Buildability
 brightgreen
 bundlesize
 context7
+Cipe
+cipe
+cipes
 depcruise
 deps
 devdeps
 devkit
-husky
+glab
+hushy
 lintstagedrc
 monorepo
 myapp
+mylib
 myorg
 myrelease
 ncurc
 pbundlesize
 pnpm
+projectname
 repo
 subrepositories
 syncpack
 syncpackrc
+teama
 toplevel
 tsconfig
 workspaces
@@ -88,7 +97,8 @@ vite
 
 #endregion
 
-#region 🔧 TypeScript Utilities
+#region 🔧 TypeScript Utilities & Build Tools
+gradlew
 infer
 instanceof
 keyof
@@ -99,6 +109,7 @@ serializers
 seroval
 texttypescript
 transpiler
+transpiles
 typeof
 unredacted
 untaint

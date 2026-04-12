@@ -1,4 +1,3 @@
-````skill
 ---
 name: create-pull-request
 description: Create and manage pull requests following this monorepo's conventions. Use this skill when creating PRs, opening PRs for review, writing PR descriptions, or asked about PR workflows and best practices.
@@ -23,7 +22,7 @@ PR titles **must** follow the same format as commit messages:
 
 ```text
 <type>(<scope>): <gitmoji> <subject>
-````
+```
 
 ### Structure Rules
 

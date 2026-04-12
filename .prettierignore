@@ -48,6 +48,10 @@ yarn.lock
 *.min.js
 *.min.css
 **/routeTree.gen.ts
+
+# Markdown files (handled by markdown-lint with strict emphasis marker rules)
+**/*.md
+**/*.mdx
 CHANGELOG.md
 
 # Compiled files

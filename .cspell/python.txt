@@ -26,6 +26,7 @@ venv
 #region 📚 Standard Library
 classmethod
 dataclasses
+Dataclass
 getattr
 hasattr
 isinstance
