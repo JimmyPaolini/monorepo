@@ -74,7 +74,7 @@ The devcontainer handles equivalent setup automatically.
 - **pnpm** - Fast, disk space efficient package manager
 - **uv** - Python package manager
 - **Python** - 3.11+ (via Homebrew)
-- **Ollama** - Local LLM server (starts service, pulls `qwen3.5:0.8b`)
+- **Ollama** - Local LLM server (starts service, pulls `gemma4:e2b`)
 - **Terraform** - Infrastructure as code
 - **yamllint** - YAML linting
 - **Supabase CLI** - Supabase local development

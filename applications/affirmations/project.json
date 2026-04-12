@@ -66,19 +66,19 @@
     "ollama": {
       "configurations": {
         "pull-large": {
-          "command": "curl -s ${OLLAMA_HOST:-http://localhost:11434}/api/pull -d '{\"name\":\"qwen3.5:9b\"}'"
+          "command": "curl -s ${OLLAMA_HOST:-http://localhost:11434}/api/pull -d '{\"name\":\"gemma4:e26b\"}'"
         },
         "pull-medium": {
-          "command": "curl -s ${OLLAMA_HOST:-http://localhost:11434}/api/pull -d '{\"name\":\"qwen3.5:4b\"}'"
+          "command": "curl -s ${OLLAMA_HOST:-http://localhost:11434}/api/pull -d '{\"name\":\"gemma4:e4b\"}'"
         },
         "pull-small": {
-          "command": "curl -s ${OLLAMA_HOST:-http://localhost:11434}/api/pull -d '{\"name\":\"qwen3.5:0.8b\"}'"
+          "command": "curl -s ${OLLAMA_HOST:-http://localhost:11434}/api/pull -d '{\"name\":\"gemma4:e2b\"}'"
         },
         "start": {
-          "command": "echo 'Start Ollama on your host machine: ollama serve (or: brew services start ollama)'"
+          "command": "if [ \"$MONOREPO_ENVIRONMENT\" = \"local\" ]; then brew services start ollama; else echo 'Start Ollama on your host machine: ollama serve (or: brew services start ollama)'; fi"
         },
         "stop": {
-          "command": "echo 'Stop Ollama on your host machine: pkill ollama (or: brew services stop ollama)'"
+          "command": "if [ \"$MONOREPO_ENVIRONMENT\" = \"local\" ]; then brew services stop ollama; else echo 'Stop Ollama on your host machine: pkill ollama (or: brew services stop ollama)'; fi"
         }
       },
       "defaultConfiguration": "start",

@@ -3,7 +3,7 @@
 #
 # Ollama serves local language models over HTTP at localhost:11434.
 # The affirmations application uses it as the LLM backend via LangChain.
-# qwen3.5:0.8b is the default model used by the ReAct agent.
+# gemma4:e2b is the default model used by the ReAct agent.
 #
 # Depends on: brew.sh (brew_install_or_check must be defined)
 
@@ -28,5 +28,5 @@ if ! curl -sf http://localhost:11434/api/version &>/dev/null; then
 fi
 echo "✅ Ollama is running"
 
-echo "🦙 Pulling default model (qwen3.5:0.8b)..."
-ollama pull qwen3.5:0.8b
+echo "🦙 Pulling default model (gemma4:e2b)..."
+ollama pull gemma4:e2b

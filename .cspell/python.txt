@@ -27,6 +27,7 @@ venv
 classmethod
 dataclasses
 Dataclass
+DOTALL
 getattr
 hasattr
 isinstance

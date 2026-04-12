@@ -16,10 +16,8 @@ nx run affirmations:ollama --configuration=start
 nx run affirmations:searxng --configuration=start
 nx run affirmations:open-webui --configuration=start
 
-# 2. Pull the Qwen 3.5 model (one-time download)
-nx run affirmations:ollama --configuration=pull-small   # qwen3.5:0.8b (~815MB, fast)
-# nx run affirmations:ollama --configuration=pull-medium  # qwen3.5:4b (~3.3GB, balanced)
-# nx run affirmations:ollama --configuration=pull-large   # qwen3.5:9b (~8.1GB, quality)
+# 2. Pull the gemma4:e2b model (one-time download)
+nx run affirmations:ollama --configuration=pull-small   # gemma4:e2b
 
 # 3. Open src/affirmations.ipynb in VSCode to explore the full pipeline
 ```
@@ -62,9 +60,7 @@ applications/affirmations/
 | `vulture`       | `nx run affirmations:vulture`                            | Vulture dead code analysis |
 | `ollama`        | `nx run affirmations:ollama --configuration=start`       | Start Ollama container     |
 | `ollama`        | `nx run affirmations:ollama --configuration=stop`        | Stop Ollama container      |
-| `ollama`        | `nx run affirmations:ollama --configuration=pull-small`  | Pull qwen3.5:0.8b (small)  |
-| `ollama`        | `nx run affirmations:ollama --configuration=pull-medium` | Pull qwen3.5:4b (medium)   |
-| `ollama`        | `nx run affirmations:ollama --configuration=pull-large`  | Pull qwen3.5:9b (large)    |
+| `ollama`        | `nx run affirmations:ollama --configuration=pull-small`  | Pull gemma4:e2b            |
 | `searxng`       | `nx run affirmations:searxng --configuration=start`      | Start SearxNG container    |
 | `searxng`       | `nx run affirmations:searxng --configuration=stop`       | Stop SearxNG container     |
 | `searxng`       | `nx run affirmations:searxng --configuration=open`       | Open SearxNG in browser    |
@@ -137,7 +133,7 @@ PRACTICES["numerology"] = PracticeConfig(
 
 | Service    | Port    | Description                                                   |
 | ---------- | ------- | ------------------------------------------------------------- |
-| Ollama     | `11434` | Local LLM server (`qwen3.5:0.8b` default, `qwen3.5:9b` max)   |
+| Ollama     | `11434` | Local LLM server (`gemma4:e2b`)                               |
 | Open WebUI | `3001`  | Browser-based Ollama chat interface                           |
 | SearxNG    | `8889`  | Self-hosted metasearch (135+ engines)                         |
 

@@ -97,8 +97,11 @@ class Mood(DescribedEnum):
     POTENTIAL = DescribedEnum.create(
         name="POTENTIAL",
         description=(
-            "CRITICAL: The main verb structure MUST use 'can' or 'could' or 'able to': 'I can...', 'I could...', 'I am able to...'. "
-            "Do NOT use indicative verbs like 'trust', 'believe', or 'know' without 'can'/'could'."
+            "CRITICAL: The main predicate MUST begin with 'can', 'could', or 'am/is/are able to'. "
+            "Valid structures: 'I can [verb]', 'I could [verb]', 'I am able to [verb]'. "
+            "Any verb that follows 'can', 'could', or 'able to' is valid — the auxiliary carries the potential meaning. "
+            "Do NOT use a bare indicative verb as the main predicate without a preceding potential auxiliary "
+            "(e.g., do NOT write 'I trust...' or 'I believe...' as a standalone clause without 'can'/'could'/'able to')."
         ),
         examples=("I can {verb}...", "I could {verb} {noun}...", "I am able to {verb}..."),
     )
@@ -289,6 +292,9 @@ class Voice(DescribedEnum):
         description=(
             "CRITICAL: The MAIN clause must use PASSIVE voice — the subject receives the action. "
             "Pattern: 'I am/was/have been [past participle]'. "
+            "Use naturally passive past participles such as: guided, held, supported, loved, carried, blessed, seen, known, "
+            "called, drawn, moved, shaped, filled, grounded, anchored, surrounded, embraced, lifted, held. "
+            "A single optional 'by [agent]' phrase is allowed; do NOT use two separate 'by ...' phrases in one sentence. "
             "Subordinate clauses and infinitive phrases (e.g., 'ready to feel', 'able to see') may use active voice. "
             "Do NOT write active main clauses like 'I trust', 'I choose', or 'I feel'."
         ),
@@ -829,7 +835,13 @@ class Form(DescribedEnum):
 
     GERUND = DescribedEnum.create(
         name="GERUND",
-        description="Begin with a gerund (-ing form as a noun).",
+        description=(
+            "Begin with a gerund: an -ing verb form that acts as the grammatical SUBJECT of the main clause. "
+            "Required sentence structure: '[Gerund phrase] [main verb] [complement]' — e.g., 'Being present opens doors', 'Trusting yourself is strength'. "
+            "The gerund phrase IS the subject; the sentence must have a separate finite main verb after it. "
+            "Do NOT write a participial phrase where the -ing word modifies a subject "
+            "(e.g., do NOT write 'Stepping forward, I trust...' or 'Trusting the path, I grow...')."
+        ),
         examples=(
             "Being {adjective} is a {noun}...",
             "{Verbing} {noun} every {time-unit}...",

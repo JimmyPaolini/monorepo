@@ -101,7 +101,7 @@ cd monorepo
 
 This script:
 
-- Installs **nvm**, **Node.js** (22), **pnpm**, **uv**, **Python** (3.11+), **Ollama** (+ pulls `qwen3.5:0.8b`)
+- Installs **nvm**, **Node.js** (22), **pnpm**, **uv**, **Python** (3.11+), **Ollama** (+ pulls `gemma4:e2b`)
 - Installs **Terraform**, **Supabase CLI**, **Helm**, **kubectl**, **GitHub CLI**, **jq**, **yamllint**
 - Creates `.env` files from `.env.default` templates (root, lexico, caelundas)
 - Sets `LOCAL_WORKSPACE_FOLDER` for docker-compose volume mounts
