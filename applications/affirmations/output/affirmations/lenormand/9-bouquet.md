@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I found myself blooming naturally and peacefully with all my parts
-2. I was blessed with a beautiful gift of unity and deep emotional connection
-3. I was rewarded with a lucky break that brought me new opportunities and stability
+1. I received beautiful gifts in my life
+2. I enjoyed sweet moments with ease
+3. I appreciated all the lovely blossoms
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am happy to receive a beautiful gift of love from the universe
-2. I am grateful for a new opportunity that brings stability and recognition
-3. I am satisfied with the harmony in my relationship and the rebirth of my self
+1. I receive beautiful gifts in my life
+2. I enjoy the sweet pleasure of this moment
+3. I appreciate the lovely beauty surrounding me
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will bloom a beautiful bouquet
-2. I will find harmony in my relationships
-3. I will receive a new gift of love
+1. I will receive beautiful gifts now
+2. I will enjoy every lovely moment fully
+3. I will attract pleasant harmonious connections
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been cultivating a peaceful harmony within my heart
-2. I have been nurturing a garden of unity and connection in my life
-3. I have been finding balance and joy in every moment I walk through
+1. I have been receiving beautiful gifts always
+2. I have been savoring every lovely moment now
+3. I have been attracting joy through beauty always
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have been given a beautiful gift of peace through my work
-2. I will have been given a new opportunity to start my life again
-3. I will have been given a balanced life with my partner and myself
+1. I will have received beautiful gifts now
+2. I will have experienced pure aesthetic pleasure always
+3. I will have manifested joyful beauty fully
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We stand in unity holding our own bouquet
-2. We are connected by the shared joy of our gathering
-3. We bloom together, united in our strength
+1. We enjoy beautiful gifts together now
+2. We appreciate all pleasant moments now
+3. We attract joy through shared beauty now
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. He is fully confident in his own new life
-2. She has received a beautiful gift of peace
-3. They hold a harmonious balance that brings stability
+1. They receive beauty in every lovely moment
+2. She appreciates the sweet gifts around her
+3. It embodies joy through pleasant interactions
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I can create harmony in my life
-2. I am able to bloom naturally
-3. I can receive beautiful gifts from my spirit
+1. I can receive beautiful gifts easily
+2. I could enjoy sweet pleasant moments now
+3. I am able to attract joyful positive exchanges
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find harmony in my daily life
-2. If only I could appreciate beauty
-3. Would I find peace in my heart today?
+1. May I receive beautiful gifts today
+2. Would that I might savor sweet moments now
+3. If only I could embrace joyful beauty
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Bloom with peace in every heart! 🌸
-2. Receive success as a beautiful gift! ✨
-3. Find harmony in the present day! 🌿
+1. Receive beauty into your heart!
+2. Savor every lovely moment now!
+3. Attract joy through pleasant exchanges!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not ready to bloom into a beautiful garden?
-2. Have I not received a gift of peace and harmony?
-3. Can I not live without conflict or fear?
+1. Am I not receiving beautiful gifts now?
+2. Have I not fully enjoyed this sweet pleasure?
+3. Can I not embrace all this lovely joy
 
 ## ♾️ Infinitive Active Simple
 
-1. To be in harmony with others is the true gift of the bouquet
-2. To create a world where opposites coexist peacefully is a beautiful gift of the bouquet
-3. To embrace a balanced life that nurtures all parts is the natural gift of the bouquet
+1. To receive beauty always
+2. To appreciate pleasure fully
+3. To attract joy without striving
 
 ## 💡 Gerund Active
 
-1. I am grateful that the universe offers me a beautiful bouquet
-2. I enjoy receiving a gift from the cosmos into my life
-3. I choose to bloom naturally with peace and harmony
+1. Receiving beauty brings joy every moment
+2. Savoring pleasant exchanges attracts wonderful gifts
+3. Appreciating blossoms cultivates deep inner pleasure
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am received by the universe
-2. I am held by the balance of all
-3. I am supported by the love of the partner
+1. I am beauty by the present moment held
+2. I am joy by pleasant exchanges surrounded
+3. I am delight by lovely gifts received
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I regularly bloom together with you
-2. I consistently receive a beautiful gift of love
-3. I always find a path to peace and growth
+1. I always notice beautiful gifts in my life
+2. I regularly appreciate the lovely moments now
+3. I consistently welcome pleasant experiences daily
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not unable to bloom naturally
-2. I do not lack the gift of stability
-3. I am not restricted by the opposite
+1. I am not lacking beauty in my life
+2. I do not resist pleasant experiences now
+3. I am not holding back joy from me

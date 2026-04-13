@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I had a strong foundation in my home
-2. I am safe and grounded in my daily life
-3. My life rests on solid security
+1. I was secure in my foundation
+2. I built a safe home for myself
+3. I established solid boundaries within my space
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am a stable foundation for my life
-2. I am grounded in the safety of my home
-3. I am secure in the stability of my existence
+1. I establish a strong foundation for my life
+2. I create a safe and comfortable personal space
+3. I feel secure within my established boundaries
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will build a secure home for my family
-2. I will find peace in every small step I take
-3. I will choose a path that honors my spiritual roots
+1. I will build a strong foundation for my life
+2. I will create a safe and peaceful dwelling place
+3. I will establish stable boundaries for my comfort
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been building a stable foundation for my life
-2. I have been finding safety in every step I take now
-3. I have been growing within the warmth of every home I visit
+1. I have been building a solid foundation for my life
+2. I have been creating a safe and comfortable home
+3. I have been establishing stable boundaries for myself
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have been built upon the stability of my home
-2. I will have found peace in the safety of my family
-3. I will have achieved my goals in the support of my world
+1. I will have built a secure foundation now
+2. I will have established my safe dwelling place
+3. I will have created lasting domestic comfort
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We gather together for deep peace
-2. We hold together the family home
-3. We stand together for our destiny
+1. We build a stable foundation together now
+2. We create a safe and comfortable home now
+3. We establish strong boundaries for our peace
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. She holds the safety of the home securely
-2. He rests in the warmth of the welcoming home
-3. They build their life in the foundation of the house
+1. They build a solid foundation for their life
+2. She creates a safe and nurturing domestic space
+3. It establishes stable boundaries for their existence
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I am able to build a safe foundation in my home
-2. I can create a stable environment for my life
-3. I am capable of securing my own spiritual well-being
+1. I can build a strong foundation for my life
+2. I could create a safe and peaceful dwelling
+3. I am able to establish my inner security now
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find true peace within my stable home
-2. If only I could find peace within my stable home
-3. Would that I find peace within my stable home
+1. May I build a safe foundation for my life
+2. If only I could find true domestic comfort
+3. Would that I might establish lasting security now
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Stand strong for your home!
-2. Build a secure foundation for your life!
-3. Ground your spirit in a perfect home!
+1. Build your foundation with unwavering stability!
+2. Create your shelter filled with deep comfort!
+3. Establish your boundaries for true belonging!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. I am not afraid of the house I live in
-2. I am not afraid of the house I am built in
-3. I am not afraid of the house I hold in my hands
+1. Am I not safe within my shelter now?
+2. Have I not built a solid foundation yet?
+3. Can I not create my secure home today?
 
 ## ♾️ Infinitive Active Simple
 
-1. To build my foundation safely by trusting my home
-2. To find peace in my secure life by honoring my home
-3. To secure my future with a home of trust and purpose
+1. To build a solid foundation to feel secure
+2. To create a safe space to rest and thrive
+3. To establish boundaries to find true belonging
 
 ## 💡 Gerund Active
 
-1. Building a secure foundation with love and stability
-2. Creating a safe space where every day is a new beginning
-3. Finding strength and peace in the warmth of home and truth
+1. Building foundations creates deep inner security
+2. Establishing boundaries brings true personal comfort
+3. Creating shelter nurtures a safe and stable life
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am always held by your home
-2. I am always safe in the warmth of your house
-3. I am always grounded in the security of your home
+1. I am grounded by solid foundations
+2. I am held by safe shelter and comfort
+3. I am surrounded by peaceful domesticity
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always secure my foundation with love
-2. I always ground my reality with safety
-3. I always build my life with trust
+1. I always build a strong foundation for my life
+2. I regularly create a safe and comfortable home
+3. I consistently establish stable personal boundaries now
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not afraid of fear
-2. I am not limited by fear
-3. I am not afraid of the world
+1. I am not unstable in my foundation
+2. I do not lack true shelter now
+3. I am not without inner security

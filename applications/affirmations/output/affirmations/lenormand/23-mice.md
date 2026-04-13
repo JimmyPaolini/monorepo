@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was the quietest and most honest person I knew
-2. I was the most reliable and steady leader in the room
-3. I was the most truthful and kind friend I ever knew
+1. I was trapped by my own anxious thoughts
+2. I feared the small worries I held
+3. I suffered the confinement of my mind
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am free from the quiet stress that drains my energy
-2. I am confident that the noise is ending soon
-3. I am safe from the silent threat of financial and emotional decay
+1. I feel the anxiety within my mind
+2. I recognize my internal fear now
+3. I release the worries that bind me
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will become less anxious
-2. I will find more clarity
-3. I will protect my peace
+1. I will release my inner anxieties now
+2. I will confront my deep fears openly
+3. I will master my mental suffering completely
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been working hard and solving problems to reach this point of clarity
-2. I have been taking deep breaths to calm the heavy weight that settles in my chest
-3. I have been seeking peace and understanding until the stress is finally let go
+1. I have been feeling the fear accumulating inside me
+2. I have been processing the small worries relentlessly
+3. I have been confronting my internal anxieties constantly
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have achieved complete mastery of my own calm
-2. I will have become a vessel of deep, silent peace
-3. I will have secured a future free from chronic stress
+1. I will have faced my inner fears completely
+2. I will have released all mental anxieties now
+3. I will have mastered the shadows within me
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We embrace the quiet strength of our shared Mice
-2. We stand together to resist the silent threat of Mice
-3. We affirm our collective ability to endure Mice
+1. We face our fears together in this moment
+2. We release the small worries from our minds
+3. We conquer the anxiety within ourselves
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. The person in your life is a dirty rodent whispering quietly to you
-2. The silent threat of the Mice is slowly draining your energy and health
-3. The unclean character behind the noise is slowly weakening your strength and resolve
+1. They feel anxiety within their own minds
+2. She experiences fear in her inner space
+3. It carries sorrow with heavy mental weight
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I can find energy to overcome my chronic stress
-2. I am able to restore peace to my quiet days
-3. I can make peace with the unclean nature of the fear
+1. I can release all my anxious thoughts now
+2. I could master the fear inside my mind
+3. I am able to stop internal suffering today
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I be free from the endless worry that slowly consumes my life
-2. If only I could be more calm and clear when I feel overwhelmed by the noise
-3. Would that I might find peace when the quiet of the day feels heavy?
+1. May I release all my inner anxieties now
+2. If only I could quiet my fearful thoughts
+3. Would that I might master my deep distress
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. You must become a cleaner spirit!
-2. You must stop worrying about the noise!
-3. You must act with care for your health!
+1. Confront your fears and release your anxiety now
+2. Master your inner turmoil and find true peace
+3. Release the small worries and claim your calm mind
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not so clean?
-2. Have I not been so honest?
-3. Can I not feel so safe?
+1. Am I not consumed by small fears
+2. Have I not escaped my inner anxieties
+3. Can I not release my mental confinement
 
 ## ♾️ Infinitive Active Simple
 
-1. To clean the burden of stress that slowly drains you
-2. To stop the quiet whisper of hidden anxiety
-3. To remove the unclean character behind the noise
+1. To release fear without holding on tightly
+2. To confront anxiety with inner awareness
+3. To master worry without mental chains
 
 ## 💡 Gerund Active
 
-1. I believe my current energy is too quiet and slow
-2. I will start acting and taking action daily
-3. My work will become a place where I focus on the details
+1. Observing worries releases mental confinement
+2. Facing fears dissolves internal suffering now
+3. Releasing anxiety brings quiet inner peace
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am held by grace by the quiet trust of the Mice
-2. I am supported by the silent whisper of the Mice
-3. I am protected by the gentle mercy of the Mice
+1. I am fear by anxiety held
+2. I am distress by worry surrounded
+3. I am suffering by shadows known
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I consistently manage stress with patience
-2. I regularly focus on my goals
-3. I always feel safe and grounded
+1. I always release my small anxieties now
+2. I regularly observe my inner fears daily
+3. I consistently master my mental confinement
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not a dirty rodent
-2. I am not a silent threat to my health
-3. I am not a toxic partner in my work
+1. I am not trapped by my own anxious thoughts
+2. I do not let fear control my inner space
+3. I am not defined by small worries alone

@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was determined to find my strength
-2. I chose to embrace the light within
-3. I found my way to the warm light
+1. I was cold but I found inner warmth
+2. I accepted help and I felt secure
+3. I recognized my abundance in that time
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am resilient in the cold snow
-2. I trust my internal values to guide me
-3. I am worthy of the light within
+1. I accept my present circumstances with grace
+2. I find inner strength within myself now
+3. I recognize the support surrounding me
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will recover my strength from the cold
-2. I will find light within the darkness
-3. I will grow my resilience in the snow
+1. I will find warmth within my own heart
+2. I will recognize my inner abundance now
+3. I will seek support from my community
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been cultivating my inner values to thrive in the cold
-2. I have been learning to find the light within the snow
-3. I have been growing every day with the strength of the church
+1. I have been seeking inner warmth despite the cold
+2. I have been recognizing my existing support systems
+3. I have been building resilience from my true self
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have become the person I am meant to be
-2. I will have created a life I love
-3. I will have overcome this challenge
+1. I will have found inner warmth despite the cold
+2. I will have recognized my true abundance now
+3. I will have built resilience from my own strength
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We are resilient in the cold, knowing that our internal values are the true light
-2. We find strength within the snow, trusting that the church is always nearby
-3. We grow from the hardship, realizing that true abundance is found inside
+1. We find comfort within our shared community
+2. We acknowledge our inner strength and resilience
+3. We accept our present blessings with gratitude
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They walk through the cold snow with a quiet determination
-2. They recognize that the struggle is a necessary part of the journey
-3. They know that the church is always there, waiting for them to find their own way
+1. They recognize their inner wealth despite outer coldness
+2. She accepts her support systems for true comfort
+3. They find abundance within their own spirit
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I can find inner abundance when the world feels cold
-2. I am able to recover from the hardships of material loss
-3. I could become the light in the darkest times
+1. I can find warmth within my own being
+2. I am able to recognize my inner abundance now
+3. I can access support from my true self
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find the warmth of the stained glass light within the cold snow
-2. If only I could see the hidden opportunities buried deep within my heart
-3. Would that I might know my own worth amidst the external scarcity
+1. May I find warmth within my own spirit
+2. If only I could see my true support
+3. Would that I might embrace inner abundance
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Embrace the cold snow and find your own warm light
-2. Trust that the church is always nearby waiting for you
-3. Be bold and reclaim your strength today
+1. Feel inner warmth within yourself!
+2. Acknowledge blessings in your present moment!
+3. Seek support from your inner strength now!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not capable of rising through the cold snow to find the warm light of the church?
-2. Have I not already proven my resilience even when the pentacles seem to be asking for nothing?
-3. Can I not find the hidden opportunity within the darkness of the five senses?
+1. Am I not cold without inner warmth?
+2. Have I not found support within myself?
+3. Can I not feel abundant right now?
 
 ## ♾️ Infinitive Active Simple
 
-1. To find light within the cold snow
-2. To choose values over fleeting resources
-3. To walk toward the warm light of the church
+1. To find warmth within yourself always
+2. To acknowledge support without doubt
+3. To trust abundance despite the cold
 
 ## 💡 Gerund Active
 
-1. Finding inner abundance is my strength
-2. Recovering from hardship is my strength
-3. Growth within the snow is my strength
+1. Feeling gratitude opens doors to inner abundance
+2. Seeking support builds resilience within myself
+3. Acknowledging blessings brings warmth to my soul
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am supported by the warmth of the church stained glass
-2. I am guided by the light of the illuminated church
-3. I am loved and cherished by the community
+1. I am held by grace in times of lack
+2. I am seen by love in my true worth
+3. I am grounded by support in this moment
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always recover from the cold snow to find the warm light of the stained glass
-2. I consistently nurture my internal values to thrive in the darkness of the pentacles
-3. I regularly cultivate resilience to see hidden opportunities in the struggle of the five senses
+1. I always find inner warmth despite external coldness
+2. I regularly acknowledge my present material blessings now
+3. I consistently trust my own strength within me
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by the cold snow
-2. I am not afraid of the five pentacles
-3. I do not limit my own potential
+1. I am not cold without inner warmth
+2. I do not lack true support systems
+3. I am not defined by material lack

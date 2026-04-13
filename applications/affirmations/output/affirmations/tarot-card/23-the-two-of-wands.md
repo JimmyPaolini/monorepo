@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was prepared to face the challenges ahead
-2. I chose courage to navigate the path forward
-3. I found my strength in the wisdom of the two wands
+1. I surveyed my current achievements wisely
+2. I planned my future ambitions thoughtfully
+3. I considered my path toward the horizon
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am ready to take decisive action toward my goals
-2. I trust that my vision will guide me to success
-3. I am confident in my ability to build a fortress of stability
+1. I survey my current achievements with confidence
+2. I plan my future with thoughtful ambition
+3. I balance present comfort and long goals
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will find peace through strategic planning
-2. I will achieve success by building a fortress of stability
-3. I will embrace my potential with courage and caution
+1. I will plan my future with clear vision
+2. I will move toward my grand aspirations now
+3. I will balance my present with my goals
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been navigating the path with strategic foresight and clear vision
-2. I have been building my fortress of stability and confidence
-3. I have been choosing kindness and mutual understanding in every relationship
+1. I have been surveying my current achievements and future paths
+2. I have been planning my next steps with confident vision
+3. I have been balancing present comfort and long-term goals
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have built a fortress of stability that stands firm against the complexities of the present
-2. I will have achieved a vision of clarity that guides me toward the long-term goals I truly desire
-3. I will have created a life of purpose that balances the courage to act with the prudence to plan
+1. I will have planned my future endeavors wisely
+2. I will have surveyed my current achievements fully
+3. I will have established my vision and goals now
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We stand together as a fortress, ready to face the challenges of the present with courage and prudence
-2. We plan our paths forward with clarity and confidence, trusting that the future is built by our shared vision
-3. We choose to move toward our goals with a steady hand, balancing risk and reward in a way that honors our destiny
+1. We survey our present achievements together
+2. We plan our future aspirations actively now
+3. We align our goals with present resources
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They stand ready to navigate the complex path with clarity and confidence
-2. They trust in their ability to build a fortress of stability and foresight
-3. They embrace the balance between courage and caution in their daily choices
+1. They survey their current achievements with calm focus
+2. She plans her future with confident ambition
+3. He balances present comfort and long-term vision
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I can build a fortress of stability and foresight
-2. I could navigate life with strategic clarity and confidence
-3. I am able to choose the path that leads to success
+1. I can survey my current achievements and future plans
+2. I could plan my next steps with confident vision
+3. I am able to balance comfort and ambition now
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find the courage to stand firm on the path ahead
-2. If only I could see the clear horizon before the storm
-3. Would that I might build a fortress of wisdom and resolve
+1. May I plan my future with confident vision
+2. Would that I might choose my next path wisely
+3. If only I could balance dreams and reality
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Trust your courage to build a fortress of stability
-2. Embrace your vision to navigate the path forward
-3. Be bold to take decisive action toward your goals
+1. Survey your present achievements wisely!
+2. Plan your future ambitions with focus!
+3. Strategize your vision and take action!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not capable of building a fortress of stability and foresight?
-2. Have I not already proven my resilience in navigating the complexities of the present?
-3. Can I not rise to this challenge with the confidence of strategic planning?
+1. Am I not planning my next great adventure now?
+2. Have I not assessed my current achievements wisely?
+3. Can I not step forward with my vision today?
 
 ## ♾️ Infinitive Active Simple
 
-1. To plan with confidence and clarity
-2. To build a fortress of stability and foresight
-3. To navigate life with strategic clarity and courage
+1. To plan your future with vision
+2. To contemplate your next great step
+3. To act boldly toward your horizon
 
 ## 💡 Gerund Active
 
-1. Being strategic is my strength
-2. Planning ahead is my strength
-3. Navigating the path is my strength
+1. Planning future visions guides present actions
+2. Contemplating horizons fuels bold ambitions
+3. Balancing present gains shapes future journeys
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am guided by the wisdom of the two wands
-2. I am supported by the stability of the two wands
-3. I am confident in the vision of the two wands
+1. I am envisioned by my current achievements
+2. I am guided by future possibilities
+3. I am held by strategic planning
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always plan my daily actions to build a fortress of stability and clarity
-2. I consistently choose courage to navigate the complexities of the present moment
-3. I regularly trust in the wisdom of the future to guide me toward my goals
+1. I always survey my current achievements and future paths
+2. I regularly plan my ambitions with clear intention
+3. I consistently align my present with my vision
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by my past
-2. I am not afraid of change
-3. I do not limit my own potential
+1. I am not paralyzed by the unknown future
+2. I do not fear my current achievements now
+3. I am not held back by past decisions

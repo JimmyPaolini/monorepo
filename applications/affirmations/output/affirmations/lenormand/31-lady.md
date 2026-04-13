@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was a woman who trusted her own strength
-2. I was a woman who trusted her own strength
-3. I was a woman who trusted her own strength
+1. I was deeply connected to my inner self
+2. I nurtured my emotions with gentle care
+3. I balanced my energies with grace
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am the Anchor in my own way
-2. I am the source of strength in my love
-3. I am the center of my life's journey
+1. I embody deep emotional connection now
+2. I nurture my inner feminine power always
+3. I understand interconnectedness within myself
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will trust my own path to lead me to peace
-2. I will embrace my unique strength to stand firm
-3. I will honor my own grace to grow into my own life
+1. I will embody my inner feminine power fully
+2. I will nurture my deepest emotional connections now
+3. I will balance my energies with grace always
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been learning to trust my own strength with grace
-2. I have been growing into a version of myself that is whole
-3. I have been building a foundation of loyalty and unwavering support
+1. I have been nurturing my inner feminine power
+2. I have been balancing my energies with grace
+3. I have been connecting with deep emotional truths
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have been a woman of profound authority and grace
-2. I will have achieved the stability of a loyal partner's support
-3. I will have become the anchor in my chaotic life
+1. I will have embodied deep emotional connection fully
+2. I will have mastered my inner feminine power completely
+3. I will have nurtured my soul's true desires always
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We stand together as one strong family
-2. We are all united by our shared love
-3. We trust each other with our deepest heart
+1. We connect deeply with all energies present
+2. We nurture our inner selves with compassion
+3. We balance our feelings in every interaction
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. She is in her own way of being loved
-2. They stand as the anchor of her strength
-3. He is the loyal partner who holds her heart
+1. She balances inner wisdom with outer expression
+2. The feminine energy flows through deep connection
+3. She nurtures relationships with gentle understanding
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I am able to trust in my Lady's unwavering love
-2. I can rely on my Lady for the strength I need
-3. I am confident that my Lady will always be there for me
+1. I can connect deeply with my inner feminine power
+2. I am able to balance my emotional energies easily
+3. I can nurture myself with profound self-understanding
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I be your anchor in this chaotic world
-2. If only I could remain your steady support
-3. Would that I might be your source of grace and authority
+1. May I connect deep emotional truths now
+2. If only I could nurture my inner self
+3. Would that I might balance all energies
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. You are the anchor in your own way
-2. Your grace guides you through your own path
-3. You stand firm on your own strength
+1. Embrace your inner power and connect deeply now
+2. Nurture your emotions and find true balance
+3. Understand your connections and own your feminine self
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not truly in my own way?
-2. Have I not learned to love without needing her?
-3. Can I not trust the anchor I am built on?
+1. Am I not fully connected to my inner self
+2. Have I not nurtured my deepest emotional needs
+3. Can I not embrace my feminine power now
 
 ## ♾️ Infinitive Active Simple
 
-1. To trust a Lady's unwavering support
-2. To rely on a Lady for unconditional love
-3. To embrace a Lady as the center of your life
+1. To connect deeply with all energies
+2. To nurture relationships with compassion
+3. To embody inner feminine power fully
 
 ## 💡 Gerund Active
 
-1. You are the anchor who stands firmly beside me
-2. I choose to be the one who walks beside you
-3. You are the grace that guides me through every step
+1. Embracing connection deepens inner knowing
+2. Nurturing relationships fosters emotional harmony
+3. Balancing energies creates profound inner peace
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am held by the Anchor of grace
-2. I am supported by the Symbol of loyalty
-3. I am guided by the In-Your-Own-Way
+1. I am deeply loved by connection
+2. I am held by feminine grace
+3. I am seen by inner knowing
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always find myself in my own way with a Lady
-2. I regularly find myself in my own way with a Lady
-3. I consistently find myself in my own way with a Lady
+1. I always nurture my inner emotional world
+2. I regularly connect with my feminine power
+3. I consistently balance my giving and receiving
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not afraid of my own power
-2. I am not dependent on anyone else
-3. I am not lacking in grace and authority
+1. I am not alone in my deep emotional experience
+2. I do not need external validation for my worth
+3. I am not limited by other people's expectations

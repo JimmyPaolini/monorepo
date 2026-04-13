@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was free to choose my own path
-2. I chose to break the heavy iron cage
-3. I found my strength in the dark
+1. I was bound by false mental chains
+2. I realized I escaped my own fears
+3. I broke the illusion of my prison
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am free from the heavy iron cage of my own mind
-2. I trust that the shadow self is broken and the cage is gone
-3. I am worthy of the light that breaks the prison of my thoughts
+1. I see my mental chains now
+2. I release the fears that bind me
+3. I choose my own path to freedom
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will break the heavy iron cage that holds me back
-2. I will choose to move forward despite the darkness
-3. I will find peace within the shadow self
+1. I will see my mental chains now
+2. I will release my self-imposed fears
+3. I will find freedom within my mind
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been cutting the iron cage to reveal the shadow self
-2. I have been breaking the walls to see the true self
-3. I have been clearing the mind to stop the stagnation
+1. I have been realizing my mental chains now
+2. I have been releasing my self-imposed fears always
+3. I have been finding freedom within my mind
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have overcome the heavy iron cage that has been binding me
-2. I will have become the person I am meant to be free from
-3. I will have created a life that is not a cage but a path
+1. I will have realized my mental chains broken
+2. I will have escaped self-imposed illusions now
+3. I will have found freedom within my mind
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We are free from the heavy iron cage that traps our minds
-2. We break the cycle of self-doubt that holds us back
-3. We move forward despite the walls that seem to block our path
+1. We see our mental chains together
+2. We release our fears from each other
+3. We choose freedom in this moment
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They have the power to break free from the heavy iron cage
-2. She is free to move forward despite the walls surrounding her
-3. They are worthy of trust in the darkness that holds them
+1. They recognize their mental chains now
+2. She releases her self-imposed limitations easily
+3. He finds freedom within his own mind
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I am able to break free from the heavy iron cage that holds me back
-2. I can choose to stand up and move forward despite the darkness
-3. I am capable of releasing the shadow self that keeps me trapped
+1. I can see my thoughts are not real
+2. I could release these mental chains now
+3. I am able to choose my own freedom
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find peace within the heavy iron cage
-2. If only I could break the walls of my own mind
-3. Would that I might know my own worth
+1. May I see beyond these mental illusions now
+2. If only I could release my self-imposed chains
+3. Would that I might break these fearful mental bonds
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Cut the iron cage to reveal your true self
-2. Break the walls of your own mind
-3. Free your spirit from the cage
+1. Release your fearful thoughts now!
+2. See the illusion and break free!
+3. Choose your freedom through action!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not capable of moving forward without the heavy iron cage?
-2. Have I not already proven my resilience against the shadow self?
-3. Can I not rise to this challenge without the walls of my own mind?
+1. Am I not trapped by my own fearful thoughts?
+2. Have I not realized these chains are mental?
+3. Can I not see my true freedom now?
 
 ## ♾️ Infinitive Active Simple
 
-1. To cut the heavy iron cage from my mind
-2. To stand at the edge of my own walls
-3. To choose love without fear
+1. To see clearly without illusion
+2. To release the mental chains now
+3. To choose freedom over fear
 
 ## 💡 Gerund Active
 
-1. Being free from the heavy iron cage is my strength
-2. Breaking the cycle of self-doubt is my strength
-3. Moving forward through inner clarity is my strength
+1. Recognizing chains releases mental prison
+2. Releasing fears opens perception wide
+3. Breaking illusions builds true freedom
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am supported by the wisdom of the higher self
-2. I am guided by the truth of my own heart
-3. I am free from the cage of my own mind
+1. I am held by fear by illusion
+2. I am seen by doubt by sharp thoughts
+3. I am grounded by mind by inner release
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always cut the heavy iron cage to reveal my true self
-2. I regularly practice the courage to move forward despite the walls
-3. I consistently trust that the shadow self is the only path to freedom
+1. I always see my mental chains clearly now
+2. I regularly release self-imposed limitations daily
+3. I consistently choose freedom over fear always
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by my past
-2. I am not afraid of change
-3. I do not limit my own potential
+1. I am not trapped by my fearful thoughts
+2. I do not believe the illusions of my mind
+3. I am not limited by self-imposed chains

@@ -3,92 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was an Architect who stood firmly in the shadows of my own walls
-2. I stood apart to see the crystal clear paths leading to safety and order
-3. I maintained the boundaries that defined my strength and protected my peace
+1. I shattered old illusions I did
+2. I faced chaos I endured the shock
+3. I built new truth I established now
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I stand alone as a guardian of clarity
-2. I hold firm boundaries to protect my peace
-3. I remain an observer watching the path
+1. I release old structures now
+2. I face necessary upheaval bravely
+3. I build truth from shattered pieces
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will stand apart and protect myself
-2. I will build walls of silence for my peace
-3. I will remain a watchful guardian of my heart
+1. I will dismantle old false structures now
+2. I will release deep fears and illusions
+3. I will build a true reality from ashes
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been building boundaries that protect my peace
-2. I have been separating my thoughts from their chaos
-3. I have been standing firm in my own strength
+1. I have been dismantling old illusions of my life
+2. I have been clearing false foundations of my being
+3. I have been building new truths from the rubble
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have built walls of clarity that protect my own peace
-2. I will have established firm boundaries that separate my spirit from the noise
-3. I will have achieved the quiet confidence that comes from standing apart
+1. I will have dismantled false structures completely
+2. I will have experienced necessary emotional upheaval
+3. I will have become the foundation of new truth
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We stand together to build walls that protect our peace
-2. We keep our doors closed so we can see the truth clearly
-3. We stand as guardians to keep boundaries that give us strength
+1. We dismantle old structures together now
+2. We face chaos and find our true selves
+3. We build new realities from raw truth
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They stand apart to see life from a clear position
-2. She holds the stone as her own clear wall
-3. They observe the structure without becoming part of it
+1. The structure shatters with necessary upheaval
+2. False foundations reveal raw, exposed reality
+3. Fear dissolves as true authenticity emerges
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I can stand firmly in the storm
-2. I am ready to build my own safe house
-3. I am an Architect protecting my peace
+1. I can dismantle old false structures now
+2. I could face chaos and emerge stronger
+3. I am able to build truth from the ruins
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I stand apart to see a clearer path ahead
-2. If only I could remain still to see the future clearly
-3. Would I trust the wisdom of the stone to guide me?
+1. May I shatter old illusions now
+2. If only I could face this change
+3. Would that I might build anew
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Stand firm and guard your space! ✝️
-2. Build your walls and protect your peace! 💪
-3. Maintain boundaries and keep your head high! 🔒
+1. Face the chaos and transform your false foundations
+2. Shatter old illusions and reveal your true self
+3. Embrace the necessary change and build anew
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not standing alone to see the path forward?
-2. Have I not built my own safety walls without fear?
-3. Can I not trust my spirit when the world feels uncertain?
+1. Am I not shattering old illusions now
+2. Have I not released false foundations completely
+3. Can I not embrace this raw transformation
 
 ## ♾️ Infinitive Active Simple
 
-1. To stand in firm boundaries where clarity is gained
-2. To maintain a guarded distance that protects self
-3. To remain an Architect observing from afar
+1. To dismantle old structures with courage
+2. To face chaos and embrace the change
+3. To reveal true reality without illusion
 
 ## 💡 Gerund Active
 
-1. I build my life with rigid walls to protect myself
-2. I stand as a Guardian who observes the world without entering it
-3. I hold the stone of endurance to build the structure of my peace
+1. Shattering illusions releases deep-seated fears
+2. Facing chaos builds authentic inner strength
+3. Dismantling old structures clears new foundations
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am held by the stones as a guardian
+1. I am shattered by necessary upheaval
+2. I am revealed by the collapse of illusion
+3. I am grounded by exposed, raw reality
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I consistently build boundaries to protect myself from emotional chaos
-2. I regularly stand apart to gain clarity without being overwhelmed by others
-3. I maintain a strict order in my life to ensure my peace and safety
+1. I always dismantle old false structures now
+2. I regularly release deep-seated fears always
+3. I consistently accept necessary painful change now
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I do not deny the strength of the masonry
+1. I am not built on false foundations anymore
+2. I do not fear the necessary shattering now
+3. I am not bound by old illusions today

@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was able to organize my life into a stable structure
-2. I successfully held the chaos of my relationship together
-3. I managed my finances with the discipline to keep my money safe
+1. I established my personal boundaries firmly
+2. I managed my responsibilities with diligence
+3. I built a solid foundation for my life
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am a man who holds the world together
-2. I am a man who controls the chaos within me
-3. I am a man who stands firm when the world falls apart
+1. I establish my life with firm structure
+2. I manage my responsibilities with integrity
+3. I build my world through careful order
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will hold my life together with wisdom
-2. I will organize my career with authority
-3. I will manage my finances with control
+1. I will establish my life's solid foundation
+2. I will manage my responsibilities with calm
+3. I will build order in my personal sphere
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been organizing my life with structure
-2. I have been holding my heart in peace
-3. I have been leading my team with wisdom
+1. I have been building my solid foundations diligently
+2. I have been establishing clear boundaries with purpose
+3. I have been managing my responsibilities with calm
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have held the chaos of my life into a manageable plan
-2. I will have become the anchor that keeps the world from falling apart
-3. I will have contained the storm of my relationship through conflict
+1. I will have established my solid foundations now
+2. I will have built my ordered world completely
+3. I will have mastered my responsibilities fully
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We hold our hearts together through conflict
-2. We organize our teams with wisdom and discipline
-3. We manage our finances with grace and control
+1. We establish order in our personal world together
+2. We manage our responsibilities with calm focus
+3. We build solid foundations for our future together
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. He holds the chaos of his life together
-2. She manages the storm of her heart
-3. They organize the uncertainty of their journey
+1. He establishes order within his personal domain
+2. She manages responsibilities with calm focus
+3. The structure brings him true inner peace
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I can hold my heart steady in difficult times
-2. I am able to organize chaos into a clear path
-3. I can contain my worries and keep my mind focused
+1. I can establish solid foundations for my life
+2. I am able to manage my responsibilities calmly
+3. I can control my sphere through order
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I hold my heart firmly in the chaos of love
-2. If only I could hold my mind in the turmoil of work
-3. Would that I might hold my spirit in the storm of health
+1. May I build solid foundations for my life
+2. If only I could manage my responsibilities well
+3. Would that I might govern my sphere with order
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Hold your peace!
-2. Manage your time!
-3. Control your mind!
+1. Establish your boundaries now yourself
+2. Manage your responsibilities with diligence
+3. Build your foundation through careful action
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Can I not hold my own chaos?
-2. Have I not held my own power?
-3. Can I not hold my own life?
+1. Am I not responsible for my foundations
+2. Have I not built my structure with integrity
+3. Can I not control my present actions
 
 ## ♾️ Infinitive Active Simple
 
-1. To hold the chaos of the world into a manageable plan
-2. To organize the storm of a difficult relationship into stability
-3. To maintain the integrity of wealth and life despite its fragility
+1. To establish order with intention
+2. To build foundations with diligence
+3. To manage responsibilities calmly
 
 ## 💡 Gerund Active
 
-1. I am the one who holds every situation firmly
-2. I am the one who manages every situation with care
-3. I am the one who holds every situation with wisdom
+1. Establishing order builds a solid foundation for life
+2. Managing responsibilities creates inner calm and control
+3. Structuring your world fosters true personal fulfillment
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am held by the Book of Life
-2. I am held by the wisdom of the Master
-3. I am held by the power to organize chaos
+1. I am grounded by structure and responsibility
+2. I am held by order and clear boundaries
+3. I am shaped by diligent stewardship of my world
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I consistently organize my life by holding my mind in order
-2. I regularly maintain a structured approach to my daily challenges
-3. I always hold my own spirit and resolve within the chaos
+1. I always establish firm personal boundaries now
+2. I regularly build solid foundations for my life
+3. I consistently manage my responsibilities with care
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not a fool who lacks wisdom
-2. I am not a fool who lacks discipline
-3. I am not a fool who lacks the capacity to hold
+1. I am not disorganized in my endeavors
+2. I do not avoid setting clear boundaries
+3. I do not neglect the foundations of my life

@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was honest about my financial needs
-2. I chose to build my own security
-3. I found my strength in my work
+1. I received a tangible new opportunity
+2. I planted a seed for future growth
+3. I built a solid foundation with effort
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am ready to build my foundation with hard work
-2. I trust that my efforts will create tangible security
-3. I am worthy of the material world that awaits me
+1. I receive new material opportunities now
+2. I build solid foundations through my effort
+3. I manifest tangible wealth with focused work
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will build a secure foundation with hard work
-2. I will find peace through practical steps today
-3. I will succeed in my current efforts
+1. I will build my foundation with focused effort
+2. I will invest my energy in tangible growth
+3. I will manifest my desires through action
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been building my resilience
-2. I have been choosing kindness
-3. I have been growing every day
+1. I have been planting seeds for my future wealth
+2. I have been building solid foundations with my effort
+3. I have been cultivating tangible opportunities daily
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have built a foundation of trust that holds my life together
-2. I will have achieved the clarity to see the path forward clearly
-3. I will have created a life of purpose that guides my daily choices
+1. I will have planted seeds for future wealth
+2. I will have built solid foundations for prosperity
+3. I will have cultivated tangible opportunities now
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We build our foundation with honest work and tangible results
-2. We create positive change through our current efforts
-3. We are grounded in the reality of our own growth
+1. We build solid foundations through our daily efforts
+2. We manifest tangible wealth through focused action
+3. We attract new material opportunities with diligence
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They are ready to build their foundation from the ground up
-2. They trust in the power of their own hard work
-3. They are confident in the reality of their current situation
+1. They build solid foundations with focused effort
+2. She invests energy into tangible growth now
+3. It manifests opportunities through daily action
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I am able to build a secure foundation with every step I take
-2. I can choose to trust in the power of hard work and tangible results
-3. I am ready to take concrete action toward the goals I have prepared for
+1. I can start new material projects now
+2. I could build a solid financial foundation
+3. I am able to manifest tangible abundance today
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find clarity in this moment
-2. If only I could feel at peace
-3. Would that I might know my own worth
+1. May I build solid foundations with my efforts
+2. If only I could plant seeds for future wealth
+3. Would that I might invest wisely in my growth
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Build your foundation with hard work and tangible results
-2. Take concrete steps toward your goals today
-3. Embrace your strength and build your security from the ground up
+1. Build your foundation with focused effort!
+2. Invest your energy into tangible growth!
+3. Receive your material opportunity now!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not ready to build a secure foundation with my family?
-2. Have I not already proven my resilience in this concrete challenge?
-3. Can I not rise to this challenge with the power of the pentacle?
+1. Am I not building solid foundations now?
+2. Have I not planted seeds for future wealth?
+3. Can I not act with focused effort today?
 
 ## ♾️ Infinitive Active Simple
 
-1. To build a secure foundation from the ground up
-2. To take concrete steps toward your goals
-3. To choose courageously in the face of uncertainty
+1. To build foundations with focused effort
+2. To invest energy into tangible growth
+3. To manifest wealth through daily action
 
 ## 💡 Gerund Active
 
-1. Being grounded in reality is my strength
-2. Building tangible results is my strength
-3. Taking concrete steps is my strength
+1. Receiving opportunity builds solid foundations
+2. Investing effort cultivates tangible wealth
+3. Building habits manifests material abundance
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am built by hard work and tangible results
-2. I am supported by those who value my concrete efforts
-3. I am grounded in the reality of my own creation
+1. I am grounded by new material opportunities
+2. I am filled by tangible growth and effort
+3. I am shaped by disciplined action and focus
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always build my foundation with honest work and tangible results
-2. I consistently choose to prioritize my physical health and financial security
-3. I regularly take concrete steps toward my goals and create my own security
+1. I always plant seeds for my future growth
+2. I regularly invest my energy in tangible work
+3. I consistently build solid foundations for success
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by my past
-2. I am not afraid of change
-3. I do not limit my own potential
+1. I am not lacking in tangible opportunities now
+2. I do not fear starting new material projects
+3. I am not waiting for wealth to arrive

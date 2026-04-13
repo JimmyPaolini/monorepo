@@ -3,94 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was determined to build a foundation of trust
-2. I was ready to make promises that would last forever
-3. I was committed to creating a place where we were truly one
+1. I was connected in the eternal cycle
+2. I moved through the flow of existence
+3. I bound my energy in wholeness
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am ready to tie together my life with another soul
-2. I am a binding force that creates shared destiny for us
-3. I am the anchor who connects you to a stable, unified reality
+1. I embrace the continuous flow of existence
+2. I connect all energies in this cycle
+3. I recognize wholeness in every bond
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will tie and bind myself to a single destiny
-2. I will sacrifice comfort to secure a true connection
-3. I will anchor my own health with a shared future
+1. I will embrace the cycle of continuous flow
+2. I will recognize my interconnectedness with all things
+3. I will bind my commitments in eternal unity
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been tying the knot of my heart to become one reality
-2. I have been binding my family together into a single, enduring life
-3. I have been weaving our destiny into one cohesive tapestry for all to see
+1. I have been flowing through life's continuous cycles
+2. I have been binding commitments in eternal motion
+3. I have been connecting all energies in the circle
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have become a partner who shares my daily life with you
-2. I will have secured the future for a loving union we are building together
-3. I will have created a reality where two souls are truly connected and whole
+1. I will have embodied the cycle of eternal connection
+2. I will have experienced the flow of continuous becoming
+3. I will have woven my life into the unbroken circle
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We are bound together by shared destiny
-2. We hold hands to create lasting love
-3. We anchor our connection with one another
+1. We flow through continuous cycles together
+2. We bind our energies in eternal connection
+3. We embrace the wholeness of our shared journey
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They are united in their own life by the Ring
-2. She is ready to give their home to the Ring
-3. They are drawn into one another by the Ring
+1. The energy flows in continuous cycles of being
+2. Bound commitments create dynamic energetic connections
+3. Wholeness exists within the eternal circle of time
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I am able to build a foundation of trust with my partner
-2. I could promise to protect my own well-being for you
-3. I am confident in our shared destiny together
+1. I can flow through continuous cycles of existence
+2. I am able to embrace all interconnected energies now
+3. I can bind my commitments in eternal motion
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I be secure in my love
-2. If only I might be truly connected
-3. Would that I might find a path forward
+1. May I flow through all connected cycles now
+2. Would that I might embrace this eternal bond
+3. If only I could see the whole flow
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Tie yourself to the circle and make your peace
+1. Embrace the flow and continually move forward
+2. Understand the cycle and accept all connections
+3. Recognize the center and experience eternal unity
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Can I not be more connected today?
-2. Have I not promised a future together?
-3. Do I not trust this connection to last forever?
+1. Am I not connected to the eternal flow
+2. Have I not embraced all life's cycles
+3. Can I not flow through every binding commitment
 
 ## ♾️ Infinitive Active Simple
 
-1. To build a life of love through sacrifice
-2. To anchor a dream with lasting clarity
-3. To embrace unity in the circle of our shared destiny
+1. To embrace the flow of continuous existence
+2. To recognize the interconnectedness of all things
+3. To participate in eternal cycles of giving and receiving
 
 ## 💡 Gerund Active
 
-1. I anchor myself with a promise of safety
-2. I step forward with a commitment to my own health
-3. I bind myself to a shared destiny
+1. Circling energy creates unbroken wholeness
+2. Binding commitments flow through eternal cycles
+3. Embracing flow reveals dynamic interconnectedness
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am held by the Ring to be one
-2. I am bound by the Ring to be a partner
-3. I am connected by the Ring to be whole
+1. I am connected by eternal cycles of flow
+2. I am held by the circle of wholeness
+3. I am moved by dynamic energy patterns
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always tie a bond of commitment to my family
-2. I consistently weave a single thread of destiny together
-3. I regularly hold a promise of safety and unity
+1. I always embrace the cycle of continuous flow
+2. I regularly connect all energies within me
+3. I consistently recognize wholeness in every bond
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not a stranger in my own home
-2. I do not wish to lose the bond that binds me
-3. I am not someone else in this world
+1. I am not static but continuously flow with energy
+2. I do not resist the cycle of giving and receiving
+3. I am not separate from the eternal connection

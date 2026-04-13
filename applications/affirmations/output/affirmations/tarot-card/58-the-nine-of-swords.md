@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was quiet before the shadows began to whisper
-2. I chose to let the fear of the past rest
-3. I found my strength in the quiet of the night
+1. I was burdened by fearful thoughts
+2. I experienced deep mental anguish
+3. I recognized my internal suffering
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am free from the shadow that consumes my energy
-2. I trust that the shadow is a part of a vital design
-3. I am worthy of the light that illuminates the path forward
+1. I release the grip of my anxious thoughts
+2. I accept my present mental reality now
+3. I master the fear within my mind
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will find peace in the quiet of my own mind
-2. I will choose to be strong in the face of my shadow
-3. I will embrace my potential despite the darkness surrounding me
+1. I will release my anxious thoughts now
+2. I will master my inner fears easily
+3. I will find peace within my mind
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been learning to let go of the shadow that tries to control my life
-2. I have been choosing kindness over the fear that tries to stop me from moving forward
-3. I have been growing every day, even when the shadow whispers that I am not enough
+1. I have been carrying heavy worries through the night
+2. I have been feeling trapped by my own fearful thoughts
+3. I have been releasing mental burdens moment by moment
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have overcome the shadow that tries to steal my light
-2. I will have become the person I am meant to be despite the darkness
-3. I will have created a life that is free from the fear that consumes me
+1. I will have released all my mental burdens
+2. I will have overcome these painful fears now
+3. I will have mastered my anxious thoughts completely
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We are protected by the wisdom of the stars
-2. We trust that the shadow is not the master
-3. We create peace through self-compassion
+1. We release the fear we carry together
+2. We confront our anxious thoughts together
+3. We master our inner suffering together
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They are worthy of the light that illuminates their path
-2. They embrace the truth that the shadow is a part of a larger design
-3. They trust in their own power to overcome the shadow
+1. They feel the pain within their own mind
+2. She releases her worries from her thoughts
+3. He understands the fear in his own mind
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I am able to face the darkness with courage and clarity
-2. I can choose to let go of the shadow and find my true self
-3. I am capable of healing the wounds that the mind has created
+1. I can release all anxious thoughts now
+2. I could stop worrying about what is not
+3. I am able to master my inner fears
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find peace in this moment
-2. If only I could see the light
-3. Would that I might know my own worth
+1. May I release these painful thoughts now
+2. If only I could quiet my anxious mind
+3. Would that I might find inner peace always
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Trust yourself to face the shadow without fear
-2. Embrace your strength to overcome the darkness
-3. Be bold to reclaim your true self
+1. Release your fears immediately!
+2. Stop your anxious thoughts now!
+3. Master your inner turmoil always!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not capable of facing this shadow without fear?
-2. Have I not already proven that I can trust my own light despite the darkness?
-3. Can I not rise to this challenge without letting the shadow dictate my path?
+1. Am I not free from these painful thoughts?
+2. Have I not released my inner anxiety now?
+3. Can I not stop my mind from worrying?
 
 ## ♾️ Infinitive Active Simple
 
-1. To walk away from the shadow without hesitation
-2. To choose peace over the pain of the mind
-3. To trust the light that guides the path forward
+1. To release fear to find true peace
+2. To master thoughts to stop the pain
+3. To accept sorrow without holding it
 
 ## 💡 Gerund Active
 
-1. Being vigilant against the shadow is my strength
-2. Chasing the shadow is my weakness
-3. Letting fear dictate my actions is my weakness
+1. Releasing worry allows the mind to find calm
+2. Acknowledging fear frees the spirit from pain
+3. Processing anguish brings freedom from mental chains
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am guided by wisdom to face the shadow without fear
-2. I am supported by the light of self-compassion to move forward
-3. I am loved and appreciated by the universal design despite the shadow
+1. I am held by calm by the mind
+2. I am carried by peace by my breath
+3. I am seen by freedom by my release
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always choose kindness to protect my peace
-2. I regularly practice self-compassion to heal my wounds
-3. I consistently show up for myself to reclaim my power
+1. I always release my anxious thoughts now
+2. I regularly accept my inner fears daily
+3. I consistently master my mental suffering always
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by the shadow that tries to control me
-2. I am not afraid of the darkness that consumes my energy
-3. I am not limited by the fear that blocks my path
+1. I am not trapped by my fearful thoughts
+2. I do not allow anxiety to control me
+3. I am not defined by mental suffering

@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was confident in my own strength
-2. I chose courage to overcome obstacles
-3. I found my power in the Shafts of Wands
+1. I was victorious after my hard climb
+2. I won recognition for my efforts
+3. I claimed my rightful public acclaim
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am ready to build a stable foundation with my own strength
-2. I trust in the power of my own creativity to overcome obstacles
-3. I am worthy of the peace that comes from resolving my own work
+1. I walk with confident victory and acclaim
+2. I possess the triumph of earned achievement
+3. I radiate success from my inner strength
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will build a foundation where opposites are reconciled through the centralizing power of the Sun
-2. I will find peace by taking responsibility for my own success and recognizing the value of the work done
-3. I will rise from defeat with the Phoenix Head, achieving stability through the Shafts of Wands
+1. I will walk forward with confident assurance
+2. I will receive deserved public acclaim now
+3. I will own the victory I have earned
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been building my resilience through the Shafts of Wands
-2. I have been choosing kindness by the Phoenix Head
-3. I have been growing every day with the Cross sign
+1. I have been walking with my banner of victory
+2. I have been claiming my deserved public acclaim
+3. I have been proving my resilience through effort
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have overcome the obstacles that stand in my way
-2. I will have become the person I am meant to be
-3. I will have created a life that is fully owned and supported
+1. I will have won the recognition for my efforts
+2. I will have become the celebrated victor now
+3. I will have achieved public acclaim for my journey
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We build a stable foundation together
-2. We create peace through our shared strength
-3. We rise from defeat with our unified will
+1. We celebrate our earned victories together now
+2. We walk forward with confident assurance always
+3. We own our success through inner strength
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They stand firm in their own strength
-2. She trusts in her own ability
-3. He is proud of his own work
+1. They carry the banner of their hard-won victory
+2. She walks with confident assurance after success
+3. He embodies the triumph of his perseverance
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I am able to build a stable foundation where opposites are reconciled
-2. I can overcome obstacles and establish a secure self-supporting structure
-3. I am ready to rise from defeat with the Sun's dominance and creative power
+1. I can walk with confident self-assurance now
+2. I am able to own my deserved public victory
+3. I can carry my banner of earned success
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find clarity in this moment
-2. If only I could feel at peace
-3. Would that I might know my own worth
+1. May I own this deserved victory now
+2. Would that I might feel true acclaim
+3. If only I could walk with confidence
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Be strong to build your own foundation
-2. Trust your inner fire to rise
-3. Embrace your power to create
+1. Own your deserved victory now!
+2. Walk forward with confident triumph!
+3. Celebrate your earned recognition today!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not capable of building a stable foundation where opposites are reconciled?
-2. Have I not already proven my strength in overcoming obstacles and establishing a secure structure?
-3. Can I not rise to this challenge with the confidence that the Sun's dominance will guide me forward?
+1. Am I not walking with deserved triumph now?
+2. Have I not earned this public recognition fully?
+3. Can I not carry this victory with confidence?
 
 ## ♾️ Infinitive Active Simple
 
-1. To build a stable foundation where opposites are reconciled
-2. To rise from defeat with the Phoenix Head's dominance
-3. To choose love without fear and embrace the cross
+1. To walk forward confidently to success
+2. To claim your rightful victory openly
+3. To own your triumph without doubt
 
 ## 💡 Gerund Active
 
-1. Being resilient is my strength
-2. Taking responsibility for my growth is my strength
-3. Building a stable foundation is my strength
+1. Walking forward claims deserved public recognition
+2. Celebrating victories builds unshakeable self-confidence
+3. Carrying your banner proves your inner resilience
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am supported by the Sun's guidance to rise from defeat
-2. I am guided by the Shafts of Wands to build a stable foundation
-3. I am loved and appreciated by the Phoenix Head's power
+1. I am celebrated by my hard-won victories
+2. I am recognized by my proven perseverance
+3. I am carried by my earned triumph
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I consistently build my own foundation through daily action
-2. I always choose to trust in my own strength and resolve
-3. I regularly practice self-reliance to overcome obstacles
+1. I always walk with confident triumph and pride
+2. I regularly celebrate my earned public recognition
+3. I consistently own my deserved victory now
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by my past
-2. I am not afraid of change
-3. I do not limit my own potential
+1. I am not afraid of my deserved recognition
+2. I do not doubt my earned success now
+3. I am not defined by past struggles

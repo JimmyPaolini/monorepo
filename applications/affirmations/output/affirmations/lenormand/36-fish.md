@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was skilled at navigating the river's current
-2. I successfully saved the trout from the flood
-3. I adjusted my strategy to catch the fish
+1. I valued the flowing resources I possessed
+2. I managed the exchange of my assets well
+3. I understood the movement of my true wealth
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am resilient in the face of changing seasons
-2. I am adaptable to new opportunities in my life
-3. I am a skilled fish finding my path
+1. I flow with the current of my abundant resources
+2. I value the exchange of all my assets now
+3. I manage the flow of my material wealth
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will fish for abundance
-2. I will fish my way to success
-3. I will fish for peace
+1. I will manage my flowing resources wisely
+2. I will recognize the true value of my assets
+3. I will navigate the currents of my wealth easily
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been adapting my skills to thrive in the changing tides of life
-2. I have been nurturing my resilience to stand firm against the ephemeral nature of success
-3. I have been persisting in my dedication to build a future based on enduring strength
+1. I have been flowing with the current of my wealth
+2. I have been valuing every exchange in my life
+3. I have been navigating the waters of my abundance
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have become a master of the river's currents
-2. I will have achieved mastery of the fish's fleeting beauty
-3. I will have saved the salmon and trout for future use
+1. I will have navigated the currents of my wealth
+2. I will have understood the flow of my resources
+3. I will have mastered the exchange of my assets
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We are all united by the shared journey of the fish
-2. We embrace the current of life together
-3. We are all one in the dance of the fish
+1. We flow with the current of life together
+2. We exchange value in all our dealings
+3. We manage the flow of our assets now
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They fish with skill in their own life
-2. She is a fish of resilience
-3. They fish for the best in their own life
+1. The water flows with abundant value and exchange
+2. The fish moves through the current of life's wealth
+3. Resources flow with dynamic and tangible movement
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I can swim through the waves today
-2. I can find new opportunities in the changing sea
-3. I can harvest the harvest today
+1. I can manage the flow of my financial resources
+2. I could value every exchange I make now
+3. I am able to navigate the currents of abundance
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I hold the salmon and trout in my hands
-2. If only I could see the river flowing by
-3. Would that I might find my way home
+1. May I flow with the current of my wealth
+2. If only I could value all my assets
+3. Would that I might manage all my exchanges
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Be resilient! You must adapt your life like a river
-2. Be steady! You must harvest your resources with patience
-3. Be swift! You must learn to succeed through skill
+1. Understand the flow of your material wealth
+2. Value the assets you actively exchange now
+3. Navigate the currents of financial abundance
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not a transient vessel of hope?
-2. Have I not the courage to adapt my path?
-3. Can I not harvest the lessons of the fish?
+1. Am I not flowing with abundant financial currents
+2. Have I not valued all my moving assets correctly
+3. Can I not manage the flow of my true worth
 
 ## ♾️ Infinitive Active Simple
 
-1. To adapt to the changing currents of life
-2. To embrace the fleeting beauty of existence
-3. To master the skills needed for success
+1. To flow with the current of abundance
+2. To value all moving resources actively
+3. To exchange worth without hesitation
 
 ## 💡 Gerund Active
 
-1. I learn to swim by learning to swim every day
-2. I adapt to life by adapting to life every day
-3. I harvest my resources by harvesting my resources every day
+1. Flowing resources reveals true material abundance
+2. Exchanging value creates dynamic financial freedom
+3. Navigating currents shows the worth of assets
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am held by the river's gentle current
-2. I am supported by the fish's silent promise
-3. I am held by the salmon's enduring grace
+1. I am valued by the flowing currents of wealth
+2. I am moved by the dynamic exchange of resources
+3. I am held by the water's ceaseless movement
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always fish with patience to catch the best catch
-2. I regularly fish with skill to win the best fight
-3. I consistently fish with wisdom to find the best path
+1. I always flow with the current of abundance
+2. I regularly value the exchange of my assets
+3. I consistently manage the flow of my wealth
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I do not believe I am a permanent fish
-2. I do not believe I am a permanent fish of wealth
-3. I do not believe I am a permanent fish of health
+1. I am not stagnant but I flow with life's current
+2. I do not hold back the wealth I possess
+3. I am not limited by material exchange

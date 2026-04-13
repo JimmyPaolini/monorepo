@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was gentle with my heart
-2. I chose to listen to my inner voice
-3. I found my peace in quiet moments
+1. I felt bored with the offered choices
+2. I withdrew from the present opportunities
+3. I observed my emotional detachment then
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am grateful for the quiet moments that reveal my true desires
-2. I trust that my internal state is the most reliable indicator of my quality of life
-3. I am worthy of the understanding that true fulfillment lies within
+1. I feel present emotions now
+2. I notice my inner dissatisfaction clearly
+3. I seek new sources of true fulfillment
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will find peace within the quiet moments of reflection
-2. I will embrace my potential in the universal capacity for emotion
-3. I will find abundance in the recognition of true desires
+1. I will seek new sources of inner satisfaction
+2. I will engage with present opportunities now
+3. I will discover true fulfillment within myself
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been reflecting deeply on the quiet moments of my life
-2. I have been choosing kindness in every relationship I meet
-3. I have been growing every day, even when the external world feels distant
+1. I have been observing my current feelings deeply
+2. I have been seeking new sources of inner joy
+3. I have been reevaluating what is offered now
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have realized that the true fulfillment lies within the quiet moments of reflection
-2. I will have become aware of the hidden desires that guide my inner peace
-3. I will have created a life where I am fully present and connected to my own emotions
+1. I will have recognized my current emotional state
+2. I will have found new sources of inner satisfaction
+3. I will have engaged with present opportunities now
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We are grateful for the quiet moments of reflection
-2. We choose to listen to our own heart
-3. We stand together as a united front
+1. We recognize our current emotional landscape together
+2. We seek new sources of inner fulfillment together
+3. We engage with present opportunities together
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They look inward to find the true fulfillment of their hearts
-2. They choose to remain connected through mutual understanding
-3. They recognize the abundance found within their quiet moments
+1. They observe their feelings without immediate reaction
+2. She recognizes opportunities waiting for her attention
+3. He seeks deeper fulfillment within his inner world
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I am able to see the hidden desires that guide my true path
-2. I can choose to stand in the quiet of reflection rather than chasing external validation
-3. I am capable of becoming the person who understands the universal capacity for emotion
+1. I can reassess my current emotional landscape now
+2. I could find new sources of inner satisfaction easily
+3. I am able to engage with present opportunities fully
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find peace within the quiet cup of reflection
-2. If only I could see the true desire hidden in the fourth cup
-3. Would that I might know my own worth in the fourth cup
+1. May I seek deeper emotional fulfillment now
+2. Would that I might notice present joys
+3. If only I could engage with what is offered
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Be gentle with your heart today
-2. Trust the quiet moments of your spirit
-3. Embrace the truth of your inner desires
+1. Acknowledge your current feelings now!
+2. Seek new sources of inner satisfaction!
+3. Engage fully with present opportunities!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not capable of turning inward to find my true desires?
-2. Have I not already proven my resilience through quiet reflection?
-3. Can I not rise to this challenge without external validation?
+1. Am I not passively missing present opportunities?
+2. Have I not withdrawn from available emotional gifts?
+3. Can I not engage with my current inner richness?
 
 ## ♾️ Infinitive Active Simple
 
-1. To reflect deeply on the quiet moments of reflection
-2. To choose fully without external validation
-3. To love without fear of judgment
+1. To notice feelings without immediate reaction
+2. To seek deeper meaning in present moments
+3. To engage fully with what is offered now
 
 ## 💡 Gerund Active
 
-1. Being gentle is my strength
-2. Choosing peace is my strength
-3. Embracing silence is my strength
+1. Observing feelings reveals hidden sources of true joy
+2. Reflecting on what is offered ignites new desires
+3. Engaging with the present brings deep personal richness
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am guided by the quiet moments of reflection
-2. I am supported by the recognition of my true desires
-3. I am loved and appreciated by the universal capacity for emotion
+1. I am unfulfilled by present circumstances
+2. I am drawn by new emotional experiences
+3. I am held by inner awareness now
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always look inward to find the true desires hidden within my heart
-2. I regularly practice self-reflection to recognize my own emotional needs
-3. I consistently choose to be present in the quiet moments of my life
+1. I always notice my inner dissatisfaction now
+2. I regularly seek new emotional fulfillment always
+3. I consistently engage with present opportunities fully
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by the past
-2. I am not afraid of change
-3. I do not limit my own potential
+1. I do not feel bored with what is offered
+2. I am not detached from present opportunities now
+3. I do not ignore the richness available to me

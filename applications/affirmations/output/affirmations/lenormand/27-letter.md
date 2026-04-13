@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I spoke firmly to convey my truth
-2. I wrote the note with clear intent
-3. I listened to the voice of understanding
+1. I sent my truth clearly across the distance
+2. I shared my thoughts and I found understanding
+3. I wrote the words that brought clarity now
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I communicate openly with my partner
-2. I express my feelings to my friend
-3. I share my ideas with my colleague
+1. I communicate my truth clearly now
+2. I receive necessary messages instantly
+3. I bridge distances with honest words
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will communicate my love to you
-2. I will share this moment with you
-3. I will guide our path together
+1. I will clearly express my true intentions now
+2. I will share my truth without hesitation
+3. I will receive the necessary understanding quickly
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been actively sharing my thoughts with the world
-2. I have been faithfully passing on life's vital messages to others
-3. I have been diligently conveying the message of trust to those around me
+1. I have been sending my truth across the distance
+2. I have been receiving all necessary messages clearly
+3. I have been articulating my feelings for true connection
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have spoken with her clearly
-2. I will have received the message warmly
-3. I will have known her through time
+1. I will have written the truth clearly now
+2. I will have transmitted my message successfully
+3. I will have bridged the distance with words
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We connect with all of you
-2. We share your energy together
-3. We stand united for our journey
+1. We share truth through open communication now
+2. We transmit vital messages effectively always
+3. We bridge distances with honest words together
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They communicate with their heart's own truth
-2. They speak their own words
-3. They exchange their true feelings
+1. The words flow with clear intention now
+2. Communication brings necessary understanding forth
+3. Information bridges distances with open honesty
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I am able to write a meaningful message
-2. I can communicate with the universe clearly
-3. I am ready to share my thoughts fully
+1. I can clearly share my true thoughts now
+2. I could bridge gaps with honest words
+3. I am able to receive necessary understanding
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I express my heart to the world
-2. If only I could share my thoughts
-3. Would that I might speak clearly
+1. May I clearly send my true message now
+2. If only I could bridge this distance now
+3. Would that I might receive all needed words
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Trust your voice to speak the truth
-2. Connect with others to feel the energy
-3. Actively share your message for the world
+1. Write your truth clearly now
+2. Send your message without fear
+3. Hear the words that guide you
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Do I not believe I can communicate freely?
-2. Have I not the courage to share my thoughts?
-3. Can I not trust that my words will reach your heart?
+1. Am I not speaking my truth clearly now
+2. Have I not shared my necessary message
+3. Can I not connect with others instantly
 
 ## ♾️ Infinitive Active Simple
 
-1. To express connection between self and world
-2. To reveal hidden truths through dialogue
-3. To share opportunities with the universe
+1. To communicate clearly and honestly now
+2. To share your truth without hesitation
+3. To bridge distances with open words
 
 ## 💡 Gerund Active
 
-1. I act actively to share my true self
-2. I use my words to connect deeply with others
-3. I flow with life to bring joy and opportunity
+1. Writing truth opens necessary communication channels
+2. Sending messages builds clear understanding instantly
+3. Receiving words unlocks vital connection pathways
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am held by the letter of my life
-2. I am received by the letter of my success
-3. I am supported by the letter of my joy
+1. I am understood by clear communication
+2. I am held by the flow of necessary words
+3. I am guided by the truth I transmit
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always write a message to my partner
-2. I regularly share my feelings with you
-3. I consistently communicate my intentions with you
+1. I always clearly express my true feelings now
+2. I regularly share my thoughts with honesty
+3. I consistently bridge gaps with open words
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not limited by my own limitations
-2. I am not restricted by external constraints
-3. I am not bound by my own rules
+1. I do not hold back my truth from others
+2. I am not silent when I need to speak
+3. I do not fear the message I send

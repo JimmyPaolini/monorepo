@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was calm when the noise of the world faded away
-2. I chose to let go of the struggle to find my strength
-3. I found my peace in the quietness of the stillness
+1. I was still and I rested deeply
+2. I withdrew and I sought quiet thought
+3. I healed and I prepared for future action
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am ready to let go of the noise
-2. I trust that my peace is within
-3. I am calm in the quiet of the room
+1. I rest my mind in deep stillness
+2. I allow my body to fully heal now
+3. I seek clarity through quiet reflection
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will find peace within the quiet walls
-2. I will embrace the inner strength that cuts through the noise
-3. I will surrender to the simple reality of stillness
+1. I will rest my mind now for deep healing
+2. I will contemplate my stillness for clarity
+3. I will prepare my energy for future action
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been learning to cut through the noise of anxiety
-2. I have been choosing the quietness of the self
-3. I have been surrendering to the simple reality of peace
+1. I have been resting my mind and body deeply
+2. I have been processing thoughts through quiet stillness
+3. I have been healing through necessary withdrawal now
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have cut through the noise of anxiety and distraction
-2. I will have surrendered to the quietness of the self
-3. I will have found solace in the simple reality of peace
+1. I will have found deep rest and inner peace
+2. I will have completed necessary mental recuperation
+3. I will have achieved clarity through quiet reflection
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We are still within our own peace
-2. We are ready to let go of the noise
-3. We are finding quiet within ourselves
+1. We rest deeply and find inner peace together
+2. We allow stillness to heal our weary minds
+3. We process our thoughts for future strength
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. He trusts the quietness of his own peace
-2. She finds strength in the stillness of her inner world
-3. They accept the end of their journey with calm
+1. They rest in quiet contemplation and deep reflection
+2. She seeks stillness for necessary inner healing
+3. It prepares for action through thoughtful withdrawal
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I can find peace in the quietness of the walls
-2. I could choose to rest in the stillness of the night
-3. I am able to surrender to the calm of the dawn
+1. I can rest deeply and heal my weary mind
+2. I could withdraw to find quiet inner clarity
+3. I am able to process thoughts for future action
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find the quietness of my own peace
-2. If only I could let go of the noise
-3. Would that I might know my own worth
+1. May I rest deeply and find inner peace
+2. Would that I might heal through quiet reflection
+3. If only I could gather strength in stillness
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Cut through the noise of your anxiety with your inner sword!
-2. Surrender to the quietness of your own peace!
-3. Embrace the stillness that comes from letting go!
+1. Rest deeply yourself!
+2. Meditate your stillness now!
+3. Reflect your journey wisely!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not capable of finding true peace in this quiet moment?
-2. Have I not already proven that I can cut through the noise of the world?
-3. Can I not surrender to the silence that brings me solace?
+1. Am I not resting now without striving?
+2. Have I not allowed my mind to still?
+3. Can I not find peace in this quiet space?
 
 ## ♾️ Infinitive Active Simple
 
-1. To cut through the noise of anxiety with inner strength
-2. To surrender to the quietness of the self
-3. To find peace within the simple reality of stillness
+1. To rest completely to restore inner peace
+2. To contemplate deeply to find true clarity
+3. To heal without distraction to gain vigor
 
 ## 💡 Gerund Active
 
-1. Being calm is my strength
-2. Finding peace is my strength
-3. Surrendering is my strength
+1. Resting deeply allows healing to happen now
+2. Meditating quietly brings inner clarity always
+3. Reflecting fully prepares for future action
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am guided by the quietness of the walls
-2. I am supported by the stillness of the room
-3. I am loved by the peace of the room
+1. I am rested by quiet contemplation
+2. I am healed by necessary withdrawal
+3. I am grounded by deep reflection
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always choose peace to find my inner strength
-2. I regularly surrender to the quietness of my own mind
-3. I consistently practice the art of letting go
+1. I always rest my mind for deep healing
+2. I regularly seek quiet contemplation now
+3. I consistently allow stillness for true growth
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by my past
-2. I am not afraid of change
-3. I do not limit my own potential
+1. I do not rush my healing process now
+2. I am not burdened by external demands
+3. I do not seek action without true rest

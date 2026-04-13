@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was radiant with unconditional love
-2. I chose my own strength and joy
-3. I found my inner light and abundance
+1. I was radiant with pure joy
+2. I shone with absolute truth
+3. I achieved full self-awareness
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am radiant with unconditional love
-2. I am confident in my own potential
-3. I am worthy of the light that shines
+1. I radiate pure, unadulterated joy now
+2. I bring brilliant truth into my life
+3. I shine as the source of my own light
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will find peace
-2. I will succeed
-3. I will embrace my potential
+1. I will shine my true light now
+2. I will radiate my inner joy always
+3. I will achieve my full potential today
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been embracing my inner light to find my true potential
-2. I have been choosing kindness and acceptance to build a life of abundance
-3. I have been growing every day with the energy of the Sun to live fully
+1. I have been shining my true light always
+2. I have been radiating pure joy continuously
+3. I have been illuminating my path presently
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have realized my full potential as a creator
-2. I will have become the person who embodies unconditional love and vitality
-3. I will have created a life filled with abundance, harmony, and inner peace
+1. I will have shone with pure light and joy
+2. I will have realized my true inner brilliance
+3. I will have manifested all my radiant success
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We are radiant with unconditional love and vitality
-2. We create abundance and harmony in every relationship
-3. We embrace the light and move forward with courage
+1. We radiate pure joy and brilliant light together
+2. We embrace truth and illuminate our true selves
+3. We manifest abundant success through inner knowing
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. He radiates unconditional warmth and joy
-2. She embodies the power of inner light and creativity
-3. They strive to live fully and find their true potential
+1. She radiates pure joy and brilliant light now
+2. They experience absolute truth through their being
+3. It illuminates all shadows with its inner power
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I am able to embrace the joy of life and create the world I wish to see
-2. I can find inner strength to overcome any challenge that comes my way
-3. I am ready to share my true potential with others and live fully
+1. I can shine my true light now
+2. I am able to radiate pure joy always
+3. I can achieve full self-awareness today
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find my own light in this moment
-2. If only I could embrace the warmth of the sun
-3. Would that I might know my own worth
+1. May I shine with pure, radiant joy
+2. Would that I might embrace my inner light
+3. If only I could know my true brilliance
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Embrace your inner light today!
-2. Trust your own vibrant energy!
-3. Live fully with unconditional joy!
+1. Shine your true light forth now
+2. Embrace your radiant optimism always
+3. Consciousness illuminates all your path
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not capable of embracing the warmth of unconditional love?
-2. Have I not already proven my resilience in facing the darkest times?
-3. Can I not rise to this challenge with the light of the Sun?
+1. Am I not radiating pure, brilliant joy now?
+2. Have I not found my true light without doubt?
+3. Can I not shine my full truth without fear?
 
 ## ♾️ Infinitive Active Simple
 
-1. To embrace unconditional love and joy
-2. To live fully and radiate warmth
-3. To create abundance and harmony
+1. To shine brightly to illuminate all truth
+2. To radiate joy to attract abundance
+3. To become clear without any shadow
 
 ## 💡 Gerund Active
 
-1. Being radiant is my strength
-2. Chasing light is my purpose
-3. Embracing joy is my way
+1. Shining light brings pure joy to my being
+2. Embracing truth illuminates all my actions
+3. Radiating energy attracts abundant success now
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am supported by the warmth of the Sun
-2. I am guided by the light of the Sun
-3. I am loved by the brilliance of the Sun
+1. I am illuminated by the sun's pure light
+2. I am filled with radiant joy by the sun
+3. I am seen by truth through the sun's power
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always radiate warmth and joy in every interaction
-2. I consistently embrace the light of inner peace daily
-3. I always find abundance in the simple moments of life
+1. I always radiate pure, brilliant joy now
+2. I regularly embrace my inner truth always
+3. I consistently shine my true self brightly
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by my past
-2. I am not afraid of change
-3. I do not limit my own potential
+1. I am not limited by shadows of the past
+2. I do not fear the light within me
+3. I am not confused by external darkness

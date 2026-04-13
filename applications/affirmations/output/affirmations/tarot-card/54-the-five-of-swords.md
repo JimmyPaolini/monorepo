@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was ready to face the conflict
-2. I chose to move forward without fighting
-3. I found my strength in the new beginning
+1. I felt the sharp pain of conflict
+2. I accepted the bitter outcome of war
+3. I realized my victory meant little
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am ready to end the cycle of fighting
-2. I trust that the struggle is over
-3. I choose to find common ground
+1. I accept the cost of past conflicts now
+2. I release the need to win at all costs
+3. I choose peace over bitter victory
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will find peace through the resolution of our immediate conflict
-2. I will choose to let go of the need to dominate in our relationships
-3. I will find the light within the darkness by recognizing the source of the struggle
+1. I will release the need to win this conflict
+2. I will choose peace over bitter victory now
+3. I will heal the wounds from past confrontations
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been learning to see the light within the darkness
-2. I have been choosing peace over the noise of the struggle
-3. I have been growing every day to find the source of healing
+1. I have been carrying the weight of past conflicts
+2. I have been learning the cost of hollow victories
+3. I have been healing the wounds of old resentments
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have overcome the immediate conflict with patience
-2. I will have become the person who sees the light within the darkness
-3. I will have created a path forward where the struggle is resolved
+1. I will have owned bitter victories now
+2. I will have learned true peace from conflict
+3. I will have rebuilt trust from past wounds
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We are united in our shared journey toward peace
-2. We offer our strength to heal one another
-3. We find harmony through our shared work together
+1. We recognize conflict brings us only sorrow together
+2. We release the need for bitter victory now
+3. We choose healing over harsh confrontation always
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. He has learned to see the light within the darkness
-2. She chooses to let go of the need to dominate
-3. They recognize that true peace is not the absence of conflict
+1. They recognize conflict cost more than any perceived win
+2. She accepts the sorrow from past aggressive actions
+3. He chooses healing over bitter, hollow victories
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I am able to choose peace over the noise of conflict
-2. I could find the light within the darkness of our struggles
-3. I am ready to let go of the need to dominate and find common ground
+1. I can choose peace over painful victory now
+2. I could release resentment for past conflicts
+3. I am able to heal the wounds of conflict
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find peace within the darkness of this moment
-2. If only I could see the light in the shadows of our past
-3. Would that I might know that the struggle is over
+1. May I release the need to win this battle
+2. If only I could find true peace now
+3. Would that I might heal old resentments
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Embrace the light within the darkness
-2. Let go of the need to dominate
-3. Find common ground in every relationship
+1. Accept the loss and heal your inner wounds!
+2. Release the need to win at any cost!
+3. Rebuild trust through honest reconciliation now!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not capable of resolving this conflict without further struggle?
-2. Have I not already found the light within the darkness of this situation?
-3. Can I not trust that the peace I seek is a dynamic process of growth?
+1. Am I not free from needless conflict now?
+2. Have I not accepted this painful loss yet?
+3. Can I not choose peace instead of winning?
 
 ## ♾️ Infinitive Active Simple
 
-1. I choose peace without needing to win
-2. I let go of the need to dominate and heal
-3. I find the light within the darkness
+1. To release the need to win at all costs
+2. To heal the wounds of past conflicts swiftly
+3. To choose peace over bitter victory
 
 ## 💡 Gerund Active
 
-1. Being calm is my strength
-2. Finding peace is my strength
-3. Letting go is my strength
+1. Acknowledging conflict allows healing to begin
+2. Releasing resentment frees energy for growth
+3. Choosing peace over winning brings true reward
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am healed by the light of hope
-2. I am guided by the wisdom of reconciliation
-3. I am supported by the peace of the new beginning
+1. I am wounded by conflict by sharp swords
+2. I am defeated by pride by harsh words
+3. I am held by regret by past actions
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always choose kindness when I feel threatened
-2. I regularly practice patience to heal my wounds
-3. I consistently find the light within the darkness
+1. I always recognize conflict costs more than winning
+2. I regularly choose peace over harsh victory
+3. I consistently seek healing instead of conflict
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by the violence of the past
-2. I am not afraid of the struggle that remains
-3. I am not limited by the need to win
+1. I do not seek victory through harsh conflict
+2. I am not defined by hollow temporary wins
+3. I do not carry needless resentment now

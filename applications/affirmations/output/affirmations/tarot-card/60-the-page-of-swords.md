@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was vigilant for threats that others overlooked
-2. I chose to act on the subtle signs of danger
-3. I found my strength in seeing the world as it truly is
+1. I was eager to explore new ideas
+2. I sought knowledge with sharp focus
+3. I communicated my truth clearly then
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am vigilant for threats in the world around me
-2. I trust my own sharp instincts to detect anomalies
-3. I act on perceived risks with clarity and precision
+1. I explore new ideas with sharp curiosity
+2. I speak my truth with clear intellect
+3. I initiate learning through active inquiry
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will find peace by observing the world as it truly is
-2. I will succeed by balancing the quiet of observation with the sharpness of action
-3. I will embrace my potential by acting on the perceived threats that arise from my mind
+1. I will pursue new knowledge with sharp focus
+2. I will speak my truth with clear honesty
+3. I will explore new ideas with eager curiosity
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been scanning the world for hidden threats and acting on what I perceive
-2. I have been observing the subtle shifts in my own mind and responding to the perceived anomalies
-3. I have been maintaining a vigilant stance where I see the world as it truly is and act on the threats I identify
+1. I have been exploring new ideas with keen curiosity
+2. I have been learning to speak my truth clearly now
+3. I have been gathering knowledge through sharp insight
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have become the observer who sees the threats before they become reality
-2. I will have created a life where every decision is based on the sharpness of the sword and the quiet of the page
-3. I will have achieved the balance between the volatile energy of the mind and the stable foundation of the self
+1. I will have learned new truths through sharp inquiry
+2. I will have communicated my clear thoughts effectively
+3. I will have explored the world with youthful curiosity
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We are vigilant together
-2. We act on our own threats
-3. We observe the world as it truly is
+1. We explore new ideas together with sharp minds
+2. We share our truths with clear communication now
+3. We initiate learning by bravely seeking knowledge
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. He is a vigilant observer who scans the world for hidden threats
-2. He acts with sharp precision to identify and address perceived dangers
-3. He balances the quiet of observation with the sharpness of decisive action
+1. They explore new ideas with keen curiosity
+2. She communicates her sharp thoughts clearly
+3. He investigates truth with mental agility
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I am able to see the hidden threats that others miss
-2. I can choose to act on the subtle signs of danger
-3. I could become a vigilant observer who sees the world clearly
+1. I can explore new ideas with sharp focus
+2. I could communicate my truth clearly now
+3. I am able to learn everything I seek
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find clarity in this moment
-2. If only I could feel at peace
-3. Would that I might know my own worth
+1. May I explore new truths with sharp curiosity
+2. If only I could speak my sharp insights clearly
+3. Would that I might learn and share my new vision
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Be vigilant to see the unseen threats that lurk in the quiet of your mind
-2. Trust your intuition to act on the volatile signals that guide your path
-3. Embrace your sharpness to see the world as it truly is
+1. Seek new knowledge immediately!
+2. Speak your sharp truth clearly!
+3. Investigate every new idea now!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not capable of seeing the threats that others miss?
-2. Have I not already proven my ability to act on perceived anomalies?
-3. Can I not rise to this challenge without the fear of the unknown?
+1. Am I not curious about new knowledge?
+2. Have I not sought truth with my mind?
+3. Can I not speak my sharp truth now?
 
 ## ♾️ Infinitive Active Simple
 
-1. To scan the world with sharp eyes and act on the threats that appear
-2. To remain vigilant and ready to see the unseen dangers of the environment
-3. To balance the quiet of observation with the sharpness of decisive action
+1. To seek knowledge with sharp focus
+2. To speak your truth with clarity
+3. To explore new ideas actively
 
 ## 💡 Gerund Active
 
-1. Being vigilant is my strength
-2. Being alert is my strength
-3. Being observant is my strength
+1. Investigating new ideas sharpens my intellect
+2. Communicating truths brings clarity and insight
+3. Exploring curiosity unlocks boundless mental freedom
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am guided by the quiet of observation
-2. I am supported by the sharpness of action
-3. I am ready to see the unseen threats
+1. I am drawn by new knowledge
+2. I am held by sharp intellect
+3. I am seen by clear communication
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always observe the subtle signs of stress in my own life
-2. I consistently act on the perceived anomalies that arise from my mind
-3. I regularly trust the interconnectedness of the self and the external world
+1. I always seek new knowledge with sharp curiosity
+2. I regularly speak my true thoughts clearly now
+3. I consistently explore new ideas actively today
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by my past
-2. I am not afraid of change
-3. I do not limit my own potential
+1. I am not afraid to speak my true thoughts
+2. I do not avoid new ideas without seeking them
+3. I am not limited by old knowledge now

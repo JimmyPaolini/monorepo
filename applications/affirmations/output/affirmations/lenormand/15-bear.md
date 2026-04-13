@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I mastered my own strength and power in this past
-2. I secured my own life and financial stability today
-3. I took charge of my own destiny through discipline
+1. I was grounded in my inner strength
+2. I asserted my authority in the moment
+3. I managed my power successfully then
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am confident in my authority
-2. I have secured my financial future
-3. I am disciplined to maintain my strength
+1. I possess grounded inner strength and authority
+2. I lead with calm and powerful presence now
+3. I manifest my will into tangible results
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will exercise my power to secure my own future
-2. I will protect my resources with a strong and disciplined heart
-3. I will ensure my wealth remains with me through active strength
+1. I will wield my power with grounded strength
+2. I will lead my influence with deep presence
+3. I will manifest my will into tangible results
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been building a strong career structure today
-2. I have been protecting my family with unwavering strength
-3. I have been growing in power and wisdom through discipline
+1. I have been mastering my inner power continuously
+2. I have been leading my influence effectively always
+3. I have been embodying grounded strength presently
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have achieved complete control over my destiny
-2. I will have secured my wealth through strength and discipline
-3. I will have mastered the discipline to care for my body
+1. I will have mastered my inner power fully
+2. I will have established my authority completely
+3. I will have wielded my influence successfully
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We are all friends of the Bear
-2. We stand in strength with the Bear
-3. We protect what the Bear gives
+1. We embody grounded strength in all our actions
+2. We manage our power with deep awareness now
+3. We lead our influence toward desired outcomes
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. He is the boss who protects his own home
-2. She is the protector who safeguards her security
-3. They are the authority who commands their fate
+1. The bear possesses grounded inner strength and authority
+2. The leader manages power with calm presence
+3. They manifest their will through balanced influence
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I can protect my own power to secure my destiny
-2. I am able to care for my body to maintain my strength
-3. I am able to control my own fate through my authority
+1. I can wield my inner strength effectively
+2. I am able to lead with grounded authority
+3. I can manifest my power into reality
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I walk into the door with power and strength
-2. If only I could stand guard over my own path
-3. Would that I might protect my own destiny
+1. May I wield my power with grounded strength
+2. If only I could master my inner authority
+3. Would that I might lead with confident presence
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Be strong! You protect! You secure your destiny!"
-2. Be powerful! You build! You build your wealth!"
-3. Be disciplined! You care! You take your life!"
+1. Be strong; command your power now
+2. Lead with presence; master your influence
+3. Own your authority; manifest your results
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Do I not believe that power should protect us?
-2. Have I not heard the voice that says strength is our only choice?
-3. Can I not trust that true strength is what I create?
+1. Am I not my power fully manifested now
+2. Have I not led with grounded authority always
+3. Can I not wield my influence confidently today
 
 ## ♾️ Infinitive Active Simple
 
-1. To protect what is given without asking for more
-2. To build a system that secures my own destiny without relying on others
-3. To care for my body without waiting for permission to use it
+1. To wield power with grounded presence
+2. To lead influence with confident action
+3. To manifest results through inner strength
 
 ## 💡 Gerund Active
 
-1. I choose to be disciplined and powerful with my daily actions
-2. I embrace the power that shapes my future path
-3. I lead with authority that secures my own destiny
+1. Leading with strength commands respect and influence
+2. Embracing power reveals deep inner authority
+3. Managing influence creates balanced external results
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am supported by the bear's protective power
-2. I am held by the authority of the bear
-3. I am cared for by the bear's strength
+1. I am strength by my own will
+2. I am authority by my presence
+3. I am grounded by deep knowing
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always walk confidently without fear
-2. I regularly maintain strong boundaries
-3. I consistently prioritize my own peace
+1. I always wield my inner power effectively
+2. I regularly lead with grounded authority now
+3. I consistently manifest my strength outwardly
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I do not have excess energy that burdens my body
-2. I do not fear my own authority
-3. I do not possess wealth that harms my health
+1. I am not weak in my inherent power
+2. I do not fear leading with my strength
+3. I am not bound by external limitations

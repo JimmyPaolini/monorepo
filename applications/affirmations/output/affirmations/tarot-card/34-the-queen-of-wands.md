@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I chose courage to face the uncertainty
-2. I was ready to act when the path seemed unclear
-3. I found my strength in balancing solitude with connection
+1. I was charismatic and full of fire
+2. I led with passionate conviction
+3. I commanded attention through my presence
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I choose courage to face the uncertainty of the day
-2. I trust myself to balance solitude with connection
-3. I embrace the flame of action in the face of fear
+1. I possess fiery charisma and bold self-confidence
+2. I command attention through my passionate energy
+3. I lead with authentic and dynamic conviction
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will find courage to act boldly when the world feels uncertain
-2. I will choose to embrace the flame of my own potential
-3. I will balance my solitude with the need for connection
+1. I will command attention with my vibrant energy
+2. I will express my passionate vision boldly
+3. I will lead with my fiery self-confidence
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been learning to balance my solitude with the need for connection
-2. I have been choosing courage to face the uncertainty of the day
-3. I have been growing every day, balancing my inner peace with the world around me
+1. I have been radiating my inner fire always
+2. I have been commanding attention with my passion
+3. I have been leading with bold, vibrant energy
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have become the person I am meant to be
-2. I will have created a life I love
-3. I will have overcome this challenge
+1. I will have commanded attention with my fire
+2. I will have become a magnetic force of will
+3. I will have expressed my vision with passion
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We stand together with courage to face the unknown
-2. We choose to embrace the flame of our own potential
-3. We balance our solitude with our connection to the world
+1. We radiate fiery charisma together
+2. We command attention with our passion
+3. We lead with bold, authentic vision
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. He trusts that the flame of courage will guide his journey forward
-2. She stands ready to embrace the challenge that challenges her
-3. They know that true strength lies in balancing their solitude with their connection
+1. She commands attention with her inner fire
+2. They express their bold vision with passion
+3. She leads with magnetic, vibrant energy
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I am able to take decisive action when the world feels uncertain
-2. I can embrace difficult situations without hesitation
-3. I am capable of balancing solitude with connection
+1. I can command attention with my vibrant energy
+2. I could inspire others through my passionate vision
+3. I am able to lead with courageous self-expression
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find courage to act boldly when the world feels uncertain
-2. If only I could embrace the flame of my own inner strength
-3. Would that I might balance solitude with connection to find peace
+1. May I command my passion and inspire others
+2. Would that I might express my bold vision now
+3. If only I could lead with fiery confidence
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Be brave enough to stand by your own flame!
-2. Trust your inner fire to guide your path forward!
-3. Embrace the courage to speak your truth!
+1. Be passionate and lead yourself!
+2. Command attention with your vibrant energy!
+3. Express your bold vision with fire!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not ready to embrace the courage to take the first step in this uncertain journey?
-2. Have I not already proven that I can navigate the storm with the boldness of the Queen of Wands?
-3. Can I not stand firm in the quiet confidence that the Queen of Wands demands?
+1. Am I not radiating fiery passion now?
+2. Have I not claimed my magnetic power yet?
+3. Can I not lead with bold confidence always?
 
 ## ♾️ Infinitive Active Simple
 
-1. To embrace the flame of courage without hesitation
-2. To balance solitude with connection in every day
-3. To choose action over hesitation in the face of uncertainty
+1. To radiate passion with confidence
+2. To lead with vibrant enthusiasm always
+3. To express your bold vision freely
 
 ## 💡 Gerund Active
 
-1. Being brave is my strength
-2. Choosing growth every day
-3. Embracing uncertainty with grace
+1. Leading with passion ignites powerful creative energy
+2. Expressing your vision magnetizes all attention now
+3. Embracing your fire commands bold, confident action
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am guided by the flame of courage
-2. I am supported by the balance of solitude and connection
-3. I am ready to embrace the world with the self-awareness of the introverted self
+1. I am drawn by inner fire by passion
+2. I am held by magnetism by my presence
+3. I am moved by vision by bold action
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always choose courage to face the uncertainty of the day
-2. I regularly balance solitude with connection to grow
-3. I consistently embrace the flame of inner strength
+1. I always radiate fiery charisma and passion
+2. I regularly lead with bold and confident action
+3. I consistently express my vibrant inner vision
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by my past
-2. I am not afraid of change
-3. I do not limit my own potential
+1. I am not afraid of my inner fire
+2. I do not wait for permission to lead
+3. I am not limited by doubt or fear

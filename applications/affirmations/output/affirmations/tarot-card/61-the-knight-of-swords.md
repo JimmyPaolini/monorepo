@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was ready to cut through the fog with my sword
-2. I chose to move forward without hesitation
-3. I found my strength in the resolve of the knight
+1. I moved forward with sharp intellectual focus
+2. I pursued truth through direct action
+3. I articulated my vision with swift clarity
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I choose to act boldly and decisively
-2. I trust in my own resolve to move forward
-3. I am ready to cut through the obstacles with clarity
+1. I pursue truth with sharp intellectual focus
+2. I act with decisive and clear communication
+3. I move forward with focused, energetic intent
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will cut through the fog with clarity
-2. I will choose my path with boldness
-3. I will find strength in the wind
+1. I will pursue truth with sharp mental focus
+2. I will communicate my vision with clear action
+3. I will use my intellect for decisive victory
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been cutting through the fog with precision
-2. I have been leading the charge with courage
-3. I have been building my resolve to succeed
+1. I have been charging forward with sharp intellectual focus
+2. I have been pursuing truth with relentless mental speed
+3. I have been articulating my vision with active clarity
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have cut through the ambiguity with the precision of a sharp sword
-2. I will have become the warrior who moves forward with the resolve of a knight
-3. I will have created a life defined by the courage to take charge of every challenge
+1. I will have charged forward with clear intent
+2. I will have mastered the pursuit of truth swiftly
+3. I will have articulated my vision successfully
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We are ready to cut through the fog with our sharp, decisive edge
-2. We stand tall and move forward with the courage to take charge
-3. We embrace the path of the warrior who does it all alone
+1. We move forward with sharp intellectual clarity together
+2. We pursue truth with decisive and swift action together
+3. We communicate our vision with focused energy together
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They are ready to cut through the fog with their sword
-2. She stands alone to make her own choice
-3. They move forward boldly to claim their own victory
+1. They charge toward truth with sharp intellect
+2. She pursues her goals with focused action
+3. He communicates his vision with clear force
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I am able to cut through any obstacle with precision
-2. I can choose to move forward boldly and confidently
-3. I could become the warrior who leads with clarity
+1. I can move forward with sharp intellectual clarity
+2. I could articulate my truth with swift action
+3. I am able to pursue my goals with focused drive
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find my own clarity in this moment
-2. If only I could stand firm and move forward
-3. Would that I might know my own worth
+1. May I pursue truth with sharp intellectual speed
+2. If only I could speak my vision clearly now
+3. Would that I might act with focused, balanced drive
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Cut through the fog with your sword and trust your will!
-2. Be the warrior who moves forward with bold clarity!
-3. Embrace the courage to take charge of your destiny!
+1. Charge forward with sharp intellectual clarity!
+2. Pursue truth with decisive and swift action!
+3. Communicate your vision with focused intensity!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not ready to cut through the fog with the clarity of a knight?
-2. Have I not already forged a path that leads to tangible results without hesitation?
-3. Can I not rise to this challenge with the resolve of a warrior who does it myself?
+1. Am I not moving forward with clear purpose?
+2. Have I not spoken my truth without fear?
+3. Can I not act with sharp, balanced insight?
 
 ## ♾️ Infinitive Active Simple
 
-1. To cut through the fog with sharp clarity
-2. To lead with courage and resolve
-3. To act decisively without hesitation
+1. To charge forward with sharp intellect
+2. To speak truth with swift action
+3. To pursue victory without harshness
 
 ## 💡 Gerund Active
 
-1. Being sharp and decisive is my strength
-2. Taking action every day is my strength
-3. Taking charge is my strength
+1. Pursuing truth sharpens my mental clarity
+2. Charging forward builds decisive action now
+3. Communicating clearly wins the necessary victory
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am guided by the sword's precision to cut through ambiguity
-2. I am supported by the knight's resolve to move forward with courage
-3. I am ready to feel the impact of decisive action
+1. I am moved by sharp intellect and swift action
+2. I am guided by clear vision and direct pursuit
+3. I am held by truth and articulate momentum
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always cut through ambiguity with the precision of a sharp sword
-2. I consistently choose courage to move forward with boldness
-3. I regularly embrace the resolve of a warrior to take charge
+1. I always pursue truth with sharp mental focus
+2. I regularly act with decisive and clear action
+3. I consistently communicate my vision with skill
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by my past
-2. I am not afraid of change
-3. I do not limit my own potential
+1. I am not blind to the truth of my vision
+2. I do not rush without clear intellectual thought
+3. I am not aggressive without measured speech

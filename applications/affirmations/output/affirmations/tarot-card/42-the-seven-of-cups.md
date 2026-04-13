@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was curious to explore new paths
-2. I chose to embrace the unknown
-3. I found strength in the endless possibilities
+1. I saw many illusions in my past
+2. I chose reality over fleeting dreams
+3. I discerned true desires in my journey
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am curious about the new opportunities that await me
-2. I am ready to embrace the diverse paths that lead to success
-3. I trust that the unknown is a source of endless inspiration
+1. I choose reality over fleeting illusions now
+2. I discern true desires from false visions
+3. I ground my dreams in tangible actions
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will find joy in every new opportunity I encounter
-2. I will embrace the uncertainty that leads to greater success
-3. I will find peace in the endless possibilities that await me
+1. I will discern true desires from fleeting illusions
+2. I will choose reality over tempting fantasies now
+3. I will ground my dreams in tangible plans
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been exploring every new path with curiosity
-2. I have been embracing every new opportunity with courage
-3. I have been navigating every new challenge with resilience
+1. I have been discerning between dreams and reality
+2. I have been choosing tangible paths over illusions
+3. I have been grounding my desires in present facts
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have embraced the infinite possibilities that lie before me
-2. I will have created a life of endless adaptability and new connections
-3. I will have become the person who sees the full spectrum of human experience
+1. I will have discerned true desires from fleeting illusions
+2. I will have separated fantasy from tangible reality now
+3. I will have chosen concrete paths from many dreams
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We embrace every new opportunity with curiosity and courage
-2. We welcome the unknown as a source of endless inspiration
-3. We build a life filled with diverse possibilities and adaptability
+1. We discern reality from the many illusions together
+2. We choose concrete desires over fleeting fantasies now
+3. We focus our vision on achievable plans always
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They embrace the infinite possibilities that lie before them
-2. They trust that every new step is a valid path forward
-3. They welcome the unknown as a source of endless inspiration
+1. They discern true desires from fleeting illusions
+2. She separates fantasy from tangible reality now
+3. He chooses concrete plans over empty visions
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I can explore new paths that lead to new possibilities
-2. I am able to embrace the uncertainty that brings growth
-3. I could step out of my comfort zone to find what truly matters
+1. I can discern real desires from sweet illusions
+2. I could choose tangible paths over fleeting dreams
+3. I am able to ground my visions in present reality
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find clarity in this moment
-2. If only I could feel at peace
-3. Would that I might know my own worth
+1. May I choose reality over fleeting illusions now
+2. Would that I might discern true desires clearly
+3. If only I could ground my dreams in action
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Trust your courage to step out of your comfort zone
-2. Embrace the infinite possibilities that await you
-3. Walk boldly toward the unknown with open hearts
+1. Discern your true desires now!
+2. Separate illusion from reality yourself!
+3. Choose concrete plans instead of dreams!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not curious enough to step out of my comfort zone?
-2. Have I not already found new connections in the chaos?
-3. Can I not rise to this challenge with the courage to try?
+1. Am I not chasing empty fantasies now?
+2. Have I not ignored real desires before?
+3. Can I not choose solid reality today?
 
 ## ♾️ Infinitive Active Simple
 
-1. To embrace the infinite possibilities of tomorrow
-2. To choose courage over comfort
-3. To live fully in the unknown
+1. To discern reality from illusion
+2. To choose what is truly real
+3. To focus on achievable desires
 
 ## 💡 Gerund Active
 
-1. Being open to new possibilities is my strength
-2. Choosing flexibility in every step is my strength
-3. Embracing the unknown with curiosity is my strength
+1. Dreaming visions helps me discern true reality
+2. Choosing paths grounds my desires in action
+3. Reflecting deeply separates illusion from fact
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am guided by the infinite possibilities of the seven cups
-2. I am supported by the abundance of choices that await me
-3. I am curious to explore the new paths that open before me
+1. I am held by clarity of vision
+2. I am drawn by reality by choice
+3. I am grounded by true desire
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always explore new paths with curiosity and adaptability
-2. I regularly embrace change to find new opportunities
-3. I consistently step out of my comfort zone to discover new connections
+1. I always discern reality from fleeting illusions
+2. I regularly choose tangible desires over fantasy
+3. I consistently focus on achievable life plans
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by my past
-2. I am not afraid of change
-3. I do not limit my own potential
+1. I am not illusion of fleeting desires
+2. I do not follow empty fantasies now
+3. I am not lost in wishful thinking

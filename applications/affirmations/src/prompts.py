@@ -292,21 +292,24 @@ affirmations_validate_affirmation_prompt_template: ChatPromptTemplate = ChatProm
         SystemMessagePromptTemplate.from_template(
             """\
 You are a grammar validator. Check whether an affirmation matches specific grammatical constraints.
+Use ONLY the provided descriptions and examples as your criteria — never invent or apply grammar rules beyond what is explicitly stated in those descriptions.
+If the affirmation structurally matches the descriptions and examples and violates no explicitly stated rule, it is valid.
 If valid, return {{"valid": true}}. If invalid, return {{"valid": false, "reason": "brief explanation"}}."""
         ),
         HumanMessagePromptTemplate.from_template(
             """\
 Affirmation: "{affirmation_text}"
-Target grammar: {grammar_name}
+Grammar name: {grammar_name}
 Grammar description: {grammar_description}
-Grammatical constraints: {grammar_specifiers}
+Grammatical specifiers: {grammar_specifiers}
 Specifier descriptions:
 {grammar_specifier_descriptions}
-Valid examples of this grammar form: {grammar_examples}
+Grammar examples: {grammar_examples}
 
 ---
 
 Does this affirmation match the grammatical constraints ({grammar_specifiers})?
+Judge only against the descriptions and examples above — do not apply any unstated grammar rules.
 
 If valid: {{"valid": true}}
 If invalid: {{"valid": false, "reason": "brief explanation"}}"""

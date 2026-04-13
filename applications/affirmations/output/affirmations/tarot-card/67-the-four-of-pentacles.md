@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I chose to trust that stability lies in adaptability rather than rigid preservation
-2. I found my strength in the dynamic nature of existence and the flow of life
-3. I chose to build a secure foundation through mutual trust and generosity
+1. I held my resources with firm control
+2. I guarded my stability in the past
+3. I possessed my security then
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I trust my ability to adapt and create a fulfilling life
-2. I choose to build a stable foundation through mutual trust
-3. I am worthy of the gift of resources for personal growth
+1. I hold my resources with balanced awareness
+2. I accept stability while allowing for change
+3. I guard my security with open acceptance
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will find peace through adaptability
-2. I will succeed in creating a fulfilling life
-3. I will embrace my potential with generosity
+1. I will hold my security with gentle awareness
+2. I will allow growth beyond my current possessions
+3. I will balance stability and open possibility
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been learning to trust that stability is found in adaptability
-2. I have been choosing kindness to build a secure foundation for others
-3. I have been growing every day to maintain a healthy lifestyle and physical fitness
+1. I have been holding my security with gentle awareness
+2. I have been protecting my resources while evolving
+3. I have been balancing stability and open opportunity
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have created a life filled with purpose and balance
-2. I will have become the person who trusts adaptability over rigid preservation
-3. I will have achieved a life where security is found in the dynamic nature of existence
+1. I will have held my resources securely for growth
+2. I will have become a balanced keeper of abundance
+3. I will have established stability while embracing flow
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We are adaptable together
-2. We build trust together
-3. We create change together
+1. We hold our stability with mindful awareness
+2. We protect our resources with gentle focus
+3. We balance security and growth together
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They trust that adaptability will lead to lasting security
-2. They embrace the flow of life without rigid constraints
-3. They recognize that true wealth is built through generosity and growth
+1. They hold their resources with careful intention
+2. She guards her stability with firm awareness
+3. It balances security and the flow of life
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I am able to build a life that balances my hard work with my heart
-2. I can choose to trust that my resources will serve my growth and others
-3. I am capable of adapting my plans to meet the needs of my family and community
+1. I can hold my resources with calm security
+2. I could release control to embrace new growth
+3. I am able to balance stability and flow
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find peace in the quiet of my own heart
-2. If only I could trust my own growth
-3. Would that I might know my own worth
+1. May I hold my security with open hands
+2. If only I could release my tight grip now
+3. Would that I might flow with life's abundance
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Trust your ability to adapt and create a fulfilling life
-2. Embrace the flow of change and build a secure foundation through trust
-3. Use resources to create a life that is both stable and dynamic
+1. Hold your stability wisely!
+2. Release your grip on possessions!
+3. Grow beyond your current comfort zone!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not capable of adapting my resources to create a fulfilling life?
-2. Have I not already proven my resilience through the journey of the Four Pentacles?
-3. Can I not rise to this challenge without losing the balance of my resources?
+1. Am I not holding too tightly to my possessions?
+2. Have I not allowed for growth without stagnation?
+3. Can I not release control for life's flow?
 
 ## ♾️ Infinitive Active Simple
 
-1. To choose wisely with every decision
-2. To embrace the flow of life with grace
-3. To build a life of purpose and peace
+1. To hold resources with awareness
+2. To secure stability without rigidity
+3. To embrace growth without clinging tightly
 
 ## 💡 Gerund Active
 
-1. Being adaptable is my strength
-2. Choosing growth every day
-3. Embracing change with grace
+1. Holding resources allows for balanced growth
+2. Securing stability permits open expansion
+3. Managing possessions fosters mindful adaptability
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am guided by the wisdom of the Four Pentacles
-2. I am supported by the balance of the Four Pentacles
-3. I am loved by the Four Pentacles
+1. I am held by stability by my own hands
+2. I am grounded by security by my possessions
+3. I am surrounded by calm by my careful holding
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always choose kindness towards others
-2. I regularly practice gratitude for what I receive
-3. I consistently show up for myself and my family
+1. I always hold my resources with mindful awareness
+2. I regularly balance security and open possibility
+3. I consistently allow for growth within my stability
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by my past
-2. I am not afraid of change
-3. I do not limit my own potential
+1. I am not possessive of my security alone
+2. I do not hold onto things without letting go
+3. I am not stagnant but flow with abundance

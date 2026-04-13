@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was guided by the wisdom of the past
-2. I chose courage to redefine norms
-3. I found my strength in the community
+1. I accepted the established wisdom of my teachers
+2. I followed the sacred traditions of my path
+3. I learned the moral codes from my mentors
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am worthy of the wisdom of the past
-2. I trust the guidance of the mentor
-3. I am open to the new paths of the future
+1. I follow established spiritual teachings now
+2. I seek wisdom from trusted mentors always
+3. I embrace the path of proven tradition
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will find peace through the courage to break free from rigid tradition
-2. I will embrace my potential by balancing the wisdom of the past with the courage to redefine norms
-3. I will find strength by seeking guidance from mentors while remaining open to exploring unconventional paths
+1. I will follow established wisdom in my journey
+2. I will learn from trusted spiritual teachers
+3. I will embrace the sacred traditions I follow
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been learning to listen to my heart's true voice
-2. I have been choosing kindness in every situation
-3. I have been growing every day, trusting the wisdom of the past
+1. I have been learning established spiritual teachings always
+2. I have been following wise traditions diligently now
+3. I have been seeking guidance from trusted mentors ever
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have become the person I am meant to be
-2. I will have created a life I love
-3. I will have overcome this challenge
+1. I will have learned the sacred traditions deeply
+2. I will have become aligned with wise guidance
+3. I will have accepted established moral structures
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We honor the wisdom of the past while embracing the courage to redefine norms
-2. We respect the authority of tradition to build a foundation of mutual respect
-3. We choose to listen to our partners' unique desires and beliefs to avoid blind adherence
+1. We follow established wisdom together
+2. We honor sacred traditions together
+3. We seek guidance from trusted teachers
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. He respects the wisdom of the past while remaining open to personal exploration
-2. She embraces the courage to redefine norms in favor of shared values
-3. They seek guidance from mentors or explore unconventional paths that align with their values
+1. They follow established wisdom in their path
+2. She seeks guidance from trusted mentors always
+3. He respects the sacred traditions of learning
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I am able to stand firm on the principles that guide my journey
-2. I can choose to listen to the wisdom of the past while moving forward
-3. I am capable of becoming the innovator who challenges the status quo
+1. I can follow established spiritual teachings now
+2. I am able to learn from wise mentors today
+3. I can embrace proven moral guidelines always
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find peace in the quiet of the past
-2. If only I could trust the wisdom of the book
-3. Would that I might know the courage to break the rules
+1. May I follow wise traditions and established teachings
+2. Would that I might seek trusted spiritual guidance now
+3. If only I could honor sacred wisdom always
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Be bold to redefine the rules of your life!
-2. Trust your intuition to find your true path!
-3. Embrace your strength to break free from tradition!
+1. Embrace established wisdom yourself!
+2. Seek guidance from trusted mentors now!
+3. Honor the sacred traditions always!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not capable of standing on the shoulders of giants while embracing the future?
-2. Have I not already proven my resilience in the face of rigid tradition?
-3. Can I not rise to this challenge by breaking free from the past to find my true path?
+1. Am I not following established wisdom now?
+2. Have I not learned from my mentors always?
+3. Can I not trust the sacred traditions today?
 
 ## ♾️ Infinitive Active Simple
 
-1. To stand firm on the principles of our shared history
-2. To choose courage over the comfort of old ways
-3. To embrace the wisdom of the past while seeking new paths
+1. To follow tradition to find wisdom
+2. To learn from mentors to grow
+3. To embrace structure without doubt
 
 ## 💡 Gerund Active
 
-1. Being wise is my strength
-2. Learning from tradition is my strength
-3. Adhering to wisdom is my strength
+1. Following tradition builds stable wisdom now
+2. Learning from mentors shapes my path daily
+3. Embracing structure guides my spiritual journey
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am guided by the wisdom of the past
-2. I am supported by the authority of tradition
-3. I am open to the courage of innovation
+1. I am guided by ancient traditions by wisdom
+2. I am held by established teachings by doctrine
+3. I am grounded by spiritual structures by order
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always choose kindness and respect the wisdom of the past
-2. I regularly practice gratitude and listen to the unique desires of my partner
-3. I consistently show up for myself and explore unconventional paths that align with my values
+1. I always follow established spiritual teachings faithfully
+2. I regularly seek wisdom from trusted mentors always
+3. I consistently honor the sacred traditions I learn
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by the rigid rules of the past
-2. I am not afraid of the new paths that challenge the old ways
-3. I do not limit my own potential by following the old traditions
+1. I am not alone in my spiritual journey
+2. I do not seek wisdom without guidance
+3. I am not without established teachings

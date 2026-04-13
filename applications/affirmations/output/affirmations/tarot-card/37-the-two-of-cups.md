@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was open to the wisdom of the other half
-2. I chose to remain connected to the shared journey
-3. I found my strength in the mutual embrace of two halves
+1. I was deeply attracted to my partner
+2. I accepted the mutual exchange willingly
+3. I established a balanced union successfully
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am open to the wisdom of my partner
-2. I trust that we can grow together
-3. I am worthy of the connection we share
+1. I attract harmonious connections with ease
+2. I share joy in mutual giving and taking
+3. I experience balanced union in my life
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will find peace through mutual understanding
-2. I will embrace my potential with equal respect
-3. I will find harmony in our shared journey
+1. I will attract true harmonious union now
+2. I will share my feelings with open heart
+3. I will experience mutual joy and balance
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been learning to listen to my partner's unique perspective while remaining open to their wisdom
-2. I have been growing together through the shared journey of understanding and mutual respect
-3. I have been choosing kindness and connection every day to build a relationship built on shared values
+1. I have been connecting deeply with my partner
+2. I have been exchanging love and mutual joy
+3. I have been harmonizing our separate paths now
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have become the partner I am meant to be
-2. I will have created a life I love together
-3. I will have overcome the challenges that test our bond
+1. I will have shared true joy with my partner
+2. I will have established a balanced mutual bond
+3. I will have integrated our separate paths completely
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We stand together as a unified team, building a foundation of mutual respect and shared values
-2. We embrace each other's unique perspectives while remaining open to the other's wisdom in a fluid, evolving journey
-3. We nurture our connection by offering our unique gifts and supporting one another through the shared growth of our relationship
+1. We share deep mutual attraction and joy
+2. We give and receive balanced energy freely
+3. We unite our paths into one beautiful whole
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They are worthy of respect for their unique perspective
-2. They embrace the shared journey of growth together
-3. They trust in the foundation of mutual understanding
+1. They share a joyful and balanced connection now
+2. She receives mutual attraction in her partnership
+3. They exchange true fulfillment through their union
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I can build a foundation of mutual understanding that holds us together
-2. I am able to navigate the ups and downs of a relationship with grace and clarity
-3. I could grow as a person while keeping my heart open to the other's wisdom
+1. I can attract balanced and mutual connection now
+2. I am able to share my true self freely
+3. I can experience joyful harmonious union today
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find clarity in this moment
-2. If only I could feel at peace
-3. Would that I might know my own worth
+1. May I embrace this beautiful union now
+2. Would that I might share my true feelings
+3. If only I could find perfect balance
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Embrace your strength!
-2. Trust yourself!
-3. Be bold!
+1. Embrace your true self!
+2. Receive your balanced connection!
+3. Share your joy freely now!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not capable of seeing the true harmony in our shared journey?
-2. Have I not already proven that mutual respect is the foundation of our bond?
-3. Can I not rise to this challenge without losing the connection we share?
+1. Am I not fully connected in this union?
+2. Have I not shared my true feelings openly?
+3. Can I not receive mutual joy now?
 
 ## ♾️ Infinitive Active Simple
 
-1. To embrace the other with open arms and shared understanding
-2. To navigate challenges as a unified team of equals
-3. To grow together through the shared journey of love
+1. To attract harmony to my connection
+2. To share joy with mutual attraction
+3. To unite paths without resistance
 
 ## 💡 Gerund Active
 
-1. Being open to the other's wisdom is my strength
-2. Navigating challenges as a unified team is my strength
-3. Respecting each other's unique perspective is my strength
+1. Connecting souls brings mutual joy and delight
+2. Sharing feelings creates a balanced union now
+3. Receiving love flows through open exchange
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am guided by the wisdom of our shared journey
-2. I am supported by the mutual respect of our two halves
-3. I am loved and cherished by the connection of our two hearts
+1. I am loved by true connection
+2. I am held by mutual attraction
+3. I am filled by shared joy
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always choose to see the other person as a partner who offers their unique perspective while remaining open to my own growth
-2. I regularly practice the daily act of listening to understand the other person's wisdom without judgment
-3. I consistently strive to build a relationship built on the foundation of mutual respect and shared values
+1. I always attract balanced and joyful connections
+2. I regularly share freely with my partner
+3. I consistently receive mutual, authentic love
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by my past
-2. I am not afraid of change
-3. I do not limit my own potential
+1. I am not alone in my true connection
+2. I do not seek love without giving freely
+3. I am not lacking in mutual attraction

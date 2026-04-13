@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was ready to embrace the cycle of growth
-2. I chose to honor the balance of stability and change
-3. I found my strength in the harmony of the four corners
+1. I was whole and complete in my journey
+2. I integrated all my experiences successfully
+3. I mastered the cycle of my existence
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am ready to embrace the cycle of growth that leads to true success
-2. I trust the steady foundation of stability to guide my path forward
-3. I am honored to honor the green wreath and the fixed energies of the four corners
+1. I complete my life's journey now
+2. I integrate all my inner pieces fully
+3. I embody perfect wholeness in this moment
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will find peace in the harmony of my inner and outer worlds
-2. I will embrace the cycle of growth that honors the cycles of life
-3. I will finish with grace and seek feedback to reflect my personal growth
+1. I will integrate all my experiences now
+2. I will embody complete spiritual wholeness
+3. I will recognize my unified reality now
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been learning to listen to the inner voice before I speak it
-2. I have been building a foundation of trust and clarity in every decision I make
-3. I have been growing every day by honoring the cycles of life and finding balance
+1. I have been integrating all my experiences fully
+2. I have been realizing my complete wholeness now
+3. I have been embodying universal harmony always
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have achieved the balance of inner wisdom and outer reality
-2. I will have become the person who honors the cycles of life and growth
-3. I will have created a life that is sustained and aligned with my values
+1. I will have integrated all my experiences completely
+2. I will have achieved total spiritual wholeness now
+3. I will have realized my complete existence fully
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We are grateful for the stability we have built
-2. We honor the cycle of growth that leads us forward
-3. We are confident in our ability to navigate the journey
+1. We integrate all experiences into one whole
+2. We celebrate our complete spiritual journey together
+3. We recognize our unified existence now
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They stand with their hands on their hips, ready to move forward with grace
-2. They walk through the crowd with a steady, confident stride
-3. They hold the green wreath in their hands, knowing the path ahead
+1. They integrate all their experiences into wholeness
+2. She recognizes the completion of her spiritual journey
+3. It embodies the perfect balance of all realities
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I am able to embrace the balance of inner wisdom and outer reality
-2. I can choose to finish with care and seek feedback for personal growth
-3. I could become who I dream of being, honoring the cycles of life
+1. I can integrate all my experiences into wholeness
+2. I could embrace my complete spiritual reality now
+3. I am able to recognize my unified existence fully
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find peace in the quiet of the green wreath before I move forward
-2. If only I could rest upon the fixed energies of the four corner figures to honor the cycle
-3. Would that I might know my own worth by finishing with care and seeking feedback
+1. May I embrace my complete existence now
+2. Would that I might integrate all my lessons
+3. If only I could feel this total wholeness
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Trust your inner wisdom to guide your path forward
-2. Embrace the cycle of growth that honors your values
-3. Find balance in the steady steps of life
+1. Integrate all your parts completely!
+2. Embrace your wholeness now!
+3. Celebrate your complete journey finally!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not ready to embrace the full cycle of growth that awaits me?
-2. Have I not already found the balance that allows me to move forward with grace?
-3. Can I not trust that the fixed energies of the world will support my steady path?
+1. Am I not whole in this complete reality?
+2. Have I not integrated all my life experiences?
+3. Can I not experience total spiritual fulfillment now?
 
 ## ♾️ Infinitive Active Simple
 
-1. To embrace the cycle of growth without rushing toward a destination
-2. To honor the steady methods of the fixed energies and the green wreath
-3. To find clarity in the continuous cycle of learning and adaptation
+1. To integrate all experiences completely
+2. To realize wholeness effortlessly now
+3. To become the unified reality always
 
 ## 💡 Gerund Active
 
-1. Being grounded in the wisdom of the World is my strength
-2. Choosing the path of the World every day is my strength
-3. Embracing the cycle of the World with grace is my strength
+1. Completing cycles brings total integration now
+2. Integrating all parts creates perfect wholeness
+3. Embracing unity manifests complete spiritual mastery
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am guided by the cycle of life to honor the green wreath and steady the fixed energies
-2. I am supported by the interconnectedness of the Archer and Rider to navigate the continuous growth of the World
-3. I am loved and appreciated by the harmony of the Wheel and the dynamic movement of the central figure
+1. I am complete by the cycle
+2. I am integrated by all experience
+3. I am held by wholeness and balance
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always choose the path that honors the cycles of life and honors the fixed energies of the four corners
-2. I regularly find stability in the green wreath and rely on steady methods to navigate the cosmic Wheel
-3. I consistently honor the convergence of inner wisdom and outer reality by finishing with care and seeking feedback
+1. I always integrate all my experiences fully now
+2. I regularly recognize my complete spiritual wholeness
+3. I consistently embody unified existence in my life
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by my past
-2. I am not afraid of change
-3. I do not limit my own potential
+1. I am not incomplete without full integration
+2. I do not fear the wholeness of my existence
+3. I am not limited by past experiences now

@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was a resilient tree that stood strong through all the storms
-2. I am a grounded tree that keeps my roots deep and unyielding
-3. I am a stable tree that remains steadfast in the face of changing times
+1. I was deeply rooted in solid foundations
+2. I grew through enduring structure always
+3. I connected my branches to vast potential
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am grounded by my family history
-2. My core identity remains strong and stable
-3. I remain steady and unyielding
+1. I grow with deep, unshakeable roots
+2. I stand as enduring structure and life
+3. I connect potential with solid reality
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will find strength in the enduring roots of my own family
-2. I will stand firm on the unchanging foundation of health
-3. I will build stability into the future of my own life
+1. I will grow with deep, unshakeable roots
+2. I will establish my trunk with enduring strength
+3. I will reach my potential through my branches
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been building a solid foundation for my family
-2. I have been strengthening my core identity through hard work
-3. I have been enduring the ups and downs of life's challenges
+1. I have been growing strong with deep roots
+2. I have been connecting my life with nature
+3. I have been unfolding my potential steadily
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have achieved deep stability within my family
-2. I will have become grounded in my enduring health
-3. I will have achieved enduring strength for business and life
+1. I will have rooted deep in stable foundation
+2. I will have grown toward limitless potential now
+3. I will have balanced structure and unfolding life
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We are rooted together in our shared family history
-2. We stand firm as our core identity remains stable
-3. We embrace our own enduring strength and connection
+1. We are deeply rooted in our shared existence
+2. We connect our growth through strong foundations
+3. We nurture our potential together with life
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They stay strong in their own health
-2. She holds the family in their own love
-3. He remains steady in their own fortune
+1. The roots establish deep and unshakeable foundations
+2. The trunk embodies enduring structure and strength
+3. The branches reach for limitless potential always
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I am able to remain steady against all changes
-2. I can find strength in the enduring nature of my family
-3. I am confident in the stability that holds our relationship together
+1. I can grow strong with deep roots
+2. I am able to balance life and potential
+3. I can reach high with open branches
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find my true strength in nature's enduring tree
-2. If only I could remain grounded in the stable family tree
-3. Would that I could trust the natural foundation of the tree
+1. May I grow deep roots in stable ground
+2. If only I could reach my full potential now
+3. Would that I might balance life's unfolding branches
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Ground yourself by embracing your family legacy!
-2. Build your peace by standing tall on your core strength!
-3. Stay rooted in your natural rhythm to navigate life's storms
+1. Grow your roots deeply into stable earth!
+2. Stand your trunk firm against all storms!
+3. Reach your branches toward limitless potential!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not grounded by my family history?
-2. Have I not found strength in the earth?
-3. Can I not remain steady when the winds blow?
+1. Am I not deeply rooted in this present moment?
+2. Have I not nurtured my inner stability always?
+3. Can I not reach my full potential now?
 
 ## ♾️ Infinitive Active Simple
 
-1. To remain grounded in my roots
-2. To stay steadfast in my family's history
-3. To maintain stability in my business's future
+1. To grow steadily toward the light
+2. To root deeply in unshakable foundation
+3. To connect branches to infinite potential
 
 ## 💡 Gerund Active
 
-1. Heeding the guidance of nature, he cultivates health like a tree, ensuring his physical roots remain strong
-2. He finds enduring strength in the earth, allowing him to withstand storms and weather without ever breaking
-3. He anchors himself in family history, proving that stability is the true foundation of his life's journey
+1. Growing roots anchors me to deep stability
+2. Nurturing branches expands my limitless potential
+3. Connecting earth and spirit grounds my being
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am rooted by my family's history
-2. I am steady by the earth's rhythm
-3. I am supported by my own nature
+1. I am grounded by deep roots and solid earth
+2. I am held by enduring structure and life force
+3. I am shaped by growth and limitless potential
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I consistently find strength to stay grounded in my family roots
-2. I regularly embrace the natural rhythm of the earth in my daily life
-3. I always find my core identity rooted in my own health and stability
+1. I always grow deep roots into solid ground
+2. I regularly balance stability with unfolding potential
+3. I consistently connect my growth to life's flow
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I do not doubt my health
-2. I do not fear my family
-3. I do not lose my foundation
+1. I am not unrooted in my deepest foundations
+2. I do not fear my growing potential now
+3. I am not static but constantly evolving life

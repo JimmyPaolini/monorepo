@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was brave in my pursuit of truth
-2. I chose courage to embrace change
-3. I found my strength in action
+1. I pursued my fire with great enthusiasm
+2. I charged forward with bold ambition
+3. I explored new paths with fiery drive
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I choose courage to build a life of purpose
-2. I trust my inner flame to guide my path forward
-3. I embrace new experiences with a sense of purpose
+1. I pursue my passions with fiery enthusiasm
+2. I charge forward with bold, creative action
+3. I lead my journey with focused ambition
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will find courage to face my fears
-2. I will embrace my potential with confidence
-3. I will achieve my goals with purpose
+1. I will pursue my passions with fiery enthusiasm
+2. I will charge forward toward my true goals
+3. I will channel my drive into focused action
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been riding my horse with the courage of a true knight
-2. I have been learning to see the bright path ahead with the light of the wand
-3. I have been growing every day by choosing kindness and embracing the flame
+1. I have been pursuing my fiery ambitions constantly
+2. I have been exploring new paths with great energy
+3. I have been channeling my drive into action now
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have overcome the fear of failure
-2. I will have become the person I am meant to be
-3. I will have created a life I love
+1. I will have charged the path with fiery passion
+2. I will have become the leader of my own fire
+3. I will have explored the road with bold vision
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We are brave enough to step forward into the unknown
-2. We stand together as a united front for our dreams
-3. We embrace the fire that ignites our inner potential
+1. We pursue our passions with fiery enthusiasm together
+2. We charge forward with focused, bold action now
+3. We channel our drive into meaningful exploration
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. He is a beacon of courage in the dark
-2. They stand as a guide for the weary
-3. She is a force of spirit in the wind
+1. They pursue their passions with fiery enthusiasm
+2. She charges forward with bold and swift action
+3. He leads his journey with focused ambition
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I can become the hero who guides others through their darkest times
-2. I am able to create a world where every dream is a reality
-3. I could stand tall and walk the path of truth with confidence
+1. I can channel my fire into focused action
+2. I could pursue my vision with bold energy
+3. I am able to lead with passionate innovation
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find my own path with the courage of the Knight of Wands
-2. If only I could embrace the fire of the Knight of Wands
-3. Would that I might act boldly to honor the Knight of Wands
+1. May I pursue my fiery ambitions with courage
+2. Would that I might channel my drive into action
+3. If only I could lead with passionate vision
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Be brave to step onto the path of your true self
-2. Trust your inner fire to ignite your destiny
-3. Embrace the courage to change your path
+1. Charge forward with passionate energy!
+2. Explore new paths with bold action!
+3. Lead your journey with fiery focus!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not ready to embrace the fiery courage of my own destiny?
-2. Have I not already found the light to guide my path forward?
-3. Can I not rise to this challenge with the grace of a true knight?
+1. Am I not channeling my fire wisely now?
+2. Have I not pursued my vision without fear?
+3. Can I not focus my passion into action?
 
 ## ♾️ Infinitive Active Simple
 
-1. To walk boldly with purpose
-2. To embrace new experiences with purpose
-3. To live fully with passion
+1. To pursue boldly to ignite your true passion
+2. To charge forward with fiery enthusiasm always
+3. To lead with vision without rash impulse
 
 ## 💡 Gerund Active
 
-1. Being brave is my strength
-2. Choosing growth every day
-3. Embracing uncertainty with grace
+1. Chasing adventure ignites my passionate journey
+2. Exploring new paths fuels my creative drive
+3. Riding the fire channels my bold ambition
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am guided by the fire of my own passion
-2. I am supported by the courage to embrace new experiences
-3. I am loved and cherished for my authentic self
+1. I am driven by fire by passion
+2. I am moved by adventure by the road
+3. I am guided by vision by ambition
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always ride my horse with a steady and confident spirit
-2. I consistently choose courage to explore new horizons
-3. I regularly embrace the fire of passion to grow within myself
+1. I always pursue my passionate adventures with focus
+2. I regularly channel my fire into clear direction
+3. I consistently transform ambition into bold action
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not afraid of change
-2. I am not defined by my past
-3. I do not limit my own potential
+1. I am not impulsive in my pursuit of adventure
+2. I do not rush my passion without clear vision
+3. I am not uncontrolled fire but focused energy

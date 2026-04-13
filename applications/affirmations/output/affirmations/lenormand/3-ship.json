@@ -43,13 +43,13 @@
       },
       "affirmations": [
         {
-          "text": "I was a brave explorer navigating the unknown"
+          "text": "I sailed my life with great courage"
         },
         {
-          "text": "I am ready to move forward without hesitation"
+          "text": "I navigated my journey with focus"
         },
         {
-          "text": "I am the traveler who sails toward a better future"
+          "text": "I discovered new paths through my voyage"
         }
       ]
     },
@@ -86,13 +86,13 @@
       },
       "affirmations": [
         {
-          "text": "I am an adventurer who drives life forward"
+          "text": "I navigate my life's journey with courage"
         },
         {
-          "text": "I step out of my comfort zone to find fulfillment"
+          "text": "I embrace the dynamic changes of my voyage"
         },
         {
-          "text": "I embrace the unknown to grow and thrive"
+          "text": "I steer my destiny through conscious choices"
         }
       ]
     },
@@ -125,17 +125,17 @@
         ],
         "name": "⏭️ Finite Indicative Active Future Simple First Singular",
         "slug": "finite-indicative-active-future-simple-first-singular",
-        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time.\n- Use the future tense with 'will'.\n- Subject is 'I' (first person singular)."
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time.\n- Use the future tense with 'will'. Keep the structure simple: 'I will [verb] [direct object/complement]'. Do NOT write complex object clauses like 'I will see my thoughts are...' — use 'I will recognize my thoughts' or 'I will see clearly' instead.\n- Subject is 'I' (first person singular)."
       },
       "affirmations": [
         {
-          "text": "I will step out of my comfort zone to explore new horizons"
+          "text": "I will navigate my life's course with courage"
         },
         {
-          "text": "I will trust that the journey of life brings fulfillment"
+          "text": "I will embrace the journey of my destiny now"
         },
         {
-          "text": "I will navigate my path with adaptability and clarity"
+          "text": "I will steer my path through all changes"
         }
       ]
     },
@@ -172,13 +172,13 @@
       },
       "affirmations": [
         {
-          "text": "I have been navigating life's waters with open arms and a firm sail"
+          "text": "I have been sailing my life's true course"
         },
         {
-          "text": "I have been stepping out of static patterns to embrace the unknown with courage"
+          "text": "I have been navigating new experiences bravely"
         },
         {
-          "text": "I have been driving forward through challenges to unlock new possibilities and find purpose"
+          "text": "I have been exploring destiny's open waters"
         }
       ]
     },
@@ -215,13 +215,13 @@
       },
       "affirmations": [
         {
-          "text": "I will have sailed toward a new destination"
+          "text": "I will have sailed the vast ocean of my life"
         },
         {
-          "text": "I will have become an explorer in this moment"
+          "text": "I will have navigated all my life's currents"
         },
         {
-          "text": "I will have created abundance in this water"
+          "text": "I will have discovered true destinations through voyage"
         }
       ]
     },
@@ -258,13 +258,13 @@
       },
       "affirmations": [
         {
-          "text": "We stand together as one true ship of destiny"
+          "text": "We navigate our life journey together now"
         },
         {
-          "text": "We walk forward as a single vessel for our purpose"
+          "text": "We embrace change and adapt to new paths"
         },
         {
-          "text": "We move boldly as the captain of our shared journey"
+          "text": "We explore destiny through courageous voyages"
         }
       ]
     },
@@ -300,13 +300,13 @@
       },
       "affirmations": [
         {
-          "text": "They explore new horizons without feeling trapped"
+          "text": "They navigate their life's journey with courage"
         },
         {
-          "text": "She takes a bold step toward a new beginning"
+          "text": "She sets sail toward her destined horizon"
         },
         {
-          "text": "He navigates life with clarity and purpose"
+          "text": "It embraces change on the vast ocean"
         }
       ]
     },
@@ -339,17 +339,17 @@
         ],
         "name": "💪 Finite Potential Active Present Simple First Singular",
         "slug": "finite-potential-active-present-simple-first-singular",
-        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- CRITICAL: The main verb structure MUST use 'can' or 'could' or 'able to': 'I can...', 'I could...', 'I am able to...'. Do NOT use indicative verbs like 'trust', 'believe', or 'know' without 'can'/'could'.\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time.\n- Use the present tense.\n- Subject is 'I' (first person singular)."
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- CRITICAL: The main predicate MUST begin with 'can', 'could', or 'am/is/are able to'. Valid structures: 'I can [verb]', 'I could [verb]', 'I am able to [verb]'. The verb that follows the auxiliary must be a simple action verb or adjective — keep it direct and simple. Do NOT use complex object clauses like 'I can see that...' or 'I can feel that...' — instead write 'I can see clearly', 'I can feel peace'. Do NOT use a bare indicative verb as the main predicate without a preceding potential auxiliary (e.g., do NOT write 'I trust...' or 'I believe...' as a standalone clause without 'can'/'could'/'able to').\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time.\n- Use the present tense.\n- Subject is 'I' (first person singular)."
       },
       "affirmations": [
         {
-          "text": "I am able to find new horizons through freedom"
+          "text": "I can navigate my life's journey with courage"
         },
         {
-          "text": "I can embrace the unknown to unlock possibilities"
+          "text": "I could embrace new voyages and adventures"
         },
         {
-          "text": "I am ready to move forward with adaptability"
+          "text": "I am able to adapt to life's changing tides"
         }
       ]
     },
@@ -380,17 +380,17 @@
         ],
         "name": "🙏 Finite Optative Active First Singular",
         "slug": "finite-optative-active-first-singular",
-        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- Express a wish or hope.\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Subject is 'I' (first person singular)."
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- Express a deep wish, longing, or hope — NOT a request for permission. 'May I [verb]' here means 'I wish that I [verb]' (optative wish), NOT 'Am I allowed to [verb]'. 'If only I could [verb]', 'Would that I might [verb]', and 'May I [verb]' are all valid optative forms expressing yearning. The tone should be longing, aspiration, or heartfelt desire — not a yes/no question about permission.\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Subject is 'I' (first person singular)."
       },
       "affirmations": [
         {
-          "text": "May I travel freely without being trapped by the sea"
+          "text": "May I navigate my life's journey with courage"
         },
         {
-          "text": "If only I could sail into the unknown to find my path"
+          "text": "If only I could embrace all new voyages"
         },
         {
-          "text": "Would that I could move forward to explore new horizons?"
+          "text": "Would that I might steer toward my true destiny"
         }
       ]
     },
@@ -425,13 +425,13 @@
       },
       "affirmations": [
         {
-          "text": "You move forward without bound!"
+          "text": "Sail bravely into your unknown future!"
         },
         {
-          "text": "You build your ship to travel"
+          "text": "Navigate your life with clear intention!"
         },
         {
-          "text": "You embrace the unknown to flourish"
+          "text": "Embrace the journey of your unfolding destiny!"
         }
       ]
     },
@@ -468,13 +468,13 @@
       },
       "affirmations": [
         {
-          "text": "I am not afraid of the unknown"
+          "text": "Am I not bravely setting my course now?"
         },
         {
-          "text": "I have not stopped dreaming of new horizons"
+          "text": "Have I not navigated my life's journey yet?"
         },
         {
-          "text": "Can I not leave the comfort zone to find my true self?"
+          "text": "Can I not embrace this unfolding voyage?"
         }
       ]
     },
@@ -507,13 +507,13 @@
       },
       "affirmations": [
         {
-          "text": "To be an explorer who leaves the comfort zone to embrace the unknown"
+          "text": "To sail bravely toward your true destination"
         },
         {
-          "text": "To travel forward without being trapped by the current path"
+          "text": "To navigate change with confident direction"
         },
         {
-          "text": "To navigate life's waters with adaptability and fluidity"
+          "text": "To explore new horizons without fear"
         }
       ]
     },
@@ -541,17 +541,17 @@
         ],
         "name": "💡 Gerund Active",
         "slug": "gerund-active",
-        "specifier_descriptions": "- Begin with a gerund (-ing form as a noun).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action."
+        "specifier_descriptions": "- Begin with a gerund: an -ing verb form that acts as the grammatical SUBJECT of the main clause. Required sentence structure: '[Gerund phrase] [finite main verb] [complement]'. The gerund phrase IS the noun-subject; the sentence MUST have a separate finite verb after it. VALID examples: 'Being present opens doors', 'Trusting yourself builds strength', 'Navigating challenges requires courage', 'Releasing fear allows peace', 'Recognizing truth frees the mind'. The finite verb is the word directly AFTER the gerund phrase (e.g., 'opens', 'builds', 'requires', 'allows', 'frees'). Do NOT write a participial phrase where the -ing word modifies a separate subject (e.g., do NOT write 'Stepping forward, I trust...' or 'Trusting the path, I grow...'). Do NOT write an incomplete phrase without a finite main verb.\n- Use ACTIVE voice: the subject ('I'/'we') performs the action."
       },
       "affirmations": [
         {
-          "text": "I choose to walk the unknown water daily, embracing freedom"
+          "text": "Sailing forward discovers new horizons"
         },
         {
-          "text": "I transform my static patterns into fluid action to find purpose"
+          "text": "Navigating currents builds inner resilience"
         },
         {
-          "text": "I step out of my comfort zone to explore a life of abundance"
+          "text": "Journeying with courage unfolds destiny"
         }
       ]
     },
@@ -584,17 +584,17 @@
         ],
         "name": "🌊 Finite Indicative Passive Present Simple First Singular",
         "slug": "finite-indicative-passive-present-simple-first-singular",
-        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- CRITICAL: The MAIN clause must use PASSIVE voice — the subject receives the action. Pattern: 'I am/was/have been [past participle]'. Subordinate clauses and infinitive phrases (e.g., 'ready to feel', 'able to see') may use active voice. Do NOT write active main clauses like 'I trust', 'I choose', or 'I feel'.\n- Express the action plainly without specifying duration or extent over time.\n- Use the present tense.\n- Subject is 'I' (first person singular)."
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- CRITICAL: The MAIN clause must use PASSIVE voice — the subject receives the action. Pattern: 'I am/was/have been [past participle]'. Use naturally passive past participles such as: guided, held, supported, loved, carried, blessed, seen, known, called, drawn, moved, shaped, filled, grounded, anchored, surrounded, embraced, lifted, held. A single optional 'by [agent]' phrase is allowed. CRITICAL: do NOT use two separate 'by ...' phrases in one sentence — e.g., NEVER write 'I am guided by X by Y' or 'I am held by X by Y'. If you want to express two agents, combine them: 'I am guided by wisdom and courage'. Subordinate clauses and infinitive phrases (e.g., 'ready to feel', 'able to see') may use active voice. Do NOT write active main clauses like 'I trust', 'I choose', or 'I feel'.\n- Express the action plainly without specifying duration or extent over time.\n- Use the present tense.\n- Subject is 'I' (first person singular)."
       },
       "affirmations": [
         {
-          "text": "I am ready to embrace the unknown in my waters"
+          "text": "I am guided by the currents of my life"
         },
         {
-          "text": "I am guided by the strength of my ship to find my path"
+          "text": "I am moved by the voyage of experience"
         },
         {
-          "text": "I walk forward with freedom, letting the ocean take my shape"
+          "text": "I am shaped by the journey I embrace"
         }
       ]
     },
@@ -631,13 +631,13 @@
       },
       "affirmations": [
         {
-          "text": "I consistently step out of my comfort zone to find new possibilities"
+          "text": "I always navigate my life's journey with courage"
         },
         {
-          "text": "I regularly embrace the unknown to unlock new horizons of life"
+          "text": "I regularly embrace dynamic change on my voyage"
         },
         {
-          "text": "I always move forward without getting trapped, guided by the path of the ship"
+          "text": "I consistently steer my destiny with clear choices"
         }
       ]
     },
@@ -675,13 +675,13 @@
       },
       "affirmations": [
         {
-          "text": "I am not trapped by the static structure of my old habits"
+          "text": "I am not stuck on past voyages now"
         },
         {
-          "text": "I am not bound by the comfort of the familiar routine"
+          "text": "I do not fear the unknown waters"
         },
         {
-          "text": "I do not need to stop moving to find my true path"
+          "text": "I am not defined by my destination"
         }
       ]
     }

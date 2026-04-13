@@ -43,13 +43,13 @@
       },
       "affirmations": [
         {
-          "text": "I had a strong foundation in my home"
+          "text": "I was secure in my foundation"
         },
         {
-          "text": "I am safe and grounded in my daily life"
+          "text": "I built a safe home for myself"
         },
         {
-          "text": "My life rests on solid security"
+          "text": "I established solid boundaries within my space"
         }
       ]
     },
@@ -86,13 +86,13 @@
       },
       "affirmations": [
         {
-          "text": "I am a stable foundation for my life"
+          "text": "I establish a strong foundation for my life"
         },
         {
-          "text": "I am grounded in the safety of my home"
+          "text": "I create a safe and comfortable personal space"
         },
         {
-          "text": "I am secure in the stability of my existence"
+          "text": "I feel secure within my established boundaries"
         }
       ]
     },
@@ -125,17 +125,17 @@
         ],
         "name": "⏭️ Finite Indicative Active Future Simple First Singular",
         "slug": "finite-indicative-active-future-simple-first-singular",
-        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time.\n- Use the future tense with 'will'.\n- Subject is 'I' (first person singular)."
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time.\n- Use the future tense with 'will'. Keep the structure simple: 'I will [verb] [direct object/complement]'. Do NOT write complex object clauses like 'I will see my thoughts are...' — use 'I will recognize my thoughts' or 'I will see clearly' instead.\n- Subject is 'I' (first person singular)."
       },
       "affirmations": [
         {
-          "text": "I will build a secure home for my family"
+          "text": "I will build a strong foundation for my life"
         },
         {
-          "text": "I will find peace in every small step I take"
+          "text": "I will create a safe and peaceful dwelling place"
         },
         {
-          "text": "I will choose a path that honors my spiritual roots"
+          "text": "I will establish stable boundaries for my comfort"
         }
       ]
     },
@@ -172,13 +172,13 @@
       },
       "affirmations": [
         {
-          "text": "I have been building a stable foundation for my life"
+          "text": "I have been building a solid foundation for my life"
         },
         {
-          "text": "I have been finding safety in every step I take now"
+          "text": "I have been creating a safe and comfortable home"
         },
         {
-          "text": "I have been growing within the warmth of every home I visit"
+          "text": "I have been establishing stable boundaries for myself"
         }
       ]
     },
@@ -215,13 +215,13 @@
       },
       "affirmations": [
         {
-          "text": "I will have been built upon the stability of my home"
+          "text": "I will have built a secure foundation now"
         },
         {
-          "text": "I will have found peace in the safety of my family"
+          "text": "I will have established my safe dwelling place"
         },
         {
-          "text": "I will have achieved my goals in the support of my world"
+          "text": "I will have created lasting domestic comfort"
         }
       ]
     },
@@ -258,13 +258,13 @@
       },
       "affirmations": [
         {
-          "text": "We gather together for deep peace"
+          "text": "We build a stable foundation together now"
         },
         {
-          "text": "We hold together the family home"
+          "text": "We create a safe and comfortable home now"
         },
         {
-          "text": "We stand together for our destiny"
+          "text": "We establish strong boundaries for our peace"
         }
       ]
     },
@@ -300,13 +300,13 @@
       },
       "affirmations": [
         {
-          "text": "She holds the safety of the home securely"
+          "text": "They build a solid foundation for their life"
         },
         {
-          "text": "He rests in the warmth of the welcoming home"
+          "text": "She creates a safe and nurturing domestic space"
         },
         {
-          "text": "They build their life in the foundation of the house"
+          "text": "It establishes stable boundaries for their existence"
         }
       ]
     },
@@ -339,17 +339,17 @@
         ],
         "name": "💪 Finite Potential Active Present Simple First Singular",
         "slug": "finite-potential-active-present-simple-first-singular",
-        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- CRITICAL: The main verb structure MUST use 'can' or 'could' or 'able to': 'I can...', 'I could...', 'I am able to...'. Do NOT use indicative verbs like 'trust', 'believe', or 'know' without 'can'/'could'.\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time.\n- Use the present tense.\n- Subject is 'I' (first person singular)."
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- CRITICAL: The main predicate MUST begin with 'can', 'could', or 'am/is/are able to'. Valid structures: 'I can [verb]', 'I could [verb]', 'I am able to [verb]'. The verb that follows the auxiliary must be a simple action verb or adjective — keep it direct and simple. Do NOT use complex object clauses like 'I can see that...' or 'I can feel that...' — instead write 'I can see clearly', 'I can feel peace'. Do NOT use a bare indicative verb as the main predicate without a preceding potential auxiliary (e.g., do NOT write 'I trust...' or 'I believe...' as a standalone clause without 'can'/'could'/'able to').\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time.\n- Use the present tense.\n- Subject is 'I' (first person singular)."
       },
       "affirmations": [
         {
-          "text": "I am able to build a safe foundation in my home"
+          "text": "I can build a strong foundation for my life"
         },
         {
-          "text": "I can create a stable environment for my life"
+          "text": "I could create a safe and peaceful dwelling"
         },
         {
-          "text": "I am capable of securing my own spiritual well-being"
+          "text": "I am able to establish my inner security now"
         }
       ]
     },
@@ -380,17 +380,17 @@
         ],
         "name": "🙏 Finite Optative Active First Singular",
         "slug": "finite-optative-active-first-singular",
-        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- Express a wish or hope.\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Subject is 'I' (first person singular)."
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- Express a deep wish, longing, or hope — NOT a request for permission. 'May I [verb]' here means 'I wish that I [verb]' (optative wish), NOT 'Am I allowed to [verb]'. 'If only I could [verb]', 'Would that I might [verb]', and 'May I [verb]' are all valid optative forms expressing yearning. The tone should be longing, aspiration, or heartfelt desire — not a yes/no question about permission.\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Subject is 'I' (first person singular)."
       },
       "affirmations": [
         {
-          "text": "May I find true peace within my stable home"
+          "text": "May I build a safe foundation for my life"
         },
         {
-          "text": "If only I could find peace within my stable home"
+          "text": "If only I could find true domestic comfort"
         },
         {
-          "text": "Would that I find peace within my stable home"
+          "text": "Would that I might establish lasting security now"
         }
       ]
     },
@@ -425,13 +425,13 @@
       },
       "affirmations": [
         {
-          "text": "Stand strong for your home!"
+          "text": "Build your foundation with unwavering stability!"
         },
         {
-          "text": "Build a secure foundation for your life!"
+          "text": "Create your shelter filled with deep comfort!"
         },
         {
-          "text": "Ground your spirit in a perfect home!"
+          "text": "Establish your boundaries for true belonging!"
         }
       ]
     },
@@ -468,13 +468,13 @@
       },
       "affirmations": [
         {
-          "text": "I am not afraid of the house I live in"
+          "text": "Am I not safe within my shelter now?"
         },
         {
-          "text": "I am not afraid of the house I am built in"
+          "text": "Have I not built a solid foundation yet?"
         },
         {
-          "text": "I am not afraid of the house I hold in my hands"
+          "text": "Can I not create my secure home today?"
         }
       ]
     },
@@ -507,13 +507,13 @@
       },
       "affirmations": [
         {
-          "text": "To build my foundation safely by trusting my home"
+          "text": "To build a solid foundation to feel secure"
         },
         {
-          "text": "To find peace in my secure life by honoring my home"
+          "text": "To create a safe space to rest and thrive"
         },
         {
-          "text": "To secure my future with a home of trust and purpose"
+          "text": "To establish boundaries to find true belonging"
         }
       ]
     },
@@ -541,17 +541,17 @@
         ],
         "name": "💡 Gerund Active",
         "slug": "gerund-active",
-        "specifier_descriptions": "- Begin with a gerund (-ing form as a noun).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action."
+        "specifier_descriptions": "- Begin with a gerund: an -ing verb form that acts as the grammatical SUBJECT of the main clause. Required sentence structure: '[Gerund phrase] [finite main verb] [complement]'. The gerund phrase IS the noun-subject; the sentence MUST have a separate finite verb after it. VALID examples: 'Being present opens doors', 'Trusting yourself builds strength', 'Navigating challenges requires courage', 'Releasing fear allows peace', 'Recognizing truth frees the mind'. The finite verb is the word directly AFTER the gerund phrase (e.g., 'opens', 'builds', 'requires', 'allows', 'frees'). Do NOT write a participial phrase where the -ing word modifies a separate subject (e.g., do NOT write 'Stepping forward, I trust...' or 'Trusting the path, I grow...'). Do NOT write an incomplete phrase without a finite main verb.\n- Use ACTIVE voice: the subject ('I'/'we') performs the action."
       },
       "affirmations": [
         {
-          "text": "Building a secure foundation with love and stability"
+          "text": "Building foundations creates deep inner security"
         },
         {
-          "text": "Creating a safe space where every day is a new beginning"
+          "text": "Establishing boundaries brings true personal comfort"
         },
         {
-          "text": "Finding strength and peace in the warmth of home and truth"
+          "text": "Creating shelter nurtures a safe and stable life"
         }
       ]
     },
@@ -584,17 +584,17 @@
         ],
         "name": "🌊 Finite Indicative Passive Present Simple First Singular",
         "slug": "finite-indicative-passive-present-simple-first-singular",
-        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- CRITICAL: The MAIN clause must use PASSIVE voice — the subject receives the action. Pattern: 'I am/was/have been [past participle]'. Subordinate clauses and infinitive phrases (e.g., 'ready to feel', 'able to see') may use active voice. Do NOT write active main clauses like 'I trust', 'I choose', or 'I feel'.\n- Express the action plainly without specifying duration or extent over time.\n- Use the present tense.\n- Subject is 'I' (first person singular)."
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- CRITICAL: The MAIN clause must use PASSIVE voice — the subject receives the action. Pattern: 'I am/was/have been [past participle]'. Use naturally passive past participles such as: guided, held, supported, loved, carried, blessed, seen, known, called, drawn, moved, shaped, filled, grounded, anchored, surrounded, embraced, lifted, held. A single optional 'by [agent]' phrase is allowed. CRITICAL: do NOT use two separate 'by ...' phrases in one sentence — e.g., NEVER write 'I am guided by X by Y' or 'I am held by X by Y'. If you want to express two agents, combine them: 'I am guided by wisdom and courage'. Subordinate clauses and infinitive phrases (e.g., 'ready to feel', 'able to see') may use active voice. Do NOT write active main clauses like 'I trust', 'I choose', or 'I feel'.\n- Express the action plainly without specifying duration or extent over time.\n- Use the present tense.\n- Subject is 'I' (first person singular)."
       },
       "affirmations": [
         {
-          "text": "I am always held by your home"
+          "text": "I am grounded by solid foundations"
         },
         {
-          "text": "I am always safe in the warmth of your house"
+          "text": "I am held by safe shelter and comfort"
         },
         {
-          "text": "I am always grounded in the security of your home"
+          "text": "I am surrounded by peaceful domesticity"
         }
       ]
     },
@@ -631,13 +631,13 @@
       },
       "affirmations": [
         {
-          "text": "I always secure my foundation with love"
+          "text": "I always build a strong foundation for my life"
         },
         {
-          "text": "I always ground my reality with safety"
+          "text": "I regularly create a safe and comfortable home"
         },
         {
-          "text": "I always build my life with trust"
+          "text": "I consistently establish stable personal boundaries now"
         }
       ]
     },
@@ -675,13 +675,13 @@
       },
       "affirmations": [
         {
-          "text": "I am not afraid of fear"
+          "text": "I am not unstable in my foundation"
         },
         {
-          "text": "I am not limited by fear"
+          "text": "I do not lack true shelter now"
         },
         {
-          "text": "I am not afraid of the world"
+          "text": "I am not without inner security"
         }
       ]
     }

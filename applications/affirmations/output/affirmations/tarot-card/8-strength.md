@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was ready to face the storm with calm confidence
-2. I chose courage to stand tall in the quiet
-3. I found my strength in the quiet confidence that did not seek approval
+1. I was calm in handling powerful forces
+2. I mastered my inner lion's spirit
+3. I showed gentle control over my power
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am ready to listen to my own instincts without losing myself
-2. I trust that my inner lion stands tall in the quiet confidence of my heart
-3. I am a stabilizer who knows that true strength is a dynamic state of being
+1. I possess gentle inner courage now
+2. I control powerful instincts with ease
+3. I show compassion in all my actions
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will find peace in the quiet confidence that does not seek approval
-2. I will embrace my potential as a dynamic state of being
-3. I will stand tall knowing that true strength is a capacity to respond thoughtfully
+1. I will master my inner power with calm control
+2. I will use compassion to guide my strong instincts
+3. I will show my courage through gentle persuasion
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been listening to my inner lion to find my true strength
-2. I have been choosing kindness to navigate the challenges of life
-3. I have been growing every day to build a foundation of inner stability
+1. I have been mastering my inner power patiently
+2. I have been controlling wild instincts with grace
+3. I have been showing compassionate courage always
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have become the lion who listens to my own instincts
-2. I will have created a life where I stand tall without needing approval
-3. I will have overcome the shadow by becoming the light within myself
+1. I will have mastered my inner power completely
+2. I will have shown gentle control over wild instincts
+3. I will have become compassionate and courageous now
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We stand tall together, knowing that our true strength is a dynamic state of being
-2. We listen to our instincts and maintain awareness, proving that strength is a capacity to respond thoughtfully
-3. We embrace the inner lion that has learned to stand tall, understanding that true strength is a stabilizer and guide
+1. We possess inner courage together
+2. We gently control powerful instincts now
+3. We master our emotional strength together
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They stand tall in their own power
-2. She trusts her own strength
-3. He is worthy of his own courage
+1. She masters her inner power with gentle control
+2. They show their courage through compassionate action
+3. He embraces his potential with calm fortitude
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I am able to stand tall in the quiet confidence that does not seek approval
-2. I could handle whatever comes my way with the lion's submission and inner engine
-3. I am able to embrace the inner lion that has learned to stand tall
+1. I can gently control my powerful emotions
+2. I am able to show compassionate inner courage
+3. I can master my wild instincts with patience
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find my own strength in the quiet confidence that does not seek approval
-2. If only I might know my own worth in the quiet confidence that does not seek approval
-3. Would that I might know my own strength in the quiet confidence that does not seek approval
+1. May I tame my wild instincts with gentle control
+2. Would that I might embrace my inner courage now
+3. If only I could wield power with compassion
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Embrace your inner lion with courage
-2. Trust your own quiet confidence
-3. Stand tall in the quiet of your own strength
+1. Be compassionate in your powerful control!
+2. Tame your wild instincts with gentle patience!
+3. Master your inner courage through empathy!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not capable of standing tall without losing my own light?
-2. Have I not already proven that true strength is a dynamic state of being?
-3. Can I not rise to this challenge without losing my own courage?
+1. Am I not gentle in wielding my power?
+2. Can I not embrace my inner courage now?
+3. Do I not trust my compassionate strength always?
 
 ## ♾️ Infinitive Active Simple
 
-1. To stand tall with quiet confidence
-2. To listen to the inner lion
-3. To live fully without fear
+1. To master fear with gentle control
+2. To embrace power with compassion always
+3. To become courage through inner calm
 
 ## 💡 Gerund Active
 
-1. Being wise is my strength
-2. Chasing truth every day
-3. Standing tall with grace
+1. Harnessing inner power guides gentle action
+2. Taming wild instincts brings calm control
+3. Embracing compassion reveals true strength
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am guided by the quiet confidence that does not seek approval but acts with courage
-2. I am supported by the lion's willingness to listen to instincts while maintaining awareness
-3. I am loved and appreciated by the inner engine that empowers me to handle challenges with patience and self-compassion
+1. I am held by gentle power by compassion
+2. I am guided by inner courage by patience
+3. I am anchored by calm by deep understanding
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always stand tall in the quiet confidence that does not seek approval
-2. I consistently listen to my instincts while maintaining a pure intention
-3. I regularly embrace the lion that has learned to stand tall
+1. I always handle power with gentle control
+2. I regularly use compassion to guide my force
+3. I consistently embrace inner courage and calm
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by my past
-2. I am not afraid of change
-3. I do not limit my own potential
+1. I am not aggressive but gentle in my power
+2. I do not fear wild instincts within me
+3. I am not alone in mastering my inner self

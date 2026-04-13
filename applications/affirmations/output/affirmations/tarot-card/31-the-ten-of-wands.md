@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was overwhelmed by too much without a clear mind
-2. I chose to carry the burden of obligations without a partner
-3. I found my strength in the exhaustion of the Ten of Wands
+1. I carried my heavy burdens with strength
+2. I endured my obligations through effort
+3. I managed my commitments with perseverance
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am clear enough to see the path ahead
-2. I trust my own judgment without needing others to guide me
-3. I am strong enough to face the challenges alone
+1. I carry my burdens with steadfast resolve
+2. I endure this heavy responsibility now
+3. I manage my obligations with inner strength
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will find clarity in the chaos of my responsibilities
-2. I will choose to rest rather than continue to overload my mind
-3. I will find peace in the quiet of my own inner space
+1. I will carry my burdens with steady strength
+2. I will endure this heavy responsibility now
+3. I will find balance in my ongoing journey
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been clearing the clutter from my mind and heart
-2. I have been letting go of the heavy burdens that weigh me down
-3. I have been trusting myself enough to face the challenges ahead
+1. I have been carrying my heavy responsibilities always
+2. I have been enduring these burdens with inner strength
+3. I have been managing my obligations moment by moment
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have overcome the crushing weight of all my obligations
-2. I will have become the person who can see clearly without a pile-up of tasks
-3. I will have created a life that is free from the cumulative failure of too much without a partner
+1. I will have carried this load successfully
+2. I will have endured all my heavy duties
+3. I will have mastered this accumulated responsibility
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We are stronger together
-2. We support each other
-3. We create positive change
+1. We carry these burdens together with strength
+2. We endure our obligations through shared effort
+3. We manage our heavy loads with inner resolve
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They are overwhelmed by the crushing weight of their accumulated duties
-2. They struggle to delegate effectively when the pile-up of tasks obscures their vision
-3. They feel drained and stretched thin because they cannot see clearly or to prioritize
+1. They carry their heavy burdens with resolve
+2. She endures her obligations through persistence
+3. They manage their weight with inner strength
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I am able to handle whatever comes my way
-2. I could become who I dream of being
-3. I am able to trust in the process
+1. I can carry this weight with steady resolve
+2. I could set boundaries to lighten my load
+3. I am able to endure this heavy commitment
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find clarity in this moment
-2. If only I could feel at peace
-3. Would that I might know my own worth
+1. May I carry this load with gentle strength
+2. Would that I might find ease in my burdens
+3. If only I could release some heavy duty
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Be clear of your own exhaustion
-2. Trust your own clarity
-3. Embrace your own strength
+1. Carry your load with steadfast endurance!
+2. Endure your obligations with inner strength!
+3. Release some burdens to lighten your path!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not overwhelmed by too much without a clear mind or a partner to support?
-2. Have I not already proven my resilience in the face of overwhelming exhaustion?
-3. Can I not rise to this challenge without the burden of ten sticks?
+1. Am I not carrying this weight alone?
+2. Have I not learned to set necessary boundaries?
+3. Can I not release this heavy obligation now?
 
 ## ♾️ Infinitive Active Simple
 
-1. To choose wisely without being overwhelmed
-2. To stand firm in the face of overwhelming demands
-3. To find clarity when the world feels lost
+1. To carry your load with resolve
+2. To endure the weight with strength
+3. To release burdens to find ease
 
 ## 💡 Gerund Active
 
-1. Being overwhelmed by too many tasks is my strength
-2. Carrying the weight of responsibilities is my strength
-3. Navigating the crushing pile of duties is my strength
+1. Carrying burdens allows us to grow stronger now
+2. Enduring obligations builds inner resilience daily
+3. Setting limits frees energy for the journey ahead
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am supported by the wisdom of those who have seen the truth
-2. I am guided by the clarity of those who have seen the truth
-3. I am loved by the strength of those who have seen the truth
+1. I am burdened by my commitments held by fate
+2. I am carried by the weight of my responsibilities
+3. I am held by endurance through this heavy path
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always choose kindness when the weight of the Ten of Wands presses down on my mind
-2. I regularly practice gratitude even when the Ten of Wands feels like a crushing pile of tasks
-3. I consistently show up for myself despite the Ten of Wands overwhelming my vision
+1. I always carry my burdens with steady resolve
+2. I regularly endure my heavy responsibilities daily
+3. I consistently find strength through perseverance now
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by the crushing weight of my accumulated tasks
-2. I am not afraid of the exhaustion that comes from carrying too much without a partner
-3. I am not overwhelmed by the failure to prioritize my own needs
+1. I do not carry all burdens alone
+2. I am not defined by heavy obligations
+3. I do not need to endure this weight

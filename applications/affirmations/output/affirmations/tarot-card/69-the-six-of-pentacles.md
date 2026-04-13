@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was generous and gave freely
-2. I chose to be kind and helpful
-3. I found my strength in giving
+1. I received generous support from others
+2. I gave freely what I possessed
+3. I balanced my giving and receiving well
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am worthy of the balance I seek
-2. I trust the flow of resources to remain a two-way street
-3. I am the giver who offers support for those in need
+1. I receive support from the universe now
+2. I give freely with open compassion always
+3. I balance giving and receiving in life
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will find peace through the balance of giving and taking
-2. I will embrace my potential by actively engaging with the flow of resources
-3. I will succeed by honoring the two-way street of mutual respect and trust
+1. I will give freely what I have to share
+2. I will receive support with open hands
+3. I will balance giving and receiving now
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been giving my resources to those in need
-2. I have been receiving help from those who need it
-3. I have been balancing my own needs with the needs of others
+1. I have been giving and receiving support always
+2. I have been sharing my abundance with others
+3. I have been accepting kindness from everyone
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have created a life that honors the balance of giving and receiving
-2. I will have become the person who understands the delicate power of mutual respect and trust
-3. I will have achieved a state of equilibrium where the flow of resources remains a two-way street
+1. I will have shared my abundance with others
+2. I will have received all deserved support now
+3. I will have balanced giving and receiving always
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We are open to receiving help from those who need it
-2. We are grateful for the support we receive from others
-3. We are willing to give back to those who have given to us
+1. We share resources with kindness and grace
+2. We give and receive support freely now
+3. We recognize mutual giving and acceptance
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They are open to receiving assistance from those who need help
-2. They acknowledge their own vulnerability in the act of giving
-3. They foster a culture of mutual respect and trust in every relationship
+1. They share resources with others freely now
+2. She receives support from the universe always
+3. They balance giving and taking in life
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I can be generous enough to give to those in need
-2. I am able to receive help when I need it most
-3. I could become a leader who trusts and supports others
+1. I can give freely and receive with gratitude
+2. I am able to share abundance with others
+3. I can accept support from all sources
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find balance in my daily interactions with others
-2. If only I could offer support to those in need
-3. Would that I might learn to give freely and receive kindly
+1. May I freely give and receive with grace
+2. If only I could share my abundance now
+3. Would that I might accept all support offered
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Be generous with your resources today
-2. Trust your ability to give and receive
-3. Embrace the balance of giving and taking
+1. Receive the support you deserve!
+2. Give freely the abundance you hold!
+3. Balance your giving and receiving now!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not capable of giving freely without fear?
-2. Have I not already proven my worth through generous giving?
-3. Can I not rise to this challenge by being a true benefactor?
+1. Am I not freely giving and receiving support?
+2. Have I not accepted all the aid I deserve?
+3. Can I not share my abundance with others?
 
 ## ♾️ Infinitive Active Simple
 
-1. To give freely without fear
-2. To receive help with open heart
-3. To share abundance with all
+1. To give generously to others
+2. To receive support with gratitude
+3. To share abundance in harmony
 
 ## 💡 Gerund Active
 
-1. Being generous is my strength
-2. Giving freely is my strength
-3. Receiving help is my strength
+1. Giving support creates abundant connection
+2. Receiving kindness fosters inner balance
+3. Sharing resources deepens mutual respect
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am supported by the balance of giving and receiving
-2. I am guided by the principle of mutual respect and trust
-3. I am loved by the exchange of resources and reciprocity
+1. I am supported by abundance and generosity
+2. I am held by balanced giving and receiving
+3. I am filled by mutual compassion and flow
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always choose kindness toward others
-2. I regularly practice gratitude for all
-3. I consistently show up for myself
+1. I always share my abundance with others
+2. I regularly receive support from my community
+3. I consistently give and accept with grace
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by my past
-2. I am not afraid of change
-3. I do not limit my own potential
+1. I am not lacking resources for my needs
+2. I do not hoard my blessings from others
+3. I am not separate from the flow of giving

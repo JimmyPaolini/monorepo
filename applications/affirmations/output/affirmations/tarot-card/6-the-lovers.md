@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was willing to see the shadow and integrate it into the light
-2. I chose to embrace the other as essential fuel for my own strength
-3. I found my strength through the patient acceptance of the unconscious
+1. I chose my true path with clear vision
+2. I accepted my deep connection fully
+3. I aligned my values with my heart
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am willing to see the shadow and integrate it into the light
-2. I trust myself to complete my call through loving tolerance
-3. I am worthy of love because I see the other as essential fuel for my light
+1. I choose my true desires now
+2. I align my values with my heart
+3. I embrace my authentic connection fully
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will find peace
-2. I will embrace my potential
-3. I will succeed
+1. I will choose my true desires now
+2. I will align my values with my heart
+3. I will embrace my authentic connection
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been learning to see the shadow as a necessary part of my light
-2. I have been choosing to integrate my inner darkness into my inner warmth
-3. I have been growing every day in the willingness to embrace the other
+1. I have been choosing my true path always
+2. I have been aligning my heart with my values
+3. I have been integrating my dualities now
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have become the partner I am meant to be
-2. I will have created a life of complete integration
-3. I will have overcome the shadow to see the light
+1. I will have chosen my true path now
+2. I will have integrated my dual desires fully
+3. I will have aligned my heart with my values
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We are united in our shared light
-2. We embrace our shadows as our own strength
-3. We build a whole through our love
+1. We choose our true path together now
+2. We align our hearts with deep desires
+3. We embrace our authentic connection fully
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They embrace the shadow as a necessary part of their light
-2. They accept the unconscious self to achieve wholeness
-3. They are willing to see the other as essential fuel for their love
+1. They choose their true path with deep feeling
+2. She aligns her values with her heart's desire
+3. He integrates dualities into one whole self
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I can become the partner who brings light to the dark
-2. I am able to see the shadow as a vital part of my own strength
-3. I can choose to hold the lanterns that illuminate each other
+1. I can choose my true desires now
+2. I could align my values with my heart
+3. I am able to embrace my authentic connection
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find peace in the union of my inner light and shadow
-2. If only I could see the other as a source of strength rather than a burden
-3. Would that I might know that the shadow is the very fuel for my own light
+1. May I choose my true path with love
+2. Would that I might align my heart's desire
+3. If only I could embrace my true self
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Trust yourself to see the shadow as fuel for your light
-2. Embrace the Lovers' Union to merge opposing energies into one whole
-3. Be bold enough to accept the dark cloak as your own strength
+1. Choose your true path now!
+2. Align your heart with your values!
+3. Integrate your desires into action!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not capable of seeing the shadow as a necessary part of my light?
-2. Have I not already proven that I can rise to this challenge without merging into the darkness?
-3. Can I not trust that the union of opposites will heal my soul without becoming a single blob?
+1. Am I not choosing my true heart path?
+2. Have I not integrated my dual desires now?
+3. Can I not align my values with my love?
 
 ## ♾️ Infinitive Active Simple
 
-1. To embrace the shadow as a necessary part of my light
-2. To choose love without fear of the unknown
-3. To stand beside the other as a partner in the journey
+1. To choose your true path wisely
+2. To align your heart with your values
+3. To embrace your authentic connection fully
 
 ## 💡 Gerund Active
 
-1. Being open to the shadow is my strength
-2. Choosing to see the other is my strength
-3. Embracing the shadow is my strength
+1. Choosing love means integrating dualities fully
+2. Exploring desires brings authentic alignment now
+3. Harmonizing values creates true relational joy
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am guided by the union of opposites into a harmonious whole
-2. I am supported by the willingness to see the shadow as essential fuel for light
-3. I am loved and appreciated by the integration of the unconscious and the conscious
+1. I am loved by my true desires
+2. I am chosen by my authentic self
+3. I am held by deep connection
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always choose to see the shadow as a necessary part of my light
-2. I consistently accept the dark cloak as the fuel for my journey
-3. I regularly embody the Lovers' Union by lovingly merging my own shadow with my own light
+1. I always choose my true desires consistently
+2. I regularly align my heart with my values
+3. I consistently integrate my dualities into oneness
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by my past
-2. I am not afraid of change
-3. I do not limit my own potential
+1. I am not confused by external pressures
+2. I do not choose based on fear
+3. I am not divided in my true desires

@@ -43,13 +43,13 @@
       },
       "affirmations": [
         {
-          "text": "I was kind enough to offer a small smile"
+          "text": "I was blessed with gentle good luck"
         },
         {
-          "text": "I was ready to welcome a new day with joy"
+          "text": "I found abundance in my life"
         },
         {
-          "text": "I was able to accept a surprising gift of kindness"
+          "text": "I embraced natural harmony easily"
         }
       ]
     },
@@ -86,13 +86,13 @@
       },
       "affirmations": [
         {
-          "text": "I am confident to be the first person to discover this new gift"
+          "text": "I embrace the gentle flow of good luck"
         },
         {
-          "text": "I am grateful that this unexpected spark has found me today"
+          "text": "I experience natural abundance in my life"
         },
         {
-          "text": "I am ready to embrace the path with grace and optimism"
+          "text": "I recognize the harmony of my blessings"
         }
       ]
     },
@@ -125,17 +125,17 @@
         ],
         "name": "⏭️ Finite Indicative Active Future Simple First Singular",
         "slug": "finite-indicative-active-future-simple-first-singular",
-        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time.\n- Use the future tense with 'will'.\n- Subject is 'I' (first person singular)."
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time.\n- Use the future tense with 'will'. Keep the structure simple: 'I will [verb] [direct object/complement]'. Do NOT write complex object clauses like 'I will see my thoughts are...' — use 'I will recognize my thoughts' or 'I will see clearly' instead.\n- Subject is 'I' (first person singular)."
       },
       "affirmations": [
         {
-          "text": "I will embrace the unexpected gift today"
+          "text": "I will embrace good luck now"
         },
         {
-          "text": "I will welcome a sudden stroke of luck"
+          "text": "I will receive abundant blessings easily"
         },
         {
-          "text": "I will trust that the universe is benevolent"
+          "text": "I will find natural harmony in life"
         }
       ]
     },
@@ -172,13 +172,13 @@
       },
       "affirmations": [
         {
-          "text": "I have been embracing the sudden joy of a good fortune"
+          "text": "I have been receiving good luck effortlessly now"
         },
         {
-          "text": "I have been trusting the benevolence of the universe to bring me a stroke of luck"
+          "text": "I have been embracing abundance in my life"
         },
         {
-          "text": "I have been learning to see every unexpected opportunity as a new beginning"
+          "text": "I have been aligning with natural blessings always"
         }
       ]
     },
@@ -215,13 +215,13 @@
       },
       "affirmations": [
         {
-          "text": "I will have a sudden grace of joy"
+          "text": "I will have found abundant luck and ease"
         },
         {
-          "text": "I will have a swift stroke of luck"
+          "text": "I will have experienced natural blessings now"
         },
         {
-          "text": "I will have a moment of unexpected hope"
+          "text": "I will have become perfectly aligned with flow"
         }
       ]
     },
@@ -258,13 +258,13 @@
       },
       "affirmations": [
         {
-          "text": "We are happy together"
+          "text": "We embrace good luck together now"
         },
         {
-          "text": "We find joy together"
+          "text": "We find abundance in this moment"
         },
         {
-          "text": "We trust together"
+          "text": "We welcome natural blessings always"
         }
       ]
     },
@@ -300,13 +300,13 @@
       },
       "affirmations": [
         {
-          "text": "A sudden burst of grace flows from this blooming clover"
+          "text": "They embrace the unfolding of gentle good luck"
         },
         {
-          "text": "Life offers unexpected opportunities in this tender moment"
+          "text": "She recognizes abundance in her daily life"
         },
         {
-          "text": "The universe steps forward to bless you with this lucky spark"
+          "text": "It flows naturally toward harmonious alignment"
         }
       ]
     },
@@ -339,17 +339,17 @@
         ],
         "name": "💪 Finite Potential Active Present Simple First Singular",
         "slug": "finite-potential-active-present-simple-first-singular",
-        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- CRITICAL: The main verb structure MUST use 'can' or 'could' or 'able to': 'I can...', 'I could...', 'I am able to...'. Do NOT use indicative verbs like 'trust', 'believe', or 'know' without 'can'/'could'.\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time.\n- Use the present tense.\n- Subject is 'I' (first person singular)."
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- CRITICAL: The main predicate MUST begin with 'can', 'could', or 'am/is/are able to'. Valid structures: 'I can [verb]', 'I could [verb]', 'I am able to [verb]'. The verb that follows the auxiliary must be a simple action verb or adjective — keep it direct and simple. Do NOT use complex object clauses like 'I can see that...' or 'I can feel that...' — instead write 'I can see clearly', 'I can feel peace'. Do NOT use a bare indicative verb as the main predicate without a preceding potential auxiliary (e.g., do NOT write 'I trust...' or 'I believe...' as a standalone clause without 'can'/'could'/'able to').\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time.\n- Use the present tense.\n- Subject is 'I' (first person singular)."
       },
       "affirmations": [
         {
-          "text": "I am able to find joy in small, spontaneous steps"
+          "text": "I can receive abundant good luck easily"
         },
         {
-          "text": "I can embrace the unexpected gift of life"
+          "text": "I could embrace natural blessings now"
         },
         {
-          "text": "I am ready to accept a chance to be kind"
+          "text": "I am able to find harmony in everything"
         }
       ]
     },
@@ -380,17 +380,17 @@
         ],
         "name": "🙏 Finite Optative Active First Singular",
         "slug": "finite-optative-active-first-singular",
-        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- Express a wish or hope.\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Subject is 'I' (first person singular)."
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- Express a deep wish, longing, or hope — NOT a request for permission. 'May I [verb]' here means 'I wish that I [verb]' (optative wish), NOT 'Am I allowed to [verb]'. 'If only I could [verb]', 'Would that I might [verb]', and 'May I [verb]' are all valid optative forms expressing yearning. The tone should be longing, aspiration, or heartfelt desire — not a yes/no question about permission.\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Subject is 'I' (first person singular)."
       },
       "affirmations": [
         {
-          "text": "May I find a chance for a spark of joy today"
+          "text": "May I embrace this gentle good luck now"
         },
         {
-          "text": "If only I could see a glimpse of grace in tomorrow's work"
+          "text": "If only I could welcome natural abundance always"
         },
         {
-          "text": "Would it be too late to embrace a moment of unexpected luck?"
+          "text": "Would that I might feel deep harmonious ease"
         }
       ]
     },
@@ -425,13 +425,13 @@
       },
       "affirmations": [
         {
-          "text": "Evoke grace! ✨"
+          "text": "Embrace good luck yourself!"
         },
         {
-          "text": "Embrace joy! 💖"
+          "text": "Receive abundance effortlessly now!"
         },
         {
-          "text": "Reveal luck! 🌿"
+          "text": "Align with nature's flow always!"
         }
       ]
     },
@@ -468,13 +468,13 @@
       },
       "affirmations": [
         {
-          "text": "Am I not hopeful about a new start?"
+          "text": "Am I not experiencing natural good luck now?"
         },
         {
-          "text": "Can I not welcome a gift this moment?"
+          "text": "Have I not embraced this present abundance easily?"
         },
         {
-          "text": "Have I not found joy in this unexpected step?"
+          "text": "Can I not receive blessings without striving hard?"
         }
       ]
     },
@@ -507,13 +507,13 @@
       },
       "affirmations": [
         {
-          "text": "To embrace the unexpected gift that arrives suddenly"
+          "text": "To embrace luck naturally"
         },
         {
-          "text": "To trust that spontaneous joy follows every plan"
+          "text": "To welcome abundance easily"
         },
         {
-          "text": "To welcome the small spark of fortune in your day"
+          "text": "To find harmony without striving"
         }
       ]
     },
@@ -541,17 +541,17 @@
         ],
         "name": "💡 Gerund Active",
         "slug": "gerund-active",
-        "specifier_descriptions": "- Begin with a gerund (-ing form as a noun).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action."
+        "specifier_descriptions": "- Begin with a gerund: an -ing verb form that acts as the grammatical SUBJECT of the main clause. Required sentence structure: '[Gerund phrase] [finite main verb] [complement]'. The gerund phrase IS the noun-subject; the sentence MUST have a separate finite verb after it. VALID examples: 'Being present opens doors', 'Trusting yourself builds strength', 'Navigating challenges requires courage', 'Releasing fear allows peace', 'Recognizing truth frees the mind'. The finite verb is the word directly AFTER the gerund phrase (e.g., 'opens', 'builds', 'requires', 'allows', 'frees'). Do NOT write a participial phrase where the -ing word modifies a separate subject (e.g., do NOT write 'Stepping forward, I trust...' or 'Trusting the path, I grow...'). Do NOT write an incomplete phrase without a finite main verb.\n- Use ACTIVE voice: the subject ('I'/'we') performs the action."
       },
       "affirmations": [
         {
-          "text": "I embrace every unexpected spark of joy in my life"
+          "text": "Finding luck unfolds naturally with gentle ease"
         },
         {
-          "text": "I trust that the universe rewards me with a sudden good turn"
+          "text": "Embracing abundance flows through open hearts"
         },
         {
-          "text": "I celebrate the grace of a small gift that opens my heart"
+          "text": "Receiving blessings grows through open awareness"
         }
       ]
     },
@@ -584,17 +584,17 @@
         ],
         "name": "🌊 Finite Indicative Passive Present Simple First Singular",
         "slug": "finite-indicative-passive-present-simple-first-singular",
-        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- CRITICAL: The MAIN clause must use PASSIVE voice — the subject receives the action. Pattern: 'I am/was/have been [past participle]'. Subordinate clauses and infinitive phrases (e.g., 'ready to feel', 'able to see') may use active voice. Do NOT write active main clauses like 'I trust', 'I choose', or 'I feel'.\n- Express the action plainly without specifying duration or extent over time.\n- Use the present tense.\n- Subject is 'I' (first person singular)."
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- CRITICAL: The MAIN clause must use PASSIVE voice — the subject receives the action. Pattern: 'I am/was/have been [past participle]'. Use naturally passive past participles such as: guided, held, supported, loved, carried, blessed, seen, known, called, drawn, moved, shaped, filled, grounded, anchored, surrounded, embraced, lifted, held. A single optional 'by [agent]' phrase is allowed. CRITICAL: do NOT use two separate 'by ...' phrases in one sentence — e.g., NEVER write 'I am guided by X by Y' or 'I am held by X by Y'. If you want to express two agents, combine them: 'I am guided by wisdom and courage'. Subordinate clauses and infinitive phrases (e.g., 'ready to feel', 'able to see') may use active voice. Do NOT write active main clauses like 'I trust', 'I choose', or 'I feel'.\n- Express the action plainly without specifying duration or extent over time.\n- Use the present tense.\n- Subject is 'I' (first person singular)."
       },
       "affirmations": [
         {
-          "text": "I am received by nature's grace"
+          "text": "I am luck by nature drawn to me"
         },
         {
-          "text": "I am held by the spirit of hope"
+          "text": "I am abundance by the universe held"
         },
         {
-          "text": "I am supported by the unexpected gift"
+          "text": "I am ease by harmony surrounded"
         }
       ]
     },
@@ -631,13 +631,13 @@
       },
       "affirmations": [
         {
-          "text": "I always keep small surprises in my pocket"
+          "text": "I always embrace the gentle luck unfolding now"
         },
         {
-          "text": "I regularly find joy in unexpected encounters"
+          "text": "I regularly notice abundance in my daily life"
         },
         {
-          "text": "I consistently appreciate every small kindness"
+          "text": "I consistently welcome natural blessings and ease"
         }
       ]
     },
@@ -675,13 +675,13 @@
       },
       "affirmations": [
         {
-          "text": "I do not believe I am capable of achieving great success without any luck"
+          "text": "I am not lacking good luck in my life"
         },
         {
-          "text": "I do not think I deserve a reward for my hard work"
+          "text": "I do not struggle for fortune without effort"
         },
         {
-          "text": "I do not believe I deserve happiness without a spark of good fortune"
+          "text": "I am not without natural abundance now"
         }
       ]
     }

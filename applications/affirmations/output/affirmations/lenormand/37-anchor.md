@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I built a solid foundation over time
-2. I worked hard to maintain my footing
-3. I trusted the steady work I did
+1. I was firmly grounded in my true self
+2. I established deep inner security always
+3. I anchored my being to steadfast values
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am a reliable person who stands firm
-2. I am grounded in a steady and consistent path
-3. I am built for long-term success through dedication
+1. I possess deep inner stability and calm
+2. I remain firmly grounded in my reality
+3. I trust my commitments bring true security
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will build a solid foundation through daily quiet work
-2. I will earn stability through consistent hard work
-3. I will maintain my footing by enduring hardship patiently
+1. I will find my inner stability always
+2. I will trust my deep foundations completely
+3. I will remain anchored through all change
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been working diligently to build a strong foundation
-2. I have been enduring hardship to maintain a solid ground
-3. I have been building a steady life to last long
+1. I have been grounding myself in deep inner peace
+2. I have been holding steady through life's currents
+3. I have been trusting my foundation always
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have built a solid foundation that withstands pressure
-2. I will have achieved stability through consistent daily dedication
-3. I will have created a life built on reliable effort and perseverance
+1. I will have established my inner foundation firmly
+2. I will have become unshakeable amidst life's tides
+3. I will have anchored my being to true security
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We stand together as one firm anchor
-2. We build each other with steady, reliable hands
-3. We hold firm to our shared purpose
+1. We are deeply grounded in our true self
+2. We trust each other for unwavering stability
+3. We anchor our peace in our inner core
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They work hard to build a solid foundation
-2. She is grounded in her daily dedication
-3. They are built for the long haul
+1. The self balances with deep inner calm
+2. Stability anchors the spirit in the present
+3. Commitments establish a firm and lasting base
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I can build a strong foundation with daily effort
-2. I am able to remain grounded in my own work
-3. I can cultivate a steady path for my future
+1. I can find my center always
+2. I am able to hold firm to my values
+3. I can trust my inner stability completely
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I be steady and reliable in my daily walk
-2. If only I could build a solid foundation with every step
-3. Would that I might find peace in the quiet work of my life
+1. May I find my deep inner stability now
+2. If only I could hold firm to my truth
+3. Would that I might anchor to my true self
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Build a sturdy foundation that withstands the storm
-2. Make every day a reliable step toward your goals
-3. Stand tall and steady as you navigate the challenges ahead
+1. Be grounded; anchor your soul in deep peace
+2. Feel secure; hold your commitments with steadfast trust
+3. Remain steady; embrace your unshakeable inner foundation
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not grounded in daily effort?
-2. Have I not built a foundation through patience?
-3. Can I not rely on consistency to thrive?
+1. Am I not deeply grounded in my true self
+2. Have I not established my inner stability now
+3. Can I not trust this solid foundation always
 
 ## ♾️ Infinitive Active Simple
 
-1. To build a life of consistent effort without losing one's footing
-2. To maintain a solid foundation through daily quiet work over time
-3. To secure a secure job built on sustained output and dependable years of hard work
+1. To find stability without fear
+2. To anchor deeply in my truth
+3. To remain calm amidst the flow
 
 ## 💡 Gerund Active
 
-1. I build myself every day with a steady hand
-2. I stand firm in the quiet work of my foundation
-3. I build myself with a steady hand and a steady foundation
+1. Grounding yourself anchors your spirit firmly now
+2. Trusting your values stabilizes your inner world
+3. Holding your commitments creates lasting security
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am held by my daily quiet work of building a solid foundation over time
-2. I am supported by the reliable habits of consistent exercise and steady sleep
-3. I am grounded by the enduring effort of maintaining a secure job built on reliable income
+1. I am grounded by deep inner certainty
+2. I am held by steadfast, unshakeable reality
+3. I am anchored by my true, stable self
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I consistently work hard to build a strong foundation
-2. I regularly practice daily habits to maintain my health
-3. I always work with patience to secure my future
+1. I always find my inner stability deeply rooted
+2. I regularly trust my unshakeable foundation always
+3. I consistently anchor my peace within my being
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I do not think I am weak without effort
-2. I do not fear being alone without connection
-3. I do not believe I am safe without stability
+1. I am not moved by external tides
+2. I do not seek change for my safety
+3. I am not adrift without inner calm

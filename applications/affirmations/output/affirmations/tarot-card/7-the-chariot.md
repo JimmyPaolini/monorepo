@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was determined to succeed
-2. I chose discipline to achieve my goals
-3. I found my strength in action
+1. I mastered opposing forces in my journey
+2. I directed my will toward my goals
+3. I controlled my momentum to achieve victory
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I choose to drive my path with clarity
-2. I am confident in my ability to succeed
-3. I trust myself to achieve my goals
+1. I control my focused willpower now
+2. I direct my energy toward my goals
+3. I master opposing forces with action
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will master the discipline of my will
-2. I will find clarity in my purpose
-3. I will achieve my goals with conviction
+1. I will harness opposing forces into focused direction
+2. I will master my will to control my journey
+3. I will drive my goals with disciplined momentum
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been steering my life with the clarity of a determined driver
-2. I have been choosing courage to navigate the complexities of the world
-3. I have been building my resolve through the merging of masculine and feminine energy
+1. I have been harnessing opposing forces with focused will
+2. I have been directing my energy toward my goals
+3. I have been mastering my journey with disciplined action
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have achieved the vision I set for myself
-2. I will have become the driver who steers the path to success
-3. I will have created a life defined by my own will and purpose
+1. I will have mastered opposing forces through focused will
+2. I will have driven my goals across the obstacle
+3. I will have achieved triumphant control over my path
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We drive our dreams with firm conviction
-2. We align our wills to achieve our goals
-3. We build our paths with purpose and strength
+1. We harness opposing forces into a single direction
+2. We control our will to move toward our goals
+3. We drive our journey with focused determination
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. He guides his destiny with unwavering clarity
-2. She directs her path with absolute purpose
-3. They choose their own path with firm conviction
+1. They harness opposing forces into a single direction
+2. She controls her will to move toward her goals
+3. He directs his energy with focused determination
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I can choose to walk the path of truth
-2. I am able to see the path ahead clearly
-3. I could become the driver who guides my journey
+1. I can harness opposing forces with focused will
+2. I could direct my energy toward my goals
+3. I am able to master my disciplined momentum
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find the strength to drive my own chariot forward
-2. If only I could align my will with the flying globe's light
-3. Would that I might know my own worth through disciplined action
+1. May I harness opposing forces with focused will
+2. Would that I might steer my path with true control
+3. If only I could move forward with disciplined action
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Drive your destiny with absolute clarity and unwavering conviction
-2. Trust your inner strength to navigate every complex path forward
-3. Embrace the power of your will to achieve your greatest goals
+1. Master your will and direct your journey!
+2. Control opposing forces and move forward now!
+3. Channel your energy toward your true goal!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not capable of steering this chariot with absolute clarity?
-2. Have I not already proven my resolve to navigate every storm?
-3. Can I not rise to this challenge without hesitation?
+1. Am I not controlling my opposing forces now?
+2. Have I not directed my will with purpose?
+3. Can I not master this focused momentum?
 
 ## ♾️ Infinitive Active Simple
 
-1. To drive my path with clarity and conviction
-2. To choose my destiny with purpose and strength
-3. To lead my life with intention and discipline
+1. To master opposing forces to move forward
+2. To direct your will with focused determination
+3. To conquer obstacles without hesitation
 
 ## 💡 Gerund Active
 
-1. Being disciplined is my strength
-2. Choosing courage is my strength
-3. Embracing clarity is my strength
+1. Mastering opposing forces drives my focused journey
+2. Directing my will creates powerful forward momentum
+3. Controlling my energy achieves desired outcomes
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am guided by the wisdom of the journey
-2. I am supported by the strength of my will
-3. I am ready to execute the plan with clarity
+1. I am guided by focused will by the horses
+2. I am moved by disciplined action by my desire
+3. I am held by control by my conscious direction
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always drive my life with clear purpose
-2. I consistently choose courage over fear
-3. I regularly execute my dreams with discipline
+1. I always harness opposing forces into one direction
+2. I regularly direct my will toward my goals
+3. I consistently master my journey with focus
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by my past
-2. I am not afraid of change
-3. I do not limit my own potential
+1. I do not yield to opposing forces without control
+2. I am not derailed by external resistance now
+3. I do not stop my focused journey without will

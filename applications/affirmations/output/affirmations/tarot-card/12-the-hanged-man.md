@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was willing to stop and see the world differently
-2. I chose patience before making a move
-3. I learned to manage my own energy reserves
+1. I was suspended in a necessary pause
+2. I accepted the waiting of this moment
+3. I surrendered control to new perspective
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am ready to let go of the need to control every moment
-2. I trust that the universe is already in the right place to guide me
-3. I am willing to pause and observe the flow of life instead of forcing it
+1. I surrender control to the unfolding process
+2. I accept this pause for deeper insight
+3. I see new truths from a different angle
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will learn to manage my own energy reserves wisely
-2. I will choose to pause before making a decision
-3. I will find peace by accepting the inevitable journey
+1. I will surrender control to the unfolding process
+2. I will wait for necessary perspective to arrive
+3. I will accept this pause for deep transformation
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been learning to listen to the water cycle and understand that the universe operates on its own internal rhythms rather than demanding constant output
-2. I have been choosing kindness and accepting that true mastery lies in managing finite energy reserves rather than hoarding infinite reserves
-3. I have been growing every day and realizing that the true self is the one willing to stop and see the world differently
+1. I have been suspending action to gain new perspective
+2. I have been allowing stillness for deep internal change
+3. I have been waiting for necessary transformation to unfold
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have mastered the art of managing my own energy reserves
-2. I will have learned to wear the mask of the Hanged Man to survive
-3. I will have achieved balance by releasing what I cannot store forever
+1. I will have accepted this pause for growth
+2. I will have seen a new perspective now
+3. I will have surrendered control to the flow
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We are ready to let go of the need to control every moment
-2. We trust that the universe is already in the right place for us
-3. We choose to rest and see the world as it truly is
+1. We accept this pause for deep transformation now
+2. We surrender control to a higher perspective
+3. We allow stillness to bring true insight
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. He is willing to let go of his control to find balance
-2. They understand that the universe operates on its own internal rhythms
-3. She accepts the inevitable pain as the necessary cost of growth
+1. They surrender control to gain deeper insight
+2. She accepts the pause for necessary transformation
+3. He understands perspective through voluntary stillness
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I am able to manage my own energy reserves wisely
-2. I could choose to pause before making a decision
-3. I am willing to let go of the need for constant perfection
+1. I can surrender control to the unfolding process
+2. I could see a new perspective now
+3. I am able to wait for necessary transformation
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find peace in the quiet waters of my own mind
-2. If only I could rest in the balance of my own energy
-3. Would that I might know my own worth in the silence of the Hanged Man
+1. May I embrace this pause for deeper understanding
+2. Would that I might surrender control completely now
+3. If only I could see this truth clearly
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Be bold to trust your own rhythm
-2. Embrace the bumpy path of your journey
-3. Stop and see the world differently
+1. Accept this pause completely!
+2. Surrender control to the unfolding now!
+3. See the world from a new angle!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not capable of trusting the universe to guide me through the waters of life without needing to force my will?
-2. Have I not already learned that the true self is the one who has mastered the art of managing their own energy reserves?
-3. Can I not face the inevitable pain and bumpy path of the journey without fearing that I am not ready for the challenge?
+1. Am I not waiting for my perfect moment?
+2. Have I not surrendered control over this situation?
+3. Can I not see this view from a new angle?
 
 ## ♾️ Infinitive Active Simple
 
-1. To walk the path of the water cycle without hoarding fuel
-2. To embrace the sickle as the inevitable cost of growth
-3. To choose balance over endless accumulation
+1. To surrender control to the unfolding process
+2. To wait patiently for new perspectives to arrive
+3. To release striving without forceful action
 
 ## 💡 Gerund Active
 
-1. Being mindful of my energy reserves is my strength
-2. Accepting the inevitable pain of the journey is my strength
-3. Wearing the mask of the Hanged Man is my strength
+1. Surrendering control allows deep understanding
+2. Pausing allows new perspectives to emerge
+3. Waiting enables profound internal transformation
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am guided by the Water Cycle to understand that life is a river where I must adapt rather than fight the tides
-2. I am supported by the Sickle to know that suffering is the necessary cost of growth and that I wear the mask of the Hanged Man to survive
-3. I am balanced by the Balance Scale to realize that true mastery lies in managing my finite reserves rather than hoarding infinite energy
+1. I am held by stillness by the universe
+2. I am seen by surrender by the moment
+3. I am grounded by pause by new perspective
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always wear the mask of the Hanged Man to survive the journey
-2. I consistently manage my energy reserves to release them rather than hoard them
-3. I regularly pause before acting, trusting that the universe operates on its own internal rhythms
+1. I always surrender control to the unfolding process
+2. I regularly embrace stillness for deeper insight
+3. I consistently accept this pause for transformation
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by my past
-2. I am not afraid of change
-3. I do not limit my own potential
+1. I am not striving for action without pause
+2. I do not control outcomes without surrender
+3. I am not fixed in my current perspective

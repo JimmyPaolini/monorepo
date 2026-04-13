@@ -43,13 +43,13 @@
       },
       "affirmations": [
         {
-          "text": "I stood tall and moved forward with energy"
+          "text": "I moved forward with great intention"
         },
         {
-          "text": "I acted quickly with confidence and speed"
+          "text": "I navigated the path successfully"
         },
         {
-          "text": "I brought news to my life with sharp intent"
+          "text": "I received new opportunities then"
         }
       ]
     },
@@ -86,13 +86,13 @@
       },
       "affirmations": [
         {
-          "text": "I am ready to move forward"
+          "text": "I move forward with focused intention now"
         },
         {
-          "text": "I am confident in my action"
+          "text": "I embrace the journey unfolding before me"
         },
         {
-          "text": "I am active in my journey"
+          "text": "I actively seek new opportunities arriving"
         }
       ]
     },
@@ -125,17 +125,17 @@
         ],
         "name": "⏭️ Finite Indicative Active Future Simple First Singular",
         "slug": "finite-indicative-active-future-simple-first-singular",
-        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time.\n- Use the future tense with 'will'.\n- Subject is 'I' (first person singular)."
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time.\n- Use the future tense with 'will'. Keep the structure simple: 'I will [verb] [direct object/complement]'. Do NOT write complex object clauses like 'I will see my thoughts are...' — use 'I will recognize my thoughts' or 'I will see clearly' instead.\n- Subject is 'I' (first person singular)."
       },
       "affirmations": [
         {
-          "text": "I will move forward with courage"
+          "text": "I will move forward with confident intention"
         },
         {
-          "text": "I will take action today"
+          "text": "I will embrace the journey unfolding now"
         },
         {
-          "text": "I will embrace new opportunities"
+          "text": "I will actively seek new opportunities ahead"
         }
       ]
     },
@@ -172,13 +172,13 @@
       },
       "affirmations": [
         {
-          "text": "I have been ready to move forward every time I choose courage"
+          "text": "I have been riding this journey forward actively"
         },
         {
-          "text": "I have been energized by new opportunities that await my attention"
+          "text": "I have been embracing the unfolding path now"
         },
         {
-          "text": "I have been actively pursuing my potential with unwavering determination"
+          "text": "I have been moving toward my next destination"
         }
       ]
     },
@@ -215,13 +215,13 @@
       },
       "affirmations": [
         {
-          "text": "I will have arrived at a new stage of my life"
+          "text": "I will have traveled the path successfully"
         },
         {
-          "text": "I will have achieved complete confidence in every task"
+          "text": "I will have arrived at my next destination"
         },
         {
-          "text": "I will have created a world where movement is the only path"
+          "text": "I will have navigated this unfolding journey"
         }
       ]
     },
@@ -258,13 +258,13 @@
       },
       "affirmations": [
         {
-          "text": "We are energetic together"
+          "text": "We move forward with active intention together"
         },
         {
-          "text": "We are ready to move forward"
+          "text": "We embrace the journey's unfolding together"
         },
         {
-          "text": "We embrace unity with all"
+          "text": "We navigate new opportunities together"
         }
       ]
     },
@@ -300,13 +300,13 @@
       },
       "affirmations": [
         {
-          "text": "They are ready to move forward"
+          "text": "They move forward on their destined path now"
         },
         {
-          "text": "She is confident in her new journey"
+          "text": "She embraces the journey's unfolding momentum"
         },
         {
-          "text": "They bring news and energy forward"
+          "text": "It navigates new opportunities with great skill"
         }
       ]
     },
@@ -339,17 +339,17 @@
         ],
         "name": "💪 Finite Potential Active Present Simple First Singular",
         "slug": "finite-potential-active-present-simple-first-singular",
-        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- CRITICAL: The main verb structure MUST use 'can' or 'could' or 'able to': 'I can...', 'I could...', 'I am able to...'. Do NOT use indicative verbs like 'trust', 'believe', or 'know' without 'can'/'could'.\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time.\n- Use the present tense.\n- Subject is 'I' (first person singular)."
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- CRITICAL: The main predicate MUST begin with 'can', 'could', or 'am/is/are able to'. Valid structures: 'I can [verb]', 'I could [verb]', 'I am able to [verb]'. The verb that follows the auxiliary must be a simple action verb or adjective — keep it direct and simple. Do NOT use complex object clauses like 'I can see that...' or 'I can feel that...' — instead write 'I can see clearly', 'I can feel peace'. Do NOT use a bare indicative verb as the main predicate without a preceding potential auxiliary (e.g., do NOT write 'I trust...' or 'I believe...' as a standalone clause without 'can'/'could'/'able to').\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Express the action plainly without specifying duration or extent over time.\n- Use the present tense.\n- Subject is 'I' (first person singular)."
       },
       "affirmations": [
         {
-          "text": "I can confidently move forward today"
+          "text": "I can move forward with this new journey"
         },
         {
-          "text": "I am ready to embrace new opportunities"
+          "text": "I could embrace the unfolding path now"
         },
         {
-          "text": "I am able to navigate life with energy"
+          "text": "I am able to receive vital new information"
         }
       ]
     },
@@ -380,17 +380,17 @@
         ],
         "name": "🙏 Finite Optative Active First Singular",
         "slug": "finite-optative-active-first-singular",
-        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- Express a wish or hope.\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Subject is 'I' (first person singular)."
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- Express a deep wish, longing, or hope — NOT a request for permission. 'May I [verb]' here means 'I wish that I [verb]' (optative wish), NOT 'Am I allowed to [verb]'. 'If only I could [verb]', 'Would that I might [verb]', and 'May I [verb]' are all valid optative forms expressing yearning. The tone should be longing, aspiration, or heartfelt desire — not a yes/no question about permission.\n- Use ACTIVE voice: the subject ('I'/'we') performs the action.\n- Subject is 'I' (first person singular)."
       },
       "affirmations": [
         {
-          "text": "May I move confidently into new possibilities today"
+          "text": "May I embrace this journey's unfolding now"
         },
         {
-          "text": "If only I could guide this moment with pure courage"
+          "text": "If only I could move toward my destination"
         },
         {
-          "text": "Would that I might embrace the strength of movement"
+          "text": "Would that I might welcome new opportunities"
         }
       ]
     },
@@ -425,13 +425,13 @@
       },
       "affirmations": [
         {
-          "text": "Move forward with energy!"
+          "text": "Embrace the journey and move forward now"
         },
         {
-          "text": "Act boldly today!"
+          "text": "Navigate your path with confident action"
         },
         {
-          "text": "Lead with speed!"
+          "text": "Receive the new opportunities that arrive"
         }
       ]
     },
@@ -468,7 +468,13 @@
       },
       "affirmations": [
         {
-          "text": "Can I not believe I am ready to move forward?"
+          "text": "Am I not moving toward my true destination?"
+        },
+        {
+          "text": "Have I not embraced this unfolding journey now?"
+        },
+        {
+          "text": "Can I not actively seek new opportunities today?"
         }
       ]
     },
@@ -501,13 +507,13 @@
       },
       "affirmations": [
         {
-          "text": "To take action with speed and confidence"
+          "text": "To move forward with intention"
         },
         {
-          "text": "To receive news with excitement and clarity"
+          "text": "To travel actively toward your goals"
         },
         {
-          "text": "To move forward confidently in life"
+          "text": "To embrace the journey without hesitation"
         }
       ]
     },
@@ -535,17 +541,17 @@
         ],
         "name": "💡 Gerund Active",
         "slug": "gerund-active",
-        "specifier_descriptions": "- Begin with a gerund (-ing form as a noun).\n- Use ACTIVE voice: the subject ('I'/'we') performs the action."
+        "specifier_descriptions": "- Begin with a gerund: an -ing verb form that acts as the grammatical SUBJECT of the main clause. Required sentence structure: '[Gerund phrase] [finite main verb] [complement]'. The gerund phrase IS the noun-subject; the sentence MUST have a separate finite verb after it. VALID examples: 'Being present opens doors', 'Trusting yourself builds strength', 'Navigating challenges requires courage', 'Releasing fear allows peace', 'Recognizing truth frees the mind'. The finite verb is the word directly AFTER the gerund phrase (e.g., 'opens', 'builds', 'requires', 'allows', 'frees'). Do NOT write a participial phrase where the -ing word modifies a separate subject (e.g., do NOT write 'Stepping forward, I trust...' or 'Trusting the path, I grow...'). Do NOT write an incomplete phrase without a finite main verb.\n- Use ACTIVE voice: the subject ('I'/'we') performs the action."
       },
       "affirmations": [
         {
-          "text": "Being a traveler moves with speed and confidence every day"
+          "text": "Journeying forward invites new opportunities"
         },
         {
-          "text": "Doing action with energy leads to new opportunities and peace"
+          "text": "Moving with intention unlocks the next path"
         },
         {
-          "text": "Living as a runner brings joy and clarity to all who follow"
+          "text": "Embracing change allows vital knowledge arriving"
         }
       ]
     },
@@ -578,17 +584,17 @@
         ],
         "name": "🌊 Finite Indicative Passive Present Simple First Singular",
         "slug": "finite-indicative-passive-present-simple-first-singular",
-        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- CRITICAL: The MAIN clause must use PASSIVE voice — the subject receives the action. Pattern: 'I am/was/have been [past participle]'. Subordinate clauses and infinitive phrases (e.g., 'ready to feel', 'able to see') may use active voice. Do NOT write active main clauses like 'I trust', 'I choose', or 'I feel'.\n- Express the action plainly without specifying duration or extent over time.\n- Use the present tense.\n- Subject is 'I' (first person singular)."
+        "specifier_descriptions": "- Use a fully conjugated (finite) verb that agrees with its subject.\n- State a direct fact or present truth (indicative mood).\n- CRITICAL: The MAIN clause must use PASSIVE voice — the subject receives the action. Pattern: 'I am/was/have been [past participle]'. Use naturally passive past participles such as: guided, held, supported, loved, carried, blessed, seen, known, called, drawn, moved, shaped, filled, grounded, anchored, surrounded, embraced, lifted, held. A single optional 'by [agent]' phrase is allowed. CRITICAL: do NOT use two separate 'by ...' phrases in one sentence — e.g., NEVER write 'I am guided by X by Y' or 'I am held by X by Y'. If you want to express two agents, combine them: 'I am guided by wisdom and courage'. Subordinate clauses and infinitive phrases (e.g., 'ready to feel', 'able to see') may use active voice. Do NOT write active main clauses like 'I trust', 'I choose', or 'I feel'.\n- Express the action plainly without specifying duration or extent over time.\n- Use the present tense.\n- Subject is 'I' (first person singular)."
       },
       "affirmations": [
         {
-          "text": "I am held by the power of the Rider to move forward"
+          "text": "I am moved by the unfolding journey now"
         },
         {
-          "text": "The Rider is ready to feel the light that guides me"
+          "text": "I am guided by the path I am taking"
         },
         {
-          "text": "I am able to see the opportunity waiting in the Rider's presence"
+          "text": "I am held by new opportunities arriving"
         }
       ]
     },
@@ -625,13 +631,13 @@
       },
       "affirmations": [
         {
-          "text": "I constantly maintain my athletic energy and confidence"
+          "text": "I always embrace the unfolding journey now"
         },
         {
-          "text": "I regularly push forward with the dynamic force of the Rider"
+          "text": "I regularly move forward toward new opportunities"
         },
         {
-          "text": "I consistently embody the spirit of speed and agility"
+          "text": "I consistently navigate the path with awareness"
         }
       ]
     },
@@ -669,13 +675,13 @@
       },
       "affirmations": [
         {
-          "text": "I do not believe I am a static object"
+          "text": "I do not wait for the journey to begin"
         },
         {
-          "text": "I do not think I lack the strength to move forward"
+          "text": "I am not held back by past hesitation"
         },
         {
-          "text": "I do not think I am restricted by my limitations"
+          "text": "I do not fear the unfolding new path"
         }
       ]
     }

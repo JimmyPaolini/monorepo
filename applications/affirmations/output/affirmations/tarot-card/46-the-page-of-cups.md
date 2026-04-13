@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was curious to explore the depths of my own feelings
-2. I chose to trust the gentle waters of my intuitive heart
-3. I found my strength in the deep, flowing connections I made
+1. I was open to new emotional invitations
+2. I felt creative intuition flow easily
+3. I expressed my true feelings openly
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I trust the waters of my heart to guide me toward my true desires
-2. I choose to embrace the deep currents of love that flow through me
-3. I am ready to navigate life with curiosity and resilience, trusting my intuition
+1. I feel new emotions flowing freely now
+2. I express my deep creative intuition openly
+3. I welcome heartfelt invitations from my heart
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will find peace within the depths of my emotions
-2. I will embrace the deep desires that flow through my heart
-3. I will navigate life with curiosity and resilience
+1. I will embrace my new emotional invitations
+2. I will express my true feelings with ease
+3. I will follow my heart's gentle guidance
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been exploring the depths of my own emotions with curiosity
-2. I have been choosing kindness to navigate the emotional currents of my life
-3. I have been growing every day to find the depth of my true desires
+1. I have been feeling new emotions flowing into my heart
+2. I have been exploring creative invitations from my soul
+3. I have been receiving gentle feelings as I grow
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have become the person I am meant to be
-2. I will have created a life I love
-3. I will have overcome this challenge
+1. I will have felt deep emotions fully expressed
+2. I will have discovered my creative intuition clearly
+3. I will have embraced new feelings tenderly now
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We are curious to explore the depths of our own emotions
-2. We are ready to trust the gentle waters of our inner desires
-3. We create a space where our deepest feelings can be heard and understood
+1. We embrace new feelings together now
+2. We express our deep intuitions openly
+3. We invite creative dreams into our lives
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They trust the waters to guide their emotional journey
-2. She finds strength in the reflection of her inner self
-3. They choose to navigate life with the curiosity of the page
+1. She expresses her deep feelings with gentle openness
+2. He invites new emotional experiences into his life
+3. They follow their heart's gentle invitations now
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I can embrace the deep desires that guide my heart toward healing
-2. I am able to navigate life with curiosity and resilience toward new opportunities
-3. I could become the person who feels deeply connected to the emotional currents of the sea
+1. I can embrace new emotional invitations easily
+2. I could express my gentle feelings openly now
+3. I am able to follow my heart's creative flow
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find clarity in this moment
-2. If only I could feel at peace
-3. Would that I might know my own worth
+1. May I embrace new feelings with open hearts
+2. Would that I might follow my gentle intuition
+3. If only I could share my creative dreams
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Trust your intuition to guide your heart toward the depths of your true desires
-2. Embrace the fluid currents of your emotions to find the authentic love that flows within you
-3. Navigate life with curiosity and resilience, trusting that the waves of your spirit will guide you to renewal
+1. Receive your gentle feelings now!
+2. Explore your creative dreams deeply!
+3. Invite your heart's invitations forth!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not capable of navigating life with curiosity and resilience?
-2. Have I not already proven my ability to embrace romantic impulses?
-3. Can I not rise to this challenge without losing my true desires?
+1. Am I not open to new emotional invitations?
+2. Have I not felt my heart's gentle calling?
+3. Can I not express my true creative feelings?
 
 ## ♾️ Infinitive Active Simple
 
-1. To embrace the deep waters of your inner desires
-2. To trust the gentle currents of your emotional growth
-3. To choose life with intention and clarity
+1. To receive feelings openly
+2. To express emotions gently now
+3. To follow intuition always
 
 ## 💡 Gerund Active
 
-1. Being open to new experiences is my strength
-2. Choosing courage to embrace change is my strength
-3. Embracing the unknown with grace is my strength
+1. Feeling emotions allows creative expression to flow
+2. Exploring dreams invites gentle emotional invitations
+3. Receiving intuition guides new heartfelt beginnings
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am guided by the currents of love and the depths of my heart
-2. I am supported by the wisdom of the waters that flow beneath my feet
-3. I am loved by the reflection of my true desires in the deep blue of the sea
+1. I am felt by gentle emotions by the heart
+2. I am guided by intuition by inner waters
+3. I am drawn by creative invitations by dreams
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always choose kindness to navigate my daily life
-2. I regularly practice gratitude to honor my inner self
-3. I consistently show up for myself to find my true path
+1. I always embrace my gentle feelings now
+2. I regularly follow my heart's invitations
+3. I consistently express my creative visions freely
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by my past
-2. I am not afraid of change
-3. I do not limit my own potential
+1. I am not afraid to express my true feelings
+2. I do not judge my unfolding emotions now
+3. I am not bound by rigid logic today

@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was inspired by the flame to create my new story
-2. I chose courage to embrace the unknown
-3. I found my strength in the fire of my unique self
+1. I was a visionary leader in my actions
+2. I commanded the fire of my ambition
+3. I executed my grand plans successfully
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am inspired by the fire of my unique self
-2. I trust the courage to create new narratives
-3. I am worthy of the creative energy that illuminates the path
+1. I lead with inspired creative energy now
+2. I master the flow of my vital ambition
+3. I act boldly toward my grand visions
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will find courage to embrace the unknown
-2. I will create new narratives through my unique self
-3. I will be inspired by the fire of authentic leadership
+1. I will lead with my inspired vision now
+2. I will harness my fire for grand action
+3. I will execute my ambitious plans confidently
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been creating my own unique story with courage
-2. I have been embracing the unknown with a passion for change
-3. I have been growing every day through the fire of inspiration
+1. I have been leading with inspired creative energy
+2. I have been harnessing my vision through action
+3. I have been executing my grand plans successfully
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have created a life that is uniquely mine
-2. I will have become the creator of my own destiny
-3. I will have overcame the fear of being different
+1. I will have led with fire and vision
+2. I will have mastered my vital energy flows
+3. I will have achieved grand creative execution
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We are inspired by the fire of our unique creative spirit
-2. We embrace the courage to create new narratives together
-3. We build our path with the radiant energy of our shared passion
+1. We lead with inspired creative energy together
+2. We harness our fire to achieve grand visions
+3. We execute our bold plans with focused drive
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They are ready to embrace the unknown
-2. They choose to create new narratives
-3. They are worthy of the fire
+1. He leads with inspired creative vision and passion
+2. She commands vital energy through bold action
+3. They execute grand plans with focused drive
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I can create a world where every story is told with the courage to be different
-2. I am able to lead with the passion to inspire others to embrace the unknown
-3. I could become the creative force that illuminates the path for everyone
+1. I can lead with inspired creative vision now
+2. I could harness my fire for grand plans
+3. I am able to execute my ambitious goals
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find my own voice in the fire of this moment
-2. If only I could create a new story with my hands
-3. Would that I might know my own worth in this light
+1. May I lead with inspired creative vision now
+2. Would that I might harness my fire fully
+3. If only I could execute my grand plans
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Be brave to create your own story!
-2. Trust your inner fire to guide your path!
-3. Embrace the unknown with courage!
+1. Lead your vision with burning passion!
+2. Command your energy and inspire action!
+3. Execute your grand plans with fire!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not capable of leading with fire and passion?
-2. Have I not already proven my courage to create new narratives?
-3. Can I not rise to this challenge without fear?
+1. Am I not leading with inspired vision now?
+2. Have I not channeled my fire into action?
+3. Can I not execute my grand plans today?
 
 ## ♾️ Infinitive Active Simple
 
-1. To create new narratives with the courage to embrace the unknown
-2. To live fully through the spark of your unique self
-3. To love without fear through the radiant energy of your flame
+1. To lead with passion and vision
+2. To act with confident energy now
+3. To create without hesitation or doubt
 
 ## 💡 Gerund Active
 
-1. Being brave is my strength
-2. Choosing growth every day
-3. Embracing uncertainty with grace
+1. Leading visions ignites powerful creative energy
+2. Directing passion fuels ambitious execution now
+3. Mastering fire drives inspired, confident action
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am inspired by the flame of your creative spark
-2. I am guided by the fire that illuminates your path
-3. I am supported by the courage to embrace the unknown
+1. I am led by inspired vision by fire
+2. I am guided by passion by ambition
+3. I am moved by creative energy by will
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always create new narratives with the courage to embrace the unknown
-2. I consistently explore unexpected opportunities to shape my well-being
-3. I regularly embrace the spark of my unique self to drive transformation
+1. I always lead with passionate creative vision
+2. I regularly harness vital energy for action
+3. I consistently execute grand plans with fire
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by my past
-2. I am not afraid of change
-3. I do not limit my own potential
+1. I am not limited by fear of failure
+2. I do not wait for permission to lead
+3. I am not bound by small visions

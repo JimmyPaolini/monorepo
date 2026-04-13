@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was healed from the deep wounds inflicted on others
-2. I chose to heal the permanent alteration of my own value
-3. I found my strength in the clarity of the pierced heart
+1. I felt the sharp pain of broken trust
+2. I accepted the sorrow of separation
+3. I confronted the painful reality of illusion
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am worthy of healing
-2. I trust my own peace
-3. I am free from pain
+1. I feel the sharp pain of my truth now
+2. I accept this sorrow as my reality
+3. I release broken trust and begin healing
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will find peace in the quiet of my own heart
-2. I will embrace the pain that I have endured
-3. I will find strength to heal the wounds that have been inflicted
+1. I will face this pain with honest acceptance
+2. I will release illusions and broken trust now
+3. I will allow my sorrow to guide my healing
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been healing my wounds and rebuilding my trust
-2. I have been choosing kindness and finding peace in the gray sky
-3. I have been growing every day and finding strength in the pierced heart
+1. I have been feeling the sharp pain of separation
+2. I have been processing the broken trust now
+3. I have been accepting this painful truth fully
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have healed the wounds that have been inflicted upon me
-2. I will have become the person I am meant to be
-3. I will have created a life I love
+1. I will have felt the sharp pain of separation
+2. I will have processed the broken trust completely
+3. I will have accepted this painful reality fully
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We heal our wounds together
-2. We stand firm together
-3. We are resilient together
+1. We feel the sharp truth of our separation now
+2. We accept the pain we have experienced together
+3. We rebuild trust from these broken pieces
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They are aware that their own value is being permanently altered by others
-2. They understand that the cruelty they may be inflicting on others is a permanent state
-3. They recognize that the gray sky surrounding them is filled with the weight of past decisions
+1. They feel the sharp edges of their true pain
+2. She accepts the sorrow of broken trust now
+3. He confronts the painful reality of separation
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I am able to heal the deep wounds that have hurt others
-2. I could choose to stand firm in my own value despite the pain
-3. I am capable of overcoming the crushing despair that surrounds me
+1. I can accept this painful truth now
+2. I could process this sorrow fully today
+3. I am able to heal these deep wounds
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find peace in this moment of pain
-2. If only I could heal my broken heart
-3. Would that I might know my own worth
+1. May I feel this pain fully now
+2. Would that I might accept the sharp truth
+3. If only I could release this sorrow
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Trust yourself! You are worthy of peace
-2. Embrace your strength! You are strong enough to stand
-3. Be bold! You can heal your heart
+1. Feel your sharp pain fully now!
+2. Accept your broken trust immediately!
+3. Face the truth and heal yourself
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not capable of healing this deep wound?
-2. Have I not already proven my resilience?
-3. Can I not rise to this challenge?
+1. Am I not broken by this sharp reality?
+2. Have I not felt this deep emotional pain?
+3. Can I not accept this painful separation now?
 
 ## ♾️ Infinitive Active Simple
 
-1. To heal the heart that is pierced by swords
-2. To choose peace over the pain of others
-3. To live fully without fear of betrayal
+1. To feel the sharp pain fully now
+2. To accept the broken truth bravely
+3. To heal the wounds without regret
 
 ## 💡 Gerund Active
 
-1. Being hurt by others is my strength
-2. Choosing to heal is my strength
-3. Embracing the pain of others is my strength
+1. Feeling sorrow allows healing to begin now
+2. Facing heartbreak brings necessary truth forth
+3. Processing pain enables authentic rebuilding
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am healed from the pain inflicted on others
-2. I am guided by the wisdom of healing
-3. I am supported by the truth of my own worth
+1. I am broken by sorrow
+2. I am wounded by separation
+3. I am held by painful truth
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always choose kindness to heal my wounds
-2. I regularly practice gratitude to restore my peace
-3. I consistently show up for myself to find my strength
+1. I always feel the sharp pain of my truth
+2. I regularly accept the sorrow of separation
+3. I consistently face my broken illusions now
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by the wounds I have sustained
-2. I am not afraid of the pain I have endured
-3. I am not limited by the scars I have left behind
+1. I am not defined by broken trust
+2. I do not carry all this sorrow alone
+3. I am not stuck in past illusions now

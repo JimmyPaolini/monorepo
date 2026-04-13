@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was brave enough to face the storm
-2. I chose courage to break the silence
-3. I found strength in the chaos
+1. I was broken down by necessary change
+2. I dismantled false structures completely
+3. I experienced truth through sudden upheaval
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am ready to face the storm and let the darkness reveal my true self
-2. I choose courage to break free from the old patterns of fear
-3. I embrace the turbulence to become a stronger and more authentic person
+1. I dismantle false structures now
+2. I accept necessary painful change
+3. I build a true foundation today
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will overcome the chaos that destroys my old identity
-2. I will find courage to face the dark side of my own soul
-3. I will transform the turbulence into a path to true strength
+1. I will dismantle false structures in my life
+2. I will accept this necessary upheaval now
+3. I will build a solid reality from the ruins
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been learning to let go of the old patterns that block my growth
-2. I have been choosing courage to face the darkness that reveals hidden truths
-3. I have been becoming resilient by embracing the turbulence that destroys stagnant structures
+1. I have been dismantling false structures of my mind
+2. I have been clearing debris from my old illusions
+3. I have been building a solid reality now
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have overcome the darkness that consumes my old self
-2. I will have become the person I am meant to be
-3. I will have created a life that honors the truth of the tower
+1. I will have demolished false structures now
+2. I will have become free from illusion finally
+3. I will have cleared debris for true growth
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We stand together to face the storm
-2. We build a new home for our souls
-3. We rise to embrace the chaos
+1. We dismantle false structures together
+2. We release old illusions in action
+3. We build new truths from the ruins
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. He stands firm in his own strength despite the storm
-2. She trusts in her own ability to navigate the turbulent waters
-3. They believe in their own power to overcome the darkness
+1. They dismantle false structures in their lives
+2. She confronts painful truths within her being
+3. It clears debris to build a solid reality
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I can become a stronger version of myself that embraces the chaos of the tower
-2. I am able to face the darkness and find my true potential within the storm
-3. I can choose to trust in the healing power of the lightning that reveals hidden truths
+1. I can dismantle false structures now
+2. I could clear debris for new truth
+3. I am able to face necessary change
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find peace within the stormy sky
-2. If only I could stand firm in the rising light
-3. Would that I might know the truth of my own heart
+1. May I dismantle false structures now
+2. Would that I might release old illusions
+3. If only I could build true foundations
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Be brave enough to face the storm
-2. Trust your inner strength to overcome fear
-3. Embrace the chaos that leads to growth
+1. Tear down false structures yourself
+2. Face the truth and break old illusions
+3. Build a solid reality from the ashes
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not capable of facing the storm that destroys my old ways?
-2. Have I not already learned to trust the light that reveals hidden truths?
-3. Can I not rise to this challenge without fear of the dark side?
+1. Am I not dismantling false structures now?
+2. Have I not broken old illusions without fear?
+3. Can I not build truth from this rubble?
 
 ## ♾️ Infinitive Active Simple
 
-1. To embrace the chaos that destroys old patterns
-2. To transform the shadow into a resilient being
-3. To live fully without fear
+1. To dismantle false structures swiftly
+2. To awaken to undeniable truth now
+3. To build a solid reality freely
 
 ## 💡 Gerund Active
 
-1. Being brave is my strength
-2. Choosing growth every day
-3. Embracing uncertainty with grace
+1. Dismantling illusions brings necessary truth to light
+2. Breaking old structures creates authentic foundations now
+3. Confronting chaos allows true liberation to emerge
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am guided by the light of the tower
-2. I am supported by the shadow of the tower
-3. I am transformed by the storm of the tower
+1. I am broken by old structures
+2. I am dismantled by necessary change
+3. I am grounded by truth revealed
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always stand firm in my own truth and courage
-2. I regularly trust my inner voice to guide my path
-3. I consistently embrace the turbulence of change to grow
+1. I always dismantle false structures now
+2. I regularly clear old illusions daily
+3. I consistently build authentic foundations
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by my past
-2. I am not afraid of change
-3. I do not limit my own potential
+1. I am not built on false foundations
+2. I do not accept illusions anymore
+3. I am not bound by crumbling structures

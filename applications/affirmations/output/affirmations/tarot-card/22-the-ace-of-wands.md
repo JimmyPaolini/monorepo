@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was brave enough to ignite a spark of new ideas
-2. I chose courage to embrace the spring of fresh possibilities
-3. I trusted my intuition to turn a lost dream into a reality
+1. I was the source of pure creative fire
+2. I ignited my vision with bold action
+3. I started my new journey with passion
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am ready to act on my initial impulse
-2. I trust the magic of the mind to transform reality
-3. I embrace the spark of inspiration with vigor
+1. I possess raw creative energy now
+2. I ignite my passion into action
+3. I start my ambitious journey today
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will ignite a spark of creativity that will transform my daily life
-2. I will embrace the new with the assurance that my potential is ready to flourish
-3. I will find peace by trusting the bright light of my initial impulse
+1. I will ignite my inner fire now
+2. I will create my bold new vision
+3. I will channel my passion into action
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been embracing the new with the assurance that the spark is bright and ready to be used
-2. I have been trusting my intuition and embracing change with vigor to unlock the magic of the mind
-3. I have been pursuing dreams with fervor, knowing that success is within grasp if one trusts their initial impulse
+1. I have been igniting my creative passion always
+2. I have been channeling my fire into action now
+3. I have been building my vision with bold energy
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have become the creator of new possibilities
-2. I will have created a life that is filled with hope and courage
-3. I will have achieved the vision that the magic wand has promised
+1. I will have ignited my creative fire now
+2. I will have channeled my passion into action
+3. I will have begun my ambitious journey
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We are ready to act on our initial impulses with courage
-2. We embrace the new with the assurance that the spark is bright
-3. We trust our intuition to guide us through the path of change
+1. We ignite our passion together now
+2. We channel our fire into action
+3. We create new beginnings with courage
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They trust their intuition to guide their path forward
-2. They embrace the magic of their own imagination
-3. They are ready to act on their initial impulses
+1. They ignite their passion into bold action
+2. She channels her fire toward new creation
+3. It embodies the spark of pure ambition
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I can create new paths that lead to new horizons
-2. I am able to see the spark of inspiration in every moment
-3. I could become the creator of my own destiny
+1. I can ignite my true creative passion now
+2. I am able to channel this fire into action
+3. I can begin my ambitious journey today
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find the spark of creativity in this moment
-2. If only I could trust my intuition to guide my path
-3. Would that I might embrace the new with the courage of the wand
+1. May I ignite my passion for new beginnings
+2. Would that I might channel this fire to create
+3. If only I could pursue my true creative vision
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Trust your intuition to ignite your spark!
-2. Embrace the new journey with courage!
-3. Be bold to turn your dreams into reality!
+1. Ignite your inner fire now!
+2. Create your vision with passion!
+3. Act upon your bold creative impulse!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not ready to leap into the unknown with the courage of the wand?
-2. Have I not already found the spark that ignites the path forward?
-3. Can I not trust the green light to guide me through the storm of doubt?
+1. Am I not igniting my true creative fire?
+2. Have I not started this bold new journey?
+3. Can I not channel my passion into action?
 
 ## ♾️ Infinitive Active Simple
 
-1. To embrace the new with the assurance that the spark is bright and ready to be used
-2. To trust your intuition and embrace change with vigor
-3. To pursue dreams with fervor, knowing that success is within grasp if one trusts their initial impulse
+1. To ignite your passion immediately
+2. To pursue your vision boldly
+3. To create without hesitation now
 
 ## 💡 Gerund Active
 
-1. Being brave is my strength to act on initial impulses
-2. Choosing growth every day is my strength to embrace change
-3. Embracing uncertainty with grace is my strength to trust the spark
+1. Igniting passion fuels my bold creative action
+2. Channeling fire drives my ambitious new vision
+3. Embracing inspiration builds my energetic future
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am guided by the magic of the wand to see the path forward
-2. I am supported by the spark of inspiration to embrace new possibilities
-3. I am ready to act with courage to create the world anew
+1. I am inspired by creative energy by the spark
+2. I am driven by passion by the inner fire
+3. I am ignited by vision by bold action
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always act with courage to create new possibilities
-2. I consistently dream with the belief that my spark is ready to bloom
-3. I regularly embrace change with the assurance that my heart is open
+1. I always ignite my passion for new beginnings
+2. I regularly channel my fire into action now
+3. I consistently pursue my bold creative vision
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by my past
-2. I am not afraid of change
-3. I do not limit my own potential
+1. I am not afraid to ignite my inner creative fire
+2. I do not wait for permission to start my vision
+3. I am not limited by doubt in my new beginning

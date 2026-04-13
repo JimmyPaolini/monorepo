@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I chose courage to face the darkness
-2. I found my strength in the chaos
-3. I was brave enough to stand against the temptation
+1. I recognized my chains of desire
+2. I understood my self-imposed limits
+3. I broke the bonds of earthly attachment
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I choose to trust myself
-2. I am worthy of love
-3. I trust myself
+1. I recognize my self-imposed chains now
+2. I choose freedom over earthly desires
+3. I break these mental bonds today
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will find peace through the power of self-control
-2. I will choose integrity over the fleeting pleasures of the world
-3. I will overcome the darkness that follows my own desires
+1. I will break these chains of desire
+2. I will recognize my self-imposed limits
+3. I will choose true spiritual freedom now
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been choosing kindness and integrity
-2. I have been growing every day with self-control
-3. I have been resisting the temptation to seek pleasure over truth
+1. I have been recognizing my self-imposed chains
+2. I have been releasing material attachments now
+3. I have been choosing freedom over desire always
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have overcome the temptation that drives me to self-harm
-2. I will have become the person I am meant to be
-3. I will have created a life I love
+1. I will have broken the chains of desire
+2. I will have realized my true freedom now
+3. I will have escaped material bondage completely
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We are all stronger together
-2. We support each other
-3. We create positive change
+1. We recognize our self-imposed chains together
+2. We break the bonds of earthly desire now
+3. We choose freedom over material attachment
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. She is free from the chains of her own desires
-2. He stands above the darkness of his impulses
-3. They walk toward a path of clarity and integrity
+1. They recognize their self-imposed mental chains
+2. She accepts the weight of earthly attachments
+3. He chooses freedom from material desires
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I can choose to walk away from the darkness that follows my own desires
-2. I am able to stand firm against the temptation to escape the consequences of my actions
-3. I could become someone who trusts only the truth and the heart, not the shadow
+1. I can recognize my self-imposed chains now
+2. I could release earthly desires easily
+3. I am able to choose true freedom today
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find peace in this chaotic moment
-2. If only I could trust my own heart
-3. Would that I might know my true worth
+1. May I break these chains of desire now
+2. Would that I might release my earthly bonds
+3. If only I could see my true freedom
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Be brave to face the darkness
-2. Trust your own inner strength
-3. Embrace your true self
+1. Recognize your chains and break them now!
+2. Release your material desires immediately!
+3. Choose freedom over earthly attachments always!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not capable of enduring the darkness of temptation?
-2. Have I not already proven my resilience against the Devil's influence?
-3. Can I not rise to this challenge without the Devil's shadow?
+1. Am I not bound by false desires?
+2. Have I not created these heavy chains?
+3. Can I not break these self-made limits?
 
 ## ♾️ Infinitive Active Simple
 
-1. To choose truth over pleasure
-2. To remain strong without fear
-3. To love without the shadow of guilt
+1. To recognize desire without attachment
+2. To break free from mental chains now
+3. To choose freedom over earthly possessions
 
 ## 💡 Gerund Active
 
-1. Being the master of my own desires is my strength
-2. Choosing to prioritize truth over pleasure is my strength
-3. Embracing the chaos of my own impulses is my strength
+1. Recognizing chains frees my true spirit
+2. Breaking desires releases my inner self
+3. Choosing freedom dissolves material bonds
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am guided by the lessons of the Devil
-2. I am supported by the warning of the Devil
-3. I am loved by the danger of the Devil
+1. I am held by desire by earthly chains
+2. I am bound by possessions by material wants
+3. I am seen by illusion by self-made limits
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always choose kindness
-2. I regularly practice gratitude
-3. I consistently show up for myself
+1. I always recognize my self-imposed chains now
+2. I regularly release material desires easily
+3. I consistently choose freedom over attachment always
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by my past
-2. I am not afraid of change
-3. I do not limit my own potential
+1. I am not bound by material desires now
+2. I do not own my limitations of fear
+3. I am not defined by earthly attachments

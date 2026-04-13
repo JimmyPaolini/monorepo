@@ -36,6 +36,7 @@ iterrows
 kwargs
 logprobs
 pathlib
+reraise
 rstrip
 setattr
 staticmethod

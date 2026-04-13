@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was sharp in my judgment to resolve the conflict
-2. I chose courage to face the two swords
-3. I found my strength in the sharp decision
+1. I was blindfolded by fear and chose silence
+2. I saw the conflict but refused to speak
+3. I held the swords and accepted the stalemate
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I choose to face the conflict with clarity
-2. I resolve the tension with firmness
-3. I stand by my judgment to end the struggle
+1. I hold tension while avoiding difficult truths
+2. I choose silence to maintain my fragile peace
+3. I see the need to face my inner conflict
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will resolve the conflict with clarity
-2. I will choose the path that leads to peace
-3. I will find the strength to stand firm
+1. I will remove the blindfold and see the truth
+2. I will face the conflict and make a choice
+3. I will release the tension and find true peace
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been navigating the complex web of conflict with sharp clarity
-2. I have been choosing firm judgment to resolve the immediate tension
-3. I have been making a decisive pivot to stop the ongoing struggle
+1. I have been holding back my true vision for too long
+2. I have been avoiding the painful truth in silence
+3. I have been balancing opposing forces internally now
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have resolved the conflict that has been brewing for days
-2. I will have made a firm decision to cut the tangled threads of our relationship
-3. I will have achieved the clarity needed to see the true nature of our opposing forces
+1. I will have faced the truth and released the tension
+2. I will have become free from willful ignorance now
+3. I will have chosen clarity over painful silence
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We resolve conflict with clarity and resolve
-2. We make a sharp decision to navigate the crisis
-3. We choose firm action to prevent further loss
+1. We hold tension while we avoid the truth
+2. We choose silence to avoid painful vision
+3. We face conflict to find true clarity
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They face the challenge of their own judgment
-2. She stands firm in her unique path
-3. He chooses the right course of action
+1. They hold their peace through willful ignorance now
+2. She avoids the truth behind her blindfold always
+3. It balances opposing forces in quiet stillness
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I am able to make a sharp decision to resolve this conflict
-2. I can choose to stand firm and clear the path forward
-3. I could navigate this crisis with clarity and resolve
+1. I can choose to see the difficult truth now
+2. I could release this painful emotional silence easily
+3. I am able to face my internal conflict fully
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find peace in this moment of sharp conflict
-2. If only I could choose to see the truth clearly
-3. Would that I might know the path forward with clarity
+1. May I see the truth behind my blindfold
+2. If only I could release this painful silence
+3. Would that I might choose a path now
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Be sharp! Resolve the conflict now!
-2. Be clear! Make a decisive choice!
-3. Be firm! Stand by your judgment!
+1. Face your truth now!
+2. Remove your blindfold immediately!
+3. Choose your path despite the pain!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not capable of seeing the truth before the sword breaks?
-2. Have I not already proven that compromise is futile in this crisis?
-3. Can I not rise to this challenge with a sharp, decisive judgment?
+1. Am I not avoiding the truth now?
+2. Have I not silenced my true vision yet?
+3. Can I not face these painful choices?
 
 ## ♾️ Infinitive Active Simple
 
-1. To choose peace over conflict
-2. To stand firm in truth
-3. To resolve the crisis
+1. To see the truth without fear
+2. To choose peace by facing pain
+3. To release the silence and move forward
 
 ## 💡 Gerund Active
 
-1. Being sharp is my strength in navigating conflict
-2. Choosing clarity is my strength in resolving tension
-3. Being decisive is my strength in facing crisis
+1. Facing truths releases the tension within me
+2. Choosing vision dissolves the painful silence now
+3. Releasing the blindfold allows true movement forward
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am guided by the wisdom of the Two of Swords
-2. I am supported by the sharp judgment of the Two of Swords
-3. I am resolved by the clarity of the Two of Swords
+1. I am held by silence by the conflict
+2. I am seen by the blindfold by avoidance
+3. I am grounded by tension by opposing forces
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always choose to resolve the conflict with clarity
-2. I consistently apply judgment to navigate the crisis
-3. I regularly pivot to find the path forward
+1. I always avoid the truth behind my blindfold
+2. I regularly hold tension to keep peace
+3. I consistently choose to face my difficult reality
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by the past
-2. I am not afraid of the conflict
-3. I do not limit my own potential
+1. I do not ignore my true feelings now
+2. I am not frozen by my own silence
+3. I do not avoid the necessary truth

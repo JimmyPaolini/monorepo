@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was ready to cut through the fog of old habits
-2. I chose to move forward with a clear mind
-3. I found my strength in the sudden clarity of reality
+1. I cut through illusion with my sharp mind
+2. I found absolute truth in my clarity
+3. I established a new path with logic
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am ready to change the game
-2. I trust my mind to see the truth
-3. I am strong enough to move forward
+1. I cut through illusion with sharp intellect
+2. I find absolute truth through clear thought
+3. I establish a new path with honest logic
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will find clarity in my mind
-2. I will choose to change my path
-3. I will find strength in my resolve
+1. I will cut through all illusions with my mind
+2. I will establish clear and honest truths now
+3. I will claim my intellectual freedom immediately
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been sharpening my mind to cut through the fog of uncertainty
-2. I have been choosing clarity to break the chains of stagnation
-3. I have been moving forward with the energy to heal the broken parts of my life
+1. I have been cutting through illusion with sharp intellect
+2. I have been establishing new truths through clear thought
+3. I have been finding freedom by speaking my honest truth
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have overcome the ambiguity that has been holding me back
-2. I will have become the person I am meant to be in this moment
-3. I will have created a life that is fully focused and ready for change
+1. I will have cut through illusion and found truth
+2. I will have established a clear and logical path
+3. I will have achieved intellectual freedom from doubt
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We are ready to cut through the fog of uncertainty
-2. We choose bold steps to break the old ways
-3. We move forward with clarity and purpose
+1. We cut through illusion with sharp intellect
+2. We find truth through clear mental vision
+3. We establish new paths with honest logic
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They are ready to cut through the fog of old habits
-2. She is willing to make the difficult choices she needs
-3. They are focused on the truth and the path forward
+1. They cut through illusion with sharp intellect
+2. She establishes truth through clear logic
+3. He finds freedom in intellectual clarity
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I can break the old patterns that hold me back
-2. I am ready to change the course of this journey
-3. I can move forward with the clarity I need
+1. I can cut through all mental illusions now
+2. I am able to speak my truth clearly
+3. I can establish a new logical path
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find clarity in this moment
-2. If only I could feel at peace
-3. Would that I might know my own worth
+1. May I cut through illusion with sharp intellect
+2. Would that I might speak my truth clearly
+3. If only I could find absolute clarity now
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Be bold to cut through the fog of doubt
-2. Trust your clarity to break the old pattern
-3. Embrace the urgency to change your habits
+1. Cut through illusion with your sharp mind!
+2. Find absolute truth in your clear thinking!
+3. Declare your logical path forward now!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not ready to cut through the fog of yesterday's stagnation?
-2. Have I not already found the clarity to break the old pattern?
-3. Can I not move forward without the hesitation of fear?
+1. Am I not clear in my true intentions?
+2. Have I not cut through all illusions now?
+3. Can I not speak my truth without fear?
 
 ## ♾️ Infinitive Active Simple
 
-1. To cut through the fog of old habits
-2. To move forward with clarity and courage
-3. To embrace the truth with fresh energy
+1. To cut through illusion with clarity
+2. To speak the absolute truth without fear
+3. To establish a new path logically
 
 ## 💡 Gerund Active
 
-1. Being clear-headed is my strength
-2. Making decisive choices is my strength
-3. Being ready to change is my strength
+1. Cutting through illusion brings sharp clarity now
+2. Thinking clearly establishes a new path forward
+3. Communicating truth liberates mental freedom always
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am guided by the truth of this moment
-2. I am supported by the clarity of this decision
-3. I am ready to change the game with this energy
+1. I am cut through illusion by clarity
+2. I am liberated by absolute truth
+3. I am guided by sharp intellect
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always choose clarity to break the cycle of stagnation
-2. I regularly practice decisive action to restore vitality
-3. I consistently move forward with focus to heal the wounds
+1. I always cut through illusion with sharp intellect
+2. I regularly find absolute truth through logic
+3. I consistently communicate my clear vision now
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by my past
-2. I am not afraid of change
-3. I do not limit my own potential
+1. I do not accept illusion of false peace
+2. I am not confused by emotional entanglement
+3. I do not fear cutting through my truths

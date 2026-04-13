@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was diligent in my craft
-2. I chose patience in my work
-3. I found my strength in repetition
+1. I focused my energy on my craft
+2. I practiced my skills with great care
+3. I built my success through steady work
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am ready to master my craft with patience
-2. I trust that consistent repetition will build my foundation
-3. I am confident in my ability to complete my work
+1. I focus my energy on skilled craftsmanship now
+2. I practice diligently to build my true worth
+3. I master my craft through patient effort
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will carve my own path with consistent, deliberate effort
-2. I will find the satisfaction in aligning my work with my true purpose
-3. I will build a foundation of competence that will define my future
+1. I will practice my craft with focused attention
+2. I will build my skills through consistent effort
+3. I will achieve mastery through daily diligence
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been carving my craft with patience and precision
-2. I have been learning to trust the process of repetition
-3. I have been building my foundation through consistent daily effort
+1. I have been honing my craft with focused attention
+2. I have been practicing my skills through consistent effort
+3. I have been building my value through daily diligence
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have become the craftsman who carves the perfect pentacles on the coin
-2. I will have achieved the alignment of my work with the Master of the Craft archetype
-3. I will have created a foundation of consistent repetition that defines my future trajectory
+1. I will have honed my skills through patient practice
+2. I will have created valuable work through focus
+3. I will have built mastery through consistent effort
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We are diligent in our daily practice
-2. We are patient with our slow progress
-3. We are committed to building our foundation
+1. We practice diligently for true mastery together
+2. We focus intently on our daily craftsmanship now
+3. We build valuable skills through consistent effort
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. He is ready to master the craft of his work
-2. She is prepared to carry the weight of her own creation
-3. They are confident in the future of their collective effort
+1. They practice their craft with focused attention
+2. She builds her skills through diligent effort
+3. He masters his work with patient dedication
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I am able to carve the perfect pentacles into my own hands
-2. I could be the master of my own craft and the world
-3. I am capable of building a foundation that will last for years
+1. I can focus on my craft with great attention
+2. I am able to build value through steady practice
+3. I can master skills through diligent daily effort
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find my own worth through the steady work of this craft
-2. If only I could rest to renew my hands on this coin
-3. Would that I might know the beauty of repetition in this row
+1. May I focus my craft with patient dedication now
+2. If only I could master this skill through practice
+3. Would that I might build value with careful effort
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Be persistent in your daily practice of your craft
-2. Trust the steady rhythm of your repetitive work
-3. Embrace the patience required to master your skills
+1. Focus your energy on your craft!
+2. Practice your skills with steady attention!
+3. Build your success through diligent effort!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not ready to master this craft with unwavering patience?
-2. Have I not already cultivated the discipline to endure the tedious grind?
-3. Can I not rise to this challenge without the fear of falling behind?
+1. Am I not focused on my craft now?
+2. Have I not practiced diligently today?
+3. Can I not master this skill slowly?
 
 ## ♾️ Infinitive Active Simple
 
-1. To carve my own coins with purpose
-2. To hang my completed work in a neat row
-3. To rest while I work my craft
+1. To practice diligently to master the craft
+2. To focus intently to build true skill
+3. To work consistently to create real value
 
 ## 💡 Gerund Active
 
-1. Being diligent in your daily practice is my strength
-2. Choosing patience in your daily work is my strength
-3. Embracing the slow pace of your daily growth is my strength
+1. Practicing skill builds true mastery daily
+2. Focusing effort creates tangible value now
+3. Refining craft earns deserved recognition
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am guided by the lessons of repetition
-2. I am supported by the beauty of consistent work
-3. I am loved by the foundation laid today
+1. I am shaped by diligent practice and focus
+2. I am grounded by consistent, careful effort
+3. I am held by the value of my craftsmanship
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always carve my own coins with precision and patience
-2. I consistently align my daily actions with my deep purpose
-3. I regularly rest and nurture my craft to sustain my work
+1. I always focus my energy on skilled work
+2. I regularly practice craftsmanship with deep care
+3. I consistently build my success through effort
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by my past
-2. I am not afraid of change
-3. I do not limit my own potential
+1. I am not distracted by shortcuts in my work
+2. I do not seek instant rewards without effort
+3. I am not afraid to practice with focused attention

@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was patient with the slow growth of my relationship
-2. I chose wisdom over the immediate gratification of my work
-3. I found my strength in the long-term view of my health
+1. I assessed my efforts with calm patience
+2. I waited for my seeds to grow fully
+3. I recognized the value of my cultivation
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am ready to evaluate whether my current path is becoming unsustainable
-2. I trust that the right connection will develop after this period of waiting
-3. I am wise enough to recognize that an investment is not going to pay off as expected
+1. I observe my efforts with calm patience
+2. I trust the unfolding timeline of growth
+3. I appreciate the process of my cultivation
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will find peace in the quiet of the garden
-2. I will embrace the potential of the seed waiting for the sun
-3. I will find the wisdom of the Elder in the landscape
+1. I will patiently assess my current efforts now
+2. I will trust the unfolding process of growth
+3. I will recognize the future harvest I deserve
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been evaluating the progress of my project with the wisdom of the Elder
-2. I have been trusting that the right connection will develop despite the slow pace of growth
-3. I have been reflecting on whether the effort is yielding proportional results or if the path is becoming unsustainable
+1. I have been tending my seeds with patient care
+2. I have been assessing the growth of my efforts
+3. I have been waiting for the rightful harvest now
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have become the person I am meant to be
-2. I will have created a life I love
-3. I will have overcome this challenge
+1. I will have assessed my efforts and seen growth
+2. I will have cultivated patience for the coming harvest
+3. I will have recognized the value of my investment
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We are ready to work together with wisdom
-2. We trust the connection to grow in the right direction
-3. We create positive change together
+1. We assess our efforts with calm patience
+2. We trust the process of our growth now
+3. We honor the seeds we have planted
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. They stand ready to face the challenges that lie ahead
-2. They trust that the right connection will develop in time
-3. They recognize that true success requires patience and humility
+1. They assess their efforts in the field of growth
+2. She waits for the harvest of her planted seeds
+3. It trusts the natural rhythm of cultivation
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I am able to see the long-term picture of my work
-2. I could trust that the right connection will develop
-3. I am able to choose wisely over working hard enough
+1. I can assess my efforts with calm focus
+2. I could wait for the right time to harvest
+3. I am able to trust the unfolding growth
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find clarity in this moment
-2. If only I could feel at peace
-3. Would that I might know my own worth
+1. May I observe my planted seeds growing slowly
+2. If only I could trust this patient unfolding now
+3. Would that I might honor my careful cultivation
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Be patient with the slow growth of your relationship
-2. Trust the wisdom of the Elder to guide your path
-3. Embrace the patience that leads to true success
+1. Be patient with your cultivated efforts!
+2. Assess your progress with careful attention!
+3. Trust the unfolding timeline for your harvest!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not ready to let go of the past to begin anew?
-2. Have I not already proven my resilience in the face of uncertainty?
-3. Can I not rise to this challenge with the wisdom of the Elder?
+1. Am I not trusting the process of my growth?
+2. Have I not honored my past efforts patiently?
+3. Can I not see the future harvest unfolding?
 
 ## ♾️ Infinitive Active Simple
 
-1. To stand firm in the quiet wisdom of the garden
-2. To trust the slow, steady growth of the seed
-3. To choose patience over the rush of the harvest
+1. To observe the process patiently
+2. To assess the effort carefully
+3. To trust the unfolding growth
 
 ## 💡 Gerund Active
 
-1. Being patient is my strength in navigating the path
-2. Choosing wisdom over speed is my strength in facing challenges
-3. Embracing the slow pace is my strength in building lasting connections
+1. Reflecting effort builds patient wisdom
+2. Cultivating patience yields future harvest
+3. Observing growth reveals true value
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am guided by the wisdom of the Elder
-2. I am supported by the promise of the future
-3. I am waiting for the harvest to be ready
+1. I am patiently held by the unfolding timeline
+2. I am assessed by the process of careful cultivation
+3. I am grounded by the seeds that have been sown
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always choose patience to navigate the slow growth of my relationship
-2. I consistently trust the long-term value of my investment over short-term gains
-3. I regularly evaluate the progress of my health practices with the wisdom of the Elder
+1. I always observe my planted seeds patiently
+2. I regularly assess my sustained efforts now
+3. I consistently trust the unfolding growth timeline
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by my past
-2. I am not afraid of change
-3. I do not limit my own potential
+1. I do not rush the harvest of my planted seeds
+2. I am not anxious about the slow growth process
+3. I do not seek instant results without patience

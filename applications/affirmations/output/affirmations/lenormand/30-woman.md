@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was resilient to every storm that came my way
-2. I held my true values with unwavering strength
-3. I trusted my own path to lead to a prosperous future
+1. I was deeply intuitive in my past
+2. I received emotional wisdom then
+3. I nurtured my inner creative self
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am a woman who defines my own path
-2. I am a woman who thrives in difficult times
-3. I am a woman who creates my own reality
+1. I embody deep feminine intuition now
+2. I receive energy with open heart always
+3. I connect with my inner emotional truth
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will become a source of peace and trust
-2. I will find strength to overcome every challenge
-3. I will build a life of stability and prosperity
+1. I will embrace my deep emotional truth
+2. I will receive intuitive guidance easily
+3. I will create my reality through feeling
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been building my own path with courage
-2. I have been creating peace through kindness and grace
-3. I have been leading my life with wisdom and purpose
+1. I have been receiving my deep emotional truths
+2. I have been nurturing my inner creative force
+3. I have been embodying feminine intuition fully
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have overcome every obstacle with grace
-2. I will have built a foundation of trust for our shared future
-3. I will have become the architect of my own prosperity
+1. I will have embodied feminine intuition fully realized
+2. I will have nurtured deep emotional truths completely
+3. I will have created my inner landscape perfectly balanced
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We are connected and united in our shared strength
-2. We stand together as a powerful and resilient group
-3. We honor our collective identity in our shared purpose
+1. We embrace our deep emotional truths together
+2. We connect with our intuition and inner self
+3. We nurture our creative energy in harmony
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. She stands tall in her own truth
-2. He trusts his own path with grace
-3. They build a life of peace in their own way
+1. She receives deep emotional wisdom from her heart
+2. The feminine energy flows with intuitive knowing now
+3. She nurtures her inner world with gentle compassion
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I am able to build a life of peace and stability
-2. I can create a world where everyone feels valued
-3. I am capable of leading with grace and strength
+1. I can receive deep emotional truths now
+2. I could nurture my inner creative force
+3. I am able to connect with my intuition
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I be free to choose my own path today
-2. If only I could trust my own values
-3. Would that I might find peace in my own heart
+1. May I receive deep emotional wisdom now
+2. If only I could trust my inner knowing always
+3. Would that I might nurture my true creative self
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Be confident! You define your own path
-2. Be resilient! You create your own prosperity
-3. Be strong! You build your own reality
+1. Receive your deep intuition now
+2. Embrace your emotional truth fully
+3. Nurture your inner creative self
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Can I not choose my own path today?
-2. Have I not learned to trust my own strength?
-3. Can I not build a life of my own making?
+1. Am I not fully receiving my deep intuition
+2. Have I not allowed my emotions to guide me
+3. Can I not trust my feminine creative power
 
 ## ♾️ Infinitive Active Simple
 
-1. To define my own path with grace
-2. To build a life rooted in my own values
-3. To embrace my own strength and resources
+1. To receive love without condition
+2. To feel emotions with deep truth
+3. To create beauty from inner feeling
 
 ## 💡 Gerund Active
 
-1. I choose to be a woman who creates my own path every day
-2. I choose to be a woman who thrives in every difficult time
-3. I choose to be a woman who builds my own foundation for all others
+1. Receiving energy nurtures deep emotional connection
+2. Embodying intuition guides your creative unfolding
+3. Feeling deeply allows authentic self expression
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am held by love that sustains me
-2. I am supported by the anchor that holds my values
-3. I am empowered by the fish that offers me resources
+1. I am intuition by deep feeling held
+2. I am creativity by emotional flow guided
+3. I am connection by inner truth embraced
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always choose to be my own guide and direction
-2. I consistently build my life with love and trust
-3. I always find peace within my own values and choices
+1. I always receive deep emotional truths now
+2. I regularly trust my inner intuition always
+3. I consistently nurture my sensitive soul deeply
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by my role
-2. I am not limited by my expectations
-3. I do not fear my own power
+1. I am not limited by external expectations
+2. I do not fear my deep emotional truths
+3. I am not alone in my intuitive knowing

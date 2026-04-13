@@ -3,96 +3,96 @@
 
 ## ✅ Finite Indicative Active Past Simple First Singular
 
-1. I was sharp enough to cut through lies
-2. I chose compassion without losing my mind
-3. I found my strength in truth and warmth
+1. I was clear in my sharp decision
+2. I cut through illusion with my mind
+3. I spoke the truth with pure logic
 
 ## ⭐ Finite Indicative Active Present Simple First Singular
 
-1. I am strong enough to stand alone while remaining fully connected
-2. I choose justice without losing the warmth of my heart
-3. I trust my intellect to cut through lies while loving my humanity
+1. I use my mind for absolute truth
+2. I cut through illusion with sharp words
+3. I govern my thoughts with clear reason
 
 ## ⏭️ Finite Indicative Active Future Simple First Singular
 
-1. I will find peace
-2. I will succeed
-3. I will embrace my potential
+1. I will cut through illusion with my sharp intellect
+2. I will speak my truth with clear precision now
+3. I will govern my mind with pure reason always
 
 ## 🔄 Finite Indicative Active Present Perfect Progressive First Singular
 
-1. I have been cultivating my sharp intellect to cut through lies
-2. I have been choosing kindness to balance my cold truth with warm compassion
-3. I have been growing every day to act justly while remaining emotionally connected
+1. I have been cutting through illusion with my mind
+2. I have been defining my truth with clear words
+3. I have been establishing boundaries through sharp thought
 
 ## 🎯 Finite Indicative Active Future Perfect Perfective First Singular
 
-1. I will have cut through every lie to reveal the truth
-2. I will have become the person I am meant to be
-3. I will have created a life I love
+1. I will have cut through illusion with pure thought
+2. I will have established truth through clear words
+3. I will have mastered my mind with sharp intellect
 
 ## 🤝 Finite Indicative Active Present Simple First Plural
 
-1. We stand firm with our minds sharp and our hearts warm
-2. We choose justice over comfort and truth over lies
-3. We are united by our intellect and our compassion
+1. We use our minds to cut through illusion together
+2. We speak the truth with clear and sharp words
+3. We govern our thoughts with pure intellect now
 
 ## 👤 Finite Indicative Active Present Simple Third
 
-1. She stands firm in her own judgment
-2. He remains true to his own principles
-3. They uphold their own values
+1. She cuts through illusion with sharp intellect
+2. They speak their truth with clear precision
+3. He governs his mind through pure reason
 
 ## 💪 Finite Potential Active Present Simple First Singular
 
-1. I can stand firm on the truth of my own heart
-2. I am able to choose justice over comfort
-3. I could maintain my integrity while loving my friends
+1. I can cut through illusion with sharp intellect
+2. I could speak my truth with clear precision
+3. I am able to govern my mind with reason
 
 ## 🙏 Finite Optative Active First Singular
 
-1. May I find clarity in this moment
-2. If only I could feel at peace
-3. Would that I might know my own worth
+1. May I cut through illusion with sharp intellect
+2. If only I could speak pure, objective truth
+3. Would that I might govern by clear reason
 
 ## ❗ Finite Imperative Active Second Singular
 
-1. Be sharp and honest!
-2. Trust your wisdom!
-3. Embrace your courage!
+1. Cut through illusion with your sharp intellect!
+2. Speak your truth with unwavering clarity now!
+3. Master your mind through objective reason always!
 
 ## ❓ Finite Interrogative Active Present First Singular Negative
 
-1. Am I not capable of standing firm in my truth without losing my humanity?
-2. Have I not already proven that justice is the only strength that remains warm?
-3. Can I not rise to this challenge without sacrificing my compassion for others?
+1. Am I not clear with my true vision?
+2. Have I not cut through all illusion?
+3. Can I not speak my truth now?
 
 ## ♾️ Infinitive Active Simple
 
-1. To stand firm in truth without losing sight of humanity
-2. To choose justice over comfort without sacrificing empathy
-3. To act justly while remaining emotionally connected
+1. To cut through illusion with sharp intellect
+2. To speak the truth without sentiment
+3. To govern your mind with pure reason
 
 ## 💡 Gerund Active
 
-1. Being independent is my strength
-2. Choosing justice is my strength
-3. Embracing truth is my strength
+1. Cutting illusion reveals the objective truth
+2. Analyzing facts sharpens my clear judgment
+3. Communicating truth demands precise intellect
 
 ## 🌊 Finite Indicative Passive Present Simple First Singular
 
-1. I am guided by the wisdom of the sword
-2. I am supported by the balance of the heart
-3. I am loved by the truth of the mind
+1. I am held by truth by sharp intellect
+2. I am seen by clarity by objective thought
+3. I am grounded by reason by firm boundaries
 
 ## 🔁 Finite Indicative Active Present Habitual First Singular
 
-1. I always choose kindness and justice
-2. I regularly practice honesty and compassion
-3. I consistently uphold truth and harmony
+1. I always use my mind for clear truth
+2. I regularly cut through illusion with reason
+3. I consistently speak my truth with precision
 
 ## 🫷 Finite Indicative Active Present Simple First Singular Negative
 
-1. I am not defined by my past
-2. I am not afraid of change
-3. I do not limit my own potential
+1. I am not swayed by false emotions
+2. I do not accept illusion as truth
+3. I do not fear speaking clear facts
