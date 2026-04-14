@@ -33,7 +33,20 @@
         "cwd": "packages/lexico-components"
       }
     },
-    "clean": {},
+    "clean": {
+      "configurations": {
+        "check": {
+          "commands": ["nx run {projectName}:knip:check"],
+          "parallel": true
+        },
+        "write": {
+          "commands": ["nx run {projectName}:knip:write"],
+          "parallel": false
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands"
+    },
     "code-analysis": {
       "configurations": {
         "check": {
@@ -68,20 +81,7 @@
     },
     "dependency-analysis": {},
     "format": {},
-    "knip": {
-      "configurations": {
-        "check": {
-          "commands": ["nx run {projectName}:knip:check"],
-          "parallel": true
-        },
-        "write": {
-          "commands": ["nx run {projectName}:knip:write"],
-          "parallel": false
-        }
-      },
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands"
-    },
+    "knip": {},
     "lint": {
       "configurations": {
         "check": {

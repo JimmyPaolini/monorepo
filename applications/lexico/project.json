@@ -32,7 +32,20 @@
         "cwd": "applications/lexico"
       }
     },
-    "clean": {},
+    "clean": {
+      "configurations": {
+        "check": {
+          "commands": ["nx run {projectName}:knip:check"],
+          "parallel": true
+        },
+        "write": {
+          "commands": ["nx run {projectName}:knip:write"],
+          "parallel": false
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands"
+    },
     "code-analysis": {
       "configurations": {
         "check": {
@@ -75,20 +88,7 @@
       }
     },
     "format": {},
-    "knip": {
-      "configurations": {
-        "check": {
-          "commands": ["nx run {projectName}:knip:check"],
-          "parallel": true
-        },
-        "write": {
-          "commands": ["nx run {projectName}:knip:write"],
-          "parallel": false
-        }
-      },
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands"
-    },
+    "knip": {},
     "lint": {},
     "markdown-lint": {},
     "oxfmt": {},

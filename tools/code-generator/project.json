@@ -16,7 +16,20 @@
         "command": "echo 'code-generator is a development tool and does not require building'"
       }
     },
-    "clean": {},
+    "clean": {
+      "configurations": {
+        "check": {
+          "commands": ["nx run {projectName}:knip:check"],
+          "parallel": true
+        },
+        "write": {
+          "commands": ["nx run {projectName}:knip:write"],
+          "parallel": false
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands"
+    },
     "code-analysis": {
       "configurations": {
         "check": {
@@ -54,20 +67,7 @@
       }
     },
     "format": {},
-    "knip": {
-      "configurations": {
-        "check": {
-          "commands": ["nx run {projectName}:knip:check"],
-          "parallel": true
-        },
-        "write": {
-          "commands": ["nx run {projectName}:knip:write"],
-          "parallel": false
-        }
-      },
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands"
-    },
+    "knip": {},
     "lint": {},
     "oxfmt": {},
     "oxlint": {
