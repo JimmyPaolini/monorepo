@@ -29,3 +29,6 @@ Thumbs.db
 
 # Temporary files
 tmp
+
+# Python virtual environments (prevents .venv packages from being scanned in Docker)
+**/.venv

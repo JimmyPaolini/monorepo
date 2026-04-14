@@ -3,7 +3,7 @@
     "baseUrl": ".",
     "declaration": true,
     "jsx": "react-jsx",
-    "lib": [ "DOM", "DOM.Iterable","ES2022"],
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "outDir": "../../dist/out-tsc",

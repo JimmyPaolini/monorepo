@@ -17,12 +17,17 @@ const config: KnipConfig = {
   ignoreBinaries: [
     "terraform", // Terraform CLI, used for infrastructure provisioning
     "biome", // Biome CLI, invoked via nx:run-commands biome target
+    "oxfmt", // Oxfmt CLI, invoked via nx:run-commands oxfmt target
     "oxlint", // Oxlint CLI, invoked via nx:run-commands oxlint target
     "gitleaks", // Gitleaks CLI, used for detecting hardcoded secrets
+    "trivy", // Trivy CLI, used for security scanning (container images & infrastructure)
+    "uv", // uv Python package manager, used in lint-staged for nbstripout
+    "unset", // Shell builtin, used in project.json pre-commit command
   ],
 
   // devDependencies used via npx, CLI, or ESLint config (not directly imported)
   ignoreDependencies: [
+    "@biomejs/biome", // Biome CLI, invoked via nx:run-commands biome target
     "@nx/eslint-plugin", // Loaded dynamically by Nx ESLint integration
     "@nx/js", // Nx JavaScript/TypeScript plugin (auto-detected by Nx)
     "@nx/web", // Nx web plugin (auto-detected by Nx)
@@ -30,13 +35,15 @@ const config: KnipConfig = {
     "@semantic-release/release-notes-generator", // semantic-release plugin
     "@semantic-release/github", // semantic-release plugin
     "@semantic-release/npm", // semantic-release plugin
+    "markdownlint-cli2", // Markdown linter CLI, invoked via nx:run-commands in project.json
+    "npm-check-updates", // Dependency update CLI (ncu), invoked via GitHub Actions workflow
   ],
 
   // Allow exports that are only used in the same file (common for barrel re-exports)
   ignoreExportsUsedInFile: true,
 
   // JimmyPaolini is a GitHub profile page with no buildable code — skip analysis
-  ignoreWorkspaces: ["applications/JimmyPaolini"],
+  ignoreWorkspaces: ["applications/JimmyPaolini", "applications/affirmations"],
 
   workspaces: {
     // Root workspace: scripts, base configs, and Nx configuration files
@@ -48,6 +55,8 @@ const config: KnipConfig = {
         "release.config.cjs",
         ".ncurc.cjs",
         "validate-branch-name.config.cjs",
+        "oxfmt.config.ts",
+        "oxlint.config.ts",
       ],
       ignore: [
         "**/*.test.ts",
@@ -55,6 +64,12 @@ const config: KnipConfig = {
         "**/dist/**",
         "**/coverage/**",
         "applications/JimmyPaolini/**",
+        // Skill scripts are invoked by the skill framework, not imported in code
+        "**/.agents/skills/**/scripts/**",
+        "**/.claude/skills/**/scripts/**",
+        "**/.github/skills/**/scripts/**",
+        "**/.opencode/skills/**/scripts/**",
+        "**/documentation/skills/**/scripts/**",
       ],
       project: "**/*.{js,ts,mjs,cjs}",
     },

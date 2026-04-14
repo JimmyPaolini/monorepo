@@ -4,9 +4,15 @@
   "name": "lexico",
   "projectType": "application",
   "sourceRoot": "applications/lexico/src",
-  "tags": [ "framework:react", "stack:tanstack-start","type:app"],
+  "tags": [
+    "framework:react",
+    "language:typescript",
+    "stack:tanstack-start",
+    "type:app"
+  ],
   "targets": {
-    "biome": {},
+    "biome-format": {},
+    "biome-lint": {},
     "build": {
       "description": "Build the application for production",
       "executor": "nx:run-commands",
@@ -20,25 +26,56 @@
       "dependsOn": ["build"],
       "description": "Check bundle size limits",
       "executor": "nx:run-commands",
-      "inputs": [ "{workspaceRoot}/dist/applications/lexico/**/*","default"],
+      "inputs": ["{workspaceRoot}/dist/applications/lexico/**/*", "default"],
       "options": {
         "command": "npx size-limit",
         "cwd": "applications/lexico"
       }
     },
+    "clean": {
+      "configurations": {
+        "check": {
+          "commands": ["nx run {projectName}:knip:check"],
+          "parallel": true
+        },
+        "write": {
+          "commands": ["nx run {projectName}:knip:write"],
+          "parallel": false
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands"
+    },
     "code-analysis": {
-      "options": {
-        "commands": [
-          "nx run lexico:dependency-analysis",
-          "nx run lexico:format:{args.configuration}",
-          "nx run lexico:knip:{args.configuration}",
-          "nx run lexico:lint:{args.configuration}",
-          "nx run lexico:markdown-lint:{args.configuration}",
-          "nx run lexico:spell-check",
-          "nx run lexico:type-coverage",
-          "nx run lexico:typecheck",
-          "nx run lexico:yaml-lint"
-        ]
+      "configurations": {
+        "check": {
+          "commands": [
+            "nx run {projectName}:clean:check",
+            "nx run {projectName}:dependency-analysis",
+            "nx run {projectName}:format:check",
+            "nx run {projectName}:lint:check",
+            "nx run {projectName}:markdown-lint:check",
+            "nx run {projectName}:spell-check",
+            "nx run {projectName}:type-coverage",
+            "nx run {projectName}:typecheck",
+            "nx run {projectName}:yaml-lint"
+          ],
+          "parallel": true
+        },
+        "write": {
+          "commands": [
+            "nx run {projectName}:clean:write",
+            "nx run {projectName}:dependency-analysis",
+            "nx run {projectName}:format:write",
+            "nx run {projectName}:lint:write",
+            "nx run {projectName}:markdown-lint:write",
+            "nx run {projectName}:spell-check",
+            "nx run {projectName}:type-coverage",
+            "nx run {projectName}:typecheck",
+            "nx run {projectName}:yaml-lint"
+          ],
+          "parallel": false
+        }
       }
     },
     "dependency-analysis": {},
@@ -54,6 +91,7 @@
     "knip": {},
     "lint": {},
     "markdown-lint": {},
+    "oxfmt": {},
     "oxlint": {},
     "prettier": {},
     "spell-check": {},
@@ -106,7 +144,13 @@
       }
     },
     "type-coverage": {},
-    "typecheck": {},
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc --noEmit",
+        "cwd": "{projectRoot}"
+      }
+    },
     "yaml-lint": {}
   }
 }

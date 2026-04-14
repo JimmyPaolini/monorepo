@@ -1,5 +1,7 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "analytics": false,
+  "bail": false,
   "cacheDirectory": ".nx/cache",
   "defaultBase": "main",
   "generators": {
@@ -30,6 +32,12 @@
       "!{projectRoot}/vitest.config.base.ts",
       "default"
     ],
+    "pythonSource": [
+      "{projectRoot}/**/*.ipynb",
+      "{projectRoot}/**/*.py",
+      "{projectRoot}/pyproject.toml"
+    ],
+    "pythonTests": ["{projectRoot}/testing/**/*.py"],
     "sharedGlobals": [
       "{workspaceRoot}/.github/workflows/*.yml",
       "{workspaceRoot}/nx.json",
@@ -37,7 +45,7 @@
       "{workspaceRoot}/tsconfig.base.json"
     ]
   },
-  "parallel": 3,
+  "parallel": 1,
   "plugins": [
     {
       "options": {
@@ -62,14 +70,23 @@
   ],
   "projects": {
     "caelundas": {
-      "tags": []
+      "tags": ["language:typescript"]
     },
     "monorepo": {
-      "tags": ["scripts"]
+      "tags": ["language:typescript", "scripts"]
     }
   },
   "targetDefaults": {
-    "biome": {
+    "bandit": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "inputs": ["pythonSource"],
+      "options": {
+        "command": "uv run bandit -c pyproject.toml -r src/",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "biome-format": {
       "cache": true,
       "configurations": {
         "check": {},
@@ -81,7 +98,23 @@
       "executor": "nx:run-commands",
       "inputs": ["{workspaceRoot}/biome.jsonc", "default"],
       "options": {
-        "command": "biome check {args} {projectRoot}/src",
+        "command": "biome format {args} {projectRoot}/src",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "biome-lint": {
+      "cache": true,
+      "configurations": {
+        "check": {},
+        "write": {
+          "args": "--write"
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands",
+      "inputs": ["{workspaceRoot}/biome.jsonc", "default"],
+      "options": {
+        "command": "biome lint {args} {projectRoot}/src",
         "cwd": "{workspaceRoot}"
       }
     },
@@ -90,13 +123,36 @@
       "dependsOn": ["^build"],
       "inputs": ["^production", "production"]
     },
+    "clean": {
+      "cache": true
+    },
     "code-analysis": {
       "cache": true,
       "configurations": {
         "check": {
+          "commands": [
+            "nx run {projectName}:clean:check",
+            "nx run {projectName}:format:check",
+            "nx run {projectName}:lint:check",
+            "nx run {projectName}:markdown-lint:check",
+            "nx run {projectName}:spell-check",
+            "nx run {projectName}:type-coverage",
+            "nx run {projectName}:typecheck",
+            "nx run {projectName}:yaml-lint"
+          ],
           "parallel": true
         },
         "write": {
+          "commands": [
+            "nx run {projectName}:clean:write",
+            "nx run {projectName}:format:write",
+            "nx run {projectName}:lint:write",
+            "nx run {projectName}:markdown-lint:write",
+            "nx run {projectName}:spell-check",
+            "nx run {projectName}:type-coverage",
+            "nx run {projectName}:typecheck",
+            "nx run {projectName}:yaml-lint"
+          ],
           "parallel": false
         }
       },
@@ -141,15 +197,17 @@
       "configurations": {
         "check": {
           "commands": [
-            "nx run {projectName}:biome:check",
-            "nx run {projectName}:prettier:check"
+            "nx run {projectName}:biome-format:check",
+            "nx run {projectName}:prettier:check",
+            "nx run {projectName}:oxfmt:check"
           ],
           "parallel": true
         },
         "write": {
           "commands": [
-            "nx run {projectName}:biome:write",
-            "nx run {projectName}:prettier:write"
+            "nx run {projectName}:biome-format:write",
+            "nx run {projectName}:prettier:write",
+            "nx run {projectName}:oxfmt:write"
           ],
           "parallel": false
         }
@@ -180,6 +238,7 @@
       "configurations": {
         "check": {
           "commands": [
+            "nx run {projectName}:biome-lint:check",
             "nx run {projectName}:eslint:check",
             "nx run {projectName}:oxlint:check"
           ],
@@ -187,6 +246,7 @@
         },
         "write": {
           "commands": [
+            "nx run {projectName}:biome-lint:write",
             "nx run {projectName}:eslint:write",
             "nx run {projectName}:oxlint:write"
           ],
@@ -218,6 +278,24 @@
         "cwd": "{workspaceRoot}"
       }
     },
+    "oxfmt": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "args": "--check"
+        },
+        "write": {
+          "args": "--write"
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands",
+      "inputs": ["{workspaceRoot}/oxfmt.config.ts", "default"],
+      "options": {
+        "command": "oxfmt {args} .",
+        "cwd": "{projectRoot}"
+      }
+    },
     "oxlint": {
       "cache": true,
       "configurations": {
@@ -228,9 +306,9 @@
       },
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
-      "inputs": ["{workspaceRoot}/.oxlintrc.jsonc", "default"],
+      "inputs": ["{workspaceRoot}/oxlint.config.ts", "default"],
       "options": {
-        "command": "oxlint {args} --config=.oxlintrc.jsonc {projectRoot}/src",
+        "command": "oxlint {args} {projectRoot}/src",
         "cwd": "{workspaceRoot}"
       }
     },
@@ -255,16 +333,84 @@
         "command": "prettier {args} {projectRoot}"
       }
     },
+    "py-test": {
+      "cache": true,
+      "configurations": {
+        "coverage": {
+          "command": "uv run pytest --cov=src --cov-report=xml:coverage/python.xml --cov-report=term-missing"
+        },
+        "integration": {
+          "command": "uv run pytest -m integration"
+        },
+        "unit": {
+          "command": "uv run pytest -m unit"
+        },
+        "watch": {
+          "command": "uv run pytest-watch"
+        }
+      },
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{workspaceRoot}/pyproject.toml",
+        "pythonSource",
+        "pythonTests"
+      ],
+      "options": {
+        "command": "uv run pytest",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "pyright": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "inputs": ["{workspaceRoot}/pyproject.toml", "pythonSource"],
+      "options": {
+        "command": "uv run pyright src/",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "ruff-format": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "args": "--check"
+        },
+        "write": {}
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands",
+      "inputs": ["{workspaceRoot}/pyproject.toml", "pythonSource"],
+      "options": {
+        "command": "uv run ruff format {args} .",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "ruff-lint": {
+      "cache": true,
+      "configurations": {
+        "check": {},
+        "write": {
+          "args": "--fix"
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands",
+      "inputs": ["{workspaceRoot}/pyproject.toml", "pythonSource"],
+      "options": {
+        "command": "uv run ruff check {args} .",
+        "cwd": "{projectRoot}"
+      }
+    },
     "spell-check": {
       "cache": true,
       "executor": "nx:run-commands",
       "inputs": [
-        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,css,scss,html,yaml,yml,md,mdx}",
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,css,scss,html,yaml,yml,md,mdx,py,ipynb}",
         "{workspaceRoot}/cspell.config.yaml",
         "default"
       ],
       "options": {
-        "command": "cspell '{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,css,scss,html,yaml,yml,md,mdx}' --no-progress",
+        "command": "cspell '{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,css,scss,html,yaml,yml,md,mdx,py,ipynb}' --no-progress --gitignore",
         "cwd": "{workspaceRoot}"
       }
     },
@@ -293,6 +439,15 @@
       "cache": true,
       "inputs": ["^production", "default"]
     },
+    "ty": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "inputs": ["{workspaceRoot}/pyproject.toml", "pythonSource"],
+      "options": {
+        "command": "uv run ty check src/",
+        "cwd": "{projectRoot}"
+      }
+    },
     "type-coverage": {
       "cache": true,
       "executor": "nx:run-commands",
@@ -319,6 +474,20 @@
       ],
       "options": {
         "command": "tsc --noEmit",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "vulture": {
+      "cache": true,
+      "configurations": {
+        "check": {},
+        "write": {}
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands",
+      "inputs": ["{projectRoot}/.vulture_whitelist.py", "pythonSource"],
+      "options": {
+        "command": "uv run vulture src/ .vulture_whitelist.py --min-confidence 80",
         "cwd": "{projectRoot}"
       }
     },

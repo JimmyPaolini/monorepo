@@ -1,4 +1,3 @@
-````skill
 ---
 name: create-pull-request
 description: Create and manage pull requests following this monorepo's conventions. Use this skill when creating PRs, opening PRs for review, writing PR descriptions, or asked about PR workflows and best practices.
@@ -23,7 +22,7 @@ PR titles **must** follow the same format as commit messages:
 
 ```text
 <type>(<scope>): <gitmoji> <subject>
-````
+```
 
 ### Structure Rules
 
@@ -58,6 +57,7 @@ PR titles **must** follow the same format as commit messages:
 
 | Scope               | Description                                                                   |
 | ------------------- | ----------------------------------------------------------------------------- |
+| `affirmations`      | Python Jupyter notebook application for LangGraph affirmation generation      |
 | `applications`      | Changes spanning multiple apps (caelundas, lexico, JimmyPaolini)              |
 | `caelundas`         | Node.js CLI for astronomical calendar generation (NASA JPL ephemeris)         |
 | `configuration`     | Workspace root config files (tsconfig, eslint, vitest, nx.json, etc.)         |
@@ -250,7 +250,7 @@ All PRs must pass these checks before merging:
 | Lint        | `nx affected --target=lint`      | ESLint validation                                                 |
 | Typecheck   | `nx affected --target=typecheck` | TypeScript compilation                                            |
 | Test        | `nx affected --target=test`      | Unit and integration tests                                        |
-| Format      | `nx format:check`                | Prettier formatting                                               |
+| Format      | `nx format:check`                | Oxfmt (primary), Prettier, Biome formatting                       |
 
 Run locally before pushing:
 

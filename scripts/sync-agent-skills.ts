@@ -148,7 +148,7 @@ function checkSync(skills: Skill[]): boolean {
     console.log(`  Found ${skills.length} skills in documentation/skills/`);
     console.log("  Generated content doesn't match stored content");
     console.log(
-      "💡 Run 'pnpm exec tsx scripts/sync-agent-skills-table-of-contents.ts write' to sync\n",
+      "💡 Run 'pnpm exec nx run monorepo:sync-agent-skills:write' to sync\n",
     );
     return false;
   }

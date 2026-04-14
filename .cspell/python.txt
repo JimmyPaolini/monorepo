@@ -1,0 +1,60 @@
+#region 🐍 LangChain Async
+abatch
+ainvoke
+astream
+
+#endregion
+
+#region 📓 Notebook Formats
+ipykernel
+ipynb
+ipython
+kernelspec
+nbconvert
+nbformat
+pprint
+pygments
+
+#endregion
+
+#region 📦 Packaging & Environment
+pyproject
+venv
+
+#endregion
+
+#region 📚 Standard Library
+classmethod
+dataclasses
+Dataclass
+DOTALL
+getattr
+hasattr
+isinstance
+iterdir
+iterrows
+kwargs
+logprobs
+pathlib
+reraise
+rstrip
+setattr
+staticmethod
+tomllib
+
+#endregion
+
+#region 🔢 NumPy
+argsort
+dtype
+keepdims
+linalg
+ndarray
+numpy
+
+#endregion
+
+#region 🔧 Configuration Keys
+testpaths
+
+#endregion

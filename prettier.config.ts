@@ -91,7 +91,7 @@ const config: Config = {
     },
     {
       // Standard JSON files (package.json, etc) - no trailing commas
-      files: ["**/package.json", "**/biome.jsonc", "**/*.json"],
+      files: ["**/package.json", "**/*.json"],
       options: {
         trailingComma: "none",
       },

@@ -405,7 +405,7 @@ export class ConfigService {
 2. Follow consistent file organization
 3. Use TypeScript strict mode
 4. Implement comprehensive linting with ESLint
-5. Use Prettier for code formatting
+5. Use Oxfmt (primary) and Prettier for code formatting
 
 ### Code Review Checklist
 

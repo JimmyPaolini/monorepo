@@ -58,6 +58,10 @@ jobs:
 
       - name: 🩹 Patch Configuration for Test
         run: |
+          # Only the cloud devcontainer.json (DinD configuration) is built
+          # and tested in CI. The local/devcontainer.json (DooD configuration)
+          # is for local machines only and is not tested here.
+          #
           # Remove resource-limiting Docker run args unsupported in
           # CI environments. Remove named volume mounts so the pnpm
           # store pre-baked into the image is visible (volumes would
@@ -70,14 +74,15 @@ jobs:
             )) |
             .mounts = []
           '
-          jq "$JQ_FILTER" .devcontainer/devcontainer.json > \
+          jq "$JQ_FILTER" .devcontainer/cloud/devcontainer.json > \
             /tmp/devcontainer.json
           mv /tmp/devcontainer.json \
-            .devcontainer/devcontainer.json
+            .devcontainer/cloud/devcontainer.json
 
       - name: 🔬 Test Devcontainer
         uses: devcontainers/ci@v0.3
         with:
+          configFile: .devcontainer/cloud/devcontainer.json
           imageName: ghcr.io/jimmypaolini/monorepo-devcontainer
           cacheFrom: |
             type=gha,scope=devcontainer

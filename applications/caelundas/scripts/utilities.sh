@@ -2,7 +2,7 @@
 
 source scripts/utilities.sh
 
-echo "🎛️ Exporting environment variables from applications/caelundas/.env file..."
+echo "🎛️  Exporting environment variables from applications/caelundas/.env file..."
 set -a
 source applications/caelundas/.env
 set +a

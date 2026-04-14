@@ -222,3 +222,47 @@ Models have a finite context window measured in tokens. When designing conversat
 - Validate any user-supplied URLs and inputs to avoid SSRF and injection attacks.
 - Document data retention and add an API to erase user data on request.
 - Limit stored PII and encrypt sensitive fields at rest.
+
+## Monorepo Tooling Configuration
+
+Reference configurations for LangChain projects in this monorepo. These go in the project's `pyproject.toml` alongside the shared base config inherited from the root `pyproject.toml`.
+
+### `[tool.ty]` — type checking for LangChain stubs
+
+ty doesn't have stubs for LangChain/LangGraph packages. Suppress unresolved-import errors per-package:
+
+```toml
+[tool.ty.environment]
+python-version = "3.11"
+
+[tool.ty.analysis]
+allowed-unresolved-imports = [
+  "langchain.**",
+  "langchain_community.**",
+  "langchain_ollama.**",
+  "langgraph.**",
+  "langsmith.**",
+]
+```
+
+### `[tool.bandit]` — security scanning
+
+Exclude non-production paths and suppress `B101` (assert in tests is fine):
+
+```toml
+[tool.bandit]
+exclude_dirs = ["testing", "output", "notebooks"]
+skips = ["B101"]  # assert_used — acceptable in test code
+```
+
+### `[tool.hatch.build.targets.wheel]` — reproducible builds
+
+```toml
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src"]
+reproducible = true
+```

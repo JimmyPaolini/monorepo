@@ -556,12 +556,21 @@ export default [
         {
           minValues: 2,
           order: { type: "asc", caseSensitive: false, natural: true },
-          pathPattern: ".*",
+          pathPattern: "^!(command)$",
         },
       ],
       "jsonc/quotes": ["error", "double"],
       "jsonc/comma-dangle": ["error", "never"],
       "jsonc/indent": ["error", 2],
+    },
+  },
+
+  // ━━━━━━━━━━━━━━━━━━━ JSONC Files ━━━━━━━━━━━━━━━━━━━
+  // JSONC files support trailing commas; align with Prettier's trailingComma: "all" + jsonc parser
+  {
+    files: ["**/*.jsonc"],
+    rules: {
+      "jsonc/comma-dangle": ["error", "always-multiline"],
     },
   },
 
