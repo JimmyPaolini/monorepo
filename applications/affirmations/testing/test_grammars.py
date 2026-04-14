@@ -104,7 +104,7 @@ def test_grammar_slug_matches_specifiers() -> None:
 @pytest.mark.unit
 def test_described_enum_examples_property() -> None:
     examples = Mood.INDICATIVE.examples
-    assert len(examples) == 3
+    assert len(examples) == 6
     assert all(isinstance(ex, str) for ex in examples)
 
 

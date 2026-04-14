@@ -5,6 +5,9 @@
 
 # False positives in keybindings.json (VSCode keyboard shortcut bindings, not API keys)
 # These are valid keyboard binding patterns that trigger generic-api-key rule
+79ef466576b2ec63dc79fe846c3336c604e05eea:.vscode/keybindings.json:generic-api-key:242
+fbadb3a2335b521add62cf70a171e4d354daaec1:.vscode/keybindings.json:generic-api-key:242
+981e0016a07b25ff74ab21388f82287831cb27c4:.vscode/keybindings.json:generic-api-key:241
 d4645a64239bdcfd165c945c140b225363212d75:.vscode/keybindings.json:generic-api-key:242
 5ffd9380d46335282bca3c135c2271848acda00a:.vscode/keybindings.json:generic-api-key:242
 d1d3799a9387064d5de251887a46b4c97d0937dd:.vscode/keybindings.json:generic-api-key:242

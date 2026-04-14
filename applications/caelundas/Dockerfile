@@ -38,7 +38,10 @@ FROM node:22.22.2-alpine
 
 # Upgrade OS packages to patch known vulnerabilities (e.g., zlib CVE-2026-22184)
 RUN apk upgrade --no-cache \
-    && rm -rf /usr/local/lib/node_modules/npm /usr/local/bin/npm /usr/local/bin/npx
+  && rm -rf /usr/local/lib/node_modules/npm /usr/local/bin/npm /usr/local/bin/npx
+
+# Create a non-root user to run the application (security: DS-0002)
+RUN addgroup -g 1001 -S nodegroup && adduser -S nodeuser -u 1001 -G nodegroup
 
 WORKDIR /app
 
@@ -48,6 +51,12 @@ COPY --from=builder /deploy .
 # caelundas/tsconfig.json has `extends: "../../tsconfig.base.json"`.
 # With WORKDIR /app, that resolves to /tsconfig.base.json in the container.
 COPY --from=builder /app/tsconfig.base.json /tsconfig.base.json
+
+# Set ownership of app directory to the non-root user
+RUN chown -R nodeuser:nodegroup /app
+
+# Switch to non-root user
+USER nodeuser
 
 # Command to run the application
 CMD ["node_modules/.bin/tsx", "src/main.ts"]

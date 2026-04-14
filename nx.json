@@ -184,21 +184,17 @@
       "configurations": {
         "check": {
           "commands": [
-            /* eslint-disable jsonc/sort-array-values */
             "nx run {projectName}:biome-format:check",
             "nx run {projectName}:prettier:check",
             "nx run {projectName}:oxfmt:check"
-            /* eslint-enable jsonc/sort-array-values */
           ],
           "parallel": true
         },
         "write": {
           "commands": [
-            /* eslint-disable jsonc/sort-array-values */
             "nx run {projectName}:biome-format:write",
             "nx run {projectName}:prettier:write",
             "nx run {projectName}:oxfmt:write"
-            /* eslint-enable jsonc/sort-array-values */
           ],
           "parallel": false
         }

@@ -2,6 +2,7 @@
 # infra.sh — Install infrastructure / DevOps CLI tools and print version summary.
 #
 # terraform  — manages Linode Kubernetes Engine (LKE) cluster (infrastructure/)
+# trivy      — scans Docker images and infrastructure code for vulnerabilities
 # yamllint   — validates YAML files in CI and locally
 # supabase   — local Supabase stack + migrations for lexico
 # jq         — JSON CLI utility used in CI scripts and Terraform output parsing
@@ -13,6 +14,7 @@
 
 brew_install_or_check "gitleaks"
 brew_install_or_check "terraform"
+brew_install_or_check "trivy"
 brew_install_or_check "yamllint"
 brew_install_or_check "supabase" "supabase/tap/supabase"
 brew_install_or_check "jq"
@@ -29,6 +31,7 @@ echo "   uv:          $(uv --version)"
 echo "   Ollama:      $(ollama --version 2>&1)"
 echo "   Gitleaks:    $(gitleaks version 2>&1 || echo 'not installed')"
 echo "   Terraform:   $(terraform version -json 2>/dev/null | jq -r '.terraform_version' 2>/dev/null || terraform version | head -n 1)"
+echo "   Trivy:       $(trivy --version 2>&1 | head -n 1 | awk '{print $NF}')"
 echo "   Supabase:    $(supabase --version 2>&1)"
 echo "   Helm:        $(helm version --short 2>&1)"
 echo "   kubectl:     $(kubectl version --client --short 2>/dev/null || kubectl version --client 2>&1 | head -n 1)"

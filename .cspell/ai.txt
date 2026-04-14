@@ -5,13 +5,16 @@ langflow
 langgraph
 langsmith
 lcel
+
 #endregion
 
 #region 🤖 Models & Runtimes
 gemma
 nomic
 ollama
+opencode
 qwen
+
 #endregion
 
 #region 🔍 Search & Retrieval
@@ -27,6 +30,7 @@ searxng
 trafilatura
 vectorstore
 vectorstores
+
 #endregion
 
 #region 🌐 Interfaces & Hubs
@@ -34,4 +38,5 @@ huggingface
 multimodality
 openwebui
 webui
+
 #endregion

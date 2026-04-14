@@ -301,6 +301,24 @@
         "cwd": "{projectRoot}"
       }
     },
+    "security-audit": {
+      "cache": false,
+      "configurations": {
+        "check": {
+          "commands": [
+            "nx run {projectName}:gitleaks",
+            "nx affected --target=bandit --parallel=3 --base=main --head=HEAD",
+            "nx run {projectName}:dependency-audit:check",
+            "nx run {projectName}:trivy"
+          ],
+          "parallel": false
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "Run comprehensive security audit: Gitleaks (secrets), Bandit (Python/affected), npm/pnpm audit (dependencies), and Trivy (containers/IaC). Mirrors .github/workflows/security-audit.yml",
+      "executor": "nx:run-commands",
+      "options": {}
+    },
     "sherif": {
       "cache": true,
       "configurations": {
@@ -503,6 +521,41 @@
       "options": {
         "command": "terraform plan",
         "cwd": "infrastructure/terraform"
+      }
+    },
+    "trivy": {
+      "cache": false,
+      "configurations": {
+        "check": {
+          "commands": [
+            "nx run {projectName}:trivy-image",
+            "nx run {projectName}:trivy-config"
+          ],
+          "parallel": true
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "Run all Trivy security scans (container images and infrastructure config)",
+      "executor": "nx:run-commands",
+      "options": {}
+    },
+    "trivy-config": {
+      "cache": false,
+      "description": "Scan Terraform infrastructure code for misconfigurations using Trivy",
+      "executor": "nx:run-commands",
+      "inputs": ["{workspaceRoot}/infrastructure/terraform/**/*.tf"],
+      "options": {
+        "command": "trivy config infrastructure/terraform --severity CRITICAL,HIGH --exit-code 1",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "trivy-image": {
+      "cache": false,
+      "description": "Scan caelundas Docker image for vulnerabilities using Trivy",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "nx run caelundas:docker-build && trivy image caelundas:1.0.0 --severity CRITICAL,HIGH --exit-code 1",
+        "cwd": "{projectRoot}"
       }
     },
     "type-coverage": {

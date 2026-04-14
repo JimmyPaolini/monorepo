@@ -63,6 +63,12 @@ const config: KnipConfig = {
         "**/dist/**",
         "**/coverage/**",
         "applications/JimmyPaolini/**",
+        // Skill scripts are invoked by the skill framework, not imported in code
+        "**/.agents/skills/**/scripts/**",
+        "**/.claude/skills/**/scripts/**",
+        "**/.github/skills/**/scripts/**",
+        "**/.opencode/skills/**/scripts/**",
+        "**/documentation/skills/**/scripts/**",
       ],
       project: "**/*.{js,ts,mjs,cjs}",
     },
