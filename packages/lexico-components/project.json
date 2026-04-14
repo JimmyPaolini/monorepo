@@ -33,31 +33,73 @@
         "cwd": "packages/lexico-components"
       }
     },
+    "clean": {},
     "code-analysis": {
-      "options": {
-        "commands": [
-          "nx run {projectName}:dependency-analysis",
-          "nx run {projectName}:format:{args.configuration}",
-          "nx run {projectName}:knip:{args.configuration}",
-          "nx run {projectName}:lint:{args.configuration}",
-          "nx run {projectName}:markdown-lint:{args.configuration}",
-          "nx run {projectName}:spell-check",
-          "nx run {projectName}:type-coverage",
-          "nx run {projectName}:typecheck",
-          "nx run {projectName}:yaml-lint"
-        ]
+      "configurations": {
+        "check": {
+          "commands": [
+            "nx run {projectName}:clean:check",
+            "nx run {projectName}:dependency-analysis",
+            "nx run {projectName}:format:check",
+            "nx run {projectName}:lint:check",
+            "nx run {projectName}:markdown-lint:check",
+            "nx run {projectName}:spell-check",
+            "nx run {projectName}:type-coverage",
+            "nx run {projectName}:typecheck",
+            "nx run {projectName}:yaml-lint"
+          ],
+          "parallel": true
+        },
+        "write": {
+          "commands": [
+            "nx run {projectName}:clean:write",
+            "nx run {projectName}:dependency-analysis",
+            "nx run {projectName}:format:write",
+            "nx run {projectName}:lint:write",
+            "nx run {projectName}:markdown-lint:write",
+            "nx run {projectName}:spell-check",
+            "nx run {projectName}:type-coverage",
+            "nx run {projectName}:typecheck",
+            "nx run {projectName}:yaml-lint"
+          ],
+          "parallel": false
+        }
       }
     },
     "dependency-analysis": {},
     "format": {},
-    "knip": {},
+    "knip": {
+      "configurations": {
+        "check": {
+          "commands": ["nx run {projectName}:knip:check"],
+          "parallel": true
+        },
+        "write": {
+          "commands": ["nx run {projectName}:knip:write"],
+          "parallel": false
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands"
+    },
     "lint": {
-      "options": {
-        "commands": [
-          "nx run {projectName}:eslint:{args.configuration}",
-          "nx run {projectName}:oxlint:{args.configuration}",
-          "nx run {projectName}:stylelint:{args.configuration}"
-        ]
+      "configurations": {
+        "check": {
+          "commands": [
+            "nx run {projectName}:eslint:check",
+            "nx run {projectName}:oxlint:check",
+            "nx run {projectName}:stylelint:check"
+          ],
+          "parallel": true
+        },
+        "write": {
+          "commands": [
+            "nx run {projectName}:eslint:write",
+            "nx run {projectName}:oxlint:write",
+            "nx run {projectName}:stylelint:write"
+          ],
+          "parallel": false
+        }
       }
     },
     "markdown-lint": {},

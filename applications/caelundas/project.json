@@ -7,6 +7,20 @@
   "targets": {
     "biome-format": {},
     "biome-lint": {},
+    "clean": {
+      "configurations": {
+        "check": {
+          "commands": ["nx run {projectName}:knip:check"],
+          "parallel": true
+        },
+        "write": {
+          "commands": ["nx run {projectName}:knip:write"],
+          "parallel": false
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands"
+    },
     "dependency-analysis": {},
     "develop": {
       "description": "Run Caelundas locally with .env file",

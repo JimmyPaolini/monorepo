@@ -41,12 +41,35 @@
         "cwd": "{projectRoot}"
       }
     },
+    "clean": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "commands": [
+            "nx run {projectName}:knip:check",
+            "nx run {projectName}:vulture:check"
+          ],
+          "parallel": true
+        },
+        "write": {
+          "commands": [
+            "nx run {projectName}:knip:write",
+            "nx run {projectName}:vulture:write"
+          ],
+          "parallel": false
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "Run unused-code analysis for workspace-root files only across JavaScript, TypeScript, and Python",
+      "executor": "nx:run-commands",
+      "options": {}
+    },
     "code-analysis": {
       "configurations": {
         "check": {
           "commands": [
+            "nx run {projectName}:clean:check",
             "nx run {projectName}:format:check",
-            "nx run {projectName}:knip:check",
             "nx run {projectName}:lint:check",
             "nx run {projectName}:markdown-lint:check",
             "nx run {projectName}:spell-check",
@@ -60,8 +83,8 @@
         },
         "write": {
           "commands": [
+            "nx run {projectName}:clean:write",
             "nx run {projectName}:format:write",
-            "nx run {projectName}:knip:write",
             "nx run {projectName}:lint:write",
             "nx run {projectName}:markdown-lint:write",
             "nx run {projectName}:spell-check",
@@ -75,7 +98,7 @@
         }
       },
       "defaultConfiguration": "check",
-      "description": "Run all static code analysis tools for workspace root (typecheck, lint, format, knip, spell-check, markdown-lint, yaml-lint)",
+      "description": "Run all static code analysis tools for workspace root (typecheck, lint, format, clean, spell-check, markdown-lint, yaml-lint)",
       "executor": "nx:run-commands",
       "options": {}
     },
@@ -581,6 +604,27 @@
       "executor": "nx:run-commands",
       "options": {
         "command": "validate-branch-name",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "vulture": {
+      "cache": true,
+      "configurations": {
+        "check": {},
+        "write": {}
+      },
+      "defaultConfiguration": "check",
+      "description": "Check root-level Python utilities for dead code",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/*.py",
+        "{projectRoot}/scripts/**/*.py",
+        "{projectRoot}/.vulture_whitelist.py",
+        "{workspaceRoot}/applications/affirmations/pyproject.toml",
+        "default"
+      ],
+      "options": {
+        "command": "files=$(find . \\( -path './applications' -o -path './packages' -o -path './tools' -o -path './node_modules' -o -path './dist' -o -path './coverage' -o -path './.nx' -o -path './.venv' -o -name '.vulture_whitelist.py' \\) -prune -o -type f -name '*.py' -print); if [ -n \"$files\" ]; then uv run --project applications/affirmations vulture $files .vulture_whitelist.py --min-confidence 80; else echo 'No root-level Python files to analyze'; fi",
         "cwd": "{projectRoot}"
       }
     },

@@ -39,6 +39,12 @@ const config = {
   "**/package.json": () => ["./scripts/check-lockfile.sh"],
   "pnpm-workspace.yaml": () => ["./scripts/check-lockfile.sh"],
 
+  // ── Unused-code analysis configuration ──
+  // Re-run the abstract clean target when the Knip config changes
+  "knip.config.ts": () => [
+    "nx run monorepo:clean:check --outputStyle=dynamic-legacy",
+  ],
+
   // ── Config synchronization ──
   // Keep VS Code extensions list in sync between .vscode and local devcontainer config
   "{.vscode/extensions.json,.devcontainer/local/devcontainer.json}": () => [
@@ -63,45 +69,46 @@ const config = {
   ],
 
   // ── TypeScript / JavaScript source files ──
-  // Runs format (oxfmt + prettier + biome), lint (eslint + oxlint), typecheck, and spell-check
-  // on affected projects. nx affected includes monorepo when root-level files change.
+  // Runs format (oxfmt + prettier + biome), lint (eslint + oxlint), typecheck, spell-check,
+  // and clean (Knip for JS/TS unused files, dependencies, and exports) on affected projects.
+  // nx affected includes monorepo when root-level files change.
   "*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}": (files: string[]) => {
     return [
-      `nx affected --target=format,lint,typecheck,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
+      `nx affected --target=clean,format,lint,typecheck,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
     ];
   },
 
   // ── Jupyter notebooks ──
   // Strip outputs first (nbstripout modifies in-place; lint-staged re-stages the
-  // clean file), then run ruff format/lint and spell-check on the stripped notebook.
+  // clean file), then run Ruff format/lint, typecheck, dead-code analysis, and spell-check.
   "*.ipynb": (files: string[]) => {
     return [
       `nx affected --target=nbstripout --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
-      `nx affected --target=format,lint,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
+      `nx affected --target=clean,format,lint,typecheck,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
     ];
   },
 
   // ── Python files ──
-  // Runs format (Ruff), lint (Ruff), typecheck (pyright), and dead-code detection (vulture)
+  // Runs format (Ruff), lint (Ruff), typecheck, spell-check, and clean (Vulture for Python)
   "*.py": (files: string[]) => {
     return [
-      `nx affected --target=format,lint,spell-check,typecheck,vulture --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
+      `nx affected --target=clean,format,lint,spell-check,typecheck --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
     ];
   },
 
   // ── JSON / HTML data files ──
-  // Format and spell-check only (no lint or typecheck needed)
+  // Runs format, lint, and spell-check
   "*.{json,jsonc,json5,html}": (files: string[]) => {
     return [
-      `nx affected --target=format,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
+      `nx affected --target=format,lint,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
     ];
   },
 
   // ── CSS files ──
-  // Runs Stylelint, format, and spell-check
+  // Runs Stylelint, format, lint, and spell-check
   "*.css": (files: string[]) => {
     return [
-      `nx affected --target=stylelint,format,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
+      `nx affected --target=stylelint,format,lint,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
     ];
   },
 

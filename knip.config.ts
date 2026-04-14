@@ -20,6 +20,7 @@ const config: KnipConfig = {
     "oxfmt", // Oxfmt CLI, invoked via nx:run-commands oxfmt target
     "oxlint", // Oxlint CLI, invoked via nx:run-commands oxlint target
     "gitleaks", // Gitleaks CLI, used for detecting hardcoded secrets
+    "trivy", // Trivy CLI, used for security scanning (container images & infrastructure)
     "uv", // uv Python package manager, used in lint-staged for nbstripout
     "unset", // Shell builtin, used in project.json pre-commit command
   ],

@@ -123,29 +123,42 @@
       "dependsOn": ["^build"],
       "inputs": ["^production", "production"]
     },
+    "clean": {
+      "cache": true
+    },
     "code-analysis": {
       "cache": true,
       "configurations": {
         "check": {
+          "commands": [
+            "nx run {projectName}:clean:check",
+            "nx run {projectName}:format:check",
+            "nx run {projectName}:lint:check",
+            "nx run {projectName}:markdown-lint:check",
+            "nx run {projectName}:spell-check",
+            "nx run {projectName}:type-coverage",
+            "nx run {projectName}:typecheck",
+            "nx run {projectName}:yaml-lint"
+          ],
           "parallel": true
         },
         "write": {
+          "commands": [
+            "nx run {projectName}:clean:write",
+            "nx run {projectName}:format:write",
+            "nx run {projectName}:lint:write",
+            "nx run {projectName}:markdown-lint:write",
+            "nx run {projectName}:spell-check",
+            "nx run {projectName}:type-coverage",
+            "nx run {projectName}:typecheck",
+            "nx run {projectName}:yaml-lint"
+          ],
           "parallel": false
         }
       },
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
       "options": {
-        "commands": [
-          "nx run {projectName}:format:{args.configuration}",
-          "nx run {projectName}:knip:{args.configuration}",
-          "nx run {projectName}:lint:{args.configuration}",
-          "nx run {projectName}:markdown-lint:{args.configuration}",
-          "nx run {projectName}:spell-check",
-          "nx run {projectName}:type-coverage",
-          "nx run {projectName}:typecheck",
-          "nx run {projectName}:yaml-lint"
-        ],
         "outputStyle": "stream"
       }
     },
@@ -466,6 +479,11 @@
     },
     "vulture": {
       "cache": true,
+      "configurations": {
+        "check": {},
+        "write": {}
+      },
+      "defaultConfiguration": "check",
       "executor": "nx:run-commands",
       "inputs": ["{projectRoot}/.vulture_whitelist.py", "pythonSource"],
       "options": {

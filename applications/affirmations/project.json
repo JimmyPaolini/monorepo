@@ -6,18 +6,48 @@
   "tags": ["language:python", "scope:affirmations", "type:application"],
   "targets": {
     "bandit": {},
+    "clean": {
+      "configurations": {
+        "check": {
+          "commands": ["nx run {projectName}:vulture:check"],
+          "parallel": true
+        },
+        "write": {
+          "commands": ["nx run {projectName}:vulture:write"],
+          "parallel": false
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands"
+    },
     "code-analysis": {
-      "options": {
-        "commands": [
-          "nx run {projectName}:format:check",
-          "nx run {projectName}:lint:check",
-          "nx run {projectName}:markdown-lint",
-          "nx run {projectName}:nbstripout",
-          "nx run {projectName}:spell-check",
-          "nx run {projectName}:typecheck",
-          "nx run {projectName}:vulture",
-          "nx run {projectName}:yaml-lint"
-        ]
+      "configurations": {
+        "check": {
+          "commands": [
+            "nx run {projectName}:clean:check",
+            "nx run {projectName}:format:check",
+            "nx run {projectName}:lint:check",
+            "nx run {projectName}:markdown-lint",
+            "nx run {projectName}:nbstripout:check",
+            "nx run {projectName}:spell-check",
+            "nx run {projectName}:typecheck",
+            "nx run {projectName}:yaml-lint"
+          ],
+          "parallel": true
+        },
+        "write": {
+          "commands": [
+            "nx run {projectName}:clean:write",
+            "nx run {projectName}:format:write",
+            "nx run {projectName}:lint:write",
+            "nx run {projectName}:markdown-lint",
+            "nx run {projectName}:nbstripout:write",
+            "nx run {projectName}:spell-check",
+            "nx run {projectName}:typecheck",
+            "nx run {projectName}:yaml-lint"
+          ],
+          "parallel": false
+        }
       }
     },
     "format": {

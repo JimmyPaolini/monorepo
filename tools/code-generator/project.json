@@ -16,17 +16,33 @@
         "command": "echo 'code-generator is a development tool and does not require building'"
       }
     },
+    "clean": {},
     "code-analysis": {
-      "options": {
-        "commands": [
-          "nx run {projectName}:dependency-analysis",
-          "nx run {projectName}:format:{args.configuration}",
-          "nx run {projectName}:knip:{args.configuration}",
-          "nx run {projectName}:lint:{args.configuration}",
-          "nx run {projectName}:spell-check",
-          "nx run {projectName}:type-coverage",
-          "nx run {projectName}:typecheck"
-        ]
+      "configurations": {
+        "check": {
+          "commands": [
+            "nx run {projectName}:clean:check",
+            "nx run {projectName}:dependency-analysis",
+            "nx run {projectName}:format:check",
+            "nx run {projectName}:lint:check",
+            "nx run {projectName}:spell-check",
+            "nx run {projectName}:type-coverage",
+            "nx run {projectName}:typecheck"
+          ],
+          "parallel": true
+        },
+        "write": {
+          "commands": [
+            "nx run {projectName}:clean:write",
+            "nx run {projectName}:dependency-analysis",
+            "nx run {projectName}:format:write",
+            "nx run {projectName}:lint:write",
+            "nx run {projectName}:spell-check",
+            "nx run {projectName}:type-coverage",
+            "nx run {projectName}:typecheck"
+          ],
+          "parallel": false
+        }
       }
     },
     "dependency-analysis": {},
@@ -38,7 +54,20 @@
       }
     },
     "format": {},
-    "knip": {},
+    "knip": {
+      "configurations": {
+        "check": {
+          "commands": ["nx run {projectName}:knip:check"],
+          "parallel": true
+        },
+        "write": {
+          "commands": ["nx run {projectName}:knip:write"],
+          "parallel": false
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands"
+    },
     "lint": {},
     "oxfmt": {},
     "oxlint": {
