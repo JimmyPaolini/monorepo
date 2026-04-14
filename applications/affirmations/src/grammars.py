@@ -58,7 +58,7 @@ class Mood(DescribedEnum):
     # -- Realis ----------------------------------------------------------------
     INDICATIVE = DescribedEnum.create(
         name="INDICATIVE",
-        description="State a direct fact or present truth (indicative mood).",
+        description="The default, unmarked mood in English — identified by the absence of any epistemic or deontic modal marker. Morphologically realized by a fully conjugated finite verb (present or past) asserting a proposition directly, with no 'would', 'might', 'if I were', or similar irrealis marker present.",
         examples=(
             "I am {adjective}...",
             "I {verb}...",
@@ -72,7 +72,7 @@ class Mood(DescribedEnum):
     # -- Irrealis / Epistemic --------------------------------------------------
     SUBJUNCTIVE = DescribedEnum.create(
         name="SUBJUNCTIVE",
-        description="Express a wish or hypothetical using 'may', 'might', or subjunctive form.",
+        description="Form using an irrealis marker expressing a wish or hypothetical. In English realized by: the bare-stem verb after 'if' or 'that' where agreement is usually expected ('if I were', 'that it be'), the periphrastic wish form 'I wish I were', or the optative-style 'may [base verb]' / 'might [base verb]' in wishing constructions. The morphological subjunctive ('were', 'be') occurs only in fixed patterns; the lexical forms are far more common.",
         examples=(
             "May I be {adjective}...",
             "Might I {verb} {noun}...",
@@ -85,7 +85,7 @@ class Mood(DescribedEnum):
 
     CONDITIONAL = DescribedEnum.create(
         name="CONDITIONAL",
-        description="Express a condition using 'would'.",
+        description="Form using 'would' in the main clause paired with a conditional premise — either an explicit 'if' clause or an implied condition. In English realized by 'would [base verb]' (main clause) accompanied by a condition expressed with simple past or past perfect ('if I [past]', 'if I had [past participle]', 'if given', 'were I to').",
         examples=(
             "I would be {adjective} if I {verb-past}...",
             "I would {verb} {noun} if I {verb-past}...",
@@ -136,7 +136,7 @@ class Mood(DescribedEnum):
 
     DUBITATIVE = DescribedEnum.create(
         name="DUBITATIVE",
-        description="Express doubt or skepticism.",
+        description="Form with an explicit grammatical marker of epistemic doubt — a verb or construction that expresses the speaker's active uncertainty or skepticism about whether the proposition is true. In English realized by 'wonder if', 'doubt', 'question whether', 'can hardly believe', 'uncertain whether', or 'could it be that'.",
         examples=(
             "I doubt I am {adjective}...",
             "I question whether I am {adjective}...",
@@ -149,7 +149,7 @@ class Mood(DescribedEnum):
 
     PRESUMPTIVE = DescribedEnum.create(
         name="PRESUMPTIVE",
-        description="Express a logical presumption or inference.",
+        description="Form using an epistemic modal of reasoned inference — the speaker presents the proposition as a logical conclusion drawn from evidence or reasoning. In English realized by 'must', 'should', 'I suppose', 'presumably', or 'it follows that'.",
         examples=(
             "I must be {adjective}...",
             "I should be {adjective} of {noun}...",
@@ -162,7 +162,7 @@ class Mood(DescribedEnum):
 
     ENERGETIC = DescribedEnum.create(
         name="ENERGETIC",
-        description="Strongly emphasize and assert the truth of the statement.",
+        description="Form with an overt emphatic marker that asserts the proposition with greater force than a plain indicative. In English realized by emphatic do-support inserted before the main verb ('I do trust', 'I do carry') or by an overt intensifying adverb reinforcing the predicate ('indeed', 'truly', 'absolutely', 'without question', 'most certainly').",
         examples=(
             "I indeed am {adjective}...",
             "I truly do {verb} in {noun}...",
@@ -175,7 +175,7 @@ class Mood(DescribedEnum):
 
     INFERENTIAL = DescribedEnum.create(
         name="INFERENTIAL",
-        description="Report something inferred or unwitnessed, not directly confirmed.",
+        description="Report something inferred from evidence rather than directly witnessed or asserted. In English realized by evidential adverbs or constructions: 'apparently', 'evidently', 'it seems', 'seem to', 'appear to be', or 'by all accounts'.",
         examples=(
             "I am apparently {verbing}...",
             "It seems I am {adjective}...",
@@ -188,7 +188,7 @@ class Mood(DescribedEnum):
 
     SPECULATIVE = DescribedEnum.create(
         name="SPECULATIVE",
-        description="Express possibility based on speaker speculation.",
+        description="Form using an epistemic possibility marker indicating that the proposition is possible but uncertain from the speaker's perspective. In English realized by 'might', 'perhaps', 'maybe', 'possibly', 'conceivably', or 'it could be that'.",
         examples=(
             "I might be {adjective}...",
             "Perhaps I am {adjective}...",
@@ -203,25 +203,29 @@ class Mood(DescribedEnum):
     IMPERATIVE = DescribedEnum.create(
         name="IMPERATIVE",
         description=(
-            "Use the imperative mood: start the sentence with a bare infinitive verb — NO explicit subject. "
-            "The implicit (unstated) subject is always 'you'. "
-            "Subordinate clauses in the same sentence may use any voice, tense, or person — "
-            "only the MAIN verb (the one that starts the sentence) must be bare imperative. "
-            "Do NOT write 'You should...', 'You must...', or any sentence that starts with 'I'."
+            "Use the imperative mood: the main predicate is formed with the base (uninflected) form of the verb — "
+            "identical to the infinitive without 'to' — with no explicit subject. The addressee ('you') is understood. "
+            "CRITICAL: ANY sentence beginning with a base-form verb is a valid imperative — there are no restrictions "
+            "on the verb itself or what follows it. 'Embrace', 'Know', 'Map', 'Honor', 'Manage', 'Share', 'Channel', "
+            "'Master', 'Release', 'Trust' are ALL valid imperative verbs. "
+            "The sentence may optionally open with a single adverb before the main verb; the base verb form still drives the predicate. "
+            "Multiple imperative verbs may be coordinated with 'and'. "
+            "Subordinate clauses may use any voice, tense, or person — only the main predicate must be imperative. "
+            "Do NOT use modal auxiliaries ('should', 'must') or an explicit subject."
         ),
         examples=(
             "Be {adjective}",
-            "{Verb} yourself",
             "{Verb} your {noun}",
-            "{Verb} in your {noun}",
-            "{Verb} every {noun}",
-            "{Verb} {adverb} and {verb}",
+            "Embrace your {adjective} {noun}",
+            "Know the {noun} within yourself",
+            "{Verb} {noun} and {verb} your {noun}",
+            "{Verb} with {adjective} {noun}",
         ),
     )
 
     PROHIBITIVE = DescribedEnum.create(
         name="PROHIBITIVE",
-        description="Express a negative command or prohibition.",
+        description="Form as a negated imperative with an implied second-person subject — the main predicate must be a negative command that explicitly prohibits an action, with no overt subject stated. In English realized by 'do not', 'don't', 'never', 'stop [verb]ing', or 'refuse to'.",
         examples=(
             "Do not {verb} yourself",
             "Never {verb}",
@@ -234,7 +238,7 @@ class Mood(DescribedEnum):
 
     JUSSIVE = DescribedEnum.create(
         name="JUSSIVE",
-        description="Express an order to a third party.",
+        description="Form with a third-person directive construction: the main predicate directs a party other than the speaker or addressee to act. In English realized by 'let [third-person subject] [base verb]' (e.g., 'Let her grow', 'Let the light flow', 'Let them find').",
         examples=(
             "Let her {verb} {noun}...",
             "Let him be {adjective}...",
@@ -247,7 +251,7 @@ class Mood(DescribedEnum):
 
     HORTATIVE = DescribedEnum.create(
         name="HORTATIVE",
-        description="Use an exhortation with 'let us'.",
+        description="Form using a first-person inclusive exhortation. In English realized exclusively by 'let us [base verb]' or its contraction 'let's [base verb]' — the implicit subject is always 'we' encompassing the speaker and addressee together.",
         examples=(
             "Let us be {adjective}...",
             "Let us {verb} this {noun}...",
@@ -280,7 +284,7 @@ class Mood(DescribedEnum):
     # -- Irrealis / Deontic ----------------------------------------------------
     COMMISSIVE = DescribedEnum.create(
         name="COMMISSIVE",
-        description="Express a commitment or promise to do or be something.",
+        description="Form as a first-person speech act that constitutes the commitment through its utterance. In English realized by explicit performative verbs ('I commit', 'I pledge', 'I vow', 'I promise', 'I swear') or by 'I will' used as a solemn first-person promise rather than a mere prediction.",
         examples=(
             "I will be {adjective}...",
             "I commit to {verbing} every {time-unit}...",
@@ -293,7 +297,7 @@ class Mood(DescribedEnum):
 
     BENEDICTIVE = DescribedEnum.create(
         name="BENEDICTIVE",
-        description="Express a blessing or wish directed toward another person.",
+        description="Form as a benefactive optative addressed to a second person — the sentence must be structured as a blessing directed toward the addressee. In English realized by 'May you [verb]' or 'May [noun] be upon you'. Distinct from OPTATIVE (a wish for oneself) and JUSSIVE (a directive to a third party).",
         examples=(
             "May you be {verb-past} with {noun}...",
             "May you {verb} {noun}...",
@@ -306,7 +310,7 @@ class Mood(DescribedEnum):
 
     AORIST = DescribedEnum.create(
         name="AORIST",
-        description="Express a single, complete historical event.",
+        description="Form the main predicate in simple past tense to present a single discrete event as a bounded whole that occurred at a specific moment — the action is complete and viewed from the outside with no ongoing relevance to the present.",
         examples=(
             "I was {adjective} that day...",
             "I {verb-past} to the {noun}...",
@@ -319,7 +323,7 @@ class Mood(DescribedEnum):
 
     DEBITIVE = DescribedEnum.create(
         name="DEBITIVE",
-        description="Express a duty or obligation.",
+        description="Form using a deontic modal or construction of obligation — the action is required of the speaker by duty or moral debt, not merely desired. In English realized by 'must', 'ought to', 'owe it to myself to', 'it is my duty to', 'am bound to', or 'am obligated to'.",
         examples=(
             "I must be {adjective}...",
             "I ought to {verb} in {noun}...",
@@ -332,7 +336,7 @@ class Mood(DescribedEnum):
 
     PRECATIVE = DescribedEnum.create(
         name="PRECATIVE",
-        description="Express a prayer or earnest entreaty.",
+        description="Form as a petitionary speech act — the sentence must be structured as an earnest entreaty or prayer. In English realized by 'I pray', 'I beseech', 'I humbly ask', 'grant that', or 'may it be granted that'.",
         examples=(
             "I pray to {verb} {noun}...",
             "Grant that I may be {adjective}...",
@@ -345,7 +349,7 @@ class Mood(DescribedEnum):
 
     PERMISSIVE = DescribedEnum.create(
         name="PERMISSIVE",
-        description="Express permission — granted or self-granted.",
+        description="Form using a deontic construction that explicitly licenses the right to act. In English realized by 'I am allowed to', 'I permit myself to', 'I give myself permission to', 'I am free to', or 'I grant myself the right to'.",
         examples=(
             "I am allowed to be {adjective}...",
             "I permit myself to {verb}...",
@@ -358,7 +362,7 @@ class Mood(DescribedEnum):
 
     NECESSITATIVE = DescribedEnum.create(
         name="NECESSITATIVE",
-        description="Express necessity or an urgent need.",
+        description="Form using a deontic or alethic modal of necessity — the action is presented as required or unavoidable, not merely desired or intended. In English realized by 'must', 'need to', 'have to', 'it is necessary that', or 'it is essential that'.",
         examples=(
             "I need to {verb} in {noun}...",
             "It is necessary that I {verb}...",
@@ -389,15 +393,18 @@ class Voice(DescribedEnum):
     PASSIVE = DescribedEnum.create(
         name="PASSIVE",
         description=(
-            "CRITICAL: The MAIN clause must use PASSIVE voice — the subject receives the action. "
-            "Pattern: 'I am/was/have been [past participle]'. "
-            "Use naturally passive past participles such as: guided, held, supported, loved, carried, blessed, seen, known, "
-            "called, drawn, moved, shaped, filled, grounded, anchored, surrounded, embraced, lifted, held. "
-            "A single optional 'by [agent]' phrase is allowed. "
-            "CRITICAL: do NOT use two separate 'by ...' phrases in one sentence — e.g., NEVER write 'I am guided by X by Y' or 'I am held by X by Y'. "
-            "If you want to express two agents, combine them: 'I am guided by wisdom and courage'. "
-            "Subordinate clauses and infinitive phrases (e.g., 'ready to feel', 'able to see') may use active voice. "
-            "Do NOT write active main clauses like 'I trust', 'I choose', or 'I feel'."
+            "CRITICAL: The MAIN clause must use PASSIVE voice — the subject receives the action rather than performing it. "
+            "Form: '[subject] + be-auxiliary (am/was/have been) + past participle'. "
+            "The past participle is the third principal part of the verb (the form used after 'have': driven, held, shaped, seen, moved, etc.). "
+            "CRITICAL: The word immediately after the be-auxiliary MUST be a true past participle (a verb form), "
+            "NOT a noun, adjective, or present participle (-ing). For example: 'driven', 'held', 'shaped', 'lifted', "
+            "'guided', 'embraced', 'supported', 'freed', 'known', 'seen' are valid past participles. "
+            "Words like 'visionary', 'potential', 'meaning', 'success', 'absence' are NOT past participles and are INVALID. "
+            "Any transitive verb whose past participle naturally expresses a received action is valid. "
+            "An optional 'by [agent]' phrase may follow; if two agents are referenced, join them with 'and' in a single 'by' phrase rather than two. "
+            "CRITICAL: do NOT use two separate 'by ...' phrases in one sentence. "
+            "Subordinate clauses and infinitive phrases may use active voice; only the MAIN predicate must be passive. "
+            "Do NOT write an active main predicate."
         ),
         examples=(
             "I am {past-participle}...",
@@ -423,7 +430,7 @@ class Tense(DescribedEnum):
     # -- Past ------------------------------------------------------------------
     PAST = DescribedEnum.create(
         name="PAST",
-        description="Use the past tense.",
+        description="Morphologically realized by the simple past form of the verb: regular verbs add -ed (walked, trusted, loved); irregular verbs use their distinct past forms (was, went, saw, knew, felt, grew, etc.). No temporal adverb is required; the past-tense form alone carries the tense.",
         examples=(
             "I was {adjective}...",
             "I {verb-past} {noun}...",
@@ -436,7 +443,7 @@ class Tense(DescribedEnum):
 
     RECENT_PAST = DescribedEnum.create(
         name="RECENT_PAST",
-        description="Use the near past — something that happened very recently.",
+        description="Place the event in the near past. English has no morphological recency marker, so recency must be signaled lexically. In English realized by temporal adverbs of very recent time: 'just', 'just now', 'moments ago', 'a moment ago', 'only just', or the present perfect with 'just' ('I have just [past participle]').",
         examples=(
             "I was just {adjective}...",
             "I have just {verb-past} to {verb}...",
@@ -449,7 +456,7 @@ class Tense(DescribedEnum):
 
     REMOTE_PAST = DescribedEnum.create(
         name="REMOTE_PAST",
-        description="Use the distant past — something long ago.",
+        description="Place the event in the distant past. English has no morphological remoteness marker, so remoteness must be signaled lexically. In English realized by temporal adverbs of distant time: 'long ago', 'ages ago', 'years back', 'in a distant past', 'once upon a time', or 'in the ancient past'.",
         examples=(
             "Long ago, I {verb-past} my {noun}...",
             "Years back, I {verb-past} {noun}...",
@@ -462,7 +469,7 @@ class Tense(DescribedEnum):
 
     PLUPERFECT = DescribedEnum.create(
         name="PLUPERFECT",
-        description="Use the past perfect (pluperfect).",
+        description="Use the past perfect: 'had + past participle' — the action was completed before another reference point in the past.",
         examples=(
             "I had already {verb-past} {adjective}...",
             "Before that moment, I had {verb-past}...",
@@ -503,7 +510,7 @@ class Tense(DescribedEnum):
     # -- Present ---------------------------------------------------------------
     PRESENT = DescribedEnum.create(
         name="PRESENT",
-        description="Use the present tense.",
+        description="Morphologically realized by the present simple form: first/second/plural person uses the bare stem (I trust, you carry, we grow); third-person singular adds -s (she flows, it knows, he carries). The be-verb present forms are 'am/is/are'. No progressive (-ing) or past (-ed) marking is used.",
         examples=(
             "I am {adjective}...",
             "I {verb} myself...",
@@ -535,7 +542,7 @@ class Tense(DescribedEnum):
 
     NEAR_FUTURE = DescribedEnum.create(
         name="NEAR_FUTURE",
-        description="Use the near future — something about to happen.",
+        description="Place the event in the imminent future. In English realized by periphrastic markers of imminent timing: 'am about to [verb]', 'am on the verge of [verb]ing', 'am just about to [verb]', 'am soon to [verb]', or 'any moment [will/shall verb]'.",
         examples=(
             "I am about to {verb} my {noun}...",
             "I am on the verge of {verbing}...",
@@ -548,7 +555,7 @@ class Tense(DescribedEnum):
 
     REMOTE_FUTURE = DescribedEnum.create(
         name="REMOTE_FUTURE",
-        description="Use the distant future.",
+        description="Place the event in the distant future. English has no morphological remoteness marker, so it must be lexically expressed. In English realized by explicit temporal adverbs of far-future distance: 'someday', 'one day', 'far from now', 'in years to come', 'in ages to come', 'in the distant future', or 'eventually'.",
         examples=(
             "Someday I will {verb} {noun}...",
             "One day I will {verb}...",
@@ -580,7 +587,7 @@ class Tense(DescribedEnum):
 
     FUTURE_IN_THE_PAST = DescribedEnum.create(
         name="FUTURE_IN_THE_PAST",
-        description="Express an event that was future relative to a past moment.",
+        description="Express an event that was future relative to a past reference point. In English realized by: 'was going to [base verb]', 'was about to [base verb]', 'was meant to [base verb]', 'was to [base verb]', or the narrative past modal 'would [base verb]' in a context that establishes a preceding past moment.",
         examples=(
             "I was going to be {adjective}...",
             "I was about to {verb} my {noun}...",
@@ -617,7 +624,7 @@ class Aspect(DescribedEnum):
 
     PERFECTIVE = DescribedEnum.create(
         name="PERFECTIVE",
-        description="Express the action as a complete, bounded whole — viewed start-to-finish.",
+        description="Express the action as a complete, bounded whole — viewed start-to-finish. Morphologically realized by the simple past tense form of the verb (same form as PAST tense); the perfective reading emerges from context and completive adverbs such as 'completely', 'fully', 'in one act', 'from start to finish', or 'once and for all'.",
         examples=(
             "I {verb-past} and {verb-past}...",
             "I {verb-past} my {noun}...",
@@ -631,7 +638,7 @@ class Aspect(DescribedEnum):
     # -- Imperfective ----------------------------------------------------------
     IMPERFECTIVE = DescribedEnum.create(
         name="IMPERFECTIVE",
-        description="Express the action as ongoing with internal structure — not yet complete.",
+        description="Form using a past progressive construction — the action was actively unfolding at a reference point in the past, presented as incomplete from the inside rather than as a finished whole.",
         examples=(
             "I was {verbing} toward my {noun}...",
             "I was becoming {adjective}...",
@@ -657,7 +664,7 @@ class Aspect(DescribedEnum):
 
     CONTINUOUS = DescribedEnum.create(
         name="CONTINUOUS",
-        description="Express an actively, dynamically evolving ongoing action.",
+        description="Form using a present progressive construction explicitly marked for sustained, unbroken continuation — the action persists without interruption rather than merely occurring at this moment. Distinct from PROGRESSIVE (a neutral in-progress frame) and STATIVE (an unchanging state). In English, the be + -ing frame is required and must be reinforced by a duration or continuation adverb: 'continuously', 'ceaselessly', 'perpetually', 'without pause', 'ever', or 'always'.",
         examples=(
             "I am {verbing} {adjective}...",
             "I am becoming my {noun}...",
@@ -670,7 +677,7 @@ class Aspect(DescribedEnum):
 
     STATIVE = DescribedEnum.create(
         name="STATIVE",
-        description="Express an ongoing, unchanging state with no internal movement.",
+        description="Form using a stative (non-dynamic) verb in the simple present to denote a stable, persistent state. Morphologically, stative aspect uses the bare present form without progressive (-ing) marking; stative verbs are those that cannot naturally appear in the progressive without a change of meaning — verbs of knowing, believing, perceiving, possessing, or relating (e.g., know, believe, love, hold, possess, remain, understand, belong, seem, deserve).",
         examples=(
             "I {verb} my {noun}...",
             "I remain {adjective}...",
@@ -684,7 +691,7 @@ class Aspect(DescribedEnum):
     # -- Other -----------------------------------------------------------------
     HABITUAL = DescribedEnum.create(
         name="HABITUAL",
-        description="Express a recurring action using 'always', 'regularly', 'consistently', or 'every day'.",
+        description="Form by including a temporal frequency marker — an adverb or adverbial phrase that explicitly signals the action as recurring or habitual, establishing it as a regular pattern rather than a single event.",
         examples=(
             "I always {verb} {noun}...",
             "I regularly {verb} {noun}...",
@@ -697,7 +704,7 @@ class Aspect(DescribedEnum):
 
     PROSPECTIVE = DescribedEnum.create(
         name="PROSPECTIVE",
-        description="Express an action on the verge of beginning.",
+        description="Express the aspect of readiness or preparation oriented toward a future action — focus is on the internal state of preparedness, not merely the timing. Distinct from NEAR_FUTURE (which marks imminent timing regardless of readiness). In English realized by preparatory periphrases: 'am ready to [verb]', 'am poised to [verb]', 'am prepared to [verb]', 'stand ready to [verb]', 'am set to [verb]', or 'am on the verge of [verb]ing'.",
         examples=(
             "I am about to {verb}...",
             "I am on the verge of {verbing}...",
@@ -710,7 +717,7 @@ class Aspect(DescribedEnum):
 
     GNOMIC = DescribedEnum.create(
         name="GNOMIC",
-        description="Express a universal truth or timeless principle.",
+        description="Express a universal truth or timeless principle. The gnomic aspect has no special morphological or lexical marker in English — it is realized structurally by the simple present with a generic or universal subject (not 'I' or 'we'). The proposition must read as a timeless generalization, not a report of a specific event or personal action.",
         examples=(
             "{Noun} {verbs} through {noun}...",
             "{Noun} is {verb-past} in {noun}...",
@@ -723,7 +730,7 @@ class Aspect(DescribedEnum):
 
     EPISODIC = DescribedEnum.create(
         name="EPISODIC",
-        description="Express a specific individual event or concrete truth.",
+        description="Express a specific individual event anchored to a particular past time. In English, episodic aspect requires an explicit time-anchor expression tying the event to a specific occasion: 'yesterday', 'last week', 'that day', 'on that day', 'at that moment', 'earlier today', or a similar definite past-time reference.",
         examples=(
             "I {verb-past} {noun} yesterday...",
             "Last week, I {verb-past} {noun}...",
@@ -736,7 +743,7 @@ class Aspect(DescribedEnum):
 
     INCEPTIVE = DescribedEnum.create(
         name="INCEPTIVE",
-        description="Express the very start or beginning of an action.",
+        description="Express the very start or beginning of an action. In English realized by phase-marking constructions: 'beginning to [verb]', 'starting to [verb]', 'am just starting to [verb]', 'the first signs of [noun] are [verb]ing', or 'something is [verb]ing within me'.",
         examples=(
             "I am beginning to {verb}...",
             "I am starting to {verb} {adjective}...",
@@ -749,7 +756,7 @@ class Aspect(DescribedEnum):
 
     TERMINATIVE = DescribedEnum.create(
         name="TERMINATIVE",
-        description="Express the completion or end of an action.",
+        description="Express the completion or endpoint of an action. In English realized by endpoint-marking constructions: 'have stopped [verb]ing', 'am done [verb]ing', 'have finished [verb]ing', 'have ceased to [verb]', 'no longer [verb]', or 'have completed [noun]'.",
         examples=(
             "I have stopped {verbing} myself...",
             "I am done {verbing} that {noun}...",
@@ -762,7 +769,7 @@ class Aspect(DescribedEnum):
 
     EXPERIENTIAL = DescribedEnum.create(
         name="EXPERIENTIAL",
-        description="Express thorough, repeated lived experience.",
+        description="Form using the present perfect ('have + past participle') to assert that the speaker has accumulated lived experience of the action — the focus is on the experiential result in the present, not the specific time of occurrence.",
         examples=(
             "I have {verb-past} this before...",
             "I have {verb-past} {noun} many times...",
@@ -797,7 +804,12 @@ class Person(DescribedEnum):
 
     FIRST = DescribedEnum.create(
         name="FIRST",
-        description="Subject is first-person ('I' for singular, 'we' for plural).",
+        description=(
+            "Subject is first-person. In English realized by the first-person pronouns 'I' (singular) or 'we' (plural) "
+            "as the grammatical subject. The verb must agree with this subject ('I am/trust/carry', 'we are/trust/carry'). "
+            "IMPORTANT: First-person singular present tense uses the bare (uninflected) verb form — "
+            "'I understand', 'I perceive', 'I embody', 'I express', 'I command' are ALL correctly conjugated."
+        ),
         examples=(
             "I am {adjective}...",
             "We are {adjective}...",
@@ -809,7 +821,7 @@ class Person(DescribedEnum):
     )
     SECOND = DescribedEnum.create(
         name="SECOND",
-        description="Subject/address is 'you' (second person).",
+        description="Subject is second-person. In English realized by the pronoun 'you' as the overt grammatical subject, or as the implied addressee in imperative constructions where no subject is stated.",
         examples=(
             "You are {adjective}...",
             "You {verb} {noun}...",
@@ -823,18 +835,23 @@ class Person(DescribedEnum):
         name="THIRD",
         description=(
             "CRITICAL: Do NOT use 'I'. "
-            "The subject must be third-person: 'he', 'she', 'it', 'they', or a third-person noun phrase (e.g., 'the light', 'the roots'). "
+            "The subject must be third-person — any entity the speaker refers to rather than addressing directly. "
+            "Third-person subjects include third-person pronouns (he, she, it, they) and any noun phrase: "
+            "a person, animal, place, concrete object, or abstract concept treated as the grammatical subject. "
+            "Abstract and inanimate noun subjects — such as 'wisdom', 'energy', 'intuition', 'growth', "
+            "'the soul', 'the mind', 'the light' — are fully VALID third-person singular subjects. "
             "Never start the sentence with 'I'. "
-            "IMPORTANT: Singular subjects (he/she/it/a noun) take a verb with -s (e.g., 'flows', 'balances', 'brings'). "
-            "Plural subjects (they/the roots/the branches) correctly take a verb WITHOUT -s (e.g., 'flow', 'grow', 'establish')."
+            "IMPORTANT subject-verb agreement: a grammatically singular subject (any pronoun 'he/she/it' or any single noun phrase, "
+            "whether concrete or abstract) takes the third-person singular verb form, inflected with -s/-es. "
+            "A grammatically plural subject takes the base (uninflected) verb form."
         ),
         examples=(
             "She is {adjective}...",
-            "He {verbs} himself...",
+            "Wisdom {verbs} through {noun}...",
             "They {verb} their {noun}...",
             "The light {verbs} within...",
-            "It flows with {noun}...",
-            "One who {verbs} is {adjective}...",
+            "The soul {verbs} with {adjective} {noun}...",
+            "Energy {verbs} {noun} into {noun}...",
         ),
     )
 
@@ -844,7 +861,7 @@ class Number(DescribedEnum):
 
     SINGULAR = DescribedEnum.create(
         name="SINGULAR",
-        description="Subject is singular (one person): 'I am', 'he is', 'she is.'",
+        description="Subject is grammatically singular. Morphologically realized through subject-verb agreement: first-person singular 'I' takes 'am/was' (be-verb) or bare stem ('I trust'); third-person singular takes -s inflection on the verb ('he flows', 'she carries', 'it knows'). Singular pronouns: I, he, she, it; or any single noun phrase.",
         examples=(
             "I am {adjective}...",
             "He is {adjective}...",
@@ -857,7 +874,7 @@ class Number(DescribedEnum):
 
     PLURAL = DescribedEnum.create(
         name="PLURAL",
-        description="Subject is plural (multiple people, unspecified count)",
+        description="Subject is grammatically plural. Morphologically realized through subject-verb agreement: plural subjects take the bare uninflected stem ('we trust', 'they carry', 'we are'). Plural pronouns: we, they; or any plural noun phrase (the roots, the branches).",
         examples=(
             "We are {adjective}...",
             "They are {adjective}...",
@@ -870,7 +887,7 @@ class Number(DescribedEnum):
 
     DUAL = DescribedEnum.create(
         name="DUAL",
-        description="Subject is exactly two people",
+        description="Subject refers to exactly two people or entities. English has no grammatical dual, so it must be lexically expressed. In English realized by 'we two', 'both of us', 'the two of us', 'the pair of us', or 'you and I'.",
         examples=(
             "We two are {adjective} together...",
             "The two of us are {adjective}...",
@@ -883,7 +900,7 @@ class Number(DescribedEnum):
 
     TRIPLE = DescribedEnum.create(
         name="TRIPLE",
-        description="Subject is exactly three people",
+        description="Subject refers to exactly three people or entities. English has no grammatical trial number, so it must be lexically expressed. In English realized by 'we three', 'the three of us', 'all three of us', or 'the trio of us'.",
         examples=(
             "We three are {noun}...",
             "The three of us are {adjective}...",
@@ -896,7 +913,7 @@ class Number(DescribedEnum):
 
     EXISTENTIAL = DescribedEnum.create(
         name="EXISTENTIAL",
-        description="Subject is 'some' (but not all)",
+        description="Subject carries an existential quantifier — the predicate is asserted to apply to some unspecified subset of the group, not necessarily all members. In English realized by 'some', 'certain', 'a number of', 'a few of us', or 'there are those who'.",
         examples=(
             "Some of us are {adjective}...",
             "Some among us are {adjective}...",
@@ -909,7 +926,7 @@ class Number(DescribedEnum):
 
     UNIVERSAL = DescribedEnum.create(
         name="UNIVERSAL",
-        description="Subject is 'all' or 'every'",
+        description="Subject carries a universal quantifier — the predicate is asserted to apply to every member of the set without exception. In English realized by 'all', 'every', 'each', 'everyone', or 'no one is excluded'.",
         examples=(
             "All of us are {adjective}...",
             "Everyone is {adjective}...",
@@ -922,7 +939,7 @@ class Number(DescribedEnum):
 
     PAUCAL = DescribedEnum.create(
         name="PAUCAL",
-        description="Subject is a small number",
+        description="Subject refers to a small, limited number of people or entities. English has no grammatical paucal, so it must be lexically expressed. In English realized by small-quantity quantifiers: 'few', 'a few of', 'only a handful', 'a small number of', 'a select few', or 'several'.",
         examples=(
             "Few of us are {adjective}...",
             "A few of us {verb}...",
@@ -935,7 +952,7 @@ class Number(DescribedEnum):
 
     SUPERPLURAL = DescribedEnum.create(
         name="SUPERPLURAL",
-        description="Subject is a large number",
+        description="Subject refers to a large, abundant number of people or entities. English has no grammatical superplural, so it must be lexically expressed. In English realized by large-quantity quantifiers: 'many', 'so many', 'countless', 'multitudes', 'innumerable', or 'a great many'.",
         examples=(
             "Many of us are {adjective}...",
             "So many of us {verb}...",
@@ -996,7 +1013,7 @@ class Deixis(DescribedEnum):
     # -- Spatial ---------------------------------------------------------------
     PROXIMAL = DescribedEnum.create(
         name="PROXIMAL",
-        description="Anchor the statement to the immediate here and now — use 'this', 'here', 'in this moment'.",
+        description="Include a proximal spatial deictic expression that locates the referent at the speaker's immediate position. In English realized by 'this', 'here', 'right here', or 'in this place'.",
         examples=(
             "I am here, in this {noun}...",
             "This {noun} is mine...",
@@ -1009,7 +1026,7 @@ class Deixis(DescribedEnum):
 
     MEDIAL = DescribedEnum.create(
         name="MEDIAL",
-        description="Use near-but-not-immediate deictic words — 'near', 'that (nearby)', 'this approaching'.",
+        description="Include a medial spatial deictic expression that locates the referent at a perceptible but non-immediate distance — farther than 'here' but still within active awareness. In English realized by 'near', 'nearby', 'that approaching', or 'drawing closer'.",
         examples=(
             "That {noun} is near...",
             "I am becoming that {noun}...",
@@ -1022,7 +1039,7 @@ class Deixis(DescribedEnum):
 
     DISTAL = DescribedEnum.create(
         name="DISTAL",
-        description="Use far deictic words — 'that', 'there (far)', 'beyond'.",
+        description="Include a distal spatial deictic expression that locates the referent at a clear remove from the speaker's position, beyond immediate reach. In English realized by 'that', 'there', 'beyond', 'over there', or 'out there'.",
         examples=(
             "I reach toward that {noun}...",
             "I am moving toward that {noun}...",
@@ -1035,7 +1052,7 @@ class Deixis(DescribedEnum):
 
     FAR_DISTAL = DescribedEnum.create(
         name="FAR_DISTAL",
-        description="Use very far deictic words — 'yon', 'yonder', 'far beyond'.",
+        description="Include a far-distal spatial deictic expression that places the referent at a remotely distant location, far beyond ordinary reach or sight. In English realized by 'yonder', 'yon', 'far beyond', 'in the far reaches', or 'out beyond the horizon'.",
         examples=(
             "I am drawn toward yonder {noun}...",
             "Out beyond, a greater {noun} awaits...",
@@ -1049,7 +1066,7 @@ class Deixis(DescribedEnum):
     # -- Temporal --------------------------------------------------------------
     IMMEDIATE = DescribedEnum.create(
         name="IMMEDIATE",
-        description="Ground the statement in the exact present instant — use 'now', 'this very instant', 'right now', 'in this breath'.",
+        description="Include a temporal deictic expression that anchors the event precisely to the speaker's moment of utterance, not merely the general present. In English realized by 'now', 'right now', 'this very instant', 'this very breath', 'at this moment', or 'in this instant'.",
         examples=(
             "Right now, I am {adjective}...",
             "In this very breath, I am {adjective}...",
@@ -1062,7 +1079,7 @@ class Deixis(DescribedEnum):
 
     PROXIMATE_TEMPORAL = DescribedEnum.create(
         name="PROXIMATE_TEMPORAL",
-        description="Place the event near in time — use 'soon', 'recently', 'shortly', 'before long'.",
+        description="Include a near-temporal deictic expression that places the event close to but not at the present moment, either in the just-past or the imminent future. In English realized by 'soon', 'shortly', 'before long', 'recently', 'just', or 'in the near term'.",
         examples=(
             "I am soon to be {adjective}...",
             "I have recently {verb-past} my {noun}...",
@@ -1075,7 +1092,7 @@ class Deixis(DescribedEnum):
 
     REMOTE_TEMPORAL = DescribedEnum.create(
         name="REMOTE_TEMPORAL",
-        description="Place the event far in time — use 'later', 'long ago', 'eventually', 'someday'.",
+        description="Include a remote-temporal deictic expression that places the event far from the present moment, in the distant past or distant future. In English realized by 'long ago', 'ages ago', 'someday', 'eventually', 'one day far from now', or 'in the distant future'.",
         examples=(
             "I will later {verb} {noun}...",
             "Long ago, I {verb-past} {noun}...",
@@ -1089,7 +1106,7 @@ class Deixis(DescribedEnum):
     # -- Personal --------------------------------------------------------------
     INCLUSIVE = DescribedEnum.create(
         name="INCLUSIVE",
-        description="Use inclusive 'we' that encompasses both speaker and addressee — 'we (all of us)', 'together we', 'all of us'.",
+        description="Use the inclusive first-person plural — a 'we' that encompasses both the speaker and the addressee together, expressing shared identity or joint action. In English signaled by 'we' with explicit markers of joint membership: 'you and I', 'together we', 'all of us', or 'we share'.",
         examples=(
             "Together we are {adjective}...",
             "All of us can {verb} {noun}...",
@@ -1102,7 +1119,7 @@ class Deixis(DescribedEnum):
 
     EXCLUSIVE = DescribedEnum.create(
         name="EXCLUSIVE",
-        description="Use exclusive 'we' that excludes the addressee, or third-person 'they' — 'we (but not you)', 'they among us'.",
+        description="Use the exclusive first-person plural or a third-person outgroup reference that explicitly marks the speaker's group as distinct from the addressee. In English signaled by 'we alone', 'we ourselves', 'they (apart from you)', or a third-person subject referring to a separate group.",
         examples=(
             "We {verb} this forward on our own...",
             "We {verb-past} this happen ourselves...",
@@ -1314,6 +1331,9 @@ PAST = Grammar(
         "I was {adjective}...",
         "I {verb-past}...",
         "I {verb-past} {noun}...",
+        "I {verb-past} my {noun} with {noun}...",
+        "I {verb-past} through {noun}...",
+        "I {verb-past} {adjective} {noun}...",
     ],
     form=Form.FINITE,
     mood=Mood.INDICATIVE,
@@ -1331,6 +1351,9 @@ PRESENT = Grammar(
         "I am {adjective}...",
         "I {verb}...",
         "I am {adjective} of {noun}...",
+        "I {verb} my {noun}...",
+        "I {verb} with {adjective} {noun}...",
+        "I {verb} {noun} in my {noun}...",
     ],
     form=Form.FINITE,
     mood=Mood.INDICATIVE,
@@ -1348,6 +1371,9 @@ FUTURE = Grammar(
         "I will {verb}...",
         "I will {verb} my {noun}...",
         "I will {verb} {noun}...",
+        "I will be {adjective}...",
+        "I will {verb} with {adjective} {noun}...",
+        "I will {verb} every {noun} I {verb}...",
     ],
     form=Form.FINITE,
     mood=Mood.INDICATIVE,
@@ -1365,6 +1391,9 @@ PERFECT_PROGRESSIVE = Grammar(
         "I have been {verbing}...",
         "I have been {verbing} my {noun}...",
         "I have been {verbing} every {time-unit}...",
+        "I have been {verbing} with {adjective} {noun}...",
+        "I have been {verbing} {noun} into {noun}...",
+        "I have been {adverb} {verbing} my {noun}...",
     ],
     form=Form.FINITE,
     mood=Mood.INDICATIVE,
@@ -1382,6 +1411,9 @@ FUTURE_PERFECT = Grammar(
         "I will have {verb-past} {noun}...",
         "I will have become {description}...",
         "I will have {verb-past} a {noun}...",
+        "I will have {verb-past} my {noun}...",
+        "I will have {verb-past} through {noun}...",
+        "I will have {verb-past} every {noun} I {verb}...",
     ],
     form=Form.FINITE,
     mood=Mood.INDICATIVE,
@@ -1399,6 +1431,9 @@ FIRST_PLURAL = Grammar(
         "We are {adjective} together...",
         "We {verb} each other...",
         "We {verb} {noun}...",
+        "We {verb} our {noun} with {noun}...",
+        "We are {adjective} in our {noun}...",
+        "We {verb} as one in {noun}...",
     ],
     form=Form.FINITE,
     mood=Mood.INDICATIVE,
@@ -1411,12 +1446,14 @@ FIRST_PLURAL = Grammar(
 
 THIRD_PRESENT = Grammar(
     emoji="👤",
-    description="Speaks a present truth about another person — broadening perspective beyond the self.",
+    description="Speaks a present truth about another entity — a person, force, or abstract concept — broadening perspective beyond the self.",
     examples=[
         "They {verb} in their own {noun}...",
         "She {verbs} her {noun}...",
-        "He is {adjective} of {noun}...",
-        "It {verbs} with {adjective} {noun}...",
+        "Wisdom {verbs} through {noun}...",
+        "The soul {verbs} with {adjective} {noun}...",
+        "Growth {verbs} {noun} into {noun}...",
+        "Energy {verbs} {adjective} {noun}...",
     ],
     form=Form.FINITE,
     mood=Mood.INDICATIVE,
@@ -1433,6 +1470,9 @@ POTENTIAL = Grammar(
         "I can {verb}...",
         "I could {verb} {noun}...",
         "I am able to {verb}...",
+        "I can {verb} my {noun} with {noun}...",
+        "I can {verb} through any {noun}...",
+        "I am capable of {verbing} {noun}...",
     ],
     form=Form.FINITE,
     mood=Mood.POTENTIAL,
@@ -1450,6 +1490,9 @@ OPTATIVE = Grammar(
         "May I {verb} {noun}...",
         "If only I could {verb}...",
         "Would that I might {verb}...",
+        "May I {verb} with {adjective} {noun}...",
+        "If only I could {verb} my {noun}...",
+        "May I be {adjective} in {noun}...",
     ],
     form=Form.FINITE,
     mood=Mood.OPTATIVE,
@@ -1460,11 +1503,14 @@ OPTATIVE = Grammar(
 
 IMPERATIVE = Grammar(
     emoji="❗",
-    description="Commands the self or another to act — activating, direct, and rousing.",
+    description="Commands the self or another to act — activating, direct, and rousing. Any base-form verb is valid.",
     examples=[
         "Be {adjective}",
-        "{Verb} yourself",
         "{Verb} your {noun}",
+        "Embrace your {adjective} {noun}",
+        "Know the {noun} within",
+        "Trust the {noun} of {noun}",
+        "{Verb} with {adjective} {noun}",
     ],
     form=Form.FINITE,
     mood=Mood.IMPERATIVE,
@@ -1480,6 +1526,9 @@ INTERROGATIVE = Grammar(
         "Am I not {adjective}?",
         "Have I not {verb-past} {noun}?",
         "Can I not {verb}?",
+        "Do I not {verb} {noun}?",
+        "Am I not {adjective} enough to {verb}?",
+        "Have I not already {verb-past}?",
     ],
     form=Form.FINITE,
     mood=Mood.INTERROGATIVE,
@@ -1497,6 +1546,9 @@ INFINITIVE = Grammar(
         "To {verb}...",
         "To {verb} {adverb}...",
         "To {verb} without {noun}...",
+        "To {verb} with {adjective} {noun}...",
+        "To {verb} each {noun} fully...",
+        "To be {adjective} is to {verb}...",
     ],
     form=Form.INFINITIVE,
     voice=Voice.ACTIVE,
@@ -1510,6 +1562,9 @@ GERUND = Grammar(
         "Being {adjective} {verbs} {noun}...",
         "{Verbing} {noun} {verbs} {adjective} {noun}...",
         "{Verbing} {noun} {verbs} {noun}...",
+        "{Verbing} with {noun} {verbs} {adjective} {noun}...",
+        "{Verbing} {adjective} {noun} {verbs} {noun}...",
+        "{Verbing} deeply {verbs} {noun}...",
     ],
     form=Form.GERUND,
     voice=Voice.ACTIVE,
@@ -1517,11 +1572,14 @@ GERUND = Grammar(
 
 PASSIVE = Grammar(
     emoji="🌊",
-    description="Affirms being received, held, or supported — openness to grace, love, and forces beyond the self.",
+    description="Affirms being received, held, or supported — openness to grace, love, and forces beyond the self. The word after 'am' must be a past participle (verb form), not a noun or adjective.",
     examples=[
         "I am {past-participle}...",
         "I am {past-participle} by {noun}...",
         "I am {past-participle} by {description}...",
+        "I am {past-participle} into {adjective} {noun}...",
+        "I am deeply {past-participle} by {noun}...",
+        "I am {past-participle} with {adjective} {noun}...",
     ],
     form=Form.FINITE,
     mood=Mood.INDICATIVE,
@@ -1539,6 +1597,9 @@ HABITUAL = Grammar(
         "I always {verb} {noun}...",
         "I regularly {verb} {noun}...",
         "I consistently {verb} {noun}...",
+        "I {verb} {noun} every {time-unit}...",
+        "I always {verb} with {adjective} {noun}...",
+        "I unfailingly {verb} my {noun}...",
     ],
     form=Form.FINITE,
     mood=Mood.INDICATIVE,
@@ -1556,6 +1617,9 @@ NEGATIVE = Grammar(
         "I am not {adjective}...",
         "I am not {adjective} of {noun}...",
         "I do not {verb} {noun}...",
+        "I am not defined by {noun}...",
+        "I do not {verb} in {noun}...",
+        "I no longer {verb} {noun}...",
     ],
     form=Form.FINITE,
     mood=Mood.INDICATIVE,

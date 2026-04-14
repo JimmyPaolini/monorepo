@@ -72,8 +72,10 @@ vishuddha
 #endregion
 
 #region 👅 Linguistics — Mood & Modality
+alethic
 benedictive
 commissive
+completive
 debitive
 deontic
 dubitative
@@ -81,6 +83,7 @@ irrealis
 necessitative
 nonpast
 nonfuture
+outgroup
 paucal
 precative
 realis
