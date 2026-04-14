@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.0](https://github.com/JimmyPaolini/monorepo/compare/v1.0.0...v1.1.0) (2026-04-14)
+
+### ✨ Features
+
+* **affirmations:** 🚀 build affirmation application in python with langchain and ollama ([#19](https://github.com/JimmyPaolini/monorepo/issues/19)) ([595c0af](https://github.com/JimmyPaolini/monorepo/commit/595c0afcc850a2eff0cf9dcc01858f2098ddd01e))
+
 ## 1.0.0 (2026-02-27)
 
 ### ✨ Features

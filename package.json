@@ -1,7 +1,7 @@
 {
   "name": "monorepo",
   "description": "",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Jimmy Paolini",
   "devDependencies": {
     "@biomejs/biome": "^2.4.4",
