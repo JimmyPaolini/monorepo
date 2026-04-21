@@ -175,6 +175,7 @@ export default [
     ],
     plugins: {
       import: importPlugin,
+      "@typescript-eslint": tseslint.plugin,
     },
     rules: {
       // Nx-specific rules
@@ -373,6 +374,9 @@ export default [
   {
     files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
     ignores: ["lint-staged.config.ts", "prettier.config.ts"],
+    plugins: {
+      "@typescript-eslint": tseslint.plugin,
+    },
     languageOptions: {
       parserOptions: {
         projectService: true,
@@ -485,9 +489,12 @@ export default [
       "**/*.spec.tsx",
       "**/*.test.ts",
       "**/*.test.tsx",
-      "**/testing/**",
-      "**/__tests__/**",
+      "**/testing/**/*.{ts,tsx,mts,cts,js,mjs,cjs,jsx}",
+      "**/__tests__/**/*.{ts,tsx,mts,cts,js,mjs,cjs,jsx}",
     ],
+    plugins: {
+      "@typescript-eslint": tseslint.plugin,
+    },
     rules: {
       "@typescript-eslint/no-explicit-any": "warn",
       "@typescript-eslint/no-unsafe-assignment": "warn",
@@ -503,6 +510,9 @@ export default [
   // lack TypeScript type information (e.g., *.config.cjs, commitlint.config.ts)
   {
     files: ["**/*.js", "**/*.mjs", "**/*.cjs"],
+    plugins: {
+      "@typescript-eslint": tseslint.plugin,
+    },
     rules: {
       "@typescript-eslint/no-require-imports": "off",
       // Disable ALL type-checked rules for JS files
@@ -660,6 +670,9 @@ export default [
   // Disable type-checked rules for vitest configs (circular dependency issues)
   {
     files: ["**/vitest.config.ts", "**/vitest.config.base.ts"],
+    plugins: {
+      "@typescript-eslint": tseslint.plugin,
+    },
     rules: {
       "@typescript-eslint/no-unsafe-assignment": "off",
       "@typescript-eslint/no-unsafe-call": "off",
@@ -673,6 +686,9 @@ export default [
   // Relaxed rules for eslint.config.base.ts itself (plugin typing limitations)
   {
     files: ["eslint.config.base.ts"],
+    plugins: {
+      "@typescript-eslint": tseslint.plugin,
+    },
     rules: {
       "@typescript-eslint/no-unnecessary-boolean-literal-compare": "off",
       "@typescript-eslint/no-unnecessary-condition": "off",

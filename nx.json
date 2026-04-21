@@ -333,7 +333,16 @@
         "command": "prettier {args} {projectRoot}"
       }
     },
-    "py-test": {
+    "pyright": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "inputs": ["{workspaceRoot}/pyproject.toml", "pythonSource"],
+      "options": {
+        "command": "uv run pyright src/",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "pytest": {
       "cache": true,
       "configurations": {
         "coverage": {
@@ -357,15 +366,6 @@
       ],
       "options": {
         "command": "uv run pytest",
-        "cwd": "{projectRoot}"
-      }
-    },
-    "pyright": {
-      "cache": true,
-      "executor": "nx:run-commands",
-      "inputs": ["{workspaceRoot}/pyproject.toml", "pythonSource"],
-      "options": {
-        "command": "uv run pyright src/",
         "cwd": "{projectRoot}"
       }
     },

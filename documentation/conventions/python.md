@@ -37,7 +37,7 @@ Seven Python tool targets are defined as monorepo-wide `targetDefaults`:
 | `ruff-format` | ruff    | Format Python source (`--check` / write modes)     |
 | `ruff-lint`   | ruff    | Lint Python source (`check` / `--fix` modes)       |
 | `pyright`     | pyright | Primary type checker (strict mode)                 |
-| `py-test`     | pytest  | Run tests (unit/integration/coverage/watch)        |
+| `pytest`      | pytest  | Run tests (unit/integration/coverage/watch)        |
 | `vulture`     | vulture | Dead code detection                                |
 | `ty`          | ty      | Supplementary type checker (Astral, pre-1.0)       |
 | `bandit`      | bandit  | Security linter (runs in `security-audit` CI only) |
@@ -94,17 +94,17 @@ Python projects override the TS-default composite targets to compose Python sub-
     },
     "test": {
       "executor": "nx:run-commands",
-      "options": { "commands": ["nx run {projectName}:py-test"] },
+      "options": { "commands": ["nx run {projectName}:pytest"] },
       "configurations": {
-        "unit": { "commands": ["nx run {projectName}:py-test:unit"] },
+        "unit": { "commands": ["nx run {projectName}:pytest:unit"] },
         "integration": {
-          "commands": ["nx run {projectName}:py-test:integration"]
+          "commands": ["nx run {projectName}:pytest:integration"]
         },
-        "coverage": { "commands": ["nx run {projectName}:py-test:coverage"] }
+        "coverage": { "commands": ["nx run {projectName}:pytest:coverage"] }
       }
     },
     "bandit": {},
-    "py-test": {},
+    "pytest": {},
     "pyright": {},
     "ruff-format": {},
     "ruff-lint": {},

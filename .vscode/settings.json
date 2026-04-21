@@ -6,13 +6,13 @@
     "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[json]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[jsonl]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[jupyter-notebook]": {
     "editor.codeActionsOnSave": {
@@ -25,7 +25,7 @@
     "editor.tabSize": 4
   },
   "[markdown]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode"
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
   },
   "[python]": {
     "editor.codeActionsOnSave": {
@@ -44,10 +44,10 @@
     "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[yaml]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode"
+    "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "atlascode.rovodev.showEntitlementNotifications": false,
-  "chat.agent.maxRequests": 96,
+  "chat.agent.maxRequests": 384,
   "chat.agent.thinking.terminalTools": true,
   "chat.agent.thinkingStyle": "collapsedPreview",
   "chat.checkpoints.enabled": true,
@@ -218,13 +218,13 @@
     "source.fixAll.ts": "explicit",
     "source.format.oxc":"explicit",
     "source.formatAll.terraform": "explicit",
-    "source.organizeImports": "explicit",
+    "source.organizeImports": "never",
     "source.organizeImports.ruff": "explicit",
     "source.organizeLinkDefinitions": "explicit",
     "source.removeUnused.ts": "never",
     "source.removeUnusedImports": "explicit",
     "source.sort.json": "never",
-    "source.sortImports": "explicit",
+    "source.sortImports": "never",
     "source.unusedImports": "explicit"
   },
   "editor.detectIndentation": false,
@@ -356,7 +356,7 @@
   "git.autofetch": "all",
   "git.autofetchPeriod": 600,
   "git.autorefresh": true,
-  "git.autoRepositoryDetection": false,
+  "git.autoRepositoryDetection": "subFolders",
   "git.autoStash": true,
   "git.blame.editorDecoration.enabled": true,
   "git.blame.statusBarItem.enabled": true,
@@ -367,6 +367,7 @@
   "git.confirmForcePush": true,
   "git.confirmNoVerifyCommit": true,
   "git.confirmSync": false,
+  "git.detectSubmodules": true,
   "git.enableCommitSigning": true,
   "git.enabled": true,
   "git.enableSmartCommit": true,
@@ -375,7 +376,7 @@
   "git.mergeEditor": true,
   "git.openRepositoryInParentFolders": "never",
   "git.postCommitCommand": "push",
-  "git.repositoryScanMaxDepth": 1,
+  "git.repositoryScanMaxDepth": 3,
   "git.showProgress": true,
   "git.terminalGitEditor": true,
   "git.verboseCommit": true,
@@ -751,6 +752,7 @@
   "scm.workingSets.enabled": true,
   "search.exclude": {
     "**build**": true,
+    "**coverage**": true,
     "**dist**": true,
     "**public**": true,
     "*.code-search": true,
