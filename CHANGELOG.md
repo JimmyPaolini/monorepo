@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/JimmyPaolini/monorepo/compare/v1.1.0...v1.1.1) (2026-04-22)
+
+### ♻️ Code Refactoring
+
+* **configuration:** ♻️ rename py-test target to pytest and clean up tsconfig baseUrl ([#20](https://github.com/JimmyPaolini/monorepo/issues/20)) ([3e2dd71](https://github.com/JimmyPaolini/monorepo/commit/3e2dd71876f53fdae46bd0a82c0b7cbbbeb392e2))
+
 ## [1.1.0](https://github.com/JimmyPaolini/monorepo/compare/v1.0.0...v1.1.0) (2026-04-14)
 
 ### ✨ Features
