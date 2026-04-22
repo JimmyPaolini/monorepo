@@ -4,7 +4,8 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "noEmit": true,
-    "target": "esnext"
+    "target": "esnext",
+    "types": ["node"]
   },
   "exclude": ["dist", "node_modules", "output"],
   "extends": "../../tsconfig.base.json",

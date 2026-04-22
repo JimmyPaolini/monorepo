@@ -98,7 +98,7 @@ Specialized domain knowledge for working on specific systems or patterns:
 - **`language:typescript`** — applied to all TypeScript projects (caelundas, lexico, lexico-components, code-generator, monorepo)
 - **`language:python`** — applied to all Python projects (affirmations)
 
-These tags enable conditional sub-target composition in composite targets (`format`, `lint`, `typecheck`, `test`). Python projects override the TS-default composite targets to compose Python sub-targets (`ruff-format`, `ruff-lint`, `pyright`, `py-test`) instead of TS ones.
+These tags enable conditional sub-target composition in composite targets (`format`, `lint`, `typecheck`, `test`). Python projects override the TS-default composite targets to compose Python sub-targets (`ruff-format`, `ruff-lint`, `pyright`, `pytest`) instead of TS ones.
 
 See [Python Conventions](documentation/conventions/python.md) for the full Python tooling setup.
 

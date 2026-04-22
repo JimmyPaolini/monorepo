@@ -137,8 +137,8 @@
         "cwd": "applications/affirmations"
       }
     },
-    "py-test": {},
     "pyright": {},
+    "pytest": {},
     "ruff-format": {},
     "ruff-lint": {},
     "searxng": {
@@ -176,18 +176,18 @@
     "test": {
       "configurations": {
         "coverage": {
-          "commands": ["nx run {projectName}:py-test:coverage"]
+          "commands": ["nx run {projectName}:pytest:coverage"]
         },
         "integration": {
-          "commands": ["nx run {projectName}:py-test:integration"]
+          "commands": ["nx run {projectName}:pytest:integration"]
         },
         "unit": {
-          "commands": ["nx run {projectName}:py-test:unit"]
+          "commands": ["nx run {projectName}:pytest:unit"]
         }
       },
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["nx run {projectName}:py-test"]
+        "commands": ["nx run {projectName}:pytest"]
       }
     },
     "ty": {},
