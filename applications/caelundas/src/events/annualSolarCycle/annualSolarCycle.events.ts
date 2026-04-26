@@ -2,6 +2,7 @@ import fs from "node:fs";
 
 import _ from "lodash";
 
+
 import { type Event, getCalendar } from "../../calendar.utilities";
 import {
   getCoordinateFromEphemeris,
@@ -34,7 +35,7 @@ import type {
   CoordinateEphemeris,
   DistanceEphemeris,
 } from "../../ephemeris/ephemeris.types";
-import type moment from "moment-timezone";
+import type { Moment } from "moment-timezone";
 
 const categories = ["Astronomy", "Astrology", "Annual Solar Cycle", "Solar"];
 
@@ -75,7 +76,7 @@ const categories = ["Astronomy", "Astrology", "Annual Solar Cycle", "Solar"];
  */
 export function getAnnualSolarCycleEvents(args: {
   sunCoordinateEphemeris: CoordinateEphemeris;
-  currentMinute: moment.Moment;
+  currentMinute: Moment;
 }): Event[] {
   const { sunCoordinateEphemeris: ephemeris, currentMinute } = args;
 
@@ -181,7 +182,7 @@ export function getAnnualSolarCycleEvents(args: {
  * ```
  */
 export function getSolarApsisEvents(args: {
-  currentMinute: moment.Moment;
+  currentMinute: Moment;
   sunDistanceEphemeris: DistanceEphemeris;
 }): Event[] {
   const { currentMinute, sunDistanceEphemeris } = args;
@@ -237,7 +238,7 @@ export function getSolarApsisEvents(args: {
  * @returns Calendar event for aphelion
  * @see {@link isMaximum} for distance maximum detection
  */
-export function buildAphelionEvent(date: moment.Moment): Event {
+export function buildAphelionEvent(date: Moment): Event {
   const description = "Solar Aphelion";
   const summary = `☀️ ❄️ ${description}`;
 
@@ -265,7 +266,7 @@ export function buildAphelionEvent(date: moment.Moment): Event {
  * @returns Calendar event for perihelion
  * @see {@link isMinimum} for distance minimum detection
  */
-export function buildPerihelionEvent(date: moment.Moment): Event {
+export function buildPerihelionEvent(date: Moment): Event {
   const description = "Solar Perihelion";
   const summary = `☀️ 🔥 ${description}`;
 
@@ -297,7 +298,7 @@ export function buildPerihelionEvent(date: moment.Moment): Event {
  *
  * @remarks Occurs around March 20-21 annually
  */
-export function buildVernalEquinoxEvent(date: moment.Moment): Event {
+export function buildVernalEquinoxEvent(date: Moment): Event {
   const description = "Vernal Equinox";
   const summary = `🌸 ${description}`;
 
@@ -324,7 +325,7 @@ export function buildVernalEquinoxEvent(date: moment.Moment): Event {
  * @returns Calendar event for first hexadecan
  * @remarks Occurs approximately April 10th
  */
-export function buildFirstHexadecanEvent(date: moment.Moment): Event {
+export function buildFirstHexadecanEvent(date: Moment): Event {
   const description = "First Hexadecan";
   const summary = `🌳 ${description}`;
 
@@ -350,7 +351,7 @@ export function buildFirstHexadecanEvent(date: moment.Moment): Event {
  * @returns Calendar event for Beltane
  * @remarks Occurs around May 5th annually
  */
-export function buildBeltaneEvent(date: moment.Moment): Event {
+export function buildBeltaneEvent(date: Moment): Event {
   const description = "Beltane";
   const summary = `🐦‍🔥 ${description}`;
 
@@ -376,7 +377,7 @@ export function buildBeltaneEvent(date: moment.Moment): Event {
  * @returns Calendar event for third hexadecan
  * @remarks Occurs approximately June 1st
  */
-export function buildThirdHexadecanEvent(date: moment.Moment): Event {
+export function buildThirdHexadecanEvent(date: Moment): Event {
   const description = "Third Hexadecan";
   const summary = `🌻 ${description}`;
 
@@ -404,7 +405,7 @@ export function buildThirdHexadecanEvent(date: moment.Moment): Event {
  * @see {@link isSummerSolstice} for detection algorithm
  * @remarks Occurs around June 20-21 annually
  */
-export function buildSummerSolsticeEvent(date: moment.Moment): Event {
+export function buildSummerSolsticeEvent(date: Moment): Event {
   const description = "Summer Solstice";
   const summary = `🌞 ${description}`;
 
@@ -427,7 +428,7 @@ export function buildSummerSolsticeEvent(date: moment.Moment): Event {
  * @returns Calendar event for fifth hexadecan
  * @remarks Occurs approximately July 22nd
  */
-export function buildFifthHexadecanEvent(date: moment.Moment): Event {
+export function buildFifthHexadecanEvent(date: Moment): Event {
   const description = "Fifth Hexadecan";
   const summary = `⛱️ ${description}`;
 
@@ -454,7 +455,7 @@ export function buildFifthHexadecanEvent(date: moment.Moment): Event {
  * @returns Calendar event for Lammas
  * @remarks Occurs around August 7th annually
  */
-export function buildLammasEvent(date: moment.Moment): Event {
+export function buildLammasEvent(date: Moment): Event {
   const description = "Lammas";
   const summary = `🌾 ${description}`;
 
@@ -477,7 +478,7 @@ export function buildLammasEvent(date: moment.Moment): Event {
  * @returns Calendar event for seventh hexadecan
  * @remarks Occurs approximately September 12th
  */
-export function buildSeventhHexadecanEvent(date: moment.Moment): Event {
+export function buildSeventhHexadecanEvent(date: Moment): Event {
   const description = "Seventh Hexadecan";
   const summary = `🎑 ${description}`;
 
@@ -505,7 +506,7 @@ export function buildSeventhHexadecanEvent(date: moment.Moment): Event {
  * @see {@link isAutumnalEquinox} for detection algorithm
  * @remarks Occurs around September 22-23 annually
  */
-export function buildAutumnalEquinoxEvent(date: moment.Moment): Event {
+export function buildAutumnalEquinoxEvent(date: Moment): Event {
   const description = "Autumnal Equinox";
   const summary = `🍂 ${description}`;
 
@@ -527,7 +528,7 @@ export function buildAutumnalEquinoxEvent(date: moment.Moment): Event {
  * @param date - Precise UTC time
  * @returns Calendar event
  */
-export function buildNinthHexadecanEvent(date: moment.Moment): Event {
+export function buildNinthHexadecanEvent(date: Moment): Event {
   const description = "Ninth Hexadecan";
   const summary = `🍁 ${description}`;
 
@@ -551,7 +552,7 @@ export function buildNinthHexadecanEvent(date: moment.Moment): Event {
  * @returns Calendar event
  * @remarks Occurs around November 7th
  */
-export function buildSamhainEvent(date: moment.Moment): Event {
+export function buildSamhainEvent(date: Moment): Event {
   const description = "Samhain";
   const summary = `🎃 ${description}`;
 
@@ -573,7 +574,7 @@ export function buildSamhainEvent(date: moment.Moment): Event {
  * @param date - Precise UTC time
  * @returns Calendar event
  */
-export function buildEleventhHexadecanEvent(date: moment.Moment): Event {
+export function buildEleventhHexadecanEvent(date: Moment): Event {
   const description = "Eleventh Hexadecan";
   const summary = `🧤 ${description}`;
 
@@ -600,7 +601,7 @@ export function buildEleventhHexadecanEvent(date: moment.Moment): Event {
  * @see {@link isWinterSolstice}
  * @remarks Occurs around December 21-22
  */
-export function buildWinterSolsticeEvent(date: moment.Moment): Event {
+export function buildWinterSolsticeEvent(date: Moment): Event {
   const description = "Winter Solstice";
   const summary = `☃️ ${description}`;
 
@@ -622,7 +623,7 @@ export function buildWinterSolsticeEvent(date: moment.Moment): Event {
  * @param date - Precise UTC time
  * @returns Calendar event
  */
-export function buildThirteenthHexadecanEvent(date: moment.Moment): Event {
+export function buildThirteenthHexadecanEvent(date: Moment): Event {
   const description = "Thirteenth Hexadecan";
   const summary = `❄️ ${description}`;
   const dateString = date.clone().tz("America/New_York").toISOString(true);
@@ -645,7 +646,7 @@ export function buildThirteenthHexadecanEvent(date: moment.Moment): Event {
  * @returns Calendar event
  * @remarks Occurs around February 4th
  */
-export function buildImbolcEvent(date: moment.Moment): Event {
+export function buildImbolcEvent(date: Moment): Event {
   const description = "Imbolc";
   const summary = `🐑 ${description}`;
 
@@ -667,7 +668,7 @@ export function buildImbolcEvent(date: moment.Moment): Event {
  * @param date - Precise UTC time
  * @returns Calendar event
  */
-export function buildFifteenthHexadecanEvent(date: moment.Moment): Event {
+export function buildFifteenthHexadecanEvent(date: Moment): Event {
   const description = "Fifteenth Hexadecan";
   const summary = `🌨️ ${description}`;
 
@@ -698,8 +699,8 @@ export function buildFifteenthHexadecanEvent(date: moment.Moment): Event {
  */
 export function writeAnnualSolarCycleEvents(args: {
   annualSolarCycleEvents: Event[];
-  start: moment.Moment;
-  end: moment.Moment;
+  start: Moment;
+  end: Moment;
 }): void {
   const { annualSolarCycleEvents, start, end } = args;
   if (_.isEmpty(annualSolarCycleEvents)) {

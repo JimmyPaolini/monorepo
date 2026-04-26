@@ -2,11 +2,11 @@ import moment from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
 import {
-  getSextupleAspectEvents,
-  getSextupleAspectProgressiveEvents,
+    getSextupleAspectEvents,
+    getSextupleAspectProgressiveEvents,
 } from "./sextupleAspects.events";
 
-import type { ActiveAspect } from "../aspects.store";
+import type { AspectBodies } from "../aspects.store";
 import type { Event } from "../../../calendar.utilities";
 
 /**
@@ -30,9 +30,9 @@ describe("sextupleAspects.events integration", () => {
       // Current minute (18:42): Pattern EXISTS (forming)
       // Next minute (18:43): Pattern EXISTS (continues)
 
-      // Sun trine Mars starts at currentMinute (forming trigger) -> currentEdges only
+      // Sun trine Mars starts at currentMinute (forming trigger) -> currentAspectBodies only
       // All other 11 aspects span across currentMinute -> both edges
-      const currentEdges: ActiveAspect[] = [
+      const currentAspectBodies: AspectBodies[] = [
         // First grand trine: Sun(0) - Mars(2) - Jupiter(4)
         { bodies: ["sun", "mars"], aspect: "trine" },
         { bodies: ["sun", "jupiter"], aspect: "trine" },
@@ -49,7 +49,7 @@ describe("sextupleAspects.events integration", () => {
         { bodies: ["jupiter", "saturn"], aspect: "sextile" },
         { bodies: ["saturn", "sun"], aspect: "sextile" },
       ];
-      const previousEdges: ActiveAspect[] = [
+      const previousAspectBodies: AspectBodies[] = [
         // All except Sun trine Mars (which starts at currentMinute)
         { bodies: ["sun", "jupiter"], aspect: "trine" },
         { bodies: ["mars", "jupiter"], aspect: "trine" },
@@ -65,8 +65,8 @@ describe("sextupleAspects.events integration", () => {
       ];
 
       const events = getSextupleAspectEvents(
-        currentEdges,
-        previousEdges,
+        currentAspectBodies,
+        previousAspectBodies,
         currentMinute,
       );
 
@@ -92,9 +92,9 @@ describe("sextupleAspects.events integration", () => {
       // Current minute (19:00): Pattern EXISTS but will end (dissolving)
       // Next minute (19:01): Pattern does NOT exist
 
-      // Sun trine Mars ends at currentMinute (dissolving trigger) -> previousEdges only
+      // Sun trine Mars ends at currentMinute (dissolving trigger) -> previousAspectBodies only
       // All other 11 aspects span across currentMinute -> both edges
-      const currentEdges: ActiveAspect[] = [
+      const currentAspectBodies: AspectBodies[] = [
         // All except Sun trine Mars (which ends at currentMinute)
         { bodies: ["sun", "jupiter"], aspect: "trine" },
         { bodies: ["mars", "jupiter"], aspect: "trine" },
@@ -108,7 +108,7 @@ describe("sextupleAspects.events integration", () => {
         { bodies: ["jupiter", "saturn"], aspect: "sextile" },
         { bodies: ["saturn", "sun"], aspect: "sextile" },
       ];
-      const previousEdges: ActiveAspect[] = [
+      const previousAspectBodies: AspectBodies[] = [
         // First grand trine: Sun(0) - Mars(2) - Jupiter(4)
         { bodies: ["sun", "mars"], aspect: "trine" },
         { bodies: ["sun", "jupiter"], aspect: "trine" },
@@ -127,8 +127,8 @@ describe("sextupleAspects.events integration", () => {
       ];
 
       const events = getSextupleAspectEvents(
-        currentEdges,
-        previousEdges,
+        currentAspectBodies,
+        previousAspectBodies,
         currentMinute,
       );
 
@@ -214,9 +214,9 @@ describe("sextupleAspects.events integration", () => {
     it("should detect Hexagram with outer planets", () => {
       const currentMinute = moment.utc("2024-12-05T11:30:00.000Z");
 
-      // Mars trine Jupiter starts at currentMinute (forming trigger) -> currentEdges only
+      // Mars trine Jupiter starts at currentMinute (forming trigger) -> currentAspectBodies only
       // All other 11 aspects span across currentMinute -> both edges
-      const currentEdges: ActiveAspect[] = [
+      const currentAspectBodies: AspectBodies[] = [
         // First grand trine: Mars-Jupiter-Saturn
         { bodies: ["mars", "jupiter"], aspect: "trine" },
         { bodies: ["mars", "saturn"], aspect: "trine" },
@@ -233,7 +233,7 @@ describe("sextupleAspects.events integration", () => {
         { bodies: ["saturn", "pluto"], aspect: "sextile" },
         { bodies: ["pluto", "mars"], aspect: "sextile" },
       ];
-      const previousEdges: ActiveAspect[] = [
+      const previousAspectBodies: AspectBodies[] = [
         // All except Mars trine Jupiter (which starts at currentMinute)
         { bodies: ["mars", "saturn"], aspect: "trine" },
         { bodies: ["jupiter", "saturn"], aspect: "trine" },
@@ -249,8 +249,8 @@ describe("sextupleAspects.events integration", () => {
       ];
 
       const events = getSextupleAspectEvents(
-        currentEdges,
-        previousEdges,
+        currentAspectBodies,
+        previousAspectBodies,
         currentMinute,
       );
 
@@ -272,7 +272,7 @@ describe("sextupleAspects.events integration", () => {
       const currentMinute = moment.utc("2024-09-22T18:42:00.000Z");
 
       // First grand trine INCOMPLETE: missing Jupiter-Mars trine
-      const edges: ActiveAspect[] = [
+      const edges: AspectBodies[] = [
         { bodies: ["sun", "mars"], aspect: "trine" },
         { bodies: ["sun", "jupiter"], aspect: "trine" },
         // Missing: Mars trine Jupiter
@@ -288,12 +288,12 @@ describe("sextupleAspects.events integration", () => {
         { bodies: ["jupiter", "saturn"], aspect: "sextile" },
         { bodies: ["saturn", "sun"], aspect: "sextile" },
       ];
-      const currentEdges = edges;
-      const previousEdges = edges;
+      const currentAspectBodies = edges;
+      const previousAspectBodies = edges;
 
       const events = getSextupleAspectEvents(
-        currentEdges,
-        previousEdges,
+        currentAspectBodies,
+        previousAspectBodies,
         currentMinute,
       );
 
@@ -304,7 +304,7 @@ describe("sextupleAspects.events integration", () => {
       const currentMinute = moment.utc("2024-09-22T18:42:00.000Z");
 
       // Both grand trines complete, but sextile ring incomplete
-      const edges: ActiveAspect[] = [
+      const edges: AspectBodies[] = [
         // Both grand trines complete
         { bodies: ["sun", "mars"], aspect: "trine" },
         { bodies: ["sun", "jupiter"], aspect: "trine" },
@@ -320,12 +320,12 @@ describe("sextupleAspects.events integration", () => {
         { bodies: ["jupiter", "saturn"], aspect: "sextile" },
         // Missing: Saturn sextile Sun
       ];
-      const currentEdges = edges;
-      const previousEdges = edges;
+      const currentAspectBodies = edges;
+      const previousAspectBodies = edges;
 
       const events = getSextupleAspectEvents(
-        currentEdges,
-        previousEdges,
+        currentAspectBodies,
+        previousAspectBodies,
         currentMinute,
       );
 

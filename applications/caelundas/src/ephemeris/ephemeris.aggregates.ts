@@ -19,6 +19,7 @@
  * @see {@link ./ephemeris.types#} for ephemeris data structures
  */
 
+
 import { bodies } from "../constants";
 
 import { computeAllEphemerides } from "./ephemeris.service";
@@ -32,7 +33,7 @@ import type {
   IlluminationEphemeris,
 } from "../ephemeris/ephemeris.types";
 import type { Body } from "../types";
-import type moment from "moment-timezone";
+import type { Moment } from "moment-timezone";
 
 // #region getEphemerides
 /**
@@ -87,8 +88,8 @@ import type moment from "moment-timezone";
  */
 export function getEphemerides(args: {
   coordinates: Coordinates;
-  end: moment.Moment;
-  start: moment.Moment;
+  end: Moment;
+  start: Moment;
   timezone: string;
 }): {
   azimuthElevationEphemerisByBody: Record<Body, AzimuthElevationEphemeris>;

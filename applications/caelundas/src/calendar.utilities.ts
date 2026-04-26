@@ -7,7 +7,7 @@
  * @see {@link getCalendar} for main calendar generation function
  */
 
-import moment from "moment-timezone";
+import moment, { type Moment } from "moment-timezone";
 
 /**
  * Margin in minutes added before/after date ranges for ephemeris queries (30).
@@ -23,10 +23,10 @@ export const MARGIN_MINUTES = 30;
  */
 export interface Event {
   /** Event start time (local timezone). */
-  start: moment.Moment;
+  start: Moment;
 
   /** Event end time (local timezone). For instantaneous events, set equal to start. */
-  end: moment.Moment;
+  end: Moment;
 
   /**
    * Brief event title displayed in calendar views.

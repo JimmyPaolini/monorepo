@@ -2,11 +2,11 @@ import moment from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
 import {
-  getQuintupleAspectEvents,
-  getQuintupleAspectProgressiveEvents,
+    getQuintupleAspectEvents,
+    getQuintupleAspectProgressiveEvents,
 } from "./quintupleAspects.events";
 
-import type { ActiveAspect } from "../aspects.store";
+import type { AspectBodies } from "../aspects.store";
 import type { Event } from "../../../calendar.utilities";
 
 /**
@@ -31,14 +31,14 @@ describe("quintupleAspects.events integration", () => {
 
       // Star pattern: Sun(0) -> Mars(2), Moon(1) -> Jupiter(3), Mars(2) -> Venus(4), Jupiter(3) -> Sun(0), Venus(4) -> Moon(1)
       // Sun-Mars is the critical forming aspect; others are stable
-      const currentEdges: ActiveAspect[] = [
+      const currentAspectBodies: AspectBodies[] = [
         { bodies: ["sun", "mars"], aspect: "quintile" },
         { bodies: ["moon", "jupiter"], aspect: "quintile" },
         { bodies: ["mars", "venus"], aspect: "quintile" },
         { bodies: ["jupiter", "sun"], aspect: "quintile" },
         { bodies: ["venus", "moon"], aspect: "quintile" },
       ];
-      const previousEdges: ActiveAspect[] = [
+      const previousAspectBodies: AspectBodies[] = [
         { bodies: ["moon", "jupiter"], aspect: "quintile" },
         { bodies: ["mars", "venus"], aspect: "quintile" },
         { bodies: ["jupiter", "sun"], aspect: "quintile" },
@@ -46,8 +46,8 @@ describe("quintupleAspects.events integration", () => {
       ];
 
       const events = getQuintupleAspectEvents(
-        currentEdges,
-        previousEdges,
+        currentAspectBodies,
+        previousAspectBodies,
         currentMinute,
       );
 
@@ -72,13 +72,13 @@ describe("quintupleAspects.events integration", () => {
       // Next minute (14:31): Pattern does NOT exist - Sun-Mars quintile is gone
 
       // Sun-Mars dissolving; others stable
-      const currentEdges: ActiveAspect[] = [
+      const currentAspectBodies: AspectBodies[] = [
         { bodies: ["moon", "jupiter"], aspect: "quintile" },
         { bodies: ["mars", "venus"], aspect: "quintile" },
         { bodies: ["jupiter", "sun"], aspect: "quintile" },
         { bodies: ["venus", "moon"], aspect: "quintile" },
       ];
-      const previousEdges: ActiveAspect[] = [
+      const previousAspectBodies: AspectBodies[] = [
         { bodies: ["sun", "mars"], aspect: "quintile" },
         { bodies: ["moon", "jupiter"], aspect: "quintile" },
         { bodies: ["mars", "venus"], aspect: "quintile" },
@@ -87,8 +87,8 @@ describe("quintupleAspects.events integration", () => {
       ];
 
       const events = getQuintupleAspectEvents(
-        currentEdges,
-        previousEdges,
+        currentAspectBodies,
+        previousAspectBodies,
         currentMinute,
       );
 
@@ -170,14 +170,14 @@ describe("quintupleAspects.events integration", () => {
       const currentMinute = moment.utc("2024-08-10T09:15:00.000Z");
 
       // Saturn-Neptune forming; others stable
-      const currentEdges: ActiveAspect[] = [
+      const currentAspectBodies: AspectBodies[] = [
         { bodies: ["saturn", "neptune"], aspect: "quintile" },
         { bodies: ["uranus", "pluto"], aspect: "quintile" },
         { bodies: ["neptune", "jupiter"], aspect: "quintile" },
         { bodies: ["pluto", "saturn"], aspect: "quintile" },
         { bodies: ["jupiter", "uranus"], aspect: "quintile" },
       ];
-      const previousEdges: ActiveAspect[] = [
+      const previousAspectBodies: AspectBodies[] = [
         { bodies: ["uranus", "pluto"], aspect: "quintile" },
         { bodies: ["neptune", "jupiter"], aspect: "quintile" },
         { bodies: ["pluto", "saturn"], aspect: "quintile" },
@@ -185,8 +185,8 @@ describe("quintupleAspects.events integration", () => {
       ];
 
       const events = getQuintupleAspectEvents(
-        currentEdges,
-        previousEdges,
+        currentAspectBodies,
+        previousAspectBodies,
         currentMinute,
       );
 
@@ -206,14 +206,14 @@ describe("quintupleAspects.events integration", () => {
       const currentMinute = moment.utc("2024-06-15T14:23:00.000Z");
 
       // Missing the 5th quintile needed to complete the pentagram
-      const currentEdges: ActiveAspect[] = [
+      const currentAspectBodies: AspectBodies[] = [
         { bodies: ["sun", "mars"], aspect: "quintile" },
         { bodies: ["moon", "jupiter"], aspect: "quintile" },
         { bodies: ["mars", "venus"], aspect: "quintile" },
         { bodies: ["jupiter", "sun"], aspect: "quintile" },
         // Missing: Venus quintile Moon (the 5th edge to complete the star)
       ];
-      const previousEdges: ActiveAspect[] = [
+      const previousAspectBodies: AspectBodies[] = [
         { bodies: ["sun", "mars"], aspect: "quintile" },
         { bodies: ["moon", "jupiter"], aspect: "quintile" },
         { bodies: ["mars", "venus"], aspect: "quintile" },
@@ -221,8 +221,8 @@ describe("quintupleAspects.events integration", () => {
       ];
 
       const events = getQuintupleAspectEvents(
-        currentEdges,
-        previousEdges,
+        currentAspectBodies,
+        previousAspectBodies,
         currentMinute,
       );
 
@@ -233,14 +233,14 @@ describe("quintupleAspects.events integration", () => {
       const currentMinute = moment.utc("2024-06-15T14:23:00.000Z");
 
       // Has 5 edges but one is a sextile instead of quintile
-      const currentEdges: ActiveAspect[] = [
+      const currentAspectBodies: AspectBodies[] = [
         { bodies: ["sun", "mars"], aspect: "quintile" },
         { bodies: ["moon", "jupiter"], aspect: "quintile" },
         { bodies: ["mars", "venus"], aspect: "sextile" }, // WRONG ASPECT TYPE
         { bodies: ["jupiter", "sun"], aspect: "quintile" },
         { bodies: ["venus", "moon"], aspect: "quintile" },
       ];
-      const previousEdges: ActiveAspect[] = [
+      const previousAspectBodies: AspectBodies[] = [
         { bodies: ["sun", "mars"], aspect: "quintile" },
         { bodies: ["moon", "jupiter"], aspect: "quintile" },
         { bodies: ["mars", "venus"], aspect: "sextile" },
@@ -249,8 +249,8 @@ describe("quintupleAspects.events integration", () => {
       ];
 
       const events = getQuintupleAspectEvents(
-        currentEdges,
-        previousEdges,
+        currentAspectBodies,
+        previousAspectBodies,
         currentMinute,
       );
 

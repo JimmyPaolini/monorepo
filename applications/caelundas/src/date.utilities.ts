@@ -1,12 +1,12 @@
-import moment from "moment-timezone";
+import moment, { type Moment } from "moment-timezone";
 
 /**
  * Generates minute-by-minute UTC dates from start to end (inclusive).
  */
 export function* generateMinutes(
-  start: moment.Moment,
-  end: moment.Moment,
-): Generator<moment.Moment> {
+  start: Moment,
+  end: Moment,
+): Generator<Moment> {
   const endMs = end.valueOf();
   let currentMs = start.valueOf();
   while (currentMs <= endMs) {
@@ -21,10 +21,10 @@ export function* generateMinutes(
  * Each yielded moment represents the start of a calendar day in the given timezone.
  */
 export function* generateDays(
-  start: moment.Moment,
-  end: moment.Moment,
+  start: Moment,
+  end: Moment,
   timezone: string,
-): Generator<moment.Moment> {
+): Generator<Moment> {
   const endDay = end.clone().tz(timezone).startOf("day");
   const current = start.clone().tz(timezone).startOf("day");
   while (!current.isAfter(endDay)) {

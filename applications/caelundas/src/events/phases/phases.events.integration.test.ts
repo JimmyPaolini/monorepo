@@ -1,4 +1,4 @@
-import moment from "moment-timezone";
+import moment, { type Moment } from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
 
 import { MARGIN_MINUTES } from "../../calendar.utilities";
@@ -21,7 +21,7 @@ describe("phases.events integration", () => {
    * Helper function to create mock ephemeris data with proper time series
    */
   function createMockEphemeris(
-    baseTime: moment.Moment,
+    baseTime: Moment,
     config: {
       longitude: number;
       distance: number;

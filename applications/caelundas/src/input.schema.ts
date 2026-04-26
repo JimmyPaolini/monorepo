@@ -34,7 +34,7 @@ const maxDateString = "2100-12-31";
  * **Transformation behavior:**
  * - Uses `@photostructure/tz-lookup` to determine timezone from coordinates
  * - Parses date strings in the determined timezone (not UTC)
- * - Converts to moment.Moment objects for application use
+ * - Converts to Moment objects for application use
  *
  * **Coercion:**
  * - Latitude and longitude are coerced from strings to numbers if needed
@@ -49,7 +49,7 @@ const maxDateString = "2100-12-31";
  * // Using defaults (Philadelphia, 2-month window)
  * const input1 = inputSchema.parse({});
  * // Result: { latitude: 39.949309, longitude: -75.17169,
- * //           timezone: 'America/New_York', start: moment.Moment, end: moment.Moment }
+ * //           timezone: 'America/New_York', start: Moment, end: Moment }
  *
  * // Custom location and dates
  * const input2 = inputSchema.parse({
@@ -59,7 +59,7 @@ const maxDateString = "2100-12-31";
  *   endDate: '2026-12-31'
  * });
  * // Result: { latitude: 51.5074, longitude: -0.1278,
- * //           timezone: 'Europe/London', start: moment.Moment, end: moment.Moment }
+ * //           timezone: 'Europe/London', start: Moment, end: Moment }
  *
  * // Validation errors
  * try {

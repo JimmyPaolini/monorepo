@@ -12,6 +12,7 @@ import fs from "node:fs";
 
 import _ from "lodash";
 
+
 import {
   type Event,
   getCalendar,
@@ -32,7 +33,7 @@ import type {
   RetrogradeBody,
   RetrogradeBodySymbol,
 } from "../../types";
-import type moment from "moment-timezone";
+import type { Moment } from "moment-timezone";
 
 /**
  * Detects retrograde and direct station events at a specific time point.
@@ -70,7 +71,7 @@ import type moment from "moment-timezone";
  */
 export function getRetrogradeEvents(args: {
   coordinateEphemerisByBody: Record<RetrogradeBody, CoordinateEphemeris>;
-  currentMinute: moment.Moment;
+  currentMinute: Moment;
 }): Event[] {
   const { coordinateEphemerisByBody, currentMinute } = args;
   const retrogradeEvents: Event[] = [];
@@ -178,7 +179,7 @@ const categories = ["Astronomy", "Astrology", "Direction"];
  */
 export function buildRetrogradeEvent(args: {
   body: RetrogradeBody;
-  timestamp: moment.Moment;
+  timestamp: Moment;
   direction: OrbitalDirection;
 }): Event {
   const { body, timestamp, direction } = args;
@@ -247,10 +248,10 @@ export function buildRetrogradeEvent(args: {
  * ```
  */
 export function writeRetrogradeEvents(args: {
-  end: moment.Moment;
+  end: Moment;
   retrogradeBodies: RetrogradeBody[];
   retrogradeEvents: Event[];
-  start: moment.Moment;
+  start: Moment;
 }): void {
   const { retrogradeBodies, retrogradeEvents, start, end } = args;
   if (_.isEmpty(retrogradeEvents)) {

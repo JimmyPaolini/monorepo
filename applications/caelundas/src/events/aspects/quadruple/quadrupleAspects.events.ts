@@ -2,7 +2,6 @@ import _ from "lodash";
 
 import { symbolByBody, symbolByQuadrupleAspect } from "../../../symbols";
 import { quadrupleAspectBodies } from "../../../types";
-
 import {
   determineCompoundPhaseFromSnapshots,
   getOtherBody,
@@ -11,10 +10,10 @@ import {
   involvesBody,
 } from "../aspects.composition";
 
-import type { ActiveAspect } from "../aspects.store";
 import type { Event } from "../../../calendar.utilities";
 import type { AspectPhase, Body, QuadrupleAspect } from "../../../types";
-import type moment from "moment-timezone";
+import type { AspectBodies } from "../aspects.store";
+import type { Moment } from "moment-timezone";
 
 /**
  * Composes Grand Cross patterns from stored 2-body aspects.
@@ -47,13 +46,13 @@ import type moment from "moment-timezone";
  * @see {@link determineMultiBodyPhase} for phase calculation
  */
 function composeGrandCrosses(
-  currentEdges: ActiveAspect[],
-  previousEdges: ActiveAspect[],
-  currentMinute: moment.Moment,
+  currentAspectBodies: AspectBodies[],
+  previousAspectBodies: AspectBodies[],
+  currentMinute: Moment,
 ): Event[] {
   const events: Event[] = [];
 
-  const unionEdges = [...currentEdges, ...previousEdges];
+  const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
   const aspectsByType = groupAspectsByType(unionEdges);
 
   const oppositions = aspectsByType.get("opposite") || [];
@@ -125,8 +124,8 @@ function composeGrandCrosses(
       if (hasAllSquares) {
         // Found a Grand Cross - calculate phase
         const result = determineCompoundPhaseFromSnapshots(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           bodyList,
           currentMinute,
           (edges) => {
@@ -237,13 +236,13 @@ function composeGrandCrosses(
  * @see {@link determineMultiBodyPhase} for phase calculation
  */
 function composeKites(
-  currentEdges: ActiveAspect[],
-  previousEdges: ActiveAspect[],
-  currentMinute: moment.Moment,
+  currentAspectBodies: AspectBodies[],
+  previousAspectBodies: AspectBodies[],
+  currentMinute: Moment,
 ): Event[] {
   const events: Event[] = [];
 
-  const unionEdges = [...currentEdges, ...previousEdges];
+  const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
   const aspectsByType = groupAspectsByType(unionEdges);
 
   const trines = aspectsByType.get("trine") || [];
@@ -329,8 +328,8 @@ function composeKites(
           const bodies = [baseBody, other0, other1, fourthBody];
 
           const result = determineCompoundPhaseFromSnapshots(
-            currentEdges,
-            previousEdges,
+            currentAspectBodies,
+            previousAspectBodies,
             bodies,
             currentMinute,
             (edges) => {
@@ -371,7 +370,7 @@ function composeKites(
  * Create a quadruple aspect event
  */
 function getQuadrupleAspectEvent(params: {
-  timestamp: moment.Moment;
+  timestamp: Moment;
   body1: Body;
   body2: Body;
   body3: Body;
@@ -470,13 +469,13 @@ function getQuadrupleAspectEvent(params: {
  * @see {@link composeKites} for Kite detection
  */
 export function getQuadrupleAspectEvents(
-  currentEdges: ActiveAspect[],
-  previousEdges: ActiveAspect[],
-  currentMinute: moment.Moment,
+  currentAspectBodies: AspectBodies[],
+  previousAspectBodies: AspectBodies[],
+  currentMinute: Moment,
 ): Event[] {
   return [
-    ...composeGrandCrosses(currentEdges, previousEdges, currentMinute),
-    ...composeKites(currentEdges, previousEdges, currentMinute),
+    ...composeGrandCrosses(currentAspectBodies, previousAspectBodies, currentMinute),
+    ...composeKites(currentAspectBodies, previousAspectBodies, currentMinute),
   ];
 }
 

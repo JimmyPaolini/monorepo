@@ -1,6 +1,7 @@
 import fs from "node:fs";
 
 import _ from "lodash";
+import type { Moment } from "moment-timezone";
 
 import { type Event, getCalendar } from "../../calendar.utilities";
 import { signs } from "../../constants";
@@ -29,7 +30,6 @@ import type {
   Sign,
   SignSymbol,
 } from "../../types";
-import type moment from "moment-timezone";
 
 const categories = ["Astronomy", "Astrology", "Ingress"];
 
@@ -52,7 +52,7 @@ const categories = ["Astronomy", "Astrology", "Ingress"];
  */
 export function getSignIngressEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
-  currentMinute: moment.Moment;
+  currentMinute: Moment;
 }): Event[] {
   const { coordinateEphemerisByBody, currentMinute } = args;
 
@@ -100,7 +100,7 @@ export function getSignIngressEvents(args: {
  * @see {@link getSign} to derive sign from longitude
  */
 export function buildSignIngressEvent(args: {
-  date: moment.Moment;
+  date: Moment;
   longitude: number;
   body: Body;
 }): Event {
@@ -131,10 +131,10 @@ export function buildSignIngressEvent(args: {
  *
  */
 export function writeSignIngressEvents(args: {
-  end: moment.Moment;
+  end: Moment;
   signIngressBodies: Body[];
   signIngressEvents: Event[];
-  start: moment.Moment;
+  start: Moment;
 }): void {
   const { signIngressEvents, signIngressBodies, start, end } = args;
   if (_.isEmpty(signIngressEvents)) {
@@ -176,7 +176,7 @@ export function writeSignIngressEvents(args: {
  */
 export function getDecanIngressEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
-  currentMinute: moment.Moment;
+  currentMinute: Moment;
 }): Event[] {
   const { coordinateEphemerisByBody, currentMinute } = args;
 
@@ -222,7 +222,7 @@ export function getDecanIngressEvents(args: {
  *
  */
 export function buildDecanIngressEvent(args: {
-  date: moment.Moment;
+  date: Moment;
   longitude: number;
   body: Body;
 }): Event {
@@ -256,10 +256,10 @@ export function buildDecanIngressEvent(args: {
  *
  */
 export function writeDecanIngressEvents(args: {
-  end: moment.Moment;
+  end: Moment;
   decanIngressBodies: Body[];
   decanIngressEvents: Event[];
-  start: moment.Moment;
+  start: Moment;
 }): void {
   const { decanIngressEvents, decanIngressBodies, start, end } = args;
   if (_.isEmpty(decanIngressEvents)) {
@@ -290,7 +290,7 @@ export function writeDecanIngressEvents(args: {
  */
 export function getPeakIngressEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
-  currentMinute: moment.Moment;
+  currentMinute: Moment;
 }): Event[] {
   const { coordinateEphemerisByBody, currentMinute } = args;
 
@@ -331,7 +331,7 @@ export function getPeakIngressEvents(args: {
  *
  */
 export function buildPeakIngressEvent(args: {
-  date: moment.Moment;
+  date: Moment;
   longitude: number;
   body: Body;
 }): Event {
@@ -362,10 +362,10 @@ export function buildPeakIngressEvent(args: {
  *
  */
 export function writePeakIngressEvents(args: {
-  end: moment.Moment;
+  end: Moment;
   peakIngressBodies: Body[];
   peakIngressEvents: Event[];
-  start: moment.Moment;
+  start: Moment;
 }): void {
   const { peakIngressEvents, peakIngressBodies, start, end } = args;
   if (_.isEmpty(peakIngressEvents)) {

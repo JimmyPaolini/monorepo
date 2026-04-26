@@ -1,4 +1,4 @@
-import moment from "moment-timezone";
+import moment, { type Moment } from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
 import {
@@ -20,7 +20,7 @@ import type { Body } from "../../types";
 
 // Helper to create full ephemeris for all required bodies with default stationary values
 function createFullEphemeris(
-  baseTime: moment.Moment,
+  baseTime: Moment,
   bodies: readonly Body[],
   overrides: Partial<
     Record<Body, { previous: number; current: number; next: number }>

@@ -1,4 +1,4 @@
-import moment from "moment-timezone";
+import moment, { type Moment } from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
 
 import { specialtyAspectBodies } from "../../../types";
@@ -40,9 +40,9 @@ describe("specialtyAspects.events", () => {
     };
 
     const createDefaultEphemeris = (
-      currentMinute: moment.Moment,
-      previousMinute: moment.Moment,
-      nextMinute: moment.Moment,
+      currentMinute: Moment,
+      previousMinute: Moment,
+      nextMinute: Moment,
     ): Record<Body, CoordinateEphemeris> => {
       const allBodies = specialtyAspectBodies;
 

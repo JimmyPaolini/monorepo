@@ -1,4 +1,4 @@
-import moment from "moment-timezone";
+import moment, { type Moment } from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
 
 import { MARGIN_MINUTES } from "../../calendar.utilities";
@@ -22,7 +22,7 @@ vi.mock("fs", () => ({
 describe("retrogrades.events", () => {
   // Helper to create ephemeris data with margin
   function createCoordinateEphemeris(
-    currentMinute: moment.Moment,
+    currentMinute: Moment,
     longitudes: number[],
   ): CoordinateEphemeris {
     const ephemeris: CoordinateEphemeris = {};

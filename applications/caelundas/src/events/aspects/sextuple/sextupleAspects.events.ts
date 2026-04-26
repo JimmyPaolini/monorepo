@@ -1,18 +1,17 @@
 import _ from "lodash";
+import type { Moment } from "moment-timezone";
 
 import { getCombinations } from "../../../math.utilities";
 import { symbolByBody, symbolBySextupleAspect } from "../../../symbols";
 import { sextupleAspectBodies } from "../../../types";
-
 import {
   determineCompoundPhaseFromSnapshots,
   groupAspectsByType,
 } from "../aspects.composition";
 
-import type { ActiveAspect } from "../aspects.store";
 import type { Event } from "../../../calendar.utilities";
 import type { AspectPhase, Body, SextupleAspect } from "../../../types";
-import type moment from "moment-timezone";
+import type { AspectBodies } from "../aspects.store";
 
 /**
  * Checks if 6 bodies form a valid hexagram (Star of David) pattern.
@@ -48,7 +47,7 @@ import type moment from "moment-timezone";
  */
 function findHexagramPattern(
   bodies: Body[],
-  edges: ActiveAspect[],
+  edges: AspectBodies[],
 ): Body[] | null {
   // Build adjacency lists for trines and sextiles
   const trineConnections = new Map<Body, Set<Body>>();
@@ -202,13 +201,13 @@ function findHexagramPattern(
  * @see {@link getCombinations} for generating body combinations
  */
 function composeHexagrams(
-  currentEdges: ActiveAspect[],
-  previousEdges: ActiveAspect[],
-  currentMinute: moment.Moment,
+  currentAspectBodies: AspectBodies[],
+  previousAspectBodies: AspectBodies[],
+  currentMinute: Moment,
 ): Event[] {
   const events: Event[] = [];
 
-  const unionEdges = [...currentEdges, ...previousEdges];
+  const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
   const aspectsByType = groupAspectsByType(unionEdges);
   const trines = aspectsByType.get("trine") || [];
   const sextiles = aspectsByType.get("sextile") || [];
@@ -238,8 +237,8 @@ function composeHexagrams(
 
     if (hexagramBodies) {
       const result = determineCompoundPhaseFromSnapshots(
-        currentEdges,
-        previousEdges,
+        currentAspectBodies,
+        previousAspectBodies,
         hexagramBodies,
         currentMinute,
         (edges) => {
@@ -278,7 +277,7 @@ function composeHexagrams(
  * Create a sextuple aspect event
  */
 function getSextupleAspectEvent(params: {
-  timestamp: moment.Moment;
+  timestamp: Moment;
   body1: Body;
   body2: Body;
   body3: Body;
@@ -375,11 +374,11 @@ function getSextupleAspectEvent(params: {
  * @see {@link composeHexagrams} for Hexagram detection
  */
 export function getSextupleAspectEvents(
-  currentEdges: ActiveAspect[],
-  previousEdges: ActiveAspect[],
-  currentMinute: moment.Moment,
+  currentAspectBodies: AspectBodies[],
+  previousAspectBodies: AspectBodies[],
+  currentMinute: Moment,
 ): Event[] {
-  return composeHexagrams(currentEdges, previousEdges, currentMinute);
+  return composeHexagrams(currentAspectBodies, previousAspectBodies, currentMinute);
 }
 
 // #region Progressive Events

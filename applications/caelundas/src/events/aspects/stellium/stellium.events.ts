@@ -1,18 +1,18 @@
 import _ from "lodash";
 
+
 import { symbolByBody, symbolByStellium } from "../../../symbols";
 import { stelliumBodies } from "../../../types";
-
 import {
   determineCompoundPhaseFromSnapshots,
   groupAspectsByType,
   haveAspect,
 } from "../aspects.composition";
 
-import type { ActiveAspect } from "../aspects.store";
 import type { Event } from "../../../calendar.utilities";
 import type { AspectPhase, Body } from "../../../types";
-import type moment from "moment-timezone";
+import type { AspectBodies } from "../aspects.store";
+import type { Moment } from "moment-timezone";
 
 /**
  * Composes Stellium patterns from stored 2-body aspects.
@@ -31,21 +31,21 @@ import type moment from "moment-timezone";
  * area of life or zodiac sign. The concentration of planetary energies
  * can indicate both talent and challenge in the associated domain.
  *
- * @param currentEdges - Active aspect relationships at the current minute
- * @param previousEdges - Active aspect relationships at the previous minute
+ * @param currentAspectBodies - Active aspect relationships at the current minute
+ * @param previousAspectBodies - Active aspect relationships at the previous minute
  * @param currentMinute - The minute to check for Stellium patterns
  * @returns Array of Stellium events detected at this minute
  * @see {@link determineCompoundPhaseFromSnapshots} for phase calculation
  * @see {@link haveAspect} for verifying conjunction relationships
  */
 function composeStelliums(
-  currentEdges: ActiveAspect[],
-  previousEdges: ActiveAspect[],
-  currentMinute: moment.Moment,
+  currentAspectBodies: AspectBodies[],
+  previousAspectBodies: AspectBodies[],
+  currentMinute: Moment,
 ): Event[] {
   const events: Event[] = [];
 
-  const unionEdges = [...currentEdges, ...previousEdges];
+  const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
   const aspectsByType = groupAspectsByType(unionEdges);
   const conjunctions = aspectsByType.get("conjunct") || [];
 
@@ -129,8 +129,8 @@ function composeStelliums(
     if (isStellium) {
       // Found a Stellium
       const result = determineCompoundPhaseFromSnapshots(
-        currentEdges,
-        previousEdges,
+        currentAspectBodies,
+        previousAspectBodies,
         bodies,
         currentMinute,
         // Check if Stellium pattern exists in given edges
@@ -174,7 +174,7 @@ function composeStelliums(
  * Create a stellium event
  */
 function createStelliumEvent(params: {
-  timestamp: moment.Moment;
+  timestamp: Moment;
   bodies: Body[];
   phase: AspectPhase;
 }): Event {
@@ -233,18 +233,18 @@ function createStelliumEvent(params: {
  * and validates that each cluster forms a complete stellium (all pairs
  * must be in conjunction, not just transitively connected).
  *
- * @param currentEdges - Active aspect relationships at the current minute
- * @param previousEdges - Active aspect relationships at the previous minute
+ * @param currentAspectBodies - Active aspect relationships at the current minute
+ * @param previousAspectBodies - Active aspect relationships at the previous minute
  * @param currentMinute - The minute to check for stellium patterns
  * @returns Array of all detected stellium events at this minute
  * @see {@link composeStelliums} for stellium detection logic
  */
 export function getStelliumEvents(
-  currentEdges: ActiveAspect[],
-  previousEdges: ActiveAspect[],
-  currentMinute: moment.Moment,
+  currentAspectBodies: AspectBodies[],
+  previousAspectBodies: AspectBodies[],
+  currentMinute: Moment,
 ): Event[] {
-  return [...composeStelliums(currentEdges, previousEdges, currentMinute)];
+  return [...composeStelliums(currentAspectBodies, previousAspectBodies, currentMinute)];
 }
 
 // #region Progressive Events

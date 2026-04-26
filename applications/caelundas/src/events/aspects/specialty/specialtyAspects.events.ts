@@ -2,6 +2,7 @@ import fs from "node:fs";
 
 import _ from "lodash";
 
+
 import { type Event, getCalendar } from "../../../calendar.utilities";
 import { specialtyAspects } from "../../../constants";
 import { getCoordinateFromEphemeris } from "../../../ephemeris/ephemeris.service";
@@ -9,7 +10,6 @@ import { getOutputPath } from "../../../output.utilities";
 import { pairProgressiveEvents } from "../../../progressive.utilities";
 import { symbolByBody, symbolBySpecialtyAspect } from "../../../symbols";
 import { specialtyAspectBodies } from "../../../types";
-
 import {
   getSpecialtyAspect,
   getSpecialtyAspectPhase,
@@ -23,7 +23,7 @@ import type {
   SpecialtyAspect,
   SpecialtyAspectSymbol,
 } from "../../../types";
-import type moment from "moment-timezone";
+import type { Moment } from "moment-timezone";
 
 /**
  * Detects specialty aspect events within a single minute time window.
@@ -40,7 +40,7 @@ import type moment from "moment-timezone";
  */
 export function getSpecialtyAspectEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
-  currentMinute: moment.Moment;
+  currentMinute: Moment;
 }): Event[] {
   const { coordinateEphemerisByBody, currentMinute } = args;
 
@@ -138,7 +138,7 @@ export function getSpecialtyAspectEvents(args: {
 export function buildSpecialtyAspectEvent(args: {
   longitudeBody1: number;
   longitudeBody2: number;
-  timestamp: moment.Moment;
+  timestamp: Moment;
   body1: Body;
   body2: Body;
   phase: AspectPhase;
@@ -222,10 +222,10 @@ export function buildSpecialtyAspectEvent(args: {
  * @see {@link getOutputPath} for file path resolution
  */
 export function writeSpecialtyAspectEvents(args: {
-  end: moment.Moment;
+  end: Moment;
   specialtyAspectBodies: Body[];
   specialtyAspectEvents: Event[];
-  start: moment.Moment;
+  start: Moment;
 }): void {
   const { end, specialtyAspectEvents, specialtyAspectBodies, start } = args;
   if (_.isEmpty(specialtyAspectEvents)) {

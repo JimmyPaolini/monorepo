@@ -2,6 +2,7 @@ import fs from "node:fs";
 
 import _ from "lodash";
 
+
 import { getCalendar } from "../../calendar.utilities";
 import { getAzimuthElevationFromEphemeris } from "../../ephemeris/ephemeris.service";
 import { getOutputPath } from "../../output.utilities";
@@ -18,7 +19,7 @@ import {
 
 import type { Event } from "../../calendar.utilities";
 import type { AzimuthElevationEphemeris } from "../../ephemeris/ephemeris.types";
-import type moment from "moment-timezone";
+import type { Moment } from "moment-timezone";
 
 const categories = ["Astronomy", "Astrology", "Twilight"];
 
@@ -45,7 +46,7 @@ const categories = ["Astronomy", "Astrology", "Twilight"];
  * - Daily rhythm (circadian cycles)
  */
 export function getTwilightEvents(args: {
-  currentMinute: moment.Moment;
+  currentMinute: Moment;
   sunAzimuthElevationEphemeris: AzimuthElevationEphemeris;
 }): Event[] {
   const { currentMinute, sunAzimuthElevationEphemeris } = args;
@@ -96,7 +97,7 @@ export function getTwilightEvents(args: {
  * @param date - Precise UTC time
  * @returns Calendar event for astronomical dawn
  */
-export function buildAstronomicalDawnEvent(date: moment.Moment): Event {
+export function buildAstronomicalDawnEvent(date: Moment): Event {
   const description = "Astronomical Dawn";
   const summary = `🌠 ${description}`;
 
@@ -116,7 +117,7 @@ export function buildAstronomicalDawnEvent(date: moment.Moment): Event {
 /**
  *
  */
-export function buildNauticalDawnEvent(date: moment.Moment): Event {
+export function buildNauticalDawnEvent(date: Moment): Event {
   const description = "Nautical Dawn";
   const summary = `🌅 ${description}`;
 
@@ -136,7 +137,7 @@ export function buildNauticalDawnEvent(date: moment.Moment): Event {
 /**
  *
  */
-export function buildCivilDawnEvent(date: moment.Moment): Event {
+export function buildCivilDawnEvent(date: Moment): Event {
   const description = "Civil Dawn";
   const summary = `🌄 ${description}`;
 
@@ -156,7 +157,7 @@ export function buildCivilDawnEvent(date: moment.Moment): Event {
 /**
  *
  */
-export function buildCivilDuskEvent(date: moment.Moment): Event {
+export function buildCivilDuskEvent(date: Moment): Event {
   const description = "Civil Dusk";
   const summary = `🌇 ${description}`;
 
@@ -176,7 +177,7 @@ export function buildCivilDuskEvent(date: moment.Moment): Event {
 /**
  *
  */
-export function buildNauticalDuskEvent(date: moment.Moment): Event {
+export function buildNauticalDuskEvent(date: Moment): Event {
   const description = "Nautical Dusk";
   const summary = `🌉 ${description}`;
 
@@ -196,7 +197,7 @@ export function buildNauticalDuskEvent(date: moment.Moment): Event {
 /**
  *
  */
-export function buildAstronomicalDuskEvent(date: moment.Moment): Event {
+export function buildAstronomicalDuskEvent(date: Moment): Event {
   const description = "Astronomical Dusk";
   const summary = `🌌 ${description}`;
 
@@ -224,8 +225,8 @@ export function buildAstronomicalDuskEvent(date: moment.Moment): Event {
  */
 export function writeTwilightEvents(args: {
   twilightEvents: Event[];
-  start: moment.Moment;
-  end: moment.Moment;
+  start: Moment;
+  end: Moment;
 }): void {
   const { twilightEvents, start, end } = args;
   if (_.isEmpty(twilightEvents)) {

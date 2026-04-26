@@ -1,4 +1,4 @@
-import moment from "moment-timezone";
+import moment, { type Moment } from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
 
 import { minorAspectBodies } from "../../../types";
@@ -34,9 +34,9 @@ describe("minorAspects.events", () => {
     };
 
     const createDefaultEphemeris = (
-      currentMinute: moment.Moment,
-      previousMinute: moment.Moment,
-      nextMinute: moment.Moment,
+      currentMinute: Moment,
+      previousMinute: Moment,
+      nextMinute: Moment,
     ): Record<Body, CoordinateEphemeris> => {
       // Create ephemeris for all minor aspect bodies with far-apart longitudes
       const allBodies = minorAspectBodies;
@@ -511,7 +511,7 @@ describe("minorAspects.events", () => {
       body2: string,
       aspect: string,
       phase: string,
-      timestamp: moment.Moment,
+      timestamp: Moment,
     ): Event => {
       return {
         start: timestamp,

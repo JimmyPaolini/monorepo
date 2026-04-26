@@ -1,4 +1,4 @@
-import moment from "moment-timezone";
+import moment, { type Moment } from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
 
 import { MARGIN_MINUTES } from "../../calendar.utilities";
@@ -25,7 +25,7 @@ vi.mock("fs", () => ({
 describe("eclipses.events", () => {
   // Helper to create coordinate ephemeris
   function createCoordinateEphemeris(
-    currentMinute: moment.Moment,
+    currentMinute: Moment,
     longitudes: number[],
     latitudes: number[],
   ): CoordinateEphemeris {
@@ -47,7 +47,7 @@ describe("eclipses.events", () => {
 
   // Helper to create diameter ephemeris
   function createDiameterEphemeris(
-    currentMinute: moment.Moment,
+    currentMinute: Moment,
     diameters: number[],
   ): DiameterEphemeris {
     const ephemeris: DiameterEphemeris = {};

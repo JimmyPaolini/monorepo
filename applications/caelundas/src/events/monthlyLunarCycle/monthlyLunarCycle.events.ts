@@ -10,8 +10,7 @@
 import fs from "node:fs";
 
 import _ from "lodash";
-
-import { getCalendar, MARGIN_MINUTES } from "../../calendar.utilities";
+iimport { getCalendar, MARGIN_MINUTES } from "../../calendar.utilities";
 import { lunarPhases } from "../../constants";
 import { getIlluminationFromEphemeris } from "../../ephemeris/ephemeris.service";
 import { getOutputPath } from "../../output.utilities";
@@ -22,7 +21,7 @@ import { isLunarPhase } from "./monthlyLunarCycle.utilities";
 import type { Event } from "../../calendar.utilities";
 import type { IlluminationEphemeris } from "../../ephemeris/ephemeris.types";
 import type { LunarPhase } from "../../types";
-import type moment from "moment-timezone";
+import type { Moment } from "moment-timezone";
 
 /**
  * Detects lunar phase events at a specific time point.
@@ -61,7 +60,7 @@ import type moment from "moment-timezone";
  * ```
  */
 export function getMonthlyLunarCycleEvents(args: {
-  currentMinute: moment.Moment;
+  currentMinute: Moment;
   moonIlluminationEphemeris: IlluminationEphemeris;
 }): Event[] {
   const { currentMinute, moonIlluminationEphemeris } = args;
@@ -150,7 +149,7 @@ export function getMonthlyLunarCycleEvents(args: {
  * ```
  */
 export function buildMonthlyLunarCycleEvent(args: {
-  date: moment.Moment;
+  date: Moment;
   lunarPhase: LunarPhase;
 }): Event {
   const { date, lunarPhase } = args;
@@ -215,8 +214,8 @@ export function buildMonthlyLunarCycleEvent(args: {
  */
 export function writeMonthlyLunarCycleEvents(args: {
   monthlyLunarCycleEvents: Event[];
-  start: moment.Moment;
-  end: moment.Moment;
+  start: Moment;
+  end: Moment;
 }): void {
   const { monthlyLunarCycleEvents, start, end } = args;
   if (_.isEmpty(monthlyLunarCycleEvents)) {

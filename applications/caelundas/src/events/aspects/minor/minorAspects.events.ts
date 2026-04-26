@@ -2,6 +2,7 @@ import fs from "node:fs";
 
 import _ from "lodash";
 
+
 import { type Event, getCalendar } from "../../../calendar.utilities";
 import { minorAspects } from "../../../constants";
 import { getCoordinateFromEphemeris } from "../../../ephemeris/ephemeris.service";
@@ -9,7 +10,6 @@ import { getOutputPath } from "../../../output.utilities";
 import { pairProgressiveEvents } from "../../../progressive.utilities";
 import { symbolByBody, symbolByMinorAspect } from "../../../symbols";
 import { minorAspectBodies } from "../../../types";
-
 import { getMinorAspect, getMinorAspectPhase } from "../aspects.utilities";
 
 import type { CoordinateEphemeris } from "../../../ephemeris/ephemeris.types";
@@ -20,7 +20,7 @@ import type {
   MinorAspect,
   MinorAspectSymbol,
 } from "../../../types";
-import type moment from "moment-timezone";
+import type { Moment } from "moment-timezone";
 
 /**
  * Detects minor aspect events within a single minute time window.
@@ -44,7 +44,7 @@ import type moment from "moment-timezone";
  */
 export function getMinorAspectEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
-  currentMinute: moment.Moment;
+  currentMinute: Moment;
 }): Event[] {
   const { coordinateEphemerisByBody, currentMinute } = args;
 
@@ -141,7 +141,7 @@ export function getMinorAspectEvents(args: {
 export function buildMinorAspectEvent(args: {
   longitudeBody1: number;
   longitudeBody2: number;
-  timestamp: moment.Moment;
+  timestamp: Moment;
   body1: Body;
   body2: Body;
   phase: AspectPhase;
@@ -221,10 +221,10 @@ export function buildMinorAspectEvent(args: {
  * @see {@link getOutputPath} for file path resolution
  */
 export function writeMinorAspectEvents(args: {
-  end: moment.Moment;
+  end: Moment;
   minorAspectBodies: Body[];
   minorAspectEvents: Event[];
-  start: moment.Moment;
+  start: Moment;
 }): void {
   const { end, minorAspectEvents, minorAspectBodies, start } = args;
   if (_.isEmpty(minorAspectEvents)) {

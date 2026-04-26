@@ -1,13 +1,14 @@
+
 import { MARGIN_MINUTES } from "./calendar.utilities";
 import { generateDays } from "./date.utilities";
 import { getEphemerides } from "./ephemeris/ephemeris.aggregates";
-import { resetActiveAspectsStore } from "./events/aspects/aspects.store";
+import { resetAspectBodiesStore } from "./events/aspects/aspects.store";
 import { detectPerfectiveEventsByMinute } from "./minute";
 
 import type { Event } from "./calendar.utilities";
 import type { Coordinates } from "./ephemeris/ephemeris.types";
-import type { ActiveAspect } from "./events/aspects/aspects.store";
-import type moment from "moment-timezone";
+import type { AspectBodies } from "./events/aspects/aspects.store";
+import type { Moment } from "moment-timezone";
 
 /**
  * Detects all perfective astronomical events across a date range using a two-level loop.
@@ -25,17 +26,17 @@ import type moment from "moment-timezone";
  * @returns All detected events in chronological order
  */
 export function detectPerfectiveEventsByDate(args: {
-  end: moment.Moment;
+  end: Moment;
   latitude: number;
   longitude: number;
-  start: moment.Moment;
+  start: Moment;
   timezone: string;
 }): Event[] {
   const { end, latitude, longitude, start, timezone } = args;
   const coordinates: Coordinates = [longitude, latitude];
 
-  resetActiveAspectsStore();
-  let previousAspectEdges: ActiveAspect[] = [];
+  resetAspectBodiesStore();
+  let previousAspectBodies: AspectBodies[] = [];
   const allEvents: Event[] = [];
 
   for (const day of generateDays(start, end, timezone)) {
@@ -52,14 +53,14 @@ export function detectPerfectiveEventsByDate(args: {
       timezone,
     });
 
-    const { events, finalAspectEdges } = detectPerfectiveEventsByMinute({
+    const { events, finalAspectBodies } = detectPerfectiveEventsByMinute({
       ephemerides,
       end: minuteEnd,
-      previousAspectEdges,
+      previousAspectBodies,
       start: minuteStart,
     });
 
-    previousAspectEdges = finalAspectEdges;
+    previousAspectBodies = finalAspectBodies;
     allEvents.push(...events);
   }
 

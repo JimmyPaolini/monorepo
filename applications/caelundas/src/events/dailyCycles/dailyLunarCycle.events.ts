@@ -2,6 +2,7 @@ import fs from "node:fs";
 
 import _ from "lodash";
 
+
 import { getCalendar } from "../../calendar.utilities";
 import { getAzimuthElevationFromEphemeris } from "../../ephemeris/ephemeris.service";
 import { isMaximum, isMinimum } from "../../math.utilities";
@@ -11,7 +12,7 @@ import { isRise, isSet } from "./dailyCycle.utilities";
 
 import type { Event } from "../../calendar.utilities";
 import type { AzimuthElevationEphemeris } from "../../ephemeris/ephemeris.types";
-import type moment from "moment-timezone";
+import type { Moment } from "moment-timezone";
 
 const categories = ["Astronomy", "Astrology", "Daily Lunar Cycle", "Lunar"];
 
@@ -42,7 +43,7 @@ const categories = ["Astronomy", "Astrology", "Daily Lunar Cycle", "Lunar"];
  * ```
  */
 export function getDailyLunarCycleEvents(args: {
-  currentMinute: moment.Moment;
+  currentMinute: Moment;
   moonAzimuthElevationEphemeris: AzimuthElevationEphemeris;
 }): Event[] {
   const { currentMinute, moonAzimuthElevationEphemeris } = args;
@@ -111,7 +112,7 @@ export function getDailyLunarCycleEvents(args: {
  * // event.summary === '🌙 🔼 Moonrise'
  * ```
  */
-export function buildMoonriseEvent(date: moment.Moment): Event {
+export function buildMoonriseEvent(date: Moment): Event {
   const description = "Moonrise";
   const summary = `🌙 🔼 ${description}`;
 
@@ -145,7 +146,7 @@ export function buildMoonriseEvent(date: moment.Moment): Event {
  * // event.summary === '🌙 ⏫ Lunar Zenith'
  * ```
  */
-export function buildLunarZenithEvent(date: moment.Moment): Event {
+export function buildLunarZenithEvent(date: Moment): Event {
   const description = "Lunar Zenith";
   const summary = `🌙 ⏫ ${description}`;
 
@@ -179,7 +180,7 @@ export function buildLunarZenithEvent(date: moment.Moment): Event {
  * // event.summary === '🌙 🔽 Moonset'
  * ```
  */
-export function buildMoonsetEvent(date: moment.Moment): Event {
+export function buildMoonsetEvent(date: Moment): Event {
   const description = "Moonset";
   const summary = `🌙 🔽 ${description}`;
 
@@ -213,7 +214,7 @@ export function buildMoonsetEvent(date: moment.Moment): Event {
  * // event.summary === '🌙 ⏬ Lunar Nadir'
  * ```
  */
-export function buildLunarNadirEvent(date: moment.Moment): Event {
+export function buildLunarNadirEvent(date: Moment): Event {
   const description = "Lunar Nadir";
   const summary = `🌙 ⏬ ${description}`;
 
@@ -257,8 +258,8 @@ export function buildLunarNadirEvent(date: moment.Moment): Event {
  */
 export function writeDailyLunarCycleEvents(args: {
   dailyLunarCycleEvents: Event[];
-  start: moment.Moment;
-  end: moment.Moment;
+  start: Moment;
+  end: Moment;
 }): void {
   const { dailyLunarCycleEvents, start, end } = args;
   if (_.isEmpty(dailyLunarCycleEvents)) {

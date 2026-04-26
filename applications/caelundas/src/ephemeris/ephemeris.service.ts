@@ -19,7 +19,7 @@
  * @see {@link ./ephemeris.types#} for data structures
  */
 
-import moment from "moment-timezone";
+import moment, { type Moment } from "moment-timezone";
 import { azalt, calc, constants, nod_aps_ut, pheno_ut, utc_to_jd } from "sweph";
 
 import { nodes } from "../constants";
@@ -67,7 +67,7 @@ function isNode(body: string): body is Node {
  * @returns Julian day values for ephemeris time and universal time.
  * @throws When utc_to_jd returns a negative flag (error)
  */
-function dateToJulianDays(date: moment.Moment): {
+function dateToJulianDays(date: Moment): {
   julianDayEphemerisTime: number;
   julianDayUniversalTime: number;
 } {
@@ -95,9 +95,9 @@ function dateToJulianDays(date: moment.Moment): {
  * Generates minute-by-minute Coordinated Universal Time dates from start to end (inclusive).
  */
 function* generateMinutes(
-  start: moment.Moment,
-  end: moment.Moment,
-): Generator<moment.Moment> {
+  start: Moment,
+  end: Moment,
+): Generator<Moment> {
   const endMs = end.valueOf();
   let currentMs = start.valueOf();
   while (currentMs <= endMs) {
@@ -320,8 +320,8 @@ export function getDiameterFromEphemeris(
  */
 export function getCoordinateEphemerisByBody(args: {
   bodies: Body[];
-  end: moment.Moment;
-  start: moment.Moment;
+  end: Moment;
+  start: Moment;
   timezone: string;
 }): Record<Body, CoordinateEphemeris> {
   const { bodies, start, end } = args;
@@ -363,8 +363,8 @@ export function getCoordinateEphemerisByBody(args: {
 export function getAzimuthElevationEphemerisByBody(args: {
   bodies: AzimuthElevationEphemerisBody[];
   coordinates: Coordinates;
-  end: moment.Moment;
-  start: moment.Moment;
+  end: Moment;
+  start: Moment;
   timezone: string;
 }): Record<Body, AzimuthElevationEphemeris> {
   const { bodies, coordinates, start, end } = args;
@@ -434,8 +434,8 @@ export function getAzimuthElevationEphemerisByBody(args: {
 export function getIlluminationEphemerisByBody(args: {
   bodies: IlluminationEphemerisBody[];
   coordinates: Coordinates;
-  end: moment.Moment;
-  start: moment.Moment;
+  end: Moment;
+  start: Moment;
   timezone: string;
 }): Record<Body, IlluminationEphemeris> {
   const { bodies, start, end } = args;
@@ -488,8 +488,8 @@ export function getIlluminationEphemerisByBody(args: {
  */
 export function getDiameterEphemerisByBody(args: {
   bodies: DiameterEphemerisBody[];
-  end: moment.Moment;
-  start: moment.Moment;
+  end: Moment;
+  start: Moment;
   timezone: string;
 }): Record<Body, DiameterEphemeris> {
   const { bodies, start, end } = args;
@@ -533,8 +533,8 @@ export function getDiameterEphemerisByBody(args: {
  */
 export function getDistanceEphemerisByBody(args: {
   bodies: DistanceEphemerisBody[];
-  end: moment.Moment;
-  start: moment.Moment;
+  end: Moment;
+  start: Moment;
   timezone: string;
 }): Record<Body, DistanceEphemeris> {
   const { bodies, start, end } = args;
@@ -593,8 +593,8 @@ export function computeAllEphemerides(args: {
   diameterBodies: DiameterEphemerisBody[];
   distanceBodies: DistanceEphemerisBody[];
   coordinates: Coordinates;
-  end: moment.Moment;
-  start: moment.Moment;
+  end: Moment;
+  start: Moment;
 }): {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
   azimuthElevationEphemerisByBody: Record<Body, AzimuthElevationEphemeris>;

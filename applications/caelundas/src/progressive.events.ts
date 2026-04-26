@@ -18,7 +18,16 @@ import { addEvents } from "./events.store";
 import type { Event } from "./calendar.utilities";
 
 /**
+ * Derives duration-based progressive events from the perfective event log.
  *
+ * Progressive events represent the full window of an astronomical phenomenon
+ * (e.g. "Mercury conjunct Venus" spanning the forming → dissolving arc) as
+ * opposed to perfective events which mark discrete moment-level transitions
+ * (forming, perfective peak, dissolving). Each generator pairs perfective
+ * bookends into a single timed event with a start and end.
+ *
+ * @param perfectiveEvents - All minute-level events detected by {@link detectPerfectiveEvents}
+ * @returns Progressive (windowed) events, also persisted to the event store
  */
 export function detectProgressiveEvents(perfectiveEvents: Event[]): Event[] {
   const progressiveEvents: Event[] = [

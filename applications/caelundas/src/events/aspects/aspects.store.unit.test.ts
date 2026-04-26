@@ -2,9 +2,9 @@ import { beforeEach, describe, expect, it } from "vitest";
 import moment from "moment-timezone";
 
 import {
-    getActiveAspects,
-    resetActiveAspectsStore,
-    updateActiveAspectsStoreByPerfectiveEvents,
+    getAspectBodies,
+    resetAspectBodiesStore,
+    updateAspectBodiesStoreByPerfectiveEvents,
 } from "./aspects.store";
 
 import type { Event } from "../../calendar.utilities";
@@ -37,15 +37,15 @@ function createAspectEvent(args: {
 
 describe("aspects.store", () => {
   beforeEach(() => {
-    resetActiveAspectsStore();
+    resetAspectBodiesStore();
   });
 
   it("starts empty", () => {
-    expect(getActiveAspects()).toEqual([]);
+    expect(getAspectBodies()).toEqual([]);
   });
 
   it("adds an aspect on forming and ignores perfective", () => {
-    updateActiveAspectsStoreByPerfectiveEvents([
+    updateAspectBodiesStoreByPerfectiveEvents([
       createAspectEvent({
         body1: "Sun",
         body2: "Moon",
@@ -60,7 +60,7 @@ describe("aspects.store", () => {
       }),
     ]);
 
-    expect(getActiveAspects()).toEqual([
+    expect(getAspectBodies()).toEqual([
       {
         bodies: ["sun", "moon"],
         aspect: "conjunct",
@@ -69,7 +69,7 @@ describe("aspects.store", () => {
   });
 
   it("removes an aspect on dissolving", () => {
-    updateActiveAspectsStoreByPerfectiveEvents([
+    updateAspectBodiesStoreByPerfectiveEvents([
       createAspectEvent({
         body1: "Sun",
         body2: "Moon",
@@ -78,7 +78,7 @@ describe("aspects.store", () => {
       }),
     ]);
 
-    updateActiveAspectsStoreByPerfectiveEvents([
+    updateAspectBodiesStoreByPerfectiveEvents([
       createAspectEvent({
         body1: "Sun",
         body2: "Moon",
@@ -87,11 +87,11 @@ describe("aspects.store", () => {
       }),
     ]);
 
-    expect(getActiveAspects()).toEqual([]);
+    expect(getAspectBodies()).toEqual([]);
   });
 
   it("uses canonical key regardless of body order", () => {
-    updateActiveAspectsStoreByPerfectiveEvents([
+    updateAspectBodiesStoreByPerfectiveEvents([
       createAspectEvent({
         body1: "Moon",
         body2: "Sun",
@@ -100,7 +100,7 @@ describe("aspects.store", () => {
       }),
     ]);
 
-    updateActiveAspectsStoreByPerfectiveEvents([
+    updateAspectBodiesStoreByPerfectiveEvents([
       createAspectEvent({
         body1: "Sun",
         body2: "Moon",
@@ -109,11 +109,11 @@ describe("aspects.store", () => {
       }),
     ]);
 
-    expect(getActiveAspects()).toEqual([]);
+    expect(getAspectBodies()).toEqual([]);
   });
 
   it("tracks different aspect types for the same pair", () => {
-    updateActiveAspectsStoreByPerfectiveEvents([
+    updateAspectBodiesStoreByPerfectiveEvents([
       createAspectEvent({
         body1: "Sun",
         body2: "Moon",
@@ -128,7 +128,7 @@ describe("aspects.store", () => {
       }),
     ]);
 
-    const active = getActiveAspects();
+    const active = getAspectBodies();
     expect(active).toHaveLength(2);
     expect(active).toEqual(
       expect.arrayContaining([
@@ -139,7 +139,7 @@ describe("aspects.store", () => {
   });
 
   it("skips non-simple-aspect events", () => {
-    updateActiveAspectsStoreByPerfectiveEvents([
+    updateAspectBodiesStoreByPerfectiveEvents([
       {
         start: timestamp,
         end: timestamp,
@@ -149,11 +149,11 @@ describe("aspects.store", () => {
       },
     ]);
 
-    expect(getActiveAspects()).toEqual([]);
+    expect(getAspectBodies()).toEqual([]);
   });
 
   it("returns a snapshot, not a live reference", () => {
-    updateActiveAspectsStoreByPerfectiveEvents([
+    updateAspectBodiesStoreByPerfectiveEvents([
       createAspectEvent({
         body1: "Sun",
         body2: "Moon",
@@ -162,10 +162,10 @@ describe("aspects.store", () => {
       }),
     ]);
 
-    const snapshot = getActiveAspects();
-    resetActiveAspectsStore();
+    const snapshot = getAspectBodies();
+    resetAspectBodiesStore();
 
     expect(snapshot).toHaveLength(1);
-    expect(getActiveAspects()).toEqual([]);
+    expect(getAspectBodies()).toEqual([]);
   });
 });

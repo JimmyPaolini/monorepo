@@ -6,28 +6,28 @@
  */
 
 import type {
-  aspectPhases,
-  eclipsePhases,
-  retrogradeBodies,
-  symbolByAspect,
-  symbolByAsteroid,
-  symbolByBody,
-  symbolByDecan,
-  symbolByLunarPhase,
-  symbolByMajorAspect,
-  symbolByMartianPhase,
-  symbolByMercurianPhase,
-  symbolByMinorAspect,
-  symbolByNode,
-  symbolByOrbitalDirection,
-  symbolByPlanet,
-  symbolByQuadrupleAspect,
-  symbolByQuintupleAspect,
-  symbolBySextupleAspect,
-  symbolBySign,
-  symbolBySpecialtyAspect,
-  symbolByTripleAspect,
-  symbolByVenusianPhase
+    aspectPhases,
+    eclipsePhases,
+    retrogradeBodies,
+    symbolByAspect,
+    symbolByAsteroid,
+    symbolByBody,
+    symbolByDecan,
+    symbolByLunarPhase,
+    symbolByMajorAspect,
+    symbolByMartianPhase,
+    symbolByMercurianPhase,
+    symbolByMinorAspect,
+    symbolByNode,
+    symbolByOrbitalDirection,
+    symbolByPlanet,
+    symbolByQuadrupleAspect,
+    symbolByQuintupleAspect,
+    symbolBySextupleAspect,
+    symbolBySign,
+    symbolBySpecialtyAspect,
+    symbolByTripleAspect,
+    symbolByVenusianPhase
 } from "./symbols";
 
 // #region Signs 🪧
@@ -180,7 +180,7 @@ export type Aspect = keyof typeof symbolByAspect;
  * for geometric completion with a third body.
  *
  * @see {@link getTripleAspectEvents} for pattern detection algorithm
- * @see {@link getActiveAspectsAt} for retrieving active aspect context
+ * @see {@link getAspectBodiesAt} for retrieving active aspect context
  */
 export type TripleAspect = keyof typeof symbolByTripleAspect;
 // export type TripleAspectSymbol = (typeof symbolByTripleAspect)[TripleAspect];

@@ -1,8 +1,9 @@
+
 import { detectPerfectiveEventsByDate } from "./date";
 import { addEvents } from "./events.store";
 
 import type { Event } from "./calendar.utilities";
-import type moment from "moment-timezone";
+import type { Moment } from "moment-timezone";
 
 /**
  * Detects all perfective astronomical events for the given range and stores them.
@@ -11,10 +12,10 @@ import type moment from "moment-timezone";
  * loop, then persists results via {@link addEvents}.
  */
 export function detectPerfectiveEvents(args: {
-  end: moment.Moment;
+  end: Moment;
   latitude: number;
   longitude: number;
-  start: moment.Moment;
+  start: Moment;
   timezone: string;
 }): Event[] {
   const events = detectPerfectiveEventsByDate(args);

@@ -8,9 +8,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const EPHEMERIS_DIRECTORY = path.resolve(__dirname, "../data/ephemeris")
 const BASE_URL =
   "https://raw.githubusercontent.com/aloistr/swisseph/master/ephe"
-const FILES = ["seas_18.se1", "sepl_18.se1", "semo_18.se1"] as const
+const ephemerisFilenames = ["seas_18.se1", "sepl_18.se1", "semo_18.se1"] as const
 
-type EphemerisFile = (typeof FILES)[number]
+type EphemerisFilename = (typeof ephemerisFilenames)[number]
 
 async function downloadFile(url: string, destination: string): Promise<void> {
   await new Promise<void>((resolve, reject) => {
@@ -48,7 +48,7 @@ async function downloadFile(url: string, destination: string): Promise<void> {
 async function downloadEphemerisFiles(): Promise<void> {
   await mkdir(EPHEMERIS_DIRECTORY, { recursive: true })
 
-  for (const filename of FILES as readonly EphemerisFile[]) {
+  for (const filename of ephemerisFilenames as readonly EphemerisFilename[]) {
     const destination = path.join(EPHEMERIS_DIRECTORY, filename)
 
     if (existsSync(destination) && statSync(destination).size > 0) {

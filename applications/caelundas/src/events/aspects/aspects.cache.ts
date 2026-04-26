@@ -229,7 +229,15 @@ export function couldBeGrandTrine(
 }
 
 /**
- * Pre-filter for Kite: requires specific angle pattern
+ * Pre-filters for Kite pattern possibility.
+ *
+ * A Kite is a Grand Trine with one body opposite the apex, adding a sextile
+ * to each of the remaining two bodies. Checks for at least one opposition
+ * (180°) pair as a fast gate before full validation.
+ *
+ * @param longitudes - Ecliptic longitudes of 4 bodies in degrees
+ * @returns True if Kite is geometrically possible
+ * @see {@link canFormAspect} for generic filtering logic
  */
 export function couldBeKite(
   longitudes: [number, number, number, number],
@@ -254,7 +262,15 @@ export function couldBeKite(
 }
 
 /**
- * Pre-filter for Grand Cross: requires four squares forming a cross
+ * Pre-filters for Grand Cross pattern possibility.
+ *
+ * A Grand Cross requires two oppositions (180°) perpendicular to each other,
+ * producing four squares (90°). Checks that at least two body pairs are
+ * roughly opposite before full validation.
+ *
+ * @param longitudes - Ecliptic longitudes of 4 bodies in degrees
+ * @returns True if Grand Cross is geometrically possible
+ * @see {@link canFormAspect} for generic filtering logic
  */
 export function couldBeGrandCross(
   longitudes: [number, number, number, number],

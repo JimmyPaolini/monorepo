@@ -6,12 +6,12 @@ import type { Aspect, Body } from "../../types";
 /**
  * Represents an active aspect between two celestial bodies at a specific moment.
  */
-export interface ActiveAspect {
+export interface AspectBodies {
   aspect: Aspect;
   bodies: [Body, Body];
 }
 
-const activeAspects = new Map<string, ActiveAspect>();
+const aspectBodiesMap = new Map<string, AspectBodies>();
 
 function makeKey(body1: Body, body2: Body, aspect: Aspect): string {
   const [sortedBody1, sortedBody2] = [body1, body2].toSorted();
@@ -21,10 +21,17 @@ function makeKey(body1: Body, body2: Body, aspect: Aspect): string {
 /**
  * Updates the in-memory active aspect store from simple aspect events.
  *
+ * Parses each event's categories to determine whether it marks the forming or
+ * dissolving of a two-body aspect, then adds or removes the corresponding
+ * entry from the store. Events for patterns other than simple aspects are
+ * ignored.
+ *
+ * @param events - Perfective events emitted during the current processing window
+ *
  * @remarks
  * Function name retained for compatibility with earlier integration work.
  */
-export function updateActiveAspectsStoreByPerfectiveEvents(events: Event[]): void {
+export function updateAspectBodiesStoreByPerfectiveEvents(events: Event[]): void {
   const lowercaseBodies = bodies.map((body) => body.toLowerCase());
 
   for (const event of events) {
@@ -70,26 +77,33 @@ export function updateActiveAspectsStoreByPerfectiveEvents(events: Event[]): voi
     const key = makeKey(body1, body2, aspect);
 
     if (isDissolving) {
-      activeAspects.delete(key);
+      aspectBodiesMap.delete(key);
       continue;
     }
 
-    if (!activeAspects.has(key)) {
-      activeAspects.set(key, { aspect, bodies: [body1, body2] });
+    if (!aspectBodiesMap.has(key)) {
+      aspectBodiesMap.set(key, { aspect, bodies: [body1, body2] });
     }
   }
 }
 
 /**
- * Returns a snapshot of currently active aspects.
+ * Returns a snapshot of all currently active two-body aspects.
+ *
+ * The returned array reflects the state after processing the most recent
+ * perfective event batch and is used by compound-aspect detectors to
+ * determine which multi-body patterns are currently formed.
  */
-export function getActiveAspects(): ActiveAspect[] {
-  return [...activeAspects.values()];
+export function getAspectBodies(): AspectBodies[] {
+  return [...aspectBodiesMap.values()];
 }
 
 /**
- * Clears active store state.
+ * Clears all active aspects from the store.
+ *
+ * Called at the start of each day's processing window so that aspects
+ * carried over from a previous run do not pollute detection for the new range.
  */
-export function resetActiveAspectsStore(): void {
-  activeAspects.clear();
+export function resetAspectBodiesStore(): void {
+  aspectBodiesMap.clear();
 }

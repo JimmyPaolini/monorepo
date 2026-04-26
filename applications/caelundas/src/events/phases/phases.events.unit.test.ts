@@ -1,6 +1,6 @@
 import fs from "node:fs";
 
-import moment from "moment-timezone";
+import moment, { type Moment } from "moment-timezone";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
@@ -61,7 +61,7 @@ describe("phases.events", () => {
   };
 
   const createCoordinateEphemeris = (
-    minute: moment.Moment,
+    minute: Moment,
     longitude = 100,
   ): CoordinateEphemeris => {
     const ephemeris: CoordinateEphemeris = {};
@@ -76,7 +76,7 @@ describe("phases.events", () => {
   };
 
   const createDistanceEphemeris = (
-    minute: moment.Moment,
+    minute: Moment,
     distance = 1,
   ): DistanceEphemeris => {
     const ephemeris: DistanceEphemeris = {};
@@ -90,7 +90,7 @@ describe("phases.events", () => {
   };
 
   const createIlluminationEphemeris = (
-    minute: moment.Moment,
+    minute: Moment,
     illumination = 50,
   ): IlluminationEphemeris => {
     const ephemeris: IlluminationEphemeris = {};
@@ -104,9 +104,9 @@ describe("phases.events", () => {
   };
 
   const createDetectionInputs = (
-    minute: moment.Moment,
+    minute: Moment,
   ): {
-    currentMinute: moment.Moment;
+    currentMinute: Moment;
     sunCoordinateEphemeris: CoordinateEphemeris;
     venusCoordinateEphemeris: CoordinateEphemeris;
     mercuryCoordinateEphemeris: CoordinateEphemeris;

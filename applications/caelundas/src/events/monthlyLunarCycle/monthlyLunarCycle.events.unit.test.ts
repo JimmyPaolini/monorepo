@@ -1,4 +1,4 @@
-import moment from "moment-timezone";
+import moment, { type Moment } from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
 
 import { MARGIN_MINUTES } from "../../calendar.utilities";
@@ -23,7 +23,7 @@ vi.mock("fs", () => ({
 describe("monthlyLunarCycle.events", () => {
   // Helper to create illumination ephemeris with margin
   function createIlluminationEphemeris(
-    currentMinute: moment.Moment,
+    currentMinute: Moment,
     illuminations: number[],
   ): IlluminationEphemeris {
     const ephemeris: IlluminationEphemeris = {};

@@ -1,3 +1,4 @@
+
 import {
   getAzimuthElevationFromEphemeris,
   getCoordinateFromEphemeris,
@@ -19,12 +20,12 @@ import type {
   DiameterEphemeris,
 } from "../../ephemeris/ephemeris.types";
 import type { EclipsePhase } from "../../types";
-import type moment from "moment-timezone";
+import type { Moment } from "moment-timezone";
 
 const categories = ["Astronomy", "Astrology", "Eclipse"];
 type EclipseFrame = "geocentric" | "topocentric";
 
-function formatTimeZoneIso(date: moment.Moment, timezone: string): string {
+function formatTimeZoneIso(date: Moment, timezone: string): string {
   return date.clone().tz(timezone).toISOString(true);
 }
 
@@ -51,7 +52,7 @@ function formatTimeZoneIso(date: moment.Moment, timezone: string): string {
  * - Lunar: Penumbral, partial, or total (depends on Earth's shadow depth)
  */
 export function getEclipseEvents(args: {
-  currentMinute: moment.Moment;
+  currentMinute: Moment;
   moonAzimuthElevationEphemeris?: AzimuthElevationEphemeris;
   moonCoordinateEphemeris: CoordinateEphemeris;
   moonDiameterEphemeris: DiameterEphemeris;
@@ -390,7 +391,7 @@ function getTopocentricPhase(args: {
  * @see {@link isSolarEclipse} for detection algorithm
  */
 export function buildSolarEclipseEvent(args: {
-  date: moment.Moment;
+  date: Moment;
   frame: EclipseFrame;
   phase: EclipsePhase;
   // type: "partial" | "total" | "annular";
@@ -443,7 +444,7 @@ export function buildSolarEclipseEvent(args: {
  * @see {@link isLunarEclipse} for detection algorithm
  */
 export function buildLunarEclipseEvent(args: {
-  date: moment.Moment;
+  date: Moment;
   frame: EclipseFrame;
   phase: EclipsePhase;
   // type: "partial" | "total" | "penumbral";

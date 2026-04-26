@@ -1,11 +1,12 @@
+
 import { generateMinutes } from "./date.utilities";
 import {
   getAnnualSolarCycleEvents,
   getSolarApsisEvents,
 } from "./events/annualSolarCycle/annualSolarCycle.events";
 import {
-  getActiveAspects,
-  updateActiveAspectsStoreByPerfectiveEvents,
+  getAspectBodies,
+  updateAspectBodiesStoreByPerfectiveEvents,
 } from "./events/aspects/aspects.store";
 import { getMajorAspectEvents } from "./events/aspects/major/majorAspects.events";
 import { getMinorAspectEvents } from "./events/aspects/minor/minorAspects.events";
@@ -30,8 +31,8 @@ import { getTwilightEvents } from "./events/twilights/twilights.events";
 
 import type { Event } from "./calendar.utilities";
 import type { getEphemerides } from "./ephemeris/ephemeris.aggregates";
-import type { ActiveAspect } from "./events/aspects/aspects.store";
-import type moment from "moment-timezone";
+import type { AspectBodies } from "./events/aspects/aspects.store";
+import type { Moment } from "moment-timezone";
 
 type Ephemerides = ReturnType<typeof getEphemerides>;
 
@@ -39,17 +40,17 @@ type Ephemerides = ReturnType<typeof getEphemerides>;
  * Processes all perfective astronomical events for each minute in a date range.
  *
  * @param args - Minute loop parameters: pre-fetched ephemerides, minute range [start, end],
- *   and previousAspectEdges carried in from a preceding range
+ *   and previousAspectBodies carried in from a preceding range
  * @returns All detected events and the final active-aspect state for chaining into the next range
  */
 export function detectPerfectiveEventsByMinute(args: {
   ephemerides: Ephemerides;
-  end: moment.Moment;
-  previousAspectEdges: ActiveAspect[];
-  start: moment.Moment;
-}): { events: Event[]; finalAspectEdges: ActiveAspect[] } {
+  end: Moment;
+  previousAspectBodies: AspectBodies[];
+  start: Moment;
+}): { events: Event[]; finalAspectBodies: AspectBodies[] } {
   const { ephemerides, end, start } = args;
-  let { previousAspectEdges } = args;
+  let { previousAspectBodies } = args;
 
   const {
     azimuthElevationEphemerisByBody,
@@ -77,34 +78,34 @@ export function detectPerfectiveEventsByMinute(args: {
       }),
     ];
 
-    updateActiveAspectsStoreByPerfectiveEvents(minuteSimpleAspectEvents);
-    const currentAspectEdges = getActiveAspects();
+    updateAspectBodiesStoreByPerfectiveEvents(minuteSimpleAspectEvents);
+    const currentAspectBodies = getAspectBodies();
 
     const minuteEvents: Event[] = [
       ...minuteSimpleAspectEvents,
       ...getTripleAspectEvents(
-        currentAspectEdges,
-        previousAspectEdges,
+        currentAspectBodies,
+        previousAspectBodies,
         minute,
       ),
       ...getQuadrupleAspectEvents(
-        currentAspectEdges,
-        previousAspectEdges,
+        currentAspectBodies,
+        previousAspectBodies,
         minute,
       ),
       ...getQuintupleAspectEvents(
-        currentAspectEdges,
-        previousAspectEdges,
+        currentAspectBodies,
+        previousAspectBodies,
         minute,
       ),
       ...getSextupleAspectEvents(
-        currentAspectEdges,
-        previousAspectEdges,
+        currentAspectBodies,
+        previousAspectBodies,
         minute,
       ),
       ...getStelliumEvents(
-        currentAspectEdges,
-        previousAspectEdges,
+        currentAspectBodies,
+        previousAspectBodies,
         minute,
       ),
       ...getRetrogradeEvents({
@@ -164,9 +165,9 @@ export function detectPerfectiveEventsByMinute(args: {
       }),
     ];
 
-    previousAspectEdges = currentAspectEdges;
+    previousAspectBodies = currentAspectBodies;
     allEvents.push(...minuteEvents);
   }
 
-  return { events: allEvents, finalAspectEdges: previousAspectEdges };
+  return { events: allEvents, finalAspectBodies: previousAspectBodies };
 }

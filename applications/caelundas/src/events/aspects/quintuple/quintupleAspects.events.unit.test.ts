@@ -2,11 +2,11 @@ import moment from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
 import {
-  getQuintupleAspectEvents,
-  getQuintupleAspectProgressiveEvents,
+    getQuintupleAspectEvents,
+    getQuintupleAspectProgressiveEvents,
 } from "./quintupleAspects.events";
 
-import type { ActiveAspect } from "../aspects.store";
+import type { AspectBodies } from "../aspects.store";
 import type { Event } from "../../../calendar.utilities";
 
 describe("quintupleAspects.events", () => {
@@ -17,14 +17,14 @@ describe("quintupleAspects.events", () => {
         // Pentagram: 5 bodies in star pattern spanning multiple hours
         // Connections: 0-2 (Sun-Mars), 1-3 (Moon-Jupiter), 2-4 (Mars-Venus), 3-0 (Jupiter-Sun), 4-1 (Venus-Moon)
         // No events generated because pattern exists in prev/current/next minutes
-        const currentEdges: ActiveAspect[] = [
+        const currentAspectBodies: AspectBodies[] = [
           { bodies: ["sun", "mars"], aspect: "quintile" },
           { bodies: ["moon", "jupiter"], aspect: "quintile" },
           { bodies: ["mars", "venus"], aspect: "quintile" },
           { bodies: ["jupiter", "sun"], aspect: "quintile" },
           { bodies: ["venus", "moon"], aspect: "quintile" },
         ];
-        const previousEdges: ActiveAspect[] = [
+        const previousAspectBodies: AspectBodies[] = [
           { bodies: ["sun", "mars"], aspect: "quintile" },
           { bodies: ["moon", "jupiter"], aspect: "quintile" },
           { bodies: ["mars", "venus"], aspect: "quintile" },
@@ -33,8 +33,8 @@ describe("quintupleAspects.events", () => {
         ];
 
         const events = getQuintupleAspectEvents(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           currentMinute,
         );
 
@@ -46,18 +46,18 @@ describe("quintupleAspects.events", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
         // Pentagram forming (starts at current minute but ends an hour later)
         // Should detect forming event since pattern exists at current but not previous minute
-        const currentEdges: ActiveAspect[] = [
+        const currentAspectBodies: AspectBodies[] = [
           { bodies: ["sun", "mars"], aspect: "quintile" },
           { bodies: ["moon", "jupiter"], aspect: "quintile" },
           { bodies: ["mars", "venus"], aspect: "quintile" },
           { bodies: ["jupiter", "sun"], aspect: "quintile" },
           { bodies: ["venus", "moon"], aspect: "quintile" },
         ];
-        const previousEdges: ActiveAspect[] = [];
+        const previousAspectBodies: AspectBodies[] = [];
 
         const events = getQuintupleAspectEvents(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           currentMinute,
         );
 
@@ -70,8 +70,8 @@ describe("quintupleAspects.events", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
         // Pentagram dissolving (ends at current minute)
         // Should detect dissolving event since pattern exists at current but not next minute
-        const currentEdges: ActiveAspect[] = [];
-        const previousEdges: ActiveAspect[] = [
+        const currentAspectBodies: AspectBodies[] = [];
+        const previousAspectBodies: AspectBodies[] = [
           { bodies: ["sun", "mars"], aspect: "quintile" },
           { bodies: ["moon", "jupiter"], aspect: "quintile" },
           { bodies: ["mars", "venus"], aspect: "quintile" },
@@ -80,8 +80,8 @@ describe("quintupleAspects.events", () => {
         ];
 
         const events = getQuintupleAspectEvents(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           currentMinute,
         );
 
@@ -93,16 +93,16 @@ describe("quintupleAspects.events", () => {
       it("should not detect Pentagram with incomplete quintiles", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
         // Missing some quintiles - incomplete Pentagram
-        const currentEdges: ActiveAspect[] = [
+        const currentAspectBodies: AspectBodies[] = [
           { bodies: ["sun", "mars"], aspect: "quintile" },
           { bodies: ["moon", "jupiter"], aspect: "quintile" },
           { bodies: ["mars", "venus"], aspect: "quintile" },
         ];
-        const previousEdges: ActiveAspect[] = [];
+        const previousAspectBodies: AspectBodies[] = [];
 
         const events = getQuintupleAspectEvents(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           currentMinute,
         );
 
@@ -115,15 +115,15 @@ describe("quintupleAspects.events", () => {
       it("should not detect Pentagram with fewer than 5 bodies", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
         // Only 4 bodies
-        const currentEdges: ActiveAspect[] = [
+        const currentAspectBodies: AspectBodies[] = [
           { bodies: ["sun", "mars"], aspect: "quintile" },
           { bodies: ["moon", "jupiter"], aspect: "quintile" },
         ];
-        const previousEdges: ActiveAspect[] = [];
+        const previousAspectBodies: AspectBodies[] = [];
 
         const events = getQuintupleAspectEvents(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           currentMinute,
         );
 
@@ -144,12 +144,12 @@ describe("quintupleAspects.events", () => {
       const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
       // Aspects that ended before current time - edge in NEITHER array
-      const currentEdges: ActiveAspect[] = [];
-      const previousEdges: ActiveAspect[] = [];
+      const currentAspectBodies: AspectBodies[] = [];
+      const previousAspectBodies: AspectBodies[] = [];
 
       const events = getQuintupleAspectEvents(
-        currentEdges,
-        previousEdges,
+        currentAspectBodies,
+        previousAspectBodies,
         currentMinute,
       );
       expect(events.length).toBe(0);
@@ -158,14 +158,14 @@ describe("quintupleAspects.events", () => {
     it("should not generate events for progressive aspects spanning multiple hours", () => {
       const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
       // Pentagram pattern but spans multiple hours
-      const currentEdges: ActiveAspect[] = [
+      const currentAspectBodies: AspectBodies[] = [
         { bodies: ["sun", "mars"], aspect: "quintile" },
         { bodies: ["moon", "jupiter"], aspect: "quintile" },
         { bodies: ["mars", "venus"], aspect: "quintile" },
         { bodies: ["jupiter", "sun"], aspect: "quintile" },
         { bodies: ["venus", "moon"], aspect: "quintile" },
       ];
-      const previousEdges: ActiveAspect[] = [
+      const previousAspectBodies: AspectBodies[] = [
         { bodies: ["sun", "mars"], aspect: "quintile" },
         { bodies: ["moon", "jupiter"], aspect: "quintile" },
         { bodies: ["mars", "venus"], aspect: "quintile" },
@@ -174,8 +174,8 @@ describe("quintupleAspects.events", () => {
       ];
 
       const events = getQuintupleAspectEvents(
-        currentEdges,
-        previousEdges,
+        currentAspectBodies,
+        previousAspectBodies,
         currentMinute,
       );
 

@@ -2,11 +2,11 @@ import moment from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
 import {
-  getStelliumEvents,
-  getStelliumProgressiveEvents,
+    getStelliumEvents,
+    getStelliumProgressiveEvents,
 } from "./stellium.events";
 
-import type { ActiveAspect } from "../aspects.store";
+import type { AspectBodies } from "../aspects.store";
 import type { Event } from "../../../calendar.utilities";
 
 describe("stellium.events", () => {
@@ -16,7 +16,7 @@ describe("stellium.events", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
         // 4-body stellium: Sun, Moon, Mars, Venus all in conjunction
-        const edges: ActiveAspect[] = [
+        const edges: AspectBodies[] = [
           { bodies: ["sun", "moon"], aspect: "conjunct" },
           { bodies: ["sun", "mars"], aspect: "conjunct" },
           { bodies: ["sun", "venus"], aspect: "conjunct" },
@@ -24,12 +24,12 @@ describe("stellium.events", () => {
           { bodies: ["moon", "venus"], aspect: "conjunct" },
           { bodies: ["mars", "venus"], aspect: "conjunct" },
         ];
-        const currentEdges = edges;
-        const previousEdges = edges;
+        const currentAspectBodies = edges;
+        const previousAspectBodies = edges;
 
         const events = getStelliumEvents(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           currentMinute,
         );
 
@@ -41,7 +41,7 @@ describe("stellium.events", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
         // Complete 4-body stellium only at current minute
-        const currentEdges: ActiveAspect[] = [
+        const currentAspectBodies: AspectBodies[] = [
           { bodies: ["sun", "moon"], aspect: "conjunct" },
           { bodies: ["sun", "mars"], aspect: "conjunct" },
           { bodies: ["sun", "venus"], aspect: "conjunct" },
@@ -50,13 +50,13 @@ describe("stellium.events", () => {
           { bodies: ["mars", "venus"], aspect: "conjunct" },
         ];
         // Pattern doesn't exist at previous minute (only Sun-Moon was conjunct)
-        const previousEdges: ActiveAspect[] = [
+        const previousAspectBodies: AspectBodies[] = [
           { bodies: ["sun", "moon"], aspect: "conjunct" },
         ];
 
         const events = getStelliumEvents(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           currentMinute,
         );
 
@@ -71,19 +71,19 @@ describe("stellium.events", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
         // Only 5 conjunctions (need 6 for 4-body stellium)
-        const edges: ActiveAspect[] = [
+        const edges: AspectBodies[] = [
           { bodies: ["sun", "moon"], aspect: "conjunct" },
           { bodies: ["sun", "mars"], aspect: "conjunct" },
           { bodies: ["sun", "venus"], aspect: "conjunct" },
           { bodies: ["moon", "mars"], aspect: "conjunct" },
           { bodies: ["moon", "venus"], aspect: "conjunct" },
         ];
-        const currentEdges = edges;
-        const previousEdges = edges;
+        const currentAspectBodies = edges;
+        const previousAspectBodies = edges;
 
         const events = getStelliumEvents(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           currentMinute,
         );
 
@@ -94,7 +94,7 @@ describe("stellium.events", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
         // Two separate 3-body clusters (neither forms a stellium)
-        const edges: ActiveAspect[] = [
+        const edges: AspectBodies[] = [
           { bodies: ["sun", "moon"], aspect: "conjunct" },
           { bodies: ["sun", "mars"], aspect: "conjunct" },
           { bodies: ["moon", "mars"], aspect: "conjunct" },
@@ -102,12 +102,12 @@ describe("stellium.events", () => {
           { bodies: ["jupiter", "saturn"], aspect: "conjunct" },
           { bodies: ["venus", "saturn"], aspect: "conjunct" },
         ];
-        const currentEdges = edges;
-        const previousEdges = edges;
+        const currentAspectBodies = edges;
+        const previousAspectBodies = edges;
 
         const events = getStelliumEvents(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           currentMinute,
         );
 
@@ -118,7 +118,7 @@ describe("stellium.events", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
         // 4 bodies but Mars-Venus conjunction is missing
-        const edges: ActiveAspect[] = [
+        const edges: AspectBodies[] = [
           { bodies: ["sun", "moon"], aspect: "conjunct" },
           { bodies: ["sun", "mars"], aspect: "conjunct" },
           { bodies: ["sun", "venus"], aspect: "conjunct" },
@@ -126,12 +126,12 @@ describe("stellium.events", () => {
           { bodies: ["moon", "venus"], aspect: "conjunct" },
           // Mars-Venus conjunction missing
         ];
-        const currentEdges = edges;
-        const previousEdges = edges;
+        const currentAspectBodies = edges;
+        const previousAspectBodies = edges;
 
         const events = getStelliumEvents(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           currentMinute,
         );
 
@@ -141,12 +141,12 @@ describe("stellium.events", () => {
       it("should return empty array for invalid aspect events", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
-        const currentEdges: ActiveAspect[] = [];
-        const previousEdges: ActiveAspect[] = [];
+        const currentAspectBodies: AspectBodies[] = [];
+        const previousAspectBodies: AspectBodies[] = [];
 
         const events = getStelliumEvents(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           currentMinute,
         );
 
@@ -157,7 +157,7 @@ describe("stellium.events", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
         // Complete 4-body stellium only at current minute
-        const currentEdges: ActiveAspect[] = [
+        const currentAspectBodies: AspectBodies[] = [
           { bodies: ["sun", "moon"], aspect: "conjunct" },
           { bodies: ["sun", "mars"], aspect: "conjunct" },
           { bodies: ["sun", "venus"], aspect: "conjunct" },
@@ -166,13 +166,13 @@ describe("stellium.events", () => {
           { bodies: ["mars", "venus"], aspect: "conjunct" },
         ];
         // Pattern doesn't exist at previous minute (only Sun-Moon was conjunct)
-        const previousEdges: ActiveAspect[] = [
+        const previousAspectBodies: AspectBodies[] = [
           { bodies: ["sun", "moon"], aspect: "conjunct" },
         ];
 
         const events = getStelliumEvents(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           currentMinute,
         );
 
@@ -193,7 +193,7 @@ describe("stellium.events", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
         // 5-body stellium: Sun, Moon, Mars, Venus, Jupiter (10 conjunctions)
-        const currentEdges: ActiveAspect[] = [
+        const currentAspectBodies: AspectBodies[] = [
           { bodies: ["sun", "moon"], aspect: "conjunct" },
           { bodies: ["sun", "mars"], aspect: "conjunct" },
           { bodies: ["sun", "venus"], aspect: "conjunct" },
@@ -206,13 +206,13 @@ describe("stellium.events", () => {
           { bodies: ["venus", "jupiter"], aspect: "conjunct" },
         ];
         // Pattern doesn't exist at previous minute (only Sun-Moon was conjunct)
-        const previousEdges: ActiveAspect[] = [
+        const previousAspectBodies: AspectBodies[] = [
           { bodies: ["sun", "moon"], aspect: "conjunct" },
         ];
 
         const events = getStelliumEvents(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           currentMinute,
         );
 

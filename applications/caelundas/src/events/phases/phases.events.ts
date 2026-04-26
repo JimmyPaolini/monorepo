@@ -47,11 +47,11 @@ import type {
   VenusianPhase,
   VenusianPhaseSymbol,
 } from "../../types";
-import type moment from "moment-timezone";
+import type { Moment } from "moment-timezone";
 
 const categories = ["Astronomy", "Astrology", "Planetary Phase"];
 
-function formatTimeZoneIso(date: moment.Moment, timezone: string): string {
+function formatTimeZoneIso(date: Moment, timezone: string): string {
   return date.clone().tz(timezone).toISOString(true);
 }
 
@@ -78,7 +78,7 @@ function formatTimeZoneIso(date: moment.Moment, timezone: string): string {
  * @see {@link getMartianPhaseEvents} for Mars-specific phases
  */
 export function getPlanetaryPhaseEvents(args: {
-  currentMinute: moment.Moment;
+  currentMinute: Moment;
   coordinateEphemerisByBody: Record<
     CoordinateEphemerisBody,
     CoordinateEphemeris
@@ -159,7 +159,7 @@ export function getPlanetaryPhaseEvents(args: {
  * @see {@link symbolByVenusianPhase} for phase symbols
  */
 export function buildVenusianPhaseEvent(args: {
-  timestamp: moment.Moment;
+  timestamp: Moment;
   phase: VenusianPhase;
 }): Event {
   const { timestamp, phase } = args;
@@ -202,7 +202,7 @@ export function buildVenusianPhaseEvent(args: {
  * @see {@link isWesternElongation} for western elongation detection
  */
 export function getVenusianPhaseEvents(args: {
-  currentMinute: moment.Moment;
+  currentMinute: Moment;
   venusCoordinateEphemeris: CoordinateEphemeris;
   venusDistanceEphemeris: DistanceEphemeris;
   venusIlluminationEphemeris: IlluminationEphemeris;
@@ -426,7 +426,7 @@ export function getVenusianPhaseEvents(args: {
  * @see {@link symbolByMercurianPhase} for phase symbols
  */
 export function buildMercurianPhaseEvent(args: {
-  timestamp: moment.Moment;
+  timestamp: Moment;
   phase: MercurianPhase;
 }): Event {
   const { timestamp, phase } = args;
@@ -468,7 +468,7 @@ export function buildMercurianPhaseEvent(args: {
  * @see {@link isEasternElongation} for eastern elongation detection
  */
 export function getMercurianPhaseEvents(args: {
-  currentMinute: moment.Moment;
+  currentMinute: Moment;
   mercuryCoordinateEphemeris: CoordinateEphemeris;
   mercuryDistanceEphemeris: DistanceEphemeris;
   mercuryIlluminationEphemeris: IlluminationEphemeris;
@@ -690,7 +690,7 @@ export function getMercurianPhaseEvents(args: {
  * @see {@link symbolByMartianPhase} for phase symbols
  */
 export function buildMartianPhaseEvent(args: {
-  timestamp: moment.Moment;
+  timestamp: Moment;
   phase: MartianPhase;
 }): Event {
   const { timestamp, phase } = args;
@@ -732,7 +732,7 @@ export function buildMartianPhaseEvent(args: {
  * @see {@link isEveningSet} for evening set detection
  */
 export function getMartianPhaseEvents(args: {
-  currentMinute: moment.Moment;
+  currentMinute: Moment;
   marsCoordinateEphemeris: CoordinateEphemeris;
   marsDistanceEphemeris: DistanceEphemeris;
   marsIlluminationEphemeris: IlluminationEphemeris;
@@ -913,10 +913,10 @@ export function getMartianPhaseEvents(args: {
  * @see {@link getOutputPath} for file path resolution
  */
 export function writePlanetaryPhaseEvents(args: {
-  end: moment.Moment;
+  end: Moment;
   planetaryPhaseBodies: Extract<Body, "mercury" | "venus" | "mars">[];
   planetaryPhaseEvents: Event[];
-  start: moment.Moment;
+  start: Moment;
 }): void {
   const { planetaryPhaseEvents, planetaryPhaseBodies, start, end } = args;
   if (_.isEmpty(planetaryPhaseEvents)) {

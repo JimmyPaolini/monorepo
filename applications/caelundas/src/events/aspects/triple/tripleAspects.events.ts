@@ -2,7 +2,6 @@ import _ from "lodash";
 
 import { symbolByBody, symbolByTripleAspect } from "../../../symbols";
 import { tripleAspectBodies } from "../../../types";
-
 import {
   determineCompoundPhaseFromSnapshots,
   findBodiesWithAspectTo,
@@ -10,10 +9,10 @@ import {
   haveAspect,
 } from "../aspects.composition";
 
-import type { ActiveAspect } from "../aspects.store";
 import type { Event } from "../../../calendar.utilities";
 import type { AspectPhase, Body, TripleAspect } from "../../../types";
-import type moment from "moment-timezone";
+import type { AspectBodies } from "../aspects.store";
+import type { Moment } from "moment-timezone";
 
 /**
  * Composes T-Square patterns from stored 2-body aspects.
@@ -41,13 +40,13 @@ import type moment from "moment-timezone";
  * @see {@link determineMultiBodyPhase} for phase calculation
  */
 function composeTSquares(
-  currentEdges: ActiveAspect[],
-  previousEdges: ActiveAspect[],
-  currentMinute: moment.Moment,
+  currentAspectBodies: AspectBodies[],
+  previousAspectBodies: AspectBodies[],
+  currentMinute: Moment,
 ): Event[] {
   const events: Event[] = [];
 
-  const unionEdges = [...currentEdges, ...previousEdges];
+  const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
   const aspectsByType = groupAspectsByType(unionEdges);
 
   const oppositions = aspectsByType.get("opposite") || [];
@@ -72,8 +71,8 @@ function composeTSquares(
         haveAspect(body2, focalBody, "square", unionEdges)
       ) {
         const result = determineCompoundPhaseFromSnapshots(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           [body1, body2, focalBody],
           currentMinute,
           (edges) => {
@@ -131,13 +130,13 @@ function composeTSquares(
  * @see {@link determineMultiBodyPhase} for phase calculation
  */
 function composeYods(
-  currentEdges: ActiveAspect[],
-  previousEdges: ActiveAspect[],
-  currentMinute: moment.Moment,
+  currentAspectBodies: AspectBodies[],
+  previousAspectBodies: AspectBodies[],
+  currentMinute: Moment,
 ): Event[] {
   const events: Event[] = [];
 
-  const unionEdges = [...currentEdges, ...previousEdges];
+  const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
   const aspectsByType = groupAspectsByType(unionEdges);
 
   const sextiles = aspectsByType.get("sextile") || [];
@@ -169,8 +168,8 @@ function composeYods(
         haveAspect(body2, apexBody, "quincunx", unionEdges)
       ) {
         const result = determineCompoundPhaseFromSnapshots(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           [body1, body2, apexBody],
           currentMinute,
           (edges) => {
@@ -228,13 +227,13 @@ function composeYods(
  * @see {@link determineMultiBodyPhase} for phase calculation
  */
 function composeGrandTrines(
-  currentEdges: ActiveAspect[],
-  previousEdges: ActiveAspect[],
-  currentMinute: moment.Moment,
+  currentAspectBodies: AspectBodies[],
+  previousAspectBodies: AspectBodies[],
+  currentMinute: Moment,
 ): Event[] {
   const events: Event[] = [];
 
-  const unionEdges = [...currentEdges, ...previousEdges];
+  const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
   const aspectsByType = groupAspectsByType(unionEdges);
 
   const trines = aspectsByType.get("trine") || [];
@@ -266,8 +265,8 @@ function composeGrandTrines(
           haveAspect(body2, body3, "trine", trines)
         ) {
           const result = determineCompoundPhaseFromSnapshots(
-            currentEdges,
-            previousEdges,
+            currentAspectBodies,
+            previousAspectBodies,
             [body1, body2, body3],
             currentMinute,
             (edges) => {
@@ -320,21 +319,21 @@ function composeGrandTrines(
  * @see {@link composeGrandTrines} for Grand Trine detection
  */
 export function getTripleAspectEvents(
-  currentEdges: ActiveAspect[],
-  previousEdges: ActiveAspect[],
-  currentMinute: moment.Moment,
+  currentAspectBodies: AspectBodies[],
+  previousAspectBodies: AspectBodies[],
+  currentMinute: Moment,
 ): Event[] {
   return [
-    ...composeTSquares(currentEdges, previousEdges, currentMinute),
-    ...composeYods(currentEdges, previousEdges, currentMinute),
-    ...composeGrandTrines(currentEdges, previousEdges, currentMinute),
+    ...composeTSquares(currentAspectBodies, previousAspectBodies, currentMinute),
+    ...composeYods(currentAspectBodies, previousAspectBodies, currentMinute),
+    ...composeGrandTrines(currentAspectBodies, previousAspectBodies, currentMinute),
     // Can add more patterns: Hammer, etc.
   ];
 }
 
 // Helper function to create triple aspect events
 function getTripleAspectEvent(args: {
-  timestamp: moment.Moment;
+  timestamp: Moment;
   body1: Body;
   body2: Body;
   body3: Body;

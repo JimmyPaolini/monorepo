@@ -11,6 +11,7 @@ import fs from "node:fs";
 
 import _ from "lodash";
 
+
 import { getCalendar } from "../../calendar.utilities";
 import { getAzimuthElevationFromEphemeris } from "../../ephemeris/ephemeris.service";
 import { isMaximum, isMinimum } from "../../math.utilities";
@@ -20,7 +21,7 @@ import { isRise, isSet } from "./dailyCycle.utilities";
 
 import type { Event } from "../../calendar.utilities";
 import type { AzimuthElevationEphemeris } from "../../ephemeris/ephemeris.types";
-import type moment from "moment-timezone";
+import type { Moment } from "moment-timezone";
 
 /**
  * Standard categories for all daily solar cycle events.
@@ -72,7 +73,7 @@ const categories = ["Astronomy", "Astrology", "Daily Solar Cycle", "Solar"];
  * ```
  */
 export function getDailySolarCycleEvents(args: {
-  currentMinute: moment.Moment;
+  currentMinute: Moment;
   sunAzimuthElevationEphemeris: AzimuthElevationEphemeris;
 }): Event[] {
   const { currentMinute, sunAzimuthElevationEphemeris } = args;
@@ -151,7 +152,7 @@ export function getDailySolarCycleEvents(args: {
  * // Returns: { summary: "☀️ 🔼 Sunrise", start: ..., end: ..., ... }
  * ```
  */
-export function buildSunriseEvent(date: moment.Moment): Event {
+export function buildSunriseEvent(date: Moment): Event {
   const description = "Sunrise";
   const summary = `☀️ 🔼 ${description}`;
 
@@ -196,7 +197,7 @@ export function buildSunriseEvent(date: moment.Moment): Event {
  * // Returns: { summary: "☀️ ⬆️ Solar Zenith", start: ..., end: ..., ... }
  * ```
  */
-export function buildSolarZenithEvent(date: moment.Moment): Event {
+export function buildSolarZenithEvent(date: Moment): Event {
   const description = "Solar Zenith";
   const summary = `☀️ ⏫ ${description}`;
 
@@ -240,7 +241,7 @@ export function buildSolarZenithEvent(date: moment.Moment): Event {
  * // Returns: { summary: "☀️ 🔽 Sunset", start: ..., end: ..., ... }
  * ```
  */
-export function buildSunsetEvent(date: moment.Moment): Event {
+export function buildSunsetEvent(date: Moment): Event {
   const description = "Sunset";
   const summary = `☀️ 🔽 ${description}`;
 
@@ -286,7 +287,7 @@ export function buildSunsetEvent(date: moment.Moment): Event {
  * // Returns: { summary: "☀️ ⬇️ Solar Nadir", start: ..., end: ..., ... }
  * ```
  */
-export function buildSolarNadirEvent(date: moment.Moment): Event {
+export function buildSolarNadirEvent(date: Moment): Event {
   const description = "Solar Nadir";
   const summary = `☀️ ⏬ ${description}`;
 
@@ -338,8 +339,8 @@ export function buildSolarNadirEvent(date: moment.Moment): Event {
  */
 export function writeDailySolarCycleEvents(args: {
   dailySolarCycleEvents: Event[];
-  start: moment.Moment;
-  end: moment.Moment;
+  start: Moment;
+  end: Moment;
 }): void {
   const { dailySolarCycleEvents, start, end } = args;
   if (_.isEmpty(dailySolarCycleEvents)) {

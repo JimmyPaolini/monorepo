@@ -2,11 +2,11 @@ import moment from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
 import {
-  getQuadrupleAspectEvents,
-  getQuadrupleAspectProgressiveEvents,
+    getQuadrupleAspectEvents,
+    getQuadrupleAspectProgressiveEvents,
 } from "./quadrupleAspects.events";
 
-import type { ActiveAspect } from "../aspects.store";
+import type { AspectBodies } from "../aspects.store";
 import type { Event } from "../../../calendar.utilities";
 
 describe("quadrupleAspects.events", () => {
@@ -16,7 +16,7 @@ describe("quadrupleAspects.events", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
         // Grand Cross: Sun opposite Moon, Mars opposite Jupiter
         // Plus squares: Sun-Mars, Sun-Jupiter, Moon-Mars, Moon-Jupiter
-        const currentEdges: ActiveAspect[] = [
+        const currentAspectBodies: AspectBodies[] = [
           { bodies: ["sun", "moon"], aspect: "opposite" },
           { bodies: ["mars", "jupiter"], aspect: "opposite" },
           { bodies: ["sun", "mars"], aspect: "square" },
@@ -24,11 +24,11 @@ describe("quadrupleAspects.events", () => {
           { bodies: ["moon", "mars"], aspect: "square" },
           { bodies: ["moon", "jupiter"], aspect: "square" },
         ];
-        const previousEdges: ActiveAspect[] = [];
+        const previousAspectBodies: AspectBodies[] = [];
 
         const events = getQuadrupleAspectEvents(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           currentMinute,
         );
 
@@ -47,7 +47,7 @@ describe("quadrupleAspects.events", () => {
       it("should detect forming Grand Cross", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
         // Grand Cross forming (starts at current minute)
-        const currentEdges: ActiveAspect[] = [
+        const currentAspectBodies: AspectBodies[] = [
           { bodies: ["sun", "moon"], aspect: "opposite" },
           { bodies: ["mars", "jupiter"], aspect: "opposite" },
           { bodies: ["sun", "mars"], aspect: "square" },
@@ -55,11 +55,11 @@ describe("quadrupleAspects.events", () => {
           { bodies: ["moon", "mars"], aspect: "square" },
           { bodies: ["moon", "jupiter"], aspect: "square" },
         ];
-        const previousEdges: ActiveAspect[] = [];
+        const previousAspectBodies: AspectBodies[] = [];
 
         const events = getQuadrupleAspectEvents(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           currentMinute,
         );
 
@@ -74,8 +74,8 @@ describe("quadrupleAspects.events", () => {
       it("should detect dissolving Grand Cross", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
         // Grand Cross dissolving (ends at current minute)
-        const currentEdges: ActiveAspect[] = [];
-        const previousEdges: ActiveAspect[] = [
+        const currentAspectBodies: AspectBodies[] = [];
+        const previousAspectBodies: AspectBodies[] = [
           { bodies: ["sun", "moon"], aspect: "opposite" },
           { bodies: ["mars", "jupiter"], aspect: "opposite" },
           { bodies: ["sun", "mars"], aspect: "square" },
@@ -85,8 +85,8 @@ describe("quadrupleAspects.events", () => {
         ];
 
         const events = getQuadrupleAspectEvents(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           currentMinute,
         );
 
@@ -101,16 +101,16 @@ describe("quadrupleAspects.events", () => {
       it("should not detect Grand Cross with incomplete aspects", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
         // Missing some squares - incomplete Grand Cross
-        const currentEdges: ActiveAspect[] = [
+        const currentAspectBodies: AspectBodies[] = [
           { bodies: ["sun", "moon"], aspect: "opposite" },
           { bodies: ["mars", "jupiter"], aspect: "opposite" },
           { bodies: ["sun", "mars"], aspect: "square" },
         ];
-        const previousEdges: ActiveAspect[] = [];
+        const previousAspectBodies: AspectBodies[] = [];
 
         const events = getQuadrupleAspectEvents(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           currentMinute,
         );
 
@@ -125,7 +125,7 @@ describe("quadrupleAspects.events", () => {
       it("should detect Kite from Grand Trine plus opposition and sextiles", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
         // Kite: Grand Trine (Sun-Moon-Mars) + Venus opposite Sun + Venus sextile Moon/Mars
-        const currentEdges: ActiveAspect[] = [
+        const currentAspectBodies: AspectBodies[] = [
           { bodies: ["sun", "moon"], aspect: "trine" },
           { bodies: ["sun", "mars"], aspect: "trine" },
           { bodies: ["moon", "mars"], aspect: "trine" },
@@ -133,11 +133,11 @@ describe("quadrupleAspects.events", () => {
           { bodies: ["venus", "moon"], aspect: "sextile" },
           { bodies: ["venus", "mars"], aspect: "sextile" },
         ];
-        const previousEdges: ActiveAspect[] = [];
+        const previousAspectBodies: AspectBodies[] = [];
 
         const events = getQuadrupleAspectEvents(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           currentMinute,
         );
 
@@ -155,17 +155,17 @@ describe("quadrupleAspects.events", () => {
       it("should not detect Kite with incomplete aspects", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
         // Grand Trine present but missing sextiles
-        const currentEdges: ActiveAspect[] = [
+        const currentAspectBodies: AspectBodies[] = [
           { bodies: ["sun", "moon"], aspect: "trine" },
           { bodies: ["sun", "mars"], aspect: "trine" },
           { bodies: ["moon", "mars"], aspect: "trine" },
           { bodies: ["sun", "venus"], aspect: "opposite" },
         ];
-        const previousEdges: ActiveAspect[] = [];
+        const previousAspectBodies: AspectBodies[] = [];
 
         const events = getQuadrupleAspectEvents(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           currentMinute,
         );
 
@@ -184,12 +184,12 @@ describe("quadrupleAspects.events", () => {
       const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
       // Aspects that ended before current time
-      const currentEdges: ActiveAspect[] = [];
-      const previousEdges: ActiveAspect[] = [];
+      const currentAspectBodies: AspectBodies[] = [];
+      const previousAspectBodies: AspectBodies[] = [];
 
       const events = getQuadrupleAspectEvents(
-        currentEdges,
-        previousEdges,
+        currentAspectBodies,
+        previousAspectBodies,
         currentMinute,
       );
       expect(events.length).toBe(0);
@@ -198,7 +198,7 @@ describe("quadrupleAspects.events", () => {
     it("should not generate events for progressive aspects spanning multiple hours", () => {
       const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
       // Grand Cross pattern but spans multiple hours
-      const currentEdges: ActiveAspect[] = [
+      const currentAspectBodies: AspectBodies[] = [
         { bodies: ["sun", "moon"], aspect: "opposite" },
         { bodies: ["mars", "jupiter"], aspect: "opposite" },
         { bodies: ["sun", "mars"], aspect: "square" },
@@ -206,7 +206,7 @@ describe("quadrupleAspects.events", () => {
         { bodies: ["moon", "mars"], aspect: "square" },
         { bodies: ["moon", "jupiter"], aspect: "square" },
       ];
-      const previousEdges: ActiveAspect[] = [
+      const previousAspectBodies: AspectBodies[] = [
         { bodies: ["sun", "moon"], aspect: "opposite" },
         { bodies: ["mars", "jupiter"], aspect: "opposite" },
         { bodies: ["sun", "mars"], aspect: "square" },
@@ -216,8 +216,8 @@ describe("quadrupleAspects.events", () => {
       ];
 
       const events = getQuadrupleAspectEvents(
-        currentEdges,
-        previousEdges,
+        currentAspectBodies,
+        previousAspectBodies,
         currentMinute,
       );
 

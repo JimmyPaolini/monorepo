@@ -1,18 +1,18 @@
 import _ from "lodash";
 
+
 import { getCombinations } from "../../../math.utilities";
 import { symbolByBody, symbolByQuintupleAspect } from "../../../symbols";
 import { quintupleAspectBodies } from "../../../types";
-
 import {
   determineCompoundPhaseFromSnapshots,
   groupAspectsByType,
 } from "../aspects.composition";
 
-import type { ActiveAspect } from "../aspects.store";
 import type { Event } from "../../../calendar.utilities";
 import type { AspectPhase, Body, QuintupleAspect } from "../../../types";
-import type moment from "moment-timezone";
+import type { AspectBodies } from "../aspects.store";
+import type { Moment } from "moment-timezone";
 
 /**
  * Checks if 5 bodies form a valid pentagram pattern (5-pointed star).
@@ -45,7 +45,7 @@ import type moment from "moment-timezone";
  */
 function findPentagramPattern(
   bodies: Body[],
-  edges: ActiveAspect[],
+  edges: AspectBodies[],
 ): Body[] | null {
   // Build adjacency list of quintile connections
   const connections = new Map<Body, Set<Body>>();
@@ -151,13 +151,13 @@ function findPentagramPattern(
  * @see {@link getCombinations} for generating body combinations
  */
 function composePentagrams(
-  currentEdges: ActiveAspect[],
-  previousEdges: ActiveAspect[],
-  currentMinute: moment.Moment,
+  currentAspectBodies: AspectBodies[],
+  previousAspectBodies: AspectBodies[],
+  currentMinute: Moment,
 ): Event[] {
   const events: Event[] = [];
 
-  const unionEdges = [...currentEdges, ...previousEdges];
+  const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
   const aspectsByType = groupAspectsByType(unionEdges);
   const quintiles = aspectsByType.get("quintile") || [];
 
@@ -188,8 +188,8 @@ function composePentagrams(
 
     if (pentagramBodies) {
       const result = determineCompoundPhaseFromSnapshots(
-        currentEdges,
-        previousEdges,
+        currentAspectBodies,
+        previousAspectBodies,
         pentagramBodies,
         currentMinute,
         (edges) => {
@@ -229,7 +229,7 @@ function composePentagrams(
  * Create a quintuple aspect event
  */
 function getQuintupleAspectEvent(params: {
-  timestamp: moment.Moment;
+  timestamp: Moment;
   body1: Body;
   body2: Body;
   body3: Body;
@@ -320,11 +320,11 @@ function getQuintupleAspectEvent(params: {
  * @see {@link composePentagrams} for Pentagram detection
  */
 export function getQuintupleAspectEvents(
-  currentEdges: ActiveAspect[],
-  previousEdges: ActiveAspect[],
-  currentMinute: moment.Moment,
+  currentAspectBodies: AspectBodies[],
+  previousAspectBodies: AspectBodies[],
+  currentMinute: Moment,
 ): Event[] {
-  return composePentagrams(currentEdges, previousEdges, currentMinute);
+  return composePentagrams(currentAspectBodies, previousAspectBodies, currentMinute);
 }
 
 // #region Progressive Events

@@ -1,4 +1,4 @@
-import moment from "moment-timezone";
+import moment, { type Moment } from "moment-timezone";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
@@ -86,11 +86,11 @@ vi.mock("sweph", () => ({
 // Helpers
 // ---------------------------------------------------------------------------
 
-function makeStart(): moment.Moment {
+function makeStart(): Moment {
   return moment.utc("2024-03-21T00:00:00.000Z");
 }
 
-function makeEnd(): moment.Moment {
+function makeEnd(): Moment {
   return moment.utc("2024-03-21T00:01:00.000Z"); // two minutes → 2 timestamps
 }
 

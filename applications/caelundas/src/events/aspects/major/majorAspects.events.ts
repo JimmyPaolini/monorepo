@@ -11,6 +11,7 @@ import fs from "node:fs";
 
 import _ from "lodash";
 
+
 import { type Event, getCalendar } from "../../../calendar.utilities";
 import { majorAspects } from "../../../constants";
 import { getCoordinateFromEphemeris } from "../../../ephemeris/ephemeris.service";
@@ -18,18 +19,17 @@ import { getOutputPath } from "../../../output.utilities";
 import { pairProgressiveEvents } from "../../../progressive.utilities";
 import { symbolByBody, symbolByMajorAspect } from "../../../symbols";
 import { majorAspectBodies } from "../../../types";
-
 import { getMajorAspect, getMajorAspectPhase } from "../aspects.utilities";
 
 import type { CoordinateEphemeris } from "../../../ephemeris/ephemeris.types";
 import type {
-    AspectPhase,
-    Body,
-    BodySymbol,
-    MajorAspect,
-    MajorAspectSymbol,
+  AspectPhase,
+  Body,
+  BodySymbol,
+  MajorAspect,
+  MajorAspectSymbol,
 } from "../../../types";
-import type moment from "moment-timezone";
+import type { Moment } from "moment-timezone";
 
 /**
  * Detects major aspect phase transitions at a specific time point.
@@ -67,7 +67,7 @@ import type moment from "moment-timezone";
  */
 export function getMajorAspectEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
-  currentMinute: moment.Moment;
+  currentMinute: Moment;
 }): Event[] {
   const { coordinateEphemerisByBody, currentMinute } = args;
 
@@ -189,7 +189,7 @@ export function getMajorAspectEvents(args: {
 export function buildMajorAspectEvent(args: {
   longitudeBody1: number;
   longitudeBody2: number;
-  timestamp: moment.Moment;
+  timestamp: Moment;
   body1: Body;
   body2: Body;
   phase: AspectPhase;
@@ -288,10 +288,10 @@ export function buildMajorAspectEvent(args: {
  * ```
  */
 export function writeMajorAspectEvents(args: {
-  end: moment.Moment;
+  end: Moment;
   majorAspectBodies: Body[];
   majorAspectEvents: Event[];
-  start: moment.Moment;
+  start: Moment;
 }): void {
   const { end, majorAspectEvents, majorAspectBodies, start } = args;
   if (_.isEmpty(majorAspectEvents)) {

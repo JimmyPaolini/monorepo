@@ -2,11 +2,11 @@ import moment from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
 import {
-  getSextupleAspectEvents,
-  getSextupleAspectProgressiveEvents,
+    getSextupleAspectEvents,
+    getSextupleAspectProgressiveEvents,
 } from "./sextupleAspects.events";
 
-import type { ActiveAspect } from "../aspects.store";
+import type { AspectBodies } from "../aspects.store";
 import type { Event } from "../../../calendar.utilities";
 
 describe("sextupleAspects.events", () => {
@@ -18,7 +18,7 @@ describe("sextupleAspects.events", () => {
         // Hexagram: 6 bodies forming two interlocking grand trines
         // Bodies 0,2,4 form first grand trine, bodies 1,3,5 form second
         // Adjacent bodies are sextile
-        const allEdges: ActiveAspect[] = [
+        const allEdges: AspectBodies[] = [
           // First grand trine: Sun, Mars, Jupiter (0, 2, 4)
           { bodies: ["sun", "mars"], aspect: "trine" },
           { bodies: ["sun", "jupiter"], aspect: "trine" },
@@ -35,12 +35,12 @@ describe("sextupleAspects.events", () => {
           { bodies: ["jupiter", "saturn"], aspect: "sextile" },
           { bodies: ["saturn", "sun"], aspect: "sextile" },
         ];
-        const currentEdges = allEdges;
-        const previousEdges = allEdges;
+        const currentAspectBodies = allEdges;
+        const previousAspectBodies = allEdges;
 
         const events = getSextupleAspectEvents(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           currentMinute,
         );
 
@@ -53,7 +53,7 @@ describe("sextupleAspects.events", () => {
 
         // Pattern doesn't exist at 11:59, exists at 12:00, doesn't exist at 12:01
         // Complete Hexagram only at 12:00 (not at 12:01)
-        const currentEdges: ActiveAspect[] = [
+        const currentAspectBodies: AspectBodies[] = [
           // First grand trine: Sun, Mars, Jupiter (0, 2, 4)
           { bodies: ["sun", "mars"], aspect: "trine" },
           { bodies: ["sun", "jupiter"], aspect: "trine" },
@@ -70,11 +70,11 @@ describe("sextupleAspects.events", () => {
           { bodies: ["jupiter", "saturn"], aspect: "sextile" },
           { bodies: ["saturn", "sun"], aspect: "sextile" },
         ];
-        const previousEdges: ActiveAspect[] = [];
+        const previousAspectBodies: AspectBodies[] = [];
 
         const events = getSextupleAspectEvents(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           currentMinute,
         );
 
@@ -87,18 +87,18 @@ describe("sextupleAspects.events", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
         // Only 4 trines (need 6 for hexagram)
-        const edges: ActiveAspect[] = [
+        const edges: AspectBodies[] = [
           { bodies: ["sun", "mars"], aspect: "trine" },
           { bodies: ["sun", "jupiter"], aspect: "trine" },
           { bodies: ["mars", "jupiter"], aspect: "trine" },
           { bodies: ["moon", "venus"], aspect: "trine" },
         ];
-        const currentEdges = edges;
-        const previousEdges = edges;
+        const currentAspectBodies = edges;
+        const previousAspectBodies = edges;
 
         const events = getSextupleAspectEvents(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           currentMinute,
         );
 
@@ -109,7 +109,7 @@ describe("sextupleAspects.events", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
         // 6 trines but only 3 sextiles (need 6)
-        const edges: ActiveAspect[] = [
+        const edges: AspectBodies[] = [
           // Trines
           { bodies: ["sun", "mars"], aspect: "trine" },
           { bodies: ["sun", "jupiter"], aspect: "trine" },
@@ -122,12 +122,12 @@ describe("sextupleAspects.events", () => {
           { bodies: ["moon", "mars"], aspect: "sextile" },
           { bodies: ["mars", "venus"], aspect: "sextile" },
         ];
-        const currentEdges = edges;
-        const previousEdges = edges;
+        const currentAspectBodies = edges;
+        const previousAspectBodies = edges;
 
         const events = getSextupleAspectEvents(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           currentMinute,
         );
 
@@ -138,18 +138,18 @@ describe("sextupleAspects.events", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
         // Only 5 bodies (Sun, Moon, Mars, Jupiter, Venus)
-        const edges: ActiveAspect[] = [
+        const edges: AspectBodies[] = [
           { bodies: ["sun", "mars"], aspect: "trine" },
           { bodies: ["sun", "jupiter"], aspect: "trine" },
           { bodies: ["mars", "jupiter"], aspect: "trine" },
           { bodies: ["moon", "venus"], aspect: "trine" },
         ];
-        const currentEdges = edges;
-        const previousEdges = edges;
+        const currentAspectBodies = edges;
+        const previousAspectBodies = edges;
 
         const events = getSextupleAspectEvents(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           currentMinute,
         );
 
@@ -159,12 +159,12 @@ describe("sextupleAspects.events", () => {
       it("should return empty array for invalid aspect events", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
-        const currentEdges: ActiveAspect[] = [];
-        const previousEdges: ActiveAspect[] = [];
+        const currentAspectBodies: AspectBodies[] = [];
+        const previousAspectBodies: AspectBodies[] = [];
 
         const events = getSextupleAspectEvents(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           currentMinute,
         );
 
@@ -175,7 +175,7 @@ describe("sextupleAspects.events", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
         // Complete hexagram starting at 12:00 (not at 11:59)
-        const currentEdges: ActiveAspect[] = [
+        const currentAspectBodies: AspectBodies[] = [
           // First grand trine: Sun, Mars, Jupiter (0, 2, 4)
           { bodies: ["sun", "mars"], aspect: "trine" },
           { bodies: ["sun", "jupiter"], aspect: "trine" },
@@ -192,11 +192,11 @@ describe("sextupleAspects.events", () => {
           { bodies: ["jupiter", "saturn"], aspect: "sextile" },
           { bodies: ["saturn", "sun"], aspect: "sextile" },
         ];
-        const previousEdges: ActiveAspect[] = [];
+        const previousAspectBodies: AspectBodies[] = [];
 
         const events = getSextupleAspectEvents(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           currentMinute,
         );
 

@@ -2,11 +2,11 @@ import moment from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
 import {
-  getTripleAspectEvents,
-  getTripleAspectProgressiveEvents,
+    getTripleAspectEvents,
+    getTripleAspectProgressiveEvents,
 } from "./tripleAspects.events";
 
-import type { ActiveAspect } from "../aspects.store";
+import type { AspectBodies } from "../aspects.store";
 import type { Event } from "../../../calendar.utilities";
 
 describe("tripleAspects.events", () => {
@@ -17,7 +17,7 @@ describe("tripleAspects.events", () => {
 
         // T-Square: Sun opposite Moon, with Mars square to both
         // Pattern exists in both previous and current snapshots → stable → no event
-        const edges: ActiveAspect[] = [
+        const edges: AspectBodies[] = [
           { bodies: ["sun", "moon"], aspect: "opposite" },
           { bodies: ["sun", "mars"], aspect: "square" },
           { bodies: ["moon", "mars"], aspect: "square" },
@@ -32,17 +32,17 @@ describe("tripleAspects.events", () => {
       it("should detect forming T-Square", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
-        // T-Square forming: edges in currentEdges only (not in previousEdges)
-        const currentEdges: ActiveAspect[] = [
+        // T-Square forming: edges in currentAspectBodies only (not in previousAspectBodies)
+        const currentAspectBodies: AspectBodies[] = [
           { bodies: ["sun", "moon"], aspect: "opposite" },
           { bodies: ["sun", "mars"], aspect: "square" },
           { bodies: ["moon", "mars"], aspect: "square" },
         ];
-        const previousEdges: ActiveAspect[] = [];
+        const previousAspectBodies: AspectBodies[] = [];
 
         const events = getTripleAspectEvents(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           currentMinute,
         );
 
@@ -55,17 +55,17 @@ describe("tripleAspects.events", () => {
       it("should detect dissolving T-Square", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
-        // T-Square dissolving: edges in previousEdges only (not in currentEdges)
-        const currentEdges: ActiveAspect[] = [];
-        const previousEdges: ActiveAspect[] = [
+        // T-Square dissolving: edges in previousAspectBodies only (not in currentAspectBodies)
+        const currentAspectBodies: AspectBodies[] = [];
+        const previousAspectBodies: AspectBodies[] = [
           { bodies: ["sun", "moon"], aspect: "opposite" },
           { bodies: ["sun", "mars"], aspect: "square" },
           { bodies: ["moon", "mars"], aspect: "square" },
         ];
 
         const events = getTripleAspectEvents(
-          currentEdges,
-          previousEdges,
+          currentAspectBodies,
+          previousAspectBodies,
           currentMinute,
         );
 
@@ -79,7 +79,7 @@ describe("tripleAspects.events", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
         // Only opposition and one square (incomplete T-Square) — stable but incomplete
-        const edges: ActiveAspect[] = [
+        const edges: AspectBodies[] = [
           { bodies: ["sun", "moon"], aspect: "opposite" },
           { bodies: ["sun", "mars"], aspect: "square" },
         ];
@@ -97,7 +97,7 @@ describe("tripleAspects.events", () => {
 
         // Yod: Sun sextile Moon, with Venus quincunx to both
         // Pattern exists in both snapshots → stable → no event
-        const edges: ActiveAspect[] = [
+        const edges: AspectBodies[] = [
           { bodies: ["sun", "moon"], aspect: "sextile" },
           { bodies: ["sun", "venus"], aspect: "quincunx" },
           { bodies: ["moon", "venus"], aspect: "quincunx" },
@@ -113,7 +113,7 @@ describe("tripleAspects.events", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
         // Only sextile and one quincunx (incomplete Yod) — stable but incomplete
-        const edges: ActiveAspect[] = [
+        const edges: AspectBodies[] = [
           { bodies: ["sun", "moon"], aspect: "sextile" },
           { bodies: ["sun", "venus"], aspect: "quincunx" },
         ];
@@ -131,7 +131,7 @@ describe("tripleAspects.events", () => {
 
         // Grand Trine: Sun trine Moon, Sun trine Mars, Moon trine Mars
         // Pattern exists in both snapshots → stable → no event
-        const edges: ActiveAspect[] = [
+        const edges: AspectBodies[] = [
           { bodies: ["sun", "moon"], aspect: "trine" },
           { bodies: ["sun", "mars"], aspect: "trine" },
           { bodies: ["moon", "mars"], aspect: "trine" },
@@ -147,7 +147,7 @@ describe("tripleAspects.events", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
         // Only two trines (incomplete Grand Trine) — stable but incomplete
-        const edges: ActiveAspect[] = [
+        const edges: AspectBodies[] = [
           { bodies: ["sun", "moon"], aspect: "trine" },
           { bodies: ["sun", "mars"], aspect: "trine" },
         ];
@@ -179,7 +179,7 @@ describe("tripleAspects.events", () => {
       const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
       // Both T-Square and Grand Trine present — stable in both snapshots
-      const edges: ActiveAspect[] = [
+      const edges: AspectBodies[] = [
         // T-Square: Sun opposite Moon, Mars square both
         { bodies: ["sun", "moon"], aspect: "opposite" },
         { bodies: ["sun", "mars"], aspect: "square" },
