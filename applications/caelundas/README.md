@@ -177,7 +177,7 @@ For in-depth architectural documentation, domain concepts, and development workf
 ### Pipeline Overview
 
 ```text
-Input Validation → Ephemeris Retrieval → Event Detection → Duration Synthesis → iCal Output
+Input Validation → Ephemeris Retrieval → Event Detection → Progressive Synthesis → iCal Output
      (Zod)            (NASA + Cache)      (Minute precision)   (Pair events)      (.ics)
 ```
 

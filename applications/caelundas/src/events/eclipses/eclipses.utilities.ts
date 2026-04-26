@@ -107,6 +107,44 @@ export function isSolarEclipse(args: {
 }
 
 /**
+ * Determines whether geometric conditions for a solar eclipse are active at a moment.
+ *
+ * This checks geocentric overlap only (not local visibility).
+ */
+export function isSolarEclipseActive(args: {
+  currentDiameterMoon: number;
+  currentDiameterSun: number;
+  currentLatitudeMoon: number;
+  currentLatitudeSun: number;
+  currentLongitudeMoon: number;
+  currentLongitudeSun: number;
+}): boolean {
+  const {
+    currentDiameterMoon,
+    currentDiameterSun,
+    currentLatitudeMoon,
+    currentLatitudeSun,
+    currentLongitudeMoon,
+    currentLongitudeSun,
+  } = args;
+
+  const currentLongitudeAngle = getAngle(
+    currentLongitudeMoon,
+    currentLongitudeSun,
+  );
+  const currentLatitudeAngle = getAngle(
+    currentLatitudeMoon,
+    currentLatitudeSun,
+  );
+  const currentDiameter = currentDiameterSun + currentDiameterMoon;
+
+  return (
+    currentLatitudeAngle < currentDiameter &&
+    currentLongitudeAngle <= currentDiameter
+  );
+}
+
+/**
  * Determines if a lunar eclipse is occurring and identifies its phase.
  *
  * Lunar eclipses occur when the Sun and Moon are in opposition (180° apart in
@@ -198,4 +236,43 @@ export function isLunarEclipse(args: {
   }
 
   return null;
+}
+
+/**
+ * Determines whether geometric conditions for a lunar eclipse are active at a moment.
+ *
+ * This checks geocentric overlap only (not local visibility).
+ */
+export function isLunarEclipseActive(args: {
+  currentDiameterMoon: number;
+  currentDiameterSun: number;
+  currentLatitudeMoon: number;
+  currentLatitudeSun: number;
+  currentLongitudeMoon: number;
+  currentLongitudeSun: number;
+}): boolean {
+  const {
+    currentDiameterMoon,
+    currentDiameterSun,
+    currentLatitudeMoon,
+    currentLatitudeSun,
+    currentLongitudeMoon,
+    currentLongitudeSun,
+  } = args;
+
+  const currentLongitudeAngle = getAngle(
+    currentLongitudeMoon,
+    currentLongitudeSun,
+  );
+  const currentLatitudeAngle = getAngle(
+    currentLatitudeMoon,
+    currentLatitudeSun,
+  );
+  const currentDiameter = currentDiameterSun + currentDiameterMoon;
+  const oppositionThreshold = 180 - currentDiameter;
+
+  return (
+    currentLatitudeAngle < currentDiameter &&
+    currentLongitudeAngle >= oppositionThreshold
+  );
 }

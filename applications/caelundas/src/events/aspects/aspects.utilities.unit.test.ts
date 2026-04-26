@@ -18,7 +18,7 @@ describe("aspects.utilities", () => {
       expect(
         isAspect({
           longitudeBody1: 100,
-          longitudeBody2: 107,
+          longitudeBody2: 105,
           aspect: "conjunct",
         }),
       ).toBe(true);
@@ -134,8 +134,8 @@ describe("aspects.utilities", () => {
     });
 
     it("should handle wrapping around 360°", () => {
-      // Conjunction at 0/360 boundary - 355° and 2° are 7° apart
-      expect(getMajorAspect({ longitudeBody1: 355, longitudeBody2: 2 })).toBe(
+      // Conjunction at 0/360 boundary - 357° and 2° are 5° apart
+      expect(getMajorAspect({ longitudeBody1: 357, longitudeBody2: 2 })).toBe(
         "conjunct",
       );
     });
@@ -225,7 +225,7 @@ describe("aspects.utilities", () => {
       expect(phase).toBe("dissolving");
     });
 
-    it("should return exact when crossing the exact aspect angle", () => {
+    it("should return perfective when crossing the exact aspect angle", () => {
       const phase = getMajorAspectPhase({
         previousLongitudeBody1: 0,
         previousLongitudeBody2: 179, // Before exact 180°
@@ -234,7 +234,7 @@ describe("aspects.utilities", () => {
         nextLongitudeBody1: 0,
         nextLongitudeBody2: 181, // After exact
       });
-      expect(phase).toBe("exact");
+      expect(phase).toBe("perfective");
     });
 
     it("should return null when not in any aspect phase", () => {

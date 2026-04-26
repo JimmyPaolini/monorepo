@@ -23,10 +23,10 @@ export const MARGIN_MINUTES = 30;
  */
 export interface Event {
   /** Event start time (local timezone). */
-  start: Date;
+  start: moment.Moment;
 
   /** Event end time (local timezone). For instantaneous events, set equal to start. */
-  end: Date;
+  end: moment.Moment;
 
   /**
    * Brief event title displayed in calendar views.
@@ -163,9 +163,9 @@ export function getEvent(event: Event, timezone = "America/New_York"): string {
   const end = moment.tz(event.end, timezone).format("YYYYMMDDTHHmmss");
 
   // Generate UID
-  let id = `${event.summary}::${event.description}::${event.start}`;
-  if (event.end.getTime() !== event.start.getTime()) {
-    id += `::${event.end}`;
+  let id = `${event.summary}::${event.description}::${event.start.toISOString()}`;
+  if (!event.end.isSame(event.start)) {
+    id += `::${event.end.toISOString()}`;
   }
 
   // Build VEVENT

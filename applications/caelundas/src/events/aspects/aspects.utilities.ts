@@ -200,7 +200,7 @@ export const getSpecialtyAspect = (args: {
  * Creates an aspect phase detector function for a specific set of aspects.
  *
  * This factory function returns a specialized detector that identifies when aspects
- * are forming (entering orb), exact (crossing precise angle), or dissolving (exiting orb).
+ * are forming (entering orb), perfective (crossing precise angle), or dissolving (exiting orb).
  * Uses three consecutive time points to determine phase transitions.
  *
  * @param aspects - Array of aspect types to detect (e.g., majorAspects, minorAspects)
@@ -208,7 +208,7 @@ export const getSpecialtyAspect = (args: {
  *
  * @remarks
  * - **Forming phase**: Aspect enters orb (previous out, current in)
- * - **Exact phase**: Aspect crosses exact angle within orb
+ * - **Perfective phase**: Aspect crosses exact angle within orb
  * - **Dissolving phase**: Aspect exits orb (current in, next out)
  * - Special handling for conjunctions: detects "bouncing" (local minimum separation)
  * - For other aspects: detects zero-crossing of signed angle difference
@@ -229,7 +229,7 @@ export const getSpecialtyAspect = (args: {
  *   previousLongitudeBody2: 178,
  *   currentLongitudeBody2: 179,
  *   nextLongitudeBody2: 180
- * }); // Returns "exact" (crossing square aspect at 90°)
+ * }); // Returns "perfective" (crossing square aspect at 90°)
  * ```
  */
 const getIsAspect = (
@@ -274,7 +274,7 @@ const getIsAspect = (
       const currentInOrb = Math.abs(currentAngle - aspectAngle) <= orb;
       const nextInOrb = Math.abs(nextAngle - aspectAngle) <= orb;
 
-      // Check for exact aspect (crossing the exact angle)
+      // Check for perfective aspect (crossing the exact angle)
       if (currentInOrb) {
         const previousDifference = previousAngle - aspectAngle;
         const currentDifference = currentAngle - aspectAngle;
@@ -291,11 +291,11 @@ const getIsAspect = (
             (previousDifference < currentDifference &&
               nextDifference < currentDifference);
           if (isBouncing) {
-            return "exact";
+            return "perfective";
           }
         } else {
           if (isCrossing) {
-            return "exact";
+            return "perfective";
           }
         }
       }
@@ -331,12 +331,12 @@ const getIsAspect = (
  * @param previousLongitudeBody2 - Second body longitude at t-1 (degrees)
  * @param currentLongitudeBody2 - Second body longitude at t (degrees)
  * @param nextLongitudeBody2 - Second body longitude at t+1 (degrees)
- * @returns "forming", "exact", "dissolving", or null if no phase transition
+ * @returns "forming", "perfective", "dissolving", or null if no phase transition
  *
  * @remarks
  * - Checks all major aspects in each call (order: conjunct, sextile, square, trine, opposition)
  * - Returns first detected phase transition (aspects should not overlap)
- * - Exact phase indicates precise aspect angle crossing within orb
+ * - Perfective phase indicates precise aspect angle crossing within orb
  * - Typically called once per minute in the main event loop
  *
  * @see {@link getIsAspect} for phase detection algorithm
@@ -347,7 +347,7 @@ const getIsAspect = (
  * const phase = getMajorAspectPhase({
  *   previousLongitudeBody1: 88, currentLongitudeBody1: 89, nextLongitudeBody1: 90,
  *   previousLongitudeBody2: 178, currentLongitudeBody2: 179, nextLongitudeBody2: 180
- * }); // Returns "exact" (square aspect forming at 90°)
+ * }); // Returns "perfective" (square aspect forming at 90°)
  * ```
  */
 export const getMajorAspectPhase = getIsAspect([...majorAspects]);
@@ -366,7 +366,7 @@ export const getMajorAspectPhase = getIsAspect([...majorAspects]);
  * @param previousLongitudeBody2 - Second body longitude at t-1 (degrees)
  * @param currentLongitudeBody2 - Second body longitude at t (degrees)
  * @param nextLongitudeBody2 - Second body longitude at t+1 (degrees)
- * @returns "forming", "exact", "dissolving", or null if no phase transition
+ * @returns "forming", "perfective", "dissolving", or null if no phase transition
  *
  * @see {@link getIsAspect} for phase detection algorithm
  * @see {@link getMinorAspectEvents} for event generation using this detector
@@ -387,7 +387,7 @@ export const getMinorAspectPhase = getIsAspect([...minorAspects]);
  * @param previousLongitudeBody2 - Second body longitude at t-1 (degrees)
  * @param currentLongitudeBody2 - Second body longitude at t (degrees)
  * @param nextLongitudeBody2 - Second body longitude at t+1 (degrees)
- * @returns "forming", "exact", "dissolving", or null if no phase transition
+ * @returns "forming", "perfective", "dissolving", or null if no phase transition
  *
  * @see {@link getIsAspect} for phase detection algorithm
  * @see {@link getSpecialtyAspectEvents} for event generation using this detector

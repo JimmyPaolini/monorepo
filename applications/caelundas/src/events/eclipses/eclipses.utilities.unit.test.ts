@@ -1,6 +1,11 @@
 import { describe, expect, it } from "vitest";
 
-import { isLunarEclipse, isSolarEclipse } from "./eclipses.utilities";
+import {
+  isLunarEclipse,
+  isLunarEclipseActive,
+  isSolarEclipse,
+  isSolarEclipseActive,
+} from "./eclipses.utilities";
 
 describe("eclipses.utilities", () => {
   describe("isSolarEclipse", () => {
@@ -187,6 +192,61 @@ describe("eclipses.utilities", () => {
       });
 
       expect(result).toBeNull();
+    });
+  });
+
+  describe("active-state helpers", () => {
+    const defaultDiameters = {
+      currentDiameterMoon: 0.5,
+      currentDiameterSun: 0.5,
+    };
+
+    it("should report active solar eclipse overlap", () => {
+      const active = isSolarEclipseActive({
+        ...defaultDiameters,
+        currentLatitudeMoon: 0,
+        currentLatitudeSun: 0,
+        currentLongitudeMoon: 100.4,
+        currentLongitudeSun: 100,
+      });
+
+      expect(active).toBe(true);
+    });
+
+    it("should report inactive solar eclipse overlap", () => {
+      const active = isSolarEclipseActive({
+        ...defaultDiameters,
+        currentLatitudeMoon: 5,
+        currentLatitudeSun: 0,
+        currentLongitudeMoon: 100,
+        currentLongitudeSun: 100,
+      });
+
+      expect(active).toBe(false);
+    });
+
+    it("should report active lunar eclipse overlap", () => {
+      const active = isLunarEclipseActive({
+        ...defaultDiameters,
+        currentLatitudeMoon: 0,
+        currentLatitudeSun: 0,
+        currentLongitudeMoon: 279.5,
+        currentLongitudeSun: 100,
+      });
+
+      expect(active).toBe(true);
+    });
+
+    it("should report inactive lunar eclipse overlap", () => {
+      const active = isLunarEclipseActive({
+        ...defaultDiameters,
+        currentLatitudeMoon: 0,
+        currentLatitudeSun: 0,
+        currentLongitudeMoon: 250,
+        currentLongitudeSun: 100,
+      });
+
+      expect(active).toBe(false);
     });
   });
 });

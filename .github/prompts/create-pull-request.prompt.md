@@ -1,7 +1,7 @@
 ---
 agent: "agent"
 description: "Create a pull request with a conventional commits title, comprehensive description, and proper linking to issues."
-model: Claude Haiku 4.5 (copilot)
+model: "Claude Haiku 4.5 (copilot)"
 name: "create-pull-request"
 tools: ["execute/runInTerminal", "read", "search", "web", "github/*"]
 ---

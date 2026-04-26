@@ -10,8 +10,8 @@ import {
 import {
   getDecanIngressEvents,
   getPeakIngressEvents,
-  getSignIngressDurationEvents,
   getSignIngressEvents,
+  getSignIngressProgressiveEvents,
 } from "./ingresses.events";
 
 import type { Event } from "../../calendar.utilities";
@@ -188,51 +188,51 @@ describe("ingresses.events integration", () => {
     });
   });
 
-  describe("getSignIngressDurationEvents", () => {
-    it("should create duration events from consecutive sign ingresses", () => {
+  describe("getSignIngressProgressiveEvents", () => {
+    it("should create progressive events from consecutive sign ingresses", () => {
       const events: Event[] = [
         {
-          start: new Date("2025-03-20T09:06:00Z"),
-          end: new Date("2025-03-20T09:06:00Z"),
+          start: moment.utc("2025-03-20T09:06:00Z"),
+          end: moment.utc("2025-03-20T09:06:00Z"),
           summary: "☀️ → ♈ Sun ingress Aries",
           description: "Sun ingress Aries",
           categories: ["Astronomy", "Astrology", "Ingress", "Sun", "Aries"],
         },
         {
-          start: new Date("2025-04-19T20:00:00Z"),
-          end: new Date("2025-04-19T20:00:00Z"),
+          start: moment.utc("2025-04-19T20:00:00Z"),
+          end: moment.utc("2025-04-19T20:00:00Z"),
           summary: "☀️ → ♉︎ Sun ingress Taurus",
           description: "Sun ingress Taurus",
           categories: ["Astronomy", "Astrology", "Ingress", "Sun", "Taurus"],
         },
         {
-          start: new Date("2025-05-20T19:00:00Z"),
-          end: new Date("2025-05-20T19:00:00Z"),
+          start: moment.utc("2025-05-20T19:00:00Z"),
+          end: moment.utc("2025-05-20T19:00:00Z"),
           summary: "☀️ → ♊︎ Sun ingress Gemini",
           description: "Sun ingress Gemini",
           categories: ["Astronomy", "Astrology", "Ingress", "Sun", "Gemini"],
         },
       ];
 
-      const durationEvents = getSignIngressDurationEvents(events);
+      const progressiveEvents = getSignIngressProgressiveEvents(events);
 
-      expect(durationEvents.length).toBe(2);
+      expect(progressiveEvents.length).toBe(2);
 
       // First duration: Sun in Aries
-      expect(durationEvents[0]?.start.toISOString()).toBe(
+      expect(progressiveEvents[0]?.start.toISOString()).toBe(
         "2025-03-20T09:06:00.000Z",
       );
-      expect(durationEvents[0]?.end.toISOString()).toBe(
+      expect(progressiveEvents[0]?.end.toISOString()).toBe(
         "2025-04-19T20:00:00.000Z",
       );
-      expect(durationEvents[0]?.description).toContain("Sun");
-      expect(durationEvents[0]?.description).toContain("Aries");
+      expect(progressiveEvents[0]?.description).toContain("Sun");
+      expect(progressiveEvents[0]?.description).toContain("Aries");
 
       // Second duration: Sun in Taurus
-      expect(durationEvents[1]?.start.toISOString()).toBe(
+      expect(progressiveEvents[1]?.start.toISOString()).toBe(
         "2025-04-19T20:00:00.000Z",
       );
-      expect(durationEvents[1]?.end.toISOString()).toBe(
+      expect(progressiveEvents[1]?.end.toISOString()).toBe(
         "2025-05-20T19:00:00.000Z",
       );
     });
@@ -240,44 +240,44 @@ describe("ingresses.events integration", () => {
     it("should handle events for multiple bodies separately", () => {
       const events: Event[] = [
         {
-          start: new Date("2025-01-10T10:00:00Z"),
-          end: new Date("2025-01-10T10:00:00Z"),
+          start: moment.utc("2025-01-10T10:00:00Z"),
+          end: moment.utc("2025-01-10T10:00:00Z"),
           summary: "Sun ingress Aquarius",
           description: "Sun ingress Aquarius",
           categories: ["Astronomy", "Astrology", "Ingress", "Sun", "Aquarius"],
         },
         {
-          start: new Date("2025-01-12T08:00:00Z"),
-          end: new Date("2025-01-12T08:00:00Z"),
+          start: moment.utc("2025-01-12T08:00:00Z"),
+          end: moment.utc("2025-01-12T08:00:00Z"),
           summary: "Moon ingress Gemini",
           description: "Moon ingress Gemini",
           categories: ["Astronomy", "Astrology", "Ingress", "Moon", "Gemini"],
         },
         {
-          start: new Date("2025-01-14T15:00:00Z"),
-          end: new Date("2025-01-14T15:00:00Z"),
+          start: moment.utc("2025-01-14T15:00:00Z"),
+          end: moment.utc("2025-01-14T15:00:00Z"),
           summary: "Moon ingress Cancer",
           description: "Moon ingress Cancer",
           categories: ["Astronomy", "Astrology", "Ingress", "Moon", "Cancer"],
         },
         {
-          start: new Date("2025-02-18T12:00:00Z"),
-          end: new Date("2025-02-18T12:00:00Z"),
+          start: moment.utc("2025-02-18T12:00:00Z"),
+          end: moment.utc("2025-02-18T12:00:00Z"),
           summary: "Sun ingress Pisces",
           description: "Sun ingress Pisces",
           categories: ["Astronomy", "Astrology", "Ingress", "Sun", "Pisces"],
         },
       ];
 
-      const durationEvents = getSignIngressDurationEvents(events);
+      const progressiveEvents = getSignIngressProgressiveEvents(events);
 
       // Should have: Sun in Aquarius, Moon in Gemini
-      expect(durationEvents.length).toBe(2);
+      expect(progressiveEvents.length).toBe(2);
 
-      const sunDuration = durationEvents.find((e) =>
+      const sunDuration = progressiveEvents.find((e) =>
         e.categories.includes("Sun"),
       );
-      const moonDuration = durationEvents.find((e) =>
+      const moonDuration = progressiveEvents.find((e) =>
         e.categories.includes("Moon"),
       );
 

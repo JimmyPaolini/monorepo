@@ -1,7 +1,7 @@
 ---
 agent: "agent"
 description: "Revise an existing implementation plan by selectively re-running discovery, alignment, and design phases to incorporate new requirements, scope changes, or corrected assumptions."
-model: Claude Opus 4.6 (copilot)
+model: "Claude Sonnet 4.6 (copilot)"
 name: "change-plan"
 argument-hint: "Describe what to change about the plan"
 tools:

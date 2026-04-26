@@ -17,9 +17,9 @@ import {
   getCalendar,
   MARGIN_MINUTES,
 } from "../../calendar.utilities";
-import { pairDurationEvents } from "../../duration.utilities";
 import { getCoordinateFromEphemeris } from "../../ephemeris/ephemeris.service";
 import { getOutputPath } from "../../output.utilities";
+import { pairProgressiveEvents } from "../../progressive.utilities";
 import { symbolByBody, symbolByOrbitalDirection } from "../../symbols";
 import { retrogradeBodies } from "../../types";
 
@@ -32,7 +32,7 @@ import type {
   RetrogradeBody,
   RetrogradeBodySymbol,
 } from "../../types";
-import type { Moment } from "moment";
+import type moment from "moment-timezone";
 
 /**
  * Detects retrograde and direct station events at a specific time point.
@@ -56,7 +56,7 @@ import type { Moment } from "moment";
  *
  * @see {@link isRetrograde} for retrograde station detection algorithm
  * @see {@link isDirect} for direct station detection algorithm
- * @see {@link getRetrogradeEvent} for event formatting
+ * @see {@link buildRetrogradeEvent} for event formatting
  * @see {@link retrogradeBodies} for list of bodies that can go retrograde
  *
  * @example
@@ -70,7 +70,7 @@ import type { Moment } from "moment";
  */
 export function getRetrogradeEvents(args: {
   coordinateEphemerisByBody: Record<RetrogradeBody, CoordinateEphemeris>;
-  currentMinute: Moment;
+  currentMinute: moment.Moment;
 }): Event[] {
   const { coordinateEphemerisByBody, currentMinute } = args;
   const retrogradeEvents: Event[] = [];
@@ -89,7 +89,7 @@ export function getRetrogradeEvents(args: {
       (_, index) => {
         const date = currentMinute
           .clone()
-          .subtract(MARGIN_MINUTES - index, "minute");
+          .subtract(MARGIN_MINUTES - index, "minutes");
         return getCoordinateFromEphemeris(
           ephemeris,
           date.toISOString(),
@@ -101,7 +101,7 @@ export function getRetrogradeEvents(args: {
     const nextLongitudes = Array.from(
       { length: MARGIN_MINUTES },
       (_, index) => {
-        const date = currentMinute.clone().add(index + 1, "minute");
+        const date = currentMinute.clone().add(index + 1, "minutes");
         return getCoordinateFromEphemeris(
           ephemeris,
           date.toISOString(),
@@ -110,7 +110,7 @@ export function getRetrogradeEvents(args: {
       },
     );
 
-    const timestamp = currentMinute.toDate();
+    const timestamp = currentMinute;
     const longitudes = {
       currentLongitude,
       previousLongitudes,
@@ -119,12 +119,12 @@ export function getRetrogradeEvents(args: {
 
     if (isRetrograde({ ...longitudes })) {
       retrogradeEvents.push(
-        getRetrogradeEvent({ body, timestamp, direction: "retrograde" }),
+        buildRetrogradeEvent({ body, timestamp, direction: "retrograde" }),
       );
     }
     if (isDirect({ ...longitudes })) {
       retrogradeEvents.push(
-        getRetrogradeEvent({ body, timestamp, direction: "direct" }),
+        buildRetrogradeEvent({ body, timestamp, direction: "direct" }),
       );
     }
   }
@@ -176,9 +176,9 @@ const categories = ["Astronomy", "Astrology", "Direction"];
  * // Returns: { summary: "☿ ↩️ Mercury Stationary Retrograde", start: ..., ... }
  * ```
  */
-export function getRetrogradeEvent(args: {
+export function buildRetrogradeEvent(args: {
   body: RetrogradeBody;
-  timestamp: Date;
+  timestamp: moment.Moment;
   direction: OrbitalDirection;
 }): Event {
   const { body, timestamp, direction } = args;
@@ -247,10 +247,10 @@ export function getRetrogradeEvent(args: {
  * ```
  */
 export function writeRetrogradeEvents(args: {
-  end: Date;
+  end: moment.Moment;
   retrogradeBodies: RetrogradeBody[];
   retrogradeEvents: Event[];
-  start: Date;
+  start: moment.Moment;
 }): void {
   const { retrogradeBodies, retrogradeEvents, start, end } = args;
   if (_.isEmpty(retrogradeEvents)) {
@@ -275,24 +275,24 @@ export function writeRetrogradeEvents(args: {
 }
 
 /**
- * Generates duration events showing retrograde periods for each planet.
+ * Generates progressive events showing retrograde periods for each planet.
  *
  * Pairs "Stationary Retrograde" and "Stationary Direct" events for each planet
- * to create duration events spanning the retrograde period. This shows the full
+ * to create progressive events spanning the retrograde period. This shows the full
  * span of time when a planet appears to move backward.
  *
  * @param events - Array of all calendar events (will be filtered to direction events)
- * @returns Array of duration events spanning retrograde periods
+ * @returns Array of progressive events spanning retrograde periods
  *
  * @remarks
  * - Filters to events with "Direction" category
  * - Processes each planet separately (retrograde periods don't overlap between planets)
  * - Pairs retrograde stations (beginnings) with direct stations (endings)
  * - Skips unpaired events (e.g., retrograde still active at end of range)
- * - Duration events use "Retrogrades" category (plural) vs "Retrograde" for stations
+ * - Progressive events use "Retrogrades" category (plural) vs "Retrograde" for stations
  * - Summary format: `[bodySymbol] ↩️ [Body] Retrograde`
  *
- * @see {@link pairDurationEvents} for pairing algorithm
+ * @see {@link pairProgressiveEvents} for pairing algorithm
  * @see {@link getRetrogradeDurationEvent} for event formatting
  * @see {@link retrogradeBodies} for planets that can go retrograde
  *
@@ -304,15 +304,15 @@ export function writeRetrogradeEvents(args: {
  *   { description: "Venus Stationary Retrograde", start: Jul 22, ... },
  *   { description: "Venus Stationary Direct", start: Sep 3, ... }
  * ];
- * const durations = getRetrogradeDurationEvents(allEvents);
+ * const durations = getRetrogradeProgressiveEvents(allEvents);
  * // Returns: [
  * //   { summary: "☿ ↩️ Mercury Retrograde", start: Mar 15, end: Apr 8, ... },
  * //   { summary: "♀ ↩️ Venus Retrograde", start: Jul 22, end: Sep 3, ... }
  * // ]
  * ```
  */
-export function getRetrogradeDurationEvents(events: Event[]): Event[] {
-  const durationEvents: Event[] = [];
+export function getRetrogradeProgressiveEvents(events: Event[]): Event[] {
+  const progressiveEvents: Event[] = [];
 
   const retrogradeEvents = events.filter((event) =>
     event.categories.includes("Direction"),
@@ -327,32 +327,32 @@ export function getRetrogradeDurationEvents(events: Event[]): Event[] {
       event.description.includes(`Direct`),
     );
 
-    const pairs = pairDurationEvents(
+    const pairs = pairProgressiveEvents(
       beginnings,
       endings,
       `${planet} retrograde`,
     );
 
-    durationEvents.push(
+    progressiveEvents.push(
       ...pairs.map(([beginning, ending]) =>
-        getRetrogradeDurationEvent(beginning, ending, planet),
+        getRetrogradeProgressiveEvent(beginning, ending, planet),
       ),
     );
   }
 
-  return durationEvents;
+  return progressiveEvents;
 }
 
 /**
- * Creates a duration event from paired retrograde and direct station events.
+ * Creates a progressive event from paired retrograde and direct station events.
  *
  * Extracts the planet symbol from the beginning event summary and formats a
- * duration event showing the span of the retrograde period.
+ * progressive event showing the span of the retrograde period.
  *
  * @param beginningEvent - Stationary retrograde event (marks start of retrograde)
  * @param endingEvent - Stationary direct event (marks end of retrograde)
  * @param planet - Planet that was retrograde
- * @returns Duration event spanning the retrograde period
+ * @returns Progressive event spanning the retrograde period
  *
  * @remarks
  * - Duration spans from beginningEvent.start to endingEvent.start (not endingEvent.end)
@@ -364,7 +364,7 @@ export function getRetrogradeDurationEvents(events: Event[]): Event[] {
  *
  * @example
  * ```typescript
- * const duration = getRetrogradeDurationEvent(
+ * const duration = getRetrogradeProgressiveEvent(
  *   { summary: "☿ ↩️ Mercury Stationary Retrograde", start: Mar 15, ... },
  *   { summary: "☿ ➡️ Mercury Stationary Direct", start: Apr 8, ... },
  *   "mercury"
@@ -372,7 +372,7 @@ export function getRetrogradeDurationEvents(events: Event[]): Event[] {
  * // Returns: { summary: "☿ ↩️ Mercury Retrograde", start: Mar 15, end: Apr 8, ... }
  * ```
  */
-function getRetrogradeDurationEvent(
+function getRetrogradeProgressiveEvent(
   beginningEvent: Event,
   endingEvent: Event,
   planet: RetrogradeBody,

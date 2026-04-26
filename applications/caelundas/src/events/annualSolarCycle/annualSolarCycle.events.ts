@@ -1,16 +1,15 @@
 import fs from "node:fs";
 
 import _ from "lodash";
-import moment from "moment-timezone";
 
 import { type Event, getCalendar } from "../../calendar.utilities";
-import { pairDurationEvents } from "../../duration.utilities";
 import {
   getCoordinateFromEphemeris,
   getDistanceFromEphemeris,
 } from "../../ephemeris/ephemeris.service";
 import { isMaximum, isMinimum } from "../../math.utilities";
 import { getOutputPath } from "../../output.utilities";
+import { pairProgressiveEvents } from "../../progressive.utilities";
 
 import {
   isAutumnalEquinox,
@@ -35,7 +34,7 @@ import type {
   CoordinateEphemeris,
   DistanceEphemeris,
 } from "../../ephemeris/ephemeris.types";
-import type { Moment } from "moment";
+import type moment from "moment-timezone";
 
 const categories = ["Astronomy", "Astrology", "Annual Solar Cycle", "Solar"];
 
@@ -76,7 +75,7 @@ const categories = ["Astronomy", "Astrology", "Annual Solar Cycle", "Solar"];
  */
 export function getAnnualSolarCycleEvents(args: {
   sunCoordinateEphemeris: CoordinateEphemeris;
-  currentMinute: Moment;
+  currentMinute: moment.Moment;
 }): Event[] {
   const { sunCoordinateEphemeris: ephemeris, currentMinute } = args;
 
@@ -96,55 +95,55 @@ export function getAnnualSolarCycleEvents(args: {
   );
 
   const longitudes = { currentLongitude, previousLongitude };
-  const date = currentMinute.toDate();
+  const date = currentMinute;
 
   if (isVernalEquinox({ ...longitudes })) {
-    annualSolarCycleEvents.push(getVernalEquinoxEvent(date));
+    annualSolarCycleEvents.push(buildVernalEquinoxEvent(date));
   }
   if (isFirstHexadecan({ ...longitudes })) {
-    annualSolarCycleEvents.push(getFirstHexadecanEvent(date));
+    annualSolarCycleEvents.push(buildFirstHexadecanEvent(date));
   }
   if (isBeltane({ ...longitudes })) {
-    annualSolarCycleEvents.push(getBeltaneEvent(date));
+    annualSolarCycleEvents.push(buildBeltaneEvent(date));
   }
   if (isThirdHexadecan({ ...longitudes })) {
-    annualSolarCycleEvents.push(getThirdHexadecanEvent(date));
+    annualSolarCycleEvents.push(buildThirdHexadecanEvent(date));
   }
   if (isSummerSolstice({ ...longitudes })) {
-    annualSolarCycleEvents.push(getSummerSolsticeEvent(date));
+    annualSolarCycleEvents.push(buildSummerSolsticeEvent(date));
   }
   if (isFifthHexadecan({ ...longitudes })) {
-    annualSolarCycleEvents.push(getFifthHexadecanEvent(date));
+    annualSolarCycleEvents.push(buildFifthHexadecanEvent(date));
   }
   if (isLammas({ ...longitudes })) {
-    annualSolarCycleEvents.push(getLammasEvent(date));
+    annualSolarCycleEvents.push(buildLammasEvent(date));
   }
   if (isSeventhHexadecan({ ...longitudes })) {
-    annualSolarCycleEvents.push(getSeventhHexadecanEvent(date));
+    annualSolarCycleEvents.push(buildSeventhHexadecanEvent(date));
   }
   if (isAutumnalEquinox({ ...longitudes })) {
-    annualSolarCycleEvents.push(getAutumnalEquinoxEvent(date));
+    annualSolarCycleEvents.push(buildAutumnalEquinoxEvent(date));
   }
   if (isNinthHexadecan({ ...longitudes })) {
-    annualSolarCycleEvents.push(getNinthHexadecanEvent(date));
+    annualSolarCycleEvents.push(buildNinthHexadecanEvent(date));
   }
   if (isSamhain({ ...longitudes })) {
-    annualSolarCycleEvents.push(getSamhainEvent(date));
+    annualSolarCycleEvents.push(buildSamhainEvent(date));
   }
   if (isEleventhHexadecan({ ...longitudes })) {
-    annualSolarCycleEvents.push(getEleventhHexadecanEvent(date));
+    annualSolarCycleEvents.push(buildEleventhHexadecanEvent(date));
   }
   if (isWinterSolstice({ ...longitudes })) {
-    annualSolarCycleEvents.push(getWinterSolsticeEvent(date));
+    annualSolarCycleEvents.push(buildWinterSolsticeEvent(date));
   }
   if (isThirteenthHexadecan({ ...longitudes })) {
-    annualSolarCycleEvents.push(getThirteenthHexadecanEvent(date));
+    annualSolarCycleEvents.push(buildThirteenthHexadecanEvent(date));
   }
   if (isImbolc({ ...longitudes })) {
-    annualSolarCycleEvents.push(getImbolcEvent(date));
+    annualSolarCycleEvents.push(buildImbolcEvent(date));
   }
   if (isFifteenthHexadecan({ ...longitudes })) {
-    annualSolarCycleEvents.push(getFifteenthHexadecanEvent(date));
+    annualSolarCycleEvents.push(buildFifteenthHexadecanEvent(date));
   }
 
   return annualSolarCycleEvents;
@@ -182,7 +181,7 @@ export function getAnnualSolarCycleEvents(args: {
  * ```
  */
 export function getSolarApsisEvents(args: {
-  currentMinute: Moment;
+  currentMinute: moment.Moment;
   sunDistanceEphemeris: DistanceEphemeris;
 }): Event[] {
   const { currentMinute, sunDistanceEphemeris } = args;
@@ -214,14 +213,14 @@ export function getSolarApsisEvents(args: {
     next: nextDistance,
   };
 
-  const date = currentMinute.toDate();
+  const date = currentMinute;
 
   if (isMaximum({ ...distances })) {
-    solarApsisEvents.push(getAphelionEvent(date));
+    solarApsisEvents.push(buildAphelionEvent(date));
   }
 
   if (isMinimum({ ...distances })) {
-    solarApsisEvents.push(getPerihelionEvent(date));
+    solarApsisEvents.push(buildPerihelionEvent(date));
   }
 
   return solarApsisEvents;
@@ -238,11 +237,11 @@ export function getSolarApsisEvents(args: {
  * @returns Calendar event for aphelion
  * @see {@link isMaximum} for distance maximum detection
  */
-export function getAphelionEvent(date: Date): Event {
+export function buildAphelionEvent(date: moment.Moment): Event {
   const description = "Solar Aphelion";
   const summary = `☀️ ❄️ ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
   const aphelionEvent: Event = {
@@ -266,11 +265,11 @@ export function getAphelionEvent(date: Date): Event {
  * @returns Calendar event for perihelion
  * @see {@link isMinimum} for distance minimum detection
  */
-export function getPerihelionEvent(date: Date): Event {
+export function buildPerihelionEvent(date: moment.Moment): Event {
   const description = "Solar Perihelion";
   const summary = `☀️ 🔥 ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
   const perihelionEvent: Event = {
@@ -298,11 +297,11 @@ export function getPerihelionEvent(date: Date): Event {
  *
  * @remarks Occurs around March 20-21 annually
  */
-export function getVernalEquinoxEvent(date: Date): Event {
+export function buildVernalEquinoxEvent(date: moment.Moment): Event {
   const description = "Vernal Equinox";
   const summary = `🌸 ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
   const vernalEquinoxEvent: Event = {
@@ -325,11 +324,11 @@ export function getVernalEquinoxEvent(date: Date): Event {
  * @returns Calendar event for first hexadecan
  * @remarks Occurs approximately April 10th
  */
-export function getFirstHexadecanEvent(date: Date): Event {
+export function buildFirstHexadecanEvent(date: moment.Moment): Event {
   const description = "First Hexadecan";
   const summary = `🌳 ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
   const firstHexadecanEvent: Event = {
     start: date,
@@ -351,11 +350,11 @@ export function getFirstHexadecanEvent(date: Date): Event {
  * @returns Calendar event for Beltane
  * @remarks Occurs around May 5th annually
  */
-export function getBeltaneEvent(date: Date): Event {
+export function buildBeltaneEvent(date: moment.Moment): Event {
   const description = "Beltane";
   const summary = `🐦‍🔥 ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
   const beltaneEvent: Event = {
@@ -377,11 +376,11 @@ export function getBeltaneEvent(date: Date): Event {
  * @returns Calendar event for third hexadecan
  * @remarks Occurs approximately June 1st
  */
-export function getThirdHexadecanEvent(date: Date): Event {
+export function buildThirdHexadecanEvent(date: moment.Moment): Event {
   const description = "Third Hexadecan";
   const summary = `🌻 ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
   const thirdHexadecanEvent: Event = {
@@ -405,11 +404,11 @@ export function getThirdHexadecanEvent(date: Date): Event {
  * @see {@link isSummerSolstice} for detection algorithm
  * @remarks Occurs around June 20-21 annually
  */
-export function getSummerSolsticeEvent(date: Date): Event {
+export function buildSummerSolsticeEvent(date: moment.Moment): Event {
   const description = "Summer Solstice";
   const summary = `🌞 ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
   const summerSolsticeEvent: Event = {
@@ -428,11 +427,11 @@ export function getSummerSolsticeEvent(date: Date): Event {
  * @returns Calendar event for fifth hexadecan
  * @remarks Occurs approximately July 22nd
  */
-export function getFifthHexadecanEvent(date: Date): Event {
+export function buildFifthHexadecanEvent(date: moment.Moment): Event {
   const description = "Fifth Hexadecan";
   const summary = `⛱️ ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
   const fifthHexadecanEvent: Event = {
@@ -455,11 +454,11 @@ export function getFifthHexadecanEvent(date: Date): Event {
  * @returns Calendar event for Lammas
  * @remarks Occurs around August 7th annually
  */
-export function getLammasEvent(date: Date): Event {
+export function buildLammasEvent(date: moment.Moment): Event {
   const description = "Lammas";
   const summary = `🌾 ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
   const lammasEvent: Event = {
@@ -478,11 +477,11 @@ export function getLammasEvent(date: Date): Event {
  * @returns Calendar event for seventh hexadecan
  * @remarks Occurs approximately September 12th
  */
-export function getSeventhHexadecanEvent(date: Date): Event {
+export function buildSeventhHexadecanEvent(date: moment.Moment): Event {
   const description = "Seventh Hexadecan";
   const summary = `🎑 ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
   const seventhHexadecanEvent: Event = {
     start: date,
@@ -506,11 +505,11 @@ export function getSeventhHexadecanEvent(date: Date): Event {
  * @see {@link isAutumnalEquinox} for detection algorithm
  * @remarks Occurs around September 22-23 annually
  */
-export function getAutumnalEquinoxEvent(date: Date): Event {
+export function buildAutumnalEquinoxEvent(date: moment.Moment): Event {
   const description = "Autumnal Equinox";
   const summary = `🍂 ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
   const autumnalEquinoxEvent: Event = {
@@ -528,11 +527,11 @@ export function getAutumnalEquinoxEvent(date: Date): Event {
  * @param date - Precise UTC time
  * @returns Calendar event
  */
-export function getNinthHexadecanEvent(date: Date): Event {
+export function buildNinthHexadecanEvent(date: moment.Moment): Event {
   const description = "Ninth Hexadecan";
   const summary = `🍁 ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
   const ninthHexadecanEvent: Event = {
     start: date,
@@ -552,11 +551,11 @@ export function getNinthHexadecanEvent(date: Date): Event {
  * @returns Calendar event
  * @remarks Occurs around November 7th
  */
-export function getSamhainEvent(date: Date): Event {
+export function buildSamhainEvent(date: moment.Moment): Event {
   const description = "Samhain";
   const summary = `🎃 ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
   const samhainEvent: Event = {
@@ -574,11 +573,11 @@ export function getSamhainEvent(date: Date): Event {
  * @param date - Precise UTC time
  * @returns Calendar event
  */
-export function getEleventhHexadecanEvent(date: Date): Event {
+export function buildEleventhHexadecanEvent(date: moment.Moment): Event {
   const description = "Eleventh Hexadecan";
   const summary = `🧤 ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
   const eleventhHexadecanEvent: Event = {
     start: date,
@@ -601,11 +600,11 @@ export function getEleventhHexadecanEvent(date: Date): Event {
  * @see {@link isWinterSolstice}
  * @remarks Occurs around December 21-22
  */
-export function getWinterSolsticeEvent(date: Date): Event {
+export function buildWinterSolsticeEvent(date: moment.Moment): Event {
   const description = "Winter Solstice";
   const summary = `☃️ ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
   const winterSolsticeEvent: Event = {
@@ -623,10 +622,10 @@ export function getWinterSolsticeEvent(date: Date): Event {
  * @param date - Precise UTC time
  * @returns Calendar event
  */
-export function getThirteenthHexadecanEvent(date: Date): Event {
+export function buildThirteenthHexadecanEvent(date: moment.Moment): Event {
   const description = "Thirteenth Hexadecan";
   const summary = `❄️ ${description}`;
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
   const thirteenthHexadecanEvent: Event = {
     start: date,
@@ -646,11 +645,11 @@ export function getThirteenthHexadecanEvent(date: Date): Event {
  * @returns Calendar event
  * @remarks Occurs around February 4th
  */
-export function getImbolcEvent(date: Date): Event {
+export function buildImbolcEvent(date: moment.Moment): Event {
   const description = "Imbolc";
   const summary = `🐑 ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
   const imbolcEvent: Event = {
@@ -668,11 +667,11 @@ export function getImbolcEvent(date: Date): Event {
  * @param date - Precise UTC time
  * @returns Calendar event
  */
-export function getFifteenthHexadecanEvent(date: Date): Event {
+export function buildFifteenthHexadecanEvent(date: moment.Moment): Event {
   const description = "Fifteenth Hexadecan";
   const summary = `🌨️ ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
   const fifteenthHexadecanEvent: Event = {
@@ -699,8 +698,8 @@ export function getFifteenthHexadecanEvent(date: Date): Event {
  */
 export function writeAnnualSolarCycleEvents(args: {
   annualSolarCycleEvents: Event[];
-  start: Date;
-  end: Date;
+  start: moment.Moment;
+  end: moment.Moment;
 }): void {
   const { annualSolarCycleEvents, start, end } = args;
   if (_.isEmpty(annualSolarCycleEvents)) {
@@ -723,25 +722,25 @@ export function writeAnnualSolarCycleEvents(args: {
   console.log(`📏 Wrote ${message}`);
 }
 
-// #region 🕑 Duration Events
+// #region 🕑 Progressive Events
 
 /**
- * Generates duration events for Earth's orbit between apsis points.
+ * Generates progressive events for Earth's orbit between apsis points.
  *
- * Creates two types of duration events based on Earth's orbital position:
+ * Creates two types of progressive events based on Earth's orbital position:
  * - Advancing: Aphelion to Perihelion (Earth moving closer to Sun, speeding up)
  * - Retreating: Perihelion to Aphelion (Earth moving away from Sun, slowing down)
  *
  * @param events - Array of all solar events including apsis points
- * @returns Array of duration events representing orbital segments
- * @see {@link pairDurationEvents} for event pairing logic
+ * @returns Array of progressive events representing orbital segments
+ * @see {@link pairProgressiveEvents} for event pairing logic
  *
  * @remarks
  * Based on Kepler's second law: planets sweep out equal areas in equal times,
  * so Earth moves faster when closer to the Sun (perihelion).
  */
-export function getSolarApsisDurationEvents(events: Event[]): Event[] {
-  const durationEvents: Event[] = [];
+export function getSolarApsisProgressiveEvents(events: Event[]): Event[] {
+  const progressiveEvents: Event[] = [];
 
   // Filter to solar apsis events only
   const solarApsisEvents = events.filter((event) =>
@@ -759,26 +758,26 @@ export function getSolarApsisDurationEvents(events: Event[]): Event[] {
   );
 
   // Advancing: Aphelion → Perihelion (Earth moving closer to sun, speeding up)
-  const advancingPairs = pairDurationEvents(
+  const advancingPairs = pairProgressiveEvents(
     aphelionEvents,
     perihelionEvents,
     "Solar Advancing",
   );
   for (const [beginning, ending] of advancingPairs) {
-    durationEvents.push(getSolarAdvancingDurationEvent(beginning, ending));
+    progressiveEvents.push(getSolarAdvancingDurationEvent(beginning, ending));
   }
 
   // Retreating: Perihelion → Aphelion (Earth moving away from sun, slowing down)
-  const retreatingPairs = pairDurationEvents(
+  const retreatingPairs = pairProgressiveEvents(
     perihelionEvents,
     aphelionEvents,
     "Solar Retreating",
   );
   for (const [beginning, ending] of retreatingPairs) {
-    durationEvents.push(getSolarRetreatingDurationEvent(beginning, ending));
+    progressiveEvents.push(getSolarRetreatingDurationEvent(beginning, ending));
   }
 
-  return durationEvents;
+  return progressiveEvents;
 }
 
 function getSolarAdvancingDurationEvent(

@@ -4,27 +4,27 @@ import { describe, expect, it, vi } from "vitest";
 import { MARGIN_MINUTES } from "../../calendar.utilities";
 
 import {
+  buildAphelionEvent,
+  buildAutumnalEquinoxEvent,
+  buildBeltaneEvent,
+  buildEleventhHexadecanEvent,
+  buildFifteenthHexadecanEvent,
+  buildFifthHexadecanEvent,
+  buildFirstHexadecanEvent,
+  buildImbolcEvent,
+  buildLammasEvent,
+  buildNinthHexadecanEvent,
+  buildPerihelionEvent,
+  buildSamhainEvent,
+  buildSeventhHexadecanEvent,
+  buildSummerSolsticeEvent,
+  buildThirdHexadecanEvent,
+  buildThirteenthHexadecanEvent,
+  buildVernalEquinoxEvent,
+  buildWinterSolsticeEvent,
   getAnnualSolarCycleEvents,
-  getAphelionEvent,
-  getAutumnalEquinoxEvent,
-  getBeltaneEvent,
-  getEleventhHexadecanEvent,
-  getFifteenthHexadecanEvent,
-  getFifthHexadecanEvent,
-  getFirstHexadecanEvent,
-  getImbolcEvent,
-  getLammasEvent,
-  getNinthHexadecanEvent,
-  getPerihelionEvent,
-  getSamhainEvent,
-  getSeventhHexadecanEvent,
-  getSolarApsisDurationEvents,
   getSolarApsisEvents,
-  getSummerSolsticeEvent,
-  getThirdHexadecanEvent,
-  getThirteenthHexadecanEvent,
-  getVernalEquinoxEvent,
-  getWinterSolsticeEvent,
+  getSolarApsisProgressiveEvents,
 } from "./annualSolarCycle.events";
 
 import type { Event } from "../../calendar.utilities";
@@ -85,9 +85,9 @@ describe("annualSolarCycle.events", () => {
 
   describe("Solstice and Equinox Events", () => {
     it("should create vernal equinox event with correct structure", () => {
-      const timestamp = new Date("2024-03-20T03:06:00.000Z");
+      const timestamp = moment.utc("2024-03-20T03:06:00.000Z");
 
-      const event = getVernalEquinoxEvent(timestamp);
+      const event = buildVernalEquinoxEvent(timestamp);
 
       expect(event.summary).toBe("🌸 Vernal Equinox");
       expect(event.description).toBe("Vernal Equinox");
@@ -100,9 +100,9 @@ describe("annualSolarCycle.events", () => {
     });
 
     it("should create summer solstice event with correct structure", () => {
-      const timestamp = new Date("2024-06-20T20:50:00.000Z");
+      const timestamp = moment.utc("2024-06-20T20:50:00.000Z");
 
-      const event = getSummerSolsticeEvent(timestamp);
+      const event = buildSummerSolsticeEvent(timestamp);
 
       expect(event.summary).toBe("🌞 Summer Solstice");
       expect(event.description).toBe("Summer Solstice");
@@ -110,9 +110,9 @@ describe("annualSolarCycle.events", () => {
     });
 
     it("should create autumnal equinox event with correct structure", () => {
-      const timestamp = new Date("2024-09-22T12:43:00.000Z");
+      const timestamp = moment.utc("2024-09-22T12:43:00.000Z");
 
-      const event = getAutumnalEquinoxEvent(timestamp);
+      const event = buildAutumnalEquinoxEvent(timestamp);
 
       expect(event.summary).toBe("🍂 Autumnal Equinox");
       expect(event.description).toBe("Autumnal Equinox");
@@ -120,9 +120,9 @@ describe("annualSolarCycle.events", () => {
     });
 
     it("should create winter solstice event with correct structure", () => {
-      const timestamp = new Date("2024-12-21T09:20:00.000Z");
+      const timestamp = moment.utc("2024-12-21T09:20:00.000Z");
 
-      const event = getWinterSolsticeEvent(timestamp);
+      const event = buildWinterSolsticeEvent(timestamp);
 
       expect(event.summary).toBe("☃️ Winter Solstice");
       expect(event.description).toBe("Winter Solstice");
@@ -132,9 +132,9 @@ describe("annualSolarCycle.events", () => {
 
   describe("Cross-Quarter Day Events", () => {
     it("should create Imbolc event with correct structure", () => {
-      const timestamp = new Date("2024-02-04T12:00:00.000Z");
+      const timestamp = moment.utc("2024-02-04T12:00:00.000Z");
 
-      const event = getImbolcEvent(timestamp);
+      const event = buildImbolcEvent(timestamp);
 
       expect(event.summary).toBe("🐑 Imbolc");
       expect(event.description).toBe("Imbolc");
@@ -142,9 +142,9 @@ describe("annualSolarCycle.events", () => {
     });
 
     it("should create Beltane event with correct structure", () => {
-      const timestamp = new Date("2024-05-05T12:00:00.000Z");
+      const timestamp = moment.utc("2024-05-05T12:00:00.000Z");
 
-      const event = getBeltaneEvent(timestamp);
+      const event = buildBeltaneEvent(timestamp);
 
       expect(event.summary).toBe("🐦‍🔥 Beltane");
       expect(event.description).toBe("Beltane");
@@ -152,9 +152,9 @@ describe("annualSolarCycle.events", () => {
     });
 
     it("should create Lammas event with correct structure", () => {
-      const timestamp = new Date("2024-08-07T12:00:00.000Z");
+      const timestamp = moment.utc("2024-08-07T12:00:00.000Z");
 
-      const event = getLammasEvent(timestamp);
+      const event = buildLammasEvent(timestamp);
 
       expect(event.summary).toBe("🌾 Lammas");
       expect(event.description).toBe("Lammas");
@@ -162,9 +162,9 @@ describe("annualSolarCycle.events", () => {
     });
 
     it("should create Samhain event with correct structure", () => {
-      const timestamp = new Date("2024-11-07T12:00:00.000Z");
+      const timestamp = moment.utc("2024-11-07T12:00:00.000Z");
 
-      const event = getSamhainEvent(timestamp);
+      const event = buildSamhainEvent(timestamp);
 
       expect(event.summary).toBe("🎃 Samhain");
       expect(event.description).toBe("Samhain");
@@ -174,9 +174,9 @@ describe("annualSolarCycle.events", () => {
 
   describe("Hexadecan Events", () => {
     it("should create first hexadecan event with correct structure", () => {
-      const timestamp = new Date("2024-03-27T12:00:00.000Z");
+      const timestamp = moment.utc("2024-03-27T12:00:00.000Z");
 
-      const event = getFirstHexadecanEvent(timestamp);
+      const event = buildFirstHexadecanEvent(timestamp);
 
       expect(event.summary).toBe("🌳 First Hexadecan");
       expect(event.description).toBe("First Hexadecan");
@@ -184,63 +184,63 @@ describe("annualSolarCycle.events", () => {
     });
 
     it("should create third hexadecan event with correct structure", () => {
-      const timestamp = new Date("2024-04-12T12:00:00.000Z");
+      const timestamp = moment.utc("2024-04-12T12:00:00.000Z");
 
-      const event = getThirdHexadecanEvent(timestamp);
+      const event = buildThirdHexadecanEvent(timestamp);
 
       expect(event.summary).toBe("🌻 Third Hexadecan");
       expect(event.description).toBe("Third Hexadecan");
     });
 
     it("should create fifth hexadecan event with correct structure", () => {
-      const timestamp = new Date("2024-06-28T12:00:00.000Z");
+      const timestamp = moment.utc("2024-06-28T12:00:00.000Z");
 
-      const event = getFifthHexadecanEvent(timestamp);
+      const event = buildFifthHexadecanEvent(timestamp);
 
       expect(event.summary).toBe("⛱️ Fifth Hexadecan");
       expect(event.description).toBe("Fifth Hexadecan");
     });
 
     it("should create seventh hexadecan event with correct structure", () => {
-      const timestamp = new Date("2024-08-14T12:00:00.000Z");
+      const timestamp = moment.utc("2024-08-14T12:00:00.000Z");
 
-      const event = getSeventhHexadecanEvent(timestamp);
+      const event = buildSeventhHexadecanEvent(timestamp);
 
       expect(event.summary).toBe("🎑 Seventh Hexadecan");
       expect(event.description).toBe("Seventh Hexadecan");
     });
 
     it("should create ninth hexadecan event with correct structure", () => {
-      const timestamp = new Date("2024-09-30T12:00:00.000Z");
+      const timestamp = moment.utc("2024-09-30T12:00:00.000Z");
 
-      const event = getNinthHexadecanEvent(timestamp);
+      const event = buildNinthHexadecanEvent(timestamp);
 
       expect(event.summary).toBe("🍁 Ninth Hexadecan");
       expect(event.description).toBe("Ninth Hexadecan");
     });
 
     it("should create eleventh hexadecan event with correct structure", () => {
-      const timestamp = new Date("2024-11-14T12:00:00.000Z");
+      const timestamp = moment.utc("2024-11-14T12:00:00.000Z");
 
-      const event = getEleventhHexadecanEvent(timestamp);
+      const event = buildEleventhHexadecanEvent(timestamp);
 
       expect(event.summary).toBe("🧤 Eleventh Hexadecan");
       expect(event.description).toBe("Eleventh Hexadecan");
     });
 
     it("should create thirteenth hexadecan event with correct structure", () => {
-      const timestamp = new Date("2024-12-29T12:00:00.000Z");
+      const timestamp = moment.utc("2024-12-29T12:00:00.000Z");
 
-      const event = getThirteenthHexadecanEvent(timestamp);
+      const event = buildThirteenthHexadecanEvent(timestamp);
 
       expect(event.summary).toBe("❄️ Thirteenth Hexadecan");
       expect(event.description).toBe("Thirteenth Hexadecan");
     });
 
     it("should create fifteenth hexadecan event with correct structure", () => {
-      const timestamp = new Date("2024-02-12T12:00:00.000Z");
+      const timestamp = moment.utc("2024-02-12T12:00:00.000Z");
 
-      const event = getFifteenthHexadecanEvent(timestamp);
+      const event = buildFifteenthHexadecanEvent(timestamp);
 
       expect(event.summary).toBe("🌨️ Fifteenth Hexadecan");
       expect(event.description).toBe("Fifteenth Hexadecan");
@@ -249,9 +249,9 @@ describe("annualSolarCycle.events", () => {
 
   describe("Solar Apsis Events", () => {
     it("should create aphelion event with correct structure", () => {
-      const timestamp = new Date("2024-07-05T12:00:00.000Z");
+      const timestamp = moment.utc("2024-07-05T12:00:00.000Z");
 
-      const event = getAphelionEvent(timestamp);
+      const event = buildAphelionEvent(timestamp);
 
       expect(event.summary).toBe("☀️ ❄️ Solar Aphelion");
       expect(event.description).toBe("Solar Aphelion");
@@ -265,9 +265,9 @@ describe("annualSolarCycle.events", () => {
     });
 
     it("should create perihelion event with correct structure", () => {
-      const timestamp = new Date("2024-01-03T12:00:00.000Z");
+      const timestamp = moment.utc("2024-01-03T12:00:00.000Z");
 
-      const event = getPerihelionEvent(timestamp);
+      const event = buildPerihelionEvent(timestamp);
 
       expect(event.summary).toBe("☀️ 🔥 Solar Perihelion");
       expect(event.description).toBe("Solar Perihelion");
@@ -388,11 +388,11 @@ describe("annualSolarCycle.events", () => {
     });
   });
 
-  describe("getSolarApsisDurationEvents", () => {
-    it("should create advancing duration event from aphelion to perihelion", () => {
+  describe("getSolarApsisProgressiveEvents", () => {
+    it("should create advancing progressive event from aphelion to perihelion", () => {
       const aphelionEvent: Event = {
-        start: new Date("2024-07-05T12:00:00.000Z"),
-        end: new Date("2024-07-05T12:00:00.000Z"),
+        start: moment.utc("2024-07-05T12:00:00.000Z"),
+        end: moment.utc("2024-07-05T12:00:00.000Z"),
         summary: "☀️ ❄️ Solar Aphelion",
         description: "Solar Aphelion",
         categories: [
@@ -404,8 +404,8 @@ describe("annualSolarCycle.events", () => {
         ],
       };
       const perihelionEvent: Event = {
-        start: new Date("2025-01-03T12:00:00.000Z"),
-        end: new Date("2025-01-03T12:00:00.000Z"),
+        start: moment.utc("2025-01-03T12:00:00.000Z"),
+        end: moment.utc("2025-01-03T12:00:00.000Z"),
         summary: "☀️ 🔥 Solar Perihelion",
         description: "Solar Perihelion",
         categories: [
@@ -417,13 +417,13 @@ describe("annualSolarCycle.events", () => {
         ],
       };
 
-      const durationEvents = getSolarApsisDurationEvents([
+      const progressiveEvents = getSolarApsisProgressiveEvents([
         aphelionEvent,
         perihelionEvent,
       ]);
 
-      expect(durationEvents.length).toBeGreaterThanOrEqual(1);
-      const advancingDuration = durationEvents.find((e) =>
+      expect(progressiveEvents.length).toBeGreaterThanOrEqual(1);
+      const advancingDuration = progressiveEvents.find((e) =>
         e.description.includes("Advancing"),
       );
       expect(advancingDuration).toBeDefined();
@@ -438,10 +438,10 @@ describe("annualSolarCycle.events", () => {
       }
     });
 
-    it("should create retreating duration event from perihelion to aphelion", () => {
+    it("should create retreating progressive event from perihelion to aphelion", () => {
       const perihelionEvent: Event = {
-        start: new Date("2024-01-03T12:00:00.000Z"),
-        end: new Date("2024-01-03T12:00:00.000Z"),
+        start: moment.utc("2024-01-03T12:00:00.000Z"),
+        end: moment.utc("2024-01-03T12:00:00.000Z"),
         summary: "☀️ 🔥 Solar Perihelion",
         description: "Solar Perihelion",
         categories: [
@@ -453,8 +453,8 @@ describe("annualSolarCycle.events", () => {
         ],
       };
       const aphelionEvent: Event = {
-        start: new Date("2024-07-05T12:00:00.000Z"),
-        end: new Date("2024-07-05T12:00:00.000Z"),
+        start: moment.utc("2024-07-05T12:00:00.000Z"),
+        end: moment.utc("2024-07-05T12:00:00.000Z"),
         summary: "☀️ ❄️ Solar Aphelion",
         description: "Solar Aphelion",
         categories: [
@@ -466,13 +466,13 @@ describe("annualSolarCycle.events", () => {
         ],
       };
 
-      const durationEvents = getSolarApsisDurationEvents([
+      const progressiveEvents = getSolarApsisProgressiveEvents([
         perihelionEvent,
         aphelionEvent,
       ]);
 
-      expect(durationEvents.length).toBeGreaterThanOrEqual(1);
-      const retreatingDuration = durationEvents.find((e) =>
+      expect(progressiveEvents.length).toBeGreaterThanOrEqual(1);
+      const retreatingDuration = progressiveEvents.find((e) =>
         e.description.includes("Retreating"),
       );
       expect(retreatingDuration).toBeDefined();
@@ -488,15 +488,15 @@ describe("annualSolarCycle.events", () => {
     });
 
     it("should return empty array when no apsis events provided", () => {
-      const durationEvents = getSolarApsisDurationEvents([]);
+      const progressiveEvents = getSolarApsisProgressiveEvents([]);
 
-      expect(durationEvents).toHaveLength(0);
+      expect(progressiveEvents).toHaveLength(0);
     });
 
     it("should handle full year cycle with both advancing and retreating", () => {
       const perihelion1: Event = {
-        start: new Date("2024-01-03T12:00:00.000Z"),
-        end: new Date("2024-01-03T12:00:00.000Z"),
+        start: moment.utc("2024-01-03T12:00:00.000Z"),
+        end: moment.utc("2024-01-03T12:00:00.000Z"),
         summary: "☀️ 🔥 Solar Perihelion",
         description: "Solar Perihelion",
         categories: [
@@ -508,8 +508,8 @@ describe("annualSolarCycle.events", () => {
         ],
       };
       const aphelion: Event = {
-        start: new Date("2024-07-05T12:00:00.000Z"),
-        end: new Date("2024-07-05T12:00:00.000Z"),
+        start: moment.utc("2024-07-05T12:00:00.000Z"),
+        end: moment.utc("2024-07-05T12:00:00.000Z"),
         summary: "☀️ ❄️ Solar Aphelion",
         description: "Solar Aphelion",
         categories: [
@@ -521,8 +521,8 @@ describe("annualSolarCycle.events", () => {
         ],
       };
       const perihelion2: Event = {
-        start: new Date("2025-01-03T12:00:00.000Z"),
-        end: new Date("2025-01-03T12:00:00.000Z"),
+        start: moment.utc("2025-01-03T12:00:00.000Z"),
+        end: moment.utc("2025-01-03T12:00:00.000Z"),
         summary: "☀️ 🔥 Solar Perihelion",
         description: "Solar Perihelion",
         categories: [
@@ -534,19 +534,19 @@ describe("annualSolarCycle.events", () => {
         ],
       };
 
-      const durationEvents = getSolarApsisDurationEvents([
+      const progressiveEvents = getSolarApsisProgressiveEvents([
         perihelion1,
         aphelion,
         perihelion2,
       ]);
 
       // Should have both retreating (peri→aph) and advancing (aph→peri)
-      expect(durationEvents.length).toBeGreaterThanOrEqual(2);
+      expect(progressiveEvents.length).toBeGreaterThanOrEqual(2);
 
-      const retreating = durationEvents.find((e) =>
+      const retreating = progressiveEvents.find((e) =>
         e.description.includes("Retreating"),
       );
-      const advancing = durationEvents.find((e) =>
+      const advancing = progressiveEvents.find((e) =>
         e.description.includes("Advancing"),
       );
 
@@ -556,16 +556,16 @@ describe("annualSolarCycle.events", () => {
 
     it("should filter out non-annual solar cycle events", () => {
       const nonApsisEvent: Event = {
-        start: new Date("2024-01-03T12:00:00.000Z"),
-        end: new Date("2024-01-03T12:00:00.000Z"),
+        start: moment.utc("2024-01-03T12:00:00.000Z"),
+        end: moment.utc("2024-01-03T12:00:00.000Z"),
         summary: "Some other event",
         description: "Not an apsis event",
         categories: ["Astronomy", "Something Else"],
       };
 
-      const durationEvents = getSolarApsisDurationEvents([nonApsisEvent]);
+      const progressiveEvents = getSolarApsisProgressiveEvents([nonApsisEvent]);
 
-      expect(durationEvents).toHaveLength(0);
+      expect(progressiveEvents).toHaveLength(0);
     });
   });
 
@@ -573,14 +573,16 @@ describe("annualSolarCycle.events", () => {
     it("should write events to file and database", async () => {
       const fs = await import("node:fs");
       // biome-ignore format: oxfmt is the primary formatter
-      const { writeAnnualSolarCycleEvents, getVernalEquinoxEvent } =
-        await import("./annualSolarCycle.events");
+      const {
+        writeAnnualSolarCycleEvents,
+        buildVernalEquinoxEvent: getVernalEquinoxEvent,
+      } = await import("./annualSolarCycle.events");
 
       const events = [
-        getVernalEquinoxEvent(new Date("2024-03-20T03:06:00.000Z")),
+        getVernalEquinoxEvent(moment.utc("2024-03-20T03:06:00.000Z")),
       ];
-      const start = new Date("2024-03-01T00:00:00.000Z");
-      const end = new Date("2024-03-31T23:59:59.000Z");
+      const start = moment.utc("2024-03-01T00:00:00.000Z");
+      const end = moment.utc("2024-03-31T23:59:59.000Z");
 
       writeAnnualSolarCycleEvents({
         annualSolarCycleEvents: events,
@@ -603,8 +605,8 @@ describe("annualSolarCycle.events", () => {
       const { writeAnnualSolarCycleEvents } =
         await import("./annualSolarCycle.events");
 
-      const start = new Date("2024-03-01T00:00:00.000Z");
-      const end = new Date("2024-03-31T23:59:59.000Z");
+      const start = moment.utc("2024-03-01T00:00:00.000Z");
+      const end = moment.utc("2024-03-31T23:59:59.000Z");
 
       writeAnnualSolarCycleEvents({
         annualSolarCycleEvents: [],

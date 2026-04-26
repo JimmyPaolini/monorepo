@@ -1,3 +1,4 @@
+import moment from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
 import { mockDates } from "../testing/mocks";
@@ -168,8 +169,8 @@ describe("input.schema", () => {
         endDate: "2025-03-21",
       });
 
-      expect(result.start).toBeInstanceOf(Date);
-      expect(result.end).toBeInstanceOf(Date);
+      expect(moment.isMoment(result.start)).toBe(true);
+      expect(moment.isMoment(result.end)).toBe(true);
     });
 
     it("should require end date after start date", () => {
@@ -222,10 +223,10 @@ describe("input.schema", () => {
       const result = inputSchema.parse({});
 
       // Verify start is before end
-      expect(result.start.getTime()).toBeLessThan(result.end.getTime());
+      expect(result.start.valueOf()).toBeLessThan(result.end.valueOf());
       // Verify approximately 2 months span
       const diffDays =
-        (result.end.getTime() - result.start.getTime()) / (1000 * 60 * 60 * 24);
+        (result.end.valueOf() - result.start.valueOf()) / (1000 * 60 * 60 * 24);
       expect(diffDays).toBeGreaterThan(50); // ~2 months
       expect(diffDays).toBeLessThan(70);
     });

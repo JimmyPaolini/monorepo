@@ -10,7 +10,6 @@
 import fs from "node:fs";
 
 import _ from "lodash";
-import moment from "moment-timezone";
 
 import { getCalendar } from "../../calendar.utilities";
 import { getAzimuthElevationFromEphemeris } from "../../ephemeris/ephemeris.service";
@@ -21,7 +20,7 @@ import { isRise, isSet } from "./dailyCycle.utilities";
 
 import type { Event } from "../../calendar.utilities";
 import type { AzimuthElevationEphemeris } from "../../ephemeris/ephemeris.types";
-import type { Moment } from "moment";
+import type moment from "moment-timezone";
 
 /**
  * Standard categories for all daily solar cycle events.
@@ -58,10 +57,10 @@ const categories = ["Astronomy", "Astrology", "Daily Solar Cycle", "Solar"];
  * @see {@link isSet} for sunset detection (horizon crossing downward)
  * @see {@link isMaximum} for solar zenith detection (elevation maximum)
  * @see {@link isMinimum} for solar nadir detection (elevation minimum)
- * @see {@link getSunriseEvent} for sunrise event formatting
- * @see {@link getSolarZenithEvent} for zenith event formatting
- * @see {@link getSunsetEvent} for sunset event formatting
- * @see {@link getSolarNadirEvent} for nadir event formatting
+ * @see {@link buildSunriseEvent} for sunrise event formatting
+ * @see {@link buildSolarZenithEvent} for zenith event formatting
+ * @see {@link buildSunsetEvent} for sunset event formatting
+ * @see {@link buildSolarNadirEvent} for nadir event formatting
  *
  * @example
  * ```typescript
@@ -73,15 +72,15 @@ const categories = ["Astronomy", "Astrology", "Daily Solar Cycle", "Solar"];
  * ```
  */
 export function getDailySolarCycleEvents(args: {
-  currentMinute: Moment;
+  currentMinute: moment.Moment;
   sunAzimuthElevationEphemeris: AzimuthElevationEphemeris;
 }): Event[] {
   const { currentMinute, sunAzimuthElevationEphemeris } = args;
 
   const dailySolarCycleEvents: Event[] = [];
 
-  const previousMinute = currentMinute.clone().subtract(1, "minutes");
-  const nextMinute = currentMinute.clone().add(1, "minutes");
+  const previousMinute = currentMinute.clone().subtract(1, "minute");
+  const nextMinute = currentMinute.clone().add(1, "minute");
 
   const currentElevation = getAzimuthElevationFromEphemeris(
     sunAzimuthElevationEphemeris,
@@ -108,19 +107,19 @@ export function getDailySolarCycleEvents(args: {
     next: nextElevation,
   };
 
-  const date = currentMinute.toDate();
+  const date = currentMinute;
 
   if (isRise({ ...elevations })) {
-    dailySolarCycleEvents.push(getSunriseEvent(date));
+    dailySolarCycleEvents.push(buildSunriseEvent(date));
   }
   if (isMaximum({ ...elevations })) {
-    dailySolarCycleEvents.push(getSolarZenithEvent(date));
+    dailySolarCycleEvents.push(buildSolarZenithEvent(date));
   }
   if (isSet({ ...elevations })) {
-    dailySolarCycleEvents.push(getSunsetEvent(date));
+    dailySolarCycleEvents.push(buildSunsetEvent(date));
   }
   if (isMinimum({ ...elevations })) {
-    dailySolarCycleEvents.push(getSolarNadirEvent(date));
+    dailySolarCycleEvents.push(buildSolarNadirEvent(date));
   }
 
   return dailySolarCycleEvents;
@@ -152,11 +151,11 @@ export function getDailySolarCycleEvents(args: {
  * // Returns: { summary: "☀️ 🔼 Sunrise", start: ..., end: ..., ... }
  * ```
  */
-export function getSunriseEvent(date: Date): Event {
+export function buildSunriseEvent(date: moment.Moment): Event {
   const description = "Sunrise";
   const summary = `☀️ 🔼 ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
   const sunriseEvent: Event = {
@@ -197,11 +196,11 @@ export function getSunriseEvent(date: Date): Event {
  * // Returns: { summary: "☀️ ⬆️ Solar Zenith", start: ..., end: ..., ... }
  * ```
  */
-export function getSolarZenithEvent(date: Date): Event {
+export function buildSolarZenithEvent(date: moment.Moment): Event {
   const description = "Solar Zenith";
   const summary = `☀️ ⏫ ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
   const solarZenithEvent: Event = {
@@ -241,11 +240,11 @@ export function getSolarZenithEvent(date: Date): Event {
  * // Returns: { summary: "☀️ 🔽 Sunset", start: ..., end: ..., ... }
  * ```
  */
-export function getSunsetEvent(date: Date): Event {
+export function buildSunsetEvent(date: moment.Moment): Event {
   const description = "Sunset";
   const summary = `☀️ 🔽 ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
   const sunsetEvent: Event = {
@@ -287,11 +286,11 @@ export function getSunsetEvent(date: Date): Event {
  * // Returns: { summary: "☀️ ⬇️ Solar Nadir", start: ..., end: ..., ... }
  * ```
  */
-export function getSolarNadirEvent(date: Date): Event {
+export function buildSolarNadirEvent(date: moment.Moment): Event {
   const description = "Solar Nadir";
   const summary = `☀️ ⏬ ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
   const solarNadirEvent: Event = {
@@ -339,8 +338,8 @@ export function getSolarNadirEvent(date: Date): Event {
  */
 export function writeDailySolarCycleEvents(args: {
   dailySolarCycleEvents: Event[];
-  start: Date;
-  end: Date;
+  start: moment.Moment;
+  end: moment.Moment;
 }): void {
   const { dailySolarCycleEvents, start, end } = args;
   if (_.isEmpty(dailySolarCycleEvents)) {

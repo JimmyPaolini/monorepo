@@ -2,19 +2,24 @@
 buildx
 distroless
 dockerfiles
+nodegroup
+nodeuser
 
 #endregion
 
 #region ☸️ Kubernetes
+dshm
 kubeconfig
 kubectl
 kubernetes
+projectcalico
 storageclasses
 tolerations
 
 #endregion
 
 #region 🗄️ Database
+dbname
 dbeaver
 fkey
 fuzzystrmatch
@@ -28,6 +33,10 @@ plainto
 plpgsql
 pooler
 postgrest
+isready
+pgaudit
+PGAUDIT
+PGDATA
 psql
 regconfig
 supabase

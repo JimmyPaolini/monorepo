@@ -34,7 +34,7 @@ const maxDateString = "2100-12-31";
  * **Transformation behavior:**
  * - Uses `@photostructure/tz-lookup` to determine timezone from coordinates
  * - Parses date strings in the determined timezone (not UTC)
- * - Converts to JavaScript Date objects for application use
+ * - Converts to moment.Moment objects for application use
  *
  * **Coercion:**
  * - Latitude and longitude are coerced from strings to numbers if needed
@@ -49,7 +49,7 @@ const maxDateString = "2100-12-31";
  * // Using defaults (Philadelphia, 2-month window)
  * const input1 = inputSchema.parse({});
  * // Result: { latitude: 39.949309, longitude: -75.17169,
- * //           timezone: 'America/New_York', start: Date, end: Date }
+ * //           timezone: 'America/New_York', start: moment.Moment, end: moment.Moment }
  *
  * // Custom location and dates
  * const input2 = inputSchema.parse({
@@ -59,7 +59,7 @@ const maxDateString = "2100-12-31";
  *   endDate: '2026-12-31'
  * });
  * // Result: { latitude: 51.5074, longitude: -0.1278,
- * //           timezone: 'Europe/London', start: Date, end: Date }
+ * //           timezone: 'Europe/London', start: moment.Moment, end: moment.Moment }
  *
  * // Validation errors
  * try {
@@ -106,22 +106,22 @@ export const inputSchema = z
       latitude: data.latitude,
       longitude: data.longitude,
       timezone,
-      start: moment.tz(data.startDate, timezone).toDate(),
-      end: moment.tz(data.endDate, timezone).toDate(),
+      start: moment.tz(data.startDate, timezone),
+      end: moment.tz(data.endDate, timezone),
     };
   })
-  .refine((data) => data.start >= new Date(minDateString), {
+  .refine((data) => data.start.isSameOrAfter(moment(minDateString)), {
     message: `Start date must be on or after ${minDateString}`,
   })
-  .refine((data) => data.start <= new Date(maxDateString), {
+  .refine((data) => data.start.isSameOrBefore(moment(maxDateString)), {
     message: `Start date must be on or before ${maxDateString}`,
   })
-  .refine((data) => data.end >= new Date(minDateString), {
+  .refine((data) => data.end.isSameOrAfter(moment(minDateString)), {
     message: `End date must be on or after ${minDateString}`,
   })
-  .refine((data) => data.end <= new Date(maxDateString), {
+  .refine((data) => data.end.isSameOrBefore(moment(maxDateString)), {
     message: `End date must be on or before ${maxDateString}`,
   })
-  .refine((data) => data.end > data.start, {
+  .refine((data) => data.end.isAfter(data.start), {
     message: "End date must be after start date",
   });

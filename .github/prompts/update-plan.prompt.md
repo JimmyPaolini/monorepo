@@ -1,7 +1,7 @@
 ---
 agent: "agent"
 description: "Read an existing implementation plan, explore the codebase to assess progress, and update the plan to reflect reality."
-model: Claude Sonnet 4.6 (copilot)
+model: "Claude Sonnet 4.6 (copilot)"
 name: "update-plan"
 argument-hint: "Path to the plan file to update (e.g. documentation/planning/2026-03-09-feature-lexico-auth-1.plan.md)"
 tools:

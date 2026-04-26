@@ -23,17 +23,19 @@ vi.mock("../../calendar.utilities", () => ({
 describe("ingresses.events", () => {
   describe("getSignIngressEvent", () => {
     it("should create a sign ingress event for Sun entering Aries", async () => {
-      const { getSignIngressEvent } = await import("./ingresses.events");
+      const { buildSignIngressEvent: getSignIngressEvent } = await import(
+        "./ingresses.events"
+      );
 
       const event = getSignIngressEvent({
         body: "sun",
         longitude: 0, // 0° = Aries
-        date: new Date("2024-03-20T03:06:00.000Z"),
+        date: moment.utc("2024-03-20T03:06:00.000Z"),
       });
 
       expect(event).toMatchObject({
-        start: new Date("2024-03-20T03:06:00.000Z"),
-        end: new Date("2024-03-20T03:06:00.000Z"),
+        start: moment.utc("2024-03-20T03:06:00.000Z"),
+        end: moment.utc("2024-03-20T03:06:00.000Z"),
         summary: expect.stringContaining("Aries") as string,
         description: expect.stringContaining("Sun") as string,
         categories: expect.arrayContaining<string>([
@@ -47,12 +49,14 @@ describe("ingresses.events", () => {
     });
 
     it("should create a sign ingress event for Moon entering Taurus", async () => {
-      const { getSignIngressEvent } = await import("./ingresses.events");
+      const { buildSignIngressEvent: getSignIngressEvent } = await import(
+        "./ingresses.events"
+      );
 
       const event = getSignIngressEvent({
         body: "moon",
         longitude: 30, // 30° = Taurus
-        date: new Date("2024-03-15T12:30:00.000Z"),
+        date: moment.utc("2024-03-15T12:30:00.000Z"),
       });
 
       expect(event.summary).toContain("Taurus");
@@ -134,18 +138,20 @@ describe("ingresses.events", () => {
     it("should write events to file and database", async () => {
       const fs = await import("node:fs");
       // biome-ignore format: oxfmt is the primary formatter
-      const { writeSignIngressEvents, getSignIngressEvent } =
-        await import("./ingresses.events");
+      const {
+        writeSignIngressEvents,
+        buildSignIngressEvent: getSignIngressEvent,
+      } = await import("./ingresses.events");
 
       const events = [
         getSignIngressEvent({
           body: "sun",
           longitude: 0,
-          date: new Date("2024-03-20T03:06:00.000Z"),
+          date: moment.utc("2024-03-20T03:06:00.000Z"),
         }),
       ];
-      const start = new Date("2024-03-01T00:00:00.000Z");
-      const end = new Date("2024-03-31T23:59:59.000Z");
+      const start = moment.utc("2024-03-01T00:00:00.000Z");
+      const end = moment.utc("2024-03-31T23:59:59.000Z");
 
       writeSignIngressEvents({
         signIngressEvents: events,
@@ -167,8 +173,8 @@ describe("ingresses.events", () => {
       const fs = await import("node:fs");
       const { writeSignIngressEvents } = await import("./ingresses.events");
 
-      const start = new Date("2024-03-01T00:00:00.000Z");
-      const end = new Date("2024-03-31T23:59:59.000Z");
+      const start = moment.utc("2024-03-01T00:00:00.000Z");
+      const end = moment.utc("2024-03-31T23:59:59.000Z");
 
       writeSignIngressEvents({
         signIngressEvents: [],
@@ -183,17 +189,19 @@ describe("ingresses.events", () => {
 
   describe("getDecanIngressEvent", () => {
     it("should create a decan ingress event", async () => {
-      const { getDecanIngressEvent } = await import("./ingresses.events");
+      const { buildDecanIngressEvent: getDecanIngressEvent } = await import(
+        "./ingresses.events"
+      );
 
       const event = getDecanIngressEvent({
         body: "venus",
         longitude: 10.5, // Decan 2 of Aries
-        date: new Date("2024-04-05T10:00:00.000Z"),
+        date: moment.utc("2024-04-05T10:00:00.000Z"),
       });
 
       expect(event).toMatchObject({
-        start: new Date("2024-04-05T10:00:00.000Z"),
-        end: new Date("2024-04-05T10:00:00.000Z"),
+        start: moment.utc("2024-04-05T10:00:00.000Z"),
+        end: moment.utc("2024-04-05T10:00:00.000Z"),
       });
       expect(event.categories).toContain("Decan");
       expect(event.categories).toContain("Aries");
@@ -272,18 +280,20 @@ describe("ingresses.events", () => {
     it("should write events to file and database", async () => {
       const fs = await import("node:fs");
       // biome-ignore format: oxfmt is the primary formatter
-      const { writeDecanIngressEvents, getDecanIngressEvent } =
-        await import("./ingresses.events");
+      const {
+        writeDecanIngressEvents,
+        buildDecanIngressEvent: getDecanIngressEvent,
+      } = await import("./ingresses.events");
 
       const events = [
         getDecanIngressEvent({
           body: "venus",
           longitude: 10.5,
-          date: new Date("2024-04-05T10:00:00.000Z"),
+          date: moment.utc("2024-04-05T10:00:00.000Z"),
         }),
       ];
-      const start = new Date("2024-04-01T00:00:00.000Z");
-      const end = new Date("2024-04-30T23:59:59.000Z");
+      const start = moment.utc("2024-04-01T00:00:00.000Z");
+      const end = moment.utc("2024-04-30T23:59:59.000Z");
 
       writeDecanIngressEvents({
         decanIngressEvents: events,
@@ -302,8 +312,8 @@ describe("ingresses.events", () => {
       writeDecanIngressEvents({
         decanIngressEvents: [],
         decanIngressBodies: ["venus"],
-        start: new Date("2024-04-01T00:00:00.000Z"),
-        end: new Date("2024-04-30T23:59:59.000Z"),
+        start: moment.utc("2024-04-01T00:00:00.000Z"),
+        end: moment.utc("2024-04-30T23:59:59.000Z"),
       });
 
       expect(fs.default.writeFileSync).not.toHaveBeenCalled();
@@ -312,17 +322,19 @@ describe("ingresses.events", () => {
 
   describe("getPeakIngressEvent", () => {
     it("should create a peak ingress event", async () => {
-      const { getPeakIngressEvent } = await import("./ingresses.events");
+      const { buildPeakIngressEvent: getPeakIngressEvent } = await import(
+        "./ingresses.events"
+      );
 
       const event = getPeakIngressEvent({
         body: "mars",
         longitude: 135, // 15° Leo (120° + 15°)
-        date: new Date("2024-06-15T16:00:00.000Z"),
+        date: moment.utc("2024-06-15T16:00:00.000Z"),
       });
 
       expect(event).toMatchObject({
-        start: new Date("2024-06-15T16:00:00.000Z"),
-        end: new Date("2024-06-15T16:00:00.000Z"),
+        start: moment.utc("2024-06-15T16:00:00.000Z"),
+        end: moment.utc("2024-06-15T16:00:00.000Z"),
       });
       expect(event.categories).toContain("Peak");
       expect(event.categories).toContain("Leo");
@@ -401,18 +413,20 @@ describe("ingresses.events", () => {
     it("should write events to file and database", async () => {
       const fs = await import("node:fs");
       // biome-ignore format: oxfmt is the primary formatter
-      const { writePeakIngressEvents, getPeakIngressEvent } =
-        await import("./ingresses.events");
+      const {
+        writePeakIngressEvents,
+        buildPeakIngressEvent: getPeakIngressEvent,
+      } = await import("./ingresses.events");
 
       const events = [
         getPeakIngressEvent({
           body: "mars",
           longitude: 135,
-          date: new Date("2024-06-15T16:00:00.000Z"),
+          date: moment.utc("2024-06-15T16:00:00.000Z"),
         }),
       ];
-      const start = new Date("2024-06-01T00:00:00.000Z");
-      const end = new Date("2024-06-30T23:59:59.000Z");
+      const start = moment.utc("2024-06-01T00:00:00.000Z");
+      const end = moment.utc("2024-06-30T23:59:59.000Z");
 
       writePeakIngressEvents({
         peakIngressEvents: events,
@@ -431,54 +445,56 @@ describe("ingresses.events", () => {
       writePeakIngressEvents({
         peakIngressEvents: [],
         peakIngressBodies: ["mars"],
-        start: new Date("2024-06-01T00:00:00.000Z"),
-        end: new Date("2024-06-30T23:59:59.000Z"),
+        start: moment.utc("2024-06-01T00:00:00.000Z"),
+        end: moment.utc("2024-06-30T23:59:59.000Z"),
       });
 
       expect(fs.default.writeFileSync).not.toHaveBeenCalled();
     });
   });
 
-  describe("getSignIngressDurationEvents", () => {
-    it("should create duration events for consecutive sign ingresses", async () => {
+  describe("getSignIngressProgressiveEvents", () => {
+    it("should create progressive events for consecutive sign ingresses", async () => {
       // biome-ignore format: oxfmt is the primary formatter
-      const { getSignIngressEvent, getSignIngressDurationEvents } =
-        await import("./ingresses.events");
+      const {
+        buildSignIngressEvent: getSignIngressEvent,
+        getSignIngressProgressiveEvents,
+      } = await import("./ingresses.events");
 
       const events = [
         getSignIngressEvent({
           body: "sun",
           longitude: 0,
-          date: new Date("2024-03-20T03:06:00.000Z"),
+          date: moment.utc("2024-03-20T03:06:00.000Z"),
         }),
         getSignIngressEvent({
           body: "sun",
           longitude: 30,
-          date: new Date("2024-04-19T15:00:00.000Z"),
+          date: moment.utc("2024-04-19T15:00:00.000Z"),
         }),
       ];
 
-      const durationEvents = getSignIngressDurationEvents(events);
+      const progressiveEvents = getSignIngressProgressiveEvents(events);
 
-      expect(durationEvents).toHaveLength(1);
-      expect(durationEvents[0]?.start).toEqual(
-        new Date("2024-03-20T03:06:00.000Z"),
+      expect(progressiveEvents).toHaveLength(1);
+      expect(progressiveEvents[0]?.start).toEqual(
+        moment.utc("2024-03-20T03:06:00.000Z"),
       );
-      expect(durationEvents[0]?.end).toEqual(
-        new Date("2024-04-19T15:00:00.000Z"),
+      expect(progressiveEvents[0]?.end).toEqual(
+        moment.utc("2024-04-19T15:00:00.000Z"),
       );
-      expect(durationEvents[0]?.categories).toContain("Sun");
-      expect(durationEvents[0]?.categories).toContain("Aries");
+      expect(progressiveEvents[0]?.categories).toContain("Sun");
+      expect(progressiveEvents[0]?.categories).toContain("Aries");
     });
 
     it("should handle empty array", async () => {
       // biome-ignore format: oxfmt is the primary formatter
-      const { getSignIngressDurationEvents } =
+      const { getSignIngressProgressiveEvents } =
         await import("./ingresses.events");
 
-      const durationEvents = getSignIngressDurationEvents([]);
+      const progressiveEvents = getSignIngressProgressiveEvents([]);
 
-      expect(durationEvents).toHaveLength(0);
+      expect(progressiveEvents).toHaveLength(0);
     });
   });
 });

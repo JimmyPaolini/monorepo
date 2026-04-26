@@ -2,14 +2,14 @@ import moment from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
 
 import {
-  getAstronomicalDawnEvent,
-  getAstronomicalDuskEvent,
-  getCivilDawnEvent,
-  getCivilDuskEvent,
-  getNauticalDawnEvent,
-  getNauticalDuskEvent,
-  getTwilightDurationEvents,
+  buildAstronomicalDawnEvent,
+  buildAstronomicalDuskEvent,
+  buildCivilDawnEvent,
+  buildCivilDuskEvent,
+  buildNauticalDawnEvent,
+  buildNauticalDuskEvent,
   getTwilightEvents,
+  getTwilightProgressiveEvents,
 } from "./twilights.events";
 
 import type { Event } from "../../calendar.utilities";
@@ -165,9 +165,9 @@ describe("twilights.events", () => {
 
   describe("getCivilDawnEvent", () => {
     it("should create a civil dawn event with correct structure", () => {
-      const date = new Date("2024-03-21T06:00:00.000Z");
+      const date = moment.utc("2024-03-21T06:00:00.000Z");
 
-      const event = getCivilDawnEvent(date);
+      const event = buildCivilDawnEvent(date);
 
       expect(event.summary).toBe("🌄 Civil Dawn");
       expect(event.description).toBe("Civil Dawn");
@@ -181,9 +181,9 @@ describe("twilights.events", () => {
 
   describe("getCivilDuskEvent", () => {
     it("should create a civil dusk event with correct structure", () => {
-      const date = new Date("2024-03-21T19:00:00.000Z");
+      const date = moment.utc("2024-03-21T19:00:00.000Z");
 
-      const event = getCivilDuskEvent(date);
+      const event = buildCivilDuskEvent(date);
 
       expect(event.summary).toBe("🌇 Civil Dusk");
       expect(event.description).toBe("Civil Dusk");
@@ -197,9 +197,9 @@ describe("twilights.events", () => {
 
   describe("getNauticalDawnEvent", () => {
     it("should create a nautical dawn event with correct structure", () => {
-      const date = new Date("2024-03-21T05:30:00.000Z");
+      const date = moment.utc("2024-03-21T05:30:00.000Z");
 
-      const event = getNauticalDawnEvent(date);
+      const event = buildNauticalDawnEvent(date);
 
       expect(event.summary).toBe("🌅 Nautical Dawn");
       expect(event.description).toBe("Nautical Dawn");
@@ -213,9 +213,9 @@ describe("twilights.events", () => {
 
   describe("getNauticalDuskEvent", () => {
     it("should create a nautical dusk event with correct structure", () => {
-      const date = new Date("2024-03-21T19:30:00.000Z");
+      const date = moment.utc("2024-03-21T19:30:00.000Z");
 
-      const event = getNauticalDuskEvent(date);
+      const event = buildNauticalDuskEvent(date);
 
       expect(event.summary).toBe("🌉 Nautical Dusk");
       expect(event.description).toBe("Nautical Dusk");
@@ -229,9 +229,9 @@ describe("twilights.events", () => {
 
   describe("getAstronomicalDawnEvent", () => {
     it("should create an astronomical dawn event with correct structure", () => {
-      const date = new Date("2024-03-21T05:00:00.000Z");
+      const date = moment.utc("2024-03-21T05:00:00.000Z");
 
-      const event = getAstronomicalDawnEvent(date);
+      const event = buildAstronomicalDawnEvent(date);
 
       expect(event.summary).toBe("🌠 Astronomical Dawn");
       expect(event.description).toBe("Astronomical Dawn");
@@ -245,9 +245,9 @@ describe("twilights.events", () => {
 
   describe("getAstronomicalDuskEvent", () => {
     it("should create an astronomical dusk event with correct structure", () => {
-      const date = new Date("2024-03-21T20:00:00.000Z");
+      const date = moment.utc("2024-03-21T20:00:00.000Z");
 
-      const event = getAstronomicalDuskEvent(date);
+      const event = buildAstronomicalDuskEvent(date);
 
       expect(event.summary).toBe("🌌 Astronomical Dusk");
       expect(event.description).toBe("Astronomical Dusk");
@@ -265,8 +265,8 @@ describe("twilights.events", () => {
 
       const events: Event[] = [
         {
-          start: new Date("2024-03-21T06:00:00.000Z"),
-          end: new Date("2024-03-21T06:00:00.000Z"),
+          start: moment.utc("2024-03-21T06:00:00.000Z"),
+          end: moment.utc("2024-03-21T06:00:00.000Z"),
           summary: "🌄 Civil Dawn",
           description: "Civil Dawn",
           categories: ["Astronomy", "Astrology", "Twilight", "Civil Dawn"],
@@ -276,8 +276,8 @@ describe("twilights.events", () => {
       const { writeTwilightEvents } = await import("./twilights.events");
       writeTwilightEvents({
         twilightEvents: events,
-        start: new Date("2024-01-01"),
-        end: new Date("2024-12-31"),
+        start: moment.utc("2024-01-01"),
+        end: moment.utc("2024-12-31"),
       });
 
       expect(fs.writeFileSync).toHaveBeenCalled();
@@ -289,127 +289,130 @@ describe("twilights.events", () => {
       const { writeTwilightEvents } = await import("./twilights.events");
       writeTwilightEvents({
         twilightEvents: [],
-        start: new Date("2024-01-01"),
-        end: new Date("2024-12-31"),
+        start: moment.utc("2024-01-01"),
+        end: moment.utc("2024-12-31"),
       });
 
       expect(fs.writeFileSync).not.toHaveBeenCalled();
     });
   });
 
-  describe("getTwilightDurationEvents", () => {
-    it("should create daylight duration event from civil dawn to civil dusk", () => {
+  describe("getTwilightProgressiveEvents", () => {
+    it("should create daylight progressive event from civil dawn to civil dusk", () => {
       const civilDawn: Event = {
-        start: new Date("2024-03-21T06:00:00.000Z"),
-        end: new Date("2024-03-21T06:00:00.000Z"),
+        start: moment.utc("2024-03-21T06:00:00.000Z"),
+        end: moment.utc("2024-03-21T06:00:00.000Z"),
         summary: "🌄 Civil Dawn",
         description: "Civil Dawn",
         categories: ["Astronomy", "Astrology", "Twilight", "Civil Dawn"],
       };
       const civilDusk: Event = {
-        start: new Date("2024-03-21T19:00:00.000Z"),
-        end: new Date("2024-03-21T19:00:00.000Z"),
+        start: moment.utc("2024-03-21T19:00:00.000Z"),
+        end: moment.utc("2024-03-21T19:00:00.000Z"),
         summary: "🌇 Civil Dusk",
         description: "Civil Dusk",
         categories: ["Astronomy", "Astrology", "Twilight", "Civil Dusk"],
       };
 
-      const durationEvents = getTwilightDurationEvents([civilDawn, civilDusk]);
+      const progressiveEvents = getTwilightProgressiveEvents([
+        civilDawn,
+        civilDusk,
+      ]);
 
       // Should have Daylight duration
-      const daylightEvents = durationEvents.filter(
+      const daylightEvents = progressiveEvents.filter(
         (e) => e.description === "Daylight",
       );
       expect(daylightEvents.length).toBeGreaterThanOrEqual(1);
     });
 
-    it("should create nautical twilight morning duration event", () => {
+    it("should create nautical twilight morning progressive event", () => {
       const nauticalDawn: Event = {
-        start: new Date("2024-03-21T05:30:00.000Z"),
-        end: new Date("2024-03-21T05:30:00.000Z"),
+        start: moment.utc("2024-03-21T05:30:00.000Z"),
+        end: moment.utc("2024-03-21T05:30:00.000Z"),
         summary: "🌅 Nautical Dawn",
         description: "Nautical Dawn",
         categories: ["Astronomy", "Astrology", "Twilight", "Nautical Dawn"],
       };
       const civilDawn: Event = {
-        start: new Date("2024-03-21T06:00:00.000Z"),
-        end: new Date("2024-03-21T06:00:00.000Z"),
+        start: moment.utc("2024-03-21T06:00:00.000Z"),
+        end: moment.utc("2024-03-21T06:00:00.000Z"),
         summary: "🌄 Civil Dawn",
         description: "Civil Dawn",
         categories: ["Astronomy", "Astrology", "Twilight", "Civil Dawn"],
       };
 
-      const durationEvents = getTwilightDurationEvents([
+      const progressiveEvents = getTwilightProgressiveEvents([
         nauticalDawn,
         civilDawn,
       ]);
 
-      const nauticalMorningEvents = durationEvents.filter(
+      const nauticalMorningEvents = progressiveEvents.filter(
         (e) => e.description === "Nautical Twilight (Morning)",
       );
       expect(nauticalMorningEvents.length).toBeGreaterThanOrEqual(1);
     });
 
-    it("should create astronomical twilight morning duration event", () => {
+    it("should create astronomical twilight morning progressive event", () => {
       const astronomicalDawn: Event = {
-        start: new Date("2024-03-21T05:00:00.000Z"),
-        end: new Date("2024-03-21T05:00:00.000Z"),
+        start: moment.utc("2024-03-21T05:00:00.000Z"),
+        end: moment.utc("2024-03-21T05:00:00.000Z"),
         summary: "🌠 Astronomical Dawn",
         description: "Astronomical Dawn",
         categories: ["Astronomy", "Astrology", "Twilight", "Astronomical Dawn"],
       };
       const nauticalDawn: Event = {
-        start: new Date("2024-03-21T05:30:00.000Z"),
-        end: new Date("2024-03-21T05:30:00.000Z"),
+        start: moment.utc("2024-03-21T05:30:00.000Z"),
+        end: moment.utc("2024-03-21T05:30:00.000Z"),
         summary: "🌅 Nautical Dawn",
         description: "Nautical Dawn",
         categories: ["Astronomy", "Astrology", "Twilight", "Nautical Dawn"],
       };
 
-      const durationEvents = getTwilightDurationEvents([
+      const progressiveEvents = getTwilightProgressiveEvents([
         astronomicalDawn,
         nauticalDawn,
       ]);
 
-      const astronomicalMorningEvents = durationEvents.filter(
+      const astronomicalMorningEvents = progressiveEvents.filter(
         (e) => e.description === "Astronomical Twilight (Morning)",
       );
       expect(astronomicalMorningEvents.length).toBeGreaterThanOrEqual(1);
     });
 
-    it("should create night duration event from astronomical dusk to astronomical dawn", () => {
+    it("should create night progressive event from astronomical dusk to astronomical dawn", () => {
       // First day - evening
       const astronomicalDusk: Event = {
-        start: new Date("2024-03-21T20:00:00.000Z"),
-        end: new Date("2024-03-21T20:00:00.000Z"),
+        start: moment.utc("2024-03-21T20:00:00.000Z"),
+        end: moment.utc("2024-03-21T20:00:00.000Z"),
         summary: "🌌 Astronomical Dusk",
         description: "Astronomical Dusk",
         categories: ["Astronomy", "Astrology", "Twilight", "Astronomical Dusk"],
       };
       // Next day - morning
       const astronomicalDawn: Event = {
-        start: new Date("2024-03-22T05:00:00.000Z"),
-        end: new Date("2024-03-22T05:00:00.000Z"),
+        start: moment.utc("2024-03-22T05:00:00.000Z"),
+        end: moment.utc("2024-03-22T05:00:00.000Z"),
         summary: "🌠 Astronomical Dawn",
         description: "Astronomical Dawn",
         categories: ["Astronomy", "Astrology", "Twilight", "Astronomical Dawn"],
       };
 
-      const durationEvents = getTwilightDurationEvents([
+      const progressiveEvents = getTwilightProgressiveEvents([
         astronomicalDusk,
         astronomicalDawn,
       ]);
 
-      const nightEvents = durationEvents.filter(
+      const nightEvents = progressiveEvents.filter(
         (e) => e.description === "Night",
       );
       expect(nightEvents.length).toBeGreaterThanOrEqual(1);
     });
 
     it("should return empty array when no twilight events provided", () => {
-      const durationEvents = getTwilightDurationEvents([]);
+      const progressiveEvents = getTwilightProgressiveEvents([]);
 
-      expect(durationEvents).toHaveLength(0);
+      expect(progressiveEvents).toHaveLength(0);
     });
   });
 });

@@ -5,9 +5,9 @@ import { MARGIN_MINUTES } from "../../calendar.utilities";
 import { symbolByLunarPhase } from "../../symbols";
 
 import {
-  getMonthlyLunarCycleDurationEvents,
-  getMonthlyLunarCycleEvent,
+  buildMonthlyLunarCycleEvent,
   getMonthlyLunarCycleEvents,
+  getMonthlyLunarCycleProgressiveEvents,
 } from "./monthlyLunarCycle.events";
 
 import type { Event } from "../../calendar.utilities";
@@ -67,9 +67,9 @@ describe("monthlyLunarCycle.events", () => {
 
   describe("getMonthlyLunarCycleEvent", () => {
     it("should create a new moon event with correct structure", () => {
-      const date = new Date("2024-03-10T09:00:00.000Z");
+      const date = moment.utc("2024-03-10T09:00:00.000Z");
 
-      const event = getMonthlyLunarCycleEvent({ date, lunarPhase: "new" });
+      const event = buildMonthlyLunarCycleEvent({ date, lunarPhase: "new" });
 
       expect(event.summary).toBe(`🌙 ${symbolByLunarPhase.new} New Moon`);
       expect(event.description).toBe("New Moon");
@@ -83,9 +83,9 @@ describe("monthlyLunarCycle.events", () => {
     });
 
     it("should create a full moon event with correct structure", () => {
-      const date = new Date("2024-03-25T07:00:00.000Z");
+      const date = moment.utc("2024-03-25T07:00:00.000Z");
 
-      const event = getMonthlyLunarCycleEvent({ date, lunarPhase: "full" });
+      const event = buildMonthlyLunarCycleEvent({ date, lunarPhase: "full" });
 
       expect(event.summary).toBe(`🌙 ${symbolByLunarPhase.full} Full Moon`);
       expect(event.description).toBe("Full Moon");
@@ -93,9 +93,9 @@ describe("monthlyLunarCycle.events", () => {
     });
 
     it("should create a first quarter event with correct structure", () => {
-      const date = new Date("2024-03-17T04:11:00.000Z");
+      const date = moment.utc("2024-03-17T04:11:00.000Z");
 
-      const event = getMonthlyLunarCycleEvent({
+      const event = buildMonthlyLunarCycleEvent({
         date,
         lunarPhase: "first quarter",
       });
@@ -108,9 +108,9 @@ describe("monthlyLunarCycle.events", () => {
     });
 
     it("should create a last quarter event with correct structure", () => {
-      const date = new Date("2024-04-02T03:15:00.000Z");
+      const date = moment.utc("2024-04-02T03:15:00.000Z");
 
-      const event = getMonthlyLunarCycleEvent({
+      const event = buildMonthlyLunarCycleEvent({
         date,
         lunarPhase: "last quarter",
       });
@@ -123,9 +123,9 @@ describe("monthlyLunarCycle.events", () => {
     });
 
     it("should create a waxing crescent event with correct structure", () => {
-      const date = new Date("2024-03-13T12:00:00.000Z");
+      const date = moment.utc("2024-03-13T12:00:00.000Z");
 
-      const event = getMonthlyLunarCycleEvent({
+      const event = buildMonthlyLunarCycleEvent({
         date,
         lunarPhase: "waxing crescent",
       });
@@ -138,9 +138,9 @@ describe("monthlyLunarCycle.events", () => {
     });
 
     it("should create a waxing gibbous event with correct structure", () => {
-      const date = new Date("2024-03-21T12:00:00.000Z");
+      const date = moment.utc("2024-03-21T12:00:00.000Z");
 
-      const event = getMonthlyLunarCycleEvent({
+      const event = buildMonthlyLunarCycleEvent({
         date,
         lunarPhase: "waxing gibbous",
       });
@@ -153,9 +153,9 @@ describe("monthlyLunarCycle.events", () => {
     });
 
     it("should create a waning gibbous event with correct structure", () => {
-      const date = new Date("2024-03-28T12:00:00.000Z");
+      const date = moment.utc("2024-03-28T12:00:00.000Z");
 
-      const event = getMonthlyLunarCycleEvent({
+      const event = buildMonthlyLunarCycleEvent({
         date,
         lunarPhase: "waning gibbous",
       });
@@ -168,9 +168,9 @@ describe("monthlyLunarCycle.events", () => {
     });
 
     it("should create a waning crescent event with correct structure", () => {
-      const date = new Date("2024-04-05T12:00:00.000Z");
+      const date = moment.utc("2024-04-05T12:00:00.000Z");
 
-      const event = getMonthlyLunarCycleEvent({
+      const event = buildMonthlyLunarCycleEvent({
         date,
         lunarPhase: "waning crescent",
       });
@@ -188,13 +188,13 @@ describe("monthlyLunarCycle.events", () => {
       const fs = await import("node:fs");
 
       const events = [
-        getMonthlyLunarCycleEvent({
-          date: new Date("2024-03-10T09:00:00.000Z"),
+        buildMonthlyLunarCycleEvent({
+          date: moment.utc("2024-03-10T09:00:00.000Z"),
           lunarPhase: "new",
         }),
       ];
-      const start = new Date("2024-03-01T00:00:00.000Z");
-      const end = new Date("2024-03-31T23:59:59.000Z");
+      const start = moment.utc("2024-03-01T00:00:00.000Z");
+      const end = moment.utc("2024-03-31T23:59:59.000Z");
 
       // biome-ignore format: oxfmt is the primary formatter
       const { writeMonthlyLunarCycleEvents } =
@@ -218,8 +218,8 @@ describe("monthlyLunarCycle.events", () => {
     it("should not write when events array is empty", async () => {
       const fs = await import("node:fs");
 
-      const start = new Date("2024-03-01T00:00:00.000Z");
-      const end = new Date("2024-03-31T23:59:59.000Z");
+      const start = moment.utc("2024-03-01T00:00:00.000Z");
+      const end = moment.utc("2024-03-31T23:59:59.000Z");
 
       // biome-ignore format: oxfmt is the primary formatter
       const { writeMonthlyLunarCycleEvents } =
@@ -235,11 +235,11 @@ describe("monthlyLunarCycle.events", () => {
     });
   });
 
-  describe("getMonthlyLunarCycleDurationEvents", () => {
-    it("should create duration events between consecutive lunar phases", () => {
+  describe("getMonthlyLunarCycleProgressiveEvents", () => {
+    it("should create progressive events between consecutive lunar phases", () => {
       const newMoon: Event = {
-        start: new Date("2024-03-10T09:00:00.000Z"),
-        end: new Date("2024-03-10T09:00:00.000Z"),
+        start: moment.utc("2024-03-10T09:00:00.000Z"),
+        end: moment.utc("2024-03-10T09:00:00.000Z"),
         summary: "🌙 🌑 New Moon",
         description: "New Moon",
         categories: [
@@ -251,8 +251,8 @@ describe("monthlyLunarCycle.events", () => {
         ],
       };
       const waxingCrescent: Event = {
-        start: new Date("2024-03-13T12:00:00.000Z"),
-        end: new Date("2024-03-13T12:00:00.000Z"),
+        start: moment.utc("2024-03-13T12:00:00.000Z"),
+        end: moment.utc("2024-03-13T12:00:00.000Z"),
         summary: "🌙 🌒 Waxing Crescent Moon",
         description: "Waxing Crescent Moon",
         categories: [
@@ -264,8 +264,8 @@ describe("monthlyLunarCycle.events", () => {
         ],
       };
       const firstQuarter: Event = {
-        start: new Date("2024-03-17T04:11:00.000Z"),
-        end: new Date("2024-03-17T04:11:00.000Z"),
+        start: moment.utc("2024-03-17T04:11:00.000Z"),
+        end: moment.utc("2024-03-17T04:11:00.000Z"),
         summary: "🌙 🌓 First Quarter Moon",
         description: "First Quarter Moon",
         categories: [
@@ -277,49 +277,49 @@ describe("monthlyLunarCycle.events", () => {
         ],
       };
 
-      const durationEvents = getMonthlyLunarCycleDurationEvents([
+      const progressiveEvents = getMonthlyLunarCycleProgressiveEvents([
         newMoon,
         waxingCrescent,
         firstQuarter,
       ]);
 
-      // Should have duration events between phases
-      expect(durationEvents.length).toBe(2);
+      // Should have progressive events between phases
+      expect(progressiveEvents.length).toBe(2);
 
-      expect(durationEvents[0]).toBeDefined();
-      expect(durationEvents[1]).toBeDefined();
+      expect(progressiveEvents[0]).toBeDefined();
+      expect(progressiveEvents[1]).toBeDefined();
 
       // First duration: New → Waxing Crescent
-      expect(durationEvents[0]?.start).toEqual(newMoon.start);
-      expect(durationEvents[0]?.end).toEqual(waxingCrescent.start);
-      expect(durationEvents[0]?.description).toBe("New Moon");
+      expect(progressiveEvents[0]?.start).toEqual(newMoon.start);
+      expect(progressiveEvents[0]?.end).toEqual(waxingCrescent.start);
+      expect(progressiveEvents[0]?.description).toBe("New Moon");
 
       // Second duration: Waxing Crescent → First Quarter
-      expect(durationEvents[1]?.start).toEqual(waxingCrescent.start);
-      expect(durationEvents[1]?.end).toEqual(firstQuarter.start);
-      expect(durationEvents[1]?.description).toBe("Waxing Crescent Moon");
+      expect(progressiveEvents[1]?.start).toEqual(waxingCrescent.start);
+      expect(progressiveEvents[1]?.end).toEqual(firstQuarter.start);
+      expect(progressiveEvents[1]?.description).toBe("Waxing Crescent Moon");
     });
 
     it("should return empty array when no lunar cycle events provided", () => {
-      const durationEvents = getMonthlyLunarCycleDurationEvents([]);
+      const progressiveEvents = getMonthlyLunarCycleProgressiveEvents([]);
 
-      expect(durationEvents).toHaveLength(0);
+      expect(progressiveEvents).toHaveLength(0);
     });
 
     it("should filter out non-lunar cycle events", () => {
       const nonLunarEvent: Event = {
-        start: new Date("2024-03-10T09:00:00.000Z"),
-        end: new Date("2024-03-10T09:00:00.000Z"),
+        start: moment.utc("2024-03-10T09:00:00.000Z"),
+        end: moment.utc("2024-03-10T09:00:00.000Z"),
         summary: "Some other event",
         description: "Not a lunar event",
         categories: ["Astronomy", "Something Else"],
       };
 
-      const durationEvents = getMonthlyLunarCycleDurationEvents([
+      const progressiveEvents = getMonthlyLunarCycleProgressiveEvents([
         nonLunarEvent,
       ]);
 
-      expect(durationEvents).toHaveLength(0);
+      expect(progressiveEvents).toHaveLength(0);
     });
 
     it("should handle full lunar cycle", () => {
@@ -335,29 +335,29 @@ describe("monthlyLunarCycle.events", () => {
       ];
 
       const events = phases.map(({ phase, date }) =>
-        getMonthlyLunarCycleEvent({
-          date: new Date(date),
+        buildMonthlyLunarCycleEvent({
+          date: moment.utc(date),
           lunarPhase: phase,
         }),
       );
 
-      const durationEvents = getMonthlyLunarCycleDurationEvents(events);
+      const progressiveEvents = getMonthlyLunarCycleProgressiveEvents(events);
 
-      // Should have 7 duration events (between 8 phases)
-      expect(durationEvents.length).toBe(7);
+      // Should have 7 progressive events (between 8 phases)
+      expect(progressiveEvents.length).toBe(7);
     });
 
     it("should warn and skip events with invalid categories", () => {
       const invalidEvent: Event = {
-        start: new Date("2024-03-10T09:00:00.000Z"),
-        end: new Date("2024-03-10T09:00:00.000Z"),
+        start: moment.utc("2024-03-10T09:00:00.000Z"),
+        end: moment.utc("2024-03-10T09:00:00.000Z"),
         summary: "Invalid event",
         description: "Invalid",
         categories: ["Monthly Lunar Cycle"], // Missing lunar phase category
       };
       const validEvent: Event = {
-        start: new Date("2024-03-13T12:00:00.000Z"),
-        end: new Date("2024-03-13T12:00:00.000Z"),
+        start: moment.utc("2024-03-13T12:00:00.000Z"),
+        end: moment.utc("2024-03-13T12:00:00.000Z"),
         summary: "🌙 🌒 Waxing Crescent Moon",
         description: "Waxing Crescent Moon",
         categories: [
@@ -369,13 +369,13 @@ describe("monthlyLunarCycle.events", () => {
         ],
       };
 
-      const durationEvents = getMonthlyLunarCycleDurationEvents([
+      const progressiveEvents = getMonthlyLunarCycleProgressiveEvents([
         invalidEvent,
         validEvent,
       ]);
 
       // Should skip the invalid event
-      expect(durationEvents).toHaveLength(0);
+      expect(progressiveEvents).toHaveLength(0);
       expect(console.warn).toHaveBeenCalledWith(
         expect.stringContaining("Could not extract lunar phase"),
       );

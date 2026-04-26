@@ -20,28 +20,19 @@
  */
 
 import { bodies } from "../constants";
-import {
-  getAzimuthElevationEphemerisByBody,
-  getCoordinateEphemerisByBody,
-  getDiameterEphemerisByBody,
-  getDistanceEphemerisByBody,
-  getIlluminationEphemerisByBody,
-} from "../ephemeris/ephemeris.service";
+
+import { computeAllEphemerides } from "./ephemeris.service";
 
 import type {
   AzimuthElevationEphemeris,
-  AzimuthElevationEphemerisBody,
   CoordinateEphemeris,
-  CoordinateEphemerisBody,
   Coordinates,
   DiameterEphemeris,
-  DiameterEphemerisBody,
   DistanceEphemeris,
-  DistanceEphemerisBody,
   IlluminationEphemeris,
-  IlluminationEphemerisBody,
 } from "../ephemeris/ephemeris.types";
 import type { Body } from "../types";
+import type moment from "moment-timezone";
 
 // #region getEphemerides
 /**
@@ -82,8 +73,8 @@ import type { Body } from "../types";
  * ```typescript
  * const ephemerides = await getEphemerides({
  *   coordinates: [-74.0060, 40.7128], // New York City
- *   start: new Date('2026-01-21T00:00:00'),
- *   end: new Date('2026-01-22T00:00:00'),
+ *   start: moment.tz('2026-01-21T00:00:00', 'America/New_York'),
+ *   end: moment.tz('2026-01-22T00:00:00', 'America/New_York'),
  *   timezone: 'America/New_York',
  * });
  *
@@ -94,91 +85,28 @@ import type { Body } from "../types";
  * const sunElevation = ephemerides.azimuthElevationEphemerisByBody.sun['2026-01-21T06:30:00.000Z'].elevation;
  * ```
  */
-export async function getEphemerides(args: {
+export function getEphemerides(args: {
   coordinates: Coordinates;
-  end: Date;
-  start: Date;
+  end: moment.Moment;
+  start: moment.Moment;
   timezone: string;
-}): Promise<{
+}): {
   azimuthElevationEphemerisByBody: Record<Body, AzimuthElevationEphemeris>;
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
   diameterEphemerisByBody: Record<Body, DiameterEphemeris>;
   distanceEphemerisByBody: Record<Body, DistanceEphemeris>;
   illuminationEphemerisByBody: Record<Body, IlluminationEphemeris>;
-}> {
-  const { coordinates, end, start, timezone } = args;
+} {
+  const { coordinates, end, start } = args;
 
-  // Fetch coordinate ephemeris for all bodies
-  const coordinateEphemerisBodies: CoordinateEphemerisBody[] = bodies;
-
-  // Fetch diameter ephemeris for sun and moon (needed for eclipses)
-  const diameterEphemerisBodies: DiameterEphemerisBody[] = ["sun", "moon"];
-
-  // Fetch illumination ephemeris for moon and inner planets (needed for phases)
-  const illuminationEphemerisBodies: IlluminationEphemerisBody[] = [
-    "moon",
-    "mercury",
-    "venus",
-    "mars",
-  ];
-
-  // Fetch distance ephemeris for sun and inner planets (needed for apsides and phases)
-  const distanceEphemerisBodies: DistanceEphemerisBody[] = [
-    "sun",
-    "mercury",
-    "venus",
-    "mars",
-  ];
-
-  // Fetch azimuth/elevation ephemeris for sun and moon (needed for daily cycles)
-  const azimuthElevationEphemerisBodies: AzimuthElevationEphemerisBody[] = [
-    "sun",
-    "moon",
-  ];
-
-  const coordinateEphemerisByBody = await getCoordinateEphemerisByBody({
-    bodies: coordinateEphemerisBodies,
-    start,
-    end,
-    timezone,
-  });
-
-  const azimuthElevationEphemerisByBody =
-    await getAzimuthElevationEphemerisByBody({
-      bodies: azimuthElevationEphemerisBodies,
-      start,
-      end,
-      coordinates,
-      timezone,
-    });
-
-  const illuminationEphemerisByBody = await getIlluminationEphemerisByBody({
-    bodies: illuminationEphemerisBodies,
-    start,
-    end,
+  return computeAllEphemerides({
+    coordinateBodies: bodies,
+    azimuthElevationBodies: ["sun", "moon"],
+    illuminationBodies: ["moon", "mercury", "venus", "mars"],
+    diameterBodies: ["sun", "moon"],
+    distanceBodies: ["sun", "mercury", "venus", "mars"],
     coordinates,
-    timezone,
-  });
-
-  const diameterEphemerisByBody = await getDiameterEphemerisByBody({
-    bodies: diameterEphemerisBodies,
     start,
     end,
-    timezone,
   });
-
-  const distanceEphemerisByBody = await getDistanceEphemerisByBody({
-    bodies: distanceEphemerisBodies,
-    start,
-    end,
-    timezone,
-  });
-
-  return {
-    azimuthElevationEphemerisByBody,
-    coordinateEphemerisByBody,
-    diameterEphemerisByBody,
-    distanceEphemerisByBody,
-    illuminationEphemerisByBody,
-  };
 }

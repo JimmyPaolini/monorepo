@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
+    "lib": ["ES2023"],
     "module": "esnext",
     "moduleResolution": "bundler",
     "noEmit": true,
@@ -10,6 +11,7 @@
   "exclude": ["dist", "node_modules", "output"],
   "extends": "../../tsconfig.base.json",
   "include": [
+    "scripts/**/*.ts",
     "src/**/*.ts",
     "src/**/*.tsx",
     "testing/**/*.ts",

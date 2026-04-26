@@ -122,7 +122,7 @@ describe("phases.events integration", () => {
 
       expect(Array.isArray(events)).toBe(true);
       events.forEach((event) => {
-        expect(event.start).toEqual(currentMinute.toDate());
+        expect(event.start).toEqual(currentMinute);
         expect(event.description).toMatch(
           /Venus (Morning|Evening|Western|Eastern)/,
         );
@@ -233,7 +233,7 @@ describe("phases.events integration", () => {
 
       expect(Array.isArray(events)).toBe(true);
       events.forEach((event) => {
-        expect(event.start).toEqual(currentMinute.toDate());
+        expect(event.start).toEqual(currentMinute);
         expect(event.description).toMatch(
           /Mercury (Morning|Evening|Western|Eastern)/,
         );
@@ -342,7 +342,7 @@ describe("phases.events integration", () => {
 
       expect(Array.isArray(events)).toBe(true);
       events.forEach((event) => {
-        expect(event.start).toEqual(currentMinute.toDate());
+        expect(event.start).toEqual(currentMinute);
         expect(event.description).toMatch(/Mars (Morning|Evening) (Rise|Set)/);
       });
     });
@@ -562,8 +562,8 @@ describe("phases.events integration", () => {
 
       // All events should have correct timestamp
       events.forEach((event) => {
-        expect(event.start).toEqual(currentMinute.toDate());
-        expect(event.end).toEqual(currentMinute.toDate());
+        expect(event.start).toEqual(currentMinute);
+        expect(event.end).toEqual(currentMinute);
       });
     });
 

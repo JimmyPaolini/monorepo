@@ -244,8 +244,6 @@ importers:
         specifier: ^4.1.3
         version: 4.1.3(@types/node@22.19.1)(@vitest/coverage-v8@4.1.3)(@vitest/ui@4.1.3)(jsdom@22.1.0)(vite@8.0.5(@types/node@22.19.1)(esbuild@0.27.3)(jiti@2.6.1)(terser@5.44.1)(tsx@4.21.0)(yaml@2.8.3))
 
-  applications/JimmyPaolini: {}
-
   applications/affirmations: {}
 
   applications/caelundas:
@@ -268,6 +266,9 @@ importers:
       sqlite3:
         specifier: ^5.1.7
         version: 5.1.7
+      sweph:
+        specifier: 2.10.3-b-1
+        version: 2.10.3-b-1
       tsx:
         specifier: ^4.21.0
         version: 4.21.0
@@ -7837,6 +7838,10 @@ packages:
   node-addon-api@7.1.1:
     resolution: {integrity: sha512-5m3bsyrjFWE1xf7nz7YXdN4udnVtXK6/Yfgn5qnahL6bCkf2yKt4k3nuTKAtT4r3IG8JNR2ncsIMdZuAzJjHQQ==}
 
+  node-addon-api@8.7.0:
+    resolution: {integrity: sha512-9MdFxmkKaOYVTV+XVRG8ArDwwQ77XIgIPyKASB1k3JPq3M8fGQQQE3YpMOrKm6g//Ktx8ivZr8xo1Qmtqub+GA==}
+    engines: {node: ^18 || ^20 || >= 21}
+
   node-emoji@2.2.0:
     resolution: {integrity: sha512-Z3lTE9pLaJF47NyMhd4ww1yFTAP8YhYI8SleJiHzM46Fgpm5cnNzSl9XfzFNqbaz+VlJrIj3fXQ4DeN1Rjm6cw==}
     engines: {node: '>=18'}
@@ -9307,6 +9312,9 @@ packages:
     resolution: {integrity: sha512-+wn7I4p7YgJhHs38k2TNjy1vCfPIfLIJWR5MnCStsN8WuuTcBnRKcMHQLMM2ijxGZmDoZwNv8ipl5aTTen62ng==}
     engines: {node: '>=14.0.0'}
     hasBin: true
+
+  sweph@2.10.3-b-1:
+    resolution: {integrity: sha512-5dgBQv+h+wBvD2HQHplgRJaQ8A1m5EAfemWiocc/CdVtO8VwKly3OL0v0TUf0IKLOkLFk6IT2AzyyJCrec5yJQ==}
 
   symbol-tree@3.2.4:
     resolution: {integrity: sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==}
@@ -18509,6 +18517,8 @@ snapshots:
 
   node-addon-api@7.1.1: {}
 
+  node-addon-api@8.7.0: {}
+
   node-emoji@2.2.0:
     dependencies:
       '@sindresorhus/is': 4.6.0
@@ -20225,6 +20235,10 @@ snapshots:
       csso: 5.0.5
       picocolors: 1.1.1
       sax: 1.6.0
+
+  sweph@2.10.3-b-1:
+    dependencies:
+      node-addon-api: 8.7.0
 
   symbol-tree@3.2.4: {}
 

@@ -1,10 +1,29 @@
 #region 📡 Ephemeris
+ephe
 ephem
 ephemerides
 ephemeris
 epimethean
 epimethian
 meeus
+sepl
+semo
+sweph
+#endregion
+
+#region 🔬 Swiss Ephemeris API
+APOG
+apside
+arcsec
+atpress
+attemp
+azalt
+geopos
+NODBIT
+OSCU
+pheno
+SEFLG
+SWIEPH
 #endregion
 
 #region 🌍 Orbital Mechanics

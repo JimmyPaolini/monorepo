@@ -2,11 +2,11 @@ import moment from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
 
 import {
+  buildSolarNadirEvent,
+  buildSolarZenithEvent,
+  buildSunriseEvent,
+  buildSunsetEvent,
   getDailySolarCycleEvents,
-  getSolarNadirEvent,
-  getSolarZenithEvent,
-  getSunriseEvent,
-  getSunsetEvent,
 } from "./dailySolarCycle.events";
 
 import type { Event } from "../../calendar.utilities";
@@ -152,9 +152,9 @@ describe("dailySolarCycle.events", () => {
 
   describe("getSunriseEvent", () => {
     it("should create a sunrise event with correct structure", () => {
-      const date = new Date("2024-03-21T06:30:00.000Z");
+      const date = moment.utc("2024-03-21T06:30:00.000Z");
 
-      const event = getSunriseEvent(date);
+      const event = buildSunriseEvent(date);
 
       expect(event.summary).toBe("☀️ 🔼 Sunrise");
       expect(event.description).toBe("Sunrise");
@@ -168,9 +168,9 @@ describe("dailySolarCycle.events", () => {
 
   describe("getSolarZenithEvent", () => {
     it("should create a solar zenith event with correct structure", () => {
-      const date = new Date("2024-03-21T12:00:00.000Z");
+      const date = moment.utc("2024-03-21T12:00:00.000Z");
 
-      const event = getSolarZenithEvent(date);
+      const event = buildSolarZenithEvent(date);
 
       expect(event.summary).toBe("☀️ ⏫ Solar Zenith");
       expect(event.description).toBe("Solar Zenith");
@@ -184,9 +184,9 @@ describe("dailySolarCycle.events", () => {
 
   describe("getSunsetEvent", () => {
     it("should create a sunset event with correct structure", () => {
-      const date = new Date("2024-03-21T18:30:00.000Z");
+      const date = moment.utc("2024-03-21T18:30:00.000Z");
 
-      const event = getSunsetEvent(date);
+      const event = buildSunsetEvent(date);
 
       expect(event.summary).toBe("☀️ 🔽 Sunset");
       expect(event.description).toBe("Sunset");
@@ -204,8 +204,8 @@ describe("dailySolarCycle.events", () => {
 
       const events: Event[] = [
         {
-          start: new Date("2024-03-21T06:00:00.000Z"),
-          end: new Date("2024-03-21T06:00:00.000Z"),
+          start: moment.utc("2024-03-21T06:00:00.000Z"),
+          end: moment.utc("2024-03-21T06:00:00.000Z"),
           summary: "☀️ ⏫ Sunrise",
           description: "Sunrise",
           categories: ["Astronomy", "Astrology", "Solar", "Sunrise"],
@@ -217,8 +217,8 @@ describe("dailySolarCycle.events", () => {
         await import("./dailySolarCycle.events");
       writeDailySolarCycleEvents({
         dailySolarCycleEvents: events,
-        start: new Date("2024-01-01"),
-        end: new Date("2024-12-31"),
+        start: moment.utc("2024-01-01"),
+        end: moment.utc("2024-12-31"),
       });
 
       expect(fs.writeFileSync).toHaveBeenCalled();
@@ -232,8 +232,8 @@ describe("dailySolarCycle.events", () => {
         await import("./dailySolarCycle.events");
       writeDailySolarCycleEvents({
         dailySolarCycleEvents: [],
-        start: new Date("2024-01-01"),
-        end: new Date("2024-12-31"),
+        start: moment.utc("2024-01-01"),
+        end: moment.utc("2024-12-31"),
       });
 
       expect(fs.writeFileSync).not.toHaveBeenCalled();
@@ -242,9 +242,9 @@ describe("dailySolarCycle.events", () => {
 
   describe("getSolarNadirEvent", () => {
     it("should create a solar nadir event with correct structure", () => {
-      const date = new Date("2024-03-22T00:00:00.000Z");
+      const date = moment.utc("2024-03-22T00:00:00.000Z");
 
-      const event = getSolarNadirEvent(date);
+      const event = buildSolarNadirEvent(date);
 
       expect(event.summary).toBe("☀️ ⏬ Solar Nadir");
       expect(event.description).toBe("Solar Nadir");

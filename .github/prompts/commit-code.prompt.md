@@ -1,7 +1,7 @@
 ---
 agent: "agent"
 description: "Generate a Conventional Commits message with Gitmoji for staged changes, following this monorepo's commitlint rules."
-model: Claude Haiku 4.5 (copilot)
+model: "Claude Haiku 4.5 (copilot)"
 name: "commit-code"
 tools: ["execute/runInTerminal", "read", "search", "web"]
 ---

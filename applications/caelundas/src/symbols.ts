@@ -92,12 +92,11 @@ export const symbolByNode = {
 
 /**
  * Complete mapping of all celestial bodies to their symbols.
- * Combines planets, asteroids, comets, and lunar nodes.
+ * Combines planets, asteroids, and lunar nodes.
  */
 export const symbolByBody = {
   ...symbolByPlanet,
   ...symbolByAsteroid,
-  ...symbolByComet,
   ...symbolByNode,
 } as const;
 
@@ -412,9 +411,9 @@ export const symbolByMartianPhase = {
 
 /**
  * Array of aspect lifecycle phases.
- * Aspects form as bodies approach, become exact at peak, then dissolve as bodies separate.
+ * Aspects form as bodies approach, become perfective at peak, then dissolve as bodies separate.
  */
-export const aspectPhases = ["forming", "exact", "dissolving"] as const;
+export const aspectPhases = ["forming", "perfective", "dissolving"] as const;
 /**
  * Array of eclipse event phases.
  * Tracks the start, peak, and end of solar/lunar eclipses.
@@ -471,7 +470,6 @@ export const ingressBodies = [
   "pallas",
   "juno",
   "vesta",
-  "halley",
   "north lunar node",
   "lunar apogee",
 ] as const;
@@ -497,7 +495,6 @@ export const aspectBodies = [
   "pallas",
   "juno",
   "vesta",
-  "halley",
   "north lunar node",
   "lunar apogee",
 ] as const;

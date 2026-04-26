@@ -1,9 +1,9 @@
 ---
 agent: "agent"
 description: "Execute an implementation plan by dispatching each task to a focused subagent, tracking completion, and verifying the result."
+model: "Claude Sonnet 4.6 (copilot)"
 name: "execute-plan"
 argument-hint: "Path to the plan file to execute (e.g. documentation/planning/2026-03-09-feature-lexico-auth-1.plan.md)"
-model: Claude Sonnet 4.6 (copilot)
 tools:
   [
     vscode,

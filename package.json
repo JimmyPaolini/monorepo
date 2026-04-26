@@ -86,7 +86,8 @@
       "@swc/core",
       "esbuild",
       "nx",
-      "sqlite3"
+      "sqlite3",
+      "sweph"
     ],
     "overrides": {
       "axios@<1.15.0": ">=1.15.0",
@@ -117,7 +118,8 @@
       "vite@<=6.4.1": ">=6.4.2",
       "vite@>=7.0.0 <=7.3.1": ">=7.3.2",
       "vite@>=7.1.0 <=7.3.1": ">=7.3.2"
-    }
+    },
+    "ignoredBuiltDependencies": []
   },
   "repository": "JimmyPaolini/monorepo.git",
   "scripts": {

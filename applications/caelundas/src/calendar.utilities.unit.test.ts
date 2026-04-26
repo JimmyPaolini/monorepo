@@ -1,3 +1,4 @@
+import moment from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
 import { mockDates } from "../testing/mocks";
@@ -9,8 +10,8 @@ describe("calendar.utilities", () => {
 
   describe("getEvent", () => {
     const baseEvent: Event = {
-      start: new Date("2025-03-20T09:06:00Z"),
-      end: new Date("2025-03-20T09:06:00Z"),
+      start: moment.utc("2025-03-20T09:06:00Z"),
+      end: moment.utc("2025-03-20T09:06:00Z"),
       summary: "☀️ → ♈ Sun ingress Aries",
       description: "Sun ingress Aries",
       categories: ["Astronomy", "Astrology", "Ingress", "Sun", "Aries"],
@@ -99,7 +100,7 @@ describe("calendar.utilities", () => {
     it("should handle events with different start and end times", () => {
       const durationEvent: Event = {
         ...baseEvent,
-        end: new Date("2025-04-20T09:06:00Z"),
+        end: moment.utc("2025-04-20T09:06:00Z"),
       };
       const vevent = getEvent(durationEvent);
 
@@ -124,15 +125,15 @@ describe("calendar.utilities", () => {
   describe("getCalendar", () => {
     const sampleEvents: Event[] = [
       {
-        start: new Date("2025-03-20T09:06:00Z"),
-        end: new Date("2025-03-20T09:06:00Z"),
+        start: moment.utc("2025-03-20T09:06:00Z"),
+        end: moment.utc("2025-03-20T09:06:00Z"),
         summary: "Vernal Equinox",
         description: "Sun enters Aries",
         categories: ["Astronomy", "Equinox"],
       },
       {
-        start: new Date("2025-03-29T10:58:00Z"),
-        end: new Date("2025-03-29T10:58:00Z"),
+        start: moment.utc("2025-03-29T10:58:00Z"),
+        end: moment.utc("2025-03-29T10:58:00Z"),
         summary: "Full Moon",
         description: "Full Moon in Libra",
         categories: ["Astronomy", "Lunar Phase"],

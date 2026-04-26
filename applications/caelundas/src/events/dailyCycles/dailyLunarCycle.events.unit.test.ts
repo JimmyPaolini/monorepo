@@ -2,11 +2,11 @@ import moment from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
 
 import {
+  buildLunarNadirEvent,
+  buildLunarZenithEvent,
+  buildMoonriseEvent,
+  buildMoonsetEvent,
   getDailyLunarCycleEvents,
-  getLunarNadirEvent,
-  getLunarZenithEvent,
-  getMoonriseEvent,
-  getMoonsetEvent,
 } from "./dailyLunarCycle.events";
 
 import type { Event } from "../../calendar.utilities";
@@ -159,9 +159,9 @@ describe("dailyLunarCycle.events", () => {
 
   describe("getMoonriseEvent", () => {
     it("should create a moonrise event with correct structure", () => {
-      const date = new Date("2024-03-21T20:30:00.000Z");
+      const date = moment.utc("2024-03-21T20:30:00.000Z");
 
-      const event = getMoonriseEvent(date);
+      const event = buildMoonriseEvent(date);
 
       expect(event.summary).toBe("🌙 🔼 Moonrise");
       expect(event.description).toBe("Moonrise");
@@ -175,9 +175,9 @@ describe("dailyLunarCycle.events", () => {
 
   describe("getLunarZenithEvent", () => {
     it("should create a lunar zenith event with correct structure", () => {
-      const date = new Date("2024-03-22T01:00:00.000Z");
+      const date = moment.utc("2024-03-22T01:00:00.000Z");
 
-      const event = getLunarZenithEvent(date);
+      const event = buildLunarZenithEvent(date);
 
       expect(event.summary).toBe("🌙 ⏫ Lunar Zenith");
       expect(event.description).toBe("Lunar Zenith");
@@ -191,9 +191,9 @@ describe("dailyLunarCycle.events", () => {
 
   describe("getMoonsetEvent", () => {
     it("should create a moonset event with correct structure", () => {
-      const date = new Date("2024-03-22T06:30:00.000Z");
+      const date = moment.utc("2024-03-22T06:30:00.000Z");
 
-      const event = getMoonsetEvent(date);
+      const event = buildMoonsetEvent(date);
 
       expect(event.summary).toBe("🌙 🔽 Moonset");
       expect(event.description).toBe("Moonset");
@@ -211,8 +211,8 @@ describe("dailyLunarCycle.events", () => {
 
       const events: Event[] = [
         {
-          start: new Date("2024-03-21T05:00:00.000Z"),
-          end: new Date("2024-03-21T05:00:00.000Z"),
+          start: moment.utc("2024-03-21T05:00:00.000Z"),
+          end: moment.utc("2024-03-21T05:00:00.000Z"),
           summary: "🌙 ⏫ Moonrise",
           description: "Moonrise",
           categories: ["Astronomy", "Astrology", "Lunar", "Moonrise"],
@@ -224,8 +224,8 @@ describe("dailyLunarCycle.events", () => {
         await import("./dailyLunarCycle.events");
       writeDailyLunarCycleEvents({
         dailyLunarCycleEvents: events,
-        start: new Date("2024-01-01"),
-        end: new Date("2024-12-31"),
+        start: moment.utc("2024-01-01"),
+        end: moment.utc("2024-12-31"),
       });
 
       expect(fs.writeFileSync).toHaveBeenCalled();
@@ -239,8 +239,8 @@ describe("dailyLunarCycle.events", () => {
         await import("./dailyLunarCycle.events");
       writeDailyLunarCycleEvents({
         dailyLunarCycleEvents: [],
-        start: new Date("2024-01-01"),
-        end: new Date("2024-12-31"),
+        start: moment.utc("2024-01-01"),
+        end: moment.utc("2024-12-31"),
       });
 
       expect(fs.writeFileSync).not.toHaveBeenCalled();
@@ -249,9 +249,9 @@ describe("dailyLunarCycle.events", () => {
 
   describe("getLunarNadirEvent", () => {
     it("should create a lunar nadir event with correct structure", () => {
-      const date = new Date("2024-03-21T13:00:00.000Z");
+      const date = moment.utc("2024-03-21T13:00:00.000Z");
 
-      const event = getLunarNadirEvent(date);
+      const event = buildLunarNadirEvent(date);
 
       expect(event.summary).toBe("🌙 ⏬ Lunar Nadir");
       expect(event.description).toBe("Lunar Nadir");

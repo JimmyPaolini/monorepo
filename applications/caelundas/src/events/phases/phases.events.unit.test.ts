@@ -1,22 +1,35 @@
 import fs from "node:fs";
 
-import { describe, expect, it, vi } from "vitest";
+import moment from "moment-timezone";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
   symbolByMartianPhase,
   symbolByMercurianPhase,
   symbolByVenusianPhase,
 } from "../../symbols";
+import { planetaryPhaseBodies } from "../../types";
 
 import {
-  getMartianPhaseEvent,
-  getMercurianPhaseEvent,
-  getPlanetaryPhaseDurationEvents,
-  getVenusianPhaseEvent,
+  buildMartianPhaseEvent,
+  buildMercurianPhaseEvent,
+  buildVenusianPhaseEvent,
+  getMartianPhaseEvents,
+  getMercurianPhaseEvents,
+  getPlanetaryPhaseEvents,
+  getPlanetaryPhaseProgressiveEvents,
+  getVenusianPhaseEvents,
   writePlanetaryPhaseEvents,
 } from "./phases.events";
+import * as phasesUtilities from "./phases.utilities";
 
 import type { Event } from "../../calendar.utilities";
+import type {
+  CoordinateEphemeris,
+  DistanceEphemeris,
+  IlluminationEphemeris,
+} from "../../ephemeris/ephemeris.types";
+import type { Body } from "../../types";
 
 vi.mock("fs", () => ({
   default: {
@@ -36,11 +49,263 @@ vi.mock("./phases.utilities", () => ({
 }));
 
 describe("phases.events", () => {
+  const setAllPhasePredicateMocks = (value: boolean): void => {
+    vi.mocked(phasesUtilities.isMorningRise).mockReturnValue(value);
+    vi.mocked(phasesUtilities.isMorningSet).mockReturnValue(value);
+    vi.mocked(phasesUtilities.isEveningRise).mockReturnValue(value);
+    vi.mocked(phasesUtilities.isEveningSet).mockReturnValue(value);
+    vi.mocked(phasesUtilities.isWesternBrightest).mockReturnValue(value);
+    vi.mocked(phasesUtilities.isWesternElongation).mockReturnValue(value);
+    vi.mocked(phasesUtilities.isEasternBrightest).mockReturnValue(value);
+    vi.mocked(phasesUtilities.isEasternElongation).mockReturnValue(value);
+  };
+
+  const createCoordinateEphemeris = (
+    minute: moment.Moment,
+    longitude = 100,
+  ): CoordinateEphemeris => {
+    const ephemeris: CoordinateEphemeris = {};
+    for (let offset = -31; offset <= 31; offset += 1) {
+      const ts = new Date(minute.valueOf() + offset * 60_000).toISOString();
+      ephemeris[ts] = {
+        longitude,
+        latitude: 0,
+      };
+    }
+    return ephemeris;
+  };
+
+  const createDistanceEphemeris = (
+    minute: moment.Moment,
+    distance = 1,
+  ): DistanceEphemeris => {
+    const ephemeris: DistanceEphemeris = {};
+    for (let offset = -31; offset <= 31; offset += 1) {
+      const ts = new Date(minute.valueOf() + offset * 60_000).toISOString();
+      ephemeris[ts] = {
+        distance,
+      };
+    }
+    return ephemeris;
+  };
+
+  const createIlluminationEphemeris = (
+    minute: moment.Moment,
+    illumination = 50,
+  ): IlluminationEphemeris => {
+    const ephemeris: IlluminationEphemeris = {};
+    for (let offset = -31; offset <= 31; offset += 1) {
+      const ts = new Date(minute.valueOf() + offset * 60_000).toISOString();
+      ephemeris[ts] = {
+        illumination,
+      };
+    }
+    return ephemeris;
+  };
+
+  const createDetectionInputs = (
+    minute: moment.Moment,
+  ): {
+    currentMinute: moment.Moment;
+    sunCoordinateEphemeris: CoordinateEphemeris;
+    venusCoordinateEphemeris: CoordinateEphemeris;
+    mercuryCoordinateEphemeris: CoordinateEphemeris;
+    marsCoordinateEphemeris: CoordinateEphemeris;
+    venusDistanceEphemeris: DistanceEphemeris;
+    mercuryDistanceEphemeris: DistanceEphemeris;
+    marsDistanceEphemeris: DistanceEphemeris;
+    venusIlluminationEphemeris: IlluminationEphemeris;
+    mercuryIlluminationEphemeris: IlluminationEphemeris;
+    marsIlluminationEphemeris: IlluminationEphemeris;
+  } => ({
+    currentMinute: minute,
+    sunCoordinateEphemeris: createCoordinateEphemeris(minute, 90),
+    venusCoordinateEphemeris: createCoordinateEphemeris(minute, 100),
+    mercuryCoordinateEphemeris: createCoordinateEphemeris(minute, 100),
+    marsCoordinateEphemeris: createCoordinateEphemeris(minute, 100),
+    venusDistanceEphemeris: createDistanceEphemeris(minute, 1),
+    mercuryDistanceEphemeris: createDistanceEphemeris(minute, 1),
+    marsDistanceEphemeris: createDistanceEphemeris(minute, 1),
+    venusIlluminationEphemeris: createIlluminationEphemeris(minute, 50),
+    mercuryIlluminationEphemeris: createIlluminationEphemeris(minute, 50),
+    marsIlluminationEphemeris: createIlluminationEphemeris(minute, 50),
+  });
+
+  beforeEach(() => {
+    vi.clearAllMocks();
+    setAllPhasePredicateMocks(false);
+  });
+
+  describe("phase detection branching", () => {
+    it("detects all Venus phase events when all predicates are true", () => {
+      setAllPhasePredicateMocks(true);
+      const minute = moment.utc("2024-01-15T06:00:00.000Z");
+      const inputs = createDetectionInputs(minute);
+
+      const events = getVenusianPhaseEvents({
+        currentMinute: minute,
+        sunCoordinateEphemeris: inputs.sunCoordinateEphemeris,
+        venusCoordinateEphemeris: inputs.venusCoordinateEphemeris,
+        venusDistanceEphemeris: inputs.venusDistanceEphemeris,
+        venusIlluminationEphemeris: inputs.venusIlluminationEphemeris,
+      });
+
+      expect(events).toHaveLength(8);
+      expect(events.map((event) => event.description)).toEqual(
+        expect.arrayContaining([
+          "Venus Morning Rise",
+          "Venus Western Brightest",
+          "Venus Western Elongation",
+          "Venus Morning Set",
+          "Venus Evening Rise",
+          "Venus Eastern Elongation",
+          "Venus Eastern Brightest",
+          "Venus Evening Set",
+        ]),
+      );
+    });
+
+    it("detects all Mercury phase events when all predicates are true", () => {
+      setAllPhasePredicateMocks(true);
+      const minute = moment.utc("2024-01-20T06:00:00.000Z");
+      const inputs = createDetectionInputs(minute);
+
+      const events = getMercurianPhaseEvents({
+        currentMinute: minute,
+        sunCoordinateEphemeris: inputs.sunCoordinateEphemeris,
+        mercuryCoordinateEphemeris: inputs.mercuryCoordinateEphemeris,
+        mercuryDistanceEphemeris: inputs.mercuryDistanceEphemeris,
+        mercuryIlluminationEphemeris: inputs.mercuryIlluminationEphemeris,
+      });
+
+      expect(events).toHaveLength(8);
+      expect(events.map((event) => event.description)).toEqual(
+        expect.arrayContaining([
+          "Mercury Morning Rise",
+          "Mercury Western Brightest",
+          "Mercury Western Elongation",
+          "Mercury Morning Set",
+          "Mercury Evening Rise",
+          "Mercury Eastern Elongation",
+          "Mercury Eastern Brightest",
+          "Mercury Evening Set",
+        ]),
+      );
+    });
+
+    it("detects only Mars rise/set phases when all predicates are true", () => {
+      setAllPhasePredicateMocks(true);
+      const minute = moment.utc("2024-06-01T06:00:00.000Z");
+      const inputs = createDetectionInputs(minute);
+
+      const events = getMartianPhaseEvents({
+        currentMinute: minute,
+        sunCoordinateEphemeris: inputs.sunCoordinateEphemeris,
+        marsCoordinateEphemeris: inputs.marsCoordinateEphemeris,
+        marsDistanceEphemeris: inputs.marsDistanceEphemeris,
+        marsIlluminationEphemeris: inputs.marsIlluminationEphemeris,
+      });
+
+      expect(events).toHaveLength(4);
+      expect(events.map((event) => event.description)).toEqual(
+        expect.arrayContaining([
+          "Mars Morning Rise",
+          "Mars Morning Set",
+          "Mars Evening Rise",
+          "Mars Evening Set",
+        ]),
+      );
+    });
+
+    it("returns no Venus phase events when all predicates are false", () => {
+      setAllPhasePredicateMocks(false);
+      const minute = moment.utc("2024-02-01T06:00:00.000Z");
+      const inputs = createDetectionInputs(minute);
+
+      const events = getVenusianPhaseEvents({
+        currentMinute: minute,
+        sunCoordinateEphemeris: inputs.sunCoordinateEphemeris,
+        venusCoordinateEphemeris: inputs.venusCoordinateEphemeris,
+        venusDistanceEphemeris: inputs.venusDistanceEphemeris,
+        venusIlluminationEphemeris: inputs.venusIlluminationEphemeris,
+      });
+
+      expect(events).toEqual([]);
+    });
+
+    it("gates planetary phase detection by configured phase bodies", () => {
+      setAllPhasePredicateMocks(true);
+      const minute = moment.utc("2024-03-01T06:00:00.000Z");
+      const inputs = createDetectionInputs(minute);
+
+      const mutablePlanetaryPhaseBodies =
+        planetaryPhaseBodies as unknown as Body[];
+      const originalBodies = [...mutablePlanetaryPhaseBodies];
+      mutablePlanetaryPhaseBodies.splice(
+        0,
+        mutablePlanetaryPhaseBodies.length,
+        "venus",
+      );
+
+      try {
+        const events = getPlanetaryPhaseEvents({
+          currentMinute: minute,
+          coordinateEphemerisByBody: {
+            sun: inputs.sunCoordinateEphemeris,
+            moon: inputs.sunCoordinateEphemeris,
+            mercury: inputs.mercuryCoordinateEphemeris,
+            venus: inputs.venusCoordinateEphemeris,
+            mars: inputs.marsCoordinateEphemeris,
+            jupiter: inputs.sunCoordinateEphemeris,
+            saturn: inputs.sunCoordinateEphemeris,
+            uranus: inputs.sunCoordinateEphemeris,
+            neptune: inputs.sunCoordinateEphemeris,
+            pluto: inputs.sunCoordinateEphemeris,
+            chiron: inputs.sunCoordinateEphemeris,
+            lilith: inputs.sunCoordinateEphemeris,
+            ceres: inputs.sunCoordinateEphemeris,
+            pallas: inputs.sunCoordinateEphemeris,
+            juno: inputs.sunCoordinateEphemeris,
+            vesta: inputs.sunCoordinateEphemeris,
+            "north lunar node": inputs.sunCoordinateEphemeris,
+            "south lunar node": inputs.sunCoordinateEphemeris,
+            "lunar apogee": inputs.sunCoordinateEphemeris,
+            "lunar perigee": inputs.sunCoordinateEphemeris,
+          },
+          distanceEphemerisByBody: {
+            sun: inputs.venusDistanceEphemeris,
+            mercury: inputs.mercuryDistanceEphemeris,
+            venus: inputs.venusDistanceEphemeris,
+            mars: inputs.marsDistanceEphemeris,
+          },
+          illuminationEphemerisByBody: {
+            sun: inputs.venusIlluminationEphemeris,
+            moon: inputs.venusIlluminationEphemeris,
+            mercury: inputs.mercuryIlluminationEphemeris,
+            venus: inputs.venusIlluminationEphemeris,
+            mars: inputs.marsIlluminationEphemeris,
+          },
+        });
+
+        expect(events).toHaveLength(8);
+        expect(
+          events.every((event) => event.description.startsWith("Venus")),
+        ).toBe(true);
+      } finally {
+        mutablePlanetaryPhaseBodies.splice(
+          0,
+          mutablePlanetaryPhaseBodies.length,
+          ...originalBodies,
+        );
+      }
+    });
+  });
+
   describe("getVenusianPhaseEvent", () => {
     it("should create a morning rise event with correct structure", () => {
-      const timestamp = new Date("2024-01-15T06:00:00.000Z");
+      const timestamp = moment.utc("2024-01-15T06:00:00.000Z");
 
-      const event = getVenusianPhaseEvent({
+      const event = buildVenusianPhaseEvent({
         timestamp,
         phase: "morning rise",
       });
@@ -59,9 +324,9 @@ describe("phases.events", () => {
     });
 
     it("should create a western brightest event with correct structure", () => {
-      const timestamp = new Date("2024-02-15T06:00:00.000Z");
+      const timestamp = moment.utc("2024-02-15T06:00:00.000Z");
 
-      const event = getVenusianPhaseEvent({
+      const event = buildVenusianPhaseEvent({
         timestamp,
         phase: "western brightest",
       });
@@ -74,9 +339,9 @@ describe("phases.events", () => {
     });
 
     it("should create a western elongation event with correct structure", () => {
-      const timestamp = new Date("2024-03-15T06:00:00.000Z");
+      const timestamp = moment.utc("2024-03-15T06:00:00.000Z");
 
-      const event = getVenusianPhaseEvent({
+      const event = buildVenusianPhaseEvent({
         timestamp,
         phase: "western elongation",
       });
@@ -89,9 +354,9 @@ describe("phases.events", () => {
     });
 
     it("should create a morning set event with correct structure", () => {
-      const timestamp = new Date("2024-04-15T06:00:00.000Z");
+      const timestamp = moment.utc("2024-04-15T06:00:00.000Z");
 
-      const event = getVenusianPhaseEvent({
+      const event = buildVenusianPhaseEvent({
         timestamp,
         phase: "morning set",
       });
@@ -104,9 +369,9 @@ describe("phases.events", () => {
     });
 
     it("should create an evening rise event with correct structure", () => {
-      const timestamp = new Date("2024-05-15T18:00:00.000Z");
+      const timestamp = moment.utc("2024-05-15T18:00:00.000Z");
 
-      const event = getVenusianPhaseEvent({
+      const event = buildVenusianPhaseEvent({
         timestamp,
         phase: "evening rise",
       });
@@ -119,9 +384,9 @@ describe("phases.events", () => {
     });
 
     it("should create an eastern elongation event with correct structure", () => {
-      const timestamp = new Date("2024-06-15T18:00:00.000Z");
+      const timestamp = moment.utc("2024-06-15T18:00:00.000Z");
 
-      const event = getVenusianPhaseEvent({
+      const event = buildVenusianPhaseEvent({
         timestamp,
         phase: "eastern elongation",
       });
@@ -134,9 +399,9 @@ describe("phases.events", () => {
     });
 
     it("should create an eastern brightest event with correct structure", () => {
-      const timestamp = new Date("2024-07-15T18:00:00.000Z");
+      const timestamp = moment.utc("2024-07-15T18:00:00.000Z");
 
-      const event = getVenusianPhaseEvent({
+      const event = buildVenusianPhaseEvent({
         timestamp,
         phase: "eastern brightest",
       });
@@ -149,9 +414,9 @@ describe("phases.events", () => {
     });
 
     it("should create an evening set event with correct structure", () => {
-      const timestamp = new Date("2024-08-15T18:00:00.000Z");
+      const timestamp = moment.utc("2024-08-15T18:00:00.000Z");
 
-      const event = getVenusianPhaseEvent({
+      const event = buildVenusianPhaseEvent({
         timestamp,
         phase: "evening set",
       });
@@ -166,9 +431,9 @@ describe("phases.events", () => {
 
   describe("getMercurianPhaseEvent", () => {
     it("should create a morning rise event with correct structure", () => {
-      const timestamp = new Date("2024-01-20T06:00:00.000Z");
+      const timestamp = moment.utc("2024-01-20T06:00:00.000Z");
 
-      const event = getMercurianPhaseEvent({
+      const event = buildMercurianPhaseEvent({
         timestamp,
         phase: "morning rise",
       });
@@ -187,9 +452,9 @@ describe("phases.events", () => {
     });
 
     it("should create a western brightest event with correct structure", () => {
-      const timestamp = new Date("2024-02-01T06:00:00.000Z");
+      const timestamp = moment.utc("2024-02-01T06:00:00.000Z");
 
-      const event = getMercurianPhaseEvent({
+      const event = buildMercurianPhaseEvent({
         timestamp,
         phase: "western brightest",
       });
@@ -202,9 +467,9 @@ describe("phases.events", () => {
     });
 
     it("should create a western elongation event with correct structure", () => {
-      const timestamp = new Date("2024-02-15T06:00:00.000Z");
+      const timestamp = moment.utc("2024-02-15T06:00:00.000Z");
 
-      const event = getMercurianPhaseEvent({
+      const event = buildMercurianPhaseEvent({
         timestamp,
         phase: "western elongation",
       });
@@ -217,9 +482,9 @@ describe("phases.events", () => {
     });
 
     it("should create a morning set event with correct structure", () => {
-      const timestamp = new Date("2024-03-01T06:00:00.000Z");
+      const timestamp = moment.utc("2024-03-01T06:00:00.000Z");
 
-      const event = getMercurianPhaseEvent({
+      const event = buildMercurianPhaseEvent({
         timestamp,
         phase: "morning set",
       });
@@ -232,9 +497,9 @@ describe("phases.events", () => {
     });
 
     it("should create an evening rise event with correct structure", () => {
-      const timestamp = new Date("2024-03-15T18:00:00.000Z");
+      const timestamp = moment.utc("2024-03-15T18:00:00.000Z");
 
-      const event = getMercurianPhaseEvent({
+      const event = buildMercurianPhaseEvent({
         timestamp,
         phase: "evening rise",
       });
@@ -247,9 +512,9 @@ describe("phases.events", () => {
     });
 
     it("should create an eastern elongation event with correct structure", () => {
-      const timestamp = new Date("2024-04-01T18:00:00.000Z");
+      const timestamp = moment.utc("2024-04-01T18:00:00.000Z");
 
-      const event = getMercurianPhaseEvent({
+      const event = buildMercurianPhaseEvent({
         timestamp,
         phase: "eastern elongation",
       });
@@ -262,9 +527,9 @@ describe("phases.events", () => {
     });
 
     it("should create an eastern brightest event with correct structure", () => {
-      const timestamp = new Date("2024-04-15T18:00:00.000Z");
+      const timestamp = moment.utc("2024-04-15T18:00:00.000Z");
 
-      const event = getMercurianPhaseEvent({
+      const event = buildMercurianPhaseEvent({
         timestamp,
         phase: "eastern brightest",
       });
@@ -277,9 +542,9 @@ describe("phases.events", () => {
     });
 
     it("should create an evening set event with correct structure", () => {
-      const timestamp = new Date("2024-05-01T18:00:00.000Z");
+      const timestamp = moment.utc("2024-05-01T18:00:00.000Z");
 
-      const event = getMercurianPhaseEvent({
+      const event = buildMercurianPhaseEvent({
         timestamp,
         phase: "evening set",
       });
@@ -294,9 +559,9 @@ describe("phases.events", () => {
 
   describe("getMartianPhaseEvent", () => {
     it("should create a morning rise event with correct structure", () => {
-      const timestamp = new Date("2024-06-01T06:00:00.000Z");
+      const timestamp = moment.utc("2024-06-01T06:00:00.000Z");
 
-      const event = getMartianPhaseEvent({
+      const event = buildMartianPhaseEvent({
         timestamp,
         phase: "morning rise",
       });
@@ -315,9 +580,9 @@ describe("phases.events", () => {
     });
 
     it("should create a morning set event with correct structure", () => {
-      const timestamp = new Date("2024-07-01T06:00:00.000Z");
+      const timestamp = moment.utc("2024-07-01T06:00:00.000Z");
 
-      const event = getMartianPhaseEvent({
+      const event = buildMartianPhaseEvent({
         timestamp,
         phase: "morning set",
       });
@@ -330,9 +595,9 @@ describe("phases.events", () => {
     });
 
     it("should create an evening rise event with correct structure", () => {
-      const timestamp = new Date("2024-08-01T18:00:00.000Z");
+      const timestamp = moment.utc("2024-08-01T18:00:00.000Z");
 
-      const event = getMartianPhaseEvent({
+      const event = buildMartianPhaseEvent({
         timestamp,
         phase: "evening rise",
       });
@@ -345,9 +610,9 @@ describe("phases.events", () => {
     });
 
     it("should create an evening set event with correct structure", () => {
-      const timestamp = new Date("2024-09-01T18:00:00.000Z");
+      const timestamp = moment.utc("2024-09-01T18:00:00.000Z");
 
-      const event = getMartianPhaseEvent({
+      const event = buildMartianPhaseEvent({
         timestamp,
         phase: "evening set",
       });
@@ -360,11 +625,11 @@ describe("phases.events", () => {
     });
   });
 
-  describe("getPlanetaryPhaseDurationEvents", () => {
-    it("should create Venus morning visibility duration event", () => {
+  describe("getPlanetaryPhaseProgressiveEvents", () => {
+    it("should create Venus morning visibility progressive event", () => {
       const morningRise: Event = {
-        start: new Date("2024-01-15T06:00:00.000Z"),
-        end: new Date("2024-01-15T06:00:00.000Z"),
+        start: moment.utc("2024-01-15T06:00:00.000Z"),
+        end: moment.utc("2024-01-15T06:00:00.000Z"),
         summary: "♀️🌄↥ Venus Morning Rise",
         description: "Venus Morning Rise",
         categories: [
@@ -376,8 +641,8 @@ describe("phases.events", () => {
         ],
       };
       const morningSet: Event = {
-        start: new Date("2024-04-15T06:00:00.000Z"),
-        end: new Date("2024-04-15T06:00:00.000Z"),
+        start: moment.utc("2024-04-15T06:00:00.000Z"),
+        end: moment.utc("2024-04-15T06:00:00.000Z"),
         summary: "♀️🌄↧ Venus Morning Set",
         description: "Venus Morning Set",
         categories: [
@@ -389,13 +654,13 @@ describe("phases.events", () => {
         ],
       };
 
-      const durationEvents = getPlanetaryPhaseDurationEvents([
+      const progressiveEvents = getPlanetaryPhaseProgressiveEvents([
         morningRise,
         morningSet,
       ]);
 
-      expect(durationEvents.length).toBeGreaterThanOrEqual(1);
-      const venusMorning = durationEvents.find(
+      expect(progressiveEvents.length).toBeGreaterThanOrEqual(1);
+      const venusMorning = progressiveEvents.find(
         (e) =>
           e.description.includes("Venus") && e.description.includes("Morning"),
       );
@@ -407,10 +672,10 @@ describe("phases.events", () => {
       }
     });
 
-    it("should create Venus evening visibility duration event", () => {
+    it("should create Venus evening visibility progressive event", () => {
       const eveningRise: Event = {
-        start: new Date("2024-05-15T18:00:00.000Z"),
-        end: new Date("2024-05-15T18:00:00.000Z"),
+        start: moment.utc("2024-05-15T18:00:00.000Z"),
+        end: moment.utc("2024-05-15T18:00:00.000Z"),
         summary: "♀️🌇↥ Venus Evening Rise",
         description: "Venus Evening Rise",
         categories: [
@@ -422,8 +687,8 @@ describe("phases.events", () => {
         ],
       };
       const eveningSet: Event = {
-        start: new Date("2024-08-15T18:00:00.000Z"),
-        end: new Date("2024-08-15T18:00:00.000Z"),
+        start: moment.utc("2024-08-15T18:00:00.000Z"),
+        end: moment.utc("2024-08-15T18:00:00.000Z"),
         summary: "♀️🌇↧ Venus Evening Set",
         description: "Venus Evening Set",
         categories: [
@@ -435,13 +700,13 @@ describe("phases.events", () => {
         ],
       };
 
-      const durationEvents = getPlanetaryPhaseDurationEvents([
+      const progressiveEvents = getPlanetaryPhaseProgressiveEvents([
         eveningRise,
         eveningSet,
       ]);
 
-      expect(durationEvents.length).toBeGreaterThanOrEqual(1);
-      const venusEvening = durationEvents.find(
+      expect(progressiveEvents.length).toBeGreaterThanOrEqual(1);
+      const venusEvening = progressiveEvents.find(
         (e) =>
           e.description.includes("Venus") && e.description.includes("Evening"),
       );
@@ -453,10 +718,10 @@ describe("phases.events", () => {
       }
     });
 
-    it("should create Mercury morning visibility duration event", () => {
+    it("should create Mercury morning visibility progressive event", () => {
       const morningRise: Event = {
-        start: new Date("2024-01-20T06:00:00.000Z"),
-        end: new Date("2024-01-20T06:00:00.000Z"),
+        start: moment.utc("2024-01-20T06:00:00.000Z"),
+        end: moment.utc("2024-01-20T06:00:00.000Z"),
         summary: "☿🌄↥ Mercury Morning Rise",
         description: "Mercury Morning Rise",
         categories: [
@@ -468,8 +733,8 @@ describe("phases.events", () => {
         ],
       };
       const morningSet: Event = {
-        start: new Date("2024-03-01T06:00:00.000Z"),
-        end: new Date("2024-03-01T06:00:00.000Z"),
+        start: moment.utc("2024-03-01T06:00:00.000Z"),
+        end: moment.utc("2024-03-01T06:00:00.000Z"),
         summary: "☿🌄↧ Mercury Morning Set",
         description: "Mercury Morning Set",
         categories: [
@@ -481,13 +746,13 @@ describe("phases.events", () => {
         ],
       };
 
-      const durationEvents = getPlanetaryPhaseDurationEvents([
+      const progressiveEvents = getPlanetaryPhaseProgressiveEvents([
         morningRise,
         morningSet,
       ]);
 
-      expect(durationEvents.length).toBeGreaterThanOrEqual(1);
-      const mercuryMorning = durationEvents.find(
+      expect(progressiveEvents.length).toBeGreaterThanOrEqual(1);
+      const mercuryMorning = progressiveEvents.find(
         (e) =>
           e.description.includes("Mercury") &&
           e.description.includes("Morning"),
@@ -500,10 +765,10 @@ describe("phases.events", () => {
       }
     });
 
-    it("should create Mars morning visibility duration event", () => {
+    it("should create Mars morning visibility progressive event", () => {
       const morningRise: Event = {
-        start: new Date("2024-06-01T06:00:00.000Z"),
-        end: new Date("2024-06-01T06:00:00.000Z"),
+        start: moment.utc("2024-06-01T06:00:00.000Z"),
+        end: moment.utc("2024-06-01T06:00:00.000Z"),
         summary: "♂️🌄↥ Mars Morning Rise",
         description: "Mars Morning Rise",
         categories: [
@@ -515,8 +780,8 @@ describe("phases.events", () => {
         ],
       };
       const morningSet: Event = {
-        start: new Date("2024-07-01T06:00:00.000Z"),
-        end: new Date("2024-07-01T06:00:00.000Z"),
+        start: moment.utc("2024-07-01T06:00:00.000Z"),
+        end: moment.utc("2024-07-01T06:00:00.000Z"),
         summary: "♂️🌄↧ Mars Morning Set",
         description: "Mars Morning Set",
         categories: [
@@ -528,13 +793,13 @@ describe("phases.events", () => {
         ],
       };
 
-      const durationEvents = getPlanetaryPhaseDurationEvents([
+      const progressiveEvents = getPlanetaryPhaseProgressiveEvents([
         morningRise,
         morningSet,
       ]);
 
-      expect(durationEvents.length).toBeGreaterThanOrEqual(1);
-      const marsMorning = durationEvents.find(
+      expect(progressiveEvents.length).toBeGreaterThanOrEqual(1);
+      const marsMorning = progressiveEvents.find(
         (e) =>
           e.description.includes("Mars") && e.description.includes("Morning"),
       );
@@ -547,32 +812,32 @@ describe("phases.events", () => {
     });
 
     it("should return empty array when no planetary phase events provided", () => {
-      const durationEvents = getPlanetaryPhaseDurationEvents([]);
+      const progressiveEvents = getPlanetaryPhaseProgressiveEvents([]);
 
-      expect(durationEvents).toHaveLength(0);
+      expect(progressiveEvents).toHaveLength(0);
     });
 
     it("should filter out non-planetary phase events", () => {
       const nonPlanetaryEvent: Event = {
-        start: new Date("2024-01-15T06:00:00.000Z"),
-        end: new Date("2024-01-15T06:00:00.000Z"),
+        start: moment.utc("2024-01-15T06:00:00.000Z"),
+        end: moment.utc("2024-01-15T06:00:00.000Z"),
         summary: "Some other event",
         description: "Not a planetary event",
         categories: ["Astronomy", "Something Else"],
       };
 
-      const durationEvents = getPlanetaryPhaseDurationEvents([
+      const progressiveEvents = getPlanetaryPhaseProgressiveEvents([
         nonPlanetaryEvent,
       ]);
 
-      expect(durationEvents).toHaveLength(0);
+      expect(progressiveEvents).toHaveLength(0);
     });
 
     it("should handle multiple planets visibility events", () => {
       // Venus morning visibility
       const venusMorningRise: Event = {
-        start: new Date("2024-01-15T06:00:00.000Z"),
-        end: new Date("2024-01-15T06:00:00.000Z"),
+        start: moment.utc("2024-01-15T06:00:00.000Z"),
+        end: moment.utc("2024-01-15T06:00:00.000Z"),
         summary: "♀️🌄↥ Venus Morning Rise",
         description: "Venus Morning Rise",
         categories: [
@@ -584,8 +849,8 @@ describe("phases.events", () => {
         ],
       };
       const venusMorningSet: Event = {
-        start: new Date("2024-04-15T06:00:00.000Z"),
-        end: new Date("2024-04-15T06:00:00.000Z"),
+        start: moment.utc("2024-04-15T06:00:00.000Z"),
+        end: moment.utc("2024-04-15T06:00:00.000Z"),
         summary: "♀️🌄↧ Venus Morning Set",
         description: "Venus Morning Set",
         categories: [
@@ -599,8 +864,8 @@ describe("phases.events", () => {
 
       // Mercury morning visibility
       const mercuryMorningRise: Event = {
-        start: new Date("2024-01-20T06:00:00.000Z"),
-        end: new Date("2024-01-20T06:00:00.000Z"),
+        start: moment.utc("2024-01-20T06:00:00.000Z"),
+        end: moment.utc("2024-01-20T06:00:00.000Z"),
         summary: "☿🌄↥ Mercury Morning Rise",
         description: "Mercury Morning Rise",
         categories: [
@@ -612,8 +877,8 @@ describe("phases.events", () => {
         ],
       };
       const mercuryMorningSet: Event = {
-        start: new Date("2024-03-01T06:00:00.000Z"),
-        end: new Date("2024-03-01T06:00:00.000Z"),
+        start: moment.utc("2024-03-01T06:00:00.000Z"),
+        end: moment.utc("2024-03-01T06:00:00.000Z"),
         summary: "☿🌄↧ Mercury Morning Set",
         description: "Mercury Morning Set",
         categories: [
@@ -625,20 +890,20 @@ describe("phases.events", () => {
         ],
       };
 
-      const durationEvents = getPlanetaryPhaseDurationEvents([
+      const progressiveEvents = getPlanetaryPhaseProgressiveEvents([
         venusMorningRise,
         venusMorningSet,
         mercuryMorningRise,
         mercuryMorningSet,
       ]);
 
-      // Should have duration events for both Venus and Mercury
-      expect(durationEvents.length).toBeGreaterThanOrEqual(2);
+      // Should have progressive events for both Venus and Mercury
+      expect(progressiveEvents.length).toBeGreaterThanOrEqual(2);
 
-      const venusDuration = durationEvents.find((e) =>
+      const venusDuration = progressiveEvents.find((e) =>
         e.description.includes("Venus"),
       );
-      const mercuryDuration = durationEvents.find((e) =>
+      const mercuryDuration = progressiveEvents.find((e) =>
         e.description.includes("Mercury"),
       );
 
@@ -646,10 +911,10 @@ describe("phases.events", () => {
       expect(mercuryDuration).toBeDefined();
     });
 
-    it("should create Mercury evening visibility duration event", () => {
+    it("should create Mercury evening visibility progressive event", () => {
       const eveningRise: Event = {
-        start: new Date("2024-03-15T18:00:00.000Z"),
-        end: new Date("2024-03-15T18:00:00.000Z"),
+        start: moment.utc("2024-03-15T18:00:00.000Z"),
+        end: moment.utc("2024-03-15T18:00:00.000Z"),
         summary: "☿🌇↥ Mercury Evening Rise",
         description: "Mercury Evening Rise",
         categories: [
@@ -661,8 +926,8 @@ describe("phases.events", () => {
         ],
       };
       const eveningSet: Event = {
-        start: new Date("2024-05-01T18:00:00.000Z"),
-        end: new Date("2024-05-01T18:00:00.000Z"),
+        start: moment.utc("2024-05-01T18:00:00.000Z"),
+        end: moment.utc("2024-05-01T18:00:00.000Z"),
         summary: "☿🌇↧ Mercury Evening Set",
         description: "Mercury Evening Set",
         categories: [
@@ -674,13 +939,13 @@ describe("phases.events", () => {
         ],
       };
 
-      const durationEvents = getPlanetaryPhaseDurationEvents([
+      const progressiveEvents = getPlanetaryPhaseProgressiveEvents([
         eveningRise,
         eveningSet,
       ]);
 
-      expect(durationEvents.length).toBeGreaterThanOrEqual(1);
-      const mercuryEvening = durationEvents.find(
+      expect(progressiveEvents.length).toBeGreaterThanOrEqual(1);
+      const mercuryEvening = progressiveEvents.find(
         (e) =>
           e.description.includes("Mercury") &&
           e.description.includes("Evening"),
@@ -693,10 +958,10 @@ describe("phases.events", () => {
       }
     });
 
-    it("should create Mars evening visibility duration event", () => {
+    it("should create Mars evening visibility progressive event", () => {
       const eveningRise: Event = {
-        start: new Date("2024-08-01T18:00:00.000Z"),
-        end: new Date("2024-08-01T18:00:00.000Z"),
+        start: moment.utc("2024-08-01T18:00:00.000Z"),
+        end: moment.utc("2024-08-01T18:00:00.000Z"),
         summary: "♂️🌇↥ Mars Evening Rise",
         description: "Mars Evening Rise",
         categories: [
@@ -708,8 +973,8 @@ describe("phases.events", () => {
         ],
       };
       const eveningSet: Event = {
-        start: new Date("2024-09-01T18:00:00.000Z"),
-        end: new Date("2024-09-01T18:00:00.000Z"),
+        start: moment.utc("2024-09-01T18:00:00.000Z"),
+        end: moment.utc("2024-09-01T18:00:00.000Z"),
         summary: "♂️🌇↧ Mars Evening Set",
         description: "Mars Evening Set",
         categories: [
@@ -721,13 +986,13 @@ describe("phases.events", () => {
         ],
       };
 
-      const durationEvents = getPlanetaryPhaseDurationEvents([
+      const progressiveEvents = getPlanetaryPhaseProgressiveEvents([
         eveningRise,
         eveningSet,
       ]);
 
-      expect(durationEvents.length).toBeGreaterThanOrEqual(1);
-      const marsEvening = durationEvents.find(
+      expect(progressiveEvents.length).toBeGreaterThanOrEqual(1);
+      const marsEvening = progressiveEvents.find(
         (e) =>
           e.description.includes("Mars") && e.description.includes("Evening"),
       );
@@ -742,12 +1007,12 @@ describe("phases.events", () => {
 
   describe("writePlanetaryPhaseEvents", () => {
     it("should write events to file and database", () => {
-      const start = new Date("2024-01-01T00:00:00.000Z");
-      const end = new Date("2024-01-31T23:59:59.000Z");
+      const start = moment.utc("2024-01-01T00:00:00.000Z");
+      const end = moment.utc("2024-01-31T23:59:59.000Z");
       const events: Event[] = [
         {
-          start: new Date("2024-01-15T06:00:00.000Z"),
-          end: new Date("2024-01-15T06:00:00.000Z"),
+          start: moment.utc("2024-01-15T06:00:00.000Z"),
+          end: moment.utc("2024-01-15T06:00:00.000Z"),
           summary: "♀️🌄↥ Venus Morning Rise",
           description: "Venus Morning Rise",
           categories: [
@@ -771,8 +1036,8 @@ describe("phases.events", () => {
     });
 
     it("should handle empty events array", () => {
-      const start = new Date("2024-01-01T00:00:00.000Z");
-      const end = new Date("2024-01-31T23:59:59.000Z");
+      const start = moment.utc("2024-01-01T00:00:00.000Z");
+      const end = moment.utc("2024-01-31T23:59:59.000Z");
 
       writePlanetaryPhaseEvents({
         planetaryPhaseEvents: [],
@@ -785,12 +1050,12 @@ describe("phases.events", () => {
     });
 
     it("should handle multiple planets", () => {
-      const start = new Date("2024-01-01T00:00:00.000Z");
-      const end = new Date("2024-01-31T23:59:59.000Z");
+      const start = moment.utc("2024-01-01T00:00:00.000Z");
+      const end = moment.utc("2024-01-31T23:59:59.000Z");
       const events: Event[] = [
         {
-          start: new Date("2024-01-15T06:00:00.000Z"),
-          end: new Date("2024-01-15T06:00:00.000Z"),
+          start: moment.utc("2024-01-15T06:00:00.000Z"),
+          end: moment.utc("2024-01-15T06:00:00.000Z"),
           summary: "♀️🌄↥ Venus Morning Rise",
           description: "Venus Morning Rise",
           categories: [
@@ -802,8 +1067,8 @@ describe("phases.events", () => {
           ],
         },
         {
-          start: new Date("2024-01-20T06:00:00.000Z"),
-          end: new Date("2024-01-20T06:00:00.000Z"),
+          start: moment.utc("2024-01-20T06:00:00.000Z"),
+          end: moment.utc("2024-01-20T06:00:00.000Z"),
           summary: "☿🌄↥ Mercury Morning Rise",
           description: "Mercury Morning Rise",
           categories: [

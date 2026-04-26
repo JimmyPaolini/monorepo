@@ -20,8 +20,8 @@ describe("aspects.composition", () => {
     it("should parse valid simple aspect events", () => {
       const events: Event[] = [
         {
-          start: new Date("2024-03-21T12:00:00.000Z"),
-          end: new Date("2024-03-21T12:00:00.000Z"),
+          start: moment.utc("2024-03-21T12:00:00.000Z"),
+          end: moment.utc("2024-03-21T12:00:00.000Z"),
           summary: "Sun conjunct Moon",
           description: "Sun conjunct Moon",
           categories: [
@@ -32,7 +32,7 @@ describe("aspects.composition", () => {
             "Sun",
             "Moon",
             "Conjunct",
-            "exact",
+            "perfective",
           ],
         },
       ];
@@ -41,25 +41,31 @@ describe("aspects.composition", () => {
 
       expect(edges.length).toBe(1);
       expect(edges[0]).toBeDefined();
-      expect(edges[0]?.body1).toBe("sun");
-      expect(edges[0]?.body2).toBe("moon");
-      expect(edges[0]?.aspectType).toBe("conjunct");
-      expect(edges[0]?.phase).toBe("exact");
+      expect(edges[0]?.bodies[0]).toBe("sun");
+      expect(edges[0]?.bodies[1]).toBe("moon");
+      expect(edges[0]?.aspect).toBe("conjunct");
+      expect(edges[0]?.phase).toBe("perfective");
       expect(edges[0]?.event).toBe(events[0]);
     });
 
     it("should parse multiple aspect events", () => {
       const events: Event[] = [
         {
-          start: new Date("2024-03-21T12:00:00.000Z"),
-          end: new Date("2024-03-21T12:00:00.000Z"),
+          start: moment.utc("2024-03-21T12:00:00.000Z"),
+          end: moment.utc("2024-03-21T12:00:00.000Z"),
           summary: "Sun conjunct Moon",
           description: "Sun conjunct Moon",
-          categories: ["Simple Aspect", "Sun", "Moon", "Conjunct", "exact"],
+          categories: [
+            "Simple Aspect",
+            "Sun",
+            "Moon",
+            "Conjunct",
+            "perfective",
+          ],
         },
         {
-          start: new Date("2024-03-21T12:00:00.000Z"),
-          end: new Date("2024-03-21T12:00:00.000Z"),
+          start: moment.utc("2024-03-21T12:00:00.000Z"),
+          end: moment.utc("2024-03-21T12:00:00.000Z"),
           summary: "Mars trine Jupiter",
           description: "Mars trine Jupiter",
           categories: ["Simple Aspect", "Mars", "Jupiter", "Trine", "forming"],
@@ -70,27 +76,27 @@ describe("aspects.composition", () => {
 
       expect(edges.length).toBe(2);
       expect(edges[0]).toBeDefined();
-      expect(edges[0]?.body1).toBe("sun");
-      expect(edges[0]?.body2).toBe("moon");
-      expect(edges[0]?.aspectType).toBe("conjunct");
+      expect(edges[0]?.bodies[0]).toBe("sun");
+      expect(edges[0]?.bodies[1]).toBe("moon");
+      expect(edges[0]?.aspect).toBe("conjunct");
       expect(edges[1]).toBeDefined();
-      expect(edges[1]?.body1).toBe("mars");
-      expect(edges[1]?.body2).toBe("jupiter");
-      expect(edges[1]?.aspectType).toBe("trine");
+      expect(edges[1]?.bodies[0]).toBe("mars");
+      expect(edges[1]?.bodies[1]).toBe("jupiter");
+      expect(edges[1]?.aspect).toBe("trine");
     });
 
     it("should handle different phases", () => {
       const events: Event[] = [
         {
-          start: new Date("2024-03-21T12:00:00.000Z"),
-          end: new Date("2024-03-21T12:00:00.000Z"),
+          start: moment.utc("2024-03-21T12:00:00.000Z"),
+          end: moment.utc("2024-03-21T12:00:00.000Z"),
           summary: "Sun square Mars",
           description: "Sun square Mars",
           categories: ["Simple Aspect", "Sun", "Mars", "Square", "forming"],
         },
         {
-          start: new Date("2024-03-21T12:00:00.000Z"),
-          end: new Date("2024-03-21T12:00:00.000Z"),
+          start: moment.utc("2024-03-21T12:00:00.000Z"),
+          end: moment.utc("2024-03-21T12:00:00.000Z"),
           summary: "Moon opposite Venus",
           description: "Moon opposite Venus",
           categories: [
@@ -115,8 +121,8 @@ describe("aspects.composition", () => {
     it("should skip compound aspect events", () => {
       const events: Event[] = [
         {
-          start: new Date("2024-03-21T12:00:00.000Z"),
-          end: new Date("2024-03-21T12:00:00.000Z"),
+          start: moment.utc("2024-03-21T12:00:00.000Z"),
+          end: moment.utc("2024-03-21T12:00:00.000Z"),
           summary: "T-Square",
           description: "T-Square",
           categories: [
@@ -137,15 +143,15 @@ describe("aspects.composition", () => {
     it("should skip events without exactly 2 bodies", () => {
       const events: Event[] = [
         {
-          start: new Date("2024-03-21T12:00:00.000Z"),
-          end: new Date("2024-03-21T12:00:00.000Z"),
+          start: moment.utc("2024-03-21T12:00:00.000Z"),
+          end: moment.utc("2024-03-21T12:00:00.000Z"),
           summary: "Only one body",
           description: "Only one body",
-          categories: ["Simple Aspect", "Sun", "Conjunct", "exact"],
+          categories: ["Simple Aspect", "Sun", "Conjunct", "perfective"],
         },
         {
-          start: new Date("2024-03-21T12:00:00.000Z"),
-          end: new Date("2024-03-21T12:00:00.000Z"),
+          start: moment.utc("2024-03-21T12:00:00.000Z"),
+          end: moment.utc("2024-03-21T12:00:00.000Z"),
           summary: "Three bodies",
           description: "Three bodies",
           categories: [
@@ -154,7 +160,7 @@ describe("aspects.composition", () => {
             "Moon",
             "Mars",
             "Conjunct",
-            "exact",
+            "perfective",
           ],
         },
       ];
@@ -166,11 +172,11 @@ describe("aspects.composition", () => {
     it("should skip events without aspect type", () => {
       const events: Event[] = [
         {
-          start: new Date("2024-03-21T12:00:00.000Z"),
-          end: new Date("2024-03-21T12:00:00.000Z"),
+          start: moment.utc("2024-03-21T12:00:00.000Z"),
+          end: moment.utc("2024-03-21T12:00:00.000Z"),
           summary: "No aspect type",
           description: "No aspect type",
-          categories: ["Simple Aspect", "Sun", "Moon", "exact"],
+          categories: ["Simple Aspect", "Sun", "Moon", "perfective"],
         },
       ];
 
@@ -178,11 +184,11 @@ describe("aspects.composition", () => {
       expect(edges.length).toBe(0);
     });
 
-    it("should skip events without phase", () => {
+    it("should default phase to perfective when absent", () => {
       const events: Event[] = [
         {
-          start: new Date("2024-03-21T12:00:00.000Z"),
-          end: new Date("2024-03-21T12:00:00.000Z"),
+          start: moment.utc("2024-03-21T12:00:00.000Z"),
+          end: moment.utc("2024-03-21T12:00:00.000Z"),
           summary: "No phase",
           description: "No phase",
           categories: ["Simple Aspect", "Sun", "Moon", "Conjunct"],
@@ -190,7 +196,8 @@ describe("aspects.composition", () => {
       ];
 
       const edges = parseAspectEvents(events);
-      expect(edges.length).toBe(0);
+      expect(edges.length).toBe(1);
+      expect(edges[0]?.phase).toBe("perfective");
     });
 
     it("should handle empty events array", () => {
@@ -201,11 +208,17 @@ describe("aspects.composition", () => {
     it("should normalize categories to lowercase", () => {
       const events: Event[] = [
         {
-          start: new Date("2024-03-21T12:00:00.000Z"),
-          end: new Date("2024-03-21T12:00:00.000Z"),
+          start: moment.utc("2024-03-21T12:00:00.000Z"),
+          end: moment.utc("2024-03-21T12:00:00.000Z"),
           summary: "Sun conjunct Moon",
           description: "Sun conjunct Moon",
-          categories: ["SIMPLE ASPECT", "SUN", "MOON", "CONJUNCT", "EXACT"],
+          categories: [
+            "SIMPLE ASPECT",
+            "SUN",
+            "MOON",
+            "CONJUNCT",
+            "PERFECTIVE",
+          ],
         },
       ];
 
@@ -213,17 +226,17 @@ describe("aspects.composition", () => {
 
       expect(edges.length).toBe(1);
       expect(edges[0]).toBeDefined();
-      expect(edges[0]?.body1).toBe("sun");
-      expect(edges[0]?.body2).toBe("moon");
-      expect(edges[0]?.aspectType).toBe("conjunct");
-      expect(edges[0]?.phase).toBe("exact");
+      expect(edges[0]?.bodies[0]).toBe("sun");
+      expect(edges[0]?.bodies[1]).toBe("moon");
+      expect(edges[0]?.aspect).toBe("conjunct");
+      expect(edges[0]?.phase).toBe("perfective");
     });
 
     it("should handle malformed events gracefully", () => {
       const events: Event[] = [
         {
-          start: new Date("2024-03-21T12:00:00.000Z"),
-          end: new Date("2024-03-21T12:00:00.000Z"),
+          start: moment.utc("2024-03-21T12:00:00.000Z"),
+          end: moment.utc("2024-03-21T12:00:00.000Z"),
           summary: "Malformed",
           description: "Malformed",
           categories: null as unknown as string[],
@@ -237,8 +250,8 @@ describe("aspects.composition", () => {
     it("should handle minor aspects", () => {
       const events: Event[] = [
         {
-          start: new Date("2024-03-21T12:00:00.000Z"),
-          end: new Date("2024-03-21T12:00:00.000Z"),
+          start: moment.utc("2024-03-21T12:00:00.000Z"),
+          end: moment.utc("2024-03-21T12:00:00.000Z"),
           summary: "Sun semisextile Moon",
           description: "Sun semisextile Moon",
           categories: [
@@ -247,7 +260,7 @@ describe("aspects.composition", () => {
             "Sun",
             "Moon",
             "Semisextile",
-            "exact",
+            "perfective",
           ],
         },
       ];
@@ -256,14 +269,14 @@ describe("aspects.composition", () => {
 
       expect(edges.length).toBe(1);
       expect(edges[0]).toBeDefined();
-      expect(edges[0]?.aspectType).toBe("semisextile");
+      expect(edges[0]?.aspect).toBe("semisextile");
     });
 
     it("should handle specialty aspects", () => {
       const events: Event[] = [
         {
-          start: new Date("2024-03-21T12:00:00.000Z"),
-          end: new Date("2024-03-21T12:00:00.000Z"),
+          start: moment.utc("2024-03-21T12:00:00.000Z"),
+          end: moment.utc("2024-03-21T12:00:00.000Z"),
           summary: "Sun quintile Moon",
           description: "Sun quintile Moon",
           categories: [
@@ -272,7 +285,7 @@ describe("aspects.composition", () => {
             "Sun",
             "Moon",
             "Quintile",
-            "exact",
+            "perfective",
           ],
         },
       ];
@@ -281,7 +294,7 @@ describe("aspects.composition", () => {
 
       expect(edges.length).toBe(1);
       expect(edges[0]).toBeDefined();
-      expect(edges[0]?.aspectType).toBe("quintile");
+      expect(edges[0]?.aspect).toBe("quintile");
     });
   });
 
@@ -289,23 +302,20 @@ describe("aspects.composition", () => {
     it("should group edges by aspect type", () => {
       const edges: AspectEdge[] = [
         {
-          body1: "sun" as Body,
-          body2: "moon" as Body,
-          aspectType: "conjunct" as Aspect,
-          phase: "exact",
+          bodies: ["sun" as Body, "moon" as Body] as [Body, Body],
+          aspect: "conjunct" as Aspect,
+          phase: "perfective",
           event: {} as Event,
         },
         {
-          body1: "mars" as Body,
-          body2: "jupiter" as Body,
-          aspectType: "trine" as Aspect,
+          bodies: ["mars" as Body, "jupiter" as Body] as [Body, Body],
+          aspect: "trine" as Aspect,
           phase: "forming",
           event: {} as Event,
         },
         {
-          body1: "venus" as Body,
-          body2: "saturn" as Body,
-          aspectType: "conjunct" as Aspect,
+          bodies: ["venus" as Body, "saturn" as Body] as [Body, Body],
+          aspect: "conjunct" as Aspect,
           phase: "dissolving",
           event: {} as Event,
         },
@@ -326,16 +336,14 @@ describe("aspects.composition", () => {
     it("should handle single aspect type", () => {
       const edges: AspectEdge[] = [
         {
-          body1: "sun" as Body,
-          body2: "moon" as Body,
-          aspectType: "square" as Aspect,
-          phase: "exact",
+          bodies: ["sun" as Body, "moon" as Body] as [Body, Body],
+          aspect: "square" as Aspect,
+          phase: "perfective",
           event: {} as Event,
         },
         {
-          body1: "mars" as Body,
-          body2: "jupiter" as Body,
-          aspectType: "square" as Aspect,
+          bodies: ["mars" as Body, "jupiter" as Body] as [Body, Body],
+          aspect: "square" as Aspect,
           phase: "forming",
           event: {} as Event,
         },
@@ -351,10 +359,9 @@ describe("aspects.composition", () => {
   describe("involvesBody", () => {
     it("should return true when body1 matches", () => {
       const edge: AspectEdge = {
-        body1: "sun" as Body,
-        body2: "moon" as Body,
-        aspectType: "conjunct" as Aspect,
-        phase: "exact",
+        bodies: ["sun" as Body, "moon" as Body] as [Body, Body],
+        aspect: "conjunct" as Aspect,
+        phase: "perfective",
         event: {} as Event,
       };
 
@@ -363,10 +370,9 @@ describe("aspects.composition", () => {
 
     it("should return true when body2 matches", () => {
       const edge: AspectEdge = {
-        body1: "sun" as Body,
-        body2: "moon" as Body,
-        aspectType: "conjunct" as Aspect,
-        phase: "exact",
+        bodies: ["sun" as Body, "moon" as Body] as [Body, Body],
+        aspect: "conjunct" as Aspect,
+        phase: "perfective",
         event: {} as Event,
       };
 
@@ -375,10 +381,9 @@ describe("aspects.composition", () => {
 
     it("should return false when neither body matches", () => {
       const edge: AspectEdge = {
-        body1: "sun" as Body,
-        body2: "moon" as Body,
-        aspectType: "conjunct" as Aspect,
-        phase: "exact",
+        bodies: ["sun" as Body, "moon" as Body] as [Body, Body],
+        aspect: "conjunct" as Aspect,
+        phase: "perfective",
         event: {} as Event,
       };
 
@@ -389,10 +394,9 @@ describe("aspects.composition", () => {
   describe("getOtherBody", () => {
     it("should return body2 when body1 is provided", () => {
       const edge: AspectEdge = {
-        body1: "sun" as Body,
-        body2: "moon" as Body,
-        aspectType: "conjunct" as Aspect,
-        phase: "exact",
+        bodies: ["sun" as Body, "moon" as Body] as [Body, Body],
+        aspect: "conjunct" as Aspect,
+        phase: "perfective",
         event: {} as Event,
       };
 
@@ -401,10 +405,9 @@ describe("aspects.composition", () => {
 
     it("should return body1 when body2 is provided", () => {
       const edge: AspectEdge = {
-        body1: "sun" as Body,
-        body2: "moon" as Body,
-        aspectType: "conjunct" as Aspect,
-        phase: "exact",
+        bodies: ["sun" as Body, "moon" as Body] as [Body, Body],
+        aspect: "conjunct" as Aspect,
+        phase: "perfective",
         event: {} as Event,
       };
 
@@ -413,10 +416,9 @@ describe("aspects.composition", () => {
 
     it("should return null when body is not in edge", () => {
       const edge: AspectEdge = {
-        body1: "sun" as Body,
-        body2: "moon" as Body,
-        aspectType: "conjunct" as Aspect,
-        phase: "exact",
+        bodies: ["sun" as Body, "moon" as Body] as [Body, Body],
+        aspect: "conjunct" as Aspect,
+        phase: "perfective",
         event: {} as Event,
       };
 
@@ -428,24 +430,21 @@ describe("aspects.composition", () => {
     it("should find bodies with specific aspect to given body", () => {
       const edges: AspectEdge[] = [
         {
-          body1: "sun" as Body,
-          body2: "moon" as Body,
-          aspectType: "conjunct" as Aspect,
-          phase: "exact",
+          bodies: ["sun" as Body, "moon" as Body] as [Body, Body],
+          aspect: "conjunct" as Aspect,
+          phase: "perfective",
           event: {} as Event,
         },
         {
-          body1: "sun" as Body,
-          body2: "mars" as Body,
-          aspectType: "trine" as Aspect,
+          bodies: ["sun" as Body, "mars" as Body] as [Body, Body],
+          aspect: "trine" as Aspect,
           phase: "forming",
           event: {} as Event,
         },
         {
-          body1: "jupiter" as Body,
-          body2: "sun" as Body,
-          aspectType: "trine" as Aspect,
-          phase: "exact",
+          bodies: ["jupiter" as Body, "sun" as Body] as [Body, Body],
+          aspect: "trine" as Aspect,
+          phase: "perfective",
           event: {} as Event,
         },
       ];
@@ -464,10 +463,9 @@ describe("aspects.composition", () => {
     it("should return empty array when no aspects found", () => {
       const edges: AspectEdge[] = [
         {
-          body1: "sun" as Body,
-          body2: "moon" as Body,
-          aspectType: "conjunct" as Aspect,
-          phase: "exact",
+          bodies: ["sun" as Body, "moon" as Body] as [Body, Body],
+          aspect: "conjunct" as Aspect,
+          phase: "perfective",
           event: {} as Event,
         },
       ];
@@ -484,10 +482,9 @@ describe("aspects.composition", () => {
     it("should handle body not in any edges", () => {
       const edges: AspectEdge[] = [
         {
-          body1: "sun" as Body,
-          body2: "moon" as Body,
-          aspectType: "conjunct" as Aspect,
-          phase: "exact",
+          bodies: ["sun" as Body, "moon" as Body] as [Body, Body],
+          aspect: "conjunct" as Aspect,
+          phase: "perfective",
           event: {} as Event,
         },
       ];
@@ -506,10 +503,9 @@ describe("aspects.composition", () => {
     it("should return true when bodies have the aspect (body1-body2 order)", () => {
       const edges: AspectEdge[] = [
         {
-          body1: "sun" as Body,
-          body2: "moon" as Body,
-          aspectType: "conjunct" as Aspect,
-          phase: "exact",
+          bodies: ["sun" as Body, "moon" as Body] as [Body, Body],
+          aspect: "conjunct" as Aspect,
+          phase: "perfective",
           event: {} as Event,
         },
       ];
@@ -522,10 +518,9 @@ describe("aspects.composition", () => {
     it("should return true when bodies have the aspect (body2-body1 order)", () => {
       const edges: AspectEdge[] = [
         {
-          body1: "sun" as Body,
-          body2: "moon" as Body,
-          aspectType: "conjunct" as Aspect,
-          phase: "exact",
+          bodies: ["sun" as Body, "moon" as Body] as [Body, Body],
+          aspect: "conjunct" as Aspect,
+          phase: "perfective",
           event: {} as Event,
         },
       ];
@@ -538,10 +533,9 @@ describe("aspects.composition", () => {
     it("should return false when bodies do not have the aspect", () => {
       const edges: AspectEdge[] = [
         {
-          body1: "sun" as Body,
-          body2: "moon" as Body,
-          aspectType: "conjunct" as Aspect,
-          phase: "exact",
+          bodies: ["sun" as Body, "moon" as Body] as [Body, Body],
+          aspect: "conjunct" as Aspect,
+          phase: "perfective",
           event: {} as Event,
         },
       ];
@@ -554,10 +548,9 @@ describe("aspects.composition", () => {
     it("should return false when bodies are not connected", () => {
       const edges: AspectEdge[] = [
         {
-          body1: "sun" as Body,
-          body2: "moon" as Body,
-          aspectType: "conjunct" as Aspect,
-          phase: "exact",
+          bodies: ["sun" as Body, "moon" as Body] as [Body, Body],
+          aspect: "conjunct" as Aspect,
+          phase: "perfective",
           event: {} as Event,
         },
       ];
@@ -575,16 +568,14 @@ describe("aspects.composition", () => {
     it("should handle multiple edges", () => {
       const edges: AspectEdge[] = [
         {
-          body1: "sun" as Body,
-          body2: "moon" as Body,
-          aspectType: "conjunct" as Aspect,
-          phase: "exact",
+          bodies: ["sun" as Body, "moon" as Body] as [Body, Body],
+          aspect: "conjunct" as Aspect,
+          phase: "perfective",
           event: {} as Event,
         },
         {
-          body1: "mars" as Body,
-          body2: "jupiter" as Body,
-          aspectType: "trine" as Aspect,
+          bodies: ["mars" as Body, "jupiter" as Body] as [Body, Body],
+          aspect: "trine" as Aspect,
           phase: "forming",
           event: {} as Event,
         },
@@ -602,13 +593,12 @@ describe("aspects.composition", () => {
 
       const edges: AspectEdge[] = [
         {
-          body1: "sun" as Body,
-          body2: "moon" as Body,
-          aspectType: "conjunct" as Aspect,
-          phase: "exact",
+          bodies: ["sun" as Body, "moon" as Body] as [Body, Body],
+          aspect: "conjunct" as Aspect,
+          phase: "perfective",
           event: {
-            start: new Date("2024-03-21T12:00:00.000Z"),
-            end: new Date("2024-03-21T13:00:00.000Z"),
+            start: moment.utc("2024-03-21T12:00:00.000Z"),
+            end: moment.utc("2024-03-21T13:00:00.000Z"),
           } as Event,
         },
       ];
@@ -628,13 +618,12 @@ describe("aspects.composition", () => {
 
       const edges: AspectEdge[] = [
         {
-          body1: "sun" as Body,
-          body2: "moon" as Body,
-          aspectType: "conjunct" as Aspect,
-          phase: "exact",
+          bodies: ["sun" as Body, "moon" as Body] as [Body, Body],
+          aspect: "conjunct" as Aspect,
+          phase: "perfective",
           event: {
-            start: new Date("2024-03-21T11:00:00.000Z"),
-            end: new Date("2024-03-21T12:00:00.000Z"),
+            start: moment.utc("2024-03-21T11:00:00.000Z"),
+            end: moment.utc("2024-03-21T12:00:00.000Z"),
           } as Event,
         },
       ];
@@ -654,13 +643,12 @@ describe("aspects.composition", () => {
 
       const edges: AspectEdge[] = [
         {
-          body1: "sun" as Body,
-          body2: "moon" as Body,
-          aspectType: "conjunct" as Aspect,
-          phase: "exact",
+          bodies: ["sun" as Body, "moon" as Body] as [Body, Body],
+          aspect: "conjunct" as Aspect,
+          phase: "perfective",
           event: {
-            start: new Date("2024-03-21T11:00:00.000Z"),
-            end: new Date("2024-03-21T13:00:00.000Z"),
+            start: moment.utc("2024-03-21T11:00:00.000Z"),
+            end: moment.utc("2024-03-21T13:00:00.000Z"),
           } as Event,
         },
       ];
@@ -680,13 +668,12 @@ describe("aspects.composition", () => {
 
       const edges: AspectEdge[] = [
         {
-          body1: "sun" as Body,
-          body2: "moon" as Body,
-          aspectType: "conjunct" as Aspect,
-          phase: "exact",
+          bodies: ["sun" as Body, "moon" as Body] as [Body, Body],
+          aspect: "conjunct" as Aspect,
+          phase: "perfective",
           event: {
-            start: new Date("2024-03-21T10:00:00.000Z"),
-            end: new Date("2024-03-21T11:00:00.000Z"),
+            start: moment.utc("2024-03-21T10:00:00.000Z"),
+            end: moment.utc("2024-03-21T11:00:00.000Z"),
           } as Event,
         },
       ];
@@ -706,23 +693,21 @@ describe("aspects.composition", () => {
 
       const edges: AspectEdge[] = [
         {
-          body1: "sun" as Body,
-          body2: "moon" as Body,
-          aspectType: "conjunct" as Aspect,
-          phase: "exact",
+          bodies: ["sun" as Body, "moon" as Body] as [Body, Body],
+          aspect: "conjunct" as Aspect,
+          phase: "perfective",
           event: {
-            start: new Date("2024-03-21T12:00:00.000Z"),
-            end: new Date("2024-03-21T13:00:00.000Z"),
+            start: moment.utc("2024-03-21T12:00:00.000Z"),
+            end: moment.utc("2024-03-21T13:00:00.000Z"),
           } as Event,
         },
         {
-          body1: "mars" as Body,
-          body2: "jupiter" as Body,
-          aspectType: "trine" as Aspect,
-          phase: "exact",
+          bodies: ["mars" as Body, "jupiter" as Body] as [Body, Body],
+          aspect: "trine" as Aspect,
+          phase: "perfective",
           event: {
-            start: new Date("2024-03-21T12:00:00.000Z"),
-            end: new Date("2024-03-21T13:00:00.000Z"),
+            start: moment.utc("2024-03-21T12:00:00.000Z"),
+            end: moment.utc("2024-03-21T13:00:00.000Z"),
           } as Event,
         },
       ];
@@ -735,8 +720,8 @@ describe("aspects.composition", () => {
           // Should only see edges involving sun and moon
           const filtered = edgesAtTime.filter(
             (edge) =>
-              (edge.body1 === "sun" || edge.body1 === "moon") &&
-              (edge.body2 === "sun" || edge.body2 === "moon"),
+              (edge.bodies[0] === "sun" || edge.bodies[0] === "moon") &&
+              (edge.bodies[1] === "sun" || edge.bodies[1] === "moon"),
           );
           return filtered.length > 0;
         },
@@ -750,23 +735,21 @@ describe("aspects.composition", () => {
 
       const edges: AspectEdge[] = [
         {
-          body1: "sun" as Body,
-          body2: "moon" as Body,
-          aspectType: "conjunct" as Aspect,
-          phase: "exact",
+          bodies: ["sun" as Body, "moon" as Body] as [Body, Body],
+          aspect: "conjunct" as Aspect,
+          phase: "perfective",
           event: {
-            start: new Date("2024-03-21T12:00:00.000Z"),
-            end: new Date("2024-03-21T13:00:00.000Z"),
+            start: moment.utc("2024-03-21T12:00:00.000Z"),
+            end: moment.utc("2024-03-21T13:00:00.000Z"),
           } as Event,
         },
         {
-          body1: "sun" as Body,
-          body2: "mars" as Body,
-          aspectType: "square" as Aspect,
-          phase: "exact",
+          bodies: ["sun" as Body, "mars" as Body] as [Body, Body],
+          aspect: "square" as Aspect,
+          phase: "perfective",
           event: {
-            start: new Date("2024-03-21T12:00:00.000Z"),
-            end: new Date("2024-03-21T13:00:00.000Z"),
+            start: moment.utc("2024-03-21T12:00:00.000Z"),
+            end: moment.utc("2024-03-21T13:00:00.000Z"),
           } as Event,
         },
       ];
@@ -778,10 +761,10 @@ describe("aspects.composition", () => {
         (edgesAtTime) => {
           // Complex pattern: need both conjunct and square
           const hasConjunct = edgesAtTime.some(
-            (edge) => edge.aspectType === "conjunct",
+            (edge) => edge.aspect === "conjunct",
           );
           const hasSquare = edgesAtTime.some(
-            (edge) => edge.aspectType === "square",
+            (edge) => edge.aspect === "square",
           );
           return hasConjunct && hasSquare;
         },

@@ -21,6 +21,38 @@
       "defaultConfiguration": "check",
       "executor": "nx:run-commands"
     },
+    "code-analysis": {
+      "configurations": {
+        "check": {
+          "commands": [
+            "nx run {projectName}:clean:check",
+            "nx run {projectName}:dependency-analysis",
+            "nx run {projectName}:format:check",
+            "nx run {projectName}:lint:check",
+            "nx run {projectName}:markdown-lint:check",
+            "nx run {projectName}:spell-check",
+            "nx run {projectName}:type-coverage",
+            "nx run {projectName}:typecheck",
+            "nx run {projectName}:yaml-lint"
+          ],
+          "parallel": true
+        },
+        "write": {
+          "commands": [
+            "nx run {projectName}:clean:write",
+            "nx run {projectName}:dependency-analysis",
+            "nx run {projectName}:format:write",
+            "nx run {projectName}:lint:write",
+            "nx run {projectName}:markdown-lint:write",
+            "nx run {projectName}:spell-check",
+            "nx run {projectName}:type-coverage",
+            "nx run {projectName}:typecheck",
+            "nx run {projectName}:yaml-lint"
+          ],
+          "parallel": false
+        }
+      }
+    },
     "dependency-analysis": {},
     "develop": {
       "description": "Run Caelundas locally with .env file",
@@ -44,6 +76,15 @@
       "options": {
         "command": "docker buildx build --platform linux/amd64 -f applications/caelundas/Dockerfile -t ghcr.io/jimmypaolini/caelundas:1.0.0 --push .",
         "cwd": "{workspaceRoot}"
+      }
+    },
+    "download-ephemeris": {
+      "cache": false,
+      "description": "Download Swiss Ephemeris data files to data/ephemeris/",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm tsx scripts/download-ephemeris.ts",
+        "cwd": "{projectRoot}"
       }
     },
     "format": {},

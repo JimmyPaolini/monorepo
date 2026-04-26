@@ -1,12 +1,11 @@
 import fs from "node:fs";
 
 import _ from "lodash";
-import moment from "moment-timezone";
 
 import { getCalendar } from "../../calendar.utilities";
-import { pairDurationEvents } from "../../duration.utilities";
 import { getAzimuthElevationFromEphemeris } from "../../ephemeris/ephemeris.service";
 import { getOutputPath } from "../../output.utilities";
+import { pairProgressiveEvents } from "../../progressive.utilities";
 
 import {
   isAstronomicalDawn,
@@ -19,7 +18,7 @@ import {
 
 import type { Event } from "../../calendar.utilities";
 import type { AzimuthElevationEphemeris } from "../../ephemeris/ephemeris.types";
-import type { Moment } from "moment";
+import type moment from "moment-timezone";
 
 const categories = ["Astronomy", "Astrology", "Twilight"];
 
@@ -46,14 +45,14 @@ const categories = ["Astronomy", "Astrology", "Twilight"];
  * - Daily rhythm (circadian cycles)
  */
 export function getTwilightEvents(args: {
-  currentMinute: Moment;
+  currentMinute: moment.Moment;
   sunAzimuthElevationEphemeris: AzimuthElevationEphemeris;
 }): Event[] {
   const { currentMinute, sunAzimuthElevationEphemeris } = args;
 
   const twilightEvents: Event[] = [];
 
-  const previousMinute = currentMinute.clone().subtract(1, "minutes");
+  const previousMinute = currentMinute.clone().subtract(1, "minute");
 
   const currentElevation = getAzimuthElevationFromEphemeris(
     sunAzimuthElevationEphemeris,
@@ -67,25 +66,25 @@ export function getTwilightEvents(args: {
   );
 
   const elevations = { currentElevation, previousElevation };
-  const date = currentMinute.toDate();
+  const date = currentMinute;
 
   if (isAstronomicalDawn({ ...elevations })) {
-    twilightEvents.push(getAstronomicalDawnEvent(date));
+    twilightEvents.push(buildAstronomicalDawnEvent(date));
   }
   if (isNauticalDawn({ ...elevations })) {
-    twilightEvents.push(getNauticalDawnEvent(date));
+    twilightEvents.push(buildNauticalDawnEvent(date));
   }
   if (isCivilDawn({ ...elevations })) {
-    twilightEvents.push(getCivilDawnEvent(date));
+    twilightEvents.push(buildCivilDawnEvent(date));
   }
   if (isCivilDusk({ ...elevations })) {
-    twilightEvents.push(getCivilDuskEvent(date));
+    twilightEvents.push(buildCivilDuskEvent(date));
   }
   if (isNauticalDusk({ ...elevations })) {
-    twilightEvents.push(getNauticalDuskEvent(date));
+    twilightEvents.push(buildNauticalDuskEvent(date));
   }
   if (isAstronomicalDusk({ ...elevations })) {
-    twilightEvents.push(getAstronomicalDuskEvent(date));
+    twilightEvents.push(buildAstronomicalDuskEvent(date));
   }
 
   return twilightEvents;
@@ -97,11 +96,11 @@ export function getTwilightEvents(args: {
  * @param date - Precise UTC time
  * @returns Calendar event for astronomical dawn
  */
-export function getAstronomicalDawnEvent(date: Date): Event {
+export function buildAstronomicalDawnEvent(date: moment.Moment): Event {
   const description = "Astronomical Dawn";
   const summary = `🌠 ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
   const astronomicalDawnEvent: Event = {
@@ -117,11 +116,11 @@ export function getAstronomicalDawnEvent(date: Date): Event {
 /**
  *
  */
-export function getNauticalDawnEvent(date: Date): Event {
+export function buildNauticalDawnEvent(date: moment.Moment): Event {
   const description = "Nautical Dawn";
   const summary = `🌅 ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
   const nauticalDawnEvent: Event = {
@@ -137,11 +136,11 @@ export function getNauticalDawnEvent(date: Date): Event {
 /**
  *
  */
-export function getCivilDawnEvent(date: Date): Event {
+export function buildCivilDawnEvent(date: moment.Moment): Event {
   const description = "Civil Dawn";
   const summary = `🌄 ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
   const civilDawnEvent: Event = {
@@ -157,11 +156,11 @@ export function getCivilDawnEvent(date: Date): Event {
 /**
  *
  */
-export function getCivilDuskEvent(date: Date): Event {
+export function buildCivilDuskEvent(date: moment.Moment): Event {
   const description = "Civil Dusk";
   const summary = `🌇 ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
   const civilDuskEvent: Event = {
@@ -177,11 +176,11 @@ export function getCivilDuskEvent(date: Date): Event {
 /**
  *
  */
-export function getNauticalDuskEvent(date: Date): Event {
+export function buildNauticalDuskEvent(date: moment.Moment): Event {
   const description = "Nautical Dusk";
   const summary = `🌉 ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
   const nauticalDuskEvent: Event = {
@@ -197,11 +196,11 @@ export function getNauticalDuskEvent(date: Date): Event {
 /**
  *
  */
-export function getAstronomicalDuskEvent(date: Date): Event {
+export function buildAstronomicalDuskEvent(date: moment.Moment): Event {
   const description = "Astronomical Dusk";
   const summary = `🌌 ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
   const astronomicalDuskEvent: Event = {
@@ -225,8 +224,8 @@ export function getAstronomicalDuskEvent(date: Date): Event {
  */
 export function writeTwilightEvents(args: {
   twilightEvents: Event[];
-  start: Date;
-  end: Date;
+  start: moment.Moment;
+  end: moment.Moment;
 }): void {
   const { twilightEvents, start, end } = args;
   if (_.isEmpty(twilightEvents)) {
@@ -249,10 +248,10 @@ export function writeTwilightEvents(args: {
   console.log(`🌠 Wrote ${message}`);
 }
 
-// #region 🕑 Duration Events
+// #region 🕑 Progressive Events
 
 /**
- * Generates duration events for twilight periods.
+ * Generates progressive events for twilight periods.
  *
  * Creates span events for six twilight periods plus full night and daylight:
  * - Astronomical twilight (morning/evening)
@@ -261,11 +260,11 @@ export function writeTwilightEvents(args: {
  * - Night (astronomical dusk to astronomical dawn)
  *
  * @param events - Array of all twilight events
- * @returns Array of duration events representing twilight spans
- * @see {@link pairDurationEvents} for pairing logic
+ * @returns Array of progressive events representing twilight spans
+ * @see {@link pairProgressiveEvents} for pairing logic
  */
-export function getTwilightDurationEvents(events: Event[]): Event[] {
-  const durationEvents: Event[] = [];
+export function getTwilightProgressiveEvents(events: Event[]): Event[] {
+  const progressiveEvents: Event[] = [];
 
   // Filter to twilight events only
   const twilightEvents = events.filter((event) =>
@@ -279,13 +278,13 @@ export function getTwilightDurationEvents(events: Event[]): Event[] {
   const nauticalDawnEvents = twilightEvents.filter((event) =>
     event.categories.includes("Nautical Dawn"),
   );
-  const astronomicalTwilightMorningPairs = pairDurationEvents(
+  const astronomicalTwilightMorningPairs = pairProgressiveEvents(
     astronomicalDawnEvents,
     nauticalDawnEvents,
     "Astronomical Twilight (Morning)",
   );
   for (const [beginning, ending] of astronomicalTwilightMorningPairs) {
-    durationEvents.push(
+    progressiveEvents.push(
       getAstronomicalTwilightMorningDurationEvent(beginning, ending),
     );
   }
@@ -294,13 +293,13 @@ export function getTwilightDurationEvents(events: Event[]): Event[] {
   const civilDawnEvents = twilightEvents.filter((event) =>
     event.categories.includes("Civil Dawn"),
   );
-  const nauticalTwilightMorningPairs = pairDurationEvents(
+  const nauticalTwilightMorningPairs = pairProgressiveEvents(
     nauticalDawnEvents,
     civilDawnEvents,
     "Nautical Twilight (Morning)",
   );
   for (const [beginning, ending] of nauticalTwilightMorningPairs) {
-    durationEvents.push(
+    progressiveEvents.push(
       getNauticalTwilightMorningDurationEvent(beginning, ending),
     );
   }
@@ -309,26 +308,26 @@ export function getTwilightDurationEvents(events: Event[]): Event[] {
   const civilDuskEvents = twilightEvents.filter((event) =>
     event.categories.includes("Civil Dusk"),
   );
-  const daylightPairs = pairDurationEvents(
+  const daylightPairs = pairProgressiveEvents(
     civilDawnEvents,
     civilDuskEvents,
     "Daylight",
   );
   for (const [beginning, ending] of daylightPairs) {
-    durationEvents.push(getDaylightDurationEvent(beginning, ending));
+    progressiveEvents.push(getDaylightDurationEvent(beginning, ending));
   }
 
   // Nautical Twilight (evening): Civil Dusk → Nautical Dusk
   const nauticalDuskEvents = twilightEvents.filter((event) =>
     event.categories.includes("Nautical Dusk"),
   );
-  const nauticalTwilightEveningPairs = pairDurationEvents(
+  const nauticalTwilightEveningPairs = pairProgressiveEvents(
     civilDuskEvents,
     nauticalDuskEvents,
     "Nautical Twilight (Evening)",
   );
   for (const [beginning, ending] of nauticalTwilightEveningPairs) {
-    durationEvents.push(
+    progressiveEvents.push(
       getNauticalTwilightEveningDurationEvent(beginning, ending),
     );
   }
@@ -337,28 +336,28 @@ export function getTwilightDurationEvents(events: Event[]): Event[] {
   const astronomicalDuskEvents = twilightEvents.filter((event) =>
     event.categories.includes("Astronomical Dusk"),
   );
-  const astronomicalTwilightEveningPairs = pairDurationEvents(
+  const astronomicalTwilightEveningPairs = pairProgressiveEvents(
     nauticalDuskEvents,
     astronomicalDuskEvents,
     "Astronomical Twilight (Evening)",
   );
   for (const [beginning, ending] of astronomicalTwilightEveningPairs) {
-    durationEvents.push(
+    progressiveEvents.push(
       getAstronomicalTwilightEveningDurationEvent(beginning, ending),
     );
   }
 
   // Night: Astronomical Dusk → Astronomical Dawn (next day)
-  const nightPairs = pairDurationEvents(
+  const nightPairs = pairProgressiveEvents(
     astronomicalDuskEvents,
     astronomicalDawnEvents,
     "Night",
   );
   for (const [beginning, ending] of nightPairs) {
-    durationEvents.push(getNightDurationEvent(beginning, ending));
+    progressiveEvents.push(getNightDurationEvent(beginning, ending));
   }
 
-  return durationEvents;
+  return progressiveEvents;
 }
 
 function getAstronomicalTwilightMorningDurationEvent(

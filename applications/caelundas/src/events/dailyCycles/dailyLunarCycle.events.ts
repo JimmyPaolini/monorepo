@@ -1,7 +1,6 @@
 import fs from "node:fs";
 
 import _ from "lodash";
-import moment from "moment-timezone";
 
 import { getCalendar } from "../../calendar.utilities";
 import { getAzimuthElevationFromEphemeris } from "../../ephemeris/ephemeris.service";
@@ -12,7 +11,7 @@ import { isRise, isSet } from "./dailyCycle.utilities";
 
 import type { Event } from "../../calendar.utilities";
 import type { AzimuthElevationEphemeris } from "../../ephemeris/ephemeris.types";
-import type { Moment } from "moment";
+import type moment from "moment-timezone";
 
 const categories = ["Astronomy", "Astrology", "Daily Lunar Cycle", "Lunar"];
 
@@ -43,15 +42,15 @@ const categories = ["Astronomy", "Astrology", "Daily Lunar Cycle", "Lunar"];
  * ```
  */
 export function getDailyLunarCycleEvents(args: {
-  currentMinute: Moment;
+  currentMinute: moment.Moment;
   moonAzimuthElevationEphemeris: AzimuthElevationEphemeris;
 }): Event[] {
   const { currentMinute, moonAzimuthElevationEphemeris } = args;
 
   const dailyLunarCycleEvents: Event[] = [];
 
-  const previousMinute = currentMinute.clone().subtract(1, "minutes");
-  const nextMinute = currentMinute.clone().add(1, "minutes");
+  const previousMinute = currentMinute.clone().subtract(1, "minute");
+  const nextMinute = currentMinute.clone().add(1, "minute");
 
   const currentElevation = getAzimuthElevationFromEphemeris(
     moonAzimuthElevationEphemeris,
@@ -77,19 +76,19 @@ export function getDailyLunarCycleEvents(args: {
     previous: previousElevation,
     next: nextElevation,
   };
-  const date = currentMinute.toDate();
+  const date = currentMinute;
 
   if (isRise({ ...elevations })) {
-    dailyLunarCycleEvents.push(getMoonriseEvent(date));
+    dailyLunarCycleEvents.push(buildMoonriseEvent(date));
   }
   if (isMaximum({ ...elevations })) {
-    dailyLunarCycleEvents.push(getLunarZenithEvent(date));
+    dailyLunarCycleEvents.push(buildLunarZenithEvent(date));
   }
   if (isSet({ ...elevations })) {
-    dailyLunarCycleEvents.push(getMoonsetEvent(date));
+    dailyLunarCycleEvents.push(buildMoonsetEvent(date));
   }
   if (isMinimum({ ...elevations })) {
-    dailyLunarCycleEvents.push(getLunarNadirEvent(date));
+    dailyLunarCycleEvents.push(buildLunarNadirEvent(date));
   }
 
   return dailyLunarCycleEvents;
@@ -112,11 +111,11 @@ export function getDailyLunarCycleEvents(args: {
  * // event.summary === '🌙 🔼 Moonrise'
  * ```
  */
-export function getMoonriseEvent(date: Date): Event {
+export function buildMoonriseEvent(date: moment.Moment): Event {
   const description = "Moonrise";
   const summary = `🌙 🔼 ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
   const moonriseEvent: Event = {
@@ -146,11 +145,11 @@ export function getMoonriseEvent(date: Date): Event {
  * // event.summary === '🌙 ⏫ Lunar Zenith'
  * ```
  */
-export function getLunarZenithEvent(date: Date): Event {
+export function buildLunarZenithEvent(date: moment.Moment): Event {
   const description = "Lunar Zenith";
   const summary = `🌙 ⏫ ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
   const lunarZenithEvent: Event = {
@@ -180,11 +179,11 @@ export function getLunarZenithEvent(date: Date): Event {
  * // event.summary === '🌙 🔽 Moonset'
  * ```
  */
-export function getMoonsetEvent(date: Date): Event {
+export function buildMoonsetEvent(date: moment.Moment): Event {
   const description = "Moonset";
   const summary = `🌙 🔽 ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
   const moonsetEvent: Event = {
@@ -214,11 +213,11 @@ export function getMoonsetEvent(date: Date): Event {
  * // event.summary === '🌙 ⏬ Lunar Nadir'
  * ```
  */
-export function getLunarNadirEvent(date: Date): Event {
+export function buildLunarNadirEvent(date: moment.Moment): Event {
   const description = "Lunar Nadir";
   const summary = `🌙 ⏬ ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
   const lunarNadirEvent: Event = {
@@ -258,8 +257,8 @@ export function getLunarNadirEvent(date: Date): Event {
  */
 export function writeDailyLunarCycleEvents(args: {
   dailyLunarCycleEvents: Event[];
-  start: Date;
-  end: Date;
+  start: moment.Moment;
+  end: moment.Moment;
 }): void {
   const { dailyLunarCycleEvents, start, end } = args;
   if (_.isEmpty(dailyLunarCycleEvents)) {

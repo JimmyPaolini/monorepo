@@ -12,7 +12,6 @@ import type {
   symbolByAspect,
   symbolByAsteroid,
   symbolByBody,
-  symbolByComet,
   symbolByDecan,
   symbolByLunarPhase,
   symbolByMajorAspect,
@@ -28,7 +27,7 @@ import type {
   symbolBySign,
   symbolBySpecialtyAspect,
   symbolByTripleAspect,
-  symbolByVenusianPhase,
+  symbolByVenusianPhase
 } from "./symbols";
 
 // #region Signs 🪧
@@ -88,7 +87,7 @@ export type Asteroid = keyof typeof symbolByAsteroid;
  *
  * Tracked for sign ingress but not aspects due to irregular visibility.
  */
-export type Comet = keyof typeof symbolByComet;
+// export type Comet = keyof typeof symbolByComet;
 // export type CometSymbol = (typeof symbolByComet)[Comet];
 
 // #region Nodes 🌕
@@ -323,7 +322,7 @@ export type MartianPhase = keyof typeof symbolByMartianPhase;
  * @remarks
  * Phase values:
  * - "applying": Bodies approaching exact aspect angle (within orb)
- * - "exact": Bodies at precise aspect angle
+ * - "perfective": Bodies at precise aspect angle
  * - "separating": Bodies departing from exact aspect angle (within orb)
  *
  * Applying aspects are considered more potent than separating aspects in

@@ -48,6 +48,9 @@ WORKDIR /app
 # Copy the deployed package with its isolated node_modules
 COPY --from=builder /deploy .
 
+# Copy pre-downloaded Swiss Ephemeris data files (run `nx run caelundas:download-ephemeris` before docker build)
+COPY --chown=nodeuser:nodegroup data/ephemeris/ ./data/ephemeris/
+
 # caelundas/tsconfig.json has `extends: "../../tsconfig.base.json"`.
 # With WORKDIR /app, that resolves to /tsconfig.base.json in the container.
 COPY --from=builder /app/tsconfig.base.json /tsconfig.base.json

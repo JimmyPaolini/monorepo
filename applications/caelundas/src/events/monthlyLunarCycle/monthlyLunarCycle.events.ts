@@ -10,7 +10,6 @@
 import fs from "node:fs";
 
 import _ from "lodash";
-import moment from "moment-timezone";
 
 import { getCalendar, MARGIN_MINUTES } from "../../calendar.utilities";
 import { lunarPhases } from "../../constants";
@@ -23,7 +22,7 @@ import { isLunarPhase } from "./monthlyLunarCycle.utilities";
 import type { Event } from "../../calendar.utilities";
 import type { IlluminationEphemeris } from "../../ephemeris/ephemeris.types";
 import type { LunarPhase } from "../../types";
-import type { Moment } from "moment";
+import type moment from "moment-timezone";
 
 /**
  * Detects lunar phase events at a specific time point.
@@ -49,7 +48,7 @@ import type { Moment } from "moment";
  * - Typically called once per minute in main ephemeris loop
  *
  * @see {@link isLunarPhase} for phase detection algorithm
- * @see {@link getMonthlyLunarCycleEvent} for event formatting
+ * @see {@link buildMonthlyLunarCycleEvent} for event formatting
  * @see {@link getIlluminationFromEphemeris} for illumination interpolation
  *
  * @example
@@ -62,7 +61,7 @@ import type { Moment } from "moment";
  * ```
  */
 export function getMonthlyLunarCycleEvents(args: {
-  currentMinute: Moment;
+  currentMinute: moment.Moment;
   moonIlluminationEphemeris: IlluminationEphemeris;
 }): Event[] {
   const { currentMinute, moonIlluminationEphemeris } = args;
@@ -104,12 +103,12 @@ export function getMonthlyLunarCycleEvents(args: {
     previousIlluminations,
     nextIlluminations,
   };
-  const date = currentMinute.toDate();
+  const date = currentMinute;
 
   for (const lunarPhase of lunarPhases) {
     if (isLunarPhase({ ...illuminations, lunarPhase })) {
       monthlyLunarCycleEvents.push(
-        getMonthlyLunarCycleEvent({ date, lunarPhase }),
+        buildMonthlyLunarCycleEvent({ date, lunarPhase }),
       );
     }
   }
@@ -150,8 +149,8 @@ export function getMonthlyLunarCycleEvents(args: {
  * // Returns: { summary: "🌕 🌕 Full Moon", start: ..., categories: [..., "Full"], ... }
  * ```
  */
-export function getMonthlyLunarCycleEvent(args: {
-  date: Date;
+export function buildMonthlyLunarCycleEvent(args: {
+  date: moment.Moment;
   lunarPhase: LunarPhase;
 }): Event {
   const { date, lunarPhase } = args;
@@ -162,7 +161,7 @@ export function getMonthlyLunarCycleEvent(args: {
   const description = `${lunarPhaseCapitalized} Moon`;
   const summary = `🌙 ${symbolByLunarPhase[lunarPhase]} ${description}`;
 
-  const dateString = moment.tz(date, "America/New_York").toISOString(true);
+  const dateString = date.clone().tz("America/New_York").toISOString(true);
   console.log(`${summary} at ${dateString}`);
 
   const monthlyLunarCycleEvent = {
@@ -216,8 +215,8 @@ export function getMonthlyLunarCycleEvent(args: {
  */
 export function writeMonthlyLunarCycleEvents(args: {
   monthlyLunarCycleEvents: Event[];
-  start: Date;
-  end: Date;
+  start: moment.Moment;
+  end: moment.Moment;
 }): void {
   const { monthlyLunarCycleEvents, start, end } = args;
   if (_.isEmpty(monthlyLunarCycleEvents)) {
@@ -240,23 +239,23 @@ export function writeMonthlyLunarCycleEvents(args: {
   console.log(`🌒 Wrote ${message}`);
 }
 
-// #region 🕑 Duration Events
+// #region 🕑 Progressive Events
 
 /**
- * Generates duration events showing time spent in each lunar phase.
+ * Generates progressive events showing time spent in each lunar phase.
  *
- * Pairs consecutive lunar phase events to create duration events spanning the
+ * Pairs consecutive lunar phase events to create progressive events spanning the
  * period between phases. This shows how long Moon remains in each phase state
  * (roughly 7.4 days per phase on average).
  *
  * @param events - Array of all calendar events (will be filtered to lunar cycles)
- * @returns Array of duration events spanning lunar phase periods
+ * @returns Array of progressive events spanning lunar phase periods
  *
  * @remarks
  * - Filters to events with "Monthly Lunar Cycle" category
  * - Sorts events chronologically by start time
  * - Pairs consecutive phase events (new → first, first → full, full → third, third → new)
- * - Duration event represents time spent **in** the entering phase
+ * - Progressive event represents time spent **in** the entering phase
  * - Skips invalid events that lack proper phase categorization
  * - Returns empty array for unpaired events (e.g., at date range boundaries)
  * - Average phase duration: ~7.4 days (29.5 day lunar month ÷ 4 phases)
@@ -272,7 +271,7 @@ export function writeMonthlyLunarCycleEvents(args: {
  *   { summary: "🌕 🌕 Full Moon", start: Jan 15, categories: [..., "Full"] },
  *   { summary: "🌕 🌗 Third Quarter Moon", start: Jan 22, categories: [..., "Third"] }
  * ];
- * const durations = getMonthlyLunarCycleDurationEvents(allEvents);
+ * const durations = getMonthlyLunarCycleProgressiveEvents(allEvents);
  * // Returns: [
  * //   { summary: "🌕 🌑 New Moon", start: Jan 1, end: Jan 8, ... },
  * //   { summary: "🌕 🌓 First Quarter Moon", start: Jan 8, end: Jan 15, ... },
@@ -280,8 +279,10 @@ export function writeMonthlyLunarCycleEvents(args: {
  * // ]
  * ```
  */
-export function getMonthlyLunarCycleDurationEvents(events: Event[]): Event[] {
-  const durationEvents: Event[] = [];
+export function getMonthlyLunarCycleProgressiveEvents(
+  events: Event[],
+): Event[] {
+  const progressiveEvents: Event[] = [];
 
   // Filter to monthly lunar cycle events only
   const lunarCycleEvents = events.filter((event) =>
@@ -290,10 +291,10 @@ export function getMonthlyLunarCycleDurationEvents(events: Event[]): Event[] {
 
   // Sort by time
   const sortedEvents = _.sortBy(lunarCycleEvents, (event) =>
-    event.start.getTime(),
+    event.start.valueOf(),
   );
 
-  // Pair consecutive lunar phases to create duration events
+  // Pair consecutive lunar phases to create progressive events
   for (let i = 0; i < sortedEvents.length - 1; i++) {
     const entering = sortedEvents[i];
     const exiting = sortedEvents[i + 1];
@@ -301,26 +302,29 @@ export function getMonthlyLunarCycleDurationEvents(events: Event[]): Event[] {
       continue;
     }
 
-    const durationEvent = getMonthlyLunarCycleDurationEvent(entering, exiting);
+    const durationEvent = getMonthlyLunarCycleProgressiveEvent(
+      entering,
+      exiting,
+    );
     if (!durationEvent) {
       continue;
     }
 
-    durationEvents.push(durationEvent);
+    progressiveEvents.push(durationEvent);
   }
 
-  return durationEvents;
+  return progressiveEvents;
 }
 
 /**
- * Creates a duration event from consecutive lunar phase events.
+ * Creates a progressive event from consecutive lunar phase events.
  *
  * Extracts the lunar phase from the entering event categories and formats a
- * duration event showing the span of time Moon remains in that phase.
+ * progressive event showing the span of time Moon remains in that phase.
  *
  * @param entering - Phase event marking the start of this phase period
  * @param exiting - Next phase event marking the end of this phase period
- * @returns Duration event spanning the phase period, or null if phase cannot be extracted
+ * @returns Progressive event spanning the phase period, or null if phase cannot be extracted
  *
  * @remarks
  * - Duration spans from entering.start to exiting.start (not exiting.end)
@@ -335,14 +339,14 @@ export function getMonthlyLunarCycleDurationEvents(events: Event[]): Event[] {
  *
  * @example
  * ```typescript
- * const duration = getMonthlyLunarCycleDurationEvent(
+ * const duration = getMonthlyLunarCycleProgressiveEvent(
  *   { summary: "🌕 🌑 New Moon", start: Jan 1, categories: [..., "New"] },
  *   { summary: "🌕 🌓 First Quarter Moon", start: Jan 8, categories: [..., "First"] }
  * );
  * // Returns: { summary: "🌕 🌑 New Moon", start: Jan 1, end: Jan 8, categories: [..., "New"] }
  * ```
  */
-function getMonthlyLunarCycleDurationEvent(
+function getMonthlyLunarCycleProgressiveEvent(
   entering: Event,
   exiting: Event,
 ): Event | null {
@@ -357,7 +361,7 @@ function getMonthlyLunarCycleDurationEvent(
     console.warn(
       `⚠️ Could not extract lunar phase from categories: ${categories.join(
         ", ",
-      )} - skipping duration event for ${entering.summary}`,
+      )} - skipping progressive event for ${entering.summary}`,
     );
     return null; // Skip this invalid event
   }

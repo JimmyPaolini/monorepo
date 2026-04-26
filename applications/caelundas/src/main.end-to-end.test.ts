@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 import _ from "lodash";
+import moment from "moment-timezone";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
 // Mock environment for testing
@@ -33,15 +34,15 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
       const events = [
         {
-          start: new Date("2025-03-20T09:06:00Z"),
-          end: new Date("2025-03-20T09:06:00Z"),
+          start: moment.utc("2025-03-20T09:06:00Z"),
+          end: moment.utc("2025-03-20T09:06:00Z"),
           summary: "☀️ → ♈ Sun ingress Aries",
           description: "Vernal Equinox - Sun enters Aries",
           categories: ["Astronomy", "Astrology", "Ingress", "Sun", "Aries"],
         },
         {
-          start: new Date("2025-03-29T10:58:00Z"),
-          end: new Date("2025-03-29T10:58:00Z"),
+          start: moment.utc("2025-03-29T10:58:00Z"),
+          end: moment.utc("2025-03-29T10:58:00Z"),
           summary: "🌕 Full Moon",
           description: "Full Moon in Libra",
           categories: ["Astronomy", "Lunar Phase", "Moon"],
@@ -96,8 +97,8 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
       const events = [
         {
-          start: new Date("2025-06-21T12:00:00Z"),
-          end: new Date("2025-06-21T12:00:00Z"),
+          start: moment.utc("2025-06-21T12:00:00Z"),
+          end: moment.utc("2025-06-21T12:00:00Z"),
           summary: "Summer Solstice",
           description: "Summer Solstice",
           categories: ["Astronomy"],
@@ -124,8 +125,8 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
       const events = [
         {
-          start: new Date("2025-04-08T18:00:00Z"),
-          end: new Date("2025-04-08T20:00:00Z"),
+          start: moment.utc("2025-04-08T18:00:00Z"),
+          end: moment.utc("2025-04-08T20:00:00Z"),
           summary: "Total Solar Eclipse",
           description: "Total Solar Eclipse visible from North America",
           categories: ["Astronomy", "Eclipse", "Solar"],
@@ -252,20 +253,20 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
       ); // 5° orb
     });
 
-    it("should calculate duration event pairs correctly", async () => {
-      const { pairDurationEvents } = await import("./duration.utilities");
+    it("should calculate progressive event pairs correctly", async () => {
+      const { pairProgressiveEvents } = await import("./progressive.utilities");
 
       const beginnings = [
         {
-          start: new Date("2025-03-01T10:00:00Z"),
-          end: new Date("2025-03-01T10:00:00Z"),
+          start: moment.utc("2025-03-01T10:00:00Z"),
+          end: moment.utc("2025-03-01T10:00:00Z"),
           summary: "Forming 1",
           description: "First forming",
           categories: ["Test"],
         },
         {
-          start: new Date("2025-03-05T10:00:00Z"),
-          end: new Date("2025-03-05T10:00:00Z"),
+          start: moment.utc("2025-03-05T10:00:00Z"),
+          end: moment.utc("2025-03-05T10:00:00Z"),
           summary: "Forming 2",
           description: "Second forming",
           categories: ["Test"],
@@ -274,22 +275,22 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
       const endings = [
         {
-          start: new Date("2025-03-03T10:00:00Z"),
-          end: new Date("2025-03-03T10:00:00Z"),
+          start: moment.utc("2025-03-03T10:00:00Z"),
+          end: moment.utc("2025-03-03T10:00:00Z"),
           summary: "Dissolving 1",
           description: "First dissolving",
           categories: ["Test"],
         },
         {
-          start: new Date("2025-03-07T10:00:00Z"),
-          end: new Date("2025-03-07T10:00:00Z"),
+          start: moment.utc("2025-03-07T10:00:00Z"),
+          end: moment.utc("2025-03-07T10:00:00Z"),
           summary: "Dissolving 2",
           description: "Second dissolving",
           categories: ["Test"],
         },
       ];
 
-      const pairs = pairDurationEvents(beginnings, endings, "test");
+      const pairs = pairProgressiveEvents(beginnings, endings, "test");
 
       expect(pairs.length).toBe(2);
       expect(pairs[0]?.[0]?.start.toISOString()).toBe(

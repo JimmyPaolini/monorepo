@@ -76,7 +76,7 @@ describe("majorAspects.events integration", () => {
         nextLongitudeBody1: 0,
         nextLongitudeBody2: 181,
       });
-      expect(phase).toBe("exact");
+      expect(phase).toBe("perfective");
     });
 
     it("should return dissolving when exiting aspect orb", () => {

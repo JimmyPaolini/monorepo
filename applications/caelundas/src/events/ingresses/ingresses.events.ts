@@ -29,7 +29,7 @@ import type {
   Sign,
   SignSymbol,
 } from "../../types";
-import type { Moment } from "moment";
+import type moment from "moment-timezone";
 
 const categories = ["Astronomy", "Astrology", "Ingress"];
 
@@ -52,7 +52,7 @@ const categories = ["Astronomy", "Astrology", "Ingress"];
  */
 export function getSignIngressEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
-  currentMinute: Moment;
+  currentMinute: moment.Moment;
 }): Event[] {
   const { coordinateEphemerisByBody, currentMinute } = args;
 
@@ -78,11 +78,11 @@ export function getSignIngressEvents(args: {
       continue;
     }
 
-    const date = currentMinute.toDate();
+    const date = currentMinute;
     const longitude = currentLongitude;
 
     if (isSignIngress({ currentLongitude, previousLongitude })) {
-      signIngressEvents.push(getSignIngressEvent({ body, date, longitude }));
+      signIngressEvents.push(buildSignIngressEvent({ body, date, longitude }));
     }
   }
 
@@ -99,8 +99,8 @@ export function getSignIngressEvents(args: {
  * @returns Calendar event for sign ingress with body and sign symbols
  * @see {@link getSign} to derive sign from longitude
  */
-export function getSignIngressEvent(args: {
-  date: Date;
+export function buildSignIngressEvent(args: {
+  date: moment.Moment;
   longitude: number;
   body: Body;
 }): Event {
@@ -131,10 +131,10 @@ export function getSignIngressEvent(args: {
  *
  */
 export function writeSignIngressEvents(args: {
-  end: Date;
+  end: moment.Moment;
   signIngressBodies: Body[];
   signIngressEvents: Event[];
-  start: Date;
+  start: moment.Moment;
 }): void {
   const { signIngressEvents, signIngressBodies, start, end } = args;
   if (_.isEmpty(signIngressEvents)) {
@@ -176,7 +176,7 @@ export function writeSignIngressEvents(args: {
  */
 export function getDecanIngressEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
-  currentMinute: Moment;
+  currentMinute: moment.Moment;
 }): Event[] {
   const { coordinateEphemerisByBody, currentMinute } = args;
 
@@ -202,14 +202,16 @@ export function getDecanIngressEvents(args: {
       continue;
     }
 
-    const date = currentMinute.toDate();
+    const date = currentMinute;
     const longitude = currentLongitude;
 
     if (
       !isSignIngress({ currentLongitude, previousLongitude }) &&
       isDecanIngress({ currentLongitude, previousLongitude })
     ) {
-      decanIngressEvents.push(getDecanIngressEvent({ body, date, longitude }));
+      decanIngressEvents.push(
+        buildDecanIngressEvent({ body, date, longitude }),
+      );
     }
   }
 
@@ -219,8 +221,8 @@ export function getDecanIngressEvents(args: {
 /**
  *
  */
-export function getDecanIngressEvent(args: {
-  date: Date;
+export function buildDecanIngressEvent(args: {
+  date: moment.Moment;
   longitude: number;
   body: Body;
 }): Event {
@@ -254,10 +256,10 @@ export function getDecanIngressEvent(args: {
  *
  */
 export function writeDecanIngressEvents(args: {
-  end: Date;
+  end: moment.Moment;
   decanIngressBodies: Body[];
   decanIngressEvents: Event[];
-  start: Date;
+  start: moment.Moment;
 }): void {
   const { decanIngressEvents, decanIngressBodies, start, end } = args;
   if (_.isEmpty(decanIngressEvents)) {
@@ -288,7 +290,7 @@ export function writeDecanIngressEvents(args: {
  */
 export function getPeakIngressEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
-  currentMinute: Moment;
+  currentMinute: moment.Moment;
 }): Event[] {
   const { coordinateEphemerisByBody, currentMinute } = args;
 
@@ -314,11 +316,11 @@ export function getPeakIngressEvents(args: {
       continue;
     }
 
-    const date = currentMinute.toDate();
+    const date = currentMinute;
     const longitude = currentLongitude;
 
     if (isPeakIngress({ currentLongitude, previousLongitude })) {
-      peakIngressEvents.push(getPeakIngressEvent({ body, date, longitude }));
+      peakIngressEvents.push(buildPeakIngressEvent({ body, date, longitude }));
     }
   }
 
@@ -328,8 +330,8 @@ export function getPeakIngressEvents(args: {
 /**
  *
  */
-export function getPeakIngressEvent(args: {
-  date: Date;
+export function buildPeakIngressEvent(args: {
+  date: moment.Moment;
   longitude: number;
   body: Body;
 }): Event {
@@ -360,10 +362,10 @@ export function getPeakIngressEvent(args: {
  *
  */
 export function writePeakIngressEvents(args: {
-  end: Date;
+  end: moment.Moment;
   peakIngressBodies: Body[];
   peakIngressEvents: Event[];
-  start: Date;
+  start: moment.Moment;
 }): void {
   const { peakIngressEvents, peakIngressBodies, start, end } = args;
   if (_.isEmpty(peakIngressEvents)) {
@@ -387,13 +389,13 @@ export function writePeakIngressEvents(args: {
   console.log(`⛰️ Wrote ${message}`);
 }
 
-// #region 🕑 Duration Events
+// #region 🕑 Progressive Events
 
 /**
  *
  */
-export function getSignIngressDurationEvents(events: Event[]): Event[] {
-  const durationEvents: Event[] = [];
+export function getSignIngressProgressiveEvents(events: Event[]): Event[] {
+  const progressiveEvents: Event[] = [];
 
   // Filter to sign ingress events only (exclude decan and peak)
   const signIngressEvents = events.filter(
@@ -423,10 +425,10 @@ export function getSignIngressDurationEvents(events: Event[]): Event[] {
 
     // Sort by time
     const sortedIngresses = _.sortBy(bodyIngresses, (event) =>
-      event.start.getTime(),
+      event.start.valueOf(),
     );
 
-    // Pair consecutive ingresses to create duration events
+    // Pair consecutive ingresses to create progressive events
     for (let i = 0; i < sortedIngresses.length - 1; i++) {
       const entering = sortedIngresses[i];
       const exiting = sortedIngresses[i + 1];
@@ -434,13 +436,13 @@ export function getSignIngressDurationEvents(events: Event[]): Event[] {
         continue;
       }
 
-      durationEvents.push(
+      progressiveEvents.push(
         getSignIngressDurationEvent(entering, exiting, bodyCapitalized),
       );
     }
   }
 
-  return durationEvents;
+  return progressiveEvents;
 }
 
 function getSignIngressDurationEvent(

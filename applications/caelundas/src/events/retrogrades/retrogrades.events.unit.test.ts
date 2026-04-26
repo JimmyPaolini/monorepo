@@ -4,9 +4,9 @@ import { describe, expect, it, vi } from "vitest";
 import { MARGIN_MINUTES } from "../../calendar.utilities";
 
 import {
-  getRetrogradeDurationEvents,
-  getRetrogradeEvent,
+  buildRetrogradeEvent,
   getRetrogradeEvents,
+  getRetrogradeProgressiveEvents,
 } from "./retrogrades.events";
 
 import type { Event } from "../../calendar.utilities";
@@ -149,9 +149,9 @@ describe("retrogrades.events", () => {
 
   describe("getRetrogradeEvent", () => {
     it("should create a retrograde event with correct structure", () => {
-      const timestamp = new Date("2024-04-01T12:00:00.000Z");
+      const timestamp = moment.utc("2024-04-01T12:00:00.000Z");
 
-      const event = getRetrogradeEvent({
+      const event = buildRetrogradeEvent({
         body: "mercury",
         timestamp,
         direction: "retrograde",
@@ -168,9 +168,9 @@ describe("retrogrades.events", () => {
     });
 
     it("should create a direct event with correct structure", () => {
-      const timestamp = new Date("2024-04-25T12:00:00.000Z");
+      const timestamp = moment.utc("2024-04-25T12:00:00.000Z");
 
-      const event = getRetrogradeEvent({
+      const event = buildRetrogradeEvent({
         body: "mercury",
         timestamp,
         direction: "direct",
@@ -183,9 +183,9 @@ describe("retrogrades.events", () => {
     });
 
     it("should use correct symbol for Venus", () => {
-      const timestamp = new Date("2024-07-22T12:00:00.000Z");
+      const timestamp = moment.utc("2024-07-22T12:00:00.000Z");
 
-      const event = getRetrogradeEvent({
+      const event = buildRetrogradeEvent({
         body: "venus",
         timestamp,
         direction: "retrograde",
@@ -195,9 +195,9 @@ describe("retrogrades.events", () => {
     });
 
     it("should use correct symbol for Mars", () => {
-      const timestamp = new Date("2024-12-06T12:00:00.000Z");
+      const timestamp = moment.utc("2024-12-06T12:00:00.000Z");
 
-      const event = getRetrogradeEvent({
+      const event = buildRetrogradeEvent({
         body: "mars",
         timestamp,
         direction: "retrograde",
@@ -207,9 +207,9 @@ describe("retrogrades.events", () => {
     });
 
     it("should use correct symbol for Jupiter", () => {
-      const timestamp = new Date("2024-10-09T12:00:00.000Z");
+      const timestamp = moment.utc("2024-10-09T12:00:00.000Z");
 
-      const event = getRetrogradeEvent({
+      const event = buildRetrogradeEvent({
         body: "jupiter",
         timestamp,
         direction: "retrograde",
@@ -219,9 +219,9 @@ describe("retrogrades.events", () => {
     });
 
     it("should use correct symbol for Saturn", () => {
-      const timestamp = new Date("2024-06-29T12:00:00.000Z");
+      const timestamp = moment.utc("2024-06-29T12:00:00.000Z");
 
-      const event = getRetrogradeEvent({
+      const event = buildRetrogradeEvent({
         body: "saturn",
         timestamp,
         direction: "retrograde",
@@ -237,8 +237,8 @@ describe("retrogrades.events", () => {
 
       const events: Event[] = [
         {
-          start: new Date("2024-04-01T12:00:00.000Z"),
-          end: new Date("2024-04-01T12:00:00.000Z"),
+          start: moment.utc("2024-04-01T12:00:00.000Z"),
+          end: moment.utc("2024-04-01T12:00:00.000Z"),
           summary: "☿ ↩️ Mercury Stationary Retrograde",
           description: "Mercury Stationary Retrograde",
           categories: ["Astronomy", "Astrology", "Direction", "Retrograde"],
@@ -249,8 +249,8 @@ describe("retrogrades.events", () => {
       writeRetrogradeEvents({
         retrogradeBodies: ["mercury"],
         retrogradeEvents: events,
-        start: new Date("2024-01-01"),
-        end: new Date("2024-12-31"),
+        start: moment.utc("2024-01-01"),
+        end: moment.utc("2024-12-31"),
       });
 
       expect(fs.writeFileSync).toHaveBeenCalled();
@@ -263,40 +263,40 @@ describe("retrogrades.events", () => {
       writeRetrogradeEvents({
         retrogradeBodies: ["mercury"],
         retrogradeEvents: [],
-        start: new Date("2024-01-01"),
-        end: new Date("2024-12-31"),
+        start: moment.utc("2024-01-01"),
+        end: moment.utc("2024-12-31"),
       });
 
       expect(fs.writeFileSync).not.toHaveBeenCalled();
     });
   });
 
-  describe("getRetrogradeDurationEvents", () => {
-    it("should create duration event from retrograde to direct", () => {
+  describe("getRetrogradeProgressiveEvents", () => {
+    it("should create progressive event from retrograde to direct", () => {
       const retrogradeEvent: Event = {
-        start: new Date("2024-04-01T12:00:00.000Z"),
-        end: new Date("2024-04-01T12:00:00.000Z"),
+        start: moment.utc("2024-04-01T12:00:00.000Z"),
+        end: moment.utc("2024-04-01T12:00:00.000Z"),
         summary: "☿ ↩️ Mercury Stationary Retrograde",
         description: "Mercury Stationary Retrograde",
         categories: ["Astronomy", "Astrology", "Direction", "Retrograde"],
       };
       const directEvent: Event = {
-        start: new Date("2024-04-25T12:00:00.000Z"),
-        end: new Date("2024-04-25T12:00:00.000Z"),
+        start: moment.utc("2024-04-25T12:00:00.000Z"),
+        end: moment.utc("2024-04-25T12:00:00.000Z"),
         summary: "☿ ↪️ Mercury Stationary Direct",
         description: "Mercury Stationary Direct",
         categories: ["Astronomy", "Astrology", "Direction", "Direct"],
       };
 
-      const durationEvents = getRetrogradeDurationEvents([
+      const progressiveEvents = getRetrogradeProgressiveEvents([
         retrogradeEvent,
         directEvent,
       ]);
 
-      // Should create duration events for each planet that has retrograde/direct pairs
-      expect(durationEvents.length).toBeGreaterThanOrEqual(1);
+      // Should create progressive events for each planet that has retrograde/direct pairs
+      expect(progressiveEvents.length).toBeGreaterThanOrEqual(1);
 
-      const mercuryDuration = durationEvents.find(
+      const mercuryDuration = progressiveEvents.find(
         (e) =>
           e.description.includes("Mercury") &&
           e.description.includes("Retrograde"),
@@ -310,50 +310,50 @@ describe("retrogrades.events", () => {
     });
 
     it("should return empty array when no direction events provided", () => {
-      const durationEvents = getRetrogradeDurationEvents([]);
+      const progressiveEvents = getRetrogradeProgressiveEvents([]);
 
-      expect(durationEvents).toHaveLength(0);
+      expect(progressiveEvents).toHaveLength(0);
     });
 
     it("should handle multiple planets retrograde periods", () => {
       const mercuryRetrograde: Event = {
-        start: new Date("2024-04-01T12:00:00.000Z"),
-        end: new Date("2024-04-01T12:00:00.000Z"),
+        start: moment.utc("2024-04-01T12:00:00.000Z"),
+        end: moment.utc("2024-04-01T12:00:00.000Z"),
         summary: "☿ ↩️ Mercury Stationary Retrograde",
         description: "Mercury Stationary Retrograde",
         categories: ["Astronomy", "Astrology", "Direction", "Retrograde"],
       };
       const mercuryDirect: Event = {
-        start: new Date("2024-04-25T12:00:00.000Z"),
-        end: new Date("2024-04-25T12:00:00.000Z"),
+        start: moment.utc("2024-04-25T12:00:00.000Z"),
+        end: moment.utc("2024-04-25T12:00:00.000Z"),
         summary: "☿ ↪️ Mercury Stationary Direct",
         description: "Mercury Stationary Direct",
         categories: ["Astronomy", "Astrology", "Direction", "Direct"],
       };
       const venusRetrograde: Event = {
-        start: new Date("2024-07-22T12:00:00.000Z"),
-        end: new Date("2024-07-22T12:00:00.000Z"),
+        start: moment.utc("2024-07-22T12:00:00.000Z"),
+        end: moment.utc("2024-07-22T12:00:00.000Z"),
         summary: "♀️ ↩️ Venus Stationary Retrograde",
         description: "Venus Stationary Retrograde",
         categories: ["Astronomy", "Astrology", "Direction", "Retrograde"],
       };
       const venusDirect: Event = {
-        start: new Date("2024-09-03T12:00:00.000Z"),
-        end: new Date("2024-09-03T12:00:00.000Z"),
+        start: moment.utc("2024-09-03T12:00:00.000Z"),
+        end: moment.utc("2024-09-03T12:00:00.000Z"),
         summary: "♀️ ↪️ Venus Stationary Direct",
         description: "Venus Stationary Direct",
         categories: ["Astronomy", "Astrology", "Direction", "Direct"],
       };
 
-      const durationEvents = getRetrogradeDurationEvents([
+      const progressiveEvents = getRetrogradeProgressiveEvents([
         mercuryRetrograde,
         mercuryDirect,
         venusRetrograde,
         venusDirect,
       ]);
 
-      // Should have duration events for both Mercury and Venus
-      expect(durationEvents.length).toBeGreaterThanOrEqual(2);
+      // Should have progressive events for both Mercury and Venus
+      expect(progressiveEvents.length).toBeGreaterThanOrEqual(2);
     });
   });
 });

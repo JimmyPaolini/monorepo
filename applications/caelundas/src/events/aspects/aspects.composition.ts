@@ -3,23 +3,20 @@ import _ from "lodash";
 import { aspects, bodies } from "../../constants";
 import { aspectPhases } from "../../types";
 
+import type { ActiveAspect } from "./aspects.store";
 import type { Event } from "../../calendar.utilities";
 import type { Aspect, AspectPhase, Body } from "../../types";
-import type { Moment } from "moment";
+import type moment from "moment-timezone";
 
 /**
  * Represents a 2-body aspect relationship extracted from stored events.
  *
- * This simplified representation is used for graph-based analysis when
- * composing multi-body aspect patterns. Each edge connects two bodies
- * with a specific aspect type and phase.
+ * Extends {@link ActiveAspect} with phase and event metadata
+ * needed for temporal analysis during post-processing.
  *
  * @see {@link parseAspectEvents} for extraction from event data
  */
-export interface AspectEdge {
-  body1: Body;
-  body2: Body;
-  aspectType: Aspect;
+export interface AspectEdge extends ActiveAspect {
   phase: AspectPhase;
   event: Event;
 }
@@ -89,9 +86,7 @@ export function parseAspectEvents(events: Event[]): AspectEdge[] {
         aspectPhases.includes(category as AspectPhase),
       ) as AspectPhase | undefined;
 
-      if (!phase) {
-        continue; // No phase found
-      }
+      const resolvedPhase: AspectPhase = phase ?? "perfective";
 
       const body1 = bodiesInEvent[0];
       const body2 = bodiesInEvent[1];
@@ -100,10 +95,9 @@ export function parseAspectEvents(events: Event[]): AspectEdge[] {
       }
 
       edges.push({
-        body1,
-        body2,
-        aspectType,
-        phase,
+        bodies: [body1, body2],
+        aspect: aspectType,
+        phase: resolvedPhase,
         event,
       });
     } catch (error) {
@@ -126,11 +120,11 @@ export function parseAspectEvents(events: Event[]): AspectEdge[] {
  * @param edges - Aspect edges to group
  * @returns Map of aspect type to edges of that type
  */
-export function groupAspectsByType(
-  edges: AspectEdge[],
-): Map<Aspect, AspectEdge[]> {
-  const grouped = _.groupBy(edges, "aspectType");
-  return new Map(Object.entries(grouped)) as Map<Aspect, AspectEdge[]>;
+export function groupAspectsByType<T extends ActiveAspect>(
+  edges: T[],
+): Map<Aspect, T[]> {
+  const grouped = _.groupBy(edges, "aspect");
+  return new Map(Object.entries(grouped)) as Map<Aspect, T[]>;
 }
 
 /**
@@ -140,8 +134,8 @@ export function groupAspectsByType(
  * @param body - Body to search for
  * @returns True if body is either body1 or body2 in the edge
  */
-export function involvesBody(edge: AspectEdge, body: Body): boolean {
-  return edge.body1 === body || edge.body2 === body;
+export function involvesBody(edge: ActiveAspect, body: Body): boolean {
+  return edge.bodies[0] === body || edge.bodies[1] === body;
 }
 
 /**
@@ -151,12 +145,12 @@ export function involvesBody(edge: AspectEdge, body: Body): boolean {
  * @param body - Known body in the edge
  * @returns The other body in the edge, or null if body not found
  */
-export function getOtherBody(edge: AspectEdge, body: Body): Body | null {
-  if (edge.body1 === body) {
-    return edge.body2;
+export function getOtherBody(edge: ActiveAspect, body: Body): Body | null {
+  if (edge.bodies[0] === body) {
+    return edge.bodies[1];
   }
-  if (edge.body2 === body) {
-    return edge.body1;
+  if (edge.bodies[1] === body) {
+    return edge.bodies[0];
   }
   return null;
 }
@@ -175,12 +169,10 @@ export function getOtherBody(edge: AspectEdge, body: Body): Body | null {
 export function findBodiesWithAspectTo(
   body: Body,
   aspectType: Aspect,
-  edges: AspectEdge[],
+  edges: ActiveAspect[],
 ): Body[] {
   return edges
-    .filter(
-      (edge) => edge.aspectType === aspectType && involvesBody(edge, body),
-    )
+    .filter((edge) => edge.aspect === aspectType && involvesBody(edge, body))
     .map((edge) => getOtherBody(edge, body))
     .filter((b): b is Body => b !== null);
 }
@@ -201,13 +193,13 @@ export function haveAspect(
   body1: Body,
   body2: Body,
   aspectType: Aspect,
-  edges: AspectEdge[],
+  edges: ActiveAspect[],
 ): boolean {
   return edges.some(
     (edge) =>
-      edge.aspectType === aspectType &&
-      ((edge.body1 === body1 && edge.body2 === body2) ||
-        (edge.body1 === body2 && edge.body2 === body1)),
+      edge.aspect === aspectType &&
+      ((edge.bodies[0] === body1 && edge.bodies[1] === body2) ||
+        (edge.bodies[0] === body2 && edge.bodies[1] === body1)),
   );
 }
 
@@ -232,32 +224,24 @@ export function haveAspect(
  */
 export function determineMultiBodyPhase(
   allAspectEdges: AspectEdge[],
-  currentMinute: Moment,
+  currentMinute: moment.Moment,
   bodies: Body[],
   checkPatternExists: (edges: AspectEdge[]) => boolean,
 ): AspectPhase | null {
   // Get edges at current, previous, and next minutes
-  const currentTimestamp = currentMinute.toDate().getTime();
-  const previousTimestamp = currentMinute
-    .clone()
-    .subtract(1, "minute")
-    .toDate()
-    .getTime();
-  const nextTimestamp = currentMinute
-    .clone()
-    .add(1, "minute")
-    .toDate()
-    .getTime();
+  const currentTimestamp = currentMinute.valueOf();
+  const previousTimestamp = currentMinute.valueOf() - 60_000;
+  const nextTimestamp = currentMinute.valueOf() + 60_000;
 
   // Filter edges by timestamp and involved bodies
   const bodySet = new Set(bodies);
   const filterEdges = (timestamp: number): AspectEdge[] =>
     allAspectEdges.filter(
       (edge) =>
-        edge.event.start.getTime() <= timestamp &&
-        edge.event.end.getTime() >= timestamp &&
-        bodySet.has(edge.body1) &&
-        bodySet.has(edge.body2),
+        edge.event.start.valueOf() <= timestamp &&
+        edge.event.end.valueOf() >= timestamp &&
+        bodySet.has(edge.bodies[0]) &&
+        bodySet.has(edge.bodies[1]),
     );
 
   const currentEdges = filterEdges(currentTimestamp);
@@ -274,7 +258,7 @@ export function determineMultiBodyPhase(
   const nextExists = checkPatternExists(nextEdges);
 
   // Determine phase based on existence only
-  // Note: "exact" phase removed to avoid duplicate events - only track forming/dissolving
+  // Note: "perfective" phase removed to avoid duplicate events - only track forming/dissolving
 
   if (!previousExists) {
     return "forming";
@@ -285,5 +269,51 @@ export function determineMultiBodyPhase(
   }
 
   // Pattern exists in all three time points - no event needed
+  return null;
+}
+
+/**
+ * Determines the phase of a compound aspect pattern by comparing snapshots.
+ *
+ * Uses the active aspects store snapshots (current vs previous minute)
+ * instead of scanning event arrays with timestamp filtering.
+ *
+ * - Forming: pattern exists in current snapshot but not previous → event at currentMinute
+ * - Dissolving: pattern exists in previous snapshot but not current → event at currentMinute - 1min
+ * - Stable/absent: no event needed
+ *
+ * @param currentEdges - Current minute's active aspect relationships
+ * @param previousEdges - Previous minute's active aspect relationships
+ * @param patternBodies - Bodies involved in the pattern
+ * @param currentMinute - The current minute being processed
+ * @param checkPatternExists - Predicate that validates if pattern exists in given edges
+ * @returns Phase and event minute, or null if no event needed
+ */
+export function determineCompoundPhaseFromSnapshots(
+  currentEdges: ActiveAspect[],
+  previousEdges: ActiveAspect[],
+  patternBodies: Body[],
+  currentMinute: moment.Moment,
+  checkPatternExists: (edges: ActiveAspect[]) => boolean,
+): { phase: AspectPhase; eventMinute: moment.Moment } | null {
+  const bodySet = new Set(patternBodies);
+  const filterByBodies = (edges: ActiveAspect[]): ActiveAspect[] =>
+    edges.filter((e) => bodySet.has(e.bodies[0]) && bodySet.has(e.bodies[1]));
+
+  const currentFiltered = filterByBodies(currentEdges);
+  const previousFiltered = filterByBodies(previousEdges);
+
+  const currentExists = checkPatternExists(currentFiltered);
+  const previousExists = checkPatternExists(previousFiltered);
+
+  if (currentExists && !previousExists) {
+    return { phase: "forming", eventMinute: currentMinute };
+  }
+  if (!currentExists && previousExists) {
+    return {
+      phase: "dissolving",
+      eventMinute: currentMinute.clone().subtract(1, "minute"),
+    };
+  }
   return null;
 }

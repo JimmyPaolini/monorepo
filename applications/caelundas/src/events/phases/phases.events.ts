@@ -1,20 +1,19 @@
 import fs from "node:fs";
 
 import _ from "lodash";
-import moment from "moment-timezone";
 
 import {
   type Event,
   getCalendar,
   MARGIN_MINUTES,
 } from "../../calendar.utilities";
-import { pairDurationEvents } from "../../duration.utilities";
 import {
   getCoordinateFromEphemeris,
   getDistanceFromEphemeris,
   getIlluminationFromEphemeris,
 } from "../../ephemeris/ephemeris.service";
 import { getOutputPath } from "../../output.utilities";
+import { pairProgressiveEvents } from "../../progressive.utilities";
 import {
   symbolByMartianPhase,
   symbolByMercurianPhase,
@@ -48,9 +47,13 @@ import type {
   VenusianPhase,
   VenusianPhaseSymbol,
 } from "../../types";
-import type { Moment } from "moment";
+import type moment from "moment-timezone";
 
 const categories = ["Astronomy", "Astrology", "Planetary Phase"];
+
+function formatTimeZoneIso(date: moment.Moment, timezone: string): string {
+  return date.clone().tz(timezone).toISOString(true);
+}
 
 /**
  * Detects planetary phase events for Venus, Mercury, and Mars.
@@ -75,7 +78,7 @@ const categories = ["Astronomy", "Astrology", "Planetary Phase"];
  * @see {@link getMartianPhaseEvents} for Mars-specific phases
  */
 export function getPlanetaryPhaseEvents(args: {
-  currentMinute: Moment;
+  currentMinute: moment.Moment;
   coordinateEphemerisByBody: Record<
     CoordinateEphemerisBody,
     CoordinateEphemeris
@@ -155,8 +158,8 @@ export function getPlanetaryPhaseEvents(args: {
  * @returns Formatted calendar event with Venus symbol and phase indicator
  * @see {@link symbolByVenusianPhase} for phase symbols
  */
-export function getVenusianPhaseEvent(args: {
-  timestamp: Date;
+export function buildVenusianPhaseEvent(args: {
+  timestamp: moment.Moment;
   phase: VenusianPhase;
 }): Event {
   const { timestamp, phase } = args;
@@ -167,7 +170,7 @@ export function getVenusianPhaseEvent(args: {
   const description = `Venus ${phaseCapitalized}`;
   const summary = `♀️${phaseSymbol} ${description}`;
 
-  const dateString = moment.tz(timestamp, "America/New_York").toISOString(true);
+  const dateString = formatTimeZoneIso(timestamp, "America/New_York");
   console.log(`${summary} at ${dateString}`);
 
   const venusianPhaseEvent: Event = {
@@ -199,7 +202,7 @@ export function getVenusianPhaseEvent(args: {
  * @see {@link isWesternElongation} for western elongation detection
  */
 export function getVenusianPhaseEvents(args: {
-  currentMinute: Moment;
+  currentMinute: moment.Moment;
   venusCoordinateEphemeris: CoordinateEphemeris;
   venusDistanceEphemeris: DistanceEphemeris;
   venusIlluminationEphemeris: IlluminationEphemeris;
@@ -327,8 +330,8 @@ export function getVenusianPhaseEvents(args: {
 
   if (isMorningRise({ ...params })) {
     venusianPhaseEvents.push(
-      getVenusianPhaseEvent({
-        timestamp: currentMinute.toDate(),
+      buildVenusianPhaseEvent({
+        timestamp: currentMinute,
         phase: "morning rise",
       }),
     );
@@ -336,8 +339,8 @@ export function getVenusianPhaseEvents(args: {
 
   if (isWesternBrightest({ ...params })) {
     venusianPhaseEvents.push(
-      getVenusianPhaseEvent({
-        timestamp: currentMinute.toDate(),
+      buildVenusianPhaseEvent({
+        timestamp: currentMinute,
         phase: "western brightest",
       }),
     );
@@ -345,8 +348,8 @@ export function getVenusianPhaseEvents(args: {
 
   if (isWesternElongation({ ...params })) {
     venusianPhaseEvents.push(
-      getVenusianPhaseEvent({
-        timestamp: currentMinute.toDate(),
+      buildVenusianPhaseEvent({
+        timestamp: currentMinute,
         phase: "western elongation",
       }),
     );
@@ -354,8 +357,8 @@ export function getVenusianPhaseEvents(args: {
 
   if (isMorningSet({ ...params })) {
     venusianPhaseEvents.push(
-      getVenusianPhaseEvent({
-        timestamp: currentMinute.toDate(),
+      buildVenusianPhaseEvent({
+        timestamp: currentMinute,
         phase: "morning set",
       }),
     );
@@ -363,8 +366,8 @@ export function getVenusianPhaseEvents(args: {
 
   if (isEveningRise({ ...params })) {
     venusianPhaseEvents.push(
-      getVenusianPhaseEvent({
-        timestamp: currentMinute.toDate(),
+      buildVenusianPhaseEvent({
+        timestamp: currentMinute,
         phase: "evening rise",
       }),
     );
@@ -372,8 +375,8 @@ export function getVenusianPhaseEvents(args: {
 
   if (isEasternElongation({ ...params })) {
     venusianPhaseEvents.push(
-      getVenusianPhaseEvent({
-        timestamp: currentMinute.toDate(),
+      buildVenusianPhaseEvent({
+        timestamp: currentMinute,
         phase: "eastern elongation",
       }),
     );
@@ -381,8 +384,8 @@ export function getVenusianPhaseEvents(args: {
 
   if (isEasternBrightest({ ...params })) {
     venusianPhaseEvents.push(
-      getVenusianPhaseEvent({
-        timestamp: currentMinute.toDate(),
+      buildVenusianPhaseEvent({
+        timestamp: currentMinute,
         phase: "eastern brightest",
       }),
     );
@@ -390,8 +393,8 @@ export function getVenusianPhaseEvents(args: {
 
   if (isEveningSet({ ...params })) {
     venusianPhaseEvents.push(
-      getVenusianPhaseEvent({
-        timestamp: currentMinute.toDate(),
+      buildVenusianPhaseEvent({
+        timestamp: currentMinute,
         phase: "evening set",
       }),
     );
@@ -422,8 +425,8 @@ export function getVenusianPhaseEvents(args: {
  * @returns Formatted calendar event with Mercury symbol and phase indicator
  * @see {@link symbolByMercurianPhase} for phase symbols
  */
-export function getMercurianPhaseEvent(args: {
-  timestamp: Date;
+export function buildMercurianPhaseEvent(args: {
+  timestamp: moment.Moment;
   phase: MercurianPhase;
 }): Event {
   const { timestamp, phase } = args;
@@ -434,7 +437,7 @@ export function getMercurianPhaseEvent(args: {
   const description = `Mercury ${phaseCapitalized}`;
   const summary = `☿${phaseSymbol} ${description}`;
 
-  const dateString = moment.tz(timestamp, "America/New_York").toISOString(true);
+  const dateString = formatTimeZoneIso(timestamp, "America/New_York");
   console.log(`${summary} at ${dateString}`);
 
   const mercurianPhaseEvent: Event = {
@@ -465,7 +468,7 @@ export function getMercurianPhaseEvent(args: {
  * @see {@link isEasternElongation} for eastern elongation detection
  */
 export function getMercurianPhaseEvents(args: {
-  currentMinute: Moment;
+  currentMinute: moment.Moment;
   mercuryCoordinateEphemeris: CoordinateEphemeris;
   mercuryDistanceEphemeris: DistanceEphemeris;
   mercuryIlluminationEphemeris: IlluminationEphemeris;
@@ -592,8 +595,8 @@ export function getMercurianPhaseEvents(args: {
 
   if (isMorningRise({ ...params })) {
     mercurianPhaseEvents.push(
-      getMercurianPhaseEvent({
-        timestamp: currentMinute.toDate(),
+      buildMercurianPhaseEvent({
+        timestamp: currentMinute,
         phase: "morning rise",
       }),
     );
@@ -601,8 +604,8 @@ export function getMercurianPhaseEvents(args: {
 
   if (isWesternBrightest({ ...params })) {
     mercurianPhaseEvents.push(
-      getMercurianPhaseEvent({
-        timestamp: currentMinute.toDate(),
+      buildMercurianPhaseEvent({
+        timestamp: currentMinute,
         phase: "western brightest",
       }),
     );
@@ -610,8 +613,8 @@ export function getMercurianPhaseEvents(args: {
 
   if (isWesternElongation({ ...params })) {
     mercurianPhaseEvents.push(
-      getMercurianPhaseEvent({
-        timestamp: currentMinute.toDate(),
+      buildMercurianPhaseEvent({
+        timestamp: currentMinute,
         phase: "western elongation",
       }),
     );
@@ -619,8 +622,8 @@ export function getMercurianPhaseEvents(args: {
 
   if (isMorningSet({ ...params })) {
     mercurianPhaseEvents.push(
-      getMercurianPhaseEvent({
-        timestamp: currentMinute.toDate(),
+      buildMercurianPhaseEvent({
+        timestamp: currentMinute,
         phase: "morning set",
       }),
     );
@@ -628,8 +631,8 @@ export function getMercurianPhaseEvents(args: {
 
   if (isEveningRise({ ...params })) {
     mercurianPhaseEvents.push(
-      getMercurianPhaseEvent({
-        timestamp: currentMinute.toDate(),
+      buildMercurianPhaseEvent({
+        timestamp: currentMinute,
         phase: "evening rise",
       }),
     );
@@ -637,8 +640,8 @@ export function getMercurianPhaseEvents(args: {
 
   if (isEasternElongation({ ...params })) {
     mercurianPhaseEvents.push(
-      getMercurianPhaseEvent({
-        timestamp: currentMinute.toDate(),
+      buildMercurianPhaseEvent({
+        timestamp: currentMinute,
         phase: "eastern elongation",
       }),
     );
@@ -646,8 +649,8 @@ export function getMercurianPhaseEvents(args: {
 
   if (isEasternBrightest({ ...params })) {
     mercurianPhaseEvents.push(
-      getMercurianPhaseEvent({
-        timestamp: currentMinute.toDate(),
+      buildMercurianPhaseEvent({
+        timestamp: currentMinute,
         phase: "eastern brightest",
       }),
     );
@@ -655,8 +658,8 @@ export function getMercurianPhaseEvents(args: {
 
   if (isEveningSet({ ...params })) {
     mercurianPhaseEvents.push(
-      getMercurianPhaseEvent({
-        timestamp: currentMinute.toDate(),
+      buildMercurianPhaseEvent({
+        timestamp: currentMinute,
         phase: "evening set",
       }),
     );
@@ -686,8 +689,8 @@ export function getMercurianPhaseEvents(args: {
  * @returns Formatted calendar event with Mars symbol and phase indicator
  * @see {@link symbolByMartianPhase} for phase symbols
  */
-export function getMartianPhaseEvent(args: {
-  timestamp: Date;
+export function buildMartianPhaseEvent(args: {
+  timestamp: moment.Moment;
   phase: MartianPhase;
 }): Event {
   const { timestamp, phase } = args;
@@ -698,7 +701,7 @@ export function getMartianPhaseEvent(args: {
   const description = `Mars ${phaseCapitalized}`;
   const summary = `♂️${phaseSymbol} ${description}`;
 
-  const dateString = moment.tz(timestamp, "America/New_York").toISOString(true);
+  const dateString = formatTimeZoneIso(timestamp, "America/New_York");
   console.log(`${summary} at ${dateString}`);
 
   const martianPhaseEvent: Event = {
@@ -729,7 +732,7 @@ export function getMartianPhaseEvent(args: {
  * @see {@link isEveningSet} for evening set detection
  */
 export function getMartianPhaseEvents(args: {
-  currentMinute: Moment;
+  currentMinute: moment.Moment;
   marsCoordinateEphemeris: CoordinateEphemeris;
   marsDistanceEphemeris: DistanceEphemeris;
   marsIlluminationEphemeris: IlluminationEphemeris;
@@ -856,8 +859,8 @@ export function getMartianPhaseEvents(args: {
 
   if (isMorningRise({ ...params })) {
     martianPhaseEvents.push(
-      getMartianPhaseEvent({
-        timestamp: currentMinute.toDate(),
+      buildMartianPhaseEvent({
+        timestamp: currentMinute,
         phase: "morning rise",
       }),
     );
@@ -865,8 +868,8 @@ export function getMartianPhaseEvents(args: {
 
   if (isMorningSet({ ...params })) {
     martianPhaseEvents.push(
-      getMartianPhaseEvent({
-        timestamp: currentMinute.toDate(),
+      buildMartianPhaseEvent({
+        timestamp: currentMinute,
         phase: "morning set",
       }),
     );
@@ -874,8 +877,8 @@ export function getMartianPhaseEvents(args: {
 
   if (isEveningRise({ ...params })) {
     martianPhaseEvents.push(
-      getMartianPhaseEvent({
-        timestamp: currentMinute.toDate(),
+      buildMartianPhaseEvent({
+        timestamp: currentMinute,
         phase: "evening rise",
       }),
     );
@@ -883,8 +886,8 @@ export function getMartianPhaseEvents(args: {
 
   if (isEveningSet({ ...params })) {
     martianPhaseEvents.push(
-      getMartianPhaseEvent({
-        timestamp: currentMinute.toDate(),
+      buildMartianPhaseEvent({
+        timestamp: currentMinute,
         phase: "evening set",
       }),
     );
@@ -910,10 +913,10 @@ export function getMartianPhaseEvents(args: {
  * @see {@link getOutputPath} for file path resolution
  */
 export function writePlanetaryPhaseEvents(args: {
-  end: Date;
+  end: moment.Moment;
   planetaryPhaseBodies: Extract<Body, "mercury" | "venus" | "mars">[];
   planetaryPhaseEvents: Event[];
-  start: Date;
+  start: moment.Moment;
 }): void {
   const { planetaryPhaseEvents, planetaryPhaseBodies, start, end } = args;
   if (_.isEmpty(planetaryPhaseEvents)) {
@@ -939,25 +942,25 @@ export function writePlanetaryPhaseEvents(args: {
   console.log(`🌓 Wrote ${message}`);
 }
 
-// #region 🕑 Duration Events
+// #region 🕑 Progressive Events
 
 /**
- * Converts instantaneous planetary phase events into duration events.
+ * Converts instantaneous planetary phase events into progressive events.
  *
  * Creates visibility period events by pairing:
  * - Morning Rise → Morning Set (morning star period)
  * - Evening Rise → Evening Set (evening star period)
  *
- * Duration events span the entire time a planet is visible as a morning
+ * Progressive events span the entire time a planet is visible as a morning
  * or evening star, useful for planning observations or understanding
  * astrological timing.
  *
  * @param events - All events to process (non-planetary-phase events filtered out)
- * @returns Array of visibility duration events
- * @see {@link pairDurationEvents} for rise/set pairing logic
+ * @returns Array of visibility progressive events
+ * @see {@link pairProgressiveEvents} for rise/set pairing logic
  */
-export function getPlanetaryPhaseDurationEvents(events: Event[]): Event[] {
-  const durationEvents: Event[] = [];
+export function getPlanetaryPhaseProgressiveEvents(events: Event[]): Event[] {
+  const progressiveEvents: Event[] = [];
 
   // Filter to planetary phase events
   const planetaryPhaseEvents = events.filter((event) =>
@@ -968,25 +971,31 @@ export function getPlanetaryPhaseDurationEvents(events: Event[]): Event[] {
   const venusianPhaseEvents = planetaryPhaseEvents.filter((event) =>
     event.categories.includes("Venusian"),
   );
-  durationEvents.push(...getVenusianPhaseDurationEvents(venusianPhaseEvents));
+  progressiveEvents.push(
+    ...getVenusianPhaseProgressiveEvents(venusianPhaseEvents),
+  );
 
   // Process Mercury phases
   const mercurianPhaseEvents = planetaryPhaseEvents.filter((event) =>
     event.categories.includes("Mercurian"),
   );
-  durationEvents.push(...getMercurianPhaseDurationEvents(mercurianPhaseEvents));
+  progressiveEvents.push(
+    ...getMercurianPhaseProgressiveEvents(mercurianPhaseEvents),
+  );
 
   // Process Mars phases
   const martianPhaseEvents = planetaryPhaseEvents.filter((event) =>
     event.categories.includes("Martian"),
   );
-  durationEvents.push(...getMartianPhaseDurationEvents(martianPhaseEvents));
+  progressiveEvents.push(
+    ...getMartianPhaseProgressiveEvents(martianPhaseEvents),
+  );
 
-  return durationEvents;
+  return progressiveEvents;
 }
 
-function getVenusianPhaseDurationEvents(events: Event[]): Event[] {
-  const durationEvents: Event[] = [];
+function getVenusianPhaseProgressiveEvents(events: Event[]): Event[] {
+  const progressiveEvents: Event[] = [];
 
   // Morning visibility: Morning Rise → Morning Set
   const morningRiseEvents = events.filter((event) =>
@@ -995,13 +1004,13 @@ function getVenusianPhaseDurationEvents(events: Event[]): Event[] {
   const morningSetEvents = events.filter((event) =>
     event.categories.includes("Morning Set"),
   );
-  const morningVisibilityPairs = pairDurationEvents(
+  const morningVisibilityPairs = pairProgressiveEvents(
     morningRiseEvents,
     morningSetEvents,
     "Venus Morning Visibility",
   );
   for (const [beginning, ending] of morningVisibilityPairs) {
-    durationEvents.push(
+    progressiveEvents.push(
       getVenusMorningVisibilityDurationEvent(beginning, ending),
     );
   }
@@ -1013,22 +1022,22 @@ function getVenusianPhaseDurationEvents(events: Event[]): Event[] {
   const eveningSetEvents = events.filter((event) =>
     event.categories.includes("Evening Set"),
   );
-  const eveningVisibilityPairs = pairDurationEvents(
+  const eveningVisibilityPairs = pairProgressiveEvents(
     eveningRiseEvents,
     eveningSetEvents,
     "Venus Evening Visibility",
   );
   for (const [beginning, ending] of eveningVisibilityPairs) {
-    durationEvents.push(
+    progressiveEvents.push(
       getVenusEveningVisibilityDurationEvent(beginning, ending),
     );
   }
 
-  return durationEvents;
+  return progressiveEvents;
 }
 
-function getMercurianPhaseDurationEvents(events: Event[]): Event[] {
-  const durationEvents: Event[] = [];
+function getMercurianPhaseProgressiveEvents(events: Event[]): Event[] {
+  const progressiveEvents: Event[] = [];
 
   // Morning visibility: Morning Rise → Morning Set
   const morningRiseEvents = events.filter((event) =>
@@ -1037,13 +1046,13 @@ function getMercurianPhaseDurationEvents(events: Event[]): Event[] {
   const morningSetEvents = events.filter((event) =>
     event.categories.includes("Morning Set"),
   );
-  const morningVisibilityPairs = pairDurationEvents(
+  const morningVisibilityPairs = pairProgressiveEvents(
     morningRiseEvents,
     morningSetEvents,
     "Mercury Morning Visibility",
   );
   for (const [beginning, ending] of morningVisibilityPairs) {
-    durationEvents.push(
+    progressiveEvents.push(
       getMercuryMorningVisibilityDurationEvent(beginning, ending),
     );
   }
@@ -1055,22 +1064,22 @@ function getMercurianPhaseDurationEvents(events: Event[]): Event[] {
   const eveningSetEvents = events.filter((event) =>
     event.categories.includes("Evening Set"),
   );
-  const eveningVisibilityPairs = pairDurationEvents(
+  const eveningVisibilityPairs = pairProgressiveEvents(
     eveningRiseEvents,
     eveningSetEvents,
     "Mercury Evening Visibility",
   );
   for (const [beginning, ending] of eveningVisibilityPairs) {
-    durationEvents.push(
+    progressiveEvents.push(
       getMercuryEveningVisibilityDurationEvent(beginning, ending),
     );
   }
 
-  return durationEvents;
+  return progressiveEvents;
 }
 
-function getMartianPhaseDurationEvents(events: Event[]): Event[] {
-  const durationEvents: Event[] = [];
+function getMartianPhaseProgressiveEvents(events: Event[]): Event[] {
+  const progressiveEvents: Event[] = [];
 
   // Morning visibility: Morning Rise → Morning Set
   const morningRiseEvents = events.filter((event) =>
@@ -1079,13 +1088,13 @@ function getMartianPhaseDurationEvents(events: Event[]): Event[] {
   const morningSetEvents = events.filter((event) =>
     event.categories.includes("Morning Set"),
   );
-  const morningVisibilityPairs = pairDurationEvents(
+  const morningVisibilityPairs = pairProgressiveEvents(
     morningRiseEvents,
     morningSetEvents,
     "Mars Morning Visibility",
   );
   for (const [beginning, ending] of morningVisibilityPairs) {
-    durationEvents.push(
+    progressiveEvents.push(
       getMarsMorningVisibilityDurationEvent(beginning, ending),
     );
   }
@@ -1097,21 +1106,21 @@ function getMartianPhaseDurationEvents(events: Event[]): Event[] {
   const eveningSetEvents = events.filter((event) =>
     event.categories.includes("Evening Set"),
   );
-  const eveningVisibilityPairs = pairDurationEvents(
+  const eveningVisibilityPairs = pairProgressiveEvents(
     eveningRiseEvents,
     eveningSetEvents,
     "Mars Evening Visibility",
   );
   for (const [beginning, ending] of eveningVisibilityPairs) {
-    durationEvents.push(
+    progressiveEvents.push(
       getMarsEveningVisibilityDurationEvent(beginning, ending),
     );
   }
 
-  return durationEvents;
+  return progressiveEvents;
 }
 
-// Venus duration event creators
+// Venus progressive event creators
 function getVenusMorningVisibilityDurationEvent(
   beginning: Event,
   ending: Event,
@@ -1138,7 +1147,7 @@ function getVenusEveningVisibilityDurationEvent(
   };
 }
 
-// Mercury duration event creators
+// Mercury progressive event creators
 function getMercuryMorningVisibilityDurationEvent(
   beginning: Event,
   ending: Event,
@@ -1165,7 +1174,7 @@ function getMercuryEveningVisibilityDurationEvent(
   };
 }
 
-// Mars duration event creators
+// Mars progressive event creators
 function getMarsMorningVisibilityDurationEvent(
   beginning: Event,
   ending: Event,

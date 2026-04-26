@@ -2,696 +2,500 @@ import moment from "moment-timezone";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
-  getAzimuthElevationEphemeris,
-  getAzimuthElevationEphemerisByBody,
-  getCoordinateEphemerisByBody,
-  getCoordinatesEphemeris,
-  getDiameterEphemeris,
-  getDiameterEphemerisByBody,
-  getDistanceEphemeris,
-  getDistanceEphemerisByBody,
-  getIlluminationEphemeris,
-  getIlluminationEphemerisByBody,
-  getNodeCoordinatesEphemeris,
-  getOrbitEphemeris,
+    computeAllEphemerides,
+    getAzimuthElevationEphemerisByBody,
+    getAzimuthElevationFromEphemeris,
+    getCoordinateEphemerisByBody,
+    getCoordinateFromEphemeris,
+    getDiameterEphemerisByBody,
+    getDiameterFromEphemeris,
+    getDistanceEphemerisByBody,
+    getDistanceFromEphemeris,
+    getIlluminationEphemerisByBody,
+    getIlluminationFromEphemeris,
 } from "./ephemeris.service";
 
-// Mock dependencies
-vi.mock("../database.utilities", () => ({
-  upsertEphemerisValues: vi.fn(),
-  getEphemerisRecords: vi.fn(),
+import type {
+    AzimuthElevationEphemeris,
+    CoordinateEphemeris,
+    DiameterEphemeris,
+    DistanceEphemeris,
+    IlluminationEphemeris,
+} from "./ephemeris.types";
+
+// ---------------------------------------------------------------------------
+// Mocks
+// ---------------------------------------------------------------------------
+
+vi.mock("sweph", () => ({
+  set_ephe_path: vi.fn(),
+  constants: {
+    SE_GREG_CAL: 1,
+    SE_ECL2HOR: 0,
+    SE_NODBIT_OSCU: 2,
+    SEFLG_SWIEPH: 2,
+    SEFLG_SPEED: 256,
+    SE_SUN: 0,
+    SE_MOON: 1,
+    SE_MERCURY: 2,
+    SE_VENUS: 3,
+    SE_MARS: 4,
+    SE_JUPITER: 5,
+    SE_SATURN: 6,
+    SE_URANUS: 7,
+    SE_NEPTUNE: 8,
+    SE_PLUTO: 9,
+    SE_CHIRON: 15,
+    SE_MEAN_APOG: 12,
+    SE_CERES: 17,
+    SE_PALLAS: 18,
+    SE_JUNO: 19,
+    SE_VESTA: 20,
+    SE_TRUE_NODE: 11,
+    SE_OSCU_APOG: 13,
+  },
+  utc_to_jd: vi.fn().mockReturnValue({
+    flag: 0,
+    data: [2_460_395.5, 2_460_395.499_306],
+    error: "",
+  }),
+  calc: vi.fn().mockReturnValue({
+    flag: 258,
+    data: [120.5, -1.2, 1.01, 0, 0, 0],
+    error: "",
+  }),
+  nod_aps_ut: vi.fn().mockReturnValue({
+    flag: 258,
+    data: {
+      ascending: [45, 0, 0, 0, 0, 0],
+      descending: [225, 0, 0, 0, 0, 0],
+      perihelion: [90, 0, 0, 0, 0, 0],
+      aphelion: [270, 0, 0, 0, 0, 0],
+    },
+    error: "",
+  }),
+  azalt: vi.fn().mockReturnValue([180, 45, 44.8]),
+  pheno_ut: vi.fn().mockReturnValue({
+    flag: 258,
+    data: [0, 0.75, 0, 0.5, 0, 0],
+    error: "",
+  }),
 }));
 
-vi.mock("../fetch.utilities", () => ({
-  fetchWithRetry: vi.fn(),
-}));
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
+
+function makeStart(): moment.Moment {
+  return moment.utc("2024-03-21T00:00:00.000Z");
+}
+
+function makeEnd(): moment.Moment {
+  return moment.utc("2024-03-21T00:01:00.000Z"); // two minutes → 2 timestamps
+}
+
+// ---------------------------------------------------------------------------
+// Accessor tests (pure logic, no mocks needed)
+// ---------------------------------------------------------------------------
 
 describe("ephemeris.service", () => {
-  const start = new Date("2024-03-21T00:00:00.000Z");
-  const end = new Date("2024-03-21T01:00:00.000Z");
-  const timezone = "America/New_York";
-  const coordinates: [number, number] = [-74.006, 40.7128];
-
-  // Reset and setup default mock behavior before each test
-  beforeEach(async () => {
-    const { getEphemerisRecords } = await import("../database.utilities");
-    vi.mocked(getEphemerisRecords).mockResolvedValue([]);
+  beforeEach(() => {
+    vi.clearAllMocks();
   });
 
-  describe("getCoordinatesEphemeris", () => {
-    it("should parse coordinate ephemeris data correctly", async () => {
-      const { fetchWithRetry } = await import("../fetch.utilities");
-      const mockResponse = `$$SOE
-2024-Mar-21 00:00    120.5  -5.2
-2024-Mar-21 00:01    120.6  -5.1
-$$EOE`;
+  // #region Accessor: getCoordinateFromEphemeris
 
-      vi.mocked(fetchWithRetry).mockResolvedValue(mockResponse);
+  describe("getCoordinateFromEphemeris", () => {
+    const ts = "2024-03-21T00:00:00.000Z";
+    const ephemeris: CoordinateEphemeris = {
+      [ts]: { longitude: 120.5, latitude: -1.2 },
+    };
 
-      const result = await getCoordinatesEphemeris({
-        body: "sun",
-        start,
-        end,
-        timezone,
-      });
-
-      expect(result).toBeDefined();
-      expect(Object.keys(result)).toHaveLength(2);
-      const firstKey = Object.keys(result)[0];
-      expect(firstKey).toBeDefined();
-      if (!firstKey) {
-        throw new Error("firstKey is undefined");
-      }
-      expect(result[firstKey]).toHaveProperty("longitude");
-      expect(result[firstKey]).toHaveProperty("latitude");
-      expect(result[firstKey]?.longitude).toBe(120.5);
-      expect(result[firstKey]?.latitude).toBe(-5.2);
-    });
-
-    it("should handle planets, asteroids, and comets", async () => {
-      const { fetchWithRetry } = await import("../fetch.utilities");
-      const mockResponse = `$$SOE
-2024-Mar-21 00:00    120.5  -5.2
-$$EOE`;
-
-      vi.mocked(fetchWithRetry).mockResolvedValue(mockResponse);
-
-      // Test planet
-      await getCoordinatesEphemeris({
-        body: "mars",
-        start,
-        end,
-        timezone,
-      });
-
-      // Test asteroid
-      await getCoordinatesEphemeris({
-        body: "chiron",
-        start,
-        end,
-        timezone,
-      });
-
-      // Test comet
-      await getCoordinatesEphemeris({
-        body: "halley",
-        start,
-        end,
-        timezone,
-      });
-
-      expect(fetchWithRetry).toHaveBeenCalledTimes(3);
-    });
-
-    it("should use database cache when available", async () => {
-      const { getEphemerisRecords } = await import("../database.utilities");
-      const { fetchWithRetry } = await import("../fetch.utilities");
-
-      const mockRecords = [
-        {
-          body: "sun" as const,
-          timestamp: moment.utc("2024-03-21T00:00:00.000Z").toDate(),
-          longitude: 0,
-          latitude: 0,
-        },
-        {
-          body: "sun" as const,
-          timestamp: moment.utc("2024-03-21T00:01:00.000Z").toDate(),
-          longitude: 0.1,
-          latitude: 0,
-        },
-      ];
-
-      vi.mocked(getEphemerisRecords).mockResolvedValue(mockRecords);
-
-      const result = await getCoordinatesEphemeris({
-        body: "sun",
-        start,
-        end: moment.utc("2024-03-21T00:01:00.000Z").toDate(),
-        timezone,
-      });
-
-      expect(result).toBeDefined();
-      expect(fetchWithRetry).not.toHaveBeenCalled();
-      expect(Object.keys(result)).toHaveLength(2);
-    });
-  });
-
-  describe("getNodeCoordinatesEphemeris", () => {
-    it("should calculate north lunar node coordinates from orbit data", async () => {
-      const { fetchWithRetry } = await import("../fetch.utilities");
-      const mockOrbitResponse = `$$SOE
- 2024-Mar-21 00:00:00.0000   EC= 5.456093559467E-02 QR= 3.633092318208E+05 IN= 5.145396332510E+00
-   OM= 1.445250000000E+02 W = 7.500000000000E+01 Tp=  2460397.100000000000000
-   N = 1.336160000000E+01 MA= 1.512000000000E+02 TA= 1.533400000000E+02
-   A = 3.844000000000E+05 AD= 4.054907681792E+05 PR= 2.695160000000E+01
-$$EOE`;
-
-      vi.mocked(fetchWithRetry).mockResolvedValue(mockOrbitResponse);
-
-      const result = await getNodeCoordinatesEphemeris({
-        node: "north lunar node",
-        start,
-        end,
-        timezone,
-      });
-
-      expect(result).toBeDefined();
-      const firstKey = Object.keys(result)[0];
-      expect(firstKey).toBeDefined();
-      if (!firstKey) {
-        throw new Error("firstKey is undefined");
-      }
-      expect(result[firstKey]).toHaveProperty("longitude");
-      expect(result[firstKey]).toHaveProperty("latitude");
-      expect(result[firstKey]?.latitude).toBe(0); // Nodes always have 0 latitude
-      expect(result[firstKey]?.longitude).toBe(144.525); // OM value
-    });
-
-    it("should calculate south lunar node coordinates (opposite of north)", async () => {
-      const { fetchWithRetry } = await import("../fetch.utilities");
-      const mockOrbitResponse = `$$SOE
- 2024-Mar-21 00:00:00.0000   EC= 5.456093559467E-02 QR= 3.633092318208E+05 IN= 5.145396332510E+00
-   OM= 1.445250000000E+02 W = 7.500000000000E+01 Tp=  2460397.100000000000000
-   N = 1.336160000000E+01 MA= 1.512000000000E+02 TA= 1.533400000000E+02
-   A = 3.844000000000E+05 AD= 4.054907681792E+05 PR= 2.695160000000E+01
-$$EOE`;
-
-      vi.mocked(fetchWithRetry).mockResolvedValue(mockOrbitResponse);
-
-      const result = await getNodeCoordinatesEphemeris({
-        node: "south lunar node",
-        start,
-        end,
-        timezone,
-      });
-
-      const firstKey = Object.keys(result)[0];
-      expect(firstKey).toBeDefined();
-      if (!firstKey) {
-        throw new Error("firstKey is undefined");
-      }
-      expect(result[firstKey]?.longitude).toBe(324.525); // OM + 180
-      expect(result[firstKey]?.latitude).toBe(0);
-    });
-
-    it("should calculate lunar perigee coordinates (OM + W)", async () => {
-      const { fetchWithRetry } = await import("../fetch.utilities");
-      const mockOrbitResponse = `$$SOE
- 2024-Mar-21 00:00:00.0000   EC= 5.456093559467E-02 QR= 3.633092318208E+05 IN= 5.145396332510E+00
-   OM= 1.445250000000E+02 W = 7.500000000000E+01 Tp=  2460397.100000000000000
-   N = 1.336160000000E+01 MA= 1.512000000000E+02 TA= 1.533400000000E+02
-   A = 3.844000000000E+05 AD= 4.054907681792E+05 PR= 2.695160000000E+01
-$$EOE`;
-
-      vi.mocked(fetchWithRetry).mockResolvedValue(mockOrbitResponse);
-
-      const result = await getNodeCoordinatesEphemeris({
-        node: "lunar perigee",
-        start,
-        end,
-        timezone,
-      });
-
-      const firstKey = Object.keys(result)[0];
-      expect(firstKey).toBeDefined();
-      if (!firstKey) {
-        throw new Error("firstKey is undefined");
-      }
-      expect(result[firstKey]?.longitude).toBeCloseTo(219.525, 2); // OM + W
-      expect(result[firstKey]?.latitude).toBe(0);
-    });
-
-    it("should calculate lunar apogee coordinates (OM + W + 180)", async () => {
-      const { fetchWithRetry } = await import("../fetch.utilities");
-      const mockOrbitResponse = `$$SOE
- 2024-Mar-21 00:00:00.0000   EC= 5.456093559467E-02 QR= 3.633092318208E+05 IN= 5.145396332510E+00
-   OM= 1.445250000000E+02 W = 7.500000000000E+01 Tp=  2460397.100000000000000
-   N = 1.336160000000E+01 MA= 1.512000000000E+02 TA= 1.533400000000E+02
-   A = 3.844000000000E+05 AD= 4.054907681792E+05 PR= 2.695160000000E+01
-$$EOE`;
-
-      vi.mocked(fetchWithRetry).mockResolvedValue(mockOrbitResponse);
-
-      const result = await getNodeCoordinatesEphemeris({
-        node: "lunar apogee",
-        start,
-        end,
-        timezone,
-      });
-
-      const firstKey = Object.keys(result)[0];
-      expect(firstKey).toBeDefined();
-      if (!firstKey) {
-        throw new Error("firstKey is undefined");
-      }
-      expect(result[firstKey]?.longitude).toBeCloseTo(39.525, 2); // OM + W + 180
-      expect(result[firstKey]?.latitude).toBe(0);
-    });
-  });
-
-  describe("getCoordinateEphemerisByBody", () => {
-    it("should fetch coordinate ephemeris for multiple bodies", async () => {
-      const { fetchWithRetry } = await import("../fetch.utilities");
-      const mockResponse = `$$SOE
-2024-Mar-21 00:00    120.5  -5.2
-$$EOE`;
-
-      vi.mocked(fetchWithRetry).mockResolvedValue(mockResponse);
-
-      const result = await getCoordinateEphemerisByBody({
-        bodies: ["sun", "moon", "mars"],
-        start,
-        end,
-        timezone,
-      });
-
-      expect(result).toHaveProperty("sun");
-      expect(result).toHaveProperty("moon");
-      expect(result).toHaveProperty("mars");
-      expect(Object.keys(result)).toHaveLength(3);
-    });
-
-    it("should handle lunar nodes correctly", async () => {
-      const { fetchWithRetry } = await import("../fetch.utilities");
-      const mockOrbitResponse = `$$SOE
- 2024-Mar-21 00:00:00.0000   EC= 5.456093559467E-02 QR= 3.633092318208E+05 IN= 5.145396332510E+00
-   OM= 1.445250000000E+02 W = 7.500000000000E+01 Tp=  2460397.100000000000000
-   N = 1.336160000000E+01 MA= 1.512000000000E+02 TA= 1.533400000000E+02
-   A = 3.844000000000E+05 AD= 4.054907681792E+05 PR= 2.695160000000E+01
-$$EOE`;
-
-      vi.mocked(fetchWithRetry).mockResolvedValue(mockOrbitResponse);
-
-      const result = await getCoordinateEphemerisByBody({
-        bodies: ["north lunar node", "lunar perigee"],
-        start,
-        end,
-        timezone,
-      });
-
-      expect(result).toHaveProperty("north lunar node");
-      expect(result).toHaveProperty("lunar perigee");
-    });
-  });
-
-  describe("getAzimuthElevationEphemeris", () => {
-    it("should parse azimuth elevation data correctly", async () => {
-      const { fetchWithRetry } = await import("../fetch.utilities");
-      const mockResponse = `$$SOE
- 2024-Mar-21 00:00   90.5  45.2
- 2024-Mar-21 00:01   91.0  46.0
-$$EOE`;
-
-      vi.mocked(fetchWithRetry).mockResolvedValue(mockResponse);
-
-      const result = await getAzimuthElevationEphemeris({
-        body: "sun",
-        coordinates,
-        start,
-        end,
-        timezone,
-      });
-
-      expect(result).toBeDefined();
-      const firstKey = Object.keys(result)[0];
-      expect(firstKey).toBeDefined();
-      if (!firstKey) {
-        throw new Error("firstKey is undefined");
-      }
-      expect(result[firstKey]).toHaveProperty("azimuth");
-      expect(result[firstKey]).toHaveProperty("elevation");
-      expect(result[firstKey]?.azimuth).toBe(90.5);
-      expect(result[firstKey]?.elevation).toBe(45.2);
-    });
-
-    it("should use coordinates for observer location", async () => {
-      const { fetchWithRetry } = await import("../fetch.utilities");
-      const mockResponse = `$$SOE
- 2024-Mar-21 00:00   90.5  45.2
-$$EOE`;
-
-      vi.mocked(fetchWithRetry).mockResolvedValue(mockResponse);
-
-      await getAzimuthElevationEphemeris({
-        body: "moon",
-        coordinates: [-118.2437, 34.0522], // Los Angeles
-        start,
-        end,
-        timezone,
-      });
-
-      expect(fetchWithRetry).toHaveBeenCalledWith(
-        expect.stringContaining("SITE_COORD"),
+    it("returns longitude for a known timestamp", () => {
+      expect(getCoordinateFromEphemeris(ephemeris, ts, "longitude")).toBe(
+        120.5,
       );
     });
+
+    it("returns latitude for a known timestamp", () => {
+      expect(getCoordinateFromEphemeris(ephemeris, ts, "latitude")).toBe(-1.2);
+    });
+
+    it("throws when timestamp is missing", () => {
+      expect(() =>
+        getCoordinateFromEphemeris(ephemeris, "bad-ts", "longitude"),
+      ).toThrow("Missing longitude at bad-ts");
+    });
   });
+
+  // #region Accessor: getAzimuthElevationFromEphemeris
+
+  describe("getAzimuthElevationFromEphemeris", () => {
+    const ts = "2024-03-21T00:00:00.000Z";
+    const ephemeris: AzimuthElevationEphemeris = {
+      [ts]: { azimuth: 180, elevation: 44.8 },
+    };
+
+    it("returns azimuth for a known timestamp", () => {
+      expect(
+        getAzimuthElevationFromEphemeris(ephemeris, ts, "azimuth"),
+      ).toBe(180);
+    });
+
+    it("returns elevation for a known timestamp", () => {
+      expect(
+        getAzimuthElevationFromEphemeris(ephemeris, ts, "elevation"),
+      ).toBe(44.8);
+    });
+
+    it("throws when timestamp is missing", () => {
+      expect(() =>
+        getAzimuthElevationFromEphemeris(ephemeris, "bad-ts", "azimuth"),
+      ).toThrow("Missing azimuth at bad-ts");
+    });
+  });
+
+  // #region Accessor: getIlluminationFromEphemeris
+
+  describe("getIlluminationFromEphemeris", () => {
+    const ts = "2024-03-21T00:00:00.000Z";
+    const ephemeris: IlluminationEphemeris = {
+      [ts]: { illumination: 75 },
+    };
+
+    it("returns illumination for a known timestamp", () => {
+      expect(getIlluminationFromEphemeris(ephemeris, ts, "illumination")).toBe(
+        75,
+      );
+    });
+
+    it("throws when timestamp is missing", () => {
+      expect(() =>
+        getIlluminationFromEphemeris(ephemeris, "bad-ts", "illumination"),
+      ).toThrow("Missing illumination at bad-ts");
+    });
+  });
+
+  // #region Accessor: getDistanceFromEphemeris
+
+  describe("getDistanceFromEphemeris", () => {
+    const ts = "2024-03-21T00:00:00.000Z";
+    const ephemeris: DistanceEphemeris = {
+      [ts]: { distance: 1.01 },
+    };
+
+    it("returns distance for a known timestamp", () => {
+      expect(getDistanceFromEphemeris(ephemeris, ts, "distance")).toBe(1.01);
+    });
+
+    it("throws when timestamp is missing", () => {
+      expect(() =>
+        getDistanceFromEphemeris(ephemeris, "bad-ts", "distance"),
+      ).toThrow("Missing distance at bad-ts");
+    });
+  });
+
+  // #region Accessor: getDiameterFromEphemeris
+
+  describe("getDiameterFromEphemeris", () => {
+    const ts = "2024-03-21T00:00:00.000Z";
+    const ephemeris: DiameterEphemeris = {
+      [ts]: { diameter: 0.5334 },
+    };
+
+    it("returns diameter for a known timestamp", () => {
+      expect(getDiameterFromEphemeris(ephemeris, ts, "diameter")).toBe(0.5334);
+    });
+
+    it("throws when timestamp is missing", () => {
+      expect(() =>
+        getDiameterFromEphemeris(ephemeris, "bad-ts", "diameter"),
+      ).toThrow("Missing diameter at bad-ts");
+    });
+  });
+
+  // #region getCoordinateEphemerisByBody
+
+  describe("getCoordinateEphemerisByBody", () => {
+    it("returns coordinate ephemeris for a planet body", () => {
+      const result = getCoordinateEphemerisByBody({
+        bodies: ["sun"],
+        start: makeStart(),
+        end: makeEnd(),
+        timezone: "UTC",
+      });
+
+      const sunEphemeris = result["sun"];
+      expect(sunEphemeris).toBeDefined();
+      const timestamps = Object.keys(sunEphemeris ?? {});
+      expect(timestamps.length).toBeGreaterThanOrEqual(2);
+
+      const first = sunEphemeris?.[timestamps[0] ?? ""];
+      expect(first).toHaveProperty("longitude");
+      expect(first).toHaveProperty("latitude");
+    });
+
+    it("returns coordinate ephemeris for north lunar node", () => {
+      const result = getCoordinateEphemerisByBody({
+        bodies: ["north lunar node"],
+        start: makeStart(),
+        end: makeEnd(),
+        timezone: "UTC",
+      });
+
+      const nodeEphemeris = result["north lunar node"];
+      expect(nodeEphemeris).toBeDefined();
+      const keys = Object.keys(nodeEphemeris ?? {});
+      expect(keys.length).toBeGreaterThanOrEqual(2);
+      // Nodes always have latitude 0
+      for (const key of keys) {
+        expect(nodeEphemeris?.[key]?.latitude).toBe(0);
+      }
+    });
+
+    it("returns coordinate ephemeris for south lunar node (longitude + 180)", () => {
+      const result = getCoordinateEphemerisByBody({
+        bodies: ["south lunar node"],
+        start: makeStart(),
+        end: makeEnd(),
+        timezone: "UTC",
+      });
+
+      const nodeEphemeris = result["south lunar node"];
+      expect(nodeEphemeris).toBeDefined();
+      // All latitudes must be 0 for nodes
+      for (const val of Object.values(nodeEphemeris ?? {})) {
+        expect(val.latitude).toBe(0);
+      }
+    });
+
+    it("returns coordinate ephemeris for lunar perigee node", () => {
+      const result = getCoordinateEphemerisByBody({
+        bodies: ["lunar perigee"],
+        start: makeStart(),
+        end: makeEnd(),
+        timezone: "UTC",
+      });
+
+      const nodeEphemeris = result["lunar perigee"];
+      expect(nodeEphemeris).toBeDefined();
+    });
+
+    it("throws when calc returns a negative flag", async () => {
+      const { calc } = await import("sweph");
+      vi.mocked(calc).mockReturnValueOnce({
+        flag: -1,
+        data: [0, 0, 0, 0, 0, 0],
+        error: "internal error",
+      });
+
+      expect(() =>
+        getCoordinateEphemerisByBody({
+          bodies: ["sun"],
+          start: makeStart(),
+          end: makeEnd(),
+          timezone: "UTC",
+        }),
+      ).toThrow("calc failed for sun");
+    });
+  });
+
+  // #region getAzimuthElevationEphemerisByBody
 
   describe("getAzimuthElevationEphemerisByBody", () => {
-    it("should fetch azimuth elevation for multiple bodies", async () => {
-      const { fetchWithRetry } = await import("../fetch.utilities");
-      const mockResponse = `$$SOE
- 2024-Mar-21 00:00   90.5  45.2
-$$EOE`;
-
-      vi.mocked(fetchWithRetry).mockResolvedValue(mockResponse);
-
-      const result = await getAzimuthElevationEphemerisByBody({
-        bodies: ["sun", "moon"],
-        coordinates,
-        start,
-        end,
-        timezone,
+    it("returns azimuth and elevation for sun", () => {
+      const result = getAzimuthElevationEphemerisByBody({
+        bodies: ["sun"],
+        coordinates: [-74.006, 40.7128],
+        start: makeStart(),
+        end: makeEnd(),
+        timezone: "UTC",
       });
 
-      expect(result).toHaveProperty("sun");
-      expect(result).toHaveProperty("moon");
-      expect(Object.keys(result)).toHaveLength(2);
+      const sunEphemeris = result["sun"];
+      expect(sunEphemeris).toBeDefined();
+      const timestamps = Object.keys(sunEphemeris ?? {});
+      expect(timestamps.length).toBeGreaterThanOrEqual(2);
+
+      const first = sunEphemeris?.[timestamps[0] ?? ""];
+      expect(first).toHaveProperty("azimuth", 180);
+      expect(first).toHaveProperty("elevation", 44.8);
     });
   });
 
-  describe("getIlluminationEphemeris", () => {
-    it("should parse illumination fraction correctly", async () => {
-      const { fetchWithRetry } = await import("../fetch.utilities");
-      const mockResponse = `$$SOE
- 2024-Mar-21 00:00   0.567
- 2024-Mar-21 00:01   0.568
-$$EOE`;
-
-      vi.mocked(fetchWithRetry).mockResolvedValue(mockResponse);
-
-      const result = await getIlluminationEphemeris({
-        body: "moon",
-        coordinates,
-        start,
-        end,
-        timezone,
-      });
-
-      expect(result).toBeDefined();
-      const firstKey = Object.keys(result)[0];
-      expect(firstKey).toBeDefined();
-      if (!firstKey) {
-        throw new Error("firstKey is undefined");
-      }
-      expect(result[firstKey]).toHaveProperty("illumination");
-      expect(result[firstKey]?.illumination).toBe(0.567);
-    });
-
-    it("should handle different illumination bodies", async () => {
-      const { fetchWithRetry } = await import("../fetch.utilities");
-      const mockResponse = `$$SOE
- 2024-Mar-21 00:00   0.999
-$$EOE`;
-
-      vi.mocked(fetchWithRetry).mockResolvedValue(mockResponse);
-
-      await getIlluminationEphemeris({
-        body: "venus",
-        coordinates,
-        start,
-        end,
-        timezone,
-      });
-
-      await getIlluminationEphemeris({
-        body: "mercury",
-        coordinates,
-        start,
-        end,
-        timezone,
-      });
-
-      await getIlluminationEphemeris({
-        body: "mars",
-        coordinates,
-        start,
-        end,
-        timezone,
-      });
-
-      expect(fetchWithRetry).toHaveBeenCalledTimes(3);
-    });
-  });
+  // #region getIlluminationEphemerisByBody
 
   describe("getIlluminationEphemerisByBody", () => {
-    it("should fetch illumination for multiple bodies", async () => {
-      const { fetchWithRetry } = await import("../fetch.utilities");
-      const mockResponse = `$$SOE
- 2024-Mar-21 00:00   0.567
-$$EOE`;
-
-      vi.mocked(fetchWithRetry).mockResolvedValue(mockResponse);
-
-      const result = await getIlluminationEphemerisByBody({
-        bodies: ["moon", "venus", "mercury"],
-        coordinates,
-        start,
-        end,
-        timezone,
+    it("returns 100 illumination for sun at every timestamp", () => {
+      const result = getIlluminationEphemerisByBody({
+        bodies: ["sun"],
+        coordinates: [-74.006, 40.7128],
+        start: makeStart(),
+        end: makeEnd(),
+        timezone: "UTC",
       });
 
-      expect(result).toHaveProperty("moon");
-      expect(result).toHaveProperty("venus");
-      expect(result).toHaveProperty("mercury");
-      expect(Object.keys(result)).toHaveLength(3);
-    });
-  });
-
-  describe("getDiameterEphemeris", () => {
-    it("should parse angular diameter and convert from arcseconds", async () => {
-      const { fetchWithRetry } = await import("../fetch.utilities");
-      const mockResponse = `$$SOE
- 2024-Mar-21 00:00   1920.5
- 2024-Mar-21 00:01   1920.6
-$$EOE`;
-
-      vi.mocked(fetchWithRetry).mockResolvedValue(mockResponse);
-
-      const result = await getDiameterEphemeris({
-        body: "sun",
-        start,
-        end,
-        timezone,
-      });
-
-      expect(result).toBeDefined();
-      const firstKey = Object.keys(result)[0];
-      expect(firstKey).toBeDefined();
-      if (!firstKey) {
-        throw new Error("firstKey is undefined");
+      const sunEphemeris = result["sun"];
+      expect(sunEphemeris).toBeDefined();
+      for (const val of Object.values(sunEphemeris ?? {})) {
+        expect(val.illumination).toBe(100);
       }
-      expect(result[firstKey]).toHaveProperty("diameter");
-      // 1920.5 arcseconds / 3600 arcseconds per degree
-      expect(result[firstKey]?.diameter).toBeCloseTo(0.533_47, 4);
     });
 
-    it("should handle sun and moon bodies", async () => {
-      const { fetchWithRetry } = await import("../fetch.utilities");
-      const mockResponse = `$$SOE
- 2024-Mar-21 00:00   1920.5
-$$EOE`;
-
-      vi.mocked(fetchWithRetry).mockResolvedValue(mockResponse);
-
-      await getDiameterEphemeris({
-        body: "sun",
-        start,
-        end,
-        timezone,
+    it("returns pheno_ut phase × 100 for moon", () => {
+      const result = getIlluminationEphemerisByBody({
+        bodies: ["moon"],
+        coordinates: [-74.006, 40.7128],
+        start: makeStart(),
+        end: makeEnd(),
+        timezone: "UTC",
       });
 
-      await getDiameterEphemeris({
-        body: "moon",
-        start,
-        end,
-        timezone,
-      });
-
-      expect(fetchWithRetry).toHaveBeenCalledTimes(2);
+      const moonEphemeris = result["moon"];
+      expect(moonEphemeris).toBeDefined();
+      // pheno_ut mock returns data[1] = 0.75 → illumination = 75
+      for (const val of Object.values(moonEphemeris ?? {})) {
+        expect(val.illumination).toBe(75);
+      }
     });
   });
+
+  // #region getDiameterEphemerisByBody
 
   describe("getDiameterEphemerisByBody", () => {
-    it("should fetch diameter for multiple bodies", async () => {
-      const { fetchWithRetry } = await import("../fetch.utilities");
-      const mockResponse = `$$SOE
- 2024-Mar-21 00:00   1920.5
-$$EOE`;
-
-      vi.mocked(fetchWithRetry).mockResolvedValue(mockResponse);
-
-      const result = await getDiameterEphemerisByBody({
-        bodies: ["sun", "moon"],
-        start,
-        end,
-        timezone,
+    it("returns diameter from pheno_ut data[3] for sun", () => {
+      const result = getDiameterEphemerisByBody({
+        bodies: ["sun"],
+        start: makeStart(),
+        end: makeEnd(),
+        timezone: "UTC",
       });
 
-      expect(result).toHaveProperty("sun");
-      expect(result).toHaveProperty("moon");
-      expect(Object.keys(result)).toHaveLength(2);
-    });
-  });
-
-  describe("getDistanceEphemeris", () => {
-    it("should parse distance correctly", async () => {
-      const { fetchWithRetry } = await import("../fetch.utilities");
-      const mockResponse = `$$SOE
- 2024-Mar-21 00:00   1.0001  0.0005
- 2024-Mar-21 00:01   1.0002  0.0006
-$$EOE`;
-
-      vi.mocked(fetchWithRetry).mockResolvedValue(mockResponse);
-
-      const result = await getDistanceEphemeris({
-        body: "sun",
-        start,
-        end,
-        timezone,
-      });
-
-      expect(result).toBeDefined();
-      const firstKey = Object.keys(result)[0];
-      expect(firstKey).toBeDefined();
-      if (!firstKey) {
-        throw new Error("firstKey is undefined");
+      const sunEphemeris = result["sun"];
+      expect(sunEphemeris).toBeDefined();
+      // pheno_ut mock returns data[3] = 0.5
+      for (const val of Object.values(sunEphemeris ?? {})) {
+        expect(val.diameter).toBe(0.5);
       }
-      expect(result[firstKey]).toHaveProperty("distance");
-      expect(result[firstKey]?.distance).toBe(1.0001);
-    });
-
-    it("should handle sun and inner planets", async () => {
-      const { fetchWithRetry } = await import("../fetch.utilities");
-      const mockResponse = `$$SOE
- 2024-Mar-21 00:00   1.0001  0.0005
-$$EOE`;
-
-      vi.mocked(fetchWithRetry).mockResolvedValue(mockResponse);
-
-      await getDistanceEphemeris({
-        body: "sun",
-        start,
-        end,
-        timezone,
-      });
-
-      await getDistanceEphemeris({
-        body: "venus",
-        start,
-        end,
-        timezone,
-      });
-
-      await getDistanceEphemeris({
-        body: "mercury",
-        start,
-        end,
-        timezone,
-      });
-
-      await getDistanceEphemeris({
-        body: "mars",
-        start,
-        end,
-        timezone,
-      });
-
-      expect(fetchWithRetry).toHaveBeenCalledTimes(4);
     });
   });
+
+  // #region getDistanceEphemerisByBody
 
   describe("getDistanceEphemerisByBody", () => {
-    it("should fetch distance for multiple bodies", async () => {
-      const { fetchWithRetry } = await import("../fetch.utilities");
-      const mockResponse = `$$SOE
- 2024-Mar-21 00:00   1.0001  0.0005
-$$EOE`;
-
-      vi.mocked(fetchWithRetry).mockResolvedValue(mockResponse);
-
-      const result = await getDistanceEphemerisByBody({
-        bodies: ["sun", "venus", "mercury"],
-        start,
-        end,
-        timezone,
+    it("returns distance from calc data[2]", () => {
+      const result = getDistanceEphemerisByBody({
+        bodies: ["sun"],
+        start: makeStart(),
+        end: makeEnd(),
+        timezone: "UTC",
       });
 
-      expect(result).toHaveProperty("sun");
-      expect(result).toHaveProperty("venus");
-      expect(result).toHaveProperty("mercury");
-      expect(Object.keys(result)).toHaveLength(3);
+      const sunEphemeris = result["sun"];
+      expect(sunEphemeris).toBeDefined();
+      // calc mock returns data[2] = 1.01
+      for (const val of Object.values(sunEphemeris ?? {})) {
+        expect(val.distance).toBe(1.01);
+      }
     });
   });
 
-  describe("getOrbitEphemeris", () => {
-    it("should parse orbital elements correctly", async () => {
-      const { fetchWithRetry } = await import("../fetch.utilities");
-      const mockOrbitResponse = `$$SOE
- 2024-Mar-21 00:00:00.0000   EC= 5.456093559467E-02 QR= 3.633092318208E+05 IN= 5.145396332510E+00
-   OM= 1.445250000000E+02 W = 7.500000000000E+01 Tp=  2460397.100000000000000
-   N = 1.336160000000E+01 MA= 1.512000000000E+02 TA= 1.533400000000E+02
-   A = 3.844000000000E+05 AD= 4.054907681792E+05 PR= 2.695160000000E+01
-$$EOE`;
+  // #region computeAllEphemerides
 
-      vi.mocked(fetchWithRetry).mockResolvedValue(mockOrbitResponse);
-
-      const result = await getOrbitEphemeris({
-        body: "moon",
-        start,
-        end,
-        timezone,
+  describe("computeAllEphemerides", () => {
+    it("returns all five ephemeris types", () => {
+      const result = computeAllEphemerides({
+        coordinateBodies: ["sun", "moon"],
+        azimuthElevationBodies: ["sun", "moon"],
+        illuminationBodies: ["sun", "moon"],
+        diameterBodies: ["sun", "moon"],
+        distanceBodies: ["sun"],
+        coordinates: [-74.006, 40.7128],
+        start: makeStart(),
+        end: makeEnd(),
       });
 
-      expect(result).toBeDefined();
-      const firstKey = Object.keys(result)[0];
-      expect(firstKey).toBeDefined();
-      if (!firstKey) {
-        throw new Error("firstKey is undefined");
-      }
-      expect(result[firstKey]).toHaveProperty("eccentricity");
-      expect(result[firstKey]).toHaveProperty("periapsisDistance");
-      expect(result[firstKey]).toHaveProperty("inclination");
-      expect(result[firstKey]).toHaveProperty("longitudeOfAscendingNode");
-      expect(result[firstKey]).toHaveProperty("argumentOfPerifocus");
-      expect(result[firstKey]).toHaveProperty("timeOfPeriapsis");
-      expect(result[firstKey]).toHaveProperty("meanMotion");
-      expect(result[firstKey]).toHaveProperty("meanAnomaly");
-      expect(result[firstKey]).toHaveProperty("trueAnomaly");
-      expect(result[firstKey]).toHaveProperty("semiMajorAxis");
-      expect(result[firstKey]).toHaveProperty("apoapsisDistance");
-      expect(result[firstKey]).toHaveProperty("siderealOrbitPeriod");
-
-      expect(result[firstKey]?.eccentricity).toBeCloseTo(0.054_56, 4);
-      expect(result[firstKey]?.inclination).toBeCloseTo(5.1454, 4);
-      expect(result[firstKey]?.longitudeOfAscendingNode).toBe(144.525);
-      expect(result[firstKey]?.argumentOfPerifocus).toBe(75);
+      expect(result).toHaveProperty("coordinateEphemerisByBody");
+      expect(result).toHaveProperty("azimuthElevationEphemerisByBody");
+      expect(result).toHaveProperty("illuminationEphemerisByBody");
+      expect(result).toHaveProperty("diameterEphemerisByBody");
+      expect(result).toHaveProperty("distanceEphemerisByBody");
     });
 
-    it("should handle scientific notation in orbital elements", async () => {
-      const { fetchWithRetry } = await import("../fetch.utilities");
-      const mockOrbitResponse = `$$SOE
- 2024-Mar-21 00:00:00.0000   EC= 5.456093559467E-02 QR= 3.633092318208E+05 IN= 5.145396332510E+00
-   OM= 1.445250000000E+02 W = 7.500000000000E+01 Tp=  2.460397100000E+06
-   N = 1.336160000000E+01 MA= 1.512000000000E+02 TA= 1.533400000000E+02
-   A = 3.844000000000E+05 AD= 4.054907681792E+05 PR= 2.695160000000E+01
-$$EOE`;
-
-      vi.mocked(fetchWithRetry).mockResolvedValue(mockOrbitResponse);
-
-      const result = await getOrbitEphemeris({
-        body: "moon",
-        start,
-        end,
-        timezone,
+    it("populates coordinate ephemeris for all requested bodies", () => {
+      const result = computeAllEphemerides({
+        coordinateBodies: ["sun", "moon"],
+        azimuthElevationBodies: ["sun"],
+        illuminationBodies: ["sun"],
+        diameterBodies: ["sun"],
+        distanceBodies: ["sun"],
+        coordinates: [-74.006, 40.7128],
+        start: makeStart(),
+        end: makeEnd(),
       });
 
-      const firstKey = Object.keys(result)[0];
-      expect(firstKey).toBeDefined();
-      if (!firstKey) {
-        throw new Error("firstKey is undefined");
+      expect(result.coordinateEphemerisByBody["sun"]).toBeDefined();
+      expect(result.coordinateEphemerisByBody["moon"]).toBeDefined();
+    });
+
+    it("sets sun illumination to 100 in single-pass computation", () => {
+      const result = computeAllEphemerides({
+        coordinateBodies: ["sun"],
+        azimuthElevationBodies: ["sun"],
+        illuminationBodies: ["sun"],
+        diameterBodies: ["sun"],
+        distanceBodies: ["sun"],
+        coordinates: [-74.006, 40.7128],
+        start: makeStart(),
+        end: makeEnd(),
+      });
+
+      const illumination = result.illuminationEphemerisByBody["sun"];
+      expect(illumination).toBeDefined();
+      for (const val of Object.values(illumination ?? {})) {
+        expect(val.illumination).toBe(100);
       }
-      expect(result[firstKey]?.timeOfPeriapsis).toBeCloseTo(2_460_397.1, 1);
+    });
+
+    it("skips azimuth/illumination/diameter/distance entries when not requested", () => {
+      const result = computeAllEphemerides({
+        coordinateBodies: ["sun"],
+        azimuthElevationBodies: [],
+        illuminationBodies: [],
+        diameterBodies: [],
+        distanceBodies: [],
+        coordinates: [-74.006, 40.7128],
+        start: makeStart(),
+        end: makeEnd(),
+      });
+
+      expect(Object.keys(result.azimuthElevationEphemerisByBody)).toHaveLength(
+        0,
+      );
+      expect(Object.keys(result.illuminationEphemerisByBody)).toHaveLength(0);
+      expect(Object.keys(result.diameterEphemerisByBody)).toHaveLength(0);
+      expect(Object.keys(result.distanceEphemerisByBody)).toHaveLength(0);
+    });
+
+    it("handles node bodies in coordinateBodies (no SE constant needed)", () => {
+      const result = computeAllEphemerides({
+        coordinateBodies: ["north lunar node", "south lunar node"],
+        azimuthElevationBodies: [],
+        illuminationBodies: [],
+        diameterBodies: [],
+        distanceBodies: [],
+        coordinates: [-74.006, 40.7128],
+        start: makeStart(),
+        end: makeEnd(),
+      });
+
+      const north = result.coordinateEphemerisByBody["north lunar node"];
+      const south = result.coordinateEphemerisByBody["south lunar node"];
+      expect(north).toBeDefined();
+      expect(south).toBeDefined();
+      for (const val of Object.values(north ?? {})) {
+        expect(val.latitude).toBe(0);
+      }
     });
   });
 });

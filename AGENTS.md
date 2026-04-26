@@ -52,7 +52,6 @@ See [Tool Execution Model](documentation/development/tool-execution-model.md) fo
 Specialized domain knowledge for working on specific systems or patterns:
 
 <!-- agent-skills-table-of-contents start -->
-
 - **[checkout-branch](documentation/skills/checkout-branch/SKILL.md)**: Create and validate Git branch names following this monorepo's Conventional Commits naming convention. Use this skill when creating branches, renaming branches, or when asked about branch naming rules and validation.
 - **[code-generator-patterns](documentation/skills/code-generator-patterns/SKILL.md)**: Create and extend Nx generators using templates, prompts, and file generation. Use this skill when building new generators or modifying the generator framework.
 - **[commit-code](documentation/skills/commit-code/SKILL.md)**: Write commit messages following this monorepo's Conventional Commits standard with Gitmoji support. Use this skill when creating commits or when asked about commit message formatting.

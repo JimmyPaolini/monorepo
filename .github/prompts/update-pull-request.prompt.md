@@ -1,7 +1,7 @@
 ---
 agent: "agent"
 description: "Update an existing pull request's title and description to accurately reflect the implemented changes, following the PR template and Conventional Commits conventions."
-model: Claude Haiku 4.5 (copilot)
+model: "Claude Haiku 4.5 (copilot)"
 name: "update-pull-request"
 tools: ["execute/runInTerminal", "read", "search", "web", "github/*"]
 ---
