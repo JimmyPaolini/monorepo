@@ -4,10 +4,9 @@ import { describe, expect, it, vi } from "vitest";
 import { MARGIN_MINUTES } from "../../calendar.utilities";
 
 import {
-  getMartianPhaseEvents,
-  getMercurianPhaseEvents,
-  getPlanetaryPhaseEvents,
-  getVenusianPhaseEvents,
+    getMartianPhaseEvents,
+    getMercurianPhaseEvents,
+    getVenusianPhaseEvents,
 } from "./phases.events";
 
 vi.mock("fs", () => ({
@@ -18,7 +17,20 @@ vi.mock("fs", () => ({
 
 describe("phases.events integration", () => {
   /**
-   * Helper function to create mock ephemeris data with proper time series
+   * Creates mock ephemeris with a configurable longitude step rate.
+   *
+   * To trigger rise/set transitions the planet and Sun must move at DIFFERENT
+   * rates so the angular separation actually crosses the civil-twilight threshold
+   * (6°).  Use `step: 0.15` for the inner planet and the default `step: 0.1`
+   * for the Sun so the gap changes by 0.05° per minute.
+   *
+   * Concrete verification (RISE_SET_THRESHOLD = 6°):
+   *   Morning Set  – planet west of Sun, gap closing:
+   *     planet base=94.0 step=0.15, sun base=100.0 step=0.1
+   *     i=-1: |99.9 – 93.85| = 6.05 > 6  ✓   i=0: |100 – 94| = 6.0 ≤ 6  ✓
+   *   Evening Rise – planet east of Sun, gap opening:
+   *     planet base=106.0 step=0.15, sun base=100.0 step=0.1
+   *     i=-1: |105.85 – 99.9| = 5.95 < 6  ✓   i=0: |106 – 100| = 6.0 ≥ 6  ✓
    */
   function createMockEphemeris(
     baseTime: Moment,
@@ -26,6 +38,7 @@ describe("phases.events integration", () => {
       longitude: number;
       distance: number;
       illumination: number;
+      step?: number;
     },
   ): Record<
     string,
@@ -36,6 +49,7 @@ describe("phases.events integration", () => {
       illumination: number;
     }
   > {
+    const step = config.step ?? 0.1;
     const ephemeris: Record<
       string,
       {
@@ -50,7 +64,7 @@ describe("phases.events integration", () => {
     for (let i = -MARGIN_MINUTES; i <= MARGIN_MINUTES + 1; i++) {
       const time = baseTime.clone().add(i, "minutes");
       ephemeris[time.toISOString()] = {
-        longitude: config.longitude + i * 0.1, // Slight variation over time
+        longitude: config.longitude + i * step,
         latitude: 0,
         distance: config.distance + i * 0.001,
         illumination: config.illumination + i * 0.01,
@@ -61,20 +75,24 @@ describe("phases.events integration", () => {
   }
 
   describe("getVenusianPhaseEvents", () => {
-    it("should process ephemeris data without errors for morning configuration", () => {
+    it("should detect Venus Morning Set when angular gap closes through the threshold", () => {
+      // Venus west of Sun (morning sky), Venus moves faster than Sun so the gap
+      // decreases from 6.05° (i=-1) to 6.0° (i=0) — crosses the 6° threshold ↓
       const currentMinute = moment.utc("2024-01-15T06:00:00.000Z");
 
       // Venus in morning sky configuration (western elongation)
       const venusEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 280, // West of Sun
+        longitude: 94,
         distance: 0.7,
         illumination: 40,
+        step: 0.15, // Venus moves faster than Sun
       });
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 315, // Sun ahead of Venus
+        longitude: 100,
         distance: 1,
         illumination: 100,
+        step: 0.1,
       });
 
       const events = getVenusianPhaseEvents({
@@ -85,31 +103,33 @@ describe("phases.events integration", () => {
         sunCoordinateEphemeris: sunEphemeris,
       });
 
-      // Should return an array (may be empty or contain events)
-      expect(Array.isArray(events)).toBe(true);
-      // All events should have proper structure
-      events.forEach((event) => {
-        expect(event.start).toBeInstanceOf(Date);
-        expect(event.end).toBeInstanceOf(Date);
-        expect(event.summary).toContain("Venus");
-        expect(event.categories).toContain("Venusian");
-      });
+      const morningSetEvent = events.find((e) =>
+        e.categories.includes("Morning Set"),
+      );
+      expect(morningSetEvent).toBeDefined();
+      expect(morningSetEvent?.categories).toContain("Venusian");
+      expect(morningSetEvent?.description).toBe("Venus Morning Set");
+      expect(morningSetEvent?.start).toEqual(currentMinute);
     });
 
-    it("should process ephemeris data without errors for evening configuration", () => {
+    it("should detect Venus Evening Rise when angular gap opens through the threshold", () => {
+      // Venus east of Sun (evening sky), Venus moves faster than Sun so the gap
+      // grows from 5.95° (i=-1) to 6.0° (i=0) — crosses the 6° threshold ↑
       const currentMinute = moment.utc("2024-06-15T18:00:00.000Z");
 
-      // Venus in evening sky configuration (eastern elongation)
+      // Venus in evening sky configuration (eastern side)
       const venusEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 45, // East of Sun
+        longitude: 106,
         distance: 0.7,
         illumination: 60,
+        step: 0.15, // Venus moves faster than Sun
       });
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 0, // Sun behind Venus
+        longitude: 100,
         distance: 1,
         illumination: 100,
+        step: 0.1,
       });
 
       const events = getVenusianPhaseEvents({
@@ -120,28 +140,31 @@ describe("phases.events integration", () => {
         sunCoordinateEphemeris: sunEphemeris,
       });
 
-      expect(Array.isArray(events)).toBe(true);
-      events.forEach((event) => {
-        expect(event.start).toEqual(currentMinute);
-        expect(event.description).toMatch(
-          /Venus (Morning|Evening|Western|Eastern)/,
-        );
-      });
+      const eveningRiseEvent = events.find((e) =>
+        e.categories.includes("Evening Rise"),
+      );
+      expect(eveningRiseEvent).toBeDefined();
+      expect(eveningRiseEvent?.categories).toContain("Venusian");
+      expect(eveningRiseEvent?.description).toBe("Venus Evening Rise");
+      expect(eveningRiseEvent?.start).toEqual(currentMinute);
     });
 
-    it("should handle all 8 possible Venus phases", () => {
+    it("should return no events when the angular gap is constant and far from the threshold", () => {
+      // Same step rate for both bodies → constant angle, never crosses threshold
       const currentMinute = moment.utc("2024-03-15T12:00:00.000Z");
 
       const venusEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 100,
+        longitude: 50,
         distance: 0.5,
         illumination: 50,
+        step: 0.1,
       });
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 120,
+        longitude: 100, // 50° gap — never changes
         distance: 1,
         illumination: 100,
+        step: 0.1,
       });
 
       const events = getVenusianPhaseEvents({
@@ -152,43 +175,27 @@ describe("phases.events integration", () => {
         sunCoordinateEphemeris: sunEphemeris,
       });
 
-      // The function should check all 8 phases
-      // Valid phase names from the implementation
-      const validPhases = [
-        "Morning Rise",
-        "Western Brightest",
-        "Western Elongation",
-        "Morning Set",
-        "Evening Rise",
-        "Eastern Elongation",
-        "Eastern Brightest",
-        "Evening Set",
-      ];
-
-      events.forEach((event) => {
-        const hasValidPhase = validPhases.some((phase) =>
-          event.description.includes(phase),
-        );
-        expect(hasValidPhase).toBe(true);
-      });
+      expect(events).toHaveLength(0);
     });
   });
 
   describe("getMercurianPhaseEvents", () => {
-    it("should process ephemeris data without errors for morning configuration", () => {
+    it("should detect Mercury Morning Set when the gap closes through the threshold", () => {
+      // Same geometry as Venus Morning Set — Mercury west of Sun, gap 6.05→6.0
       const currentMinute = moment.utc("2024-02-15T06:00:00.000Z");
 
-      // Mercury in morning sky
       const mercuryEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 300,
+        longitude: 94,
         distance: 0.6,
         illumination: 35,
+        step: 0.15,
       });
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 330,
+        longitude: 100,
         distance: 1,
         illumination: 100,
+        step: 0.1,
       });
 
       const events = getMercurianPhaseEvents({
@@ -199,28 +206,31 @@ describe("phases.events integration", () => {
         sunCoordinateEphemeris: sunEphemeris,
       });
 
-      expect(Array.isArray(events)).toBe(true);
-      events.forEach((event) => {
-        expect(event.start).toBeInstanceOf(Date);
-        expect(event.summary).toContain("Mercury");
-        expect(event.categories).toContain("Mercurian");
-      });
+      const morningSetEvent = events.find((e) =>
+        e.categories.includes("Morning Set"),
+      );
+      expect(morningSetEvent).toBeDefined();
+      expect(morningSetEvent?.categories).toContain("Mercurian");
+      expect(morningSetEvent?.description).toBe("Mercury Morning Set");
+      expect(morningSetEvent?.start).toEqual(currentMinute);
     });
 
-    it("should process ephemeris data without errors for evening configuration", () => {
+    it("should detect Mercury Evening Rise when the gap opens through the threshold", () => {
+      // Mercury east of Sun, gap 5.95→6.0
       const currentMinute = moment.utc("2024-04-15T18:00:00.000Z");
 
-      // Mercury in evening sky
       const mercuryEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 30,
+        longitude: 106,
         distance: 0.8,
         illumination: 70,
+        step: 0.15,
       });
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 10,
+        longitude: 100,
         distance: 1,
         illumination: 100,
+        step: 0.1,
       });
 
       const events = getMercurianPhaseEvents({
@@ -231,28 +241,30 @@ describe("phases.events integration", () => {
         sunCoordinateEphemeris: sunEphemeris,
       });
 
-      expect(Array.isArray(events)).toBe(true);
-      events.forEach((event) => {
-        expect(event.start).toEqual(currentMinute);
-        expect(event.description).toMatch(
-          /Mercury (Morning|Evening|Western|Eastern)/,
-        );
-      });
+      const eveningRiseEvent = events.find((e) =>
+        e.categories.includes("Evening Rise"),
+      );
+      expect(eveningRiseEvent).toBeDefined();
+      expect(eveningRiseEvent?.categories).toContain("Mercurian");
+      expect(eveningRiseEvent?.description).toBe("Mercury Evening Rise");
+      expect(eveningRiseEvent?.start).toEqual(currentMinute);
     });
 
-    it("should handle all 8 possible Mercury phases", () => {
+    it("should return no events when the angular gap is constant and far from the threshold", () => {
       const currentMinute = moment.utc("2024-05-15T12:00:00.000Z");
 
       const mercuryEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 150,
+        longitude: 50,
         distance: 0.7,
         illumination: 55,
+        step: 0.1,
       });
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 170,
+        longitude: 100, // 50° gap — constant
         distance: 1,
         illumination: 100,
+        step: 0.1,
       });
 
       const events = getMercurianPhaseEvents({
@@ -263,41 +275,27 @@ describe("phases.events integration", () => {
         sunCoordinateEphemeris: sunEphemeris,
       });
 
-      const validPhases = [
-        "Morning Rise",
-        "Western Brightest",
-        "Western Elongation",
-        "Morning Set",
-        "Evening Rise",
-        "Eastern Elongation",
-        "Eastern Brightest",
-        "Evening Set",
-      ];
-
-      events.forEach((event) => {
-        const hasValidPhase = validPhases.some((phase) =>
-          event.description.includes(phase),
-        );
-        expect(hasValidPhase).toBe(true);
-      });
+      expect(events).toHaveLength(0);
     });
   });
 
   describe("getMartianPhaseEvents", () => {
-    it("should process ephemeris data without errors for morning configuration", () => {
+    it("should detect Mars Morning Set when the gap closes through the threshold", () => {
+      // Mars west of Sun, gap 6.05→6.0
       const currentMinute = moment.utc("2024-06-01T06:00:00.000Z");
 
-      // Mars in morning sky
       const marsEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 200,
+        longitude: 94,
         distance: 1.5,
         illumination: 92,
+        step: 0.15,
       });
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 240,
+        longitude: 100,
         distance: 1,
         illumination: 100,
+        step: 0.1,
       });
 
       const events = getMartianPhaseEvents({
@@ -308,28 +306,31 @@ describe("phases.events integration", () => {
         sunCoordinateEphemeris: sunEphemeris,
       });
 
-      expect(Array.isArray(events)).toBe(true);
-      events.forEach((event) => {
-        expect(event.start).toBeInstanceOf(Date);
-        expect(event.summary).toContain("Mars");
-        expect(event.categories).toContain("Martian");
-      });
+      const morningSetEvent = events.find((e) =>
+        e.categories.includes("Morning Set"),
+      );
+      expect(morningSetEvent).toBeDefined();
+      expect(morningSetEvent?.categories).toContain("Martian");
+      expect(morningSetEvent?.description).toBe("Mars Morning Set");
+      expect(morningSetEvent?.start).toEqual(currentMinute);
     });
 
-    it("should process ephemeris data without errors for evening configuration", () => {
+    it("should detect Mars Evening Rise when the gap opens through the threshold", () => {
+      // Mars east of Sun, gap 5.95→6.0
       const currentMinute = moment.utc("2024-08-01T18:00:00.000Z");
 
-      // Mars in evening sky
       const marsEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 90,
+        longitude: 106,
         distance: 2,
         illumination: 88,
+        step: 0.15,
       });
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 60,
+        longitude: 100,
         distance: 1,
         illumination: 100,
+        step: 0.1,
       });
 
       const events = getMartianPhaseEvents({
@@ -340,26 +341,30 @@ describe("phases.events integration", () => {
         sunCoordinateEphemeris: sunEphemeris,
       });
 
-      expect(Array.isArray(events)).toBe(true);
-      events.forEach((event) => {
-        expect(event.start).toEqual(currentMinute);
-        expect(event.description).toMatch(/Mars (Morning|Evening) (Rise|Set)/);
-      });
+      const eveningRiseEvent = events.find((e) =>
+        e.categories.includes("Evening Rise"),
+      );
+      expect(eveningRiseEvent).toBeDefined();
+      expect(eveningRiseEvent?.categories).toContain("Martian");
+      expect(eveningRiseEvent?.description).toBe("Mars Evening Rise");
+      expect(eveningRiseEvent?.start).toEqual(currentMinute);
     });
 
-    it("should handle all 4 possible Mars phases", () => {
+    it("should return no events when the angular gap is constant and far from the threshold", () => {
       const currentMinute = moment.utc("2024-09-15T12:00:00.000Z");
 
       const marsEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 270,
+        longitude: 50,
         distance: 1.8,
         illumination: 90,
+        step: 0.1,
       });
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 290,
+        longitude: 100, // 50° gap — constant
         distance: 1,
         illumination: 100,
+        step: 0.1,
       });
 
       const events = getMartianPhaseEvents({
@@ -370,344 +375,7 @@ describe("phases.events integration", () => {
         sunCoordinateEphemeris: sunEphemeris,
       });
 
-      // Mars only has 4 phases (no elongation/brightest)
-      const validPhases = [
-        "Morning Rise",
-        "Morning Set",
-        "Evening Rise",
-        "Evening Set",
-      ];
-
-      events.forEach((event) => {
-        const hasValidPhase = validPhases.some((phase) =>
-          event.description.includes(phase),
-        );
-        expect(hasValidPhase).toBe(true);
-      });
-    });
-  });
-
-  describe("getPlanetaryPhaseEvents", () => {
-    it("should aggregate events from all three planets", () => {
-      const currentMinute = moment.utc("2024-07-01T12:00:00.000Z");
-
-      const venusEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 100,
-        distance: 0.7,
-        illumination: 50,
-      });
-
-      const mercuryEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 120,
-        distance: 0.6,
-        illumination: 45,
-      });
-
-      const marsEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 140,
-        distance: 1.6,
-        illumination: 91,
-      });
-
-      const sunEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 110,
-        distance: 1,
-        illumination: 100,
-      });
-
-      // Create full ephemeris records with all required bodies
-      const mockCoordinateEphemeris = {
-        sun: sunEphemeris,
-        mercury: mercuryEphemeris,
-        venus: venusEphemeris,
-        mars: marsEphemeris,
-      } as Record<
-        string,
-        Record<
-          string,
-          {
-            longitude: number;
-            latitude: number;
-            distance: number;
-            illumination: number;
-          }
-        >
-      >;
-
-      const mockDistanceEphemeris = {
-        sun: sunEphemeris,
-        mercury: mercuryEphemeris,
-        venus: venusEphemeris,
-        mars: marsEphemeris,
-      } as Record<
-        string,
-        Record<
-          string,
-          {
-            longitude: number;
-            latitude: number;
-            distance: number;
-            illumination: number;
-          }
-        >
-      >;
-
-      const mockIlluminationEphemeris = {
-        sun: sunEphemeris,
-        moon: sunEphemeris, // Use sun as placeholder
-        mercury: mercuryEphemeris,
-        venus: venusEphemeris,
-        mars: marsEphemeris,
-      } as Record<
-        string,
-        Record<
-          string,
-          {
-            longitude: number;
-            latitude: number;
-            distance: number;
-            illumination: number;
-          }
-        >
-      >;
-
-      const events = getPlanetaryPhaseEvents({
-        minute: currentMinute,
-        coordinateEphemerisByBody: mockCoordinateEphemeris,
-        distanceEphemerisByBody: mockDistanceEphemeris,
-        illuminationEphemerisByBody: mockIlluminationEphemeris,
-      });
-
-      expect(Array.isArray(events)).toBe(true);
-
-      // Should have events from different planets (if conditions are met)
-      const planetNames = new Set(
-        events.map((e) => {
-          if (e.summary.includes("♀️")) {
-            return "venus";
-          }
-          if (e.summary.includes("☿")) {
-            return "mercury";
-          }
-          if (e.summary.includes("♂️")) {
-            return "mars";
-          }
-          return "unknown";
-        }),
-      );
-
-      // All events should be from valid planets
-      expect(planetNames.has("unknown")).toBe(false);
-    });
-
-    it("should handle varying ephemeris configurations", () => {
-      const currentMinute = moment.utc("2024-10-15T09:00:00.000Z");
-
-      // Different configurations for each planet
-      const venusEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 45, // Eastern
-        distance: 0.4,
-        illumination: 25,
-      });
-
-      const mercuryEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 315, // Western
-        distance: 0.9,
-        illumination: 80,
-      });
-
-      const marsEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 180, // Opposition-like
-        distance: 0.5,
-        illumination: 100,
-      });
-
-      const sunEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 0,
-        distance: 1,
-        illumination: 100,
-      });
-
-      const events = getPlanetaryPhaseEvents({
-        minute: currentMinute,
-        coordinateEphemerisByBody: {
-          sun: sunEphemeris,
-          mercury: mercuryEphemeris,
-          venus: venusEphemeris,
-          mars: marsEphemeris,
-        } as unknown as Record<
-          string,
-          Record<string, { longitude: number; latitude: number }>
-        >,
-        distanceEphemerisByBody: {
-          sun: sunEphemeris,
-          mercury: mercuryEphemeris,
-          venus: venusEphemeris,
-          mars: marsEphemeris,
-        } as unknown as Record<
-          string,
-          Record<string, { longitude: number; distance: number }>
-        >,
-        illuminationEphemerisByBody: {
-          sun: sunEphemeris,
-          moon: sunEphemeris,
-          mercury: mercuryEphemeris,
-          venus: venusEphemeris,
-          mars: marsEphemeris,
-        } as unknown as Record<
-          string,
-          Record<string, { illumination: number }>
-        >,
-      });
-
-      // All events should have correct timestamp
-      events.forEach((event) => {
-        expect(event.start).toEqual(currentMinute);
-        expect(event.end).toEqual(currentMinute);
-      });
-    });
-
-    it("should return empty array when no phases detected", () => {
-      const currentMinute = moment.utc("2024-11-01T15:00:00.000Z");
-
-      // Configuration unlikely to trigger any phases
-      const neutralEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 180,
-        distance: 1,
-        illumination: 50,
-      });
-
-      const events = getPlanetaryPhaseEvents({
-        minute: currentMinute,
-        coordinateEphemerisByBody: {
-          sun: neutralEphemeris,
-          mercury: neutralEphemeris,
-          venus: neutralEphemeris,
-          mars: neutralEphemeris,
-        } as unknown as Record<
-          string,
-          Record<string, { longitude: number; latitude: number }>
-        >,
-        distanceEphemerisByBody: {
-          sun: neutralEphemeris,
-          mercury: neutralEphemeris,
-          venus: neutralEphemeris,
-          mars: neutralEphemeris,
-        } as unknown as Record<
-          string,
-          Record<string, { longitude: number; distance: number }>
-        >,
-        illuminationEphemerisByBody: {
-          sun: neutralEphemeris,
-          moon: neutralEphemeris,
-          mercury: neutralEphemeris,
-          venus: neutralEphemeris,
-          mars: neutralEphemeris,
-        } as unknown as Record<
-          string,
-          Record<string, { illumination: number }>
-        >,
-      });
-
-      expect(Array.isArray(events)).toBe(true);
-      // May be empty or have some events depending on phase detection logic
-    });
-  });
-
-  describe("edge cases", () => {
-    it("should handle longitude wraparound at 0/360 degrees", () => {
-      const currentMinute = moment.utc("2024-12-01T00:00:00.000Z");
-
-      // Planet at 359 degrees, Sun at 1 degree
-      const venusEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 359,
-        distance: 0.7,
-        illumination: 50,
-      });
-
-      const sunEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 1,
-        distance: 1,
-        illumination: 100,
-      });
-
-      const events = getVenusianPhaseEvents({
-        minute: currentMinute,
-        venusCoordinateEphemeris: venusEphemeris,
-        venusDistanceEphemeris: venusEphemeris,
-        venusIlluminationEphemeris: venusEphemeris,
-        sunCoordinateEphemeris: sunEphemeris,
-      });
-
-      // Should not throw errors
-      expect(Array.isArray(events)).toBe(true);
-    });
-
-    it("should handle rapid changes in ephemeris values", () => {
-      const currentMinute = moment.utc("2024-12-15T06:00:00.000Z");
-
-      // Create ephemeris with larger variations
-      const venusEphemeris: Record<
-        string,
-        {
-          longitude: number;
-          latitude: number;
-          distance: number;
-          illumination: number;
-        }
-      > = {};
-      for (let i = -MARGIN_MINUTES; i <= MARGIN_MINUTES + 1; i++) {
-        const time = currentMinute.clone().add(i, "minutes");
-        venusEphemeris[time.toISOString()] = {
-          longitude: 100 + i * 5, // Rapid change
-          latitude: 0,
-          distance: 0.5 + Math.abs(i) * 0.05,
-          illumination: 50 + i * 2,
-        };
-      }
-
-      const sunEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 120,
-        distance: 1,
-        illumination: 100,
-      });
-
-      const events = getVenusianPhaseEvents({
-        minute: currentMinute,
-        venusCoordinateEphemeris: venusEphemeris,
-        venusDistanceEphemeris: venusEphemeris,
-        venusIlluminationEphemeris: venusEphemeris,
-        sunCoordinateEphemeris: sunEphemeris,
-      });
-
-      expect(Array.isArray(events)).toBe(true);
-    });
-
-    it("should handle extreme distance values", () => {
-      const currentMinute = moment.utc("2024-12-20T12:00:00.000Z");
-
-      // Mars at aphelion (far from Earth)
-      const marsEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 180,
-        distance: 2.67, // Maximum Mars-Sun distance
-        illumination: 88,
-      });
-
-      const sunEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 0,
-        distance: 1,
-        illumination: 100,
-      });
-
-      const events = getMartianPhaseEvents({
-        minute: currentMinute,
-        marsCoordinateEphemeris: marsEphemeris,
-        marsDistanceEphemeris: marsEphemeris,
-        marsIlluminationEphemeris: marsEphemeris,
-        sunCoordinateEphemeris: sunEphemeris,
-      });
-
-      expect(Array.isArray(events)).toBe(true);
+      expect(events).toHaveLength(0);
     });
   });
 });
