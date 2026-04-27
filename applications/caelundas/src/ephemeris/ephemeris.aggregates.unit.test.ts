@@ -5,16 +5,19 @@ import { getEphemerides } from "./ephemeris.aggregates";
 
 import type { Body } from "../types";
 import type {
-  AzimuthElevationEphemeris,
-  CoordinateEphemeris,
-  DiameterEphemeris,
-  DistanceEphemeris,
-  IlluminationEphemeris,
+    AzimuthElevationEphemeris,
+    CoordinateEphemeris,
+    DiameterEphemeris,
+    DistanceEphemeris,
+    IlluminationEphemeris,
 } from "./ephemeris.types";
 
 // Mock the ephemeris service
 vi.mock("./ephemeris.service", () => ({
   computeAllEphemerides: vi.fn(),
+  EphemerisService: class EphemerisService {
+    computeAllEphemerides = vi.fn();
+  },
 }));
 
 describe("ephemeris.aggregates", () => {

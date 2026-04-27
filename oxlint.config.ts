@@ -571,13 +571,10 @@ export default defineConfig({
       ],
       plugins: ["import", "typescript"],
       rules: {
-        "@typescript-eslint/consistent-type-imports": [
-          "error",
-          {
-            fixStyle: "inline-type-imports",
-            prefer: "type-imports",
-          },
-        ],
+        // Disabled: ESLint's type-aware version handles this accurately for
+        // decorator-metadata patterns (NestJS emitDecoratorMetadata). Oxlint
+        // does not understand that constructor parameter types are value uses.
+        "@typescript-eslint/consistent-type-imports": "off",
         "@typescript-eslint/explicit-function-return-type": [
           "error",
           {
@@ -649,7 +646,10 @@ export default defineConfig({
         "@typescript-eslint/no-empty-object-type": "error",
         "@typescript-eslint/no-explicit-any": "error",
         "@typescript-eslint/no-extra-non-null-assertion": "error",
-        "@typescript-eslint/no-extraneous-class": "error",
+        "@typescript-eslint/no-extraneous-class": [
+          "error",
+          { allowWithDecorator: true },
+        ],
         "@typescript-eslint/no-inferrable-types": "error",
         "@typescript-eslint/no-invalid-void-type": "error",
         "@typescript-eslint/no-misused-new": "error",

@@ -19,6 +19,7 @@
  * @see {@link ./ephemeris.types#} for data structures
  */
 
+import { Injectable } from "@nestjs/common";
 import moment, { type Moment } from "moment-timezone";
 import { azalt, calc, constants, nod_aps_ut, pheno_ut, utc_to_jd } from "sweph";
 
@@ -26,28 +27,28 @@ import { nodes } from "../constants";
 import { normalizeDegrees } from "../math.utilities";
 
 import {
-  ECLIPTIC_TO_HORIZONTAL_FLAG,
-  GREGORIAN_CALENDAR_FLAG,
-  initializeSwissEphemeris,
-  OSCULATING_ORBITAL_ELEMENTS_FLAG,
-  SWISS_EPHEMERIS_FLAGS,
-  swissEphemerisConstantByAsteroid,
-  swissEphemerisConstantByNode,
-  swissEphemerisConstantByPlanet,
+    ECLIPTIC_TO_HORIZONTAL_FLAG,
+    GREGORIAN_CALENDAR_FLAG,
+    initializeSwissEphemeris,
+    OSCULATING_ORBITAL_ELEMENTS_FLAG,
+    SWISS_EPHEMERIS_FLAGS,
+    swissEphemerisConstantByAsteroid,
+    swissEphemerisConstantByNode,
+    swissEphemerisConstantByPlanet,
 } from "./ephemeris.integration";
 
 import type { Body, Node } from "../types";
 import type {
-  AzimuthElevationEphemeris,
-  AzimuthElevationEphemerisBody,
-  CoordinateEphemeris,
-  Coordinates,
-  DiameterEphemeris,
-  DiameterEphemerisBody,
-  DistanceEphemeris,
-  DistanceEphemerisBody,
-  IlluminationEphemeris,
-  IlluminationEphemerisBody,
+    AzimuthElevationEphemeris,
+    AzimuthElevationEphemerisBody,
+    CoordinateEphemeris,
+    Coordinates,
+    DiameterEphemeris,
+    DiameterEphemerisBody,
+    DistanceEphemeris,
+    DistanceEphemerisBody,
+    IlluminationEphemeris,
+    IlluminationEphemerisBody,
 } from "./ephemeris.types";
 
 // Initialize Swiss Ephemeris on module load (idempotent — safe to call multiple times)
@@ -754,4 +755,13 @@ export function computeAllEphemerides(args: {
     diameterEphemerisByBody,
     distanceEphemerisByBody,
   };
+}
+
+@Injectable()
+export class EphemerisService {
+  computeAllEphemerides(
+    args: Parameters<typeof computeAllEphemerides>[0],
+  ): ReturnType<typeof computeAllEphemerides> {
+    return computeAllEphemerides(args);
+  }
 }

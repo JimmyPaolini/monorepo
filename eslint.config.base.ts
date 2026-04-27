@@ -385,6 +385,10 @@ export default [
     },
     rules: {
       "@typescript-eslint/no-non-null-assertion": "error",
+      "@typescript-eslint/no-extraneous-class": [
+        "error",
+        { allowWithDecorator: true },
+      ],
       "@typescript-eslint/restrict-template-expressions": "off",
       "@typescript-eslint/prefer-nullish-coalescing": "off",
     },

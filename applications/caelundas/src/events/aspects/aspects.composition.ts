@@ -3,7 +3,7 @@ import _ from "lodash";
 import { aspects, bodies } from "../../constants";
 import { aspectPhases } from "../../types";
 
-import type { AspectBodies } from "./aspects.store";
+import type { AspectBodies } from "./aspects.utilities";
 import type { Event } from "../../calendar.utilities";
 import type { Aspect, AspectPhase, Body } from "../../types";
 import type { Moment } from "moment-timezone";

@@ -19,17 +19,19 @@
  * @see {@link ./ephemeris.types#} for ephemeris data structures
  */
 
+import { Injectable } from "@nestjs/common";
+
 import { bodies } from "../constants";
 
-import { computeAllEphemerides } from "./ephemeris.service";
+import { computeAllEphemerides, EphemerisService } from "./ephemeris.service";
 
 import type {
-  AzimuthElevationEphemeris,
-  CoordinateEphemeris,
-  Coordinates,
-  DiameterEphemeris,
-  DistanceEphemeris,
-  IlluminationEphemeris,
+    AzimuthElevationEphemeris,
+    CoordinateEphemeris,
+    Coordinates,
+    DiameterEphemeris,
+    DistanceEphemeris,
+    IlluminationEphemeris,
 } from "../ephemeris/ephemeris.types";
 import type { Body } from "../types";
 import type { Moment } from "moment-timezone";
@@ -109,4 +111,35 @@ export function getEphemerides(args: {
     start,
     end,
   });
+}
+
+@Injectable()
+export class EphemerisAggregatesService {
+  constructor(private readonly ephemerisService: EphemerisService) {}
+
+  getEphemerides(args: {
+    coordinates: Coordinates;
+    end: Moment;
+    start: Moment;
+    timezone: string;
+  }): {
+    azimuthElevationEphemerisByBody: Record<Body, AzimuthElevationEphemeris>;
+    coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
+    diameterEphemerisByBody: Record<Body, DiameterEphemeris>;
+    distanceEphemerisByBody: Record<Body, DistanceEphemeris>;
+    illuminationEphemerisByBody: Record<Body, IlluminationEphemeris>;
+  } {
+    const { coordinates, end, start } = args;
+
+    return this.ephemerisService.computeAllEphemerides({
+      coordinateBodies: bodies,
+      azimuthElevationBodies: ["sun", "moon"],
+      illuminationBodies: ["moon", "mercury", "venus", "mars"],
+      diameterBodies: ["sun", "moon"],
+      distanceBodies: ["sun", "mercury", "venus", "mars"],
+      coordinates,
+      start,
+      end,
+    });
+  }
 }
