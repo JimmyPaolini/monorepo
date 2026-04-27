@@ -20,15 +20,15 @@ export function* generateMinutes(
  *
  * Each yielded moment represents the start of a calendar day in the given timezone.
  */
-export function* generateDays(
+export function* generateDates(
   start: Moment,
   end: Moment,
   timezone: string,
 ): Generator<Moment> {
-  const endDay = end.clone().tz(timezone).startOf("day");
-  const current = start.clone().tz(timezone).startOf("day");
-  while (!current.isAfter(endDay)) {
-    yield current.clone();
-    current.add(1, "day");
+  const endDate = end.clone().tz(timezone).startOf("day");
+  const date = start.clone().tz(timezone).startOf("day");
+  while (!date.isAfter(endDate)) {
+    yield date.clone();
+    date.add(1, "day");
   }
 }

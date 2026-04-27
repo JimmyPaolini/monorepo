@@ -13,7 +13,6 @@ import { getMonthlyLunarCycleProgressiveEvents } from "./events/monthlyLunarCycl
 import { getPlanetaryPhaseProgressiveEvents } from "./events/phases/phases.events";
 import { getRetrogradeProgressiveEvents } from "./events/retrogrades/retrogrades.events";
 import { getTwilightProgressiveEvents } from "./events/twilights/twilights.events";
-import { addEvents } from "./events.store";
 
 import type { Event } from "./calendar.utilities";
 
@@ -47,7 +46,5 @@ export function detectProgressiveEvents(perfectiveEvents: Event[]): Event[] {
     ...getPlanetaryPhaseProgressiveEvents(perfectiveEvents),
     ...getSolarApsisProgressiveEvents(perfectiveEvents),
   ];
-
-  addEvents(progressiveEvents);
   return progressiveEvents;
 }

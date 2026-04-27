@@ -93,7 +93,7 @@ describe("retrogrades.events", () => {
 
       const events = getRetrogradeEvents({
         coordinateEphemerisByBody,
-        currentMinute,
+        minute: currentMinute,
       });
 
       const mercuryRetrograde = events.find(
@@ -140,7 +140,7 @@ describe("retrogrades.events", () => {
 
       const events = getRetrogradeEvents({
         coordinateEphemerisByBody,
-        currentMinute,
+        minute: currentMinute,
       });
 
       expect(events).toHaveLength(0);
@@ -228,46 +228,6 @@ describe("retrogrades.events", () => {
       });
 
       expect(event.summary).toBe("♄ ↩️ Saturn Stationary Retrograde");
-    });
-  });
-
-  describe("writeRetrogradeEvents", () => {
-    it("should write events to database and file when events array is not empty", async () => {
-      const { default: fs } = await import("node:fs");
-
-      const events: Event[] = [
-        {
-          start: moment.utc("2024-04-01T12:00:00.000Z"),
-          end: moment.utc("2024-04-01T12:00:00.000Z"),
-          summary: "☿ ↩️ Mercury Stationary Retrograde",
-          description: "Mercury Stationary Retrograde",
-          categories: ["Astronomy", "Astrology", "Direction", "Retrograde"],
-        },
-      ];
-
-      const { writeRetrogradeEvents } = await import("./retrogrades.events");
-      writeRetrogradeEvents({
-        retrogradeBodies: ["mercury"],
-        retrogradeEvents: events,
-        start: moment.utc("2024-01-01"),
-        end: moment.utc("2024-12-31"),
-      });
-
-      expect(fs.writeFileSync).toHaveBeenCalled();
-    });
-
-    it("should not write if events array is empty", async () => {
-      const { default: fs } = await import("node:fs");
-
-      const { writeRetrogradeEvents } = await import("./retrogrades.events");
-      writeRetrogradeEvents({
-        retrogradeBodies: ["mercury"],
-        retrogradeEvents: [],
-        start: moment.utc("2024-01-01"),
-        end: moment.utc("2024-12-31"),
-      });
-
-      expect(fs.writeFileSync).not.toHaveBeenCalled();
     });
   });
 

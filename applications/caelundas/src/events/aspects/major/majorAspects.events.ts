@@ -7,19 +7,17 @@
  * an 8° orb tolerance for detection.
  */
 
-import fs from "node:fs";
 
 import _ from "lodash";
 
-import { type Event, getCalendar } from "../../../calendar.utilities";
 import { majorAspects } from "../../../constants";
 import { getCoordinateFromEphemeris } from "../../../ephemeris/ephemeris.service";
-import { getOutputPath } from "../../../output.utilities";
 import { pairProgressiveEvents } from "../../../progressive.utilities";
 import { symbolByBody, symbolByMajorAspect } from "../../../symbols";
 import { majorAspectBodies } from "../../../types";
 import { getMajorAspect, getMajorAspectPhase } from "../aspects.utilities";
 
+import type { Event } from "../../../calendar.utilities";
 import type { CoordinateEphemeris } from "../../../ephemeris/ephemeris.types";
 import type {
   AspectPhase,
@@ -66,12 +64,12 @@ import type { Moment } from "moment-timezone";
  */
 export function getMajorAspectEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
-  currentMinute: Moment;
+  minute: Moment;
 }): Event[] {
-  const { coordinateEphemerisByBody, currentMinute } = args;
+  const { coordinateEphemerisByBody, minute } = args;
 
-  const previousMinute = currentMinute.clone().subtract(1, "minute");
-  const nextMinute = currentMinute.clone().add(1, "minute");
+  const previousMinute = minute.clone().subtract(1, "minute");
+  const nextMinute = minute.clone().add(1, "minute");
 
   const majorAspectEvents: Event[] = [];
 
@@ -87,12 +85,12 @@ export function getMajorAspectEvents(args: {
 
       const currentLongitudeBody1 = getCoordinateFromEphemeris(
         ephemerisBody1,
-        currentMinute.toISOString(),
+        minute.toISOString(),
         "longitude",
       );
       const currentLongitudeBody2 = getCoordinateFromEphemeris(
         ephemerisBody2,
-        currentMinute.toISOString(),
+        minute.toISOString(),
         "longitude",
       );
       const previousLongitudeBody1 = getCoordinateFromEphemeris(
@@ -128,7 +126,7 @@ export function getMajorAspectEvents(args: {
       if (phase) {
         majorAspectEvents.push(
           buildMajorAspectEvent({
-            timestamp: currentMinute,
+            timestamp: minute,
             longitudeBody1: currentLongitudeBody1,
             longitudeBody2: currentLongitudeBody2,
             body1,
@@ -252,67 +250,6 @@ export function buildMajorAspectEvent(args: {
   return majorAspectEvent;
 }
 
-/**
- * Writes major aspect events to an iCalendar file.
- *
- * Generates an `.ics` file containing all major aspect events for a date range.
- * File is named with body list and timespan for easy identification. Skips writing
- * if no events exist.
- *
- * @param args - Output parameters
- * @param end - End date of the event range (inclusive)
- * @param majorAspectBodies - List of bodies included in aspect calculations
- * @param majorAspectEvents - Array of calendar events to write
- * @param start - Start date of the event range (inclusive)
- *
- * @remarks
- * - Filename format: `major-aspects_[bodies]_[start]-[end].ics`
- * - Example: `major-aspects_sun,moon,mercury_2026-01-01T00:00:00Z-2026-02-01T00:00:00Z.ics`
- * - Uses UTF-8 encoding via TextEncoder
- * - Calendar name: "Major Aspect 📐"
- * - Logs write operation with event count and timespan
- * - Early return if event array is empty
- *
- * @see {@link getCalendar} for iCalendar generation
- * @see {@link getOutputPath} for output directory resolution
- *
- * @example
- * ```typescript
- * writeMajorAspectEvents({
- *   majorAspectEvents: events,
- *   majorAspectBodies: ["sun", "moon", "mercury"],
- *   start: new Date('2026-01-01'),
- *   end: new Date('2026-02-01')
- * }); // Writes major-aspects_sun,moon,mercury_2026-01-01T00:00:00Z-2026-02-01T00:00:00Z.ics
- * ```
- */
-export function writeMajorAspectEvents(args: {
-  end: Moment;
-  majorAspectBodies: Body[];
-  majorAspectEvents: Event[];
-  start: Moment;
-}): void {
-  const { end, majorAspectEvents, majorAspectBodies, start } = args;
-  if (_.isEmpty(majorAspectEvents)) {
-    return;
-  }
-
-  const timespan = `${start.toISOString()}-${end.toISOString()}`;
-  const message = `${majorAspectEvents.length} major aspect events from ${timespan}`;
-  console.log(`📐 Writing ${message}`);
-
-  const majorAspectBodiesString = majorAspectBodies.join(",");
-  const majorAspectsCalendar = getCalendar({
-    events: majorAspectEvents,
-    name: "Major Aspect 📐",
-  });
-  fs.writeFileSync(
-    getOutputPath(`major-aspects_${majorAspectBodiesString}_${timespan}.ics`),
-    new TextEncoder().encode(majorAspectsCalendar),
-  );
-
-  console.log(`📐 Wrote ${message}`);
-}
 
 /**
  * Generates progressive events showing how long aspects remain in orb.

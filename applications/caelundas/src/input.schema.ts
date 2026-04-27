@@ -90,11 +90,11 @@ export const inputSchema = z
       .max(180)
       .optional()
       .default(-75.171_69),
-    startDate: z
+    start: z
       .string()
       .optional()
       .default(moment().subtract(1, "month").format("YYYY-MM-DD")),
-    endDate: z
+    end: z
       .string()
       .optional()
       .default(moment().add(1, "month").format("YYYY-MM-DD")),
@@ -106,8 +106,8 @@ export const inputSchema = z
       latitude: data.latitude,
       longitude: data.longitude,
       timezone,
-      start: moment.tz(data.startDate, timezone),
-      end: moment.tz(data.endDate, timezone),
+      start: moment.tz(data.start, timezone),
+      end: moment.tz(data.end, timezone),
     };
   })
   .refine((data) => data.start.isSameOrAfter(moment(minDateString)), {
@@ -125,3 +125,8 @@ export const inputSchema = z
   .refine((data) => data.end.isAfter(data.start), {
     message: "End date must be after start date",
   });
+
+  /**
+   *
+   */
+  export type Input = z.infer<typeof inputSchema>;

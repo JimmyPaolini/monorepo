@@ -66,7 +66,7 @@ describe("ingresses.events integration", () => {
 
       const events = getSignIngressEvents({
         coordinateEphemerisByBody,
-        currentMinute: baseTime,
+        minute: baseTime,
       });
 
       expect(events.length).toBe(1);
@@ -91,7 +91,7 @@ describe("ingresses.events integration", () => {
 
       const events = getSignIngressEvents({
         coordinateEphemerisByBody,
-        currentMinute: baseTime,
+        minute: baseTime,
       });
 
       expect(events.length).toBe(1);
@@ -110,7 +110,7 @@ describe("ingresses.events integration", () => {
 
       const events = getSignIngressEvents({
         coordinateEphemerisByBody,
-        currentMinute: baseTime,
+        minute: baseTime,
       });
 
       expect(events.length).toBe(0);
@@ -132,7 +132,7 @@ describe("ingresses.events integration", () => {
 
       const events = getDecanIngressEvents({
         coordinateEphemerisByBody,
-        currentMinute: baseTime,
+        minute: baseTime,
       });
 
       expect(events.length).toBe(1);
@@ -155,7 +155,7 @@ describe("ingresses.events integration", () => {
 
       const events = getDecanIngressEvents({
         coordinateEphemerisByBody,
-        currentMinute: baseTime,
+        minute: baseTime,
       });
 
       // Should be 0 because sign ingress takes precedence
@@ -178,7 +178,7 @@ describe("ingresses.events integration", () => {
 
       const events = getPeakIngressEvents({
         coordinateEphemerisByBody,
-        currentMinute: baseTime,
+        minute: baseTime,
       });
 
       expect(events.length).toBe(1);

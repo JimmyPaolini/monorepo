@@ -3,11 +3,11 @@ import _ from "lodash";
 import { symbolByBody, symbolByQuadrupleAspect } from "../../../symbols";
 import { quadrupleAspectBodies } from "../../../types";
 import {
-  determineCompoundPhaseFromSnapshots,
-  getOtherBody,
-  groupAspectsByType,
-  haveAspect,
-  involvesBody,
+    determineCompoundPhaseFromSnapshots,
+    getOtherBody,
+    groupAspectsByType,
+    haveAspect,
+    involvesBody,
 } from "../aspects.composition";
 
 import type { Event } from "../../../calendar.utilities";
@@ -41,15 +41,16 @@ import type { Moment } from "moment-timezone";
  * and potential for significant achievement.
  *
  * @param allEdges - All aspect edges across time for phase detection
- * @param currentMinute - The minute to check for Grand Cross patterns
+ * @param minute - The minute to check for Grand Cross patterns
  * @returns Array of Grand Cross events detected at this minute
  * @see {@link determineMultiBodyPhase} for phase calculation
  */
-function composeGrandCrosses(
-  currentAspectBodies: AspectBodies[],
-  previousAspectBodies: AspectBodies[],
-  currentMinute: Moment,
-): Event[] {
+function composeGrandCrosses(args: {
+  currentAspectBodies: AspectBodies[];
+  previousAspectBodies: AspectBodies[];
+  minute: Moment;
+}): Event[] {
+  const { currentAspectBodies, previousAspectBodies, minute } = args;
   const events: Event[] = [];
 
   const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
@@ -127,7 +128,7 @@ function composeGrandCrosses(
           currentAspectBodies,
           previousAspectBodies,
           bodyList,
-          currentMinute,
+          minute,
           (edges) => {
             // Verify all required aspects exist
             const aspectsByType = groupAspectsByType(edges);
@@ -231,15 +232,16 @@ function composeGrandCrosses(
  * Often indicates talent with opportunity for manifestation.
  *
  * @param allEdges - All aspect edges across time for phase detection
- * @param currentMinute - The minute to check for Kite patterns
+ * @param minute - The minute to check for Kite patterns
  * @returns Array of Kite events detected at this minute
  * @see {@link determineMultiBodyPhase} for phase calculation
  */
-function composeKites(
-  currentAspectBodies: AspectBodies[],
-  previousAspectBodies: AspectBodies[],
-  currentMinute: Moment,
-): Event[] {
+function composeKites(args: {
+  currentAspectBodies: AspectBodies[];
+  previousAspectBodies: AspectBodies[];
+  minute: Moment;
+}): Event[] {
+  const { currentAspectBodies, previousAspectBodies, minute } = args;
   const events: Event[] = [];
 
   const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
@@ -331,7 +333,7 @@ function composeKites(
             currentAspectBodies,
             previousAspectBodies,
             bodies,
-            currentMinute,
+            minute,
             (edges) => {
               return (
                 haveAspect(baseBody, fourthBody, "opposite", edges) &&
@@ -462,24 +464,21 @@ function getQuadrupleAspectEvent(params: {
  * indicating either intense challenge (Grand Cross) or channeled talent (Kite).
  *
  * @param aspectEvents - Previously detected simple aspect events
- * @param currentMinute - The minute to check for quadruple aspect patterns
+ * @param minute - The minute to check for quadruple aspect patterns
  * @returns Array of all detected quadruple aspect events at this minute
  * @see {@link parseAspectEvents} for extracting aspect relationships
  * @see {@link composeGrandCrosses} for Grand Cross detection
  * @see {@link composeKites} for Kite detection
  */
-export function getQuadrupleAspectEvents(
-  currentAspectBodies: AspectBodies[],
-  previousAspectBodies: AspectBodies[],
-  currentMinute: Moment,
-): Event[] {
+export function getQuadrupleAspectEvents(args: {
+  currentAspectBodies: AspectBodies[];
+  previousAspectBodies: AspectBodies[];
+  minute: Moment;
+}): Event[] {
+  const { currentAspectBodies, previousAspectBodies, minute } = args;
   return [
-    ...composeGrandCrosses(
-      currentAspectBodies,
-      previousAspectBodies,
-      currentMinute,
-    ),
-    ...composeKites(currentAspectBodies, previousAspectBodies, currentMinute),
+    ...composeGrandCrosses({ currentAspectBodies, previousAspectBodies, minute }),
+    ...composeKites({ currentAspectBodies, previousAspectBodies, minute }),
   ];
 }
 

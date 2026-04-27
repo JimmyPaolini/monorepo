@@ -109,7 +109,7 @@ describe("eclipses.events", () => {
       );
 
       const events = getEclipseEvents({
-        currentMinute,
+        minute: currentMinute,
         moonCoordinateEphemeris,
         moonDiameterEphemeris,
         sunCoordinateEphemeris,

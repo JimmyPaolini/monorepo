@@ -30,7 +30,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
   describe("ICS file generation", () => {
     it("should generate valid ICS file structure", async () => {
-      const { getCalendar } = await import("./calendar.utilities");
+      const { buildCalendarFileContent: getCalendar } = await import("./calendar.utilities");
 
       const events = [
         {
@@ -93,7 +93,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
     });
 
     it("should include timezone definitions", async () => {
-      const { getCalendar } = await import("./calendar.utilities");
+      const { buildCalendarFileContent: getCalendar } = await import("./calendar.utilities");
 
       const events = [
         {
@@ -108,6 +108,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
       const calendar = getCalendar({
         events,
         name: "Timezone Test",
+        description: "E2E timezone test calendar",
         timezone: "America/New_York",
       });
 
@@ -121,7 +122,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
     });
 
     it("should handle events with all optional fields", async () => {
-      const { getCalendar } = await import("./calendar.utilities");
+      const { buildCalendarFileContent: getCalendar } = await import("./calendar.utilities");
 
       const events = [
         {
@@ -141,6 +142,8 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
       const calendar = getCalendar({
         events,
         name: "Eclipse Calendar",
+        description: "E2E optional fields test calendar",
+        timezone: "America/New_York",
       });
 
       expect(calendar).toContain("LOCATION:Dallas, Texas, USA");

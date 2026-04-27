@@ -7,14 +7,11 @@
  * illumination percentage from NASA JPL ephemeris data.
  */
 
-import fs from "node:fs";
-
 import _ from "lodash";
 
-import { getCalendar, MARGIN_MINUTES } from "../../calendar.utilities";
+import { MARGIN_MINUTES } from "../../calendar.utilities";
 import { lunarPhases } from "../../constants";
 import { getIlluminationFromEphemeris } from "../../ephemeris/ephemeris.service";
-import { getOutputPath } from "../../output.utilities";
 import { symbolByLunarPhase } from "../../symbols";
 
 import { isLunarPhase } from "./monthlyLunarCycle.utilities";
@@ -61,26 +58,26 @@ import type { Moment } from "moment-timezone";
  * ```
  */
 export function getMonthlyLunarCycleEvents(args: {
-  currentMinute: Moment;
+  minute: Moment;
   moonIlluminationEphemeris: IlluminationEphemeris;
 }): Event[] {
-  const { currentMinute, moonIlluminationEphemeris } = args;
+  const { minute, moonIlluminationEphemeris } = args;
 
   const monthlyLunarCycleEvents: Event[] = [];
 
   const currentIllumination = getIlluminationFromEphemeris(
     moonIlluminationEphemeris,
-    currentMinute.toISOString(),
+    minute.toISOString(),
     "currentIllumination",
   );
 
   const previousIlluminations = Array.from(
     { length: MARGIN_MINUTES },
     (_, marginIndex) => {
-      const minute = currentMinute.clone().subtract(marginIndex + 1, "minutes");
+      const m = minute.clone().subtract(marginIndex + 1, "minutes");
       return getIlluminationFromEphemeris(
         moonIlluminationEphemeris,
-        minute.toISOString(),
+        m.toISOString(),
         "previousIllumination",
       );
     },
@@ -89,10 +86,10 @@ export function getMonthlyLunarCycleEvents(args: {
   const nextIlluminations = Array.from(
     { length: MARGIN_MINUTES },
     (_, marginIndex) => {
-      const minute = currentMinute.clone().add(marginIndex + 1, "minutes");
+      const m = minute.clone().add(marginIndex + 1, "minutes");
       return getIlluminationFromEphemeris(
         moonIlluminationEphemeris,
-        minute.toISOString(),
+        m.toISOString(),
         "nextIllumination",
       );
     },
@@ -103,7 +100,7 @@ export function getMonthlyLunarCycleEvents(args: {
     previousIlluminations,
     nextIlluminations,
   };
-  const date = currentMinute;
+  const date = minute;
 
   for (const lunarPhase of lunarPhases) {
     if (isLunarPhase({ ...illuminations, lunarPhase })) {
@@ -180,64 +177,6 @@ export function buildMonthlyLunarCycleEvent(args: {
   return monthlyLunarCycleEvent;
 }
 
-/**
- * Writes monthly lunar cycle events to an iCalendar file.
- *
- * Generates an `.ics` file containing all lunar phase events for a date range.
- * File is named with timespan for easy identification. Skips writing if no
- * events exist.
- *
- * @param args - Output parameters
- * @param monthlyLunarCycleEvents - Array of lunar phase events to write
- * @param start - Start date of the event range (inclusive)
- * @param end - End date of the event range (inclusive)
- *
- * @remarks
- * - Filename format: `monthly-lunar-cycle_[start]-[end].ics`
- * - Example: `monthly-lunar-cycle_2026-01-01T00:00:00Z-2026-12-31T23:59:59Z.ics`
- * - Uses UTF-8 encoding via TextEncoder
- * - Calendar name: "Monthly Lunar Cycle 🌒"
- * - Logs write operation with event count and timespan
- * - Early return if event array is empty
- * - Typically contains 12-13 events per year (one phase every ~29.5 days)
- *
- * @see {@link getCalendar} for iCalendar generation
- * @see {@link getOutputPath} for output directory resolution
- *
- * @example
- * ```typescript
- * writeMonthlyLunarCycleEvents({
- *   monthlyLunarCycleEvents: events,
- *   start: new Date('2026-01-01'),
- *   end: new Date('2026-12-31')
- * }); // Writes monthly-lunar-cycle_2026-01-01T00:00:00Z-2026-12-31T23:59:59Z.ics
- * ```
- */
-export function writeMonthlyLunarCycleEvents(args: {
-  monthlyLunarCycleEvents: Event[];
-  start: Moment;
-  end: Moment;
-}): void {
-  const { monthlyLunarCycleEvents, start, end } = args;
-  if (_.isEmpty(monthlyLunarCycleEvents)) {
-    return;
-  }
-
-  const timespan = `${start.toISOString()}-${end.toISOString()}`;
-  const message = `${monthlyLunarCycleEvents.length} monthly lunar cycle events from ${timespan}`;
-  console.log(`🌒 Writing ${message}`);
-
-  const ingressCalendar = getCalendar({
-    events: monthlyLunarCycleEvents,
-    name: "Monthly Lunar Cycle 🌒",
-  });
-  fs.writeFileSync(
-    getOutputPath(`monthly-lunar-cycle_${timespan}.ics`),
-    new TextEncoder().encode(ingressCalendar),
-  );
-
-  console.log(`🌒 Wrote ${message}`);
-}
 
 // #region 🕑 Progressive Events
 

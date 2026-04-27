@@ -8,6 +8,8 @@
 
 import {
   angleByAspect,
+  aspects,
+  bodies,
   majorAspects,
   minorAspects,
   orbByAspect,
@@ -15,7 +17,8 @@ import {
 } from "../../constants";
 import { getAngle } from "../../math.utilities";
 
-import type { Aspect, AspectPhase } from "../../types";
+import type { Event } from "../../calendar.utilities";
+import type { Aspect, AspectPhase, Body } from "../../types";
 
 /**
  * Determines if two celestial bodies form a specific aspect within orb tolerance.
@@ -393,3 +396,93 @@ export const getMinorAspectPhase = getIsAspect([...minorAspects]);
  * @see {@link getSpecialtyAspectEvents} for event generation using this detector
  */
 export const getSpecialtyAspectPhase = getIsAspect([...specialtyAspects]);
+
+/**
+ * Represents an active aspect between two celestial bodies at a specific moment.
+ */
+export interface AspectBodies {
+  aspect: Aspect;
+  bodies: [Body, Body];
+}
+
+function makeKey(body1: Body, body2: Body, aspect: Aspect): string {
+  const [sortedBody1, sortedBody2] = [body1, body2].toSorted();
+  return `${sortedBody1}\u001F${sortedBody2}\u001F${aspect}`;
+}
+
+/**
+ * Computes the set of active aspects after applying a batch of perfective events
+ * to a previous aspect state.
+ *
+ * Parses each event's categories to determine whether it marks the forming or
+ * dissolving of a two-body aspect, then adds or removes the corresponding
+ * entry. Events for patterns other than simple aspects are ignored.
+ *
+ * @param previousAspectBodies - The active aspects before this event batch
+ * @param events - Perfective events emitted during the current processing window
+ * @returns The updated set of active aspects after applying all events
+ */
+export function computeAspectBodies(
+  previousAspectBodies: AspectBodies[],
+  events: Event[],
+): AspectBodies[] {
+  const map = new Map<string, AspectBodies>(
+    previousAspectBodies.map((ab) => [makeKey(ab.bodies[0], ab.bodies[1], ab.aspect), ab]),
+  );
+
+  const lowercaseBodies = bodies.map((body) => body.toLowerCase());
+
+  for (const event of events) {
+    const normalizedCategories = event.categories.map((category) =>
+      category.toLowerCase().trim(),
+    );
+
+    if (!normalizedCategories.includes("simple aspect")) {
+      continue;
+    }
+
+    const isForming = normalizedCategories.includes("forming");
+    const isDissolving = normalizedCategories.includes("dissolving");
+
+    if (!isForming && !isDissolving) {
+      continue;
+    }
+
+    const eventBodies: Body[] = [];
+    for (const category of normalizedCategories) {
+      const bodyIndex = lowercaseBodies.indexOf(category);
+      if (bodyIndex !== -1) {
+        const body = bodies[bodyIndex];
+        if (body) {
+          eventBodies.push(body);
+        }
+      }
+    }
+
+    if (eventBodies.length !== 2) {
+      continue;
+    }
+
+    const aspect = normalizedCategories.find((category) =>
+      aspects.includes(category as Aspect),
+    ) as Aspect | undefined;
+
+    if (!aspect) {
+      continue;
+    }
+
+    const [body1, body2] = eventBodies as [Body, Body];
+    const key = makeKey(body1, body2, aspect);
+
+    if (isDissolving) {
+      map.delete(key);
+      continue;
+    }
+
+    if (!map.has(key)) {
+      map.set(key, { aspect, bodies: [body1, body2] });
+    }
+  }
+
+  return [...map.values()];
+}

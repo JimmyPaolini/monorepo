@@ -78,7 +78,7 @@ describe("phases.events integration", () => {
       });
 
       const events = getVenusianPhaseEvents({
-        currentMinute,
+        minute: currentMinute,
         venusCoordinateEphemeris: venusEphemeris,
         venusDistanceEphemeris: venusEphemeris,
         venusIlluminationEphemeris: venusEphemeris,
@@ -113,7 +113,7 @@ describe("phases.events integration", () => {
       });
 
       const events = getVenusianPhaseEvents({
-        currentMinute,
+        minute: currentMinute,
         venusCoordinateEphemeris: venusEphemeris,
         venusDistanceEphemeris: venusEphemeris,
         venusIlluminationEphemeris: venusEphemeris,
@@ -145,7 +145,7 @@ describe("phases.events integration", () => {
       });
 
       const events = getVenusianPhaseEvents({
-        currentMinute,
+        minute: currentMinute,
         venusCoordinateEphemeris: venusEphemeris,
         venusDistanceEphemeris: venusEphemeris,
         venusIlluminationEphemeris: venusEphemeris,
@@ -192,7 +192,7 @@ describe("phases.events integration", () => {
       });
 
       const events = getMercurianPhaseEvents({
-        currentMinute,
+        minute: currentMinute,
         mercuryCoordinateEphemeris: mercuryEphemeris,
         mercuryDistanceEphemeris: mercuryEphemeris,
         mercuryIlluminationEphemeris: mercuryEphemeris,
@@ -224,7 +224,7 @@ describe("phases.events integration", () => {
       });
 
       const events = getMercurianPhaseEvents({
-        currentMinute,
+        minute: currentMinute,
         mercuryCoordinateEphemeris: mercuryEphemeris,
         mercuryDistanceEphemeris: mercuryEphemeris,
         mercuryIlluminationEphemeris: mercuryEphemeris,
@@ -256,7 +256,7 @@ describe("phases.events integration", () => {
       });
 
       const events = getMercurianPhaseEvents({
-        currentMinute,
+        minute: currentMinute,
         mercuryCoordinateEphemeris: mercuryEphemeris,
         mercuryDistanceEphemeris: mercuryEphemeris,
         mercuryIlluminationEphemeris: mercuryEphemeris,
@@ -301,7 +301,7 @@ describe("phases.events integration", () => {
       });
 
       const events = getMartianPhaseEvents({
-        currentMinute,
+        minute: currentMinute,
         marsCoordinateEphemeris: marsEphemeris,
         marsDistanceEphemeris: marsEphemeris,
         marsIlluminationEphemeris: marsEphemeris,
@@ -333,7 +333,7 @@ describe("phases.events integration", () => {
       });
 
       const events = getMartianPhaseEvents({
-        currentMinute,
+        minute: currentMinute,
         marsCoordinateEphemeris: marsEphemeris,
         marsDistanceEphemeris: marsEphemeris,
         marsIlluminationEphemeris: marsEphemeris,
@@ -363,7 +363,7 @@ describe("phases.events integration", () => {
       });
 
       const events = getMartianPhaseEvents({
-        currentMinute,
+        minute: currentMinute,
         marsCoordinateEphemeris: marsEphemeris,
         marsDistanceEphemeris: marsEphemeris,
         marsIlluminationEphemeris: marsEphemeris,
@@ -472,7 +472,7 @@ describe("phases.events integration", () => {
       >;
 
       const events = getPlanetaryPhaseEvents({
-        currentMinute,
+        minute: currentMinute,
         coordinateEphemerisByBody: mockCoordinateEphemeris,
         distanceEphemerisByBody: mockDistanceEphemeris,
         illuminationEphemerisByBody: mockIlluminationEphemeris,
@@ -529,7 +529,7 @@ describe("phases.events integration", () => {
       });
 
       const events = getPlanetaryPhaseEvents({
-        currentMinute,
+        minute: currentMinute,
         coordinateEphemerisByBody: {
           sun: sunEphemeris,
           mercury: mercuryEphemeris,
@@ -578,7 +578,7 @@ describe("phases.events integration", () => {
       });
 
       const events = getPlanetaryPhaseEvents({
-        currentMinute,
+        minute: currentMinute,
         coordinateEphemerisByBody: {
           sun: neutralEphemeris,
           mercury: neutralEphemeris,
@@ -632,7 +632,7 @@ describe("phases.events integration", () => {
       });
 
       const events = getVenusianPhaseEvents({
-        currentMinute,
+        minute: currentMinute,
         venusCoordinateEphemeris: venusEphemeris,
         venusDistanceEphemeris: venusEphemeris,
         venusIlluminationEphemeris: venusEphemeris,
@@ -673,7 +673,7 @@ describe("phases.events integration", () => {
       });
 
       const events = getVenusianPhaseEvents({
-        currentMinute,
+        minute: currentMinute,
         venusCoordinateEphemeris: venusEphemeris,
         venusDistanceEphemeris: venusEphemeris,
         venusIlluminationEphemeris: venusEphemeris,
@@ -700,7 +700,7 @@ describe("phases.events integration", () => {
       });
 
       const events = getMartianPhaseEvents({
-        currentMinute,
+        minute: currentMinute,
         marsCoordinateEphemeris: marsEphemeris,
         marsDistanceEphemeris: marsEphemeris,
         marsIlluminationEphemeris: marsEphemeris,

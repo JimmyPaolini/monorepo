@@ -4,33 +4,33 @@ import { describe, expect, it, vi } from "vitest";
 import { MARGIN_MINUTES } from "../../calendar.utilities";
 
 import {
-  buildAphelionEvent,
-  buildAutumnalEquinoxEvent,
-  buildBeltaneEvent,
-  buildEleventhHexadecanEvent,
-  buildFifteenthHexadecanEvent,
-  buildFifthHexadecanEvent,
-  buildFirstHexadecanEvent,
-  buildImbolcEvent,
-  buildLammasEvent,
-  buildNinthHexadecanEvent,
-  buildPerihelionEvent,
-  buildSamhainEvent,
-  buildSeventhHexadecanEvent,
-  buildSummerSolsticeEvent,
-  buildThirdHexadecanEvent,
-  buildThirteenthHexadecanEvent,
-  buildVernalEquinoxEvent,
-  buildWinterSolsticeEvent,
-  getAnnualSolarCycleEvents,
-  getSolarApsisEvents,
-  getSolarApsisProgressiveEvents,
+    buildAphelionEvent,
+    buildAutumnalEquinoxEvent,
+    buildBeltaneEvent,
+    buildEleventhHexadecanEvent,
+    buildFifteenthHexadecanEvent,
+    buildFifthHexadecanEvent,
+    buildFirstHexadecanEvent,
+    buildImbolcEvent,
+    buildLammasEvent,
+    buildNinthHexadecanEvent,
+    buildPerihelionEvent,
+    buildSamhainEvent,
+    buildSeventhHexadecanEvent,
+    buildSummerSolsticeEvent,
+    buildThirdHexadecanEvent,
+    buildThirteenthHexadecanEvent,
+    buildVernalEquinoxEvent,
+    buildWinterSolsticeEvent,
+    getAnnualSolarCycleEvents,
+    getSolarApsisEvents,
+    getSolarApsisProgressiveEvents,
 } from "./annualSolarCycle.events";
 
 import type { Event } from "../../calendar.utilities";
 import type {
-  CoordinateEphemeris,
-  DistanceEphemeris,
+    CoordinateEphemeris,
+    DistanceEphemeris,
 } from "../../ephemeris/ephemeris.types";
 
 vi.mock("fs", () => ({
@@ -291,7 +291,7 @@ describe("annualSolarCycle.events", () => {
 
       const events = getAnnualSolarCycleEvents({
         sunCoordinateEphemeris,
-        currentMinute,
+        minute: currentMinute,
       });
 
       expect(events).toHaveLength(0);
@@ -318,7 +318,7 @@ describe("annualSolarCycle.events", () => {
       );
 
       const events = getSolarApsisEvents({
-        currentMinute,
+        minute: currentMinute,
         sunDistanceEphemeris,
       });
 
@@ -351,7 +351,7 @@ describe("annualSolarCycle.events", () => {
       );
 
       const events = getSolarApsisEvents({
-        currentMinute,
+        minute: currentMinute,
         sunDistanceEphemeris,
       });
 
@@ -380,7 +380,7 @@ describe("annualSolarCycle.events", () => {
       );
 
       const events = getSolarApsisEvents({
-        currentMinute,
+        minute: currentMinute,
         sunDistanceEphemeris,
       });
 
@@ -569,52 +569,4 @@ describe("annualSolarCycle.events", () => {
     });
   });
 
-  describe("writeAnnualSolarCycleEvents", () => {
-    it("should write events to file and database", async () => {
-      const fs = await import("node:fs");
-      // biome-ignore format: oxfmt is the primary formatter
-      const {
-        writeAnnualSolarCycleEvents,
-        buildVernalEquinoxEvent: getVernalEquinoxEvent,
-      } = await import("./annualSolarCycle.events");
-
-      const events = [
-        getVernalEquinoxEvent(moment.utc("2024-03-20T03:06:00.000Z")),
-      ];
-      const start = moment.utc("2024-03-01T00:00:00.000Z");
-      const end = moment.utc("2024-03-31T23:59:59.000Z");
-
-      writeAnnualSolarCycleEvents({
-        annualSolarCycleEvents: events,
-        start,
-        end,
-      });
-
-      expect(fs.default.writeFileSync).toHaveBeenCalled();
-      expect(console.log).toHaveBeenCalledWith(
-        expect.stringContaining("Writing"),
-      );
-      expect(console.log).toHaveBeenCalledWith(
-        expect.stringContaining("Wrote"),
-      );
-    });
-
-    it("should not write when events array is empty", async () => {
-      const fs = await import("node:fs");
-      // biome-ignore format: oxfmt is the primary formatter
-      const { writeAnnualSolarCycleEvents } =
-        await import("./annualSolarCycle.events");
-
-      const start = moment.utc("2024-03-01T00:00:00.000Z");
-      const end = moment.utc("2024-03-31T23:59:59.000Z");
-
-      writeAnnualSolarCycleEvents({
-        annualSolarCycleEvents: [],
-        start,
-        end,
-      });
-
-      expect(fs.default.writeFileSync).not.toHaveBeenCalled();
-    });
-  });
 });

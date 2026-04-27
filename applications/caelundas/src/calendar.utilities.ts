@@ -4,7 +4,7 @@
  * Generates RFC 5545-compliant iCalendar files from caelundas event data.
  *
  * @see {@link https://tools.ietf.org/html/rfc5545} for iCalendar specification
- * @see {@link getCalendar} for main calendar generation function
+ * @see {@link buildCalendarFileContent} for main calendar generation function
  */
 
 import moment, { type Moment } from "moment-timezone";
@@ -19,7 +19,7 @@ export const MARGIN_MINUTES = 30;
  *
  * Defines the structure for astronomical events converted to VEVENT components in iCalendar.
  *
- * @see {@link getEvent} for conversion to VEVENT format
+ * @see {@link buildCalendarFileEventContent} for conversion to VEVENT format
  */
 export interface Event {
   /** Event start time (local timezone). */
@@ -70,7 +70,7 @@ export interface Event {
 /**
  * Parameters for generating a complete iCalendar file.
  */
-export interface GetCalendarParameters {
+export interface BuildCalendarFileContentParameters {
   /** Array of events to include in the calendar. */
   events: Event[];
 
@@ -81,13 +81,13 @@ export interface GetCalendarParameters {
   name: string;
 
   /** Calendar description (optional). */
-  description?: string;
+  description: string;
 
   /**
    * IANA timezone identifier for event times (optional).
    * @remarks Defaults to "America/New_York". Must match timezone used for ephemeris calculations.
    */
-  timezone?: string;
+  timezone: string;
 }
 
 /**
@@ -98,11 +98,11 @@ export interface GetCalendarParameters {
  * @param parameters - Calendar generation configuration
  * @returns Complete iCalendar file content as a string
  *
- * @see {@link getEvent} for individual VEVENT generation
+ * @see {@link buildCalendarFileEventContent} for individual VEVENT generation
  *
  * @example
  * ```typescript
- * const calendar = getCalendar({
+ * const calendar = buildCalendarFileContents({
  *   events: [{
  *     start: new Date('2026-01-21T14:23:00'),
  *     end: new Date('2026-01-21T14:23:00'),
@@ -115,12 +115,12 @@ export interface GetCalendarParameters {
  * });
  * ```
  */
-export function getCalendar(parameters: GetCalendarParameters): string {
+export function buildCalendarFileContent(parameters: BuildCalendarFileContentParameters): string {
   const {
     events,
     name,
-    description = "Astronomical events and celestial phenomena",
-    timezone = "America/New_York",
+    description,
+    timezone,
   } = parameters;
 
   let vcalendar = `BEGIN:VCALENDAR
@@ -138,7 +138,7 @@ X-WR-CALNAME:${name}`;
     vcalendar += `\nX-WR-TIMEZONE:${timezone}\n${getTimezone(timezone)}`;
   }
 
-  vcalendar += `\n${events.map((event) => getEvent(event, timezone)).join("\n")}
+  vcalendar += `\n${events.map((event) => buildCalendarFileEventContent(event, timezone)).join("\n")}
 END:VCALENDAR
 `;
 
@@ -155,9 +155,9 @@ END:VCALENDAR
  * @param timezone - IANA timezone identifier (defaults to "America/New_York")
  * @returns VEVENT component as a string
  *
- * @see {@link getCalendar} for VCALENDAR container generation
+ * @see {@link buildCalendarFileContent} for VCALENDAR container generation
  */
-export function getEvent(event: Event, timezone = "America/New_York"): string {
+export function buildCalendarFileEventContent(event: Event, timezone = "America/New_York"): string {
   const createdAt = moment().format("YYYYMMDDTHHmmss");
   const start = moment.tz(event.start, timezone).format("YYYYMMDDTHHmmss");
   const end = moment.tz(event.end, timezone).format("YYYYMMDDTHHmmss");

@@ -4,8 +4,8 @@ import { getCombinations } from "../../../math.utilities";
 import { symbolByBody, symbolByQuintupleAspect } from "../../../symbols";
 import { quintupleAspectBodies } from "../../../types";
 import {
-  determineCompoundPhaseFromSnapshots,
-  groupAspectsByType,
+    determineCompoundPhaseFromSnapshots,
+    groupAspectsByType,
 } from "../aspects.composition";
 
 import type { Event } from "../../../calendar.utilities";
@@ -143,17 +143,18 @@ function findPentagramPattern(
  * for manifestation and creative expression.
  *
  * @param allEdges - All aspect edges across time for phase detection
- * @param currentMinute - The minute to check for Pentagram patterns
+ * @param minute - The minute to check for Pentagram patterns
  * @returns Array of Pentagram events detected at this minute
  * @see {@link findPentagramPattern} for pattern validation logic
  * @see {@link determineMultiBodyPhase} for phase calculation
  * @see {@link getCombinations} for generating body combinations
  */
-function composePentagrams(
-  currentAspectBodies: AspectBodies[],
-  previousAspectBodies: AspectBodies[],
-  currentMinute: Moment,
-): Event[] {
+function composePentagrams(args: {
+  currentAspectBodies: AspectBodies[];
+  previousAspectBodies: AspectBodies[];
+  minute: Moment;
+}): Event[] {
+  const { currentAspectBodies, previousAspectBodies, minute } = args;
   const events: Event[] = [];
 
   const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
@@ -190,7 +191,7 @@ function composePentagrams(
         currentAspectBodies,
         previousAspectBodies,
         pentagramBodies,
-        currentMinute,
+        minute,
         (edges) => {
           return findPentagramPattern(pentagramBodies, edges) !== null;
         },
@@ -313,21 +314,18 @@ function getQuintupleAspectEvent(params: {
  * configurations in astrology.
  *
  * @param aspectEvents - Previously detected simple aspect events
- * @param currentMinute - The minute to check for quintuple aspect patterns
+ * @param minute - The minute to check for quintuple aspect patterns
  * @returns Array of all detected quintuple aspect events at this minute
  * @see {@link parseAspectEvents} for extracting aspect relationships
  * @see {@link composePentagrams} for Pentagram detection
  */
-export function getQuintupleAspectEvents(
-  currentAspectBodies: AspectBodies[],
-  previousAspectBodies: AspectBodies[],
-  currentMinute: Moment,
-): Event[] {
-  return composePentagrams(
-    currentAspectBodies,
-    previousAspectBodies,
-    currentMinute,
-  );
+export function getQuintupleAspectEvents(args: {
+  currentAspectBodies: AspectBodies[];
+  previousAspectBodies: AspectBodies[];
+  minute: Moment;
+}): Event[] {
+  const { currentAspectBodies, previousAspectBodies, minute } = args;
+  return composePentagrams({ currentAspectBodies, previousAspectBodies, minute });
 }
 
 // #region Progressive Events

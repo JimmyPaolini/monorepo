@@ -1,11 +1,7 @@
-import fs from "node:fs";
-
 import _ from "lodash";
 
-import { type Event, getCalendar } from "../../calendar.utilities";
 import { signs } from "../../constants";
 import { getCoordinateFromEphemeris } from "../../ephemeris/ephemeris.service";
-import { getOutputPath } from "../../output.utilities";
 import { symbolByBody, symbolByDecan, symbolBySign } from "../../symbols";
 import {
   decanIngressBodies,
@@ -20,6 +16,7 @@ import {
   isSignIngress,
 } from "../ingresses/ingresses.utilities";
 
+import type { Event } from "../../calendar.utilities";
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 import type {
   Body,
@@ -44,7 +41,7 @@ const categories = ["Astronomy", "Astrology", "Ingress"];
  *
  * @param args - Configuration object
  * @param coordinateEphemerisByBody - Position data for all tracked bodies
- * @param currentMinute - The specific minute to analyze
+ * @param minute - The specific minute to analyze
  * @returns Array of detected sign ingress events (0-N events per minute)
  * @see {@link isSignIngress} for crossing detection
  * @see {@link getSign} for sign determination
@@ -52,11 +49,11 @@ const categories = ["Astronomy", "Astrology", "Ingress"];
  */
 export function getSignIngressEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
-  currentMinute: Moment;
+  minute: Moment;
 }): Event[] {
-  const { coordinateEphemerisByBody, currentMinute } = args;
+  const { coordinateEphemerisByBody, minute } = args;
 
-  const previousMinute = currentMinute.clone().subtract(1, "minute");
+  const previousMinute = minute.clone().subtract(1, "minute");
 
   const signIngressEvents: Event[] = [];
 
@@ -65,7 +62,7 @@ export function getSignIngressEvents(args: {
 
     const currentLongitude = getCoordinateFromEphemeris(
       coordinateEphemeris,
-      currentMinute.toISOString(),
+      minute.toISOString(),
       "longitude",
     );
     const previousLongitude = getCoordinateFromEphemeris(
@@ -78,7 +75,7 @@ export function getSignIngressEvents(args: {
       continue;
     }
 
-    const date = currentMinute;
+    const date = minute;
     const longitude = currentLongitude;
 
     if (isSignIngress({ currentLongitude, previousLongitude })) {
@@ -127,36 +124,6 @@ export function buildSignIngressEvent(args: {
   return signIngressEvent;
 }
 
-/**
- *
- */
-export function writeSignIngressEvents(args: {
-  end: Moment;
-  signIngressBodies: Body[];
-  signIngressEvents: Event[];
-  start: Moment;
-}): void {
-  const { signIngressEvents, signIngressBodies, start, end } = args;
-  if (_.isEmpty(signIngressEvents)) {
-    return;
-  }
-
-  const timespan = `${start.toISOString()}-${end.toISOString()}`;
-  const message = `${signIngressEvents.length} sign ingress events from ${timespan}`;
-  console.log(`🪧 Writing ${message}`);
-
-  const signIngressBodiesString = signIngressBodies.join(",");
-  const signIngressesCalendar = getCalendar({
-    events: signIngressEvents,
-    name: "Sign Ingresses 🪧",
-  });
-  fs.writeFileSync(
-    getOutputPath(`ingresses_${signIngressBodiesString}_${timespan}.ics`),
-    new TextEncoder().encode(signIngressesCalendar),
-  );
-
-  console.log(`🪧 Wrote ${message}`);
-}
 
 // #region 🔟 Decans
 
@@ -169,18 +136,18 @@ export function writeSignIngressEvents(args: {
  *
  * @param args - Configuration object
  * @param coordinateEphemerisByBody - Position data for all tracked bodies
- * @param currentMinute - The specific minute to analyze
+ * @param minute - The specific minute to analyze
  * @returns Array of detected decan ingress events
  * @see {@link isDecanIngress} for crossing detection
  * @see {@link getDecan} for decan number (1-3) determination
  */
 export function getDecanIngressEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
-  currentMinute: Moment;
+  minute: Moment;
 }): Event[] {
-  const { coordinateEphemerisByBody, currentMinute } = args;
+  const { coordinateEphemerisByBody, minute } = args;
 
-  const previousMinute = currentMinute.clone().subtract(1, "minute");
+  const previousMinute = minute.clone().subtract(1, "minute");
 
   const decanIngressEvents: Event[] = [];
 
@@ -189,7 +156,7 @@ export function getDecanIngressEvents(args: {
 
     const currentLongitude = getCoordinateFromEphemeris(
       coordinateEphemeris,
-      currentMinute.toISOString(),
+      minute.toISOString(),
       "longitude",
     );
     const previousLongitude = getCoordinateFromEphemeris(
@@ -202,7 +169,7 @@ export function getDecanIngressEvents(args: {
       continue;
     }
 
-    const date = currentMinute;
+    const date = minute;
     const longitude = currentLongitude;
 
     if (
@@ -252,36 +219,6 @@ export function buildDecanIngressEvent(args: {
   return decanIngressEvent;
 }
 
-/**
- *
- */
-export function writeDecanIngressEvents(args: {
-  end: Moment;
-  decanIngressBodies: Body[];
-  decanIngressEvents: Event[];
-  start: Moment;
-}): void {
-  const { decanIngressEvents, decanIngressBodies, start, end } = args;
-  if (_.isEmpty(decanIngressEvents)) {
-    return;
-  }
-
-  const timespan = `${start.toISOString()}-${end.toISOString()}`;
-  const message = `${decanIngressEvents.length} decan ingress events from ${timespan}`;
-  console.log(`🔟 Writing ${message}`);
-
-  const decanIngressBodiesString = decanIngressBodies.join(",");
-  const decanIngressesCalendar = getCalendar({
-    events: decanIngressEvents,
-    name: "Decan Ingresses 🔟",
-  });
-  fs.writeFileSync(
-    getOutputPath(`ingresses_${decanIngressBodiesString}_${timespan}.ics`),
-    new TextEncoder().encode(decanIngressesCalendar),
-  );
-
-  console.log(`🔟 Wrote ${message}`);
-}
 
 // #region ⛰️ Peaks
 
@@ -290,11 +227,11 @@ export function writeDecanIngressEvents(args: {
  */
 export function getPeakIngressEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
-  currentMinute: Moment;
+  minute: Moment;
 }): Event[] {
-  const { coordinateEphemerisByBody, currentMinute } = args;
+  const { coordinateEphemerisByBody, minute } = args;
 
-  const previousMinute = currentMinute.clone().subtract(1, "minute");
+  const previousMinute = minute.clone().subtract(1, "minute");
 
   const peakIngressEvents: Event[] = [];
 
@@ -303,7 +240,7 @@ export function getPeakIngressEvents(args: {
 
     const currentLongitude = getCoordinateFromEphemeris(
       coordinateEphemeris,
-      currentMinute.toISOString(),
+      minute.toISOString(),
       "longitude",
     );
     const previousLongitude = getCoordinateFromEphemeris(
@@ -316,7 +253,7 @@ export function getPeakIngressEvents(args: {
       continue;
     }
 
-    const date = currentMinute;
+    const date = minute;
     const longitude = currentLongitude;
 
     if (isPeakIngress({ currentLongitude, previousLongitude })) {
@@ -356,37 +293,6 @@ export function buildPeakIngressEvent(args: {
   };
 
   return peakIngressEvent;
-}
-
-/**
- *
- */
-export function writePeakIngressEvents(args: {
-  end: Moment;
-  peakIngressBodies: Body[];
-  peakIngressEvents: Event[];
-  start: Moment;
-}): void {
-  const { peakIngressEvents, peakIngressBodies, start, end } = args;
-  if (_.isEmpty(peakIngressEvents)) {
-    return;
-  }
-
-  const timespan = `${start.toISOString()}-${end.toISOString()}`;
-  const message = `${peakIngressEvents.length} peak ingress events from ${timespan}`;
-  console.log(`⛰️ Writing ${message}`);
-
-  const peakIngressBodiesString = peakIngressBodies.join(",");
-  const peakIngressesCalendar = getCalendar({
-    events: peakIngressEvents,
-    name: "Peak Ingresses ⛰️",
-  });
-  fs.writeFileSync(
-    getOutputPath(`peak-ingresses_${peakIngressBodiesString}_${timespan}.ics`),
-    new TextEncoder().encode(peakIngressesCalendar),
-  );
-
-  console.log(`⛰️ Wrote ${message}`);
 }
 
 // #region 🕑 Progressive Events

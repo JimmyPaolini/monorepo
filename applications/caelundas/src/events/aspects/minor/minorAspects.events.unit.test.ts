@@ -6,8 +6,7 @@ import { minorAspectBodies } from "../../../types";
 import {
   buildMinorAspectEvent,
   getMinorAspectEvents,
-  getMinorAspectProgressiveEvents,
-  writeMinorAspectEvents,
+  getMinorAspectProgressiveEvents
 } from "./minorAspects.events";
 
 import type { Event } from "../../../calendar.utilities";
@@ -79,7 +78,7 @@ describe("minorAspects.events", () => {
 
       const events = getMinorAspectEvents({
         coordinateEphemerisByBody,
-        currentMinute,
+        minute: currentMinute,
       });
 
       expect(events.length).toBeGreaterThanOrEqual(1);
@@ -118,7 +117,7 @@ describe("minorAspects.events", () => {
 
       const events = getMinorAspectEvents({
         coordinateEphemerisByBody,
-        currentMinute,
+        minute: currentMinute,
       });
 
       const formingSemisquare = events.find(
@@ -167,7 +166,7 @@ describe("minorAspects.events", () => {
 
       const events = getMinorAspectEvents({
         coordinateEphemerisByBody,
-        currentMinute,
+        minute: currentMinute,
       });
 
       const dissolvingQuincunx = events.find(
@@ -212,7 +211,7 @@ describe("minorAspects.events", () => {
 
       const events = getMinorAspectEvents({
         coordinateEphemerisByBody,
-        currentMinute,
+        minute: currentMinute,
       });
 
       expect(events.length).toBeGreaterThanOrEqual(2);
@@ -254,7 +253,7 @@ describe("minorAspects.events", () => {
 
       const events = getMinorAspectEvents({
         coordinateEphemerisByBody,
-        currentMinute,
+        minute: currentMinute,
       });
 
       expect(events).toHaveLength(0);
@@ -284,7 +283,7 @@ describe("minorAspects.events", () => {
 
       const events = getMinorAspectEvents({
         coordinateEphemerisByBody,
-        currentMinute,
+        minute: currentMinute,
       });
 
       const sunMercuryEvents = events.filter(
@@ -404,104 +403,6 @@ describe("minorAspects.events", () => {
       });
 
       expect(event.description).toContain("semisextile");
-    });
-  });
-
-  describe("writeMinorAspectEvents", () => {
-    it("should write events to file and database", async () => {
-      const { default: fs } = await import("node:fs");
-
-      const minorAspectEvents: Event[] = [
-        {
-          start: moment.utc("2024-03-21T12:00:00.000Z"),
-          end: moment.utc("2024-03-21T12:00:00.000Z"),
-          summary: "Sun semisextile Moon",
-          description: "Sun semisextile Moon",
-          categories: ["Minor Aspect"],
-        },
-      ];
-
-      writeMinorAspectEvents({
-        minorAspectEvents,
-        minorAspectBodies: ["sun", "moon"],
-        start: moment.utc("2024-03-21T00:00:00.000Z"),
-        end: moment.utc("2024-03-21T23:59:59.000Z"),
-      });
-
-      expect(fs.writeFileSync).toHaveBeenCalled();
-    });
-
-    it("should not write if events array is empty", async () => {
-      const { default: fs } = await import("node:fs");
-
-      writeMinorAspectEvents({
-        minorAspectEvents: [],
-        minorAspectBodies: ["sun", "moon"],
-        start: moment.utc("2024-03-21T00:00:00.000Z"),
-        end: moment.utc("2024-03-21T23:59:59.000Z"),
-      });
-
-      expect(fs.writeFileSync).not.toHaveBeenCalled();
-    });
-
-    it("should include body names in filename", async () => {
-      const { default: fs } = await import("node:fs");
-
-      const minorAspectEvents: Event[] = [
-        {
-          start: moment.utc("2024-03-21T12:00:00.000Z"),
-          end: moment.utc("2024-03-21T12:00:00.000Z"),
-          summary: "Test",
-          description: "Test",
-          categories: [],
-        },
-      ];
-
-      writeMinorAspectEvents({
-        minorAspectEvents,
-        minorAspectBodies: ["sun", "mercury"],
-        start: moment.utc("2024-03-21T00:00:00.000Z"),
-        end: moment.utc("2024-03-21T23:59:59.000Z"),
-      });
-
-      expect(fs.writeFileSync).toHaveBeenCalled();
-      const callArgs = vi.mocked(fs.writeFileSync).mock.calls[0];
-      if (!callArgs) {
-        throw new Error("callArgs is undefined");
-      }
-      expect(callArgs[0]).toContain("sun,mercury");
-    });
-
-    it("should include date range in filename", async () => {
-      const { default: fs } = await import("node:fs");
-
-      const minorAspectEvents: Event[] = [
-        {
-          start: moment.utc("2024-03-21T12:00:00.000Z"),
-          end: moment.utc("2024-03-21T12:00:00.000Z"),
-          summary: "Test",
-          description: "Test",
-          categories: [],
-        },
-      ];
-
-      const start = moment.utc("2024-03-21T00:00:00.000Z");
-      const end = moment.utc("2024-03-22T00:00:00.000Z");
-
-      writeMinorAspectEvents({
-        minorAspectEvents,
-        minorAspectBodies: ["sun"],
-        start,
-        end,
-      });
-
-      expect(fs.writeFileSync).toHaveBeenCalled();
-      const callArgs = vi.mocked(fs.writeFileSync).mock.calls[0];
-      if (!callArgs) {
-        throw new Error("callArgs is undefined");
-      }
-      expect(callArgs[0]).toContain(start.toISOString());
-      expect(callArgs[0]).toContain(end.toISOString());
     });
   });
 

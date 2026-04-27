@@ -11,8 +11,8 @@
 
 import fs from "node:fs";
 
-import { getCalendar } from "./calendar.utilities";
-import { getAllEvents } from "./events.store";
+import { buildCalendarFileContent } from "./calendar.utilities";
+import { addEvents } from "./events.store";
 import { inputSchema } from "./input.schema";
 import { getOutputPath } from "./output.utilities";
 import { detectPerfectiveEvents } from "./perfective.events";
@@ -26,8 +26,8 @@ function main(): void {
     latitude: process.env["LATITUDE"],
     longitude: process.env["LONGITUDE"],
     timezone: process.env["TIMEZONE"],
-    startDate: process.env["START_DATE"],
-    endDate: process.env["END_DATE"],
+    start: process.env["START_DATE"],
+    end: process.env["END_DATE"],
   });
 
   console.log(`🔭 Processing input:`, JSON.stringify(input));
@@ -44,26 +44,29 @@ function main(): void {
     longitude,
     timezone,
   });
-  console.log(`⏲️ Detected perfective events for timespan ${timespan}`);
+  addEvents(perfectiveEvents);
+  console.log(`⏲️ Detected ${perfectiveEvents.length} perfective events for timespan ${timespan}`);
 
   console.log(
     `⏳ Detecting progressive events from ${perfectiveEvents.length} perfective events for timespan ${timespan}`,
   );
   const progressiveEvents = detectProgressiveEvents(perfectiveEvents);
+  addEvents(progressiveEvents);
   console.log(
     `⏳ Detected ${progressiveEvents.length} progressive events from ${perfectiveEvents.length} perfective events for timespan ${timespan}`,
   );
 
-  const filename = `caelundas_${timespan}.ics`;
-  const allEvents = getAllEvents();
-  console.log(`✏️ Writing ${allEvents.length} events to ${filename}`);
-  const calendar = getCalendar({
-    events: allEvents,
+  const calendarFilename = `caelundas_${timespan}.ics`;
+  const events = [...perfectiveEvents, ...progressiveEvents].toSorted((a, b) => a.start.diff(b.start));
+  console.log(`✏️ Writing ${events.length} events to file "${calendarFilename}"`);
+  const calendarFileContent = buildCalendarFileContent({
+    events,
     name: "Caelundas 🔭",
     description: "Astronomical events and celestial phenomena",
+    timezone,
   });
-  fs.writeFileSync(getOutputPath(filename), new TextEncoder().encode(calendar));
-  console.log(`✏️ Wrote ${allEvents.length} events to ${filename}`);
+  fs.writeFileSync(getOutputPath(calendarFilename), new TextEncoder().encode(calendarFileContent));
+  console.log(`✏️ Wrote ${events.length} events to file "${calendarFilename}"`);
 
   console.log(`🔭 Processed input:`, JSON.stringify(input));
 

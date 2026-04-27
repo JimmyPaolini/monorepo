@@ -2,14 +2,14 @@ import moment from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
 
 import {
-  buildAstronomicalDawnEvent,
-  buildAstronomicalDuskEvent,
-  buildCivilDawnEvent,
-  buildCivilDuskEvent,
-  buildNauticalDawnEvent,
-  buildNauticalDuskEvent,
-  getTwilightEvents,
-  getTwilightProgressiveEvents,
+    buildAstronomicalDawnEvent,
+    buildAstronomicalDuskEvent,
+    buildCivilDawnEvent,
+    buildCivilDuskEvent,
+    buildNauticalDawnEvent,
+    buildNauticalDuskEvent,
+    getTwilightEvents,
+    getTwilightProgressiveEvents,
 } from "./twilights.events";
 
 import type { Event } from "../../calendar.utilities";
@@ -35,7 +35,7 @@ describe("twilights.events", () => {
       };
 
       const events = getTwilightEvents({
-        currentMinute,
+        minute: currentMinute,
         sunAzimuthElevationEphemeris,
       });
 
@@ -55,7 +55,7 @@ describe("twilights.events", () => {
       };
 
       const events = getTwilightEvents({
-        currentMinute,
+        minute: currentMinute,
         sunAzimuthElevationEphemeris,
       });
 
@@ -75,7 +75,7 @@ describe("twilights.events", () => {
       };
 
       const events = getTwilightEvents({
-        currentMinute,
+        minute: currentMinute,
         sunAzimuthElevationEphemeris,
       });
 
@@ -95,7 +95,7 @@ describe("twilights.events", () => {
       };
 
       const events = getTwilightEvents({
-        currentMinute,
+        minute: currentMinute,
         sunAzimuthElevationEphemeris,
       });
 
@@ -115,7 +115,7 @@ describe("twilights.events", () => {
       };
 
       const events = getTwilightEvents({
-        currentMinute,
+        minute: currentMinute,
         sunAzimuthElevationEphemeris,
       });
 
@@ -135,7 +135,7 @@ describe("twilights.events", () => {
       };
 
       const events = getTwilightEvents({
-        currentMinute,
+        minute: currentMinute,
         sunAzimuthElevationEphemeris,
       });
 
@@ -155,7 +155,7 @@ describe("twilights.events", () => {
       };
 
       const events = getTwilightEvents({
-        currentMinute,
+        minute: currentMinute,
         sunAzimuthElevationEphemeris,
       });
 
@@ -256,44 +256,6 @@ describe("twilights.events", () => {
       expect(event.categories).toContain("Astronomy");
       expect(event.categories).toContain("Twilight");
       expect(event.categories).toContain("Astronomical Dusk");
-    });
-  });
-
-  describe("writeTwilightEvents", () => {
-    it("should write events to database and file when events array is not empty", async () => {
-      const { default: fs } = await import("node:fs");
-
-      const events: Event[] = [
-        {
-          start: moment.utc("2024-03-21T06:00:00.000Z"),
-          end: moment.utc("2024-03-21T06:00:00.000Z"),
-          summary: "🌄 Civil Dawn",
-          description: "Civil Dawn",
-          categories: ["Astronomy", "Astrology", "Twilight", "Civil Dawn"],
-        },
-      ];
-
-      const { writeTwilightEvents } = await import("./twilights.events");
-      writeTwilightEvents({
-        twilightEvents: events,
-        start: moment.utc("2024-01-01"),
-        end: moment.utc("2024-12-31"),
-      });
-
-      expect(fs.writeFileSync).toHaveBeenCalled();
-    });
-
-    it("should not write if events array is empty", async () => {
-      const { default: fs } = await import("node:fs");
-
-      const { writeTwilightEvents } = await import("./twilights.events");
-      writeTwilightEvents({
-        twilightEvents: [],
-        start: moment.utc("2024-01-01"),
-        end: moment.utc("2024-12-31"),
-      });
-
-      expect(fs.writeFileSync).not.toHaveBeenCalled();
     });
   });
 

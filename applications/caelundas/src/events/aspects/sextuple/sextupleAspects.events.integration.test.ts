@@ -64,11 +64,11 @@ describe("sextupleAspects.events integration", () => {
         { bodies: ["saturn", "sun"], aspect: "sextile" },
       ];
 
-      const events = getSextupleAspectEvents(
+      const events = getSextupleAspectEvents({
         currentAspectBodies,
         previousAspectBodies,
-        currentMinute,
-      );
+        minute: currentMinute,
+        });
 
       expect(events).toHaveLength(1);
       expect(events[0]).toBeDefined();
@@ -126,11 +126,11 @@ describe("sextupleAspects.events integration", () => {
         { bodies: ["saturn", "sun"], aspect: "sextile" },
       ];
 
-      const events = getSextupleAspectEvents(
+      const events = getSextupleAspectEvents({
         currentAspectBodies,
         previousAspectBodies,
-        currentMinute,
-      );
+        minute: currentMinute,
+        });
 
       expect(events).toHaveLength(1);
       expect(events[0]).toBeDefined();
@@ -248,11 +248,11 @@ describe("sextupleAspects.events integration", () => {
         { bodies: ["pluto", "mars"], aspect: "sextile" },
       ];
 
-      const events = getSextupleAspectEvents(
+      const events = getSextupleAspectEvents({
         currentAspectBodies,
         previousAspectBodies,
-        currentMinute,
-      );
+        minute: currentMinute,
+        });
 
       expect(events).toHaveLength(1);
       expect(events[0]).toBeDefined();
@@ -291,11 +291,11 @@ describe("sextupleAspects.events integration", () => {
       const currentAspectBodies = edges;
       const previousAspectBodies = edges;
 
-      const events = getSextupleAspectEvents(
+      const events = getSextupleAspectEvents({
         currentAspectBodies,
         previousAspectBodies,
-        currentMinute,
-      );
+        minute: currentMinute,
+        });
 
       expect(events).toHaveLength(0);
     });
@@ -323,11 +323,11 @@ describe("sextupleAspects.events integration", () => {
       const currentAspectBodies = edges;
       const previousAspectBodies = edges;
 
-      const events = getSextupleAspectEvents(
+      const events = getSextupleAspectEvents({
         currentAspectBodies,
         previousAspectBodies,
-        currentMinute,
-      );
+        minute: currentMinute,
+        });
 
       expect(events).toHaveLength(0);
     });

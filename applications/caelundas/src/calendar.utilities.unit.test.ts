@@ -3,12 +3,12 @@ import { describe, expect, it } from "vitest";
 
 import { mockDates } from "../testing/mocks";
 
-import { type Event, getCalendar, getEvent } from "./calendar.utilities";
+import { buildCalendarFileContent, buildCalendarFileEventContent, type Event } from "./calendar.utilities";
 
 describe("calendar.utilities", () => {
   mockDates();
 
-  describe("getEvent", () => {
+  describe("buildCalendarFileEventContent", () => {
     const baseEvent: Event = {
       start: moment.utc("2025-03-20T09:06:00Z"),
       end: moment.utc("2025-03-20T09:06:00Z"),
@@ -18,7 +18,7 @@ describe("calendar.utilities", () => {
     };
 
     it("should generate valid VEVENT structure", () => {
-      const vevent = getEvent(baseEvent);
+      const vevent = buildCalendarFileEventContent(baseEvent);
 
       expect(vevent).toContain("BEGIN:VEVENT");
       expect(vevent).toContain("END:VEVENT");
@@ -41,7 +41,7 @@ describe("calendar.utilities", () => {
         ...baseEvent,
         location: "Philadelphia, PA",
       };
-      const vevent = getEvent(eventWithLocation);
+      const vevent = buildCalendarFileEventContent(eventWithLocation);
 
       expect(vevent).toContain("LOCATION:Philadelphia, PA");
     });
@@ -51,7 +51,7 @@ describe("calendar.utilities", () => {
         ...baseEvent,
         geography: { latitude: 39.9526, longitude: -75.1652 },
       };
-      const vevent = getEvent(eventWithGeo);
+      const vevent = buildCalendarFileEventContent(eventWithGeo);
 
       expect(vevent).toContain("GEO:39.9526;-75.1652");
     });
@@ -61,7 +61,7 @@ describe("calendar.utilities", () => {
         ...baseEvent,
         url: "https://example.com/event",
       };
-      const vevent = getEvent(eventWithUrl);
+      const vevent = buildCalendarFileEventContent(eventWithUrl);
 
       expect(vevent).toContain("URL:https://example.com/event");
     });
@@ -71,7 +71,7 @@ describe("calendar.utilities", () => {
         ...baseEvent,
         priority: 1,
       };
-      const vevent = getEvent(eventWithPriority);
+      const vevent = buildCalendarFileEventContent(eventWithPriority);
 
       expect(vevent).toContain("PRIORITY:1");
     });
@@ -81,13 +81,13 @@ describe("calendar.utilities", () => {
         ...baseEvent,
         color: "red",
       };
-      const vevent = getEvent(eventWithColor);
+      const vevent = buildCalendarFileEventContent(eventWithColor);
 
       expect(vevent).toContain("COLOR:red");
     });
 
     it("should generate unique UID based on event details", () => {
-      const vevent = getEvent(baseEvent);
+      const vevent = buildCalendarFileEventContent(baseEvent);
       const uidMatch = /UID:(.+)/.exec(vevent);
 
       expect(uidMatch).not.toBeNull();
@@ -102,7 +102,7 @@ describe("calendar.utilities", () => {
         ...baseEvent,
         end: moment.utc("2025-04-20T09:06:00Z"),
       };
-      const vevent = getEvent(durationEvent);
+      const vevent = buildCalendarFileEventContent(durationEvent);
 
       // UID should include both start and end when they differ
       const uidMatch = /UID:(.+)/.exec(vevent);
@@ -115,14 +115,14 @@ describe("calendar.utilities", () => {
     });
 
     it("should use provided timezone", () => {
-      const vevent = getEvent(baseEvent, "America/Los_Angeles");
+      const vevent = buildCalendarFileEventContent(baseEvent, "America/Los_Angeles");
 
       expect(vevent).toContain("DTSTART;TZID=America/Los_Angeles:");
       expect(vevent).toContain("DTEND;TZID=America/Los_Angeles:");
     });
   });
 
-  describe("getCalendar", () => {
+  describe("buildCalendarFileContent", () => {
     const sampleEvents: Event[] = [
       {
         start: moment.utc("2025-03-20T09:06:00Z"),
@@ -141,9 +141,11 @@ describe("calendar.utilities", () => {
     ];
 
     it("should generate valid VCALENDAR structure", () => {
-      const calendar = getCalendar({
+      const calendar = buildCalendarFileContent({
         events: sampleEvents,
         name: "Test Calendar",
+        timezone: "America/New_York",
+        description: "A test calendar description",
       });
 
       expect(calendar).toContain("BEGIN:VCALENDAR");
@@ -158,20 +160,22 @@ describe("calendar.utilities", () => {
     });
 
     it("should include calendar description when provided", () => {
-      const calendar = getCalendar({
+      const calendar = buildCalendarFileContent({
         events: sampleEvents,
         name: "Test Calendar",
         description: "A test calendar description",
+        timezone: "America/New_York",
       });
 
       expect(calendar).toContain("X-WR-CALDESC:A test calendar description");
     });
 
     it("should include timezone definition", () => {
-      const calendar = getCalendar({
+      const calendar = buildCalendarFileContent({
         events: sampleEvents,
         name: "Test Calendar",
         timezone: "America/New_York",
+        description: "A test calendar description",
       });
 
       expect(calendar).toContain("X-WR-TIMEZONE:America/New_York");
@@ -181,9 +185,11 @@ describe("calendar.utilities", () => {
     });
 
     it("should include all events", () => {
-      const calendar = getCalendar({
+      const calendar = buildCalendarFileContent({
         events: sampleEvents,
         name: "Test Calendar",
+        timezone: "America/New_York",
+        description: "A test calendar description",
       });
 
       expect(calendar).toContain("SUMMARY:Vernal Equinox");
@@ -193,9 +199,11 @@ describe("calendar.utilities", () => {
     });
 
     it("should handle empty events array", () => {
-      const calendar = getCalendar({
+      const calendar = buildCalendarFileContent({
         events: [],
         name: "Empty Calendar",
+        timezone: "America/New_York",
+        description: "A test calendar description",
       });
 
       expect(calendar).toContain("BEGIN:VCALENDAR");
@@ -204,10 +212,11 @@ describe("calendar.utilities", () => {
     });
 
     it("should include daylight saving time rules for New York", () => {
-      const calendar = getCalendar({
+      const calendar = buildCalendarFileContent({
         events: sampleEvents,
         name: "Test Calendar",
         timezone: "America/New_York",
+        description: "A test calendar description",
       });
 
       expect(calendar).toContain("BEGIN:DAYLIGHT");

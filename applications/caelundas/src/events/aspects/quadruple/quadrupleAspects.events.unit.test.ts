@@ -26,11 +26,11 @@ describe("quadrupleAspects.events", () => {
         ];
         const previousAspectBodies: AspectBodies[] = [];
 
-        const events = getQuadrupleAspectEvents(
+        const events = getQuadrupleAspectEvents({
           currentAspectBodies,
           previousAspectBodies,
-          currentMinute,
-        );
+          minute: currentMinute,
+          });
 
         expect(events.length).toBeGreaterThanOrEqual(1);
         const grandCross = events.find((e) =>
@@ -57,11 +57,11 @@ describe("quadrupleAspects.events", () => {
         ];
         const previousAspectBodies: AspectBodies[] = [];
 
-        const events = getQuadrupleAspectEvents(
+        const events = getQuadrupleAspectEvents({
           currentAspectBodies,
           previousAspectBodies,
-          currentMinute,
-        );
+          minute: currentMinute,
+          });
 
         expect(events.length).toBeGreaterThanOrEqual(1);
         const grandCross = events.find((e) =>
@@ -84,11 +84,11 @@ describe("quadrupleAspects.events", () => {
           { bodies: ["moon", "jupiter"], aspect: "square" },
         ];
 
-        const events = getQuadrupleAspectEvents(
+        const events = getQuadrupleAspectEvents({
           currentAspectBodies,
           previousAspectBodies,
-          currentMinute,
-        );
+          minute: currentMinute,
+          });
 
         expect(events.length).toBeGreaterThanOrEqual(1);
         const grandCross = events.find((e) =>
@@ -108,11 +108,11 @@ describe("quadrupleAspects.events", () => {
         ];
         const previousAspectBodies: AspectBodies[] = [];
 
-        const events = getQuadrupleAspectEvents(
+        const events = getQuadrupleAspectEvents({
           currentAspectBodies,
           previousAspectBodies,
-          currentMinute,
-        );
+          minute: currentMinute,
+          });
 
         const grandCross = events.find((e) =>
           e.categories.includes("Grand Cross"),
@@ -135,11 +135,11 @@ describe("quadrupleAspects.events", () => {
         ];
         const previousAspectBodies: AspectBodies[] = [];
 
-        const events = getQuadrupleAspectEvents(
+        const events = getQuadrupleAspectEvents({
           currentAspectBodies,
           previousAspectBodies,
-          currentMinute,
-        );
+          minute: currentMinute,
+          });
 
         expect(events.length).toBeGreaterThanOrEqual(1);
         const kite = events.find((e) => e.categories.includes("Kite"));
@@ -163,11 +163,11 @@ describe("quadrupleAspects.events", () => {
         ];
         const previousAspectBodies: AspectBodies[] = [];
 
-        const events = getQuadrupleAspectEvents(
+        const events = getQuadrupleAspectEvents({
           currentAspectBodies,
           previousAspectBodies,
-          currentMinute,
-        );
+          minute: currentMinute,
+          });
 
         const kite = events.find((e) => e.categories.includes("Kite"));
         expect(kite).toBeUndefined();
@@ -176,7 +176,7 @@ describe("quadrupleAspects.events", () => {
 
     it("should handle empty stored aspects", () => {
       const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
-      const events = getQuadrupleAspectEvents([], [], currentMinute);
+      const events = getQuadrupleAspectEvents({ currentAspectBodies: [], previousAspectBodies: [], minute: currentMinute });
       expect(events.length).toBe(0);
     });
 
@@ -187,11 +187,11 @@ describe("quadrupleAspects.events", () => {
       const currentAspectBodies: AspectBodies[] = [];
       const previousAspectBodies: AspectBodies[] = [];
 
-      const events = getQuadrupleAspectEvents(
+      const events = getQuadrupleAspectEvents({
         currentAspectBodies,
         previousAspectBodies,
-        currentMinute,
-      );
+        minute: currentMinute,
+        });
       expect(events.length).toBe(0);
     });
 
@@ -215,11 +215,11 @@ describe("quadrupleAspects.events", () => {
         { bodies: ["moon", "jupiter"], aspect: "square" },
       ];
 
-      const events = getQuadrupleAspectEvents(
+      const events = getQuadrupleAspectEvents({
         currentAspectBodies,
         previousAspectBodies,
-        currentMinute,
-      );
+        minute: currentMinute,
+        });
 
       // No events - pattern exists in prev/current/next minutes
       expect(events.length).toBe(0);

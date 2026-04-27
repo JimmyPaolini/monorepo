@@ -1,11 +1,5 @@
-import fs from "node:fs";
-
-import _ from "lodash";
-
-import { getCalendar } from "../../calendar.utilities";
 import { getAzimuthElevationFromEphemeris } from "../../ephemeris/ephemeris.service";
 import { isMaximum, isMinimum } from "../../math.utilities";
-import { getOutputPath } from "../../output.utilities";
 
 import { isRise, isSet } from "./dailyCycle.utilities";
 
@@ -42,19 +36,19 @@ const categories = ["Astronomy", "Astrology", "Daily Lunar Cycle", "Lunar"];
  * ```
  */
 export function getDailyLunarCycleEvents(args: {
-  currentMinute: Moment;
+  minute: Moment;
   moonAzimuthElevationEphemeris: AzimuthElevationEphemeris;
 }): Event[] {
-  const { currentMinute, moonAzimuthElevationEphemeris } = args;
+  const { minute, moonAzimuthElevationEphemeris } = args;
 
   const dailyLunarCycleEvents: Event[] = [];
 
-  const previousMinute = currentMinute.clone().subtract(1, "minute");
-  const nextMinute = currentMinute.clone().add(1, "minute");
+  const previousMinute = minute.clone().subtract(1, "minute");
+  const nextMinute = minute.clone().add(1, "minute");
 
   const currentElevation = getAzimuthElevationFromEphemeris(
     moonAzimuthElevationEphemeris,
-    currentMinute.toISOString(),
+    minute.toISOString(),
     "elevation",
   );
   const previousElevation = getAzimuthElevationFromEphemeris(
@@ -76,7 +70,7 @@ export function getDailyLunarCycleEvents(args: {
     previous: previousElevation,
     next: nextElevation,
   };
-  const date = currentMinute;
+  const date = minute;
 
   if (isRise({ ...elevations })) {
     dailyLunarCycleEvents.push(buildMoonriseEvent(date));
@@ -228,54 +222,4 @@ export function buildLunarNadirEvent(date: Moment): Event {
     categories,
   };
   return lunarNadirEvent;
-}
-
-/**
- * Writes daily lunar cycle events to an iCalendar file.
- *
- * Generates a calendar file containing all moonrise, moonset, zenith, and nadir
- * events for the specified date range. The output file is named with the timespan
- * and written to the configured output directory.
- *
- * @param args - Configuration object
- * @param dailyLunarCycleEvents - Array of lunar cycle events to write
- * @param start - Start date of the event range
- * @param end - End date of the event range
- * @returns void - Writes to filesystem
- * @see {@link getCalendar} for iCal generation
- * @see {@link getOutputPath} for output directory resolution
- *
- * @example
- * ```typescript
- * writeDailyLunarCycleEvents({
- *   dailyLunarCycleEvents: events,
- *   start: new Date('2025-01-01'),
- *   end: new Date('2025-12-31')
- * });
- * // Writes: daily-lunar-cycle_2025-01-01T00:00:00.000Z-2025-12-31T23:59:59.999Z.ics
- * ```
- */
-export function writeDailyLunarCycleEvents(args: {
-  dailyLunarCycleEvents: Event[];
-  start: Moment;
-  end: Moment;
-}): void {
-  const { dailyLunarCycleEvents, start, end } = args;
-  if (_.isEmpty(dailyLunarCycleEvents)) {
-    return;
-  }
-  const timespan = `${start.toISOString()}-${end.toISOString()}`;
-  const message = `${dailyLunarCycleEvents.length} daily lunar cycle events from ${timespan}`;
-  console.log(`🌙 Writing ${message}`);
-
-  const ingressCalendar = getCalendar({
-    events: dailyLunarCycleEvents,
-    name: "Daily Lunar Cycle 🌙",
-  });
-  fs.writeFileSync(
-    getOutputPath(`daily-lunar-cycle_${timespan}.ics`),
-    new TextEncoder().encode(ingressCalendar),
-  );
-
-  console.log(`🌙 Wrote ${message}`);
 }

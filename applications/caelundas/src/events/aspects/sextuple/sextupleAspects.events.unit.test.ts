@@ -38,11 +38,11 @@ describe("sextupleAspects.events", () => {
         const currentAspectBodies = allEdges;
         const previousAspectBodies = allEdges;
 
-        const events = getSextupleAspectEvents(
+        const events = getSextupleAspectEvents({
           currentAspectBodies,
           previousAspectBodies,
-          currentMinute,
-        );
+          minute: currentMinute,
+        });
 
         // Should return no events because pattern exists in prev/current/next (null phase)
         expect(events).toHaveLength(0);
@@ -72,11 +72,11 @@ describe("sextupleAspects.events", () => {
         ];
         const previousAspectBodies: AspectBodies[] = [];
 
-        const events = getSextupleAspectEvents(
+        const events = getSextupleAspectEvents({
           currentAspectBodies,
           previousAspectBodies,
-          currentMinute,
-        );
+          minute: currentMinute,
+        });
 
         // Function should complete without errors
         // Whether hexagram is detected depends on body ordering in combinations
@@ -96,11 +96,11 @@ describe("sextupleAspects.events", () => {
         const currentAspectBodies = edges;
         const previousAspectBodies = edges;
 
-        const events = getSextupleAspectEvents(
+        const events = getSextupleAspectEvents({
           currentAspectBodies,
           previousAspectBodies,
-          currentMinute,
-        );
+          minute: currentMinute,
+        });
 
         expect(events).toHaveLength(0);
       });
@@ -125,11 +125,11 @@ describe("sextupleAspects.events", () => {
         const currentAspectBodies = edges;
         const previousAspectBodies = edges;
 
-        const events = getSextupleAspectEvents(
+        const events = getSextupleAspectEvents({
           currentAspectBodies,
           previousAspectBodies,
-          currentMinute,
-        );
+          minute: currentMinute,
+        });
 
         expect(events).toHaveLength(0);
       });
@@ -147,11 +147,11 @@ describe("sextupleAspects.events", () => {
         const currentAspectBodies = edges;
         const previousAspectBodies = edges;
 
-        const events = getSextupleAspectEvents(
+        const events = getSextupleAspectEvents({
           currentAspectBodies,
           previousAspectBodies,
-          currentMinute,
-        );
+          minute: currentMinute,
+        });
 
         expect(events).toHaveLength(0);
       });
@@ -162,11 +162,11 @@ describe("sextupleAspects.events", () => {
         const currentAspectBodies: AspectBodies[] = [];
         const previousAspectBodies: AspectBodies[] = [];
 
-        const events = getSextupleAspectEvents(
+        const events = getSextupleAspectEvents({
           currentAspectBodies,
           previousAspectBodies,
-          currentMinute,
-        );
+          minute: currentMinute,
+        });
 
         expect(events).toHaveLength(0);
       });
@@ -194,11 +194,11 @@ describe("sextupleAspects.events", () => {
         ];
         const previousAspectBodies: AspectBodies[] = [];
 
-        const events = getSextupleAspectEvents(
+        const events = getSextupleAspectEvents({
           currentAspectBodies,
           previousAspectBodies,
-          currentMinute,
-        );
+          minute: currentMinute,
+        });
 
         // Function should complete without errors
         // Whether hexagram is detected depends on body ordering in combinations

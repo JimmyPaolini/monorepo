@@ -4,8 +4,8 @@ import { getCombinations } from "../../../math.utilities";
 import { symbolByBody, symbolBySextupleAspect } from "../../../symbols";
 import { sextupleAspectBodies } from "../../../types";
 import {
-  determineCompoundPhaseFromSnapshots,
-  groupAspectsByType,
+    determineCompoundPhaseFromSnapshots,
+    groupAspectsByType,
 } from "../aspects.composition";
 
 import type { Event } from "../../../calendar.utilities";
@@ -194,17 +194,18 @@ function findHexagramPattern(
  * manifestation. It's also known as the Grand Sextile.
  *
  * @param allEdges - All aspect edges across time for phase detection
- * @param currentMinute - The minute to check for Hexagram patterns
+ * @param minute - The minute to check for Hexagram patterns
  * @returns Array of Hexagram events detected at this minute
  * @see {@link findHexagramPattern} for pattern validation logic
  * @see {@link determineMultiBodyPhase} for phase calculation
  * @see {@link getCombinations} for generating body combinations
  */
-function composeHexagrams(
-  currentAspectBodies: AspectBodies[],
-  previousAspectBodies: AspectBodies[],
-  currentMinute: Moment,
-): Event[] {
+function composeHexagrams(args: {
+  currentAspectBodies: AspectBodies[];
+  previousAspectBodies: AspectBodies[];
+  minute: Moment;
+}): Event[] {
+  const { currentAspectBodies, previousAspectBodies, minute } = args;
   const events: Event[] = [];
 
   const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
@@ -240,7 +241,7 @@ function composeHexagrams(
         currentAspectBodies,
         previousAspectBodies,
         hexagramBodies,
-        currentMinute,
+        minute,
         (edges) => {
           return findHexagramPattern(hexagramBodies, edges) !== null;
         },
@@ -368,21 +369,18 @@ function getSextupleAspectEvent(params: {
  * 6 bodies evenly distributed at 60° intervals with specific aspect relationships.
  *
  * @param aspectEvents - Previously detected simple aspect events
- * @param currentMinute - The minute to check for sextuple aspect patterns
+ * @param minute - The minute to check for sextuple aspect patterns
  * @returns Array of all detected sextuple aspect events at this minute
  * @see {@link parseAspectEvents} for extracting aspect relationships
  * @see {@link composeHexagrams} for Hexagram detection
  */
-export function getSextupleAspectEvents(
-  currentAspectBodies: AspectBodies[],
-  previousAspectBodies: AspectBodies[],
-  currentMinute: Moment,
-): Event[] {
-  return composeHexagrams(
-    currentAspectBodies,
-    previousAspectBodies,
-    currentMinute,
-  );
+export function getSextupleAspectEvents(args: {
+  currentAspectBodies: AspectBodies[];
+  previousAspectBodies: AspectBodies[];
+  minute: Moment;
+}): Event[] {
+  const { currentAspectBodies, previousAspectBodies, minute } = args;
+  return composeHexagrams({ currentAspectBodies, previousAspectBodies, minute });
 }
 
 // #region Progressive Events

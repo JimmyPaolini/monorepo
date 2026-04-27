@@ -1,19 +1,13 @@
-import fs from "node:fs";
-
-import _ from "lodash";
-
-import { getCalendar } from "../../calendar.utilities";
 import { getAzimuthElevationFromEphemeris } from "../../ephemeris/ephemeris.service";
-import { getOutputPath } from "../../output.utilities";
 import { pairProgressiveEvents } from "../../progressive.utilities";
 
 import {
-  isAstronomicalDawn,
-  isAstronomicalDusk,
-  isCivilDawn,
-  isCivilDusk,
-  isNauticalDawn,
-  isNauticalDusk,
+    isAstronomicalDawn,
+    isAstronomicalDusk,
+    isCivilDawn,
+    isCivilDusk,
+    isNauticalDawn,
+    isNauticalDusk,
 } from "./twilights.utilities";
 
 import type { Event } from "../../calendar.utilities";
@@ -45,18 +39,18 @@ const categories = ["Astronomy", "Astrology", "Twilight"];
  * - Daily rhythm (circadian cycles)
  */
 export function getTwilightEvents(args: {
-  currentMinute: Moment;
+  minute: Moment;
   sunAzimuthElevationEphemeris: AzimuthElevationEphemeris;
 }): Event[] {
-  const { currentMinute, sunAzimuthElevationEphemeris } = args;
+  const { minute, sunAzimuthElevationEphemeris } = args;
 
   const twilightEvents: Event[] = [];
 
-  const previousMinute = currentMinute.clone().subtract(1, "minute");
+  const previousMinute = minute.clone().subtract(1, "minute");
 
   const currentElevation = getAzimuthElevationFromEphemeris(
     sunAzimuthElevationEphemeris,
-    currentMinute.toISOString(),
+    minute.toISOString(),
     "elevation",
   );
   const previousElevation = getAzimuthElevationFromEphemeris(
@@ -66,7 +60,7 @@ export function getTwilightEvents(args: {
   );
 
   const elevations = { currentElevation, previousElevation };
-  const date = currentMinute;
+  const date = minute;
 
   if (isAstronomicalDawn({ ...elevations })) {
     twilightEvents.push(buildAstronomicalDawnEvent(date));
@@ -211,41 +205,6 @@ export function buildAstronomicalDuskEvent(date: Moment): Event {
     categories: [...categories, "Astronomical Dusk"],
   };
   return astronomicalDuskEvent;
-}
-
-/**
- * Writes twilight events to an iCalendar file.
- *
- * @param args - Configuration object
- * @param twilightEvents - Array of twilight events
- * @param start - Start date of event range
- * @param end - End date of event range
- * @see {@link getCalendar} for iCal generation
- */
-export function writeTwilightEvents(args: {
-  twilightEvents: Event[];
-  start: Moment;
-  end: Moment;
-}): void {
-  const { twilightEvents, start, end } = args;
-  if (_.isEmpty(twilightEvents)) {
-    return;
-  }
-
-  const timespan = `${start.toISOString()}-${end.toISOString()}`;
-  const message = `${twilightEvents.length} twilight events from ${timespan}`;
-  console.log(`🌠 Writing ${message}`);
-
-  const ingressCalendar = getCalendar({
-    events: twilightEvents,
-    name: "Twilights 🌠",
-  });
-  fs.writeFileSync(
-    getOutputPath(`twilight_${timespan}.ics`),
-    new TextEncoder().encode(ingressCalendar),
-  );
-
-  console.log(`🌠 Wrote ${message}`);
 }
 
 // #region 🕑 Progressive Events

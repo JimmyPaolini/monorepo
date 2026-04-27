@@ -1,14 +1,10 @@
-import fs from "node:fs";
 
-import _ from "lodash";
 
-import { type Event, getCalendar } from "../../calendar.utilities";
 import {
   getCoordinateFromEphemeris,
   getDistanceFromEphemeris,
 } from "../../ephemeris/ephemeris.service";
 import { isMaximum, isMinimum } from "../../math.utilities";
-import { getOutputPath } from "../../output.utilities";
 import { pairProgressiveEvents } from "../../progressive.utilities";
 
 import {
@@ -30,6 +26,7 @@ import {
   isWinterSolstice,
 } from "./annualSolarCycle.utilities";
 
+import type { Event } from "../../calendar.utilities";
 import type {
   CoordinateEphemeris,
   DistanceEphemeris,
@@ -75,17 +72,17 @@ const categories = ["Astronomy", "Astrology", "Annual Solar Cycle", "Solar"];
  */
 export function getAnnualSolarCycleEvents(args: {
   sunCoordinateEphemeris: CoordinateEphemeris;
-  currentMinute: Moment;
+  minute: Moment;
 }): Event[] {
-  const { sunCoordinateEphemeris: ephemeris, currentMinute } = args;
+  const { sunCoordinateEphemeris: ephemeris, minute } = args;
 
-  const previousMinute = currentMinute.clone().subtract(1, "minute");
+  const previousMinute = minute.clone().subtract(1, "minute");
 
   const annualSolarCycleEvents: Event[] = [];
 
   const currentLongitude = getCoordinateFromEphemeris(
     ephemeris,
-    currentMinute.toISOString(),
+    minute.toISOString(),
     "longitude",
   );
   const previousLongitude = getCoordinateFromEphemeris(
@@ -95,7 +92,7 @@ export function getAnnualSolarCycleEvents(args: {
   );
 
   const longitudes = { currentLongitude, previousLongitude };
-  const date = currentMinute;
+  const date = minute;
 
   if (isVernalEquinox({ ...longitudes })) {
     annualSolarCycleEvents.push(buildVernalEquinoxEvent(date));
@@ -181,19 +178,19 @@ export function getAnnualSolarCycleEvents(args: {
  * ```
  */
 export function getSolarApsisEvents(args: {
-  currentMinute: Moment;
+  minute: Moment;
   sunDistanceEphemeris: DistanceEphemeris;
 }): Event[] {
-  const { currentMinute, sunDistanceEphemeris } = args;
+  const { minute, sunDistanceEphemeris } = args;
 
-  const previousMinute = currentMinute.clone().subtract(1, "minute");
-  const nextMinute = currentMinute.clone().add(1, "minute");
+  const previousMinute = minute.clone().subtract(1, "minute");
+  const nextMinute = minute.clone().add(1, "minute");
 
   const solarApsisEvents: Event[] = [];
 
   const currentDistance = getDistanceFromEphemeris(
     sunDistanceEphemeris,
-    currentMinute.toISOString(),
+    minute.toISOString(),
     "distance",
   );
   const previousDistance = getDistanceFromEphemeris(
@@ -213,7 +210,7 @@ export function getSolarApsisEvents(args: {
     next: nextDistance,
   };
 
-  const date = currentMinute;
+  const date = minute;
 
   if (isMaximum({ ...distances })) {
     solarApsisEvents.push(buildAphelionEvent(date));
@@ -682,44 +679,6 @@ export function buildFifteenthHexadecanEvent(date: Moment): Event {
     categories,
   };
   return fifteenthHexadecanEvent;
-}
-
-/**
- * Writes annual solar cycle events to an iCalendar file.
- *
- * Generates a calendar file containing all solstices, equinoxes, cross-quarter days,
- * and hexadecans for the specified date range.
- *
- * @param args - Configuration object
- * @param annualSolarCycleEvents - Array of events to write
- * @param start - Start date of event range
- * @param end - End date of event range
- * @see {@link getCalendar} for iCal generation
- */
-export function writeAnnualSolarCycleEvents(args: {
-  annualSolarCycleEvents: Event[];
-  start: Moment;
-  end: Moment;
-}): void {
-  const { annualSolarCycleEvents, start, end } = args;
-  if (_.isEmpty(annualSolarCycleEvents)) {
-    return;
-  }
-
-  const timespan = `${start.toISOString()}-${end.toISOString()}`;
-  const message = `${annualSolarCycleEvents.length} annual solar cycle events from ${timespan}`;
-  console.log(`📏 Writing ${message}`);
-
-  const ingressCalendar = getCalendar({
-    events: annualSolarCycleEvents,
-    name: "Annual Solar Cycle 📏",
-  });
-  fs.writeFileSync(
-    getOutputPath(`annual-solar-cycle_${timespan}.ics`),
-    new TextEncoder().encode(ingressCalendar),
-  );
-
-  console.log(`📏 Wrote ${message}`);
 }
 
 // #region 🕑 Progressive Events

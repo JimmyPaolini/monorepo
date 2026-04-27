@@ -1,11 +1,8 @@
-import fs from "node:fs";
 
 import _ from "lodash";
 
-import { type Event, getCalendar } from "../../../calendar.utilities";
 import { specialtyAspects } from "../../../constants";
 import { getCoordinateFromEphemeris } from "../../../ephemeris/ephemeris.service";
-import { getOutputPath } from "../../../output.utilities";
 import { pairProgressiveEvents } from "../../../progressive.utilities";
 import { symbolByBody, symbolBySpecialtyAspect } from "../../../symbols";
 import { specialtyAspectBodies } from "../../../types";
@@ -14,6 +11,7 @@ import {
   getSpecialtyAspectPhase,
 } from "../aspects.utilities";
 
+import type { Event } from "../../../calendar.utilities";
 import type { CoordinateEphemeris } from "../../../ephemeris/ephemeris.types";
 import type {
   AspectPhase,
@@ -39,12 +37,12 @@ import type { Moment } from "moment-timezone";
  */
 export function getSpecialtyAspectEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
-  currentMinute: Moment;
+  minute: Moment;
 }): Event[] {
-  const { coordinateEphemerisByBody, currentMinute } = args;
+  const { coordinateEphemerisByBody, minute } = args;
 
-  const previousMinute = currentMinute.clone().subtract(1, "minute");
-  const nextMinute = currentMinute.clone().add(1, "minute");
+  const previousMinute = minute.clone().subtract(1, "minute");
+  const nextMinute = minute.clone().add(1, "minute");
 
   const specialtyAspectEvents: Event[] = [];
 
@@ -60,12 +58,12 @@ export function getSpecialtyAspectEvents(args: {
 
       const currentLongitudeBody1 = getCoordinateFromEphemeris(
         ephemerisBody1,
-        currentMinute.toISOString(),
+        minute.toISOString(),
         "longitude",
       );
       const currentLongitudeBody2 = getCoordinateFromEphemeris(
         ephemerisBody2,
-        currentMinute.toISOString(),
+        minute.toISOString(),
         "longitude",
       );
       const previousLongitudeBody1 = getCoordinateFromEphemeris(
@@ -101,7 +99,7 @@ export function getSpecialtyAspectEvents(args: {
       if (phase) {
         specialtyAspectEvents.push(
           buildSpecialtyAspectEvent({
-            timestamp: currentMinute,
+            timestamp: minute,
             longitudeBody1: currentLongitudeBody1,
             longitudeBody2: currentLongitudeBody2,
             body1,
@@ -206,51 +204,6 @@ export function buildSpecialtyAspectEvent(args: {
 }
 
 /**
- * Writes specialty aspect events to an iCalendar file.
- *
- * Generates a .ics file in the output directory containing all specialty
- * aspect events for the specified time range. File naming includes
- * the body configuration and timespan for easy identification.
- *
- * @param args - Output parameters
- * @param end - Range end date
- * @param specialtyAspectBodies - Bodies included in aspect detection
- * @param specialtyAspectEvents - Events to write to calendar file
- * @param start - Range start date
- * @see {@link getCalendar} for iCal generation
- * @see {@link getOutputPath} for file path resolution
- */
-export function writeSpecialtyAspectEvents(args: {
-  end: Moment;
-  specialtyAspectBodies: Body[];
-  specialtyAspectEvents: Event[];
-  start: Moment;
-}): void {
-  const { end, specialtyAspectEvents, specialtyAspectBodies, start } = args;
-  if (_.isEmpty(specialtyAspectEvents)) {
-    return;
-  }
-
-  const timespan = `${start.toISOString()}-${end.toISOString()}`;
-  const message = `${specialtyAspectEvents.length} specialty aspect events from ${timespan}`;
-  console.log(`🧮 Writing ${message}`);
-
-  const specialtyAspectBodiesString = specialtyAspectBodies.join(",");
-  const specialtyAspectsCalendar = getCalendar({
-    events: specialtyAspectEvents,
-    name: "Specialty Aspect 🧮",
-  });
-  fs.writeFileSync(
-    getOutputPath(
-      `specialty-aspects_${specialtyAspectBodiesString}_${timespan}.ics`,
-    ),
-    new TextEncoder().encode(specialtyAspectsCalendar),
-  );
-
-  console.log(`🧮 Wrote ${message}`);
-}
-
-/**
  * Converts instantaneous specialty aspect events into progressive events.
  *
  * Pairs forming and dissolving events for the same body-aspect combination
@@ -312,7 +265,7 @@ export function getSpecialtyAspectProgressiveEvents(events: Event[]): Event[] {
 
     progressiveEvents.push(
       ...pairs.map(([beginning, ending]) =>
-        getSpecialtyAspectDurationEvent(beginning, ending),
+        getSpecialtyAspectProgressiveEvent(beginning, ending),
       ),
     );
   }
@@ -320,7 +273,7 @@ export function getSpecialtyAspectProgressiveEvents(events: Event[]): Event[] {
   return progressiveEvents;
 }
 
-function getSpecialtyAspectDurationEvent(
+function getSpecialtyAspectProgressiveEvent(
   beginning: Event,
   ending: Event,
 ): Event {

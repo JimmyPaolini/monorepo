@@ -5,9 +5,9 @@ import { MARGIN_MINUTES } from "../../calendar.utilities";
 import { symbolByLunarPhase } from "../../symbols";
 
 import {
-  buildMonthlyLunarCycleEvent,
-  getMonthlyLunarCycleEvents,
-  getMonthlyLunarCycleProgressiveEvents,
+    buildMonthlyLunarCycleEvent,
+    getMonthlyLunarCycleEvents,
+    getMonthlyLunarCycleProgressiveEvents,
 } from "./monthlyLunarCycle.events";
 
 import type { Event } from "../../calendar.utilities";
@@ -57,7 +57,7 @@ describe("monthlyLunarCycle.events", () => {
       );
 
       const events = getMonthlyLunarCycleEvents({
-        currentMinute,
+        minute: currentMinute,
         moonIlluminationEphemeris,
       });
 
@@ -180,58 +180,6 @@ describe("monthlyLunarCycle.events", () => {
       );
       expect(event.description).toBe("Waning Crescent Moon");
       expect(event.categories).toContain("Waning Crescent");
-    });
-  });
-
-  describe("writeMonthlyLunarCycleEvents", () => {
-    it("should write events to file and database", async () => {
-      const fs = await import("node:fs");
-
-      const events = [
-        buildMonthlyLunarCycleEvent({
-          date: moment.utc("2024-03-10T09:00:00.000Z"),
-          lunarPhase: "new",
-        }),
-      ];
-      const start = moment.utc("2024-03-01T00:00:00.000Z");
-      const end = moment.utc("2024-03-31T23:59:59.000Z");
-
-      // biome-ignore format: oxfmt is the primary formatter
-      const { writeMonthlyLunarCycleEvents } =
-        await import("./monthlyLunarCycle.events");
-
-      writeMonthlyLunarCycleEvents({
-        monthlyLunarCycleEvents: events,
-        start,
-        end,
-      });
-
-      expect(fs.default.writeFileSync).toHaveBeenCalled();
-      expect(console.log).toHaveBeenCalledWith(
-        expect.stringContaining("Writing"),
-      );
-      expect(console.log).toHaveBeenCalledWith(
-        expect.stringContaining("Wrote"),
-      );
-    });
-
-    it("should not write when events array is empty", async () => {
-      const fs = await import("node:fs");
-
-      const start = moment.utc("2024-03-01T00:00:00.000Z");
-      const end = moment.utc("2024-03-31T23:59:59.000Z");
-
-      // biome-ignore format: oxfmt is the primary formatter
-      const { writeMonthlyLunarCycleEvents } =
-        await import("./monthlyLunarCycle.events");
-
-      writeMonthlyLunarCycleEvents({
-        monthlyLunarCycleEvents: [],
-        start,
-        end,
-      });
-
-      expect(fs.default.writeFileSync).not.toHaveBeenCalled();
     });
   });
 

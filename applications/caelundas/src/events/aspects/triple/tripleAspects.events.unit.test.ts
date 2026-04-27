@@ -23,7 +23,7 @@ describe("tripleAspects.events", () => {
           { bodies: ["moon", "mars"], aspect: "square" },
         ];
 
-        const events = getTripleAspectEvents(edges, edges, currentMinute);
+        const events = getTripleAspectEvents({ currentAspectBodies: edges, previousAspectBodies: edges, minute: currentMinute });
 
         // No events generated because pattern exists in both snapshots (stable)
         expect(events.length).toBe(0);
@@ -40,11 +40,11 @@ describe("tripleAspects.events", () => {
         ];
         const previousAspectBodies: AspectBodies[] = [];
 
-        const events = getTripleAspectEvents(
+        const events = getTripleAspectEvents({
           currentAspectBodies,
           previousAspectBodies,
-          currentMinute,
-        );
+          minute: currentMinute,
+          });
 
         expect(events.length).toBeGreaterThanOrEqual(1);
         const tSquare = events.find((e) => e.categories.includes("T Square"));
@@ -63,11 +63,11 @@ describe("tripleAspects.events", () => {
           { bodies: ["moon", "mars"], aspect: "square" },
         ];
 
-        const events = getTripleAspectEvents(
+        const events = getTripleAspectEvents({
           currentAspectBodies,
           previousAspectBodies,
-          currentMinute,
-        );
+          minute: currentMinute,
+          });
 
         expect(events.length).toBeGreaterThanOrEqual(1);
         const tSquare = events.find((e) => e.categories.includes("T Square"));
@@ -84,7 +84,7 @@ describe("tripleAspects.events", () => {
           { bodies: ["sun", "mars"], aspect: "square" },
         ];
 
-        const events = getTripleAspectEvents(edges, edges, currentMinute);
+        const events = getTripleAspectEvents({ currentAspectBodies: edges, previousAspectBodies: edges, minute: currentMinute });
 
         const tSquare = events.find((e) => e.categories.includes("T Square"));
         expect(tSquare).toBeUndefined();
@@ -103,7 +103,7 @@ describe("tripleAspects.events", () => {
           { bodies: ["moon", "venus"], aspect: "quincunx" },
         ];
 
-        const events = getTripleAspectEvents(edges, edges, currentMinute);
+        const events = getTripleAspectEvents({ currentAspectBodies: edges, previousAspectBodies: edges, minute: currentMinute });
 
         // No events generated - pattern exists in both snapshots (stable)
         expect(events.length).toBe(0);
@@ -118,7 +118,7 @@ describe("tripleAspects.events", () => {
           { bodies: ["sun", "venus"], aspect: "quincunx" },
         ];
 
-        const events = getTripleAspectEvents(edges, edges, currentMinute);
+        const events = getTripleAspectEvents({ currentAspectBodies: edges, previousAspectBodies: edges, minute: currentMinute });
 
         const yod = events.find((e) => e.categories.includes("Yod"));
         expect(yod).toBeUndefined();
@@ -137,7 +137,7 @@ describe("tripleAspects.events", () => {
           { bodies: ["moon", "mars"], aspect: "trine" },
         ];
 
-        const events = getTripleAspectEvents(edges, edges, currentMinute);
+        const events = getTripleAspectEvents({ currentAspectBodies: edges, previousAspectBodies: edges, minute: currentMinute });
 
         // No events generated - pattern exists in both snapshots (stable)
         expect(events.length).toBe(0);
@@ -152,7 +152,7 @@ describe("tripleAspects.events", () => {
           { bodies: ["sun", "mars"], aspect: "trine" },
         ];
 
-        const events = getTripleAspectEvents(edges, edges, currentMinute);
+        const events = getTripleAspectEvents({ currentAspectBodies: edges, previousAspectBodies: edges, minute: currentMinute });
 
         const grandTrine = events.find((e) =>
           e.categories.includes("Grand Trine"),
@@ -163,7 +163,7 @@ describe("tripleAspects.events", () => {
 
     it("should handle empty stored aspects", () => {
       const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
-      const events = getTripleAspectEvents([], [], currentMinute);
+      const events = getTripleAspectEvents({ currentAspectBodies: [], previousAspectBodies: [], minute: currentMinute });
       expect(events.length).toBe(0);
     });
 
@@ -171,7 +171,7 @@ describe("tripleAspects.events", () => {
       const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
       // No active aspects at current time — both snapshots empty
-      const events = getTripleAspectEvents([], [], currentMinute);
+      const events = getTripleAspectEvents({ currentAspectBodies: [], previousAspectBodies: [], minute: currentMinute });
       expect(events.length).toBe(0);
     });
 
@@ -190,7 +190,7 @@ describe("tripleAspects.events", () => {
         { bodies: ["jupiter", "saturn"], aspect: "trine" },
       ];
 
-      const events = getTripleAspectEvents(edges, edges, currentMinute);
+      const events = getTripleAspectEvents({ currentAspectBodies: edges, previousAspectBodies: edges, minute: currentMinute });
 
       // No events - both patterns exist in both snapshots (stable)
       expect(events.length).toBe(0);

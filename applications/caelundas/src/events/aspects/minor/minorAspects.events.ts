@@ -1,16 +1,14 @@
-import fs from "node:fs";
 
 import _ from "lodash";
 
-import { type Event, getCalendar } from "../../../calendar.utilities";
 import { minorAspects } from "../../../constants";
 import { getCoordinateFromEphemeris } from "../../../ephemeris/ephemeris.service";
-import { getOutputPath } from "../../../output.utilities";
 import { pairProgressiveEvents } from "../../../progressive.utilities";
 import { symbolByBody, symbolByMinorAspect } from "../../../symbols";
 import { minorAspectBodies } from "../../../types";
 import { getMinorAspect, getMinorAspectPhase } from "../aspects.utilities";
 
+import type { Event } from "../../../calendar.utilities";
 import type { CoordinateEphemeris } from "../../../ephemeris/ephemeris.types";
 import type {
   AspectPhase,
@@ -35,7 +33,7 @@ import type { Moment } from "moment-timezone";
  *
  * @param args - Configuration object
  * @param coordinateEphemerisByBody - Pre-computed ephemeris data for all bodies
- * @param currentMinute - The minute to check for aspect events
+ * @param minute - The minute to check for aspect events
  * @returns Array of calendar events for all detected minor aspects at this minute
  * @see {@link getMinorAspect} for aspect type detection
  * @see {@link getMinorAspectPhase} for phase determination
@@ -43,12 +41,12 @@ import type { Moment } from "moment-timezone";
  */
 export function getMinorAspectEvents(args: {
   coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
-  currentMinute: Moment;
+  minute: Moment;
 }): Event[] {
-  const { coordinateEphemerisByBody, currentMinute } = args;
+  const { coordinateEphemerisByBody, minute } = args;
 
-  const previousMinute = currentMinute.clone().subtract(1, "minute");
-  const nextMinute = currentMinute.clone().add(1, "minute");
+  const previousMinute = minute.clone().subtract(1, "minute");
+  const nextMinute = minute.clone().add(1, "minute");
 
   const minorAspectEvents: Event[] = [];
 
@@ -64,12 +62,12 @@ export function getMinorAspectEvents(args: {
 
       const currentLongitudeBody1 = getCoordinateFromEphemeris(
         ephemerisBody1,
-        currentMinute.toISOString(),
+        minute.toISOString(),
         "longitude",
       );
       const currentLongitudeBody2 = getCoordinateFromEphemeris(
         ephemerisBody2,
-        currentMinute.toISOString(),
+        minute.toISOString(),
         "longitude",
       );
       const previousLongitudeBody1 = getCoordinateFromEphemeris(
@@ -105,7 +103,7 @@ export function getMinorAspectEvents(args: {
       if (phase) {
         minorAspectEvents.push(
           buildMinorAspectEvent({
-            timestamp: currentMinute,
+            timestamp: minute,
             longitudeBody1: currentLongitudeBody1,
             longitudeBody2: currentLongitudeBody2,
             body1,
@@ -204,48 +202,6 @@ export function buildMinorAspectEvent(args: {
   return minorAspectEvent;
 }
 
-/**
- * Writes minor aspect events to an iCalendar file.
- *
- * Generates a .ics file in the output directory containing all minor
- * aspect events for the specified time range. File naming includes
- * the body configuration and timespan for easy identification.
- *
- * @param args - Output parameters
- * @param end - Range end date
- * @param minorAspectBodies - Bodies included in aspect detection
- * @param minorAspectEvents - Events to write to calendar file
- * @param start - Range start date
- * @see {@link getCalendar} for iCal generation
- * @see {@link getOutputPath} for file path resolution
- */
-export function writeMinorAspectEvents(args: {
-  end: Moment;
-  minorAspectBodies: Body[];
-  minorAspectEvents: Event[];
-  start: Moment;
-}): void {
-  const { end, minorAspectEvents, minorAspectBodies, start } = args;
-  if (_.isEmpty(minorAspectEvents)) {
-    return;
-  }
-
-  const timespan = `${start.toISOString()}-${end.toISOString()}`;
-  const message = `${minorAspectEvents.length} minor aspect events from ${timespan}`;
-  console.log(`🖇️ Writing ${message}`);
-
-  const minorAspectBodiesString = minorAspectBodies.join(",");
-  const minorAspectsCalendar = getCalendar({
-    events: minorAspectEvents,
-    name: "Minor Aspect 🖇️",
-  });
-  fs.writeFileSync(
-    getOutputPath(`minor-aspects_${minorAspectBodiesString}_${timespan}.ics`),
-    new TextEncoder().encode(minorAspectsCalendar),
-  );
-
-  console.log(`🖇️ Wrote ${message}`);
-}
 
 /**
  * Converts instantaneous minor aspect events into progressive events.
@@ -309,7 +265,7 @@ export function getMinorAspectProgressiveEvents(events: Event[]): Event[] {
 
     progressiveEvents.push(
       ...pairs.map(([beginning, ending]) =>
-        getMinorAspectDurationEvent(beginning, ending),
+        getMinorAspectProgressiveEvent(beginning, ending),
       ),
     );
   }
@@ -317,7 +273,7 @@ export function getMinorAspectProgressiveEvents(events: Event[]): Event[] {
   return progressiveEvents;
 }
 
-function getMinorAspectDurationEvent(beginning: Event, ending: Event): Event {
+function getMinorAspectProgressiveEvent(beginning: Event, ending: Event): Event {
   const bodiesCapitalized = _.sortBy(
     beginning.categories.filter((category) =>
       minorAspectBodies

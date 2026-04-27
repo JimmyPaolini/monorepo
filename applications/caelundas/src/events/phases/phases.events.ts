@@ -1,51 +1,46 @@
-import fs from "node:fs";
-
 import _ from "lodash";
 
 import {
-  type Event,
-  getCalendar,
-  MARGIN_MINUTES,
+    type Event,
+    MARGIN_MINUTES
 } from "../../calendar.utilities";
 import {
-  getCoordinateFromEphemeris,
-  getDistanceFromEphemeris,
-  getIlluminationFromEphemeris,
+    getCoordinateFromEphemeris,
+    getDistanceFromEphemeris,
+    getIlluminationFromEphemeris,
 } from "../../ephemeris/ephemeris.service";
-import { getOutputPath } from "../../output.utilities";
 import { pairProgressiveEvents } from "../../progressive.utilities";
 import {
-  symbolByMartianPhase,
-  symbolByMercurianPhase,
-  symbolByVenusianPhase,
+    symbolByMartianPhase,
+    symbolByMercurianPhase,
+    symbolByVenusianPhase,
 } from "../../symbols";
 import { planetaryPhaseBodies } from "../../types";
 
 import {
-  isEasternBrightest,
-  isEasternElongation,
-  isEveningRise,
-  isEveningSet,
-  isMorningRise,
-  isMorningSet,
-  isWesternBrightest,
-  isWesternElongation,
+    isEasternBrightest,
+    isEasternElongation,
+    isEveningRise,
+    isEveningSet,
+    isMorningRise,
+    isMorningSet,
+    isWesternBrightest,
+    isWesternElongation,
 } from "./phases.utilities";
 
 import type {
-  CoordinateEphemeris,
-  CoordinateEphemerisBody,
-  DistanceEphemeris,
-  DistanceEphemerisBody,
-  IlluminationEphemeris,
-  IlluminationEphemerisBody,
+    CoordinateEphemeris,
+    CoordinateEphemerisBody,
+    DistanceEphemeris,
+    DistanceEphemerisBody,
+    IlluminationEphemeris,
+    IlluminationEphemerisBody,
 } from "../../ephemeris/ephemeris.types";
 import type {
-  Body,
-  MartianPhase,
-  MercurianPhase,
-  VenusianPhase,
-  VenusianPhaseSymbol,
+    MartianPhase,
+    MercurianPhase,
+    VenusianPhase,
+    VenusianPhaseSymbol,
 } from "../../types";
 import type { Moment } from "moment-timezone";
 
@@ -68,7 +63,7 @@ function formatTimeZoneIso(date: Moment, timezone: string): string {
  * and astrologically (for timing and interpretation).
  *
  * @param args - Detection parameters
- * @param currentMinute - The minute to check for phase events
+ * @param minute - The minute to check for phase events
  * @param coordinateEphemerisByBody - Ephemeris data for all coordinate bodies
  * @param distanceEphemerisByBody - Distance data for inner planets
  * @param illuminationEphemerisByBody - Illumination data for phase calculations
@@ -78,7 +73,7 @@ function formatTimeZoneIso(date: Moment, timezone: string): string {
  * @see {@link getMartianPhaseEvents} for Mars-specific phases
  */
 export function getPlanetaryPhaseEvents(args: {
-  currentMinute: Moment;
+  minute: Moment;
   coordinateEphemerisByBody: Record<
     CoordinateEphemerisBody,
     CoordinateEphemeris
@@ -90,7 +85,7 @@ export function getPlanetaryPhaseEvents(args: {
   >;
 }): Event[] {
   const {
-    currentMinute,
+    minute,
     coordinateEphemerisByBody,
     distanceEphemerisByBody,
     illuminationEphemerisByBody,
@@ -101,7 +96,7 @@ export function getPlanetaryPhaseEvents(args: {
   if (planetaryPhaseBodies.includes("venus")) {
     planetaryPhaseEvents.push(
       ...getVenusianPhaseEvents({
-        currentMinute,
+        minute,
         venusCoordinateEphemeris: coordinateEphemerisByBody.venus,
         venusDistanceEphemeris: distanceEphemerisByBody.venus,
         venusIlluminationEphemeris: illuminationEphemerisByBody.venus,
@@ -113,7 +108,7 @@ export function getPlanetaryPhaseEvents(args: {
   if (planetaryPhaseBodies.includes("mercury")) {
     planetaryPhaseEvents.push(
       ...getMercurianPhaseEvents({
-        currentMinute,
+        minute,
         mercuryCoordinateEphemeris: coordinateEphemerisByBody.mercury,
         mercuryDistanceEphemeris: distanceEphemerisByBody.mercury,
         mercuryIlluminationEphemeris: illuminationEphemerisByBody.mercury,
@@ -125,7 +120,7 @@ export function getPlanetaryPhaseEvents(args: {
   if (planetaryPhaseBodies.includes("mars")) {
     planetaryPhaseEvents.push(
       ...getMartianPhaseEvents({
-        currentMinute,
+        minute,
         marsCoordinateEphemeris: coordinateEphemerisByBody.mars,
         marsDistanceEphemeris: distanceEphemerisByBody.mars,
         marsIlluminationEphemeris: illuminationEphemerisByBody.mars,
@@ -192,7 +187,7 @@ export function buildVenusianPhaseEvent(args: {
  * elongation).
  *
  * @param args - Detection parameters
- * @param currentMinute - The minute to check
+ * @param minute - The minute to check
  * @param venusCoordinateEphemeris - Venus position data
  * @param venusDistanceEphemeris - Venus distance from Earth
  * @param venusIlluminationEphemeris - Venus illumination percentage
@@ -202,41 +197,41 @@ export function buildVenusianPhaseEvent(args: {
  * @see {@link isWesternElongation} for western elongation detection
  */
 export function getVenusianPhaseEvents(args: {
-  currentMinute: Moment;
+  minute: Moment;
   venusCoordinateEphemeris: CoordinateEphemeris;
   venusDistanceEphemeris: DistanceEphemeris;
   venusIlluminationEphemeris: IlluminationEphemeris;
   sunCoordinateEphemeris: CoordinateEphemeris;
 }): Event[] {
   const {
-    currentMinute,
+    minute,
     sunCoordinateEphemeris,
     venusCoordinateEphemeris,
     venusDistanceEphemeris,
     venusIlluminationEphemeris,
   } = args;
 
-  const previousMinute = currentMinute.clone().subtract(1, "minute");
-  const nextMinute = currentMinute.clone().add(1, "minute");
+  const previousMinute = minute.clone().subtract(1, "minute");
+  const nextMinute = minute.clone().add(1, "minute");
 
   const currentLongitudePlanet = getCoordinateFromEphemeris(
     venusCoordinateEphemeris,
-    currentMinute.toISOString(),
+    minute.toISOString(),
     "longitude",
   );
   const currentLongitudeSun = getCoordinateFromEphemeris(
     sunCoordinateEphemeris,
-    currentMinute.toISOString(),
+    minute.toISOString(),
     "longitude",
   );
   const currentIllumination = getIlluminationFromEphemeris(
     venusIlluminationEphemeris,
-    currentMinute.toISOString(),
+    minute.toISOString(),
     "currentIllumination",
   );
   const currentDistance = getDistanceFromEphemeris(
     venusDistanceEphemeris,
-    currentMinute.toISOString(),
+    minute.toISOString(),
     "currentDistance",
   );
 
@@ -254,12 +249,12 @@ export function getVenusianPhaseEvents(args: {
   const previousDistances = Array.from(
     { length: MARGIN_MINUTES },
     (_, marginIndex) => {
-      const minute = currentMinute
+      const m = minute
         .clone()
         .subtract(MARGIN_MINUTES - marginIndex, "minutes");
       return getDistanceFromEphemeris(
         venusDistanceEphemeris,
-        minute.toISOString(),
+        m.toISOString(),
         "previousDistance",
       );
     },
@@ -267,12 +262,12 @@ export function getVenusianPhaseEvents(args: {
   const previousIlluminations = Array.from(
     { length: MARGIN_MINUTES },
     (_, marginIndex) => {
-      const minute = currentMinute
+      const m = minute
         .clone()
         .subtract(MARGIN_MINUTES - marginIndex, "minutes");
       return getIlluminationFromEphemeris(
         venusIlluminationEphemeris,
-        minute.toISOString(),
+        m.toISOString(),
         "previousIllumination",
       );
     },
@@ -291,10 +286,10 @@ export function getVenusianPhaseEvents(args: {
   const nextDistances = Array.from(
     { length: MARGIN_MINUTES },
     (_, marginIndex) => {
-      const minute = currentMinute.clone().add(marginIndex + 1, "minute");
+      const m = minute.clone().add(marginIndex + 1, "minute");
       return getDistanceFromEphemeris(
         venusDistanceEphemeris,
-        minute.toISOString(),
+        m.toISOString(),
         "nextDistance",
       );
     },
@@ -302,10 +297,10 @@ export function getVenusianPhaseEvents(args: {
   const nextIlluminations = Array.from(
     { length: MARGIN_MINUTES },
     (_, marginIndex) => {
-      const minute = currentMinute.clone().add(marginIndex + 1, "minute");
+      const m = minute.clone().add(marginIndex + 1, "minute");
       return getIlluminationFromEphemeris(
         venusIlluminationEphemeris,
-        minute.toISOString(),
+        m.toISOString(),
         "nextIllumination",
       );
     },
@@ -331,7 +326,7 @@ export function getVenusianPhaseEvents(args: {
   if (isMorningRise({ ...params })) {
     venusianPhaseEvents.push(
       buildVenusianPhaseEvent({
-        timestamp: currentMinute,
+        timestamp: minute,
         phase: "morning rise",
       }),
     );
@@ -340,7 +335,7 @@ export function getVenusianPhaseEvents(args: {
   if (isWesternBrightest({ ...params })) {
     venusianPhaseEvents.push(
       buildVenusianPhaseEvent({
-        timestamp: currentMinute,
+        timestamp: minute,
         phase: "western brightest",
       }),
     );
@@ -349,7 +344,7 @@ export function getVenusianPhaseEvents(args: {
   if (isWesternElongation({ ...params })) {
     venusianPhaseEvents.push(
       buildVenusianPhaseEvent({
-        timestamp: currentMinute,
+        timestamp: minute,
         phase: "western elongation",
       }),
     );
@@ -358,7 +353,7 @@ export function getVenusianPhaseEvents(args: {
   if (isMorningSet({ ...params })) {
     venusianPhaseEvents.push(
       buildVenusianPhaseEvent({
-        timestamp: currentMinute,
+        timestamp: minute,
         phase: "morning set",
       }),
     );
@@ -367,7 +362,7 @@ export function getVenusianPhaseEvents(args: {
   if (isEveningRise({ ...params })) {
     venusianPhaseEvents.push(
       buildVenusianPhaseEvent({
-        timestamp: currentMinute,
+        timestamp: minute,
         phase: "evening rise",
       }),
     );
@@ -376,7 +371,7 @@ export function getVenusianPhaseEvents(args: {
   if (isEasternElongation({ ...params })) {
     venusianPhaseEvents.push(
       buildVenusianPhaseEvent({
-        timestamp: currentMinute,
+        timestamp: minute,
         phase: "eastern elongation",
       }),
     );
@@ -385,7 +380,7 @@ export function getVenusianPhaseEvents(args: {
   if (isEasternBrightest({ ...params })) {
     venusianPhaseEvents.push(
       buildVenusianPhaseEvent({
-        timestamp: currentMinute,
+        timestamp: minute,
         phase: "eastern brightest",
       }),
     );
@@ -394,7 +389,7 @@ export function getVenusianPhaseEvents(args: {
   if (isEveningSet({ ...params })) {
     venusianPhaseEvents.push(
       buildVenusianPhaseEvent({
-        timestamp: currentMinute,
+        timestamp: minute,
         phase: "evening set",
       }),
     );
@@ -458,7 +453,7 @@ export function buildMercurianPhaseEvent(args: {
  * phases more frequently than Venus due to its shorter orbital period.
  *
  * @param args - Detection parameters
- * @param currentMinute - The minute to check
+ * @param minute - The minute to check
  * @param mercuryCoordinateEphemeris - Mercury position data
  * @param mercuryDistanceEphemeris - Mercury distance from Earth
  * @param mercuryIlluminationEphemeris - Mercury illumination percentage
@@ -468,41 +463,41 @@ export function buildMercurianPhaseEvent(args: {
  * @see {@link isEasternElongation} for eastern elongation detection
  */
 export function getMercurianPhaseEvents(args: {
-  currentMinute: Moment;
+  minute: Moment;
   mercuryCoordinateEphemeris: CoordinateEphemeris;
   mercuryDistanceEphemeris: DistanceEphemeris;
   mercuryIlluminationEphemeris: IlluminationEphemeris;
   sunCoordinateEphemeris: CoordinateEphemeris;
 }): Event[] {
   const {
-    currentMinute,
+    minute,
     sunCoordinateEphemeris,
     mercuryCoordinateEphemeris,
     mercuryDistanceEphemeris,
     mercuryIlluminationEphemeris,
   } = args;
 
-  const previousMinute = currentMinute.clone().subtract(1, "minute");
-  const nextMinute = currentMinute.clone().add(1, "minute");
+  const previousMinute = minute.clone().subtract(1, "minute");
+  const nextMinute = minute.clone().add(1, "minute");
 
   const currentLongitudePlanet = getCoordinateFromEphemeris(
     mercuryCoordinateEphemeris,
-    currentMinute.toISOString(),
+    minute.toISOString(),
     "longitude",
   );
   const currentLongitudeSun = getCoordinateFromEphemeris(
     sunCoordinateEphemeris,
-    currentMinute.toISOString(),
+    minute.toISOString(),
     "longitude",
   );
   const currentIllumination = getIlluminationFromEphemeris(
     mercuryIlluminationEphemeris,
-    currentMinute.toISOString(),
+    minute.toISOString(),
     "currentIllumination",
   );
   const currentDistance = getDistanceFromEphemeris(
     mercuryDistanceEphemeris,
-    currentMinute.toISOString(),
+    minute.toISOString(),
     "currentDistance",
   );
 
@@ -519,12 +514,12 @@ export function getMercurianPhaseEvents(args: {
   const previousDistances = Array.from(
     { length: MARGIN_MINUTES },
     (_, marginIndex) => {
-      const minute = currentMinute
+      const m = minute
         .clone()
         .subtract(MARGIN_MINUTES - marginIndex, "minutes");
       return getDistanceFromEphemeris(
         mercuryDistanceEphemeris,
-        minute.toISOString(),
+        m.toISOString(),
         "previousDistance",
       );
     },
@@ -532,12 +527,12 @@ export function getMercurianPhaseEvents(args: {
   const previousIlluminations = Array.from(
     { length: MARGIN_MINUTES },
     (_, marginIndex) => {
-      const minute = currentMinute
+      const m = minute
         .clone()
         .subtract(MARGIN_MINUTES - marginIndex, "minutes");
       return getIlluminationFromEphemeris(
         mercuryIlluminationEphemeris,
-        minute.toISOString(),
+        m.toISOString(),
         "previousIllumination",
       );
     },
@@ -556,10 +551,10 @@ export function getMercurianPhaseEvents(args: {
   const nextDistances = Array.from(
     { length: MARGIN_MINUTES },
     (_, marginIndex) => {
-      const minute = currentMinute.clone().add(marginIndex + 1, "minute");
+      const m = minute.clone().add(marginIndex + 1, "minute");
       return getDistanceFromEphemeris(
         mercuryDistanceEphemeris,
-        minute.toISOString(),
+        m.toISOString(),
         "nextDistance",
       );
     },
@@ -567,10 +562,10 @@ export function getMercurianPhaseEvents(args: {
   const nextIlluminations = Array.from(
     { length: MARGIN_MINUTES },
     (_, marginIndex) => {
-      const minute = currentMinute.clone().add(marginIndex + 1, "minute");
+      const m = minute.clone().add(marginIndex + 1, "minute");
       return getIlluminationFromEphemeris(
         mercuryIlluminationEphemeris,
-        minute.toISOString(),
+        m.toISOString(),
         "nextIllumination",
       );
     },
@@ -596,7 +591,7 @@ export function getMercurianPhaseEvents(args: {
   if (isMorningRise({ ...params })) {
     mercurianPhaseEvents.push(
       buildMercurianPhaseEvent({
-        timestamp: currentMinute,
+        timestamp: minute,
         phase: "morning rise",
       }),
     );
@@ -605,7 +600,7 @@ export function getMercurianPhaseEvents(args: {
   if (isWesternBrightest({ ...params })) {
     mercurianPhaseEvents.push(
       buildMercurianPhaseEvent({
-        timestamp: currentMinute,
+        timestamp: minute,
         phase: "western brightest",
       }),
     );
@@ -614,7 +609,7 @@ export function getMercurianPhaseEvents(args: {
   if (isWesternElongation({ ...params })) {
     mercurianPhaseEvents.push(
       buildMercurianPhaseEvent({
-        timestamp: currentMinute,
+        timestamp: minute,
         phase: "western elongation",
       }),
     );
@@ -623,7 +618,7 @@ export function getMercurianPhaseEvents(args: {
   if (isMorningSet({ ...params })) {
     mercurianPhaseEvents.push(
       buildMercurianPhaseEvent({
-        timestamp: currentMinute,
+        timestamp: minute,
         phase: "morning set",
       }),
     );
@@ -632,7 +627,7 @@ export function getMercurianPhaseEvents(args: {
   if (isEveningRise({ ...params })) {
     mercurianPhaseEvents.push(
       buildMercurianPhaseEvent({
-        timestamp: currentMinute,
+        timestamp: minute,
         phase: "evening rise",
       }),
     );
@@ -641,7 +636,7 @@ export function getMercurianPhaseEvents(args: {
   if (isEasternElongation({ ...params })) {
     mercurianPhaseEvents.push(
       buildMercurianPhaseEvent({
-        timestamp: currentMinute,
+        timestamp: minute,
         phase: "eastern elongation",
       }),
     );
@@ -650,7 +645,7 @@ export function getMercurianPhaseEvents(args: {
   if (isEasternBrightest({ ...params })) {
     mercurianPhaseEvents.push(
       buildMercurianPhaseEvent({
-        timestamp: currentMinute,
+        timestamp: minute,
         phase: "eastern brightest",
       }),
     );
@@ -659,7 +654,7 @@ export function getMercurianPhaseEvents(args: {
   if (isEveningSet({ ...params })) {
     mercurianPhaseEvents.push(
       buildMercurianPhaseEvent({
-        timestamp: currentMinute,
+        timestamp: minute,
         phase: "evening set",
       }),
     );
@@ -722,7 +717,7 @@ export function buildMartianPhaseEvent(args: {
  * maxima are calculated since Mars can appear anywhere in the sky.
  *
  * @param args - Detection parameters
- * @param currentMinute - The minute to check
+ * @param minute - The minute to check
  * @param marsCoordinateEphemeris - Mars position data
  * @param marsDistanceEphemeris - Mars distance from Earth
  * @param marsIlluminationEphemeris - Mars illumination percentage
@@ -732,41 +727,41 @@ export function buildMartianPhaseEvent(args: {
  * @see {@link isEveningSet} for evening set detection
  */
 export function getMartianPhaseEvents(args: {
-  currentMinute: Moment;
+  minute: Moment;
   marsCoordinateEphemeris: CoordinateEphemeris;
   marsDistanceEphemeris: DistanceEphemeris;
   marsIlluminationEphemeris: IlluminationEphemeris;
   sunCoordinateEphemeris: CoordinateEphemeris;
 }): Event[] {
   const {
-    currentMinute,
+    minute,
     sunCoordinateEphemeris,
     marsCoordinateEphemeris,
     marsDistanceEphemeris,
     marsIlluminationEphemeris,
   } = args;
 
-  const previousMinute = currentMinute.clone().subtract(1, "minute");
-  const nextMinute = currentMinute.clone().add(1, "minute");
+  const previousMinute = minute.clone().subtract(1, "minute");
+  const nextMinute = minute.clone().add(1, "minute");
 
   const currentLongitudePlanet = getCoordinateFromEphemeris(
     marsCoordinateEphemeris,
-    currentMinute.toISOString(),
+    minute.toISOString(),
     "longitude",
   );
   const currentLongitudeSun = getCoordinateFromEphemeris(
     sunCoordinateEphemeris,
-    currentMinute.toISOString(),
+    minute.toISOString(),
     "longitude",
   );
   const currentIllumination = getIlluminationFromEphemeris(
     marsIlluminationEphemeris,
-    currentMinute.toISOString(),
+    minute.toISOString(),
     "currentIllumination",
   );
   const currentDistance = getDistanceFromEphemeris(
     marsDistanceEphemeris,
-    currentMinute.toISOString(),
+    minute.toISOString(),
     "currentDistance",
   );
 
@@ -783,12 +778,12 @@ export function getMartianPhaseEvents(args: {
   const previousDistances = Array.from(
     { length: MARGIN_MINUTES },
     (_, marginIndex) => {
-      const minute = currentMinute
+      const m = minute
         .clone()
         .subtract(MARGIN_MINUTES - marginIndex, "minutes");
       return getDistanceFromEphemeris(
         marsDistanceEphemeris,
-        minute.toISOString(),
+        m.toISOString(),
         "previousDistance",
       );
     },
@@ -796,12 +791,12 @@ export function getMartianPhaseEvents(args: {
   const previousIlluminations = Array.from(
     { length: MARGIN_MINUTES },
     (_, marginIndex) => {
-      const minute = currentMinute
+      const m = minute
         .clone()
         .subtract(MARGIN_MINUTES - marginIndex, "minutes");
       return getIlluminationFromEphemeris(
         marsIlluminationEphemeris,
-        minute.toISOString(),
+        m.toISOString(),
         "previousIllumination",
       );
     },
@@ -820,10 +815,10 @@ export function getMartianPhaseEvents(args: {
   const nextDistances = Array.from(
     { length: MARGIN_MINUTES },
     (_, marginIndex) => {
-      const minute = currentMinute.clone().add(marginIndex + 1, "minute");
+      const m = minute.clone().add(marginIndex + 1, "minute");
       return getDistanceFromEphemeris(
         marsDistanceEphemeris,
-        minute.toISOString(),
+        m.toISOString(),
         "nextDistance",
       );
     },
@@ -831,10 +826,10 @@ export function getMartianPhaseEvents(args: {
   const nextIlluminations = Array.from(
     { length: MARGIN_MINUTES },
     (_, marginIndex) => {
-      const minute = currentMinute.clone().add(marginIndex + 1, "minute");
+      const m = minute.clone().add(marginIndex + 1, "minute");
       return getIlluminationFromEphemeris(
         marsIlluminationEphemeris,
-        minute.toISOString(),
+        m.toISOString(),
         "nextIllumination",
       );
     },
@@ -860,7 +855,7 @@ export function getMartianPhaseEvents(args: {
   if (isMorningRise({ ...params })) {
     martianPhaseEvents.push(
       buildMartianPhaseEvent({
-        timestamp: currentMinute,
+        timestamp: minute,
         phase: "morning rise",
       }),
     );
@@ -869,7 +864,7 @@ export function getMartianPhaseEvents(args: {
   if (isMorningSet({ ...params })) {
     martianPhaseEvents.push(
       buildMartianPhaseEvent({
-        timestamp: currentMinute,
+        timestamp: minute,
         phase: "morning set",
       }),
     );
@@ -878,7 +873,7 @@ export function getMartianPhaseEvents(args: {
   if (isEveningRise({ ...params })) {
     martianPhaseEvents.push(
       buildMartianPhaseEvent({
-        timestamp: currentMinute,
+        timestamp: minute,
         phase: "evening rise",
       }),
     );
@@ -887,59 +882,13 @@ export function getMartianPhaseEvents(args: {
   if (isEveningSet({ ...params })) {
     martianPhaseEvents.push(
       buildMartianPhaseEvent({
-        timestamp: currentMinute,
+        timestamp: minute,
         phase: "evening set",
       }),
     );
   }
 
   return martianPhaseEvents;
-}
-
-// #region Planetary Phase
-
-/**
- * Writes planetary phase events to an iCalendar file.
- *
- * Generates a .ics file in the output directory containing all planetary
- * phase events for the specified time range and body configuration.
- *
- * @param args - Output parameters
- * @param end - Range end date
- * @param planetaryPhaseBodies - Planets included (venus, mercury, mars)
- * @param planetaryPhaseEvents - Events to write to calendar file
- * @param start - Range start date
- * @see {@link getCalendar} for iCal generation
- * @see {@link getOutputPath} for file path resolution
- */
-export function writePlanetaryPhaseEvents(args: {
-  end: Moment;
-  planetaryPhaseBodies: Extract<Body, "mercury" | "venus" | "mars">[];
-  planetaryPhaseEvents: Event[];
-  start: Moment;
-}): void {
-  const { planetaryPhaseEvents, planetaryPhaseBodies, start, end } = args;
-  if (_.isEmpty(planetaryPhaseEvents)) {
-    return;
-  }
-
-  const timespan = `${start.toISOString()}-${end.toISOString()}`;
-  const message = `${planetaryPhaseEvents.length} planetary phase events from ${timespan}`;
-  console.log(`🌓 Writing ${message}`);
-
-  const planetaryPhasesBodiesString = planetaryPhaseBodies.join(",");
-  const planetaryPhasesCalendar = getCalendar({
-    events: planetaryPhaseEvents,
-    name: "Planetary Phase 🌓",
-  });
-  fs.writeFileSync(
-    getOutputPath(
-      `planetary-phases_${planetaryPhasesBodiesString}_${timespan}.ics`,
-    ),
-    new TextEncoder().encode(planetaryPhasesCalendar),
-  );
-
-  console.log(`🌓 Wrote ${message}`);
 }
 
 // #region 🕑 Progressive Events

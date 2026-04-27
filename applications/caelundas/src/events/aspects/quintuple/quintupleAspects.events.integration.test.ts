@@ -45,11 +45,11 @@ describe("quintupleAspects.events integration", () => {
         { bodies: ["venus", "moon"], aspect: "quintile" },
       ];
 
-      const events = getQuintupleAspectEvents(
+      const events = getQuintupleAspectEvents({
         currentAspectBodies,
         previousAspectBodies,
-        currentMinute,
-      );
+        minute: currentMinute,
+        });
 
       expect(events).toHaveLength(1);
       expect(events[0]?.categories).toContain("Pentagram");
@@ -86,11 +86,11 @@ describe("quintupleAspects.events integration", () => {
         { bodies: ["venus", "moon"], aspect: "quintile" },
       ];
 
-      const events = getQuintupleAspectEvents(
+      const events = getQuintupleAspectEvents({
         currentAspectBodies,
         previousAspectBodies,
-        currentMinute,
-      );
+        minute: currentMinute,
+        });
 
       expect(events).toHaveLength(1);
       expect(events[0]?.categories).toContain("Pentagram");
@@ -184,11 +184,11 @@ describe("quintupleAspects.events integration", () => {
         { bodies: ["jupiter", "uranus"], aspect: "quintile" },
       ];
 
-      const events = getQuintupleAspectEvents(
+      const events = getQuintupleAspectEvents({
         currentAspectBodies,
         previousAspectBodies,
-        currentMinute,
-      );
+        minute: currentMinute,
+        });
 
       expect(events).toHaveLength(1);
       expect(events[0]?.categories).toContain("Pentagram");
@@ -220,11 +220,11 @@ describe("quintupleAspects.events integration", () => {
         { bodies: ["jupiter", "sun"], aspect: "quintile" },
       ];
 
-      const events = getQuintupleAspectEvents(
+      const events = getQuintupleAspectEvents({
         currentAspectBodies,
         previousAspectBodies,
-        currentMinute,
-      );
+        minute: currentMinute,
+        });
 
       expect(events).toHaveLength(0);
     });
@@ -248,11 +248,11 @@ describe("quintupleAspects.events integration", () => {
         { bodies: ["venus", "moon"], aspect: "quintile" },
       ];
 
-      const events = getQuintupleAspectEvents(
+      const events = getQuintupleAspectEvents({
         currentAspectBodies,
         previousAspectBodies,
-        currentMinute,
-      );
+        minute: currentMinute,
+        });
 
       expect(events).toHaveLength(0);
     });

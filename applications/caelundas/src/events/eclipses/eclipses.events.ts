@@ -1,22 +1,22 @@
 import {
-  getAzimuthElevationFromEphemeris,
-  getCoordinateFromEphemeris,
-  getDiameterFromEphemeris,
+    getAzimuthElevationFromEphemeris,
+    getCoordinateFromEphemeris,
+    getDiameterFromEphemeris,
 } from "../../ephemeris/ephemeris.service";
 import { pairProgressiveEvents } from "../../progressive.utilities";
 
 import {
-  isLunarEclipse,
-  isLunarEclipseActive,
-  isSolarEclipse,
-  isSolarEclipseActive,
+    isLunarEclipse,
+    isLunarEclipseActive,
+    isSolarEclipse,
+    isSolarEclipseActive,
 } from "./eclipses.utilities";
 
 import type { Event } from "../../calendar.utilities";
 import type {
-  AzimuthElevationEphemeris,
-  CoordinateEphemeris,
-  DiameterEphemeris,
+    AzimuthElevationEphemeris,
+    CoordinateEphemeris,
+    DiameterEphemeris,
 } from "../../ephemeris/ephemeris.types";
 import type { EclipsePhase } from "../../types";
 import type { Moment } from "moment-timezone";
@@ -36,7 +36,7 @@ function formatTimeZoneIso(date: Moment, timezone: string): string {
  * Solar eclipses occur at new moon (conjunction), lunar eclipses at full moon (opposition).
  *
  * @param args - Configuration object
- * @param currentMinute - The specific minute to analyze
+ * @param minute - The specific minute to analyze
  * @param moonCoordinateEphemeris - Moon position data
  * @param moonDiameterEphemeris - Moon apparent diameter data
  * @param sunCoordinateEphemeris - Sun position data
@@ -51,7 +51,7 @@ function formatTimeZoneIso(date: Moment, timezone: string): string {
  * - Lunar: Penumbral, partial, or total (depends on Earth's shadow depth)
  */
 export function getEclipseEvents(args: {
-  currentMinute: Moment;
+  minute: Moment;
   moonAzimuthElevationEphemeris?: AzimuthElevationEphemeris;
   moonCoordinateEphemeris: CoordinateEphemeris;
   moonDiameterEphemeris: DiameterEphemeris;
@@ -60,7 +60,7 @@ export function getEclipseEvents(args: {
   sunDiameterEphemeris: DiameterEphemeris;
 }): Event[] {
   const {
-    currentMinute,
+    minute,
     moonAzimuthElevationEphemeris,
     moonCoordinateEphemeris,
     moonDiameterEphemeris,
@@ -69,27 +69,27 @@ export function getEclipseEvents(args: {
     sunDiameterEphemeris,
   } = args;
 
-  const previousMinute = currentMinute.clone().subtract(1, "minute");
-  const nextMinute = currentMinute.clone().add(1, "minute");
+  const previousMinute = minute.clone().subtract(1, "minute");
+  const nextMinute = minute.clone().add(1, "minute");
 
   const currentLongitudeMoon = getCoordinateFromEphemeris(
     moonCoordinateEphemeris,
-    currentMinute.toISOString(),
+    minute.toISOString(),
     "longitude",
   );
   const currentLatitudeMoon = getCoordinateFromEphemeris(
     moonCoordinateEphemeris,
-    currentMinute.toISOString(),
+    minute.toISOString(),
     "latitude",
   );
   const currentLongitudeSun = getCoordinateFromEphemeris(
     sunCoordinateEphemeris,
-    currentMinute.toISOString(),
+    minute.toISOString(),
     "longitude",
   );
   const currentLatitudeSun = getCoordinateFromEphemeris(
     sunCoordinateEphemeris,
-    currentMinute.toISOString(),
+    minute.toISOString(),
     "latitude",
   );
 
@@ -137,12 +137,12 @@ export function getEclipseEvents(args: {
 
   const currentDiameterMoon = getDiameterFromEphemeris(
     moonDiameterEphemeris,
-    currentMinute.toISOString(),
+    minute.toISOString(),
     "currentDiameterMoon",
   );
   const currentDiameterSun = getDiameterFromEphemeris(
     sunDiameterEphemeris,
-    currentMinute.toISOString(),
+    minute.toISOString(),
     "currentDiameterSun",
   );
   const nextDiameterMoon = getDiameterFromEphemeris(
@@ -187,7 +187,7 @@ export function getEclipseEvents(args: {
   if (solarEclipsePhase) {
     eclipseEvents.push(
       buildSolarEclipseEvent({
-        date: currentMinute,
+        date: minute,
         frame: "geocentric",
         phase: solarEclipsePhase,
       }),
@@ -197,7 +197,7 @@ export function getEclipseEvents(args: {
   if (lunarEclipsePhase) {
     eclipseEvents.push(
       buildLunarEclipseEvent({
-        date: currentMinute,
+        date: minute,
         frame: "geocentric",
         phase: lunarEclipsePhase,
       }),
@@ -211,7 +211,7 @@ export function getEclipseEvents(args: {
   if (hasTopocentricEphemeris) {
     const currentMoonElevation = getAzimuthElevationFromEphemeris(
       moonAzimuthElevationEphemeris,
-      currentMinute.toISOString(),
+      minute.toISOString(),
       "elevation",
     );
     const previousMoonElevation = getAzimuthElevationFromEphemeris(
@@ -227,7 +227,7 @@ export function getEclipseEvents(args: {
 
     const currentSunElevation = getAzimuthElevationFromEphemeris(
       sunAzimuthElevationEphemeris,
-      currentMinute.toISOString(),
+      minute.toISOString(),
       "elevation",
     );
     const previousSunElevation = getAzimuthElevationFromEphemeris(
@@ -289,7 +289,7 @@ export function getEclipseEvents(args: {
     if (solarTopocentricPhase) {
       eclipseEvents.push(
         buildSolarEclipseEvent({
-          date: currentMinute,
+          date: minute,
           frame: "topocentric",
           phase: solarTopocentricPhase,
         }),
@@ -342,7 +342,7 @@ export function getEclipseEvents(args: {
     if (lunarTopocentricPhase) {
       eclipseEvents.push(
         buildLunarEclipseEvent({
-          date: currentMinute,
+          date: minute,
           frame: "topocentric",
           phase: lunarTopocentricPhase,
         }),

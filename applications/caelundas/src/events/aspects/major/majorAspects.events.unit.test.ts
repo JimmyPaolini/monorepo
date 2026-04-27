@@ -6,8 +6,7 @@ import { majorAspectBodies } from "../../../types";
 import {
   buildMajorAspectEvent,
   getMajorAspectEvents,
-  getMajorAspectProgressiveEvents,
-  writeMajorAspectEvents,
+  getMajorAspectProgressiveEvents
 } from "./majorAspects.events";
 
 import type { Event } from "../../../calendar.utilities";
@@ -78,7 +77,7 @@ describe("majorAspects.events", () => {
 
       const events = getMajorAspectEvents({
         coordinateEphemerisByBody,
-        currentMinute,
+        minute: currentMinute,
       });
 
       expect(events.length).toBeGreaterThanOrEqual(1);
@@ -119,7 +118,7 @@ describe("majorAspects.events", () => {
 
       const events = getMajorAspectEvents({
         coordinateEphemerisByBody,
-        currentMinute,
+        minute: currentMinute,
       });
 
       const formingOpposition = events.find(
@@ -157,7 +156,7 @@ describe("majorAspects.events", () => {
 
       const events = getMajorAspectEvents({
         coordinateEphemerisByBody,
-        currentMinute,
+        minute: currentMinute,
       });
 
       const dissolvingTrine = events.find(
@@ -199,7 +198,7 @@ describe("majorAspects.events", () => {
 
       const events = getMajorAspectEvents({
         coordinateEphemerisByBody,
-        currentMinute,
+        minute: currentMinute,
       });
 
       expect(events.length).toBeGreaterThanOrEqual(2);
@@ -241,7 +240,7 @@ describe("majorAspects.events", () => {
 
       const events = getMajorAspectEvents({
         coordinateEphemerisByBody,
-        currentMinute,
+        minute: currentMinute,
       });
 
       expect(events).toHaveLength(0);
@@ -271,7 +270,7 @@ describe("majorAspects.events", () => {
 
       const events = getMajorAspectEvents({
         coordinateEphemerisByBody,
-        currentMinute,
+        minute: currentMinute,
       });
 
       // Should only have one sun-jupiter conjunction, not two (sun-jupiter and jupiter-sun)
@@ -416,103 +415,6 @@ describe("majorAspects.events", () => {
       });
 
       expect(event.description).toContain("conjunct");
-    });
-  });
-
-  describe("writeMajorAspectEvents", () => {
-    it("should write events to file and database", async () => {
-      const { default: fs } = await import("node:fs");
-
-      const events: Event[] = [
-        {
-          start: moment.utc("2024-03-21T12:00:00.000Z"),
-          end: moment.utc("2024-03-21T12:00:00.000Z"),
-          summary: "Sun conjunct Moon",
-          description: "Sun perfective conjunct Moon",
-          categories: ["Major Aspect"],
-        },
-      ];
-
-      writeMajorAspectEvents({
-        majorAspectEvents: events,
-        majorAspectBodies: ["sun", "moon"],
-        start: moment.utc("2024-03-21T00:00:00.000Z"),
-        end: moment.utc("2024-03-22T00:00:00.000Z"),
-      });
-
-      expect(fs.writeFileSync).toHaveBeenCalled();
-    });
-
-    it("should not write if events array is empty", async () => {
-      const { default: fs } = await import("node:fs");
-
-      writeMajorAspectEvents({
-        majorAspectEvents: [],
-        majorAspectBodies: ["sun", "moon"],
-        start: moment.utc("2024-03-21T00:00:00.000Z"),
-        end: moment.utc("2024-03-22T00:00:00.000Z"),
-      });
-
-      expect(fs.writeFileSync).not.toHaveBeenCalled();
-    });
-
-    it("should include body names in filename", async () => {
-      const { default: fs } = await import("node:fs");
-
-      const events: Event[] = [
-        {
-          start: moment.utc("2024-03-21T12:00:00.000Z"),
-          end: moment.utc("2024-03-21T12:00:00.000Z"),
-          summary: "Venus trine Jupiter",
-          description: "Venus perfective trine Jupiter",
-          categories: ["Major Aspect"],
-        },
-      ];
-
-      writeMajorAspectEvents({
-        majorAspectEvents: events,
-        majorAspectBodies: ["venus", "jupiter", "mars"],
-        start: moment.utc("2024-03-21T00:00:00.000Z"),
-        end: moment.utc("2024-03-22T00:00:00.000Z"),
-      });
-
-      expect(fs.writeFileSync).toHaveBeenCalledWith(
-        expect.stringContaining("venus,jupiter,mars"),
-        expect.anything(),
-      );
-    });
-
-    it("should include date range in filename", async () => {
-      const { default: fs } = await import("node:fs");
-
-      const events: Event[] = [
-        {
-          start: moment.utc("2024-03-21T12:00:00.000Z"),
-          end: moment.utc("2024-03-21T12:00:00.000Z"),
-          summary: "Sun square Mars",
-          description: "Sun perfective square Mars",
-          categories: ["Major Aspect"],
-        },
-      ];
-
-      const start = moment.utc("2024-03-21T00:00:00.000Z");
-      const end = moment.utc("2024-03-22T00:00:00.000Z");
-
-      writeMajorAspectEvents({
-        majorAspectEvents: events,
-        majorAspectBodies: ["sun", "mars"],
-        start,
-        end,
-      });
-
-      expect(fs.writeFileSync).toHaveBeenCalledWith(
-        expect.stringContaining(start.toISOString()),
-        expect.anything(),
-      );
-      expect(fs.writeFileSync).toHaveBeenCalledWith(
-        expect.stringContaining(end.toISOString()),
-        expect.anything(),
-      );
     });
   });
 

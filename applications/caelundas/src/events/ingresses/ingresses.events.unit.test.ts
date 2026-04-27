@@ -2,9 +2,9 @@ import moment from "moment";
 import { describe, expect, it, vi } from "vitest";
 
 import {
-  decanIngressBodies,
-  peakIngressBodies,
-  signIngressBodies,
+    decanIngressBodies,
+    peakIngressBodies,
+    signIngressBodies,
 } from "../../types";
 
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
@@ -91,7 +91,7 @@ describe("ingresses.events", () => {
 
       const events = getSignIngressEvents({
         coordinateEphemerisByBody,
-        currentMinute,
+        minute: currentMinute,
       });
 
       expect(events).toHaveLength(1);
@@ -125,63 +125,10 @@ describe("ingresses.events", () => {
 
       const events = getSignIngressEvents({
         coordinateEphemerisByBody,
-        currentMinute,
+        minute: currentMinute,
       });
 
       expect(events).toHaveLength(0);
-    });
-  });
-
-  describe("writeSignIngressEvents", () => {
-    it("should write events to file and database", async () => {
-      const fs = await import("node:fs");
-      // biome-ignore format: oxfmt is the primary formatter
-      const {
-        writeSignIngressEvents,
-        buildSignIngressEvent: getSignIngressEvent,
-      } = await import("./ingresses.events");
-
-      const events = [
-        getSignIngressEvent({
-          body: "sun",
-          longitude: 0,
-          date: moment.utc("2024-03-20T03:06:00.000Z"),
-        }),
-      ];
-      const start = moment.utc("2024-03-01T00:00:00.000Z");
-      const end = moment.utc("2024-03-31T23:59:59.000Z");
-
-      writeSignIngressEvents({
-        signIngressEvents: events,
-        signIngressBodies: ["sun"],
-        start,
-        end,
-      });
-
-      expect(fs.default.writeFileSync).toHaveBeenCalled();
-      expect(console.log).toHaveBeenCalledWith(
-        expect.stringContaining("Writing"),
-      );
-      expect(console.log).toHaveBeenCalledWith(
-        expect.stringContaining("Wrote"),
-      );
-    });
-
-    it("should not write when events array is empty", async () => {
-      const fs = await import("node:fs");
-      const { writeSignIngressEvents } = await import("./ingresses.events");
-
-      const start = moment.utc("2024-03-01T00:00:00.000Z");
-      const end = moment.utc("2024-03-31T23:59:59.000Z");
-
-      writeSignIngressEvents({
-        signIngressEvents: [],
-        signIngressBodies: ["sun"],
-        start,
-        end,
-      });
-
-      expect(fs.default.writeFileSync).not.toHaveBeenCalled();
     });
   });
 
@@ -233,7 +180,7 @@ describe("ingresses.events", () => {
 
       const events = getDecanIngressEvents({
         coordinateEphemerisByBody,
-        currentMinute,
+        minute: currentMinute,
       });
 
       expect(events).toHaveLength(1);
@@ -266,54 +213,10 @@ describe("ingresses.events", () => {
 
       const events = getDecanIngressEvents({
         coordinateEphemerisByBody,
-        currentMinute,
+        minute: currentMinute,
       });
 
       expect(events).toHaveLength(0);
-    });
-  });
-
-  describe("writeDecanIngressEvents", () => {
-    it("should write events to file and database", async () => {
-      const fs = await import("node:fs");
-      // biome-ignore format: oxfmt is the primary formatter
-      const {
-        writeDecanIngressEvents,
-        buildDecanIngressEvent: getDecanIngressEvent,
-      } = await import("./ingresses.events");
-
-      const events = [
-        getDecanIngressEvent({
-          body: "venus",
-          longitude: 10.5,
-          date: moment.utc("2024-04-05T10:00:00.000Z"),
-        }),
-      ];
-      const start = moment.utc("2024-04-01T00:00:00.000Z");
-      const end = moment.utc("2024-04-30T23:59:59.000Z");
-
-      writeDecanIngressEvents({
-        decanIngressEvents: events,
-        decanIngressBodies: ["venus"],
-        start,
-        end,
-      });
-
-      expect(fs.default.writeFileSync).toHaveBeenCalled();
-    });
-
-    it("should not write when events array is empty", async () => {
-      const fs = await import("node:fs");
-      const { writeDecanIngressEvents } = await import("./ingresses.events");
-
-      writeDecanIngressEvents({
-        decanIngressEvents: [],
-        decanIngressBodies: ["venus"],
-        start: moment.utc("2024-04-01T00:00:00.000Z"),
-        end: moment.utc("2024-04-30T23:59:59.000Z"),
-      });
-
-      expect(fs.default.writeFileSync).not.toHaveBeenCalled();
     });
   });
 
@@ -365,7 +268,7 @@ describe("ingresses.events", () => {
 
       const events = getPeakIngressEvents({
         coordinateEphemerisByBody,
-        currentMinute,
+        minute: currentMinute,
       });
 
       expect(events).toHaveLength(1);
@@ -398,54 +301,10 @@ describe("ingresses.events", () => {
 
       const events = getPeakIngressEvents({
         coordinateEphemerisByBody,
-        currentMinute,
+        minute: currentMinute,
       });
 
       expect(events).toHaveLength(0);
-    });
-  });
-
-  describe("writePeakIngressEvents", () => {
-    it("should write events to file and database", async () => {
-      const fs = await import("node:fs");
-      // biome-ignore format: oxfmt is the primary formatter
-      const {
-        writePeakIngressEvents,
-        buildPeakIngressEvent: getPeakIngressEvent,
-      } = await import("./ingresses.events");
-
-      const events = [
-        getPeakIngressEvent({
-          body: "mars",
-          longitude: 135,
-          date: moment.utc("2024-06-15T16:00:00.000Z"),
-        }),
-      ];
-      const start = moment.utc("2024-06-01T00:00:00.000Z");
-      const end = moment.utc("2024-06-30T23:59:59.000Z");
-
-      writePeakIngressEvents({
-        peakIngressEvents: events,
-        peakIngressBodies: ["mars"],
-        start,
-        end,
-      });
-
-      expect(fs.default.writeFileSync).toHaveBeenCalled();
-    });
-
-    it("should not write when events array is empty", async () => {
-      const fs = await import("node:fs");
-      const { writePeakIngressEvents } = await import("./ingresses.events");
-
-      writePeakIngressEvents({
-        peakIngressEvents: [],
-        peakIngressBodies: ["mars"],
-        start: moment.utc("2024-06-01T00:00:00.000Z"),
-        end: moment.utc("2024-06-30T23:59:59.000Z"),
-      });
-
-      expect(fs.default.writeFileSync).not.toHaveBeenCalled();
     });
   });
 

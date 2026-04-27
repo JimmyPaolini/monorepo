@@ -2,14 +2,13 @@ import moment from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
 
 import {
-  buildLunarNadirEvent,
-  buildLunarZenithEvent,
-  buildMoonriseEvent,
-  buildMoonsetEvent,
-  getDailyLunarCycleEvents,
+    buildLunarNadirEvent,
+    buildLunarZenithEvent,
+    buildMoonriseEvent,
+    buildMoonsetEvent,
+    getDailyLunarCycleEvents,
 } from "./dailyLunarCycle.events";
 
-import type { Event } from "../../calendar.utilities";
 import type { AzimuthElevationEphemeris } from "../../ephemeris/ephemeris.types";
 
 vi.mock("fs", () => ({
@@ -33,7 +32,7 @@ describe("dailyLunarCycle.events", () => {
       };
 
       const events = getDailyLunarCycleEvents({
-        currentMinute,
+        minute: currentMinute,
         moonAzimuthElevationEphemeris,
       });
 
@@ -56,7 +55,7 @@ describe("dailyLunarCycle.events", () => {
       };
 
       const events = getDailyLunarCycleEvents({
-        currentMinute,
+        minute: currentMinute,
         moonAzimuthElevationEphemeris,
       });
 
@@ -79,7 +78,7 @@ describe("dailyLunarCycle.events", () => {
       };
 
       const events = getDailyLunarCycleEvents({
-        currentMinute,
+        minute: currentMinute,
         moonAzimuthElevationEphemeris,
       });
 
@@ -102,7 +101,7 @@ describe("dailyLunarCycle.events", () => {
       };
 
       const events = getDailyLunarCycleEvents({
-        currentMinute,
+        minute: currentMinute,
         moonAzimuthElevationEphemeris,
       });
 
@@ -125,7 +124,7 @@ describe("dailyLunarCycle.events", () => {
       };
 
       const events = getDailyLunarCycleEvents({
-        currentMinute,
+        minute: currentMinute,
         moonAzimuthElevationEphemeris,
       });
 
@@ -145,7 +144,7 @@ describe("dailyLunarCycle.events", () => {
       };
 
       const events = getDailyLunarCycleEvents({
-        currentMinute,
+        minute: currentMinute,
         moonAzimuthElevationEphemeris,
       });
 
@@ -202,48 +201,6 @@ describe("dailyLunarCycle.events", () => {
       expect(event.categories).toContain("Astronomy");
       expect(event.categories).toContain("Daily Lunar Cycle");
       expect(event.categories).toContain("Lunar");
-    });
-  });
-
-  describe("writeDailyLunarCycleEvents", () => {
-    it("should write events to database and file when events array is not empty", async () => {
-      const { default: fs } = await import("node:fs");
-
-      const events: Event[] = [
-        {
-          start: moment.utc("2024-03-21T05:00:00.000Z"),
-          end: moment.utc("2024-03-21T05:00:00.000Z"),
-          summary: "🌙 ⏫ Moonrise",
-          description: "Moonrise",
-          categories: ["Astronomy", "Astrology", "Lunar", "Moonrise"],
-        },
-      ];
-
-      // biome-ignore format: oxfmt is the primary formatter
-      const { writeDailyLunarCycleEvents } =
-        await import("./dailyLunarCycle.events");
-      writeDailyLunarCycleEvents({
-        dailyLunarCycleEvents: events,
-        start: moment.utc("2024-01-01"),
-        end: moment.utc("2024-12-31"),
-      });
-
-      expect(fs.writeFileSync).toHaveBeenCalled();
-    });
-
-    it("should not write if events array is empty", async () => {
-      const { default: fs } = await import("node:fs");
-
-      // biome-ignore format: oxfmt is the primary formatter
-      const { writeDailyLunarCycleEvents } =
-        await import("./dailyLunarCycle.events");
-      writeDailyLunarCycleEvents({
-        dailyLunarCycleEvents: [],
-        start: moment.utc("2024-01-01"),
-        end: moment.utc("2024-12-31"),
-      });
-
-      expect(fs.writeFileSync).not.toHaveBeenCalled();
     });
   });
 

@@ -27,11 +27,11 @@ describe("stellium.events", () => {
         const currentAspectBodies = edges;
         const previousAspectBodies = edges;
 
-        const events = getStelliumEvents(
+        const events = getStelliumEvents({
           currentAspectBodies,
           previousAspectBodies,
-          currentMinute,
-        );
+          minute: currentMinute,
+          });
 
         // Should return no events because pattern exists in prev/current/next (null phase)
         expect(events).toHaveLength(0);
@@ -54,11 +54,11 @@ describe("stellium.events", () => {
           { bodies: ["sun", "moon"], aspect: "conjunct" },
         ];
 
-        const events = getStelliumEvents(
+        const events = getStelliumEvents({
           currentAspectBodies,
           previousAspectBodies,
-          currentMinute,
-        );
+          minute: currentMinute,
+          });
 
         expect(events.length).toBeGreaterThanOrEqual(1);
         const stellium = events.find((e) => e.categories.includes("Stellium"));
@@ -81,11 +81,11 @@ describe("stellium.events", () => {
         const currentAspectBodies = edges;
         const previousAspectBodies = edges;
 
-        const events = getStelliumEvents(
+        const events = getStelliumEvents({
           currentAspectBodies,
           previousAspectBodies,
-          currentMinute,
-        );
+          minute: currentMinute,
+          });
 
         expect(events).toHaveLength(0);
       });
@@ -105,11 +105,11 @@ describe("stellium.events", () => {
         const currentAspectBodies = edges;
         const previousAspectBodies = edges;
 
-        const events = getStelliumEvents(
+        const events = getStelliumEvents({
           currentAspectBodies,
           previousAspectBodies,
-          currentMinute,
-        );
+          minute: currentMinute,
+          });
 
         expect(events).toHaveLength(0);
       });
@@ -129,11 +129,11 @@ describe("stellium.events", () => {
         const currentAspectBodies = edges;
         const previousAspectBodies = edges;
 
-        const events = getStelliumEvents(
+        const events = getStelliumEvents({
           currentAspectBodies,
           previousAspectBodies,
-          currentMinute,
-        );
+          minute: currentMinute,
+          });
 
         expect(events).toHaveLength(0);
       });
@@ -144,11 +144,11 @@ describe("stellium.events", () => {
         const currentAspectBodies: AspectBodies[] = [];
         const previousAspectBodies: AspectBodies[] = [];
 
-        const events = getStelliumEvents(
+        const events = getStelliumEvents({
           currentAspectBodies,
           previousAspectBodies,
-          currentMinute,
-        );
+          minute: currentMinute,
+          });
 
         expect(events).toHaveLength(0);
       });
@@ -170,11 +170,11 @@ describe("stellium.events", () => {
           { bodies: ["sun", "moon"], aspect: "conjunct" },
         ];
 
-        const events = getStelliumEvents(
+        const events = getStelliumEvents({
           currentAspectBodies,
           previousAspectBodies,
-          currentMinute,
-        );
+          minute: currentMinute,
+          });
 
         expect(events.length).toBeGreaterThanOrEqual(1);
         const stellium = events.find((e) => e.categories.includes("Stellium"));
@@ -210,11 +210,11 @@ describe("stellium.events", () => {
           { bodies: ["sun", "moon"], aspect: "conjunct" },
         ];
 
-        const events = getStelliumEvents(
+        const events = getStelliumEvents({
           currentAspectBodies,
           previousAspectBodies,
-          currentMinute,
-        );
+          minute: currentMinute,
+          });
 
         expect(events.length).toBeGreaterThanOrEqual(1);
         const stellium = events.find((e) => e.categories.includes("5 Body"));

@@ -7,14 +7,8 @@
  * Events are detected by analyzing Sun's altitude/elevation angle over time.
  */
 
-import fs from "node:fs";
-
-import _ from "lodash";
-
-import { getCalendar } from "../../calendar.utilities";
 import { getAzimuthElevationFromEphemeris } from "../../ephemeris/ephemeris.service";
 import { isMaximum, isMinimum } from "../../math.utilities";
-import { getOutputPath } from "../../output.utilities";
 
 import { isRise, isSet } from "./dailyCycle.utilities";
 
@@ -72,19 +66,19 @@ const categories = ["Astronomy", "Astrology", "Daily Solar Cycle", "Solar"];
  * ```
  */
 export function getDailySolarCycleEvents(args: {
-  currentMinute: Moment;
+  minute: Moment;
   sunAzimuthElevationEphemeris: AzimuthElevationEphemeris;
 }): Event[] {
-  const { currentMinute, sunAzimuthElevationEphemeris } = args;
+  const { minute, sunAzimuthElevationEphemeris } = args;
 
   const dailySolarCycleEvents: Event[] = [];
 
-  const previousMinute = currentMinute.clone().subtract(1, "minute");
-  const nextMinute = currentMinute.clone().add(1, "minute");
+  const previousMinute = minute.clone().subtract(1, "minute");
+  const nextMinute = minute.clone().add(1, "minute");
 
   const currentElevation = getAzimuthElevationFromEphemeris(
     sunAzimuthElevationEphemeris,
-    currentMinute.toISOString(),
+    minute.toISOString(),
     "elevation",
   );
   const previousElevation = getAzimuthElevationFromEphemeris(
@@ -107,7 +101,7 @@ export function getDailySolarCycleEvents(args: {
     next: nextElevation,
   };
 
-  const date = currentMinute;
+  const date = minute;
 
   if (isRise({ ...elevations })) {
     dailySolarCycleEvents.push(buildSunriseEvent(date));
@@ -301,63 +295,4 @@ export function buildSolarNadirEvent(date: Moment): Event {
     categories,
   };
   return solarNadirEvent;
-}
-
-/**
- * Writes daily solar cycle events to an iCalendar file.
- *
- * Generates an `.ics` file containing all sunrise, solar zenith, sunset, and
- * solar nadir events for a date range. File is named with timespan for easy
- * identification. Skips writing if no events exist.
- *
- * @param args - Output parameters
- * @param dailySolarCycleEvents - Array of solar cycle events to write
- * @param start - Start date of the event range (inclusive)
- * @param end - End date of the event range (inclusive)
- *
- * @remarks
- * - Filename format: `daily-solar-cycle_[start]-[end].ics`
- * - Example: `daily-solar-cycle_2026-01-01T00:00:00Z-2026-12-31T23:59:59Z.ics`
- * - Uses UTF-8 encoding via TextEncoder
- * - Calendar name: "Daily Solar Cycle ☀️"
- * - Logs write operation with event count and timespan
- * - Early return if event array is empty
- * - Typically contains ~1460 events per year (4 events per day × 365 days)
- *
- * @see {@link getCalendar} for iCalendar generation
- * @see {@link getOutputPath} for output directory resolution
- *
- * @example
- * ```typescript
- * writeDailySolarCycleEvents({
- *   dailySolarCycleEvents: events,
- *   start: new Date('2026-01-01'),
- *   end: new Date('2026-12-31')
- * }); // Writes daily-solar-cycle_2026-01-01T00:00:00Z-2026-12-31T23:59:59Z.ics
- * ```
- */
-export function writeDailySolarCycleEvents(args: {
-  dailySolarCycleEvents: Event[];
-  start: Moment;
-  end: Moment;
-}): void {
-  const { dailySolarCycleEvents, start, end } = args;
-  if (_.isEmpty(dailySolarCycleEvents)) {
-    return;
-  }
-
-  const timespan = `${start.toISOString()}-${end.toISOString()}`;
-  const message = `${dailySolarCycleEvents.length} daily sun cycle events from ${timespan}`;
-  console.log(`☀️ Writing ${message}`);
-
-  const ingressCalendar = getCalendar({
-    events: dailySolarCycleEvents,
-    name: "Daily Solar Cycle ☀️",
-  });
-  fs.writeFileSync(
-    getOutputPath(`daily-solar-cycle_${timespan}.ics`),
-    new TextEncoder().encode(ingressCalendar),
-  );
-
-  console.log(`☀️ Wrote ${message}`);
 }

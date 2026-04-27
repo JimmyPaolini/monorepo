@@ -3,9 +3,9 @@ import _ from "lodash";
 import { symbolByBody, symbolByStellium } from "../../../symbols";
 import { stelliumBodies } from "../../../types";
 import {
-  determineCompoundPhaseFromSnapshots,
-  groupAspectsByType,
-  haveAspect,
+    determineCompoundPhaseFromSnapshots,
+    groupAspectsByType,
+    haveAspect,
 } from "../aspects.composition";
 
 import type { Event } from "../../../calendar.utilities";
@@ -32,16 +32,17 @@ import type { Moment } from "moment-timezone";
  *
  * @param currentAspectBodies - Active aspect relationships at the current minute
  * @param previousAspectBodies - Active aspect relationships at the previous minute
- * @param currentMinute - The minute to check for Stellium patterns
+ * @param minute - The minute to check for Stellium patterns
  * @returns Array of Stellium events detected at this minute
  * @see {@link determineCompoundPhaseFromSnapshots} for phase calculation
  * @see {@link haveAspect} for verifying conjunction relationships
  */
-function composeStelliums(
-  currentAspectBodies: AspectBodies[],
-  previousAspectBodies: AspectBodies[],
-  currentMinute: Moment,
-): Event[] {
+function composeStelliums(args: {
+  currentAspectBodies: AspectBodies[];
+  previousAspectBodies: AspectBodies[];
+  minute: Moment;
+}): Event[] {
+  const { currentAspectBodies, previousAspectBodies, minute } = args;
   const events: Event[] = [];
 
   const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
@@ -131,7 +132,7 @@ function composeStelliums(
         currentAspectBodies,
         previousAspectBodies,
         bodies,
-        currentMinute,
+        minute,
         // Check if Stellium pattern exists in given edges
         (edges) => {
           // All pairs of bodies must be in conjunction
@@ -234,21 +235,18 @@ function createStelliumEvent(params: {
  *
  * @param currentAspectBodies - Active aspect relationships at the current minute
  * @param previousAspectBodies - Active aspect relationships at the previous minute
- * @param currentMinute - The minute to check for stellium patterns
+ * @param minute - The minute to check for stellium patterns
  * @returns Array of all detected stellium events at this minute
  * @see {@link composeStelliums} for stellium detection logic
  */
-export function getStelliumEvents(
-  currentAspectBodies: AspectBodies[],
-  previousAspectBodies: AspectBodies[],
-  currentMinute: Moment,
-): Event[] {
+export function getStelliumEvents(args: {
+  currentAspectBodies: AspectBodies[];
+  previousAspectBodies: AspectBodies[];
+  minute: Moment;
+}): Event[] {
+  const { currentAspectBodies, previousAspectBodies, minute } = args;
   return [
-    ...composeStelliums(
-      currentAspectBodies,
-      previousAspectBodies,
-      currentMinute,
-    ),
+    ...composeStelliums({ currentAspectBodies, previousAspectBodies, minute }),
   ];
 }
 

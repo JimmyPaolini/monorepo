@@ -35,15 +35,16 @@ import type { Moment } from "moment-timezone";
  * represents the point of release or action in astrological interpretation.
  *
  * @param allEdges - All aspect edges across time for phase detection
- * @param currentMinute - The minute to check for T-Square patterns
+ * @param minute - The minute to check for T-Square patterns
  * @returns Array of T-Square events detected at this minute
  * @see {@link determineMultiBodyPhase} for phase calculation
  */
-function composeTSquares(
-  currentAspectBodies: AspectBodies[],
-  previousAspectBodies: AspectBodies[],
-  currentMinute: Moment,
-): Event[] {
+function composeTSquares(args: {
+  currentAspectBodies: AspectBodies[];
+  previousAspectBodies: AspectBodies[];
+  minute: Moment;
+}): Event[] {
+  const { currentAspectBodies, previousAspectBodies, minute } = args;
   const events: Event[] = [];
 
   const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
@@ -74,7 +75,7 @@ function composeTSquares(
           currentAspectBodies,
           previousAspectBodies,
           [body1, body2, focalBody],
-          currentMinute,
+          minute,
           (edges) => {
             return (
               haveAspect(body1, body2, "opposite", edges) &&
@@ -125,15 +126,16 @@ function composeTSquares(
  * integration of the energies from the sextile base.
  *
  * @param allEdges - All aspect edges across time for phase detection
- * @param currentMinute - The minute to check for Yod patterns
+ * @param minute - The minute to check for Yod patterns
  * @returns Array of Yod events detected at this minute
  * @see {@link determineMultiBodyPhase} for phase calculation
  */
-function composeYods(
-  currentAspectBodies: AspectBodies[],
-  previousAspectBodies: AspectBodies[],
-  currentMinute: Moment,
-): Event[] {
+function composeYods(args: {
+  currentAspectBodies: AspectBodies[];
+  previousAspectBodies: AspectBodies[];
+  minute: Moment;
+}): Event[] {
+  const { currentAspectBodies, previousAspectBodies, minute } = args;
   const events: Event[] = [];
 
   const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
@@ -171,7 +173,7 @@ function composeYods(
           currentAspectBodies,
           previousAspectBodies,
           [body1, body2, apexBody],
-          currentMinute,
+          minute,
           (edges) => {
             return (
               haveAspect(body1, body2, "sextile", edges) &&
@@ -222,15 +224,16 @@ function composeYods(
  * may lack motivation without challenging aspects.
  *
  * @param allEdges - All aspect edges across time for phase detection
- * @param currentMinute - The minute to check for Grand Trine patterns
+ * @param minute - The minute to check for Grand Trine patterns
  * @returns Array of Grand Trine events detected at this minute
  * @see {@link determineMultiBodyPhase} for phase calculation
  */
-function composeGrandTrines(
-  currentAspectBodies: AspectBodies[],
-  previousAspectBodies: AspectBodies[],
-  currentMinute: Moment,
-): Event[] {
+function composeGrandTrines(args: {
+  currentAspectBodies: AspectBodies[];
+  previousAspectBodies: AspectBodies[];
+  minute: Moment;
+}): Event[] {
+  const { currentAspectBodies, previousAspectBodies, minute } = args;
   const events: Event[] = [];
 
   const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
@@ -268,7 +271,7 @@ function composeGrandTrines(
             currentAspectBodies,
             previousAspectBodies,
             [body1, body2, body3],
-            currentMinute,
+            minute,
             (edges) => {
               return (
                 haveAspect(body1, body2, "trine", edges) &&
@@ -311,30 +314,23 @@ function composeGrandTrines(
  * in astrological interpretation.
  *
  * @param storedAspects - Previously detected simple aspect events
- * @param currentMinute - The minute to check for triple aspect patterns
+ * @param minute - The minute to check for triple aspect patterns
  * @returns Array of all detected triple aspect events at this minute
  * @see {@link parseAspectEvents} for extracting aspect relationships
  * @see {@link composeTSquares} for T-Square detection
  * @see {@link composeYods} for Yod detection
  * @see {@link composeGrandTrines} for Grand Trine detection
  */
-export function getTripleAspectEvents(
-  currentAspectBodies: AspectBodies[],
-  previousAspectBodies: AspectBodies[],
-  currentMinute: Moment,
-): Event[] {
+export function getTripleAspectEvents(args: {
+  currentAspectBodies: AspectBodies[];
+  previousAspectBodies: AspectBodies[];
+  minute: Moment;
+}): Event[] {
+  const { currentAspectBodies, previousAspectBodies, minute } = args;
   return [
-    ...composeTSquares(
-      currentAspectBodies,
-      previousAspectBodies,
-      currentMinute,
-    ),
-    ...composeYods(currentAspectBodies, previousAspectBodies, currentMinute),
-    ...composeGrandTrines(
-      currentAspectBodies,
-      previousAspectBodies,
-      currentMinute,
-    ),
+    ...composeTSquares({ currentAspectBodies, previousAspectBodies, minute }),
+    ...composeYods({ currentAspectBodies, previousAspectBodies, minute }),
+    ...composeGrandTrines({ currentAspectBodies, previousAspectBodies, minute }),
     // Can add more patterns: Hammer, etc.
   ];
 }

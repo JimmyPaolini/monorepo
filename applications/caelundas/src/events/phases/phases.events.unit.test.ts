@@ -1,33 +1,30 @@
-import fs from "node:fs";
-
 import moment, { type Moment } from "moment-timezone";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
-  symbolByMartianPhase,
-  symbolByMercurianPhase,
-  symbolByVenusianPhase,
+    symbolByMartianPhase,
+    symbolByMercurianPhase,
+    symbolByVenusianPhase,
 } from "../../symbols";
 import { planetaryPhaseBodies } from "../../types";
 
 import {
-  buildMartianPhaseEvent,
-  buildMercurianPhaseEvent,
-  buildVenusianPhaseEvent,
-  getMartianPhaseEvents,
-  getMercurianPhaseEvents,
-  getPlanetaryPhaseEvents,
-  getPlanetaryPhaseProgressiveEvents,
-  getVenusianPhaseEvents,
-  writePlanetaryPhaseEvents,
+    buildMartianPhaseEvent,
+    buildMercurianPhaseEvent,
+    buildVenusianPhaseEvent,
+    getMartianPhaseEvents,
+    getMercurianPhaseEvents,
+    getPlanetaryPhaseEvents,
+    getPlanetaryPhaseProgressiveEvents,
+    getVenusianPhaseEvents,
 } from "./phases.events";
 import * as phasesUtilities from "./phases.utilities";
 
 import type { Event } from "../../calendar.utilities";
 import type {
-  CoordinateEphemeris,
-  DistanceEphemeris,
-  IlluminationEphemeris,
+    CoordinateEphemeris,
+    DistanceEphemeris,
+    IlluminationEphemeris,
 } from "../../ephemeris/ephemeris.types";
 import type { Body } from "../../types";
 
@@ -106,7 +103,7 @@ describe("phases.events", () => {
   const createDetectionInputs = (
     minute: Moment,
   ): {
-    currentMinute: Moment;
+    minute: Moment;
     sunCoordinateEphemeris: CoordinateEphemeris;
     venusCoordinateEphemeris: CoordinateEphemeris;
     mercuryCoordinateEphemeris: CoordinateEphemeris;
@@ -118,7 +115,7 @@ describe("phases.events", () => {
     mercuryIlluminationEphemeris: IlluminationEphemeris;
     marsIlluminationEphemeris: IlluminationEphemeris;
   } => ({
-    currentMinute: minute,
+    minute,
     sunCoordinateEphemeris: createCoordinateEphemeris(minute, 90),
     venusCoordinateEphemeris: createCoordinateEphemeris(minute, 100),
     mercuryCoordinateEphemeris: createCoordinateEphemeris(minute, 100),
@@ -143,7 +140,7 @@ describe("phases.events", () => {
       const inputs = createDetectionInputs(minute);
 
       const events = getVenusianPhaseEvents({
-        currentMinute: minute,
+        minute,
         sunCoordinateEphemeris: inputs.sunCoordinateEphemeris,
         venusCoordinateEphemeris: inputs.venusCoordinateEphemeris,
         venusDistanceEphemeris: inputs.venusDistanceEphemeris,
@@ -171,7 +168,7 @@ describe("phases.events", () => {
       const inputs = createDetectionInputs(minute);
 
       const events = getMercurianPhaseEvents({
-        currentMinute: minute,
+        minute,
         sunCoordinateEphemeris: inputs.sunCoordinateEphemeris,
         mercuryCoordinateEphemeris: inputs.mercuryCoordinateEphemeris,
         mercuryDistanceEphemeris: inputs.mercuryDistanceEphemeris,
@@ -199,7 +196,7 @@ describe("phases.events", () => {
       const inputs = createDetectionInputs(minute);
 
       const events = getMartianPhaseEvents({
-        currentMinute: minute,
+        minute,
         sunCoordinateEphemeris: inputs.sunCoordinateEphemeris,
         marsCoordinateEphemeris: inputs.marsCoordinateEphemeris,
         marsDistanceEphemeris: inputs.marsDistanceEphemeris,
@@ -223,7 +220,7 @@ describe("phases.events", () => {
       const inputs = createDetectionInputs(minute);
 
       const events = getVenusianPhaseEvents({
-        currentMinute: minute,
+        minute,
         sunCoordinateEphemeris: inputs.sunCoordinateEphemeris,
         venusCoordinateEphemeris: inputs.venusCoordinateEphemeris,
         venusDistanceEphemeris: inputs.venusDistanceEphemeris,
@@ -249,7 +246,7 @@ describe("phases.events", () => {
 
       try {
         const events = getPlanetaryPhaseEvents({
-          currentMinute: minute,
+          minute,
           coordinateEphemerisByBody: {
             sun: inputs.sunCoordinateEphemeris,
             moon: inputs.sunCoordinateEphemeris,
@@ -1002,95 +999,6 @@ describe("phases.events", () => {
         expect(marsEvening.end).toEqual(eveningSet.start);
         expect(marsEvening.summary).toContain("Mars Evening Star");
       }
-    });
-  });
-
-  describe("writePlanetaryPhaseEvents", () => {
-    it("should write events to file and database", () => {
-      const start = moment.utc("2024-01-01T00:00:00.000Z");
-      const end = moment.utc("2024-01-31T23:59:59.000Z");
-      const events: Event[] = [
-        {
-          start: moment.utc("2024-01-15T06:00:00.000Z"),
-          end: moment.utc("2024-01-15T06:00:00.000Z"),
-          summary: "♀️🌄↥ Venus Morning Rise",
-          description: "Venus Morning Rise",
-          categories: [
-            "Astronomy",
-            "Astrology",
-            "Planetary Phase",
-            "Venusian",
-            "Morning Rise",
-          ],
-        },
-      ];
-
-      writePlanetaryPhaseEvents({
-        planetaryPhaseEvents: events,
-        planetaryPhaseBodies: ["venus"],
-        start,
-        end,
-      });
-
-      expect(fs.writeFileSync).toHaveBeenCalled();
-    });
-
-    it("should handle empty events array", () => {
-      const start = moment.utc("2024-01-01T00:00:00.000Z");
-      const end = moment.utc("2024-01-31T23:59:59.000Z");
-
-      writePlanetaryPhaseEvents({
-        planetaryPhaseEvents: [],
-        planetaryPhaseBodies: ["venus"],
-        start,
-        end,
-      });
-
-      expect(fs.writeFileSync).not.toHaveBeenCalled();
-    });
-
-    it("should handle multiple planets", () => {
-      const start = moment.utc("2024-01-01T00:00:00.000Z");
-      const end = moment.utc("2024-01-31T23:59:59.000Z");
-      const events: Event[] = [
-        {
-          start: moment.utc("2024-01-15T06:00:00.000Z"),
-          end: moment.utc("2024-01-15T06:00:00.000Z"),
-          summary: "♀️🌄↥ Venus Morning Rise",
-          description: "Venus Morning Rise",
-          categories: [
-            "Astronomy",
-            "Astrology",
-            "Planetary Phase",
-            "Venusian",
-            "Morning Rise",
-          ],
-        },
-        {
-          start: moment.utc("2024-01-20T06:00:00.000Z"),
-          end: moment.utc("2024-01-20T06:00:00.000Z"),
-          summary: "☿🌄↥ Mercury Morning Rise",
-          description: "Mercury Morning Rise",
-          categories: [
-            "Astronomy",
-            "Astrology",
-            "Planetary Phase",
-            "Mercurian",
-            "Morning Rise",
-          ],
-        },
-      ];
-
-      writePlanetaryPhaseEvents({
-        planetaryPhaseEvents: events,
-        planetaryPhaseBodies: ["venus", "mercury"],
-        start,
-        end,
-      });
-
-      expect(fs.writeFileSync).toHaveBeenCalled();
-      const writeCall = vi.mocked(fs.writeFileSync).mock.calls[0];
-      expect(writeCall?.[0]).toContain("venus,mercury");
     });
   });
 });

@@ -2,14 +2,13 @@ import moment from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
 
 import {
-  buildSolarNadirEvent,
-  buildSolarZenithEvent,
-  buildSunriseEvent,
-  buildSunsetEvent,
-  getDailySolarCycleEvents,
+    buildSolarNadirEvent,
+    buildSolarZenithEvent,
+    buildSunriseEvent,
+    buildSunsetEvent,
+    getDailySolarCycleEvents,
 } from "./dailySolarCycle.events";
 
-import type { Event } from "../../calendar.utilities";
 import type { AzimuthElevationEphemeris } from "../../ephemeris/ephemeris.types";
 
 vi.mock("fs", () => ({
@@ -33,7 +32,7 @@ describe("dailySolarCycle.events", () => {
       };
 
       const events = getDailySolarCycleEvents({
-        currentMinute,
+        minute: currentMinute,
         sunAzimuthElevationEphemeris,
       });
 
@@ -55,7 +54,7 @@ describe("dailySolarCycle.events", () => {
       };
 
       const events = getDailySolarCycleEvents({
-        currentMinute,
+        minute: currentMinute,
         sunAzimuthElevationEphemeris,
       });
 
@@ -77,7 +76,7 @@ describe("dailySolarCycle.events", () => {
       };
 
       const events = getDailySolarCycleEvents({
-        currentMinute,
+        minute: currentMinute,
         sunAzimuthElevationEphemeris,
       });
 
@@ -99,7 +98,7 @@ describe("dailySolarCycle.events", () => {
       };
 
       const events = getDailySolarCycleEvents({
-        currentMinute,
+        minute: currentMinute,
         sunAzimuthElevationEphemeris,
       });
 
@@ -121,7 +120,7 @@ describe("dailySolarCycle.events", () => {
       };
 
       const events = getDailySolarCycleEvents({
-        currentMinute,
+        minute: currentMinute,
         sunAzimuthElevationEphemeris,
       });
 
@@ -141,7 +140,7 @@ describe("dailySolarCycle.events", () => {
       };
 
       const events = getDailySolarCycleEvents({
-        currentMinute,
+        minute: currentMinute,
         sunAzimuthElevationEphemeris,
       });
 
@@ -195,48 +194,6 @@ describe("dailySolarCycle.events", () => {
       expect(event.categories).toContain("Astronomy");
       expect(event.categories).toContain("Daily Solar Cycle");
       expect(event.categories).toContain("Solar");
-    });
-  });
-
-  describe("writeDailySolarCycleEvents", () => {
-    it("should write events to database and file when events array is not empty", async () => {
-      const { default: fs } = await import("node:fs");
-
-      const events: Event[] = [
-        {
-          start: moment.utc("2024-03-21T06:00:00.000Z"),
-          end: moment.utc("2024-03-21T06:00:00.000Z"),
-          summary: "☀️ ⏫ Sunrise",
-          description: "Sunrise",
-          categories: ["Astronomy", "Astrology", "Solar", "Sunrise"],
-        },
-      ];
-
-      // biome-ignore format: oxfmt is the primary formatter
-      const { writeDailySolarCycleEvents } =
-        await import("./dailySolarCycle.events");
-      writeDailySolarCycleEvents({
-        dailySolarCycleEvents: events,
-        start: moment.utc("2024-01-01"),
-        end: moment.utc("2024-12-31"),
-      });
-
-      expect(fs.writeFileSync).toHaveBeenCalled();
-    });
-
-    it("should not write if events array is empty", async () => {
-      const { default: fs } = await import("node:fs");
-
-      // biome-ignore format: oxfmt is the primary formatter
-      const { writeDailySolarCycleEvents } =
-        await import("./dailySolarCycle.events");
-      writeDailySolarCycleEvents({
-        dailySolarCycleEvents: [],
-        start: moment.utc("2024-01-01"),
-        end: moment.utc("2024-12-31"),
-      });
-
-      expect(fs.writeFileSync).not.toHaveBeenCalled();
     });
   });
 

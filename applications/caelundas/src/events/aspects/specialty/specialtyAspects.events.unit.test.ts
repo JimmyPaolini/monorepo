@@ -6,8 +6,7 @@ import { specialtyAspectBodies } from "../../../types";
 import {
   buildSpecialtyAspectEvent,
   getSpecialtyAspectEvents,
-  getSpecialtyAspectProgressiveEvents,
-  writeSpecialtyAspectEvents,
+  getSpecialtyAspectProgressiveEvents
 } from "./specialtyAspects.events";
 
 import type { Event } from "../../../calendar.utilities";
@@ -85,7 +84,7 @@ describe("specialtyAspects.events", () => {
 
       const events = getSpecialtyAspectEvents({
         coordinateEphemerisByBody,
-        currentMinute,
+        minute: currentMinute,
       });
 
       expect(events.length).toBeGreaterThanOrEqual(1);
@@ -125,7 +124,7 @@ describe("specialtyAspects.events", () => {
 
       const events = getSpecialtyAspectEvents({
         coordinateEphemerisByBody,
-        currentMinute,
+        minute: currentMinute,
       });
 
       expect(events.length).toBeGreaterThanOrEqual(1);
@@ -165,7 +164,7 @@ describe("specialtyAspects.events", () => {
 
       const events = getSpecialtyAspectEvents({
         coordinateEphemerisByBody,
-        currentMinute,
+        minute: currentMinute,
       });
 
       expect(events.length).toBeGreaterThanOrEqual(1);
@@ -211,7 +210,7 @@ describe("specialtyAspects.events", () => {
 
       const events = getSpecialtyAspectEvents({
         coordinateEphemerisByBody,
-        currentMinute,
+        minute: currentMinute,
       });
 
       expect(events.length).toBeGreaterThanOrEqual(2);
@@ -252,7 +251,7 @@ describe("specialtyAspects.events", () => {
 
       const events = getSpecialtyAspectEvents({
         coordinateEphemerisByBody,
-        currentMinute,
+        minute: currentMinute,
       });
 
       expect(events.length).toBe(0);
@@ -282,7 +281,7 @@ describe("specialtyAspects.events", () => {
 
       const events = getSpecialtyAspectEvents({
         coordinateEphemerisByBody,
-        currentMinute,
+        minute: currentMinute,
       });
 
       const sunMercuryEvents = events.filter(
@@ -401,102 +400,6 @@ describe("specialtyAspects.events", () => {
 
       expect(event.summary).toContain("quintile");
       expect(event.description).toBe("Sun perfective quintile Moon");
-    });
-  });
-
-  describe("writeSpecialtyAspectEvents", () => {
-    it("should write events to file and database", async () => {
-      const events: Event[] = [
-        {
-          start: moment.utc("2024-03-21T12:00:00.000Z"),
-          end: moment.utc("2024-03-21T12:00:00.000Z"),
-          summary: "Sun quintile Moon",
-          description: "Sun perfective quintile Moon",
-          categories: ["Specialty Aspect"],
-        },
-      ];
-
-      const { default: fs } = await import("node:fs");
-
-      writeSpecialtyAspectEvents({
-        start: moment.utc("2024-03-21T00:00:00.000Z"),
-        end: moment.utc("2024-03-21T23:59:59.000Z"),
-        specialtyAspectBodies: ["sun", "moon"],
-        specialtyAspectEvents: events,
-      });
-
-      expect(fs.writeFileSync).toHaveBeenCalled();
-    });
-
-    it("should not write if events array is empty", async () => {
-      const { default: fs } = await import("node:fs");
-
-      writeSpecialtyAspectEvents({
-        start: moment.utc("2024-03-21T00:00:00.000Z"),
-        end: moment.utc("2024-03-21T23:59:59.000Z"),
-        specialtyAspectBodies: ["sun", "moon"],
-        specialtyAspectEvents: [],
-      });
-
-      expect(fs.writeFileSync).not.toHaveBeenCalled();
-    });
-
-    it("should include body names in filename", async () => {
-      const events: Event[] = [
-        {
-          start: moment.utc("2024-03-21T12:00:00.000Z"),
-          end: moment.utc("2024-03-21T12:00:00.000Z"),
-          summary: "Sun quintile Moon",
-          description: "Sun perfective quintile Moon",
-          categories: ["Specialty Aspect"],
-        },
-      ];
-
-      const { default: fs } = await import("node:fs");
-
-      writeSpecialtyAspectEvents({
-        start: moment.utc("2024-03-21T00:00:00.000Z"),
-        end: moment.utc("2024-03-21T23:59:59.000Z"),
-        specialtyAspectBodies: ["sun", "moon", "mars"],
-        specialtyAspectEvents: events,
-      });
-
-      const writeCall = vi.mocked(fs.writeFileSync).mock.calls[0];
-      if (!writeCall) {
-        throw new Error("writeCall is undefined");
-      }
-      const filename = writeCall[0];
-      expect(filename).toContain("sun,moon,mars");
-    });
-
-    it("should include date range in filename", async () => {
-      const events: Event[] = [
-        {
-          start: moment.utc("2024-03-21T12:00:00.000Z"),
-          end: moment.utc("2024-03-21T12:00:00.000Z"),
-          summary: "Sun quintile Moon",
-          description: "Sun perfective quintile Moon",
-          categories: ["Specialty Aspect"],
-        },
-      ];
-
-      const { default: fs } = await import("node:fs");
-
-      writeSpecialtyAspectEvents({
-        start: moment.utc("2024-03-21T00:00:00.000Z"),
-        end: moment.utc("2024-03-22T00:00:00.000Z"),
-        specialtyAspectBodies: ["sun", "moon"],
-        specialtyAspectEvents: events,
-      });
-
-      const writeCall = vi.mocked(fs.writeFileSync).mock.calls[0];
-      if (!writeCall) {
-        throw new Error("writeCall is undefined");
-      }
-      const filename = writeCall[0];
-      expect(filename).toContain(
-        "2024-03-21T00:00:00.000Z-2024-03-22T00:00:00.000Z",
-      );
     });
   });
 

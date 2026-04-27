@@ -32,11 +32,11 @@ describe("quintupleAspects.events", () => {
           { bodies: ["venus", "moon"], aspect: "quintile" },
         ];
 
-        const events = getQuintupleAspectEvents(
+        const events = getQuintupleAspectEvents({
           currentAspectBodies,
           previousAspectBodies,
-          currentMinute,
-        );
+          minute: currentMinute,
+        });
 
         // No events - pattern exists in prev/current/next minutes
         expect(events.length).toBe(0);
@@ -55,11 +55,11 @@ describe("quintupleAspects.events", () => {
         ];
         const previousAspectBodies: AspectBodies[] = [];
 
-        const events = getQuintupleAspectEvents(
+        const events = getQuintupleAspectEvents({
           currentAspectBodies,
           previousAspectBodies,
-          currentMinute,
-        );
+          minute: currentMinute,
+        });
 
         // Should detect forming event - pattern exists at current but not previous minute
         expect(events.length).toBe(1);
@@ -79,11 +79,11 @@ describe("quintupleAspects.events", () => {
           { bodies: ["venus", "moon"], aspect: "quintile" },
         ];
 
-        const events = getQuintupleAspectEvents(
+        const events = getQuintupleAspectEvents({
           currentAspectBodies,
           previousAspectBodies,
-          currentMinute,
-        );
+          minute: currentMinute,
+        });
 
         // Should detect dissolving event - pattern exists at current but not next minute
         expect(events.length).toBe(1);
@@ -100,11 +100,11 @@ describe("quintupleAspects.events", () => {
         ];
         const previousAspectBodies: AspectBodies[] = [];
 
-        const events = getQuintupleAspectEvents(
+        const events = getQuintupleAspectEvents({
           currentAspectBodies,
           previousAspectBodies,
-          currentMinute,
-        );
+          minute: currentMinute,
+        });
 
         const pentagram = events.find((e) =>
           e.categories.includes("Pentagram"),
@@ -121,11 +121,11 @@ describe("quintupleAspects.events", () => {
         ];
         const previousAspectBodies: AspectBodies[] = [];
 
-        const events = getQuintupleAspectEvents(
+        const events = getQuintupleAspectEvents({
           currentAspectBodies,
           previousAspectBodies,
-          currentMinute,
-        );
+          minute: currentMinute,
+        });
 
         const pentagram = events.find((e) =>
           e.categories.includes("Pentagram"),
@@ -136,7 +136,7 @@ describe("quintupleAspects.events", () => {
 
     it("should handle empty stored aspects", () => {
       const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
-      const events = getQuintupleAspectEvents([], [], currentMinute);
+      const events = getQuintupleAspectEvents({ currentAspectBodies: [], previousAspectBodies: [], minute: currentMinute });
       expect(events.length).toBe(0);
     });
 
@@ -147,11 +147,11 @@ describe("quintupleAspects.events", () => {
       const currentAspectBodies: AspectBodies[] = [];
       const previousAspectBodies: AspectBodies[] = [];
 
-      const events = getQuintupleAspectEvents(
+      const events = getQuintupleAspectEvents({
         currentAspectBodies,
         previousAspectBodies,
-        currentMinute,
-      );
+        minute: currentMinute,
+      });
       expect(events.length).toBe(0);
     });
 
@@ -173,11 +173,11 @@ describe("quintupleAspects.events", () => {
         { bodies: ["venus", "moon"], aspect: "quintile" },
       ];
 
-      const events = getQuintupleAspectEvents(
+      const events = getQuintupleAspectEvents({
         currentAspectBodies,
         previousAspectBodies,
-        currentMinute,
-      );
+        minute: currentMinute,
+      });
 
       // No events - pattern exists in prev/current/next minutes
       expect(events.length).toBe(0);

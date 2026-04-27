@@ -8,17 +8,14 @@
  * Moon never do.
  */
 
-import fs from "node:fs";
 
 import _ from "lodash";
 
 import {
   type Event,
-  getCalendar,
-  MARGIN_MINUTES,
+  MARGIN_MINUTES
 } from "../../calendar.utilities";
 import { getCoordinateFromEphemeris } from "../../ephemeris/ephemeris.service";
-import { getOutputPath } from "../../output.utilities";
 import { pairProgressiveEvents } from "../../progressive.utilities";
 import { symbolByBody, symbolByOrbitalDirection } from "../../symbols";
 import { retrogradeBodies } from "../../types";
@@ -70,9 +67,9 @@ import type { Moment } from "moment-timezone";
  */
 export function getRetrogradeEvents(args: {
   coordinateEphemerisByBody: Record<RetrogradeBody, CoordinateEphemeris>;
-  currentMinute: Moment;
+  minute: Moment;
 }): Event[] {
-  const { coordinateEphemerisByBody, currentMinute } = args;
+  const { coordinateEphemerisByBody, minute } = args;
   const retrogradeEvents: Event[] = [];
 
   for (const body of retrogradeBodies) {
@@ -80,14 +77,14 @@ export function getRetrogradeEvents(args: {
 
     const currentLongitude = getCoordinateFromEphemeris(
       ephemeris,
-      currentMinute.toISOString(),
+      minute.toISOString(),
       "longitude",
     );
 
     const previousLongitudes = Array.from(
       { length: MARGIN_MINUTES },
       (_, index) => {
-        const date = currentMinute
+        const date = minute
           .clone()
           .subtract(MARGIN_MINUTES - index, "minutes");
         return getCoordinateFromEphemeris(
@@ -101,7 +98,7 @@ export function getRetrogradeEvents(args: {
     const nextLongitudes = Array.from(
       { length: MARGIN_MINUTES },
       (_, index) => {
-        const date = currentMinute.clone().add(index + 1, "minutes");
+        const date = minute.clone().add(index + 1, "minutes");
         return getCoordinateFromEphemeris(
           ephemeris,
           date.toISOString(),
@@ -110,7 +107,7 @@ export function getRetrogradeEvents(args: {
       },
     );
 
-    const timestamp = currentMinute;
+    const timestamp = minute;
     const longitudes = {
       currentLongitude,
       previousLongitudes,
@@ -210,68 +207,6 @@ export function buildRetrogradeEvent(args: {
   };
 
   return retrogradeEvent;
-}
-
-/**
- * Writes retrograde station events to an iCalendar file.
- *
- * Generates an `.ics` file containing all retrograde and direct station events
- * for a date range. File is named with body list and timespan. Skips writing
- * if no events exist.
- *
- * @param args - Output parameters
- * @param end - End date of the event range (inclusive)
- * @param retrogradeBodies - List of bodies checked for retrograde motion
- * @param retrogradeEvents - Array of station events to write
- * @param start - Start date of the event range (inclusive)
- *
- * @remarks
- * - Filename format: `retrogrades_[bodies]_[start]-[end].ics`
- * - Example: `retrogrades_mercury, venus, mars_2026-01-01T00:00:00Z-2026-12-31T23:59:59Z.ics`
- * - Uses UTF-8 encoding via TextEncoder
- * - Calendar name: "Retrogrades ↩️"
- * - Logs write operation with event count and timespan
- * - Early return if event array is empty
- *
- * @see {@link getCalendar} for iCalendar generation
- * @see {@link getOutputPath} for output directory resolution
- *
- * @example
- * ```typescript
- * writeRetrogradeEvents({
- *   retrogradeEvents: events,
- *   retrogradeBodies: ["mercury", "venus", "mars"],
- *   start: new Date('2026-01-01'),
- *   end: new Date('2026-12-31')
- * }); // Writes retrogrades_mercury, venus, mars_2026-01-01T00:00:00Z-2026-12-31T23:59:59Z.ics
- * ```
- */
-export function writeRetrogradeEvents(args: {
-  end: Moment;
-  retrogradeBodies: RetrogradeBody[];
-  retrogradeEvents: Event[];
-  start: Moment;
-}): void {
-  const { retrogradeBodies, retrogradeEvents, start, end } = args;
-  if (_.isEmpty(retrogradeEvents)) {
-    return;
-  }
-
-  const timespan = `${start.toISOString()}-${end.toISOString()}`;
-  const message = `${retrogradeEvents.length} retrograde events from ${timespan}`;
-  console.log(`↩️ Writing ${message}`);
-
-  const retrogradeBodiesString = retrogradeBodies.join(", ");
-  const retrogradesCalendar = getCalendar({
-    events: retrogradeEvents,
-    name: "Retrogrades ↩️",
-  });
-  fs.writeFileSync(
-    getOutputPath(`retrogrades_${retrogradeBodiesString}_${timespan}.ics`),
-    new TextEncoder().encode(retrogradesCalendar),
-  );
-
-  console.log(`↩️ Wrote ${message}`);
 }
 
 /**
