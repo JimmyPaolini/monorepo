@@ -265,7 +265,9 @@ describe("eclipses.events", () => {
       if (solarDuration) {
         expect(solarDuration.start).toEqual(beginningEvent.start);
         expect(solarDuration.end).toEqual(endingEvent.start);
-        expect(solarDuration.summary).toBe("🌐 ☀️🐉 Solar Eclipse (Geocentric)");
+        expect(solarDuration.summary).toBe(
+          "🌐 ☀️🐉 Solar Eclipse (Geocentric)",
+        );
         expect(solarDuration.description).toBe("Solar Eclipse (Geocentric)");
         expect(solarDuration.categories).toContain("Solar");
       }

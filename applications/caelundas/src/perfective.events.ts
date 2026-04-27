@@ -1,4 +1,3 @@
-
 import { detectPerfectiveEventsByDate } from "./date";
 import { addEvents } from "./events.store";
 

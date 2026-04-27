@@ -19,7 +19,6 @@
  * @see {@link ./ephemeris.types#} for ephemeris data structures
  */
 
-
 import { bodies } from "../constants";
 
 import { computeAllEphemerides } from "./ephemeris.service";

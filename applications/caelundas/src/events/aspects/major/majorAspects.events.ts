@@ -11,7 +11,6 @@ import fs from "node:fs";
 
 import _ from "lodash";
 
-
 import { type Event, getCalendar } from "../../../calendar.utilities";
 import { majorAspects } from "../../../constants";
 import { getCoordinateFromEphemeris } from "../../../ephemeris/ephemeris.service";
@@ -438,7 +437,10 @@ export function getMajorAspectProgressiveEvents(events: Event[]): Event[] {
  * // Returns: { summary: "☉□♃ Sun square Jupiter", start: Jan 1, end: Jan 10, ... }
  * ```
  */
-function getMajorAspectProgressiveEvent(beginning: Event, ending: Event): Event {
+function getMajorAspectProgressiveEvent(
+  beginning: Event,
+  ending: Event,
+): Event {
   const bodiesCapitalized = _.sortBy(
     beginning.categories.filter((category) =>
       majorAspectBodies

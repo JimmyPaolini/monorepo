@@ -30,14 +30,14 @@ vi.mock("sweph", () => ({
 }));
 
 import {
-    ECLIPTIC_TO_HORIZONTAL_FLAG,
-    GREGORIAN_CALENDAR_FLAG,
-    OSCULATING_ORBITAL_ELEMENTS_FLAG,
-    SWISS_EPHEMERIS_FLAGS,
-    initializeSwissEphemeris,
-    swissEphemerisConstantByAsteroid,
-    swissEphemerisConstantByNode,
-    swissEphemerisConstantByPlanet,
+  ECLIPTIC_TO_HORIZONTAL_FLAG,
+  GREGORIAN_CALENDAR_FLAG,
+  initializeSwissEphemeris,
+  OSCULATING_ORBITAL_ELEMENTS_FLAG,
+  SWISS_EPHEMERIS_FLAGS,
+  swissEphemerisConstantByAsteroid,
+  swissEphemerisConstantByNode,
+  swissEphemerisConstantByPlanet,
 } from "./ephemeris.integration";
 
 describe("ephemeris.integration", () => {
@@ -169,19 +169,19 @@ describe("ephemeris.integration", () => {
     });
 
     it("calls set_ephe_path with the ephemeris data directory", async () => {
-      const { set_ephe_path } = await import("sweph");
+      const { set_ephe_path: setEphemerisPath } = await import("sweph");
 
       initializeSwissEphemeris();
 
-      expect(set_ephe_path).toHaveBeenCalledWith("./data/ephemeris");
+      expect(setEphemerisPath).toHaveBeenCalledWith("./data/ephemeris");
     });
 
     it("calls set_ephe_path exactly once", async () => {
-      const { set_ephe_path } = await import("sweph");
+      const { set_ephe_path: setEphemerisPath } = await import("sweph");
 
       initializeSwissEphemeris();
 
-      expect(set_ephe_path).toHaveBeenCalledOnce();
+      expect(setEphemerisPath).toHaveBeenCalledOnce();
     });
   });
 });

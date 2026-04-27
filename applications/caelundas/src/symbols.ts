@@ -71,9 +71,9 @@ export const symbolByAsteroid = {
  * Maps each comet to its emoji representation.
  * Currently includes Halley's comet as the most notable periodic comet.
  */
-export const symbolByComet = {
-  halley: "☄",
-} as const;
+// export const symbolByComet = {
+//   halley: "☄",
+// } as const;
 
 // #region Nodes 🌕
 

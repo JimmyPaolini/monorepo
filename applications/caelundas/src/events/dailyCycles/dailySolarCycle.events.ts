@@ -11,7 +11,6 @@ import fs from "node:fs";
 
 import _ from "lodash";
 
-
 import { getCalendar } from "../../calendar.utilities";
 import { getAzimuthElevationFromEphemeris } from "../../ephemeris/ephemeris.service";
 import { isMaximum, isMinimum } from "../../math.utilities";

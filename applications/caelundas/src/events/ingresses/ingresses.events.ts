@@ -1,7 +1,6 @@
 import fs from "node:fs";
 
 import _ from "lodash";
-import type { Moment } from "moment-timezone";
 
 import { type Event, getCalendar } from "../../calendar.utilities";
 import { signs } from "../../constants";
@@ -30,6 +29,7 @@ import type {
   Sign,
   SignSymbol,
 } from "../../types";
+import type { Moment } from "moment-timezone";
 
 const categories = ["Astronomy", "Astrology", "Ingress"];
 

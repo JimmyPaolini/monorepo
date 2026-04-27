@@ -474,7 +474,11 @@ export function getQuadrupleAspectEvents(
   currentMinute: Moment,
 ): Event[] {
   return [
-    ...composeGrandCrosses(currentAspectBodies, previousAspectBodies, currentMinute),
+    ...composeGrandCrosses(
+      currentAspectBodies,
+      previousAspectBodies,
+      currentMinute,
+    ),
     ...composeKites(currentAspectBodies, previousAspectBodies, currentMinute),
   ];
 }

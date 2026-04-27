@@ -23,9 +23,8 @@ vi.mock("../../calendar.utilities", () => ({
 describe("ingresses.events", () => {
   describe("getSignIngressEvent", () => {
     it("should create a sign ingress event for Sun entering Aries", async () => {
-      const { buildSignIngressEvent: getSignIngressEvent } = await import(
-        "./ingresses.events"
-      );
+      const { buildSignIngressEvent: getSignIngressEvent } =
+        await import("./ingresses.events");
 
       const event = getSignIngressEvent({
         body: "sun",
@@ -49,9 +48,8 @@ describe("ingresses.events", () => {
     });
 
     it("should create a sign ingress event for Moon entering Taurus", async () => {
-      const { buildSignIngressEvent: getSignIngressEvent } = await import(
-        "./ingresses.events"
-      );
+      const { buildSignIngressEvent: getSignIngressEvent } =
+        await import("./ingresses.events");
 
       const event = getSignIngressEvent({
         body: "moon",
@@ -189,9 +187,8 @@ describe("ingresses.events", () => {
 
   describe("getDecanIngressEvent", () => {
     it("should create a decan ingress event", async () => {
-      const { buildDecanIngressEvent: getDecanIngressEvent } = await import(
-        "./ingresses.events"
-      );
+      const { buildDecanIngressEvent: getDecanIngressEvent } =
+        await import("./ingresses.events");
 
       const event = getDecanIngressEvent({
         body: "venus",
@@ -322,9 +319,8 @@ describe("ingresses.events", () => {
 
   describe("getPeakIngressEvent", () => {
     it("should create a peak ingress event", async () => {
-      const { buildPeakIngressEvent: getPeakIngressEvent } = await import(
-        "./ingresses.events"
-      );
+      const { buildPeakIngressEvent: getPeakIngressEvent } =
+        await import("./ingresses.events");
 
       const event = getPeakIngressEvent({
         body: "mars",

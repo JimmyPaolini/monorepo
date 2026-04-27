@@ -2,25 +2,25 @@ import moment, { type Moment } from "moment-timezone";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
-    computeAllEphemerides,
-    getAzimuthElevationEphemerisByBody,
-    getAzimuthElevationFromEphemeris,
-    getCoordinateEphemerisByBody,
-    getCoordinateFromEphemeris,
-    getDiameterEphemerisByBody,
-    getDiameterFromEphemeris,
-    getDistanceEphemerisByBody,
-    getDistanceFromEphemeris,
-    getIlluminationEphemerisByBody,
-    getIlluminationFromEphemeris,
+  computeAllEphemerides,
+  getAzimuthElevationEphemerisByBody,
+  getAzimuthElevationFromEphemeris,
+  getCoordinateEphemerisByBody,
+  getCoordinateFromEphemeris,
+  getDiameterEphemerisByBody,
+  getDiameterFromEphemeris,
+  getDistanceEphemerisByBody,
+  getDistanceFromEphemeris,
+  getIlluminationEphemerisByBody,
+  getIlluminationFromEphemeris,
 } from "./ephemeris.service";
 
 import type {
-    AzimuthElevationEphemeris,
-    CoordinateEphemeris,
-    DiameterEphemeris,
-    DistanceEphemeris,
-    IlluminationEphemeris,
+  AzimuthElevationEphemeris,
+  CoordinateEphemeris,
+  DiameterEphemeris,
+  DistanceEphemeris,
+  IlluminationEphemeris,
 } from "./ephemeris.types";
 
 // ---------------------------------------------------------------------------
@@ -137,15 +137,15 @@ describe("ephemeris.service", () => {
     };
 
     it("returns azimuth for a known timestamp", () => {
-      expect(
-        getAzimuthElevationFromEphemeris(ephemeris, ts, "azimuth"),
-      ).toBe(180);
+      expect(getAzimuthElevationFromEphemeris(ephemeris, ts, "azimuth")).toBe(
+        180,
+      );
     });
 
     it("returns elevation for a known timestamp", () => {
-      expect(
-        getAzimuthElevationFromEphemeris(ephemeris, ts, "elevation"),
-      ).toBe(44.8);
+      expect(getAzimuthElevationFromEphemeris(ephemeris, ts, "elevation")).toBe(
+        44.8,
+      );
     });
 
     it("throws when timestamp is missing", () => {
@@ -225,12 +225,12 @@ describe("ephemeris.service", () => {
         timezone: "UTC",
       });
 
-      const sunEphemeris = result["sun"];
+      const sunEphemeris = result.sun;
       expect(sunEphemeris).toBeDefined();
-      const timestamps = Object.keys(sunEphemeris ?? {});
+      const timestamps = Object.keys(sunEphemeris);
       expect(timestamps.length).toBeGreaterThanOrEqual(2);
 
-      const first = sunEphemeris?.[timestamps[0] ?? ""];
+      const first = sunEphemeris[timestamps[0] ?? ""];
       expect(first).toHaveProperty("longitude");
       expect(first).toHaveProperty("latitude");
     });
@@ -245,11 +245,11 @@ describe("ephemeris.service", () => {
 
       const nodeEphemeris = result["north lunar node"];
       expect(nodeEphemeris).toBeDefined();
-      const keys = Object.keys(nodeEphemeris ?? {});
+      const keys = Object.keys(nodeEphemeris);
       expect(keys.length).toBeGreaterThanOrEqual(2);
       // Nodes always have latitude 0
       for (const key of keys) {
-        expect(nodeEphemeris?.[key]?.latitude).toBe(0);
+        expect(nodeEphemeris[key]?.latitude).toBe(0);
       }
     });
 
@@ -264,7 +264,7 @@ describe("ephemeris.service", () => {
       const nodeEphemeris = result["south lunar node"];
       expect(nodeEphemeris).toBeDefined();
       // All latitudes must be 0 for nodes
-      for (const val of Object.values(nodeEphemeris ?? {})) {
+      for (const val of Object.values(nodeEphemeris)) {
         expect(val.latitude).toBe(0);
       }
     });
@@ -312,12 +312,12 @@ describe("ephemeris.service", () => {
         timezone: "UTC",
       });
 
-      const sunEphemeris = result["sun"];
+      const sunEphemeris = result.sun;
       expect(sunEphemeris).toBeDefined();
-      const timestamps = Object.keys(sunEphemeris ?? {});
+      const timestamps = Object.keys(sunEphemeris);
       expect(timestamps.length).toBeGreaterThanOrEqual(2);
 
-      const first = sunEphemeris?.[timestamps[0] ?? ""];
+      const first = sunEphemeris[timestamps[0] ?? ""];
       expect(first).toHaveProperty("azimuth", 180);
       expect(first).toHaveProperty("elevation", 44.8);
     });
@@ -335,9 +335,9 @@ describe("ephemeris.service", () => {
         timezone: "UTC",
       });
 
-      const sunEphemeris = result["sun"];
+      const sunEphemeris = result.sun;
       expect(sunEphemeris).toBeDefined();
-      for (const val of Object.values(sunEphemeris ?? {})) {
+      for (const val of Object.values(sunEphemeris)) {
         expect(val.illumination).toBe(100);
       }
     });
@@ -351,10 +351,10 @@ describe("ephemeris.service", () => {
         timezone: "UTC",
       });
 
-      const moonEphemeris = result["moon"];
+      const moonEphemeris = result.moon;
       expect(moonEphemeris).toBeDefined();
       // pheno_ut mock returns data[1] = 0.75 → illumination = 75
-      for (const val of Object.values(moonEphemeris ?? {})) {
+      for (const val of Object.values(moonEphemeris)) {
         expect(val.illumination).toBe(75);
       }
     });
@@ -371,10 +371,10 @@ describe("ephemeris.service", () => {
         timezone: "UTC",
       });
 
-      const sunEphemeris = result["sun"];
+      const sunEphemeris = result.sun;
       expect(sunEphemeris).toBeDefined();
       // pheno_ut mock returns data[3] = 0.5
-      for (const val of Object.values(sunEphemeris ?? {})) {
+      for (const val of Object.values(sunEphemeris)) {
         expect(val.diameter).toBe(0.5);
       }
     });
@@ -391,10 +391,10 @@ describe("ephemeris.service", () => {
         timezone: "UTC",
       });
 
-      const sunEphemeris = result["sun"];
+      const sunEphemeris = result.sun;
       expect(sunEphemeris).toBeDefined();
       // calc mock returns data[2] = 1.01
-      for (const val of Object.values(sunEphemeris ?? {})) {
+      for (const val of Object.values(sunEphemeris)) {
         expect(val.distance).toBe(1.01);
       }
     });
@@ -434,8 +434,8 @@ describe("ephemeris.service", () => {
         end: makeEnd(),
       });
 
-      expect(result.coordinateEphemerisByBody["sun"]).toBeDefined();
-      expect(result.coordinateEphemerisByBody["moon"]).toBeDefined();
+      expect(result.coordinateEphemerisByBody.sun).toBeDefined();
+      expect(result.coordinateEphemerisByBody.moon).toBeDefined();
     });
 
     it("sets sun illumination to 100 in single-pass computation", () => {
@@ -450,9 +450,9 @@ describe("ephemeris.service", () => {
         end: makeEnd(),
       });
 
-      const illumination = result.illuminationEphemerisByBody["sun"];
+      const illumination = result.illuminationEphemerisByBody.sun;
       expect(illumination).toBeDefined();
-      for (const val of Object.values(illumination ?? {})) {
+      for (const val of Object.values(illumination)) {
         expect(val.illumination).toBe(100);
       }
     });
@@ -493,7 +493,7 @@ describe("ephemeris.service", () => {
       const south = result.coordinateEphemerisByBody["south lunar node"];
       expect(north).toBeDefined();
       expect(south).toBeDefined();
-      for (const val of Object.values(north ?? {})) {
+      for (const val of Object.values(north)) {
         expect(val.latitude).toBe(0);
       }
     });

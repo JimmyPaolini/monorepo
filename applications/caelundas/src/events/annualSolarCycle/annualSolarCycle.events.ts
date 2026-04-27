@@ -2,7 +2,6 @@ import fs from "node:fs";
 
 import _ from "lodash";
 
-
 import { type Event, getCalendar } from "../../calendar.utilities";
 import {
   getCoordinateFromEphemeris,

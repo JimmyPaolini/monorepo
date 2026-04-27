@@ -2,12 +2,12 @@ import moment from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
 import {
-    getStelliumEvents,
-    getStelliumProgressiveEvents,
+  getStelliumEvents,
+  getStelliumProgressiveEvents,
 } from "./stellium.events";
 
-import type { AspectBodies } from "../aspects.store";
 import type { Event } from "../../../calendar.utilities";
+import type { AspectBodies } from "../aspects.store";
 
 describe("stellium.events", () => {
   describe("getStelliumEvents", () => {

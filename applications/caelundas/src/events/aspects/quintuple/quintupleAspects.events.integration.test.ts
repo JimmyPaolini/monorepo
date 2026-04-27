@@ -2,12 +2,12 @@ import moment from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
 import {
-    getQuintupleAspectEvents,
-    getQuintupleAspectProgressiveEvents,
+  getQuintupleAspectEvents,
+  getQuintupleAspectProgressiveEvents,
 } from "./quintupleAspects.events";
 
-import type { AspectBodies } from "../aspects.store";
 import type { Event } from "../../../calendar.utilities";
+import type { AspectBodies } from "../aspects.store";
 
 /**
  * Integration tests for Quintuple Aspects (Pentagram) detection

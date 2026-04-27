@@ -94,10 +94,7 @@ function dateToJulianDays(date: Moment): {
 /**
  * Generates minute-by-minute Coordinated Universal Time dates from start to end (inclusive).
  */
-function* generateMinutes(
-  start: Moment,
-  end: Moment,
-): Generator<Moment> {
+function* generateMinutes(start: Moment, end: Moment): Generator<Moment> {
   const endMs = end.valueOf();
   let currentMs = start.valueOf();
   while (currentMs <= endMs) {

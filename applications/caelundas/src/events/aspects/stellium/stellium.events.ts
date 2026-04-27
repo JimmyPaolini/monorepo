@@ -1,6 +1,5 @@
 import _ from "lodash";
 
-
 import { symbolByBody, symbolByStellium } from "../../../symbols";
 import { stelliumBodies } from "../../../types";
 import {
@@ -244,7 +243,13 @@ export function getStelliumEvents(
   previousAspectBodies: AspectBodies[],
   currentMinute: Moment,
 ): Event[] {
-  return [...composeStelliums(currentAspectBodies, previousAspectBodies, currentMinute)];
+  return [
+    ...composeStelliums(
+      currentAspectBodies,
+      previousAspectBodies,
+      currentMinute,
+    ),
+  ];
 }
 
 // #region Progressive Events

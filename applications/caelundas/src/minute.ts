@@ -1,4 +1,3 @@
-
 import { generateMinutes } from "./date.utilities";
 import {
   getAnnualSolarCycleEvents,
@@ -103,11 +102,7 @@ export function detectPerfectiveEventsByMinute(args: {
         previousAspectBodies,
         minute,
       ),
-      ...getStelliumEvents(
-        currentAspectBodies,
-        previousAspectBodies,
-        minute,
-      ),
+      ...getStelliumEvents(currentAspectBodies, previousAspectBodies, minute),
       ...getRetrogradeEvents({
         coordinateEphemerisByBody,
         currentMinute: minute,

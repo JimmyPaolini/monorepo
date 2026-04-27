@@ -31,7 +31,9 @@ function makeKey(body1: Body, body2: Body, aspect: Aspect): string {
  * @remarks
  * Function name retained for compatibility with earlier integration work.
  */
-export function updateAspectBodiesStoreByPerfectiveEvents(events: Event[]): void {
+export function updateAspectBodiesStoreByPerfectiveEvents(
+  events: Event[],
+): void {
   const lowercaseBodies = bodies.map((body) => body.toLowerCase());
 
   for (const event of events) {

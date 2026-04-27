@@ -12,7 +12,6 @@ import fs from "node:fs";
 
 import _ from "lodash";
 
-
 import {
   type Event,
   getCalendar,

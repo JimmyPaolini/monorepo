@@ -1,10 +1,10 @@
-import { beforeEach, describe, expect, it } from "vitest";
 import moment from "moment-timezone";
+import { beforeEach, describe, expect, it } from "vitest";
 
 import {
-    getAspectBodies,
-    resetAspectBodiesStore,
-    updateAspectBodiesStoreByPerfectiveEvents,
+  getAspectBodies,
+  resetAspectBodiesStore,
+  updateAspectBodiesStoreByPerfectiveEvents,
 } from "./aspects.store";
 
 import type { Event } from "../../calendar.utilities";

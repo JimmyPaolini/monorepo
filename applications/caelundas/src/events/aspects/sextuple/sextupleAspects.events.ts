@@ -1,5 +1,4 @@
 import _ from "lodash";
-import type { Moment } from "moment-timezone";
 
 import { getCombinations } from "../../../math.utilities";
 import { symbolByBody, symbolBySextupleAspect } from "../../../symbols";
@@ -12,6 +11,7 @@ import {
 import type { Event } from "../../../calendar.utilities";
 import type { AspectPhase, Body, SextupleAspect } from "../../../types";
 import type { AspectBodies } from "../aspects.store";
+import type { Moment } from "moment-timezone";
 
 /**
  * Checks if 6 bodies form a valid hexagram (Star of David) pattern.
@@ -378,7 +378,11 @@ export function getSextupleAspectEvents(
   previousAspectBodies: AspectBodies[],
   currentMinute: Moment,
 ): Event[] {
-  return composeHexagrams(currentAspectBodies, previousAspectBodies, currentMinute);
+  return composeHexagrams(
+    currentAspectBodies,
+    previousAspectBodies,
+    currentMinute,
+  );
 }
 
 // #region Progressive Events

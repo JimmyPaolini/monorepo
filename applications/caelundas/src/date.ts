@@ -1,4 +1,3 @@
-
 import { MARGIN_MINUTES } from "./calendar.utilities";
 import { generateDays } from "./date.utilities";
 import { getEphemerides } from "./ephemeris/ephemeris.aggregates";

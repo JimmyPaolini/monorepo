@@ -1,6 +1,5 @@
 import _ from "lodash";
 
-
 import { getCombinations } from "../../../math.utilities";
 import { symbolByBody, symbolByQuintupleAspect } from "../../../symbols";
 import { quintupleAspectBodies } from "../../../types";
@@ -324,7 +323,11 @@ export function getQuintupleAspectEvents(
   previousAspectBodies: AspectBodies[],
   currentMinute: Moment,
 ): Event[] {
-  return composePentagrams(currentAspectBodies, previousAspectBodies, currentMinute);
+  return composePentagrams(
+    currentAspectBodies,
+    previousAspectBodies,
+    currentMinute,
+  );
 }
 
 // #region Progressive Events

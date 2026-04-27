@@ -324,9 +324,17 @@ export function getTripleAspectEvents(
   currentMinute: Moment,
 ): Event[] {
   return [
-    ...composeTSquares(currentAspectBodies, previousAspectBodies, currentMinute),
+    ...composeTSquares(
+      currentAspectBodies,
+      previousAspectBodies,
+      currentMinute,
+    ),
     ...composeYods(currentAspectBodies, previousAspectBodies, currentMinute),
-    ...composeGrandTrines(currentAspectBodies, previousAspectBodies, currentMinute),
+    ...composeGrandTrines(
+      currentAspectBodies,
+      previousAspectBodies,
+      currentMinute,
+    ),
     // Can add more patterns: Hammer, etc.
   ];
 }

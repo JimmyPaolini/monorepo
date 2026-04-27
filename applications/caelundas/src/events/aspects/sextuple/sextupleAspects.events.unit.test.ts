@@ -2,12 +2,12 @@ import moment from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
 import {
-    getSextupleAspectEvents,
-    getSextupleAspectProgressiveEvents,
+  getSextupleAspectEvents,
+  getSextupleAspectProgressiveEvents,
 } from "./sextupleAspects.events";
 
-import type { AspectBodies } from "../aspects.store";
 import type { Event } from "../../../calendar.utilities";
+import type { AspectBodies } from "../aspects.store";
 
 describe("sextupleAspects.events", () => {
   describe("getSextupleAspectEvents", () => {
