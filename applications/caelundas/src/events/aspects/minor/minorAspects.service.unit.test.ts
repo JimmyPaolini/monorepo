@@ -3,9 +3,9 @@ import { describe, expect, it, vi } from "vitest";
 
 import { minorAspectBodies } from "../../../types";
 
-import { MinorAspectsService } from "./minor-aspects.service";
+import { getMinorAspect, getMinorAspectPhase, MinorAspectsService } from "./minor-aspects.service";
 
-import type { Event } from "../../../calendar.utilities";
+import type { Event } from "../../../calendar/calendar.types";
 import type { CoordinateEphemeris } from "../../../ephemeris/ephemeris.types";
 import type { Body } from "../../../types";
 
@@ -604,5 +604,54 @@ describe("minorAspects.events", () => {
       expect(progressiveEvents[0]?.description).toContain("Sun");
       expect(progressiveEvents[0]?.description).toContain("Venus");
     });
+  });
+});
+
+describe("getMinorAspect", () => {
+  it("should return semisextile for bodies 30° apart", () => {
+    expect(getMinorAspect({ longitudeBody1: 0, longitudeBody2: 30 })).toBe(
+      "semisextile",
+    );
+  });
+
+  it("should return semisquare for bodies 45° apart", () => {
+    expect(getMinorAspect({ longitudeBody1: 0, longitudeBody2: 45 })).toBe(
+      "semisquare",
+    );
+  });
+
+  it("should return sesquiquadrate for bodies 135° apart", () => {
+    expect(getMinorAspect({ longitudeBody1: 0, longitudeBody2: 135 })).toBe(
+      "sesquiquadrate",
+    );
+  });
+
+  it("should return quincunx for bodies 150° apart", () => {
+    expect(getMinorAspect({ longitudeBody1: 0, longitudeBody2: 150 })).toBe(
+      "quincunx",
+    );
+  });
+
+  it("should return null when no minor aspect is within orb", () => {
+    expect(
+      getMinorAspect({ longitudeBody1: 0, longitudeBody2: 10 }),
+    ).toBeNull();
+    expect(
+      getMinorAspect({ longitudeBody1: 0, longitudeBody2: 120 }),
+    ).toBeNull();
+  });
+});
+
+describe("getMinorAspectPhase", () => {
+  it("should detect minor aspect phases", () => {
+    const phase = getMinorAspectPhase({
+      previousLongitudeBody1: 0,
+      previousLongitudeBody2: 27,
+      currentLongitudeBody1: 0,
+      currentLongitudeBody2: 29,
+      nextLongitudeBody1: 0,
+      nextLongitudeBody2: 30,
+    });
+    expect(phase).toBe("forming");
   });
 });

@@ -3,16 +3,59 @@ import _ from "lodash";
 
 import { symbolByBody, symbolByStellium } from "../../../symbols";
 import { stelliumBodies } from "../../../types";
-import {
-    determineCompoundPhaseFromSnapshots,
-    groupAspectsByType,
-    haveAspect,
-} from "../aspects.composition";
 
-import type { Event } from "../../../calendar.utilities";
-import type { AspectPhase, Body } from "../../../types";
-import type { AspectBodies } from "../aspects.utilities";
+import type { Event } from "../../../calendar/calendar.types";
+import type { Aspect, AspectPhase, Body } from "../../../types";
+import type { AspectBodies } from "../aspects.service";
 import type { Moment } from "moment-timezone";
+
+function groupAspectsByType<T extends AspectBodies>(edges: T[]): Map<Aspect, T[]> {
+  const grouped = _.groupBy(edges, "aspect");
+  return new Map(Object.entries(grouped)) as Map<Aspect, T[]>;
+}
+
+function haveAspect(
+  body1: Body,
+  body2: Body,
+  aspectType: Aspect,
+  edges: AspectBodies[],
+): boolean {
+  return edges.some(
+    (edge) =>
+      edge.aspect === aspectType &&
+      ((edge.bodies[0] === body1 && edge.bodies[1] === body2) ||
+        (edge.bodies[0] === body2 && edge.bodies[1] === body1)),
+  );
+}
+
+function determineCompoundPhaseFromSnapshots(
+  currentAspectBodies: AspectBodies[],
+  previousAspectBodies: AspectBodies[],
+  patternBodies: Body[],
+  currentMinute: Moment,
+  checkPatternExists: (edges: AspectBodies[]) => boolean,
+): { phase: AspectPhase; eventMinute: Moment } | null {
+  const bodySet = new Set(patternBodies);
+  const filterByBodies = (edges: AspectBodies[]): AspectBodies[] =>
+    edges.filter((e) => bodySet.has(e.bodies[0]) && bodySet.has(e.bodies[1]));
+
+  const currentFiltered = filterByBodies(currentAspectBodies);
+  const previousFiltered = filterByBodies(previousAspectBodies);
+
+  const currentExists = checkPatternExists(currentFiltered);
+  const previousExists = checkPatternExists(previousFiltered);
+
+  if (currentExists && !previousExists) {
+    return { phase: "forming", eventMinute: currentMinute };
+  }
+  if (!currentExists && previousExists) {
+    return {
+      phase: "dissolving",
+      eventMinute: currentMinute.clone().subtract(1, "minute"),
+    };
+  }
+  return null;
+}
 
 // #region Progressive Events
 

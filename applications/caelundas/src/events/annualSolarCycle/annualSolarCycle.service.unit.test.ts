@@ -1,11 +1,11 @@
 import moment, { type Moment } from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
 
-import { MARGIN_MINUTES } from "../../calendar.utilities";
+import { MARGIN_MINUTES } from "../../calendar/calendar.types";
 
 import { AnnualSolarCycleService } from "./annual-solar-cycle.service";
 
-import type { Event } from "../../calendar.utilities";
+import type { Event } from "../../calendar/calendar.types";
 import type {
     CoordinateEphemeris,
     DistanceEphemeris,

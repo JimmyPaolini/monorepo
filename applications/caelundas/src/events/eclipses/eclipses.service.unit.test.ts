@@ -1,15 +1,16 @@
 import moment, { type Moment } from "moment-timezone";
-import { describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { MARGIN_MINUTES } from "../../calendar.utilities";
+import { MARGIN_MINUTES } from "../../calendar/calendar.types";
 
 import { EclipsesService } from "./eclipses.service";
 
-import type { Event } from "../../calendar.utilities";
+import type { Event } from "../../calendar/calendar.types";
 import type {
-  CoordinateEphemeris,
-  DiameterEphemeris,
+    CoordinateEphemeris,
+    DiameterEphemeris,
 } from "../../ephemeris/ephemeris.types";
+import type { EclipsePhase } from "../../types";
 
 vi.mock("fs", () => ({
   default: {
@@ -18,6 +19,28 @@ vi.mock("fs", () => ({
 }));
 
 const service = new EclipsesService();
+interface EclipseArgs {
+  currentDiameterMoon: number;
+  currentDiameterSun: number;
+  currentLatitudeMoon: number;
+  currentLatitudeSun: number;
+  currentLongitudeMoon: number;
+  currentLongitudeSun: number;
+}currentLongitudeSun: number;
+}
+type EclipseFullArgs = EclipseArgs & {
+  nextLongitudeMoon: number;
+  nextLongitudeSun: number;
+  previousLongitudeMoon: number;
+  previousLongitudeSun: number;
+};
+interface ServicePrivate {
+  isSolarEclipse: (args: EclipseFullArgs) => EclipsePhase | null;
+  isSolarEclipseActive: (args: EclipseArgs) => boolean;
+  isLunarEclipse: (args: EclipseFullArgs) => EclipsePhase | null;
+  isLunarEclipseActive: (args: EclipseArgs) => boolean;
+}
+const s = service as unknown as ServicePrivate;
 
 
 describe("eclipses.events", () => {
@@ -416,6 +439,223 @@ describe("eclipses.events", () => {
       const progressiveEvents = service.detectProgressive([nonEclipseEvent]);
 
       expect(progressiveEvents).toHaveLength(0);
+    });
+  });
+
+  describe("private utility methods", () => {
+    beforeEach(() => {
+      vi.restoreAllMocks();
+    });
+
+    const defaultDiameters = {
+      currentDiameterMoon: 0.5,
+      currentDiameterSun: 0.5,
+    };
+
+    describe("isSolarEclipse", () => {
+      it("should return 'maximum' at solar eclipse maximum", () => {
+        const result = s.isSolarEclipse({
+          ...defaultDiameters,
+          currentLatitudeMoon: 0,
+          currentLatitudeSun: 0,
+          currentLongitudeMoon: 100,
+          currentLongitudeSun: 100,
+          previousLongitudeMoon: 99,
+          previousLongitudeSun: 100,
+          nextLongitudeMoon: 101,
+          nextLongitudeSun: 100,
+        });
+        expect(result).toBe("maximum");
+      });
+
+      it("should return 'beginning' when eclipse starts", () => {
+        const diameter = 0.5 + 0.5;
+        const result = s.isSolarEclipse({
+          ...defaultDiameters,
+          currentLatitudeMoon: 0,
+          currentLatitudeSun: 0,
+          currentLongitudeMoon: 100 + diameter * 0.5,
+          currentLongitudeSun: 100,
+          previousLongitudeMoon: 100 + diameter * 1.5,
+          previousLongitudeSun: 100,
+          nextLongitudeMoon: 100 + diameter * 0.3,
+          nextLongitudeSun: 100,
+        });
+        expect(result).toBe("beginning");
+      });
+
+      it("should return 'ending' when eclipse ends", () => {
+        const diameter = 0.5 + 0.5;
+        const result = s.isSolarEclipse({
+          ...defaultDiameters,
+          currentLatitudeMoon: 0,
+          currentLatitudeSun: 0,
+          currentLongitudeMoon: 100 + diameter * 0.5,
+          currentLongitudeSun: 100,
+          previousLongitudeMoon: 100 + diameter * 0.3,
+          previousLongitudeSun: 100,
+          nextLongitudeMoon: 100 + diameter * 1.5,
+          nextLongitudeSun: 100,
+        });
+        expect(result).toBe("ending");
+      });
+
+      it("should return null when latitude too far for eclipse", () => {
+        const result = s.isSolarEclipse({
+          ...defaultDiameters,
+          currentLatitudeMoon: 5,
+          currentLatitudeSun: 0,
+          currentLongitudeMoon: 100,
+          currentLongitudeSun: 100,
+          previousLongitudeMoon: 99,
+          previousLongitudeSun: 100,
+          nextLongitudeMoon: 101,
+          nextLongitudeSun: 100,
+        });
+        expect(result).toBeNull();
+      });
+
+      it("should return null when not at conjunction", () => {
+        const result = s.isSolarEclipse({
+          ...defaultDiameters,
+          currentLatitudeMoon: 0,
+          currentLatitudeSun: 0,
+          currentLongitudeMoon: 190,
+          currentLongitudeSun: 100,
+          previousLongitudeMoon: 189,
+          previousLongitudeSun: 100,
+          nextLongitudeMoon: 191,
+          nextLongitudeSun: 100,
+        });
+        expect(result).toBeNull();
+      });
+    });
+
+    describe("isLunarEclipse", () => {
+      it("should return 'maximum' at lunar eclipse maximum", () => {
+        const result = s.isLunarEclipse({
+          ...defaultDiameters,
+          currentLatitudeMoon: 0,
+          currentLatitudeSun: 0,
+          currentLongitudeMoon: 280,
+          currentLongitudeSun: 100,
+          previousLongitudeMoon: 279,
+          previousLongitudeSun: 100,
+          nextLongitudeMoon: 281,
+          nextLongitudeSun: 100,
+        });
+        expect(result).toBe("maximum");
+      });
+
+      it("should return 'beginning' when lunar eclipse starts", () => {
+        const diameter = 0.5 + 0.5;
+        const oppositionThreshold = 180 - diameter;
+        const result = s.isLunarEclipse({
+          ...defaultDiameters,
+          currentLatitudeMoon: 0,
+          currentLatitudeSun: 0,
+          currentLongitudeMoon: 100 + oppositionThreshold + 0.5,
+          currentLongitudeSun: 100,
+          previousLongitudeMoon: 100 + oppositionThreshold - 0.5,
+          previousLongitudeSun: 100,
+          nextLongitudeMoon: 100 + oppositionThreshold + 1,
+          nextLongitudeSun: 100,
+        });
+        expect(result).toBe("beginning");
+      });
+
+      it("should return 'ending' when lunar eclipse ends", () => {
+        const diameter = 0.5 + 0.5;
+        const oppositionThreshold = 180 - diameter;
+        const result = s.isLunarEclipse({
+          ...defaultDiameters,
+          currentLatitudeMoon: 0,
+          currentLatitudeSun: 0,
+          currentLongitudeMoon: 100 + oppositionThreshold + 0.5,
+          currentLongitudeSun: 100,
+          previousLongitudeMoon: 100 + oppositionThreshold + 1,
+          previousLongitudeSun: 100,
+          nextLongitudeMoon: 100 + oppositionThreshold - 0.5,
+          nextLongitudeSun: 100,
+        });
+        expect(result).toBe("ending");
+      });
+
+      it("should return null when latitude too far for eclipse", () => {
+        const result = s.isLunarEclipse({
+          ...defaultDiameters,
+          currentLatitudeMoon: 5,
+          currentLatitudeSun: 0,
+          currentLongitudeMoon: 280,
+          currentLongitudeSun: 100,
+          previousLongitudeMoon: 279,
+          previousLongitudeSun: 100,
+          nextLongitudeMoon: 281,
+          nextLongitudeSun: 100,
+        });
+        expect(result).toBeNull();
+      });
+
+      it("should return null when not at opposition", () => {
+        const result = s.isLunarEclipse({
+          ...defaultDiameters,
+          currentLatitudeMoon: 0,
+          currentLatitudeSun: 0,
+          currentLongitudeMoon: 150,
+          currentLongitudeSun: 100,
+          previousLongitudeMoon: 149,
+          previousLongitudeSun: 100,
+          nextLongitudeMoon: 151,
+          nextLongitudeSun: 100,
+        });
+        expect(result).toBeNull();
+      });
+    });
+
+    describe("active-state helpers", () => {
+      it("should report active solar eclipse overlap", () => {
+        const active = s.isSolarEclipseActive({
+          ...defaultDiameters,
+          currentLatitudeMoon: 0,
+          currentLatitudeSun: 0,
+          currentLongitudeMoon: 100.4,
+          currentLongitudeSun: 100,
+        });
+        expect(active).toBe(true);
+      });
+
+      it("should report inactive solar eclipse overlap", () => {
+        const active = s.isSolarEclipseActive({
+          ...defaultDiameters,
+          currentLatitudeMoon: 5,
+          currentLatitudeSun: 0,
+          currentLongitudeMoon: 100,
+          currentLongitudeSun: 100,
+        });
+        expect(active).toBe(false);
+      });
+
+      it("should report active lunar eclipse overlap", () => {
+        const active = s.isLunarEclipseActive({
+          ...defaultDiameters,
+          currentLatitudeMoon: 0,
+          currentLatitudeSun: 0,
+          currentLongitudeMoon: 279.5,
+          currentLongitudeSun: 100,
+        });
+        expect(active).toBe(true);
+      });
+
+      it("should report inactive lunar eclipse overlap", () => {
+        const active = s.isLunarEclipseActive({
+          ...defaultDiameters,
+          currentLatitudeMoon: 0,
+          currentLatitudeSun: 0,
+          currentLongitudeMoon: 250,
+          currentLongitudeSun: 100,
+        });
+        expect(active).toBe(false);
+      });
     });
   });
 });

@@ -5,16 +5,10 @@ import {
     getCoordinateFromEphemeris,
     getDiameterFromEphemeris,
 } from "../../ephemeris/ephemeris.service";
+import { getAngle, isMaximum, isMinimum } from "../../math.utilities";
 import { pairProgressiveEvents } from "../../progressive.utilities";
 
-import {
-    isLunarEclipse,
-    isLunarEclipseActive,
-    isSolarEclipse,
-    isSolarEclipseActive,
-} from "./eclipses.utilities";
-
-import type { Event } from "../../calendar.utilities";
+import type { Event } from "../../calendar/calendar.types";
 import type {
     AzimuthElevationEphemeris,
     CoordinateEphemeris,
@@ -184,8 +178,8 @@ export class EclipsesService {
       previousLongitudeSun,
     };
 
-    const solarEclipsePhase = isSolarEclipse({ ...params });
-    const lunarEclipsePhase = isLunarEclipse({ ...params });
+    const solarEclipsePhase = this.isSolarEclipse({ ...params });
+    const lunarEclipsePhase = this.isLunarEclipse({ ...params });
 
     const eclipseEvents: Event[] = [];
 
@@ -246,7 +240,7 @@ export class EclipsesService {
         "elevation",
       );
 
-      const currentSolarGeocentricActive = isSolarEclipseActive({
+      const currentSolarGeocentricActive = this.isSolarEclipseActive({
         currentDiameterMoon,
         currentDiameterSun,
         currentLatitudeMoon,
@@ -254,7 +248,7 @@ export class EclipsesService {
         currentLongitudeMoon,
         currentLongitudeSun,
       });
-      const previousSolarGeocentricActive = isSolarEclipseActive({
+      const previousSolarGeocentricActive = this.isSolarEclipseActive({
         currentDiameterMoon: previousDiameterMoon,
         currentDiameterSun: previousDiameterSun,
         currentLatitudeMoon: previousLatitudeMoon,
@@ -262,7 +256,7 @@ export class EclipsesService {
         currentLongitudeMoon: previousLongitudeMoon,
         currentLongitudeSun: previousLongitudeSun,
       });
-      const nextSolarGeocentricActive = isSolarEclipseActive({
+      const nextSolarGeocentricActive = this.isSolarEclipseActive({
         currentDiameterMoon: nextDiameterMoon,
         currentDiameterSun: nextDiameterSun,
         currentLatitudeMoon: nextLatitudeMoon,
@@ -301,7 +295,7 @@ export class EclipsesService {
         );
       }
 
-      const currentLunarGeocentricActive = isLunarEclipseActive({
+      const currentLunarGeocentricActive = this.isLunarEclipseActive({
         currentDiameterMoon,
         currentDiameterSun,
         currentLatitudeMoon,
@@ -309,7 +303,7 @@ export class EclipsesService {
         currentLongitudeMoon,
         currentLongitudeSun,
       });
-      const previousLunarGeocentricActive = isLunarEclipseActive({
+      const previousLunarGeocentricActive = this.isLunarEclipseActive({
         currentDiameterMoon: previousDiameterMoon,
         currentDiameterSun: previousDiameterSun,
         currentLatitudeMoon: previousLatitudeMoon,
@@ -317,7 +311,7 @@ export class EclipsesService {
         currentLongitudeMoon: previousLongitudeMoon,
         currentLongitudeSun: previousLongitudeSun,
       });
-      const nextLunarGeocentricActive = isLunarEclipseActive({
+      const nextLunarGeocentricActive = this.isLunarEclipseActive({
         currentDiameterMoon: nextDiameterMoon,
         currentDiameterSun: nextDiameterSun,
         currentLatitudeMoon: nextLatitudeMoon,
@@ -583,5 +577,195 @@ export class EclipsesService {
       description: `Lunar Eclipse (${frameLabel})`,
       categories: [...categories, "Lunar", frameLabel],
     };
+  }
+
+  private isSolarEclipse(args: {
+    currentDiameterMoon: number;
+    currentDiameterSun: number;
+    currentLatitudeMoon: number;
+    currentLatitudeSun: number;
+    currentLongitudeMoon: number;
+    currentLongitudeSun: number;
+    nextLongitudeMoon: number;
+    nextLongitudeSun: number;
+    previousLongitudeMoon: number;
+    previousLongitudeSun: number;
+  }): EclipsePhase | null {
+    const {
+      currentDiameterMoon,
+      currentDiameterSun,
+      currentLatitudeMoon,
+      currentLatitudeSun,
+      currentLongitudeMoon,
+      currentLongitudeSun,
+      nextLongitudeMoon,
+      nextLongitudeSun,
+      previousLongitudeMoon,
+      previousLongitudeSun,
+    } = args;
+
+    const currentLongitudeAngle = getAngle(currentLongitudeMoon, currentLongitudeSun);
+    const nextLongitudeAngle = getAngle(nextLongitudeMoon, nextLongitudeSun);
+    const previousLongitudeAngle = getAngle(previousLongitudeMoon, previousLongitudeSun);
+
+    const isMinimumLongitudeAngle = isMinimum({
+      current: currentLongitudeAngle,
+      previous: previousLongitudeAngle,
+      next: nextLongitudeAngle,
+    });
+
+    const currentLatitudeAngle = getAngle(currentLatitudeMoon, currentLatitudeSun);
+    const currentDiameter = currentDiameterSun + currentDiameterMoon;
+    const isCurrentInEclipse = currentLatitudeAngle < currentDiameter;
+
+    const wasApproachingConjunction = previousLongitudeAngle > currentLongitudeAngle;
+    const willBeLeavingConjunction = currentLongitudeAngle < nextLongitudeAngle;
+
+    if (isMinimumLongitudeAngle && isCurrentInEclipse) {
+      return "maximum";
+    }
+
+    if (
+      wasApproachingConjunction &&
+      isCurrentInEclipse &&
+      currentLongitudeAngle <= currentDiameter &&
+      previousLongitudeAngle > currentDiameter
+    ) {
+      return "beginning";
+    }
+
+    if (
+      willBeLeavingConjunction &&
+      isCurrentInEclipse &&
+      currentLongitudeAngle <= currentDiameter &&
+      nextLongitudeAngle > currentDiameter
+    ) {
+      return "ending";
+    }
+
+    return null;
+  }
+
+  private isSolarEclipseActive(args: {
+    currentDiameterMoon: number;
+    currentDiameterSun: number;
+    currentLatitudeMoon: number;
+    currentLatitudeSun: number;
+    currentLongitudeMoon: number;
+    currentLongitudeSun: number;
+  }): boolean {
+    const {
+      currentDiameterMoon,
+      currentDiameterSun,
+      currentLatitudeMoon,
+      currentLatitudeSun,
+      currentLongitudeMoon,
+      currentLongitudeSun,
+    } = args;
+
+    const currentLongitudeAngle = getAngle(currentLongitudeMoon, currentLongitudeSun);
+    const currentLatitudeAngle = getAngle(currentLatitudeMoon, currentLatitudeSun);
+    const currentDiameter = currentDiameterSun + currentDiameterMoon;
+
+    return (
+      currentLatitudeAngle < currentDiameter &&
+      currentLongitudeAngle <= currentDiameter
+    );
+  }
+
+  private isLunarEclipse(args: {
+    currentDiameterMoon: number;
+    currentDiameterSun: number;
+    currentLatitudeMoon: number;
+    currentLatitudeSun: number;
+    currentLongitudeMoon: number;
+    currentLongitudeSun: number;
+    nextLongitudeMoon: number;
+    nextLongitudeSun: number;
+    previousLongitudeMoon: number;
+    previousLongitudeSun: number;
+  }): EclipsePhase | null {
+    const {
+      currentDiameterMoon,
+      currentDiameterSun,
+      currentLatitudeMoon,
+      currentLatitudeSun,
+      currentLongitudeMoon,
+      currentLongitudeSun,
+      nextLongitudeMoon,
+      nextLongitudeSun,
+      previousLongitudeMoon,
+      previousLongitudeSun,
+    } = args;
+
+    const currentLongitudeAngle = getAngle(currentLongitudeMoon, currentLongitudeSun);
+    const nextLongitudeAngle = getAngle(nextLongitudeMoon, nextLongitudeSun);
+    const previousLongitudeAngle = getAngle(previousLongitudeMoon, previousLongitudeSun);
+
+    const isMaximumLongitudeAngle = isMaximum({
+      current: currentLongitudeAngle,
+      previous: previousLongitudeAngle,
+      next: nextLongitudeAngle,
+    });
+
+    const currentLatitudeAngle = getAngle(currentLatitudeMoon, currentLatitudeSun);
+    const currentDiameter = currentDiameterSun + currentDiameterMoon;
+    const isCurrentInEclipse = currentLatitudeAngle < currentDiameter;
+
+    const wasApproachingOpposition = previousLongitudeAngle < currentLongitudeAngle;
+    const willBeLeavingOpposition = currentLongitudeAngle > nextLongitudeAngle;
+
+    if (isMaximumLongitudeAngle && isCurrentInEclipse) {
+      return "maximum";
+    }
+
+    const oppositionThreshold = 180 - currentDiameter;
+    if (
+      wasApproachingOpposition &&
+      isCurrentInEclipse &&
+      previousLongitudeAngle < oppositionThreshold &&
+      currentLongitudeAngle >= oppositionThreshold
+    ) {
+      return "beginning";
+    }
+
+    if (
+      willBeLeavingOpposition &&
+      isCurrentInEclipse &&
+      nextLongitudeAngle < oppositionThreshold &&
+      currentLongitudeAngle >= oppositionThreshold
+    ) {
+      return "ending";
+    }
+
+    return null;
+  }
+
+  private isLunarEclipseActive(args: {
+    currentDiameterMoon: number;
+    currentDiameterSun: number;
+    currentLatitudeMoon: number;
+    currentLatitudeSun: number;
+    currentLongitudeMoon: number;
+    currentLongitudeSun: number;
+  }): boolean {
+    const {
+      currentDiameterMoon,
+      currentDiameterSun,
+      currentLatitudeMoon,
+      currentLatitudeSun,
+      currentLongitudeMoon,
+      currentLongitudeSun,
+    } = args;
+
+    const currentLongitudeAngle = getAngle(currentLongitudeMoon, currentLongitudeSun);
+    const currentLatitudeAngle = getAngle(currentLatitudeMoon, currentLatitudeSun);
+    const currentDiameter = currentDiameterSun + currentDiameterMoon;
+    const oppositionThreshold = 180 - currentDiameter;
+
+    return (
+      currentLatitudeAngle < currentDiameter &&
+      currentLongitudeAngle >= oppositionThreshold
+    );
   }
 }

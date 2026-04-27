@@ -4,30 +4,21 @@ import _ from "lodash";
 import {
     type Event,
     MARGIN_MINUTES
-} from "../../calendar.utilities";
+} from "../../calendar/calendar.types";
+import { getAngle, isMaximum } from "../../math.utilities";
 import {
     getCoordinateFromEphemeris,
     getDistanceFromEphemeris,
     getIlluminationFromEphemeris,
 } from "../../ephemeris/ephemeris.service";
 import { pairProgressiveEvents } from "../../progressive.utilities";
+import { degreesByTwilight } from "../twilights/twilights.service";
 import {
     symbolByMartianPhase,
     symbolByMercurianPhase,
     symbolByVenusianPhase,
 } from "../../symbols";
 import { planetaryPhaseBodies } from "../../types";
-
-import {
-    isEasternBrightest,
-    isEasternElongation,
-    isEveningRise,
-    isEveningSet,
-    isMorningRise,
-    isMorningSet,
-    isWesternBrightest,
-    isWesternElongation,
-} from "./phases.utilities";
 
 import type {
     CoordinateEphemeris,
@@ -339,7 +330,7 @@ export class PhasesService {
 
     const venusianPhaseEvents: Event[] = [];
 
-    if (isMorningRise({ ...params })) {
+    if (this.isMorningRise({ ...params })) {
       venusianPhaseEvents.push(
         this.buildVenusianPhaseEvent({
           timestamp: minute,
@@ -348,7 +339,7 @@ export class PhasesService {
       );
     }
 
-    if (isWesternBrightest({ ...params })) {
+    if (this.isWesternBrightest({ ...params })) {
       venusianPhaseEvents.push(
         this.buildVenusianPhaseEvent({
           timestamp: minute,
@@ -357,7 +348,7 @@ export class PhasesService {
       );
     }
 
-    if (isWesternElongation({ ...params })) {
+    if (this.isWesternElongation({ ...params })) {
       venusianPhaseEvents.push(
         this.buildVenusianPhaseEvent({
           timestamp: minute,
@@ -366,7 +357,7 @@ export class PhasesService {
       );
     }
 
-    if (isMorningSet({ ...params })) {
+    if (this.isMorningSet({ ...params })) {
       venusianPhaseEvents.push(
         this.buildVenusianPhaseEvent({
           timestamp: minute,
@@ -375,7 +366,7 @@ export class PhasesService {
       );
     }
 
-    if (isEveningRise({ ...params })) {
+    if (this.isEveningRise({ ...params })) {
       venusianPhaseEvents.push(
         this.buildVenusianPhaseEvent({
           timestamp: minute,
@@ -384,7 +375,7 @@ export class PhasesService {
       );
     }
 
-    if (isEasternElongation({ ...params })) {
+    if (this.isEasternElongation({ ...params })) {
       venusianPhaseEvents.push(
         this.buildVenusianPhaseEvent({
           timestamp: minute,
@@ -393,7 +384,7 @@ export class PhasesService {
       );
     }
 
-    if (isEasternBrightest({ ...params })) {
+    if (this.isEasternBrightest({ ...params })) {
       venusianPhaseEvents.push(
         this.buildVenusianPhaseEvent({
           timestamp: minute,
@@ -402,7 +393,7 @@ export class PhasesService {
       );
     }
 
-    if (isEveningSet({ ...params })) {
+    if (this.isEveningSet({ ...params })) {
       venusianPhaseEvents.push(
         this.buildVenusianPhaseEvent({
           timestamp: minute,
@@ -602,7 +593,7 @@ export class PhasesService {
 
     const mercurianPhaseEvents: Event[] = [];
 
-    if (isMorningRise({ ...params })) {
+    if (this.isMorningRise({ ...params })) {
       mercurianPhaseEvents.push(
         this.buildMercurianPhaseEvent({
           timestamp: minute,
@@ -611,7 +602,7 @@ export class PhasesService {
       );
     }
 
-    if (isWesternBrightest({ ...params })) {
+    if (this.isWesternBrightest({ ...params })) {
       mercurianPhaseEvents.push(
         this.buildMercurianPhaseEvent({
           timestamp: minute,
@@ -620,7 +611,7 @@ export class PhasesService {
       );
     }
 
-    if (isWesternElongation({ ...params })) {
+    if (this.isWesternElongation({ ...params })) {
       mercurianPhaseEvents.push(
         this.buildMercurianPhaseEvent({
           timestamp: minute,
@@ -629,7 +620,7 @@ export class PhasesService {
       );
     }
 
-    if (isMorningSet({ ...params })) {
+    if (this.isMorningSet({ ...params })) {
       mercurianPhaseEvents.push(
         this.buildMercurianPhaseEvent({
           timestamp: minute,
@@ -638,7 +629,7 @@ export class PhasesService {
       );
     }
 
-    if (isEveningRise({ ...params })) {
+    if (this.isEveningRise({ ...params })) {
       mercurianPhaseEvents.push(
         this.buildMercurianPhaseEvent({
           timestamp: minute,
@@ -647,7 +638,7 @@ export class PhasesService {
       );
     }
 
-    if (isEasternElongation({ ...params })) {
+    if (this.isEasternElongation({ ...params })) {
       mercurianPhaseEvents.push(
         this.buildMercurianPhaseEvent({
           timestamp: minute,
@@ -656,7 +647,7 @@ export class PhasesService {
       );
     }
 
-    if (isEasternBrightest({ ...params })) {
+    if (this.isEasternBrightest({ ...params })) {
       mercurianPhaseEvents.push(
         this.buildMercurianPhaseEvent({
           timestamp: minute,
@@ -665,7 +656,7 @@ export class PhasesService {
       );
     }
 
-    if (isEveningSet({ ...params })) {
+    if (this.isEveningSet({ ...params })) {
       mercurianPhaseEvents.push(
         this.buildMercurianPhaseEvent({
           timestamp: minute,
@@ -864,7 +855,7 @@ export class PhasesService {
 
     const martianPhaseEvents: Event[] = [];
 
-    if (isMorningRise({ ...params })) {
+    if (this.isMorningRise({ ...params })) {
       martianPhaseEvents.push(
         this.buildMartianPhaseEvent({
           timestamp: minute,
@@ -873,7 +864,7 @@ export class PhasesService {
       );
     }
 
-    if (isMorningSet({ ...params })) {
+    if (this.isMorningSet({ ...params })) {
       martianPhaseEvents.push(
         this.buildMartianPhaseEvent({
           timestamp: minute,
@@ -882,7 +873,7 @@ export class PhasesService {
       );
     }
 
-    if (isEveningRise({ ...params })) {
+    if (this.isEveningRise({ ...params })) {
       martianPhaseEvents.push(
         this.buildMartianPhaseEvent({
           timestamp: minute,
@@ -891,7 +882,7 @@ export class PhasesService {
       );
     }
 
-    if (isEveningSet({ ...params })) {
+    if (this.isEveningSet({ ...params })) {
       martianPhaseEvents.push(
         this.buildMartianPhaseEvent({
           timestamp: minute,
@@ -1155,5 +1146,267 @@ export class PhasesService {
       description: "Mars Evening Star (Evening Visibility)",
       categories: [...categories, "Martian", "Evening Visibility"],
     };
+  }
+
+  // #region Position helpers
+
+  private isWestern(args: {
+    currentLongitudePlanet: number;
+    currentLongitudeSun: number;
+  }): boolean {
+    return args.currentLongitudePlanet < args.currentLongitudeSun;
+  }
+
+  private isMorning(args: Parameters<PhasesService["isWestern"]>[0]): boolean {
+    return this.isWestern(args);
+  }
+
+  private isEastern(args: {
+    currentLongitudePlanet: number;
+    currentLongitudeSun: number;
+  }): boolean {
+    return args.currentLongitudePlanet > args.currentLongitudeSun;
+  }
+
+  private isEvening(args: Parameters<PhasesService["isEastern"]>[0]): boolean {
+    return this.isEastern(args);
+  }
+
+  // #region Brightness helpers
+
+  private getBrightness(args: {
+    distance: number;
+    illumination: number;
+  }): number {
+    return args.illumination / args.distance ** 2;
+  }
+
+  private getBrightnesses(args: {
+    currentDistance: number;
+    currentIllumination: number;
+    nextDistances: number[];
+    nextIlluminations: number[];
+    previousDistances: number[];
+    previousIlluminations: number[];
+  }): {
+    currentBrightness: number;
+    nextBrightnesses: number[];
+    previousBrightnesses: number[];
+  } {
+    const {
+      currentDistance,
+      currentIllumination,
+      nextDistances,
+      nextIlluminations,
+      previousDistances,
+      previousIlluminations,
+    } = args;
+
+    const currentBrightness = this.getBrightness({
+      illumination: currentIllumination,
+      distance: currentDistance,
+    });
+
+    if (previousDistances.length !== previousIlluminations.length) {
+      throw new Error(
+        `previousDistances and previousIlluminations arrays must have the same length`,
+      );
+    }
+
+    const previousBrightnesses = previousDistances.map((distance, index) => {
+      const illumination = previousIlluminations[index];
+      if (illumination === undefined) {
+        throw new Error(`Missing illumination at index ${index}`);
+      }
+      return this.getBrightness({ distance, illumination });
+    });
+
+    if (nextDistances.length !== nextIlluminations.length) {
+      throw new Error(
+        `nextDistances and nextIlluminations arrays must have the same length`,
+      );
+    }
+
+    const nextBrightnesses = nextDistances.map((distance, index) => {
+      const illumination = nextIlluminations[index];
+      if (illumination === undefined) {
+        throw new Error(`Missing illumination at index ${index}`);
+      }
+      return this.getBrightness({ distance, illumination });
+    });
+
+    return { currentBrightness, nextBrightnesses, previousBrightnesses };
+  }
+
+  private isBrightest(args: {
+    currentDistance: number;
+    currentIllumination: number;
+    nextDistances: number[];
+    nextIlluminations: number[];
+    previousDistances: number[];
+    previousIlluminations: number[];
+  }): boolean {
+    const { currentBrightness, nextBrightnesses, previousBrightnesses } =
+      this.getBrightnesses(args);
+
+    return (
+      currentBrightness > Math.max(...previousBrightnesses) &&
+      currentBrightness >= Math.max(...nextBrightnesses)
+    );
+  }
+
+  private isWesternBrightest(args: {
+    currentDistance: number;
+    currentIllumination: number;
+    nextDistances: number[];
+    nextIlluminations: number[];
+    previousDistances: number[];
+    previousIlluminations: number[];
+    currentLongitudePlanet: number;
+    currentLongitudeSun: number;
+  }): boolean {
+    return this.isWestern(args) && this.isBrightest(args);
+  }
+
+  private isEasternBrightest(args: {
+    currentDistance: number;
+    currentIllumination: number;
+    nextDistances: number[];
+    nextIlluminations: number[];
+    previousDistances: number[];
+    previousIlluminations: number[];
+    currentLongitudePlanet: number;
+    currentLongitudeSun: number;
+  }): boolean {
+    return this.isEastern(args) && this.isBrightest(args);
+  }
+
+  // #region Elongation helpers
+
+  private isElongation(args: {
+    currentLongitudeSun: number;
+    currentLongitudePlanet: number;
+    nextLongitudeSun: number;
+    nextLongitudePlanet: number;
+    previousLongitudeSun: number;
+    previousLongitudePlanet: number;
+  }): boolean {
+    const {
+      currentLongitudePlanet,
+      currentLongitudeSun,
+      nextLongitudePlanet,
+      nextLongitudeSun,
+      previousLongitudePlanet,
+      previousLongitudeSun,
+    } = args;
+
+    const currentAngle = getAngle(currentLongitudePlanet, currentLongitudeSun);
+    const nextAngle = getAngle(nextLongitudePlanet, nextLongitudeSun);
+    const previousAngle = getAngle(
+      previousLongitudePlanet,
+      previousLongitudeSun,
+    );
+
+    return isMaximum({ current: currentAngle, next: nextAngle, previous: previousAngle });
+  }
+
+  private isEasternElongation(args: {
+    currentLongitudeSun: number;
+    currentLongitudePlanet: number;
+    nextLongitudeSun: number;
+    nextLongitudePlanet: number;
+    previousLongitudeSun: number;
+    previousLongitudePlanet: number;
+  }): boolean {
+    return this.isElongation(args) && this.isEastern(args);
+  }
+
+  private isWesternElongation(args: {
+    currentLongitudeSun: number;
+    currentLongitudePlanet: number;
+    nextLongitudeSun: number;
+    nextLongitudePlanet: number;
+    previousLongitudeSun: number;
+    previousLongitudePlanet: number;
+  }): boolean {
+    return this.isElongation(args) && this.isWestern(args);
+  }
+
+  // #region Rise/Set helpers
+
+  private readonly RISE_SET_THRESHOLD = degreesByTwilight.civil;
+
+  private isRise(args: {
+    currentLongitudePlanet: number;
+    currentLongitudeSun: number;
+    previousLongitudePlanet: number;
+    previousLongitudeSun: number;
+  }): boolean {
+    const {
+      currentLongitudePlanet,
+      currentLongitudeSun,
+      previousLongitudePlanet,
+      previousLongitudeSun,
+    } = args;
+
+    const previousAngle = getAngle(previousLongitudePlanet, previousLongitudeSun);
+    const currentAngle = getAngle(currentLongitudePlanet, currentLongitudeSun);
+
+    return previousAngle < this.RISE_SET_THRESHOLD && currentAngle >= this.RISE_SET_THRESHOLD;
+  }
+
+  private isSet(args: {
+    currentLongitudePlanet: number;
+    currentLongitudeSun: number;
+    previousLongitudePlanet: number;
+    previousLongitudeSun: number;
+  }): boolean {
+    const {
+      currentLongitudePlanet,
+      currentLongitudeSun,
+      previousLongitudePlanet,
+      previousLongitudeSun,
+    } = args;
+
+    const previousAngle = getAngle(previousLongitudePlanet, previousLongitudeSun);
+    const currentAngle = getAngle(currentLongitudePlanet, currentLongitudeSun);
+
+    return previousAngle > this.RISE_SET_THRESHOLD && currentAngle <= this.RISE_SET_THRESHOLD;
+  }
+
+  private isMorningRise(args: {
+    currentLongitudePlanet: number;
+    currentLongitudeSun: number;
+    previousLongitudePlanet: number;
+    previousLongitudeSun: number;
+  }): boolean {
+    return this.isMorning(args) && this.isRise(args);
+  }
+
+  private isMorningSet(args: {
+    currentLongitudePlanet: number;
+    currentLongitudeSun: number;
+    previousLongitudePlanet: number;
+    previousLongitudeSun: number;
+  }): boolean {
+    return this.isMorning(args) && this.isSet(args);
+  }
+
+  private isEveningRise(args: {
+    currentLongitudePlanet: number;
+    currentLongitudeSun: number;
+    previousLongitudePlanet: number;
+    previousLongitudeSun: number;
+  }): boolean {
+    return this.isEvening(args) && this.isRise(args);
+  }
+
+  private isEveningSet(args: {
+    currentLongitudePlanet: number;
+    currentLongitudeSun: number;
+    previousLongitudePlanet: number;
+    previousLongitudeSun: number;
+  }): boolean {
+    return this.isEvening(args) && this.isSet(args);
   }
 }

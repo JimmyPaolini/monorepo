@@ -1,10 +1,11 @@
 import moment from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
-import { TripleAspectsService } from "./triple-aspects.service";
+import { findBodiesWithAspectTo, groupAspectsByType, haveAspect, TripleAspectsService } from "./triple-aspects.service";
 
-import type { Event } from "../../../calendar.utilities";
-import type { AspectBodies } from "../aspects.utilities";
+import type { Event } from "../../../calendar/calendar.types";
+import type { Aspect, Body } from "../../../types";
+import type { AspectBodies } from "../aspects.service";
 
 const service = new TripleAspectsService();
 
@@ -580,5 +581,192 @@ describe("tripleAspects.events", () => {
       expect(progressiveEvents.length).toBe(1);
       expect(progressiveEvents[0]?.summary).toContain("focal: Mars");
     });
+  });
+});
+
+describe("groupAspectsByType", () => {
+  it("should group edges by aspect type", () => {
+    const edges: AspectBodies[] = [
+      {
+        bodies: ["sun" as Body, "moon" as Body],
+        aspect: "conjunct" as Aspect,
+      },
+      {
+        bodies: ["mars" as Body, "jupiter" as Body],
+        aspect: "trine" as Aspect,
+      },
+      {
+        bodies: ["venus" as Body, "saturn" as Body],
+        aspect: "conjunct" as Aspect,
+      },
+    ];
+
+    const grouped = groupAspectsByType(edges);
+
+    expect(grouped.size).toBe(2);
+    expect(grouped.get("conjunct" as Aspect)?.length).toBe(2);
+    expect(grouped.get("trine" as Aspect)?.length).toBe(1);
+  });
+
+  it("should handle empty edges array", () => {
+    const grouped = groupAspectsByType([]);
+    expect(grouped.size).toBe(0);
+  });
+
+  it("should handle single aspect type", () => {
+    const edges: AspectBodies[] = [
+      {
+        bodies: ["sun" as Body, "moon" as Body],
+        aspect: "square" as Aspect,
+      },
+      {
+        bodies: ["mars" as Body, "jupiter" as Body],
+        aspect: "square" as Aspect,
+      },
+    ];
+
+    const grouped = groupAspectsByType(edges);
+
+    expect(grouped.size).toBe(1);
+    expect(grouped.get("square" as Aspect)?.length).toBe(2);
+  });
+});
+
+describe("findBodiesWithAspectTo", () => {
+  it("should find bodies with specific aspect to given body", () => {
+    const edges: AspectBodies[] = [
+      {
+        bodies: ["sun" as Body, "moon" as Body],
+        aspect: "conjunct" as Aspect,
+      },
+      {
+        bodies: ["sun" as Body, "mars" as Body],
+        aspect: "trine" as Aspect,
+      },
+      {
+        bodies: ["jupiter" as Body, "sun" as Body],
+        aspect: "trine" as Aspect,
+      },
+    ];
+
+    const bodiesWithTrine = findBodiesWithAspectTo(
+      "sun" as Body,
+      "trine" as Aspect,
+      edges,
+    );
+
+    expect(bodiesWithTrine.length).toBe(2);
+    expect(bodiesWithTrine).toContain("mars");
+    expect(bodiesWithTrine).toContain("jupiter");
+  });
+
+  it("should return empty array when no aspects found", () => {
+    const edges: AspectBodies[] = [
+      {
+        bodies: ["sun" as Body, "moon" as Body],
+        aspect: "conjunct" as Aspect,
+      },
+    ];
+
+    const bodiesWithTrine = findBodiesWithAspectTo(
+      "sun" as Body,
+      "trine" as Aspect,
+      edges,
+    );
+
+    expect(bodiesWithTrine.length).toBe(0);
+  });
+
+  it("should handle body not in any edges", () => {
+    const edges: AspectBodies[] = [
+      {
+        bodies: ["sun" as Body, "moon" as Body],
+        aspect: "conjunct" as Aspect,
+      },
+    ];
+
+    const bodiesWithTrine = findBodiesWithAspectTo(
+      "mars" as Body,
+      "trine" as Aspect,
+      edges,
+    );
+
+    expect(bodiesWithTrine.length).toBe(0);
+  });
+});
+
+describe("haveAspect", () => {
+  it("should return true when bodies have the aspect (body1-body2 order)", () => {
+    const edges: AspectBodies[] = [
+      {
+        bodies: ["sun" as Body, "moon" as Body],
+        aspect: "conjunct" as Aspect,
+      },
+    ];
+
+    expect(
+      haveAspect("sun" as Body, "moon" as Body, "conjunct" as Aspect, edges),
+    ).toBe(true);
+  });
+
+  it("should return true when bodies have the aspect (body2-body1 order)", () => {
+    const edges: AspectBodies[] = [
+      {
+        bodies: ["sun" as Body, "moon" as Body],
+        aspect: "conjunct" as Aspect,
+      },
+    ];
+
+    expect(
+      haveAspect("moon" as Body, "sun" as Body, "conjunct" as Aspect, edges),
+    ).toBe(true);
+  });
+
+  it("should return false when bodies do not have the aspect", () => {
+    const edges: AspectBodies[] = [
+      {
+        bodies: ["sun" as Body, "moon" as Body],
+        aspect: "conjunct" as Aspect,
+      },
+    ];
+
+    expect(
+      haveAspect("sun" as Body, "moon" as Body, "trine" as Aspect, edges),
+    ).toBe(false);
+  });
+
+  it("should return false when bodies are not connected", () => {
+    const edges: AspectBodies[] = [
+      {
+        bodies: ["sun" as Body, "moon" as Body],
+        aspect: "conjunct" as Aspect,
+      },
+    ];
+
+    expect(
+      haveAspect(
+        "mars" as Body,
+        "jupiter" as Body,
+        "conjunct" as Aspect,
+        edges,
+      ),
+    ).toBe(false);
+  });
+
+  it("should handle multiple edges", () => {
+    const edges: AspectBodies[] = [
+      {
+        bodies: ["sun" as Body, "moon" as Body],
+        aspect: "conjunct" as Aspect,
+      },
+      {
+        bodies: ["mars" as Body, "jupiter" as Body],
+        aspect: "trine" as Aspect,
+      },
+    ];
+
+    expect(
+      haveAspect("mars" as Body, "jupiter" as Body, "trine" as Aspect, edges),
+    ).toBe(true);
   });
 });

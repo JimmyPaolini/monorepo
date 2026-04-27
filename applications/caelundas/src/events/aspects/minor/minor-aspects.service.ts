@@ -1,24 +1,129 @@
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
-import { minorAspects } from "../../../constants";
+import { angleByAspect, minorAspects, orbByAspect } from "../../../constants";
 import { getCoordinateFromEphemeris } from "../../../ephemeris/ephemeris.service";
+import { getAngle } from "../../../math.utilities";
 import { pairProgressiveEvents } from "../../../progressive.utilities";
 import { symbolByBody, symbolByMinorAspect } from "../../../symbols";
 import { minorAspectBodies } from "../../../types";
-import { getMinorAspect, getMinorAspectPhase } from "../aspects.utilities";
 
-import type { Event } from "../../../calendar.utilities";
+import type { Event } from "../../../calendar/calendar.types";
 import type { CoordinateEphemeris } from "../../../ephemeris/ephemeris.types";
 import type {
-  AspectPhase,
-  Body,
-  BodySymbol,
-  MinorAspect,
-  MinorAspectSymbol,
+    Aspect,
+    AspectPhase,
+    Body,
+    BodySymbol,
+    MinorAspect,
+    MinorAspectSymbol,
 } from "../../../types";
 import type { Moment } from "moment-timezone";
 
+const isAspect = (args: {
+  longitudeBody1: number;
+  longitudeBody2: number;
+  aspect: Aspect;
+}): boolean => {
+  const { aspect, longitudeBody1, longitudeBody2 } = args;
+  const angle = getAngle(longitudeBody1, longitudeBody2);
+  const difference = Math.abs(angle - angleByAspect[aspect]);
+  return difference < orbByAspect[aspect];
+};
+
+const getIsAspect = (
+  aspectsToDetect: Aspect[],
+): ((args: {
+  currentLongitudeBody1: number;
+  currentLongitudeBody2: number;
+  nextLongitudeBody1: number;
+  nextLongitudeBody2: number;
+  previousLongitudeBody1: number;
+  previousLongitudeBody2: number;
+}) => AspectPhase | null) => {
+  const detectPhase = (args: {
+    currentLongitudeBody1: number;
+    currentLongitudeBody2: number;
+    nextLongitudeBody1: number;
+    nextLongitudeBody2: number;
+    previousLongitudeBody1: number;
+    previousLongitudeBody2: number;
+  }): AspectPhase | null => {
+    const {
+      currentLongitudeBody1,
+      currentLongitudeBody2,
+      nextLongitudeBody1,
+      nextLongitudeBody2,
+      previousLongitudeBody1,
+      previousLongitudeBody2,
+    } = args;
+
+    const previousAngle = getAngle(previousLongitudeBody1, previousLongitudeBody2);
+    const currentAngle = getAngle(currentLongitudeBody1, currentLongitudeBody2);
+    const nextAngle = getAngle(nextLongitudeBody1, nextLongitudeBody2);
+
+    for (const aspect of aspectsToDetect) {
+      const aspectAngle = angleByAspect[aspect];
+      const orb = orbByAspect[aspect];
+
+      const previousInOrb = Math.abs(previousAngle - aspectAngle) <= orb;
+      const currentInOrb = Math.abs(currentAngle - aspectAngle) <= orb;
+      const nextInOrb = Math.abs(nextAngle - aspectAngle) <= orb;
+
+      if (currentInOrb) {
+        const previousDifference = previousAngle - aspectAngle;
+        const currentDifference = currentAngle - aspectAngle;
+        const nextDifference = nextAngle - aspectAngle;
+
+        const isCrossing =
+          (previousDifference >= 0 && currentDifference <= 0) ||
+          (previousDifference <= 0 && currentDifference >= 0);
+
+        if (aspect === "conjunct") {
+          const isBouncing =
+            (previousDifference > currentDifference &&
+              nextDifference > currentDifference) ||
+            (previousDifference < currentDifference &&
+              nextDifference < currentDifference);
+          if (isBouncing) {
+            return "perfective";
+          }
+        } else {
+          if (isCrossing) {
+            return "perfective";
+          }
+        }
+      }
+
+      if (!previousInOrb && currentInOrb) {
+        return "forming";
+      }
+
+      if (currentInOrb && !nextInOrb) {
+        return "dissolving";
+      }
+    }
+
+    return null;
+  };
+
+  return detectPhase;
+};
+
+export const getMinorAspect = (args: {
+  longitudeBody1: number;
+  longitudeBody2: number;
+}): MinorAspect | null => {
+  const { longitudeBody1, longitudeBody2 } = args;
+  for (const aspect of minorAspects) {
+    if (isAspect({ longitudeBody1, longitudeBody2, aspect })) {
+      return aspect;
+    }
+  }
+  return null;
+};
+
+export const getMinorAspectPhase = getIsAspect([...minorAspects]);
 
 @Injectable()
 export class MinorAspectsService {

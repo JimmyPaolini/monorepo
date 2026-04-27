@@ -9,15 +9,7 @@ import {
     peakIngressBodies,
     signIngressBodies,
 } from "../../types";
-import {
-    getDecan,
-    getSign,
-    isDecanIngress,
-    isPeakIngress,
-    isSignIngress,
-} from "../ingresses/ingresses.utilities";
-
-import type { Event } from "../../calendar.utilities";
+import type { Event } from "../../calendar/calendar.types";
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 import type {
     Body,
@@ -30,6 +22,47 @@ import type {
 import type { Moment } from "moment-timezone";
 
 const categories = ["Astronomy", "Astrology", "Ingress"];
+
+/**
+ * Maps each zodiac sign to its ecliptic longitude range.
+ *
+ * The ecliptic is divided into 12 equal 30° segments, starting with Aries at 0°.
+ *
+ * @remarks
+ * Tropical zodiac (aligned with seasons, not constellations)
+ */
+export const degreeRangeBySign: Record<Sign, { min: number; max: number }> = {
+  aries: { min: 0, max: 30 },
+  taurus: { min: 30, max: 60 },
+  gemini: { min: 60, max: 90 },
+  cancer: { min: 90, max: 120 },
+  leo: { min: 120, max: 150 },
+  virgo: { min: 150, max: 180 },
+  libra: { min: 180, max: 210 },
+  scorpio: { min: 210, max: 240 },
+  sagittarius: { min: 240, max: 270 },
+  capricorn: { min: 270, max: 300 },
+  aquarius: { min: 300, max: 330 },
+  pisces: { min: 330, max: 360 },
+};
+
+/**
+ * Determines which zodiac sign corresponds to an ecliptic longitude.
+ *
+ * @param longitude - Ecliptic longitude in degrees (0-360)
+ * @returns The zodiac sign name
+ * @throws If longitude is outside valid range
+ * @see {@link degreeRangeBySign} for sign boundaries
+ */
+export function getSign(longitude: number): Sign {
+  const entry = Object.entries(degreeRangeBySign).find(([, { min, max }]) => {
+    return longitude >= min && longitude < max;
+  });
+  if (!entry) {
+    throw new Error(`🚫 Longitude ${longitude} not in any sign.`);
+  }
+  return entry[0] as Sign;
+}
 
 // #region 🪧 Signs
 
@@ -88,7 +121,7 @@ export class IngressesService {
       const date = minute;
       const longitude = currentLongitude;
 
-      if (isSignIngress({ currentLongitude, previousLongitude })) {
+      if (this.isSignIngress({ currentLongitude, previousLongitude })) {
         signIngressEvents.push(this.buildSignIngressEvent({ body, date, longitude }));
       }
     }
@@ -180,8 +213,8 @@ export class IngressesService {
       const longitude = currentLongitude;
 
       if (
-        !isSignIngress({ currentLongitude, previousLongitude }) &&
-        isDecanIngress({ currentLongitude, previousLongitude })
+        !this.isSignIngress({ currentLongitude, previousLongitude }) &&
+        this.isDecanIngress({ currentLongitude, previousLongitude })
       ) {
         decanIngressEvents.push(
           this.buildDecanIngressEvent({ body, date, longitude }),
@@ -202,7 +235,7 @@ export class IngressesService {
   }): Event {
     const { date, longitude, body } = args;
     const sign = getSign(longitude);
-    const decan = String(getDecan(longitude)) as Decan;
+    const decan = String(this.getDecan(longitude)) as Decan;
     const bodyCapitalized = _.startCase(body) as Capitalize<Body>;
     const signCapitalized = _.startCase(sign) as Capitalize<Sign>;
 
@@ -260,7 +293,7 @@ export class IngressesService {
       const date = minute;
       const longitude = currentLongitude;
 
-      if (isPeakIngress({ currentLongitude, previousLongitude })) {
+      if (this.isPeakIngress({ currentLongitude, previousLongitude })) {
         peakIngressEvents.push(this.buildPeakIngressEvent({ body, date, longitude }));
       }
     }
@@ -399,5 +432,44 @@ export class IngressesService {
         signCapitalized,
       ],
     };
+  }
+
+  private isSignIngress(args: {
+    previousLongitude: number;
+    currentLongitude: number;
+  }): boolean {
+    const { currentLongitude, previousLongitude } = args;
+    return getSign(currentLongitude) !== getSign(previousLongitude);
+  }
+
+  private getDecan(longitude: number): number {
+    const sign = getSign(longitude);
+    const { min } = degreeRangeBySign[sign];
+    return Math.floor((longitude - min) / 10) + 1;
+  }
+
+  private isDecanIngress(args: {
+    previousLongitude: number;
+    currentLongitude: number;
+  }): boolean {
+    const { currentLongitude, previousLongitude } = args;
+    return this.getDecan(currentLongitude) !== this.getDecan(previousLongitude);
+  }
+
+  private isPeakIngress(args: {
+    previousLongitude: number;
+    currentLongitude: number;
+  }): boolean {
+    const { currentLongitude, previousLongitude } = args;
+
+    const previousSign = getSign(previousLongitude);
+    const { min: previousMin } = degreeRangeBySign[previousSign];
+    const previousDifference = previousLongitude - previousMin;
+
+    const currentSign = getSign(currentLongitude);
+    const { min: currentMin } = degreeRangeBySign[currentSign];
+    const currentDifference = currentLongitude - currentMin;
+
+    return currentDifference >= 15 && previousDifference < 15;
   }
 }

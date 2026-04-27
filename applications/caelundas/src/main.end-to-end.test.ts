@@ -5,8 +5,12 @@ import _ from "lodash";
 import moment from "moment-timezone";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
+import { CalendarService } from "./calendar/calendar.service";
+
 // Mock environment for testing
 const TEST_OUTPUT_DIR = "./output/e2e-test";
+
+const calendarService = new CalendarService();
 
 describe("calendar generation e2e", { timeout: 10_000 }, () => {
   // E2E tests may need more time
@@ -30,7 +34,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
   describe("ICS file generation", () => {
     it("should generate valid ICS file structure", async () => {
-      const { buildCalendarFileContent: getCalendar } = await import("./calendar.utilities");
+      const getCalendar = calendarService.buildFileContent.bind(calendarService);
 
       const events = [
         {
@@ -93,7 +97,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
     });
 
     it("should include timezone definitions", async () => {
-      const { buildCalendarFileContent: getCalendar } = await import("./calendar.utilities");
+      const getCalendar = calendarService.buildFileContent.bind(calendarService);
 
       const events = [
         {
@@ -122,7 +126,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
     });
 
     it("should handle events with all optional fields", async () => {
-      const { buildCalendarFileContent: getCalendar } = await import("./calendar.utilities");
+      const getCalendar = calendarService.buildFileContent.bind(calendarService);
 
       const events = [
         {
@@ -208,7 +212,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
     it("should correctly identify zodiac signs from longitude", async () => {
       // biome-ignore format: oxfmt is the primary formatter
       const { getSign } =
-        await import("./events/ingresses/ingresses.utilities");
+        await import("./events/ingresses/ingresses.service");
 
       // Test all 12 signs at their starting degrees
       expect(getSign(0)).toBe("aries");
@@ -228,7 +232,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
     it("should correctly identify aspects from angular separation", async () => {
       // biome-ignore format: oxfmt is the primary formatter
       const { getMajorAspect } =
-        await import("./events/aspects/aspects.utilities");
+        await import("./events/aspects/major/major-aspects.service");
 
       // Test exact aspects
       expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 0 })).toBe(

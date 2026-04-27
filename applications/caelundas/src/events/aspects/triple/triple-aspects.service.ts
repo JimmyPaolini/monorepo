@@ -3,17 +3,84 @@ import _ from "lodash";
 
 import { symbolByBody, symbolByTripleAspect } from "../../../symbols";
 import { tripleAspectBodies } from "../../../types";
-import {
-    determineCompoundPhaseFromSnapshots,
-    findBodiesWithAspectTo,
-    groupAspectsByType,
-    haveAspect,
-} from "../aspects.composition";
 
 import type { Event } from "../../../calendar.utilities";
-import type { AspectPhase, Body, TripleAspect } from "../../../types";
-import type { AspectBodies } from "../aspects.utilities";
+import type { Aspect, AspectPhase, Body, TripleAspect } from "../../../types";
+import type { AspectBodies } from "../aspects.service";
 import type { Moment } from "moment-timezone";
+
+function involvesBody(edge: AspectBodies, body: Body): boolean {
+  return edge.bodies[0] === body || edge.bodies[1] === body;
+}
+
+function getOtherBody(edge: AspectBodies, body: Body): Body | null {
+  if (edge.bodies[0] === body) {
+    return edge.bodies[1];
+  }
+  if (edge.bodies[1] === body) {
+    return edge.bodies[0];
+  }
+  return null;
+}
+
+export function groupAspectsByType<T extends AspectBodies>(edges: T[]): Map<Aspect, T[]> {
+  const grouped = _.groupBy(edges, "aspect");
+  return new Map(Object.entries(grouped)) as Map<Aspect, T[]>;
+}
+
+export function findBodiesWithAspectTo(
+  body: Body,
+  aspectType: Aspect,
+  edges: AspectBodies[],
+): Body[] {
+  return edges
+    .filter((edge) => edge.aspect === aspectType && involvesBody(edge, body))
+    .map((edge) => getOtherBody(edge, body))
+    .filter((b): b is Body => b !== null);
+}
+
+export function haveAspect(
+  body1: Body,
+  body2: Body,
+  aspectType: Aspect,
+  edges: AspectBodies[],
+): boolean {
+  return edges.some(
+    (edge) =>
+      edge.aspect === aspectType &&
+      ((edge.bodies[0] === body1 && edge.bodies[1] === body2) ||
+        (edge.bodies[0] === body2 && edge.bodies[1] === body1)),
+  );
+}
+
+function determineCompoundPhaseFromSnapshots(
+  currentAspectBodies: AspectBodies[],
+  previousAspectBodies: AspectBodies[],
+  patternBodies: Body[],
+  currentMinute: Moment,
+  checkPatternExists: (edges: AspectBodies[]) => boolean,
+): { phase: AspectPhase; eventMinute: Moment } | null {
+  const bodySet = new Set(patternBodies);
+  const filterByBodies = (edges: AspectBodies[]): AspectBodies[] =>
+    edges.filter((e) => bodySet.has(e.bodies[0]) && bodySet.has(e.bodies[1]));
+
+  const currentFiltered = filterByBodies(currentAspectBodies);
+  const previousFiltered = filterByBodies(previousAspectBodies);
+
+  const currentExists = checkPatternExists(currentFiltered);
+  const previousExists = checkPatternExists(previousFiltered);
+
+  if (currentExists && !previousExists) {
+    return { phase: "forming", eventMinute: currentMinute };
+  }
+  if (!currentExists && previousExists) {
+    return {
+      phase: "dissolving",
+      eventMinute: currentMinute.clone().subtract(1, "minute"),
+    };
+  }
+  return null;
+}
 
 // Helper function to create triple aspect events
 

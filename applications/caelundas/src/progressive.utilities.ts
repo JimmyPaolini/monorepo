@@ -1,4 +1,4 @@
-import type { Event } from "./calendar.utilities";
+import type { Event } from "./calendar/calendar.types";
 
 /**
  * Pairs beginning (forming/starting) events with their corresponding ending

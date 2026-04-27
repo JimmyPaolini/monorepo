@@ -1,10 +1,16 @@
 import moment from "moment-timezone";
-import { describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { TwilightsService } from "./twilights.service";
+import {
+    degreesByTwilight,
+    sunRadiusDegrees,
+    twilights,
+    TwilightsService,
+} from "./twilights.service";
 
-import type { Event } from "../../calendar.utilities";
+import type { Event } from "../../calendar/calendar.types";
 import type { AzimuthElevationEphemeris } from "../../ephemeris/ephemeris.types";
+import type { Twilight } from "./twilights.service";
 
 // Mock dependencies
 vi.mock("fs", () => ({
@@ -13,7 +19,19 @@ vi.mock("fs", () => ({
   },
 }));
 
+interface ServicePrivate {
+  isDawn: (args: { currentElevation: number; previousElevation: number; twilight: Twilight }) => boolean;
+  isDusk: (args: { currentElevation: number; previousElevation: number; twilight: Twilight }) => boolean;
+  isAstronomicalDawn: (args: { currentElevation: number; previousElevation: number }) => boolean;
+  isNauticalDawn: (args: { currentElevation: number; previousElevation: number }) => boolean;
+  isCivilDawn: (args: { currentElevation: number; previousElevation: number }) => boolean;
+  isAstronomicalDusk: (args: { currentElevation: number; previousElevation: number }) => boolean;
+  isNauticalDusk: (args: { currentElevation: number; previousElevation: number }) => boolean;
+  isCivilDusk: (args: { currentElevation: number; previousElevation: number }) => boolean;
+}
+
 const service = new TwilightsService();
+const s = service as unknown as ServicePrivate;
 
 
 describe("twilights.events", () => {
@@ -371,4 +389,251 @@ describe("twilights.events", () => {
       expect(progressiveEvents).toHaveLength(0);
     });
   });
+
+  describe("private utility methods", () => {
+    beforeEach(() => {
+      vi.restoreAllMocks();
+    });
+
+    describe("constants", () => {
+      it("should have correct twilight types", () => {
+        expect(twilights).toEqual(["civil", "nautical", "astronomical"]);
+      });
+
+      it("should have correct degrees for each twilight type", () => {
+        expect(degreesByTwilight.civil).toBe(6);
+        expect(degreesByTwilight.nautical).toBe(12);
+        expect(degreesByTwilight.astronomical).toBe(18);
+      });
+
+      it("should calculate sun radius in degrees correctly", () => {
+        // Sun radius is 16 arcminutes, 60 arcminutes per degree
+        expect(sunRadiusDegrees).toBeCloseTo(16 / 60, 5);
+      });
+    });
+
+    describe("isDawn", () => {
+      it("should return true when crossing dawn threshold from below", () => {
+        expect(
+          s.isDawn({
+            currentElevation: -5,
+            previousElevation: -7,
+            twilight: "civil",
+          }),
+        ).toBe(true);
+      });
+
+      it("should return false when elevation stays below threshold", () => {
+        expect(
+          s.isDawn({
+            currentElevation: -8,
+            previousElevation: -10,
+            twilight: "civil",
+          }),
+        ).toBe(false);
+      });
+
+      it("should return false when elevation stays above threshold", () => {
+        expect(
+          s.isDawn({
+            currentElevation: -4,
+            previousElevation: -5,
+            twilight: "civil",
+          }),
+        ).toBe(false);
+      });
+
+      it("should return false when crossing threshold from above (dusk direction)", () => {
+        expect(
+          s.isDawn({
+            currentElevation: -7,
+            previousElevation: -5,
+            twilight: "civil",
+          }),
+        ).toBe(false);
+      });
+
+      it("should work for nautical twilight (-12°)", () => {
+        expect(
+          s.isDawn({
+            currentElevation: -11,
+            previousElevation: -13,
+            twilight: "nautical",
+          }),
+        ).toBe(true);
+      });
+
+      it("should work for astronomical twilight (-18°)", () => {
+        expect(
+          s.isDawn({
+            currentElevation: -17,
+            previousElevation: -19,
+            twilight: "astronomical",
+          }),
+        ).toBe(true);
+      });
+    });
+
+    describe("isDusk", () => {
+      it("should return true when crossing dusk threshold from above", () => {
+        expect(
+          s.isDusk({
+            currentElevation: -7,
+            previousElevation: -5,
+            twilight: "civil",
+          }),
+        ).toBe(true);
+      });
+
+      it("should return false when elevation stays above threshold", () => {
+        expect(
+          s.isDusk({
+            currentElevation: -4,
+            previousElevation: -5,
+            twilight: "civil",
+          }),
+        ).toBe(false);
+      });
+
+      it("should return false when elevation stays below threshold", () => {
+        expect(
+          s.isDusk({
+            currentElevation: -8,
+            previousElevation: -10,
+            twilight: "civil",
+          }),
+        ).toBe(false);
+      });
+
+      it("should return false when crossing threshold from below (dawn direction)", () => {
+        expect(
+          s.isDusk({
+            currentElevation: -5,
+            previousElevation: -7,
+            twilight: "civil",
+          }),
+        ).toBe(false);
+      });
+
+      it("should work for nautical twilight (-12°)", () => {
+        expect(
+          s.isDusk({
+            currentElevation: -13,
+            previousElevation: -11,
+            twilight: "nautical",
+          }),
+        ).toBe(true);
+      });
+
+      it("should work for astronomical twilight (-18°)", () => {
+        expect(
+          s.isDusk({
+            currentElevation: -19,
+            previousElevation: -17,
+            twilight: "astronomical",
+          }),
+        ).toBe(true);
+      });
+    });
+
+    describe("helper dawn functions", () => {
+      it("isAstronomicalDawn should detect astronomical dawn", () => {
+        expect(
+          s.isAstronomicalDawn({
+            currentElevation: -17,
+            previousElevation: -19,
+          }),
+        ).toBe(true);
+
+        expect(
+          s.isAstronomicalDawn({
+            currentElevation: -19,
+            previousElevation: -20,
+          }),
+        ).toBe(false);
+      });
+
+      it("isNauticalDawn should detect nautical dawn", () => {
+        expect(
+          s.isNauticalDawn({
+            currentElevation: -11,
+            previousElevation: -13,
+          }),
+        ).toBe(true);
+
+        expect(
+          s.isNauticalDawn({
+            currentElevation: -13,
+            previousElevation: -14,
+          }),
+        ).toBe(false);
+      });
+
+      it("isCivilDawn should detect civil dawn", () => {
+        expect(
+          s.isCivilDawn({
+            currentElevation: -5,
+            previousElevation: -7,
+          }),
+        ).toBe(true);
+
+        expect(
+          s.isCivilDawn({
+            currentElevation: -7,
+            previousElevation: -8,
+          }),
+        ).toBe(false);
+      });
+    });
+
+    describe("helper dusk functions", () => {
+      it("isAstronomicalDusk should detect astronomical dusk", () => {
+        expect(
+          s.isAstronomicalDusk({
+            currentElevation: -19,
+            previousElevation: -17,
+          }),
+        ).toBe(true);
+
+        expect(
+          s.isAstronomicalDusk({
+            currentElevation: -17,
+            previousElevation: -19,
+          }),
+        ).toBe(false);
+      });
+
+      it("isNauticalDusk should detect nautical dusk", () => {
+        expect(
+          s.isNauticalDusk({
+            currentElevation: -13,
+            previousElevation: -11,
+          }),
+        ).toBe(true);
+
+        expect(
+          s.isNauticalDusk({
+            currentElevation: -11,
+            previousElevation: -13,
+          }),
+        ).toBe(false);
+      });
+
+      it("isCivilDusk should detect civil dusk", () => {
+        expect(
+          s.isCivilDusk({
+            currentElevation: -7,
+            previousElevation: -5,
+          }),
+        ).toBe(true);
+
+        expect(
+          s.isCivilDusk({
+            currentElevation: -5,
+            previousElevation: -7,
+          }),
+        ).toBe(false);
+      });
+    });
+  }); // private utility methods
 });

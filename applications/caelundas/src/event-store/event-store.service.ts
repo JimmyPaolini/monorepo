@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 
-import type { Event } from "../calendar.utilities";
+import type { Event } from "../calendar/calendar.types";
 
 /**
  *

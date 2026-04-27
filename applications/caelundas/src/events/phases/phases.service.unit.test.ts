@@ -9,9 +9,8 @@ import {
 import { planetaryPhaseBodies } from "../../types";
 
 import { PhasesService } from "./phases.service";
-import * as phasesUtilities from "./phases.utilities";
 
-import type { Event } from "../../calendar.utilities";
+import type { Event } from "../../calendar/calendar.types";
 import type {
     CoordinateEphemeris,
     DistanceEphemeris,
@@ -25,30 +24,32 @@ vi.mock("fs", () => ({
   },
 }));
 
-vi.mock("./phases.utilities", () => ({
-  isMorningRise: vi.fn(),
-  isMorningSet: vi.fn(),
-  isEveningRise: vi.fn(),
-  isEveningSet: vi.fn(),
-  isWesternBrightest: vi.fn(),
-  isWesternElongation: vi.fn(),
-  isEasternBrightest: vi.fn(),
-  isEasternElongation: vi.fn(),
-}));
+interface ServicePrivate {
+  isMorningRise: (args: object) => boolean;
+  isMorningSet: (args: object) => boolean;
+  isEveningRise: (args: object) => boolean;
+  isEveningSet: (args: object) => boolean;
+  isWesternBrightest: (args: object) => boolean;
+  isWesternElongation: (args: object) => boolean;
+  isEasternBrightest: (args: object) => boolean;
+  isEasternElongation: (args: object) => boolean;
+  isBrightest: (args: object) => boolean;
+}
 
 const service = new PhasesService();
+const s = service as unknown as ServicePrivate;
 
 
 describe("phases.events", () => {
-  const setAllPhasePredicateMocks = (value: boolean): void => {
-    vi.mocked(phasesUtilities.isMorningRise).mockReturnValue(value);
-    vi.mocked(phasesUtilities.isMorningSet).mockReturnValue(value);
-    vi.mocked(phasesUtilities.isEveningRise).mockReturnValue(value);
-    vi.mocked(phasesUtilities.isEveningSet).mockReturnValue(value);
-    vi.mocked(phasesUtilities.isWesternBrightest).mockReturnValue(value);
-    vi.mocked(phasesUtilities.isWesternElongation).mockReturnValue(value);
-    vi.mocked(phasesUtilities.isEasternBrightest).mockReturnValue(value);
-    vi.mocked(phasesUtilities.isEasternElongation).mockReturnValue(value);
+  const setAllPhasePredicateSpies = (value: boolean): void => {
+    vi.spyOn(s, "isMorningRise").mockReturnValue(value);
+    vi.spyOn(s, "isMorningSet").mockReturnValue(value);
+    vi.spyOn(s, "isEveningRise").mockReturnValue(value);
+    vi.spyOn(s, "isEveningSet").mockReturnValue(value);
+    vi.spyOn(s, "isWesternBrightest").mockReturnValue(value);
+    vi.spyOn(s, "isWesternElongation").mockReturnValue(value);
+    vi.spyOn(s, "isEasternBrightest").mockReturnValue(value);
+    vi.spyOn(s, "isEasternElongation").mockReturnValue(value);
   };
 
   const createCoordinateEphemeris = (
@@ -124,12 +125,12 @@ describe("phases.events", () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
-    setAllPhasePredicateMocks(false);
+    setAllPhasePredicateSpies(false);
   });
 
   describe("phase detection branching", () => {
     it("detects all Venus phase events when all predicates are true", () => {
-      setAllPhasePredicateMocks(true);
+      setAllPhasePredicateSpies(true);
       const minute = moment.utc("2024-01-15T06:00:00.000Z");
       const inputs = createDetectionInputs(minute);
 
@@ -157,7 +158,7 @@ describe("phases.events", () => {
     });
 
     it("detects all Mercury phase events when all predicates are true", () => {
-      setAllPhasePredicateMocks(true);
+      setAllPhasePredicateSpies(true);
       const minute = moment.utc("2024-01-20T06:00:00.000Z");
       const inputs = createDetectionInputs(minute);
 
@@ -185,7 +186,7 @@ describe("phases.events", () => {
     });
 
     it("detects only Mars rise/set phases when all predicates are true", () => {
-      setAllPhasePredicateMocks(true);
+      setAllPhasePredicateSpies(true);
       const minute = moment.utc("2024-06-01T06:00:00.000Z");
       const inputs = createDetectionInputs(minute);
 
@@ -209,7 +210,7 @@ describe("phases.events", () => {
     });
 
     it("returns no Venus phase events when all predicates are false", () => {
-      setAllPhasePredicateMocks(false);
+      setAllPhasePredicateSpies(false);
       const minute = moment.utc("2024-02-01T06:00:00.000Z");
       const inputs = createDetectionInputs(minute);
 
@@ -225,7 +226,7 @@ describe("phases.events", () => {
     });
 
     it("gates planetary phase detection by configured phase bodies", () => {
-      setAllPhasePredicateMocks(true);
+      setAllPhasePredicateSpies(true);
       const minute = moment.utc("2024-03-01T06:00:00.000Z");
       const inputs = createDetectionInputs(minute);
 
@@ -995,4 +996,306 @@ describe("phases.events", () => {
       }
     });
   });
+
+  describe("private utility methods", () => {
+    beforeEach(() => {
+      vi.restoreAllMocks();
+    });
+
+  describe("isBrightest", () => {
+    it("should return true when current brightness is maximum", () => {
+      const result = s.isBrightest({
+        currentDistance: 1,
+        currentIllumination: 0.9,
+        previousDistances: [1.1, 1.05],
+        previousIlluminations: [0.8, 0.85],
+        nextDistances: [1.05, 1.1],
+        nextIlluminations: [0.85, 0.8],
+      });
+
+      expect(result).toBe(true);
+    });
+
+    it("should return false when previous was brighter", () => {
+      const result = s.isBrightest({
+        currentDistance: 1,
+        currentIllumination: 0.5,
+        previousDistances: [0.8],
+        previousIlluminations: [0.9],
+        nextDistances: [1.1],
+        nextIlluminations: [0.4],
+      });
+
+      expect(result).toBe(false);
+    });
+
+    it("should return false when next will be brighter", () => {
+      const result = s.isBrightest({
+        currentDistance: 1,
+        currentIllumination: 0.5,
+        previousDistances: [1.2],
+        previousIlluminations: [0.4],
+        nextDistances: [0.8],
+        nextIlluminations: [0.9],
+      });
+
+      expect(result).toBe(false);
+    });
+
+    it("should throw when previous arrays have different lengths", () => {
+      expect(() =>
+        s.isBrightest({
+          currentDistance: 1,
+          currentIllumination: 0.5,
+          previousDistances: [1, 1.1],
+          previousIlluminations: [0.5],
+          nextDistances: [1],
+          nextIlluminations: [0.5],
+        }),
+      ).toThrow("same length");
+    });
+
+    it("should throw when next arrays have different lengths", () => {
+      expect(() =>
+        s.isBrightest({
+          currentDistance: 1,
+          currentIllumination: 0.5,
+          previousDistances: [1],
+          previousIlluminations: [0.5],
+          nextDistances: [1, 1.1],
+          nextIlluminations: [0.5],
+        }),
+      ).toThrow("same length");
+    });
+  });
+
+  describe("isWesternBrightest", () => {
+    it("should return true when planet is western and brightest", () => {
+      const result = s.isWesternBrightest({
+        currentDistance: 1,
+        currentIllumination: 0.9,
+        previousDistances: [1.1],
+        previousIlluminations: [0.8],
+        nextDistances: [1.1],
+        nextIlluminations: [0.8],
+        currentLongitudePlanet: 90,
+        currentLongitudeSun: 100,
+      });
+
+      expect(result).toBe(true);
+    });
+
+    it("should return false when planet is eastern", () => {
+      const result = s.isWesternBrightest({
+        currentDistance: 1,
+        currentIllumination: 0.9,
+        previousDistances: [1.1],
+        previousIlluminations: [0.8],
+        nextDistances: [1.1],
+        nextIlluminations: [0.8],
+        currentLongitudePlanet: 110,
+        currentLongitudeSun: 100,
+      });
+
+      expect(result).toBe(false);
+    });
+  });
+
+  describe("isEasternBrightest", () => {
+    it("should return true when planet is eastern and brightest", () => {
+      const result = s.isEasternBrightest({
+        currentDistance: 1,
+        currentIllumination: 0.9,
+        previousDistances: [1.1],
+        previousIlluminations: [0.8],
+        nextDistances: [1.1],
+        nextIlluminations: [0.8],
+        currentLongitudePlanet: 110,
+        currentLongitudeSun: 100,
+      });
+
+      expect(result).toBe(true);
+    });
+
+    it("should return false when planet is western", () => {
+      const result = s.isEasternBrightest({
+        currentDistance: 1,
+        currentIllumination: 0.9,
+        previousDistances: [1.1],
+        previousIlluminations: [0.8],
+        nextDistances: [1.1],
+        nextIlluminations: [0.8],
+        currentLongitudePlanet: 90,
+        currentLongitudeSun: 100,
+      });
+
+      expect(result).toBe(false);
+    });
+  });
+
+  describe("isEasternElongation", () => {
+    it("should return true at eastern elongation (maximum angle, planet east)", () => {
+      const result = s.isEasternElongation({
+        currentLongitudePlanet: 145,
+        currentLongitudeSun: 100,
+        previousLongitudePlanet: 140,
+        previousLongitudeSun: 100,
+        nextLongitudePlanet: 140,
+        nextLongitudeSun: 100,
+      });
+
+      expect(result).toBe(true);
+    });
+
+    it("should return false when planet is western", () => {
+      const result = s.isEasternElongation({
+        currentLongitudePlanet: 55,
+        currentLongitudeSun: 100,
+        previousLongitudePlanet: 50,
+        previousLongitudeSun: 100,
+        nextLongitudePlanet: 50,
+        nextLongitudeSun: 100,
+      });
+
+      expect(result).toBe(false);
+    });
+
+    it("should return false when not at maximum elongation", () => {
+      const result = s.isEasternElongation({
+        currentLongitudePlanet: 130,
+        currentLongitudeSun: 100,
+        previousLongitudePlanet: 120,
+        previousLongitudeSun: 100,
+        nextLongitudePlanet: 140,
+        nextLongitudeSun: 100,
+      });
+
+      expect(result).toBe(false);
+    });
+  });
+
+  describe("isWesternElongation", () => {
+    it("should return true at western elongation (maximum angle, planet west)", () => {
+      const result = s.isWesternElongation({
+        currentLongitudePlanet: 55,
+        currentLongitudeSun: 100,
+        previousLongitudePlanet: 60,
+        previousLongitudeSun: 100,
+        nextLongitudePlanet: 60,
+        nextLongitudeSun: 100,
+      });
+
+      expect(result).toBe(true);
+    });
+
+    it("should return false when planet is eastern", () => {
+      const result = s.isWesternElongation({
+        currentLongitudePlanet: 145,
+        currentLongitudeSun: 100,
+        previousLongitudePlanet: 140,
+        previousLongitudeSun: 100,
+        nextLongitudePlanet: 140,
+        nextLongitudeSun: 100,
+      });
+
+      expect(result).toBe(false);
+    });
+  });
+
+  describe("isMorningRise", () => {
+    it("should return true for morning rise (western planet, crossing above threshold)", () => {
+      const result = s.isMorningRise({
+        currentLongitudePlanet: 90,
+        currentLongitudeSun: 100,
+        previousLongitudePlanet: 95,
+        previousLongitudeSun: 100,
+      });
+
+      expect(result).toBe(true);
+    });
+
+    it("should return false when planet is eastern", () => {
+      const result = s.isMorningRise({
+        currentLongitudePlanet: 110,
+        currentLongitudeSun: 100,
+        previousLongitudePlanet: 105,
+        previousLongitudeSun: 100,
+      });
+
+      expect(result).toBe(false);
+    });
+  });
+
+  describe("isMorningSet", () => {
+    it("should return true for morning set (western planet, crossing below threshold)", () => {
+      const result = s.isMorningSet({
+        currentLongitudePlanet: 95,
+        currentLongitudeSun: 100,
+        previousLongitudePlanet: 90,
+        previousLongitudeSun: 100,
+      });
+
+      expect(result).toBe(true);
+    });
+
+    it("should return false when planet is eastern", () => {
+      const result = s.isMorningSet({
+        currentLongitudePlanet: 105,
+        currentLongitudeSun: 100,
+        previousLongitudePlanet: 110,
+        previousLongitudeSun: 100,
+      });
+
+      expect(result).toBe(false);
+    });
+  });
+
+  describe("isEveningRise", () => {
+    it("should return true for evening rise (eastern planet, crossing above threshold)", () => {
+      const result = s.isEveningRise({
+        currentLongitudePlanet: 110,
+        currentLongitudeSun: 100,
+        previousLongitudePlanet: 105,
+        previousLongitudeSun: 100,
+      });
+
+      expect(result).toBe(true);
+    });
+
+    it("should return false when planet is western", () => {
+      const result = s.isEveningRise({
+        currentLongitudePlanet: 90,
+        currentLongitudeSun: 100,
+        previousLongitudePlanet: 95,
+        previousLongitudeSun: 100,
+      });
+
+      expect(result).toBe(false);
+    });
+  });
+
+  describe("isEveningSet", () => {
+    it("should return true for evening set (eastern planet, crossing below threshold)", () => {
+      const result = s.isEveningSet({
+        currentLongitudePlanet: 105,
+        currentLongitudeSun: 100,
+        previousLongitudePlanet: 110,
+        previousLongitudeSun: 100,
+      });
+
+      expect(result).toBe(true);
+    });
+
+    it("should return false when planet is western", () => {
+      const result = s.isEveningSet({
+        currentLongitudePlanet: 95,
+        currentLongitudeSun: 100,
+        previousLongitudePlanet: 90,
+        previousLongitudeSun: 100,
+      });
+
+      expect(result).toBe(false);
+    });
+  });
+  }); // private utility methods
 });

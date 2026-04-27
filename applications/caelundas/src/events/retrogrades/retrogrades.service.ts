@@ -8,19 +8,17 @@
  * Moon never do.
  */
 import { Injectable } from "@nestjs/common";
-
 import _ from "lodash";
 
 import {
   type Event,
   MARGIN_MINUTES
-} from "../../calendar.utilities";
+} from "../../calendar/calendar.types";
 import { getCoordinateFromEphemeris } from "../../ephemeris/ephemeris.service";
+import { normalizeForComparison } from "../../math.utilities";
 import { pairProgressiveEvents } from "../../progressive.utilities";
 import { symbolByBody, symbolByOrbitalDirection } from "../../symbols";
 import { retrogradeBodies } from "../../types";
-
-import { isDirect, isRetrograde } from "./retrogrades.utilities";
 
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 import type {
@@ -40,6 +38,9 @@ import type { Moment } from "moment-timezone";
 const categories = ["Astronomy", "Astrology", "Direction"];
 
 
+/**
+ *
+ */
 @Injectable()
 export class RetrogradesService {
   /**
@@ -125,12 +126,12 @@ export class RetrogradesService {
         nextLongitudes,
       };
 
-      if (isRetrograde({ ...longitudes })) {
+      if (this.isRetrograde({ ...longitudes })) {
         retrogradeEvents.push(
           this.buildRetrogradeEvent({ body, timestamp, direction: "retrograde" }),
         );
       }
-      if (isDirect({ ...longitudes })) {
+      if (this.isDirect({ ...longitudes })) {
         retrogradeEvents.push(
           this.buildRetrogradeEvent({ body, timestamp, direction: "direct" }),
         );
@@ -310,6 +311,58 @@ export class RetrogradesService {
    * // Returns: { summary: "☿ ↩️ Mercury Retrograde", start: Mar 15, end: Apr 8, ... }
    * ```
    */
+  private isRetrograde(args: {
+    currentLongitude: number;
+    previousLongitudes: number[];
+    nextLongitudes: number[];
+  }): boolean {
+    const { currentLongitude, previousLongitudes, nextLongitudes } = args;
+
+    const hasBeenDirect = previousLongitudes.every((previousLongitude) => {
+      const previousLongitudeNormalized = normalizeForComparison(
+        previousLongitude,
+        currentLongitude,
+      );
+      return previousLongitudeNormalized < currentLongitude;
+    });
+
+    const willBeRetrograde = nextLongitudes.every((nextLongitude) => {
+      const nextLongitudeNormalized = normalizeForComparison(
+        nextLongitude,
+        currentLongitude,
+      );
+      return nextLongitudeNormalized <= currentLongitude;
+    });
+
+    return hasBeenDirect && willBeRetrograde;
+  }
+
+  private isDirect(args: {
+    currentLongitude: number;
+    previousLongitudes: number[];
+    nextLongitudes: number[];
+  }): boolean {
+    const { currentLongitude, previousLongitudes, nextLongitudes } = args;
+
+    const hasBeenRetrograde = previousLongitudes.every((previousLongitude) => {
+      const previousLongitudeNormalized = normalizeForComparison(
+        previousLongitude,
+        currentLongitude,
+      );
+      return previousLongitudeNormalized > currentLongitude;
+    });
+
+    const willBeDirect = nextLongitudes.every((nextLongitude) => {
+      const nextLongitudeNormalized = normalizeForComparison(
+        nextLongitude,
+        currentLongitude,
+      );
+      return nextLongitudeNormalized >= currentLongitude;
+    });
+
+    return hasBeenRetrograde && willBeDirect;
+  }
+
   private getRetrogradeProgressiveEvent(
     beginningEvent: Event,
     endingEvent: Event,

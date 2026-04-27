@@ -3,9 +3,9 @@ import { describe, expect, it, vi } from "vitest";
 
 import { specialtyAspectBodies } from "../../../types";
 
-import { SpecialtyAspectsService } from "./specialty-aspects.service";
+import { getSpecialtyAspect, SpecialtyAspectsService } from "./specialty-aspects.service";
 
-import type { Event } from "../../../calendar.utilities";
+import type { Event } from "../../../calendar/calendar.types";
 import type { CoordinateEphemeris } from "../../../ephemeris/ephemeris.types";
 import type { Body } from "../../../types";
 
@@ -677,5 +677,25 @@ describe("specialtyAspects.events", () => {
       const venusIndex = categories.indexOf("Venus");
       expect(marsIndex).toBeLessThan(venusIndex);
     });
+  });
+});
+
+describe("getSpecialtyAspect", () => {
+  it("should return quintile for bodies 72° apart", () => {
+    expect(
+      getSpecialtyAspect({ longitudeBody1: 0, longitudeBody2: 72 }),
+    ).toBe("quintile");
+  });
+
+  it("should return biquintile for bodies 144° apart", () => {
+    expect(
+      getSpecialtyAspect({ longitudeBody1: 0, longitudeBody2: 144 }),
+    ).toBe("biquintile");
+  });
+
+  it("should return null when no specialty aspect is within orb", () => {
+    expect(
+      getSpecialtyAspect({ longitudeBody1: 0, longitudeBody2: 10 }),
+    ).toBeNull();
   });
 });

@@ -3,8 +3,8 @@ import { describe, expect, it } from "vitest";
 
 import { TripleAspectsService } from "./triple-aspects.service";
 
-import type { Event } from "../../../calendar.utilities";
-import type { AspectBodies } from "../aspects.utilities";
+import type { Event } from "../../../calendar/calendar.types";
+import type { AspectBodies } from "../aspects.service";
 
 /**
  * Integration tests for Triple Aspect pattern detection

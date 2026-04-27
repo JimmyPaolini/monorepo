@@ -26,7 +26,7 @@ import {
   isWinterSolstice,
 } from "./annualSolarCycle.utilities";
 
-import type { Event } from "../../calendar.utilities";
+import type { Event } from "../../calendar/calendar.types";
 import type {
   CoordinateEphemeris,
   DistanceEphemeris,

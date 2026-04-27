@@ -11,17 +11,26 @@ import { Injectable } from "@nestjs/common";
 
 import _ from "lodash";
 
-import { MARGIN_MINUTES } from "../../calendar.utilities";
+import { MARGIN_MINUTES } from "../../calendar/calendar.types";
 import { lunarPhases } from "../../constants";
 import { getIlluminationFromEphemeris } from "../../ephemeris/ephemeris.service";
 import { symbolByLunarPhase } from "../../symbols";
 
-import { isLunarPhase } from "./monthlyLunarCycle.utilities";
-
-import type { Event } from "../../calendar.utilities";
+import type { Event } from "../../calendar/calendar.types";
 import type { IlluminationEphemeris } from "../../ephemeris/ephemeris.types";
 import type { LunarPhase } from "../../types";
 import type { Moment } from "moment-timezone";
+
+export const illuminationByPhase: Record<LunarPhase, number> = {
+  new: 0,
+  "waxing crescent": 0.25,
+  "first quarter": 0.5,
+  "waxing gibbous": 0.75,
+  full: 1,
+  "waning gibbous": 0.75,
+  "last quarter": 0.5,
+  "waning crescent": 0.25,
+};
 
 // #region 🕑 Progressive Events
 
@@ -110,7 +119,7 @@ export class MonthlyLunarCycleService {
     const date = minute;
 
     for (const lunarPhase of lunarPhases) {
-      if (isLunarPhase({ ...illuminations, lunarPhase })) {
+      if (this.isLunarPhase({ ...illuminations, lunarPhase })) {
         monthlyLunarCycleEvents.push(
           this.buildMonthlyLunarCycleEvent({ date, lunarPhase }),
         );
@@ -325,5 +334,90 @@ export class MonthlyLunarCycleService {
         lunarPhaseCapitalized,
       ],
     };
+  }
+
+  private isNewMoon(args: {
+    currentIllumination: number;
+    previousIlluminations: number[];
+    nextIlluminations: number[];
+  }): boolean {
+    const { currentIllumination, previousIlluminations, nextIlluminations } = args;
+    return (
+      currentIllumination < Math.min(...previousIlluminations) &&
+      currentIllumination <= Math.min(...nextIlluminations) &&
+      currentIllumination < 50
+    );
+  }
+
+  private isFullMoon(args: {
+    currentIllumination: number;
+    previousIlluminations: number[];
+    nextIlluminations: number[];
+  }): boolean {
+    const { currentIllumination, previousIlluminations, nextIlluminations } = args;
+    return (
+      currentIllumination > Math.max(...previousIlluminations) &&
+      currentIllumination >= Math.max(...nextIlluminations) &&
+      currentIllumination > 50
+    );
+  }
+
+  private isLunarPhase(args: {
+    currentIllumination: number;
+    previousIlluminations: number[];
+    nextIlluminations: number[];
+    lunarPhase: LunarPhase;
+  }): boolean {
+    const { lunarPhase, ...illuminations } = args;
+
+    if (lunarPhase === "new") {
+      return this.isNewMoon({ ...illuminations });
+    }
+    if (lunarPhase === "full") {
+      return this.isFullMoon({ ...illuminations });
+    }
+
+    const { currentIllumination, previousIlluminations } = illuminations;
+    const previousIllumination = previousIlluminations[0];
+    if (!previousIllumination) {
+      return false;
+    }
+
+    const illumination = illuminationByPhase[lunarPhase] * 100;
+
+    const isWaxing = currentIllumination > previousIllumination;
+    const isWaning = currentIllumination < previousIllumination;
+    const isCrossingUp =
+      currentIllumination > illumination && previousIllumination <= illumination;
+    const isCrossingDown =
+      currentIllumination < illumination && previousIllumination >= illumination;
+    const isPhase = isCrossingUp || isCrossingDown;
+
+    const isWaxingLunarPhase = isPhase && isWaxing;
+    const isWaningLunarPhase = isPhase && isWaning;
+
+    switch (lunarPhase) {
+      case "waxing crescent": {
+        return isWaxingLunarPhase;
+      }
+      case "first quarter": {
+        return isWaxingLunarPhase;
+      }
+      case "waxing gibbous": {
+        return isWaxingLunarPhase;
+      }
+      case "waning gibbous": {
+        return isWaningLunarPhase;
+      }
+      case "last quarter": {
+        return isWaningLunarPhase;
+      }
+      case "waning crescent": {
+        return isWaningLunarPhase;
+      }
+      default: {
+        return false;
+      }
+    }
   }
 }

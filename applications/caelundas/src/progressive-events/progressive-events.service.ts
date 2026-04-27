@@ -9,7 +9,7 @@ import { PhasesService } from "../events/phases/phases.service";
 import { RetrogradesService } from "../events/retrogrades/retrogrades.service";
 import { TwilightsService } from "../events/twilights/twilights.service";
 
-import type { Event } from "../calendar.utilities";
+import type { Event } from "../calendar/calendar.types";
 
 /**
  *

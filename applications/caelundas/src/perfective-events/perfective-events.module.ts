@@ -1,5 +1,6 @@
 import { Module } from "@nestjs/common";
 
+import { DatetimeModule } from "../datetime/datetime.module";
 import { EphemerisModule } from "../ephemeris/ephemeris.module";
 import { AnnualSolarCycleModule } from "../events/annualSolarCycle/annual-solar-cycle.module";
 import { AspectsModule } from "../events/aspects/aspects.module";
@@ -15,6 +16,7 @@ import { PerfectiveEventsService } from "./perfective-events.service";
 
 @Module({
   imports: [
+    DatetimeModule,
     EphemerisModule,
     AspectsModule,
     EclipsesModule,

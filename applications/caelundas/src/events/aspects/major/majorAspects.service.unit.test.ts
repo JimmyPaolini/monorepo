@@ -3,9 +3,9 @@ import { describe, expect, it, vi } from "vitest";
 
 import { majorAspectBodies } from "../../../types";
 
-import { MajorAspectsService } from "./major-aspects.service";
+import { getMajorAspect, getMajorAspectPhase, isAspect, MajorAspectsService } from "./major-aspects.service";
 
-import type { Event } from "../../../calendar.utilities";
+import type { Event } from "../../../calendar/calendar.types";
 import type { CoordinateEphemeris } from "../../../ephemeris/ephemeris.types";
 import type { Body } from "../../../types";
 
@@ -623,5 +623,182 @@ describe("majorAspects.events", () => {
       expect(progressiveEvents[0]?.description).toContain("Sun");
       expect(progressiveEvents[0]?.description).toContain("Venus");
     });
+  });
+});
+
+describe("isAspect", () => {
+  it("should return true for conjunction within orb", () => {
+    expect(
+      isAspect({ longitudeBody1: 0, longitudeBody2: 5, aspect: "conjunct" }),
+    ).toBe(true);
+    expect(
+      isAspect({
+        longitudeBody1: 100,
+        longitudeBody2: 105,
+        aspect: "conjunct",
+      }),
+    ).toBe(true);
+  });
+
+  it("should return false for conjunction outside orb", () => {
+    expect(
+      isAspect({ longitudeBody1: 0, longitudeBody2: 10, aspect: "conjunct" }),
+    ).toBe(false);
+  });
+
+  it("should return true for opposition within orb", () => {
+    expect(
+      isAspect({
+        longitudeBody1: 0,
+        longitudeBody2: 180,
+        aspect: "opposite",
+      }),
+    ).toBe(true);
+    expect(
+      isAspect({
+        longitudeBody1: 0,
+        longitudeBody2: 175,
+        aspect: "opposite",
+      }),
+    ).toBe(true);
+  });
+
+  it("should return true for trine within orb", () => {
+    expect(
+      isAspect({ longitudeBody1: 0, longitudeBody2: 120, aspect: "trine" }),
+    ).toBe(true);
+    expect(
+      isAspect({ longitudeBody1: 0, longitudeBody2: 115, aspect: "trine" }),
+    ).toBe(true);
+  });
+
+  it("should return true for square within orb", () => {
+    expect(
+      isAspect({ longitudeBody1: 0, longitudeBody2: 90, aspect: "square" }),
+    ).toBe(true);
+    expect(
+      isAspect({ longitudeBody1: 0, longitudeBody2: 85, aspect: "square" }),
+    ).toBe(true);
+  });
+
+  it("should return true for sextile within orb", () => {
+    expect(
+      isAspect({ longitudeBody1: 0, longitudeBody2: 60, aspect: "sextile" }),
+    ).toBe(true);
+    expect(
+      isAspect({ longitudeBody1: 0, longitudeBody2: 57, aspect: "sextile" }),
+    ).toBe(true);
+  });
+});
+
+describe("getMajorAspect", () => {
+  it("should return conjunct for bodies at same longitude", () => {
+    expect(getMajorAspect({ longitudeBody1: 45, longitudeBody2: 45 })).toBe(
+      "conjunct",
+    );
+  });
+
+  it("should return conjunct for bodies within conjunction orb", () => {
+    expect(getMajorAspect({ longitudeBody1: 45, longitudeBody2: 50 })).toBe(
+      "conjunct",
+    );
+  });
+
+  it("should return opposite for bodies 180° apart", () => {
+    expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 180 })).toBe(
+      "opposite",
+    );
+  });
+
+  it("should return trine for bodies 120° apart", () => {
+    expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 120 })).toBe(
+      "trine",
+    );
+    expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 240 })).toBe(
+      "trine",
+    );
+  });
+
+  it("should return square for bodies 90° apart", () => {
+    expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 90 })).toBe(
+      "square",
+    );
+    expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 270 })).toBe(
+      "square",
+    );
+  });
+
+  it("should return sextile for bodies 60° apart", () => {
+    expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 60 })).toBe(
+      "sextile",
+    );
+    expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 300 })).toBe(
+      "sextile",
+    );
+  });
+
+  it("should return null when no major aspect is within orb", () => {
+    expect(
+      getMajorAspect({ longitudeBody1: 0, longitudeBody2: 25 }),
+    ).toBeNull();
+    expect(
+      getMajorAspect({ longitudeBody1: 0, longitudeBody2: 150 }),
+    ).toBeNull();
+  });
+
+  it("should handle wrapping around 360°", () => {
+    expect(getMajorAspect({ longitudeBody1: 357, longitudeBody2: 2 })).toBe(
+      "conjunct",
+    );
+  });
+});
+
+describe("getMajorAspectPhase", () => {
+  it("should return forming when entering aspect orb", () => {
+    const phase = getMajorAspectPhase({
+      previousLongitudeBody1: 0,
+      previousLongitudeBody2: 171,
+      currentLongitudeBody1: 0,
+      currentLongitudeBody2: 173,
+      nextLongitudeBody1: 0,
+      nextLongitudeBody2: 175,
+    });
+    expect(phase).toBe("forming");
+  });
+
+  it("should return dissolving when exiting aspect orb", () => {
+    const phase = getMajorAspectPhase({
+      previousLongitudeBody1: 0,
+      previousLongitudeBody2: 185,
+      currentLongitudeBody1: 0,
+      currentLongitudeBody2: 187,
+      nextLongitudeBody1: 0,
+      nextLongitudeBody2: 189,
+    });
+    expect(phase).toBe("dissolving");
+  });
+
+  it("should return perfective when crossing the exact aspect angle", () => {
+    const phase = getMajorAspectPhase({
+      previousLongitudeBody1: 0,
+      previousLongitudeBody2: 179,
+      currentLongitudeBody1: 0,
+      currentLongitudeBody2: 180,
+      nextLongitudeBody1: 0,
+      nextLongitudeBody2: 181,
+    });
+    expect(phase).toBe("perfective");
+  });
+
+  it("should return null when not in any aspect phase", () => {
+    const phase = getMajorAspectPhase({
+      previousLongitudeBody1: 0,
+      previousLongitudeBody2: 45,
+      currentLongitudeBody1: 0,
+      currentLongitudeBody2: 46,
+      nextLongitudeBody1: 0,
+      nextLongitudeBody2: 47,
+    });
+    expect(phase).toBeNull();
   });
 });

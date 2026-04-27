@@ -4,15 +4,45 @@ import _ from "lodash";
 import { getCombinations } from "../../../math.utilities";
 import { symbolByBody, symbolBySextupleAspect } from "../../../symbols";
 import { sextupleAspectBodies } from "../../../types";
-import {
-    determineCompoundPhaseFromSnapshots,
-    groupAspectsByType,
-} from "../aspects.composition";
 
 import type { Event } from "../../../calendar.utilities";
-import type { AspectPhase, Body, SextupleAspect } from "../../../types";
-import type { AspectBodies } from "../aspects.utilities";
+import type { Aspect, AspectPhase, Body, SextupleAspect } from "../../../types";
+import type { AspectBodies } from "../aspects.service";
 import type { Moment } from "moment-timezone";
+
+function groupAspectsByType<T extends AspectBodies>(edges: T[]): Map<Aspect, T[]> {
+  const grouped = _.groupBy(edges, "aspect");
+  return new Map(Object.entries(grouped)) as Map<Aspect, T[]>;
+}
+
+function determineCompoundPhaseFromSnapshots(
+  currentAspectBodies: AspectBodies[],
+  previousAspectBodies: AspectBodies[],
+  patternBodies: Body[],
+  currentMinute: Moment,
+  checkPatternExists: (edges: AspectBodies[]) => boolean,
+): { phase: AspectPhase; eventMinute: Moment } | null {
+  const bodySet = new Set(patternBodies);
+  const filterByBodies = (edges: AspectBodies[]): AspectBodies[] =>
+    edges.filter((e) => bodySet.has(e.bodies[0]) && bodySet.has(e.bodies[1]));
+
+  const currentFiltered = filterByBodies(currentAspectBodies);
+  const previousFiltered = filterByBodies(previousAspectBodies);
+
+  const currentExists = checkPatternExists(currentFiltered);
+  const previousExists = checkPatternExists(previousFiltered);
+
+  if (currentExists && !previousExists) {
+    return { phase: "forming", eventMinute: currentMinute };
+  }
+  if (!currentExists && previousExists) {
+    return {
+      phase: "dissolving",
+      eventMinute: currentMinute.clone().subtract(1, "minute"),
+    };
+  }
+  return null;
+}
 
 // #region Progressive Events
 

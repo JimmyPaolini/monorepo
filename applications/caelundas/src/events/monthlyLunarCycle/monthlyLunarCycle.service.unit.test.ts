@@ -1,12 +1,15 @@
 import moment, { type Moment } from "moment-timezone";
-import { describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { MARGIN_MINUTES } from "../../calendar.utilities";
+import { MARGIN_MINUTES } from "../../calendar/calendar.types";
 import { symbolByLunarPhase } from "../../symbols";
 
-import { MonthlyLunarCycleService } from "./monthly-lunar-cycle.service";
+import {
+    illuminationByPhase,
+    MonthlyLunarCycleService,
+} from "./monthly-lunar-cycle.service";
 
-import type { Event } from "../../calendar.utilities";
+import type { Event } from "../../calendar/calendar.types";
 import type { IlluminationEphemeris } from "../../ephemeris/ephemeris.types";
 import type { LunarPhase } from "../../types";
 
@@ -16,7 +19,14 @@ vi.mock("fs", () => ({
   },
 }));
 
+interface ServicePrivate {
+  isNewMoon: (args: { currentIllumination: number; previousIlluminations: number[]; nextIlluminations: number[] }) => boolean;
+  isFullMoon: (args: { currentIllumination: number; previousIlluminations: number[]; nextIlluminations: number[] }) => boolean;
+  isLunarPhase: (args: { currentIllumination: number; previousIlluminations: number[]; nextIlluminations: number[]; lunarPhase: LunarPhase }) => boolean;
+}
+
 const service = new MonthlyLunarCycleService();
+const s = service as unknown as ServicePrivate;
 
 
 describe("monthlyLunarCycle.events", () => {
@@ -328,4 +338,246 @@ describe("monthlyLunarCycle.events", () => {
       );
     });
   });
+
+  describe("private utility methods", () => {
+    beforeEach(() => {
+      vi.restoreAllMocks();
+    });
+
+    describe("illuminationByPhase", () => {
+      it("should have correct illumination values for all phases", () => {
+        expect(illuminationByPhase.new).toBe(0);
+        expect(illuminationByPhase["waxing crescent"]).toBe(0.25);
+        expect(illuminationByPhase["first quarter"]).toBe(0.5);
+        expect(illuminationByPhase["waxing gibbous"]).toBe(0.75);
+        expect(illuminationByPhase.full).toBe(1);
+        expect(illuminationByPhase["waning gibbous"]).toBe(0.75);
+        expect(illuminationByPhase["last quarter"]).toBe(0.5);
+        expect(illuminationByPhase["waning crescent"]).toBe(0.25);
+      });
+    });
+
+    describe("isNewMoon", () => {
+      it("should return true at new moon (minimum illumination)", () => {
+        const result = s.isNewMoon({
+          currentIllumination: 1,
+          previousIlluminations: [5, 3],
+          nextIlluminations: [3, 5],
+        });
+
+        expect(result).toBe(true);
+      });
+
+      it("should return false when illumination is not minimum", () => {
+        const result = s.isNewMoon({
+          currentIllumination: 10,
+          previousIlluminations: [5, 8],
+          nextIlluminations: [12, 15],
+        });
+
+        expect(result).toBe(false);
+      });
+
+      it("should return false when illumination is above 50", () => {
+        const result = s.isNewMoon({
+          currentIllumination: 55,
+          previousIlluminations: [60, 58],
+          nextIlluminations: [58, 60],
+        });
+
+        expect(result).toBe(false);
+      });
+
+      it("should handle edge case where current equals next minimum", () => {
+        const result = s.isNewMoon({
+          currentIllumination: 2,
+          previousIlluminations: [5, 3],
+          nextIlluminations: [2, 5],
+        });
+
+        expect(result).toBe(true);
+      });
+    });
+
+    describe("isFullMoon", () => {
+      it("should return true at full moon (maximum illumination)", () => {
+        const result = s.isFullMoon({
+          currentIllumination: 99,
+          previousIlluminations: [95, 97],
+          nextIlluminations: [97, 95],
+        });
+
+        expect(result).toBe(true);
+      });
+
+      it("should return false when illumination is not maximum", () => {
+        const result = s.isFullMoon({
+          currentIllumination: 80,
+          previousIlluminations: [75, 78],
+          nextIlluminations: [85, 90],
+        });
+
+        expect(result).toBe(false);
+      });
+
+      it("should return false when illumination is below 50", () => {
+        const result = s.isFullMoon({
+          currentIllumination: 45,
+          previousIlluminations: [40, 42],
+          nextIlluminations: [42, 40],
+        });
+
+        expect(result).toBe(false);
+      });
+
+      it("should handle edge case where current equals next maximum", () => {
+        const result = s.isFullMoon({
+          currentIllumination: 98,
+          previousIlluminations: [95, 97],
+          nextIlluminations: [98, 95],
+        });
+
+        expect(result).toBe(true);
+      });
+    });
+
+    describe("isLunarPhase", () => {
+      describe("new moon phase", () => {
+        it("should delegate to isNewMoon", () => {
+          const result = s.isLunarPhase({
+            currentIllumination: 1,
+            previousIlluminations: [5, 3],
+            nextIlluminations: [3, 5],
+            lunarPhase: "new",
+          });
+
+          expect(result).toBe(true);
+        });
+      });
+
+      describe("full moon phase", () => {
+        it("should delegate to isFullMoon", () => {
+          const result = s.isLunarPhase({
+            currentIllumination: 99,
+            previousIlluminations: [95, 97],
+            nextIlluminations: [97, 95],
+            lunarPhase: "full",
+          });
+
+          expect(result).toBe(true);
+        });
+      });
+
+      describe("waxing crescent", () => {
+        it("should return true when crossing 25% threshold while waxing", () => {
+          const result = s.isLunarPhase({
+            currentIllumination: 26,
+            previousIlluminations: [24],
+            nextIlluminations: [28],
+            lunarPhase: "waxing crescent",
+          });
+
+          expect(result).toBe(true);
+        });
+
+        it("should return false when waning", () => {
+          const result = s.isLunarPhase({
+            currentIllumination: 24,
+            previousIlluminations: [26],
+            nextIlluminations: [22],
+            lunarPhase: "waxing crescent",
+          });
+
+          expect(result).toBe(false);
+        });
+      });
+
+      describe("first quarter", () => {
+        it("should return true when crossing 50% threshold while waxing", () => {
+          const result = s.isLunarPhase({
+            currentIllumination: 51,
+            previousIlluminations: [49],
+            nextIlluminations: [53],
+            lunarPhase: "first quarter",
+          });
+
+          expect(result).toBe(true);
+        });
+
+        it("should return false when not crossing threshold", () => {
+          const result = s.isLunarPhase({
+            currentIllumination: 55,
+            previousIlluminations: [52],
+            nextIlluminations: [58],
+            lunarPhase: "first quarter",
+          });
+
+          expect(result).toBe(false);
+        });
+      });
+
+      describe("waxing gibbous", () => {
+        it("should return true when crossing 75% threshold while waxing", () => {
+          const result = s.isLunarPhase({
+            currentIllumination: 76,
+            previousIlluminations: [74],
+            nextIlluminations: [78],
+            lunarPhase: "waxing gibbous",
+          });
+
+          expect(result).toBe(true);
+        });
+      });
+
+      describe("waning gibbous", () => {
+        it("should return true when crossing 75% threshold while waning", () => {
+          const result = s.isLunarPhase({
+            currentIllumination: 74,
+            previousIlluminations: [76],
+            nextIlluminations: [72],
+            lunarPhase: "waning gibbous",
+          });
+
+          expect(result).toBe(true);
+        });
+
+        it("should return false when waxing", () => {
+          const result = s.isLunarPhase({
+            currentIllumination: 76,
+            previousIlluminations: [74],
+            nextIlluminations: [78],
+            lunarPhase: "waning gibbous",
+          });
+
+          expect(result).toBe(false);
+        });
+      });
+
+      describe("last quarter", () => {
+        it("should return true when crossing 50% threshold while waning", () => {
+          const result = s.isLunarPhase({
+            currentIllumination: 49,
+            previousIlluminations: [51],
+            nextIlluminations: [47],
+            lunarPhase: "last quarter",
+          });
+
+          expect(result).toBe(true);
+        });
+      });
+
+      describe("waning crescent", () => {
+        it("should return true when crossing 25% threshold while waning", () => {
+          const result = s.isLunarPhase({
+            currentIllumination: 24,
+            previousIlluminations: [26],
+            nextIlluminations: [22],
+            lunarPhase: "waning crescent",
+          });
+
+          expect(result).toBe(true);
+        });
+      });
+    });
+  }); // private utility methods
 });

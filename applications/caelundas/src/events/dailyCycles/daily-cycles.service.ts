@@ -10,11 +10,9 @@ import { Injectable } from "@nestjs/common";
  */
 
 import { getAzimuthElevationFromEphemeris } from "../../ephemeris/ephemeris.service";
-import { isMaximum, isMinimum } from "../../math.utilities";
+import { arcminutesPerDegree, isMaximum, isMinimum } from "../../math.utilities";
 
-import { isRise, isSet } from "./dailyCycle.utilities";
-
-import type { Event } from "../../calendar.utilities";
+import type { Event } from "../../calendar/calendar.types";
 import type { AzimuthElevationEphemeris } from "../../ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
 
@@ -23,6 +21,9 @@ import type { Moment } from "moment-timezone";
  *
  * Base categories applied to sunrise, solar zenith, sunset, and solar nadir events.
  */
+const sunRadiusArcminutes = 16;
+export const sunRadiusDegrees = sunRadiusArcminutes / arcminutesPerDegree;
+
 const solarCategories = ["Astronomy", "Astrology", "Daily Solar Cycle", "Solar"];
 
 const lunarCategories = ["Astronomy", "Astrology", "Daily Lunar Cycle", "Lunar"];
@@ -121,13 +122,13 @@ export class DailyCyclesService {
 
     const date = minute;
 
-    if (isRise({ ...elevations })) {
+    if (this.isRise({ ...elevations })) {
       dailySolarCycleEvents.push(this.buildSunriseEvent(date));
     }
     if (isMaximum({ ...elevations })) {
       dailySolarCycleEvents.push(this.buildSolarZenithEvent(date));
     }
-    if (isSet({ ...elevations })) {
+    if (this.isSet({ ...elevations })) {
       dailySolarCycleEvents.push(this.buildSunsetEvent(date));
     }
     if (isMinimum({ ...elevations })) {
@@ -378,13 +379,13 @@ export class DailyCyclesService {
     };
     const date = minute;
 
-    if (isRise({ ...elevations })) {
+    if (this.isRise({ ...elevations })) {
       dailyLunarCycleEvents.push(this.buildMoonriseEvent(date));
     }
     if (isMaximum({ ...elevations })) {
       dailyLunarCycleEvents.push(this.buildLunarZenithEvent(date));
     }
-    if (isSet({ ...elevations })) {
+    if (this.isSet({ ...elevations })) {
       dailyLunarCycleEvents.push(this.buildMoonsetEvent(date));
     }
     if (isMinimum({ ...elevations })) {
@@ -528,5 +529,27 @@ export class DailyCyclesService {
       categories: lunarCategories,
     };
     return lunarNadirEvent;
+  }
+
+  private isRise(args: {
+    currentElevation: number;
+    previousElevation: number;
+  }): boolean {
+    const { currentElevation, previousElevation } = args;
+    return (
+      currentElevation > -sunRadiusDegrees &&
+      previousElevation < -sunRadiusDegrees
+    );
+  }
+
+  private isSet(args: {
+    previousElevation: number;
+    currentElevation: number;
+  }): boolean {
+    const { previousElevation, currentElevation } = args;
+    return (
+      currentElevation < -sunRadiusDegrees &&
+      previousElevation > -sunRadiusDegrees
+    );
   }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 
-import { MARGIN_MINUTES } from "../calendar.utilities";
-import { generateDates, generateMinutes } from "../date.utilities";
+import { MARGIN_MINUTES } from "../calendar/calendar.types";
+import { DatetimeService } from "../datetime/datetime.service";
 import { EphemerisAggregatesService } from "../ephemeris/ephemeris.aggregates";
 import { AnnualSolarCycleService } from "../events/annualSolarCycle/annual-solar-cycle.service";
 import { AspectsService } from "../events/aspects/aspects.service";
@@ -13,14 +13,15 @@ import { PhasesService } from "../events/phases/phases.service";
 import { RetrogradesService } from "../events/retrogrades/retrogrades.service";
 import { TwilightsService } from "../events/twilights/twilights.service";
 
-import type { Event } from "../calendar.utilities";
+import type { Event } from "../calendar/calendar.types";
 import type { Coordinates } from "../ephemeris/ephemeris.types";
-import type { AspectBodies } from "../events/aspects/aspects.utilities";
+import type { AspectBodies } from "../events/aspects/aspects.service";
 import type { Input } from "../input.schema";
 
 @Injectable()
 export class PerfectiveEventsService {
   constructor(
+    private readonly datetimeService: DatetimeService,
     private readonly ephemerisAggregatesService: EphemerisAggregatesService,
     private readonly aspectsService: AspectsService,
     private readonly eclipsesService: EclipsesService,
@@ -40,7 +41,7 @@ export class PerfectiveEventsService {
     let previousAspectBodies: AspectBodies[] = [];
     const perfectiveEvents: Event[] = [];
 
-    for (const date of generateDates(start, end, timezone)) {
+    for (const date of this.datetimeService.generateDates(start, end, timezone)) {
       const startOfDay = date.clone().startOf("day");
       const endOfDay = date.clone().endOf("day");
 
@@ -61,7 +62,7 @@ export class PerfectiveEventsService {
 
       const events: Event[] = [];
 
-      for (const minute of generateMinutes(startOfDay, endOfDay)) {
+      for (const minute of this.datetimeService.generateMinutes(startOfDay, endOfDay)) {
         const { events: aspectEvents, aspectBodies: currentAspectBodies } =
           this.aspectsService.detect({
             coordinateEphemerisByBody,

@@ -3,8 +3,8 @@ import { describe, expect, it } from "vitest";
 
 import { QuintupleAspectsService } from "./quintuple-aspects.service";
 
-import type { Event } from "../../../calendar.utilities";
-import type { AspectBodies } from "../aspects.utilities";
+import type { Event } from "../../../calendar/calendar.types";
+import type { AspectBodies } from "../aspects.service";
 
 const service = new QuintupleAspectsService();
 

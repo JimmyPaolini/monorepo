@@ -1,20 +1,24 @@
 import { Injectable } from "@nestjs/common";
 
 import { getAzimuthElevationFromEphemeris } from "../../ephemeris/ephemeris.service";
+import { arcminutesPerDegree } from "../../math.utilities";
 import { pairProgressiveEvents } from "../../progressive.utilities";
 
-import {
-    isAstronomicalDawn,
-    isAstronomicalDusk,
-    isCivilDawn,
-    isCivilDusk,
-    isNauticalDawn,
-    isNauticalDusk,
-} from "./twilights.utilities";
-
-import type { Event } from "../../calendar.utilities";
+import type { Event } from "../../calendar/calendar.types";
 import type { AzimuthElevationEphemeris } from "../../ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
+
+const sunRadiusArcminutes = 16;
+export const sunRadiusDegrees = sunRadiusArcminutes / arcminutesPerDegree;
+
+export const twilights = ["civil", "nautical", "astronomical"] as const;
+export type Twilight = (typeof twilights)[number];
+
+export const degreesByTwilight: Record<Twilight, number> = {
+  civil: 6,
+  nautical: 12,
+  astronomical: 18,
+};
 
 const categories = ["Astronomy", "Astrology", "Twilight"];
 
@@ -69,22 +73,22 @@ export class TwilightsService {
     const elevations = { currentElevation, previousElevation };
     const date = minute;
 
-    if (isAstronomicalDawn({ ...elevations })) {
+    if (this.isAstronomicalDawn({ ...elevations })) {
       twilightEvents.push(this.buildAstronomicalDawnEvent(date));
     }
-    if (isNauticalDawn({ ...elevations })) {
+    if (this.isNauticalDawn({ ...elevations })) {
       twilightEvents.push(this.buildNauticalDawnEvent(date));
     }
-    if (isCivilDawn({ ...elevations })) {
+    if (this.isCivilDawn({ ...elevations })) {
       twilightEvents.push(this.buildCivilDawnEvent(date));
     }
-    if (isCivilDusk({ ...elevations })) {
+    if (this.isCivilDusk({ ...elevations })) {
       twilightEvents.push(this.buildCivilDuskEvent(date));
     }
-    if (isNauticalDusk({ ...elevations })) {
+    if (this.isNauticalDusk({ ...elevations })) {
       twilightEvents.push(this.buildNauticalDuskEvent(date));
     }
-    if (isAstronomicalDusk({ ...elevations })) {
+    if (this.isAstronomicalDusk({ ...elevations })) {
       twilightEvents.push(this.buildAstronomicalDuskEvent(date));
     }
 
@@ -394,5 +398,73 @@ export class TwilightsService {
       description: "Night",
       categories: [...categories, "Night"],
     };
+  }
+
+  private isDawn(args: {
+    currentElevation: number;
+    previousElevation: number;
+    twilight: Twilight;
+  }): boolean {
+    const { currentElevation, previousElevation, twilight } = args;
+    const degrees = degreesByTwilight[twilight];
+    return currentElevation > -degrees && previousElevation < -degrees;
+  }
+
+  private isAstronomicalDawn(args: {
+    currentElevation: number;
+    previousElevation: number;
+  }): boolean {
+    const { currentElevation, previousElevation } = args;
+    return this.isDawn({ currentElevation, previousElevation, twilight: "astronomical" });
+  }
+
+  private isNauticalDawn(args: {
+    currentElevation: number;
+    previousElevation: number;
+  }): boolean {
+    const { currentElevation, previousElevation } = args;
+    return this.isDawn({ currentElevation, previousElevation, twilight: "nautical" });
+  }
+
+  private isCivilDawn(args: {
+    currentElevation: number;
+    previousElevation: number;
+  }): boolean {
+    const { currentElevation, previousElevation } = args;
+    return this.isDawn({ currentElevation, previousElevation, twilight: "civil" });
+  }
+
+  private isDusk(args: {
+    currentElevation: number;
+    previousElevation: number;
+    twilight: Twilight;
+  }): boolean {
+    const { currentElevation, previousElevation, twilight } = args;
+    const degrees = degreesByTwilight[twilight];
+    return currentElevation < -degrees && previousElevation > -degrees;
+  }
+
+  private isCivilDusk(args: {
+    currentElevation: number;
+    previousElevation: number;
+  }): boolean {
+    const { currentElevation, previousElevation } = args;
+    return this.isDusk({ currentElevation, previousElevation, twilight: "civil" });
+  }
+
+  private isNauticalDusk(args: {
+    currentElevation: number;
+    previousElevation: number;
+  }): boolean {
+    const { currentElevation, previousElevation } = args;
+    return this.isDusk({ currentElevation, previousElevation, twilight: "nautical" });
+  }
+
+  private isAstronomicalDusk(args: {
+    currentElevation: number;
+    previousElevation: number;
+  }): boolean {
+    const { currentElevation, previousElevation } = args;
+    return this.isDusk({ currentElevation, previousElevation, twilight: "astronomical" });
   }
 }

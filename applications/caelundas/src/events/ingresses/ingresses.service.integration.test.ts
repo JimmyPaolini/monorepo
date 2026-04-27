@@ -2,14 +2,14 @@ import moment, { type Moment } from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
 import {
-  decanIngressBodies,
-  peakIngressBodies,
-  signIngressBodies,
+    decanIngressBodies,
+    peakIngressBodies,
+    signIngressBodies,
 } from "../../types";
 
 import { IngressesService } from "./ingresses.service";
 
-import type { Event } from "../../calendar.utilities";
+import type { Event } from "../../calendar/calendar.types";
 import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
 import type { Body } from "../../types";
 
