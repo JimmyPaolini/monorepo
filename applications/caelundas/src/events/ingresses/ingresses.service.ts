@@ -1,16 +1,20 @@
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
-import { signs } from "../../constants";
-import { getCoordinateFromEphemeris } from "../../ephemeris/ephemeris.service";
-import { symbolByBody, symbolByDecan, symbolBySign } from "../../symbols";
+import { signs } from "@caelundas/src/constants";
+import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
+import {
+    symbolByBody,
+    symbolByDecan,
+    symbolBySign,
+} from "@caelundas/src/symbols";
 import {
     decanIngressBodies,
     peakIngressBodies,
     signIngressBodies,
-} from "../../types";
-import type { Event } from "../../calendar/calendar.types";
-import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
+} from "@caelundas/src/types";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { CoordinateEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
 import type {
     Body,
     BodySymbol,
@@ -18,51 +22,8 @@ import type {
     DecanSymbol,
     Sign,
     SignSymbol,
-} from "../../types";
+} from "@caelundas/src/types";
 import type { Moment } from "moment-timezone";
-
-const categories = ["Astronomy", "Astrology", "Ingress"];
-
-/**
- * Maps each zodiac sign to its ecliptic longitude range.
- *
- * The ecliptic is divided into 12 equal 30° segments, starting with Aries at 0°.
- *
- * @remarks
- * Tropical zodiac (aligned with seasons, not constellations)
- */
-export const degreeRangeBySign: Record<Sign, { min: number; max: number }> = {
-  aries: { min: 0, max: 30 },
-  taurus: { min: 30, max: 60 },
-  gemini: { min: 60, max: 90 },
-  cancer: { min: 90, max: 120 },
-  leo: { min: 120, max: 150 },
-  virgo: { min: 150, max: 180 },
-  libra: { min: 180, max: 210 },
-  scorpio: { min: 210, max: 240 },
-  sagittarius: { min: 240, max: 270 },
-  capricorn: { min: 270, max: 300 },
-  aquarius: { min: 300, max: 330 },
-  pisces: { min: 330, max: 360 },
-};
-
-/**
- * Determines which zodiac sign corresponds to an ecliptic longitude.
- *
- * @param longitude - Ecliptic longitude in degrees (0-360)
- * @returns The zodiac sign name
- * @throws If longitude is outside valid range
- * @see {@link degreeRangeBySign} for sign boundaries
- */
-export function getSign(longitude: number): Sign {
-  const entry = Object.entries(degreeRangeBySign).find(([, { min, max }]) => {
-    return longitude >= min && longitude < max;
-  });
-  if (!entry) {
-    throw new Error(`🚫 Longitude ${longitude} not in any sign.`);
-  }
-  return entry[0] as Sign;
-}
 
 // #region 🪧 Signs
 
@@ -72,9 +33,55 @@ export function getSign(longitude: number): Sign {
 
 // #region 🕑 Progressive Events
 
-
 @Injectable()
 export class IngressesService {
+  private static readonly categories = ["Astronomy", "Astrology", "Ingress"];
+
+  /**
+   * Maps each zodiac sign to its ecliptic longitude range.
+   *
+   * The ecliptic is divided into 12 equal 30° segments, starting with Aries at 0°.
+   *
+   * @remarks
+   * Tropical zodiac (aligned with seasons, not constellations)
+   */
+  static readonly degreeRangeBySign: Record<Sign, { min: number; max: number }> = {
+    aries: { min: 0, max: 30 },
+    taurus: { min: 30, max: 60 },
+    gemini: { min: 60, max: 90 },
+    cancer: { min: 90, max: 120 },
+    leo: { min: 120, max: 150 },
+    virgo: { min: 150, max: 180 },
+    libra: { min: 180, max: 210 },
+    scorpio: { min: 210, max: 240 },
+    sagittarius: { min: 240, max: 270 },
+    capricorn: { min: 270, max: 300 },
+    aquarius: { min: 300, max: 330 },
+    pisces: { min: 330, max: 360 },
+  };
+
+  /**
+   * Determines which zodiac sign corresponds to an ecliptic longitude.
+   *
+   * @param longitude - Ecliptic longitude in degrees (0-360)
+   * @returns The zodiac sign name
+   * @throws If longitude is outside valid range
+   * @see {@link IngressesService.degreeRangeBySign} for sign boundaries
+   */
+  static getSign(longitude: number): Sign {
+    const entry = Object.entries(IngressesService.degreeRangeBySign).find(
+      ([, { min, max }]) => {
+        return longitude >= min && longitude < max;
+      },
+    );
+    if (!entry) {
+      throw new Error(`🚫 Longitude ${longitude} not in any sign.`);
+    }
+    return entry[0] as Sign;
+  }
+
+  constructor(private readonly ephemerisService: EphemerisService) {}
+
   /**
    * Detects zodiacal sign ingress events for celestial bodies.
    *
@@ -103,12 +110,12 @@ export class IngressesService {
     for (const body of signIngressBodies) {
       const coordinateEphemeris = coordinateEphemerisByBody[body];
 
-      const currentLongitude = getCoordinateFromEphemeris(
+      const currentLongitude = this.ephemerisService.getCoordinateFromEphemeris(
         coordinateEphemeris,
         minute.toISOString(),
         "longitude",
       );
-      const previousLongitude = getCoordinateFromEphemeris(
+      const previousLongitude = this.ephemerisService.getCoordinateFromEphemeris(
         coordinateEphemeris,
         previousMinute.toISOString(),
         "longitude",
@@ -122,7 +129,9 @@ export class IngressesService {
       const longitude = currentLongitude;
 
       if (this.isSignIngress({ currentLongitude, previousLongitude })) {
-        signIngressEvents.push(this.buildSignIngressEvent({ body, date, longitude }));
+        signIngressEvents.push(
+          this.buildSignIngressEvent({ body, date, longitude }),
+        );
       }
     }
 
@@ -145,7 +154,7 @@ export class IngressesService {
     body: Body;
   }): Event {
     const { date, longitude, body } = args;
-    const sign = getSign(longitude);
+    const sign = IngressesService.getSign(longitude);
     const bodyCapitalized = _.startCase(body);
     const signCapitalized = _.startCase(sign);
     const bodySymbol = symbolByBody[body];
@@ -159,7 +168,7 @@ export class IngressesService {
     const signIngressEvent: Event = {
       start: date,
       end: date,
-      categories: [...categories, bodyCapitalized, signCapitalized],
+      categories: [...IngressesService.categories, bodyCapitalized, signCapitalized],
       description,
       summary,
     };
@@ -194,12 +203,12 @@ export class IngressesService {
     for (const body of decanIngressBodies) {
       const coordinateEphemeris = coordinateEphemerisByBody[body];
 
-      const currentLongitude = getCoordinateFromEphemeris(
+      const currentLongitude = this.ephemerisService.getCoordinateFromEphemeris(
         coordinateEphemeris,
         minute.toISOString(),
         "longitude",
       );
-      const previousLongitude = getCoordinateFromEphemeris(
+      const previousLongitude = this.ephemerisService.getCoordinateFromEphemeris(
         coordinateEphemeris,
         previousMinute.toISOString(),
         "longitude",
@@ -234,7 +243,7 @@ export class IngressesService {
     body: Body;
   }): Event {
     const { date, longitude, body } = args;
-    const sign = getSign(longitude);
+    const sign = IngressesService.getSign(longitude);
     const decan = String(this.getDecan(longitude)) as Decan;
     const bodyCapitalized = _.startCase(body) as Capitalize<Body>;
     const signCapitalized = _.startCase(sign) as Capitalize<Sign>;
@@ -251,7 +260,7 @@ export class IngressesService {
     const decanIngressEvent: Event = {
       start: date,
       end: date,
-      categories: [...categories, "Decan", bodyCapitalized, signCapitalized],
+      categories: [...IngressesService.categories, "Decan", bodyCapitalized, signCapitalized],
       description,
       summary,
     };
@@ -275,12 +284,12 @@ export class IngressesService {
     for (const body of peakIngressBodies) {
       const coordinateEphemeris = coordinateEphemerisByBody[body];
 
-      const currentLongitude = getCoordinateFromEphemeris(
+      const currentLongitude = this.ephemerisService.getCoordinateFromEphemeris(
         coordinateEphemeris,
         minute.toISOString(),
         "longitude",
       );
-      const previousLongitude = getCoordinateFromEphemeris(
+      const previousLongitude = this.ephemerisService.getCoordinateFromEphemeris(
         coordinateEphemeris,
         previousMinute.toISOString(),
         "longitude",
@@ -294,7 +303,9 @@ export class IngressesService {
       const longitude = currentLongitude;
 
       if (this.isPeakIngress({ currentLongitude, previousLongitude })) {
-        peakIngressEvents.push(this.buildPeakIngressEvent({ body, date, longitude }));
+        peakIngressEvents.push(
+          this.buildPeakIngressEvent({ body, date, longitude }),
+        );
       }
     }
 
@@ -310,7 +321,7 @@ export class IngressesService {
     body: Body;
   }): Event {
     const { date, longitude, body } = args;
-    const sign = getSign(longitude);
+    const sign = IngressesService.getSign(longitude);
     const bodyCapitalized = _.startCase(body) as Capitalize<Body>;
     const signCapitalized = _.startCase(sign) as Capitalize<Sign>;
     const bodySymbol = symbolByBody[body] as BodySymbol;
@@ -324,7 +335,7 @@ export class IngressesService {
     const peakIngressEvent: Event = {
       start: date,
       end: date,
-      categories: [...categories, "Peak", bodyCapitalized, signCapitalized],
+      categories: [...IngressesService.categories, "Peak", bodyCapitalized, signCapitalized],
       description,
       summary,
     };
@@ -409,7 +420,7 @@ export class IngressesService {
 
     if (!signCapitalized) {
       throw new Error(
-        `Could not extract sign from categories: ${categories.join(", ")}`,
+        `Could not extract sign from categories: ${entering.categories.join(", ")}`,
       );
     }
 
@@ -439,12 +450,12 @@ export class IngressesService {
     currentLongitude: number;
   }): boolean {
     const { currentLongitude, previousLongitude } = args;
-    return getSign(currentLongitude) !== getSign(previousLongitude);
+    return IngressesService.getSign(currentLongitude) !== IngressesService.getSign(previousLongitude);
   }
 
   private getDecan(longitude: number): number {
-    const sign = getSign(longitude);
-    const { min } = degreeRangeBySign[sign];
+    const sign = IngressesService.getSign(longitude);
+    const { min } = IngressesService.degreeRangeBySign[sign];
     return Math.floor((longitude - min) / 10) + 1;
   }
 
@@ -462,12 +473,12 @@ export class IngressesService {
   }): boolean {
     const { currentLongitude, previousLongitude } = args;
 
-    const previousSign = getSign(previousLongitude);
-    const { min: previousMin } = degreeRangeBySign[previousSign];
+    const previousSign = IngressesService.getSign(previousLongitude);
+    const { min: previousMin } = IngressesService.degreeRangeBySign[previousSign];
     const previousDifference = previousLongitude - previousMin;
 
-    const currentSign = getSign(currentLongitude);
-    const { min: currentMin } = degreeRangeBySign[currentSign];
+    const currentSign = IngressesService.getSign(currentLongitude);
+    const { min: currentMin } = IngressesService.degreeRangeBySign[currentSign];
     const currentDifference = currentLongitude - currentMin;
 
     return currentDifference >= 15 && previousDifference < 15;

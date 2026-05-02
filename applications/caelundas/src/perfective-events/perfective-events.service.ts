@@ -1,22 +1,22 @@
 import { Injectable } from "@nestjs/common";
 
-import { MARGIN_MINUTES } from "../calendar/calendar.types";
-import { DatetimeService } from "../datetime/datetime.service";
-import { EphemerisAggregatesService } from "../ephemeris/ephemeris.aggregates";
-import { AnnualSolarCycleService } from "../events/annualSolarCycle/annual-solar-cycle.service";
-import { AspectsService } from "../events/aspects/aspects.service";
-import { DailyCyclesService } from "../events/dailyCycles/daily-cycles.service";
-import { EclipsesService } from "../events/eclipses/eclipses.service";
-import { IngressesService } from "../events/ingresses/ingresses.service";
-import { MonthlyLunarCycleService } from "../events/monthlyLunarCycle/monthly-lunar-cycle.service";
-import { PhasesService } from "../events/phases/phases.service";
-import { RetrogradesService } from "../events/retrogrades/retrogrades.service";
-import { TwilightsService } from "../events/twilights/twilights.service";
+import { MARGIN_MINUTES } from "@caelundas/src/calendar/calendar.types";
+import { DatetimeService } from "@caelundas/src/datetime/datetime.service";
+import { EphemerisAggregatesService } from "@caelundas/src/ephemeris/ephemeris.aggregates";
+import { AnnualSolarCycleService } from "@caelundas/src/events/annualSolarCycle/annual-solar-cycle.service";
+import { AspectsService } from "@caelundas/src/events/aspects/aspects.service";
+import { DailyCyclesService } from "@caelundas/src/events/dailyCycles/daily-cycles.service";
+import { EclipsesService } from "@caelundas/src/events/eclipses/eclipses.service";
+import { IngressesService } from "@caelundas/src/events/ingresses/ingresses.service";
+import { MonthlyLunarCycleService } from "@caelundas/src/events/monthlyLunarCycle/monthly-lunar-cycle.service";
+import { PhasesService } from "@caelundas/src/events/phases/phases.service";
+import { RetrogradesService } from "@caelundas/src/events/retrogrades/retrogrades.service";
+import { TwilightsService } from "@caelundas/src/events/twilights/twilights.service";
 
-import type { Event } from "../calendar/calendar.types";
-import type { Coordinates } from "../ephemeris/ephemeris.types";
-import type { AspectBodies } from "../events/aspects/aspects.service";
-import type { Input } from "../input.schema";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { Coordinates } from "@caelundas/src/ephemeris/ephemeris.types";
+import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
+import type { Input } from "@caelundas/src/input.schema";
 
 @Injectable()
 export class PerfectiveEventsService {
@@ -41,7 +41,11 @@ export class PerfectiveEventsService {
     let previousAspectBodies: AspectBodies[] = [];
     const perfectiveEvents: Event[] = [];
 
-    for (const date of this.datetimeService.generateDates(start, end, timezone)) {
+    for (const date of this.datetimeService.generateDates(
+      start,
+      end,
+      timezone,
+    )) {
       const startOfDay = date.clone().startOf("day");
       const endOfDay = date.clone().endOf("day");
 
@@ -62,7 +66,10 @@ export class PerfectiveEventsService {
 
       const events: Event[] = [];
 
-      for (const minute of this.datetimeService.generateMinutes(startOfDay, endOfDay)) {
+      for (const minute of this.datetimeService.generateMinutes(
+        startOfDay,
+        endOfDay,
+      )) {
         const { events: aspectEvents, aspectBodies: currentAspectBodies } =
           this.aspectsService.detect({
             coordinateEphemerisByBody,
@@ -81,8 +88,14 @@ export class PerfectiveEventsService {
             sunCoordinateEphemeris: coordinateEphemerisByBody.sun,
             sunDiameterEphemeris: diameterEphemerisByBody.sun,
           }),
-          ...this.retrogradesService.detect({ coordinateEphemerisByBody, minute }),
-          ...this.ingressesService.detect({ coordinateEphemerisByBody, minute }),
+          ...this.retrogradesService.detect({
+            coordinateEphemerisByBody,
+            minute,
+          }),
+          ...this.ingressesService.detect({
+            coordinateEphemerisByBody,
+            minute,
+          }),
           ...this.dailyCyclesService.detect({
             minute,
             sunAzimuthElevationEphemeris: azimuthElevationEphemerisByBody.sun,

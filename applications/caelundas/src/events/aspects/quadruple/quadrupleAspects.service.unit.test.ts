@@ -1,14 +1,17 @@
 import moment from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
-import { getOtherBody, involvesBody, QuadrupleAspectsService } from "./quadruple-aspects.service";
+import {
+  getOtherBody,
+  involvesBody,
+  QuadrupleAspectsService,
+} from "./quadruple-aspects.service";
 
-import type { Event } from "../../../calendar/calendar.types";
-import type { Aspect, Body } from "../../../types";
-import type { AspectBodies } from "../aspects.service";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { Aspect, Body } from "@caelundas/src/types";
+import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
 
 const service = new QuadrupleAspectsService();
-
 
 describe("quadrupleAspects.events", () => {
   describe("service.detect", () => {
@@ -31,7 +34,7 @@ describe("quadrupleAspects.events", () => {
           currentAspectBodies,
           previousAspectBodies,
           minute: currentMinute,
-          });
+        });
 
         expect(events.length).toBeGreaterThanOrEqual(1);
         const grandCross = events.find((e) =>
@@ -62,7 +65,7 @@ describe("quadrupleAspects.events", () => {
           currentAspectBodies,
           previousAspectBodies,
           minute: currentMinute,
-          });
+        });
 
         expect(events.length).toBeGreaterThanOrEqual(1);
         const grandCross = events.find((e) =>
@@ -89,7 +92,7 @@ describe("quadrupleAspects.events", () => {
           currentAspectBodies,
           previousAspectBodies,
           minute: currentMinute,
-          });
+        });
 
         expect(events.length).toBeGreaterThanOrEqual(1);
         const grandCross = events.find((e) =>
@@ -113,7 +116,7 @@ describe("quadrupleAspects.events", () => {
           currentAspectBodies,
           previousAspectBodies,
           minute: currentMinute,
-          });
+        });
 
         const grandCross = events.find((e) =>
           e.categories.includes("Grand Cross"),
@@ -140,7 +143,7 @@ describe("quadrupleAspects.events", () => {
           currentAspectBodies,
           previousAspectBodies,
           minute: currentMinute,
-          });
+        });
 
         expect(events.length).toBeGreaterThanOrEqual(1);
         const kite = events.find((e) => e.categories.includes("Kite"));
@@ -168,7 +171,7 @@ describe("quadrupleAspects.events", () => {
           currentAspectBodies,
           previousAspectBodies,
           minute: currentMinute,
-          });
+        });
 
         const kite = events.find((e) => e.categories.includes("Kite"));
         expect(kite).toBeUndefined();
@@ -177,7 +180,11 @@ describe("quadrupleAspects.events", () => {
 
     it("should handle empty stored aspects", () => {
       const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
-      const events = service.detect({ currentAspectBodies: [], previousAspectBodies: [], minute: currentMinute });
+      const events = service.detect({
+        currentAspectBodies: [],
+        previousAspectBodies: [],
+        minute: currentMinute,
+      });
       expect(events.length).toBe(0);
     });
 
@@ -192,7 +199,7 @@ describe("quadrupleAspects.events", () => {
         currentAspectBodies,
         previousAspectBodies,
         minute: currentMinute,
-        });
+      });
       expect(events.length).toBe(0);
     });
 
@@ -220,7 +227,7 @@ describe("quadrupleAspects.events", () => {
         currentAspectBodies,
         previousAspectBodies,
         minute: currentMinute,
-        });
+      });
 
       // No events - pattern exists in prev/current/next minutes
       expect(events.length).toBe(0);

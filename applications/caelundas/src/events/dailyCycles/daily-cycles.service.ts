@@ -9,28 +9,35 @@ import { Injectable } from "@nestjs/common";
  * Events are detected by analyzing Sun's altitude/elevation angle over time.
  */
 
-import { getAzimuthElevationFromEphemeris } from "../../ephemeris/ephemeris.service";
-import { arcminutesPerDegree, isMaximum, isMinimum } from "../../math.utilities";
+import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
+import {
+    arcminutesPerDegree,
+    isMaximum,
+    isMinimum,
+} from "@caelundas/src/math.utilities";
 
-import type { Event } from "../../calendar/calendar.types";
-import type { AzimuthElevationEphemeris } from "../../ephemeris/ephemeris.types";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { AzimuthElevationEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
-
-/**
- * Standard categories for all daily solar cycle events.
- *
- * Base categories applied to sunrise, solar zenith, sunset, and solar nadir events.
- */
-const sunRadiusArcminutes = 16;
-export const sunRadiusDegrees = sunRadiusArcminutes / arcminutesPerDegree;
-
-const solarCategories = ["Astronomy", "Astrology", "Daily Solar Cycle", "Solar"];
-
-const lunarCategories = ["Astronomy", "Astrology", "Daily Lunar Cycle", "Lunar"];
-
 
 @Injectable()
 export class DailyCyclesService {
+  static readonly sunRadiusDegrees = 16 / arcminutesPerDegree;
+  private static readonly solarCategories = [
+    "Astronomy",
+    "Astrology",
+    "Daily Solar Cycle",
+    "Solar",
+  ];
+  private static readonly lunarCategories = [
+    "Astronomy",
+    "Astrology",
+    "Daily Lunar Cycle",
+    "Lunar",
+  ];
+
+  constructor(private readonly ephemerisService: EphemerisService) {}
+
   /**
    * Detects daily solar cycle events at a specific time point.
    *
@@ -95,17 +102,17 @@ export class DailyCyclesService {
     const previousMinute = minute.clone().subtract(1, "minute");
     const nextMinute = minute.clone().add(1, "minute");
 
-    const currentElevation = getAzimuthElevationFromEphemeris(
+    const currentElevation = this.ephemerisService.getAzimuthElevationFromEphemeris(
       sunAzimuthElevationEphemeris,
       minute.toISOString(),
       "elevation",
     );
-    const previousElevation = getAzimuthElevationFromEphemeris(
+    const previousElevation = this.ephemerisService.getAzimuthElevationFromEphemeris(
       sunAzimuthElevationEphemeris,
       previousMinute.toISOString(),
       "elevation",
     );
-    const nextElevation = getAzimuthElevationFromEphemeris(
+    const nextElevation = this.ephemerisService.getAzimuthElevationFromEphemeris(
       sunAzimuthElevationEphemeris,
       nextMinute.toISOString(),
       "elevation",
@@ -176,7 +183,7 @@ export class DailyCyclesService {
       end: date,
       summary,
       description,
-      categories: solarCategories,
+      categories: DailyCyclesService.solarCategories,
     };
     return sunriseEvent;
   }
@@ -221,7 +228,7 @@ export class DailyCyclesService {
       end: date,
       summary,
       description,
-      categories: solarCategories,
+      categories: DailyCyclesService.solarCategories,
     };
     return solarZenithEvent;
   }
@@ -265,7 +272,7 @@ export class DailyCyclesService {
       end: date,
       summary,
       description,
-      categories: solarCategories,
+      categories: DailyCyclesService.solarCategories,
     };
     return sunsetEvent;
   }
@@ -311,7 +318,7 @@ export class DailyCyclesService {
       end: date,
       summary,
       description,
-      categories: solarCategories,
+      categories: DailyCyclesService.solarCategories,
     };
     return solarNadirEvent;
   }
@@ -353,17 +360,17 @@ export class DailyCyclesService {
     const previousMinute = minute.clone().subtract(1, "minute");
     const nextMinute = minute.clone().add(1, "minute");
 
-    const currentElevation = getAzimuthElevationFromEphemeris(
+    const currentElevation = this.ephemerisService.getAzimuthElevationFromEphemeris(
       moonAzimuthElevationEphemeris,
       minute.toISOString(),
       "elevation",
     );
-    const previousElevation = getAzimuthElevationFromEphemeris(
+    const previousElevation = this.ephemerisService.getAzimuthElevationFromEphemeris(
       moonAzimuthElevationEphemeris,
       previousMinute.toISOString(),
       "elevation",
     );
-    const nextElevation = getAzimuthElevationFromEphemeris(
+    const nextElevation = this.ephemerisService.getAzimuthElevationFromEphemeris(
       moonAzimuthElevationEphemeris,
       nextMinute.toISOString(),
       "elevation",
@@ -424,7 +431,7 @@ export class DailyCyclesService {
       end: date,
       summary,
       description,
-      categories: lunarCategories,
+      categories: DailyCyclesService.lunarCategories,
     };
     return moonriseEvent;
   }
@@ -458,7 +465,7 @@ export class DailyCyclesService {
       end: date,
       summary,
       description,
-      categories: lunarCategories,
+      categories: DailyCyclesService.lunarCategories,
     };
     return lunarZenithEvent;
   }
@@ -492,7 +499,7 @@ export class DailyCyclesService {
       end: date,
       summary,
       description,
-      categories: lunarCategories,
+      categories: DailyCyclesService.lunarCategories,
     };
     return moonsetEvent;
   }
@@ -526,7 +533,7 @@ export class DailyCyclesService {
       end: date,
       summary,
       description,
-      categories: lunarCategories,
+      categories: DailyCyclesService.lunarCategories,
     };
     return lunarNadirEvent;
   }
@@ -537,8 +544,8 @@ export class DailyCyclesService {
   }): boolean {
     const { currentElevation, previousElevation } = args;
     return (
-      currentElevation > -sunRadiusDegrees &&
-      previousElevation < -sunRadiusDegrees
+      currentElevation > -DailyCyclesService.sunRadiusDegrees &&
+      previousElevation < -DailyCyclesService.sunRadiusDegrees
     );
   }
 
@@ -548,8 +555,8 @@ export class DailyCyclesService {
   }): boolean {
     const { previousElevation, currentElevation } = args;
     return (
-      currentElevation < -sunRadiusDegrees &&
-      previousElevation > -sunRadiusDegrees
+      currentElevation < -DailyCyclesService.sunRadiusDegrees &&
+      previousElevation > -DailyCyclesService.sunRadiusDegrees
     );
   }
 }

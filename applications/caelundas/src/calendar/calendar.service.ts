@@ -3,10 +3,13 @@ import { writeFile } from "node:fs/promises";
 import { Injectable } from "@nestjs/common";
 import moment from "moment-timezone";
 
-import { getOutputPath } from "../output.utilities";
+import { getOutputPath } from "@caelundas/src/output.utilities";
 
-import type { BuildCalendarFileContentParameters, Event } from "./calendar.types";
-import type { Input } from "../input.schema";
+import type {
+  BuildCalendarFileContentParameters,
+  Event,
+} from "./calendar.types";
+import type { Input } from "@caelundas/src/input.schema";
 
 @Injectable()
 export class CalendarService {
@@ -23,7 +26,9 @@ export class CalendarService {
       getOutputPath(calendarFilename),
       new TextEncoder().encode(calendarFileContent),
     );
-    console.log(`✏️ Wrote ${events.length} events to file "${calendarFilename}"`);
+    console.log(
+      `✏️ Wrote ${events.length} events to file "${calendarFilename}"`,
+    );
   }
 
   /**

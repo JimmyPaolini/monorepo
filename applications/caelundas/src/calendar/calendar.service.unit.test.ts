@@ -1,7 +1,7 @@
 import moment from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
-import { mockDates } from "../../testing/mocks";
+import { mockDates } from "@caelundas/testing/mocks";
 
 import { CalendarService } from "./calendar.service";
 
@@ -119,7 +119,10 @@ describe("CalendarService", () => {
     });
 
     it("should use provided timezone", () => {
-      const vevent = service.buildEventContent(baseEvent, "America/Los_Angeles");
+      const vevent = service.buildEventContent(
+        baseEvent,
+        "America/Los_Angeles",
+      );
 
       expect(vevent).toContain("DTSTART;TZID=America/Los_Angeles:");
       expect(vevent).toContain("DTEND;TZID=America/Los_Angeles:");

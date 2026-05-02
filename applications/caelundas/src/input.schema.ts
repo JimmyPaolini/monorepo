@@ -126,7 +126,7 @@ export const inputSchema = z
     message: "End date must be after start date",
   });
 
-  /**
-   *
-   */
-  export type Input = z.infer<typeof inputSchema>;
+/**
+ *
+ */
+export type Input = z.infer<typeof inputSchema>;

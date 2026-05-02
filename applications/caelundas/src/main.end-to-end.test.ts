@@ -34,7 +34,8 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
   describe("ICS file generation", () => {
     it("should generate valid ICS file structure", async () => {
-      const getCalendar = calendarService.buildFileContent.bind(calendarService);
+      const getCalendar =
+        calendarService.buildFileContent.bind(calendarService);
 
       const events = [
         {
@@ -97,7 +98,8 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
     });
 
     it("should include timezone definitions", async () => {
-      const getCalendar = calendarService.buildFileContent.bind(calendarService);
+      const getCalendar =
+        calendarService.buildFileContent.bind(calendarService);
 
       const events = [
         {
@@ -126,7 +128,8 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
     });
 
     it("should handle events with all optional fields", async () => {
-      const getCalendar = calendarService.buildFileContent.bind(calendarService);
+      const getCalendar =
+        calendarService.buildFileContent.bind(calendarService);
 
       const events = [
         {
@@ -211,53 +214,56 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
   describe("event detection e2e", () => {
     it("should correctly identify zodiac signs from longitude", async () => {
       // biome-ignore format: oxfmt is the primary formatter
-      const { getSign } =
-        await import("./events/ingresses/ingresses.service");
+      const { IngressesService } = await import("./events/ingresses/ingresses.service");
 
       // Test all 12 signs at their starting degrees
-      expect(getSign(0)).toBe("aries");
-      expect(getSign(30)).toBe("taurus");
-      expect(getSign(60)).toBe("gemini");
-      expect(getSign(90)).toBe("cancer");
-      expect(getSign(120)).toBe("leo");
-      expect(getSign(150)).toBe("virgo");
-      expect(getSign(180)).toBe("libra");
-      expect(getSign(210)).toBe("scorpio");
-      expect(getSign(240)).toBe("sagittarius");
-      expect(getSign(270)).toBe("capricorn");
-      expect(getSign(300)).toBe("aquarius");
-      expect(getSign(330)).toBe("pisces");
+      expect(IngressesService.getSign(0)).toBe("aries");
+      expect(IngressesService.getSign(30)).toBe("taurus");
+      expect(IngressesService.getSign(60)).toBe("gemini");
+      expect(IngressesService.getSign(90)).toBe("cancer");
+      expect(IngressesService.getSign(120)).toBe("leo");
+      expect(IngressesService.getSign(150)).toBe("virgo");
+      expect(IngressesService.getSign(180)).toBe("libra");
+      expect(IngressesService.getSign(210)).toBe("scorpio");
+      expect(IngressesService.getSign(240)).toBe("sagittarius");
+      expect(IngressesService.getSign(270)).toBe("capricorn");
+      expect(IngressesService.getSign(300)).toBe("aquarius");
+      expect(IngressesService.getSign(330)).toBe("pisces");
     });
 
     it("should correctly identify aspects from angular separation", async () => {
-      // biome-ignore format: oxfmt is the primary formatter
-      const { getMajorAspect } =
+      const { MajorAspectsService } =
         await import("./events/aspects/major/major-aspects.service");
+      const { AspectsUtilitiesService } =
+        await import("./events/aspects/aspects.utilities");
+      const { EphemerisService } =
+        await import("./ephemeris/ephemeris.service");
+      const service = new MajorAspectsService(new AspectsUtilitiesService(), new EphemerisService());
 
       // Test exact aspects
-      expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 0 })).toBe(
-        "conjunct",
-      );
-      expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 60 })).toBe(
-        "sextile",
-      );
-      expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 90 })).toBe(
-        "square",
-      );
-      expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 120 })).toBe(
-        "trine",
-      );
-      expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 180 })).toBe(
-        "opposite",
-      );
+      expect(
+        service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 0 }),
+      ).toBe("conjunct");
+      expect(
+        service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 60 }),
+      ).toBe("sextile");
+      expect(
+        service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 90 }),
+      ).toBe("square");
+      expect(
+        service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 120 }),
+      ).toBe("trine");
+      expect(
+        service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 180 }),
+      ).toBe("opposite");
 
       // Test aspects with orb
-      expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 5 })).toBe(
-        "conjunct",
-      ); // 5° orb
-      expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 175 })).toBe(
-        "opposite",
-      ); // 5° orb
+      expect(
+        service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 5 }),
+      ).toBe("conjunct"); // 5° orb
+      expect(
+        service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 175 }),
+      ).toBe("opposite"); // 5° orb
     });
 
     it("should calculate progressive event pairs correctly", async () => {

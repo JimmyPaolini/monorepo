@@ -3,11 +3,10 @@ import { describe, expect, it } from "vitest";
 
 import { SextupleAspectsService } from "./sextuple-aspects.service";
 
-import type { Event } from "../../../calendar/calendar.types";
-import type { AspectBodies } from "../aspects.service";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
 
 const service = new SextupleAspectsService();
-
 
 describe("sextupleAspects.events", () => {
   describe("service.detect", () => {
@@ -319,9 +318,7 @@ describe("sextupleAspects.events", () => {
         ],
       };
 
-      const progressiveEvents = service.detectProgressive([
-        formingEvent,
-      ]);
+      const progressiveEvents = service.detectProgressive([formingEvent]);
 
       expect(progressiveEvents).toHaveLength(0);
     });
@@ -350,9 +347,7 @@ describe("sextupleAspects.events", () => {
         ],
       };
 
-      const progressiveEvents = service.detectProgressive([
-        dissolvingEvent,
-      ]);
+      const progressiveEvents = service.detectProgressive([dissolvingEvent]);
 
       expect(progressiveEvents).toHaveLength(0);
     });

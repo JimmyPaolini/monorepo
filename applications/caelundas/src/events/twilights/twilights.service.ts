@@ -1,32 +1,30 @@
 import { Injectable } from "@nestjs/common";
 
-import { getAzimuthElevationFromEphemeris } from "../../ephemeris/ephemeris.service";
-import { arcminutesPerDegree } from "../../math.utilities";
-import { pairProgressiveEvents } from "../../progressive.utilities";
+import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
+import { arcminutesPerDegree } from "@caelundas/src/math.utilities";
+import { pairProgressiveEvents } from "@caelundas/src/progressive.utilities";
 
-import type { Event } from "../../calendar/calendar.types";
-import type { AzimuthElevationEphemeris } from "../../ephemeris/ephemeris.types";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { AzimuthElevationEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
 
-const sunRadiusArcminutes = 16;
-export const sunRadiusDegrees = sunRadiusArcminutes / arcminutesPerDegree;
-
-export const twilights = ["civil", "nautical", "astronomical"] as const;
-export type Twilight = (typeof twilights)[number];
-
-export const degreesByTwilight: Record<Twilight, number> = {
-  civil: 6,
-  nautical: 12,
-  astronomical: 18,
-};
-
-const categories = ["Astronomy", "Astrology", "Twilight"];
+export type Twilight = "civil" | "nautical" | "astronomical";
 
 // #region 🕑 Progressive Events
 
-
 @Injectable()
 export class TwilightsService {
+  static readonly twilights = ["civil", "nautical", "astronomical"] as const satisfies readonly Twilight[];
+  static readonly sunRadiusDegrees = 16 / arcminutesPerDegree;
+  static readonly degreesByTwilight: Record<Twilight, number> = {
+    civil: 6,
+    nautical: 12,
+    astronomical: 18,
+  };
+  private static readonly categories = ["Astronomy", "Astrology", "Twilight"];
+
+  constructor(private readonly ephemerisService: EphemerisService) {}
+
   /**
    * Detects twilight transition events at a specific minute.
    *
@@ -59,12 +57,12 @@ export class TwilightsService {
 
     const previousMinute = minute.clone().subtract(1, "minute");
 
-    const currentElevation = getAzimuthElevationFromEphemeris(
+    const currentElevation = this.ephemerisService.getAzimuthElevationFromEphemeris(
       sunAzimuthElevationEphemeris,
       minute.toISOString(),
       "elevation",
     );
-    const previousElevation = getAzimuthElevationFromEphemeris(
+    const previousElevation = this.ephemerisService.getAzimuthElevationFromEphemeris(
       sunAzimuthElevationEphemeris,
       previousMinute.toISOString(),
       "elevation",
@@ -113,7 +111,7 @@ export class TwilightsService {
       end: date,
       summary,
       description,
-      categories: [...categories, "Astronomical Dawn"],
+      categories: [...TwilightsService.categories, "Astronomical Dawn"],
     };
     return astronomicalDawnEvent;
   }
@@ -133,7 +131,7 @@ export class TwilightsService {
       end: date,
       summary,
       description,
-      categories: [...categories, "Nautical Dawn"],
+      categories: [...TwilightsService.categories, "Nautical Dawn"],
     };
     return nauticalDawnEvent;
   }
@@ -153,7 +151,7 @@ export class TwilightsService {
       end: date,
       summary,
       description,
-      categories: [...categories, "Civil Dawn"],
+      categories: [...TwilightsService.categories, "Civil Dawn"],
     };
     return civilDawnEvent;
   }
@@ -173,7 +171,7 @@ export class TwilightsService {
       end: date,
       summary,
       description,
-      categories: [...categories, "Civil Dusk"],
+      categories: [...TwilightsService.categories, "Civil Dusk"],
     };
     return civilDuskEvent;
   }
@@ -193,7 +191,7 @@ export class TwilightsService {
       end: date,
       summary,
       description,
-      categories: [...categories, "Nautical Dusk"],
+      categories: [...TwilightsService.categories, "Nautical Dusk"],
     };
     return nauticalDuskEvent;
   }
@@ -213,7 +211,7 @@ export class TwilightsService {
       end: date,
       summary,
       description,
-      categories: [...categories, "Astronomical Dusk"],
+      categories: [...TwilightsService.categories, "Astronomical Dusk"],
     };
     return astronomicalDuskEvent;
   }
@@ -337,7 +335,7 @@ export class TwilightsService {
       end: ending.start,
       summary: "🌠 Astronomical Twilight (Morning)",
       description: "Astronomical Twilight (Morning)",
-      categories: [...categories, "Astronomical Twilight", "Morning"],
+      categories: [...TwilightsService.categories, "Astronomical Twilight", "Morning"],
     };
   }
 
@@ -350,7 +348,7 @@ export class TwilightsService {
       end: ending.start,
       summary: "🌅 Nautical Twilight (Morning)",
       description: "Nautical Twilight (Morning)",
-      categories: [...categories, "Nautical Twilight", "Morning"],
+      categories: [...TwilightsService.categories, "Nautical Twilight", "Morning"],
     };
   }
 
@@ -360,7 +358,7 @@ export class TwilightsService {
       end: ending.start,
       summary: "☀️ Daylight",
       description: "Daylight",
-      categories: [...categories, "Daylight"],
+      categories: [...TwilightsService.categories, "Daylight"],
     };
   }
 
@@ -373,7 +371,7 @@ export class TwilightsService {
       end: ending.start,
       summary: "🌉 Nautical Twilight (Evening)",
       description: "Nautical Twilight (Evening)",
-      categories: [...categories, "Nautical Twilight", "Evening"],
+      categories: [...TwilightsService.categories, "Nautical Twilight", "Evening"],
     };
   }
 
@@ -386,7 +384,7 @@ export class TwilightsService {
       end: ending.start,
       summary: "🌌 Astronomical Twilight (Evening)",
       description: "Astronomical Twilight (Evening)",
-      categories: [...categories, "Astronomical Twilight", "Evening"],
+      categories: [...TwilightsService.categories, "Astronomical Twilight", "Evening"],
     };
   }
 
@@ -396,7 +394,7 @@ export class TwilightsService {
       end: ending.start,
       summary: "🌃 Night",
       description: "Night",
-      categories: [...categories, "Night"],
+      categories: [...TwilightsService.categories, "Night"],
     };
   }
 
@@ -406,7 +404,7 @@ export class TwilightsService {
     twilight: Twilight;
   }): boolean {
     const { currentElevation, previousElevation, twilight } = args;
-    const degrees = degreesByTwilight[twilight];
+    const degrees = TwilightsService.degreesByTwilight[twilight];
     return currentElevation > -degrees && previousElevation < -degrees;
   }
 
@@ -415,7 +413,11 @@ export class TwilightsService {
     previousElevation: number;
   }): boolean {
     const { currentElevation, previousElevation } = args;
-    return this.isDawn({ currentElevation, previousElevation, twilight: "astronomical" });
+    return this.isDawn({
+      currentElevation,
+      previousElevation,
+      twilight: "astronomical",
+    });
   }
 
   private isNauticalDawn(args: {
@@ -423,7 +425,11 @@ export class TwilightsService {
     previousElevation: number;
   }): boolean {
     const { currentElevation, previousElevation } = args;
-    return this.isDawn({ currentElevation, previousElevation, twilight: "nautical" });
+    return this.isDawn({
+      currentElevation,
+      previousElevation,
+      twilight: "nautical",
+    });
   }
 
   private isCivilDawn(args: {
@@ -431,7 +437,11 @@ export class TwilightsService {
     previousElevation: number;
   }): boolean {
     const { currentElevation, previousElevation } = args;
-    return this.isDawn({ currentElevation, previousElevation, twilight: "civil" });
+    return this.isDawn({
+      currentElevation,
+      previousElevation,
+      twilight: "civil",
+    });
   }
 
   private isDusk(args: {
@@ -440,7 +450,7 @@ export class TwilightsService {
     twilight: Twilight;
   }): boolean {
     const { currentElevation, previousElevation, twilight } = args;
-    const degrees = degreesByTwilight[twilight];
+    const degrees = TwilightsService.degreesByTwilight[twilight];
     return currentElevation < -degrees && previousElevation > -degrees;
   }
 
@@ -449,7 +459,11 @@ export class TwilightsService {
     previousElevation: number;
   }): boolean {
     const { currentElevation, previousElevation } = args;
-    return this.isDusk({ currentElevation, previousElevation, twilight: "civil" });
+    return this.isDusk({
+      currentElevation,
+      previousElevation,
+      twilight: "civil",
+    });
   }
 
   private isNauticalDusk(args: {
@@ -457,7 +471,11 @@ export class TwilightsService {
     previousElevation: number;
   }): boolean {
     const { currentElevation, previousElevation } = args;
-    return this.isDusk({ currentElevation, previousElevation, twilight: "nautical" });
+    return this.isDusk({
+      currentElevation,
+      previousElevation,
+      twilight: "nautical",
+    });
   }
 
   private isAstronomicalDusk(args: {
@@ -465,6 +483,10 @@ export class TwilightsService {
     previousElevation: number;
   }): boolean {
     const { currentElevation, previousElevation } = args;
-    return this.isDusk({ currentElevation, previousElevation, twilight: "astronomical" });
+    return this.isDusk({
+      currentElevation,
+      previousElevation,
+      twilight: "astronomical",
+    });
   }
 }

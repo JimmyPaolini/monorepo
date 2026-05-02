@@ -1,9 +1,10 @@
 import moment, { type Moment } from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
 
-import { MARGIN_MINUTES } from "../../calendar.utilities";
+import { MARGIN_MINUTES } from "@caelundas/src/calendar/calendar.types";
 
 import { PhasesService } from "./phases.service";
+import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 
 vi.mock("fs", () => ({
   default: {
@@ -11,7 +12,8 @@ vi.mock("fs", () => ({
   },
 }));
 
-const service = new PhasesService();
+const ephemerisService = new EphemerisService();
+const service = new PhasesService(ephemerisService);
 
 describe("phases.events integration", () => {
   /**

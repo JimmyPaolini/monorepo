@@ -7,135 +7,84 @@
  * an 8° orb tolerance for detection.
  */
 import { Injectable } from "@nestjs/common";
-
 import _ from "lodash";
 
-import { angleByAspect, majorAspects, orbByAspect } from "../../../constants";
-import { getCoordinateFromEphemeris } from "../../../ephemeris/ephemeris.service";
-import { getAngle } from "../../../math.utilities";
-import { pairProgressiveEvents } from "../../../progressive.utilities";
-import { symbolByBody, symbolByMajorAspect } from "../../../symbols";
-import { majorAspectBodies } from "../../../types";
+import { majorAspects } from "@caelundas/src/constants";
+import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
+import { pairProgressiveEvents } from "@caelundas/src/progressive.utilities";
+import { symbolByBody, symbolByMajorAspect } from "@caelundas/src/symbols";
+import { majorAspectBodies } from "@caelundas/src/types";
 
-import type { Event } from "../../../calendar/calendar.types";
-import type { CoordinateEphemeris } from "../../../ephemeris/ephemeris.types";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { CoordinateEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
 import type {
-  Aspect,
   AspectPhase,
   Body,
   BodySymbol,
   MajorAspect,
   MajorAspectSymbol,
-} from "../../../types";
+} from "@caelundas/src/types";
+import type { AspectsUtilitiesService } from "@caelundas/src/events/aspects/aspects.utilities";
 import type { Moment } from "moment-timezone";
 
-export const isAspect = (args: {
-  longitudeBody1: number;
-  longitudeBody2: number;
-  aspect: Aspect;
-}): boolean => {
-  const { aspect, longitudeBody1, longitudeBody2 } = args;
-  const angle = getAngle(longitudeBody1, longitudeBody2);
-  const difference = Math.abs(angle - angleByAspect[aspect]);
-  return difference < orbByAspect[aspect];
-};
+/**
+ *
+ */
+@Injectable()
+export class MajorAspectsService {
+  private readonly detectAspectPhase: ReturnType<
+    AspectsUtilitiesService["getIsAspect"]
+  >;
 
-const getIsAspect = (
-  aspectsToDetect: Aspect[],
-): ((args: {
-  currentLongitudeBody1: number;
-  currentLongitudeBody2: number;
-  nextLongitudeBody1: number;
-  nextLongitudeBody2: number;
-  previousLongitudeBody1: number;
-  previousLongitudeBody2: number;
-}) => AspectPhase | null) => {
-  const detectPhase = (args: {
+  constructor(
+    private readonly aspectsUtilitiesService: AspectsUtilitiesService,
+    private readonly ephemerisService: EphemerisService,
+  ) {
+    this.detectAspectPhase = aspectsUtilitiesService.getIsAspect([
+      ...majorAspects,
+    ]);
+  }
+
+  /**
+   * Returns the first major aspect between two bodies, or `null` if none is within orb.
+   *
+   * @param args - `longitudeBody1` and `longitudeBody2` in ecliptic degrees
+   */
+  getMajorAspect(args: {
+    longitudeBody1: number;
+    longitudeBody2: number;
+  }): MajorAspect | null {
+    const { longitudeBody1, longitudeBody2 } = args;
+    for (const aspect of majorAspects) {
+      if (
+        this.aspectsUtilitiesService.isAspect({
+          longitudeBody1,
+          longitudeBody2,
+          aspect,
+        })
+      ) {
+        return aspect;
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Classifies the major aspect phase (forming / perfective / dissolving) between two bodies
+   * across three consecutive minutes, or `null` if no major aspect is in progress.
+   *
+   * @param args - Longitudes at previous, current, and next minutes for both bodies
+   */
+  getMajorAspectPhase(args: {
     currentLongitudeBody1: number;
     currentLongitudeBody2: number;
     nextLongitudeBody1: number;
     nextLongitudeBody2: number;
     previousLongitudeBody1: number;
     previousLongitudeBody2: number;
-  }): AspectPhase | null => {
-    const {
-      currentLongitudeBody1,
-      currentLongitudeBody2,
-      nextLongitudeBody1,
-      nextLongitudeBody2,
-      previousLongitudeBody1,
-      previousLongitudeBody2,
-    } = args;
-
-    const previousAngle = getAngle(previousLongitudeBody1, previousLongitudeBody2);
-    const currentAngle = getAngle(currentLongitudeBody1, currentLongitudeBody2);
-    const nextAngle = getAngle(nextLongitudeBody1, nextLongitudeBody2);
-
-    for (const aspect of aspectsToDetect) {
-      const aspectAngle = angleByAspect[aspect];
-      const orb = orbByAspect[aspect];
-
-      const previousInOrb = Math.abs(previousAngle - aspectAngle) <= orb;
-      const currentInOrb = Math.abs(currentAngle - aspectAngle) <= orb;
-      const nextInOrb = Math.abs(nextAngle - aspectAngle) <= orb;
-
-      if (currentInOrb) {
-        const previousDifference = previousAngle - aspectAngle;
-        const currentDifference = currentAngle - aspectAngle;
-        const nextDifference = nextAngle - aspectAngle;
-
-        const isCrossing =
-          (previousDifference >= 0 && currentDifference <= 0) ||
-          (previousDifference <= 0 && currentDifference >= 0);
-
-        if (aspect === "conjunct") {
-          const isBouncing =
-            (previousDifference > currentDifference &&
-              nextDifference > currentDifference) ||
-            (previousDifference < currentDifference &&
-              nextDifference < currentDifference);
-          if (isBouncing) {
-            return "perfective";
-          }
-        } else {
-          if (isCrossing) {
-            return "perfective";
-          }
-        }
-      }
-
-      if (!previousInOrb && currentInOrb) {
-        return "forming";
-      }
-
-      if (currentInOrb && !nextInOrb) {
-        return "dissolving";
-      }
-    }
-
-    return null;
-  };
-
-  return detectPhase;
-};
-
-export const getMajorAspect = (args: {
-  longitudeBody1: number;
-  longitudeBody2: number;
-}): MajorAspect | null => {
-  const { longitudeBody1, longitudeBody2 } = args;
-  for (const aspect of majorAspects) {
-    if (isAspect({ longitudeBody1, longitudeBody2, aspect })) {
-      return aspect;
-    }
+  }): AspectPhase | null {
+    return this.detectAspectPhase(args);
   }
-  return null;
-};
-
-export const getMajorAspectPhase = getIsAspect([...majorAspects]);
-
-@Injectable()
-export class MajorAspectsService {
   /**
    * Detects major aspect phase transitions at a specific time point.
    *
@@ -191,38 +140,38 @@ export class MajorAspectsService {
         const ephemerisBody1 = coordinateEphemerisByBody[body1];
         const ephemerisBody2 = coordinateEphemerisByBody[body2];
 
-        const currentLongitudeBody1 = getCoordinateFromEphemeris(
+        const currentLongitudeBody1 = this.ephemerisService.getCoordinateFromEphemeris(
           ephemerisBody1,
           minute.toISOString(),
           "longitude",
         );
-        const currentLongitudeBody2 = getCoordinateFromEphemeris(
+        const currentLongitudeBody2 = this.ephemerisService.getCoordinateFromEphemeris(
           ephemerisBody2,
           minute.toISOString(),
           "longitude",
         );
-        const previousLongitudeBody1 = getCoordinateFromEphemeris(
+        const previousLongitudeBody1 = this.ephemerisService.getCoordinateFromEphemeris(
           ephemerisBody1,
           previousMinute.toISOString(),
           "longitude",
         );
-        const previousLongitudeBody2 = getCoordinateFromEphemeris(
+        const previousLongitudeBody2 = this.ephemerisService.getCoordinateFromEphemeris(
           ephemerisBody2,
           previousMinute.toISOString(),
           "longitude",
         );
-        const nextLongitudeBody1 = getCoordinateFromEphemeris(
+        const nextLongitudeBody1 = this.ephemerisService.getCoordinateFromEphemeris(
           ephemerisBody1,
           nextMinute.toISOString(),
           "longitude",
         );
-        const nextLongitudeBody2 = getCoordinateFromEphemeris(
+        const nextLongitudeBody2 = this.ephemerisService.getCoordinateFromEphemeris(
           ephemerisBody2,
           nextMinute.toISOString(),
           "longitude",
         );
 
-        const phase = getMajorAspectPhase({
+        const phase = this.detectAspectPhase({
           currentLongitudeBody1,
           currentLongitudeBody2,
           previousLongitudeBody1,
@@ -301,7 +250,7 @@ export class MajorAspectsService {
   }): Event {
     const { longitudeBody1, longitudeBody2, timestamp, body1, body2, phase } =
       args;
-    const majorAspect = getMajorAspect({ longitudeBody1, longitudeBody2 });
+    const majorAspect = this.getMajorAspect({ longitudeBody1, longitudeBody2 });
     if (!majorAspect) {
       console.error(
         `No major aspect found between ${body1} and ${body2} at ${timestamp.toISOString()}: ${longitudeBody1} and ${longitudeBody2}`,
@@ -314,7 +263,7 @@ export class MajorAspectsService {
 
     const body1Symbol = symbolByBody[body1] as BodySymbol;
     const body2Symbol = symbolByBody[body2] as BodySymbol;
-    const majorAspectSymbol = symbolByMajorAspect[majorAspect as MajorAspect];
+    const majorAspectSymbol = symbolByMajorAspect[majorAspect];
 
     let description: string;
     let phaseEmoji: string;

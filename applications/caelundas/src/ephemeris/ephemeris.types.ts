@@ -1,4 +1,4 @@
-import type { Body } from "../types";
+import type { Body } from "@caelundas/src/types";
 
 /**
  * Ecliptic latitude in degrees.

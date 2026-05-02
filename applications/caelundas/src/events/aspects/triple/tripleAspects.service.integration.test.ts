@@ -3,8 +3,8 @@ import { describe, expect, it } from "vitest";
 
 import { TripleAspectsService } from "./triple-aspects.service";
 
-import type { Event } from "../../../calendar/calendar.types";
-import type { AspectBodies } from "../aspects.service";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
 
 /**
  * Integration tests for Triple Aspect pattern detection
@@ -153,9 +153,7 @@ describe("tripleAspects.events integration", () => {
         "Mars, Moon, Sun t-square",
       );
       expect(progressiveEvents[0]?.summary).toContain("⊤");
-      expect(progressiveEvents[0]?.summary).toContain(
-        "(focal: Mars)",
-      );
+      expect(progressiveEvents[0]?.summary).toContain("(focal: Mars)");
       expect(progressiveEvents[0]?.summary).not.toMatch(/^➡️/);
     });
   });
@@ -260,7 +258,9 @@ describe("tripleAspects.events integration", () => {
       expect(events[0]?.categories).toContain("Moon");
       expect(events[0]?.categories).toContain("Mars");
       expect(events[0]?.categories).not.toContain("Mars Focal");
-      expect(events[0]?.description).toBe("Mars, Moon, Sun grand trine forming");
+      expect(events[0]?.description).toBe(
+        "Mars, Moon, Sun grand trine forming",
+      );
       expect(events[0]?.summary).toContain("➡️");
       expect(events[0]?.summary).toContain("△");
       expect(events[0]?.start).toEqual(currentMinute);

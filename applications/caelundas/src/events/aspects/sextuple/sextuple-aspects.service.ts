@@ -1,16 +1,23 @@
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
-import { getCombinations } from "../../../math.utilities";
-import { symbolByBody, symbolBySextupleAspect } from "../../../symbols";
-import { sextupleAspectBodies } from "../../../types";
+import { getCombinations } from "@caelundas/src/math.utilities";
+import { symbolByBody, symbolBySextupleAspect } from "@caelundas/src/symbols";
+import { sextupleAspectBodies } from "@caelundas/src/types";
 
-import type { Event } from "../../../calendar.utilities";
-import type { Aspect, AspectPhase, Body, SextupleAspect } from "../../../types";
-import type { AspectBodies } from "../aspects.service";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type {
+  Aspect,
+  AspectPhase,
+  Body,
+  SextupleAspect,
+} from "@caelundas/src/types";
+import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
 import type { Moment } from "moment-timezone";
 
-function groupAspectsByType<T extends AspectBodies>(edges: T[]): Map<Aspect, T[]> {
+function groupAspectsByType<T extends AspectBodies>(
+  edges: T[],
+): Map<Aspect, T[]> {
   const grouped = _.groupBy(edges, "aspect");
   return new Map(Object.entries(grouped)) as Map<Aspect, T[]>;
 }
@@ -46,7 +53,9 @@ function determineCompoundPhaseFromSnapshots(
 
 // #region Progressive Events
 
-
+/**
+ *
+ */
 @Injectable()
 export class SextupleAspectsService {
   /**
@@ -416,7 +425,11 @@ export class SextupleAspectsService {
     minute: Moment;
   }): Event[] {
     const { currentAspectBodies, previousAspectBodies, minute } = args;
-    return this.composeHexagrams({ currentAspectBodies, previousAspectBodies, minute });
+    return this.composeHexagrams({
+      currentAspectBodies,
+      previousAspectBodies,
+      minute,
+    });
   }
 
   /**

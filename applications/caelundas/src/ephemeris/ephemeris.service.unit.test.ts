@@ -1,19 +1,7 @@
 import moment, { type Moment } from "moment-timezone";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import {
-  computeAllEphemerides,
-  getAzimuthElevationEphemerisByBody,
-  getAzimuthElevationFromEphemeris,
-  getCoordinateEphemerisByBody,
-  getCoordinateFromEphemeris,
-  getDiameterEphemerisByBody,
-  getDiameterFromEphemeris,
-  getDistanceEphemerisByBody,
-  getDistanceFromEphemeris,
-  getIlluminationEphemerisByBody,
-  getIlluminationFromEphemeris,
-} from "./ephemeris.service";
+import { EphemerisService } from "./ephemeris.service";
 
 import type {
   AzimuthElevationEphemeris,
@@ -99,8 +87,11 @@ function makeEnd(): Moment {
 // ---------------------------------------------------------------------------
 
 describe("ephemeris.service", () => {
+  let service: EphemerisService;
+
   beforeEach(() => {
     vi.clearAllMocks();
+    service = new EphemerisService();
   });
 
   // #region Accessor: getCoordinateFromEphemeris
@@ -112,18 +103,18 @@ describe("ephemeris.service", () => {
     };
 
     it("returns longitude for a known timestamp", () => {
-      expect(getCoordinateFromEphemeris(ephemeris, ts, "longitude")).toBe(
+      expect(service.getCoordinateFromEphemeris(ephemeris, ts, "longitude")).toBe(
         120.5,
       );
     });
 
     it("returns latitude for a known timestamp", () => {
-      expect(getCoordinateFromEphemeris(ephemeris, ts, "latitude")).toBe(-1.2);
+      expect(service.getCoordinateFromEphemeris(ephemeris, ts, "latitude")).toBe(-1.2);
     });
 
     it("throws when timestamp is missing", () => {
       expect(() =>
-        getCoordinateFromEphemeris(ephemeris, "bad-ts", "longitude"),
+        service.getCoordinateFromEphemeris(ephemeris, "bad-ts", "longitude"),
       ).toThrow("Missing longitude at bad-ts");
     });
   });
@@ -137,20 +128,20 @@ describe("ephemeris.service", () => {
     };
 
     it("returns azimuth for a known timestamp", () => {
-      expect(getAzimuthElevationFromEphemeris(ephemeris, ts, "azimuth")).toBe(
+      expect(service.getAzimuthElevationFromEphemeris(ephemeris, ts, "azimuth")).toBe(
         180,
       );
     });
 
     it("returns elevation for a known timestamp", () => {
-      expect(getAzimuthElevationFromEphemeris(ephemeris, ts, "elevation")).toBe(
+      expect(service.getAzimuthElevationFromEphemeris(ephemeris, ts, "elevation")).toBe(
         44.8,
       );
     });
 
     it("throws when timestamp is missing", () => {
       expect(() =>
-        getAzimuthElevationFromEphemeris(ephemeris, "bad-ts", "azimuth"),
+        service.getAzimuthElevationFromEphemeris(ephemeris, "bad-ts", "azimuth"),
       ).toThrow("Missing azimuth at bad-ts");
     });
   });
@@ -164,14 +155,14 @@ describe("ephemeris.service", () => {
     };
 
     it("returns illumination for a known timestamp", () => {
-      expect(getIlluminationFromEphemeris(ephemeris, ts, "illumination")).toBe(
+      expect(service.getIlluminationFromEphemeris(ephemeris, ts, "illumination")).toBe(
         75,
       );
     });
 
     it("throws when timestamp is missing", () => {
       expect(() =>
-        getIlluminationFromEphemeris(ephemeris, "bad-ts", "illumination"),
+        service.getIlluminationFromEphemeris(ephemeris, "bad-ts", "illumination"),
       ).toThrow("Missing illumination at bad-ts");
     });
   });
@@ -185,12 +176,12 @@ describe("ephemeris.service", () => {
     };
 
     it("returns distance for a known timestamp", () => {
-      expect(getDistanceFromEphemeris(ephemeris, ts, "distance")).toBe(1.01);
+      expect(service.getDistanceFromEphemeris(ephemeris, ts, "distance")).toBe(1.01);
     });
 
     it("throws when timestamp is missing", () => {
       expect(() =>
-        getDistanceFromEphemeris(ephemeris, "bad-ts", "distance"),
+        service.getDistanceFromEphemeris(ephemeris, "bad-ts", "distance"),
       ).toThrow("Missing distance at bad-ts");
     });
   });
@@ -204,12 +195,12 @@ describe("ephemeris.service", () => {
     };
 
     it("returns diameter for a known timestamp", () => {
-      expect(getDiameterFromEphemeris(ephemeris, ts, "diameter")).toBe(0.5334);
+      expect(service.getDiameterFromEphemeris(ephemeris, ts, "diameter")).toBe(0.5334);
     });
 
     it("throws when timestamp is missing", () => {
       expect(() =>
-        getDiameterFromEphemeris(ephemeris, "bad-ts", "diameter"),
+        service.getDiameterFromEphemeris(ephemeris, "bad-ts", "diameter"),
       ).toThrow("Missing diameter at bad-ts");
     });
   });
@@ -218,7 +209,7 @@ describe("ephemeris.service", () => {
 
   describe("getCoordinateEphemerisByBody", () => {
     it("returns coordinate ephemeris for a planet body", () => {
-      const result = getCoordinateEphemerisByBody({
+      const result = service.getCoordinateEphemerisByBody({
         bodies: ["sun"],
         start: makeStart(),
         end: makeEnd(),
@@ -236,7 +227,7 @@ describe("ephemeris.service", () => {
     });
 
     it("returns coordinate ephemeris for north lunar node", () => {
-      const result = getCoordinateEphemerisByBody({
+      const result = service.getCoordinateEphemerisByBody({
         bodies: ["north lunar node"],
         start: makeStart(),
         end: makeEnd(),
@@ -254,7 +245,7 @@ describe("ephemeris.service", () => {
     });
 
     it("returns coordinate ephemeris for south lunar node (longitude + 180)", () => {
-      const result = getCoordinateEphemerisByBody({
+      const result = service.getCoordinateEphemerisByBody({
         bodies: ["south lunar node"],
         start: makeStart(),
         end: makeEnd(),
@@ -270,7 +261,7 @@ describe("ephemeris.service", () => {
     });
 
     it("returns coordinate ephemeris for lunar perigee node", () => {
-      const result = getCoordinateEphemerisByBody({
+      const result = service.getCoordinateEphemerisByBody({
         bodies: ["lunar perigee"],
         start: makeStart(),
         end: makeEnd(),
@@ -290,7 +281,7 @@ describe("ephemeris.service", () => {
       });
 
       expect(() =>
-        getCoordinateEphemerisByBody({
+        service.getCoordinateEphemerisByBody({
           bodies: ["sun"],
           start: makeStart(),
           end: makeEnd(),
@@ -304,7 +295,7 @@ describe("ephemeris.service", () => {
 
   describe("getAzimuthElevationEphemerisByBody", () => {
     it("returns azimuth and elevation for sun", () => {
-      const result = getAzimuthElevationEphemerisByBody({
+      const result = service.getAzimuthElevationEphemerisByBody({
         bodies: ["sun"],
         coordinates: [-74.006, 40.7128],
         start: makeStart(),
@@ -327,7 +318,7 @@ describe("ephemeris.service", () => {
 
   describe("getIlluminationEphemerisByBody", () => {
     it("returns 100 illumination for sun at every timestamp", () => {
-      const result = getIlluminationEphemerisByBody({
+      const result = service.getIlluminationEphemerisByBody({
         bodies: ["sun"],
         coordinates: [-74.006, 40.7128],
         start: makeStart(),
@@ -343,7 +334,7 @@ describe("ephemeris.service", () => {
     });
 
     it("returns pheno_ut phase × 100 for moon", () => {
-      const result = getIlluminationEphemerisByBody({
+      const result = service.getIlluminationEphemerisByBody({
         bodies: ["moon"],
         coordinates: [-74.006, 40.7128],
         start: makeStart(),
@@ -364,7 +355,7 @@ describe("ephemeris.service", () => {
 
   describe("getDiameterEphemerisByBody", () => {
     it("returns diameter from pheno_ut data[3] for sun", () => {
-      const result = getDiameterEphemerisByBody({
+      const result = service.getDiameterEphemerisByBody({
         bodies: ["sun"],
         start: makeStart(),
         end: makeEnd(),
@@ -384,7 +375,7 @@ describe("ephemeris.service", () => {
 
   describe("getDistanceEphemerisByBody", () => {
     it("returns distance from calc data[2]", () => {
-      const result = getDistanceEphemerisByBody({
+      const result = service.getDistanceEphemerisByBody({
         bodies: ["sun"],
         start: makeStart(),
         end: makeEnd(),
@@ -404,7 +395,7 @@ describe("ephemeris.service", () => {
 
   describe("computeAllEphemerides", () => {
     it("returns all five ephemeris types", () => {
-      const result = computeAllEphemerides({
+      const result = service.computeAllEphemerides({
         coordinateBodies: ["sun", "moon"],
         azimuthElevationBodies: ["sun", "moon"],
         illuminationBodies: ["sun", "moon"],
@@ -423,7 +414,7 @@ describe("ephemeris.service", () => {
     });
 
     it("populates coordinate ephemeris for all requested bodies", () => {
-      const result = computeAllEphemerides({
+      const result = service.computeAllEphemerides({
         coordinateBodies: ["sun", "moon"],
         azimuthElevationBodies: ["sun"],
         illuminationBodies: ["sun"],
@@ -439,7 +430,7 @@ describe("ephemeris.service", () => {
     });
 
     it("sets sun illumination to 100 in single-pass computation", () => {
-      const result = computeAllEphemerides({
+      const result = service.computeAllEphemerides({
         coordinateBodies: ["sun"],
         azimuthElevationBodies: ["sun"],
         illuminationBodies: ["sun"],
@@ -458,7 +449,7 @@ describe("ephemeris.service", () => {
     });
 
     it("skips azimuth/illumination/diameter/distance entries when not requested", () => {
-      const result = computeAllEphemerides({
+      const result = service.computeAllEphemerides({
         coordinateBodies: ["sun"],
         azimuthElevationBodies: [],
         illuminationBodies: [],
@@ -478,7 +469,7 @@ describe("ephemeris.service", () => {
     });
 
     it("handles node bodies in coordinateBodies (no SE constant needed)", () => {
-      const result = computeAllEphemerides({
+      const result = service.computeAllEphemerides({
         coordinateBodies: ["north lunar node", "south lunar node"],
         azimuthElevationBodies: [],
         illuminationBodies: [],

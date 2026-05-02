@@ -1,13 +1,14 @@
 import moment, { type Moment } from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
 
-import { MARGIN_MINUTES } from "../../calendar/calendar.types";
+import { MARGIN_MINUTES } from "@caelundas/src/calendar/calendar.types";
 
 import { RetrogradesService } from "./retrogrades.service";
+import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 
-import type { Event } from "../../calendar/calendar.types";
-import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
-import type { RetrogradeBody } from "../../types";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { CoordinateEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
+import type { RetrogradeBody } from "@caelundas/src/types";
 
 vi.mock("fs", () => ({
   default: {
@@ -15,8 +16,8 @@ vi.mock("fs", () => ({
   },
 }));
 
-const service = new RetrogradesService();
-
+const ephemerisService = new EphemerisService();
+const service = new RetrogradesService(ephemerisService);
 
 describe("retrogrades.events", () => {
   // Helper to create ephemeris data with margin

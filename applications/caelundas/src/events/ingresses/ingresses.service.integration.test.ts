@@ -5,13 +5,14 @@ import {
     decanIngressBodies,
     peakIngressBodies,
     signIngressBodies,
-} from "../../types";
+} from "@caelundas/src/types";
 
 import { IngressesService } from "./ingresses.service";
+import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 
-import type { Event } from "../../calendar/calendar.types";
-import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
-import type { Body } from "../../types";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { CoordinateEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
+import type { Body } from "@caelundas/src/types";
 
 // Helper to create full ephemeris for all required bodies with default stationary values
 function createFullEphemeris(
@@ -45,7 +46,8 @@ function createFullEphemeris(
   return result as Record<Body, CoordinateEphemeris>;
 }
 
-const service = new IngressesService();
+const ephemerisService = new EphemerisService();
+const service = new IngressesService(ephemerisService);
 
 describe("ingresses.events integration", () => {
   describe("service.getSignIngressEvents", () => {

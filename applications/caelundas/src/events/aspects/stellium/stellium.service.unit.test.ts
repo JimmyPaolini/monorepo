@@ -3,11 +3,10 @@ import { describe, expect, it } from "vitest";
 
 import { StelliumService } from "./stellium.service";
 
-import type { Event } from "../../../calendar/calendar.types";
-import type { AspectBodies } from "../aspects.service";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
 
 const service = new StelliumService();
-
 
 describe("stellium.events", () => {
   describe("service.detect", () => {
@@ -31,7 +30,7 @@ describe("stellium.events", () => {
           currentAspectBodies,
           previousAspectBodies,
           minute: currentMinute,
-          });
+        });
 
         // Should return no events because pattern exists in prev/current/next (null phase)
         expect(events).toHaveLength(0);
@@ -58,7 +57,7 @@ describe("stellium.events", () => {
           currentAspectBodies,
           previousAspectBodies,
           minute: currentMinute,
-          });
+        });
 
         expect(events.length).toBeGreaterThanOrEqual(1);
         const stellium = events.find((e) => e.categories.includes("Stellium"));
@@ -85,7 +84,7 @@ describe("stellium.events", () => {
           currentAspectBodies,
           previousAspectBodies,
           minute: currentMinute,
-          });
+        });
 
         expect(events).toHaveLength(0);
       });
@@ -109,7 +108,7 @@ describe("stellium.events", () => {
           currentAspectBodies,
           previousAspectBodies,
           minute: currentMinute,
-          });
+        });
 
         expect(events).toHaveLength(0);
       });
@@ -133,7 +132,7 @@ describe("stellium.events", () => {
           currentAspectBodies,
           previousAspectBodies,
           minute: currentMinute,
-          });
+        });
 
         expect(events).toHaveLength(0);
       });
@@ -148,7 +147,7 @@ describe("stellium.events", () => {
           currentAspectBodies,
           previousAspectBodies,
           minute: currentMinute,
-          });
+        });
 
         expect(events).toHaveLength(0);
       });
@@ -174,7 +173,7 @@ describe("stellium.events", () => {
           currentAspectBodies,
           previousAspectBodies,
           minute: currentMinute,
-          });
+        });
 
         expect(events.length).toBeGreaterThanOrEqual(1);
         const stellium = events.find((e) => e.categories.includes("Stellium"));
@@ -214,7 +213,7 @@ describe("stellium.events", () => {
           currentAspectBodies,
           previousAspectBodies,
           minute: currentMinute,
-          });
+        });
 
         expect(events.length).toBeGreaterThanOrEqual(1);
         const stellium = events.find((e) => e.categories.includes("5 Body"));

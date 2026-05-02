@@ -10,6 +10,12 @@ import {
 } from "./symbols";
 
 import type {
+  AzimuthElevationEphemerisBody,
+  DiameterEphemerisBody,
+  DistanceEphemerisBody,
+  IlluminationEphemerisBody,
+} from "./ephemeris/ephemeris.types";
+import type {
   Aspect,
   Body,
   LunarPhase,
@@ -67,6 +73,43 @@ export const nodes = Object.keys(symbolByNode) as Node[];
  */
 export const bodies = Object.keys(symbolByBody) as Body[];
 // export const bodySymbols: BodySymbol[] = Object.values(symbolByBody);
+
+/**
+ * Bodies queried for azimuth/elevation ephemeris.
+ * Used for rise, set, and culmination event detection.
+ */
+export const azimuthElevationBodies: AzimuthElevationEphemerisBody[] = [
+  "sun",
+  "moon",
+];
+
+/**
+ * Bodies queried for illumination ephemeris.
+ * Used for lunar and inferior planet phase detection.
+ */
+export const illuminationBodies: IlluminationEphemerisBody[] = [
+  "moon",
+  "mercury",
+  "venus",
+  "mars",
+];
+
+/**
+ * Bodies queried for angular diameter ephemeris.
+ * Used for eclipse calculations.
+ */
+export const diameterBodies: DiameterEphemerisBody[] = ["sun", "moon"];
+
+/**
+ * Bodies queried for distance ephemeris.
+ * Used for apsis and phase detection.
+ */
+export const distanceBodies: DistanceEphemerisBody[] = [
+  "sun",
+  "mercury",
+  "venus",
+  "mars",
+];
 
 // #region Aspects 🧭
 

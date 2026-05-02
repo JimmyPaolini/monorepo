@@ -1,21 +1,26 @@
 import { Injectable } from "@nestjs/common";
-import { ConfigService } from "@nestjs/config";
+
 import { Command, CommandRunner } from "nest-commander";
 
-import { CalendarService } from "./calendar/calendar.service";
-import { EventStoreService } from "./event-store/event-store.service";
+import type { CalendarService } from "./calendar/calendar.service";
+import type { EventStoreService } from "./event-store/event-store.service";
 import { inputSchema } from "./input.schema";
-import { PerfectiveEventsService } from "./perfective-events/perfective-events.service";
-import { ProgressiveEventsService } from "./progressive-events/progressive-events.service";
+import type { PerfectiveEventsService } from "./perfective-events/perfective-events.service";
+import type { ProgressiveEventsService } from "./progressive-events/progressive-events.service";
+import type { ConfigService } from "@nestjs/config";
 
 /**
+ * CLI entry point that orchestrates the full calendar generation pipeline.
  *
- */
-/**
- *
+ * Reads observer coordinates and date range from environment variables,
+ * runs perfective and progressive event detection in sequence, and writes
+ * the result to an `.ics` file via {@link CalendarService}.
  */
 @Injectable()
-@Command({ name: "caelundas", description: "Generate astronomical calendar events for a date range" })
+@Command({
+  name: "caelundas",
+  description: "Generate astronomical calendar events for a date range",
+})
 export class CaelundasCommand extends CommandRunner {
   constructor(
     private readonly configService: ConfigService,
@@ -24,10 +29,7 @@ export class CaelundasCommand extends CommandRunner {
     private readonly calendarService: CalendarService,
     private readonly eventStoreService: EventStoreService,
   ) {
-    super/**
-   *
-   */
-  ();
+    super();
   }
 
   /**
@@ -44,7 +46,8 @@ export class CaelundasCommand extends CommandRunner {
     const perfectiveEvents = this.perfectiveEventsService.detect(input);
     this.eventStoreService.add(perfectiveEvents);
 
-    const progressiveEvents = this.progressiveEventsService.detect(perfectiveEvents);
+    const progressiveEvents =
+      this.progressiveEventsService.detect(perfectiveEvents);
     this.eventStoreService.add(progressiveEvents);
 
     const allEvents = this.eventStoreService

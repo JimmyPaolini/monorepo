@@ -1,14 +1,15 @@
 import moment from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
-import { findBodiesWithAspectTo, groupAspectsByType, haveAspect, TripleAspectsService } from "./triple-aspects.service";
+import {
+    TripleAspectsService,
+} from "./triple-aspects.service";
 
-import type { Event } from "../../../calendar/calendar.types";
-import type { Aspect, Body } from "../../../types";
-import type { AspectBodies } from "../aspects.service";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
+import type { Aspect, Body } from "@caelundas/src/types";
 
 const service = new TripleAspectsService();
-
 
 describe("tripleAspects.events", () => {
   describe("service.detect", () => {
@@ -24,7 +25,11 @@ describe("tripleAspects.events", () => {
           { bodies: ["moon", "mars"], aspect: "square" },
         ];
 
-        const events = service.detect({ currentAspectBodies: edges, previousAspectBodies: edges, minute: currentMinute });
+        const events = service.detect({
+          currentAspectBodies: edges,
+          previousAspectBodies: edges,
+          minute: currentMinute,
+        });
 
         // No events generated because pattern exists in both snapshots (stable)
         expect(events.length).toBe(0);
@@ -45,7 +50,7 @@ describe("tripleAspects.events", () => {
           currentAspectBodies,
           previousAspectBodies,
           minute: currentMinute,
-          });
+        });
 
         expect(events.length).toBeGreaterThanOrEqual(1);
         const tSquare = events.find((e) => e.categories.includes("T Square"));
@@ -68,7 +73,7 @@ describe("tripleAspects.events", () => {
           currentAspectBodies,
           previousAspectBodies,
           minute: currentMinute,
-          });
+        });
 
         expect(events.length).toBeGreaterThanOrEqual(1);
         const tSquare = events.find((e) => e.categories.includes("T Square"));
@@ -85,7 +90,11 @@ describe("tripleAspects.events", () => {
           { bodies: ["sun", "mars"], aspect: "square" },
         ];
 
-        const events = service.detect({ currentAspectBodies: edges, previousAspectBodies: edges, minute: currentMinute });
+        const events = service.detect({
+          currentAspectBodies: edges,
+          previousAspectBodies: edges,
+          minute: currentMinute,
+        });
 
         const tSquare = events.find((e) => e.categories.includes("T Square"));
         expect(tSquare).toBeUndefined();
@@ -104,7 +113,11 @@ describe("tripleAspects.events", () => {
           { bodies: ["moon", "venus"], aspect: "quincunx" },
         ];
 
-        const events = service.detect({ currentAspectBodies: edges, previousAspectBodies: edges, minute: currentMinute });
+        const events = service.detect({
+          currentAspectBodies: edges,
+          previousAspectBodies: edges,
+          minute: currentMinute,
+        });
 
         // No events generated - pattern exists in both snapshots (stable)
         expect(events.length).toBe(0);
@@ -119,7 +132,11 @@ describe("tripleAspects.events", () => {
           { bodies: ["sun", "venus"], aspect: "quincunx" },
         ];
 
-        const events = service.detect({ currentAspectBodies: edges, previousAspectBodies: edges, minute: currentMinute });
+        const events = service.detect({
+          currentAspectBodies: edges,
+          previousAspectBodies: edges,
+          minute: currentMinute,
+        });
 
         const yod = events.find((e) => e.categories.includes("Yod"));
         expect(yod).toBeUndefined();
@@ -138,7 +155,11 @@ describe("tripleAspects.events", () => {
           { bodies: ["moon", "mars"], aspect: "trine" },
         ];
 
-        const events = service.detect({ currentAspectBodies: edges, previousAspectBodies: edges, minute: currentMinute });
+        const events = service.detect({
+          currentAspectBodies: edges,
+          previousAspectBodies: edges,
+          minute: currentMinute,
+        });
 
         // No events generated - pattern exists in both snapshots (stable)
         expect(events.length).toBe(0);
@@ -153,7 +174,11 @@ describe("tripleAspects.events", () => {
           { bodies: ["sun", "mars"], aspect: "trine" },
         ];
 
-        const events = service.detect({ currentAspectBodies: edges, previousAspectBodies: edges, minute: currentMinute });
+        const events = service.detect({
+          currentAspectBodies: edges,
+          previousAspectBodies: edges,
+          minute: currentMinute,
+        });
 
         const grandTrine = events.find((e) =>
           e.categories.includes("Grand Trine"),
@@ -164,7 +189,11 @@ describe("tripleAspects.events", () => {
 
     it("should handle empty stored aspects", () => {
       const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
-      const events = service.detect({ currentAspectBodies: [], previousAspectBodies: [], minute: currentMinute });
+      const events = service.detect({
+        currentAspectBodies: [],
+        previousAspectBodies: [],
+        minute: currentMinute,
+      });
       expect(events.length).toBe(0);
     });
 
@@ -172,7 +201,11 @@ describe("tripleAspects.events", () => {
       const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
 
       // No active aspects at current time — both snapshots empty
-      const events = service.detect({ currentAspectBodies: [], previousAspectBodies: [], minute: currentMinute });
+      const events = service.detect({
+        currentAspectBodies: [],
+        previousAspectBodies: [],
+        minute: currentMinute,
+      });
       expect(events.length).toBe(0);
     });
 
@@ -191,7 +224,11 @@ describe("tripleAspects.events", () => {
         { bodies: ["jupiter", "saturn"], aspect: "trine" },
       ];
 
-      const events = service.detect({ currentAspectBodies: edges, previousAspectBodies: edges, minute: currentMinute });
+      const events = service.detect({
+        currentAspectBodies: edges,
+        previousAspectBodies: edges,
+        minute: currentMinute,
+      });
 
       // No events - both patterns exist in both snapshots (stable)
       expect(events.length).toBe(0);
@@ -601,7 +638,7 @@ describe("groupAspectsByType", () => {
       },
     ];
 
-    const grouped = groupAspectsByType(edges);
+    const grouped = TripleAspectsService.groupAspectsByType(edges);
 
     expect(grouped.size).toBe(2);
     expect(grouped.get("conjunct" as Aspect)?.length).toBe(2);
@@ -609,7 +646,7 @@ describe("groupAspectsByType", () => {
   });
 
   it("should handle empty edges array", () => {
-    const grouped = groupAspectsByType([]);
+    const grouped = TripleAspectsService.groupAspectsByType([]);
     expect(grouped.size).toBe(0);
   });
 
@@ -625,7 +662,7 @@ describe("groupAspectsByType", () => {
       },
     ];
 
-    const grouped = groupAspectsByType(edges);
+    const grouped = TripleAspectsService.groupAspectsByType(edges);
 
     expect(grouped.size).toBe(1);
     expect(grouped.get("square" as Aspect)?.length).toBe(2);
@@ -649,7 +686,7 @@ describe("findBodiesWithAspectTo", () => {
       },
     ];
 
-    const bodiesWithTrine = findBodiesWithAspectTo(
+    const bodiesWithTrine = TripleAspectsService.findBodiesWithAspectTo(
       "sun" as Body,
       "trine" as Aspect,
       edges,
@@ -668,7 +705,7 @@ describe("findBodiesWithAspectTo", () => {
       },
     ];
 
-    const bodiesWithTrine = findBodiesWithAspectTo(
+    const bodiesWithTrine = TripleAspectsService.findBodiesWithAspectTo(
       "sun" as Body,
       "trine" as Aspect,
       edges,
@@ -685,7 +722,7 @@ describe("findBodiesWithAspectTo", () => {
       },
     ];
 
-    const bodiesWithTrine = findBodiesWithAspectTo(
+    const bodiesWithTrine = TripleAspectsService.findBodiesWithAspectTo(
       "mars" as Body,
       "trine" as Aspect,
       edges,
@@ -705,7 +742,7 @@ describe("haveAspect", () => {
     ];
 
     expect(
-      haveAspect("sun" as Body, "moon" as Body, "conjunct" as Aspect, edges),
+      TripleAspectsService.haveAspect("sun" as Body, "moon" as Body, "conjunct" as Aspect, edges),
     ).toBe(true);
   });
 
@@ -718,7 +755,7 @@ describe("haveAspect", () => {
     ];
 
     expect(
-      haveAspect("moon" as Body, "sun" as Body, "conjunct" as Aspect, edges),
+      TripleAspectsService.haveAspect("moon" as Body, "sun" as Body, "conjunct" as Aspect, edges),
     ).toBe(true);
   });
 
@@ -731,7 +768,7 @@ describe("haveAspect", () => {
     ];
 
     expect(
-      haveAspect("sun" as Body, "moon" as Body, "trine" as Aspect, edges),
+      TripleAspectsService.haveAspect("sun" as Body, "moon" as Body, "trine" as Aspect, edges),
     ).toBe(false);
   });
 
@@ -744,7 +781,7 @@ describe("haveAspect", () => {
     ];
 
     expect(
-      haveAspect(
+      TripleAspectsService.haveAspect(
         "mars" as Body,
         "jupiter" as Body,
         "conjunct" as Aspect,
@@ -766,7 +803,7 @@ describe("haveAspect", () => {
     ];
 
     expect(
-      haveAspect("mars" as Body, "jupiter" as Body, "trine" as Aspect, edges),
+      TripleAspectsService.haveAspect("mars" as Body, "jupiter" as Body, "trine" as Aspect, edges),
     ).toBe(true);
   });
 });

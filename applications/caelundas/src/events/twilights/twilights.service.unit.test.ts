@@ -2,14 +2,12 @@ import moment from "moment-timezone";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
-    degreesByTwilight,
-    sunRadiusDegrees,
-    twilights,
     TwilightsService,
 } from "./twilights.service";
+import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 
-import type { Event } from "../../calendar/calendar.types";
-import type { AzimuthElevationEphemeris } from "../../ephemeris/ephemeris.types";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { AzimuthElevationEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
 import type { Twilight } from "./twilights.service";
 
 // Mock dependencies
@@ -20,19 +18,45 @@ vi.mock("fs", () => ({
 }));
 
 interface ServicePrivate {
-  isDawn: (args: { currentElevation: number; previousElevation: number; twilight: Twilight }) => boolean;
-  isDusk: (args: { currentElevation: number; previousElevation: number; twilight: Twilight }) => boolean;
-  isAstronomicalDawn: (args: { currentElevation: number; previousElevation: number }) => boolean;
-  isNauticalDawn: (args: { currentElevation: number; previousElevation: number }) => boolean;
-  isCivilDawn: (args: { currentElevation: number; previousElevation: number }) => boolean;
-  isAstronomicalDusk: (args: { currentElevation: number; previousElevation: number }) => boolean;
-  isNauticalDusk: (args: { currentElevation: number; previousElevation: number }) => boolean;
-  isCivilDusk: (args: { currentElevation: number; previousElevation: number }) => boolean;
+  isDawn: (args: {
+    currentElevation: number;
+    previousElevation: number;
+    twilight: Twilight;
+  }) => boolean;
+  isDusk: (args: {
+    currentElevation: number;
+    previousElevation: number;
+    twilight: Twilight;
+  }) => boolean;
+  isAstronomicalDawn: (args: {
+    currentElevation: number;
+    previousElevation: number;
+  }) => boolean;
+  isNauticalDawn: (args: {
+    currentElevation: number;
+    previousElevation: number;
+  }) => boolean;
+  isCivilDawn: (args: {
+    currentElevation: number;
+    previousElevation: number;
+  }) => boolean;
+  isAstronomicalDusk: (args: {
+    currentElevation: number;
+    previousElevation: number;
+  }) => boolean;
+  isNauticalDusk: (args: {
+    currentElevation: number;
+    previousElevation: number;
+  }) => boolean;
+  isCivilDusk: (args: {
+    currentElevation: number;
+    previousElevation: number;
+  }) => boolean;
 }
 
-const service = new TwilightsService();
+const ephemerisService = new EphemerisService();
+const service = new TwilightsService(ephemerisService);
 const s = service as unknown as ServicePrivate;
-
 
 describe("twilights.events", () => {
   describe("service.detect", () => {
@@ -397,18 +421,18 @@ describe("twilights.events", () => {
 
     describe("constants", () => {
       it("should have correct twilight types", () => {
-        expect(twilights).toEqual(["civil", "nautical", "astronomical"]);
+        expect(TwilightsService.twilights).toEqual(["civil", "nautical", "astronomical"]);
       });
 
       it("should have correct degrees for each twilight type", () => {
-        expect(degreesByTwilight.civil).toBe(6);
-        expect(degreesByTwilight.nautical).toBe(12);
-        expect(degreesByTwilight.astronomical).toBe(18);
+        expect(TwilightsService.degreesByTwilight.civil).toBe(6);
+        expect(TwilightsService.degreesByTwilight.nautical).toBe(12);
+        expect(TwilightsService.degreesByTwilight.astronomical).toBe(18);
       });
 
       it("should calculate sun radius in degrees correctly", () => {
         // Sun radius is 16 arcminutes, 60 arcminutes per degree
-        expect(sunRadiusDegrees).toBeCloseTo(16 / 60, 5);
+        expect(TwilightsService.sunRadiusDegrees).toBeCloseTo(16 / 60, 5);
       });
     });
 

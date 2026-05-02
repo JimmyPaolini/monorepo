@@ -3,8 +3,8 @@ import { describe, expect, it } from "vitest";
 
 import { QuintupleAspectsService } from "./quintuple-aspects.service";
 
-import type { Event } from "../../../calendar/calendar.types";
-import type { AspectBodies } from "../aspects.service";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
 
 /**
  * Integration tests for Quintuple Aspects (Pentagram) detection
@@ -48,7 +48,7 @@ describe("quintupleAspects.events integration", () => {
         currentAspectBodies,
         previousAspectBodies,
         minute: currentMinute,
-        });
+      });
 
       expect(events).toHaveLength(1);
       expect(events[0]?.categories).toContain("Pentagram");
@@ -89,7 +89,7 @@ describe("quintupleAspects.events integration", () => {
         currentAspectBodies,
         previousAspectBodies,
         minute: currentMinute,
-        });
+      });
 
       expect(events).toHaveLength(1);
       expect(events[0]?.categories).toContain("Pentagram");
@@ -187,7 +187,7 @@ describe("quintupleAspects.events integration", () => {
         currentAspectBodies,
         previousAspectBodies,
         minute: currentMinute,
-        });
+      });
 
       expect(events).toHaveLength(1);
       expect(events[0]?.categories).toContain("Pentagram");
@@ -223,7 +223,7 @@ describe("quintupleAspects.events integration", () => {
         currentAspectBodies,
         previousAspectBodies,
         minute: currentMinute,
-        });
+      });
 
       expect(events).toHaveLength(0);
     });
@@ -251,7 +251,7 @@ describe("quintupleAspects.events integration", () => {
         currentAspectBodies,
         previousAspectBodies,
         minute: currentMinute,
-        });
+      });
 
       expect(events).toHaveLength(0);
     });

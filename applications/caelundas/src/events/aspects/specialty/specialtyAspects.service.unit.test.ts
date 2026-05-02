@@ -1,13 +1,15 @@
 import moment, { type Moment } from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
 
-import { specialtyAspectBodies } from "../../../types";
+import { specialtyAspectBodies } from "@caelundas/src/types";
 
-import { getSpecialtyAspect, SpecialtyAspectsService } from "./specialty-aspects.service";
+import { AspectsUtilitiesService } from "@caelundas/src/events/aspects/aspects.utilities";
+import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
+import { SpecialtyAspectsService } from "./specialty-aspects.service";
 
-import type { Event } from "../../../calendar/calendar.types";
-import type { CoordinateEphemeris } from "../../../ephemeris/ephemeris.types";
-import type { Body } from "../../../types";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { CoordinateEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
+import type { Body } from "@caelundas/src/types";
 
 vi.mock("fs", () => ({
   default: {
@@ -15,8 +17,9 @@ vi.mock("fs", () => ({
   },
 }));
 
-const service = new SpecialtyAspectsService();
-
+const aspectsUtilitiesService = new AspectsUtilitiesService();
+const ephemerisService = new EphemerisService();
+const service = new SpecialtyAspectsService(aspectsUtilitiesService, ephemerisService);
 
 describe("specialtyAspects.events", () => {
   describe("service.detect", () => {
@@ -683,19 +686,19 @@ describe("specialtyAspects.events", () => {
 describe("getSpecialtyAspect", () => {
   it("should return quintile for bodies 72° apart", () => {
     expect(
-      getSpecialtyAspect({ longitudeBody1: 0, longitudeBody2: 72 }),
+      service.getSpecialtyAspect({ longitudeBody1: 0, longitudeBody2: 72 }),
     ).toBe("quintile");
   });
 
   it("should return biquintile for bodies 144° apart", () => {
     expect(
-      getSpecialtyAspect({ longitudeBody1: 0, longitudeBody2: 144 }),
+      service.getSpecialtyAspect({ longitudeBody1: 0, longitudeBody2: 144 }),
     ).toBe("biquintile");
   });
 
   it("should return null when no specialty aspect is within orb", () => {
     expect(
-      getSpecialtyAspect({ longitudeBody1: 0, longitudeBody2: 10 }),
+      service.getSpecialtyAspect({ longitudeBody1: 0, longitudeBody2: 10 }),
     ).toBeNull();
   });
 });

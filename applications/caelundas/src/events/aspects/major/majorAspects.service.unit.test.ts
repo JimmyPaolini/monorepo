@@ -1,13 +1,15 @@
 import moment, { type Moment } from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
 
-import { majorAspectBodies } from "../../../types";
+import { majorAspectBodies } from "@caelundas/src/types";
 
-import { getMajorAspect, getMajorAspectPhase, isAspect, MajorAspectsService } from "./major-aspects.service";
+import { AspectsUtilitiesService } from "@caelundas/src/events/aspects/aspects.utilities";
+import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
+import { MajorAspectsService } from "./major-aspects.service";
 
-import type { Event } from "../../../calendar/calendar.types";
-import type { CoordinateEphemeris } from "../../../ephemeris/ephemeris.types";
-import type { Body } from "../../../types";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { CoordinateEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
+import type { Body } from "@caelundas/src/types";
 
 vi.mock("fs", () => ({
   default: {
@@ -15,8 +17,9 @@ vi.mock("fs", () => ({
   },
 }));
 
-const service = new MajorAspectsService();
-
+const aspectsUtilitiesService = new AspectsUtilitiesService();
+const ephemerisService = new EphemerisService();
+const service = new MajorAspectsService(aspectsUtilitiesService, ephemerisService);
 
 describe("majorAspects.events", () => {
   describe("service.detect", () => {
@@ -629,10 +632,14 @@ describe("majorAspects.events", () => {
 describe("isAspect", () => {
   it("should return true for conjunction within orb", () => {
     expect(
-      isAspect({ longitudeBody1: 0, longitudeBody2: 5, aspect: "conjunct" }),
+      aspectsUtilitiesService.isAspect({
+        longitudeBody1: 0,
+        longitudeBody2: 5,
+        aspect: "conjunct",
+      }),
     ).toBe(true);
     expect(
-      isAspect({
+      aspectsUtilitiesService.isAspect({
         longitudeBody1: 100,
         longitudeBody2: 105,
         aspect: "conjunct",
@@ -642,20 +649,24 @@ describe("isAspect", () => {
 
   it("should return false for conjunction outside orb", () => {
     expect(
-      isAspect({ longitudeBody1: 0, longitudeBody2: 10, aspect: "conjunct" }),
+      aspectsUtilitiesService.isAspect({
+        longitudeBody1: 0,
+        longitudeBody2: 10,
+        aspect: "conjunct",
+      }),
     ).toBe(false);
   });
 
   it("should return true for opposition within orb", () => {
     expect(
-      isAspect({
+      aspectsUtilitiesService.isAspect({
         longitudeBody1: 0,
         longitudeBody2: 180,
         aspect: "opposite",
       }),
     ).toBe(true);
     expect(
-      isAspect({
+      aspectsUtilitiesService.isAspect({
         longitudeBody1: 0,
         longitudeBody2: 175,
         aspect: "opposite",
@@ -665,97 +676,121 @@ describe("isAspect", () => {
 
   it("should return true for trine within orb", () => {
     expect(
-      isAspect({ longitudeBody1: 0, longitudeBody2: 120, aspect: "trine" }),
+      aspectsUtilitiesService.isAspect({
+        longitudeBody1: 0,
+        longitudeBody2: 120,
+        aspect: "trine",
+      }),
     ).toBe(true);
     expect(
-      isAspect({ longitudeBody1: 0, longitudeBody2: 115, aspect: "trine" }),
+      aspectsUtilitiesService.isAspect({
+        longitudeBody1: 0,
+        longitudeBody2: 115,
+        aspect: "trine",
+      }),
     ).toBe(true);
   });
 
   it("should return true for square within orb", () => {
     expect(
-      isAspect({ longitudeBody1: 0, longitudeBody2: 90, aspect: "square" }),
+      aspectsUtilitiesService.isAspect({
+        longitudeBody1: 0,
+        longitudeBody2: 90,
+        aspect: "square",
+      }),
     ).toBe(true);
     expect(
-      isAspect({ longitudeBody1: 0, longitudeBody2: 85, aspect: "square" }),
+      aspectsUtilitiesService.isAspect({
+        longitudeBody1: 0,
+        longitudeBody2: 85,
+        aspect: "square",
+      }),
     ).toBe(true);
   });
 
   it("should return true for sextile within orb", () => {
     expect(
-      isAspect({ longitudeBody1: 0, longitudeBody2: 60, aspect: "sextile" }),
+      aspectsUtilitiesService.isAspect({
+        longitudeBody1: 0,
+        longitudeBody2: 60,
+        aspect: "sextile",
+      }),
     ).toBe(true);
     expect(
-      isAspect({ longitudeBody1: 0, longitudeBody2: 57, aspect: "sextile" }),
+      aspectsUtilitiesService.isAspect({
+        longitudeBody1: 0,
+        longitudeBody2: 57,
+        aspect: "sextile",
+      }),
     ).toBe(true);
   });
 });
 
 describe("getMajorAspect", () => {
   it("should return conjunct for bodies at same longitude", () => {
-    expect(getMajorAspect({ longitudeBody1: 45, longitudeBody2: 45 })).toBe(
-      "conjunct",
-    );
+    expect(
+      service.getMajorAspect({ longitudeBody1: 45, longitudeBody2: 45 }),
+    ).toBe("conjunct");
   });
 
   it("should return conjunct for bodies within conjunction orb", () => {
-    expect(getMajorAspect({ longitudeBody1: 45, longitudeBody2: 50 })).toBe(
-      "conjunct",
-    );
+    expect(
+      service.getMajorAspect({ longitudeBody1: 45, longitudeBody2: 50 }),
+    ).toBe("conjunct");
   });
 
   it("should return opposite for bodies 180° apart", () => {
-    expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 180 })).toBe(
-      "opposite",
-    );
+    expect(
+      service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 180 }),
+    ).toBe("opposite");
   });
 
   it("should return trine for bodies 120° apart", () => {
-    expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 120 })).toBe(
-      "trine",
-    );
-    expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 240 })).toBe(
-      "trine",
-    );
+    expect(
+      service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 120 }),
+    ).toBe("trine");
+    expect(
+      service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 240 }),
+    ).toBe("trine");
   });
 
   it("should return square for bodies 90° apart", () => {
-    expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 90 })).toBe(
-      "square",
-    );
-    expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 270 })).toBe(
-      "square",
-    );
+    expect(
+      service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 90 }),
+    ).toBe("square");
+    expect(
+      service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 270 }),
+    ).toBe("square");
   });
 
   it("should return sextile for bodies 60° apart", () => {
-    expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 60 })).toBe(
-      "sextile",
-    );
-    expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 300 })).toBe(
-      "sextile",
-    );
+    expect(
+      service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 60 }),
+    ).toBe("sextile");
+    expect(
+      service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 300 }),
+    ).toBe("sextile");
   });
 
   it("should return null when no major aspect is within orb", () => {
     expect(
-      getMajorAspect({ longitudeBody1: 0, longitudeBody2: 25 }),
+      service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 25 }),
     ).toBeNull();
     expect(
-      getMajorAspect({ longitudeBody1: 0, longitudeBody2: 150 }),
+      service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 150 }),
     ).toBeNull();
   });
 
   it("should handle wrapping around 360°", () => {
-    expect(getMajorAspect({ longitudeBody1: 357, longitudeBody2: 2 })).toBe(
-      "conjunct",
-    );
+    expect(
+      service.getMajorAspect({ longitudeBody1: 357, longitudeBody2: 2 }),
+    ).toBe("conjunct");
   });
 });
 
 describe("getMajorAspectPhase", () => {
   it("should return forming when entering aspect orb", () => {
-    const phase = getMajorAspectPhase({
+    const phase = service.getMajorAspectPhase({
       previousLongitudeBody1: 0,
       previousLongitudeBody2: 171,
       currentLongitudeBody1: 0,
@@ -767,7 +802,7 @@ describe("getMajorAspectPhase", () => {
   });
 
   it("should return dissolving when exiting aspect orb", () => {
-    const phase = getMajorAspectPhase({
+    const phase = service.getMajorAspectPhase({
       previousLongitudeBody1: 0,
       previousLongitudeBody2: 185,
       currentLongitudeBody1: 0,
@@ -779,7 +814,7 @@ describe("getMajorAspectPhase", () => {
   });
 
   it("should return perfective when crossing the exact aspect angle", () => {
-    const phase = getMajorAspectPhase({
+    const phase = service.getMajorAspectPhase({
       previousLongitudeBody1: 0,
       previousLongitudeBody2: 179,
       currentLongitudeBody1: 0,
@@ -791,7 +826,7 @@ describe("getMajorAspectPhase", () => {
   });
 
   it("should return null when not in any aspect phase", () => {
-    const phase = getMajorAspectPhase({
+    const phase = service.getMajorAspectPhase({
       previousLongitudeBody1: 0,
       previousLongitudeBody2: 45,
       currentLongitudeBody1: 0,

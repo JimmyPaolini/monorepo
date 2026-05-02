@@ -20,7 +20,11 @@ export class DatetimeService {
    *
    * Each yielded moment represents the start of a calendar day in the given timezone.
    */
-  *generateDates(start: Moment, end: Moment, timezone: string): Generator<Moment> {
+  *generateDates(
+    start: Moment,
+    end: Moment,
+    timezone: string,
+  ): Generator<Moment> {
     const endDate = end.clone().tz(timezone).startOf("day");
     const date = start.clone().tz(timezone).startOf("day");
     while (!date.isAfter(endDate)) {

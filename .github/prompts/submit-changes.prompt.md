@@ -107,9 +107,7 @@ Skip if already on a non-`main` branch.
 
 Skip if working tree is clean (`git status --porcelain` returns nothing).
 
-1. Check for staged changes: `git diff --cached --name-only`
-   - **If staged changes exist**: commit only staged changes
-   - **If no staged changes**: run `git add -A` to stage all, then commit
+1. `git add -A`
 2. Compose message: `<type>(<scope>): <gitmoji> <subject>` — single line, max 128 chars, no body/footer
 3. `git commit -m "<message>"`
 

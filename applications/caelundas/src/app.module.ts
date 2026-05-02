@@ -18,7 +18,10 @@ import { PerfectiveEventsModule } from "./perfective-events/perfective-events.mo
 import { ProgressiveEventsModule } from "./progressive-events/progressive-events.module";
 
 /**
+ * Root NestJS application module.
  *
+ * Imports all domain modules and the global config module so that every
+ * service can read environment variables via {@link ConfigService}.
  */
 @Module({
   imports: [

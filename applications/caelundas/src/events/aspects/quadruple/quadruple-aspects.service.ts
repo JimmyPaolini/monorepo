@@ -1,15 +1,22 @@
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
-import { symbolByBody, symbolByQuadrupleAspect } from "../../../symbols";
-import { quadrupleAspectBodies } from "../../../types";
+import { symbolByBody, symbolByQuadrupleAspect } from "@caelundas/src/symbols";
+import { quadrupleAspectBodies } from "@caelundas/src/types";
 
-import type { Event } from "../../../calendar/calendar.types";
-import type { Aspect, AspectPhase, Body, QuadrupleAspect } from "../../../types";
-import type { AspectBodies } from "../aspects.service";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type {
+  Aspect,
+  AspectPhase,
+  Body,
+  QuadrupleAspect,
+} from "@caelundas/src/types";
+import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
 import type { Moment } from "moment-timezone";
 
-function groupAspectsByType<T extends AspectBodies>(edges: T[]): Map<Aspect, T[]> {
+function groupAspectsByType<T extends AspectBodies>(
+  edges: T[],
+): Map<Aspect, T[]> {
   const grouped = _.groupBy(edges, "aspect");
   return new Map(Object.entries(grouped)) as Map<Aspect, T[]>;
 }
@@ -72,7 +79,6 @@ function determineCompoundPhaseFromSnapshots(
 }
 
 // #region Progressive Events
-
 
 /**
  *
@@ -541,8 +547,16 @@ export class QuadrupleAspectsService {
   }): Event[] {
     const { currentAspectBodies, previousAspectBodies, minute } = args;
     return [
-      ...this.composeGrandCrosses({ currentAspectBodies, previousAspectBodies, minute }),
-      ...this.composeKites({ currentAspectBodies, previousAspectBodies, minute }),
+      ...this.composeGrandCrosses({
+        currentAspectBodies,
+        previousAspectBodies,
+        minute,
+      }),
+      ...this.composeKites({
+        currentAspectBodies,
+        previousAspectBodies,
+        minute,
+      }),
     ];
   }
 
@@ -607,7 +621,8 @@ export class QuadrupleAspectsService {
           if (potentialDissolvingEvent.categories.includes("Dissolving")) {
             // Create progressive event
             const categories = currentEvent.categories.filter(
-              (c) => c !== "Forming" && c !== "Perfective" && c !== "Dissolving",
+              (c) =>
+                c !== "Forming" && c !== "Perfective" && c !== "Dissolving",
             );
 
             progressiveEvents.push({

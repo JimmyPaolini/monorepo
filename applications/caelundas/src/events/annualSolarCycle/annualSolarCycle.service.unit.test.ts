@@ -1,15 +1,16 @@
 import moment, { type Moment } from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
 
-import { MARGIN_MINUTES } from "../../calendar/calendar.types";
+import { MARGIN_MINUTES } from "@caelundas/src/calendar/calendar.types";
 
 import { AnnualSolarCycleService } from "./annual-solar-cycle.service";
+import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 
-import type { Event } from "../../calendar/calendar.types";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type {
     CoordinateEphemeris,
     DistanceEphemeris,
-} from "../../ephemeris/ephemeris.types";
+} from "@caelundas/src/ephemeris/ephemeris.types";
 
 vi.mock("fs", () => ({
   default: {
@@ -17,8 +18,8 @@ vi.mock("fs", () => ({
   },
 }));
 
-const service = new AnnualSolarCycleService();
-
+const ephemerisService = new EphemerisService();
+const service = new AnnualSolarCycleService(ephemerisService);
 
 describe("annualSolarCycle.events", () => {
   // Helper to create coordinate ephemeris
@@ -549,5 +550,4 @@ describe("annualSolarCycle.events", () => {
       expect(progressiveEvents).toHaveLength(0);
     });
   });
-
 });

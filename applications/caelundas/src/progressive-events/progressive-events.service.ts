@@ -1,18 +1,21 @@
 import { Injectable } from "@nestjs/common";
 
-import { AnnualSolarCycleService } from "../events/annualSolarCycle/annual-solar-cycle.service";
-import { AspectsService } from "../events/aspects/aspects.service";
-import { EclipsesService } from "../events/eclipses/eclipses.service";
-import { IngressesService } from "../events/ingresses/ingresses.service";
-import { MonthlyLunarCycleService } from "../events/monthlyLunarCycle/monthly-lunar-cycle.service";
-import { PhasesService } from "../events/phases/phases.service";
-import { RetrogradesService } from "../events/retrogrades/retrogrades.service";
-import { TwilightsService } from "../events/twilights/twilights.service";
-
-import type { Event } from "../calendar/calendar.types";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { AnnualSolarCycleService } from "@caelundas/src/events/annualSolarCycle/annual-solar-cycle.service";
+import type { AspectsService } from "@caelundas/src/events/aspects/aspects.service";
+import type { EclipsesService } from "@caelundas/src/events/eclipses/eclipses.service";
+import type { IngressesService } from "@caelundas/src/events/ingresses/ingresses.service";
+import type { MonthlyLunarCycleService } from "@caelundas/src/events/monthlyLunarCycle/monthly-lunar-cycle.service";
+import type { PhasesService } from "@caelundas/src/events/phases/phases.service";
+import type { RetrogradesService } from "@caelundas/src/events/retrogrades/retrogrades.service";
+import type { TwilightsService } from "@caelundas/src/events/twilights/twilights.service";
 
 /**
+ * Aggregates progressive event detection from all sub-services.
  *
+ * Progressive events (aspects, retrogrades, ingresses, phases, eclipses, etc.)
+ * depend on perfective event data produced in the preceding pass. This service
+ * fans out to each domain service and merges their results into a single array.
  */
 @Injectable()
 export class ProgressiveEventsService {

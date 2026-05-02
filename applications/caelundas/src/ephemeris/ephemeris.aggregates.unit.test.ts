@@ -1,9 +1,10 @@
 import moment from "moment-timezone";
-import { describe, expect, it, vi } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { getEphemerides } from "./ephemeris.aggregates";
+import { EphemerisAggregatesService } from "./ephemeris.aggregates";
 
-import type { Body } from "../types";
+import type { EphemerisService } from "./ephemeris.service";
+import type { Body } from "@caelundas/src/types";
 import type {
     AzimuthElevationEphemeris,
     CoordinateEphemeris,
@@ -12,19 +13,21 @@ import type {
     IlluminationEphemeris,
 } from "./ephemeris.types";
 
-// Mock the ephemeris service
-vi.mock("./ephemeris.service", () => ({
-  computeAllEphemerides: vi.fn(),
-  EphemerisService: class EphemerisService {
-    computeAllEphemerides = vi.fn();
-  },
-}));
-
-describe("ephemeris.aggregates", () => {
+describe("EphemerisAggregatesService", () => {
   const coordinates: [number, number] = [-74.006, 40.7128];
   const start = moment.utc("2024-03-21T00:00:00.000Z");
   const end = moment.utc("2024-03-21T01:00:00.000Z");
   const timezone = "America/New_York";
+
+  const mockComputeAllEphemerides = vi.fn();
+  const mockEphemerisService = {
+    computeAllEphemerides: mockComputeAllEphemerides,
+  } as unknown as EphemerisService;
+  const service = new EphemerisAggregatesService(mockEphemerisService);
+
+  beforeEach(() => {
+    mockComputeAllEphemerides.mockClear();
+  });
 
   const mockResult = {
     coordinateEphemerisByBody: {
@@ -47,11 +50,10 @@ describe("ephemeris.aggregates", () => {
   };
 
   describe("getEphemerides", () => {
-    it("should fetch all ephemeris types", async () => {
-      const { computeAllEphemerides } = await import("./ephemeris.service");
-      vi.mocked(computeAllEphemerides).mockReturnValue(mockResult);
+    it("should fetch all ephemeris types", () => {
+      mockComputeAllEphemerides.mockReturnValue(mockResult);
 
-      const result = getEphemerides({ coordinates, start, end, timezone });
+      const result = service.getEphemerides({ coordinates, start, end, timezone });
 
       expect(result).toHaveProperty("coordinateEphemerisByBody");
       expect(result).toHaveProperty("azimuthElevationEphemerisByBody");
@@ -59,7 +61,7 @@ describe("ephemeris.aggregates", () => {
       expect(result).toHaveProperty("diameterEphemerisByBody");
       expect(result).toHaveProperty("distanceEphemerisByBody");
 
-      expect(computeAllEphemerides).toHaveBeenCalledWith(
+      expect(mockComputeAllEphemerides).toHaveBeenCalledWith(
         expect.objectContaining({
           coordinateBodies: expect.arrayContaining<string>([
             "sun",
@@ -84,11 +86,10 @@ describe("ephemeris.aggregates", () => {
       );
     });
 
-    it("should return properly structured ephemeris data", async () => {
-      const { computeAllEphemerides } = await import("./ephemeris.service");
-      vi.mocked(computeAllEphemerides).mockReturnValue(mockResult);
+    it("should return properly structured ephemeris data", () => {
+      mockComputeAllEphemerides.mockReturnValue(mockResult);
 
-      const result = getEphemerides({ coordinates, start, end, timezone });
+      const result = service.getEphemerides({ coordinates, start, end, timezone });
 
       expect(result.coordinateEphemerisByBody).toEqual(
         mockResult.coordinateEphemerisByBody,
@@ -107,41 +108,38 @@ describe("ephemeris.aggregates", () => {
       );
     });
 
-    it("should pass coordinates to the ephemeris computation", async () => {
-      const { computeAllEphemerides } = await import("./ephemeris.service");
-      vi.mocked(computeAllEphemerides).mockReturnValue(mockResult);
+    it("should pass coordinates to the ephemeris computation", () => {
+      mockComputeAllEphemerides.mockReturnValue(mockResult);
 
       const testCoordinates: [number, number] = [-118.2437, 34.0522]; // Los Angeles
-      getEphemerides({ coordinates: testCoordinates, start, end, timezone });
+      service.getEphemerides({ coordinates: testCoordinates, start, end, timezone });
 
-      expect(computeAllEphemerides).toHaveBeenCalledWith(
+      expect(mockComputeAllEphemerides).toHaveBeenCalledWith(
         expect.objectContaining({ coordinates: testCoordinates }),
       );
     });
 
-    it("should pass date range to the ephemeris computation", async () => {
-      const { computeAllEphemerides } = await import("./ephemeris.service");
-      vi.mocked(computeAllEphemerides).mockReturnValue(mockResult);
+    it("should pass date range to the ephemeris computation", () => {
+      mockComputeAllEphemerides.mockReturnValue(mockResult);
 
       const customStart = moment.utc("2024-06-21T00:00:00.000Z");
       const customEnd = moment.utc("2024-06-22T00:00:00.000Z");
-      getEphemerides({
+      service.getEphemerides({
         coordinates,
         start: customStart,
         end: customEnd,
         timezone,
       });
 
-      expect(computeAllEphemerides).toHaveBeenCalledWith(
+      expect(mockComputeAllEphemerides).toHaveBeenCalledWith(
         expect.objectContaining({ start: customStart, end: customEnd }),
       );
     });
 
-    it("should return successfully for any timezone", async () => {
-      const { computeAllEphemerides } = await import("./ephemeris.service");
-      vi.mocked(computeAllEphemerides).mockReturnValue(mockResult);
+    it("should return successfully for any timezone", () => {
+      mockComputeAllEphemerides.mockReturnValue(mockResult);
 
-      const result = getEphemerides({
+      const result = service.getEphemerides({
         coordinates,
         start,
         end,

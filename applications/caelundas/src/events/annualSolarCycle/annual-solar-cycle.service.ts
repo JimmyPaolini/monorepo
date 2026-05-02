@@ -1,39 +1,34 @@
 import { Injectable } from "@nestjs/common";
 
-import {
-  getCoordinateFromEphemeris,
-  getDistanceFromEphemeris,
-} from "../../ephemeris/ephemeris.service";
-import { isMaximum, isMinimum } from "../../math.utilities";
-import { pairProgressiveEvents } from "../../progressive.utilities";
+import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
+import { isMaximum, isMinimum } from "@caelundas/src/math.utilities";
+import { pairProgressiveEvents } from "@caelundas/src/progressive.utilities";
 
 import {
-  isAutumnalEquinox,
-  isBeltane,
-  isEleventhHexadecan,
-  isFifteenthHexadecan,
-  isFifthHexadecan,
-  isFirstHexadecan,
-  isImbolc,
-  isLammas,
-  isNinthHexadecan,
-  isSamhain,
-  isSeventhHexadecan,
-  isSummerSolstice,
-  isThirdHexadecan,
-  isThirteenthHexadecan,
-  isVernalEquinox,
-  isWinterSolstice,
+    isAutumnalEquinox,
+    isBeltane,
+    isEleventhHexadecan,
+    isFifteenthHexadecan,
+    isFifthHexadecan,
+    isFirstHexadecan,
+    isImbolc,
+    isLammas,
+    isNinthHexadecan,
+    isSamhain,
+    isSeventhHexadecan,
+    isSummerSolstice,
+    isThirdHexadecan,
+    isThirteenthHexadecan,
+    isVernalEquinox,
+    isWinterSolstice,
 } from "./annualSolarCycle.utilities";
 
-import type { Event } from "../../calendar/calendar.types";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type {
-  CoordinateEphemeris,
-  DistanceEphemeris,
-} from "../../ephemeris/ephemeris.types";
+    CoordinateEphemeris,
+    DistanceEphemeris,
+} from "@caelundas/src/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
-
-const categories = ["Astronomy", "Astrology", "Annual Solar Cycle", "Solar"];
 
 // #region 📏 Annual Solar Cycle
 
@@ -43,9 +38,11 @@ const categories = ["Astronomy", "Astrology", "Annual Solar Cycle", "Solar"];
 
 // #region 🕑 Progressive Events
 
-
 @Injectable()
 export class AnnualSolarCycleService {
+  private static readonly categories = ["Astronomy", "Astrology", "Annual Solar Cycle", "Solar"];
+  constructor(private readonly ephemerisService: EphemerisService) {}
+
   /**
    * Detects annual solar cycle events at a specific minute.
    *
@@ -100,12 +97,12 @@ export class AnnualSolarCycleService {
 
     const annualSolarCycleEvents: Event[] = [];
 
-    const currentLongitude = getCoordinateFromEphemeris(
+    const currentLongitude = this.ephemerisService.getCoordinateFromEphemeris(
       ephemeris,
       minute.toISOString(),
       "longitude",
     );
-    const previousLongitude = getCoordinateFromEphemeris(
+    const previousLongitude = this.ephemerisService.getCoordinateFromEphemeris(
       ephemeris,
       previousMinute.toISOString(),
       "longitude",
@@ -206,17 +203,17 @@ export class AnnualSolarCycleService {
 
     const solarApsisEvents: Event[] = [];
 
-    const currentDistance = getDistanceFromEphemeris(
+    const currentDistance = this.ephemerisService.getDistanceFromEphemeris(
       sunDistanceEphemeris,
       minute.toISOString(),
       "distance",
     );
-    const previousDistance = getDistanceFromEphemeris(
+    const previousDistance = this.ephemerisService.getDistanceFromEphemeris(
       sunDistanceEphemeris,
       previousMinute.toISOString(),
       "distance",
     );
-    const nextDistance = getDistanceFromEphemeris(
+    const nextDistance = this.ephemerisService.getDistanceFromEphemeris(
       sunDistanceEphemeris,
       nextMinute.toISOString(),
       "distance",
@@ -264,7 +261,7 @@ export class AnnualSolarCycleService {
       end: date,
       summary,
       description,
-      categories: [...categories, "Aphelion"],
+      categories: [...AnnualSolarCycleService.categories, "Aphelion"],
     };
     return aphelionEvent;
   }
@@ -292,7 +289,7 @@ export class AnnualSolarCycleService {
       end: date,
       summary,
       description,
-      categories: [...categories, "Perihelion"],
+      categories: [...AnnualSolarCycleService.categories, "Perihelion"],
     };
     return perihelionEvent;
   }
@@ -322,7 +319,7 @@ export class AnnualSolarCycleService {
       end: date,
       summary,
       description,
-      categories,
+      categories: AnnualSolarCycleService.categories,
     };
     return vernalEquinoxEvent;
   }
@@ -348,7 +345,7 @@ export class AnnualSolarCycleService {
       end: date,
       summary,
       description,
-      categories,
+      categories: AnnualSolarCycleService.categories,
     };
     return firstHexadecanEvent;
   }
@@ -375,7 +372,7 @@ export class AnnualSolarCycleService {
       end: date,
       summary,
       description,
-      categories,
+      categories: AnnualSolarCycleService.categories,
     };
     return beltaneEvent;
   }
@@ -401,7 +398,7 @@ export class AnnualSolarCycleService {
       end: date,
       summary,
       description,
-      categories,
+      categories: AnnualSolarCycleService.categories,
     };
     return thirdHexadecanEvent;
   }
@@ -429,7 +426,7 @@ export class AnnualSolarCycleService {
       end: date,
       summary,
       description,
-      categories,
+      categories: AnnualSolarCycleService.categories,
     };
     return summerSolsticeEvent;
   }
@@ -452,7 +449,7 @@ export class AnnualSolarCycleService {
       end: date,
       summary,
       description,
-      categories,
+      categories: AnnualSolarCycleService.categories,
     };
     return fifthHexadecanEvent;
   }
@@ -479,7 +476,7 @@ export class AnnualSolarCycleService {
       end: date,
       summary,
       description,
-      categories,
+      categories: AnnualSolarCycleService.categories,
     };
     return lammasEvent;
   }
@@ -501,7 +498,7 @@ export class AnnualSolarCycleService {
       end: date,
       summary,
       description,
-      categories,
+      categories: AnnualSolarCycleService.categories,
     };
     return seventhHexadecanEvent;
   }
@@ -530,7 +527,7 @@ export class AnnualSolarCycleService {
       end: date,
       summary,
       description,
-      categories,
+      categories: AnnualSolarCycleService.categories,
     };
     return autumnalEquinoxEvent;
   }
@@ -551,7 +548,7 @@ export class AnnualSolarCycleService {
       end: date,
       summary,
       description,
-      categories,
+      categories: AnnualSolarCycleService.categories,
     };
     return ninthHexadecanEvent;
   }
@@ -576,7 +573,7 @@ export class AnnualSolarCycleService {
       end: date,
       summary,
       description,
-      categories,
+      categories: AnnualSolarCycleService.categories,
     };
     return samhainEvent;
   }
@@ -597,7 +594,7 @@ export class AnnualSolarCycleService {
       end: date,
       summary,
       description,
-      categories,
+      categories: AnnualSolarCycleService.categories,
     };
     return eleventhHexadecanEvent;
   }
@@ -625,7 +622,7 @@ export class AnnualSolarCycleService {
       end: date,
       summary,
       description,
-      categories,
+      categories: AnnualSolarCycleService.categories,
     };
     return winterSolsticeEvent;
   }
@@ -645,7 +642,7 @@ export class AnnualSolarCycleService {
       end: date,
       summary,
       description,
-      categories,
+      categories: AnnualSolarCycleService.categories,
     };
     return thirteenthHexadecanEvent;
   }
@@ -670,7 +667,7 @@ export class AnnualSolarCycleService {
       end: date,
       summary,
       description,
-      categories,
+      categories: AnnualSolarCycleService.categories,
     };
     return imbolcEvent;
   }
@@ -692,7 +689,7 @@ export class AnnualSolarCycleService {
       end: date,
       summary,
       description,
-      categories,
+      categories: AnnualSolarCycleService.categories,
     };
     return fifteenthHexadecanEvent;
   }
@@ -737,7 +734,9 @@ export class AnnualSolarCycleService {
       "Solar Advancing",
     );
     for (const [beginning, ending] of advancingPairs) {
-      progressiveEvents.push(this.getSolarAdvancingDurationEvent(beginning, ending));
+      progressiveEvents.push(
+        this.getSolarAdvancingDurationEvent(beginning, ending),
+      );
     }
 
     // Retreating: Perihelion → Aphelion (Earth moving away from sun, slowing down)
@@ -747,7 +746,9 @@ export class AnnualSolarCycleService {
       "Solar Retreating",
     );
     for (const [beginning, ending] of retreatingPairs) {
-      progressiveEvents.push(this.getSolarRetreatingDurationEvent(beginning, ending));
+      progressiveEvents.push(
+        this.getSolarRetreatingDurationEvent(beginning, ending),
+      );
     }
 
     return progressiveEvents;
@@ -762,7 +763,7 @@ export class AnnualSolarCycleService {
       end: ending.start,
       summary: "☀️ 🔥 Solar Advancing",
       description: "Solar Advancing (Aphelion to Perihelion)",
-      categories: [...categories, "Advancing"],
+      categories: [...AnnualSolarCycleService.categories, "Advancing"],
     };
   }
 
@@ -775,7 +776,7 @@ export class AnnualSolarCycleService {
       end: ending.start,
       summary: "☀️ ❄️ Solar Retreating",
       description: "Solar Retreating (Perihelion to Aphelion)",
-      categories: [...categories, "Retreating"],
+      categories: [...AnnualSolarCycleService.categories, "Retreating"],
     };
   }
 }

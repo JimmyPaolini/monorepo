@@ -1,13 +1,15 @@
 import moment, { type Moment } from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
 
-import { minorAspectBodies } from "../../../types";
+import { minorAspectBodies } from "@caelundas/src/types";
 
-import { getMinorAspect, getMinorAspectPhase, MinorAspectsService } from "./minor-aspects.service";
+import { AspectsUtilitiesService } from "@caelundas/src/events/aspects/aspects.utilities";
+import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
+import { MinorAspectsService } from "./minor-aspects.service";
 
-import type { Event } from "../../../calendar/calendar.types";
-import type { CoordinateEphemeris } from "../../../ephemeris/ephemeris.types";
-import type { Body } from "../../../types";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { CoordinateEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
+import type { Body } from "@caelundas/src/types";
 
 vi.mock("fs", () => ({
   default: {
@@ -15,8 +17,9 @@ vi.mock("fs", () => ({
   },
 }));
 
-const service = new MinorAspectsService();
-
+const aspectsUtilitiesService = new AspectsUtilitiesService();
+const ephemerisService = new EphemerisService();
+const service = new MinorAspectsService(aspectsUtilitiesService, ephemerisService);
 
 describe("minorAspects.events", () => {
   describe("service.detect", () => {
@@ -609,42 +612,42 @@ describe("minorAspects.events", () => {
 
 describe("getMinorAspect", () => {
   it("should return semisextile for bodies 30° apart", () => {
-    expect(getMinorAspect({ longitudeBody1: 0, longitudeBody2: 30 })).toBe(
-      "semisextile",
-    );
+    expect(
+      service.getMinorAspect({ longitudeBody1: 0, longitudeBody2: 30 }),
+    ).toBe("semisextile");
   });
 
   it("should return semisquare for bodies 45° apart", () => {
-    expect(getMinorAspect({ longitudeBody1: 0, longitudeBody2: 45 })).toBe(
-      "semisquare",
-    );
+    expect(
+      service.getMinorAspect({ longitudeBody1: 0, longitudeBody2: 45 }),
+    ).toBe("semisquare");
   });
 
   it("should return sesquiquadrate for bodies 135° apart", () => {
-    expect(getMinorAspect({ longitudeBody1: 0, longitudeBody2: 135 })).toBe(
-      "sesquiquadrate",
-    );
+    expect(
+      service.getMinorAspect({ longitudeBody1: 0, longitudeBody2: 135 }),
+    ).toBe("sesquiquadrate");
   });
 
   it("should return quincunx for bodies 150° apart", () => {
-    expect(getMinorAspect({ longitudeBody1: 0, longitudeBody2: 150 })).toBe(
-      "quincunx",
-    );
+    expect(
+      service.getMinorAspect({ longitudeBody1: 0, longitudeBody2: 150 }),
+    ).toBe("quincunx");
   });
 
   it("should return null when no minor aspect is within orb", () => {
     expect(
-      getMinorAspect({ longitudeBody1: 0, longitudeBody2: 10 }),
+      service.getMinorAspect({ longitudeBody1: 0, longitudeBody2: 10 }),
     ).toBeNull();
     expect(
-      getMinorAspect({ longitudeBody1: 0, longitudeBody2: 120 }),
+      service.getMinorAspect({ longitudeBody1: 0, longitudeBody2: 120 }),
     ).toBeNull();
   });
 });
 
 describe("getMinorAspectPhase", () => {
   it("should detect minor aspect phases", () => {
-    const phase = getMinorAspectPhase({
+    const phase = service.getMinorAspectPhase({
       previousLongitudeBody1: 0,
       previousLongitudeBody2: 27,
       currentLongitudeBody1: 0,

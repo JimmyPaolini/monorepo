@@ -3,11 +3,10 @@ import { describe, expect, it } from "vitest";
 
 import { QuintupleAspectsService } from "./quintuple-aspects.service";
 
-import type { Event } from "../../../calendar/calendar.types";
-import type { AspectBodies } from "../aspects.service";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
 
 const service = new QuintupleAspectsService();
-
 
 describe("quintupleAspects.events", () => {
   describe("service.detect", () => {
@@ -136,7 +135,11 @@ describe("quintupleAspects.events", () => {
 
     it("should handle empty stored aspects", () => {
       const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
-      const events = service.detect({ currentAspectBodies: [], previousAspectBodies: [], minute: currentMinute });
+      const events = service.detect({
+        currentAspectBodies: [],
+        previousAspectBodies: [],
+        minute: currentMinute,
+      });
       expect(events.length).toBe(0);
     });
 

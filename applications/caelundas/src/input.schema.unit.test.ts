@@ -1,7 +1,7 @@
 import moment from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
-import { mockDates } from "../testing/mocks";
+import { mockDates } from "@caelundas/testing/mocks";
 
 import { inputSchema } from "./input.schema";
 

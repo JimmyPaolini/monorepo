@@ -11,22 +11,22 @@ import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
 import {
-  type Event,
-  MARGIN_MINUTES
-} from "../../calendar/calendar.types";
-import { getCoordinateFromEphemeris } from "../../ephemeris/ephemeris.service";
-import { normalizeForComparison } from "../../math.utilities";
-import { pairProgressiveEvents } from "../../progressive.utilities";
-import { symbolByBody, symbolByOrbitalDirection } from "../../symbols";
-import { retrogradeBodies } from "../../types";
+    type Event,
+    MARGIN_MINUTES,
+} from "@caelundas/src/calendar/calendar.types";
+import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
+import { normalizeForComparison } from "@caelundas/src/math.utilities";
+import { pairProgressiveEvents } from "@caelundas/src/progressive.utilities";
+import { symbolByBody, symbolByOrbitalDirection } from "@caelundas/src/symbols";
+import { retrogradeBodies } from "@caelundas/src/types";
 
-import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
+import type { CoordinateEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
 import type {
-  OrbitalDirection,
-  OrbitalDirectionSymbol,
-  RetrogradeBody,
-  RetrogradeBodySymbol,
-} from "../../types";
+    OrbitalDirection,
+    OrbitalDirectionSymbol,
+    RetrogradeBody,
+    RetrogradeBodySymbol,
+} from "@caelundas/src/types";
 import type { Moment } from "moment-timezone";
 
 /**
@@ -35,14 +35,11 @@ import type { Moment } from "moment-timezone";
  * Base categories applied to all station events before adding direction-specific
  * categories ("Retrograde" or "Direct").
  */
-const categories = ["Astronomy", "Astrology", "Direction"];
-
-
-/**
- *
- */
 @Injectable()
 export class RetrogradesService {
+  private static readonly categories = ["Astronomy", "Astrology", "Direction"];
+  constructor(private readonly ephemerisService: EphemerisService) {}
+
   /**
    * Detects retrograde and direct station events at a specific time point.
    *
@@ -87,7 +84,7 @@ export class RetrogradesService {
     for (const body of retrogradeBodies) {
       const ephemeris = coordinateEphemerisByBody[body];
 
-      const currentLongitude = getCoordinateFromEphemeris(
+      const currentLongitude = this.ephemerisService.getCoordinateFromEphemeris(
         ephemeris,
         minute.toISOString(),
         "longitude",
@@ -99,7 +96,7 @@ export class RetrogradesService {
           const date = minute
             .clone()
             .subtract(MARGIN_MINUTES - index, "minutes");
-          return getCoordinateFromEphemeris(
+          return this.ephemerisService.getCoordinateFromEphemeris(
             ephemeris,
             date.toISOString(),
             "longitude",
@@ -111,7 +108,7 @@ export class RetrogradesService {
         { length: MARGIN_MINUTES },
         (_, index) => {
           const date = minute.clone().add(index + 1, "minutes");
-          return getCoordinateFromEphemeris(
+          return this.ephemerisService.getCoordinateFromEphemeris(
             ephemeris,
             date.toISOString(),
             "longitude",
@@ -128,7 +125,11 @@ export class RetrogradesService {
 
       if (this.isRetrograde({ ...longitudes })) {
         retrogradeEvents.push(
-          this.buildRetrogradeEvent({ body, timestamp, direction: "retrograde" }),
+          this.buildRetrogradeEvent({
+            body,
+            timestamp,
+            direction: "retrograde",
+          }),
         );
       }
       if (this.isDirect({ ...longitudes })) {
@@ -203,7 +204,7 @@ export class RetrogradesService {
       start: timestamp,
       end: timestamp,
       categories: [
-        ...categories,
+        ...RetrogradesService.categories,
         ...(direction === "retrograde" ? ["Retrograde"] : ["Direct"]),
       ],
       summary,

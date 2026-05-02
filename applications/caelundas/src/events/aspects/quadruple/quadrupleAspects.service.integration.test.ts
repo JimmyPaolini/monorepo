@@ -3,8 +3,8 @@ import { describe, expect, it } from "vitest";
 
 import { QuadrupleAspectsService } from "./quadruple-aspects.service";
 
-import type { Event } from "../../../calendar/calendar.types";
-import type { AspectBodies } from "../aspects.service";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
 
 /**
  * Integration tests for Quadruple Aspect pattern detection

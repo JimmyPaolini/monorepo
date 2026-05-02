@@ -1,16 +1,17 @@
 import moment, { type Moment } from "moment-timezone";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { MARGIN_MINUTES } from "../../calendar/calendar.types";
+import { MARGIN_MINUTES } from "@caelundas/src/calendar/calendar.types";
 
 import { EclipsesService } from "./eclipses.service";
+import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 
-import type { Event } from "../../calendar/calendar.types";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type {
-    CoordinateEphemeris,
-    DiameterEphemeris,
-} from "../../ephemeris/ephemeris.types";
-import type { EclipsePhase } from "../../types";
+  CoordinateEphemeris,
+  DiameterEphemeris,
+} from "@caelundas/src/ephemeris/ephemeris.types";
+import type { EclipsePhase } from "@caelundas/src/types";
 
 vi.mock("fs", () => ({
   default: {
@@ -18,7 +19,8 @@ vi.mock("fs", () => ({
   },
 }));
 
-const service = new EclipsesService();
+const ephemerisService = new EphemerisService();
+const service = new EclipsesService(ephemerisService);
 interface EclipseArgs {
   currentDiameterMoon: number;
   currentDiameterSun: number;
@@ -26,7 +28,6 @@ interface EclipseArgs {
   currentLatitudeSun: number;
   currentLongitudeMoon: number;
   currentLongitudeSun: number;
-}currentLongitudeSun: number;
 }
 type EclipseFullArgs = EclipseArgs & {
   nextLongitudeMoon: number;
@@ -41,7 +42,6 @@ interface ServicePrivate {
   isLunarEclipseActive: (args: EclipseArgs) => boolean;
 }
 const s = service as unknown as ServicePrivate;
-
 
 describe("eclipses.events", () => {
   // Helper to create coordinate ephemeris

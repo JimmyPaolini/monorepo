@@ -1,18 +1,17 @@
+import { aspects, bodies } from "@caelundas/src/constants";
 import { Injectable } from "@nestjs/common";
 
-import { aspects, bodies } from "../../constants";
-import { MajorAspectsService } from "./major/major-aspects.service";
-import { MinorAspectsService } from "./minor/minor-aspects.service";
-import { QuadrupleAspectsService } from "./quadruple/quadruple-aspects.service";
-import { QuintupleAspectsService } from "./quintuple/quintuple-aspects.service";
-import { SextupleAspectsService } from "./sextuple/sextuple-aspects.service";
-import { SpecialtyAspectsService } from "./specialty/specialty-aspects.service";
-import { StelliumService } from "./stellium/stellium.service";
-import { TripleAspectsService } from "./triple/triple-aspects.service";
-
-import type { Event } from "../../calendar/calendar.types";
-import type { CoordinateEphemeris } from "../../ephemeris/ephemeris.types";
-import type { Aspect, AspectPhase, Body } from "../../types";
+import type { MajorAspectsService } from "./major/major-aspects.service";
+import type { MinorAspectsService } from "./minor/minor-aspects.service";
+import type { QuadrupleAspectsService } from "./quadruple/quadruple-aspects.service";
+import type { QuintupleAspectsService } from "./quintuple/quintuple-aspects.service";
+import type { SextupleAspectsService } from "./sextuple/sextuple-aspects.service";
+import type { SpecialtyAspectsService } from "./specialty/specialty-aspects.service";
+import type { StelliumService } from "./stellium/stellium.service";
+import type { TripleAspectsService } from "./triple/triple-aspects.service";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { CoordinateEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
+import type { Aspect, AspectPhase, Body } from "@caelundas/src/types";
 import type { Moment } from "moment-timezone";
 
 /**
@@ -60,7 +59,10 @@ export class AspectsService {
     const simpleAspectEvents: Event[] = [
       ...this.majorAspectsService.detect({ coordinateEphemerisByBody, minute }),
       ...this.minorAspectsService.detect({ coordinateEphemerisByBody, minute }),
-      ...this.specialtyAspectsService.detect({ coordinateEphemerisByBody, minute }),
+      ...this.specialtyAspectsService.detect({
+        coordinateEphemerisByBody,
+        minute,
+      }),
     ];
 
     const currentAspectBodies = computeAspectBodies(
@@ -70,11 +72,31 @@ export class AspectsService {
 
     const events: Event[] = [
       ...simpleAspectEvents,
-      ...this.tripleAspectsService.detect({ currentAspectBodies, previousAspectBodies, minute }),
-      ...this.quadrupleAspectsService.detect({ currentAspectBodies, previousAspectBodies, minute }),
-      ...this.quintupleAspectsService.detect({ currentAspectBodies, previousAspectBodies, minute }),
-      ...this.sextupleAspectsService.detect({ currentAspectBodies, previousAspectBodies, minute }),
-      ...this.stelliumService.detect({ currentAspectBodies, previousAspectBodies, minute }),
+      ...this.tripleAspectsService.detect({
+        currentAspectBodies,
+        previousAspectBodies,
+        minute,
+      }),
+      ...this.quadrupleAspectsService.detect({
+        currentAspectBodies,
+        previousAspectBodies,
+        minute,
+      }),
+      ...this.quintupleAspectsService.detect({
+        currentAspectBodies,
+        previousAspectBodies,
+        minute,
+      }),
+      ...this.sextupleAspectsService.detect({
+        currentAspectBodies,
+        previousAspectBodies,
+        minute,
+      }),
+      ...this.stelliumService.detect({
+        currentAspectBodies,
+        previousAspectBodies,
+        minute,
+      }),
     ];
 
     return { events, aspectBodies: currentAspectBodies };
@@ -102,12 +124,18 @@ function makeKey(body1: Body, body2: Body, aspect: Aspect): string {
   return `${sortedBody1}\u001F${sortedBody2}\u001F${aspect}`;
 }
 
+/**
+ *
+ */
 export function computeAspectBodies(
   previousAspectBodies: AspectBodies[],
   events: Event[],
 ): AspectBodies[] {
   const map = new Map<string, AspectBodies>(
-    previousAspectBodies.map((ab) => [makeKey(ab.bodies[0], ab.bodies[1], ab.aspect), ab]),
+    previousAspectBodies.map((ab) => [
+      makeKey(ab.bodies[0], ab.bodies[1], ab.aspect),
+      ab,
+    ]),
   );
 
   const lowercaseBodies = bodies.map((body) => body.toLowerCase());

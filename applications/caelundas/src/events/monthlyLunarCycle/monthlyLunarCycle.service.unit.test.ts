@@ -1,17 +1,17 @@
 import moment, { type Moment } from "moment-timezone";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { MARGIN_MINUTES } from "../../calendar/calendar.types";
-import { symbolByLunarPhase } from "../../symbols";
+import { MARGIN_MINUTES } from "@caelundas/src/calendar/calendar.types";
+import { symbolByLunarPhase } from "@caelundas/src/symbols";
 
 import {
-    illuminationByPhase,
     MonthlyLunarCycleService,
 } from "./monthly-lunar-cycle.service";
+import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 
-import type { Event } from "../../calendar/calendar.types";
-import type { IlluminationEphemeris } from "../../ephemeris/ephemeris.types";
-import type { LunarPhase } from "../../types";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { IlluminationEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
+import type { LunarPhase } from "@caelundas/src/types";
 
 vi.mock("fs", () => ({
   default: {
@@ -20,14 +20,27 @@ vi.mock("fs", () => ({
 }));
 
 interface ServicePrivate {
-  isNewMoon: (args: { currentIllumination: number; previousIlluminations: number[]; nextIlluminations: number[] }) => boolean;
-  isFullMoon: (args: { currentIllumination: number; previousIlluminations: number[]; nextIlluminations: number[] }) => boolean;
-  isLunarPhase: (args: { currentIllumination: number; previousIlluminations: number[]; nextIlluminations: number[]; lunarPhase: LunarPhase }) => boolean;
+  isNewMoon: (args: {
+    currentIllumination: number;
+    previousIlluminations: number[];
+    nextIlluminations: number[];
+  }) => boolean;
+  isFullMoon: (args: {
+    currentIllumination: number;
+    previousIlluminations: number[];
+    nextIlluminations: number[];
+  }) => boolean;
+  isLunarPhase: (args: {
+    currentIllumination: number;
+    previousIlluminations: number[];
+    nextIlluminations: number[];
+    lunarPhase: LunarPhase;
+  }) => boolean;
 }
 
-const service = new MonthlyLunarCycleService();
+const ephemerisService = new EphemerisService();
+const service = new MonthlyLunarCycleService(ephemerisService);
 const s = service as unknown as ServicePrivate;
-
 
 describe("monthlyLunarCycle.events", () => {
   // Helper to create illumination ephemeris with margin
@@ -78,7 +91,10 @@ describe("monthlyLunarCycle.events", () => {
     it("should create a new moon event with correct structure", () => {
       const date = moment.utc("2024-03-10T09:00:00.000Z");
 
-      const event = service.buildMonthlyLunarCycleEvent({ date, lunarPhase: "new" });
+      const event = service.buildMonthlyLunarCycleEvent({
+        date,
+        lunarPhase: "new",
+      });
 
       expect(event.summary).toBe(`🌙 ${symbolByLunarPhase.new} New Moon`);
       expect(event.description).toBe("New Moon");
@@ -94,7 +110,10 @@ describe("monthlyLunarCycle.events", () => {
     it("should create a full moon event with correct structure", () => {
       const date = moment.utc("2024-03-25T07:00:00.000Z");
 
-      const event = service.buildMonthlyLunarCycleEvent({ date, lunarPhase: "full" });
+      const event = service.buildMonthlyLunarCycleEvent({
+        date,
+        lunarPhase: "full",
+      });
 
       expect(event.summary).toBe(`🌙 ${symbolByLunarPhase.full} Full Moon`);
       expect(event.description).toBe("Full Moon");
@@ -272,9 +291,7 @@ describe("monthlyLunarCycle.events", () => {
         categories: ["Astronomy", "Something Else"],
       };
 
-      const progressiveEvents = service.detectProgressive([
-        nonLunarEvent,
-      ]);
+      const progressiveEvents = service.detectProgressive([nonLunarEvent]);
 
       expect(progressiveEvents).toHaveLength(0);
     });
@@ -346,14 +363,14 @@ describe("monthlyLunarCycle.events", () => {
 
     describe("illuminationByPhase", () => {
       it("should have correct illumination values for all phases", () => {
-        expect(illuminationByPhase.new).toBe(0);
-        expect(illuminationByPhase["waxing crescent"]).toBe(0.25);
-        expect(illuminationByPhase["first quarter"]).toBe(0.5);
-        expect(illuminationByPhase["waxing gibbous"]).toBe(0.75);
-        expect(illuminationByPhase.full).toBe(1);
-        expect(illuminationByPhase["waning gibbous"]).toBe(0.75);
-        expect(illuminationByPhase["last quarter"]).toBe(0.5);
-        expect(illuminationByPhase["waning crescent"]).toBe(0.25);
+        expect(MonthlyLunarCycleService.illuminationByPhase.new).toBe(0);
+        expect(MonthlyLunarCycleService.illuminationByPhase["waxing crescent"]).toBe(0.25);
+        expect(MonthlyLunarCycleService.illuminationByPhase["first quarter"]).toBe(0.5);
+        expect(MonthlyLunarCycleService.illuminationByPhase["waxing gibbous"]).toBe(0.75);
+        expect(MonthlyLunarCycleService.illuminationByPhase.full).toBe(1);
+        expect(MonthlyLunarCycleService.illuminationByPhase["waning gibbous"]).toBe(0.75);
+        expect(MonthlyLunarCycleService.illuminationByPhase["last quarter"]).toBe(0.5);
+        expect(MonthlyLunarCycleService.illuminationByPhase["waning crescent"]).toBe(0.25);
       });
     });
 

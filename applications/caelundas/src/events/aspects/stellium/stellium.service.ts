@@ -1,15 +1,17 @@
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
-import { symbolByBody, symbolByStellium } from "../../../symbols";
-import { stelliumBodies } from "../../../types";
+import { symbolByBody, symbolByStellium } from "@caelundas/src/symbols";
+import { stelliumBodies } from "@caelundas/src/types";
 
-import type { Event } from "../../../calendar/calendar.types";
-import type { Aspect, AspectPhase, Body } from "../../../types";
-import type { AspectBodies } from "../aspects.service";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { Aspect, AspectPhase, Body } from "@caelundas/src/types";
+import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
 import type { Moment } from "moment-timezone";
 
-function groupAspectsByType<T extends AspectBodies>(edges: T[]): Map<Aspect, T[]> {
+function groupAspectsByType<T extends AspectBodies>(
+  edges: T[],
+): Map<Aspect, T[]> {
   const grouped = _.groupBy(edges, "aspect");
   return new Map(Object.entries(grouped)) as Map<Aspect, T[]>;
 }
@@ -58,7 +60,6 @@ function determineCompoundPhaseFromSnapshots(
 }
 
 // #region Progressive Events
-
 
 @Injectable()
 export class StelliumService {
@@ -295,7 +296,11 @@ export class StelliumService {
   }): Event[] {
     const { currentAspectBodies, previousAspectBodies, minute } = args;
     return [
-      ...this.composeStelliums({ currentAspectBodies, previousAspectBodies, minute }),
+      ...this.composeStelliums({
+        currentAspectBodies,
+        previousAspectBodies,
+        minute,
+      }),
     ];
   }
 

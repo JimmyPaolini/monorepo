@@ -11,32 +11,33 @@ import { Injectable } from "@nestjs/common";
 
 import _ from "lodash";
 
-import { MARGIN_MINUTES } from "../../calendar/calendar.types";
-import { lunarPhases } from "../../constants";
-import { getIlluminationFromEphemeris } from "../../ephemeris/ephemeris.service";
-import { symbolByLunarPhase } from "../../symbols";
+import { MARGIN_MINUTES } from "@caelundas/src/calendar/calendar.types";
+import { lunarPhases } from "@caelundas/src/constants";
+import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
+import { symbolByLunarPhase } from "@caelundas/src/symbols";
 
-import type { Event } from "../../calendar/calendar.types";
-import type { IlluminationEphemeris } from "../../ephemeris/ephemeris.types";
-import type { LunarPhase } from "../../types";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { IlluminationEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
+import type { LunarPhase } from "@caelundas/src/types";
 import type { Moment } from "moment-timezone";
-
-export const illuminationByPhase: Record<LunarPhase, number> = {
-  new: 0,
-  "waxing crescent": 0.25,
-  "first quarter": 0.5,
-  "waxing gibbous": 0.75,
-  full: 1,
-  "waning gibbous": 0.75,
-  "last quarter": 0.5,
-  "waning crescent": 0.25,
-};
 
 // #region 🕑 Progressive Events
 
-
 @Injectable()
 export class MonthlyLunarCycleService {
+  static readonly illuminationByPhase: Record<LunarPhase, number> = {
+    new: 0,
+    "waxing crescent": 0.25,
+    "first quarter": 0.5,
+    "waxing gibbous": 0.75,
+    full: 1,
+    "waning gibbous": 0.75,
+    "last quarter": 0.5,
+    "waning crescent": 0.25,
+  };
+
+  constructor(private readonly ephemerisService: EphemerisService) {}
+
   /**
    * Detects lunar phase events at a specific time point.
    *
@@ -81,7 +82,7 @@ export class MonthlyLunarCycleService {
 
     const monthlyLunarCycleEvents: Event[] = [];
 
-    const currentIllumination = getIlluminationFromEphemeris(
+    const currentIllumination = this.ephemerisService.getIlluminationFromEphemeris(
       moonIlluminationEphemeris,
       minute.toISOString(),
       "currentIllumination",
@@ -91,7 +92,7 @@ export class MonthlyLunarCycleService {
       { length: MARGIN_MINUTES },
       (_, marginIndex) => {
         const m = minute.clone().subtract(marginIndex + 1, "minutes");
-        return getIlluminationFromEphemeris(
+        return this.ephemerisService.getIlluminationFromEphemeris(
           moonIlluminationEphemeris,
           m.toISOString(),
           "previousIllumination",
@@ -103,7 +104,7 @@ export class MonthlyLunarCycleService {
       { length: MARGIN_MINUTES },
       (_, marginIndex) => {
         const m = minute.clone().add(marginIndex + 1, "minutes");
-        return getIlluminationFromEphemeris(
+        return this.ephemerisService.getIlluminationFromEphemeris(
           moonIlluminationEphemeris,
           m.toISOString(),
           "nextIllumination",
@@ -231,9 +232,7 @@ export class MonthlyLunarCycleService {
    * // ]
    * ```
    */
-  detectProgressive(
-    events: Event[],
-  ): Event[] {
+  detectProgressive(events: Event[]): Event[] {
     const progressiveEvents: Event[] = [];
 
     // Filter to monthly lunar cycle events only
@@ -306,7 +305,9 @@ export class MonthlyLunarCycleService {
 
     // Extract the lunar phase
     const lunarPhaseCapitalized = categories.find((category) =>
-      lunarPhases.map((lunarPhase) => _.startCase(lunarPhase)).includes(category),
+      lunarPhases
+        .map((lunarPhase) => _.startCase(lunarPhase))
+        .includes(category),
     );
 
     if (!lunarPhaseCapitalized) {
@@ -341,7 +342,8 @@ export class MonthlyLunarCycleService {
     previousIlluminations: number[];
     nextIlluminations: number[];
   }): boolean {
-    const { currentIllumination, previousIlluminations, nextIlluminations } = args;
+    const { currentIllumination, previousIlluminations, nextIlluminations } =
+      args;
     return (
       currentIllumination < Math.min(...previousIlluminations) &&
       currentIllumination <= Math.min(...nextIlluminations) &&
@@ -354,7 +356,8 @@ export class MonthlyLunarCycleService {
     previousIlluminations: number[];
     nextIlluminations: number[];
   }): boolean {
-    const { currentIllumination, previousIlluminations, nextIlluminations } = args;
+    const { currentIllumination, previousIlluminations, nextIlluminations } =
+      args;
     return (
       currentIllumination > Math.max(...previousIlluminations) &&
       currentIllumination >= Math.max(...nextIlluminations) &&
@@ -383,14 +386,16 @@ export class MonthlyLunarCycleService {
       return false;
     }
 
-    const illumination = illuminationByPhase[lunarPhase] * 100;
+    const illumination = MonthlyLunarCycleService.illuminationByPhase[lunarPhase] * 100;
 
     const isWaxing = currentIllumination > previousIllumination;
     const isWaning = currentIllumination < previousIllumination;
     const isCrossingUp =
-      currentIllumination > illumination && previousIllumination <= illumination;
+      currentIllumination > illumination &&
+      previousIllumination <= illumination;
     const isCrossingDown =
-      currentIllumination < illumination && previousIllumination >= illumination;
+      currentIllumination < illumination &&
+      previousIllumination >= illumination;
     const isPhase = isCrossingUp || isCrossingDown;
 
     const isWaxingLunarPhase = isPhase && isWaxing;

@@ -1,6 +1,9 @@
 import { Module } from "@nestjs/common";
 
+import { EphemerisModule } from "@caelundas/src/ephemeris/ephemeris.module";
+
 import { AspectsService } from "./aspects.service";
+import { AspectsUtilitiesService } from "./aspects.utilities";
 import { MajorAspectsService } from "./major/major-aspects.service";
 import { MinorAspectsService } from "./minor/minor-aspects.service";
 import { QuadrupleAspectsService } from "./quadruple/quadruple-aspects.service";
@@ -14,8 +17,10 @@ import { TripleAspectsService } from "./triple/triple-aspects.service";
  *
  */
 @Module({
+  imports: [EphemerisModule],
   providers: [
     AspectsService,
+    AspectsUtilitiesService,
     MajorAspectsService,
     MinorAspectsService,
     QuadrupleAspectsService,

@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 
 import { computeAspectBodies } from "./aspects.service";
 
-import type { Event } from "../../calendar/calendar.types";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
 
 const timestamp = moment.utc("2026-01-21T12:00:00Z");
 
@@ -37,20 +37,23 @@ describe("computeAspectBodies", () => {
   });
 
   it("adds an aspect on forming and ignores perfective", () => {
-    const result = computeAspectBodies([], [
-      createAspectEvent({
-        body1: "Sun",
-        body2: "Moon",
-        aspectType: "Conjunct",
-        phase: "Forming",
-      }),
-      createAspectEvent({
-        body1: "Sun",
-        body2: "Moon",
-        aspectType: "Conjunct",
-        phase: "Perfective",
-      }),
-    ]);
+    const result = computeAspectBodies(
+      [],
+      [
+        createAspectEvent({
+          body1: "Sun",
+          body2: "Moon",
+          aspectType: "Conjunct",
+          phase: "Forming",
+        }),
+        createAspectEvent({
+          body1: "Sun",
+          body2: "Moon",
+          aspectType: "Conjunct",
+          phase: "Perfective",
+        }),
+      ],
+    );
 
     expect(result).toEqual([
       {
@@ -61,14 +64,17 @@ describe("computeAspectBodies", () => {
   });
 
   it("removes an aspect on dissolving", () => {
-    const afterForming = computeAspectBodies([], [
-      createAspectEvent({
-        body1: "Sun",
-        body2: "Moon",
-        aspectType: "Conjunct",
-        phase: "Forming",
-      }),
-    ]);
+    const afterForming = computeAspectBodies(
+      [],
+      [
+        createAspectEvent({
+          body1: "Sun",
+          body2: "Moon",
+          aspectType: "Conjunct",
+          phase: "Forming",
+        }),
+      ],
+    );
 
     const result = computeAspectBodies(afterForming, [
       createAspectEvent({
@@ -83,14 +89,17 @@ describe("computeAspectBodies", () => {
   });
 
   it("uses canonical key regardless of body order", () => {
-    const afterForming = computeAspectBodies([], [
-      createAspectEvent({
-        body1: "Moon",
-        body2: "Sun",
-        aspectType: "Conjunct",
-        phase: "Forming",
-      }),
-    ]);
+    const afterForming = computeAspectBodies(
+      [],
+      [
+        createAspectEvent({
+          body1: "Moon",
+          body2: "Sun",
+          aspectType: "Conjunct",
+          phase: "Forming",
+        }),
+      ],
+    );
 
     const result = computeAspectBodies(afterForming, [
       createAspectEvent({
@@ -105,20 +114,23 @@ describe("computeAspectBodies", () => {
   });
 
   it("tracks different aspect types for the same pair", () => {
-    const result = computeAspectBodies([], [
-      createAspectEvent({
-        body1: "Sun",
-        body2: "Moon",
-        aspectType: "Conjunct",
-        phase: "Forming",
-      }),
-      createAspectEvent({
-        body1: "Sun",
-        body2: "Moon",
-        aspectType: "Sextile",
-        phase: "Forming",
-      }),
-    ]);
+    const result = computeAspectBodies(
+      [],
+      [
+        createAspectEvent({
+          body1: "Sun",
+          body2: "Moon",
+          aspectType: "Conjunct",
+          phase: "Forming",
+        }),
+        createAspectEvent({
+          body1: "Sun",
+          body2: "Moon",
+          aspectType: "Sextile",
+          phase: "Forming",
+        }),
+      ],
+    );
 
     expect(result).toHaveLength(2);
     expect(result).toEqual(
@@ -130,28 +142,34 @@ describe("computeAspectBodies", () => {
   });
 
   it("skips non-simple-aspect events", () => {
-    const result = computeAspectBodies([], [
-      {
-        start: timestamp,
-        end: timestamp,
-        summary: "Moon enters Aries",
-        description: "",
-        categories: ["Astronomy", "Ingress", "Moon", "Aries"],
-      },
-    ]);
+    const result = computeAspectBodies(
+      [],
+      [
+        {
+          start: timestamp,
+          end: timestamp,
+          summary: "Moon enters Aries",
+          description: "",
+          categories: ["Astronomy", "Ingress", "Moon", "Aries"],
+        },
+      ],
+    );
 
     expect(result).toEqual([]);
   });
 
   it("does not mutate the previous state array", () => {
-    const afterForming = computeAspectBodies([], [
-      createAspectEvent({
-        body1: "Sun",
-        body2: "Moon",
-        aspectType: "Conjunct",
-        phase: "Forming",
-      }),
-    ]);
+    const afterForming = computeAspectBodies(
+      [],
+      [
+        createAspectEvent({
+          body1: "Sun",
+          body2: "Moon",
+          aspectType: "Conjunct",
+          phase: "Forming",
+        }),
+      ],
+    );
 
     computeAspectBodies(afterForming, [
       createAspectEvent({

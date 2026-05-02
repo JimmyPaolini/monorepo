@@ -1,9 +1,10 @@
 import moment from "moment-timezone";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { DailyCyclesService, sunRadiusDegrees } from "./daily-cycles.service";
+import { DailyCyclesService } from "./daily-cycles.service";
+import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 
-import type { AzimuthElevationEphemeris } from "../../ephemeris/ephemeris.types";
+import type { AzimuthElevationEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
 
 vi.mock("fs", () => ({
   default: {
@@ -11,7 +12,8 @@ vi.mock("fs", () => ({
   },
 }));
 
-const service = new DailyCyclesService();
+const ephemerisService = new EphemerisService();
+const service = new DailyCyclesService(ephemerisService);
 
 interface ServicePrivate {
   isRise: (args: {
@@ -432,17 +434,17 @@ describe("private utility methods", () => {
     vi.restoreAllMocks();
   });
 
-  describe("sunRadiusDegrees", () => {
+  describe("DailyCyclesService.sunRadiusDegrees", () => {
     it("should have correct value for sun radius", () => {
       // Sun radius is 16 arcminutes, 60 arcminutes per degree
-      expect(sunRadiusDegrees).toBeCloseTo(16 / 60, 5);
-      expect(sunRadiusDegrees).toBeCloseTo(0.2667, 3);
+      expect(DailyCyclesService.sunRadiusDegrees).toBeCloseTo(16 / 60, 5);
+      expect(DailyCyclesService.sunRadiusDegrees).toBeCloseTo(0.2667, 3);
     });
   });
 
   describe("isRise", () => {
     it("should return true when crossing above sun radius threshold", () => {
-      // Rise occurs when elevation goes from below -sunRadiusDegrees to above
+      // Rise occurs when elevation goes from below -DailyCyclesService.sunRadiusDegrees to above
       const result = s.isRise({
         currentElevation: 0, // Above threshold
         previousElevation: -0.5, // Below threshold (-0.2667)
@@ -453,8 +455,8 @@ describe("private utility methods", () => {
 
     it("should return true at exact threshold crossing", () => {
       const result = s.isRise({
-        currentElevation: -sunRadiusDegrees + 0.01, // Just above threshold
-        previousElevation: -sunRadiusDegrees - 0.01, // Just below threshold
+        currentElevation: -DailyCyclesService.sunRadiusDegrees + 0.01, // Just above threshold
+        previousElevation: -DailyCyclesService.sunRadiusDegrees - 0.01, // Just below threshold
       });
 
       expect(result).toBeTruthy();
@@ -490,7 +492,7 @@ describe("private utility methods", () => {
 
   describe("isSet", () => {
     it("should return true when crossing below sun radius threshold", () => {
-      // Set occurs when elevation goes from above -sunRadiusDegrees to below
+      // Set occurs when elevation goes from above -DailyCyclesService.sunRadiusDegrees to below
       const result = s.isSet({
         currentElevation: -0.5, // Below threshold
         previousElevation: 0, // Above threshold
@@ -501,8 +503,8 @@ describe("private utility methods", () => {
 
     it("should return true at exact threshold crossing", () => {
       const result = s.isSet({
-        currentElevation: -sunRadiusDegrees - 0.01, // Just below threshold
-        previousElevation: -sunRadiusDegrees + 0.01, // Just above threshold
+        currentElevation: -DailyCyclesService.sunRadiusDegrees - 0.01, // Just below threshold
+        previousElevation: -DailyCyclesService.sunRadiusDegrees + 0.01, // Just above threshold
       });
 
       expect(result).toBeTruthy();

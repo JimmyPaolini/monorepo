@@ -3,8 +3,8 @@ import { describe, expect, it } from "vitest";
 
 import { SextupleAspectsService } from "./sextuple-aspects.service";
 
-import type { Event } from "../../../calendar/calendar.types";
-import type { AspectBodies } from "../aspects.service";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
 
 /**
  * Integration tests for Sextuple Aspects (Hexagram/Star of David) detection
@@ -67,7 +67,7 @@ describe("sextupleAspects.events integration", () => {
         currentAspectBodies,
         previousAspectBodies,
         minute: currentMinute,
-        });
+      });
 
       expect(events).toHaveLength(1);
       expect(events[0]).toBeDefined();
@@ -129,7 +129,7 @@ describe("sextupleAspects.events integration", () => {
         currentAspectBodies,
         previousAspectBodies,
         minute: currentMinute,
-        });
+      });
 
       expect(events).toHaveLength(1);
       expect(events[0]).toBeDefined();
@@ -251,7 +251,7 @@ describe("sextupleAspects.events integration", () => {
         currentAspectBodies,
         previousAspectBodies,
         minute: currentMinute,
-        });
+      });
 
       expect(events).toHaveLength(1);
       expect(events[0]).toBeDefined();
@@ -294,7 +294,7 @@ describe("sextupleAspects.events integration", () => {
         currentAspectBodies,
         previousAspectBodies,
         minute: currentMinute,
-        });
+      });
 
       expect(events).toHaveLength(0);
     });
@@ -326,7 +326,7 @@ describe("sextupleAspects.events integration", () => {
         currentAspectBodies,
         previousAspectBodies,
         minute: currentMinute,
-        });
+      });
 
       expect(events).toHaveLength(0);
     });
