@@ -2,23 +2,20 @@
 agent: "agent"
 argument-hint: "Just run the prompt — no arguments needed. I'll analyze the current changes and handle everything automatically."
 description: "Automatically submit changes through the full branch → commit → pull request pipeline by analyzing code changes and handling hooks intelligently."
-model: Claude Haiku 4.5 (copilot)
+model: "Claude Haiku 4.5 (copilot)"
 name: "submit-changes"
 tools:
   [
-    vscode/getProjectSetupInfo,
-    execute/getTerminalOutput,
-    execute/runInTerminal,
-    read,
-    search,
-    web,
-    "github/*",
+    "execute",
+    "read",
+    "search",
+    "web",
   ]
 ---
 
 # Submit Changes
 
-Automatically move local changes through **branch → commit → push → pull request** without user input. Each phase is idempotent — skip completed steps. Prefer GitHub MCP tools over CLI; fall back to CLI only when no MCP tool exists (staging, committing, pushing).
+Automatically move local changes through **branch → commit → push → pull request** without user input. Each phase is idempotent — skip completed steps. Use git and gh CLI commands throughout.
 
 ## Safety Rules
 
@@ -101,8 +98,8 @@ Synced from [conventional.config.cjs](../../conventional.config.cjs). Do not edi
 Skip if already on a non-`main` branch.
 
 - **Name**: `<type>/<scope>-<description>` (kebab-case, 2–4 keyword description)
-- **Create remote**: `mcp_github_create_branch(owner, repo, branch, from_branch: "main")`
-- **Switch local**: `git checkout <branch>` (fallback: `git checkout -b <branch>`)
+- **Create and switch**: `git checkout -b <branch>`
+- **Push to remote**: `git push --set-upstream origin <branch>`
 
 ---
 
@@ -110,7 +107,9 @@ Skip if already on a non-`main` branch.
 
 Skip if working tree is clean (`git status --porcelain` returns nothing).
 
-1. `git add -A`
+1. Check for staged changes: `git diff --cached --name-only`
+   - **If staged changes exist**: commit only staged changes
+   - **If no staged changes**: run `git add -A` to stage all, then commit
 2. Compose message: `<type>(<scope>): <gitmoji> <subject>` — single line, max 128 chars, no body/footer
 3. `git commit -m "<message>"`
 
@@ -130,13 +129,11 @@ Skip if working tree is clean (`git status --porcelain` returns nothing).
 
 ## Phase 3 — Pull Request
 
-Skip if a PR already exists: `mcp_github_list_pull_requests(owner, repo, head: "<owner>:<branch>", state: "open")`
+Skip if a PR already exists: `gh pr list --head <branch> --state open`
 
 - **Title**: Same as commit message
 - **Body**: Auto-generate `## 🌰 Summary`, `## 📝 Details`, `## 🧪 Testing`, and `## 🔗 Related` sections from the diff
-- **Create**: `mcp_github_create_pull_request(owner, repo, title, head, base: "main", body, draft: false)`
-- **Assign**: `mcp_github_add_issue_assignees(owner, repo, issue_number: <pr_number>, assignees: ["@me"])` — always assign the PR to yourself after creation
-- **Fallback**: `gh pr create --title "<title>" --body "<body>" --assignee @me`
+- **Create**: `gh pr create --title "<title>" --body "<body>" --base main --assignee @me`
 
 ---
 
