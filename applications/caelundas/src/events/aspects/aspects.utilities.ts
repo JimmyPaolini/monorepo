@@ -1,7 +1,6 @@
-import { Injectable } from "@nestjs/common";
-
 import { angleByAspect, orbByAspect } from "@caelundas/src/constants";
 import { getAngle } from "@caelundas/src/math.utilities";
+import { Injectable } from "@nestjs/common";
 
 import type { Aspect, AspectPhase } from "@caelundas/src/types";
 

@@ -1,8 +1,8 @@
+import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import moment from "moment-timezone";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 import { DailyCyclesService } from "./daily-cycles.service";
-import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 
 import type { AzimuthElevationEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
 

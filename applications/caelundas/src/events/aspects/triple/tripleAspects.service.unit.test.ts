@@ -1,9 +1,7 @@
 import moment from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
-import {
-    TripleAspectsService,
-} from "./triple-aspects.service";
+import { TripleAspectsService } from "./triple-aspects.service";
 
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
@@ -742,7 +740,12 @@ describe("haveAspect", () => {
     ];
 
     expect(
-      TripleAspectsService.haveAspect("sun" as Body, "moon" as Body, "conjunct" as Aspect, edges),
+      TripleAspectsService.haveAspect(
+        "sun" as Body,
+        "moon" as Body,
+        "conjunct" as Aspect,
+        edges,
+      ),
     ).toBe(true);
   });
 
@@ -755,7 +758,12 @@ describe("haveAspect", () => {
     ];
 
     expect(
-      TripleAspectsService.haveAspect("moon" as Body, "sun" as Body, "conjunct" as Aspect, edges),
+      TripleAspectsService.haveAspect(
+        "moon" as Body,
+        "sun" as Body,
+        "conjunct" as Aspect,
+        edges,
+      ),
     ).toBe(true);
   });
 
@@ -768,7 +776,12 @@ describe("haveAspect", () => {
     ];
 
     expect(
-      TripleAspectsService.haveAspect("sun" as Body, "moon" as Body, "trine" as Aspect, edges),
+      TripleAspectsService.haveAspect(
+        "sun" as Body,
+        "moon" as Body,
+        "trine" as Aspect,
+        edges,
+      ),
     ).toBe(false);
   });
 
@@ -803,7 +816,12 @@ describe("haveAspect", () => {
     ];
 
     expect(
-      TripleAspectsService.haveAspect("mars" as Body, "jupiter" as Body, "trine" as Aspect, edges),
+      TripleAspectsService.haveAspect(
+        "mars" as Body,
+        "jupiter" as Body,
+        "trine" as Aspect,
+        edges,
+      ),
     ).toBe(true);
   });
 });

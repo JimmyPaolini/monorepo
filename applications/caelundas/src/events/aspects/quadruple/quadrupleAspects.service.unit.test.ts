@@ -8,8 +8,8 @@ import {
 } from "./quadruple-aspects.service";
 
 import type { Event } from "@caelundas/src/calendar/calendar.types";
-import type { Aspect, Body } from "@caelundas/src/types";
 import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
+import type { Aspect, Body } from "@caelundas/src/types";
 
 const service = new QuadrupleAspectsService();
 

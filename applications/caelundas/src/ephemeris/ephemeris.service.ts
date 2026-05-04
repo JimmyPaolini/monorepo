@@ -25,7 +25,6 @@ import { Injectable } from "@nestjs/common";
 import moment, { type Moment } from "moment-timezone";
 import { azalt, calc, constants, nod_aps_ut, pheno_ut, utc_to_jd } from "sweph";
 
-
 import {
   ECLIPTIC_TO_HORIZONTAL_FLAG,
   GREGORIAN_CALENDAR_FLAG,
@@ -85,6 +84,45 @@ export class EphemerisService {
       throw new Error(`Missing ${fieldName} at ${timestamp}`);
     }
     return data[fieldName];
+  }
+
+  /**
+   * Extracts the ecliptic longitude for a body at the previous, current, and next minute.
+   *
+   * Convenience wrapper around {@link getCoordinateFromEphemeris} that fetches all three
+   * minute-window positions in a single call, reducing the six individual calls required
+   * by aspect phase detection into two.
+   *
+   * @param ephemeris - Coordinate ephemeris for one body, indexed by ISO timestamp
+   * @param previous - One minute before the target
+   * @param minute - Target minute
+   * @param next - One minute after the target
+   * @returns Object containing `previous`, `current`, and `next` longitude values in degrees
+   * @throws When any of the three timestamps are missing from the ephemeris
+   */
+  getLongitudesWindow(
+    ephemeris: CoordinateEphemeris,
+    previous: Moment,
+    minute: Moment,
+    next: Moment,
+  ): { previous: number; current: number; next: number } {
+    return {
+      previous: this.getCoordinateFromEphemeris(
+        ephemeris,
+        previous.toISOString(),
+        "longitude",
+      ),
+      current: this.getCoordinateFromEphemeris(
+        ephemeris,
+        minute.toISOString(),
+        "longitude",
+      ),
+      next: this.getCoordinateFromEphemeris(
+        ephemeris,
+        next.toISOString(),
+        "longitude",
+      ),
+    };
   }
 
   /**
@@ -234,7 +272,8 @@ export class EphemerisService {
 
     for (const body of bodies) {
       const ephemeris: AzimuthElevationEphemeris = {};
-      const swissEphemerisConstant = this.getSwissEphemerisConstantForBody(body);
+      const swissEphemerisConstant =
+        this.getSwissEphemerisConstantForBody(body);
 
       for (const date of this.generateMinutes(start, end)) {
         const { julianDayEphemerisTime, julianDayUniversalTime } =
@@ -302,7 +341,8 @@ export class EphemerisService {
 
     for (const body of bodies) {
       const ephemeris: IlluminationEphemeris = {};
-      const swissEphemerisConstant = this.getSwissEphemerisConstantForBody(body);
+      const swissEphemerisConstant =
+        this.getSwissEphemerisConstantForBody(body);
 
       for (const date of this.generateMinutes(start, end)) {
         const { julianDayUniversalTime } = this.dateToJulianDays(date);
@@ -354,7 +394,8 @@ export class EphemerisService {
 
     for (const body of bodies) {
       const ephemeris: DiameterEphemeris = {};
-      const swissEphemerisConstant = this.getSwissEphemerisConstantForBody(body);
+      const swissEphemerisConstant =
+        this.getSwissEphemerisConstantForBody(body);
 
       for (const date of this.generateMinutes(start, end)) {
         const { julianDayUniversalTime } = this.dateToJulianDays(date);
@@ -397,7 +438,8 @@ export class EphemerisService {
 
     for (const body of bodies) {
       const ephemeris: DistanceEphemeris = {};
-      const swissEphemerisConstant = this.getSwissEphemerisConstantForBody(body);
+      const swissEphemerisConstant =
+        this.getSwissEphemerisConstantForBody(body);
 
       for (const date of this.generateMinutes(start, end)) {
         const { julianDayEphemerisTime } = this.dateToJulianDays(date);
@@ -513,7 +555,8 @@ export class EphemerisService {
       }
 
       // Non-node: SE constant is guaranteed non-null — hoist outside the minute loop
-      const swissEphemerisConstant = this.getSwissEphemerisConstantForBody(body);
+      const swissEphemerisConstant =
+        this.getSwissEphemerisConstantForBody(body);
 
       for (const date of this.generateMinutes(start, end)) {
         const { julianDayEphemerisTime, julianDayUniversalTime } =
@@ -570,9 +613,7 @@ export class EphemerisService {
                 SWISS_EPHEMERIS_FLAGS,
               );
               if (result.flag < 0) {
-                throw new Error(
-                  `pheno_ut failed for ${body}: ${result.error}`,
-                );
+                throw new Error(`pheno_ut failed for ${body}: ${result.error}`);
               }
               diameterEphemeris[timestamp] = { diameter: result.data[3] };
             }

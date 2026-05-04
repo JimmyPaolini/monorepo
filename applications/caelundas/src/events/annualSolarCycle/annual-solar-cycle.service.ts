@@ -1,32 +1,31 @@
-import { Injectable } from "@nestjs/common";
-
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import { isMaximum, isMinimum } from "@caelundas/src/math.utilities";
 import { pairProgressiveEvents } from "@caelundas/src/progressive.utilities";
+import { Injectable } from "@nestjs/common";
 
 import {
-    isAutumnalEquinox,
-    isBeltane,
-    isEleventhHexadecan,
-    isFifteenthHexadecan,
-    isFifthHexadecan,
-    isFirstHexadecan,
-    isImbolc,
-    isLammas,
-    isNinthHexadecan,
-    isSamhain,
-    isSeventhHexadecan,
-    isSummerSolstice,
-    isThirdHexadecan,
-    isThirteenthHexadecan,
-    isVernalEquinox,
-    isWinterSolstice,
+  isAutumnalEquinox,
+  isBeltane,
+  isEleventhHexadecan,
+  isFifteenthHexadecan,
+  isFifthHexadecan,
+  isFirstHexadecan,
+  isImbolc,
+  isLammas,
+  isNinthHexadecan,
+  isSamhain,
+  isSeventhHexadecan,
+  isSummerSolstice,
+  isThirdHexadecan,
+  isThirteenthHexadecan,
+  isVernalEquinox,
+  isWinterSolstice,
 } from "./annualSolarCycle.utilities";
 
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type {
-    CoordinateEphemeris,
-    DistanceEphemeris,
+  CoordinateEphemeris,
+  DistanceEphemeris,
 } from "@caelundas/src/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
 
@@ -38,9 +37,17 @@ import type { Moment } from "moment-timezone";
 
 // #region 🕑 Progressive Events
 
+/**
+ *
+ */
 @Injectable()
 export class AnnualSolarCycleService {
-  private static readonly categories = ["Astronomy", "Astrology", "Annual Solar Cycle", "Solar"];
+  private static readonly categories = [
+    "Astronomy",
+    "Astrology",
+    "Annual Solar Cycle",
+    "Solar",
+  ];
   constructor(private readonly ephemerisService: EphemerisService) {}
 
   /**
@@ -87,6 +94,9 @@ export class AnnualSolarCycleService {
     ];
   }
 
+  /**
+   *
+   */
   getAnnualSolarCycleEvents(args: {
     sunCoordinateEphemeris: CoordinateEphemeris;
     minute: Moment;

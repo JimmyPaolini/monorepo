@@ -11,7 +11,7 @@ import type { StelliumService } from "./stellium/stellium.service";
 import type { TripleAspectsService } from "./triple/triple-aspects.service";
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
-import type { Aspect, AspectPhase, Body } from "@caelundas/src/types";
+import type { Aspect, Body } from "@caelundas/src/types";
 import type { Moment } from "moment-timezone";
 
 /**
@@ -23,15 +23,11 @@ export interface AspectBodies {
 }
 
 /**
- * Represents a 2-body aspect relationship extracted from stored events.
- */
-export interface AspectEdge extends AspectBodies {
-  phase: AspectPhase;
-  event: Event;
-}
-
-/**
+ * Orchestrates aspect detection across all aspect-type services.
  *
+ * Delegates 2-body detection (major, minor, specialty) and composes results into
+ * multi-body patterns (T-squares, grand trines, yods, stelliums) via the
+ * respective sub-services. Also coordinates progressive event pairing.
  */
 @Injectable()
 export class AspectsService {
@@ -47,7 +43,14 @@ export class AspectsService {
   ) {}
 
   /**
+   * Detects all aspect events at a single minute, including 2-body and multi-body patterns.
    *
+   * Runs simple-aspect detection first (major, minor, specialty), then computes the
+   * updated active-aspect registry and uses it to detect composite configurations
+   * (triple, quadruple, quintuple, sextuple, stellium).
+   *
+   * @param args - Ephemeris data, target minute, and the currently active aspect bodies
+   * @returns Detected calendar events and the updated active-aspect registry
    */
   detect(args: {
     coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
@@ -103,7 +106,13 @@ export class AspectsService {
   }
 
   /**
+   * Pairs forming and dissolving events into progressive (duration) events for all aspect types.
    *
+   * Delegates to each sub-service so that every aspect category produces progressive
+   * events spanning its full in-orb period.
+   *
+   * @param events - Instantaneous events accumulated over a complete date range
+   * @returns Progressive events, one per aspect occurrence, covering its forming-to-dissolving span
    */
   detectProgressive(events: Event[]): Event[] {
     return [
@@ -125,7 +134,14 @@ function makeKey(body1: Body, body2: Body, aspect: Aspect): string {
 }
 
 /**
+ * Incrementally updates the active 2-body aspect registry from the current minute's events.
  *
+ * Starting from `previousAspectBodies`, adds any new forming aspects and removes any
+ * aspects that have dissolved, based on the "Simple Aspect" events in `events`.
+ *
+ * @param previousAspectBodies - Active aspects from the previous minute
+ * @param events - Instantaneous events detected at the current minute
+ * @returns Updated list of currently active 2-body aspects
  */
 export function computeAspectBodies(
   previousAspectBodies: AspectBodies[],

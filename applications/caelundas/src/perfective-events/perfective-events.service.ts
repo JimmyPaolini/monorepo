@@ -1,5 +1,3 @@
-import { Injectable } from "@nestjs/common";
-
 import { MARGIN_MINUTES } from "@caelundas/src/calendar/calendar.types";
 import { DatetimeService } from "@caelundas/src/datetime/datetime.service";
 import { EphemerisAggregatesService } from "@caelundas/src/ephemeris/ephemeris.aggregates";
@@ -12,12 +10,16 @@ import { MonthlyLunarCycleService } from "@caelundas/src/events/monthlyLunarCycl
 import { PhasesService } from "@caelundas/src/events/phases/phases.service";
 import { RetrogradesService } from "@caelundas/src/events/retrogrades/retrogrades.service";
 import { TwilightsService } from "@caelundas/src/events/twilights/twilights.service";
+import { Injectable } from "@nestjs/common";
 
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type { Coordinates } from "@caelundas/src/ephemeris/ephemeris.types";
 import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
 import type { Input } from "@caelundas/src/input.schema";
 
+/**
+ *
+ */
 @Injectable()
 export class PerfectiveEventsService {
   constructor(
@@ -34,6 +36,9 @@ export class PerfectiveEventsService {
     private readonly phasesService: PhasesService,
   ) {}
 
+  /**
+   *
+   */
   detect(input: Input): Event[] {
     const { end, latitude, longitude, start, timezone } = input;
     const coordinates: Coordinates = [longitude, latitude];

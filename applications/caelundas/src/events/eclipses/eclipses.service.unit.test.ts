@@ -1,10 +1,9 @@
+import { MARGIN_MINUTES } from "@caelundas/src/calendar/calendar.types";
+import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import moment, { type Moment } from "moment-timezone";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { MARGIN_MINUTES } from "@caelundas/src/calendar/calendar.types";
-
 import { EclipsesService } from "./eclipses.service";
-import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type {

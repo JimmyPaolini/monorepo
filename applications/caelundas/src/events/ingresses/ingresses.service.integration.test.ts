@@ -1,14 +1,13 @@
+import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
+import {
+  decanIngressBodies,
+  peakIngressBodies,
+  signIngressBodies,
+} from "@caelundas/src/types";
 import moment, { type Moment } from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
-import {
-    decanIngressBodies,
-    peakIngressBodies,
-    signIngressBodies,
-} from "@caelundas/src/types";
-
 import { IngressesService } from "./ingresses.service";
-import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";

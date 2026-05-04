@@ -7,25 +7,25 @@
  * to background stars. Only planets Mercury through Pluto can go retrograde; Sun and
  * Moon never do.
  */
-import { Injectable } from "@nestjs/common";
-import _ from "lodash";
 
 import {
-    type Event,
-    MARGIN_MINUTES,
+  type Event,
+  MARGIN_MINUTES,
 } from "@caelundas/src/calendar/calendar.types";
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import { normalizeForComparison } from "@caelundas/src/math.utilities";
 import { pairProgressiveEvents } from "@caelundas/src/progressive.utilities";
 import { symbolByBody, symbolByOrbitalDirection } from "@caelundas/src/symbols";
 import { retrogradeBodies } from "@caelundas/src/types";
+import { Injectable } from "@nestjs/common";
+import _ from "lodash";
 
 import type { CoordinateEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
 import type {
-    OrbitalDirection,
-    OrbitalDirectionSymbol,
-    RetrogradeBody,
-    RetrogradeBodySymbol,
+  OrbitalDirection,
+  OrbitalDirectionSymbol,
+  RetrogradeBody,
+  RetrogradeBodySymbol,
 } from "@caelundas/src/types";
 import type { Moment } from "moment-timezone";
 

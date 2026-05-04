@@ -1,13 +1,10 @@
+import { MARGIN_MINUTES } from "@caelundas/src/calendar/calendar.types";
+import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
+import { symbolByLunarPhase } from "@caelundas/src/symbols";
 import moment, { type Moment } from "moment-timezone";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import { MARGIN_MINUTES } from "@caelundas/src/calendar/calendar.types";
-import { symbolByLunarPhase } from "@caelundas/src/symbols";
-
-import {
-    MonthlyLunarCycleService,
-} from "./monthly-lunar-cycle.service";
-import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
+import { MonthlyLunarCycleService } from "./monthly-lunar-cycle.service";
 
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type { IlluminationEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
@@ -364,13 +361,25 @@ describe("monthlyLunarCycle.events", () => {
     describe("illuminationByPhase", () => {
       it("should have correct illumination values for all phases", () => {
         expect(MonthlyLunarCycleService.illuminationByPhase.new).toBe(0);
-        expect(MonthlyLunarCycleService.illuminationByPhase["waxing crescent"]).toBe(0.25);
-        expect(MonthlyLunarCycleService.illuminationByPhase["first quarter"]).toBe(0.5);
-        expect(MonthlyLunarCycleService.illuminationByPhase["waxing gibbous"]).toBe(0.75);
+        expect(
+          MonthlyLunarCycleService.illuminationByPhase["waxing crescent"],
+        ).toBe(0.25);
+        expect(
+          MonthlyLunarCycleService.illuminationByPhase["first quarter"],
+        ).toBe(0.5);
+        expect(
+          MonthlyLunarCycleService.illuminationByPhase["waxing gibbous"],
+        ).toBe(0.75);
         expect(MonthlyLunarCycleService.illuminationByPhase.full).toBe(1);
-        expect(MonthlyLunarCycleService.illuminationByPhase["waning gibbous"]).toBe(0.75);
-        expect(MonthlyLunarCycleService.illuminationByPhase["last quarter"]).toBe(0.5);
-        expect(MonthlyLunarCycleService.illuminationByPhase["waning crescent"]).toBe(0.25);
+        expect(
+          MonthlyLunarCycleService.illuminationByPhase["waning gibbous"],
+        ).toBe(0.75);
+        expect(
+          MonthlyLunarCycleService.illuminationByPhase["last quarter"],
+        ).toBe(0.5);
+        expect(
+          MonthlyLunarCycleService.illuminationByPhase["waning crescent"],
+        ).toBe(0.25);
       });
     });
 

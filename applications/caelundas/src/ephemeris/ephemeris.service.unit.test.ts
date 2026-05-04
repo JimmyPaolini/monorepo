@@ -103,13 +103,15 @@ describe("ephemeris.service", () => {
     };
 
     it("returns longitude for a known timestamp", () => {
-      expect(service.getCoordinateFromEphemeris(ephemeris, ts, "longitude")).toBe(
-        120.5,
-      );
+      expect(
+        service.getCoordinateFromEphemeris(ephemeris, ts, "longitude"),
+      ).toBe(120.5);
     });
 
     it("returns latitude for a known timestamp", () => {
-      expect(service.getCoordinateFromEphemeris(ephemeris, ts, "latitude")).toBe(-1.2);
+      expect(
+        service.getCoordinateFromEphemeris(ephemeris, ts, "latitude"),
+      ).toBe(-1.2);
     });
 
     it("throws when timestamp is missing", () => {
@@ -128,20 +130,24 @@ describe("ephemeris.service", () => {
     };
 
     it("returns azimuth for a known timestamp", () => {
-      expect(service.getAzimuthElevationFromEphemeris(ephemeris, ts, "azimuth")).toBe(
-        180,
-      );
+      expect(
+        service.getAzimuthElevationFromEphemeris(ephemeris, ts, "azimuth"),
+      ).toBe(180);
     });
 
     it("returns elevation for a known timestamp", () => {
-      expect(service.getAzimuthElevationFromEphemeris(ephemeris, ts, "elevation")).toBe(
-        44.8,
-      );
+      expect(
+        service.getAzimuthElevationFromEphemeris(ephemeris, ts, "elevation"),
+      ).toBe(44.8);
     });
 
     it("throws when timestamp is missing", () => {
       expect(() =>
-        service.getAzimuthElevationFromEphemeris(ephemeris, "bad-ts", "azimuth"),
+        service.getAzimuthElevationFromEphemeris(
+          ephemeris,
+          "bad-ts",
+          "azimuth",
+        ),
       ).toThrow("Missing azimuth at bad-ts");
     });
   });
@@ -155,14 +161,18 @@ describe("ephemeris.service", () => {
     };
 
     it("returns illumination for a known timestamp", () => {
-      expect(service.getIlluminationFromEphemeris(ephemeris, ts, "illumination")).toBe(
-        75,
-      );
+      expect(
+        service.getIlluminationFromEphemeris(ephemeris, ts, "illumination"),
+      ).toBe(75);
     });
 
     it("throws when timestamp is missing", () => {
       expect(() =>
-        service.getIlluminationFromEphemeris(ephemeris, "bad-ts", "illumination"),
+        service.getIlluminationFromEphemeris(
+          ephemeris,
+          "bad-ts",
+          "illumination",
+        ),
       ).toThrow("Missing illumination at bad-ts");
     });
   });
@@ -176,7 +186,9 @@ describe("ephemeris.service", () => {
     };
 
     it("returns distance for a known timestamp", () => {
-      expect(service.getDistanceFromEphemeris(ephemeris, ts, "distance")).toBe(1.01);
+      expect(service.getDistanceFromEphemeris(ephemeris, ts, "distance")).toBe(
+        1.01,
+      );
     });
 
     it("throws when timestamp is missing", () => {
@@ -195,7 +207,9 @@ describe("ephemeris.service", () => {
     };
 
     it("returns diameter for a known timestamp", () => {
-      expect(service.getDiameterFromEphemeris(ephemeris, ts, "diameter")).toBe(0.5334);
+      expect(service.getDiameterFromEphemeris(ephemeris, ts, "diameter")).toBe(
+        0.5334,
+      );
     });
 
     it("throws when timestamp is missing", () => {

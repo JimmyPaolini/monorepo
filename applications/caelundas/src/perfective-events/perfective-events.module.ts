@@ -1,5 +1,3 @@
-import { Module } from "@nestjs/common";
-
 import { DatetimeModule } from "@caelundas/src/datetime/datetime.module";
 import { EphemerisModule } from "@caelundas/src/ephemeris/ephemeris.module";
 import { AnnualSolarCycleModule } from "@caelundas/src/events/annualSolarCycle/annual-solar-cycle.module";
@@ -11,9 +9,13 @@ import { MonthlyLunarCycleModule } from "@caelundas/src/events/monthlyLunarCycle
 import { PhasesModule } from "@caelundas/src/events/phases/phases.module";
 import { RetrogradesModule } from "@caelundas/src/events/retrogrades/retrogrades.module";
 import { TwilightsModule } from "@caelundas/src/events/twilights/twilights.module";
+import { Module } from "@nestjs/common";
 
 import { PerfectiveEventsService } from "./perfective-events.service";
 
+/**
+ *
+ */
 @Module({
   imports: [
     DatetimeModule,

@@ -1,14 +1,13 @@
-import { Injectable } from "@nestjs/common";
-
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import { getAngle, isMaximum, isMinimum } from "@caelundas/src/math.utilities";
 import { pairProgressiveEvents } from "@caelundas/src/progressive.utilities";
+import { Injectable } from "@nestjs/common";
 
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type {
-    AzimuthElevationEphemeris,
-    CoordinateEphemeris,
-    DiameterEphemeris,
+  AzimuthElevationEphemeris,
+  CoordinateEphemeris,
+  DiameterEphemeris,
 } from "@caelundas/src/ephemeris/ephemeris.types";
 import type { EclipsePhase } from "@caelundas/src/types";
 import type { Moment } from "moment-timezone";
@@ -16,6 +15,9 @@ import type { Moment } from "moment-timezone";
 const categories = ["Astronomy", "Astrology", "Eclipse"];
 type EclipseFrame = "geocentric" | "topocentric";
 
+/**
+ *
+ */
 @Injectable()
 export class EclipsesService {
   constructor(private readonly ephemerisService: EphemerisService) {}
@@ -68,21 +70,24 @@ export class EclipsesService {
     const previousMinute = minute.clone().subtract(1, "minute");
     const nextMinute = minute.clone().add(1, "minute");
 
-    const currentLongitudeMoon = this.ephemerisService.getCoordinateFromEphemeris(
-      moonCoordinateEphemeris,
-      minute.toISOString(),
-      "longitude",
-    );
-    const currentLatitudeMoon = this.ephemerisService.getCoordinateFromEphemeris(
-      moonCoordinateEphemeris,
-      minute.toISOString(),
-      "latitude",
-    );
-    const currentLongitudeSun = this.ephemerisService.getCoordinateFromEphemeris(
-      sunCoordinateEphemeris,
-      minute.toISOString(),
-      "longitude",
-    );
+    const currentLongitudeMoon =
+      this.ephemerisService.getCoordinateFromEphemeris(
+        moonCoordinateEphemeris,
+        minute.toISOString(),
+        "longitude",
+      );
+    const currentLatitudeMoon =
+      this.ephemerisService.getCoordinateFromEphemeris(
+        moonCoordinateEphemeris,
+        minute.toISOString(),
+        "latitude",
+      );
+    const currentLongitudeSun =
+      this.ephemerisService.getCoordinateFromEphemeris(
+        sunCoordinateEphemeris,
+        minute.toISOString(),
+        "longitude",
+      );
     const currentLatitudeSun = this.ephemerisService.getCoordinateFromEphemeris(
       sunCoordinateEphemeris,
       minute.toISOString(),
@@ -110,26 +115,30 @@ export class EclipsesService {
       "latitude",
     );
 
-    const previousLongitudeMoon = this.ephemerisService.getCoordinateFromEphemeris(
-      moonCoordinateEphemeris,
-      previousMinute.toISOString(),
-      "longitude",
-    );
-    const previousLatitudeMoon = this.ephemerisService.getCoordinateFromEphemeris(
-      moonCoordinateEphemeris,
-      previousMinute.toISOString(),
-      "latitude",
-    );
-    const previousLongitudeSun = this.ephemerisService.getCoordinateFromEphemeris(
-      sunCoordinateEphemeris,
-      previousMinute.toISOString(),
-      "longitude",
-    );
-    const previousLatitudeSun = this.ephemerisService.getCoordinateFromEphemeris(
-      sunCoordinateEphemeris,
-      previousMinute.toISOString(),
-      "latitude",
-    );
+    const previousLongitudeMoon =
+      this.ephemerisService.getCoordinateFromEphemeris(
+        moonCoordinateEphemeris,
+        previousMinute.toISOString(),
+        "longitude",
+      );
+    const previousLatitudeMoon =
+      this.ephemerisService.getCoordinateFromEphemeris(
+        moonCoordinateEphemeris,
+        previousMinute.toISOString(),
+        "latitude",
+      );
+    const previousLongitudeSun =
+      this.ephemerisService.getCoordinateFromEphemeris(
+        sunCoordinateEphemeris,
+        previousMinute.toISOString(),
+        "longitude",
+      );
+    const previousLatitudeSun =
+      this.ephemerisService.getCoordinateFromEphemeris(
+        sunCoordinateEphemeris,
+        previousMinute.toISOString(),
+        "latitude",
+      );
 
     const currentDiameterMoon = this.ephemerisService.getDiameterFromEphemeris(
       moonDiameterEphemeris,
@@ -205,37 +214,43 @@ export class EclipsesService {
       sunAzimuthElevationEphemeris !== undefined;
 
     if (hasTopocentricEphemeris) {
-      const currentMoonElevation = this.ephemerisService.getAzimuthElevationFromEphemeris(
-        moonAzimuthElevationEphemeris,
-        minute.toISOString(),
-        "elevation",
-      );
-      const previousMoonElevation = this.ephemerisService.getAzimuthElevationFromEphemeris(
-        moonAzimuthElevationEphemeris,
-        previousMinute.toISOString(),
-        "elevation",
-      );
-      const nextMoonElevation = this.ephemerisService.getAzimuthElevationFromEphemeris(
-        moonAzimuthElevationEphemeris,
-        nextMinute.toISOString(),
-        "elevation",
-      );
+      const currentMoonElevation =
+        this.ephemerisService.getAzimuthElevationFromEphemeris(
+          moonAzimuthElevationEphemeris,
+          minute.toISOString(),
+          "elevation",
+        );
+      const previousMoonElevation =
+        this.ephemerisService.getAzimuthElevationFromEphemeris(
+          moonAzimuthElevationEphemeris,
+          previousMinute.toISOString(),
+          "elevation",
+        );
+      const nextMoonElevation =
+        this.ephemerisService.getAzimuthElevationFromEphemeris(
+          moonAzimuthElevationEphemeris,
+          nextMinute.toISOString(),
+          "elevation",
+        );
 
-      const currentSunElevation = this.ephemerisService.getAzimuthElevationFromEphemeris(
-        sunAzimuthElevationEphemeris,
-        minute.toISOString(),
-        "elevation",
-      );
-      const previousSunElevation = this.ephemerisService.getAzimuthElevationFromEphemeris(
-        sunAzimuthElevationEphemeris,
-        previousMinute.toISOString(),
-        "elevation",
-      );
-      const nextSunElevation = this.ephemerisService.getAzimuthElevationFromEphemeris(
-        sunAzimuthElevationEphemeris,
-        nextMinute.toISOString(),
-        "elevation",
-      );
+      const currentSunElevation =
+        this.ephemerisService.getAzimuthElevationFromEphemeris(
+          sunAzimuthElevationEphemeris,
+          minute.toISOString(),
+          "elevation",
+        );
+      const previousSunElevation =
+        this.ephemerisService.getAzimuthElevationFromEphemeris(
+          sunAzimuthElevationEphemeris,
+          previousMinute.toISOString(),
+          "elevation",
+        );
+      const nextSunElevation =
+        this.ephemerisService.getAzimuthElevationFromEphemeris(
+          sunAzimuthElevationEphemeris,
+          nextMinute.toISOString(),
+          "elevation",
+        );
 
       const currentSolarGeocentricActive = this.isSolarEclipseActive({
         currentDiameterMoon,

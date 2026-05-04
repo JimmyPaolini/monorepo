@@ -1,5 +1,3 @@
-import { Injectable } from "@nestjs/common";
-
 /**
  * Daily solar cycle event detection for Sun's daily motion.
  *
@@ -11,15 +9,19 @@ import { Injectable } from "@nestjs/common";
 
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import {
-    arcminutesPerDegree,
-    isMaximum,
-    isMinimum,
+  arcminutesPerDegree,
+  isMaximum,
+  isMinimum,
 } from "@caelundas/src/math.utilities";
+import { Injectable } from "@nestjs/common";
 
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type { AzimuthElevationEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
 
+/**
+ *
+ */
 @Injectable()
 export class DailyCyclesService {
   static readonly sunRadiusDegrees = 16 / arcminutesPerDegree;
@@ -91,6 +93,9 @@ export class DailyCyclesService {
     ];
   }
 
+  /**
+   *
+   */
   getDailySolarCycleEvents(args: {
     minute: Moment;
     sunAzimuthElevationEphemeris: AzimuthElevationEphemeris;
@@ -102,21 +107,24 @@ export class DailyCyclesService {
     const previousMinute = minute.clone().subtract(1, "minute");
     const nextMinute = minute.clone().add(1, "minute");
 
-    const currentElevation = this.ephemerisService.getAzimuthElevationFromEphemeris(
-      sunAzimuthElevationEphemeris,
-      minute.toISOString(),
-      "elevation",
-    );
-    const previousElevation = this.ephemerisService.getAzimuthElevationFromEphemeris(
-      sunAzimuthElevationEphemeris,
-      previousMinute.toISOString(),
-      "elevation",
-    );
-    const nextElevation = this.ephemerisService.getAzimuthElevationFromEphemeris(
-      sunAzimuthElevationEphemeris,
-      nextMinute.toISOString(),
-      "elevation",
-    );
+    const currentElevation =
+      this.ephemerisService.getAzimuthElevationFromEphemeris(
+        sunAzimuthElevationEphemeris,
+        minute.toISOString(),
+        "elevation",
+      );
+    const previousElevation =
+      this.ephemerisService.getAzimuthElevationFromEphemeris(
+        sunAzimuthElevationEphemeris,
+        previousMinute.toISOString(),
+        "elevation",
+      );
+    const nextElevation =
+      this.ephemerisService.getAzimuthElevationFromEphemeris(
+        sunAzimuthElevationEphemeris,
+        nextMinute.toISOString(),
+        "elevation",
+      );
 
     const elevations = {
       currentElevation,
@@ -360,21 +368,24 @@ export class DailyCyclesService {
     const previousMinute = minute.clone().subtract(1, "minute");
     const nextMinute = minute.clone().add(1, "minute");
 
-    const currentElevation = this.ephemerisService.getAzimuthElevationFromEphemeris(
-      moonAzimuthElevationEphemeris,
-      minute.toISOString(),
-      "elevation",
-    );
-    const previousElevation = this.ephemerisService.getAzimuthElevationFromEphemeris(
-      moonAzimuthElevationEphemeris,
-      previousMinute.toISOString(),
-      "elevation",
-    );
-    const nextElevation = this.ephemerisService.getAzimuthElevationFromEphemeris(
-      moonAzimuthElevationEphemeris,
-      nextMinute.toISOString(),
-      "elevation",
-    );
+    const currentElevation =
+      this.ephemerisService.getAzimuthElevationFromEphemeris(
+        moonAzimuthElevationEphemeris,
+        minute.toISOString(),
+        "elevation",
+      );
+    const previousElevation =
+      this.ephemerisService.getAzimuthElevationFromEphemeris(
+        moonAzimuthElevationEphemeris,
+        previousMinute.toISOString(),
+        "elevation",
+      );
+    const nextElevation =
+      this.ephemerisService.getAzimuthElevationFromEphemeris(
+        moonAzimuthElevationEphemeris,
+        nextMinute.toISOString(),
+        "elevation",
+      );
 
     const elevations = {
       currentElevation,

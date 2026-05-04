@@ -1,14 +1,12 @@
+import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import moment from "moment-timezone";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import {
-    TwilightsService,
-} from "./twilights.service";
-import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
+import { TwilightsService } from "./twilights.service";
 
+import type { Twilight } from "./twilights.service";
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type { AzimuthElevationEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
-import type { Twilight } from "./twilights.service";
 
 // Mock dependencies
 vi.mock("fs", () => ({
@@ -421,7 +419,11 @@ describe("twilights.events", () => {
 
     describe("constants", () => {
       it("should have correct twilight types", () => {
-        expect(TwilightsService.twilights).toEqual(["civil", "nautical", "astronomical"]);
+        expect(TwilightsService.twilights).toEqual([
+          "civil",
+          "nautical",
+          "astronomical",
+        ]);
       });
 
       it("should have correct degrees for each twilight type", () => {

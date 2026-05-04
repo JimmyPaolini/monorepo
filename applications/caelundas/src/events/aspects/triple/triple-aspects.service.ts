@@ -16,7 +16,11 @@ import type { Moment } from "moment-timezone";
 // #region Progressive Events
 
 /**
+ * Composes 3-body aspect patterns from the active 2-body aspect registry.
  *
+ * Detects T-Square (opposition + two squares) and Grand Trine (three trines) configurations
+ * by examining combinations of active 2-body aspects among the bodies tracked by
+ * {@link tripleAspectBodies}.
  */
 @Injectable()
 export class TripleAspectsService {
@@ -64,8 +68,16 @@ export class TripleAspectsService {
       const body2 = opposition.bodies[1];
 
       // Find bodies that are square to both opposition bodies
-      const squaresToBody1 = TripleAspectsService.findBodiesWithAspectTo(body1, "square", squares);
-      const squaresToBody2 = TripleAspectsService.findBodiesWithAspectTo(body2, "square", squares);
+      const squaresToBody1 = TripleAspectsService.findBodiesWithAspectTo(
+        body1,
+        "square",
+        squares,
+      );
+      const squaresToBody2 = TripleAspectsService.findBodiesWithAspectTo(
+        body2,
+        "square",
+        squares,
+      );
 
       // Find common bodies (focal point of T-Square)
       const focalBodies = _.intersection(squaresToBody1, squaresToBody2);
@@ -73,23 +85,54 @@ export class TripleAspectsService {
       for (const focalBody of focalBodies) {
         // Verify all three aspects exist
         if (
-          TripleAspectsService.haveAspect(body1, body2, "opposite", unionEdges) &&
-          TripleAspectsService.haveAspect(body1, focalBody, "square", unionEdges) &&
-          TripleAspectsService.haveAspect(body2, focalBody, "square", unionEdges)
+          TripleAspectsService.haveAspect(
+            body1,
+            body2,
+            "opposite",
+            unionEdges,
+          ) &&
+          TripleAspectsService.haveAspect(
+            body1,
+            focalBody,
+            "square",
+            unionEdges,
+          ) &&
+          TripleAspectsService.haveAspect(
+            body2,
+            focalBody,
+            "square",
+            unionEdges,
+          )
         ) {
-          const result = TripleAspectsService.determineCompoundPhaseFromSnapshots(
-            currentAspectBodies,
-            previousAspectBodies,
-            [body1, body2, focalBody],
-            minute,
-            (edges) => {
-              return (
-                TripleAspectsService.haveAspect(body1, body2, "opposite", edges) &&
-                TripleAspectsService.haveAspect(body1, focalBody, "square", edges) &&
-                TripleAspectsService.haveAspect(body2, focalBody, "square", edges)
-              );
-            },
-          );
+          const result =
+            TripleAspectsService.determineCompoundPhaseFromSnapshots(
+              currentAspectBodies,
+              previousAspectBodies,
+              [body1, body2, focalBody],
+              minute,
+              (edges) => {
+                return (
+                  TripleAspectsService.haveAspect(
+                    body1,
+                    body2,
+                    "opposite",
+                    edges,
+                  ) &&
+                  TripleAspectsService.haveAspect(
+                    body1,
+                    focalBody,
+                    "square",
+                    edges,
+                  ) &&
+                  TripleAspectsService.haveAspect(
+                    body2,
+                    focalBody,
+                    "square",
+                    edges,
+                  )
+                );
+              },
+            );
 
           if (result) {
             events.push(
@@ -171,23 +214,54 @@ export class TripleAspectsService {
 
       for (const apexBody of apexBodies) {
         if (
-          TripleAspectsService.haveAspect(body1, body2, "sextile", unionEdges) &&
-          TripleAspectsService.haveAspect(body1, apexBody, "quincunx", unionEdges) &&
-          TripleAspectsService.haveAspect(body2, apexBody, "quincunx", unionEdges)
+          TripleAspectsService.haveAspect(
+            body1,
+            body2,
+            "sextile",
+            unionEdges,
+          ) &&
+          TripleAspectsService.haveAspect(
+            body1,
+            apexBody,
+            "quincunx",
+            unionEdges,
+          ) &&
+          TripleAspectsService.haveAspect(
+            body2,
+            apexBody,
+            "quincunx",
+            unionEdges,
+          )
         ) {
-          const result = TripleAspectsService.determineCompoundPhaseFromSnapshots(
-            currentAspectBodies,
-            previousAspectBodies,
-            [body1, body2, apexBody],
-            minute,
-            (edges) => {
-              return (
-                TripleAspectsService.haveAspect(body1, body2, "sextile", edges) &&
-                TripleAspectsService.haveAspect(body1, apexBody, "quincunx", edges) &&
-                TripleAspectsService.haveAspect(body2, apexBody, "quincunx", edges)
-              );
-            },
-          );
+          const result =
+            TripleAspectsService.determineCompoundPhaseFromSnapshots(
+              currentAspectBodies,
+              previousAspectBodies,
+              [body1, body2, apexBody],
+              minute,
+              (edges) => {
+                return (
+                  TripleAspectsService.haveAspect(
+                    body1,
+                    body2,
+                    "sextile",
+                    edges,
+                  ) &&
+                  TripleAspectsService.haveAspect(
+                    body1,
+                    apexBody,
+                    "quincunx",
+                    edges,
+                  ) &&
+                  TripleAspectsService.haveAspect(
+                    body2,
+                    apexBody,
+                    "quincunx",
+                    edges,
+                  )
+                );
+              },
+            );
 
           if (result) {
             events.push(
@@ -273,19 +347,35 @@ export class TripleAspectsService {
             TripleAspectsService.haveAspect(body1, body3, "trine", trines) &&
             TripleAspectsService.haveAspect(body2, body3, "trine", trines)
           ) {
-            const result = TripleAspectsService.determineCompoundPhaseFromSnapshots(
-              currentAspectBodies,
-              previousAspectBodies,
-              [body1, body2, body3],
-              minute,
-              (edges) => {
-                return (
-                  TripleAspectsService.haveAspect(body1, body2, "trine", edges) &&
-                  TripleAspectsService.haveAspect(body1, body3, "trine", edges) &&
-                  TripleAspectsService.haveAspect(body2, body3, "trine", edges)
-                );
-              },
-            );
+            const result =
+              TripleAspectsService.determineCompoundPhaseFromSnapshots(
+                currentAspectBodies,
+                previousAspectBodies,
+                [body1, body2, body3],
+                minute,
+                (edges) => {
+                  return (
+                    TripleAspectsService.haveAspect(
+                      body1,
+                      body2,
+                      "trine",
+                      edges,
+                    ) &&
+                    TripleAspectsService.haveAspect(
+                      body1,
+                      body3,
+                      "trine",
+                      edges,
+                    ) &&
+                    TripleAspectsService.haveAspect(
+                      body2,
+                      body3,
+                      "trine",
+                      edges,
+                    )
+                  );
+                },
+              );
 
             if (result) {
               events.push(
@@ -592,6 +682,9 @@ export class TripleAspectsService {
     return null;
   }
 
+  /**
+   *
+   */
   static groupAspectsByType<T extends AspectBodies>(
     edges: T[],
   ): Map<Aspect, T[]> {
@@ -599,6 +692,9 @@ export class TripleAspectsService {
     return new Map(Object.entries(grouped)) as Map<Aspect, T[]>;
   }
 
+  /**
+   *
+   */
   static findBodiesWithAspectTo(
     body: Body,
     aspectType: Aspect,
@@ -614,6 +710,9 @@ export class TripleAspectsService {
       .filter((b): b is Body => b !== null);
   }
 
+  /**
+   *
+   */
   static haveAspect(
     body1: Body,
     body2: Body,
@@ -637,9 +736,7 @@ export class TripleAspectsService {
   ): { phase: AspectPhase; eventMinute: Moment } | null {
     const bodySet = new Set(patternBodies);
     const filterByBodies = (edges: AspectBodies[]): AspectBodies[] =>
-      edges.filter(
-        (e) => bodySet.has(e.bodies[0]) && bodySet.has(e.bodies[1]),
-      );
+      edges.filter((e) => bodySet.has(e.bodies[0]) && bodySet.has(e.bodies[1]));
 
     const currentFiltered = filterByBodies(currentAspectBodies);
     const previousFiltered = filterByBodies(previousAspectBodies);

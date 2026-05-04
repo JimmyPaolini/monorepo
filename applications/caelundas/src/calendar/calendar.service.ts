@@ -1,9 +1,8 @@
 import { writeFile } from "node:fs/promises";
 
+import { getOutputPath } from "@caelundas/src/output.utilities";
 import { Injectable } from "@nestjs/common";
 import moment from "moment-timezone";
-
-import { getOutputPath } from "@caelundas/src/output.utilities";
 
 import type {
   BuildCalendarFileContentParameters,
@@ -11,8 +10,14 @@ import type {
 } from "./calendar.types";
 import type { Input } from "@caelundas/src/input.schema";
 
+/**
+ *
+ */
 @Injectable()
 export class CalendarService {
+  /**
+   *
+   */
   async write(events: Event[], input: Input): Promise<void> {
     const timespan = `${input.start.toISOString(true)} to ${input.end.toISOString(true)}`;
     const calendarFilename = `caelundas_${timespan}.ics`;

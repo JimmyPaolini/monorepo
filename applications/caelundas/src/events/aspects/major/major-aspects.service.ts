@@ -6,17 +6,18 @@
  * Major aspects are the most significant angular relationships in astrology and use
  * an 8° orb tolerance for detection.
  */
-import { Injectable } from "@nestjs/common";
-import _ from "lodash";
 
 import { majorAspects } from "@caelundas/src/constants";
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import { pairProgressiveEvents } from "@caelundas/src/progressive.utilities";
 import { symbolByBody, symbolByMajorAspect } from "@caelundas/src/symbols";
 import { majorAspectBodies } from "@caelundas/src/types";
+import { Injectable } from "@nestjs/common";
+import _ from "lodash";
 
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
+import type { AspectsUtilitiesService } from "@caelundas/src/events/aspects/aspects.utilities";
 import type {
   AspectPhase,
   Body,
@@ -24,11 +25,15 @@ import type {
   MajorAspect,
   MajorAspectSymbol,
 } from "@caelundas/src/types";
-import type { AspectsUtilitiesService } from "@caelundas/src/events/aspects/aspects.utilities";
 import type { Moment } from "moment-timezone";
 
 /**
+ * Detects and formats major aspect events between celestial bodies.
  *
+ * Covers conjunction (0°), sextile (60°), square (90°), trine (120°), and opposition (180°)
+ * using an 8° orb tolerance. Includes progressive event pairing for duration-aware tracking.
+ *
+ * @see {@link AspectsUtilitiesService} for orb and angle configuration
  */
 @Injectable()
 export class MajorAspectsService {
@@ -140,35 +145,25 @@ export class MajorAspectsService {
         const ephemerisBody1 = coordinateEphemerisByBody[body1];
         const ephemerisBody2 = coordinateEphemerisByBody[body2];
 
-        const currentLongitudeBody1 = this.ephemerisService.getCoordinateFromEphemeris(
+        const {
+          previous: previousLongitudeBody1,
+          current: currentLongitudeBody1,
+          next: nextLongitudeBody1,
+        } = this.ephemerisService.getLongitudesWindow(
           ephemerisBody1,
-          minute.toISOString(),
-          "longitude",
+          previousMinute,
+          minute,
+          nextMinute,
         );
-        const currentLongitudeBody2 = this.ephemerisService.getCoordinateFromEphemeris(
+        const {
+          previous: previousLongitudeBody2,
+          current: currentLongitudeBody2,
+          next: nextLongitudeBody2,
+        } = this.ephemerisService.getLongitudesWindow(
           ephemerisBody2,
-          minute.toISOString(),
-          "longitude",
-        );
-        const previousLongitudeBody1 = this.ephemerisService.getCoordinateFromEphemeris(
-          ephemerisBody1,
-          previousMinute.toISOString(),
-          "longitude",
-        );
-        const previousLongitudeBody2 = this.ephemerisService.getCoordinateFromEphemeris(
-          ephemerisBody2,
-          previousMinute.toISOString(),
-          "longitude",
-        );
-        const nextLongitudeBody1 = this.ephemerisService.getCoordinateFromEphemeris(
-          ephemerisBody1,
-          nextMinute.toISOString(),
-          "longitude",
-        );
-        const nextLongitudeBody2 = this.ephemerisService.getCoordinateFromEphemeris(
-          ephemerisBody2,
-          nextMinute.toISOString(),
-          "longitude",
+          previousMinute,
+          minute,
+          nextMinute,
         );
 
         const phase = this.detectAspectPhase({

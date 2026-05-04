@@ -1,21 +1,20 @@
+import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
+import {
+  symbolByMartianPhase,
+  symbolByMercurianPhase,
+  symbolByVenusianPhase,
+} from "@caelundas/src/symbols";
+import { planetaryPhaseBodies } from "@caelundas/src/types";
 import moment, { type Moment } from "moment-timezone";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-import {
-    symbolByMartianPhase,
-    symbolByMercurianPhase,
-    symbolByVenusianPhase,
-} from "@caelundas/src/symbols";
-import { planetaryPhaseBodies } from "@caelundas/src/types";
-
 import { PhasesService } from "./phases.service";
-import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type {
-    CoordinateEphemeris,
-    DistanceEphemeris,
-    IlluminationEphemeris,
+  CoordinateEphemeris,
+  DistanceEphemeris,
+  IlluminationEphemeris,
 } from "@caelundas/src/ephemeris/ephemeris.types";
 import type { Body } from "@caelundas/src/types";
 

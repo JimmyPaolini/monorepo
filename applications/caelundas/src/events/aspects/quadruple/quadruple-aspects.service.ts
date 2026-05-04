@@ -1,17 +1,16 @@
+import { symbolByBody, symbolByQuadrupleAspect } from "@caelundas/src/symbols";
+import { quadrupleAspectBodies } from "@caelundas/src/types";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
-import { symbolByBody, symbolByQuadrupleAspect } from "@caelundas/src/symbols";
-import { quadrupleAspectBodies } from "@caelundas/src/types";
-
 import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
 import type {
   Aspect,
   AspectPhase,
   Body,
   QuadrupleAspect,
 } from "@caelundas/src/types";
-import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
 import type { Moment } from "moment-timezone";
 
 function groupAspectsByType<T extends AspectBodies>(
@@ -21,10 +20,16 @@ function groupAspectsByType<T extends AspectBodies>(
   return new Map(Object.entries(grouped)) as Map<Aspect, T[]>;
 }
 
+/**
+ *
+ */
 export function involvesBody(edge: AspectBodies, body: Body): boolean {
   return edge.bodies[0] === body || edge.bodies[1] === body;
 }
 
+/**
+ *
+ */
 export function getOtherBody(edge: AspectBodies, body: Body): Body | null {
   if (edge.bodies[0] === body) {
     return edge.bodies[1];

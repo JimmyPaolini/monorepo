@@ -1,37 +1,35 @@
+import {
+  type Event,
+  MARGIN_MINUTES,
+} from "@caelundas/src/calendar/calendar.types";
+import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
+import { TwilightsService } from "@caelundas/src/events/twilights/twilights.service";
+import { getAngle, isMaximum } from "@caelundas/src/math.utilities";
+import { pairProgressiveEvents } from "@caelundas/src/progressive.utilities";
+import {
+  symbolByMartianPhase,
+  symbolByMercurianPhase,
+  symbolByVenusianPhase,
+} from "@caelundas/src/symbols";
+import { planetaryPhaseBodies } from "@caelundas/src/types";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
-import {
-    type Event,
-    MARGIN_MINUTES,
-} from "@caelundas/src/calendar/calendar.types";
-import { getAngle, isMaximum } from "@caelundas/src/math.utilities";
-import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
-import { pairProgressiveEvents } from "@caelundas/src/progressive.utilities";
-import { TwilightsService } from "@caelundas/src/events/twilights/twilights.service";
-import {
-    symbolByMartianPhase,
-    symbolByMercurianPhase,
-    symbolByVenusianPhase,
-} from "@caelundas/src/symbols";
-import { planetaryPhaseBodies } from "@caelundas/src/types";
-
 import type {
-    CoordinateEphemeris,
-    CoordinateEphemerisBody,
-    DistanceEphemeris,
-    DistanceEphemerisBody,
-    IlluminationEphemeris,
-    IlluminationEphemerisBody,
+  CoordinateEphemeris,
+  CoordinateEphemerisBody,
+  DistanceEphemeris,
+  DistanceEphemerisBody,
+  IlluminationEphemeris,
+  IlluminationEphemerisBody,
 } from "@caelundas/src/ephemeris/ephemeris.types";
 import type {
-    MartianPhase,
-    MercurianPhase,
-    VenusianPhase,
-    VenusianPhaseSymbol,
+  MartianPhase,
+  MercurianPhase,
+  VenusianPhase,
+  VenusianPhaseSymbol,
 } from "@caelundas/src/types";
 import type { Moment } from "moment-timezone";
-
 
 // #region ♀️ Venus
 
@@ -47,9 +45,16 @@ import type { Moment } from "moment-timezone";
 
 // Mars progressive event creators
 
+/**
+ *
+ */
 @Injectable()
 export class PhasesService {
-  private static readonly categories = ["Astronomy", "Astrology", "Planetary Phase"];
+  private static readonly categories = [
+    "Astronomy",
+    "Astrology",
+    "Planetary Phase",
+  ];
 
   constructor(private readonly ephemerisService: EphemerisService) {}
 
@@ -219,37 +224,42 @@ export class PhasesService {
     const previousMinute = minute.clone().subtract(1, "minute");
     const nextMinute = minute.clone().add(1, "minute");
 
-    const currentLongitudePlanet = this.ephemerisService.getCoordinateFromEphemeris(
-      venusCoordinateEphemeris,
-      minute.toISOString(),
-      "longitude",
-    );
-    const currentLongitudeSun = this.ephemerisService.getCoordinateFromEphemeris(
-      sunCoordinateEphemeris,
-      minute.toISOString(),
-      "longitude",
-    );
-    const currentIllumination = this.ephemerisService.getIlluminationFromEphemeris(
-      venusIlluminationEphemeris,
-      minute.toISOString(),
-      "currentIllumination",
-    );
+    const currentLongitudePlanet =
+      this.ephemerisService.getCoordinateFromEphemeris(
+        venusCoordinateEphemeris,
+        minute.toISOString(),
+        "longitude",
+      );
+    const currentLongitudeSun =
+      this.ephemerisService.getCoordinateFromEphemeris(
+        sunCoordinateEphemeris,
+        minute.toISOString(),
+        "longitude",
+      );
+    const currentIllumination =
+      this.ephemerisService.getIlluminationFromEphemeris(
+        venusIlluminationEphemeris,
+        minute.toISOString(),
+        "currentIllumination",
+      );
     const currentDistance = this.ephemerisService.getDistanceFromEphemeris(
       venusDistanceEphemeris,
       minute.toISOString(),
       "currentDistance",
     );
 
-    const previousLongitudePlanet = this.ephemerisService.getCoordinateFromEphemeris(
-      venusCoordinateEphemeris,
-      previousMinute.toISOString(),
-      "longitude",
-    );
-    const previousLongitudeSun = this.ephemerisService.getCoordinateFromEphemeris(
-      sunCoordinateEphemeris,
-      previousMinute.toISOString(),
-      "longitude",
-    );
+    const previousLongitudePlanet =
+      this.ephemerisService.getCoordinateFromEphemeris(
+        venusCoordinateEphemeris,
+        previousMinute.toISOString(),
+        "longitude",
+      );
+    const previousLongitudeSun =
+      this.ephemerisService.getCoordinateFromEphemeris(
+        sunCoordinateEphemeris,
+        previousMinute.toISOString(),
+        "longitude",
+      );
 
     const previousDistances = Array.from(
       { length: MARGIN_MINUTES },
@@ -278,11 +288,12 @@ export class PhasesService {
       },
     );
 
-    const nextLongitudePlanet = this.ephemerisService.getCoordinateFromEphemeris(
-      venusCoordinateEphemeris,
-      nextMinute.toISOString(),
-      "longitude",
-    );
+    const nextLongitudePlanet =
+      this.ephemerisService.getCoordinateFromEphemeris(
+        venusCoordinateEphemeris,
+        nextMinute.toISOString(),
+        "longitude",
+      );
     const nextLongitudeSun = this.ephemerisService.getCoordinateFromEphemeris(
       sunCoordinateEphemeris,
       nextMinute.toISOString(),
@@ -483,37 +494,42 @@ export class PhasesService {
     const previousMinute = minute.clone().subtract(1, "minute");
     const nextMinute = minute.clone().add(1, "minute");
 
-    const currentLongitudePlanet = this.ephemerisService.getCoordinateFromEphemeris(
-      mercuryCoordinateEphemeris,
-      minute.toISOString(),
-      "longitude",
-    );
-    const currentLongitudeSun = this.ephemerisService.getCoordinateFromEphemeris(
-      sunCoordinateEphemeris,
-      minute.toISOString(),
-      "longitude",
-    );
-    const currentIllumination = this.ephemerisService.getIlluminationFromEphemeris(
-      mercuryIlluminationEphemeris,
-      minute.toISOString(),
-      "currentIllumination",
-    );
+    const currentLongitudePlanet =
+      this.ephemerisService.getCoordinateFromEphemeris(
+        mercuryCoordinateEphemeris,
+        minute.toISOString(),
+        "longitude",
+      );
+    const currentLongitudeSun =
+      this.ephemerisService.getCoordinateFromEphemeris(
+        sunCoordinateEphemeris,
+        minute.toISOString(),
+        "longitude",
+      );
+    const currentIllumination =
+      this.ephemerisService.getIlluminationFromEphemeris(
+        mercuryIlluminationEphemeris,
+        minute.toISOString(),
+        "currentIllumination",
+      );
     const currentDistance = this.ephemerisService.getDistanceFromEphemeris(
       mercuryDistanceEphemeris,
       minute.toISOString(),
       "currentDistance",
     );
 
-    const previousLongitudePlanet = this.ephemerisService.getCoordinateFromEphemeris(
-      mercuryCoordinateEphemeris,
-      previousMinute.toISOString(),
-      "longitude",
-    );
-    const previousLongitudeSun = this.ephemerisService.getCoordinateFromEphemeris(
-      sunCoordinateEphemeris,
-      previousMinute.toISOString(),
-      "longitude",
-    );
+    const previousLongitudePlanet =
+      this.ephemerisService.getCoordinateFromEphemeris(
+        mercuryCoordinateEphemeris,
+        previousMinute.toISOString(),
+        "longitude",
+      );
+    const previousLongitudeSun =
+      this.ephemerisService.getCoordinateFromEphemeris(
+        sunCoordinateEphemeris,
+        previousMinute.toISOString(),
+        "longitude",
+      );
     const previousDistances = Array.from(
       { length: MARGIN_MINUTES },
       (_, marginIndex) => {
@@ -541,11 +557,12 @@ export class PhasesService {
       },
     );
 
-    const nextLongitudePlanet = this.ephemerisService.getCoordinateFromEphemeris(
-      mercuryCoordinateEphemeris,
-      nextMinute.toISOString(),
-      "longitude",
-    );
+    const nextLongitudePlanet =
+      this.ephemerisService.getCoordinateFromEphemeris(
+        mercuryCoordinateEphemeris,
+        nextMinute.toISOString(),
+        "longitude",
+      );
     const nextLongitudeSun = this.ephemerisService.getCoordinateFromEphemeris(
       sunCoordinateEphemeris,
       nextMinute.toISOString(),
@@ -745,37 +762,42 @@ export class PhasesService {
     const previousMinute = minute.clone().subtract(1, "minute");
     const nextMinute = minute.clone().add(1, "minute");
 
-    const currentLongitudePlanet = this.ephemerisService.getCoordinateFromEphemeris(
-      marsCoordinateEphemeris,
-      minute.toISOString(),
-      "longitude",
-    );
-    const currentLongitudeSun = this.ephemerisService.getCoordinateFromEphemeris(
-      sunCoordinateEphemeris,
-      minute.toISOString(),
-      "longitude",
-    );
-    const currentIllumination = this.ephemerisService.getIlluminationFromEphemeris(
-      marsIlluminationEphemeris,
-      minute.toISOString(),
-      "currentIllumination",
-    );
+    const currentLongitudePlanet =
+      this.ephemerisService.getCoordinateFromEphemeris(
+        marsCoordinateEphemeris,
+        minute.toISOString(),
+        "longitude",
+      );
+    const currentLongitudeSun =
+      this.ephemerisService.getCoordinateFromEphemeris(
+        sunCoordinateEphemeris,
+        minute.toISOString(),
+        "longitude",
+      );
+    const currentIllumination =
+      this.ephemerisService.getIlluminationFromEphemeris(
+        marsIlluminationEphemeris,
+        minute.toISOString(),
+        "currentIllumination",
+      );
     const currentDistance = this.ephemerisService.getDistanceFromEphemeris(
       marsDistanceEphemeris,
       minute.toISOString(),
       "currentDistance",
     );
 
-    const previousLongitudePlanet = this.ephemerisService.getCoordinateFromEphemeris(
-      marsCoordinateEphemeris,
-      previousMinute.toISOString(),
-      "longitude",
-    );
-    const previousLongitudeSun = this.ephemerisService.getCoordinateFromEphemeris(
-      sunCoordinateEphemeris,
-      previousMinute.toISOString(),
-      "longitude",
-    );
+    const previousLongitudePlanet =
+      this.ephemerisService.getCoordinateFromEphemeris(
+        marsCoordinateEphemeris,
+        previousMinute.toISOString(),
+        "longitude",
+      );
+    const previousLongitudeSun =
+      this.ephemerisService.getCoordinateFromEphemeris(
+        sunCoordinateEphemeris,
+        previousMinute.toISOString(),
+        "longitude",
+      );
     const previousDistances = Array.from(
       { length: MARGIN_MINUTES },
       (_, marginIndex) => {
@@ -803,11 +825,12 @@ export class PhasesService {
       },
     );
 
-    const nextLongitudePlanet = this.ephemerisService.getCoordinateFromEphemeris(
-      marsCoordinateEphemeris,
-      nextMinute.toISOString(),
-      "longitude",
-    );
+    const nextLongitudePlanet =
+      this.ephemerisService.getCoordinateFromEphemeris(
+        marsCoordinateEphemeris,
+        nextMinute.toISOString(),
+        "longitude",
+      );
     const nextLongitudeSun = this.ephemerisService.getCoordinateFromEphemeris(
       sunCoordinateEphemeris,
       nextMinute.toISOString(),
@@ -1077,7 +1100,11 @@ export class PhasesService {
       end: ending.start,
       summary: "♀️ 🌄 Venus Morning Star",
       description: "Venus Morning Star (Morning Visibility)",
-      categories: [...PhasesService.categories, "Venusian", "Morning Visibility"],
+      categories: [
+        ...PhasesService.categories,
+        "Venusian",
+        "Morning Visibility",
+      ],
     };
   }
 
@@ -1090,7 +1117,11 @@ export class PhasesService {
       end: ending.start,
       summary: "♀️ 🌇 Venus Evening Star",
       description: "Venus Evening Star (Evening Visibility)",
-      categories: [...PhasesService.categories, "Venusian", "Evening Visibility"],
+      categories: [
+        ...PhasesService.categories,
+        "Venusian",
+        "Evening Visibility",
+      ],
     };
   }
 
@@ -1103,7 +1134,11 @@ export class PhasesService {
       end: ending.start,
       summary: "☿ 🌄 Mercury Morning Star",
       description: "Mercury Morning Star (Morning Visibility)",
-      categories: [...PhasesService.categories, "Mercurian", "Morning Visibility"],
+      categories: [
+        ...PhasesService.categories,
+        "Mercurian",
+        "Morning Visibility",
+      ],
     };
   }
 
@@ -1116,7 +1151,11 @@ export class PhasesService {
       end: ending.start,
       summary: "☿ 🌇 Mercury Evening Star",
       description: "Mercury Evening Star (Evening Visibility)",
-      categories: [...PhasesService.categories, "Mercurian", "Evening Visibility"],
+      categories: [
+        ...PhasesService.categories,
+        "Mercurian",
+        "Evening Visibility",
+      ],
     };
   }
 
@@ -1129,7 +1168,11 @@ export class PhasesService {
       end: ending.start,
       summary: "♂️ 🌄 Mars Morning Star",
       description: "Mars Morning Star (Morning Visibility)",
-      categories: [...PhasesService.categories, "Martian", "Morning Visibility"],
+      categories: [
+        ...PhasesService.categories,
+        "Martian",
+        "Morning Visibility",
+      ],
     };
   }
 
@@ -1142,7 +1185,11 @@ export class PhasesService {
       end: ending.start,
       summary: "♂️ 🌇 Mars Evening Star",
       description: "Mars Evening Star (Evening Visibility)",
-      categories: [...PhasesService.categories, "Martian", "Evening Visibility"],
+      categories: [
+        ...PhasesService.categories,
+        "Martian",
+        "Evening Visibility",
+      ],
     };
   }
 
@@ -1336,7 +1383,7 @@ export class PhasesService {
 
   // #region Rise/Set helpers
 
-  private readonly RISE_SET_THRESHOLD = TwilightsService.degreesByTwilight.civil;
+  private readonly riseSetThreshold = TwilightsService.degreesByTwilight.civil;
 
   private isRise(args: {
     currentLongitudePlanet: number;
@@ -1358,8 +1405,8 @@ export class PhasesService {
     const currentAngle = getAngle(currentLongitudePlanet, currentLongitudeSun);
 
     return (
-      previousAngle < this.RISE_SET_THRESHOLD &&
-      currentAngle >= this.RISE_SET_THRESHOLD
+      previousAngle < this.riseSetThreshold &&
+      currentAngle >= this.riseSetThreshold
     );
   }
 
@@ -1383,8 +1430,8 @@ export class PhasesService {
     const currentAngle = getAngle(currentLongitudePlanet, currentLongitudeSun);
 
     return (
-      previousAngle > this.RISE_SET_THRESHOLD &&
-      currentAngle <= this.RISE_SET_THRESHOLD
+      previousAngle > this.riseSetThreshold &&
+      currentAngle <= this.riseSetThreshold
     );
   }
 

@@ -1,5 +1,3 @@
-import { Injectable } from "@nestjs/common";
-
 /**
  * Monthly lunar cycle event detection for Moon phases.
  *
@@ -9,12 +7,12 @@ import { Injectable } from "@nestjs/common";
  * illumination percentage from NASA JPL ephemeris data.
  */
 
-import _ from "lodash";
-
 import { MARGIN_MINUTES } from "@caelundas/src/calendar/calendar.types";
 import { lunarPhases } from "@caelundas/src/constants";
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import { symbolByLunarPhase } from "@caelundas/src/symbols";
+import { Injectable } from "@nestjs/common";
+import _ from "lodash";
 
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type { IlluminationEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
@@ -23,6 +21,9 @@ import type { Moment } from "moment-timezone";
 
 // #region 🕑 Progressive Events
 
+/**
+ *
+ */
 @Injectable()
 export class MonthlyLunarCycleService {
   static readonly illuminationByPhase: Record<LunarPhase, number> = {
@@ -82,11 +83,12 @@ export class MonthlyLunarCycleService {
 
     const monthlyLunarCycleEvents: Event[] = [];
 
-    const currentIllumination = this.ephemerisService.getIlluminationFromEphemeris(
-      moonIlluminationEphemeris,
-      minute.toISOString(),
-      "currentIllumination",
-    );
+    const currentIllumination =
+      this.ephemerisService.getIlluminationFromEphemeris(
+        moonIlluminationEphemeris,
+        minute.toISOString(),
+        "currentIllumination",
+      );
 
     const previousIlluminations = Array.from(
       { length: MARGIN_MINUTES },
@@ -386,7 +388,8 @@ export class MonthlyLunarCycleService {
       return false;
     }
 
-    const illumination = MonthlyLunarCycleService.illuminationByPhase[lunarPhase] * 100;
+    const illumination =
+      MonthlyLunarCycleService.illuminationByPhase[lunarPhase] * 100;
 
     const isWaxing = currentIllumination > previousIllumination;
     const isWaning = currentIllumination < previousIllumination;

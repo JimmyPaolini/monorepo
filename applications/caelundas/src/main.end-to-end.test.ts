@@ -33,7 +33,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
   });
 
   describe("ICS file generation", () => {
-    it("should generate valid ICS file structure", async () => {
+    it("should generate valid ICS file structure", () => {
       const getCalendar =
         calendarService.buildFileContent.bind(calendarService);
 
@@ -97,7 +97,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
       expect(veventCount).toBe(2);
     });
 
-    it("should include timezone definitions", async () => {
+    it("should include timezone definitions", () => {
       const getCalendar =
         calendarService.buildFileContent.bind(calendarService);
 
@@ -127,7 +127,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
       expect(calendar).toContain("END:STANDARD");
     });
 
-    it("should handle events with all optional fields", async () => {
+    it("should handle events with all optional fields", () => {
       const getCalendar =
         calendarService.buildFileContent.bind(calendarService);
 
@@ -214,7 +214,8 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
   describe("event detection e2e", () => {
     it("should correctly identify zodiac signs from longitude", async () => {
       // biome-ignore format: oxfmt is the primary formatter
-      const { IngressesService } = await import("./events/ingresses/ingresses.service");
+      const { IngressesService } =
+        await import("./events/ingresses/ingresses.service");
 
       // Test all 12 signs at their starting degrees
       expect(IngressesService.getSign(0)).toBe("aries");
@@ -238,7 +239,10 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
         await import("./events/aspects/aspects.utilities");
       const { EphemerisService } =
         await import("./ephemeris/ephemeris.service");
-      const service = new MajorAspectsService(new AspectsUtilitiesService(), new EphemerisService());
+      const service = new MajorAspectsService(
+        new AspectsUtilitiesService(),
+        new EphemerisService(),
+      );
 
       // Test exact aspects
       expect(

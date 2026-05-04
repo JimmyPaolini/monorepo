@@ -1,15 +1,14 @@
-import _ from "lodash";
-
 import { minorAspects } from "@caelundas/src/constants";
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import { pairProgressiveEvents } from "@caelundas/src/progressive.utilities";
 import { symbolByBody, symbolByMinorAspect } from "@caelundas/src/symbols";
 import { minorAspectBodies } from "@caelundas/src/types";
-import { type AspectsUtilitiesService } from "@caelundas/src/events/aspects/aspects.utilities";
 import { Injectable } from "@nestjs/common";
+import _ from "lodash";
 
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
+import type { AspectsUtilitiesService } from "@caelundas/src/events/aspects/aspects.utilities";
 import type {
   AspectPhase,
   Body,
@@ -20,7 +19,13 @@ import type {
 import type { Moment } from "moment-timezone";
 
 /**
+ * Detects and formats minor aspect events between celestial bodies.
  *
+ * Covers semi-sextile (30°), semi-square (45°), sesquiquadrate (135°), and quincunx (150°)
+ * using smaller orbs than major aspects. Includes progressive event pairing for
+ * duration-aware tracking.
+ *
+ * @see {@link AspectsUtilitiesService} for orb and angle configuration
  */
 @Injectable()
 export class MinorAspectsService {
@@ -118,35 +123,25 @@ export class MinorAspectsService {
         const ephemerisBody1 = coordinateEphemerisByBody[body1];
         const ephemerisBody2 = coordinateEphemerisByBody[body2];
 
-        const currentLongitudeBody1 = this.ephemerisService.getCoordinateFromEphemeris(
+        const {
+          previous: previousLongitudeBody1,
+          current: currentLongitudeBody1,
+          next: nextLongitudeBody1,
+        } = this.ephemerisService.getLongitudesWindow(
           ephemerisBody1,
-          minute.toISOString(),
-          "longitude",
+          previousMinute,
+          minute,
+          nextMinute,
         );
-        const currentLongitudeBody2 = this.ephemerisService.getCoordinateFromEphemeris(
+        const {
+          previous: previousLongitudeBody2,
+          current: currentLongitudeBody2,
+          next: nextLongitudeBody2,
+        } = this.ephemerisService.getLongitudesWindow(
           ephemerisBody2,
-          minute.toISOString(),
-          "longitude",
-        );
-        const previousLongitudeBody1 = this.ephemerisService.getCoordinateFromEphemeris(
-          ephemerisBody1,
-          previousMinute.toISOString(),
-          "longitude",
-        );
-        const previousLongitudeBody2 = this.ephemerisService.getCoordinateFromEphemeris(
-          ephemerisBody2,
-          previousMinute.toISOString(),
-          "longitude",
-        );
-        const nextLongitudeBody1 = this.ephemerisService.getCoordinateFromEphemeris(
-          ephemerisBody1,
-          nextMinute.toISOString(),
-          "longitude",
-        );
-        const nextLongitudeBody2 = this.ephemerisService.getCoordinateFromEphemeris(
-          ephemerisBody2,
-          nextMinute.toISOString(),
-          "longitude",
+          previousMinute,
+          minute,
+          nextMinute,
         );
 
         const phase = this.detectAspectPhase({
@@ -214,8 +209,9 @@ export class MinorAspectsService {
     const body1Capitalized = _.startCase(body1) as Capitalize<Body>;
     const body2Capitalized = _.startCase(body2) as Capitalize<Body>;
 
-    const body1Symbol = symbolByBody[body1] as  const body2Symbol = symbolByBody[body2] as BodySymbol;
-    const minorAspectSymbol = symbolByMinorAspect[minorAspect as MinorAspect];
+    const body1Symbol = symbolByBody[body1] as BodySymbol;
+    const body2Symbol = symbolByBody[body2] as BodySymbol;
+    const minorAspectSymbol = symbolByMinorAspect[minorAspect];
 
     let description: string;
     let phaseEmoji: string;

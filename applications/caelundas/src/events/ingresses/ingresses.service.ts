@@ -1,27 +1,27 @@
-import { Injectable } from "@nestjs/common";
-import _ from "lodash";
-
 import { signs } from "@caelundas/src/constants";
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import {
-    symbolByBody,
-    symbolByDecan,
-    symbolBySign,
+  symbolByBody,
+  symbolByDecan,
+  symbolBySign,
 } from "@caelundas/src/symbols";
 import {
-    decanIngressBodies,
-    peakIngressBodies,
-    signIngressBodies,
+  decanIngressBodies,
+  peakIngressBodies,
+  signIngressBodies,
 } from "@caelundas/src/types";
+import { Injectable } from "@nestjs/common";
+import _ from "lodash";
+
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
 import type {
-    Body,
-    BodySymbol,
-    Decan,
-    DecanSymbol,
-    Sign,
-    SignSymbol,
+  Body,
+  BodySymbol,
+  Decan,
+  DecanSymbol,
+  Sign,
+  SignSymbol,
 } from "@caelundas/src/types";
 import type { Moment } from "moment-timezone";
 
@@ -33,6 +33,9 @@ import type { Moment } from "moment-timezone";
 
 // #region 🕑 Progressive Events
 
+/**
+ *
+ */
 @Injectable()
 export class IngressesService {
   private static readonly categories = ["Astronomy", "Astrology", "Ingress"];
@@ -45,7 +48,10 @@ export class IngressesService {
    * @remarks
    * Tropical zodiac (aligned with seasons, not constellations)
    */
-  static readonly degreeRangeBySign: Record<Sign, { min: number; max: number }> = {
+  static readonly degreeRangeBySign: Record<
+    Sign,
+    { min: number; max: number }
+  > = {
     aries: { min: 0, max: 30 },
     taurus: { min: 30, max: 60 },
     gemini: { min: 60, max: 90 },
@@ -115,11 +121,12 @@ export class IngressesService {
         minute.toISOString(),
         "longitude",
       );
-      const previousLongitude = this.ephemerisService.getCoordinateFromEphemeris(
-        coordinateEphemeris,
-        previousMinute.toISOString(),
-        "longitude",
-      );
+      const previousLongitude =
+        this.ephemerisService.getCoordinateFromEphemeris(
+          coordinateEphemeris,
+          previousMinute.toISOString(),
+          "longitude",
+        );
 
       if (Number.isNaN(currentLongitude) || Number.isNaN(previousLongitude)) {
         continue;
@@ -168,7 +175,11 @@ export class IngressesService {
     const signIngressEvent: Event = {
       start: date,
       end: date,
-      categories: [...IngressesService.categories, bodyCapitalized, signCapitalized],
+      categories: [
+        ...IngressesService.categories,
+        bodyCapitalized,
+        signCapitalized,
+      ],
       description,
       summary,
     };
@@ -208,11 +219,12 @@ export class IngressesService {
         minute.toISOString(),
         "longitude",
       );
-      const previousLongitude = this.ephemerisService.getCoordinateFromEphemeris(
-        coordinateEphemeris,
-        previousMinute.toISOString(),
-        "longitude",
-      );
+      const previousLongitude =
+        this.ephemerisService.getCoordinateFromEphemeris(
+          coordinateEphemeris,
+          previousMinute.toISOString(),
+          "longitude",
+        );
 
       if (Number.isNaN(currentLongitude) || Number.isNaN(previousLongitude)) {
         continue;
@@ -260,7 +272,12 @@ export class IngressesService {
     const decanIngressEvent: Event = {
       start: date,
       end: date,
-      categories: [...IngressesService.categories, "Decan", bodyCapitalized, signCapitalized],
+      categories: [
+        ...IngressesService.categories,
+        "Decan",
+        bodyCapitalized,
+        signCapitalized,
+      ],
       description,
       summary,
     };
@@ -289,11 +306,12 @@ export class IngressesService {
         minute.toISOString(),
         "longitude",
       );
-      const previousLongitude = this.ephemerisService.getCoordinateFromEphemeris(
-        coordinateEphemeris,
-        previousMinute.toISOString(),
-        "longitude",
-      );
+      const previousLongitude =
+        this.ephemerisService.getCoordinateFromEphemeris(
+          coordinateEphemeris,
+          previousMinute.toISOString(),
+          "longitude",
+        );
 
       if (Number.isNaN(currentLongitude) || Number.isNaN(previousLongitude)) {
         continue;
@@ -335,7 +353,12 @@ export class IngressesService {
     const peakIngressEvent: Event = {
       start: date,
       end: date,
-      categories: [...IngressesService.categories, "Peak", bodyCapitalized, signCapitalized],
+      categories: [
+        ...IngressesService.categories,
+        "Peak",
+        bodyCapitalized,
+        signCapitalized,
+      ],
       description,
       summary,
     };
@@ -397,6 +420,9 @@ export class IngressesService {
     return progressiveEvents;
   }
 
+  /**
+   *
+   */
   detect(args: {
     coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
     minute: Moment;
@@ -450,7 +476,10 @@ export class IngressesService {
     currentLongitude: number;
   }): boolean {
     const { currentLongitude, previousLongitude } = args;
-    return IngressesService.getSign(currentLongitude) !== IngressesService.getSign(previousLongitude);
+    return (
+      IngressesService.getSign(currentLongitude) !==
+      IngressesService.getSign(previousLongitude)
+    );
   }
 
   private getDecan(longitude: number): number {
@@ -474,7 +503,8 @@ export class IngressesService {
     const { currentLongitude, previousLongitude } = args;
 
     const previousSign = IngressesService.getSign(previousLongitude);
-    const { min: previousMin } = IngressesService.degreeRangeBySign[previousSign];
+    const { min: previousMin } =
+      IngressesService.degreeRangeBySign[previousSign];
     const previousDifference = previousLongitude - previousMin;
 
     const currentSign = IngressesService.getSign(currentLongitude);

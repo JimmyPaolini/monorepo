@@ -1,5 +1,3 @@
-import { Module } from "@nestjs/common";
-
 import { AnnualSolarCycleModule } from "@caelundas/src/events/annualSolarCycle/annual-solar-cycle.module";
 import { AspectsModule } from "@caelundas/src/events/aspects/aspects.module";
 import { EclipsesModule } from "@caelundas/src/events/eclipses/eclipses.module";
@@ -8,6 +6,8 @@ import { MonthlyLunarCycleModule } from "@caelundas/src/events/monthlyLunarCycle
 import { PhasesModule } from "@caelundas/src/events/phases/phases.module";
 import { RetrogradesModule } from "@caelundas/src/events/retrogrades/retrogrades.module";
 import { TwilightsModule } from "@caelundas/src/events/twilights/twilights.module";
+import { Module } from "@nestjs/common";
+
 import { ProgressiveEventsService } from "./progressive-events.service";
 
 /**

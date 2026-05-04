@@ -1,20 +1,29 @@
-import { Injectable } from "@nestjs/common";
-
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import { arcminutesPerDegree } from "@caelundas/src/math.utilities";
 import { pairProgressiveEvents } from "@caelundas/src/progressive.utilities";
+import { Injectable } from "@nestjs/common";
 
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type { AzimuthElevationEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
 
+/**
+ *
+ */
 export type Twilight = "civil" | "nautical" | "astronomical";
 
 // #region 🕑 Progressive Events
 
+/**
+ *
+ */
 @Injectable()
 export class TwilightsService {
-  static readonly twilights = ["civil", "nautical", "astronomical"] as const satisfies readonly Twilight[];
+  static readonly twilights = [
+    "civil",
+    "nautical",
+    "astronomical",
+  ] as const satisfies readonly Twilight[];
   static readonly sunRadiusDegrees = 16 / arcminutesPerDegree;
   static readonly degreesByTwilight: Record<Twilight, number> = {
     civil: 6,
@@ -57,16 +66,18 @@ export class TwilightsService {
 
     const previousMinute = minute.clone().subtract(1, "minute");
 
-    const currentElevation = this.ephemerisService.getAzimuthElevationFromEphemeris(
-      sunAzimuthElevationEphemeris,
-      minute.toISOString(),
-      "elevation",
-    );
-    const previousElevation = this.ephemerisService.getAzimuthElevationFromEphemeris(
-      sunAzimuthElevationEphemeris,
-      previousMinute.toISOString(),
-      "elevation",
-    );
+    const currentElevation =
+      this.ephemerisService.getAzimuthElevationFromEphemeris(
+        sunAzimuthElevationEphemeris,
+        minute.toISOString(),
+        "elevation",
+      );
+    const previousElevation =
+      this.ephemerisService.getAzimuthElevationFromEphemeris(
+        sunAzimuthElevationEphemeris,
+        previousMinute.toISOString(),
+        "elevation",
+      );
 
     const elevations = { currentElevation, previousElevation };
     const date = minute;
@@ -335,7 +346,11 @@ export class TwilightsService {
       end: ending.start,
       summary: "🌠 Astronomical Twilight (Morning)",
       description: "Astronomical Twilight (Morning)",
-      categories: [...TwilightsService.categories, "Astronomical Twilight", "Morning"],
+      categories: [
+        ...TwilightsService.categories,
+        "Astronomical Twilight",
+        "Morning",
+      ],
     };
   }
 
@@ -348,7 +363,11 @@ export class TwilightsService {
       end: ending.start,
       summary: "🌅 Nautical Twilight (Morning)",
       description: "Nautical Twilight (Morning)",
-      categories: [...TwilightsService.categories, "Nautical Twilight", "Morning"],
+      categories: [
+        ...TwilightsService.categories,
+        "Nautical Twilight",
+        "Morning",
+      ],
     };
   }
 
@@ -371,7 +390,11 @@ export class TwilightsService {
       end: ending.start,
       summary: "🌉 Nautical Twilight (Evening)",
       description: "Nautical Twilight (Evening)",
-      categories: [...TwilightsService.categories, "Nautical Twilight", "Evening"],
+      categories: [
+        ...TwilightsService.categories,
+        "Nautical Twilight",
+        "Evening",
+      ],
     };
   }
 
@@ -384,7 +407,11 @@ export class TwilightsService {
       end: ending.start,
       summary: "🌌 Astronomical Twilight (Evening)",
       description: "Astronomical Twilight (Evening)",
-      categories: [...TwilightsService.categories, "Astronomical Twilight", "Evening"],
+      categories: [
+        ...TwilightsService.categories,
+        "Astronomical Twilight",
+        "Evening",
+      ],
     };
   }
 

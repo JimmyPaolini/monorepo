@@ -1,6 +1,5 @@
-import { Module } from "@nestjs/common";
-
 import { EphemerisModule } from "@caelundas/src/ephemeris/ephemeris.module";
+import { Module } from "@nestjs/common";
 
 import { EclipsesService } from "./eclipses.service";
 

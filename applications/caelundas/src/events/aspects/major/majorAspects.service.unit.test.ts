@@ -1,10 +1,9 @@
+import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
+import { AspectsUtilitiesService } from "@caelundas/src/events/aspects/aspects.utilities";
+import { majorAspectBodies } from "@caelundas/src/types";
 import moment, { type Moment } from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
 
-import { majorAspectBodies } from "@caelundas/src/types";
-
-import { AspectsUtilitiesService } from "@caelundas/src/events/aspects/aspects.utilities";
-import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import { MajorAspectsService } from "./major-aspects.service";
 
 import type { Event } from "@caelundas/src/calendar/calendar.types";
@@ -19,7 +18,10 @@ vi.mock("fs", () => ({
 
 const aspectsUtilitiesService = new AspectsUtilitiesService();
 const ephemerisService = new EphemerisService();
-const service = new MajorAspectsService(aspectsUtilitiesService, ephemerisService);
+const service = new MajorAspectsService(
+  aspectsUtilitiesService,
+  ephemerisService,
+);
 
 describe("majorAspects.events", () => {
   describe("service.detect", () => {

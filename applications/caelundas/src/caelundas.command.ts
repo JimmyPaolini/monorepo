@@ -1,10 +1,10 @@
 import { Injectable } from "@nestjs/common";
-
 import { Command, CommandRunner } from "nest-commander";
+
+import { inputSchema } from "./input.schema";
 
 import type { CalendarService } from "./calendar/calendar.service";
 import type { EventStoreService } from "./event-store/event-store.service";
-import { inputSchema } from "./input.schema";
 import type { PerfectiveEventsService } from "./perfective-events/perfective-events.service";
 import type { ProgressiveEventsService } from "./progressive-events/progressive-events.service";
 import type { ConfigService } from "@nestjs/config";
