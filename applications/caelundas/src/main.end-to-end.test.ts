@@ -213,7 +213,6 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
   describe("event detection e2e", () => {
     it("should correctly identify zodiac signs from longitude", async () => {
-      // biome-ignore format: oxfmt is the primary formatter
       const { IngressesService } =
         await import("./events/ingresses/ingresses.service");
 

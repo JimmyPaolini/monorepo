@@ -86,38 +86,6 @@
         "cwd": "{projectRoot}"
       }
     },
-    "biome-format": {
-      "cache": true,
-      "configurations": {
-        "check": {},
-        "write": {
-          "args": "--write"
-        }
-      },
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands",
-      "inputs": ["{workspaceRoot}/biome.jsonc", "default"],
-      "options": {
-        "command": "biome format {args} {projectRoot}/src",
-        "cwd": "{workspaceRoot}"
-      }
-    },
-    "biome-lint": {
-      "cache": true,
-      "configurations": {
-        "check": {},
-        "write": {
-          "args": "--write"
-        }
-      },
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands",
-      "inputs": ["{workspaceRoot}/biome.jsonc", "default"],
-      "options": {
-        "command": "biome lint {args} {projectRoot}/src",
-        "cwd": "{workspaceRoot}"
-      }
-    },
     "build": {
       "cache": true,
       "dependsOn": ["^build"],
@@ -197,7 +165,6 @@
       "configurations": {
         "check": {
           "commands": [
-            "nx run {projectName}:biome-format:check",
             "nx run {projectName}:prettier:check",
             "nx run {projectName}:oxfmt:check"
           ],
@@ -205,7 +172,6 @@
         },
         "write": {
           "commands": [
-            "nx run {projectName}:biome-format:write",
             "nx run {projectName}:prettier:write",
             "nx run {projectName}:oxfmt:write"
           ],
@@ -238,7 +204,6 @@
       "configurations": {
         "check": {
           "commands": [
-            "nx run {projectName}:biome-lint:check",
             "nx run {projectName}:eslint:check",
             "nx run {projectName}:oxlint:check"
           ],
@@ -246,7 +211,6 @@
         },
         "write": {
           "commands": [
-            "nx run {projectName}:biome-lint:write",
             "nx run {projectName}:eslint:write",
             "nx run {projectName}:oxlint:write"
           ],

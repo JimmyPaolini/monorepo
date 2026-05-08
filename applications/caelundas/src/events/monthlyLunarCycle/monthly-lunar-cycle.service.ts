@@ -7,8 +7,7 @@
  * illumination percentage from NASA JPL ephemeris data.
  */
 
-import { MARGIN_MINUTES } from "@caelundas/src/calendar/calendar.types";
-import { lunarPhases } from "@caelundas/src/constants";
+import { lunarPhases, MARGIN_MINUTES } from "@caelundas/src/constants";
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import { symbolByLunarPhase } from "@caelundas/src/symbols";
 import { Injectable } from "@nestjs/common";

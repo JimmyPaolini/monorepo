@@ -1,7 +1,4 @@
-import {
-  type Event,
-  MARGIN_MINUTES,
-} from "@caelundas/src/calendar/calendar.types";
+import { MARGIN_MINUTES } from "@caelundas/src/constants";
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import { TwilightsService } from "@caelundas/src/events/twilights/twilights.service";
 import { getAngle, isMaximum } from "@caelundas/src/math.utilities";
@@ -15,6 +12,7 @@ import { planetaryPhaseBodies } from "@caelundas/src/types";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
+import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type {
   CoordinateEphemeris,
   CoordinateEphemerisBody,

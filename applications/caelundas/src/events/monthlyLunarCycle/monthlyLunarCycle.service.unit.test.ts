@@ -1,4 +1,4 @@
-import { MARGIN_MINUTES } from "@caelundas/src/calendar/calendar.types";
+import { MARGIN_MINUTES } from "@caelundas/src/constants";
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import { symbolByLunarPhase } from "@caelundas/src/symbols";
 import moment, { type Moment } from "moment-timezone";

@@ -1,11 +1,6 @@
 import type { Moment } from "moment-timezone";
 
 /**
- * Margin in minutes added before/after date ranges for ephemeris queries (30).
- */
-export const MARGIN_MINUTES = 30;
-
-/**
  * Represents a calendar event with timing, description, and metadata.
  *
  * Defines the structure for astronomical events converted to VEVENT components in iCalendar.

@@ -363,3 +363,10 @@ export const lunarPhases = Object.keys(symbolByLunarPhase) as LunarPhase[];
 
 // export const houses = Object.keys(symbolByHouse) as House[];
 // export const houseSymbols: HouseSymbol[] = Object.values(symbolByHouse);
+
+// #region Ephemeris ⏱️
+
+/**
+ * Margin in minutes added before/after date ranges for ephemeris queries (30).
+ */
+export const MARGIN_MINUTES = 30;

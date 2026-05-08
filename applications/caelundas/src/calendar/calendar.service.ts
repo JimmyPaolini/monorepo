@@ -78,7 +78,7 @@ X-WR-CALNAME:${name}`;
     }
 
     if (timezone) {
-      vcalendar += `\nX-WR-TIMEZONE:${timezone}\n${this.getTimezone(timezone)}`;
+      vcalendar += `\nX-WR-TIMEZONE:${timezone}\n${this.buildTimezoneContent(timezone)}`;
     }
 
     vcalendar += `\n${events.map((event) => this.buildEventContent(event, timezone)).join("\n")}
@@ -159,7 +159,7 @@ END:VEVENT`;
    *
    * @remarks Only America/New_York has complete DST rules; others return minimal VTIMEZONE.
    */
-  private getTimezone(timezone: string): string {
+  private buildTimezoneContent(timezone: string): string {
     if (timezone === "America/New_York") {
       return `BEGIN:VTIMEZONE
 TZID:America/New_York

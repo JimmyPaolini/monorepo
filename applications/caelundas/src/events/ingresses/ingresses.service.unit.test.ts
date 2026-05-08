@@ -331,8 +331,6 @@ describe("ingresses.events", () => {
     });
 
     it("should handle empty array", () => {
-      // biome-ignore format: oxfmt is the primary formatter
-
       const progressiveEvents = service.detectProgressive([]);
 
       expect(progressiveEvents).toHaveLength(0);

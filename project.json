@@ -3,36 +3,6 @@
   "name": "monorepo",
   "projectType": "application",
   "targets": {
-    "biome-format": {
-      "cache": true,
-      "configurations": {
-        "check": {},
-        "write": {}
-      },
-      "defaultConfiguration": "check",
-      "description": "Run Biome supplementary formatter on workspace root files",
-      "executor": "nx:run-commands",
-      "inputs": ["{workspaceRoot}/biome.jsonc", "default"],
-      "options": {
-        "command": "biome format {args} *.ts *.js *.json scripts/ documentation/ infrastructure/",
-        "cwd": "{projectRoot}"
-      }
-    },
-    "biome-lint": {
-      "cache": true,
-      "configurations": {
-        "check": {},
-        "write": {}
-      },
-      "defaultConfiguration": "check",
-      "description": "Run Biome supplementary linter on workspace root files",
-      "executor": "nx:run-commands",
-      "inputs": ["{workspaceRoot}/biome.jsonc", "default"],
-      "options": {
-        "command": "biome lint {args} *.ts *.js *.json scripts/ documentation/ infrastructure/",
-        "cwd": "{projectRoot}"
-      }
-    },
     "check-lockfile": {
       "description": "Verify that pnpm-lock.yaml is in sync with package.json files",
       "executor": "nx:run-commands",

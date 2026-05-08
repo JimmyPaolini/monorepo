@@ -11,8 +11,6 @@
     "type:app"
   ],
   "targets": {
-    "biome-format": {},
-    "biome-lint": {},
     "build": {
       "description": "Build the application for production",
       "executor": "nx:run-commands",

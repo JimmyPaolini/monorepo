@@ -6,8 +6,6 @@
   "sourceRoot": "tools/code-generator/src",
   "tags": ["language:typescript", "type:util"],
   "targets": {
-    "biome-format": {},
-    "biome-lint": {},
     "build": {
       "cache": true,
       "description": "No-op build target for development tool",

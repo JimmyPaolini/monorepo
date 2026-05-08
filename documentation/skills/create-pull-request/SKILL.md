@@ -250,7 +250,7 @@ All PRs must pass these checks before merging:
 | Lint        | `nx affected --target=lint`      | ESLint validation                                                 |
 | Typecheck   | `nx affected --target=typecheck` | TypeScript compilation                                            |
 | Test        | `nx affected --target=test`      | Unit and integration tests                                        |
-| Format      | `nx format:check`                | Oxfmt (primary), Prettier, Biome formatting                       |
+| Format      | `nx format:check`                | Oxfmt (primary), Prettier formatting                              |
 
 Run locally before pushing:
 

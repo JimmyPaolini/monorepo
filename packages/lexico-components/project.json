@@ -10,8 +10,6 @@
     "type:lib"
   ],
   "targets": {
-    "biome-format": {},
-    "biome-lint": {},
     "build": {
       "executor": "@nx/vite:build",
       "options": {

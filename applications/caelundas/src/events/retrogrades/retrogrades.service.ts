@@ -8,10 +8,7 @@
  * Moon never do.
  */
 
-import {
-  type Event,
-  MARGIN_MINUTES,
-} from "@caelundas/src/calendar/calendar.types";
+import { MARGIN_MINUTES } from "@caelundas/src/constants";
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import { normalizeForComparison } from "@caelundas/src/math.utilities";
 import { pairProgressiveEvents } from "@caelundas/src/progressive.utilities";
@@ -20,6 +17,7 @@ import { retrogradeBodies } from "@caelundas/src/types";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
+import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
 import type {
   OrbitalDirection,
