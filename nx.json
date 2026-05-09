@@ -42,7 +42,7 @@
       "{workspaceRoot}/.github/workflows/*.yml",
       "{workspaceRoot}/nx.json",
       "{workspaceRoot}/pnpm-lock.yaml",
-      "{workspaceRoot}/tsconfig.base.json"
+      "{workspaceRoot}/configuration/tsconfig.base.json"
     ]
   },
   "parallel": 1,
@@ -137,11 +137,11 @@
         "^default",
         "{projectRoot}/**/*.ts",
         "{projectRoot}/**/*.tsx",
-        "{workspaceRoot}/.dependency-cruiser.cjs",
+        "{workspaceRoot}/configuration/dependency-cruiser.cjs",
         "default"
       ],
       "options": {
-        "command": "depcruise {projectRoot}/src --config .dependency-cruiser.cjs",
+        "command": "depcruise {projectRoot}/src --config configuration/dependency-cruiser.cjs",
         "cwd": "{workspaceRoot}"
       }
     },
@@ -156,7 +156,7 @@
       "defaultConfiguration": "check",
       "inputs": [
         "{projectRoot}/**/*.md",
-        "{workspaceRoot}/eslint.config.base.ts",
+        "{workspaceRoot}/configuration/eslint.config.base.ts",
         "default"
       ]
     },
@@ -185,17 +185,17 @@
       "cache": true,
       "configurations": {
         "check": {
-          "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace {projectRoot}"
+          "command": "NODE_OPTIONS='--import=tsx/esm' knip --config configuration/knip.config.ts --workspace {projectRoot}"
         },
         "write": {
-          "command": "NODE_OPTIONS='--import=tsx/esm' knip --fix --workspace {projectRoot}"
+          "command": "NODE_OPTIONS='--import=tsx/esm' knip --fix --config configuration/knip.config.ts --workspace {projectRoot}"
         }
       },
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
-      "inputs": ["{workspaceRoot}/knip.config.ts", "default"],
+      "inputs": ["{workspaceRoot}/configuration/knip.config.ts", "default"],
       "options": {
-        "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace {projectRoot}",
+        "command": "NODE_OPTIONS='--import=tsx/esm' knip --config configuration/knip.config.ts --workspace {projectRoot}",
         "cwd": "{workspaceRoot}"
       }
     },
@@ -254,10 +254,10 @@
       },
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
-      "inputs": ["{workspaceRoot}/oxfmt.config.ts", "default"],
+      "inputs": ["{workspaceRoot}/configuration/oxfmt.config.ts", "default"],
       "options": {
-        "command": "oxfmt {args} .",
-        "cwd": "{projectRoot}"
+        "command": "oxfmt -c configuration/oxfmt.config.ts {args} {projectRoot}",
+        "cwd": "{workspaceRoot}"
       }
     },
     "oxlint": {
@@ -290,17 +290,20 @@
       "executor": "nx:run-commands",
       "inputs": [
         "{workspaceRoot}/.prettierignore",
-        "{workspaceRoot}/prettier.config.ts",
+        "{workspaceRoot}/configuration/prettier.config.ts",
         "default"
       ],
       "options": {
-        "command": "prettier {args} {projectRoot}"
+        "command": "prettier {args} --config configuration/prettier.config.ts --ignore-path .prettierignore {projectRoot}"
       }
     },
     "pyright": {
       "cache": true,
       "executor": "nx:run-commands",
-      "inputs": ["{workspaceRoot}/pyproject.toml", "pythonSource"],
+      "inputs": [
+        "{workspaceRoot}/configuration/pyproject.toml",
+        "pythonSource"
+      ],
       "options": {
         "command": "uv run pyright src/",
         "cwd": "{projectRoot}"
@@ -324,7 +327,7 @@
       },
       "executor": "nx:run-commands",
       "inputs": [
-        "{workspaceRoot}/pyproject.toml",
+        "{workspaceRoot}/configuration/pyproject.toml",
         "pythonSource",
         "pythonTests"
       ],
@@ -343,7 +346,10 @@
       },
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
-      "inputs": ["{workspaceRoot}/pyproject.toml", "pythonSource"],
+      "inputs": [
+        "{workspaceRoot}/configuration/pyproject.toml",
+        "pythonSource"
+      ],
       "options": {
         "command": "uv run ruff format {args} .",
         "cwd": "{projectRoot}"
@@ -359,7 +365,10 @@
       },
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
-      "inputs": ["{workspaceRoot}/pyproject.toml", "pythonSource"],
+      "inputs": [
+        "{workspaceRoot}/configuration/pyproject.toml",
+        "pythonSource"
+      ],
       "options": {
         "command": "uv run ruff check {args} .",
         "cwd": "{projectRoot}"
@@ -370,11 +379,11 @@
       "executor": "nx:run-commands",
       "inputs": [
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,css,scss,html,yaml,yml,md,mdx,py,ipynb}",
-        "{workspaceRoot}/cspell.config.yaml",
+        "{workspaceRoot}/configuration/cspell.config.yaml",
         "default"
       ],
       "options": {
-        "command": "cspell '{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,css,scss,html,yaml,yml,md,mdx,py,ipynb}' --no-progress --gitignore",
+        "command": "cspell --config configuration/cspell.config.yaml '{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,css,scss,html,yaml,yml,md,mdx,py,ipynb}' --no-progress --gitignore",
         "cwd": "{workspaceRoot}"
       }
     },
@@ -382,20 +391,20 @@
       "cache": true,
       "configurations": {
         "check": {
-          "command": "stylelint 'src/**/*.css'"
+          "command": "stylelint --config ../../configuration/stylelint.config.cjs 'src/**/*.css'"
         },
         "write": {
-          "command": "stylelint --fix 'src/**/*.css'"
+          "command": "stylelint --fix --config ../../configuration/stylelint.config.cjs 'src/**/*.css'"
         }
       },
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
       "inputs": [
         "{projectRoot}/src/**/*.css",
-        "{workspaceRoot}/.stylelintrc.cjs"
+        "{workspaceRoot}/configuration/stylelint.config.cjs"
       ],
       "options": {
-        "command": "stylelint 'src/**/*.css'",
+        "command": "stylelint --config ../../configuration/stylelint.config.cjs 'src/**/*.css'",
         "cwd": "{projectRoot}"
       }
     },
@@ -406,7 +415,10 @@
     "ty": {
       "cache": true,
       "executor": "nx:run-commands",
-      "inputs": ["{workspaceRoot}/pyproject.toml", "pythonSource"],
+      "inputs": [
+        "{workspaceRoot}/configuration/pyproject.toml",
+        "pythonSource"
+      ],
       "options": {
         "command": "uv run ty check src/",
         "cwd": "{projectRoot}"
@@ -460,11 +472,11 @@
       "executor": "nx:run-commands",
       "inputs": [
         "{projectRoot}/**/*.{yaml,yml}",
-        "{workspaceRoot}/.yamllint",
+        "{workspaceRoot}/configuration/yamllint.yaml",
         "default"
       ],
       "options": {
-        "command": "yamllint '{projectRoot}'",
+        "command": "yamllint -c configuration/yamllint.yaml '{projectRoot}'",
         "cwd": "{workspaceRoot}"
       }
     }

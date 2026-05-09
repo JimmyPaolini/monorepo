@@ -35,11 +35,11 @@
     // Enables `import { Button } from "@monorepo/lexico-components"` across projects
     "paths": {
       "@monorepo/lexico-components": [
-        "./packages/lexico-components/src/index.ts"
+        "../packages/lexico-components/src/index.ts"
       ]
     },
     "resolveJsonModule": true,
-    "rootDir": ".",
+    "rootDir": "..",
     "skipDefaultLibCheck": true,
     "skipLibCheck": true,
     "sourceMap": true,

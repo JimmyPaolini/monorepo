@@ -22,8 +22,8 @@ export default defineConfig({
     // Allow tests to pass when there are no test files
     passWithNoTests: true,
     projects: [
-      "applications/caelundas/vitest.config.ts",
-      "tools/code-generator/vitest.config.ts",
+      "../applications/caelundas/vitest.config.ts",
+      "../tools/code-generator/vitest.config.ts",
     ],
   },
 });

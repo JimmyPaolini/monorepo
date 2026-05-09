@@ -10,7 +10,7 @@
 import { relative } from "node:path";
 
 const syncConventionalConfigFiles = [
-  "conventional.config.cjs",
+  "configuration/conventional.config.cjs",
   ".vscode/settings.json",
   "documentation/skills/commit-code/SKILL.md",
   "documentation/skills/checkout-branch/SKILL.md",
@@ -41,7 +41,7 @@ const config = {
 
   // ── Unused-code analysis configuration ──
   // Re-run the abstract clean target when the Knip config changes
-  "knip.config.ts": () => [
+  "configuration/knip.config.ts": () => [
     "nx run monorepo:clean:check --outputStyle=dynamic-legacy",
   ],
 

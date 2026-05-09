@@ -4,8 +4,7 @@ agent: "agent"
 name: "refactor-code"
 model: "Claude Sonnet 4.6 (copilot)"
 argument-hint: 'Optionally describe a focus area or concern. Examples: "focus on the service layer", "mainly readability", "check for code smells".'
-tools:
-  [execute, read, edit, search, web, 'context7/*', 'github/*']
+tools: [execute, read, edit, search, web, "context7/*", "github/*"]
 ---
 
 # Refactor Code

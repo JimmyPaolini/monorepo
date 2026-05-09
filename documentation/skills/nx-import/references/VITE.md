@@ -75,11 +75,11 @@ React Router 7 generates `.react-router/` at the project root for route type gen
 
 TanStack Start uses Vinxi under the hood, which wraps Vite. Projects have a standard `vite.config.ts` that `@nx/vite/plugin` detects normally.
 
-### Targets
+### TanStack Start Targets
 
 `@nx/vite/plugin` creates `build`, `dev`, `preview`, `serve-static`, `typecheck` targets. The `build` target runs `vite build` which invokes the TanStack Start Vinxi pipeline (produces both client and SSR bundles).
 
-### tsconfig Notes
+### TanStack Start tsconfig Notes
 
 TanStack Start uses a single `tsconfig.json` with `"allowImportingTsExtensions": true` and `"noEmit": true`. Apply the standard noEmit → composite fix. `allowImportingTsExtensions` is compatible with `emitDeclarationOnly: true` — no change needed.
 

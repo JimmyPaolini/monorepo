@@ -16,6 +16,8 @@
  * @type {import('dependency-cruiser').IConfiguration}
  * @see https://github.com/sverweij/dependency-cruiser
  */
+const path = require("node:path");
+
 module.exports = {
   forbidden: [
     {
@@ -34,17 +36,17 @@ module.exports = {
       from: {
         orphan: true,
         pathNot: [
-          "(^|/)\\.[^/]+\\.(js|cjs|mjs|ts|cts|mts|json)$",
-          "(^|/)package\\.json$",
-          "(^|/)tsconfig\\.json$",
-          "\\.d\\.ts$",
-          "^applications/.+/project\\.json$",
-          "^applications/.+/vitest\\.config\\.ts$",
-          "^documentation/.*\\.md$",
-          "^packages/.+/project\\.json$",
-          "^planning/.*\\.md$",
-          "^scripts/.*\\.sh$",
-          "^tools/.+/project\\.json$",
+          String.raw`(^|/)\.[^/]+\.(js|cjs|mjs|ts|cts|mts|json)$`,
+          String.raw`(^|/)package\.json$`,
+          String.raw`(^|/)tsconfig\.json$`,
+          String.raw`\.d\.ts$`,
+          String.raw`^applications/.+/project\.json$`,
+          String.raw`^applications/.+/vitest\.config\.ts$`,
+          String.raw`^documentation/.*\.md$`,
+          String.raw`^packages/.+/project\.json$`,
+          String.raw`^planning/.*\.md$`,
+          String.raw`^scripts/.*\.sh$`,
+          String.raw`^tools/.+/project\.json$`,
         ],
       },
       to: {},
@@ -67,14 +69,14 @@ module.exports = {
       from: {
         path: "^applications",
         pathNot: [
-          "\\.test\\.(ts|tsx)$",
-          "\\.spec\\.(ts|tsx)$",
+          String.raw`\.test\.(ts|tsx)$`,
+          String.raw`\.spec\.(ts|tsx)$`,
           "(^|/)testing/",
           "(^|/)tests/",
           "(^|/)__tests__/",
           "(^|/)__mocks__/",
-          "(^|/)vitest\\.config",
-          "(^|/)vite\\.config",
+          String.raw`(^|/)vitest\.config`,
+          String.raw`(^|/)vite\.config`,
         ],
       },
       to: {
@@ -106,12 +108,12 @@ module.exports = {
         "/files/",
         "__[a-zA-Z]+__",
         // Auto-generated files may have circular deps
-        "\\.gen\\.(ts|tsx|js|jsx)$",
+        String.raw`\.gen\.(ts|tsx|js|jsx)$`,
       ],
     },
     tsPreCompilationDeps: true,
     tsConfig: {
-      fileName: "./tsconfig.base.json",
+      fileName: path.join(__dirname, "tsconfig.base.json"),
     },
     enhancedResolveOptions: {
       exportsFields: ["exports"],

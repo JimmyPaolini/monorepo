@@ -133,11 +133,18 @@ subquery
 #endregion
 
 #region 🐍 Python Tooling
+addopts
+Cython
 jupyter
 jupyterlab
+isort
+mypy
+nosec
 pipx
 pkill
+pycache
 pydantic
+pyupgrade
 
 #endregion
 
@@ -160,5 +167,29 @@ nonfiction
 peaceiris
 stackoverflow
 tootallnate
+
+#endregion
+
+#region 🤖 AI Rule Files & Agents
+clinerules
+cursorrules
+reactagent
+windsurfrules
+
+#endregion
+
+#region 🔧 Misc Dev Tools
+bitfield
+Bitfield
+ctest
+firewalled
+ignoredfile
+ignoredpath
+ignorefile
+itertools
+Manypkg
+pthreads
+sarif
+timotejroiko
 
 #endregion

@@ -57,13 +57,6 @@
       }
     },
     "dependency-analysis": {},
-    "eslint": {
-      "executor": "nx:run-commands",
-      "inputs": ["{workspaceRoot}/eslint.config.base.mjs", "default"],
-      "options": {
-        "command": "eslint tools/code-generator --no-error-on-unmatched-pattern --ignore-pattern '**/code-generator/**/files/**'"
-      }
-    },
     "format": {},
     "knip": {},
     "lint": {},

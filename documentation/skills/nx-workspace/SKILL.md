@@ -146,7 +146,7 @@ nx graph --print | jq '.graph.dependencies | to_entries[] | select(.value[].targ
 
 When processing nx CLI results, use command-line tools to compute the answer programmatically rather than counting or parsing output manually. Always use `--json` flags to get structured output that can be processed with `jq`, `grep`, or other tools you have installed locally.
 
-### Listing Projects
+### Listing Projects Programmatically
 
 ```bash
 nx show projects --json

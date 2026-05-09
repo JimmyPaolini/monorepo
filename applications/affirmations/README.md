@@ -51,24 +51,24 @@ applications/affirmations/
 
 ## Nx Targets
 
-| Target          | Command                                                  | Description                |
-| --------------- | ------------------------------------------------------   | -------------------------- |
-| `lint`          | `nx run affirmations:lint`                               | Ruff linting               |
-| `format`        | `nx run affirmations:format`                             | Ruff formatting            |
-| `typecheck`     | `nx run affirmations:typecheck`                          | pyright type checking      |
-| `test`          | `nx run affirmations:test`                               | pytest unit tests          |
-| `vulture`       | `nx run affirmations:vulture`                            | Vulture dead code analysis |
-| `ollama`        | `nx run affirmations:ollama --configuration=start`       | Start Ollama container     |
-| `ollama`        | `nx run affirmations:ollama --configuration=stop`        | Stop Ollama container      |
-| `ollama`        | `nx run affirmations:ollama --configuration=pull-small`  | Pull gemma4:e2b            |
-| `searxng`       | `nx run affirmations:searxng --configuration=start`      | Start SearxNG container    |
-| `searxng`       | `nx run affirmations:searxng --configuration=stop`       | Stop SearxNG container     |
-| `searxng`       | `nx run affirmations:searxng --configuration=open`       | Open SearxNG in browser    |
-| `open-webui`    | `nx run affirmations:open-webui --configuration=start`   | Start Open WebUI container |
-| `open-webui`    | `nx run affirmations:open-webui --configuration=stop`    | Stop Open WebUI container  |
-| `open-webui`    | `nx run affirmations:open-webui --configuration=open`    | Open Open WebUI in browser |
-| `spell-check`   | `nx run affirmations:spell-check`                        | cspell spell check         |
-| `markdown-lint` | `nx run affirmations:markdown-lint`                      | Markdown linting           |
+| Target          | Command                                                 | Description                |
+| --------------- | ------------------------------------------------------- | -------------------------- |
+| `lint`          | `nx run affirmations:lint`                              | Ruff linting               |
+| `format`        | `nx run affirmations:format`                            | Ruff formatting            |
+| `typecheck`     | `nx run affirmations:typecheck`                         | pyright type checking      |
+| `test`          | `nx run affirmations:test`                              | pytest unit tests          |
+| `vulture`       | `nx run affirmations:vulture`                           | Vulture dead code analysis |
+| `ollama`        | `nx run affirmations:ollama --configuration=start`      | Start Ollama container     |
+| `ollama`        | `nx run affirmations:ollama --configuration=stop`       | Stop Ollama container      |
+| `ollama`        | `nx run affirmations:ollama --configuration=pull-small` | Pull gemma4:e2b            |
+| `searxng`       | `nx run affirmations:searxng --configuration=start`     | Start SearxNG container    |
+| `searxng`       | `nx run affirmations:searxng --configuration=stop`      | Stop SearxNG container     |
+| `searxng`       | `nx run affirmations:searxng --configuration=open`      | Open SearxNG in browser    |
+| `open-webui`    | `nx run affirmations:open-webui --configuration=start`  | Start Open WebUI container |
+| `open-webui`    | `nx run affirmations:open-webui --configuration=stop`   | Stop Open WebUI container  |
+| `open-webui`    | `nx run affirmations:open-webui --configuration=open`   | Open Open WebUI in browser |
+| `spell-check`   | `nx run affirmations:spell-check`                       | cspell spell check         |
+| `markdown-lint` | `nx run affirmations:markdown-lint`                     | Markdown linting           |
 
 ## Output Format
 
@@ -90,9 +90,9 @@ Generated affirmations are saved to `output/{practice}.json`:
 
 ## Research Tools
 
-| Tool             | Type          | Description                                                              |
-| ---------------- | ------------- | ------------------------------------------------------------------------ |
-| `searxng_search` | Always active | Self-hosted SearxNG at `http://localhost:8889`, aggregates 135+ engines  |
+| Tool             | Type          | Description                                                             |
+| ---------------- | ------------- | ----------------------------------------------------------------------- |
+| `searxng_search` | Always active | Self-hosted SearxNG at `http://localhost:8889`, aggregates 135+ engines |
 
 ## Research Processing Layer
 
@@ -131,11 +131,11 @@ PRACTICES["numerology"] = PracticeConfig(
 
 ## Services
 
-| Service    | Port    | Description                                                   |
-| ---------- | ------- | ------------------------------------------------------------- |
-| Ollama     | `11434` | Local LLM server (`gemma4:e2b`)                               |
-| Open WebUI | `3001`  | Browser-based Ollama chat interface                           |
-| SearxNG    | `8889`  | Self-hosted metasearch (135+ engines)                         |
+| Service    | Port    | Description                           |
+| ---------- | ------- | ------------------------------------- |
+| Ollama     | `11434` | Local LLM server (`gemma4:e2b`)       |
+| Open WebUI | `3001`  | Browser-based Ollama chat interface   |
+| SearxNG    | `8889`  | Self-hosted metasearch (135+ engines) |
 
 ## Environment Variables
 

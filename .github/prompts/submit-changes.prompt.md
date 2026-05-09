@@ -4,13 +4,7 @@ argument-hint: "Just run the prompt — no arguments needed. I'll analyze the cu
 description: "Automatically submit changes through the full branch → commit → pull request pipeline by analyzing code changes and handling hooks intelligently."
 model: "Claude Haiku 4.5 (copilot)"
 name: "submit-changes"
-tools:
-  [
-    "execute",
-    "read",
-    "search",
-    "web",
-  ]
+tools: ["execute", "read", "search", "web"]
 ---
 
 # Submit Changes
@@ -41,7 +35,7 @@ These values drive the branch name, commit message, and PR title.
 
 ## Allowed Types & Scopes
 
-Synced from [conventional.config.cjs](../../conventional.config.cjs). Do not edit by hand.
+Synced from [conventional.config.cjs](../../configuration/conventional.config.cjs). Do not edit by hand.
 
 ### Types
 

@@ -1,0 +1,31 @@
+# Exclude everything by default, then allowlist only what the Dockerfile COPYs.
+# Docker resolves this file because it matches <Dockerfile>.dockerignore (Docker 20.10+).
+
+# --- Exclude everything ---
+**
+
+# --- Allowlist: root dependency files ---
+!package.json
+!pnpm-lock.yaml
+!pnpm-workspace.yaml
+!.npmrc
+!tsconfig.base.json
+
+# --- Allowlist: caelundas application ---
+!applications/caelundas/
+applications/caelundas/**
+!applications/caelundas/package.json
+!applications/caelundas/tsconfig.json
+!applications/caelundas/src/**
+
+# --- Allowlist: pre-downloaded ephemeris data ---
+!data/
+!data/ephemeris/
+!data/ephemeris/**
+
+# --- Always exclude build artifacts and secrets within allowed paths ---
+applications/caelundas/node_modules/
+applications/caelundas/dist/
+applications/caelundas/output/
+applications/caelundas/coverage/
+applications/caelundas/*.env*

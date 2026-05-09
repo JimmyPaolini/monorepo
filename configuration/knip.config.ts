@@ -26,6 +26,7 @@ const config: KnipConfig = {
 
   // devDependencies used via npx, CLI, or ESLint config (not directly imported)
   ignoreDependencies: [
+    "@commitlint/config-conventional", // commitlint preset, referenced as string in extends array
     "@nx/eslint-plugin", // Loaded dynamically by Nx ESLint integration
     "@nx/js", // Nx JavaScript/TypeScript plugin (auto-detected by Nx)
     "@nx/web", // Nx web plugin (auto-detected by Nx)
@@ -33,8 +34,14 @@ const config: KnipConfig = {
     "@semantic-release/release-notes-generator", // semantic-release plugin
     "@semantic-release/github", // semantic-release plugin
     "@semantic-release/npm", // semantic-release plugin
+    "commitlint-plugin-gitmoji", // commitlint plugin, referenced as string in plugins array
+    "commitlint-plugin-tense", // commitlint plugin, referenced as string in plugins array
     "markdownlint-cli2", // Markdown linter CLI, invoked via nx:run-commands in project.json
     "npm-check-updates", // Dependency update CLI (ncu), invoked via GitHub Actions workflow
+    "stylelint", // CSS linter CLI, invoked via nx:run-commands in project.json
+    "stylelint-config-standard", // stylelint preset, referenced as string in extends array
+    "stylelint-config-tailwindcss", // stylelint preset, referenced as string in extends array
+    "tslib", // TypeScript helper library, implicit runtime dependency for compiled TS
   ],
 
   // Allow exports that are only used in the same file (common for barrel re-exports)
@@ -49,12 +56,20 @@ const config: KnipConfig = {
       entry: [
         "scripts/**/*.{js,ts,sh}",
         ".devcontainer/scripts/**/*.{js,ts,sh}",
-        "vitest.config.base.ts",
+        "configuration/vitest.config.ts",
+        "configuration/commitlint.config.ts",
+        "configuration/dependency-cruiser.cjs",
+        "configuration/eslint.config.base.ts",
+        "configuration/eslint.config.js",
+        "configuration/lint-staged.config.ts",
+        "configuration/oxfmt.config.ts",
+        "configuration/oxlint.config.ts",
+        "configuration/prettier.config.ts",
+        "configuration/stylelint.config.cjs",
+        "configuration/syncpack.config.cjs",
         "release.config.cjs",
         ".ncurc.cjs",
         "validate-branch-name.config.cjs",
-        "oxfmt.config.ts",
-        "oxlint.config.ts",
       ],
       ignore: [
         "**/*.test.ts",

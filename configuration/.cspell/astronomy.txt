@@ -53,3 +53,19 @@ caelundae
 caelundas
 caelunday
 #endregion
+
+#region 🔭 Python Astronomy Libraries
+astropy
+Astropy
+Atciq
+Aticq
+Astrom
+CSPICE
+Cyice
+ERFA
+Erfa
+erfa
+liberfa
+skyfield
+Skyfield
+#endregion

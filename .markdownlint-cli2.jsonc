@@ -20,9 +20,9 @@
     "MD046": {
       "style": "fenced",
     },
-    // MD049: Emphasis style - enforce asterisk style
+    // MD049: Emphasis style - enforce underscore style (matches oxfmt/prettier output)
     "MD049": {
-      "style": "asterisk",
+      "style": "underscore",
     },
     // MD050: Strong style - enforce asterisk style
     "MD050": {

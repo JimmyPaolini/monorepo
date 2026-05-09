@@ -77,7 +77,7 @@
       "description": "Validate commit message format with commitlint (invoked by the commit-msg git hook)",
       "executor": "nx:run-commands",
       "options": {
-        "command": "NODE_OPTIONS='--import=tsx' commitlint --edit {args.edit}",
+        "command": "NODE_OPTIONS='--import=tsx' commitlint --config configuration/commitlint.config.ts --edit {args.edit}",
         "cwd": "{projectRoot}"
       }
     },
@@ -131,10 +131,10 @@
       "cache": true,
       "configurations": {
         "check": {
-          "command": "eslint {args} --config eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
+          "command": "eslint {args} --config configuration/eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
         },
         "write": {
-          "command": "eslint {args} --fix --config eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
+          "command": "eslint {args} --fix --config configuration/eslint.config.base.ts --no-error-on-unmatched-pattern '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
         }
       },
       "defaultConfiguration": "check",
@@ -163,10 +163,10 @@
       "cache": true,
       "configurations": {
         "check": {
-          "command": "NODE_OPTIONS='--import=tsx/esm' knip --workspace ."
+          "command": "NODE_OPTIONS='--import=tsx/esm' knip --config configuration/knip.config.ts --workspace ."
         },
         "write": {
-          "command": "NODE_OPTIONS='--import=tsx/esm' knip --fix --workspace ."
+          "command": "NODE_OPTIONS='--import=tsx/esm' knip --config configuration/knip.config.ts --fix --workspace ."
         }
       },
       "defaultConfiguration": "check",
@@ -196,7 +196,7 @@
       "description": "Run lint-staged on staged files (invoked by the pre-commit git hook)",
       "executor": "nx:run-commands",
       "options": {
-        "command": "unset FORCE_COLOR && NODE_OPTIONS='--import=tsx' lint-staged --continue-on-error",
+        "command": "unset FORCE_COLOR && NODE_OPTIONS='--import=tsx' lint-staged --config configuration/lint-staged.config.ts --continue-on-error",
         "cwd": "{projectRoot}"
       }
     },
@@ -229,16 +229,16 @@
       "cache": true,
       "configurations": {
         "check": {
-          "command": "oxfmt {args} '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
+          "command": "oxfmt -c configuration/oxfmt.config.ts {args} '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
         },
         "write": {
-          "command": "oxfmt {args} '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
+          "command": "oxfmt -c configuration/oxfmt.config.ts {args} '*.ts' '*.js' '*.json' '*.md' 'scripts/' 'documentation/' 'infrastructure/'"
         }
       },
       "defaultConfiguration": "check",
       "description": "Format workspace root files with oxfmt (config files, scripts, documentation, infrastructure)",
       "executor": "nx:run-commands",
-      "inputs": ["{workspaceRoot}/oxfmt.config.ts", "default"],
+      "inputs": ["{workspaceRoot}/configuration/oxfmt.config.ts", "default"],
       "options": {
         "cwd": "{projectRoot}"
       }
@@ -247,16 +247,16 @@
       "cache": true,
       "configurations": {
         "check": {
-          "command": "oxlint '*.ts' '*.js' 'scripts/' 'documentation/' 'infrastructure/' --ignore-pattern='infrastructure/helm/**/templates'"
+          "command": "oxlint --config configuration/oxlint.config.ts '*.ts' '*.js' 'scripts/' 'documentation/' 'infrastructure/' --ignore-pattern='infrastructure/helm/**/templates'"
         },
         "write": {
-          "command": "oxlint {args} '*.ts' '*.js' 'scripts/' 'documentation/' 'infrastructure/' --ignore-pattern='infrastructure/helm/**/templates'"
+          "command": "oxlint --config configuration/oxlint.config.ts {args} '*.ts' '*.js' 'scripts/' 'documentation/' 'infrastructure/' --ignore-pattern='infrastructure/helm/**/templates'"
         }
       },
       "defaultConfiguration": "check",
       "description": "Run Oxlint on workspace root files (config files, scripts, documentation, infrastructure)",
       "executor": "nx:run-commands",
-      "inputs": ["{workspaceRoot}/oxlint.config.ts", "default"],
+      "inputs": ["{workspaceRoot}/configuration/oxlint.config.ts", "default"],
       "options": {
         "cwd": "{projectRoot}"
       }
@@ -280,17 +280,17 @@
       "cache": true,
       "configurations": {
         "check": {
-          "command": "prettier {args} --check --ignore-unknown ."
+          "command": "prettier {args} --config configuration/prettier.config.ts --ignore-path .prettierignore --check --ignore-unknown ."
         },
         "write": {
-          "command": "prettier {args} --write --ignore-unknown ."
+          "command": "prettier {args} --config configuration/prettier.config.ts --ignore-path .prettierignore --write --ignore-unknown ."
         }
       },
       "defaultConfiguration": "write",
       "description": "Format workspace root files with Prettier (excluding NX projects)",
       "executor": "nx:run-commands",
       "options": {
-        "command": "prettier {args} --ignore-unknown .",
+        "command": "prettier {args} --config configuration/prettier.config.ts --ignore-path .prettierignore --ignore-unknown .",
         "cwd": "{projectRoot}"
       }
     },
@@ -340,11 +340,11 @@
         "{projectRoot}/infrastructure/**",
         "{projectRoot}/planning/**",
         "{projectRoot}/scripts/**",
-        "{workspaceRoot}/cspell.config.yaml",
+        "{workspaceRoot}/configuration/cspell.config.yaml",
         "default"
       ],
       "options": {
-        "command": "cspell '*.{ts,tsx,js,jsx,md,yaml,yml,json}' 'scripts/**' 'documentation/**' 'infrastructure/**' 'planning/**' --no-progress --gitignore",
+        "command": "cspell --config configuration/cspell.config.yaml '*.{ts,tsx,js,jsx,md,yaml,yml,json}' 'scripts/**' 'documentation/**' 'infrastructure/**' 'planning/**' --no-progress --gitignore",
         "cwd": "{projectRoot}"
       }
     },
@@ -384,7 +384,7 @@
       "executor": "nx:run-commands",
       "inputs": [
         "{projectRoot}/.vscode/settings.json",
-        "{projectRoot}/conventional.config.cjs",
+        "{projectRoot}/configuration/conventional.config.cjs",
         "{projectRoot}/documentation/skills/commit-code/SKILL.md"
       ],
       "options": {
@@ -479,10 +479,10 @@
       "cache": true,
       "configurations": {
         "check": {
-          "command": "pnpm exec syncpack lint"
+          "command": "pnpm exec syncpack lint --config configuration/syncpack.config.cjs"
         },
         "write": {
-          "command": "pnpm exec syncpack fix-mismatches && pnpm exec syncpack format && nx run monorepo:format:write"
+          "command": "pnpm exec syncpack fix-mismatches --config configuration/syncpack.config.cjs && pnpm exec syncpack format --config configuration/syncpack.config.cjs && nx run monorepo:format:write"
         }
       },
       "defaultConfiguration": "check",
@@ -490,11 +490,11 @@
       "executor": "nx:run-commands",
       "inputs": [
         "{workspaceRoot}/**/package.json",
-        "{workspaceRoot}/.syncpackrc.cjs",
+        "{workspaceRoot}/configuration/syncpack.config.cjs",
         "{workspaceRoot}/pnpm-lock.yaml"
       ],
       "options": {
-        "command": "pnpm exec syncpack lint",
+        "command": "pnpm exec syncpack lint --config configuration/syncpack.config.cjs",
         "cwd": "{workspaceRoot}"
       }
     },
@@ -538,7 +538,7 @@
       "executor": "nx:run-commands",
       "inputs": ["{workspaceRoot}/infrastructure/terraform/**/*.tf"],
       "options": {
-        "command": "trivy config infrastructure/terraform --severity CRITICAL,HIGH --exit-code 1",
+        "command": "trivy config infrastructure/terraform --severity CRITICAL,HIGH --exit-code 1 --ignorefile configuration/trivyignore",
         "cwd": "{projectRoot}"
       }
     },
@@ -547,7 +547,7 @@
       "description": "Scan caelundas Docker image for vulnerabilities using Trivy",
       "executor": "nx:run-commands",
       "options": {
-        "command": "nx run caelundas:docker-build && trivy image caelundas:1.0.0 --severity CRITICAL,HIGH --exit-code 1",
+        "command": "nx run caelundas:docker-build && trivy image caelundas:1.0.0 --severity CRITICAL,HIGH --exit-code 1 --ignorefile configuration/trivyignore",
         "cwd": "{projectRoot}"
       }
     },
@@ -557,7 +557,7 @@
       "executor": "nx:run-commands",
       "inputs": [
         "{projectRoot}/**/*.{ts,tsx}",
-        "{projectRoot}/tsconfig.json",
+        "{workspaceRoot}/tsconfig.json",
         "default"
       ],
       "options": {
@@ -566,7 +566,11 @@
       }
     },
     "typecheck": {
-      "description": "Type-check workspace root TypeScript files"
+      "description": "Type-check workspace root TypeScript files",
+      "options": {
+        "command": "tsc --noEmit -p tsconfig.json",
+        "cwd": "{projectRoot}"
+      }
     },
     "validate-branch-name": {
       "cache": false,
@@ -589,12 +593,12 @@
       "inputs": [
         "{projectRoot}/*.py",
         "{projectRoot}/scripts/**/*.py",
-        "{projectRoot}/.vulture_whitelist.py",
+        "{workspaceRoot}/configuration/vulture_whitelist.py",
         "{workspaceRoot}/applications/affirmations/pyproject.toml",
         "default"
       ],
       "options": {
-        "command": "files=$(find . \\( -path './applications' -o -path './packages' -o -path './tools' -o -path './node_modules' -o -path './dist' -o -path './coverage' -o -path './.nx' -o -path './.venv' -o -name '.vulture_whitelist.py' \\) -prune -o -type f -name '*.py' -print); if [ -n \"$files\" ]; then uv run --project applications/affirmations vulture $files .vulture_whitelist.py --min-confidence 80; else echo 'No root-level Python files to analyze'; fi",
+        "command": "files=$(find . \\( -path './applications' -o -path './packages' -o -path './tools' -o -path './node_modules' -o -path './dist' -o -path './coverage' -o -path './.nx' -o -path './.venv' -o -path './configuration/vulture_whitelist.py' \\) -prune -o -type f -name '*.py' -print); if [ -n \"$files\" ]; then uv run --project applications/affirmations vulture $files configuration/vulture_whitelist.py --min-confidence 80; else echo 'No root-level Python files to analyze'; fi",
         "cwd": "{projectRoot}"
       }
     },

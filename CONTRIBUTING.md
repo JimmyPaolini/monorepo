@@ -168,8 +168,8 @@ Three Husky hooks enforce quality gates locally. **Never bypass them with `--no-
 
 | Hook         | Trigger      | What it runs                                                                         | Config                                                             |
 | ------------ | ------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `pre-commit` | `git commit` | **lint-staged**: format, lint, typecheck, spell-check, and more on staged files      | [lint-staged.config.ts](lint-staged.config.ts)                     |
-| `commit-msg` | `git commit` | **commitlint**: validates Conventional Commits format (`<type>(<scope>): <subject>`) | [commitlint.config.ts](commitlint.config.ts)                       |
+| `pre-commit` | `git commit` | **lint-staged**: format, lint, typecheck, spell-check, and more on staged files      | [lint-staged.config.ts](configuration/lint-staged.config.ts)       |
+| `commit-msg` | `git commit` | **commitlint**: validates Conventional Commits format (`<type>(<scope>): <subject>`) | [commitlint.config.ts](configuration/commitlint.config.ts)         |
 | `pre-push`   | `git push`   | **validate-branch-name**: enforces `<type>/<scope>-<description>` pattern            | [validate-branch-name.config.cjs](validate-branch-name.config.cjs) |
 
 If a hook fails, the git operation is blocked until you fix the error. See the config files linked above for details on what each hook checks.

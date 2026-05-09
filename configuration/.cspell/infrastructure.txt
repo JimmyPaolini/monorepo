@@ -100,4 +100,9 @@ tfstate
 tfvars
 
 #endregion
+
+#region 🔑 AWS
+AKIA
+
+#endregion
 lockfiles

@@ -33,6 +33,7 @@ hasattr
 isinstance
 iterdir
 iterrows
+itertools
 kwargs
 logprobs
 pathlib

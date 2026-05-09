@@ -40,3 +40,14 @@ openwebui
 webui
 
 #endregion
+
+#region 🛠️ AI Data & Search Tools
+Apio
+Firecrawl
+firecrawl
+Serp
+serp
+Tavily
+tavily
+
+#endregion

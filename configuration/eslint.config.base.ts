@@ -18,7 +18,10 @@ import tseslint from "typescript-eslint";
 
 import type { ConfigWithExtends } from "typescript-eslint";
 
-const tsconfigRootDir = path.dirname(fileURLToPath(import.meta.url));
+const tsconfigRootDir = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  "..",
+);
 
 export default [
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -171,7 +174,7 @@ export default [
     ignores: [
       "lint-staged.config.ts",
       "prettier.config.ts",
-      "eslint.config.base.ts",
+      "configuration/eslint.config.base.ts",
     ],
     plugins: {
       import: importPlugin,
@@ -689,7 +692,7 @@ export default [
   // ━━━━━━━━━━━━━━━━━━━ Self-Config ━━━━━━━━━━━━━━━━━━━
   // Relaxed rules for eslint.config.base.ts itself (plugin typing limitations)
   {
-    files: ["eslint.config.base.ts"],
+    files: ["configuration/eslint.config.base.ts"],
     plugins: {
       "@typescript-eslint": tseslint.plugin,
     },

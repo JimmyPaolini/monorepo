@@ -1,28 +1,22 @@
 # 📦 Dependencies
-node_modules
 **/node_modules
+.pnpm-store
+**/.venv
 
 # 🏗️ Build outputs
-dist
 **/dist
-build
 **/build
-.next
 **/.next
-out
 **/out
 
 # 💾 Nx cache
-.nx
 **/.nx
 
 # 🧪 Coverage
-coverage
 **/coverage
 .nyc_output
 
 # Temporary files
-tmp
 **/tmp
 *.tmp
 *.log
@@ -56,20 +50,19 @@ CHANGELOG.md
 # calendars/**/*.ics
 
 # Helm templates with Go templating syntax
-infrastructure/helm/**/templates/**
 **/helm/**/templates/**
 
 # Shadcn generated components
-packages/lexico-components/src/lib/utils
-packages/lexico-components/src/components/ui
-packages/lexico-components/src/lib
-packages/lexico-components/src/hooks
+**/lexico-components/src/lib/utils
+**/lexico-components/src/components/ui
+**/lexico-components/src/lib
+**/lexico-components/src/hooks
 
 # Code generator template files
-tools/code-generator/**/files/**
+**/code-generator/**/files/**
 
 # Output directories that are generated and should not be formatted
-applications/affirmations/output
+**/affirmations/output
 
 # Terraform providers
 **/.terraform/**
