@@ -27,6 +27,7 @@
     "@types/lodash": "^4.17.23",
     "@types/node": "^22.19.1",
     "@typescript-eslint/parser": "^8.56.1",
+    "@vitest/coverage-v8": "^4.1.3",
     "@vitest/ui": "^4.1.3",
     "commitlint-plugin-gitmoji": "^2.2.6",
     "commitlint-plugin-tense": "^1.0.9",

@@ -1,24 +1,5 @@
 import { defineConfig } from "vitest/config";
 
-/**
- * Base Vitest configuration for the monorepo
- * Projects should extend this configuration for consistency
- *
- * Example in your project's vitest.config.ts:
- * ```
- * import { mergeConfig } from "vitest/config";
- * import baseConfig from "../../vitest.config.base";
- *
- * export default mergeConfig(
- *   baseConfig,
- *   defineConfig({
- *     test: {
- *       // Project-specific overrides
- *     },
- *   })
- * );
- * ```
- */
 export default defineConfig({
   test: {
     globals: true,
@@ -40,5 +21,9 @@ export default defineConfig({
     },
     // Allow tests to pass when there are no test files
     passWithNoTests: true,
+    projects: [
+      "applications/caelundas/vitest.config.ts",
+      "tools/code-generator/vitest.config.ts",
+    ],
   },
 });

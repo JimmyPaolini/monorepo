@@ -1,16 +1,12 @@
-import { defineConfig, mergeConfig } from "vitest/config";
+import { defineConfig } from "vitest/config";
 
-import baseConfig from "../../vitest.config.base.ts";
-
-export default mergeConfig(
-  baseConfig,
-  defineConfig({
-    test: {
-      include: ["src/**/*.test.ts"],
-      coverage: {
-        include: ["src/**/*.ts"],
-        exclude: ["src/**/*.test.ts"],
-      },
+export default defineConfig({
+  test: {
+    include: ["src/**/*.test.ts"],
+    passWithNoTests: true,
+    coverage: {
+      include: ["src/**/*.ts"],
+      exclude: ["src/**/*.test.ts"],
     },
-  }),
-);
+  },
+});

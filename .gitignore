@@ -1,4 +1,4 @@
-# Editor/OS files 💻
+# System 💻
 .DS_Store
 *.swp
 *.swo
@@ -10,31 +10,28 @@ node_modules/
 .nx
 .venv
 
-# Environment variables 🎛️
+# Environment 🎛️
 .env
 
-# Terraform 🏗️
+# Infrastructure 🏗️
 .terraform/
-infrastructure/terraform/.terraform.lock.hcl
+.terraform.lock.hcl
 *.terraform-provider-*
 *.tfstate
 *.tfstate.*
 *.tfvars
 crash.log
+.kube
 
 # NX 🦭
 .nx/cache
 .nx/workspace-data
-.cursor/rules/nx-rules.mdc
-.github/instructions/nx.instructions.md
 
-# Database files 🛢️
+# Output 🛢️
 *.db
-
-# Calendar files 📆
 *.ics
 
-# Subrepositories 📚
+# Subrepositories 🌳
 applications/JimmyPaolini
 
 # Test Coverage 🧪
@@ -44,16 +41,13 @@ coverage/*
 
 # Type Coverage 🏷️
 type-coverage-report.txt
-**/type-coverage-report.txt
 
-# Kubernetes ☸️
-.kube/config
+# Agents 🤖
+.claude/worktrees
+.claude/settings.local.json
 
 # Other 🗑️
 tmp
 dist
 applications/caelundas/output
 vite.config.*.timestamp*
-
-.claude/worktrees
-.claude/settings.local.json
