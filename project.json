@@ -150,12 +150,12 @@
       "description": "Detect hardcoded secrets in git history using Gitleaks (detection only)",
       "executor": "nx:run-commands",
       "inputs": [
-        "{workspaceRoot}/.gitleaks.toml",
-        "{workspaceRoot}/.gitleaksignore",
+        "{workspaceRoot}/configuration/gitleaks.toml",
+        "{workspaceRoot}/configuration/.gitleaksignore",
         "default"
       ],
       "options": {
-        "command": "gitleaks git --staged --verbose --redact",
+        "command": "gitleaks git --staged --verbose --redact --config configuration/gitleaks.toml --gitleaks-ignore-path configuration",
         "cwd": "{projectRoot}"
       }
     },
