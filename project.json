@@ -204,10 +204,10 @@
       "cache": true,
       "configurations": {
         "check": {
-          "command": "markdownlint-cli2 '*.md' 'scripts/**/*.md' 'documentation/**/*.md' 'infrastructure/**/*.md'"
+          "command": "markdownlint-cli2 --config configuration/.markdownlint-cli2.jsonc '*.md' 'scripts/**/*.md' 'documentation/**/*.md' 'infrastructure/**/*.md'"
         },
         "write": {
-          "command": "markdownlint-cli2 --fix '*.md' 'scripts/**/*.md' 'documentation/**/*.md' 'infrastructure/**/*.md'"
+          "command": "markdownlint-cli2 --fix --config configuration/.markdownlint-cli2.jsonc '*.md' 'scripts/**/*.md' 'documentation/**/*.md' 'infrastructure/**/*.md'"
         }
       },
       "defaultConfiguration": "check",
@@ -218,7 +218,7 @@
         "{projectRoot}/documentation/**/*.md",
         "{projectRoot}/infrastructure/**/*.md",
         "{projectRoot}/scripts/**/*.md",
-        "{workspaceRoot}/.markdownlint-cli2.jsonc",
+        "{workspaceRoot}/configuration/.markdownlint-cli2.jsonc",
         "default"
       ],
       "options": {

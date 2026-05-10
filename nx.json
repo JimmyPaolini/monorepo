@@ -224,21 +224,21 @@
       "cache": true,
       "configurations": {
         "check": {
-          "command": "markdownlint-cli2 '{projectRoot}/**/*.md'"
+          "command": "markdownlint-cli2 --config configuration/.markdownlint-cli2.jsonc '{projectRoot}/**/*.md'"
         },
         "write": {
-          "command": "markdownlint-cli2 --fix '{projectRoot}/**/*.md'"
+          "command": "markdownlint-cli2 --fix --config configuration/.markdownlint-cli2.jsonc '{projectRoot}/**/*.md'"
         }
       },
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
       "inputs": [
         "{projectRoot}/**/*.md",
-        "{workspaceRoot}/.markdownlint-cli2.jsonc",
+        "{workspaceRoot}/configuration/.markdownlint-cli2.jsonc",
         "default"
       ],
       "options": {
-        "command": "markdownlint-cli2 '{projectRoot}/**/*.md'",
+        "command": "markdownlint-cli2 --config configuration/.markdownlint-cli2.jsonc '{projectRoot}/**/*.md'",
         "cwd": "{workspaceRoot}"
       }
     },
