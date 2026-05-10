@@ -4,7 +4,6 @@ import { Command, CommandRunner } from "nest-commander";
 import { inputSchema } from "./input.schema";
 
 import type { CalendarService } from "./calendar/calendar.service";
-import type { EventStoreService } from "./event-store/event-store.service";
 import type { PerfectiveEventsService } from "./perfective-events/perfective-events.service";
 import type { ProgressiveEventsService } from "./progressive-events/progressive-events.service";
 import type { ConfigService } from "@nestjs/config";
@@ -27,7 +26,6 @@ export class CaelundasCommand extends CommandRunner {
     private readonly perfectiveEventsService: PerfectiveEventsService,
     private readonly progressiveEventsService: ProgressiveEventsService,
     private readonly calendarService: CalendarService,
-    private readonly eventStoreService: EventStoreService,
   ) {
     super();
   }
@@ -44,15 +42,12 @@ export class CaelundasCommand extends CommandRunner {
     });
 
     const perfectiveEvents = this.perfectiveEventsService.detect(input);
-    this.eventStoreService.add(perfectiveEvents);
-
     const progressiveEvents =
       this.progressiveEventsService.detect(perfectiveEvents);
-    this.eventStoreService.add(progressiveEvents);
 
-    const allEvents = this.eventStoreService
-      .getAll()
-      .toSorted((a, b) => a.start.valueOf() - b.start.valueOf());
+    const allEvents = [...perfectiveEvents, ...progressiveEvents].toSorted(
+      (a, b) => a.start.valueOf() - b.start.valueOf(),
+    );
 
     await this.calendarService.write(allEvents, input);
   }

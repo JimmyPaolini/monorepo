@@ -54,6 +54,20 @@ export default [
       // Terraform providers and generated files
       "**/.terraform/**",
       ".github/copilot-instructions.md",
+      // Nx-generated agent skill folders
+      ".github/skills/monitor-ci/**",
+      ".github/skills/nx-generate/**",
+      ".github/skills/nx-import/**",
+      ".github/skills/nx-plugins/**",
+      ".github/skills/nx-run-tasks/**",
+      ".github/skills/nx-workspace/**",
+      "documentation/skills/monitor-ci/**",
+      "documentation/skills/nx-generate/**",
+      "documentation/skills/nx-import/**",
+      "documentation/skills/nx-plugins/**",
+      "documentation/skills/nx-run-tasks/**",
+      "documentation/skills/nx-workspace/**",
+      "documentation/skills/link-workspace-packages/**",
     ],
   },
 

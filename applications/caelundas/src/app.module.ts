@@ -4,7 +4,6 @@ import { ConfigModule } from "@nestjs/config";
 import { CaelundasCommand } from "./caelundas.command";
 import { CalendarModule } from "./calendar/calendar.module";
 import { EphemerisModule } from "./ephemeris/ephemeris.module";
-import { EventStoreModule } from "./event-store/event-store.module";
 import { AnnualSolarCycleModule } from "./events/annualSolarCycle/annual-solar-cycle.module";
 import { AspectsModule } from "./events/aspects/aspects.module";
 import { DailyCyclesModule } from "./events/dailyCycles/daily-cycles.module";
@@ -27,7 +26,6 @@ import { ProgressiveEventsModule } from "./progressive-events/progressive-events
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     EphemerisModule,
-    EventStoreModule,
     CalendarModule,
     AspectsModule,
     EclipsesModule,

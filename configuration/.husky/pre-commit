@@ -1,8 +1,3 @@
 set -e
 
-# Disable colors so lint-staged output is readable in VS Code's SCM error panel
-# without needing an ANSI preview renderer.
-unset FORCE_COLOR
-export NO_COLOR=1
-
 nx run monorepo:lint-staged

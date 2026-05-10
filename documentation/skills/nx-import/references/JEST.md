@@ -37,7 +37,7 @@ The preset provides shared Jest configuration (test patterns, ts-jest transform,
 **Root `jest.preset.js`:**
 
 ```js
-const nxPreset = require("@nx/jest/preset").default;
+const nxPreset = require('@nx/jest/preset').default;
 module.exports = { ...nxPreset };
 ```
 
@@ -45,8 +45,8 @@ module.exports = { ...nxPreset };
 
 ```ts
 export default {
-  displayName: "my-lib",
-  preset: "../../jest.preset.js",
+  displayName: 'my-lib',
+  preset: '../../jest.preset.js',
   // project-specific overrides
 };
 ```
@@ -59,7 +59,7 @@ The `preset` path is relative from the project root to the workspace root. Subdi
 
 #### Core (always needed)
 
-```bash
+```
 pnpm add -wD jest ts-jest @types/jest @nx/jest
 ```
 
@@ -70,7 +70,7 @@ pnpm add -wD jest ts-jest @types/jest @nx/jest
 
 #### React testing
 
-```bash
+```
 pnpm add -wD @testing-library/react @testing-library/jest-dom
 ```
 
@@ -78,7 +78,7 @@ pnpm add -wD @testing-library/react @testing-library/jest-dom
 
 Some React projects use Babel instead of ts-jest for JSX transformation:
 
-```bash
+```
 pnpm add -wD babel-jest @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript
 ```
 
@@ -86,7 +86,7 @@ pnpm add -wD babel-jest @babel/core @babel/preset-env @babel/preset-react @babel
 
 #### Vue testing
 
-```bash
+```
 pnpm add -wD @vue/test-utils
 ```
 
@@ -150,13 +150,13 @@ Projects migrating from Jest to Vitest (or workspaces with both) need different 
 **Jest** (in `test-setup.ts`):
 
 ```ts
-import "@testing-library/jest-dom";
+import '@testing-library/jest-dom';
 ```
 
 **Vitest** (in `test-setup.ts`):
 
 ```ts
-import "@testing-library/jest-dom/vitest";
+import '@testing-library/jest-dom/vitest';
 ```
 
 If the source used Jest but the dest workspace uses Vitest for that project type, update the import path. Also add `@testing-library/jest-dom` to tsconfig `types` array.

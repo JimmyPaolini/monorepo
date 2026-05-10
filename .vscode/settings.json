@@ -1,18 +1,18 @@
 {
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[jsonl]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[jupyter-notebook]": {
     "editor.codeActionsOnSave": {
@@ -83,9 +83,9 @@
   "chat.sendElementsToChat.enabled": true,
   "chat.tools.global.autoApprove": true,
   "chat.tools.terminal.autoApprove": {
+    "/.*\\.sql/": true,
     "/(npm|npx) (add|eslint|install|lint-staged|madge|markdownlint|prettier|test|tsc)/": true,
     "/(pnpm )?(yarn )?(npx )?(exec )?(run )?nx/": true,
-    "/.*\\.sql/": true,
     "/^Remove-Item\\b/i": false,
     "/bq (ls|show|query)/": true,
     "/docker (ps|images|logs|inspect|stats|exec|pull|info)/": true,
@@ -173,9 +173,56 @@
   "conventionalCommits.silentAutoCommit": false,
   "conventionalCommits.storeScopesGlobally": false,
   "cSpell.blockCheckingWhenLineLengthGreaterThan": 5000,
+  "cSpell.customDictionaries": {
+    "affirmations": {
+      "addWords": true,
+      "name": "affirmations",
+      "path": "${workspaceRoot}/configuration/.cspell/affirmations.txt"
+    },
+    "ai": {
+      "addWords": true,
+      "name": "ai",
+      "path": "${workspaceRoot}/configuration/.cspell/ai.txt"
+    },
+    "astronomy": {
+      "addWords": true,
+      "name": "astronomy",
+      "path": "${workspaceRoot}/configuration/.cspell/astronomy.txt"
+    },
+    "ics": {
+      "addWords": true,
+      "name": "ics",
+      "path": "${workspaceRoot}/configuration/.cspell/ics.txt"
+    },
+    "infrastructure": {
+      "addWords": true,
+      "name": "infrastructure",
+      "path": "${workspaceRoot}/configuration/.cspell/infrastructure.txt"
+    },
+    "lexico": {
+      "addWords": true,
+      "name": "lexico",
+      "path": "${workspaceRoot}/configuration/.cspell/lexico.txt"
+    },
+    "nasa-horizons": {
+      "addWords": true,
+      "name": "nasa-horizons",
+      "path": "${workspaceRoot}/configuration/.cspell/nasa-horizons.txt"
+    },
+    "python": {
+      "addWords": true,
+      "name": "python",
+      "path": "${workspaceRoot}/configuration/.cspell/python.txt"
+    },
+    "tooling": {
+      "addWords": true,
+      "name": "tooling",
+      "path": "${workspaceRoot}/configuration/.cspell/tooling.txt"
+    }
+  },
   "cSpell.diagnosticLevelFlaggedWords": "Information",
   "cSpell.enabled": true,
-  "cSpell.import": ["${workspaceFolder}/cspell.config.yaml"],
+  "cSpell.import": ["${workspaceFolder}/configuration/cspell.config.yaml"],
   "cSpell.maxDuplicateProblems": 5,
   "cSpell.numSuggestions": 3,
   "cSpell.suggestionMenuType": "quickFix",
@@ -310,14 +357,15 @@
     "rvest.vs-code-prettier-eslint": 2
   },
   "extensions.ignoreRecommendations": true,
+  "prettier.configPath": "configuration/prettier.config.ts",
   "extensions.webWorker": false,
   "files.associations": {
+    "**/.vscode/*.json": "jsonc",
     "**/*.cjs": "javascript",
     "**/*.cts": "typescript",
     "**/*.jsonc": "jsonc",
     "**/*.mjs": "javascript",
     "**/*.mts": "typescript",
-    "**/.vscode/*.json": "jsonc",
     "**/nx.json": "jsonc",
     "**/project.json": "jsonc",
     "**/tsconfig*.json": "jsonc"
@@ -332,10 +380,10 @@
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
   "files.watcherExclude": {
+    "**/__pycache__/**": true,
     "**/.git/objects/**": true,
     "**/.git/subtree-cache/**": true,
     "**/.venv/**": true,
-    "**/__pycache__/**": true,
     "**/build/**": true,
     "**/dist/**": true,
     "**/env/**": true,
@@ -369,6 +417,7 @@
   "git.showProgress": true,
   "git.terminalGitEditor": true,
   "git.verboseCommit": true,
+  "github-actions.use-enterprise": false,
   "github.copilot.chat.agent.autoFix": true,
   "github.copilot.chat.agent.currentEditorContext.enabled": true,
   "github.copilot.chat.agent.omitFileAttachmentContents": true,
@@ -443,7 +492,6 @@
   "github.copilot.nextEditSuggestions.fixes": true,
   "github.copilot.nextEditSuggestions.preferredModel": "Claude Haiku 4.5 (copilot)",
   "github.copilot.selectedCompletionModel": "Claude Haiku 4.5 (copilot)",
-  "github-actions.use-enterprise": false,
   "githubPullRequests.allowFetch": true,
   "githubPullRequests.assignCreated": "${user}",
   "githubPullRequests.codingAgent.autoCommitAndPush": true,
@@ -547,8 +595,8 @@
   "json.schemaDownload.enable": true,
   "json.schemaDownload.trustedDomains": {
     "https://cdn.statically.io": true,
-    "https://json.schemastore.org/": true,
     "https://json-schema.org/": true,
+    "https://json.schemastore.org/": true,
     "https://raw.githubusercontent.com/": true,
     "https://schemastore.azurewebsites.net/": true,
     "https://www.schemastore.org/": true
@@ -557,6 +605,10 @@
   "jsonc.format.enable": true,
   "jsonc.validate.enable": false,
   "material-icon-theme.files.associations": {
+    ".code-workspace*": "vscode",
+    ".ncurc.cjs": "npm",
+    ".size-limit.cjs": "disc",
+    ".yamllint": "yaml",
     "*.args.js": "excalidraw",
     "*.args.ts": "excalidraw",
     "*.command.ts": "exe",
@@ -591,10 +643,6 @@
     "*.utilities.ts": "gemini",
     "*.utils.ts": "gemini",
     "*enum.ts": "lib",
-    ".code-workspace*": "vscode",
-    ".ncurc.cjs": "npm",
-    ".size-limit.cjs": "disc",
-    ".yamllint": "yaml",
     "auth.guard.js": "authors",
     "database-client-config.json": "database",
     "devcontainer.json": "3d",
@@ -663,7 +711,7 @@
   "oxc.enable": true,
   "oxc.enable.oxfmt": true,
   "oxc.enable.oxlint": true,
-  "oxc.fmt.configPath": "oxfmt.config.ts",
+  "oxc.fmt.configPath": "configuration/oxfmt.config.ts",
   "oxc.path.node": "/Users/jimmypaolini/.nvm/versions/node/v22.22.2/bin/node",
   "oxc.path.oxfmt": "node_modules/.bin/oxfmt",
   "oxc.useExecPath": false,
@@ -727,15 +775,15 @@
   "scm.workingSets.default": "current",
   "scm.workingSets.enabled": true,
   "search.exclude": {
-    "**build**": true,
-    "**coverage**": true,
-    "**dist**": true,
-    "**public**": true,
-    "*.code-search": true,
     ".github/copilot-instructions.md": true,
     ".next": true,
     ".tox": true,
     ".venv": true,
+    "*.code-search": true,
+    "**build**": true,
+    "**coverage**": true,
+    "**dist**": true,
+    "**public**": true,
     "bower_components": true,
     "dist": true,
     "legacy": true,
