@@ -7,10 +7,15 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
 import { CalendarService } from "./calendar/calendar.service";
 
+import type { Environment } from "./input/input.types";
+import type { ConfigService } from "@nestjs/config";
+
 // Mock environment for testing
 const TEST_OUTPUT_DIR = "./output/e2e-test";
 
-const calendarService = new CalendarService();
+const calendarService = new CalendarService({
+  get: () => TEST_OUTPUT_DIR,
+} as unknown as ConfigService<Environment>);
 
 describe("calendar generation e2e", { timeout: 10_000 }, () => {
   // E2E tests may need more time
@@ -163,7 +168,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
   describe("input validation e2e", () => {
     it("should validate and transform coordinates correctly", async () => {
-      const { inputSchema } = await import("./input.schema");
+      const { inputSchema } = await import("./input/input.constants");
 
       const result = inputSchema.parse({
         latitude: "40.7128",
@@ -175,12 +180,12 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
       expect(result.latitude).toBe(40.7128);
       expect(result.longitude).toBe(-74.006);
       expect(result.timezone).toBe("America/New_York");
-      expect(result.start).toBeInstanceOf(Date);
-      expect(result.end).toBeInstanceOf(Date);
+      expect(moment.isMoment(result.start)).toBe(true);
+      expect(moment.isMoment(result.end)).toBe(true);
     });
 
     it("should infer correct timezone for different locations", async () => {
-      const { inputSchema } = await import("./input.schema");
+      const { inputSchema } = await import("./input/input.constants");
 
       // Tokyo
       const tokyoResult = inputSchema.parse({

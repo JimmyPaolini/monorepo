@@ -1,12 +1,17 @@
 import { mockDates } from "@caelundas/testing/mocks";
 import moment from "moment-timezone";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import { CalendarService } from "./calendar.service";
 
 import type { Event } from "./calendar.types";
+import type { Environment } from "@caelundas/src/input/input.types";
+import type { ConfigService } from "@nestjs/config";
 
-const service = new CalendarService();
+const configService = {
+  get: vi.fn(),
+} as unknown as ConfigService<Environment>;
+const service = new CalendarService(configService);
 
 describe("CalendarService", () => {
   mockDates();

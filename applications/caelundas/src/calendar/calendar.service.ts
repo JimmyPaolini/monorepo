@@ -2,19 +2,21 @@ import { writeFile } from "node:fs/promises";
 import path from "node:path";
 
 import { Injectable } from "@nestjs/common";
+import { ConfigService } from "@nestjs/config";
 import moment from "moment-timezone";
 
 import type {
   BuildCalendarFileContentParameters,
   Event,
 } from "./calendar.types";
-import type { Input } from "@caelundas/src/input.schema";
+import type { Environment, Input } from "@caelundas/src/input/input.types";
 
 /**
  *
  */
 @Injectable()
 export class CalendarService {
+  constructor(private readonly configService: ConfigService<Environment>) {}
   /**
    *
    */
@@ -27,7 +29,8 @@ export class CalendarService {
       description: "Astronomical events and celestial phenomena",
       timezone: input.timezone,
     });
-    const outputDir = process.env["OUTPUT_DIRECTORY"] ?? "./output";
+    const outputDir =
+      this.configService.get<string>("OUTPUT_DIRECTORY") ?? "./output";
     await writeFile(
       path.join(outputDir, calendarFilename),
       new TextEncoder().encode(calendarFileContent),

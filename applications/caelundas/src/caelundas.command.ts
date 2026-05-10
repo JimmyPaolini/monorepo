@@ -1,12 +1,10 @@
 import { Injectable } from "@nestjs/common";
 import { Command, CommandRunner } from "nest-commander";
 
-import { inputSchema } from "./input.schema";
-
 import type { CalendarService } from "./calendar/calendar.service";
+import type { InputService } from "./input/input.service";
 import type { PerfectiveEventsService } from "./perfective-events/perfective-events.service";
 import type { ProgressiveEventsService } from "./progressive-events/progressive-events.service";
-import type { ConfigService } from "@nestjs/config";
 
 /**
  * CLI entry point that orchestrates the full calendar generation pipeline.
@@ -22,7 +20,7 @@ import type { ConfigService } from "@nestjs/config";
 })
 export class CaelundasCommand extends CommandRunner {
   constructor(
-    private readonly configService: ConfigService,
+    private readonly inputService: InputService,
     private readonly perfectiveEventsService: PerfectiveEventsService,
     private readonly progressiveEventsService: ProgressiveEventsService,
     private readonly calendarService: CalendarService,
@@ -34,12 +32,7 @@ export class CaelundasCommand extends CommandRunner {
    *
    */
   async run(): Promise<void> {
-    const input = inputSchema.parse({
-      latitude: this.configService.get<string>("LATITUDE"),
-      longitude: this.configService.get<string>("LONGITUDE"),
-      start: this.configService.get<string>("START_DATE"),
-      end: this.configService.get<string>("END_DATE"),
-    });
+    const input = this.inputService.parse();
 
     const perfectiveEvents = this.perfectiveEventsService.detect(input);
     const progressiveEvents =

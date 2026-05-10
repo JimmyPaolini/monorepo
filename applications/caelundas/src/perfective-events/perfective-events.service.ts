@@ -15,7 +15,7 @@ import { Injectable } from "@nestjs/common";
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type { Coordinates } from "@caelundas/src/ephemeris/ephemeris.types";
 import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
-import type { Input } from "@caelundas/src/input.schema";
+import type { Input } from "@caelundas/src/input/input.types";
 
 /**
  *
