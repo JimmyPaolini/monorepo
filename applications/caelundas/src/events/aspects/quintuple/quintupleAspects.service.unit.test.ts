@@ -1,3 +1,4 @@
+import { MathService } from "@caelundas/src/math/math.service";
 import moment from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
@@ -6,7 +7,7 @@ import { QuintupleAspectsService } from "./quintuple-aspects.service";
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
 
-const service = new QuintupleAspectsService();
+const service = new QuintupleAspectsService(new MathService());
 
 describe("quintupleAspects.events", () => {
   describe("service.detect", () => {

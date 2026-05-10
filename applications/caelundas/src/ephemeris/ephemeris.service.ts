@@ -20,7 +20,7 @@
  */
 
 import { nodes } from "@caelundas/src/constants";
-import { normalizeDegrees } from "@caelundas/src/math.utilities";
+import { MathService } from "@caelundas/src/math/math.service";
 import { Injectable } from "@nestjs/common";
 import moment, { type Moment } from "moment-timezone";
 import { azalt, calc, constants, nod_aps_ut, pheno_ut, utc_to_jd } from "sweph";
@@ -65,6 +65,8 @@ initializeSwissEphemeris();
  */
 @Injectable()
 export class EphemerisService {
+  constructor(private readonly mathService: MathService) {}
+
   /**
    * Safely extracts coordinate data (longitude or latitude) from ephemeris at a timestamp.
    *
@@ -728,7 +730,7 @@ export class EphemerisService {
         throw new Error(`nod_aps_ut failed for lunar perigee: ${result.error}`);
       }
       return {
-        longitude: normalizeDegrees(result.data.perihelion[0]),
+        longitude: this.mathService.normalizeDegrees(result.data.perihelion[0]),
         latitude: 0,
       };
     }
@@ -751,8 +753,8 @@ export class EphemerisService {
 
     const longitude =
       node === "south lunar node"
-        ? normalizeDegrees(result.data[0] + 180)
-        : normalizeDegrees(result.data[0]);
+        ? this.mathService.normalizeDegrees(result.data[0] + 180)
+        : this.mathService.normalizeDegrees(result.data[0]);
 
     return { longitude, latitude: 0 };
   }

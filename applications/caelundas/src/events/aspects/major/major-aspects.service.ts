@@ -9,7 +9,7 @@
 
 import { majorAspects } from "@caelundas/src/constants";
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
-import { pairProgressiveEvents } from "@caelundas/src/progressive.utilities";
+import { ProgressiveEventsService } from "@caelundas/src/progressive-events/progressive-events.service";
 import { symbolByBody, symbolByMajorAspect } from "@caelundas/src/symbols";
 import { majorAspectBodies } from "@caelundas/src/types";
 import { Injectable } from "@nestjs/common";
@@ -315,12 +315,12 @@ export class MajorAspectsService {
    * @remarks
    * - Filters to events with "Major Aspect" category
    * - Groups by body pair and aspect type (e.g., "Sun-Square-Mars")
-   * - Pairs consecutive forming/dissolving events using {@link pairProgressiveEvents}
+   * - Pairs consecutive forming/dissolving events using {@link ProgressiveEventsService.pairProgressiveEvents}
    * - Skips unpaired events (e.g., aspect still active at end of range)
    * - Progressive events use simplified categories without "Forming"/"Dissolving"/"Perfective"
    * - Event summary format: `[body1Symbol][aspectSymbol][body2Symbol] [Body1] [aspect] [Body2]`
    *
-   * @see {@link pairProgressiveEvents} for pairing algorithm
+   * @see {@link ProgressiveEventsService.pairProgressiveEvents} for pairing algorithm
    * @see {@link getMajorAspectProgressiveEvent} for event formatting
    * @see {@link majorAspectBodies} for valid bodies
    * @see {@link majorAspects} for valid aspects
@@ -379,7 +379,7 @@ export class MajorAspectsService {
         event.categories.includes("Dissolving"),
       );
 
-      const pairs = pairProgressiveEvents(
+      const pairs = ProgressiveEventsService.pairProgressiveEvents(
         formingEvents,
         dissolvingEvents,
         `major aspect ${key}`,

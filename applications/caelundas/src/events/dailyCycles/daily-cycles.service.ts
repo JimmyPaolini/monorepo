@@ -8,11 +8,7 @@
  */
 
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
-import {
-  arcminutesPerDegree,
-  isMaximum,
-  isMinimum,
-} from "@caelundas/src/math.utilities";
+import { MathService } from "@caelundas/src/math/math.service";
 import { Injectable } from "@nestjs/common";
 
 import type { Event } from "@caelundas/src/calendar/calendar.types";
@@ -24,7 +20,7 @@ import type { Moment } from "moment-timezone";
  */
 @Injectable()
 export class DailyCyclesService {
-  static readonly sunRadiusDegrees = 16 / arcminutesPerDegree;
+  static readonly sunRadiusDegrees = 16 / MathService.arcminutesPerDegree;
   private static readonly solarCategories = [
     "Astronomy",
     "Astrology",
@@ -38,7 +34,10 @@ export class DailyCyclesService {
     "Lunar",
   ];
 
-  constructor(private readonly ephemerisService: EphemerisService) {}
+  constructor(
+    private readonly ephemerisService: EphemerisService,
+    private readonly mathService: MathService,
+  ) {}
 
   /**
    * Detects daily solar cycle events at a specific time point.
@@ -140,13 +139,13 @@ export class DailyCyclesService {
     if (this.isRise({ ...elevations })) {
       dailySolarCycleEvents.push(this.buildSunriseEvent(date));
     }
-    if (isMaximum({ ...elevations })) {
+    if (this.mathService.isMaximum({ ...elevations })) {
       dailySolarCycleEvents.push(this.buildSolarZenithEvent(date));
     }
     if (this.isSet({ ...elevations })) {
       dailySolarCycleEvents.push(this.buildSunsetEvent(date));
     }
-    if (isMinimum({ ...elevations })) {
+    if (this.mathService.isMinimum({ ...elevations })) {
       dailySolarCycleEvents.push(this.buildSolarNadirEvent(date));
     }
 
@@ -400,13 +399,13 @@ export class DailyCyclesService {
     if (this.isRise({ ...elevations })) {
       dailyLunarCycleEvents.push(this.buildMoonriseEvent(date));
     }
-    if (isMaximum({ ...elevations })) {
+    if (this.mathService.isMaximum({ ...elevations })) {
       dailyLunarCycleEvents.push(this.buildLunarZenithEvent(date));
     }
     if (this.isSet({ ...elevations })) {
       dailyLunarCycleEvents.push(this.buildMoonsetEvent(date));
     }
-    if (isMinimum({ ...elevations })) {
+    if (this.mathService.isMinimum({ ...elevations })) {
       dailyLunarCycleEvents.push(this.buildLunarNadirEvent(date));
     }
 

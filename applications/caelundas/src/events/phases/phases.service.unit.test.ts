@@ -1,4 +1,5 @@
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
+import { MathService } from "@caelundas/src/math/math.service";
 import {
   symbolByMartianPhase,
   symbolByMercurianPhase,
@@ -36,8 +37,9 @@ interface ServicePrivate {
   isBrightest: (args: object) => boolean;
 }
 
-const ephemerisService = new EphemerisService();
-const service = new PhasesService(ephemerisService);
+const mathService = new MathService();
+const ephemerisService = new EphemerisService(mathService);
+const service = new PhasesService(ephemerisService, mathService);
 const s = service as unknown as ServicePrivate;
 
 describe("phases.events", () => {

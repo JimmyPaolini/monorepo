@@ -1,5 +1,6 @@
 import { MARGIN_MINUTES } from "@caelundas/src/constants";
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
+import { MathService } from "@caelundas/src/math/math.service";
 import moment, { type Moment } from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
 
@@ -15,8 +16,9 @@ vi.mock("fs", () => ({
   },
 }));
 
-const ephemerisService = new EphemerisService();
-const service = new RetrogradesService(ephemerisService);
+const mathService = new MathService();
+const ephemerisService = new EphemerisService(mathService);
+const service = new RetrogradesService(ephemerisService, mathService);
 
 describe("retrogrades.events", () => {
   // Helper to create ephemeris data with margin

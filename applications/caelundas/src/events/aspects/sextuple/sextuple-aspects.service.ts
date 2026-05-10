@@ -1,4 +1,4 @@
-import { getCombinations } from "@caelundas/src/math.utilities";
+import { MathService } from "@caelundas/src/math/math.service";
 import { symbolByBody, symbolBySextupleAspect } from "@caelundas/src/symbols";
 import { sextupleAspectBodies } from "@caelundas/src/types";
 import { Injectable } from "@nestjs/common";
@@ -57,6 +57,8 @@ function determineCompoundPhaseFromSnapshots(
  */
 @Injectable()
 export class SextupleAspectsService {
+  constructor(private readonly mathService: MathService) {}
+
   /**
    * Checks if 6 bodies form a valid hexagram (Star of David) pattern.
    *
@@ -274,7 +276,7 @@ export class SextupleAspectsService {
     }
 
     // Try all combinations of 6 bodies
-    const combinations = getCombinations(bodies, 6);
+    const combinations = this.mathService.getCombinations(bodies, 6);
 
     for (const combo of combinations) {
       // Check if these 6 bodies form a hexagram pattern

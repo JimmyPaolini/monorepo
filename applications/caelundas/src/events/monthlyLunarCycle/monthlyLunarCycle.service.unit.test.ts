@@ -1,5 +1,6 @@
 import { MARGIN_MINUTES } from "@caelundas/src/constants";
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
+import { MathService } from "@caelundas/src/math/math.service";
 import { symbolByLunarPhase } from "@caelundas/src/symbols";
 import moment, { type Moment } from "moment-timezone";
 import { beforeEach, describe, expect, it, vi } from "vitest";
@@ -35,7 +36,8 @@ interface ServicePrivate {
   }) => boolean;
 }
 
-const ephemerisService = new EphemerisService();
+const mathService = new MathService();
+const ephemerisService = new EphemerisService(mathService);
 const service = new MonthlyLunarCycleService(ephemerisService);
 const s = service as unknown as ServicePrivate;
 

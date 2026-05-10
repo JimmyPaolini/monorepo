@@ -1,6 +1,6 @@
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
-import { isMaximum, isMinimum } from "@caelundas/src/math.utilities";
-import { pairProgressiveEvents } from "@caelundas/src/progressive.utilities";
+import { MathService } from "@caelundas/src/math/math.service";
+import { ProgressiveEventsService } from "@caelundas/src/progressive-events/progressive-events.service";
 import { Injectable } from "@nestjs/common";
 
 import {
@@ -48,7 +48,10 @@ export class AnnualSolarCycleService {
     "Annual Solar Cycle",
     "Solar",
   ];
-  constructor(private readonly ephemerisService: EphemerisService) {}
+  constructor(
+    private readonly ephemerisService: EphemerisService,
+    private readonly mathService: MathService,
+  ) {}
 
   /**
    * Detects annual solar cycle events at a specific minute.
@@ -237,11 +240,11 @@ export class AnnualSolarCycleService {
 
     const date = minute;
 
-    if (isMaximum({ ...distances })) {
+    if (this.mathService.isMaximum({ ...distances })) {
       solarApsisEvents.push(this.buildAphelionEvent(date));
     }
 
-    if (isMinimum({ ...distances })) {
+    if (this.mathService.isMinimum({ ...distances })) {
       solarApsisEvents.push(this.buildPerihelionEvent(date));
     }
 
@@ -713,7 +716,7 @@ export class AnnualSolarCycleService {
    *
    * @param events - Array of all solar events including apsis points
    * @returns Array of progressive events representing orbital segments
-   * @see {@link pairProgressiveEvents} for event pairing logic
+   * @see {@link ProgressiveEventsService.pairProgressiveEvents} for event pairing logic
    *
    * @remarks
    * Based on Kepler's second law: planets sweep out equal areas in equal times,
@@ -738,7 +741,7 @@ export class AnnualSolarCycleService {
     );
 
     // Advancing: Aphelion → Perihelion (Earth moving closer to sun, speeding up)
-    const advancingPairs = pairProgressiveEvents(
+    const advancingPairs = ProgressiveEventsService.pairProgressiveEvents(
       aphelionEvents,
       perihelionEvents,
       "Solar Advancing",
@@ -750,7 +753,7 @@ export class AnnualSolarCycleService {
     }
 
     // Retreating: Perihelion → Aphelion (Earth moving away from sun, slowing down)
-    const retreatingPairs = pairProgressiveEvents(
+    const retreatingPairs = ProgressiveEventsService.pairProgressiveEvents(
       perihelionEvents,
       aphelionEvents,
       "Solar Retreating",

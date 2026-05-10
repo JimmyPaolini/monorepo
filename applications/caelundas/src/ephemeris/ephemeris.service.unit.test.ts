@@ -1,3 +1,4 @@
+import { MathService } from "@caelundas/src/math/math.service";
 import moment, { type Moment } from "moment-timezone";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -91,7 +92,7 @@ describe("ephemeris.service", () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
-    service = new EphemerisService();
+    service = new EphemerisService(new MathService());
   });
 
   // #region Accessor: getCoordinateFromEphemeris

@@ -1,4 +1,5 @@
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
+import { MathService } from "@caelundas/src/math/math.service";
 import {
   decanIngressBodies,
   peakIngressBodies,
@@ -18,7 +19,8 @@ vi.mock("fs", () => ({
   },
 }));
 
-const ephemerisService = new EphemerisService();
+const mathService = new MathService();
+const ephemerisService = new EphemerisService(mathService);
 const service = new IngressesService(ephemerisService);
 
 interface ServicePrivate {

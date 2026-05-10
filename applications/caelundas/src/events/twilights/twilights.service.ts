@@ -1,6 +1,6 @@
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
-import { arcminutesPerDegree } from "@caelundas/src/math.utilities";
-import { pairProgressiveEvents } from "@caelundas/src/progressive.utilities";
+import { MathService } from "@caelundas/src/math/math.service";
+import { ProgressiveEventsService } from "@caelundas/src/progressive-events/progressive-events.service";
 import { Injectable } from "@nestjs/common";
 
 import type { Event } from "@caelundas/src/calendar/calendar.types";
@@ -24,7 +24,7 @@ export class TwilightsService {
     "nautical",
     "astronomical",
   ] as const satisfies readonly Twilight[];
-  static readonly sunRadiusDegrees = 16 / arcminutesPerDegree;
+  static readonly sunRadiusDegrees = 16 / MathService.arcminutesPerDegree;
   static readonly degreesByTwilight: Record<Twilight, number> = {
     civil: 6,
     nautical: 12,
@@ -238,7 +238,7 @@ export class TwilightsService {
    *
    * @param events - Array of all twilight events
    * @returns Array of progressive events representing twilight spans
-   * @see {@link pairProgressiveEvents} for pairing logic
+   * @see {@link ProgressiveEventsService.pairProgressiveEvents} for pairing logic
    */
   detectProgressive(events: Event[]): Event[] {
     const progressiveEvents: Event[] = [];
@@ -255,11 +255,12 @@ export class TwilightsService {
     const nauticalDawnEvents = twilightEvents.filter((event) =>
       event.categories.includes("Nautical Dawn"),
     );
-    const astronomicalTwilightMorningPairs = pairProgressiveEvents(
-      astronomicalDawnEvents,
-      nauticalDawnEvents,
-      "Astronomical Twilight (Morning)",
-    );
+    const astronomicalTwilightMorningPairs =
+      ProgressiveEventsService.pairProgressiveEvents(
+        astronomicalDawnEvents,
+        nauticalDawnEvents,
+        "Astronomical Twilight (Morning)",
+      );
     for (const [beginning, ending] of astronomicalTwilightMorningPairs) {
       progressiveEvents.push(
         this.getAstronomicalTwilightMorningDurationEvent(beginning, ending),
@@ -270,11 +271,12 @@ export class TwilightsService {
     const civilDawnEvents = twilightEvents.filter((event) =>
       event.categories.includes("Civil Dawn"),
     );
-    const nauticalTwilightMorningPairs = pairProgressiveEvents(
-      nauticalDawnEvents,
-      civilDawnEvents,
-      "Nautical Twilight (Morning)",
-    );
+    const nauticalTwilightMorningPairs =
+      ProgressiveEventsService.pairProgressiveEvents(
+        nauticalDawnEvents,
+        civilDawnEvents,
+        "Nautical Twilight (Morning)",
+      );
     for (const [beginning, ending] of nauticalTwilightMorningPairs) {
       progressiveEvents.push(
         this.getNauticalTwilightMorningDurationEvent(beginning, ending),
@@ -285,7 +287,7 @@ export class TwilightsService {
     const civilDuskEvents = twilightEvents.filter((event) =>
       event.categories.includes("Civil Dusk"),
     );
-    const daylightPairs = pairProgressiveEvents(
+    const daylightPairs = ProgressiveEventsService.pairProgressiveEvents(
       civilDawnEvents,
       civilDuskEvents,
       "Daylight",
@@ -298,11 +300,12 @@ export class TwilightsService {
     const nauticalDuskEvents = twilightEvents.filter((event) =>
       event.categories.includes("Nautical Dusk"),
     );
-    const nauticalTwilightEveningPairs = pairProgressiveEvents(
-      civilDuskEvents,
-      nauticalDuskEvents,
-      "Nautical Twilight (Evening)",
-    );
+    const nauticalTwilightEveningPairs =
+      ProgressiveEventsService.pairProgressiveEvents(
+        civilDuskEvents,
+        nauticalDuskEvents,
+        "Nautical Twilight (Evening)",
+      );
     for (const [beginning, ending] of nauticalTwilightEveningPairs) {
       progressiveEvents.push(
         this.getNauticalTwilightEveningDurationEvent(beginning, ending),
@@ -313,11 +316,12 @@ export class TwilightsService {
     const astronomicalDuskEvents = twilightEvents.filter((event) =>
       event.categories.includes("Astronomical Dusk"),
     );
-    const astronomicalTwilightEveningPairs = pairProgressiveEvents(
-      nauticalDuskEvents,
-      astronomicalDuskEvents,
-      "Astronomical Twilight (Evening)",
-    );
+    const astronomicalTwilightEveningPairs =
+      ProgressiveEventsService.pairProgressiveEvents(
+        nauticalDuskEvents,
+        astronomicalDuskEvents,
+        "Astronomical Twilight (Evening)",
+      );
     for (const [beginning, ending] of astronomicalTwilightEveningPairs) {
       progressiveEvents.push(
         this.getAstronomicalTwilightEveningDurationEvent(beginning, ending),
@@ -325,7 +329,7 @@ export class TwilightsService {
     }
 
     // Night: Astronomical Dusk → Astronomical Dawn (next day)
-    const nightPairs = pairProgressiveEvents(
+    const nightPairs = ProgressiveEventsService.pairProgressiveEvents(
       astronomicalDuskEvents,
       astronomicalDawnEvents,
       "Night",

@@ -13,6 +13,7 @@ import { MonthlyLunarCycleModule } from "./events/monthlyLunarCycle/monthly-luna
 import { PhasesModule } from "./events/phases/phases.module";
 import { RetrogradesModule } from "./events/retrogrades/retrogrades.module";
 import { TwilightsModule } from "./events/twilights/twilights.module";
+import { MathModule } from "./math/math.module";
 import { PerfectiveEventsModule } from "./perfective-events/perfective-events.module";
 import { ProgressiveEventsModule } from "./progressive-events/progressive-events.module";
 
@@ -25,6 +26,7 @@ import { ProgressiveEventsModule } from "./progressive-events/progressive-events
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
+    MathModule,
     EphemerisModule,
     CalendarModule,
     AspectsModule,

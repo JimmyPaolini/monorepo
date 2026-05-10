@@ -1,5 +1,6 @@
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import { AspectsUtilitiesService } from "@caelundas/src/events/aspects/aspects.utilities";
+import { MathService } from "@caelundas/src/math/math.service";
 import { majorAspectBodies } from "@caelundas/src/types";
 import moment, { type Moment } from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
@@ -16,8 +17,9 @@ vi.mock("fs", () => ({
   },
 }));
 
-const aspectsUtilitiesService = new AspectsUtilitiesService();
-const ephemerisService = new EphemerisService();
+const mathService = new MathService();
+const aspectsUtilitiesService = new AspectsUtilitiesService(mathService);
+const ephemerisService = new EphemerisService(mathService);
 const service = new MajorAspectsService(
   aspectsUtilitiesService,
   ephemerisService,

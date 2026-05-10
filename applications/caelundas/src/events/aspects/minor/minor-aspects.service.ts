@@ -1,6 +1,6 @@
 import { minorAspects } from "@caelundas/src/constants";
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
-import { pairProgressiveEvents } from "@caelundas/src/progressive.utilities";
+import { ProgressiveEventsService } from "@caelundas/src/progressive-events/progressive-events.service";
 import { symbolByBody, symbolByMinorAspect } from "@caelundas/src/symbols";
 import { minorAspectBodies } from "@caelundas/src/types";
 import { Injectable } from "@nestjs/common";
@@ -264,7 +264,7 @@ export class MinorAspectsService {
    *
    * @param events - All events to process (non-aspect events are filtered out)
    * @returns Array of progressive events spanning from forming to dissolving
-   * @see {@link pairProgressiveEvents} for forming/dissolving pairing logic
+   * @see {@link ProgressiveEventsService.pairProgressiveEvents} for forming/dissolving pairing logic
    */
   detectProgressive(events: Event[]): Event[] {
     const progressiveEvents: Event[] = [];
@@ -309,7 +309,7 @@ export class MinorAspectsService {
         event.categories.includes("Dissolving"),
       );
 
-      const pairs = pairProgressiveEvents(
+      const pairs = ProgressiveEventsService.pairProgressiveEvents(
         formingEvents,
         dissolvingEvents,
         `minor aspect ${key}`,

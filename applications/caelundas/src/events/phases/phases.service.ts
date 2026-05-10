@@ -1,8 +1,8 @@
 import { MARGIN_MINUTES } from "@caelundas/src/constants";
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import { TwilightsService } from "@caelundas/src/events/twilights/twilights.service";
-import { getAngle, isMaximum } from "@caelundas/src/math.utilities";
-import { pairProgressiveEvents } from "@caelundas/src/progressive.utilities";
+import { MathService } from "@caelundas/src/math/math.service";
+import { ProgressiveEventsService } from "@caelundas/src/progressive-events/progressive-events.service";
 import {
   symbolByMartianPhase,
   symbolByMercurianPhase,
@@ -54,7 +54,10 @@ export class PhasesService {
     "Planetary Phase",
   ];
 
-  constructor(private readonly ephemerisService: EphemerisService) {}
+  constructor(
+    private readonly ephemerisService: EphemerisService,
+    private readonly mathService: MathService,
+  ) {}
 
   private formatTimeZoneIso(date: Moment, timezone: string): string {
     return date.clone().tz(timezone).toISOString(true);
@@ -926,7 +929,7 @@ export class PhasesService {
    *
    * @param events - All events to process (non-planetary-phase events filtered out)
    * @returns Array of visibility progressive events
-   * @see {@link pairProgressiveEvents} for rise/set pairing logic
+   * @see {@link ProgressiveEventsService.pairProgressiveEvents} for rise/set pairing logic
    */
   detectProgressive(events: Event[]): Event[] {
     const progressiveEvents: Event[] = [];
@@ -973,11 +976,12 @@ export class PhasesService {
     const morningSetEvents = events.filter((event) =>
       event.categories.includes("Morning Set"),
     );
-    const morningVisibilityPairs = pairProgressiveEvents(
-      morningRiseEvents,
-      morningSetEvents,
-      "Venus Morning Visibility",
-    );
+    const morningVisibilityPairs =
+      ProgressiveEventsService.pairProgressiveEvents(
+        morningRiseEvents,
+        morningSetEvents,
+        "Venus Morning Visibility",
+      );
     for (const [beginning, ending] of morningVisibilityPairs) {
       progressiveEvents.push(
         this.getVenusMorningVisibilityDurationEvent(beginning, ending),
@@ -991,11 +995,12 @@ export class PhasesService {
     const eveningSetEvents = events.filter((event) =>
       event.categories.includes("Evening Set"),
     );
-    const eveningVisibilityPairs = pairProgressiveEvents(
-      eveningRiseEvents,
-      eveningSetEvents,
-      "Venus Evening Visibility",
-    );
+    const eveningVisibilityPairs =
+      ProgressiveEventsService.pairProgressiveEvents(
+        eveningRiseEvents,
+        eveningSetEvents,
+        "Venus Evening Visibility",
+      );
     for (const [beginning, ending] of eveningVisibilityPairs) {
       progressiveEvents.push(
         this.getVenusEveningVisibilityDurationEvent(beginning, ending),
@@ -1015,11 +1020,12 @@ export class PhasesService {
     const morningSetEvents = events.filter((event) =>
       event.categories.includes("Morning Set"),
     );
-    const morningVisibilityPairs = pairProgressiveEvents(
-      morningRiseEvents,
-      morningSetEvents,
-      "Mercury Morning Visibility",
-    );
+    const morningVisibilityPairs =
+      ProgressiveEventsService.pairProgressiveEvents(
+        morningRiseEvents,
+        morningSetEvents,
+        "Mercury Morning Visibility",
+      );
     for (const [beginning, ending] of morningVisibilityPairs) {
       progressiveEvents.push(
         this.getMercuryMorningVisibilityDurationEvent(beginning, ending),
@@ -1033,11 +1039,12 @@ export class PhasesService {
     const eveningSetEvents = events.filter((event) =>
       event.categories.includes("Evening Set"),
     );
-    const eveningVisibilityPairs = pairProgressiveEvents(
-      eveningRiseEvents,
-      eveningSetEvents,
-      "Mercury Evening Visibility",
-    );
+    const eveningVisibilityPairs =
+      ProgressiveEventsService.pairProgressiveEvents(
+        eveningRiseEvents,
+        eveningSetEvents,
+        "Mercury Evening Visibility",
+      );
     for (const [beginning, ending] of eveningVisibilityPairs) {
       progressiveEvents.push(
         this.getMercuryEveningVisibilityDurationEvent(beginning, ending),
@@ -1057,11 +1064,12 @@ export class PhasesService {
     const morningSetEvents = events.filter((event) =>
       event.categories.includes("Morning Set"),
     );
-    const morningVisibilityPairs = pairProgressiveEvents(
-      morningRiseEvents,
-      morningSetEvents,
-      "Mars Morning Visibility",
-    );
+    const morningVisibilityPairs =
+      ProgressiveEventsService.pairProgressiveEvents(
+        morningRiseEvents,
+        morningSetEvents,
+        "Mars Morning Visibility",
+      );
     for (const [beginning, ending] of morningVisibilityPairs) {
       progressiveEvents.push(
         this.getMarsMorningVisibilityDurationEvent(beginning, ending),
@@ -1075,11 +1083,12 @@ export class PhasesService {
     const eveningSetEvents = events.filter((event) =>
       event.categories.includes("Evening Set"),
     );
-    const eveningVisibilityPairs = pairProgressiveEvents(
-      eveningRiseEvents,
-      eveningSetEvents,
-      "Mars Evening Visibility",
-    );
+    const eveningVisibilityPairs =
+      ProgressiveEventsService.pairProgressiveEvents(
+        eveningRiseEvents,
+        eveningSetEvents,
+        "Mars Evening Visibility",
+      );
     for (const [beginning, ending] of eveningVisibilityPairs) {
       progressiveEvents.push(
         this.getMarsEveningVisibilityDurationEvent(beginning, ending),
@@ -1343,14 +1352,20 @@ export class PhasesService {
       previousLongitudeSun,
     } = args;
 
-    const currentAngle = getAngle(currentLongitudePlanet, currentLongitudeSun);
-    const nextAngle = getAngle(nextLongitudePlanet, nextLongitudeSun);
-    const previousAngle = getAngle(
+    const currentAngle = this.mathService.getAngle(
+      currentLongitudePlanet,
+      currentLongitudeSun,
+    );
+    const nextAngle = this.mathService.getAngle(
+      nextLongitudePlanet,
+      nextLongitudeSun,
+    );
+    const previousAngle = this.mathService.getAngle(
       previousLongitudePlanet,
       previousLongitudeSun,
     );
 
-    return isMaximum({
+    return this.mathService.isMaximum({
       current: currentAngle,
       next: nextAngle,
       previous: previousAngle,
@@ -1396,11 +1411,14 @@ export class PhasesService {
       previousLongitudeSun,
     } = args;
 
-    const previousAngle = getAngle(
+    const previousAngle = this.mathService.getAngle(
       previousLongitudePlanet,
       previousLongitudeSun,
     );
-    const currentAngle = getAngle(currentLongitudePlanet, currentLongitudeSun);
+    const currentAngle = this.mathService.getAngle(
+      currentLongitudePlanet,
+      currentLongitudeSun,
+    );
 
     return (
       previousAngle < this.riseSetThreshold &&
@@ -1421,11 +1439,14 @@ export class PhasesService {
       previousLongitudeSun,
     } = args;
 
-    const previousAngle = getAngle(
+    const previousAngle = this.mathService.getAngle(
       previousLongitudePlanet,
       previousLongitudeSun,
     );
-    const currentAngle = getAngle(currentLongitudePlanet, currentLongitudeSun);
+    const currentAngle = this.mathService.getAngle(
+      currentLongitudePlanet,
+      currentLongitudeSun,
+    );
 
     return (
       previousAngle > this.riseSetThreshold &&

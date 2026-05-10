@@ -10,8 +10,8 @@
 
 import { MARGIN_MINUTES } from "@caelundas/src/constants";
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
-import { normalizeForComparison } from "@caelundas/src/math.utilities";
-import { pairProgressiveEvents } from "@caelundas/src/progressive.utilities";
+import { MathService } from "@caelundas/src/math/math.service";
+import { ProgressiveEventsService } from "@caelundas/src/progressive-events/progressive-events.service";
 import { symbolByBody, symbolByOrbitalDirection } from "@caelundas/src/symbols";
 import { retrogradeBodies } from "@caelundas/src/types";
 import { Injectable } from "@nestjs/common";
@@ -36,7 +36,10 @@ import type { Moment } from "moment-timezone";
 @Injectable()
 export class RetrogradesService {
   private static readonly categories = ["Astronomy", "Astrology", "Direction"];
-  constructor(private readonly ephemerisService: EphemerisService) {}
+  constructor(
+    private readonly ephemerisService: EphemerisService,
+    private readonly mathService: MathService,
+  ) {}
 
   /**
    * Detects retrograde and direct station events at a specific time point.
@@ -230,7 +233,7 @@ export class RetrogradesService {
    * - Progressive events use "Retrogrades" category (plural) vs "Retrograde" for stations
    * - Summary format: `[bodySymbol] ↩️ [Body] Retrograde`
    *
-   * @see {@link pairProgressiveEvents} for pairing algorithm
+   * @see {@link ProgressiveEventsService.pairProgressiveEvents} for pairing algorithm
    * @see {@link getRetrogradeDurationEvent} for event formatting
    * @see {@link retrogradeBodies} for planets that can go retrograde
    *
@@ -265,7 +268,7 @@ export class RetrogradesService {
         event.description.includes(`Direct`),
       );
 
-      const pairs = pairProgressiveEvents(
+      const pairs = ProgressiveEventsService.pairProgressiveEvents(
         beginnings,
         endings,
         `${planet} retrograde`,
@@ -318,15 +321,16 @@ export class RetrogradesService {
     const { currentLongitude, previousLongitudes, nextLongitudes } = args;
 
     const hasBeenDirect = previousLongitudes.every((previousLongitude) => {
-      const previousLongitudeNormalized = normalizeForComparison(
-        previousLongitude,
-        currentLongitude,
-      );
+      const previousLongitudeNormalized =
+        this.mathService.normalizeForComparison(
+          previousLongitude,
+          currentLongitude,
+        );
       return previousLongitudeNormalized < currentLongitude;
     });
 
     const willBeRetrograde = nextLongitudes.every((nextLongitude) => {
-      const nextLongitudeNormalized = normalizeForComparison(
+      const nextLongitudeNormalized = this.mathService.normalizeForComparison(
         nextLongitude,
         currentLongitude,
       );
@@ -344,15 +348,16 @@ export class RetrogradesService {
     const { currentLongitude, previousLongitudes, nextLongitudes } = args;
 
     const hasBeenRetrograde = previousLongitudes.every((previousLongitude) => {
-      const previousLongitudeNormalized = normalizeForComparison(
-        previousLongitude,
-        currentLongitude,
-      );
+      const previousLongitudeNormalized =
+        this.mathService.normalizeForComparison(
+          previousLongitude,
+          currentLongitude,
+        );
       return previousLongitudeNormalized > currentLongitude;
     });
 
     const willBeDirect = nextLongitudes.every((nextLongitude) => {
-      const nextLongitudeNormalized = normalizeForComparison(
+      const nextLongitudeNormalized = this.mathService.normalizeForComparison(
         nextLongitude,
         currentLongitude,
       );

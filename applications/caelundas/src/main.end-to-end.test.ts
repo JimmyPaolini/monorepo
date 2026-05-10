@@ -238,9 +238,11 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
         await import("./events/aspects/aspects.utilities");
       const { EphemerisService } =
         await import("./ephemeris/ephemeris.service");
+      const { MathService } = await import("./math/math.service");
+      const mathService = new MathService();
       const service = new MajorAspectsService(
-        new AspectsUtilitiesService(),
-        new EphemerisService(),
+        new AspectsUtilitiesService(mathService),
+        new EphemerisService(mathService),
       );
 
       // Test exact aspects
@@ -270,7 +272,8 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
     });
 
     it("should calculate progressive event pairs correctly", async () => {
-      const { pairProgressiveEvents } = await import("./progressive.utilities");
+      const { ProgressiveEventsService } =
+        await import("./progressive-events/progressive-events.service");
 
       const beginnings = [
         {
@@ -306,7 +309,11 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
         },
       ];
 
-      const pairs = pairProgressiveEvents(beginnings, endings, "test");
+      const pairs = ProgressiveEventsService.pairProgressiveEvents(
+        beginnings,
+        endings,
+        "test",
+      );
 
       expect(pairs.length).toBe(2);
       expect(pairs[0]?.[0]?.start.toISOString()).toBe(
@@ -326,7 +333,12 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
   describe("math utilities e2e", () => {
     it("should normalize degrees correctly across edge cases", async () => {
-      const { normalizeDegrees, getAngle } = await import("./math.utilities");
+      const { MathService } = await import("./math/math.service");
+      const mathService = new MathService();
+      const normalizeDegrees = (d: number): number =>
+        mathService.normalizeDegrees(d);
+      const getAngle = (a: number, b: number): number =>
+        mathService.getAngle(a, b);
 
       // Edge case: wrapping at 360
       expect(normalizeDegrees(360)).toBe(0);
@@ -342,7 +354,10 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
     });
 
     it("should generate correct combinations", async () => {
-      const { getCombinations } = await import("./math.utilities");
+      const { MathService } = await import("./math/math.service");
+      const mathService = new MathService();
+      const getCombinations = <T>(arr: T[], k: number): T[][] =>
+        mathService.getCombinations(arr, k);
 
       const planets = ["sun", "moon", "mercury", "venus", "mars"];
 

@@ -1,5 +1,5 @@
 import { angleByAspect, orbByAspect } from "@caelundas/src/constants";
-import { getAngle } from "@caelundas/src/math.utilities";
+import { MathService } from "@caelundas/src/math/math.service";
 import { Injectable } from "@nestjs/common";
 
 import type { Aspect, AspectPhase } from "@caelundas/src/types";
@@ -14,6 +14,8 @@ import type { Aspect, AspectPhase } from "@caelundas/src/types";
  */
 @Injectable()
 export class AspectsUtilitiesService {
+  constructor(private readonly mathService: MathService) {}
+
   /**
    * Returns `true` when the angular separation between two bodies falls within
    * the configured orb for the given aspect.
@@ -26,7 +28,7 @@ export class AspectsUtilitiesService {
     aspect: Aspect;
   }): boolean {
     const { aspect, longitudeBody1, longitudeBody2 } = args;
-    const angle = getAngle(longitudeBody1, longitudeBody2);
+    const angle = this.mathService.getAngle(longitudeBody1, longitudeBody2);
     const difference = Math.abs(angle - angleByAspect[aspect]);
     return difference < orbByAspect[aspect];
   }
@@ -62,15 +64,18 @@ export class AspectsUtilitiesService {
         previousLongitudeBody2,
       } = args;
 
-      const previousAngle = getAngle(
+      const previousAngle = this.mathService.getAngle(
         previousLongitudeBody1,
         previousLongitudeBody2,
       );
-      const currentAngle = getAngle(
+      const currentAngle = this.mathService.getAngle(
         currentLongitudeBody1,
         currentLongitudeBody2,
       );
-      const nextAngle = getAngle(nextLongitudeBody1, nextLongitudeBody2);
+      const nextAngle = this.mathService.getAngle(
+        nextLongitudeBody1,
+        nextLongitudeBody2,
+      );
 
       for (const aspect of aspectsToDetect) {
         const aspectAngle = angleByAspect[aspect];

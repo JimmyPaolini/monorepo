@@ -1,6 +1,6 @@
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
-import { getAngle, isMaximum, isMinimum } from "@caelundas/src/math.utilities";
-import { pairProgressiveEvents } from "@caelundas/src/progressive.utilities";
+import { MathService } from "@caelundas/src/math/math.service";
+import { ProgressiveEventsService } from "@caelundas/src/progressive-events/progressive-events.service";
 import { Injectable } from "@nestjs/common";
 
 import type { Event } from "@caelundas/src/calendar/calendar.types";
@@ -20,7 +20,10 @@ type EclipseFrame = "geocentric" | "topocentric";
  */
 @Injectable()
 export class EclipsesService {
-  constructor(private readonly ephemerisService: EphemerisService) {}
+  constructor(
+    private readonly ephemerisService: EphemerisService,
+    private readonly mathService: MathService,
+  ) {}
 
   private formatTimeZoneIso(date: Moment, timezone: string): string {
     return date.clone().tz(timezone).toISOString(true);
@@ -520,7 +523,7 @@ export class EclipsesService {
         event.description.includes("ends"),
       );
 
-      const solarPairs = pairProgressiveEvents(
+      const solarPairs = ProgressiveEventsService.pairProgressiveEvents(
         solarBeginnings,
         solarEndings,
         `solar eclipse (${frameLabel.toLowerCase()})`,
@@ -545,7 +548,7 @@ export class EclipsesService {
         event.description.includes("ends"),
       );
 
-      const lunarPairs = pairProgressiveEvents(
+      const lunarPairs = ProgressiveEventsService.pairProgressiveEvents(
         lunarBeginnings,
         lunarEndings,
         `lunar eclipse (${frameLabel.toLowerCase()})`,
@@ -616,23 +619,26 @@ export class EclipsesService {
       previousLongitudeSun,
     } = args;
 
-    const currentLongitudeAngle = getAngle(
+    const currentLongitudeAngle = this.mathService.getAngle(
       currentLongitudeMoon,
       currentLongitudeSun,
     );
-    const nextLongitudeAngle = getAngle(nextLongitudeMoon, nextLongitudeSun);
-    const previousLongitudeAngle = getAngle(
+    const nextLongitudeAngle = this.mathService.getAngle(
+      nextLongitudeMoon,
+      nextLongitudeSun,
+    );
+    const previousLongitudeAngle = this.mathService.getAngle(
       previousLongitudeMoon,
       previousLongitudeSun,
     );
 
-    const isMinimumLongitudeAngle = isMinimum({
+    const isMinimumLongitudeAngle = this.mathService.isMinimum({
       current: currentLongitudeAngle,
       previous: previousLongitudeAngle,
       next: nextLongitudeAngle,
     });
 
-    const currentLatitudeAngle = getAngle(
+    const currentLatitudeAngle = this.mathService.getAngle(
       currentLatitudeMoon,
       currentLatitudeSun,
     );
@@ -685,11 +691,11 @@ export class EclipsesService {
       currentLongitudeSun,
     } = args;
 
-    const currentLongitudeAngle = getAngle(
+    const currentLongitudeAngle = this.mathService.getAngle(
       currentLongitudeMoon,
       currentLongitudeSun,
     );
-    const currentLatitudeAngle = getAngle(
+    const currentLatitudeAngle = this.mathService.getAngle(
       currentLatitudeMoon,
       currentLatitudeSun,
     );
@@ -726,23 +732,26 @@ export class EclipsesService {
       previousLongitudeSun,
     } = args;
 
-    const currentLongitudeAngle = getAngle(
+    const currentLongitudeAngle = this.mathService.getAngle(
       currentLongitudeMoon,
       currentLongitudeSun,
     );
-    const nextLongitudeAngle = getAngle(nextLongitudeMoon, nextLongitudeSun);
-    const previousLongitudeAngle = getAngle(
+    const nextLongitudeAngle = this.mathService.getAngle(
+      nextLongitudeMoon,
+      nextLongitudeSun,
+    );
+    const previousLongitudeAngle = this.mathService.getAngle(
       previousLongitudeMoon,
       previousLongitudeSun,
     );
 
-    const isMaximumLongitudeAngle = isMaximum({
+    const isMaximumLongitudeAngle = this.mathService.isMaximum({
       current: currentLongitudeAngle,
       previous: previousLongitudeAngle,
       next: nextLongitudeAngle,
     });
 
-    const currentLatitudeAngle = getAngle(
+    const currentLatitudeAngle = this.mathService.getAngle(
       currentLatitudeMoon,
       currentLatitudeSun,
     );
@@ -796,11 +805,11 @@ export class EclipsesService {
       currentLongitudeSun,
     } = args;
 
-    const currentLongitudeAngle = getAngle(
+    const currentLongitudeAngle = this.mathService.getAngle(
       currentLongitudeMoon,
       currentLongitudeSun,
     );
-    const currentLatitudeAngle = getAngle(
+    const currentLatitudeAngle = this.mathService.getAngle(
       currentLatitudeMoon,
       currentLatitudeSun,
     );

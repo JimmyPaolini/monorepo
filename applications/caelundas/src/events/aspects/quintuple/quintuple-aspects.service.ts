@@ -1,4 +1,4 @@
-import { getCombinations } from "@caelundas/src/math.utilities";
+import { MathService } from "@caelundas/src/math/math.service";
 import { symbolByBody, symbolByQuintupleAspect } from "@caelundas/src/symbols";
 import { quintupleAspectBodies } from "@caelundas/src/types";
 import { Injectable } from "@nestjs/common";
@@ -57,6 +57,8 @@ function determineCompoundPhaseFromSnapshots(
  */
 @Injectable()
 export class QuintupleAspectsService {
+  constructor(private readonly mathService: MathService) {}
+
   /**
    * Checks if 5 bodies form a valid pentagram pattern (5-pointed star).
    *
@@ -222,7 +224,7 @@ export class QuintupleAspectsService {
     }
 
     // Try all combinations of 5 bodies
-    const combinations = getCombinations(bodies, 5);
+    const combinations = this.mathService.getCombinations(bodies, 5);
 
     for (const combo of combinations) {
       // Check if these 5 bodies form a pentagram pattern

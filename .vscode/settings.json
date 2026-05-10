@@ -135,7 +135,6 @@
   "chat.useAgentSkills": true,
   "chat.useNestedAgentsMdFiles": true,
   "chat.viewProgressBadge.enabled": true,
-  "chat.viewSessions.orientation": "stacked",
   "containers.containers.label": "ContainerName",
   "containers.containers.sortBy": "Label",
   "containers.images.label": "FullTag",
@@ -833,7 +832,7 @@
   "workbench.editor.preferHistoryBasedLanguageDetection": false,
   "workbench.editor.showTabIndex": false,
   "workbench.editor.tabSizing": "fit",
-  "workbench.editor.wrapTabs": false,
+  "workbench.editor.wrapTabs": true,
   "workbench.editorAssociations": {
     "*.html": "default",
     "file:/**/*.csv": "jupyter-data-wrangler"

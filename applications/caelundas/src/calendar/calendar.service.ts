@@ -1,6 +1,6 @@
 import { writeFile } from "node:fs/promises";
+import path from "node:path";
 
-import { getOutputPath } from "@caelundas/src/output.utilities";
 import { Injectable } from "@nestjs/common";
 import moment from "moment-timezone";
 
@@ -27,8 +27,9 @@ export class CalendarService {
       description: "Astronomical events and celestial phenomena",
       timezone: input.timezone,
     });
+    const outputDir = process.env["OUTPUT_DIRECTORY"] ?? "./output";
     await writeFile(
-      getOutputPath(calendarFilename),
+      path.join(outputDir, calendarFilename),
       new TextEncoder().encode(calendarFileContent),
     );
     console.log(
