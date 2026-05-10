@@ -1,11 +1,19 @@
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { DatetimeService } from "./datetime.service";
 
-const service = new DatetimeService();
-
 describe("DatetimeService", () => {
+  let service: DatetimeService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [DatetimeService],
+    }).compile();
+    service = module.get(DatetimeService);
+  });
+
   describe("generateMinutes", () => {
     it("yields the start moment when start equals end", () => {
       const start = moment.utc("2024-03-21T00:00:00.000Z");

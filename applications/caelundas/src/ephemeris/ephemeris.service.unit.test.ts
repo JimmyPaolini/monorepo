@@ -1,4 +1,5 @@
 import { MathService } from "@caelundas/src/math/math.service";
+import { Test, type TestingModule } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -72,27 +73,26 @@ vi.mock("sweph", () => ({
 }));
 
 // ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
-
-function makeStart(): Moment {
-  return moment.utc("2024-03-21T00:00:00.000Z");
-}
-
-function makeEnd(): Moment {
-  return moment.utc("2024-03-21T00:01:00.000Z"); // two minutes → 2 timestamps
-}
-
-// ---------------------------------------------------------------------------
 // Accessor tests (pure logic, no mocks needed)
 // ---------------------------------------------------------------------------
 
 describe("ephemeris.service", () => {
+  function makeStart(): Moment {
+    return moment.utc("2024-03-21T00:00:00.000Z");
+  }
+
+  function makeEnd(): Moment {
+    return moment.utc("2024-03-21T00:01:00.000Z"); // two minutes → 2 timestamps
+  }
+
   let service: EphemerisService;
 
-  beforeEach(() => {
+  beforeEach(async () => {
     vi.clearAllMocks();
-    service = new EphemerisService(new MathService());
+    const module: TestingModule = await Test.createTestingModule({
+      providers: [EphemerisService, MathService],
+    }).compile();
+    service = module.get<EphemerisService>(EphemerisService);
   });
 
   // #region Accessor: getCoordinateFromEphemeris

@@ -1,15 +1,23 @@
 import { MathService } from "@caelundas/src/math/math.service";
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { SextupleAspectsService } from "./sextuple-aspects.service";
 
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
 
-const service = new SextupleAspectsService(new MathService());
-
 describe("sextupleAspects.events", () => {
+  let service: SextupleAspectsService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [SextupleAspectsService, MathService],
+    }).compile();
+    service = module.get(SextupleAspectsService);
+  });
+
   describe("service.detect", () => {
     describe("Hexagram composition", () => {
       it("should not generate perfective Hexagram events (only forming/dissolving)", () => {

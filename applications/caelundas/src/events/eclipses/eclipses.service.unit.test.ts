@@ -1,8 +1,9 @@
 import { MARGIN_MINUTES } from "@caelundas/src/constants";
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/math/math.service";
+import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { EclipsesService } from "./eclipses.service";
 
@@ -19,9 +20,6 @@ vi.mock("fs", () => ({
   },
 }));
 
-const mathService = new MathService();
-const ephemerisService = new EphemerisService(mathService);
-const service = new EclipsesService(ephemerisService, mathService);
 interface EclipseArgs {
   currentDiameterMoon: number;
   currentDiameterSun: number;
@@ -42,9 +40,19 @@ interface ServicePrivate {
   isLunarEclipse: (args: EclipseFullArgs) => EclipsePhase | null;
   isLunarEclipseActive: (args: EclipseArgs) => boolean;
 }
-const s = service as unknown as ServicePrivate;
 
 describe("eclipses.events", () => {
+  let service: EclipsesService;
+  let s: ServicePrivate;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [EclipsesService, EphemerisService, MathService],
+    }).compile();
+    service = module.get(EclipsesService);
+    s = service as unknown as ServicePrivate;
+  });
+
   // Helper to create coordinate ephemeris
   function createCoordinateEphemeris(
     currentMinute: Moment,

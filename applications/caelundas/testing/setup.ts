@@ -1,5 +1,8 @@
+import "reflect-metadata";
+
 import fs from "node:fs";
 
+import { noop } from "lodash";
 import { beforeAll, beforeEach, vi } from "vitest";
 
 /**
@@ -17,13 +20,7 @@ beforeAll(() => {
 
 // Suppress console output in tests by default
 beforeEach(() => {
-  vi.spyOn(console, "log").mockImplementation(() => {
-    /* no-op */
-  });
-  vi.spyOn(console, "error").mockImplementation(() => {
-    /* no-op */
-  });
-  vi.spyOn(console, "warn").mockImplementation(() => {
-    /* no-op */
-  });
+  vi.spyOn(console, "log").mockImplementation(noop);
+  vi.spyOn(console, "error").mockImplementation(noop);
+  vi.spyOn(console, "warn").mockImplementation(noop);
 });

@@ -1,7 +1,8 @@
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/math/math.service";
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { TwilightsService } from "./twilights.service";
 
@@ -53,12 +54,18 @@ interface ServicePrivate {
   }) => boolean;
 }
 
-const mathService = new MathService();
-const ephemerisService = new EphemerisService(mathService);
-const service = new TwilightsService(ephemerisService);
-const s = service as unknown as ServicePrivate;
-
 describe("twilights.events", () => {
+  let service: TwilightsService;
+  let s: ServicePrivate;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [TwilightsService, EphemerisService, MathService],
+    }).compile();
+    service = module.get(TwilightsService);
+    s = service as unknown as ServicePrivate;
+  });
+
   describe("service.detect", () => {
     it("should detect civil dawn when sun rises from -6 to above -6 degrees", () => {
       const currentMinute = moment.utc("2024-03-21T06:00:00.000Z");

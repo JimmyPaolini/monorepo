@@ -6,8 +6,9 @@ import {
   symbolByVenusianPhase,
 } from "@caelundas/src/symbols";
 import { planetaryPhaseBodies } from "@caelundas/src/types";
+import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { PhasesService } from "./phases.service";
 
@@ -37,12 +38,18 @@ interface ServicePrivate {
   isBrightest: (args: object) => boolean;
 }
 
-const mathService = new MathService();
-const ephemerisService = new EphemerisService(mathService);
-const service = new PhasesService(ephemerisService, mathService);
-const s = service as unknown as ServicePrivate;
-
 describe("phases.events", () => {
+  let service: PhasesService;
+  let s: ServicePrivate;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [PhasesService, EphemerisService, MathService],
+    }).compile();
+    service = module.get(PhasesService);
+    s = service as unknown as ServicePrivate;
+  });
+
   const setAllPhasePredicateSpies = (value: boolean): void => {
     vi.spyOn(s, "isMorningRise").mockReturnValue(value);
     vi.spyOn(s, "isMorningSet").mockReturnValue(value);

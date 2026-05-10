@@ -1,8 +1,9 @@
 import { MARGIN_MINUTES } from "@caelundas/src/constants";
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/math/math.service";
+import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
-import { describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { AnnualSolarCycleService } from "./annual-solar-cycle.service";
 
@@ -18,11 +19,16 @@ vi.mock("fs", () => ({
   },
 }));
 
-const mathService = new MathService();
-const ephemerisService = new EphemerisService(mathService);
-const service = new AnnualSolarCycleService(ephemerisService, mathService);
-
 describe("annualSolarCycle.events", () => {
+  let service: AnnualSolarCycleService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [AnnualSolarCycleService, EphemerisService, MathService],
+    }).compile();
+    service = module.get(AnnualSolarCycleService);
+  });
+
   // Helper to create coordinate ephemeris
   function createCoordinateEphemeris(
     currentMinute: Moment,

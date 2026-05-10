@@ -1,19 +1,26 @@
 import { mockDates } from "@caelundas/testing/mocks";
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
+import { mock } from "vitest-mock-extended";
 
 import { CalendarService } from "./calendar.service";
 
 import type { Event } from "./calendar.types";
-import type { Environment } from "@caelundas/src/input/input.types";
-import type { ConfigService } from "@nestjs/config";
-
-const configService = {
-  get: vi.fn(),
-} as unknown as ConfigService<Environment>;
-const service = new CalendarService(configService);
 
 describe("CalendarService", () => {
+  let service: CalendarService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [CalendarService],
+    })
+      .useMocker(mock)
+      .compile();
+
+    service = module.get(CalendarService);
+  });
+
   mockDates();
 
   describe("buildEventContent", () => {

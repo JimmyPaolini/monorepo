@@ -5,6 +5,7 @@ export default defineConfig({
     tsconfigPaths: true,
   },
   test: {
+    globals: true,
     include: ["src/**/*.test.ts"],
     setupFiles: ["./testing/setup.ts"],
     coverage: {

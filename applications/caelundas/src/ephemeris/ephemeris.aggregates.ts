@@ -29,7 +29,8 @@ import {
   illuminationBodies,
 } from "../constants";
 
-import type { EphemerisService } from "./ephemeris.service";
+import { EphemerisService } from "./ephemeris.service";
+
 import type {
   AzimuthElevationEphemeris,
   CoordinateEphemeris,

@@ -5,8 +5,9 @@ import {
   peakIngressBodies,
   signIngressBodies,
 } from "@caelundas/src/types";
+import { Test } from "@nestjs/testing";
 import moment from "moment";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { IngressesService } from "./ingresses.service";
 
@@ -18,10 +19,6 @@ vi.mock("fs", () => ({
     writeFileSync: vi.fn(),
   },
 }));
-
-const mathService = new MathService();
-const ephemerisService = new EphemerisService(mathService);
-const service = new IngressesService(ephemerisService);
 
 interface ServicePrivate {
   isSignIngress: (args: {
@@ -38,9 +35,18 @@ interface ServicePrivate {
     currentLongitude: number;
   }) => boolean;
 }
-const s = service as unknown as ServicePrivate;
-
 describe("ingresses.events", () => {
+  let service: IngressesService;
+  let s: ServicePrivate;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [IngressesService, EphemerisService, MathService],
+    }).compile();
+    service = module.get(IngressesService);
+    s = service as unknown as ServicePrivate;
+  });
+
   describe("getSignIngressEvent", () => {
     it("should create a sign ingress event for Sun entering Aries", () => {
       const event = service.buildSignIngressEvent({

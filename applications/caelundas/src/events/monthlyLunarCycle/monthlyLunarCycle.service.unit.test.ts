@@ -2,8 +2,9 @@ import { MARGIN_MINUTES } from "@caelundas/src/constants";
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/math/math.service";
 import { symbolByLunarPhase } from "@caelundas/src/symbols";
+import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { MonthlyLunarCycleService } from "./monthly-lunar-cycle.service";
 
@@ -36,12 +37,18 @@ interface ServicePrivate {
   }) => boolean;
 }
 
-const mathService = new MathService();
-const ephemerisService = new EphemerisService(mathService);
-const service = new MonthlyLunarCycleService(ephemerisService);
-const s = service as unknown as ServicePrivate;
-
 describe("monthlyLunarCycle.events", () => {
+  let service: MonthlyLunarCycleService;
+  let s: ServicePrivate;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [MonthlyLunarCycleService, EphemerisService, MathService],
+    }).compile();
+    service = module.get(MonthlyLunarCycleService);
+    s = service as unknown as ServicePrivate;
+  });
+
   // Helper to create illumination ephemeris with margin
   function createIlluminationEphemeris(
     currentMinute: Moment,

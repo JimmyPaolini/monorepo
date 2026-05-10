@@ -5,33 +5,33 @@ import { computeAspectBodies } from "./aspects.service";
 
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 
-const timestamp = moment.utc("2026-01-21T12:00:00Z");
-
-function createAspectEvent(args: {
-  body1: string;
-  body2: string;
-  aspectType: string;
-  phase: "Forming" | "Perfective" | "Dissolving";
-}): Event {
-  return {
-    start: timestamp,
-    end: timestamp,
-    summary: `${args.body1} ${args.phase.toLowerCase()} ${args.aspectType} ${args.body2}`,
-    description: "",
-    categories: [
-      "Astronomy",
-      "Astrology",
-      "Simple Aspect",
-      "Major Aspect",
-      args.body1,
-      args.body2,
-      args.aspectType,
-      args.phase,
-    ],
-  };
-}
-
 describe("computeAspectBodies", () => {
+  const timestamp = moment.utc("2026-01-21T12:00:00Z");
+
+  function createAspectEvent(args: {
+    body1: string;
+    body2: string;
+    aspectType: string;
+    phase: "Forming" | "Perfective" | "Dissolving";
+  }): Event {
+    return {
+      start: timestamp,
+      end: timestamp,
+      summary: `${args.body1} ${args.phase.toLowerCase()} ${args.aspectType} ${args.body2}`,
+      description: "",
+      categories: [
+        "Astronomy",
+        "Astrology",
+        "Simple Aspect",
+        "Major Aspect",
+        args.body1,
+        args.body2,
+        args.aspectType,
+        args.phase,
+      ],
+    };
+  }
+
   it("returns empty array when given no previous state and no events", () => {
     expect(computeAspectBodies([], [])).toEqual([]);
   });

@@ -1,9 +1,11 @@
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it } from "vitest";
+import { mock, type MockProxy } from "vitest-mock-extended";
 
 import { EphemerisAggregatesService } from "./ephemeris.aggregates";
+import { EphemerisService } from "./ephemeris.service";
 
-import type { EphemerisService } from "./ephemeris.service";
 import type {
   AzimuthElevationEphemeris,
   CoordinateEphemeris,
@@ -19,14 +21,23 @@ describe("EphemerisAggregatesService", () => {
   const end = moment.utc("2024-03-21T01:00:00.000Z");
   const timezone = "America/New_York";
 
-  const mockComputeAllEphemerides = vi.fn();
-  const mockEphemerisService = {
-    computeAllEphemerides: mockComputeAllEphemerides,
-  } as unknown as EphemerisService;
-  const service = new EphemerisAggregatesService(mockEphemerisService);
+  let service: EphemerisAggregatesService;
+  let ephemerisService: MockProxy<EphemerisService>;
+
+  beforeAll(async () => {
+    ephemerisService = mock<EphemerisService>();
+    const module = await Test.createTestingModule({
+      providers: [
+        EphemerisAggregatesService,
+        { provide: EphemerisService, useValue: ephemerisService },
+      ],
+    }).compile();
+
+    service = module.get(EphemerisAggregatesService);
+  });
 
   beforeEach(() => {
-    mockComputeAllEphemerides.mockClear();
+    ephemerisService.computeAllEphemerides.mockClear();
   });
 
   const mockResult = {
@@ -51,7 +62,7 @@ describe("EphemerisAggregatesService", () => {
 
   describe("getEphemerides", () => {
     it("should fetch all ephemeris types", () => {
-      mockComputeAllEphemerides.mockReturnValue(mockResult);
+      ephemerisService.computeAllEphemerides.mockReturnValue(mockResult);
 
       const result = service.getEphemerides({
         coordinates,
@@ -66,7 +77,8 @@ describe("EphemerisAggregatesService", () => {
       expect(result).toHaveProperty("diameterEphemerisByBody");
       expect(result).toHaveProperty("distanceEphemerisByBody");
 
-      expect(mockComputeAllEphemerides).toHaveBeenCalledWith(
+      // eslint-disable-next-line @typescript-eslint/unbound-method
+      expect(ephemerisService.computeAllEphemerides).toHaveBeenCalledWith(
         expect.objectContaining({
           coordinateBodies: expect.arrayContaining<string>([
             "sun",
@@ -92,7 +104,7 @@ describe("EphemerisAggregatesService", () => {
     });
 
     it("should return properly structured ephemeris data", () => {
-      mockComputeAllEphemerides.mockReturnValue(mockResult);
+      ephemerisService.computeAllEphemerides.mockReturnValue(mockResult);
 
       const result = service.getEphemerides({
         coordinates,
@@ -119,7 +131,7 @@ describe("EphemerisAggregatesService", () => {
     });
 
     it("should pass coordinates to the ephemeris computation", () => {
-      mockComputeAllEphemerides.mockReturnValue(mockResult);
+      ephemerisService.computeAllEphemerides.mockReturnValue(mockResult);
 
       const testCoordinates: [number, number] = [-118.2437, 34.0522]; // Los Angeles
       service.getEphemerides({
@@ -129,13 +141,14 @@ describe("EphemerisAggregatesService", () => {
         timezone,
       });
 
-      expect(mockComputeAllEphemerides).toHaveBeenCalledWith(
+      // eslint-disable-next-line @typescript-eslint/unbound-method
+      expect(ephemerisService.computeAllEphemerides).toHaveBeenCalledWith(
         expect.objectContaining({ coordinates: testCoordinates }),
       );
     });
 
     it("should pass date range to the ephemeris computation", () => {
-      mockComputeAllEphemerides.mockReturnValue(mockResult);
+      ephemerisService.computeAllEphemerides.mockReturnValue(mockResult);
 
       const customStart = moment.utc("2024-06-21T00:00:00.000Z");
       const customEnd = moment.utc("2024-06-22T00:00:00.000Z");
@@ -146,13 +159,14 @@ describe("EphemerisAggregatesService", () => {
         timezone,
       });
 
-      expect(mockComputeAllEphemerides).toHaveBeenCalledWith(
+      // eslint-disable-next-line @typescript-eslint/unbound-method
+      expect(ephemerisService.computeAllEphemerides).toHaveBeenCalledWith(
         expect.objectContaining({ start: customStart, end: customEnd }),
       );
     });
 
     it("should return successfully for any timezone", () => {
-      mockComputeAllEphemerides.mockReturnValue(mockResult);
+      ephemerisService.computeAllEphemerides.mockReturnValue(mockResult);
 
       const result = service.getEphemerides({
         coordinates,

@@ -9,6 +9,7 @@
 
 import { majorAspects } from "@caelundas/src/constants";
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
+import { AspectsUtilitiesService } from "@caelundas/src/events/aspects/aspects.utilities";
 import { ProgressiveEventsService } from "@caelundas/src/progressive-events/progressive-events.service";
 import { symbolByBody, symbolByMajorAspect } from "@caelundas/src/symbols";
 import { majorAspectBodies } from "@caelundas/src/types";
@@ -17,7 +18,6 @@ import _ from "lodash";
 
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
-import type { AspectsUtilitiesService } from "@caelundas/src/events/aspects/aspects.utilities";
 import type {
   AspectPhase,
   Body,

@@ -1,15 +1,23 @@
 import { MathService } from "@caelundas/src/math/math.service";
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { QuintupleAspectsService } from "./quintuple-aspects.service";
 
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
 
-const service = new QuintupleAspectsService(new MathService());
-
 describe("quintupleAspects.events", () => {
+  let service: QuintupleAspectsService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [QuintupleAspectsService, MathService],
+    }).compile();
+    service = module.get(QuintupleAspectsService);
+  });
+
   describe("service.detect", () => {
     describe("Pentagram composition", () => {
       it("should not generate perfective Pentagram events (only forming/dissolving)", () => {
