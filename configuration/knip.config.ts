@@ -93,6 +93,8 @@ const config: KnipConfig = {
         "src/**/*.test.ts",
         "src/**/*.integration.test.ts",
         "src/**/*.end-to-end.test.ts",
+        "src/**/*.constants.ts", // Standard module constants files (may be empty placeholders)
+        "src/**/*.types.ts", // Standard module types files (may be empty placeholders)
         "output/**", // Generated calendar output files
         "testing/**", // Test fixtures and setup
       ],

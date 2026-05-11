@@ -1,5 +1,6 @@
 import { Injectable } from "@nestjs/common";
 
+import type { NeighborValues } from "./math.types";
 import type { Longitude } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 
 /**
@@ -119,11 +120,7 @@ export class MathService {
    * mathService.isMaximum({ current: 100, previous: 100, next: 99 }); // false
    * ```
    */
-  isMaximum(args: {
-    current: number;
-    previous: number;
-    next: number;
-  }): boolean {
+  isMaximum(args: NeighborValues): boolean {
     const { current, previous, next } = args;
     return previous < current && current > next;
   }
@@ -140,11 +137,7 @@ export class MathService {
    * mathService.isMinimum({ current: 10, previous: 10, next: 12 });  // false
    * ```
    */
-  isMinimum(args: {
-    current: number;
-    previous: number;
-    next: number;
-  }): boolean {
+  isMinimum(args: NeighborValues): boolean {
     const { current, previous, next } = args;
     return previous > current && current < next;
   }

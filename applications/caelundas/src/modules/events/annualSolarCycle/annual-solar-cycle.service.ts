@@ -1,6 +1,6 @@
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
-import { ProgressiveService } from "@caelundas/src/modules/progressive/progressive.service";
+import { pairProgressiveEvents } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Injectable } from "@nestjs/common";
 
 import {
@@ -716,7 +716,7 @@ export class AnnualSolarCycleService {
    *
    * @param events - Array of all solar events including apsis points
    * @returns Array of progressive events representing orbital segments
-   * @see {@link ProgressiveService.pairProgressiveEvents} for event pairing logic
+   * @see {@link pairProgressiveEvents} for event pairing logic
    *
    * @remarks
    * Based on Kepler's second law: planets sweep out equal areas in equal times,
@@ -741,7 +741,7 @@ export class AnnualSolarCycleService {
     );
 
     // Advancing: Aphelion → Perihelion (Earth moving closer to sun, speeding up)
-    const advancingPairs = ProgressiveService.pairProgressiveEvents(
+    const advancingPairs = pairProgressiveEvents(
       aphelionEvents,
       perihelionEvents,
       "Solar Advancing",
@@ -753,7 +753,7 @@ export class AnnualSolarCycleService {
     }
 
     // Retreating: Perihelion → Aphelion (Earth moving away from sun, slowing down)
-    const retreatingPairs = ProgressiveService.pairProgressiveEvents(
+    const retreatingPairs = pairProgressiveEvents(
       perihelionEvents,
       aphelionEvents,
       "Solar Retreating",

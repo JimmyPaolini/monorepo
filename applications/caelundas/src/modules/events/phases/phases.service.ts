@@ -8,7 +8,7 @@ import { planetaryPhaseBodies } from "@caelundas/src/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { TwilightsService } from "@caelundas/src/modules/events/twilights/twilights.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
-import { ProgressiveService } from "@caelundas/src/modules/progressive/progressive.service";
+import { pairProgressiveEvents } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
@@ -929,7 +929,7 @@ export class PhasesService {
    *
    * @param events - All events to process (non-planetary-phase events filtered out)
    * @returns Array of visibility progressive events
-   * @see {@link ProgressiveService.pairProgressiveEvents} for rise/set pairing logic
+   * @see {@link pairProgressiveEvents} for rise/set pairing logic
    */
   detectProgressive(events: Event[]): Event[] {
     const progressiveEvents: Event[] = [];
@@ -976,7 +976,7 @@ export class PhasesService {
     const morningSetEvents = events.filter((event) =>
       event.categories.includes("Morning Set"),
     );
-    const morningVisibilityPairs = ProgressiveService.pairProgressiveEvents(
+    const morningVisibilityPairs = pairProgressiveEvents(
       morningRiseEvents,
       morningSetEvents,
       "Venus Morning Visibility",
@@ -994,7 +994,7 @@ export class PhasesService {
     const eveningSetEvents = events.filter((event) =>
       event.categories.includes("Evening Set"),
     );
-    const eveningVisibilityPairs = ProgressiveService.pairProgressiveEvents(
+    const eveningVisibilityPairs = pairProgressiveEvents(
       eveningRiseEvents,
       eveningSetEvents,
       "Venus Evening Visibility",
@@ -1018,7 +1018,7 @@ export class PhasesService {
     const morningSetEvents = events.filter((event) =>
       event.categories.includes("Morning Set"),
     );
-    const morningVisibilityPairs = ProgressiveService.pairProgressiveEvents(
+    const morningVisibilityPairs = pairProgressiveEvents(
       morningRiseEvents,
       morningSetEvents,
       "Mercury Morning Visibility",
@@ -1036,7 +1036,7 @@ export class PhasesService {
     const eveningSetEvents = events.filter((event) =>
       event.categories.includes("Evening Set"),
     );
-    const eveningVisibilityPairs = ProgressiveService.pairProgressiveEvents(
+    const eveningVisibilityPairs = pairProgressiveEvents(
       eveningRiseEvents,
       eveningSetEvents,
       "Mercury Evening Visibility",
@@ -1060,7 +1060,7 @@ export class PhasesService {
     const morningSetEvents = events.filter((event) =>
       event.categories.includes("Morning Set"),
     );
-    const morningVisibilityPairs = ProgressiveService.pairProgressiveEvents(
+    const morningVisibilityPairs = pairProgressiveEvents(
       morningRiseEvents,
       morningSetEvents,
       "Mars Morning Visibility",
@@ -1078,7 +1078,7 @@ export class PhasesService {
     const eveningSetEvents = events.filter((event) =>
       event.categories.includes("Evening Set"),
     );
-    const eveningVisibilityPairs = ProgressiveService.pairProgressiveEvents(
+    const eveningVisibilityPairs = pairProgressiveEvents(
       eveningRiseEvents,
       eveningSetEvents,
       "Mars Evening Visibility",

@@ -146,6 +146,8 @@ export default [
       "unicorn/prefer-top-level-await": "off",
       // ESLint core rule no-nested-ternary already handles this
       "unicorn/no-nested-ternary": "off",
+      // Placeholder files with only a comment header are intentional
+      "unicorn/no-empty-file": "off",
     },
   },
 

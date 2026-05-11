@@ -1,6 +1,6 @@
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
-import { ProgressiveService } from "@caelundas/src/modules/progressive/progressive.service";
+import { pairProgressiveEvents } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Injectable } from "@nestjs/common";
 
 import type { EclipsePhase } from "@caelundas/src/caelundas.types";
@@ -523,7 +523,7 @@ export class EclipsesService {
         event.description.includes("ends"),
       );
 
-      const solarPairs = ProgressiveService.pairProgressiveEvents(
+      const solarPairs = pairProgressiveEvents(
         solarBeginnings,
         solarEndings,
         `solar eclipse (${frameLabel.toLowerCase()})`,
@@ -548,7 +548,7 @@ export class EclipsesService {
         event.description.includes("ends"),
       );
 
-      const lunarPairs = ProgressiveService.pairProgressiveEvents(
+      const lunarPairs = pairProgressiveEvents(
         lunarBeginnings,
         lunarEndings,
         `lunar eclipse (${frameLabel.toLowerCase()})`,

@@ -1,14 +1,16 @@
+import { AnnualSolarCycleService } from "@caelundas/src/modules/events/annualSolarCycle/annual-solar-cycle.service";
+import { AspectsService } from "@caelundas/src/modules/events/aspects/aspects.service";
+import { EclipsesService } from "@caelundas/src/modules/events/eclipses/eclipses.service";
+import { IngressesService } from "@caelundas/src/modules/events/ingresses/ingresses.service";
+import { MonthlyLunarCycleService } from "@caelundas/src/modules/events/monthlyLunarCycle/monthly-lunar-cycle.service";
+import { PhasesService } from "@caelundas/src/modules/events/phases/phases.service";
+import { RetrogradesService } from "@caelundas/src/modules/events/retrogrades/retrogrades.service";
+import { TwilightsService } from "@caelundas/src/modules/events/twilights/twilights.service";
 import { Injectable } from "@nestjs/common";
 
+import { pairProgressiveEvents } from "./progressive.utilities";
+
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
-import type { AnnualSolarCycleService } from "@caelundas/src/modules/events/annualSolarCycle/annual-solar-cycle.service";
-import type { AspectsService } from "@caelundas/src/modules/events/aspects/aspects.service";
-import type { EclipsesService } from "@caelundas/src/modules/events/eclipses/eclipses.service";
-import type { IngressesService } from "@caelundas/src/modules/events/ingresses/ingresses.service";
-import type { MonthlyLunarCycleService } from "@caelundas/src/modules/events/monthlyLunarCycle/monthly-lunar-cycle.service";
-import type { PhasesService } from "@caelundas/src/modules/events/phases/phases.service";
-import type { RetrogradesService } from "@caelundas/src/modules/events/retrogrades/retrogrades.service";
-import type { TwilightsService } from "@caelundas/src/modules/events/twilights/twilights.service";
 
 /**
  * Aggregates progressive event detection from all sub-services.
@@ -60,24 +62,6 @@ export class ProgressiveService {
     endings: Event[],
     label: string,
   ): [Event, Event][] {
-    const pairCount = Math.min(beginnings.length, endings.length);
-
-    if (beginnings.length !== endings.length) {
-      console.warn(
-        `pairProgressiveEvents: unequal counts for "${label}": ${beginnings.length} beginnings, ${endings.length} endings`,
-      );
-    }
-
-    const pairs: [Event, Event][] = [];
-
-    for (let i = 0; i < pairCount; i++) {
-      const beginning = beginnings[i];
-      const ending = endings[i];
-      if (beginning !== undefined && ending !== undefined) {
-        pairs.push([beginning, ending]);
-      }
-    }
-
-    return pairs;
+    return pairProgressiveEvents(beginnings, endings, label);
   }
 }

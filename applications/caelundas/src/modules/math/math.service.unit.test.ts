@@ -1,12 +1,16 @@
-import { beforeEach, describe, expect, it } from "vitest";
+import { Test } from "@nestjs/testing";
+import { beforeAll, describe, expect, it } from "vitest";
 
 import { MathService } from "./math.service";
 
 describe("MathService", () => {
   let service: MathService;
 
-  beforeEach(() => {
-    service = new MathService();
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [MathService],
+    }).compile();
+    service = module.get(MathService);
   });
 
   describe("static constants", () => {

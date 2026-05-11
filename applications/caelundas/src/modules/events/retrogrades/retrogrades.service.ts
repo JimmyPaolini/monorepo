@@ -16,7 +16,7 @@ import {
 import { retrogradeBodies } from "@caelundas/src/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
-import { ProgressiveService } from "@caelundas/src/modules/progressive/progressive.service";
+import { pairProgressiveEvents } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
@@ -236,7 +236,7 @@ export class RetrogradesService {
    * - Progressive events use "Retrogrades" category (plural) vs "Retrograde" for stations
    * - Summary format: `[bodySymbol] ↩️ [Body] Retrograde`
    *
-   * @see {@link ProgressiveService.pairProgressiveEvents} for pairing algorithm
+   * @see {@link pairProgressiveEvents} for pairing algorithm
    * @see {@link getRetrogradeDurationEvent} for event formatting
    * @see {@link retrogradeBodies} for planets that can go retrograde
    *
@@ -271,7 +271,7 @@ export class RetrogradesService {
         event.description.includes(`Direct`),
       );
 
-      const pairs = ProgressiveService.pairProgressiveEvents(
+      const pairs = pairProgressiveEvents(
         beginnings,
         endings,
         `${planet} retrograde`,

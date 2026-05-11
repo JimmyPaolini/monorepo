@@ -452,7 +452,7 @@ export default defineConfig({
         "unicorn/no-await-in-promise-methods": "error",
         "unicorn/no-console-spaces": "error",
         "unicorn/no-document-cookie": "error",
-        "unicorn/no-empty-file": "error",
+        "unicorn/no-empty-file": "off",
         "unicorn/no-hex-escape": "error",
         "unicorn/no-immediate-mutation": "error",
         "unicorn/no-instanceof-builtins": "error",
