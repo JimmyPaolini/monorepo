@@ -1,6 +1,6 @@
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
-import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Injectable } from "@nestjs/common";
 
 import type { Twilight } from "./twilights.types";
@@ -13,7 +13,11 @@ export type { Twilight } from "./twilights.types";
 // #region 🕑 Progressive Events
 
 /**
+ * Detects solar twilight transition events based on the Sun's elevation angle.
  *
+ * Identifies the six daily twilight thresholds (astronomical/nautical/civil dawn and dusk)
+ * by comparing the Sun's elevation across consecutive minutes. Also provides progressive
+ * event detection for twilight period spans.
  */
 @Injectable()
 export class TwilightsService {
@@ -32,7 +36,7 @@ export class TwilightsService {
 
   constructor(
     private readonly ephemerisService: EphemerisService,
-    private readonly progressiveUtilitiesService: ProgressiveUtilitiesService,
+    private readonly progressiveUtilitiesService: ProgressiveUtilities,
   ) {}
 
   /**
@@ -129,7 +133,12 @@ export class TwilightsService {
   }
 
   /**
+   * Creates a nautical dawn calendar event.
    *
+   * Marks when the horizon becomes visible at sea (Sun at −12° elevation).
+   *
+   * @param date - Precise UTC time of nautical dawn
+   * @returns Calendar event for nautical dawn
    */
   buildNauticalDawnEvent(date: Moment): Event {
     const description = "Nautical Dawn";
@@ -149,7 +158,12 @@ export class TwilightsService {
   }
 
   /**
+   * Creates a civil dawn calendar event.
    *
+   * Marks when outdoor activities are possible without artificial light (Sun at −6° elevation).
+   *
+   * @param date - Precise UTC time of civil dawn
+   * @returns Calendar event for civil dawn
    */
   buildCivilDawnEvent(date: Moment): Event {
     const description = "Civil Dawn";
@@ -169,7 +183,12 @@ export class TwilightsService {
   }
 
   /**
+   * Creates a civil dusk calendar event.
    *
+   * Marks when artificial light becomes necessary for outdoor activities (Sun at −6° elevation).
+   *
+   * @param date - Precise UTC time of civil dusk
+   * @returns Calendar event for civil dusk
    */
   buildCivilDuskEvent(date: Moment): Event {
     const description = "Civil Dusk";
@@ -189,7 +208,12 @@ export class TwilightsService {
   }
 
   /**
+   * Creates a nautical dusk calendar event.
    *
+   * Marks when the sea horizon becomes indistinguishable (Sun at −12° elevation).
+   *
+   * @param date - Precise UTC time of nautical dusk
+   * @returns Calendar event for nautical dusk
    */
   buildNauticalDuskEvent(date: Moment): Event {
     const description = "Nautical Dusk";
@@ -209,7 +233,12 @@ export class TwilightsService {
   }
 
   /**
+   * Creates an astronomical dusk calendar event.
    *
+   * Marks when the sky is dark enough for astronomical observation (Sun at −18° elevation).
+   *
+   * @param date - Precise UTC time of astronomical dusk
+   * @returns Calendar event for astronomical dusk
    */
   buildAstronomicalDuskEvent(date: Moment): Event {
     const description = "Astronomical Dusk";

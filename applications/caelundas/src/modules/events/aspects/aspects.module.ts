@@ -4,7 +4,7 @@ import { ProgressiveUtilitiesModule } from "@caelundas/src/modules/progressive/p
 import { Module } from "@nestjs/common";
 
 import { AspectsService } from "./aspects.service";
-import { AspectsUtilitiesService } from "./aspects.utilities";
+import { AspectsUtilities } from "./aspects.utilities";
 import { MajorAspectsService } from "./major/majorAspects.service";
 import { MinorAspectsService } from "./minor/minorAspects.service";
 import { QuadrupleAspectsService } from "./quadruple/quadrupleAspects.service";
@@ -15,13 +15,15 @@ import { StelliumService } from "./stellium/stellium.service";
 import { TripleAspectsService } from "./triple/tripleAspects.service";
 
 /**
- *
+ * NestJS module for astronomical aspect detection.
+ * Orchestrates all aspect sub-modules (major, minor, triple, quadruple, quintuple,
+ * sextuple, stellium, and specialty) via {@link AspectsService}.
  */
 @Module({
   imports: [EphemerisModule, MathModule, ProgressiveUtilitiesModule],
   providers: [
     AspectsService,
-    AspectsUtilitiesService,
+    AspectsUtilities,
     MajorAspectsService,
     MinorAspectsService,
     QuadrupleAspectsService,

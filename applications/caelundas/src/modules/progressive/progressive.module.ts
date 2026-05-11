@@ -11,7 +11,9 @@ import { Module } from "@nestjs/common";
 import { ProgressiveService } from "./progressive.service";
 
 /**
- *
+ * NestJS module orchestrating progressive (span) event detection.
+ * Imports all event sub-modules and exposes {@link ProgressiveService} which converts
+ * instantaneous events into time-spanning progressive events.
  */
 @Module({
   imports: [

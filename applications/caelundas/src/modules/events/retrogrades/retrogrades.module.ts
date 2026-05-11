@@ -6,7 +6,8 @@ import { Module } from "@nestjs/common";
 import { RetrogradesService } from "./retrogrades.service";
 
 /**
- *
+ * NestJS module for planetary retrograde event detection.
+ * Exports {@link RetrogradesService} which identifies when planets reverse apparent direction.
  */
 @Module({
   imports: [EphemerisModule, MathModule, ProgressiveUtilitiesModule],

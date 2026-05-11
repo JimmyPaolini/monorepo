@@ -31,7 +31,10 @@ export class ProgressiveService {
   ) {}
 
   /**
+   * Runs progressive event detection across all domain services and merges the results.
    *
+   * @param perfectiveEvents - Instantaneous events produced by the preceding perfective pass
+   * @returns All progressive (duration-spanning) events from every domain service, combined
    */
   detect(perfectiveEvents: Event[]): Event[] {
     return [

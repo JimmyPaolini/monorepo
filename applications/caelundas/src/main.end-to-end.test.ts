@@ -239,18 +239,18 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
     it("should correctly identify aspects from angular separation", async () => {
       const { MajorAspectsService } =
         await import("./modules/events/aspects/major/majorAspects.service");
-      const { AspectsUtilitiesService } =
+      const { AspectsUtilities } =
         await import("./modules/events/aspects/aspects.utilities");
       const { EphemerisService } =
         await import("./modules/ephemeris/ephemeris.service");
       const { MathService } = await import("./modules/math/math.service");
-      const { ProgressiveUtilitiesService } =
+      const { ProgressiveUtilities } =
         await import("./modules/progressive/progressive.utilities");
       const mathService = new MathService();
       const service = new MajorAspectsService(
-        new AspectsUtilitiesService(mathService),
+        new AspectsUtilities(mathService),
         new EphemerisService(mathService),
-        new ProgressiveUtilitiesService(),
+        new ProgressiveUtilities(),
       );
 
       // Test exact aspects
@@ -280,7 +280,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
     });
 
     it("should calculate progressive event pairs correctly", async () => {
-      const { ProgressiveUtilitiesService } =
+      const { ProgressiveUtilities } =
         await import("./modules/progressive/progressive.utilities");
 
       const beginnings = [
@@ -317,7 +317,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
         },
       ];
 
-      const pairs = new ProgressiveUtilitiesService().pairProgressiveEvents(
+      const pairs = new ProgressiveUtilities().pairProgressiveEvents(
         beginnings,
         endings,
         "test",

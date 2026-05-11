@@ -1,12 +1,13 @@
 import { Module } from "@nestjs/common";
 
-import { ProgressiveUtilitiesService } from "./progressive.utilities";
+import { ProgressiveUtilities } from "./progressive.utilities";
 
 /**
- *
+ * NestJS module providing utilities for progressive event construction.
+ * Exports {@link ProgressiveUtilities} for pairing start/end events into duration spans.
  */
 @Module({
-  providers: [ProgressiveUtilitiesService],
-  exports: [ProgressiveUtilitiesService],
+  providers: [ProgressiveUtilities],
+  exports: [ProgressiveUtilities],
 })
 export class ProgressiveUtilitiesModule {}

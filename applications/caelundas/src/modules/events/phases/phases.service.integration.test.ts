@@ -1,7 +1,7 @@
 import { MARGIN_MINUTES } from "@caelundas/src/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
-import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import moment, { type Moment } from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
 
@@ -18,7 +18,7 @@ const ephemerisService = new EphemerisService(mathService);
 const service = new PhasesService(
   ephemerisService,
   mathService,
-  new ProgressiveUtilitiesService(),
+  new ProgressiveUtilities(),
 );
 
 describe("phases.events integration", () => {

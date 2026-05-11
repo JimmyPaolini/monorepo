@@ -686,7 +686,10 @@ export class TripleAspectsService {
   }
 
   /**
+   * Groups an array of aspect edges by their aspect type.
    *
+   * @param edges - Aspect relationships to group
+   * @returns Map from aspect type to edges of that type
    */
   static groupAspectsByType<T extends AspectBodies>(
     edges: T[],
@@ -696,7 +699,12 @@ export class TripleAspectsService {
   }
 
   /**
+   * Finds all bodies that share a specific aspect type with the given body.
    *
+   * @param body - The reference celestial body
+   * @param aspectType - The aspect angle category to search for
+   * @param edges - Available aspect relationships to search
+   * @returns Array of bodies that have the specified aspect with the given body
    */
   static findBodiesWithAspectTo(
     body: Body,
@@ -714,7 +722,12 @@ export class TripleAspectsService {
   }
 
   /**
+   * Returns `true` if two bodies share a specific aspect type within the given edges.
    *
+   * @param body1 - First celestial body
+   * @param body2 - Second celestial body
+   * @param aspectType - The aspect angle category to check
+   * @param edges - Active aspect relationships to search
    */
   static haveAspect(
     body1: Body,

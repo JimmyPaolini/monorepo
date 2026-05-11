@@ -584,7 +584,7 @@
   "js/ts.inlayHints.parameterTypes.enabled": false,
   "js/ts.inlayHints.propertyDeclarationTypes.enabled": false,
   "js/ts.inlayHints.variableTypes.enabled": false,
-  "js/ts.preferences.importModuleSpecifier": "relative",
+  "js/ts.preferences.importModuleSpecifier": "non-relative",
   "js/ts.preferences.preferTypeOnlyAutoImports": true,
   "js/ts.referencesCodeLens.enabled": true,
   "js/ts.referencesCodeLens.showOnAllFunctions": true,
@@ -849,5 +849,7 @@
   "workbench.panel.showLabels": false,
   "workbench.settings.alwaysShowAdvancedSettings": true,
   "workbench.sideBar.location": "right",
-  "workbench.startupEditor": "agentSessionsWelcomePage"
+  "workbench.startupEditor": "agentSessionsWelcomePage",
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "notebook.defaultFormatter": "charliermarsh.ruff"
 }

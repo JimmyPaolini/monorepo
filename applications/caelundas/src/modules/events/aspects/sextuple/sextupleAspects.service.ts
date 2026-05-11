@@ -56,7 +56,11 @@ function determineCompoundPhaseFromSnapshots(
 // #region Progressive Events
 
 /**
+ * Detects 6-body compound aspect configurations: the Hexagram (Star of David) pattern.
  *
+ * Analyses trine (120°) and sextile (60°) aspects among six celestial bodies to identify
+ * the hexagram configuration. Computes forming and dissolving phases by comparing
+ * current and previous aspect sets.
  */
 @Injectable()
 export class SextupleAspectsService {

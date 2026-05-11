@@ -24,7 +24,11 @@ import type { Moment } from "moment-timezone";
 // #region 🕑 Progressive Events
 
 /**
+ * Detects monthly lunar cycle phase events using Moon illumination data.
  *
+ * Identifies the four primary lunar phases (new moon, first quarter, full moon,
+ * third quarter) by analyzing Moon illumination extrema and midpoint crossings
+ * from NASA JPL ephemeris data.
  */
 @Injectable()
 export class MonthlyLunarCycleService {

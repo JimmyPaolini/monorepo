@@ -15,13 +15,23 @@ import type {
 } from "@caelundas/src/modules/input/input.types";
 
 /**
+ * NestJS service responsible for building and writing astronomical event calendars.
  *
+ * Converts an array of {@link Event} objects into RFC 5545-compliant iCalendar (ICS) files
+ * and persists them to the configured output directory.
  */
 @Injectable()
 export class CalendarService {
   constructor(private readonly configService: ConfigService<Environment>) {}
   /**
+   * Serializes calendar events to an ICS file and writes it to the output directory.
    *
+   * The filename encodes the input date range in ISO 8601 format. The output directory
+   * is read from the `OUTPUT_DIRECTORY` environment variable, defaulting to `./output`.
+   *
+   * @param events - Calendar events to include in the ICS file
+   * @param input - Validated input containing the date range and IANA timezone
+   * @returns Promise that resolves when the file has been written to disk
    */
   async write(events: Event[], input: Input): Promise<void> {
     const timespan = `${input.start.toISOString(true)} to ${input.end.toISOString(true)}`;

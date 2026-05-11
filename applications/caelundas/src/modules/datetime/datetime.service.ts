@@ -2,7 +2,10 @@ import { Injectable } from "@nestjs/common";
 import moment, { type Moment } from "moment-timezone";
 
 /**
+ * Injectable service for generating date sequences used in ephemeris calculations.
  *
+ * Provides generators for iterating over consecutive minutes or calendar days
+ * within a date range.
  */
 @Injectable()
 export class DatetimeService {

@@ -24,14 +24,21 @@ function groupAspectsByType<T extends AspectBodies>(
 }
 
 /**
+ * Returns `true` if the given aspect edge involves the specified celestial body.
  *
+ * @param edge - An active 2-body aspect relationship
+ * @param body - The body to check for involvement
  */
 export function involvesBody(edge: AspectBodies, body: Body): boolean {
   return edge.bodies[0] === body || edge.bodies[1] === body;
 }
 
 /**
+ * Returns the other body in an aspect edge relative to the given body.
  *
+ * @param edge - An active 2-body aspect relationship
+ * @param body - The reference body
+ * @returns The other body, or `null` if the given body is not in the edge
  */
 export function getOtherBody(edge: AspectBodies, body: Body): Body | null {
   if (edge.bodies[0] === body) {
@@ -89,7 +96,11 @@ function determineCompoundPhaseFromSnapshots(
 // #region Progressive Events
 
 /**
+ * Detects 4-body compound aspect configurations: Grand Cross and Kite patterns.
  *
+ * Analyses combinations of stored 2-body aspects to identify higher-order patterns
+ * that form between four celestial bodies. Computes forming and dissolving phases
+ * by comparing the current and previous minute's active aspect sets.
  */
 @Injectable()
 export class QuadrupleAspectsService {

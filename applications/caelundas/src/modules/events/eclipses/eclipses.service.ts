@@ -1,6 +1,6 @@
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
-import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Injectable } from "@nestjs/common";
 
 import type { EclipseFrame } from "./eclipses.types";
@@ -16,14 +16,17 @@ import type { Moment } from "moment-timezone";
 const categories = ["Astronomy", "Astrology", "Eclipse"];
 
 /**
+ * Detects solar and lunar eclipse events using Sun and Moon positional and diameter data.
  *
+ * Identifies eclipse phases (beginning, maximum, ending) for both geocentric events and
+ * topocentric visibility windows, comparing angular diameters with ecliptic separations.
  */
 @Injectable()
 export class EclipsesService {
   constructor(
     private readonly ephemerisService: EphemerisService,
     private readonly mathService: MathService,
-    private readonly progressiveUtilitiesService: ProgressiveUtilitiesService,
+    private readonly progressiveUtilitiesService: ProgressiveUtilities,
   ) {}
 
   private formatTimeZoneIso(date: Moment, timezone: string): string {
@@ -499,7 +502,13 @@ export class EclipsesService {
   }
 
   /**
+   * Builds progressive event spans for eclipse periods.
    *
+   * Pairs eclipse beginning events with their corresponding ending events to produce
+   * duration-based calendar entries for each geocentric and topocentric eclipse window.
+   *
+   * @param events - Flat array of perfective eclipse events
+   * @returns Progressive (span) calendar events covering each eclipse duration
    */
   detectProgressive(events: Event[]): Event[] {
     const progressiveEvents: Event[] = [];

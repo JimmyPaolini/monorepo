@@ -6,7 +6,9 @@ import { Module } from "@nestjs/common";
 import { EclipsesService } from "./eclipses.service";
 
 /**
- *
+ * NestJS module for solar and lunar eclipse event detection.
+ * Exports {@link EclipsesService} which identifies eclipse phases (beginning, maximum, ending)
+ * in both geocentric and topocentric reference frames.
  */
 @Module({
   imports: [EphemerisModule, MathModule, ProgressiveUtilitiesModule],

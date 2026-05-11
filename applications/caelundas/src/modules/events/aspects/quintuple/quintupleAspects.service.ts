@@ -56,7 +56,11 @@ function determineCompoundPhaseFromSnapshots(
 // #region Progressive Events
 
 /**
+ * Detects 5-body compound aspect configurations: the Pentagram pattern.
  *
+ * Analyses quintile (72°) aspects among five celestial bodies to identify the
+ * star-shaped pentagram configuration. Computes forming and dissolving phases
+ * by comparing current and previous aspect sets.
  */
 @Injectable()
 export class QuintupleAspectsService {

@@ -34,7 +34,10 @@ import type { Moment } from "moment-timezone";
 // #region 🕑 Progressive Events
 
 /**
+ * Detects zodiacal ingress events for celestial bodies entering new signs, decans, or sign peaks.
  *
+ * Monitors ecliptic longitudes of tracked bodies to identify sign ingresses (every 30°),
+ * decan ingresses (every 10°), and peak ingresses (maximum longitude within a sign).
  */
 @Injectable()
 export class IngressesService {
@@ -247,7 +250,13 @@ export class IngressesService {
   }
 
   /**
+   * Creates a decan ingress calendar event.
    *
+   * A decan ingress occurs when a body crosses into one of the three 10° subdivisions
+   * within a zodiac sign, each associated with a sub-ruler and decan symbol.
+   *
+   * @param args - Body, ecliptic longitude, and date of the ingress
+   * @returns Calendar event for the decan ingress
    */
   buildDecanIngressEvent(args: {
     date: Moment;
@@ -286,7 +295,13 @@ export class IngressesService {
   }
 
   /**
+   * Detects sign peak ingress events for celestial bodies at a specific minute.
    *
+   * A peak ingress occurs when a body reaches the midpoint longitude (15°) of its
+   * current zodiac sign, representing the peak expression of that sign's energy.
+   *
+   * @param args - Body position data and the current minute to analyze
+   * @returns Array of detected peak ingress events
    */
   getPeakIngressEvents(args: {
     coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
@@ -331,7 +346,13 @@ export class IngressesService {
   }
 
   /**
+   * Creates a sign peak ingress calendar event.
    *
+   * Marks when a celestial body reaches the 15° midpoint of its current zodiac sign,
+   * representing the peak expression of that sign's energy.
+   *
+   * @param args - Body, ecliptic longitude, and date of the peak
+   * @returns Calendar event for the sign peak ingress
    */
   buildPeakIngressEvent(args: {
     date: Moment;
@@ -367,7 +388,13 @@ export class IngressesService {
   }
 
   /**
+   * Builds progressive event spans for zodiac sign ingress periods.
    *
+   * Pairs consecutive sign ingress events for each body to produce duration-based
+   * calendar entries representing the full transit through each zodiac sign.
+   *
+   * @param events - Flat array of perfective ingress events
+   * @returns Progressive (span) calendar events for each sign transit
    */
   detectProgressive(events: Event[]): Event[] {
     const progressiveEvents: Event[] = [];
@@ -421,7 +448,10 @@ export class IngressesService {
   }
 
   /**
+   * Detects all ingress events (sign, decan, peak) at a specific minute.
    *
+   * @param args - Body position data and the current minute to analyze
+   * @returns Array of all detected ingress events (sign, decan, and peak)
    */
   detect(args: {
     coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;

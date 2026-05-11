@@ -6,7 +6,9 @@ import { Module } from "@nestjs/common";
 import { AnnualSolarCycleService } from "./annualSolarCycle.service";
 
 /**
- *
+ * NestJS module for annual solar cycle event detection.
+ * Exports {@link AnnualSolarCycleService} which identifies solstices, equinoxes,
+ * cross-quarter days, hexadecans, and solar apsis (perihelion/aphelion).
  */
 @Module({
   imports: [EphemerisModule, MathModule, ProgressiveUtilitiesModule],

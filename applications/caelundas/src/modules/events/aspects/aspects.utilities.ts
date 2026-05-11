@@ -8,12 +8,12 @@ import type { Aspect, AspectPhase } from "@caelundas/src/caelundas.types";
  * NestJS provider exposing core aspect detection utilities.
  *
  * Two entry points are provided:
- * - {@link AspectsUtilitiesService#isAspect}: point-in-time orb check
- * - {@link AspectsUtilitiesService#getIsAspect}: factory that returns a phase-classification
+ * - {@link AspectsUtilities#isAspect}: point-in-time orb check
+ * - {@link AspectsUtilities#getIsAspect}: factory that returns a phase-classification
  *   function (forming / perfective / dissolving) for a given set of aspects
  */
 @Injectable()
-export class AspectsUtilitiesService {
+export class AspectsUtilities {
   constructor(private readonly mathService: MathService) {}
 
   /**

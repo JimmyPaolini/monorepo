@@ -4,7 +4,7 @@ import {
 } from "@caelundas/src/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
-import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
 import { beforeAll, describe, expect, it, vi } from "vitest";
@@ -45,7 +45,7 @@ beforeAll(async () => {
       RetrogradesService,
       EphemerisService,
       MathService,
-      ProgressiveUtilitiesService,
+      ProgressiveUtilities,
     ],
   }).compile();
   service = module.get(RetrogradesService);

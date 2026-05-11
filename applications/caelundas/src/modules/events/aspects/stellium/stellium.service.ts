@@ -64,7 +64,10 @@ function determineCompoundPhaseFromSnapshots(
 // #region Progressive Events
 
 /**
+ * Detects stellium configurations — concentrations of 4 or more bodies in close conjunction.
  *
+ * Uses graph traversal over conjunction aspects to find clusters of bodies within
+ * a small zodiacal arc, then computes forming/dissolving phases for each cluster.
  */
 @Injectable()
 export class StelliumService {

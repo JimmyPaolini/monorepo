@@ -6,7 +6,9 @@ import { Module } from "@nestjs/common";
 import { PhasesService } from "./phases.service";
 
 /**
- *
+ * NestJS module for inner-planet phase event detection.
+ * Exports {@link PhasesService} which identifies Venus, Mercury, and Mars phase events
+ * such as maximum elongation, maximum brightness, and morning/evening visibility transitions.
  */
 @Module({
   imports: [EphemerisModule, MathModule, ProgressiveUtilitiesModule],

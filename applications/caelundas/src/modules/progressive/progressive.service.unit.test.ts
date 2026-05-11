@@ -11,7 +11,7 @@ import moment from "moment-timezone";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { ProgressiveService } from "./progressive.service";
-import { ProgressiveUtilitiesService } from "./progressive.utilities";
+import { ProgressiveUtilities } from "./progressive.utilities";
 
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
@@ -27,7 +27,7 @@ function makeEvent(summary: string): Event {
 
 describe("ProgressiveService", () => {
   let service: ProgressiveService;
-  let utilitiesService: ProgressiveUtilitiesService;
+  let utilitiesService: ProgressiveUtilities;
 
   const annualSolarCycleMock = { detectProgressive: vi.fn() };
   const aspectsMock = { detectProgressive: vi.fn() };
@@ -50,12 +50,12 @@ describe("ProgressiveService", () => {
         { provide: PhasesService, useValue: phasesMock },
         { provide: RetrogradesService, useValue: retrogradesMock },
         { provide: TwilightsService, useValue: twilightsMock },
-        ProgressiveUtilitiesService,
+        ProgressiveUtilities,
       ],
     }).compile();
 
     service = module.get(ProgressiveService);
-    utilitiesService = module.get(ProgressiveUtilitiesService);
+    utilitiesService = module.get(ProgressiveUtilities);
   });
 
   beforeEach(() => {

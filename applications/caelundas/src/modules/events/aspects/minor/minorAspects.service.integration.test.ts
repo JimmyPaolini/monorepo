@@ -1,8 +1,8 @@
 import { minorAspectBodies } from "@caelundas/src/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
-import { AspectsUtilitiesService } from "@caelundas/src/modules/events/aspects/aspects.utilities";
+import { AspectsUtilities } from "@caelundas/src/modules/events/aspects/aspects.utilities";
 import { MathService } from "@caelundas/src/modules/math/math.service";
-import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
 import { beforeAll, describe, expect, it, vi } from "vitest";
@@ -54,10 +54,10 @@ beforeAll(async () => {
   const module = await Test.createTestingModule({
     providers: [
       MinorAspectsService,
-      AspectsUtilitiesService,
+      AspectsUtilities,
       EphemerisService,
       MathService,
-      ProgressiveUtilitiesService,
+      ProgressiveUtilities,
     ],
   }).compile();
   service = module.get(MinorAspectsService);

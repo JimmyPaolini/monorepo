@@ -1,6 +1,6 @@
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
-import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Injectable } from "@nestjs/common";
 
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
@@ -19,7 +19,10 @@ import type { Moment } from "moment-timezone";
 // #region 🕑 Progressive Events
 
 /**
+ * Detects key annual solar cycle events based on the Sun's ecliptic longitude and distance.
  *
+ * Identifies solstices, equinoxes, Celtic cross-quarter days, hexadecans (16-part ecliptic
+ * divisions), and solar apsis events (perihelion and aphelion).
  */
 @Injectable()
 export class AnnualSolarCycleService {
@@ -32,7 +35,7 @@ export class AnnualSolarCycleService {
   constructor(
     private readonly ephemerisService: EphemerisService,
     private readonly mathService: MathService,
-    private readonly progressiveUtilitiesService: ProgressiveUtilitiesService,
+    private readonly progressiveUtilitiesService: ProgressiveUtilities,
   ) {}
 
   /**
@@ -80,7 +83,14 @@ export class AnnualSolarCycleService {
   }
 
   /**
+   * Detects solstice, equinox, cross-quarter, and hexadecan events at a specific minute.
    *
+   * Compares the Sun's ecliptic longitude against threshold values for all annual solar
+   * cycle markers: the 4 seasonal turning points, 4 Celtic cross-quarter days,
+   * and 8 hexadecan midpoints (22.5° increments).
+   *
+   * @param args - Sun coordinate ephemeris and the current minute to analyze
+   * @returns Array of detected annual solar cycle events (0-1 events per minute)
    */
   getAnnualSolarCycleEvents(args: {
     sunCoordinateEphemeris: CoordinateEphemeris;

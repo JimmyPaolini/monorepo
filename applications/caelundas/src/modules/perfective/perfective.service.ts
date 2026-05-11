@@ -18,7 +18,11 @@ import type { AspectBodies } from "@caelundas/src/modules/events/aspects/aspects
 import type { Input } from "@caelundas/src/modules/input/input.types";
 
 /**
+ * Orchestrates minute-by-minute detection of all astronomical events for a date range.
  *
+ * Computes ephemerides day-by-day and delegates to specialized services to identify
+ * aspects, eclipses, retrogrades, ingresses, daily cycles, lunar phases,
+ * annual solar cycle events, and twilight transitions.
  */
 @Injectable()
 export class PerfectiveService {
@@ -37,7 +41,14 @@ export class PerfectiveService {
   ) {}
 
   /**
+   * Detects all perfective (instantaneous) astronomical events within the given date range.
    *
+   * Iterates day-by-day, computes per-day ephemerides, then scans minute-by-minute
+   * to identify aspects, eclipses, retrogrades, ingresses, daily solar/lunar cycle events,
+   * monthly lunar phases, annual solar cycle events, and twilight transitions.
+   *
+   * @param input - Date range, coordinates, and timezone for detection
+   * @returns Flat array of all detected calendar events
    */
   detect(input: Input): Event[] {
     const { end, latitude, longitude, start, timezone } = input;

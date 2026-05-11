@@ -16,7 +16,10 @@ import type { AzimuthElevationEphemeris } from "@caelundas/src/modules/ephemeris
 import type { Moment } from "moment-timezone";
 
 /**
+ * Detects daily solar and lunar cycle events based on azimuth and elevation data.
  *
+ * Identifies the four key daily positions for both Sun and Moon: rise (horizon crossing
+ * upward), zenith (highest point), set (horizon crossing downward), and nadir (lowest point).
  */
 @Injectable()
 export class DailyCyclesService {
@@ -93,7 +96,14 @@ export class DailyCyclesService {
   }
 
   /**
+   * Detects daily solar cycle events at a specific minute.
    *
+   * Checks for sunrise (elevation crosses 0° upward), solar zenith (local maximum),
+   * sunset (elevation crosses 0° downward), and solar nadir (local minimum) by comparing
+   * elevation values at the previous, current, and next minute.
+   *
+   * @param args - Sun azimuth/elevation ephemeris and the current minute to analyze
+   * @returns Array of detected solar cycle events (0-1 events per minute)
    */
   getDailySolarCycleEvents(args: {
     minute: Moment;

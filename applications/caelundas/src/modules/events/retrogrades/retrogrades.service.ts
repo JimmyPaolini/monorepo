@@ -16,7 +16,7 @@ import {
 import { retrogradeBodies } from "@caelundas/src/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
-import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
@@ -42,7 +42,7 @@ export class RetrogradesService {
   constructor(
     private readonly ephemerisService: EphemerisService,
     private readonly mathService: MathService,
-    private readonly progressiveUtilitiesService: ProgressiveUtilitiesService,
+    private readonly progressiveUtilitiesService: ProgressiveUtilities,
   ) {}
 
   /**

@@ -6,7 +6,9 @@ import { Module } from "@nestjs/common";
 import { TwilightsService } from "./twilights.service";
 
 /**
- *
+ * NestJS module for solar twilight event detection.
+ * Exports {@link TwilightsService} which identifies astronomical, nautical, and civil
+ * dawn and dusk transitions based on solar depression angles.
  */
 @Module({
   imports: [EphemerisModule, MathModule, ProgressiveUtilitiesModule],

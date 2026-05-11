@@ -5,8 +5,8 @@ import {
 } from "@caelundas/src/caelundas.constants";
 import { minorAspectBodies } from "@caelundas/src/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
-import { AspectsUtilitiesService } from "@caelundas/src/modules/events/aspects/aspects.utilities";
-import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { AspectsUtilities } from "@caelundas/src/modules/events/aspects/aspects.utilities";
+import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
@@ -28,18 +28,18 @@ import type { Moment } from "moment-timezone";
  * using smaller orbs than major aspects. Includes progressive event pairing for
  * duration-aware tracking.
  *
- * @see {@link AspectsUtilitiesService} for orb and angle configuration
+ * @see {@link AspectsUtilities} for orb and angle configuration
  */
 @Injectable()
 export class MinorAspectsService {
   private readonly detectAspectPhase: ReturnType<
-    AspectsUtilitiesService["getIsAspect"]
+    AspectsUtilities["getIsAspect"]
   >;
 
   constructor(
-    private readonly aspectsUtilitiesService: AspectsUtilitiesService,
+    private readonly aspectsUtilitiesService: AspectsUtilities,
     private readonly ephemerisService: EphemerisService,
-    private readonly progressiveUtilitiesService: ProgressiveUtilitiesService,
+    private readonly progressiveUtilitiesService: ProgressiveUtilities,
   ) {
     this.detectAspectPhase = aspectsUtilitiesService.getIsAspect([
       ...minorAspects,

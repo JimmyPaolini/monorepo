@@ -14,7 +14,9 @@ import { Module } from "@nestjs/common";
 import { PerfectiveService } from "./perfective.service";
 
 /**
- *
+ * NestJS module orchestrating per-minute astronomical event detection.
+ * Imports all event sub-modules and exposes {@link PerfectiveService} which iterates
+ * minute-by-minute over a date range to detect all perfective (instantaneous) events.
  */
 @Module({
   imports: [

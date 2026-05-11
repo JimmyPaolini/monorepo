@@ -33,7 +33,13 @@ export class CaelundasCommand extends CommandRunner {
   }
 
   /**
+   * Executes the full calendar generation pipeline.
    *
+   * Parses environment input, detects all perfective and progressive astronomical events
+   * across the configured date range, merges and sorts the results by start time, then
+   * writes the complete event set to an ICS file via {@link CalendarService}.
+   *
+   * @returns Promise that resolves when the ICS file has been written
    */
   async run(): Promise<void> {
     const input = this.inputService.parse();

@@ -14,8 +14,8 @@ import {
 } from "@caelundas/src/caelundas.constants";
 import { majorAspectBodies } from "@caelundas/src/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
-import { AspectsUtilitiesService } from "@caelundas/src/modules/events/aspects/aspects.utilities";
-import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { AspectsUtilities } from "@caelundas/src/modules/events/aspects/aspects.utilities";
+import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
@@ -36,18 +36,18 @@ import type { Moment } from "moment-timezone";
  * Covers conjunction (0°), sextile (60°), square (90°), trine (120°), and opposition (180°)
  * using an 8° orb tolerance. Includes progressive event pairing for duration-aware tracking.
  *
- * @see {@link AspectsUtilitiesService} for orb and angle configuration
+ * @see {@link AspectsUtilities} for orb and angle configuration
  */
 @Injectable()
 export class MajorAspectsService {
   private readonly detectAspectPhase: ReturnType<
-    AspectsUtilitiesService["getIsAspect"]
+    AspectsUtilities["getIsAspect"]
   >;
 
   constructor(
-    private readonly aspectsUtilitiesService: AspectsUtilitiesService,
+    private readonly aspectsUtilitiesService: AspectsUtilities,
     private readonly ephemerisService: EphemerisService,
-    private readonly progressiveUtilitiesService: ProgressiveUtilitiesService,
+    private readonly progressiveUtilitiesService: ProgressiveUtilities,
   ) {
     this.detectAspectPhase = aspectsUtilitiesService.getIsAspect([
       ...majorAspects,
@@ -104,7 +104,7 @@ export class MajorAspectsService {
    *
    * @param args - Ephemeris data and current time
    * @param coordinateEphemerisByBody - Pre-computed ephemeris data for all bodies
-   * @param currentMinute - Time point to check for aspect events (minute precision)
+   * @param minute - Time point to check for aspect events (minute precision)
    * @returns Array of calendar events for detected aspect phase transitions
    *
    * @remarks
@@ -123,7 +123,7 @@ export class MajorAspectsService {
    * ```typescript
    * const events = getMajorAspectEvents({
    *   coordinateEphemerisByBody: ephemerides,
-   *   currentMinute: moment('2026-01-21T12:00:00Z')
+   *   minute: moment('2026-01-21T12:00:00Z')
    * });
    * // Returns: [{ summary: "☉ □ ♃ Sun perfective square Jupiter", start: ..., ... }]
    * ```
@@ -264,9 +264,17 @@ export class MajorAspectsService {
     const body2Symbol = symbolByBody[body2] as BodySymbol;
     const majorAspectSymbol = symbolByMajorAspect[majorAspect];
 
-    let description: string;
-    let phaseEmoji: string;
-    let categories: string[];
+    const phaseMetadata = {
+      perfective: { verb: "perfective", emoji: "🎯", label: "Perfective" },
+      forming: { verb: "forming", emoji: "➡️", label: "Forming" },
+      dissolving: { verb: "dissolving", emoji: "⬅️", label: "Dissolving" },
+    } as const satisfies Record<
+      AspectPhase,
+      { verb: string; emoji: string; label: string }
+    >;
+
+    const { verb, emoji: phaseEmoji, label } = phaseMetadata[phase];
+    const description = `${body1Capitalized} ${verb} ${majorAspect} ${body2Capitalized}`;
 
     const baseCategories = [
       "Astronomy",
@@ -277,20 +285,7 @@ export class MajorAspectsService {
       body2Capitalized,
       _.startCase(majorAspect),
     ];
-
-    if (phase === "perfective") {
-      description = `${body1Capitalized} perfective ${majorAspect} ${body2Capitalized}`;
-      phaseEmoji = "🎯";
-      categories = [...baseCategories, "Perfective"];
-    } else if (phase === "forming") {
-      description = `${body1Capitalized} forming ${majorAspect} ${body2Capitalized}`;
-      phaseEmoji = "➡️";
-      categories = [...baseCategories, "Forming"];
-    } else {
-      description = `${body1Capitalized} dissolving ${majorAspect} ${body2Capitalized}`;
-      phaseEmoji = "⬅️";
-      categories = [...baseCategories, "Dissolving"];
-    }
+    const categories = [...baseCategories, label];
 
     const summary = `${phaseEmoji} ${body1Symbol} ${majorAspectSymbol} ${body2Symbol} ${description}`;
 

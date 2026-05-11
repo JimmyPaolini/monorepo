@@ -10,7 +10,7 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
  * importing the standalone utility function directly.
  */
 @Injectable()
-export class ProgressiveUtilitiesService {
+export class ProgressiveUtilities {
   /**
    * Pairs beginning and ending events into tuples.
    *
