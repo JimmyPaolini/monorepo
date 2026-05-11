@@ -6,13 +6,13 @@
     "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "[json]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[jsonl]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[jupyter-notebook]": {
     "editor.codeActionsOnSave": {
@@ -254,14 +254,14 @@
     "source.fixAll.pylance": "never",
     "source.fixAll.ruff": "explicit",
     "source.fixAll.ts": "explicit",
-    "source.format.oxc": "always",
+    "source.format.oxc": "explicit",
     "source.formatAll.terraform": "explicit",
     "source.organizeImports": "never",
     "source.organizeImports.ruff": "explicit",
     "source.organizeLinkDefinitions": "explicit",
     "source.removeUnused.ts": "never",
     "source.removeUnusedImports": "explicit",
-    "source.sort.json": "never",
+    "source.sort.json": "explicit",
     "source.sortImports": "never",
     "source.unusedImports": "explicit"
   },
@@ -307,6 +307,7 @@
   "editor.stickyScroll.defaultModel": "outlineModel",
   "editor.stickyScroll.enabled": true,
   "editor.suggest.preview": true,
+  "editor.suggest.showReferences": true,
   "editor.suggestSelection": "recentlyUsedByPrefix",
   "editor.tabSize": 2,
   "eslint.codeActionsOnSave.mode": "problems",
@@ -413,6 +414,7 @@
   "git.postCommitCommand": "push",
   "git.repositoryScanMaxDepth": 3,
   "git.showProgress": true,
+  "git.showReferenceDetails": true,
   "git.terminalGitEditor": true,
   "git.verboseCommit": true,
   "github-actions.use-enterprise": false,
@@ -584,6 +586,8 @@
   "js/ts.inlayHints.variableTypes.enabled": false,
   "js/ts.preferences.importModuleSpecifier": "relative",
   "js/ts.preferences.preferTypeOnlyAutoImports": true,
+  "js/ts.referencesCodeLens.enabled": true,
+  "js/ts.referencesCodeLens.showOnAllFunctions": true,
   "js/ts.suggest.autoImports": true,
   "js/ts.suggest.paths": true,
   "js/ts.tsserver.experimental.enableProjectDiagnostics": false,
@@ -718,6 +722,7 @@
   "postman.mcp.notifications.postmanMCP": false,
   "postman.settings.dotenv-detection-notification-visibility": false,
   "prettier.configPath": "configuration/prettier.config.ts",
+  "python.analysis.referencesCodeLens": true,
   "python.defaultInterpreterPath": "${workspaceFolder}/applications/affirmations/.venv/bin/python",
   "python.testing.pytestArgs": ["."],
   "python.testing.pytestEnabled": true,
