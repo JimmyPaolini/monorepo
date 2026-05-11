@@ -92,7 +92,19 @@
       "inputs": ["^production", "production"]
     },
     "clean": {
-      "cache": true
+      "cache": true,
+      "configurations": {
+        "check": {
+          "commands": ["nx run {projectName}:knip:check"],
+          "parallel": true
+        },
+        "write": {
+          "commands": ["nx run {projectName}:knip:write"],
+          "parallel": false
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands"
     },
     "code-analysis": {
       "cache": true,
@@ -100,6 +112,7 @@
         "check": {
           "commands": [
             "nx run {projectName}:clean:check",
+            "nx run {projectName}:dependency-analysis",
             "nx run {projectName}:format:check",
             "nx run {projectName}:lint:check",
             "nx run {projectName}:markdown-lint:check",
@@ -113,6 +126,7 @@
         "write": {
           "commands": [
             "nx run {projectName}:clean:write",
+            "nx run {projectName}:dependency-analysis",
             "nx run {projectName}:format:write",
             "nx run {projectName}:lint:write",
             "nx run {projectName}:markdown-lint:write",

@@ -47,6 +47,7 @@
             "nx run {projectName}:sync-conventional-config:check",
             "nx run {projectName}:sync-pull-request-template:check",
             "nx run {projectName}:sync-vscode-extensions:check",
+            "nx run {projectName}:type-coverage",
             "nx run {projectName}:typecheck"
           ],
           "parallel": true
@@ -62,6 +63,7 @@
             "nx run {projectName}:sync-conventional-config:write",
             "nx run {projectName}:sync-pull-request-template:write",
             "nx run {projectName}:sync-vscode-extensions:write",
+            "nx run {projectName}:type-coverage",
             "nx run {projectName}:typecheck"
           ],
           "parallel": false
