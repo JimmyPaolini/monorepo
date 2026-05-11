@@ -43,6 +43,26 @@ export class MonthlyLunarCycleService {
     "waning crescent": 0.25,
   };
 
+  /**
+   * Lunar phases during which Moon's illumination is increasing.
+   * Used to classify quarter-crossing detections as waxing events.
+   */
+  static readonly waxingPhases: ReadonlySet<LunarPhase> = new Set([
+    "waxing crescent",
+    "first quarter",
+    "waxing gibbous",
+  ]);
+
+  /**
+   * Lunar phases during which Moon's illumination is decreasing.
+   * Used to classify quarter-crossing detections as waning events.
+   */
+  static readonly waningPhases: ReadonlySet<LunarPhase> = new Set([
+    "waning gibbous",
+    "last quarter",
+    "waning crescent",
+  ]);
+
   constructor(private readonly ephemerisService: EphemerisService) {}
 
   /**
@@ -120,17 +140,17 @@ export class MonthlyLunarCycleService {
       },
     );
 
-    const illuminations = {
-      currentIllumination,
-      previousIlluminations,
-      nextIlluminations,
-    };
-    const date = minute;
-
     for (const lunarPhase of lunarPhases) {
-      if (this.isLunarPhase({ ...illuminations, lunarPhase })) {
+      if (
+        this.isLunarPhase({
+          currentIllumination,
+          previousIlluminations,
+          nextIlluminations,
+          lunarPhase,
+        })
+      ) {
         monthlyLunarCycleEvents.push(
-          this.buildMonthlyLunarCycleEvent({ date, lunarPhase }),
+          this.buildMonthlyLunarCycleEvent({ date: minute, lunarPhase }),
         );
       }
     }
@@ -312,10 +332,11 @@ export class MonthlyLunarCycleService {
     const categories = entering.categories;
 
     // Extract the lunar phase
+    const capitalizedLunarPhases = new Set(
+      lunarPhases.map((phase) => _.startCase(phase)),
+    );
     const lunarPhaseCapitalized = categories.find((category) =>
-      lunarPhases
-        .map((lunarPhase) => _.startCase(lunarPhase))
-        .includes(category),
+      capitalizedLunarPhases.has(category),
     );
 
     if (!lunarPhaseCapitalized) {
@@ -410,28 +431,12 @@ export class MonthlyLunarCycleService {
     const isWaxingLunarPhase = isPhase && isWaxing;
     const isWaningLunarPhase = isPhase && isWaning;
 
-    switch (lunarPhase) {
-      case "waxing crescent": {
-        return isWaxingLunarPhase;
-      }
-      case "first quarter": {
-        return isWaxingLunarPhase;
-      }
-      case "waxing gibbous": {
-        return isWaxingLunarPhase;
-      }
-      case "waning gibbous": {
-        return isWaningLunarPhase;
-      }
-      case "last quarter": {
-        return isWaningLunarPhase;
-      }
-      case "waning crescent": {
-        return isWaningLunarPhase;
-      }
-      default: {
-        return false;
-      }
+    if (MonthlyLunarCycleService.waxingPhases.has(lunarPhase)) {
+      return isWaxingLunarPhase;
     }
+    if (MonthlyLunarCycleService.waningPhases.has(lunarPhase)) {
+      return isWaningLunarPhase;
+    }
+    return false;
   }
 }
