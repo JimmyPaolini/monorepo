@@ -14,8 +14,6 @@ import type {
   IlluminationEphemerisBody,
   Latitude,
   Longitude,
-  OrbitEphemeris,
-  OrbitEphemerisBody,
 } from "./ephemeris.types";
 
 describe("ephemeris.types", () => {
@@ -72,65 +70,6 @@ describe("ephemeris.types", () => {
 
       expect(ephemeris[timestamp]).toBeDefined();
       expect(ephemeris[timestamp]?.longitude).toBe(120.5);
-    });
-  });
-
-  describe("OrbitEphemeris type", () => {
-    it("should accept valid orbital elements", () => {
-      const ephemeris: OrbitEphemeris = {
-        "2024-03-21T00:00:00.000Z": {
-          argumentOfPerifocus: 75,
-          eccentricity: 0.0545,
-          inclination: 5.145,
-          timeOfPeriapsis: 2_460_397.1,
-          longitudeOfAscendingNode: 144.525,
-          meanAnomaly: 151.2,
-          periapsisDistance: 363_309.23,
-          meanMotion: 13.36,
-          trueAnomaly: 153.34,
-          semiMajorAxis: 384_400,
-          apoapsisDistance: 405_490.77,
-          siderealOrbitPeriod: 27.32,
-        },
-      };
-
-      expect(ephemeris["2024-03-21T00:00:00.000Z"]?.eccentricity).toBeCloseTo(
-        0.0545,
-        4,
-      );
-      expect(ephemeris["2024-03-21T00:00:00.000Z"]?.semiMajorAxis).toBe(
-        384_400,
-      );
-    });
-
-    it("should have all required orbital element properties", () => {
-      const orbitValue: OrbitEphemeris[string] = {
-        argumentOfPerifocus: 75,
-        eccentricity: 0.0545,
-        inclination: 5.145,
-        timeOfPeriapsis: 2_460_397.1,
-        longitudeOfAscendingNode: 144.525,
-        meanAnomaly: 151.2,
-        periapsisDistance: 363_309.23,
-        meanMotion: 13.36,
-        trueAnomaly: 153.34,
-        semiMajorAxis: 384_400,
-        apoapsisDistance: 405_490.77,
-        siderealOrbitPeriod: 27.32,
-      };
-
-      expect(orbitValue).toHaveProperty("argumentOfPerifocus");
-      expect(orbitValue).toHaveProperty("eccentricity");
-      expect(orbitValue).toHaveProperty("inclination");
-      expect(orbitValue).toHaveProperty("timeOfPeriapsis");
-      expect(orbitValue).toHaveProperty("longitudeOfAscendingNode");
-      expect(orbitValue).toHaveProperty("meanAnomaly");
-      expect(orbitValue).toHaveProperty("periapsisDistance");
-      expect(orbitValue).toHaveProperty("meanMotion");
-      expect(orbitValue).toHaveProperty("trueAnomaly");
-      expect(orbitValue).toHaveProperty("semiMajorAxis");
-      expect(orbitValue).toHaveProperty("apoapsisDistance");
-      expect(orbitValue).toHaveProperty("siderealOrbitPeriod");
     });
   });
 
@@ -238,11 +177,6 @@ describe("ephemeris.types", () => {
   });
 
   describe("Body type constraints", () => {
-    it("should accept moon for OrbitEphemerisBody", () => {
-      const body: OrbitEphemerisBody = "moon";
-      expect(body).toBe("moon");
-    });
-
     it("should accept sun and moon for AzimuthElevationEphemerisBody", () => {
       const sun: AzimuthElevationEphemerisBody = "sun";
       const moon: AzimuthElevationEphemerisBody = "moon";

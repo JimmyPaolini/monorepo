@@ -1,5 +1,5 @@
 import { DatetimeService } from "@caelundas/src/modules/datetime/datetime.service";
-import { EphemerisAggregatesService } from "@caelundas/src/modules/ephemeris/ephemeris.aggregates";
+import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { AnnualSolarCycleService } from "@caelundas/src/modules/events/annualSolarCycle/annualSolarCycle.service";
 import { AspectsService } from "@caelundas/src/modules/events/aspects/aspects.service";
 import { DailyCyclesService } from "@caelundas/src/modules/events/dailyCycles/dailyCycles.service";
@@ -59,7 +59,7 @@ describe("PerfectiveService", () => {
       providers: [
         PerfectiveService,
         { provide: DatetimeService, useValue: datetimeMock },
-        { provide: EphemerisAggregatesService, useValue: ephemerisAggMock },
+        { provide: EphemerisService, useValue: ephemerisAggMock },
         { provide: AspectsService, useValue: aspectsMock },
         { provide: EclipsesService, useValue: eclipsesMock },
         { provide: RetrogradesService, useValue: retrogradesMock },

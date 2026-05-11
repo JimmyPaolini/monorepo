@@ -30,7 +30,7 @@ export class AspectsUtilitiesService {
     const { aspect, longitudeBody1, longitudeBody2 } = args;
     const angle = this.mathService.getAngle(longitudeBody1, longitudeBody2);
     const difference = Math.abs(angle - angleByAspect[aspect]);
-    return difference < orbByAspect[aspect];
+    return difference <= orbByAspect[aspect];
   }
 
   /**

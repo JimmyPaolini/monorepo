@@ -19,7 +19,14 @@
  * @see {@link ./ephemeris.types#} for data structures
  */
 
-import { nodes } from "@caelundas/src/caelundas.constants";
+import {
+  azimuthElevationBodies,
+  bodies,
+  diameterBodies,
+  distanceBodies,
+  illuminationBodies,
+  nodes,
+} from "@caelundas/src/caelundas.constants";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Injectable } from "@nestjs/common";
 import moment, { type Moment } from "moment-timezone";
@@ -34,7 +41,7 @@ import {
   swissEphemerisConstantByAsteroid,
   swissEphemerisConstantByNode,
   swissEphemerisConstantByPlanet,
-} from "./ephemeris.integration";
+} from "./ephemeris.constants";
 
 import type {
   AzimuthElevationEphemeris,
@@ -657,6 +664,38 @@ export class EphemerisService {
       diameterEphemerisByBody,
       distanceEphemerisByBody,
     };
+  }
+
+  /**
+   * Aggregates all ephemeris data types for all relevant bodies across a date range.
+   *
+   * @param args - Observer location, date range, and timezone
+   * @returns All five ephemeris dictionaries keyed by body
+   */
+  getEphemerides(args: {
+    coordinates: Coordinates;
+    end: Moment;
+    start: Moment;
+    timezone: string;
+  }): {
+    azimuthElevationEphemerisByBody: Record<Body, AzimuthElevationEphemeris>;
+    coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
+    diameterEphemerisByBody: Record<Body, DiameterEphemeris>;
+    distanceEphemerisByBody: Record<Body, DistanceEphemeris>;
+    illuminationEphemerisByBody: Record<Body, IlluminationEphemeris>;
+  } {
+    const { coordinates, end, start } = args;
+
+    return this.computeAllEphemerides({
+      coordinateBodies: bodies,
+      azimuthElevationBodies,
+      illuminationBodies,
+      diameterBodies,
+      distanceBodies,
+      coordinates,
+      start,
+      end,
+    });
   }
 
   private isNode(body: string): body is Node {

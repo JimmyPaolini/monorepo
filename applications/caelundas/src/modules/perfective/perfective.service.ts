@@ -1,6 +1,6 @@
 import { MARGIN_MINUTES } from "@caelundas/src/caelundas.constants";
 import { DatetimeService } from "@caelundas/src/modules/datetime/datetime.service";
-import { EphemerisAggregatesService } from "@caelundas/src/modules/ephemeris/ephemeris.aggregates";
+import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { AnnualSolarCycleService } from "@caelundas/src/modules/events/annualSolarCycle/annualSolarCycle.service";
 import { AspectsService } from "@caelundas/src/modules/events/aspects/aspects.service";
 import { DailyCyclesService } from "@caelundas/src/modules/events/dailyCycles/dailyCycles.service";
@@ -24,7 +24,7 @@ import type { Input } from "@caelundas/src/modules/input/input.types";
 export class PerfectiveService {
   constructor(
     private readonly datetimeService: DatetimeService,
-    private readonly ephemerisAggregatesService: EphemerisAggregatesService,
+    private readonly ephemerisService: EphemerisService,
     private readonly aspectsService: AspectsService,
     private readonly eclipsesService: EclipsesService,
     private readonly retrogradesService: RetrogradesService,
@@ -54,7 +54,7 @@ export class PerfectiveService {
       const startOfDay = date.clone().startOf("day");
       const endOfDay = date.clone().endOf("day");
 
-      const ephemerides = this.ephemerisAggregatesService.getEphemerides({
+      const ephemerides = this.ephemerisService.getEphemerides({
         coordinates,
         end: endOfDay.clone().add(MARGIN_MINUTES, "minutes"),
         start: startOfDay.clone().subtract(MARGIN_MINUTES, "minutes"),

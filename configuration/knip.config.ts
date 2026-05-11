@@ -31,16 +31,17 @@ const config: KnipConfig = {
     "@nx/js", // Nx JavaScript/TypeScript plugin (auto-detected by Nx)
     "@nx/web", // Nx web plugin (auto-detected by Nx)
     "@semantic-release/commit-analyzer", // semantic-release plugin, referenced in release.config.cjs
-    "@semantic-release/release-notes-generator", // semantic-release plugin
     "@semantic-release/github", // semantic-release plugin
     "@semantic-release/npm", // semantic-release plugin
+    "@semantic-release/release-notes-generator", // semantic-release plugin
+    "@swc/helpers", // SWC runtime helpers, required by @swc-node/register for compiled TS
     "commitlint-plugin-gitmoji", // commitlint plugin, referenced as string in plugins array
     "commitlint-plugin-tense", // commitlint plugin, referenced as string in plugins array
     "markdownlint-cli2", // Markdown linter CLI, invoked via nx:run-commands in project.json
     "npm-check-updates", // Dependency update CLI (ncu), invoked via GitHub Actions workflow
-    "stylelint", // CSS linter CLI, invoked via nx:run-commands in project.json
     "stylelint-config-standard", // stylelint preset, referenced as string in extends array
     "stylelint-config-tailwindcss", // stylelint preset, referenced as string in extends array
+    "stylelint", // CSS linter CLI, invoked via nx:run-commands in project.json
     "tslib", // TypeScript helper library, implicit runtime dependency for compiled TS
   ],
 

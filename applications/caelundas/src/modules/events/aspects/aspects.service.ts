@@ -1,15 +1,16 @@
 import { aspects, bodies } from "@caelundas/src/caelundas.constants";
-import { Injectable } from "@nestjs/common";
+import { Inject, Injectable } from "@nestjs/common";
+
+import { MajorAspectsService } from "./major/majorAspects.service";
+import { MinorAspectsService } from "./minor/minorAspects.service";
+import { QuadrupleAspectsService } from "./quadruple/quadrupleAspects.service";
+import { QuintupleAspectsService } from "./quintuple/quintupleAspects.service";
+import { SextupleAspectsService } from "./sextuple/sextupleAspects.service";
+import { SpecialtyAspectsService } from "./specialty/specialtyAspects.service";
+import { StelliumService } from "./stellium/stellium.service";
+import { TripleAspectsService } from "./triple/tripleAspects.service";
 
 import type { AspectBodies } from "./aspects.types";
-import type { MajorAspectsService } from "./major/majorAspects.service";
-import type { MinorAspectsService } from "./minor/minorAspects.service";
-import type { QuadrupleAspectsService } from "./quadruple/quadrupleAspects.service";
-import type { QuintupleAspectsService } from "./quintuple/quintupleAspects.service";
-import type { SextupleAspectsService } from "./sextuple/sextupleAspects.service";
-import type { SpecialtyAspectsService } from "./specialty/specialtyAspects.service";
-import type { StelliumService } from "./stellium/stellium.service";
-import type { TripleAspectsService } from "./triple/tripleAspects.service";
 import type { Aspect, Body } from "@caelundas/src/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
@@ -27,13 +28,21 @@ export type { AspectBodies } from "./aspects.types";
 @Injectable()
 export class AspectsService {
   constructor(
+    @Inject(MajorAspectsService)
     private readonly majorAspectsService: MajorAspectsService,
+    @Inject(MinorAspectsService)
     private readonly minorAspectsService: MinorAspectsService,
+    @Inject(QuadrupleAspectsService)
     private readonly quadrupleAspectsService: QuadrupleAspectsService,
+    @Inject(QuintupleAspectsService)
     private readonly quintupleAspectsService: QuintupleAspectsService,
+    @Inject(SextupleAspectsService)
     private readonly sextupleAspectsService: SextupleAspectsService,
+    @Inject(SpecialtyAspectsService)
     private readonly specialtyAspectsService: SpecialtyAspectsService,
+    @Inject(StelliumService)
     private readonly stelliumService: StelliumService,
+    @Inject(TripleAspectsService)
     private readonly tripleAspectsService: TripleAspectsService,
   ) {}
 

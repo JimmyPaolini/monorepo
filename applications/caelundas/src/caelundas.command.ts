@@ -1,10 +1,10 @@
-import { Injectable } from "@nestjs/common";
+import { Inject, Injectable } from "@nestjs/common";
 import { Command, CommandRunner } from "nest-commander";
 
-import type { CalendarService } from "./modules/calendar/calendar.service";
-import type { InputService } from "./modules/input/input.service";
-import type { PerfectiveService } from "./modules/perfective/perfective.service";
-import type { ProgressiveService } from "./modules/progressive/progressive.service";
+import { CalendarService } from "./modules/calendar/calendar.service";
+import { InputService } from "./modules/input/input.service";
+import { PerfectiveService } from "./modules/perfective/perfective.service";
+import { ProgressiveService } from "./modules/progressive/progressive.service";
 
 /**
  * CLI entry point that orchestrates the full calendar generation pipeline.
@@ -20,9 +20,13 @@ import type { ProgressiveService } from "./modules/progressive/progressive.servi
 })
 export class CaelundasCommand extends CommandRunner {
   constructor(
+    @Inject(InputService)
     private readonly inputService: InputService,
+    @Inject(PerfectiveService)
     private readonly perfectiveEventsService: PerfectiveService,
+    @Inject(ProgressiveService)
     private readonly progressiveEventsService: ProgressiveService,
+    @Inject(CalendarService)
     private readonly calendarService: CalendarService,
   ) {
     super();

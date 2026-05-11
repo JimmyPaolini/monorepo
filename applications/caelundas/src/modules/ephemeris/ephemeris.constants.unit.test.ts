@@ -38,9 +38,9 @@ import {
   swissEphemerisConstantByAsteroid,
   swissEphemerisConstantByNode,
   swissEphemerisConstantByPlanet,
-} from "./ephemeris.integration";
+} from "./ephemeris.constants";
 
-describe("ephemeris.integration", () => {
+describe("ephemeris.constants", () => {
   describe("flags", () => {
     it("maps ECLIPTIC_TO_HORIZONTAL_FLAG to SE_ECL2HOR", () => {
       expect(ECLIPTIC_TO_HORIZONTAL_FLAG).toBe(2048);

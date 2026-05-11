@@ -1,5 +1,6 @@
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
+import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
@@ -60,7 +61,12 @@ describe("twilights.events", () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [TwilightsService, EphemerisService, MathService],
+      providers: [
+        TwilightsService,
+        EphemerisService,
+        MathService,
+        ProgressiveUtilitiesService,
+      ],
     }).compile();
     service = module.get(TwilightsService);
     s = service as unknown as ServicePrivate;

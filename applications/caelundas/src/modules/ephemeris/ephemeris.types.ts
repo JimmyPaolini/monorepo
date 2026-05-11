@@ -32,33 +32,6 @@ export type CoordinateEphemeris = Record<
 >;
 
 /**
- * Time-indexed ephemeris of orbital elements.
- *
- * Contains Keplerian orbital elements at each timestamp, used for
- * detailed orbital mechanics calculations.
- *
- * @remarks
- * Currently only used for lunar orbit calculations.
- */
-export type OrbitEphemeris = Record<
-  string,
-  {
-    argumentOfPerifocus: number;
-    eccentricity: number;
-    inclination: number;
-    timeOfPeriapsis: number;
-    longitudeOfAscendingNode: number;
-    meanAnomaly: number;
-    periapsisDistance: number;
-    meanMotion: number;
-    trueAnomaly: number;
-    semiMajorAxis: number;
-    apoapsisDistance: number;
-    siderealOrbitPeriod: number;
-  }
->;
-
-/**
  * Time-indexed ephemeris of horizontal coordinates (observer frame).
  *
  * Keys are ISO timestamps, values contain azimuth and elevation in degrees.
@@ -100,12 +73,6 @@ export type DiameterEphemeris = Record<string, { diameter: number }>;
  * Includes all tracked planets, asteroids, comets, and lunar nodes.
  */
 export type CoordinateEphemerisBody = Body;
-
-/**
- * Bodies for which orbital element ephemerides are generated.
- * Currently limited to the Moon.
- */
-export type OrbitEphemerisBody = Extract<Body, "moon">;
 
 /**
  * Bodies for which azimuth/elevation ephemerides are generated.
