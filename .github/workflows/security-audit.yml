@@ -60,6 +60,12 @@ jobs:
             terraform:
               - infrastructure/terraform/**
 
+      - name: ⬇️ Download Ephemeris Data
+        if: |
+          github.event_name == 'schedule' ||
+          steps.paths.outputs.dockerfile == 'true'
+        run: pnpm exec nx run caelundas:download-ephemeris
+
       - name: 🐳 Build caelundas Docker image
         if: |
           github.event_name == 'schedule' ||

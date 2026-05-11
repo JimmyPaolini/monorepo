@@ -19,7 +19,7 @@ WORKDIR /app
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml .npmrc ./
 
 # Copy root tsconfig so caelundas/tsconfig.json can resolve its extends path at runtime
-COPY tsconfig.base.json ./
+COPY configuration/tsconfig.base.json ./tsconfig.base.json
 
 # Copy application-specific package.json to leverage Docker layer caching
 COPY applications/caelundas/package.json ./applications/caelundas/
@@ -49,7 +49,7 @@ WORKDIR /app
 COPY --from=builder /deploy .
 
 # Copy pre-downloaded Swiss Ephemeris data files (run `nx run caelundas:download-ephemeris` before docker build)
-COPY --chown=nodeuser:nodegroup data/ephemeris/ ./data/ephemeris/
+COPY --chown=nodeuser:nodegroup applications/caelundas/data/ephemeris/ ./data/ephemeris/
 
 # caelundas/tsconfig.json has `extends: "../../tsconfig.base.json"`.
 # With WORKDIR /app, that resolves to /tsconfig.base.json in the container.
