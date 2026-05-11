@@ -52,14 +52,7 @@
       }
     },
     "dependency-analysis": {},
-    "develop": {
-      "description": "Run Caelundas locally with .env file",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm develop",
-        "cwd": "applications/caelundas"
-      }
-    },
+
     "download-ephemeris": {
       "cache": false,
       "description": "Download Swiss Ephemeris data files to data/ephemeris/",

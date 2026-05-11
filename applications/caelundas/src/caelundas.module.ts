@@ -28,6 +28,7 @@ import { ProgressiveModule } from "./modules/progressive/progressive.module";
 @Module({
   imports: [
     ConfigModule.forRoot({
+      envFilePath: ".env",
       isGlobal: true,
       validate: (config: Record<string, unknown>) =>
         environmentSchema.parse(config),
