@@ -83,11 +83,11 @@ Specialized domain knowledge for working on specific systems or patterns:
 ## Projects
 
 - **[affirmations](applications/affirmations/AGENTS.md)**: Python Jupyter notebook application for LangChain + LangGraph affirmation generation (Ollama Qwen 3.5, ReAct agent, DuckDuckGo/SearxNG/Wikipedia tools)
-- **[caelundas](applications/caelundas/AGENTS.md)**: Node.js CLI for astronomical calendar generation (NASA JPL API, Kubernetes Job)
+- **[caelundas](applications/caelundas/AGENTS.md)**: Node.js CLI for astronomical calendar generation (NASA JPL API)
 - **[lexico](applications/lexico/AGENTS.md)**: SSR web app (React 19, TanStack Start, Supabase)
 - **[lexico-components](packages/lexico-components/AGENTS.md)**: Shared React component library (shadcn/ui, Radix UI)
 - **JimmyPaolini**: Portfolio website
-- **[infrastructure](infrastructure/AGENTS.md)**: Helm charts, Terraform, Kubernetes deployment
+- **[infrastructure](infrastructure/AGENTS.md)**: Helm charts, Terraform, Kubernetes infrastructure
 - **[code-generator](tools/code-generator/AGENTS.md)**: Nx generators for scaffolding code
 
 ## Key Conventions
@@ -210,14 +210,6 @@ pnpm add -w <package>                  # Workspace root
 nx run caelundas:develop               # Single project
 nx run-many --target=lint --all        # All projects
 nx affected --target=test --base=main  # Only changed
-```
-
-### Docker & Kubernetes (caelundas)
-
-```bash
-nx run caelundas:docker-build          # Build for linux/amd64
-nx run caelundas:helm-upgrade          # Deploy to K8s
-nx run caelundas:kubernetes-copy-files # Retrieve output
 ```
 
 ### Supabase (lexico)

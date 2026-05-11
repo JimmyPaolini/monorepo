@@ -265,6 +265,7 @@
     "source.sortImports": "never",
     "source.unusedImports": "explicit"
   },
+  "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.detectIndentation": false,
   "editor.dragAndDrop": false,
   "editor.experimental.asyncTokenization": true,
@@ -694,6 +695,7 @@
     "source.sortImports": "never"
   },
   "notebook.compactView": true,
+  "notebook.defaultFormatter": "charliermarsh.ruff",
   "notebook.diff.experimental.toggleInline": true,
   "notebook.diff.ignoreOutputs": true,
   "notebook.formatOnSave.enabled": true,
@@ -719,6 +721,7 @@
   "oxc.path.node": "/Users/jimmypaolini/.nvm/versions/node/v22.22.2/bin/node",
   "oxc.path.oxfmt": "node_modules/.bin/oxfmt",
   "oxc.useExecPath": false,
+  "peacock.color": "#215732",
   "postman.mcp.notifications.postmanMCP": false,
   "postman.settings.dotenv-detection-notification-visibility": false,
   "prettier.configPath": "configuration/prettier.config.ts",
@@ -825,7 +828,24 @@
   "workbench.browser.enableChatTools": true,
   "workbench.browser.openLocalhostLinks": true,
   "workbench.colorCustomizations": {
-    "editorRuler.foreground": "#282828"
+    "activityBar.activeBackground": "#2f7c47",
+    "activityBar.background": "#2f7c47",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#422c74",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "commandCenter.border": "#e7e7e799",
+    "editorRuler.foreground": "#282828",
+    "sash.hoverBorder": "#2f7c47",
+    "statusBar.background": "#215732",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#2f7c47",
+    "statusBarItem.remoteBackground": "#215732",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#215732",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#21573299",
+    "titleBar.inactiveForeground": "#e7e7e799"
   },
   "workbench.editor.alwaysShowEditorActions": true,
   "workbench.editor.editorActionsLocation": "titleBar",
@@ -849,7 +869,5 @@
   "workbench.panel.showLabels": false,
   "workbench.settings.alwaysShowAdvancedSettings": true,
   "workbench.sideBar.location": "right",
-  "workbench.startupEditor": "agentSessionsWelcomePage",
-  "editor.defaultFormatter": "oxc.oxc-vscode",
-  "notebook.defaultFormatter": "charliermarsh.ruff"
+  "workbench.startupEditor": "agentSessionsWelcomePage"
 }

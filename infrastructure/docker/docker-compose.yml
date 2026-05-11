@@ -1,12 +1,5 @@
 name: monorepo
 services:
-  caelundas:
-    build:
-      context: .
-      dockerfile: applications/caelundas/Dockerfile
-    image: caelundas
-    container_name: caelundas
-
   open-webui:
     image: ghcr.io/open-webui/open-webui:main
     container_name: open-webui

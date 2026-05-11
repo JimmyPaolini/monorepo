@@ -542,15 +542,6 @@
         "cwd": "{projectRoot}"
       }
     },
-    "trivy-image": {
-      "cache": false,
-      "description": "Scan caelundas Docker image for vulnerabilities using Trivy",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "nx run caelundas:docker-build && trivy image caelundas:1.0.0 --severity CRITICAL,HIGH --exit-code 1 --ignorefile configuration/trivyignore",
-        "cwd": "{projectRoot}"
-      }
-    },
     "type-coverage": {
       "cache": true,
       "description": "Check TypeScript type coverage for workspace root (minimum 95%)",

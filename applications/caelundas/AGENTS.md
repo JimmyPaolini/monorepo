@@ -16,14 +16,6 @@ cp .env.example .env  # Configure dates, location, timezone, event types
 nx run caelundas:develop
 ```
 
-### Deploy to Kubernetes
-
-```bash
-nx run caelundas:docker-build          # Build for linux/amd64
-nx run caelundas:helm-upgrade          # Deploy as K8s Job
-nx run caelundas:kubernetes-copy-files # Retrieve output after completion
-```
-
 ## Architecture Overview
 
 ### Pipeline Stages
