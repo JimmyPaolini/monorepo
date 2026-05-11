@@ -1,19 +1,15 @@
 import type {
-  Aspect,
-  Body,
-  LunarPhase,
-  MajorAspect,
-  MinorAspect,
-  Node,
-  Sign,
-  SpecialtyAspect,
-} from "./caelundas.types";
-import type {
   AzimuthElevationEphemerisBody,
   DiameterEphemerisBody,
   DistanceEphemerisBody,
   IlluminationEphemerisBody,
-} from "./ephemeris/ephemeris.types";
+} from "./modules/ephemeris/ephemeris.types";
+
+// Local type aliases derived from constants to avoid circular imports with caelundas.types.ts
+type MajorAspect = keyof typeof symbolByMajorAspect;
+type MinorAspect = keyof typeof symbolByMinorAspect;
+type SpecialtyAspect = keyof typeof symbolBySpecialtyAspect;
+type Aspect = keyof typeof symbolByAspect;
 
 // #region Signs 🪧
 
@@ -522,7 +518,7 @@ export const aspectBodies = [
  * Array of all zodiac sign names in tropical zodiac order.
  * Starts with Aries (0°) and proceeds counter-clockwise around the ecliptic.
  */
-export const signs = Object.keys(symbolBySign) as Sign[];
+export const signs = Object.keys(symbolBySign) as (keyof typeof symbolBySign)[];
 // export const signSymbols: SignSymbol[] = Object.values(symbolBySign);
 
 // #region Decans 🔟
@@ -552,7 +548,7 @@ export const signs = Object.keys(symbolBySign) as Sign[];
  * Array of lunar node names.
  * Includes ascending/descending nodes and apogee/perigee points.
  */
-export const nodes = Object.keys(symbolByNode) as Node[];
+export const nodes = Object.keys(symbolByNode) as (keyof typeof symbolByNode)[];
 // export const nodeSymbols: NodeSymbol[] = Object.values(symbolByNode);
 
 // #region Bodies 🔭
@@ -561,7 +557,9 @@ export const nodes = Object.keys(symbolByNode) as Node[];
  * Array of all tracked celestial bodies.
  * Combines planets, asteroids, comets, and lunar nodes.
  */
-export const bodies = Object.keys(symbolByBody) as Body[];
+export const bodies = Object.keys(
+  symbolByBody,
+) as (keyof typeof symbolByBody)[];
 // export const bodySymbols: BodySymbol[] = Object.values(symbolByBody);
 
 /**
@@ -609,7 +607,9 @@ export const distanceBodies: DistanceEphemerisBody[] = [
  * Array of major aspect names.
  * The five Ptolemaic aspects: conjunction, sextile, square, trine, opposition.
  */
-export const majorAspects = Object.keys(symbolByMajorAspect) as MajorAspect[];
+export const majorAspects = Object.keys(
+  symbolByMajorAspect,
+) as (keyof typeof symbolByMajorAspect)[];
 // export const majorAspectSymbols: MajorAspectSymbol[] =
 //   Object.values(symbolByMajorAspect);
 
@@ -619,7 +619,9 @@ export const majorAspects = Object.keys(symbolByMajorAspect) as MajorAspect[];
  * Array of minor aspect names.
  * Includes semi-sextile, semi-square, sesquiquadrate, quincunx.
  */
-export const minorAspects = Object.keys(symbolByMinorAspect) as MinorAspect[];
+export const minorAspects = Object.keys(
+  symbolByMinorAspect,
+) as (keyof typeof symbolByMinorAspect)[];
 // export const minorAspectSymbols: MinorAspectSymbol[] =
 //   Object.values(symbolByMinorAspect);
 
@@ -631,7 +633,7 @@ export const minorAspects = Object.keys(symbolByMinorAspect) as MinorAspect[];
  */
 export const specialtyAspects = Object.keys(
   symbolBySpecialtyAspect,
-) as SpecialtyAspect[];
+) as (keyof typeof symbolBySpecialtyAspect)[];
 // export const specialtyAspectSymbols: SpecialtyAspectSymbol[] = Object.values(
 //   symbolBySpecialtyAspect,
 // );
@@ -642,7 +644,9 @@ export const specialtyAspects = Object.keys(
  * Array of all aspect names.
  * Combines major, minor, and specialty aspects.
  */
-export const aspects = Object.keys(symbolByAspect) as Aspect[];
+export const aspects = Object.keys(
+  symbolByAspect,
+) as (keyof typeof symbolByAspect)[];
 // export const aspectSymbols: AspectSymbol[] = Object.values(symbolByAspect);
 
 // #region Aspect Orbs 🔮
@@ -816,7 +820,9 @@ export const orbByAspect: Record<Aspect, number> = {
 /**
  * Array of lunar phase names in order through the lunar month.
  */
-export const lunarPhases = Object.keys(symbolByLunarPhase) as LunarPhase[];
+export const lunarPhases = Object.keys(
+  symbolByLunarPhase,
+) as (keyof typeof symbolByLunarPhase)[];
 // export const lunarPhaseSymbols: LunarPhaseSymbol[] =
 //   Object.values(symbolByLunarPhase);
 

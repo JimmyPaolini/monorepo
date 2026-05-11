@@ -5,9 +5,9 @@ import _ from "lodash";
 import moment from "moment-timezone";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
-import { CalendarService } from "./calendar/calendar.service";
+import { CalendarService } from "./modules/calendar/calendar.service";
 
-import type { Environment } from "./input/input.types";
+import type { Environment } from "./modules/input/input.types";
 import type { ConfigService } from "@nestjs/config";
 
 // Mock environment for testing
@@ -168,7 +168,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
   describe("input validation e2e", () => {
     it("should validate and transform coordinates correctly", async () => {
-      const { inputSchema } = await import("./input/input.constants");
+      const { inputSchema } = await import("./modules/input/input.constants");
 
       const result = inputSchema.parse({
         latitude: "40.7128",
@@ -185,7 +185,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
     });
 
     it("should infer correct timezone for different locations", async () => {
-      const { inputSchema } = await import("./input/input.constants");
+      const { inputSchema } = await import("./modules/input/input.constants");
 
       // Tokyo
       const tokyoResult = inputSchema.parse({
@@ -219,7 +219,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
   describe("event detection e2e", () => {
     it("should correctly identify zodiac signs from longitude", async () => {
       const { IngressesService } =
-        await import("./events/ingresses/ingresses.service");
+        await import("./modules/events/ingresses/ingresses.service");
 
       // Test all 12 signs at their starting degrees
       expect(IngressesService.getSign(0)).toBe("aries");
@@ -238,12 +238,12 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
     it("should correctly identify aspects from angular separation", async () => {
       const { MajorAspectsService } =
-        await import("./events/aspects/major/major-aspects.service");
+        await import("./modules/events/aspects/major/major-aspects.service");
       const { AspectsUtilitiesService } =
-        await import("./events/aspects/aspects.utilities");
+        await import("./modules/events/aspects/aspects.utilities");
       const { EphemerisService } =
-        await import("./ephemeris/ephemeris.service");
-      const { MathService } = await import("./math/math.service");
+        await import("./modules/ephemeris/ephemeris.service");
+      const { MathService } = await import("./modules/math/math.service");
       const mathService = new MathService();
       const service = new MajorAspectsService(
         new AspectsUtilitiesService(mathService),
@@ -277,8 +277,8 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
     });
 
     it("should calculate progressive event pairs correctly", async () => {
-      const { ProgressiveEventsService } =
-        await import("./progressive-events/progressive-events.service");
+      const { ProgressiveService } =
+        await import("./modules/progressive/progressive.service");
 
       const beginnings = [
         {
@@ -314,7 +314,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
         },
       ];
 
-      const pairs = ProgressiveEventsService.pairProgressiveEvents(
+      const pairs = ProgressiveService.pairProgressiveEvents(
         beginnings,
         endings,
         "test",
@@ -338,7 +338,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
   describe("math utilities e2e", () => {
     it("should normalize degrees correctly across edge cases", async () => {
-      const { MathService } = await import("./math/math.service");
+      const { MathService } = await import("./modules/math/math.service");
       const mathService = new MathService();
       const normalizeDegrees = (d: number): number =>
         mathService.normalizeDegrees(d);
@@ -359,7 +359,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
     });
 
     it("should generate correct combinations", async () => {
-      const { MathService } = await import("./math/math.service");
+      const { MathService } = await import("./modules/math/math.service");
       const mathService = new MathService();
       const getCombinations = <T>(arr: T[], k: number): T[][] =>
         mathService.getCombinations(arr, k);
