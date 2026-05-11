@@ -1,8 +1,8 @@
-import { AnnualSolarCycleService } from "@caelundas/src/modules/events/annualSolarCycle/annual-solar-cycle.service";
+import { AnnualSolarCycleService } from "@caelundas/src/modules/events/annualSolarCycle/annualSolarCycle.service";
 import { AspectsService } from "@caelundas/src/modules/events/aspects/aspects.service";
 import { EclipsesService } from "@caelundas/src/modules/events/eclipses/eclipses.service";
 import { IngressesService } from "@caelundas/src/modules/events/ingresses/ingresses.service";
-import { MonthlyLunarCycleService } from "@caelundas/src/modules/events/monthlyLunarCycle/monthly-lunar-cycle.service";
+import { MonthlyLunarCycleService } from "@caelundas/src/modules/events/monthlyLunarCycle/monthlyLunarCycle.service";
 import { PhasesService } from "@caelundas/src/modules/events/phases/phases.service";
 import { RetrogradesService } from "@caelundas/src/modules/events/retrogrades/retrogrades.service";
 import { TwilightsService } from "@caelundas/src/modules/events/twilights/twilights.service";
@@ -11,6 +11,7 @@ import moment from "moment-timezone";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { ProgressiveService } from "./progressive.service";
+import { ProgressiveUtilitiesService } from "./progressive.utilities";
 
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
@@ -26,6 +27,7 @@ function makeEvent(summary: string): Event {
 
 describe("ProgressiveService", () => {
   let service: ProgressiveService;
+  let utilitiesService: ProgressiveUtilitiesService;
 
   const annualSolarCycleMock = { detectProgressive: vi.fn() };
   const aspectsMock = { detectProgressive: vi.fn() };
@@ -48,10 +50,12 @@ describe("ProgressiveService", () => {
         { provide: PhasesService, useValue: phasesMock },
         { provide: RetrogradesService, useValue: retrogradesMock },
         { provide: TwilightsService, useValue: twilightsMock },
+        ProgressiveUtilitiesService,
       ],
     }).compile();
 
     service = module.get(ProgressiveService);
+    utilitiesService = module.get(ProgressiveUtilitiesService);
   });
 
   beforeEach(() => {
@@ -137,7 +141,7 @@ describe("ProgressiveService", () => {
 
   describe("pairProgressiveEvents", () => {
     it("should return an empty array when both inputs are empty", () => {
-      const result = ProgressiveService.pairProgressiveEvents([], [], "test");
+      const result = utilitiesService.pairProgressiveEvents([], [], "test");
 
       expect(result).toEqual([]);
     });
@@ -148,7 +152,7 @@ describe("ProgressiveService", () => {
       const beginning2 = makeEvent("beginning-2");
       const ending2 = makeEvent("ending-2");
 
-      const result = ProgressiveService.pairProgressiveEvents(
+      const result = utilitiesService.pairProgressiveEvents(
         [beginning1, beginning2],
         [ending1, ending2],
         "test",
@@ -165,7 +169,7 @@ describe("ProgressiveService", () => {
       const beginning2 = makeEvent("beginning-2");
       const ending1 = makeEvent("ending-1");
 
-      const result = ProgressiveService.pairProgressiveEvents(
+      const result = utilitiesService.pairProgressiveEvents(
         [beginning1, beginning2],
         [ending1],
         "test",
@@ -180,7 +184,7 @@ describe("ProgressiveService", () => {
         .spyOn(console, "warn")
         .mockImplementation(() => undefined);
 
-      ProgressiveService.pairProgressiveEvents(
+      utilitiesService.pairProgressiveEvents(
         [makeEvent("a"), makeEvent("b")],
         [makeEvent("c")],
         "my-label",
@@ -196,7 +200,7 @@ describe("ProgressiveService", () => {
         .spyOn(console, "warn")
         .mockImplementation(() => undefined);
 
-      ProgressiveService.pairProgressiveEvents(
+      utilitiesService.pairProgressiveEvents(
         [makeEvent("a")],
         [makeEvent("b")],
         "test",

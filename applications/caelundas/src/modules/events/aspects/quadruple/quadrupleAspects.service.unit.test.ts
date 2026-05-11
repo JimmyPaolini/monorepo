@@ -6,7 +6,7 @@ import {
   getOtherBody,
   involvesBody,
   QuadrupleAspectsService,
-} from "./quadruple-aspects.service";
+} from "./quadrupleAspects.service";
 
 import type { Aspect, Body } from "@caelundas/src/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";

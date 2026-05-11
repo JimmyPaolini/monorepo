@@ -1,26 +1,21 @@
 import { aspects, bodies } from "@caelundas/src/caelundas.constants";
 import { Injectable } from "@nestjs/common";
 
-import type { MajorAspectsService } from "./major/major-aspects.service";
-import type { MinorAspectsService } from "./minor/minor-aspects.service";
-import type { QuadrupleAspectsService } from "./quadruple/quadruple-aspects.service";
-import type { QuintupleAspectsService } from "./quintuple/quintuple-aspects.service";
-import type { SextupleAspectsService } from "./sextuple/sextuple-aspects.service";
-import type { SpecialtyAspectsService } from "./specialty/specialty-aspects.service";
+import type { AspectBodies } from "./aspects.types";
+import type { MajorAspectsService } from "./major/majorAspects.service";
+import type { MinorAspectsService } from "./minor/minorAspects.service";
+import type { QuadrupleAspectsService } from "./quadruple/quadrupleAspects.service";
+import type { QuintupleAspectsService } from "./quintuple/quintupleAspects.service";
+import type { SextupleAspectsService } from "./sextuple/sextupleAspects.service";
+import type { SpecialtyAspectsService } from "./specialty/specialtyAspects.service";
 import type { StelliumService } from "./stellium/stellium.service";
-import type { TripleAspectsService } from "./triple/triple-aspects.service";
+import type { TripleAspectsService } from "./triple/tripleAspects.service";
 import type { Aspect, Body } from "@caelundas/src/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
 
-/**
- * Represents an active aspect between two celestial bodies at a specific moment.
- */
-export interface AspectBodies {
-  aspect: Aspect;
-  bodies: [Body, Body];
-}
+export type { AspectBodies } from "./aspects.types";
 
 /**
  * Orchestrates aspect detection across all aspect-type services.

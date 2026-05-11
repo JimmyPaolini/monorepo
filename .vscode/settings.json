@@ -26,7 +26,6 @@
   "[markdown]": {
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint"
   },
-  "markdownlint.configFile": "configuration/.markdownlint-cli2.jsonc",
   "[python]": {
     "editor.codeActionsOnSave": {
       "source.fixAll.ruff": "explicit",
@@ -357,7 +356,6 @@
     "rvest.vs-code-prettier-eslint": 2
   },
   "extensions.ignoreRecommendations": true,
-  "prettier.configPath": "configuration/prettier.config.ts",
   "extensions.webWorker": false,
   "files.associations": {
     "**/.vscode/*.json": "jsonc",
@@ -604,6 +602,7 @@
   "json.validate.enable": true,
   "jsonc.format.enable": true,
   "jsonc.validate.enable": false,
+  "markdownlint.configFile": "configuration/.markdownlint-cli2.jsonc",
   "material-icon-theme.files.associations": {
     ".code-workspace*": "vscode",
     ".ncurc.cjs": "npm",
@@ -640,6 +639,7 @@
     "*.service.test.js": "test-ts",
     "*.service.test.ts": "test-ts",
     "*.service.ts": "brainfuck",
+    "*.types.ts": "typescript-def",
     "*.utilities.ts": "gemini",
     "*.utils.ts": "gemini",
     "*enum.ts": "lib",
@@ -717,6 +717,7 @@
   "oxc.useExecPath": false,
   "postman.mcp.notifications.postmanMCP": false,
   "postman.settings.dotenv-detection-notification-visibility": false,
+  "prettier.configPath": "configuration/prettier.config.ts",
   "python.defaultInterpreterPath": "${workspaceFolder}/applications/affirmations/.venv/bin/python",
   "python.testing.pytestArgs": ["."],
   "python.testing.pytestEnabled": true,

@@ -8,7 +8,7 @@ import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { MonthlyLunarCycleService } from "./monthly-lunar-cycle.service";
+import { MonthlyLunarCycleService } from "./monthlyLunarCycle.service";
 
 import type { LunarPhase } from "@caelundas/src/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";

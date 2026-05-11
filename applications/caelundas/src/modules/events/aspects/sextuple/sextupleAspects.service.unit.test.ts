@@ -3,7 +3,7 @@ import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { beforeAll, describe, expect, it } from "vitest";
 
-import { SextupleAspectsService } from "./sextuple-aspects.service";
+import { SextupleAspectsService } from "./sextupleAspects.service";
 
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { AspectBodies } from "@caelundas/src/modules/events/aspects/aspects.service";

@@ -1,14 +1,12 @@
-import { AnnualSolarCycleService } from "@caelundas/src/modules/events/annualSolarCycle/annual-solar-cycle.service";
+import { AnnualSolarCycleService } from "@caelundas/src/modules/events/annualSolarCycle/annualSolarCycle.service";
 import { AspectsService } from "@caelundas/src/modules/events/aspects/aspects.service";
 import { EclipsesService } from "@caelundas/src/modules/events/eclipses/eclipses.service";
 import { IngressesService } from "@caelundas/src/modules/events/ingresses/ingresses.service";
-import { MonthlyLunarCycleService } from "@caelundas/src/modules/events/monthlyLunarCycle/monthly-lunar-cycle.service";
+import { MonthlyLunarCycleService } from "@caelundas/src/modules/events/monthlyLunarCycle/monthlyLunarCycle.service";
 import { PhasesService } from "@caelundas/src/modules/events/phases/phases.service";
 import { RetrogradesService } from "@caelundas/src/modules/events/retrogrades/retrogrades.service";
 import { TwilightsService } from "@caelundas/src/modules/events/twilights/twilights.service";
 import { Injectable } from "@nestjs/common";
-
-import { pairProgressiveEvents } from "./progressive.utilities";
 
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
@@ -46,22 +44,5 @@ export class ProgressiveService {
       ...this.phasesService.detectProgressive(perfectiveEvents),
       ...this.annualSolarCycleService.detectProgressive(perfectiveEvents),
     ];
-  }
-
-  /**
-   * Pairs beginning (forming/starting) events with their corresponding ending
-   * (dissolving/ending) events to create progressive pairs.
-   *
-   * @param beginnings - Events that mark the start of a progressive event
-   * @param endings - Events that mark the end of a progressive event
-   * @param label - Descriptive label used in warning messages when counts differ
-   * @returns Array of [beginning, ending] tuples
-   */
-  static pairProgressiveEvents(
-    beginnings: Event[],
-    endings: Event[],
-    label: string,
-  ): [Event, Event][] {
-    return pairProgressiveEvents(beginnings, endings, label);
   }
 }

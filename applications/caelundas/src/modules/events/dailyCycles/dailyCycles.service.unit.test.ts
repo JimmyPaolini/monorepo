@@ -4,7 +4,7 @@ import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
-import { DailyCyclesService } from "./daily-cycles.service";
+import { DailyCyclesService } from "./dailyCycles.service";
 
 import type { AzimuthElevationEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 

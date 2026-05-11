@@ -15,7 +15,7 @@ import {
 import { majorAspectBodies } from "@caelundas/src/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { AspectsUtilitiesService } from "@caelundas/src/modules/events/aspects/aspects.utilities";
-import { pairProgressiveEvents } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
@@ -47,6 +47,7 @@ export class MajorAspectsService {
   constructor(
     private readonly aspectsUtilitiesService: AspectsUtilitiesService,
     private readonly ephemerisService: EphemerisService,
+    private readonly progressiveUtilitiesService: ProgressiveUtilitiesService,
   ) {
     this.detectAspectPhase = aspectsUtilitiesService.getIsAspect([
       ...majorAspects,
@@ -382,7 +383,7 @@ export class MajorAspectsService {
         event.categories.includes("Dissolving"),
       );
 
-      const pairs = pairProgressiveEvents(
+      const pairs = this.progressiveUtilitiesService.pairProgressiveEvents(
         formingEvents,
         dissolvingEvents,
         `major aspect ${key}`,

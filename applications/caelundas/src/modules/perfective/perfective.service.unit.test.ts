@@ -1,11 +1,11 @@
 import { DatetimeService } from "@caelundas/src/modules/datetime/datetime.service";
 import { EphemerisAggregatesService } from "@caelundas/src/modules/ephemeris/ephemeris.aggregates";
-import { AnnualSolarCycleService } from "@caelundas/src/modules/events/annualSolarCycle/annual-solar-cycle.service";
+import { AnnualSolarCycleService } from "@caelundas/src/modules/events/annualSolarCycle/annualSolarCycle.service";
 import { AspectsService } from "@caelundas/src/modules/events/aspects/aspects.service";
-import { DailyCyclesService } from "@caelundas/src/modules/events/dailyCycles/daily-cycles.service";
+import { DailyCyclesService } from "@caelundas/src/modules/events/dailyCycles/dailyCycles.service";
 import { EclipsesService } from "@caelundas/src/modules/events/eclipses/eclipses.service";
 import { IngressesService } from "@caelundas/src/modules/events/ingresses/ingresses.service";
-import { MonthlyLunarCycleService } from "@caelundas/src/modules/events/monthlyLunarCycle/monthly-lunar-cycle.service";
+import { MonthlyLunarCycleService } from "@caelundas/src/modules/events/monthlyLunarCycle/monthlyLunarCycle.service";
 import { PhasesService } from "@caelundas/src/modules/events/phases/phases.service";
 import { RetrogradesService } from "@caelundas/src/modules/events/retrogrades/retrogrades.service";
 import { TwilightsService } from "@caelundas/src/modules/events/twilights/twilights.service";

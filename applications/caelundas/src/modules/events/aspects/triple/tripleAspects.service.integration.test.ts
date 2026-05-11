@@ -1,7 +1,7 @@
 import moment from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
-import { TripleAspectsService } from "./triple-aspects.service";
+import { TripleAspectsService } from "./tripleAspects.service";
 
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { AspectBodies } from "@caelundas/src/modules/events/aspects/aspects.service";

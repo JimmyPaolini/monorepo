@@ -6,7 +6,7 @@ import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
 import { beforeAll, describe, expect, it, vi } from "vitest";
 
-import { MajorAspectsService } from "./major-aspects.service";
+import { MajorAspectsService } from "./majorAspects.service";
 
 import type { Body } from "@caelundas/src/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";

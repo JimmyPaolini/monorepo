@@ -1,8 +1,9 @@
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
-import { pairProgressiveEvents } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Injectable } from "@nestjs/common";
 
+import type { EclipseFrame } from "./eclipses.types";
 import type { EclipsePhase } from "@caelundas/src/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type {
@@ -13,7 +14,6 @@ import type {
 import type { Moment } from "moment-timezone";
 
 const categories = ["Astronomy", "Astrology", "Eclipse"];
-type EclipseFrame = "geocentric" | "topocentric";
 
 /**
  *
@@ -23,6 +23,7 @@ export class EclipsesService {
   constructor(
     private readonly ephemerisService: EphemerisService,
     private readonly mathService: MathService,
+    private readonly progressiveUtilitiesService: ProgressiveUtilitiesService,
   ) {}
 
   private formatTimeZoneIso(date: Moment, timezone: string): string {
@@ -523,7 +524,7 @@ export class EclipsesService {
         event.description.includes("ends"),
       );
 
-      const solarPairs = pairProgressiveEvents(
+      const solarPairs = this.progressiveUtilitiesService.pairProgressiveEvents(
         solarBeginnings,
         solarEndings,
         `solar eclipse (${frameLabel.toLowerCase()})`,
@@ -548,7 +549,7 @@ export class EclipsesService {
         event.description.includes("ends"),
       );
 
-      const lunarPairs = pairProgressiveEvents(
+      const lunarPairs = this.progressiveUtilitiesService.pairProgressiveEvents(
         lunarBeginnings,
         lunarEndings,
         `lunar eclipse (${frameLabel.toLowerCase()})`,

@@ -8,7 +8,7 @@ import { planetaryPhaseBodies } from "@caelundas/src/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { TwilightsService } from "@caelundas/src/modules/events/twilights/twilights.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
-import { pairProgressiveEvents } from "@caelundas/src/modules/progressive/progressive.utilities";
+import { ProgressiveUtilitiesService } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
@@ -57,6 +57,7 @@ export class PhasesService {
   constructor(
     private readonly ephemerisService: EphemerisService,
     private readonly mathService: MathService,
+    private readonly progressiveUtilitiesService: ProgressiveUtilitiesService,
   ) {}
 
   private formatTimeZoneIso(date: Moment, timezone: string): string {
@@ -976,11 +977,12 @@ export class PhasesService {
     const morningSetEvents = events.filter((event) =>
       event.categories.includes("Morning Set"),
     );
-    const morningVisibilityPairs = pairProgressiveEvents(
-      morningRiseEvents,
-      morningSetEvents,
-      "Venus Morning Visibility",
-    );
+    const morningVisibilityPairs =
+      this.progressiveUtilitiesService.pairProgressiveEvents(
+        morningRiseEvents,
+        morningSetEvents,
+        "Venus Morning Visibility",
+      );
     for (const [beginning, ending] of morningVisibilityPairs) {
       progressiveEvents.push(
         this.getVenusMorningVisibilityDurationEvent(beginning, ending),
@@ -994,11 +996,12 @@ export class PhasesService {
     const eveningSetEvents = events.filter((event) =>
       event.categories.includes("Evening Set"),
     );
-    const eveningVisibilityPairs = pairProgressiveEvents(
-      eveningRiseEvents,
-      eveningSetEvents,
-      "Venus Evening Visibility",
-    );
+    const eveningVisibilityPairs =
+      this.progressiveUtilitiesService.pairProgressiveEvents(
+        eveningRiseEvents,
+        eveningSetEvents,
+        "Venus Evening Visibility",
+      );
     for (const [beginning, ending] of eveningVisibilityPairs) {
       progressiveEvents.push(
         this.getVenusEveningVisibilityDurationEvent(beginning, ending),
@@ -1018,11 +1021,12 @@ export class PhasesService {
     const morningSetEvents = events.filter((event) =>
       event.categories.includes("Morning Set"),
     );
-    const morningVisibilityPairs = pairProgressiveEvents(
-      morningRiseEvents,
-      morningSetEvents,
-      "Mercury Morning Visibility",
-    );
+    const morningVisibilityPairs =
+      this.progressiveUtilitiesService.pairProgressiveEvents(
+        morningRiseEvents,
+        morningSetEvents,
+        "Mercury Morning Visibility",
+      );
     for (const [beginning, ending] of morningVisibilityPairs) {
       progressiveEvents.push(
         this.getMercuryMorningVisibilityDurationEvent(beginning, ending),
@@ -1036,11 +1040,12 @@ export class PhasesService {
     const eveningSetEvents = events.filter((event) =>
       event.categories.includes("Evening Set"),
     );
-    const eveningVisibilityPairs = pairProgressiveEvents(
-      eveningRiseEvents,
-      eveningSetEvents,
-      "Mercury Evening Visibility",
-    );
+    const eveningVisibilityPairs =
+      this.progressiveUtilitiesService.pairProgressiveEvents(
+        eveningRiseEvents,
+        eveningSetEvents,
+        "Mercury Evening Visibility",
+      );
     for (const [beginning, ending] of eveningVisibilityPairs) {
       progressiveEvents.push(
         this.getMercuryEveningVisibilityDurationEvent(beginning, ending),
@@ -1060,11 +1065,12 @@ export class PhasesService {
     const morningSetEvents = events.filter((event) =>
       event.categories.includes("Morning Set"),
     );
-    const morningVisibilityPairs = pairProgressiveEvents(
-      morningRiseEvents,
-      morningSetEvents,
-      "Mars Morning Visibility",
-    );
+    const morningVisibilityPairs =
+      this.progressiveUtilitiesService.pairProgressiveEvents(
+        morningRiseEvents,
+        morningSetEvents,
+        "Mars Morning Visibility",
+      );
     for (const [beginning, ending] of morningVisibilityPairs) {
       progressiveEvents.push(
         this.getMarsMorningVisibilityDurationEvent(beginning, ending),
@@ -1078,11 +1084,12 @@ export class PhasesService {
     const eveningSetEvents = events.filter((event) =>
       event.categories.includes("Evening Set"),
     );
-    const eveningVisibilityPairs = pairProgressiveEvents(
-      eveningRiseEvents,
-      eveningSetEvents,
-      "Mars Evening Visibility",
-    );
+    const eveningVisibilityPairs =
+      this.progressiveUtilitiesService.pairProgressiveEvents(
+        eveningRiseEvents,
+        eveningSetEvents,
+        "Mars Evening Visibility",
+      );
     for (const [beginning, ending] of eveningVisibilityPairs) {
       progressiveEvents.push(
         this.getMarsEveningVisibilityDurationEvent(beginning, ending),
