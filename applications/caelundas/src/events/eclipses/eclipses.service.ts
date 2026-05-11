@@ -3,13 +3,13 @@ import { MathService } from "@caelundas/src/math/math.service";
 import { ProgressiveEventsService } from "@caelundas/src/progressive-events/progressive-events.service";
 import { Injectable } from "@nestjs/common";
 
+import type { EclipsePhase } from "@caelundas/src/caelundas.types";
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type {
   AzimuthElevationEphemeris,
   CoordinateEphemeris,
   DiameterEphemeris,
 } from "@caelundas/src/ephemeris/ephemeris.types";
-import type { EclipsePhase } from "@caelundas/src/types";
 import type { Moment } from "moment-timezone";
 
 const categories = ["Astronomy", "Astrology", "Eclipse"];

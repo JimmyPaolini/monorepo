@@ -2,10 +2,10 @@ import "reflect-metadata";
 
 import { CommandFactory } from "nest-commander";
 
-import { AppModule } from "./app.module";
+import { CaelundasModule } from "./caelundas.module";
 
 async function main(): Promise<void> {
-  await CommandFactory.run(AppModule, ["warn", "error"]);
+  await CommandFactory.run(CaelundasModule, ["warn", "error"]);
 }
 
 void main();

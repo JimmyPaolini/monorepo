@@ -19,7 +19,7 @@
  * @see {@link ./ephemeris.types#} for data structures
  */
 
-import { nodes } from "@caelundas/src/constants";
+import { nodes } from "@caelundas/src/caelundas.constants";
 import { MathService } from "@caelundas/src/math/math.service";
 import { Injectable } from "@nestjs/common";
 import moment, { type Moment } from "moment-timezone";
@@ -48,7 +48,7 @@ import type {
   IlluminationEphemeris,
   IlluminationEphemerisBody,
 } from "./ephemeris.types";
-import type { Body, Node } from "@caelundas/src/types";
+import type { Body, Node } from "@caelundas/src/caelundas.types";
 
 // Initialize Swiss Ephemeris on module load (idempotent — safe to call multiple times)
 initializeSwissEphemeris();

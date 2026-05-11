@@ -13,7 +13,7 @@ import type {
   DistanceEphemeris,
   IlluminationEphemeris,
 } from "./ephemeris.types";
-import type { Body } from "@caelundas/src/types";
+import type { Body } from "@caelundas/src/caelundas.types";
 
 describe("EphemerisAggregatesService", () => {
   const coordinates: [number, number] = [-74.006, 40.7128];

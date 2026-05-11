@@ -1,11 +1,14 @@
-import { symbolByBody, symbolByStellium } from "@caelundas/src/symbols";
-import { stelliumBodies } from "@caelundas/src/types";
+import {
+  symbolByBody,
+  symbolByStellium,
+} from "@caelundas/src/caelundas.constants";
+import { stelliumBodies } from "@caelundas/src/caelundas.types";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
+import type { Aspect, AspectPhase, Body } from "@caelundas/src/caelundas.types";
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
-import type { Aspect, AspectPhase, Body } from "@caelundas/src/types";
 import type { Moment } from "moment-timezone";
 
 function groupAspectsByType<T extends AspectBodies>(

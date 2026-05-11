@@ -1,16 +1,16 @@
+import { minorAspectBodies } from "@caelundas/src/caelundas.types";
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import { AspectsUtilitiesService } from "@caelundas/src/events/aspects/aspects.utilities";
 import { MathService } from "@caelundas/src/math/math.service";
-import { minorAspectBodies } from "@caelundas/src/types";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
 import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { MinorAspectsService } from "./minor-aspects.service";
 
+import type { Body } from "@caelundas/src/caelundas.types";
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
-import type { Body } from "@caelundas/src/types";
 
 vi.mock("fs", () => ({
   default: {

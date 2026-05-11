@@ -1,4 +1,4 @@
-import { MARGIN_MINUTES } from "@caelundas/src/constants";
+import { MARGIN_MINUTES } from "@caelundas/src/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/math/math.service";
 import { Test } from "@nestjs/testing";

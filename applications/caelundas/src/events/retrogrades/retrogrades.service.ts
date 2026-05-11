@@ -8,23 +8,26 @@
  * Moon never do.
  */
 
-import { MARGIN_MINUTES } from "@caelundas/src/constants";
+import {
+  MARGIN_MINUTES,
+  symbolByBody,
+  symbolByOrbitalDirection,
+} from "@caelundas/src/caelundas.constants";
+import { retrogradeBodies } from "@caelundas/src/caelundas.types";
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/math/math.service";
 import { ProgressiveEventsService } from "@caelundas/src/progressive-events/progressive-events.service";
-import { symbolByBody, symbolByOrbitalDirection } from "@caelundas/src/symbols";
-import { retrogradeBodies } from "@caelundas/src/types";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
-import type { Event } from "@caelundas/src/calendar/calendar.types";
-import type { CoordinateEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
 import type {
   OrbitalDirection,
   OrbitalDirectionSymbol,
   RetrogradeBody,
   RetrogradeBodySymbol,
-} from "@caelundas/src/types";
+} from "@caelundas/src/caelundas.types";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { CoordinateEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
 
 /**

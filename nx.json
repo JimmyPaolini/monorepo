@@ -158,7 +158,10 @@
         "{projectRoot}/**/*.md",
         "{workspaceRoot}/configuration/eslint.config.base.ts",
         "default"
-      ]
+      ],
+      "options": {
+        "command": "eslint . {args}"
+      }
     },
     "format": {
       "cache": true,

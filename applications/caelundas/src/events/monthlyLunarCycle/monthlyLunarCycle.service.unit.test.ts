@@ -1,16 +1,18 @@
-import { MARGIN_MINUTES } from "@caelundas/src/constants";
+import {
+  MARGIN_MINUTES,
+  symbolByLunarPhase,
+} from "@caelundas/src/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/math/math.service";
-import { symbolByLunarPhase } from "@caelundas/src/symbols";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { MonthlyLunarCycleService } from "./monthly-lunar-cycle.service";
 
+import type { LunarPhase } from "@caelundas/src/caelundas.types";
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type { IlluminationEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
-import type { LunarPhase } from "@caelundas/src/types";
 
 vi.mock("fs", () => ({
   default: {

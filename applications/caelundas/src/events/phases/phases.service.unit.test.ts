@@ -1,24 +1,24 @@
-import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
-import { MathService } from "@caelundas/src/math/math.service";
 import {
   symbolByMartianPhase,
   symbolByMercurianPhase,
   symbolByVenusianPhase,
-} from "@caelundas/src/symbols";
-import { planetaryPhaseBodies } from "@caelundas/src/types";
+} from "@caelundas/src/caelundas.constants";
+import { planetaryPhaseBodies } from "@caelundas/src/caelundas.types";
+import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
+import { MathService } from "@caelundas/src/math/math.service";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { PhasesService } from "./phases.service";
 
+import type { Body } from "@caelundas/src/caelundas.types";
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type {
   CoordinateEphemeris,
   DistanceEphemeris,
   IlluminationEphemeris,
 } from "@caelundas/src/ephemeris/ephemeris.types";
-import type { Body } from "@caelundas/src/types";
 
 vi.mock("fs", () => ({
   default: {

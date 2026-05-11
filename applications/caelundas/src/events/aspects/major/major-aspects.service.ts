@@ -7,24 +7,27 @@
  * an 8° orb tolerance for detection.
  */
 
-import { majorAspects } from "@caelundas/src/constants";
+import {
+  majorAspects,
+  symbolByBody,
+  symbolByMajorAspect,
+} from "@caelundas/src/caelundas.constants";
+import { majorAspectBodies } from "@caelundas/src/caelundas.types";
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import { AspectsUtilitiesService } from "@caelundas/src/events/aspects/aspects.utilities";
 import { ProgressiveEventsService } from "@caelundas/src/progressive-events/progressive-events.service";
-import { symbolByBody, symbolByMajorAspect } from "@caelundas/src/symbols";
-import { majorAspectBodies } from "@caelundas/src/types";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
-import type { Event } from "@caelundas/src/calendar/calendar.types";
-import type { CoordinateEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
 import type {
   AspectPhase,
   Body,
   BodySymbol,
   MajorAspect,
   MajorAspectSymbol,
-} from "@caelundas/src/types";
+} from "@caelundas/src/caelundas.types";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { CoordinateEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
 
 /**

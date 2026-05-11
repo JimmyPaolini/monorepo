@@ -1,17 +1,20 @@
+import {
+  symbolByBody,
+  symbolBySextupleAspect,
+} from "@caelundas/src/caelundas.constants";
+import { sextupleAspectBodies } from "@caelundas/src/caelundas.types";
 import { MathService } from "@caelundas/src/math/math.service";
-import { symbolByBody, symbolBySextupleAspect } from "@caelundas/src/symbols";
-import { sextupleAspectBodies } from "@caelundas/src/types";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
-import type { Event } from "@caelundas/src/calendar/calendar.types";
-import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
 import type {
   Aspect,
   AspectPhase,
   Body,
   SextupleAspect,
-} from "@caelundas/src/types";
+} from "@caelundas/src/caelundas.types";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
 import type { Moment } from "moment-timezone";
 
 function groupAspectsByType<T extends AspectBodies>(

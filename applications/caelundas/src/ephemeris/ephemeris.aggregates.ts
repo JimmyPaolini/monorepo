@@ -27,10 +27,11 @@ import {
   diameterBodies,
   distanceBodies,
   illuminationBodies,
-} from "../constants";
+} from "../caelundas.constants";
 
 import { EphemerisService } from "./ephemeris.service";
 
+import type { Body } from "../caelundas.types";
 import type {
   AzimuthElevationEphemeris,
   CoordinateEphemeris,
@@ -39,7 +40,6 @@ import type {
   DistanceEphemeris,
   IlluminationEphemeris,
 } from "../ephemeris/ephemeris.types";
-import type { Body } from "../types";
 import type { Moment } from "moment-timezone";
 
 /**

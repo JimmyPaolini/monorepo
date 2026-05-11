@@ -1,17 +1,23 @@
-import { MARGIN_MINUTES } from "@caelundas/src/constants";
+import {
+  MARGIN_MINUTES,
+  symbolByMartianPhase,
+  symbolByMercurianPhase,
+  symbolByVenusianPhase,
+} from "@caelundas/src/caelundas.constants";
+import { planetaryPhaseBodies } from "@caelundas/src/caelundas.types";
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import { TwilightsService } from "@caelundas/src/events/twilights/twilights.service";
 import { MathService } from "@caelundas/src/math/math.service";
 import { ProgressiveEventsService } from "@caelundas/src/progressive-events/progressive-events.service";
-import {
-  symbolByMartianPhase,
-  symbolByMercurianPhase,
-  symbolByVenusianPhase,
-} from "@caelundas/src/symbols";
-import { planetaryPhaseBodies } from "@caelundas/src/types";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
+import type {
+  MartianPhase,
+  MercurianPhase,
+  VenusianPhase,
+  VenusianPhaseSymbol,
+} from "@caelundas/src/caelundas.types";
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type {
   CoordinateEphemeris,
@@ -21,12 +27,6 @@ import type {
   IlluminationEphemeris,
   IlluminationEphemerisBody,
 } from "@caelundas/src/ephemeris/ephemeris.types";
-import type {
-  MartianPhase,
-  MercurianPhase,
-  VenusianPhase,
-  VenusianPhaseSymbol,
-} from "@caelundas/src/types";
 import type { Moment } from "moment-timezone";
 
 // #region ♀️ Venus

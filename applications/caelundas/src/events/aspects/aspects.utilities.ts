@@ -1,8 +1,8 @@
-import { angleByAspect, orbByAspect } from "@caelundas/src/constants";
+import { angleByAspect, orbByAspect } from "@caelundas/src/caelundas.constants";
 import { MathService } from "@caelundas/src/math/math.service";
 import { Injectable } from "@nestjs/common";
 
-import type { Aspect, AspectPhase } from "@caelundas/src/types";
+import type { Aspect, AspectPhase } from "@caelundas/src/caelundas.types";
 
 /**
  * NestJS provider exposing core aspect detection utilities.

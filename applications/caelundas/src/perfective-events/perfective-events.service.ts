@@ -1,4 +1,4 @@
-import { MARGIN_MINUTES } from "@caelundas/src/constants";
+import { MARGIN_MINUTES } from "@caelundas/src/caelundas.constants";
 import { DatetimeService } from "@caelundas/src/datetime/datetime.service";
 import { EphemerisAggregatesService } from "@caelundas/src/ephemeris/ephemeris.aggregates";
 import { AnnualSolarCycleService } from "@caelundas/src/events/annualSolarCycle/annual-solar-cycle.service";

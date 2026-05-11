@@ -4,9 +4,9 @@ import { beforeAll, describe, expect, it } from "vitest";
 
 import { TripleAspectsService } from "./triple-aspects.service";
 
+import type { Aspect, Body } from "@caelundas/src/caelundas.types";
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
-import type { Aspect, Body } from "@caelundas/src/types";
 
 describe("TripleAspectsService", () => {
   let service: TripleAspectsService;

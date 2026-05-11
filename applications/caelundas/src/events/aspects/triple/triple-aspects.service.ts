@@ -1,16 +1,19 @@
-import { symbolByBody, symbolByTripleAspect } from "@caelundas/src/symbols";
-import { tripleAspectBodies } from "@caelundas/src/types";
+import {
+  symbolByBody,
+  symbolByTripleAspect,
+} from "@caelundas/src/caelundas.constants";
+import { tripleAspectBodies } from "@caelundas/src/caelundas.types";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
-import type { Event } from "@caelundas/src/calendar/calendar.types";
-import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
 import type {
   Aspect,
   AspectPhase,
   Body,
   TripleAspect,
-} from "@caelundas/src/types";
+} from "@caelundas/src/caelundas.types";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
 import type { Moment } from "moment-timezone";
 
 // #region Progressive Events

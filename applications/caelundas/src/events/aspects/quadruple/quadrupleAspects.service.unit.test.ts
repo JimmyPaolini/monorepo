@@ -8,9 +8,9 @@ import {
   QuadrupleAspectsService,
 } from "./quadruple-aspects.service";
 
+import type { Aspect, Body } from "@caelundas/src/caelundas.types";
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type { AspectBodies } from "@caelundas/src/events/aspects/aspects.service";
-import type { Aspect, Body } from "@caelundas/src/types";
 
 describe("QuadrupleAspectsService", () => {
   let service: QuadrupleAspectsService;

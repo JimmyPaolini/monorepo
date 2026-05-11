@@ -1,4 +1,4 @@
-import { MARGIN_MINUTES } from "@caelundas/src/constants";
+import { MARGIN_MINUTES } from "@caelundas/src/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/math/math.service";
 import { Test } from "@nestjs/testing";
@@ -7,12 +7,12 @@ import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { EclipsesService } from "./eclipses.service";
 
+import type { EclipsePhase } from "@caelundas/src/caelundas.types";
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type {
   CoordinateEphemeris,
   DiameterEphemeris,
 } from "@caelundas/src/ephemeris/ephemeris.types";
-import type { EclipsePhase } from "@caelundas/src/types";
 
 vi.mock("fs", () => ({
   default: {

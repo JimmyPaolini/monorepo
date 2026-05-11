@@ -1,21 +1,24 @@
-import { specialtyAspects } from "@caelundas/src/constants";
+import {
+  specialtyAspects,
+  symbolByBody,
+  symbolBySpecialtyAspect,
+} from "@caelundas/src/caelundas.constants";
+import { specialtyAspectBodies } from "@caelundas/src/caelundas.types";
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
 import { AspectsUtilitiesService } from "@caelundas/src/events/aspects/aspects.utilities";
 import { ProgressiveEventsService } from "@caelundas/src/progressive-events/progressive-events.service";
-import { symbolByBody, symbolBySpecialtyAspect } from "@caelundas/src/symbols";
-import { specialtyAspectBodies } from "@caelundas/src/types";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
-import type { Event } from "@caelundas/src/calendar/calendar.types";
-import type { CoordinateEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
 import type {
   AspectPhase,
   Body,
   BodySymbol,
   SpecialtyAspect,
   SpecialtyAspectSymbol,
-} from "@caelundas/src/types";
+} from "@caelundas/src/caelundas.types";
+import type { Event } from "@caelundas/src/calendar/calendar.types";
+import type { CoordinateEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
 
 /**

@@ -50,4 +50,4 @@ import { ProgressiveEventsModule } from "./progressive-events/progressive-events
   ],
   providers: [CaelundasCommand],
 })
-export class AppModule {}
+export class CaelundasModule {}

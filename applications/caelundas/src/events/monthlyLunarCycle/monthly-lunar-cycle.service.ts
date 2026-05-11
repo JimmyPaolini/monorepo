@@ -7,15 +7,18 @@
  * illumination percentage from NASA JPL ephemeris data.
  */
 
-import { lunarPhases, MARGIN_MINUTES } from "@caelundas/src/constants";
+import {
+  lunarPhases,
+  MARGIN_MINUTES,
+  symbolByLunarPhase,
+} from "@caelundas/src/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
-import { symbolByLunarPhase } from "@caelundas/src/symbols";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
+import type { LunarPhase } from "@caelundas/src/caelundas.types";
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type { IlluminationEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
-import type { LunarPhase } from "@caelundas/src/types";
 import type { Moment } from "moment-timezone";
 
 // #region 🕑 Progressive Events

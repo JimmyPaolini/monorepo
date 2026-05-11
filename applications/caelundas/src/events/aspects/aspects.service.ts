@@ -1,4 +1,4 @@
-import { aspects, bodies } from "@caelundas/src/constants";
+import { aspects, bodies } from "@caelundas/src/caelundas.constants";
 import { Injectable } from "@nestjs/common";
 
 import type { MajorAspectsService } from "./major/major-aspects.service";
@@ -9,9 +9,9 @@ import type { SextupleAspectsService } from "./sextuple/sextuple-aspects.service
 import type { SpecialtyAspectsService } from "./specialty/specialty-aspects.service";
 import type { StelliumService } from "./stellium/stellium.service";
 import type { TripleAspectsService } from "./triple/triple-aspects.service";
+import type { Aspect, Body } from "@caelundas/src/caelundas.types";
 import type { Event } from "@caelundas/src/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
-import type { Aspect, Body } from "@caelundas/src/types";
 import type { Moment } from "moment-timezone";
 
 /**

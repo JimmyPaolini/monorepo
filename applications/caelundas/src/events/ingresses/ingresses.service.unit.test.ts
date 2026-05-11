@@ -1,18 +1,18 @@
-import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
-import { MathService } from "@caelundas/src/math/math.service";
 import {
   decanIngressBodies,
   peakIngressBodies,
   signIngressBodies,
-} from "@caelundas/src/types";
+} from "@caelundas/src/caelundas.types";
+import { EphemerisService } from "@caelundas/src/ephemeris/ephemeris.service";
+import { MathService } from "@caelundas/src/math/math.service";
 import { Test } from "@nestjs/testing";
 import moment from "moment";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { IngressesService } from "./ingresses.service";
 
+import type { Body } from "@caelundas/src/caelundas.types";
 import type { CoordinateEphemeris } from "@caelundas/src/ephemeris/ephemeris.types";
-import type { Body } from "@caelundas/src/types";
 
 vi.mock("fs", () => ({
   default: {

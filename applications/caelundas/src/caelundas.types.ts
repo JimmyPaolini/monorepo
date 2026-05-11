@@ -28,7 +28,7 @@ import type {
   symbolBySpecialtyAspect,
   symbolByTripleAspect,
   symbolByVenusianPhase,
-} from "./symbols";
+} from "./caelundas.constants";
 
 // #region Signs 🪧
 
@@ -453,4 +453,4 @@ export {
   aspectBodies as quintupleAspectBodies,
   aspectBodies as sextupleAspectBodies,
   aspectBodies as stelliumBodies,
-} from "./symbols";
+} from "./caelundas.constants";
