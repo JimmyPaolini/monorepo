@@ -33,12 +33,13 @@ jobs:
       - name: 📝 Pull Request Title Validation
         env:
           PULL_REQUEST_TITLE: ${{ github.event.pull_request.title }}
+          NODE_OPTIONS: --import=tsx
         run: |
           if [ -z "$PULL_REQUEST_TITLE" ]; then
             echo "❌ Unable to determine Pull Request Title"
             exit 1
           fi
-          echo "$PULL_REQUEST_TITLE" | pnpm exec commitlint
+          echo "$PULL_REQUEST_TITLE" | pnpm exec commitlint --config configuration/commitlint.config.ts
 
       - name: 🪢 Pull Request Body Validation
         env:
