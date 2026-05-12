@@ -93,11 +93,11 @@ After making changes:
 1. Check for compile/lint errors using the problems tool.
 2. Run the `code-analysis` target for the affected project(s) to confirm adherence to monorepo standards:
    ```bash
-   pnpm nx run <project>:code-analysis
+   pnpm exec nx run <project>:code-analysis
    ```
 3. Run the `test` target to verify no behavior was changed:
    ```bash
-   pnpm nx run <project>:test
+   pnpm exec nx run <project>:test
    ```
    Fix any errors or failures introduced by your changes before proceeding. Pre-existing failures in unrelated files may be ignored, but do not introduce new ones.
 4. Verify that the refactored code is consistent with the rest of the file.
