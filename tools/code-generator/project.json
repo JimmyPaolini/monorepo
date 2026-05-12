@@ -16,7 +16,7 @@
     },
     "clean": {},
     "code-analysis": {},
-    "dependency-analysis": {},
+    "dependency-cruiser": {},
     "format": {},
     "knip": {},
     "lint": {},

@@ -353,7 +353,7 @@ nx run lexico:develop
 1. **Check for circular deps**:
 
 ```bash
-nx run monorepo:dependency-analysis
+nx run monorepo:dependency-cruiser
 ```
 
 ### Slow Test Execution

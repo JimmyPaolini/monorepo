@@ -112,7 +112,7 @@
         "check": {
           "commands": [
             "nx run {projectName}:clean:check",
-            "nx run {projectName}:dependency-analysis",
+            "nx run {projectName}:dependency-cruiser",
             "nx run {projectName}:format:check",
             "nx run {projectName}:lint:check",
             "nx run {projectName}:markdown-lint:check",
@@ -126,7 +126,7 @@
         "write": {
           "commands": [
             "nx run {projectName}:clean:write",
-            "nx run {projectName}:dependency-analysis",
+            "nx run {projectName}:dependency-cruiser",
             "nx run {projectName}:format:write",
             "nx run {projectName}:lint:write",
             "nx run {projectName}:markdown-lint:write",
@@ -144,7 +144,7 @@
         "outputStyle": "stream"
       }
     },
-    "dependency-analysis": {
+    "dependency-cruiser": {
       "cache": true,
       "executor": "nx:run-commands",
       "inputs": [

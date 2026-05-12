@@ -32,7 +32,7 @@
     },
     "clean": {},
     "code-analysis": {},
-    "dependency-analysis": {},
+    "dependency-cruiser": {},
     "develop": {
       "description": "Start development server with hot reload",
       "executor": "nx:run-commands",

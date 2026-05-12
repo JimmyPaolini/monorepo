@@ -44,6 +44,7 @@ jobs:
       - name: 🐳 Make Devcontainer
         uses: devcontainers/ci@v0.3
         with:
+          configFile: .devcontainer/cloud/devcontainer.json
           imageName: ghcr.io/jimmypaolini/monorepo-devcontainer
           cacheFrom: |
             type=gha,scope=devcontainer

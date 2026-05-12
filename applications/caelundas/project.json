@@ -7,7 +7,7 @@
   "targets": {
     "clean": {},
     "code-analysis": {},
-    "dependency-analysis": {},
+    "dependency-cruiser": {},
     "download-ephemeris": {
       "cache": false,
       "description": "Download Swiss Ephemeris data files to data/ephemeris/",

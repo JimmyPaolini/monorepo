@@ -8,9 +8,9 @@
  * Each rule's `comment` field documents its purpose.
  *
  * Usage:
- *   nx run <project>:dependency-analysis
+ *   nx run <project>:dependency-cruiser
  *
- * CI: Runs automatically via .github/workflows/dependency-analysis.yml
+ * CI: Runs automatically via .github/workflows/code-analysis.yml
  *     (on PRs affecting source files + weekly scheduled run)
  *
  * @type {import('dependency-cruiser').IConfiguration}

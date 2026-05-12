@@ -19,18 +19,18 @@ A modern TypeScript monorepo with Nx, featuring automated releases, comprehensiv
 
 ## 🚀 Quick Start
 
-### Dev Container (Recommended)
-
-1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) and the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
-2. Open the repo in VS Code and click **Reopen in Container** when prompted
-3. All tools and dependencies are installed automatically
-
-### Local Setup (macOS)
+### Local Setup (macOS, Recommended)
 
 ```bash
 # Automated setup (installs tools & dependencies via Homebrew)
 ./scripts/local/setup.sh
 ```
+
+### Dev Container
+
+1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) and the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+2. Open the repo in VS Code and click **Reopen in Container** when prompted
+3. All tools and dependencies are installed automatically
 
 ### Development
 
@@ -52,7 +52,7 @@ nx run-many --target=code-analysis --all
 - **[caelundas](applications/caelundas)** - CLI ephemeris calendar generator with astronomical calculations
 - **[lexico](applications/lexico)** - TanStack Start + Supabase dictionary web application
 - **[lexico-components](packages/lexico-components)** - Shared React component library using shadcn/ui
-- **[JimmyPaolini](applications/JimmyPaolini)** - Personal website
+- **[JimmyPaolini](applications/JimmyPaolini)** - GitHub profile site
 
 ## 📚 Documentation
 
