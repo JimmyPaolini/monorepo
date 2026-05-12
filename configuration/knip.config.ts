@@ -169,10 +169,12 @@ const config: KnipConfig = {
     "tools/code-generator": {
       entry: "src/generators/*/generator.ts", // Each generator's entry point
       ignore: [
-        "src/**/files/**", // Template files (EJS syntax, not valid TS)
+        "src/**/templates/**", // Template files (EJS syntax, not valid TS)
         "src/**/*.test.ts",
       ],
       ignoreDependencies: [
+        "@nestjs/common", // Peer dependency — consumed by generated NestJS modules, not the generator itself
+        "@nestjs/config", // Peer dependency — consumed by generated NestJS modules, not the generator itself
         "react", // Peer dependency — consumed by generated components, not the generator itself
       ],
       project: "src/**/*.ts",

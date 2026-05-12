@@ -3,7 +3,7 @@ import baseConfig from "../../configuration/eslint.config.base.ts";
 export default [
   ...baseConfig,
   {
-    ignores: ["**/files/**"],
+    ignores: ["**/templates/**"],
   },
   {
     files: ["**/*.{json}"],

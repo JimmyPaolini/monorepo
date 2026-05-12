@@ -366,6 +366,7 @@
     "**/*.jsonc": "jsonc",
     "**/*.mjs": "javascript",
     "**/*.mts": "typescript",
+    "**/generators/**/files/*": "ejs",
     "**/nx.json": "jsonc",
     "**/project.json": "jsonc",
     "**/tsconfig*.json": "jsonc"
@@ -714,6 +715,7 @@
   "outline.showFields": true,
   "outline.showProperties": true,
   "outline.showVariables": false,
+  "oxc.configPath": "configuration/oxlint.config.ts",
   "oxc.enable": true,
   "oxc.enable.oxfmt": true,
   "oxc.enable.oxlint": true,

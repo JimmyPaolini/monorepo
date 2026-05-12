@@ -3,7 +3,11 @@
   "name": "caelundas",
   "projectType": "application",
   "sourceRoot": "applications/caelundas",
-  "tags": ["language:typescript"],
+  "tags": [
+    "language:typescript",
+    "framework:nestjs",
+    "framework:nest-commander"
+  ],
   "targets": {
     "clean": {},
     "code-analysis": {},

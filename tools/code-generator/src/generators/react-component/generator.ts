@@ -44,7 +44,7 @@ export async function generateComponent(
     throw new Error(`Directory "${directory}" does not exist in the workspace`);
   }
 
-  const filesPath = path.join(__dirname, "files");
+  const filesPath = path.join(__dirname, "templates");
   const substitutions = { namePascalCase, nameKebabCase };
   generateFiles(tree, filesPath, directory, substitutions);
   await formatFiles(tree);

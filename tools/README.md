@@ -12,7 +12,7 @@ This directory contains Nx plugins and generators for the monorepo.
 
 ```bash
 nx build code-generator
-nx generate code-generator:component --name=Button
+nx generate code-generator:react-component --name=Button
 ```
 
 **Features:**
@@ -31,15 +31,15 @@ nx generate code-generator:component --name=Button
 
 ```bash
 # Basic component
-nx generate code-generator:component --name=Button
+nx generate code-generator:react-component --name=Button
 
 # With custom directory
-nx generate code-generator:component \
+nx generate code-generator:react-component \
   --name=FormInput \
   --directory=src/components/form
 
 # Without barrel export
-nx generate code-generator:component \
+nx generate code-generator:react-component \
   --name=Modal \
   --export=direct
 ```
@@ -85,7 +85,7 @@ nx build code-generator --watch
 ### In lexico-components
 
 ```bash
-nx generate code-generator:component \
+nx generate code-generator:react-component \
   --name=Button \
   --directory=packages/lexico-components/src/components
 ```
@@ -93,7 +93,7 @@ nx generate code-generator:component \
 ### In lexico App
 
 ```bash
-nx generate code-generator:component \
+nx generate code-generator:react-component \
   --name=HomePage \
   --directory=applications/lexico/src/components
 ```
@@ -146,7 +146,7 @@ tools/my-generator/
 ```bash
 nx build code-generator
 nx reset
-nx generate code-generator:component --name=Test
+nx generate code-generator:react-component --name=Test
 ```
 
 **Build failed?**
