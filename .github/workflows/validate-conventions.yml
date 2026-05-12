@@ -1,4 +1,4 @@
-name: 🧑‍⚖️ Convention Validation
+name: 🧑‍⚖️ Validate Conventions
 
 on:
   pull_request:
@@ -9,8 +9,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  convention-validation:
-    name: 🧑‍⚖️ Convention Validation
+  validate-conventions:
+    name: 🧑‍⚖️ Validate Conventions
     runs-on: ubuntu-latest
 
     steps:
@@ -20,7 +20,7 @@ jobs:
       - name: 🕋 Setup Monorepo
         uses: ./.github/actions/setup-monorepo
 
-      - name: 🎋 Branch Name Validation
+      - name: 🎋 Validate Branch Name
         env:
           BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
         run: |
@@ -30,7 +30,7 @@ jobs:
           fi
           pnpm exec validate-branch-name -t "$BRANCH_NAME"
 
-      - name: 📝 Pull Request Title Validation
+      - name: 📝 Validate Pull Request Title
         env:
           PULL_REQUEST_TITLE: ${{ github.event.pull_request.title }}
           NODE_OPTIONS: --import=tsx
@@ -41,7 +41,7 @@ jobs:
           fi
           echo "$PULL_REQUEST_TITLE" | pnpm exec commitlint --config configuration/commitlint.config.ts
 
-      - name: 🪢 Pull Request Body Validation
+      - name: 🪢 Validate Pull Request Body
         env:
           PULL_REQUEST_BODY: ${{ github.event.pull_request.body }}
         run: |
@@ -68,11 +68,11 @@ jobs:
           fi
           echo "✅ All required sections present"
 
-      - name: 🏛️ Conventional Config Validation
+      - name: 🏛️ Validate Convention Configuration
         run: npx nx run monorepo:sync-conventional-config:check
 
-      - name: 📋 Pull Request Template Validation
+      - name: 📋 Validate Pull Request Template
         run: npx nx run monorepo:sync-pull-request-template:check
 
-      - name: 🎯 Agent Skills Validation
+      - name: 🎯 Validate Agent Skills
         run: npx nx run monorepo:sync-agent-skills:check
