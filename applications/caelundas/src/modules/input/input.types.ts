@@ -1,3 +1,4 @@
+// 🏷️ Types
 import type { environmentSchema, inputSchema } from "./input.constants";
 import type { z } from "zod";
 

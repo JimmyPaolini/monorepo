@@ -11,6 +11,7 @@ import { EclipsesService } from "./eclipses.service";
  * in both geocentric and topocentric reference frames.
  */
 @Module({
+  controllers: [],
   imports: [EphemerisModule, MathModule, ProgressiveUtilitiesModule],
   providers: [EclipsesService],
   exports: [EclipsesService],

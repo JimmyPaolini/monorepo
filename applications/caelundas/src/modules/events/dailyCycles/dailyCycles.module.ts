@@ -10,6 +10,7 @@ import { DailyCyclesService } from "./dailyCycles.service";
  * solar midnight, moonrise, lunar noon, moonset, and lunar midnight events.
  */
 @Module({
+  controllers: [],
   imports: [EphemerisModule, MathModule],
   providers: [DailyCyclesService],
   exports: [DailyCyclesService],

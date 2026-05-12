@@ -1,3 +1,4 @@
+// 🏷️ Types
 /**
  * Values for local extremum detection in a discrete sequence.
  */

@@ -11,6 +11,7 @@ import { AnnualSolarCycleService } from "./annualSolarCycle.service";
  * cross-quarter days, hexadecans, and solar apsis (perihelion/aphelion).
  */
 @Module({
+  controllers: [],
   imports: [EphemerisModule, MathModule, ProgressiveUtilitiesModule],
   providers: [AnnualSolarCycleService],
   exports: [AnnualSolarCycleService],

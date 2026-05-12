@@ -72,7 +72,134 @@ initializeSwissEphemeris();
  */
 @Injectable()
 export class EphemerisService {
-  constructor(private readonly mathService: MathService) {}
+  constructor(
+    // 🏗️ Dependency Injection
+    private readonly mathService: MathService,
+  ) {}
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  private isNode(body: string): body is Node {
+    return nodes.includes(body as Node);
+  }
+
+  private dateToJulianDays(date: Moment): {
+    julianDayEphemerisTime: number;
+    julianDayUniversalTime: number;
+  } {
+    const result = utc_to_jd(
+      date.utc().year(),
+      date.utc().month() + 1,
+      date.utc().date(),
+      date.utc().hours(),
+      date.utc().minutes(),
+      date.utc().seconds(),
+      GREGORIAN_CALENDAR_FLAG,
+    );
+    if (result.flag < 0) {
+      throw new Error(
+        `utc_to_jd failed for ${date.toISOString()}: ${result.error}`,
+      );
+    }
+    return {
+      julianDayEphemerisTime: result.data[0],
+      julianDayUniversalTime: result.data[1],
+    };
+  }
+
+  private *generateMinutes(start: Moment, end: Moment): Generator<Moment> {
+    const endMs = end.valueOf();
+    let currentMs = start.valueOf();
+    while (currentMs <= endMs) {
+      yield moment.utc(currentMs);
+      currentMs += 60_000;
+    }
+  }
+
+  private getSwissEphemerisConstantForBody(body: Exclude<Body, Node>): number {
+    const planetConst = (
+      swissEphemerisConstantByPlanet as Partial<Record<string, number>>
+    )[body];
+    if (planetConst !== undefined) {
+      return planetConst;
+    }
+    const asteroidConst = (
+      swissEphemerisConstantByAsteroid as Partial<Record<string, number>>
+    )[body];
+    if (asteroidConst !== undefined) {
+      return asteroidConst;
+    }
+    throw new Error(
+      `No Swiss Ephemeris constant for body "${body}". Comets are not supported.`,
+    );
+  }
+
+  private computeNodeCoordinate(
+    node: Node,
+    julianDayEphemerisTime: number,
+    julianDayUniversalTime: number,
+  ): { longitude: number; latitude: number } {
+    if (node === "lunar perigee") {
+      const result = nod_aps_ut(
+        julianDayUniversalTime,
+        constants.SE_MOON,
+        SWISS_EPHEMERIS_FLAGS,
+        OSCULATING_ORBITAL_ELEMENTS_FLAG,
+      );
+      if (result.flag < 0) {
+        throw new Error(`nod_aps_ut failed for lunar perigee: ${result.error}`);
+      }
+      return {
+        longitude: this.mathService.normalizeDegrees(result.data.perihelion[0]),
+        latitude: 0,
+      };
+    }
+
+    const swissEphemerisConstant = swissEphemerisConstantByNode[node];
+    if (swissEphemerisConstant === null) {
+      throw new Error(
+        `No Swiss Ephemeris constant configured for node: ${node}`,
+      );
+    }
+
+    const result = calc(
+      julianDayEphemerisTime,
+      swissEphemerisConstant,
+      SWISS_EPHEMERIS_FLAGS,
+    );
+    if (result.flag < 0) {
+      throw new Error(`calc failed for ${node}: ${result.error}`);
+    }
+
+    const longitude =
+      node === "south lunar node"
+        ? this.mathService.normalizeDegrees(result.data[0] + 180)
+        : this.mathService.normalizeDegrees(result.data[0]);
+
+    return { longitude, latitude: 0 };
+  }
+
+  private computeBodyCoordinate(
+    body: Exclude<Body, Node>,
+    julianDayEphemerisTime: number,
+  ): { longitude: number; latitude: number } {
+    const swissEphemerisConstant = this.getSwissEphemerisConstantForBody(body);
+    const result = calc(
+      julianDayEphemerisTime,
+      swissEphemerisConstant,
+      SWISS_EPHEMERIS_FLAGS,
+    );
+    if (result.flag < 0) {
+      throw new Error(`calc failed for ${body}: ${result.error}`);
+    }
+    return { longitude: result.data[0], latitude: result.data[1] };
+  }
+
+  // 🌎 Public Methods
 
   /**
    * Safely extracts coordinate data (longitude or latitude) from ephemeris at a timestamp.
@@ -696,121 +823,5 @@ export class EphemerisService {
       start,
       end,
     });
-  }
-
-  private isNode(body: string): body is Node {
-    return nodes.includes(body as Node);
-  }
-
-  private dateToJulianDays(date: Moment): {
-    julianDayEphemerisTime: number;
-    julianDayUniversalTime: number;
-  } {
-    const result = utc_to_jd(
-      date.utc().year(),
-      date.utc().month() + 1,
-      date.utc().date(),
-      date.utc().hours(),
-      date.utc().minutes(),
-      date.utc().seconds(),
-      GREGORIAN_CALENDAR_FLAG,
-    );
-    if (result.flag < 0) {
-      throw new Error(
-        `utc_to_jd failed for ${date.toISOString()}: ${result.error}`,
-      );
-    }
-    return {
-      julianDayEphemerisTime: result.data[0],
-      julianDayUniversalTime: result.data[1],
-    };
-  }
-
-  private *generateMinutes(start: Moment, end: Moment): Generator<Moment> {
-    const endMs = end.valueOf();
-    let currentMs = start.valueOf();
-    while (currentMs <= endMs) {
-      yield moment.utc(currentMs);
-      currentMs += 60_000;
-    }
-  }
-
-  private getSwissEphemerisConstantForBody(body: Exclude<Body, Node>): number {
-    const planetConst = (
-      swissEphemerisConstantByPlanet as Partial<Record<string, number>>
-    )[body];
-    if (planetConst !== undefined) {
-      return planetConst;
-    }
-    const asteroidConst = (
-      swissEphemerisConstantByAsteroid as Partial<Record<string, number>>
-    )[body];
-    if (asteroidConst !== undefined) {
-      return asteroidConst;
-    }
-    throw new Error(
-      `No Swiss Ephemeris constant for body "${body}". Comets are not supported.`,
-    );
-  }
-
-  private computeNodeCoordinate(
-    node: Node,
-    julianDayEphemerisTime: number,
-    julianDayUniversalTime: number,
-  ): { longitude: number; latitude: number } {
-    if (node === "lunar perigee") {
-      const result = nod_aps_ut(
-        julianDayUniversalTime,
-        constants.SE_MOON,
-        SWISS_EPHEMERIS_FLAGS,
-        OSCULATING_ORBITAL_ELEMENTS_FLAG,
-      );
-      if (result.flag < 0) {
-        throw new Error(`nod_aps_ut failed for lunar perigee: ${result.error}`);
-      }
-      return {
-        longitude: this.mathService.normalizeDegrees(result.data.perihelion[0]),
-        latitude: 0,
-      };
-    }
-
-    const swissEphemerisConstant = swissEphemerisConstantByNode[node];
-    if (swissEphemerisConstant === null) {
-      throw new Error(
-        `No Swiss Ephemeris constant configured for node: ${node}`,
-      );
-    }
-
-    const result = calc(
-      julianDayEphemerisTime,
-      swissEphemerisConstant,
-      SWISS_EPHEMERIS_FLAGS,
-    );
-    if (result.flag < 0) {
-      throw new Error(`calc failed for ${node}: ${result.error}`);
-    }
-
-    const longitude =
-      node === "south lunar node"
-        ? this.mathService.normalizeDegrees(result.data[0] + 180)
-        : this.mathService.normalizeDegrees(result.data[0]);
-
-    return { longitude, latitude: 0 };
-  }
-
-  private computeBodyCoordinate(
-    body: Exclude<Body, Node>,
-    julianDayEphemerisTime: number,
-  ): { longitude: number; latitude: number } {
-    const swissEphemerisConstant = this.getSwissEphemerisConstantForBody(body);
-    const result = calc(
-      julianDayEphemerisTime,
-      swissEphemerisConstant,
-      SWISS_EPHEMERIS_FLAGS,
-    );
-    if (result.flag < 0) {
-      throw new Error(`calc failed for ${body}: ${result.error}`);
-    }
-    return { longitude: result.data[0], latitude: result.data[1] };
   }
 }

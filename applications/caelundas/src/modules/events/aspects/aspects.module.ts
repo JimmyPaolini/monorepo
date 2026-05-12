@@ -20,6 +20,7 @@ import { TripleAspectsService } from "./triple/tripleAspects.service";
  * sextuple, stellium, and specialty) via {@link AspectsService}.
  */
 @Module({
+  controllers: [],
   imports: [EphemerisModule, MathModule, ProgressiveUtilitiesModule],
   providers: [
     AspectsService,

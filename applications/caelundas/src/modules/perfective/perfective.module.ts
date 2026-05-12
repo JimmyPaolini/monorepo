@@ -19,6 +19,7 @@ import { PerfectiveService } from "./perfective.service";
  * minute-by-minute over a date range to detect all perfective (instantaneous) events.
  */
 @Module({
+  controllers: [],
   imports: [
     DatetimeModule,
     EphemerisModule,

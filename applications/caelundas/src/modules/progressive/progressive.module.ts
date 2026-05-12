@@ -16,6 +16,7 @@ import { ProgressiveService } from "./progressive.service";
  * instantaneous events into time-spanning progressive events.
  */
 @Module({
+  controllers: [],
   imports: [
     AnnualSolarCycleModule,
     AspectsModule,

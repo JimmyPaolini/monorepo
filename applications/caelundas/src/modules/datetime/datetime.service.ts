@@ -9,6 +9,14 @@ import moment, { type Moment } from "moment-timezone";
  */
 @Injectable()
 export class DatetimeService {
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
+
   /**
    * Generates minute-by-minute UTC dates from start to end (inclusive).
    */

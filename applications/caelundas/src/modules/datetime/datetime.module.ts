@@ -7,7 +7,9 @@ import { DatetimeService } from "./datetime.service";
  * Exports {@link DatetimeService} for generating minute-by-minute and day-by-day date sequences.
  */
 @Module({
-  providers: [DatetimeService],
+  controllers: [],
   exports: [DatetimeService],
+  imports: [],
+  providers: [DatetimeService],
 })
 export class DatetimeModule {}

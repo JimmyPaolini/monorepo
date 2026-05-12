@@ -7,7 +7,9 @@ import { ProgressiveUtilities } from "./progressive.utilities";
  * Exports {@link ProgressiveUtilities} for pairing start/end events into duration spans.
  */
 @Module({
-  providers: [ProgressiveUtilities],
+  controllers: [],
   exports: [ProgressiveUtilities],
+  imports: [],
+  providers: [ProgressiveUtilities],
 })
 export class ProgressiveUtilitiesModule {}

@@ -14,6 +14,10 @@ import type { Longitude } from "@caelundas/src/modules/ephemeris/ephemeris.types
  */
 @Injectable()
 export class MathService {
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
   /**
    * Number of arcseconds in one arcminute (60).
    */
@@ -28,6 +32,10 @@ export class MathService {
    * Number of arcseconds in one degree (3600).
    */
   static readonly arcsecondsPerDegree = 3600;
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Normalizes an angle in degrees to the range [0, 360).

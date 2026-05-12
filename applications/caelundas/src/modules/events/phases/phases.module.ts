@@ -11,6 +11,7 @@ import { PhasesService } from "./phases.service";
  * such as maximum elongation, maximum brightness, and morning/evening visibility transitions.
  */
 @Module({
+  controllers: [],
   imports: [EphemerisModule, MathModule, ProgressiveUtilitiesModule],
   providers: [PhasesService],
   exports: [PhasesService],

@@ -9,6 +9,7 @@ import { IngressesService } from "./ingresses.service";
  * zodiac signs, decans, or reach their sign peak longitude.
  */
 @Module({
+  controllers: [],
   imports: [EphemerisModule],
   providers: [IngressesService],
   exports: [IngressesService],

@@ -8,6 +8,7 @@ import { MonthlyLunarCycleService } from "./monthlyLunarCycle.service";
  * Exports {@link MonthlyLunarCycleService} which identifies the four primary lunar phases.
  */
 @Module({
+  controllers: [],
   imports: [EphemerisModule],
   providers: [MonthlyLunarCycleService],
   exports: [MonthlyLunarCycleService],

@@ -20,6 +20,7 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 @Injectable()
 export class ProgressiveService {
   constructor(
+    // 🏗️ Dependency Injection
     private readonly annualSolarCycleService: AnnualSolarCycleService,
     private readonly aspectsService: AspectsService,
     private readonly eclipsesService: EclipsesService,
@@ -29,6 +30,14 @@ export class ProgressiveService {
     private readonly retrogradesService: RetrogradesService,
     private readonly twilightsService: TwilightsService,
   ) {}
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Runs progressive event detection across all domain services and merges the results.

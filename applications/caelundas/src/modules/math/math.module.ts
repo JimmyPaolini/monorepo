@@ -7,7 +7,9 @@ import { MathService } from "./math.service";
  * Exports {@link MathService} for angular math, interpolation, and related calculations.
  */
 @Module({
-  providers: [MathService],
+  controllers: [],
   exports: [MathService],
+  imports: [],
+  providers: [MathService],
 })
 export class MathModule {}

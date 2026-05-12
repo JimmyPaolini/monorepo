@@ -27,6 +27,7 @@ import type { Input } from "@caelundas/src/modules/input/input.types";
 @Injectable()
 export class PerfectiveService {
   constructor(
+    // 🏗️ Dependency Injection
     private readonly datetimeService: DatetimeService,
     private readonly ephemerisService: EphemerisService,
     private readonly aspectsService: AspectsService,
@@ -39,6 +40,14 @@ export class PerfectiveService {
     private readonly twilightsService: TwilightsService,
     private readonly phasesService: PhasesService,
   ) {}
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Detects all perfective (instantaneous) astronomical events within the given date range.

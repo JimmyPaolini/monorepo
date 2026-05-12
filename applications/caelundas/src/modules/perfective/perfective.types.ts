@@ -1,3 +1,4 @@
+// 🏷️ Types
 import type { AspectBodies } from "@caelundas/src/modules/events/aspects/aspects.service";
 
 /**

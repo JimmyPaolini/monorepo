@@ -11,6 +11,7 @@ import { TwilightsService } from "./twilights.service";
  * dawn and dusk transitions based on solar depression angles.
  */
 @Module({
+  controllers: [],
   imports: [EphemerisModule, MathModule, ProgressiveUtilitiesModule],
   providers: [TwilightsService],
   exports: [TwilightsService],

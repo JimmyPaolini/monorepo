@@ -366,7 +366,7 @@
     "**/*.jsonc": "jsonc",
     "**/*.mjs": "javascript",
     "**/*.mts": "typescript",
-    "**/generators/**/files/*": "ejs",
+    "**/generators/**/templates/*": "ejs",
     "**/nx.json": "jsonc",
     "**/project.json": "jsonc",
     "**/tsconfig*.json": "jsonc"
@@ -728,6 +728,7 @@
   "postman.settings.dotenv-detection-notification-visibility": false,
   "prettier.configPath": "configuration/prettier.config.ts",
   "python.analysis.referencesCodeLens": true,
+  "python.analysis.typeCheckingMode": "standard",
   "python.defaultInterpreterPath": "${workspaceFolder}/applications/affirmations/.venv/bin/python",
   "python.testing.pytestArgs": ["."],
   "python.testing.pytestEnabled": true,

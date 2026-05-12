@@ -1,6 +1,12 @@
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
 import { addProjectConfiguration } from "@nx/devkit";
 import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
 import { beforeEach, describe, expect, it } from "vitest";
+
+import { validateConformance } from "../../validators/conformance.js";
 
 import { generateNestjsServiceModule } from "./generator";
 
@@ -105,20 +111,27 @@ describe("generateNestjsServiceModule", () => {
       );
     });
 
-    it("should include emoji section comments in the generated service file", async () => {
+    it("should conform to the service template structure", async () => {
       await generateNestjsServiceModule(tree, {
         name: "calculator",
         project: PROJECT_NAME,
       });
 
-      const serviceContent = tree.read(
-        `${MODULES_DIR}/calculator/calculator.service.ts`,
+      const serviceContent =
+        tree.read(`${MODULES_DIR}/calculator/calculator.service.ts`, "utf8") ??
+        "";
+      const __dirname = fileURLToPath(new URL(".", import.meta.url));
+      const templateContent = fs.readFileSync(
+        path.join(__dirname, "templates/__nameCamelCase__.service.ts"),
         "utf8",
       );
-      expect(serviceContent).toContain("// 🔑 Public fields");
-      expect(serviceContent).toContain("// 🔐 Private fields");
-      expect(serviceContent).toContain("// 🌎 Public methods");
-      expect(serviceContent).toContain("// 🔏 Private methods");
+      const vars: Record<string, unknown> = {
+        nameCamelCase: "calculator",
+        namePascalCase: "Calculator",
+      };
+      const result = validateConformance(serviceContent, templateContent, vars);
+      expect(result.errors).toEqual([]);
+      expect(result.valid).toBe(true);
     });
   });
 

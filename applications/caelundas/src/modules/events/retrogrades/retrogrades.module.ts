@@ -10,6 +10,7 @@ import { RetrogradesService } from "./retrogrades.service";
  * Exports {@link RetrogradesService} which identifies when planets reverse apparent direction.
  */
 @Module({
+  controllers: [],
   imports: [EphemerisModule, MathModule, ProgressiveUtilitiesModule],
   providers: [RetrogradesService],
   exports: [RetrogradesService],
