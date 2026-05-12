@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import { describe, it, expect, beforeEach } from 'vitest';
 import { createElement } from 'react';
 import { faker } from '@faker-js/faker';
-import { <%= namePascalCase %>, type <%= namePascalCase %>Props } from './<%= nameKebabCase %>';
+import { <%= namePascalCase %>, type <%= namePascalCase %>Props } from './<%= namePascalCase %>';
 
 describe('<%= namePascalCase %>', () => {
   // 🎭 Mocks

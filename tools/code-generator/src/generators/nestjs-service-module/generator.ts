@@ -24,18 +24,18 @@ export async function generateNestjsServiceModule(
   tree: Tree,
   options: GenerateNestjsServiceModuleOptions,
 ): Promise<void> {
-  const name = await resolveNameByCase({
-    name: options.name,
-    case: StringCase.CAMEL_CASE,
-    message: "What is the name of the module? (camelCase)",
-    subject: "Module name",
-  });
-
   const projectName = await resolveProjectByTag({
     tree,
     tag: "framework:nestjs",
     ...(options.project !== undefined && { project: options.project }),
     message: "Which project should the module be generated in?",
+  });
+
+  const name = await resolveNameByCase({
+    name: options.name,
+    case: StringCase.CAMEL_CASE,
+    message: "What is the name of the module? (camelCase)",
+    subject: "Module name",
   });
 
   const allProjects = getProjects(tree);

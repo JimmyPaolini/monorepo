@@ -1,17 +1,20 @@
 import path from "node:path";
 
-import { formatFiles, generateFiles } from "@nx/devkit";
-import _ from "lodash";
+import { formatFiles, generateFiles, getProjects } from "@nx/devkit";
+
+import { StringCase } from "../../types";
+import { resolveNameByCase, resolveProjectByTag } from "../../utilities";
 
 import type { Tree } from "@nx/devkit";
 
 interface GenerateComponentOptions {
   name: string;
-  directory: string;
+  project?: string;
 }
 
 /**
  * Generates a new React component with TypeScript and test files.
+ * Prompts for a project tagged `framework:react` and places the component in `src/components`.
  *
  * @param tree - The Nx virtual file system tree
  * @param options - Configuration options for the component generator
@@ -20,32 +23,43 @@ export async function generateComponent(
   tree: Tree,
   options: GenerateComponentOptions,
 ): Promise<void> {
-  const { name, directory } = options;
+  const projectName = await resolveProjectByTag({
+    tree,
+    tag: "framework:react",
+    ...(options.project !== undefined && { project: options.project }),
+    message: "Which project should the component be generated in?",
+  });
 
-  const namePascalCase = _.upperFirst(_.camelCase(name));
-  const nameKebabCase = _.kebabCase(name);
+  const name = await resolveNameByCase({
+    name: options.name,
+    case: StringCase.PASCAL_CASE,
+    message: "What is the name of the component? (PascalCase)",
+    subject: "Component name",
+  });
 
-  // Validate name is PascalCase
-  if (name !== namePascalCase) {
+  const allProjects = getProjects(tree);
+  const projectConfig = allProjects.get(projectName);
+  const projectRoot = projectConfig?.root ?? projectConfig?.sourceRoot;
+
+  if (!projectRoot) {
     throw new Error(
-      `Component name "${name}" must be in PascalCase. Did you mean "${namePascalCase}"?`,
+      `Project "${projectName}" has no root directory configured`,
     );
   }
 
-  // Validate directory path
-  if (directory.includes("..") || directory.startsWith("/")) {
-    throw new Error(
-      `Directory "${directory}" must be a relative path without ".." or leading "/"`,
-    );
-  }
+  const directory = path.join(projectRoot, "src", "components");
 
   // Validate directory exists in workspace
   if (!tree.exists(directory)) {
-    throw new Error(`Directory "${directory}" does not exist in the workspace`);
+    throw new Error(
+      `Directory "${directory}" does not exist in project "${projectName}"`,
+    );
   }
 
+  const namePascalCase = name;
+
   const filesPath = path.join(__dirname, "templates");
-  const substitutions = { namePascalCase, nameKebabCase };
+  const substitutions = { namePascalCase };
   generateFiles(tree, filesPath, directory, substitutions);
   await formatFiles(tree);
 }
