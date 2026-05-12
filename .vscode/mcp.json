@@ -13,7 +13,7 @@
       "url": "https://mcp.context7.com/mcp"
     },
     "shadcn": {
-      "args": [ "mcp","shadcn@latest"],
+      "args": ["mcp", "shadcn@latest"],
       "command": "npx"
     },
     "supabase": {

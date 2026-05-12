@@ -104,7 +104,7 @@ All workflows call this composite action after checkout. It provides:
 
 | Check               | Command                                                                |
 | ------------------- | ---------------------------------------------------------------------- |
-| 🔗 Dependency Check | `nx affected -t dependency-analysis --parallel=3` (dependency-cruiser) |
+| 🔗 Dependency Check | `nx affected -t dependency-cruiser --parallel=3`                       |
 | 🔒 Security Audit   | `pnpm audit --audit-level=moderate`                                    |
 | 📃 License Check    | `nx run monorepo:license-check`                                        |
 
@@ -159,7 +159,7 @@ All workflows call this composite action after checkout. It provides:
 
 ### Scheduled (Weekly)
 
-#### 8. Dependency Updates (`dependency-updates.yml`)
+#### 8. Dependency Updates (`dependency-upgrades.yml`)
 
 **Name:** 🧑‍🚒 Dependency Updates
 
@@ -201,7 +201,7 @@ Three workflows use `fail-fast: false` matrix strategies to run multiple checks 
 
 - `code-analysis.yml` — 8 checks
 - `convention-check.yml` — 3 checks
-- `dependency-analysis.yml` — 3 checks
+- `security-audit.yml` — 3 checks
 
 ### Caching
 

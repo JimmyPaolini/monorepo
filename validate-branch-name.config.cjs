@@ -7,7 +7,7 @@
  * Runs on `git push` via the `.husky/pre-push` hook.
  * See: .github/skills/checkout-branch/SKILL.md for full documentation.
  */
-const { scopes, types } = require("./conventional.config.cjs");
+const { scopes, types } = require("./configuration/conventional.config.cjs");
 
 const specialBranches = ["main"];
 const automatedPrefixes = ["renovate", "dependabot"];

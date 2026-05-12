@@ -21,7 +21,6 @@
       "source.organizeImports.ruff": "explicit"
     },
     "editor.defaultFormatter": "charliermarsh.ruff",
-    "editor.formatOnSave": true,
     "editor.tabSize": 4
   },
   "[markdown]": {
@@ -34,7 +33,6 @@
       "source.organizeImports.ruff": "explicit"
     },
     "editor.defaultFormatter": "charliermarsh.ruff",
-    "editor.formatOnSave": true,
     "editor.tabSize": 4
   },
   "[typescript]": {
@@ -79,15 +77,15 @@
   "chat.mcp.gallery.enabled": true,
   "chat.notifyWindowOnConfirmation": "always",
   "chat.notifyWindowOnResponseReceived": "always",
-  "chat.planAgent.defaultModel": "Claude Opus 4.6 (copilot)",
+  "chat.planAgent.defaultModel": "Claude Sonnet 4.6 (copilot)",
   "chat.requestQueuing.defaultAction": "queue",
   "chat.restoreLastPanelSession": true,
   "chat.sendElementsToChat.enabled": true,
   "chat.tools.global.autoApprove": true,
   "chat.tools.terminal.autoApprove": {
+    "/.*\\.sql/": true,
     "/(npm|npx) (add|eslint|install|lint-staged|madge|markdownlint|prettier|test|tsc)/": true,
     "/(pnpm )?(yarn )?(npx )?(exec )?(run )?nx/": true,
-    "/.*\\.sql/": true,
     "/^Remove-Item\\b/i": false,
     "/bq (ls|show|query)/": true,
     "/docker (ps|images|logs|inspect|stats|exec|pull|info)/": true,
@@ -136,7 +134,6 @@
   "chat.useAgentSkills": true,
   "chat.useNestedAgentsMdFiles": true,
   "chat.viewProgressBadge.enabled": true,
-  "chat.viewSessions.orientation": "stacked",
   "containers.containers.label": "ContainerName",
   "containers.containers.sortBy": "Label",
   "containers.images.label": "FullTag",
@@ -175,11 +172,56 @@
   "conventionalCommits.silentAutoCommit": false,
   "conventionalCommits.storeScopesGlobally": false,
   "cSpell.blockCheckingWhenLineLengthGreaterThan": 5000,
+  "cSpell.customDictionaries": {
+    "affirmations": {
+      "addWords": true,
+      "name": "affirmations",
+      "path": "${workspaceRoot}/configuration/.cspell/affirmations.txt"
+    },
+    "ai": {
+      "addWords": true,
+      "name": "ai",
+      "path": "${workspaceRoot}/configuration/.cspell/ai.txt"
+    },
+    "astronomy": {
+      "addWords": true,
+      "name": "astronomy",
+      "path": "${workspaceRoot}/configuration/.cspell/astronomy.txt"
+    },
+    "ics": {
+      "addWords": true,
+      "name": "ics",
+      "path": "${workspaceRoot}/configuration/.cspell/ics.txt"
+    },
+    "infrastructure": {
+      "addWords": true,
+      "name": "infrastructure",
+      "path": "${workspaceRoot}/configuration/.cspell/infrastructure.txt"
+    },
+    "lexico": {
+      "addWords": true,
+      "name": "lexico",
+      "path": "${workspaceRoot}/configuration/.cspell/lexico.txt"
+    },
+    "nasa-horizons": {
+      "addWords": true,
+      "name": "nasa-horizons",
+      "path": "${workspaceRoot}/configuration/.cspell/nasa-horizons.txt"
+    },
+    "python": {
+      "addWords": true,
+      "name": "python",
+      "path": "${workspaceRoot}/configuration/.cspell/python.txt"
+    },
+    "tooling": {
+      "addWords": true,
+      "name": "tooling",
+      "path": "${workspaceRoot}/configuration/.cspell/tooling.txt"
+    }
+  },
   "cSpell.diagnosticLevelFlaggedWords": "Information",
   "cSpell.enabled": true,
-  "cSpell.import": [
-    "${workspaceFolder}/cspell.config.yaml"
-  ],
+  "cSpell.import": ["${workspaceFolder}/configuration/cspell.config.yaml"],
   "cSpell.maxDuplicateProblems": 5,
   "cSpell.numSuggestions": 3,
   "cSpell.suggestionMenuType": "quickFix",
@@ -192,11 +234,7 @@
   "database-client.queryWithSchema": true,
   "database-client.showTrigger": true,
   "database-client.splitEditorWhenQuery": false,
-  "database-client.variableIndicator": [
-    "$",
-    ":",
-    "@"
-  ],
+  "database-client.variableIndicator": ["$", ":", "@"],
   "dataWrangler.debug": true,
   "dataWrangler.defaultViewingFilterOptions": "advanced",
   "dataWrangler.outputRenderer.columnInsights.displayByDefault": true,
@@ -216,17 +254,18 @@
     "source.fixAll.pylance": "never",
     "source.fixAll.ruff": "explicit",
     "source.fixAll.ts": "explicit",
-    "source.format.oxc":"explicit",
+    "source.format.oxc": "explicit",
     "source.formatAll.terraform": "explicit",
     "source.organizeImports": "never",
     "source.organizeImports.ruff": "explicit",
     "source.organizeLinkDefinitions": "explicit",
     "source.removeUnused.ts": "never",
     "source.removeUnusedImports": "explicit",
-    "source.sort.json": "never",
+    "source.sort.json": "explicit",
     "source.sortImports": "never",
     "source.unusedImports": "explicit"
   },
+  "editor.defaultFormatter": "oxc.oxc-vscode",
   "editor.detectIndentation": false,
   "editor.dragAndDrop": false,
   "editor.experimental.asyncTokenization": true,
@@ -263,15 +302,13 @@
   "editor.minimap.showRegionSectionHeaders": true,
   "editor.minimap.showSlider": "always",
   "editor.minimap.size": "proportional",
-  "editor.rulers": [
-    80,
-    120
-  ],
+  "editor.rulers": [80, 120],
   "editor.scrollBeyondLastLine": false,
   "editor.showFoldingControls": "always",
   "editor.stickyScroll.defaultModel": "outlineModel",
   "editor.stickyScroll.enabled": true,
   "editor.suggest.preview": true,
+  "editor.suggest.showReferences": true,
   "editor.suggestSelection": "recentlyUsedByPrefix",
   "editor.tabSize": 2,
   "eslint.codeActionsOnSave.mode": "problems",
@@ -323,12 +360,12 @@
   "extensions.ignoreRecommendations": true,
   "extensions.webWorker": false,
   "files.associations": {
+    "**/.vscode/*.json": "jsonc",
     "**/*.cjs": "javascript",
     "**/*.cts": "typescript",
     "**/*.jsonc": "jsonc",
     "**/*.mjs": "javascript",
     "**/*.mts": "typescript",
-    "**/.vscode/*.json": "jsonc",
     "**/nx.json": "jsonc",
     "**/project.json": "jsonc",
     "**/tsconfig*.json": "jsonc"
@@ -343,10 +380,10 @@
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
   "files.watcherExclude": {
+    "**/__pycache__/**": true,
     "**/.git/objects/**": true,
     "**/.git/subtree-cache/**": true,
     "**/.venv/**": true,
-    "**/__pycache__/**": true,
     "**/build/**": true,
     "**/dist/**": true,
     "**/env/**": true,
@@ -378,8 +415,10 @@
   "git.postCommitCommand": "push",
   "git.repositoryScanMaxDepth": 3,
   "git.showProgress": true,
+  "git.showReferenceDetails": true,
   "git.terminalGitEditor": true,
   "git.verboseCommit": true,
+  "github-actions.use-enterprise": false,
   "github.copilot.chat.agent.autoFix": true,
   "github.copilot.chat.agent.currentEditorContext.enabled": true,
   "github.copilot.chat.agent.omitFileAttachmentContents": true,
@@ -454,7 +493,6 @@
   "github.copilot.nextEditSuggestions.fixes": true,
   "github.copilot.nextEditSuggestions.preferredModel": "Claude Haiku 4.5 (copilot)",
   "github.copilot.selectedCompletionModel": "Claude Haiku 4.5 (copilot)",
-  "github-actions.use-enterprise": false,
   "githubPullRequests.allowFetch": true,
   "githubPullRequests.assignCreated": "${user}",
   "githubPullRequests.codingAgent.autoCommitAndPush": true,
@@ -472,10 +510,7 @@
   "githubPullRequests.experimental.useQuickChat": true,
   "githubPullRequests.fileListLayout": "tree",
   "githubPullRequests.focusedMode": "overview",
-  "githubPullRequests.ignoredPullRequestBranches": [
-    "develop",
-    "main"
-  ],
+  "githubPullRequests.ignoredPullRequestBranches": ["develop", "main"],
   "githubPullRequests.ignoreSubmodules": true,
   "githubPullRequests.notifications": "pullRequests",
   "githubPullRequests.postCreate": "openOverview",
@@ -533,7 +568,7 @@
   },
   "gitlens.views.worktrees.showStashes": true,
   "indentRainbow.colorOnWhiteSpaceOnly": true,
-  "inlineChat.affordance": "gutter",
+  "inlineChat.affordance": "editor",
   "inlineChat.defaultModel": "Claude Haiku 4.5 (copilot)",
   "inlineChat.enableV2": true,
   "inlineChat.finishOnType": true,
@@ -543,14 +578,17 @@
   "insertDateString.format": "iso",
   "js/ts.autoClosingTags": true,
   "js/ts.autoClosingTags.enabled": true,
+  "js/ts.experimental.useTsgo": true,
   "js/ts.inlayHints.enumMemberValues.enabled": true,
   "js/ts.inlayHints.functionLikeReturnTypes.enabled": false,
   "js/ts.inlayHints.parameterNames.enabled": "literals",
   "js/ts.inlayHints.parameterTypes.enabled": false,
   "js/ts.inlayHints.propertyDeclarationTypes.enabled": false,
   "js/ts.inlayHints.variableTypes.enabled": false,
-  "js/ts.preferences.importModuleSpecifier": "relative",
+  "js/ts.preferences.importModuleSpecifier": "non-relative",
   "js/ts.preferences.preferTypeOnlyAutoImports": true,
+  "js/ts.referencesCodeLens.enabled": true,
+  "js/ts.referencesCodeLens.showOnAllFunctions": true,
   "js/ts.suggest.autoImports": true,
   "js/ts.suggest.paths": true,
   "js/ts.tsserver.experimental.enableProjectDiagnostics": false,
@@ -559,10 +597,9 @@
   "js/ts.updateImportsOnFileMove.enabled": "always",
   "json.schemaDownload.enable": true,
   "json.schemaDownload.trustedDomains": {
-    "https://biomejs.dev": true,
     "https://cdn.statically.io": true,
-    "https://json.schemastore.org/": true,
     "https://json-schema.org/": true,
+    "https://json.schemastore.org/": true,
     "https://raw.githubusercontent.com/": true,
     "https://schemastore.azurewebsites.net/": true,
     "https://www.schemastore.org/": true
@@ -570,7 +607,12 @@
   "json.validate.enable": true,
   "jsonc.format.enable": true,
   "jsonc.validate.enable": false,
+  "markdownlint.configFile": "configuration/.markdownlint-cli2.jsonc",
   "material-icon-theme.files.associations": {
+    ".code-workspace*": "vscode",
+    ".ncurc.cjs": "npm",
+    ".size-limit.cjs": "disc",
+    ".yamllint": "yaml",
     "*.args.js": "excalidraw",
     "*.args.ts": "excalidraw",
     "*.command.ts": "exe",
@@ -602,13 +644,10 @@
     "*.service.test.js": "test-ts",
     "*.service.test.ts": "test-ts",
     "*.service.ts": "brainfuck",
+    "*.types.ts": "typescript-def",
     "*.utilities.ts": "gemini",
     "*.utils.ts": "gemini",
     "*enum.ts": "lib",
-    ".code-workspace*": "vscode",
-    ".ncurc.cjs": "npm",
-    ".size-limit.cjs": "disc",
-    ".yamllint": "yaml",
     "auth.guard.js": "authors",
     "database-client-config.json": "database",
     "devcontainer.json": "3d",
@@ -656,6 +695,7 @@
     "source.sortImports": "never"
   },
   "notebook.compactView": true,
+  "notebook.defaultFormatter": "charliermarsh.ruff",
   "notebook.diff.experimental.toggleInline": true,
   "notebook.diff.ignoreOutputs": true,
   "notebook.formatOnSave.enabled": true,
@@ -675,26 +715,19 @@
   "outline.showProperties": true,
   "outline.showVariables": false,
   "oxc.enable": true,
+  "oxc.enable.oxfmt": true,
   "oxc.enable.oxlint": true,
+  "oxc.fmt.configPath": "configuration/oxfmt.config.ts",
+  "oxc.path.node": "/Users/jimmypaolini/.nvm/versions/node/v22.22.2/bin/node",
+  "oxc.path.oxfmt": "node_modules/.bin/oxfmt",
+  "oxc.useExecPath": false,
+  "peacock.color": "#215732",
   "postman.mcp.notifications.postmanMCP": false,
   "postman.settings.dotenv-detection-notification-visibility": false,
-  "python.analysis.diagnosticSeverityOverrides": {
-    "reportMissingModuleSource": "none",
-    "reportMissingTypeStubs": "none",
-    "reportUnknownArgumentType": "none",
-    "reportUnknownLambdaType": "none",
-    "reportUnknownMemberType": "none",
-    "reportUnknownParameterType": "none",
-    "reportUnknownReturnType": "none",
-    "reportUnknownVariableType": "none",
-    "reportUnusedImport": "none",
-    "reportUnusedParameter": "none"
-  },
-  "python.analysis.typeCheckingMode": "standard",
+  "prettier.configPath": "configuration/prettier.config.ts",
+  "python.analysis.referencesCodeLens": true,
   "python.defaultInterpreterPath": "${workspaceFolder}/applications/affirmations/.venv/bin/python",
-  "python.testing.pytestArgs": [
-    "."
-  ],
+  "python.testing.pytestArgs": ["."],
   "python.testing.pytestEnabled": true,
   "python.testing.unittestEnabled": true,
   "remote.autoForwardPortsSource": "hybrid",
@@ -751,15 +784,15 @@
   "scm.workingSets.default": "current",
   "scm.workingSets.enabled": true,
   "search.exclude": {
-    "**build**": true,
-    "**coverage**": true,
-    "**dist**": true,
-    "**public**": true,
-    "*.code-search": true,
     ".github/copilot-instructions.md": true,
     ".next": true,
     ".tox": true,
     ".venv": true,
+    "*.code-search": true,
+    "**build**": true,
+    "**coverage**": true,
+    "**dist**": true,
+    "**public**": true,
     "bower_components": true,
     "dist": true,
     "legacy": true,
@@ -777,9 +810,7 @@
   "terminal.integrated.env.osx": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
-  "terraform.languageServer.args": [
-    "serve"
-  ],
+  "terraform.languageServer.args": ["serve"],
   "terraform.languageServer.enable": true,
   "vitest.maximumConfigs": 24,
   "vscode-kubernetes.log-viewer.autorun": true,
@@ -797,7 +828,24 @@
   "workbench.browser.enableChatTools": true,
   "workbench.browser.openLocalhostLinks": true,
   "workbench.colorCustomizations": {
-    "editorRuler.foreground": "#282828"
+    "activityBar.activeBackground": "#2f7c47",
+    "activityBar.background": "#2f7c47",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#422c74",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "commandCenter.border": "#e7e7e799",
+    "editorRuler.foreground": "#282828",
+    "sash.hoverBorder": "#2f7c47",
+    "statusBar.background": "#215732",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#2f7c47",
+    "statusBarItem.remoteBackground": "#215732",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#215732",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#21573299",
+    "titleBar.inactiveForeground": "#e7e7e799"
   },
   "workbench.editor.alwaysShowEditorActions": true,
   "workbench.editor.editorActionsLocation": "titleBar",
@@ -810,7 +858,7 @@
   "workbench.editor.preferHistoryBasedLanguageDetection": false,
   "workbench.editor.showTabIndex": false,
   "workbench.editor.tabSizing": "fit",
-  "workbench.editor.wrapTabs": false,
+  "workbench.editor.wrapTabs": true,
   "workbench.editorAssociations": {
     "*.html": "default",
     "file:/**/*.csv": "jupyter-data-wrangler"

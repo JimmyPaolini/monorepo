@@ -1,0 +1,183 @@
+import type { KnipConfig } from "knip";
+
+const config: KnipConfig = {
+  $schema: "https://unpkg.com/knip@5/schema.json",
+
+  // Globally ignored file patterns (tests, build output, caches)
+  ignore: [
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "**/dist/**",
+    "**/node_modules/**",
+    "**/.nx/**",
+    "**/coverage/**",
+  ],
+
+  // Binaries invoked via project.json targets or scripts, not imported in code
+  ignoreBinaries: [
+    "terraform", // Terraform CLI, used for infrastructure provisioning
+    "oxfmt", // Oxfmt CLI, invoked via nx:run-commands oxfmt target
+    "oxlint", // Oxlint CLI, invoked via nx:run-commands oxlint target
+    "gitleaks", // Gitleaks CLI, used for detecting hardcoded secrets
+    "trivy", // Trivy CLI, used for security scanning (container images & infrastructure)
+    "uv", // uv Python package manager, used in lint-staged for nbstripout
+    "unset", // Shell builtin, used in project.json pre-commit command
+  ],
+
+  // devDependencies used via npx, CLI, or ESLint config (not directly imported)
+  ignoreDependencies: [
+    "@commitlint/config-conventional", // commitlint preset, referenced as string in extends array
+    "@nx/eslint-plugin", // Loaded dynamically by Nx ESLint integration
+    "@nx/js", // Nx JavaScript/TypeScript plugin (auto-detected by Nx)
+    "@nx/web", // Nx web plugin (auto-detected by Nx)
+    "@semantic-release/commit-analyzer", // semantic-release plugin, referenced in release.config.cjs
+    "@semantic-release/github", // semantic-release plugin
+    "@semantic-release/npm", // semantic-release plugin
+    "@semantic-release/release-notes-generator", // semantic-release plugin
+    "@swc/helpers", // SWC runtime helpers, required by @swc-node/register for compiled TS
+    "commitlint-plugin-gitmoji", // commitlint plugin, referenced as string in plugins array
+    "commitlint-plugin-tense", // commitlint plugin, referenced as string in plugins array
+    "markdownlint-cli2", // Markdown linter CLI, invoked via nx:run-commands in project.json
+    "npm-check-updates", // Dependency update CLI (ncu), invoked via GitHub Actions workflow
+    "stylelint-config-standard", // stylelint preset, referenced as string in extends array
+    "stylelint-config-tailwindcss", // stylelint preset, referenced as string in extends array
+    "stylelint", // CSS linter CLI, invoked via nx:run-commands in project.json
+    "tslib", // TypeScript helper library, implicit runtime dependency for compiled TS
+  ],
+
+  // Allow exports that are only used in the same file (common for barrel re-exports)
+  ignoreExportsUsedInFile: true,
+
+  // JimmyPaolini is a GitHub profile page with no buildable code — skip analysis
+  ignoreWorkspaces: ["applications/JimmyPaolini", "applications/affirmations"],
+
+  workspaces: {
+    // Root workspace: scripts, base configs, and Nx configuration files
+    ".": {
+      entry: [
+        "scripts/**/*.{js,ts,sh}",
+        ".devcontainer/scripts/**/*.{js,ts,sh}",
+        "configuration/vitest.config.ts",
+        "configuration/commitlint.config.ts",
+        "configuration/dependency-cruiser.cjs",
+        "configuration/eslint.config.base.ts",
+        "configuration/eslint.config.js",
+        "configuration/lint-staged.config.ts",
+        "configuration/oxfmt.config.ts",
+        "configuration/oxlint.config.ts",
+        "configuration/prettier.config.ts",
+        "configuration/stylelint.config.cjs",
+        "configuration/syncpack.config.cjs",
+        "release.config.cjs",
+        ".ncurc.cjs",
+        "validate-branch-name.config.cjs",
+      ],
+      ignore: [
+        "**/*.test.ts",
+        "**/*.spec.ts",
+        "**/dist/**",
+        "**/coverage/**",
+        "applications/JimmyPaolini/**",
+        // Skill scripts are invoked by the skill framework, not imported in code
+        "**/.agents/skills/**/scripts/**",
+        "**/.claude/skills/**/scripts/**",
+        "**/.github/skills/**/scripts/**",
+        "**/.opencode/skills/**/scripts/**",
+        "**/documentation/skills/**/scripts/**",
+      ],
+      project: "**/*.{js,ts,mjs,cjs}",
+    },
+
+    // caelundas: Node.js CLI for astronomical calendar generation
+    "applications/caelundas": {
+      ignore: [
+        "src/**/*.test.ts",
+        "src/**/*.integration.test.ts",
+        "src/**/*.end-to-end.test.ts",
+        "src/**/*.constants.ts", // Standard module constants files (may be empty placeholders)
+        "src/**/*.types.ts", // Standard module types files (may be empty placeholders)
+        "output/**", // Generated calendar output files
+        "testing/**", // Test fixtures and setup
+      ],
+      project: "src/**/*.ts",
+    },
+
+    // lexico: TanStack Start SSR web application with Supabase backend
+    "applications/lexico": {
+      entry: [
+        "src/client.tsx", // Client-side entry point
+        "src/router.tsx", // TanStack Router configuration
+        "src/routes/**/*.tsx", // File-based routing — all route files are entry points
+      ],
+      ignore: [
+        "src/routeTree.gen.ts", // Auto-generated by TanStack Router
+        "src/lib/database.types.ts", // Auto-generated by Supabase CLI
+        "src/lib/auth.ts", // Supabase auth utilities (used at runtime)
+        "src/lib/bookmarks.ts", // Bookmark feature module (used at runtime)
+        "src/lib/supabase.ts", // Supabase client initialization (used at runtime)
+        "src/components/entry/principal-parts.tsx", // Dynamic component loaded by route
+      ],
+      ignoreBinaries: [
+        "supabase", // Supabase CLI, used for local dev and migrations
+      ],
+      project: "src/**/*.{ts,tsx}",
+    },
+
+    // lexico-components: Shared React component library (shadcn/ui)
+    "packages/lexico-components": {
+      // Shadcn-generated components, lib utilities, and hooks are managed by shadcn CLI
+      // and may appear unused to knip but are consumed by lexico at runtime
+      ignore: ["src/components/**", "src/lib/**", "src/hooks/**"],
+
+      // Radix UI packages and other shadcn dependencies are installed by 'pnpx shadcn add'
+      // and consumed by shadcn-generated components — knip can't trace these imports
+      // because the component files are in the ignored src/components/ directory
+      ignoreDependencies: [
+        "@radix-ui/react-alert-dialog",
+        "@radix-ui/react-aspect-ratio",
+        "@radix-ui/react-avatar",
+        "@radix-ui/react-checkbox",
+        "@radix-ui/react-context-menu",
+        "@radix-ui/react-dropdown-menu",
+        "@radix-ui/react-hover-card",
+        "@radix-ui/react-menubar",
+        "@radix-ui/react-navigation-menu",
+        "@radix-ui/react-popover",
+        "@radix-ui/react-progress",
+        "@radix-ui/react-radio-group",
+        "@radix-ui/react-scroll-area",
+        "@radix-ui/react-select",
+        "@radix-ui/react-slider",
+        "@radix-ui/react-switch",
+        "@radix-ui/react-toggle",
+        "@radix-ui/react-toggle-group",
+        "cmdk", // Command menu component used by shadcn
+        "embla-carousel-react", // Carousel component used by shadcn
+        "input-otp", // OTP input component used by shadcn
+        "next-themes", // Theme provider used by shadcn
+        "react-day-picker", // Date picker component used by shadcn
+        "react-hook-form", // Form handling used by shadcn form components
+        "react-resizable-panels", // Resizable panel component used by shadcn
+        "recharts", // Chart library used by shadcn chart components
+        "sonner", // Toast notification component used by shadcn
+        "vaul", // Drawer component used by shadcn
+      ],
+      project: "src/**/*.{ts,tsx}",
+    },
+
+    // code-generator: Nx generator plugin for scaffolding React components
+    "tools/code-generator": {
+      entry: "src/generators/*/generator.ts", // Each generator's entry point
+      ignore: [
+        "src/**/files/**", // Template files (EJS syntax, not valid TS)
+        "src/**/*.test.ts",
+      ],
+      ignoreDependencies: [
+        "react", // Peer dependency — consumed by generated components, not the generator itself
+      ],
+      project: "src/**/*.ts",
+    },
+  },
+};
+
+export default config;

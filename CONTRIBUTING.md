@@ -7,8 +7,8 @@ Thank you for contributing! This guide covers the development workflow, code sta
 - [Contributing to Monorepo](#contributing-to-monorepo)
   - [Table of Contents](#table-of-contents)
   - [Getting Started](#getting-started)
-    - [Option 1: Dev Container (Recommended)](#option-1-dev-container-recommended)
-    - [Option 2: Local Setup (macOS)](#option-2-local-setup-macos)
+    - [Option 1: Local Setup (macOS, Recommended)](#option-1-local-setup-macos-recommended)
+    - [Option 2: Dev Container](#option-2-dev-container)
     - [Workspace Structure](#workspace-structure)
   - [Development Workflow](#development-workflow)
     - [Basic Commands](#basic-commands)
@@ -30,9 +30,35 @@ Thank you for contributing! This guide covers the development workflow, code sta
 
 ## Getting Started
 
-### Option 1: Dev Container (Recommended)
+### Option 1: Local Setup (macOS, Recommended)
 
-The fastest way to get started is using the included dev container, which provides a fully configured development environment with all required tools.
+The fastest way to get started on macOS is using the setup script, which installs all required tools and dependencies via Homebrew.
+
+**Prerequisites:**
+
+- **macOS** with [Homebrew](https://brew.sh/) installed
+- **Git**: Latest stable version
+- **[Docker Desktop](https://www.docker.com/products/docker-desktop/)**: Required for SearxNG, Open WebUI, and caelundas containers
+
+**Setup:**
+
+```bash
+git clone https://github.com/JimmyPaolini/monorepo.git
+cd monorepo
+./scripts/local/setup.sh
+```
+
+This script:
+
+- Installs **nvm**, **Node.js** (22), **pnpm**, **uv**, **Python** (3.11+), **Ollama** (+ pulls `gemma4:e2b`)
+- Installs **Terraform**, **Supabase CLI**, **Helm**, **kubectl**, **GitHub CLI**, **jq**, **yamllint**
+- Creates `.env` files from `.env.default` templates (root, lexico, caelundas)
+- Sets `LOCAL_WORKSPACE_FOLDER` for docker-compose volume mounts
+- Runs `pnpm install` and `uv sync` (Python venv for affirmations)
+
+### Option 2: Dev Container
+
+Alternatively, use the included dev container for a fully configured environment (useful for Codespaces or when you prefer container isolation).
 
 **Prerequisites:**
 
@@ -78,34 +104,6 @@ The fastest way to get started is using the included dev container, which provid
 | 54325 | Analytics         | Silent       |
 
 See [.devcontainer/README.md](.devcontainer/README.md) for detailed configuration and troubleshooting.
-
-### Option 2: Local Setup (macOS)
-
-For local development without containers:
-
-**Prerequisites:**
-
-- **macOS** with [Homebrew](https://brew.sh/) installed
-- **Git**: Latest stable version
-- **[Docker Desktop](https://www.docker.com/products/docker-desktop/)**: Required for SearxNG, Open WebUI, and caelundas containers
-
-**Setup:**
-
-Run the setup script to install all dependencies:
-
-```bash
-git clone https://github.com/JimmyPaolini/monorepo.git
-cd monorepo
-./scripts/local/setup.sh
-```
-
-This script:
-
-- Installs **nvm**, **Node.js** (22), **pnpm**, **uv**, **Python** (3.11+), **Ollama** (+ pulls `gemma4:e2b`)
-- Installs **Terraform**, **Supabase CLI**, **Helm**, **kubectl**, **GitHub CLI**, **jq**, **yamllint**
-- Creates `.env` files from `.env.default` templates (root, lexico, caelundas)
-- Sets `LOCAL_WORKSPACE_FOLDER` for docker-compose volume mounts
-- Runs `pnpm install` and `uv sync` (Python venv for affirmations)
 
 ### Workspace Structure
 
@@ -168,8 +166,8 @@ Three Husky hooks enforce quality gates locally. **Never bypass them with `--no-
 
 | Hook         | Trigger      | What it runs                                                                         | Config                                                             |
 | ------------ | ------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `pre-commit` | `git commit` | **lint-staged**: format, lint, typecheck, spell-check, and more on staged files      | [lint-staged.config.ts](lint-staged.config.ts)                     |
-| `commit-msg` | `git commit` | **commitlint**: validates Conventional Commits format (`<type>(<scope>): <subject>`) | [commitlint.config.ts](commitlint.config.ts)                       |
+| `pre-commit` | `git commit` | **lint-staged**: format, lint, typecheck, spell-check, and more on staged files      | [lint-staged.config.ts](configuration/lint-staged.config.ts)       |
+| `commit-msg` | `git commit` | **commitlint**: validates Conventional Commits format (`<type>(<scope>): <subject>`) | [commitlint.config.ts](configuration/commitlint.config.ts)         |
 | `pre-push`   | `git push`   | **validate-branch-name**: enforces `<type>/<scope>-<description>` pattern            | [validate-branch-name.config.cjs](validate-branch-name.config.cjs) |
 
 If a hook fails, the git operation is blocked until you fix the error. See the config files linked above for details on what each hook checks.
@@ -268,7 +266,7 @@ Each project uses `.env.default` files as templates for required environment var
 
 ## Dependency Update Workflow
 
-Weekly automated dependency updates are handled by the [`dependency-updates.yml`](.github/workflows/dependency-updates.yml) workflow:
+Weekly automated dependency updates are handled by the [`dependency-upgrades.yml`](.github/workflows/dependency-upgrades.yml) workflow:
 
 1. **Schedule**: Runs every Monday at 6:00 UTC
 2. **Detection**: Uses `npm-check-updates` to find outdated dependencies

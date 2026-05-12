@@ -11,7 +11,7 @@
 use_default_settings: true
 
 general:
-  debug: false                        # set true to expose stack traces in the UI
+  debug: false # set true to expose stack traces in the UI
   instance_name: Affirmations SearxNG
 
 server:
@@ -36,17 +36,17 @@ search:
   autocomplete: ""
   default_lang: en
   formats:
-    - html   # used by the browser UI
-    - json   # used by the LangGraph agent's SearxNG tool
+    - html # used by the browser UI
+    - json # used by the LangGraph agent's SearxNG tool
   # Reduce suspend times so engines recover quickly in dev.
   # An engine that fails once (e.g. a brief CAPTCHA) will resume after 5s instead of being
   # locked for the full default ban window, which helps during iterative notebook runs.
-  ban_time_on_fail: 5       # seconds before a failing engine is retried (default: 5)
-  max_ban_time_on_fail: 30  # cap on exponential backoff (default: 120)
+  ban_time_on_fail: 5 # seconds before a failing engine is retried (default: 5)
+  max_ban_time_on_fail: 30 # cap on exponential backoff (default: 120)
   suspended_times:
-    SearxEngineAccessDenied: 3600     # 1h (default: 24h)
-    SearxEngineCaptcha: 3600          # 1h (default: 24h)
-    SearxEngineTooManyRequests: 600   # 10m (default: 1h)
+    SearxEngineAccessDenied: 3600 # 1h (default: 24h)
+    SearxEngineCaptcha: 3600 # 1h (default: 24h)
+    SearxEngineTooManyRequests: 600 # 10m (default: 1h)
     # Cloudflare-specific variants of the above
     cf_SearxEngineCaptcha: 3600
     cf_SearxEngineAccessDenied: 3600
@@ -66,14 +66,14 @@ plugins:
 hostnames:
   high_priority:
     # Cross-category primary and secondary source archives — cover texts used across all subject areas
-    - (.*\.)?sacred-texts\.com$   # largest free archive of world religious/occult texts (Crowley, Waite, Levi, etc.)
-    - (.*\.)?hermetic\.com$       # Hermetic Library: Golden Dawn, Thelema, and Western esoteric primary sources
+    - (.*\.)?sacred-texts\.com$ # largest free archive of world religious/occult texts (Crowley, Waite, Levi, etc.)
+    - (.*\.)?hermetic\.com$ # Hermetic Library: Golden Dawn, Thelema, and Western esoteric primary sources
 
     # tarot — RWS-tradition card meaning references
-    - (.*\.)?biddytarot\.com$      # most-cited beginner/intermediate reference; upright + reversed
-    - (.*\.)?labyrinthos\.co$      # also covers lenormand and oracle; clean keyword summaries
-    - (.*\.)?learntarot\.com$      # Joan Bunning's classic structured course
-    - (.*\.)?tarot\.com$           # comprehensive meanings + spreads
+    - (.*\.)?biddytarot\.com$ # most-cited beginner/intermediate reference; upright + reversed
+    - (.*\.)?labyrinthos\.co$ # also covers lenormand and oracle; clean keyword summaries
+    - (.*\.)?learntarot\.com$ # Joan Bunning's classic structured course
+    - (.*\.)?tarot\.com$ # comprehensive meanings + spreads
     - (.*\.)?thetarotguide\.com$
     - (.*\.)?tarotinstitute\.com$
     - (.*\.)?selfgazer\.com$
@@ -81,78 +81,78 @@ hostnames:
     - (.*\.)?tarotteachings\.com$
 
     # lenormand
-    - (.*\.)?lenormandreader\.com$   # all 36 card meanings, active as of 2026
+    - (.*\.)?lenormandreader\.com$ # all 36 card meanings, active as of 2026
     - (.*\.)?learnlenormand\.com$
-    - (.*\.)?marykgreer\.com$        # Mary K. Greer: scholarly cartomancy/lenormand history (18+ lenormand posts)
+    - (.*\.)?marykgreer\.com$ # Mary K. Greer: scholarly cartomancy/lenormand history (18+ lenormand posts)
 
     # astrology — sign/planet/house meanings and chart interpretation
-    - (.*\.)?astro\.com$            # Astrodienst: professional-grade charts and interpretation texts
-    - (.*\.)?cafeastrology\.com$    # planet/house/aspect meanings; widely cited
+    - (.*\.)?astro\.com$ # Astrodienst: professional-grade charts and interpretation texts
+    - (.*\.)?cafeastrology\.com$ # planet/house/aspect meanings; widely cited
     - (.*\.)?astrostyle\.com$
-    - (.*\.)?astrotheme\.com$       # celebrity chart database + in-depth planet interpretations
+    - (.*\.)?astrotheme\.com$ # celebrity chart database + in-depth planet interpretations
     - (.*\.)?astrology42\.com$
     - (.*\.)?darkstarastrology\.com$ # fixed stars and asteroids — rare content not on mainstream sites
     - (.*\.)?astrologyhub\.com$
-    - (.*\.)?skyscript\.co\.uk$    # traditional/classical astrology; Lilly, Bonatti source commentary
-    - (.*\.)?astro-seek\.com$      # aspect and transit calculators with textual interpretations
-    - (.*\.)?theoi\.com$           # Greek mythology site; included for asteroid names (Ceres, Pallas, Juno, Vesta)
+    - (.*\.)?skyscript\.co\.uk$ # traditional/classical astrology; Lilly, Bonatti source commentary
+    - (.*\.)?astro-seek\.com$ # aspect and transit calculators with textual interpretations
+    - (.*\.)?theoi\.com$ # Greek mythology site; included for asteroid names (Ceres, Pallas, Juno, Vesta)
 
     # chakras — energy body, kundalini, and Ayurvedic resonance content
     - (.*\.)?yogajournal\.com$
     - (.*\.)?yogainternational\.com$
-    - (.*\.)?chopra\.com$           # Deepak Chopra Institute: chakra/meditation/Ayurveda
+    - (.*\.)?chopra\.com$ # Deepak Chopra Institute: chakra/meditation/Ayurveda
     - (.*\.)?mindbodygreen\.com$
     - (.*\.)?ekhartyoga\.com$
-    - (.*\.)?gaia\.com$             # streaming/editorial platform; in-depth chakra and esoteric articles
+    - (.*\.)?gaia\.com$ # streaming/editorial platform; in-depth chakra and esoteric articles
 
     # runes — Elder/Younger Futhark meanings, Norse mythology context
-    - (.*\.)?runesecrets\.com$      # detailed divinatory and esoteric meanings per rune
-    - (.*\.)?vikingrune\.com$       # historical and magical meanings with Norse cosmology
-    - (.*\.)?norse-mythology\.org$  # scholarly Norse mythology reference
+    - (.*\.)?runesecrets\.com$ # detailed divinatory and esoteric meanings per rune
+    - (.*\.)?vikingrune\.com$ # historical and magical meanings with Norse cosmology
+    - (.*\.)?norse-mythology\.org$ # scholarly Norse mythology reference
     - (.*\.)?symbolsandmeanings\.net$ # cross-category: runes, alchemy, chakra symbols
 
     # kabbalah — Tree of Life, Sephiroth, Hebrew letters, and gematria
-    - (.*\.)?chabad\.org$           # Chabad-Lubavitch: authoritative Chassidic/Kabbalistic texts
-    - (.*\.)?sefaria\.org$          # open-source library of Jewish texts including Zohar and Sefer Yetzirah
-    - (.*\.)?inner\.org$            # Gal Einai Institute — Kabbalistic commentary on Hebrew letters
-    - (.*\.)?kabbalahcentre\.org$   # Western/Hermetic Kabbalah oriented toward spiritual practice
+    - (.*\.)?chabad\.org$ # Chabad-Lubavitch: authoritative Chassidic/Kabbalistic texts
+    - (.*\.)?sefaria\.org$ # open-source library of Jewish texts including Zohar and Sefer Yetzirah
+    - (.*\.)?inner\.org$ # Gal Einai Institute — Kabbalistic commentary on Hebrew letters
+    - (.*\.)?kabbalahcentre\.org$ # Western/Hermetic Kabbalah oriented toward spiritual practice
     - (.*\.)?jewishvirtuallibrary\.org$ # encyclopedic reference for historical and textual context
 
     # Western esoteric primary sources — Agrippa, Dee, and Ficino planetary/elemental correspondences
     # that underpin associations across tarot, astrology, alchemy, kabbalah, and gemstones
     - (.*\.)?esotericarchives\.com$ # Twilit Grotto: full text of Agrippa's Three Books, Key of Solomon, etc.
-    - (.*\.)?llewellyn\.com$        # Llewellyn encyclopedia: practitioner-oriented magical reference
+    - (.*\.)?llewellyn\.com$ # Llewellyn encyclopedia: practitioner-oriented magical reference
 
     # gemstones — metaphysical properties, chakra associations, and mineralogy
-    - (.*\.)?crystalvaults\.com$    # comprehensive metaphysical crystal encyclopedia
-    - (.*\.)?energymuse\.com$       # crystal healing meanings and intention-setting
+    - (.*\.)?crystalvaults\.com$ # comprehensive metaphysical crystal encyclopedia
+    - (.*\.)?energymuse\.com$ # crystal healing meanings and intention-setting
     - (.*\.)?healingcrystals\.com$
-    - (.*\.)?gia\.edu$              # Gemological Institute of America — scientific authority (balances practitioner sites)
-    - (.*\.)?mindat\.org$           # mineralogy database; mineral composition and properties
+    - (.*\.)?gia\.edu$ # Gemological Institute of America — scientific authority (balances practitioner sites)
+    - (.*\.)?mindat\.org$ # mineralogy database; mineral composition and properties
 
     # numerology — life path, expression, and soul urge number meanings
     - (.*\.)?numerology\.com$
-    - (.*\.)?worldnumerology\.com$  # Hans Decoz — most cited numerology authority; author of Numerology; Key to Your Inner Self
+    - (.*\.)?worldnumerology\.com$ # Hans Decoz — most cited numerology authority; author of Numerology; Key to Your Inner Self
     - (.*\.)?affinitynumerology\.com$
     - (.*\.)?numerologist\.com$
 
     # alchemy — Hermetic stages, symbols, and elemental transmutation
-    - (.*\.)?alchemywebsite\.com$   # Adam McLean: scholarly alchemy symbol dictionary and manuscript images
-    - (.*\.)?rexresearch\.com$      # archive of fringe science and alchemical process literature
+    - (.*\.)?alchemywebsite\.com$ # Adam McLean: scholarly alchemy symbol dictionary and manuscript images
+    - (.*\.)?rexresearch\.com$ # archive of fringe science and alchemical process literature
 
     # cross-category correspondences: elements, colors, weekdays, metals, deities
-    - (.*\.)?witchipedia\.com$      # Witches' Sabbat wiki: magical correspondences and folk practice
-    - (.*\.)?learnreligions\.com$   # ThoughtCo religion vertical: world religions and symbol meanings
-    - (.*\.)?thoughtco\.com$        # general reference; mythology, history, and occult topics
-    - (.*\.)?ancient-symbols\.com$  # symbol etymology and cross-cultural meanings
+    - (.*\.)?witchipedia\.com$ # Witches' Sabbat wiki: magical correspondences and folk practice
+    - (.*\.)?learnreligions\.com$ # ThoughtCo religion vertical: world religions and symbol meanings
+    - (.*\.)?thoughtco\.com$ # general reference; mythology, history, and occult topics
+    - (.*\.)?ancient-symbols\.com$ # symbol etymology and cross-cultural meanings
 
     # solfeggio frequencies — 396 Hz, 528 Hz, etc. and their healing/chakra associations
-    - (.*\.)?musictheory\.net$      # included for interval and harmonic theory context
-    - (.*\.)?somaenergetics\.com$   # Solfeggio frequency research — not a general music theory site
+    - (.*\.)?musictheory\.net$ # included for interval and harmonic theory context
+    - (.*\.)?somaenergetics\.com$ # Solfeggio frequency research — not a general music theory site
 
     # encyclopedic references — broad coverage across all subject categories
     - (.*\.)?wikipedia\.org$
-    - (.*\.)?wikidata\.org$          # structured entity data; useful for canonical names and relationships
+    - (.*\.)?wikidata\.org$ # structured entity data; useful for canonical names and relationships
   low_priority:
     # Tarot sites with thin or outdated content — present but not authoritative
     - (.*\.)?tarostarot\.com$
@@ -170,8 +170,8 @@ hostnames:
     # Generic horoscope generators — useful for basic sign keywords but lack interpretive depth
     - (.*\.)?horoscope\.com$
     - (.*\.)?astrology\.com$
-    - (.*\.)?keen\.com$              # psychic reading marketplace, not educational
-    - (.*\.)?astrologyzone\.com$     # monthly horoscopes, thin on symbolism
+    - (.*\.)?keen\.com$ # psychic reading marketplace, not educational
+    - (.*\.)?astrologyzone\.com$ # monthly horoscopes, thin on symbolism
   remove:
     # Non-English content farms that surface for many spiritual search terms
     - (.*\.)?zhihu\.com$
@@ -187,7 +187,7 @@ hostnames:
 # Higher timeouts for LLM use: slow engines still return useful content
 # and the LLM can tolerate extra latency better than a human waiting for a UI
 outgoing:
-  request_timeout: 8.0     # default is 2.0 — too low, causes many engine timeouts
+  request_timeout: 8.0 # default is 2.0 — too low, causes many engine timeouts
   max_request_timeout: 15.0
 
 engines:

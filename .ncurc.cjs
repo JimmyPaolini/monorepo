@@ -1,5 +1,5 @@
 // npm-check-updates (ncu) configuration
-// Used by the dependency-updates GitHub Actions workflow to find outdated packages.
+// Used by the npm-check-updates GitHub Actions workflow to find outdated packages.
 // Docs: https://github.com/ramonak/npm-check-updates#config-file
 
 module.exports = {

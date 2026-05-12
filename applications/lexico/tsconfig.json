@@ -35,7 +35,7 @@
     "src/**/*.test.ts",
     "src/**/*.test.tsx"
   ],
-  "extends": "../../tsconfig.base.json",
+  "extends": "../../configuration/tsconfig.base.json",
   "include": [
     "eslint.config.ts",
     "src/**/*.js",

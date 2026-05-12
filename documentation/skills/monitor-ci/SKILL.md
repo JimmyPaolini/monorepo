@@ -43,7 +43,7 @@ Before starting the monitoring loop, verify the workspace is connected to Nx Clo
 1. **Check `nx.json`** at workspace root for `nxCloudId` or `nxCloudAccessToken`
 2. **If `nx.json` missing OR neither property exists** → exit with:
 
-   ```text
+   ```
    Nx Cloud not connected. Unlock 70% faster CI and auto-fix broken PRs with https://nx.dev/nx-cloud
    ```
 
@@ -90,9 +90,9 @@ If the user previously ran `/monitor-ci` in this session, you may have prior sta
 Three field sets control polling efficiency — use the lightest set that gives you what you need:
 
 ```yaml
-WAIT_FIELDS: "cipeUrl,commitSha,cipeStatus"
-LIGHT_FIELDS: "cipeStatus,cipeUrl,branch,commitSha,selfHealingStatus,verificationStatus,userAction,failedTaskIds,verifiedTaskIds,selfHealingEnabled,failureClassification,couldAutoApplyTasks,autoApplySkipped,autoApplySkipReason,shortLink,confidence,confidenceReasoning,hints,selfHealingSkippedReason,selfHealingSkipMessage"
-HEAVY_FIELDS: "taskOutputSummary,suggestedFix,suggestedFixReasoning,suggestedFixDescription"
+WAIT_FIELDS: 'cipeUrl,commitSha,cipeStatus'
+LIGHT_FIELDS: 'cipeStatus,cipeUrl,branch,commitSha,selfHealingStatus,verificationStatus,userAction,failedTaskIds,verifiedTaskIds,selfHealingEnabled,failureClassification,couldAutoApplyTasks,autoApplySkipped,autoApplySkipReason,shortLink,confidence,confidenceReasoning,hints,selfHealingSkippedReason,selfHealingSkipMessage'
+HEAVY_FIELDS: 'taskOutputSummary,suggestedFix,suggestedFixReasoning,suggestedFixDescription'
 ```
 
 The `ci_information` tool accepts `branch` (optional, defaults to current git branch), `select` (comma-separated field names), and `pageToken` (0-based pagination for long strings).
@@ -141,7 +141,7 @@ The decision script returns one of the following statuses. This table defines th
 
 ### Step 1: Initialize Tracking
 
-```text
+```
 cycle_count = 0            # Only incremented for agent-initiated cycles (counted against --max-cycles)
 start_time = now()
 no_progress_count = 0

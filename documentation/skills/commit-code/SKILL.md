@@ -27,7 +27,7 @@ This skill teaches how to write commit messages for this monorepo. All commits *
 
 ## Type
 
-**Required.** Must be one of the allowed types defined in [conventional.config.cjs](../../../conventional.config.cjs) (enforced by `type-enum` rule, error level 2).
+**Required.** Must be one of the allowed types defined in [conventional.config.cjs](../../../configuration/conventional.config.cjs) (enforced by `type-enum` rule, error level 2).
 
 **Case:** Must be lowercase (`type-case: lower-case`, error level 2)
 
@@ -51,7 +51,7 @@ This skill teaches how to write commit messages for this monorepo. All commits *
 
 ## Scope
 
-**Required.** Must be one of the allowed scopes defined in [conventional.config.cjs](../../../conventional.config.cjs) (enforced by `scope-enum` rule, error level 2).
+**Required.** Must be one of the allowed scopes defined in [conventional.config.cjs](../../../configuration/conventional.config.cjs) (enforced by `scope-enum` rule, error level 2).
 
 **Case:** Must be lowercase (`scope-case: lower-case`, error level 2)
 
@@ -238,7 +238,7 @@ This is the body"
 
 ## Commitlint Rules Summary
 
-All rules defined in [../commitlint.config.ts](../../../commitlint.config.ts):
+All rules defined in [../commitlint.config.ts](../../../configuration/commitlint.config.ts):
 
 **Error (level 2) - Will fail commit:**
 
@@ -262,8 +262,8 @@ Commit messages are validated by:
 
 Configuration files:
 
-- [../../../commitlint.config.ts](../../../commitlint.config.ts) — Complete rules and validation config
-- [../../../.husky/commit-msg](../../../.husky/commit-msg) — Git hook script
+- [../../../commitlint.config.ts](../../../configuration/commitlint.config.ts) — Complete rules and validation config
+- [../../../configuration/.husky/commit-msg](../../../configuration/.husky/commit-msg) — Git hook script
 
 ## Quick Reference
 

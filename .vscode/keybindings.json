@@ -1,7 +1,5 @@
-// Place your key bindings in this file to override the defaultsauto[]
 [
   // 🎨 Palettes
-
   {
     "command": "workbench.action.showCommands",
     "key": "cmd+k"
@@ -16,11 +14,9 @@
   },
   {
     "command": "workbench.action.toggleMaximizedPanel",
-    "key": "cmd+t"
+    "key": "shift+cmd+j"
   },
-
   // ▶️ Cmd+Enter
-
   {
     "command": "mdb.runAllPlaygroundBlocks",
     "key": "cmd+enter",
@@ -31,7 +27,6 @@
     "key": "cmd+enter",
     "when": "commentEditorFocused || commentFocused"
   },
-
   // 💬 Code Comments
   // {
   //   "key": "cmd+backspace",
@@ -43,9 +38,7 @@
   //   "command": "github.comment.delete",
   //   "when": "commentFocus && commentController == 'github-comment-controller'"
   // },
-
-  // 🔀 Tab switching
-
+  // 🔀 Editor Tabs
   {
     "command": "workbench.action.previousEditor",
     "key": "cmd+alt+left"
@@ -70,9 +63,17 @@
     "command": "workbench.action.terminal.focusNext",
     "key": "cmd+alt+s"
   },
-
-  // 🛠️ Sidebar Tabs
-
+  {
+    "command": "workbench.action.pinEditor",
+    "key": "alt+p",
+    "when": "!activeEditorIsPinned"
+  },
+  {
+    "command": "workbench.action.unpinEditor",
+    "key": "alt+p",
+    "when": "activeEditorIsPinned"
+  },
+  // 🛠️ Workbench Views
   {
     "command": "workbench.view.extension.github-actions",
     "key": "shift+cmd+a"
@@ -96,10 +97,6 @@
   {
     "command": "workbench.panel.chat.view.copilot.focus",
     "key": "shift+cmd+i"
-  },
-  {
-    "command": "atlascode.views.jira.customJqlTreeView.focus",
-    "key": "shift+cmd+j"
   },
   {
     "command": "workbench.view.extension.kubernetesView",
@@ -150,18 +147,16 @@
     "key": "shift+cmd+x"
   },
   {
-    "command": "workbench.view.extension.typescript-explorer",
+    "command": "references-view.tree.focus",
     "key": "shift+cmd+y"
   },
-
   // 📑 Bottombar Tabs
-
   {
     "command": "workbench.action.focusCommentsPanel",
     "key": "ctrl+cmd+c"
   },
   {
-    "command": "workbench.view.debug.console", // TODO: fix
+    "command": "workbench.view.debug.console",
     "key": "ctrl+cmd+d"
   },
   {
@@ -176,9 +171,7 @@
     "command": "terminal.focus",
     "key": "ctrl+cmd+t"
   },
-
-  // 📝 Editor Tabs
-
+  // 📝 Editor Tabs (numbered)
   {
     "command": "workbench.action.openEditorAtIndex1",
     "key": "cmd+1"
@@ -215,19 +208,7 @@
     "command": "workbench.action.openEditorAtIndex9",
     "key": "cmd+9"
   },
-  {
-    "command": "workbench.action.pinEditor",
-    "key": "alt+p",
-    "when": "!activeEditorIsPinned"
-  },
-  {
-    "command": "workbench.action.unpinEditor",
-    "key": "alt+p",
-    "when": "activeEditorIsPinned"
-  },
-
   // 🤖 Cursor
-
   {
     "command": "expandLineSelection",
     "key": "cmd+l"
@@ -236,17 +217,7 @@
     "command": "-aichat.insertselectionintochat",
     "key": "shift+cmd+l"
   },
-
-  // 🗑️ Other
-
-  {
-    "command": "workbench.action.terminal.kill",
-    "key": "alt+w"
-  },
-  {
-    "command": "-workbench.action.closeWindow",
-    "key": "shift+cmd+w"
-  },
+  // 👈 Pointer
   {
     "command": "editor.action.insertCursorBelow",
     "key": "shift+alt+down"
@@ -255,9 +226,23 @@
     "command": "editor.action.insertCursorAbove",
     "key": "shift+alt+up"
   },
+  // ❌ Close
+  {
+    "command": "workbench.action.terminal.kill",
+    "key": "alt+w"
+  },
+  {
+    "command": "-workbench.action.closeWindow",
+    "key": "shift+cmd+w"
+  },
+  // 🗑️ Other
   {
     "command": "markdown.showPreview",
     "key": "ctrl+p"
+  },
+  {
+    "command": "references-view.findReferences",
+    "key": "ctrl+f"
   },
   {
     "command": "workbench.action.joinAllGroups",
@@ -266,6 +251,10 @@
   {
     "command": "workbench.action.toggleSidebarVisibility",
     "key": "cmd+;"
+  },
+  {
+    "command": "agentSessions.toggleAgentSessionsSidebar",
+    "key": "shift+cmd+;"
   },
   {
     "command": "workbench.action.chat.openInEditor",

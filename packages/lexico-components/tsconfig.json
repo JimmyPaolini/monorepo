@@ -18,7 +18,7 @@
     "src/lib",
     "src/lib/utils"
   ],
-  "extends": "../../tsconfig.base.json",
+  "extends": "../../configuration/tsconfig.base.json",
   "include": [
     "eslint.config.ts",
     "src/**/*.ts",

@@ -1,0 +1,134 @@
+version: "0.2"
+language: en
+useGitignore: true
+$schema: https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json
+ignorePaths:
+  - ./.devcontainer/devcontainer.json
+  - .git
+  - .nx
+  - "*.eot"
+  - "*.gif"
+  - "*.ico"
+  - "*.jpeg"
+  - "*.jpg"
+  - "*.lock"
+  - "*.png"
+  - "*.svg"
+  - "*.ttf"
+  - "*.woff"
+  - "*.woff2"
+  - CHANGELOG.md
+  - "**/.terraform/**"
+  - "**/*.gen.ts"
+  - "**/*.min.css"
+  - "**/*.min.js"
+  - "**/CHANGELOG.md"
+  - "**/coverage"
+  - "**/dist"
+  - "**/node_modules"
+  - "**/pnpm-lock.yaml"
+  - "**/routeTree.gen.ts"
+  - "**/terraform.tfstate*"
+  - "**/supabase/data.sql"
+  - coverage
+  - dist
+  - documentation/planning/**
+  - .github/skills/monitor-ci/**
+  - .github/skills/nx-generate/**
+  - .github/skills/nx-import/**
+  - .github/skills/nx-plugins/**
+  - .github/skills/nx-run-tasks/**
+  - .github/skills/nx-workspace/**
+  - documentation/skills/monitor-ci/**
+  - documentation/skills/nx-generate/**
+  - documentation/skills/nx-import/**
+  - documentation/skills/nx-plugins/**
+  - documentation/skills/nx-run-tasks/**
+  - documentation/skills/nx-workspace/**
+  - documentation/skills/link-workspace-packages/**
+  - node_modules
+  - pnpm-lock.yaml
+dictionaryDefinitions:
+  - name: astronomy
+    path: .cspell/astronomy.txt
+  - name: ics
+    path: .cspell/ics.txt
+  - name: nasa-horizons
+    path: .cspell/nasa-horizons.txt
+  - name: lexico
+    path: .cspell/lexico.txt
+  - name: affirmations
+    path: .cspell/affirmations.txt
+  - name: ai
+    path: .cspell/ai.txt
+  - name: python
+    path: .cspell/python.txt
+  - name: infrastructure
+    path: .cspell/infrastructure.txt
+  - name: tooling
+    path: .cspell/tooling.txt
+    addWords: true
+words:
+  - apikey
+  - elipssis
+  - futp
+  - hackathon
+  - jimmypaolini
+  - joor
+  - killallnode
+  - killallvscodeextensions
+  - killport
+  - multivalued
+  - musescore
+  - navs
+  - nindent
+  - nonf
+  - noqa
+  - nums
+  - oneline
+  - paolini
+  - querykey
+  - reagent
+  - satisfies
+  - shiftsmart
+  - timespan
+  - tolower
+  - toon
+  - toupper
+  - upenn
+  - verbing
+enableFiletypes:
+  - markdown
+  - typescript
+  - javascript
+  - yaml
+  - json
+  - jsonc
+  - python
+  - shellscript
+  - sql
+  - terraform
+  - toml
+dictionaries:
+  - typescript
+  - node
+  - npm
+  - html
+  - css
+  - bash
+  - astronomy
+  - ics
+  - nasa-horizons
+  - lexico
+  - affirmations
+  - ai
+  - python
+  - infrastructure
+  - tooling
+patterns:
+  - name: notebook-outputs
+    pattern: /"outputs"\s*:\s*\[(?:[^\[\]]*|\[(?:[^\[\]]*|\[(?:[^\[\]]*|\[[^\[\]]*\])*[^\[\]]*\])*[^\[\]]*\])*[^\[\]]*\]/g
+overrides:
+  - filename: "**/*.ipynb"
+    ignoreRegExpList:
+      - notebook-outputs

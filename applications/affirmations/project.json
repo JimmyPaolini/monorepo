@@ -124,10 +124,10 @@
           "command": "$BROWSER http://localhost:3001"
         },
         "start": {
-          "command": "docker compose -f ../../docker-compose.yml up -d open-webui"
+          "command": "docker compose -f ../../infrastructure/docker/docker-compose.yml up -d open-webui"
         },
         "stop": {
-          "command": "docker compose -f ../../docker-compose.yml rm -sf open-webui"
+          "command": "docker compose -f ../../infrastructure/docker/docker-compose.yml rm -sf open-webui"
         }
       },
       "defaultConfiguration": "start",
@@ -147,10 +147,10 @@
           "command": "$BROWSER http://localhost:8889"
         },
         "start": {
-          "command": "docker compose -f ../../docker-compose.yml up -d searxng"
+          "command": "docker compose -f ../../infrastructure/docker/docker-compose.yml up -d searxng"
         },
         "stop": {
-          "command": "docker compose -f ../../docker-compose.yml rm -sf searxng"
+          "command": "docker compose -f ../../infrastructure/docker/docker-compose.yml rm -sf searxng"
         }
       },
       "defaultConfiguration": "start",
@@ -165,11 +165,11 @@
         "{projectRoot}/*.{md,yaml,yml,json}",
         "{projectRoot}/src/**/*.{py,ipynb,md,yaml,yml,json}",
         "{projectRoot}/testing/**/*.{py,md}",
-        "{workspaceRoot}/cspell.config.yaml",
+        "{workspaceRoot}/configuration/cspell.config.yaml",
         "sharedGlobals"
       ],
       "options": {
-        "command": "cspell 'src/**/*.{py,ipynb,md,yaml,yml,json}' 'testing/**/*.{py,md}' '*.{md,yaml,yml,json}' --no-progress",
+        "command": "cspell --config ../../configuration/cspell.config.yaml 'src/**/*.{py,ipynb,md,yaml,yml,json}' 'testing/**/*.{py,md}' '*.{md,yaml,yml,json}' --no-progress",
         "cwd": "applications/affirmations"
       }
     },

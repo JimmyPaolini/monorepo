@@ -23,7 +23,7 @@
 
 const args = process.argv.slice(2);
 const ciInfoJson = args[0];
-const pollCount = Number.parseInt(args[1], 10) || 0;
+const pollCount = parseInt(args[1], 10) || 0;
 const verbosity = args[2] || "medium";
 
 function getFlag(name) {
@@ -39,16 +39,10 @@ const waitMode = getFlag("--wait-mode");
 const prevCipeUrl = getArg("--prev-cipe-url");
 const expectedSha = getArg("--expected-sha");
 const prevStatus = getArg("--prev-status");
-const timeoutSeconds = Number.parseInt(getArg("--timeout") || "0", 10);
-const newCipeTimeoutSeconds = Number.parseInt(
-  getArg("--new-cipe-timeout") || "0",
-  10,
-);
-const envRerunCount = Number.parseInt(getArg("--env-rerun-count") || "0", 10);
-const inputNoProgressCount = Number.parseInt(
-  getArg("--no-progress-count") || "0",
-  10,
-);
+const timeoutSeconds = parseInt(getArg("--timeout") || "0", 10);
+const newCipeTimeoutSeconds = parseInt(getArg("--new-cipe-timeout") || "0", 10);
+const envRerunCount = parseInt(getArg("--env-rerun-count") || "0", 10);
+const inputNoProgressCount = parseInt(getArg("--no-progress-count") || "0", 10);
 const prevCipeStatus = getArg("--prev-cipe-status");
 const prevShStatus = getArg("--prev-sh-status");
 const prevVerificationStatus = getArg("--prev-verification-status");
@@ -204,7 +198,7 @@ function classify() {
   if (
     cipeStatus === "FAILED" &&
     failedTaskIds.length === 0 &&
-    selfHealingStatus === null
+    selfHealingStatus == null
   )
     return { action: "done", code: "cipe_no_tasks" };
 

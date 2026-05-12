@@ -24,7 +24,7 @@ jobs:
       - name: ⬆️ Upgrade Dependencies
         id: check
         run: |
-          nx run monorepo:dependency-lint:write
+          nx run monorepo:npm-check-updates:write
           if git diff --quiet; then
             echo "has_dependency_updates=false" >> $GITHUB_OUTPUT
           else

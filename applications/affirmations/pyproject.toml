@@ -42,7 +42,7 @@ reproducible = true
 
 [tool.ruff]
 # Extend base config from root pyproject.toml (mirrors tsconfig.base.json pattern)
-extend = "../../pyproject.toml"
+extend = "../../configuration/pyproject.toml"
 exclude = ["notebooks/**", ".vulture_whitelist.py"]
 extend-include = ["*.ipynb"]
 

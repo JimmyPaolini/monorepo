@@ -91,8 +91,8 @@ nx run affirmations:open-webui --configuration=stop
 
 ## Services
 
-| Service    | URL                      | Description                                                   |
-| ---------- | ------------------------ | ------------------------------------------------------------- |
-| Ollama     | `http://localhost:11434` | Local LLM server (`gemma4:e2b`)                               |
-| Open WebUI | `http://localhost:3001`  | Browser-based Ollama chat interface                           |
-| SearxNG    | `http://localhost:8889`  | Self-hosted metasearch engine (135+ engines)                  |
+| Service    | URL                      | Description                                  |
+| ---------- | ------------------------ | -------------------------------------------- |
+| Ollama     | `http://localhost:11434` | Local LLM server (`gemma4:e2b`)              |
+| Open WebUI | `http://localhost:3001`  | Browser-based Ollama chat interface          |
+| SearxNG    | `http://localhost:8889`  | Self-hosted metasearch engine (135+ engines) |

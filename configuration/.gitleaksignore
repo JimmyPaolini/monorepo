@@ -1,0 +1,7 @@
+# Gitleaks Fingerprint-Based False Positive Ignores
+# Add Gitleaks fingerprints for known false positives (one per line)
+# Generate fingerprints using: gitleaks git --verbose --config configuration/gitleaks.toml
+# Each fingerprint uniquely identifies a specific finding in a specific file at a specific commit
+#
+# Note: prefer path allowlists in gitleaks.toml over fingerprints where possible —
+# fingerprints are commit-specific and break when a file changes.

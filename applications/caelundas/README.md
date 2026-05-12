@@ -177,7 +177,7 @@ For in-depth architectural documentation, domain concepts, and development workf
 ### Pipeline Overview
 
 ```text
-Input Validation → Ephemeris Retrieval → Event Detection → Duration Synthesis → iCal Output
+Input Validation → Ephemeris Retrieval → Event Detection → Progressive Synthesis → iCal Output
      (Zod)            (NASA + Cache)      (Minute precision)   (Pair events)      (.ics)
 ```
 
@@ -195,13 +195,13 @@ See [AGENTS.md](AGENTS.md) for:
 
 **Caelundas** (Latin-inspired portmanteau):
 
-- *Caelum* (Latin): Sky, heavens
-- *Calendar* (English): System for organizing dates
+- _Caelum_ (Latin): Sky, heavens
+- _Calendar_ (English): System for organizing dates
 
 Alternative names considered:
 
 - **Caelendars**: Closer to "Calendars"
-- **Caelundae**: Latin feminine plural *-ae* ending
+- **Caelundae**: Latin feminine plural _-ae_ ending
 - **Caelunday**: Latin root + "day" suffix
 
 ## License

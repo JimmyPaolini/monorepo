@@ -16,20 +16,12 @@ cp .env.example .env  # Configure dates, location, timezone, event types
 nx run caelundas:develop
 ```
 
-### Deploy to Kubernetes
-
-```bash
-nx run caelundas:docker-build          # Build for linux/amd64
-nx run caelundas:helm-upgrade          # Deploy as K8s Job
-nx run caelundas:kubernetes-copy-files # Retrieve output after completion
-```
-
 ## Architecture Overview
 
 ### Pipeline Stages
 
 ```text
-Input (ENV) → Ephemeris → Event Detection → Duration Synthesis → iCal Output
+Input (ENV) → Ephemeris → Event Detection → Progressive Synthesis → iCal Output
      ↓          ↓              ↓                  ↓                 ↓
 Validation  NASA API      Exact moments      Pair events       .ics/.json
             + SQLite      (minute precision)  into periods
@@ -40,7 +32,7 @@ Validation  NASA API      Exact moments      Pair events       .ics/.json
 - **Input Validation** ([input.schema.ts](src/input.schema.ts)): Zod schema for environment variables
 - **Ephemeris Retrieval** ([ephemeris/](src/ephemeris/)): NASA JPL Horizons API with SQLite caching
 - **Event Detection** ([events/](src/events/)): Aspects, phases, eclipses, retrogrades
-- **Duration Synthesis**: Pairs start/end moments into calendar events
+- **Progressive Synthesis**: Pairs start/end moments into calendar events
 - **Output** ([output.utilities.ts](src/output.utilities.ts)): iCal and JSON formatters
 
 ### Event Types

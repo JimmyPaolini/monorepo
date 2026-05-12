@@ -24,7 +24,7 @@ import { fileURLToPath } from "node:url";
 import JSON5 from "json5";
 import _ from "lodash";
 
-import type { Scope, Type } from "../conventional.config.d.cts";
+import type { Scope, Type } from "../configuration/conventional.config.d.cts";
 
 // ════════════════════════════════════════════════════════════════════════════
 // RUNTIME ENVIRONMENT & CONSTANTS
@@ -36,7 +36,7 @@ const __dirname = path.dirname(__filename);
 const WORKSPACE_ROOT = path.join(__dirname, "..");
 const CONVENTIONAL_CONFIG = path.join(
   WORKSPACE_ROOT,
-  "conventional.config.cjs",
+  "configuration/conventional.config.cjs",
 );
 const SETTINGS_FILE = path.join(WORKSPACE_ROOT, ".vscode/settings.json");
 const SKILL_FILES = [

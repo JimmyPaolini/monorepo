@@ -4,13 +4,7 @@ argument-hint: "Just run the prompt — no arguments needed. I'll analyze the cu
 description: "Automatically submit changes through the full branch → commit → pull request pipeline by analyzing code changes and handling hooks intelligently."
 model: "Claude Haiku 4.5 (copilot)"
 name: "submit-changes"
-tools:
-  [
-    "execute",
-    "read",
-    "search",
-    "web",
-  ]
+tools: ["execute", "read", "search", "web"]
 ---
 
 # Submit Changes
@@ -41,7 +35,7 @@ These values drive the branch name, commit message, and PR title.
 
 ## Allowed Types & Scopes
 
-Synced from [conventional.config.cjs](../../conventional.config.cjs). Do not edit by hand.
+Synced from [conventional.config.cjs](../../configuration/conventional.config.cjs). Do not edit by hand.
 
 ### Types
 
@@ -107,9 +101,7 @@ Skip if already on a non-`main` branch.
 
 Skip if working tree is clean (`git status --porcelain` returns nothing).
 
-1. Check for staged changes: `git diff --cached --name-only`
-   - **If staged changes exist**: commit only staged changes
-   - **If no staged changes**: run `git add -A` to stage all, then commit
+1. `git add -A`
 2. Compose message: `<type>(<scope>): <gitmoji> <subject>` — single line, max 128 chars, no body/footer
 3. `git commit -m "<message>"`
 

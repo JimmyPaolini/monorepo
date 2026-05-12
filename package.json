@@ -4,18 +4,17 @@
   "version": "1.1.1",
   "author": "Jimmy Paolini",
   "devDependencies": {
-    "@biomejs/biome": "^2.4.4",
     "@commitlint/cli": "^20.4.2",
     "@commitlint/config-conventional": "^20.4.2",
     "@commitlint/types": "^20.4.0",
     "@eslint/js": "^9.39.3",
     "@eslint/markdown": "^7.5.1",
-    "@nx/eslint": "^22.6.3",
-    "@nx/eslint-plugin": "^22.6.3",
-    "@nx/js": "^22.6.3",
-    "@nx/react": "^22.6.3",
-    "@nx/vite": "^22.6.3",
-    "@nx/web": "^22.6.3",
+    "@nx/eslint": "^22.7.0",
+    "@nx/eslint-plugin": "^22.7.0",
+    "@nx/js": "^22.7.0",
+    "@nx/react": "^22.7.0",
+    "@nx/vite": "^22.7.0",
+    "@nx/web": "^22.7.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^13.0.1",
     "@semantic-release/git": "^10.0.1",
@@ -28,6 +27,7 @@
     "@types/lodash": "^4.17.23",
     "@types/node": "^22.19.1",
     "@typescript-eslint/parser": "^8.56.1",
+    "@vitest/coverage-v8": "^4.1.3",
     "@vitest/ui": "^4.1.3",
     "commitlint-plugin-gitmoji": "^2.2.6",
     "commitlint-plugin-tense": "^1.0.9",
@@ -54,7 +54,7 @@
     "lodash": "^4.17.23",
     "markdownlint-cli2": "^0.21.0",
     "npm-check-updates": "^19.5.0",
-    "nx": "^22.6.3",
+    "nx": "^22.7.0",
     "oxfmt": "^0.42.0",
     "oxlint": "^1.50.0",
     "prettier": "^3.8.1",
@@ -79,14 +79,15 @@
   },
   "keywords": [],
   "license": "MIT",
-  "packageManager": "pnpm@10.30.3",
+  "packageManager": "pnpm@10.33.2",
   "pnpm": {
     "auditConfig": {},
     "onlyBuiltDependencies": [
       "@swc/core",
       "esbuild",
       "nx",
-      "sqlite3"
+      "sqlite3",
+      "sweph"
     ],
     "overrides": {
       "axios@<1.15.0": ">=1.15.0",
@@ -117,11 +118,13 @@
       "vite@<=6.4.1": ">=6.4.2",
       "vite@>=7.0.0 <=7.3.1": ">=7.3.2",
       "vite@>=7.1.0 <=7.3.1": ">=7.3.2"
-    }
+    },
+    "ignoredBuiltDependencies": [],
+    "patchedDependencies": {}
   },
   "repository": "JimmyPaolini/monorepo.git",
   "scripts": {
-    "prepare": "husky",
+    "prepare": "husky configuration/.husky",
     "semantic-release": "semantic-release",
     "semantic-release:dry-run": "semantic-release --dry-run"
   },

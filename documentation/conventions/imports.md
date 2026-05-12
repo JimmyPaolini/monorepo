@@ -252,7 +252,7 @@ export interface User {
 **Detection**: Use Dependency Cruiser to detect circular dependencies:
 
 ```bash
-nx run monorepo:dependency-analysis
+nx run monorepo:dependency-cruiser
 ```
 
 ## Import Grouping Best Practices

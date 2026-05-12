@@ -9,7 +9,7 @@ The dev container eliminates "works on my machine" issues by standardizing:
 - **Node.js 22.20.0** - Matching `engines.node` in root `package.json`
 - **pnpm 10.20.0** - Matching `packageManager` in root `package.json`
 - **Supabase CLI** - For database migrations and type generation (lexico)
-- **kubectl & Helm** - For Kubernetes deployments (caelundas)
+- **kubectl & Helm** - For Kubernetes deployments
 - **Terraform** - For Linode LKE cluster provisioning
 - **GitHub CLI** - For repository operations
 - **Docker** - Docker-in-Docker (Codespaces) or Docker-outside-of-Docker (local machine) for running Supabase local stack
@@ -74,9 +74,11 @@ Two named configs live side-by-side, each edited directly. Common fields are kep
 To make changes:
 
 1. Edit `local/devcontainer.json` for common settings (extensions, ports, env, feature versions, etc.) and run:
+
    ```bash
    nx run monorepo:sync-devcontainer-configuration:write
    ```
+
 2. Edit `cloud/devcontainer.json` or `local/devcontainer.json` directly for environment-specific settings — no sync needed
 
 The pre-commit hook automatically validates that common fields are in sync whenever any devcontainer file is staged.

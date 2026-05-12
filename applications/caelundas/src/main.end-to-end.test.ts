@@ -2,10 +2,20 @@ import fs from "node:fs";
 import path from "node:path";
 
 import _ from "lodash";
+import moment from "moment-timezone";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
+
+import { CalendarService } from "./modules/calendar/calendar.service";
+
+import type { Environment } from "./modules/input/input.types";
+import type { ConfigService } from "@nestjs/config";
 
 // Mock environment for testing
 const TEST_OUTPUT_DIR = "./output/e2e-test";
+
+const calendarService = new CalendarService({
+  get: () => TEST_OUTPUT_DIR,
+} as unknown as ConfigService<Environment>);
 
 describe("calendar generation e2e", { timeout: 10_000 }, () => {
   // E2E tests may need more time
@@ -28,20 +38,21 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
   });
 
   describe("ICS file generation", () => {
-    it("should generate valid ICS file structure", async () => {
-      const { getCalendar } = await import("./calendar.utilities");
+    it("should generate valid ICS file structure", () => {
+      const getCalendar =
+        calendarService.buildFileContent.bind(calendarService);
 
       const events = [
         {
-          start: new Date("2025-03-20T09:06:00Z"),
-          end: new Date("2025-03-20T09:06:00Z"),
+          start: moment.utc("2025-03-20T09:06:00Z"),
+          end: moment.utc("2025-03-20T09:06:00Z"),
           summary: "☀️ → ♈ Sun ingress Aries",
           description: "Vernal Equinox - Sun enters Aries",
           categories: ["Astronomy", "Astrology", "Ingress", "Sun", "Aries"],
         },
         {
-          start: new Date("2025-03-29T10:58:00Z"),
-          end: new Date("2025-03-29T10:58:00Z"),
+          start: moment.utc("2025-03-29T10:58:00Z"),
+          end: moment.utc("2025-03-29T10:58:00Z"),
           summary: "🌕 Full Moon",
           description: "Full Moon in Libra",
           categories: ["Astronomy", "Lunar Phase", "Moon"],
@@ -91,13 +102,14 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
       expect(veventCount).toBe(2);
     });
 
-    it("should include timezone definitions", async () => {
-      const { getCalendar } = await import("./calendar.utilities");
+    it("should include timezone definitions", () => {
+      const getCalendar =
+        calendarService.buildFileContent.bind(calendarService);
 
       const events = [
         {
-          start: new Date("2025-06-21T12:00:00Z"),
-          end: new Date("2025-06-21T12:00:00Z"),
+          start: moment.utc("2025-06-21T12:00:00Z"),
+          end: moment.utc("2025-06-21T12:00:00Z"),
           summary: "Summer Solstice",
           description: "Summer Solstice",
           categories: ["Astronomy"],
@@ -107,6 +119,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
       const calendar = getCalendar({
         events,
         name: "Timezone Test",
+        description: "E2E timezone test calendar",
         timezone: "America/New_York",
       });
 
@@ -119,13 +132,14 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
       expect(calendar).toContain("END:STANDARD");
     });
 
-    it("should handle events with all optional fields", async () => {
-      const { getCalendar } = await import("./calendar.utilities");
+    it("should handle events with all optional fields", () => {
+      const getCalendar =
+        calendarService.buildFileContent.bind(calendarService);
 
       const events = [
         {
-          start: new Date("2025-04-08T18:00:00Z"),
-          end: new Date("2025-04-08T20:00:00Z"),
+          start: moment.utc("2025-04-08T18:00:00Z"),
+          end: moment.utc("2025-04-08T20:00:00Z"),
           summary: "Total Solar Eclipse",
           description: "Total Solar Eclipse visible from North America",
           categories: ["Astronomy", "Eclipse", "Solar"],
@@ -140,6 +154,8 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
       const calendar = getCalendar({
         events,
         name: "Eclipse Calendar",
+        description: "E2E optional fields test calendar",
+        timezone: "America/New_York",
       });
 
       expect(calendar).toContain("LOCATION:Dallas, Texas, USA");
@@ -152,7 +168,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
   describe("input validation e2e", () => {
     it("should validate and transform coordinates correctly", async () => {
-      const { inputSchema } = await import("./input.schema");
+      const { inputSchema } = await import("./modules/input/input.constants");
 
       const result = inputSchema.parse({
         latitude: "40.7128",
@@ -164,12 +180,12 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
       expect(result.latitude).toBe(40.7128);
       expect(result.longitude).toBe(-74.006);
       expect(result.timezone).toBe("America/New_York");
-      expect(result.start).toBeInstanceOf(Date);
-      expect(result.end).toBeInstanceOf(Date);
+      expect(moment.isMoment(result.start)).toBe(true);
+      expect(moment.isMoment(result.end)).toBe(true);
     });
 
     it("should infer correct timezone for different locations", async () => {
-      const { inputSchema } = await import("./input.schema");
+      const { inputSchema } = await import("./modules/input/input.constants");
 
       // Tokyo
       const tokyoResult = inputSchema.parse({
@@ -202,70 +218,82 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
   describe("event detection e2e", () => {
     it("should correctly identify zodiac signs from longitude", async () => {
-      // biome-ignore format: oxfmt is the primary formatter
-      const { getSign } =
-        await import("./events/ingresses/ingresses.utilities");
+      const { IngressesService } =
+        await import("./modules/events/ingresses/ingresses.service");
 
       // Test all 12 signs at their starting degrees
-      expect(getSign(0)).toBe("aries");
-      expect(getSign(30)).toBe("taurus");
-      expect(getSign(60)).toBe("gemini");
-      expect(getSign(90)).toBe("cancer");
-      expect(getSign(120)).toBe("leo");
-      expect(getSign(150)).toBe("virgo");
-      expect(getSign(180)).toBe("libra");
-      expect(getSign(210)).toBe("scorpio");
-      expect(getSign(240)).toBe("sagittarius");
-      expect(getSign(270)).toBe("capricorn");
-      expect(getSign(300)).toBe("aquarius");
-      expect(getSign(330)).toBe("pisces");
+      expect(IngressesService.getSign(0)).toBe("aries");
+      expect(IngressesService.getSign(30)).toBe("taurus");
+      expect(IngressesService.getSign(60)).toBe("gemini");
+      expect(IngressesService.getSign(90)).toBe("cancer");
+      expect(IngressesService.getSign(120)).toBe("leo");
+      expect(IngressesService.getSign(150)).toBe("virgo");
+      expect(IngressesService.getSign(180)).toBe("libra");
+      expect(IngressesService.getSign(210)).toBe("scorpio");
+      expect(IngressesService.getSign(240)).toBe("sagittarius");
+      expect(IngressesService.getSign(270)).toBe("capricorn");
+      expect(IngressesService.getSign(300)).toBe("aquarius");
+      expect(IngressesService.getSign(330)).toBe("pisces");
     });
 
     it("should correctly identify aspects from angular separation", async () => {
-      // biome-ignore format: oxfmt is the primary formatter
-      const { getMajorAspect } =
-        await import("./events/aspects/aspects.utilities");
+      const { MajorAspectsService } =
+        await import("./modules/events/aspects/major/majorAspects.service");
+      const { AspectsUtilities } =
+        await import("./modules/events/aspects/aspects.utilities");
+      const { EphemerisService } =
+        await import("./modules/ephemeris/ephemeris.service");
+      const { MathService } = await import("./modules/math/math.service");
+      const { ProgressiveUtilities } =
+        await import("./modules/progressive/progressive.utilities");
+      const mathService = new MathService();
+      const service = new MajorAspectsService(
+        new AspectsUtilities(mathService),
+        new EphemerisService(mathService),
+        new ProgressiveUtilities(),
+      );
 
       // Test exact aspects
-      expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 0 })).toBe(
-        "conjunct",
-      );
-      expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 60 })).toBe(
-        "sextile",
-      );
-      expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 90 })).toBe(
-        "square",
-      );
-      expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 120 })).toBe(
-        "trine",
-      );
-      expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 180 })).toBe(
-        "opposite",
-      );
+      expect(
+        service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 0 }),
+      ).toBe("conjunct");
+      expect(
+        service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 60 }),
+      ).toBe("sextile");
+      expect(
+        service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 90 }),
+      ).toBe("square");
+      expect(
+        service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 120 }),
+      ).toBe("trine");
+      expect(
+        service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 180 }),
+      ).toBe("opposite");
 
       // Test aspects with orb
-      expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 5 })).toBe(
-        "conjunct",
-      ); // 5° orb
-      expect(getMajorAspect({ longitudeBody1: 0, longitudeBody2: 175 })).toBe(
-        "opposite",
-      ); // 5° orb
+      expect(
+        service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 5 }),
+      ).toBe("conjunct"); // 5° orb
+      expect(
+        service.getMajorAspect({ longitudeBody1: 0, longitudeBody2: 175 }),
+      ).toBe("opposite"); // 5° orb
     });
 
-    it("should calculate duration event pairs correctly", async () => {
-      const { pairDurationEvents } = await import("./duration.utilities");
+    it("should calculate progressive event pairs correctly", async () => {
+      const { ProgressiveUtilities } =
+        await import("./modules/progressive/progressive.utilities");
 
       const beginnings = [
         {
-          start: new Date("2025-03-01T10:00:00Z"),
-          end: new Date("2025-03-01T10:00:00Z"),
+          start: moment.utc("2025-03-01T10:00:00Z"),
+          end: moment.utc("2025-03-01T10:00:00Z"),
           summary: "Forming 1",
           description: "First forming",
           categories: ["Test"],
         },
         {
-          start: new Date("2025-03-05T10:00:00Z"),
-          end: new Date("2025-03-05T10:00:00Z"),
+          start: moment.utc("2025-03-05T10:00:00Z"),
+          end: moment.utc("2025-03-05T10:00:00Z"),
           summary: "Forming 2",
           description: "Second forming",
           categories: ["Test"],
@@ -274,22 +302,26 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
       const endings = [
         {
-          start: new Date("2025-03-03T10:00:00Z"),
-          end: new Date("2025-03-03T10:00:00Z"),
+          start: moment.utc("2025-03-03T10:00:00Z"),
+          end: moment.utc("2025-03-03T10:00:00Z"),
           summary: "Dissolving 1",
           description: "First dissolving",
           categories: ["Test"],
         },
         {
-          start: new Date("2025-03-07T10:00:00Z"),
-          end: new Date("2025-03-07T10:00:00Z"),
+          start: moment.utc("2025-03-07T10:00:00Z"),
+          end: moment.utc("2025-03-07T10:00:00Z"),
           summary: "Dissolving 2",
           description: "Second dissolving",
           categories: ["Test"],
         },
       ];
 
-      const pairs = pairDurationEvents(beginnings, endings, "test");
+      const pairs = new ProgressiveUtilities().pairProgressiveEvents(
+        beginnings,
+        endings,
+        "test",
+      );
 
       expect(pairs.length).toBe(2);
       expect(pairs[0]?.[0]?.start.toISOString()).toBe(
@@ -309,7 +341,12 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
   describe("math utilities e2e", () => {
     it("should normalize degrees correctly across edge cases", async () => {
-      const { normalizeDegrees, getAngle } = await import("./math.utilities");
+      const { MathService } = await import("./modules/math/math.service");
+      const mathService = new MathService();
+      const normalizeDegrees = (d: number): number =>
+        mathService.normalizeDegrees(d);
+      const getAngle = (a: number, b: number): number =>
+        mathService.getAngle(a, b);
 
       // Edge case: wrapping at 360
       expect(normalizeDegrees(360)).toBe(0);
@@ -325,7 +362,10 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
     });
 
     it("should generate correct combinations", async () => {
-      const { getCombinations } = await import("./math.utilities");
+      const { MathService } = await import("./modules/math/math.service");
+      const mathService = new MathService();
+      const getCombinations = <T>(arr: T[], k: number): T[][] =>
+        mathService.getCombinations(arr, k);
 
       const planets = ["sun", "moon", "mercury", "venus", "mars"];
 

@@ -42,11 +42,11 @@ Read the nx docs if you have the tools for it.
 Before importing, identify whether the source is an **application** or a **library**:
 
 - **Applications**: Deployable end products. Common indicators:
-  - *Frontend*: `next.config.*`, `vite.config.*` with a build entry point, framework-specific app scaffolding (CRA, Angular CLI app, etc.)
-  - *Backend (Node.js)*: Express/Fastify/NestJS server entrypoint, no `"exports"` field in `package.json`
-  - *JVM*: Maven `pom.xml` with `<packaging>jar</packaging>` or `<packaging>war</packaging>` and a `main` class; Gradle `application` plugin or `mainClass` setting
-  - *.NET*: `.csproj`/`.fsproj` with `<OutputType>Exe</OutputType>` or `<OutputType>WinExe</OutputType>`
-  - *General*: Dockerfile, a runnable entrypoint, no public API surface intended for import by other projects
+  - _Frontend_: `next.config.*`, `vite.config.*` with a build entry point, framework-specific app scaffolding (CRA, Angular CLI app, etc.)
+  - _Backend (Node.js)_: Express/Fastify/NestJS server entrypoint, no `"exports"` field in `package.json`
+  - _JVM_: Maven `pom.xml` with `<packaging>jar</packaging>` or `<packaging>war</packaging>` and a `main` class; Gradle `application` plugin or `mainClass` setting
+  - _.NET_: `.csproj`/`.fsproj` with `<OutputType>Exe</OutputType>` or `<OutputType>WinExe</OutputType>`
+  - _General_: Dockerfile, a runnable entrypoint, no public API surface intended for import by other projects
 - **Libraries**: Reusable packages consumed by other projects. Common indicators: `"main"`/`"exports"` in `package.json`, Maven/Gradle packaging as a library jar, .NET `<OutputType>Library</OutputType>`, named exports intended for import by other packages.
 
 **Destination directory rules**:

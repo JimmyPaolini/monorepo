@@ -1,0 +1,13 @@
+import { Module } from "@nestjs/common";
+
+import { DatetimeService } from "./datetime.service";
+
+/**
+ * NestJS module providing datetime iteration utilities.
+ * Exports {@link DatetimeService} for generating minute-by-minute and day-by-day date sequences.
+ */
+@Module({
+  providers: [DatetimeService],
+  exports: [DatetimeService],
+})
+export class DatetimeModule {}

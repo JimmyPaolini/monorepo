@@ -1,7 +1,7 @@
 ---
 agent: "agent"
 description: "Create an implementation plan file for new features, fixes, or refactors."
-model: Claude Opus 4.6 (copilot)
+model: "Claude Sonnet 4.6 (copilot)"
 name: "create-plan"
 argument-hint: "Outline the outcome to achieve"
 tools:

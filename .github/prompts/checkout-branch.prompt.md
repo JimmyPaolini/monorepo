@@ -1,7 +1,7 @@
 ---
 agent: "agent"
 description: "Generate and create a valid git branch following this monorepo's branch naming conventions."
-model: Claude Haiku 4.5 (copilot)
+model: "Claude Haiku 4.5 (copilot)"
 name: "checkout-branch"
 tools: ["execute/runInTerminal", "read", "search", "web", "github/*"]
 ---

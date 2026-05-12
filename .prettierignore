@@ -1,60 +1,45 @@
-# NX project directories (formatted by their own format targets)
-applications/**
-packages/**
-tools/**
-
-# Dependencies
-node_modules
+# 📦 Dependencies
 **/node_modules
+.pnpm-store
+**/.venv
 
-# Build outputs
-dist
+# 🏗️ Build outputs
 **/dist
-build
 **/build
-.next
 **/.next
-out
 **/out
 
-# Nx cache
-.nx
+# 💾 Nx cache
 **/.nx
 
-# Coverage
-coverage
+# 🧪 Coverage
 **/coverage
 .nyc_output
 
 # Temporary files
-tmp
 **/tmp
 *.tmp
 *.log
 
-# Lock files
+# 🔒 Lock files
 pnpm-lock.yaml
 package-lock.json
 yarn.lock
 
-# Git
+# 🌳 Git
 .git
-
-# IDE
-.vscode
-.idea
 
 # Generated files
 *.min.js
 *.min.css
 **/routeTree.gen.ts
 
-# Markdown files (handled by markdown-lint with strict emphasis marker rules)
+# 🎨 Markdown files (handled by markdown-lint with strict emphasis marker rules)
 **/*.md
 **/*.mdx
 CHANGELOG.md
 
-# Compiled files
+# 🏭 Compiled files
 **/*.d.ts
 !**/*.d.ts.map
 
@@ -65,17 +50,19 @@ CHANGELOG.md
 # calendars/**/*.ics
 
 # Helm templates with Go templating syntax
-infrastructure/helm/**/templates/**
 **/helm/**/templates/**
 
 # Shadcn generated components
-packages/lexico-components/src/lib/utils
-packages/lexico-components/src/components/ui
-packages/lexico-components/src/lib
-packages/lexico-components/src/hooks
+**/lexico-components/src/lib/utils
+**/lexico-components/src/components/ui
+**/lexico-components/src/lib
+**/lexico-components/src/hooks
 
 # Code generator template files
-tools/code-generator/**/files/**
+**/code-generator/**/files/**
+
+# Output directories that are generated and should not be formatted
+**/affirmations/output
 
 # Terraform providers
 **/.terraform/**

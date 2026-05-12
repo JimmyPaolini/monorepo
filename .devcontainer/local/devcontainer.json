@@ -238,7 +238,10 @@
       "version": "latest"
     }
   },
-  "dockerComposeFile": ["../../docker-compose.yml", "docker-compose.yml"],
+  "dockerComposeFile": [
+    "../../infrastructure/docker/docker-compose.yml",
+    "docker-compose.yml"
+  ],
   "forwardPorts": [3000, 3001, 8889, 11434, 54321, 54322, 54323, 54324, 54325],
   "name": "Monorepo Devcontainer (Local)",
   "portsAttributes": {
