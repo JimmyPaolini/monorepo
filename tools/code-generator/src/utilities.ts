@@ -39,11 +39,11 @@ async function promptProjectSelection(args: {
     message,
     choices: projects.map((name): Choice => ({ title: name, value: name })),
   };
-  const response = await prompts(request);
+  const response: { project: string | undefined } = await prompts(request);
   if (!response.project) {
     throw new Error("No project selected");
   }
-  const project = response.project as string;
+  const project = response.project;
   return project;
 }
 
@@ -92,11 +92,11 @@ async function promptNameInput(args: { message: string }): Promise<string> {
     name: "name",
     message,
   };
-  const response = await prompts(request);
+  const response: { name: string | undefined } = await prompts(request);
   if (!response.name) {
     throw new Error("No name provided");
   }
-  const name = response.name as string;
+  const name = response.name;
   return name;
 }
 
