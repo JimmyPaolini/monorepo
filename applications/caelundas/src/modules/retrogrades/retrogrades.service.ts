@@ -1,13 +1,3 @@
-/**
- * Retrograde motion event detection for planetary stationary points.
- *
- * This module identifies when planets appear to reverse direction in the sky
- * (retrograde motion) or resume normal eastward motion (direct motion). Retrograde
- * occurs when Earth's orbital motion makes a planet appear to move backward relative
- * to background stars. Only planets Mercury through Pluto can go retrograde; Sun and
- * Moon never do.
- */
-
 import {
   MARGIN_MINUTES,
   symbolByBody,

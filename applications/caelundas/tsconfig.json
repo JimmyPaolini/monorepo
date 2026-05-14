@@ -17,6 +17,7 @@
   "exclude": ["dist", "node_modules", "output"],
   "extends": "../../configuration/tsconfig.base.json",
   "include": [
+    "conformance.integration.test.ts",
     "eslint.config.ts",
     "scripts/**/*.ts",
     "src/**/*.ts",

@@ -6,7 +6,7 @@ import { addProjectConfiguration } from "@nx/devkit";
 import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
 import { beforeEach, describe, expect, it } from "vitest";
 
-import { validateConformance } from "../../validators/conformance.js";
+import { validateConformance } from "../../validators/validator.js";
 
 import { generateNestjsServiceModule } from "./generator";
 
@@ -129,7 +129,12 @@ describe("generateNestjsServiceModule", () => {
         nameCamelCase: "calculator",
         namePascalCase: "Calculator",
       };
-      const result = validateConformance(serviceContent, templateContent, vars);
+      const result = validateConformance(
+        serviceContent,
+        templateContent,
+        vars,
+        "calculator.service.ts",
+      );
       expect(result.errors).toEqual([]);
       expect(result.valid).toBe(true);
     });

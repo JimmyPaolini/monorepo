@@ -1,12 +1,3 @@
-/**
- * Major aspect event detection for the five primary angular relationships.
- *
- * This module generates calendar events for major aspects between celestial bodies:
- * conjunction (0°), sextile (60°), square (90°), trine (120°), and opposition (180°).
- * Major aspects are the most significant angular relationships in astrology and use
- * an 8° orb tolerance for detection.
- */
-
 import {
   majorAspects,
   symbolByBody,

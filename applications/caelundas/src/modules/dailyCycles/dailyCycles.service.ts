@@ -1,12 +1,3 @@
-/**
- * Daily solar cycle event detection for Sun's daily motion.
- *
- * This module identifies the four key points in Sun's daily apparent motion across
- * the sky: sunrise (horizon crossing upward), solar zenith/noon (highest elevation),
- * sunset (horizon crossing downward), and solar nadir/midnight (lowest elevation).
- * Events are detected by analyzing Sun's altitude/elevation angle over time.
- */
-
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Injectable } from "@nestjs/common";

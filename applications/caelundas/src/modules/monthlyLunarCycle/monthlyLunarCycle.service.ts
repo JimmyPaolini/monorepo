@@ -1,12 +1,3 @@
-/**
- * Monthly lunar cycle event detection for Moon phases.
- *
- * This module identifies the four primary lunar phases as Moon orbits Earth:
- * New Moon (0% illumination), First Quarter (50% waxing), Full Moon (100%),
- * and Third Quarter (50% waning). Phases are detected by analyzing Moon's
- * illumination percentage from NASA JPL ephemeris data.
- */
-
 import {
   lunarPhases,
   MARGIN_MINUTES,

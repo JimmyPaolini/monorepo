@@ -1,24 +1,3 @@
-/**
- * Swiss Ephemeris computation service for caelundas.
- *
- * Drop-in replacement for ephemeris.service.ts that uses the local Swiss Ephemeris
- * native addon instead of NASA JPL Horizons HTTP API calls. Exports
- * identical function signatures and return types, eliminating network latency
- * and SQLite caching overhead.
- *
- * @remarks
- * Computation approach:
- * - Coordinate: swe_calc() → [longitude, latitude, distance] in geocentric ecliptic J2000.0
- * - Azimuth/Elevation: swe_azalt() with ecliptic-to-horizontal mode, apparent altitude (refracted)
- * - Illumination: swe_pheno_ut() → phase fraction × 100 (0-100 scale)
- * - Diameter: swe_pheno_ut() → apparent diameter in arcseconds ÷ 3600 → degrees
- * - Distance: swe_calc() → distance component in astronomical units
- * - Lunar nodes: true node / osculating apogee / nod_aps_ut() perigee computation
- *
- * @see {@link ./ephemeris.integration#} for initialization and SE body constants
- * @see {@link ./ephemeris.types#} for data structures
- */
-
 import {
   azimuthElevationBodies,
   bodies,

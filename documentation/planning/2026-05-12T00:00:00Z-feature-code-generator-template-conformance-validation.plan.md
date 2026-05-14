@@ -115,8 +115,8 @@ The validator checks that all structural lines from the template are still prese
 - **REQ-010**: Create a barrel export at `tools/code-generator/src/validators/index.ts` that re-exports all public functions from `template-conformance.ts`
 - **REQ-011**: Unit tests must live at `tools/code-generator/src/validators/template-conformance.unit.test.ts`
 - **REQ-012**: Update existing generator tests (`nestjs-service-module` and `react-component`) to use `validateConformance` for structural validation instead of raw `toContain` checks against individual emoji markers
-- **REQ-013**: Implement `validateGeneratedDirectory(dirPath: string, templateDirPath: string, varsFromName: (name: string) => Record<string, unknown>): { name: string; results: { file: string; valid: boolean; errors: string[] }[] }[]` — scans `dirPath` for immediate subdirectories (each representing one generated module), resolves template vars by calling `varsFromName(subdirName)`, and calls `validateConformanceFiles` for each template file in `templateDirPath` matched against the corresponding generated file in the subdirectory; returns one result entry per subdirectory
-- **REQ-014**: Export `validateGeneratedDirectory` from `tools/code-generator/src/validators/index.ts`
+- **REQ-013**: Implement `validateDirectoryConformance(dirPath: string, templateDirPath: string, varsFromName: (name: string) => Record<string, unknown>): { name: string; results: { file: string; valid: boolean; errors: string[] }[] }[]` — scans `dirPath` for immediate subdirectories (each representing one generated module), resolves template vars by calling `varsFromName(subdirName)`, and calls `validateConformanceFiles` for each template file in `templateDirPath` matched against the corresponding generated file in the subdirectory; returns one result entry per subdirectory
+- **REQ-014**: Export `validateDirectoryConformance` from `tools/code-generator/src/validators/index.ts`
 - **REQ-015**: Export the generator output directory segment as a named constant from each generator that writes to a fixed path — `nestjs-service-module` MUST export `MODULES_DIR_SEGMENT = 'src/modules'` from its `generator.ts` so downstream conformance tests reference it without duplicating the string
 
 - **SEC-001**: Templates are developer-authored files on disk — no user-controlled input is passed to EJS; no template injection risk
@@ -153,7 +153,7 @@ The validator checks that all structural lines from the template are still prese
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ---- |
 | TASK-001 | Add `ejs` (runtime) and `@types/ejs` (dev) to `tools/code-generator/package.json` via `pnpm add --filter code-generator ejs` and `pnpm add --filter code-generator -D @types/ejs`; run `pnpm install` to update the lockfile             | ✅ | 2026-05-13 |
 | TASK-002 | Create `tools/code-generator/src/validators/` directory and implement `template-conformance.ts` — see § Files for full API surface                                                                                                       | ✅ | 2026-05-13 |
-| TASK-003 | Create `tools/code-generator/src/validators/index.ts` barrel that re-exports `validateConformance`, `validateConformanceFiles`, `extractStructuralLines`, `extractEmojiMarkers`, and `validateGeneratedDirectory`                         | ✅ | 2026-05-13 |
+| TASK-003 | Create `tools/code-generator/src/validators/index.ts` barrel that re-exports `validateConformance`, `validateConformanceFiles`, `extractStructuralLines`, `extractEmojiMarkers`, and `validateDirectoryConformance`                         | ✅ | 2026-05-13 |
 
 ### Implementation Phase 2 — Validator Unit Tests
 
@@ -190,7 +190,7 @@ The validator checks that all structural lines from the template are still prese
 | Task     | Description                                                                                                                                                                                                                                                          | Completed | Date |
 | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- | ---- |
 | TASK-011 | Export `MODULES_DIR_SEGMENT = 'src/modules'` from `tools/code-generator/src/generators/nestjs-service-module/generator.ts`                                                                                                                                           | ✅ | 2026-05-13 |
-| TASK-012 | Create `applications/caelundas/src/modules/conformance.integration.test.ts` — imports `validateGeneratedDirectory` and `MODULES_DIR_SEGMENT`; calls `validateGeneratedDirectory(path.join(__dirname, '..'), NESTJS_TEMPLATES_DIR, (name) => ({ nameCamelCase: name, namePascalCase: _.upperFirst(name) }))` and asserts every result entry has `valid === true`; test file uses `import.meta.url` + `fileURLToPath` for `__dirname` equivalent in ESM | ✅ | 2026-05-13 |
+| TASK-012 | Create `applications/caelundas/src/modules/conformance.integration.test.ts` — imports `validateDirectoryConformance` and `MODULES_DIR_SEGMENT`; calls `validateDirectoryConformance(path.join(__dirname, '..'), NESTJS_TEMPLATES_DIR, (name) => ({ nameCamelCase: name, namePascalCase: _.upperFirst(name) }))` and asserts every result entry has `valid === true`; test file uses `import.meta.url` + `fileURLToPath` for `__dirname` equivalent in ESM | ✅ | 2026-05-13 |
 | TASK-013 | Run `nx run caelundas:test:integration` and confirm the new conformance test passes for all existing modules in `applications/caelundas/src/modules/`                                                                                                                        | ✅ | 2026-05-13 |
 
 ## 3. Alternatives
@@ -218,7 +218,7 @@ The validator checks that all structural lines from the template are still prese
 - **FILE-005**: `tools/code-generator/src/generators/nestjs-service-module/generator.unit.test.ts` — **modified** — replace per-marker `toContain` assertions with `validateConformance` calls for each generated file
 - **FILE-006**: `tools/code-generator/src/generators/react-component/generator.unit.test.ts` — **modified (if it exists)** — same migration as FILE-005
 - **FILE-007**: `tools/code-generator/src/generators/nestjs-service-module/generator.ts` — **modified** — export `MODULES_DIR_SEGMENT = 'src/modules'` as a named constant
-- **FILE-008**: `applications/caelundas/src/modules/conformance.integration.test.ts` — **new** — directory-level conformance test that calls `validateGeneratedDirectory` against the entire `src/modules/` directory and asserts all existing modules still conform to the `nestjs-service-module` templates
+- **FILE-008**: `applications/caelundas/src/modules/conformance.integration.test.ts` — **new** — directory-level conformance test that calls `validateDirectoryConformance` against the entire `src/modules/` directory and asserts all existing modules still conform to the `nestjs-service-module` templates
 
 ## 6. Testing
 
@@ -231,8 +231,8 @@ The validator checks that all structural lines from the template are still prese
 - **TEST-007**: **`extractStructuralLines` excludes empty lines** — call `extractStructuralLines` on a template with blank lines; assert the returned array contains no empty-string entries
 - **TEST-008**: **Conditional EJS block exclusion** — call `validateConformance` with a template containing `<% if (false) { -%>\n// 🚧 Conditional\n<% } -%>` and `vars = {}`; assert `valid === true` (conditionally excluded marker not required)
 - **TEST-009**: **`validateConformanceFiles` wrapper reads real fixture templates** — use a known template file from `tools/code-generator/src/generators/nestjs-service-module/templates/` and its rendered content as the file; assert `valid === true`
-- **TEST-010**: **`validateGeneratedDirectory` returns one result per subdirectory** — create a temporary directory with two subdirectories (`alpha/`, `beta/`), each containing a rendered template file; call `validateGeneratedDirectory` and assert the result array has exactly 2 entries with the correct `name` values
-- **TEST-011**: **Directory conformance test in `caelundas`** — `applications/caelundas/src/modules/conformance.integration.test.ts` calls `validateGeneratedDirectory` against `applications/caelundas/src/modules/` with the `nestjs-service-module` templates; asserts all discovered modules have `valid === true` and zero errors — this test fails automatically whenever a module's structure drifts from the template; runs under `nx run caelundas:test:integration` because it performs real `fs.readFileSync` I/O on committed source files
+- **TEST-010**: **`validateDirectoryConformance` returns one result per subdirectory** — create a temporary directory with two subdirectories (`alpha/`, `beta/`), each containing a rendered template file; call `validateDirectoryConformance` and assert the result array has exactly 2 entries with the correct `name` values
+- **TEST-011**: **Directory conformance test in `caelundas`** — `applications/caelundas/src/modules/conformance.integration.test.ts` calls `validateDirectoryConformance` against `applications/caelundas/src/modules/` with the `nestjs-service-module` templates; asserts all discovered modules have `valid === true` and zero errors — this test fails automatically whenever a module's structure drifts from the template; runs under `nx run caelundas:test:integration` because it performs real `fs.readFileSync` I/O on committed source files
 
 ## 7. Risks & Assumptions
 
@@ -245,7 +245,7 @@ The validator checks that all structural lines from the template are still prese
 - **ASSUMPTION-001**: Current generator templates (`nestjs-service-module`, `react-component`) contain no conditional EJS blocks (`<% if (...) { %>`) around structural lines — the conditional exclusion logic is implemented for correctness but is not exercised by current templates
 - **ASSUMPTION-002**: The `react-component` generator has an existing test file with emoji-marker `toContain` assertions (based on the pattern from `nestjs-service-module`); if it does not, TASK-007 is a no-op
 - **ASSUMPTION-003**: All template files use UTF-8 encoding with Unix line endings (`\n`); cross-platform CRLF differences are not a concern in this macOS/Linux environment
-- **ASSUMPTION-004**: Every immediate subdirectory of `applications/caelundas/src/modules/` is a generated module whose name equals the directory name in camelCase — there are no non-module subdirectories (e.g. `__mocks__`, `testing`) inside `src/modules/`; if such directories exist in future they must be excluded via an `ignore` option added to `validateGeneratedDirectory`
+- **ASSUMPTION-004**: Every immediate subdirectory of `applications/caelundas/src/modules/` is a generated module whose name equals the directory name in camelCase — there are no non-module subdirectories (e.g. `__mocks__`, `testing`) inside `src/modules/`; if such directories exist in future they must be excluded via an `ignore` option added to `validateDirectoryConformance`
 
 ## 8. Implementation Notes
 
