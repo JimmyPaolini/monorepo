@@ -29,11 +29,20 @@ import type { Moment } from "moment-timezone";
 @Injectable()
 export class RetrogradesService {
   private static readonly categories = ["Astronomy", "Astrology", "Direction"];
+  // 🏗️ Dependency Injection
   constructor(
     private readonly ephemerisService: EphemerisService,
     private readonly mathService: MathService,
     private readonly progressiveUtilitiesService: ProgressiveUtilities,
   ) {}
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Detects retrograde and direct station events at a specific time point.

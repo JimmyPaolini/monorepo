@@ -36,6 +36,7 @@ export class MinorAspectsService {
     AspectsUtilities["getIsAspect"]
   >;
 
+  // 🏗️ Dependency Injection
   constructor(
     private readonly aspectsUtilitiesService: AspectsUtilities,
     private readonly ephemerisService: EphemerisService,
@@ -45,6 +46,14 @@ export class MinorAspectsService {
       ...minorAspects,
     ]);
   }
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Returns the first minor aspect between two bodies, or `null` if none is within orb.

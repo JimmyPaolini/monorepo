@@ -27,6 +27,7 @@ export type { AspectBodies } from "./aspects.types";
  */
 @Injectable()
 export class AspectsService {
+  // 🏗️ Dependency Injection
   constructor(
     @Inject(MajorAspectsService)
     private readonly majorAspectsService: MajorAspectsService,
@@ -45,6 +46,14 @@ export class AspectsService {
     @Inject(TripleAspectsService)
     private readonly tripleAspectsService: TripleAspectsService,
   ) {}
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Detects all aspect events at a single minute, including 2-body and multi-body patterns.

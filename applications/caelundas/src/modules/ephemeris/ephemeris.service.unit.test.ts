@@ -76,7 +76,7 @@ vi.mock("sweph", () => ({
 // Accessor tests (pure logic, no mocks needed)
 // ---------------------------------------------------------------------------
 
-describe("ephemeris.service", () => {
+describe("EphemerisService", () => {
   function makeStart(): Moment {
     return moment.utc("2024-03-21T00:00:00.000Z");
   }
@@ -503,5 +503,9 @@ describe("ephemeris.service", () => {
         expect(val.latitude).toBe(0);
       }
     });
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
   });
 });

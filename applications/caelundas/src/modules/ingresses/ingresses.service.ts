@@ -89,7 +89,16 @@ export class IngressesService {
     return entry[0] as Sign;
   }
 
+  // 🏗️ Dependency Injection
   constructor(private readonly ephemerisService: EphemerisService) {}
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Detects zodiacal sign ingress events for celestial bodies.

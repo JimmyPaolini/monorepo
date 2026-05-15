@@ -62,6 +62,10 @@ describe("ProgressiveService", () => {
     vi.clearAllMocks();
   });
 
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
+
   describe("detect", () => {
     it("should return an empty array when all sub-services return nothing", () => {
       for (const subMock of [

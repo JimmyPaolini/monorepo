@@ -9,20 +9,14 @@ import { StringCase } from "../types";
 
 import { validateDepthFirstSearch } from "./abstract-syntax-tree";
 
-import type {
-  InstanceDirectoryValidationResult,
-  ValidateConformanceArgs,
-  ValidateInstanceDirectoryArgs,
-  ValidateInstanceFileArgs,
-  ValidateInstancesDirectoryArgs,
-} from "./types";
+import type { InstanceDirectoryValidationResult } from "./types";
 
 /**
  * Validates that a generated TypeScript file is a structural superset of its
  * EJS template by comparing their parsed ASTs node-by-node.
  *
- * The template is first rendered with `data` via EJS, then both the rendered
- * template and `instance` are parsed into TypeScript ASTs. A depth-first walk
+ * The template is first rendered with data via EJS, then both the rendered
+ * template and instance are parsed into TypeScript ASTs. A depth-first walk
  * checks that every node in the template exists somewhere in the instance at
  * the same depth (superset, not equality — the instance may contain extra nodes
  * not present in the template). Type annotations, decorator arguments, import
@@ -36,7 +30,12 @@ import type {
  * Use this function when `template` and `instance` are already in memory. For
  * file-system reads use {@link validateInstanceFile}.
  */
-export function validateConformance(args: ValidateConformanceArgs): {
+export function validateConformance(args: {
+  data: Record<string, unknown>;
+  filename: string;
+  instance: string;
+  template: string;
+}): {
   errors: string[];
 } {
   const { instance, template, data, filename } = args;
@@ -72,11 +71,15 @@ export function validateConformance(args: ValidateConformanceArgs): {
  * File-system variant of {@link validateConformance} that reads both the
  * generated instance file and the EJS template from disk before validating.
  *
- * If either path does not exist (`ENOENT`), returns `\{ errors: ["Missing file:
- * <path>"] \}` rather than throwing, so callers can treat a missing file as a
+ * If either path does not exist (`ENOENT`), returns \{ errors: ["Missing file:
+ * <path>"] \} rather than throwing, so callers can treat a missing file as a
  * conformance failure rather than a crash.
  */
-export function validateInstanceFile(args: ValidateInstanceFileArgs): {
+export function validateInstanceFile(args: {
+  instanceFilePath: string;
+  templateFilePath: string;
+  data: Record<string, unknown>;
+}): {
   errors: string[];
 } {
   const { instanceFilePath, templateFilePath, data } = args;
@@ -115,9 +118,10 @@ export function validateInstanceFile(args: ValidateInstanceFileArgs): {
  * @returns The instance directory's basename and one result entry per template
  * file, each carrying the resolved filename and any validation errors.
  */
-export function validateInstanceDirectory(
-  args: ValidateInstanceDirectoryArgs,
-): InstanceDirectoryValidationResult {
+export function validateInstanceDirectory(args: {
+  instanceDirectoryPath: string;
+  templateDirectoryPath: string;
+}): InstanceDirectoryValidationResult {
   const { instanceDirectoryPath, templateDirectoryPath } = args;
   const name = path.basename(instanceDirectoryPath);
 
@@ -166,9 +170,10 @@ export function validateInstanceDirectory(
  *
  * @returns One result entry per instance subdirectory, in filesystem order.
  */
-export function validateInstancesDirectory(
-  args: ValidateInstancesDirectoryArgs,
-): InstanceDirectoryValidationResult[] {
+export function validateInstancesDirectory(args: {
+  instancesDirectoryPath: string;
+  templateDirectoryPath: string;
+}): InstanceDirectoryValidationResult[] {
   const { instancesDirectoryPath, templateDirectoryPath } = args;
   return fs
     .readdirSync(instancesDirectoryPath, { withFileTypes: true })

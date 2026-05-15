@@ -27,6 +27,17 @@ import type { Moment } from "moment-timezone";
  */
 @Injectable()
 export class TripleAspectsService {
+  // 🏗️ Dependency Injection
+  constructor() {}
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
+
   /**
    * Composes T-Square patterns from stored 2-body aspects.
    *

@@ -1,3 +1,5 @@
+// 🏷️ Types
+
 /**
  * Reference frame for eclipse visibility reporting.
  * - `geocentric`: Eclipse as seen from Earth's centre (always occurs when geometry aligns)

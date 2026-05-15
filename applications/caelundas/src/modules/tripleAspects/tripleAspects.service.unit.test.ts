@@ -837,4 +837,8 @@ describe("TripleAspectsService", () => {
       ).toBe(true);
     });
   });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
 });

@@ -39,7 +39,7 @@ interface ServicePrivate {
   }) => boolean;
 }
 
-describe("monthlyLunarCycle.events", () => {
+describe("MonthlyLunarCycleService", () => {
   let service: MonthlyLunarCycleService;
   let s: ServicePrivate;
 
@@ -617,4 +617,8 @@ describe("monthlyLunarCycle.events", () => {
       });
     });
   }); // private utility methods
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
 });

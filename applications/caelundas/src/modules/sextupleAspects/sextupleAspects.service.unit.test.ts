@@ -8,7 +8,7 @@ import { SextupleAspectsService } from "./sextupleAspects.service";
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
-describe("sextupleAspects.events", () => {
+describe("SextupleAspectsService", () => {
   let service: SextupleAspectsService;
 
   beforeAll(async () => {
@@ -572,5 +572,9 @@ describe("sextupleAspects.events", () => {
       expect(progressiveEvents[1]?.categories).toContain("Neptune");
       expect(progressiveEvents[1]?.categories).toContain("Uranus");
     });
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
   });
 });

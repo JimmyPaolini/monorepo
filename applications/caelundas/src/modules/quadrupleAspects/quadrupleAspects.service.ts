@@ -104,6 +104,17 @@ function determineCompoundPhaseFromSnapshots(
  */
 @Injectable()
 export class QuadrupleAspectsService {
+  // 🏗️ Dependency Injection
+  constructor() {}
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
+
   /**
    * Composes Grand Cross patterns from stored 2-body aspects.
    *

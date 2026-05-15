@@ -37,6 +37,10 @@ describe("DailyCyclesService", () => {
     s = service as unknown as ServicePrivate;
   });
 
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
+
   describe("dailySolarCycle.events", () => {
     describe("service.detect", () => {
       it("should detect sunrise event when sun rises above horizon", () => {

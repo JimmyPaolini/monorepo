@@ -79,6 +79,10 @@ describe("PerfectiveService", () => {
     vi.clearAllMocks();
   });
 
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
+
   describe("detect", () => {
     it("should return an empty array when no dates are generated", () => {
       datetimeMock.generateDates.mockReturnValue([]);

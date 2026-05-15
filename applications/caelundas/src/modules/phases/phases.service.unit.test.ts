@@ -39,7 +39,7 @@ interface ServicePrivate {
   isBrightest: (args: object) => boolean;
 }
 
-describe("phases.events", () => {
+describe("PhasesService", () => {
   let service: PhasesService;
   let s: ServicePrivate;
 
@@ -1311,4 +1311,8 @@ describe("phases.events", () => {
       });
     });
   }); // private utility methods
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
 });

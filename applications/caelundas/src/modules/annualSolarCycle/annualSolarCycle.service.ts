@@ -32,11 +32,20 @@ export class AnnualSolarCycleService {
     "Annual Solar Cycle",
     "Solar",
   ];
+  // 🏗️ Dependency Injection
   constructor(
     private readonly ephemerisService: EphemerisService,
     private readonly mathService: MathService,
     private readonly progressiveUtilitiesService: ProgressiveUtilities,
   ) {}
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Detects annual solar cycle events at a specific minute.

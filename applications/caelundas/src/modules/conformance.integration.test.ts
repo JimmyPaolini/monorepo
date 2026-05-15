@@ -11,7 +11,7 @@ import {
 import { describe, expect, it } from "vitest";
 
 describe(`"nestjs-service-module" generator template conformance`, () => {
-  it(`validates directory "${MODULES_DIRECTORY}"`, () => {
+  it(`validates generated instances directory "${MODULES_DIRECTORY}"`, () => {
     const results = validateInstancesDirectory({
       instancesDirectoryPath: fileURLToPath(new URL(".", import.meta.url)),
       templateDirectoryPath: TEMPLATES_DIRECTORY_PATH,
@@ -19,9 +19,6 @@ describe(`"nestjs-service-module" generator template conformance`, () => {
     expect(results.length).toBeGreaterThan(0);
 
     const errors = collectConformanceErrors(results);
-    expect(
-      errors,
-      `"nestjs-service-module" generator template conformance validation errors:\n${errors}`,
-    ).toBeNull();
+    expect(errors).toBeNull();
   });
 });

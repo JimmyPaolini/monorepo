@@ -18,7 +18,7 @@ vi.mock("fs", () => ({
   },
 }));
 
-describe("retrogrades.events", () => {
+describe("RetrogradesService", () => {
   let service: RetrogradesService;
   let s: ServicePrivate;
 
@@ -467,5 +467,9 @@ describe("retrogrades.events", () => {
 
       expect(result).toBe(false);
     });
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
   });
 });

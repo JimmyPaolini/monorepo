@@ -1,3 +1,5 @@
+// 🏷️ Types
+
 import type { Aspect, Body } from "@caelundas/src/caelundas.types";
 
 /**

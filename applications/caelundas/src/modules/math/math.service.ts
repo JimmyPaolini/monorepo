@@ -14,13 +14,16 @@ import type { Longitude } from "@caelundas/src/modules/ephemeris/ephemeris.types
  */
 @Injectable()
 export class MathService {
-  constructor() {
-    // 🏗️ Dependency Injection
-  }
+  // 🏗️ Dependency Injection
+  constructor() {}
 
   // 🔐 Private Fields
 
   // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Number of arcseconds in one arcminute (60).

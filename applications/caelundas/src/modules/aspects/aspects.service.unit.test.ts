@@ -1,7 +1,8 @@
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it } from "vitest";
 
-import { computeAspectBodies } from "./aspects.service";
+import { AspectsService, computeAspectBodies } from "./aspects.service";
 
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
@@ -181,5 +182,23 @@ describe("computeAspectBodies", () => {
     ]);
 
     expect(afterForming).toHaveLength(1);
+  });
+});
+
+describe("AspectsService", () => {
+  let service: AspectsService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [AspectsService],
+    })
+      .useMocker(() => ({}))
+      .compile();
+
+    service = module.get(AspectsService);
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
   });
 });

@@ -42,7 +42,7 @@ interface ServicePrivate {
   isLunarEclipseActive: (args: EclipseArgs) => boolean;
 }
 
-describe("eclipses.events", () => {
+describe("EclipsesService", () => {
   let service: EclipsesService;
   let s: ServicePrivate;
 
@@ -672,5 +672,9 @@ describe("eclipses.events", () => {
         expect(active).toBe(false);
       });
     });
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
   });
 });

@@ -64,7 +64,16 @@ function determineCompoundPhaseFromSnapshots(
  */
 @Injectable()
 export class SextupleAspectsService {
+  // 🏗️ Dependency Injection
   constructor(private readonly mathService: MathService) {}
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Checks if 6 bodies form a valid hexagram (Star of David) pattern.

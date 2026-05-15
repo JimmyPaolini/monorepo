@@ -245,4 +245,8 @@ describe("CalendarService", () => {
       expect(calendar).toContain("TZNAME:EST");
     });
   });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
 });

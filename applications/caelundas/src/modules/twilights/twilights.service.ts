@@ -34,10 +34,19 @@ export class TwilightsService {
   };
   private static readonly categories = ["Astronomy", "Astrology", "Twilight"];
 
+  // 🏗️ Dependency Injection
   constructor(
     private readonly ephemerisService: EphemerisService,
     private readonly progressiveUtilitiesService: ProgressiveUtilities,
   ) {}
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Detects twilight transition events at a specific minute.

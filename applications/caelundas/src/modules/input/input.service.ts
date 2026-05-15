@@ -14,10 +14,8 @@ import type { Environment, Input } from "./input.types";
  */
 @Injectable()
 export class InputService {
-  constructor(
-    // 🏗️ Dependency Injection
-    private readonly configService: ConfigService<Environment>,
-  ) {}
+  // 🏗️ Dependency Injection
+  constructor(private readonly configService: ConfigService<Environment>) {}
 
   // 🔐 Private Fields
 

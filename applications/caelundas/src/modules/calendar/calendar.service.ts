@@ -22,16 +22,16 @@ import type {
  */
 @Injectable()
 export class CalendarService {
-  constructor(
-    // 🏗️ Dependency Injection
-    private readonly configService: ConfigService<Environment>,
-  ) {}
+  // 🏗️ Dependency Injection
+  constructor(private readonly configService: ConfigService<Environment>) {}
 
   // 🔐 Private Fields
 
   // 🔑 Public Fields
 
   // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Generates VTIMEZONE definition for iCalendar timezone support.
@@ -69,8 +69,6 @@ END:VTIMEZONE`;
 TZID:${timezone}
 END:VTIMEZONE`;
   }
-
-  // 🌎 Public Methods
 
   /**
    * Serializes calendar events to an ICS file and writes it to the output directory.

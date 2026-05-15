@@ -23,11 +23,20 @@ const categories = ["Astronomy", "Astrology", "Eclipse"];
  */
 @Injectable()
 export class EclipsesService {
+  // 🏗️ Dependency Injection
   constructor(
     private readonly ephemerisService: EphemerisService,
     private readonly mathService: MathService,
     private readonly progressiveUtilitiesService: ProgressiveUtilities,
   ) {}
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   private formatTimeZoneIso(date: Moment, timezone: string): string {
     return date.clone().tz(timezone).toISOString(true);

@@ -38,7 +38,7 @@ vi.mock("fs", () => ({
   },
 }));
 
-describe("annualSolarCycle.events", () => {
+describe("AnnualSolarCycleService", () => {
   let service: AnnualSolarCycleService;
 
   beforeAll(async () => {
@@ -580,6 +580,10 @@ describe("annualSolarCycle.events", () => {
 
       expect(progressiveEvents).toHaveLength(0);
     });
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
   });
 });
 

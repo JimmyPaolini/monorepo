@@ -37,6 +37,10 @@ describe("MajorAspectsService", () => {
     aspectsUtilitiesService = module.get(AspectsUtilities);
   });
 
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
+
   describe("majorAspects.events", () => {
     describe("service.detect", () => {
       const createEphemeris = (

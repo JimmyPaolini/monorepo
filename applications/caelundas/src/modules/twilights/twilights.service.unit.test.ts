@@ -55,7 +55,7 @@ interface ServicePrivate {
   }) => boolean;
 }
 
-describe("twilights.events", () => {
+describe("TwilightsService", () => {
   let service: TwilightsService;
   let s: ServicePrivate;
 
@@ -677,4 +677,8 @@ describe("twilights.events", () => {
       });
     });
   }); // private utility methods
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
 });

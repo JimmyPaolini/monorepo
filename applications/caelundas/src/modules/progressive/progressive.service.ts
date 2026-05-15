@@ -19,8 +19,8 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
  */
 @Injectable()
 export class ProgressiveService {
+  // 🏗️ Dependency Injection
   constructor(
-    // 🏗️ Dependency Injection
     private readonly annualSolarCycleService: AnnualSolarCycleService,
     private readonly aspectsService: AspectsService,
     private readonly eclipsesService: EclipsesService,

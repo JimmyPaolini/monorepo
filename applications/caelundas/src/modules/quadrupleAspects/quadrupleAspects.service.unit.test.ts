@@ -22,6 +22,10 @@ describe("QuadrupleAspectsService", () => {
     service = module.get(QuadrupleAspectsService);
   });
 
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
+
   describe("quadrupleAspects.events", () => {
     describe("service.detect", () => {
       describe("Grand Cross composition", () => {

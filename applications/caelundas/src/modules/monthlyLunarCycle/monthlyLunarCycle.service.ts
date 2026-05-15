@@ -54,7 +54,16 @@ export class MonthlyLunarCycleService {
     "waning crescent",
   ]);
 
+  // 🏗️ Dependency Injection
   constructor(private readonly ephemerisService: EphemerisService) {}
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Detects lunar phase events at a specific time point.

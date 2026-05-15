@@ -28,10 +28,19 @@ export class DailyCyclesService {
     "Lunar",
   ];
 
+  // 🏗️ Dependency Injection
   constructor(
     private readonly ephemerisService: EphemerisService,
     private readonly mathService: MathService,
   ) {}
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Detects daily solar cycle events at a specific time point.

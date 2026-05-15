@@ -51,16 +51,16 @@ initializeSwissEphemeris();
  */
 @Injectable()
 export class EphemerisService {
-  constructor(
-    // 🏗️ Dependency Injection
-    private readonly mathService: MathService,
-  ) {}
+  // 🏗️ Dependency Injection
+  constructor(private readonly mathService: MathService) {}
 
   // 🔐 Private Fields
 
   // 🔑 Public Fields
 
   // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   private isNode(body: string): body is Node {
     return nodes.includes(body as Node);

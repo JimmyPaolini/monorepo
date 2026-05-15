@@ -36,6 +36,7 @@ export class SpecialtyAspectsService {
     AspectsUtilities["getIsAspect"]
   >;
 
+  // 🏗️ Dependency Injection
   constructor(
     private readonly aspectsUtilitiesService: AspectsUtilities,
     private readonly ephemerisService: EphemerisService,
@@ -45,6 +46,14 @@ export class SpecialtyAspectsService {
       ...specialtyAspects,
     ]);
   }
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Returns the first specialty aspect between two bodies, or `null` if none is within orb.

@@ -7,7 +7,7 @@ import { StelliumService } from "./stellium.service";
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
-describe("stellium.events", () => {
+describe("StelliumService", () => {
   let service: StelliumService;
 
   beforeAll(async () => {
@@ -631,5 +631,9 @@ describe("stellium.events", () => {
       expect(progressiveEvents[0]?.categories).toContain("4 Body");
       expect(progressiveEvents[1]?.categories).toContain("5 Body");
     });
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
   });
 });

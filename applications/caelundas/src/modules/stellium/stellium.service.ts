@@ -71,6 +71,17 @@ function determineCompoundPhaseFromSnapshots(
  */
 @Injectable()
 export class StelliumService {
+  // 🏗️ Dependency Injection
+  constructor() {}
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
+
   /**
    * Composes Stellium patterns from stored 2-body aspects.
    *

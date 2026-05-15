@@ -64,7 +64,16 @@ function determineCompoundPhaseFromSnapshots(
  */
 @Injectable()
 export class QuintupleAspectsService {
+  // 🏗️ Dependency Injection
   constructor(private readonly mathService: MathService) {}
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Checks if 5 bodies form a valid pentagram pattern (5-pointed star).

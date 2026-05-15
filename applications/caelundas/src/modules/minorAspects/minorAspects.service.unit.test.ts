@@ -35,6 +35,10 @@ describe("MinorAspectsService", () => {
     service = module.get(MinorAspectsService);
   });
 
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
+
   describe("minorAspects.events", () => {
     describe("service.detect", () => {
       const createEphemeris = (

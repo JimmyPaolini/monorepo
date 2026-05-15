@@ -35,7 +35,7 @@ interface ServicePrivate {
     currentLongitude: number;
   }) => boolean;
 }
-describe("ingresses.events", () => {
+describe("IngressesService", () => {
   let service: IngressesService;
   let s: ServicePrivate;
 
@@ -556,5 +556,9 @@ describe("ingresses.events", () => {
         ).toBe(false);
       });
     });
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
   });
 });
