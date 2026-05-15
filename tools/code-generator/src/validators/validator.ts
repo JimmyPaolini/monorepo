@@ -2,429 +2,206 @@ import fs from "node:fs";
 import path from "node:path";
 
 import ejs from "ejs";
-import ts, {
-  type ClassDeclaration,
-  type ConstructorDeclaration,
-  type Decorator,
-  forEachChild,
-  type HasDecorators,
-  type Identifier,
-  type ImportDeclaration,
-  isCallExpression,
-  isClassDeclaration,
-  isConstructorDeclaration,
-  isDecorator,
-  isIdentifier,
-  isImportDeclaration,
-  isMethodDeclaration,
-  isNamedImports,
-  isObjectLiteralExpression,
-  isPropertyAssignment,
-  ScriptKind,
-  ScriptTarget,
-  type SourceFile,
-  type StringLiteral,
-  SyntaxKind,
-} from "typescript";
+import { createSourceFile, ScriptKind, ScriptTarget } from "typescript";
 
-// ─── AST helpers ─────────────────────────────────────────────────────────────
+import { converterByStringCase } from "../constants";
+import { StringCase } from "../types";
 
-function createSourceFile(sourceText: string, fileName: string): SourceFile {
-  return ts.createSourceFile(
-    fileName,
-    sourceText,
+import { validateDepthFirstSearch } from "./abstract-syntax-tree";
+
+import type {
+  InstanceDirectoryValidationResult,
+  ValidateConformanceArgs,
+  ValidateInstanceDirectoryArgs,
+  ValidateInstanceFileArgs,
+  ValidateInstancesDirectoryArgs,
+} from "./types";
+
+/**
+ * Validates that a generated TypeScript file is a structural superset of its
+ * EJS template by comparing their parsed ASTs node-by-node.
+ *
+ * The template is first rendered with `data` via EJS, then both the rendered
+ * template and `instance` are parsed into TypeScript ASTs. A depth-first walk
+ * checks that every node in the template exists somewhere in the instance at
+ * the same depth (superset, not equality — the instance may contain extra nodes
+ * not present in the template). Type annotations, decorator arguments, import
+ * specifiers, and named declarations are all checked; empty method bodies and
+ * array literals are not (recursion stops where the template has no children).
+ *
+ * Comments are validated in template order via the TypeScript trivia API. TODO
+ * comments match loosely (any `// ... TODO ...` line); all others must match
+ * exactly.
+ *
+ * Use this function when `template` and `instance` are already in memory. For
+ * file-system reads use {@link validateInstanceFile}.
+ */
+export function validateConformance(args: ValidateConformanceArgs): {
+  errors: string[];
+} {
+  const { instance, template, data, filename } = args;
+
+  const scriptKind = filename.endsWith(".tsx") ? ScriptKind.TSX : ScriptKind.TS;
+  const templateFile = createSourceFile(
+    filename,
+    ejs.render(template, data),
     ScriptTarget.Latest,
     true,
-    fileName.endsWith(".tsx") ? ScriptKind.TSX : ScriptKind.TS,
+    scriptKind,
   );
-}
-
-function getDecorators(node: HasDecorators): readonly Decorator[] {
-  return node.modifiers?.filter((modifier) => isDecorator(modifier)) ?? [];
-}
-
-function getDecoratorName(decorator: Decorator): string | undefined {
-  const expression = decorator.expression;
-  if (isIdentifier(expression)) return expression.text;
-  if (isCallExpression(expression) && isIdentifier(expression.expression))
-    return expression.expression.text;
-  return undefined;
-}
-
-function getNamedImports(node: ImportDeclaration): string[] {
-  const { namedBindings } = node.importClause ?? {};
-  if (!namedBindings || !isNamedImports(namedBindings)) return [];
-  return namedBindings.elements.map((element) => element.name.text);
-}
-
-function isEmptyConstructor(node: ConstructorDeclaration): boolean {
-  return (
-    node.parameters.length === 0 &&
-    (node.body === undefined || node.body.statements.length === 0)
+  const instanceFile = createSourceFile(
+    filename,
+    instance,
+    ScriptTarget.Latest,
+    true,
+    scriptKind,
   );
-}
 
-function extractLineComments(
-  sourceText: string,
-  start: number,
-  end: number,
-): string[] {
-  const slice = sourceText.slice(start, end);
-  const results: string[] = [];
-  const regex = /\/\/[^\n]*/g;
-  let match: RegExpExecArray | null;
-  while ((match = regex.exec(slice)) !== null) {
-    results.push(match[0].trim());
-  }
-  return results;
-}
-
-// ─── Structural subset check ──────────────────────────────────────────────────
-
-/**
- * Checks that every top-level import and class declaration in `templateFile`
- * is structurally present in `fileFile`, allowing the file to have additional
- * declarations. Array contents in decorator arguments are not checked — only
- * property key presence — so developer additions (e.g. `controllers: [Foo]`)
- * do not cause failures.
- *
- * Also collects comment texts found inside empty constructors in the template
- * so they can be excluded from string-based section-marker checks.
- *
- * @param templateFile - Parsed rendered template.
- * @param templateSource - Raw source of the rendered template, used for
- *   comment extraction within constructor ranges.
- * @param fileFile - Parsed generated file.
- * @returns Validation errors and comments to exclude from string checks.
- */
-function checkSubset(
-  templateFile: SourceFile,
-  templateSource: string,
-  fileFile: SourceFile,
-): { errors: string[]; excludedComments: Set<string> } {
   const errors: string[] = [];
-  const excludedComments = new Set<string>();
-
-  const fileImports: ImportDeclaration[] = [];
-  const fileClasses = new Map<string, ClassDeclaration>();
-  forEachChild(fileFile, (node) => {
-    if (isImportDeclaration(node)) fileImports.push(node);
-    else if (isClassDeclaration(node) && node.name)
-      fileClasses.set(node.name.text, node);
+  validateDepthFirstSearch({
+    templateNode: templateFile,
+    instanceNode: instanceFile,
+    errors,
+    instanceFile,
   });
 
-  forEachChild(templateFile, (node) => {
-    if (isImportDeclaration(node)) {
-      const specifier = (node.moduleSpecifier as StringLiteral).text;
-      const fileImport = fileImports.find(
-        (fileImport) =>
-          (fileImport.moduleSpecifier as StringLiteral).text === specifier,
-      );
-      if (!fileImport) {
-        errors.push(`Missing import from "${specifier}"`);
-        return;
-      }
-      for (const name of getNamedImports(node)) {
-        if (!getNamedImports(fileImport).includes(name)) {
-          errors.push(`Missing named import "${name}" from "${specifier}"`);
-        }
-      }
-      const templateDefault = node.importClause?.name?.text;
-      if (
-        templateDefault !== undefined &&
-        fileImport.importClause?.name?.text !== templateDefault
-      ) {
-        errors.push(
-          `Missing default import "${templateDefault}" from "${specifier}"`,
-        );
-      }
-    } else if (isClassDeclaration(node) && node.name) {
-      const className = node.name.text;
-      const fileClass = fileClasses.get(className);
-      if (!fileClass) {
-        errors.push(`Missing class "${className}"`);
-        return;
-      }
-
-      const fileDecoratorNames = new Set(
-        getDecorators(fileClass)
-          .map((decorator) => getDecoratorName(decorator))
-          .filter((name): name is string => name !== undefined),
-      );
-
-      for (const decorator of getDecorators(node)) {
-        const decoratorName = getDecoratorName(decorator);
-        if (!decoratorName) continue;
-
-        if (!fileDecoratorNames.has(decoratorName)) {
-          errors.push(
-            `Missing decorator "@${decoratorName}" on class "${className}"`,
-          );
-          continue;
-        }
-
-        if (
-          !isCallExpression(decorator.expression) ||
-          decorator.expression.arguments.length === 0
-        )
-          continue;
-
-        const templateArg = decorator.expression.arguments[0];
-        if (!templateArg || !isObjectLiteralExpression(templateArg)) continue;
-
-        const fileDecorator = getDecorators(fileClass).find(
-          (d) => getDecoratorName(d) === decoratorName,
-        );
-        const fileArgExpr =
-          fileDecorator &&
-          isCallExpression(fileDecorator.expression) &&
-          fileDecorator.expression.arguments[0];
-        if (!fileArgExpr || !isObjectLiteralExpression(fileArgExpr)) {
-          errors.push(
-            `Missing "@${decoratorName}" decorator argument on class "${className}"`,
-          );
-          continue;
-        }
-
-        const fileKeys = new Set(
-          fileArgExpr.properties
-            .filter((property) => isPropertyAssignment(property))
-            .filter((property) => isIdentifier(property.name))
-            .map((property) => (property.name as Identifier).text),
-        );
-
-        for (const property of templateArg.properties) {
-          if (!isPropertyAssignment(property) || !isIdentifier(property.name))
-            continue;
-          if (!fileKeys.has(property.name.text)) {
-            errors.push(
-              `Missing property "${property.name.text}" in "@${decoratorName}" decorator on class "${className}"`,
-            );
-          }
-        }
-      }
-
-      for (const member of node.members) {
-        if (isConstructorDeclaration(member)) {
-          if (isEmptyConstructor(member)) {
-            for (const comment of extractLineComments(
-              templateSource,
-              member.pos,
-              member.end,
-            )) {
-              excludedComments.add(comment);
-            }
-          } else if (
-            !fileClass.members.some((member) =>
-              isConstructorDeclaration(member),
-            )
-          ) {
-            errors.push(`Missing constructor in class "${className}"`);
-          }
-        } else if (isMethodDeclaration(member) && isIdentifier(member.name)) {
-          const methodName = member.name.text;
-          const isStatic =
-            member.modifiers?.some(
-              (modifier) => modifier.kind === SyntaxKind.StaticKeyword,
-            ) ?? false;
-          const isPrivate =
-            member.modifiers?.some(
-              (modifier) => modifier.kind === SyntaxKind.PrivateKeyword,
-            ) ?? false;
-          const found = fileClass.members.some(
-            (modifier) =>
-              isMethodDeclaration(modifier) &&
-              isIdentifier(modifier.name) &&
-              modifier.name.text === methodName &&
-              (modifier.modifiers?.some(
-                (modifier) => modifier.kind === SyntaxKind.StaticKeyword,
-              ) ?? false) === isStatic &&
-              (modifier.modifiers?.some(
-                (modifier) => modifier.kind === SyntaxKind.PrivateKeyword,
-              ) ?? false) === isPrivate,
-          );
-          if (!found) {
-            errors.push(
-              `Missing method "${methodName}" in class "${className}"`,
-            );
-          }
-        }
-      }
-    }
-  });
-
-  return { errors, excludedComments };
-}
-
-// ─── Template conformance ─────────────────────────────────────────────────────
-
-const TODO_LINE_REGEX = /\bTODO\b/u;
-const COMMENT_LINE_REGEX = /^\s*\/\//u;
-const EMOJI_REGEX = /\p{Emoji_Presentation}|\p{Extended_Pictographic}/u;
-
-function escapeRegex(str: string): string {
-  return str.replaceAll(/[.*+?^${}()|[\]\\]/g, String.raw`\$&`);
-}
-
-/**
- * AST-aware variant of {@link validateConformance} for generated TypeScript
- * files where some template lines are expected to be updated by developers.
- *
- * Parses both the rendered template and the file into TypeScript ASTs and
- * checks that the template's structure is a subset of the file's structure —
- * so added imports, grown arrays, and expanded method bodies do not cause
- * failures.
- *
- * Comment lines are validated separately: emoji section markers (`// 🔑 ...`)
- * are matched via regex with cursor-based order enforcement; non-emoji comments
- * are checked for existence only.
- *
- * @param content - The current content of the generated file.
- * @param template - The EJS template source used to generate the file.
- * @param data - The variable substitutions to render the template with.
- * @param fileName - File name with `.ts` or `.tsx` extension for script-kind inference.
- */
-export function validateConformance(
-  content: string,
-  template: string,
-  data: Record<string, unknown>,
-  fileName: string,
-): { valid: boolean; errors: string[] } {
-  const rendered = ejs.render(template, data);
-
-  const commentLines = rendered
-    .split("\n")
-    .filter((line) => line.trim() !== "")
-    .filter((line) => !TODO_LINE_REGEX.test(line))
-    .filter((line) => COMMENT_LINE_REGEX.test(line.trim()));
-
-  const { errors, excludedComments } = checkSubset(
-    createSourceFile(rendered, fileName),
-    rendered,
-    createSourceFile(content, fileName),
-  );
-
-  const emojiComments = commentLines.filter((line) => EMOJI_REGEX.test(line));
-  const blockComments = commentLines.filter((line) => !EMOJI_REGEX.test(line));
-
-  let cursor = 0;
-  for (const line of emojiComments) {
-    const trimmed = line.trim();
-    if (excludedComments.has(trimmed)) continue;
-    const regex = new RegExp(escapeRegex(trimmed), "u");
-    const match = regex.exec(content.slice(cursor));
-    if (match) {
-      cursor += match.index + match[0].length;
-    } else {
-      errors.push(`Missing template code: "${trimmed}"`);
-    }
-  }
-
-  for (const line of blockComments) {
-    const trimmed = line.trim();
-    if (excludedComments.has(trimmed)) continue;
-    if (!content.includes(trimmed)) {
-      errors.push(`Missing template code: "${trimmed}"`);
-    }
-  }
-
-  return { valid: errors.length === 0, errors };
+  return { errors };
 }
 
 /**
  * File-system variant of {@link validateConformance} that reads both the
- * generated file and the template from disk before validating.
+ * generated instance file and the EJS template from disk before validating.
  *
- * Returns `{ valid: false, errors: [...] }` when either path does not exist,
- * rather than throwing.
- *
- * @param filePath - Absolute path to the generated file.
- * @param templatePath - Absolute path to the EJS template.
- * @param data - The variable substitutions to render the template with.
+ * If either path does not exist (`ENOENT`), returns `\{ errors: ["Missing file:
+ * <path>"] \}` rather than throwing, so callers can treat a missing file as a
+ * conformance failure rather than a crash.
  */
-export function validateFileConformance(
-  filePath: string,
-  templatePath: string,
-  data: Record<string, unknown>,
-): { valid: boolean; errors: string[] } {
+export function validateInstanceFile(args: ValidateInstanceFileArgs): {
+  errors: string[];
+} {
+  const { instanceFilePath, templateFilePath, data } = args;
   try {
-    const content = fs.readFileSync(filePath, "utf8");
-    const template = fs.readFileSync(templatePath, "utf8");
-    return validateConformance(
-      content,
+    const instance = fs.readFileSync(instanceFilePath, "utf8");
+    const template = fs.readFileSync(templateFilePath, "utf8");
+    return validateConformance({
+      instance,
       template,
       data,
-      path.basename(filePath),
-    );
+      filename: path.basename(instanceFilePath),
+    });
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === "ENOENT") {
-      return { valid: false, errors: [`File not found: ${filePath}`] };
+      return { errors: [`Missing file: ${instanceFilePath}`] };
     }
     throw error;
   }
 }
 
-function resolveTemplateName(
-  templateFileName: string,
-  data: Record<string, unknown>,
-): string {
-  return templateFileName.replaceAll(
-    /__(\w+)__/g,
-    (_: string, field: string) => {
-      const value = data[field];
-      return typeof value === "string" ? value : "";
-    },
-  );
+/**
+ * Validates all generated files in a single instance directory against their
+ * corresponding EJS templates in `templateDirectoryPath`.
+ *
+ * Each template filename may contain `__fieldName__` tokens (e.g.
+ * `__nameCamelCase__.service.ts`) that are resolved to the instance filename
+ * using the EJS variable substitutions derived from `instanceDirectoryPath`'s
+ * basename. The same substitution map (`nameCamelCase`, `namePascalCase`,
+ * `nameSnakeCase`, `nameKebabCase`) is passed to {@link validateInstanceFile}
+ * when rendering each template.
+ *
+ * Validation uses AST superset-checking so that developer modifications to
+ * method bodies, constructor arguments, and array contents do not produce
+ * false failures — only structurally required template nodes are enforced.
+ *
+ * @returns The instance directory's basename and one result entry per template
+ * file, each carrying the resolved filename and any validation errors.
+ */
+export function validateInstanceDirectory(
+  args: ValidateInstanceDirectoryArgs,
+): InstanceDirectoryValidationResult {
+  const { instanceDirectoryPath, templateDirectoryPath } = args;
+  const name = path.basename(instanceDirectoryPath);
+
+  const data = {
+    nameCamelCase: converterByStringCase[StringCase.CAMEL_CASE](name),
+    namePascalCase: converterByStringCase[StringCase.PASCAL_CASE](name),
+    nameSnakeCase: converterByStringCase[StringCase.SNAKE_CASE](name),
+    nameKebabCase: converterByStringCase[StringCase.KEBAB_CASE](name),
+  };
+
+  const templateFilenames = fs
+    .readdirSync(templateDirectoryPath, { withFileTypes: true })
+    .filter((node) => node.isFile())
+    .map((node) => node.name);
+
+  const results = templateFilenames.map((templateFilename) => {
+    const instanceFilename = templateFilename.replaceAll(
+      /__(\w+)__/g,
+      (_: string, field: string) => {
+        const value = (data as Record<string, unknown>)[field];
+        return typeof value === "string" ? value : "";
+      },
+    );
+    const instanceFilePath = path.join(instanceDirectoryPath, instanceFilename);
+    const templateFilePath = path.join(templateDirectoryPath, templateFilename);
+    return {
+      filename: instanceFilename,
+      ...validateInstanceFile({
+        instanceFilePath,
+        templateFilePath,
+        data,
+      }),
+    };
+  });
+
+  return { directoryName: name, results };
 }
 
 /**
- * Validates every subdirectory of a generated output directory against the
- * corresponding templates using AST structural subset checking.
+ * Validates every subdirectory of `instancesDirectoryPath` by calling
+ * {@link validateInstanceDirectory} on each one.
  *
- * For each subdirectory (representing one generated module), every template
- * file is resolved to its generated filename using `dataFromName`, then
- * validated via {@link validateFileConformance} so that developer
- * modifications to array contents, method bodies, and constructors do not cause
- * false failures.
+ * Intended for conformance test suites that need to check an entire
+ * `src/modules/` tree (or equivalent) in one call rather than iterating
+ * subdirectories manually.
  *
- * @param directoryPath - Path to the directory containing generated module subdirectories.
- * @param templateDirectoryPath - Path to the directory containing EJS template files.
- * @param dataFromName - Maps a subdirectory name to the EJS variable substitutions for that module.
- * @returns One result entry per subdirectory, each containing the module name and per-file validation results.
+ * @returns One result entry per instance subdirectory, in filesystem order.
  */
-export function validateGeneratedDirectory(
-  directoryPath: string,
-  templateDirectoryPath: string,
-  dataFromName: (name: string) => Record<string, unknown>,
-): {
-  name: string;
-  results: { file: string; valid: boolean; errors: string[] }[];
-}[] {
-  const subdirectories = fs
-    .readdirSync(directoryPath, { withFileTypes: true })
-    .filter((e) => e.isDirectory())
-    .map((e) => e.name);
+export function validateInstancesDirectory(
+  args: ValidateInstancesDirectoryArgs,
+): InstanceDirectoryValidationResult[] {
+  const { instancesDirectoryPath, templateDirectoryPath } = args;
+  return fs
+    .readdirSync(instancesDirectoryPath, { withFileTypes: true })
+    .filter((node) => node.isDirectory())
+    .map((node) =>
+      validateInstanceDirectory({
+        instanceDirectoryPath: path.join(instancesDirectoryPath, node.name),
+        templateDirectoryPath,
+      }),
+    );
+}
 
-  const templateFiles = fs
-    .readdirSync(templateDirectoryPath, { withFileTypes: true })
-    .filter((e) => e.isFile())
-    .map((e) => e.name);
-
-  return subdirectories.map((subdirectory) => {
-    const data = dataFromName(subdirectory);
-    const results = templateFiles.map((templateFilename) => {
-      const generatedFilename = resolveTemplateName(templateFilename, data);
-      const filePath = path.join(
-        directoryPath,
-        subdirectory,
-        generatedFilename,
-      );
-      const templatePath = path.join(templateDirectoryPath, templateFilename);
-      return {
-        file: generatedFilename,
-        ...validateFileConformance(filePath, templatePath, data),
-      };
+/**
+ * Flattens the nested results from {@link validateInstancesDirectory} into a
+ * single newline-joined error string, or `null` when all files pass.
+ *
+ * Each failing file contributes one line per error in the form
+ * `"<instanceName>/<file>: <error>"`, making the output suitable for a Jest
+ * `expect(errors).toBeNull()` assertion message or a CI log.
+ */
+export function collectConformanceErrors(
+  results: InstanceDirectoryValidationResult[],
+): string | null {
+  const errors = results.flatMap((result) => {
+    const { directoryName, results: fileResults } = result;
+    return fileResults.flatMap((fileResult) => {
+      const { filename, errors: fileErrors } = fileResult;
+      return fileErrors.length === 0
+        ? []
+        : fileErrors.map(
+            (fileError) => `${directoryName}/${filename}: ${fileError}`,
+          );
     });
-    return { name: subdirectory, results };
   });
+  return errors.length === 0 ? null : errors.join("\n");
 }

@@ -129,14 +129,14 @@ describe("generateNestjsServiceModule", () => {
         nameCamelCase: "calculator",
         namePascalCase: "Calculator",
       };
-      const result = validateConformance(
-        serviceContent,
-        templateContent,
-        vars,
-        "calculator.service.ts",
-      );
+      const result = validateConformance({
+        instance: serviceContent,
+        template: templateContent,
+        data: vars,
+        filename: "calculator.service.ts",
+      });
       expect(result.errors).toEqual([]);
-      expect(result.valid).toBe(true);
+      expect(result.errors.length === 0).toBe(true);
     });
   });
 

@@ -14,6 +14,10 @@ import type { Longitude } from "@caelundas/src/modules/ephemeris/ephemeris.types
  */
 @Injectable()
 export class MathService {
+  constructor() {
+    // 🏗️ Dependency Injection
+  }
+
   // 🔐 Private Fields
 
   // 🔑 Public Fields

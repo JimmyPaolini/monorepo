@@ -1,5 +1,6 @@
 import { execSync } from "node:child_process";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 import { generateFiles, getProjects, workspaceRoot } from "@nx/devkit";
 import _ from "lodash";
@@ -22,6 +23,9 @@ interface GenerateNestjsServiceModuleOptions {
  * @param options - Configuration options for the NestJS service module generator
  */
 export const MODULES_DIRECTORY = "src/modules";
+export const TEMPLATES_DIRECTORY_PATH = fileURLToPath(
+  new URL("templates", import.meta.url),
+);
 
 /**
  *
@@ -67,10 +71,9 @@ export async function generateNestjsServiceModule(
   const namePascalCase = _.upperFirst(name);
 
   const targetPath = path.join(directory, nameCamelCase);
-  const filesPath = path.join(__dirname, "templates");
   const substitutions = { nameCamelCase, namePascalCase };
 
-  generateFiles(tree, filesPath, targetPath, substitutions);
+  generateFiles(tree, TEMPLATES_DIRECTORY_PATH, targetPath, substitutions);
 
   const generatedFiles = tree
     .children(targetPath)

@@ -35,6 +35,10 @@ describe("SpecialtyAspectsService", () => {
     service = module.get(SpecialtyAspectsService);
   });
 
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
+
   describe("specialtyAspects.events", () => {
     describe("service.detect", () => {
       const createEphemeris = (
