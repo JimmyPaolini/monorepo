@@ -44,9 +44,6 @@ export function validateComments(args: {
   const templateComments = getComments(templateNode, side);
   const instanceComments = getComments(instanceNode, side);
 
-  const instanceFile = instanceNode.getSourceFile();
-  const instancePosition = instanceNode[side];
-
   let startPosition = 0;
   for (const templateComment of templateComments) {
     const endPosition = instanceComments
@@ -58,6 +55,8 @@ export function validateComments(args: {
       });
 
     if (endPosition === -1) {
+      const instanceFile = instanceNode.getSourceFile();
+      const instancePosition = instanceNode[side];
       const { line, character } =
         instanceFile.getLineAndCharacterOfPosition(instancePosition);
       const location = `(line ${line + 1}:${character + 1})`;
@@ -66,5 +65,6 @@ export function validateComments(args: {
       startPosition += endPosition + 1;
     }
   }
+
   return errors;
 }

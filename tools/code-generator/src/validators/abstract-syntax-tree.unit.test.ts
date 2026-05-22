@@ -308,3 +308,163 @@ describe("validateConformanceAST", () => {
     );
   });
 });
+
+describe("validateConformanceAST — multi-candidate keyless nodes", () => {
+  const template = [
+    'import { Injectable } from "@nestjs/common";',
+    "",
+    "@Injectable()",
+    "export class UserService {",
+    "  doWork(): void {",
+    "    requiredCall();",
+    "  }",
+    "}",
+    "",
+  ].join("\n");
+
+  it("picks matching statement when instance block has multiple candidates", () => {
+    const instance = [
+      'import { Injectable } from "@nestjs/common";',
+      "",
+      "@Injectable()",
+      "export class UserService {",
+      "  doWork(): void {",
+      "    extraStatement();",
+      "    requiredCall();",
+      "  }",
+      "}",
+      "",
+    ].join("\n");
+    const result = validateConformance({
+      instance,
+      template,
+      data: {},
+      filename: "user.service.ts",
+    });
+    expect(result.errors).toEqual([]);
+  });
+
+  it("reports Missing Identifier from best-match candidate", () => {
+    const instance = [
+      'import { Injectable } from "@nestjs/common";',
+      "",
+      "@Injectable()",
+      "export class UserService {",
+      "  doWork(): void {",
+      "    wrongCall1();",
+      "    wrongCall2();",
+      "  }",
+      "}",
+      "",
+    ].join("\n");
+    const result = validateConformance({
+      instance,
+      template,
+      data: {},
+      filename: "user.service.ts",
+    });
+    expect(result.errors).toEqual(
+      expect.arrayContaining([
+        expect.stringContaining('Missing Identifier "requiredCall"'),
+      ]),
+    );
+  });
+});
+
+describe("validateConformanceAST — caelundas module error detection", () => {
+  const CAELUNDAS_MODULES = path.resolve(
+    __dirname,
+    "../../../../applications/caelundas/src/modules",
+  );
+
+  function readServiceTemplate(): string {
+    return fs.readFileSync(
+      path.join(
+        path.resolve(
+          __dirname,
+          "../generators/nestjs-service-module/templates",
+        ),
+        "__nameCamelCase__.service.ts",
+      ),
+      "utf8",
+    );
+  }
+
+  it("missing @Injectable decorator in datetime service fails", () => {
+    const fileContent = fs
+      .readFileSync(
+        path.join(CAELUNDAS_MODULES, "datetime", "datetime.service.ts"),
+        "utf8",
+      )
+      .replace("@Injectable()\n", "");
+    const result = validateConformance({
+      instance: fileContent,
+      template: readServiceTemplate(),
+      data: { nameCamelCase: "datetime", namePascalCase: "Datetime" },
+      filename: "datetime.service.ts",
+    });
+    expect(result.errors).toEqual(
+      expect.arrayContaining([
+        expect.stringContaining('Missing Decorator "Injectable"'),
+      ]),
+    );
+  });
+
+  it("missing section comment in math service fails", () => {
+    const fileContent = fs
+      .readFileSync(
+        path.join(CAELUNDAS_MODULES, "math", "math.service.ts"),
+        "utf8",
+      )
+      .replace("  // 🌎 Public Methods\n", "");
+    const result = validateConformance({
+      instance: fileContent,
+      template: readServiceTemplate(),
+      data: { nameCamelCase: "math", namePascalCase: "Math" },
+      filename: "math.service.ts",
+    });
+    expect(result.errors).toEqual(
+      expect.arrayContaining([
+        expect.stringContaining('Missing comment: "// 🌎 Public Methods"'),
+      ]),
+    );
+  });
+
+  it("renamed class in datetime service fails", () => {
+    const fileContent = fs
+      .readFileSync(
+        path.join(CAELUNDAS_MODULES, "datetime", "datetime.service.ts"),
+        "utf8",
+      )
+      .replaceAll("DatetimeService", "RenamedService");
+    const result = validateConformance({
+      instance: fileContent,
+      template: readServiceTemplate(),
+      data: { nameCamelCase: "datetime", namePascalCase: "Datetime" },
+      filename: "datetime.service.ts",
+    });
+    expect(result.errors).toEqual(
+      expect.arrayContaining([
+        expect.stringContaining('Missing ClassDeclaration "DatetimeService"'),
+      ]),
+    );
+  });
+
+  it("missing constructor in math service fails", () => {
+    const fileContent = fs
+      .readFileSync(
+        path.join(CAELUNDAS_MODULES, "math", "math.service.ts"),
+        "utf8",
+      )
+      .replace("  constructor() {}\n", "");
+    const result = validateConformance({
+      instance: fileContent,
+      template: readServiceTemplate(),
+      data: { nameCamelCase: "math", namePascalCase: "Math" },
+      filename: "math.service.ts",
+    });
+    expect(result.errors).toEqual(
+      expect.arrayContaining([expect.stringContaining("Missing Constructor")]),
+    );
+  });
+});
