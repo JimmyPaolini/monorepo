@@ -8,7 +8,7 @@ import { QuintupleAspectsService } from "./quintupleAspects.service";
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
-describe("quintupleAspects.events", () => {
+describe("QuintupleAspectsService", () => {
   let service: QuintupleAspectsService;
 
   beforeAll(async () => {
@@ -16,6 +16,10 @@ describe("quintupleAspects.events", () => {
       providers: [QuintupleAspectsService, MathService],
     }).compile();
     service = module.get(QuintupleAspectsService);
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
   });
 
   describe("service.detect", () => {

@@ -1,3 +1,5 @@
+// 🏷️ Types
+
 /**
  * Twilight period classification by solar depression angle.
  * - `civil`: Sun between 0° and −6° (daily activities still possible without artificial light)

@@ -1,7 +1,7 @@
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Test, type TestingModule } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { EphemerisService } from "./ephemeris.service";
 
@@ -87,12 +87,15 @@ describe("EphemerisService", () => {
 
   let service: EphemerisService;
 
-  beforeEach(async () => {
-    vi.clearAllMocks();
+  beforeAll(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [EphemerisService, MathService],
     }).compile();
     service = module.get<EphemerisService>(EphemerisService);
+  });
+
+  beforeEach(() => {
+    vi.clearAllMocks();
   });
 
   // #region Accessor: getCoordinateFromEphemeris

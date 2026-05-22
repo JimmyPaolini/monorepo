@@ -147,9 +147,7 @@ describe("validateConformanceAST", () => {
     expect(result.errors.length === 0).toBe(false);
     expect(result.errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining(
-          'Missing template comment: "// 🔑 Public Fields"',
-        ),
+        expect.stringContaining('Missing comment: "// 🔑 Public Fields"'),
       ]),
     );
   });
@@ -248,9 +246,7 @@ describe("validateConformanceAST", () => {
     });
     expect(result.errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining(
-          'Missing template comment: "// 🔑 Public Fields"',
-        ),
+        expect.stringContaining('Missing comment: "// 🔑 Public Fields"'),
       ]),
     );
   });

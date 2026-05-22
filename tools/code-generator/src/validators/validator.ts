@@ -56,11 +56,9 @@ export function validateConformance(args: {
     scriptKind,
   );
 
-  const errors: string[] = [];
-  validateDepthFirstSearch({
+  const errors = validateDepthFirstSearch({
     templateNode: templateFile,
     instanceNode: instanceFile,
-    errors,
     instanceFile,
   });
 
