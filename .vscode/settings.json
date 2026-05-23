@@ -133,6 +133,8 @@
   "chat.unifiedAgentsBar.enabled": true,
   "chat.useAgentSkills": true,
   "chat.useNestedAgentsMdFiles": true,
+  "chat.utilityModel": "copilot/claude-haiku-4.5",
+  "chat.utilitySmallModel": "copilot/claude-haiku-4.5",
   "chat.viewProgressBadge.enabled": true,
   "containers.containers.label": "ContainerName",
   "containers.containers.sortBy": "Label",

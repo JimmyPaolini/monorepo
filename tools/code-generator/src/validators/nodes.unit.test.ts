@@ -2,7 +2,9 @@ import {
   type ClassDeclaration,
   createSourceFile,
   forEachChild,
+  isClassDeclaration,
   isDecorator,
+  isVariableStatement,
   type Node,
   ScriptTarget,
   type SourceFile,
@@ -29,6 +31,16 @@ function statementsOf(code: string): Node[] {
 function defined<T>(value: T | undefined): T {
   if (value === undefined) throw new Error("Expected defined value");
   return value;
+}
+
+function assertVariableStatement(node: Node): VariableStatement {
+  if (!isVariableStatement(node)) throw new Error("Expected VariableStatement");
+  return node;
+}
+
+function assertClassDeclaration(node: Node): ClassDeclaration {
+  if (!isClassDeclaration(node)) throw new Error("Expected ClassDeclaration");
+  return node;
 }
 
 function findDecorator(classCode: string): Node {
@@ -131,7 +143,7 @@ describe("getKey", () => {
 
   it("returns text for NumericLiteral node", () => {
     const source = parseTypescript("const x = 42;\n");
-    const stmt = defined(source.statements.at(0)) as VariableStatement;
+    const stmt = assertVariableStatement(defined(source.statements.at(0)));
     const decl = defined(stmt.declarationList.declarations.at(0));
     const numLiteral = defined(decl.initializer);
     expect(numLiteral.kind).toBe(SyntaxKind.NumericLiteral);
@@ -140,7 +152,7 @@ describe("getKey", () => {
 
   it("returns non-null text for BigIntLiteral node", () => {
     const source = parseTypescript("const x = 42n;\n");
-    const stmt = defined(source.statements.at(0)) as VariableStatement;
+    const stmt = assertVariableStatement(defined(source.statements.at(0)));
     const decl = defined(stmt.declarationList.declarations.at(0));
     const bigIntLiteral = defined(decl.initializer);
     expect(bigIntLiteral.kind).toBe(SyntaxKind.BigIntLiteral);
@@ -149,7 +161,7 @@ describe("getKey", () => {
 
   it("returns content text for NoSubstitutionTemplateLiteral node", () => {
     const source = parseTypescript("const x = `hello`;\n");
-    const stmt = defined(source.statements.at(0)) as VariableStatement;
+    const stmt = assertVariableStatement(defined(source.statements.at(0)));
     const decl = defined(stmt.declarationList.declarations.at(0));
     const templateLiteral = defined(decl.initializer);
     expect(templateLiteral.kind).toBe(SyntaxKind.NoSubstitutionTemplateLiteral);
@@ -164,7 +176,7 @@ describe("getKey", () => {
 
   it("returns method name for MethodDeclaration", () => {
     const source = parseTypescript("class Foo { getBar(): void {} }\n");
-    const classDecl = defined(source.statements.at(0)) as ClassDeclaration;
+    const classDecl = assertClassDeclaration(defined(source.statements.at(0)));
     const method = defined(classDecl.members.at(0));
     expect(method.kind).toBe(SyntaxKind.MethodDeclaration);
     expect(getKey(method)).toBe("getBar");
@@ -172,7 +184,7 @@ describe("getKey", () => {
 
   it("returns null for Block node (anonymous container)", () => {
     const source = parseTypescript("class Foo { bar(): void {} }\n");
-    const classDecl = defined(source.statements.at(0)) as ClassDeclaration;
+    const classDecl = assertClassDeclaration(defined(source.statements.at(0)));
     const method = defined(classDecl.members.at(0));
     const block = getChildren(method).find((c) => c.kind === SyntaxKind.Block);
     expect(getKey(defined(block))).toBeNull();
@@ -180,7 +192,7 @@ describe("getKey", () => {
 
   it("returns null for Constructor node", () => {
     const source = parseTypescript("class Foo { constructor() {} }\n");
-    const classDecl = defined(source.statements.at(0)) as ClassDeclaration;
+    const classDecl = assertClassDeclaration(defined(source.statements.at(0)));
     const ctor = defined(classDecl.members.at(0));
     expect(ctor.kind).toBe(SyntaxKind.Constructor);
     expect(getKey(ctor)).toBeNull();
