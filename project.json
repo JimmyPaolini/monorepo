@@ -481,7 +481,7 @@
       "cache": true,
       "configurations": {
         "check": {
-          "command": "pnpm exec syncpack lint --config configuration/syncpack.config.cjs"
+          "command": "pnpm exec syncpack list-mismatches --config configuration/syncpack.config.cjs && pnpm exec syncpack lint-semver-ranges --config configuration/syncpack.config.cjs"
         },
         "write": {
           "command": "pnpm exec syncpack fix-mismatches --config configuration/syncpack.config.cjs && pnpm exec syncpack format --config configuration/syncpack.config.cjs && nx run monorepo:format:write"
@@ -496,7 +496,7 @@
         "{workspaceRoot}/pnpm-lock.yaml"
       ],
       "options": {
-        "command": "pnpm exec syncpack lint --config configuration/syncpack.config.cjs",
+        "command": "pnpm exec syncpack list-mismatches --config configuration/syncpack.config.cjs && pnpm exec syncpack lint-semver-ranges --config configuration/syncpack.config.cjs",
         "cwd": "{workspaceRoot}"
       }
     },
