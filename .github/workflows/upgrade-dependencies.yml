@@ -21,10 +21,15 @@ jobs:
       - name: 🕋 Setup Monorepo
         uses: ./.github/actions/setup-monorepo
 
+      - name: ⬆️ Upgrade pnpm
+        run: |
+          LATEST_PNPM=$(npm show pnpm version)
+          sed -i "s|\"packageManager\": \"pnpm@[^\"]*\"|\"packageManager\": \"pnpm@${LATEST_PNPM}\"|" package.json
+
       - name: ⬆️ Upgrade Dependencies
         id: check
         run: |
-          pnpm exec nx run monorepo:npm-check-updates:write
+          pnpm exec nx run monorepo:upgrade-dependencies:write
           if git diff --quiet; then
             echo "has_dependency_updates=false" >> $GITHUB_OUTPUT
           else

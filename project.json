@@ -88,7 +88,7 @@
       "configurations": {
         "check": {
           "commands": [
-            "nx run {projectName}:npm-check-updates:check",
+            "nx run {projectName}:upgrade-dependencies:check",
             "nx run {projectName}:license-check",
             "nx run {projectName}:pnpm-audit:check",
             "nx run {projectName}:sherif:check",
@@ -98,7 +98,7 @@
         },
         "write": {
           "commands": [
-            "nx run {projectName}:npm-check-updates:write",
+            "nx run {projectName}:upgrade-dependencies:write",
             "nx run {projectName}:license-check",
             "nx run {projectName}:pnpm-audit:write",
             "nx run {projectName}:sherif:write",
@@ -108,7 +108,7 @@
         }
       },
       "defaultConfiguration": "check",
-      "description": "Run all dependency management tools (npm-check-updates, pnpm-audit, license-check, sherif, syncpack)",
+      "description": "Run all dependency management tools (upgrade-dependencies, pnpm-audit, license-check, sherif, syncpack)",
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{projectRoot}"
@@ -211,21 +211,6 @@
       "options": {
         "cwd": "{projectRoot}"
       }
-    },
-    "npm-check-updates": {
-      "cache": false,
-      "configurations": {
-        "check": {
-          "command": "ncu --workspaces --root"
-        },
-        "write": {
-          "command": "ncu --workspaces --root -u && pnpm install --no-frozen-lockfile"
-        }
-      },
-      "defaultConfiguration": "check",
-      "description": "Check for dependency updates (check) or update to latest versions (write)",
-      "executor": "nx:run-commands",
-      "options": {}
     },
     "oxfmt": {
       "cache": true,
@@ -564,6 +549,21 @@
         "command": "tsc --noEmit -p tsconfig.json",
         "cwd": "{projectRoot}"
       }
+    },
+    "upgrade-dependencies": {
+      "cache": false,
+      "configurations": {
+        "check": {
+          "command": "pnpm outdated --recursive"
+        },
+        "write": {
+          "command": "pnpm update --latest --recursive"
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "Check for dependency updates (check) or upgrade all dependencies to latest versions (write)",
+      "executor": "nx:run-commands",
+      "options": {}
     },
     "validate-branch-name": {
       "cache": false,
