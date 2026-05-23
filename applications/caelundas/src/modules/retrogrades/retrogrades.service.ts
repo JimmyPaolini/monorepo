@@ -12,9 +12,7 @@ import _ from "lodash";
 
 import type {
   OrbitalDirection,
-  OrbitalDirectionSymbol,
   RetrogradeBody,
-  RetrogradeBodySymbol,
 } from "@caelundas/src/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
@@ -194,10 +192,8 @@ export class RetrogradesService {
       direction,
     ) as Capitalize<OrbitalDirection>;
 
-    const retrogradeBodySymbol = symbolByBody[body] as RetrogradeBodySymbol;
-    const orbitalDirectionSymbol = symbolByOrbitalDirection[
-      direction
-    ] as OrbitalDirectionSymbol;
+    const retrogradeBodySymbol = symbolByBody[body];
+    const orbitalDirectionSymbol = symbolByOrbitalDirection[direction];
 
     const description = `${bodyCapitalized} Stationary ${orbitalDirectionCapitalized}`;
     const summary = `${retrogradeBodySymbol} ${orbitalDirectionSymbol} ${description}`;

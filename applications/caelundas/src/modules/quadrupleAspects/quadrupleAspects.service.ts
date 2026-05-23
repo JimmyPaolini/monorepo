@@ -550,7 +550,7 @@ export class QuadrupleAspectsService {
       description,
       summary,
       categories,
-    } as Event;
+    };
   }
 
   /**

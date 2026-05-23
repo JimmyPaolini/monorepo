@@ -26,6 +26,20 @@ jobs:
           LATEST_PNPM=$(npm show pnpm version)
           sed -i "s|\"packageManager\": \"pnpm@[^\"]*\"|\"packageManager\": \"pnpm@${LATEST_PNPM}\"|" package.json
 
+      - name: ⬆️ Upgrade Node.js
+        run: |
+          CURRENT_NODE=$(cat .nvmrc | sed 's/v//')
+          MAJOR=$(echo "$CURRENT_NODE" | cut -d. -f1)
+          LATEST_NODE=$(curl -s "https://nodejs.org/dist/index.json" | \
+            jq -r "map(select(.version | startswith(\"v${MAJOR}.\"))) | first | .version" | \
+            sed 's/v//')
+          if [ "$CURRENT_NODE" != "$LATEST_NODE" ]; then
+            echo "v${LATEST_NODE}" > .nvmrc
+            sed -i "s|node-version: [0-9.]*|node-version: ${LATEST_NODE}|" \
+              .github/actions/setup-monorepo/action.yml
+            sed -i "s|\"node\": \">=.*\"|\"node\": \">=${LATEST_NODE}\"|" package.json
+          fi
+
       - name: ⬆️ Upgrade Dependencies
         id: check
         run: |
@@ -65,6 +79,8 @@ jobs:
 
             ## 📝 Details
 
+            - Update Node.js to latest patch of current major
+            - Update pnpm to latest version
             - Update dependencies across all workspace projects
             - Update pnpm lockfile
 

@@ -1,6 +1,4 @@
 {
-  "name": "@monorepo/lexico-components",
-  "version": "0.0.1",
   "dependencies": {
     "@nx/vite": "^22.7.2",
     "@radix-ui/react-accordion": "^1.2.12",
@@ -37,24 +35,24 @@
     "input-otp": "^1.4.2",
     "lucide-react": "^0.575.0",
     "next-themes": "^0.4.6",
-    "react-day-picker": "^9.13.2",
-    "react-hook-form": "^7.71.2",
-    "react-resizable-panels": "^4.6.5",
+    "react-day-picker": "^9.14.0",
+    "react-hook-form": "^7.76.0",
+    "react-resizable-panels": "^4.11.1",
     "recharts": "^2.15.4",
     "sonner": "^2.0.7",
     "tailwind-merge": "^2.6.1",
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^1.1.2",
-    "vite": "^7.3.1",
+    "vite": "^7.3.3",
     "vite-plugin-dts": "^4.5.4"
   },
   "devDependencies": {
-    "@size-limit/file": "^12.0.0",
-    "@types/react": "^19.1.0",
+    "@size-limit/file": "^12.1.0",
+    "@types/react": "^19.2.15",
     "@vitejs/plugin-react": "^4.7.0",
-    "autoprefixer": "^10.4.27",
-    "postcss": "^8.5.6",
-    "size-limit": "^12.0.0",
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.15",
+    "size-limit": "^12.1.0",
     "tailwindcss": "^3.4.19",
     "typescript": "^5.9.3",
     "vite": "^7.3.1",
@@ -62,8 +60,8 @@
   },
   "exports": {
     ".": {
-      "types": "./src/index.ts",
-      "import": "./src/index.ts"
+      "import": "./src/index.ts",
+      "types": "./src/index.ts"
     },
     "./styles/globals.css": "./src/styles/globals.css"
   },
@@ -72,6 +70,7 @@
     "src"
   ],
   "main": "./src/index.ts",
+  "name": "@monorepo/lexico-components",
   "peerDependencies": {
     "react": "^19.2.4"
   },
@@ -89,5 +88,6 @@
     "ignoreCatch": true,
     "strict": true
   },
-  "types": "./src/index.ts"
+  "types": "./src/index.ts",
+  "version": "0.0.1"
 }

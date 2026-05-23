@@ -12,7 +12,7 @@ runs:
     - name: 🟢 Setup node
       uses: actions/setup-node@v4
       with:
-        node-version: 22.22.2
+        node-version: 24.16.0
         cache: pnpm
 
     - name: 🎯 Set Nx SHAs
@@ -24,7 +24,7 @@ runs:
       shell: bash
 
     - name: 🔧 Setup Homebrew
-      uses: Homebrew/actions/setup-homebrew@master
+      uses: Homebrew/actions/setup-homebrew@main
 
     - name: 📄 Install yamllint
       run: brew install yamllint --quiet

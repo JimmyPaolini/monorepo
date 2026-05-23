@@ -8,7 +8,6 @@ import {
   QuadrupleAspectsService,
 } from "./quadrupleAspects.service";
 
-import type { Aspect, Body } from "@caelundas/src/caelundas.types";
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
@@ -560,7 +559,7 @@ describe("QuadrupleAspectsService", () => {
         const formingEvent: Event = {
           start: moment.utc("2024-03-21T10:00:00.000Z"),
           end: moment.utc("2024-03-21T10:00:00.000Z"),
-          summary: "➡️ Grand Cross forming" as unknown as string,
+          summary: "➡️ Grand Cross forming",
           description: "Jupiter, Mars, Moon, Sun grand cross forming",
           categories: [
             "Quadruple Aspect",
@@ -576,7 +575,7 @@ describe("QuadrupleAspectsService", () => {
         const dissolvingEvent: Event = {
           start: moment.utc("2024-03-21T14:00:00.000Z"),
           end: moment.utc("2024-03-21T14:00:00.000Z"),
-          summary: "⬅️ Grand Cross dissolving" as unknown as string,
+          summary: "⬅️ Grand Cross dissolving",
           description: "Jupiter, Mars, Moon, Sun grand cross dissolving",
           categories: [
             "Quadruple Aspect",
@@ -693,58 +692,58 @@ describe("QuadrupleAspectsService", () => {
   describe("involvesBody", () => {
     it("should return true when body1 matches", () => {
       const edge: AspectBodies = {
-        bodies: ["sun" as Body, "moon" as Body],
-        aspect: "conjunct" as Aspect,
+        bodies: ["sun", "moon"],
+        aspect: "conjunct",
       };
 
-      expect(involvesBody(edge, "sun" as Body)).toBe(true);
+      expect(involvesBody(edge, "sun")).toBe(true);
     });
 
     it("should return true when body2 matches", () => {
       const edge: AspectBodies = {
-        bodies: ["sun" as Body, "moon" as Body],
-        aspect: "conjunct" as Aspect,
+        bodies: ["sun", "moon"],
+        aspect: "conjunct",
       };
 
-      expect(involvesBody(edge, "moon" as Body)).toBe(true);
+      expect(involvesBody(edge, "moon")).toBe(true);
     });
 
     it("should return false when neither body matches", () => {
       const edge: AspectBodies = {
-        bodies: ["sun" as Body, "moon" as Body],
-        aspect: "conjunct" as Aspect,
+        bodies: ["sun", "moon"],
+        aspect: "conjunct",
       };
 
-      expect(involvesBody(edge, "mars" as Body)).toBe(false);
+      expect(involvesBody(edge, "mars")).toBe(false);
     });
   });
 
   describe("getOtherBody", () => {
     it("should return body2 when body1 is provided", () => {
       const edge: AspectBodies = {
-        bodies: ["sun" as Body, "moon" as Body],
-        aspect: "conjunct" as Aspect,
+        bodies: ["sun", "moon"],
+        aspect: "conjunct",
       };
 
-      expect(getOtherBody(edge, "sun" as Body)).toBe("moon");
+      expect(getOtherBody(edge, "sun")).toBe("moon");
     });
 
     it("should return body1 when body2 is provided", () => {
       const edge: AspectBodies = {
-        bodies: ["sun" as Body, "moon" as Body],
-        aspect: "conjunct" as Aspect,
+        bodies: ["sun", "moon"],
+        aspect: "conjunct",
       };
 
-      expect(getOtherBody(edge, "moon" as Body)).toBe("sun");
+      expect(getOtherBody(edge, "moon")).toBe("sun");
     });
 
     it("should return null when body is not in edge", () => {
       const edge: AspectBodies = {
-        bodies: ["sun" as Body, "moon" as Body],
-        aspect: "conjunct" as Aspect,
+        bodies: ["sun", "moon"],
+        aspect: "conjunct",
       };
 
-      expect(getOtherBody(edge, "mars" as Body)).toBeNull();
+      expect(getOtherBody(edge, "mars")).toBeNull();
     });
   });
 });

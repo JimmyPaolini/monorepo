@@ -365,7 +365,7 @@ export class QuintupleAspectsService {
       description,
       summary,
       categories,
-    } as Event;
+    };
   }
 
   /**

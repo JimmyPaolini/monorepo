@@ -532,7 +532,7 @@ export class TripleAspectsService {
       description,
       summary,
       categories,
-    } as Event;
+    };
   }
 
   /**

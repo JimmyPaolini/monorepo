@@ -13,7 +13,6 @@ import _ from "lodash";
 import type {
   AspectPhase,
   Body,
-  BodySymbol,
   SpecialtyAspect,
   SpecialtyAspectSymbol,
 } from "@caelundas/src/caelundas.types";
@@ -219,8 +218,8 @@ export class SpecialtyAspectsService {
     const body1Capitalized = _.startCase(body1) as Capitalize<Body>;
     const body2Capitalized = _.startCase(body2) as Capitalize<Body>;
 
-    const body1Symbol = symbolByBody[body1] as BodySymbol;
-    const body2Symbol = symbolByBody[body2] as BodySymbol;
+    const body1Symbol = symbolByBody[body1];
+    const body2Symbol = symbolByBody[body2];
     const specialtyAspectSymbol: SpecialtyAspectSymbol =
       symbolBySpecialtyAspect[specialtyAspect];
 
@@ -369,11 +368,9 @@ export class SpecialtyAspectsService {
     const body1 = body1Capitalized.toLowerCase() as Body;
     const body2 = body2Capitalized.toLowerCase() as Body;
 
-    const body1Symbol = symbolByBody[body1] as BodySymbol;
-    const body2Symbol = symbolByBody[body2] as BodySymbol;
-    const aspectSymbol = symbolBySpecialtyAspect[
-      aspect
-    ] as SpecialtyAspectSymbol;
+    const body1Symbol = symbolByBody[body1];
+    const body2Symbol = symbolByBody[body2];
+    const aspectSymbol = symbolBySpecialtyAspect[aspect];
 
     return {
       start: beginning.start,
