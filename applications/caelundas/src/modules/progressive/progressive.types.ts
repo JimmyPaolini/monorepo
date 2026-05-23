@@ -1,3 +1,4 @@
+// 🏷️ Types
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
 /**

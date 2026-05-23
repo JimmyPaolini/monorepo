@@ -1,8 +1,8 @@
 import { mockDates } from "@caelundas/testing/mocks";
+import { ConfigService } from "@nestjs/config";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { beforeAll, describe, expect, it } from "vitest";
-import { mock } from "vitest-mock-extended";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { CalendarService } from "./calendar.service";
 
@@ -13,10 +13,11 @@ describe("CalendarService", () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [CalendarService],
-    })
-      .useMocker(mock)
-      .compile();
+      providers: [
+        CalendarService,
+        { provide: ConfigService, useValue: { get: vi.fn() } },
+      ],
+    }).compile();
 
     service = module.get(CalendarService);
   });
@@ -244,5 +245,9 @@ describe("CalendarService", () => {
       expect(calendar).toContain("TZNAME:EDT");
       expect(calendar).toContain("TZNAME:EST");
     });
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
   });
 });

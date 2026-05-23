@@ -5,9 +5,9 @@ Nx generator for creating React components with corresponding test files followi
 ## Usage
 
 ```bash
-nx generate code-generator:component --name=my-component
-nx generate code-generator:component --name=my-component --directory=src/components/ui
-nx generate code-generator:component --name=my-component --export=barrel
+nx generate code-generator:react-component --name=my-component
+nx generate code-generator:react-component --name=my-component --directory=src/components/ui
+nx generate code-generator:react-component --name=my-component --export=barrel
 ```
 
 ## Options

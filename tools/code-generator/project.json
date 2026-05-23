@@ -25,7 +25,7 @@
     "oxlint": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "oxlint --ignore-pattern='**/files/**' tools/code-generator/src",
+        "command": "oxlint --ignore-pattern='**/templates/**' tools/code-generator/src",
         "cwd": "{workspaceRoot}"
       }
     },

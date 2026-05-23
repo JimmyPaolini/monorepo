@@ -219,7 +219,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
   describe("event detection e2e", () => {
     it("should correctly identify zodiac signs from longitude", async () => {
       const { IngressesService } =
-        await import("./modules/events/ingresses/ingresses.service");
+        await import("./modules/ingresses/ingresses.service");
 
       // Test all 12 signs at their starting degrees
       expect(IngressesService.getSign(0)).toBe("aries");
@@ -238,9 +238,9 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
     it("should correctly identify aspects from angular separation", async () => {
       const { MajorAspectsService } =
-        await import("./modules/events/aspects/major/majorAspects.service");
+        await import("./modules/majorAspects/majorAspects.service");
       const { AspectsUtilities } =
-        await import("./modules/events/aspects/aspects.utilities");
+        await import("./modules/aspects/aspects.utilities");
       const { EphemerisService } =
         await import("./modules/ephemeris/ephemeris.service");
       const { MathService } = await import("./modules/math/math.service");

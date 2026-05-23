@@ -480,7 +480,7 @@
       "executor": "nx:run-commands",
       "inputs": ["{projectRoot}/.vulture_whitelist.py", "pythonSource"],
       "options": {
-        "command": "uv run vulture src/ .vulture_whitelist.py --min-confidence 80",
+        "command": "uv run python -m vulture src/ .vulture_whitelist.py --min-confidence 80",
         "cwd": "{projectRoot}"
       }
     },

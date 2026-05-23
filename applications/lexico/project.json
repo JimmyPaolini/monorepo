@@ -6,9 +6,8 @@
   "sourceRoot": "applications/lexico/src",
   "tags": [
     "framework:react",
-    "language:typescript",
-    "stack:tanstack-start",
-    "type:app"
+    "framework:tanstack-start",
+    "language:typescript"
   ],
   "targets": {
     "build": {

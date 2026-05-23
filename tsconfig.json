@@ -12,5 +12,10 @@
     "tools"
   ],
   "extends": "./configuration/tsconfig.base.json",
-  "include": ["*.ts", ".devcontainer/scripts/**/*.ts", "scripts/**/*.ts"]
+  "include": [
+    "*.ts",
+    ".devcontainer/scripts/**/*.ts",
+    "scripts/**/*.ts",
+    "configuration/**/*.ts"
+  ]
 }

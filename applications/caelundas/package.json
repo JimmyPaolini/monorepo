@@ -1,6 +1,4 @@
 {
-  "name": "caelundas",
-  "version": "0.0.1",
   "dependencies": {
     "@nestjs/common": "^11.1.19",
     "@nestjs/config": "^4.0.4",
@@ -25,9 +23,9 @@
     "@types/node": "^22.19.1",
     "@vitest/coverage-v8": "^4.1.7",
     "typescript": "^5.9.3",
-    "vitest": "^4.1.7",
-    "vitest-mock-extended": "^4.0.0"
+    "vitest": "^4.1.7"
   },
+  "name": "caelundas",
   "scripts": {
     "start": "node --import @swc-node/register/esm-register src/main.ts caelundas",
     "test": "vitest run",
@@ -47,5 +45,6 @@
       "**/testing/**"
     ],
     "strict": true
-  }
+  },
+  "version": "0.0.1"
 }
