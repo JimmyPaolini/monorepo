@@ -7,7 +7,9 @@ import { CalendarService } from "./calendar.service";
  * Exports {@link CalendarService} for building iCal calendar data from detected events.
  */
 @Module({
-  providers: [CalendarService],
+  controllers: [],
   exports: [CalendarService],
+  imports: [],
+  providers: [CalendarService],
 })
 export class CalendarModule {}

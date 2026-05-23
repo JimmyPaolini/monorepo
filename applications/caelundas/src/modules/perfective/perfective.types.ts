@@ -1,4 +1,5 @@
-import type { AspectBodies } from "@caelundas/src/modules/events/aspects/aspects.service";
+// 🏷️ Types
+import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
 
 /**
  * Carries the aspect-body state produced for a single minute so it can be

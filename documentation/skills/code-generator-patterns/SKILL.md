@@ -32,7 +32,7 @@ The component generator enforces these conventions:
 Example:
 
 ```bash
-nx generate code-generator:component --name=Dialog --directory=src/components
+nx generate code-generator:react-component --name=Dialog --directory=src/components
 ```
 
 Generates:
