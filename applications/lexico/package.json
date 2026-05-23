@@ -1,6 +1,4 @@
 {
-  "name": "lexico",
-  "version": "0.0.1",
   "dependencies": {
     "@monorepo/lexico-components": "workspace:*",
     "@supabase/ssr": "^0.8.0",
@@ -22,14 +20,13 @@
     "@types/node": "^22.19.19",
     "@types/react": "^19.2.15",
     "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^4.7.0",
     "autoprefixer": "^10.5.0",
     "postcss": "^8.5.15",
     "size-limit": "^12.1.0",
     "tailwindcss": "^3.4.19",
-    "typescript": "^5.9.3",
-    "vite": "^7.3.1"
+    "typescript": "^5.9.3"
   },
+  "name": "lexico",
   "private": true,
   "scripts": {
     "build": "vite build",
@@ -50,5 +47,6 @@
       "**/routeTree.gen.ts"
     ],
     "strict": true
-  }
+  },
+  "version": "0.0.1"
 }

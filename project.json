@@ -134,6 +134,11 @@
     "format": {},
     "gitleaks": {
       "cache": true,
+      "configurations": {
+        "ci": {
+          "command": "gitleaks git --verbose --redact --config configuration/gitleaks.toml --gitleaks-ignore-path configuration"
+        }
+      },
       "description": "Detect hardcoded secrets in git history using Gitleaks (detection only)",
       "executor": "nx:run-commands",
       "inputs": [

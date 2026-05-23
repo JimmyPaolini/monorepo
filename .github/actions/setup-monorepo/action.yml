@@ -26,8 +26,8 @@ runs:
     - name: 🔧 Setup Homebrew
       uses: Homebrew/actions/setup-homebrew@main
 
-    - name: 📄 Install yamllint
-      run: brew install yamllint --quiet
+    - name: 📄 Install Homebrew tools
+      run: brew install yamllint gitleaks --quiet
       shell: bash
 
     - name: ♻️ Sync Nx Cache

@@ -31,14 +31,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: 🚰 Gitleaks Check
-        uses: gitleaks/gitleaks-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITLEAKS_CONFIG: configuration/gitleaks.toml
-
       - name: 🕋 Setup monorepo
         uses: ./.github/actions/setup-monorepo
+
+      - name: 🚰 Gitleaks Check
+        run: pnpm exec nx run monorepo:gitleaks --configuration=ci
 
       - name: 🥷 Bandit Security Scan
         run: pnpm exec nx affected --target=bandit --base=$NX_BASE --head=$NX_HEAD --parallel=3
