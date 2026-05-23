@@ -41,12 +41,12 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh pr list --head chore/upgrade-dependencies \
+          gh pr list --head chore/dependencies-upgrade \
             --state open --json number --jq '.[].number' | \
             while read -r pr_number; do
               echo "Closing stale PR #$pr_number"
               gh pr close "$pr_number" \
-                --comment "Closing in favor of new automated chore/upgrade-dependencies PR."
+                --comment "Closing in favor of new automated chore/dependencies-upgrade PR."
             done
 
       - name: 🔀 Open Pull Request
@@ -55,7 +55,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "chore(dependencies): ⬆️ Upgrade dependencies"
-          branch: chore/upgrade-dependencies
+          branch: chore/dependencies-upgrade
           delete-branch: true
           title: "chore(dependencies): ⬆️ Upgrade dependencies"
           body: |
