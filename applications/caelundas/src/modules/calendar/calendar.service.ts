@@ -22,7 +22,54 @@ import type {
  */
 @Injectable()
 export class CalendarService {
+  // 🏗️ Dependency Injection
   constructor(private readonly configService: ConfigService<Environment>) {}
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
+
+  /**
+   * Generates VTIMEZONE definition for iCalendar timezone support.
+   *
+   * @param timezone - IANA timezone identifier
+   * @returns VTIMEZONE component as a string
+   *
+   * @remarks Only America/New_York has complete DST rules; others return minimal VTIMEZONE.
+   */
+  private buildTimezoneContent(timezone: string): string {
+    if (timezone === "America/New_York") {
+      return `BEGIN:VTIMEZONE
+TZID:America/New_York
+X-LIC-LOCATION:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE`;
+    }
+
+    // For other timezones, return a basic VTIMEZONE
+    // In production, you'd want a more comprehensive timezone database
+    return `BEGIN:VTIMEZONE
+TZID:${timezone}
+END:VTIMEZONE`;
+  }
+
   /**
    * Serializes calendar events to an ICS file and writes it to the output directory.
    *
@@ -166,42 +213,5 @@ CREATED:${createdAt}Z
 END:VEVENT`;
 
     return vevent;
-  }
-
-  /**
-   * Generates VTIMEZONE definition for iCalendar timezone support.
-   *
-   * @param timezone - IANA timezone identifier
-   * @returns VTIMEZONE component as a string
-   *
-   * @remarks Only America/New_York has complete DST rules; others return minimal VTIMEZONE.
-   */
-  private buildTimezoneContent(timezone: string): string {
-    if (timezone === "America/New_York") {
-      return `BEGIN:VTIMEZONE
-TZID:America/New_York
-X-LIC-LOCATION:America/New_York
-BEGIN:DAYLIGHT
-TZOFFSETFROM:-0500
-TZOFFSETTO:-0400
-TZNAME:EDT
-DTSTART:19700308T020000
-RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
-END:DAYLIGHT
-BEGIN:STANDARD
-TZOFFSETFROM:-0400
-TZOFFSETTO:-0500
-TZNAME:EST
-DTSTART:19701101T020000
-RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
-END:STANDARD
-END:VTIMEZONE`;
-    }
-
-    // For other timezones, return a basic VTIMEZONE
-    // In production, you'd want a more comprehensive timezone database
-    return `BEGIN:VTIMEZONE
-TZID:${timezone}
-END:VTIMEZONE`;
   }
 }

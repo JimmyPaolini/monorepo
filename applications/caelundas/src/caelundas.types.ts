@@ -1,10 +1,3 @@
-/**
- * Core type definitions for celestial bodies, aspects, and astronomical phenomena.
- *
- * Types are derived from symbol mappings to ensure consistency between runtime values
- * and type definitions.
- */
-
 import type {
   aspectPhases,
   eclipsePhases,

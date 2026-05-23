@@ -1,7 +1,11 @@
 # Abbreviations
 
-I dislike abbreviations. I think they add friction to communication, and make code more
-difficult to understand. Here are some common abbreviations that I like to complete.
+I dislike abbreviations. I think they add friction to communication, and make code more difficult to understand.
+They are useful in design where space is limited, or data where space is limited, but those doesn't apply to modern code and most written communication.
+
+## Unhelpful abbreviations
+
+Here are some common abbreviations that I like to unabbreviate:
 
 - a11y : accessibility
 - app : application
@@ -47,3 +51,9 @@ difficult to understand. Here are some common abbreviations that I like to compl
 - txt : text
 - util : utility
 - val : value
+
+## Acceptable Abbreviations
+
+Here are some abbreviations that I sometimes leave abbreviated:
+
+- args : arguments (`arguments` is a reserved keyword in JavaScript)

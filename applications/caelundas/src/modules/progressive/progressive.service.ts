@@ -1,11 +1,11 @@
-import { AnnualSolarCycleService } from "@caelundas/src/modules/events/annualSolarCycle/annualSolarCycle.service";
-import { AspectsService } from "@caelundas/src/modules/events/aspects/aspects.service";
-import { EclipsesService } from "@caelundas/src/modules/events/eclipses/eclipses.service";
-import { IngressesService } from "@caelundas/src/modules/events/ingresses/ingresses.service";
-import { MonthlyLunarCycleService } from "@caelundas/src/modules/events/monthlyLunarCycle/monthlyLunarCycle.service";
-import { PhasesService } from "@caelundas/src/modules/events/phases/phases.service";
-import { RetrogradesService } from "@caelundas/src/modules/events/retrogrades/retrogrades.service";
-import { TwilightsService } from "@caelundas/src/modules/events/twilights/twilights.service";
+import { AnnualSolarCycleService } from "@caelundas/src/modules/annualSolarCycle/annualSolarCycle.service";
+import { AspectsService } from "@caelundas/src/modules/aspects/aspects.service";
+import { EclipsesService } from "@caelundas/src/modules/eclipses/eclipses.service";
+import { IngressesService } from "@caelundas/src/modules/ingresses/ingresses.service";
+import { MonthlyLunarCycleService } from "@caelundas/src/modules/monthlyLunarCycle/monthlyLunarCycle.service";
+import { PhasesService } from "@caelundas/src/modules/phases/phases.service";
+import { RetrogradesService } from "@caelundas/src/modules/retrogrades/retrogrades.service";
+import { TwilightsService } from "@caelundas/src/modules/twilights/twilights.service";
 import { Injectable } from "@nestjs/common";
 
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
@@ -19,6 +19,7 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
  */
 @Injectable()
 export class ProgressiveService {
+  // 🏗️ Dependency Injection
   constructor(
     private readonly annualSolarCycleService: AnnualSolarCycleService,
     private readonly aspectsService: AspectsService,
@@ -29,6 +30,14 @@ export class ProgressiveService {
     private readonly retrogradesService: RetrogradesService,
     private readonly twilightsService: TwilightsService,
   ) {}
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Runs progressive event detection across all domain services and merges the results.

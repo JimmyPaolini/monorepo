@@ -24,9 +24,6 @@ const tsconfigRootDir = path.resolve(
 );
 
 export default [
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  ...([] as any[]),
-
   // ━━━━━━━━━━━━━━━━━━━ Global Ignores ━━━━━━━━━━━━━━━━━━━
   // Patterns excluded from ALL linting (build output, generated code, locks)
   {
@@ -410,6 +407,8 @@ export default [
       ],
       "@typescript-eslint/restrict-template-expressions": "off",
       "@typescript-eslint/prefer-nullish-coalescing": "off",
+      "@typescript-eslint/no-empty-function": "off",
+      "@typescript-eslint/no-useless-constructor": "off",
     },
   },
 
@@ -539,11 +538,13 @@ export default [
     rules: {
       "@typescript-eslint/no-require-imports": "off",
       // Disable ALL type-checked rules for JS files
+      "@typescript-eslint/no-empty-function": "off",
       "@typescript-eslint/no-unsafe-assignment": "off",
       "@typescript-eslint/no-unsafe-call": "off",
       "@typescript-eslint/no-unsafe-member-access": "off",
       "@typescript-eslint/no-unsafe-return": "off",
       "@typescript-eslint/no-unsafe-argument": "off",
+      "@typescript-eslint/no-useless-constructor": "off",
       "@typescript-eslint/explicit-function-return-type": "off",
       "@typescript-eslint/explicit-module-boundary-types": "off",
       "@typescript-eslint/no-floating-promises": "off",

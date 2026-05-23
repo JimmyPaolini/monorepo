@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.0](https://github.com/JimmyPaolini/monorepo/compare/v1.1.1...v1.2.0) (2026-05-23)
+
+### ✨ Features
+
+* **tools:** ✨ add nestjs-service-module generator ([#25](https://github.com/JimmyPaolini/monorepo/issues/25)) ([f1ace47](https://github.com/JimmyPaolini/monorepo/commit/f1ace476ac842e71a5c608c09ea76913c7a9b684))
+
+### ♻️ Code Refactoring
+
+* **caelundas:** ♻️ nest-commander module reorganization and performance optimizations ([#22](https://github.com/JimmyPaolini/monorepo/issues/22)) ([15a8dc0](https://github.com/JimmyPaolini/monorepo/commit/15a8dc03971ca1c9477c71ba66e400df368f3a7c))
+
 ## [1.1.1](https://github.com/JimmyPaolini/monorepo/compare/v1.1.0...v1.1.1) (2026-04-22)
 
 ### ♻️ Code Refactoring

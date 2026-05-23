@@ -5,13 +5,13 @@
 Generate a component:
 
 ```bash
-nx generate code-generator:component --name=Button --directory=src/components
+nx generate code-generator:react-component --name=Button --directory=src/components
 ```
 
 Short form:
 
 ```bash
-nx g code-generator:component --name=Dialog --directory=packages/lexico-components/src/components
+nx g code-generator:react-component --name=Dialog --directory=packages/lexico-components/src/components
 ```
 
 ## Architecture Overview
@@ -22,10 +22,10 @@ nx g code-generator:component --name=Dialog --directory=packages/lexico-componen
 tools/code-generator/
 ├── src/
 │   └── generators/
-│       └── component/
+│       └── react-component/
 │           ├── generator.ts
 │           ├── schema.json
-│           └── files/
+│           └── templates/
 │               ├── __nameKebabCase__.tsx
 │               └── __nameKebabCase__.test.tsx
 ├── generators.json
@@ -57,7 +57,7 @@ See [Common Gotchas](../../documentation/troubleshooting/gotchas.md) for Nx and 
 
 ## Key Files
 
-- [src/generators/component/generator.ts](src/generators/component/generator.ts): Generator logic
-- [src/generators/component/schema.json](src/generators/component/schema.json): CLI prompts
-- [src/generators/component/files/](src/generators/component/files/): Templates
+- [src/generators/react-component/generator.ts](src/generators/react-component/generator.ts): Generator logic
+- [src/generators/react-component/schema.json](src/generators/react-component/schema.json): CLI prompts
+- [src/generators/react-component/templates/](src/generators/react-component/templates/): Templates
 - [generators.json](generators.json): Generator registry

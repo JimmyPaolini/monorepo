@@ -8,6 +8,7 @@ import { EphemerisService } from "./ephemeris.service";
  * Exports {@link EphemerisService} for computing planetary positions, illumination, and diameters.
  */
 @Module({
+  controllers: [],
   imports: [MathModule],
   providers: [EphemerisService],
   exports: [EphemerisService],

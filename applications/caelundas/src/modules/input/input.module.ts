@@ -12,7 +12,9 @@ import { InputService } from "./input.service";
  * Depends on `ConfigModule` being globally available (registered in {@link AppModule}).
  */
 @Module({
-  providers: [InputService],
+  controllers: [],
   exports: [InputService],
+  imports: [],
+  providers: [InputService],
 })
 export class InputModule {}

@@ -13,6 +13,10 @@ describe("MathService", () => {
     service = module.get(MathService);
   });
 
+  it("should be defined", () => {
+    expect(service).toBeDefined();
+  });
+
   describe("static constants", () => {
     it("should have correct arcseconds per degree", () => {
       expect(MathService.arcsecondsPerArcminute).toBe(60);

@@ -14,7 +14,16 @@ import type { Environment, Input } from "./input.types";
  */
 @Injectable()
 export class InputService {
+  // 🏗️ Dependency Injection
   constructor(private readonly configService: ConfigService<Environment>) {}
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Parses the current environment into a validated {@link Input} domain object.

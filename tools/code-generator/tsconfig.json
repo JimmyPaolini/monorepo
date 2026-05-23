@@ -1,15 +1,10 @@
 {
   "compilerOptions": {
-    "module": "NodeNext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "noEmit": true
   },
-  "exclude": [
-    "**/*.spec.ts",
-    "**/*.test.ts",
-    "**/files/**",
-    "dist",
-    "node_modules"
-  ],
+  "exclude": ["**/templates/**", "dist", "node_modules"],
   "extends": "../../configuration/tsconfig.base.json",
   "include": [
     "eslint.config.ts",

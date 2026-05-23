@@ -3,16 +3,16 @@ import baseConfig from "../../configuration/eslint.config.base.ts";
 export default [
   ...baseConfig,
   {
-    ignores: ["**/files/**"],
+    ignores: ["**/templates/**"],
   },
   {
-    files: ["**/*.{json}"],
+    files: ["**/*.json"],
     rules: {
       "@nx/dependency-checks": [
         "error",
         {
           ignoredFiles: ["{projectRoot}/eslint.config.{js,cjs,mjs,ts,cts,mts}"],
-          ignoredDependencies: ["lodash"],
+          ignoredDependencies: ["@types/ejs", "lodash"],
         },
       ],
     },

@@ -1,14 +1,27 @@
 import { mockDates } from "@caelundas/testing/mocks";
+import { ConfigService } from "@nestjs/config";
+import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
-import { describe, expect, it, vi } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { environmentSchema, inputSchema } from "./input.constants";
 import { InputService } from "./input.service";
 
 import type { Environment } from "./input.types";
-import type { ConfigService } from "@nestjs/config";
 
 describe("InputService", () => {
+  let service: InputService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        InputService,
+        { provide: ConfigService, useValue: { get: vi.fn() } },
+      ],
+    }).compile();
+    service = module.get(InputService);
+  });
+
   describe("environmentSchema.parse", () => {
     it("should return validated environment with all fields provided", () => {
       const env = environmentSchema.parse({
@@ -357,5 +370,9 @@ describe("InputService", () => {
         expect(typeof result.longitude).toBe("number");
       });
     });
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
   });
 });

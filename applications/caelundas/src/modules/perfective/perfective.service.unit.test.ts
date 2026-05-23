@@ -1,14 +1,14 @@
+import { AnnualSolarCycleService } from "@caelundas/src/modules/annualSolarCycle/annualSolarCycle.service";
+import { AspectsService } from "@caelundas/src/modules/aspects/aspects.service";
+import { DailyCyclesService } from "@caelundas/src/modules/dailyCycles/dailyCycles.service";
 import { DatetimeService } from "@caelundas/src/modules/datetime/datetime.service";
+import { EclipsesService } from "@caelundas/src/modules/eclipses/eclipses.service";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
-import { AnnualSolarCycleService } from "@caelundas/src/modules/events/annualSolarCycle/annualSolarCycle.service";
-import { AspectsService } from "@caelundas/src/modules/events/aspects/aspects.service";
-import { DailyCyclesService } from "@caelundas/src/modules/events/dailyCycles/dailyCycles.service";
-import { EclipsesService } from "@caelundas/src/modules/events/eclipses/eclipses.service";
-import { IngressesService } from "@caelundas/src/modules/events/ingresses/ingresses.service";
-import { MonthlyLunarCycleService } from "@caelundas/src/modules/events/monthlyLunarCycle/monthlyLunarCycle.service";
-import { PhasesService } from "@caelundas/src/modules/events/phases/phases.service";
-import { RetrogradesService } from "@caelundas/src/modules/events/retrogrades/retrogrades.service";
-import { TwilightsService } from "@caelundas/src/modules/events/twilights/twilights.service";
+import { IngressesService } from "@caelundas/src/modules/ingresses/ingresses.service";
+import { MonthlyLunarCycleService } from "@caelundas/src/modules/monthlyLunarCycle/monthlyLunarCycle.service";
+import { PhasesService } from "@caelundas/src/modules/phases/phases.service";
+import { RetrogradesService } from "@caelundas/src/modules/retrogrades/retrogrades.service";
+import { TwilightsService } from "@caelundas/src/modules/twilights/twilights.service";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
@@ -77,6 +77,10 @@ describe("PerfectiveService", () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
+  });
+
+  it("should be defined", () => {
+    expect(service).toBeDefined();
   });
 
   describe("detect", () => {
