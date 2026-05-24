@@ -12,14 +12,14 @@ import re
 def _words(name: str) -> list[str]:
     """Split *name* into lower-case words regardless of its original casing.
 
-    Handles: kebab-case, snake_case, camelCase, PascalCase, SCREAMING_SNAKE.
+    Handles: kebab-case, snake_case, camelCase, PascalCase, CONSTANT_CASE.
     """
     # Insert a word boundary before each upper-case run that follows a
     # lower-case character (camelCase / PascalCase split).
     separated = re.sub(r"([a-z0-9])([A-Z])", r"\1_\2", name)
     # Also split on consecutive upper-case followed by lower-case (ABCDef → ABC Def).
     separated = re.sub(r"([A-Z]+)([A-Z][a-z])", r"\1_\2", separated)
-    # Tokenise on any non-alphanumeric character.
+    # Tokenize on any non-alphanumeric character.
     raw = re.split(r"[^a-zA-Z0-9]+", separated)
     return [w.lower() for w in raw if w]
 
@@ -32,7 +32,7 @@ def name_variables(name: str) -> dict[str, str]:
 
     >>> name_variables("myService")
     {'name': 'myService', 'nameCamel': 'myService', 'namePascal': 'MyService', \
-'nameSnake': 'my_service', 'nameScream': 'MY_SERVICE', 'nameTitle': 'My Service'}
+'nameSnake': 'my_service', 'nameConstant': 'MY_SERVICE', 'nameKebab': 'my-service'}
     """
     words = _words(name)
 
@@ -42,21 +42,21 @@ def name_variables(name: str) -> dict[str, str]:
             "nameCamel": name,
             "namePascal": name,
             "nameSnake": name,
-            "nameScream": name,
-            "nameTitle": name,
+            "nameConstant": name,
+            "nameKebab": name,
         }
 
     name_camel = words[0] + "".join(w.capitalize() for w in words[1:])
     name_pascal = "".join(w.capitalize() for w in words)
     name_snake = "_".join(words)
-    name_scream = "_".join(w.upper() for w in words)
-    name_title = " ".join(w.capitalize() for w in words)
+    name_constant = "_".join(w.upper() for w in words)
+    name_kebab = "-".join(words)
 
     return {
         "name": name,
         "nameCamel": name_camel,
         "namePascal": name_pascal,
         "nameSnake": name_snake,
-        "nameScream": name_scream,
-        "nameTitle": name_title,
+        "nameConstant": name_constant,
+        "nameKebab": name_kebab,
     }

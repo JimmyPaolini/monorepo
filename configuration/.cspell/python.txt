@@ -28,6 +28,7 @@ classmethod
 dataclasses
 Dataclass
 DOTALL
+frozenset
 getattr
 hasattr
 isinstance
@@ -42,6 +43,16 @@ rstrip
 setattr
 staticmethod
 tomllib
+
+#endregion
+
+#region 🧪 Testing
+autouse
+
+#endregion
+
+#region 🐍 Python Libraries
+libcst
 
 #endregion
 

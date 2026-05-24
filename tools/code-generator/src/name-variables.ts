@@ -12,10 +12,10 @@ export interface NameVariables {
   namePascal: string;
   /** snake_case variant. */
   nameSnake: string;
-  /** SCREAMING_SNAKE_CASE variant. */
-  nameScream: string;
-  /** Title Case variant. */
-  nameTitle: string;
+  /** CONSTANT_CASE variant. */
+  nameConstant: string;
+  /** kebab-case variant. */
+  nameKebab: string;
 }
 
 /**
@@ -30,8 +30,8 @@ export function nameVariables(name: string): NameVariables {
   const nameCamel = _.camelCase(name);
   const namePascal = _.upperFirst(nameCamel);
   const nameSnake = _.snakeCase(name);
-  const nameScream = nameSnake.toUpperCase();
-  const nameTitle = _.startCase(nameCamel);
+  const nameConstant = nameSnake.toUpperCase();
+  const nameKebab = _.kebabCase(name);
 
-  return { name, nameCamel, namePascal, nameSnake, nameScream, nameTitle };
+  return { name, nameCamel, namePascal, nameSnake, nameConstant, nameKebab };
 }

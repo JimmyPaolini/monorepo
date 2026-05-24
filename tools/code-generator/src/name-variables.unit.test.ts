@@ -11,8 +11,8 @@ describe("nameVariables", () => {
         nameCamel: "myService",
         namePascal: "MyService",
         nameSnake: "my_service",
-        nameScream: "MY_SERVICE",
-        nameTitle: "My Service",
+        nameConstant: "MY_SERVICE",
+        nameKebab: "my-service",
       });
     });
   });
@@ -25,8 +25,8 @@ describe("nameVariables", () => {
         nameCamel: "calendar",
         namePascal: "Calendar",
         nameSnake: "calendar",
-        nameScream: "CALENDAR",
-        nameTitle: "Calendar",
+        nameConstant: "CALENDAR",
+        nameKebab: "calendar",
       });
     });
 
@@ -37,8 +37,8 @@ describe("nameVariables", () => {
         nameCamel: "annualSolarCycle",
         namePascal: "AnnualSolarCycle",
         nameSnake: "annual_solar_cycle",
-        nameScream: "ANNUAL_SOLAR_CYCLE",
-        nameTitle: "Annual Solar Cycle",
+        nameConstant: "ANNUAL_SOLAR_CYCLE",
+        nameKebab: "annual-solar-cycle",
       });
     });
   });
@@ -51,8 +51,8 @@ describe("nameVariables", () => {
         nameCamel: "button",
         namePascal: "Button",
         nameSnake: "button",
-        nameScream: "BUTTON",
-        nameTitle: "Button",
+        nameConstant: "BUTTON",
+        nameKebab: "button",
       });
     });
 
@@ -63,8 +63,8 @@ describe("nameVariables", () => {
         nameCamel: "myComponent",
         namePascal: "MyComponent",
         nameSnake: "my_component",
-        nameScream: "MY_COMPONENT",
-        nameTitle: "My Component",
+        nameConstant: "MY_COMPONENT",
+        nameKebab: "my-component",
       });
     });
   });
@@ -77,8 +77,8 @@ describe("nameVariables", () => {
         nameCamel: "myService",
         namePascal: "MyService",
         nameSnake: "my_service",
-        nameScream: "MY_SERVICE",
-        nameTitle: "My Service",
+        nameConstant: "MY_SERVICE",
+        nameKebab: "my-service",
       });
     });
   });

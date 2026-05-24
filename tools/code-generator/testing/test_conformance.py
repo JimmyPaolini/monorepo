@@ -5,31 +5,28 @@ Discovers instance folders whose templates contain ``.py`` or ``.ipynb`` files,
 renders Mustache templates with ``name_variables(name)`` (using ``chevron``),
 then validates each file using:
 
-- ``libcst``     for ``.py`` code cells / files
-- ``json``       for notebook structure
-- ``libcst``     for notebook code cells
-- ``mistletoe``  for notebook Markdown cells
+- ``validator.validate_conformance``  for ``.py`` code cells / files
+- ``json``                            for notebook structure
+- ``validator.validate_conformance``  for notebook code cells
+- ``mistletoe``                       for notebook Markdown cells
 
 Because no Python-side generator templates currently exist, this suite
 discovers zero instances and passes immediately.  When Python generators are
 added the test will auto-expand via the discovery logic.
-
-Error schema matches the shared ``ConformanceError`` TypeScript interface so
-that downstream tooling can process both outputs uniformly.
 
 Output: ``tools/code-generator/tmp/python-conformance-results.json``
 """
 
 from __future__ import annotations
 
+import importlib.util as _ilu
 import json
-import os
 import re
+import types
 from pathlib import Path
 from typing import Any
 
 import chevron
-import libcst as cst
 import mistletoe
 import pytest
 
@@ -47,17 +44,25 @@ RESULTS_OUTPUT_PATH = (
 )
 
 # ---------------------------------------------------------------------------
-# name_variables (Python equivalent of the TS utility)
+# Load conformance modules from src/conformance/
 # ---------------------------------------------------------------------------
 
-_name_variables_module = WORKSPACE_ROOT / "tools" / "code-generator" / "src" / "conformance" / "name_variables.py"
-import importlib.util as _ilu
+_CONFORMANCE_DIR = WORKSPACE_ROOT / "tools" / "code-generator" / "src" / "conformance"
 
-_spec = _ilu.spec_from_file_location("name_variables", str(_name_variables_module))
-assert _spec and _spec.loader
-_nv_mod = _ilu.module_from_spec(_spec)
-_spec.loader.exec_module(_nv_mod)  # type: ignore[union-attr]
+
+def _load_module(name: str, path: Path) -> types.ModuleType:
+    spec = _ilu.spec_from_file_location(name, str(path))
+    assert spec and spec.loader
+    mod = _ilu.module_from_spec(spec)
+    spec.loader.exec_module(mod)  # type: ignore[union-attr]
+    return mod
+
+
+_nv_mod = _load_module("name_variables", _CONFORMANCE_DIR / "name_variables.py")
 name_variables = _nv_mod.name_variables  # type: ignore[attr-defined]
+
+_validator_mod = _load_module("validator", _CONFORMANCE_DIR / "validator.py")
+validate_conformance = _validator_mod.validate_conformance  # type: ignore[attr-defined]
 
 # ---------------------------------------------------------------------------
 # ConformanceError schema helpers
@@ -101,15 +106,7 @@ def _format_errors(folder_path: str, errors: list[ConformanceError]) -> str:
 
 
 # ---------------------------------------------------------------------------
-# TODO comment exclusion
-# ---------------------------------------------------------------------------
-
-def _is_todo_comment(text: str) -> bool:
-    return text.strip().lower().startswith("todo")
-
-
-# ---------------------------------------------------------------------------
-# Python (.py) validator using libcst
+# Python (.py) validator — delegates to validator.validate_conformance
 # ---------------------------------------------------------------------------
 
 def _validate_python_file(
@@ -117,176 +114,25 @@ def _validate_python_file(
     expected_src: str,
     actual_src: str,
 ) -> list[ConformanceError]:
-    """Validate a ``.py`` file against its expected content using libcst."""
-    errors: list[ConformanceError] = []
-    try:
-        expected_tree = cst.parse_module(expected_src)
-        actual_tree = cst.parse_module(actual_src)
-    except cst.ParserSyntaxError:
-        return errors
+    """Validate a ``.py`` file against its already-rendered expected content.
 
-    expected_defs = _collect_top_level_defs(expected_tree)
-    actual_defs = _collect_top_level_defs(actual_tree)
-
-    for name, expected_node in expected_defs.items():
-        if name not in actual_defs:
-            errors.append(
-                _error(
-                    kind="missing_function" if isinstance(expected_node, cst.FunctionDef) else "missing_export",
-                    file=file,
-                    expected=f"def {name}" if isinstance(expected_node, cst.FunctionDef) else f"class {name}",
-                    found=None,
-                    hint=f"Add a {'function' if isinstance(expected_node, cst.FunctionDef) else 'class'} named '{name}'",
-                )
-            )
-            continue
-
-        actual_node = actual_defs[name]
-        if isinstance(expected_node, cst.FunctionDef) and isinstance(actual_node, cst.FunctionDef):
-            errors.extend(_validate_function_def(file, expected_node, actual_node))
-
-    # Validate module-level comments
-    errors.extend(_validate_module_comments(file, expected_tree, actual_tree))
-
-    return errors
-
-
-def _unwrap_statement_node(
-    stmt: cst.BaseStatement,
-) -> cst.BaseStatement:
-    """Unwrap a ``SimpleStatementLine`` to its first child if applicable."""
-    if isinstance(stmt, cst.SimpleStatementLine) and hasattr(stmt, "body"):
-        return stmt.body[0]  # type: ignore[return-value]
-    return stmt
-
-
-def _collect_top_level_defs(
-    module: cst.Module,
-) -> dict[str, cst.FunctionDef | cst.ClassDef]:
-    result: dict[str, cst.FunctionDef | cst.ClassDef] = {}
-    for stmt in module.body:
-        node = _unwrap_statement_node(stmt)
-        if isinstance(node, (cst.FunctionDef, cst.ClassDef)):
-            result[node.name.value] = node
-        elif isinstance(stmt, (cst.FunctionDef, cst.ClassDef)):
-            result[stmt.name.value] = stmt
-    return result
-
-
-def _render_params(func: cst.FunctionDef) -> str:
-    parts: list[str] = []
-    for param in func.params.params:
-        annotation = (
-            cst.parse_module("").code_for_node(param.annotation.annotation)
-            if param.annotation
-            else ""
+    The *expected_src* has already been rendered via Mustache; pass it as the
+    template with empty data so no further substitution is applied.
+    """
+    error_strings = validate_conformance(
+        template=expected_src,
+        instance=actual_src,
+        data={},
+    )
+    return [
+        _error(
+            kind="conformance_error",
+            file=file,
+            expected="template structure",
+            found=msg,
         )
-        parts.append(f"{param.name.value}: {annotation}" if annotation else param.name.value)
-    return ", ".join(parts)
-
-
-def _validate_function_def(
-    file: str,
-    expected: cst.FunctionDef,
-    actual: cst.FunctionDef,
-) -> list[ConformanceError]:
-    errors: list[ConformanceError] = []
-    name = expected.name.value
-
-    # Signature (parameters)
-    expected_params = _render_params(expected)
-    actual_params = _render_params(actual)
-    if expected_params != actual_params:
-        errors.append(
-            _error(
-                kind="wrong_signature",
-                file=file,
-                expected=f"def {name}({expected_params})",
-                found=f"def {name}({actual_params})",
-                hint=f"Update '{name}' to match expected parameter signature",
-            )
-        )
-
-    # Inline comments (via leading lines)
-    errors.extend(_validate_leading_comments(file, name, expected, actual))
-
-    return errors
-
-
-def _validate_leading_comments(
-    file: str,
-    name: str,
-    expected: cst.FunctionDef | cst.ClassDef,
-    actual: cst.FunctionDef | cst.ClassDef,
-) -> list[ConformanceError]:
-    errors: list[ConformanceError] = []
-
-    expected_comments = _extract_leading_comments(expected)
-    actual_comments = set(_extract_leading_comments(actual))
-
-    for comment in expected_comments:
-        if _is_todo_comment(comment):
-            continue
-        if comment not in actual_comments:
-            errors.append(
-                _error(
-                    kind="missing_comment",
-                    file=file,
-                    expected=comment,
-                    found=None,
-                    hint=f"Add the comment '{comment}' before '{name}'",
-                )
-            )
-    return errors
-
-
-def _extract_leading_comments(node: cst.CSTNode) -> list[str]:
-    """Extract leading comment texts from a CST node's leading lines."""
-    comments: list[str] = []
-    if hasattr(node, "lines_after_decorators"):
-        for line in node.lines_after_decorators:
-            for part in line.comment if hasattr(line, "comment") and line.comment else []:
-                comments.append(str(part.value) if hasattr(part, "value") else "")
-    if hasattr(node, "leading_lines"):
-        for line in node.leading_lines:
-            if hasattr(line, "comment") and line.comment is not None:
-                comments.append(str(line.comment.value))
-    return [c for c in comments if c]
-
-
-def _validate_module_comments(
-    file: str,
-    expected: cst.Module,
-    actual: cst.Module,
-) -> list[ConformanceError]:
-    errors: list[ConformanceError] = []
-    expected_comments = _extract_module_comments(expected)
-    actual_comments = set(_extract_module_comments(actual))
-
-    for comment in expected_comments:
-        if _is_todo_comment(comment):
-            continue
-        if comment not in actual_comments:
-            errors.append(
-                _error(
-                    kind="missing_comment",
-                    file=file,
-                    expected=comment,
-                    found=None,
-                    hint=f"Add the comment '{comment}' at the module level",
-                )
-            )
-    return errors
-
-
-def _extract_module_comments(module: cst.Module) -> list[str]:
-    comments: list[str] = []
-    for stmt in module.body:
-        if hasattr(stmt, "leading_lines"):
-            for line in stmt.leading_lines:
-                if hasattr(line, "comment") and line.comment is not None:
-                    comments.append(str(line.comment.value))
-    return comments
+        for msg in error_strings
+    ]
 
 
 # ---------------------------------------------------------------------------
@@ -536,8 +382,8 @@ def test_name_variables_parity(name: str) -> None:
     assert "nameCamel" in result
     assert "namePascal" in result
     assert "nameSnake" in result
-    assert "nameScream" in result
-    assert "nameTitle" in result
+    assert "nameConstant" in result
+    assert "nameKebab" in result
     # name is always preserved as-is
     assert result["name"] == name
 
@@ -552,3 +398,4 @@ def _write_results() -> Any:
     RESULTS_OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     with RESULTS_OUTPUT_PATH.open("w") as f:
         json.dump(_ALL_RESULTS, f, indent=2)
+

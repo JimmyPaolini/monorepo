@@ -105,7 +105,7 @@ export function validateInstanceFile(args: {
  * `__nameCamel__.service.ts`) that are resolved to the instance filename
  * using the name variable substitutions derived from `instanceDirectoryPath`'s
  * basename. The same substitution map (`name`, `nameCamel`, `namePascal`,
- * `nameSnake`, `nameScream`, `nameTitle`) is passed to {@link validateInstanceFile}
+ * `nameSnake`, `nameConstant`, `nameKebab`) is passed to {@link validateInstanceFile}
  * when rendering each template.
  *
  * Validation uses AST superset-checking so that developer modifications to
