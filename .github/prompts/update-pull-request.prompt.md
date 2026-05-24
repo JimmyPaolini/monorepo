@@ -62,12 +62,8 @@ Determine the current branch and locate its open PR:
 
 ```bash
 git rev-parse --abbrev-ref HEAD
+gh pr view --json number,title,body,baseRefName
 ```
-
-Then use GitHub MCP tools to find the PR for this branch:
-
-- Use `mcp_github_list_pull_requests` or `mcp_github_search_pull_requests` with the current branch as `head`
-- Use `mcp_github_pull_request_read` with method `get` to retrieve the existing PR details (number, title, body, base branch)
 
 If no PR exists, inform the user and suggest using the **create-pull-request** prompt instead.
 
@@ -105,7 +101,7 @@ Search for issues and documentation that may be related to this PR:
 
 - Parse the branch name for issue numbers (e.g., `feat/lexico-fix-123` → `#123`)
 - Scan commit messages for issue references
-- Use `mcp_github_search_issues` to find open issues matching keywords from the changes
+- Search for open issues matching keywords: `gh issue list --search "<keywords>"`
 - Look for relevant documentation links: AGENTS.md, SKILL.md, planning files, ADRs, or external library docs referenced in the changes
 
 Use appropriate linking keywords:
@@ -138,29 +134,20 @@ Structure:
 
 ### Step 7 — Update the Pull Request
 
-Use the GitHub MCP tool to apply the changes:
+Use the `gh` CLI to apply the changes:
 
-```typescript
-mcp_github_update_pull_request({
-  owner: "JimmyPaolini",
-  repo: "monorepo",
-  pullNumber: <PR_NUMBER>,
-  title: "<type>(<scope>): <gitmoji> <subject>",
-  body: "<generated description>"
-});
+```bash
+gh pr edit <PR_NUMBER> \
+  --title "<type>(<scope>): <gitmoji> <subject>" \
+  --body "<generated description>"
 ```
 
 ### Step 8 — Verify
 
-After updating, confirm the PR was updated successfully by reading it back:
+After updating, confirm the PR was updated successfully:
 
-```typescript
-mcp_github_pull_request_read({
-  method: "get",
-  owner: "JimmyPaolini",
-  repo: "monorepo",
-  pullNumber: <PR_NUMBER>
-});
+```bash
+gh pr view <PR_NUMBER>
 ```
 
 Report the updated title and a brief confirmation to the user.
@@ -182,10 +169,10 @@ Before submitting the update, verify:
 If the PR update fails:
 
 ```bash
-# Check GitHub CLI auth as fallback
+# Check GitHub CLI auth
 gh auth status
 
-# Fallback: update via CLI
+# Retry the update
 gh pr edit <PR_NUMBER> \
   --title "<type>(<scope>): <gitmoji> <subject>" \
   --body "<generated description>"

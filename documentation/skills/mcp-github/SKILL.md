@@ -8,9 +8,28 @@ license: MIT
 
 This skill covers using the GitHub MCP server to interact with GitHub repositories, manage pull requests, issues, workflows, and other GitHub features programmatically.
 
-## When to Use
+## ⚠️ Prefer `gh` CLI and `git` over MCP Tools
 
-Use GitHub MCP tools when:
+**Always prefer `gh` (GitHub CLI) and `git` commands over GitHub MCP server tools.**
+
+The `gh` CLI is already authenticated in the Copilot environment (via the copilot setup steps) and produces the same results with simpler, more readable commands. Use MCP tools only when the `gh` CLI cannot accomplish the task (e.g., certain GraphQL-only API operations).
+
+| Task | Preferred | MCP fallback |
+| ---- | --------- | ------------ |
+| Create PR | `gh pr create` | `mcp_github_create_pull_request` |
+| Update PR | `gh pr edit` | `mcp_github_update_pull_request` |
+| List/find PR | `gh pr list` / `gh pr view` | `mcp_github_list_pull_requests` |
+| Merge PR | `gh pr merge` | `mcp_github_merge_pull_request` |
+| Create issue | `gh issue create` | `mcp_github_issue_write` |
+| List issues | `gh issue list` | `mcp_github_list_issues` |
+| Search issues | `gh issue list --search` | `mcp_github_search_issues` |
+| Create branch | `git checkout -b` + `git push` | `mcp_github_create_branch` |
+| Read file | `cat` / view tool | `mcp_github_get_file_contents` |
+| Write file | edit tool + `git commit` | `mcp_github_create_or_update_file` |
+
+## When to Use This Skill
+
+Use this skill for GitHub repository operations when `gh` CLI is not available or when a GraphQL-only operation is required:
 
 - Creating or updating pull requests
 - Managing issues and labels
@@ -69,6 +88,41 @@ See the GitHub instructions in your context for complete tool documentation.
 
 ### Creating Pull Requests
 
+**Preferred approach — `gh` CLI:**
+
+```bash
+# 1. Create feature branch
+git checkout -b feat/new-feature
+
+# 2. Make changes, commit
+git add .
+git commit -m "feat(lexico-components): ✨ add new button component"
+git push -u origin feat/new-feature
+
+# 3. Create pull request
+gh pr create \
+  --title "feat(lexico-components): ✨ add new button component" \
+  --assignee @me \
+  --body "## 🌰 Summary
+
+Adds a new button component to lexico-components.
+
+## 📝 Details
+
+- Add NewButton component
+- Export from index
+
+## 🧪 Testing
+
+\`nx run lexico-components:test\`
+
+## 🔗 Related
+
+- <!-- links -->"
+```
+
+**MCP fallback (only when `gh` CLI is unavailable):**
+
 1. **Create feature branch:**
 
    ```typescript
@@ -116,6 +170,25 @@ See the GitHub instructions in your context for complete tool documentation.
    ```
 
 ### Code Review Workflow
+
+**Preferred approach — `gh` CLI:**
+
+```bash
+# View PR details
+gh pr view 42
+
+# View diff
+gh pr diff 42
+
+# Submit review
+gh pr review 42 --approve --body "Looks good!"
+# or
+gh pr review 42 --comment --body "A few suggestions..."
+# or
+gh pr review 42 --request-changes --body "Please fix..."
+```
+
+**MCP fallback:**
 
 1. **Get PR details:**
 
@@ -182,6 +255,25 @@ See the GitHub instructions in your context for complete tool documentation.
 
 ### Issue Operations
 
+**Preferred approach — `gh` CLI:**
+
+```bash
+# Create issue
+gh issue create \
+  --title "Add dark mode support to lexico-components" \
+  --body "Add dark mode theming support to all components." \
+  --label "enhancement,lexico-components" \
+  --assignee JimmyPaolini
+
+# Search issues
+gh issue list --search "is:open label:bug"
+
+# Close issue
+gh issue close 123 --comment "Fixed in PR #456"
+```
+
+**MCP fallback:**
+
 1. **Create issue:**
 
    ```typescript
@@ -218,6 +310,20 @@ See the GitHub instructions in your context for complete tool documentation.
    ```
 
 ### Repository File Operations
+
+**Preferred approach — use the local filesystem + `git`:**
+
+```bash
+# Read file
+cat package.json
+
+# Edit file with editor / edit tool, then commit
+git add package.json
+git commit -m "chore(monorepo): bump version to 1.2.3"
+git push
+```
+
+**MCP fallback:**
 
 1. **Read configuration:**
 
@@ -282,7 +388,21 @@ See the GitHub instructions in your context for complete tool documentation.
 
 ### monorepo Automation
 
-**Create documentation PR:**
+**Create documentation PR (preferred — `gh` CLI):**
+
+```bash
+git checkout -b docs/update-agents
+# ... make file edits ...
+git add AGENTS.md applications/caelundas/AGENTS.md applications/lexico/AGENTS.md
+git commit -m "docs: update AGENTS.md documentation"
+git push -u origin docs/update-agents
+gh pr create \
+  --title "docs: update AGENTS.md documentation" \
+  --assignee @me \
+  --body "Updates AGENTS.md files with latest architecture patterns."
+```
+
+**Create documentation PR (MCP fallback):**
 
 ```typescript
 // Create branch
@@ -321,7 +441,13 @@ mcp_github_create_pull_request({
 });
 ```
 
-**Sync with PR template:**
+**Sync with PR template (preferred — local file):**
+
+```bash
+cat .github/PULL_REQUEST_TEMPLATE.md
+```
+
+**Sync with PR template (MCP fallback):**
 
 ```typescript
 // Get PR template
@@ -341,20 +467,38 @@ const prBody = fillPRTemplate(atob(template.content), {
 
 ### Issue Automation
 
-**Create issues from backlog:**
+**Create issues from backlog (preferred — `gh` CLI):**
+
+```bash
+gh issue create \
+  --title "Add pagination to search results" \
+  --body "Estimated effort: 5 story points" \
+  --label "enhancement,lexico"
+
+gh issue create \
+  --title "Improve ephemeris calculation performance" \
+  --body "Estimated effort: 8 story points" \
+  --label "performance,caelundas"
+```
+
+**Close stale issues (preferred — `gh` CLI):**
+
+```bash
+# List old issues
+gh issue list --search "is:open created:<2024-01-01"
+
+# Close with comment
+gh issue comment 123 --body "Closing due to inactivity. Please reopen if still relevant."
+gh issue close 123
+```
+
+**MCP fallback:**
 
 ```typescript
+// Create issues
 const backlogItems = [
-  {
-    title: "Add pagination to search results",
-    labels: ["enhancement", "lexico"],
-    estimate: 5,
-  },
-  {
-    title: "Improve ephemeris calculation performance",
-    labels: ["performance", "caelundas"],
-    estimate: 8,
-  },
+  { title: "Add pagination to search results", labels: ["enhancement", "lexico"], estimate: 5 },
+  { title: "Improve ephemeris calculation performance", labels: ["performance", "caelundas"], estimate: 8 },
 ];
 
 for (const item of backlogItems) {
@@ -367,17 +511,12 @@ for (const item of backlogItems) {
     labels: item.labels,
   });
 }
-```
 
-**Close stale issues:**
-
-```typescript
-// Find old issues
+// Find and close old issues
 const oldIssues = mcp_github_search_issues({
   query: "repo:JimmyPaolini/monorepo is:issue is:open created:<2024-01-01",
 });
 
-// Close with comment
 for (const issue of oldIssues.items) {
   mcp_github_add_issue_comment({
     owner: "JimmyPaolini",
@@ -400,6 +539,31 @@ for (const issue of oldIssues.items) {
 ## Advanced Patterns
 
 ### Automated Release PR
+
+**Preferred approach — `gh` CLI + `git`:**
+
+```bash
+# Get last release tag
+git describe --tags --abbrev=0
+
+# Get commits since last release
+git log <last-tag>..HEAD --oneline
+
+# Create release branch, update files, push
+git checkout -b release/1.2.3
+# ... edit package.json, CHANGELOG.md ...
+git add package.json CHANGELOG.md
+git commit -m "chore(monorepo): release 1.2.3"
+git push -u origin release/1.2.3
+
+# Create release PR
+gh pr create \
+  --title "chore(monorepo): release 1.2.3" \
+  --assignee @me \
+  --body "$(cat CHANGELOG.md)"
+```
+
+**MCP fallback:**
 
 ```typescript
 // Get last release tag
@@ -453,6 +617,18 @@ mcp_github_create_pull_request({
 ```
 
 ### Code Search & Refactoring
+
+**Preferred approach — `gh` CLI + `git`:**
+
+```bash
+# Find all usages of deprecated API
+gh search code "oldAPIFunction" --repo JimmyPaolini/monorepo
+
+# Or use grep on the local checkout
+grep -r "oldAPIFunction" --include="*.ts" .
+```
+
+**MCP fallback:**
 
 ```typescript
 // Find all usages of deprecated API
