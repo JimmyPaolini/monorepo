@@ -736,7 +736,6 @@
   "prettier.configPath": "configuration/prettier.config.ts",
   "python.analysis.referencesCodeLens": true,
   "python.analysis.typeCheckingMode": "standard",
-  "python.defaultInterpreterPath": "${workspaceFolder}/applications/affirmations/.venv/bin/python",
   "python.testing.pytestArgs": ["."],
   "python.testing.pytestEnabled": true,
   "python.testing.unittestEnabled": true,
