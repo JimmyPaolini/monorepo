@@ -88,7 +88,7 @@
       "configurations": {
         "check": {
           "commands": [
-            "nx run {projectName}:npm-check-updates:check",
+            "nx run {projectName}:upgrade-dependencies:check",
             "nx run {projectName}:license-check",
             "nx run {projectName}:pnpm-audit:check",
             "nx run {projectName}:sherif:check",
@@ -98,7 +98,7 @@
         },
         "write": {
           "commands": [
-            "nx run {projectName}:npm-check-updates:write",
+            "nx run {projectName}:upgrade-dependencies:write",
             "nx run {projectName}:license-check",
             "nx run {projectName}:pnpm-audit:write",
             "nx run {projectName}:sherif:write",
@@ -108,7 +108,7 @@
         }
       },
       "defaultConfiguration": "check",
-      "description": "Run all dependency management tools (npm-check-updates, pnpm-audit, license-check, sherif, syncpack)",
+      "description": "Run all dependency management tools (upgrade-dependencies, pnpm-audit, license-check, sherif, syncpack)",
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{projectRoot}"
@@ -134,11 +134,16 @@
     "format": {},
     "gitleaks": {
       "cache": true,
+      "configurations": {
+        "ci": {
+          "command": "gitleaks git --verbose --redact --config configuration/gitleaks.toml --gitleaks-ignore-path configuration"
+        }
+      },
       "description": "Detect hardcoded secrets in git history using Gitleaks (detection only)",
       "executor": "nx:run-commands",
       "inputs": [
-        "{workspaceRoot}/configuration/gitleaks.toml",
         "{workspaceRoot}/configuration/.gitleaksignore",
+        "{workspaceRoot}/configuration/gitleaks.toml",
         "default"
       ],
       "options": {
@@ -150,10 +155,10 @@
       "cache": true,
       "configurations": {
         "check": {
-          "command": "NODE_OPTIONS='--import=tsx/esm' knip --config configuration/knip.config.ts --workspace ."
+          "command": "knip --config configuration/knip.config.ts --workspace ."
         },
         "write": {
-          "command": "NODE_OPTIONS='--import=tsx/esm' knip --config configuration/knip.config.ts --fix --workspace ."
+          "command": "knip --config configuration/knip.config.ts --fix --workspace ."
         }
       },
       "defaultConfiguration": "check",
@@ -211,21 +216,6 @@
       "options": {
         "cwd": "{projectRoot}"
       }
-    },
-    "npm-check-updates": {
-      "cache": false,
-      "configurations": {
-        "check": {
-          "command": "ncu --workspaces --root"
-        },
-        "write": {
-          "command": "ncu --workspaces --root -u && pnpm install --no-frozen-lockfile"
-        }
-      },
-      "defaultConfiguration": "check",
-      "description": "Check for dependency updates (check) or update to latest versions (write)",
-      "executor": "nx:run-commands",
-      "options": {}
     },
     "oxfmt": {
       "cache": true,
@@ -318,10 +308,10 @@
       "cache": true,
       "configurations": {
         "check": {
-          "command": "pnpm dlx sherif@1.10.0"
+          "command": "pnpm dlx sherif@1.10.0 -p applications/JimmyPaolini"
         },
         "write": {
-          "command": "pnpm dlx sherif@1.10.0 --fix && nx run monorepo:format:write"
+          "command": "pnpm dlx sherif@1.10.0 -p applications/JimmyPaolini --fix && nx run monorepo:format:write"
         }
       },
       "defaultConfiguration": "check",
@@ -481,10 +471,10 @@
       "cache": true,
       "configurations": {
         "check": {
-          "command": "pnpm exec syncpack list-mismatches --config configuration/syncpack.config.cjs && pnpm exec syncpack lint-semver-ranges --config configuration/syncpack.config.cjs"
+          "command": "pnpm exec syncpack lint --config configuration/syncpack.config.cjs"
         },
         "write": {
-          "command": "pnpm exec syncpack fix-mismatches --config configuration/syncpack.config.cjs && pnpm exec syncpack format --config configuration/syncpack.config.cjs && nx run monorepo:format:write"
+          "command": "pnpm exec syncpack fix --config configuration/syncpack.config.cjs && nx run monorepo:format:write"
         }
       },
       "defaultConfiguration": "check",
@@ -496,7 +486,7 @@
         "{workspaceRoot}/pnpm-lock.yaml"
       ],
       "options": {
-        "command": "pnpm exec syncpack list-mismatches --config configuration/syncpack.config.cjs && pnpm exec syncpack lint-semver-ranges --config configuration/syncpack.config.cjs",
+        "command": "pnpm exec syncpack lint --config configuration/syncpack.config.cjs",
         "cwd": "{workspaceRoot}"
       }
     },
@@ -565,6 +555,21 @@
         "cwd": "{projectRoot}"
       }
     },
+    "upgrade-dependencies": {
+      "cache": false,
+      "configurations": {
+        "check": {
+          "command": "pnpm outdated --recursive"
+        },
+        "write": {
+          "command": "pnpm update --latest --recursive"
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "Check for dependency updates (check) or upgrade all dependencies to latest versions (write)",
+      "executor": "nx:run-commands",
+      "options": {}
+    },
     "validate-branch-name": {
       "cache": false,
       "description": "Validate the current branch name against the configured naming convention (invoked by the pre-push git hook)",
@@ -586,8 +591,8 @@
       "inputs": [
         "{projectRoot}/*.py",
         "{projectRoot}/scripts/**/*.py",
-        "{workspaceRoot}/configuration/vulture_whitelist.py",
         "{workspaceRoot}/applications/affirmations/pyproject.toml",
+        "{workspaceRoot}/configuration/vulture_whitelist.py",
         "default"
       ],
       "options": {

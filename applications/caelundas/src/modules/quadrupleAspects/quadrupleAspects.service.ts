@@ -516,7 +516,7 @@ export class QuadrupleAspectsService {
         )} focal)`
       : `${bodiesSorted.join(", ")} ${quadrupleAspect} ${phase}`;
 
-    let phaseEmoji = "";
+    let phaseEmoji: string;
     if (phase === "forming") {
       phaseEmoji = "➡️ ";
     } else if (phase === "perfective") {
@@ -550,7 +550,7 @@ export class QuadrupleAspectsService {
       description,
       summary,
       categories,
-    } as Event;
+    };
   }
 
   /**

@@ -15,14 +15,14 @@
       },
       {
         "color": "terminal.ansiBrightYellow",
-        "commands": [],
+        "commands": ["source .venv/bin/activate"],
         "cwd": "applications/affirmations",
         "icon": "compass",
         "name": "affirmations"
       },
       {
         "color": "terminal.ansiBrightYellow",
-        "commands": [],
+        "commands": ["source .venv/bin/activate"],
         "cwd": "applications/affirmations",
         "icon": "compass",
         "name": "affirmations"

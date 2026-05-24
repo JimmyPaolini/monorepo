@@ -38,11 +38,11 @@ const config: KnipConfig = {
     "commitlint-plugin-gitmoji", // commitlint plugin, referenced as string in plugins array
     "commitlint-plugin-tense", // commitlint plugin, referenced as string in plugins array
     "markdownlint-cli2", // Markdown linter CLI, invoked via nx:run-commands in project.json
-    "npm-check-updates", // Dependency update CLI (ncu), invoked via GitHub Actions workflow
     "stylelint-config-standard", // stylelint preset, referenced as string in extends array
     "stylelint-config-tailwindcss", // stylelint preset, referenced as string in extends array
     "stylelint", // CSS linter CLI, invoked via nx:run-commands in project.json
     "tslib", // TypeScript helper library, implicit runtime dependency for compiled TS
+    "unplugin-swc", // Vite plugin for SWC transformation with emitDecoratorMetadata support (caelundas/vitest.config.ts)
   ],
 
   // Allow exports that are only used in the same file (common for barrel re-exports)
@@ -55,8 +55,9 @@ const config: KnipConfig = {
     // Root workspace: scripts, base configs, and Nx configuration files
     ".": {
       entry: [
-        "scripts/**/*.{js,ts,sh}",
-        ".devcontainer/scripts/**/*.{js,ts,sh}",
+        ".pnpmfile.mjs",
+        "scripts/**/*.{js,mjs,ts,sh}",
+        ".devcontainer/scripts/**/*.{js,mjs,ts,sh}",
         "configuration/vitest.config.ts",
         "configuration/commitlint.config.ts",
         "configuration/dependency-cruiser.cjs",
@@ -69,8 +70,8 @@ const config: KnipConfig = {
         "configuration/stylelint.config.cjs",
         "configuration/syncpack.config.cjs",
         "release.config.cjs",
-        ".ncurc.cjs",
         "validate-branch-name.config.cjs",
+        ".pnpmfile.mjs",
       ],
       ignore: [
         "**/*.test.ts",
@@ -128,6 +129,7 @@ const config: KnipConfig = {
       // Shadcn-generated components, lib utilities, and hooks are managed by shadcn CLI
       // and may appear unused to knip but are consumed by lexico at runtime
       ignore: ["src/components/**", "src/lib/**", "src/hooks/**"],
+      entry: ["vite.config.mts"],
 
       // Radix UI packages and other shadcn dependencies are installed by 'pnpx shadcn add'
       // and consumed by shadcn-generated components — knip can't trace these imports

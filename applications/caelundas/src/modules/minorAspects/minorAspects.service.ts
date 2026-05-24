@@ -13,9 +13,7 @@ import _ from "lodash";
 import type {
   AspectPhase,
   Body,
-  BodySymbol,
   MinorAspect,
-  MinorAspectSymbol,
 } from "@caelundas/src/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
@@ -222,8 +220,8 @@ export class MinorAspectsService {
     const body1Capitalized = _.startCase(body1) as Capitalize<Body>;
     const body2Capitalized = _.startCase(body2) as Capitalize<Body>;
 
-    const body1Symbol = symbolByBody[body1] as BodySymbol;
-    const body2Symbol = symbolByBody[body2] as BodySymbol;
+    const body1Symbol = symbolByBody[body1];
+    const body2Symbol = symbolByBody[body2];
     const minorAspectSymbol = symbolByMinorAspect[minorAspect];
 
     let description: string;
@@ -371,9 +369,9 @@ export class MinorAspectsService {
     const body1 = body1Capitalized.toLowerCase() as Body;
     const body2 = body2Capitalized.toLowerCase() as Body;
 
-    const body1Symbol = symbolByBody[body1] as BodySymbol;
-    const body2Symbol = symbolByBody[body2] as BodySymbol;
-    const aspectSymbol = symbolByMinorAspect[aspect] as MinorAspectSymbol;
+    const body1Symbol = symbolByBody[body1];
+    const body2Symbol = symbolByBody[body2];
+    const aspectSymbol = symbolByMinorAspect[aspect];
 
     return {
       start: beginning.start,

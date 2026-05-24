@@ -16,7 +16,6 @@ import type {
   MartianPhase,
   MercurianPhase,
   VenusianPhase,
-  VenusianPhaseSymbol,
 } from "@caelundas/src/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type {
@@ -184,7 +183,7 @@ export class PhasesService {
     const { timestamp, phase } = args;
 
     const phaseCapitalized = _.startCase(phase) as Capitalize<VenusianPhase>;
-    const phaseSymbol = symbolByVenusianPhase[phase] as VenusianPhaseSymbol;
+    const phaseSymbol = symbolByVenusianPhase[phase];
 
     const description = `Venus ${phaseCapitalized}`;
     const summary = `♀️${phaseSymbol} ${description}`;

@@ -13,14 +13,7 @@ import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.ser
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
-import type {
-  Body,
-  BodySymbol,
-  Decan,
-  DecanSymbol,
-  Sign,
-  SignSymbol,
-} from "@caelundas/src/caelundas.types";
+import type { Body, Decan, Sign } from "@caelundas/src/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
@@ -278,9 +271,9 @@ export class IngressesService {
     const bodyCapitalized = _.startCase(body) as Capitalize<Body>;
     const signCapitalized = _.startCase(sign) as Capitalize<Sign>;
 
-    const bodySymbol = symbolByBody[body] as BodySymbol;
-    const signSymbol = symbolBySign[sign] as SignSymbol;
-    const decanSymbol = symbolByDecan[decan] as DecanSymbol;
+    const bodySymbol = symbolByBody[body];
+    const signSymbol = symbolBySign[sign];
+    const decanSymbol = symbolByDecan[decan];
 
     const description = `${bodyCapitalized} ingress decan ${decan} ${signCapitalized}`;
     const summary = `${bodySymbol} → ${signSymbol}${decanSymbol} ${description}`;
@@ -372,8 +365,8 @@ export class IngressesService {
     const sign = IngressesService.getSign(longitude);
     const bodyCapitalized = _.startCase(body) as Capitalize<Body>;
     const signCapitalized = _.startCase(sign) as Capitalize<Sign>;
-    const bodySymbol = symbolByBody[body] as BodySymbol;
-    const signSymbol = symbolBySign[sign] as SignSymbol;
+    const bodySymbol = symbolByBody[body];
+    const signSymbol = symbolBySign[sign];
 
     const description = `${bodyCapitalized} peak ingress ${signCapitalized}`;
     const summary = `${bodySymbol} → ${signSymbol}⛰️ ${description}`;
@@ -492,8 +485,8 @@ export class IngressesService {
     const body = bodyCapitalized.toLowerCase() as Body;
     const sign = signCapitalized.toLowerCase() as Sign;
 
-    const bodySymbol = symbolByBody[body] as BodySymbol;
-    const signSymbol = symbolBySign[sign] as SignSymbol;
+    const bodySymbol = symbolByBody[body];
+    const signSymbol = symbolBySign[sign];
 
     return {
       start: entering.start,

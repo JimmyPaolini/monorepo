@@ -445,7 +445,7 @@ describe("QuintupleAspectsService", () => {
       const formingEvent: Event = {
         start: moment.utc("2024-03-21T10:00:00.000Z"),
         end: moment.utc("2024-03-21T10:00:00.000Z"),
-        summary: "➡️ Pentagram forming" as unknown as string,
+        summary: "➡️ Pentagram forming",
         description: "Jupiter, Mars, Moon, Sun, Venus pentagram forming",
         categories: [
           "Quintuple Aspect",
@@ -462,7 +462,7 @@ describe("QuintupleAspectsService", () => {
       const dissolvingEvent: Event = {
         start: moment.utc("2024-03-21T14:00:00.000Z"),
         end: moment.utc("2024-03-21T14:00:00.000Z"),
-        summary: "⬅️ Pentagram dissolving" as unknown as string,
+        summary: "⬅️ Pentagram dissolving",
         description: "Jupiter, Mars, Moon, Sun, Venus pentagram dissolving",
         categories: [
           "Quintuple Aspect",

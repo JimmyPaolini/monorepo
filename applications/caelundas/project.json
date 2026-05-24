@@ -4,9 +4,9 @@
   "projectType": "application",
   "sourceRoot": "applications/caelundas",
   "tags": [
-    "language:typescript",
+    "framework:nest-commander",
     "framework:nestjs",
-    "framework:nest-commander"
+    "language:typescript"
   ],
   "targets": {
     "clean": {},

@@ -324,6 +324,7 @@
     "javascriptreact",
     "json",
     "jsonc",
+    "jsonl",
     "markdown",
     "typescript",
     "typescriptreact",
@@ -613,7 +614,7 @@
   "markdownlint.configFile": "configuration/.markdownlint-cli2.jsonc",
   "material-icon-theme.files.associations": {
     ".code-workspace*": "vscode",
-    ".ncurc.cjs": "npm",
+    ".pnpmfile.mjs": "pnpm",
     ".size-limit.cjs": "disc",
     ".yamllint": "yaml",
     "*.args.js": "excalidraw",
@@ -663,6 +664,7 @@
     "mcp.json": "copilot",
     "oxfmt.config.ts": "oxc",
     "oxlint.config.ts": "oxc",
+    "pnpm.yaml": "pnpm",
     "project.json": "nx",
     "sessions.json": "exe",
     "settings.json": "settings",
@@ -684,6 +686,7 @@
     "rbac": "guard",
     "routing": "element"
   },
+  "material-icon-theme.hidesExplorerArrows": true,
   "notebook.breadcrumbs.showCodeCells": true,
   "notebook.cellToolbarLocation": {
     "default": "right",
@@ -733,7 +736,6 @@
   "prettier.configPath": "configuration/prettier.config.ts",
   "python.analysis.referencesCodeLens": true,
   "python.analysis.typeCheckingMode": "standard",
-  "python.defaultInterpreterPath": "${workspaceFolder}/applications/affirmations/.venv/bin/python",
   "python.testing.pytestArgs": ["."],
   "python.testing.pytestEnabled": true,
   "python.testing.unittestEnabled": true,

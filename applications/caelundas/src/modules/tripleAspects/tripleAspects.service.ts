@@ -497,7 +497,7 @@ export class TripleAspectsService {
         } ${tripleAspect} ${phase} (${_.startCase(focalOrApexBody)} focal)`
       : `${bodiesSorted[0]}, ${bodiesSorted[1]}, ${bodiesSorted[2]} ${tripleAspect} ${phase}`;
 
-    let phaseEmoji = "";
+    let phaseEmoji: string;
     if (phase === "forming") {
       phaseEmoji = "➡️ ";
     } else if (phase === "dissolving") {
@@ -532,7 +532,7 @@ export class TripleAspectsService {
       description,
       summary,
       categories,
-    } as Event;
+    };
   }
 
   /**

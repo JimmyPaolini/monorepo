@@ -15,16 +15,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📥 Checkout repository
+      - name: 📥 Checkout Repository
         uses: actions/checkout@v4
 
       - name: 🕋 Setup Monorepo
         uses: ./.github/actions/setup-monorepo
 
+      - name: ⬆️ Upgrade pnpm
+        run: |
+          pnpm self-update
+          LATEST_PNPM=$(pnpm --version)
+          jq --arg v "pnpm@${LATEST_PNPM}" '.packageManager = $v' package.json > package.json.tmp && mv package.json.tmp package.json
+
+      - name: ⬆️ Upgrade node
+        run: |
+          source ~/.nvm/nvm.sh
+          LATEST_NODE=$(nvm version-remote lts/* | sed 's/v//')
+          echo "v${LATEST_NODE}" > .nvmrc
+          jq --arg v ">=${LATEST_NODE}" '.engines.node = $v' package.json > package.json.tmp && mv package.json.tmp package.json
+
       - name: ⬆️ Upgrade Dependencies
+        run: pnpm exec nx run monorepo:upgrade-dependencies:write
+
+      - name: 🔍 Detect Upgrades
         id: check
         run: |
-          pnpm exec nx run monorepo:npm-check-updates:write
           if git diff --quiet; then
             echo "has_dependency_updates=false" >> $GITHUB_OUTPUT
           else
@@ -36,23 +51,32 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh pr list --head chore/upgrade-dependencies \
+          gh pr list --head chore/dependencies-upgrade \
             --state open --json number --jq '.[].number' | \
             while read -r pr_number; do
               echo "Closing stale PR #$pr_number"
               gh pr close "$pr_number" \
-                --comment "Closing in favor of new automated chore/upgrade-dependencies PR."
+                --comment "Closing in favor of new automated chore/dependencies-upgrade PR."
             done
+
+      - name: 🔐 Import GPG Key
+        if: steps.check.outputs.has_dependency_updates == 'true'
+        uses: crazy-max/ghaction-import-gpg@v6
+        with:
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
 
       - name: 🔀 Open Pull Request
         if: steps.check.outputs.has_dependency_updates == 'true'
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "chore(dependencies): ⬆️ Upgrade dependencies"
-          branch: chore/upgrade-dependencies
+          commit-message: "chore(dependencies): ⬆️ Upgrade"
+          branch: chore/dependencies-upgrade
           delete-branch: true
-          title: "chore(dependencies): ⬆️ Upgrade dependencies"
+          title: "chore(dependencies): ⬆️ Upgrade"
           body: |
             ## 🌰 Summary
 
@@ -60,6 +84,8 @@ jobs:
 
             ## 📝 Details
 
+            - Update node to latest patch of current major
+            - Update pnpm to latest version
             - Update dependencies across all workspace projects
             - Update pnpm lockfile
 

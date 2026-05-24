@@ -1,9 +1,8 @@
 /**
  * Syncpack Configuration
  * Purpose: Enforce consistent dependency versions and semver range formats across all workspace packages
- * Usage (Check): pnpm exec syncpack lint
- * Usage (Fix mismatches): pnpm exec syncpack fix-mismatches
- * Usage (Fix ranges): pnpm exec syncpack set-semver-ranges
+ * Usage (Check): pnpm exec syncpack lint --config configuration/syncpack.config.cjs
+ * Usage (Fix): pnpm exec syncpack fix --config configuration/syncpack.config.cjs
  * CI Workflow: .github/workflows/code-analysis.yml
  * @see https://jamiemason.github.io/syncpack/
  */
