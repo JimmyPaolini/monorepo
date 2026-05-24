@@ -10,6 +10,11 @@ node_modules/
 .nx
 .venv
 
+# Python 🐍
+__pycache__/
+*.py[cod]
+*.pyo
+
 # Environment 🎛️
 .env
 
