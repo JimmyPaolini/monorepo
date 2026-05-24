@@ -9,7 +9,7 @@
     "moment-timezone": "^0.6.2",
     "nest-commander": "^3.20.1",
     "reflect-metadata": "^0.2.2",
-    "sweph": "^2.10.3-b-1",
+    "sweph": "2.10.3-b-1",
     "tsx": "^4.22.3",
     "unplugin-swc": "^1.5.9",
     "zod": "^4.4.3"
