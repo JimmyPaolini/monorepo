@@ -49,7 +49,6 @@ jobs:
           cacheFrom: |
             type=gha,scope=devcontainer
             ghcr.io/jimmypaolini/monorepo-devcontainer
-          cacheTo: type=gha,mode=max,scope=devcontainer
           push: filter
           eventFilterForPush: |
             push:
