@@ -10,7 +10,7 @@
 const { scopes, types } = require("./configuration/conventional.config.cjs");
 
 const specialBranches = ["main"];
-const automatedPrefixes = ["renovate", "dependabot"];
+const automatedPrefixes = ["copilot", "renovate", "dependabot"];
 
 // Build regex pattern
 const typePattern = types.map((type) => type.name).join("|");
