@@ -89,7 +89,8 @@
       "./applications/JimmyPaolini"
     ],
     "ignoreRule": [
-      "root-package-private-field"
+      "root-package-private-field",
+      "unordered-dependencies"
     ]
   },
   "type": "module",

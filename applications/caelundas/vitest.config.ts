@@ -3,6 +3,7 @@ import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   plugins: [swc.vite()],
+  oxc: false,
   resolve: {
     tsconfigPaths: true,
   },

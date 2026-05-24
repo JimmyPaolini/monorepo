@@ -592,7 +592,7 @@ export default [
   // ━━━━━━━━━━━━━━━━━━━ devcontainer.json files ━━━━━━━━━━━━━━━━━━━
   // Allow line-separated groups in devcontainer.json for security audit tool flexibility
   {
-    files: ["**/package.json", "**/devcontainer.json"],
+    files: ["**/devcontainer.json"],
     rules: {
       "jsonc/sort-array-values": [
         "error",
