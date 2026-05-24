@@ -16,6 +16,7 @@ jobs:
 
     permissions:
       contents: read
+      pull-requests: write
 
     steps:
       - name: 📥 Checkout Repository
@@ -23,3 +24,7 @@ jobs:
 
       - name: 🕋 Setup Monorepo
         uses: ./.github/actions/setup-monorepo
+
+      - name: 🔑 Authenticate GitHub CLI
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+        shell: bash
