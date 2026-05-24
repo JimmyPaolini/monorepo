@@ -43,7 +43,7 @@ function createFullEphemeris(
     };
   }
 
-  return result as Record<Body, CoordinateEphemeris>;
+  return result;
 }
 
 const mathService = new MathService();

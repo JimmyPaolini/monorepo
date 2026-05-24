@@ -2,3 +2,9 @@ packages:
   - applications/*
   - packages/*
   - tools/*
+allowBuilds:
+  "@nestjs/core": true
+  "@swc/core": true
+  esbuild: true
+  nx: true
+  sweph: true

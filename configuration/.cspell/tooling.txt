@@ -23,7 +23,6 @@ myapp
 mylib
 myorg
 myrelease
-ncurc
 pbundlesize
 pnpm
 projectname

@@ -259,7 +259,7 @@ export class StelliumService {
     const bodiesSorted = _.sortBy([...bodiesCapitalized]);
     const description = `${bodiesSorted.join(", ")} stellium ${phase}`;
 
-    let phaseEmoji = "";
+    let phaseEmoji: string;
     if (phase === "forming") {
       phaseEmoji = "➡️ ";
     } else if (phase === "perfective") {

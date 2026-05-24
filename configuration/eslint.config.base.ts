@@ -9,8 +9,7 @@ import importPlugin from "eslint-plugin-import";
 import jsdocPlugin from "eslint-plugin-jsdoc";
 import jsoncPlugin from "eslint-plugin-jsonc";
 import jsxA11yPlugin from "eslint-plugin-jsx-a11y";
-import reactPlugin from "eslint-plugin-react";
-import reactHooksPlugin from "eslint-plugin-react-hooks";
+import eslintReact from "@eslint-react/eslint-plugin";
 import tsdocPlugin from "eslint-plugin-tsdoc";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import eslintPluginYml from "eslint-plugin-yml";
@@ -456,12 +455,17 @@ export default [
   },
 
   // ━━━━━━━━━━━━━━━━━━━ React / Hooks / Accessibility ━━━━━━━━━━━━━━━━━━━
-  // React 19 (new JSX transform), hooks rules, and WCAG accessibility checks
+  // @eslint-react/eslint-plugin: native ESLint 10+ support, TypeScript-first.
+  // recommended-typescript covers: no-missing-key, no-array-index-key,
+  // no-nested-component-definitions, dom/no-unsafe-target-blank,
+  // hooks-extra/rules-of-hooks, hooks-extra/exhaustive-deps, and more.
+  {
+    ...eslintReact.configs["recommended-typescript"],
+    files: ["**/*.tsx", "**/*.jsx"],
+  },
   {
     files: ["**/*.tsx", "**/*.jsx"],
     plugins: {
-      react: reactPlugin,
-      "react-hooks": reactHooksPlugin,
       "jsx-a11y": jsxA11yPlugin,
     },
     languageOptions: {
@@ -471,32 +475,9 @@ export default [
         },
       },
     },
-    settings: {
-      react: {
-        version: "detect",
-      },
-    },
     rules: {
-      // React rules
-      ...reactPlugin.configs.recommended.rules,
-      ...reactPlugin.configs["jsx-runtime"].rules,
-      "react/prop-types": "off", // TypeScript handles this
-      "react/react-in-jsx-scope": "off", // Not needed with new JSX transform
-      "react/jsx-no-target-blank": "error",
-      "react/jsx-key": "error",
-      "react/no-array-index-key": "warn",
-      "react/no-unstable-nested-components": "error",
-      "react/jsx-boolean-value": ["error", "never"],
-      "react/jsx-curly-brace-presence": [
-        "error",
-        { props: "never", children: "never" },
-      ],
-      "react/self-closing-comp": "error",
-      "react/jsx-pascal-case": "error",
-
-      // React Hooks rules
-      "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "error",
+      // Downgrade from the preset's default "error" to "warn"
+      "@eslint-react/no-array-index-key": "warn",
 
       // Accessibility rules
       ...jsxA11yPlugin.configs.recommended.rules,
@@ -590,7 +571,7 @@ export default [
         {
           minValues: 2,
           order: { type: "asc", caseSensitive: false, natural: true },
-          pathPattern: "^!(command)$",
+          pathPattern: "^(?!(?:.*\\.)?commands?$)",
         },
       ],
       "jsonc/quotes": ["error", "double"],
@@ -608,32 +589,17 @@ export default [
     },
   },
 
-  // ━━━━━━━━━━━━━━━━━━━ package.json files ━━━━━━━━━━━━━━━━━━━
-  // Allow line-separated groups in package.json for security audit tool flexibility
-  {
-    files: ["**/package.json", "**/devcontainer.json"],
-    rules: {
-      "jsonc/sort-keys": [
-        "error",
-        {
-          order: { caseSensitive: false, natural: true, type: "asc" },
-          pathPattern: "^!(devDependencies)$",
-        },
-      ],
-    },
-  },
-
   // ━━━━━━━━━━━━━━━━━━━ devcontainer.json files ━━━━━━━━━━━━━━━━━━━
   // Allow line-separated groups in devcontainer.json for security audit tool flexibility
   {
-    files: ["**/package.json", "**/devcontainer.json"],
+    files: ["**/devcontainer.json"],
     rules: {
       "jsonc/sort-array-values": [
         "error",
         {
           minValues: 2,
           order: { type: "asc", caseSensitive: false, natural: true },
-          pathPattern: "^!(runArgs)$",
+          pathPattern: "^(?!runArgs$)",
         },
       ],
     },

@@ -266,20 +266,11 @@ Each project uses `.env.default` files as templates for required environment var
 
 ## Dependency Update Workflow
 
-Weekly automated dependency updates are handled by the [`dependency-upgrades.yml`](.github/workflows/dependency-upgrades.yml) workflow:
-
-1. **Schedule**: Runs every Monday at 6:00 UTC
-2. **Detection**: Uses `npm-check-updates` to find outdated dependencies
-3. **PR creation**: Automatically creates a PR with the updates
-4. **Review**: All CI checks run against the update PR
-5. **Merge**: Requires manual review and approval before merging
-
 To check for updates manually:
 
 ```bash
-pnpm outdated              # See which packages are outdated
-pnpm update                # Update within semver ranges
-pnpx npm-check-updates -u  # Update to latest versions (breaking changes possible)
+pnpm outdated  # See which packages are outdated
+pnpm update    # Update within semver ranges
 ```
 
 ## Additional Resources
