@@ -1,10 +1,10 @@
 {
   "dependencies": {
-    "@nestjs/common": "^11.1.23",
-    "@nx/devkit": "^22.7.2",
+    "@nestjs/common": "11.1.19",
+    "@nx/devkit": "22.7.0",
     "lodash": "^4.18.1",
     "prompts": "^2.4.2",
-    "react": "^19.2.6",
+    "react": "19.2.4",
     "typescript": "^5.9.3",
     "vitest": "^4.1.7"
   },
@@ -14,8 +14,7 @@
     "@types/node": "^22.19.19",
     "@types/prompts": "^2.4.9",
     "@vitest/coverage-v8": "^4.1.7",
-    "ejs": "^5.0.2",
-    "typescript": "^5.9.3"
+    "ejs": "^5.0.2"
   },
   "generators": "./generators.json",
   "name": "code-generator",

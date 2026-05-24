@@ -131,6 +131,7 @@ const config: KnipConfig = {
       // Shadcn-generated components, lib utilities, and hooks are managed by shadcn CLI
       // and may appear unused to knip but are consumed by lexico at runtime
       ignore: ["src/components/**", "src/lib/**", "src/hooks/**"],
+      entry: ["vite.config.mts"],
 
       // Radix UI packages and other shadcn dependencies are installed by 'pnpx shadcn add'
       // and consumed by shadcn-generated components — knip can't trace these imports
