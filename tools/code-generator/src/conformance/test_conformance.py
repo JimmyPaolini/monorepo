@@ -34,20 +34,20 @@ import pytest
 # Paths
 # ---------------------------------------------------------------------------
 
-# This file lives at:  tools/code-generator/testing/test_conformance.py
-# Workspace root is 3 levels up.
+# This file lives at:  tools/code-generator/src/conformance/test_conformance.py
+# Workspace root is 4 levels up.
 _HERE = Path(__file__).resolve().parent
-WORKSPACE_ROOT = _HERE.parent.parent.parent  # …/monorepo
+WORKSPACE_ROOT = _HERE.parent.parent.parent.parent  # …/monorepo
 GENERATORS_DIR = WORKSPACE_ROOT / "tools" / "code-generator" / "src" / "generators"
 RESULTS_OUTPUT_PATH = (
     WORKSPACE_ROOT / "tools" / "code-generator" / "tmp" / "python-conformance-results.json"
 )
 
 # ---------------------------------------------------------------------------
-# Load conformance modules from src/conformance/
+# Load conformance modules from src/conformance/ (same directory as this file)
 # ---------------------------------------------------------------------------
 
-_CONFORMANCE_DIR = WORKSPACE_ROOT / "tools" / "code-generator" / "src" / "conformance"
+_CONFORMANCE_DIR = _HERE
 
 
 def _load_module(name: str, path: Path) -> types.ModuleType:
