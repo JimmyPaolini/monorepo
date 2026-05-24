@@ -34,7 +34,7 @@ import pytest
 # Paths
 # ---------------------------------------------------------------------------
 
-# This file lives at:  tools/code-generator/src/conformance/test_conformance.py
+# This file lives at:  tools/code-generator/src/validators/test_conformance.py
 # Workspace root is 4 levels up.
 _HERE = Path(__file__).resolve().parent
 WORKSPACE_ROOT = _HERE.parent.parent.parent.parent  # …/monorepo
@@ -44,10 +44,10 @@ RESULTS_OUTPUT_PATH = (
 )
 
 # ---------------------------------------------------------------------------
-# Load modules: name_variables from src/, validator from src/conformance/
+# Load modules: name_variables from src/, validator from src/validators/
 # ---------------------------------------------------------------------------
 
-_CONFORMANCE_DIR = _HERE
+_VALIDATORS_DIR = _HERE
 _SRC_DIR = _HERE.parent
 
 
@@ -62,7 +62,7 @@ def _load_module(name: str, path: Path) -> types.ModuleType:
 _nv_mod = _load_module("name_variables", _SRC_DIR / "name_variables.py")
 name_variables = _nv_mod.name_variables  # type: ignore[attr-defined]
 
-_validator_mod = _load_module("validator", _CONFORMANCE_DIR / "validator.py")
+_validator_mod = _load_module("validator", _VALIDATORS_DIR / "validator.py")
 validate_conformance = _validator_mod.validate_conformance  # type: ignore[attr-defined]
 
 # ---------------------------------------------------------------------------
