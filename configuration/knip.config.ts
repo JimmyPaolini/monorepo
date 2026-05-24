@@ -57,8 +57,8 @@ const config: KnipConfig = {
     ".": {
       entry: [
         ".pnpmfile.mjs",
-        "scripts/**/*.{js,ts,sh}",
-        ".devcontainer/scripts/**/*.{js,ts,sh}",
+        "scripts/**/*.{js,mjs,ts,sh}",
+        ".devcontainer/scripts/**/*.{js,mjs,ts,sh}",
         "configuration/vitest.config.ts",
         "configuration/commitlint.config.ts",
         "configuration/dependency-cruiser.cjs",
