@@ -4,4 +4,8 @@ const { status } = spawnSync("pnpm", ["outdated", "--recursive"], {
   stdio: "inherit",
 });
 
-process.exit(status === 0 || status === 1 ? 0 : (status ?? 1));
+if (status === 0 || status === 1) {
+  process.exit(0);
+}
+
+process.exit(status ?? 1);
