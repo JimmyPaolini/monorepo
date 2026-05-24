@@ -308,10 +308,10 @@
       "cache": true,
       "configurations": {
         "check": {
-          "command": "pnpm dlx sherif@1.10.0"
+          "command": "pnpm dlx sherif@1.10.0 -p applications/JimmyPaolini"
         },
         "write": {
-          "command": "pnpm dlx sherif@1.10.0 --fix && nx run monorepo:format:write"
+          "command": "pnpm dlx sherif@1.10.0 -p applications/JimmyPaolini --fix && nx run monorepo:format:write"
         }
       },
       "defaultConfiguration": "check",
