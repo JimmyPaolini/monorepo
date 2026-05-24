@@ -3,7 +3,7 @@ import baseConfig from "../../configuration/eslint.config.base.ts";
 export default [
   ...baseConfig,
   {
-    ignores: ["**/templates/**"],
+    ignores: ["**/templates/**", "**/.venv/**"],
   },
   {
     files: ["**/*.json"],
@@ -12,7 +12,7 @@ export default [
         "error",
         {
           ignoredFiles: ["{projectRoot}/eslint.config.{js,cjs,mjs,ts,cts,mts}"],
-          ignoredDependencies: ["@types/ejs", "lodash"],
+          ignoredDependencies: ["@types/ejs", "@types/mustache", "lodash"],
         },
       ],
     },

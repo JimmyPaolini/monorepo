@@ -1,11 +1,10 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import ejs from "ejs";
+import mustache from "mustache";
 import { createSourceFile, ScriptKind, ScriptTarget } from "typescript";
 
-import { converterByStringCase } from "../constants";
-import { StringCase } from "../types";
+import { nameVariables } from "../name-variables";
 
 import { validateDepthFirstSearch } from "./abstract-syntax-tree";
 
@@ -13,9 +12,9 @@ import type { InstanceDirectoryValidationResult } from "./types";
 
 /**
  * Validates that a generated TypeScript file is a structural superset of its
- * EJS template by comparing their parsed ASTs node-by-node.
+ * Mustache template by comparing their parsed ASTs node-by-node.
  *
- * The template is first rendered with data via EJS, then both the rendered
+ * The template is first rendered with data via Mustache, then both the rendered
  * template and instance are parsed into TypeScript ASTs. A depth-first walk
  * checks that every node in the template exists somewhere in the instance at
  * the same depth (superset, not equality — the instance may contain extra nodes
@@ -43,7 +42,7 @@ export function validateConformance(args: {
   const scriptKind = filename.endsWith(".tsx") ? ScriptKind.TSX : ScriptKind.TS;
   const templateFile = createSourceFile(
     filename,
-    ejs.render(template, data),
+    mustache.render(template, data),
     ScriptTarget.Latest,
     true,
     scriptKind,
@@ -67,7 +66,7 @@ export function validateConformance(args: {
 
 /**
  * File-system variant of {@link validateConformance} that reads both the
- * generated instance file and the EJS template from disk before validating.
+ * generated instance file and the Mustache template from disk before validating.
  *
  * If either path does not exist (`ENOENT`), returns \{ errors: ["Missing file:
  * <path>"] \} rather than throwing, so callers can treat a missing file as a
@@ -100,13 +99,13 @@ export function validateInstanceFile(args: {
 
 /**
  * Validates all generated files in a single instance directory against their
- * corresponding EJS templates in `templateDirectoryPath`.
+ * corresponding Mustache templates in `templateDirectoryPath`.
  *
  * Each template filename may contain `__fieldName__` tokens (e.g.
- * `__nameCamelCase__.service.ts`) that are resolved to the instance filename
- * using the EJS variable substitutions derived from `instanceDirectoryPath`'s
- * basename. The same substitution map (`nameCamelCase`, `namePascalCase`,
- * `nameSnakeCase`, `nameKebabCase`) is passed to {@link validateInstanceFile}
+ * `__nameCamel__.service.ts`) that are resolved to the instance filename
+ * using the name variable substitutions derived from `instanceDirectoryPath`'s
+ * basename. The same substitution map (`name`, `nameCamel`, `namePascal`,
+ * `nameSnake`, `nameScream`, `nameTitle`) is passed to {@link validateInstanceFile}
  * when rendering each template.
  *
  * Validation uses AST superset-checking so that developer modifications to
@@ -122,13 +121,7 @@ export function validateInstanceDirectory(args: {
 }): InstanceDirectoryValidationResult {
   const { instanceDirectoryPath, templateDirectoryPath } = args;
   const name = path.basename(instanceDirectoryPath);
-
-  const data = {
-    nameCamelCase: converterByStringCase[StringCase.CAMEL_CASE](name),
-    namePascalCase: converterByStringCase[StringCase.PASCAL_CASE](name),
-    nameSnakeCase: converterByStringCase[StringCase.SNAKE_CASE](name),
-    nameKebabCase: converterByStringCase[StringCase.KEBAB_CASE](name),
-  };
+  const data = nameVariables(name);
 
   const templateFilenames = fs
     .readdirSync(templateDirectoryPath, { withFileTypes: true })
@@ -139,7 +132,7 @@ export function validateInstanceDirectory(args: {
     const instanceFilename = templateFilename.replaceAll(
       /__(\w+)__/g,
       (_: string, field: string) => {
-        const value = (data as Record<string, unknown>)[field];
+        const value = data[field];
         return typeof value === "string" ? value : "";
       },
     );

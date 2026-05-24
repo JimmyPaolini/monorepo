@@ -122,12 +122,12 @@ describe("generateNestjsServiceModule", () => {
         "";
       const __dirname = fileURLToPath(new URL(".", import.meta.url));
       const templateContent = fs.readFileSync(
-        path.join(__dirname, "templates/__nameCamelCase__.service.ts"),
+        path.join(__dirname, "templates/__nameCamel__.service.ts"),
         "utf8",
       );
       const vars: Record<string, unknown> = {
-        nameCamelCase: "calculator",
-        namePascalCase: "Calculator",
+        nameCamel: "calculator",
+        namePascal: "Calculator",
       };
       const result = validateConformance({
         instance: serviceContent,

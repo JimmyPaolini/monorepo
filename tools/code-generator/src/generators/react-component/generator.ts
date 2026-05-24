@@ -1,7 +1,10 @@
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-import { formatFiles, generateFiles, getProjects } from "@nx/devkit";
+import { getProjects } from "@nx/devkit";
 
+import { renderTemplates } from "../../generate-files";
+import { nameVariables } from "../../name-variables";
 import { StringCase } from "../../types";
 import { resolveNameByCase, resolveProjectByTag } from "../../utilities";
 
@@ -18,6 +21,14 @@ interface GenerateComponentOptions {
  *
  * @param tree - The Nx virtual file system tree
  * @param options - Configuration options for the component generator
+ */
+export const TEMPLATES_DIRECTORY_PATH = fileURLToPath(
+  new URL("templates", import.meta.url),
+);
+
+/**
+ * Generates a React component from the Mustache template, placing the files
+ * in the target project's `src/components/` directory.
  */
 export async function generateComponent(
   tree: Tree,
@@ -56,10 +67,6 @@ export async function generateComponent(
     );
   }
 
-  const namePascalCase = name;
-
-  const filesPath = path.join(__dirname, "templates");
-  const substitutions = { namePascalCase };
-  generateFiles(tree, filesPath, directory, substitutions);
-  await formatFiles(tree);
+  const vars = nameVariables(name);
+  renderTemplates(tree, TEMPLATES_DIRECTORY_PATH, directory, vars);
 }

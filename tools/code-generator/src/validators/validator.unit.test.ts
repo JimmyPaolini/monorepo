@@ -22,7 +22,7 @@ const TEMPLATES_DIR = path.resolve(
 
 const SERVICE_TEMPLATE_PATH = path.join(
   TEMPLATES_DIR,
-  "__nameCamelCase__.service.ts",
+  "__nameCamel__.service.ts",
 );
 
 describe("caelundas service integration", () => {
@@ -57,8 +57,8 @@ describe("caelundas service integration", () => {
         instance: fileContent,
         template: TEMPLATE_CONTENT,
         data: {
-          nameCamelCase: camel,
-          namePascalCase: pascal,
+          nameCamel: camel,
+          namePascal: pascal,
         },
         filename: `${camel}.service.ts`,
       });
@@ -124,7 +124,7 @@ describe("validateInstancesDirectory", () => {
 
   it("all passing files return empty error arrays", () => {
     fs.writeFileSync(
-      path.join(templateDirectory, "__nameCamelCase__.config.ts"),
+      path.join(templateDirectory, "__nameCamel__.config.ts"),
       "// 🔧 Config\n",
     );
     const alphaDir = path.join(temporaryDirectory, "alpha");
@@ -145,7 +145,7 @@ describe("validateInstancesDirectory", () => {
 
   it("reports missing file error when instance file is absent", () => {
     fs.writeFileSync(
-      path.join(templateDirectory, "__nameCamelCase__.service.ts"),
+      path.join(templateDirectory, "__nameCamel__.service.ts"),
       "export class UserService {}\n",
     );
     const alphaDir = path.join(temporaryDirectory, "alpha");
@@ -177,17 +177,14 @@ describe("validateInstanceFile", () => {
 
   it("returns no errors when instance matches template", () => {
     const templatePath = path.join(tmpDir, "template.service.ts");
-    fs.writeFileSync(
-      templatePath,
-      "export class <%= namePascalCase %>Service {}\n",
-    );
+    fs.writeFileSync(templatePath, "export class {{namePascal}}Service {}\n");
     const instancePath = path.join(tmpDir, "user.service.ts");
     fs.writeFileSync(instancePath, "export class UserService {}\n");
 
     const result = validateInstanceFile({
       instanceFilePath: instancePath,
       templateFilePath: templatePath,
-      data: { namePascalCase: "User" },
+      data: { namePascal: "User" },
     });
 
     expect(result.errors).toEqual([]);
@@ -195,17 +192,14 @@ describe("validateInstanceFile", () => {
 
   it("returns errors when instance is missing a required class", () => {
     const templatePath = path.join(tmpDir, "template.service.ts");
-    fs.writeFileSync(
-      templatePath,
-      "export class <%= namePascalCase %>Service {}\n",
-    );
+    fs.writeFileSync(templatePath, "export class {{namePascal}}Service {}\n");
     const instancePath = path.join(tmpDir, "user.service.ts");
     fs.writeFileSync(instancePath, "export class WrongService {}\n");
 
     const result = validateInstanceFile({
       instanceFilePath: instancePath,
       templateFilePath: templatePath,
-      data: { namePascalCase: "User" },
+      data: { namePascal: "User" },
     });
 
     expect(result.errors).toEqual(
@@ -249,7 +243,7 @@ describe("validateInstanceDirectory", () => {
 
   it("returns directoryName equal to the directory basename", () => {
     fs.writeFileSync(
-      path.join(templateDir, "__nameCamelCase__.service.ts"),
+      path.join(templateDir, "__nameCamel__.service.ts"),
       "// placeholder\n",
     );
     fs.writeFileSync(
@@ -267,8 +261,8 @@ describe("validateInstanceDirectory", () => {
 
   it("resolves __fieldName__ tokens in template filename to instance filename", () => {
     fs.writeFileSync(
-      path.join(templateDir, "__nameCamelCase__.service.ts"),
-      "export class <%= namePascalCase %>Service {}\n",
+      path.join(templateDir, "__nameCamel__.service.ts"),
+      "export class {{namePascal}}Service {}\n",
     );
     fs.writeFileSync(
       path.join(instanceDir, "userAuth.service.ts"),
@@ -287,11 +281,11 @@ describe("validateInstanceDirectory", () => {
 
   it("returns one result per template file", () => {
     fs.writeFileSync(
-      path.join(templateDir, "__nameCamelCase__.service.ts"),
+      path.join(templateDir, "__nameCamel__.service.ts"),
       "// service\n",
     );
     fs.writeFileSync(
-      path.join(templateDir, "__nameCamelCase__.module.ts"),
+      path.join(templateDir, "__nameCamel__.module.ts"),
       "// module\n",
     );
     fs.writeFileSync(
@@ -316,7 +310,7 @@ describe("validateInstanceDirectory", () => {
 
   it("reports missing file error when instance file is absent", () => {
     fs.writeFileSync(
-      path.join(templateDir, "__nameCamelCase__.service.ts"),
+      path.join(templateDir, "__nameCamel__.service.ts"),
       "export class UserAuthService {}\n",
     );
     // no instance files written

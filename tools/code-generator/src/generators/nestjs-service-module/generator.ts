@@ -2,9 +2,10 @@ import { execSync } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { generateFiles, getProjects, workspaceRoot } from "@nx/devkit";
-import _ from "lodash";
+import { getProjects, workspaceRoot } from "@nx/devkit";
 
+import { renderTemplates } from "../../generate-files";
+import { nameVariables } from "../../name-variables";
 import { StringCase } from "../../types";
 import { resolveNameByCase, resolveProjectByTag } from "../../utilities";
 
@@ -67,13 +68,10 @@ export async function generateNestjsServiceModule(
     );
   }
 
-  const nameCamelCase = name;
-  const namePascalCase = _.upperFirst(name);
+  const vars = nameVariables(name);
+  const targetPath = path.join(directory, vars.nameCamel);
 
-  const targetPath = path.join(directory, nameCamelCase);
-  const substitutions = { nameCamelCase, namePascalCase };
-
-  generateFiles(tree, TEMPLATES_DIRECTORY_PATH, targetPath, substitutions);
+  renderTemplates(tree, TEMPLATES_DIRECTORY_PATH, targetPath, vars);
 
   const generatedFiles = tree
     .children(targetPath)

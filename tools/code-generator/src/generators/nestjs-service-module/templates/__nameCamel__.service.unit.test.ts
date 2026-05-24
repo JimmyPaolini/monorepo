@@ -1,17 +1,17 @@
 import { Test } from "@nestjs/testing";
 import { beforeAll, describe, expect, it } from "vitest";
 
-import { <%= namePascalCase %>Service } from "./<%= nameCamelCase %>.service";
+import { {{namePascal}}Service } from "./{{nameCamel}}.service";
 
-describe("<%= namePascalCase %>Service", () => {
-  let service: <%= namePascalCase %>Service;
+describe("{{namePascal}}Service", () => {
+  let service: {{namePascal}}Service;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [<%= namePascalCase %>Service],
+      providers: [{{namePascal}}Service],
     }).compile();
 
-    service = module.get(<%= namePascalCase %>Service);
+    service = module.get({{namePascal}}Service);
   });
 
   it("should be defined", () => {

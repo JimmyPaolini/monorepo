@@ -1,12 +1,12 @@
 import { ReactElement } from "react";
 
 // 🔖 Type
-export interface <%= namePascalCase %>Props {
+export interface {{namePascal}}Props {
   className?: string;
 }
 
 // 🧩 Component
-export const <%= namePascalCase %> = (props: <%= namePascalCase %>Props): ReactElement => {
+export const {{namePascal}} = (props: {{namePascal}}Props): ReactElement => {
   const { className } = props;
 
   // 🪝 Hooks
@@ -23,7 +23,7 @@ export const <%= namePascalCase %> = (props: <%= namePascalCase %>Props): ReactE
 
   return (
     <div className={className}>
-      <%= namePascalCase %> component
+      {{namePascal}} component
     </div>
   );
 };

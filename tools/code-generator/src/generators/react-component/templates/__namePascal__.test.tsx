@@ -2,11 +2,11 @@ import { render } from '@testing-library/react';
 import { describe, it, expect, beforeEach } from 'vitest';
 import { createElement } from 'react';
 import { faker } from '@faker-js/faker';
-import { <%= namePascalCase %>, type <%= namePascalCase %>Props } from './<%= namePascalCase %>';
+import { {{namePascal}}, type {{namePascal}}Props } from './{{namePascal}}';
 
-describe('<%= namePascalCase %>', () => {
+describe('{{namePascal}}', () => {
   // 🎭 Mocks
-  let props: <%= namePascalCase %>Props;
+  let props: {{namePascal}}Props;
 
   // 🏗️ Setup
   beforeEach(() => {
@@ -18,7 +18,7 @@ describe('<%= namePascalCase %>', () => {
   // 🧪 Tests
 
   it('should render successfully', () => {
-    const element = createElement(<%= namePascalCase %>, props);
+    const element = createElement({{namePascal}}, props);
     const { container } = render(element);
     expect(container).toBeInTheDocument();
   });
