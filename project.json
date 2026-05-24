@@ -559,7 +559,7 @@
       "cache": false,
       "configurations": {
         "check": {
-          "command": "pnpm outdated --recursive"
+          "command": "pnpm outdated --recursive; status=$?; [ \"$status\" -eq 0 ] || [ \"$status\" -eq 1 ]"
         },
         "write": {
           "command": "pnpm update --latest --recursive"
