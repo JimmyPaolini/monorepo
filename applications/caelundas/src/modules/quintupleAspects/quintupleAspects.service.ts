@@ -334,7 +334,7 @@ export class QuintupleAspectsService {
 
     const description = `${bodiesSorted.join(", ")} ${quintupleAspect} ${phase}`;
 
-    let phaseEmoji = "";
+    let phaseEmoji: string;
     if (phase === "forming") {
       phaseEmoji = "➡️ ";
     } else if (phase === "perfective") {

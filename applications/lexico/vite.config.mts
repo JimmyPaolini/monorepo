@@ -3,12 +3,12 @@ import path from "node:path";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
-import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
   root: import.meta.dirname,
   cacheDir: "../../node_modules/.vite/applications/lexico",
   resolve: {
+    tsconfigPaths: true,
     alias: {
       "@": path.resolve(
         import.meta.dirname,
@@ -25,7 +25,6 @@ export default defineConfig({
     host: "localhost",
   },
   plugins: [
-    tsconfigPaths(),
     tanstackStart(),
     // React plugin must come after TanStack Start plugin
     react(),

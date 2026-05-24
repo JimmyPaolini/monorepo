@@ -559,7 +559,7 @@
       "cache": false,
       "configurations": {
         "check": {
-          "command": "node scripts/check-outdated.mjs"
+          "command": "pnpm outdated --recursive"
         },
         "write": {
           "command": "pnpm update --latest --recursive"

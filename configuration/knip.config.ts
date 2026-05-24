@@ -43,7 +43,6 @@ const config: KnipConfig = {
     "stylelint", // CSS linter CLI, invoked via nx:run-commands in project.json
     "tslib", // TypeScript helper library, implicit runtime dependency for compiled TS
     "unplugin-swc", // Vite plugin for SWC transformation with emitDecoratorMetadata support (caelundas/vitest.config.ts)
-    "vite-tsconfig-paths", // Vite plugin used in caelundas/vitest.config.ts and lexico/vite.config.mts
   ],
 
   // Allow exports that are only used in the same file (common for barrel re-exports)

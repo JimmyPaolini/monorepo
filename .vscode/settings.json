@@ -614,6 +614,7 @@
   "material-icon-theme.files.associations": {
     ".code-workspace*": "vscode",
     ".ncurc.cjs": "npm",
+    ".pnpmfile.mjs": "pnpm",
     ".size-limit.cjs": "disc",
     ".yamllint": "yaml",
     "*.args.js": "excalidraw",
@@ -663,6 +664,7 @@
     "mcp.json": "copilot",
     "oxfmt.config.ts": "oxc",
     "oxlint.config.ts": "oxc",
+    "pnpm.yaml": "pnpm",
     "project.json": "nx",
     "sessions.json": "exe",
     "settings.json": "settings",
@@ -684,6 +686,7 @@
     "rbac": "guard",
     "routing": "element"
   },
+  "material-icon-theme.hidesExplorerArrows": true,
   "notebook.breadcrumbs.showCodeCells": true,
   "notebook.cellToolbarLocation": {
     "default": "right",

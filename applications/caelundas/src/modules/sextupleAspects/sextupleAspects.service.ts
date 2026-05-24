@@ -388,7 +388,7 @@ export class SextupleAspectsService {
 
     const description = `${bodiesSorted.join(", ")} ${sextupleAspect} ${phase}`;
 
-    let phaseEmoji = "";
+    let phaseEmoji: string;
     if (phase === "forming") {
       phaseEmoji = "➡️ ";
     } else if (phase === "perfective") {

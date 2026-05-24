@@ -1,9 +1,11 @@
 import swc from "unplugin-swc";
-import tsconfigPaths from "vite-tsconfig-paths";
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
-  plugins: [swc.vite(), tsconfigPaths()],
+  plugins: [swc.vite()],
+  resolve: {
+    tsconfigPaths: true,
+  },
   test: {
     globals: true,
     include: ["src/**/*.test.ts"],
