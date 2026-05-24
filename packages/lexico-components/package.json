@@ -69,7 +69,7 @@
   "main": "./src/index.ts",
   "name": "@monorepo/lexico-components",
   "peerDependencies": {
-    "react": "^19.2.4"
+    "react": "^19.2.6"
   },
   "private": true,
   "scripts": {

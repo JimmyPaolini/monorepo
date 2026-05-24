@@ -155,10 +155,10 @@
       "cache": true,
       "configurations": {
         "check": {
-          "command": "NODE_OPTIONS='--import=tsx/esm' knip --config configuration/knip.config.ts --workspace ."
+          "command": "knip --config configuration/knip.config.ts --workspace ."
         },
         "write": {
-          "command": "NODE_OPTIONS='--import=tsx/esm' knip --config configuration/knip.config.ts --fix --workspace ."
+          "command": "knip --config configuration/knip.config.ts --fix --workspace ."
         }
       },
       "defaultConfiguration": "check",

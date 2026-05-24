@@ -202,17 +202,17 @@
       "cache": true,
       "configurations": {
         "check": {
-          "command": "NODE_OPTIONS='--import=tsx/esm' knip --config configuration/knip.config.ts --workspace {projectRoot}"
+          "command": "knip --config configuration/knip.config.ts --workspace {projectRoot}"
         },
         "write": {
-          "command": "NODE_OPTIONS='--import=tsx/esm' knip --fix --config configuration/knip.config.ts --workspace {projectRoot}"
+          "command": "knip --fix --config configuration/knip.config.ts --workspace {projectRoot}"
         }
       },
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
       "inputs": ["{workspaceRoot}/configuration/knip.config.ts", "default"],
       "options": {
-        "command": "NODE_OPTIONS='--import=tsx/esm' knip --config configuration/knip.config.ts --workspace {projectRoot}",
+        "command": "knip --config configuration/knip.config.ts --workspace {projectRoot}",
         "cwd": "{workspaceRoot}"
       }
     },
