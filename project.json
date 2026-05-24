@@ -559,7 +559,7 @@
       "cache": false,
       "configurations": {
         "check": {
-          "command": "pnpm outdated --recursive || [ $? -eq 1 ]"
+          "command": "node -e \"const { spawnSync } = require('node:child_process'); const result = spawnSync('pnpm', ['outdated', '--recursive'], { stdio: 'inherit', shell: true }); process.exit(result.status === 0 || result.status === 1 ? 0 : (result.status ?? 1));\""
         },
         "write": {
           "command": "pnpm update --latest --recursive"
