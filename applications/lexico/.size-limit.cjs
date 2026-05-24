@@ -6,7 +6,7 @@
 module.exports = [
   {
     name: "Client JS",
-    path: "../../dist/applications/lexico/client/assets/main-*.js",
+    path: "../../dist/applications/lexico/client/assets/index-*.js",
     limit: "180 KB",
     gzip: true,
   },
