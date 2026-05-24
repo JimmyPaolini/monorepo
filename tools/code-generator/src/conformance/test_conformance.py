@@ -44,10 +44,11 @@ RESULTS_OUTPUT_PATH = (
 )
 
 # ---------------------------------------------------------------------------
-# Load conformance modules from src/conformance/ (same directory as this file)
+# Load modules: name_variables from src/, validator from src/conformance/
 # ---------------------------------------------------------------------------
 
 _CONFORMANCE_DIR = _HERE
+_SRC_DIR = _HERE.parent
 
 
 def _load_module(name: str, path: Path) -> types.ModuleType:
@@ -58,7 +59,7 @@ def _load_module(name: str, path: Path) -> types.ModuleType:
     return mod
 
 
-_nv_mod = _load_module("name_variables", _CONFORMANCE_DIR / "name_variables.py")
+_nv_mod = _load_module("name_variables", _SRC_DIR / "name_variables.py")
 name_variables = _nv_mod.name_variables  # type: ignore[attr-defined]
 
 _validator_mod = _load_module("validator", _CONFORMANCE_DIR / "validator.py")
