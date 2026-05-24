@@ -159,21 +159,7 @@ All workflows call this composite action after checkout. It provides:
 
 ### Scheduled (Weekly)
 
-#### 8. Dependency Updates (`dependency-upgrades.yml`)
-
-**Name:** 🧑‍🚒 Dependency Updates
-
-**Triggers:** Weekly (Sunday 10am UTC), manual dispatch
-
-**Jobs:**
-
-- **Check Updates** - Runs `ncu --workspaces --root` to check for updates. If updates are found, applies them, updates the lockfile, closes any stale dependency update PRs, and opens a new PR with the changes
-
-**Note:** Does **not** use the `setup-monorepo` composite action — sets up pnpm/Node.js directly to avoid Nx cache overhead for a simple dependency check.
-
----
-
-#### 9. Knip Cleanup (`knip-cleanup.yml`)
+#### 8. Knip Cleanup (`knip-cleanup.yml`)
 
 **Name:** ✂️ Knip Cleanup
 

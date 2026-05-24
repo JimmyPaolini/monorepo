@@ -142,8 +142,8 @@
       "description": "Detect hardcoded secrets in git history using Gitleaks (detection only)",
       "executor": "nx:run-commands",
       "inputs": [
-        "{workspaceRoot}/configuration/gitleaks.toml",
         "{workspaceRoot}/configuration/.gitleaksignore",
+        "{workspaceRoot}/configuration/gitleaks.toml",
         "default"
       ],
       "options": {
@@ -591,8 +591,8 @@
       "inputs": [
         "{projectRoot}/*.py",
         "{projectRoot}/scripts/**/*.py",
-        "{workspaceRoot}/configuration/vulture_whitelist.py",
         "{workspaceRoot}/applications/affirmations/pyproject.toml",
+        "{workspaceRoot}/configuration/vulture_whitelist.py",
         "default"
       ],
       "options": {

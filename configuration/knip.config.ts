@@ -70,7 +70,6 @@ const config: KnipConfig = {
         "configuration/stylelint.config.cjs",
         "configuration/syncpack.config.cjs",
         "release.config.cjs",
-        ".ncurc.cjs",
         "validate-branch-name.config.cjs",
         ".pnpmfile.mjs",
       ],

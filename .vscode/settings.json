@@ -613,7 +613,6 @@
   "markdownlint.configFile": "configuration/.markdownlint-cli2.jsonc",
   "material-icon-theme.files.associations": {
     ".code-workspace*": "vscode",
-    ".ncurc.cjs": "npm",
     ".pnpmfile.mjs": "pnpm",
     ".size-limit.cjs": "disc",
     ".yamllint": "yaml",

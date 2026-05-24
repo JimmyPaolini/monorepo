@@ -40,9 +40,9 @@
     "pythonTests": ["{projectRoot}/testing/**/*.py"],
     "sharedGlobals": [
       "{workspaceRoot}/.github/workflows/*.yml",
+      "{workspaceRoot}/configuration/tsconfig.base.json",
       "{workspaceRoot}/nx.json",
-      "{workspaceRoot}/pnpm-lock.yaml",
-      "{workspaceRoot}/configuration/tsconfig.base.json"
+      "{workspaceRoot}/pnpm-lock.yaml"
     ]
   },
   "parallel": 1,

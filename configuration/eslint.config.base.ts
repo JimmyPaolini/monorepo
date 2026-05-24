@@ -571,7 +571,7 @@ export default [
         {
           minValues: 2,
           order: { type: "asc", caseSensitive: false, natural: true },
-          pathPattern: "^!(command)$",
+          pathPattern: "^(?!(?:.*\\.)?commands?$)",
         },
       ],
       "jsonc/quotes": ["error", "double"],
@@ -589,21 +589,6 @@ export default [
     },
   },
 
-  // ━━━━━━━━━━━━━━━━━━━ package.json files ━━━━━━━━━━━━━━━━━━━
-  // Allow line-separated groups in package.json for security audit tool flexibility
-  {
-    files: ["**/package.json", "**/devcontainer.json"],
-    rules: {
-      "jsonc/sort-keys": [
-        "error",
-        {
-          order: { caseSensitive: false, natural: true, type: "asc" },
-          pathPattern: "^!(devDependencies)$",
-        },
-      ],
-    },
-  },
-
   // ━━━━━━━━━━━━━━━━━━━ devcontainer.json files ━━━━━━━━━━━━━━━━━━━
   // Allow line-separated groups in devcontainer.json for security audit tool flexibility
   {
@@ -614,7 +599,7 @@ export default [
         {
           minValues: 2,
           order: { type: "asc", caseSensitive: false, natural: true },
-          pathPattern: "^!(runArgs)$",
+          pathPattern: "^(?!runArgs$)",
         },
       ],
     },

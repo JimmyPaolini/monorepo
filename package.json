@@ -1,14 +1,13 @@
 {
-  "name": "monorepo",
   "author": "Jimmy Paolini",
   "description": "",
   "devDependencies": {
     "@commitlint/cli": "^21.0.1",
     "@commitlint/config-conventional": "^21.0.1",
     "@commitlint/types": "^21.0.1",
-    "@eslint-react/eslint-plugin": "^5.8.4",
     "@eslint/js": "^10.0.1",
     "@eslint/markdown": "^8.0.2",
+    "@eslint-react/eslint-plugin": "^5.8.4",
     "@nx/eslint": "^22.7.3",
     "@nx/eslint-plugin": "^22.7.3",
     "@nx/js": "^22.7.3",
@@ -21,8 +20,8 @@
     "@semantic-release/github": "^12.0.8",
     "@semantic-release/npm": "^13.1.5",
     "@semantic-release/release-notes-generator": "^14.1.1",
-    "@swc-node/register": "^1.11.1",
     "@swc/core": "^1.15.40",
+    "@swc-node/register": "^1.11.1",
     "@types/eslint-plugin-jsx-a11y": "^6.10.1",
     "@types/lodash": "^4.17.24",
     "@types/node": "^25.9.1",
@@ -76,8 +75,8 @@
   },
   "keywords": [],
   "license": "MIT",
+  "name": "monorepo",
   "packageManager": "pnpm@11.2.2",
-  "version": "1.2.0",
   "repository": "JimmyPaolini/monorepo.git",
   "scripts": {
     "prepare": "husky configuration/.husky",
@@ -93,5 +92,6 @@
       "root-package-private-field"
     ]
   },
-  "type": "module"
+  "type": "module",
+  "version": "1.2.0"
 }
