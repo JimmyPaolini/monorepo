@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/JimmyPaolini/monorepo/compare/v1.2.0...v1.2.1) (2026-05-24)
+
+### 🐛 Bug Fixes
+
+* **deployments:** 🐛 remove cacheTo from devcontainer and sync configs ([#30](https://github.com/JimmyPaolini/monorepo/issues/30)) ([5496e9e](https://github.com/JimmyPaolini/monorepo/commit/5496e9e28adfa25a283aa98ef56d0d860c1b7169))
+
 ## [1.2.0](https://github.com/JimmyPaolini/monorepo/compare/v1.1.1...v1.2.0) (2026-05-23)
 
 ### ✨ Features
