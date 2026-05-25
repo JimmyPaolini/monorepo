@@ -1,0 +1,60 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "name": "{{nameKebab}}",
+  "projectType": "application",
+  "sourceRoot": "applications/{{nameKebab}}",
+  "tags": [
+    "framework:nest-commander",
+    "framework:nestjs",
+    "language:typescript"
+  ],
+  "targets": {
+    "clean": {},
+    "code-analysis": {},
+    "dependency-cruiser": {},
+    "format": {},
+    "knip": {},
+    "lint": {},
+    "markdown-lint": {},
+    "oxfmt": {},
+    "oxlint": {},
+    "prettier": {},
+    "spell-check": {},
+    "start": {
+      "description": "Start the {{nameKebab}} application",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm start",
+        "cwd": "applications/{{nameKebab}}"
+      }
+    },
+    "test": {
+      "configurations": {
+        "coverage": {
+          "command": "pnpm test:coverage"
+        },
+        "end-to-end": {
+          "command": "pnpm test:end-to-end"
+        },
+        "integration": {
+          "command": "pnpm test:integration"
+        },
+        "unit": {
+          "command": "pnpm test:unit"
+        },
+        "watch": {
+          "command": "pnpm test:watch"
+        }
+      },
+      "description": "Run all tests",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm test",
+        "cwd": "applications/{{nameKebab}}"
+      }
+    },
+    "type-coverage": {},
+    "typecheck": {},
+    "yaml-lint": {}
+  }
+}

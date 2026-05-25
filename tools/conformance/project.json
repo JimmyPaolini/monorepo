@@ -16,7 +16,13 @@
     },
     "clean": {},
     "code-analysis": {},
-    "dependency-cruiser": {},
+    "dependency-cruiser": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "depcruise tools/conformance/src --exclude '^tools/conformance/src/generators/.*/templates/' --config configuration/dependency-cruiser.cjs",
+        "cwd": "{workspaceRoot}"
+      }
+    },
     "format": {},
     "knip": {},
     "lint": {},
