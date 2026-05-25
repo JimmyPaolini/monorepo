@@ -11,6 +11,10 @@ services:
     env_file:
       # The monorepo root level .env file (copied from .env.default in CI)
       - ../../.env
+    deploy:
+      resources:
+        limits:
+          memory: 6g
     command: sleep infinity
 
 volumes:
