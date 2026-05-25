@@ -253,6 +253,8 @@ else
 fi
 
 # local: must have docker-outside-of-docker, must not have docker-in-docker, must not have docker-storage mount
+# volume mounts are configured in docker-compose.yml, not devcontainer.json
+LOCAL_DOCKER_COMPOSE_YML="${WORKSPACE_ROOT}/.devcontainer/local/docker-compose.yml"
 if jq -e '.features | has("ghcr.io/devcontainers/features/docker-outside-of-docker:1")' "${LOCAL_DEVCONTAINER_JSON}" > /dev/null 2>&1; then
   pass "local config has docker-outside-of-docker feature"
 else
@@ -263,13 +265,15 @@ if jq -e '.features | has("ghcr.io/devcontainers/features/docker-in-docker:2") |
 else
   fail "local config must not have docker-in-docker feature"
 fi
-if jq -e '[.mounts[] | select(.target == "/var/lib/docker")] | length == 0' "${LOCAL_DEVCONTAINER_JSON}" > /dev/null 2>&1; then
-  pass "local config does not have docker-storage mount"
+if ! grep -q '/var/lib/docker' "${LOCAL_DOCKER_COMPOSE_YML}" 2>/dev/null; then
+  pass "local docker-compose.yml does not have docker-storage volume mount"
 else
-  fail "local config must not have docker-storage mount (/var/lib/docker)"
+  fail "local docker-compose.yml must not have docker-storage volume mount (/var/lib/docker)"
 fi
 
-# cloud: must have docker-in-docker, must not have docker-outside-of-docker, must have docker-storage mount and memory runArgs
+# cloud: must have docker-in-docker, must not have docker-outside-of-docker
+# resource limits and volume mounts are configured in docker-compose.yml, not devcontainer.json
+CLOUD_DOCKER_COMPOSE_YML="${WORKSPACE_ROOT}/.devcontainer/cloud/docker-compose.yml"
 if jq -e '.features | has("ghcr.io/devcontainers/features/docker-in-docker:2")' "${CLOUD_DEVCONTAINER_JSON}" > /dev/null 2>&1; then
   pass "cloud config has docker-in-docker feature"
 else
@@ -280,15 +284,15 @@ if jq -e '.features | has("ghcr.io/devcontainers/features/docker-outside-of-dock
 else
   fail "cloud config must not have docker-outside-of-docker feature"
 fi
-if jq -e '[.mounts[] | select(.target == "/var/lib/docker")] | length > 0' "${CLOUD_DEVCONTAINER_JSON}" > /dev/null 2>&1; then
-  pass "cloud config has docker-storage mount (/var/lib/docker)"
+if grep -q '/var/lib/docker' "${CLOUD_DOCKER_COMPOSE_YML}" 2>/dev/null; then
+  pass "cloud docker-compose.yml has docker-storage volume mount (/var/lib/docker)"
 else
-  fail "cloud config missing docker-storage mount (/var/lib/docker)"
+  fail "cloud docker-compose.yml missing docker-storage volume mount (/var/lib/docker)"
 fi
-if jq -e '[.runArgs[] | select(startswith("--memory"))] | length > 0' "${CLOUD_DEVCONTAINER_JSON}" > /dev/null 2>&1; then
-  pass "cloud config has memory runArgs"
+if grep -q 'memory:' "${CLOUD_DOCKER_COMPOSE_YML}" 2>/dev/null; then
+  pass "cloud docker-compose.yml has memory resource limit"
 else
-  fail "cloud config missing memory runArgs (--memory)"
+  fail "cloud docker-compose.yml missing memory resource limit"
 fi
 #endregion
 
