@@ -56,7 +56,7 @@ For each path in scope, read the documentation and cross-check it against the ac
 
 ### Phase 3 — Submit
 
-1. **Submit changes** — If any changes were made, use the `submit-changes` skill to create a branch, commit, and open a PR with a `docs(documentation): 📝` commit message.
+If any changes were made, use the `submit-changes` skill to create a branch, commit, and open a PR with a `docs(documentation): 📝` commit message.
 
 ## References
 
