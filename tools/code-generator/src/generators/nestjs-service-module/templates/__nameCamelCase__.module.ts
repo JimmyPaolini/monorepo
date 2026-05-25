@@ -1,14 +1,14 @@
 import { Module } from "@nestjs/common";
 
-import { <%= namePascalCase %>Service } from "./<%= nameCamelCase %>.service";
+import { {{namePascalCase}}Service } from "./{{nameCamelCase}}.service";
 
 /**
- * TODO: Document the <%= nameCamelCase %> module.
+ * TODO: Document the {{nameCamelCase}} module.
  */
 @Module({
   controllers: [],
-  exports: [<%= namePascalCase %>Service],
+  exports: [{{namePascalCase}}Service],
   imports: [],
-  providers: [<%= namePascalCase %>Service],
+  providers: [{{namePascalCase}}Service],
 })
-export class <%= namePascalCase %>Module {}
+export class {{namePascalCase}}Module {}
