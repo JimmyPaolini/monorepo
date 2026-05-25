@@ -75,8 +75,7 @@ jobs:
         run: |
           REPOSITORY="${{ github.repository }}"
           ISSUE_NUMBER="${{ steps.config.outputs.issue_number }}"
-          COMMENT_ENDPOINT="repos/${REPOSITORY}/issues/${ISSUE_NUMBER}"
-          COMMENT_ENDPOINT+="/comments"
+          COMMENT_ENDPOINT="repos/${REPOSITORY}/issues/${ISSUE_NUMBER}/comments"
 
           gh api \
             --method POST \
