@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
 
-describe("application e2e", () => {
-  it("is defined", () => {
-    expect(true).toBe(true);
+import { environmentSchema } from "./{{nameCamelCase}}.constants";
+
+describe("environment schema e2e", () => {
+  it("throws when required fields are missing", () => {
+    expect(() => environmentSchema.parse({})).toThrow();
   });
 });
