@@ -206,9 +206,7 @@ See [applications/lexico/AGENTS.md](../../applications/lexico/AGENTS.md) for det
 ### Client-Side Auth
 
 ```typescript
-import { createBrowserClient } from "@/lib/supabase.client";
-
-const supabase = createBrowserClient();
+import { supabase } from "~/lib/supabase";
 
 // Sign in
 const { data, error } = await supabase.auth.signInWithOAuth({
@@ -225,16 +223,16 @@ await supabase.auth.signOut();
 ### Server-Side Auth
 
 ```typescript
-import { createServerClient } from "@/lib/supabase.server";
+import { getSupabaseServerClient } from "~/lib/supabase-server";
 
-export const getUser = async () => {
-  const supabase = await createServerClient();
+export const getUser = createServerFn({ method: "GET" }).handler(async () => {
+  const supabase = getSupabaseServerClient();
   const {
     data: { user },
     error,
   } = await supabase.auth.getUser();
   return user;
-};
+});
 ```
 
 ## Edge Functions
