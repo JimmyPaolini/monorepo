@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 import { getProjects } from "@nx/devkit";
-import Mustache from "mustache";
+import mustache from "mustache";
 import prompts from "prompts";
 
 import { converterByStringCase, humanReadableStringCase } from "./constants";
@@ -58,7 +58,7 @@ async function promptProjectSelection(args: {
  * with the given `tag`. If it is omitted the user is prompted to pick one
  * interactively. Throws when no matching projects exist in the workspace.
  */
-export async function resolveProjectByTag(args: {
+export async function resolveProject(args: {
   tree: Tree;
   tag: string;
   project?: string;
@@ -112,7 +112,7 @@ async function promptNameInput(args: { message: string }): Promise<string> {
  * response is validated before returning. Throws when the name does not match
  * the required casing.
  */
-export async function resolveNameByCase(args: {
+export async function resolveName(args: {
   name?: string;
   case: StringCaseValue;
   message: string;
@@ -139,14 +139,18 @@ export async function resolveNameByCase(args: {
  * Template filenames may include `__fieldName__` placeholders which are
  * resolved from `substitutions` (for example `__namePascalCase__.tsx`).
  */
-export function generateMustacheFiles(args: {
+export function generateFiles(args: {
   tree: Tree;
   templateDirectoryPath: string;
-  targetDirectoryPath: string;
+  instanceDirectoryPath: string;
   substitutions: Record<string, string>;
 }): void {
-  const { tree, templateDirectoryPath, targetDirectoryPath, substitutions } =
-    args;
+  const {
+    tree,
+    templateDirectoryPath,
+    instanceDirectoryPath: targetDirectoryPath,
+    substitutions,
+  } = args;
   const templateFilenames = fs
     .readdirSync(templateDirectoryPath, { withFileTypes: true })
     .filter((node) => node.isFile())
@@ -155,7 +159,7 @@ export function generateMustacheFiles(args: {
   for (const templateFilename of templateFilenames) {
     const templatePath = path.join(templateDirectoryPath, templateFilename);
     const template = fs.readFileSync(templatePath, "utf8");
-    const rendered = Mustache.render(template, substitutions);
+    const rendered = mustache.render(template, substitutions);
     const generatedFilename = templateFilename.replaceAll(
       /__(\w+)__/g,
       (templateToken: string, field: string) =>

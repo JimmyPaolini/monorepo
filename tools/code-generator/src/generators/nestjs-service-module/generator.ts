@@ -6,11 +6,7 @@ import { getProjects, workspaceRoot } from "@nx/devkit";
 import _ from "lodash";
 
 import { StringCase } from "../../types";
-import {
-  generateMustacheFiles,
-  resolveNameByCase,
-  resolveProjectByTag,
-} from "../../utilities";
+import { generateFiles, resolveName, resolveProject } from "../../utilities";
 
 import type { GeneratorCallback, Tree } from "@nx/devkit";
 
@@ -38,14 +34,14 @@ export async function generateNestjsServiceModule(
   tree: Tree,
   options: GenerateNestjsServiceModuleOptions,
 ): Promise<GeneratorCallback> {
-  const projectName = await resolveProjectByTag({
+  const projectName = await resolveProject({
     tree,
     tag: "framework:nestjs",
     ...(options.project !== undefined && { project: options.project }),
     message: "Which project should the module be generated in?",
   });
 
-  const name = await resolveNameByCase({
+  const name = await resolveName({
     name: options.name,
     case: StringCase.CAMEL_CASE,
     message: "What is the name of the module? (camelCase)",
@@ -77,10 +73,10 @@ export async function generateNestjsServiceModule(
   const targetPath = path.join(directory, nameCamelCase);
   const substitutions = { nameCamelCase, namePascalCase };
 
-  generateMustacheFiles({
+  generateFiles({
     tree,
     templateDirectoryPath: TEMPLATES_DIRECTORY_PATH,
-    targetDirectoryPath: targetPath,
+    instanceDirectoryPath: targetPath,
     substitutions,
   });
 

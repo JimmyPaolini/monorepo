@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import Mustache from "mustache";
+import mustache from "mustache";
 import { createSourceFile, ScriptKind, ScriptTarget } from "typescript";
 
 import { converterByStringCase } from "../constants";
@@ -43,7 +43,7 @@ export function validateConformance(args: {
   const scriptKind = filename.endsWith(".tsx") ? ScriptKind.TSX : ScriptKind.TS;
   const templateFile = createSourceFile(
     filename,
-    Mustache.render(template, data),
+    mustache.render(template, data),
     ScriptTarget.Latest,
     true,
     scriptKind,

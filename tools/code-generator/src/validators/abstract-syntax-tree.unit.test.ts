@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import Mustache from "mustache";
+import mustache from "mustache";
 import { describe, expect, it } from "vitest";
 
 import { validateConformance } from "./validator";
@@ -36,7 +36,7 @@ describe("validateConformanceAST", () => {
 
   it("fresh generated file passes AST validation", () => {
     const templateContent = fs.readFileSync(SERVICE_TEMPLATE_PATH, "utf8");
-    const rendered = Mustache.render(templateContent, data);
+    const rendered = mustache.render(templateContent, data);
     const result = validateConformance({
       instance: rendered,
       template: templateContent,
@@ -49,7 +49,7 @@ describe("validateConformanceAST", () => {
 
   it("updated controllers array still passes — key present, value changed", () => {
     const templateContent = readModuleTemplate();
-    const rendered = Mustache.render(templateContent, data);
+    const rendered = mustache.render(templateContent, data);
     const fileContent = rendered.replace(
       "controllers: [],",
       "controllers: [UserController],",
@@ -66,7 +66,7 @@ describe("validateConformanceAST", () => {
 
   it("expanded exports array still passes", () => {
     const templateContent = readModuleTemplate();
-    const rendered = Mustache.render(templateContent, data);
+    const rendered = mustache.render(templateContent, data);
     const fileContent = rendered.replace(
       "exports: [UserService],",
       "exports: [UserService, UserRepository],",
@@ -83,7 +83,7 @@ describe("validateConformanceAST", () => {
 
   it("constructor with body still passes", () => {
     const templateContent = fs.readFileSync(SERVICE_TEMPLATE_PATH, "utf8");
-    const rendered = Mustache.render(templateContent, data);
+    const rendered = mustache.render(templateContent, data);
     const fileContent = rendered.replace(
       "  ) {}",
       "  ) {\n    this.init();\n  }",
@@ -100,7 +100,7 @@ describe("validateConformanceAST", () => {
 
   it("missing @Injectable decorator fails", () => {
     const templateContent = fs.readFileSync(SERVICE_TEMPLATE_PATH, "utf8");
-    const rendered = Mustache.render(templateContent, data);
+    const rendered = mustache.render(templateContent, data);
     const fileContent = rendered.replace("@Injectable()\n", "");
     const result = validateConformance({
       instance: fileContent,
@@ -118,7 +118,7 @@ describe("validateConformanceAST", () => {
 
   it("wrong class name fails", () => {
     const templateContent = fs.readFileSync(SERVICE_TEMPLATE_PATH, "utf8");
-    const rendered = Mustache.render(templateContent, data);
+    const rendered = mustache.render(templateContent, data);
     const fileContent = rendered.replace("UserService", "RenamedService");
     const result = validateConformance({
       instance: fileContent,
@@ -136,7 +136,7 @@ describe("validateConformanceAST", () => {
 
   it("missing section comment fails even in AST mode", () => {
     const templateContent = fs.readFileSync(SERVICE_TEMPLATE_PATH, "utf8");
-    const rendered = Mustache.render(templateContent, data);
+    const rendered = mustache.render(templateContent, data);
     const fileContent = rendered.replace("  // 🔑 Public Fields\n", "");
     const result = validateConformance({
       instance: fileContent,
@@ -154,7 +154,7 @@ describe("validateConformanceAST", () => {
 
   it("missing import from @nestjs/common fails", () => {
     const templateContent = fs.readFileSync(SERVICE_TEMPLATE_PATH, "utf8");
-    const rendered = Mustache.render(templateContent, data);
+    const rendered = mustache.render(templateContent, data);
     const fileContent = rendered.replace(
       'import { Injectable } from "@nestjs/common";\n',
       "",
@@ -175,7 +175,7 @@ describe("validateConformanceAST", () => {
 
   it("missing controllers key in @Module fails", () => {
     const templateContent = readModuleTemplate();
-    const rendered = Mustache.render(templateContent, data);
+    const rendered = mustache.render(templateContent, data);
     const fileContent = rendered.replace("  controllers: [],\n", "");
     const result = validateConformance({
       instance: fileContent,
@@ -217,7 +217,7 @@ describe("validateConformanceAST", () => {
     const templateContent = fs
       .readFileSync(SERVICE_TEMPLATE_PATH, "utf8")
       .replace("  // 🔑 Public Fields", "  // TODO: add public fields here");
-    const rendered = Mustache.render(templateContent, data);
+    const rendered = mustache.render(templateContent, data);
     const fileContent = rendered.replace(
       "  // TODO: add public fields here",
       "  // TODO: implement the public fields later",
@@ -233,7 +233,7 @@ describe("validateConformanceAST", () => {
 
   it("changed non-TODO section comment fails", () => {
     const templateContent = fs.readFileSync(SERVICE_TEMPLATE_PATH, "utf8");
-    const rendered = Mustache.render(templateContent, data);
+    const rendered = mustache.render(templateContent, data);
     const fileContent = rendered.replace(
       "  // 🔑 Public Fields",
       "  // 🔑 Renamed Fields",
@@ -253,7 +253,7 @@ describe("validateConformanceAST", () => {
 
   it("extra import in instance passes", () => {
     const templateContent = fs.readFileSync(SERVICE_TEMPLATE_PATH, "utf8");
-    const rendered = Mustache.render(templateContent, data);
+    const rendered = mustache.render(templateContent, data);
     const fileContent = rendered.replace(
       'import { Injectable } from "@nestjs/common";',
       'import { Injectable } from "@nestjs/common";\nimport { Extra } from "extra-package";',
@@ -293,7 +293,7 @@ describe("validateConformanceAST", () => {
 
   it("missing providers key in @Module fails", () => {
     const templateContent = readModuleTemplate();
-    const rendered = Mustache.render(templateContent, data);
+    const rendered = mustache.render(templateContent, data);
     const fileContent = rendered.replace("  providers: [UserService],\n", "");
     const result = validateConformance({
       instance: fileContent,
