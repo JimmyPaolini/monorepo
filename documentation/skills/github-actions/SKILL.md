@@ -121,7 +121,7 @@ All task workflows use the composite action pattern:
 - [build-devcontainer.yml](.github/workflows/build-devcontainer.yml) - Build/push dev container image on `.devcontainer/` changes
 - [code-analysis.yml](.github/workflows/code-analysis.yml) - Matrix of 8 checks (type check, lint, markdown lint, YAML lint, format, knip, spell check, type coverage)
 - [convention-check.yml](.github/workflows/convention-check.yml) - Validate PR branch name, title (commitlint), and body sections
-- [security-audit.yml](.github/workflows/security-audit.yml) - Dependency cruiser (`dependency-cruiser`), security audit, license check (also weekly scheduled)
+- [audit-security.yml](.github/workflows/audit-security.yml) - Dependency cruiser (`dependency-cruiser`), security audit, license check (also weekly scheduled)
 - [dependency-upgrades.yml](.github/workflows/dependency-upgrades.yml) - Weekly automated dependency update PRs via npm-check-updates
 - [knip-cleanup.yml](.github/workflows/knip-cleanup.yml) - Weekly automated dead code removal PRs
 - [release-projects.yml](.github/workflows/release-projects.yml) - Semantic-release on push to main
@@ -133,7 +133,7 @@ Some workflows include additional steps after the composite action:
 
 - **test-coverage.yml**: Uploads coverage reports to artifacts
 - **code-analysis.yml**: Runs 8 parallel matrix jobs for different quality checks
-- **security-audit.yml**: Includes weekly scheduled runs for compliance monitoring
+- **audit-security.yml**: Includes weekly scheduled runs for compliance monitoring
 - **build-code.yml**: Restricted path triggers and posts bundle size PR comments
 
 These workflow-specific steps are preserved in individual workflow files, maintaining flexibility for unique requirements.

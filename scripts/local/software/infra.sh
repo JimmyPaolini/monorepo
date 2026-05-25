@@ -3,7 +3,6 @@
 #
 # terraform  — manages Linode Kubernetes Engine (LKE) cluster (infrastructure/)
 # trivy      — scans Docker images and infrastructure code for vulnerabilities
-# yamllint   — validates YAML files in CI and locally
 # supabase   — local Supabase stack + migrations for lexico
 # jq         — JSON CLI utility used in CI scripts and Terraform output parsing
 # gh         — GitHub CLI for PR/issue workflows and release automation
@@ -15,7 +14,6 @@
 brew_install_or_check "gitleaks"
 brew_install_or_check "terraform"
 brew_install_or_check "trivy"
-brew_install_or_check "yamllint"
 brew_install_or_check "supabase" "supabase/tap/supabase"
 brew_install_or_check "jq"
 brew_install_or_check "gh"

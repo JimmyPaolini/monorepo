@@ -203,9 +203,6 @@
       "tflint": "0.61.0",
       "version": "1.14.5"
     },
-    "ghcr.io/devcontainers-extra/features/gitleaks:1": {
-      "version": "8.30.1"
-    },
     "ghcr.io/devcontainers-extra/features/nx-npm:1": {
       "version": "22.1.3"
     },
@@ -217,9 +214,6 @@
     },
     "ghcr.io/devcontainers-extra/features/uv:1": {
       "version": "latest"
-    },
-    "ghcr.io/devcontainers-extra/features/yamllint:2": {
-      "version": "1.38.0"
     },
     "ghcr.io/eitsupi/devcontainer-features/jq-likes:2": {
       "gojqVersion": "none",
@@ -286,6 +280,7 @@
   "postAttachCommand": ".devcontainer/scripts/post-attach-command.sh",
   "postCreateCommand": ".devcontainer/scripts/post-create-command.sh",
   "remoteEnv": {
+    "GITLEAKS_VERSION": "8.30.1",
     "KUBECONFIG": "${containerWorkspaceFolder}/.kube/config",
     "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}",
     "MONOREPO_ENVIRONMENT": "devcontainer-local",
