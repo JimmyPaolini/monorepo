@@ -15,6 +15,7 @@ jobs:
   validate-conventions:
     name: 🧑‍⚖️ Validate Conventions
     runs-on: ubuntu-latest
+    if: github.actor != 'dependabot[bot]'
 
     steps:
       - name: 📥 Checkout Repository
