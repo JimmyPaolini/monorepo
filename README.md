@@ -24,7 +24,7 @@
 [![Repo Size](https://img.shields.io/github/repo-size/JimmyPaolini/monorepo)](https://github.com/JimmyPaolini/monorepo)
 [![Last Commit](https://img.shields.io/github/last-commit/JimmyPaolini/monorepo)](https://github.com/JimmyPaolini/monorepo/commits)
 
-[![Code Analysis](https://github.com/JimmyPaolini/monorepo/actions/workflows/code-analysis.yml/badge.svg)](https://github.com/JimmyPaolini/monorepo/actions/workflows/code-analysis.yml)
+[![Code Analysis](https://github.com/JimmyPaolini/monorepo/actions/workflows/analyze-code.yml/badge.svg)](https://github.com/JimmyPaolini/monorepo/actions/workflows/analyze-code.yml)
 [![Test Coverage](https://github.com/JimmyPaolini/monorepo/actions/workflows/test-coverage.yml/badge.svg)](https://github.com/JimmyPaolini/monorepo/actions/workflows/test-coverage.yml)
 [![Security Audit](https://github.com/JimmyPaolini/monorepo/actions/workflows/audit-security.yml/badge.svg)](https://github.com/JimmyPaolini/monorepo/actions/workflows/audit-security.yml)
 [![Validate Conventions](https://github.com/JimmyPaolini/monorepo/actions/workflows/validate-conventions.yml/badge.svg?event=pull_request)](https://github.com/JimmyPaolini/monorepo/actions/workflows/validate-conventions.yml)
@@ -60,7 +60,7 @@ nx run caelundas:develop
 nx run-many --target=test --all
 
 # Run all quality checks
-nx run-many --target=code-analysis --all
+nx run-many --target=analyze-code --all
 ```
 
 ## 📦 Projects

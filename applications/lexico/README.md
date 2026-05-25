@@ -156,7 +156,7 @@ nx run lexico:format
 nx run lexico:bundlesize
 
 # All code analysis checks
-nx run lexico:code-analysis
+nx run lexico:analyze-code
 ```
 
 ### Supabase Services

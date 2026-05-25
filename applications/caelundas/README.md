@@ -125,7 +125,7 @@ nx run caelundas:lint
 nx run caelundas:format
 
 # All checks
-nx run caelundas:code-analysis
+nx run caelundas:analyze-code
 ```
 
 ### Debugging

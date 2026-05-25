@@ -20,7 +20,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  code-analysis:
+  analyze-code:
     name: 🧑‍💻 Code Analysis
     runs-on: ubuntu-latest
 
@@ -36,7 +36,7 @@ jobs:
       - name: 🧑‍💻 Code Analysis
         env:
           NX_VERBOSE_LOGGING: ${{ inputs.verbose || false }}
-        run: pnpm exec nx affected --target=code-analysis
+        run: pnpm exec nx affected --target=analyze-code
 
       - name: 📊 Upload Type Coverage
         if: always()

@@ -161,7 +161,7 @@ skips = ["B101"]  # assert_used — OK in test code
 3. Run `uv sync` to generate `uv.lock`
 4. Add `ty` and `bandit` as dev dependencies: `uv add --dev ty 'bandit[toml]'`
 5. Override composite targets (`format`, `lint`, `typecheck`, `test`) in `project.json`
-6. Verify: `nx run <project>:code-analysis`
+6. Verify: `nx run <project>:analyze-code`
 
 The new project automatically inherits all Python tool targetDefaults — no `nx.json` changes needed.
 

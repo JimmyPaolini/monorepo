@@ -24,7 +24,7 @@ This repository has these primary GitHub Action workflows:
 
 | Workflow                 | Job             | Nx Task                       | Common Failures                                                            |
 | ------------------------ | --------------- | ----------------------------- | -------------------------------------------------------------------------- |
-| 🧑‍💻 Code Analysis         | `code-analysis` | `code-analysis`               | Type errors, lint violations, formatting, spell-check, knip unused exports |
+| 🧑‍💻 Code Analysis         | `analyze-code` | `analyze-code`               | Type errors, lint violations, formatting, spell-check, knip unused exports |
 | 🧑‍🔬 Test Coverage         | `test-coverage` | `test --coverage`             | Test failures, missing coverage, snapshot mismatches                       |
 | 🧑‍⚖️ Convention Validation | Multiple        | Various                       | Branch name format, PR title format, PR body sections, config sync issues  |
 | 🕵️ Security Audit        | Multiple        | `dependency-audit` + scanners | Vulnerabilities, secrets in code, Docker/IaC issues                        |
@@ -40,7 +40,7 @@ These include: `typecheck`, `lint`, `format`, `spell-check`, `knip`, `markdown-l
 1. Extract the **specific error message** and **affected file paths** from logs
 2. Read the referenced source files to understand context
 3. Apply the fix following [AGENTS.md](/workspaces/monorepo/AGENTS.md) standards (explicit return types, no `any`, `consistent-type-imports`, etc.)
-4. Verify: `npx nx affected -t code-analysis`
+4. Verify: `npx nx affected -t analyze-code`
 
 **Common fixes:**
 

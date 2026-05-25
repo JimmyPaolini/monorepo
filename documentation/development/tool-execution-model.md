@@ -38,7 +38,7 @@ tsc
 - `lint`: ESLint, Oxlint, Biome
 - `test`: Vitest, Jest
 - `format`: Oxfmt (primary), Prettier, Biome
-- `code-analysis`: Static analysis suites
+- `analyze-code`: Static analysis suites
 - Any custom target defined in `project.json`
 
 ## Direct Tool Invocation (Infrastructure & External Systems)
