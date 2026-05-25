@@ -25,22 +25,25 @@ For workspace task execution, see [tool-execution-model](../tool-execution-model
 
 The component generator enforces these conventions:
 
-- Component names are **PascalCase** (validated)
-- File names are **kebab-case**
-- Generated files are auto-formatted
+- Component names are **PascalCase** (validated, e.g., `Button`, `UserCard`)
+- File names are **PascalCase** (`Button.tsx`, `Button.test.tsx`)
+- The generator prompts for a `framework:react` project when `--project` is omitted
+- Generated files are placed in `src/components/` of the selected project
 
 Example:
 
 ```bash
-nx generate code-generator:react-component --name=Dialog --directory=src/components
+nx generate code-generator:react-component --name=Dialog
+# With explicit project:
+nx generate code-generator:react-component --name=Dialog --project=lexico-components
 ```
 
-Generates:
+Generates in `packages/lexico-components/src/components/`:
 
 ```text
 src/components/
-├── dialog.tsx
-└── dialog.test.tsx
+├── Dialog.tsx
+└── Dialog.test.tsx
 ```
 
 ## Generator Structure
@@ -51,12 +54,12 @@ src/components/
 tools/code-generator/
   src/
     generators/
-      example/                    # Generator name
-        schema.json              # Input schema
-        schema.d.ts              # TypeScript types
-        generator.ts             # Implementation
-        files/                   # Template files
-          __name__.ts.template   # Template with substitutions
+      example/                          # Generator name
+        schema.json                    # Input schema
+        generator.ts                   # Implementation
+        templates/                     # Template files
+          __namePascalCase__.tsx        # React component template (PascalCase)
+          __nameCamelCase__.module.ts   # NestJS module template (camelCase)
 ```
 
 ### Generator Files
@@ -66,18 +69,15 @@ tools/code-generator/
 ```json
 {
   "$schema": "http://json-schema.org/schema",
-  "cli": "nx",
-  "id": "example",
   "type": "object",
   "properties": {
     "name": {
       "type": "string",
-      "description": "Name of the component",
-      "$default": { "$source": "argv", "index": 0 }
+      "description": "Name of the component or module"
     },
-    "directory": {
+    "project": {
       "type": "string",
-      "description": "Directory to create the component in"
+      "description": "Name of the target project (optional — prompted if omitted)"
     }
   },
   "required": ["name"]
@@ -87,20 +87,48 @@ tools/code-generator/
 **generator.ts** - Implementation:
 
 ```typescript
-import { Tree, formatFiles, generateFiles } from "@nx/devkit";
-import { ExampleGeneratorSchema } from "./schema";
+import path from "node:path";
+import { formatFiles, generateFiles, getProjects } from "@nx/devkit";
+import { resolveProjectByTag, resolveNameByCase } from "../../utilities";
+import { StringCase } from "../../types";
+import type { Tree } from "@nx/devkit";
+
+interface ExampleGeneratorSchema {
+  name: string;
+  project?: string;
+}
 
 export async function exampleGenerator(
   tree: Tree,
   options: ExampleGeneratorSchema,
-) {
-  // Generate files from templates
-  generateFiles(tree, join(__dirname, "files"), options.directory, {
-    ...options,
-    tmpl: "", // Remove .template extension
+): Promise<void> {
+  const projectName = await resolveProjectByTag({
+    tree,
+    tag: "framework:react",
+    ...(options.project !== undefined && { project: options.project }),
+    message: "Which project should the component be generated in?",
   });
 
-  // Format generated files
+  const name = await resolveNameByCase({
+    name: options.name,
+    case: StringCase.PASCAL_CASE,
+    message: "What is the name of the component? (PascalCase)",
+    subject: "Component name",
+  });
+
+  const allProjects = getProjects(tree);
+  const projectConfig = allProjects.get(projectName);
+  const projectRoot = projectConfig?.root ?? projectConfig?.sourceRoot;
+  if (!projectRoot) throw new Error(`Project "${projectName}" has no root`);
+
+  const directory = path.join(projectRoot, "src", "components");
+  const namePascalCase = name;
+
+  // Template filenames use __variable__ substitution; content uses EJS <%= variable %>
+  generateFiles(tree, path.join(__dirname, "templates"), directory, {
+    namePascalCase,
+  });
+
   await formatFiles(tree);
 }
 
@@ -111,50 +139,59 @@ export default exampleGenerator;
 
 ### Variable Substitution
 
-Use `__variable__` in filenames and content:
+Generators use two substitution mechanisms:
 
-**Filename:** `__name__.ts.template`
-**Becomes:** `MyComponent.ts` (when name="MyComponent")
+- **Filenames**: `__variable__` is replaced with the corresponding variable value
+- **File content**: EJS `<%= variable %>` is evaluated and replaced
+
+**Filename:** `__namePascalCase__.tsx`
+**Becomes:** `Dialog.tsx` (when namePascalCase="Dialog")
 
 **Content:**
 
-```typescript
-// __name__.ts.template
-export function __name__() {
-  console.log("Hello from __name__!");
+```tsx
+// __namePascalCase__.tsx
+export interface <%= namePascalCase %>Props {
+  className?: string;
 }
+
+export const <%= namePascalCase %> = (props: <%= namePascalCase %>Props) => {
+  return <div className={props.className}><%= namePascalCase %> component</div>;
+};
 ```
 
 **Generates:**
 
-```typescript
-// MyComponent.ts
-export function MyComponent() {
-  console.log("Hello from MyComponent!");
+```tsx
+// Dialog.tsx
+export interface DialogProps {
+  className?: string;
 }
+
+export const Dialog = (props: DialogProps) => {
+  return <div className={props.className}>Dialog component</div>;
+};
 ```
 
-### Case Transformations
+### Variable Naming Conventions
 
-Use helper functions for case conversion:
+This monorepo's generators pass custom substitution variables to `generateFiles()`:
+
+| Variable | Case | Example |
+| --- | --- | --- |
+| `namePascalCase` | PascalCase | `UserCard` |
+| `nameCamelCase` | camelCase | `userCard` |
+| `nameKebab` | kebab-case | `user-card` |
+| `nameSnake` | snake_case | `user_card` |
+| `nameConstant` | UPPER_CASE | `USER_CARD` |
+
+Use `resolveNameByCase()` from `../../utilities` to normalize the input name, then build the substitutions object manually:
 
 ```typescript
-import { names } from "@nx/devkit";
-
-generateFiles(tree, templatePath, targetPath, {
-  ...options,
-  ...names(options.name), // Adds: name, className, propertyName, constantName, fileName
-  tmpl: "",
-});
+const nameCamelCase = name; // already normalized to camelCase
+const namePascalCase = _.upperFirst(name);
+generateFiles(tree, templatesPath, targetPath, { nameCamelCase, namePascalCase });
 ```
-
-Available transformations:
-
-- `__name__` → Original name
-- `__className__` → PascalCase (MyComponent)
-- `__propertyName__` → camelCase (myComponent)
-- `__constantName__` → UPPER_CASE (MY_COMPONENT)
-- `__fileName__` → kebab-case (my-component)
 
 ### Conditional Content
 
@@ -259,11 +296,12 @@ Use `x-prompt` in schema.json:
 
 ```typescript
 import { Tree, generateFiles, joinPathFragments } from "@nx/devkit";
+import path from "node:path";
 
 export async function generator(tree: Tree, options: Schema) {
   const targetPath = joinPathFragments(options.directory, options.name);
 
-  generateFiles(tree, join(__dirname, "files"), targetPath, options);
+  generateFiles(tree, path.join(__dirname, "templates"), targetPath, options);
 }
 ```
 
@@ -272,18 +310,18 @@ export async function generator(tree: Tree, options: Schema) {
 ```typescript
 export async function generator(tree: Tree, options: Schema) {
   // Generate base files
-  generateFiles(tree, join(__dirname, "files/base"), targetPath, options);
+  generateFiles(tree, path.join(__dirname, "templates/base"), targetPath, options);
 
   // Conditionally generate test files
   if (options.includeTests) {
-    generateFiles(tree, join(__dirname, "files/tests"), targetPath, options);
+    generateFiles(tree, path.join(__dirname, "templates/tests"), targetPath, options);
   }
 
   // Conditionally generate style files
   if (options.style) {
     generateFiles(
       tree,
-      join(__dirname, `files/styles/${options.style}`),
+      path.join(__dirname, `templates/styles/${options.style}`),
       targetPath,
       options,
     );
@@ -342,7 +380,7 @@ export async function generator(tree: Tree, options: Schema) {
   // Generate files
   generateFiles(
     tree,
-    join(__dirname, "files"),
+    path.join(__dirname, "templates"),
     `packages/${options.name}`,
     options,
   );
@@ -538,38 +576,37 @@ export async function generator(tree: Tree, options: Schema) {
 
 ```typescript
 export async function packageGenerator(tree: Tree, options: PackageSchema) {
-  const normalized = {
-    ...options,
-    ...names(options.name),
-  };
+  const namePascalCase = _.upperFirst(_.camelCase(options.name));
+  const nameKebab = _.kebabCase(options.name);
+  const normalized = { ...options, namePascalCase, nameKebab };
 
   // Generate package structure
   generateFiles(
     tree,
-    join(__dirname, "files"),
-    `packages/${normalized.fileName}`,
+    path.join(__dirname, "templates"),
+    `packages/${nameKebab}`,
     normalized,
   );
 
   // Add to tsconfig paths
   updateJson(tree, "tsconfig.base.json", (json) => {
-    json.compilerOptions.paths[`@monorepo/${normalized.fileName}/*`] = [
-      `packages/${normalized.fileName}/src/*`,
+    json.compilerOptions.paths[`@monorepo/${nameKebab}/*`] = [
+      `packages/${nameKebab}/src/*`,
     ];
     return json;
   });
 
   // Add project configuration
-  addProjectConfiguration(tree, normalized.fileName, {
-    root: `packages/${normalized.fileName}`,
-    sourceRoot: `packages/${normalized.fileName}/src`,
+  addProjectConfiguration(tree, nameKebab, {
+    root: `packages/${nameKebab}`,
+    sourceRoot: `packages/${nameKebab}/src`,
     projectType: "library",
     targets: {
       build: {
         executor: "@nx/js:tsc",
         options: {
-          outputPath: `dist/packages/${normalized.fileName}`,
-          main: `packages/${normalized.fileName}/src/index.ts`,
+          outputPath: `dist/packages/${nameKebab}`,
+          main: `packages/${nameKebab}/src/index.ts`,
         },
       },
     },
@@ -583,32 +620,32 @@ export async function packageGenerator(tree: Tree, options: PackageSchema) {
 
 ```typescript
 export async function componentGenerator(tree: Tree, options: ComponentSchema) {
-  const normalized = {
-    ...options,
-    ...names(options.name),
-  };
+  const namePascalCase = options.name;
+  const nameKebab = namePascalCase.replace(/([A-Z])/g, (m, l, i) => (i ? "-" : "") + l.toLowerCase());
 
   // Determine target directory
-  const targetPath = join(
-    options.project,
-    "src/components",
-    normalized.fileName,
-  );
+  const targetPath = path.join(options.project, "src/components");
 
-  // Generate component file
-  generateFiles(tree, join(__dirname, "files"), targetPath, normalized);
+  // Generate component files from templates
+  generateFiles(tree, path.join(__dirname, "templates"), targetPath, {
+    namePascalCase,
+    nameKebab,
+  });
 
-  // Generate test file if requested
+  // Generate test files if requested
   if (options.includeTests) {
-    generateFiles(tree, join(__dirname, "files-test"), targetPath, normalized);
+    generateFiles(tree, path.join(__dirname, "templates-test"), targetPath, {
+      namePascalCase,
+      nameKebab,
+    });
   }
 
   // Add export to index.ts
-  const indexPath = join(options.project, "src/index.ts");
-  const indexContent = tree.read(indexPath, "utf-8") || "";
+  const indexPath = path.join(options.project, "src/index.ts");
+  const indexContent = tree.read(indexPath, "utf-8") ?? "";
   tree.write(
     indexPath,
-    `${indexContent}\nexport { ${normalized.className} } from './components/${normalized.fileName}';\n`,
+    `${indexContent}\nexport { ${namePascalCase} } from './components/${namePascalCase}';\n`,
   );
 
   await formatFiles(tree);
@@ -620,7 +657,7 @@ export async function componentGenerator(tree: Tree, options: ComponentSchema) {
 1. **Use schema validation** for input validation
 2. **Provide sensible defaults** in schema.json
 3. **Format generated files** with formatFiles()
-4. **Use names() helper** for consistent naming
+4. **Use `resolveNameByCase()`** from `../../utilities` to normalize names, then build substitution variables manually
 5. **Test generators** thoroughly (unit + integration)
 6. **Document options** in schema descriptions
 7. **Compose generators** to reduce duplication
@@ -638,15 +675,15 @@ export async function componentGenerator(tree: Tree, options: ComponentSchema) {
 
 **Templates not found:**
 
-- Check `files/` directory exists
+- Check `templates/` directory exists inside the generator folder
 - Verify path in generateFiles() is correct
-- Use `__dirname` for relative paths
+- Use `path.join(__dirname, "templates")` for relative paths
 
 **Variables not substituted:**
 
-- Add `tmpl: ''` to generateFiles() options
-- Check variable names match schema properties
-- Use `names()` helper for case transformations
+- Confirm `__variable__` in filenames matches keys in the substitutions object
+- Confirm `<%= variable %>` in file content matches keys in the substitutions object
+- Use `resolveNameByCase()` to normalize names before building substitutions
 
 **Schema validation errors:**
 

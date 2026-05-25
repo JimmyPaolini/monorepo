@@ -57,7 +57,7 @@ nx run-many --target=code-analysis --all
 ## 📚 Documentation
 
 - **[Contributing Guide](CONTRIBUTING.md)** - Development workflow, code standards, and release process
-- **[Commit Messages](.github/skills/commit-code/SKILL.md)** - Conventional Commits format and examples
+- **[Commit Messages](documentation/skills/commit-code/SKILL.md)** - Conventional Commits format and examples
 - **[Release Process](release.config.cjs)** - Automated versioning and changelog generation
 - **[GitHub Actions](documentation/github-actions.md)** - CI/CD workflows, composite actions, and pipeline architecture
 
@@ -88,7 +88,7 @@ All projects use strict TypeScript configuration and comprehensive linting:
 - **ESLint** - Code linting with strict rules
 - **Oxfmt** - Primary code formatter
 - **Prettier** - Supplementary code formatting
-- **Biome** - Supplementary format checking and linting
+- **Oxlint** - Fast JavaScript/TypeScript linter
 - **TypeScript** - Strict type checking
 - **Knip** - Unused code detection
 - **cspell** - Spell checking

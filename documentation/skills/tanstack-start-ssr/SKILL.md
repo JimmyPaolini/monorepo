@@ -30,12 +30,17 @@ applications/lexico/
       index.tsx      # Home page (/)
       search.tsx     # Search page (/search)
       word.$id.tsx   # Dynamic route (/word/:id)
+      bookmarks.tsx  # Bookmarks page (/bookmarks, auth-guarded)
+      library.tsx    # Library page (/library, auth-guarded)
+      settings.tsx   # Settings page (/settings, auth-guarded)
+      tools.tsx      # Tools page (/tools, auth-guarded)
     components/      # React components
-    lib/             # Utilities
-      supabase.client.ts  # Client-side Supabase
-      supabase.server.ts  # Server-side Supabase
-    server/          # Server-only code
-      functions/     # Server functions
+    lib/             # Utilities and server functions
+      supabase.ts         # Client-side Supabase singleton
+      supabase-server.ts  # Server-side Supabase helper
+      auth.ts             # Auth server functions
+      search.ts           # Search server functions
+      bookmarks.ts        # Bookmarks server functions
 ```
 
 ## File-Based Routing
@@ -47,7 +52,9 @@ Routes are defined by file names in `src/routes/`:
 - `index.tsx` → `/`
 - `search.tsx` → `/search`
 - `word.$id.tsx` → `/word/:id`
-- `auth/callback.tsx` → `/auth/callback`
+- `bookmarks.tsx` → `/bookmarks`
+- `library.tsx` → `/library`
+- `settings.tsx` → `/settings`
 
 ### Route Configuration
 
@@ -119,14 +126,14 @@ Server functions run only on the server and can access secrets, databases, etc.
 ### Creating Server Functions
 
 ```typescript
-// app/server/functions/get-word.ts
-import { createServerFn } from "@tanstack/start";
-import { createServerClient } from "@/lib/supabase.server";
+// src/lib/search.ts
+import { createServerFn } from "@tanstack/react-start";
+import { getSupabaseServerClient } from "~/lib/supabase-server";
 
 export const getWord = createServerFn({ method: "GET" })
-  .validator((data: { id: string }) => data)
+  .inputValidator((data: { id: string }) => data)
   .handler(async ({ data }) => {
-    const supabase = await createServerClient();
+    const supabase = getSupabaseServerClient();
 
     const { data: word, error } = await supabase
       .from("words")
@@ -144,7 +151,7 @@ export const getWord = createServerFn({ method: "GET" })
 From client components:
 
 ```tsx
-import { getWord } from "@/server/functions/get-word";
+import { getWord } from "~/lib/search";
 
 function WordComponent({ id }: { id: string }) {
   const [word, setWord] = useState(null);
@@ -174,9 +181,9 @@ export const Route = createFileRoute("/word/$id")({
 
 ```typescript
 export const bookmarkWord = createServerFn({ method: "POST" })
-  .validator((data: { wordId: string }) => data)
+  .inputValidator((data: { wordId: string }) => data)
   .handler(async ({ data }) => {
-    const supabase = await createServerClient();
+    const supabase = getSupabaseServerClient();
 
     // Get authenticated user
     const {
@@ -203,9 +210,9 @@ export const bookmarkWord = createServerFn({ method: "POST" })
 
 ```typescript
 export const uploadImage = createServerFn({ method: "POST" })
-  .validator((data: { file: File }) => data)
+  .inputValidator((data: { file: File }) => data)
   .handler(async ({ data }) => {
-    const supabase = await createServerClient();
+    const supabase = getSupabaseServerClient();
 
     const { data: upload, error } = await supabase.storage
       .from("images")
@@ -300,23 +307,31 @@ TanStack Start uses HTTP-only cookies for authentication, compatible with Supaba
 
 ### Server-Side Supabase Client
 
-```typescript
-// app/lib/supabase.server.ts
-import { createServerClient as createSupabaseServerClient } from "@supabase/ssr";
-import { getCookie, setCookie } from "vinxi/http";
+The server client is created via `getSupabaseServerClient()` from `src/lib/supabase-server.ts`, which reads/writes auth cookies using `@tanstack/react-start/server` request helpers:
 
-export async function createServerClient() {
-  return createSupabaseServerClient(
-    process.env.SUPABASE_URL!,
-    process.env.SUPABASE_ANON_KEY!,
+```typescript
+// src/lib/supabase-server.ts
+import { createServerClient, parseCookieHeader, serializeCookieHeader } from "@supabase/ssr";
+import { getRequestHeader, setResponseHeader } from "@tanstack/react-start/server";
+
+export function getSupabaseServerClient(): SupabaseClient<Database> {
+  const cookieHeader = getRequestHeader("cookie") ?? "";
+
+  return createServerClient<Database>(
+    process.env["SUPABASE_URL"]!,
+    process.env["SUPABASE_ANON_KEY"]!,
     {
       cookies: {
-        get: (name) => getCookie(name),
-        set: (name, value, options) => {
-          setCookie(name, value, options);
+        getAll() {
+          return parseCookieHeader(cookieHeader).map(({ name, value }) => ({
+            name,
+            value: value ?? "",
+          }));
         },
-        remove: (name) => {
-          setCookie(name, "", { maxAge: 0 });
+        setAll(cookiesToSet) {
+          cookiesToSet.forEach(({ name, value, options }) => {
+            setResponseHeader("Set-Cookie", serializeCookieHeader(name, value, options));
+          });
         },
       },
     },
@@ -329,16 +344,19 @@ export async function createServerClient() {
 **Sign In:**
 
 ```typescript
-// Server function
+// Server function in src/lib/auth.ts
+import { createServerFn } from "@tanstack/react-start";
+import { getSupabaseServerClient } from "~/lib/supabase-server";
+
 export const signIn = createServerFn({ method: "POST" })
-  .validator((data: { provider: "google" | "github" }) => data)
+  .inputValidator((data: { provider: "google" | "github" }) => data)
   .handler(async ({ data }) => {
-    const supabase = await createServerClient();
+    const supabase = getSupabaseServerClient();
 
     const { data: authData, error } = await supabase.auth.signInWithOAuth({
       provider: data.provider,
       options: {
-        redirectTo: `${process.env.APP_URL}/auth/callback`,
+        redirectTo: `${process.env["APP_URL"]}/auth/callback`,
       },
     });
 
@@ -352,12 +370,11 @@ export const signIn = createServerFn({ method: "POST" })
 ```tsx
 // src/routes/auth/callback.tsx
 export const Route = createFileRoute("/auth/callback")({
-  loader: async ({ request }) => {
-    const url = new URL(request.url);
-    const code = url.searchParams.get("code");
+  loader: async ({ search }) => {
+    const code = (search as { code?: string }).code;
 
     if (code) {
-      const supabase = await createServerClient();
+      const supabase = getSupabaseServerClient();
       await supabase.auth.exchangeCodeForSession(code);
     }
 
@@ -370,10 +387,10 @@ export const Route = createFileRoute("/auth/callback")({
 **Get Current User:**
 
 ```typescript
-// Server function
+// Server function in src/lib/auth.ts
 export const getCurrentUser = createServerFn({ method: "GET" }).handler(
   async () => {
-    const supabase = await createServerClient();
+    const supabase = getSupabaseServerClient();
     const {
       data: { user },
     } = await supabase.auth.getUser();
@@ -513,7 +530,7 @@ import { Link } from "@tanstack/react-router";
 
 ```tsx
 const submitForm = createServerFn({ method: "POST" })
-  .validator((data: { name: string; email: string }) => data)
+  .inputValidator((data: { name: string; email: string }) => data)
   .handler(async ({ data }) => {
     // Validate
     if (!data.email.includes("@")) {
@@ -521,7 +538,7 @@ const submitForm = createServerFn({ method: "POST" })
     }
 
     // Save to database
-    const supabase = await createServerClient();
+    const supabase = getSupabaseServerClient();
     const { error } = await supabase.from("contacts").insert(data);
 
     if (error) throw error;
