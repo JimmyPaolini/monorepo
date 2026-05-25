@@ -1,4 +1,4 @@
-# Security Audit Workflow
+# Audit Security Workflow
 # Purpose: Combined security audit running four steps sequentially:
 #   - 🔐 Gitleaks secret scanning (push to main + PRs)
 #   - 🕵️ pnpm dependency audit (push to main + PRs + weekly schedule)
@@ -6,7 +6,7 @@
 # @see https://github.com/gitleaks/gitleaks-action
 # @see https://github.com/aquasecurity/trivy-action
 
-name: 🕵️ Security Audit
+name: 🕵️ Audit Security
 
 on:
   push:
@@ -22,7 +22,7 @@ concurrency:
 
 jobs:
   security-audit:
-    name: 🕵️ Security Audit
+    name: 🕵️ Audit Security
     runs-on: ubuntu-latest
 
     steps:

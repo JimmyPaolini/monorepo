@@ -48,6 +48,12 @@
   "chat.agent.maxRequests": 384,
   "chat.agent.thinking.terminalTools": true,
   "chat.agent.thinkingStyle": "collapsedPreview",
+  "chat.agentFilesLocations": {
+    ".github/agents": true
+  },
+  "chat.agentSkillsLocations": {
+    ".github/skills": true
+  },
   "chat.checkpoints.enabled": true,
   "chat.checkpoints.showFileChanges": true,
   "chat.customAgentInSubagent.enabled": true,
@@ -78,6 +84,9 @@
   "chat.notifyWindowOnConfirmation": "always",
   "chat.notifyWindowOnResponseReceived": "always",
   "chat.planAgent.defaultModel": "Claude Sonnet 4.6 (copilot)",
+  "chat.promptFilesLocations": {
+    ".github/prompts": true
+  },
   "chat.requestQueuing.defaultAction": "queue",
   "chat.restoreLastPanelSession": true,
   "chat.sendElementsToChat.enabled": true,
