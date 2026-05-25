@@ -12,7 +12,7 @@ This skill clarifies when to use Nx task execution (`nx run`, `nx run-many`, `nx
 
 Use this skill when a request mentions:
 
-- Running build, lint, test, typecheck, format, or code-analysis tasks
+- Running build, lint, test, typecheck, format, or analyze-code tasks
 - Docker builds, kubectl, Helm, or Supabase CLI commands
 - Questions about why Nx should or should not be used
 - CI/CD guidance for task execution

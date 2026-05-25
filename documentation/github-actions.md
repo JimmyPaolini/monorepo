@@ -55,9 +55,9 @@ All workflows call this composite action after checkout. It provides:
 
 ---
 
-#### 2. Code Analysis (`code-analysis.yml`)
+#### 2. Analyze Code (`analyze-code.yml`)
 
-**Name:** 🧑‍💻 Code Analysis
+**Name:** 🧑‍💻 Analyze Code
 
 **Triggers:** Push to `main`, pull requests
 
@@ -185,7 +185,7 @@ Most workflows use `nx affected -t <target>` which only runs tasks on projects c
 
 Three workflows use `fail-fast: false` matrix strategies to run multiple checks in parallel while allowing individual failures:
 
-- `code-analysis.yml` — 8 checks
+- `analyze-code.yml` — 8 checks
 - `convention-check.yml` — 3 checks
 - `audit-security.yml` — 3 checks
 

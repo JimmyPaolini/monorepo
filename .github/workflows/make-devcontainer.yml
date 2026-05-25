@@ -6,6 +6,12 @@ on:
       - main
     paths:
       - .devcontainer/**
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .devcontainer/**
+      - .github/workflows/make-devcontainer.yml
   workflow_dispatch:
 
 permissions:
@@ -32,7 +38,9 @@ jobs:
         run: npx nx run monorepo:sync-vscode-extensions:check
 
       - name: 🗂️ Setup Environment File
-        run: cp .env.default .env
+        run: |
+          cp .env.default .env
+          echo "LOCAL_WORKSPACE_FOLDER=$GITHUB_WORKSPACE" >> .env
 
       - name: 🔧 Set up Docker Buildx
         uses: docker/setup-buildx-action@v3

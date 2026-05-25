@@ -91,9 +91,9 @@ Apply each refactoring directly. For each change, briefly explain what technique
 After making changes:
 
 1. Check for compile/lint errors using the problems tool.
-2. Run the `code-analysis` target for the affected project(s) to confirm adherence to monorepo standards:
+2. Run the `analyze-code` target for the affected project(s) to confirm adherence to monorepo standards:
    ```bash
-   pnpm exec nx run <project>:code-analysis
+   pnpm exec nx run <project>:analyze-code
    ```
 3. Run the `test` target to verify no behavior was changed:
    ```bash

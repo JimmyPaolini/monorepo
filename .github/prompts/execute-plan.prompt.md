@@ -160,14 +160,14 @@ After all tasks in the selected phase are marked complete, run verification to c
 
 Use `#tool:nx-mcp-server/nx_project_details` for each affected project to discover its available targets. Then select the appropriate commands using this priority order:
 
-1. **Prefer compound targets** that run multiple checks in one invocation — use `#tool:nx-mcp-server/nx_available_plugins` and inspect project targets for aggregates like `code-analysis` (typecheck + lint + format + spell-check), `test`, or `build` before falling back to individual targets
+1. **Prefer compound targets** that run multiple checks in one invocation — use `#tool:nx-mcp-server/nx_available_plugins` and inspect project targets for aggregates like `analyze-code` (typecheck + lint + format + spell-check), `test`, or `build` before falling back to individual targets
 2. **Use `nx affected`** over per-project commands when multiple projects are touched:
    `nx affected --target=<target> --base=main`
 3. **Fall back to individual targets** only when no compound target exists:
 
 | Check      | Command                          |
 | ---------- | -------------------------------- |
-| Analysis   | `nx run <project>:code-analysis` |
+| Analysis   | `nx run <project>:analyze-code` |
 | Unit tests | `nx run <project>:test:unit`     |
 | Build      | `nx run <project>:build`         |
 

@@ -188,7 +188,7 @@
     "ghcr.io/devcontainers/features/node:1": {
       "nodeGypDependencies": true,
       "nvmVersion": "latest",
-      "version": "22"
+      "version": "24"
     },
     "ghcr.io/devcontainers/features/python:1": {
       "enableShared": true,
@@ -204,10 +204,10 @@
       "version": "1.14.5"
     },
     "ghcr.io/devcontainers-extra/features/nx-npm:1": {
-      "version": "22.1.3"
+      "version": "22.7.3"
     },
     "ghcr.io/devcontainers-extra/features/pnpm:2": {
-      "version": "10.20.0"
+      "version": "11.2.2"
     },
     "ghcr.io/devcontainers-extra/features/supabase-cli:1": {
       "version": "2.76.8"

@@ -10,6 +10,7 @@
     "language:typescript"
   ],
   "targets": {
+    "analyze-code": {},
     "build": {
       "description": "Build the application for production",
       "executor": "nx:run-commands",
@@ -30,7 +31,6 @@
       }
     },
     "clean": {},
-    "code-analysis": {},
     "dependency-cruiser": {},
     "develop": {
       "description": "Start development server with hot reload",

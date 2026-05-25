@@ -6,6 +6,7 @@
   "sourceRoot": "tools/conformance/src",
   "tags": ["language:typescript", "type:util"],
   "targets": {
+    "analyze-code": {},
     "build": {
       "cache": true,
       "description": "No-op build target for development tool",
@@ -15,7 +16,6 @@
       }
     },
     "clean": {},
-    "code-analysis": {},
     "dependency-cruiser": {},
     "format": {},
     "knip": {},

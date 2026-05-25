@@ -11,7 +11,6 @@ concurrency:
 
 permissions:
   contents: read
-  issues: write
 
 jobs:
   refresh-documentation:
@@ -19,11 +18,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 📋 Create Issue
+      - name: 🤖 Prompt Agent
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_PAT: ${{ secrets.GH_PAT }}
         run: |
-          BODY=$(cat <<'PROMPT'
+          PROMPT=$(cat <<'PROMPT'
           Please audit and refresh all project documentation across the monorepo.
 
           For each file in scope (`README.md`, `documentation/`, `AGENTS.md`, `*/AGENTS.md`, `*/README.md`, `.github/skills/**/SKILL.md`), cross-check the content against the actual codebase and classify every finding:
@@ -42,8 +41,10 @@ jobs:
           PROMPT
           )
 
-          gh issue create \
-            --repo "${{ github.repository }}" \
-            --title "🧑‍🏫 Refresh Documentation" \
-            --body "$BODY" \
-            --assignee "copilot"
+          curl -L --fail-with-body \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GH_PAT" \
+            -H "X-GitHub-Api-Version: 2026-03-10" \
+            https://api.github.com/agents/repos/${{ github.repository }}/tasks \
+            -d "$(jq -n --arg prompt "$PROMPT" '{prompt: $prompt, base_ref: "main", create_pull_request: true}')"

@@ -38,8 +38,23 @@ jobs:
           echo "v${LATEST_NODE}" > .nvmrc
           jq --arg v ">=${LATEST_NODE}" '.engines.node = $v' package.json > package.json.tmp && mv package.json.tmp package.json
 
+      - name: 🐍 Upgrade Python
+        run: |
+          uv python install 3
+          LATEST_PYTHON=$(uv run --python 3 python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
+          PYTHON_VER=$(echo "$LATEST_PYTHON" | tr -d '.')
+          sed -i "s/requires-python = \">=3\.[0-9][0-9]*/requires-python = \">=${LATEST_PYTHON}/" configuration/pyproject.toml
+          sed -i "s/target-version = \"py[0-9][0-9]*/target-version = \"py${PYTHON_VER}/" configuration/pyproject.toml
+          sed -i "s/pythonVersion = \"3\.[0-9][0-9]*/pythonVersion = \"${LATEST_PYTHON}/" configuration/pyproject.toml
+          sed -i "s/requires-python = \">=3\.[0-9][0-9]*/requires-python = \">=${LATEST_PYTHON}/" applications/affirmations/pyproject.toml
+
       - name: ⬆️ Upgrade Dependencies
         run: pnpm exec nx run monorepo:upgrade-dependencies:write
+
+      - name: 🐍 Upgrade Python Dependencies
+        run: |
+          uv lock --upgrade
+          uv lock --upgrade --project applications/affirmations
 
       - name: 🔍 Detect Upgrades
         id: check
@@ -92,6 +107,8 @@ jobs:
             - Update pnpm to latest version
             - Update dependencies across all workspace projects
             - Update pnpm lockfile
+            - Update Python to latest stable 3.x
+            - Update Python dependencies across all projects
 
             ## 🧪 Testing
 
