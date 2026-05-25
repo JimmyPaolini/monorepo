@@ -1,4 +1,4 @@
-name: 🤖 Copilot Setup Steps
+name: 🤖 Copilot Setup
 
 on:
   workflow_dispatch:
@@ -11,11 +11,12 @@ on:
 
 jobs:
   copilot-setup-steps:
-    name: 🤖 Copilot Setup Steps
+    name: 🤖 Copilot Setup
     runs-on: ubuntu-latest
 
     permissions:
       contents: read
+      pull-requests: write
 
     steps:
       - name: 📥 Checkout Repository
@@ -23,3 +24,7 @@ jobs:
 
       - name: 🕋 Setup Monorepo
         uses: ./.github/actions/setup-monorepo
+
+      - name: 🔑 Authenticate GitHub CLI
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+        shell: bash

@@ -88,7 +88,6 @@
       "configurations": {
         "check": {
           "commands": [
-            "nx run {projectName}:upgrade-dependencies:check",
             "nx run {projectName}:license-check",
             "nx run {projectName}:pnpm-audit:check",
             "nx run {projectName}:sherif:check",
@@ -108,7 +107,7 @@
         }
       },
       "defaultConfiguration": "check",
-      "description": "Run all dependency management tools (upgrade-dependencies, pnpm-audit, license-check, sherif, syncpack)",
+      "description": "Run all dependency management tools (pnpm-audit, license-check, sherif, syncpack). Dependency upgrades are handled separately by upgrade-dependencies.",
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{projectRoot}"

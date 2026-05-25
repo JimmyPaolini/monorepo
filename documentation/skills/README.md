@@ -107,13 +107,6 @@ documentation/skills/
 - State management
 - Multi-environment deployment
 
-**[mcp-github](mcp-github/SKILL.md)**
-
-- Repository operations
-- PR creation and review
-- Issue management
-- Automated workflows
-
 ### Process Skills
 
 **[checkout-branch](checkout-branch/SKILL.md)**

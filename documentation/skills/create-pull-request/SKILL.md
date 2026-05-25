@@ -170,7 +170,7 @@ git push -u origin feat/lexico-user-profile
 
 ### 4. Create Pull Request
 
-#### Using GitHub CLI
+#### Using GitHub CLI (preferred)
 
 ```bash
 gh pr create \
@@ -197,30 +197,6 @@ nx run lexico:develop  # Navigate to /profile
 
 - Closes #123"
 ```
-
-#### Using GitHub MCP Tools
-
-```typescript
-mcp_github_create_pull_request({
-  owner: "JimmyPaolini",
-  repo: "monorepo",
-  title: "feat(lexico): ✨ add user profile page",
-  head: "feat/lexico-user-profile",
-  base: "main",
-  body: "## 🌰 Summary\n\nAdds user profile page...",
-  draft: false,
-});
-
-// Always assign the PR to yourself after creation
-mcp_github_add_issue_assignees({
-  owner: "JimmyPaolini",
-  repo: "monorepo",
-  issue_number: <pr_number>,
-  assignees: ["JimmyPaolini"],
-});
-```
-
-See [mcp-github skill](../mcp-github/SKILL.md) for complete MCP tool documentation.
 
 ### 5. Address Review Feedback
 
@@ -301,17 +277,6 @@ Always assign PRs to yourself:
 
 ```bash
 gh pr create --assignee @me
-```
-
-Or with MCP tools after creation:
-
-```typescript
-mcp_github_add_issue_assignees({
-  owner: "JimmyPaolini",
-  repo: "monorepo",
-  issue_number: <pr_number>,
-  assignees: ["JimmyPaolini"],
-});
 ```
 
 ## Review Requests
@@ -490,7 +455,6 @@ gh pr merge --squash --delete-branch
 - [PR template](../../../.github/PULL_REQUEST_TEMPLATE.md) — Default PR description template
 - [commit-code skill](../commit-code/SKILL.md) — Commit and PR title format
 - [checkout-branch skill](../checkout-branch/SKILL.md) — Branch naming conventions
-- [mcp-github skill](../mcp-github/SKILL.md) — GitHub MCP automation
 - [github-actions skill](../github-actions/SKILL.md) — CI workflow details
 - [Conventional Commits](https://www.conventionalcommits.org/)
 - [Gitmoji](https://gitmoji.dev)
