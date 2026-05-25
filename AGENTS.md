@@ -73,10 +73,12 @@ Specialized domain knowledge for working on specific systems or patterns:
 - **[nx-plugins](documentation/skills/nx-plugins/SKILL.md)**: Find and add Nx plugins. USE WHEN user wants to discover available plugins, install a new plugin, or add support for a specific framework or technology to the workspace.
 - **[nx-run-tasks](documentation/skills/nx-run-tasks/SKILL.md)**: Helps with running tasks in an Nx workspace. USE WHEN the user wants to execute build, test, lint, serve, or run any other tasks defined in the workspace.
 - **[nx-workspace](documentation/skills/nx-workspace/SKILL.md)**: "Explore and understand Nx workspaces. USE WHEN answering questions about the workspace, projects, or tasks. ALSO USE WHEN an nx command fails or you need to check available targets/configuration before running a task. EXAMPLES: 'What projects are in this workspace?', 'How is project X configured?', 'What depends on library Y?', 'What targets can I run?', 'Cannot find configuration for task', 'debug nx task failure'."
+- **[submit-changes](documentation/skills/submit-changes/SKILL.md)**: Automatically submit local changes through the full branch → commit → push → pull request pipeline. Use this skill when asked to submit, ship, or push changes; when you want to move from local changes to an open PR in one step; or when orchestrating the complete git workflow automatically without manual steps.
 - **[supabase-development](documentation/skills/supabase-development/SKILL.md)**: Work with Supabase in the lexico project - migrations, RLS policies, Edge Functions, and type generation. Use this skill when modifying the lexico database or authentication.
 - **[tanstack-start-ssr](documentation/skills/tanstack-start-ssr/SKILL.md)**: Build SSR applications with TanStack Start - server functions, file-based routing, and data loading patterns. Use this skill when working on the lexico web application.
 - **[testing-strategy](documentation/skills/testing-strategy/SKILL.md)**: Use monorepo testing conventions: unit, integration, end-to-end test naming and Nx commands. Use when adding tests or recommending test coverage.
 - **[tool-execution-model](documentation/skills/tool-execution-model/SKILL.md)**: Decide when to use Nx tasks versus direct tooling in this monorepo. Use when asked about build, lint, test, typecheck, formatting, Docker, kubectl, Helm, Supabase CLI, Git, or pnpm commands.
+- **[update-pull-request](documentation/skills/update-pull-request/SKILL.md)**: Update an existing pull request's title and description to accurately reflect the implemented changes. Use this skill when asked to update, refresh, or rewrite a PR title or description, sync a PR with the latest changes, or when the PR description no longer matches the implementation.
 <!-- agent-skills-table-of-contents end -->
 
 ## Projects
@@ -131,17 +133,107 @@ See [Testing Strategy](documentation/code-quality/testing-strategy.md) for patte
 
 ### Git Workflow
 
-**Branch naming** (CRITICAL): `<type>/<scope>-<description>` (all three parts required, kebab-case).
-
-Example: `feat/lexico-user-auth`, `fix/monorepo-build-script`
-
-**Commit format**: `<type>(<scope>): <gitmoji> <subject>` (single-line only, under 128 chars)
-
-Example: `fix(caelundas): 🐛 resolve date parsing error`
-
 **Never bypass git hooks** with `--no-verify` — fix the underlying issue instead.
 
-See [checkout-branch](documentation/skills/checkout-branch/SKILL.md) and [commit-code](documentation/skills/commit-code/SKILL.md) skills.
+#### Branch Names
+
+Format: `<type>/<scope>-<description>` — all three parts required, kebab-case description.
+
+Examples: `feat/lexico-user-auth`, `fix/caelundas-timezone-bug`, `docs/monorepo-architecture`
+
+Special branches exempt from naming convention: `main`, `develop`, `renovate/*`, `dependabot/*`
+
+**Valid types:**
+
+<!-- types-start -->
+
+| Type | Description |
+| ---- | ----------- |
+| `feat` | A new feature or capability that adds value for users |
+| `fix` | A bug fix that addresses a specific issue or problem |
+| `docs` | Documentation, AGENTS.md, SKILL.md, README, and planning files |
+| `test` | Adding or correcting unit, integration, or end-to-end tests |
+| `refactor` | Code restructuring that neither fixes a bug nor adds a feature |
+| `style` | Formatting, whitespace, or code structure changes with no semantic effect |
+| `perf` | A code change that improves performance (caching, query optimization, etc.) |
+| `chore` | Housekeeping that doesn't modify src or test files (gitignore, editor config, etc.) |
+| `ci` | GitHub Actions workflows, composite actions, and CI/CD scripts |
+| `build` | Build system, Vite/Docker/Helm config, or external dependency integration |
+| `revert` | Reverts a previous commit |
+
+<!-- types-end -->
+
+**Valid scopes:**
+
+<!-- scopes-start -->
+
+| Scope | Description |
+| ----- | ----------- |
+| `affirmations` | Python Jupyter notebook application for LangGraph affirmation generation |
+| `applications` | Changes spanning multiple apps (caelundas, lexico, JimmyPaolini) |
+| `caelundas` | Node.js CLI for astronomical calendar generation (NASA JPL ephemeris) |
+| `configuration` | Workspace root config files (tsconfig, eslint, vitest, nx.json, etc.) |
+| `dependencies` | Dependency version changes (upgrades, additions, removals via pnpm) |
+| `deployments` | GitHub Actions workflows and CI/CD pipeline configuration |
+| `documentation` | Markdown docs, skills, planning files, and AGENTS.md files |
+| `infrastructure` | Helm charts, Terraform configs, and Kubernetes resources |
+| `JimmyPaolini` | Static GitHub profile README project (markdown and assets) |
+| `lexico` | TanStack Start SSR Latin dictionary web app with Supabase backend |
+| `lexico-components` | Shared React/shadcn component library in packages/ |
+| `linting` | ESLint configs, rules, plugins, and lint-related tooling |
+| `monorepo` | Workspace root concerns (pnpm-workspace, root package.json, Nx orchestration) |
+| `no-release` | Escape hatch: suppress semantic-release for any commit type |
+| `packages` | Changes spanning multiple shared packages |
+| `release` | Version bumps and release commits generated by semantic-release |
+| `scripts` | Shell and TypeScript scripts in scripts/ (sync, setup, utilities) |
+| `testing` | Vitest configuration, shared test utilities, and coverage setup |
+| `tools` | Nx custom generators and developer tooling in tools/ |
+
+<!-- scopes-end -->
+
+#### Commit Messages
+
+Format: `<type>(<scope>): <gitmoji> <subject>` — single line only, max 128 chars.
+
+- **Gitmoji required** at the start of the subject line
+- **Body and footer are forbidden** — all context goes in the subject or PR description
+- Subject: lowercase, imperative mood, no period
+- Never list multiple changes — summarize at a higher level or split into separate commits
+
+Common gitmojis: ✨ `feat` · 🐛 `fix` · 📝 `docs` · ✅ `test` · ♻️ `refactor` · 💄 `style` · ⚡️ `perf` · 🔧 `chore` · 👷 `ci` · ⬆️ deps
+
+Examples:
+
+```text
+feat(lexico): ✨ add user profile page
+fix(caelundas): 🐛 correct aspect angle calculation
+chore(dependencies): ⬆️ upgrade react to v19
+docs(monorepo): 📝 update contributing guide
+```
+
+#### Pull Requests
+
+PR title follows the same format as commit messages: `<type>(<scope>): <gitmoji> <subject>`
+
+PR description template:
+
+```markdown
+## 🌰 Summary
+
+<!-- Brief description of what this PR does (1-2 sentences) -->
+
+## 📝 Details
+
+- <!-- List of specific changes made -->
+
+## 🧪 Testing
+
+1. <!-- How to manually verify these changes work correctly -->
+
+## 🔗 Related
+
+- <!-- Link any relevant issues or documentation -->
+```
 
 ### React Patterns
 
