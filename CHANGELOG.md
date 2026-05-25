@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.2](https://github.com/JimmyPaolini/monorepo/compare/v1.2.1...v1.2.2) (2026-05-25)
+
+### 🐛 Bug Fixes
+
+* **infrastructure:** 🐛 resolve devcontainer .env file resolution in ci ([#33](https://github.com/JimmyPaolini/monorepo/issues/33)) ([ad435df](https://github.com/JimmyPaolini/monorepo/commit/ad435df421afa875f5f2d8f0693961bcc86f5dd4)), closes [#26375211448](https://github.com/JimmyPaolini/monorepo/issues/26375211448)
+
+### 📝 Documentation
+
+* **documentation:** 🗑️ remove mcp-github skill and prefer gh cli ([#32](https://github.com/JimmyPaolini/monorepo/issues/32)) ([ce28d31](https://github.com/JimmyPaolini/monorepo/commit/ce28d31b409374a0809b0f45e117679d7ca6a5ca))
+
 ## [1.2.1](https://github.com/JimmyPaolini/monorepo/compare/v1.2.0...v1.2.1) (2026-05-24)
 
 ### 🐛 Bug Fixes
