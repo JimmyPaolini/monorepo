@@ -595,7 +595,7 @@
         "default"
       ],
       "options": {
-        "command": "uv run --project applications/affirmations vulture . configuration/vulture_whitelist.py --min-confidence 80 --exclude '*/applications/*,*/packages/*,*/tools/*,*/node_modules/*,*/dist/*,*/coverage/*'",
+        "command": "uv run --project applications/affirmations vulture . configuration/vulture_whitelist.py --min-confidence 80 --exclude '*/applications/*,*/packages/*,*/tools/*,*/node_modules/*,*/dist/*,*/coverage/*,*/.venv/*'",
         "cwd": "{projectRoot}"
       }
     },
