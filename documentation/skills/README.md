@@ -107,13 +107,6 @@ documentation/skills/
 - State management
 - Multi-environment deployment
 
-**[mcp-github](mcp-github/SKILL.md)**
-
-- PR creation and review with `gh` CLI
-- Issue management with `gh` CLI
-- Branch and commit workflows with `git`
-- Code search
-
 ### Process Skills
 
 **[checkout-branch](checkout-branch/SKILL.md)**
