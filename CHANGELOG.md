@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.6](https://github.com/JimmyPaolini/monorepo/compare/v1.2.5...v1.2.6) (2026-05-25)
+
+### ♻️ Code Refactoring
+
+* **tools:** ♻️ rename code-generator to conformance ([#40](https://github.com/JimmyPaolini/monorepo/issues/40)) ([c6a09a1](https://github.com/JimmyPaolini/monorepo/commit/c6a09a11da46bfe5114978352f3bfec0728ab787))
+
 ## [1.2.5](https://github.com/JimmyPaolini/monorepo/compare/v1.2.4...v1.2.5) (2026-05-25)
 
 ### ♻️ Code Refactoring
