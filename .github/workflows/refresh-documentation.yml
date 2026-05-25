@@ -1,0 +1,49 @@
+name: 🧑‍🏫 Refresh Documentation
+
+on:
+  schedule:
+    - cron: 0 0 * * 0 # Every Monday 9am UTC
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  refresh-documentation:
+    name: 🧑‍🏫 Refresh Documentation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📋 Create Issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BODY=$(cat <<'PROMPT'
+          Please audit and refresh all project documentation across the monorepo.
+
+          For each file in scope (`README.md`, `documentation/`, `AGENTS.md`, `*/AGENTS.md`, `*/README.md`, `.github/skills/**/SKILL.md`), cross-check the content against the actual codebase and classify every finding:
+
+          - **Deprecated** — documents something that no longer exists → **remove** the section or file
+          - **Outdated** — content exists but is inaccurate (wrong path, outdated command, incorrect description) → **update** to match current reality
+          - **Missing** — a feature, project, convention, or workflow exists in the codebase but is undocumented → **create** new documentation
+
+          Specific checks:
+          1. Remove sections that reference removed commands, retired projects, or superseded conventions
+          2. Verify all code examples and commands against actual source files; fix broken internal links
+          3. Write documentation for any new projects, tools, or conventions added since the last refresh
+          4. Open a pull request with all changes using a `docs(documentation): 📝` commit message
+
+          Focus on correctness — only change content that is factually wrong, outdated, or missing.
+          PROMPT
+          )
+
+          gh issue create \
+            --repo "${{ github.repository }}" \
+            --title "🧑‍🏫 Refresh Documentation" \
+            --body "$BODY" \
+            --assignee "copilot"
