@@ -595,7 +595,7 @@
         "default"
       ],
       "options": {
-        "command": "files=$(find . \\( -path './applications' -o -path './packages' -o -path './tools' -o -path './node_modules' -o -path './dist' -o -path './coverage' -o -path './.nx' -o -path './.venv' -o -path './configuration/vulture_whitelist.py' \\) -prune -o -type f -name '*.py' -print); if [ -n \"$files\" ]; then uv run --project applications/affirmations vulture $files configuration/vulture_whitelist.py --min-confidence 80; else echo 'No root-level Python files to analyze'; fi",
+        "command": "uv run --project applications/affirmations vulture . configuration/vulture_whitelist.py --min-confidence 80 --exclude '*/applications/*,*/packages/*,*/tools/*,*/node_modules/*,*/dist/*,*/coverage/*'",
         "cwd": "{projectRoot}"
       }
     },
