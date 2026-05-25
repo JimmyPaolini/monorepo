@@ -70,11 +70,11 @@ jobs:
           # store pre-baked into the image is visible (volumes would
           # otherwise shadow it with empty directories).
           JQ_FILTER='
-            .runArgs |= map(select(
+            .runArgs |= ((. // []) | map(select(
               . != "--env-file" and
               . != "${localWorkspaceFolder}/.env" and
               (test("^--(cpus|memory|memory-swap)") | not)
-            )) |
+            ))) |
             .mounts = []
           '
           jq "$JQ_FILTER" .devcontainer/cloud/devcontainer.json > \
