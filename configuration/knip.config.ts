@@ -167,8 +167,8 @@ const config: KnipConfig = {
       project: "src/**/*.{ts,tsx}",
     },
 
-    // code-generator: Nx generator plugin for scaffolding React components
-    "tools/code-generator": {
+    // conformance: Nx generator plugin for scaffolding React components
+    "tools/conformance": {
       entry: "src/generators/*/generator.ts", // Each generator's entry point
       ignore: [
         "src/**/templates/**", // Template files (EJS syntax, not valid TS)

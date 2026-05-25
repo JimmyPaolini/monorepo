@@ -34,7 +34,7 @@
     // ── Monorepo Path Aliases ──
     // Enables `import { Button } from "@monorepo/lexico-components"` across projects
     "paths": {
-      "@monorepo/code-generator/*": ["../tools/code-generator/*"],
+      "@monorepo/conformance/*": ["../tools/conformance/*"],
       "@monorepo/lexico-components": [
         "../packages/lexico-components/src/index.ts"
       ]

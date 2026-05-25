@@ -1,26 +1,26 @@
-# Code Generator: Nx Custom Generator Framework
+# Conformance: Nx Custom Generator Framework
 
 ## Quick Start
 
 Generate a React component (prompts for project if `--project` omitted):
 
 ```bash
-nx generate code-generator:react-component --name=Button
-nx generate code-generator:react-component --name=Button --project=lexico-components
+nx generate conformance:react-component --name=Button
+nx generate conformance:react-component --name=Button --project=lexico-components
 ```
 
 Generate a NestJS service module (prompts for project if `--project` omitted):
 
 ```bash
-nx generate code-generator:nestjs-service-module --name=user
-nx generate code-generator:nestjs-service-module --name=userProfile --project=my-nestjs-app
+nx generate conformance:nestjs-service-module --name=user
+nx generate conformance:nestjs-service-module --name=userProfile --project=my-nestjs-app
 ```
 
 Short alias forms:
 
 ```bash
-nx g code-generator:react-component --name=Dialog
-nx g code-generator:nestjs-service-module --name=auth
+nx g conformance:react-component --name=Dialog
+nx g conformance:nestjs-service-module --name=auth
 ```
 
 ## Architecture Overview
@@ -28,7 +28,7 @@ nx g code-generator:nestjs-service-module --name=auth
 ### Directory Layout
 
 ```text
-tools/code-generator/
+tools/conformance/
 ├── src/
 │   ├── constants.ts
 │   ├── types.ts

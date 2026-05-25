@@ -1,13 +1,13 @@
-# Code Generator
+# Conformance
 
 Nx generator for creating React components with corresponding test files following the monorepo conventions.
 
 ## Usage
 
 ```bash
-nx generate code-generator:react-component --name=my-component
-nx generate code-generator:react-component --name=my-component --directory=src/components/ui
-nx generate code-generator:react-component --name=my-component --export=barrel
+nx generate conformance:react-component --name=my-component
+nx generate conformance:react-component --name=my-component --directory=src/components/ui
+nx generate conformance:react-component --name=my-component --export=barrel
 ```
 
 ## Options

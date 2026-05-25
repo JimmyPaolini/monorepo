@@ -115,7 +115,7 @@ const scopes = [
       "Workspace root config files (tsconfig, eslint, vitest, nx.json, etc.)",
   },
   {
-    name: "code-generator",
+    name: "conformance",
     description:
       "Code generator templates and conformance validation tests for generated instances",
   },

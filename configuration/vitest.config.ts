@@ -23,7 +23,7 @@ export default defineConfig({
     passWithNoTests: true,
     projects: [
       "../applications/caelundas/vitest.config.ts",
-      "../tools/code-generator/vitest.config.ts",
+      "../tools/conformance/vitest.config.ts",
     ],
   },
 });

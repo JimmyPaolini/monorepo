@@ -47,7 +47,7 @@ export default defineConfig({
     "**/lexico-components/src/lib/utils",
     "pnpm-lock.yaml",
     "tmp",
-    "**/code-generator/**/templates/**",
+    "**/conformance/**/templates/**",
     "yarn.lock",
   ],
   insertPragma: false,

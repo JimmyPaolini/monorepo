@@ -209,8 +209,6 @@ importers:
         specifier: ^4.1.7
         version: 4.1.7(@types/node@25.9.1)(@vitest/coverage-v8@4.1.7)(@vitest/ui@4.1.7)(jsdom@29.1.1)(vite@8.0.14(@types/node@25.9.1)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.3)(yaml@2.9.0))
 
-  applications/JimmyPaolini: {}
-
   applications/affirmations: {}
 
   applications/caelundas:
@@ -525,7 +523,7 @@ importers:
         specifier: ^5.0.1
         version: 5.0.1(@rspack/core@1.6.8(@swc/helpers@0.5.21))(esbuild@0.28.0)(rolldown@1.0.2)(rollup@4.60.4)(typescript@6.0.3)(vite@8.0.14(@types/node@25.9.1)(esbuild@0.28.0)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.3)(yaml@2.9.0))(webpack@5.107.1(@swc/core@1.15.40(@swc/helpers@0.5.21))(esbuild@0.28.0)(postcss@8.5.15))
 
-  tools/code-generator:
+  tools/conformance:
     dependencies:
       '@nestjs/common':
         specifier: ^11.1.23

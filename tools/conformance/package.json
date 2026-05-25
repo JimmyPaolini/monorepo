@@ -17,7 +17,7 @@
     "@vitest/coverage-v8": "^4.1.7"
   },
   "generators": "./generators.json",
-  "name": "code-generator",
+  "name": "conformance",
   "scripts": {},
   "type": "module",
   "typeCoverage": {

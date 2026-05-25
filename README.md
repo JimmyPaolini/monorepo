@@ -126,7 +126,7 @@ nx run monorepo:knip
 nx run caelundas:knip
 nx run lexico:knip
 nx run lexico-components:knip
-nx run code-generator:knip
+nx run conformance:knip
 
 # Check only affected projects
 nx affected --target=knip

@@ -15,6 +15,7 @@ jobs:
   validate-conventions:
     name: 🧑‍⚖️ Validate Conventions
     runs-on: ubuntu-latest
+    if: github.actor != 'dependabot[bot]'
 
     steps:
       - name: 📥 Checkout Repository
@@ -53,13 +54,13 @@ jobs:
             exit 1
           fi
           MISSING=""
-          echo "$PULL_REQUEST_BODY" | grep -q "^## 🌰 Summary" || \
+          printf '%s' "$PULL_REQUEST_BODY" | grep -q "^## 🌰 Summary" || \
             MISSING="$MISSING 🌰 Summary"
-          echo "$PULL_REQUEST_BODY" | grep -q "^## 📝 Details" || \
+          printf '%s' "$PULL_REQUEST_BODY" | grep -q "^## 📝 Details" || \
             MISSING="$MISSING 📝 Details"
-          echo "$PULL_REQUEST_BODY" | grep -q "^## 🧪 Testing" || \
+          printf '%s' "$PULL_REQUEST_BODY" | grep -q "^## 🧪 Testing" || \
             MISSING="$MISSING 🧪 Testing"
-          echo "$PULL_REQUEST_BODY" | grep -q "^## 🔗 Related" || \
+          printf '%s' "$PULL_REQUEST_BODY" | grep -q "^## 🔗 Related" || \
             MISSING="$MISSING 🔗 Related"
           if [ -n "$MISSING" ]; then
             echo "❌ Missing required sections:$MISSING"

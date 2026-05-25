@@ -47,7 +47,7 @@ CHANGELOG.md
 **/lexico-components/src/components/ui
 **/lexico-components/src/lib
 **/lexico-components/src/hooks
-**/code-generator/**/templates/**
+**/conformance/**/templates/**
 
 # 🏗 Infrastructure templates
 **/helm/**/templates/**
