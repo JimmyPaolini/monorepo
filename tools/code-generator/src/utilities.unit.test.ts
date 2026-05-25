@@ -1,9 +1,14 @@
+import fs from "node:fs";
+import os from "node:os";
+import path from "node:path";
+
 import { addProjectConfiguration } from "@nx/devkit";
 import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
-import { beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import { StringCase } from "./types";
 import {
+  generateMustacheFiles,
   getProjectsWithTag,
   resolveNameByCase,
   resolveProjectByTag,
@@ -184,6 +189,63 @@ describe("resolveNameByCase", () => {
         }),
       ).rejects.toThrow(
         `Name "my_service" must be in camelCase. Did you mean "myService"?`,
+      );
+    });
+  });
+
+  describe("generateMustacheFiles", () => {
+    let templateDirectoryPath: string;
+
+    beforeEach(() => {
+      templateDirectoryPath = fs.mkdtempSync(
+        path.join(os.tmpdir(), "mustache-templates-"),
+      );
+    });
+
+    afterEach(() => {
+      fs.rmSync(templateDirectoryPath, { recursive: true });
+    });
+
+    it("renders template file content with Mustache substitutions", () => {
+      fs.writeFileSync(
+        path.join(templateDirectoryPath, "__namePascalCase__.tsx"),
+        "export const {{namePascalCase}} = (): null => null;\n",
+      );
+      const tree = createTreeWithEmptyWorkspace();
+      const targetDirectoryPath = "applications/my-app/src/components";
+
+      generateMustacheFiles({
+        tree,
+        templateDirectoryPath,
+        targetDirectoryPath,
+        substitutions: { namePascalCase: "Button" },
+      });
+
+      expect(tree.read(`${targetDirectoryPath}/Button.tsx`, "utf8")).toBe(
+        "export const Button = (): null => null;\n",
+      );
+    });
+
+    it("resolves __fieldName__ placeholders in filenames", () => {
+      fs.writeFileSync(
+        path.join(templateDirectoryPath, "__nameCamelCase__.module.ts"),
+        "export class {{namePascalCase}}Module {}\n",
+      );
+      const tree = createTreeWithEmptyWorkspace();
+      const targetDirectoryPath = "applications/my-app/src/modules";
+
+      generateMustacheFiles({
+        tree,
+        templateDirectoryPath,
+        targetDirectoryPath,
+        substitutions: {
+          nameCamelCase: "userAuth",
+          namePascalCase: "UserAuth",
+        },
+      });
+
+      expect(tree.exists(`${targetDirectoryPath}/userAuth.module.ts`)).toBe(
+        true,
       );
     });
   });

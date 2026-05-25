@@ -1,9 +1,13 @@
 import path from "node:path";
 
-import { formatFiles, generateFiles, getProjects } from "@nx/devkit";
+import { formatFiles, getProjects } from "@nx/devkit";
 
 import { StringCase } from "../../types";
-import { resolveNameByCase, resolveProjectByTag } from "../../utilities";
+import {
+  generateMustacheFiles,
+  resolveNameByCase,
+  resolveProjectByTag,
+} from "../../utilities";
 
 import type { Tree } from "@nx/devkit";
 
@@ -60,6 +64,11 @@ export async function generateComponent(
 
   const filesPath = path.join(__dirname, "templates");
   const substitutions = { namePascalCase };
-  generateFiles(tree, filesPath, directory, substitutions);
+  generateMustacheFiles({
+    tree,
+    templateDirectoryPath: filesPath,
+    targetDirectoryPath: directory,
+    substitutions,
+  });
   await formatFiles(tree);
 }

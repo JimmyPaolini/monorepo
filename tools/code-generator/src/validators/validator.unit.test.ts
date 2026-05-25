@@ -179,7 +179,7 @@ describe("validateInstanceFile", () => {
     const templatePath = path.join(tmpDir, "template.service.ts");
     fs.writeFileSync(
       templatePath,
-      "export class <%= namePascalCase %>Service {}\n",
+      "export class {{namePascalCase}}Service {}\n",
     );
     const instancePath = path.join(tmpDir, "user.service.ts");
     fs.writeFileSync(instancePath, "export class UserService {}\n");
@@ -197,7 +197,7 @@ describe("validateInstanceFile", () => {
     const templatePath = path.join(tmpDir, "template.service.ts");
     fs.writeFileSync(
       templatePath,
-      "export class <%= namePascalCase %>Service {}\n",
+      "export class {{namePascalCase}}Service {}\n",
     );
     const instancePath = path.join(tmpDir, "user.service.ts");
     fs.writeFileSync(instancePath, "export class WrongService {}\n");
@@ -268,7 +268,7 @@ describe("validateInstanceDirectory", () => {
   it("resolves __fieldName__ tokens in template filename to instance filename", () => {
     fs.writeFileSync(
       path.join(templateDir, "__nameCamelCase__.service.ts"),
-      "export class <%= namePascalCase %>Service {}\n",
+      "export class {{namePascalCase}}Service {}\n",
     );
     fs.writeFileSync(
       path.join(instanceDir, "userAuth.service.ts"),

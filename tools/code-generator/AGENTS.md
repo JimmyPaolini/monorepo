@@ -62,7 +62,7 @@ tools/code-generator/
 - **React component** names are **PascalCase** (e.g., `Button`, `UserCard`); files use PascalCase (`Button.tsx`)
 - **NestJS service module** names are **camelCase** (e.g., `user`, `userProfile`); files use camelCase (`user.service.ts`)
 - Both generators auto-detect the target project by framework tag (`framework:react` / `framework:nestjs`) and prompt interactively when no `--project` flag is given
-- Templates use `__variable__` filename substitution; content uses EJS syntax (`<%= variable %>`)
+- Templates use `__variable__` filename substitution; content uses Mustache syntax (`{{variable}}`)
 - Generated files are auto-formatted
 
 See [code-generator-patterns skill](../../documentation/skills/code-generator-patterns/SKILL.md) for template syntax and case transformations.

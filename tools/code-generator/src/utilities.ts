@@ -1,4 +1,8 @@
+import fs from "node:fs";
+import path from "node:path";
+
 import { getProjects } from "@nx/devkit";
+import Mustache from "mustache";
 import prompts from "prompts";
 
 import { converterByStringCase, humanReadableStringCase } from "./constants";
@@ -127,4 +131,37 @@ export async function resolveNameByCase(args: {
   }
 
   return name;
+}
+
+/**
+ * Renders Mustache templates from a directory into the Nx tree.
+ *
+ * Template filenames may include `__fieldName__` placeholders which are
+ * resolved from `substitutions` (for example `__namePascalCase__.tsx`).
+ */
+export function generateMustacheFiles(args: {
+  tree: Tree;
+  templateDirectoryPath: string;
+  targetDirectoryPath: string;
+  substitutions: Record<string, string>;
+}): void {
+  const { tree, templateDirectoryPath, targetDirectoryPath, substitutions } =
+    args;
+  const templateFilenames = fs
+    .readdirSync(templateDirectoryPath, { withFileTypes: true })
+    .filter((node) => node.isFile())
+    .map((node) => node.name);
+
+  for (const templateFilename of templateFilenames) {
+    const templatePath = path.join(templateDirectoryPath, templateFilename);
+    const template = fs.readFileSync(templatePath, "utf8");
+    const rendered = Mustache.render(template, substitutions);
+    const generatedFilename = templateFilename.replaceAll(
+      /__(\w+)__/g,
+      (templateToken: string, field: string) =>
+        substitutions[field] ?? templateToken,
+    );
+    const generatedPath = path.join(targetDirectoryPath, generatedFilename);
+    tree.write(generatedPath, rendered);
+  }
 }

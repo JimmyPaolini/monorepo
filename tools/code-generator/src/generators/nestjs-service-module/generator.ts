@@ -2,11 +2,15 @@ import { execSync } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import { generateFiles, getProjects, workspaceRoot } from "@nx/devkit";
+import { getProjects, workspaceRoot } from "@nx/devkit";
 import _ from "lodash";
 
 import { StringCase } from "../../types";
-import { resolveNameByCase, resolveProjectByTag } from "../../utilities";
+import {
+  generateMustacheFiles,
+  resolveNameByCase,
+  resolveProjectByTag,
+} from "../../utilities";
 
 import type { GeneratorCallback, Tree } from "@nx/devkit";
 
@@ -73,7 +77,12 @@ export async function generateNestjsServiceModule(
   const targetPath = path.join(directory, nameCamelCase);
   const substitutions = { nameCamelCase, namePascalCase };
 
-  generateFiles(tree, TEMPLATES_DIRECTORY_PATH, targetPath, substitutions);
+  generateMustacheFiles({
+    tree,
+    templateDirectoryPath: TEMPLATES_DIRECTORY_PATH,
+    targetDirectoryPath: targetPath,
+    substitutions,
+  });
 
   const generatedFiles = tree
     .children(targetPath)
