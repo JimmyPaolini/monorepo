@@ -4,6 +4,7 @@ services:
     container_name: monorepo-devcontainer
     privileged: true
     volumes:
+      - ../..:/workspaces/monorepo:cached
       - monorepo-node-modules:/workspaces/monorepo/node_modules
       - monorepo-pnpm:/root/.local/share/pnpm
       - monorepo-docker:/var/lib/docker
