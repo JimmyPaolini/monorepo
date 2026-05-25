@@ -28,7 +28,7 @@ jobs:
       - name: 🕋 Setup Monorepo
         uses: ./.github/actions/setup-monorepo
 
-      - name: 🧩 VSCode Extensions Validation
+      - name: 🧩 Check VSCode Extensions
         run: npx nx run monorepo:sync-vscode-extensions:check
 
       - name: 🗂️ Setup Environment File
@@ -58,29 +58,6 @@ jobs:
               branches:
                 - main
           env: CI=true
-
-      - name: 🩹 Patch Configuration for Test
-        run: |
-          # Only the cloud devcontainer.json (DinD configuration) is built
-          # and tested in CI. The local/devcontainer.json (DooD configuration)
-          # is for local machines only and is not tested here.
-          #
-          # Remove resource-limiting Docker run args unsupported in
-          # CI environments. Remove named volume mounts so the pnpm
-          # store pre-baked into the image is visible (volumes would
-          # otherwise shadow it with empty directories).
-          JQ_FILTER='
-            .runArgs |= map(select(
-              . != "--env-file" and
-              . != "${localWorkspaceFolder}/.env" and
-              (test("^--(cpus|memory|memory-swap)") | not)
-            )) |
-            .mounts = []
-          '
-          jq "$JQ_FILTER" .devcontainer/cloud/devcontainer.json > \
-            /tmp/devcontainer.json
-          mv /tmp/devcontainer.json \
-            .devcontainer/cloud/devcontainer.json
 
       - name: 🔬 Test Devcontainer
         uses: devcontainers/ci@v0.3
