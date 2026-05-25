@@ -1,11 +1,3 @@
-# Audit Security Workflow
-# Purpose: Combined security audit running four steps sequentially:
-#   - 🔐 Gitleaks secret scanning (push to main + PRs)
-#   - 🕵️ pnpm dependency audit (push to main + PRs + weekly schedule)
-#   - 🏗️ Trivy IaC scanning for Terraform configs (only on terraform/** changes)
-# @see https://github.com/gitleaks/gitleaks-action
-# @see https://github.com/aquasecurity/trivy-action
-
 name: 🕵️ Audit Security
 
 on:
@@ -21,7 +13,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  security-audit:
+  audit-security:
     name: 🕵️ Audit Security
     runs-on: ubuntu-latest
 

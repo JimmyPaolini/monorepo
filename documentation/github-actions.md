@@ -187,7 +187,7 @@ Three workflows use `fail-fast: false` matrix strategies to run multiple checks 
 
 - `code-analysis.yml` — 8 checks
 - `convention-check.yml` — 3 checks
-- `security-audit.yml` — 3 checks
+- `audit-security.yml` — 3 checks
 
 ### Caching
 

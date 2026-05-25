@@ -493,7 +493,7 @@
         "default"
       ],
       "options": {
-        "command": "yamllint -c configuration/yamllint.yaml '{projectRoot}'",
+        "command": "uv run --project configuration yamllint -c configuration/yamllint.yaml '{projectRoot}'",
         "cwd": "{workspaceRoot}"
       }
     }

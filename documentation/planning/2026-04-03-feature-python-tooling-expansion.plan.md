@@ -32,8 +32,8 @@ The affirmations project serves as the reference implementation. Future Python p
 - **REQ-005**: Add Python-specific `namedInputs` (`pythonSource`, `pythonTests`) to `nx.json` for cache invalidation
 - **REQ-006**: Create root `pyproject.toml` with shared `[tool.ruff]`, `[tool.pyright]`, `[tool.pytest]` base config
 - **REQ-007**: Standardize `hatchling` build backend configuration across Python projects
-- **REQ-008**: Integrate ty into `code-analysis` CI workflow and bandit into `security-audit` CI workflow via `nx affected`
-- **SEC-001**: bandit must scan all Python source directories (`src/`) and report security findings in the `security-audit` CI workflow alongside Gitleaks, pnpm audit, and Trivy
+- **REQ-008**: Integrate ty into `code-analysis` CI workflow and bandit into `audit-security` CI workflow via `nx affected`
+- **SEC-001**: bandit must scan all Python source directories (`src/`) and report security findings in the `audit-security` CI workflow alongside Gitleaks, pnpm audit, and Trivy
 - **CON-001**: ty is pre-1.0 (v0.0.28) — configuration stays project-level (not in root pyproject.toml) until stable
 - **CON-002**: All tool invocations must use `uv run` (not `uvx`) for consistency with existing Nx targets
 - **CON-003**: Python version ≥ 3.11 (`requires-python = ">=3.11"`)
@@ -127,8 +127,8 @@ The affirmations project serves as the reference implementation. Future Python p
 | TASK-033 | Verify `.github/actions/setup-monorepo` installs `uv` and runs `uv sync` for Python projects — if not, add uv installation step                                                  | ✅        | 2026-04-04T04:27:00Z |
 | TASK-034 | Run `nx run affirmations:code-analysis` in CI to validate all Python tools (including ty) execute successfully                                                                   | ✅        | 2026-04-04T04:27:00Z |
 | TASK-035 | Verify `nx affected --target=code-analysis` correctly includes affirmations when Python files change                                                                             | ✅        | 2026-04-04T04:27:00Z |
-| TASK-036 | Add `nx affected --target=bandit` step to `.github/workflows/security-audit.yml` after the `Setup monorepo` step, alongside existing Gitleaks, dependency-audit, and Trivy steps | ✅        | 2026-04-04T04:27:00Z |
-| TASK-037 | Verify `security-audit.yml` workflow passes with bandit — confirm it runs on PRs, pushes to main, and weekly schedule                                                            | ✅        | 2026-04-04T04:27:00Z |
+| TASK-036 | Add `nx affected --target=bandit` step to `.github/workflows/audit-security.yml` after the `Setup monorepo` step, alongside existing Gitleaks, dependency-audit, and Trivy steps | ✅        | 2026-04-04T04:27:00Z |
+| TASK-037 | Verify `audit-security.yml` workflow passes with bandit — confirm it runs on PRs, pushes to main, and weekly schedule                                                            | ✅        | 2026-04-04T04:27:00Z |
 | TASK-038 | Verify that TS projects (caelundas, lexico, etc.) are unaffected — their `format`, `lint`, `typecheck`, `test` targets still compose TS sub-targets correctly                    | ✅        | 2026-04-04T04:27:00Z |
 
 ## 3. Alternatives
@@ -138,7 +138,7 @@ The affirmations project serves as the reference implementation. Future Python p
 - **ALT-003**: **Add bandit via Ruff's security rules (S prefix)** — Ruff implements some bandit rules as `S` rules (e.g., `S101`, `S301`). However, Ruff's coverage is incomplete compared to standalone bandit, and having a dedicated security tool provides clearer audit trails. Could enable Ruff `S` rules as a complement in the future.
 - **ALT-004**: **Use mypy instead of ty** — Rejected because ty is from the same team as ruff and uv (Astral), offering better ecosystem alignment and significantly faster performance. The monorepo already uses Astral tools (ruff, uv).
 - **ALT-005**: **Separate ty.toml / .bandit config files** — Rejected per CON-004. All tool config belongs in `pyproject.toml` for single-source-of-truth consistency.
-- **ALT-006**: **Run bandit in code-analysis workflow** — Rejected. bandit is a security tool and belongs alongside Gitleaks, pnpm audit, and Trivy in `security-audit.yml` for clear separation of concerns between code quality and security scanning.
+- **ALT-006**: **Run bandit in code-analysis workflow** — Rejected. bandit is a security tool and belongs alongside Gitleaks, pnpm audit, and Trivy in `audit-security.yml` for clear separation of concerns between code quality and security scanning.
 - **ALT-007**: **Keep all Python tool targets project-level** — Rejected. Lifting to targetDefaults ensures new Python projects inherit tooling automatically (matching TS pattern), eliminates duplicated target definitions, and centralizes cache/input configuration.
 - **ALT-008**: **Create a uv workspace in root pyproject.toml** — Rejected per CON-006. A uv workspace would change dependency resolution behavior for all Python projects. Root pyproject.toml is tool-config-only to avoid side effects. Each Python project manages its own dependencies independently.
 - **ALT-009**: **Use `lang:python` / `lang:typescript` tag prefix** — Rejected in favor of `language:python` / `language:typescript` for better readability and consistency. Existing `lang:python` tag on affirmations will be migrated.
@@ -169,7 +169,7 @@ The affirmations project serves as the reference implementation. Future Python p
 - **FILE-013**: `documentation/conventions/python.md` (NEW) — Canonical Python tooling setup guide
 - **FILE-014**: `documentation/frameworks/langchain-python.md` — Add ty, bandit, hatch reference configs
 - **FILE-015**: `.github/actions/setup-monorepo/action.yml` — Verify uv installation step (may need no changes)
-- **FILE-016**: `.github/workflows/security-audit.yml` — Add `nx affected --target=bandit` step
+- **FILE-016**: `.github/workflows/audit-security.yml` — Add `nx affected --target=bandit` step
 
 ## 6. Testing
 
@@ -188,7 +188,7 @@ The affirmations project serves as the reference implementation. Future Python p
 - **TEST-013**: TS projects unaffected: `nx run caelundas:format:check`, `nx run caelundas:lint:check`, `nx run caelundas:typecheck` still run TS tools (biome, eslint, tsc)
 - **TEST-014**: Config inheritance: `uv run ruff check .` from affirmations resolves root pyproject.toml base + project overrides
 - **TEST-015**: CI workflow `code-analysis.yml` passes with `nx affected --target=code-analysis` including affirmations
-- **TEST-016**: CI workflow `security-audit.yml` passes with `nx affected --target=bandit` step
+- **TEST-016**: CI workflow `audit-security.yml` passes with `nx affected --target=bandit` step
 
 ## 7. Risks & Assumptions
 

@@ -27,7 +27,6 @@ EXPECTED_TFLINT_VERSION="$(jq -r '.features["ghcr.io/devcontainers/features/terr
 EXPECTED_HELM_VERSION="$(jq -r '.features["ghcr.io/devcontainers/features/kubectl-helm-minikube:1"].helm' "${LOCAL_DEVCONTAINER_JSON}")"
 EXPECTED_KUBECTL_VERSION="$(jq -r '.features["ghcr.io/devcontainers/features/kubectl-helm-minikube:1"].version' "${LOCAL_DEVCONTAINER_JSON}")"
 EXPECTED_PYTHON_MAJOR_MINOR="$(jq -r '.features["ghcr.io/devcontainers/features/python:1"].version' "${LOCAL_DEVCONTAINER_JSON}")"
-EXPECTED_YAMLLINT_VERSION="$(jq -r '.features["ghcr.io/devcontainers-extra/features/yamllint:2"].version' "${LOCAL_DEVCONTAINER_JSON}")"
 EXPECTED_JQ_VERSION="$(jq -r '.features["ghcr.io/eitsupi/devcontainer-features/jq-likes:2"].jqVersion' "${LOCAL_DEVCONTAINER_JSON}")"
 EXPECTED_SQLITE_VERSION="$(jq -r '.features["ghcr.io/warrenbuckley/codespace-features/sqlite:1"].version' "${LOCAL_DEVCONTAINER_JSON}")"
 EXPECTED_GITLEAKS_VERSION="$(jq -r '.remoteEnv.GITLEAKS_VERSION' "${LOCAL_DEVCONTAINER_JSON}")"
@@ -125,10 +124,6 @@ assert_version_contains "python3" "Python ${EXPECTED_PYTHON_MAJOR_MINOR}." "pyth
 echo ""
 echo "📋 jq — must be ${EXPECTED_JQ_VERSION}"
 assert_version_contains "jq" "${EXPECTED_JQ_VERSION}" "jq --version"
-
-echo ""
-echo "📄 yamllint — must be ${EXPECTED_YAMLLINT_VERSION}"
-assert_version_contains "yamllint" "${EXPECTED_YAMLLINT_VERSION}" "yamllint --version"
 
 echo ""
 echo "🗄️  SQLite — must be ${EXPECTED_SQLITE_VERSION}"

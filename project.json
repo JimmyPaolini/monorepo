@@ -3,6 +3,24 @@
   "name": "monorepo",
   "projectType": "application",
   "targets": {
+    "audit-security": {
+      "cache": false,
+      "configurations": {
+        "check": {
+          "commands": [
+            "nx run {projectName}:gitleaks",
+            "nx affected --target=bandit --parallel=3 --base=main --head=HEAD",
+            "nx run {projectName}:dependency-audit:check",
+            "nx run {projectName}:trivy"
+          ],
+          "parallel": false
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "Run comprehensive security audit: Gitleaks (secrets), Bandit (Python/affected), npm/pnpm audit (dependencies), and Trivy (containers/IaC). Mirrors .github/workflows/audit-security.yml",
+      "executor": "nx:run-commands",
+      "options": {}
+    },
     "check-lockfile": {
       "description": "Verify that pnpm-lock.yaml is in sync with package.json files",
       "executor": "nx:run-commands",
@@ -284,24 +302,6 @@
         "command": "prettier {args} --config configuration/prettier.config.ts --ignore-path .prettierignore --ignore-unknown .",
         "cwd": "{projectRoot}"
       }
-    },
-    "security-audit": {
-      "cache": false,
-      "configurations": {
-        "check": {
-          "commands": [
-            "nx run {projectName}:gitleaks",
-            "nx affected --target=bandit --parallel=3 --base=main --head=HEAD",
-            "nx run {projectName}:dependency-audit:check",
-            "nx run {projectName}:trivy"
-          ],
-          "parallel": false
-        }
-      },
-      "defaultConfiguration": "check",
-      "description": "Run comprehensive security audit: Gitleaks (secrets), Bandit (Python/affected), npm/pnpm audit (dependencies), and Trivy (containers/IaC). Mirrors .github/workflows/security-audit.yml",
-      "executor": "nx:run-commands",
-      "options": {}
     },
     "sherif": {
       "cache": true,

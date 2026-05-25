@@ -215,9 +215,6 @@
     "ghcr.io/devcontainers-extra/features/uv:1": {
       "version": "latest"
     },
-    "ghcr.io/devcontainers-extra/features/yamllint:2": {
-      "version": "1.38.0"
-    },
     "ghcr.io/eitsupi/devcontainer-features/jq-likes:2": {
       "gojqVersion": "none",
       "jaqVersion": "none",
