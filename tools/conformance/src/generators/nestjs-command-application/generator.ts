@@ -33,9 +33,12 @@ function renderTemplateDirectory(args: {
   for (const node of nodes) {
     const templatePath = path.join(templateDirectoryPath, node.name);
     const outputName = node.name
-      .replaceAll(/__(\w+)__/g, (templateToken: string, field: string) => {
-        return substitutions[field] ?? templateToken;
-      })
+      .replaceAll(
+        /__([a-zA-Z0-9_-]+)__/g,
+        (templateToken: string, field: string) => {
+          return substitutions[field] ?? templateToken;
+        },
+      )
       .replace(/\.mustache$/, "");
     const outputPath = path.join(instanceDirectoryPath, outputName);
 

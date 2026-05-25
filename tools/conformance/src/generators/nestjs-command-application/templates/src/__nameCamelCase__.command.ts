@@ -15,6 +15,6 @@ export class {{namePascalCase}}Command extends CommandRunner {
   }
 
   async run(): Promise<void> {
-    // 🌱 implement command behavior
+    // 🌱 Implement command behavior
   }
 }
