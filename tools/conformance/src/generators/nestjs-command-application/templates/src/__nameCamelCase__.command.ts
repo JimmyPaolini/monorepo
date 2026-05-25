@@ -1,8 +1,5 @@
-import { Inject, Injectable } from "@nestjs/common";
-import { ConfigService } from "@nestjs/config";
+import { Injectable } from "@nestjs/common";
 import { Command, CommandRunner } from "nest-commander";
-
-import type { Environment } from "./{{nameCamelCase}}.types";
 
 /**
  * CLI entry point for {{nameKebab}}.
@@ -13,14 +10,11 @@ import type { Environment } from "./{{nameCamelCase}}.types";
   description: "Run the {{nameKebab}} command-line application",
 })
 export class {{namePascalCase}}Command extends CommandRunner {
-  constructor(
-    @Inject(ConfigService)
-    private readonly configService: ConfigService<Environment>,
-  ) {
+  constructor() {
     super();
   }
 
   async run(): Promise<void> {
-    void this.configService.get("OUTPUT_DIRECTORY");
+    // 🌱 implement command behavior
   }
 }

@@ -27,7 +27,24 @@ describe("generateNestjsCommandApplication", () => {
       expect(tree.exists(`${base}/src/main.ts`)).toBeTruthy();
       expect(tree.exists(`${base}/src/stellarCli.module.ts`)).toBeTruthy();
       expect(tree.exists(`${base}/src/stellarCli.command.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/src/modules/.gitkeep`)).toBeTruthy();
+      expect(
+        tree.exists(`${base}/src/modules/conformance.integration.test.ts`),
+      ).toBeTruthy();
+      expect(
+        tree.exists(`${base}/src/modules/sample/sample.module.ts`),
+      ).toBeTruthy();
+      expect(
+        tree.exists(`${base}/src/modules/sample/sample.service.ts`),
+      ).toBeTruthy();
+      expect(
+        tree.exists(`${base}/src/modules/sample/sample.service.unit.test.ts`),
+      ).toBeTruthy();
+      expect(
+        tree.exists(`${base}/src/modules/sample/sample.types.ts`),
+      ).toBeTruthy();
+      expect(
+        tree.exists(`${base}/src/modules/sample/sample.constants.ts`),
+      ).toBeTruthy();
       expect(tree.exists(`${base}/testing/setup.ts`)).toBeTruthy();
     });
 
@@ -49,6 +66,12 @@ describe("generateNestjsCommandApplication", () => {
       );
       expect(commandFile).toContain("name: 'stellar-cli'");
       expect(commandFile).toContain("class StellarCliCommand");
+
+      const envDefault = tree.read(
+        "applications/stellar-cli/.env.default",
+        "utf8",
+      );
+      expect(envDefault).toContain("🌱");
     });
   });
 

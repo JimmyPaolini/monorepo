@@ -14,6 +14,7 @@ interface GenerateNestjsCommandApplicationOptions {
 }
 
 export const APPLICATIONS_DIRECTORY = "applications";
+export const MODULES_DIRECTORY = "src/modules";
 export const TEMPLATES_DIRECTORY_PATH = fileURLToPath(
   new URL("templates", import.meta.url),
 );
@@ -35,7 +36,7 @@ function renderTemplateDirectory(args: {
       .replaceAll(/__(\w+)__/g, (templateToken: string, field: string) => {
         return substitutions[field] ?? templateToken;
       })
-      .replace(/__tmpl__$/, "");
+      .replace(/\.mustache$/, "");
     const outputPath = path.join(instanceDirectoryPath, outputName);
 
     if (node.isDirectory()) {
@@ -90,7 +91,6 @@ export async function generateNestjsCommandApplication(
       nameKebab,
       nameCamelCase,
       namePascalCase,
-      projectFile: "project",
     },
   });
 

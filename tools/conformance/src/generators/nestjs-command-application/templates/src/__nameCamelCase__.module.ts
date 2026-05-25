@@ -3,6 +3,7 @@ import { ConfigModule } from "@nestjs/config";
 
 import { {{namePascalCase}}Command } from "./{{nameCamelCase}}.command";
 import { environmentSchema } from "./{{nameCamelCase}}.constants";
+import { SampleModule } from "./modules/sample/sample.module";
 
 /**
  * Root NestJS application module.
@@ -15,6 +16,7 @@ import { environmentSchema } from "./{{nameCamelCase}}.constants";
       validate: (config: Record<string, unknown>) =>
         environmentSchema.parse(config),
     }),
+    SampleModule,
   ],
   providers: [{{namePascalCase}}Command],
 })

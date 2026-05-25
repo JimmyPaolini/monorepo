@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { environmentSchema } from "./{{nameCamelCase}}.constants";
 
 describe("environment schema e2e", () => {
-  it("throws when required fields are missing", () => {
-    expect(() => environmentSchema.parse({})).toThrow();
+  it("allows an empty schema by default", () => {
+    expect(environmentSchema.parse({})).toEqual({});
   });
 });
