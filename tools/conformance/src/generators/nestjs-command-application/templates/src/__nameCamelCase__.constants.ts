@@ -1,4 +1,4 @@
-import z from "zod";
+import { z } from "zod";
 
 export const environmentSchema = z.object({
   START_DATE: z.string(),
