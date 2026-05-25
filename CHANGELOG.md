@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.5](https://github.com/JimmyPaolini/monorepo/compare/v1.2.4...v1.2.5) (2026-05-25)
+
+### ♻️ Code Refactoring
+
+* **code-generator:** ♻️ migrate template rendering from ejs to mustache ([#37](https://github.com/JimmyPaolini/monorepo/issues/37)) ([79008c8](https://github.com/JimmyPaolini/monorepo/commit/79008c8cb92bdec6cfe8791d3ee6a350c9fd3b8b))
+
 ## [1.2.4](https://github.com/JimmyPaolini/monorepo/compare/v1.2.3...v1.2.4) (2026-05-25)
 
 ### 📝 Documentation
