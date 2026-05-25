@@ -89,13 +89,13 @@ Specialized domain knowledge for working on specific systems or patterns:
 - **[lexico-components](packages/lexico-components/AGENTS.md)**: Shared React component library (shadcn/ui, Radix UI)
 - **JimmyPaolini**: Portfolio website
 - **[infrastructure](infrastructure/AGENTS.md)**: Helm charts, Terraform, Kubernetes infrastructure
-- **[code-generator](tools/code-generator/AGENTS.md)**: Nx generators for scaffolding code
+- **[conformance](tools/conformance/AGENTS.md)**: Nx generators for scaffolding code
 
 ## Key Conventions
 
 ### Project Tags
 
-- **`language:typescript`** — applied to all TypeScript projects (caelundas, lexico, lexico-components, code-generator, monorepo)
+- **`language:typescript`** — applied to all TypeScript projects (caelundas, lexico, lexico-components, conformance, monorepo)
 - **`language:python`** — applied to all Python projects (affirmations)
 
 These tags enable conditional sub-target composition in composite targets (`format`, `lint`, `typecheck`, `test`). Python projects override the TS-default composite targets to compose Python sub-targets (`ruff-format`, `ruff-lint`, `pyright`, `pytest`) instead of TS ones.
@@ -173,7 +173,7 @@ Special branches exempt from naming convention: `main`, `develop`, `renovate/*`,
 | `applications` | Changes spanning multiple apps (caelundas, lexico, JimmyPaolini) |
 | `caelundas` | Node.js CLI for astronomical calendar generation (NASA JPL ephemeris) |
 | `configuration` | Workspace root config files (tsconfig, eslint, vitest, nx.json, etc.) |
-| `code-generator` | Code generator templates and conformance validation tests for generated instances |
+| `conformance` | Code generator templates and conformance validation tests for generated instances |
 | `dependencies` | Dependency version changes (upgrades, additions, removals via pnpm) |
 | `deployments` | GitHub Actions workflows and CI/CD pipeline configuration |
 | `documentation` | Markdown docs, skills, planning files, and AGENTS.md files |

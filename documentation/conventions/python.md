@@ -48,7 +48,7 @@ All targets use `executor: "nx:run-commands"`, `cache: true`, `cwd: "{projectRoo
 
 Every project must declare a language tag:
 
-- `language:typescript` — TypeScript projects (caelundas, lexico, lexico-components, code-generator)
+- `language:typescript` — TypeScript projects (caelundas, lexico, lexico-components, conformance)
 - `language:python` — Python projects (affirmations)
 
 These tags identify which composite target overrides apply to each project.

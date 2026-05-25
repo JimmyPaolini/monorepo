@@ -19,7 +19,7 @@ body:
         - applications
         - caelundas
         - configuration
-        - code-generator
+        - conformance
         - dependencies
         - deployments
         - documentation

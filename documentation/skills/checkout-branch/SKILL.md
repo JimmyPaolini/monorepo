@@ -57,7 +57,7 @@ This skill teaches how to name Git branches for this monorepo. All branch names 
 | `applications` | Changes spanning multiple apps (caelundas, lexico, JimmyPaolini) |
 | `caelundas` | Node.js CLI for astronomical calendar generation (NASA JPL ephemeris) |
 | `configuration` | Workspace root config files (tsconfig, eslint, vitest, nx.json, etc.) |
-| `code-generator` | Code generator templates and conformance validation tests for generated instances |
+| `conformance` | Code generator templates and conformance validation tests for generated instances |
 | `dependencies` | Dependency version changes (upgrades, additions, removals via pnpm) |
 | `deployments` | GitHub Actions workflows and CI/CD pipeline configuration |
 | `documentation` | Markdown docs, skills, planning files, and AGENTS.md files |
