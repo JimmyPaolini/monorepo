@@ -8,8 +8,8 @@ services:
       - monorepo-pnpm:/root/.local/share/pnpm
       - monorepo-docker:/var/lib/docker
     env_file:
-      # The monorepo root level .env file
-      - .env
+      # The monorepo root level .env file (copied from .env.default in CI)
+      - ../../.env
     deploy:
       resources:
         limits:
