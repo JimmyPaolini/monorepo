@@ -25,22 +25,25 @@ For workspace task execution, see [tool-execution-model](../tool-execution-model
 
 The component generator enforces these conventions:
 
-- Component names are **PascalCase** (validated)
-- File names are **kebab-case**
-- Generated files are auto-formatted
+- Component names are **PascalCase** (validated, e.g., `Button`, `UserCard`)
+- File names are **PascalCase** (`Button.tsx`, `Button.test.tsx`)
+- The generator prompts for a `framework:react` project when `--project` is omitted
+- Generated files are placed in `src/components/` of the selected project
 
 Example:
 
 ```bash
-nx generate code-generator:react-component --name=Dialog --directory=src/components
+nx generate code-generator:react-component --name=Dialog
+# With explicit project:
+nx generate code-generator:react-component --name=Dialog --project=lexico-components
 ```
 
-Generates:
+Generates in `packages/lexico-components/src/components/`:
 
 ```text
 src/components/
-├── dialog.tsx
-└── dialog.test.tsx
+├── Dialog.tsx
+└── Dialog.test.tsx
 ```
 
 ## Generator Structure

@@ -21,7 +21,10 @@ applications/affirmations/
 │   ├── grammars.py          # Grammar enums (Mood, Voice, Tense, etc.) and Grammar model
 │   ├── models.py            # Pydantic models (Affirmation, SubjectAffirmations, etc.)
 │   ├── output.py            # JSON/Markdown file I/O utilities
+│   ├── prices.ipynb         # Pricing research notebook
 │   ├── prompts.py           # LangChain prompt templates
+│   ├── py.typed             # PEP 561 marker (typed package)
+│   ├── semantics.ipynb      # Semantic analysis notebook
 │   └── subjects.py          # Spiritual subject configuration (Subject, SubjectCategory)
 ├── testing/
 │   ├── __init__.py
@@ -79,7 +82,6 @@ nx run affirmations:open-webui --configuration=stop
 - Vulture for dead code detection — `nx run affirmations:vulture`
 - pytest for tests, located in `testing/`, named `test_*_unit.py` or `test_*_integration.py`
 - All Pydantic models use `model_dump_json(indent=2)` for JSON serialization
-- Tool outputs always pass through the research processing layer (`research.py`)
 - No API keys required for core functionality (Ollama is local, Wikipedia/SearxNG are keyless)
 
 ## Environment Variables
