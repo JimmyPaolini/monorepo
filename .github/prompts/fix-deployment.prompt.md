@@ -24,14 +24,14 @@ This repository has these primary GitHub Action workflows:
 
 | Workflow                 | Job             | Nx Task                       | Common Failures                                                            |
 | ------------------------ | --------------- | ----------------------------- | -------------------------------------------------------------------------- |
-| 🧑‍💻 Code Analysis         | `analyze-code` | `analyze-code`               | Type errors, lint violations, formatting, spell-check, knip unused exports |
+| 🧑‍💻 Analyze Code         | `analyze-code` | `analyze-code`               | Type errors, lint violations, formatting, spell-check, knip unused exports |
 | 🧑‍🔬 Test Coverage         | `test-coverage` | `test --coverage`             | Test failures, missing coverage, snapshot mismatches                       |
 | 🧑‍⚖️ Convention Validation | Multiple        | Various                       | Branch name format, PR title format, PR body sections, config sync issues  |
 | 🕵️ Security Audit        | Multiple        | `dependency-audit` + scanners | Vulnerabilities, secrets in code, Docker/IaC issues                        |
 
 ## Diagnosis & Fix
 
-### Code Analysis Failures
+### Analyze Code Failures
 
 These include: `typecheck`, `lint`, `format`, `spell-check`, `knip`, `markdown-lint`, `yaml-lint`, `type-coverage`
 

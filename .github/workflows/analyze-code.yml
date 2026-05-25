@@ -1,4 +1,4 @@
-name: 🧑‍💻 Code Analysis
+name: 🧑‍💻 Analyze Code
 
 on:
   push:
@@ -21,7 +21,7 @@ concurrency:
 
 jobs:
   analyze-code:
-    name: 🧑‍💻 Code Analysis
+    name: 🧑‍💻 Analyze Code
     runs-on: ubuntu-latest
 
     steps:
@@ -33,7 +33,7 @@ jobs:
       - name: 🕋 Setup Monorepo
         uses: ./.github/actions/setup-monorepo
 
-      - name: 🧑‍💻 Code Analysis
+      - name: 🧑‍💻 Analyze Code
         env:
           NX_VERBOSE_LOGGING: ${{ inputs.verbose || false }}
         run: pnpm exec nx affected --target=analyze-code

@@ -55,9 +55,9 @@ All workflows call this composite action after checkout. It provides:
 
 ---
 
-#### 2. Code Analysis (`analyze-code.yml`)
+#### 2. Analyze Code (`analyze-code.yml`)
 
-**Name:** 🧑‍💻 Code Analysis
+**Name:** 🧑‍💻 Analyze Code
 
 **Triggers:** Push to `main`, pull requests
 

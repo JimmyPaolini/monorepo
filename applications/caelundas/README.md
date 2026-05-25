@@ -112,7 +112,7 @@ nx run caelundas:test --configuration=watch
 nx run caelundas:test --configuration=coverage
 ```
 
-### Code Analysis
+### Analyze Code
 
 ```bash
 # Type checking
