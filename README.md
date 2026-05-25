@@ -9,7 +9,7 @@
 
 [![Code Analysis](https://github.com/JimmyPaolini/monorepo/actions/workflows/code-analysis.yml/badge.svg)](https://github.com/JimmyPaolini/monorepo/actions/workflows/code-analysis.yml)
 [![Test Coverage](https://github.com/JimmyPaolini/monorepo/actions/workflows/test-coverage.yml/badge.svg)](https://github.com/JimmyPaolini/monorepo/actions/workflows/test-coverage.yml)
-[![Security Audit](https://github.com/JimmyPaolini/monorepo/actions/workflows/security-audit.yml/badge.svg)](https://github.com/JimmyPaolini/monorepo/actions/workflows/security-audit.yml)
+[![Security Audit](https://github.com/JimmyPaolini/monorepo/actions/workflows/audit-security.yml/badge.svg)](https://github.com/JimmyPaolini/monorepo/actions/workflows/audit-security.yml)
 [![Validate Conventions](https://github.com/JimmyPaolini/monorepo/actions/workflows/validate-conventions.yml/badge.svg?event=pull_request)](https://github.com/JimmyPaolini/monorepo/actions/workflows/validate-conventions.yml)
 [![Build Projects](https://github.com/JimmyPaolini/monorepo/actions/workflows/build-projects.yml/badge.svg)](https://github.com/JimmyPaolini/monorepo/actions/workflows/build-projects.yml)
 [![Make Devcontainer](https://github.com/JimmyPaolini/monorepo/actions/workflows/make-devcontainer.yml/badge.svg)](https://github.com/JimmyPaolini/monorepo/actions/workflows/make-devcontainer.yml)
@@ -57,7 +57,7 @@ nx run-many --target=code-analysis --all
 ## 📚 Documentation
 
 - **[Contributing Guide](CONTRIBUTING.md)** - Development workflow, code standards, and release process
-- **[Commit Messages](.github/skills/commit-code/SKILL.md)** - Conventional Commits format and examples
+- **[Commit Messages](documentation/skills/commit-code/SKILL.md)** - Conventional Commits format and examples
 - **[Release Process](release.config.cjs)** - Automated versioning and changelog generation
 - **[GitHub Actions](documentation/github-actions.md)** - CI/CD workflows, composite actions, and pipeline architecture
 
@@ -88,7 +88,7 @@ All projects use strict TypeScript configuration and comprehensive linting:
 - **ESLint** - Code linting with strict rules
 - **Oxfmt** - Primary code formatter
 - **Prettier** - Supplementary code formatting
-- **Biome** - Supplementary format checking and linting
+- **Oxlint** - Fast JavaScript/TypeScript linter
 - **TypeScript** - Strict type checking
 - **Knip** - Unused code detection
 - **cspell** - Spell checking
