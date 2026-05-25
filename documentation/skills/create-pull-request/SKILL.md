@@ -455,7 +455,7 @@ gh pr merge --squash --delete-branch
 - [PR template](../../../.github/PULL_REQUEST_TEMPLATE.md) — Default PR description template
 - [commit-code skill](../commit-code/SKILL.md) — Commit and PR title format
 - [checkout-branch skill](../checkout-branch/SKILL.md) — Branch naming conventions
-- [mcp-github skill](../mcp-github/SKILL.md) — GitHub MCP fallback tools (prefer `gh` CLI)
+- [mcp-github skill](../mcp-github/SKILL.md) — GitHub CLI (`gh`) and git workflows
 - [github-actions skill](../github-actions/SKILL.md) — CI workflow details
 - [Conventional Commits](https://www.conventionalcommits.org/)
 - [Gitmoji](https://gitmoji.dev)

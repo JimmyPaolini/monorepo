@@ -109,10 +109,10 @@ documentation/skills/
 
 **[mcp-github](mcp-github/SKILL.md)**
 
-- Repository operations
-- PR creation and review
-- Issue management
-- Automated workflows
+- PR creation and review with `gh` CLI
+- Issue management with `gh` CLI
+- Branch and commit workflows with `git`
+- Code search
 
 ### Process Skills
 

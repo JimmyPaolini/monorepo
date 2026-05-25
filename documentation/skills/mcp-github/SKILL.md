@@ -1,100 +1,48 @@
 ---
 name: mcp-github
-description: Use the GitHub MCP server for repository operations, PR management, issues, and workflows. Use this skill when working with GitHub repositories programmatically.
+description: Use gh CLI and git commands for GitHub repository operations — PRs, issues, branches, and code search.
 license: MIT
 ---
 
-# GitHub MCP Server
+# GitHub CLI & Git Workflows
 
-This skill covers using the GitHub MCP server to interact with GitHub repositories, manage pull requests, issues, workflows, and other GitHub features programmatically.
-
-## ⚠️ Prefer `gh` CLI and `git` over MCP Tools
-
-**Always prefer `gh` (GitHub CLI) and `git` commands over GitHub MCP server tools.**
-
-The `gh` CLI is already authenticated in the Copilot environment (via the copilot setup steps) and produces the same results with simpler, more readable commands. Use MCP tools only when the `gh` CLI cannot accomplish the task (e.g., certain GraphQL-only API operations).
-
-| Task | Preferred | MCP fallback |
-| ---- | --------- | ------------ |
-| Create PR | `gh pr create` | `mcp_github_create_pull_request` |
-| Update PR | `gh pr edit` | `mcp_github_update_pull_request` |
-| List/find PR | `gh pr list` / `gh pr view` | `mcp_github_list_pull_requests` |
-| Merge PR | `gh pr merge` | `mcp_github_merge_pull_request` |
-| Create issue | `gh issue create` | `mcp_github_issue_write` |
-| List issues | `gh issue list` | `mcp_github_list_issues` |
-| Search issues | `gh issue list --search` | `mcp_github_search_issues` |
-| Create branch | `git checkout -b` + `git push` | `mcp_github_create_branch` |
-| Read file | `cat` / view tool | `mcp_github_get_file_contents` |
-| Write file | edit tool + `git commit` | `mcp_github_create_or_update_file` |
+Use `gh` (GitHub CLI) and `git` for all GitHub repository operations. The `gh` CLI is authenticated in the Copilot environment and covers every common workflow.
 
 ## When to Use This Skill
 
-Use this skill for GitHub repository operations when `gh` CLI is not available or when a GraphQL-only operation is required:
-
 - Creating or updating pull requests
 - Managing issues and labels
-- Triggering GitHub Actions workflows
 - Reviewing code changes
-- Managing repository settings
-- Querying repository data
-- Automating GitHub workflows
-- Syncing repository information
+- Working with branches and commits
+- Searching code and repositories
 
-**Note:** Many GitHub MCP tools are already documented in the instructions. This skill provides additional context and usage patterns.
+## Quick Reference
 
-## Available Tool Categories
-
-The GitHub MCP server provides extensive tools (prefix: `mcp_github_`):
-
-### Repository Operations
-
-- `mcp_github_create_repository` - Create new repository
-- `mcp_github_get_file_contents` - Read repository files
-- `mcp_github_create_or_update_file` - Write files
-- `mcp_github_delete_file` - Remove files
-- `mcp_github_push_files` - Batch file operations
-- `mcp_github_list_branches` - List branches
-- `mcp_github_create_branch` - Create branch
-
-### Pull Request Management
-
-- `mcp_github_create_pull_request` - Create PR
-- `mcp_github_update_pull_request` - Update PR
-- `mcp_github_list_pull_requests` - List PRs
-- `mcp_github_pull_request_read` - Get PR details
-- `mcp_github_pull_request_review_write` - Create reviews
-- `mcp_github_add_comment_to_pending_review` - Add review comments
-- `mcp_github_merge_pull_request` - Merge PR
-- `mcp_github_update_pull_request_branch` - Update PR branch
-
-### Issue Management
-
-- `mcp_github_issue_write` - Create/update issues
-- `mcp_github_issue_read` - Get issue details
-- `mcp_github_list_issues` - List issues
-- `mcp_github_search_issues` - Search issues
-- `mcp_github_add_issue_comment` - Comment on issues
-
-### Workflow & Actions
-
-- `mcp_github_list_commits` - List repository commits
-- `mcp_github_get_commit` - Get commit details
-- `mcp_github_search_code` - Search code
-- `mcp_github_search_repositories` - Search repos
-
-See the GitHub instructions in your context for complete tool documentation.
+| Task | Command |
+| ---- | ------- |
+| Create PR | `gh pr create` |
+| Update PR | `gh pr edit` |
+| View PR | `gh pr view` |
+| Merge PR | `gh pr merge` |
+| List PRs | `gh pr list` |
+| Review PR | `gh pr review` |
+| Create issue | `gh issue create` |
+| List issues | `gh issue list` |
+| Close issue | `gh issue close` |
+| Create branch | `git checkout -b` + `git push` |
+| Read file | `cat` / view tool |
+| Write file | edit tool + `git commit` + `git push` |
+| Search code | `grep -r` (local) or `gh search code` |
 
 ## Workflow Patterns
 
 ### Creating Pull Requests
 
-**Preferred approach — `gh` CLI:**
-
 ```bash
 # 1. Create feature branch
 git checkout -b feat/new-feature
 
-# 2. Make changes, commit
+# 2. Make changes, commit, push
 git add .
 git commit -m "feat(lexico-components): ✨ add new button component"
 git push -u origin feat/new-feature
@@ -121,57 +69,7 @@ Adds a new button component to lexico-components.
 - <!-- links -->"
 ```
 
-**MCP fallback (only when `gh` CLI is unavailable):**
-
-1. **Create feature branch:**
-
-   ```typescript
-   mcp_github_create_branch({
-     owner: "JimmyPaolini",
-     repo: "monorepo",
-     branch: "feat/new-feature",
-     from_branch: "main",
-   });
-   ```
-
-2. **Make changes:**
-
-   ```typescript
-   mcp_github_push_files({
-     owner: "JimmyPaolini",
-     repo: "monorepo",
-     branch: "feat/new-feature",
-     files: [
-       {
-         path: "packages/lexico-components/src/components/NewButton.tsx",
-         content: buttonComponentCode,
-       },
-       {
-         path: "packages/lexico-components/src/index.ts",
-         content: updatedExports,
-       },
-     ],
-     message: "feat(lexico-components): add new button component",
-   });
-   ```
-
-3. **Create pull request:**
-
-   ```typescript
-   const pr = mcp_github_create_pull_request({
-     owner: "JimmyPaolini",
-     repo: "monorepo",
-     title: "feat(lexico-components): add new button component",
-     head: "feat/new-feature",
-     base: "main",
-     body: "Adds a new button component to lexico-components.",
-     draft: false,
-   });
-   ```
-
 ### Code Review Workflow
-
-**Preferred approach — `gh` CLI:**
 
 ```bash
 # View PR details
@@ -188,74 +86,7 @@ gh pr review 42 --comment --body "A few suggestions..."
 gh pr review 42 --request-changes --body "Please fix..."
 ```
 
-**MCP fallback:**
-
-1. **Get PR details:**
-
-   ```typescript
-   const prDetails = mcp_github_pull_request_read({
-     method: "get",
-     owner: "JimmyPaolini",
-     repo: "monorepo",
-     pullNumber: 42,
-   });
-   ```
-
-2. **Get PR diff:**
-
-   ```typescript
-   const diff = mcp_github_pull_request_read({
-     method: "get_diff",
-     owner: "JimmyPaolini",
-     repo: "monorepo",
-     pullNumber: 42,
-   });
-   ```
-
-3. **Create review:**
-
-   ```typescript
-   mcp_github_pull_request_review_write({
-     method: "create",
-     owner: "JimmyPaolini",
-     repo: "monorepo",
-     pullNumber: 42,
-     body: "Reviewing the implementation...",
-     event: "COMMENT", // Don't submit yet
-   });
-   ```
-
-4. **Add review comments:**
-
-   ```typescript
-   mcp_github_add_comment_to_pending_review({
-     owner: "JimmyPaolini",
-     repo: "monorepo",
-     pullNumber: 42,
-     path: "packages/lexico-components/src/components/NewButton.tsx",
-     body: "Consider adding prop validation here",
-     line: 15,
-     side: "RIGHT",
-     subjectType: "LINE",
-   });
-   ```
-
-5. **Submit review:**
-
-   ```typescript
-   mcp_github_pull_request_review_write({
-     method: "submit_pending",
-     owner: "JimmyPaolini",
-     repo: "monorepo",
-     pullNumber: 42,
-     body: "Looks good! Just a few minor suggestions.",
-     event: "APPROVE",
-   });
-   ```
-
 ### Issue Operations
-
-**Preferred approach — `gh` CLI:**
 
 ```bash
 # Create issue
@@ -268,127 +99,28 @@ gh issue create \
 # Search issues
 gh issue list --search "is:open label:bug"
 
-# Close issue
-gh issue close 123 --comment "Fixed in PR #456"
+# Comment and close issue
+gh issue comment 123 --body "Fixed in PR #456"
+gh issue close 123
 ```
 
-**MCP fallback:**
-
-1. **Create issue:**
-
-   ```typescript
-   const issue = mcp_github_issue_write({
-     method: "create",
-     owner: "JimmyPaolini",
-     repo: "monorepo",
-     title: "Add dark mode support to lexico-components",
-     body: "Add dark mode theming support to all components.",
-     labels: ["enhancement", "lexico-components"],
-     assignees: ["JimmyPaolini"],
-   });
-   ```
-
-2. **Update issue:**
-
-   ```typescript
-   mcp_github_issue_write({
-     method: "update",
-     owner: "JimmyPaolini",
-     repo: "monorepo",
-     issue_number: issue.number,
-     state: "closed",
-     state_reason: "completed",
-   });
-   ```
-
-3. **Search issues:**
-
-   ```typescript
-   const bugs = mcp_github_search_issues({
-     query: "repo:JimmyPaolini/monorepo is:issue is:open label:bug",
-   });
-   ```
-
 ### Repository File Operations
-
-**Preferred approach — use the local filesystem + `git`:**
 
 ```bash
 # Read file
 cat package.json
 
-# Edit file with editor / edit tool, then commit
+# Edit file with editor / edit tool, then commit and push
 git add package.json
 git commit -m "chore(monorepo): bump version to 1.2.3"
 git push
 ```
 
-**MCP fallback:**
-
-1. **Read configuration:**
-
-   ```typescript
-   const packageJson = mcp_github_get_file_contents({
-     owner: "JimmyPaolini",
-     repo: "monorepo",
-     path: "package.json",
-   });
-
-   const config = JSON.parse(atob(packageJson.content));
-   ```
-
-2. **Update file:**
-
-   ```typescript
-   // Get current file SHA
-   const file = mcp_github_get_file_contents({
-     owner: "JimmyPaolini",
-     repo: "monorepo",
-     path: "package.json",
-   });
-
-   // Update content
-   const updatedConfig = {
-     ...JSON.parse(atob(file.content)),
-     version: "1.2.3",
-   };
-
-   // Write back
-   mcp_github_create_or_update_file({
-     owner: "JimmyPaolini",
-     repo: "monorepo",
-     path: "package.json",
-     content: JSON.stringify(updatedConfig, null, 2),
-     message: "chore(monorepo): bump version to 1.2.3",
-     branch: "main",
-     sha: file.sha,
-   });
-   ```
-
-3. **Batch updates:**
-
-   ```typescript
-   mcp_github_push_files({
-     owner: "JimmyPaolini",
-     repo: "monorepo",
-     branch: "update-docs",
-     files: [
-       { path: "README.md", content: updatedReadme },
-       { path: "CONTRIBUTING.md", content: updatedContributing },
-       {
-         path: "packages/lexico-components/README.md",
-         content: componentReadme,
-       },
-     ],
-     message: "docs: update documentation across projects",
-   });
-   ```
-
 ## Project-Specific Usage
 
 ### monorepo Automation
 
-**Create documentation PR (preferred — `gh` CLI):**
+**Create documentation PR:**
 
 ```bash
 git checkout -b docs/update-agents
@@ -402,72 +134,15 @@ gh pr create \
   --body "Updates AGENTS.md files with latest architecture patterns."
 ```
 
-**Create documentation PR (MCP fallback):**
-
-```typescript
-// Create branch
-mcp_github_create_branch({
-  owner: "JimmyPaolini",
-  repo: "monorepo",
-  branch: "docs/update-agents",
-  from_branch: "main",
-});
-
-// Generate updated docs
-const agentsDocs = generateAgentsDocumentation();
-
-// Push changes
-mcp_github_push_files({
-  owner: "JimmyPaolini",
-  repo: "monorepo",
-  branch: "docs/update-agents",
-  files: [
-    { path: "AGENTS.md", content: agentsDocs.root },
-    { path: "applications/caelundas/AGENTS.md", content: agentsDocs.caelundas },
-    { path: "applications/lexico/AGENTS.md", content: agentsDocs.lexico },
-  ],
-  message: "docs: update AGENTS.md documentation",
-});
-
-// Create PR
-mcp_github_create_pull_request({
-  owner: "JimmyPaolini",
-  repo: "monorepo",
-  title: "docs: update AGENTS.md documentation",
-  head: "docs/update-agents",
-  base: "main",
-  body: "Updates AGENTS.md files with latest architecture patterns.",
-  draft: false,
-});
-```
-
-**Sync with PR template (preferred — local file):**
+**Read PR template:**
 
 ```bash
 cat .github/PULL_REQUEST_TEMPLATE.md
 ```
 
-**Sync with PR template (MCP fallback):**
-
-```typescript
-// Get PR template
-const template = mcp_github_get_file_contents({
-  owner: "JimmyPaolini",
-  repo: "monorepo",
-  path: ".github/PULL_REQUEST_TEMPLATE.md",
-});
-
-// Use template for PR body
-const prBody = fillPRTemplate(atob(template.content), {
-  description: "Add new feature",
-  changes: ["Updated component", "Added tests"],
-  testing: "nx test lexico-components",
-});
-```
-
 ### Issue Automation
 
-**Create issues from backlog (preferred — `gh` CLI):**
+**Create issues from backlog:**
 
 ```bash
 gh issue create \
@@ -481,7 +156,7 @@ gh issue create \
   --label "performance,caelundas"
 ```
 
-**Close stale issues (preferred — `gh` CLI):**
+**Close stale issues:**
 
 ```bash
 # List old issues
@@ -492,55 +167,9 @@ gh issue comment 123 --body "Closing due to inactivity. Please reopen if still r
 gh issue close 123
 ```
 
-**MCP fallback:**
-
-```typescript
-// Create issues
-const backlogItems = [
-  { title: "Add pagination to search results", labels: ["enhancement", "lexico"], estimate: 5 },
-  { title: "Improve ephemeris calculation performance", labels: ["performance", "caelundas"], estimate: 8 },
-];
-
-for (const item of backlogItems) {
-  mcp_github_issue_write({
-    method: "create",
-    owner: "JimmyPaolini",
-    repo: "monorepo",
-    title: item.title,
-    body: `Estimated effort: ${item.estimate} story points`,
-    labels: item.labels,
-  });
-}
-
-// Find and close old issues
-const oldIssues = mcp_github_search_issues({
-  query: "repo:JimmyPaolini/monorepo is:issue is:open created:<2024-01-01",
-});
-
-for (const issue of oldIssues.items) {
-  mcp_github_add_issue_comment({
-    owner: "JimmyPaolini",
-    repo: "monorepo",
-    issue_number: issue.number,
-    body: "Closing due to inactivity. Please reopen if still relevant.",
-  });
-
-  mcp_github_issue_write({
-    method: "update",
-    owner: "JimmyPaolini",
-    repo: "monorepo",
-    issue_number: issue.number,
-    state: "closed",
-    state_reason: "not_planned",
-  });
-}
-```
-
 ## Advanced Patterns
 
 ### Automated Release PR
-
-**Preferred approach — `gh` CLI + `git`:**
 
 ```bash
 # Get last release tag
@@ -563,117 +192,14 @@ gh pr create \
   --body "$(cat CHANGELOG.md)"
 ```
 
-**MCP fallback:**
-
-```typescript
-// Get last release tag
-const tags = mcp_github_list_tags({
-  owner: "JimmyPaolini",
-  repo: "monorepo",
-});
-
-const lastTag = tags.data[0].name;
-
-// Get commits since last release
-const commits = mcp_github_list_commits({
-  owner: "JimmyPaolini",
-  repo: "monorepo",
-  sha: "main",
-});
-
-// Generate changelog
-const changelog = generateChangelog(commits, lastTag);
-
-// Create release branch
-const version = getNextVersion(lastTag);
-mcp_github_create_branch({
-  owner: "JimmyPaolini",
-  repo: "monorepo",
-  branch: `release/${version}`,
-  from_branch: "main",
-});
-
-// Update version files
-mcp_github_push_files({
-  owner: "JimmyPaolini",
-  repo: "monorepo",
-  branch: `release/${version}`,
-  files: [
-    { path: "package.json", content: updatedPackageJson },
-    { path: "CHANGELOG.md", content: changelog },
-  ],
-  message: `chore(monorepo): release ${version}`,
-});
-
-// Create release PR
-mcp_github_create_pull_request({
-  owner: "JimmyPaolini",
-  repo: "monorepo",
-  title: `chore(monorepo): release ${version}`,
-  head: `release/${version}`,
-  base: "main",
-  body: changelog,
-});
-```
-
 ### Code Search & Refactoring
 
-**Preferred approach — `gh` CLI + `git`:**
-
 ```bash
-# Find all usages of deprecated API
-gh search code "oldAPIFunction" --repo JimmyPaolini/monorepo
-
-# Or use grep on the local checkout
+# Find all usages of deprecated API in local checkout
 grep -r "oldAPIFunction" --include="*.ts" .
-```
 
-**MCP fallback:**
-
-```typescript
-// Find all usages of deprecated API
-const results = mcp_github_search_code({
-  query: "repo:JimmyPaolini/monorepo oldAPIFunction",
-});
-
-// Create refactoring PRs
-for (const result of results.items) {
-  const file = mcp_github_get_file_contents({
-    owner: "JimmyPaolini",
-    repo: "monorepo",
-    path: result.path,
-  });
-
-  const updated = refactorCode(atob(file.content));
-
-  const branchName = `refactor/${result.path.replace(/\//g, "-")}`;
-
-  mcp_github_create_branch({
-    owner: "JimmyPaolini",
-    repo: "monorepo",
-    branch: branchName,
-    from_branch: "main",
-  });
-
-  mcp_github_create_or_update_file({
-    owner: "JimmyPaolini",
-    repo: "monorepo",
-    path: result.path,
-    content: updated,
-    message: `refactor: migrate from oldAPIFunction to newAPIFunction`,
-    branch: branchName,
-    sha: file.sha,
-  });
-
-  mcp_github_create_pull_request({
-    owner: "JimmyPaolini",
-    repo: "monorepo",
-    title: `refactor(${getScope(result.path)}): migrate to new API`,
-    head: branchName,
-    base: "main",
-    body: "Automated refactoring from oldAPIFunction to newAPIFunction",
-  });
-}
+# Search on GitHub
+gh search code "oldAPIFunction" --repo JimmyPaolini/monorepo
 ```
 
 ## Best Practices
@@ -685,47 +211,30 @@ for (const result of results.items) {
 5. **Close issues with references** (`Closes #123`)
 6. **Use draft PRs** for work in progress
 7. **Keep commits atomic** and well-described
-8. **Use branch protection** for important branches
-9. **Enable required reviews** before merging
-10. **Clean up merged branches** automatically
-
-## Security Considerations
-
-- **Use fine-grained tokens** with minimal permissions
-- **Never commit tokens** to repository
-- **Use GitHub Apps** for organization-wide automation
-- **Audit API usage** regularly
-- **Rotate tokens** periodically
-- **Use CODEOWNERS** for sensitive files
-- **Enable branch protection** on main branches
 
 ## Troubleshooting
 
-**Permission denied:**
+**Authentication:**
 
-- Verify token has required scopes
-- Check repository permissions
-- Ensure organization settings allow API access
+```bash
+gh auth status
+gh auth login
+```
 
 **File conflicts:**
 
-- Pull latest changes before updating
-- Use correct SHA for file updates
-- Handle merge conflicts manually
-
-**Rate limiting:**
-
-- Implement exponential backoff
-- Cache responses when possible
-- Use conditional requests (ETags)
+- Pull latest changes before updating: `git pull --rebase`
+- Handle merge conflicts manually, then `git push --force-with-lease`
 
 ## Related Documentation
 
 - [CONTRIBUTING.md](../../CONTRIBUTING.md) - Contribution guidelines
 - [commit-code skill](../commit-code/SKILL.md) - Commit message format
 - [github-actions skill](../github-actions/SKILL.md) - CI/CD workflows
+- [create-pull-request skill](../create-pull-request/SKILL.md) - PR conventions
 
 ## See Also
 
 - **github-actions skill** - For workflow automation
 - **commit-code skill** - For proper commit formatting
+- **create-pull-request skill** - For PR conventions and description template
