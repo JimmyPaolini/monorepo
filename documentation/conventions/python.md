@@ -40,7 +40,7 @@ Seven Python tool targets are defined as monorepo-wide `targetDefaults`:
 | `pytest`      | pytest  | Run tests (unit/integration/coverage/watch)        |
 | `vulture`     | vulture | Dead code detection                                |
 | `ty`          | ty      | Supplementary type checker (Astral, pre-1.0)       |
-| `bandit`      | bandit  | Security linter (runs in `security-audit` CI only) |
+| `bandit`      | bandit  | Security linter (runs in `audit-security` CI only) |
 
 All targets use `executor: "nx:run-commands"`, `cache: true`, `cwd: "{projectRoot}"`, and `uv run` for invocation.
 

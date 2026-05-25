@@ -1,9 +1,16 @@
-# Root pyproject.toml — shared Python tool configuration only.
-# No [project] or [build-system] sections — tool config only to avoid
-# interfering with uv dependency resolution in individual projects.
+# Root pyproject.toml — shared Python tool configuration and workspace-level dev tools.
 # Mirrors tsconfig.base.json / eslint.config.base.ts pattern.
 #
-# Python projects extend this via [tool.ruff] extend = "../../pyproject.toml"
+# Python projects extend this via [tool.ruff] extend = "../../configuration/pyproject.toml"
+
+[project]
+name = "monorepo"
+version = "0.0.0"
+requires-python = ">=3.11"
+dependencies = []
+
+[dependency-groups]
+dev = ["yamllint>=1.35"]
 
 [tool.ruff]
 target-version = "py311"

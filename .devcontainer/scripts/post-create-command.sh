@@ -2,6 +2,12 @@
 
 set -euo pipefail
 
+echo "🔑 Installing Gitleaks v${GITLEAKS_VERSION}..."
+curl -sSfL \
+  "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" \
+  | tar -xzC /usr/local/bin gitleaks
+echo "✅ Gitleaks installed: $(gitleaks version)"
+
 echo "🔎 Checking for .env file..."
 if [ ! -f ".env" ]; then
   if [ -f ".env.default" ]; then
