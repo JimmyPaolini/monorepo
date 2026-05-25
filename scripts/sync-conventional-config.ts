@@ -46,7 +46,6 @@ const SKILL_FILES = [
     WORKSPACE_ROOT,
     "documentation/skills/create-pull-request/SKILL.md",
   ),
-  path.join(WORKSPACE_ROOT, ".github/prompts/submit-changes.prompt.md"),
   path.join(WORKSPACE_ROOT, ".github/copilot-instructions.md"),
 ];
 const ISSUE_TEMPLATE_FILES = [

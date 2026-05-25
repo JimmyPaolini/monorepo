@@ -308,6 +308,18 @@ This monorepo uses **squash merging** by default:
 - PR title becomes the commit message
 - Keep PR title clean and following conventions
 
+## Pre-Flight Checklist
+
+Before creating the PR, verify:
+
+- [ ] Branch name follows `<type>/<scope>-<description>` format
+- [ ] All changes are committed and pushed to remote
+- [ ] Title follows `<type>(<scope>): <gitmoji> <subject>` format (max 128 chars)
+- [ ] Subject uses imperative mood and lowercase after gitmoji
+- [ ] Description includes Summary, Details, and Testing sections
+- [ ] Related issues and documentation are linked in the Related section
+- [ ] Local CI checks pass: `nx affected --target=lint && nx affected --target=typecheck && nx affected --target=test`
+
 ## Common Patterns
 
 ### Feature PR

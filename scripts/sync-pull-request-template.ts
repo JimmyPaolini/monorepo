@@ -28,8 +28,10 @@ const TARGET_FILES = [
     WORKSPACE_ROOT,
     "documentation/skills/create-pull-request/SKILL.md",
   ),
-  path.join(WORKSPACE_ROOT, ".github/prompts/create-pull-request.prompt.md"),
-  path.join(WORKSPACE_ROOT, ".github/prompts/update-pull-request.prompt.md"),
+  path.join(
+    WORKSPACE_ROOT,
+    "documentation/skills/update-pull-request/SKILL.md",
+  ),
 ];
 const MODE = process.argv[2] ?? "check";
 const MARKER = "pr-template";
