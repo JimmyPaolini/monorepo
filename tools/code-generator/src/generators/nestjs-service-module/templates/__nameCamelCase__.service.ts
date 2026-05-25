@@ -1,10 +1,10 @@
 import { Injectable } from "@nestjs/common";
 
 /**
- * TODO: Document the <%= nameCamelCase %> service.
+ * TODO: Document the {{nameCamelCase}} service.
  */
 @Injectable()
-export class <%= namePascalCase %>Service {
+export class {{namePascalCase}}Service {
   // 🏗️ Dependency Injection
   constructor() {}
 

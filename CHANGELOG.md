@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.5](https://github.com/JimmyPaolini/monorepo/compare/v1.2.4...v1.2.5) (2026-05-25)
+
+### ♻️ Code Refactoring
+
+* **code-generator:** ♻️ migrate template rendering from ejs to mustache ([#37](https://github.com/JimmyPaolini/monorepo/issues/37)) ([79008c8](https://github.com/JimmyPaolini/monorepo/commit/79008c8cb92bdec6cfe8791d3ee6a350c9fd3b8b))
+
+## [1.2.4](https://github.com/JimmyPaolini/monorepo/compare/v1.2.3...v1.2.4) (2026-05-25)
+
+### 📝 Documentation
+
+* **documentation:** 📝 expand git workflow with full branch, commit, and pr conventions ([#36](https://github.com/JimmyPaolini/monorepo/issues/36)) ([a14565a](https://github.com/JimmyPaolini/monorepo/commit/a14565acd97e7487c61704464ff66d6560ea37bf))
+* **documentation:** 📝 fix outdated documentation across skills and projects ([#35](https://github.com/JimmyPaolini/monorepo/issues/35)) ([28aa035](https://github.com/JimmyPaolini/monorepo/commit/28aa035cbd38035ea607a3dc1e1aa6572ed2ad9e))
+
+### ♻️ Code Refactoring
+
+* **deployments:** ♻️ move devcontainer resource config to docker-compose.yml ([#39](https://github.com/JimmyPaolini/monorepo/issues/39)) ([39a543d](https://github.com/JimmyPaolini/monorepo/commit/39a543d189df41a2304c189242e99ea9adec93ee))
+
 ## [1.2.3](https://github.com/JimmyPaolini/monorepo/compare/v1.2.2...v1.2.3) (2026-05-25)
 
 ### 🐛 Bug Fixes

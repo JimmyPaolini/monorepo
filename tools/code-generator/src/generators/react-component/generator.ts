@@ -1,9 +1,9 @@
 import path from "node:path";
 
-import { formatFiles, generateFiles, getProjects } from "@nx/devkit";
+import { formatFiles, getProjects } from "@nx/devkit";
 
 import { StringCase } from "../../types";
-import { resolveNameByCase, resolveProjectByTag } from "../../utilities";
+import { generateFiles, resolveName, resolveProject } from "../../utilities";
 
 import type { Tree } from "@nx/devkit";
 
@@ -23,14 +23,14 @@ export async function generateComponent(
   tree: Tree,
   options: GenerateComponentOptions,
 ): Promise<void> {
-  const projectName = await resolveProjectByTag({
+  const projectName = await resolveProject({
     tree,
     tag: "framework:react",
     ...(options.project !== undefined && { project: options.project }),
     message: "Which project should the component be generated in?",
   });
 
-  const name = await resolveNameByCase({
+  const name = await resolveName({
     name: options.name,
     case: StringCase.PASCAL_CASE,
     message: "What is the name of the component? (PascalCase)",
@@ -60,6 +60,11 @@ export async function generateComponent(
 
   const filesPath = path.join(__dirname, "templates");
   const substitutions = { namePascalCase };
-  generateFiles(tree, filesPath, directory, substitutions);
+  generateFiles({
+    tree,
+    templateDirectoryPath: filesPath,
+    instanceDirectoryPath: directory,
+    substitutions,
+  });
   await formatFiles(tree);
 }
