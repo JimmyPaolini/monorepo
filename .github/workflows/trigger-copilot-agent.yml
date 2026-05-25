@@ -2,7 +2,7 @@ name: 🤖 Trigger Copilot Agent
 
 on:
   schedule:
-    - cron: 0 9 * * 1 # Weekly Monday 9am UTC
+    - cron: 0 9 * * 1 # Every Monday 9am UTC
   workflow_dispatch:
     inputs:
       prompt:
@@ -52,8 +52,8 @@ jobs:
             PROMPT="$PROMPT_VAR"
           fi
           if [[ -z "$PROMPT" ]]; then
-            PROMPT='@copilot Please run the scheduled task for this'
-            PROMPT+=' issue and share progress updates.'
+            PROMPT='@copilot Please run the recurring task described in'
+            PROMPT+=' this issue and share progress updates.'
           fi
 
           echo "enabled=true" >> "$GITHUB_OUTPUT"
