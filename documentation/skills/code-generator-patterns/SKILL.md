@@ -10,14 +10,14 @@ This skill covers creating and extending Nx generators in the monorepo, includin
 
 ## Overview
 
-The monorepo includes custom Nx generators in `tools/code-generator/` for scaffolding:
+The monorepo includes custom Nx generators in `tools/conformance/` for scaffolding:
 
 - Project structures
 - Component templates
 - Configuration files
 - Documentation
 
-For detailed generator development guide, see [tools/code-generator/AGENTS.md](../../../tools/code-generator/AGENTS.md).
+For detailed generator development guide, see [tools/conformance/AGENTS.md](../../../tools/conformance/AGENTS.md).
 
 For workspace task execution, see [tool-execution-model](../tool-execution-model/SKILL.md).
 
@@ -33,9 +33,9 @@ The component generator enforces these conventions:
 Example:
 
 ```bash
-nx generate code-generator:react-component --name=Dialog
+nx generate conformance:react-component --name=Dialog
 # With explicit project:
-nx generate code-generator:react-component --name=Dialog --project=lexico-components
+nx generate conformance:react-component --name=Dialog --project=lexico-components
 ```
 
 Generates in `packages/lexico-components/src/components/`:
@@ -51,7 +51,7 @@ src/components/
 ### Directory Layout
 
 ```text
-tools/code-generator/
+tools/conformance/
   src/
     generators/
       example/                          # Generator name
@@ -471,16 +471,16 @@ describe("myGenerator (integration)", () => {
 
 ```bash
 # Run generator
-nx g @monorepo/code-generator:example my-component
+nx g @monorepo/conformance:example my-component
 
 # With options
-nx g @monorepo/code-generator:example my-component --directory=src/components
+nx g @monorepo/conformance:example my-component --directory=src/components
 
 # Dry run (preview changes)
-nx g @monorepo/code-generator:example my-component --dry-run
+nx g @monorepo/conformance:example my-component --dry-run
 
 # Skip prompts (use defaults)
-nx g @monorepo/code-generator:example my-component --defaults
+nx g @monorepo/conformance:example my-component --defaults
 ```
 
 ### Programmatically
@@ -693,12 +693,12 @@ export async function componentGenerator(tree: Tree, options: ComponentSchema) {
 
 ## Related Documentation
 
-- [tools/code-generator/AGENTS.md](../../tools/code-generator/AGENTS.md) - Full generator guide
-- [tools/code-generator/README.md](../../tools/code-generator/README.md) - Usage examples
+- [tools/conformance/AGENTS.md](../../tools/conformance/AGENTS.md) - Full generator guide
+- [tools/conformance/README.md](../../tools/conformance/README.md) - Usage examples
 - [Nx Generator Docs](https://nx.dev/extending-nx/recipes/local-generators) - Official documentation
 
 ## Examples
 
 See existing generators for patterns:
 
-- [tools/code-generator/src/generators/](../../tools/code-generator/src/generators/) - Example generators
+- [tools/conformance/src/generators/](../../tools/conformance/src/generators/) - Example generators

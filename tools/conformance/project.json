@@ -1,9 +1,9 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "name": "code-generator",
+  "name": "conformance",
   "prefix": "lib",
   "projectType": "library",
-  "sourceRoot": "tools/code-generator/src",
+  "sourceRoot": "tools/conformance/src",
   "tags": ["language:typescript", "type:util"],
   "targets": {
     "build": {
@@ -11,7 +11,7 @@
       "description": "No-op build target for development tool",
       "executor": "nx:run-commands",
       "options": {
-        "command": "echo 'code-generator is a development tool and does not require building'"
+        "command": "echo 'conformance is a development tool and does not require building'"
       }
     },
     "clean": {},
@@ -25,7 +25,7 @@
     "oxlint": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "oxlint --ignore-pattern='**/templates/**' tools/code-generator/src",
+        "command": "oxlint --ignore-pattern='**/templates/**' tools/conformance/src",
         "cwd": "{workspaceRoot}"
       }
     },
@@ -35,7 +35,7 @@
       "executor": "nx:run-commands",
       "options": {
         "command": "vitest run {args.args}",
-        "cwd": "tools/code-generator"
+        "cwd": "tools/conformance"
       }
     },
     "type-coverage": {},

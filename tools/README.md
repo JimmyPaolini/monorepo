@@ -4,15 +4,15 @@ This directory contains Nx plugins and generators for the monorepo.
 
 ## Available Generators
 
-### Code Generator (`code-generator`)
+### Conformance (`conformance`)
 
 **Purpose:** Generate React components with test files following monorepo conventions
 
 **Quick Start:**
 
 ```bash
-nx build code-generator
-nx generate code-generator:react-component --name=Button
+nx build conformance
+nx generate conformance:react-component --name=Button
 ```
 
 **Features:**
@@ -25,21 +25,21 @@ nx generate code-generator:react-component --name=Button
 
 **Documentation:**
 
-- [README.md](./code-generator/README.md) - Plugin overview and usage
+- [README.md](./conformance/README.md) - Plugin overview and usage
 
 **Example Usage:**
 
 ```bash
 # Basic component
-nx generate code-generator:react-component --name=Button
+nx generate conformance:react-component --name=Button
 
 # With custom directory
-nx generate code-generator:react-component \
+nx generate conformance:react-component \
   --name=FormInput \
   --directory=src/components/form
 
 # Without barrel export
-nx generate code-generator:react-component \
+nx generate conformance:react-component \
   --name=Modal \
   --export=direct
 ```
@@ -49,18 +49,18 @@ nx generate code-generator:react-component \
 To add more generators to this workspace:
 
 1. Create new generator directory: `tools/new-generator/`
-2. Follow the structure of `code-generator`
+2. Follow the structure of `conformance`
 3. Define schema, templates, and implementation
 4. Register in `generators.json`
 5. Build and test
 
-See [tools/code-generator/AGENTS.md](./code-generator/AGENTS.md) for detailed generator development patterns.
+See [tools/conformance/AGENTS.md](./conformance/AGENTS.md) for detailed generator development patterns.
 
 ## Project Structure
 
 ```text
 tools/
-├── code-generator/          # React component generator
+├── conformance/             # React component generator
 │   ├── src/
 │   │   └── generators/
 │   ├── package.json
@@ -74,10 +74,10 @@ tools/
 
 ```bash
 # Build specific generator
-nx build code-generator
+nx build conformance
 
 # Watch mode
-nx build code-generator --watch
+nx build conformance --watch
 ```
 
 ## Using in Projects
@@ -85,7 +85,7 @@ nx build code-generator --watch
 ### In lexico-components
 
 ```bash
-nx generate code-generator:react-component \
+nx generate conformance:react-component \
   --name=Button \
   --directory=packages/lexico-components/src/components
 ```
@@ -93,7 +93,7 @@ nx generate code-generator:react-component \
 ### In lexico App
 
 ```bash
-nx generate code-generator:react-component \
+nx generate conformance:react-component \
   --name=HomePage \
   --directory=applications/lexico/src/components
 ```
@@ -144,9 +144,9 @@ tools/my-generator/
 **Generator not found?**
 
 ```bash
-nx build code-generator
+nx build conformance
 nx reset
-nx generate code-generator:react-component --name=Test
+nx generate conformance:react-component --name=Test
 ```
 
 **Build failed?**
@@ -156,7 +156,7 @@ nx generate code-generator:react-component --name=Test
 pnpm install
 
 # Rebuild with verbose output
-nx build code-generator --verbose
+nx build conformance --verbose
 ```
 
 **Template syntax issues?**
@@ -183,4 +183,4 @@ When adding new generators:
 
 ---
 
-**Current Generators:** 1 (code-generator)
+**Current Generators:** 1 (conformance)
