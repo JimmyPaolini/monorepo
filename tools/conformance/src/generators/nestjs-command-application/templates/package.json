@@ -20,9 +20,9 @@
     "typescript": "^6.0.3",
     "vitest": "^4.1.7"
   },
-  "name": "{{nameKebab}}",
+  "name": "{{nameKebabCase}}",
   "scripts": {
-    "start": "node --import @swc-node/register/esm-register src/main.ts {{nameKebab}}",
+    "start": "node --import @swc-node/register/esm-register src/main.ts {{nameKebabCase}}",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:end-to-end": "vitest run end-to-end.test.ts",

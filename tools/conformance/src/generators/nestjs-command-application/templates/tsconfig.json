@@ -8,7 +8,7 @@
     "moduleResolution": "bundler",
     "noEmit": true,
     "paths": {
-      "@{{nameKebab}}/*": ["./*"],
+      "@{{nameKebabCase}}/*": ["./*"],
       "@monorepo/conformance/*": ["../../tools/conformance/*"]
     },
     "target": "esnext",

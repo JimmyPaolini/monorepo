@@ -2,12 +2,12 @@ import { Injectable } from "@nestjs/common";
 import { Command, CommandRunner } from "nest-commander";
 
 /**
- * CLI entry point for {{nameKebab}}.
+ * CLI entry point for {{nameKebabCase}}.
  */
 @Injectable()
 @Command({
-  name: "{{nameKebab}}",
-  description: "Run the {{nameKebab}} command-line application",
+  name: "{{nameKebabCase}}",
+  description: "Run the {{nameKebabCase}} command-line application",
 })
 export class {{namePascalCase}}Command extends CommandRunner {
   constructor() {

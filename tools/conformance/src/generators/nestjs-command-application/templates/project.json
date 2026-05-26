@@ -1,8 +1,8 @@
 {
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "name": "{{nameKebab}}",
+  "name": "{{nameKebabCase}}",
   "projectType": "application",
-  "sourceRoot": "applications/{{nameKebab}}",
+  "sourceRoot": "applications/{{nameKebabCase}}",
   "tags": [
     "framework:nest-commander",
     "framework:nestjs",
@@ -21,11 +21,11 @@
     "prettier": {},
     "spell-check": {},
     "start": {
-      "description": "Start the {{nameKebab}} application",
+      "description": "Start the {{nameKebabCase}} application",
       "executor": "nx:run-commands",
       "options": {
         "command": "pnpm start",
-        "cwd": "applications/{{nameKebab}}"
+        "cwd": "applications/{{nameKebabCase}}"
       }
     },
     "test": {
@@ -50,7 +50,7 @@
       "executor": "nx:run-commands",
       "options": {
         "command": "pnpm test",
-        "cwd": "applications/{{nameKebab}}"
+        "cwd": "applications/{{nameKebabCase}}"
       }
     },
     "type-coverage": {},

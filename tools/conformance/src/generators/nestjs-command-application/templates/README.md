@@ -5,11 +5,11 @@ NestJS command-line application scaffold generated with `conformance:nestjs-comm
 ## Start
 
 ```bash
-nx run {{nameKebab}}:start
+nx run {{nameKebabCase}}:start
 ```
 
 ## Test
 
 ```bash
-nx run {{nameKebab}}:test
+nx run {{nameKebabCase}}:test
 ```
