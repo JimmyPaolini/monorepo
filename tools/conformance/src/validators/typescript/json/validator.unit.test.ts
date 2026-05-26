@@ -38,7 +38,9 @@ describe("validateJsonConformance — structural checks", () => {
     });
     expect(result.errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining('Missing required key: "version"'),
+        expect.objectContaining({
+          message: expect.stringContaining('Missing required key: "version"'),
+        }),
       ]),
     );
   });
@@ -53,13 +55,23 @@ describe("validateJsonConformance — structural checks", () => {
       filename: "package.json",
     });
     expect(result.errors).toEqual(
-      expect.arrayContaining([expect.stringContaining('"name"')]),
+      expect.arrayContaining([
+        expect.objectContaining({ message: expect.stringContaining('"name"') }),
+      ]),
     );
     expect(result.errors).toEqual(
-      expect.arrayContaining([expect.stringContaining('"my-app"')]),
+      expect.arrayContaining([
+        expect.objectContaining({
+          message: expect.stringContaining('"my-app"'),
+        }),
+      ]),
     );
     expect(result.errors).toEqual(
-      expect.arrayContaining([expect.stringContaining('"other-app"')]),
+      expect.arrayContaining([
+        expect.objectContaining({
+          message: expect.stringContaining('"other-app"'),
+        }),
+      ]),
     );
   });
 
@@ -86,8 +98,12 @@ describe("validateJsonConformance — structural checks", () => {
     });
     expect(result.errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining('"my-service"'),
-        expect.stringContaining('"wrong-name"'),
+        expect.objectContaining({
+          message: expect.stringContaining('"my-service"'),
+        }),
+        expect.objectContaining({
+          message: expect.stringContaining('"wrong-name"'),
+        }),
       ]),
     );
   });
@@ -103,7 +119,11 @@ describe("validateJsonConformance — structural checks", () => {
     });
     expect(result.errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining('Missing required key: "scripts.build"'),
+        expect.objectContaining({
+          message: expect.stringContaining(
+            'Missing required key: "scripts.build"',
+          ),
+        }),
       ]),
     );
   });
@@ -174,7 +194,11 @@ describe("validateJsonConformance — JSONC comment checks", () => {
     });
     expect(result.errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining('Missing comment: "// project config"'),
+        expect.objectContaining({
+          message: expect.stringContaining(
+            'Missing comment: "// project config"',
+          ),
+        }),
       ]),
     );
   });
@@ -231,7 +255,11 @@ describe("validateJsonConformance — JSONC comment checks", () => {
       filename: "project.json",
     });
     expect(result.errors).toEqual(
-      expect.arrayContaining([expect.stringContaining("Missing comment")]),
+      expect.arrayContaining([
+        expect.objectContaining({
+          message: expect.stringContaining("Missing comment"),
+        }),
+      ]),
     );
   });
 
@@ -252,7 +280,11 @@ describe("validateJsonConformance — JSONC comment checks", () => {
     });
     expect(result.errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining('Missing comment: "// exact wording required"'),
+        expect.objectContaining({
+          message: expect.stringContaining(
+            'Missing comment: "// exact wording required"',
+          ),
+        }),
       ]),
     );
   });
@@ -278,7 +310,9 @@ describe("validateJsonConformance — JSONC comment checks", () => {
     });
     expect(result.errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining('Missing comment: "// second"'),
+        expect.objectContaining({
+          message: expect.stringContaining('Missing comment: "// second"'),
+        }),
       ]),
     );
   });
@@ -304,7 +338,7 @@ describe("validateComments", () => {
       instanceText: '{"a":1}',
     });
     expect(errors).toHaveLength(1);
-    expect(errors.at(0)).toContain('Missing comment: "// required"');
+    expect(errors.at(0)?.message).toContain('Missing comment: "// required"');
   });
 
   it("allows extra comments in instance", () => {

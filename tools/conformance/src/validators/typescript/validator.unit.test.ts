@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import {
-  collectConformanceErrors,
+  stringifyConformanceErrors,
   validateInstanceDirectory,
   validateInstanceFile,
   validateInstancesDirectory,
@@ -63,7 +63,7 @@ describe("caelundas service integration", () => {
         filename: `${camel}.service.ts`,
       });
       const structuralErrors = result.errors.filter(
-        (error) => !error.startsWith("Missing template comment:"),
+        (error) => !error.message.startsWith("Missing template comment:"),
       );
       expect(structuralErrors).toEqual([]);
     });
@@ -159,7 +159,11 @@ describe("validateInstancesDirectory", () => {
 
     const alphaResult = results.find((r) => r.directoryName === "alpha");
     expect(alphaResult?.results[0]?.errors).toEqual(
-      expect.arrayContaining([expect.stringContaining("Missing file:")]),
+      expect.arrayContaining([
+        expect.objectContaining({
+          message: expect.stringContaining("Missing file:"),
+        }),
+      ]),
     );
   });
 });
@@ -210,7 +214,11 @@ describe("validateInstanceFile", () => {
 
     expect(result.errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining('Missing ClassDeclaration "UserService"'),
+        expect.objectContaining({
+          message: expect.stringContaining(
+            'Missing ClassDeclaration "UserService"',
+          ),
+        }),
       ]),
     );
   });
@@ -226,7 +234,9 @@ describe("validateInstanceFile", () => {
       data: {},
     });
 
-    expect(result.errors).toEqual([`Missing file: ${instancePath}`]);
+    expect(result.errors).toEqual([
+      expect.objectContaining({ message: `Missing file: ${instancePath}` }),
+    ]);
   });
 });
 
@@ -327,14 +337,18 @@ describe("validateInstanceDirectory", () => {
     });
 
     expect(result.results[0]?.errors).toEqual(
-      expect.arrayContaining([expect.stringContaining("Missing file:")]),
+      expect.arrayContaining([
+        expect.objectContaining({
+          message: expect.stringContaining("Missing file:"),
+        }),
+      ]),
     );
   });
 });
 
 describe("collectConformanceErrors", () => {
   it("returns null for an empty results array", () => {
-    expect(collectConformanceErrors([])).toBeNull();
+    expect(stringifyConformanceErrors([])).toBeNull();
   });
 
   it("returns null when all files have no errors", () => {
@@ -342,64 +356,108 @@ describe("collectConformanceErrors", () => {
       {
         directoryName: "user",
         results: [
-          { filename: "user.service.ts", errors: [] },
-          { filename: "user.module.ts", errors: [] },
+          {
+            filename: "user.service.ts",
+            instanceFilePath: "/tmp/user/user.service.ts",
+            templateFilePath: "/tmp/tpl/user.service.ts",
+            errors: [],
+          },
+          {
+            filename: "user.module.ts",
+            instanceFilePath: "/tmp/user/user.module.ts",
+            templateFilePath: "/tmp/tpl/user.module.ts",
+            errors: [],
+          },
         ],
       },
     ];
-    expect(collectConformanceErrors(results)).toBeNull();
+    expect(stringifyConformanceErrors(results)).toBeNull();
   });
 
-  it("formats a failing file as directoryName/filename: error", () => {
+  it("formats output with directory section header and file block", () => {
     const results = [
       {
         directoryName: "user",
         results: [
           {
             filename: "user.service.ts",
-            errors: ['Missing ClassDeclaration "UserService"'],
+            instanceFilePath: "/tmp/user/user.service.ts",
+            templateFilePath: "/tmp/tpl/user.service.ts",
+            errors: [
+              {
+                errorType: "code" as const,
+                message: 'Missing ClassDeclaration "UserService"',
+                fix: "Add the class.",
+              },
+            ],
           },
         ],
       },
     ];
-    expect(collectConformanceErrors(results)).toBe(
-      'user/user.service.ts: Missing ClassDeclaration "UserService"',
-    );
+    const output = stringifyConformanceErrors(results);
+    expect(output).not.toBeNull();
+    expect(output).toContain("user");
+    expect(output).toContain("user.service.ts");
+    expect(output).toContain('Missing ClassDeclaration "UserService"');
   });
 
-  it("joins multiple errors from the same file with newlines", () => {
+  it("includes fix suggestion in output", () => {
     const results = [
       {
         directoryName: "user",
         results: [
           {
             filename: "user.service.ts",
-            errors: ["error one", "error two"],
+            instanceFilePath: "/tmp/user/user.service.ts",
+            templateFilePath: "/tmp/tpl/user.service.ts",
+            errors: [
+              {
+                errorType: "code" as const,
+                message: "Missing something",
+                fix: "Do the thing.",
+              },
+            ],
           },
         ],
       },
     ];
-    expect(collectConformanceErrors(results)).toBe(
-      "user/user.service.ts: error one\nuser/user.service.ts: error two",
-    );
+    const output = stringifyConformanceErrors(results);
+    expect(output).toContain("Do the thing.");
   });
 
-  it("joins errors from multiple directories and files with newlines", () => {
+  it("includes errors from multiple directories", () => {
     const results = [
       {
         directoryName: "user",
         results: [
-          { filename: "user.service.ts", errors: ["error A"] },
-          { filename: "user.module.ts", errors: ["error B"] },
+          {
+            filename: "user.service.ts",
+            instanceFilePath: "/tmp/user/user.service.ts",
+            templateFilePath: "/tmp/tpl/user.service.ts",
+            errors: [
+              { errorType: "code" as const, message: "error A", fix: "fix A" },
+            ],
+          },
         ],
       },
       {
         directoryName: "admin",
-        results: [{ filename: "admin.service.ts", errors: ["error C"] }],
+        results: [
+          {
+            filename: "admin.service.ts",
+            instanceFilePath: "/tmp/admin/admin.service.ts",
+            templateFilePath: "/tmp/tpl/admin.service.ts",
+            errors: [
+              { errorType: "code" as const, message: "error C", fix: "fix C" },
+            ],
+          },
+        ],
       },
     ];
-    expect(collectConformanceErrors(results)).toBe(
-      "user/user.service.ts: error A\nuser/user.module.ts: error B\nadmin/admin.service.ts: error C",
-    );
+    const output = stringifyConformanceErrors(results);
+    expect(output).toContain("user");
+    expect(output).toContain("admin");
+    expect(output).toContain("error A");
+    expect(output).toContain("error C");
   });
 });

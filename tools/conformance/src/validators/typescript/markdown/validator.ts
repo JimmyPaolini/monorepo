@@ -5,6 +5,7 @@ import remarkGfm from "remark-gfm";
 
 import { TODO_LINE_REGEX } from "../constants";
 
+import type { ConformanceError } from "../types";
 import type {
   Code,
   Heading,
@@ -167,66 +168,99 @@ function nodesMatch(template: MdastNode, instance: MdastNode): boolean {
 }
 
 /**
- * Builds a human-readable error message for a template node that could not be
+ * Builds a structured `ConformanceError` for a template node that could not be
  * found in the instance.
+ *
+ * When `instanceHint` is provided (the last instance node that was matched
+ * before this missing node), its end position is used as an "insert after"
+ * indicator for the instance file location.
  */
-function buildError(node: MdastNode): string {
+function buildError(
+  node: MdastNode,
+  instanceHint?: MdastNode,
+): ConformanceError {
+  const templateLine = node.position?.start.line;
+  const templateColumn = node.position?.start.column;
+
+  // Point to the line after the last matched instance node as an insertion hint.
+  const instanceLine =
+    instanceHint === undefined
+      ? undefined
+      : (instanceHint.position?.end.line ?? 1) + 1;
+  const instanceColumn = instanceLine === undefined ? undefined : 1;
+
+  function make(message: string): ConformanceError {
+    const base: ConformanceError = {
+      errorType: "code",
+      language: "markdown",
+      message,
+      fix: `Add the missing ${node.type} to the instance file. See the template for the expected content.`,
+    };
+    return {
+      ...base,
+      ...(instanceLine === undefined ? {} : { instanceLine }),
+      ...(instanceColumn === undefined ? {} : { instanceColumn }),
+      ...(templateLine === undefined ? {} : { templateLine }),
+      ...(templateColumn === undefined ? {} : { templateColumn }),
+    };
+  }
+
   switch (node.type) {
     case "heading": {
-      return `Missing heading (h${node.depth}): "${toString(node)}"`;
+      return make(`Expected heading (h${node.depth}): "${toString(node)}"`);
     }
     case "paragraph": {
-      return `Missing paragraph: "${toString(node)}"`;
+      return make(`Expected paragraph: "${toString(node)}"`);
     }
     case "code": {
       const lang = node.lang ?? "(none)";
-      return `Missing code block (${lang}): "${node.value}"`;
+      return make(`Expected code block (${lang}): "${node.value}"`);
     }
     case "blockquote": {
-      return `Missing blockquote: "${toString(node)}"`;
+      return make(`Expected blockquote: "${toString(node)}"`);
     }
     case "list": {
-      return `Missing ${node.ordered ? "ordered" : "unordered"} list`;
+      return make(`Expected ${node.ordered ? "ordered" : "unordered"} list`);
     }
     case "listItem": {
-      return `Missing list item: "${toString(node)}"`;
+      return make(`Expected list item: "${toString(node)}"`);
     }
     case "table": {
-      return `Missing table`;
+      return make(`Expected table`);
     }
     case "tableRow": {
-      return `Missing table row: "${toString(node)}"`;
+      return make(`Expected table row: "${toString(node)}"`);
     }
     case "tableCell": {
-      return `Missing table cell: "${toString(node)}"`;
+      return make(`Expected table cell: "${toString(node)}"`);
     }
     case "thematicBreak": {
-      return `Missing thematic break (---)`;
+      return make(`Expected thematic break (---)`);
     }
     case "link": {
-      return `Missing link to "${node.url}": "${toString(node)}"`;
+      return make(`Expected link to "${node.url}": "${toString(node)}"`);
     }
     case "image": {
       const img = node;
-      return `Missing image "${img.alt ?? ""}" at "${img.url}"`;
+      return make(`Expected image "${img.alt ?? ""}" at "${img.url}"`);
     }
     case "strong": {
-      return `Missing bold text: "${toString(node)}"`;
+      return make(`Expected bold text: "${toString(node)}"`);
     }
     case "emphasis": {
-      return `Missing italic text: "${toString(node)}"`;
+      return make(`Expected italic text: "${toString(node)}"`);
     }
     case "delete": {
-      return `Missing strikethrough text: "${toString(node)}"`;
+      return make(`Expected strikethrough text: "${toString(node)}"`);
     }
     case "inlineCode": {
-      return `Missing inline code: \`${node.value}\``;
+      return make(`Expected inline code: \`${node.value}\``);
     }
     case "html": {
-      return `Missing HTML block: "${node.value}"`;
+      return make(`Expected HTML block: "${node.value}"`);
     }
     case "text": {
-      return `Missing text: "${node.value}"`;
+      return make(`Expected text: "${node.value}"`);
     }
     case "yaml":
     case "math":
@@ -237,7 +271,7 @@ function buildError(node: MdastNode): string {
     case "inlineMath":
     case "definition":
     case "footnoteDefinition": {
-      return `Missing ${node.type}: "${toString(node)}"`;
+      return make(`Expected ${node.type}: "${toString(node)}"`);
     }
   }
 }
@@ -259,8 +293,12 @@ function buildError(node: MdastNode): string {
 function validateMdastChildren(
   templateChildren: readonly MdastNode[],
   instanceChildren: readonly MdastNode[],
-): string[] {
-  const errors: string[] = [];
+): ConformanceError[] {
+  const errors: ConformanceError[] = [];
+
+  // Track the last instance node that was successfully matched so that missing
+  // nodes can report a meaningful "insert after" instance location.
+  let lastMatchedInstanceNode: MdastNode | undefined;
 
   for (const templateChild of templateChildren) {
     // Plain text nodes are captured by the parent's textMatches — skip them.
@@ -271,19 +309,30 @@ function validateMdastChildren(
     );
 
     if (candidates.length === 0) {
-      errors.push(buildError(templateChild));
+      errors.push(buildError(templateChild, lastMatchedInstanceNode));
       continue;
     }
 
     // For leaf node types, a match is sufficient — no child recursion needed.
-    if (!CONTAINER_TYPES.has(templateChild.type)) continue;
+    if (!CONTAINER_TYPES.has(templateChild.type)) {
+      lastMatchedInstanceNode = candidates.at(-1);
+      continue;
+    }
 
     const templateGrandchildren = getNodeChildren(templateChild);
-    if (templateGrandchildren.length === 0) continue;
+    if (templateGrandchildren.length === 0) {
+      lastMatchedInstanceNode = candidates.at(-1);
+      continue;
+    }
 
     // Pick the candidate whose children produce the fewest errors.
-    let minErrors: string[] = [];
+    let minErrors: ConformanceError[] = [];
     let minErrorCount = Infinity;
+    const firstCandidate = candidates.at(0);
+    if (!firstCandidate) {
+      return [];
+    }
+    let bestCandidate: MdastNode = firstCandidate;
 
     for (const candidate of candidates) {
       const candidateChildren = getNodeChildren(candidate);
@@ -294,9 +343,11 @@ function validateMdastChildren(
       if (childErrors.length < minErrorCount) {
         minErrorCount = childErrors.length;
         minErrors = childErrors;
+        bestCandidate = candidate;
       }
     }
 
+    lastMatchedInstanceNode = bestCandidate;
     errors.push(...minErrors);
   }
 
@@ -328,7 +379,7 @@ export function validateMarkdownConformance(args: {
   filename: string;
   instance: string;
   template: string;
-}): { errors: string[] } {
+}): { errors: ConformanceError[] } {
   const { instance, template, data } = args;
 
   const renderedTemplate = mustache.render(template, data);

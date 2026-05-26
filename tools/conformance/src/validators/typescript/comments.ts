@@ -2,6 +2,8 @@ import { getLeadingCommentRanges, type Node, SyntaxKind } from "typescript";
 
 import { TODO_LINE_REGEX } from "./constants";
 
+import type { ConformanceError, ConformanceErrorLanguage } from "./types";
+
 /**
  * Retrieves the single-line comments in the trivia of a node at a given position.
  */
@@ -13,6 +15,32 @@ export function getComments(node: Node, side: "pos" | "end"): string[] {
     .filter((range) => range.kind === SyntaxKind.SingleLineCommentTrivia)
     .map((range) => text.slice(range.pos, range.end).trim());
   return comments;
+}
+
+/**
+ * Retrieves single-line comments at `side` together with their 1-based line
+ * and column positions within the source file.
+ */
+function getCommentsWithPositions(
+  node: Node,
+  side: "pos" | "end",
+): { text: string; line: number; column: number }[] {
+  const sourceFile = node.getSourceFile();
+  const text = sourceFile.text;
+  const position = node[side];
+  const ranges = getLeadingCommentRanges(text, position) ?? [];
+  return ranges
+    .filter((range) => range.kind === SyntaxKind.SingleLineCommentTrivia)
+    .map((range) => {
+      const { line, character } = sourceFile.getLineAndCharacterOfPosition(
+        range.pos,
+      );
+      return {
+        text: text.slice(range.pos, range.end).trim(),
+        line: line + 1,
+        column: character + 1,
+      };
+    });
 }
 
 /**
@@ -31,36 +59,48 @@ export function getComments(node: Node, side: "pos" | "end"): string[] {
  *
  * @param templateNode - The AST node from the rendered template.
  * @param instanceNode - The corresponding AST node from the generated file.
+ * @param language - The language of the file being validated.
  * @param side - `"pos"` to inspect leading trivia (start of node), `"end"` for trailing trivia.
  */
 export function validateComments(args: {
   instanceNode: Node;
+  language: ConformanceErrorLanguage;
   side: "pos" | "end";
   templateNode: Node;
-}): string[] {
-  const { templateNode, instanceNode, side } = args;
-  const errors: string[] = [];
+}): ConformanceError[] {
+  const { templateNode, instanceNode, language, side } = args;
+  const errors: ConformanceError[] = [];
 
-  const templateComments = getComments(templateNode, side);
+  const templateComments = getCommentsWithPositions(templateNode, side);
   const instanceComments = getComments(instanceNode, side);
+
+  const instanceFile = instanceNode.getSourceFile();
+  const instancePosition = instanceNode[side];
+  const { line: instanceLine, character: instanceCharacter } =
+    instanceFile.getLineAndCharacterOfPosition(instancePosition);
 
   let startPosition = 0;
   for (const templateComment of templateComments) {
     const endPosition = instanceComments
       .slice(startPosition)
       .findIndex((instanceComment: string): boolean => {
-        return TODO_LINE_REGEX.test(templateComment)
+        return TODO_LINE_REGEX.test(templateComment.text)
           ? TODO_LINE_REGEX.test(instanceComment)
-          : instanceComment === templateComment;
+          : instanceComment === templateComment.text;
       });
 
     if (endPosition === -1) {
-      const instanceFile = instanceNode.getSourceFile();
-      const instancePosition = instanceNode[side];
-      const { line, character } =
-        instanceFile.getLineAndCharacterOfPosition(instancePosition);
-      const location = `(line ${line + 1}:${character + 1})`;
-      errors.push(`${location} Missing comment: "${templateComment}"`);
+      errors.push({
+        errorType: "comment",
+        language,
+        message: `Missing comment: "${templateComment.text}"`,
+        instanceLine: instanceLine + 1,
+        instanceColumn: instanceCharacter + 1,
+        templateLine: templateComment.line,
+        templateColumn: templateComment.column,
+        expected: templateComment.text,
+        fix: `Add the comment \`${templateComment.text}\` to the instance file at or near line ${instanceLine + 1}.`,
+      });
     } else {
       startPosition += endPosition + 1;
     }

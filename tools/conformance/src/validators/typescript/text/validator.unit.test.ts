@@ -39,7 +39,9 @@ describe("validateTextConformance", () => {
       instance,
       template,
     });
-    expect(result.errors).toEqual(["Missing line: ALSO_REQUIRED=123"]);
+    expect(result.errors).toEqual([
+      expect.objectContaining({ message: "Missing line: ALSO_REQUIRED=123" }),
+    ]);
   });
 
   it("renders mustache variables before comparing", () => {
@@ -63,7 +65,9 @@ describe("validateTextConformance", () => {
       instance,
       template,
     });
-    expect(result.errors).toEqual(["Missing line: APP_NAME=my-app"]);
+    expect(result.errors).toEqual([
+      expect.objectContaining({ message: "Missing line: APP_NAME=my-app" }),
+    ]);
   });
 
   it("treats blank lines in the template as required", () => {
@@ -75,7 +79,9 @@ describe("validateTextConformance", () => {
       instance,
       template,
     });
-    expect(result.errors).toEqual(["Missing line: "]);
+    expect(result.errors).toEqual([
+      expect.objectContaining({ message: "Missing line: " }),
+    ]);
   });
 
   it("returns no errors when instance preserves required blank lines", () => {
@@ -99,7 +105,9 @@ describe("validateTextConformance", () => {
       instance,
       template,
     });
-    expect(result.errors).toEqual(["Missing line: KEY=value"]);
+    expect(result.errors).toEqual([
+      expect.objectContaining({ message: "Missing line: KEY=value" }),
+    ]);
   });
 
   it("requires duplicate template lines to each appear in the instance", () => {
@@ -111,7 +119,9 @@ describe("validateTextConformance", () => {
       instance,
       template,
     });
-    expect(result.errors).toEqual(["Missing line: REPEATED=line"]);
+    expect(result.errors).toEqual([
+      expect.objectContaining({ message: "Missing line: REPEATED=line" }),
+    ]);
   });
 
   it("returns no errors when instance matches the required duplicate count", () => {

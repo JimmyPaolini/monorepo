@@ -56,7 +56,7 @@ function validate(args: {
     filename: args.filename ?? "README.md",
     instance: args.instance,
     template: args.template,
-  }).errors;
+  }).errors.map((e) => e.message);
 }
 
 // ---------------------------------------------------------------------------
@@ -104,7 +104,7 @@ describe("validateMarkdownConformance — headings", () => {
     });
     expect(errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining('Missing heading (h1): "StellarCli"'),
+        expect.stringContaining('Expected heading (h1): "StellarCli"'),
       ]),
     );
   });
@@ -143,7 +143,7 @@ describe("validateMarkdownConformance — code blocks", () => {
     });
     expect(errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining("Missing code block (bash)"),
+        expect.stringContaining("Expected code block (bash)"),
       ]),
     );
   });
@@ -157,7 +157,7 @@ describe("validateMarkdownConformance — code blocks", () => {
     });
     expect(errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining("Missing code block (bash)"),
+        expect.stringContaining("Expected code block (bash)"),
       ]),
     );
   });
@@ -196,7 +196,7 @@ describe("validateMarkdownConformance — paragraphs", () => {
       data: README_DATA,
     });
     expect(errors).toEqual(
-      expect.arrayContaining([expect.stringContaining("Missing paragraph")]),
+      expect.arrayContaining([expect.stringContaining("Expected paragraph")]),
     );
   });
 });
@@ -223,7 +223,7 @@ describe("validateMarkdownConformance — lists", () => {
     const errors = validate({ instance, template });
     expect(errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining('Missing list item: "item two"'),
+        expect.stringContaining('Expected list item: "item two"'),
       ]),
     );
   });
@@ -233,7 +233,9 @@ describe("validateMarkdownConformance — lists", () => {
     const instance = `- first\n- second\n`;
     const errors = validate({ instance, template });
     expect(errors).toEqual(
-      expect.arrayContaining([expect.stringContaining("Missing ordered list")]),
+      expect.arrayContaining([
+        expect.stringContaining("Expected ordered list"),
+      ]),
     );
   });
 });
@@ -253,7 +255,7 @@ describe("validateMarkdownConformance — blockquotes", () => {
     const instance = `Just a paragraph.\n`;
     const errors = validate({ instance, template });
     expect(errors).toEqual(
-      expect.arrayContaining([expect.stringContaining("Missing blockquote")]),
+      expect.arrayContaining([expect.stringContaining("Expected blockquote")]),
     );
   });
 });
@@ -273,7 +275,7 @@ describe("validateMarkdownConformance — tables", () => {
     const instance = `No table here.\n`;
     const errors = validate({ instance, template });
     expect(errors).toEqual(
-      expect.arrayContaining([expect.stringContaining("Missing table")]),
+      expect.arrayContaining([expect.stringContaining("Expected table")]),
     );
   });
 
@@ -283,7 +285,7 @@ describe("validateMarkdownConformance — tables", () => {
     const errors = validate({ instance, template });
     expect(errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining('Missing table cell: "22"'),
+        expect.stringContaining('Expected table cell: "22"'),
       ]),
     );
   });
@@ -305,7 +307,7 @@ describe("validateMarkdownConformance — thematic breaks", () => {
     const errors = validate({ instance, template });
     expect(errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining("Missing thematic break (---)"),
+        expect.stringContaining("Expected thematic break (---)"),
       ]),
     );
   });
@@ -329,7 +331,7 @@ describe("validateMarkdownConformance — links", () => {
     const errors = validate({ instance, template });
     expect(errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining('Missing link to "https://example.com"'),
+        expect.stringContaining('Expected link to "https://example.com"'),
       ]),
     );
   });
@@ -340,7 +342,7 @@ describe("validateMarkdownConformance — links", () => {
     const errors = validate({ instance, template });
     expect(errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining('Missing link to "https://example.com"'),
+        expect.stringContaining('Expected link to "https://example.com"'),
       ]),
     );
   });
@@ -363,7 +365,9 @@ describe("validateMarkdownConformance — images", () => {
     const instance = `Logo\n`;
     const errors = validate({ instance, template });
     expect(errors).toEqual(
-      expect.arrayContaining([expect.stringContaining('Missing image "Logo"')]),
+      expect.arrayContaining([
+        expect.stringContaining('Expected image "Logo"'),
+      ]),
     );
   });
 });
@@ -384,7 +388,7 @@ describe("validateMarkdownConformance — inline formatting", () => {
     const errors = validate({ instance, template });
     expect(errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining('Missing bold text: "important"'),
+        expect.stringContaining('Expected bold text: "important"'),
       ]),
     );
   });
@@ -400,7 +404,7 @@ describe("validateMarkdownConformance — inline formatting", () => {
     const errors = validate({ instance, template });
     expect(errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining('Missing italic text: "emphasized"'),
+        expect.stringContaining('Expected italic text: "emphasized"'),
       ]),
     );
   });
@@ -416,7 +420,7 @@ describe("validateMarkdownConformance — inline formatting", () => {
     const errors = validate({ instance, template });
     expect(errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining("Missing inline code: `nx build`"),
+        expect.stringContaining("Expected inline code: `nx build`"),
       ]),
     );
   });

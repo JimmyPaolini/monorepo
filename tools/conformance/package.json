@@ -4,7 +4,6 @@
     "@nx/devkit": "^22.7.3",
     "@types/mdast": "4.0.4",
     "jsonc-parser": "^3.3.1",
-    "just-diff": "^6.0.2",
     "lodash": "^4.18.1",
     "mdast-util-to-string": "^4.0.0",
     "mustache": "^4.2.0",

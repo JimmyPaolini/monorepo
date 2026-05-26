@@ -1,5 +1,7 @@
 import mustache from "mustache";
 
+import type { ConformanceError } from "../types";
+
 /**
  * Validates that a generated text file is a superset of its Mustache template
  * by checking that every line in the rendered template is present in the
@@ -20,7 +22,7 @@ export function validateTextConformance(args: {
   instance: string;
   template: string;
 }): {
-  errors: string[];
+  errors: ConformanceError[];
 } {
   const { instance, template, data } = args;
 
@@ -31,11 +33,19 @@ export function validateTextConformance(args: {
     instanceLineCounts.set(line, (instanceLineCounts.get(line) ?? 0) + 1);
   }
 
-  const errors: string[] = [];
-  for (const line of renderedTemplate.split("\n")) {
+  const errors: ConformanceError[] = [];
+  const templateLines = renderedTemplate.split("\n");
+  for (const [i, line] of templateLines.entries()) {
     const count = instanceLineCounts.get(line) ?? 0;
     if (count === 0) {
-      errors.push(`Missing line: ${line}`);
+      errors.push({
+        errorType: "code",
+        language: "text",
+        message: `Missing line: ${line}`,
+        templateLine: i + 1,
+        expected: line,
+        fix: `Add the line \`${line}\` to the instance file.`,
+      });
     } else {
       instanceLineCounts.set(line, count - 1);
     }

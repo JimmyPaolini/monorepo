@@ -1,6 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 
+import { workspaceRoot } from "@nx/devkit";
+
 import { converterByStringCase } from "../../constants";
 import { StringCase } from "../../types";
 
@@ -9,7 +11,10 @@ import { validateMarkdownConformance } from "./markdown/validator";
 import { validateTextConformance } from "./text/validator";
 import { validateTypescriptConformance } from "./validator";
 
-import type { InstanceDirectoryValidationResult } from "./types";
+import type {
+  ConformanceError,
+  InstanceDirectoryValidationResult,
+} from "./types";
 
 const TS_EXTENSIONS = new Set([".ts", ".tsx", ".js", ".jsx", ".mjs", ".cjs"]);
 
@@ -17,16 +22,18 @@ const TS_EXTENSIONS = new Set([".ts", ".tsx", ".js", ".jsx", ".mjs", ".cjs"]);
  * File-system variant of {@link validateTypescriptConformance} that reads both the
  * generated instance file and the Mustache template from disk before validating.
  *
- * If either path does not exist (`ENOENT`), returns \{ errors: ["Missing file:
- * <path>"] \} rather than throwing, so callers can treat a missing file as a
- * conformance failure rather than a crash.
+ * If either path does not exist (`ENOENT`), returns a structured error with
+ * `errorType: 'file'` rather than throwing, so callers can treat a missing file
+ * as a conformance failure rather than a crash.
  */
 export function validateInstanceFile(args: {
   instanceFilePath: string;
   templateFilePath: string;
   data: Record<string, unknown>;
 }): {
-  errors: string[];
+  errors: ConformanceError[];
+  instanceFilePath: string;
+  templateFilePath: string;
 } {
   const { instanceFilePath, templateFilePath, data } = args;
   try {
@@ -35,29 +42,51 @@ export function validateInstanceFile(args: {
     const filename = path.basename(instanceFilePath);
     const extension = filename.slice(filename.lastIndexOf("."));
 
+    let errors: ConformanceError[];
     if (extension === ".json") {
-      return validateJsonConformance({ instance, template, data, filename });
-    }
-    if (extension === ".md") {
-      return validateMarkdownConformance({
+      ({ errors } = validateJsonConformance({
         instance,
         template,
         data,
         filename,
-      });
-    }
-    if (TS_EXTENSIONS.has(extension)) {
-      return validateTypescriptConformance({
+      }));
+    } else if (extension === ".md") {
+      ({ errors } = validateMarkdownConformance({
         instance,
         template,
         data,
         filename,
-      });
+      }));
+    } else if (TS_EXTENSIONS.has(extension)) {
+      ({ errors } = validateTypescriptConformance({
+        instance,
+        template,
+        data,
+        filename,
+      }));
+    } else {
+      ({ errors } = validateTextConformance({
+        instance,
+        template,
+        data,
+        filename,
+      }));
     }
-    return validateTextConformance({ instance, template, data, filename });
+
+    return { errors, instanceFilePath, templateFilePath };
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === "ENOENT") {
-      return { errors: [`Missing file: ${instanceFilePath}`] };
+      return {
+        errors: [
+          {
+            errorType: "file",
+            message: `Missing file: ${instanceFilePath}`,
+            fix: `Create the file using the generator or manually based on the template at ${templateFilePath}`,
+          },
+        ],
+        instanceFilePath,
+        templateFilePath,
+      };
     }
     throw error;
   }
@@ -150,26 +179,84 @@ export function validateInstancesDirectory(args: {
 }
 
 /**
- * Flattens the nested results from {@link validateInstancesDirectory} into a
- * single newline-joined error string, or `null` when all files pass.
+ * Formats the nested results from {@link validateInstancesDirectory} into a
+ * single rich multi-section error string, or `null` when all files pass.
  *
- * Each failing file contributes one line per error in the form
- * `"<instanceName>/<file>: <error>"`, making the output suitable for a Jest
- * `expect(errors).toBeNull()` assertion message or a CI log.
+ * Errors are grouped by directory and then by file. Each error includes the
+ * full paths to both the instance and template files, the error location in
+ * each file (line/column or JSON path), the expected value, and a suggested
+ * fix — making the output suitable for a coding agent to read and act on.
  */
-export function collectConformanceErrors(
+export function stringifyConformanceErrors(
   results: InstanceDirectoryValidationResult[],
 ): string | null {
-  const errors = results.flatMap((result) => {
-    const { directoryName, results: fileResults } = result;
-    return fileResults.flatMap((fileResult) => {
-      const { filename, errors: fileErrors } = fileResult;
-      return fileErrors.length === 0
-        ? []
-        : fileErrors.map(
-            (fileError) => `${directoryName}/${filename}: ${fileError}`,
-          );
-    });
-  });
-  return errors.length === 0 ? null : errors.join("\n");
+  const directoriesWithErrors = results.filter((result) =>
+    result.results.some((fileResult) => fileResult.errors.length > 0),
+  );
+
+  if (directoriesWithErrors.length === 0) return null;
+
+  const lines: string[] = [];
+
+  const dirCount = directoriesWithErrors.length;
+  lines.push(
+    `Conformance validation failed — ${String(dirCount)} director${dirCount === 1 ? "y" : "ies"} with errors.`,
+  );
+
+  directoriesWithErrors.forEach(
+    ({ directoryName, results: fileResults }, dirIndex) => {
+      const failingFiles = fileResults.filter((r) => r.errors.length > 0);
+
+      lines.push("", `${String(dirIndex + 1)}. directory: ${directoryName}`);
+
+      failingFiles.forEach((fileResult, fileIndex) => {
+        lines.push(
+          "",
+          `  ${String(fileIndex + 1)}. file: ${fileResult.filename}`,
+          `     Instance: ${path.relative(workspaceRoot, fileResult.instanceFilePath)}`,
+          `     Template: ${path.relative(workspaceRoot, fileResult.templateFilePath)}`,
+        );
+
+        fileResult.errors.forEach((err, i) => {
+          lines.push("", `     ${String(i + 1)}. ${err.message}`);
+
+          // Instance location
+          if (err.instanceLine !== undefined) {
+            const col =
+              err.instanceColumn === undefined
+                ? ""
+                : `, Column ${String(err.instanceColumn)}`;
+            lines.push(
+              `        Instance: Line ${String(err.instanceLine)}${col}`,
+            );
+          } else if (err.instancePath !== undefined) {
+            lines.push(`        Instance: JSON path "${err.instancePath}"`);
+          }
+
+          // Template location
+          if (err.templateLine !== undefined) {
+            const col =
+              err.templateColumn === undefined
+                ? ""
+                : `, Column ${String(err.templateColumn)}`;
+            lines.push(
+              `        Template: Line ${String(err.templateLine)}${col}`,
+            );
+          } else if (err.templatePath !== undefined) {
+            lines.push(`        Template: JSON path "${err.templatePath}"`);
+          }
+
+          if (err.expected !== undefined) {
+            lines.push(`        Expected: \`${err.expected}\``);
+          }
+          if (err.actual !== undefined) {
+            lines.push(`        Actual  : \`${err.actual}\``);
+          }
+          lines.push(`        Fix     : ${err.fix}`);
+        });
+      });
+    },
+  );
+
+  return lines.join("\n");
 }

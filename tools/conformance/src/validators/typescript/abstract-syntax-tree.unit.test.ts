@@ -111,7 +111,9 @@ describe("validateConformanceAST", () => {
     expect(result.errors.length === 0).toBe(false);
     expect(result.errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining('Missing Decorator "Injectable"'),
+        expect.objectContaining({
+          message: expect.stringContaining('Missing Decorator "Injectable"'),
+        }),
       ]),
     );
   });
@@ -129,7 +131,11 @@ describe("validateConformanceAST", () => {
     expect(result.errors.length === 0).toBe(false);
     expect(result.errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining('Missing ClassDeclaration "UserService"'),
+        expect.objectContaining({
+          message: expect.stringContaining(
+            'Missing ClassDeclaration "UserService"',
+          ),
+        }),
       ]),
     );
   });
@@ -147,7 +153,11 @@ describe("validateConformanceAST", () => {
     expect(result.errors.length === 0).toBe(false);
     expect(result.errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining('Missing comment: "// 🔑 Public Fields"'),
+        expect.objectContaining({
+          message: expect.stringContaining(
+            'Missing comment: "// 🔑 Public Fields"',
+          ),
+        }),
       ]),
     );
   });
@@ -168,7 +178,11 @@ describe("validateConformanceAST", () => {
     expect(result.errors.length === 0).toBe(false);
     expect(result.errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining('Missing ImportDeclaration "@nestjs/common"'),
+        expect.objectContaining({
+          message: expect.stringContaining(
+            'Missing ImportDeclaration "@nestjs/common"',
+          ),
+        }),
       ]),
     );
   });
@@ -186,7 +200,11 @@ describe("validateConformanceAST", () => {
     expect(result.errors.length === 0).toBe(false);
     expect(result.errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining('Missing PropertyAssignment "controllers"'),
+        expect.objectContaining({
+          message: expect.stringContaining(
+            'Missing PropertyAssignment "controllers"',
+          ),
+        }),
       ]),
     );
   });
@@ -208,7 +226,7 @@ describe("validateConformanceAST", () => {
       filename: "ephemeris.service.ts",
     });
     const structuralErrors = result.errors.filter(
-      (e) => !e.startsWith("Missing template comment:"),
+      (e) => !e.message.startsWith("Missing template comment:"),
     );
     expect(structuralErrors).toEqual([]);
   });
@@ -246,7 +264,11 @@ describe("validateConformanceAST", () => {
     });
     expect(result.errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining('Missing comment: "// 🔑 Public Fields"'),
+        expect.objectContaining({
+          message: expect.stringContaining(
+            'Missing comment: "// 🔑 Public Fields"',
+          ),
+        }),
       ]),
     );
   });
@@ -303,7 +325,11 @@ describe("validateConformanceAST", () => {
     });
     expect(result.errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining('Missing PropertyAssignment "providers"'),
+        expect.objectContaining({
+          message: expect.stringContaining(
+            'Missing PropertyAssignment "providers"',
+          ),
+        }),
       ]),
     );
   });
@@ -365,7 +391,9 @@ describe("validateConformanceAST — multi-candidate keyless nodes", () => {
     });
     expect(result.errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining('Missing Identifier "requiredCall"'),
+        expect.objectContaining({
+          message: expect.stringContaining('Missing Identifier "requiredCall"'),
+        }),
       ]),
     );
   });
@@ -405,7 +433,9 @@ describe("validateConformanceAST — caelundas module error detection", () => {
     });
     expect(result.errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining('Missing Decorator "Injectable"'),
+        expect.objectContaining({
+          message: expect.stringContaining('Missing Decorator "Injectable"'),
+        }),
       ]),
     );
   });
@@ -425,7 +455,11 @@ describe("validateConformanceAST — caelundas module error detection", () => {
     });
     expect(result.errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining('Missing comment: "// 🌎 Public Methods"'),
+        expect.objectContaining({
+          message: expect.stringContaining(
+            'Missing comment: "// 🌎 Public Methods"',
+          ),
+        }),
       ]),
     );
   });
@@ -445,7 +479,11 @@ describe("validateConformanceAST — caelundas module error detection", () => {
     });
     expect(result.errors).toEqual(
       expect.arrayContaining([
-        expect.stringContaining('Missing ClassDeclaration "DatetimeService"'),
+        expect.objectContaining({
+          message: expect.stringContaining(
+            'Missing ClassDeclaration "DatetimeService"',
+          ),
+        }),
       ]),
     );
   });
@@ -464,7 +502,11 @@ describe("validateConformanceAST — caelundas module error detection", () => {
       filename: "math.service.ts",
     });
     expect(result.errors).toEqual(
-      expect.arrayContaining([expect.stringContaining("Missing Constructor")]),
+      expect.arrayContaining([
+        expect.objectContaining({
+          message: expect.stringContaining("Missing Constructor"),
+        }),
+      ]),
     );
   });
 });

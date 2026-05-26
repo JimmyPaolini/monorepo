@@ -1,3 +1,10 @@
-set -e
+set -eo pipefail
 
-nx run monorepo:lint-staged
+NOISE_PATTERNS=(
+  '\(node:[0-9]+\) Warning: The .NO_COLOR'
+  '\(Use .node --trace-warnings'
+  'Your AI agent configuration is outdated'
+)
+NOISE_FILTER=$(IFS='|'; echo "${NOISE_PATTERNS[*]}")
+
+nx run monorepo:lint-staged 2>&1 | grep -vE "$NOISE_FILTER" | sed -E $'s/\033\[[0-9;]*[mK]//g' | tee last-lint-staged-errors.txt

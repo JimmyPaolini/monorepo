@@ -78,6 +78,7 @@ describe("validateComments", () => {
       validateComments({
         templateNode: firstStatement("const x = 1;\n"),
         instanceNode: firstStatement("const x = 1;\n"),
+        language: "typescript",
         side: "pos",
       }),
     ).toEqual([]);
@@ -88,6 +89,7 @@ describe("validateComments", () => {
       validateComments({
         templateNode: firstStatement("// section\nconst x = 1;\n"),
         instanceNode: firstStatement("// section\nconst x = 1;\n"),
+        language: "typescript",
         side: "pos",
       }),
     ).toEqual([]);
@@ -97,10 +99,11 @@ describe("validateComments", () => {
     const errors = validateComments({
       templateNode: firstStatement("// section\nconst x = 1;\n"),
       instanceNode: firstStatement("const x = 1;\n"),
+      language: "typescript",
       side: "pos",
     });
     expect(errors).toHaveLength(1);
-    expect(errors.at(0)).toContain('Missing comment: "// section"');
+    expect(errors.at(0)?.message).toContain('Missing comment: "// section"');
   });
 
   it("returns no errors when instance has extra comments around template comments", () => {
@@ -108,6 +111,7 @@ describe("validateComments", () => {
       validateComments({
         templateNode: firstStatement("// required\nconst x = 1;\n"),
         instanceNode: firstStatement("// extra\n// required\nconst x = 1;\n"),
+        language: "typescript",
         side: "pos",
       }),
     ).toEqual([]);
@@ -117,10 +121,11 @@ describe("validateComments", () => {
     const errors = validateComments({
       templateNode: firstStatement("// first\n// second\nconst x = 1;\n"),
       instanceNode: firstStatement("// second\n// first\nconst x = 1;\n"),
+      language: "typescript",
       side: "pos",
     });
     expect(errors).toHaveLength(1);
-    expect(errors.at(0)).toContain('Missing comment: "// second"');
+    expect(errors.at(0)?.message).toContain('Missing comment: "// second"');
   });
 
   it("matches any TODO comment when template comment contains TODO", () => {
@@ -130,6 +135,7 @@ describe("validateComments", () => {
         instanceNode: firstStatement(
           "// TODO: completely different wording\nconst x = 1;\n",
         ),
+        language: "typescript",
         side: "pos",
       }),
     ).toEqual([]);
@@ -139,29 +145,36 @@ describe("validateComments", () => {
     const errors = validateComments({
       templateNode: firstStatement("// exact comment\nconst x = 1;\n"),
       instanceNode: firstStatement("// different comment\nconst x = 1;\n"),
+      language: "typescript",
       side: "pos",
     });
     expect(errors).toHaveLength(1);
-    expect(errors.at(0)).toContain('Missing comment: "// exact comment"');
+    expect(errors.at(0)?.message).toContain(
+      'Missing comment: "// exact comment"',
+    );
   });
 
-  it("includes source location in error message", () => {
+  it("includes source location in error object", () => {
     const errors = validateComments({
       templateNode: firstStatement("// missing\nconst x = 1;\n"),
       instanceNode: firstStatement("const x = 1;\n"),
+      language: "typescript",
       side: "pos",
     });
-    expect(errors.at(0)).toMatch(/\(line \d+:\d+\)/);
+    const error = errors.at(0);
+    expect(error?.instanceLine).toBeTypeOf("number");
+    expect(error?.templateLine).toBeTypeOf("number");
   });
 
   it("detects missing comment on new line after node when side is end", () => {
     const errors = validateComments({
       templateNode: firstStatement("const x = 1;\n// end note\nconst y = 2;\n"),
       instanceNode: firstStatement("const x = 1;\nconst y = 2;\n"),
+      language: "typescript",
       side: "end",
     });
     expect(errors).toHaveLength(1);
-    expect(errors.at(0)).toContain('Missing comment: "// end note"');
+    expect(errors.at(0)?.message).toContain('Missing comment: "// end note"');
   });
 
   it("returns no errors when side-end instance has the matching new-line comment", () => {
@@ -173,6 +186,7 @@ describe("validateComments", () => {
         instanceNode: firstStatement(
           "const x = 1;\n// end note\nconst y = 2;\n",
         ),
+        language: "typescript",
         side: "end",
       }),
     ).toEqual([]);

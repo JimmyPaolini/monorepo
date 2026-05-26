@@ -102,7 +102,7 @@ const scopes = [
   {
     name: "applications",
     description:
-      "Changes spanning multiple apps (caelundas, lexico, JimmyPaolini)",
+      "Changes spanning multiple applications in applications/ (e.g. lexico, caelundas, etc.)",
   },
   {
     name: "caelundas",
@@ -164,7 +164,7 @@ const scopes = [
   },
   {
     name: "packages",
-    description: "Changes spanning multiple shared packages",
+    description: "Changes spanning multiple shared packages in packages/",
   },
   {
     name: "release",
@@ -183,7 +183,7 @@ const scopes = [
   },
   {
     name: "tools",
-    description: "Nx custom generators and developer tooling in tools/",
+    description: "Changes spanning multiple tool projects in tools/",
   },
 ];
 

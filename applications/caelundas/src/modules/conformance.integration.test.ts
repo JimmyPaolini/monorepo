@@ -5,7 +5,7 @@ import {
   TEMPLATES_DIRECTORY_PATH,
 } from "@monorepo/conformance/src/generators/nestjs-service-module/generator";
 import {
-  collectConformanceErrors,
+  stringifyConformanceErrors,
   validateInstancesDirectory,
 } from "@monorepo/conformance/src/validators/typescript/files";
 import { describe, expect, it } from "vitest";
@@ -18,7 +18,7 @@ describe(`"nestjs-service-module" generator template conformance`, () => {
     });
     expect(results.length).toBeGreaterThan(0);
 
-    const errors = collectConformanceErrors(results);
+    const errors = stringifyConformanceErrors(results);
     expect(errors).toBeNull();
   });
 });

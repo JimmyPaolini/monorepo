@@ -3,6 +3,8 @@ import { createSourceFile, ScriptKind, ScriptTarget } from "typescript";
 
 import { validateDepthFirstSearch } from "./abstract-syntax-tree";
 
+import type { ConformanceError, ConformanceErrorLanguage } from "./types";
+
 function resolveScriptKind(filename: string): ScriptKind {
   const extension = filename.slice(filename.lastIndexOf("."));
   switch (extension) {
@@ -26,6 +28,25 @@ function resolveScriptKind(filename: string): ScriptKind {
     }
     default: {
       return ScriptKind.TS;
+    }
+  }
+}
+
+function resolveLanguage(filename: string): ConformanceErrorLanguage {
+  const extension = filename.slice(filename.lastIndexOf("."));
+  switch (extension) {
+    case ".ts":
+    case ".tsx": {
+      return "typescript";
+    }
+    case ".js":
+    case ".jsx":
+    case ".mjs":
+    case ".cjs": {
+      return "javascript";
+    }
+    default: {
+      return "typescript";
     }
   }
 }
@@ -54,11 +75,12 @@ export function validateTypescriptConformance(args: {
   instance: string;
   template: string;
 }): {
-  errors: string[];
+  errors: ConformanceError[];
 } {
   const { instance, template, data, filename } = args;
 
   const scriptKind = resolveScriptKind(filename);
+  const language = resolveLanguage(filename);
   const templateFile = createSourceFile(
     filename,
     mustache.render(template, data),
@@ -78,6 +100,7 @@ export function validateTypescriptConformance(args: {
     templateNode: templateFile,
     instanceNode: instanceFile,
     instanceFile,
+    language,
   });
 
   return { errors };
