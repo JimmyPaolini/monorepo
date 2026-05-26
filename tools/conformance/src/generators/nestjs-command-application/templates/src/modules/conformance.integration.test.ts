@@ -1,13 +1,13 @@
 import { fileURLToPath } from "node:url";
 
 import {
-  MODULES_DIRECTORY,
-  TEMPLATES_DIRECTORY_PATH,
+    MODULES_DIRECTORY,
+    TEMPLATES_DIRECTORY_PATH,
 } from "@monorepo/conformance/src/generators/nestjs-service-module/generator";
 import {
-  collectConformanceErrors,
-  validateInstancesDirectory,
-} from "@monorepo/conformance/src/validators/validator";
+    collectConformanceErrors,
+    validateInstancesDirectory,
+} from "@monorepo/conformance/src/validators/typescript/validator";
 import { describe, expect, it } from "vitest";
 
 describe(`"nestjs-service-module" generator template conformance`, () => {

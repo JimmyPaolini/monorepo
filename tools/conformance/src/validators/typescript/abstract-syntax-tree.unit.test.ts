@@ -5,13 +5,13 @@ import { fileURLToPath } from "node:url";
 import mustache from "mustache";
 import { describe, expect, it } from "vitest";
 
-import { validateConformance } from "./validator";
+import { validateTypescriptConformance as validateConformance } from "./validator";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
 const TEMPLATES_DIR = path.resolve(
   __dirname,
-  "../generators/nestjs-service-module/templates",
+  "../../generators/nestjs-service-module/templates",
 );
 
 const SERVICE_TEMPLATE_PATH = path.join(
@@ -194,7 +194,7 @@ describe("validateConformanceAST", () => {
   it("caelundas ephemeris service (heavily modified) passes AST validation", () => {
     const CAELUNDAS_MODULES = path.resolve(
       __dirname,
-      "../../../../applications/caelundas/src/modules",
+      "../../../../../applications/caelundas/src/modules",
     );
     const fileContent = fs.readFileSync(
       path.join(CAELUNDAS_MODULES, "ephemeris", "ephemeris.service.ts"),
@@ -374,7 +374,7 @@ describe("validateConformanceAST — multi-candidate keyless nodes", () => {
 describe("validateConformanceAST — caelundas module error detection", () => {
   const CAELUNDAS_MODULES = path.resolve(
     __dirname,
-    "../../../../applications/caelundas/src/modules",
+    "../../../../../applications/caelundas/src/modules",
   );
 
   function readServiceTemplate(): string {
@@ -382,7 +382,7 @@ describe("validateConformanceAST — caelundas module error detection", () => {
       path.join(
         path.resolve(
           __dirname,
-          "../generators/nestjs-service-module/templates",
+          "../../generators/nestjs-service-module/templates",
         ),
         "__nameCamelCase__.service.ts",
       ),

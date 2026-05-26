@@ -101,6 +101,7 @@ gradlew
 infer
 instanceof
 keyof
+multiset
 polymorphic
 precompiled
 readonly
@@ -156,6 +157,7 @@ signingkey
 #endregion
 
 #region 📝 Git & Documentation
+blockquotes
 frontmatter
 gitmodules
 gitmoji

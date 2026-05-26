@@ -7,17 +7,17 @@ import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import {
   collectConformanceErrors,
-  validateConformance,
   validateInstanceDirectory,
   validateInstanceFile,
   validateInstancesDirectory,
-} from "./validator";
+} from "./files";
+import { validateTypescriptConformance as validateConformance } from "./validator";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
 const TEMPLATES_DIR = path.resolve(
   __dirname,
-  "../generators/nestjs-service-module/templates",
+  "../../generators/nestjs-service-module/templates",
 );
 
 const SERVICE_TEMPLATE_PATH = path.join(
@@ -28,7 +28,7 @@ const SERVICE_TEMPLATE_PATH = path.join(
 describe("caelundas service integration", () => {
   const CAELUNDAS_MODULES = path.resolve(
     __dirname,
-    "../../../../applications/caelundas/src/modules",
+    "../../../../../applications/caelundas/src/modules",
   );
 
   function readCaelundasService(moduleName: string): string {

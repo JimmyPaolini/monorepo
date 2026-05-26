@@ -1,0 +1,45 @@
+import mustache from "mustache";
+
+/**
+ * Validates that a generated text file is a superset of its Mustache template
+ * by checking that every line in the rendered template is present in the
+ * instance.
+ *
+ * **Line semantics**: Lines are compared verbatim — no trimming is applied and
+ * blank lines in the template are treated as required. The instance may contain
+ * additional lines not in the template (superset), but it must include every
+ * template line at least as many times as the template contains it (multiset
+ * semantics, so duplicate template lines each require a corresponding instance
+ * line).
+ *
+ * Use this function when `template` and `instance` are already in memory.
+ */
+export function validateTextConformance(args: {
+  data: Record<string, unknown>;
+  filename: string;
+  instance: string;
+  template: string;
+}): {
+  errors: string[];
+} {
+  const { instance, template, data } = args;
+
+  const renderedTemplate = mustache.render(template, data);
+
+  const instanceLineCounts = new Map<string, number>();
+  for (const line of instance.split("\n")) {
+    instanceLineCounts.set(line, (instanceLineCounts.get(line) ?? 0) + 1);
+  }
+
+  const errors: string[] = [];
+  for (const line of renderedTemplate.split("\n")) {
+    const count = instanceLineCounts.get(line) ?? 0;
+    if (count === 0) {
+      errors.push(`Missing line: ${line}`);
+    } else {
+      instanceLineCounts.set(line, count - 1);
+    }
+  }
+
+  return { errors };
+}

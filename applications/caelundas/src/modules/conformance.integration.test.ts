@@ -7,7 +7,7 @@ import {
 import {
   collectConformanceErrors,
   validateInstancesDirectory,
-} from "@monorepo/conformance/src/validators/validator";
+} from "@monorepo/conformance/src/validators/typescript/files";
 import { describe, expect, it } from "vitest";
 
 describe(`"nestjs-service-module" generator template conformance`, () => {

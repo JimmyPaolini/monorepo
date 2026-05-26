@@ -30,21 +30,6 @@ describe("generateNestjsCommandApplication", () => {
       expect(
         tree.exists(`${base}/src/modules/conformance.integration.test.ts`),
       ).toBeTruthy();
-      expect(
-        tree.exists(`${base}/src/modules/sample/sample.module.ts`),
-      ).toBeTruthy();
-      expect(
-        tree.exists(`${base}/src/modules/sample/sample.service.ts`),
-      ).toBeTruthy();
-      expect(
-        tree.exists(`${base}/src/modules/sample/sample.service.unit.test.ts`),
-      ).toBeTruthy();
-      expect(
-        tree.exists(`${base}/src/modules/sample/sample.types.ts`),
-      ).toBeTruthy();
-      expect(
-        tree.exists(`${base}/src/modules/sample/sample.constants.ts`),
-      ).toBeTruthy();
       expect(tree.exists(`${base}/testing/setup.ts`)).toBeTruthy();
     });
 

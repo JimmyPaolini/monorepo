@@ -1,72 +1,20 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import mustache from "mustache";
-import { createSourceFile, ScriptKind, ScriptTarget } from "typescript";
+import { converterByStringCase } from "../../constants";
+import { StringCase } from "../../types";
 
-import { converterByStringCase } from "../constants";
-import { StringCase } from "../types";
-
-import { validateDepthFirstSearch } from "./abstract-syntax-tree";
+import { validateJsonConformance } from "./json/validator";
+import { validateMarkdownConformance } from "./markdown/validator";
+import { validateTextConformance } from "./text/validator";
+import { validateTypescriptConformance } from "./validator";
 
 import type { InstanceDirectoryValidationResult } from "./types";
 
-/**
- * Validates that a generated TypeScript file is a structural superset of its
- * Mustache template by comparing their parsed ASTs node-by-node.
- *
- * The template is first rendered with data via Mustache, then both the rendered
- * template and instance are parsed into TypeScript ASTs. A depth-first walk
- * checks that every node in the template exists somewhere in the instance at
- * the same depth (superset, not equality — the instance may contain extra nodes
- * not present in the template). Type annotations, decorator arguments, import
- * specifiers, and named declarations are all checked; empty method bodies and
- * array literals are not (recursion stops where the template has no children).
- *
- * Comments are validated in template order via the TypeScript trivia API. TODO
- * comments match loosely (any `// ... TODO ...` line); all others must match
- * exactly.
- *
- * Use this function when `template` and `instance` are already in memory. For
- * file-system reads use {@link validateInstanceFile}.
- */
-export function validateConformance(args: {
-  data: Record<string, unknown>;
-  filename: string;
-  instance: string;
-  template: string;
-}): {
-  errors: string[];
-} {
-  const { instance, template, data, filename } = args;
-
-  const scriptKind = filename.endsWith(".tsx") ? ScriptKind.TSX : ScriptKind.TS;
-  const templateFile = createSourceFile(
-    filename,
-    mustache.render(template, data),
-    ScriptTarget.Latest,
-    true,
-    scriptKind,
-  );
-  const instanceFile = createSourceFile(
-    filename,
-    instance,
-    ScriptTarget.Latest,
-    true,
-    scriptKind,
-  );
-
-  const errors = validateDepthFirstSearch({
-    templateNode: templateFile,
-    instanceNode: instanceFile,
-    instanceFile,
-  });
-
-  return { errors };
-}
+const TS_EXTENSIONS = new Set([".ts", ".tsx", ".js", ".jsx", ".mjs", ".cjs"]);
 
 /**
- * File-system variant of {@link validateConformance} that reads both the
+ * File-system variant of {@link validateTypescriptConformance} that reads both the
  * generated instance file and the Mustache template from disk before validating.
  *
  * If either path does not exist (`ENOENT`), returns \{ errors: ["Missing file:
@@ -84,12 +32,29 @@ export function validateInstanceFile(args: {
   try {
     const instance = fs.readFileSync(instanceFilePath, "utf8");
     const template = fs.readFileSync(templateFilePath, "utf8");
-    return validateConformance({
-      instance,
-      template,
-      data,
-      filename: path.basename(instanceFilePath),
-    });
+    const filename = path.basename(instanceFilePath);
+    const extension = filename.slice(filename.lastIndexOf("."));
+
+    if (extension === ".json") {
+      return validateJsonConformance({ instance, template, data, filename });
+    }
+    if (extension === ".md") {
+      return validateMarkdownConformance({
+        instance,
+        template,
+        data,
+        filename,
+      });
+    }
+    if (TS_EXTENSIONS.has(extension)) {
+      return validateTypescriptConformance({
+        instance,
+        template,
+        data,
+        filename,
+      });
+    }
+    return validateTextConformance({ instance, template, data, filename });
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === "ENOENT") {
       return { errors: [`Missing file: ${instanceFilePath}`] };

@@ -1,5 +1,7 @@
 # Caelundas
 
+NestJS command-line application scaffold generated with `conformance:nestjs-command-application`.
+
 **Astronomical event calendar generator using NASA's JPL Horizons ephemeris data.**
 
 Caelundas computes planetary positions, detects astronomical events (aspects, phases, eclipses, retrogrades), and outputs iCalendar files for integration with Google Calendar, Apple Calendar, or other calendar applications.
@@ -31,6 +33,18 @@ nx run caelundas:develop
 
 # 4. Import output
 # Import generated .ics file into your calendar application
+```
+
+## Start
+
+```bash
+nx run caelundas:start
+```
+
+## Test
+
+```bash
+nx run caelundas:test
 ```
 
 ### Configuration

@@ -6,7 +6,7 @@ import { addProjectConfiguration } from "@nx/devkit";
 import { createTreeWithEmptyWorkspace } from "@nx/devkit/testing";
 import { beforeEach, describe, expect, it } from "vitest";
 
-import { validateConformance } from "../../validators/validator.js";
+import { validateTypescriptConformance as validateConformance } from "../../validators/typescript/validator.js";
 
 import { generateNestjsServiceModule } from "./generator";
 
