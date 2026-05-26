@@ -1,18 +1,18 @@
 ---
-name: triage-commit
-description: "Triage and fix git hook failures. Use when a git commit or push is rejected, when lint-staged errors occur, when pre-commit hooks fail, when a branch name is invalid on push, or when you see errors from husky, commitlint, validate-branch-name, ESLint, oxfmt, prettier, typecheck, knip, cspell, markdownlint, or yamllint during a commit or push attempt. Reads the error output, identifies the failing hook and checks, reads the relevant configuration, and applies targeted fixes."
+name: triage-submission
+description: "Triage and fix git submission failures for both commits and pushes. Use when a git commit or push is rejected, when lint-staged errors occur, when pre-commit or pre-push hooks fail, when a branch name is invalid on push, or when you see errors from husky, commitlint, validate-branch-name, ESLint, oxfmt, prettier, typecheck, knip, cspell, markdownlint, or yamllint during a commit or push attempt. Reads the error output, identifies the failing hook and checks, reads the relevant configuration, and applies targeted fixes."
 ---
 
-# Triage Git Hook Failures
+# Triage Submission Failures
 
 Diagnose and fix failures from the Husky pre-commit, commit-msg, and pre-push hooks in this monorepo.
 
 ## When to Use
 
-- A `git commit` was rejected with hook errors
-- A `git push` was rejected with a branch name validation error
+- A `git commit` was rejected by any hook
+- A `git push` was rejected by any hook (branch name validation, pre-push checks)
 - `lint-staged` output shows failing Nx targets
-- Errors from tools like ESLint, oxfmt, prettier, oxlint, TypeScript, cspell, markdownlint, yamllint, knip, or vulture appear during commit
+- Errors from tools like ESLint, oxfmt, prettier, oxlint, TypeScript, cspell, markdownlint, yamllint, knip, or vulture appear during a commit or push
 - `commitlint` rejects the commit message format
 - `validate-branch-name` rejects the current branch name on push
 - Sync checks fail (agent skills, conventional config, PR template, devcontainer, lockfile)
