@@ -193,9 +193,28 @@ Config: [configuration/commitlint.config.ts](../../../configuration/commitlint.c
 
 ### Step 4: Apply Targeted Fixes
 
-#### Auto-Fixable Targets (run `--configuration=write`)
+#### ⚠️ CRITICAL RULE: Validate Fixes But Never Run lint-staged
 
-> **STOP AFTER FIXING** — Once you have applied fixes (auto or manual), do NOT stage files, do NOT run `git commit`, and do NOT invoke any commit or submit workflow. Proceed directly to [Step 5: Summarize Findings](#step-5-summarize-findings) and report what was found and fixed.
+**After applying fixes with `--configuration=write`, you MUST:**
+
+- ❌ **DO NOT** run `lint-staged` (this would stage the unstaged fixes, defeating the purpose)
+- ❌ **DO NOT** run `git commit`
+- ❌ **DO NOT** run `git push`
+- ❌ **DO NOT** invoke submit, checkout-branch, or create-pull-request skills
+
+**DO validate that fixes work:**
+
+- ✅ Run the exact failing Nx target with `--configuration=check` to verify it passes now
+- ✅ Example: if `format` failed, run `pnpm exec nx affected --target=format --configuration=check --files=<staged-files>`
+- ✅ If validation passes, all fixes are confirmed working
+
+**Then proceed:**
+
+- ✅ Leave all modified files **unstaged**
+- ✅ Go directly to Step 5 to summarize what was found and fixed
+- ✅ Let the user review, stage, and commit the fixes themselves
+
+#### Auto-Fixable Targets (run `--configuration=write`)
 
 For these targets, run the Nx target with `--configuration=write` to auto-fix. Do NOT stage the modified files — leave them unstaged so the user can review the changes before staging.
 
@@ -219,6 +238,35 @@ pnpm exec nx run monorepo:sync-pull-request-template:write
 pnpm exec nx run monorepo:sync-vscode-extensions:write
 pnpm exec nx run monorepo:sync-devcontainer-configuration:write
 ```
+
+#### Validate Fixes Passed
+
+After applying fixes with `--configuration=write`, run the exact failing target with `--configuration=check` to confirm the fixes work. Use the same `--files` argument as the original failing lint-staged run:
+
+```bash
+# Validate format fixes worked
+pnpm exec nx affected --target=format --configuration=check --files=<staged-files>
+
+# Validate lint fixes worked
+pnpm exec nx affected --target=lint --configuration=check --files=<staged-files>
+
+# Validate markdown-lint fixes worked
+pnpm exec nx affected --target=markdown-lint --configuration=check --files=<staged-files>
+
+# Validate clean/knip fixes worked
+pnpm exec nx affected --target=clean --configuration=check --files=<staged-files>
+
+# Validate sync checks fixed themselves (re-run the check variant)
+pnpm exec nx run monorepo:sync-agent-skills:check
+pnpm exec nx run monorepo:sync-conventional-config:check
+pnpm exec nx run monorepo:sync-pull-request-template:check
+pnpm exec nx run monorepo:sync-vscode-extensions:check
+pnpm exec nx run monorepo:sync-devcontainer-configuration:check
+```
+
+**If all `--configuration=check` commands pass**, the fixes are confirmed working. Proceed to Step 5.
+
+**If a `--configuration=check` command still fails**, review the error output and apply additional manual fixes as needed, then re-validate that target.
 
 #### Manual Fix Required
 
@@ -309,9 +357,9 @@ Read `configuration/commitlint.config.ts` for the full rule set before amending.
 
 <!-- scopes-end -->
 
-### Step 5: Summarize Findings
+### Step 5: Report What Was Fixed
 
-> **DO NOT RE-VALIDATE.** Do NOT commit, stage files, run git commit, or invoke submit/checkout-branch/create-pull-request skills after applying fixes. The skill ends here. All fixes remain unstaged for the user to review and stage manually. Do NOT run lint-staged again to validate the fixes — the user must review, stage, and commit manually.
+**The skill ends here. Do NOT do anything else.**
 
 Report a summary to the user covering:
 
@@ -323,8 +371,9 @@ Report a summary to the user covering:
 2. **Fixes applied** — for each fix, state:
    - Whether it was auto-fixed (e.g., ran `format --configuration=write`) or required manual edits
    - Which files were modified (all left unstaged — the user must review and `git add` them before retrying the commit)
+   - **Validation result**: "Validated with `nx affected --target=<name> --configuration=check --files=<...>` — ✅ PASSED"
 
-3. **Remaining actions** — if any issues require user action (e.g., manual typecheck fixes, commit message amend, branch rename), list them explicitly so the user knows what still needs to be done before committing.
+3. **Remaining actions** — if any issues require user action (e.g., manual typecheck fixes, commit message amend, branch rename), list them explicitly so the user knows what still needs to be done before committing. If all validations passed, state "All fixes validated. Ready to review, stage, and commit."
 
 ## Common Patterns
 
