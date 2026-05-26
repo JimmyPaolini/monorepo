@@ -14,7 +14,7 @@ class DescribedEnum(StrEnum):
         name: str,
         description: str,
         examples: tuple[str, str, str, str, str, str],
-    ) -> "DescribedEnum":
+    ) -> DescribedEnum:
         described_enum = str.__new__(cls, name)
         described_enum._value_ = name
         described_enum._description = description

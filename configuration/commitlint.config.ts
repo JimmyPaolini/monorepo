@@ -4,7 +4,7 @@
  * Commit format: `<type>(<scope>): <gitmoji> <subject>`
  *
  * - Header max: 128 characters (aim for &lt;72 for readability)
- * - Body and footer: forbidden (single-line commits only)
+ * - Body: allowed for Co-authored-by trailers (added by GitHub Copilot agents); footer: forbidden
  * - Subject: lowercase, imperative mood, no trailing period
  * - Gitmoji required at start of subject
  *
@@ -39,8 +39,8 @@ const configuration: UserConfig = {
     // 📏 Limit lengths
     "header-max-length": [2, "always", 128],
 
-    // 🚫 Forbid body and footer
-    "body-empty": [2, "always"],
+    // 🚫 Forbid footer; allow Co-authored-by trailers in body (added by GitHub Copilot agents)
+    "body-empty": [0, "always"],
     "footer-empty": [2, "always"],
 
     // 🔡 Enforce case

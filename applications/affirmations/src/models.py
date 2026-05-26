@@ -1,7 +1,9 @@
+from __future__ import annotations
+
 from pydantic import BaseModel, field_validator
 
-from src.grammars import Grammar
-from src.subjects import Subject
+from src.grammars import Grammar  # noqa: TC001
+from src.subjects import Subject  # noqa: TC001
 
 
 class Affirmation(BaseModel):
