@@ -20,7 +20,7 @@
       "defaultConfiguration": "check",
       "executor": "nx:run-commands"
     },
-    "code-analysis": {
+    "analyze-code": {
       "configurations": {
         "check": {
           "commands": [

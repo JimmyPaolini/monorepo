@@ -144,7 +144,7 @@ nx run-many --target=format:check --all   # or :format:write
 nx run-many --target=spell-check --all
 nx run-many --target=markdown-lint --all  # or :markdown-lint:write
 nx run-many --target=knip --all           # or :knip:write (caution!)
-nx run-many --target=code-analysis --all  # Run all checks
+nx run-many --target=analyze-code --all  # Run all checks
 
 # Affected projects only
 nx affected --target=test

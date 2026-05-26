@@ -77,36 +77,7 @@
     }
   },
   "targetDefaults": {
-    "bandit": {
-      "cache": true,
-      "executor": "nx:run-commands",
-      "inputs": ["pythonSource"],
-      "options": {
-        "command": "uv run bandit -c pyproject.toml -r src/",
-        "cwd": "{projectRoot}"
-      }
-    },
-    "build": {
-      "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["^production", "production"]
-    },
-    "clean": {
-      "cache": true,
-      "configurations": {
-        "check": {
-          "commands": ["nx run {projectName}:knip:check"],
-          "parallel": true
-        },
-        "write": {
-          "commands": ["nx run {projectName}:knip:write"],
-          "parallel": false
-        }
-      },
-      "defaultConfiguration": "check",
-      "executor": "nx:run-commands"
-    },
-    "code-analysis": {
+    "analyze-code": {
       "cache": true,
       "configurations": {
         "check": {
@@ -143,6 +114,35 @@
       "options": {
         "outputStyle": "stream"
       }
+    },
+    "bandit": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "inputs": ["pythonSource"],
+      "options": {
+        "command": "uv run bandit -c pyproject.toml -r src/",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "build": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["^production", "production"]
+    },
+    "clean": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "commands": ["nx run {projectName}:knip:check"],
+          "parallel": true
+        },
+        "write": {
+          "commands": ["nx run {projectName}:knip:write"],
+          "parallel": false
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands"
     },
     "dependency-cruiser": {
       "cache": true,

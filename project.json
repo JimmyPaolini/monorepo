@@ -3,6 +3,46 @@
   "name": "monorepo",
   "projectType": "application",
   "targets": {
+    "analyze-code": {
+      "configurations": {
+        "check": {
+          "commands": [
+            "nx run {projectName}:clean:check",
+            "nx run {projectName}:format:check",
+            "nx run {projectName}:lint:check",
+            "nx run {projectName}:markdown-lint:check",
+            "nx run {projectName}:spell-check",
+            "nx run {projectName}:sync-agent-skills:check",
+            "nx run {projectName}:sync-conventional-config:check",
+            "nx run {projectName}:sync-pull-request-template:check",
+            "nx run {projectName}:sync-vscode-extensions:check",
+            "nx run {projectName}:type-coverage",
+            "nx run {projectName}:typecheck"
+          ],
+          "parallel": true
+        },
+        "write": {
+          "commands": [
+            "nx run {projectName}:clean:write",
+            "nx run {projectName}:format:write",
+            "nx run {projectName}:lint:write",
+            "nx run {projectName}:markdown-lint:write",
+            "nx run {projectName}:spell-check",
+            "nx run {projectName}:sync-agent-skills:write",
+            "nx run {projectName}:sync-conventional-config:write",
+            "nx run {projectName}:sync-pull-request-template:write",
+            "nx run {projectName}:sync-vscode-extensions:write",
+            "nx run {projectName}:type-coverage",
+            "nx run {projectName}:typecheck"
+          ],
+          "parallel": false
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "Run all static code analysis tools for workspace root (typecheck, lint, format, clean, spell-check, markdown-lint, yaml-lint)",
+      "executor": "nx:run-commands",
+      "options": {}
+    },
     "audit-security": {
       "cache": false,
       "configurations": {
@@ -49,46 +89,6 @@
       },
       "defaultConfiguration": "check",
       "description": "Run unused-code analysis for workspace-root files only across JavaScript, TypeScript, and Python",
-      "executor": "nx:run-commands",
-      "options": {}
-    },
-    "code-analysis": {
-      "configurations": {
-        "check": {
-          "commands": [
-            "nx run {projectName}:clean:check",
-            "nx run {projectName}:format:check",
-            "nx run {projectName}:lint:check",
-            "nx run {projectName}:markdown-lint:check",
-            "nx run {projectName}:spell-check",
-            "nx run {projectName}:sync-agent-skills:check",
-            "nx run {projectName}:sync-conventional-config:check",
-            "nx run {projectName}:sync-pull-request-template:check",
-            "nx run {projectName}:sync-vscode-extensions:check",
-            "nx run {projectName}:type-coverage",
-            "nx run {projectName}:typecheck"
-          ],
-          "parallel": true
-        },
-        "write": {
-          "commands": [
-            "nx run {projectName}:clean:write",
-            "nx run {projectName}:format:write",
-            "nx run {projectName}:lint:write",
-            "nx run {projectName}:markdown-lint:write",
-            "nx run {projectName}:spell-check",
-            "nx run {projectName}:sync-agent-skills:write",
-            "nx run {projectName}:sync-conventional-config:write",
-            "nx run {projectName}:sync-pull-request-template:write",
-            "nx run {projectName}:sync-vscode-extensions:write",
-            "nx run {projectName}:type-coverage",
-            "nx run {projectName}:typecheck"
-          ],
-          "parallel": false
-        }
-      },
-      "defaultConfiguration": "check",
-      "description": "Run all static code analysis tools for workspace root (typecheck, lint, format, clean, spell-check, markdown-lint, yaml-lint)",
       "executor": "nx:run-commands",
       "options": {}
     },
