@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import mustache from "mustache";
 import { describe, expect, it } from "vitest";
 
+import { expectErrorWithMessage } from "./test-helpers";
 import { validateTypescriptConformance as validateConformance } from "./validator";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
@@ -109,13 +110,7 @@ describe("validateConformanceAST", () => {
       filename: "user.service.ts",
     });
     expect(result.errors.length === 0).toBe(false);
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          message: expect.stringContaining('Missing Decorator "Injectable"'),
-        }),
-      ]),
-    );
+    expectErrorWithMessage(result.errors, 'Missing Decorator "Injectable"');
   });
 
   it("wrong class name fails", () => {
@@ -129,14 +124,9 @@ describe("validateConformanceAST", () => {
       filename: "user.service.ts",
     });
     expect(result.errors.length === 0).toBe(false);
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          message: expect.stringContaining(
-            'Missing ClassDeclaration "UserService"',
-          ),
-        }),
-      ]),
+    expectErrorWithMessage(
+      result.errors,
+      'Missing ClassDeclaration "UserService"',
     );
   });
 
@@ -151,14 +141,9 @@ describe("validateConformanceAST", () => {
       filename: "user.service.ts",
     });
     expect(result.errors.length === 0).toBe(false);
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          message: expect.stringContaining(
-            'Missing comment: "// 🔑 Public Fields"',
-          ),
-        }),
-      ]),
+    expectErrorWithMessage(
+      result.errors,
+      'Missing comment: "// 🔑 Public Fields"',
     );
   });
 
@@ -176,14 +161,9 @@ describe("validateConformanceAST", () => {
       filename: "user.service.ts",
     });
     expect(result.errors.length === 0).toBe(false);
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          message: expect.stringContaining(
-            'Missing ImportDeclaration "@nestjs/common"',
-          ),
-        }),
-      ]),
+    expectErrorWithMessage(
+      result.errors,
+      'Missing ImportDeclaration "@nestjs/common"',
     );
   });
 
@@ -198,14 +178,9 @@ describe("validateConformanceAST", () => {
       filename: "user.module.ts",
     });
     expect(result.errors.length === 0).toBe(false);
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          message: expect.stringContaining(
-            'Missing PropertyAssignment "controllers"',
-          ),
-        }),
-      ]),
+    expectErrorWithMessage(
+      result.errors,
+      'Missing PropertyAssignment "controllers"',
     );
   });
 
@@ -262,14 +237,9 @@ describe("validateConformanceAST", () => {
       data,
       filename: "user.service.ts",
     });
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          message: expect.stringContaining(
-            'Missing comment: "// 🔑 Public Fields"',
-          ),
-        }),
-      ]),
+    expectErrorWithMessage(
+      result.errors,
+      'Missing comment: "// 🔑 Public Fields"',
     );
   });
 
@@ -323,14 +293,9 @@ describe("validateConformanceAST", () => {
       data,
       filename: "user.module.ts",
     });
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          message: expect.stringContaining(
-            'Missing PropertyAssignment "providers"',
-          ),
-        }),
-      ]),
+    expectErrorWithMessage(
+      result.errors,
+      'Missing PropertyAssignment "providers"',
     );
   });
 });
@@ -389,13 +354,7 @@ describe("validateConformanceAST — multi-candidate keyless nodes", () => {
       data: {},
       filename: "user.service.ts",
     });
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          message: expect.stringContaining('Missing Identifier "requiredCall"'),
-        }),
-      ]),
-    );
+    expectErrorWithMessage(result.errors, 'Missing Identifier "requiredCall"');
   });
 });
 
@@ -431,13 +390,7 @@ describe("validateConformanceAST — caelundas module error detection", () => {
       data: { nameCamelCase: "datetime", namePascalCase: "Datetime" },
       filename: "datetime.service.ts",
     });
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          message: expect.stringContaining('Missing Decorator "Injectable"'),
-        }),
-      ]),
-    );
+    expectErrorWithMessage(result.errors, 'Missing Decorator "Injectable"');
   });
 
   it("missing section comment in math service fails", () => {
@@ -453,14 +406,9 @@ describe("validateConformanceAST — caelundas module error detection", () => {
       data: { nameCamelCase: "math", namePascalCase: "Math" },
       filename: "math.service.ts",
     });
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          message: expect.stringContaining(
-            'Missing comment: "// 🌎 Public Methods"',
-          ),
-        }),
-      ]),
+    expectErrorWithMessage(
+      result.errors,
+      'Missing comment: "// 🌎 Public Methods"',
     );
   });
 
@@ -477,14 +425,9 @@ describe("validateConformanceAST — caelundas module error detection", () => {
       data: { nameCamelCase: "datetime", namePascalCase: "Datetime" },
       filename: "datetime.service.ts",
     });
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          message: expect.stringContaining(
-            'Missing ClassDeclaration "DatetimeService"',
-          ),
-        }),
-      ]),
+    expectErrorWithMessage(
+      result.errors,
+      'Missing ClassDeclaration "DatetimeService"',
     );
   });
 
@@ -501,12 +444,6 @@ describe("validateConformanceAST — caelundas module error detection", () => {
       data: { nameCamelCase: "math", namePascalCase: "Math" },
       filename: "math.service.ts",
     });
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          message: expect.stringContaining("Missing Constructor"),
-        }),
-      ]),
-    );
+    expectErrorWithMessage(result.errors, "Missing Constructor");
   });
 });

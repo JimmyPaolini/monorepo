@@ -3,83 +3,23 @@ import mustache from "mustache";
 import { remark } from "remark";
 import remarkGfm from "remark-gfm";
 
-import { TODO_LINE_REGEX } from "../constants";
+import {
+  CONTAINER_TYPES,
+  getNodeChildren,
+  isCode,
+  isHeading,
+  isHtml,
+  isImage,
+  isInlineCode,
+  isLink,
+  isList,
+  isTable,
+  isText,
+  type MdastNode,
+  textMatches,
+} from "./nodes";
 
 import type { ConformanceError } from "../types";
-import type {
-  Code,
-  Heading,
-  Html,
-  Image,
-  InlineCode,
-  Link,
-  List,
-  ListItem,
-  PhrasingContent,
-  RootContent,
-  TableCell,
-  TableRow,
-  Text,
-} from "mdast";
-
-/**
- * Union of all mdast node types that can appear at any level of the tree,
- * including block-level content, inline (phrasing) content, and structural
- * nodes that are only valid inside tables and lists.
- */
-type MdastNode =
-  | PhrasingContent
-  | RootContent
-  | ListItem
-  | TableRow
-  | TableCell;
-
-/**
- * Node types that act as containers: after a matching node is found in the
- * instance, validation recurses into their children to check sub-structure.
- * Leaf nodes (heading, code, link, etc.) are only checked at the current
- * level — their text content is already captured by the parent match.
- */
-const CONTAINER_TYPES = new Set([
-  "blockquote",
-  "list",
-  "listItem",
-  "paragraph",
-  "table",
-  "tableRow",
-  "tableCell",
-]);
-
-/**
- * Compares two strings line-by-line. Lines in `templateText` that match
- * TODO_LINE_REGEX are accepted regardless of the corresponding instance line
- * (TODO placeholders may be filled with any content). All other lines must
- * match exactly.
- */
-function textMatches(templateText: string, instanceText: string): boolean {
-  const templateLines = templateText.split("\n");
-  const instanceLines = instanceText.split("\n");
-  if (templateLines.length !== instanceLines.length) return false;
-  return templateLines.every((tLine, i) => {
-    const iLine = instanceLines[i] ?? "";
-    return TODO_LINE_REGEX.test(tLine) || tLine === iLine;
-  });
-}
-
-/**
- * Returns the children of an mdast node as a `MdastNode[]`, or an empty
- * array for leaf nodes.
- */
-function getNodeChildren(node: MdastNode): MdastNode[] {
-  if (
-    typeof node === "object" &&
-    "children" in node &&
-    Array.isArray(node.children)
-  ) {
-    return node.children;
-  }
-  return [];
-}
 
 /**
  * Returns `true` when `instance` is a valid match for `template`. Matching
@@ -94,11 +34,13 @@ function nodesMatch(template: MdastNode, instance: MdastNode): boolean {
 
   switch (template.type) {
     case "heading": {
-      const i = instance as Heading;
-      return (
-        template.depth === i.depth &&
-        textMatches(toString(template), toString(instance))
-      );
+      if (isHeading(template) && isHeading(instance)) {
+        return (
+          template.depth === instance.depth &&
+          textMatches(toString(template), toString(instance))
+        );
+      }
+      return false;
     }
     case "paragraph":
     case "blockquote":
@@ -117,46 +59,67 @@ function nodesMatch(template: MdastNode, instance: MdastNode): boolean {
       );
     }
     case "code": {
-      const t = template;
-      const i = instance as Code;
-      return t.lang === i.lang && textMatches(t.value, i.value);
+      if (isCode(template) && isCode(instance)) {
+        return (
+          template.lang === instance.lang &&
+          textMatches(template.value, instance.value)
+        );
+      }
+      return false;
     }
     case "list": {
-      const i = instance as List;
-      return template.ordered === i.ordered;
+      if (isList(template) && isList(instance)) {
+        return template.ordered === instance.ordered;
+      }
+      return false;
     }
     case "table": {
-      const t = template as { children: { children: unknown[] }[] };
-      const i = instance as { children: { children: unknown[] }[] };
-      const tRow = t.children[0];
-      const iRow = i.children[0];
-      if (tRow === undefined || iRow === undefined) return true;
-      return tRow.children.length === iRow.children.length;
+      if (isTable(template) && isTable(instance)) {
+        const tRow = template.children[0];
+        const iRow = instance.children[0];
+        if (tRow === undefined || iRow === undefined) return true;
+        return tRow.children.length === iRow.children.length;
+      }
+      return false;
     }
     case "thematicBreak": {
       return true;
     }
     case "link": {
-      const t = template;
-      const i = instance as Link;
-      return textMatches(t.url, i.url) && textMatches(toString(t), toString(i));
+      if (isLink(template) && isLink(instance)) {
+        return (
+          textMatches(template.url, instance.url) &&
+          textMatches(toString(template), toString(instance))
+        );
+      }
+      return false;
     }
     case "image": {
-      const t = template;
-      const i = instance as Image;
-      return textMatches(t.url, i.url) && (t.alt ?? "") === (i.alt ?? "");
+      if (isImage(template) && isImage(instance)) {
+        return (
+          textMatches(template.url, instance.url) &&
+          (template.alt ?? "") === (instance.alt ?? "")
+        );
+      }
+      return false;
     }
     case "inlineCode": {
-      const i = instance as InlineCode;
-      return textMatches(template.value, i.value);
+      if (isInlineCode(template) && isInlineCode(instance)) {
+        return textMatches(template.value, instance.value);
+      }
+      return false;
     }
     case "html": {
-      const i = instance as Html;
-      return textMatches(template.value, i.value);
+      if (isHtml(template) && isHtml(instance)) {
+        return textMatches(template.value, instance.value);
+      }
+      return false;
     }
     case "text": {
-      const i = instance as Text;
-      return textMatches(template.value, i.value);
+      if (isText(template) && isText(instance)) {
+        return textMatches(template.value, instance.value);
+      }
+      return false;
     }
     case "yaml":
     case "math":

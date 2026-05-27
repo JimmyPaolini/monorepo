@@ -11,6 +11,7 @@ import {
   validateInstanceFile,
   validateInstancesDirectory,
 } from "./files";
+import { expectErrorWithMessage } from "./test-helpers";
 import { validateTypescriptConformance as validateConformance } from "./validator";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
@@ -158,12 +159,9 @@ describe("validateInstancesDirectory", () => {
     });
 
     const alphaResult = results.find((r) => r.directoryName === "alpha");
-    expect(alphaResult?.results[0]?.errors).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          message: expect.stringContaining("Missing file:"),
-        }),
-      ]),
+    expectErrorWithMessage(
+      alphaResult?.results[0]?.errors ?? [],
+      "Missing file:",
     );
   });
 });
@@ -212,14 +210,9 @@ describe("validateInstanceFile", () => {
       data: { namePascalCase: "User" },
     });
 
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          message: expect.stringContaining(
-            'Missing ClassDeclaration "UserService"',
-          ),
-        }),
-      ]),
+    expectErrorWithMessage(
+      result.errors,
+      'Missing ClassDeclaration "UserService"',
     );
   });
 
@@ -336,13 +329,7 @@ describe("validateInstanceDirectory", () => {
       templateDirectoryPath: templateDir,
     });
 
-    expect(result.results[0]?.errors).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          message: expect.stringContaining("Missing file:"),
-        }),
-      ]),
-    );
+    expectErrorWithMessage(result.results[0]?.errors ?? [], "Missing file:");
   });
 });
 

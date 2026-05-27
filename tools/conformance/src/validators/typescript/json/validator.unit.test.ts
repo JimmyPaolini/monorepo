@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
 
+import { expectErrorWithMessage } from "../test-helpers";
+
 import { validateComments } from "./comments";
 import { validateJsonConformance } from "./validator";
 
@@ -36,13 +38,7 @@ describe("validateJsonConformance — structural checks", () => {
       data: {},
       filename: "package.json",
     });
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          message: expect.stringContaining('Missing required key: "version"'),
-        }),
-      ]),
-    );
+    expectErrorWithMessage(result.errors, 'Missing required key: "version"');
   });
 
   it("returns error when instance value differs from template value", () => {
@@ -54,27 +50,9 @@ describe("validateJsonConformance — structural checks", () => {
       data: {},
       filename: "package.json",
     });
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          message: expect.stringContaining('"name"'),
-        }),
-      ]),
-    );
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          message: expect.stringContaining('"my-app"'),
-        }),
-      ]),
-    );
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          message: expect.stringContaining('"other-app"'),
-        }),
-      ]),
-    );
+    expectErrorWithMessage(result.errors, '"name"');
+    expectErrorWithMessage(result.errors, '"my-app"');
+    expectErrorWithMessage(result.errors, '"other-app"');
   });
 
   it("resolves Mustache interpolation in template before comparing", () => {
@@ -98,16 +76,8 @@ describe("validateJsonConformance — structural checks", () => {
       data: { nameKebabCase: "my-service" },
       filename: "package.json",
     });
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          message: expect.stringContaining('"my-service"'),
-        }),
-        expect.objectContaining({
-          message: expect.stringContaining('"wrong-name"'),
-        }),
-      ]),
-    );
+    expectErrorWithMessage(result.errors, '"my-service"');
+    expectErrorWithMessage(result.errors, '"wrong-name"');
   });
 
   it("returns error for missing nested key", () => {
@@ -119,14 +89,9 @@ describe("validateJsonConformance — structural checks", () => {
       data: {},
       filename: "package.json",
     });
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          message: expect.stringContaining(
-            'Missing required key: "scripts.build"',
-          ),
-        }),
-      ]),
+    expectErrorWithMessage(
+      result.errors,
+      'Missing required key: "scripts.build"',
     );
   });
 
@@ -194,14 +159,9 @@ describe("validateJsonConformance — JSONC comment checks", () => {
       data: {},
       filename: "project.json",
     });
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          message: expect.stringContaining(
-            'Missing comment: "// project config"',
-          ),
-        }),
-      ]),
+    expectErrorWithMessage(
+      result.errors,
+      'Missing comment: "// project config"',
     );
   });
 
@@ -256,13 +216,7 @@ describe("validateJsonConformance — JSONC comment checks", () => {
       data: {},
       filename: "project.json",
     });
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          message: expect.stringContaining("Missing comment"),
-        }),
-      ]),
-    );
+    expectErrorWithMessage(result.errors, "Missing comment");
   });
 
   it("requires exact match for non-TODO comments", () => {
@@ -280,14 +234,9 @@ describe("validateJsonConformance — JSONC comment checks", () => {
       data: {},
       filename: "project.json",
     });
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          message: expect.stringContaining(
-            'Missing comment: "// exact wording required"',
-          ),
-        }),
-      ]),
+    expectErrorWithMessage(
+      result.errors,
+      'Missing comment: "// exact wording required"',
     );
   });
 
@@ -310,13 +259,7 @@ describe("validateJsonConformance — JSONC comment checks", () => {
       data: {},
       filename: "project.json",
     });
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-          message: expect.stringContaining('Missing comment: "// second"'),
-        }),
-      ]),
-    );
+    expectErrorWithMessage(result.errors, 'Missing comment: "// second"');
   });
 });
 
