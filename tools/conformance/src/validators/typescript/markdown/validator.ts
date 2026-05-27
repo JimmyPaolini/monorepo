@@ -94,8 +94,9 @@ function nodesMatch(template: MdastNode, instance: MdastNode): boolean {
 
   switch (template.type) {
     case "heading": {
+      const i = instance as Heading;
       return (
-        template.depth === (instance as Heading).depth &&
+        template.depth === i.depth &&
         textMatches(toString(template), toString(instance))
       );
     }
@@ -121,13 +122,14 @@ function nodesMatch(template: MdastNode, instance: MdastNode): boolean {
       return t.lang === i.lang && textMatches(t.value, i.value);
     }
     case "list": {
-      return template.ordered === (instance as List).ordered;
+      const i = instance as List;
+      return template.ordered === i.ordered;
     }
     case "table": {
-      const tRow = (template as { children: { children: unknown[] }[] })
-        .children[0];
-      const iRow = (instance as { children: { children: unknown[] }[] })
-        .children[0];
+      const t = template as { children: { children: unknown[] }[] };
+      const i = instance as { children: { children: unknown[] }[] };
+      const tRow = t.children[0];
+      const iRow = i.children[0];
       if (tRow === undefined || iRow === undefined) return true;
       return tRow.children.length === iRow.children.length;
     }
@@ -145,13 +147,16 @@ function nodesMatch(template: MdastNode, instance: MdastNode): boolean {
       return textMatches(t.url, i.url) && (t.alt ?? "") === (i.alt ?? "");
     }
     case "inlineCode": {
-      return textMatches(template.value, (instance as InlineCode).value);
+      const i = instance as InlineCode;
+      return textMatches(template.value, i.value);
     }
     case "html": {
-      return textMatches(template.value, (instance as Html).value);
+      const i = instance as Html;
+      return textMatches(template.value, i.value);
     }
     case "text": {
-      return textMatches(template.value, (instance as Text).value);
+      const i = instance as Text;
+      return textMatches(template.value, i.value);
     }
     case "yaml":
     case "math":

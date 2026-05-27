@@ -41,6 +41,12 @@ nx run caelundas:develop
 nx run caelundas:start
 ```
 
+## Test
+
+```bash
+nx run caelundas:test
+```
+
 ### Configuration
 
 Create `.env` with the following variables:

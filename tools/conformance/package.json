@@ -2,7 +2,7 @@
   "dependencies": {
     "@nestjs/common": "^11.1.23",
     "@nx/devkit": "^22.7.3",
-    "@types/mdast": "4.0.4",
+    "@types/mdast": "^4.0.4",
     "jsonc-parser": "^3.3.1",
     "lodash": "^4.18.1",
     "mdast-util-to-string": "^4.0.0",

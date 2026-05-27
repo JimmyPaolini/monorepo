@@ -5,7 +5,10 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-Strict-3178C6?logo=typescript)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-24-5FA04E?logo=nodedotjs)](https://nodejs.org/)
 [![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python)](https://www.python.org/)
-[![Node.js](https://img.shields.io/badge/Node.js-24-5FA04E?logo=nodedotjs)](https://nodejs.org/)
+[![Jupyter](https://img.shields.io/badge/Jupyter-1.1-F37626?logo=jupyter&logoColor=white)](https://jupyter.org/)
+[![Code Lines](https://img.shields.io/badge/dynamic/json?color=blue&label=lines%20of%20code&query=%24%5B0%5D.linesOfCode&url=https%3A%2F%2Fapi.codetabs.com%2Fv1%2Floc%2F%3Fgithub%3DJimmyPaolini%2Fmonorepo)](https://github.com/JimmyPaolini/monorepo)
+[![Repo Size](https://img.shields.io/github/repo-size/JimmyPaolini/monorepo)](https://github.com/JimmyPaolini/monorepo)
+[![Last Commit](https://img.shields.io/github/last-commit/JimmyPaolini/monorepo)](https://github.com/JimmyPaolini/monorepo/commits)
 
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)](https://react.dev/)
 [![TanStack](https://img.shields.io/badge/TanStack-Start-FF4154?logo=tanstack)](https://tanstack.com/start)

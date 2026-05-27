@@ -9,8 +9,8 @@
     "language:typescript"
   ],
   "targets": {
+    "analyze-code": {},
     "clean": {},
-    "code-analysis": {},
     "dependency-cruiser": {},
     "format": {},
     "knip": {},

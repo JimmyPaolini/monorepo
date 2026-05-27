@@ -36,7 +36,10 @@ function getPaths(files: string[]): string {
 const config = {
   // ── Lockfile integrity ──
   // When package.json or workspace config changes, verify the lockfile is in sync
-  "**/package.json": () => ["./scripts/check-lockfile.sh"],
+  "**/package.json": () => [
+    "./scripts/check-lockfile.sh",
+    "pnpm exec nx run monorepo:syncpack:check",
+  ],
   "pnpm-workspace.yaml": () => ["./scripts/check-lockfile.sh"],
 
   // ── Unused-code analysis configuration ──

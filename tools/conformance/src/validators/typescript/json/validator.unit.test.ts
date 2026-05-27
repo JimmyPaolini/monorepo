@@ -56,7 +56,9 @@ describe("validateJsonConformance — structural checks", () => {
     });
     expect(result.errors).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({ message: expect.stringContaining('"name"') }),
+        expect.objectContaining({
+          message: expect.stringContaining('"name"'),
+        }),
       ]),
     );
     expect(result.errors).toEqual(
@@ -321,7 +323,10 @@ describe("validateJsonConformance — JSONC comment checks", () => {
 describe("validateComments", () => {
   it("returns no errors when instance has no comments and template has none", () => {
     expect(
-      validateComments({ templateText: '{"a":1}', instanceText: '{"a":1}' }),
+      validateComments({
+        templateText: '{"a":1}',
+        instanceText: '{"a":1}',
+      }),
     ).toEqual([]);
   });
 
