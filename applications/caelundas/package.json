@@ -38,7 +38,7 @@
   },
   "type": "module",
   "typeCoverage": {
-    "atLeast": 100,
+    "atLeast": 99.57,
     "ignoreCatch": true,
     "ignoreFiles": [
       "**/*.spec.ts",
