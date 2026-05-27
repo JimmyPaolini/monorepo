@@ -14,7 +14,7 @@ This skill teaches how to write commit messages for this monorepo. All commits *
 <type>(<scope>): <gitmoji> <subject>
 ```
 
-**Note:** Footer sections are **forbidden** by commitlint configuration. Body is allowed only for `Co-authored-by` trailers added by GitHub Copilot agents.
+**Note:** Footer sections are **forbidden** by commitlint configuration. Body is forbidden unless every line is a `Co-authored-by:` trailer added by GitHub Copilot agents.
 
 ### Structure Rules
 
@@ -22,7 +22,7 @@ This skill teaches how to write commit messages for this monorepo. All commits *
    - Must start with gitmoji emoji (`gitmoji-required`, error level 2)
    - Max 128 characters (`header-max-length: 128`)
    - Subject must not be empty (`subject-empty: never`)
-2. **Body**: Allowed only for `Co-authored-by` trailers (`body-empty: disabled`)
+2. **Body**: Forbidden unless every line is a `Co-authored-by:` trailer (`body-co-authored-only`, error level 2)
 3. **Footer**: Forbidden (`footer-empty: always`, error level 2)
 
 ## Type
@@ -179,7 +179,7 @@ See [gitmoji.md](../../gitmoji.md) for the complete emoji guide.
 
 **Footer**: Forbidden. Footer sections are not allowed in commit messages in this repository.
 
-**Body**: Normally omitted. The only acceptable body content is `Co-authored-by:` trailers, which are added automatically by GitHub Copilot agents. Human contributors should not add a body.
+**Body**: Forbidden unless every line is a `Co-authored-by:` trailer, which are added automatically by GitHub Copilot agents. Human contributors must not add a body.
 
 If you need to provide:
 
@@ -211,7 +211,7 @@ feat(lexico): 💥 migrate to new auth API
 
 ### Committing from the Command Line
 
-Since footer sections are forbidden, commits should not include footers. Body should be omitted except for `Co-authored-by` trailers:
+Since footer sections are forbidden, commits should not include footers. Body must be omitted unless it consists entirely of `Co-authored-by` trailers:
 
 ```bash
 git commit -m "feat(monorepo): ✨ add new feature"
@@ -253,7 +253,7 @@ All rules defined in [../commitlint.config.ts](../../../configuration/commitlint
 - `subject-full-stop`: No period at end
 - `subject-empty`: Subject cannot be empty
 - `header-max-length`: Max 128 characters
-- `body-empty`: Body is allowed only for `Co-authored-by` trailers (disabled rule)
+- `body-co-authored-only`: Body must be empty or contain only `Co-authored-by:` trailers
 - `footer-empty`: Footer is forbidden
 
 ## Validation
@@ -281,7 +281,7 @@ Configuration files:
 - Scope: lowercase, from allowed list
 - Subject: lowercase, imperative, no period, <72 chars
 - Header: <128 chars total (count prefix + subject!)
-- Body: omitted (only `Co-authored-by` trailers allowed, added automatically by tools)
+- Body: forbidden (only `Co-authored-by` trailers allowed, added automatically by tools)
 - Footer: forbidden
 - NEVER list multiple changes with commas/"and" — summarize or split commits
 
