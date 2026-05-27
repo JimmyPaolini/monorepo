@@ -46,6 +46,15 @@ extend = "../../configuration/pyproject.toml"
 exclude = ["notebooks/**", ".vulture_whitelist.py"]
 extend-include = ["*.ipynb"]
 
+[tool.ruff.lint.flake8-type-checking]
+# Pydantic BaseModel subclasses evaluate annotations at class creation time via model_rebuild()
+# so imports used as field types must remain as runtime imports (not moved to TYPE_CHECKING)
+runtime-evaluated-base-classes = ["pydantic.BaseModel"]
+
+[tool.ruff.lint.per-file-ignores]
+# Jupyter notebooks have intentional per-cell re-imports for independent cell execution
+"*.ipynb" = ["F811", "TC002"]
+
 [tool.pyright]
 # Venv settings and LangChain/LangGraph suppressions are project-specific
 # Base config (pythonVersion, typeCheckingMode) is in root pyproject.toml
