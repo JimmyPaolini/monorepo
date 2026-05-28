@@ -6,6 +6,7 @@ import {
   illuminationBodies,
   nodes,
 } from "@caelundas/src/caelundas.constants";
+import { typedFromEntries } from "@caelundas/src/caelundas.types";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Injectable } from "@nestjs/common";
 import moment, { type Moment } from "moment-timezone";
@@ -56,6 +57,9 @@ export class EphemerisService {
 
   // 🔐 Private Fields
 
+  // � Private Fields
+  private readonly nodeSet: ReadonlySet<string> = new Set<string>(nodes);
+
   // 🔑 Public Fields
 
   // 🔏 Private Methods
@@ -63,7 +67,7 @@ export class EphemerisService {
   // 🌎 Public Methods
 
   private isNode(body: string): body is Node {
-    return nodes.includes(body as Node);
+    return this.nodeSet.has(body);
   }
 
   private dateToJulianDays(date: Moment): {
@@ -338,7 +342,7 @@ export class EphemerisService {
   }): Record<Body, CoordinateEphemeris> {
     const { bodies, start, end } = args;
 
-    const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
+    const entries: [Body, CoordinateEphemeris][] = [];
 
     for (const body of bodies) {
       const ephemeris: CoordinateEphemeris = {};
@@ -357,10 +361,10 @@ export class EphemerisService {
         ephemeris[timestamp] = coord;
       }
 
-      coordinateEphemerisByBody[body] = ephemeris;
+      entries.push([body, ephemeris]);
     }
 
-    return coordinateEphemerisByBody;
+    return typedFromEntries(entries);
   }
 
   /**
@@ -380,10 +384,7 @@ export class EphemerisService {
     const { bodies, coordinates, start, end } = args;
     const [observerLongitude, observerLatitude] = coordinates;
 
-    const azimuthElevationEphemerisByBody = {} as Record<
-      Body,
-      AzimuthElevationEphemeris
-    >;
+    const entries: [Body, AzimuthElevationEphemeris][] = [];
 
     for (const body of bodies) {
       const ephemeris: AzimuthElevationEphemeris = {};
@@ -424,10 +425,10 @@ export class EphemerisService {
         };
       }
 
-      azimuthElevationEphemerisByBody[body] = ephemeris;
+      entries.push([body, ephemeris]);
     }
 
-    return azimuthElevationEphemerisByBody;
+    return typedFromEntries(entries);
   }
 
   /**
@@ -449,10 +450,7 @@ export class EphemerisService {
   }): Record<Body, IlluminationEphemeris> {
     const { bodies, start, end } = args;
 
-    const illuminationEphemerisByBody = {} as Record<
-      Body,
-      IlluminationEphemeris
-    >;
+    const entries: [Body, IlluminationEphemeris][] = [];
 
     for (const body of bodies) {
       const ephemeris: IlluminationEphemeris = {};
@@ -482,10 +480,10 @@ export class EphemerisService {
         ephemeris[timestamp] = { illumination: result.data[1] * 100 };
       }
 
-      illuminationEphemerisByBody[body] = ephemeris;
+      entries.push([body, ephemeris]);
     }
 
-    return illuminationEphemerisByBody;
+    return typedFromEntries(entries);
   }
 
   /**
@@ -505,7 +503,7 @@ export class EphemerisService {
   }): Record<Body, DiameterEphemeris> {
     const { bodies, start, end } = args;
 
-    const diameterEphemerisByBody = {} as Record<Body, DiameterEphemeris>;
+    const entries: [Body, DiameterEphemeris][] = [];
 
     for (const body of bodies) {
       const ephemeris: DiameterEphemeris = {};
@@ -529,10 +527,10 @@ export class EphemerisService {
         ephemeris[timestamp] = { diameter: result.data[3] };
       }
 
-      diameterEphemerisByBody[body] = ephemeris;
+      entries.push([body, ephemeris]);
     }
 
-    return diameterEphemerisByBody;
+    return typedFromEntries(entries);
   }
 
   /**
@@ -549,7 +547,7 @@ export class EphemerisService {
   }): Record<Body, DistanceEphemeris> {
     const { bodies, start, end } = args;
 
-    const distanceEphemerisByBody = {} as Record<Body, DistanceEphemeris>;
+    const entries: [Body, DistanceEphemeris][] = [];
 
     for (const body of bodies) {
       const ephemeris: DistanceEphemeris = {};
@@ -573,10 +571,10 @@ export class EphemerisService {
         ephemeris[timestamp] = { distance: result.data[2] };
       }
 
-      distanceEphemerisByBody[body] = ephemeris;
+      entries.push([body, ephemeris]);
     }
 
-    return distanceEphemerisByBody;
+    return typedFromEntries(entries);
   }
 
   /**
@@ -629,17 +627,11 @@ export class EphemerisService {
     const diameterSet = new Set<string>(diameterBodies);
     const distanceSet = new Set<string>(distanceBodies);
 
-    const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
-    const azimuthElevationEphemerisByBody = {} as Record<
-      Body,
-      AzimuthElevationEphemeris
-    >;
-    const illuminationEphemerisByBody = {} as Record<
-      Body,
-      IlluminationEphemeris
-    >;
-    const diameterEphemerisByBody = {} as Record<Body, DiameterEphemeris>;
-    const distanceEphemerisByBody = {} as Record<Body, DistanceEphemeris>;
+    const coordinateEntries: [Body, CoordinateEphemeris][] = [];
+    const azimuthEntries: [Body, AzimuthElevationEphemeris][] = [];
+    const illuminationEntries: [Body, IlluminationEphemeris][] = [];
+    const diameterEntries: [Body, DiameterEphemeris][] = [];
+    const distanceEntries: [Body, DistanceEphemeris][] = [];
 
     for (const body of coordinateBodies) {
       const needsAzimuth = azimuthElevationSet.has(body);
@@ -665,7 +657,7 @@ export class EphemerisService {
           );
           coordinateEphemeris[date.toISOString()] = coord;
         }
-        coordinateEphemerisByBody[body] = coordinateEphemeris;
+        coordinateEntries.push([body, coordinateEphemeris]);
         continue;
       }
 
@@ -754,21 +746,20 @@ export class EphemerisService {
         }
       }
 
-      coordinateEphemerisByBody[body] = coordinateEphemeris;
-      if (needsAzimuth)
-        azimuthElevationEphemerisByBody[body] = azimuthElevationEphemeris;
+      coordinateEntries.push([body, coordinateEphemeris]);
+      if (needsAzimuth) azimuthEntries.push([body, azimuthElevationEphemeris]);
       if (needsIllumination)
-        illuminationEphemerisByBody[body] = illuminationEphemeris;
-      if (needsDiameter) diameterEphemerisByBody[body] = diameterEphemeris;
-      if (needsDistance) distanceEphemerisByBody[body] = distanceEphemeris;
+        illuminationEntries.push([body, illuminationEphemeris]);
+      if (needsDiameter) diameterEntries.push([body, diameterEphemeris]);
+      if (needsDistance) distanceEntries.push([body, distanceEphemeris]);
     }
 
     return {
-      coordinateEphemerisByBody,
-      azimuthElevationEphemerisByBody,
-      illuminationEphemerisByBody,
-      diameterEphemerisByBody,
-      distanceEphemerisByBody,
+      coordinateEphemerisByBody: typedFromEntries(coordinateEntries),
+      azimuthElevationEphemerisByBody: typedFromEntries(azimuthEntries),
+      illuminationEphemerisByBody: typedFromEntries(illuminationEntries),
+      diameterEphemerisByBody: typedFromEntries(diameterEntries),
+      distanceEphemerisByBody: typedFromEntries(distanceEntries),
     };
   }
 

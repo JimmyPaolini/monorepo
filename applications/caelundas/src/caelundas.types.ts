@@ -456,6 +456,7 @@ export {
   aspectBodies as quintupleAspectBodies,
   aspectBodies as sextupleAspectBodies,
   aspectBodies as stelliumBodies,
+  typedObjectKeys,
 } from "./caelundas.constants";
 
 // #region Utilities 🛠️
@@ -512,7 +513,30 @@ export function groupByToMap<K extends PropertyKey, T>(
 export function objectEntries<K extends string, V>(
   record: Record<K, V>,
 ): [K, V][] {
+  // type-coverage:ignore-next-line
   return Object.entries(record) as [K, V][];
+}
+
+/**
+ * Strongly-typed wrapper around `Object.fromEntries()` that preserves the key union type.
+ *
+ * `Object.fromEntries()` always returns `Record<string, V>` by design, so a cast is
+ * required to recover the typed key. This helper centralizes that cast in one place.
+ *
+ * @param entries - Array of `[K, V]` tuples
+ * @returns A `Record<K, V>` built from the provided entries
+ *
+ * @example
+ * ```ts
+ * const record = typedFromEntries(bodies.map(body => [body, compute(body)]));
+ * // ^? Record<Body, ComputedType>
+ * ```
+ */
+export function typedFromEntries<K extends string, V>(
+  entries: [K, V][],
+): Record<K, V> {
+  // type-coverage:ignore-next-line
+  return Object.fromEntries(entries) as Record<K, V>;
 }
 
 /**
@@ -531,6 +555,7 @@ export function objectEntries<K extends string, V>(
  * ```
  */
 export function capitalize<T extends string>(str: T): Capitalize<T> {
+  // type-coverage:ignore-next-line
   return (str.charAt(0).toUpperCase() + str.slice(1)) as Capitalize<T>;
 }
 
@@ -551,6 +576,7 @@ export function capitalize<T extends string>(str: T): Capitalize<T> {
  * ```
  */
 export function uncapitalize<T extends string>(str: Capitalize<T>): T {
+  // type-coverage:ignore-next-line
   return (str.charAt(0).toLowerCase() + str.slice(1)) as T;
 }
 

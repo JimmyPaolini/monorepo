@@ -35,9 +35,7 @@
     "atLeast": 100,
     "ignoreCatch": true,
     "ignoreFiles": [
-      "**/*.spec.ts",
       "**/*.test.ts",
-      "**/testing/**"
     ],
     "strict": true
   },
