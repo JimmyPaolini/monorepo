@@ -2,7 +2,10 @@ import {
   symbolByBody,
   symbolByQuadrupleAspect,
 } from "@caelundas/src/caelundas.constants";
-import { quadrupleAspectBodies } from "@caelundas/src/caelundas.types";
+import {
+  groupByToMap,
+  quadrupleAspectBodies,
+} from "@caelundas/src/caelundas.types";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
@@ -19,8 +22,7 @@ import type { Moment } from "moment-timezone";
 function groupAspectsByType<T extends AspectBodies>(
   edges: T[],
 ): Map<Aspect, T[]> {
-  const grouped = _.groupBy(edges, "aspect");
-  return new Map(Object.entries(grouped)) as Map<Aspect, T[]>;
+  return groupByToMap(edges, (edge) => edge.aspect);
 }
 
 /**

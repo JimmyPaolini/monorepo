@@ -1,3 +1,14 @@
+import {
+  aspects,
+  bodies,
+  lunarPhases,
+  majorAspects,
+  minorAspects,
+  signs,
+  specialtyAspects,
+  symbolByDecan,
+} from "./caelundas.constants";
+
 import type {
   aspectPhases,
   eclipsePhases,
@@ -5,7 +16,6 @@ import type {
   symbolByAspect,
   symbolByAsteroid,
   symbolByBody,
-  symbolByDecan,
   symbolByLunarPhase,
   symbolByMajorAspect,
   symbolByMartianPhase,
@@ -447,3 +457,205 @@ export {
   aspectBodies as sextupleAspectBodies,
   aspectBodies as stelliumBodies,
 } from "./caelundas.constants";
+
+// #region Utilities 🛠️
+
+/**
+ * Groups an array of items by a key function and returns a typed `Map`.
+ *
+ * Fully preserves the key type `K`, avoiding the `string`-widening that
+ * `Object.entries(_.groupBy(...))` produces.
+ *
+ * @param items - Array to group
+ * @param keyFn - Function that extracts the grouping key from each item
+ * @returns A `Map` from key to all items sharing that key
+ *
+ * @example
+ * ```ts
+ * const byAspect = groupByToMap(edges, (e) => e.aspect);
+ * // ^? Map<Aspect, AspectBodies[]>
+ * ```
+ */
+export function groupByToMap<K extends PropertyKey, T>(
+  items: T[],
+  keyFn: (item: T) => K,
+): Map<K, T[]> {
+  const map = new Map<K, T[]>();
+  for (const item of items) {
+    const key = keyFn(item);
+    const existing = map.get(key);
+    if (existing) {
+      existing.push(item);
+    } else {
+      map.set(key, [item]);
+    }
+  }
+  return map;
+}
+
+/**
+ * Returns a typed version of `Object.entries` that preserves the key union.
+ *
+ * `Object.entries` always returns `[string, V][]` in the standard lib.
+ * This wrapper narrows the key to `K` when the record is typed as
+ * `Record<K, V>`.
+ *
+ * @param record - Object whose keys form a string union
+ * @returns An array of `[K, V]` tuples
+ *
+ * @example
+ * ```ts
+ * const entries = objectEntries(degreeRangeBySign);
+ * // ^? [Sign, { min: number; max: number }][]
+ * ```
+ */
+export function objectEntries<K extends string, V>(
+  record: Record<K, V>,
+): [K, V][] {
+  return Object.entries(record) as [K, V][];
+}
+
+/**
+ * Uppercases the first character of a string literal type.
+ *
+ * Mirrors `Capitalize<T>` at the value level. Prefer this over
+ * `_.startCase` + `as Capitalize<T>` — the assertion is confined here.
+ *
+ * @param str - A string union member (e.g., `Body`, `Sign`)
+ * @returns The same string with its first character uppercased
+ *
+ * @example
+ * ```ts
+ * const bodyCapitalized = capitalize(body);
+ * // ^? Capitalize<Body>
+ * ```
+ */
+export function capitalize<T extends string>(str: T): Capitalize<T> {
+  return (str.charAt(0).toUpperCase() + str.slice(1)) as Capitalize<T>;
+}
+
+/**
+ * Lowercases the first character of a capitalized string, recovering the
+ * original union member type.
+ *
+ * Inverse of {@link capitalize}. Use when round-tripping display strings
+ * (e.g., category labels) back to their original union values.
+ *
+ * @param str - A capitalized string (e.g., `Capitalize<Body>`)
+ * @returns The same string with its first character lowercased
+ *
+ * @example
+ * ```ts
+ * const body = uncapitalize(bodyCapitalized);
+ * // ^? Body
+ * ```
+ */
+export function uncapitalize<T extends string>(str: Capitalize<T>): T {
+  return (str.charAt(0).toLowerCase() + str.slice(1)) as T;
+}
+
+/**
+ * Type guard that checks whether a value is a key of the given object.
+ *
+ * Use instead of `value as keyof T` when indexing into a `const` object,
+ * or in place of `key in obj` casts.
+ *
+ * @param object - Object to check membership against
+ * @param key - Candidate key value
+ * @returns `true` if `key` is a key of `obj`, narrowed to `keyof T`
+ *
+ * @example
+ * ```ts
+ * if (isKeyOf(symbolByStellium, stelliumType)) {
+ *   const symbol = symbolByStellium[stelliumType]; // no cast
+ * }
+ * ```
+ */
+export function isKeyOf<T extends object>(
+  object: T,
+  key: PropertyKey,
+): key is keyof T {
+  return key in object;
+}
+
+/**
+ * Narrows an arbitrary string to the `Body` union at runtime.
+ *
+ * @param body - String to test
+ * @returns `true` if `body` is a member of the `Body` union
+ */
+export function isBody(body: string): body is Body {
+  return (bodies as readonly string[]).includes(body);
+}
+
+/**
+ * Narrows an arbitrary string to the `Sign` union at runtime.
+ *
+ * @param sign - String to test
+ * @returns `true` if `sign` is a member of the `Sign` union
+ */
+export function isSign(sign: string): sign is Sign {
+  return (signs as readonly string[]).includes(sign);
+}
+
+/**
+ * Narrows an arbitrary string to the `Aspect` union at runtime.
+ *
+ * @param aspect - String to test
+ * @returns `true` if `aspect` is a member of the `Aspect` union
+ */
+export function isAspect(aspect: string): aspect is Aspect {
+  return (aspects as readonly string[]).includes(aspect);
+}
+
+/**
+ * Narrows an arbitrary string to the `MajorAspect` union at runtime.
+ *
+ * @param majorAspect - String to test
+ * @returns `true` if `majorAspect` is a member of the `MajorAspect` union
+ */
+export function isMajorAspect(majorAspect: string): majorAspect is MajorAspect {
+  return (majorAspects as readonly string[]).includes(majorAspect);
+}
+
+/**
+ * Narrows an arbitrary string to the `MinorAspect` union at runtime.
+ *
+ * @param minorAspect - String to test
+ * @returns `true` if `minorAspect` is a member of the `MinorAspect` union
+ */
+export function isMinorAspect(minorAspect: string): minorAspect is MinorAspect {
+  return (minorAspects as readonly string[]).includes(minorAspect);
+}
+
+/**
+ * Narrows an arbitrary string to the `SpecialtyAspect` union at runtime.
+ *
+ * @param specialtyAspect - String to test
+ * @returns `true` if `specialtyAspect` is a member of the `SpecialtyAspect` union
+ */
+export function isSpecialtyAspect(
+  specialtyAspect: string,
+): specialtyAspect is SpecialtyAspect {
+  return (specialtyAspects as readonly string[]).includes(specialtyAspect);
+}
+
+/**
+ * Narrows an arbitrary string to the `LunarPhase` union at runtime.
+ *
+ * @param lunarPhase - String to test
+ * @returns `true` if `lunarPhase` is a member of the `LunarPhase` union
+ */
+export function isLunarPhase(lunarPhase: string): lunarPhase is LunarPhase {
+  return (lunarPhases as readonly string[]).includes(lunarPhase);
+}
+
+/**
+ * Narrows an arbitrary string to the `Decan` union at runtime.
+ *
+ * @param decan - String to test
+ * @returns `true` if `decan` is a member of the `Decan` union (`"1" | "2" | "3"`)
+ */
+export function isDecan(decan: string): decan is Decan {
+  return Object.hasOwn(symbolByDecan, decan);
+}

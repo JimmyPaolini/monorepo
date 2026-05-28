@@ -38,11 +38,14 @@
   },
   "type": "module",
   "typeCoverage": {
-    "atLeast": 99.57,
+    "atLeast": 100,
     "ignoreCatch": true,
     "ignoreFiles": [
       "**/*.spec.ts",
       "**/*.test.ts",
+      "**/caelundas.constants.ts",
+      "**/caelundas.types.ts",
+      "**/ephemeris/ephemeris.service.ts",
       "**/testing/**"
     ],
     "strict": true

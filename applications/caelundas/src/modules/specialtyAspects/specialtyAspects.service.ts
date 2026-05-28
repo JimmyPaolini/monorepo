@@ -3,7 +3,12 @@ import {
   symbolByBody,
   symbolBySpecialtyAspect,
 } from "@caelundas/src/caelundas.constants";
-import { specialtyAspectBodies } from "@caelundas/src/caelundas.types";
+import {
+  capitalize,
+  isBody,
+  isSpecialtyAspect,
+  specialtyAspectBodies,
+} from "@caelundas/src/caelundas.types";
 import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
@@ -215,8 +220,8 @@ export class SpecialtyAspectsService {
       throw new Error("No specialty aspect found");
     }
 
-    const body1Capitalized = _.startCase(body1) as Capitalize<Body>;
-    const body2Capitalized = _.startCase(body2) as Capitalize<Body>;
+    const body1Capitalized = capitalize(body1);
+    const body2Capitalized = capitalize(body2);
 
     const body1Symbol = symbolByBody[body1];
     const body2Symbol = symbolByBody[body2];
@@ -363,10 +368,21 @@ export class SpecialtyAspectsService {
 
     const body1Capitalized = bodiesCapitalized[0] ?? "";
     const body2Capitalized = bodiesCapitalized[1] ?? "";
-    const aspect = aspectCapitalized.toLowerCase() as SpecialtyAspect;
-
-    const body1 = body1Capitalized.toLowerCase() as Body;
-    const body2 = body2Capitalized.toLowerCase() as Body;
+    const aspectLower = aspectCapitalized.toLowerCase();
+    const body1Lower = body1Capitalized.toLowerCase();
+    const body2Lower = body2Capitalized.toLowerCase();
+    if (
+      !isSpecialtyAspect(aspectLower) ||
+      !isBody(body1Lower) ||
+      !isBody(body2Lower)
+    ) {
+      throw new Error(
+        `Could not extract typed values from categories: ${beginning.categories.join(", ")}`,
+      );
+    }
+    const aspect = aspectLower;
+    const body1 = body1Lower;
+    const body2 = body2Lower;
 
     const body1Symbol = symbolByBody[body1];
     const body2Symbol = symbolByBody[body2];

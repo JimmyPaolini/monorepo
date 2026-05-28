@@ -3,7 +3,7 @@ import {
   symbolByBody,
   symbolByOrbitalDirection,
 } from "@caelundas/src/caelundas.constants";
-import { retrogradeBodies } from "@caelundas/src/caelundas.types";
+import { capitalize, retrogradeBodies } from "@caelundas/src/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
@@ -187,10 +187,8 @@ export class RetrogradesService {
   }): Event {
     const { body, timestamp, direction } = args;
 
-    const bodyCapitalized = _.startCase(body) as Capitalize<RetrogradeBody>;
-    const orbitalDirectionCapitalized = _.startCase(
-      direction,
-    ) as Capitalize<OrbitalDirection>;
+    const bodyCapitalized = capitalize(body);
+    const orbitalDirectionCapitalized = capitalize(direction);
 
     const retrogradeBodySymbol = symbolByBody[body];
     const orbitalDirectionSymbol = symbolByOrbitalDirection[direction];

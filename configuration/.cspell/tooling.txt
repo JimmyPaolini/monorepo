@@ -111,8 +111,11 @@ texttypescript
 transpiler
 transpiles
 typeof
+uncapitalize
 unredacted
 untaint
+uppercased
+uppercases
 warshall
 
 #endregion
