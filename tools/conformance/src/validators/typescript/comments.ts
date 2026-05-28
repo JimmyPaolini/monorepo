@@ -1,25 +1,62 @@
-import { getLeadingCommentRanges, type Node, SyntaxKind } from "typescript";
+import { getLeadingCommentRanges, type Node } from "typescript";
 
 import { TODO_LINE_REGEX } from "./constants";
 
 import type { ConformanceError, ConformanceErrorLanguage } from "./types";
 
+/** Regex that matches both `//` single-line and `/* ... *\/` multi-line comments. */
+const COMMENT_PATTERN = /\/\/[^\n]*|\/\*[\s\S]*?\*\//g;
+
 /**
- * Retrieves the single-line comments in the trivia of a node at a given position.
+ * Collects all single-line `//` and multi-line `/* ... *\/` comments appearing
+ * in the text range [start, end], regardless of any intervening non-comment code.
+ */
+function getAllCommentsInRange(
+  text: string,
+  start: number,
+  end: number,
+): string[] {
+  const slice = text.slice(start, end);
+  const comments: string[] = [];
+  for (const match of slice.matchAll(COMMENT_PATTERN)) {
+    comments.push(match[0].trim());
+  }
+  return comments;
+}
+
+/**
+ * Walks up the parent chain from `node` to find the `end` position of the
+ * nearest ancestor that extends beyond `position`. Falls back to the source
+ * file length when no such ancestor exists.
+ */
+function findEnclosingScopeEnd(node: Node, position: number): number {
+  for (
+    let current = node.parent as Node | undefined;
+    current !== undefined;
+    current = current.parent as Node | undefined
+  ) {
+    if (current.end > position) return current.end;
+  }
+  return node.getSourceFile().text.length;
+}
+
+/**
+ * Retrieves single-line and multi-line comments in the trivia of a node at a
+ * given position.
  */
 export function getComments(node: Node, side: "pos" | "end"): string[] {
   const text = node.getSourceFile().text;
   const position = node[side];
   const ranges = getLeadingCommentRanges(text, position) ?? [];
-  const comments = ranges
-    .filter((range) => range.kind === SyntaxKind.SingleLineCommentTrivia)
-    .map((range) => text.slice(range.pos, range.end).trim());
+  const comments = ranges.map((range) =>
+    text.slice(range.pos, range.end).trim(),
+  );
   return comments;
 }
 
 /**
- * Retrieves single-line comments at `side` together with their 1-based line
- * and column positions within the source file.
+ * Retrieves single-line and multi-line comments at `side` together with their
+ * 1-based line and column positions within the source file.
  */
 function getCommentsWithPositions(
   node: Node,
@@ -29,18 +66,16 @@ function getCommentsWithPositions(
   const text = sourceFile.text;
   const position = node[side];
   const ranges = getLeadingCommentRanges(text, position) ?? [];
-  return ranges
-    .filter((range) => range.kind === SyntaxKind.SingleLineCommentTrivia)
-    .map((range) => {
-      const { line, character } = sourceFile.getLineAndCharacterOfPosition(
-        range.pos,
-      );
-      return {
-        text: text.slice(range.pos, range.end).trim(),
-        line: line + 1,
-        column: character + 1,
-      };
-    });
+  return ranges.map((range) => {
+    const { line, character } = sourceFile.getLineAndCharacterOfPosition(
+      range.pos,
+    );
+    return {
+      text: text.slice(range.pos, range.end).trim(),
+      line: line + 1,
+      column: character + 1,
+    };
+  });
 }
 
 /**
@@ -53,9 +88,10 @@ function getCommentsWithPositions(
  * comment ordering without requiring the instance to have no extra comments
  * between them.
  *
- * TODO comments are matched loosely — any `// ... TODO ...` line in the
- * instance satisfies a `// ... TODO ...` line in the template, so developers
- * may reword TODO placeholders freely. All other comments must match exactly.
+ * TODO comments are matched loosely — a template comment containing `TODO`
+ * matches **any** comment in the instance (whether still a TODO or replaced
+ * with real content), so developers may freely reword or replace TODO
+ * placeholders. All other comments must match exactly.
  *
  * @param templateNode - The AST node from the rendered template.
  * @param instanceNode - The corresponding AST node from the generated file.
@@ -72,7 +108,14 @@ export function validateComments(args: {
   const errors: ConformanceError[] = [];
 
   const templateComments = getCommentsWithPositions(templateNode, side);
-  const instanceComments = getComments(instanceNode, side);
+  const instanceText = instanceNode.getSourceFile().text;
+  const instanceStart = instanceNode[side];
+  const instanceScopeEnd = findEnclosingScopeEnd(instanceNode, instanceStart);
+  const instanceComments = getAllCommentsInRange(
+    instanceText,
+    instanceStart,
+    instanceScopeEnd,
+  );
 
   const instanceFile = instanceNode.getSourceFile();
   const instancePosition = instanceNode[side];
@@ -84,8 +127,10 @@ export function validateComments(args: {
     const endPosition = instanceComments
       .slice(startPosition)
       .findIndex((instanceComment: string): boolean => {
+        // A TODO template comment matches any comment — the developer may have
+        // reworded the TODO or replaced it with real documentation entirely.
         return TODO_LINE_REGEX.test(templateComment.text)
-          ? TODO_LINE_REGEX.test(instanceComment)
+          ? true
           : instanceComment === templateComment.text;
       });
 

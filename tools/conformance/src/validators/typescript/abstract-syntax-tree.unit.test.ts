@@ -222,10 +222,47 @@ describe("validateConformanceAST", () => {
       data: { nameCamelCase: "ephemeris", namePascalCase: "Ephemeris" },
       filename: "ephemeris.service.ts",
     });
-    const structuralErrors = result.errors.filter(
-      (e) => !e.message.startsWith("Missing comment:"),
-    );
-    expect(structuralErrors).toEqual([]);
+    expect(result.errors).toEqual([]);
+  });
+
+  it("field between section comments in constructor-injected service passes", () => {
+    // Regression test: a private field between // 🔐 Private Fields and
+    // // 🔑 Public Fields must not cause the later section comments to be
+    // reported as missing. The scan must look past class members to find
+    // section comments distributed across the class body.
+    const fileContent = [
+      'import { Injectable } from "@nestjs/common";',
+      "",
+      "/** Handles ephemeris data for the application. */",
+      "@Injectable()",
+      "export class EphemerisService {",
+      "  // 🏗️ Dependency Injection",
+      "  constructor() {}",
+      "",
+      "  // 🔐 Private Fields",
+      "",
+      "  private readonly nodeSet: ReadonlySet<string> = new Set<string>();",
+      "",
+      "  // 🔑 Public Fields",
+      "",
+      "  // 🔏 Private Methods",
+      "",
+      "  // 🌎 Public Methods",
+      "",
+      "  private isNode(body: string): boolean {",
+      "    return this.nodeSet.has(body);",
+      "  }",
+      "}",
+      "",
+    ].join("\n");
+    const templateContent = fs.readFileSync(SERVICE_TEMPLATE_PATH, "utf8");
+    const result = validateConformance({
+      instance: fileContent,
+      template: templateContent,
+      data: { nameCamelCase: "ephemeris", namePascalCase: "Ephemeris" },
+      filename: "ephemeris.service.ts",
+    });
+    expect(result.errors).toEqual([]);
   });
 
   it("reworded TODO comment in instance still passes", () => {
@@ -318,6 +355,123 @@ describe("validateConformanceAST", () => {
     expectErrorWithMessage(
       result.errors,
       'Missing PropertyAssignment "providers"',
+    );
+  });
+
+  it("template with block comment passes when instance has it", () => {
+    const template = [
+      'import { Injectable } from "@nestjs/common";',
+      "",
+      "/* shared internal note */",
+      "@Injectable()",
+      "export class UserService {",
+      "  constructor() {}",
+      "}",
+      "",
+    ].join("\n");
+    const rendered = mustache.render(template, data);
+    const result = validateConformance({
+      instance: rendered,
+      template,
+      data,
+      filename: "user.service.ts",
+    });
+    expect(result.errors).toEqual([]);
+  });
+
+  it("template with block comment fails when instance is missing it", () => {
+    const template = [
+      'import { Injectable } from "@nestjs/common";',
+      "",
+      "/* shared internal note */",
+      "@Injectable()",
+      "export class UserService {",
+      "  constructor() {}",
+      "}",
+      "",
+    ].join("\n");
+    const instance = template.replace("/* shared internal note */\n", "");
+    const result = validateConformance({
+      instance,
+      template,
+      data,
+      filename: "user.service.ts",
+    });
+    expectErrorWithMessage(
+      result.errors,
+      'Missing comment: "/* shared internal note */"',
+    );
+  });
+
+  it("template with JSDoc TODO comment passes when instance rewords it", () => {
+    const template = [
+      'import { Injectable } from "@nestjs/common";',
+      "",
+      "/** TODO: document this service */",
+      "@Injectable()",
+      "export class UserService {",
+      "  constructor() {}",
+      "}",
+      "",
+    ].join("\n");
+    const instance = template.replace(
+      "/** TODO: document this service */",
+      "/** TODO: replace with real documentation */",
+    );
+    const result = validateConformance({
+      instance,
+      template,
+      data,
+      filename: "user.service.ts",
+    });
+    expect(result.errors).toEqual([]);
+  });
+
+  it("template with JSDoc TODO comment passes when instance has real documentation", () => {
+    const template = [
+      'import { Injectable } from "@nestjs/common";',
+      "",
+      "/** TODO: document this service */",
+      "@Injectable()",
+      "export class UserService {",
+      "  constructor() {}",
+      "}",
+      "",
+    ].join("\n");
+    const instance = template.replace(
+      "/** TODO: document this service */",
+      "/** Handles user operations for the authentication flow. */",
+    );
+    const result = validateConformance({
+      instance,
+      template,
+      data,
+      filename: "user.service.ts",
+    });
+    expect(result.errors).toEqual([]);
+  });
+
+  it("template with non-TODO JSDoc fails when instance is missing it", () => {
+    const template = [
+      'import { Injectable } from "@nestjs/common";',
+      "",
+      "/** Handles user operations. */",
+      "@Injectable()",
+      "export class UserService {",
+      "  constructor() {}",
+      "}",
+      "",
+    ].join("\n");
+    const instance = template.replace("/** Handles user operations. */\n", "");
+    const result = validateConformance({
+      instance,
+      template,
+      data,
+      filename: "user.service.ts",
+    });
+    expectErrorWithMessage(
+      result.errors,
+      'Missing comment: "/** Handles user operations. */"',
     );
   });
 });

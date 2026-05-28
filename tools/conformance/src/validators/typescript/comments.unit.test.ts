@@ -35,10 +35,10 @@ describe("getComments", () => {
     ).toEqual(["// first", "// second"]);
   });
 
-  it("excludes block comments", () => {
+  it("includes block comments", () => {
     expect(
       getComments(firstStatement("/* block comment */\nconst x = 1;\n"), "pos"),
-    ).toEqual([]);
+    ).toEqual(["/* block comment */"]);
   });
 
   it("trims trailing whitespace from comment text", () => {

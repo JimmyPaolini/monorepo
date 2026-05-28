@@ -147,15 +147,14 @@ export function validateDepthFirstSearch(args: {
     }
   }
 
-  // Only check "end" trivia when the parent node extends beyond its last
-  // template child. When the last child's end equals the parent's end (e.g.,
-  // Constructor.end == Block.end), the child's own "end" call already scanned
-  // the same position, so skip to avoid reporting each missing comment twice.
+  // Only scan "end" trivia for empty blocks (no template children). When a
+  // node has children, its trailing comments are either covered by the last
+  // child's own "end" scan or the next sibling's "pos" scan. Scanning from
+  // `templateNode.end` for non-empty nodes would re-check the same trivia
+  // region (e.g. Constructor.end == Block.end), reporting the same missing
+  // comments twice.
   const lastTemplateChild = templateChildren.at(-1);
-  if (
-    lastTemplateChild === undefined ||
-    lastTemplateChild.end < templateNode.end
-  ) {
+  if (lastTemplateChild === undefined) {
     errors.push(
       ...validateComments({
         templateNode,
