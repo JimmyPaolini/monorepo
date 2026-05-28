@@ -33,10 +33,6 @@
   "type": "module",
   "typeCoverage": {
     "atLeast": 100,
-    "ignoreCatch": true,
-    "ignoreFiles": [
-      "**/*.test.ts",
-    ],
     "strict": true
   },
   "version": "0.0.1"
