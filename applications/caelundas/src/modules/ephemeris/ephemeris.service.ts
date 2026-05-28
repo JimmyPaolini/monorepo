@@ -57,7 +57,6 @@ export class EphemerisService {
 
   // 🔐 Private Fields
 
-  // � Private Fields
   private readonly nodeSet: ReadonlySet<string> = new Set<string>(nodes);
 
   // 🔑 Public Fields

@@ -184,15 +184,37 @@ describe("validateConformanceAST", () => {
     );
   });
 
-  it("caelundas ephemeris service (heavily modified) passes AST validation", () => {
-    const CAELUNDAS_MODULES = path.resolve(
-      __dirname,
-      "../../../../../applications/caelundas/src/modules",
-    );
-    const fileContent = fs.readFileSync(
-      path.join(CAELUNDAS_MODULES, "ephemeris", "ephemeris.service.ts"),
-      "utf8",
-    );
+  it("heavily modified service with fields between section comments passes AST validation", () => {
+    const fileContent = [
+      'import { Injectable } from "@nestjs/common";',
+      'import { Logger } from "@nestjs/common";',
+      "",
+      "/** Computes ephemeris data for a date range. */",
+      "@Injectable()",
+      "export class EphemerisService {",
+      "  // 🏗️ Dependency Injection",
+      "  constructor() {}",
+      "",
+      "  // 🔐 Private Fields",
+      "  private readonly logger = new Logger(EphemerisService.name);",
+      "  private readonly cache = new Map<string, number[]>();",
+      "",
+      "  // 🔑 Public Fields",
+      "",
+      "  // 🔏 Private Methods",
+      "",
+      "  private isSupported(body: string): boolean {",
+      '    return body === "sun" || body === "moon";',
+      "  }",
+      "",
+      "  // 🌎 Public Methods",
+      "",
+      "  public get(body: string): number[] {",
+      "    return this.cache.get(body) ?? [];",
+      "  }",
+      "}",
+      "",
+    ].join("\n");
     const templateContent = fs.readFileSync(SERVICE_TEMPLATE_PATH, "utf8");
     const result = validateConformance({
       instance: fileContent,
@@ -201,7 +223,7 @@ describe("validateConformanceAST", () => {
       filename: "ephemeris.service.ts",
     });
     const structuralErrors = result.errors.filter(
-      (e) => !e.message.startsWith("Missing template comment:"),
+      (e) => !e.message.startsWith("Missing comment:"),
     );
     expect(structuralErrors).toEqual([]);
   });
@@ -358,11 +380,50 @@ describe("validateConformanceAST — multi-candidate keyless nodes", () => {
   });
 });
 
-describe("validateConformanceAST — caelundas module error detection", () => {
-  const CAELUNDAS_MODULES = path.resolve(
-    __dirname,
-    "../../../../../applications/caelundas/src/modules",
-  );
+describe("validateConformanceAST — error detection", () => {
+  const MOCK_DATETIME_SERVICE = [
+    'import { Injectable } from "@nestjs/common";',
+    "",
+    "@Injectable()",
+    "export class DatetimeService {",
+    "  // 🏗️ Dependency Injection",
+    "  constructor() {}",
+    "",
+    "  // 🔐 Private Fields",
+    "",
+    "  // 🔑 Public Fields",
+    "",
+    "  // 🔏 Private Methods",
+    "",
+    "  // 🌎 Public Methods",
+    "  public now(): Date {",
+    "    return new Date();",
+    "  }",
+    "}",
+    "",
+  ].join("\n");
+
+  const MOCK_MATH_SERVICE = [
+    'import { Injectable } from "@nestjs/common";',
+    "",
+    "@Injectable()",
+    "export class MathService {",
+    "  // 🏗️ Dependency Injection",
+    "  constructor() {}",
+    "",
+    "  // 🔐 Private Fields",
+    "",
+    "  // 🔑 Public Fields",
+    "",
+    "  // 🔏 Private Methods",
+    "",
+    "  // 🌎 Public Methods",
+    "  public add(a: number, b: number): number {",
+    "    return a + b;",
+    "  }",
+    "}",
+    "",
+  ].join("\n");
 
   function readServiceTemplate(): string {
     return fs.readFileSync(
@@ -377,13 +438,8 @@ describe("validateConformanceAST — caelundas module error detection", () => {
     );
   }
 
-  it("missing @Injectable decorator in datetime service fails", () => {
-    const fileContent = fs
-      .readFileSync(
-        path.join(CAELUNDAS_MODULES, "datetime", "datetime.service.ts"),
-        "utf8",
-      )
-      .replace("@Injectable()\n", "");
+  it("missing @Injectable decorator fails", () => {
+    const fileContent = MOCK_DATETIME_SERVICE.replace("@Injectable()\n", "");
     const result = validateConformance({
       instance: fileContent,
       template: readServiceTemplate(),
@@ -393,13 +449,11 @@ describe("validateConformanceAST — caelundas module error detection", () => {
     expectErrorWithMessage(result.errors, 'Missing Decorator "Injectable"');
   });
 
-  it("missing section comment in math service fails", () => {
-    const fileContent = fs
-      .readFileSync(
-        path.join(CAELUNDAS_MODULES, "math", "math.service.ts"),
-        "utf8",
-      )
-      .replace("  // 🌎 Public Methods\n", "");
+  it("missing section comment fails", () => {
+    const fileContent = MOCK_MATH_SERVICE.replace(
+      "  // 🌎 Public Methods\n",
+      "",
+    );
     const result = validateConformance({
       instance: fileContent,
       template: readServiceTemplate(),
@@ -412,13 +466,11 @@ describe("validateConformanceAST — caelundas module error detection", () => {
     );
   });
 
-  it("renamed class in datetime service fails", () => {
-    const fileContent = fs
-      .readFileSync(
-        path.join(CAELUNDAS_MODULES, "datetime", "datetime.service.ts"),
-        "utf8",
-      )
-      .replaceAll("DatetimeService", "RenamedService");
+  it("renamed class fails", () => {
+    const fileContent = MOCK_DATETIME_SERVICE.replaceAll(
+      "DatetimeService",
+      "RenamedService",
+    );
     const result = validateConformance({
       instance: fileContent,
       template: readServiceTemplate(),
@@ -431,13 +483,8 @@ describe("validateConformanceAST — caelundas module error detection", () => {
     );
   });
 
-  it("missing constructor in math service fails", () => {
-    const fileContent = fs
-      .readFileSync(
-        path.join(CAELUNDAS_MODULES, "math", "math.service.ts"),
-        "utf8",
-      )
-      .replace("  constructor() {}\n", "");
+  it("missing constructor fails", () => {
+    const fileContent = MOCK_MATH_SERVICE.replace("  constructor() {}\n", "");
     const result = validateConformance({
       instance: fileContent,
       template: readServiceTemplate(),
