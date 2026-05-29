@@ -13,8 +13,6 @@ import type {
 } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
 
-const categories = ["Astronomy", "Astrology", "Eclipse"];
-
 /**
  * Detects solar and lunar eclipse events using Sun and Moon positional and diameter data.
  *
@@ -31,6 +29,8 @@ export class EclipsesService {
   ) {}
 
   // 🔐 Private Fields
+
+  private readonly categories = ["Astronomy", "Astrology", "Eclipse"];
 
   // 🔑 Public Fields
 
@@ -452,7 +452,7 @@ export class EclipsesService {
       end: date,
       summary: framedSummary,
       description: framedDescription,
-      categories: [...categories, "Solar", frameLabel],
+      categories: [...this.categories, "Solar", frameLabel],
     };
     return solarEclipseEvent;
   }
@@ -505,7 +505,7 @@ export class EclipsesService {
       end: date,
       summary: framedSummary,
       description: framedDescription,
-      categories: [...categories, "Lunar", frameLabel],
+      categories: [...this.categories, "Lunar", frameLabel],
     };
     return lunarEclipseEvent;
   }
@@ -594,7 +594,7 @@ export class EclipsesService {
       end: ending.start,
       summary: `${frameSymbol} ☀️🐉 Solar Eclipse (${frameLabel})`,
       description: `Solar Eclipse (${frameLabel})`,
-      categories: [...categories, "Solar", frameLabel],
+      categories: [...this.categories, "Solar", frameLabel],
     };
   }
 
@@ -609,7 +609,7 @@ export class EclipsesService {
       end: ending.start,
       summary: `${frameSymbol} 🌙🐉 Lunar Eclipse (${frameLabel})`,
       description: `Lunar Eclipse (${frameLabel})`,
-      categories: [...categories, "Lunar", frameLabel],
+      categories: [...this.categories, "Lunar", frameLabel],
     };
   }
 
