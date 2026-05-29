@@ -4,7 +4,7 @@ This document describes the CI/CD pipeline architecture for the monorepo.
 
 ## Overview
 
-The monorepo uses 9 GitHub Actions workflows and 1 composite action, all located in `.github/`. Every workflow uses the shared [`setup-monorepo`](#composite-action-setup-monorepo) composite action for consistent environment setup and Nx caching.
+The monorepo uses 11 GitHub Actions workflows and 1 composite action, all located in `.github/`. Every workflow uses the shared [`setup-monorepo`](#composite-action-setup-monorepo) composite action for consistent environment setup and Nx caching.
 
 ## Composite Action: setup-monorepo
 
@@ -12,15 +12,18 @@ The monorepo uses 9 GitHub Actions workflows and 1 composite action, all located
 
 All workflows call this composite action after checkout. It provides:
 
-| Step         | Tool                            | Version | Purpose                                    |
-| ------------ | ------------------------------- | ------- | ------------------------------------------ |
-| pnpm         | pnpm/action-setup               | 10.20.0 | Package manager                            |
-| Node.js      | actions/setup-node              | 22.20.0 | JavaScript runtime with pnpm cache         |
-| Nx SHAs      | nrwl/nx-set-shas                | v4      | Calculates affected projects from git diff |
-| Homebrew     | Homebrew/actions/setup-homebrew | master  | Package manager for system tools           |
-| yamllint     | brew install                    | latest  | YAML linting support                       |
-| Nx cache     | actions/cache                   | v4      | Restores/saves `.nx/cache` directory       |
-| Dependencies | pnpm install                    | -       | Frozen lockfile install                    |
+| Step                       | Tool                            | Purpose                                              |
+| -------------------------- | ------------------------------- | ---------------------------------------------------- |
+| pnpm                       | pnpm/action-setup@v4            | Package manager                                      |
+| Node.js                    | actions/setup-node@v4           | JavaScript runtime from `.nvmrc`, with pnpm cache    |
+| Nx SHAs                    | nrwl/nx-set-shas@v4             | Calculates `NX_BASE`/`NX_HEAD` for affected commands |
+| Nx output style            | env var                         | Sets `NX_DEFAULT_OUTPUT_STYLE=static`                |
+| Homebrew                   | Homebrew/actions/setup-homebrew | Package manager for system tools                     |
+| gitleaks                   | brew install                    | Secret scanning tool                                 |
+| Nx cache                   | actions/cache@v4                | Restores/saves `.nx/cache` keyed on lockfile + SHA   |
+| uv                         | astral-sh/setup-uv@v6           | Python package manager with cache                    |
+| Python dependencies        | uv sync                         | Installs affirmations Python deps from pyproject.toml |
+| Node.js dependencies       | pnpm install --frozen-lockfile  | Frozen lockfile install                              |
 
 **Usage in workflows:**
 
@@ -40,134 +43,196 @@ All workflows call this composite action after checkout. It provides:
 
 ### On Every PR + Push to Main
 
-#### 1. Build Code (`build-code.yml`)
-
-**Name:** 👷 Build Code
-
-**Triggers:** Push to `main`, pull requests
-
-**Jobs:**
-
-- **Build Projects** - Runs `nx affected -t build --parallel=3` to build all affected projects
-- **Bundle Report** (PR only) - Builds both PR and base branch, runs `size-limit` on affected projects, calculates size differences, and posts a comparison comment on the PR with status indicators (decrease/increase/critical)
-
-**Concurrency:** Cancels in-progress runs for the same branch
-
----
-
-#### 2. Analyze Code (`analyze-code.yml`)
+#### 1. Analyze Code (`analyze-code.yml`)
 
 **Name:** 🧑‍💻 Analyze Code
 
-**Triggers:** Push to `main`, pull requests
+**Triggers:** Push to `main`, pull requests, manual dispatch (optional `verbose` flag)
 
-**Jobs:** Single matrix job running 8 checks in parallel:
+**Jobs:**
 
-| Check            | Command                                                         |
-| ---------------- | --------------------------------------------------------------- |
-| 🏷️ Type Check    | `nx affected -t typecheck --parallel=3`                         |
-| 🧹 Lint Check    | `nx affected -t lint --parallel=3`                              |
-| 🖼️ Markdown Lint | `nx affected -t markdown-lint --parallel=3`                     |
-| 📄 YAML Lint     | `nx affected -t yaml-lint --parallel=3`                         |
-| 🎨 Format Check  | `nx affected -t format --configuration=check --parallel=3`      |
-| ✂️ Knip Check    | `nx affected -t knip --parallel=3`                              |
-| 🧙‍♂️ Spell Check   | `nx affected -t spell-check --parallel=3`                       |
-| 🔖 Type Coverage | `nx affected -t type-coverage --parallel=3` (uploads artifacts) |
+- **analyze-code** - Runs `pnpm exec nx affected --target=analyze-code` then uploads type coverage reports from `applications/*/`, `packages/*/`, and `tools/*/` as artifacts (30-day retention)
 
 **Concurrency:** Cancels in-progress runs for the same branch
 
 ---
 
-#### 3. Convention Check (`convention-check.yml`)
+#### 2. Build Projects (`build-projects.yml`)
 
-**Name:** 🏛️ Convention Check
-
-**Triggers:** Pull requests (opened, reopened, synchronize, edited)
-
-**Jobs:** Single matrix job with 3 checks:
-
-| Check                  | What it validates                                                                     |
-| ---------------------- | ------------------------------------------------------------------------------------- |
-| 🎋 Branch Validation   | Branch name matches `<type>/<scope>-<description>` pattern via `validate-branch-name` |
-| 📝 PR Title Validation | PR title follows Conventional Commits format via `commitlint`                         |
-| 🪢 PR Body Validation  | PR body contains required `## Summary`, `## Details`, and `## Testing` sections       |
-
----
-
-#### 4. Dependency Analysis (`dependency-analysis.yml`)
-
-**Name:** 🕵️ Dependency Analysis
-
-**Triggers:** Push to `main`, pull requests, weekly (Monday 6am UTC)
-
-**Jobs:** Single matrix job with 3 checks:
-
-| Check               | Command                                                                |
-| ------------------- | ---------------------------------------------------------------------- |
-| 🔗 Dependency Check | `nx affected -t dependency-cruiser --parallel=3`                       |
-| 🔒 Security Audit   | `pnpm audit --audit-level=moderate`                                    |
-| 📃 License Check    | `nx run monorepo:license-check`                                        |
-
----
-
-#### 5. Test Coverage (`test-coverage.yml`)
-
-**Name:** 🧑‍🔬 Test Code
+**Name:** 👷 Build Projects
 
 **Triggers:** Push to `main`, pull requests
 
 **Jobs:**
 
-- **Test Coverage** - Runs `nx affected -t test --parallel=3 --coverage` and uploads coverage reports as artifacts (30-day retention)
+- **build-projects** - Runs `npx nx run-many --all --target=build --parallel=3` to build all projects
+- **Bundle Report** (PR only) - Builds both PR and base branch, runs `size-limit` on lexico and lexico-components, calculates size differences, and posts a comparison table comment on the PR with emoji status indicators (✅ decrease / ⚠️ increase / 📈 significant / ❌ over limit)
+
+**Concurrency:** Cancels in-progress runs for the same branch
+
+---
+
+#### 3. Test Coverage (`test-coverage.yml`)
+
+**Name:** 🧑‍🔬 Test Coverage
+
+**Triggers:** Push to `main`, pull requests, manual dispatch (optional `verbose` flag)
+
+**Jobs:**
+
+- **test-coverage** - Runs `npx nx affected --target=test --parallel=3 --configuration=coverage` and uploads coverage reports as artifacts (30-day retention, always runs even if tests fail)
+
+**Concurrency:** Cancels in-progress runs for the same branch
+
+---
+
+### On PRs + Push to Main (Security)
+
+#### 4. Audit Security (`audit-security.yml`)
+
+**Name:** 🕵️ Audit Security
+
+**Triggers:** Push to `main`, pull requests, weekly (Monday 6am UTC)
+
+**Jobs:** Single job running sequential security checks:
+
+| Check                     | Command / Tool                                            |
+| ------------------------- | --------------------------------------------------------- |
+| 🔍 Gitleaks               | `pnpm exec nx run monorepo:gitleaks --configuration=ci`   |
+| 🐍 Bandit (Python)        | `pnpm exec nx affected --target=bandit --parallel=3`      |
+| 📦 Dependency Audit       | `pnpm exec nx affected --target=scan-dependencies --parallel=3` |
+| 🏗️ Trivy (Infrastructure) | `aquasecurity/trivy-action@v0.36.0` on `infrastructure/terraform/` (severity: `CRITICAL,HIGH`; runs on schedule or when Terraform files changed) |
+
+**Concurrency:** Cancels in-progress runs for the same branch
+
+---
+
+### On PRs Only
+
+#### 5. Validate Conventions (`validate-conventions.yml`)
+
+**Name:** 🧑‍⚖️ Validate Conventions
+
+**Triggers:** Pull requests (opened, reopened, synchronize, edited), push to `main`
+
+**Condition:** Skips for `dependabot[bot]`
+
+**Jobs:** Single job with sequential convention checks:
+
+| Check                        | What it validates                                                                    |
+| ---------------------------- | ------------------------------------------------------------------------------------ |
+| 🎋 Branch Validation         | Branch name matches `<type>/<scope>-<description>` via `validate-branch-name` (PR only) |
+| 📝 PR Title Validation       | PR title follows Conventional Commits format via `commitlint` (PR only)              |
+| 🪢 PR Body Validation        | PR body contains required `## 🌰 Summary`, `## 📝 Details`, `## 🧪 Testing`, `## 🔗 Related` sections (PR only) |
+| ⚙️ Convention Config Sync    | `npx nx run monorepo:sync-conventional-config:check`                                 |
+| 📋 PR Template Sync          | `npx nx run monorepo:sync-pull-request-template:check`                               |
+| 🤖 Agent Skills Sync         | `npx nx run monorepo:sync-agent-skills:check`                                        |
+
+**Concurrency:** Cancels in-progress runs for the same branch
 
 ---
 
 ### Automated (Push to Main)
 
-#### 6. Release Projects (`release-projects.yml`)
+#### 6. Release Version (`release-version.yml`)
 
-**Name:** 🚀 Release Projects
+**Name:** 🦸 Release Version
 
 **Triggers:** Push to `main`, manual dispatch
 
 **Jobs:**
 
-- **Release** - Runs `pnpm semantic-release` to analyze commits, bump version, update `CHANGELOG.md`, and create a GitHub release
+- **release-version** - Runs `pnpm semantic-release` to analyze commits, bump version, update `CHANGELOG.md`, and create a GitHub release. Uses GPG-signed commits.
 
 **Permissions:** `contents: write`, `issues: write`, `pull-requests: write`
+
+**Concurrency:** Cancels in-progress runs for the same branch
 
 ---
 
 ### Automated (Path-Filtered)
 
-#### 7. Build Devcontainer (`build-devcontainer.yml`)
+#### 7. Make Devcontainer (`make-devcontainer.yml`)
 
-**Name:** 🐳 Build Devcontainer
+**Name:** 🧑‍🔧 Make Devcontainer
 
 **Triggers:**
 
 - Push to `main` (only `.devcontainer/**` changes)
-- Pull requests (only `.devcontainer/**` changes)
-- Manual dispatch (with optional "run tests" input)
+- Pull requests (only `.devcontainer/**` or `make-devcontainer.yml` changes)
+- Manual dispatch
 
 **Jobs:**
 
-- **Build Devcontainer** - Builds the dev container image using `devcontainers/ci@v0.3`, pushes to GHCR (`ghcr.io/jimmypaolini/monorepo-devcontainer`) on push to main, uses GitHub Actions cache
-- **Test Devcontainer** (conditional) - Runs `pnpm install` + `nx run-many --target=lint --all` inside the container. Only triggered by manual dispatch with `run_tests: true` or PR label `test-devcontainer`
+- **make-devcontainer** - Validates VSCode extensions sync, builds the dev container image using `devcontainers/ci@v0.3`, pushes to GHCR (`ghcr.io/jimmypaolini/monorepo-devcontainer`) only on push to `main`, then runs `.devcontainer/scripts/test-devcontainer.sh` inside the container
+
+**Permissions:** `contents: read`, `packages: write`
+
+**Concurrency:** Cancels in-progress runs for the same branch
+
+---
+
+#### 8. Setup Copilot (`copilot-setup-steps.yml`)
+
+**Name:** 🤖 Setup Copilot
+
+**Triggers:** Manual dispatch, push/PR if `copilot-setup-steps.yml` changes
+
+**Jobs:**
+
+- **copilot-setup-steps** - Runs `setup-monorepo` and authenticates the GitHub CLI (`gh auth login`) for use by Copilot agents
+
+**Permissions:** `contents: read`, `pull-requests: write`
 
 ---
 
 ### Scheduled (Weekly)
 
-#### 8. Knip Cleanup (`knip-cleanup.yml`)
+#### 9. Remove Deprecations (`remove-deprecations.yml`)
 
-**Name:** ✂️ Knip Cleanup
+**Name:** ✂️ Remove Deprecations
 
 **Triggers:** Weekly (Sunday 6am UTC), manual dispatch
 
 **Jobs:**
 
-- **Knip Cleanup** - Runs `knip --fix --allow-remove-files --format` to auto-remove unused code, closes any existing cleanup PR, and opens a new PR with the changes
+- **remove-deprecations** - Closes any existing `chore/monorepo-remove-deprecations` PR, runs `pnpm exec nx run monorepo:clean:write` (knip) to remove unused code/exports/dependencies, then opens a new GPG-signed PR on the `chore/monorepo-remove-deprecations` branch with labels `automated` assigned to `JimmyPaolini`
+
+**Permissions:** `contents: write`, `pull-requests: write`
+
+**Concurrency:** Cancels in-progress runs for the same branch
+
+---
+
+#### 10. Refresh Documentation (`refresh-documentation.yml`)
+
+**Name:** 🧑‍🏫 Refresh Documentation
+
+**Triggers:** Weekly (Sunday 12am UTC), manual dispatch
+
+**Jobs:**
+
+- **refresh-documentation** - Invokes the GitHub Agents API with a detailed audit prompt to review and update all documentation (README.md, `documentation/`, AGENTS.md, skills), classifying findings as Deprecated/Outdated/Missing, then creates a PR with a `docs(documentation): 📝` commit message
+
+**Permissions:** `contents: read`
+
+**Concurrency:** Cancels in-progress runs for the same branch
+
+---
+
+#### 11. Upgrade Dependencies (`upgrade-dependencies.yml`)
+
+**Name:** 🧑‍🚒 Upgrade Dependencies
+
+**Triggers:** Weekly (Sunday 10am UTC), manual dispatch
+
+**Jobs:**
+
+- **upgrade-dependencies** - Upgrades pnpm (self-update), Node.js (via nvm LTS, writes `.nvmrc`), Python (via uv), all Node.js dependencies (`nx run monorepo:upgrade-dependencies:write`), and Python dependencies (`uv lock --upgrade`). If any changes are detected, closes the existing `chore/dependencies-upgrade` PR and opens a new GPG-signed one with labels `dependencies`, `automated` assigned to `JimmyPaolini`
+
+**Permissions:** `contents: write`, `pull-requests: write`
+
+**Concurrency:** Cancels in-progress runs for the same branch
 
 ---
 
@@ -179,20 +244,13 @@ All workflows use concurrency groups keyed by `${{ github.workflow }}-${{ github
 
 ### Affected Commands
 
-Most workflows use `nx affected -t <target>` which only runs tasks on projects changed since the base branch. The `nrwl/nx-set-shas` action in `setup-monorepo` automatically determines the correct base SHA for comparison.
-
-### Matrix Strategy
-
-Three workflows use `fail-fast: false` matrix strategies to run multiple checks in parallel while allowing individual failures:
-
-- `analyze-code.yml` — 8 checks
-- `convention-check.yml` — 3 checks
-- `audit-security.yml` — 3 checks
+Most workflows use `nx affected -t <target>` which only runs tasks on projects changed since the base branch. The `nrwl/nx-set-shas` action in `setup-monorepo` automatically determines the correct base SHA (`NX_BASE`) and head SHA (`NX_HEAD`) for comparison.
 
 ### Caching
 
 - **pnpm cache:** Managed by `actions/setup-node` via pnpm lockfile hash
-- **Nx cache:** Managed by `actions/cache` with SHA-based keys and restore fallbacks
+- **Nx cache:** Managed by `actions/cache` with SHA-based keys and restore fallbacks (`.nx/cache`)
+- **uv cache:** Managed by `astral-sh/setup-uv` for Python dependencies
 
 ---
 
