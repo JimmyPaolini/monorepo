@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.2](https://github.com/JimmyPaolini/monorepo/compare/v1.3.1...v1.3.2) (2026-05-29)
+
+### ♻️ Code Refactoring
+
+* **caelundas:** 🔨 move module-level functions/constants into classes as instance methods ([#51](https://github.com/JimmyPaolini/monorepo/issues/51)) ([e659f0b](https://github.com/JimmyPaolini/monorepo/commit/e659f0b698cb06ef7aada42cf03d4ac3fb314dd3))
+
 ## [1.3.1](https://github.com/JimmyPaolini/monorepo/compare/v1.3.0...v1.3.1) (2026-05-29)
 
 ### 📦 Build System
