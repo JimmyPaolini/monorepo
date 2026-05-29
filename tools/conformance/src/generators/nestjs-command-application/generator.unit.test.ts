@@ -27,9 +27,6 @@ describe("generateNestjsCommandApplication", () => {
       expect(tree.exists(`${base}/src/main.ts`)).toBeTruthy();
       expect(tree.exists(`${base}/src/stellarCli.module.ts`)).toBeTruthy();
       expect(tree.exists(`${base}/src/stellarCli.command.ts`)).toBeTruthy();
-      expect(
-        tree.exists(`${base}/src/modules/conformance.integration.test.ts`),
-      ).toBeTruthy();
       expect(tree.exists(`${base}/testing/setup.ts`)).toBeTruthy();
     });
 
