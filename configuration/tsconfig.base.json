@@ -35,6 +35,9 @@
     // Enables `import { Button } from "@monorepo/lexico-components"` across projects
     "paths": {
       "@monorepo/conformance/*": ["../tools/conformance/*"],
+      "@monorepo/lexico-ingestion-entities": [
+        "../packages/lexico-ingestion-entities/src/index.ts"
+      ],
       "@monorepo/lexico-components": [
         "../packages/lexico-components/src/index.ts"
       ]

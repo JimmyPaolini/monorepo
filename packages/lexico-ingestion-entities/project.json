@@ -1,0 +1,49 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "lexico-ingestion-entities",
+  "projectType": "library",
+  "sourceRoot": "packages/lexico-ingestion-entities/src",
+  "tags": ["domain:lexico", "framework:typeorm", "type:lib"],
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "echo 'lexico-ingestion-entities is source-only and does not require building'"
+      }
+    },
+    "eslint": {
+      "configurations": {
+        "check": {
+          "command": "eslint ."
+        },
+        "fix": {
+          "command": "eslint . --fix"
+        }
+      },
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "eslint ."
+      }
+    },
+    "oxlint": {
+      "configurations": {
+        "check": {
+          "command": "oxlint --config configuration/oxlint.config.ts   packages/lexico-ingestion-entities/src"
+        },
+        "fix": {
+          "command": "oxlint --fix --config configuration/oxlint.config.ts   packages/lexico-ingestion-entities/src"
+        }
+      },
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "oxlint --config configuration/oxlint.config.ts   packages/lexico-ingestion-entities/src"
+      }
+    },
+    "type-check": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsc --project packages/lexico-ingestion-entities/tsconfig.json --noEmit"
+      }
+    }
+  }
+}
