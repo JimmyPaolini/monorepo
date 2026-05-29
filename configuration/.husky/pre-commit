@@ -11,7 +11,7 @@ LINT_STAGED_EXIT_CODE=$?
 set -e
 
 grep -vE "$NOISE_FILTER" "$TMP_OUTPUT_FILE" \
-	| awk '{ gsub(/\033\[[0-9;]*[mK]/, ""); print }' \
-	| tee last-lint-staged-errors.txt
+  | awk '{ gsub(/\033\[[0-9;]*[mK]/, ""); print }' \
+  | tee last-lint-staged-errors.txt
 
 exit "$LINT_STAGED_EXIT_CODE"
