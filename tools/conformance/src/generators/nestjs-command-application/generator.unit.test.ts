@@ -39,6 +39,7 @@ describe("generateNestjsCommandApplication", () => {
         "applications/stellar-cli/project.json",
         "utf8",
       );
+      expect(projectJson).toContain('"generator:nestjs-command-application"');
       expect(projectJson).toContain('"framework:nest-commander"');
       expect(projectJson).toContain('"framework:nestjs"');
 
