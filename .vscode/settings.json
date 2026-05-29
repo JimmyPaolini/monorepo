@@ -284,6 +284,7 @@
     "source.convertImportStar": "explicit",
     "source.fixAll": "explicit",
     "source.fixAll.eslint": "explicit",
+    "source.fixAll.markdownlint": "explicit",
     "source.fixAll.oxc": "explicit",
     "source.fixAll.prettier": "never",
     "source.fixAll.pylance": "never",
@@ -645,7 +646,9 @@
   "json.validate.enable": true,
   "jsonc.format.enable": true,
   "jsonc.validate.enable": false,
-  "markdownlint.configFile": "configuration/.markdownlint-cli2.jsonc",
+  "markdownlint.configFile": "${workspaceFolder}/configuration/.markdownlint-cli2.jsonc",
+  "markdownlint.severityForError": "Error",
+  "markdownlint.severityForWarning": "Warning",
   "material-icon-theme.files.associations": {
     ".code-workspace*": "vscode",
     ".pnpmfile.mjs": "pnpm",

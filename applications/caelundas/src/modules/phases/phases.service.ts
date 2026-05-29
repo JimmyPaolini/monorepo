@@ -182,7 +182,7 @@ export class PhasesService {
   }): Event {
     const { timestamp, phase } = args;
 
-    const phaseCapitalized = _.startCase(phase) as Capitalize<VenusianPhase>;
+    const phaseCapitalized = _.startCase(phase);
     const phaseSymbol = symbolByVenusianPhase[phase];
 
     const description = `Venus ${phaseCapitalized}`;
@@ -453,7 +453,7 @@ export class PhasesService {
   }): Event {
     const { timestamp, phase } = args;
 
-    const phaseCapitalized = _.startCase(phase) as Capitalize<MercurianPhase>;
+    const phaseCapitalized = _.startCase(phase);
     const phaseSymbol = symbolByMercurianPhase[phase];
 
     const description = `Mercury ${phaseCapitalized}`;
@@ -721,7 +721,7 @@ export class PhasesService {
   }): Event {
     const { timestamp, phase } = args;
 
-    const phaseCapitalized = _.startCase(phase) as Capitalize<MartianPhase>;
+    const phaseCapitalized = _.startCase(phase);
     const phaseSymbol = symbolByMartianPhase[phase];
 
     const description = `Mars ${phaseCapitalized}`;

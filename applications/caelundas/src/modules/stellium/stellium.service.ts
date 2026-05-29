@@ -2,7 +2,11 @@ import {
   symbolByBody,
   symbolByStellium,
 } from "@caelundas/src/caelundas.constants";
-import { stelliumBodies } from "@caelundas/src/caelundas.types";
+import {
+  groupByToMap,
+  isKeyOf,
+  stelliumBodies,
+} from "@caelundas/src/caelundas.types";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
@@ -14,8 +18,7 @@ import type { Moment } from "moment-timezone";
 function groupAspectsByType<T extends AspectBodies>(
   edges: T[],
 ): Map<Aspect, T[]> {
-  const grouped = _.groupBy(edges, "aspect");
-  return new Map(Object.entries(grouped)) as Map<Aspect, T[]>;
+  return groupByToMap(edges, (edge) => edge.aspect);
 }
 
 function haveAspect(
@@ -253,8 +256,9 @@ export class StelliumService {
     const bodySymbols = bodies.map((b) => symbolByBody[b]);
 
     const stelliumType = `${bodies.length}-body`;
-    const stelliumSymbol =
-      symbolByStellium[stelliumType as keyof typeof symbolByStellium];
+    const stelliumSymbol = isKeyOf(symbolByStellium, stelliumType)
+      ? symbolByStellium[stelliumType]
+      : undefined;
 
     const bodiesSorted = _.sortBy([...bodiesCapitalized]);
     const description = `${bodiesSorted.join(", ")} stellium ${phase}`;

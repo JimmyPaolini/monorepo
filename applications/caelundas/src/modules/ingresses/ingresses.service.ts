@@ -5,7 +5,12 @@ import {
   symbolBySign,
 } from "@caelundas/src/caelundas.constants";
 import {
+  capitalize,
   decanIngressBodies,
+  isBody,
+  isDecan,
+  isSign,
+  objectEntries,
   peakIngressBodies,
   signIngressBodies,
 } from "@caelundas/src/caelundas.types";
@@ -13,7 +18,7 @@ import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.ser
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
-import type { Body, Decan, Sign } from "@caelundas/src/caelundas.types";
+import type { Body, Sign } from "@caelundas/src/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
@@ -71,7 +76,7 @@ export class IngressesService {
    * @see {@link IngressesService.degreeRangeBySign} for sign boundaries
    */
   static getSign(longitude: number): Sign {
-    const entry = Object.entries(IngressesService.degreeRangeBySign).find(
+    const entry = objectEntries(IngressesService.degreeRangeBySign).find(
       ([, { min, max }]) => {
         return longitude >= min && longitude < max;
       },
@@ -79,7 +84,7 @@ export class IngressesService {
     if (!entry) {
       throw new Error(`🚫 Longitude ${longitude} not in any sign.`);
     }
-    return entry[0] as Sign;
+    return entry[0];
   }
 
   // 🏗️ Dependency Injection
@@ -267,9 +272,13 @@ export class IngressesService {
   }): Event {
     const { date, longitude, body } = args;
     const sign = IngressesService.getSign(longitude);
-    const decan = String(this.getDecan(longitude)) as Decan;
-    const bodyCapitalized = _.startCase(body) as Capitalize<Body>;
-    const signCapitalized = _.startCase(sign) as Capitalize<Sign>;
+    const decanString = String(this.getDecan(longitude));
+    if (!isDecan(decanString)) {
+      throw new Error(`Invalid decan value: ${decanString}`);
+    }
+    const decan = decanString;
+    const bodyCapitalized = capitalize(body);
+    const signCapitalized = capitalize(sign);
 
     const bodySymbol = symbolByBody[body];
     const signSymbol = symbolBySign[sign];
@@ -363,8 +372,8 @@ export class IngressesService {
   }): Event {
     const { date, longitude, body } = args;
     const sign = IngressesService.getSign(longitude);
-    const bodyCapitalized = _.startCase(body) as Capitalize<Body>;
-    const signCapitalized = _.startCase(sign) as Capitalize<Sign>;
+    const bodyCapitalized = capitalize(body);
+    const signCapitalized = capitalize(sign);
     const bodySymbol = symbolByBody[body];
     const signSymbol = symbolBySign[sign];
 
@@ -482,8 +491,15 @@ export class IngressesService {
       );
     }
 
-    const body = bodyCapitalized.toLowerCase() as Body;
-    const sign = signCapitalized.toLowerCase() as Sign;
+    const bodyLower = bodyCapitalized.toLowerCase();
+    const signLower = signCapitalized.toLowerCase();
+    if (!isBody(bodyLower) || !isSign(signLower)) {
+      throw new Error(
+        `Could not extract typed values from categories: ${entering.categories.join(", ")}`,
+      );
+    }
+    const body = bodyLower;
+    const sign = signLower;
 
     const bodySymbol = symbolByBody[body];
     const signSymbol = symbolBySign[sign];

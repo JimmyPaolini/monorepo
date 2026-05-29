@@ -50,7 +50,7 @@
           "commands": [
             "nx run {projectName}:gitleaks",
             "nx affected --target=bandit --parallel=3 --base=main --head=HEAD",
-            "nx run {projectName}:dependency-audit:check",
+            "nx run {projectName}:scan-dependencies:check",
             "nx run {projectName}:trivy"
           ],
           "parallel": false
@@ -98,36 +98,6 @@
       "executor": "nx:run-commands",
       "options": {
         "command": "NODE_OPTIONS='--import=tsx' commitlint --config configuration/commitlint.config.ts --edit {args.edit}",
-        "cwd": "{projectRoot}"
-      }
-    },
-    "dependency-audit": {
-      "cache": false,
-      "configurations": {
-        "check": {
-          "commands": [
-            "nx run {projectName}:license-check",
-            "nx run {projectName}:pnpm-audit:check",
-            "nx run {projectName}:sherif:check",
-            "nx run {projectName}:syncpack:check"
-          ],
-          "parallel": true
-        },
-        "write": {
-          "commands": [
-            "nx run {projectName}:upgrade-dependencies:write",
-            "nx run {projectName}:license-check",
-            "nx run {projectName}:pnpm-audit:write",
-            "nx run {projectName}:sherif:write",
-            "nx run {projectName}:syncpack:write"
-          ],
-          "parallel": false
-        }
-      },
-      "defaultConfiguration": "check",
-      "description": "Run all dependency management tools (pnpm-audit, license-check, sherif, syncpack). Dependency upgrades are handled separately by upgrade-dependencies.",
-      "executor": "nx:run-commands",
-      "options": {
         "cwd": "{projectRoot}"
       }
     },
@@ -300,6 +270,36 @@
       "executor": "nx:run-commands",
       "options": {
         "command": "prettier {args} --config configuration/prettier.config.ts --ignore-path .prettierignore --ignore-unknown .",
+        "cwd": "{projectRoot}"
+      }
+    },
+    "scan-dependencies": {
+      "cache": false,
+      "configurations": {
+        "check": {
+          "commands": [
+            "nx run {projectName}:license-check",
+            "nx run {projectName}:pnpm-audit:check",
+            "nx run {projectName}:sherif:check",
+            "nx run {projectName}:syncpack:check"
+          ],
+          "parallel": true
+        },
+        "write": {
+          "commands": [
+            "nx run {projectName}:upgrade-dependencies:write",
+            "nx run {projectName}:license-check",
+            "nx run {projectName}:pnpm-audit:write",
+            "nx run {projectName}:sherif:write",
+            "nx run {projectName}:syncpack:write"
+          ],
+          "parallel": false
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "Run all dependency management tools (pnpm-audit, license-check, sherif, syncpack). Dependency upgrades are handled separately by upgrade-dependencies.",
+      "executor": "nx:run-commands",
+      "options": {
         "cwd": "{projectRoot}"
       }
     },

@@ -1,6 +1,12 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "generators": {
+    "nestjs-command-application": {
+      "aliases": ["nca"],
+      "description": "Generate a NestJS command-line application scaffold using nest-commander",
+      "factory": "./src/generators/nestjs-command-application/generator#generateNestjsCommandApplication",
+      "schema": "./src/generators/nestjs-command-application/schema.json"
+    },
     "nestjs-service-module": {
       "aliases": ["nsm"],
       "description": "Generate a NestJS service module with module, service, types, constants, and unit test files",

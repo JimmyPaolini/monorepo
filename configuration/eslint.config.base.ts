@@ -5,7 +5,7 @@ import eslint from "@eslint/js";
 import markdown from "@eslint/markdown";
 import nxPlugin from "@nx/eslint-plugin";
 import eslintConfigPrettier from "eslint-config-prettier";
-import importPlugin from "eslint-plugin-import";
+import importPlugin from "eslint-plugin-import-x";
 import jsdocPlugin from "eslint-plugin-jsdoc";
 import jsoncPlugin from "eslint-plugin-jsonc";
 import jsxA11yPlugin from "eslint-plugin-jsx-a11y";
@@ -47,6 +47,8 @@ export default [
       // Lock files and Helm templates use formats that can't be linted
       "**/pnpm-lock.yaml",
       "**/helm/**/templates/**",
+      // Nx generator template files (scaffold output, not project source)
+      "**/conformance/**/templates/**",
       // Terraform providers and generated files
       "**/.terraform/**",
       ".github/copilot-instructions.md",

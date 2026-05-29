@@ -38,12 +38,9 @@
   },
   "type": "module",
   "typeCoverage": {
-    "atLeast": 99.46,
-    "ignoreCatch": true,
+    "atLeast": 100,
     "ignoreFiles": [
-      "**/*.spec.ts",
-      "**/*.test.ts",
-      "**/testing/**"
+      "**/*.test.ts"
     ],
     "strict": true
   },

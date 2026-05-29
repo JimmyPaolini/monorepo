@@ -181,9 +181,9 @@ This monorepo's generators pass custom substitution variables to `generateFiles(
 | --- | --- | --- |
 | `namePascalCase` | PascalCase | `UserCard` |
 | `nameCamelCase` | camelCase | `userCard` |
-| `nameKebab` | kebab-case | `user-card` |
-| `nameSnake` | snake_case | `user_card` |
-| `nameConstant` | UPPER_CASE | `USER_CARD` |
+| `nameKebabCase` | kebab-case | `user-card` |
+| `nameSnakeCase` | snake_case | `user_card` |
+| `nameConstantCase` | UPPER_CASE | `USER_CARD` |
 
 Use `resolveNameByCase()` from `../../utilities` to normalize the input name, then build the substitutions object manually:
 
@@ -577,36 +577,36 @@ export async function generator(tree: Tree, options: Schema) {
 ```typescript
 export async function packageGenerator(tree: Tree, options: PackageSchema) {
   const namePascalCase = _.upperFirst(_.camelCase(options.name));
-  const nameKebab = _.kebabCase(options.name);
-  const normalized = { ...options, namePascalCase, nameKebab };
+  const nameKebabCase = _.kebabCase(options.name);
+  const normalized = { ...options, namePascalCase, nameKebabCase };
 
   // Generate package structure
   generateFiles(
     tree,
     path.join(__dirname, "templates"),
-    `packages/${nameKebab}`,
+    `packages/${nameKebabCase}`,
     normalized,
   );
 
   // Add to tsconfig paths
   updateJson(tree, "tsconfig.base.json", (json) => {
-    json.compilerOptions.paths[`@monorepo/${nameKebab}/*`] = [
-      `packages/${nameKebab}/src/*`,
+    json.compilerOptions.paths[`@monorepo/${nameKebabCase}/*`] = [
+      `packages/${nameKebabCase}/src/*`,
     ];
     return json;
   });
 
   // Add project configuration
-  addProjectConfiguration(tree, nameKebab, {
-    root: `packages/${nameKebab}`,
-    sourceRoot: `packages/${nameKebab}/src`,
+  addProjectConfiguration(tree, nameKebabCase, {
+    root: `packages/${nameKebabCase}`,
+    sourceRoot: `packages/${nameKebabCase}/src`,
     projectType: "library",
     targets: {
       build: {
         executor: "@nx/js:tsc",
         options: {
-          outputPath: `dist/packages/${nameKebab}`,
-          main: `packages/${nameKebab}/src/index.ts`,
+          outputPath: `dist/packages/${nameKebabCase}`,
+          main: `packages/${nameKebabCase}/src/index.ts`,
         },
       },
     },
@@ -621,7 +621,7 @@ export async function packageGenerator(tree: Tree, options: PackageSchema) {
 ```typescript
 export async function componentGenerator(tree: Tree, options: ComponentSchema) {
   const namePascalCase = options.name;
-  const nameKebab = namePascalCase.replace(/([A-Z])/g, (m, l, i) => (i ? "-" : "") + l.toLowerCase());
+  const nameKebabCase = namePascalCase.replace(/([A-Z])/g, (m, l, i) => (i ? "-" : "") + l.toLowerCase());
 
   // Determine target directory
   const targetPath = path.join(options.project, "src/components");
@@ -629,14 +629,14 @@ export async function componentGenerator(tree: Tree, options: ComponentSchema) {
   // Generate component files from templates
   generateFiles(tree, path.join(__dirname, "templates"), targetPath, {
     namePascalCase,
-    nameKebab,
+    nameKebabCase,
   });
 
   // Generate test files if requested
   if (options.includeTests) {
     generateFiles(tree, path.join(__dirname, "templates-test"), targetPath, {
       namePascalCase,
-      nameKebab,
+      nameKebabCase,
     });
   }
 

@@ -3,6 +3,8 @@ name: 🧑‍⚖️ Validate Conventions
 on:
   pull_request:
     types: [opened, reopened, synchronize, edited]
+  push:
+    branches: [main]
 
 permissions:
   contents: read
@@ -25,6 +27,7 @@ jobs:
         uses: ./.github/actions/setup-monorepo
 
       - name: 🎋 Validate Branch Name
+        if: github.event_name == 'pull_request'
         env:
           BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
         run: |
@@ -35,6 +38,7 @@ jobs:
           pnpm exec validate-branch-name -t "$BRANCH_NAME"
 
       - name: 📝 Validate Pull Request Title
+        if: github.event_name == 'pull_request'
         env:
           PULL_REQUEST_TITLE: ${{ github.event.pull_request.title }}
           NODE_OPTIONS: --import=tsx
@@ -46,6 +50,7 @@ jobs:
           echo "$PULL_REQUEST_TITLE" | pnpm exec commitlint --config configuration/commitlint.config.ts
 
       - name: 🪢 Validate Pull Request Body
+        if: github.event_name == 'pull_request'
         env:
           PULL_REQUEST_BODY: ${{ github.event.pull_request.body }}
         run: |

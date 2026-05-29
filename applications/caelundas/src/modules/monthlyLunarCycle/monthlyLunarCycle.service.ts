@@ -3,6 +3,7 @@ import {
   MARGIN_MINUTES,
   symbolByLunarPhase,
 } from "@caelundas/src/caelundas.constants";
+import { isLunarPhase } from "@caelundas/src/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
@@ -197,9 +198,7 @@ export class MonthlyLunarCycleService {
   }): Event {
     const { date, lunarPhase } = args;
 
-    const lunarPhaseCapitalized = _.startCase(
-      lunarPhase,
-    ) as Capitalize<LunarPhase>;
+    const lunarPhaseCapitalized = _.startCase(lunarPhase);
     const description = `${lunarPhaseCapitalized} Moon`;
     const summary = `🌙 ${symbolByLunarPhase[lunarPhase]} ${description}`;
 
@@ -348,7 +347,12 @@ export class MonthlyLunarCycleService {
       return null; // Skip this invalid event
     }
 
-    const lunarPhase = lunarPhaseCapitalized.toLowerCase() as LunarPhase;
+    const lunarPhaseLower = lunarPhaseCapitalized.toLowerCase();
+    if (!isLunarPhase(lunarPhaseLower)) {
+      console.warn(`⚠️ Unknown lunar phase: ${lunarPhaseLower}`);
+      return null;
+    }
+    const lunarPhase = lunarPhaseLower;
     const lunarPhaseSymbol = symbolByLunarPhase[lunarPhase];
 
     return {

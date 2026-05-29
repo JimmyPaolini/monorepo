@@ -1,4 +1,5 @@
-import { aspects, bodies } from "@caelundas/src/caelundas.constants";
+import { bodies } from "@caelundas/src/caelundas.constants";
+import { isAspect } from "@caelundas/src/caelundas.types";
 import { Inject, Injectable } from "@nestjs/common";
 
 import { MajorAspectsService } from "../majorAspects/majorAspects.service";
@@ -200,15 +201,17 @@ export function computeAspectBodies(
       continue;
     }
 
-    const aspect = normalizedCategories.find((category) =>
-      aspects.includes(category as Aspect),
-    ) as Aspect | undefined;
+    const aspect = normalizedCategories.find((category): category is Aspect =>
+      isAspect(category),
+    );
 
     if (!aspect) {
       continue;
     }
 
-    const [body1, body2] = eventBodies as [Body, Body];
+    const body1 = eventBodies[0];
+    const body2 = eventBodies[1];
+    if (!body1 || !body2) continue;
     const key = makeKey(body1, body2, aspect);
 
     if (isDissolving) {

@@ -101,6 +101,7 @@ gradlew
 infer
 instanceof
 keyof
+multiset
 polymorphic
 precompiled
 readonly
@@ -110,8 +111,11 @@ texttypescript
 transpiler
 transpiles
 typeof
+uncapitalize
 unredacted
 untaint
+uppercased
+uppercases
 warshall
 
 #endregion
@@ -156,6 +160,7 @@ signingkey
 #endregion
 
 #region 📝 Git & Documentation
+blockquotes
 frontmatter
 gitmodules
 gitmoji
