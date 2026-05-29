@@ -1,0 +1,76 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "lexico-ingestion",
+  "projectType": "application",
+  "sourceRoot": "applications/lexico-ingestion",
+  "tags": [
+    "framework:nest-commander",
+    "framework:nestjs",
+    "language:typescript"
+  ],
+  "targets": {
+    "analyze-code": {},
+    "clean": {},
+    "dependency-cruiser": {},
+    "format": {},
+    "knip": {},
+    "lint": {},
+    "markdown-lint": {},
+    "oxfmt": {},
+    "oxlint": {},
+    "prettier": {},
+    "spell-check": {},
+    "start": {
+      "description": "Start the LexicoIngestion application",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm start",
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
+    "test": {
+      "configurations": {
+        "coverage": {
+          "command": "pnpm test:coverage"
+        },
+        "end-to-end": {
+          "command": "pnpm test:end-to-end"
+        },
+        "integration": {
+          "command": "pnpm test:integration"
+        },
+        "unit": {
+          "command": "pnpm test:unit"
+        },
+        "watch": {
+          "command": "pnpm test:watch"
+        }
+      },
+      "description": "Run all tests",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm test",
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
+    "type-coverage": {},
+    "typecheck": {},
+    "yaml-lint": {},
+    "docker:up": {
+      "description": "Start local PostgreSQL with Docker Compose",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "docker compose up -d",
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
+    "docker:down": {
+      "description": "Stop local PostgreSQL Docker Compose",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "docker compose down",
+        "cwd": "applications/lexico-ingestion"
+      }
+    }
+  }
+}

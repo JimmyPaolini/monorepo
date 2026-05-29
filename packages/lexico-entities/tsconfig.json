@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": ["ES2023"],
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "target": "esnext",
+    "types": ["node"]
+  },
+  "exclude": ["dist", "node_modules"],
+  "extends": "../../configuration/tsconfig.base.json",
+  "include": ["src/**/*.ts"]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "lexico-entities",
+  "projectType": "library",
+  "sourceRoot": "packages/lexico-entities",
+  "tags": [
+    "framework:typeorm",
+    "framework:nestjs",
+    "language:typescript",
+    "domain:lexico"
+  ],
+  "targets": {
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm typecheck",
+        "cwd": "packages/lexico-entities"
+      }
+    }
+  }
+}
