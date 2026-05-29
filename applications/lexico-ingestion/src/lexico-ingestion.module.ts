@@ -1,13 +1,33 @@
+import {
+  AdjectiveForms,
+  AdjectiveInflection,
+  AdverbForms,
+  AdverbInflection,
+  Entry,
+  Forms,
+  Inflection,
+  NounForms,
+  NounInflection,
+  PrepositionInflection,
+  PrincipalPart,
+  Translation,
+  Uninflected,
+  VerbForms,
+  VerbInflection,
+  Word,
+} from "@monorepo/lexico-entities";
 import { Module } from "@nestjs/common";
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { Entry, Translation, Word } from "@monorepo/lexico-entities";
 
 import { LexicoIngestionCommand } from "./lexico-ingestion.command.js";
 import { environmentSchema } from "./lexico-ingestion.constants.js";
-import { WiktionaryModule } from "./modules/wiktionary/wiktionary.module.js";
 import { DictionaryModule } from "./modules/dictionary/dictionary.module.js";
+import { WiktionaryModule } from "./modules/wiktionary/wiktionary.module.js";
 
+/**
+ *
+ */
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -25,7 +45,24 @@ import { DictionaryModule } from "./modules/dictionary/dictionary.module.js";
         username: config.get<string>("DATABASE_USER", "lexico"),
         password: config.get<string>("DATABASE_PASSWORD", "lexico"),
         database: config.get<string>("DATABASE_NAME", "lexico"),
-        entities: [Entry, Word, Translation],
+        entities: [
+          Entry,
+          Inflection,
+          NounInflection,
+          VerbInflection,
+          AdjectiveInflection,
+          AdverbInflection,
+          PrepositionInflection,
+          Uninflected,
+          Forms,
+          NounForms,
+          VerbForms,
+          AdjectiveForms,
+          AdverbForms,
+          PrincipalPart,
+          Word,
+          Translation,
+        ],
         synchronize: true,
         logging: false,
       }),

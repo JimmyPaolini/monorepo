@@ -2,44 +2,41 @@ import {
   BaseEntity,
   Column,
   Entity,
+  JoinColumn,
   ManyToMany,
   OneToMany,
+  OneToOne,
   PrimaryColumn,
 } from "typeorm";
 
-import type { PartOfSpeech } from "./PartOfSpeech.js";
-import type { PrincipalPart } from "./PrincipalPart.js";
-import type { Pronunciation } from "./Pronunciation.js";
+import { type PartOfSpeech, partOfSpeechValues } from "./PartOfSpeech.js";
+import { PrincipalPart } from "./PrincipalPart.entity.js";
+import { Pronunciation } from "./Pronunciation.js";
 import { Translation } from "./Translation.entity.js";
-import type {
-  AdjectiveInflection,
-  AdverbInflection,
-  NounInflection,
-  PrepositionInflection,
-  Uninflected,
-  VerbInflection,
-} from "./inflection/index.js";
-
-export type Inflection =
-  | NounInflection
-  | VerbInflection
-  | AdjectiveInflection
-  | AdverbInflection
-  | PrepositionInflection
-  | Uninflected;
+import { Forms } from "./forms/Forms.entity.js";
+import { Inflection } from "./inflection/Inflection.entity.js";
 
 @Entity()
 export class Entry extends BaseEntity {
   @PrimaryColumn("varchar", { length: 127, unique: true })
-  id!: string; // word + ":" + number
+  id!: string;
 
-  @Column("varchar", { length: 32 })
+  @Column({ type: "enum", enum: partOfSpeechValues })
   partOfSpeech!: PartOfSpeech;
 
-  @Column("json", { nullable: true })
-  principalParts!: PrincipalPart[] | null;
+  @OneToMany(() => PrincipalPart, "entry", {
+    eager: true,
+    cascade: true,
+  })
+  principalParts!: PrincipalPart[];
 
-  @Column("json", { nullable: true })
+  @OneToOne(() => Inflection, {
+    nullable: true,
+    eager: true,
+    cascade: true,
+    onDelete: "SET NULL",
+  })
+  @JoinColumn()
   inflection?: Inflection | null;
 
   @OneToMany(() => Translation, (translation) => translation.entry, {
@@ -50,13 +47,19 @@ export class Entry extends BaseEntity {
   })
   translations?: Translation[] | null;
 
-  @Column("json", { nullable: true })
-  forms?: unknown | null;
+  @OneToOne(() => Forms, {
+    nullable: true,
+    eager: true,
+    cascade: true,
+    onDelete: "SET NULL",
+  })
+  @JoinColumn()
+  forms?: Forms | null;
 
   @ManyToMany("Word", "entries")
   words?: unknown[];
 
-  @Column("json", { nullable: true })
+  @Column(() => Pronunciation)
   pronunciation?: Pronunciation;
 
   @Column("varchar", { length: 1027, nullable: true })

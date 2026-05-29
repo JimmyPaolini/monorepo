@@ -1,17 +1,22 @@
-export type VerbConjugation =
-  | "first"
-  | "second"
-  | "third"
-  | "third-io"
-  | "fourth"
-  | "";
+import { ChildEntity, Column } from "typeorm";
 
-export class VerbInflection {
-  conjugation: VerbConjugation = "";
-  other?: string = "";
+import { Inflection } from "./Inflection.entity.js";
 
-  constructor(conjugation: VerbConjugation = "", other = "") {
-    this.conjugation = conjugation;
-    this.other = other;
-  }
+export const verbConjugationValues = [
+  "first",
+  "second",
+  "third",
+  "third-io",
+  "fourth",
+  "",
+] as const;
+export type VerbConjugation = (typeof verbConjugationValues)[number];
+
+@ChildEntity("verb")
+export class VerbInflection extends Inflection {
+  @Column({ type: "enum", enum: verbConjugationValues, default: "" })
+  conjugation!: VerbConjugation;
+
+  @Column("varchar", { length: 255, nullable: true })
+  other?: string;
 }

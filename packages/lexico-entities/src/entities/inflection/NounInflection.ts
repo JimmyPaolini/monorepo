@@ -1,24 +1,34 @@
-export type NounDeclension =
-  | "first"
-  | "second"
-  | "third"
-  | "fourth"
-  | "fifth"
-  | "";
-export type NounGender = "masculine" | "feminine" | "masc/fem" | "neuter" | "";
+import { ChildEntity, Column } from "typeorm";
 
-export class NounInflection {
-  declension: NounDeclension = "";
-  gender: NounGender = "";
-  other?: string = "";
+import { Inflection } from "./Inflection.entity.js";
 
-  constructor(
-    declension: NounDeclension = "",
-    gender: NounGender = "",
-    other = "",
-  ) {
-    this.declension = declension;
-    this.gender = gender;
-    this.other = other;
-  }
+export const nounDeclensionValues = [
+  "first",
+  "second",
+  "third",
+  "fourth",
+  "fifth",
+  "",
+] as const;
+export type NounDeclension = (typeof nounDeclensionValues)[number];
+
+export const nounGenderValues = [
+  "masculine",
+  "feminine",
+  "masc/fem",
+  "neuter",
+  "",
+] as const;
+export type NounGender = (typeof nounGenderValues)[number];
+
+@ChildEntity("noun")
+export class NounInflection extends Inflection {
+  @Column({ type: "enum", enum: nounDeclensionValues, default: "" })
+  declension!: NounDeclension;
+
+  @Column({ type: "enum", enum: nounGenderValues, default: "" })
+  gender!: NounGender;
+
+  @Column("varchar", { length: 255, nullable: true })
+  other?: string;
 }

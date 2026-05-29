@@ -1,18 +1,25 @@
-export type AdjectiveDeclension = "first/second" | "third" | "";
-export type AdjectiveDegree = "positive" | "comparative" | "superlative";
+import { ChildEntity, Column } from "typeorm";
 
-export class AdjectiveInflection {
-  declension: AdjectiveDeclension = "";
-  degree: AdjectiveDegree = "positive";
-  other?: string = "";
+import { Inflection } from "./Inflection.entity.js";
 
-  constructor(
-    declension: AdjectiveDeclension = "",
-    degree: AdjectiveDegree = "positive",
-    other = "",
-  ) {
-    this.declension = declension;
-    this.degree = degree;
-    this.other = other;
-  }
+export const adjectiveDeclensionValues = ["first/second", "third", ""] as const;
+export type AdjectiveDeclension = (typeof adjectiveDeclensionValues)[number];
+
+export const adjectiveDegreeValues = [
+  "positive",
+  "comparative",
+  "superlative",
+] as const;
+export type AdjectiveDegree = (typeof adjectiveDegreeValues)[number];
+
+@ChildEntity("adjective")
+export class AdjectiveInflection extends Inflection {
+  @Column({ type: "enum", enum: adjectiveDeclensionValues, default: "" })
+  declension!: AdjectiveDeclension;
+
+  @Column({ type: "enum", enum: adjectiveDegreeValues, default: "positive" })
+  degree!: AdjectiveDegree;
+
+  @Column("varchar", { length: 255, nullable: true })
+  other?: string;
 }

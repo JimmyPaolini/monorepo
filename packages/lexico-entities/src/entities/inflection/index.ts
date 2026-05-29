@@ -1,3 +1,4 @@
+export { Inflection } from "./Inflection.entity.js";
 export { AdjectiveInflection } from "./AdjectiveInflection.js";
 export { AdverbInflection } from "./AdverbInflection.js";
 export { NounInflection } from "./NounInflection.js";
