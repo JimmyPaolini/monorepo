@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.1](https://github.com/JimmyPaolini/monorepo/compare/v1.3.0...v1.3.1) (2026-05-29)
+
+### 📦 Build System
+
+* **affirmations:** 📦 upgrade python from 3.11 to 3.14 ([#45](https://github.com/JimmyPaolini/monorepo/issues/45)) ([2778fe4](https://github.com/JimmyPaolini/monorepo/commit/2778fe411082a48096258927d497743c2a4b9a4e))
+
 ## [1.3.0](https://github.com/JimmyPaolini/monorepo/compare/v1.2.7...v1.3.0) (2026-05-29)
 
 ### ✨ Features
