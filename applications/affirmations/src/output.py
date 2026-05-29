@@ -1,8 +1,12 @@
+from __future__ import annotations
+
 import re
 from pathlib import Path
+from typing import TYPE_CHECKING
 
-from src.models import SubjectAffirmations
-from src.subjects import Subject
+if TYPE_CHECKING:
+    from src.models import SubjectAffirmations
+    from src.subjects import Subject
 
 PROJECT_DIRECTORY = Path(__file__).parent.parent
 OUTPUT_DIRECTORY = PROJECT_DIRECTORY / "output"

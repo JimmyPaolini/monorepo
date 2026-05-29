@@ -1,10 +1,8 @@
 """Spiritual practice configuration: topics and affirmation grammatical structures."""
 
-from typing import TypeAlias
-
 from pydantic import BaseModel
 
-Primitive: TypeAlias = str | int | float | bool | None
+type Primitive = str | int | float | bool | None
 
 
 class SubjectCategory(BaseModel):

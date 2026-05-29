@@ -4,7 +4,8 @@
  * Commit format: `<type>(<scope>): <gitmoji> <subject>`
  *
  * - Header max: 128 characters (aim for &lt;72 for readability)
- * - Body and footer: forbidden (single-line commits only)
+ * - Body: forbidden unless every line is a `Co-authored-by:` trailer (added by GitHub Copilot agents)
+ * - Footer: forbidden
  * - Subject: lowercase, imperative mood, no trailing period
  * - Gitmoji required at start of subject
  *
@@ -13,11 +14,33 @@
  */
 import { scopes, types } from "./conventional.config.cjs";
 
-import type { UserConfig } from "@commitlint/types";
+import type { Plugin, Rule, RuleOutcome, UserConfig } from "@commitlint/types";
+
+/** Every non-empty body line must be a `Co-authored-by:` trailer. */
+const bodyCoAuthoredOnly: Rule = (parsed): RuleOutcome => {
+  const body: string | null = parsed.body as string | null;
+  if (!body) return [true];
+  const lines = body.split("\n").filter((line: string) => line.trim() !== "");
+  const allCoAuthored = lines.every((line: string) =>
+    /^Co-authored-by: \S+/.test(line),
+  );
+  return [
+    allCoAuthored,
+    "Body must be empty or contain only Co-authored-by trailers",
+  ];
+};
+
+const coAuthoredPlugin: Plugin = {
+  rules: { "body-co-authored-only": bodyCoAuthoredOnly },
+};
 
 const configuration: UserConfig = {
   extends: ["@commitlint/config-conventional"],
-  plugins: ["commitlint-plugin-gitmoji", "commitlint-plugin-tense"],
+  plugins: [
+    "commitlint-plugin-gitmoji",
+    "commitlint-plugin-tense",
+    coAuthoredPlugin,
+  ],
   rules: {
     // ❗ Breaking change
     "subject-exclamation-mark": [0],
@@ -39,8 +62,8 @@ const configuration: UserConfig = {
     // 📏 Limit lengths
     "header-max-length": [2, "always", 128],
 
-    // 🚫 Forbid body and footer
-    "body-empty": [2, "always"],
+    // 🚫 Forbid footer; body allowed only for Co-authored-by trailers (added by GitHub Copilot agents)
+    "body-co-authored-only": [2, "always"],
     "footer-empty": [2, "always"],
 
     // 🔡 Enforce case

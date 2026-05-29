@@ -79,14 +79,14 @@ const types = [
       "GitHub Actions workflows, composite actions, and CI/CD scripts",
   },
   {
-    emoji: "📦",
+    emoji: "📦️",
     code: ":package:",
     name: "build",
     description:
       "Build system, Vite/Docker/Helm config, or external dependency integration",
   },
   {
-    emoji: "⏪",
+    emoji: "⏪️",
     code: ":rewind:",
     name: "revert",
     description: "Reverts a previous commit",

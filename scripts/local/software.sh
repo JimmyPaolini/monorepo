@@ -10,7 +10,7 @@
 #   1. brew.sh         — Homebrew presence check + brew_install_or_check helper
 #   2. node.sh         — nvm, Node.js (.nvmrc), pnpm, nx, Husky init
 #   3. shell-config.sh — Persist nvm/pnpm/GPG/NODE_OPTIONS to RC files
-#   4. python.sh       — uv, Python 3.11+
+#   4. python.sh       — uv, Python 3.14+
 #   5. ollama.sh       — Ollama daemon + default model pull
 #   6. docker.sh       — Docker Desktop install + daemon start
 #   7. gpg.sh          — GPG + pinentry-mac + git signing config
