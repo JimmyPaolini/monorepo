@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.0](https://github.com/JimmyPaolini/monorepo/compare/v1.2.7...v1.3.0) (2026-05-29)
+
+### ✨ Features
+
+* **conformance:** ✨ add nestjs-command-application generator for NestJS CLI scaffolding ([#44](https://github.com/JimmyPaolini/monorepo/issues/44)) ([bb3fd72](https://github.com/JimmyPaolini/monorepo/commit/bb3fd72ff2541781e674fca955034f8b3bb5d6e5))
+
+### 🐛 Bug Fixes
+
+* **configuration:** 🐛 add bash shebang to pre-commit hook ([#46](https://github.com/JimmyPaolini/monorepo/issues/46)) ([8d37d1b](https://github.com/JimmyPaolini/monorepo/commit/8d37d1b3cae09d52f2cf81099581eb12c5407c73))
+* **configuration:** 🐛 make pre-commit hook posix sh-compatible ([#47](https://github.com/JimmyPaolini/monorepo/issues/47)) ([78372d5](https://github.com/JimmyPaolini/monorepo/commit/78372d5f5406fae5cead955c0b4bf75163bda459))
+
 ## [1.2.7](https://github.com/JimmyPaolini/monorepo/compare/v1.2.6...v1.2.7) (2026-05-25)
 
 ### 📦 Build System
