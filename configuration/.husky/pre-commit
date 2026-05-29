@@ -3,16 +3,15 @@ set -e
 
 NOISE_FILTER='\(node:[0-9]+\) Warning: The .NO_COLOR|\(Use .node --trace-warnings|Your AI agent configuration is outdated'
 TMP_OUTPUT_FILE="$(mktemp)"
+trap 'rm -f "$TMP_OUTPUT_FILE"' EXIT
 
-if nx run monorepo:lint-staged >"$TMP_OUTPUT_FILE" 2>&1; then
-	LINT_STAGED_EXIT_CODE=0
-else
-	LINT_STAGED_EXIT_CODE=$?
-fi
+set +e
+nx run monorepo:lint-staged >"$TMP_OUTPUT_FILE" 2>&1
+LINT_STAGED_EXIT_CODE=$?
+set -e
 
 grep -vE "$NOISE_FILTER" "$TMP_OUTPUT_FILE" \
 	| awk '{ gsub(/\033\[[0-9;]*[mK]/, ""); print }' \
 	| tee last-lint-staged-errors.txt
 
-rm -f "$TMP_OUTPUT_FILE"
 exit "$LINT_STAGED_EXIT_CODE"
