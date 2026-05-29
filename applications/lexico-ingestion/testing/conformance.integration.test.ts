@@ -2,9 +2,9 @@ import { fileURLToPath } from "node:url";
 
 import { TEMPLATES_DIRECTORY_PATH } from "@monorepo/conformance/src/generators/nestjs-command-application/generator";
 import {
-    collectConformanceErrors,
-    validateInstanceDirectory,
-} from "@monorepo/conformance/src/validators/typescript/validator";
+  stringifyConformanceErrors,
+  validateInstanceDirectory,
+} from "@monorepo/conformance/src/validators/typescript/files";
 import { describe, expect, it } from "vitest";
 
 describe(`"nestjs-command-application" generator template conformance`, () => {
@@ -14,7 +14,7 @@ describe(`"nestjs-command-application" generator template conformance`, () => {
       templateDirectoryPath: TEMPLATES_DIRECTORY_PATH,
     });
 
-    const errors = collectConformanceErrors([result]);
+    const errors = stringifyConformanceErrors([result]);
     expect(errors).toBeNull();
   });
 });

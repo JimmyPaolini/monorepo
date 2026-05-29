@@ -1,8 +1,8 @@
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 
-import { {{namePascalCase}}Command } from "./{{nameCamelCase}}.command";
-import { environmentSchema } from "./{{nameCamelCase}}.constants";
+import { {{namePascalCase}}Command } from "./{{nameKebabCase}}.command";
+import { environmentSchema } from "./{{nameKebabCase}}.constants";
 import { SampleModule } from "./modules/sample/sample.module";
 
 /**

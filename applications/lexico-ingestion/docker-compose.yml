@@ -6,11 +6,11 @@ services:
       POSTGRES_PASSWORD: lexico
       POSTGRES_DB: lexico
     ports:
-      - "5432:5432"
+      - 5432:5432
     volumes:
       - lexico_postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U lexico"]
+      test: [CMD-SHELL, pg_isready -U lexico]
       interval: 10s
       timeout: 5s
       retries: 5

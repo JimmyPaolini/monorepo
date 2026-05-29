@@ -1,4 +1,4 @@
 export class PrincipalPart {
-  name = '';
+  name = "";
   text: string[] = [];
 }

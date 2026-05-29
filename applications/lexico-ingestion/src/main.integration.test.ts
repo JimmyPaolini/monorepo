@@ -1,7 +1,7 @@
 import { Test } from "@nestjs/testing";
 import { describe, expect, it } from "vitest";
 
-import { LexicoIngestionCommand } from "./lexicoIngestion.command";
+import { LexicoIngestionCommand } from "./lexico-ingestion.command";
 
 describe("LexicoIngestionCommand", () => {
   it("can be created by the Nest testing module", async () => {

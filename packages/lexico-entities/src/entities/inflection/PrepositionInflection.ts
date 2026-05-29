@@ -1,3 +1,3 @@
 export class PrepositionInflection {
-  case: string = '';
+  case: string = "";
 }

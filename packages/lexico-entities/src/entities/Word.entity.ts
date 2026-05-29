@@ -4,9 +4,9 @@ import {
   JoinTable,
   ManyToMany,
   PrimaryColumn,
-} from 'typeorm';
+} from "typeorm";
 
-import { Entry } from './Entry.entity.js';
+import { Entry } from "./Entry.entity.js";
 
 @Entity()
 export class Word extends BaseEntity {

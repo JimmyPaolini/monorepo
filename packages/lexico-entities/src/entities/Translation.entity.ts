@@ -5,19 +5,19 @@ import {
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
-} from 'typeorm';
+} from "typeorm";
 
 @Entity()
 export class Translation extends BaseEntity {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn("uuid")
   id!: string;
 
-  @Column('varchar', { length: 2047 })
+  @Column("varchar", { length: 2047 })
   translation!: string;
 
-  @ManyToOne('Entry', 'translations', {
-    onDelete: 'CASCADE',
-    onUpdate: 'CASCADE',
+  @ManyToOne("Entry", "translations", {
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
   })
   @JoinColumn()
   entry!: unknown;

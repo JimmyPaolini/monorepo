@@ -1,7 +1,7 @@
 import { Test } from "@nestjs/testing";
 import { describe, expect, it } from "vitest";
 
-import { {{namePascalCase}}Command } from "./{{nameCamelCase}}.command";
+import { {{namePascalCase}}Command } from "./{{nameKebabCase}}.command";
 
 describe("{{namePascalCase}}Command", () => {
   it("can be created by the Nest testing module", async () => {

@@ -1,15 +1,15 @@
-import { Injectable } from '@nestjs/common';
-import { Command, CommandRunner } from 'nest-commander';
+import { Injectable } from "@nestjs/common";
+import { Command, CommandRunner } from "nest-commander";
 
-import { WiktionaryService } from './wiktionary.service.js';
+import { WiktionaryService } from "./wiktionary.service.js";
 
 /**
  * Ingest all Latin Wiktionary entries.
  */
 @Injectable()
 @Command({
-  name: 'wiktionary',
-  description: 'Ingest Latin entries from Wiktionary into the database',
+  name: "wiktionary",
+  description: "Ingest Latin entries from Wiktionary into the database",
 })
 export class WiktionaryCommand extends CommandRunner {
   constructor(private readonly wiktionaryService: WiktionaryService) {

@@ -1,7 +1,7 @@
-import { Injectable } from '@nestjs/common';
-import { Command, CommandRunner, Option } from 'nest-commander';
+import { Injectable } from "@nestjs/common";
+import { Command, CommandRunner, Option } from "nest-commander";
 
-import { DictionaryService } from './dictionary.service.js';
+import { DictionaryService } from "./dictionary.service.js";
 
 interface DictionaryCommandOptions {
   word?: string;
@@ -12,8 +12,9 @@ interface DictionaryCommandOptions {
  */
 @Injectable()
 @Command({
-  name: 'dictionary',
-  description: 'Process ingested Wiktionary HTML into structured dictionary entries',
+  name: "dictionary",
+  description:
+    "Process ingested Wiktionary HTML into structured dictionary entries",
 })
 export class DictionaryCommand extends CommandRunner {
   constructor(private readonly dictionaryService: DictionaryService) {
@@ -21,8 +22,8 @@ export class DictionaryCommand extends CommandRunner {
   }
 
   @Option({
-    flags: '-w, --word [word]',
-    description: 'Ingest a single word entry',
+    flags: "-w, --word [word]",
+    description: "Ingest a single word entry",
   })
   parseWord(val: string): string {
     return val;

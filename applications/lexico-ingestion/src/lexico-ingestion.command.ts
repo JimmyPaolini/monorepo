@@ -1,8 +1,8 @@
-import { Injectable } from '@nestjs/common';
-import { Command, CommandRunner } from 'nest-commander';
+import { Injectable } from "@nestjs/common";
+import { Command, CommandRunner } from "nest-commander";
 
-import { WiktionaryCommand } from './modules/wiktionary/wiktionary.command.js';
-import { DictionaryCommand } from './modules/dictionary/dictionary.command.js';
+import { WiktionaryCommand } from "./modules/wiktionary/wiktionary.command.js";
+import { DictionaryCommand } from "./modules/dictionary/dictionary.command.js";
 
 /**
  * Root CLI entry point for lexico-ingestion.
@@ -10,12 +10,13 @@ import { DictionaryCommand } from './modules/dictionary/dictionary.command.js';
  */
 @Injectable()
 @Command({
-  name: 'lexico-ingestion',
-  description: 'Ingest Wiktionary Latin entries and dictionary data into PostgreSQL',
+  name: "lexico-ingestion",
+  description:
+    "Ingest Wiktionary Latin entries and dictionary data into PostgreSQL",
   subCommands: [WiktionaryCommand, DictionaryCommand],
 })
 export class LexicoIngestionCommand extends CommandRunner {
   async run(): Promise<void> {
-    console.log('Use a sub-command: wiktionary | dictionary');
+    console.log("Use a sub-command: wiktionary | dictionary");
   }
 }

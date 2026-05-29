@@ -1,7 +1,7 @@
 export class PronunciationParts {
-  phonemes = '';
-  phonemic = '';
-  phonetic = '';
+  phonemes = "";
+  phonemic = "";
+  phonetic = "";
 }
 
 export class Pronunciation {
