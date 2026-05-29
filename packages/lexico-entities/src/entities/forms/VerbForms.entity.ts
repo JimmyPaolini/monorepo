@@ -143,16 +143,16 @@ interface VerbalNounForms {
 @ChildEntity("verb")
 export class VerbForms extends Forms {
   @Column("json", { nullable: true })
-  indicative?: IndicativeVoice | null;
-
-  @Column("json", { nullable: true })
-  subjunctive?: SubjunctiveVoice | null;
-
-  @Column("json", { nullable: true })
   imperative?: ImperativeVoice | null;
 
   @Column("json", { nullable: true })
+  indicative?: IndicativeVoice | null;
+
+  @Column("json", { nullable: true })
   nonFinite?: NonFiniteVoice | null;
+
+  @Column("json", { nullable: true })
+  subjunctive?: SubjunctiveVoice | null;
 
   @Column("json", { nullable: true })
   verbalNoun?: VerbalNounForms | null;

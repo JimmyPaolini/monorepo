@@ -6,10 +6,10 @@ import { Forms } from "./Forms.entity.js";
 @ChildEntity("adverb")
 export class AdverbForms extends Forms {
   @Column("simple-array", { nullable: true })
-  positive?: string[];
+  comparative?: string[];
 
   @Column("simple-array", { nullable: true })
-  comparative?: string[];
+  positive?: string[];
 
   @Column("simple-array", { nullable: true })
   superlative?: string[];

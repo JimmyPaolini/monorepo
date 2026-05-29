@@ -6,44 +6,44 @@ import { Forms } from "./Forms.entity.js";
 @ChildEntity("noun")
 export class NounForms extends Forms {
   @Column("simple-array", { nullable: true })
-  nominativeSingular?: string[];
-
-  @Column("simple-array", { nullable: true })
-  nominativePlural?: string[];
-
-  @Column("simple-array", { nullable: true })
-  genitiveSingular?: string[];
-
-  @Column("simple-array", { nullable: true })
-  genitivePlural?: string[];
-
-  @Column("simple-array", { nullable: true })
-  dativeSingular?: string[];
-
-  @Column("simple-array", { nullable: true })
-  dativePlural?: string[];
-
-  @Column("simple-array", { nullable: true })
-  accusativeSingular?: string[];
-
-  @Column("simple-array", { nullable: true })
-  accusativePlural?: string[];
+  ablativePlural?: string[];
 
   @Column("simple-array", { nullable: true })
   ablativeSingular?: string[];
 
   @Column("simple-array", { nullable: true })
-  ablativePlural?: string[];
+  accusativePlural?: string[];
 
   @Column("simple-array", { nullable: true })
-  vocativeSingular?: string[];
+  accusativeSingular?: string[];
 
   @Column("simple-array", { nullable: true })
-  vocativePlural?: string[];
+  dativePlural?: string[];
+
+  @Column("simple-array", { nullable: true })
+  dativeSingular?: string[];
+
+  @Column("simple-array", { nullable: true })
+  genitivePlural?: string[];
+
+  @Column("simple-array", { nullable: true })
+  genitiveSingular?: string[];
+
+  @Column("simple-array", { nullable: true })
+  locativePlural?: string[];
 
   @Column("simple-array", { nullable: true })
   locativeSingular?: string[];
 
   @Column("simple-array", { nullable: true })
-  locativePlural?: string[];
+  nominativePlural?: string[];
+
+  @Column("simple-array", { nullable: true })
+  nominativeSingular?: string[];
+
+  @Column("simple-array", { nullable: true })
+  vocativePlural?: string[];
+
+  @Column("simple-array", { nullable: true })
+  vocativeSingular?: string[];
 }

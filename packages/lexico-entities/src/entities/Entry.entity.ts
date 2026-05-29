@@ -21,31 +21,8 @@ export class Entry extends BaseEntity {
   @PrimaryColumn("varchar", { length: 127, unique: true })
   id!: string;
 
-  @Column({ type: "enum", enum: partOfSpeechValues })
-  partOfSpeech!: PartOfSpeech;
-
-  @OneToMany(() => PrincipalPart, "entry", {
-    eager: true,
-    cascade: true,
-  })
-  principalParts!: PrincipalPart[];
-
-  @OneToOne(() => Inflection, {
-    nullable: true,
-    eager: true,
-    cascade: true,
-    onDelete: "SET NULL",
-  })
-  @JoinColumn()
-  inflection?: Inflection | null;
-
-  @OneToMany(() => Translation, (translation) => translation.entry, {
-    nullable: true,
-    eager: true,
-    cascade: true,
-    onDelete: "CASCADE",
-  })
-  translations?: Translation[] | null;
+  @Column("varchar", { length: 1027, nullable: true })
+  etymology?: string;
 
   @OneToOne(() => Forms, {
     nullable: true,
@@ -56,12 +33,35 @@ export class Entry extends BaseEntity {
   @JoinColumn()
   forms?: Forms | null;
 
-  @ManyToMany("Word", "entries")
-  words?: unknown[];
+  @OneToOne(() => Inflection, {
+    nullable: true,
+    eager: true,
+    cascade: true,
+    onDelete: "SET NULL",
+  })
+  @JoinColumn()
+  inflection?: Inflection | null;
+
+  @Column({ type: "enum", enum: partOfSpeechValues })
+  partOfSpeech!: PartOfSpeech;
+
+  @OneToMany(() => PrincipalPart, "entry", {
+    eager: true,
+    cascade: true,
+  })
+  principalParts!: PrincipalPart[];
 
   @Column(() => Pronunciation)
   pronunciation?: Pronunciation;
 
-  @Column("varchar", { length: 1027, nullable: true })
-  etymology?: string;
+  @OneToMany(() => Translation, (translation) => translation.entry, {
+    nullable: true,
+    eager: true,
+    cascade: true,
+    onDelete: "CASCADE",
+  })
+  translations?: Translation[] | null;
+
+  @ManyToMany("Word", "entries")
+  words?: unknown[];
 }

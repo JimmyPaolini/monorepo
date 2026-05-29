@@ -12,15 +12,15 @@ export class Translation extends BaseEntity {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
 
-  @Column("varchar", { length: 2047 })
-  translation!: string;
-
   @ManyToOne("Entry", "translations", {
     onDelete: "CASCADE",
     onUpdate: "CASCADE",
   })
   @JoinColumn()
   entry!: unknown;
+
+  @Column("varchar", { length: 2047 })
+  translation!: string;
 
   constructor(translation: string, entry: unknown) {
     super();

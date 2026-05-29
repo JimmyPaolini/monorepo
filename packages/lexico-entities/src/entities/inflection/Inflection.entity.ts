@@ -1,8 +1,8 @@
 import {
-  BaseEntity,
-  Entity,
-  PrimaryGeneratedColumn,
-  TableInheritance,
+    BaseEntity,
+    Entity,
+    PrimaryGeneratedColumn,
+    TableInheritance,
 } from "typeorm";
 
 @Entity()

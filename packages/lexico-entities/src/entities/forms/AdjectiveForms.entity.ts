@@ -16,10 +16,10 @@ export interface AdjectiveCaseForms {
 @ChildEntity("adjective")
 export class AdjectiveForms extends Forms {
   @Column("json", { nullable: true })
-  masculine?: AdjectiveCaseForms | null;
+  feminine?: AdjectiveCaseForms | null;
 
   @Column("json", { nullable: true })
-  feminine?: AdjectiveCaseForms | null;
+  masculine?: AdjectiveCaseForms | null;
 
   @Column("json", { nullable: true })
   neuter?: AdjectiveCaseForms | null;
