@@ -1,11 +1,18 @@
-#!/usr/bin/env bash
-set -eo pipefail
+#!/usr/bin/env sh
+set -e
 
-NOISE_PATTERNS=(
-  '\(node:[0-9]+\) Warning: The .NO_COLOR'
-  '\(Use .node --trace-warnings'
-  'Your AI agent configuration is outdated'
-)
-NOISE_FILTER=$(IFS='|'; echo "${NOISE_PATTERNS[*]}")
+NOISE_FILTER='\(node:[0-9]+\) Warning: The .NO_COLOR|\(Use .node --trace-warnings|Your AI agent configuration is outdated'
+TMP_OUTPUT_FILE="$(mktemp)"
 
-nx run monorepo:lint-staged 2>&1 | grep -vE "$NOISE_FILTER" | sed -E $'s/\033\[[0-9;]*[mK]//g' | tee last-lint-staged-errors.txt
+if nx run monorepo:lint-staged >"$TMP_OUTPUT_FILE" 2>&1; then
+	LINT_STAGED_EXIT_CODE=0
+else
+	LINT_STAGED_EXIT_CODE=$?
+fi
+
+grep -vE "$NOISE_FILTER" "$TMP_OUTPUT_FILE" \
+	| awk '{ gsub(/\033\[[0-9;]*[mK]/, ""); print }' \
+	| tee last-lint-staged-errors.txt
+
+rm -f "$TMP_OUTPUT_FILE"
+exit "$LINT_STAGED_EXIT_CODE"
