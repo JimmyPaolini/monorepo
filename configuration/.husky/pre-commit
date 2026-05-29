@@ -1,5 +1,3 @@
-#!/bin/sh
-
 set -e
 
 NOISE_PATTERNS='\(node:[0-9]+\) Warning: The .NO_COLOR|\(Use .node --trace-warnings|Your AI agent configuration is outdated'
