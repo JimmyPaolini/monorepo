@@ -1,8 +1,10 @@
+import { Field, ObjectType } from "@nestjs/graphql";
 import { ChildEntity, Column } from "typeorm";
 
 import { Inflection } from "./Inflection.entity.js";
 
-export type AdverbType = string;
+export const adverbTypeValues = ["descriptive", "conjunctional", ""] as const;
+export type AdverbType = (typeof adverbTypeValues)[number];
 
 export const adverbDegreeValues = [
   "positive",
@@ -11,11 +13,14 @@ export const adverbDegreeValues = [
 ] as const;
 export type AdverbDegree = (typeof adverbDegreeValues)[number];
 
+@ObjectType({ implements: Inflection })
 @ChildEntity("adverb")
 export class AdverbInflection extends Inflection {
+  @Field(() => String)
   @Column({ type: "enum", enum: adverbDegreeValues, default: "positive" })
   degree!: AdverbDegree;
 
-  @Column("varchar", { length: 255, default: "" })
+  @Field(() => String)
+  @Column({ type: "enum", enum: adverbTypeValues, default: "" })
   type!: AdverbType;
 }

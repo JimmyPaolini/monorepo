@@ -1,159 +1,232 @@
+import { Field, ObjectType } from "@nestjs/graphql";
 import { ChildEntity, Column } from "typeorm";
 
 import { Forms } from "./Forms.entity.js";
 
 // ── Indicative ────────────────────────────────────────────────────────────────
 
-interface IndicativePerson {
-  first?: string[];
-  second?: string[];
-  third?: string[];
+@ObjectType()
+export class IndicativePerson {
+  @Field(() => [String], { nullable: true }) first?: string[];
+  @Field(() => [String], { nullable: true }) second?: string[];
+  @Field(() => [String], { nullable: true }) third?: string[];
 }
 
-interface IndicativeNumber {
+@ObjectType()
+export class IndicativeNumber {
+  @Field(() => IndicativePerson, { nullable: true })
   singular?: IndicativePerson;
-  plural?: IndicativePerson;
+  @Field(() => IndicativePerson, { nullable: true }) plural?: IndicativePerson;
 }
 
-interface IndicativeTense {
-  present?: IndicativeNumber;
+@ObjectType()
+export class IndicativeTense {
+  @Field(() => IndicativeNumber, { nullable: true }) present?: IndicativeNumber;
+  @Field(() => IndicativeNumber, { nullable: true })
   imperfect?: IndicativeNumber;
-  future?: IndicativeNumber;
-  perfect?: IndicativeNumber;
+  @Field(() => IndicativeNumber, { nullable: true }) future?: IndicativeNumber;
+  @Field(() => IndicativeNumber, { nullable: true }) perfect?: IndicativeNumber;
+  @Field(() => IndicativeNumber, { nullable: true })
   pluperfect?: IndicativeNumber;
+  @Field(() => IndicativeNumber, { nullable: true })
   futurePerfect?: IndicativeNumber;
 }
 
-interface IndicativeVoice {
-  active?: IndicativeTense;
-  passive?: IndicativeTense;
+@ObjectType()
+export class IndicativeVoice {
+  @Field(() => IndicativeTense, { nullable: true }) active?: IndicativeTense;
+  @Field(() => IndicativeTense, { nullable: true }) passive?: IndicativeTense;
 }
 
 // ── Subjunctive ───────────────────────────────────────────────────────────────
 
-interface SubjunctivePerson {
-  first?: string[];
-  second?: string[];
-  third?: string[];
+@ObjectType()
+export class SubjunctivePerson {
+  @Field(() => [String], { nullable: true }) first?: string[];
+  @Field(() => [String], { nullable: true }) second?: string[];
+  @Field(() => [String], { nullable: true }) third?: string[];
 }
 
-interface SubjunctiveNumber {
+@ObjectType()
+export class SubjunctiveNumber {
+  @Field(() => SubjunctivePerson, { nullable: true })
   singular?: SubjunctivePerson;
+  @Field(() => SubjunctivePerson, { nullable: true })
   plural?: SubjunctivePerson;
 }
 
-interface SubjunctiveTense {
+@ObjectType()
+export class SubjunctiveTense {
+  @Field(() => SubjunctiveNumber, { nullable: true })
   present?: SubjunctiveNumber;
+  @Field(() => SubjunctiveNumber, { nullable: true })
   imperfect?: SubjunctiveNumber;
+  @Field(() => SubjunctiveNumber, { nullable: true })
   perfect?: SubjunctiveNumber;
+  @Field(() => SubjunctiveNumber, { nullable: true })
   pluperfect?: SubjunctiveNumber;
 }
 
-interface SubjunctiveVoice {
-  active?: SubjunctiveTense;
-  passive?: SubjunctiveTense;
+@ObjectType()
+export class SubjunctiveVoice {
+  @Field(() => SubjunctiveTense, { nullable: true }) active?: SubjunctiveTense;
+  @Field(() => SubjunctiveTense, { nullable: true }) passive?: SubjunctiveTense;
 }
 
 // ── Imperative ────────────────────────────────────────────────────────────────
 
-interface ImperativeSecond {
-  second?: string[];
+@ObjectType()
+export class ImperativeSecond {
+  @Field(() => [String], { nullable: true }) second?: string[];
 }
 
-interface ImperativeSecondThird {
-  second?: string[];
-  third?: string[];
+@ObjectType()
+export class ImperativeSecondThird {
+  @Field(() => [String], { nullable: true }) second?: string[];
+  @Field(() => [String], { nullable: true }) third?: string[];
 }
 
-interface ImperativeThird {
-  third?: string[];
+@ObjectType()
+export class ImperativeThird {
+  @Field(() => [String], { nullable: true }) third?: string[];
 }
 
-interface ImperativePresent {
+@ObjectType()
+export class ImperativePresent {
+  @Field(() => ImperativeSecond, { nullable: true })
   singular?: ImperativeSecond;
-  plural?: ImperativeSecond;
+  @Field(() => ImperativeSecond, { nullable: true }) plural?: ImperativeSecond;
 }
 
-interface ImperativeActiveFuture {
+@ObjectType()
+export class ImperativeActiveFuture {
+  @Field(() => ImperativeSecondThird, { nullable: true })
   singular?: ImperativeSecondThird;
+  @Field(() => ImperativeSecondThird, { nullable: true })
   plural?: ImperativeSecondThird;
 }
 
-interface ImperativePassiveFuture {
+@ObjectType()
+export class ImperativePassiveFuture {
+  @Field(() => ImperativeSecondThird, { nullable: true })
   singular?: ImperativeSecondThird;
-  plural?: ImperativeThird;
+  @Field(() => ImperativeThird, { nullable: true }) plural?: ImperativeThird;
 }
 
-interface ImperativeVoice {
-  active?: { present?: ImperativePresent; future?: ImperativeActiveFuture };
-  passive?: { present?: ImperativePresent; future?: ImperativePassiveFuture };
+@ObjectType()
+export class ImperativeActiveVoice {
+  @Field(() => ImperativePresent, { nullable: true })
+  present?: ImperativePresent;
+  @Field(() => ImperativeActiveFuture, { nullable: true })
+  future?: ImperativeActiveFuture;
+}
+
+@ObjectType()
+export class ImperativePassiveVoice {
+  @Field(() => ImperativePresent, { nullable: true })
+  present?: ImperativePresent;
+  @Field(() => ImperativePassiveFuture, { nullable: true })
+  future?: ImperativePassiveFuture;
+}
+
+@ObjectType()
+export class ImperativeVoice {
+  @Field(() => ImperativeActiveVoice, { nullable: true })
+  active?: ImperativeActiveVoice;
+  @Field(() => ImperativePassiveVoice, { nullable: true })
+  passive?: ImperativePassiveVoice;
 }
 
 // ── Non-Finite ────────────────────────────────────────────────────────────────
 
-interface NonFinitePresentPerfectFuture {
-  present?: string[];
-  perfect?: string[];
-  future?: string[];
+@ObjectType()
+export class NonFinitePresentPerfectFuture {
+  @Field(() => [String], { nullable: true }) present?: string[];
+  @Field(() => [String], { nullable: true }) perfect?: string[];
+  @Field(() => [String], { nullable: true }) future?: string[];
 }
 
-interface NonFinitePresentFuture {
-  present?: string[];
-  future?: string[];
+@ObjectType()
+export class NonFinitePresentFuture {
+  @Field(() => [String], { nullable: true }) present?: string[];
+  @Field(() => [String], { nullable: true }) future?: string[];
 }
 
-interface NonFinitePerfectFuture {
-  perfect?: string[];
-  future?: string[];
+@ObjectType()
+export class NonFinitePerfectFuture {
+  @Field(() => [String], { nullable: true }) perfect?: string[];
+  @Field(() => [String], { nullable: true }) future?: string[];
 }
 
-interface NonFiniteVoice {
-  infinitive?: {
-    active?: NonFinitePresentPerfectFuture;
-    passive?: NonFinitePresentPerfectFuture;
-  };
-  participle?: {
-    active?: NonFinitePresentFuture;
-    passive?: NonFinitePerfectFuture;
-  };
+@ObjectType()
+export class NonFiniteInfinitive {
+  @Field(() => NonFinitePresentPerfectFuture, { nullable: true })
+  active?: NonFinitePresentPerfectFuture;
+  @Field(() => NonFinitePresentPerfectFuture, { nullable: true })
+  passive?: NonFinitePresentPerfectFuture;
+}
+
+@ObjectType()
+export class NonFiniteParticiple {
+  @Field(() => NonFinitePresentFuture, { nullable: true })
+  active?: NonFinitePresentFuture;
+  @Field(() => NonFinitePerfectFuture, { nullable: true })
+  passive?: NonFinitePerfectFuture;
+}
+
+@ObjectType()
+export class NonFiniteVoice {
+  @Field(() => NonFiniteInfinitive, { nullable: true })
+  infinitive?: NonFiniteInfinitive;
+  @Field(() => NonFiniteParticiple, { nullable: true })
+  participle?: NonFiniteParticiple;
 }
 
 // ── Verbal Noun ───────────────────────────────────────────────────────────────
 
-interface GerundForms {
-  genitive?: string[];
-  dative?: string[];
-  accusative?: string[];
-  ablative?: string[];
+@ObjectType()
+export class GerundForms {
+  @Field(() => [String], { nullable: true }) genitive?: string[];
+  @Field(() => [String], { nullable: true }) dative?: string[];
+  @Field(() => [String], { nullable: true }) accusative?: string[];
+  @Field(() => [String], { nullable: true }) ablative?: string[];
 }
 
-interface SupineForms {
-  accusative?: string[];
-  ablative?: string[];
+@ObjectType()
+export class SupineForms {
+  @Field(() => [String], { nullable: true }) accusative?: string[];
+  @Field(() => [String], { nullable: true }) ablative?: string[];
 }
 
-interface VerbalNounForms {
-  gerund?: GerundForms;
-  supine?: SupineForms;
+@ObjectType()
+export class VerbalNounForms {
+  @Field(() => GerundForms, { nullable: true }) gerund?: GerundForms;
+  @Field(() => SupineForms, { nullable: true }) supine?: SupineForms;
 }
 
 // ── Entity ────────────────────────────────────────────────────────────────────
 
 /** Verb forms stored as typed JSON columns per mood/voice grouping. */
+@ObjectType({ implements: Forms })
 @ChildEntity("verb")
 export class VerbForms extends Forms {
+  @Field(() => ImperativeVoice, { nullable: true })
   @Column("json", { nullable: true })
   imperative?: ImperativeVoice | null;
 
+  @Field(() => IndicativeVoice, { nullable: true })
   @Column("json", { nullable: true })
   indicative?: IndicativeVoice | null;
 
+  @Field(() => NonFiniteVoice, { nullable: true })
   @Column("json", { nullable: true })
   nonFinite?: NonFiniteVoice | null;
 
+  @Field(() => SubjunctiveVoice, { nullable: true })
   @Column("json", { nullable: true })
   subjunctive?: SubjunctiveVoice | null;
 
+  @Field(() => VerbalNounForms, { nullable: true })
   @Column("json", { nullable: true })
   verbalNoun?: VerbalNounForms | null;
 }
