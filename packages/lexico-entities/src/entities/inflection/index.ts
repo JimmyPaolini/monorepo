@@ -1,7 +1,7 @@
 export { Inflection } from "./Inflection.entity.js";
-export { AdjectiveInflection } from "./AdjectiveInflection.js";
-export { AdverbInflection } from "./AdverbInflection.js";
-export { NounInflection } from "./NounInflection.js";
-export { PrepositionInflection } from "./PrepositionInflection.js";
-export { Uninflected } from "./Uninflected.js";
-export { VerbInflection } from "./VerbInflection.js";
+export { AdjectiveInflection } from "./AdjectiveInflection.entity.js";
+export { AdverbInflection } from "./AdverbInflection.entity.js";
+export { NounInflection } from "./NounInflection.entity.js";
+export { PrepositionInflection } from "./PrepositionInflection.entity.js";
+export { Uninflected } from "./Uninflected.entity.js";
+export { VerbInflection } from "./VerbInflection.entity.js";
