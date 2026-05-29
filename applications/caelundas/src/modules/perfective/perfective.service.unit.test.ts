@@ -43,7 +43,9 @@ describe("PerfectiveService", () => {
   let service: PerfectiveService;
 
   const datetimeMock = { generateDates: vi.fn(), generateMinutes: vi.fn() };
-  const ephemerisAggMock = { getEphemerides: vi.fn() };
+  const ephemerisAggMock = {
+    getEphemerides: vi.fn<EphemerisService["getEphemerides"]>(),
+  };
   const aspectsMock = { detect: vi.fn() };
   const eclipsesMock = { detect: vi.fn() };
   const retrogradesMock = { detect: vi.fn() };
@@ -112,9 +114,8 @@ describe("PerfectiveService", () => {
       service.detect(baseInput);
 
       expect(ephemerisAggMock.getEphemerides).toHaveBeenCalledOnce();
-      const { start, end } =
-        ephemerisAggMock.getEphemerides.mock.calls[0]?.[0] ?? {};
-      expect(end?.isAfter(start)).toBe(true);
+      const firstCallArg = ephemerisAggMock.getEphemerides.mock.calls[0]?.[0];
+      expect(firstCallArg?.end.isAfter(firstCallArg.start)).toBe(true);
     });
 
     it("should accumulate events returned by sub-services across all minutes", () => {

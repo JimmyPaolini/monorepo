@@ -2,7 +2,10 @@ import {
   symbolByBody,
   symbolBySextupleAspect,
 } from "@caelundas/src/caelundas.constants";
-import { sextupleAspectBodies } from "@caelundas/src/caelundas.types";
+import {
+  groupByToMap,
+  sextupleAspectBodies,
+} from "@caelundas/src/caelundas.types";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
@@ -20,8 +23,7 @@ import type { Moment } from "moment-timezone";
 function groupAspectsByType<T extends AspectBodies>(
   edges: T[],
 ): Map<Aspect, T[]> {
-  const grouped = _.groupBy(edges, "aspect");
-  return new Map(Object.entries(grouped)) as Map<Aspect, T[]>;
+  return groupByToMap(edges, (edge) => edge.aspect);
 }
 
 function determineCompoundPhaseFromSnapshots(

@@ -127,7 +127,7 @@ The affirmations project serves as the reference implementation. Future Python p
 | TASK-033 | Verify `.github/actions/setup-monorepo` installs `uv` and runs `uv sync` for Python projects — if not, add uv installation step                                                  | ✅        | 2026-04-04T04:27:00Z |
 | TASK-034 | Run `nx run affirmations:code-analysis` in CI to validate all Python tools (including ty) execute successfully                                                                   | ✅        | 2026-04-04T04:27:00Z |
 | TASK-035 | Verify `nx affected --target=code-analysis` correctly includes affirmations when Python files change                                                                             | ✅        | 2026-04-04T04:27:00Z |
-| TASK-036 | Add `nx affected --target=bandit` step to `.github/workflows/audit-security.yml` after the `Setup monorepo` step, alongside existing Gitleaks, dependency-audit, and Trivy steps | ✅        | 2026-04-04T04:27:00Z |
+| TASK-036 | Add `nx affected --target=bandit` step to `.github/workflows/audit-security.yml` after the `Setup monorepo` step, alongside existing Gitleaks, scan-dependencies, and Trivy steps | ✅        | 2026-04-04T04:27:00Z |
 | TASK-037 | Verify `audit-security.yml` workflow passes with bandit — confirm it runs on PRs, pushes to main, and weekly schedule                                                            | ✅        | 2026-04-04T04:27:00Z |
 | TASK-038 | Verify that TS projects (caelundas, lexico, etc.) are unaffected — their `format`, `lint`, `typecheck`, `test` targets still compose TS sub-targets correctly                    | ✅        | 2026-04-04T04:27:00Z |
 

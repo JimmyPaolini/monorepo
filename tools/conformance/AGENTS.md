@@ -23,6 +23,13 @@ nx g conformance:react-component --name=Dialog
 nx g conformance:nestjs-service-module --name=auth
 ```
 
+Generate a NestJS command-line application scaffold:
+
+```bash
+nx generate conformance:nestjs-command-application --name=stellar-cli
+nx g conformance:nestjs-command-application --name=stellar-cli
+```
+
 ## Architecture Overview
 
 ### Directory Layout
@@ -52,6 +59,11 @@ tools/conformance/
 │   │           ├── __nameCamelCase__.service.ts
 │   │           ├── __nameCamelCase__.service.unit.test.ts
 │   │           └── __nameCamelCase__.types.ts
+│   │   └── nestjs-command-application/
+│   │       ├── generator.ts
+│   │       ├── generator.unit.test.ts
+│   │       ├── schema.json
+│   │       └── templates/
 │   └── validators/
 ├── generators.json
 └── project.json
@@ -109,6 +121,12 @@ See [Common Gotchas](../../documentation/troubleshooting/gotchas.md) for Nx and 
 - [src/generators/nestjs-service-module/generator.ts](src/generators/nestjs-service-module/generator.ts): Generator logic
 - [src/generators/nestjs-service-module/schema.json](src/generators/nestjs-service-module/schema.json): CLI schema (`name`, `project`)
 - [src/generators/nestjs-service-module/templates/](src/generators/nestjs-service-module/templates/): Templates (`__nameCamelCase__.module.ts`, `__nameCamelCase__.service.ts`, etc.)
+
+### nestjs-command-application
+
+- [src/generators/nestjs-command-application/generator.ts](src/generators/nestjs-command-application/generator.ts): Generator logic
+- [src/generators/nestjs-command-application/schema.json](src/generators/nestjs-command-application/schema.json): CLI schema (`name`)
+- [src/generators/nestjs-command-application/templates/](src/generators/nestjs-command-application/templates/): Application scaffold templates
 
 ### Shared utilities
 

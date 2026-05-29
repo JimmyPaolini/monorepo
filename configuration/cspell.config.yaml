@@ -95,6 +95,7 @@ words:
   - tolower
   - toon
   - toupper
+  - unrs
   - upenn
   - verbing
 enableFiletypes:

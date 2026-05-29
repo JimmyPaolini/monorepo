@@ -717,7 +717,7 @@ Task:
 **Started:** 2026-01-16T10:30:15Z
 **Completed:** 2026-01-16T10:31:05Z
 **Duration:** 00:00:50
-**Artifacts:** reports/dependency-audit.md
+**Artifacts:** reports/scan-dependencies.md
 **Summary:** [brief agent summary]
 ```
 

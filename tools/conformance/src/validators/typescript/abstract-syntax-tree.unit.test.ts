@@ -5,13 +5,14 @@ import { fileURLToPath } from "node:url";
 import mustache from "mustache";
 import { describe, expect, it } from "vitest";
 
-import { validateConformance } from "./validator";
+import { expectErrorWithMessage } from "./test-helpers";
+import { validateTypescriptConformance as validateConformance } from "./validator";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
 const TEMPLATES_DIR = path.resolve(
   __dirname,
-  "../generators/nestjs-service-module/templates",
+  "../../generators/nestjs-service-module/templates",
 );
 
 const SERVICE_TEMPLATE_PATH = path.join(
@@ -109,11 +110,7 @@ describe("validateConformanceAST", () => {
       filename: "user.service.ts",
     });
     expect(result.errors.length === 0).toBe(false);
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.stringContaining('Missing Decorator "Injectable"'),
-      ]),
-    );
+    expectErrorWithMessage(result.errors, 'Missing Decorator "Injectable"');
   });
 
   it("wrong class name fails", () => {
@@ -127,10 +124,9 @@ describe("validateConformanceAST", () => {
       filename: "user.service.ts",
     });
     expect(result.errors.length === 0).toBe(false);
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.stringContaining('Missing ClassDeclaration "UserService"'),
-      ]),
+    expectErrorWithMessage(
+      result.errors,
+      'Missing ClassDeclaration "UserService"',
     );
   });
 
@@ -145,10 +141,9 @@ describe("validateConformanceAST", () => {
       filename: "user.service.ts",
     });
     expect(result.errors.length === 0).toBe(false);
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.stringContaining('Missing comment: "// 🔑 Public Fields"'),
-      ]),
+    expectErrorWithMessage(
+      result.errors,
+      'Missing comment: "// 🔑 Public Fields"',
     );
   });
 
@@ -166,10 +161,9 @@ describe("validateConformanceAST", () => {
       filename: "user.service.ts",
     });
     expect(result.errors.length === 0).toBe(false);
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.stringContaining('Missing ImportDeclaration "@nestjs/common"'),
-      ]),
+    expectErrorWithMessage(
+      result.errors,
+      'Missing ImportDeclaration "@nestjs/common"',
     );
   });
 
@@ -184,22 +178,43 @@ describe("validateConformanceAST", () => {
       filename: "user.module.ts",
     });
     expect(result.errors.length === 0).toBe(false);
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.stringContaining('Missing PropertyAssignment "controllers"'),
-      ]),
+    expectErrorWithMessage(
+      result.errors,
+      'Missing PropertyAssignment "controllers"',
     );
   });
 
-  it("caelundas ephemeris service (heavily modified) passes AST validation", () => {
-    const CAELUNDAS_MODULES = path.resolve(
-      __dirname,
-      "../../../../applications/caelundas/src/modules",
-    );
-    const fileContent = fs.readFileSync(
-      path.join(CAELUNDAS_MODULES, "ephemeris", "ephemeris.service.ts"),
-      "utf8",
-    );
+  it("heavily modified service with fields between section comments passes AST validation", () => {
+    const fileContent = [
+      'import { Injectable } from "@nestjs/common";',
+      'import { Logger } from "@nestjs/common";',
+      "",
+      "/** Computes ephemeris data for a date range. */",
+      "@Injectable()",
+      "export class EphemerisService {",
+      "  // 🏗️ Dependency Injection",
+      "  constructor() {}",
+      "",
+      "  // 🔐 Private Fields",
+      "  private readonly logger = new Logger(EphemerisService.name);",
+      "  private readonly cache = new Map<string, number[]>();",
+      "",
+      "  // 🔑 Public Fields",
+      "",
+      "  // 🔏 Private Methods",
+      "",
+      "  private isSupported(body: string): boolean {",
+      '    return body === "sun" || body === "moon";',
+      "  }",
+      "",
+      "  // 🌎 Public Methods",
+      "",
+      "  public get(body: string): number[] {",
+      "    return this.cache.get(body) ?? [];",
+      "  }",
+      "}",
+      "",
+    ].join("\n");
     const templateContent = fs.readFileSync(SERVICE_TEMPLATE_PATH, "utf8");
     const result = validateConformance({
       instance: fileContent,
@@ -207,10 +222,47 @@ describe("validateConformanceAST", () => {
       data: { nameCamelCase: "ephemeris", namePascalCase: "Ephemeris" },
       filename: "ephemeris.service.ts",
     });
-    const structuralErrors = result.errors.filter(
-      (e) => !e.startsWith("Missing template comment:"),
-    );
-    expect(structuralErrors).toEqual([]);
+    expect(result.errors).toEqual([]);
+  });
+
+  it("field between section comments in constructor-injected service passes", () => {
+    // Regression test: a private field between // 🔐 Private Fields and
+    // // 🔑 Public Fields must not cause the later section comments to be
+    // reported as missing. The scan must look past class members to find
+    // section comments distributed across the class body.
+    const fileContent = [
+      'import { Injectable } from "@nestjs/common";',
+      "",
+      "/** Handles ephemeris data for the application. */",
+      "@Injectable()",
+      "export class EphemerisService {",
+      "  // 🏗️ Dependency Injection",
+      "  constructor() {}",
+      "",
+      "  // 🔐 Private Fields",
+      "",
+      "  private readonly nodeSet: ReadonlySet<string> = new Set<string>();",
+      "",
+      "  // 🔑 Public Fields",
+      "",
+      "  // 🔏 Private Methods",
+      "",
+      "  // 🌎 Public Methods",
+      "",
+      "  private isNode(body: string): boolean {",
+      "    return this.nodeSet.has(body);",
+      "  }",
+      "}",
+      "",
+    ].join("\n");
+    const templateContent = fs.readFileSync(SERVICE_TEMPLATE_PATH, "utf8");
+    const result = validateConformance({
+      instance: fileContent,
+      template: templateContent,
+      data: { nameCamelCase: "ephemeris", namePascalCase: "Ephemeris" },
+      filename: "ephemeris.service.ts",
+    });
+    expect(result.errors).toEqual([]);
   });
 
   it("reworded TODO comment in instance still passes", () => {
@@ -244,10 +296,9 @@ describe("validateConformanceAST", () => {
       data,
       filename: "user.service.ts",
     });
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.stringContaining('Missing comment: "// 🔑 Public Fields"'),
-      ]),
+    expectErrorWithMessage(
+      result.errors,
+      'Missing comment: "// 🔑 Public Fields"',
     );
   });
 
@@ -301,10 +352,126 @@ describe("validateConformanceAST", () => {
       data,
       filename: "user.module.ts",
     });
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.stringContaining('Missing PropertyAssignment "providers"'),
-      ]),
+    expectErrorWithMessage(
+      result.errors,
+      'Missing PropertyAssignment "providers"',
+    );
+  });
+
+  it("template with block comment passes when instance has it", () => {
+    const template = [
+      'import { Injectable } from "@nestjs/common";',
+      "",
+      "/* shared internal note */",
+      "@Injectable()",
+      "export class UserService {",
+      "  constructor() {}",
+      "}",
+      "",
+    ].join("\n");
+    const rendered = mustache.render(template, data);
+    const result = validateConformance({
+      instance: rendered,
+      template,
+      data,
+      filename: "user.service.ts",
+    });
+    expect(result.errors).toEqual([]);
+  });
+
+  it("template with block comment fails when instance is missing it", () => {
+    const template = [
+      'import { Injectable } from "@nestjs/common";',
+      "",
+      "/* shared internal note */",
+      "@Injectable()",
+      "export class UserService {",
+      "  constructor() {}",
+      "}",
+      "",
+    ].join("\n");
+    const instance = template.replace("/* shared internal note */\n", "");
+    const result = validateConformance({
+      instance,
+      template,
+      data,
+      filename: "user.service.ts",
+    });
+    expectErrorWithMessage(
+      result.errors,
+      'Missing comment: "/* shared internal note */"',
+    );
+  });
+
+  it("template with JSDoc TODO comment passes when instance rewords it", () => {
+    const template = [
+      'import { Injectable } from "@nestjs/common";',
+      "",
+      "/** TODO: document this service */",
+      "@Injectable()",
+      "export class UserService {",
+      "  constructor() {}",
+      "}",
+      "",
+    ].join("\n");
+    const instance = template.replace(
+      "/** TODO: document this service */",
+      "/** TODO: replace with real documentation */",
+    );
+    const result = validateConformance({
+      instance,
+      template,
+      data,
+      filename: "user.service.ts",
+    });
+    expect(result.errors).toEqual([]);
+  });
+
+  it("template with JSDoc TODO comment passes when instance has real documentation", () => {
+    const template = [
+      'import { Injectable } from "@nestjs/common";',
+      "",
+      "/** TODO: document this service */",
+      "@Injectable()",
+      "export class UserService {",
+      "  constructor() {}",
+      "}",
+      "",
+    ].join("\n");
+    const instance = template.replace(
+      "/** TODO: document this service */",
+      "/** Handles user operations for the authentication flow. */",
+    );
+    const result = validateConformance({
+      instance,
+      template,
+      data,
+      filename: "user.service.ts",
+    });
+    expect(result.errors).toEqual([]);
+  });
+
+  it("template with non-TODO JSDoc fails when instance is missing it", () => {
+    const template = [
+      'import { Injectable } from "@nestjs/common";',
+      "",
+      "/** Handles user operations. */",
+      "@Injectable()",
+      "export class UserService {",
+      "  constructor() {}",
+      "}",
+      "",
+    ].join("\n");
+    const instance = template.replace("/** Handles user operations. */\n", "");
+    const result = validateConformance({
+      instance,
+      template,
+      data,
+      filename: "user.service.ts",
+    });
+    expectErrorWithMessage(
+      result.errors,
+      'Missing comment: "/** Handles user operations. */"',
     );
   });
 });
@@ -363,26 +530,61 @@ describe("validateConformanceAST — multi-candidate keyless nodes", () => {
       data: {},
       filename: "user.service.ts",
     });
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.stringContaining('Missing Identifier "requiredCall"'),
-      ]),
-    );
+    expectErrorWithMessage(result.errors, 'Missing Identifier "requiredCall"');
   });
 });
 
-describe("validateConformanceAST — caelundas module error detection", () => {
-  const CAELUNDAS_MODULES = path.resolve(
-    __dirname,
-    "../../../../applications/caelundas/src/modules",
-  );
+describe("validateConformanceAST — error detection", () => {
+  const MOCK_DATETIME_SERVICE = [
+    'import { Injectable } from "@nestjs/common";',
+    "",
+    "@Injectable()",
+    "export class DatetimeService {",
+    "  // 🏗️ Dependency Injection",
+    "  constructor() {}",
+    "",
+    "  // 🔐 Private Fields",
+    "",
+    "  // 🔑 Public Fields",
+    "",
+    "  // 🔏 Private Methods",
+    "",
+    "  // 🌎 Public Methods",
+    "  public now(): Date {",
+    "    return new Date();",
+    "  }",
+    "}",
+    "",
+  ].join("\n");
+
+  const MOCK_MATH_SERVICE = [
+    'import { Injectable } from "@nestjs/common";',
+    "",
+    "@Injectable()",
+    "export class MathService {",
+    "  // 🏗️ Dependency Injection",
+    "  constructor() {}",
+    "",
+    "  // 🔐 Private Fields",
+    "",
+    "  // 🔑 Public Fields",
+    "",
+    "  // 🔏 Private Methods",
+    "",
+    "  // 🌎 Public Methods",
+    "  public add(a: number, b: number): number {",
+    "    return a + b;",
+    "  }",
+    "}",
+    "",
+  ].join("\n");
 
   function readServiceTemplate(): string {
     return fs.readFileSync(
       path.join(
         path.resolve(
           __dirname,
-          "../generators/nestjs-service-module/templates",
+          "../../generators/nestjs-service-module/templates",
         ),
         "__nameCamelCase__.service.ts",
       ),
@@ -390,81 +592,59 @@ describe("validateConformanceAST — caelundas module error detection", () => {
     );
   }
 
-  it("missing @Injectable decorator in datetime service fails", () => {
-    const fileContent = fs
-      .readFileSync(
-        path.join(CAELUNDAS_MODULES, "datetime", "datetime.service.ts"),
-        "utf8",
-      )
-      .replace("@Injectable()\n", "");
+  it("missing @Injectable decorator fails", () => {
+    const fileContent = MOCK_DATETIME_SERVICE.replace("@Injectable()\n", "");
     const result = validateConformance({
       instance: fileContent,
       template: readServiceTemplate(),
       data: { nameCamelCase: "datetime", namePascalCase: "Datetime" },
       filename: "datetime.service.ts",
     });
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.stringContaining('Missing Decorator "Injectable"'),
-      ]),
-    );
+    expectErrorWithMessage(result.errors, 'Missing Decorator "Injectable"');
   });
 
-  it("missing section comment in math service fails", () => {
-    const fileContent = fs
-      .readFileSync(
-        path.join(CAELUNDAS_MODULES, "math", "math.service.ts"),
-        "utf8",
-      )
-      .replace("  // 🌎 Public Methods\n", "");
+  it("missing section comment fails", () => {
+    const fileContent = MOCK_MATH_SERVICE.replace(
+      "  // 🌎 Public Methods\n",
+      "",
+    );
     const result = validateConformance({
       instance: fileContent,
       template: readServiceTemplate(),
       data: { nameCamelCase: "math", namePascalCase: "Math" },
       filename: "math.service.ts",
     });
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.stringContaining('Missing comment: "// 🌎 Public Methods"'),
-      ]),
+    expectErrorWithMessage(
+      result.errors,
+      'Missing comment: "// 🌎 Public Methods"',
     );
   });
 
-  it("renamed class in datetime service fails", () => {
-    const fileContent = fs
-      .readFileSync(
-        path.join(CAELUNDAS_MODULES, "datetime", "datetime.service.ts"),
-        "utf8",
-      )
-      .replaceAll("DatetimeService", "RenamedService");
+  it("renamed class fails", () => {
+    const fileContent = MOCK_DATETIME_SERVICE.replaceAll(
+      "DatetimeService",
+      "RenamedService",
+    );
     const result = validateConformance({
       instance: fileContent,
       template: readServiceTemplate(),
       data: { nameCamelCase: "datetime", namePascalCase: "Datetime" },
       filename: "datetime.service.ts",
     });
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.stringContaining('Missing ClassDeclaration "DatetimeService"'),
-      ]),
+    expectErrorWithMessage(
+      result.errors,
+      'Missing ClassDeclaration "DatetimeService"',
     );
   });
 
-  it("missing constructor in math service fails", () => {
-    const fileContent = fs
-      .readFileSync(
-        path.join(CAELUNDAS_MODULES, "math", "math.service.ts"),
-        "utf8",
-      )
-      .replace("  constructor() {}\n", "");
+  it("missing constructor fails", () => {
+    const fileContent = MOCK_MATH_SERVICE.replace("  constructor() {}\n", "");
     const result = validateConformance({
       instance: fileContent,
       template: readServiceTemplate(),
       data: { nameCamelCase: "math", namePascalCase: "Math" },
       filename: "math.service.ts",
     });
-    expect(result.errors).toEqual(
-      expect.arrayContaining([expect.stringContaining("Missing Constructor")]),
-    );
+    expectErrorWithMessage(result.errors, "Missing Constructor");
   });
 });

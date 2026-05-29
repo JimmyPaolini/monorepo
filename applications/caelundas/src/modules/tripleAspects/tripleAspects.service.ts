@@ -2,7 +2,11 @@ import {
   symbolByBody,
   symbolByTripleAspect,
 } from "@caelundas/src/caelundas.constants";
-import { tripleAspectBodies } from "@caelundas/src/caelundas.types";
+import {
+  groupByToMap,
+  isBody,
+  tripleAspectBodies,
+} from "@caelundas/src/caelundas.types";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
@@ -636,9 +640,22 @@ export class TripleAspectsService {
             continue;
           }
 
-          const body1 = body1Capitalized.toLowerCase() as Body;
-          const body2 = body2Capitalized.toLowerCase() as Body;
-          const body3 = body3Capitalized.toLowerCase() as Body;
+          const body1Lower = body1Capitalized.toLowerCase();
+          const body2Lower = body2Capitalized.toLowerCase();
+          const body3Lower = body3Capitalized.toLowerCase();
+          if (
+            !isBody(body1Lower) ||
+            !isBody(body2Lower) ||
+            !isBody(body3Lower)
+          ) {
+            console.warn(
+              `Unknown body in progressive event: ${body1Capitalized}, ${body2Capitalized}, ${body3Capitalized}`,
+            );
+            continue;
+          }
+          const body1 = body1Lower;
+          const body2 = body2Lower;
+          const body3 = body3Lower;
 
           const body1Symbol = symbolByBody[body1];
           const body2Symbol = symbolByBody[body2];
@@ -705,8 +722,7 @@ export class TripleAspectsService {
   static groupAspectsByType<T extends AspectBodies>(
     edges: T[],
   ): Map<Aspect, T[]> {
-    const grouped = _.groupBy(edges, "aspect");
-    return new Map(Object.entries(grouped)) as Map<Aspect, T[]>;
+    return groupByToMap(edges, (edge) => edge.aspect);
   }
 
   /**

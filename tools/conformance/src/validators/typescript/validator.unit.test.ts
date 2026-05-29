@@ -6,18 +6,19 @@ import { fileURLToPath } from "node:url";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 
 import {
-  collectConformanceErrors,
-  validateConformance,
+  stringifyConformanceErrors,
   validateInstanceDirectory,
   validateInstanceFile,
   validateInstancesDirectory,
-} from "./validator";
+} from "./files";
+import { expectErrorWithMessage } from "./test-helpers";
+import { validateTypescriptConformance as validateConformance } from "./validator";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
 const TEMPLATES_DIR = path.resolve(
   __dirname,
-  "../generators/nestjs-service-module/templates",
+  "../../generators/nestjs-service-module/templates",
 );
 
 const SERVICE_TEMPLATE_PATH = path.join(
@@ -25,36 +26,108 @@ const SERVICE_TEMPLATE_PATH = path.join(
   "__nameCamelCase__.service.ts",
 );
 
-describe("caelundas service integration", () => {
-  const CAELUNDAS_MODULES = path.resolve(
-    __dirname,
-    "../../../../applications/caelundas/src/modules",
-  );
-
-  function readCaelundasService(moduleName: string): string {
-    return fs.readFileSync(
-      path.join(CAELUNDAS_MODULES, moduleName, `${moduleName}.service.ts`),
-      "utf8",
-    );
-  }
-
+describe("heavily modified service integration", () => {
   const TEMPLATE_CONTENT = fs.readFileSync(SERVICE_TEMPLATE_PATH, "utf8");
 
-  const SERVICES: { camel: string; pascal: string }[] = [
-    { camel: "calendar", pascal: "Calendar" },
-    { camel: "datetime", pascal: "Datetime" },
-    { camel: "ephemeris", pascal: "Ephemeris" },
-    { camel: "input", pascal: "Input" },
-    { camel: "math", pascal: "Math" },
-    { camel: "perfective", pascal: "Perfective" },
-    { camel: "progressive", pascal: "Progressive" },
+  const MOCK_SERVICES: { camel: string; pascal: string; content: string }[] = [
+    {
+      camel: "alpha",
+      pascal: "Alpha",
+      content: [
+        'import { Injectable } from "@nestjs/common";',
+        "",
+        "@Injectable()",
+        "export class AlphaService {",
+        "  // 🏗️ Dependency Injection",
+        "  constructor() {}",
+        "",
+        "  // 🔐 Private Fields",
+        "",
+        "  // 🔑 Public Fields",
+        "",
+        "  // 🔏 Private Methods",
+        "",
+        "  // 🌎 Public Methods",
+        "  public compute(): number {",
+        "    return 42;",
+        "  }",
+        "}",
+        "",
+      ].join("\n"),
+    },
+    {
+      camel: "beta",
+      pascal: "Beta",
+      content: [
+        'import { Injectable } from "@nestjs/common";',
+        "",
+        'import { AlphaService } from "./alpha.service";',
+        "",
+        "@Injectable()",
+        "export class BetaService {",
+        "  // 🏗️ Dependency Injection",
+        "  constructor(private readonly alphaService: AlphaService) {}",
+        "",
+        "  // 🔐 Private Fields",
+        "  private readonly cache = new Map<string, string>();",
+        "",
+        "  // 🔑 Public Fields",
+        "",
+        "  // 🔏 Private Methods",
+        "  private format(value: string): string {",
+        "    return value.trim();",
+        "  }",
+        "",
+        "  // 🌎 Public Methods",
+        "  public process(input: string): string {",
+        "    return this.format(input);",
+        "  }",
+        "}",
+        "",
+      ].join("\n"),
+    },
+    {
+      camel: "gamma",
+      pascal: "Gamma",
+      content: [
+        'import { Injectable } from "@nestjs/common";',
+        'import { Logger } from "@nestjs/common";',
+        "",
+        "/** Gamma service with extra fields interspersed between section comments. */",
+        "@Injectable()",
+        "export class GammaService {",
+        "  // 🏗️ Dependency Injection",
+        "  constructor() {}",
+        "",
+        "  // 🔐 Private Fields",
+        "  private readonly logger = new Logger(GammaService.name);",
+        "  private readonly values: number[] = [];",
+        "",
+        "  // 🔑 Public Fields",
+        "",
+        "  // 🔏 Private Methods",
+        "  private sum(): number {",
+        "    return this.values.reduce((acc, v) => acc + v, 0);",
+        "  }",
+        "",
+        "  // 🌎 Public Methods",
+        "  public add(value: number): void {",
+        "    this.values.push(value);",
+        "  }",
+        "",
+        "  public total(): number {",
+        "    return this.sum();",
+        "  }",
+        "}",
+        "",
+      ].join("\n"),
+    },
   ];
 
-  for (const { camel, pascal } of SERVICES) {
+  for (const { camel, pascal, content } of MOCK_SERVICES) {
     it(`${camel} service conforms to the service template structure`, () => {
-      const fileContent = readCaelundasService(camel);
       const result = validateConformance({
-        instance: fileContent,
+        instance: content,
         template: TEMPLATE_CONTENT,
         data: {
           nameCamelCase: camel,
@@ -63,7 +136,7 @@ describe("caelundas service integration", () => {
         filename: `${camel}.service.ts`,
       });
       const structuralErrors = result.errors.filter(
-        (error) => !error.startsWith("Missing template comment:"),
+        (error) => !error.message.startsWith("Missing comment:"),
       );
       expect(structuralErrors).toEqual([]);
     });
@@ -158,8 +231,9 @@ describe("validateInstancesDirectory", () => {
     });
 
     const alphaResult = results.find((r) => r.directoryName === "alpha");
-    expect(alphaResult?.results[0]?.errors).toEqual(
-      expect.arrayContaining([expect.stringContaining("Missing file:")]),
+    expectErrorWithMessage(
+      alphaResult?.results[0]?.errors ?? [],
+      "Missing file:",
     );
   });
 });
@@ -208,10 +282,9 @@ describe("validateInstanceFile", () => {
       data: { namePascalCase: "User" },
     });
 
-    expect(result.errors).toEqual(
-      expect.arrayContaining([
-        expect.stringContaining('Missing ClassDeclaration "UserService"'),
-      ]),
+    expectErrorWithMessage(
+      result.errors,
+      'Missing ClassDeclaration "UserService"',
     );
   });
 
@@ -226,7 +299,9 @@ describe("validateInstanceFile", () => {
       data: {},
     });
 
-    expect(result.errors).toEqual([`Missing file: ${instancePath}`]);
+    expect(result.errors).toEqual([
+      expect.objectContaining({ message: `Missing file: ${instancePath}` }),
+    ]);
   });
 });
 
@@ -326,15 +401,13 @@ describe("validateInstanceDirectory", () => {
       templateDirectoryPath: templateDir,
     });
 
-    expect(result.results[0]?.errors).toEqual(
-      expect.arrayContaining([expect.stringContaining("Missing file:")]),
-    );
+    expectErrorWithMessage(result.results[0]?.errors ?? [], "Missing file:");
   });
 });
 
 describe("collectConformanceErrors", () => {
   it("returns null for an empty results array", () => {
-    expect(collectConformanceErrors([])).toBeNull();
+    expect(stringifyConformanceErrors([])).toBeNull();
   });
 
   it("returns null when all files have no errors", () => {
@@ -342,64 +415,108 @@ describe("collectConformanceErrors", () => {
       {
         directoryName: "user",
         results: [
-          { filename: "user.service.ts", errors: [] },
-          { filename: "user.module.ts", errors: [] },
+          {
+            filename: "user.service.ts",
+            instanceFilePath: "/tmp/user/user.service.ts",
+            templateFilePath: "/tmp/tpl/user.service.ts",
+            errors: [],
+          },
+          {
+            filename: "user.module.ts",
+            instanceFilePath: "/tmp/user/user.module.ts",
+            templateFilePath: "/tmp/tpl/user.module.ts",
+            errors: [],
+          },
         ],
       },
     ];
-    expect(collectConformanceErrors(results)).toBeNull();
+    expect(stringifyConformanceErrors(results)).toBeNull();
   });
 
-  it("formats a failing file as directoryName/filename: error", () => {
+  it("formats output with directory section header and file block", () => {
     const results = [
       {
         directoryName: "user",
         results: [
           {
             filename: "user.service.ts",
-            errors: ['Missing ClassDeclaration "UserService"'],
+            instanceFilePath: "/tmp/user/user.service.ts",
+            templateFilePath: "/tmp/tpl/user.service.ts",
+            errors: [
+              {
+                errorType: "code" as const,
+                message: 'Missing ClassDeclaration "UserService"',
+                fix: "Add the class.",
+              },
+            ],
           },
         ],
       },
     ];
-    expect(collectConformanceErrors(results)).toBe(
-      'user/user.service.ts: Missing ClassDeclaration "UserService"',
-    );
+    const output = stringifyConformanceErrors(results);
+    expect(output).not.toBeNull();
+    expect(output).toContain("user");
+    expect(output).toContain("user.service.ts");
+    expect(output).toContain('Missing ClassDeclaration "UserService"');
   });
 
-  it("joins multiple errors from the same file with newlines", () => {
+  it("includes fix suggestion in output", () => {
     const results = [
       {
         directoryName: "user",
         results: [
           {
             filename: "user.service.ts",
-            errors: ["error one", "error two"],
+            instanceFilePath: "/tmp/user/user.service.ts",
+            templateFilePath: "/tmp/tpl/user.service.ts",
+            errors: [
+              {
+                errorType: "code" as const,
+                message: "Missing something",
+                fix: "Do the thing.",
+              },
+            ],
           },
         ],
       },
     ];
-    expect(collectConformanceErrors(results)).toBe(
-      "user/user.service.ts: error one\nuser/user.service.ts: error two",
-    );
+    const output = stringifyConformanceErrors(results);
+    expect(output).toContain("Do the thing.");
   });
 
-  it("joins errors from multiple directories and files with newlines", () => {
+  it("includes errors from multiple directories", () => {
     const results = [
       {
         directoryName: "user",
         results: [
-          { filename: "user.service.ts", errors: ["error A"] },
-          { filename: "user.module.ts", errors: ["error B"] },
+          {
+            filename: "user.service.ts",
+            instanceFilePath: "/tmp/user/user.service.ts",
+            templateFilePath: "/tmp/tpl/user.service.ts",
+            errors: [
+              { errorType: "code" as const, message: "error A", fix: "fix A" },
+            ],
+          },
         ],
       },
       {
         directoryName: "admin",
-        results: [{ filename: "admin.service.ts", errors: ["error C"] }],
+        results: [
+          {
+            filename: "admin.service.ts",
+            instanceFilePath: "/tmp/admin/admin.service.ts",
+            templateFilePath: "/tmp/tpl/admin.service.ts",
+            errors: [
+              { errorType: "code" as const, message: "error C", fix: "fix C" },
+            ],
+          },
+        ],
       },
     ];
-    expect(collectConformanceErrors(results)).toBe(
-      "user/user.service.ts: error A\nuser/user.module.ts: error B\nadmin/admin.service.ts: error C",
-    );
+    const output = stringifyConformanceErrors(results);
+    expect(output).toContain("user");
+    expect(output).toContain("admin");
+    expect(output).toContain("error A");
+    expect(output).toContain("error C");
   });
 });

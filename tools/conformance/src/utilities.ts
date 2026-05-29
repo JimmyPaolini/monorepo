@@ -151,21 +151,31 @@ export function generateFiles(args: {
     instanceDirectoryPath: targetDirectoryPath,
     substitutions,
   } = args;
-  const templateFilenames = fs
-    .readdirSync(templateDirectoryPath, { withFileTypes: true })
-    .filter((node) => node.isFile())
-    .map((node) => node.name);
 
-  for (const templateFilename of templateFilenames) {
-    const templatePath = path.join(templateDirectoryPath, templateFilename);
-    const template = fs.readFileSync(templatePath, "utf8");
-    const rendered = mustache.render(template, substitutions);
-    const generatedFilename = templateFilename.replaceAll(
+  const resolveName = (name: string): string =>
+    name.replaceAll(
       /__(\w+)__/g,
-      (templateToken: string, field: string) =>
-        substitutions[field] ?? templateToken,
+      (token: string, field: string) => substitutions[field] ?? token,
     );
-    const generatedPath = path.join(targetDirectoryPath, generatedFilename);
-    tree.write(generatedPath, rendered);
+
+  const nodes = fs.readdirSync(templateDirectoryPath, { withFileTypes: true });
+
+  for (const node of nodes) {
+    const instanceName = resolveName(node.name);
+    const instancePath = path.join(targetDirectoryPath, instanceName);
+    const templatePath = path.join(templateDirectoryPath, node.name);
+
+    if (node.isDirectory()) {
+      generateFiles({
+        tree,
+        templateDirectoryPath: templatePath,
+        instanceDirectoryPath: instancePath,
+        substitutions,
+      });
+    } else {
+      const template = fs.readFileSync(templatePath, "utf8");
+      const instance = mustache.render(template, substitutions);
+      tree.write(instancePath, instance);
+    }
   }
 }

@@ -8,31 +8,36 @@ import {
   getKey,
 } from "./nodes";
 
+import type { ConformanceError, ConformanceErrorLanguage } from "./types";
+
 /**
- * Builds a human-readable error message describing a template node that is
+ * Builds a structured `ConformanceError` describing a template node that is
  * absent from the instance.
  *
- * The message includes:
- * - The source location (`line:character`) within the instance file, pointing
- *   at the parent node where the child was expected.
- * - The `SyntaxKind` name of the missing node, and its identity key when one
- *   exists (e.g. `ClassDeclaration "DatetimeService"`).
- * - A condensed snippet of the template node's text so the developer can see
- *   exactly what was expected (whitespace collapsed to a single space).
+ * Captures:
+ * - The source location within the instance file (where the child was expected).
+ * - The source location within the template file (where the missing node lives).
+ * - The `SyntaxKind` name of the missing node and its identity key when present.
+ * - A condensed snippet of the template node's text as the `expected` value.
  */
 function buildError(args: {
   instanceFile: SourceFile;
   instanceNode: Node;
+  language: ConformanceErrorLanguage;
   templateChild: Node;
-}): string {
-  const { templateChild, instanceNode, instanceFile } = args;
+}): ConformanceError {
+  const { templateChild, instanceNode, instanceFile, language } = args;
 
   const templateChildKey = getKey(templateChild);
 
-  const { line, character } = instanceFile.getLineAndCharacterOfPosition(
-    instanceNode.getStart(instanceFile),
-  );
-  const location = `(line ${line + 1}:${character + 1})`;
+  const { line: instanceLine, character: instanceCharacter } =
+    instanceFile.getLineAndCharacterOfPosition(
+      instanceNode.getStart(instanceFile),
+    );
+
+  const templateFile = templateChild.getSourceFile();
+  const { line: templateLine, character: templateCharacter } =
+    templateFile.getLineAndCharacterOfPosition(templateChild.getStart());
 
   const kind =
     (SyntaxKind[templateChild.kind] as string | undefined) ??
@@ -42,12 +47,22 @@ function buildError(args: {
     templateChildKey === null ? kind : `${kind} "${templateChildKey}"`;
 
   const snippet = templateChild
-    .getText(templateChild.getSourceFile())
+    .getText(templateFile)
     .replaceAll(/\s+/gu, " ")
     .trim();
-  const expected = snippet.length > 0 ? ` — expected: \`${snippet}\`` : "";
 
-  return `${location} Missing ${breadcrumb}${expected}`;
+  const error: ConformanceError = {
+    errorType: "code",
+    language,
+    message: `Missing ${breadcrumb}`,
+    instanceLine: instanceLine + 1,
+    instanceColumn: instanceCharacter + 1,
+    templateLine: templateLine + 1,
+    templateColumn: templateCharacter + 1,
+    fix: `Add the missing ${breadcrumb} to the instance file. See the template for the expected structure.`,
+    ...(snippet.length > 0 ? { expected: snippet } : {}),
+  };
+  return error;
 }
 
 /**
@@ -66,13 +81,15 @@ function buildError(args: {
 export function validateDepthFirstSearch(args: {
   instanceFile: SourceFile;
   instanceNode: Node;
+  language: ConformanceErrorLanguage;
   templateNode: Node;
-}): string[] {
-  const { templateNode, instanceNode, instanceFile } = args;
+}): ConformanceError[] {
+  const { templateNode, instanceNode, instanceFile, language } = args;
 
-  const errors: string[] = validateComments({
+  const errors: ConformanceError[] = validateComments({
     templateNode,
     instanceNode,
+    language,
     side: "pos",
   });
 
@@ -84,13 +101,16 @@ export function validateDepthFirstSearch(args: {
       // Keyed child: match by identity key.
       const match = filterBySameKey(instanceChildren, templateChild)[0] ?? null;
       if (match === null) {
-        errors.push(buildError({ templateChild, instanceNode, instanceFile }));
+        errors.push(
+          buildError({ templateChild, instanceNode, instanceFile, language }),
+        );
       } else {
         errors.push(
           ...validateDepthFirstSearch({
             templateNode: templateChild,
             instanceNode: match,
             instanceFile,
+            language,
           }),
         );
       }
@@ -104,12 +124,9 @@ export function validateDepthFirstSearch(args: {
     );
 
     if (instanceChildrenSameKind.length === 0) {
-      const error = buildError({
-        templateChild,
-        instanceNode,
-        instanceFile,
-      });
-      errors.push(error);
+      errors.push(
+        buildError({ templateChild, instanceNode, instanceFile, language }),
+      );
     } else {
       const fewestErrors = instanceChildrenSameKind
         .map((instanceChildSameKind) =>
@@ -117,6 +134,7 @@ export function validateDepthFirstSearch(args: {
             templateNode: templateChild,
             instanceNode: instanceChildSameKind,
             instanceFile,
+            language,
           }),
         )
         .reduce((fewestErrors, instanceChildErrors) =>
@@ -129,17 +147,21 @@ export function validateDepthFirstSearch(args: {
     }
   }
 
-  // Only check "end" trivia when the parent node extends beyond its last
-  // template child. When the last child's end equals the parent's end (e.g.,
-  // Constructor.end == Block.end), the child's own "end" call already scanned
-  // the same position, so skip to avoid reporting each missing comment twice.
+  // Only scan "end" trivia for empty blocks (no template children). When a
+  // node has children, its trailing comments are either covered by the last
+  // child's own "end" scan or the next sibling's "pos" scan. Scanning from
+  // `templateNode.end` for non-empty nodes would re-check the same trivia
+  // region (e.g. Constructor.end == Block.end), reporting the same missing
+  // comments twice.
   const lastTemplateChild = templateChildren.at(-1);
-  if (
-    lastTemplateChild === undefined ||
-    lastTemplateChild.end < templateNode.end
-  ) {
+  if (lastTemplateChild === undefined) {
     errors.push(
-      ...validateComments({ templateNode, instanceNode, side: "end" }),
+      ...validateComments({
+        templateNode,
+        instanceNode,
+        language,
+        side: "end",
+      }),
     );
   }
 
