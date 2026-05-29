@@ -19,82 +19,6 @@ import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.servic
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { Moment } from "moment-timezone";
 
-function groupAspectsByType<T extends AspectBodies>(
-  edges: T[],
-): Map<Aspect, T[]> {
-  return groupByToMap(edges, (edge) => edge.aspect);
-}
-
-/**
- * Returns `true` if the given aspect edge involves the specified celestial body.
- *
- * @param edge - An active 2-body aspect relationship
- * @param body - The body to check for involvement
- */
-export function involvesBody(edge: AspectBodies, body: Body): boolean {
-  return edge.bodies[0] === body || edge.bodies[1] === body;
-}
-
-/**
- * Returns the other body in an aspect edge relative to the given body.
- *
- * @param edge - An active 2-body aspect relationship
- * @param body - The reference body
- * @returns The other body, or `null` if the given body is not in the edge
- */
-export function getOtherBody(edge: AspectBodies, body: Body): Body | null {
-  if (edge.bodies[0] === body) {
-    return edge.bodies[1];
-  }
-  if (edge.bodies[1] === body) {
-    return edge.bodies[0];
-  }
-  return null;
-}
-
-function haveAspect(
-  body1: Body,
-  body2: Body,
-  aspectType: Aspect,
-  edges: AspectBodies[],
-): boolean {
-  return edges.some(
-    (edge) =>
-      edge.aspect === aspectType &&
-      ((edge.bodies[0] === body1 && edge.bodies[1] === body2) ||
-        (edge.bodies[0] === body2 && edge.bodies[1] === body1)),
-  );
-}
-
-function determineCompoundPhaseFromSnapshots(
-  currentAspectBodies: AspectBodies[],
-  previousAspectBodies: AspectBodies[],
-  patternBodies: Body[],
-  currentMinute: Moment,
-  checkPatternExists: (edges: AspectBodies[]) => boolean,
-): { phase: AspectPhase; eventMinute: Moment } | null {
-  const bodySet = new Set(patternBodies);
-  const filterByBodies = (edges: AspectBodies[]): AspectBodies[] =>
-    edges.filter((e) => bodySet.has(e.bodies[0]) && bodySet.has(e.bodies[1]));
-
-  const currentFiltered = filterByBodies(currentAspectBodies);
-  const previousFiltered = filterByBodies(previousAspectBodies);
-
-  const currentExists = checkPatternExists(currentFiltered);
-  const previousExists = checkPatternExists(previousFiltered);
-
-  if (currentExists && !previousExists) {
-    return { phase: "forming", eventMinute: currentMinute };
-  }
-  if (!currentExists && previousExists) {
-    return {
-      phase: "dissolving",
-      eventMinute: currentMinute.clone().subtract(1, "minute"),
-    };
-  }
-  return null;
-}
-
 // #region Progressive Events
 
 /**
@@ -115,7 +39,83 @@ export class QuadrupleAspectsService {
 
   // 🔏 Private Methods
 
+  private groupAspectsByType<T extends AspectBodies>(
+    edges: T[],
+  ): Map<Aspect, T[]> {
+    return groupByToMap(edges, (edge) => edge.aspect);
+  }
+
+  private haveAspect(
+    body1: Body,
+    body2: Body,
+    aspectType: Aspect,
+    edges: AspectBodies[],
+  ): boolean {
+    return edges.some(
+      (edge) =>
+        edge.aspect === aspectType &&
+        ((edge.bodies[0] === body1 && edge.bodies[1] === body2) ||
+          (edge.bodies[0] === body2 && edge.bodies[1] === body1)),
+    );
+  }
+
+  private determineCompoundPhaseFromSnapshots(
+    currentAspectBodies: AspectBodies[],
+    previousAspectBodies: AspectBodies[],
+    patternBodies: Body[],
+    currentMinute: Moment,
+    checkPatternExists: (edges: AspectBodies[]) => boolean,
+  ): { phase: AspectPhase; eventMinute: Moment } | null {
+    const bodySet = new Set(patternBodies);
+    const filterByBodies = (edges: AspectBodies[]): AspectBodies[] =>
+      edges.filter((e) => bodySet.has(e.bodies[0]) && bodySet.has(e.bodies[1]));
+
+    const currentFiltered = filterByBodies(currentAspectBodies);
+    const previousFiltered = filterByBodies(previousAspectBodies);
+
+    const currentExists = checkPatternExists(currentFiltered);
+    const previousExists = checkPatternExists(previousFiltered);
+
+    if (currentExists && !previousExists) {
+      return { phase: "forming", eventMinute: currentMinute };
+    }
+    if (!currentExists && previousExists) {
+      return {
+        phase: "dissolving",
+        eventMinute: currentMinute.clone().subtract(1, "minute"),
+      };
+    }
+    return null;
+  }
+
   // 🌎 Public Methods
+
+  /**
+   * Returns `true` if the given aspect edge involves the specified celestial body.
+   *
+   * @param edge - An active 2-body aspect relationship
+   * @param body - The body to check for involvement
+   */
+  involvesBody(edge: AspectBodies, body: Body): boolean {
+    return edge.bodies[0] === body || edge.bodies[1] === body;
+  }
+
+  /**
+   * Returns the other body in an aspect edge relative to the given body.
+   *
+   * @param edge - An active 2-body aspect relationship
+   * @param body - The reference body
+   * @returns The other body, or `null` if the given body is not in the edge
+   */
+  getOtherBody(edge: AspectBodies, body: Body): Body | null {
+    if (edge.bodies[0] === body) {
+      return edge.bodies[1];
+    }
+    if (edge.bodies[1] === body) {
+      return edge.bodies[0];
+    }
+    return null;
+  }
 
   /**
    * Composes Grand Cross patterns from stored 2-body aspects.
@@ -156,7 +156,7 @@ export class QuadrupleAspectsService {
     const events: Event[] = [];
 
     const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
-    const aspectsByType = groupAspectsByType(unionEdges);
+    const aspectsByType = this.groupAspectsByType(unionEdges);
 
     const oppositions = aspectsByType.get("opposite") || [];
     const squares = aspectsByType.get("square") || [];
@@ -214,7 +214,7 @@ export class QuadrupleAspectsService {
             (b) => b !== body && b !== oppositeBody,
           );
           for (const adjBody of adjacentBodies) {
-            if (!haveAspect(body, adjBody, "square", unionEdges)) {
+            if (!this.haveAspect(body, adjBody, "square", unionEdges)) {
               hasAllSquares = false;
               break;
             }
@@ -226,25 +226,25 @@ export class QuadrupleAspectsService {
 
         if (hasAllSquares) {
           // Found a Grand Cross - calculate phase
-          const result = determineCompoundPhaseFromSnapshots(
+          const result = this.determineCompoundPhaseFromSnapshots(
             currentAspectBodies,
             previousAspectBodies,
             bodyList,
             minute,
             (edges) => {
               // Verify all required aspects exist
-              const aspectsByType = groupAspectsByType(edges);
+              const aspectsByType = this.groupAspectsByType(edges);
               const oppositionsAtTime = aspectsByType.get("opposite") || [];
               const squaresAtTime = aspectsByType.get("square") || [];
 
               // Need the 2 specific oppositions
-              const hasOpp1 = haveAspect(
+              const hasOpp1 = this.haveAspect(
                 opp1.bodies[0],
                 opp1.bodies[1],
                 "opposite",
                 oppositionsAtTime,
               );
-              const hasOpp2 = haveAspect(
+              const hasOpp2 = this.haveAspect(
                 opp2.bodies[0],
                 opp2.bodies[1],
                 "opposite",
@@ -272,7 +272,9 @@ export class QuadrupleAspectsService {
                   (b) => b !== body && b !== oppositeBody,
                 );
                 for (const adjBody of adjacentBodies) {
-                  if (!haveAspect(body, adjBody, "square", squaresAtTime)) {
+                  if (
+                    !this.haveAspect(body, adjBody, "square", squaresAtTime)
+                  ) {
                     return false;
                   }
                 }
@@ -347,7 +349,7 @@ export class QuadrupleAspectsService {
     const events: Event[] = [];
 
     const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
-    const aspectsByType = groupAspectsByType(unionEdges);
+    const aspectsByType = this.groupAspectsByType(unionEdges);
 
     const trines = aspectsByType.get("trine") || [];
     const oppositions = aspectsByType.get("opposite") || [];
@@ -392,9 +394,9 @@ export class QuadrupleAspectsService {
               body0 &&
               body1 &&
               body2 &&
-              haveAspect(body0, body1, "trine", unionEdges) &&
-              haveAspect(body0, body2, "trine", unionEdges) &&
-              haveAspect(body1, body2, "trine", unionEdges)
+              this.haveAspect(body0, body1, "trine", unionEdges) &&
+              this.haveAspect(body0, body2, "trine", unionEdges) &&
+              this.haveAspect(body1, body2, "trine", unionEdges)
             ) {
               grandTrines.push(bodies);
             }
@@ -411,11 +413,11 @@ export class QuadrupleAspectsService {
         const otherTwo = gtList.filter((b) => b !== baseBody);
 
         for (const opp of oppositions) {
-          if (!involvesBody(opp, baseBody)) {
+          if (!this.involvesBody(opp, baseBody)) {
             continue;
           }
 
-          const fourthBody = getOtherBody(opp, baseBody);
+          const fourthBody = this.getOtherBody(opp, baseBody);
           if (!fourthBody || gtBodies.has(fourthBody)) {
             continue;
           }
@@ -425,25 +427,25 @@ export class QuadrupleAspectsService {
           if (
             other0 &&
             other1 &&
-            haveAspect(fourthBody, other0, "sextile", unionEdges) &&
-            haveAspect(fourthBody, other1, "sextile", unionEdges)
+            this.haveAspect(fourthBody, other0, "sextile", unionEdges) &&
+            this.haveAspect(fourthBody, other1, "sextile", unionEdges)
           ) {
             // Found a Kite!
             const bodies = [baseBody, other0, other1, fourthBody];
 
-            const result = determineCompoundPhaseFromSnapshots(
+            const result = this.determineCompoundPhaseFromSnapshots(
               currentAspectBodies,
               previousAspectBodies,
               bodies,
               minute,
               (edges) => {
                 return (
-                  haveAspect(baseBody, fourthBody, "opposite", edges) &&
-                  haveAspect(baseBody, other0, "trine", edges) &&
-                  haveAspect(baseBody, other1, "trine", edges) &&
-                  haveAspect(other0, other1, "trine", edges) &&
-                  haveAspect(fourthBody, other0, "sextile", edges) &&
-                  haveAspect(fourthBody, other1, "sextile", edges)
+                  this.haveAspect(baseBody, fourthBody, "opposite", edges) &&
+                  this.haveAspect(baseBody, other0, "trine", edges) &&
+                  this.haveAspect(baseBody, other1, "trine", edges) &&
+                  this.haveAspect(other0, other1, "trine", edges) &&
+                  this.haveAspect(fourthBody, other0, "sextile", edges) &&
+                  this.haveAspect(fourthBody, other1, "sextile", edges)
                 );
               },
             );

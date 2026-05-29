@@ -14,7 +14,7 @@ import { SpecialtyAspectsService } from "../specialtyAspects/specialtyAspects.se
 import { StelliumService } from "../stellium/stellium.service";
 import { TripleAspectsService } from "../tripleAspects/tripleAspects.service";
 
-import { AspectsService, computeAspectBodies } from "./aspects.service";
+import { AspectsService } from "./aspects.service";
 import { AspectsUtilities } from "./aspects.utilities";
 
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
@@ -76,11 +76,11 @@ describe("AspectsService", () => {
     }
 
     it("returns empty array when given no previous state and no events", () => {
-      expect(computeAspectBodies([], [])).toEqual([]);
+      expect(service.computeAspectBodies([], [])).toEqual([]);
     });
 
     it("adds an aspect on forming and ignores perfective", () => {
-      const result = computeAspectBodies(
+      const result = service.computeAspectBodies(
         [],
         [
           createAspectEvent({
@@ -107,7 +107,7 @@ describe("AspectsService", () => {
     });
 
     it("removes an aspect on dissolving", () => {
-      const afterForming = computeAspectBodies(
+      const afterForming = service.computeAspectBodies(
         [],
         [
           createAspectEvent({
@@ -119,7 +119,7 @@ describe("AspectsService", () => {
         ],
       );
 
-      const result = computeAspectBodies(afterForming, [
+      const result = service.computeAspectBodies(afterForming, [
         createAspectEvent({
           body1: "Sun",
           body2: "Moon",
@@ -132,7 +132,7 @@ describe("AspectsService", () => {
     });
 
     it("uses canonical key regardless of body order", () => {
-      const afterForming = computeAspectBodies(
+      const afterForming = service.computeAspectBodies(
         [],
         [
           createAspectEvent({
@@ -144,7 +144,7 @@ describe("AspectsService", () => {
         ],
       );
 
-      const result = computeAspectBodies(afterForming, [
+      const result = service.computeAspectBodies(afterForming, [
         createAspectEvent({
           body1: "Sun",
           body2: "Moon",
@@ -157,7 +157,7 @@ describe("AspectsService", () => {
     });
 
     it("tracks different aspect types for the same pair", () => {
-      const result = computeAspectBodies(
+      const result = service.computeAspectBodies(
         [],
         [
           createAspectEvent({
@@ -185,7 +185,7 @@ describe("AspectsService", () => {
     });
 
     it("skips non-simple-aspect events", () => {
-      const result = computeAspectBodies(
+      const result = service.computeAspectBodies(
         [],
         [
           {
@@ -202,7 +202,7 @@ describe("AspectsService", () => {
     });
 
     it("does not mutate the previous state array", () => {
-      const afterForming = computeAspectBodies(
+      const afterForming = service.computeAspectBodies(
         [],
         [
           createAspectEvent({
@@ -214,7 +214,7 @@ describe("AspectsService", () => {
         ],
       );
 
-      computeAspectBodies(afterForming, [
+      service.computeAspectBodies(afterForming, [
         createAspectEvent({
           body1: "Sun",
           body2: "Moon",

@@ -54,6 +54,11 @@ export class AspectsService {
 
   // 🔏 Private Methods
 
+  private makeKey(body1: Body, body2: Body, aspect: Aspect): string {
+    const [sortedBody1, sortedBody2] = [body1, body2].toSorted();
+    return `${sortedBody1}\u001F${sortedBody2}\u001F${aspect}`;
+  }
+
   // 🌎 Public Methods
 
   /**
@@ -82,7 +87,7 @@ export class AspectsService {
       }),
     ];
 
-    const currentAspectBodies = computeAspectBodies(
+    const currentAspectBodies = this.computeAspectBodies(
       previousAspectBodies,
       simpleAspectEvents,
     );
@@ -140,89 +145,84 @@ export class AspectsService {
       ...this.stelliumService.detectProgressive(events),
     ];
   }
-}
 
-function makeKey(body1: Body, body2: Body, aspect: Aspect): string {
-  const [sortedBody1, sortedBody2] = [body1, body2].toSorted();
-  return `${sortedBody1}\u001F${sortedBody2}\u001F${aspect}`;
-}
-
-/**
- * Incrementally updates the active 2-body aspect registry from the current minute's events.
- *
- * Starting from `previousAspectBodies`, adds any new forming aspects and removes any
- * aspects that have dissolved, based on the "Simple Aspect" events in `events`.
- *
- * @param previousAspectBodies - Active aspects from the previous minute
- * @param events - Instantaneous events detected at the current minute
- * @returns Updated list of currently active 2-body aspects
- */
-export function computeAspectBodies(
-  previousAspectBodies: AspectBodies[],
-  events: Event[],
-): AspectBodies[] {
-  const map = new Map<string, AspectBodies>(
-    previousAspectBodies.map((ab) => [
-      makeKey(ab.bodies[0], ab.bodies[1], ab.aspect),
-      ab,
-    ]),
-  );
-
-  const lowercaseBodies = bodies.map((body) => body.toLowerCase());
-
-  for (const event of events) {
-    const normalizedCategories = event.categories.map((category) =>
-      category.toLowerCase().trim(),
+  /**
+   * Incrementally updates the active 2-body aspect registry from the current minute's events.
+   *
+   * Starting from `previousAspectBodies`, adds any new forming aspects and removes any
+   * aspects that have dissolved, based on the "Simple Aspect" events in `events`.
+   *
+   * @param previousAspectBodies - Active aspects from the previous minute
+   * @param events - Instantaneous events detected at the current minute
+   * @returns Updated list of currently active 2-body aspects
+   */
+  computeAspectBodies(
+    previousAspectBodies: AspectBodies[],
+    events: Event[],
+  ): AspectBodies[] {
+    const map = new Map<string, AspectBodies>(
+      previousAspectBodies.map((ab) => [
+        this.makeKey(ab.bodies[0], ab.bodies[1], ab.aspect),
+        ab,
+      ]),
     );
 
-    if (!normalizedCategories.includes("simple aspect")) {
-      continue;
-    }
+    const lowercaseBodies = bodies.map((body) => body.toLowerCase());
 
-    const isForming = normalizedCategories.includes("forming");
-    const isDissolving = normalizedCategories.includes("dissolving");
+    for (const event of events) {
+      const normalizedCategories = event.categories.map((category) =>
+        category.toLowerCase().trim(),
+      );
 
-    if (!isForming && !isDissolving) {
-      continue;
-    }
+      if (!normalizedCategories.includes("simple aspect")) {
+        continue;
+      }
 
-    const eventBodies: Body[] = [];
-    for (const category of normalizedCategories) {
-      const bodyIndex = lowercaseBodies.indexOf(category);
-      if (bodyIndex !== -1) {
-        const body = bodies[bodyIndex];
-        if (body) {
-          eventBodies.push(body);
+      const isForming = normalizedCategories.includes("forming");
+      const isDissolving = normalizedCategories.includes("dissolving");
+
+      if (!isForming && !isDissolving) {
+        continue;
+      }
+
+      const eventBodies: Body[] = [];
+      for (const category of normalizedCategories) {
+        const bodyIndex = lowercaseBodies.indexOf(category);
+        if (bodyIndex !== -1) {
+          const body = bodies[bodyIndex];
+          if (body) {
+            eventBodies.push(body);
+          }
         }
+      }
+
+      if (eventBodies.length !== 2) {
+        continue;
+      }
+
+      const aspect = normalizedCategories.find((category): category is Aspect =>
+        isAspect(category),
+      );
+
+      if (!aspect) {
+        continue;
+      }
+
+      const body1 = eventBodies[0];
+      const body2 = eventBodies[1];
+      if (!body1 || !body2) continue;
+      const key = this.makeKey(body1, body2, aspect);
+
+      if (isDissolving) {
+        map.delete(key);
+        continue;
+      }
+
+      if (!map.has(key)) {
+        map.set(key, { aspect, bodies: [body1, body2] });
       }
     }
 
-    if (eventBodies.length !== 2) {
-      continue;
-    }
-
-    const aspect = normalizedCategories.find((category): category is Aspect =>
-      isAspect(category),
-    );
-
-    if (!aspect) {
-      continue;
-    }
-
-    const body1 = eventBodies[0];
-    const body2 = eventBodies[1];
-    if (!body1 || !body2) continue;
-    const key = makeKey(body1, body2, aspect);
-
-    if (isDissolving) {
-      map.delete(key);
-      continue;
-    }
-
-    if (!map.has(key)) {
-      map.set(key, { aspect, bodies: [body1, body2] });
-    }
+    return [...map.values()];
   }
-
-  return [...map.values()];
 }

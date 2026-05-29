@@ -42,25 +42,11 @@ A modern TypeScript monorepo with Nx, featuring automated releases, comprehensiv
 ./scripts/local/setup.sh
 ```
 
-### Dev Container
+### Dev Container Setup
 
 1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) and the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 2. Open the repo in VS Code and click **Reopen in Container** when prompted
 3. All tools and dependencies are installed automatically
-
-### Development
-
-```bash
-# Run development server
-nx run lexico:develop
-nx run caelundas:develop
-
-# Run tests
-nx run-many --target=test --all
-
-# Run all quality checks
-nx run-many --target=analyze-code --all
-```
 
 ## 📦 Projects
 
@@ -70,131 +56,76 @@ nx run-many --target=analyze-code --all
 - **[lexico-components](packages/lexico-components)** - Shared React component library using shadcn/ui
 - **[JimmyPaolini](applications/JimmyPaolini)** - GitHub profile site
 
-## 📚 Documentation
+## 💻 Development
 
-- **[Contributing Guide](CONTRIBUTING.md)** - Development workflow, code standards, and release process
-- **[Commit Messages](documentation/skills/commit-code/SKILL.md)** - Conventional Commits format and examples
-- **[Release Process](release.config.cjs)** - Automated versioning and changelog generation
-- **[GitHub Actions](documentation/github-actions.md)** - CI/CD workflows, composite actions, and pipeline architecture
-
-## 🛠️ Development
-
-### Running Tasks
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the full development workflow, commit/PR conventions, and release process. See [documentation/github-actions.md](documentation/github-actions.md) for CI/CD pipeline architecture.
 
 ```bash
-# Use Nx to run tasks (handles caching and dependencies)
-nx run <project>:<target>
+# Run development servers
+nx run lexico:develop
+nx run caelundas:develop
 
-# Examples
-nx run caelundas:test
-nx run lexico:build
-nx run lexico-components:lint
-
-# Run for all projects
-nx run-many --target=test --all
-
-# Run for affected projects only
-nx affected --target=test
+# Run tasks (Nx handles caching and project dependencies)
+nx run <project>:<target>          # single project
+nx run-many --target=test --all    # all projects
+nx affected --target=test          # affected projects only
 ```
 
-### Code Quality Tools
+### ✅ Quality
 
-All projects use strict TypeScript configuration and comprehensive linting:
+All projects use strict TypeScript with comprehensive automated quality checks:
 
-- **ESLint** - Code linting with strict rules
-- **Oxfmt** - Primary code formatter
-- **Prettier** - Supplementary code formatting
-- **Oxlint** - Fast JavaScript/TypeScript linter
-- **TypeScript** - Strict type checking
-- **Knip** - Unused code detection
-- **cspell** - Spell checking
-- **markdownlint** - Markdown linting
-- **Vitest** - Unit and integration testing
-
-### Knip - Unused Code Detection
-
-Knip finds and removes unused files, dependencies, and exports across the monorepo.
-
-**Check for unused code:**
+| Tool | Purpose |
+| --- | --- |
+| **ESLint + Oxlint** | Linting with strict rules |
+| **Oxfmt + Prettier** | Code formatting (Oxfmt primary, Prettier supplementary) |
+| **TypeScript** | Strict type checking (`noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`) |
+| **Knip** | Unused files, exports, and dependency detection |
+| **cspell** | Spell checking |
+| **markdownlint** | Markdown linting |
+| **Vitest** | Unit and integration testing |
 
 ```bash
-# Check entire monorepo
+# Run all quality checks
+nx run-many --target=analyze-code --all
+
+# Check for unused code (review before using :write)
 nx run monorepo:knip
+nx run monorepo:knip:write  # auto-removes unused code — use with caution
 
-# Check specific project
-nx run caelundas:knip
-nx run lexico:knip
-nx run lexico-components:knip
-nx run conformance:knip
-
-# Check only affected projects
-nx affected --target=knip
-
-# Explicitly use check configuration
-nx run monorepo:knip:check
+# Run affected projects only
+nx affected --target=analyze-code
 ```
 
-**Auto-fix unused code:**
+Quality checks run automatically on staged files (pre-commit via lint-staged) and on all PRs via GitHub Actions.
+
+### 🏭 Conformance
+
+The [`conformance`](tools/conformance) tool both generates and validates code conformance to monorepo conventions. Nx generators scaffold new projects, directories, and files with consistent structure, naming, and formatting; generator unit tests then validate that each generated instance still conforms to the template used to generate it.
+
+**Available generators:**
+
+| Generator | Alias | Description |
+| --- | --- | --- |
+| `conformance:react-component` | `c` | React component + test file (PascalCase) |
+| `conformance:nestjs-service-module` | `nsm` | NestJS module, service, types, constants, and unit test |
+| `conformance:nestjs-command-application` | `nca` | Full NestJS CLI application scaffold |
 
 ```bash
-# Fix entire monorepo (use with caution)
-nx run monorepo:knip:write
+# Generate a React component (prompts for project if --project omitted)
+nx generate conformance:react-component --name=Button
+nx g conformance:react-component --name=Button --project=lexico-components
 
-# Fix specific project
-nx run caelundas:knip:write
-nx run lexico:knip:write
+# Generate a NestJS service module
+nx generate conformance:nestjs-service-module --name=user
+nx g conformance:nestjs-service-module --name=userProfile --project=my-nestjs-app
+
+# Generate a NestJS command-line application
+nx generate conformance:nestjs-command-application --name=stellar-cli
 ```
 
-**Note:** Review knip findings carefully before running `knip:write`.
-The write configuration automatically removes unused files, dependencies, and exports.
-
-**Integration:**
-
-- Pre-commit hooks: Runs automatically on staged files via lint-staged
-- CI/CD: Runs on all PRs via GitHub Actions workflow
+Generators auto-detect the target project by framework tag (`framework:react` / `framework:nestjs`) and prompt interactively when `--project` is omitted. See [tools/conformance](tools/conformance) for architecture details and how to extend generators.
 
 ## 🚢 Release Process
 
-Releases are fully automated using [semantic-release](https://semantic-release.gitbook.io/):
-
-1. Merge PR to `main` branch
-2. Commits are analyzed (Conventional Commits)
-3. Version is determined automatically
-4. `CHANGELOG.md` is generated/updated
-5. GitHub release is created
-
-**Version Bumps:**
-
-- `feat:` commits → minor version (1.0.0 → 1.1.0)
-- `fix:` commits → patch version (1.0.0 → 1.0.1)
-- `BREAKING CHANGE:` → major version (1.0.0 → 2.0.0)
-
-See [release.config.cjs](release.config.cjs) for complete configuration and guide.
-
-## 🤝 Contributing
-
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for:
-
-- Development workflow
-- Code standards and conventions
-- Commit message format
-- Pull request process
-- Release guidelines
-
-All commits must follow [Conventional Commits](https://www.conventionalcommits.org/) format.
-
-## 📄 Code Ownership
-
-All files are owned by [@JimmyPaolini](https://github.com/JimmyPaolini). See [.github/CODEOWNERS](.github/CODEOWNERS).
-
-## 📖 Additional Resources
-
-- [Nx Documentation](https://nx.dev)
-- [Conventional Commits](https://www.conventionalcommits.org/)
-- [TanStack Start](https://tanstack.com/start)
-- [shadcn/ui](https://ui.shadcn.com/)
-- [Vitest](https://vitest.dev/)
-
-## 📝 License
-
-MIT License. Copyright (c) Jimmy Paolini.
+Releases are fully automated via [semantic-release](https://semantic-release.gitbook.io/) on merge to `main` — commits are analyzed, the version is bumped (`feat` → minor, `fix` → patch, `BREAKING CHANGE` → major), and a GitHub release + `CHANGELOG.md` entry are generated. See [release.config.cjs](release.config.cjs) for configuration.
