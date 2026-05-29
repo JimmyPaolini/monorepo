@@ -13,13 +13,18 @@ import {
 } from "./validators/typescript/files";
 
 interface ConformanceTemplateInstance {
+  /** Human-readable template identifier. */
   template: string;
+  /** Absolute path to the template directory used for validation. */
   templateDirectoryPath: string;
+  /** Whether each path points to one instance directory or a directory of many instances. */
   instanceType: "single" | "multiple";
+  /** Absolute instance paths to validate for this template. */
   instanceDirectoryPaths: string[];
 }
 
-const GENERATED_NESTJS_APPLICATION_TAG = "generator:nestjs-command-application";
+const NESTJS_COMMAND_APPLICATION_GENERATOR_TAG =
+  "generator:nestjs-command-application";
 const NESTJS_APPLICATION_TAG = "framework:nestjs";
 const APPLICATIONS_DIRECTORY_PATH = path.join(workspaceRoot, "applications");
 
@@ -31,27 +36,39 @@ function resolveWorkspaceApplications(): {
     .readdirSync(APPLICATIONS_DIRECTORY_PATH, {
       withFileTypes: true,
     })
-    .filter((entry) => entry.isDirectory())
+    .filter(
+      (entry) =>
+        entry.isDirectory() &&
+        fs.existsSync(
+          path.join(APPLICATIONS_DIRECTORY_PATH, entry.name, "project.json"),
+        ),
+    )
     .map((entry) => {
       const rootPath = path.join(APPLICATIONS_DIRECTORY_PATH, entry.name);
       const projectConfigurationPath = path.join(rootPath, "project.json");
-      if (!fs.existsSync(projectConfigurationPath)) {
-        return null;
-      }
-      const projectConfiguration = JSON.parse(
-        fs.readFileSync(projectConfigurationPath, "utf8"),
-      ) as {
+      let projectConfiguration: {
         tags?: string[];
       };
+      try {
+        projectConfiguration = JSON.parse(
+          fs.readFileSync(projectConfigurationPath, "utf8"),
+        ) as {
+          tags?: string[];
+        };
+      } catch (error) {
+        throw new Error(
+          `Unable to parse project configuration at "${projectConfigurationPath}"`,
+          {
+            cause: error,
+          },
+        );
+      }
 
       return {
         rootPath,
         tags: projectConfiguration.tags ?? [],
       };
-    })
-    .filter((application): application is { rootPath: string; tags: string[] } =>
-      application !== null,
-    );
+    });
 }
 
 function resolveTemplateInstances(): ConformanceTemplateInstance[] {
@@ -63,7 +80,7 @@ function resolveTemplateInstances(): ConformanceTemplateInstance[] {
       instanceType: "single",
       instanceDirectoryPaths: applications
         .filter((application) =>
-          application.tags.includes(GENERATED_NESTJS_APPLICATION_TAG),
+          application.tags.includes(NESTJS_COMMAND_APPLICATION_GENERATOR_TAG),
         )
         .map((application) => application.rootPath),
     },
