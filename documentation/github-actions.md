@@ -12,18 +12,18 @@ The monorepo uses 11 GitHub Actions workflows and 1 composite action, all locate
 
 All workflows call this composite action after checkout. It provides:
 
-| Step                       | Tool                            | Purpose                                              |
-| -------------------------- | ------------------------------- | ---------------------------------------------------- |
-| pnpm                       | pnpm/action-setup@v4            | Package manager                                      |
-| Node.js                    | actions/setup-node@v4           | JavaScript runtime from `.nvmrc`, with pnpm cache    |
-| Nx SHAs                    | nrwl/nx-set-shas@v4             | Calculates `NX_BASE`/`NX_HEAD` for affected commands |
-| Nx output style            | env var                         | Sets `NX_DEFAULT_OUTPUT_STYLE=static`                |
-| Homebrew                   | Homebrew/actions/setup-homebrew | Package manager for system tools                     |
-| gitleaks                   | brew install                    | Secret scanning tool                                 |
-| Nx cache                   | actions/cache@v4                | Restores/saves `.nx/cache` keyed on lockfile + SHA   |
-| uv                         | astral-sh/setup-uv@v6           | Python package manager with cache                    |
-| Python dependencies        | uv sync                         | Installs affirmations Python deps from pyproject.toml |
-| Node.js dependencies       | pnpm install --frozen-lockfile  | Frozen lockfile install                              |
+|Step|Tool|Purpose|
+|---|---|---|
+|pnpm|pnpm/action-setup@v4|Package manager|
+|Node.js|actions/setup-node@v4|JavaScript runtime from `.nvmrc`, with pnpm cache|
+|Nx SHAs|nrwl/nx-set-shas@v4|Calculates `NX_BASE`/`NX_HEAD` for affected commands|
+|Nx output style|env var|Sets `NX_DEFAULT_OUTPUT_STYLE=static`|
+|Homebrew|Homebrew/actions/setup-homebrew|Package manager for system tools|
+|gitleaks|brew install|Secret scanning tool|
+|Nx cache|actions/cache@v4|Restores/saves `.nx/cache` keyed on lockfile + SHA|
+|uv|astral-sh/setup-uv@v6|Python package manager with cache|
+|Python dependencies|uv sync|Installs affirmations Python deps from pyproject.toml|
+|Node.js dependencies|pnpm install --frozen-lockfile|Frozen lockfile install|
 
 **Usage in workflows:**
 
@@ -96,12 +96,12 @@ All workflows call this composite action after checkout. It provides:
 
 **Jobs:** Single job running sequential security checks:
 
-| Check                     | Command / Tool                                            |
-| ------------------------- | --------------------------------------------------------- |
-| 🔍 Gitleaks               | `pnpm exec nx run monorepo:gitleaks --configuration=ci`   |
-| 🐍 Bandit (Python)        | `pnpm exec nx affected --target=bandit --parallel=3`      |
-| 📦 Dependency Audit       | `pnpm exec nx affected --target=scan-dependencies --parallel=3` |
-| 🏗️ Trivy (Infrastructure) | `aquasecurity/trivy-action@v0.36.0` on `infrastructure/terraform/` (severity: `CRITICAL,HIGH`; runs on schedule or when Terraform files changed) |
+|Check|Command / Tool|
+|---|---|
+|🔍 Gitleaks|`pnpm exec nx run monorepo:gitleaks --configuration=ci`|
+|🐍 Bandit (Python)|`pnpm exec nx affected --target=bandit --parallel=3`|
+|📦 Dependency Audit|`pnpm exec nx affected --target=scan-dependencies --parallel=3`|
+|🏗️ Trivy (Infrastructure)|`aquasecurity/trivy-action@v0.36.0` on `infrastructure/terraform/` (severity: `CRITICAL,HIGH`; runs on schedule or when Terraform files changed)|
 
 **Concurrency:** Cancels in-progress runs for the same branch
 
@@ -119,14 +119,14 @@ All workflows call this composite action after checkout. It provides:
 
 **Jobs:** Single job with sequential convention checks:
 
-| Check                        | What it validates                                                                    |
-| ---------------------------- | ------------------------------------------------------------------------------------ |
-| 🎋 Branch Validation         | Branch name matches `<type>/<scope>-<description>` via `validate-branch-name` (PR only) |
-| 📝 PR Title Validation       | PR title follows Conventional Commits format via `commitlint` (PR only)              |
-| 🪢 PR Body Validation        | PR body contains required `## 🌰 Summary`, `## 📝 Details`, `## 🧪 Testing`, `## 🔗 Related` sections (PR only) |
-| ⚙️ Convention Config Sync    | `npx nx run monorepo:sync-conventional-config:check`                                 |
-| 📋 PR Template Sync          | `npx nx run monorepo:sync-pull-request-template:check`                               |
-| 🤖 Agent Skills Sync         | `npx nx run monorepo:sync-agent-skills:check`                                        |
+|Check|What it validates|
+|---|---|
+|🎋 Branch Validation|Branch name matches `<type>/<scope>-<description>` via `validate-branch-name` (PR only)|
+|📝 PR Title Validation|PR title follows Conventional Commits format via `commitlint` (PR only)|
+|🪢 PR Body Validation|PR body contains required `## 🌰 Summary`, `## 📝 Details`, `## 🧪 Testing`, `## 🔗 Related` sections (PR only)|
+|⚙️ Convention Config Sync|`npx nx run monorepo:sync-conventional-config:check`|
+|📋 PR Template Sync|`npx nx run monorepo:sync-pull-request-template:check`|
+|🤖 Agent Skills Sync|`npx nx run monorepo:sync-agent-skills:check`|
 
 **Concurrency:** Cancels in-progress runs for the same branch
 
