@@ -1,0 +1,48 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "{{name}}",
+  "projectType": "application",
+  "sourceRoot": "applications/{{name}}/src",
+  "tags": ["scope:{{name}}", "type:application", "lang:python"],
+  "targets": {
+    "ruff-format": {
+      "cache": true
+    },
+    "ruff-lint": {
+      "cache": true
+    },
+    "pyright": {
+      "cache": true
+    },
+    "pytest": {
+      "cache": true,
+      "options": {
+        "cwd": "applications/{{name}}"
+      }
+    },
+    "vulture": {
+      "cache": true
+    },
+    "ty": {
+      "cache": true
+    },
+    "bandit": {
+      "cache": true
+    },
+    "format": {
+      "dependsOn": ["ruff-format"]
+    },
+    "lint": {
+      "dependsOn": ["ruff-lint"]
+    },
+    "typecheck": {
+      "dependsOn": ["pyright", "ty"]
+    },
+    "test": {
+      "dependsOn": ["pytest"]
+    },
+    "verify": {
+      "dependsOn": ["format", "lint", "typecheck", "test", "vulture", "bandit"]
+    }
+  }
+}

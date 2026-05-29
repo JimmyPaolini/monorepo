@@ -1,0 +1,57 @@
+[project]
+name = "{{name}}"
+version = "0.1.0"
+description = "{{description}}"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "notebook>=7.4.5",
+]
+
+[dependency-groups]
+dev = [
+  "pytest>=8.4.1",
+  "ruff>=0.12.12",
+  "pyright>=1.1.405",
+  "ty>=0.0.1a18",
+  "vulture>=2.14",
+  "bandit>=1.8.6",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+  "T201",
+  "D100",
+  "ANN001",
+  "ANN201",
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+
+[tool.pyright]
+typeCheckingMode = "strict"
+include = ["src", "testing"]
+pythonVersion = "3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["testing"]
+pythonpath = ["."]
+
+[tool.vulture]
+paths = ["src", "testing"]
+min_confidence = 80
+sort_by_size = true
+
+[tool.ty.environment]
+root = ["./src", "./testing"]
+python = "./.venv"
+python-version = "3.11"
+
+[tool.bandit]
+exclude_dirs = ["testing", ".venv"]
