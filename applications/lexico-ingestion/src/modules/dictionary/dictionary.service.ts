@@ -1,11 +1,14 @@
-import { Injectable, Logger } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
-import { Entry } from "@monorepo/lexico-entities";
-import { Repository } from "typeorm";
 import fs from "node:fs";
 import path from "node:path";
 
+import { Entry } from "@monorepo/lexico-entities";
+import { Injectable, Logger } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Repository } from "typeorm";
+
+
 import { IngesterService } from "./ingester.service.js";
+
 import type { WiktionaryEntry } from "../../lexico-ingestion.types.js";
 
 /**
@@ -30,6 +33,9 @@ export class DictionaryService {
 
   // 🌎 Public Methods
 
+  /**
+   *
+   */
   async ingestAll(): Promise<void> {
     if (!fs.existsSync(this.dataDir)) {
       this.logger.warn(
@@ -46,7 +52,7 @@ export class DictionaryService {
     for (const file of files) {
       try {
         const filePath = path.join(this.dataDir, file);
-        const raw = fs.readFileSync(filePath, "utf-8");
+        const raw = fs.readFileSync(filePath, "utf8");
         const wiktionaryEntry = JSON.parse(raw) as WiktionaryEntry;
         await this.ingestEntry(wiktionaryEntry.word, wiktionaryEntry);
       } catch (error) {
@@ -57,6 +63,9 @@ export class DictionaryService {
     this.logger.log("Dictionary ingestion complete.");
   }
 
+  /**
+   *
+   */
   async ingestEntry(
     word: string,
     wiktionaryEntry?: WiktionaryEntry,
@@ -70,7 +79,7 @@ export class DictionaryService {
         this.logger.warn(`No data file found for word: ${word}`);
         return;
       }
-      const raw = fs.readFileSync(filePath, "utf-8");
+      const raw = fs.readFileSync(filePath, "utf8");
       wiktionaryEntry = JSON.parse(raw) as WiktionaryEntry;
     }
 
@@ -87,6 +96,6 @@ export class DictionaryService {
   }
 
   private escapeCapitals(word: string): string {
-    return word.replace(/[A-Z]/g, (char) => `_${char.toLowerCase()}`);
+    return word.replaceAll(/[A-Z]/g, (char) => `_${char.toLowerCase()}`);
   }
 }

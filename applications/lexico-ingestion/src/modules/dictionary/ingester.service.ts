@@ -1,113 +1,104 @@
+import { Entry, partOfSpeechValues } from "@monorepo/lexico-entities";
 import { Injectable, Logger } from "@nestjs/common";
-import {
-  Entry,
-  Translation,
-  type PartOfSpeech,
-} from "@monorepo/lexico-entities";
 import * as cheerio from "cheerio";
+
+import { parseEtymology } from "./ingester/etymology.js";
+import { parseForms } from "./ingester/form.js";
+import {
+  getPartOfSpeech,
+  ingestersMap,
+} from "./ingester/part-of-speech/index.js";
+import { parsePrincipalParts } from "./ingester/principal-part.js";
+import { parsePronunciation } from "./ingester/pronunciation/index.js";
+import { parseTranslations } from "./ingester/translation.js";
+import { normalize } from "./ingester/utils/strings.js";
 
 import type { WiktionaryEntry } from "../../lexico-ingestion.types.js";
 
+const skipPOS = new Set<string>(["letter"]);
+const validPOS = new Set<string>(partOfSpeechValues);
+
 /**
- * Parses Wiktionary HTML into structured Entry objects.
+ * Parses Wiktionary HTML into fully-populated Entry objects using the
+ * `p:has(strong.Latn.headword)` selector strategy.
  */
 @Injectable()
 export class IngesterService {
   private readonly logger = new Logger(IngesterService.name);
 
+  /**
+   *
+   */
   async parseEntries(wiktionaryEntry: WiktionaryEntry): Promise<Entry[]> {
     if (!wiktionaryEntry.html) return [];
 
     const $ = cheerio.load(wiktionaryEntry.html);
+    const word = normalize(wiktionaryEntry.word);
     const entries: Entry[] = [];
 
-    const posHeadings = $("h3, h4").filter((_i, el) => {
-      const text = $(el).text().toLowerCase();
-      return this.isPartOfSpeech(text);
-    });
+    const headwordElements = $("p:has(strong.Latn.headword)").toArray();
 
-    if (posHeadings.length === 0) {
-      this.logger.warn(`No parts of speech found for: ${wiktionaryEntry.word}`);
+    if (headwordElements.length === 0) {
+      this.logger.warn(`No headwords found for: ${wiktionaryEntry.word}`);
       return [];
     }
 
-    let index = 0;
-    for (const heading of posHeadings.toArray()) {
-      const posText = $(heading).text().toLowerCase().trim();
-      const partOfSpeech = this.normalizePartOfSpeech(posText);
-      if (!partOfSpeech) continue;
+    for (const [i, elt] of headwordElements.entries()) {
+      const partOfSpeech = getPartOfSpeech($, elt);
 
-      const entry = new Entry();
-      entry.id = `${wiktionaryEntry.word}:${index}`;
-      entry.partOfSpeech = partOfSpeech;
-
-      const translationTexts: string[] = [];
-      let sibling = $(heading).next();
-      while (sibling.length > 0 && !sibling.is("h3, h4")) {
-        sibling.find("ol > li").each((_i, li) => {
-          const text = $(li)
-            .clone()
-            .children("ul")
-            .remove()
-            .end()
-            .text()
-            .trim();
-          if (text) translationTexts.push(text);
-        });
-        sibling = sibling.next();
+      if (!validPOS.has(partOfSpeech)) {
+        if (!skipPOS.has(partOfSpeech)) {
+          this.logger.debug(`Skipping POS "${partOfSpeech}" for: ${word}`);
+        }
+        continue;
       }
 
-      entry.translations = translationTexts.map(
-        (t) => new Translation(t, entry),
-      );
-      entries.push(entry);
-      index++;
+      const posIngester = ingestersMap[partOfSpeech];
+      if (!posIngester) {
+        this.logger.debug(
+          `No ingester for POS "${partOfSpeech}" — skipping ${word}`,
+        );
+        continue;
+      }
+
+      const entry = new Entry();
+      entry.id = `${word}:${i}`;
+      entry.partOfSpeech = partOfSpeech;
+
+      try {
+        const { principalParts, macronizedWord } = await parsePrincipalParts(
+          entry,
+          $,
+          elt,
+          posIngester.firstPrincipalPartName,
+        );
+        entry.principalParts = principalParts;
+
+        entry.inflection = posIngester.ingestInflection($, elt, principalParts);
+
+        const translations = await parseTranslations($, elt, entry);
+        const { etymology, participleTranslation } = parseEtymology(
+          $,
+          elt,
+          entry,
+        );
+        entry.etymology = etymology;
+        entry.translations = participleTranslation
+          ? [...translations, participleTranslation]
+          : translations;
+
+        entry.pronunciation = parsePronunciation($, elt, macronizedWord);
+
+        entry.forms = posIngester.ingestForms
+          ? await posIngester.ingestForms($, elt, entry, principalParts)
+          : await parseForms($, elt, entry);
+
+        entries.push(entry);
+      } catch (error) {
+        this.logger.warn(`Failed to parse ${entry.id}: ${String(error)}`);
+      }
     }
 
     return entries;
-  }
-
-  private isPartOfSpeech(text: string): boolean {
-    return [
-      "noun",
-      "verb",
-      "adjective",
-      "adverb",
-      "pronoun",
-      "preposition",
-      "conjunction",
-      "interjection",
-      "participle",
-      "numeral",
-      "prefix",
-      "suffix",
-      "phrase",
-      "proverb",
-      "idiom",
-    ].some((pos) => text.includes(pos));
-  }
-
-  private normalizePartOfSpeech(text: string): PartOfSpeech | undefined {
-    const posMap: Array<[string, PartOfSpeech]> = [
-      ["noun", "noun"],
-      ["verb", "verb"],
-      ["adjective", "adjective"],
-      ["adverb", "adverb"],
-      ["pronoun", "pronoun"],
-      ["preposition", "preposition"],
-      ["conjunction", "conjunction"],
-      ["interjection", "interjection"],
-      ["participle", "participle"],
-      ["numeral", "numeral"],
-      ["prefix", "prefix"],
-      ["suffix", "suffix"],
-      ["phrase", "phrase"],
-      ["proverb", "proverb"],
-      ["idiom", "idiom"],
-    ];
-    for (const [key, val] of posMap) {
-      if (text.includes(key)) return val;
-    }
-    return undefined;
   }
 }

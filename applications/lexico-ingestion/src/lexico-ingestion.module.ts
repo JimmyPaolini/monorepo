@@ -22,8 +22,12 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 
 import { LexicoIngestionCommand } from "./lexico-ingestion.command.js";
 import { environmentSchema } from "./lexico-ingestion.constants.js";
+import { ClearModule } from "./modules/clear/clear.module.js";
 import { DictionaryModule } from "./modules/dictionary/dictionary.module.js";
+import { ManualModule } from "./modules/manual/manual.module.js";
+import { TranslationReferencesModule } from "./modules/translationReferences/translationReferences.module.js";
 import { WiktionaryModule } from "./modules/wiktionary/wiktionary.module.js";
+import { WordsModule } from "./modules/words/words.module.js";
 
 /**
  *
@@ -69,6 +73,10 @@ import { WiktionaryModule } from "./modules/wiktionary/wiktionary.module.js";
     }),
     WiktionaryModule,
     DictionaryModule,
+    WordsModule,
+    TranslationReferencesModule,
+    ManualModule,
+    ClearModule,
   ],
   providers: [LexicoIngestionCommand],
 })

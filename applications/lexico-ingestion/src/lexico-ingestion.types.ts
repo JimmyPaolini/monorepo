@@ -1,3 +1,6 @@
+/**
+ *
+ */
 export interface WiktionaryEntry {
   word: string;
   category: string;

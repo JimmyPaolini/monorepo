@@ -16,6 +16,9 @@ export class WiktionaryCommand extends CommandRunner {
     super();
   }
 
+  /**
+   *
+   */
   async run(): Promise<void> {
     await this.wiktionaryService.ingestWiktionary();
   }

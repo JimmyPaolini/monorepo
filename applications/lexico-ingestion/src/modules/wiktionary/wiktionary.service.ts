@@ -1,8 +1,9 @@
+import fs from "node:fs";
+import path from "node:path";
+
 import { Injectable, Logger } from "@nestjs/common";
 import axios from "axios";
 import * as cheerio from "cheerio";
-import fs from "node:fs";
-import path from "node:path";
 
 import type { WiktionaryEntry } from "../../lexico-ingestion.types.js";
 
@@ -32,6 +33,9 @@ export class WiktionaryService {
 
   // 🌎 Public Methods
 
+  /**
+   *
+   */
   async ingestWiktionary(): Promise<void> {
     if (!fs.existsSync(this.dataDir)) {
       fs.mkdirSync(this.dataDir, { recursive: true });
@@ -56,14 +60,14 @@ export class WiktionaryService {
       while (urlPath) {
         this.logger.log(this.host + urlPath);
         const response = await axios.get<string>(this.host + urlPath);
-        const $ = cheerio.load(response.data as string);
+        const $ = cheerio.load(response.data);
 
         for (const a of $(
           "#mw-pages div.mw-category > div.mw-category-group > ul > li a",
-        ).toArray()) {
+        )) {
           const word = $(a).text();
           const href = $(a).attr("href") ?? "";
-          if (word.match(/(Reconstruction:)|(Appendix:)/gi)) continue;
+          if (/(Reconstruction:)|(Appendix:)/gi.test(word)) continue;
           await this.ingestWord(word, href, category);
         }
 
@@ -78,7 +82,7 @@ export class WiktionaryService {
   }
 
   private escapeCapitals(word: string): string {
-    return word.replace(/[A-Z]/g, (char) => `_${char.toLowerCase()}`);
+    return word.replaceAll(/[A-Z]/g, (char) => `_${char.toLowerCase()}`);
   }
 
   private async ingestWord(
@@ -86,7 +90,7 @@ export class WiktionaryService {
     urlPath: string,
     category: string,
   ): Promise<void> {
-    if (!urlPath.match(/.*#Latin/)) urlPath += "#Latin";
+    if (!urlPath.includes('#Latin')) urlPath += "#Latin";
     const entry: WiktionaryEntry = {
       word,
       category,
@@ -99,10 +103,10 @@ export class WiktionaryService {
     }
 
     const response = await axios.get<string>(entry.href);
-    const $ = cheerio.load(response.data as string);
+    const $ = cheerio.load(response.data);
     const section = $("span#Latin").parent().nextUntil("hr");
 
-    if (section.length < 1) {
+    if (section.length === 0) {
       this.logger.warn(`Error "${entry.word}" - no latin entry in wiktionary`);
       return;
     }

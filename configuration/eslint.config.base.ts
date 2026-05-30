@@ -329,6 +329,7 @@ export default [
         {
           selector: "parameter",
           format: ["camelCase"],
+          leadingUnderscore: "allow",
           filter: {
             regex: "^_$",
             match: false,

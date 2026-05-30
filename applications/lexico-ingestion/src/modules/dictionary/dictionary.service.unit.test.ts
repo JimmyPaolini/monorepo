@@ -1,6 +1,6 @@
+import { Entry, Translation, Word } from "@monorepo/lexico-entities";
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
-import { Entry, Word, Translation } from "@monorepo/lexico-entities";
 import { beforeAll, describe, expect, it } from "vitest";
 
 import { DictionaryService } from "./dictionary.service";

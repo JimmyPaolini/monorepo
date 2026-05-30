@@ -21,6 +21,9 @@ export class DictionaryCommand extends CommandRunner {
     super();
   }
 
+  /**
+   *
+   */
   @Option({
     flags: "-w, --word [word]",
     description: "Ingest a single word entry",
@@ -29,11 +32,12 @@ export class DictionaryCommand extends CommandRunner {
     return val;
   }
 
+  /**
+   *
+   */
   async run(_args: string[], options: DictionaryCommandOptions): Promise<void> {
-    if (options.word) {
-      await this.dictionaryService.ingestEntry(options.word);
-    } else {
-      await this.dictionaryService.ingestAll();
-    }
+    await (options.word
+      ? this.dictionaryService.ingestEntry(options.word)
+      : this.dictionaryService.ingestAll());
   }
 }

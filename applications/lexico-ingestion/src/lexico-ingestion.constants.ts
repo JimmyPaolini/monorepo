@@ -8,4 +8,7 @@ export const environmentSchema = z.object({
   DATABASE_NAME: z.string().default("lexico"),
 });
 
+/**
+ *
+ */
 export type Environment = z.infer<typeof environmentSchema>;
