@@ -3,12 +3,6 @@ import { Injectable, Logger } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 
-import { flattenForms } from "../dictionary/ingester/utils/forms.js";
-import {
-  escapeCapitals,
-  normalize,
-} from "../dictionary/ingester/utils/strings.js";
-
 /**
  * Ingests Word search records from all dictionary entries.
  */
@@ -57,11 +51,37 @@ export class WordsService {
     }
   }
 
+  private flattenForms(
+    obj: string[] | Record<string, unknown> | null | undefined,
+  ): string[] {
+    if (!obj) return [];
+    if (Array.isArray(obj)) return obj;
+    return Object.values(obj).reduce<string[]>(
+      (acc, val) => [
+        ...acc,
+        ...this.flattenForms(val as string[] | Record<string, unknown>),
+      ],
+      [],
+    );
+  }
+
+  private escapeCapitals(word: string): string {
+    return word.replaceAll(/[A-Z]/g, (char) => `_${char.toLowerCase()}`);
+  }
+
+  private normalize(str: string): string {
+    return str
+      .normalize("NFC")
+      .replaceAll(/[\u0300-\u036F]/gu, "")
+      .toLowerCase()
+      .trim();
+  }
+
   /**
    *
    */
   getEntryWords(entry: Entry): string[] {
-    const forms = flattenForms(
+    const forms = this.flattenForms(
       entry.forms as Record<string, unknown> | null | undefined,
     );
     entry.principalParts.forEach((pp) => forms.push(...pp.text));
@@ -72,7 +92,7 @@ export class WordsService {
    *
    */
   async ingestEntryWord(wordString: string, entry: Entry): Promise<void> {
-    const normalized = escapeCapitals(normalize(wordString));
+    const normalized = this.escapeCapitals(this.normalize(wordString));
     if (!/^-?[A-Za-z]/.test(normalized)) return;
 
     const existingWord = await this.wordsRepository.findOne({

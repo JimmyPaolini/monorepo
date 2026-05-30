@@ -4,7 +4,9 @@ import { getRepositoryToken } from "@nestjs/typeorm";
 import { beforeAll, describe, expect, it } from "vitest";
 
 import { DictionaryService } from "./dictionary.service";
-import { IngesterService } from "./ingester.service";
+import { IngesterService } from "../ingester/ingester.service";
+import { PartOfSpeechService } from "../partOfSpeech/partOfSpeech.service";
+import { PronunciationService } from "../pronunciation/pronunciation.service";
 
 describe("DictionaryService", () => {
   let service: DictionaryService;
@@ -14,6 +16,8 @@ describe("DictionaryService", () => {
       providers: [
         DictionaryService,
         IngesterService,
+        PartOfSpeechService,
+        PronunciationService,
         { provide: getRepositoryToken(Entry), useValue: {} },
         { provide: getRepositoryToken(Word), useValue: {} },
         { provide: getRepositoryToken(Translation), useValue: {} },

@@ -3,8 +3,6 @@ import { Injectable, Logger } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Like, Repository } from "typeorm";
 
-import { escapeCapitals } from "../dictionary/ingester/utils/strings.js";
-
 /**
  * Resolves \{*reference*\} markers in translation text by linking to the
  * referenced entry's translations.
@@ -47,6 +45,10 @@ export class TranslationReferencesService {
     this.logger.log("Ingested translation references");
   }
 
+  private escapeCapitals(word: string): string {
+    return word.replaceAll(/[A-Z]/g, (char) => `_${char.toLowerCase()}`);
+  }
+
   private async ingestTranslationReference(
     translation: Translation,
   ): Promise<void> {
@@ -63,7 +65,7 @@ export class TranslationReferencesService {
       .createQueryBuilder("entry")
       .leftJoinAndSelect("entry.translations", "translations")
       .where(`entry.id ~* :pattern`, {
-        pattern: String.raw`${escapeCapitals(reference)}:\d`,
+        pattern: String.raw`${this.escapeCapitals(reference)}:\d`,
       })
       .getMany();
 

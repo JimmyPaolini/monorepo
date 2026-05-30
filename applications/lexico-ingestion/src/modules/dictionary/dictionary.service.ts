@@ -7,7 +7,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 
 
-import { IngesterService } from "./ingester.service.js";
+import { IngesterService } from "../ingester/ingester.service.js";
 
 import type { WiktionaryEntry } from "../../lexico-ingestion.types.js";
 

@@ -4,7 +4,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 
 import { DictionaryCommand } from "./dictionary.command.js";
 import { DictionaryService } from "./dictionary.service";
-import { IngesterModule } from "./ingester.module.js";
+import { IngesterModule } from "../ingester/ingester.module.js";
 
 /**
  * TODO: Document the dictionary module.
