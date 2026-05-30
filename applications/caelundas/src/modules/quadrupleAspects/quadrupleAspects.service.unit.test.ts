@@ -2,11 +2,7 @@ import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { beforeAll, describe, expect, it } from "vitest";
 
-import {
-  getOtherBody,
-  involvesBody,
-  QuadrupleAspectsService,
-} from "./quadrupleAspects.service";
+import { QuadrupleAspectsService } from "./quadrupleAspects.service";
 
 import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
@@ -696,7 +692,7 @@ describe("QuadrupleAspectsService", () => {
         aspect: "conjunct",
       };
 
-      expect(involvesBody(edge, "sun")).toBe(true);
+      expect(service.involvesBody(edge, "sun")).toBe(true);
     });
 
     it("should return true when body2 matches", () => {
@@ -705,7 +701,7 @@ describe("QuadrupleAspectsService", () => {
         aspect: "conjunct",
       };
 
-      expect(involvesBody(edge, "moon")).toBe(true);
+      expect(service.involvesBody(edge, "moon")).toBe(true);
     });
 
     it("should return false when neither body matches", () => {
@@ -714,7 +710,7 @@ describe("QuadrupleAspectsService", () => {
         aspect: "conjunct",
       };
 
-      expect(involvesBody(edge, "mars")).toBe(false);
+      expect(service.involvesBody(edge, "mars")).toBe(false);
     });
   });
 
@@ -725,7 +721,7 @@ describe("QuadrupleAspectsService", () => {
         aspect: "conjunct",
       };
 
-      expect(getOtherBody(edge, "sun")).toBe("moon");
+      expect(service.getOtherBody(edge, "sun")).toBe("moon");
     });
 
     it("should return body1 when body2 is provided", () => {
@@ -734,7 +730,7 @@ describe("QuadrupleAspectsService", () => {
         aspect: "conjunct",
       };
 
-      expect(getOtherBody(edge, "moon")).toBe("sun");
+      expect(service.getOtherBody(edge, "moon")).toBe("sun");
     });
 
     it("should return null when body is not in edge", () => {
@@ -743,7 +739,7 @@ describe("QuadrupleAspectsService", () => {
         aspect: "conjunct",
       };
 
-      expect(getOtherBody(edge, "mars")).toBeNull();
+      expect(service.getOtherBody(edge, "mars")).toBeNull();
     });
   });
 });

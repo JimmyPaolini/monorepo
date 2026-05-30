@@ -6,25 +6,7 @@ import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
 import { beforeAll, describe, expect, it, vi } from "vitest";
 
-import {
-  AnnualSolarCycleService,
-  isAutumnalEquinox,
-  isBeltane,
-  isEleventhHexadecan,
-  isFifteenthHexadecan,
-  isFifthHexadecan,
-  isFirstHexadecan,
-  isImbolc,
-  isLammas,
-  isNinthHexadecan,
-  isSamhain,
-  isSeventhHexadecan,
-  isSummerSolstice,
-  isThirdHexadecan,
-  isThirteenthHexadecan,
-  isVernalEquinox,
-  isWinterSolstice,
-} from "./annualSolarCycle.service";
+import { AnnualSolarCycleService } from "./annualSolarCycle.service";
 
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type {
@@ -588,11 +570,25 @@ describe("AnnualSolarCycleService", () => {
 });
 
 describe("annualSolarCycle.utilities", () => {
+  let service: AnnualSolarCycleService;
+
+  beforeAll(async () => {
+    const module = await Test.createTestingModule({
+      providers: [
+        AnnualSolarCycleService,
+        EphemerisService,
+        MathService,
+        ProgressiveUtilities,
+      ],
+    }).compile();
+    service = module.get(AnnualSolarCycleService);
+  });
+
   describe("isVernalEquinox", () => {
     it("should return true when crossing 0° (from Pisces to Aries)", () => {
       // Vernal equinox: crossing from >180 (after autumnal) back to <180
       // This happens at 0° when going from ~359° to ~1°
-      const result = isVernalEquinox({
+      const result = service.isVernalEquinox({
         currentLongitude: 1, // Just entered Aries
         previousLongitude: 359, // Was in Pisces
       });
@@ -601,7 +597,7 @@ describe("annualSolarCycle.utilities", () => {
     });
 
     it("should return false when not crossing the boundary", () => {
-      const result = isVernalEquinox({
+      const result = service.isVernalEquinox({
         currentLongitude: 10,
         previousLongitude: 5,
       });
@@ -612,7 +608,7 @@ describe("annualSolarCycle.utilities", () => {
 
   describe("isFirstHexadecan (22.5°)", () => {
     it("should return true when crossing 22.5°", () => {
-      const result = isFirstHexadecan({
+      const result = service.isFirstHexadecan({
         currentLongitude: 23,
         previousLongitude: 22,
       });
@@ -621,7 +617,7 @@ describe("annualSolarCycle.utilities", () => {
     });
 
     it("should return false when not crossing", () => {
-      const result = isFirstHexadecan({
+      const result = service.isFirstHexadecan({
         currentLongitude: 21,
         previousLongitude: 20,
       });
@@ -632,7 +628,7 @@ describe("annualSolarCycle.utilities", () => {
 
   describe("isBeltane (45°)", () => {
     it("should return true when crossing 45°", () => {
-      const result = isBeltane({
+      const result = service.isBeltane({
         currentLongitude: 46,
         previousLongitude: 44,
       });
@@ -641,7 +637,7 @@ describe("annualSolarCycle.utilities", () => {
     });
 
     it("should return false when not crossing", () => {
-      const result = isBeltane({
+      const result = service.isBeltane({
         currentLongitude: 44,
         previousLongitude: 43,
       });
@@ -652,7 +648,7 @@ describe("annualSolarCycle.utilities", () => {
 
   describe("isThirdHexadecan (67.5°)", () => {
     it("should return true when crossing 67.5°", () => {
-      const result = isThirdHexadecan({
+      const result = service.isThirdHexadecan({
         currentLongitude: 68,
         previousLongitude: 67,
       });
@@ -661,7 +657,7 @@ describe("annualSolarCycle.utilities", () => {
     });
 
     it("should return false when not crossing", () => {
-      const result = isThirdHexadecan({
+      const result = service.isThirdHexadecan({
         currentLongitude: 66,
         previousLongitude: 65,
       });
@@ -672,7 +668,7 @@ describe("annualSolarCycle.utilities", () => {
 
   describe("isSummerSolstice (90°)", () => {
     it("should return true when crossing 90°", () => {
-      const result = isSummerSolstice({
+      const result = service.isSummerSolstice({
         currentLongitude: 91,
         previousLongitude: 89,
       });
@@ -681,7 +677,7 @@ describe("annualSolarCycle.utilities", () => {
     });
 
     it("should return false when not crossing", () => {
-      const result = isSummerSolstice({
+      const result = service.isSummerSolstice({
         currentLongitude: 88,
         previousLongitude: 87,
       });
@@ -692,7 +688,7 @@ describe("annualSolarCycle.utilities", () => {
 
   describe("isFifthHexadecan (112.5°)", () => {
     it("should return true when crossing 112.5°", () => {
-      const result = isFifthHexadecan({
+      const result = service.isFifthHexadecan({
         currentLongitude: 113,
         previousLongitude: 112,
       });
@@ -701,7 +697,7 @@ describe("annualSolarCycle.utilities", () => {
     });
 
     it("should return false when not crossing", () => {
-      const result = isFifthHexadecan({
+      const result = service.isFifthHexadecan({
         currentLongitude: 111,
         previousLongitude: 110,
       });
@@ -712,7 +708,7 @@ describe("annualSolarCycle.utilities", () => {
 
   describe("isLammas (135°)", () => {
     it("should return true when crossing 135°", () => {
-      const result = isLammas({
+      const result = service.isLammas({
         currentLongitude: 136,
         previousLongitude: 134,
       });
@@ -721,7 +717,7 @@ describe("annualSolarCycle.utilities", () => {
     });
 
     it("should return false when not crossing", () => {
-      const result = isLammas({
+      const result = service.isLammas({
         currentLongitude: 133,
         previousLongitude: 132,
       });
@@ -732,7 +728,7 @@ describe("annualSolarCycle.utilities", () => {
 
   describe("isSeventhHexadecan (157.5°)", () => {
     it("should return true when crossing 157.5°", () => {
-      const result = isSeventhHexadecan({
+      const result = service.isSeventhHexadecan({
         currentLongitude: 158,
         previousLongitude: 157,
       });
@@ -741,7 +737,7 @@ describe("annualSolarCycle.utilities", () => {
     });
 
     it("should return false when not crossing", () => {
-      const result = isSeventhHexadecan({
+      const result = service.isSeventhHexadecan({
         currentLongitude: 156,
         previousLongitude: 155,
       });
@@ -752,7 +748,7 @@ describe("annualSolarCycle.utilities", () => {
 
   describe("isAutumnalEquinox (180°)", () => {
     it("should return true when crossing 180°", () => {
-      const result = isAutumnalEquinox({
+      const result = service.isAutumnalEquinox({
         currentLongitude: 181,
         previousLongitude: 179,
       });
@@ -761,7 +757,7 @@ describe("annualSolarCycle.utilities", () => {
     });
 
     it("should return false when not crossing", () => {
-      const result = isAutumnalEquinox({
+      const result = service.isAutumnalEquinox({
         currentLongitude: 178,
         previousLongitude: 177,
       });
@@ -772,7 +768,7 @@ describe("annualSolarCycle.utilities", () => {
 
   describe("isNinthHexadecan (202.5°)", () => {
     it("should return true when crossing 202.5°", () => {
-      const result = isNinthHexadecan({
+      const result = service.isNinthHexadecan({
         currentLongitude: 203,
         previousLongitude: 202,
       });
@@ -781,7 +777,7 @@ describe("annualSolarCycle.utilities", () => {
     });
 
     it("should return false when not crossing", () => {
-      const result = isNinthHexadecan({
+      const result = service.isNinthHexadecan({
         currentLongitude: 201,
         previousLongitude: 200,
       });
@@ -792,7 +788,7 @@ describe("annualSolarCycle.utilities", () => {
 
   describe("isSamhain (225°)", () => {
     it("should return true when crossing 225°", () => {
-      const result = isSamhain({
+      const result = service.isSamhain({
         currentLongitude: 226,
         previousLongitude: 224,
       });
@@ -801,7 +797,7 @@ describe("annualSolarCycle.utilities", () => {
     });
 
     it("should return false when not crossing", () => {
-      const result = isSamhain({
+      const result = service.isSamhain({
         currentLongitude: 223,
         previousLongitude: 222,
       });
@@ -812,7 +808,7 @@ describe("annualSolarCycle.utilities", () => {
 
   describe("isEleventhHexadecan (247.5°)", () => {
     it("should return true when crossing 247.5°", () => {
-      const result = isEleventhHexadecan({
+      const result = service.isEleventhHexadecan({
         currentLongitude: 248,
         previousLongitude: 247,
       });
@@ -821,7 +817,7 @@ describe("annualSolarCycle.utilities", () => {
     });
 
     it("should return false when not crossing", () => {
-      const result = isEleventhHexadecan({
+      const result = service.isEleventhHexadecan({
         currentLongitude: 246,
         previousLongitude: 245,
       });
@@ -832,7 +828,7 @@ describe("annualSolarCycle.utilities", () => {
 
   describe("isWinterSolstice (270°)", () => {
     it("should return true when crossing 270°", () => {
-      const result = isWinterSolstice({
+      const result = service.isWinterSolstice({
         currentLongitude: 271,
         previousLongitude: 269,
       });
@@ -841,7 +837,7 @@ describe("annualSolarCycle.utilities", () => {
     });
 
     it("should return false when not crossing", () => {
-      const result = isWinterSolstice({
+      const result = service.isWinterSolstice({
         currentLongitude: 268,
         previousLongitude: 267,
       });
@@ -852,7 +848,7 @@ describe("annualSolarCycle.utilities", () => {
 
   describe("isThirteenthHexadecan (292.5°)", () => {
     it("should return true when crossing 292.5°", () => {
-      const result = isThirteenthHexadecan({
+      const result = service.isThirteenthHexadecan({
         currentLongitude: 293,
         previousLongitude: 292,
       });
@@ -861,7 +857,7 @@ describe("annualSolarCycle.utilities", () => {
     });
 
     it("should return false when not crossing", () => {
-      const result = isThirteenthHexadecan({
+      const result = service.isThirteenthHexadecan({
         currentLongitude: 291,
         previousLongitude: 290,
       });
@@ -872,7 +868,7 @@ describe("annualSolarCycle.utilities", () => {
 
   describe("isImbolc (315°)", () => {
     it("should return true when crossing 315°", () => {
-      const result = isImbolc({
+      const result = service.isImbolc({
         currentLongitude: 316,
         previousLongitude: 314,
       });
@@ -881,7 +877,7 @@ describe("annualSolarCycle.utilities", () => {
     });
 
     it("should return false when not crossing", () => {
-      const result = isImbolc({
+      const result = service.isImbolc({
         currentLongitude: 313,
         previousLongitude: 312,
       });
@@ -892,7 +888,7 @@ describe("annualSolarCycle.utilities", () => {
 
   describe("isFifteenthHexadecan (337.5°)", () => {
     it("should return true when crossing 337.5°", () => {
-      const result = isFifteenthHexadecan({
+      const result = service.isFifteenthHexadecan({
         currentLongitude: 338,
         previousLongitude: 337,
       });
@@ -901,7 +897,7 @@ describe("annualSolarCycle.utilities", () => {
     });
 
     it("should return false when not crossing", () => {
-      const result = isFifteenthHexadecan({
+      const result = service.isFifteenthHexadecan({
         currentLongitude: 336,
         previousLongitude: 335,
       });

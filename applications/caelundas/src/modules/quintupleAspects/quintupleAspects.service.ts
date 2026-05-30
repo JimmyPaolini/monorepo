@@ -20,41 +20,6 @@ import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.servic
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { Moment } from "moment-timezone";
 
-function groupAspectsByType<T extends AspectBodies>(
-  edges: T[],
-): Map<Aspect, T[]> {
-  return groupByToMap(edges, (edge) => edge.aspect);
-}
-
-function determineCompoundPhaseFromSnapshots(
-  currentAspectBodies: AspectBodies[],
-  previousAspectBodies: AspectBodies[],
-  patternBodies: Body[],
-  currentMinute: Moment,
-  checkPatternExists: (edges: AspectBodies[]) => boolean,
-): { phase: AspectPhase; eventMinute: Moment } | null {
-  const bodySet = new Set(patternBodies);
-  const filterByBodies = (edges: AspectBodies[]): AspectBodies[] =>
-    edges.filter((e) => bodySet.has(e.bodies[0]) && bodySet.has(e.bodies[1]));
-
-  const currentFiltered = filterByBodies(currentAspectBodies);
-  const previousFiltered = filterByBodies(previousAspectBodies);
-
-  const currentExists = checkPatternExists(currentFiltered);
-  const previousExists = checkPatternExists(previousFiltered);
-
-  if (currentExists && !previousExists) {
-    return { phase: "forming", eventMinute: currentMinute };
-  }
-  if (!currentExists && previousExists) {
-    return {
-      phase: "dissolving",
-      eventMinute: currentMinute.clone().subtract(1, "minute"),
-    };
-  }
-  return null;
-}
-
 // #region Progressive Events
 
 /**
@@ -74,6 +39,41 @@ export class QuintupleAspectsService {
   // 🔑 Public Fields
 
   // 🔏 Private Methods
+
+  private groupAspectsByType<T extends AspectBodies>(
+    edges: T[],
+  ): Map<Aspect, T[]> {
+    return groupByToMap(edges, (edge) => edge.aspect);
+  }
+
+  private determineCompoundPhaseFromSnapshots(
+    currentAspectBodies: AspectBodies[],
+    previousAspectBodies: AspectBodies[],
+    patternBodies: Body[],
+    currentMinute: Moment,
+    checkPatternExists: (edges: AspectBodies[]) => boolean,
+  ): { phase: AspectPhase; eventMinute: Moment } | null {
+    const bodySet = new Set(patternBodies);
+    const filterByBodies = (edges: AspectBodies[]): AspectBodies[] =>
+      edges.filter((e) => bodySet.has(e.bodies[0]) && bodySet.has(e.bodies[1]));
+
+    const currentFiltered = filterByBodies(currentAspectBodies);
+    const previousFiltered = filterByBodies(previousAspectBodies);
+
+    const currentExists = checkPatternExists(currentFiltered);
+    const previousExists = checkPatternExists(previousFiltered);
+
+    if (currentExists && !previousExists) {
+      return { phase: "forming", eventMinute: currentMinute };
+    }
+    if (!currentExists && previousExists) {
+      return {
+        phase: "dissolving",
+        eventMinute: currentMinute.clone().subtract(1, "minute"),
+      };
+    }
+    return null;
+  }
 
   // 🌎 Public Methods
 
@@ -222,7 +222,7 @@ export class QuintupleAspectsService {
     const events: Event[] = [];
 
     const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
-    const aspectsByType = groupAspectsByType(unionEdges);
+    const aspectsByType = this.groupAspectsByType(unionEdges);
     const quintiles = aspectsByType.get("quintile") || [];
 
     if (quintiles.length < 5) {
@@ -251,7 +251,7 @@ export class QuintupleAspectsService {
       const pentagramBodies = this.findPentagramPattern(combo, unionEdges);
 
       if (pentagramBodies) {
-        const result = determineCompoundPhaseFromSnapshots(
+        const result = this.determineCompoundPhaseFromSnapshots(
           currentAspectBodies,
           previousAspectBodies,
           pentagramBodies,
