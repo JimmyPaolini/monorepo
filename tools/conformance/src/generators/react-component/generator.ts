@@ -1,6 +1,7 @@
 import path from "node:path";
 
 import { formatFiles, getProjects } from "@nx/devkit";
+import _ from "lodash";
 
 import { StringCase } from "../../types";
 import { generateFiles, resolveName, resolveProject } from "../../utilities";
@@ -32,8 +33,8 @@ export async function generateComponent(
 
   const name = await resolveName({
     name: options.name,
-    case: StringCase.PASCAL_CASE,
-    message: "What is the name of the component? (PascalCase)",
+    case: StringCase.KEBAB_CASE,
+    message: "What is the name of the component? (kebab-case)",
     subject: "Component name",
   });
 
@@ -56,7 +57,7 @@ export async function generateComponent(
     );
   }
 
-  const namePascalCase = name;
+  const namePascalCase = _.upperFirst(_.camelCase(name));
 
   const filesPath = path.join(__dirname, "templates");
   const substitutions = { namePascalCase };

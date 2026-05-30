@@ -1,1 +1,1 @@
-"""📦 Application package root."""
+"""🪾 Root"""

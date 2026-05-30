@@ -45,9 +45,9 @@ describe("generateNestjsServiceModule", () => {
       expect(tree.exists(`${base}/calculator.constants.ts`)).toBeTruthy();
     });
 
-    it("should use camelCase for directory and file names from camelCase input", async () => {
+    it("should use camelCase for directory and file names from kebab-case input", async () => {
       await generateNestjsServiceModule(tree, {
-        name: "myService",
+        name: "my-service",
         project: PROJECT_NAME,
       });
 
@@ -141,6 +141,17 @@ describe("generateNestjsServiceModule", () => {
   });
 
   describe("name validation", () => {
+    it("should throw when name is camelCase", async () => {
+      await expect(
+        generateNestjsServiceModule(tree, {
+          name: "myService",
+          project: PROJECT_NAME,
+        }),
+      ).rejects.toThrow(
+        'Module name "myService" must be in kebab-case. Did you mean "my-service"?',
+      );
+    });
+
     it("should throw when name is PascalCase", async () => {
       await expect(
         generateNestjsServiceModule(tree, {
@@ -148,18 +159,7 @@ describe("generateNestjsServiceModule", () => {
           project: PROJECT_NAME,
         }),
       ).rejects.toThrow(
-        'Module name "Calculator" must be in camelCase. Did you mean "calculator"?',
-      );
-    });
-
-    it("should throw when name is kebab-case", async () => {
-      await expect(
-        generateNestjsServiceModule(tree, {
-          name: "my-service",
-          project: PROJECT_NAME,
-        }),
-      ).rejects.toThrow(
-        'Module name "my-service" must be in camelCase. Did you mean "myService"?',
+        'Module name "Calculator" must be in kebab-case. Did you mean "calculator"?',
       );
     });
   });

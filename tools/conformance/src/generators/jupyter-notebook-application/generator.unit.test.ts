@@ -29,7 +29,6 @@ describe("generateJupyterNotebookApplication", () => {
     expect(tree.exists(path.join(appRoot, "testing", "__init__.py"))).toBe(
       true,
     );
-    expect(tree.exists(path.join(appRoot, "output", ".gitkeep"))).toBe(true);
   });
 
   it("uses provided description in pyproject.toml", async () => {

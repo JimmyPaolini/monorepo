@@ -3,7 +3,12 @@
   "name": "{{name}}",
   "projectType": "application",
   "sourceRoot": "applications/{{name}}/src",
-  "tags": ["language:python", "scope:{{name}}", "type:application"],
+  "tags": [
+    "generator:jupyter-notebook-application",
+    "language:python",
+    "scope:{{name}}",
+    "type:application"
+  ],
   "targets": {
     "bandit": {},
     "clean": {
