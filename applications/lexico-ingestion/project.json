@@ -12,22 +12,6 @@
     "analyze-code": {},
     "clean": {},
     "dependency-cruiser": {},
-    "docker:down": {
-      "description": "Stop local PostgreSQL Docker Compose",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "docker compose down",
-        "cwd": "applications/lexico-ingestion"
-      }
-    },
-    "docker:up": {
-      "description": "Start local PostgreSQL with Docker Compose",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "docker compose up -d",
-        "cwd": "applications/lexico-ingestion"
-      }
-    },
     "format": {},
     "knip": {},
     "lint": {},

@@ -1,5 +1,6 @@
-import { Logger } from "@nestjs/common";
 import { Command, CommandRunner } from "nest-commander";
+
+import { LexicoIngestionLogger } from "../logger/logger.service.js";
 
 import { WordsService } from "./words.service.js";
 
@@ -12,10 +13,12 @@ import { WordsService } from "./words.service.js";
   description: "Ingest word search records from dictionary entries",
 })
 export class WordsCommand extends CommandRunner {
-  private readonly logger = new Logger(WordsCommand.name);
-
-  constructor(private readonly wordsService: WordsService) {
+  constructor(
+    private readonly logger: LexicoIngestionLogger,
+    private readonly wordsService: WordsService,
+  ) {
     super();
+    this.logger.setContext(WordsCommand.name);
   }
 
   /**

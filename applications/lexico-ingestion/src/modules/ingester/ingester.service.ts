@@ -4,14 +4,16 @@ import {
   PrincipalPart,
   Translation,
 } from "@monorepo/lexico-entities";
-import { Injectable, Logger } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import * as cheerio from "cheerio";
-import type { AnyNode, Element } from "domhandler";
+import _ from "lodash";
 
+import { LexicoIngestionLogger } from "../logger/logger.service.js";
 import { PartOfSpeechService } from "../partOfSpeech/partOfSpeech.service.js";
 import { PronunciationService } from "../pronunciation/pronunciation.service.js";
 
 import type { WiktionaryEntry } from "../../lexico-ingestion.types.js";
+import type { AnyNode, Element } from "domhandler";
 
 const skipPOS = new Set<string>(["letter"]);
 const validPOS = new Set<string>(partOfSpeechValues);
@@ -26,13 +28,14 @@ const translationSkipRegex =
  */
 @Injectable()
 export class IngesterService {
-  private readonly logger = new Logger(IngesterService.name);
-
   // 🏗️ Dependency Injection
   constructor(
+    private readonly logger: LexicoIngestionLogger,
     private readonly partOfSpeechService: PartOfSpeechService,
     private readonly pronunciationService: PronunciationService,
-  ) {}
+  ) {
+    this.logger.setContext(IngesterService.name);
+  }
 
   // 🔐 Private Fields
 
@@ -49,8 +52,7 @@ export class IngesterService {
   }
 
   private capitalizeFirstLetter(str: string): string {
-    if (str.length === 0) return str;
-    return str.charAt(0).toUpperCase() + str.slice(1);
+    return _.upperFirst(str);
   }
 
   // eslint-disable-next-line @typescript-eslint/require-await

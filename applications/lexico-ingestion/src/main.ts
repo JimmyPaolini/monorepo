@@ -5,7 +5,7 @@ import { CommandFactory } from "nest-commander";
 import { LexicoIngestionModule } from "./lexico-ingestion.module";
 
 async function main(): Promise<void> {
-  await CommandFactory.run(LexicoIngestionModule, ["warn", "error"]);
+  await CommandFactory.run(LexicoIngestionModule, ["log", "warn", "error"]);
 }
 
 void main();

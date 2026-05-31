@@ -255,6 +255,22 @@
       "executor": "nx:run-commands",
       "options": {}
     },
+    "postgres": {
+      "configurations": {
+        "down": {
+          "command": "docker compose -f infrastructure/docker/docker-compose.yml down postgres"
+        },
+        "up": {
+          "command": "docker compose -f infrastructure/docker/docker-compose.yml up -d postgres"
+        }
+      },
+      "defaultConfiguration": "up",
+      "description": "Start or stop the local PostgreSQL container",
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{workspaceRoot}"
+      }
+    },
     "prettier": {
       "cache": true,
       "configurations": {

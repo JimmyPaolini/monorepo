@@ -23,6 +23,24 @@ services:
         max-file: "3"
     restart: unless-stopped
 
+  postgres:
+    image: postgres:18-alpine
+    container_name: postgres
+    environment:
+      POSTGRES_USER: postgres_user
+      POSTGRES_PASSWORD: postgres_password
+      POSTGRES_DB: monorepo
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U postgres_user -d monorepo]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
   searxng:
     image: searxng/searxng:latest
     container_name: searxng
@@ -47,3 +65,4 @@ services:
 
 volumes:
   open-webui_data:
+  postgres_data:

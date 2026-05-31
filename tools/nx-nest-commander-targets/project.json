@@ -1,0 +1,23 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "nx-nest-commander-targets",
+  "projectType": "library",
+  "sourceRoot": "tools/nx-nest-commander-targets/src",
+  "tags": ["language:typescript", "type:util"],
+  "targets": {
+    "analyze-code": {},
+    "clean": {},
+    "dependency-cruiser": {},
+    "format": {},
+    "knip": {},
+    "lint": {},
+    "markdown-lint": {},
+    "oxfmt": {},
+    "oxlint": {},
+    "prettier": {},
+    "spell-check": {},
+    "type-coverage": {},
+    "typecheck": {},
+    "yaml-lint": {}
+  }
+}

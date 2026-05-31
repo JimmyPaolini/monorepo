@@ -3,7 +3,7 @@ import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
 import { WiktionaryCommand } from "./wiktionary.command.js";
-import { WiktionaryService } from "./wiktionary.service";
+import { WiktionaryService } from "./wiktionary.service.js";
 
 /**
  * TODO: Document the wiktionary module.

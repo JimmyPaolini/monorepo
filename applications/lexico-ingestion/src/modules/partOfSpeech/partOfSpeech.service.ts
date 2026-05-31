@@ -1,5 +1,3 @@
-import * as cheerio from "cheerio";
-import cheerioTableParser from "cheerio-tableparser";
 import {
   type AdjectiveDeclension,
   adjectiveDeclensionValues,
@@ -28,24 +26,28 @@ import {
   VerbInflection,
 } from "@monorepo/lexico-entities";
 import { Injectable } from "@nestjs/common";
+import * as cheerio from "cheerio";
+import cheerioTableParser from "cheerio-tableparser";
+import _ from "lodash";
+
 import type { AnyNode } from "domhandler";
 
 // ♟️ POS regex constants
 const nounDeclensionRegex = new RegExp(
-  nounDeclensionValues.filter(Boolean).join("|"),
+  _.compact(nounDeclensionValues).join("|"),
 );
-const genderRegex = new RegExp(nounGenderValues.filter(Boolean).join("|"));
+const genderRegex = new RegExp(_.compact(nounGenderValues).join("|"));
 const adjectiveDeclensionRegex = new RegExp(
-  adjectiveDeclensionValues.filter(Boolean).join("|"),
+  _.compact(adjectiveDeclensionValues).join("|"),
 );
 const adjectiveDegreeRegex = new RegExp(
-  adjectiveDegreeValues.filter(Boolean).join("|"),
+  _.compact(adjectiveDegreeValues).join("|"),
 );
 const verbConjugationRegex = new RegExp(
-  (verbConjugationValues as readonly string[]).filter(Boolean).join("|"),
+  _.compact(verbConjugationValues).join("|"),
 );
 const prepositionCaseRegex = new RegExp(
-  prepositionCaseValues.filter(Boolean).join("|"),
+  _.compact(prepositionCaseValues).join("|"),
 );
 
 // ♟️ First principal part name per POS
@@ -143,6 +145,18 @@ const sumEsseFui: Record<
           first: ["fuerīmus"],
           second: ["fuerītis"],
           third: ["fuerint"],
+        },
+      },
+      pluperfect: {
+        singular: {
+          first: ["fuissem"],
+          second: ["fuissēs"],
+          third: ["fuisset"],
+        },
+        plural: {
+          first: ["fuissēmus"],
+          second: ["fuissētis"],
+          third: ["fuissent"],
         },
       },
     },
@@ -657,28 +671,36 @@ export class PartOfSpeechService {
   ): Inflection {
     switch (pos) {
       case "noun":
-      case "properNoun":
+      case "properNoun": {
         return this.ingestNounInflection($, elt);
-      case "verb":
+      }
+      case "verb": {
         return this.ingestVerbInflection($, elt);
+      }
       case "adjective":
       case "participle":
       case "numeral":
-      case "suffix":
+      case "suffix": {
         return this.ingestAdjectiveInflection($, elt);
-      case "adverb":
+      }
+      case "adverb": {
         return this.ingestAdverbInflection(principalParts);
+      }
       case "pronoun":
-      case "determiner":
+      case "determiner": {
         return this.ingestPronounInflection($, elt);
-      case "preposition":
+      }
+      case "preposition": {
         return this.ingestPrepositionInflection($, elt);
+      }
       case "prefix":
       case "interfix":
-      case "circumfix":
+      case "circumfix": {
         return this.ingestPrefixInflection();
-      default:
+      }
+      default: {
         return this.ingestConjunctionInflection();
+      }
     }
   }
 
@@ -694,12 +716,15 @@ export class PartOfSpeechService {
     principalParts: PrincipalPart[],
   ): Promise<Forms | null> {
     switch (pos) {
-      case "verb":
+      case "verb": {
         return this.ingestVerbForms($, elt);
-      case "adverb":
+      }
+      case "adverb": {
         return this.ingestAdverbForms(principalParts);
-      default:
+      }
+      default: {
         return this.parseGenericForms($, elt, entry);
+      }
     }
   }
 }

@@ -1,5 +1,7 @@
 import { Pronunciation, PronunciationParts } from "@monorepo/lexico-entities";
 import { Injectable } from "@nestjs/common";
+import _ from "lodash";
+
 import type { CheerioAPI } from "cheerio";
 import type { AnyNode } from "domhandler";
 
@@ -422,20 +424,17 @@ export class PronunciationService {
 
       const anchorText = $(pr).find("a").text();
       if (anchorText.includes("Classical")) {
-        Object.assign(
+        _.assign(
           pronunciation.classical,
           this.parsePhonics(pronunciationsText),
         );
       } else if (anchorText.includes("Ecclesiastical")) {
-        Object.assign(
+        _.assign(
           pronunciation.ecclesiastical,
           this.parsePhonics(pronunciationsText),
         );
       } else if (anchorText.includes("Vulgar")) {
-        Object.assign(
-          pronunciation.vulgar,
-          this.parsePhonics(pronunciationsText),
-        );
+        _.assign(pronunciation.vulgar, this.parsePhonics(pronunciationsText));
       }
     }
 

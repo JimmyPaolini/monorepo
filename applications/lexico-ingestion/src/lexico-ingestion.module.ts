@@ -24,6 +24,7 @@ import { LexicoIngestionCommand } from "./lexico-ingestion.command.js";
 import { environmentSchema } from "./lexico-ingestion.constants.js";
 import { ClearModule } from "./modules/clear/clear.module.js";
 import { DictionaryModule } from "./modules/dictionary/dictionary.module.js";
+import { LoggerModule } from "./modules/logger/logger.module.js";
 import { ManualModule } from "./modules/manual/manual.module.js";
 import { TranslationReferencesModule } from "./modules/translationReferences/translationReferences.module.js";
 import { WiktionaryModule } from "./modules/wiktionary/wiktionary.module.js";
@@ -44,11 +45,11 @@ import { WordsModule } from "./modules/words/words.module.js";
       inject: [ConfigService],
       useFactory: (config: ConfigService) => ({
         type: "postgres",
-        host: config.get<string>("DATABASE_HOST", "localhost"),
-        port: config.get<number>("DATABASE_PORT", 5432),
-        username: config.get<string>("DATABASE_USER", "lexico"),
-        password: config.get<string>("DATABASE_PASSWORD", "lexico"),
-        database: config.get<string>("DATABASE_NAME", "lexico"),
+        host: config.get<string>("POSTGRES_HOST", "localhost"),
+        port: config.get<number>("POSTGRES_PORT", 5432),
+        username: config.get<string>("POSTGRES_USER", "postgres_user"),
+        password: config.get<string>("POSTGRES_PASSWORD", "postgres_password"),
+        database: config.get<string>("POSTGRES_NAME", "monorepo"),
         entities: [
           Entry,
           Inflection,
@@ -77,6 +78,7 @@ import { WordsModule } from "./modules/words/words.module.js";
     TranslationReferencesModule,
     ManualModule,
     ClearModule,
+    LoggerModule,
   ],
   providers: [LexicoIngestionCommand],
 })

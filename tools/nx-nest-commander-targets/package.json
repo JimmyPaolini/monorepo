@@ -1,0 +1,16 @@
+{
+  "name": "nx-nest-commander-targets",
+  "version": "0.0.1",
+  "main": "./src/index.ts",
+  "dependencies": {
+    "nx": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "typescript": "^6.0.3"
+  },
+  "typeCoverage": {
+    "atLeast": 100,
+    "strict": true
+  }
+}

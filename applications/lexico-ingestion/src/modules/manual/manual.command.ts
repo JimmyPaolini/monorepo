@@ -1,5 +1,6 @@
-import { Logger } from "@nestjs/common";
 import { Command, CommandRunner } from "nest-commander";
+
+import { LexicoIngestionLogger } from "../logger/logger.service.js";
 
 import { ManualService } from "./manual.service.js";
 
@@ -13,10 +14,12 @@ import { ManualService } from "./manual.service.js";
     "Ingest manually-curated dictionary entries (hic, ille, omnis, Roman numerals)",
 })
 export class ManualCommand extends CommandRunner {
-  private readonly logger = new Logger(ManualCommand.name);
-
-  constructor(private readonly manualService: ManualService) {
+  constructor(
+    private readonly logger: LexicoIngestionLogger,
+    private readonly manualService: ManualService,
+  ) {
     super();
+    this.logger.setContext(ManualCommand.name);
   }
 
   /**
