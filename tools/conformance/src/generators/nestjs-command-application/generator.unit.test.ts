@@ -25,8 +25,15 @@ describe("generateNestjsCommandApplication", () => {
       expect(tree.exists(`${base}/eslint.config.ts`)).toBeTruthy();
       expect(tree.exists(`${base}/vitest.config.ts`)).toBeTruthy();
       expect(tree.exists(`${base}/src/main.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/src/stellar-cli.module.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/src/stellar-cli.command.ts`)).toBeTruthy();
+      expect(
+        tree.exists(`${base}/src/modules/stellar-cli/stellar-cli.module.ts`),
+      ).toBeTruthy();
+      expect(
+        tree.exists(`${base}/src/modules/stellar-cli/stellar-cli.command.ts`),
+      ).toBeTruthy();
+      expect(
+        tree.exists(`${base}/src/modules/logger/logger.service.ts`),
+      ).toBeTruthy();
       expect(
         tree.exists(`${base}/src/modules/conformance.integration.test.ts`),
       ).toBeTruthy();
@@ -46,7 +53,7 @@ describe("generateNestjsCommandApplication", () => {
       expect(projectJson).toContain('"framework:nestjs"');
 
       const commandFile = tree.read(
-        "applications/stellar-cli/src/stellar-cli.command.ts",
+        "applications/stellar-cli/src/modules/stellar-cli/stellar-cli.command.ts",
         "utf8",
       );
       expect(commandFile).toContain("name: 'stellar-cli'");

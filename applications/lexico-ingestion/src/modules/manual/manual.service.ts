@@ -81,9 +81,9 @@ export class ManualService {
     private readonly wordsService: WordsService,
   ) {}
 
-  /**
-   *
-   */
+  /** Runs the full manual-entry pipeline: deletes stale overrides, re-creates
+   * hic/ille/omnis entries, populates praenomen abbreviations, and ingests
+   * Roman numeral entries I–MMMCMXCIX. */
   async ingestManual(): Promise<void> {
     this.logger.log("Ingesting manual entries");
 
@@ -101,9 +101,8 @@ export class ManualService {
     this.logger.log("Ingested manual entries");
   }
 
-  /**
-   *
-   */
+  /** Deletes any existing row with the same id then saves `manual` and
+   * re-ingests its word search records. */
   async createManual(manual: Entry): Promise<void> {
     await this.deleteManual(manual.id);
     this.logger.log(`Creating ${manual.id}`);
@@ -112,9 +111,7 @@ export class ManualService {
     this.logger.log(`Created ${manual.id}`);
   }
 
-  /**
-   *
-   */
+  /** Removes the `Entry` row identified by `id` from the database. */
   async deleteManual(id: string): Promise<void> {
     this.logger.log(`Deleting ${id}`);
     await this.entriesRepository.delete(id);

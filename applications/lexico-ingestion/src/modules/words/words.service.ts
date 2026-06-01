@@ -17,9 +17,8 @@ export class WordsService {
     private readonly wordsRepository: Repository<Word>,
   ) {}
 
-  /**
-   *
-   */
+  /** Ingests `Word` search records for every `Entry` in the database,
+   * processing entries in batches of 100 to keep memory usage bounded. */
   async ingestWords(): Promise<void> {
     this.logger.log("Ingesting words");
     const batchSize = 100;
@@ -42,9 +41,8 @@ export class WordsService {
     this.logger.log("Ingested words");
   }
 
-  /**
-   *
-   */
+  /** Generates and persists a `Word` row for every inflected form and
+   * principal part that belongs to the given `Entry`. */
   async ingestEntryWords(entry: Entry): Promise<void> {
     for (const word of this.getEntryWords(entry)) {
       await this.ingestEntryWord(word, entry);
@@ -77,9 +75,8 @@ export class WordsService {
       .trim();
   }
 
-  /**
-   *
-   */
+  /** Returns all searchable word strings for an entry — every form value
+   * extracted by flattening the `forms` JSON object plus each principal-part text. */
   getEntryWords(entry: Entry): string[] {
     const forms = this.flattenForms(
       entry.forms as Record<string, unknown> | null | undefined,
@@ -88,9 +85,8 @@ export class WordsService {
     return forms;
   }
 
-  /**
-   *
-   */
+  /** Normalises `wordString` and upserts a `Word` row linked to `entry`.
+   * Skips strings that do not start with an ASCII letter after normalisation. */
   async ingestEntryWord(wordString: string, entry: Entry): Promise<void> {
     const normalized = this.escapeCapitals(this.normalize(wordString));
     if (!/^-?[A-Za-z]/.test(normalized)) return;

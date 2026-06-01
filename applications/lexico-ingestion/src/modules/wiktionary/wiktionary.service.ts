@@ -4,12 +4,12 @@ import path from "node:path";
 import { Injectable } from "@nestjs/common";
 import * as cheerio from "cheerio";
 
-import { LexicoIngestionLogger } from "../logger/logger.service.js";
+import { LoggerService } from "../logger/logger.service.js";
 
 import { categories } from "./wiktionary.constants.js";
 
 import type { Category } from "./wiktionary.types.js";
-import type { WiktionaryEntry } from "../../lexico-ingestion.types.js";
+import type { WiktionaryEntry } from "../lexico-ingestion/lexico-ingestion.types.js";
 
 /**
  * TODO: Document the wiktionary service.
@@ -17,7 +17,7 @@ import type { WiktionaryEntry } from "../../lexico-ingestion.types.js";
 @Injectable()
 export class WiktionaryService {
   // 🏗️ Dependency Injection
-  constructor(private readonly logger: LexicoIngestionLogger) {
+  constructor(private readonly logger: LoggerService) {
     this.logger.setContext(WiktionaryService.name);
   }
 
@@ -32,7 +32,7 @@ export class WiktionaryService {
 
   // 🔏 Private Methods
 
-  private sleep(ms: number): Promise<void> {
+  private async sleep(ms: number): Promise<void> {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
@@ -63,9 +63,9 @@ export class WiktionaryService {
 
   // 🌎 Public Methods
 
-  /**
-   *
-   */
+  /** Scrapes every configured Latin category from Wiktionary, stores each
+   * article's HTML as a JSON file under `./data/wiktionary`, following
+   * pagination until all pages in each category are exhausted. */
   async ingestWiktionary(): Promise<void> {
     this.logger.log(`🌐 Ingesting wiktionary`);
     if (!fs.existsSync(this.dataDir)) {

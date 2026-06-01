@@ -8,11 +8,11 @@ import { Injectable } from "@nestjs/common";
 import * as cheerio from "cheerio";
 import _ from "lodash";
 
-import { LexicoIngestionLogger } from "../logger/logger.service.js";
+import { LoggerService } from "../logger/logger.service.js";
 import { PartOfSpeechService } from "../partOfSpeech/partOfSpeech.service.js";
 import { PronunciationService } from "../pronunciation/pronunciation.service.js";
 
-import type { WiktionaryEntry } from "../../lexico-ingestion.types.js";
+import type { WiktionaryEntry } from "../lexico-ingestion/lexico-ingestion.types.js";
 import type { AnyNode, Element } from "domhandler";
 
 const skipPOS = new Set<string>(["letter"]);
@@ -30,7 +30,7 @@ const translationSkipRegex =
 export class IngesterService {
   // 🏗️ Dependency Injection
   constructor(
-    private readonly logger: LexicoIngestionLogger,
+    private readonly logger: LoggerService,
     private readonly partOfSpeechService: PartOfSpeechService,
     private readonly pronunciationService: PronunciationService,
   ) {

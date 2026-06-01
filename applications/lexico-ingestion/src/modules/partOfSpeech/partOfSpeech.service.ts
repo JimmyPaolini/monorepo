@@ -698,7 +698,14 @@ export class PartOfSpeechService {
       case "circumfix": {
         return this.ingestPrefixInflection();
       }
-      default: {
+      case "conjunction":
+      case "abbreviation":
+      case "particle":
+      case "interjection":
+      case "inflection":
+      case "phrase":
+      case "proverb":
+      case "idiom": {
         return this.ingestConjunctionInflection();
       }
     }
@@ -722,7 +729,26 @@ export class PartOfSpeechService {
       case "adverb": {
         return this.ingestAdverbForms(principalParts);
       }
-      default: {
+      case "noun":
+      case "properNoun":
+      case "adjective":
+      case "participle":
+      case "numeral":
+      case "pronoun":
+      case "determiner":
+      case "preposition":
+      case "conjunction":
+      case "abbreviation":
+      case "particle":
+      case "interjection":
+      case "prefix":
+      case "suffix":
+      case "interfix":
+      case "circumfix":
+      case "inflection":
+      case "phrase":
+      case "proverb":
+      case "idiom": {
         return this.parseGenericForms($, elt, entry);
       }
     }

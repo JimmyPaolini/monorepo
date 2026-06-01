@@ -6,10 +6,9 @@ import { Injectable, Logger } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 
-
 import { IngesterService } from "../ingester/ingester.service.js";
 
-import type { WiktionaryEntry } from "../../lexico-ingestion.types.js";
+import type { WiktionaryEntry } from "../lexico-ingestion/lexico-ingestion.types.js";
 
 /**
  * TODO: Document the dictionary service.
@@ -33,9 +32,8 @@ export class DictionaryService {
 
   // 🌎 Public Methods
 
-  /**
-   *
-   */
+  /** Reads all cached Wiktionary JSON files from `./data/wiktionary`,
+   * parses each into structured `Entry` records, and saves them to the database. */
   async ingestAll(): Promise<void> {
     if (!fs.existsSync(this.dataDir)) {
       this.logger.warn(
@@ -63,9 +61,9 @@ export class DictionaryService {
     this.logger.log("Dictionary ingestion complete.");
   }
 
-  /**
-   *
-   */
+  /** Parses the Wiktionary HTML for `word` into one or more `Entry` records
+   * and persists them. Loads the cached JSON file if `wiktionaryEntry` is
+   * not supplied. */
   async ingestEntry(
     word: string,
     wiktionaryEntry?: WiktionaryEntry,

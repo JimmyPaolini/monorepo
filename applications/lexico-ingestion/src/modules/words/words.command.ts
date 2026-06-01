@@ -1,6 +1,6 @@
 import { Command, CommandRunner } from "nest-commander";
 
-import { LexicoIngestionLogger } from "../logger/logger.service.js";
+import { LoggerService } from "../logger/logger.service.js";
 
 import { WordsService } from "./words.service.js";
 
@@ -14,16 +14,14 @@ import { WordsService } from "./words.service.js";
 })
 export class WordsCommand extends CommandRunner {
   constructor(
-    private readonly logger: LexicoIngestionLogger,
+    private readonly logger: LoggerService,
     private readonly wordsService: WordsService,
   ) {
     super();
     this.logger.setContext(WordsCommand.name);
   }
 
-  /**
-   *
-   */
+  /** Runs the words ingestion pipeline. */
   async run(): Promise<void> {
     this.logger.log("Running words command");
     await this.wordsService.ingestWords();

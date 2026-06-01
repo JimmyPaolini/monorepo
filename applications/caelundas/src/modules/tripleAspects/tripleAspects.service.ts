@@ -1,22 +1,24 @@
 import {
   symbolByBody,
   symbolByTripleAspect,
-} from "@caelundas/src/caelundas.constants";
+} from "@caelundas/src/modules/caelundas/caelundas.constants";
 import {
   groupByToMap,
   isBody,
   tripleAspectBodies,
-} from "@caelundas/src/caelundas.types";
+} from "@caelundas/src/modules/caelundas/caelundas.types";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
+import { LoggerService } from "../logger/logger.service";
+
+import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
 import type {
   Aspect,
   AspectPhase,
   Body,
   TripleAspect,
-} from "@caelundas/src/caelundas.types";
-import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
+} from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { Moment } from "moment-timezone";
 
@@ -32,7 +34,9 @@ import type { Moment } from "moment-timezone";
 @Injectable()
 export class TripleAspectsService {
   // 🏗️ Dependency Injection
-  constructor() {}
+  constructor(private readonly logger: LoggerService) {
+    this.logger.setContext(TripleAspectsService.name);
+  }
 
   // 🔐 Private Fields
 
@@ -512,7 +516,7 @@ export class TripleAspectsService {
 
     const summary = `${phaseEmoji}${tripleAspectSymbol} ${body1Symbol}-${body2Symbol}-${body3Symbol} ${description}`;
 
-    console.log(`${summary} at ${timestamp.toISOString()}`);
+    this.logger.log(`${summary} at ${timestamp.toISOString()}`);
 
     const categories = [
       "Astronomy",
@@ -636,7 +640,7 @@ export class TripleAspectsService {
           };
           const aspect = aspectMap[aspectCapitalized];
           if (!aspect) {
-            console.warn(`Unknown aspect type: ${aspectCapitalized}`);
+            this.logger.warn(`Unknown aspect type: ${aspectCapitalized}`);
             continue;
           }
 
@@ -648,7 +652,7 @@ export class TripleAspectsService {
             !isBody(body2Lower) ||
             !isBody(body3Lower)
           ) {
-            console.warn(
+            this.logger.warn(
               `Unknown body in progressive event: ${body1Capitalized}, ${body2Capitalized}, ${body3Capitalized}`,
             );
             continue;

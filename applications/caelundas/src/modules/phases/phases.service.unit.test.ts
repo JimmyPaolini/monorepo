@@ -2,8 +2,8 @@ import {
   symbolByMartianPhase,
   symbolByMercurianPhase,
   symbolByVenusianPhase,
-} from "@caelundas/src/caelundas.constants";
-import { planetaryPhaseBodies } from "@caelundas/src/caelundas.types";
+} from "@caelundas/src/modules/caelundas/caelundas.constants";
+import { planetaryPhaseBodies } from "@caelundas/src/modules/caelundas/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
@@ -13,7 +13,7 @@ import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { PhasesService } from "./phases.service";
 
-import type { Body } from "@caelundas/src/caelundas.types";
+import type { Body } from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type {
   CoordinateEphemeris,

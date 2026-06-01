@@ -49,6 +49,6 @@ type-coverage-report.txt
 # Other 🗑️
 tmp
 dist
-last-lint-staged-errors.txt
+last-lint-staged-output.txt
 applications/caelundas/output
 vite.config.*.timestamp*

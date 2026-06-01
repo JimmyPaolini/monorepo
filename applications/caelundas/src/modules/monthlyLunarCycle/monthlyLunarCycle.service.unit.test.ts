@@ -1,7 +1,7 @@
 import {
   MARGIN_MINUTES,
   symbolByLunarPhase,
-} from "@caelundas/src/caelundas.constants";
+} from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Test } from "@nestjs/testing";
@@ -10,7 +10,7 @@ import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { MonthlyLunarCycleService } from "./monthlyLunarCycle.service";
 
-import type { LunarPhase } from "@caelundas/src/caelundas.types";
+import type { LunarPhase } from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { IlluminationEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 

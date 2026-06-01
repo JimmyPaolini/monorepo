@@ -20,9 +20,7 @@ export class TranslationReferencesCommand extends CommandRunner {
     super();
   }
 
-  /**
-   *
-   */
+  /** Runs the translation-references resolution pipeline. */
   async run(): Promise<void> {
     this.logger.log("Running translation-references command");
     await this.translationReferencesService.ingestTranslationReferences();

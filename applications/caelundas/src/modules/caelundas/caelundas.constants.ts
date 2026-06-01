@@ -3,7 +3,7 @@ import type {
   DiameterEphemerisBody,
   DistanceEphemerisBody,
   IlluminationEphemerisBody,
-} from "./modules/ephemeris/ephemeris.types";
+} from "../ephemeris/ephemeris.types";
 
 // Local type aliases derived from constants to avoid circular imports with caelundas.types.ts
 type MajorAspect = keyof typeof symbolByMajorAspect;

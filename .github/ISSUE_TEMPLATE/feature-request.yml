@@ -27,7 +27,8 @@ body:
         - JimmyPaolini
         - lexico
         - lexico-components
-        - linting
+        - lexico-entities
+        - lexico-ingestion
         - monorepo
         - no-release
         - packages

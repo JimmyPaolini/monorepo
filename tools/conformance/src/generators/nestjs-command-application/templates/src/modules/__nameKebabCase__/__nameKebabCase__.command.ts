@@ -1,6 +1,8 @@
 import { Injectable } from "@nestjs/common";
 import { Command, CommandRunner } from "nest-commander";
 
+import { LoggerService } from "../logger/logger.service";
+
 /**
  * CLI entry point for {{nameKebabCase}}.
  */
@@ -10,8 +12,9 @@ import { Command, CommandRunner } from "nest-commander";
   description: "Run the {{nameKebabCase}} command-line application",
 })
 export class {{namePascalCase}}Command extends CommandRunner {
-  constructor() {
+  constructor(private readonly logger: LoggerService) {
     super();
+    this.logger.setContext({{namePascalCase}}Command.name);
   }
 
   async run(): Promise<void> {

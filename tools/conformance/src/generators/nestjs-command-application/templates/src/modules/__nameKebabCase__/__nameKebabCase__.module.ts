@@ -1,9 +1,10 @@
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 
+import { LoggerModule } from "../logger/logger.module";
+import { SampleModule } from "../sample/sample.module";
 import { {{namePascalCase}}Command } from "./{{nameKebabCase}}.command";
 import { environmentSchema } from "./{{nameKebabCase}}.constants";
-import { SampleModule } from "./modules/sample/sample.module";
 
 /**
  * Root NestJS application module.
@@ -16,6 +17,7 @@ import { SampleModule } from "./modules/sample/sample.module";
       validate: (config: Record<string, unknown>) =>
         environmentSchema.parse(config),
     }),
+    LoggerModule,
     SampleModule,
   ],
   providers: [{{namePascalCase}}Command],

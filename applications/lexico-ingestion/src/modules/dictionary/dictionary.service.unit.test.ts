@@ -3,10 +3,11 @@ import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
 import { beforeAll, describe, expect, it } from "vitest";
 
-import { DictionaryService } from "./dictionary.service";
 import { IngesterService } from "../ingester/ingester.service";
 import { PartOfSpeechService } from "../partOfSpeech/partOfSpeech.service";
 import { PronunciationService } from "../pronunciation/pronunciation.service";
+
+import { DictionaryService } from "./dictionary.service";
 
 describe("DictionaryService", () => {
   let service: DictionaryService;

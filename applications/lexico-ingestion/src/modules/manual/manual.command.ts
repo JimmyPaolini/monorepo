@@ -1,6 +1,6 @@
 import { Command, CommandRunner } from "nest-commander";
 
-import { LexicoIngestionLogger } from "../logger/logger.service.js";
+import { LoggerService } from "../logger/logger.service.js";
 
 import { ManualService } from "./manual.service.js";
 
@@ -15,16 +15,14 @@ import { ManualService } from "./manual.service.js";
 })
 export class ManualCommand extends CommandRunner {
   constructor(
-    private readonly logger: LexicoIngestionLogger,
+    private readonly logger: LoggerService,
     private readonly manualService: ManualService,
   ) {
     super();
     this.logger.setContext(ManualCommand.name);
   }
 
-  /**
-   *
-   */
+  /** Runs the manual-entry ingestion pipeline. */
   async run(): Promise<void> {
     this.logger.log("Running manual command");
     await this.manualService.ingestManual();

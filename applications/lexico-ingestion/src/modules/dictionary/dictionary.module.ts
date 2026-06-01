@@ -2,9 +2,10 @@ import { Entry, Translation, Word } from "@monorepo/lexico-entities";
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
+import { IngesterModule } from "../ingester/ingester.module.js";
+
 import { DictionaryCommand } from "./dictionary.command.js";
 import { DictionaryService } from "./dictionary.service";
-import { IngesterModule } from "../ingester/ingester.module.js";
 
 /**
  * TODO: Document the dictionary module.

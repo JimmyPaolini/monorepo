@@ -100,6 +100,9 @@ const config: KnipConfig = {
         "output/**", // Generated calendar output files
         "testing/**", // Test fixtures and setup
       ],
+      ignoreDependencies: [
+        "pino-pretty", // Referenced as string transport target in LoggerService — knip can't trace string references
+      ],
       project: "src/**/*.ts",
     },
 
@@ -165,6 +168,22 @@ const config: KnipConfig = {
         "vaul", // Drawer component used by shadcn
       ],
       project: "src/**/*.{ts,tsx}",
+    },
+
+    // lexico-ingestion: Data ingestion CLI for the Lexico database
+    "applications/lexico-ingestion": {
+      ignore: [
+        "src/**/*.test.ts",
+        "src/**/*.integration.test.ts",
+        "src/**/*.end-to-end.test.ts",
+        "src/**/*.constants.ts", // Standard module constants files (may be empty placeholders)
+        "src/**/*.types.ts", // Standard module types files (may be empty placeholders)
+        "testing/**", // Test fixtures and setup
+      ],
+      ignoreDependencies: [
+        "pino-pretty", // Referenced as string transport target in LoggerService — knip can't trace string references
+      ],
+      project: "src/**/*.ts",
     },
 
     // conformance: Nx generator plugin for scaffolding React components

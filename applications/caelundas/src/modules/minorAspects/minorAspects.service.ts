@@ -1,25 +1,27 @@
+import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
 import {
   minorAspects,
   symbolByBody,
   symbolByMinorAspect,
-} from "@caelundas/src/caelundas.constants";
+} from "@caelundas/src/modules/caelundas/caelundas.constants";
 import {
   capitalize,
   isBody,
   isMinorAspect,
   minorAspectBodies,
-} from "@caelundas/src/caelundas.types";
-import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
+} from "@caelundas/src/modules/caelundas/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
+import { LoggerService } from "../logger/logger.service";
+
 import type {
   AspectPhase,
   Body,
   MinorAspect,
-} from "@caelundas/src/caelundas.types";
+} from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
@@ -41,10 +43,12 @@ export class MinorAspectsService {
 
   // 🏗️ Dependency Injection
   constructor(
+    private readonly logger: LoggerService,
     private readonly aspectsUtilitiesService: AspectsUtilities,
     private readonly ephemerisService: EphemerisService,
     private readonly progressiveUtilitiesService: ProgressiveUtilities,
   ) {
+    this.logger.setContext(MinorAspectsService.name);
     this.detectAspectPhase = aspectsUtilitiesService.getIsAspect([
       ...minorAspects,
     ]);
@@ -216,7 +220,7 @@ export class MinorAspectsService {
       args;
     const minorAspect = this.getMinorAspect({ longitudeBody1, longitudeBody2 });
     if (!minorAspect) {
-      console.error(
+      this.logger.error(
         `No minor aspect found between ${body1} and ${body2} at ${timestamp.toISOString()}: ${longitudeBody1} and ${longitudeBody2}`,
       );
       throw new Error("No minor aspect found");
@@ -259,7 +263,7 @@ export class MinorAspectsService {
 
     const summary = `${phaseEmoji} ${body1Symbol} ${minorAspectSymbol} ${body2Symbol} ${description}`;
 
-    console.log(`${summary} at ${timestamp.toISOString()}`);
+    this.logger.log(`${summary} at ${timestamp.toISOString()}`);
 
     const minorAspectEvent: Event = {
       start: timestamp,

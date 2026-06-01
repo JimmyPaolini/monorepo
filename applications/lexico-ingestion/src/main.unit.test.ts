@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { environmentSchema } from "./lexico-ingestion.constants";
+import { environmentSchema } from "./modules/lexico-ingestion/lexico-ingestion.constants";
 
 describe("environment schema", () => {
   it("parses an empty environment object using defaults", () => {

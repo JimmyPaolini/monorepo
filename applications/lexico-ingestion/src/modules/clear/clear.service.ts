@@ -19,9 +19,8 @@ export class ClearService {
     private readonly wordsRepository: Repository<Word>,
   ) {}
 
-  /**
-   *
-   */
+  /** Deletes all `Word`, `Translation`, and `Entry` rows from the database
+   * in dependency order to avoid foreign-key constraint violations. */
   async clearDictionary(): Promise<void> {
     this.logger.log("Clearing dictionary");
     await this.wordsRepository.delete({});

@@ -3,6 +3,7 @@ import { beforeAll, describe, expect, it } from "vitest";
 
 import { PartOfSpeechService } from "../partOfSpeech/partOfSpeech.service";
 import { PronunciationService } from "../pronunciation/pronunciation.service";
+
 import { IngesterService } from "./ingester.service";
 
 describe("IngesterService", () => {

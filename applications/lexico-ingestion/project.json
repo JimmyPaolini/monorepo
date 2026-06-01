@@ -11,10 +11,34 @@
   "targets": {
     "analyze-code": {},
     "clean": {},
+    "clear": {
+      "description": "Clear ingested data from the database",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --import @swc-node/register/esm-register src/main.ts clear",
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
     "dependency-cruiser": {},
+    "dictionary": {
+      "description": "Ingest dictionary entries into the database",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --import @swc-node/register/esm-register src/main.ts dictionary",
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
     "format": {},
     "knip": {},
     "lint": {},
+    "manual": {
+      "description": "Ingest manually curated entries into the database",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --import @swc-node/register/esm-register src/main.ts manual",
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
     "markdown-lint": {},
     "oxfmt": {},
     "oxlint": {},
@@ -53,8 +77,32 @@
         "cwd": "applications/lexico-ingestion"
       }
     },
+    "translation-references": {
+      "description": "Ingest translation references into the database",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --import @swc-node/register/esm-register src/main.ts translation-references",
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
     "type-coverage": {},
     "typecheck": {},
+    "wiktionary": {
+      "description": "Ingest Wiktionary data into the database",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --import @swc-node/register/esm-register src/main.ts wiktionary",
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
+    "words": {
+      "description": "Ingest word list into the database",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --import @swc-node/register/esm-register src/main.ts words",
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
     "yaml-lint": {}
   }
 }

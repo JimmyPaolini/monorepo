@@ -1,9 +1,11 @@
-import { MARGIN_MINUTES } from "@caelundas/src/caelundas.constants";
+import { MARGIN_MINUTES } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import moment, { type Moment } from "moment-timezone";
 import { describe, expect, it, vi } from "vitest";
+
+import { LoggerService } from "../logger/logger.service";
 
 import { PhasesService } from "./phases.service";
 
@@ -16,9 +18,10 @@ vi.mock("fs", () => ({
 const mathService = new MathService();
 const ephemerisService = new EphemerisService(mathService);
 const service = new PhasesService(
+  new LoggerService(),
   ephemerisService,
   mathService,
-  new ProgressiveUtilities(),
+  new ProgressiveUtilities(new LoggerService()),
 );
 
 describe("phases.events integration", () => {

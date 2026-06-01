@@ -1,4 +1,4 @@
-import { MARGIN_MINUTES } from "@caelundas/src/caelundas.constants";
+import { MARGIN_MINUTES } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";

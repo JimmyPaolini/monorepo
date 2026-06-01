@@ -5,8 +5,8 @@ import {
   distanceBodies,
   illuminationBodies,
   nodes,
-} from "@caelundas/src/caelundas.constants";
-import { typedFromEntries } from "@caelundas/src/caelundas.types";
+} from "@caelundas/src/modules/caelundas/caelundas.constants";
+import { typedFromEntries } from "@caelundas/src/modules/caelundas/caelundas.types";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Injectable } from "@nestjs/common";
 import moment, { type Moment } from "moment-timezone";
@@ -35,7 +35,10 @@ import type {
   IlluminationEphemeris,
   IlluminationEphemerisBody,
 } from "./ephemeris.types";
-import type { Body, Node } from "@caelundas/src/caelundas.types";
+import type {
+  Body,
+  Node,
+} from "@caelundas/src/modules/caelundas/caelundas.types";
 
 // Initialize Swiss Ephemeris on module load (idempotent — safe to call multiple times)
 initializeSwissEphemeris();

@@ -48,9 +48,6 @@
   "parallel": 1,
   "plugins": [
     {
-      "plugin": "nx-nest-commander-targets"
-    },
-    {
       "options": {
         "buildDepsTargetName": false,
         "buildTargetName": "build",

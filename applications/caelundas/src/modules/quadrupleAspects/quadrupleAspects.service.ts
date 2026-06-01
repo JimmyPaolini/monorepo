@@ -1,21 +1,21 @@
 import {
   symbolByBody,
   symbolByQuadrupleAspect,
-} from "@caelundas/src/caelundas.constants";
+} from "@caelundas/src/modules/caelundas/caelundas.constants";
 import {
   groupByToMap,
   quadrupleAspectBodies,
-} from "@caelundas/src/caelundas.types";
+} from "@caelundas/src/modules/caelundas/caelundas.types";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
+import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
 import type {
   Aspect,
   AspectPhase,
   Body,
   QuadrupleAspect,
-} from "@caelundas/src/caelundas.types";
-import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
+} from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { Moment } from "moment-timezone";
 

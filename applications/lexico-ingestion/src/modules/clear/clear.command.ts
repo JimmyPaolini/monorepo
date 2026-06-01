@@ -22,9 +22,7 @@ export class ClearCommand extends CommandRunner {
     super();
   }
 
-  /**
-   *
-   */
+  /** Parses the `--dictionary` flag; returns `true` when present. */
   @Option({
     flags: "--dictionary",
     description: "Clear all dictionary entries, translations, and words",
@@ -33,9 +31,8 @@ export class ClearCommand extends CommandRunner {
     return true;
   }
 
-  /**
-   *
-   */
+  /** Runs the clear pipeline for the options provided. Warns if no option
+   * was specified. */
   async run(
     _passedParams: string[],
     options: ClearCommandOptions,

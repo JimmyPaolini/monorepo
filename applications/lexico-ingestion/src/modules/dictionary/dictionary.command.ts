@@ -21,9 +21,7 @@ export class DictionaryCommand extends CommandRunner {
     super();
   }
 
-  /**
-   *
-   */
+  /** Parses the `-w, --word` option; returns the word string to ingest. */
   @Option({
     flags: "-w, --word [word]",
     description: "Ingest a single word entry",
@@ -32,9 +30,8 @@ export class DictionaryCommand extends CommandRunner {
     return val;
   }
 
-  /**
-   *
-   */
+  /** Runs the dictionary ingestion for a single word when `--word` is given,
+   * or processes all cached Wiktionary HTML files otherwise. */
   async run(_args: string[], options: DictionaryCommandOptions): Promise<void> {
     await (options.word
       ? this.dictionaryService.ingestEntry(options.word)

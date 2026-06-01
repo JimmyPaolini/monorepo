@@ -1,4 +1,4 @@
-import { MARGIN_MINUTES } from "@caelundas/src/caelundas.constants";
+import { MARGIN_MINUTES } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
@@ -8,7 +8,7 @@ import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { EclipsesService } from "./eclipses.service";
 
-import type { EclipsePhase } from "@caelundas/src/caelundas.types";
+import type { EclipsePhase } from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type {
   CoordinateEphemeris,

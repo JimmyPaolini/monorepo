@@ -3,13 +3,13 @@ import { fileURLToPath } from "node:url";
 
 import eslint from "@eslint/js";
 import markdown from "@eslint/markdown";
+import eslintReact from "@eslint-react/eslint-plugin";
 import nxPlugin from "@nx/eslint-plugin";
 import eslintConfigPrettier from "eslint-config-prettier";
 import importPlugin from "eslint-plugin-import-x";
 import jsdocPlugin from "eslint-plugin-jsdoc";
 import jsoncPlugin from "eslint-plugin-jsonc";
 import jsxA11yPlugin from "eslint-plugin-jsx-a11y";
-import eslintReact from "@eslint-react/eslint-plugin";
 import tsdocPlugin from "eslint-plugin-tsdoc";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import eslintPluginYml from "eslint-plugin-yml";
@@ -52,6 +52,9 @@ export default [
       // Terraform providers and generated files
       "**/.terraform/**",
       ".github/copilot-instructions.md",
+      // Raw data folders (large JSON dumps, not source code)
+      "**/data/wikipedia/**",
+      "**/data/wiktionary/**",
       // Nx-generated agent skill folders
       ".github/skills/monitor-ci/**",
       ".github/skills/nx-generate/**",
@@ -574,7 +577,7 @@ export default [
         {
           minValues: 2,
           order: { type: "asc", caseSensitive: false, natural: true },
-          pathPattern: "^(?!(?:.*\\.)?commands?$)",
+          pathPattern: String.raw`^(?!(?:.*\.)?commands?$)`,
         },
       ],
       "jsonc/quotes": ["error", "double"],

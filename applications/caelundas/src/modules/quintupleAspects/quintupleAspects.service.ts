@@ -1,22 +1,22 @@
 import {
   symbolByBody,
   symbolByQuintupleAspect,
-} from "@caelundas/src/caelundas.constants";
+} from "@caelundas/src/modules/caelundas/caelundas.constants";
 import {
   groupByToMap,
   quintupleAspectBodies,
-} from "@caelundas/src/caelundas.types";
+} from "@caelundas/src/modules/caelundas/caelundas.types";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
+import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
 import type {
   Aspect,
   AspectPhase,
   Body,
   QuintupleAspect,
-} from "@caelundas/src/caelundas.types";
-import type { AspectBodies } from "@caelundas/src/modules/aspects/aspects.service";
+} from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { Moment } from "moment-timezone";
 
