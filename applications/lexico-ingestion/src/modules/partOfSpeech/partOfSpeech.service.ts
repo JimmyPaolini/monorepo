@@ -1,8 +1,6 @@
 import {
   type AdjectiveDeclension,
-  adjectiveDeclensionValues,
   type AdjectiveDegree,
-  adjectiveDegreeValues,
   AdjectiveInflection,
   AdverbForms,
   AdverbInflection,
@@ -11,157 +9,32 @@ import {
   type Forms,
   type Inflection,
   type NounDeclension,
-  nounDeclensionValues,
   type NounGender,
-  nounGenderValues,
   NounInflection,
   type PartOfSpeech,
   type PrepositionCase,
-  prepositionCaseValues,
   PrepositionInflection,
   type PrincipalPart,
   Uninflected,
   type VerbConjugation,
-  verbConjugationValues,
   VerbInflection,
 } from "@monorepo/lexico-entities";
 import { Injectable } from "@nestjs/common";
 import * as cheerio from "cheerio";
 import cheerioTableParser from "cheerio-tableparser";
-import _ from "lodash";
+
+import {
+  adjectiveDeclensionRegex,
+  adjectiveDegreeRegex,
+  firstPrincipalPartNames,
+  genderRegex,
+  nounDeclensionRegex,
+  prepositionCaseRegex,
+  sumEsseFui,
+  verbConjugationRegex,
+} from "./partOfSpeech.constants";
 
 import type { AnyNode } from "domhandler";
-
-// ♟️ POS regex constants
-const nounDeclensionRegex = new RegExp(
-  _.compact(nounDeclensionValues).join("|"),
-);
-const genderRegex = new RegExp(_.compact(nounGenderValues).join("|"));
-const adjectiveDeclensionRegex = new RegExp(
-  _.compact(adjectiveDeclensionValues).join("|"),
-);
-const adjectiveDegreeRegex = new RegExp(
-  _.compact(adjectiveDegreeValues).join("|"),
-);
-const verbConjugationRegex = new RegExp(
-  _.compact(verbConjugationValues).join("|"),
-);
-const prepositionCaseRegex = new RegExp(
-  _.compact(prepositionCaseValues).join("|"),
-);
-
-// ♟️ First principal part name per POS
-const firstPrincipalPartNames: Partial<Record<PartOfSpeech, string>> = {
-  noun: "nominative",
-  properNoun: "nominative",
-  verb: "present active",
-  adjective: "masculine",
-  participle: "masculine",
-  numeral: "masculine",
-  suffix: "masculine",
-  prefix: "masculine",
-  interfix: "masculine",
-  circumfix: "masculine",
-  pronoun: "masculine",
-  determiner: "masculine",
-  adverb: "positive",
-  preposition: "preposition",
-  conjunction: "conjunction",
-  interjection: "conjunction",
-  abbreviation: "conjunction",
-  inflection: "conjunction",
-  particle: "conjunction",
-  phrase: "conjunction",
-  proverb: "conjunction",
-  idiom: "conjunction",
-};
-
-// ♟️ esse/fui lookup table for periphrastic verb forms
-const sumEsseFui: Record<
-  string,
-  Record<string, Record<string, Record<string, Record<string, string[]>>>>
-> = {
-  indicative: {
-    active: {
-      present: {
-        singular: { first: ["sum"], second: ["es"], third: ["est"] },
-        plural: { first: ["sumus"], second: ["estis"], third: ["sunt"] },
-      },
-      imperfect: {
-        singular: { first: ["eram"], second: ["erās"], third: ["erat"] },
-        plural: { first: ["erāmus"], second: ["erātis"], third: ["erant"] },
-      },
-      future: {
-        singular: { first: ["erō"], second: ["eris"], third: ["erit"] },
-        plural: { first: ["erimus"], second: ["eritis"], third: ["erunt"] },
-      },
-      perfect: {
-        singular: { first: ["fuī"], second: ["fuistī"], third: ["fuit"] },
-        plural: {
-          first: ["fuimus"],
-          second: ["fuistis"],
-          third: ["fuērunt", "fuēre"],
-        },
-      },
-      pluperfect: {
-        singular: { first: ["fueram"], second: ["fuerās"], third: ["fuerat"] },
-        plural: {
-          first: ["fuerāmus"],
-          second: ["fuerātis"],
-          third: ["fuerant"],
-        },
-      },
-      futurePerfect: {
-        singular: { first: ["fuerō"], second: ["fueris"], third: ["fuerit"] },
-        plural: {
-          first: ["fuerimus"],
-          second: ["fueritis"],
-          third: ["fuerint"],
-        },
-      },
-    },
-  },
-  subjunctive: {
-    active: {
-      present: {
-        singular: { first: ["sim"], second: ["sīs"], third: ["sit"] },
-        plural: { first: ["sīmus"], second: ["sītis"], third: ["sint"] },
-      },
-      imperfect: {
-        singular: {
-          first: ["essem", "forem"],
-          second: ["essēs", "forēs"],
-          third: ["esset", "foret"],
-        },
-        plural: {
-          first: ["essēmus", "forēmus"],
-          second: ["essētis", "forētis"],
-          third: ["essent", "forent"],
-        },
-      },
-      perfect: {
-        singular: { first: ["fuerim"], second: ["fuerīs"], third: ["fuerit"] },
-        plural: {
-          first: ["fuerīmus"],
-          second: ["fuerītis"],
-          third: ["fuerint"],
-        },
-      },
-      pluperfect: {
-        singular: {
-          first: ["fuissem"],
-          second: ["fuissēs"],
-          third: ["fuisset"],
-        },
-        plural: {
-          first: ["fuissēmus"],
-          second: ["fuissētis"],
-          third: ["fuissent"],
-        },
-      },
-    },
-  },
-};
 
 /**
  * Resolves the part of speech from a Wiktionary HTML element, dispatches
@@ -184,7 +57,8 @@ export class PartOfSpeechService {
     elt: AnyNode,
   ): Inflection {
     const inflectionHtml = $(elt)
-      .nextUntil("h3", ':header:contains("Declension")')
+      .nextAll("div.mw-heading")
+      .filter((_, el) => /declension/i.test($(el).text()))
       .first()
       .next();
 
@@ -366,7 +240,8 @@ export class PartOfSpeechService {
     elt: AnyNode,
   ): Inflection {
     const inflectionHtml = $(elt)
-      .nextUntil("h3", ':header:contains("Declension")')
+      .nextAll("div.mw-heading")
+      .filter((_, el) => /declension/i.test($(el).text()))
       .first()
       .next();
 
@@ -398,20 +273,20 @@ export class PartOfSpeechService {
   private ingestAdverbInflection(principalParts: PrincipalPart[]): Inflection {
     const type: AdverbType =
       principalParts.length > 1 ? "descriptive" : "conjunctional";
-    const adv = new AdverbInflection();
-    adv.type = type;
-    adv.degree = "positive";
-    return adv;
+    const adverbInflection = new AdverbInflection();
+    adverbInflection.adverbType = type;
+    adverbInflection.degree = "positive";
+    return adverbInflection;
   }
 
   private ingestAdverbForms(principalParts: PrincipalPart[]): Forms {
-    const forms = new AdverbForms();
-    forms.positive = principalParts[0]?.text ?? [];
+    const adverbForms = new AdverbForms();
+    adverbForms.positive = principalParts[0]?.text ?? [];
     if (principalParts.length >= 2)
-      forms.comparative = principalParts[1]?.text ?? [];
+      adverbForms.comparative = principalParts[1]?.text ?? [];
     if (principalParts.length >= 3)
-      forms.superlative = principalParts[2]?.text ?? [];
-    return forms;
+      adverbForms.superlative = principalParts[2]?.text ?? [];
+    return adverbForms;
   }
 
   private ingestPronounInflection(
@@ -431,10 +306,10 @@ export class PartOfSpeechService {
 
     declension = declension.match(adjectiveDeclensionRegex)?.[0] ?? "";
 
-    const adj = new AdjectiveInflection();
-    adj.declension = declension as AdjectiveDeclension;
-    adj.degree = "positive";
-    return adj;
+    const adjectiveInflection = new AdjectiveInflection();
+    adjectiveInflection.declension = declension as AdjectiveDeclension;
+    adjectiveInflection.degree = "positive";
+    return adjectiveInflection;
   }
 
   private ingestPrepositionInflection(
@@ -451,10 +326,10 @@ export class PartOfSpeechService {
     }
 
     const prepositionCase = other.match(prepositionCaseRegex)?.[0] ?? "";
-    const prep = new PrepositionInflection();
-    prep.case = prepositionCase as PrepositionCase;
-    prep.other = other;
-    return prep;
+    const prepositionInflection = new PrepositionInflection();
+    prepositionInflection.case = prepositionCase as PrepositionCase;
+    prepositionInflection.other = other;
+    return prepositionInflection;
   }
 
   private ingestPrefixInflection(): Inflection {
@@ -496,7 +371,7 @@ export class PartOfSpeechService {
       while (m >= 0 && isForm(tbl[m]?.[j] ?? "")) m--;
       while (m >= 0 && !isForm(tbl[m]?.[j] ?? "")) {
         identifiers.add(
-          (tbl[m--]?.[j] ?? "").replaceAll(/\.|\//, "").toLowerCase().trim(),
+          (tbl[m--]?.[j] ?? "").replaceAll(/[./]/g, "").toLowerCase().trim(),
         );
       }
 
@@ -504,7 +379,7 @@ export class PartOfSpeechService {
       while (n >= 0 && isForm(tbl[i]?.[n] ?? "")) n--;
       while (n >= 0 && !isForm(tbl[i]?.[n] ?? "")) {
         identifiers.add(
-          (tbl[i]?.[n--] ?? "").replaceAll(/\.|\//, "").toLowerCase().trim(),
+          (tbl[i]?.[n--] ?? "").replaceAll(/[./]/g, "").toLowerCase().trim(),
         );
       }
 
@@ -562,7 +437,12 @@ export class PartOfSpeechService {
     $: cheerio.CheerioAPI,
     elt: AnyNode,
   ): string[][] | null {
-    const tableHtml = $(elt).nextUntil("h3", "table").first();
+    const tableHtml = $(elt)
+      .nextAll("div")
+      .filter((_, el) => $(el).find("table").length > 0)
+      .first()
+      .find("table")
+      .first();
     if (tableHtml.length <= 0) return null;
 
     const $table = cheerio.load($.html(tableHtml));
@@ -643,8 +523,9 @@ export class PartOfSpeechService {
    */
   getPartOfSpeech($: cheerio.CheerioAPI, elt: AnyNode): PartOfSpeech {
     return $(elt)
-      .prevAll(":header, h3, h4")
-      .last()
+      .prevAll("div.mw-heading")
+      .first()
+      .find("h3, h4")
       .text()
       .toLowerCase()
       .replaceAll(/(\[edit])|\d+/g, "")

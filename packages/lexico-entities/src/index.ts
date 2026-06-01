@@ -7,3 +7,4 @@ export { PrincipalPart } from "./entities/PrincipalPart.entity.js";
 export { Pronunciation, PronunciationParts } from "./entities/Pronunciation.js";
 export * from "./entities/inflection/index.js";
 export * from "./entities/forms/index.js";
+export { LexicoDatabaseModule } from "./database/lexico-database.module.js";

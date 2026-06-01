@@ -16,57 +16,10 @@ import praenomenAbbreviationTemplate from "../../../data/dictionary/template/pra
 import romanNumeralTemplate from "../../../data/dictionary/template/romanNumeral.json" with { type: "json" };
 import { WordsService } from "../words/words.service.js";
 
-const MANUAL_ENTRIES_TO_DELETE = [
-  "qui:0",
-  "quis:0",
-  "latinitas:0",
-  "ille:0",
-  "ille:1",
-  "omnis:0",
-];
-
-// Data sourced from https://en.wikipedia.org/wiki/Praenomen
-const PRAENOMEN_ABBREVIATIONS: Record<
-  string,
-  { masculine?: string; feminine?: string }
-> = {
-  a: { masculine: "aulus", feminine: "aula" },
-  agr: { masculine: "agrippa" },
-  ap: { masculine: "appius", feminine: "appia" },
-  d: { masculine: "decimo", feminine: "decima" },
-  f: { masculine: "faustus", feminine: "fausta" },
-  c: { masculine: "gaius", feminine: "gaia" },
-  gn: { masculine: "gnaeus", feminine: "gnaea" },
-  h: { feminine: "hosta" },
-  k: { masculine: "caeso" },
-  l: { masculine: "lucius", feminine: "lucia" },
-  m: { masculine: "marcus", feminine: "marcia" },
-  "m'": { masculine: "manius", feminine: "mania" },
-  mai: { feminine: "maio" },
-  mam: { masculine: "mamercus", feminine: "mamerca" },
-  min: { feminine: "mino" },
-  n: { masculine: "numerius", feminine: "numeria" },
-  o: { masculine: "octavius" },
-  oct: { feminine: "octavia" },
-  opet: { masculine: "opiter" },
-  post: { masculine: "postumus", feminine: "postuma" },
-  p: { masculine: "publius" },
-  pro: { masculine: "proculus", feminine: "procula" },
-  q: { masculine: "quintus", feminine: "quinta" },
-  s: { masculine: "spurius" },
-  sp: { feminine: "spuria" },
-  st: { masculine: "statius", feminine: "statia" },
-  sec: { feminine: "secunda" },
-  seq: { feminine: "secunda" },
-  ser: { masculine: "servius", feminine: "servia" },
-  sert: { masculine: "sertor" },
-  sex: { masculine: "sextus", feminine: "sexta" },
-  t: { masculine: "titus", feminine: "titia" },
-  ti: { masculine: "tiberius", feminine: "tiberia" },
-  v: { masculine: "vibius", feminine: "vibia" },
-  vol: { masculine: "volesus", feminine: "volusa" },
-  vop: { masculine: "vopiscus", feminine: "vopisca" },
-};
+import {
+  MANUAL_ENTRIES_TO_DELETE,
+  PRAENOMEN_ABBREVIATIONS,
+} from "./manual.constants";
 
 /**
  * Ingests manually-curated dictionary entries (hic, ille, omnis, Roman numerals).
@@ -75,17 +28,26 @@ const PRAENOMEN_ABBREVIATIONS: Record<
 export class ManualService {
   private readonly logger = new Logger(ManualService.name);
 
+  // 🏗️ Dependency Injection
   constructor(
     @InjectRepository(Entry)
     private readonly entriesRepository: Repository<Entry>,
     private readonly wordsService: WordsService,
   ) {}
 
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
+
   /** Runs the full manual-entry pipeline: deletes stale overrides, re-creates
    * hic/ille/omnis entries, populates praenomen abbreviations, and ingests
    * Roman numeral entries I–MMMCMXCIX. */
   async ingestManual(): Promise<void> {
-    this.logger.log("Ingesting manual entries");
+    this.logger.log("📋 Ingesting manual entries");
 
     for (const id of MANUAL_ENTRIES_TO_DELETE) {
       await this.deleteManual(id);
@@ -98,24 +60,24 @@ export class ManualService {
     await this.ingestPraenomenAbbreviations();
     await this.ingestRomanNumerals();
 
-    this.logger.log("Ingested manual entries");
+    this.logger.log("📋 Ingested manual entries");
   }
 
   /** Deletes any existing row with the same id then saves `manual` and
    * re-ingests its word search records. */
   async createManual(manual: Entry): Promise<void> {
     await this.deleteManual(manual.id);
-    this.logger.log(`Creating ${manual.id}`);
+    this.logger.log(`✏️ Creating "${manual.id}"`);
     const entry = await this.entriesRepository.save(manual, { reload: false });
     await this.wordsService.ingestEntryWords(entry);
-    this.logger.log(`Created ${manual.id}`);
+    this.logger.log(`✏️ Created "${manual.id}"`);
   }
 
   /** Removes the `Entry` row identified by `id` from the database. */
   async deleteManual(id: string): Promise<void> {
-    this.logger.log(`Deleting ${id}`);
+    this.logger.log(`🗑️ Deleting "${id}"`);
     await this.entriesRepository.delete(id);
-    this.logger.log(`Deleted ${id}`);
+    this.logger.log(`🗑️ Deleted "${id}"`);
   }
 
   private decimalToRoman(decimal: number): string {
@@ -148,7 +110,7 @@ export class ManualService {
   }
 
   private async ingestPraenomenAbbreviations(): Promise<void> {
-    this.logger.log("Ingesting praenomen abbreviations");
+    this.logger.log("🏷️ Ingesting praenomen abbreviations");
     for (const [abbreviation, praenomen] of Object.entries(
       PRAENOMEN_ABBREVIATIONS,
     )) {
@@ -185,11 +147,11 @@ export class ManualService {
       }
       await this.createManual(entry);
     }
-    this.logger.log("Ingested praenomen abbreviations");
+    this.logger.log("🏷️ Ingested praenomen abbreviations");
   }
 
   private async ingestRomanNumerals(): Promise<void> {
-    this.logger.log("Ingesting Roman numerals");
+    this.logger.log("🔢 Ingesting Roman numerals");
     for (let i = 1; i < 4000; i++) {
       const roman = this.decimalToRoman(i).toLowerCase();
       const entry = structuredClone(
@@ -211,6 +173,6 @@ export class ManualService {
       ];
       await this.createManual(entry);
     }
-    this.logger.log("Ingested Roman numerals");
+    this.logger.log("🔢 Ingested Roman numerals");
   }
 }

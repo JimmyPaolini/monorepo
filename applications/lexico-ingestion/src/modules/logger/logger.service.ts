@@ -1,4 +1,4 @@
-import { ConsoleLogger, Injectable, Scope } from "@nestjs/common";
+import { ConsoleLogger, Injectable } from "@nestjs/common";
 import pino from "pino";
 
 /**
@@ -7,7 +7,7 @@ import pino from "pino";
  * with the originating class. Backed by pino for structured JSON output in
  * production and human-readable pretty-print in development.
  */
-@Injectable({ scope: Scope.TRANSIENT })
+@Injectable()
 export class LoggerService extends ConsoleLogger {
   private static readonly isProduction =
     process.env["NODE_ENV"] === "production";
@@ -25,6 +25,19 @@ export class LoggerService extends ConsoleLogger {
   );
 
   private child: pino.Logger = LoggerService.root;
+
+  // 🏗️ Dependency Injection
+  constructor() {
+    super();
+  }
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /** Sets the context label included in every subsequent log line. */
   override setContext(context: string): void {

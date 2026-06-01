@@ -13,6 +13,17 @@ export const nounDeclensionValues = [
 ] as const;
 export type NounDeclension = (typeof nounDeclensionValues)[number];
 
+// Unified DB enum: union of all child-entity declension values (noun + adjective)
+export const declensionEnumValues = [
+  "first",
+  "second",
+  "third",
+  "fourth",
+  "fifth",
+  "first/second",
+  "",
+] as const;
+
 export const nounGenderValues = [
   "masculine",
   "feminine",
@@ -26,7 +37,7 @@ export type NounGender = (typeof nounGenderValues)[number];
 @ChildEntity("noun")
 export class NounInflection extends Inflection {
   @Field(() => String)
-  @Column({ type: "enum", enum: nounDeclensionValues, default: "" })
+  @Column({ type: "enum", enum: declensionEnumValues, default: "" })
   declension!: NounDeclension;
 
   @Field(() => String)

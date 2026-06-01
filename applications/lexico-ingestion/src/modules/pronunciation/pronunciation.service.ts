@@ -2,128 +2,15 @@ import { Pronunciation, PronunciationParts } from "@monorepo/lexico-entities";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
+import {
+  classicalDevocalize,
+  classicalPhonemes,
+  classicalSubstitutions,
+  ecclesiasticalPhonemes,
+} from "./pronunciation.constants";
+
 import type { CheerioAPI } from "cheerio";
 import type { AnyNode } from "domhandler";
-
-// ♟️ Classical Latin phoneme maps
-const classicalPhonemes: Record<string, string> = {
-  b: "B",
-  c: "K",
-  d: "D",
-  f: "F",
-  g: "G",
-  j: "J",
-  k: "K",
-  l: "L",
-  m: "M",
-  n: "N",
-  p: "P",
-  q: "KW",
-  r: "R",
-  s: "S",
-  t: "T",
-  v: "W",
-  w: "W",
-  x: "KS",
-  z: "Z",
-  a: "A",
-  ā: "AA",
-  e: "E",
-  ē: "EE",
-  i: "I",
-  ī: "II",
-  o: "O",
-  ō: "OO",
-  u: "U",
-  ū: "UU",
-  y: "Y",
-  ȳ: "YY",
-  ae: "AE",
-  oe: "OE",
-  au: "AU",
-  eu: "EU",
-  " ": "_",
-  ".": "_",
-  "-": "",
-};
-
-const classicalSubstitutions: Record<string, string> = {
-  iace: "jace",
-  iacē: "jacē",
-  iact: "jact",
-  iacu: "jacu",
-  iect: "ject",
-  ien: "jen",
-  ier: "jer",
-  io$: "jo",
-  iud: "jud",
-  iue: "jue",
-  iug: "jug",
-  iun: "jun",
-  iur: "jur",
-  iut: "jut",
-  iuv: "juv",
-  iūd: "jūd",
-  iūe: "jūe",
-  iūg: "jūg",
-  iūn: "jūn",
-  iūr: "jūr",
-  iūt: "jūt",
-  iūv: "jūv",
-  qu: "q",
-  th: "t",
-  ph: "p",
-  ch: "c",
-  xs: "x",
-};
-
-const classicalDevocalize: Record<string, string> = {
-  b: "p",
-  d: "t",
-  g: "k",
-  z: "s",
-};
-
-// ♟️ Ecclesiastical Latin phoneme map
-const ecclesiasticalPhonemes: Record<string, string | string[][]> = {
-  b: "b",
-  d: "d",
-  f: "f",
-  gn: "gn",
-  k: "k",
-  l: "l",
-  m: "m",
-  n: "n",
-  ng: [["ng", "g"]],
-  nc: [["ng", "k"]],
-  nq: [["ng", "q"]],
-  nx: [["ng", "ks"]],
-  p: "p",
-  ph: "f",
-  qu: "kw",
-  r: "r",
-  v: "v",
-  z: "dz",
-  a: "a:",
-  ā: "a:",
-  e: "e:",
-  ē: "e:",
-  i: "i:",
-  ī: "i:",
-  o: "o:",
-  ō: "o:",
-  u: "u:",
-  ū: "u:",
-  y: "y:",
-  ȳ: "y:",
-  ae: "e",
-  oe: "e",
-  au: "au",
-  eu: "eu",
-  ei: "ei",
-  ui: "ui",
-  " ": "_",
-};
 
 /**
  * Parses Classical and Ecclesiastical Latin pronunciation from
@@ -409,7 +296,8 @@ export class PronunciationService {
     pronunciation.vulgar = { phonemes: "", phonemic: "", phonetic: "" };
 
     const pronunciationHeader = $(elt)
-      .prevAll(":header:contains('Pronunciation')")
+      .prevAll("div.mw-heading")
+      .filter((_, el) => /pronunciation/i.test($(el).text()))
       .first();
     if (pronunciationHeader.length <= 0) return pronunciation;
 

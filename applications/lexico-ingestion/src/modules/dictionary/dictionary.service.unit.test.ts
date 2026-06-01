@@ -1,9 +1,10 @@
 import { Entry, Translation, Word } from "@monorepo/lexico-entities";
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
-import { beforeAll, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { IngesterService } from "../ingester/ingester.service";
+import { LoggerService } from "../logger/logger.service";
 import { PartOfSpeechService } from "../partOfSpeech/partOfSpeech.service";
 import { PronunciationService } from "../pronunciation/pronunciation.service";
 
@@ -22,6 +23,17 @@ describe("DictionaryService", () => {
         { provide: getRepositoryToken(Entry), useValue: {} },
         { provide: getRepositoryToken(Word), useValue: {} },
         { provide: getRepositoryToken(Translation), useValue: {} },
+        {
+          provide: LoggerService,
+          useValue: {
+            setContext: vi.fn(),
+            log: vi.fn(),
+            warn: vi.fn(),
+            error: vi.fn(),
+            debug: vi.fn(),
+            verbose: vi.fn(),
+          },
+        },
       ],
     }).compile();
 

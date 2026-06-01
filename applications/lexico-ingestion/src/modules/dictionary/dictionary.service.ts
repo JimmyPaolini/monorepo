@@ -2,11 +2,12 @@ import fs from "node:fs";
 import path from "node:path";
 
 import { Entry } from "@monorepo/lexico-entities";
-import { Injectable, Logger } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 
 import { IngesterService } from "../ingester/ingester.service.js";
+import { LoggerService } from "../logger/logger.service.js";
 
 import type { WiktionaryEntry } from "../lexico-ingestion/lexico-ingestion.types.js";
 
@@ -20,10 +21,12 @@ export class DictionaryService {
     @InjectRepository(Entry)
     private readonly entryRepository: Repository<Entry>,
     private readonly ingesterService: IngesterService,
-  ) {}
+    private readonly logger: LoggerService,
+  ) {
+    this.logger.setContext(DictionaryService.name);
+  }
 
   // 🔐 Private Fields
-  private readonly logger = new Logger(DictionaryService.name);
   private readonly dataDir = path.join(process.cwd(), "./data/wiktionary");
 
   // 🔑 Public Fields
@@ -45,7 +48,7 @@ export class DictionaryService {
     const files = fs
       .readdirSync(this.dataDir)
       .filter((f) => f.endsWith(".json"));
-    this.logger.log(`Processing ${files.length} entries...`);
+    this.logger.log(`📖 Processing ${files.length} entries`);
 
     for (const file of files) {
       try {
@@ -58,7 +61,7 @@ export class DictionaryService {
       }
     }
 
-    this.logger.log("Dictionary ingestion complete.");
+    this.logger.log("📖 Dictionary ingestion complete");
   }
 
   /** Parses the Wiktionary HTML for `word` into one or more `Entry` records
@@ -86,11 +89,18 @@ export class DictionaryService {
       return;
     }
 
+    this.logger.log(`📝 Ingesting entry "${word}"`);
     const parsedEntries =
       await this.ingesterService.parseEntries(wiktionaryEntry);
     for (const entry of parsedEntries) {
+      // Explicitly save @ChildEntity inflection first — TypeORM's cascade
+      // for STI child entities doesn't reliably set the FK on the parent row.
+      if (entry.inflection) {
+        await entry.inflection.save();
+      }
       await this.entryRepository.save(entry);
     }
+    this.logger.log(`📝 Ingested entry "${word}"`);
   }
 
   private escapeCapitals(word: string): string {

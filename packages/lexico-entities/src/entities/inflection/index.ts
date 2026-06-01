@@ -18,6 +18,7 @@ export {
   NounInflection,
   nounDeclensionValues,
   nounGenderValues,
+  declensionEnumValues,
 } from "./NounInflection.entity.js";
 export type { NounDeclension, NounGender } from "./NounInflection.entity.js";
 export {

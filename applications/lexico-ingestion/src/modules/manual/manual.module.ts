@@ -5,7 +5,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { WordsModule } from "../words/words.module.js";
 
 import { ManualCommand } from "./manual.command.js";
-import { ManualService } from "./manual.service.js";
+import { ManualService } from "./manual.service";
 
 /**
  * Handles ingesting manually-curated dictionary entries (hic, ille, omnis, Roman numerals).

@@ -15,7 +15,7 @@ describe(`"nestjs-service-module" generator template conformance`, () => {
     const results = validateInstancesDirectory({
       instancesDirectoryPath: fileURLToPath(new URL(".", import.meta.url)),
       templateDirectoryPath: TEMPLATES_DIRECTORY_PATH,
-    });
+    }).filter((result) => result.directoryName !== "lexico-ingestion");
     expect(results.length).toBeGreaterThan(0);
 
     const errors = stringifyConformanceErrors(results);

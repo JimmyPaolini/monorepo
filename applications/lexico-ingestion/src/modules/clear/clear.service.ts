@@ -10,6 +10,7 @@ import { Repository } from "typeorm";
 export class ClearService {
   private readonly logger = new Logger(ClearService.name);
 
+  // 🏗️ Dependency Injection
   constructor(
     @InjectRepository(Entry)
     private readonly entriesRepository: Repository<Entry>,
@@ -19,13 +20,21 @@ export class ClearService {
     private readonly wordsRepository: Repository<Word>,
   ) {}
 
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
+
   /** Deletes all `Word`, `Translation`, and `Entry` rows from the database
    * in dependency order to avoid foreign-key constraint violations. */
   async clearDictionary(): Promise<void> {
-    this.logger.log("Clearing dictionary");
+    this.logger.log("🗑️ Clearing dictionary");
     await this.wordsRepository.delete({});
     await this.translationsRepository.delete({});
     await this.entriesRepository.delete({});
-    this.logger.log("Cleared dictionary");
+    this.logger.log("🗑️ Cleared dictionary");
   }
 }

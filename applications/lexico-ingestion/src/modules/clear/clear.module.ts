@@ -3,7 +3,7 @@ import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
 import { ClearCommand } from "./clear.command.js";
-import { ClearService } from "./clear.service.js";
+import { ClearService } from "./clear.service";
 
 /**
  * Handles clearing dictionary data from the database.

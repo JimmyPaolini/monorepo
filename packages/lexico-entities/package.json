@@ -12,11 +12,13 @@
   },
   "dependencies": {
     "@nestjs/common": "^11.1.23",
+    "@nestjs/config": "^4.0.4",
     "@nestjs/graphql": "^12.2.2",
     "@nestjs/typeorm": "^11.0.0",
     "graphql": "^16.14.0",
     "reflect-metadata": "^0.2.2",
-    "typeorm": "^0.3.25"
+    "typeorm": "^0.3.25",
+    "typeorm-naming-strategies": "^4.1.0"
   },
   "devDependencies": {
     "@types/node": "^25.9.1",

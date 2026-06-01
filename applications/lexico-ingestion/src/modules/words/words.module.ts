@@ -3,7 +3,7 @@ import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
 import { WordsCommand } from "./words.command.js";
-import { WordsService } from "./words.service.js";
+import { WordsService } from "./words.service";
 
 /**
  * Handles ingesting Word records from dictionary entries.

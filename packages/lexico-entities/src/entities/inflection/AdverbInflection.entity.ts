@@ -21,6 +21,11 @@ export class AdverbInflection extends Inflection {
   degree!: AdverbDegree;
 
   @Field(() => String)
-  @Column({ type: "enum", enum: adverbTypeValues, default: "" })
-  type!: AdverbType;
+  @Column({
+    type: "enum",
+    enum: adverbTypeValues,
+    default: "",
+    name: "adverb_type",
+  })
+  adverbType!: AdverbType;
 }

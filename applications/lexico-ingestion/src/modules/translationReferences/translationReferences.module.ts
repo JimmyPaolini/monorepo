@@ -3,7 +3,7 @@ import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
 import { TranslationReferencesCommand } from "./translationReferences.command.js";
-import { TranslationReferencesService } from "./translationReferences.service.js";
+import { TranslationReferencesService } from "./translationReferences.service";
 
 /**
  * Handles resolving \{*reference*\} markers in translation text.

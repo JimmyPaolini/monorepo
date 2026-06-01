@@ -1,9 +1,4 @@
-import {
-  Entry,
-  partOfSpeechValues,
-  PrincipalPart,
-  Translation,
-} from "@monorepo/lexico-entities";
+import { Entry, PrincipalPart, Translation } from "@monorepo/lexico-entities";
 import { Injectable } from "@nestjs/common";
 import * as cheerio from "cheerio";
 import _ from "lodash";
@@ -12,14 +7,10 @@ import { LoggerService } from "../logger/logger.service.js";
 import { PartOfSpeechService } from "../partOfSpeech/partOfSpeech.service.js";
 import { PronunciationService } from "../pronunciation/pronunciation.service.js";
 
+import { skipPOS, translationSkipRegex, validPOS } from "./ingester.constants";
+
 import type { WiktionaryEntry } from "../lexico-ingestion/lexico-ingestion.types.js";
-import type { AnyNode, Element } from "domhandler";
-
-const skipPOS = new Set<string>(["letter"]);
-const validPOS = new Set<string>(partOfSpeechValues);
-
-const translationSkipRegex =
-  /(alternative)|(alternate)|(abbreviation)|(initialism)|(archaic)|(synonym)|(clipping)|(spelling)/i;
+import type { AnyNode } from "domhandler";
 
 /**
  * Orchestrates Wiktionary HTML parsing into fully-populated Entry objects.
@@ -142,20 +133,19 @@ export class IngesterService {
     elt: AnyNode,
     entry: Entry,
   ): { etymology: string; participleTranslation?: Translation } {
-    const etymologyHeader = $(elt)
-      .prevAll(":header:contains('Etymology')")
+    const etymologyHeaderDiv = $(elt)
+      .prevAll("div.mw-heading")
+      .filter((_, el) => /etymology/i.test($(el).text()))
       .first();
 
-    if (
-      etymologyHeader.length <= 0 ||
-      (etymologyHeader.next()[0] as (Element & { name?: string }) | undefined)
-        ?.name !== "p" ||
-      etymologyHeader.next().text().trim().length === 0
-    ) {
+    if (etymologyHeaderDiv.length <= 0) return { etymology: "" };
+
+    const etymologyP = etymologyHeaderDiv.nextAll("p").first();
+    if (etymologyP.length <= 0 || etymologyP.text().trim().length === 0) {
       return { etymology: "" };
     }
 
-    const etymology = etymologyHeader.next().text().trim();
+    const etymology = etymologyP.text().trim();
 
     const participleMatch =
       /((present)|(perfect)|(future)) ((active)|(passive) )?participle (\(gerundive\) )?of [A-Za-z\u00C0-\u017F]+/i.exec(
@@ -182,6 +172,7 @@ export class IngesterService {
     const word = this.normalize(wiktionaryEntry.word);
     const entries: Entry[] = [];
 
+    this.logger.log(`🔍 Parsing "${wiktionaryEntry.word}"`);
     const headwordElements = $("p:has(strong.Latn.headword)").toArray();
 
     if (headwordElements.length === 0) {
@@ -255,6 +246,7 @@ export class IngesterService {
       }
     }
 
+    this.logger.log(`🔍 Parsed "${wiktionaryEntry.word}"`);
     return entries;
   }
 }

@@ -11,6 +11,7 @@ import { Like, Repository } from "typeorm";
 export class TranslationReferencesService {
   private readonly logger = new Logger(TranslationReferencesService.name);
 
+  // 🏗️ Dependency Injection
   constructor(
     @InjectRepository(Entry)
     private readonly entriesRepository: Repository<Entry>,
@@ -18,11 +19,19 @@ export class TranslationReferencesService {
     private readonly translationsRepository: Repository<Translation>,
   ) {}
 
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
+
   /** Finds all `Translation` rows whose text contains `{*...*}` reference
    * markers and replaces them with the corresponding entry’s translations,
    * repeating until no unresolved references remain. */
   async ingestTranslationReferences(): Promise<void> {
-    this.logger.log("Ingesting translation references");
+    this.logger.log("🔗 Ingesting translation references");
 
     const params = {
       where: { translation: Like("%{*%*}%") },
@@ -34,7 +43,7 @@ export class TranslationReferencesService {
     let translations = await this.translationsRepository.find(params);
     while (translations.length > 0) {
       this.logger.log(
-        `Processing ${translations.length} translations (first: ${translations[0]?.translation ?? ""})`,
+        `🔗 Processing ${translations.length} translations (first: ${translations[0]?.translation ?? ""})`,
       );
       for (const translation of translations) {
         await this.ingestTranslationReference(translation);
@@ -42,7 +51,7 @@ export class TranslationReferencesService {
       translations = await this.translationsRepository.find(params);
     }
 
-    this.logger.log("Ingested translation references");
+    this.logger.log("🔗 Ingested translation references");
   }
 
   private escapeCapitals(word: string): string {

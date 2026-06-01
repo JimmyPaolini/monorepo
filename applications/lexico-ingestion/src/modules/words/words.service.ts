@@ -10,6 +10,7 @@ import { Repository } from "typeorm";
 export class WordsService {
   private readonly logger = new Logger(WordsService.name);
 
+  // 🏗️ Dependency Injection
   constructor(
     @InjectRepository(Entry)
     private readonly entriesRepository: Repository<Entry>,
@@ -17,10 +18,18 @@ export class WordsService {
     private readonly wordsRepository: Repository<Word>,
   ) {}
 
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
+
   /** Ingests `Word` search records for every `Entry` in the database,
    * processing entries in batches of 100 to keep memory usage bounded. */
   async ingestWords(): Promise<void> {
-    this.logger.log("Ingesting words");
+    this.logger.log("🔤 Ingesting words");
     const batchSize = 100;
     let skip = 0;
     let batch: Entry[];
@@ -32,21 +41,26 @@ export class WordsService {
         take: batchSize,
         skip,
       });
+      this.logger.log(
+        `🔤 Processing batch at offset ${skip} (${batch.length} entries)`,
+      );
       for (const entry of batch) {
         await this.ingestEntryWords(entry);
       }
       skip += batchSize;
     } while (batch.length === batchSize);
 
-    this.logger.log("Ingested words");
+    this.logger.log("🔤 Ingested words");
   }
 
   /** Generates and persists a `Word` row for every inflected form and
    * principal part that belongs to the given `Entry`. */
   async ingestEntryWords(entry: Entry): Promise<void> {
+    this.logger.log(`🔤 Ingesting words for "${entry.id}"`);
     for (const word of this.getEntryWords(entry)) {
       await this.ingestEntryWord(word, entry);
     }
+    this.logger.log(`🔤 Ingested words for "${entry.id}"`);
   }
 
   private flattenForms(
