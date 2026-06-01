@@ -1,5 +1,7 @@
 set -eo pipefail
 
+git restore --staged scripts/database/notebook.sql 2>/dev/null || true
+
 nx run monorepo:lint-staged 2>&1 \
   | grep -vE '\(node:[0-9]+\) Warning: The .NO_COLOR|\(Use .node --trace-warnings|Your AI agent configuration is outdated' \
   | sed -E 's/(\033)?\[[0-9;]*[mK]//g' \

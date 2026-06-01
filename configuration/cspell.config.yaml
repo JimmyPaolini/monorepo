@@ -68,6 +68,7 @@ dictionaryDefinitions:
     addWords: true
 words:
   - apikey
+  - disambiguator
   - elipssis
   - extensionless
   - futp
