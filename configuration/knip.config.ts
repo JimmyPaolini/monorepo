@@ -182,6 +182,7 @@ const config: KnipConfig = {
       ],
       ignoreDependencies: [
         "pino-pretty", // Referenced as string transport target in LoggerService — knip can't trace string references
+        "tsx", // TypeScript executor CLI (not used; project uses @swc-node/register instead)
       ],
       project: "src/**/*.ts",
     },

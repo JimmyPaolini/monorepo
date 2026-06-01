@@ -1,5 +1,6 @@
 import {
   createSourceFile,
+  isCallExpression,
   isClassDeclaration,
   isDecorator,
   isIdentifier,
@@ -35,15 +36,13 @@ function namedDecorator(code: string, decoratorName: string): Node {
     (m) =>
       isDecorator(m) &&
       (() => {
-        const expr = (m as { expression?: Node }).expression;
-        if (expr === undefined) return false;
+        const expr = m.expression;
         if (isIdentifier(expr)) return expr.text === decoratorName;
-        const callee = (expr as { expression?: Node }).expression;
-        return (
-          callee !== undefined &&
-          isIdentifier(callee) &&
-          callee.text === decoratorName
-        );
+        if (isCallExpression(expr)) {
+          const callee = expr.expression;
+          return isIdentifier(callee) && callee.text === decoratorName;
+        }
+        return false;
       })(),
   );
   if (decorator === undefined)
