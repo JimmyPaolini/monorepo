@@ -1,25 +1,4 @@
-#region 🔤 Latin Macrons & Diacritics
-aeiouāēīōūȳ
-āēīōūȳ
-zāēīōūȳ
-ĀĒĪŌŪȲ
-#endregion
 
-#region 📖 Linguistics
-ation
-catilinarian
-circumfix
-devocalize
-giorgio
-interfix
-macronized
-macronizer
-ologies
-periphrastic
-polyglot
-#endregion
-
-#region 🏛️ Latin Words & Forms
 appia
 appius
 aula
@@ -93,9 +72,10 @@ iact
 iacu
 iacē
 iect
-ille
+illa
 illae
 illam
+ille
 illud
 illā
 illārum
@@ -144,13 +124,13 @@ sertor
 servius
 sexta
 sextus
-sīmus
-sītis
 spuria
 spurius
 statia
 sumus
 sunt
+sīmus
+sītis
 tiberia
 titia
 vibia
@@ -159,28 +139,26 @@ volesus
 volusa
 vopisca
 vopiscus
-#endregion
-
-#region 🔧 Technical Terms
+Devocalize
+Ingester
+Lexico
+MMMCMXCIX
+Normalises
+aeiouāēīōūȳ
+circumfix
 domhandler
 ingester
+interfix
+lexico
+macronized
 normalisation
-Normalises
 pagefrom
 parsetable
-tableparser
-#endregion
-
-#region 🏛️ Roman Numerals
-MMMCMXCIX
-#endregion
-
-#region 🇬🇧 British English
 recognised
-#endregion
-
-#region 📱 Lexico Application
-lexico
-refinementness
-wording
-#endregion
+tableparser
+zāēīōūȳ
+Catilinarian
+Giorgio
+Macronizer
+ĀĒĪŌŪȲ
+āēīōūȳ
