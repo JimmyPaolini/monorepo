@@ -28,6 +28,7 @@ import { TripleAspectsModule } from "../tripleAspects/tripleAspects.module";
 import { TwilightsModule } from "../twilights/twilights.module";
 
 import { CaelundasCommand } from "./caelundas.command";
+import { CaelundasService } from "./caelundas.service";
 
 /**
  * Root NestJS application module.
@@ -36,6 +37,8 @@ import { CaelundasCommand } from "./caelundas.command";
  * service can read environment variables via {@link ConfigService}.
  */
 @Module({
+  controllers: [],
+  exports: [CaelundasService],
   imports: [
     ConfigModule.forRoot({
       envFilePath: ".env",
@@ -68,6 +71,6 @@ import { CaelundasCommand } from "./caelundas.command";
     PerfectiveModule,
     ProgressiveModule,
   ],
-  providers: [CaelundasCommand],
+  providers: [CaelundasCommand, CaelundasService],
 })
 export class CaelundasModule {}

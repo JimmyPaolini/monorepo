@@ -9,6 +9,12 @@ import pino from "pino";
  */
 @Injectable({ scope: Scope.TRANSIENT })
 export class LoggerService extends ConsoleLogger {
+  // 🏗️ Dependency Injection
+  constructor() {
+    super();
+  }
+
+  // 🔐 Private Fields
   private static readonly isProduction =
     process.env["NODE_ENV"] === "production";
 
@@ -25,6 +31,12 @@ export class LoggerService extends ConsoleLogger {
   );
 
   private child: pino.Logger = LoggerService.root;
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /** Sets the context label included in every subsequent log line. */
   override setContext(context: string): void {

@@ -17,7 +17,7 @@ describe("TranslationReferencesService", () => {
       ],
     }).compile();
 
-    service = module.get(TranslationReferencesService);
+    service = await module.resolve(TranslationReferencesService);
   });
 
   it("should be defined", () => {

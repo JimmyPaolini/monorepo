@@ -10,7 +10,7 @@ describe("LexicoIngestionService", () => {
     const module = await Test.createTestingModule({
       providers: [LexicoIngestionService],
     }).compile();
-    service = module.get(LexicoIngestionService);
+    service = await module.resolve(LexicoIngestionService);
   });
 
   it("should be defined", () => {

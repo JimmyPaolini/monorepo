@@ -26,7 +26,7 @@ describe("WiktionaryService", () => {
       ],
     }).compile();
 
-    service = module.get(WiktionaryService);
+    service = await module.resolve(WiktionaryService);
   });
 
   it("should be defined", () => {

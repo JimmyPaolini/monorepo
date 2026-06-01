@@ -3,6 +3,14 @@ import { Injectable, Logger } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function isUnknownArray(value: unknown): value is unknown[] {
+  return Array.isArray(value);
+}
+
 /**
  * Ingests Word search records from all dictionary entries.
  */
@@ -63,18 +71,14 @@ export class WordsService {
     this.logger.log(`🔤 Ingested words for "${entry.id}"`);
   }
 
-  private flattenForms(
-    obj: string[] | Record<string, unknown> | null | undefined,
-  ): string[] {
+  private flattenForms(obj: unknown): string[] {
     if (!obj) return [];
-    if (Array.isArray(obj)) return obj;
-    return Object.values(obj).reduce<string[]>(
-      (acc, val) => [
-        ...acc,
-        ...this.flattenForms(val as string[] | Record<string, unknown>),
-      ],
-      [],
-    );
+    if (isUnknownArray(obj))
+      return obj.filter((v): v is string => typeof v === "string");
+    if (isRecord(obj)) {
+      return Object.values(obj).flatMap((val) => this.flattenForms(val));
+    }
+    return [];
   }
 
   private escapeCapitals(word: string): string {
@@ -92,9 +96,7 @@ export class WordsService {
   /** Returns all searchable word strings for an entry — every form value
    * extracted by flattening the `forms` JSON object plus each principal-part text. */
   getEntryWords(entry: Entry): string[] {
-    const forms = this.flattenForms(
-      entry.forms as Record<string, unknown> | null | undefined,
-    );
+    const forms = this.flattenForms(entry.forms);
     entry.principalParts.forEach((pp) => forms.push(...pp.text));
     return forms;
   }

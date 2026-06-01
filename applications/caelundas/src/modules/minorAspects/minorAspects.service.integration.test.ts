@@ -1,6 +1,7 @@
 import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
 import { minorAspectBodies } from "@caelundas/src/modules/caelundas/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
+import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Test } from "@nestjs/testing";
@@ -53,6 +54,7 @@ let service: MinorAspectsService;
 beforeAll(async () => {
   const module = await Test.createTestingModule({
     providers: [
+      LoggerService,
       MinorAspectsService,
       AspectsUtilities,
       EphemerisService,

@@ -12,7 +12,9 @@ import type { Category } from "./wiktionary.types.js";
 import type { WiktionaryEntry } from "../lexico-ingestion/lexico-ingestion.types.js";
 
 /**
- * TODO: Document the wiktionary service.
+ * Provides Wiktionary entry fetching and parsing utilities.
+ * Uses Cheerio for DOM querying with `unknown` typing to work around
+ * TypeScript resolution issues with cheerio's type exports.
  */
 @Injectable()
 export class WiktionaryService {
@@ -67,7 +69,9 @@ export class WiktionaryService {
     if (!fs.existsSync(this.directory)) {
       fs.mkdirSync(this.directory, { recursive: true });
     }
-    for (const category of Object.keys(categories) as Category[]) {
+    for (const category of Object.keys(categories).filter(
+      (key): key is Category => Object.hasOwn(categories, key),
+    )) {
       await this.ingestCategory(category);
     }
     this.logger.log(`🌐 Ingested wiktionary`);

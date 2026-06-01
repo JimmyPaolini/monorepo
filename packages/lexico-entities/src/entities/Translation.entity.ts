@@ -29,9 +29,9 @@ export class Translation extends BaseEntity {
   @Column("varchar", { length: 2047 })
   translation!: string;
 
-  constructor(translation: string, entry: Entry) {
+  constructor(translation: string, entry?: Entry) {
     super();
     this.translation = translation;
-    this.entry = entry;
+    if (entry) this.entry = entry;
   }
 }

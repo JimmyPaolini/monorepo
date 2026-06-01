@@ -1,22 +1,23 @@
 import {
-  type AdjectiveDeclension,
-  type AdjectiveDegree,
+  adjectiveDeclensionValues,
+  adjectiveDegreeValues,
   AdjectiveInflection,
   AdverbForms,
   AdverbInflection,
   type AdverbType,
   type Entry,
-  type Forms,
+  Forms,
   type Inflection,
-  type NounDeclension,
-  type NounGender,
+  nounDeclensionValues,
+  nounGenderValues,
   NounInflection,
   type PartOfSpeech,
-  type PrepositionCase,
+  partOfSpeechValues,
+  prepositionCaseValues,
   PrepositionInflection,
   type PrincipalPart,
   Uninflected,
-  type VerbConjugation,
+  verbConjugationValues,
   VerbInflection,
 } from "@monorepo/lexico-entities";
 import { Injectable } from "@nestjs/common";
@@ -35,6 +36,14 @@ import {
 } from "./partOfSpeech.constants";
 
 import type { AnyNode } from "domhandler";
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function isUnknownArray(value: unknown): value is unknown[] {
+  return Array.isArray(value);
+}
 
 /**
  * Resolves the part of speech from a Wiktionary HTML element, dispatches
@@ -58,7 +67,7 @@ export class PartOfSpeechService {
   ): Inflection {
     const inflectionHtml = $(elt)
       .nextAll("div.mw-heading")
-      .filter((_, el) => /declension/i.test($(el).text()))
+      .filter((_: number, el: AnyNode) => /declension/i.test($(el).text()))
       .first()
       .next();
 
@@ -87,8 +96,9 @@ export class PartOfSpeechService {
     const matchedGender = gender.match(genderRegex)?.[0] ?? "";
 
     const noun = new NounInflection();
-    noun.declension = matchedDeclension as NounDeclension;
-    noun.gender = matchedGender as NounGender;
+    noun.declension =
+      nounDeclensionValues.find((v) => v === matchedDeclension) ?? "";
+    noun.gender = nounGenderValues.find((v) => v === matchedGender) ?? "";
     noun.other = other;
     return noun;
   }
@@ -112,7 +122,8 @@ export class PartOfSpeechService {
       : (conjugation.match(verbConjugationRegex)?.[0] ?? "");
 
     const vi = new VerbInflection();
-    vi.conjugation = finalConjugation as VerbConjugation;
+    vi.conjugation =
+      verbConjugationValues.find((v) => v === finalConjugation) ?? "";
     vi.other = other;
     return vi;
   }
@@ -232,7 +243,7 @@ export class PartOfSpeechService {
     for (const inflection of structuredClone(disorganizedForms)) {
       this.sortIdentifiers(inflection, forms);
     }
-    return forms as unknown as Forms;
+    return Object.assign(new Forms(), forms);
   }
 
   private ingestAdjectiveInflection(
@@ -241,7 +252,7 @@ export class PartOfSpeechService {
   ): Inflection {
     const inflectionHtml = $(elt)
       .nextAll("div.mw-heading")
-      .filter((_, el) => /declension/i.test($(el).text()))
+      .filter((_: number, el: AnyNode) => /declension/i.test($(el).text()))
       .first()
       .next();
 
@@ -264,8 +275,9 @@ export class PartOfSpeechService {
     declension = declension.match(adjectiveDeclensionRegex)?.[0] ?? "";
 
     const adj = new AdjectiveInflection();
-    adj.declension = declension as AdjectiveDeclension;
-    adj.degree = degree as AdjectiveDegree;
+    adj.declension =
+      adjectiveDeclensionValues.find((v) => v === declension) ?? "";
+    adj.degree = adjectiveDegreeValues.find((v) => v === degree) ?? "positive";
     adj.other = other;
     return adj;
   }
@@ -307,7 +319,8 @@ export class PartOfSpeechService {
     declension = declension.match(adjectiveDeclensionRegex)?.[0] ?? "";
 
     const adjectiveInflection = new AdjectiveInflection();
-    adjectiveInflection.declension = declension as AdjectiveDeclension;
+    adjectiveInflection.declension =
+      adjectiveDeclensionValues.find((v) => v === declension) ?? "";
     adjectiveInflection.degree = "positive";
     return adjectiveInflection;
   }
@@ -327,7 +340,8 @@ export class PartOfSpeechService {
 
     const prepositionCase = other.match(prepositionCaseRegex)?.[0] ?? "";
     const prepositionInflection = new PrepositionInflection();
-    prepositionInflection.case = prepositionCase as PrepositionCase;
+    prepositionInflection.case =
+      prepositionCaseValues.find((v) => v === prepositionCase) ?? "";
     prepositionInflection.other = other;
     return prepositionInflection;
   }
@@ -415,7 +429,7 @@ export class PartOfSpeechService {
           const c = cheerio.load(cell);
           const words = c("span")
             .toArray()
-            .map((s) => c(s).text())
+            .map((s: AnyNode) => c(s).text())
             .join(", ");
           if (!/[A-Za-zāēīōūȳ\-\s]+/.test(words)) continue;
           disorganizedForms.push({
@@ -430,7 +444,7 @@ export class PartOfSpeechService {
     for (const inflection of structuredClone(disorganizedForms)) {
       this.sortIdentifiers(inflection, forms);
     }
-    return forms as unknown as Forms;
+    return Object.assign(new Forms(), forms);
   }
 
   private parseFormTable(
@@ -439,7 +453,7 @@ export class PartOfSpeechService {
   ): string[][] | null {
     const tableHtml = $(elt)
       .nextAll("div")
-      .filter((_, el) => $(el).find("table").length > 0)
+      .filter((_: number, el: AnyNode) => $(el).find("table").length > 0)
       .first()
       .find("table")
       .first();
@@ -448,10 +462,7 @@ export class PartOfSpeechService {
     const $table = cheerio.load($.html(tableHtml));
     cheerioTableParser($table);
 
-    type ParseTableFn = (a: boolean, b: boolean, c: boolean) => string[][];
-    let table: string[][] = (
-      $table("table") as unknown as { parsetable: ParseTableFn }
-    ).parsetable(true, true, false);
+    let table: string[][] = $table("table").parsetable(true, true, false);
 
     // Transpose: table[col][row] → table[row][col]
     table = (table[0] ?? []).map((_: unknown, i: number) =>
@@ -480,26 +491,23 @@ export class PartOfSpeechService {
       return obj;
     } else {
       if (!obj[identifier]) obj[identifier] = {};
+      const current = obj[identifier];
       obj[identifier] = this.sortIdentifiers(
         inflection,
-        obj[identifier] as Record<string, unknown>,
+        isRecord(current) ? current : {},
       );
       return obj;
     }
   }
 
-  private flattenForms(
-    obj: string[] | Record<string, unknown> | null | undefined,
-  ): string[] {
+  private flattenForms(obj: unknown): string[] {
     if (!obj) return [];
-    if (Array.isArray(obj)) return obj;
-    return Object.values(obj).reduce<string[]>(
-      (acc, val) => [
-        ...acc,
-        ...this.flattenForms(val as string[] | Record<string, unknown>),
-      ],
-      [],
-    );
+    if (isUnknownArray(obj))
+      return obj.filter((v): v is string => typeof v === "string");
+    if (isRecord(obj)) {
+      return Object.values(obj).flatMap((val) => this.flattenForms(val));
+    }
+    return [];
   }
 
   private isNumber(str: string): boolean {
@@ -522,7 +530,7 @@ export class PartOfSpeechService {
    * Resolves the part-of-speech label from the nearest preceding heading.
    */
   getPartOfSpeech($: cheerio.CheerioAPI, elt: AnyNode): PartOfSpeech {
-    return $(elt)
+    const text = $(elt)
       .prevAll("div.mw-heading")
       .first()
       .find("h3, h4")
@@ -530,7 +538,8 @@ export class PartOfSpeechService {
       .toLowerCase()
       .replaceAll(/(\[edit])|\d+/g, "")
       .trim()
-      .replace("proper noun", "properNoun") as PartOfSpeech;
+      .replace("proper noun", "properNoun");
+    return partOfSpeechValues.find((v) => v === text) ?? "phrase";
   }
 
   /**

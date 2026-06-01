@@ -3,6 +3,7 @@ import {
   symbolByLunarPhase,
 } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
+import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
@@ -45,9 +46,14 @@ describe("MonthlyLunarCycleService", () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [MonthlyLunarCycleService, EphemerisService, MathService],
+      providers: [
+        MonthlyLunarCycleService,
+        EphemerisService,
+        LoggerService,
+        MathService,
+      ],
     }).compile();
-    service = module.get(MonthlyLunarCycleService);
+    service = await module.resolve(MonthlyLunarCycleService);
     s = service as unknown as ServicePrivate;
   });
 
@@ -351,6 +357,10 @@ describe("MonthlyLunarCycleService", () => {
         ],
       };
 
+      const warnSpy = vi
+        .spyOn(LoggerService.prototype, "warn")
+        .mockImplementation(() => undefined);
+
       const progressiveEvents = service.detectProgressive([
         invalidEvent,
         validEvent,
@@ -358,9 +368,11 @@ describe("MonthlyLunarCycleService", () => {
 
       // Should skip the invalid event
       expect(progressiveEvents).toHaveLength(0);
-      expect(console.warn).toHaveBeenCalledWith(
+      expect(warnSpy).toHaveBeenCalledWith(
         expect.stringContaining("Could not extract lunar phase"),
       );
+
+      warnSpy.mockRestore();
     });
   });
 

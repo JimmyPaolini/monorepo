@@ -17,7 +17,7 @@ describe("WordsService", () => {
       ],
     }).compile();
 
-    service = module.get(WordsService);
+    service = await module.resolve(WordsService);
   });
 
   it("should be defined", () => {

@@ -1,5 +1,6 @@
 import { Pronunciation, PronunciationParts } from "@monorepo/lexico-entities";
 import { Injectable } from "@nestjs/common";
+import * as cheerio from "cheerio";
 import _ from "lodash";
 
 import {
@@ -9,8 +10,15 @@ import {
   ecclesiasticalPhonemes,
 } from "./pronunciation.constants";
 
-import type { CheerioAPI } from "cheerio";
 import type { AnyNode } from "domhandler";
+
+function getStringPhoneme(
+  map: Record<string, string | string[][]>,
+  key: string,
+): string {
+  const value = map[key];
+  return typeof value === "string" ? value : "";
+}
 
 /**
  * Parses Classical and Ecclesiastical Latin pronunciation from
@@ -79,7 +87,7 @@ export class PronunciationService {
           break;
         }
         default: {
-          if (Object.prototype.hasOwnProperty.call(classicalDevocalize, ch)) {
+          if (Object.hasOwn(classicalDevocalize, ch)) {
             if (
               i + 1 < word.length &&
               ["c", "f", "k", "p", "q", "s", "t"].includes(word[i + 1] ?? "")
@@ -174,7 +182,7 @@ export class PronunciationService {
             isVowel(word[i + 1] ?? "")
           ) {
             phonemes.push("j");
-          } else phonemes.push(ecclesiasticalPhonemes["i"] as string);
+          } else phonemes.push(getStringPhoneme(ecclesiasticalPhonemes, "i"));
           break;
         }
         case "s": {
@@ -218,10 +226,10 @@ export class PronunciationService {
         default: {
           if (ecclesiasticalPhonemes[ch + (word[i + 1] ?? "")]) {
             phonemes.push(
-              ecclesiasticalPhonemes[ch + (word[++i] ?? "")] as string,
+              getStringPhoneme(ecclesiasticalPhonemes, ch + (word[++i] ?? "")),
             );
           } else {
-            phonemes.push(ecclesiasticalPhonemes[ch] as string);
+            phonemes.push(getStringPhoneme(ecclesiasticalPhonemes, ch));
           }
         }
       }
@@ -253,8 +261,8 @@ export class PronunciationService {
             build([...prev, ...option], [...rest]);
           } else build([...prev, option], [...rest]);
         }
-      } else {
-        build([...prev, phoneme] as (string | string[][])[], [...rest]);
+      } else if (phoneme !== undefined) {
+        build([...prev, phoneme], [...rest]);
       }
     }
 
@@ -281,7 +289,11 @@ export class PronunciationService {
    * Requires `macronizedWord` to already be resolved (call `parsePrincipalParts`
    * before this function).
    */
-  parse($: CheerioAPI, elt: AnyNode, macronizedWord: string): Pronunciation {
+  parse(
+    $: cheerio.CheerioAPI,
+    elt: AnyNode,
+    macronizedWord: string,
+  ): Pronunciation {
     const pronunciation = new Pronunciation();
     pronunciation.classical = {
       phonemes: this.getClassicalPhonemes(macronizedWord),
@@ -297,7 +309,7 @@ export class PronunciationService {
 
     const pronunciationHeader = $(elt)
       .prevAll("div.mw-heading")
-      .filter((_, el) => /pronunciation/i.test($(el).text()))
+      .filter((_: number, el: AnyNode) => /pronunciation/i.test($(el).text()))
       .first();
     if (pronunciationHeader.length <= 0) return pronunciation;
 

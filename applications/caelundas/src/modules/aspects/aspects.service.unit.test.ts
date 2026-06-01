@@ -1,3 +1,4 @@
+import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
 import { beforeAll, describe, expect, it } from "vitest";
@@ -25,6 +26,7 @@ describe("AspectsService", () => {
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
+        LoggerService,
         AspectsService,
         AspectsUtilities,
         EphemerisService,
@@ -41,7 +43,7 @@ describe("AspectsService", () => {
       ],
     }).compile();
 
-    service = module.get(AspectsService);
+    service = await module.resolve(AspectsService);
   });
 
   it("should be defined", () => {

@@ -2,6 +2,9 @@ import { Global, Module } from "@nestjs/common";
 
 import { LoggerService } from "./logger.service";
 
+/**
+ *
+ */
 @Global()
 /**
  * Global logger module — import once in the root module and

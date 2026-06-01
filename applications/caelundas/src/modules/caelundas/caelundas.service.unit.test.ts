@@ -1,17 +1,17 @@
 import { Test } from "@nestjs/testing";
 import { beforeAll, describe, expect, it } from "vitest";
 
-import { LoggerService } from "./logger.service";
+import { CaelundasService } from "./caelundas.service";
 
-describe("LoggerService", () => {
-  let service: LoggerService;
+describe("CaelundasService", () => {
+  let service: CaelundasService;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [LoggerService],
+      providers: [CaelundasService],
     }).compile();
 
-    service = await module.resolve(LoggerService);
+    service = await module.resolve(CaelundasService);
   });
 
   it("should be defined", () => {

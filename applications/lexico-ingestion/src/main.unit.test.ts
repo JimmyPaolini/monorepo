@@ -6,11 +6,11 @@ describe("environment schema", () => {
   it("parses an empty environment object using defaults", () => {
     const result = environmentSchema.parse({});
     expect(result).toEqual({
-      DATABASE_HOST: "localhost",
-      DATABASE_PORT: 5432,
-      DATABASE_USER: "lexico",
-      DATABASE_PASSWORD: "lexico",
-      DATABASE_NAME: "lexico",
+      POSTGRES_HOST: "localhost",
+      POSTGRES_PORT: 5432,
+      POSTGRES_USER: "postgres",
+      POSTGRES_PASSWORD: "postgres",
+      POSTGRES_DB: "postgres",
     });
   });
 });

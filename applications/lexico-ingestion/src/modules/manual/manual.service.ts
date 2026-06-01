@@ -1,9 +1,4 @@
-import {
-  type AdjectiveInflection,
-  Entry,
-  type PrincipalPart,
-  Translation,
-} from "@monorepo/lexico-entities";
+import { Entry, Translation } from "@monorepo/lexico-entities";
 import { Injectable, Logger } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import numberToWords from "number-to-words";
@@ -53,9 +48,9 @@ export class ManualService {
       await this.deleteManual(id);
     }
 
-    await this.createManual(hicJson as unknown as Entry);
-    await this.createManual(illeJson as unknown as Entry);
-    await this.createManual(omnisJson as unknown as Entry);
+    await this.createManual(Object.assign(new Entry(), hicJson));
+    await this.createManual(Object.assign(new Entry(), illeJson));
+    await this.createManual(Object.assign(new Entry(), omnisJson));
 
     await this.ingestPraenomenAbbreviations();
     await this.ingestRomanNumerals();
@@ -114,12 +109,10 @@ export class ManualService {
     for (const [abbreviation, praenomen] of Object.entries(
       PRAENOMEN_ABBREVIATIONS,
     )) {
-      const entry = structuredClone(
-        praenomenAbbreviationTemplate,
-      ) as unknown as Entry & {
-        principalParts: PrincipalPart[];
-        inflection: { declension: string; gender: string; other: string };
-      };
+      const entry = Object.assign(
+        new Entry(),
+        structuredClone(praenomenAbbreviationTemplate),
+      );
       entry.id = `${abbreviation}:100`;
       if (entry.principalParts[0]) {
         entry.principalParts[0].text = [abbreviation];
@@ -129,14 +122,18 @@ export class ManualService {
       }
       entry.translations = [];
       if (praenomen.masculine) {
-        entry.translations.push({
-          translation: `Praenomen abbreviation: ${praenomen.masculine} (male)`,
-        } as Translation);
+        entry.translations.push(
+          new Translation(
+            `Praenomen abbreviation: ${praenomen.masculine} (male)`,
+          ),
+        );
       }
       if (praenomen.feminine) {
-        entry.translations.push({
-          translation: `Praenomen abbreviation: ${praenomen.feminine} (female)`,
-        } as Translation);
+        entry.translations.push(
+          new Translation(
+            `Praenomen abbreviation: ${praenomen.feminine} (female)`,
+          ),
+        );
       }
       if (praenomen.masculine && !praenomen.feminine) {
         entry.inflection.gender = "masculine";
@@ -154,22 +151,18 @@ export class ManualService {
     this.logger.log("🔢 Ingesting Roman numerals");
     for (let i = 1; i < 4000; i++) {
       const roman = this.decimalToRoman(i).toLowerCase();
-      const entry = structuredClone(
-        romanNumeralTemplate,
-      ) as unknown as Entry & {
-        principalParts: PrincipalPart[];
-      };
+      const entry = Object.assign(
+        new Entry(),
+        structuredClone(romanNumeralTemplate),
+      );
       entry.id = `${roman}:100`;
       if (entry.principalParts[0]) {
         entry.principalParts[0].text = [roman];
       }
-      const inflection = entry.inflection as AdjectiveInflection;
-      inflection.declension = "";
-      inflection.degree = "positive";
+      entry.inflection.declension = "";
+      entry.inflection.degree = "positive";
       entry.translations = [
-        {
-          translation: `Roman numeral: ${i} (${numberToWords.toWords(i)})`,
-        } as Translation,
+        new Translation(`Roman numeral: ${i} (${numberToWords.toWords(i)})`),
       ];
       await this.createManual(entry);
     }

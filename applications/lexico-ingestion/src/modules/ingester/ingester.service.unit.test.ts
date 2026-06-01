@@ -30,7 +30,7 @@ describe("IngesterService", () => {
       ],
     }).compile();
 
-    service = module.get(IngesterService);
+    service = await module.resolve(IngesterService);
   });
 
   it("should be defined", () => {

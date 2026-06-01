@@ -1,5 +1,8 @@
 import {
   createSourceFile,
+  isClassDeclaration,
+  isDecorator,
+  isIdentifier,
   type Node,
   ScriptTarget,
   type SourceFile,
@@ -16,6 +19,36 @@ function firstStatement(code: string): Node {
   const stmt = parseTypescript(code).statements.at(0);
   if (stmt === undefined) throw new Error("No statement found");
   return stmt;
+}
+
+/**
+ * Returns the decorator with the given name from the first class declaration
+ * in the source, or throws if not found.
+ */
+function namedDecorator(code: string, decoratorName: string): Node {
+  const sf = parseTypescript(code);
+  const classDecl = sf.statements.find((s) => isClassDeclaration(s));
+  if (classDecl === undefined) throw new Error("No class declaration found");
+  const modifiers = classDecl.modifiers;
+  if (modifiers === undefined) throw new Error("No modifiers found");
+  const decorator = modifiers.find(
+    (m) =>
+      isDecorator(m) &&
+      (() => {
+        const expr = (m as { expression?: Node }).expression;
+        if (expr === undefined) return false;
+        if (isIdentifier(expr)) return expr.text === decoratorName;
+        const callee = (expr as { expression?: Node }).expression;
+        return (
+          callee !== undefined &&
+          isIdentifier(callee) &&
+          callee.text === decoratorName
+        );
+      })(),
+  );
+  if (decorator === undefined)
+    throw new Error(`Decorator @${decoratorName} not found`);
+  return decorator;
 }
 
 describe("getComments", () => {
@@ -190,5 +223,64 @@ describe("validateComments", () => {
         side: "end",
       }),
     ).toEqual([]);
+  });
+
+  it("satisfies TODO comment on a decorator when JSDoc is placed before an intermediary decorator", () => {
+    // Template has: /** TODO: ... */ @Module({}) export class Foo {}
+    // Instance has: /** Real JSDoc */ @Global() @Module({}) export class Foo {}
+    // The TODO on @Module should be satisfied by the JSDoc before @Global().
+    const templateCode = `
+/** TODO: Document the foo module. */
+@Module({})
+export class FooModule {}
+`.trim();
+    const instanceCode = `
+/**
+ * Real documentation for the foo module.
+ */
+@Global()
+@Module({})
+export class FooModule {}
+`.trim();
+
+    const templateModuleDecorator = namedDecorator(templateCode, "Module");
+    const instanceModuleDecorator = namedDecorator(instanceCode, "Module");
+
+    const errors = validateComments({
+      templateNode: templateModuleDecorator,
+      instanceNode: instanceModuleDecorator,
+      language: "typescript",
+      side: "pos",
+    });
+
+    expect(errors).toEqual([]);
+  });
+
+  it("still reports error when TODO comment on a decorator has no comment anywhere in ancestor range", () => {
+    const templateCode = `
+/** TODO: Document the foo module. */
+@Module({})
+export class FooModule {}
+`.trim();
+    const instanceCode = `
+@Global()
+@Module({})
+export class FooModule {}
+`.trim();
+
+    const templateModuleDecorator = namedDecorator(templateCode, "Module");
+    const instanceModuleDecorator = namedDecorator(instanceCode, "Module");
+
+    const errors = validateComments({
+      templateNode: templateModuleDecorator,
+      instanceNode: instanceModuleDecorator,
+      language: "typescript",
+      side: "pos",
+    });
+
+    expect(errors).toHaveLength(1);
+    expect(errors.at(0)?.message).toContain(
+      'Missing comment: "/** TODO: Document the foo module. */"',
+    );
   });
 });

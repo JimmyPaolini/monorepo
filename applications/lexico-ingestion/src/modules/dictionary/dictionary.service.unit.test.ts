@@ -37,7 +37,7 @@ describe("DictionaryService", () => {
       ],
     }).compile();
 
-    service = module.get(DictionaryService);
+    service = await module.resolve(DictionaryService);
   });
 
   it("should be defined", () => {

@@ -18,7 +18,7 @@ describe("ClearService", () => {
       ],
     }).compile();
 
-    service = module.get(ClearService);
+    service = await module.resolve(ClearService);
   });
 
   it("should be defined", () => {

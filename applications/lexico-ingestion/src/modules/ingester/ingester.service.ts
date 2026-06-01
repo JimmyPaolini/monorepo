@@ -46,13 +46,12 @@ export class IngesterService {
     return _.upperFirst(str);
   }
 
-  // eslint-disable-next-line @typescript-eslint/require-await
-  private async parsePrincipalParts(
+  private parsePrincipalParts(
     entry: Entry,
     $: cheerio.CheerioAPI,
     elt: AnyNode,
     firstPrincipalPartName: string,
-  ): Promise<{ principalParts: PrincipalPart[]; macronizedWord: string }> {
+  ): { principalParts: PrincipalPart[]; macronizedWord: string } {
     const principalParts: PrincipalPart[] = [];
 
     const firstPP = new PrincipalPart();
@@ -60,7 +59,7 @@ export class IngesterService {
     firstPP.text = $(elt)
       .children("strong.Latn.headword")
       .toArray()
-      .map((p1) => $(p1).text().toLowerCase());
+      .map((p1: AnyNode) => $(p1).text().toLowerCase());
     firstPP.entry = entry;
     principalParts.push(firstPP);
 
@@ -117,7 +116,7 @@ export class IngesterService {
         translation = `${translation} ${$(li)
           .find("span.form-of-definition-link")
           .toArray()
-          .map((ref) => `{*${this.normalize($(ref).text())}*}`)
+          .map((ref: AnyNode) => `{*${this.normalize($(ref).text())}*}`)
           .join(" ")}`;
       }
 
@@ -135,7 +134,7 @@ export class IngesterService {
   ): { etymology: string; participleTranslation?: Translation } {
     const etymologyHeaderDiv = $(elt)
       .prevAll("div.mw-heading")
-      .filter((_, el) => /etymology/i.test($(el).text()))
+      .filter((_: number, el: AnyNode) => /etymology/i.test($(el).text()))
       .first();
 
     if (etymologyHeaderDiv.length <= 0) return { etymology: "" };
@@ -204,8 +203,12 @@ export class IngesterService {
       entry.partOfSpeech = partOfSpeech;
 
       try {
-        const { principalParts, macronizedWord } =
-          await this.parsePrincipalParts(entry, $, elt, firstPrincipalPartName);
+        const { principalParts, macronizedWord } = this.parsePrincipalParts(
+          entry,
+          $,
+          elt,
+          firstPrincipalPartName,
+        );
         entry.principalParts = principalParts;
 
         entry.inflection = this.partOfSpeechService.ingestInflection(

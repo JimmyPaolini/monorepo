@@ -20,7 +20,7 @@ describe("ManualService", () => {
       ],
     }).compile();
 
-    service = module.get(ManualService);
+    service = await module.resolve(ManualService);
   });
 
   it("should be defined", () => {
