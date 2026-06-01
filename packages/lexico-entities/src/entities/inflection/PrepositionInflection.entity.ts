@@ -4,8 +4,14 @@ import { ChildEntity, Column } from "typeorm";
 import { Inflection } from "./Inflection.entity.js";
 
 export const prepositionCaseValues = ["accusative", "ablative", ""] as const;
+/**
+ *
+ */
 export type PrepositionCase = (typeof prepositionCaseValues)[number];
 
+/**
+ *
+ */
 @ObjectType({ implements: Inflection })
 @ChildEntity("preposition")
 export class PrepositionInflection extends Inflection {

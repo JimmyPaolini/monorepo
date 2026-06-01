@@ -6,12 +6,12 @@ import { ManualService } from "./manual.service.js";
 
 /**
  * CLI command: `lexico-ingestion manual`
- * Ingests manually-curated entries (hic, ille, omnis, Roman numerals).
+ * Ingests manually-curated lexemes (hic, ille, omnis, Roman numerals).
  */
 @Command({
   name: "manual",
   description:
-    "Ingest manually-curated dictionary entries (hic, ille, omnis, Roman numerals)",
+    "Ingest manually-curated dictionary lexemes (hic, ille, omnis, Roman numerals)",
 })
 export class ManualCommand extends CommandRunner {
   constructor(

@@ -2,7 +2,7 @@ import { Lexeme, Translation, Word } from "@monorepo/lexico-entities";
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
-import { IngesterModule } from "../ingester/ingester.module.js";
+import { LexemesModule } from "../lexemes/lexemes.module.js";
 
 import { DictionaryCommand } from "./dictionary.command.js";
 import { DictionaryService } from "./dictionary.service";
@@ -14,7 +14,7 @@ import { DictionaryService } from "./dictionary.service";
   controllers: [],
   imports: [
     TypeOrmModule.forFeature([Lexeme, Word, Translation]),
-    IngesterModule,
+    LexemesModule,
   ],
   providers: [DictionaryCommand, DictionaryService],
   exports: [DictionaryService],

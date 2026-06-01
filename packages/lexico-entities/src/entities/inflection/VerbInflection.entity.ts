@@ -11,8 +11,14 @@ export const verbConjugationValues = [
   "fourth",
   "",
 ] as const;
+/**
+ *
+ */
 export type VerbConjugation = (typeof verbConjugationValues)[number];
 
+/**
+ *
+ */
 @ObjectType({ implements: Inflection })
 @ChildEntity("verb")
 export class VerbInflection extends Inflection {

@@ -1,10 +1,13 @@
 import { Field, ObjectType } from "@nestjs/graphql";
 import { ChildEntity, Column } from "typeorm";
 
-import { declensionEnumValues } from "./NounInflection.entity.js";
 import { Inflection } from "./Inflection.entity.js";
+import { declensionEnumValues } from "./NounInflection.entity.js";
 
 export const adjectiveDeclensionValues = ["first/second", "third", ""] as const;
+/**
+ *
+ */
 export type AdjectiveDeclension = (typeof adjectiveDeclensionValues)[number];
 
 export const adjectiveDegreeValues = [
@@ -12,8 +15,14 @@ export const adjectiveDegreeValues = [
   "comparative",
   "superlative",
 ] as const;
+/**
+ *
+ */
 export type AdjectiveDegree = (typeof adjectiveDegreeValues)[number];
 
+/**
+ *
+ */
 @ObjectType({ implements: Inflection })
 @ChildEntity("adjective")
 export class AdjectiveInflection extends Inflection {

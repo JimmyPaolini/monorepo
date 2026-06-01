@@ -4,18 +4,50 @@
   "projectType": "library",
   "sourceRoot": "packages/lexico-entities",
   "tags": [
-    "framework:typeorm",
+    "domain:lexico",
     "framework:nestjs",
-    "language:typescript",
-    "domain:lexico"
+    "framework:typeorm",
+    "language:typescript"
   ],
   "targets": {
-    "typecheck": {
-      "executor": "nx:run-commands",
+    "analyze-code": {},
+    "build": {
+      "executor": "@nx/vite:build",
       "options": {
-        "command": "pnpm typecheck",
-        "cwd": "packages/lexico-entities"
+        "outputPath": "dist/packages/lexico-entities"
+      },
+      "outputs": ["{options.outputPath}"]
+    },
+    "clean": {},
+    "dependency-cruiser": {},
+    "eslint": {},
+    "format": {},
+    "knip": {},
+    "lint": {
+      "configurations": {
+        "check": {
+          "commands": [
+            "nx run {projectName}:eslint:check",
+            "nx run {projectName}:oxlint:check"
+          ],
+          "parallel": true
+        },
+        "write": {
+          "commands": [
+            "nx run {projectName}:eslint:write",
+            "nx run {projectName}:oxlint:write"
+          ],
+          "parallel": false
+        }
       }
-    }
+    },
+    "markdown-lint": {},
+    "oxfmt": {},
+    "oxlint": {},
+    "prettier": {},
+    "spell-check": {},
+    "type-coverage": {},
+    "typecheck": {},
+    "yaml-lint": {}
   }
 }

@@ -44,7 +44,7 @@ export class WordsService {
 
     do {
       batch = await this.lexemesRepository.find({
-        relations: ["principalParts", "forms"],
+        relations: ["principalParts"],
         order: { id: "ASC" },
         take: batchSize,
         skip,

@@ -4,6 +4,9 @@ import { ChildEntity, Column } from "typeorm";
 import { Inflection } from "./Inflection.entity.js";
 
 export const adverbTypeValues = ["descriptive", "conjunctional", ""] as const;
+/**
+ *
+ */
 export type AdverbType = (typeof adverbTypeValues)[number];
 
 export const adverbDegreeValues = [
@@ -11,8 +14,14 @@ export const adverbDegreeValues = [
   "comparative",
   "superlative",
 ] as const;
+/**
+ *
+ */
 export type AdverbDegree = (typeof adverbDegreeValues)[number];
 
+/**
+ *
+ */
 @ObjectType({ implements: Inflection })
 @ChildEntity("adverb")
 export class AdverbInflection extends Inflection {

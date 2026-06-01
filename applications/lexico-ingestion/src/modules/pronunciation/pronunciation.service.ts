@@ -1,4 +1,4 @@
-import { Pronunciation, PronunciationParts } from "@monorepo/lexico-entities";
+import { Pronunciation } from "@monorepo/lexico-entities";
 import { Injectable } from "@nestjs/common";
 import * as cheerio from "cheerio";
 import _ from "lodash";
@@ -270,8 +270,13 @@ export class PronunciationService {
     return pronunciations;
   }
 
-  private parsePhonics(pronunciations: string[]): PronunciationParts {
-    const parsed = new PronunciationParts();
+  private parsePhonics(
+    pronunciations: string[],
+  ): Pick<Pronunciation, "phonemic" | "phonetic"> {
+    const parsed: Pick<Pronunciation, "phonemic" | "phonetic"> = {
+      phonemic: null,
+      phonetic: null,
+    };
     for (const pronunciation of pronunciations) {
       if (/\/.*\//.test(pronunciation)) {
         parsed.phonemic = pronunciation.trim();
@@ -287,31 +292,38 @@ export class PronunciationService {
   /**
    * Parses pronunciation data from the Wiktionary HTML element context.
    * Requires `macronizedWord` to already be resolved (call `parsePrincipalParts`
-   * before this function).
+   * before this function). Returns one `Pronunciation` entity per variant.
    */
   parse(
     $: cheerio.CheerioAPI,
     elt: AnyNode,
     macronizedWord: string,
-  ): Pronunciation {
-    const pronunciation = new Pronunciation();
-    pronunciation.classical = {
-      phonemes: this.getClassicalPhonemes(macronizedWord),
-      phonemic: "",
-      phonetic: "",
-    };
-    pronunciation.ecclesiastical = {
-      phonemes: this.getEcclesiasticalPronunciations(macronizedWord)[0] ?? "",
-      phonemic: "",
-      phonetic: "",
-    };
-    pronunciation.vulgar = { phonemes: "", phonemic: "", phonetic: "" };
+  ): Pronunciation[] {
+    const classical = new Pronunciation();
+    classical.variant = "classical";
+    classical.phonemes = this.getClassicalPhonemes(macronizedWord);
+    classical.phonemic = null;
+    classical.phonetic = null;
+
+    const ecclesiastical = new Pronunciation();
+    ecclesiastical.variant = "ecclesiastical";
+    ecclesiastical.phonemes =
+      this.getEcclesiasticalPronunciations(macronizedWord)[0] ?? null;
+    ecclesiastical.phonemic = null;
+    ecclesiastical.phonetic = null;
+
+    const vulgar = new Pronunciation();
+    vulgar.variant = "vulgar";
+    vulgar.phonemes = null;
+    vulgar.phonemic = null;
+    vulgar.phonetic = null;
 
     const pronunciationHeader = $(elt)
       .prevAll("div.mw-heading")
       .filter((_: number, el: AnyNode) => /pronunciation/i.test($(el).text()))
       .first();
-    if (pronunciationHeader.length <= 0) return pronunciation;
+    if (pronunciationHeader.length <= 0)
+      return [classical, ecclesiastical, vulgar];
 
     for (const pr of pronunciationHeader.next("ul").children()) {
       if (/^audio/i.test($(pr).text())) continue;
@@ -324,20 +336,14 @@ export class PronunciationService {
 
       const anchorText = $(pr).find("a").text();
       if (anchorText.includes("Classical")) {
-        _.assign(
-          pronunciation.classical,
-          this.parsePhonics(pronunciationsText),
-        );
+        _.assign(classical, this.parsePhonics(pronunciationsText));
       } else if (anchorText.includes("Ecclesiastical")) {
-        _.assign(
-          pronunciation.ecclesiastical,
-          this.parsePhonics(pronunciationsText),
-        );
+        _.assign(ecclesiastical, this.parsePhonics(pronunciationsText));
       } else if (anchorText.includes("Vulgar")) {
-        _.assign(pronunciation.vulgar, this.parsePhonics(pronunciationsText));
+        _.assign(vulgar, this.parsePhonics(pronunciationsText));
       }
     }
 
-    return pronunciation;
+    return [classical, ecclesiastical, vulgar];
   }
 }

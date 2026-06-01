@@ -5,7 +5,7 @@ import {
   AdverbForms,
   AdverbInflection,
   type AdverbType,
-  Forms,
+  type Forms,
   type Inflection,
   type Lexeme,
   nounDeclensionValues,
@@ -18,6 +18,7 @@ import {
   type PrincipalPart,
   Uninflected,
   verbConjugationValues,
+  VerbForms,
   VerbInflection,
 } from "@monorepo/lexico-entities";
 import { Injectable } from "@nestjs/common";
@@ -121,18 +122,18 @@ export class PartOfSpeechService {
       ? "third-io"
       : (conjugation.match(verbConjugationRegex)?.[0] ?? "");
 
-    const vi = new VerbInflection();
-    vi.conjugation =
+    const verbInflection = new VerbInflection();
+    verbInflection.conjugation =
       verbConjugationValues.find((v) => v === finalConjugation) ?? "";
-    vi.other = other;
-    return vi;
+    verbInflection.other = other;
+    return verbInflection;
   }
 
   // eslint-disable-next-line @typescript-eslint/require-await
   private async ingestVerbForms(
     $: cheerio.CheerioAPI,
     elt: AnyNode,
-  ): Promise<Forms | null> {
+  ): Promise<VerbForms | null> {
     const table = this.parseFormTable($, elt);
     if (!table) return null;
 
@@ -243,7 +244,7 @@ export class PartOfSpeechService {
     for (const inflection of structuredClone(disorganizedForms)) {
       this.sortIdentifiers(inflection, forms);
     }
-    return Object.assign(new Forms(), forms);
+    return forms;
   }
 
   private ingestAdjectiveInflection(
@@ -291,14 +292,14 @@ export class PartOfSpeechService {
     return adverbInflection;
   }
 
-  private ingestAdverbForms(principalParts: PrincipalPart[]): Forms {
-    const adverbForms = new AdverbForms();
-    adverbForms.positive = principalParts[0]?.text ?? [];
+  private ingestAdverbForms(principalParts: PrincipalPart[]): AdverbForms {
+    const forms = new AdverbForms();
+    forms.positive = principalParts[0]?.text ?? [];
     if (principalParts.length >= 2)
-      adverbForms.comparative = principalParts[1]?.text ?? [];
+      forms.comparative = principalParts[1]?.text ?? [];
     if (principalParts.length >= 3)
-      adverbForms.superlative = principalParts[2]?.text ?? [];
-    return adverbForms;
+      forms.superlative = principalParts[2]?.text ?? [];
+    return forms;
   }
 
   private ingestPronounInflection(
@@ -444,7 +445,7 @@ export class PartOfSpeechService {
     for (const inflection of structuredClone(disorganizedForms)) {
       this.sortIdentifiers(inflection, forms);
     }
-    return Object.assign(new Forms(), forms);
+    return forms;
   }
 
   private parseFormTable(

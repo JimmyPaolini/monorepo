@@ -6,10 +6,10 @@ import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 
-import { IngesterService } from "../ingester/ingester.service.js";
+import { LexemesService } from "../lexemes/lexemes.service.js";
 import { LoggerService } from "../logger/logger.service.js";
 
-import type { WiktionaryEntry } from "../lexico-ingestion/lexico-ingestion.types.js";
+import type { WiktionaryPage } from "../lexico-ingestion/lexico-ingestion.types.js";
 
 /**
  * TODO: Document the dictionary service.
@@ -20,7 +20,7 @@ export class DictionaryService {
   constructor(
     @InjectRepository(Lexeme)
     private readonly lexemeRepository: Repository<Lexeme>,
-    private readonly ingesterService: IngesterService,
+    private readonly lexemesService: LexemesService,
     private readonly logger: LoggerService,
   ) {
     this.logger.setContext(DictionaryService.name);
@@ -54,8 +54,8 @@ export class DictionaryService {
       try {
         const filePath = path.join(this.dataDir, file);
         const raw = fs.readFileSync(filePath, "utf8");
-        const wiktionaryEntry = JSON.parse(raw) as WiktionaryEntry;
-        await this.ingestLexeme(wiktionaryEntry.word, wiktionaryEntry);
+        const wiktionaryPage = JSON.parse(raw) as WiktionaryPage;
+        await this.ingestLexeme(wiktionaryPage.word, wiktionaryPage);
       } catch (error) {
         this.logger.error(`Failed to process ${file}: ${String(error)}`);
       }
@@ -65,13 +65,13 @@ export class DictionaryService {
   }
 
   /** Parses the Wiktionary HTML for `word` into one or more `Lexeme` records
-   * and persists them. Loads the cached JSON file if `wiktionaryEntry` is
+   * and persists them. Loads the cached JSON file if `wiktionaryPage` is
    * not supplied. */
   async ingestLexeme(
     word: string,
-    wiktionaryEntry?: WiktionaryEntry,
+    wiktionaryPage?: WiktionaryPage,
   ): Promise<void> {
-    if (!wiktionaryEntry) {
+    if (!wiktionaryPage) {
       const filePath = path.join(
         this.dataDir,
         `${this.escapeCapitals(word)}.json`,
@@ -81,17 +81,17 @@ export class DictionaryService {
         return;
       }
       const raw = fs.readFileSync(filePath, "utf8");
-      wiktionaryEntry = JSON.parse(raw) as WiktionaryEntry;
+      wiktionaryPage = JSON.parse(raw) as WiktionaryPage;
     }
 
-    if (!wiktionaryEntry.html) {
+    if (!wiktionaryPage.html) {
       this.logger.warn(`No HTML for word: ${word}`);
       return;
     }
 
     this.logger.log(`📝 Ingesting lexeme "${word}"`);
     const parsedLexemes =
-      await this.ingesterService.parseLexemes(wiktionaryEntry);
+      await this.lexemesService.parseLexemes(wiktionaryPage);
     for (const lexeme of parsedLexemes) {
       // Explicitly save @ChildEntity inflection first — TypeORM's cascade
       // for STI child entities doesn't reliably set the FK on the parent row.

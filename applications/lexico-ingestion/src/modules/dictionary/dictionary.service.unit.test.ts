@@ -3,7 +3,7 @@ import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
 import { beforeAll, describe, expect, it, vi } from "vitest";
 
-import { IngesterService } from "../ingester/ingester.service";
+import { LexemesService } from "../lexemes/lexemes.service";
 import { LoggerService } from "../logger/logger.service";
 import { PartOfSpeechService } from "../part-of-speech/part-of-speech.service";
 import { PronunciationService } from "../pronunciation/pronunciation.service";
@@ -17,7 +17,7 @@ describe("DictionaryService", () => {
     const module = await Test.createTestingModule({
       providers: [
         DictionaryService,
-        IngesterService,
+        LexemesService,
         PartOfSpeechService,
         PronunciationService,
         { provide: getRepositoryToken(Lexeme), useValue: {} },

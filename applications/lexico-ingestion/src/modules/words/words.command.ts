@@ -6,11 +6,11 @@ import { WordsService } from "./words.service.js";
 
 /**
  * CLI command: `lexico-ingestion words`
- * Ingests Word search records from all dictionary entries.
+ * Ingests Word search records from all dictionary lexemes.
  */
 @Command({
   name: "words",
-  description: "Ingest word search records from dictionary entries",
+  description: "Ingest word search records from dictionary lexemes",
 })
 export class WordsCommand extends CommandRunner {
   constructor(

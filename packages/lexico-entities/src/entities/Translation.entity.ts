@@ -1,21 +1,26 @@
 import { Field, ID, ObjectType } from "@nestjs/graphql";
 import {
-  BaseEntity,
   Column,
   Entity,
+  Index,
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
 } from "typeorm";
 
-import { type Lexeme } from "./Lexeme.entity.js";
+import { AuditableEntity } from "./Auditable.entity.js";
 
+import type { Lexeme } from "./Lexeme.entity.js";
+
+/**
+ *
+ */
 @ObjectType()
 @Entity({
   name: "translations",
   comment: "An English translation of a Latin dictionary entry",
 })
-export class Translation extends BaseEntity {
+export class Translation extends AuditableEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn("uuid", { comment: "Auto-generated UUID" })
   id!: string;
@@ -29,6 +34,7 @@ export class Translation extends BaseEntity {
   lexeme!: Lexeme;
 
   @Field()
+  @Index()
   @Column("varchar", { length: 2047, comment: "English translation text" })
   translation!: string;
 

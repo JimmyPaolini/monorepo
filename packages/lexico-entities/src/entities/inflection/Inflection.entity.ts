@@ -6,6 +6,9 @@ import {
   TableInheritance,
 } from "typeorm";
 
+/**
+ *
+ */
 @InterfaceType()
 @Entity({
   name: "inflections",

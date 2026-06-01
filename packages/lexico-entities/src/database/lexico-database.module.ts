@@ -3,15 +3,6 @@ import { ConfigService } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { SnakeNamingStrategy } from "typeorm-naming-strategies";
 
-import { Lexeme } from "../entities/Lexeme.entity.js";
-import { PrincipalPart } from "../entities/PrincipalPart.entity.js";
-import { Translation } from "../entities/Translation.entity.js";
-import { Word } from "../entities/Word.entity.js";
-import { AdjectiveForms } from "../entities/forms/AdjectiveForms.entity.js";
-import { AdverbForms } from "../entities/forms/AdverbForms.entity.js";
-import { Forms } from "../entities/forms/Forms.entity.js";
-import { NounForms } from "../entities/forms/NounForms.entity.js";
-import { VerbForms } from "../entities/forms/VerbForms.entity.js";
 import { AdjectiveInflection } from "../entities/inflection/AdjectiveInflection.entity.js";
 import { AdverbInflection } from "../entities/inflection/AdverbInflection.entity.js";
 import { Inflection } from "../entities/inflection/Inflection.entity.js";
@@ -19,7 +10,15 @@ import { NounInflection } from "../entities/inflection/NounInflection.entity.js"
 import { PrepositionInflection } from "../entities/inflection/PrepositionInflection.entity.js";
 import { Uninflected } from "../entities/inflection/Uninflected.entity.js";
 import { VerbInflection } from "../entities/inflection/VerbInflection.entity.js";
+import { Lexeme } from "../entities/Lexeme.entity.js";
+import { PrincipalPart } from "../entities/PrincipalPart.entity.js";
+import { Pronunciation } from "../entities/Pronunciation.entity.js";
+import { Translation } from "../entities/Translation.entity.js";
+import { Word } from "../entities/Word.entity.js";
 
+/**
+ *
+ */
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
@@ -41,12 +40,8 @@ import { VerbInflection } from "../entities/inflection/VerbInflection.entity.js"
           AdverbInflection,
           PrepositionInflection,
           Uninflected,
-          Forms,
-          NounForms,
-          VerbForms,
-          AdjectiveForms,
-          AdverbForms,
           PrincipalPart,
+          Pronunciation,
           Word,
           Translation,
         ],

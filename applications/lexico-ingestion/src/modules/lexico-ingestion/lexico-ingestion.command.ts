@@ -17,8 +17,7 @@ import { WordsService } from "../words/words.service.js";
 @Injectable()
 @Command({
   name: "lexico-ingestion",
-  description:
-    "Ingest Wiktionary Latin entries and dictionary data into PostgreSQL",
+  description: "Ingest Wiktionary Latin dictionary data into PostgreSQL",
 })
 export class LexicoIngestionCommand extends CommandRunner {
   constructor(
@@ -44,13 +43,13 @@ export class LexicoIngestionCommand extends CommandRunner {
     this.logger.log("Step 1/6: Clearing dictionary data");
     await this.clearService.clearDictionary();
 
-    this.logger.log("Step 2/6: Ingesting Wiktionary entries");
+    this.logger.log("Step 2/6: Ingesting Wiktionary pages");
     await this.wiktionaryService.ingestWiktionary();
 
-    this.logger.log("Step 3/6: Processing dictionary entries");
+    this.logger.log("Step 3/6: Processing dictionary lexemes");
     await this.dictionaryService.ingestAll();
 
-    this.logger.log("Step 4/6: Ingesting manual entries");
+    this.logger.log("Step 4/6: Ingesting manual lexemes");
     await this.manualService.ingestManual();
 
     this.logger.log("Step 5/6: Resolving translation references");

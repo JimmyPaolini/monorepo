@@ -1,23 +1,9 @@
-import { Field, ID, InterfaceType } from "@nestjs/graphql";
-import {
-  BaseEntity,
-  Entity,
-  PrimaryGeneratedColumn,
-  TableInheritance,
-} from "typeorm";
+import type { AdjectiveForms } from "./AdjectiveForms.entity.js";
+import type { AdverbForms } from "./AdverbForms.entity.js";
+import type { NounForms } from "./NounForms.entity.js";
+import type { VerbForms } from "./VerbForms.entity.js";
 
-@InterfaceType()
-@Entity({
-  name: "forms",
-  comment:
-    "Abstract base table for pre-computed inflected forms using single-table inheritance",
-})
-@TableInheritance({ column: { type: "varchar", name: "type", length: 63 } })
-export class Forms extends BaseEntity {
-  @Field(() => ID)
-  @PrimaryGeneratedColumn("uuid", {
-    comment:
-      "Auto-generated UUID; discriminator column 'type' selects the child entity",
-  })
-  id!: string;
-}
+/**
+ *
+ */
+export type Forms = NounForms | AdjectiveForms | AdverbForms | VerbForms;

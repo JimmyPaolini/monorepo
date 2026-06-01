@@ -1,10 +1,15 @@
+export { AuditableEntity } from "./entities/Auditable.entity.js";
 export { Lexeme } from "./entities/Lexeme.entity.js";
 export { Translation } from "./entities/Translation.entity.js";
 export { Word } from "./entities/Word.entity.js";
 export type { PartOfSpeech } from "./entities/PartOfSpeech.js";
 export { partOfSpeechValues } from "./entities/PartOfSpeech.js";
 export { PrincipalPart } from "./entities/PrincipalPart.entity.js";
-export { Pronunciation, PronunciationParts } from "./entities/Pronunciation.js";
+export {
+  Pronunciation,
+  pronunciationVariantValues,
+} from "./entities/Pronunciation.entity.js";
+export type { PronunciationVariant } from "./entities/Pronunciation.entity.js";
 export { Inflection } from "./entities/inflection/Inflection.entity.js";
 export {
   AdjectiveInflection,
@@ -45,41 +50,47 @@ export {
   verbConjugationValues,
 } from "./entities/inflection/VerbInflection.entity.js";
 export type { VerbConjugation } from "./entities/inflection/VerbInflection.entity.js";
-export { Forms } from "./entities/forms/Forms.entity.js";
+export { LexicoDatabaseModule } from "./database/lexico-database.module.js";
+
+// Forms types (pure TypeScript + GraphQL — no TypeORM entity decorators)
+export type { Forms as LexemeForms } from "./entities/forms/Forms.entity.js";
+export {
+  NounForms,
+  NounCaseForms,
+  NounNumber,
+} from "./entities/forms/NounForms.entity.js";
 export {
   AdjectiveForms,
   AdjectiveCaseForms,
   AdjectiveNumber,
 } from "./entities/forms/AdjectiveForms.entity.js";
 export { AdverbForms } from "./entities/forms/AdverbForms.entity.js";
-export { NounForms } from "./entities/forms/NounForms.entity.js";
 export {
   VerbForms,
-  IndicativePerson,
-  IndicativeNumber,
-  IndicativeTense,
   IndicativeVoice,
-  SubjunctivePerson,
-  SubjunctiveNumber,
-  SubjunctiveTense,
+  IndicativeTense,
+  IndicativeNumber,
+  IndicativePerson,
   SubjunctiveVoice,
-  ImperativeSecond,
-  ImperativeSecondThird,
-  ImperativeThird,
+  SubjunctiveTense,
+  SubjunctiveNumber,
+  SubjunctivePerson,
+  ImperativeVoice,
+  ImperativeActiveVoice,
+  ImperativePassiveVoice,
   ImperativePresent,
   ImperativeActiveFuture,
   ImperativePassiveFuture,
-  ImperativeActiveVoice,
-  ImperativePassiveVoice,
-  ImperativeVoice,
-  NonFinitePresentPerfectFuture,
-  NonFinitePresentFuture,
-  NonFinitePerfectFuture,
+  ImperativeSecond,
+  ImperativeSecondThird,
+  ImperativeThird,
+  NonFiniteVoice,
   NonFiniteInfinitive,
   NonFiniteParticiple,
-  NonFiniteVoice,
+  NonFinitePresentPerfectFuture,
+  NonFinitePresentFuture,
+  VerbalNounForms,
   GerundForms,
   SupineForms,
-  VerbalNounForms,
 } from "./entities/forms/VerbForms.entity.js";
-export { LexicoDatabaseModule } from "./database/lexico-database.module.js";
+export { type Forms } from "./entities/forms/Forms.entity.js";

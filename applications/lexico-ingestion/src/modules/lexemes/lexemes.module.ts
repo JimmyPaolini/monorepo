@@ -3,7 +3,7 @@ import { Module } from "@nestjs/common";
 import { PartOfSpeechModule } from "../part-of-speech/part-of-speech.module.js";
 import { PronunciationModule } from "../pronunciation/pronunciation.module.js";
 
-import { IngesterService } from "./ingester.service";
+import { LexemesService } from "./lexemes.service";
 
 /**
  * Wires POS detection, pronunciation parsing, and full Wiktionary entry
@@ -11,8 +11,8 @@ import { IngesterService } from "./ingester.service";
  */
 @Module({
   controllers: [],
-  exports: [IngesterService],
+  exports: [LexemesService],
   imports: [PartOfSpeechModule, PronunciationModule],
-  providers: [IngesterService],
+  providers: [LexemesService],
 })
-export class IngesterModule {}
+export class LexemesModule {}

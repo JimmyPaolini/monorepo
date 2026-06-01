@@ -1,17 +1,17 @@
 import { Field, ObjectType } from "@nestjs/graphql";
-import { ChildEntity, Column } from "typeorm";
 
-import { Forms } from "./Forms.entity.js";
-
+/**
+ *
+ */
 @ObjectType()
 export class AdjectiveNumber {
-  @Field(() => [String], { nullable: true })
-  singular?: string[];
-
-  @Field(() => [String], { nullable: true })
-  plural?: string[];
+  @Field(() => [String], { nullable: true }) singular?: string[];
+  @Field(() => [String], { nullable: true }) plural?: string[];
 }
 
+/**
+ *
+ */
 @ObjectType()
 export class AdjectiveCaseForms {
   @Field(() => AdjectiveNumber, { nullable: true })
@@ -36,28 +36,15 @@ export class AdjectiveCaseForms {
   locative?: AdjectiveNumber;
 }
 
-/** Adjective forms keyed by gender, then case, then number. */
-@ObjectType({ implements: Forms })
-@ChildEntity("adjective")
-export class AdjectiveForms extends Forms {
+/** Adjective forms keyed by gender → case → number. */
+@ObjectType()
+export class AdjectiveForms {
   @Field(() => AdjectiveCaseForms, { nullable: true })
-  @Column("json", {
-    nullable: true,
-    comment: "Case and number forms for feminine gender",
-  })
   feminine?: AdjectiveCaseForms | null;
 
   @Field(() => AdjectiveCaseForms, { nullable: true })
-  @Column("json", {
-    nullable: true,
-    comment: "Case and number forms for masculine gender",
-  })
   masculine?: AdjectiveCaseForms | null;
 
   @Field(() => AdjectiveCaseForms, { nullable: true })
-  @Column("json", {
-    nullable: true,
-    comment: "Case and number forms for neuter gender",
-  })
   neuter?: AdjectiveCaseForms | null;
 }

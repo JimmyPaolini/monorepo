@@ -23,4 +23,7 @@ export const partOfSpeechValues = [
   "idiom",
 ] as const;
 
+/**
+ *
+ */
 export type PartOfSpeech = (typeof partOfSpeechValues)[number];

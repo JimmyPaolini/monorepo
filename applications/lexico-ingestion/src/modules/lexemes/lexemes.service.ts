@@ -7,9 +7,9 @@ import { LoggerService } from "../logger/logger.service.js";
 import { PartOfSpeechService } from "../part-of-speech/part-of-speech.service.js";
 import { PronunciationService } from "../pronunciation/pronunciation.service.js";
 
-import { skipPOS, translationSkipRegex, validPOS } from "./ingester.constants";
+import { skipPOS, translationSkipRegex, validPOS } from "./lexemes.constants";
 
-import type { WiktionaryEntry } from "../lexico-ingestion/lexico-ingestion.types.js";
+import type { WiktionaryPage } from "../lexico-ingestion/lexico-ingestion.types.js";
 import type { AnyNode } from "domhandler";
 
 /**
@@ -18,14 +18,14 @@ import type { AnyNode } from "domhandler";
  * services while inlining etymology, principal-parts, and translation logic.
  */
 @Injectable()
-export class IngesterService {
+export class LexemesService {
   // 🏗️ Dependency Injection
   constructor(
     private readonly logger: LoggerService,
     private readonly partOfSpeechService: PartOfSpeechService,
     private readonly pronunciationService: PronunciationService,
   ) {
-    this.logger.setContext(IngesterService.name);
+    this.logger.setContext(LexemesService.name);
   }
 
   // 🔐 Private Fields
@@ -167,17 +167,17 @@ export class IngesterService {
    * Parses Wiktionary HTML into fully-populated Lexeme objects using the
    * `p:has(strong.Latn.headword)` selector strategy.
    */
-  async parseLexemes(wiktionaryEntry: WiktionaryEntry): Promise<Lexeme[]> {
-    if (!wiktionaryEntry.html) return [];
+  async parseLexemes(wiktionaryPage: WiktionaryPage): Promise<Lexeme[]> {
+    if (!wiktionaryPage.html) return [];
 
-    const $ = cheerio.load(wiktionaryEntry.html);
-    const word = this.normalize(wiktionaryEntry.word);
+    const $ = cheerio.load(wiktionaryPage.html);
+    const word = this.normalize(wiktionaryPage.word);
     const lexemes: Lexeme[] = [];
 
     const headwordElements = $("p:has(strong.Latn.headword)").toArray();
 
     if (headwordElements.length === 0) {
-      this.logger.warn(`No headwords found for: ${wiktionaryEntry.word}`);
+      this.logger.warn(`No headwords found for: ${wiktionaryPage.word}`);
       return [];
     }
 
@@ -201,7 +201,8 @@ export class IngesterService {
       }
 
       const lexeme = new Lexeme();
-      lexeme.id = `${word}:${i}`;
+      lexeme.lemma = word;
+      lexeme.disambiguator = i;
       lexeme.partOfSpeech = partOfSpeech;
 
       try {
@@ -231,7 +232,7 @@ export class IngesterService {
           ? [...translations, participleTranslation]
           : translations;
 
-        lexeme.pronunciation = this.pronunciationService.parse(
+        lexeme.pronunciations = this.pronunciationService.parse(
           $,
           elt,
           macronizedWord,

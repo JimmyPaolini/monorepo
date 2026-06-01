@@ -1,38 +1,58 @@
 import { Field, ID, ObjectType } from "@nestjs/graphql";
 import {
-  BaseEntity,
   Column,
   Entity,
+  Index,
   JoinColumn,
   ManyToMany,
   OneToMany,
   OneToOne,
-  PrimaryColumn,
+  PrimaryGeneratedColumn,
+  Unique,
 } from "typeorm";
 
+import { AuditableEntity } from "./Auditable.entity.js";
+import { Inflection } from "./inflection/Inflection.entity.js";
 import { type PartOfSpeech, partOfSpeechValues } from "./PartOfSpeech.js";
 import { PrincipalPart } from "./PrincipalPart.entity.js";
-import { Pronunciation } from "./Pronunciation.js";
+import { Pronunciation } from "./Pronunciation.entity.js";
 import { Translation } from "./Translation.entity.js";
-import type { Word } from "./Word.entity.js";
-import { Forms } from "./forms/Forms.entity.js";
-import { Inflection } from "./inflection/Inflection.entity.js";
 
+import type { Forms } from "./forms/Forms.entity.js";
+import type { Word } from "./Word.entity.js";
+
+/**
+ *
+ */
 @ObjectType()
 @Entity({
-  name: "entries",
+  name: "lexemes",
   comment:
     "A dictionary entry representing a Latin word form with its translations, principal parts, pronunciation, and inflection data",
 })
-export class Lexeme extends BaseEntity {
+@Unique(["lemma", "disambiguator"])
+export class Lexeme extends AuditableEntity {
   @Field(() => ID)
-  @PrimaryColumn("varchar", {
-    length: 127,
-    unique: true,
-    comment:
-      "Unique identifier for the entry, typically the dictionary headword",
+  @PrimaryGeneratedColumn("uuid", {
+    comment: "Auto-generated UUID primary key",
   })
   id!: string;
+
+  @Field()
+  @Index()
+  @Column("varchar", {
+    length: 127,
+    comment: "Dictionary headword (lemma), e.g. 'amō'",
+  })
+  lemma!: string;
+
+  @Field()
+  @Column("smallint", {
+    default: 0,
+    comment:
+      "Disambiguation index when multiple entries share the same lemma (0-based)",
+  })
+  disambiguator!: number;
 
   @Field({ nullable: true })
   @Column("varchar", {
@@ -42,20 +62,17 @@ export class Lexeme extends BaseEntity {
   })
   etymology?: string;
 
-  @Field(() => Forms, { nullable: true })
-  @OneToOne(() => Forms, {
+  @Field(() => Object, { nullable: true })
+  @Column("jsonb", {
     nullable: true,
-    eager: true,
-    cascade: true,
-    onDelete: "SET NULL",
+    comment:
+      "Pre-computed inflected forms as a nested JSON object keyed by morphological identifiers",
   })
-  @JoinColumn()
   forms?: Forms | null;
 
   @Field(() => Inflection, { nullable: true })
   @OneToOne(() => Inflection, {
     nullable: true,
-    eager: true,
     cascade: true,
     onDelete: "SET NULL",
   })
@@ -63,6 +80,7 @@ export class Lexeme extends BaseEntity {
   inflection?: Inflection | null;
 
   @Field(() => String)
+  @Index()
   @Column({
     type: "enum",
     enum: partOfSpeechValues,
@@ -72,19 +90,19 @@ export class Lexeme extends BaseEntity {
 
   @Field(() => [PrincipalPart])
   @OneToMany(() => PrincipalPart, "lexeme", {
-    eager: true,
     cascade: true,
   })
   principalParts!: PrincipalPart[];
 
-  @Field(() => Pronunciation, { nullable: true })
-  @Column(() => Pronunciation)
-  pronunciation?: Pronunciation;
+  @Field(() => [Pronunciation], { nullable: true })
+  @OneToMany(() => Pronunciation, "lexeme", {
+    cascade: true,
+  })
+  pronunciations?: Pronunciation[] | null;
 
   @Field(() => [Translation], { nullable: true })
   @OneToMany(() => Translation, (translation) => translation.lexeme, {
     nullable: true,
-    eager: true,
     cascade: true,
     onDelete: "CASCADE",
   })

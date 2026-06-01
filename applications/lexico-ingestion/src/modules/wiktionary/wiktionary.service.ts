@@ -9,7 +9,7 @@ import { LoggerService } from "../logger/logger.service.js";
 import { categories } from "./wiktionary.constants.js";
 
 import type { Category } from "./wiktionary.types.js";
-import type { WiktionaryEntry } from "../lexico-ingestion/lexico-ingestion.types.js";
+import type { WiktionaryPage } from "../lexico-ingestion/lexico-ingestion.types.js";
 
 /**
  * Provides Wiktionary entry fetching and parsing utilities.
@@ -138,7 +138,7 @@ export class WiktionaryService {
     category: string,
   ): Promise<void> {
     if (!urlPath.includes("#Latin")) urlPath += "#Latin";
-    const entry: WiktionaryEntry = {
+    const entry: WiktionaryPage = {
       word,
       category,
       href: `${this.host}${urlPath}`,
@@ -169,7 +169,7 @@ export class WiktionaryService {
       return;
     }
 
-    const entryWithHtml: WiktionaryEntry = {
+    const entryWithHtml: WiktionaryPage = {
       ...entry,
       html: `<div class="${entry.word}">${$.html(section)}</div>`,
     };

@@ -1,89 +1,31 @@
 import { Field, ObjectType } from "@nestjs/graphql";
-import { ChildEntity, Column } from "typeorm";
 
-import { Forms } from "./Forms.entity.js";
+/**
+ *
+ */
+@ObjectType()
+export class NounNumber {
+  @Field(() => [String], { nullable: true }) singular?: string[];
+  @Field(() => [String], { nullable: true }) plural?: string[];
+}
 
-/** Flat representation of a noun's declined forms (7 cases × 2 numbers). */
-@ObjectType({ implements: Forms })
-@ChildEntity("noun")
-export class NounForms extends Forms {
-  @Field(() => [String], { nullable: true })
-  @Column("simple-array", { nullable: true, comment: "Ablative plural forms" })
-  ablativePlural?: string[];
+/**
+ *
+ */
+@ObjectType()
+export class NounCaseForms {
+  @Field(() => NounNumber, { nullable: true }) nominative?: NounNumber;
+  @Field(() => NounNumber, { nullable: true }) genitive?: NounNumber;
+  @Field(() => NounNumber, { nullable: true }) dative?: NounNumber;
+  @Field(() => NounNumber, { nullable: true }) accusative?: NounNumber;
+  @Field(() => NounNumber, { nullable: true }) ablative?: NounNumber;
+  @Field(() => NounNumber, { nullable: true }) vocative?: NounNumber;
+  @Field(() => NounNumber, { nullable: true }) locative?: NounNumber;
+}
 
-  @Field(() => [String], { nullable: true })
-  @Column("simple-array", {
-    nullable: true,
-    comment: "Ablative singular forms",
-  })
-  ablativeSingular?: string[];
-
-  @Field(() => [String], { nullable: true })
-  @Column("simple-array", {
-    nullable: true,
-    comment: "Accusative plural forms",
-  })
-  accusativePlural?: string[];
-
-  @Field(() => [String], { nullable: true })
-  @Column("simple-array", {
-    nullable: true,
-    comment: "Accusative singular forms",
-  })
-  accusativeSingular?: string[];
-
-  @Field(() => [String], { nullable: true })
-  @Column("simple-array", { nullable: true, comment: "Dative plural forms" })
-  dativePlural?: string[];
-
-  @Field(() => [String], { nullable: true })
-  @Column("simple-array", { nullable: true, comment: "Dative singular forms" })
-  dativeSingular?: string[];
-
-  @Field(() => [String], { nullable: true })
-  @Column("simple-array", { nullable: true, comment: "Genitive plural forms" })
-  genitivePlural?: string[];
-
-  @Field(() => [String], { nullable: true })
-  @Column("simple-array", {
-    nullable: true,
-    comment: "Genitive singular forms",
-  })
-  genitiveSingular?: string[];
-
-  @Field(() => [String], { nullable: true })
-  @Column("simple-array", { nullable: true, comment: "Locative plural forms" })
-  locativePlural?: string[];
-
-  @Field(() => [String], { nullable: true })
-  @Column("simple-array", {
-    nullable: true,
-    comment: "Locative singular forms",
-  })
-  locativeSingular?: string[];
-
-  @Field(() => [String], { nullable: true })
-  @Column("simple-array", {
-    nullable: true,
-    comment: "Nominative plural forms",
-  })
-  nominativePlural?: string[];
-
-  @Field(() => [String], { nullable: true })
-  @Column("simple-array", {
-    nullable: true,
-    comment: "Nominative singular forms",
-  })
-  nominativeSingular?: string[];
-
-  @Field(() => [String], { nullable: true })
-  @Column("simple-array", { nullable: true, comment: "Vocative plural forms" })
-  vocativePlural?: string[];
-
-  @Field(() => [String], { nullable: true })
-  @Column("simple-array", {
-    nullable: true,
-    comment: "Vocative singular forms",
-  })
-  vocativeSingular?: string[];
+/** Noun declined forms keyed by case → singular/plural. */
+@ObjectType()
+export class NounForms {
+  @Field(() => NounCaseForms, { nullable: true })
+  cases?: NounCaseForms | null;
 }

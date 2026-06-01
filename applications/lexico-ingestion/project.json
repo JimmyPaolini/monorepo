@@ -28,6 +28,7 @@
         "cwd": "applications/lexico-ingestion"
       }
     },
+    "eslint": {},
     "format": {},
     "knip": {},
     "lint": {},

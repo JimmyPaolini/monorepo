@@ -4,12 +4,12 @@ import { Command, CommandRunner } from "nest-commander";
 import { WiktionaryService } from "./wiktionary.service.js";
 
 /**
- * Ingest all Latin Wiktionary entries.
+ * Ingest all Latin Wiktionary pages.
  */
 @Injectable()
 @Command({
   name: "wiktionary",
-  description: "Ingest Latin entries from Wiktionary into the database",
+  description: "Ingest Latin pages from Wiktionary into a local folder",
 })
 export class WiktionaryCommand extends CommandRunner {
   constructor(private readonly wiktionaryService: WiktionaryService) {

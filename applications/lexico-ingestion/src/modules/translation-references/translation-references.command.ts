@@ -9,7 +9,7 @@ import { TranslationReferencesService } from "./translation-references.service.j
  */
 @Command({
   name: "translation-references",
-  description: "Resolve translation reference markers in dictionary entries",
+  description: "Resolve translation reference markers in dictionary lexemes",
 })
 export class TranslationReferencesCommand extends CommandRunner {
   private readonly logger = new Logger(TranslationReferencesCommand.name);

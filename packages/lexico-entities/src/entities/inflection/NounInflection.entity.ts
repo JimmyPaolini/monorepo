@@ -11,6 +11,9 @@ export const nounDeclensionValues = [
   "fifth",
   "",
 ] as const;
+/**
+ *
+ */
 export type NounDeclension = (typeof nounDeclensionValues)[number];
 
 // Unified DB enum: union of all child-entity declension values (noun + adjective)
@@ -31,8 +34,14 @@ export const nounGenderValues = [
   "neuter",
   "",
 ] as const;
+/**
+ *
+ */
 export type NounGender = (typeof nounGenderValues)[number];
 
+/**
+ *
+ */
 @ObjectType({ implements: Inflection })
 @ChildEntity("noun")
 export class NounInflection extends Inflection {
