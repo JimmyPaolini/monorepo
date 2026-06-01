@@ -5,9 +5,9 @@ import {
   AdverbForms,
   AdverbInflection,
   type AdverbType,
-  type Entry,
   Forms,
   type Inflection,
+  type Lexeme,
   nounDeclensionValues,
   nounGenderValues,
   NounInflection,
@@ -358,7 +358,7 @@ export class PartOfSpeechService {
   private async parseGenericForms(
     $: cheerio.CheerioAPI,
     elt: AnyNode,
-    entry: Entry,
+    lexeme: Lexeme,
   ): Promise<Forms | null> {
     const table = this.parseFormTable($, elt);
     if (!table) return null;
@@ -406,7 +406,7 @@ export class PartOfSpeechService {
 
       if (
         ["adjective", "participle", "numeral", "suffix"].includes(
-          entry.partOfSpeech,
+          lexeme.partOfSpeech,
         )
       ) {
         return [
@@ -602,14 +602,14 @@ export class PartOfSpeechService {
   }
 
   /**
-   * Parses forms for the given entry. Dispatches to POS-specific form parsers
+   * Parses forms for the given lexeme. Dispatches to POS-specific form parsers
    * for verbs and adverbs; falls back to the generic form-table parser.
    */
   async parseForms(
     pos: PartOfSpeech,
     $: cheerio.CheerioAPI,
     elt: AnyNode,
-    entry: Entry,
+    lexeme: Lexeme,
     principalParts: PrincipalPart[],
   ): Promise<Forms | null> {
     switch (pos) {
@@ -639,7 +639,7 @@ export class PartOfSpeechService {
       case "phrase":
       case "proverb":
       case "idiom": {
-        return this.parseGenericForms($, elt, entry);
+        return this.parseGenericForms($, elt, lexeme);
       }
     }
   }

@@ -8,7 +8,7 @@ import {
   PrimaryGeneratedColumn,
 } from "typeorm";
 
-import { type Entry } from "./Entry.entity.js";
+import { type Lexeme } from "./Lexeme.entity.js";
 
 @ObjectType()
 @Entity({
@@ -21,20 +21,20 @@ export class Translation extends BaseEntity {
   id!: string;
 
   @Field(() => Object)
-  @ManyToOne("Entry", "translations", {
+  @ManyToOne("Lexeme", "translations", {
     onDelete: "CASCADE",
     onUpdate: "CASCADE",
   })
   @JoinColumn()
-  entry!: Entry;
+  lexeme!: Lexeme;
 
   @Field()
   @Column("varchar", { length: 2047, comment: "English translation text" })
   translation!: string;
 
-  constructor(translation: string, entry?: Entry) {
+  constructor(translation: string, lexeme?: Lexeme) {
     super();
     this.translation = translation;
-    if (entry) this.entry = entry;
+    if (lexeme) this.lexeme = lexeme;
   }
 }

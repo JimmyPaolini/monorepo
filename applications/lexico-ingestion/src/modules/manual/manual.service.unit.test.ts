@@ -1,4 +1,4 @@
-import { Entry, Word } from "@monorepo/lexico-entities";
+import { Lexeme, Word } from "@monorepo/lexico-entities";
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
 import { beforeAll, describe, expect, it } from "vitest";
@@ -15,7 +15,7 @@ describe("ManualService", () => {
       providers: [
         ManualService,
         WordsService,
-        { provide: getRepositoryToken(Entry), useValue: {} },
+        { provide: getRepositoryToken(Lexeme), useValue: {} },
         { provide: getRepositoryToken(Word), useValue: {} },
       ],
     }).compile();

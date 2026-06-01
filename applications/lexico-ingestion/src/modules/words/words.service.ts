@@ -1,4 +1,4 @@
-import { Entry, Word } from "@monorepo/lexico-entities";
+import { Lexeme, Word } from "@monorepo/lexico-entities";
 import { Injectable, Logger } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
@@ -12,7 +12,7 @@ function isUnknownArray(value: unknown): value is unknown[] {
 }
 
 /**
- * Ingests Word search records from all dictionary entries.
+ * Ingests Word search records from all dictionary lexemes.
  */
 @Injectable()
 export class WordsService {
@@ -20,8 +20,8 @@ export class WordsService {
 
   // 🏗️ Dependency Injection
   constructor(
-    @InjectRepository(Entry)
-    private readonly entriesRepository: Repository<Entry>,
+    @InjectRepository(Lexeme)
+    private readonly lexemesRepository: Repository<Lexeme>,
     @InjectRepository(Word)
     private readonly wordsRepository: Repository<Word>,
   ) {}
@@ -34,26 +34,26 @@ export class WordsService {
 
   // 🌎 Public Methods
 
-  /** Ingests `Word` search records for every `Entry` in the database,
-   * processing entries in batches of 100 to keep memory usage bounded. */
+  /** Ingests `Word` search records for every `Lexeme` in the database,
+   * processing lexemes in batches of 100 to keep memory usage bounded. */
   async ingestWords(): Promise<void> {
     this.logger.log("🔤 Ingesting words");
     const batchSize = 100;
     let skip = 0;
-    let batch: Entry[];
+    let batch: Lexeme[];
 
     do {
-      batch = await this.entriesRepository.find({
+      batch = await this.lexemesRepository.find({
         relations: ["principalParts", "forms"],
         order: { id: "ASC" },
         take: batchSize,
         skip,
       });
       this.logger.log(
-        `🔤 Processing batch at offset ${skip} (${batch.length} entries)`,
+        `🔤 Processing batch at offset ${skip} (${batch.length} lexemes)`,
       );
-      for (const entry of batch) {
-        await this.ingestEntryWords(entry);
+      for (const lexeme of batch) {
+        await this.ingestLexemeWords(lexeme);
       }
       skip += batchSize;
     } while (batch.length === batchSize);
@@ -62,13 +62,13 @@ export class WordsService {
   }
 
   /** Generates and persists a `Word` row for every inflected form and
-   * principal part that belongs to the given `Entry`. */
-  async ingestEntryWords(entry: Entry): Promise<void> {
-    this.logger.log(`🔤 Ingesting words for "${entry.id}"`);
-    for (const word of this.getEntryWords(entry)) {
-      await this.ingestEntryWord(word, entry);
+   * principal part that belongs to the given `Lexeme`. */
+  async ingestLexemeWords(lexeme: Lexeme): Promise<void> {
+    this.logger.log(`🔤 Ingesting words for "${lexeme.id}"`);
+    for (const word of this.getLexemeWords(lexeme)) {
+      await this.ingestLexemeWord(word, lexeme);
     }
-    this.logger.log(`🔤 Ingested words for "${entry.id}"`);
+    this.logger.log(`🔤 Ingested words for "${lexeme.id}"`);
   }
 
   private flattenForms(obj: unknown): string[] {
@@ -93,32 +93,32 @@ export class WordsService {
       .trim();
   }
 
-  /** Returns all searchable word strings for an entry — every form value
+  /** Returns all searchable word strings for a lexeme — every form value
    * extracted by flattening the `forms` JSON object plus each principal-part text. */
-  getEntryWords(entry: Entry): string[] {
-    const forms = this.flattenForms(entry.forms);
-    entry.principalParts.forEach((pp) => forms.push(...pp.text));
+  getLexemeWords(lexeme: Lexeme): string[] {
+    const forms = this.flattenForms(lexeme.forms);
+    lexeme.principalParts.forEach((pp) => forms.push(...pp.text));
     return forms;
   }
 
-  /** Normalises `wordString` and upserts a `Word` row linked to `entry`.
+  /** Normalises `wordString` and upserts a `Word` row linked to `lexeme`.
    * Skips strings that do not start with an ASCII letter after normalisation. */
-  async ingestEntryWord(wordString: string, entry: Entry): Promise<void> {
+  async ingestLexemeWord(wordString: string, lexeme: Lexeme): Promise<void> {
     const normalized = this.escapeCapitals(this.normalize(wordString));
     if (!/^-?[A-Za-z]/.test(normalized)) return;
 
     const existingWord = await this.wordsRepository.findOne({
       where: { word: normalized },
-      relations: ["entries"],
+      relations: ["lexemes"],
     });
 
     if (existingWord) {
-      if (!existingWord.entries.some((e) => e.id === entry.id)) {
-        existingWord.entries.push(entry);
+      if (!existingWord.lexemes.some((e) => e.id === lexeme.id)) {
+        existingWord.lexemes.push(lexeme);
         await this.wordsRepository.save(existingWord);
       }
     } else {
-      await this.wordsRepository.save({ word: normalized, entries: [entry] });
+      await this.wordsRepository.save({ word: normalized, lexemes: [lexeme] });
     }
   }
 }

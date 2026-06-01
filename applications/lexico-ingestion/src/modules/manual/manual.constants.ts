@@ -1,6 +1,6 @@
 // ♟️ Constants
 
-export const MANUAL_ENTRIES_TO_DELETE = [
+export const MANUAL_LEXEMES_TO_DELETE = [
   "qui:0",
   "quis:0",
   "latinitas:0",

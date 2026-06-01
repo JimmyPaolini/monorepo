@@ -14,7 +14,7 @@ interface DictionaryCommandOptions {
 @Command({
   name: "dictionary",
   description:
-    "Process ingested Wiktionary HTML into structured dictionary entries",
+    "Process ingested Wiktionary HTML into structured dictionary lexemes",
 })
 export class DictionaryCommand extends CommandRunner {
   constructor(private readonly dictionaryService: DictionaryService) {
@@ -24,7 +24,7 @@ export class DictionaryCommand extends CommandRunner {
   /** Parses the `-w, --word` option; returns the word string to ingest. */
   @Option({
     flags: "-w, --word [word]",
-    description: "Ingest a single word entry",
+    description: "Ingest a single word lexeme",
   })
   parseWord(val: string): string {
     return val;
@@ -34,7 +34,7 @@ export class DictionaryCommand extends CommandRunner {
    * or processes all cached Wiktionary HTML files otherwise. */
   async run(_args: string[], options: DictionaryCommandOptions): Promise<void> {
     await (options.word
-      ? this.dictionaryService.ingestEntry(options.word)
+      ? this.dictionaryService.ingestLexeme(options.word)
       : this.dictionaryService.ingestAll());
   }
 }

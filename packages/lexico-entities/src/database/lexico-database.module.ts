@@ -3,7 +3,7 @@ import { ConfigService } from "@nestjs/config";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { SnakeNamingStrategy } from "typeorm-naming-strategies";
 
-import { Entry } from "../entities/Entry.entity.js";
+import { Lexeme } from "../entities/Lexeme.entity.js";
 import { PrincipalPart } from "../entities/PrincipalPart.entity.js";
 import { Translation } from "../entities/Translation.entity.js";
 import { Word } from "../entities/Word.entity.js";
@@ -33,7 +33,7 @@ import { VerbInflection } from "../entities/inflection/VerbInflection.entity.js"
         database: config.get<string>("POSTGRES_DB", "postgres"),
         namingStrategy: new SnakeNamingStrategy(),
         entities: [
-          Entry,
+          Lexeme,
           Inflection,
           NounInflection,
           VerbInflection,

@@ -7,7 +7,7 @@ import {
   PrimaryColumn,
 } from "typeorm";
 
-import { Entry } from "./Entry.entity.js";
+import { Lexeme } from "./Lexeme.entity.js";
 
 @ObjectType()
 @Entity({
@@ -19,11 +19,11 @@ export class Word extends BaseEntity {
   @PrimaryColumn({ comment: "The Latin word as written" })
   word!: string;
 
-  @Field(() => [Entry])
-  @ManyToMany(() => Entry, (entry) => entry.words, {
+  @Field(() => [Lexeme])
+  @ManyToMany(() => Lexeme, (lexeme) => lexeme.words, {
     eager: true,
     cascade: true,
   })
   @JoinTable()
-  entries!: Entry[];
+  lexemes!: Lexeme[];
 }

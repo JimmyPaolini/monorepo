@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn,
 } from "typeorm";
 
-import { type Entry } from "./Entry.entity.js";
+import { type Lexeme } from "./Lexeme.entity.js";
 
 @ObjectType()
 @Entity({
@@ -21,11 +21,11 @@ export class PrincipalPart extends BaseEntity {
   id!: string;
 
   @Field(() => Object)
-  @ManyToOne("Entry", "principalParts", {
+  @ManyToOne("Lexeme", "principalParts", {
     onDelete: "CASCADE",
     onUpdate: "CASCADE",
   })
-  entry!: Entry;
+  lexeme!: Lexeme;
 
   @Field()
   @Column("varchar", {

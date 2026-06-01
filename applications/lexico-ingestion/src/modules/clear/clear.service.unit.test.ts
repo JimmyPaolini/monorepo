@@ -1,4 +1,4 @@
-import { Entry, Translation, Word } from "@monorepo/lexico-entities";
+import { Lexeme, Translation, Word } from "@monorepo/lexico-entities";
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
 import { beforeAll, describe, expect, it } from "vitest";
@@ -12,7 +12,7 @@ describe("ClearService", () => {
     const module = await Test.createTestingModule({
       providers: [
         ClearService,
-        { provide: getRepositoryToken(Entry), useValue: {} },
+        { provide: getRepositoryToken(Lexeme), useValue: {} },
         { provide: getRepositoryToken(Translation), useValue: {} },
         { provide: getRepositoryToken(Word), useValue: {} },
       ],

@@ -1,11 +1,11 @@
-import { Entry, Translation } from "@monorepo/lexico-entities";
+import { Lexeme, Translation } from "@monorepo/lexico-entities";
 import { Injectable, Logger } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Like, Repository } from "typeorm";
 
 /**
  * Resolves \{*reference*\} markers in translation text by linking to the
- * referenced entry's translations.
+ * referenced lexeme's translations.
  */
 @Injectable()
 export class TranslationReferencesService {
@@ -13,8 +13,8 @@ export class TranslationReferencesService {
 
   // 🏗️ Dependency Injection
   constructor(
-    @InjectRepository(Entry)
-    private readonly entriesRepository: Repository<Entry>,
+    @InjectRepository(Lexeme)
+    private readonly lexemesRepository: Repository<Lexeme>,
     @InjectRepository(Translation)
     private readonly translationsRepository: Repository<Translation>,
   ) {}
@@ -36,7 +36,7 @@ export class TranslationReferencesService {
     const params = {
       where: { translation: Like("%{*%*}%") },
       order: { translation: "ASC" as const },
-      relations: ["entry"],
+      relations: ["lexeme"],
       take: 100,
     };
 
@@ -70,24 +70,24 @@ export class TranslationReferencesService {
     let reference = match[0].slice(2, -2);
     if (/\(.*\)/.test(reference)) reference = reference.replace(/ ?\(.*\)/, "");
 
-    const entries = await this.entriesRepository
-      .createQueryBuilder("entry")
-      .leftJoinAndSelect("entry.translations", "translations")
-      .where(`entry.id ~* :pattern`, {
+    const lexemes = await this.lexemesRepository
+      .createQueryBuilder("lexeme")
+      .leftJoinAndSelect("lexeme.translations", "translations")
+      .where(`lexeme.id ~* :pattern`, {
         pattern: String.raw`${this.escapeCapitals(reference)}:\d`,
       })
       .getMany();
 
-    const entry =
-      entries.find((e) => e.partOfSpeech === translation.entry.partOfSpeech) ??
-      entries[0];
+    const lexeme =
+      lexemes.find((e) => e.partOfSpeech === translation.lexeme.partOfSpeech) ??
+      lexemes[0];
 
-    if (!entry) {
-      this.logger.warn(`No entry found for reference: ${reference}`);
+    if (!lexeme) {
+      this.logger.warn(`No lexeme found for reference: ${reference}`);
     }
 
-    const newTranslations = (entry?.translations ?? []).map(
-      (t) => new Translation(t.translation, translation.entry),
+    const newTranslations = (lexeme?.translations ?? []).map(
+      (t) => new Translation(t.translation, translation.lexeme),
     );
 
     if (newTranslations.length > 0) {

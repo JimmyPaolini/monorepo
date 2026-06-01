@@ -1,4 +1,4 @@
-import { Entry, Translation } from "@monorepo/lexico-entities";
+import { Lexeme, Translation } from "@monorepo/lexico-entities";
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
@@ -11,7 +11,7 @@ import { TranslationReferencesService } from "./translation-references.service";
 @Module({
   controllers: [],
   exports: [TranslationReferencesService],
-  imports: [TypeOrmModule.forFeature([Entry, Translation])],
+  imports: [TypeOrmModule.forFeature([Lexeme, Translation])],
   providers: [TranslationReferencesService, TranslationReferencesCommand],
 })
 export class TranslationReferencesModule {}

@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import { Entry } from "@monorepo/lexico-entities";
+import { Lexeme } from "@monorepo/lexico-entities";
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
@@ -18,8 +18,8 @@ import type { WiktionaryEntry } from "../lexico-ingestion/lexico-ingestion.types
 export class DictionaryService {
   // 🏗️ Dependency Injection
   constructor(
-    @InjectRepository(Entry)
-    private readonly entryRepository: Repository<Entry>,
+    @InjectRepository(Lexeme)
+    private readonly lexemeRepository: Repository<Lexeme>,
     private readonly ingesterService: IngesterService,
     private readonly logger: LoggerService,
   ) {
@@ -48,14 +48,14 @@ export class DictionaryService {
     const files = fs
       .readdirSync(this.dataDir)
       .filter((f) => f.endsWith(".json"));
-    this.logger.log(`📖 Processing ${files.length} entries`);
+    this.logger.log(`📖 Processing ${files.length} lexemes`);
 
     for (const file of files) {
       try {
         const filePath = path.join(this.dataDir, file);
         const raw = fs.readFileSync(filePath, "utf8");
         const wiktionaryEntry = JSON.parse(raw) as WiktionaryEntry;
-        await this.ingestEntry(wiktionaryEntry.word, wiktionaryEntry);
+        await this.ingestLexeme(wiktionaryEntry.word, wiktionaryEntry);
       } catch (error) {
         this.logger.error(`Failed to process ${file}: ${String(error)}`);
       }
@@ -64,10 +64,10 @@ export class DictionaryService {
     this.logger.log("📖 Dictionary ingestion complete");
   }
 
-  /** Parses the Wiktionary HTML for `word` into one or more `Entry` records
+  /** Parses the Wiktionary HTML for `word` into one or more `Lexeme` records
    * and persists them. Loads the cached JSON file if `wiktionaryEntry` is
    * not supplied. */
-  async ingestEntry(
+  async ingestLexeme(
     word: string,
     wiktionaryEntry?: WiktionaryEntry,
   ): Promise<void> {
@@ -89,18 +89,18 @@ export class DictionaryService {
       return;
     }
 
-    this.logger.log(`📝 Ingesting entry "${word}"`);
-    const parsedEntries =
-      await this.ingesterService.parseEntries(wiktionaryEntry);
-    for (const entry of parsedEntries) {
+    this.logger.log(`📝 Ingesting lexeme "${word}"`);
+    const parsedLexemes =
+      await this.ingesterService.parseLexemes(wiktionaryEntry);
+    for (const lexeme of parsedLexemes) {
       // Explicitly save @ChildEntity inflection first — TypeORM's cascade
       // for STI child entities doesn't reliably set the FK on the parent row.
-      if (entry.inflection) {
-        await entry.inflection.save();
+      if (lexeme.inflection) {
+        await lexeme.inflection.save();
       }
-      await this.entryRepository.save(entry);
+      await this.lexemeRepository.save(lexeme);
     }
-    this.logger.log(`📝 Ingested entry "${word}"`);
+    this.logger.log(`📝 Ingested lexeme "${word}"`);
   }
 
   private escapeCapitals(word: string): string {

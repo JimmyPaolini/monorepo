@@ -1,4 +1,4 @@
-import { Entry, PrincipalPart, Translation } from "@monorepo/lexico-entities";
+import { Lexeme, PrincipalPart, Translation } from "@monorepo/lexico-entities";
 import { Injectable } from "@nestjs/common";
 import * as cheerio from "cheerio";
 import _ from "lodash";
@@ -13,7 +13,7 @@ import type { WiktionaryEntry } from "../lexico-ingestion/lexico-ingestion.types
 import type { AnyNode } from "domhandler";
 
 /**
- * Orchestrates Wiktionary HTML parsing into fully-populated Entry objects.
+ * Orchestrates Wiktionary HTML parsing into fully-populated Lexeme objects.
  * Delegates POS detection, inflection, forms, and pronunciation to injected
  * services while inlining etymology, principal-parts, and translation logic.
  */
@@ -47,7 +47,7 @@ export class IngesterService {
   }
 
   private parsePrincipalParts(
-    entry: Entry,
+    lexeme: Lexeme,
     $: cheerio.CheerioAPI,
     elt: AnyNode,
     firstPrincipalPartName: string,
@@ -60,7 +60,7 @@ export class IngesterService {
       .children("strong.Latn.headword")
       .toArray()
       .map((p1: AnyNode) => $(p1).text().toLowerCase());
-    firstPP.entry = entry;
+    firstPP.lexeme = lexeme;
     principalParts.push(firstPP);
 
     for (const b of $(elt).children("b")) {
@@ -77,7 +77,7 @@ export class IngesterService {
         const pp = new PrincipalPart();
         pp.name = prev;
         pp.text = [$(b).text().toLowerCase()];
-        pp.entry = entry;
+        pp.lexeme = lexeme;
         principalParts.push(pp);
       }
     }
@@ -91,7 +91,7 @@ export class IngesterService {
   private async parseTranslations(
     $: cheerio.CheerioAPI,
     elt: AnyNode,
-    entry: Entry,
+    lexeme: Lexeme,
   ): Promise<Translation[]> {
     const translationsHeader = $(elt).nextAll("ol").first();
     if (translationsHeader.length <= 0) return [];
@@ -120,7 +120,7 @@ export class IngesterService {
           .join(" ")}`;
       }
 
-      translations.push(new Translation(translation, entry));
+      translations.push(new Translation(translation, lexeme));
     }
 
     translations = translations.filter((t) => !!t.translation);
@@ -130,7 +130,7 @@ export class IngesterService {
   private parseEtymology(
     $: cheerio.CheerioAPI,
     elt: AnyNode,
-    entry: Entry,
+    lexeme: Lexeme,
   ): { etymology: string; participleTranslation?: Translation } {
     const etymologyHeaderDiv = $(elt)
       .prevAll("div.mw-heading")
@@ -152,7 +152,10 @@ export class IngesterService {
       );
     if (participleMatch) {
       const text = this.capitalizeFirstLetter(participleMatch[0].trim());
-      return { etymology, participleTranslation: new Translation(text, entry) };
+      return {
+        etymology,
+        participleTranslation: new Translation(text, lexeme),
+      };
     }
 
     return { etymology };
@@ -161,15 +164,15 @@ export class IngesterService {
   // 🌎 Public Methods
 
   /**
-   * Parses Wiktionary HTML into fully-populated Entry objects using the
+   * Parses Wiktionary HTML into fully-populated Lexeme objects using the
    * `p:has(strong.Latn.headword)` selector strategy.
    */
-  async parseEntries(wiktionaryEntry: WiktionaryEntry): Promise<Entry[]> {
+  async parseLexemes(wiktionaryEntry: WiktionaryEntry): Promise<Lexeme[]> {
     if (!wiktionaryEntry.html) return [];
 
     const $ = cheerio.load(wiktionaryEntry.html);
     const word = this.normalize(wiktionaryEntry.word);
-    const entries: Entry[] = [];
+    const lexemes: Lexeme[] = [];
 
     const headwordElements = $("p:has(strong.Latn.headword)").toArray();
 
@@ -197,57 +200,57 @@ export class IngesterService {
         continue;
       }
 
-      const entry = new Entry();
-      entry.id = `${word}:${i}`;
-      entry.partOfSpeech = partOfSpeech;
+      const lexeme = new Lexeme();
+      lexeme.id = `${word}:${i}`;
+      lexeme.partOfSpeech = partOfSpeech;
 
       try {
         const { principalParts, macronizedWord } = this.parsePrincipalParts(
-          entry,
+          lexeme,
           $,
           elt,
           firstPrincipalPartName,
         );
-        entry.principalParts = principalParts;
+        lexeme.principalParts = principalParts;
 
-        entry.inflection = this.partOfSpeechService.ingestInflection(
+        lexeme.inflection = this.partOfSpeechService.ingestInflection(
           partOfSpeech,
           $,
           elt,
           principalParts,
         );
 
-        const translations = await this.parseTranslations($, elt, entry);
+        const translations = await this.parseTranslations($, elt, lexeme);
         const { etymology, participleTranslation } = this.parseEtymology(
           $,
           elt,
-          entry,
+          lexeme,
         );
-        entry.etymology = etymology;
-        entry.translations = participleTranslation
+        lexeme.etymology = etymology;
+        lexeme.translations = participleTranslation
           ? [...translations, participleTranslation]
           : translations;
 
-        entry.pronunciation = this.pronunciationService.parse(
+        lexeme.pronunciation = this.pronunciationService.parse(
           $,
           elt,
           macronizedWord,
         );
 
-        entry.forms = await this.partOfSpeechService.parseForms(
+        lexeme.forms = await this.partOfSpeechService.parseForms(
           partOfSpeech,
           $,
           elt,
-          entry,
+          lexeme,
           principalParts,
         );
 
-        entries.push(entry);
+        lexemes.push(lexeme);
       } catch (error) {
-        this.logger.warn(`Failed to parse ${entry.id}: ${String(error)}`);
+        this.logger.warn(`Failed to parse ${lexeme.id}: ${String(error)}`);
       }
     }
 
-    return entries;
+    return lexemes;
   }
 }

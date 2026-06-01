@@ -24,7 +24,7 @@ import { Inflection } from "./inflection/Inflection.entity.js";
   comment:
     "A dictionary entry representing a Latin word form with its translations, principal parts, pronunciation, and inflection data",
 })
-export class Entry extends BaseEntity {
+export class Lexeme extends BaseEntity {
   @Field(() => ID)
   @PrimaryColumn("varchar", {
     length: 127,
@@ -71,7 +71,7 @@ export class Entry extends BaseEntity {
   partOfSpeech!: PartOfSpeech;
 
   @Field(() => [PrincipalPart])
-  @OneToMany(() => PrincipalPart, "entry", {
+  @OneToMany(() => PrincipalPart, "lexeme", {
     eager: true,
     cascade: true,
   })
@@ -82,7 +82,7 @@ export class Entry extends BaseEntity {
   pronunciation?: Pronunciation;
 
   @Field(() => [Translation], { nullable: true })
-  @OneToMany(() => Translation, (translation) => translation.entry, {
+  @OneToMany(() => Translation, (translation) => translation.lexeme, {
     nullable: true,
     eager: true,
     cascade: true,
@@ -91,6 +91,6 @@ export class Entry extends BaseEntity {
   translations?: Translation[] | null;
 
   @Field(() => [Object], { nullable: true })
-  @ManyToMany("Word", "entries")
+  @ManyToMany("Word", "lexemes")
   words?: Word[];
 }

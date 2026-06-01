@@ -1,4 +1,4 @@
-import { Entry, Translation, Word } from "@monorepo/lexico-entities";
+import { Lexeme, Translation, Word } from "@monorepo/lexico-entities";
 import { Injectable, Logger } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
@@ -12,8 +12,8 @@ export class ClearService {
 
   // 🏗️ Dependency Injection
   constructor(
-    @InjectRepository(Entry)
-    private readonly entriesRepository: Repository<Entry>,
+    @InjectRepository(Lexeme)
+    private readonly lexemesRepository: Repository<Lexeme>,
     @InjectRepository(Translation)
     private readonly translationsRepository: Repository<Translation>,
     @InjectRepository(Word)
@@ -28,13 +28,13 @@ export class ClearService {
 
   // 🌎 Public Methods
 
-  /** Deletes all `Word`, `Translation`, and `Entry` rows from the database
+  /** Deletes all `Word`, `Translation`, and `Lexeme` rows from the database
    * in dependency order to avoid foreign-key constraint violations. */
   async clearDictionary(): Promise<void> {
     this.logger.log("🗑️ Clearing dictionary");
     await this.wordsRepository.delete({});
     await this.translationsRepository.delete({});
-    await this.entriesRepository.delete({});
+    await this.lexemesRepository.delete({});
     this.logger.log("🗑️ Cleared dictionary");
   }
 }

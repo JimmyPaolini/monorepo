@@ -1,4 +1,4 @@
-import { Entry, Translation } from "@monorepo/lexico-entities";
+import { Lexeme, Translation } from "@monorepo/lexico-entities";
 import { Injectable, Logger } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import numberToWords from "number-to-words";
@@ -12,12 +12,12 @@ import romanNumeralTemplate from "../../../data/dictionary/template/romanNumeral
 import { WordsService } from "../words/words.service.js";
 
 import {
-  MANUAL_ENTRIES_TO_DELETE,
+  MANUAL_LEXEMES_TO_DELETE,
   PRAENOMEN_ABBREVIATIONS,
 } from "./manual.constants";
 
 /**
- * Ingests manually-curated dictionary entries (hic, ille, omnis, Roman numerals).
+ * Ingests manually-curated dictionary lexemes (hic, ille, omnis, Roman numerals).
  */
 @Injectable()
 export class ManualService {
@@ -25,8 +25,8 @@ export class ManualService {
 
   // 🏗️ Dependency Injection
   constructor(
-    @InjectRepository(Entry)
-    private readonly entriesRepository: Repository<Entry>,
+    @InjectRepository(Lexeme)
+    private readonly lexemesRepository: Repository<Lexeme>,
     private readonly wordsService: WordsService,
   ) {}
 
@@ -38,40 +38,40 @@ export class ManualService {
 
   // 🌎 Public Methods
 
-  /** Runs the full manual-entry pipeline: deletes stale overrides, re-creates
-   * hic/ille/omnis entries, populates praenomen abbreviations, and ingests
-   * Roman numeral entries I–MMMCMXCIX. */
+  /** Runs the full manual-lexeme pipeline: deletes stale overrides, re-creates
+   * hic/ille/omnis lexemes, populates praenomen abbreviations, and ingests
+   * Roman numeral lexemes I–MMMCMXCIX. */
   async ingestManual(): Promise<void> {
-    this.logger.log("📋 Ingesting manual entries");
+    this.logger.log("📋 Ingesting manual lexemes");
 
-    for (const id of MANUAL_ENTRIES_TO_DELETE) {
+    for (const id of MANUAL_LEXEMES_TO_DELETE) {
       await this.deleteManual(id);
     }
 
-    await this.createManual(Object.assign(new Entry(), hicJson));
-    await this.createManual(Object.assign(new Entry(), illeJson));
-    await this.createManual(Object.assign(new Entry(), omnisJson));
+    await this.createManual(Object.assign(new Lexeme(), hicJson));
+    await this.createManual(Object.assign(new Lexeme(), illeJson));
+    await this.createManual(Object.assign(new Lexeme(), omnisJson));
 
     await this.ingestPraenomenAbbreviations();
     await this.ingestRomanNumerals();
 
-    this.logger.log("📋 Ingested manual entries");
+    this.logger.log("📋 Ingested manual lexemes");
   }
 
   /** Deletes any existing row with the same id then saves `manual` and
    * re-ingests its word search records. */
-  async createManual(manual: Entry): Promise<void> {
+  async createManual(manual: Lexeme): Promise<void> {
     await this.deleteManual(manual.id);
     this.logger.log(`✏️ Creating "${manual.id}"`);
-    const entry = await this.entriesRepository.save(manual, { reload: false });
-    await this.wordsService.ingestEntryWords(entry);
+    const lexeme = await this.lexemesRepository.save(manual, { reload: false });
+    await this.wordsService.ingestLexemeWords(lexeme);
     this.logger.log(`✏️ Created "${manual.id}"`);
   }
 
-  /** Removes the `Entry` row identified by `id` from the database. */
+  /** Removes the `Lexeme` row identified by `id` from the database. */
   async deleteManual(id: string): Promise<void> {
     this.logger.log(`🗑️ Deleting "${id}"`);
-    await this.entriesRepository.delete(id);
+    await this.lexemesRepository.delete(id);
     this.logger.log(`🗑️ Deleted "${id}"`);
   }
 
@@ -109,40 +109,40 @@ export class ManualService {
     for (const [abbreviation, praenomen] of Object.entries(
       PRAENOMEN_ABBREVIATIONS,
     )) {
-      const entry = Object.assign(
-        new Entry(),
+      const lexeme = Object.assign(
+        new Lexeme(),
         structuredClone(praenomenAbbreviationTemplate),
       );
-      entry.id = `${abbreviation}:100`;
-      if (entry.principalParts[0]) {
-        entry.principalParts[0].text = [abbreviation];
+      lexeme.id = `${abbreviation}:100`;
+      if (lexeme.principalParts[0]) {
+        lexeme.principalParts[0].text = [abbreviation];
       }
-      if (entry.principalParts[1]) {
-        entry.principalParts[1].text = [`${abbreviation}.`];
+      if (lexeme.principalParts[1]) {
+        lexeme.principalParts[1].text = [`${abbreviation}.`];
       }
-      entry.translations = [];
+      lexeme.translations = [];
       if (praenomen.masculine) {
-        entry.translations.push(
+        lexeme.translations.push(
           new Translation(
             `Praenomen abbreviation: ${praenomen.masculine} (male)`,
           ),
         );
       }
       if (praenomen.feminine) {
-        entry.translations.push(
+        lexeme.translations.push(
           new Translation(
             `Praenomen abbreviation: ${praenomen.feminine} (female)`,
           ),
         );
       }
       if (praenomen.masculine && !praenomen.feminine) {
-        entry.inflection.gender = "masculine";
+        lexeme.inflection.gender = "masculine";
       } else if (!praenomen.masculine && praenomen.feminine) {
-        entry.inflection.gender = "feminine";
+        lexeme.inflection.gender = "feminine";
       } else {
-        entry.inflection.gender = "neuter";
+        lexeme.inflection.gender = "neuter";
       }
-      await this.createManual(entry);
+      await this.createManual(lexeme);
     }
     this.logger.log("🏷️ Ingested praenomen abbreviations");
   }
@@ -151,20 +151,20 @@ export class ManualService {
     this.logger.log("🔢 Ingesting Roman numerals");
     for (let i = 1; i < 4000; i++) {
       const roman = this.decimalToRoman(i).toLowerCase();
-      const entry = Object.assign(
-        new Entry(),
+      const lexeme = Object.assign(
+        new Lexeme(),
         structuredClone(romanNumeralTemplate),
       );
-      entry.id = `${roman}:100`;
-      if (entry.principalParts[0]) {
-        entry.principalParts[0].text = [roman];
+      lexeme.id = `${roman}:100`;
+      if (lexeme.principalParts[0]) {
+        lexeme.principalParts[0].text = [roman];
       }
-      entry.inflection.declension = "";
-      entry.inflection.degree = "positive";
-      entry.translations = [
+      lexeme.inflection.declension = "";
+      lexeme.inflection.degree = "positive";
+      lexeme.translations = [
         new Translation(`Roman numeral: ${i} (${numberToWords.toWords(i)})`),
       ];
-      await this.createManual(entry);
+      await this.createManual(lexeme);
     }
     this.logger.log("🔢 Ingested Roman numerals");
   }

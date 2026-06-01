@@ -1,4 +1,4 @@
-import { Entry, Translation, Word } from "@monorepo/lexico-entities";
+import { Lexeme, Translation, Word } from "@monorepo/lexico-entities";
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
@@ -11,7 +11,7 @@ import { ClearService } from "./clear.service";
 @Module({
   controllers: [],
   exports: [ClearService],
-  imports: [TypeOrmModule.forFeature([Entry, Translation, Word])],
+  imports: [TypeOrmModule.forFeature([Lexeme, Translation, Word])],
   providers: [ClearService, ClearCommand],
 })
 export class ClearModule {}

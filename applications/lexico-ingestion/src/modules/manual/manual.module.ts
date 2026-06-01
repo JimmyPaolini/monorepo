@@ -1,4 +1,4 @@
-import { Entry } from "@monorepo/lexico-entities";
+import { Lexeme } from "@monorepo/lexico-entities";
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
@@ -8,12 +8,12 @@ import { ManualCommand } from "./manual.command.js";
 import { ManualService } from "./manual.service";
 
 /**
- * Handles ingesting manually-curated dictionary entries (hic, ille, omnis, Roman numerals).
+ * Handles ingesting manually-curated dictionary lexemes (hic, ille, omnis, Roman numerals).
  */
 @Module({
   controllers: [],
   exports: [ManualService],
-  imports: [TypeOrmModule.forFeature([Entry]), WordsModule],
+  imports: [TypeOrmModule.forFeature([Lexeme]), WordsModule],
   providers: [ManualService, ManualCommand],
 })
 export class ManualModule {}

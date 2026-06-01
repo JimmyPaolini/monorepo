@@ -1,4 +1,4 @@
-import { Entry, Translation, Word } from "@monorepo/lexico-entities";
+import { Lexeme, Translation, Word } from "@monorepo/lexico-entities";
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
@@ -13,7 +13,7 @@ import { DictionaryService } from "./dictionary.service";
 @Module({
   controllers: [],
   imports: [
-    TypeOrmModule.forFeature([Entry, Word, Translation]),
+    TypeOrmModule.forFeature([Lexeme, Word, Translation]),
     IngesterModule,
   ],
   providers: [DictionaryCommand, DictionaryService],
