@@ -25,11 +25,7 @@
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "production": [
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
-      "!{projectRoot}/.eslintrc.json",
-      "!{projectRoot}/jest.config.[jt]s",
-      "!{projectRoot}/src/test-setup.[jt]s",
       "!{projectRoot}/tsconfig.spec.json",
-      "!{projectRoot}/vitest.config.base.ts",
       "default"
     ],
     "pythonSource": [
@@ -43,6 +39,11 @@
       "{workspaceRoot}/configuration/tsconfig.base.json",
       "{workspaceRoot}/nx.json",
       "{workspaceRoot}/pnpm-lock.yaml"
+    ],
+    "typescriptFiles": [
+      "{projectRoot}/**/*.{ts,tsx,mts,cts}",
+      "{projectRoot}/tsconfig*.json",
+      "sharedGlobals"
     ]
   },
   "parallel": 3,
@@ -80,7 +81,6 @@
     "analyze-code": {
       "cache": true,
       "configurations": {
-
         "check": {
           "commands": [
             "nx run {projectName}:clean:check",
@@ -428,6 +428,7 @@
       "executor": "nx:run-commands",
       "inputs": [
         "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,css,scss,html,yaml,yml,md,mdx,py,ipynb}",
+        "{workspaceRoot}/configuration/.cspell/**",
         "{workspaceRoot}/configuration/cspell.config.yaml",
         "sharedGlobals"
       ],
@@ -482,18 +483,18 @@
         "{projectRoot}/tsconfig.json",
         "sharedGlobals"
       ],
-      "outputs": ["{projectRoot}/type-coverage-report.txt"],
       "options": {
         "command": "type-coverage --detail > type-coverage-report.txt 2>&1 || (cat type-coverage-report.txt && exit 1)",
         "cwd": "{projectRoot}"
-      }
+      },
+      "outputs": ["{projectRoot}/type-coverage-report.txt"]
     },
     "typecheck": {
       "cache": true,
       "executor": "nx:run-commands",
       "inputs": [
         "^production",
-        "default",
+        "typescriptFiles",
         {
           "externalDependencies": ["typescript"]
         }

@@ -376,6 +376,27 @@
         "command": "tsx scripts/sync-agent-skills.ts"
       }
     },
+    "sync-conformance-generators": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "command": "tsx scripts/sync-conformance-generators.ts check"
+        },
+        "write": {
+          "command": "tsx scripts/sync-conformance-generators.ts write && nx run monorepo:format:write"
+        }
+      },
+      "defaultConfiguration": "check",
+      "description": "Validate that conformance generators table is synchronized from tools/conformance/generators.json into AGENTS.md (check) or sync them (write)",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/AGENTS.md",
+        "{workspaceRoot}/tools/conformance/generators.json"
+      ],
+      "options": {
+        "command": "tsx scripts/sync-conformance-generators.ts"
+      }
+    },
     "sync-conventional-config": {
       "cache": true,
       "configurations": {
