@@ -11,10 +11,13 @@ import {
 import { type Entry } from "./Entry.entity.js";
 
 @ObjectType()
-@Entity()
+@Entity({
+  name: "translations",
+  comment: "An English translation of a Latin dictionary entry",
+})
 export class Translation extends BaseEntity {
   @Field(() => ID)
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn("uuid", { comment: "Auto-generated UUID" })
   id!: string;
 
   @Field(() => Object)
@@ -26,7 +29,7 @@ export class Translation extends BaseEntity {
   entry!: Entry;
 
   @Field()
-  @Column("varchar", { length: 2047 })
+  @Column("varchar", { length: 2047, comment: "English translation text" })
   translation!: string;
 
   constructor(translation: string, entry?: Entry) {

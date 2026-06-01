@@ -28,7 +28,7 @@ export class TranslationReferencesService {
   // 🌎 Public Methods
 
   /** Finds all `Translation` rows whose text contains `{*...*}` reference
-   * markers and replaces them with the corresponding entry’s translations,
+   * markers and replaces them with the corresponding entry's translations,
    * repeating until no unresolved references remain. */
   async ingestTranslationReferences(): Promise<void> {
     this.logger.log("🔗 Ingesting translation references");

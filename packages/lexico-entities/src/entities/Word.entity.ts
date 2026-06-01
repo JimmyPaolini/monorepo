@@ -10,10 +10,13 @@ import {
 import { Entry } from "./Entry.entity.js";
 
 @ObjectType()
-@Entity()
+@Entity({
+  name: "words",
+  comment: "A Latin word string that maps to one or more dictionary entries",
+})
 export class Word extends BaseEntity {
   @Field()
-  @PrimaryColumn()
+  @PrimaryColumn({ comment: "The Latin word as written" })
   word!: string;
 
   @Field(() => [Entry])

@@ -3,7 +3,7 @@ import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
 import { beforeAll, describe, expect, it } from "vitest";
 
-import { TranslationReferencesService } from "./translationReferences.service";
+import { TranslationReferencesService } from "./translation-references.service";
 
 describe("TranslationReferencesService", () => {
   let service: TranslationReferencesService;

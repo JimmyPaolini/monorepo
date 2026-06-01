@@ -1,7 +1,7 @@
 import { Test } from "@nestjs/testing";
 import { beforeAll, describe, expect, it } from "vitest";
 
-import { PartOfSpeechService } from "./partOfSpeech.service";
+import { PartOfSpeechService } from "./part-of-speech.service";
 
 describe("PartOfSpeechService", () => {
   let service: PartOfSpeechService;

@@ -10,10 +10,14 @@ import {
 import { type Entry } from "./Entry.entity.js";
 
 @ObjectType()
-@Entity()
+@Entity({
+  name: "principal_parts",
+  comment:
+    "A named principal part (e.g. first, infinitive) of a Latin dictionary entry",
+})
 export class PrincipalPart extends BaseEntity {
   @Field(() => ID)
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn("uuid", { comment: "Auto-generated UUID" })
   id!: string;
 
   @Field(() => Object)
@@ -24,10 +28,15 @@ export class PrincipalPart extends BaseEntity {
   entry!: Entry;
 
   @Field()
-  @Column("varchar", { length: 63 })
+  @Column("varchar", {
+    length: 63,
+    comment: "Label for the principal part (e.g. first, infinitive)",
+  })
   name!: string;
 
   @Field(() => [String])
-  @Column("simple-array")
+  @Column("simple-array", {
+    comment: "One or more textual forms for this principal part",
+  })
   text!: string[];
 }

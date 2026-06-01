@@ -6,7 +6,7 @@ import { ClearModule } from "../clear/clear.module.js";
 import { DictionaryModule } from "../dictionary/dictionary.module.js";
 import { LoggerModule } from "../logger/logger.module.js";
 import { ManualModule } from "../manual/manual.module.js";
-import { TranslationReferencesModule } from "../translationReferences/translationReferences.module.js";
+import { TranslationReferencesModule } from "../translation-references/translation-references.module.js";
 import { WiktionaryModule } from "../wiktionary/wiktionary.module.js";
 import { WordsModule } from "../words/words.module.js";
 

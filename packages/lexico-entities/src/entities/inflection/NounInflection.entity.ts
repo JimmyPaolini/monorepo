@@ -37,14 +37,28 @@ export type NounGender = (typeof nounGenderValues)[number];
 @ChildEntity("noun")
 export class NounInflection extends Inflection {
   @Field(() => String)
-  @Column({ type: "enum", enum: declensionEnumValues, default: "" })
+  @Column({
+    type: "enum",
+    enum: declensionEnumValues,
+    default: "",
+    comment: "Noun declension class (first through fifth)",
+  })
   declension!: NounDeclension;
 
   @Field(() => String)
-  @Column({ type: "enum", enum: nounGenderValues, default: "" })
+  @Column({
+    type: "enum",
+    enum: nounGenderValues,
+    default: "",
+    comment: "Grammatical gender (masculine, feminine, neuter)",
+  })
   gender!: NounGender;
 
   @Field(() => String, { nullable: true })
-  @Column("varchar", { length: 255, nullable: true })
+  @Column("varchar", {
+    length: 255,
+    nullable: true,
+    comment: "Additional inflection notes",
+  })
   other?: string;
 }

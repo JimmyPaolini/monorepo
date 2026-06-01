@@ -18,14 +18,28 @@ export type AdjectiveDegree = (typeof adjectiveDegreeValues)[number];
 @ChildEntity("adjective")
 export class AdjectiveInflection extends Inflection {
   @Field(() => String)
-  @Column({ type: "enum", enum: declensionEnumValues, default: "" })
+  @Column({
+    type: "enum",
+    enum: declensionEnumValues,
+    default: "",
+    comment: "Adjective declension class (first/second or third)",
+  })
   declension!: AdjectiveDeclension;
 
   @Field(() => String)
-  @Column({ type: "enum", enum: adjectiveDegreeValues, default: "positive" })
+  @Column({
+    type: "enum",
+    enum: adjectiveDegreeValues,
+    default: "positive",
+    comment: "Degree of comparison (positive, comparative, superlative)",
+  })
   degree!: AdjectiveDegree;
 
   @Field(() => String, { nullable: true })
-  @Column("varchar", { length: 255, nullable: true })
+  @Column("varchar", {
+    length: 255,
+    nullable: true,
+    comment: "Additional inflection notes",
+  })
   other?: string;
 }

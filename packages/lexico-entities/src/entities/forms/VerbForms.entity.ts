@@ -211,22 +211,37 @@ export class VerbalNounForms {
 @ChildEntity("verb")
 export class VerbForms extends Forms {
   @Field(() => ImperativeVoice, { nullable: true })
-  @Column("json", { nullable: true })
+  @Column("json", {
+    nullable: true,
+    comment: "Imperative mood forms (active and passive voice)",
+  })
   imperative?: ImperativeVoice | null;
 
   @Field(() => IndicativeVoice, { nullable: true })
-  @Column("json", { nullable: true })
+  @Column("json", {
+    nullable: true,
+    comment: "Indicative mood forms (active and passive voice, all tenses)",
+  })
   indicative?: IndicativeVoice | null;
 
   @Field(() => NonFiniteVoice, { nullable: true })
-  @Column("json", { nullable: true })
+  @Column("json", {
+    nullable: true,
+    comment: "Non-finite forms (infinitives and participles)",
+  })
   nonFinite?: NonFiniteVoice | null;
 
   @Field(() => SubjunctiveVoice, { nullable: true })
-  @Column("json", { nullable: true })
+  @Column("json", {
+    nullable: true,
+    comment: "Subjunctive mood forms (active and passive voice)",
+  })
   subjunctive?: SubjunctiveVoice | null;
 
   @Field(() => VerbalNounForms, { nullable: true })
-  @Column("json", { nullable: true })
+  @Column("json", {
+    nullable: true,
+    comment: "Verbal noun forms (gerund and supine)",
+  })
   verbalNoun?: VerbalNounForms | null;
 }

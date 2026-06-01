@@ -8,14 +8,23 @@ import { Forms } from "./Forms.entity.js";
 @ChildEntity("adverb")
 export class AdverbForms extends Forms {
   @Field(() => [String], { nullable: true })
-  @Column("simple-array", { nullable: true })
+  @Column("simple-array", {
+    nullable: true,
+    comment: "Comparative degree adverb forms",
+  })
   comparative?: string[];
 
   @Field(() => [String], { nullable: true })
-  @Column("simple-array", { nullable: true })
+  @Column("simple-array", {
+    nullable: true,
+    comment: "Positive degree adverb forms",
+  })
   positive?: string[];
 
   @Field(() => [String], { nullable: true })
-  @Column("simple-array", { nullable: true })
+  @Column("simple-array", {
+    nullable: true,
+    comment: "Superlative degree adverb forms",
+  })
   superlative?: string[];
 }

@@ -7,10 +7,17 @@ import {
 } from "typeorm";
 
 @InterfaceType()
-@Entity()
+@Entity({
+  name: "forms",
+  comment:
+    "Abstract base table for pre-computed inflected forms using single-table inheritance",
+})
 @TableInheritance({ column: { type: "varchar", name: "type", length: 63 } })
 export class Forms extends BaseEntity {
   @Field(() => ID)
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn("uuid", {
+    comment:
+      "Auto-generated UUID; discriminator column 'type' selects the child entity",
+  })
   id!: string;
 }

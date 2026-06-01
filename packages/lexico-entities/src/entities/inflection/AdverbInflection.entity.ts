@@ -17,7 +17,12 @@ export type AdverbDegree = (typeof adverbDegreeValues)[number];
 @ChildEntity("adverb")
 export class AdverbInflection extends Inflection {
   @Field(() => String)
-  @Column({ type: "enum", enum: adverbDegreeValues, default: "positive" })
+  @Column({
+    type: "enum",
+    enum: adverbDegreeValues,
+    default: "positive",
+    comment: "Degree of comparison (positive, comparative, superlative)",
+  })
   degree!: AdverbDegree;
 
   @Field(() => String)
@@ -26,6 +31,7 @@ export class AdverbInflection extends Inflection {
     enum: adverbTypeValues,
     default: "",
     name: "adverb_type",
+    comment: "Functional type of the adverb (descriptive or conjunctional)",
   })
   adverbType!: AdverbType;
 }

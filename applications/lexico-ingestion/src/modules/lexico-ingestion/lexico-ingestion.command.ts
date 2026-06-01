@@ -5,7 +5,7 @@ import { ClearService } from "../clear/clear.service.js";
 import { DictionaryService } from "../dictionary/dictionary.service.js";
 import { LoggerService } from "../logger/logger.service.js";
 import { ManualService } from "../manual/manual.service.js";
-import { TranslationReferencesService } from "../translationReferences/translationReferences.service.js";
+import { TranslationReferencesService } from "../translation-references/translation-references.service.js";
 import { WiktionaryService } from "../wiktionary/wiktionary.service.js";
 import { WordsService } from "../words/words.service.js";
 

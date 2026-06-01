@@ -5,7 +5,7 @@ import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { IngesterService } from "../ingester/ingester.service";
 import { LoggerService } from "../logger/logger.service";
-import { PartOfSpeechService } from "../partOfSpeech/partOfSpeech.service";
+import { PartOfSpeechService } from "../part-of-speech/part-of-speech.service";
 import { PronunciationService } from "../pronunciation/pronunciation.service";
 
 import { DictionaryService } from "./dictionary.service";

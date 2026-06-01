@@ -2,8 +2,8 @@ import { Entry, Translation } from "@monorepo/lexico-entities";
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
-import { TranslationReferencesCommand } from "./translationReferences.command.js";
-import { TranslationReferencesService } from "./translationReferences.service";
+import { TranslationReferencesCommand } from "./translation-references.command.js";
+import { TranslationReferencesService } from "./translation-references.service";
 
 /**
  * Handles resolving \{*reference*\} markers in translation text.

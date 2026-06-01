@@ -1,7 +1,7 @@
 import { Logger } from "@nestjs/common";
 import { Command, CommandRunner } from "nest-commander";
 
-import { TranslationReferencesService } from "./translationReferences.service.js";
+import { TranslationReferencesService } from "./translation-references.service.js";
 
 /**
  * CLI command: `lexico-ingestion translation-references`

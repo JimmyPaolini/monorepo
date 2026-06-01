@@ -41,14 +41,23 @@ export class AdjectiveCaseForms {
 @ChildEntity("adjective")
 export class AdjectiveForms extends Forms {
   @Field(() => AdjectiveCaseForms, { nullable: true })
-  @Column("json", { nullable: true })
+  @Column("json", {
+    nullable: true,
+    comment: "Case and number forms for feminine gender",
+  })
   feminine?: AdjectiveCaseForms | null;
 
   @Field(() => AdjectiveCaseForms, { nullable: true })
-  @Column("json", { nullable: true })
+  @Column("json", {
+    nullable: true,
+    comment: "Case and number forms for masculine gender",
+  })
   masculine?: AdjectiveCaseForms | null;
 
   @Field(() => AdjectiveCaseForms, { nullable: true })
-  @Column("json", { nullable: true })
+  @Column("json", {
+    nullable: true,
+    comment: "Case and number forms for neuter gender",
+  })
   neuter?: AdjectiveCaseForms | null;
 }

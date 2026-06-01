@@ -4,7 +4,7 @@ import * as cheerio from "cheerio";
 import _ from "lodash";
 
 import { LoggerService } from "../logger/logger.service.js";
-import { PartOfSpeechService } from "../partOfSpeech/partOfSpeech.service.js";
+import { PartOfSpeechService } from "../part-of-speech/part-of-speech.service.js";
 import { PronunciationService } from "../pronunciation/pronunciation.service.js";
 
 import { skipPOS, translationSkipRegex, validPOS } from "./ingester.constants";
@@ -171,7 +171,6 @@ export class IngesterService {
     const word = this.normalize(wiktionaryEntry.word);
     const entries: Entry[] = [];
 
-    this.logger.log(`🔍 Parsing "${wiktionaryEntry.word}"`);
     const headwordElements = $("p:has(strong.Latn.headword)").toArray();
 
     if (headwordElements.length === 0) {
@@ -249,7 +248,6 @@ export class IngesterService {
       }
     }
 
-    this.logger.log(`🔍 Parsed "${wiktionaryEntry.word}"`);
     return entries;
   }
 }

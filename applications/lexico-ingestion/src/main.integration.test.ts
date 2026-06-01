@@ -6,7 +6,7 @@ import { DictionaryService } from "./modules/dictionary/dictionary.service";
 import { LexicoIngestionCommand } from "./modules/lexico-ingestion/lexico-ingestion.command";
 import { LoggerService } from "./modules/logger/logger.service";
 import { ManualService } from "./modules/manual/manual.service";
-import { TranslationReferencesService } from "./modules/translationReferences/translationReferences.service";
+import { TranslationReferencesService } from "./modules/translation-references/translation-references.service";
 import { WiktionaryService } from "./modules/wiktionary/wiktionary.service";
 import { WordsService } from "./modules/words/words.service";
 

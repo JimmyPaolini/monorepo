@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common";
 
-import { PartOfSpeechService } from "./partOfSpeech.service";
+import { PartOfSpeechService } from "./part-of-speech.service";
 
 /**
  * TODO: Document the partOfSpeech module.

@@ -17,10 +17,19 @@ export type VerbConjugation = (typeof verbConjugationValues)[number];
 @ChildEntity("verb")
 export class VerbInflection extends Inflection {
   @Field(() => String)
-  @Column({ type: "enum", enum: verbConjugationValues, default: "" })
+  @Column({
+    type: "enum",
+    enum: verbConjugationValues,
+    default: "",
+    comment: "Verb conjugation class (first through fourth)",
+  })
   conjugation!: VerbConjugation;
 
   @Field(() => String, { nullable: true })
-  @Column("varchar", { length: 255, nullable: true })
+  @Column("varchar", {
+    length: 255,
+    nullable: true,
+    comment: "Additional inflection notes",
+  })
   other?: string;
 }

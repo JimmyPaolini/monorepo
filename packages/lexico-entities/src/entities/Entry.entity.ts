@@ -14,19 +14,32 @@ import { type PartOfSpeech, partOfSpeechValues } from "./PartOfSpeech.js";
 import { PrincipalPart } from "./PrincipalPart.entity.js";
 import { Pronunciation } from "./Pronunciation.js";
 import { Translation } from "./Translation.entity.js";
-import { type Word } from "./Word.entity.js";
+import type { Word } from "./Word.entity.js";
 import { Forms } from "./forms/Forms.entity.js";
 import { Inflection } from "./inflection/Inflection.entity.js";
 
 @ObjectType()
-@Entity()
+@Entity({
+  name: "entries",
+  comment:
+    "A dictionary entry representing a Latin word form with its translations, principal parts, pronunciation, and inflection data",
+})
 export class Entry extends BaseEntity {
   @Field(() => ID)
-  @PrimaryColumn("varchar", { length: 127, unique: true })
+  @PrimaryColumn("varchar", {
+    length: 127,
+    unique: true,
+    comment:
+      "Unique identifier for the entry, typically the dictionary headword",
+  })
   id!: string;
 
   @Field({ nullable: true })
-  @Column("varchar", { length: 1027, nullable: true })
+  @Column("varchar", {
+    length: 1027,
+    nullable: true,
+    comment: "Etymology of the word (Latin or Greek origin)",
+  })
   etymology?: string;
 
   @Field(() => Forms, { nullable: true })
@@ -50,7 +63,11 @@ export class Entry extends BaseEntity {
   inflection?: Inflection | null;
 
   @Field(() => String)
-  @Column({ type: "enum", enum: partOfSpeechValues })
+  @Column({
+    type: "enum",
+    enum: partOfSpeechValues,
+    comment: "Grammatical part of speech",
+  })
   partOfSpeech!: PartOfSpeech;
 
   @Field(() => [PrincipalPart])

@@ -33,7 +33,7 @@ import {
   prepositionCaseRegex,
   sumEsseFui,
   verbConjugationRegex,
-} from "./partOfSpeech.constants";
+} from "./part-of-speech.constants";
 
 import type { AnyNode } from "domhandler";
 

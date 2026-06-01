@@ -2,7 +2,7 @@ import { Test } from "@nestjs/testing";
 import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { LoggerService } from "../logger/logger.service";
-import { PartOfSpeechService } from "../partOfSpeech/partOfSpeech.service";
+import { PartOfSpeechService } from "../part-of-speech/part-of-speech.service";
 import { PronunciationService } from "../pronunciation/pronunciation.service";
 
 import { IngesterService } from "./ingester.service";

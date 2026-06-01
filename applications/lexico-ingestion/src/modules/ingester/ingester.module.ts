@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common";
 
-import { PartOfSpeechModule } from "../partOfSpeech/partOfSpeech.module.js";
+import { PartOfSpeechModule } from "../part-of-speech/part-of-speech.module.js";
 import { PronunciationModule } from "../pronunciation/pronunciation.module.js";
 
 import { IngesterService } from "./ingester.service";
