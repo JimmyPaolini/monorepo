@@ -22,19 +22,15 @@ export class WiktionaryService {
   }
 
   // 🔐 Private Fields
+  private readonly directory = path.join(process.cwd(), "./data/wiktionary");
   private readonly host = "https://en.wiktionary.org";
-  private readonly dataDir = path.join(process.cwd(), "./data/wiktionary");
-  private readonly requestDelayMs = 500;
   private readonly maxRetries = 5;
-  private readonly maxRetryDelayMs = 60_000;
+  private readonly maxRetryDelayMilliseconds = 60_000;
+  private readonly requestDelayMilliseconds = 500;
 
   // 🔑 Public Fields
 
   // 🔏 Private Methods
-
-  private async sleep(ms: number): Promise<void> {
-    return new Promise((resolve) => setTimeout(resolve, ms));
-  }
 
   private async fetchWithRetry(
     url: string,
@@ -46,15 +42,15 @@ export class WiktionaryService {
       if (response.status !== 429) return response;
 
       const retryAfter = response.headers.get("Retry-After");
-      const backoffMs = Math.min(
+      const backoffMilliseconds = Math.min(
         retryAfter ? Number(retryAfter) * 1000 : 1000 * 2 ** attempt,
-        this.maxRetryDelayMs,
+        this.maxRetryDelayMilliseconds,
       );
 
       this.logger.warn(
-        `⏳ Rate limited — waiting ${(backoffMs / 1000).toFixed(1)}s (attempt ${attempt.toString()}/${retries.toString()})`,
+        `⏳ Rate limited — waiting ${(backoffMilliseconds / 1000).toFixed(1)}s (attempt ${attempt.toString()}/${retries.toString()})`,
       );
-      await this.sleep(backoffMs);
+      await new Promise((resolve) => setTimeout(resolve, backoffMilliseconds));
     }
 
     // Final attempt — let caller handle non-ok response
@@ -68,8 +64,8 @@ export class WiktionaryService {
    * pagination until all pages in each category are exhausted. */
   async ingestWiktionary(): Promise<void> {
     this.logger.log(`🌐 Ingesting wiktionary`);
-    if (!fs.existsSync(this.dataDir)) {
-      fs.mkdirSync(this.dataDir, { recursive: true });
+    if (!fs.existsSync(this.directory)) {
+      fs.mkdirSync(this.directory, { recursive: true });
     }
     for (const category of Object.keys(categories) as Category[]) {
       await this.ingestCategory(category);
@@ -106,7 +102,9 @@ export class WiktionaryService {
           if (word.includes("/")) continue; // skip subpage entries (e.g. "a/languages A to L")
           try {
             await this.ingestWord(word, href, category);
-            await this.sleep(this.requestDelayMs);
+            await new Promise((resolve) =>
+              setTimeout(resolve, this.requestDelayMilliseconds),
+            );
           } catch (wordError) {
             this.logger.error(
               `❌ Error ingesting word "${word}" - ${String(wordError)}`,
@@ -173,7 +171,7 @@ export class WiktionaryService {
     };
 
     const filePath = path.join(
-      this.dataDir,
+      this.directory,
       `${this.escapeCapitals(entry.word)}.json`,
     );
     fs.writeFileSync(filePath, JSON.stringify(entryWithHtml));
