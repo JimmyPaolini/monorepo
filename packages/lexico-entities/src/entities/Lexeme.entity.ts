@@ -56,7 +56,7 @@ export class Lexeme extends AuditableEntity {
 
   @Field({ nullable: true })
   @Column("varchar", {
-    length: 1027,
+    length: 4096,
     nullable: true,
     comment: "Etymology of the word (Latin or Greek origin)",
   })

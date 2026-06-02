@@ -65,8 +65,8 @@ export class DictionaryService {
   }
 
   /** Parses the Wiktionary HTML for `word` into one or more `Lexeme` records
-   * and persists them. Loads the cached JSON file if `wiktionaryPage` is
-   * not supplied. */
+   * and persists them using upsert (idempotent). Loads the cached JSON file if
+   * `wiktionaryPage` is not supplied. */
   async ingestLexeme(
     word: string,
     wiktionaryPage?: WiktionaryPage,
@@ -93,12 +93,55 @@ export class DictionaryService {
     const parsedLexemes =
       await this.lexemesService.parseLexemes(wiktionaryPage);
     for (const lexeme of parsedLexemes) {
+      // Upsert the lexeme based on unique constraint (lemma, disambiguator).
       // Explicitly save @ChildEntity inflection first — TypeORM's cascade
       // for STI child entities doesn't reliably set the FK on the parent row.
       if (lexeme.inflection) {
         await lexeme.inflection.save();
       }
-      await this.lexemeRepository.save(lexeme);
+
+      // Use TypeORM's built-in upsert method for idempotent insert/update
+      await this.lexemeRepository.upsert(lexeme, {
+        conflictPaths: ["lemma", "disambiguator"],
+        skipUpdateIfNoValuesChanged: false,
+      });
+
+      // Fetch the upserted lexeme with all relations for relation management
+      const savedLexeme = await this.lexemeRepository.findOne({
+        where: {
+          lemma: lexeme.lemma,
+          disambiguator: lexeme.disambiguator,
+        },
+        relations: [
+          "principalParts",
+          "pronunciations",
+          "translations",
+          "inflection",
+        ],
+      });
+
+      if (savedLexeme) {
+        // Clear existing relations before assigning new ones to avoid constraint
+        // violations. TypeORM will cascade delete orphaned records.
+        savedLexeme.principalParts = [];
+        savedLexeme.pronunciations = [];
+        savedLexeme.translations = [];
+        await this.lexemeRepository.save(savedLexeme);
+
+        // Assign and save new relations
+        savedLexeme.principalParts = lexeme.principalParts;
+        if (lexeme.pronunciations !== undefined) {
+          savedLexeme.pronunciations = lexeme.pronunciations;
+        }
+        if (lexeme.translations !== undefined) {
+          savedLexeme.translations = lexeme.translations;
+        }
+        await this.lexemeRepository.save(savedLexeme);
+
+        this.logger.debug(
+          `Upserted lexeme "${lexeme.lemma}" (disambiguator: ${lexeme.disambiguator})`,
+        );
+      }
     }
     this.logger.log(`📝 Ingested lexeme "${word}"`);
   }
