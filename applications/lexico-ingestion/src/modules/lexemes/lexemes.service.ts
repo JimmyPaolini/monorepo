@@ -194,12 +194,12 @@ export class LexemesService {
   ): Promise<Lexeme | null> {
     return this.lexemeRepository.findOne({
       where: { lemma, disambiguator },
-      relations: [
-        "principalParts",
-        "pronunciations",
-        "translations",
-        "inflection",
-      ],
+      relations: {
+        principalParts: true,
+        pronunciations: true,
+        translations: true,
+        inflection: true,
+      },
     });
   }
 

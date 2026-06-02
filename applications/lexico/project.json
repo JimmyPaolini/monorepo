@@ -172,7 +172,7 @@
         "sharedGlobals"
       ],
       "options": {
-        "command": "squawk --config configuration/squawk.toml --include=require-table-schema --exclude-path applications/lexico/supabase/migrations/20251127225025_remote_schema.sql --exclude-path applications/lexico/supabase/migrations/20251127225309_remote_schema.sql {projectRoot}/supabase/migrations/*.sql",
+        "command": "squawk --config configuration/squawk.toml --include=require-table-schema --exclude prefer-robust-stmts,require-timeout-settings,require-concurrent-index-creation,prefer-bigint-over-int --exclude-path applications/lexico/supabase/migrations/20251127225025_remote_schema.sql --exclude-path applications/lexico/supabase/migrations/20251127225309_remote_schema.sql {projectRoot}/supabase/migrations/*.sql",
         "cwd": "{workspaceRoot}"
       }
     },

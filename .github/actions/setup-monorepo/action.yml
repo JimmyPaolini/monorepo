@@ -30,10 +30,6 @@ runs:
       run: brew install gitleaks --quiet
       shell: bash
 
-    - name: 🦉 Install squawk
-      run: pnpm add -g squawk-cli
-      shell: bash
-
     - name: ♻️ Sync Nx Cache
       uses: actions/cache@v4
       with:

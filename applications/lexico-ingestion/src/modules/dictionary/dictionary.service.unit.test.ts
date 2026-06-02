@@ -174,12 +174,12 @@ describe("DictionaryService", () => {
           lemma: "amō",
           disambiguator: 0,
         },
-        relations: [
-          "principalParts",
-          "pronunciations",
-          "translations",
-          "inflection",
-        ],
+        relations: {
+          principalParts: true,
+          pronunciations: true,
+          translations: true,
+          inflection: true,
+        },
       });
 
       // Should clear and update relations (1 save call for principalParts/pronunciations)

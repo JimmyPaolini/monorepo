@@ -36,7 +36,10 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 }
 
 function isStringArray(value: unknown): value is string[] {
-  return Array.isArray(value) && value.every((v) => typeof v === "string");
+  return (
+    Array.isArray(value) &&
+    (value as unknown[]).every((v: unknown) => typeof v === "string")
+  );
 }
 
 /**

@@ -120,7 +120,7 @@ export class TranslationsService {
   async ingestTranslationReferencesForLexeme(lexemeId: string): Promise<void> {
     const translations = await this.translationsRepository.find({
       where: { lexeme: { id: lexemeId }, translation: Like("%{*%*}%") },
-      relations: ["lexeme"],
+      relations: { lexeme: true },
     });
     for (const translation of translations) {
       await this.ingestTranslationReference(translation);
@@ -136,7 +136,7 @@ export class TranslationsService {
     const params = {
       where: { translation: Like("%{*%*}%") },
       order: { translation: "ASC" as const },
-      relations: ["lexeme"],
+      relations: { lexeme: true },
       take: 100,
     };
 

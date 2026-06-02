@@ -106,7 +106,7 @@ describe("TranslationsService", () => {
 
       expect(translationsRepository.find).toHaveBeenCalledWith({
         where: { lexeme: { id: "amor:1" }, translation: expect.anything() },
-        relations: ["lexeme"],
+        relations: { lexeme: true },
       });
     });
 

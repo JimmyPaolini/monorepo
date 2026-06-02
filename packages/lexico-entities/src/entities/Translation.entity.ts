@@ -29,8 +29,7 @@ export class Translation extends AuditableEntity {
   @Column("text", { comment: "English translation text" })
   translation!: string;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument
-  @Index({ type: "GIN" } as any)
+  @Index({ type: "gin" })
   @Column({
     type: "tsvector",
     generatedType: "STORED",
