@@ -2,7 +2,6 @@ import { Lexeme, Word, WordLexeme } from "@monorepo/lexico-entities";
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
-import { WordsCommand } from "./words.command.js";
 import { WordsService } from "./words.service";
 
 /**
@@ -12,6 +11,6 @@ import { WordsService } from "./words.service";
   controllers: [],
   exports: [WordsService],
   imports: [TypeOrmModule.forFeature([Lexeme, Word, WordLexeme])],
-  providers: [WordsService, WordsCommand],
+  providers: [WordsService],
 })
 export class WordsModule {}

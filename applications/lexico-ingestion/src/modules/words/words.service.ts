@@ -12,8 +12,6 @@ export class WordsService {
 
   // 🏗️ Dependency Injection
   constructor(
-    @InjectRepository(Lexeme)
-    private readonly lexemesRepository: Repository<Lexeme>,
     @InjectRepository(Word)
     private readonly wordsRepository: Repository<Word>,
     @InjectRepository(WordLexeme)
@@ -27,33 +25,6 @@ export class WordsService {
   // 🔏 Private Methods
 
   // 🌎 Public Methods
-
-  /** Ingests `Word` search records for every `Lexeme` in the database,
-   * processing lexemes in batches of 100 to keep memory usage bounded. */
-  async ingestWords(): Promise<void> {
-    this.logger.log("🔤 Ingesting words");
-    const batchSize = 100;
-    let skip = 0;
-    let batch: Lexeme[];
-
-    do {
-      batch = await this.lexemesRepository.find({
-        relations: { principalParts: true },
-        order: { id: "ASC" },
-        take: batchSize,
-        skip,
-      });
-      this.logger.log(
-        `🔤 Processing batch at offset ${skip} (${batch.length} lexemes)`,
-      );
-      for (const lexeme of batch) {
-        await this.ingestLexemeWords(lexeme);
-      }
-      skip += batchSize;
-    } while (batch.length === batchSize);
-
-    this.logger.log("🔤 Ingested words");
-  }
 
   /** Generates and persists a `Word` row for every inflected form and
    * principal part that belongs to the given `Lexeme`. */

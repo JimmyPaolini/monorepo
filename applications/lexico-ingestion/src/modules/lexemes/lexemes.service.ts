@@ -306,7 +306,9 @@ export class LexemesService {
 
         lexemes.push(lexeme);
       } catch (error) {
-        this.logger.warn(`Failed to parse ${lexeme.id}: ${String(error)}`);
+        this.logger.warn(
+          `Failed to parse ${lexeme.lemma}:${lexeme.disambiguator}: ${String(error)}`,
+        );
       }
     }
 

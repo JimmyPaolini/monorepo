@@ -4,17 +4,17 @@ import { InjectRepository } from "@nestjs/typeorm";
 import numberToWords from "number-to-words";
 import { Repository } from "typeorm";
 
-import hicJson from "../../../data/dictionary/hic.json" with { type: "json" };
-import illeJson from "../../../data/dictionary/ille.json" with { type: "json" };
-import omnisJson from "../../../data/dictionary/omnis.json" with { type: "json" };
-import praenomenAbbreviationTemplate from "../../../data/dictionary/template/praenomenAbbreviation.json" with { type: "json" };
-import romanNumeralTemplate from "../../../data/dictionary/template/romanNumeral.json" with { type: "json" };
 import { WordsService } from "../words/words.service.js";
 
 import {
+  buildHicTemplate,
+  buildIlleTemplate,
+  buildOmnisTemplate,
+  buildPraenomenAbbreviationTemplate,
+  buildRomanNumeralTemplate,
   MANUAL_LEXEMES_TO_DELETE,
   PRAENOMEN_ABBREVIATIONS,
-} from "./manual.constants";
+} from "./manual.constants.js";
 
 /**
  * Ingests manually-curated dictionary lexemes (hic, ille, omnis, Roman numerals).
@@ -44,13 +44,13 @@ export class ManualService {
   async ingestManual(): Promise<void> {
     this.logger.log("📋 Ingesting manual lexemes");
 
-    for (const id of MANUAL_LEXEMES_TO_DELETE) {
-      await this.deleteManual(id);
+    for (const { lemma, disambiguator } of MANUAL_LEXEMES_TO_DELETE) {
+      await this.deleteManual(lemma, disambiguator);
     }
 
-    await this.createManual(Object.assign(new Lexeme(), hicJson));
-    await this.createManual(Object.assign(new Lexeme(), illeJson));
-    await this.createManual(Object.assign(new Lexeme(), omnisJson));
+    await this.createManual(buildHicTemplate());
+    await this.createManual(buildIlleTemplate());
+    await this.createManual(buildOmnisTemplate());
 
     await this.ingestPraenomenAbbreviations();
     await this.ingestRomanNumerals();
@@ -58,21 +58,21 @@ export class ManualService {
     this.logger.log("📋 Ingested manual lexemes");
   }
 
-  /** Deletes any existing row with the same id then saves `manual` and
+  /** Deletes any existing row with the same lemma and disambiguator then saves `manual` and
    * re-ingests its word search records. */
   async createManual(manual: Lexeme): Promise<void> {
-    await this.deleteManual(manual.id);
-    this.logger.log(`✏️ Creating "${manual.id}"`);
+    await this.deleteManual(manual.lemma, manual.disambiguator);
+    this.logger.log(`✏️ Creating "${manual.lemma}:${manual.disambiguator}"`);
     const lexeme = await this.lexemesRepository.save(manual, { reload: false });
     await this.wordsService.ingestLexemeWords(lexeme);
-    this.logger.log(`✏️ Created "${manual.id}"`);
+    this.logger.log(`✏️ Created "${manual.lemma}:${manual.disambiguator}"`);
   }
 
-  /** Removes the `Lexeme` row identified by `id` from the database. */
-  async deleteManual(id: string): Promise<void> {
-    this.logger.log(`🗑️ Deleting "${id}"`);
-    await this.lexemesRepository.delete(id);
-    this.logger.log(`🗑️ Deleted "${id}"`);
+  /** Removes the `Lexeme` row identified by `lemma` and `disambiguator` from the database. */
+  async deleteManual(lemma: string, disambiguator: number): Promise<void> {
+    this.logger.log(`🗑️ Deleting "${lemma}:${disambiguator}"`);
+    await this.lexemesRepository.delete({ lemma, disambiguator });
+    this.logger.log(`🗑️ Deleted "${lemma}:${disambiguator}"`);
   }
 
   private decimalToRoman(decimal: number): string {
@@ -109,11 +109,8 @@ export class ManualService {
     for (const [abbreviation, praenomen] of Object.entries(
       PRAENOMEN_ABBREVIATIONS,
     )) {
-      const lexeme = Object.assign(
-        new Lexeme(),
-        structuredClone(praenomenAbbreviationTemplate),
-      );
-      lexeme.id = `${abbreviation}:100`;
+      const lexeme = buildPraenomenAbbreviationTemplate();
+      lexeme.lemma = abbreviation;
       if (lexeme.principalParts[0]) {
         lexeme.principalParts[0].text = [abbreviation];
       }
@@ -125,6 +122,7 @@ export class ManualService {
         lexeme.translations.push(
           new Translation(
             `Praenomen abbreviation: ${praenomen.masculine} (male)`,
+            lexeme,
           ),
         );
       }
@@ -132,15 +130,20 @@ export class ManualService {
         lexeme.translations.push(
           new Translation(
             `Praenomen abbreviation: ${praenomen.feminine} (female)`,
+            lexeme,
           ),
         );
       }
-      if (praenomen.masculine && !praenomen.feminine) {
-        lexeme.inflection.gender = "masculine";
-      } else if (!praenomen.masculine && praenomen.feminine) {
-        lexeme.inflection.gender = "feminine";
-      } else {
-        lexeme.inflection.gender = "neuter";
+
+      const inflection = lexeme.inflection;
+      if (inflection && "gender" in inflection) {
+        if (praenomen.masculine && !praenomen.feminine) {
+          inflection.gender = "masculine";
+        } else if (!praenomen.masculine && praenomen.feminine) {
+          inflection.gender = "feminine";
+        } else {
+          inflection.gender = "neuter";
+        }
       }
       await this.createManual(lexeme);
     }
@@ -151,18 +154,16 @@ export class ManualService {
     this.logger.log("🔢 Ingesting Roman numerals");
     for (let i = 1; i < 4000; i++) {
       const roman = this.decimalToRoman(i).toLowerCase();
-      const lexeme = Object.assign(
-        new Lexeme(),
-        structuredClone(romanNumeralTemplate),
-      );
-      lexeme.id = `${roman}:100`;
+      const lexeme = buildRomanNumeralTemplate();
+      lexeme.lemma = roman;
       if (lexeme.principalParts[0]) {
         lexeme.principalParts[0].text = [roman];
       }
-      lexeme.inflection.declension = "";
-      lexeme.inflection.degree = "positive";
       lexeme.translations = [
-        new Translation(`Roman numeral: ${i} (${numberToWords.toWords(i)})`),
+        new Translation(
+          `Roman numeral: ${i} (${numberToWords.toWords(i)})`,
+          lexeme,
+        ),
       ];
       await this.createManual(lexeme);
     }

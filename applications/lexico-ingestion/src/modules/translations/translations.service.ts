@@ -28,8 +28,12 @@ export class TranslationsService {
 
   // 🔏 Private Methods
 
-  private escapeCapitals(word: string): string {
-    return word.replaceAll(/[A-Z]/g, (char) => `_${char.toLowerCase()}`);
+  private normalize(str: string): string {
+    return str
+      .normalize("NFC")
+      .replaceAll(/[\u0300-\u036F]/gu, "")
+      .toLowerCase()
+      .trim();
   }
 
   private async ingestTranslationReference(
@@ -47,8 +51,8 @@ export class TranslationsService {
     const lexemes = await this.lexemesRepository
       .createQueryBuilder("lexeme")
       .leftJoinAndSelect("lexeme.translations", "translations")
-      .where(`lexeme.id ~* :pattern`, {
-        pattern: String.raw`${this.escapeCapitals(reference)}:\d`,
+      .where("lexeme.lemma = :lemma", {
+        lemma: this.normalize(reference),
       })
       .getMany();
 
@@ -108,8 +112,8 @@ export class TranslationsService {
   async lexemeExistsInDb(reference: string): Promise<boolean> {
     const count = await this.lexemesRepository
       .createQueryBuilder("lexeme")
-      .where("lexeme.id ~* :pattern", {
-        pattern: String.raw`${this.escapeCapitals(reference)}:\d`,
+      .where("lexeme.lemma = :lemma", {
+        lemma: this.normalize(reference),
       })
       .getCount();
     return count > 0;

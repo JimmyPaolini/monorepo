@@ -78,14 +78,6 @@
         "cwd": "applications/lexico-ingestion"
       }
     },
-    "translation-references": {
-      "description": "Ingest translation references into the database",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "node --import @swc-node/register/esm-register src/main.ts translation-references",
-        "cwd": "applications/lexico-ingestion"
-      }
-    },
     "type-coverage": {},
     "typecheck": {},
     "wiktionary": {
@@ -93,14 +85,6 @@
       "executor": "nx:run-commands",
       "options": {
         "command": "node --import @swc-node/register/esm-register src/main.ts wiktionary",
-        "cwd": "applications/lexico-ingestion"
-      }
-    },
-    "words": {
-      "description": "Ingest word list into the database",
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "node --import @swc-node/register/esm-register src/main.ts words",
         "cwd": "applications/lexico-ingestion"
       }
     },

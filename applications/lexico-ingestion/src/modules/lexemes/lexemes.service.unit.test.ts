@@ -1,6 +1,9 @@
+import { Lexeme } from "@monorepo/lexico-entities";
 import { Test } from "@nestjs/testing";
+import { getRepositoryToken } from "@nestjs/typeorm";
 import { beforeAll, describe, expect, it, vi } from "vitest";
 
+import { FormsService } from "../forms/forms.service";
 import { LoggerService } from "../logger/logger.service";
 import { PartOfSpeechService } from "../part-of-speech/part-of-speech.service";
 import { PronunciationService } from "../pronunciation/pronunciation.service";
@@ -14,8 +17,10 @@ describe("LexemesService", () => {
     const module = await Test.createTestingModule({
       providers: [
         LexemesService,
-        PartOfSpeechService,
-        PronunciationService,
+        { provide: getRepositoryToken(Lexeme), useValue: {} },
+        { provide: FormsService, useValue: {} },
+        { provide: PartOfSpeechService, useValue: {} },
+        { provide: PronunciationService, useValue: {} },
         {
           provide: LoggerService,
           useValue: {
