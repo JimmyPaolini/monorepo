@@ -1,12 +1,13 @@
-import { Lexeme, Translation, Word } from "@monorepo/lexico-entities";
+import { Lexeme } from "@monorepo/lexico-entities";
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
 import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
+import { FormsService } from "../forms/forms.service";
 import { LexemesService } from "../lexemes/lexemes.service";
 import { LoggerService } from "../logger/logger.service";
-import { PartOfSpeechService } from "../part-of-speech/part-of-speech.service";
-import { PronunciationService } from "../pronunciation/pronunciation.service";
+import { TranslationsService } from "../translations/translations.service";
+import { WordsService } from "../words/words.service";
 
 import { DictionaryService } from "./dictionary.service";
 
@@ -15,22 +16,46 @@ describe("DictionaryService", () => {
   let lexemeRepository: any;
   let lexemesService: any;
   let loggerService: any;
+  let translationsService: any;
 
   beforeAll(async () => {
     const mockRepository = {
       findOne: vi.fn(),
       save: vi.fn(),
+      upsert: vi.fn(),
+      createQueryBuilder: vi.fn(() => ({
+        where: vi.fn().mockReturnThis(),
+        getCount: vi.fn().mockResolvedValue(0),
+      })),
+    };
+
+    const mockFormsService = {
+      ingestLexemeForms: vi.fn().mockResolvedValue(undefined),
+    };
+    const mockLexemesService = { parseLexemes: vi.fn() };
+    const mockWordsService = {
+      ingestLexemeWords: vi.fn().mockResolvedValue(undefined),
+    };
+    const mockTranslationsService = {
+      ingestTranslations: vi.fn().mockResolvedValue(undefined),
+      extractTranslationReferences: vi.fn().mockReturnValue([]),
+      lexemeExistsInDb: vi.fn().mockResolvedValue(true),
+      ingestTranslationReferencesForLexeme: vi
+        .fn()
+        .mockResolvedValue(undefined),
     };
 
     const module = await Test.createTestingModule({
       providers: [
         DictionaryService,
-        LexemesService,
-        PartOfSpeechService,
-        PronunciationService,
         { provide: getRepositoryToken(Lexeme), useValue: mockRepository },
-        { provide: getRepositoryToken(Word), useValue: {} },
-        { provide: getRepositoryToken(Translation), useValue: {} },
+        { provide: FormsService, useValue: mockFormsService },
+        { provide: LexemesService, useValue: mockLexemesService },
+        {
+          provide: TranslationsService,
+          useValue: mockTranslationsService,
+        },
+        { provide: WordsService, useValue: mockWordsService },
         {
           provide: LoggerService,
           useValue: {
@@ -49,6 +74,7 @@ describe("DictionaryService", () => {
     lexemeRepository = module.get(getRepositoryToken(Lexeme));
     lexemesService = module.get(LexemesService);
     loggerService = module.get(LoggerService);
+    translationsService = module.get(TranslationsService);
   });
 
   beforeEach(() => {
@@ -71,7 +97,8 @@ describe("DictionaryService", () => {
       newLexeme.principalParts = [];
       newLexeme.pronunciations = [];
       newLexeme.translations = [];
-
+      newLexeme.forms = [];
+      newLexeme.forms = [];
       vi.spyOn(lexemesService, "parseLexemes").mockResolvedValue([newLexeme]);
       lexemeRepository.upsert = vi.fn().mockResolvedValue(undefined);
       lexemeRepository.findOne.mockResolvedValue(newLexeme);
@@ -103,6 +130,7 @@ describe("DictionaryService", () => {
       existingLexeme.principalParts = [];
       existingLexeme.pronunciations = [];
       existingLexeme.translations = [];
+      existingLexeme.forms = [];
 
       const updatedLexeme = new Lexeme();
       updatedLexeme.lemma = "amō";
@@ -112,6 +140,7 @@ describe("DictionaryService", () => {
       updatedLexeme.principalParts = [];
       updatedLexeme.pronunciations = [];
       updatedLexeme.translations = [];
+      updatedLexeme.forms = [];
 
       vi.spyOn(lexemesService, "parseLexemes").mockResolvedValue([
         updatedLexeme,
@@ -153,8 +182,14 @@ describe("DictionaryService", () => {
         ],
       });
 
-      // Should clear and update relations (2 save calls)
-      expect(lexemeRepository.save).toHaveBeenCalledTimes(2);
+      // Should clear and update relations (1 save call for principalParts/pronunciations)
+      expect(lexemeRepository.save).toHaveBeenCalledTimes(1);
+
+      // Should delegate translation persistence to TranslationsService
+      expect(translationsService.ingestTranslations).toHaveBeenCalledWith(
+        existingLexeme,
+        updatedLexeme.translations,
+      );
 
       expect(loggerService.debug).toHaveBeenCalledWith(
         'Upserted lexeme "amō" (disambiguator: 0)',
@@ -175,6 +210,7 @@ describe("DictionaryService", () => {
       newLexeme.principalParts = [];
       newLexeme.pronunciations = [];
       newLexeme.translations = [];
+      newLexeme.forms = [];
 
       vi.spyOn(lexemesService, "parseLexemes").mockResolvedValue([newLexeme]);
       lexemeRepository.upsert = vi.fn().mockResolvedValue(undefined);
@@ -194,6 +230,35 @@ describe("DictionaryService", () => {
         conflictPaths: ["lemma", "disambiguator"],
         skipUpdateIfNoValuesChanged: false,
       });
+    });
+
+    it("should resolve translation references for the lexeme after persisting", async () => {
+      const savedLexeme = new Lexeme();
+      savedLexeme.id = "amor:1";
+      savedLexeme.lemma = "amor";
+      savedLexeme.disambiguator = 0;
+      savedLexeme.partOfSpeech = "noun";
+      savedLexeme.inflection = null;
+      savedLexeme.principalParts = [];
+      savedLexeme.pronunciations = [];
+      savedLexeme.translations = [];
+      savedLexeme.forms = [];
+
+      vi.spyOn(lexemesService, "parseLexemes").mockResolvedValue([savedLexeme]);
+      lexemeRepository.upsert = vi.fn().mockResolvedValue(undefined);
+      lexemeRepository.findOne.mockResolvedValue(savedLexeme);
+      lexemeRepository.save.mockResolvedValue(savedLexeme);
+
+      await service.ingestLexeme("amor", {
+        word: "amor",
+        category: "Latin",
+        href: "/wiki/amor",
+        html: "<html>test</html>",
+      });
+
+      expect(
+        translationsService.ingestTranslationReferencesForLexeme,
+      ).toHaveBeenCalledWith("amor:1");
     });
   });
 });

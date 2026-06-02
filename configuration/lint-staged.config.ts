@@ -140,6 +140,15 @@ const config = {
       `nx affected --target=format,yaml-lint,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
     ];
   },
+
+  // ── SQL files ──
+  // Runs format (SQLFluff), lint (SQLFluff), and squawk (migration safety checks)
+  "*.sql": (files: string[]) => {
+    return [
+      `nx affected --target=format,lint --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
+      `nx affected --target=squawk --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
+    ];
+  },
 };
 
 export default config;

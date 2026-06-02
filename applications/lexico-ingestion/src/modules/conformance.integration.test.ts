@@ -17,11 +17,7 @@ describe(`"nestjs-service-module" generator template conformance`, () => {
       templateDirectoryPath: TEMPLATES_DIRECTORY_PATH,
     }).filter(
       (result) =>
-        ![
-          "lexico-ingestion",
-          "part-of-speech",
-          "translation-references",
-        ].includes(result.directoryName),
+        !["lexico-ingestion", "part-of-speech"].includes(result.directoryName),
     );
     expect(results.length).toBeGreaterThan(0);
 

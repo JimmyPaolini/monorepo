@@ -15,6 +15,7 @@ import type { Word } from "./Word.entity.js";
  */
 @Entity({
   name: "word_forms",
+  schema: "public",
   comment:
     "Junction table linking a normalized Latin word string to the morphological forms it can surface as",
 })

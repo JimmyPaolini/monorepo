@@ -27,6 +27,7 @@ import { WordLexeme } from "./WordLexeme.entity.js";
 @ObjectType()
 @Entity({
   name: "lexemes",
+  schema: "public",
   comment:
     "A dictionary entry representing a Latin word form with its translations, principal parts, pronunciation, and inflection data",
 })
@@ -34,14 +35,13 @@ import { WordLexeme } from "./WordLexeme.entity.js";
 export class Lexeme extends AuditableEntity {
   @Field()
   @Index()
-  @Column("varchar", {
-    length: 127,
+  @Column("text", {
     comment: "Dictionary headword (lemma), e.g. 'amō'",
   })
   lemma!: string;
 
   @Field()
-  @Column("smallint", {
+  @Column("bigint", {
     default: 0,
     comment:
       "Disambiguation index when multiple entries share the same lemma (0-based)",
@@ -49,8 +49,7 @@ export class Lexeme extends AuditableEntity {
   disambiguator!: number;
 
   @Field({ nullable: true })
-  @Column("varchar", {
-    length: 4096,
+  @Column("text", {
     nullable: true,
     comment: "Etymology of the word (Latin or Greek origin)",
   })

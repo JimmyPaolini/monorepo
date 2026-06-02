@@ -26,8 +26,7 @@ export class PrepositionInflection extends Inflection {
   case!: PrepositionCase;
 
   @Field(() => String, { nullable: true })
-  @Column("varchar", {
-    length: 255,
+  @Column("text", {
     nullable: true,
     comment: "Additional inflection notes",
   })

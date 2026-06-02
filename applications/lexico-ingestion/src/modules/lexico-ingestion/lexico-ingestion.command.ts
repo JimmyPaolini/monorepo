@@ -5,14 +5,12 @@ import { ClearService } from "../clear/clear.service.js";
 import { DictionaryService } from "../dictionary/dictionary.service.js";
 import { LoggerService } from "../logger/logger.service.js";
 import { ManualService } from "../manual/manual.service.js";
-import { TranslationReferencesService } from "../translation-references/translation-references.service.js";
 import { WiktionaryService } from "../wiktionary/wiktionary.service.js";
-import { WordsService } from "../words/words.service.js";
 
 /**
  * Root CLI entry point for lexico-ingestion.
  * Runs all ingestion steps in order when invoked without a sub-command.
- * Sub-commands: wiktionary, dictionary, words, translation-references, manual, clear
+ * Sub-commands: wiktionary, dictionary, words, manual, clear
  */
 @Injectable()
 @Command({
@@ -26,8 +24,6 @@ export class LexicoIngestionCommand extends CommandRunner {
     private readonly wiktionaryService: WiktionaryService,
     private readonly dictionaryService: DictionaryService,
     private readonly manualService: ManualService,
-    private readonly translationReferencesService: TranslationReferencesService,
-    private readonly wordsService: WordsService,
   ) {
     super();
     this.logger.setContext(LexicoIngestionCommand.name);
@@ -35,28 +31,22 @@ export class LexicoIngestionCommand extends CommandRunner {
 
   /**
    * Runs the full ingestion pipeline in order:
-   * clear → wiktionary → dictionary → manual → translation-references → words
+   * clear → wiktionary → dictionary → manual
    */
   async run(): Promise<void> {
     this.logger.log("Starting full ingestion pipeline");
 
-    this.logger.log("Step 1/6: Clearing dictionary data");
+    this.logger.log("Step 1/4: Clearing dictionary data");
     await this.clearService.clearDictionary();
 
-    this.logger.log("Step 2/6: Ingesting Wiktionary pages");
+    this.logger.log("Step 2/4: Ingesting Wiktionary pages");
     await this.wiktionaryService.ingestWiktionary();
 
-    this.logger.log("Step 3/6: Processing dictionary lexemes");
+    this.logger.log("Step 3/4: Processing dictionary lexemes");
     await this.dictionaryService.ingestAll();
 
-    this.logger.log("Step 4/6: Ingesting manual lexemes");
+    this.logger.log("Step 4/4: Ingesting manual lexemes");
     await this.manualService.ingestManual();
-
-    this.logger.log("Step 5/6: Resolving translation references");
-    await this.translationReferencesService.ingestTranslationReferences();
-
-    this.logger.log("Step 6/6: Building word search index");
-    await this.wordsService.ingestWords();
 
     this.logger.log("Full ingestion pipeline complete");
   }

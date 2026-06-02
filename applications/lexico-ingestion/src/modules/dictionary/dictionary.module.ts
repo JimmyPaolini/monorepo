@@ -1,15 +1,9 @@
-import {
-  Form,
-  Lexeme,
-  Translation,
-  Word,
-  WordForm,
-  WordLexeme,
-} from "@monorepo/lexico-entities";
 import { Module } from "@nestjs/common";
-import { TypeOrmModule } from "@nestjs/typeorm";
 
+import { FormsModule } from "../forms/forms.module.js";
 import { LexemesModule } from "../lexemes/lexemes.module.js";
+import { TranslationsModule } from "../translations/translations.module.js";
+import { WordsModule } from "../words/words.module.js";
 
 import { DictionaryCommand } from "./dictionary.command.js";
 import { DictionaryService } from "./dictionary.service";
@@ -19,17 +13,7 @@ import { DictionaryService } from "./dictionary.service";
  */
 @Module({
   controllers: [],
-  imports: [
-    TypeOrmModule.forFeature([
-      Lexeme,
-      Form,
-      Word,
-      WordLexeme,
-      WordForm,
-      Translation,
-    ]),
-    LexemesModule,
-  ],
+  imports: [FormsModule, LexemesModule, TranslationsModule, WordsModule],
   providers: [DictionaryCommand, DictionaryService],
   exports: [DictionaryService],
 })

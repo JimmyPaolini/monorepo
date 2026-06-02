@@ -45,8 +45,7 @@ export class AdjectiveInflection extends Inflection {
   degree!: AdjectiveDegree;
 
   @Field(() => String, { nullable: true })
-  @Column("varchar", {
-    length: 255,
+  @Column("text", {
     nullable: true,
     comment: "Additional inflection notes",
   })

@@ -113,7 +113,7 @@
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
       "inputs": [
-        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml,py,ipynb}",
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml,py,ipynb,sql}",
         "sharedGlobals"
       ],
       "options": {
@@ -208,7 +208,7 @@
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
       "inputs": [
-        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml}",
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml,sql}",
         "{workspaceRoot}/.prettierignore",
         "{workspaceRoot}/configuration/oxfmt.config.ts",
         "{workspaceRoot}/configuration/prettier.config.ts",
@@ -427,13 +427,13 @@
       "cache": true,
       "executor": "nx:run-commands",
       "inputs": [
-        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,css,scss,html,yaml,yml,md,mdx,py,ipynb}",
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,css,scss,html,yaml,yml,md,mdx,py,ipynb,sql}",
         "{workspaceRoot}/configuration/.cspell/**",
         "{workspaceRoot}/configuration/cspell.config.yaml",
         "sharedGlobals"
       ],
       "options": {
-        "command": "cspell --config configuration/cspell.config.yaml '{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,css,scss,html,yaml,yml,md,mdx,py,ipynb}' --no-progress --gitignore",
+        "command": "cspell --config configuration/cspell.config.yaml '{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,css,scss,html,yaml,yml,md,mdx,py,ipynb,sql}' --no-progress --gitignore",
         "cwd": "{workspaceRoot}"
       }
     },

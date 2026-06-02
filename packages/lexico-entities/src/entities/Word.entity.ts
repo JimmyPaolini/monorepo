@@ -11,6 +11,7 @@ import { WordLexeme } from "./WordLexeme.entity.js";
 @ObjectType()
 @Entity({
   name: "words",
+  schema: "public",
   comment: "A Latin word string that maps to one or more dictionary entries",
 })
 export class Word extends AuditableEntity {

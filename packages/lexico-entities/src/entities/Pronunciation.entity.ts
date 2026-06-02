@@ -21,6 +21,7 @@ export type PronunciationVariant = (typeof pronunciationVariantValues)[number];
 @ObjectType()
 @Entity({
   name: "pronunciations",
+  schema: "public",
   comment:
     "A pronunciation variant (classical, ecclesiastical, or vulgar) for a Latin lexeme",
 })
@@ -45,8 +46,7 @@ export class Pronunciation extends AuditableEntity {
   variant!: PronunciationVariant;
 
   @Field({ nullable: true })
-  @Column("varchar", {
-    length: 255,
+  @Column("text", {
     nullable: true,
     comment: "Phonemic segmentation (e.g. a.moː)",
   })
@@ -54,8 +54,7 @@ export class Pronunciation extends AuditableEntity {
   phonemes?: string | null;
 
   @Field({ nullable: true })
-  @Column("varchar", {
-    length: 255,
+  @Column("text", {
     nullable: true,
     comment: "Phonemic IPA transcription (e.g. /ˈaː.moː/)",
   })
@@ -63,8 +62,7 @@ export class Pronunciation extends AuditableEntity {
   phonemic?: string | null;
 
   @Field({ nullable: true })
-  @Column("varchar", {
-    length: 255,
+  @Column("text", {
     nullable: true,
     comment: "Phonetic IPA transcription (e.g. [ˈäː.moː])",
   })

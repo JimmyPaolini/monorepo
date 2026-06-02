@@ -19,6 +19,7 @@ export abstract class AuditableEntity extends BaseEntity {
 
   @Field(() => Date)
   @CreateDateColumn({
+    type: "timestamptz",
     comment: "Timestamp when the record was created",
   })
   createdAt!: Date;
@@ -32,6 +33,7 @@ export abstract class AuditableEntity extends BaseEntity {
 
   @Field(() => Date)
   @UpdateDateColumn({
+    type: "timestamptz",
     comment: "Timestamp when the record was last updated",
   })
   updatedAt!: Date;
@@ -45,6 +47,7 @@ export abstract class AuditableEntity extends BaseEntity {
 
   @Field(() => Date, { nullable: true })
   @DeleteDateColumn({
+    type: "timestamptz",
     nullable: true,
     comment: "Timestamp when the record was soft-deleted",
   })

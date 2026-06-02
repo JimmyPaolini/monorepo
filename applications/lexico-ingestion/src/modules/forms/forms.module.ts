@@ -1,15 +1,16 @@
+import { Form, Word, WordForm, WordLexeme } from "@monorepo/lexico-entities";
 import { Module } from "@nestjs/common";
+import { TypeOrmModule } from "@nestjs/typeorm";
 
-import { FormsService } from "./forms.service.js";
+import { FormsService } from "./forms.service";
 
 /**
- * Provides the FormsService for converting raw parsed Forms objects
- * into normalized TypeORM Form entities during lexeme ingestion.
+ * TODO: Document the forms module.
  */
 @Module({
   controllers: [],
   exports: [FormsService],
-  imports: [],
+  imports: [TypeOrmModule.forFeature([Form, Word, WordLexeme, WordForm])],
   providers: [FormsService],
 })
 export class FormsModule {}

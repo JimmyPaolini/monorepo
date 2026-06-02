@@ -35,6 +35,15 @@
     "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.tabSize": 4
   },
+  "[sql]": {
+    "editor.defaultFormatter": "sqlfluff.vscode-sqlfluff",
+    "editor.formatOnSave": true
+  },
+  "sqlfluff.executablePath": "${workspaceFolder}/configuration/.venv/bin/sqlfluff",
+  "sqlfluff.config": "${workspaceFolder}/configuration/pyproject.toml",
+  "sqlfluff.workingDirectory": "${workspaceFolder}",
+  "sqlfluff.linter.run": "onSave",
+  "sqlfluff.linter.diagnosticSeverity": "warning",
   "[typescript]": {
     "editor.defaultFormatter": "oxc.oxc-vscode"
   },
@@ -654,6 +663,7 @@
     ".code-workspace*": "vscode",
     ".pnpmfile.mjs": "pnpm",
     ".size-limit.cjs": "disc",
+    ".sqlfluffignore": "git",
     ".yamllint": "yaml",
     "*.args.js": "excalidraw",
     "*.args.ts": "excalidraw",

@@ -10,7 +10,40 @@
     "language:typescript"
   ],
   "targets": {
-    "analyze-code": {},
+    "analyze-code": {
+      "configurations": {
+        "check": {
+          "commands": [
+            "nx run lexico:clean:check",
+            "nx run lexico:dependency-cruiser",
+            "nx run lexico:format:check",
+            "nx run lexico:lint:check",
+            "nx run lexico:markdown-lint:check",
+            "nx run lexico:spell-check",
+            "nx run lexico:squawk",
+            "nx run lexico:type-coverage",
+            "nx run lexico:typecheck",
+            "nx run lexico:yaml-lint"
+          ],
+          "parallel": true
+        },
+        "write": {
+          "commands": [
+            "nx run lexico:clean:write",
+            "nx run lexico:dependency-cruiser",
+            "nx run lexico:format:write",
+            "nx run lexico:lint:write",
+            "nx run lexico:markdown-lint:write",
+            "nx run lexico:spell-check",
+            "nx run lexico:squawk",
+            "nx run lexico:type-coverage",
+            "nx run lexico:typecheck",
+            "nx run lexico:yaml-lint"
+          ],
+          "parallel": false
+        }
+      }
+    },
     "build": {
       "description": "Build the application for production",
       "executor": "nx:run-commands",
@@ -40,14 +73,109 @@
         "cwd": "applications/lexico"
       }
     },
-    "format": {},
+    "format": {
+      "configurations": {
+        "check": {
+          "commands": [
+            "nx run lexico:prettier:check",
+            "nx run lexico:oxfmt:check",
+            "nx run lexico:sqlfluff-format:check"
+          ],
+          "parallel": true
+        },
+        "write": {
+          "commands": [
+            "nx run lexico:prettier:write",
+            "nx run lexico:oxfmt:write",
+            "nx run lexico:sqlfluff-format:write"
+          ],
+          "parallel": false
+        }
+      }
+    },
     "knip": {},
-    "lint": {},
+    "lint": {
+      "configurations": {
+        "check": {
+          "commands": [
+            "nx run lexico:eslint:check",
+            "nx run lexico:oxlint:check",
+            "nx run lexico:sqlfluff-lint:check"
+          ],
+          "parallel": true
+        },
+        "write": {
+          "commands": [
+            "nx run lexico:eslint:write",
+            "nx run lexico:oxlint:write",
+            "nx run lexico:sqlfluff-lint:write"
+          ],
+          "parallel": false
+        }
+      }
+    },
     "markdown-lint": {},
     "oxfmt": {},
     "oxlint": {},
     "prettier": {},
     "spell-check": {},
+    "sqlfluff-format": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "args": "lint"
+        },
+        "write": {
+          "args": "fix"
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.sql",
+        "{workspaceRoot}/configuration/pyproject.toml",
+        "sharedGlobals"
+      ],
+      "options": {
+        "command": "uv run --project configuration sqlfluff {args} --config configuration/pyproject.toml {projectRoot}",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "sqlfluff-lint": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "args": "lint"
+        },
+        "write": {
+          "args": "fix"
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.sql",
+        "{workspaceRoot}/configuration/pyproject.toml",
+        "sharedGlobals"
+      ],
+      "options": {
+        "command": "uv run --project configuration sqlfluff {args} --config configuration/pyproject.toml {projectRoot}",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "squawk": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.sql",
+        "{workspaceRoot}/configuration/squawk.toml",
+        "sharedGlobals"
+      ],
+      "options": {
+        "command": "squawk --config configuration/squawk.toml --include=require-table-schema --exclude-path applications/lexico/supabase/migrations/20251127225025_remote_schema.sql --exclude-path applications/lexico/supabase/migrations/20251127225309_remote_schema.sql {projectRoot}/supabase/migrations/*.sql",
+        "cwd": "{workspaceRoot}"
+      }
+    },
     "start": {
       "description": "Start the production server",
       "executor": "nx:run-commands",

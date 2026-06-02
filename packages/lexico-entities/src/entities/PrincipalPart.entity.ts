@@ -11,6 +11,7 @@ import type { Lexeme } from "./Lexeme.entity.js";
 @ObjectType()
 @Entity({
   name: "principal_parts",
+  schema: "public",
   comment:
     "A named principal part (e.g. first, infinitive) of a Latin dictionary entry",
 })
@@ -24,8 +25,7 @@ export class PrincipalPart extends AuditableEntity {
   lexeme!: Lexeme;
 
   @Field()
-  @Column("varchar", {
-    length: 63,
+  @Column("text", {
     comment: "Label for the principal part (e.g. first, infinitive)",
   })
   name!: string;

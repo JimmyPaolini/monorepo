@@ -1,6 +1,6 @@
-import { Module } from "@nestjs/common";
-import { ConfigService } from "@nestjs/config";
-import { TypeOrmModule } from "@nestjs/typeorm";
+import "reflect-metadata";
+
+import { DataSource } from "typeorm";
 
 import { AdjectivalForm } from "../entities/form/AdjectivalForm.entity.js";
 import { AdverbForm } from "../entities/form/AdverbForm.entity.js";
@@ -28,51 +28,41 @@ import { WordLexeme } from "../entities/WordLexeme.entity.js";
 
 import { LexicoNamingStrategy } from "./lexico-naming-strategy.js";
 
-/**
- *
- */
-@Module({
-  imports: [
-    TypeOrmModule.forRootAsync({
-      inject: [ConfigService],
-      useFactory: (config: ConfigService) => ({
-        type: "postgres",
-        host: config.get<string>("POSTGRES_HOST", "localhost"),
-        port: config.get<number>("POSTGRES_PORT", 5432),
-        username: config.get<string>("POSTGRES_USER", "postgres"),
-        password: config.get<string>("POSTGRES_PASSWORD", "postgres"),
-        database: config.get<string>("POSTGRES_DB", "postgres"),
-        namingStrategy: new LexicoNamingStrategy(),
-        entities: [
-          Lexeme,
-          Inflection,
-          NounInflection,
-          VerbInflection,
-          AdjectiveInflection,
-          AdverbInflection,
-          PrepositionInflection,
-          Uninflected,
-          PrincipalPart,
-          Pronunciation,
-          Word,
-          Translation,
-          Form,
-          NominalForm,
-          AdjectivalForm,
-          AdverbForm,
-          FiniteVerbForm,
-          InfinitiveForm,
-          ParticipleForm,
-          GerundForm,
-          SupineForm,
-          WordForm,
-          WordLexeme,
-        ],
-        synchronize: false,
-        logging: false,
-      }),
-    }),
+export const dataSource = new DataSource({
+  type: "postgres",
+  host: process.env["POSTGRES_HOST"] ?? "localhost",
+  port: Number(process.env["POSTGRES_PORT"] ?? 5432),
+  username: process.env["POSTGRES_USER"] ?? "postgres",
+  password: process.env["POSTGRES_PASSWORD"] ?? "postgres",
+  database: process.env["POSTGRES_DB"] ?? "postgres",
+  namingStrategy: new LexicoNamingStrategy(),
+  schema: "public",
+  entities: [
+    Lexeme,
+    Inflection,
+    NounInflection,
+    VerbInflection,
+    AdjectiveInflection,
+    AdverbInflection,
+    PrepositionInflection,
+    Uninflected,
+    PrincipalPart,
+    Pronunciation,
+    Word,
+    Translation,
+    Form,
+    NominalForm,
+    AdjectivalForm,
+    AdverbForm,
+    FiniteVerbForm,
+    InfinitiveForm,
+    ParticipleForm,
+    GerundForm,
+    SupineForm,
+    WordForm,
+    WordLexeme,
   ],
-  exports: [TypeOrmModule],
-})
-export class LexicoDatabaseModule {}
+  migrations: ["src/database/migrations/*.ts"],
+  synchronize: false,
+  logging: false,
+});

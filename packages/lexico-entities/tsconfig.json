@@ -12,5 +12,5 @@
   },
   "exclude": ["dist", "node_modules"],
   "extends": "../../configuration/tsconfig.base.json",
-  "include": ["*.config.mts", "src/**/*.ts"]
+  "include": ["*.config.mts", "scripts/**/*.ts", "src/**/*.ts"]
 }

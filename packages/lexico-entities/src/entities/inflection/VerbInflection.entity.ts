@@ -32,8 +32,7 @@ export class VerbInflection extends Inflection {
   conjugation!: VerbConjugation;
 
   @Field(() => String, { nullable: true })
-  @Column("varchar", {
-    length: 255,
+  @Column("text", {
     nullable: true,
     comment: "Additional inflection notes",
   })

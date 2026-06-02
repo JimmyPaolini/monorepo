@@ -12,10 +12,11 @@ import {
 @InterfaceType()
 @Entity({
   name: "inflections",
+  schema: "public",
   comment:
     "Abstract base table for grammatical inflection metadata using single-table inheritance",
 })
-@TableInheritance({ column: { type: "varchar", name: "type", length: 63 } })
+@TableInheritance({ column: { type: "text", name: "type" } })
 export class Inflection extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn("uuid", {

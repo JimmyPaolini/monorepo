@@ -1,9 +1,12 @@
 import { Lexeme, PrincipalPart, Translation } from "@monorepo/lexico-entities";
 import { Injectable } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
 import * as cheerio from "cheerio";
 import _ from "lodash";
+import { Repository } from "typeorm";
 
 import { FormsService } from "../forms/forms.service.js";
+import { LEXICO_INGESTION_BY_ID } from "../lexico-ingestion/lexico-ingestion.constants.js";
 import { LoggerService } from "../logger/logger.service.js";
 import { PartOfSpeechService } from "../part-of-speech/part-of-speech.service.js";
 import { PronunciationService } from "../pronunciation/pronunciation.service.js";
@@ -22,6 +25,8 @@ import type { AnyNode } from "domhandler";
 export class LexemesService {
   // 🏗️ Dependency Injection
   constructor(
+    @InjectRepository(Lexeme)
+    private readonly lexemeRepository: Repository<Lexeme>,
     private readonly logger: LoggerService,
     private readonly formsService: FormsService,
     private readonly partOfSpeechService: PartOfSpeechService,
@@ -164,6 +169,52 @@ export class LexemesService {
   }
 
   // 🌎 Public Methods
+
+  /** Upserts the Lexeme row. Explicitly saves the @ChildEntity inflection
+   * first — TypeORM's cascade for STI child entities doesn't reliably set
+   * the FK on the parent row. */
+  async upsertLexeme(lexeme: Lexeme): Promise<void> {
+    if (lexeme.inflection) {
+      await lexeme.inflection.save();
+    }
+    lexeme.createdBy = LEXICO_INGESTION_BY_ID;
+    lexeme.updatedBy = LEXICO_INGESTION_BY_ID;
+    await this.lexemeRepository.upsert(lexeme, {
+      conflictPaths: ["lemma", "disambiguator"],
+      skipUpdateIfNoValuesChanged: false,
+    });
+  }
+
+  /**
+   *
+   */
+  async fetchSavedLexeme(
+    lemma: string,
+    disambiguator: number,
+  ): Promise<Lexeme | null> {
+    return this.lexemeRepository.findOne({
+      where: { lemma, disambiguator },
+      relations: [
+        "principalParts",
+        "pronunciations",
+        "translations",
+        "inflection",
+      ],
+    });
+  }
+
+  /** Assigns the new principalParts and pronunciations onto the loaded entity
+   * so TypeORM diffs against the loaded state and cascade-removes orphaned records. */
+  async updateLexemePrincipalParts(
+    savedLexeme: Lexeme,
+    lexeme: Lexeme,
+  ): Promise<void> {
+    savedLexeme.principalParts = lexeme.principalParts;
+    if (lexeme.pronunciations !== undefined) {
+      savedLexeme.pronunciations = lexeme.pronunciations;
+    }
+    await this.lexemeRepository.save(savedLexeme);
+  }
 
   /**
    * Parses Wiktionary HTML into fully-populated Lexeme objects using the

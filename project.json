@@ -118,7 +118,26 @@
         "cwd": "{projectRoot}"
       }
     },
-    "format": {},
+    "format": {
+      "configurations": {
+        "check": {
+          "commands": [
+            "nx run monorepo:prettier:check",
+            "nx run monorepo:oxfmt:check",
+            "nx run monorepo:sqlfluff-format:check"
+          ],
+          "parallel": true
+        },
+        "write": {
+          "commands": [
+            "nx run monorepo:prettier:write",
+            "nx run monorepo:oxfmt:write",
+            "nx run monorepo:sqlfluff-format:write"
+          ],
+          "parallel": false
+        }
+      }
+    },
     "gitleaks": {
       "cache": true,
       "configurations": {
@@ -169,7 +188,26 @@
         "cwd": "{workspaceRoot}"
       }
     },
-    "lint": {},
+    "lint": {
+      "configurations": {
+        "check": {
+          "commands": [
+            "nx run monorepo:eslint:check",
+            "nx run monorepo:oxlint:check",
+            "nx run monorepo:sqlfluff-lint:check"
+          ],
+          "parallel": true
+        },
+        "write": {
+          "commands": [
+            "nx run monorepo:eslint:write",
+            "nx run monorepo:oxlint:write",
+            "nx run monorepo:sqlfluff-lint:write"
+          ],
+          "parallel": false
+        }
+      }
+    },
     "lint-staged": {
       "cache": false,
       "description": "Run lint-staged on staged files (invoked by the pre-commit git hook)",
@@ -356,6 +394,50 @@
       "options": {
         "command": "cspell --config configuration/cspell.config.yaml '*.{ts,tsx,js,jsx,md,yaml,yml,json}' 'scripts/**' 'documentation/**' 'infrastructure/**' 'planning/**' --no-progress --gitignore",
         "cwd": "{projectRoot}"
+      }
+    },
+    "sqlfluff-format": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "args": "lint"
+        },
+        "write": {
+          "args": "fix"
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/scripts/database/*.sql",
+        "{workspaceRoot}/configuration/pyproject.toml",
+        "sharedGlobals"
+      ],
+      "options": {
+        "command": "uv run --project configuration sqlfluff {args} --config configuration/pyproject.toml scripts/database",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "sqlfluff-lint": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "args": "lint"
+        },
+        "write": {
+          "args": "fix"
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/scripts/database/*.sql",
+        "{workspaceRoot}/configuration/pyproject.toml",
+        "sharedGlobals"
+      ],
+      "options": {
+        "command": "uv run --project configuration sqlfluff {args} --config configuration/pyproject.toml scripts/database",
+        "cwd": "{workspaceRoot}"
       }
     },
     "sync-agent-skills": {

@@ -11,6 +11,7 @@ import type { Lexeme } from "./Lexeme.entity.js";
 @ObjectType()
 @Entity({
   name: "translations",
+  schema: "public",
   comment: "An English translation of a Latin dictionary entry",
 })
 export class Translation extends AuditableEntity {
@@ -25,8 +26,19 @@ export class Translation extends AuditableEntity {
 
   @Field()
   @Index()
-  @Column("varchar", { length: 2047, comment: "English translation text" })
+  @Column("text", { comment: "English translation text" })
   translation!: string;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-argument
+  @Index({ type: "GIN" } as any)
+  @Column({
+    type: "tsvector",
+    generatedType: "STORED",
+    asExpression: "to_tsvector('english', translation)",
+    nullable: true,
+    select: false,
+  })
+  translationFullTextSearch!: string;
 
   constructor(translation: string, lexeme?: Lexeme) {
     super();
