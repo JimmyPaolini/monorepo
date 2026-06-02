@@ -1,13 +1,10 @@
 -- 🛢️ Database Queries
-select
- *
+select 1 as column_name
 from
-  table
+    table_name
 where
-  condition
+    column_name = 1
 order by
-  column
-group by
-  column
+    column_name desc
 limit
-  number;
+    1;
