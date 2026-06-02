@@ -1,25 +1,25 @@
-import { Field, ID, ObjectType } from "@nestjs/graphql";
+import { Field, ObjectType } from "@nestjs/graphql";
 import {
   Column,
   Entity,
   Index,
   JoinColumn,
-  ManyToMany,
   OneToMany,
   OneToOne,
-  PrimaryGeneratedColumn,
   Unique,
 } from "typeorm";
 
 import { AuditableEntity } from "./Auditable.entity.js";
+import { Form } from "./form/Form.entity.js";
 import { Inflection } from "./inflection/Inflection.entity.js";
-import { type PartOfSpeech, partOfSpeechValues } from "./PartOfSpeech.js";
+import {
+  type PartOfSpeech,
+  partOfSpeechValues,
+} from "./PartOfSpeech.entity.js";
 import { PrincipalPart } from "./PrincipalPart.entity.js";
 import { Pronunciation } from "./Pronunciation.entity.js";
 import { Translation } from "./Translation.entity.js";
-
-import type { Forms } from "./forms/Forms.entity.js";
-import type { Word } from "./Word.entity.js";
+import { WordLexeme } from "./WordLexeme.entity.js";
 
 /**
  *
@@ -32,12 +32,6 @@ import type { Word } from "./Word.entity.js";
 })
 @Unique(["lemma", "disambiguator"])
 export class Lexeme extends AuditableEntity {
-  @Field(() => ID)
-  @PrimaryGeneratedColumn("uuid", {
-    comment: "Auto-generated UUID primary key",
-  })
-  id!: string;
-
   @Field()
   @Index()
   @Column("varchar", {
@@ -62,15 +56,12 @@ export class Lexeme extends AuditableEntity {
   })
   etymology?: string;
 
-  @Field(() => Object, { nullable: true })
-  @Column("jsonb", {
-    nullable: true,
-    comment:
-      "Pre-computed inflected forms as a nested JSON object keyed by morphological identifiers",
-  })
-  forms?: Forms | null;
+  @Field(() => [Form])
+  @OneToMany(() => Form, (form) => form.lexeme, { cascade: true })
+  forms!: Form[];
 
   @Field(() => Inflection, { nullable: true })
+  @Index()
   @OneToOne(() => Inflection, {
     nullable: true,
     cascade: true,
@@ -97,6 +88,7 @@ export class Lexeme extends AuditableEntity {
   @Field(() => [Pronunciation], { nullable: true })
   @OneToMany(() => Pronunciation, "lexeme", {
     cascade: true,
+    orphanedRowAction: "delete",
   })
   pronunciations?: Pronunciation[] | null;
 
@@ -108,7 +100,8 @@ export class Lexeme extends AuditableEntity {
   })
   translations?: Translation[] | null;
 
+  /** Junction rows linking this lexeme to every word string that can represent it. */
   @Field(() => [Object], { nullable: true })
-  @ManyToMany("Word", "lexemes")
-  words?: Word[];
+  @OneToMany("WordLexeme", "lexeme")
+  wordLexemes?: WordLexeme[];
 }

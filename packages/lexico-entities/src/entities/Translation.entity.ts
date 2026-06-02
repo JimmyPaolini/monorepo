@@ -1,12 +1,5 @@
-import { Field, ID, ObjectType } from "@nestjs/graphql";
-import {
-  Column,
-  Entity,
-  Index,
-  JoinColumn,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-} from "typeorm";
+import { Field, ObjectType } from "@nestjs/graphql";
+import { Column, Entity, Index, JoinColumn, ManyToOne } from "typeorm";
 
 import { AuditableEntity } from "./Auditable.entity.js";
 
@@ -21,11 +14,8 @@ import type { Lexeme } from "./Lexeme.entity.js";
   comment: "An English translation of a Latin dictionary entry",
 })
 export class Translation extends AuditableEntity {
-  @Field(() => ID)
-  @PrimaryGeneratedColumn("uuid", { comment: "Auto-generated UUID" })
-  id!: string;
-
   @Field(() => Object)
+  @Index()
   @ManyToOne("Lexeme", "translations", {
     onDelete: "CASCADE",
     onUpdate: "CASCADE",

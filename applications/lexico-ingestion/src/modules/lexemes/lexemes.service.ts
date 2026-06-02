@@ -3,6 +3,7 @@ import { Injectable } from "@nestjs/common";
 import * as cheerio from "cheerio";
 import _ from "lodash";
 
+import { FormsService } from "../forms/forms.service.js";
 import { LoggerService } from "../logger/logger.service.js";
 import { PartOfSpeechService } from "../part-of-speech/part-of-speech.service.js";
 import { PronunciationService } from "../pronunciation/pronunciation.service.js";
@@ -22,6 +23,7 @@ export class LexemesService {
   // 🏗️ Dependency Injection
   constructor(
     private readonly logger: LoggerService,
+    private readonly formsService: FormsService,
     private readonly partOfSpeechService: PartOfSpeechService,
     private readonly pronunciationService: PronunciationService,
   ) {
@@ -238,12 +240,17 @@ export class LexemesService {
           macronizedWord,
         );
 
-        lexeme.forms = await this.partOfSpeechService.parseForms(
+        const rawForms = await this.partOfSpeechService.parseForms(
           partOfSpeech,
           $,
           elt,
           lexeme,
           principalParts,
+        );
+        lexeme.forms = this.formsService.buildForms(
+          partOfSpeech,
+          rawForms,
+          lexeme,
         );
 
         lexemes.push(lexeme);

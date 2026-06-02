@@ -2,8 +2,10 @@ export { AuditableEntity } from "./entities/Auditable.entity.js";
 export { Lexeme } from "./entities/Lexeme.entity.js";
 export { Translation } from "./entities/Translation.entity.js";
 export { Word } from "./entities/Word.entity.js";
-export type { PartOfSpeech } from "./entities/PartOfSpeech.js";
-export { partOfSpeechValues } from "./entities/PartOfSpeech.js";
+export { WordForm } from "./entities/WordForm.entity.js";
+export { WordLexeme } from "./entities/WordLexeme.entity.js";
+export type { PartOfSpeech } from "./entities/PartOfSpeech.entity.js";
+export { partOfSpeechValues } from "./entities/PartOfSpeech.entity.js";
 export { PrincipalPart } from "./entities/PrincipalPart.entity.js";
 export {
   Pronunciation,
@@ -51,46 +53,39 @@ export {
 } from "./entities/inflection/VerbInflection.entity.js";
 export type { VerbConjugation } from "./entities/inflection/VerbInflection.entity.js";
 export { LexicoDatabaseModule } from "./database/lexico-database.module.js";
-
-// Forms types (pure TypeScript + GraphQL — no TypeORM entity decorators)
-export type { Forms as LexemeForms } from "./entities/forms/Forms.entity.js";
+export { LexicoNamingStrategy } from "./database/lexico-naming-strategy.js";
+export { Form } from "./entities/form/Form.entity.js";
+export { NominalForm } from "./entities/form/NominalForm.entity.js";
+export { AdjectivalForm } from "./entities/form/AdjectivalForm.entity.js";
+export { AdverbForm } from "./entities/form/AdverbForm.entity.js";
+export { FiniteVerbForm } from "./entities/form/FiniteVerbForm.entity.js";
+export { InfinitiveForm } from "./entities/form/InfinitiveForm.entity.js";
+export { ParticipleForm } from "./entities/form/ParticipleForm.entity.js";
+export { GerundForm } from "./entities/form/GerundForm.entity.js";
+export { SupineForm } from "./entities/form/SupineForm.entity.js";
 export {
-  NounForms,
-  NounCaseForms,
-  NounNumber,
-} from "./entities/forms/NounForms.entity.js";
-export {
-  AdjectiveForms,
-  AdjectiveCaseForms,
-  AdjectiveNumber,
-} from "./entities/forms/AdjectiveForms.entity.js";
-export { AdverbForms } from "./entities/forms/AdverbForms.entity.js";
-export {
-  VerbForms,
-  IndicativeVoice,
-  IndicativeTense,
-  IndicativeNumber,
-  IndicativePerson,
-  SubjunctiveVoice,
-  SubjunctiveTense,
-  SubjunctiveNumber,
-  SubjunctivePerson,
-  ImperativeVoice,
-  ImperativeActiveVoice,
-  ImperativePassiveVoice,
-  ImperativePresent,
-  ImperativeActiveFuture,
-  ImperativePassiveFuture,
-  ImperativeSecond,
-  ImperativeSecondThird,
-  ImperativeThird,
-  NonFiniteVoice,
-  NonFiniteInfinitive,
-  NonFiniteParticiple,
-  NonFinitePresentPerfectFuture,
-  NonFinitePresentFuture,
-  VerbalNounForms,
-  GerundForms,
-  SupineForms,
-} from "./entities/forms/VerbForms.entity.js";
-export { type Forms } from "./entities/forms/Forms.entity.js";
+  formCaseValues,
+  formNumberValues,
+  formGenderValues,
+  formMoodValues,
+  formVoiceValues,
+  formTenseValues,
+  formPersonValues,
+  formDegreeValues,
+  formNonFiniteTenseValues,
+  formGerundCaseValues,
+  formSupineCaseValues,
+} from "./entities/form/Form.entity.js";
+export type {
+  FormCase,
+  FormNumber,
+  FormGender,
+  FormMood,
+  FormVoice,
+  FormTense,
+  FormPerson,
+  FormDegree,
+  FormNonFiniteTense,
+  FormGerundCase,
+  FormSupineCase,
+} from "./entities/form/Form.entity.js";

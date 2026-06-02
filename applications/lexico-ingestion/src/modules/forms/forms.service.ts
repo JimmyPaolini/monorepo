@@ -1,0 +1,334 @@
+import {
+  AdjectivalForm,
+  AdverbForm,
+  FiniteVerbForm,
+  Form,
+  formCaseValues,
+  formDegreeValues,
+  formGerundCaseValues,
+  type FormMood,
+  formMoodValues,
+  formNonFiniteTenseValues,
+  formNumberValues,
+  formPersonValues,
+  formSupineCaseValues,
+  formTenseValues,
+  formVoiceValues,
+  GerundForm,
+  InfinitiveForm,
+  type Lexeme,
+  NominalForm,
+  ParticipleForm,
+  type PartOfSpeech,
+  SupineForm,
+} from "@monorepo/lexico-entities";
+import { Injectable } from "@nestjs/common";
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function isStringArray(value: unknown): value is string[] {
+  return Array.isArray(value) && value.every((v) => typeof v === "string");
+}
+
+/**
+ * Converts parsed raw Forms objects into normalized TypeORM Form entities.
+ * This is a pure in-memory builder — no database access is required.
+ * Each returned Form has `rawWords` populated with the inflected word strings.
+ * DictionaryService consumes `rawWords` to upsert Word rows and join records.
+ */
+@Injectable()
+export class FormsService {
+  // 🏗️ Dependency Injection
+  constructor() {}
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  private buildNominalForms(rawForms: unknown, lexeme: Lexeme): Form[] {
+    const forms: Form[] = [];
+    if (!isRecord(rawForms)) return forms;
+
+    for (const caseKey of Object.keys(rawForms)) {
+      const formCase = formCaseValues.find((v) => v === caseKey);
+      if (!formCase) continue;
+
+      const numberMap = rawForms[caseKey];
+      if (!isRecord(numberMap)) continue;
+
+      for (const numberKey of Object.keys(numberMap)) {
+        const formNumber = formNumberValues.find((v) => v === numberKey);
+        if (!formNumber) continue;
+
+        const words = numberMap[numberKey];
+        if (!isStringArray(words) || words.length === 0) continue;
+
+        const form = new NominalForm();
+        form.lexeme = lexeme;
+        form.case = formCase;
+        form.number = formNumber;
+        form.rawWords = words;
+        forms.push(form);
+      }
+    }
+
+    return forms;
+  }
+
+  private buildAdjectivalForms(rawForms: unknown, lexeme: Lexeme): Form[] {
+    const forms: Form[] = [];
+    if (!isRecord(rawForms)) return forms;
+
+    const genderValues = ["masculine", "feminine", "neuter"] as const;
+
+    for (const genderKey of Object.keys(rawForms)) {
+      const formGender = genderValues.find((v) => v === genderKey);
+      if (!formGender) continue;
+
+      const caseMap = rawForms[genderKey];
+      if (!isRecord(caseMap)) continue;
+
+      for (const caseKey of Object.keys(caseMap)) {
+        const formCase = formCaseValues.find((v) => v === caseKey);
+        if (!formCase) continue;
+
+        const numberMap = caseMap[caseKey];
+        if (!isRecord(numberMap)) continue;
+
+        for (const numberKey of Object.keys(numberMap)) {
+          const formNumber = formNumberValues.find((v) => v === numberKey);
+          if (!formNumber) continue;
+
+          const words = numberMap[numberKey];
+          if (!isStringArray(words) || words.length === 0) continue;
+
+          const form = new AdjectivalForm();
+          form.lexeme = lexeme;
+          form.gender = formGender;
+          form.case = formCase;
+          form.number = formNumber;
+          form.rawWords = words;
+          forms.push(form);
+        }
+      }
+    }
+
+    return forms;
+  }
+
+  private buildAdverbForms(rawForms: unknown, lexeme: Lexeme): Form[] {
+    const forms: Form[] = [];
+    if (!isRecord(rawForms)) return forms;
+
+    for (const degreeKey of formDegreeValues) {
+      const words = rawForms[degreeKey];
+      if (!isStringArray(words) || words.length === 0) continue;
+
+      const form = new AdverbForm();
+      form.lexeme = lexeme;
+      form.degree = degreeKey;
+      form.rawWords = words;
+      forms.push(form);
+    }
+
+    return forms;
+  }
+
+  private buildVerbForms(rawForms: unknown, lexeme: Lexeme): Form[] {
+    const forms: Form[] = [];
+    if (!isRecord(rawForms)) return forms;
+
+    for (const moodKey of formMoodValues) {
+      const moodData = rawForms[moodKey];
+      if (!isRecord(moodData)) continue;
+      forms.push(...this.buildFiniteMoodForms(moodData, moodKey, lexeme));
+    }
+
+    const nonFinite = rawForms["nonFinite"];
+    if (isRecord(nonFinite)) {
+      forms.push(...this.buildNonFiniteForms(nonFinite, lexeme));
+    }
+
+    const verbalNouns = rawForms["verbalNouns"];
+    if (isRecord(verbalNouns)) {
+      forms.push(...this.buildVerbalNounForms(verbalNouns, lexeme));
+    }
+
+    return forms;
+  }
+
+  private buildFiniteMoodForms(
+    moodData: Record<string, unknown>,
+    mood: FormMood,
+    lexeme: Lexeme,
+  ): Form[] {
+    const forms: Form[] = [];
+
+    for (const voiceKey of formVoiceValues) {
+      const voiceData = moodData[voiceKey];
+      if (!isRecord(voiceData)) continue;
+
+      for (const tenseKey of formTenseValues) {
+        const tenseData = voiceData[tenseKey];
+        if (!isRecord(tenseData)) continue;
+
+        for (const numberKey of formNumberValues) {
+          const numberData = tenseData[numberKey];
+          if (!isRecord(numberData)) continue;
+
+          for (const personKey of formPersonValues) {
+            const words = numberData[personKey];
+            if (!isStringArray(words) || words.length === 0) continue;
+
+            const form = new FiniteVerbForm();
+            form.lexeme = lexeme;
+            form.mood = mood;
+            form.voice = voiceKey;
+            form.tense = tenseKey;
+            form.number = numberKey;
+            form.person = personKey;
+            form.rawWords = words;
+            forms.push(form);
+          }
+        }
+      }
+    }
+
+    return forms;
+  }
+
+  private buildNonFiniteForms(
+    nonFinite: Record<string, unknown>,
+    lexeme: Lexeme,
+  ): Form[] {
+    const forms: Form[] = [];
+
+    const infinitiveData = nonFinite["infinitive"];
+    if (isRecord(infinitiveData)) {
+      for (const voiceKey of formVoiceValues) {
+        const voiceData = infinitiveData[voiceKey];
+        if (!isRecord(voiceData)) continue;
+
+        for (const tenseKey of formNonFiniteTenseValues) {
+          const words = voiceData[tenseKey];
+          if (!isStringArray(words) || words.length === 0) continue;
+
+          const form = new InfinitiveForm();
+          form.lexeme = lexeme;
+          form.voice = voiceKey;
+          form.tense = tenseKey;
+          form.rawWords = words;
+          forms.push(form);
+        }
+      }
+    }
+
+    const participleData = nonFinite["participle"];
+    if (isRecord(participleData)) {
+      for (const voiceKey of formVoiceValues) {
+        const voiceData = participleData[voiceKey];
+        if (!isRecord(voiceData)) continue;
+
+        for (const tenseKey of formNonFiniteTenseValues) {
+          const words = voiceData[tenseKey];
+          if (!isStringArray(words) || words.length === 0) continue;
+
+          const form = new ParticipleForm();
+          form.lexeme = lexeme;
+          form.voice = voiceKey;
+          form.tense = tenseKey;
+          form.rawWords = words;
+          forms.push(form);
+        }
+      }
+    }
+
+    return forms;
+  }
+
+  private buildVerbalNounForms(
+    verbalNouns: Record<string, unknown>,
+    lexeme: Lexeme,
+  ): Form[] {
+    const forms: Form[] = [];
+
+    const gerundData = verbalNouns["gerund"];
+    if (isRecord(gerundData)) {
+      for (const caseKey of formGerundCaseValues) {
+        const words = gerundData[caseKey];
+        if (!isStringArray(words) || words.length === 0) continue;
+
+        const form = new GerundForm();
+        form.lexeme = lexeme;
+        form.case = caseKey;
+        form.rawWords = words;
+        forms.push(form);
+      }
+    }
+
+    const supineData = verbalNouns["supine"];
+    if (isRecord(supineData)) {
+      for (const caseKey of formSupineCaseValues) {
+        const words = supineData[caseKey];
+        if (!isStringArray(words) || words.length === 0) continue;
+
+        const form = new SupineForm();
+        form.lexeme = lexeme;
+        form.case = caseKey;
+        form.rawWords = words;
+        forms.push(form);
+      }
+    }
+
+    return forms;
+  }
+
+  // 🌎 Public Methods
+
+  /**
+   * Builds Form entities from the raw parsed forms object for a given POS.
+   * Returns an empty array when rawForms is null or the POS has no form table.
+   */
+  buildForms(pos: PartOfSpeech, rawForms: unknown, lexeme: Lexeme): Form[] {
+    if (!rawForms) return [];
+
+    switch (pos) {
+      case "noun":
+      case "properNoun":
+      case "pronoun":
+      case "determiner": {
+        return this.buildNominalForms(rawForms, lexeme);
+      }
+      case "adjective":
+      case "participle":
+      case "numeral":
+      case "suffix": {
+        return this.buildAdjectivalForms(rawForms, lexeme);
+      }
+      case "adverb": {
+        return this.buildAdverbForms(rawForms, lexeme);
+      }
+      case "verb": {
+        return this.buildVerbForms(rawForms, lexeme);
+      }
+      case "preposition":
+      case "conjunction":
+      case "abbreviation":
+      case "particle":
+      case "interjection":
+      case "prefix":
+      case "interfix":
+      case "circumfix":
+      case "inflection":
+      case "phrase":
+      case "proverb":
+      case "idiom": {
+        return [];
+      }
+    }
+  }
+}

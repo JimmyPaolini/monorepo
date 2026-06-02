@@ -1,5 +1,5 @@
-import { Field, ID, ObjectType } from "@nestjs/graphql";
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Field, ObjectType } from "@nestjs/graphql";
+import { Column, Entity, Index, ManyToOne } from "typeorm";
 
 import { AuditableEntity } from "./Auditable.entity.js";
 
@@ -15,11 +15,8 @@ import type { Lexeme } from "./Lexeme.entity.js";
     "A named principal part (e.g. first, infinitive) of a Latin dictionary entry",
 })
 export class PrincipalPart extends AuditableEntity {
-  @Field(() => ID)
-  @PrimaryGeneratedColumn("uuid", { comment: "Auto-generated UUID" })
-  id!: string;
-
   @Field(() => Object)
+  @Index()
   @ManyToOne("Lexeme", "principalParts", {
     onDelete: "CASCADE",
     onUpdate: "CASCADE",

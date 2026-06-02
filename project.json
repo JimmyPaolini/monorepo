@@ -260,12 +260,15 @@
         "down": {
           "command": "docker compose -f infrastructure/docker/docker-compose.yml down postgres"
         },
+        "recreate": {
+          "command": "docker compose -f infrastructure/docker/docker-compose.yml down -v postgres && docker compose -f infrastructure/docker/docker-compose.yml up -d postgres"
+        },
         "up": {
           "command": "docker compose -f infrastructure/docker/docker-compose.yml up -d postgres"
         }
       },
       "defaultConfiguration": "up",
-      "description": "Start or stop the local PostgreSQL container",
+      "description": "Start, stop, or recreate the local PostgreSQL container (recreate removes the volume)",
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{workspaceRoot}"

@@ -1,15 +1,7 @@
-import { Lexeme, Word } from "@monorepo/lexico-entities";
+import { Lexeme, Word, WordLexeme } from "@monorepo/lexico-entities";
 import { Injectable, Logger } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === "object" && value !== null && !Array.isArray(value);
-}
-
-function isUnknownArray(value: unknown): value is unknown[] {
-  return Array.isArray(value);
-}
 
 /**
  * Ingests Word search records from all dictionary lexemes.
@@ -24,6 +16,8 @@ export class WordsService {
     private readonly lexemesRepository: Repository<Lexeme>,
     @InjectRepository(Word)
     private readonly wordsRepository: Repository<Word>,
+    @InjectRepository(WordLexeme)
+    private readonly wordLexemeRepository: Repository<WordLexeme>,
   ) {}
 
   // 🔐 Private Fields
@@ -71,16 +65,6 @@ export class WordsService {
     this.logger.log(`🔤 Ingested words for "${lexeme.id}"`);
   }
 
-  private flattenForms(obj: unknown): string[] {
-    if (!obj) return [];
-    if (isUnknownArray(obj))
-      return obj.filter((v): v is string => typeof v === "string");
-    if (isRecord(obj)) {
-      return Object.values(obj).flatMap((val) => this.flattenForms(val));
-    }
-    return [];
-  }
-
   private escapeCapitals(word: string): string {
     return word.replaceAll(/[A-Z]/g, (char) => `_${char.toLowerCase()}`);
   }
@@ -93,32 +77,41 @@ export class WordsService {
       .trim();
   }
 
-  /** Returns all searchable word strings for a lexeme — every form value
-   * extracted by flattening the `forms` JSON object plus each principal-part text. */
+  /** Returns all searchable word strings for a lexeme — the text of each
+   * principal part. Form-based words are ingested separately via DictionaryService. */
   getLexemeWords(lexeme: Lexeme): string[] {
-    const forms = this.flattenForms(lexeme.forms);
-    lexeme.principalParts.forEach((pp) => forms.push(...pp.text));
-    return forms;
+    const words: string[] = [];
+    lexeme.principalParts.forEach((pp) => words.push(...pp.text));
+    return words;
   }
 
-  /** Normalises `wordString` and upserts a `Word` row linked to `lexeme`.
+  /** Normalises `wordString` and upserts a `Word` row linked to `lexeme`
+   * via an explicit WordLexeme junction record.
    * Skips strings that do not start with an ASCII letter after normalisation. */
   async ingestLexemeWord(wordString: string, lexeme: Lexeme): Promise<void> {
     const normalized = this.escapeCapitals(this.normalize(wordString));
     if (!/^-?[A-Za-z]/.test(normalized)) return;
 
-    const existingWord = await this.wordsRepository.findOne({
+    // Upsert the Word row by its unique word string.
+    await this.wordsRepository.upsert(
+      { word: normalized },
+      {
+        conflictPaths: ["word"],
+        skipUpdateIfNoValuesChanged: true,
+      },
+    );
+
+    const word = await this.wordsRepository.findOneOrFail({
       where: { word: normalized },
-      relations: ["lexemes"],
     });
 
-    if (existingWord) {
-      if (!existingWord.lexemes.some((e) => e.id === lexeme.id)) {
-        existingWord.lexemes.push(lexeme);
-        await this.wordsRepository.save(existingWord);
-      }
-    } else {
-      await this.wordsRepository.save({ word: normalized, lexemes: [lexeme] });
-    }
+    // Insert a WordLexeme junction row — ignore if the pair already exists.
+    await this.wordLexemeRepository
+      .createQueryBuilder()
+      .insert()
+      .into(WordLexeme)
+      .values({ word, lexeme })
+      .orIgnore()
+      .execute();
   }
 }

@@ -2,10 +2,8 @@ import {
   adjectiveDeclensionValues,
   adjectiveDegreeValues,
   AdjectiveInflection,
-  AdverbForms,
   AdverbInflection,
   type AdverbType,
-  type Forms,
   type Inflection,
   type Lexeme,
   nounDeclensionValues,
@@ -18,7 +16,6 @@ import {
   type PrincipalPart,
   Uninflected,
   verbConjugationValues,
-  VerbForms,
   VerbInflection,
 } from "@monorepo/lexico-entities";
 import { Injectable } from "@nestjs/common";
@@ -133,7 +130,7 @@ export class PartOfSpeechService {
   private async ingestVerbForms(
     $: cheerio.CheerioAPI,
     elt: AnyNode,
-  ): Promise<VerbForms | null> {
+  ): Promise<unknown> {
     const table = this.parseFormTable($, elt);
     if (!table) return null;
 
@@ -292,13 +289,14 @@ export class PartOfSpeechService {
     return adverbInflection;
   }
 
-  private ingestAdverbForms(principalParts: PrincipalPart[]): AdverbForms {
-    const forms = new AdverbForms();
-    forms.positive = principalParts[0]?.text ?? [];
+  private ingestAdverbForms(principalParts: PrincipalPart[]): unknown {
+    const forms: Record<string, string[]> = {
+      positive: principalParts[0]?.text ?? [],
+    };
     if (principalParts.length >= 2)
-      forms.comparative = principalParts[1]?.text ?? [];
+      forms["comparative"] = principalParts[1]?.text ?? [];
     if (principalParts.length >= 3)
-      forms.superlative = principalParts[2]?.text ?? [];
+      forms["superlative"] = principalParts[2]?.text ?? [];
     return forms;
   }
 
@@ -360,7 +358,7 @@ export class PartOfSpeechService {
     $: cheerio.CheerioAPI,
     elt: AnyNode,
     lexeme: Lexeme,
-  ): Promise<Forms | null> {
+  ): Promise<unknown> {
     const table = this.parseFormTable($, elt);
     if (!table) return null;
 
@@ -612,7 +610,7 @@ export class PartOfSpeechService {
     elt: AnyNode,
     lexeme: Lexeme,
     principalParts: PrincipalPart[],
-  ): Promise<Forms | null> {
+  ): Promise<unknown> {
     switch (pos) {
       case "verb": {
         return this.ingestVerbForms($, elt);

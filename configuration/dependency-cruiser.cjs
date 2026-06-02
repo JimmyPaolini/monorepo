@@ -47,6 +47,7 @@ module.exports = {
           String.raw`\.d\.ts$`,
           String.raw`^applications/.+/project\.json$`,
           String.raw`^applications/.+/vitest\.config\.ts$`,
+          String.raw`^applications/lexico-ingestion/src/modules/.+\.(types|constants)\.ts$`,
           String.raw`^documentation/.*\.md$`,
           String.raw`^packages/.+/project\.json$`,
           String.raw`^planning/.*\.md$`,
@@ -61,7 +62,7 @@ module.exports = {
       severity: "error",
       comment: "Application code should not import test utilities",
       from: {
-        pathNot: "\\.test\\.(ts|tsx)$",
+        pathNot: String.raw`\.test\.(ts|tsx)$`,
       },
       to: {
         path: "(^|/)(testing|__tests__|__mocks__)/",
@@ -94,10 +95,10 @@ module.exports = {
       severity: "error",
       comment: "Don't import ESM in CommonJS files",
       from: {
-        path: "\\.cjs$",
+        path: String.raw`\.cjs$`,
       },
       to: {
-        path: "\\.mjs$",
+        path: String.raw`\.mjs$`,
       },
     },
   ],

@@ -1,13 +1,5 @@
-import { Field, ID, ObjectType } from "@nestjs/graphql";
-import {
-  Column,
-  Entity,
-  Index,
-  JoinColumn,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-  Unique,
-} from "typeorm";
+import { Field, ObjectType } from "@nestjs/graphql";
+import { Column, Entity, Index, JoinColumn, ManyToOne, Unique } from "typeorm";
 
 import { AuditableEntity } from "./Auditable.entity.js";
 
@@ -34,11 +26,8 @@ export type PronunciationVariant = (typeof pronunciationVariantValues)[number];
 })
 @Unique(["lexeme", "variant"])
 export class Pronunciation extends AuditableEntity {
-  @Field(() => ID)
-  @PrimaryGeneratedColumn("uuid", { comment: "Auto-generated UUID" })
-  id!: string;
-
   @Field(() => Object)
+  @Index()
   @ManyToOne("Lexeme", "pronunciations", {
     onDelete: "CASCADE",
     onUpdate: "CASCADE",
