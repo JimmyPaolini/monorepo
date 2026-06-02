@@ -109,7 +109,7 @@ describe("FormsService", () => {
       await service.ingestLexemeForms([form], lexeme);
 
       expect(wordRepository.upsert).toHaveBeenCalledWith(
-        expect.arrayContaining([expect.objectContaining({ word: "am\u014D" })]),
+        expect.arrayContaining([expect.objectContaining({ word: "amo" })]),
         { conflictPaths: ["word"], skipUpdateIfNoValuesChanged: true },
       );
     });

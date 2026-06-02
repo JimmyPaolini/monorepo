@@ -1,7 +1,11 @@
-import { Pronunciation } from "@monorepo/lexico-entities";
+import { Lexeme, Pronunciation } from "@monorepo/lexico-entities";
 import { Injectable } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
 import * as cheerio from "cheerio";
 import _ from "lodash";
+import { Repository } from "typeorm";
+
+import { LoggerService } from "../logger/logger.service.js";
 
 import {
   classicalDevocalize,
@@ -27,7 +31,13 @@ function getStringPhoneme(
 @Injectable()
 export class PronunciationService {
   // 🏗️ Dependency Injection
-  constructor() {}
+  constructor(
+    @InjectRepository(Lexeme)
+    private readonly lexemeRepository: Repository<Lexeme>,
+    private readonly logger: LoggerService,
+  ) {
+    this.logger.setContext(PronunciationService.name);
+  }
 
   // 🔐 Private Fields
 
@@ -288,6 +298,27 @@ export class PronunciationService {
   }
 
   // 🌎 Public Methods
+
+  /**
+   * Assigns the new pronunciations onto the loaded entity
+   * so TypeORM diffs against the loaded state and cascade-removes orphaned records.
+   */
+  async ingestLexemePronunciations(
+    savedLexeme: Lexeme,
+    pronunciations: Pronunciation[],
+  ): Promise<void> {
+    // Preserve existing IDs to prevent insert/delete churn and unique constraint violations
+    if (savedLexeme.pronunciations) {
+      for (const newPron of pronunciations) {
+        const existing = savedLexeme.pronunciations.find(
+          (p) => p.variant === newPron.variant,
+        );
+        if (existing) newPron.id = existing.id;
+      }
+    }
+    savedLexeme.pronunciations = pronunciations;
+    await this.lexemeRepository.save(savedLexeme);
+  }
 
   /**
    * Parses pronunciation data from the Wiktionary HTML element context.

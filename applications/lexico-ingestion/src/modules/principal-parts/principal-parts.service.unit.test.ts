@@ -5,15 +5,15 @@ import { beforeAll, describe, expect, it } from "vitest";
 
 import { LoggerService } from "../logger/logger.service.js";
 
-import { PronunciationService } from "./pronunciation.service";
+import { PrincipalPartsService } from "./principal-parts.service.js";
 
-describe("PronunciationService", () => {
-  let service: PronunciationService;
+describe("PrincipalPartsService", () => {
+  let service: PrincipalPartsService;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
-        PronunciationService,
+        PrincipalPartsService,
         { provide: getRepositoryToken(Lexeme), useValue: {} },
         {
           provide: LoggerService,
@@ -22,7 +22,7 @@ describe("PronunciationService", () => {
       ],
     }).compile();
 
-    service = await module.resolve(PronunciationService);
+    service = await module.resolve(PrincipalPartsService);
   });
 
   it("should be defined", () => {

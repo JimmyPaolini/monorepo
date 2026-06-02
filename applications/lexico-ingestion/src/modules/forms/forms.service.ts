@@ -97,7 +97,7 @@ export class FormsService {
       for (const wordString of rawWords) {
         const normalized = this.escapeCapitals(
           wordString
-            .normalize("NFC")
+            .normalize("NFD")
             .replaceAll(/[\u0300-\u036F]/gu, "")
             .toLowerCase()
             .trim(),

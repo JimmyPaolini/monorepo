@@ -6,6 +6,8 @@ import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { FormsService } from "../forms/forms.service";
 import { LexemesService } from "../lexemes/lexemes.service";
 import { LoggerService } from "../logger/logger.service";
+import { PrincipalPartsService } from "../principal-parts/principal-parts.service";
+import { PronunciationService } from "../pronunciation/pronunciation.service";
 import { TranslationsService } from "../translations/translations.service";
 import { WordsService } from "../words/words.service";
 
@@ -37,6 +39,16 @@ describe("DictionaryService", () => {
       fetchSavedLexeme: vi.fn(),
       updateLexemePrincipalParts: vi.fn().mockResolvedValue(undefined),
     };
+    const mockPrincipalPartsService = {
+      parsePrincipalParts: vi
+        .fn()
+        .mockReturnValue({ principalParts: [], macronizedWord: "" }),
+      ingestLexemePrincipalParts: vi.fn().mockResolvedValue(undefined),
+    };
+    const mockPronunciationService = {
+      parsePronunciations: vi.fn().mockReturnValue([]),
+      ingestLexemePronunciations: vi.fn().mockResolvedValue(undefined),
+    };
     const mockWordsService = {
       ingestLexemeWords: vi.fn().mockResolvedValue(undefined),
     };
@@ -55,6 +67,8 @@ describe("DictionaryService", () => {
         { provide: getRepositoryToken(Lexeme), useValue: mockRepository },
         { provide: FormsService, useValue: mockFormsService },
         { provide: LexemesService, useValue: mockLexemesService },
+        { provide: PrincipalPartsService, useValue: mockPrincipalPartsService },
+        { provide: PronunciationService, useValue: mockPronunciationService },
         {
           provide: TranslationsService,
           useValue: mockTranslationsService,

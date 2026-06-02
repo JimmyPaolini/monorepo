@@ -3,12 +3,15 @@ import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
 import { beforeAll, describe, expect, it, vi } from "vitest";
 
-import { FormsService } from "../forms/forms.service";
-import { LoggerService } from "../logger/logger.service";
-import { PartOfSpeechService } from "../part-of-speech/part-of-speech.service";
-import { PronunciationService } from "../pronunciation/pronunciation.service";
+import { EtymologyService } from "../etymology/etymology.service.js";
+import { FormsService } from "../forms/forms.service.js";
+import { LoggerService } from "../logger/logger.service.js";
+import { PartOfSpeechService } from "../part-of-speech/part-of-speech.service.js";
+import { PrincipalPartsService } from "../principal-parts/principal-parts.service.js";
+import { PronunciationService } from "../pronunciation/pronunciation.service.js";
+import { TranslationsService } from "../translations/translations.service.js";
 
-import { LexemesService } from "./lexemes.service";
+import { LexemesService } from "./lexemes.service.js";
 
 describe("LexemesService", () => {
   let service: LexemesService;
@@ -18,9 +21,12 @@ describe("LexemesService", () => {
       providers: [
         LexemesService,
         { provide: getRepositoryToken(Lexeme), useValue: {} },
+        { provide: EtymologyService, useValue: {} },
         { provide: FormsService, useValue: {} },
         { provide: PartOfSpeechService, useValue: {} },
+        { provide: PrincipalPartsService, useValue: {} },
         { provide: PronunciationService, useValue: {} },
+        { provide: TranslationsService, useValue: {} },
         {
           provide: LoggerService,
           useValue: {

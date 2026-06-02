@@ -42,7 +42,7 @@ export class WordsService {
 
   private normalize(str: string): string {
     return str
-      .normalize("NFC")
+      .normalize("NFD")
       .replaceAll(/[\u0300-\u036F]/gu, "")
       .toLowerCase()
       .trim();

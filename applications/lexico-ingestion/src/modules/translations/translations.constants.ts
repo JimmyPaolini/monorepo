@@ -1,1 +1,2 @@
-// ♟️ Constants
+export const translationSkipRegex =
+  /(alternative)|(alternate)|(abbreviation)|(initialism)|(archaic)|(synonym)|(clipping)|(spelling)/i;

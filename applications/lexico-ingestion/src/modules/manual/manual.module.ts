@@ -4,7 +4,6 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 
 import { WordsModule } from "../words/words.module.js";
 
-import { ManualCommand } from "./manual.command.js";
 import { ManualService } from "./manual.service";
 
 /**
@@ -14,6 +13,6 @@ import { ManualService } from "./manual.service";
   controllers: [],
   exports: [ManualService],
   imports: [TypeOrmModule.forFeature([Lexeme]), WordsModule],
-  providers: [ManualService, ManualCommand],
+  providers: [ManualService],
 })
 export class ManualModule {}

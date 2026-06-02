@@ -1,20 +1,21 @@
-import { Lexeme, PrincipalPart, Translation } from "@monorepo/lexico-entities";
+import { Lexeme } from "@monorepo/lexico-entities";
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import * as cheerio from "cheerio";
-import _ from "lodash";
 import { Repository } from "typeorm";
 
+import { EtymologyService } from "../etymology/etymology.service.js";
 import { FormsService } from "../forms/forms.service.js";
 import { LEXICO_INGESTION_BY_ID } from "../lexico-ingestion/lexico-ingestion.constants.js";
 import { LoggerService } from "../logger/logger.service.js";
 import { PartOfSpeechService } from "../part-of-speech/part-of-speech.service.js";
+import { PrincipalPartsService } from "../principal-parts/principal-parts.service.js";
 import { PronunciationService } from "../pronunciation/pronunciation.service.js";
+import { TranslationsService } from "../translations/translations.service.js";
 
-import { skipPOS, translationSkipRegex, validPOS } from "./lexemes.constants";
+import { skipPOS, validPOS } from "./lexemes.constants";
 
 import type { WiktionaryPage } from "../lexico-ingestion/lexico-ingestion.types.js";
-import type { AnyNode } from "domhandler";
 
 /**
  * Orchestrates Wiktionary HTML parsing into fully-populated Lexeme objects.
@@ -28,9 +29,12 @@ export class LexemesService {
     @InjectRepository(Lexeme)
     private readonly lexemeRepository: Repository<Lexeme>,
     private readonly logger: LoggerService,
+    private readonly etymologyService: EtymologyService,
     private readonly formsService: FormsService,
     private readonly partOfSpeechService: PartOfSpeechService,
+    private readonly principalPartsService: PrincipalPartsService,
     private readonly pronunciationService: PronunciationService,
+    private readonly translationsService: TranslationsService,
   ) {
     this.logger.setContext(LexemesService.name);
   }
@@ -43,134 +47,15 @@ export class LexemesService {
 
   private normalize(str: string): string {
     return str
-      .normalize("NFC")
+      .normalize("NFD")
       .replaceAll(/[\u0300-\u036F]/gu, "")
       .toLowerCase()
       .trim();
   }
 
-  private capitalizeFirstLetter(str: string): string {
-    return _.upperFirst(str);
-  }
-
-  private parsePrincipalParts(
-    lexeme: Lexeme,
-    $: cheerio.CheerioAPI,
-    elt: AnyNode,
-    firstPrincipalPartName: string,
-  ): { principalParts: PrincipalPart[]; macronizedWord: string } {
-    const principalParts: PrincipalPart[] = [];
-
-    const firstPP = new PrincipalPart();
-    firstPP.name = firstPrincipalPartName;
-    firstPP.text = $(elt)
-      .children("strong.Latn.headword")
-      .toArray()
-      .map((p1: AnyNode) => $(p1).text().toLowerCase());
-    firstPP.lexeme = lexeme;
-    principalParts.push(firstPP);
-
-    for (const b of $(elt).children("b")) {
-      const prev = $(b).prev("i").text();
-      if (prev === "or") {
-        const lastPrincipalPart = principalParts.pop();
-        if (!lastPrincipalPart) continue;
-        lastPrincipalPart.text = [
-          ...lastPrincipalPart.text,
-          $(b).text().toLowerCase(),
-        ];
-        principalParts.push(lastPrincipalPart);
-      } else {
-        const pp = new PrincipalPart();
-        pp.name = prev;
-        pp.text = [$(b).text().toLowerCase()];
-        pp.lexeme = lexeme;
-        principalParts.push(pp);
-      }
-    }
-
-    if (principalParts.length === 0) throw new Error("no principal parts");
-    const macronizedWord = principalParts[0]?.text[0] ?? "";
-    return { principalParts, macronizedWord };
-  }
-
-  // eslint-disable-next-line @typescript-eslint/require-await
-  private async parseTranslations(
-    $: cheerio.CheerioAPI,
-    elt: AnyNode,
-    lexeme: Lexeme,
-  ): Promise<Translation[]> {
-    const translationsHeader = $(elt).nextAll("ol").first();
-    if (translationsHeader.length <= 0) return [];
-
-    let translations: Translation[] = [];
-
-    for (const li of translationsHeader.children("li")) {
-      if ($(li).find("span.form-of-definition-link .selflink").length > 0)
-        continue;
-      if ($(li).text().length === 0) continue;
-
-      $(li).children("ol, ul, dl").remove();
-      let translation = $(li).text();
-      if (translation.includes("This term needs a translation to English"))
-        continue;
-      translation = this.capitalizeFirstLetter(
-        translation.trim().replace(/\.$/, ""),
-      );
-
-      if ($(li).find("span.form-of-definition-link").length > 0) {
-        if (!translationSkipRegex.test(translation)) continue;
-        translation = `${translation} ${$(li)
-          .find("span.form-of-definition-link")
-          .toArray()
-          .map((ref: AnyNode) => `{*${this.normalize($(ref).text())}*}`)
-          .join(" ")}`;
-      }
-
-      translations.push(new Translation(translation, lexeme));
-    }
-
-    translations = translations.filter((t) => !!t.translation);
-    return translations;
-  }
-
-  private parseEtymology(
-    $: cheerio.CheerioAPI,
-    elt: AnyNode,
-    lexeme: Lexeme,
-  ): { etymology: string; participleTranslation?: Translation } {
-    const etymologyHeaderDiv = $(elt)
-      .prevAll("div.mw-heading")
-      .filter((_: number, el: AnyNode) => /etymology/i.test($(el).text()))
-      .first();
-
-    if (etymologyHeaderDiv.length <= 0) return { etymology: "" };
-
-    const etymologyP = etymologyHeaderDiv.nextAll("p").first();
-    if (etymologyP.length <= 0 || etymologyP.text().trim().length === 0) {
-      return { etymology: "" };
-    }
-
-    const etymology = etymologyP.text().trim();
-
-    const participleMatch =
-      /((present)|(perfect)|(future)) ((active)|(passive) )?participle (\(gerundive\) )?of [A-Za-z\u00C0-\u017F]+/i.exec(
-        etymology,
-      );
-    if (participleMatch) {
-      const text = this.capitalizeFirstLetter(participleMatch[0].trim());
-      return {
-        etymology,
-        participleTranslation: new Translation(text, lexeme),
-      };
-    }
-
-    return { etymology };
-  }
-
   // 🌎 Public Methods
 
-  /** Upserts the Lexeme row. Explicitly saves the @ChildEntity inflection
+  /** Upserts the Lexeme row. Explicitly saves the ChildEntity inflection
    * first — TypeORM's cascade for STI child entities doesn't reliably set
    * the FK on the parent row. */
   async upsertLexeme(lexeme: Lexeme): Promise<void> {
@@ -201,19 +86,6 @@ export class LexemesService {
         inflection: true,
       },
     });
-  }
-
-  /** Assigns the new principalParts and pronunciations onto the loaded entity
-   * so TypeORM diffs against the loaded state and cascade-removes orphaned records. */
-  async updateLexemePrincipalParts(
-    savedLexeme: Lexeme,
-    lexeme: Lexeme,
-  ): Promise<void> {
-    savedLexeme.principalParts = lexeme.principalParts;
-    if (lexeme.pronunciations !== undefined) {
-      savedLexeme.pronunciations = lexeme.pronunciations;
-    }
-    await this.lexemeRepository.save(savedLexeme);
   }
 
   /**
@@ -254,17 +126,18 @@ export class LexemesService {
       }
 
       const lexeme = new Lexeme();
-      lexeme.lemma = word;
+      lexeme.lemma = this.normalize(word);
       lexeme.disambiguator = i;
       lexeme.partOfSpeech = partOfSpeech;
 
       try {
-        const { principalParts, macronizedWord } = this.parsePrincipalParts(
-          lexeme,
-          $,
-          elt,
-          firstPrincipalPartName,
-        );
+        const { principalParts, macronizedWord } =
+          this.principalPartsService.parsePrincipalParts(
+            lexeme,
+            $,
+            elt,
+            firstPrincipalPartName,
+          );
         lexeme.principalParts = principalParts;
 
         lexeme.inflection = this.partOfSpeechService.ingestInflection(
@@ -274,12 +147,13 @@ export class LexemesService {
           principalParts,
         );
 
-        const translations = await this.parseTranslations($, elt, lexeme);
-        const { etymology, participleTranslation } = this.parseEtymology(
+        const translations = this.translationsService.parseTranslations(
           $,
           elt,
           lexeme,
         );
+        const { etymology, participleTranslation } =
+          this.etymologyService.parseEtymology($, elt, lexeme);
         lexeme.etymology = etymology;
         lexeme.translations = participleTranslation
           ? [...translations, participleTranslation]

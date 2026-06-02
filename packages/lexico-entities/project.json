@@ -96,51 +96,35 @@
       }
     },
     "markdown-lint": {},
-    "migration:extract-sql": {
+    "migration": {
       "configurations": {
-        "all": {
-          "command": "pnpm exec tsx packages/lexico-entities/scripts/extract-migration-sql.ts --mode=all"
+        "extract-sql-all": {
+          "command": "pnpm exec tsx packages/lexico-entities/scripts/extract-migration-sql.ts --mode=all",
+          "cwd": "{workspaceRoot}"
         },
-        "latest": {
-          "command": "pnpm exec tsx packages/lexico-entities/scripts/extract-migration-sql.ts --mode=latest"
+        "extract-sql-latest": {
+          "command": "pnpm exec tsx packages/lexico-entities/scripts/extract-migration-sql.ts --mode=latest",
+          "cwd": "{workspaceRoot}"
+        },
+        "generate": {
+          "commands": [
+            "NAME=\"{args.name}\"; NAME=${NAME:-migration}; pnpm --filter lexico-entities exec node --import @swc-node/register/esm-register node_modules/typeorm/cli.js migration:generate \"src/database/migrations/$NAME\" -d src/database/data-source.ts",
+            "nx run lexico-entities:migration:extract-sql-latest"
+          ],
+          "parallel": false
+        },
+        "revert": {
+          "command": "pnpm --filter lexico-entities exec node --import @swc-node/register/esm-register node_modules/typeorm/cli.js migration:revert -d src/database/data-source.ts"
+        },
+        "run": {
+          "command": "pnpm --filter lexico-entities exec node --import @swc-node/register/esm-register node_modules/typeorm/cli.js migration:run -d src/database/data-source.ts"
+        },
+        "show": {
+          "command": "pnpm --filter lexico-entities exec node --import @swc-node/register/esm-register node_modules/typeorm/cli.js migration:show -d src/database/data-source.ts"
         }
       },
-      "defaultConfiguration": "latest",
       "executor": "nx:run-commands",
       "options": {
-        "command": "pnpm exec tsx packages/lexico-entities/scripts/extract-migration-sql.ts --mode=latest",
-        "cwd": "{workspaceRoot}"
-      }
-    },
-    "migration:generate": {
-      "executor": "nx:run-commands",
-      "options": {
-        "commands": [
-          "pnpm --filter lexico-entities exec node --import @swc-node/register/esm-register node_modules/typeorm/cli.js migration:generate src/database/migrations/{args.name} -d src/database/data-source.ts",
-          "nx run lexico-entities:migration:extract-sql:latest"
-        ],
-        "cwd": "{workspaceRoot}/packages/lexico-entities",
-        "parallel": false
-      }
-    },
-    "migration:revert": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm --filter lexico-entities exec node --import @swc-node/register/esm-register node_modules/typeorm/cli.js migration:revert -d src/database/data-source.ts",
-        "cwd": "{workspaceRoot}/packages/lexico-entities"
-      }
-    },
-    "migration:run": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm --filter lexico-entities exec node --import @swc-node/register/esm-register node_modules/typeorm/cli.js migration:run -d src/database/data-source.ts",
-        "cwd": "{workspaceRoot}/packages/lexico-entities"
-      }
-    },
-    "migration:show": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm --filter lexico-entities exec node --import @swc-node/register/esm-register node_modules/typeorm/cli.js migration:show -d src/database/data-source.ts",
         "cwd": "{workspaceRoot}/packages/lexico-entities"
       }
     },

@@ -4,15 +4,15 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 
 import { LoggerModule } from "../logger/logger.module.js";
 
-import { PronunciationService } from "./pronunciation.service";
+import { PrincipalPartsService } from "./principal-parts.service.js";
 
 /**
- * TODO: Document the pronunciation module.
+ * Owns persistence and parsing logic for Lexeme principal parts.
  */
 @Module({
   controllers: [],
-  exports: [PronunciationService],
+  exports: [PrincipalPartsService],
   imports: [TypeOrmModule.forFeature([Lexeme]), LoggerModule],
-  providers: [PronunciationService],
+  providers: [PrincipalPartsService],
 })
-export class PronunciationModule {}
+export class PrincipalPartsModule {}

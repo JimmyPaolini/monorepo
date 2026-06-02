@@ -1,6 +1,8 @@
 import { Injectable } from "@nestjs/common";
 import { Command, CommandRunner, Option } from "nest-commander";
 
+import { ManualService } from "../manual/manual.service.js";
+
 import { DictionaryService } from "./dictionary.service.js";
 
 interface DictionaryCommandOptions {
@@ -17,7 +19,10 @@ interface DictionaryCommandOptions {
     "Process ingested Wiktionary HTML into structured dictionary lexemes",
 })
 export class DictionaryCommand extends CommandRunner {
-  constructor(private readonly dictionaryService: DictionaryService) {
+  constructor(
+    private readonly dictionaryService: DictionaryService,
+    private readonly manualService: ManualService,
+  ) {
     super();
   }
 
@@ -33,8 +38,11 @@ export class DictionaryCommand extends CommandRunner {
   /** Runs the dictionary ingestion for a single word when `--word` is given,
    * or processes all cached Wiktionary HTML files otherwise. */
   async run(_args: string[], options: DictionaryCommandOptions): Promise<void> {
-    await (options.word
-      ? this.dictionaryService.ingestLexeme(options.word)
-      : this.dictionaryService.ingestAll());
+    if (options.word) {
+      await this.dictionaryService.ingestLexeme(options.word);
+    } else {
+      await this.dictionaryService.ingestAll();
+      await this.manualService.ingestManual();
+    }
   }
 }

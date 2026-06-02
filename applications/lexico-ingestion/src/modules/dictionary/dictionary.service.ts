@@ -7,6 +7,8 @@ import { Injectable } from "@nestjs/common";
 import { FormsService } from "../forms/forms.service.js";
 import { LexemesService } from "../lexemes/lexemes.service.js";
 import { LoggerService } from "../logger/logger.service.js";
+import { PrincipalPartsService } from "../principal-parts/principal-parts.service.js";
+import { PronunciationService } from "../pronunciation/pronunciation.service.js";
 import { TranslationsService } from "../translations/translations.service.js";
 import { WordsService } from "../words/words.service.js";
 
@@ -21,6 +23,8 @@ export class DictionaryService {
   constructor(
     private readonly formsService: FormsService,
     private readonly lexemesService: LexemesService,
+    private readonly principalPartsService: PrincipalPartsService,
+    private readonly pronunciationService: PronunciationService,
     private readonly translationsService: TranslationsService,
     private readonly wordsService: WordsService,
     private readonly logger: LoggerService,
@@ -31,6 +35,7 @@ export class DictionaryService {
   // 🔐 Private Fields
   private readonly dataDir = path.join(process.cwd(), "./data/wiktionary");
   private readonly inProgressWords = new Set<string>();
+  private fileIndex: Map<string, string> | null = null;
 
   // 🔑 Public Fields
 
@@ -50,7 +55,16 @@ export class DictionaryService {
     );
     if (!savedLexeme) return null;
 
-    await this.lexemesService.updateLexemePrincipalParts(savedLexeme, lexeme);
+    await this.principalPartsService.ingestLexemePrincipalParts(
+      savedLexeme,
+      lexeme.principalParts,
+    );
+    if (lexeme.pronunciations !== undefined && lexeme.pronunciations !== null) {
+      await this.pronunciationService.ingestLexemePronunciations(
+        savedLexeme,
+        lexeme.pronunciations,
+      );
+    }
     if (lexeme.translations !== undefined && lexeme.translations !== null) {
       await this.translationsService.ingestTranslations(
         savedLexeme,
@@ -84,12 +98,19 @@ export class DictionaryService {
       .filter((f) => f.endsWith(".json"));
     this.logger.log(`📖 Processing ${files.length} lexemes`);
 
+    let current = 0;
+    const total = files.length;
+
     for (const file of files) {
+      current++;
       try {
         const filePath = path.join(this.dataDir, file);
         const wiktionaryPage = this.readWiktionaryPage(filePath);
         if (!wiktionaryPage) continue;
-        await this.ingestLexeme(wiktionaryPage.word, wiktionaryPage);
+        await this.ingestLexeme(wiktionaryPage.word, wiktionaryPage, {
+          current,
+          total,
+        });
       } catch (error) {
         this.logger.error(`Failed to process ${file}: ${String(error)}`);
       }
@@ -98,20 +119,52 @@ export class DictionaryService {
     this.logger.log("📖 Dictionary ingestion complete");
   }
 
+  private getFilePathForWord(word: string): string | null {
+    const fileWord = word.normalize("NFD").replaceAll(/[\u0300-\u036F]/gu, "");
+
+    // Exact match
+    const p = path.join(this.dataDir, `${this.escapeCapitals(fileWord)}.json`);
+    if (fs.existsSync(p)) return p;
+
+    // Build the case-insensitive index on first miss
+    if (this.fileIndex === null) {
+      this.fileIndex = new Map();
+      if (fs.existsSync(this.dataDir)) {
+        for (const file of fs.readdirSync(this.dataDir)) {
+          if (!file.endsWith(".json")) continue;
+          // Reverse escapeCapitals: Remove all '_' and lowercase the string
+          const normalized = file.replaceAll("_", "").toLowerCase();
+          this.fileIndex.set(normalized, file);
+        }
+      }
+    }
+
+    const fallbackFileName = this.fileIndex.get(
+      `${fileWord.toLowerCase()}.json`,
+    );
+    if (fallbackFileName) {
+      return path.join(this.dataDir, fallbackFileName);
+    }
+
+    return null;
+  }
+
   /** Parses the Wiktionary HTML for `word` into one or more `Lexeme` records
    * and persists them using upsert (idempotent). Loads the cached JSON file if
    * `wiktionaryPage` is not supplied. */
   async ingestLexeme(
     word: string,
     wiktionaryPage?: WiktionaryPage,
+    progress?: { current: number; total: number },
   ): Promise<void> {
     this.inProgressWords.add(word);
     try {
       if (!wiktionaryPage) {
-        const filePath = path.join(
-          this.dataDir,
-          `${this.escapeCapitals(word)}.json`,
-        );
+        const filePath = this.getFilePathForWord(word);
+        if (!filePath) {
+          this.logger.warn(`No data file found for word: ${word}`);
+          return;
+        }
         const page = this.readWiktionaryPage(filePath);
         if (!page) {
           this.logger.warn(`No data file found for word: ${word}`);
@@ -125,7 +178,11 @@ export class DictionaryService {
         return;
       }
 
-      this.logger.log(`📝 Ingesting lexeme "${word}"`);
+      const progressString = progress
+        ? ` (${((progress.current / progress.total) * 100).toFixed(2)}%, ${progress.current}/${progress.total})`
+        : "";
+
+      this.logger.log(`📝 Ingesting lexeme "${word}"${progressString}`);
       const parsedLexemes =
         await this.lexemesService.parseLexemes(wiktionaryPage);
       for (const lexeme of parsedLexemes) {
@@ -150,7 +207,7 @@ export class DictionaryService {
           saved.id,
         );
       }
-      this.logger.log(`📝 Ingested lexeme "${word}"`);
+      this.logger.log(`📝 Ingested lexeme "${word}"${progressString}`);
     } finally {
       this.inProgressWords.delete(word);
     }

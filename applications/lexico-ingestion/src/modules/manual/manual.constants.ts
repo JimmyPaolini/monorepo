@@ -89,6 +89,7 @@ function buildAdjectivalForms(
 export function buildHicTemplate(): Lexeme {
   const lexeme = new Lexeme();
   lexeme.lemma = "hic";
+
   lexeme.disambiguator = 100;
   lexeme.partOfSpeech = "pronoun";
 
@@ -149,6 +150,7 @@ export function buildHicTemplate(): Lexeme {
 export function buildIlleTemplate(): Lexeme {
   const lexeme = new Lexeme();
   lexeme.lemma = "ille";
+
   lexeme.disambiguator = 100;
   lexeme.partOfSpeech = "pronoun";
 
@@ -212,6 +214,7 @@ export function buildIlleTemplate(): Lexeme {
 export function buildOmnisTemplate(): Lexeme {
   const lexeme = new Lexeme();
   lexeme.lemma = "omnis";
+
   lexeme.disambiguator = 100;
   lexeme.partOfSpeech = "adjective";
 

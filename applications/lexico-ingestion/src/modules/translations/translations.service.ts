@@ -1,9 +1,15 @@
 import { Lexeme, Translation } from "@monorepo/lexico-entities";
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
+import * as cheerio from "cheerio";
+import _ from "lodash";
 import { Like, Repository } from "typeorm";
 
 import { LoggerService } from "../logger/logger.service.js";
+
+import { translationSkipRegex } from "./translations.constants.js";
+
+import type { AnyNode } from "domhandler";
 
 /**
  * Persists Translation entities for a Lexeme and resolves cross-reference
@@ -30,10 +36,14 @@ export class TranslationsService {
 
   private normalize(str: string): string {
     return str
-      .normalize("NFC")
+      .normalize("NFD")
       .replaceAll(/[\u0300-\u036F]/gu, "")
       .toLowerCase()
       .trim();
+  }
+
+  private capitalizeFirstLetter(str: string): string {
+    return _.upperFirst(str);
   }
 
   private async ingestTranslationReference(
@@ -79,6 +89,48 @@ export class TranslationsService {
   }
 
   // 🌎 Public Methods
+
+  /**
+   * Parses translations from the Wiktionary HTML element context.
+   */
+  parseTranslations(
+    $: cheerio.CheerioAPI,
+    elt: AnyNode,
+    lexeme: Lexeme,
+  ): Translation[] {
+    const translationsHeader = $(elt).nextAll("ol").first();
+    if (translationsHeader.length <= 0) return [];
+
+    let translations: Translation[] = [];
+
+    for (const li of translationsHeader.children("li")) {
+      if ($(li).find("span.form-of-definition-link .selflink").length > 0)
+        continue;
+      if ($(li).text().length === 0) continue;
+
+      $(li).children("ol, ul, dl").remove();
+      let translation = $(li).text();
+      if (translation.includes("This term needs a translation to English"))
+        continue;
+      translation = this.capitalizeFirstLetter(
+        translation.trim().replace(/\.$/, ""),
+      );
+
+      if ($(li).find("span.form-of-definition-link").length > 0) {
+        if (!translationSkipRegex.test(translation)) continue;
+        translation = `${translation} ${$(li)
+          .find("span.form-of-definition-link")
+          .toArray()
+          .map((ref: AnyNode) => `{*${this.normalize($(ref).text())}*}`)
+          .join(" ")}`;
+      }
+
+      translations.push(new Translation(translation, lexeme));
+    }
+
+    translations = translations.filter((t) => !!t.translation);
+    return translations;
+  }
 
   /** Assigns translations onto the saved lexeme and persists via orphan
    * removal — TypeORM diffs the new array against the loaded state and
