@@ -1,11 +1,11 @@
-import { AnnualSolarCycleService } from "@caelundas/src/modules/annualSolarCycle/annualSolarCycle.service";
+import { AnnualSolarCycleService } from "@caelundas/src/modules/annual-solar-cycle/annual-solar-cycle.service";
 import { AspectsService } from "@caelundas/src/modules/aspects/aspects.service";
-import { DailyCyclesService } from "@caelundas/src/modules/dailyCycles/dailyCycles.service";
+import { DailyCyclesService } from "@caelundas/src/modules/daily-cycles/daily-cycles.service";
 import { DatetimeService } from "@caelundas/src/modules/datetime/datetime.service";
 import { EclipsesService } from "@caelundas/src/modules/eclipses/eclipses.service";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { IngressesService } from "@caelundas/src/modules/ingresses/ingresses.service";
-import { MonthlyLunarCycleService } from "@caelundas/src/modules/monthlyLunarCycle/monthlyLunarCycle.service";
+import { MonthlyLunarCycleService } from "@caelundas/src/modules/monthly-lunar-cycle/monthly-lunar-cycle.service";
 import { PhasesService } from "@caelundas/src/modules/phases/phases.service";
 import { RetrogradesService } from "@caelundas/src/modules/retrogrades/retrogrades.service";
 import { TwilightsService } from "@caelundas/src/modules/twilights/twilights.service";
@@ -74,7 +74,7 @@ describe("PerfectiveService", () => {
       ],
     }).compile();
 
-    service = module.get(PerfectiveService);
+    service = await module.resolve(PerfectiveService);
   });
 
   beforeEach(() => {

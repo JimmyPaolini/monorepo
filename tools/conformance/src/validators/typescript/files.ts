@@ -97,7 +97,7 @@ export function validateInstanceFile(args: {
  * corresponding Mustache templates in `templateDirectoryPath`.
  *
  * Each template filename may contain `__fieldName__` tokens (e.g.
- * `__nameCamelCase__.service.ts`) that are resolved to the instance filename
+ * `__nameKebabCase__.service.ts`) that are resolved to the instance filename
  * using the template variable substitutions derived from `instanceDirectoryPath`'s
  * basename. The same substitution map (`nameCamelCase`, `namePascalCase`,
  * `nameSnakeCase`, `nameKebabCase`) is passed to {@link validateInstanceFile}
@@ -160,16 +160,24 @@ export function validateInstanceDirectory(args: {
  * `src/modules/` tree (or equivalent) in one call rather than iterating
  * subdirectories manually.
  *
+ * @param args.excludeDirectories - Optional list of subdirectory names to skip.
+ * Use this to exclude hand-crafted infrastructure modules (e.g. `logger`) that
+ * intentionally diverge from the generator template.
+ *
  * @returns One result entry per instance subdirectory, in filesystem order.
  */
 export function validateInstancesDirectory(args: {
   instancesDirectoryPath: string;
   templateDirectoryPath: string;
+  excludeDirectories?: string[];
 }): InstanceDirectoryValidationResult[] {
-  const { instancesDirectoryPath, templateDirectoryPath } = args;
+  const { instancesDirectoryPath, templateDirectoryPath, excludeDirectories } =
+    args;
   return fs
     .readdirSync(instancesDirectoryPath, { withFileTypes: true })
-    .filter((node) => node.isDirectory())
+    .filter(
+      (node) => node.isDirectory() && !excludeDirectories?.includes(node.name),
+    )
     .map((node) =>
       validateInstanceDirectory({
         instanceDirectoryPath: path.join(instancesDirectoryPath, node.name),

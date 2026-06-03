@@ -6,12 +6,13 @@
   "tags": [
     "framework:nest-commander",
     "framework:nestjs",
+    "generator:nestjs-command-application",
     "language:typescript"
   ],
   "targets": {
     "analyze-code": {},
     "clean": {},
-    "code-analysis": {},
+    "code-analysis": { "cache": false },
     "dependency-cruiser": {},
     "download-ephemeris": {
       "cache": false,

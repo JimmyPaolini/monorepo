@@ -1,8 +1,9 @@
-import { AnnualSolarCycleService } from "@caelundas/src/modules/annualSolarCycle/annualSolarCycle.service";
+import { AnnualSolarCycleService } from "@caelundas/src/modules/annual-solar-cycle/annual-solar-cycle.service";
 import { AspectsService } from "@caelundas/src/modules/aspects/aspects.service";
 import { EclipsesService } from "@caelundas/src/modules/eclipses/eclipses.service";
 import { IngressesService } from "@caelundas/src/modules/ingresses/ingresses.service";
-import { MonthlyLunarCycleService } from "@caelundas/src/modules/monthlyLunarCycle/monthlyLunarCycle.service";
+import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
+import { MonthlyLunarCycleService } from "@caelundas/src/modules/monthly-lunar-cycle/monthly-lunar-cycle.service";
 import { PhasesService } from "@caelundas/src/modules/phases/phases.service";
 import { RetrogradesService } from "@caelundas/src/modules/retrogrades/retrogrades.service";
 import { TwilightsService } from "@caelundas/src/modules/twilights/twilights.service";
@@ -41,6 +42,7 @@ describe("ProgressiveService", () => {
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
+        LoggerService,
         ProgressiveService,
         { provide: AnnualSolarCycleService, useValue: annualSolarCycleMock },
         { provide: AspectsService, useValue: aspectsMock },
@@ -54,7 +56,7 @@ describe("ProgressiveService", () => {
       ],
     }).compile();
 
-    service = module.get(ProgressiveService);
+    service = await module.resolve(ProgressiveService);
     utilitiesService = module.get(ProgressiveUtilities);
   });
 
@@ -185,7 +187,7 @@ describe("ProgressiveService", () => {
 
     it("should emit a console warning when beginning and ending counts differ", () => {
       const warnSpy = vi
-        .spyOn(console, "warn")
+        .spyOn(LoggerService.prototype, "warn")
         .mockImplementation(() => undefined);
 
       utilitiesService.pairProgressiveEvents(
@@ -201,7 +203,7 @@ describe("ProgressiveService", () => {
 
     it("should not warn when counts are equal", () => {
       const warnSpy = vi
-        .spyOn(console, "warn")
+        .spyOn(LoggerService.prototype, "warn")
         .mockImplementation(() => undefined);
 
       utilitiesService.pairProgressiveEvents(

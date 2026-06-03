@@ -1,18 +1,21 @@
-import { bodies } from "@caelundas/src/caelundas.constants";
-import { isAspect } from "@caelundas/src/caelundas.types";
+import { bodies } from "@caelundas/src/modules/caelundas/caelundas.constants";
+import { isAspect } from "@caelundas/src/modules/caelundas/caelundas.types";
 import { Inject, Injectable } from "@nestjs/common";
 
-import { MajorAspectsService } from "../majorAspects/majorAspects.service";
-import { MinorAspectsService } from "../minorAspects/minorAspects.service";
-import { QuadrupleAspectsService } from "../quadrupleAspects/quadrupleAspects.service";
-import { QuintupleAspectsService } from "../quintupleAspects/quintupleAspects.service";
-import { SextupleAspectsService } from "../sextupleAspects/sextupleAspects.service";
-import { SpecialtyAspectsService } from "../specialtyAspects/specialtyAspects.service";
+import { MajorAspectsService } from "../major-aspects/major-aspects.service";
+import { MinorAspectsService } from "../minor-aspects/minor-aspects.service";
+import { QuadrupleAspectsService } from "../quadruple-aspects/quadruple-aspects.service";
+import { QuintupleAspectsService } from "../quintuple-aspects/quintuple-aspects.service";
+import { SextupleAspectsService } from "../sextuple-aspects/sextuple-aspects.service";
+import { SpecialtyAspectsService } from "../specialty-aspects/specialty-aspects.service";
 import { StelliumService } from "../stellium/stellium.service";
-import { TripleAspectsService } from "../tripleAspects/tripleAspects.service";
+import { TripleAspectsService } from "../triple-aspects/triple-aspects.service";
 
 import type { AspectBodies } from "./aspects.types";
-import type { Aspect, Body } from "@caelundas/src/caelundas.types";
+import type {
+  Aspect,
+  Body,
+} from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";

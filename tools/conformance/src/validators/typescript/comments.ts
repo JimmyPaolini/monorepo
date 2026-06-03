@@ -117,6 +117,18 @@ export function validateComments(args: {
     instanceScopeEnd,
   );
 
+  // For TODO template comments not found in the node's immediate trivia range,
+  // also search the region between the parent node's start and this node's start.
+  // This handles the case where a JSDoc is placed before an intermediary
+  // decorator (e.g. `@Global()` between the JSDoc and `@Module()`): the JSDoc
+  // lives in the class's leading trivia, not in `@Module`'s direct trivia, yet
+  // it still satisfies the TODO placeholder in the template.
+  const parentStart = (instanceNode.parent as Node | undefined)?.pos ?? -1;
+  const ancestorRangeComments =
+    parentStart >= 0 && parentStart < instanceStart
+      ? getAllCommentsInRange(instanceText, parentStart, instanceStart)
+      : [];
+
   const instanceFile = instanceNode.getSourceFile();
   const instancePosition = instanceNode[side];
   const { line: instanceLine, character: instanceCharacter } =
@@ -135,6 +147,17 @@ export function validateComments(args: {
       });
 
     if (endPosition === -1) {
+      // For TODO template comments, also check comments in the ancestor's
+      // leading trivia range (before this node's own trivia starts). This
+      // satisfies the case where the developer placed a JSDoc before an
+      // intermediary decorator rather than directly before this node.
+      if (
+        TODO_LINE_REGEX.test(templateComment.text) &&
+        ancestorRangeComments.length > 0
+      ) {
+        continue;
+      }
+
       errors.push({
         errorType: "comment",
         language,

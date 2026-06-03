@@ -38,6 +38,12 @@ export default defineConfig({
     commonjsOptions: {
       transformMixedEsModules: true,
     },
+    rollupOptions: {
+      external: ["expo-sqlite"],
+    },
+    rolldownOptions: {
+      external: ["expo-sqlite"],
+    },
   },
   css: {
     devSourcemap: true,

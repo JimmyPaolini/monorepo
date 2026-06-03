@@ -1,5 +1,19 @@
 set -e
 
-NOISE_PATTERNS='\(node:[0-9]+\) Warning: The .NO_COLOR|\(Use .node --trace-warnings|Your AI agent configuration is outdated'
+git restore --staged scripts/database/notebook.sql || true
 
-nx run monorepo:lint-staged 2>&1 | grep -vE "$NOISE_PATTERNS" | sed -E 's/\033\[[0-9;]*[mK]//g' | tee last-lint-staged-errors.txt
+EXIT_CODE=0
+
+nx run monorepo:lint-staged > last-lint-staged-output.txt 2>&1 || EXIT_CODE=$?
+
+LAST_LINT_STAGED_OUTPUT=$(cat last-lint-staged-output.txt \
+  | grep -vE '\(node:[0-9]+\) Warning: The .NO_COLOR' \
+  | grep -vE '\(Use .node --trace-warnings' \
+  | grep -vE 'Your AI agent configuration is outdated' \
+  | perl -pe 's/\x1B\[[0-9;]*[a-zA-Z]//g' \
+  | perl -0777 -pe 's/\n{3,}/\n\n/g')
+
+printf "%s\n" "$LAST_LINT_STAGED_OUTPUT"
+printf "%s\n" "$LAST_LINT_STAGED_OUTPUT" > last-lint-staged-output.txt
+
+exit "$EXIT_CODE"

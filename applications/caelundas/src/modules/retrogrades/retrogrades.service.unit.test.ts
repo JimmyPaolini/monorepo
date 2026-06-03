@@ -1,5 +1,6 @@
-import { MARGIN_MINUTES } from "@caelundas/src/caelundas.constants";
+import { MARGIN_MINUTES } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
+import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Test } from "@nestjs/testing";
@@ -8,7 +9,7 @@ import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { RetrogradesService } from "./retrogrades.service";
 
-import type { RetrogradeBody } from "@caelundas/src/caelundas.types";
+import type { RetrogradeBody } from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 
@@ -25,13 +26,14 @@ describe("RetrogradesService", () => {
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
+        LoggerService,
         RetrogradesService,
         EphemerisService,
         MathService,
         ProgressiveUtilities,
       ],
     }).compile();
-    service = module.get(RetrogradesService);
+    service = await module.resolve(RetrogradesService);
     s = service as unknown as ServicePrivate;
   });
 

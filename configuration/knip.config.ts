@@ -22,6 +22,7 @@ const config: KnipConfig = {
     "trivy", // Trivy CLI, used for security scanning (container images & infrastructure)
     "uv", // uv Python package manager, used in lint-staged for nbstripout
     "unset", // Shell builtin, used in project.json pre-commit command
+    "squawk",
   ],
 
   // devDependencies used via npx, CLI, or ESLint config (not directly imported)
@@ -43,6 +44,7 @@ const config: KnipConfig = {
     "stylelint", // CSS linter CLI, invoked via nx:run-commands in project.json
     "tslib", // TypeScript helper library, implicit runtime dependency for compiled TS
     "unplugin-swc", // Vite plugin for SWC transformation with emitDecoratorMetadata support (caelundas/vitest.config.ts)
+    "squawk-cli",
   ],
 
   // Allow exports that are only used in the same file (common for barrel re-exports)
@@ -100,6 +102,9 @@ const config: KnipConfig = {
         "output/**", // Generated calendar output files
         "testing/**", // Test fixtures and setup
       ],
+      ignoreDependencies: [
+        "pino-pretty", // Referenced as string transport target in LoggerService — knip can't trace string references
+      ],
       project: "src/**/*.ts",
     },
 
@@ -126,45 +131,37 @@ const config: KnipConfig = {
 
     // lexico-components: Shared React component library (shadcn/ui)
     "packages/lexico-components": {
-      // Shadcn-generated components, lib utilities, and hooks are managed by shadcn CLI
-      // and may appear unused to knip but are consumed by lexico at runtime
-      ignore: ["src/components/**", "src/lib/**", "src/hooks/**"],
-      entry: ["vite.config.mts"],
+      entry: ["src/index.ts", "src/components/**/*.tsx"],
+      project: ["src/**/*.ts", "src/**/*.tsx"],
+      ignoreDependencies: ["tailwindcss-animate"],
+    },
 
-      // Radix UI packages and other shadcn dependencies are installed by 'pnpx shadcn add'
-      // and consumed by shadcn-generated components — knip can't trace these imports
-      // because the component files are in the ignored src/components/ directory
-      ignoreDependencies: [
-        "@radix-ui/react-alert-dialog",
-        "@radix-ui/react-aspect-ratio",
-        "@radix-ui/react-avatar",
-        "@radix-ui/react-checkbox",
-        "@radix-ui/react-context-menu",
-        "@radix-ui/react-dropdown-menu",
-        "@radix-ui/react-hover-card",
-        "@radix-ui/react-menubar",
-        "@radix-ui/react-navigation-menu",
-        "@radix-ui/react-popover",
-        "@radix-ui/react-progress",
-        "@radix-ui/react-radio-group",
-        "@radix-ui/react-scroll-area",
-        "@radix-ui/react-select",
-        "@radix-ui/react-slider",
-        "@radix-ui/react-switch",
-        "@radix-ui/react-toggle",
-        "@radix-ui/react-toggle-group",
-        "cmdk", // Command menu component used by shadcn
-        "embla-carousel-react", // Carousel component used by shadcn
-        "input-otp", // OTP input component used by shadcn
-        "next-themes", // Theme provider used by shadcn
-        "react-day-picker", // Date picker component used by shadcn
-        "react-hook-form", // Form handling used by shadcn form components
-        "react-resizable-panels", // Resizable panel component used by shadcn
-        "recharts", // Chart library used by shadcn chart components
-        "sonner", // Toast notification component used by shadcn
-        "vaul", // Drawer component used by shadcn
+    // lexico-entities: Shared TypeORM entities
+    "packages/lexico-entities": {
+      entry: [
+        "src/index.ts",
+        "scripts/**/*.ts",
+        "src/database/data-source.ts",
+        "src/database/migrations/**/*.ts",
       ],
-      project: "src/**/*.{ts,tsx}",
+      project: ["src/**/*.ts", "scripts/**/*.ts"],
+    },
+
+    // lexico-ingestion: Data ingestion CLI for the Lexico database
+    "applications/lexico-ingestion": {
+      ignore: [
+        "src/**/*.test.ts",
+        "src/**/*.integration.test.ts",
+        "src/**/*.end-to-end.test.ts",
+        "src/**/*.constants.ts", // Standard module constants files (may be empty placeholders)
+        "src/**/*.types.ts", // Standard module types files (may be empty placeholders)
+        "testing/**", // Test fixtures and setup
+      ],
+      ignoreDependencies: [
+        "pino-pretty", // Referenced as string transport target in LoggerService — knip can't trace string references
+        "tsx", // TypeScript executor CLI (not used; project uses @swc-node/register instead)
+      ],
+      project: "src/**/*.ts",
     },
 
     // conformance: Nx generator plugin for scaffolding React components

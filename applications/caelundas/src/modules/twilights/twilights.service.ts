@@ -3,6 +3,8 @@ import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Injectable } from "@nestjs/common";
 
+import { LoggerService } from "../logger/logger.service";
+
 import type { Twilight } from "./twilights.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { AzimuthElevationEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
@@ -36,9 +38,12 @@ export class TwilightsService {
 
   // 🏗️ Dependency Injection
   constructor(
+    private readonly logger: LoggerService,
     private readonly ephemerisService: EphemerisService,
     private readonly progressiveUtilitiesService: ProgressiveUtilities,
-  ) {}
+  ) {
+    this.logger.setContext(TwilightsService.name);
+  }
 
   // 🔐 Private Fields
 
@@ -129,7 +134,7 @@ export class TwilightsService {
     const summary = `🌠 ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const astronomicalDawnEvent: Event = {
       start: date,
@@ -154,7 +159,7 @@ export class TwilightsService {
     const summary = `🌅 ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const nauticalDawnEvent: Event = {
       start: date,
@@ -179,7 +184,7 @@ export class TwilightsService {
     const summary = `🌄 ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const civilDawnEvent: Event = {
       start: date,
@@ -204,7 +209,7 @@ export class TwilightsService {
     const summary = `🌇 ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const civilDuskEvent: Event = {
       start: date,
@@ -229,7 +234,7 @@ export class TwilightsService {
     const summary = `🌉 ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const nauticalDuskEvent: Event = {
       start: date,
@@ -254,7 +259,7 @@ export class TwilightsService {
     const summary = `🌌 ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const astronomicalDuskEvent: Event = {
       start: date,

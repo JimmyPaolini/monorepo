@@ -1,0 +1,94 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "lexico-ingestion",
+  "projectType": "application",
+  "sourceRoot": "applications/lexico-ingestion",
+  "tags": [
+    "framework:nest-commander",
+    "framework:nestjs",
+    "generator:nestjs-command-application",
+    "language:typescript"
+  ],
+  "targets": {
+    "analyze-code": {},
+    "clean": {},
+    "clear": {
+      "description": "Clear ingested data from the database",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --import @swc-node/register/esm-register src/main.ts clear",
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
+    "dependency-cruiser": {},
+    "dictionary": {
+      "description": "Ingest dictionary entries into the database",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --import @swc-node/register/esm-register src/main.ts dictionary",
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
+    "eslint": {},
+    "format": {},
+    "knip": {},
+    "lint": {},
+    "manual": {
+      "description": "Ingest manually curated entries into the database",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --import @swc-node/register/esm-register src/main.ts manual",
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
+    "markdown-lint": {},
+    "oxfmt": {},
+    "oxlint": {},
+    "prettier": {},
+    "spell-check": {},
+    "start": {
+      "description": "Start the LexicoIngestion application",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm start",
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
+    "test": {
+      "configurations": {
+        "coverage": {
+          "command": "pnpm test:coverage"
+        },
+        "end-to-end": {
+          "command": "pnpm test:end-to-end"
+        },
+        "integration": {
+          "command": "pnpm test:integration"
+        },
+        "unit": {
+          "command": "pnpm test:unit"
+        },
+        "watch": {
+          "command": "pnpm test:watch"
+        }
+      },
+      "description": "Run all tests",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm test",
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
+    "type-coverage": {},
+    "typecheck": {},
+    "wiktionary": {
+      "description": "Ingest Wiktionary data into the database",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --import @swc-node/register/esm-register src/main.ts wiktionary",
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
+    "yaml-lint": {}
+  }
+}

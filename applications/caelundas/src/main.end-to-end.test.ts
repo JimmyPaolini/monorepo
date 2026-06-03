@@ -6,6 +6,7 @@ import moment from "moment-timezone";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
 import { CalendarService } from "./modules/calendar/calendar.service";
+import { LoggerService } from "./modules/logger/logger.service";
 
 import type { Environment } from "./modules/input/input.types";
 import type { ConfigService } from "@nestjs/config";
@@ -13,7 +14,8 @@ import type { ConfigService } from "@nestjs/config";
 // Mock environment for testing
 const TEST_OUTPUT_DIR = "./output/e2e-test";
 
-const calendarService = new CalendarService({
+const logger = new LoggerService();
+const calendarService = new CalendarService(logger, {
   get: () => TEST_OUTPUT_DIR,
 } as unknown as ConfigService<Environment>);
 
@@ -238,7 +240,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
     it("should correctly identify aspects from angular separation", async () => {
       const { MajorAspectsService } =
-        await import("./modules/majorAspects/majorAspects.service");
+        await import("./modules/major-aspects/major-aspects.service");
       const { AspectsUtilities } =
         await import("./modules/aspects/aspects.utilities");
       const { EphemerisService } =
@@ -248,9 +250,10 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
         await import("./modules/progressive/progressive.utilities");
       const mathService = new MathService();
       const service = new MajorAspectsService(
+        new LoggerService(),
         new AspectsUtilities(mathService),
         new EphemerisService(mathService),
-        new ProgressiveUtilities(),
+        new ProgressiveUtilities(new LoggerService()),
       );
 
       // Test exact aspects
@@ -317,11 +320,9 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
         },
       ];
 
-      const pairs = new ProgressiveUtilities().pairProgressiveEvents(
-        beginnings,
-        endings,
-        "test",
-      );
+      const pairs = new ProgressiveUtilities(
+        new LoggerService(),
+      ).pairProgressiveEvents(beginnings, endings, "test");
 
       expect(pairs.length).toBe(2);
       expect(pairs[0]?.[0]?.start.toISOString()).toBe(

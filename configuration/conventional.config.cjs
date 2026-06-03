@@ -147,11 +147,15 @@ const scopes = [
   },
   {
     name: "lexico-components",
-    description: "Shared React/shadcn component library in packages/",
+    description: "Shared React/shadcn component library",
   },
   {
-    name: "linting",
-    description: "ESLint configs, rules, plugins, and lint-related tooling",
+    name: "lexico-entities",
+    description: "Shared TypeORM entities and GraphQL types",
+  },
+  {
+    name: "lexico-ingestion",
+    description: "Data ingestion scripts for Lexico",
   },
   {
     name: "monorepo",

@@ -7,6 +7,7 @@
     "generator:nestjs-command-application",
     "framework:nest-commander",
     "framework:nestjs",
+    "generator:nestjs-command-application",
     "language:typescript"
   ],
   "targets": {

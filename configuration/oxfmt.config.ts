@@ -48,6 +48,8 @@ export default defineConfig({
     "pnpm-lock.yaml",
     "tmp",
     "**/conformance/**/templates/**",
+    "**/data/wikipedia",
+    "**/data/wiktionary",
     "yarn.lock",
   ],
   insertPragma: false,

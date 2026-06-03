@@ -10,7 +10,7 @@ requires-python = ">=3.14"
 dependencies = []
 
 [dependency-groups]
-dev = ["yamllint>=1.35"]
+dev = ["sqlfluff>=3.0", "yamllint>=1.35"]
 
 [tool.ruff]
 target-version = "py314"
@@ -41,3 +41,18 @@ markers = [
   "unit: fast unit tests with mocked I/O",
   "integration: integration tests requiring real services",
 ]
+
+[tool.sqlfluff.core]
+dialect = "postgres"
+templater = "raw"
+indent_unit = "space"
+indent_width = 2
+max_line_length = 120
+# PostgreSQL and Supabase use quoted identifiers with special chars in policy/function names
+exclude_rules = ["RF05"]
+
+[tool.sqlfluff.rules.capitalisation.keywords]
+capitalisation_policy = "lower"
+
+[tool.sqlfluff.rules.capitalisation.identifiers]
+extended_capitalisation_policy = "lower"
