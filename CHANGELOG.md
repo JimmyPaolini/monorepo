@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.0](https://github.com/JimmyPaolini/monorepo/compare/v1.4.0...v1.5.0) (2026-06-03)
+
+### ✨ Features
+
+* **conformance:** ✨ add jupyter-notebook-application Nx generator ([#52](https://github.com/JimmyPaolini/monorepo/issues/52)) ([236c9f1](https://github.com/JimmyPaolini/monorepo/commit/236c9f1cbb1579a8090c3ed12e56177f2fa8ab4e))
+
 ## [1.4.0](https://github.com/JimmyPaolini/monorepo/compare/v1.3.2...v1.4.0) (2026-06-03)
 
 ### ✨ Features
