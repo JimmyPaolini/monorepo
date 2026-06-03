@@ -57,20 +57,34 @@ Specialized domain knowledge for working on specific systems or patterns:
 - **[tanstack-start-ssr](documentation/skills/tanstack-start-ssr/SKILL.md)**: Build SSR applications with TanStack Start - server functions, file-based routing, and data loading patterns. Use this skill when working on the lexico web application.
 - **[testing-strategy](documentation/skills/testing-strategy/SKILL.md)**: Use monorepo testing conventions: unit, integration, end-to-end test naming and Nx commands. Use when adding tests or recommending test coverage.
 - **[tool-execution-model](documentation/skills/tool-execution-model/SKILL.md)**: Decide when to use Nx tasks versus direct tooling in this monorepo. Use when asked about build, lint, test, typecheck, formatting, Docker, kubectl, Helm, Supabase CLI, Git, or pnpm commands.
-- **[triage-ci](documentation/skills/triage-ci/SKILL.md)**: "Diagnose and fix failing GitHub Actions CI workflows in this monorepo. Use when a CI check fails on a pull request or push, when you see red checks in GitHub Actions, when asked to fix CI, debug a workflow failure, or investigate a failing job. Accepts logs pasted directly in chat OR retrieves them automatically via the gh CLI. Triages failures for: analyze-code (typecheck, lint, format, spell-check, knip, markdown-lint, yaml-lint), test-coverage, validate-conventions (branch name, PR title/body, config sync), audit-security (gitleaks, bandit, scan-dependencies, trivy), and make-devcontainer (VSCode extensions sync, Docker build, devcontainer test)."
+- **[triage-deployment](documentation/skills/triage-deployment/SKILL.md)**: "Diagnose and fix failing GitHub Actions CI workflows in this monorepo. Use when a CI check fails on a pull request or push, when you see red checks in GitHub Actions, when asked to fix CI, debug a workflow failure, or investigate a failing job. Accepts logs pasted directly in chat OR retrieves them automatically via the gh CLI. Triages failures for: analyze-code (typecheck, lint, format, spell-check, knip, markdown-lint, yaml-lint), test-coverage, validate-conventions (branch name, PR title/body, config sync), audit-security (gitleaks, bandit, scan-dependencies, trivy), and make-devcontainer (VSCode extensions sync, Docker build, devcontainer test)."
 - **[triage-submission](documentation/skills/triage-submission/SKILL.md)**: "Triage and fix git submission failures for both commits and pushes. Use when a git commit or push is rejected, when lint-staged errors occur, when pre-commit or pre-push hooks fail, when a branch name is invalid on push, or when you see errors from husky, commitlint, validate-branch-name, ESLint, oxfmt, prettier, typecheck, knip, cspell, markdownlint, or yamllint during a commit or push attempt. Reads the error output, identifies the failing hook and checks, reads the relevant configuration, and applies targeted fixes."
 - **[update-pull-request](documentation/skills/update-pull-request/SKILL.md)**: Update an existing pull request's title and description to accurately reflect the implemented changes. Use this skill when asked to update, refresh, or rewrite a PR title or description, sync a PR with the latest changes, or when the PR description no longer matches the implementation.
 <!-- agent-skills-table-of-contents end -->
 
 ## Projects
 
-- **[affirmations](applications/affirmations/AGENTS.md)**: Python Jupyter notebook application for LangChain + LangGraph affirmation generation (Ollama Qwen 3.5, ReAct agent, DuckDuckGo/SearxNG/Wikipedia tools)
+- **[affirmations](applications/affirmations/AGENTS.md)**: Python Jupyter notebook application for LangChain + LangGraph affirmation generation (Ollama gemma4:e2b, ReAct agent, SearxNG metasearch with Trafilatura research processing)
 - **[caelundas](applications/caelundas/AGENTS.md)**: Node.js CLI for astronomical calendar generation (NASA JPL API)
 - **[lexico](applications/lexico/AGENTS.md)**: SSR web app (React 19, TanStack Start, Supabase)
 - **[lexico-components](packages/lexico-components/AGENTS.md)**: Shared React component library (shadcn/ui, Radix UI)
+- **lexico-ingestion**: NestJS CLI app for Latin dictionary data ingestion
+- **lexico-entities**: Shared TypeORM entities and GraphQL types package
 - **JimmyPaolini**: Portfolio website
 - **[infrastructure](infrastructure/AGENTS.md)**: Helm charts, Terraform, Kubernetes infrastructure
 - **[conformance](tools/conformance/AGENTS.md)**: Nx generators for scaffolding code
+
+## Nx Generators
+
+Provided by the [conformance](tools/conformance/AGENTS.md) tool. Run with `nx generate conformance:<name> [options]` or the short alias `nx g conformance:<alias> [options]`.
+
+<!-- conformance-generators-table start -->
+| Generator | Alias | Description |
+| --------- | ----- | ----------- |
+| `nestjs-command-application` | `nca` | Generate a NestJS command-line application scaffold using nest-commander |
+| `nestjs-service-module` | `nsm` | Generate a NestJS service module with module, service, types, constants, and unit test files |
+| `react-component` | `c` | Generate a React component with test file |
+<!-- conformance-generators-table end -->
 
 ## Key Conventions
 
@@ -88,6 +102,7 @@ See [Python Conventions](documentation/conventions/python.md) for the full Pytho
 - **Strict mode enabled**: `noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`, `verbatimModuleSyntax`
 - **Explicit return types** required for all functions
 - **Type imports**: Use `import { type Foo } from './types'` (enforced by ESLint)
+- **No file extensions in imports**: Omit `.js` and `.ts` from all relative imports
 - **No `any` types**: Use `unknown` or proper typing
 
 See [TypeScript Conventions](documentation/conventions/typescript.md) for strict mode patterns.
@@ -151,7 +166,7 @@ Special branches exempt from naming convention: `main`, `develop`, `renovate/*`,
 | Scope | Description |
 | ----- | ----------- |
 | `affirmations` | Python Jupyter notebook application for LangGraph affirmation generation |
-| `applications` | Changes spanning multiple apps (caelundas, lexico, JimmyPaolini) |
+| `applications` | Changes spanning multiple applications in applications/ (e.g. lexico, caelundas, etc.) |
 | `caelundas` | Node.js CLI for astronomical calendar generation (NASA JPL ephemeris) |
 | `configuration` | Workspace root config files (tsconfig, eslint, vitest, nx.json, etc.) |
 | `conformance` | Code generator templates and conformance validation tests for generated instances |
@@ -161,15 +176,16 @@ Special branches exempt from naming convention: `main`, `develop`, `renovate/*`,
 | `infrastructure` | Helm charts, Terraform configs, and Kubernetes resources |
 | `JimmyPaolini` | Static GitHub profile README project (markdown and assets) |
 | `lexico` | TanStack Start SSR Latin dictionary web app with Supabase backend |
-| `lexico-components` | Shared React/shadcn component library in packages/ |
-| `linting` | ESLint configs, rules, plugins, and lint-related tooling |
+| `lexico-components` | Shared React/shadcn component library |
+| `lexico-entities` | Shared TypeORM entities and GraphQL types |
+| `lexico-ingestion` | Data ingestion scripts for Lexico |
 | `monorepo` | Workspace root concerns (pnpm-workspace, root package.json, Nx orchestration) |
 | `no-release` | Escape hatch: suppress semantic-release for any commit type |
-| `packages` | Changes spanning multiple shared packages |
+| `packages` | Changes spanning multiple shared packages in packages/ |
 | `release` | Version bumps and release commits generated by semantic-release |
 | `scripts` | Shell and TypeScript scripts in scripts/ (sync, setup, utilities) |
 | `testing` | Vitest configuration, shared test utilities, and coverage setup |
-| `tools` | Nx custom generators and developer tooling in tools/ |
+| `tools` | Changes spanning multiple tool projects in tools/ |
 
 <!-- scopes-end -->
 
@@ -182,7 +198,7 @@ Format: `<type>(<scope>): <gitmoji> <subject>` — single line only, max 128 cha
 - Subject: lowercase, imperative mood, no period
 - Never list multiple changes — summarize at a higher level or split into separate commits
 
-Common gitmojis: ✨ `feat` · 🐛 `fix` · 📝 `docs` · ✅ `test` · ♻️ `refactor` · 💄 `style` · ⚡️ `perf` · 🔧 `chore` · 👷 `ci` · ⬆️ deps
+Common gitmojis: ✨ `feat` · 🐛 `fix` · 📝 `docs` · 🧪 `test` · ♻️ `refactor` · 🎨 `style` · ⚡️ `perf` · 🔧 `chore` · 👷 `ci` · 📦 `build` · ⏪ `revert`
 
 Examples:
 

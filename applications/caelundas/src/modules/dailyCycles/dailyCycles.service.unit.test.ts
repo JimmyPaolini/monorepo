@@ -1,4 +1,5 @@
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
+import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Test } from "@nestjs/testing";
 import moment from "moment-timezone";
@@ -31,9 +32,14 @@ describe("DailyCyclesService", () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [DailyCyclesService, EphemerisService, MathService],
+      providers: [
+        DailyCyclesService,
+        EphemerisService,
+        LoggerService,
+        MathService,
+      ],
     }).compile();
-    service = module.get(DailyCyclesService);
+    service = await module.resolve(DailyCyclesService);
     s = service as unknown as ServicePrivate;
   });
 

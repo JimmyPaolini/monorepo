@@ -2,6 +2,8 @@ import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.ser
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Injectable } from "@nestjs/common";
 
+import { LoggerService } from "../logger/logger.service";
+
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { AzimuthElevationEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
@@ -30,9 +32,12 @@ export class DailyCyclesService {
 
   // 🏗️ Dependency Injection
   constructor(
+    private readonly logger: LoggerService,
     private readonly ephemerisService: EphemerisService,
     private readonly mathService: MathService,
-  ) {}
+  ) {
+    this.logger.setContext(DailyCyclesService.name);
+  }
 
   // 🔐 Private Fields
 
@@ -193,7 +198,7 @@ export class DailyCyclesService {
     const summary = `☀️ 🔼 ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const sunriseEvent: Event = {
       start: date,
@@ -238,7 +243,7 @@ export class DailyCyclesService {
     const summary = `☀️ ⏫ ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const solarZenithEvent: Event = {
       start: date,
@@ -282,7 +287,7 @@ export class DailyCyclesService {
     const summary = `☀️ 🔽 ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const sunsetEvent: Event = {
       start: date,
@@ -328,7 +333,7 @@ export class DailyCyclesService {
     const summary = `☀️ ⏬ ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const solarNadirEvent: Event = {
       start: date,
@@ -444,7 +449,7 @@ export class DailyCyclesService {
     const summary = `🌙 🔼 ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const moonriseEvent: Event = {
       start: date,
@@ -478,7 +483,7 @@ export class DailyCyclesService {
     const summary = `🌙 ⏫ ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const lunarZenithEvent: Event = {
       start: date,
@@ -512,7 +517,7 @@ export class DailyCyclesService {
     const summary = `🌙 🔽 ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const moonsetEvent: Event = {
       start: date,
@@ -546,7 +551,7 @@ export class DailyCyclesService {
     const summary = `🌙 ⏬ ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const lunarNadirEvent: Event = {
       start: date,

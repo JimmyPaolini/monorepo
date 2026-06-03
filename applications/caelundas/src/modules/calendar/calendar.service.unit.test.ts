@@ -1,3 +1,4 @@
+import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { mockDates } from "@caelundas/testing/mocks";
 import { ConfigService } from "@nestjs/config";
 import { Test } from "@nestjs/testing";
@@ -14,12 +15,13 @@ describe("CalendarService", () => {
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
+        LoggerService,
         CalendarService,
         { provide: ConfigService, useValue: { get: vi.fn() } },
       ],
     }).compile();
 
-    service = module.get(CalendarService);
+    service = await module.resolve(CalendarService);
   });
 
   mockDates();

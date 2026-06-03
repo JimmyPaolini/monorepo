@@ -1,6 +1,6 @@
-import { MARGIN_MINUTES } from "@caelundas/src/caelundas.constants";
 import { AnnualSolarCycleService } from "@caelundas/src/modules/annualSolarCycle/annualSolarCycle.service";
 import { AspectsService } from "@caelundas/src/modules/aspects/aspects.service";
+import { MARGIN_MINUTES } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { DailyCyclesService } from "@caelundas/src/modules/dailyCycles/dailyCycles.service";
 import { DatetimeService } from "@caelundas/src/modules/datetime/datetime.service";
 import { EclipsesService } from "@caelundas/src/modules/eclipses/eclipses.service";

@@ -35,6 +35,7 @@ jobs:
 
       - name: 🧑‍💻 Analyze Code
         env:
+          NX_PARALLEL: 3
           NX_VERBOSE_LOGGING: ${{ inputs.verbose || false }}
         run: pnpm exec nx affected --target=analyze-code
 

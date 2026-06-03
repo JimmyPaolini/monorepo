@@ -89,9 +89,13 @@ function resolveTemplateInstances(): ConformanceTemplateInstance[] {
       templateDirectoryPath: SERVICE_MODULE_TEMPLATES_DIRECTORY_PATH,
       instanceType: "multiple",
       instanceDirectoryPaths: applications
-        .filter((application) => application.tags.includes(NESTJS_APPLICATION_TAG))
+        .filter((application) =>
+          application.tags.includes(NESTJS_APPLICATION_TAG),
+        )
         .map((application) => path.join(application.rootPath, "src", "modules"))
-        .filter((instancesDirectoryPath) => fs.existsSync(instancesDirectoryPath)),
+        .filter((instancesDirectoryPath) =>
+          fs.existsSync(instancesDirectoryPath),
+        ),
     },
   ];
 }
@@ -101,11 +105,12 @@ describe("generator template conformance", () => {
     it(`validates "${conformanceCase.template}" generated instances`, () => {
       const results =
         conformanceCase.instanceType === "single"
-          ? conformanceCase.instanceDirectoryPaths.map((instanceDirectoryPath) =>
-              validateInstanceDirectory({
-                instanceDirectoryPath,
-                templateDirectoryPath: conformanceCase.templateDirectoryPath,
-              }),
+          ? conformanceCase.instanceDirectoryPaths.map(
+              (instanceDirectoryPath) =>
+                validateInstanceDirectory({
+                  instanceDirectoryPath,
+                  templateDirectoryPath: conformanceCase.templateDirectoryPath,
+                }),
             )
           : conformanceCase.instanceDirectoryPaths.flatMap(
               (instancesDirectoryPath) =>

@@ -2,9 +2,10 @@ import {
   symbolByMartianPhase,
   symbolByMercurianPhase,
   symbolByVenusianPhase,
-} from "@caelundas/src/caelundas.constants";
-import { planetaryPhaseBodies } from "@caelundas/src/caelundas.types";
+} from "@caelundas/src/modules/caelundas/caelundas.constants";
+import { planetaryPhaseBodies } from "@caelundas/src/modules/caelundas/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
+import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Test } from "@nestjs/testing";
@@ -13,7 +14,7 @@ import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { PhasesService } from "./phases.service";
 
-import type { Body } from "@caelundas/src/caelundas.types";
+import type { Body } from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type {
   CoordinateEphemeris,
@@ -46,13 +47,14 @@ describe("PhasesService", () => {
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
+        LoggerService,
         PhasesService,
         EphemerisService,
         MathService,
         ProgressiveUtilities,
       ],
     }).compile();
-    service = module.get(PhasesService);
+    service = await module.resolve(PhasesService);
     s = service as unknown as ServicePrivate;
   });
 

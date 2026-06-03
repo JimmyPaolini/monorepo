@@ -38,6 +38,7 @@ ignorePaths:
   - .github/skills/nx-plugins/**
   - .github/skills/nx-run-tasks/**
   - .github/skills/nx-workspace/**
+  - applications/lexico-ingestion/data/**
   - documentation/skills/monitor-ci/**
   - documentation/skills/nx-generate/**
   - documentation/skills/nx-import/**
@@ -45,8 +46,6 @@ ignorePaths:
   - documentation/skills/nx-run-tasks/**
   - documentation/skills/nx-workspace/**
   - documentation/skills/link-workspace-packages/**
-  - node_modules
-  - pnpm-lock.yaml
 dictionaryDefinitions:
   - name: astronomy
     path: .cspell/astronomy.txt
@@ -69,10 +68,12 @@ dictionaryDefinitions:
     addWords: true
 words:
   - apikey
+  - disambiguator
   - elipssis
   - extensionless
   - futp
   - hackathon
+  - Indo
   - jimmypaolini
   - joor
   - killallnode
@@ -133,3 +134,5 @@ overrides:
   - filename: "**/*.ipynb"
     ignoreRegExpList:
       - notebook-outputs
+  - filename: "**/lexico-ingestion/data/**"
+    enabled: false

@@ -1,5 +1,5 @@
 // 🏷️ Types
-import type { Body } from "@caelundas/src/caelundas.types";
+import type { Body } from "@caelundas/src/modules/caelundas/caelundas.types";
 
 /**
  * Ecliptic latitude in degrees.

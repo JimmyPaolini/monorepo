@@ -1,0 +1,29 @@
+export const partOfSpeechValues = [
+  "noun",
+  "properNoun",
+  "verb",
+  "adjective",
+  "participle",
+  "adverb",
+  "pronoun",
+  "determiner",
+  "preposition",
+  "conjunction",
+  "numeral",
+  "abbreviation",
+  "particle",
+  "interjection",
+  "prefix",
+  "suffix",
+  "interfix",
+  "circumfix",
+  "inflection",
+  "phrase",
+  "proverb",
+  "idiom",
+] as const;
+
+/**
+ *
+ */
+export type PartOfSpeech = (typeof partOfSpeechValues)[number];

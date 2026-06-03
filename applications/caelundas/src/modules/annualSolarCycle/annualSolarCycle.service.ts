@@ -3,6 +3,8 @@ import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Injectable } from "@nestjs/common";
 
+import { LoggerService } from "../logger/logger.service";
+
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type {
   CoordinateEphemeris,
@@ -34,10 +36,13 @@ export class AnnualSolarCycleService {
   ];
   // 🏗️ Dependency Injection
   constructor(
+    private readonly logger: LoggerService,
     private readonly ephemerisService: EphemerisService,
     private readonly mathService: MathService,
     private readonly progressiveUtilitiesService: ProgressiveUtilities,
-  ) {}
+  ) {
+    this.logger.setContext(AnnualSolarCycleService.name);
+  }
 
   // 🔐 Private Fields
 
@@ -268,7 +273,7 @@ export class AnnualSolarCycleService {
     const summary = `☀️ ❄️ ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const aphelionEvent: Event = {
       start: date,
@@ -296,7 +301,7 @@ export class AnnualSolarCycleService {
     const summary = `☀️ 🔥 ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const perihelionEvent: Event = {
       start: date,
@@ -326,7 +331,7 @@ export class AnnualSolarCycleService {
     const summary = `🌸 ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const vernalEquinoxEvent: Event = {
       start: date,
@@ -353,7 +358,7 @@ export class AnnualSolarCycleService {
     const summary = `🌳 ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
     const firstHexadecanEvent: Event = {
       start: date,
       end: date,
@@ -379,7 +384,7 @@ export class AnnualSolarCycleService {
     const summary = `🐦‍🔥 ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const beltaneEvent: Event = {
       start: date,
@@ -405,7 +410,7 @@ export class AnnualSolarCycleService {
     const summary = `🌻 ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const thirdHexadecanEvent: Event = {
       start: date,
@@ -433,7 +438,7 @@ export class AnnualSolarCycleService {
     const summary = `🌞 ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const summerSolsticeEvent: Event = {
       start: date,
@@ -456,7 +461,7 @@ export class AnnualSolarCycleService {
     const summary = `⛱️ ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const fifthHexadecanEvent: Event = {
       start: date,
@@ -483,7 +488,7 @@ export class AnnualSolarCycleService {
     const summary = `🌾 ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const lammasEvent: Event = {
       start: date,
@@ -506,7 +511,7 @@ export class AnnualSolarCycleService {
     const summary = `🎑 ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
     const seventhHexadecanEvent: Event = {
       start: date,
       end: date,
@@ -534,7 +539,7 @@ export class AnnualSolarCycleService {
     const summary = `🍂 ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const autumnalEquinoxEvent: Event = {
       start: date,
@@ -556,7 +561,7 @@ export class AnnualSolarCycleService {
     const summary = `🍁 ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
     const ninthHexadecanEvent: Event = {
       start: date,
       end: date,
@@ -580,7 +585,7 @@ export class AnnualSolarCycleService {
     const summary = `🎃 ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const samhainEvent: Event = {
       start: date,
@@ -602,7 +607,7 @@ export class AnnualSolarCycleService {
     const summary = `🧤 ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
     const eleventhHexadecanEvent: Event = {
       start: date,
       end: date,
@@ -629,7 +634,7 @@ export class AnnualSolarCycleService {
     const summary = `☃️ ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const winterSolsticeEvent: Event = {
       start: date,
@@ -650,7 +655,7 @@ export class AnnualSolarCycleService {
     const description = "Thirteenth Hexadecan";
     const summary = `❄️ ${description}`;
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
     const thirteenthHexadecanEvent: Event = {
       start: date,
       end: date,
@@ -674,7 +679,7 @@ export class AnnualSolarCycleService {
     const summary = `🐑 ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const imbolcEvent: Event = {
       start: date,
@@ -696,7 +701,7 @@ export class AnnualSolarCycleService {
     const summary = `🌨️ ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const fifteenthHexadecanEvent: Event = {
       start: date,

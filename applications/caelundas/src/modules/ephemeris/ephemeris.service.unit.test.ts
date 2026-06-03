@@ -91,7 +91,7 @@ describe("EphemerisService", () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [EphemerisService, MathService],
     }).compile();
-    service = module.get<EphemerisService>(EphemerisService);
+    service = await module.resolve<EphemerisService>(EphemerisService);
   });
 
   beforeEach(() => {

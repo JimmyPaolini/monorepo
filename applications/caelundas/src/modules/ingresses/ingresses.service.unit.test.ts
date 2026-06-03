@@ -2,8 +2,9 @@ import {
   decanIngressBodies,
   peakIngressBodies,
   signIngressBodies,
-} from "@caelundas/src/caelundas.types";
+} from "@caelundas/src/modules/caelundas/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
+import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Test } from "@nestjs/testing";
 import moment from "moment";
@@ -11,7 +12,7 @@ import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { IngressesService } from "./ingresses.service";
 
-import type { Body } from "@caelundas/src/caelundas.types";
+import type { Body } from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 
 vi.mock("fs", () => ({
@@ -41,9 +42,14 @@ describe("IngressesService", () => {
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
-      providers: [IngressesService, EphemerisService, MathService],
+      providers: [
+        IngressesService,
+        EphemerisService,
+        LoggerService,
+        MathService,
+      ],
     }).compile();
-    service = module.get(IngressesService);
+    service = await module.resolve(IngressesService);
     s = service as unknown as ServicePrivate;
   });
 

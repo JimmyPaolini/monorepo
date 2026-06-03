@@ -39,15 +39,19 @@ echo "👍 Node.js $(nvm current)"
 echo "🔍 Setting up husky init..."
 mkdir -p "$HOME/.config/husky"
 HUSKY_INIT_FILE="$HOME/.config/husky/init.sh"
-if [ ! -f "$HUSKY_INIT_FILE" ] || ! grep -q 'local/bin' "$HUSKY_INIT_FILE"; then
+if [ ! -f "$HUSKY_INIT_FILE" ] || ! grep -q 'PNPM_HOME' "$HUSKY_INIT_FILE"; then
   cat > "$HUSKY_INIT_FILE" << 'HUSKY_INIT'
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # uv is installed to ~/.local/bin by its installer
 export PATH="$HOME/.local/bin:$PATH"
+
+# pnpm global bin directory
+export PNPM_HOME="$HOME/.local/share/pnpm"
+export PATH="$PNPM_HOME/bin:$PNPM_HOME:$PATH"
 HUSKY_INIT
-  echo "✅ Updated ~/.config/husky/init.sh to source nvm and uv in git hooks"
+  echo "✅ Updated ~/.config/husky/init.sh to source nvm, uv, and pnpm in git hooks"
 else
   echo "👍 ~/.config/husky/init.sh already configured"
 fi
@@ -57,8 +61,8 @@ brew_install_or_check "pnpm"
 
 echo "🔍 Setting up pnpm global bin directory..."
 export PNPM_HOME="$HOME/.local/share/pnpm"
-mkdir -p "$PNPM_HOME"
-export PATH="$PNPM_HOME:$PATH"
+mkdir -p "$PNPM_HOME/bin"
+export PATH="$PNPM_HOME/bin:$PNPM_HOME:$PATH"
 pnpm setup 2>/dev/null || true
 
 # ── nx (global) ───────────────────────────────────────────────────────────────

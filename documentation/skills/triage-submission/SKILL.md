@@ -1,7 +1,7 @@
 ---
 name: triage-submission
 description: "Triage and fix git submission failures for both commits and pushes. Use when a git commit or push is rejected, when lint-staged errors occur, when pre-commit or pre-push hooks fail, when a branch name is invalid on push, or when you see errors from husky, commitlint, validate-branch-name, ESLint, oxfmt, prettier, typecheck, knip, cspell, markdownlint, or yamllint during a commit or push attempt. Reads the error output, identifies the failing hook and checks, reads the relevant configuration, and applies targeted fixes."
-argument-hint: "Optional: paste the error output, or omit to read it from last-lint-staged-errors.txt"
+argument-hint: "Optional: paste the error output, or omit to read it from last-lint-staged-output.txt"
 ---
 
 # Triage Submission Failures
@@ -96,7 +96,7 @@ Read the error output carefully. Determine which hook failed:
 If the user did not paste error output, read the last recorded output from the pre-commit hook:
 
 ```bash
-cat last-lint-staged-errors.txt
+cat last-lint-staged-output.txt
 ```
 
 This file is written automatically after every commit attempt (git-ignored, workspace root).
@@ -134,7 +134,8 @@ Python projects: `lint` runs `ruff check` (config: [configuration/pyproject.toml
 | Project type | Command | Config |
 | ------------ | ------- | ------ |
 | TypeScript | `tsc --noEmit` (cwd: projectRoot) | project `tsconfig.json` extends [configuration/tsconfig.base.json](../../../configuration/tsconfig.base.json) |
-| Python | `uv run pyright src/` (cwd: projectRoot) | [configuration/pyproject.toml](../../../configuration/pyproject.toml) |
+| Python (`pyright`) | `uv run pyright src/` (cwd: projectRoot) | [configuration/pyproject.toml](../../../configuration/pyproject.toml) |
+| Python (`ty`) | `uv run ty check src/` (cwd: projectRoot) | [configuration/pyproject.toml](../../../configuration/pyproject.toml) |
 
 #### `spell-check`
 
@@ -177,9 +178,12 @@ Config: [applications/affirmations/project.json](../../../applications/affirmati
 | Target | Check command | Write command | What it validates |
 | ------ | ------------- | ------------- | ----------------- |
 | `sync-agent-skills` | `tsx scripts/sync-agent-skills.ts check` | `...write` | AGENTS.md skills ToC matches `documentation/skills/*/SKILL.md` |
+| `sync-conformance-generators` | `tsx scripts/sync-conformance-generators.ts check` | `...write` | AGENTS.md generators table matches `tools/conformance/generators.json` |
 | `sync-conventional-config` | `tsx scripts/sync-conventional-config.ts check` | `...write` | Types/scopes consistent across [configuration/conventional.config.cjs](../../../configuration/conventional.config.cjs), `.vscode/settings.json`, skill docs |
 | `sync-pull-request-template` | `tsx scripts/sync-pull-request-template.ts check` | `...write` | [.github/PULL_REQUEST_TEMPLATE.md](../../../.github/PULL_REQUEST_TEMPLATE.md) in sync with skills and prompts |
 | `sync-devcontainer-configuration` | `tsx scripts/sync-devcontainer-configuration.ts check` | `...write` | Cloud and local devcontainer configs share common fields |
+
+> **Lesson**: If sync checks fail, it means a source of truth was edited without updating its counterpart. Example: editing `tools/conformance/generators.json` requires updating `AGENTS.md`. Editing `configuration/conventional.config.cjs` requires updating `.vscode/settings.json` and PR templates.
 | `sync-vscode-extensions` | `tsx .devcontainer/scripts/sync-vscode-extensions.ts check` | `...write` | `.vscode/extensions.json` matches devcontainer extension lists |
 
 #### `check-lockfile` (package.json / pnpm-workspace.yaml changes)
@@ -273,13 +277,14 @@ pnpm exec nx run monorepo:sync-devcontainer-configuration:check
 
 | Failing target | What to do |
 | --- | --- |
-| `typecheck` | Read the TypeScript errors. Fix the types in the source files. Common patterns: use optional chaining `arr[0]?.prop` for index access, avoid `any`, use `import { type Foo }` for type-only imports. |
+| `typecheck` | Read the TypeScript/Python errors. **TS**: Use optional chaining `arr[0]?.prop` for index access, avoid `any`, require explicit function return types, and use `import { type Foo }` for type-only imports. **Python**: Note that `[tool.ty]` config must remain in the project-level `pyproject.toml` (not workspace root). |
 | `spell-check` | Either fix the typo, or add the word to `configuration/cspell.config.yaml` under `words`. |
 | `yaml-lint` | Fix YAML syntax errors per `configuration/yamllint.yaml` rules. |
 | `stylelint` | Fix CSS issues per `configuration/stylelint.config.cjs`. |
-| `check-lockfile` | Run `pnpm install` to regenerate `pnpm-lock.yaml`. Do NOT stage the lockfile — leave it unstaged for the user to review. |
+| `check-lockfile` | Run `pnpm install` to regenerate `pnpm-lock.yaml`. Do NOT stage the lockfile — leave it unstaged for the user to review. **Lesson**: Any manual change to a `package.json` or workspace config often requires this. |
 | `commitlint` | Fix the commit message. See format below. |
 | `validate-branch-name` | Rename the branch with `git branch -m <new-valid-name>`. See format above. |
+| `clean` (Python/`vulture`) | Fix the flagged unused code, or add a `# noqa` comment. The project-local `.vulture_whitelist.py` and global `configuration/vulture_whitelist.py` are both read. Min-confidence is 80. |
 
 #### Invalid Branch Name (pre-push hook)
 
@@ -336,7 +341,7 @@ Read `configuration/commitlint.config.ts` for the full rule set before amending.
 | Scope | Description |
 | ----- | ----------- |
 | `affirmations` | Python Jupyter notebook application for LangGraph affirmation generation |
-| `applications` | Changes spanning multiple apps (caelundas, lexico, JimmyPaolini) |
+| `applications` | Changes spanning multiple applications in applications/ (e.g. lexico, caelundas, etc.) |
 | `caelundas` | Node.js CLI for astronomical calendar generation (NASA JPL ephemeris) |
 | `configuration` | Workspace root config files (tsconfig, eslint, vitest, nx.json, etc.) |
 | `conformance` | Code generator templates and conformance validation tests for generated instances |
@@ -346,15 +351,16 @@ Read `configuration/commitlint.config.ts` for the full rule set before amending.
 | `infrastructure` | Helm charts, Terraform configs, and Kubernetes resources |
 | `JimmyPaolini` | Static GitHub profile README project (markdown and assets) |
 | `lexico` | TanStack Start SSR Latin dictionary web app with Supabase backend |
-| `lexico-components` | Shared React/shadcn component library in packages/ |
-| `linting` | ESLint configs, rules, plugins, and lint-related tooling |
+| `lexico-components` | Shared React/shadcn component library |
+| `lexico-entities` | Shared TypeORM entities and GraphQL types |
+| `lexico-ingestion` | Data ingestion scripts for Lexico |
 | `monorepo` | Workspace root concerns (pnpm-workspace, root package.json, Nx orchestration) |
 | `no-release` | Escape hatch: suppress semantic-release for any commit type |
-| `packages` | Changes spanning multiple shared packages |
+| `packages` | Changes spanning multiple shared packages in packages/ |
 | `release` | Version bumps and release commits generated by semantic-release |
 | `scripts` | Shell and TypeScript scripts in scripts/ (sync, setup, utilities) |
 | `testing` | Vitest configuration, shared test utilities, and coverage setup |
-| `tools` | Nx custom generators and developer tooling in tools/ |
+| `tools` | Changes spanning multiple tool projects in tools/ |
 
 <!-- scopes-end -->
 

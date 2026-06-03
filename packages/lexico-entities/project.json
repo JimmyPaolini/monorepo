@@ -1,0 +1,198 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "lexico-entities",
+  "projectType": "library",
+  "sourceRoot": "packages/lexico-entities",
+  "tags": [
+    "domain:lexico",
+    "framework:nestjs",
+    "framework:typeorm",
+    "language:typescript"
+  ],
+  "targets": {
+    "analyze-code": {
+      "configurations": {
+        "check": {
+          "commands": [
+            "nx run lexico-entities:clean:check",
+            "nx run lexico-entities:dependency-cruiser",
+            "nx run lexico-entities:format:check",
+            "nx run lexico-entities:lint:check",
+            "nx run lexico-entities:markdown-lint:check",
+            "nx run lexico-entities:spell-check",
+            "nx run lexico-entities:squawk",
+            "nx run lexico-entities:type-coverage",
+            "nx run lexico-entities:typecheck",
+            "nx run lexico-entities:yaml-lint"
+          ],
+          "parallel": true
+        },
+        "write": {
+          "commands": [
+            "nx run lexico-entities:clean:write",
+            "nx run lexico-entities:dependency-cruiser",
+            "nx run lexico-entities:format:write",
+            "nx run lexico-entities:lint:write",
+            "nx run lexico-entities:markdown-lint:write",
+            "nx run lexico-entities:spell-check",
+            "nx run lexico-entities:squawk",
+            "nx run lexico-entities:type-coverage",
+            "nx run lexico-entities:typecheck",
+            "nx run lexico-entities:yaml-lint"
+          ],
+          "parallel": false
+        }
+      }
+    },
+    "build": {
+      "executor": "@nx/vite:build",
+      "options": {
+        "outputPath": "dist/packages/lexico-entities"
+      },
+      "outputs": ["{options.outputPath}"]
+    },
+    "clean": {},
+    "dependency-cruiser": {},
+    "eslint": {},
+    "format": {
+      "configurations": {
+        "check": {
+          "commands": [
+            "nx run lexico-entities:prettier:check",
+            "nx run lexico-entities:oxfmt:check",
+            "nx run lexico-entities:sqlfluff-format:check"
+          ],
+          "parallel": true
+        },
+        "write": {
+          "commands": [
+            "nx run lexico-entities:prettier:write",
+            "nx run lexico-entities:oxfmt:write",
+            "nx run lexico-entities:sqlfluff-format:write"
+          ],
+          "parallel": false
+        }
+      }
+    },
+    "knip": {},
+    "lint": {
+      "configurations": {
+        "check": {
+          "commands": [
+            "nx run lexico-entities:eslint:check",
+            "nx run lexico-entities:oxlint:check",
+            "nx run lexico-entities:sqlfluff-lint:check"
+          ],
+          "parallel": true
+        },
+        "write": {
+          "commands": [
+            "nx run lexico-entities:eslint:write",
+            "nx run lexico-entities:oxlint:write",
+            "nx run lexico-entities:sqlfluff-lint:write"
+          ],
+          "parallel": false
+        }
+      }
+    },
+    "markdown-lint": {},
+    "migration": {
+      "configurations": {
+        "extract-sql-all": {
+          "command": "pnpm exec tsx packages/lexico-entities/scripts/extract-migration-sql.ts --mode=all",
+          "cwd": "{workspaceRoot}"
+        },
+        "extract-sql-latest": {
+          "command": "pnpm exec tsx packages/lexico-entities/scripts/extract-migration-sql.ts --mode=latest",
+          "cwd": "{workspaceRoot}"
+        },
+        "generate": {
+          "commands": [
+            "NAME=\"{args.name}\"; NAME=${NAME:-migration}; pnpm --filter lexico-entities exec node --import @swc-node/register/esm-register node_modules/typeorm/cli.js migration:generate \"src/database/migrations/$NAME\" -d src/database/data-source.ts",
+            "nx run lexico-entities:migration:extract-sql-latest",
+            "nx run lexico-entities:lint:write",
+            "nx run lexico-entities:format:write"
+          ],
+          "parallel": false
+        },
+        "revert": {
+          "command": "pnpm --filter lexico-entities exec node --import @swc-node/register/esm-register node_modules/typeorm/cli.js migration:revert -d src/database/data-source.ts"
+        },
+        "run": {
+          "command": "pnpm --filter lexico-entities exec node --import @swc-node/register/esm-register node_modules/typeorm/cli.js migration:run -d src/database/data-source.ts"
+        },
+        "show": {
+          "command": "pnpm --filter lexico-entities exec node --import @swc-node/register/esm-register node_modules/typeorm/cli.js migration:show -d src/database/data-source.ts"
+        }
+      },
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{workspaceRoot}/packages/lexico-entities"
+      }
+    },
+    "oxfmt": {},
+    "oxlint": {},
+    "prettier": {},
+    "spell-check": {},
+    "sqlfluff-format": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "args": "lint"
+        },
+        "write": {
+          "args": "fix"
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.sql",
+        "{workspaceRoot}/configuration/pyproject.toml",
+        "sharedGlobals"
+      ],
+      "options": {
+        "command": "uv run --project configuration sqlfluff {args} --config configuration/pyproject.toml {projectRoot}",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "sqlfluff-lint": {
+      "cache": true,
+      "configurations": {
+        "check": {
+          "args": "lint"
+        },
+        "write": {
+          "args": "fix"
+        }
+      },
+      "defaultConfiguration": "check",
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.sql",
+        "{workspaceRoot}/configuration/pyproject.toml",
+        "sharedGlobals"
+      ],
+      "options": {
+        "command": "uv run --project configuration sqlfluff {args} --config configuration/pyproject.toml {projectRoot}",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "squawk": {
+      "cache": true,
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.sql",
+        "{workspaceRoot}/configuration/squawk.toml",
+        "sharedGlobals"
+      ],
+      "options": {
+        "command": "squawk --config configuration/squawk.toml --exclude prefer-robust-stmts,ban-drop-table,require-concurrent-index-deletion,require-concurrent-index-creation,ban-char-field,prefer-bigint-over-smallint,constraint-missing-not-valid,adding-foreign-key-constraint '{projectRoot}/**/*.sql'",
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "type-coverage": {},
+    "typecheck": {},
+    "yaml-lint": {}
+  }
+}

@@ -29,6 +29,11 @@ const syncPullRequestTemplateFiles = [
 
 const syncAgentSkillsFiles = ["AGENTS.md", "documentation/skills/**/*.md"];
 
+const syncConformanceGeneratorsFiles = [
+  "AGENTS.md",
+  "tools/conformance/generators.json",
+];
+
 function getPaths(files: string[]): string {
   return files.map((file) => relative(process.cwd(), file)).join(",");
 }
@@ -69,6 +74,10 @@ const config = {
   // Keep agent skills table of contents in sync in AGENTS.md
   [`{${syncAgentSkillsFiles.join(",")}}`]: () => [
     "nx run monorepo:sync-agent-skills:check --outputStyle=dynamic-legacy",
+  ],
+  // Keep conformance generators table in sync in AGENTS.md
+  [`{${syncConformanceGeneratorsFiles.join(",")}}`]: () => [
+    "nx run monorepo:sync-conformance-generators:check --outputStyle=dynamic-legacy",
   ],
 
   // ── TypeScript / JavaScript source files ──
@@ -129,6 +138,15 @@ const config = {
   "{*.yml,!(pnpm-lock).yaml}": (files: string[]) => {
     return [
       `nx affected --target=format,yaml-lint,spell-check --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
+    ];
+  },
+
+  // ── SQL files ──
+  // Runs format (SQLFluff), lint (SQLFluff), and squawk (migration safety checks)
+  "*.sql": (files: string[]) => {
+    return [
+      `nx affected --target=format,lint --configuration=check --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
+      `nx affected --target=squawk --files=${getPaths(files)} --outputStyle=dynamic-legacy`,
     ];
   },
 };

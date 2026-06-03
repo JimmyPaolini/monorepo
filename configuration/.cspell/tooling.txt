@@ -55,6 +55,7 @@ proptypes
 pyright
 ruff
 sherif
+sqlfluff
 stringcase
 stylelint
 stylelintrc
@@ -197,3 +198,5 @@ sarif
 timotejroiko
 
 #endregion
+smallint
+stmts

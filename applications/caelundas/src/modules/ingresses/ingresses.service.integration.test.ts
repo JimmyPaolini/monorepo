@@ -2,15 +2,17 @@ import {
   decanIngressBodies,
   peakIngressBodies,
   signIngressBodies,
-} from "@caelundas/src/caelundas.types";
+} from "@caelundas/src/modules/caelundas/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import moment, { type Moment } from "moment-timezone";
 import { describe, expect, it } from "vitest";
 
+import { LoggerService } from "../logger/logger.service";
+
 import { IngressesService } from "./ingresses.service";
 
-import type { Body } from "@caelundas/src/caelundas.types";
+import type { Body } from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 
@@ -48,7 +50,7 @@ function createFullEphemeris(
 
 const mathService = new MathService();
 const ephemerisService = new EphemerisService(mathService);
-const service = new IngressesService(ephemerisService);
+const service = new IngressesService(new LoggerService(), ephemerisService);
 
 describe("ingresses.events integration", () => {
   describe("service.getSignIngressEvents", () => {

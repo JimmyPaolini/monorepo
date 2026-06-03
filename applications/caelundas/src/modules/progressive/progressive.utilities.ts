@@ -1,5 +1,7 @@
 import { Injectable } from "@nestjs/common";
 
+import { LoggerService } from "../logger/logger.service";
+
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
 /**
@@ -11,6 +13,11 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
  */
 @Injectable()
 export class ProgressiveUtilities {
+  // 🏗️ Dependency Injection
+  constructor(private readonly logger: LoggerService) {
+    this.logger.setContext(ProgressiveUtilities.name);
+  }
+
   /**
    * Pairs beginning and ending events into tuples.
    *
@@ -27,7 +34,7 @@ export class ProgressiveUtilities {
     const pairCount = Math.min(beginnings.length, endings.length);
 
     if (beginnings.length !== endings.length) {
-      console.warn(
+      this.logger.warn(
         `pairProgressiveEvents: unequal counts for "${label}": ${beginnings.length} beginnings, ${endings.length} endings`,
       );
     }

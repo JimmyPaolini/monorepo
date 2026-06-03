@@ -1,4 +1,5 @@
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
+import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Test } from "@nestjs/testing";
@@ -62,13 +63,14 @@ describe("TwilightsService", () => {
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
+        LoggerService,
         TwilightsService,
         EphemerisService,
         MathService,
         ProgressiveUtilities,
       ],
     }).compile();
-    service = module.get(TwilightsService);
+    service = await module.resolve(TwilightsService);
     s = service as unknown as ServicePrivate;
   });
 

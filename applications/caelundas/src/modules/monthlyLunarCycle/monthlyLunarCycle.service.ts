@@ -2,13 +2,15 @@ import {
   lunarPhases,
   MARGIN_MINUTES,
   symbolByLunarPhase,
-} from "@caelundas/src/caelundas.constants";
-import { isLunarPhase } from "@caelundas/src/caelundas.types";
+} from "@caelundas/src/modules/caelundas/caelundas.constants";
+import { isLunarPhase } from "@caelundas/src/modules/caelundas/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
-import type { LunarPhase } from "@caelundas/src/caelundas.types";
+import { LoggerService } from "../logger/logger.service";
+
+import type { LunarPhase } from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { IlluminationEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
@@ -56,7 +58,12 @@ export class MonthlyLunarCycleService {
   ]);
 
   // 🏗️ Dependency Injection
-  constructor(private readonly ephemerisService: EphemerisService) {}
+  constructor(
+    private readonly logger: LoggerService,
+    private readonly ephemerisService: EphemerisService,
+  ) {
+    this.logger.setContext(MonthlyLunarCycleService.name);
+  }
 
   // 🔐 Private Fields
 
@@ -203,7 +210,7 @@ export class MonthlyLunarCycleService {
     const summary = `🌙 ${symbolByLunarPhase[lunarPhase]} ${description}`;
 
     const dateString = date.clone().tz("America/New_York").toISOString(true);
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const monthlyLunarCycleEvent = {
       start: date,
@@ -339,7 +346,7 @@ export class MonthlyLunarCycleService {
     );
 
     if (!lunarPhaseCapitalized) {
-      console.warn(
+      this.logger.warn(
         `⚠️ Could not extract lunar phase from categories: ${categories.join(
           ", ",
         )} - skipping progressive event for ${entering.summary}`,
@@ -349,7 +356,7 @@ export class MonthlyLunarCycleService {
 
     const lunarPhaseLower = lunarPhaseCapitalized.toLowerCase();
     if (!isLunarPhase(lunarPhaseLower)) {
-      console.warn(`⚠️ Unknown lunar phase: ${lunarPhaseLower}`);
+      this.logger.warn(`⚠️ Unknown lunar phase: ${lunarPhaseLower}`);
       return null;
     }
     const lunarPhase = lunarPhaseLower;

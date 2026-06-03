@@ -1,0 +1,16 @@
+import { Lexeme, Word, WordForm, WordLexeme } from "@monorepo/lexico-entities";
+import { Module } from "@nestjs/common";
+import { TypeOrmModule } from "@nestjs/typeorm";
+
+import { WordsService } from "./words.service";
+
+/**
+ * TODO: Document the words module.
+ */
+@Module({
+  controllers: [],
+  exports: [WordsService],
+  imports: [TypeOrmModule.forFeature([Lexeme, Word, WordLexeme, WordForm])],
+  providers: [WordsService],
+})
+export class WordsModule {}

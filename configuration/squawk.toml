@@ -1,0 +1,30 @@
+pg-version = "18.0"
+exclude-path = [
+  "**/applications/lexico/supabase/migrations/*",
+  "**/packages/lexico-entities/src/database/migrations/*",
+]
+
+[rules]
+# Index safety — prevent table locks during index operations
+ban-concurrent-index-creation-in-transaction = "error"
+require-concurrent-index-creation = "warn"
+require-concurrent-index-deletion = "warn"
+
+# Data safety — destructive/breaking schema changes
+ban-drop-database = "error"
+ban-drop-column = "warn"
+renaming-column = "warn"
+changing-column-type = "warn"
+
+# Constraint safety — prevent blocking table scans
+constraint-missing-not-valid = "warn"
+disallowed-unique-constraint = "warn"
+adding-field-with-default = "warn"
+
+# Migration resilience — use IF EXISTS / idempotent statements
+prefer-robust-stmts = "warn"
+
+# Type recommendations
+prefer-text-field = "warn"
+prefer-bigint-over-int = "warn"
+prefer-identity = "warn"
