@@ -1,0 +1,54 @@
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+import { formatFiles, type Tree } from "@nx/devkit";
+
+import { StringCase } from "../../types";
+import { generateFiles, resolveName } from "../../utilities";
+
+interface GenerateJupyterNotebookApplicationOptions {
+  name?: string;
+  description?: string;
+}
+
+const APPLICATIONS_DIRECTORY = "applications";
+const TEMPLATES_DIRECTORY_PATH = fileURLToPath(
+  new URL("templates", import.meta.url),
+);
+
+/**
+ * Generates a Python Jupyter notebook application scaffold in applications/<name>.
+ */
+export async function generateJupyterNotebookApplication(
+  tree: Tree,
+  options: GenerateJupyterNotebookApplicationOptions,
+): Promise<void> {
+  const applicationName = await resolveName({
+    ...(options.name !== undefined && { name: options.name }),
+    case: StringCase.KEBAB_CASE,
+    message:
+      "What is the name of the Jupyter notebook application? (kebab-case)",
+    subject: "Application name",
+  });
+  const targetDirectory = path.join(APPLICATIONS_DIRECTORY, applicationName);
+
+  if (tree.exists(targetDirectory)) {
+    throw new Error(
+      `Directory "${targetDirectory}" already exists. Choose a different application name.`,
+    );
+  }
+
+  generateFiles({
+    tree,
+    templateDirectoryPath: TEMPLATES_DIRECTORY_PATH,
+    instanceDirectoryPath: targetDirectory,
+    substitutions: {
+      name: applicationName,
+      description:
+        options.description ??
+        `A Python + Jupyter notebook application scaffold for ${applicationName}`,
+    },
+  });
+
+  await formatFiles(tree);
+}

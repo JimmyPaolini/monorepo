@@ -1,6 +1,12 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "generators": {
+    "jupyter-notebook-application": {
+      "aliases": ["jna"],
+      "description": "Generate a Python Jupyter notebook application scaffold",
+      "factory": "./src/generators/jupyter-notebook-application/generator#generateJupyterNotebookApplication",
+      "schema": "./src/generators/jupyter-notebook-application/schema.json"
+    },
     "nestjs-command-application": {
       "aliases": ["nca"],
       "description": "Generate a NestJS command-line application scaffold using nest-commander",

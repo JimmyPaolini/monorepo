@@ -41,10 +41,10 @@ export async function generateNestjsServiceModule(
     message: "Which project should the module be generated in?",
   });
 
-  const nameCamelCase = await resolveName({
+  const nameKebabCase = await resolveName({
     name: options.name,
-    case: StringCase.CAMEL_CASE,
-    message: "What is the name of the module? (camelCase)",
+    case: StringCase.KEBAB_CASE,
+    message: "What is the name of the module? (kebab-case)",
     subject: "Module name",
   });
 
@@ -67,11 +67,11 @@ export async function generateNestjsServiceModule(
     );
   }
 
-  const targetPath = path.join(directory, _.kebabCase(nameCamelCase));
+  const targetPath = path.join(directory, nameKebabCase);
   const substitutions = {
-    nameCamelCase,
-    namePascalCase: _.upperFirst(nameCamelCase),
-    nameKebabCase: _.kebabCase(nameCamelCase),
+    nameCamelCase: _.camelCase(nameKebabCase),
+    namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
+    nameKebabCase,
   };
 
   generateFiles({

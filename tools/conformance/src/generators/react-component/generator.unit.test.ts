@@ -25,7 +25,7 @@ describe("generateComponent", () => {
   describe("file generation", () => {
     it("should generate component and test files under src/components", async () => {
       await generateComponent(tree, {
-        name: "Button",
+        name: "button",
         project: PROJECT_NAME,
       });
 
@@ -35,7 +35,7 @@ describe("generateComponent", () => {
 
     it("should use PascalCase component name in generated component file", async () => {
       await generateComponent(tree, {
-        name: "Button",
+        name: "button",
         project: PROJECT_NAME,
       });
 
@@ -49,7 +49,7 @@ describe("generateComponent", () => {
 
     it("should use PascalCase component name in generated test file", async () => {
       await generateComponent(tree, {
-        name: "Button",
+        name: "button",
         project: PROJECT_NAME,
       });
 
@@ -63,7 +63,7 @@ describe("generateComponent", () => {
 
     it("should use PascalCase for file names", async () => {
       await generateComponent(tree, {
-        name: "MyButton",
+        name: "my-button",
         project: PROJECT_NAME,
       });
 
@@ -73,25 +73,25 @@ describe("generateComponent", () => {
   });
 
   describe("name validation", () => {
-    it("should throw when name is camelCase", async () => {
+    it("should throw when name is PascalCase", async () => {
       await expect(
         generateComponent(tree, {
-          name: "button",
+          name: "Button",
           project: PROJECT_NAME,
         }),
       ).rejects.toThrow(
-        'Component name "button" must be in PascalCase. Did you mean "Button"?',
+        'Component name "Button" must be in kebab-case. Did you mean "button"?',
       );
     });
 
-    it("should throw when name is kebab-case", async () => {
+    it("should throw when name is camelCase", async () => {
       await expect(
         generateComponent(tree, {
-          name: "my-button",
+          name: "myButton",
           project: PROJECT_NAME,
         }),
       ).rejects.toThrow(
-        'Component name "my-button" must be in PascalCase. Did you mean "MyButton"?',
+        'Component name "myButton" must be in kebab-case. Did you mean "my-button"?',
       );
     });
   });
@@ -106,7 +106,7 @@ describe("generateComponent", () => {
 
       await expect(
         generateComponent(emptyTree, {
-          name: "Button",
+          name: "button",
           project: "no-tag-app",
         }),
       ).rejects.toThrow(
@@ -122,7 +122,7 @@ describe("generateComponent", () => {
 
       await expect(
         generateComponent(tree, {
-          name: "Button",
+          name: "button",
           project: "non-react-app",
         }),
       ).rejects.toThrow(
@@ -138,7 +138,7 @@ describe("generateComponent", () => {
 
       await expect(
         generateComponent(tree, {
-          name: "Button",
+          name: "button",
           project: "react-no-components",
         }),
       ).rejects.toThrow(
