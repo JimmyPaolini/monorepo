@@ -1,26 +1,30 @@
 import { Lexeme, Translation } from "@monorepo/lexico-entities";
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import {
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  type Mocked,
+  vi,
+} from "vitest";
 
+import { LexemesService } from "../lexemes/lexemes.service";
 import { LoggerService } from "../logger/logger.service";
 
 import { TranslationsService } from "./translations.service";
 
+import type { Repository } from "typeorm";
+
 describe("TranslationsService", () => {
   let service: TranslationsService;
-  let lexemesRepository: any;
-  let translationsRepository: any;
+  let translationsRepository: Mocked<Repository<Translation>>;
 
   beforeAll(async () => {
-    const mockLexemesRepository = {
-      save: vi.fn(),
-      createQueryBuilder: vi.fn(() => ({
-        where: vi.fn().mockReturnThis(),
-        getCount: vi.fn().mockResolvedValue(0),
-        leftJoinAndSelect: vi.fn().mockReturnThis(),
-        getMany: vi.fn().mockResolvedValue([]),
-      })),
+    const mockLexemesService = {
+      findLexemesByLemmaWithTranslations: vi.fn().mockResolvedValue([]),
     };
 
     const mockTranslationsRepository = {
@@ -32,8 +36,8 @@ describe("TranslationsService", () => {
       providers: [
         TranslationsService,
         {
-          provide: getRepositoryToken(Lexeme),
-          useValue: mockLexemesRepository,
+          provide: LexemesService,
+          useValue: mockLexemesService,
         },
         {
           provide: getRepositoryToken(Translation),
@@ -54,7 +58,6 @@ describe("TranslationsService", () => {
     }).compile();
 
     service = await module.resolve(TranslationsService);
-    lexemesRepository = module.get(getRepositoryToken(Lexeme));
     translationsRepository = module.get(getRepositoryToken(Translation));
   });
 
@@ -66,43 +69,42 @@ describe("TranslationsService", () => {
     expect(service).toBeDefined();
   });
 
-  describe("ingestTranslations", () => {
-    it("should assign translations onto the lexeme and save", async () => {
+  describe("prepareTranslationsForSave", () => {
+    it("should preserve IDs of existing translations", () => {
       const lexeme = new Lexeme();
       lexeme.lemma = "amō";
       lexeme.disambiguator = 0;
-      lexeme.translations = [];
+
+      const existingTranslation = new Translation("to love");
+      existingTranslation.id = "1";
+      lexeme.translations = [existingTranslation];
 
       const translation = new Translation("to love");
 
-      lexemesRepository.save.mockResolvedValue(lexeme);
+      const prepared = service.prepareTranslationsForSave(lexeme, [
+        translation,
+      ]);
 
-      await service.ingestTranslations(lexeme, [translation]);
-
-      expect(lexeme.translations).toEqual([translation]);
-      expect(lexemesRepository.save).toHaveBeenCalledWith(lexeme);
+      expect(prepared[0]?.id).toBe("1");
     });
 
-    it("should save with an empty translations array", async () => {
+    it("should allow empty array", () => {
       const lexeme = new Lexeme();
       lexeme.lemma = "est";
       lexeme.disambiguator = 0;
       lexeme.translations = [new Translation("old translation")];
 
-      lexemesRepository.save.mockResolvedValue(lexeme);
+      const prepared = service.prepareTranslationsForSave(lexeme, []);
 
-      await service.ingestTranslations(lexeme, []);
-
-      expect(lexeme.translations).toEqual([]);
-      expect(lexemesRepository.save).toHaveBeenCalledWith(lexeme);
+      expect(prepared).toEqual([]);
     });
   });
 
-  describe("ingestTranslationReferencesForLexeme", () => {
+  describe("findTranslationsWithReferences", () => {
     it("should query translations only for the given lexeme id", async () => {
       translationsRepository.find.mockResolvedValue([]);
 
-      await service.ingestTranslationReferencesForLexeme("amor:1");
+      await service.findTranslationsWithReferences("amor:1");
 
       expect(translationsRepository.find).toHaveBeenCalledWith({
         where: { lexeme: { id: "amor:1" }, translation: expect.anything() },
@@ -120,7 +122,7 @@ describe("TranslationsService", () => {
       translationsRepository.find.mockResolvedValue([t1, t2]);
       translationsRepository.save = vi.fn().mockResolvedValue(undefined);
 
-      await service.ingestTranslationReferencesForLexeme("amor:1");
+      await service.findTranslationsWithReferences("amor:1");
 
       expect(translationsRepository.find).toHaveBeenCalledTimes(1);
     });

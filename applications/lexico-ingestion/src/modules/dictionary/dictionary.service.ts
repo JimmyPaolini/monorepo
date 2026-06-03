@@ -1,16 +1,12 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import { Lexeme } from "@monorepo/lexico-entities";
+import { Lexeme, Translation } from "@monorepo/lexico-entities";
 import { Injectable } from "@nestjs/common";
 
-import { FormsService } from "../forms/forms.service.js";
 import { LexemesService } from "../lexemes/lexemes.service.js";
 import { LoggerService } from "../logger/logger.service.js";
-import { PrincipalPartsService } from "../principal-parts/principal-parts.service.js";
-import { PronunciationService } from "../pronunciation/pronunciation.service.js";
 import { TranslationsService } from "../translations/translations.service.js";
-import { WordsService } from "../words/words.service.js";
 
 import type { WiktionaryPage } from "../lexico-ingestion/lexico-ingestion.types.js";
 
@@ -21,12 +17,8 @@ import type { WiktionaryPage } from "../lexico-ingestion/lexico-ingestion.types.
 export class DictionaryService {
   // 🏗️ Dependency Injection
   constructor(
-    private readonly formsService: FormsService,
     private readonly lexemesService: LexemesService,
-    private readonly principalPartsService: PrincipalPartsService,
-    private readonly pronunciationService: PronunciationService,
     private readonly translationsService: TranslationsService,
-    private readonly wordsService: WordsService,
     private readonly logger: LoggerService,
   ) {
     this.logger.setContext(DictionaryService.name);
@@ -47,45 +39,11 @@ export class DictionaryService {
     return JSON.parse(raw) as WiktionaryPage;
   }
 
-  private async persistLexeme(lexeme: Lexeme): Promise<Lexeme | null> {
-    await this.lexemesService.upsertLexeme(lexeme);
-    const savedLexeme = await this.lexemesService.fetchSavedLexeme(
-      lexeme.lemma,
-      lexeme.disambiguator,
-    );
-    if (!savedLexeme) return null;
-
-    await this.principalPartsService.ingestLexemePrincipalParts(
-      savedLexeme,
-      lexeme.principalParts,
-    );
-    if (lexeme.pronunciations !== undefined && lexeme.pronunciations !== null) {
-      await this.pronunciationService.ingestLexemePronunciations(
-        savedLexeme,
-        lexeme.pronunciations,
-      );
-    }
-    if (lexeme.translations !== undefined && lexeme.translations !== null) {
-      await this.translationsService.ingestTranslations(
-        savedLexeme,
-        lexeme.translations,
-      );
-    }
-    if (lexeme.forms.length > 0) {
-      await this.formsService.ingestLexemeForms(lexeme.forms, savedLexeme);
-    }
-    await this.wordsService.ingestLexemeWords(savedLexeme);
-    this.logger.debug(
-      `Upserted lexeme "${lexeme.lemma}" (disambiguator: ${lexeme.disambiguator})`,
-    );
-    return savedLexeme;
-  }
-
   // 🌎 Public Methods
 
   /** Reads all cached Wiktionary JSON files from `./data/wiktionary`,
    * parses each into structured `Entry` records, and saves them to the database. */
-  async ingestAll(): Promise<void> {
+  async ingestAll(startLemma?: string, endLemma?: string): Promise<void> {
     if (!fs.existsSync(this.dataDir)) {
       this.logger.warn(
         `Data directory not found: ${this.dataDir}. Run 'wiktionary' command first.`,
@@ -93,9 +51,22 @@ export class DictionaryService {
       return;
     }
 
-    const files = fs
-      .readdirSync(this.dataDir)
-      .filter((f) => f.endsWith(".json"));
+    let files = fs.readdirSync(this.dataDir).filter((f) => f.endsWith(".json"));
+
+    if (startLemma || endLemma) {
+      const startIndex = startLemma
+        ? files.findIndex((f) => f.replace(".json", "") === startLemma)
+        : 0;
+      const endIndex = endLemma
+        ? files.findIndex((f) => f.replace(".json", "") === endLemma)
+        : files.length - 1;
+
+      const start = Math.max(0, startIndex);
+      const end = endIndex === -1 ? files.length - 1 : endIndex;
+
+      files = files.slice(start, end + 1);
+    }
+
     this.logger.log(`📖 Processing ${files.length} lexemes`);
 
     let current = 0;
@@ -149,6 +120,96 @@ export class DictionaryService {
     return null;
   }
 
+  private loadWiktionaryPageForWord(word: string): WiktionaryPage | null {
+    const filePath = this.getFilePathForWord(word);
+    if (!filePath) {
+      this.logger.warn(`No data file found for word: ${word}`);
+      return null;
+    }
+    const page = this.readWiktionaryPage(filePath);
+    if (!page) {
+      this.logger.warn(`No data file found for word: ${word}`);
+      return null;
+    }
+    return page;
+  }
+
+  private normalize(str: string): string {
+    return str
+      .normalize("NFD")
+      .replaceAll(/[\u0300-\u036F]/gu, "")
+      .toLowerCase()
+      .trim();
+  }
+
+  private async ingestTranslationReference(
+    translation: Translation,
+  ): Promise<void> {
+    const matches = [...translation.translation.matchAll(/\{\*(.+?)\*\}/g)];
+    if (matches.length === 0) {
+      this.logger.warn(`No reference found in: ${translation.translation}`);
+      return;
+    }
+
+    const newTranslations: Translation[] = [];
+
+    for (const match of matches) {
+      let reference = match[1] ?? "";
+      if (/\(.*\)/.test(reference))
+        reference = reference.replace(/ ?\(.*\)/, "");
+
+      const lexemes =
+        await this.lexemesService.findLexemesByLemmaWithTranslations(
+          this.normalize(reference),
+        );
+
+      const lexeme =
+        lexemes.find(
+          (e) => e.partOfSpeech === translation.lexeme.partOfSpeech,
+        ) ?? lexemes[0];
+
+      if (!lexeme) {
+        this.logger.warn(`No lexeme found for reference: ${reference}`);
+        continue;
+      }
+
+      const mapped = (lexeme.translations ?? []).map(
+        (t) => new Translation(t.translation, translation.lexeme),
+      );
+      newTranslations.push(...mapped);
+    }
+
+    if (newTranslations.length > 0) {
+      await this.translationsService.saveTranslations(newTranslations);
+    }
+
+    translation.translation = translation.translation
+      .replaceAll(/\{\*(.+?)\*\}/g, "")
+      .trim();
+    await this.translationsService.saveTranslations([translation]);
+  }
+
+  private async processTranslationReferences(saved: Lexeme): Promise<void> {
+    const referencedWords =
+      this.translationsService.extractTranslationReferences(
+        saved.translations ?? [],
+      );
+    for (const refWord of referencedWords) {
+      if (!this.inProgressWords.has(refWord)) {
+        const refExists = await this.lexemesService.existsByLemma(refWord);
+        if (!refExists) {
+          await this.ingestLexeme(refWord);
+        }
+      }
+    }
+
+    const translations =
+      await this.translationsService.findTranslationsWithReferences(saved.id);
+    for (const translation of translations) {
+      await this.ingestTranslationReference(translation);
+    }
+  }
+
   /** Parses the Wiktionary HTML for `word` into one or more `Lexeme` records
    * and persists them using upsert (idempotent). Loads the cached JSON file if
    * `wiktionaryPage` is not supplied. */
@@ -160,16 +221,8 @@ export class DictionaryService {
     this.inProgressWords.add(word);
     try {
       if (!wiktionaryPage) {
-        const filePath = this.getFilePathForWord(word);
-        if (!filePath) {
-          this.logger.warn(`No data file found for word: ${word}`);
-          return;
-        }
-        const page = this.readWiktionaryPage(filePath);
-        if (!page) {
-          this.logger.warn(`No data file found for word: ${word}`);
-          return;
-        }
+        const page = this.loadWiktionaryPageForWord(word);
+        if (!page) return;
         wiktionaryPage = page;
       }
 
@@ -186,26 +239,10 @@ export class DictionaryService {
       const parsedLexemes =
         await this.lexemesService.parseLexemes(wiktionaryPage);
       for (const lexeme of parsedLexemes) {
-        const saved = await this.persistLexeme(lexeme);
+        const saved = await this.lexemesService.saveParsedLexeme(lexeme);
         if (!saved) continue;
 
-        const referencedWords =
-          this.translationsService.extractTranslationReferences(
-            saved.translations ?? [],
-          );
-        for (const refWord of referencedWords) {
-          if (!this.inProgressWords.has(refWord)) {
-            const refExists =
-              await this.translationsService.lexemeExistsInDb(refWord);
-            if (!refExists) {
-              await this.ingestLexeme(refWord);
-            }
-          }
-        }
-
-        await this.translationsService.ingestTranslationReferencesForLexeme(
-          saved.id,
-        );
+        await this.processTranslationReferences(saved);
       }
       this.logger.log(`📝 Ingested lexeme "${word}"${progressString}`);
     } finally {

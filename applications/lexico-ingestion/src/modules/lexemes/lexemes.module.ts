@@ -1,3 +1,4 @@
+import { WordsModule } from "@lexico-ingestion/src/modules/words/words.module.js";
 import { Lexeme } from "@monorepo/lexico-entities";
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
@@ -26,6 +27,7 @@ import { LexemesService } from "./lexemes.service.js";
     PrincipalPartsModule,
     PronunciationModule,
     TranslationsModule,
+    WordsModule,
   ],
   providers: [LexemesService],
 })

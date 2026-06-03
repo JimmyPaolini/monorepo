@@ -12,6 +12,7 @@ import { PartOfSpeechService } from "../part-of-speech/part-of-speech.service.js
 import { PrincipalPartsService } from "../principal-parts/principal-parts.service.js";
 import { PronunciationService } from "../pronunciation/pronunciation.service.js";
 import { TranslationsService } from "../translations/translations.service.js";
+import { WordsService } from "../words/words.service.js";
 
 import { skipPOS, validPOS } from "./lexemes.constants";
 
@@ -35,6 +36,7 @@ export class LexemesService {
     private readonly principalPartsService: PrincipalPartsService,
     private readonly pronunciationService: PronunciationService,
     private readonly translationsService: TranslationsService,
+    private readonly wordsService: WordsService,
   ) {
     this.logger.setContext(LexemesService.name);
   }
@@ -55,6 +57,44 @@ export class LexemesService {
 
   // 🌎 Public Methods
 
+  /** Persists a parsed Lexeme and its related entities. */
+  async saveParsedLexeme(lexeme: Lexeme): Promise<Lexeme | null> {
+    await this.upsertLexeme(lexeme);
+    const savedLexeme = await this.fetchSavedLexeme(
+      lexeme.lemma,
+      lexeme.disambiguator,
+    );
+    if (!savedLexeme) return null;
+
+    await this.principalPartsService.ingestLexemePrincipalParts(
+      savedLexeme,
+      lexeme.principalParts,
+    );
+    if (lexeme.pronunciations !== undefined && lexeme.pronunciations !== null) {
+      await this.pronunciationService.ingestLexemePronunciations(
+        savedLexeme,
+        lexeme.pronunciations,
+      );
+    }
+    if (lexeme.translations !== undefined && lexeme.translations !== null) {
+      const preparedTranslations =
+        this.translationsService.prepareTranslationsForSave(
+          savedLexeme,
+          lexeme.translations,
+        );
+      savedLexeme.translations = preparedTranslations;
+      await this.lexemeRepository.save(savedLexeme);
+    }
+    if (lexeme.forms.length > 0) {
+      await this.formsService.ingestLexemeForms(lexeme.forms, savedLexeme);
+    }
+    await this.wordsService.ingestLexemeWords(savedLexeme);
+    this.logger.debug(
+      `Upserted lexeme "${lexeme.lemma}" (disambiguator: ${lexeme.disambiguator})`,
+    );
+    return savedLexeme;
+  }
+
   /** Upserts the Lexeme row. Explicitly saves the ChildEntity inflection
    * first — TypeORM's cascade for STI child entities doesn't reliably set
    * the FK on the parent row. */
@@ -66,7 +106,7 @@ export class LexemesService {
     lexeme.updatedBy = LEXICO_INGESTION_BY_ID;
     await this.lexemeRepository.upsert(lexeme, {
       conflictPaths: ["lemma", "disambiguator"],
-      skipUpdateIfNoValuesChanged: false,
+      skipUpdateIfNoValuesChanged: true,
     });
   }
 
@@ -86,6 +126,24 @@ export class LexemesService {
         inflection: true,
       },
     });
+  }
+
+  /** Returns true if a lexeme matching `lemma` already exists in the DB. */
+  async existsByLemma(lemma: string): Promise<boolean> {
+    const count = await this.lexemeRepository
+      .createQueryBuilder("lexeme")
+      .where("lexeme.lemma = :lemma", { lemma })
+      .getCount();
+    return count > 0;
+  }
+
+  /** Finds all lexemes matching `lemma`, including their translations. */
+  async findLexemesByLemmaWithTranslations(lemma: string): Promise<Lexeme[]> {
+    return this.lexemeRepository
+      .createQueryBuilder("lexeme")
+      .leftJoinAndSelect("lexeme.translations", "translations")
+      .where("lexeme.lemma = :lemma", { lemma })
+      .getMany();
   }
 
   /**

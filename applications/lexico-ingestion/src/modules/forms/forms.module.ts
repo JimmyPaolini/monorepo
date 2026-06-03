@@ -1,8 +1,10 @@
-import { Form, Word, WordForm, WordLexeme } from "@monorepo/lexico-entities";
+import { Form } from "@monorepo/lexico-entities";
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
-import { FormsService } from "./forms.service";
+import { WordsModule } from "../words/words.module.js";
+
+import { FormsService } from "./forms.service.js";
 
 /**
  * TODO: Document the forms module.
@@ -10,7 +12,7 @@ import { FormsService } from "./forms.service";
 @Module({
   controllers: [],
   exports: [FormsService],
-  imports: [TypeOrmModule.forFeature([Form, Word, WordLexeme, WordForm])],
+  imports: [TypeOrmModule.forFeature([Form]), WordsModule],
   providers: [FormsService],
 })
 export class FormsModule {}

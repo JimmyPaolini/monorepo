@@ -21,15 +21,12 @@ import {
   ParticipleForm,
   type PartOfSpeech,
   SupineForm,
-  Word,
-  WordForm,
-  WordLexeme,
 } from "@monorepo/lexico-entities";
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { In, Repository } from "typeorm";
+import { Repository } from "typeorm";
 
-import { LEXICO_INGESTION_BY_ID } from "../lexico-ingestion/lexico-ingestion.constants.js";
+import { WordsService } from "../words/words.service.js";
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -54,12 +51,7 @@ export class FormsService {
   constructor(
     @InjectRepository(Form)
     private readonly formRepository: Repository<Form>,
-    @InjectRepository(Word)
-    private readonly wordRepository: Repository<Word>,
-    @InjectRepository(WordLexeme)
-    private readonly wordLexemeRepository: Repository<WordLexeme>,
-    @InjectRepository(WordForm)
-    private readonly wordFormRepository: Repository<WordForm>,
+    private readonly wordsService: WordsService,
   ) {}
 
   // 🔐 Private Fields
@@ -67,10 +59,6 @@ export class FormsService {
   // 🔑 Public Fields
 
   // 🔏 Private Methods
-
-  private escapeCapitals(word: string): string {
-    return word.replaceAll(/[A-Z]/g, (char) => `_${char.toLowerCase()}`);
-  }
 
   private async fetchExistingForms(lexemeId: string): Promise<Form[]> {
     return this.formRepository.find({
@@ -95,13 +83,10 @@ export class FormsService {
       if (!rawWords) continue;
 
       for (const wordString of rawWords) {
-        const normalized = this.escapeCapitals(
-          wordString
-            .normalize("NFD")
-            .replaceAll(/[\u0300-\u036F]/gu, "")
-            .toLowerCase()
-            .trim(),
-        );
+        const normalized = wordString
+          .normalize("NFD")
+          .replaceAll(/[\u0300-\u036F]/gu, "")
+          .trim();
         if (!/^-?[A-Za-z]/.test(normalized)) continue;
 
         const existing = formsByWord.get(normalized) ?? new Set<Form>();
@@ -110,81 +95,6 @@ export class FormsService {
       }
     }
     return formsByWord;
-  }
-
-  private async upsertWordRecords(normalizedWords: string[]): Promise<void> {
-    await this.wordRepository.upsert(
-      normalizedWords.map((w) => ({
-        word: w,
-        createdBy: LEXICO_INGESTION_BY_ID,
-        updatedBy: LEXICO_INGESTION_BY_ID,
-      })),
-      { conflictPaths: ["word"], skipUpdateIfNoValuesChanged: true },
-    );
-  }
-
-  private async fetchWordsByNormalizedWords(
-    normalizedWords: string[],
-  ): Promise<Map<string, Word>> {
-    const words = await this.wordRepository.find({
-      where: { word: In(normalizedWords) },
-    });
-    return new Map(words.map((w) => [w.word, w]));
-  }
-
-  private buildWordLexemeValues(
-    words: Word[],
-    lexeme: Lexeme,
-  ): Partial<WordLexeme>[] {
-    return words.map((word) => ({
-      word,
-      lexeme,
-      createdBy: LEXICO_INGESTION_BY_ID,
-      updatedBy: LEXICO_INGESTION_BY_ID,
-    }));
-  }
-
-  private buildWordFormValues(
-    formsByWord: Map<string, Set<Form>>,
-    wordMap: Map<string, Word>,
-  ): Partial<WordForm>[] {
-    const values: Partial<WordForm>[] = [];
-    for (const [normalized, formSet] of formsByWord) {
-      const word = wordMap.get(normalized);
-      if (!word) continue;
-      for (const form of formSet) {
-        values.push({
-          word,
-          form,
-          createdBy: LEXICO_INGESTION_BY_ID,
-          updatedBy: LEXICO_INGESTION_BY_ID,
-        });
-      }
-    }
-    return values;
-  }
-
-  /** Inserts WordLexeme junction rows — ON CONFLICT DO NOTHING for idempotency
-   * since a word may already be linked to this lexeme from a previous run. */
-  private async insertWordLexemeJunctions(
-    values: Partial<WordLexeme>[],
-  ): Promise<void> {
-    if (values.length === 0) return;
-    await this.wordLexemeRepository
-      .createQueryBuilder()
-      .insert()
-      .into(WordLexeme)
-      .values(values)
-      .orIgnore()
-      .execute();
-  }
-
-  /** Inserts WordForm junction rows — forms are freshly created above so no conflicts. */
-  private async insertWordFormJunctions(
-    values: Partial<WordForm>[],
-  ): Promise<void> {
-    if (values.length === 0) return;
-    await this.wordFormRepository.save(values);
   }
 
   private buildNominalForms(rawForms: unknown, lexeme: Lexeme): Form[] {
@@ -433,7 +343,8 @@ export class FormsService {
    *
    * Deletes any Forms previously associated with this Lexeme for idempotency —
    * the `onDelete: "CASCADE"` on WordForm.form means their WordForm rows are
-   * removed by the database automatically.
+   * removed by the database automatically. Matches new forms with existing
+   * forms by properties to preserve IDs and avoid database churn.
    *
    * Uses batched DB operations: one upsert for all Word rows, one reload to
    * collect their IDs, then two bulk inserts for the junction rows.
@@ -441,6 +352,32 @@ export class FormsService {
   async ingestLexemeForms(forms: Form[], lexeme: Lexeme): Promise<void> {
     // Query + Write: remove stale forms for idempotency (WordForms cascade-delete via FK).
     const existingForms = await this.fetchExistingForms(lexeme.id);
+
+    // Attempt to match new forms to existing forms to preserve IDs
+    for (const form of forms) {
+      const matchIndex = existingForms.findIndex((ef) => {
+        if (ef.constructor.name !== form.constructor.name) return false;
+        const keys = Object.keys(form).filter(
+          (k) =>
+            !["id", "createdAt", "updatedAt", "lexeme", "rawWords"].includes(k),
+        );
+        return keys.every(
+          (k) =>
+            (ef as unknown as Record<string, unknown>)[k] ===
+            (form as unknown as Record<string, unknown>)[k],
+        );
+      });
+
+      if (matchIndex !== -1) {
+        const [match] = existingForms.splice(matchIndex, 1);
+        if (match) {
+          form.id = match.id;
+          form.createdAt = match.createdAt;
+          form.updatedAt = match.updatedAt;
+        }
+      }
+    }
+
     if (existingForms.length > 0)
       await this.formRepository.remove(existingForms);
 
@@ -456,24 +393,9 @@ export class FormsService {
       rawWordsPerForm,
     );
     if (formsByWord.size === 0) return;
-    const normalizedWords = [...formsByWord.keys()];
 
-    // Write
-    await this.upsertWordRecords(normalizedWords);
-
-    // Query
-    const wordMap = await this.fetchWordsByNormalizedWords(normalizedWords);
-
-    // Build
-    const wordLexemeValues = this.buildWordLexemeValues(
-      [...wordMap.values()],
-      lexeme,
-    );
-    const wordFormValues = this.buildWordFormValues(formsByWord, wordMap);
-
-    // Write
-    await this.insertWordLexemeJunctions(wordLexemeValues);
-    await this.insertWordFormJunctions(wordFormValues);
+    // Write Words and Junctions
+    await this.wordsService.upsertWordsAndJunctions(formsByWord, lexeme);
   }
 
   /**

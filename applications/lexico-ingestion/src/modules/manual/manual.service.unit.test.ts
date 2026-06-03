@@ -1,4 +1,4 @@
-import { Lexeme, Word, WordLexeme } from "@monorepo/lexico-entities";
+import { Lexeme, Word, WordForm, WordLexeme } from "@monorepo/lexico-entities";
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
 import { beforeAll, describe, expect, it } from "vitest";
@@ -18,6 +18,7 @@ describe("ManualService", () => {
         { provide: getRepositoryToken(Lexeme), useValue: {} },
         { provide: getRepositoryToken(Word), useValue: {} },
         { provide: getRepositoryToken(WordLexeme), useValue: {} },
+        { provide: getRepositoryToken(WordForm), useValue: {} },
       ],
     }).compile();
 

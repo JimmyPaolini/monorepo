@@ -1,7 +1,15 @@
-import { Lexeme, Word, WordLexeme } from "@monorepo/lexico-entities";
+import {
+  Form,
+  Lexeme,
+  Word,
+  WordForm,
+  WordLexeme,
+} from "@monorepo/lexico-entities";
 import { Injectable, Logger } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Repository } from "typeorm";
+import { In, Repository } from "typeorm";
+
+import { LEXICO_INGESTION_BY_ID } from "../lexico-ingestion/lexico-ingestion.constants.js";
 
 /**
  * Ingests Word search records from all dictionary lexemes.
@@ -16,6 +24,8 @@ export class WordsService {
     private readonly wordsRepository: Repository<Word>,
     @InjectRepository(WordLexeme)
     private readonly wordLexemeRepository: Repository<WordLexeme>,
+    @InjectRepository(WordForm)
+    private readonly wordFormRepository: Repository<WordForm>,
   ) {}
 
   // 🔐 Private Fields
@@ -27,12 +37,47 @@ export class WordsService {
   // 🌎 Public Methods
 
   /** Generates and persists a `Word` row for every inflected form and
-   * principal part that belongs to the given `Lexeme`. */
+   * principal part that belongs to the given `Lexeme`.
+   * Upserts rows in bulk and creates junction records to avoid N+1 queries. */
   async ingestLexemeWords(lexeme: Lexeme): Promise<void> {
     this.logger.log(`🔤 Ingesting words for "${lexeme.id}"`);
-    for (const word of this.getLexemeWords(lexeme)) {
-      await this.ingestLexemeWord(word, lexeme);
+
+    const wordStrings = this.getLexemeWords(lexeme);
+    const normalizedWords = [
+      ...new Set(
+        wordStrings
+          .map((w) => this.escapeCapitals(this.normalize(w)))
+          .filter((w) => /^-?[A-Za-z]/.test(w)),
+      ),
+    ];
+
+    if (normalizedWords.length > 0) {
+      // Upsert all Word rows by their unique word strings.
+      await this.wordsRepository.upsert(
+        normalizedWords.map((word) => ({ word })),
+        {
+          conflictPaths: ["word"],
+          skipUpdateIfNoValuesChanged: true,
+        },
+      );
+
+      // Fetch the inserted words to get their IDs for the junction table
+      const words = await this.wordsRepository.find({
+        where: { word: In(normalizedWords) },
+      });
+
+      // Insert WordLexeme junction rows — ignore if the pair already exists.
+      if (words.length > 0) {
+        await this.wordLexemeRepository
+          .createQueryBuilder()
+          .insert()
+          .into(WordLexeme)
+          .values(words.map((word) => ({ word, lexeme })))
+          .orIgnore()
+          .execute();
+      }
     }
+
     this.logger.log(`🔤 Ingested words for "${lexeme.id}"`);
   }
 
@@ -56,33 +101,63 @@ export class WordsService {
     return words;
   }
 
-  /** Normalises `wordString` and upserts a `Word` row linked to `lexeme`
-   * via an explicit WordLexeme junction record.
-   * Skips strings that do not start with an ASCII letter after normalisation. */
-  async ingestLexemeWord(wordString: string, lexeme: Lexeme): Promise<void> {
-    const normalized = this.escapeCapitals(this.normalize(wordString));
-    if (!/^-?[A-Za-z]/.test(normalized)) return;
+  /** Upserts an array of normalized word strings into the `Word` table, then
+   * ensures they are linked to the provided `Lexeme` via `WordLexeme` and to the Form via `WordForm` junctions. */
+  async upsertWordsAndJunctions(
+    formsByWord: Map<string, Set<Form>>,
+    lexeme: Lexeme,
+  ): Promise<void> {
+    const normalizedWords = [...formsByWord.keys()];
+    if (normalizedWords.length === 0) return;
 
-    // Upsert the Word row by its unique word string.
     await this.wordsRepository.upsert(
-      { word: normalized },
-      {
-        conflictPaths: ["word"],
-        skipUpdateIfNoValuesChanged: true,
-      },
+      normalizedWords.map((w) => ({
+        word: w,
+        createdBy: LEXICO_INGESTION_BY_ID,
+        updatedBy: LEXICO_INGESTION_BY_ID,
+      })),
+      { conflictPaths: ["word"], skipUpdateIfNoValuesChanged: true },
     );
 
-    const word = await this.wordsRepository.findOneOrFail({
-      where: { word: normalized },
+    const words = await this.wordsRepository.find({
+      where: { word: In(normalizedWords) },
     });
 
-    // Insert a WordLexeme junction row — ignore if the pair already exists.
-    await this.wordLexemeRepository
-      .createQueryBuilder()
-      .insert()
-      .into(WordLexeme)
-      .values({ word, lexeme })
-      .orIgnore()
-      .execute();
+    const wordMap = new Map(words.map((w) => [w.word, w]));
+
+    const wordLexemeValues = words.map((word) => ({
+      word,
+      lexeme,
+      createdBy: LEXICO_INGESTION_BY_ID,
+      updatedBy: LEXICO_INGESTION_BY_ID,
+    }));
+
+    if (wordLexemeValues.length > 0) {
+      await this.wordLexemeRepository
+        .createQueryBuilder()
+        .insert()
+        .into(WordLexeme)
+        .values(wordLexemeValues)
+        .orIgnore()
+        .execute();
+    }
+
+    const wordFormValues: Partial<WordForm>[] = [];
+    for (const [normalized, formSet] of formsByWord) {
+      const word = wordMap.get(normalized);
+      if (!word) continue;
+      for (const form of formSet) {
+        wordFormValues.push({
+          word,
+          form,
+          createdBy: LEXICO_INGESTION_BY_ID,
+          updatedBy: LEXICO_INGESTION_BY_ID,
+        });
+      }
+    }
+
+    if (wordFormValues.length > 0) {
+      await this.wordFormRepository.save(wordFormValues);
+    }
   }
 }

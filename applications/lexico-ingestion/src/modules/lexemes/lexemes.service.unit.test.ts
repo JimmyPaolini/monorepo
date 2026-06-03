@@ -10,6 +10,7 @@ import { PartOfSpeechService } from "../part-of-speech/part-of-speech.service.js
 import { PrincipalPartsService } from "../principal-parts/principal-parts.service.js";
 import { PronunciationService } from "../pronunciation/pronunciation.service.js";
 import { TranslationsService } from "../translations/translations.service.js";
+import { WordsService } from "../words/words.service.js";
 
 import { LexemesService } from "./lexemes.service.js";
 
@@ -27,6 +28,7 @@ describe("LexemesService", () => {
         { provide: PrincipalPartsService, useValue: {} },
         { provide: PronunciationService, useValue: {} },
         { provide: TranslationsService, useValue: {} },
+        { provide: WordsService, useValue: {} },
         {
           provide: LoggerService,
           useValue: {

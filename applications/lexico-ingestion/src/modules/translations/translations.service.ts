@@ -1,4 +1,4 @@
-import { Lexeme, Translation } from "@monorepo/lexico-entities";
+import { Translation } from "@monorepo/lexico-entities";
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import * as cheerio from "cheerio";
@@ -9,6 +9,7 @@ import { LoggerService } from "../logger/logger.service.js";
 
 import { translationSkipRegex } from "./translations.constants.js";
 
+import type { Lexeme } from "@monorepo/lexico-entities";
 import type { AnyNode } from "domhandler";
 
 /**
@@ -19,8 +20,6 @@ import type { AnyNode } from "domhandler";
 export class TranslationsService {
   // 🏗️ Dependency Injection
   constructor(
-    @InjectRepository(Lexeme)
-    private readonly lexemesRepository: Repository<Lexeme>,
     @InjectRepository(Translation)
     private readonly translationsRepository: Repository<Translation>,
     private readonly logger: LoggerService,
@@ -44,48 +43,6 @@ export class TranslationsService {
 
   private capitalizeFirstLetter(str: string): string {
     return _.upperFirst(str);
-  }
-
-  private async ingestTranslationReference(
-    translation: Translation,
-  ): Promise<void> {
-    const match = /\{\*.+\*\}/.exec(translation.translation);
-    if (!match?.[0]) {
-      this.logger.warn(`No reference found in: ${translation.translation}`);
-      return;
-    }
-
-    let reference = match[0].slice(2, -2);
-    if (/\(.*\)/.test(reference)) reference = reference.replace(/ ?\(.*\)/, "");
-
-    const lexemes = await this.lexemesRepository
-      .createQueryBuilder("lexeme")
-      .leftJoinAndSelect("lexeme.translations", "translations")
-      .where("lexeme.lemma = :lemma", {
-        lemma: this.normalize(reference),
-      })
-      .getMany();
-
-    const lexeme =
-      lexemes.find((e) => e.partOfSpeech === translation.lexeme.partOfSpeech) ??
-      lexemes[0];
-
-    if (!lexeme) {
-      this.logger.warn(`No lexeme found for reference: ${reference}`);
-    }
-
-    const newTranslations = (lexeme?.translations ?? []).map(
-      (t) => new Translation(t.translation, translation.lexeme),
-    );
-
-    if (newTranslations.length > 0) {
-      await this.translationsRepository.save(newTranslations);
-    }
-
-    translation.translation = translation.translation
-      .replaceAll(/\{\*.*\*\}/g, "")
-      .trim();
-    await this.translationsRepository.save(translation);
   }
 
   // 🌎 Public Methods
@@ -132,18 +89,26 @@ export class TranslationsService {
     return translations;
   }
 
-  /** Assigns translations onto the saved lexeme and persists via orphan
-   * removal — TypeORM diffs the new array against the loaded state and
-   * removes stale rows automatically. */
-  async ingestTranslations(
+  /** Prepares translations to be saved onto the lexeme (preserves IDs of existing ones).
+   * Returns the array of translations to be set on the lexeme parent. */
+  prepareTranslationsForSave(
     savedLexeme: Lexeme,
     translations: Translation[],
-  ): Promise<void> {
-    savedLexeme.translations = translations;
-    await this.lexemesRepository.save(savedLexeme);
-    this.logger.debug(
-      `Saved ${translations.length} translations for lexeme "${savedLexeme.lemma}" (disambiguator: ${savedLexeme.disambiguator})`,
-    );
+  ): Translation[] {
+    // Preserve IDs of existing translations to prevent orphan removal churn
+    const existingTranslations = savedLexeme.translations ?? [];
+    for (const translation of translations) {
+      const existing = existingTranslations.find(
+        (t) => t.translation === translation.translation,
+      );
+      if (existing) {
+        translation.id = existing.id;
+        translation.createdAt = existing.createdAt;
+        translation.updatedAt = existing.updatedAt;
+      }
+    }
+
+    return translations;
   }
 
   /** Scans translation strings for `{*word*}` cross-reference patterns and
@@ -160,53 +125,29 @@ export class TranslationsService {
     return [...new Set(refs)];
   }
 
-  /** Returns true if a lexeme matching `reference` already exists in the DB. */
-  async lexemeExistsInDb(reference: string): Promise<boolean> {
-    const count = await this.lexemesRepository
-      .createQueryBuilder("lexeme")
-      .where("lexeme.lemma = :lemma", {
-        lemma: this.normalize(reference),
-      })
-      .getCount();
-    return count > 0;
-  }
-
   /** Finds all `Translation` rows for a single lexeme whose text contains
-   * `{*...*}` reference markers and resolves each one. */
-  async ingestTranslationReferencesForLexeme(lexemeId: string): Promise<void> {
-    const translations = await this.translationsRepository.find({
+   * `{*...*}` reference markers. */
+  async findTranslationsWithReferences(
+    lexemeId: string,
+  ): Promise<Translation[]> {
+    return this.translationsRepository.find({
       where: { lexeme: { id: lexemeId }, translation: Like("%{*%*}%") },
       relations: { lexeme: true },
     });
-    for (const translation of translations) {
-      await this.ingestTranslationReference(translation);
-    }
   }
 
-  /** Finds all `Translation` rows whose text contains `{*...*}` reference
-   * markers and replaces them with the corresponding entry's translations,
-   * repeating until no unresolved references remain. */
-  async ingestTranslationReferences(): Promise<void> {
-    this.logger.log("🔗 Ingesting translation references");
-
-    const params = {
+  /** Finds all `Translation` rows whose text contains `{*...*}` reference markers. */
+  async findAllTranslationsWithReferences(take = 100): Promise<Translation[]> {
+    return this.translationsRepository.find({
       where: { translation: Like("%{*%*}%") },
       order: { translation: "ASC" as const },
       relations: { lexeme: true },
-      take: 100,
-    };
+      take,
+    });
+  }
 
-    let translations = await this.translationsRepository.find(params);
-    while (translations.length > 0) {
-      this.logger.log(
-        `🔗 Processing ${translations.length} translations (first: ${translations[0]?.translation ?? ""})`,
-      );
-      for (const translation of translations) {
-        await this.ingestTranslationReference(translation);
-      }
-      translations = await this.translationsRepository.find(params);
-    }
-
-    this.logger.log("🔗 Ingested translation references");
+  /** Saves an array of translations */
+  async saveTranslations(translations: Translation[]): Promise<Translation[]> {
+    return this.translationsRepository.save(translations);
   }
 }

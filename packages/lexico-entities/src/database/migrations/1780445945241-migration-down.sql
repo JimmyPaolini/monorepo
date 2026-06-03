@@ -27,11 +27,19 @@ COMMENT ON TABLE "word_lexemes" IS NULL;
 
 DROP INDEX "public"."IDX_3bfcf800c79bf43fa516db099d";
 
+DROP INDEX "public"."IDX_643892e2709e1d49641fb965b8";
+
+DROP INDEX "public"."IDX_579999929ed6b899e769cd234b";
+
 DROP TABLE "word_lexemes";
 
 COMMENT ON TABLE "word_forms" IS NULL;
 
 DROP INDEX "public"."IDX_a3450e22c3c4ab78e8f3f817c8";
+
+DROP INDEX "public"."IDX_f19edc2c148cc8536b7bba7afa";
+
+DROP INDEX "public"."IDX_54256ad366638dd2243dcd88b2";
 
 DROP TABLE "word_forms";
 

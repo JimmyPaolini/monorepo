@@ -1,79 +1,46 @@
-import { Lexeme } from "@monorepo/lexico-entities";
+import { type Inflection, Lexeme } from "@monorepo/lexico-entities";
 import { Test } from "@nestjs/testing";
-import { getRepositoryToken } from "@nestjs/typeorm";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import {
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  type Mocked,
+  vi,
+} from "vitest";
 
-import { FormsService } from "../forms/forms.service";
 import { LexemesService } from "../lexemes/lexemes.service";
 import { LoggerService } from "../logger/logger.service";
-import { PrincipalPartsService } from "../principal-parts/principal-parts.service";
-import { PronunciationService } from "../pronunciation/pronunciation.service";
 import { TranslationsService } from "../translations/translations.service";
-import { WordsService } from "../words/words.service";
 
 import { DictionaryService } from "./dictionary.service";
 
 describe("DictionaryService", () => {
   let service: DictionaryService;
-  let lexemesService: any;
-  let loggerService: any;
-  let translationsService: any;
+  let lexemesService: Mocked<LexemesService>;
+  let translationsService: Mocked<TranslationsService>;
 
   beforeAll(async () => {
-    const mockRepository = {
-      findOne: vi.fn(),
-      save: vi.fn(),
-      upsert: vi.fn(),
-      createQueryBuilder: vi.fn(() => ({
-        where: vi.fn().mockReturnThis(),
-        getCount: vi.fn().mockResolvedValue(0),
-      })),
-    };
-
-    const mockFormsService = {
-      ingestLexemeForms: vi.fn().mockResolvedValue(undefined),
-    };
     const mockLexemesService = {
       parseLexemes: vi.fn(),
-      upsertLexeme: vi.fn().mockResolvedValue(undefined),
-      fetchSavedLexeme: vi.fn(),
-      updateLexemePrincipalParts: vi.fn().mockResolvedValue(undefined),
+      saveParsedLexeme: vi.fn().mockResolvedValue(undefined),
+      existsByLemma: vi.fn().mockResolvedValue(true),
     };
-    const mockPrincipalPartsService = {
-      parsePrincipalParts: vi
-        .fn()
-        .mockReturnValue({ principalParts: [], macronizedWord: "" }),
-      ingestLexemePrincipalParts: vi.fn().mockResolvedValue(undefined),
-    };
-    const mockPronunciationService = {
-      parsePronunciations: vi.fn().mockReturnValue([]),
-      ingestLexemePronunciations: vi.fn().mockResolvedValue(undefined),
-    };
-    const mockWordsService = {
-      ingestLexemeWords: vi.fn().mockResolvedValue(undefined),
-    };
+
     const mockTranslationsService = {
-      ingestTranslations: vi.fn().mockResolvedValue(undefined),
+      findTranslationsWithReferences: vi.fn().mockResolvedValue([]),
       extractTranslationReferences: vi.fn().mockReturnValue([]),
-      lexemeExistsInDb: vi.fn().mockResolvedValue(true),
-      ingestTranslationReferencesForLexeme: vi
-        .fn()
-        .mockResolvedValue(undefined),
     };
 
     const module = await Test.createTestingModule({
       providers: [
         DictionaryService,
-        { provide: getRepositoryToken(Lexeme), useValue: mockRepository },
-        { provide: FormsService, useValue: mockFormsService },
         { provide: LexemesService, useValue: mockLexemesService },
-        { provide: PrincipalPartsService, useValue: mockPrincipalPartsService },
-        { provide: PronunciationService, useValue: mockPronunciationService },
         {
           provide: TranslationsService,
           useValue: mockTranslationsService,
         },
-        { provide: WordsService, useValue: mockWordsService },
         {
           provide: LoggerService,
           useValue: {
@@ -90,7 +57,6 @@ describe("DictionaryService", () => {
 
     service = await module.resolve(DictionaryService);
     lexemesService = module.get(LexemesService);
-    loggerService = module.get(LoggerService);
     translationsService = module.get(TranslationsService);
   });
 
@@ -115,9 +81,10 @@ describe("DictionaryService", () => {
       newLexeme.pronunciations = [];
       newLexeme.translations = [];
       newLexeme.forms = [];
-      newLexeme.forms = [];
+
       vi.spyOn(lexemesService, "parseLexemes").mockResolvedValue([newLexeme]);
-      lexemesService.fetchSavedLexeme.mockResolvedValue(newLexeme);
+      lexemesService.saveParsedLexeme.mockResolvedValue(newLexeme);
+      translationsService.extractTranslationReferences.mockReturnValue([]);
 
       await service.ingestLexeme("amo", {
         word: "amō",
@@ -126,10 +93,7 @@ describe("DictionaryService", () => {
         html: "<html>test</html>",
       });
 
-      expect(lexemesService.upsertLexeme).toHaveBeenCalledWith(newLexeme);
-      expect(loggerService.debug).toHaveBeenCalledWith(
-        'Upserted lexeme "amō" (disambiguator: 0)',
-      );
+      expect(lexemesService.saveParsedLexeme).toHaveBeenCalledWith(newLexeme);
     });
 
     it("should upsert lexeme and manage relations", async () => {
@@ -145,6 +109,7 @@ describe("DictionaryService", () => {
       existingLexeme.forms = [];
 
       const updatedLexeme = new Lexeme();
+      updatedLexeme.id = "existing-id";
       updatedLexeme.lemma = "amō";
       updatedLexeme.disambiguator = 0;
       updatedLexeme.partOfSpeech = "verb";
@@ -158,11 +123,8 @@ describe("DictionaryService", () => {
         updatedLexeme,
       ]);
 
-      // Mock upsert to succeed
-      lexemesService.upsertLexeme.mockResolvedValue(undefined);
-
-      // Mock findOne to return existing lexeme with relations
-      lexemesService.fetchSavedLexeme.mockResolvedValue(existingLexeme);
+      lexemesService.saveParsedLexeme.mockResolvedValue(updatedLexeme);
+      translationsService.extractTranslationReferences.mockReturnValue([]);
 
       await service.ingestLexeme("amo", {
         word: "amō",
@@ -171,27 +133,16 @@ describe("DictionaryService", () => {
         html: "<html>test</html>",
       });
 
-      // Should call upsert
-      expect(lexemesService.upsertLexeme).toHaveBeenCalledWith(updatedLexeme);
-
-      // Should fetch the upserted lexeme
-      expect(lexemesService.fetchSavedLexeme).toHaveBeenCalledWith("amō", 0);
-
-      // Should delegate translation persistence to TranslationsService
-      expect(translationsService.ingestTranslations).toHaveBeenCalledWith(
-        existingLexeme,
-        updatedLexeme.translations,
-      );
-
-      expect(loggerService.debug).toHaveBeenCalledWith(
-        'Upserted lexeme "amō" (disambiguator: 0)',
+      // Should call saveParsedLexeme
+      expect(lexemesService.saveParsedLexeme).toHaveBeenCalledWith(
+        updatedLexeme,
       );
     });
 
     it("should handle inflection separately before upsert", async () => {
       const inflectionMock = {
         save: vi.fn().mockResolvedValue(undefined),
-      } as any;
+      } as unknown as Inflection;
 
       const newLexeme = new Lexeme();
       newLexeme.id = "new-id";
@@ -204,9 +155,8 @@ describe("DictionaryService", () => {
       newLexeme.translations = [];
       newLexeme.forms = [];
 
-      vi.spyOn(lexemesService, "parseLexemes").mockResolvedValue([newLexeme]);
-      lexemesService.upsertLexeme.mockResolvedValue(undefined);
-      lexemesService.fetchSavedLexeme.mockResolvedValue(newLexeme);
+      lexemesService.parseLexemes.mockResolvedValue([newLexeme]);
+      lexemesService.saveParsedLexeme.mockResolvedValue(newLexeme);
 
       await service.ingestLexeme("amo", {
         word: "amō",
@@ -215,7 +165,7 @@ describe("DictionaryService", () => {
         html: "<html>test</html>",
       });
 
-      expect(lexemesService.upsertLexeme).toHaveBeenCalledWith(newLexeme);
+      expect(lexemesService.saveParsedLexeme).toHaveBeenCalledWith(newLexeme);
     });
 
     it("should resolve translation references for the lexeme after persisting", async () => {
@@ -230,9 +180,10 @@ describe("DictionaryService", () => {
       savedLexeme.translations = [];
       savedLexeme.forms = [];
 
-      vi.spyOn(lexemesService, "parseLexemes").mockResolvedValue([savedLexeme]);
-      lexemesService.upsertLexeme.mockResolvedValue(undefined);
-      lexemesService.fetchSavedLexeme.mockResolvedValue(savedLexeme);
+      lexemesService.parseLexemes.mockResolvedValue([savedLexeme]);
+      lexemesService.saveParsedLexeme.mockResolvedValue(savedLexeme);
+      translationsService.extractTranslationReferences.mockReturnValue(["amō"]);
+      lexemesService.existsByLemma.mockResolvedValue(true);
 
       await service.ingestLexeme("amor", {
         word: "amor",
@@ -241,8 +192,9 @@ describe("DictionaryService", () => {
         html: "<html>test</html>",
       });
 
+      expect(lexemesService.saveParsedLexeme).toHaveBeenCalledWith(savedLexeme);
       expect(
-        translationsService.ingestTranslationReferencesForLexeme,
+        translationsService.findTranslationsWithReferences,
       ).toHaveBeenCalledWith("amor:1");
     });
   });

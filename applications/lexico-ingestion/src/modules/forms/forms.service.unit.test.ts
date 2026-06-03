@@ -1,32 +1,29 @@
-import {
-  Form,
-  Lexeme,
-  NominalForm,
-  Word,
-  WordForm,
-  WordLexeme,
-} from "@monorepo/lexico-entities";
+import { Form, Lexeme, NominalForm, WordForm } from "@monorepo/lexico-entities";
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
-import { beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
+import {
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  it,
+  type Mocked,
+  vi,
+} from "vitest";
+
+import { WordsService } from "../words/words.service";
 
 import { FormsService } from "./forms.service";
 
+import type { Repository } from "typeorm";
+
 describe("FormsService", () => {
   let service: FormsService;
-  let formRepository: any;
-  let wordRepository: any;
-  let wordFormRepository: any;
+  let formRepository: Mocked<Repository<Form>>;
+  let wordFormRepository: Mocked<Repository<WordForm>>;
+  let wordsService: Mocked<WordsService>;
 
   beforeAll(async () => {
-    const mockQueryBuilder = {
-      insert: vi.fn().mockReturnThis(),
-      into: vi.fn().mockReturnThis(),
-      values: vi.fn().mockReturnThis(),
-      orIgnore: vi.fn().mockReturnThis(),
-      execute: vi.fn().mockResolvedValue(undefined),
-    };
-
     const module = await Test.createTestingModule({
       providers: [
         FormsService,
@@ -35,26 +32,22 @@ describe("FormsService", () => {
           useValue: { find: vi.fn(), remove: vi.fn(), save: vi.fn() },
         },
         {
-          provide: getRepositoryToken(Word),
-          useValue: { upsert: vi.fn(), find: vi.fn() },
-        },
-        {
-          provide: getRepositoryToken(WordLexeme),
-          useValue: {
-            createQueryBuilder: vi.fn().mockReturnValue(mockQueryBuilder),
-          },
-        },
-        {
           provide: getRepositoryToken(WordForm),
           useValue: { save: vi.fn() },
+        },
+        {
+          provide: WordsService,
+          useValue: {
+            upsertWordsAndJunctions: vi.fn().mockResolvedValue(new Map()),
+          },
         },
       ],
     }).compile();
 
     service = await module.resolve(FormsService);
     formRepository = module.get(getRepositoryToken(Form));
-    wordRepository = module.get(getRepositoryToken(Word));
     wordFormRepository = module.get(getRepositoryToken(WordForm));
+    wordsService = module.get(WordsService);
   });
 
   beforeEach(() => {
@@ -75,11 +68,10 @@ describe("FormsService", () => {
       newForm.rawWords = ["amō"];
 
       formRepository.find.mockResolvedValue([existingForm]);
-      formRepository.remove.mockResolvedValue(undefined);
-      formRepository.save.mockResolvedValue([newForm]);
-      wordRepository.upsert.mockResolvedValue(undefined);
-      wordRepository.find.mockResolvedValue([]);
-      wordFormRepository.save.mockResolvedValue([]);
+      formRepository.remove.mockResolvedValue(undefined as unknown as Form);
+      formRepository.save.mockResolvedValue([newForm] as unknown as Form);
+      wordsService.upsertWordsAndJunctions.mockResolvedValue(undefined);
+      wordFormRepository.save.mockResolvedValue([] as unknown as WordForm);
 
       await service.ingestLexemeForms([newForm], lexeme);
 
@@ -101,16 +93,15 @@ describe("FormsService", () => {
       savedForm.rawWords = ["amō"];
 
       formRepository.find.mockResolvedValue([]);
-      formRepository.save.mockResolvedValue([savedForm]);
-      wordRepository.upsert.mockResolvedValue(undefined);
-      wordRepository.find.mockResolvedValue([]);
-      wordFormRepository.save.mockResolvedValue([]);
+      formRepository.save.mockResolvedValue([savedForm] as unknown as Form);
+      wordsService.upsertWordsAndJunctions.mockResolvedValue(undefined);
+      wordFormRepository.save.mockResolvedValue([] as unknown as WordForm);
 
       await service.ingestLexemeForms([form], lexeme);
 
-      expect(wordRepository.upsert).toHaveBeenCalledWith(
-        expect.arrayContaining([expect.objectContaining({ word: "amo" })]),
-        { conflictPaths: ["word"], skipUpdateIfNoValuesChanged: true },
+      expect(wordsService.upsertWordsAndJunctions).toHaveBeenCalledWith(
+        expect.any(Map),
+        lexeme,
       );
     });
 
@@ -122,11 +113,11 @@ describe("FormsService", () => {
       form.rawWords = ["123"];
 
       formRepository.find.mockResolvedValue([]);
-      formRepository.save.mockResolvedValue([form]);
+      formRepository.save.mockResolvedValue([form] as unknown as Form);
 
       await service.ingestLexemeForms([form], lexeme);
 
-      expect(wordRepository.upsert).not.toHaveBeenCalled();
+      expect(wordsService.upsertWordsAndJunctions).not.toHaveBeenCalled();
     });
   });
 });

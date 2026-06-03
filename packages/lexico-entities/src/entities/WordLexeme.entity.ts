@@ -19,10 +19,12 @@ import type { Word } from "./Word.entity.js";
 @Index(["word", "lexeme"], { unique: true })
 export class WordLexeme extends AuditableEntity {
   /** The word string side of the junction. */
+  @Index()
   @ManyToOne("Word", "wordLexemes", { nullable: false })
   word!: Word;
 
   /** The dictionary entry side of the junction. */
+  @Index()
   @ManyToOne("Lexeme", "wordLexemes", { nullable: false })
   lexeme!: Lexeme;
 }

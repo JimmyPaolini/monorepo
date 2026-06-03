@@ -89,11 +89,19 @@ COMMENT ON TABLE "lexemes" IS 'A dictionary entry representing a Latin word form
 
 CREATE TABLE "word_forms" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "created_at" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "created_by" uuid, "updated_at" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "updated_by" uuid, "deleted_at" TIMESTAMP WITH TIME ZONE, "deleted_by" uuid, "word_id" uuid NOT NULL, "form_id" uuid NOT NULL, CONSTRAINT "PK_63a955b077bd9a1209a6286a8de" PRIMARY KEY ("id")); COMMENT ON COLUMN "word_forms"."id" IS 'Auto-generated UUID primary key'; COMMENT ON COLUMN "word_forms"."created_at" IS 'Timestamp when the record was created'; COMMENT ON COLUMN "word_forms"."created_by" IS 'UUID of the user or process that created the record'; COMMENT ON COLUMN "word_forms"."updated_at" IS 'Timestamp when the record was last updated'; COMMENT ON COLUMN "word_forms"."updated_by" IS 'UUID of the user or process that last updated the record'; COMMENT ON COLUMN "word_forms"."deleted_at" IS 'Timestamp when the record was soft-deleted'; COMMENT ON COLUMN "word_forms"."deleted_by" IS 'UUID of the user or process that soft-deleted the record'; COMMENT ON COLUMN "word_forms"."word_id" IS 'Auto-generated UUID primary key'; COMMENT ON COLUMN "word_forms"."form_id" IS 'Auto-generated UUID primary key';
 
+CREATE INDEX "IDX_54256ad366638dd2243dcd88b2" ON "word_forms"  ("word_id");
+
+CREATE INDEX "IDX_f19edc2c148cc8536b7bba7afa" ON "word_forms"  ("form_id");
+
 CREATE UNIQUE INDEX "IDX_a3450e22c3c4ab78e8f3f817c8" ON "word_forms"  ("word_id", "form_id");
 
 COMMENT ON TABLE "word_forms" IS 'Junction table linking a normalized Latin word string to the morphological forms it can surface as';
 
 CREATE TABLE "word_lexemes" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "created_at" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "created_by" uuid, "updated_at" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "updated_by" uuid, "deleted_at" TIMESTAMP WITH TIME ZONE, "deleted_by" uuid, "word_id" uuid NOT NULL, "lexeme_id" uuid NOT NULL, CONSTRAINT "PK_3f773610b2d1c455b70d72915c9" PRIMARY KEY ("id")); COMMENT ON COLUMN "word_lexemes"."id" IS 'Auto-generated UUID primary key'; COMMENT ON COLUMN "word_lexemes"."created_at" IS 'Timestamp when the record was created'; COMMENT ON COLUMN "word_lexemes"."created_by" IS 'UUID of the user or process that created the record'; COMMENT ON COLUMN "word_lexemes"."updated_at" IS 'Timestamp when the record was last updated'; COMMENT ON COLUMN "word_lexemes"."updated_by" IS 'UUID of the user or process that last updated the record'; COMMENT ON COLUMN "word_lexemes"."deleted_at" IS 'Timestamp when the record was soft-deleted'; COMMENT ON COLUMN "word_lexemes"."deleted_by" IS 'UUID of the user or process that soft-deleted the record'; COMMENT ON COLUMN "word_lexemes"."word_id" IS 'Auto-generated UUID primary key'; COMMENT ON COLUMN "word_lexemes"."lexeme_id" IS 'Auto-generated UUID primary key';
+
+CREATE INDEX "IDX_579999929ed6b899e769cd234b" ON "word_lexemes"  ("word_id");
+
+CREATE INDEX "IDX_643892e2709e1d49641fb965b8" ON "word_lexemes"  ("lexeme_id");
 
 CREATE UNIQUE INDEX "IDX_3bfcf800c79bf43fa516db099d" ON "word_lexemes"  ("word_id", "lexeme_id");
 
