@@ -1,39 +1,97 @@
-# Caelundas: Astronomical Calendar Generator
+# Caelundas: NestJS Command-Line Application
 
 ## Quick Start
 
-**Type**: Node.js CLI batch application
+**Type**: Node.js CLI application (NestJS + `nest-commander`)
 
-**Purpose**: Generate astronomical event calendars using NASA's JPL Horizons API
+**Purpose**: <!-- Briefly describe the specific purpose of this CLI application -->
 
-**Outputs**: iCalendar (`.ics`) and JSON files
+Generate astronomical event calendars using NASA's JPL Horizons API (Outputs: iCalendar `.ics` and JSON files)
 
 ### Run Locally
 
 ```bash
-cd applications/caelundas
-cp .env.example .env  # Configure dates, location, timezone, event types
+cp .env.default .env  # Fill in required environment variables
 nx run caelundas:develop
 ```
 
 ## Architecture Overview
 
-### Pipeline Stages
+### Tech Stack
+
+- **Framework**: NestJS (modules, dependency injection, providers)
+- **CLI runner**: `nest-commander` (`CommandRunner` + `@Command()` decorator)
+- **Env validation**: `@nestjs/config` + `zod` (`environmentSchema` in `.constants.ts`)
+- **Logging**: `pino`-backed `LoggerService` (`Scope.TRANSIENT`)
+- **Database**: SQLite (local caching of NASA API responses)
+- **Language**: Strict TypeScript
+
+### Execution Flow
 
 ```text
-Input (ENV) → Ephemeris → Event Detection → Progressive Synthesis → iCal Output
-     ↓          ↓              ↓                  ↓                 ↓
-Validation  NASA API      Exact moments      Pair events       .ics/.json
-            + SQLite      (minute precision)  into periods
+src/main.ts
+  └─ CommandFactory.run(CaelundasModule)
+       └─ CaelundasCommand.run()   ← implement logic here
+            └─ domain service modules       ← add under src/modules/
 ```
 
-**Key Components**:
+**Project Implementation**:
 
-- **Input Validation** ([input.schema.ts](src/input.schema.ts)): Zod schema for environment variables
-- **Ephemeris Retrieval** ([ephemeris/](src/ephemeris/)): NASA JPL Horizons API with SQLite caching
-- **Event Detection** ([events/](src/events/)): Aspects, phases, eclipses, retrogrades
-- **Progressive Synthesis**: Pairs start/end moments into calendar events
-- **Output** ([output.utilities.ts](src/output.utilities.ts)): iCal and JSON formatters
+```text
+src/main.ts
+  └─ CommandFactory.run(CaelundasModule)
+       └─ CaelundasCommand.run()
+            ├─ Input (ENV) Validation      ← InputService.parse()
+            ├─ NASA API + SQLite Ephemeris ← EphemerisService (via Perfective/Progressive)
+            ├─ Perfective Event Detection  ← PerfectiveService.detect()
+            ├─ Progressive Event Synthesis ← ProgressiveService.detect()
+            └─ iCal Output Generation      ← CalendarService.write()
+```
+
+### Directory Layout
+
+```text
+src/
+  main.ts                           # Bootstrap — do not modify
+  modules/
+    caelundas/
+      caelundas.command.ts  # Root CLI entry point (CommandRunner)
+      caelundas.module.ts   # Root NestJS module (imports ConfigModule, LoggerModule)
+      caelundas.constants.ts# Zod environmentSchema for env validation
+      caelundas.types.ts    # Module-scoped TypeScript types
+    logger/
+      logger.service.ts             # Transient pino LoggerService
+      logger.module.ts              # LoggerModule (exports LoggerService)
+    <domain>/                       # Add feature modules here
+      <domain>.module.ts
+      <domain>.service.ts
+      <domain>.types.ts
+      <domain>.constants.ts
+      <domain>.<tier>.test.ts
+    conformance.integration.test.ts # Structural conformance checks
+testing/                            # Shared test utilities
+```
+
+**Project Domain Modules**:
+
+```text
+src/modules/
+  input/                               # Zod environmentSchema and config parsing
+  calendar/                            # ICS and JSON file output formatting
+  ephemeris/                           # NASA JPL Horizons API client and SQLite caching
+  perfective/                          # Exact moment event detection (aspects, phases)
+  progressive/                         # Duration event synthesis (retrogrades)
+  math/                                # Astronomical math utilities
+  <domain>/                            # Other specialized astronomical domain modules
+```
+
+**Key Domain Components**:
+
+- **Input Validation** ([input.constants.ts](src/modules/input/input.constants.ts)): Zod schema for environment variables
+- **Ephemeris Retrieval** ([ephemeris/](src/modules/ephemeris/)): NASA JPL Horizons API with SQLite caching
+- **Event Detection** ([perfective/](src/modules/perfective/) and domain modules): Aspects, phases, eclipses, retrogrades
+- **Progressive Synthesis** ([progressive/](src/modules/progressive/)): Pairs start/end moments into calendar events
+- **Output** ([calendar/](src/modules/calendar/)): iCal and JSON formatters
 
 ### Event Types
 
@@ -55,6 +113,56 @@ See [ephemeris-pipeline skill](../../documentation/skills/ephemeris-pipeline/SKI
 
 ## Development
 
+### Adding Business Logic
+
+1. **Implement the root command** — add logic to `caelundas.command.ts` `run()`, or delegate to injected services.
+2. **Add domain modules** — create `src/modules/<domain>/` with a NestJS module, service, types, and constants.
+3. **Register in root module** — import the new module in `caelundas.module.ts`.
+4. **Validate env vars** — extend `environmentSchema` in `caelundas.constants.ts` with all required environment variables.
+
+### Logging
+
+`LoggerService` is `Scope.TRANSIENT` — each injecting class gets its own instance. Always call `setContext` in the constructor:
+
+```ts
+constructor(private readonly logger: LoggerService) {
+  super();
+  this.logger.setContext(MyService.name);
+}
+```
+
+Outputs structured JSON in production (`NODE_ENV=production`) and pretty-printed logs in development.
+
+### Key Commands
+
+Always prefer running tasks through Nx rather than calling the underlying tools directly.
+
+```bash
+nx run caelundas:develop        # Run CLI (tsx, watch mode)
+nx run caelundas:lint           # ESLint
+nx run caelundas:typecheck      # tsc --noEmit
+nx run caelundas:format         # oxfmt formatting
+nx run caelundas:build          # Compile for production
+```
+
+### Testing
+
+Follow the monorepo's strict three-tier testing strategy. Co-locate test files with the source they test.
+
+```bash
+nx run caelundas:test:unit          # Fast (<100ms) — pure logic, mocked DI
+nx run caelundas:test:integration   # Moderate (1-2s) — real DB/API I/O
+nx run caelundas:test:end-to-end    # Slow (30-60s) — full CLI execution
+```
+
+| Tier | File pattern | What to test |
+| ---- | ------------ | ------------ |
+| Unit | `*.unit.test.ts` | Pure functions, service methods with mocked deps |
+| Integration | `*.integration.test.ts` | Database queries, external API clients |
+| End-to-end | `*.end-to-end.test.ts` | Full `CommandFactory.run()` execution |
+
+See [Testing Strategy](../../documentation/code-quality/testing-strategy.md) for patterns and mock conventions.
+
 ### Environment Variables
 
 Required:
@@ -67,19 +175,9 @@ Optional:
 
 - `EVENT_TYPES`: Comma-separated list (defaults to all)
 - `OUTPUT_FORMAT`: `ical` or `json` (defaults to `ical`)
-- `OUTPUT_PATH`: File path (defaults to `./output_{timestamp}.ics`)
+- `OUTPUT_DIRECTORY`: Directory path (defaults to `./output`)
 
-Full schema: [src/input.schema.ts](src/input.schema.ts)
-
-### Testing
-
-```bash
-nx run caelundas:test:unit            # Fast (<100ms), mocked I/O
-nx run caelundas:test:integration     # Moderate (1-2s), real SQLite
-nx run caelundas:test:end-to-end      # Slow (30-60s), real NASA API
-```
-
-See [Testing Strategy](../../documentation/code-quality/testing-strategy.md) for patterns.
+Full schema: [src/modules/input/input.constants.ts](src/modules/input/input.constants.ts)
 
 ### Database
 
@@ -175,9 +273,143 @@ Single-stage build:
 - Batch API calls: Multiple days per request when possible
 - Lazy evaluation: Minute-resolution only for detected event windows
 
+## Writing Modules
+
+Use the generator to scaffold new domain modules, then implement the service:
+
+```bash
+nx g conformance:nestjs-service-module --name=<domain>
+```
+
+This creates five files in `src/modules/<domain>/`:
+
+| File | Purpose |
+| ---- | ------- |
+| `<domain>.module.ts` | Declares providers, imports, and exports |
+| `<domain>.service.ts` | Business logic — the only place you write domain code |
+| `<domain>.constants.ts` | Regex, enums, static config — never inline magic values |
+| `<domain>.types.ts` | TypeScript types scoped to this module |
+| `<domain>.service.unit.test.ts` | Unit tests bootstrapped with `Test.createTestingModule` |
+
+### Module file
+
+Register the service in both `providers` and `exports` so consumers can inject it:
+
+```ts
+@Module({
+  controllers: [],
+  exports: [MyDomainService],
+  imports: [TypeOrmModule.forFeature([MyEntity]), LoggerModule],
+  providers: [MyDomainService],
+})
+export class MyDomainModule {}
+```
+
+Add a JSDoc comment on the module class describing what domain it owns.
+
+### Service file
+
+Follow the section-comment layout from the template — it keeps large services scannable:
+
+```ts
+@Injectable()
+export class MyDomainService {
+  // 🏗️ Dependency Injection
+  constructor(
+    @InjectRepository(MyEntity)
+    private readonly repo: Repository<MyEntity>,
+    private readonly logger: LoggerService,
+  ) {
+    this.logger.setContext(MyDomainService.name);
+  }
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
+}
+```
+
+Key rules:
+
+- **Call `setContext` in every constructor** — always use `MyClass.name`, never a string literal.
+- **Inject `LoggerService` as the last constructor parameter** (after repository/domain deps).
+- **Private first** — keep internal helpers in the `🔏 Private Methods` section, expose only what callers need under `🌎 Public Methods`.
+- **`readonly` everything in the constructor** — all injected deps must be `private readonly`.
+- **One service per module** — if a service grows too large, extract a sub-domain into its own module.
+
+### Constants file
+
+Move all inline values to `.constants.ts` to keep services readable:
+
+```ts
+// ♟️ Constants
+export const MY_SKIP_REGEX = /(alternative)|(archaic)|(synonym)/i;
+export const DEFAULT_PAGE_SIZE = 100;
+```
+
+### Types file
+
+Put all module-local TypeScript types and interfaces in `.types.ts`:
+
+```ts
+// 🏷️ Types
+export interface ParsedEntry {
+  word: string;
+  partOfSpeech: string;
+}
+```
+
+Do not re-export types from `index.ts` unless they are part of the public API consumed by other modules.
+
+### Registering in the root module
+
+After generating a module, import it in `caelundas.module.ts`:
+
+```ts
+@Module({
+  imports: [
+    ConfigModule.forRoot({ ... }),
+    LoggerModule,
+    MyDomainModule,   // ← add here
+  ],
+  providers: [CaelundasCommand],
+})
+export class CaelundasModule {}
+```
+
+### Conformance check
+
+The test in `src/modules/conformance.integration.test.ts` validates that every sub-directory in `src/modules/` matches the generator template's file structure. Run it to catch missing files:
+
+```bash
+nx run caelundas:test:integration
+```
+
+## Best Practices
+
+- **Never** put business logic in `main.ts` — it bootstraps `CommandFactory` only.
+- **One command per class** — split sub-commands into separate `CommandRunner` subclasses.
+- **Validate at the boundary** — all env vars must be declared in `environmentSchema`; access via `ConfigService`, not `process.env`.
+- **Type imports** — use `import { type Foo }` for type-only imports (enforced by ESLint).
+- **No `any` types** — use `unknown` or proper typing; strict mode is enabled.
+
+See [TypeScript Conventions](../../documentation/conventions/typescript.md) for strict mode patterns.
+
 ## Troubleshooting
 
-See [Common Gotchas](../../documentation/troubleshooting/gotchas.md) for:
+- **Command not found at runtime** — ensure the command class is listed in `providers` of its module and the module is imported by the root module.
+- **Dependency injection failure** — verify the service is `@Injectable()`, exported from its module, and that module is imported by the consuming module.
+- **Unrecognized CLI flag** — check that `@Option()` decorators in the command class exactly match the flag names passed.
+- **Env var validation error on startup** — add the missing variable to `environmentSchema` in `.constants.ts` and to `.env.default`.
+- **TypeORM entity not found** — register the entity via `TypeOrmModule.forFeature([MyEntity])` in the module that uses it.
+
+See [Common Gotchas](../../documentation/troubleshooting/gotchas.md) for workspace-wide issues.
+
+**Project-Specific Gotchas**:
 
 - Docker platform mismatch (exec format error)
 - K8s Job not starting (image pull, PVC issues)
@@ -185,9 +417,18 @@ See [Common Gotchas](../../documentation/troubleshooting/gotchas.md) for:
 
 ## Key Files
 
-- [src/main.ts](src/main.ts): Pipeline entry point
-- [src/input.schema.ts](src/input.schema.ts): Environment variable validation
-- [src/ephemeris/ephemeris.service.ts](src/ephemeris/ephemeris.service.ts): NASA API client
-- [src/database.utilities.ts](src/database.utilities.ts): SQLite operations
-- [src/output.utilities.ts](src/output.utilities.ts): iCal and JSON formatters
-- [Dockerfile](Dockerfile): Container build configuration
+- [src/main.ts](src/main.ts): Application bootstrap
+- [src/modules/caelundas/caelundas.command.ts](src/modules/caelundas/caelundas.command.ts): Root CLI command
+- [src/modules/caelundas/caelundas.module.ts](src/modules/caelundas/caelundas.module.ts): Root NestJS module
+- [src/modules/caelundas/caelundas.constants.ts](src/modules/caelundas/caelundas.constants.ts): `environmentSchema` (Zod)
+- [src/modules/logger/logger.service.ts](src/modules/logger/logger.service.ts): pino-backed logger
+- [project.json](project.json): Nx targets (`develop`, `build`, `test`, `lint`, `typecheck`, `format`)
+- [.env.default](.env.default): Environment variable template
+
+**Project Files**:
+
+- `caelundas.command.ts` includes pipeline orchestration
+- `input.constants.ts` includes Zod validation
+- `ephemeris.service.ts` includes NASA API client
+- `calendar.service.ts` includes ICS/JSON generation
+- `Dockerfile` includes container build config

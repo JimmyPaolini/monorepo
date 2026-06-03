@@ -35,97 +35,61 @@ A modern TypeScript monorepo with Nx, featuring automated releases, comprehensiv
 
 ## 🚀 Quick Start
 
-### Local Setup (macOS, Recommended)
+### 💻 Local Setup (macOS, Recommended)
 
 ```bash
-# Automated setup (installs tools & dependencies via Homebrew)
 ./scripts/local/setup.sh
 ```
 
-### Dev Container Setup
+### 🐳 Dev Container Setup
 
-1. Install [Docker Desktop](https://www.docker.com/products/docker-desktop/) and the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
-2. Open the repo in VS Code and click **Reopen in Container** when prompted
-3. All tools and dependencies are installed automatically
+Install [Docker Desktop](https://www.docker.com/products/docker-desktop/), [VSCode](https://code.visualstudio.com), and the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers), then open this repository and run the command **Reopen in Container** (it should prompt the command)
 
-## 📦 Projects
+## 💽 Projects
 
 - **[affirmations](applications/affirmations)** - Python LangChain + Ollama affirmation generator (LangGraph ReAct agent, SearxNG)
 - **[caelundas](applications/caelundas)** - CLI ephemeris calendar generator with astronomical calculations
+- **[conformance](tools/conformance)** - Nx generators for scaffolding code
+- **[infrastructure](infrastructure)** - Helm charts, Terraform, Kubernetes infrastructure
+- **[JimmyPaolini](applications/JimmyPaolini)** - GitHub profile site
 - **[lexico](applications/lexico)** - TanStack Start + Supabase dictionary web application
 - **[lexico-components](packages/lexico-components)** - Shared React component library using shadcn/ui
-- **[JimmyPaolini](applications/JimmyPaolini)** - GitHub profile site
+- **[lexico-entities](packages/lexico-entities)** - Shared TypeORM entities and GraphQL types package
+- **[lexico-ingestion](applications/lexico-ingestion)** - NestJS CLI app for Latin dictionary data ingestion
 
-## 💻 Development
+## 📖 Documentation
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the full development workflow, commit/PR conventions, and release process. See [documentation/github-actions.md](documentation/github-actions.md) for CI/CD pipeline architecture.
+### Getting Started & Workflow
 
-```bash
-# Run development servers
-nx run lexico:develop
-nx run caelundas:develop
+- [Contributing Guide](CONTRIBUTING.md) - Local setup, PR conventions, and workflows
+- [Tool Execution Model](documentation/development/tool-execution-model.md) - When to use Nx vs. direct tooling
+- [Release Process](documentation/development/release-process.md) - Automated semantic versioning and changelogs
+- [Troubleshooting Gotchas](documentation/troubleshooting/gotchas.md) - Solutions to common environment and tooling issues
 
-# Run tasks (Nx handles caching and project dependencies)
-nx run <project>:<target>          # single project
-nx run-many --target=test --all    # all projects
-nx affected --target=test          # affected projects only
-```
+### Architecture & Systems
 
-### ✅ Quality
+- [CI/CD Pipeline](documentation/github-actions.md) - GitHub Actions workflows
+- [Conformance Generators](documentation/development/conformance.md) - Scaffolding code using Nx generators
+- [Static Analysis & Code Quality](documentation/code-quality/static-analysis.md) - Linting, formatting, and tests
+- [Deployment Models](documentation/architecture/deployment-models.md) - Kubernetes, Helm, and infrastructure architecture
+- [Framework Guides](documentation/frameworks/) - References for [Kubernetes](documentation/frameworks/kubernetes.md), [NestJS](documentation/frameworks/nestjs.md), and [LangChain Python](documentation/frameworks/langchain-python.md)
 
-All projects use strict TypeScript with comprehensive automated quality checks:
+### Conventions & Guidelines
 
-| Tool | Purpose |
-| --- | --- |
-| **ESLint + Oxlint** | Linting with strict rules |
-| **Oxfmt + Prettier** | Code formatting (Oxfmt primary, Prettier supplementary) |
-| **TypeScript** | Strict type checking (`noUncheckedIndexedAccess`, `exactOptionalPropertyTypes`) |
-| **Knip** | Unused files, exports, and dependency detection |
-| **cspell** | Spell checking |
-| **markdownlint** | Markdown linting |
-| **Vitest** | Unit and integration testing |
+- [TypeScript](documentation/conventions/typescript.md) / [React](documentation/conventions/react.md) / [Python](documentation/conventions/python.md) - Language standards
+- [Imports](documentation/conventions/imports.md) - Import sorting and module resolution
+- [Testing Strategy](documentation/code-quality/testing-strategy.md) - Unit, integration, and E2E testing approaches
+- [Error Handling](documentation/code-quality/error-handling.md) - Typed errors and boundary validations
+- [Context Engineering](documentation/development/context-engineering.md) - Building AI-friendly context
+- [Gitmoji](documentation/gitmoji.md) / [Abbreviations](documentation/abbreviations.md)
 
-```bash
-# Run all quality checks
-nx run-many --target=analyze-code --all
+**🤖 Agent Skills (Domain Knowledge)**
+Skills are specialized instruction files used by our automated agents, but they also serve as excellent deep-dive documentation for human developers.
 
-# Check for unused code (review before using :write)
-nx run monorepo:knip
-nx run monorepo:knip:write  # auto-removes unused code — use with caution
+- [View all Skills](documentation/skills/README.md) - Complete index of available skills
+- **Workflows:** [Git Commits](documentation/skills/commit-code/SKILL.md) / [PR Management](documentation/skills/create-pull-request/SKILL.md) / [Branch Naming](documentation/skills/checkout-branch/SKILL.md)
+- **Tooling:** [Nx Workspaces](documentation/skills/nx-workspace/SKILL.md) / [Generators](documentation/skills/nx-generate/SKILL.md) / [Task Running](documentation/skills/nx-run-tasks/SKILL.md)
+- **Infrastructure:** [Docker](documentation/skills/docker-workflows/SKILL.md) / [Kubernetes](documentation/skills/kubernetes-deployment/SKILL.md) / [Terraform](documentation/skills/mcp-terraform/SKILL.md)
+- **Domains:** [TanStack Start](documentation/skills/tanstack-start-ssr/SKILL.md) / [Supabase](documentation/skills/supabase-development/SKILL.md) / [Ephemeris Pipeline](documentation/skills/ephemeris-pipeline/SKILL.md)
 
-# Run affected projects only
-nx affected --target=analyze-code
-```
-
-Quality checks run automatically on staged files (pre-commit via lint-staged) and on all PRs via GitHub Actions.
-
-### 🏭 Conformance
-
-The [`conformance`](tools/conformance) tool both generates and validates code conformance to monorepo conventions. Nx generators scaffold new projects, directories, and files with consistent structure, naming, and formatting; generator unit tests then validate that each generated instance still conforms to the template used to generate it.
-
-**Available generators:**
-
-| Generator | Alias | Description |
-| --- | --- | --- |
-| `conformance:react-component` | `c` | React component + test file (PascalCase) |
-| `conformance:nestjs-service-module` | `nsm` | NestJS module, service, types, constants, and unit test |
-| `conformance:nestjs-command-application` | `nca` | Full NestJS CLI application scaffold |
-
-```bash
-# Generate a React component (prompts for project if --project omitted)
-nx generate conformance:react-component --name=Button
-nx g conformance:react-component --name=Button --project=lexico-components
-
-# Generate a NestJS service module
-nx generate conformance:nestjs-service-module --name=user
-nx g conformance:nestjs-service-module --name=userProfile --project=my-nestjs-app
-
-# Generate a NestJS command-line application
-nx generate conformance:nestjs-command-application --name=stellar-cli
-```
-
-Generators auto-detect the target project by framework tag (`framework:react` / `framework:nestjs`) and prompt interactively when `--project` is omitted. See [tools/conformance](tools/conformance) for architecture details and how to extend generators.
-
-## 🚢 Release Process
-
-Releases are fully automated via [semantic-release](https://semantic-release.gitbook.io/) on merge to `main` — commits are analyzed, the version is bumped (`feat` → minor, `fix` → patch, `BREAKING CHANGE` → major), and a GitHub release + `CHANGELOG.md` entry are generated. See [release.config.cjs](release.config.cjs) for configuration.
+Other important files include [CHANGELOG.md](CHANGELOG.md) and [SECURITY.md](SECURITY.md).

@@ -84,11 +84,16 @@ The `analyze-code` composite target fans out to per-project sub-targets. Identif
 **Common fixes:**
 
 - **`typecheck`**: Add proper types, null checks, fix imports. Never use `any` — use `unknown` or proper typing.
+  > **Lesson**: Due to strict rules, array/object indexing (`items[0]`) returns `undefined` (use `?.` or `??`), `any` is strictly forbidden, functions must have explicit return types, and type-only imports must use `import { type X }` (`verbatimModuleSyntax`).
 - **`lint`**: Apply the ESLint rule fix. Only use `// eslint-disable-next-line` when no code fix is possible.
+  > **Lesson**: ESLint v9 flat config `files` arrays do NOT support brace expansion. `files: ['**/*.{json}']` will NOT match `package.json` — this silently prevents all rules in that config block from applying (e.g., `@nx/dependency-checks` `ignoredDependencies`). Use `files: ['**/*.json']` (no braces) for single-extension patterns.
 - **`format`**: Run `pnpm exec nx affected -t format` to auto-fix. Do NOT hand-edit formatted output.
 - **`spell-check`**: Fix typos, or add legitimate technical words to `configuration/cspell.config.yaml` under `words`.
+  > **Lesson**: cspell does NOT auto-discover `configuration/cspell.config.yaml` (it is not in cspell's standard discovery path). The `--config configuration/cspell.config.yaml` flag must always be passed explicitly with workspaceRoot as CWD. Project-specific targets that run from a different CWD must use a relative path: `--config ../../configuration/cspell.config.yaml`.
 - **`knip`**: Remove the unused export/import, or add to `ignoreDependencies` / `ignore` in `configuration/knip.config.ts`.
-- **`markdown-lint`**: Fix against [configuration/yamllint.yaml](../../../configuration/yamllint.yaml) rules — check MD049 style (`underscore`), MD013 line length, and fenced code block languages.
+  > **Lesson**: String-referenced dependencies in config files (like `@commitlint/config-conventional` or `stylelint-config-standard`) are invisible to Knip and will be flagged as unused. Add them explicitly to `ignoreDependencies`.
+- **`markdown-lint`**: Fix against [configuration/.markdownlint-cli2.jsonc](../../../configuration/.markdownlint-cli2.jsonc) rules — check MD049 style (`underscore`), MD013 line length, and fenced code block languages.
+  > **Lesson**: If MD049 violations appear _after_ running the formatter — oxfmt/prettier converts `*emphasis*` → `_emphasis_`. The `.markdownlint-cli2.jsonc` MD049 rule must use `style: underscore` (not `asterisk`) to match formatter output; using `asterisk` will conflict on every formatted file.
 - **`yaml-lint`**: Fix indentation, trailing spaces, or document-start issues as reported.
 
 **Verify:**
