@@ -39,11 +39,6 @@
     "editor.defaultFormatter": "sqlfluff.vscode-sqlfluff",
     "editor.formatOnSave": true
   },
-  "sqlfluff.executablePath": "${workspaceFolder}/configuration/.venv/bin/sqlfluff",
-  "sqlfluff.config": "${workspaceFolder}/configuration/pyproject.toml",
-  "sqlfluff.workingDirectory": "${workspaceFolder}",
-  "sqlfluff.linter.run": "onSave",
-  "sqlfluff.linter.diagnosticSeverity": "warning",
   "[typescript]": {
     "editor.defaultFormatter": "oxc.oxc-vscode"
   },
@@ -413,7 +408,7 @@
     "**/*.jsonc": "jsonc",
     "**/*.mjs": "javascript",
     "**/*.mts": "typescript",
-    "**/generators/**/templates/*": "ejs",
+    "**/generators/**/templates/**": "mustache",
     "**/nx.json": "jsonc",
     "**/project.json": "jsonc",
     "**/tsconfig*.json": "jsonc"
@@ -858,6 +853,11 @@
   "search.useIgnoreFiles": true,
   "security.workspace.trust.untrustedFiles": "open",
   "simpleBrowser.useIntegratedBrowser": true,
+  "sqlfluff.config": "${workspaceFolder}/configuration/pyproject.toml",
+  "sqlfluff.executablePath": "${workspaceFolder}/configuration/.venv/bin/sqlfluff",
+  "sqlfluff.linter.diagnosticSeverity": "warning",
+  "sqlfluff.linter.run": "onSave",
+  "sqlfluff.workingDirectory": "${workspaceFolder}",
   "task.autoDetect": "on",
   "task.problemMatchers.neverPrompt": {
     "shell": true
