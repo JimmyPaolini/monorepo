@@ -69,12 +69,8 @@ export async function generateNestjsServiceModule(
     );
   }
 
-  const targetPath = path.join(directory, _.kebabCase(nameCamelCase));
-  const substitutions = {
-    nameCamelCase,
-    namePascalCase: _.upperFirst(nameCamelCase),
-    nameKebabCase: _.kebabCase(nameCamelCase),
-  };
+  const targetPath = path.join(directory, nameKebabCase);
+  const substitutions = { nameCamelCase, namePascalCase, nameKebabCase };
 
   generateFiles({
     tree,
