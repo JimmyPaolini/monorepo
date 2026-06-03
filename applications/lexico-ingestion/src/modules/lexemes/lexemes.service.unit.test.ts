@@ -7,7 +7,7 @@ import { EtymologyService } from "../etymology/etymology.service";
 import { FormsService } from "../forms/forms.service";
 import { LoggerService } from "../logger/logger.service";
 import { PartOfSpeechService } from "../part-of-speech/part-of-speech.service";
-import { PrincipalPartsService } from "../principal-parts/principalParts.service";
+import { PrincipalPartsService } from "../principal-parts/principal-parts.service";
 import { PronunciationService } from "../pronunciation/pronunciation.service";
 import { TranslationsService } from "../translations/translations.service";
 import { WordsService } from "../words/words.service";

@@ -4,16 +4,16 @@ import moment from "moment-timezone";
 import { beforeAll, describe, expect, it } from "vitest";
 
 import { EphemerisService } from "../ephemeris/ephemeris.service";
-import { MajorAspectsService } from "../majorAspects/majorAspects.service";
+import { MajorAspectsService } from "../major-aspects/major-aspects.service";
 import { MathService } from "../math/math.service";
-import { MinorAspectsService } from "../minorAspects/minorAspects.service";
+import { MinorAspectsService } from "../minor-aspects/minor-aspects.service";
 import { ProgressiveUtilities } from "../progressive/progressive.utilities";
-import { QuadrupleAspectsService } from "../quadrupleAspects/quadrupleAspects.service";
-import { QuintupleAspectsService } from "../quintupleAspects/quintupleAspects.service";
-import { SextupleAspectsService } from "../sextupleAspects/sextupleAspects.service";
-import { SpecialtyAspectsService } from "../specialtyAspects/specialtyAspects.service";
+import { QuadrupleAspectsService } from "../quadruple-aspects/quadruple-aspects.service";
+import { QuintupleAspectsService } from "../quintuple-aspects/quintuple-aspects.service";
+import { SextupleAspectsService } from "../sextuple-aspects/sextuple-aspects.service";
+import { SpecialtyAspectsService } from "../specialty-aspects/specialty-aspects.service";
 import { StelliumService } from "../stellium/stellium.service";
-import { TripleAspectsService } from "../tripleAspects/tripleAspects.service";
+import { TripleAspectsService } from "../triple-aspects/triple-aspects.service";
 
 import { AspectsService } from "./aspects.service";
 import { AspectsUtilities } from "./aspects.utilities";

@@ -8,7 +8,7 @@ import { ManualService } from "../manual/manual.service";
 import { WiktionaryService } from "../wiktionary/wiktionary.service";
 
 /**
- * Root CLI entry point for lexico-ingestion.
+ * Root CLI entry point for lexicoIngestion.
  * Runs all ingestion steps in order when invoked without a sub-command.
  * Sub-commands: wiktionary, dictionary, words, manual, clear
  */

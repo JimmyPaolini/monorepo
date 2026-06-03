@@ -17,7 +17,7 @@ const TEMPLATES_DIR = path.resolve(
 
 const SERVICE_TEMPLATE_PATH = path.join(
   TEMPLATES_DIR,
-  "__nameCamelCase__.service.ts",
+  "__nameKebabCase__.service.ts",
 );
 
 const data: Record<string, unknown> = {
@@ -28,7 +28,7 @@ const data: Record<string, unknown> = {
 describe("validateConformanceAST", () => {
   const MODULE_TEMPLATE_PATH = path.join(
     TEMPLATES_DIR,
-    "__nameCamelCase__.module.ts",
+    "__nameKebabCase__.module.ts",
   );
 
   function readModuleTemplate(): string {
@@ -586,7 +586,7 @@ describe("validateConformanceAST — error detection", () => {
           __dirname,
           "../../generators/nestjs-service-module/templates",
         ),
-        "__nameCamelCase__.service.ts",
+        "__nameKebabCase__.service.ts",
       ),
       "utf8",
     );

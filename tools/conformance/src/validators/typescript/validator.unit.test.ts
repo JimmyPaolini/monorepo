@@ -23,7 +23,7 @@ const TEMPLATES_DIR = path.resolve(
 
 const SERVICE_TEMPLATE_PATH = path.join(
   TEMPLATES_DIR,
-  "__nameCamelCase__.service.ts",
+  "__nameKebabCase__.service.ts",
 );
 
 describe("heavily modified service integration", () => {
@@ -164,7 +164,7 @@ describe("validateInstancesDirectory", () => {
   it("returns one result per subdirectory", () => {
     const simpleTemplate = "// 🔧 Config\n";
     fs.writeFileSync(
-      path.join(templateDirectory, "__nameCamelCase__.config.ts"),
+      path.join(templateDirectory, "__nameKebabCase__.config.ts"),
       simpleTemplate,
     );
 
@@ -197,7 +197,7 @@ describe("validateInstancesDirectory", () => {
 
   it("all passing files return empty error arrays", () => {
     fs.writeFileSync(
-      path.join(templateDirectory, "__nameCamelCase__.config.ts"),
+      path.join(templateDirectory, "__nameKebabCase__.config.ts"),
       "// 🔧 Config\n",
     );
     const alphaDir = path.join(temporaryDirectory, "alpha");
@@ -218,7 +218,7 @@ describe("validateInstancesDirectory", () => {
 
   it("reports missing file error when instance file is absent", () => {
     fs.writeFileSync(
-      path.join(templateDirectory, "__nameCamelCase__.service.ts"),
+      path.join(templateDirectory, "__nameKebabCase__.service.ts"),
       "export class UserService {}\n",
     );
     const alphaDir = path.join(temporaryDirectory, "alpha");
@@ -324,11 +324,11 @@ describe("validateInstanceDirectory", () => {
 
   it("returns directoryName equal to the directory basename", () => {
     fs.writeFileSync(
-      path.join(templateDir, "__nameCamelCase__.service.ts"),
+      path.join(templateDir, "__nameKebabCase__.service.ts"),
       "// placeholder\n",
     );
     fs.writeFileSync(
-      path.join(instanceDir, "userAuth.service.ts"),
+      path.join(instanceDir, "user-auth.service.ts"),
       "// placeholder\n",
     );
 
@@ -342,11 +342,11 @@ describe("validateInstanceDirectory", () => {
 
   it("resolves __fieldName__ tokens in template filename to instance filename", () => {
     fs.writeFileSync(
-      path.join(templateDir, "__nameCamelCase__.service.ts"),
+      path.join(templateDir, "__nameKebabCase__.service.ts"),
       "export class {{namePascalCase}}Service {}\n",
     );
     fs.writeFileSync(
-      path.join(instanceDir, "userAuth.service.ts"),
+      path.join(instanceDir, "user-auth.service.ts"),
       "export class UserAuthService {}\n",
     );
 
@@ -356,25 +356,25 @@ describe("validateInstanceDirectory", () => {
     });
 
     expect(result.results).toHaveLength(1);
-    expect(result.results[0]?.filename).toBe("userAuth.service.ts");
+    expect(result.results[0]?.filename).toBe("user-auth.service.ts");
     expect(result.results[0]?.errors).toEqual([]);
   });
 
   it("returns one result per template file", () => {
     fs.writeFileSync(
-      path.join(templateDir, "__nameCamelCase__.service.ts"),
+      path.join(templateDir, "__nameKebabCase__.service.ts"),
       "// service\n",
     );
     fs.writeFileSync(
-      path.join(templateDir, "__nameCamelCase__.module.ts"),
+      path.join(templateDir, "__nameKebabCase__.module.ts"),
       "// module\n",
     );
     fs.writeFileSync(
-      path.join(instanceDir, "userAuth.service.ts"),
+      path.join(instanceDir, "user-auth.service.ts"),
       "// service\n",
     );
     fs.writeFileSync(
-      path.join(instanceDir, "userAuth.module.ts"),
+      path.join(instanceDir, "user-auth.module.ts"),
       "// module\n",
     );
 
@@ -385,13 +385,13 @@ describe("validateInstanceDirectory", () => {
 
     expect(result.results).toHaveLength(2);
     const filenames = result.results.map((r) => r.filename);
-    expect(filenames).toContain("userAuth.service.ts");
-    expect(filenames).toContain("userAuth.module.ts");
+    expect(filenames).toContain("user-auth.service.ts");
+    expect(filenames).toContain("user-auth.module.ts");
   });
 
   it("reports missing file error when instance file is absent", () => {
     fs.writeFileSync(
-      path.join(templateDir, "__nameCamelCase__.service.ts"),
+      path.join(templateDir, "__nameKebabCase__.service.ts"),
       "export class UserAuthService {}\n",
     );
     // no instance files written

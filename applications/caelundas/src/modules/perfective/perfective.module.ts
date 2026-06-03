@@ -1,11 +1,11 @@
-import { AnnualSolarCycleModule } from "@caelundas/src/modules/annualSolarCycle/annualSolarCycle.module";
+import { AnnualSolarCycleModule } from "@caelundas/src/modules/annual-solar-cycle/annual-solar-cycle.module";
 import { AspectsModule } from "@caelundas/src/modules/aspects/aspects.module";
-import { DailyCyclesModule } from "@caelundas/src/modules/dailyCycles/dailyCycles.module";
+import { DailyCyclesModule } from "@caelundas/src/modules/daily-cycles/daily-cycles.module";
 import { DatetimeModule } from "@caelundas/src/modules/datetime/datetime.module";
 import { EclipsesModule } from "@caelundas/src/modules/eclipses/eclipses.module";
 import { EphemerisModule } from "@caelundas/src/modules/ephemeris/ephemeris.module";
 import { IngressesModule } from "@caelundas/src/modules/ingresses/ingresses.module";
-import { MonthlyLunarCycleModule } from "@caelundas/src/modules/monthlyLunarCycle/monthlyLunarCycle.module";
+import { MonthlyLunarCycleModule } from "@caelundas/src/modules/monthly-lunar-cycle/monthly-lunar-cycle.module";
 import { PhasesModule } from "@caelundas/src/modules/phases/phases.module";
 import { RetrogradesModule } from "@caelundas/src/modules/retrogrades/retrogrades.module";
 import { TwilightsModule } from "@caelundas/src/modules/twilights/twilights.module";

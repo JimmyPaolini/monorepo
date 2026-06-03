@@ -14,7 +14,7 @@ import { environmentSchema } from "./lexico-ingestion.constants";
 import { LexicoIngestionService } from "./lexico-ingestion.service";
 
 /**
- * Root application module for lexico-ingestion.
+ * Root application module for lexicoIngestion.
  * Configures database connection, environment validation, and registers all ingestion sub-modules.
  */
 @Module({
@@ -33,6 +33,8 @@ import { LexicoIngestionService } from "./lexico-ingestion.service";
     ClearModule,
     LoggerModule,
   ],
+  controllers: [],
   providers: [LexicoIngestionCommand, LexicoIngestionService],
+  exports: [LexicoIngestionService],
 })
 export class LexicoIngestionModule {}

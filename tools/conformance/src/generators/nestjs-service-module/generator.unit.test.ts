@@ -51,9 +51,9 @@ describe("generateNestjsServiceModule", () => {
         project: PROJECT_NAME,
       });
 
-      const base = `${MODULES_DIR}/myService`;
-      expect(tree.exists(`${base}/myService.module.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/myService.service.ts`)).toBeTruthy();
+      const base = `${MODULES_DIR}/my-service`;
+      expect(tree.exists(`${base}/my-service.module.ts`)).toBeTruthy();
+      expect(tree.exists(`${base}/my-service.service.ts`)).toBeTruthy();
     });
 
     it("should use PascalCase class names in generated module file", async () => {
@@ -122,7 +122,7 @@ describe("generateNestjsServiceModule", () => {
         "";
       const __dirname = fileURLToPath(new URL(".", import.meta.url));
       const templateContent = fs.readFileSync(
-        path.join(__dirname, "templates/__nameCamelCase__.service.ts"),
+        path.join(__dirname, "templates/__nameKebabCase__.service.ts"),
         "utf8",
       );
       const vars: Record<string, unknown> = {

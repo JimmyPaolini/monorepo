@@ -6,7 +6,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { EtymologyModule } from "../etymology/etymology.module";
 import { FormsModule } from "../forms/forms.module";
 import { PartOfSpeechModule } from "../part-of-speech/part-of-speech.module";
-import { PrincipalPartsModule } from "../principal-parts/principalParts.module";
+import { PrincipalPartsModule } from "../principal-parts/principal-parts.module";
 import { PronunciationModule } from "../pronunciation/pronunciation.module";
 import { TranslationsModule } from "../translations/translations.module";
 

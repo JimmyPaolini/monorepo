@@ -1,9 +1,9 @@
-import { AnnualSolarCycleService } from "@caelundas/src/modules/annualSolarCycle/annualSolarCycle.service";
+import { AnnualSolarCycleService } from "@caelundas/src/modules/annual-solar-cycle/annual-solar-cycle.service";
 import { AspectsService } from "@caelundas/src/modules/aspects/aspects.service";
 import { EclipsesService } from "@caelundas/src/modules/eclipses/eclipses.service";
 import { IngressesService } from "@caelundas/src/modules/ingresses/ingresses.service";
 import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
-import { MonthlyLunarCycleService } from "@caelundas/src/modules/monthlyLunarCycle/monthlyLunarCycle.service";
+import { MonthlyLunarCycleService } from "@caelundas/src/modules/monthly-lunar-cycle/monthly-lunar-cycle.service";
 import { PhasesService } from "@caelundas/src/modules/phases/phases.service";
 import { RetrogradesService } from "@caelundas/src/modules/retrogrades/retrogrades.service";
 import { TwilightsService } from "@caelundas/src/modules/twilights/twilights.service";
