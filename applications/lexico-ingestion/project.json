@@ -45,6 +45,14 @@
     "oxfmt": {},
     "oxlint": {},
     "prettier": {},
+    "repl": {
+      "description": "Start the LexicoIngestion application in REPL mode",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm repl",
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
     "spell-check": {},
     "start": {
       "description": "Start the LexicoIngestion application",
