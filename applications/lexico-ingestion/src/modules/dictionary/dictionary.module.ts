@@ -3,7 +3,7 @@ import { Module } from "@nestjs/common";
 import { FormsModule } from "../forms/forms.module";
 import { LexemesModule } from "../lexemes/lexemes.module";
 import { ManualModule } from "../manual/manual.module";
-import { PrincipalPartsModule } from "../principal-parts/principalParts.module";
+import { PrincipalPartsModule } from "../principal-parts/principal-parts.module";
 import { PronunciationModule } from "../pronunciation/pronunciation.module";
 import { TranslationsModule } from "../translations/translations.module";
 import { WordsModule } from "../words/words.module";

@@ -228,7 +228,7 @@ describe("resolveNameByCase", () => {
 
     it("resolves __fieldName__ placeholders in filenames", () => {
       fs.writeFileSync(
-        path.join(templateDirectoryPath, "__nameCamelCase__.module.ts"),
+        path.join(templateDirectoryPath, "__nameKebabCase__.module.ts"),
         "export class {{namePascalCase}}Module {}\n",
       );
       const tree = createTreeWithEmptyWorkspace();
@@ -241,10 +241,11 @@ describe("resolveNameByCase", () => {
         substitutions: {
           nameCamelCase: "userAuth",
           namePascalCase: "UserAuth",
+          nameKebabCase: "user-auth",
         },
       });
 
-      expect(tree.exists(`${targetDirectoryPath}/userAuth.module.ts`)).toBe(
+      expect(tree.exists(`${targetDirectoryPath}/user-auth.module.ts`)).toBe(
         true,
       );
     });

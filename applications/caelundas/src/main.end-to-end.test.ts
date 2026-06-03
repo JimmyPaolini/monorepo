@@ -240,7 +240,7 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
     it("should correctly identify aspects from angular separation", async () => {
       const { MajorAspectsService } =
-        await import("./modules/majorAspects/majorAspects.service");
+        await import("./modules/major-aspects/major-aspects.service");
       const { AspectsUtilities } =
         await import("./modules/aspects/aspects.utilities");
       const { EphemerisService } =

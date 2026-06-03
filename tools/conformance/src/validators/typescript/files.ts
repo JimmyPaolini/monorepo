@@ -97,7 +97,7 @@ export function validateInstanceFile(args: {
  * corresponding Mustache templates in `templateDirectoryPath`.
  *
  * Each template filename may contain `__fieldName__` tokens (e.g.
- * `__nameCamelCase__.service.ts`) that are resolved to the instance filename
+ * `__nameKebabCase__.service.ts`) that are resolved to the instance filename
  * using the template variable substitutions derived from `instanceDirectoryPath`'s
  * basename. The same substitution map (`nameCamelCase`, `namePascalCase`,
  * `nameSnakeCase`, `nameKebabCase`) is passed to {@link validateInstanceFile}

@@ -1,11 +1,11 @@
-import { MajorAspectsModule } from "@caelundas/src/modules/majorAspects/majorAspects.module";
-import { MinorAspectsModule } from "@caelundas/src/modules/minorAspects/minorAspects.module";
-import { QuadrupleAspectsModule } from "@caelundas/src/modules/quadrupleAspects/quadrupleAspects.module";
-import { QuintupleAspectsModule } from "@caelundas/src/modules/quintupleAspects/quintupleAspects.module";
-import { SextupleAspectsModule } from "@caelundas/src/modules/sextupleAspects/sextupleAspects.module";
-import { SpecialtyAspectsModule } from "@caelundas/src/modules/specialtyAspects/specialtyAspects.module";
+import { MajorAspectsModule } from "@caelundas/src/modules/major-aspects/major-aspects.module";
+import { MinorAspectsModule } from "@caelundas/src/modules/minor-aspects/minor-aspects.module";
+import { QuadrupleAspectsModule } from "@caelundas/src/modules/quadruple-aspects/quadruple-aspects.module";
+import { QuintupleAspectsModule } from "@caelundas/src/modules/quintuple-aspects/quintuple-aspects.module";
+import { SextupleAspectsModule } from "@caelundas/src/modules/sextuple-aspects/sextuple-aspects.module";
+import { SpecialtyAspectsModule } from "@caelundas/src/modules/specialty-aspects/specialty-aspects.module";
 import { StelliumModule } from "@caelundas/src/modules/stellium/stellium.module";
-import { TripleAspectsModule } from "@caelundas/src/modules/tripleAspects/tripleAspects.module";
+import { TripleAspectsModule } from "@caelundas/src/modules/triple-aspects/triple-aspects.module";
 import { Module } from "@nestjs/common";
 
 import { AspectsService } from "./aspects.service";
