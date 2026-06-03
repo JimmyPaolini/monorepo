@@ -38,6 +38,7 @@
   },
   "name": "lexico-ingestion",
   "scripts": {
+    "repl": "node --import @swc-node/register/esm-register src/repl.ts",
     "start": "node --import @swc-node/register/esm-register src/main.ts lexico-ingestion",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",

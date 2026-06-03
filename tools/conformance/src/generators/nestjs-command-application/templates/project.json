@@ -20,6 +20,14 @@
     "oxfmt": {},
     "oxlint": {},
     "prettier": {},
+    "repl": {
+      "description": "Start the {{namePascalCase}} application in REPL mode",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "pnpm repl",
+        "cwd": "applications/{{nameKebabCase}}"
+      }
+    },
     "spell-check": {},
     "start": {
       "description": "Start the {{namePascalCase}} application",
