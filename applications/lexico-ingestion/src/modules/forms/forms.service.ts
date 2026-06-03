@@ -26,7 +26,7 @@ import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 
-import { WordsService } from "../words/words.service.js";
+import { WordsService } from "../words/words.service";
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -42,8 +42,7 @@ function isStringArray(value: unknown): value is string[] {
 /**
  * Builds Form entities from raw parsed forms and persists them along with
  * the associated Word and junction rows.
- * Each built Form has `rawWords` populated with the inflected word strings,
- * which are consumed by `ingestLexemeForms` to upsert Word rows and join records.
+ * Transient word strings are tracked via a WeakMap during the ingestion lifecycle.
  */
 @Injectable()
 export class FormsService {
@@ -55,10 +54,20 @@ export class FormsService {
   ) {}
 
   // 🔐 Private Fields
+  private readonly transientWords = new WeakMap<Form, string[]>();
 
   // 🔑 Public Fields
 
   // 🔏 Private Methods
+
+  /**
+   * Sets transient word strings for a Form instance. These are used during
+   * ingestion to link forms to their corresponding Word rows but are not
+   * persisted on the Form entity itself.
+   */
+  setTransientWords(form: Form, words: string[]): void {
+    this.transientWords.set(form, words);
+  }
 
   private async fetchExistingForms(lexemeId: string): Promise<Form[]> {
     return this.formRepository.find({
@@ -119,7 +128,7 @@ export class FormsService {
         form.lexeme = lexeme;
         form.case = formCase;
         form.number = formNumber;
-        form.rawWords = words;
+        this.setTransientWords(form, words);
         forms.push(form);
       }
     }
@@ -159,7 +168,7 @@ export class FormsService {
           form.gender = formGender;
           form.case = formCase;
           form.number = formNumber;
-          form.rawWords = words;
+          this.setTransientWords(form, words);
           forms.push(form);
         }
       }
@@ -179,7 +188,7 @@ export class FormsService {
       const form = new AdverbForm();
       form.lexeme = lexeme;
       form.degree = degreeKey;
-      form.rawWords = words;
+      this.setTransientWords(form, words);
       forms.push(form);
     }
 
@@ -239,7 +248,7 @@ export class FormsService {
             form.tense = tenseKey;
             form.number = numberKey;
             form.person = personKey;
-            form.rawWords = words;
+            this.setTransientWords(form, words);
             forms.push(form);
           }
         }
@@ -269,7 +278,7 @@ export class FormsService {
           form.lexeme = lexeme;
           form.voice = voiceKey;
           form.tense = tenseKey;
-          form.rawWords = words;
+          this.setTransientWords(form, words);
           forms.push(form);
         }
       }
@@ -289,7 +298,7 @@ export class FormsService {
           form.lexeme = lexeme;
           form.voice = voiceKey;
           form.tense = tenseKey;
-          form.rawWords = words;
+          this.setTransientWords(form, words);
           forms.push(form);
         }
       }
@@ -313,7 +322,7 @@ export class FormsService {
         const form = new GerundForm();
         form.lexeme = lexeme;
         form.case = caseKey;
-        form.rawWords = words;
+        this.setTransientWords(form, words);
         forms.push(form);
       }
     }
@@ -327,7 +336,7 @@ export class FormsService {
         const form = new SupineForm();
         form.lexeme = lexeme;
         form.case = caseKey;
-        form.rawWords = words;
+        this.setTransientWords(form, words);
         forms.push(form);
       }
     }
@@ -358,14 +367,9 @@ export class FormsService {
       const matchIndex = existingForms.findIndex((ef) => {
         if (ef.constructor.name !== form.constructor.name) return false;
         const keys = Object.keys(form).filter(
-          (k) =>
-            !["id", "createdAt", "updatedAt", "lexeme", "rawWords"].includes(k),
+          (k) => !["id", "createdAt", "updatedAt", "lexeme"].includes(k),
         );
-        return keys.every(
-          (k) =>
-            (ef as unknown as Record<string, unknown>)[k] ===
-            (form as unknown as Record<string, unknown>)[k],
-        );
+        return keys.every((k) => Reflect.get(ef, k) === Reflect.get(form, k));
       });
 
       if (matchIndex !== -1) {
@@ -382,7 +386,7 @@ export class FormsService {
       await this.formRepository.remove(existingForms);
 
     // Capture rawWords before save — transient field is not persisted.
-    const rawWordsPerForm = forms.map((f) => f.rawWords ?? []);
+    const rawWordsPerForm = forms.map((f) => this.transientWords.get(f) ?? []);
 
     // Write
     const savedForms = await this.saveNewForms(forms, lexeme);

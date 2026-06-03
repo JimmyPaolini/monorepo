@@ -2,16 +2,16 @@ import { LexicoDatabaseModule } from "@monorepo/lexico-entities";
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
 
-import { ClearModule } from "../clear/clear.module.js";
-import { DictionaryModule } from "../dictionary/dictionary.module.js";
-import { LoggerModule } from "../logger/logger.module.js";
-import { ManualModule } from "../manual/manual.module.js";
-import { WiktionaryModule } from "../wiktionary/wiktionary.module.js";
-import { WordsModule } from "../words/words.module.js";
+import { ClearModule } from "../clear/clear.module";
+import { DictionaryModule } from "../dictionary/dictionary.module";
+import { LoggerModule } from "../logger/logger.module";
+import { ManualModule } from "../manual/manual.module";
+import { WiktionaryModule } from "../wiktionary/wiktionary.module";
+import { WordsModule } from "../words/words.module";
 
-import { LexicoIngestionCommand } from "./lexico-ingestion.command.js";
-import { environmentSchema } from "./lexico-ingestion.constants.js";
-import { LexicoIngestionService } from "./lexico-ingestion.service.js";
+import { LexicoIngestionCommand } from "./lexico-ingestion.command";
+import { environmentSchema } from "./lexico-ingestion.constants";
+import { LexicoIngestionService } from "./lexico-ingestion.service";
 
 /**
  * Root application module for lexico-ingestion.

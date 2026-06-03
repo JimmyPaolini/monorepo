@@ -65,7 +65,7 @@ describe("FormsService", () => {
 
       const existingForm = new Form();
       const newForm = new NominalForm();
-      newForm.rawWords = ["amō"];
+      service.setTransientWords(newForm, ["amō"]);
 
       formRepository.find.mockResolvedValue([existingForm]);
       formRepository.remove.mockResolvedValue(undefined as unknown as Form);
@@ -87,10 +87,10 @@ describe("FormsService", () => {
       lexeme.id = "lexeme-id";
 
       const form = new NominalForm();
-      form.rawWords = ["amō"];
+      service.setTransientWords(form, ["amō"]);
 
       const savedForm = new NominalForm();
-      savedForm.rawWords = ["amō"];
+      service.setTransientWords(savedForm, ["amō"]);
 
       formRepository.find.mockResolvedValue([]);
       formRepository.save.mockResolvedValue([savedForm] as unknown as Form);
@@ -110,7 +110,7 @@ describe("FormsService", () => {
       lexeme.id = "lexeme-id";
 
       const form = new NominalForm();
-      form.rawWords = ["123"];
+      service.setTransientWords(form, ["123"]);
 
       formRepository.find.mockResolvedValue([]);
       formRepository.save.mockResolvedValue([form] as unknown as Form);

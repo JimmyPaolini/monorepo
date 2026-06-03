@@ -3,11 +3,11 @@ import path from "node:path";
 
 import { Injectable, Logger } from "@nestjs/common";
 import { Command, CommandRunner, Option } from "nest-commander";
-import prompts, { type Choice } from "prompts";
+import prompts from "prompts";
 
-import { ManualService } from "../manual/manual.service.js";
+import { ManualService } from "../manual/manual.service";
 
-import { DictionaryService } from "./dictionary.service.js";
+import { DictionaryService } from "./dictionary.service";
 
 interface DictionaryCommandOptions {
   startLemma?: string | null;
@@ -33,7 +33,7 @@ export class DictionaryCommand extends CommandRunner {
     super();
   }
 
-  private getLemmaChoices(): Choice[] {
+  private getLemmaChoices(): { title: string; value: string }[] {
     const dataDir = path.join(process.cwd(), "./data/wiktionary");
     if (!fs.existsSync(dataDir)) return [];
 
@@ -42,8 +42,7 @@ export class DictionaryCommand extends CommandRunner {
       .filter((file) => file.endsWith(".json"))
       .map((file) => {
         const title = file.replace(".json", "");
-        const choice: Choice = { title, value: title };
-        return choice;
+        return { title, value: title };
       });
   }
 
@@ -54,28 +53,35 @@ export class DictionaryCommand extends CommandRunner {
     flags: "-s, --startLemma [lemma]",
     description: "The lemma to start ingestion from",
   })
-  async parseStartLemma(value?: string | null): Promise<string | undefined> {
-    if (value === null || value === undefined) return undefined;
+  async parseStartLemma(startLemma?: string): Promise<string | undefined> {
+    if (!startLemma) return undefined;
 
     const choices = this.getLemmaChoices();
-    if (typeof value === "string") {
-      if (choices.some((choice) => choice.value === value)) {
-        return value;
+    if (typeof startLemma === "string") {
+      if (choices.some((choice) => choice.value === startLemma)) {
+        return startLemma;
       } else {
-        throw new Error(`Start lemma "${value}" not found in the dataset.`);
+        throw new Error(
+          `Start lemma "${startLemma}" not found in the dataset.`,
+        );
       }
     }
 
-    const response = await prompts({
+    const response = (await prompts({
       type: "autocomplete",
       name: "startLemma",
       message: "Select the starting lemma",
-      choices: [{ title: "None", value: "null" }, ...choices],
-    });
+      choices: [{ title: "None", value: null }, ...choices],
+    })) as { startLemma: string | null };
 
-    return response.startLemma === "null"
-      ? undefined
-      : (response.startLemma as string);
+    if (
+      response.startLemma === null ||
+      typeof response.startLemma !== "string"
+    ) {
+      return undefined;
+    }
+
+    return response.startLemma;
   }
 
   /**
@@ -86,33 +92,35 @@ export class DictionaryCommand extends CommandRunner {
     description: "The lemma to end ingestion at",
   })
   async parseEndLemma(
-    value?: string | null,
+    endLemma?: string,
     startLemma?: string | null,
   ): Promise<string | undefined> {
-    if (value === null || value === undefined) return undefined;
+    if (!endLemma) return undefined;
 
     const choices = this.getLemmaChoices().filter((choice) => {
       if (!startLemma) return true;
       return choice.value >= startLemma;
     });
-    if (typeof value === "string") {
-      if (choices.some((choice) => choice.value === value)) {
-        return value;
+    if (typeof endLemma === "string") {
+      if (choices.some((choice) => choice.value === endLemma)) {
+        return endLemma;
       } else {
-        throw new Error(`End lemma "${value}" not found in the dataset.`);
+        throw new Error(`End lemma "${endLemma}" not found in the dataset.`);
       }
     }
 
-    const response = await prompts({
+    const response = (await prompts({
       type: "autocomplete",
       name: "endLemma",
       message: "Select the ending lemma",
-      choices: [{ title: "None", value: "null" }, ...choices],
-    });
+      choices: [{ title: "None", value: null }, ...choices],
+    })) as { endLemma: string | null };
 
-    return response.endLemma === "null"
-      ? undefined
-      : (response.endLemma as string);
+    if (response.endLemma === null || typeof response.endLemma !== "string") {
+      return undefined;
+    }
+
+    return response.endLemma;
   }
 
   /** Runs the dictionary ingestion for a single word when `--word` is given,
@@ -121,8 +129,13 @@ export class DictionaryCommand extends CommandRunner {
     this.logger.log(`📖 Ingesting dictionary...`);
     const startTime = performance.now();
 
-    const startLemma = await this.parseStartLemma(options.startLemma);
-    const endLemma = await this.parseEndLemma(options.endLemma, startLemma);
+    const startLemma = await this.parseStartLemma(
+      options.startLemma ?? undefined,
+    );
+    const endLemma = await this.parseEndLemma(
+      options.endLemma ?? undefined,
+      startLemma,
+    );
 
     await this.dictionaryService.ingestAll(startLemma, endLemma);
     await this.manualService.ingestManual();

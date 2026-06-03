@@ -5,9 +5,9 @@ import * as cheerio from "cheerio";
 import _ from "lodash";
 import { Like, Repository } from "typeorm";
 
-import { LoggerService } from "../logger/logger.service.js";
+import { LoggerService } from "../logger/logger.service";
 
-import { translationSkipRegex } from "./translations.constants.js";
+import { translationSkipRegex } from "./translations.constants";
 
 import type { Lexeme } from "@monorepo/lexico-entities";
 import type { AnyNode } from "domhandler";

@@ -4,11 +4,11 @@ import path from "node:path";
 import { Lexeme, Translation } from "@monorepo/lexico-entities";
 import { Injectable } from "@nestjs/common";
 
-import { LexemesService } from "../lexemes/lexemes.service.js";
-import { LoggerService } from "../logger/logger.service.js";
-import { TranslationsService } from "../translations/translations.service.js";
+import { LexemesService } from "../lexemes/lexemes.service";
+import { LoggerService } from "../logger/logger.service";
+import { TranslationsService } from "../translations/translations.service";
 
-import type { WiktionaryPage } from "../lexico-ingestion/lexico-ingestion.types.js";
+import type { WiktionaryPage } from "../lexico-ingestion/lexico-ingestion.types";
 
 /**
  * TODO: Document the dictionary service.

@@ -4,7 +4,7 @@ import { InjectRepository } from "@nestjs/typeorm";
 import numberToWords from "number-to-words";
 import { Repository } from "typeorm";
 
-import { WordsService } from "../words/words.service.js";
+import { WordsService } from "../words/words.service";
 
 import {
   buildHicTemplate,
@@ -14,7 +14,7 @@ import {
   buildRomanNumeralTemplate,
   MANUAL_LEXEMES_TO_DELETE,
   PRAENOMEN_ABBREVIATIONS,
-} from "./manual.constants.js";
+} from "./manual.constants";
 
 /**
  * Ingests manually-curated dictionary lexemes (hic, ille, omnis, Roman numerals).

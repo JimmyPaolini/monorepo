@@ -5,7 +5,7 @@ import * as cheerio from "cheerio";
 import _ from "lodash";
 import { Repository } from "typeorm";
 
-import { LoggerService } from "../logger/logger.service.js";
+import { LoggerService } from "../logger/logger.service";
 
 import {
   classicalDevocalize,

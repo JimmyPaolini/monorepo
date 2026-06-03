@@ -2,7 +2,7 @@ import { Lexeme } from "@monorepo/lexico-entities";
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
-import { WordsModule } from "../words/words.module.js";
+import { WordsModule } from "../words/words.module";
 
 import { ManualService } from "./manual.service";
 

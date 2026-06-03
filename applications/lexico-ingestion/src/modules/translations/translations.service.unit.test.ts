@@ -1,6 +1,7 @@
 import { Lexeme, Translation } from "@monorepo/lexico-entities";
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
+import { Like, type Repository } from "typeorm";
 import {
   beforeAll,
   beforeEach,
@@ -15,8 +16,6 @@ import { LexemesService } from "../lexemes/lexemes.service";
 import { LoggerService } from "../logger/logger.service";
 
 import { TranslationsService } from "./translations.service";
-
-import type { Repository } from "typeorm";
 
 describe("TranslationsService", () => {
   let service: TranslationsService;
@@ -107,7 +106,7 @@ describe("TranslationsService", () => {
       await service.findTranslationsWithReferences("amor:1");
 
       expect(translationsRepository.find).toHaveBeenCalledWith({
-        where: { lexeme: { id: "amor:1" }, translation: expect.anything() },
+        where: { lexeme: { id: "amor:1" }, translation: Like("%{*%*}%") },
         relations: { lexeme: true },
       });
     });

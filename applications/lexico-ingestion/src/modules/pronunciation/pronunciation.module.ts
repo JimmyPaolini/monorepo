@@ -2,7 +2,7 @@ import { Lexeme } from "@monorepo/lexico-entities";
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
-import { LoggerModule } from "../logger/logger.module.js";
+import { LoggerModule } from "../logger/logger.module";
 
 import { PronunciationService } from "./pronunciation.service";
 

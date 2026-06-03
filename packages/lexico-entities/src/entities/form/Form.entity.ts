@@ -122,17 +122,14 @@ export class Form extends AuditableEntity {
   // id, createdAt, createdBy, updatedAt, updatedBy, deletedAt, deletedBy inherited from AuditableEntity
 
   @Index()
-  @ManyToOne("Lexeme", "forms", { nullable: false })
+  @ManyToOne("Lexeme", "forms", {
+    nullable: false,
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+  })
   lexeme!: Lexeme;
 
   // Inverse side of WordForm.form
   @OneToMany("WordForm", "form")
   wordForms!: WordForm[];
-
-  /**
-   * Transient ingestion-time word strings — not persisted to the database.
-   * Populated by FormsService during ingestion; consumed by DictionaryService
-   * to upsert Word rows and create form_words join records.
-   */
-  rawWords?: string[];
 }

@@ -4,12 +4,12 @@ import path from "node:path";
 import { Injectable } from "@nestjs/common";
 import * as cheerio from "cheerio";
 
-import { LoggerService } from "../logger/logger.service.js";
+import { LoggerService } from "../logger/logger.service";
 
-import { categories } from "./wiktionary.constants.js";
+import { categories } from "./wiktionary.constants";
 
-import type { Category } from "./wiktionary.types.js";
-import type { WiktionaryPage } from "../lexico-ingestion/lexico-ingestion.types.js";
+import type { Category } from "./wiktionary.types";
+import type { WiktionaryPage } from "../lexico-ingestion/lexico-ingestion.types";
 
 /**
  * Provides Wiktionary entry fetching and parsing utilities.

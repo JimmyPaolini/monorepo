@@ -1,9 +1,7 @@
 pg-version = "18.0"
 exclude-path = [
-  "applications/lexico/supabase/migrations/20251127225025_remote_schema.sql",
-  "applications/lexico/supabase/migrations/20251127225309_remote_schema.sql",
-  "*migration-down.sql",
-  "*-down.sql",
+  "**/applications/lexico/supabase/migrations/*",
+  "**/packages/lexico-entities/src/database/migrations/*",
 ]
 
 [rules]

@@ -23,11 +23,19 @@ import type { Word } from "./Word.entity.js";
 export class WordForm extends AuditableEntity {
   /** The word string side of the junction. */
   @Index()
-  @ManyToOne("Word", "wordForms", { nullable: false })
+  @ManyToOne("Word", "wordForms", {
+    nullable: false,
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+  })
   word!: Word;
 
   /** The morphological form side of the junction. Cascade-deletes with the Form. */
   @Index()
-  @ManyToOne("Form", "wordForms", { nullable: false, onDelete: "CASCADE" })
+  @ManyToOne("Form", "wordForms", {
+    nullable: false,
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+  })
   form!: Form;
 }

@@ -1,13 +1,5 @@
 import { Field, ObjectType } from "@nestjs/graphql";
-import {
-  Column,
-  Entity,
-  Index,
-  JoinColumn,
-  OneToMany,
-  OneToOne,
-  Unique,
-} from "typeorm";
+import { Column, Entity, Index, OneToMany, OneToOne, Unique } from "typeorm";
 
 import { AuditableEntity } from "./Auditable.entity.js";
 import { Form } from "./form/Form.entity.js";
@@ -56,17 +48,17 @@ export class Lexeme extends AuditableEntity {
   etymology?: string;
 
   @Field(() => [Form])
-  @OneToMany(() => Form, (form) => form.lexeme, { cascade: true })
+  @OneToMany(() => Form, (form) => form.lexeme, {
+    cascade: true,
+    onDelete: "CASCADE",
+  })
   forms!: Form[];
 
   @Field(() => Inflection, { nullable: true })
-  @Index()
-  @OneToOne(() => Inflection, {
+  @OneToOne(() => Inflection, (inflection) => inflection.lexeme, {
     nullable: true,
     cascade: true,
-    onDelete: "SET NULL",
   })
-  @JoinColumn()
   inflection?: Inflection | null;
 
   @Field(() => String)
@@ -81,6 +73,7 @@ export class Lexeme extends AuditableEntity {
   @Field(() => [PrincipalPart])
   @OneToMany(() => PrincipalPart, "lexeme", {
     cascade: true,
+    onDelete: "CASCADE",
   })
   principalParts!: PrincipalPart[];
 
@@ -88,6 +81,7 @@ export class Lexeme extends AuditableEntity {
   @OneToMany(() => Pronunciation, "lexeme", {
     cascade: true,
     orphanedRowAction: "delete",
+    onDelete: "CASCADE",
   })
   pronunciations?: Pronunciation[] | null;
 
@@ -101,6 +95,6 @@ export class Lexeme extends AuditableEntity {
 
   /** Junction rows linking this lexeme to every word string that can represent it. */
   @Field(() => [Object], { nullable: true })
-  @OneToMany("WordLexeme", "lexeme")
+  @OneToMany("WordLexeme", "lexeme", { onDelete: "CASCADE" })
   wordLexemes?: WordLexeme[];
 }

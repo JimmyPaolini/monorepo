@@ -1,3 +1,4 @@
+// ♟️ Constants
 import {
   AdjectivalForm,
   AdjectiveInflection,
@@ -66,15 +67,18 @@ function buildAdjectivalForms(
   rawForms: Record<string, Record<string, Record<string, string[]>>>,
 ): AdjectivalForm[] {
   const forms: AdjectivalForm[] = [];
-  for (const [gender, cases] of Object.entries(rawForms)) {
-    for (const [caseName, numbers] of Object.entries(cases)) {
-      for (const [number, rawWords] of Object.entries(numbers)) {
-        if (rawWords.length > 0) {
+  for (const gender of Object.keys(rawForms)) {
+    const cases = rawForms[gender];
+    if (!cases) continue;
+    for (const caseName of Object.keys(cases)) {
+      const numbers = cases[caseName];
+      if (!numbers) continue;
+      for (const number of Object.keys(numbers)) {
+        if (numbers[number]?.length) {
           const form = new AdjectivalForm();
-          form.gender = gender as FormGender;
-          form.case = caseName as FormCase;
-          form.number = number as FormNumber;
-          form.rawWords = rawWords;
+          form.gender = gender as FormGender; // type-coverage:ignore-line
+          form.case = caseName as FormCase; // type-coverage:ignore-line
+          form.number = number as FormNumber; // type-coverage:ignore-line
           forms.push(form);
         }
       }

@@ -3,14 +3,14 @@ import { Lexeme } from "@monorepo/lexico-entities";
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
-import { EtymologyModule } from "../etymology/etymology.module.js";
-import { FormsModule } from "../forms/forms.module.js";
-import { PartOfSpeechModule } from "../part-of-speech/part-of-speech.module.js";
-import { PrincipalPartsModule } from "../principal-parts/principal-parts.module.js";
-import { PronunciationModule } from "../pronunciation/pronunciation.module.js";
-import { TranslationsModule } from "../translations/translations.module.js";
+import { EtymologyModule } from "../etymology/etymology.module";
+import { FormsModule } from "../forms/forms.module";
+import { PartOfSpeechModule } from "../part-of-speech/part-of-speech.module";
+import { PrincipalPartsModule } from "../principal-parts/principalParts.module";
+import { PronunciationModule } from "../pronunciation/pronunciation.module";
+import { TranslationsModule } from "../translations/translations.module";
 
-import { LexemesService } from "./lexemes.service.js";
+import { LexemesService } from "./lexemes.service";
 
 /**
  * Wires POS detection, pronunciation parsing, and full Wiktionary entry

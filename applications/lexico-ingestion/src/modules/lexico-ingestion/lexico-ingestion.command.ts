@@ -1,11 +1,11 @@
 import { Injectable } from "@nestjs/common";
 import { Command, CommandRunner } from "nest-commander";
 
-import { ClearService } from "../clear/clear.service.js";
-import { DictionaryService } from "../dictionary/dictionary.service.js";
-import { LoggerService } from "../logger/logger.service.js";
-import { ManualService } from "../manual/manual.service.js";
-import { WiktionaryService } from "../wiktionary/wiktionary.service.js";
+import { ClearService } from "../clear/clear.service";
+import { DictionaryService } from "../dictionary/dictionary.service";
+import { LoggerService } from "../logger/logger.service";
+import { ManualService } from "../manual/manual.service";
+import { WiktionaryService } from "../wiktionary/wiktionary.service";
 
 /**
  * Root CLI entry point for lexico-ingestion.

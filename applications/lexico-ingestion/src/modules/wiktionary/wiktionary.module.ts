@@ -2,7 +2,7 @@ import { Lexeme, Word } from "@monorepo/lexico-entities";
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
-import { WiktionaryCommand } from "./wiktionary.command.js";
+import { WiktionaryCommand } from "./wiktionary.command";
 import { WiktionaryService } from "./wiktionary.service";
 
 /**

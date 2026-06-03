@@ -4,19 +4,19 @@ import { InjectRepository } from "@nestjs/typeorm";
 import * as cheerio from "cheerio";
 import { Repository } from "typeorm";
 
-import { EtymologyService } from "../etymology/etymology.service.js";
-import { FormsService } from "../forms/forms.service.js";
-import { LEXICO_INGESTION_BY_ID } from "../lexico-ingestion/lexico-ingestion.constants.js";
-import { LoggerService } from "../logger/logger.service.js";
-import { PartOfSpeechService } from "../part-of-speech/part-of-speech.service.js";
-import { PrincipalPartsService } from "../principal-parts/principal-parts.service.js";
-import { PronunciationService } from "../pronunciation/pronunciation.service.js";
-import { TranslationsService } from "../translations/translations.service.js";
-import { WordsService } from "../words/words.service.js";
+import { EtymologyService } from "../etymology/etymology.service";
+import { FormsService } from "../forms/forms.service";
+import { LEXICO_INGESTION_BY_ID } from "../lexico-ingestion/lexico-ingestion.constants";
+import { LoggerService } from "../logger/logger.service";
+import { PartOfSpeechService } from "../part-of-speech/part-of-speech.service";
+import { PrincipalPartsService } from "../principal-parts/principalParts.service";
+import { PronunciationService } from "../pronunciation/pronunciation.service";
+import { TranslationsService } from "../translations/translations.service";
+import { WordsService } from "../words/words.service";
 
 import { skipPOS, validPOS } from "./lexemes.constants";
 
-import type { WiktionaryPage } from "../lexico-ingestion/lexico-ingestion.types.js";
+import type { WiktionaryPage } from "../lexico-ingestion/lexico-ingestion.types";
 
 /**
  * Orchestrates Wiktionary HTML parsing into fully-populated Lexeme objects.
@@ -66,6 +66,12 @@ export class LexemesService {
     );
     if (!savedLexeme) return null;
 
+    if (lexeme.inflection) {
+      lexeme.inflection.lexeme = savedLexeme;
+      await lexeme.inflection.save();
+      savedLexeme.inflection = lexeme.inflection;
+    }
+
     await this.principalPartsService.ingestLexemePrincipalParts(
       savedLexeme,
       lexeme.principalParts,
@@ -95,13 +101,8 @@ export class LexemesService {
     return savedLexeme;
   }
 
-  /** Upserts the Lexeme row. Explicitly saves the ChildEntity inflection
-   * first — TypeORM's cascade for STI child entities doesn't reliably set
-   * the FK on the parent row. */
+  /** Upserts the Lexeme row. */
   async upsertLexeme(lexeme: Lexeme): Promise<void> {
-    if (lexeme.inflection) {
-      await lexeme.inflection.save();
-    }
     lexeme.createdBy = LEXICO_INGESTION_BY_ID;
     lexeme.updatedBy = LEXICO_INGESTION_BY_ID;
     await this.lexemeRepository.upsert(lexeme, {

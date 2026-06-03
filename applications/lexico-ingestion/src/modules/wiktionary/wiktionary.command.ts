@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { Command, CommandRunner } from "nest-commander";
 
-import { WiktionaryService } from "./wiktionary.service.js";
+import { WiktionaryService } from "./wiktionary.service";
 
 /**
  * Ingest all Latin Wiktionary pages.

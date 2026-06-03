@@ -3,16 +3,16 @@ import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
 import { beforeAll, describe, expect, it, vi } from "vitest";
 
-import { EtymologyService } from "../etymology/etymology.service.js";
-import { FormsService } from "../forms/forms.service.js";
-import { LoggerService } from "../logger/logger.service.js";
-import { PartOfSpeechService } from "../part-of-speech/part-of-speech.service.js";
-import { PrincipalPartsService } from "../principal-parts/principal-parts.service.js";
-import { PronunciationService } from "../pronunciation/pronunciation.service.js";
-import { TranslationsService } from "../translations/translations.service.js";
-import { WordsService } from "../words/words.service.js";
+import { EtymologyService } from "../etymology/etymology.service";
+import { FormsService } from "../forms/forms.service";
+import { LoggerService } from "../logger/logger.service";
+import { PartOfSpeechService } from "../part-of-speech/part-of-speech.service";
+import { PrincipalPartsService } from "../principal-parts/principalParts.service";
+import { PronunciationService } from "../pronunciation/pronunciation.service";
+import { TranslationsService } from "../translations/translations.service";
+import { WordsService } from "../words/words.service";
 
-import { LexemesService } from "./lexemes.service.js";
+import { LexemesService } from "./lexemes.service";
 
 describe("LexemesService", () => {
   let service: LexemesService;

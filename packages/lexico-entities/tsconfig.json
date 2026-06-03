@@ -12,5 +12,10 @@
   },
   "exclude": ["dist", "node_modules"],
   "extends": "../../configuration/tsconfig.base.json",
-  "include": ["*.config.mts", "scripts/**/*.ts", "src/**/*.ts"]
+  "include": [
+    "*.config.mts",
+    "eslint.config.ts",
+    "scripts/**/*.ts",
+    "src/**/*.ts"
+  ]
 }

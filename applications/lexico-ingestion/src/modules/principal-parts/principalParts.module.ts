@@ -2,9 +2,9 @@ import { Lexeme } from "@monorepo/lexico-entities";
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
-import { LoggerModule } from "../logger/logger.module.js";
+import { LoggerModule } from "../logger/logger.module";
 
-import { PrincipalPartsService } from "./principal-parts.service.js";
+import { PrincipalPartsService } from "./principalParts.service";
 
 /**
  * Owns persistence and parsing logic for Lexeme principal parts.

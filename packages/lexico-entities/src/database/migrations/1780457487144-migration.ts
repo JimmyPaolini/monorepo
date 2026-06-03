@@ -3,8 +3,8 @@ import type { MigrationInterface, QueryRunner } from "typeorm";
 /**
  *
  */
-export class Migration1780445945241 implements MigrationInterface {
-  name = "Migration1780445945241";
+export class Migration1780457487144 implements MigrationInterface {
+  name = "Migration1780457487144";
 
   /**
    *
@@ -65,7 +65,7 @@ export class Migration1780445945241 implements MigrationInterface {
       `CREATE TYPE "public"."inflections_conjugation_enum" AS ENUM('first', 'second', 'third', 'third-io', 'fourth', '')`,
     );
     await queryRunner.query(
-      `CREATE TABLE "inflections" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "declension" "public"."inflections_declension_enum" DEFAULT '', "gender" "public"."inflections_gender_enum" DEFAULT '', "other" text, "degree" "public"."inflections_degree_enum" DEFAULT 'positive', "adverb_type" "public"."inflections_adverb_type_enum" DEFAULT '', "case" "public"."inflections_case_enum" DEFAULT '', "conjugation" "public"."inflections_conjugation_enum" DEFAULT '', "type" text NOT NULL, CONSTRAINT "PK_a70d36c564be34be3f08a08bc0b" PRIMARY KEY ("id")); COMMENT ON COLUMN "inflections"."id" IS 'Auto-generated UUID; discriminator column ''type'' selects the child entity'; COMMENT ON COLUMN "inflections"."declension" IS 'Noun declension class (first through fifth)'; COMMENT ON COLUMN "inflections"."gender" IS 'Grammatical gender (masculine, feminine, neuter)'; COMMENT ON COLUMN "inflections"."other" IS 'Additional inflection notes'; COMMENT ON COLUMN "inflections"."degree" IS 'Degree of comparison (positive, comparative, superlative)'; COMMENT ON COLUMN "inflections"."adverb_type" IS 'Functional type of the adverb (descriptive or conjunctional)'; COMMENT ON COLUMN "inflections"."case" IS 'Grammatical case governed by the preposition (accusative or ablative)'; COMMENT ON COLUMN "inflections"."conjugation" IS 'Verb conjugation class (first through fourth)'`,
+      `CREATE TABLE "inflections" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "declension" "public"."inflections_declension_enum" DEFAULT '', "gender" "public"."inflections_gender_enum" DEFAULT '', "other" text, "degree" "public"."inflections_degree_enum" DEFAULT 'positive', "adverb_type" "public"."inflections_adverb_type_enum" DEFAULT '', "case" "public"."inflections_case_enum" DEFAULT '', "conjugation" "public"."inflections_conjugation_enum" DEFAULT '', "type" text NOT NULL, "lexeme_id" uuid, CONSTRAINT "REL_ebe1d473505c1ffc72c57d5773" UNIQUE ("lexeme_id"), CONSTRAINT "PK_a70d36c564be34be3f08a08bc0b" PRIMARY KEY ("id")); COMMENT ON COLUMN "inflections"."id" IS 'Auto-generated UUID; discriminator column ''type'' selects the child entity'; COMMENT ON COLUMN "inflections"."declension" IS 'Noun declension class (first through fifth)'; COMMENT ON COLUMN "inflections"."gender" IS 'Grammatical gender (masculine, feminine, neuter)'; COMMENT ON COLUMN "inflections"."other" IS 'Additional inflection notes'; COMMENT ON COLUMN "inflections"."degree" IS 'Degree of comparison (positive, comparative, superlative)'; COMMENT ON COLUMN "inflections"."adverb_type" IS 'Functional type of the adverb (descriptive or conjunctional)'; COMMENT ON COLUMN "inflections"."case" IS 'Grammatical case governed by the preposition (accusative or ablative)'; COMMENT ON COLUMN "inflections"."conjugation" IS 'Verb conjugation class (first through fourth)'; COMMENT ON COLUMN "inflections"."lexeme_id" IS 'Auto-generated UUID primary key'`,
     );
     await queryRunner.query(
       `CREATE INDEX "IDX_2f191c1029749f9f01b877e7f8" ON "inflections"  ("type") `,
@@ -133,13 +133,10 @@ export class Migration1780445945241 implements MigrationInterface {
       `CREATE TYPE "public"."lexemes_part_of_speech_enum" AS ENUM('noun', 'properNoun', 'verb', 'adjective', 'participle', 'adverb', 'pronoun', 'determiner', 'preposition', 'conjunction', 'numeral', 'abbreviation', 'particle', 'interjection', 'prefix', 'suffix', 'interfix', 'circumfix', 'inflection', 'phrase', 'proverb', 'idiom')`,
     );
     await queryRunner.query(
-      `CREATE TABLE "lexemes" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "created_at" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "created_by" uuid, "updated_at" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "updated_by" uuid, "deleted_at" TIMESTAMP WITH TIME ZONE, "deleted_by" uuid, "lemma" text NOT NULL, "disambiguator" bigint NOT NULL DEFAULT '0', "etymology" text, "part_of_speech" "public"."lexemes_part_of_speech_enum" NOT NULL, "inflection_id" uuid, CONSTRAINT "UQ_7e69b70876dfb25936d3eb7f0fa" UNIQUE ("lemma", "disambiguator"), CONSTRAINT "REL_3a03721bc1b266578e9afad966" UNIQUE ("inflection_id"), CONSTRAINT "PK_dc81283a4e701643a1e4e9b8633" PRIMARY KEY ("id")); COMMENT ON COLUMN "lexemes"."id" IS 'Auto-generated UUID primary key'; COMMENT ON COLUMN "lexemes"."created_at" IS 'Timestamp when the record was created'; COMMENT ON COLUMN "lexemes"."created_by" IS 'UUID of the user or process that created the record'; COMMENT ON COLUMN "lexemes"."updated_at" IS 'Timestamp when the record was last updated'; COMMENT ON COLUMN "lexemes"."updated_by" IS 'UUID of the user or process that last updated the record'; COMMENT ON COLUMN "lexemes"."deleted_at" IS 'Timestamp when the record was soft-deleted'; COMMENT ON COLUMN "lexemes"."deleted_by" IS 'UUID of the user or process that soft-deleted the record'; COMMENT ON COLUMN "lexemes"."lemma" IS 'Dictionary headword (lemma), e.g. ''amō'''; COMMENT ON COLUMN "lexemes"."disambiguator" IS 'Disambiguation index when multiple entries share the same lemma (0-based)'; COMMENT ON COLUMN "lexemes"."etymology" IS 'Etymology of the word (Latin or Greek origin)'; COMMENT ON COLUMN "lexemes"."part_of_speech" IS 'Grammatical part of speech'; COMMENT ON COLUMN "lexemes"."inflection_id" IS 'Auto-generated UUID; discriminator column ''type'' selects the child entity'`,
+      `CREATE TABLE "lexemes" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "created_at" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "created_by" uuid, "updated_at" TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT now(), "updated_by" uuid, "deleted_at" TIMESTAMP WITH TIME ZONE, "deleted_by" uuid, "lemma" text NOT NULL, "disambiguator" bigint NOT NULL DEFAULT '0', "etymology" text, "part_of_speech" "public"."lexemes_part_of_speech_enum" NOT NULL, CONSTRAINT "UQ_7e69b70876dfb25936d3eb7f0fa" UNIQUE ("lemma", "disambiguator"), CONSTRAINT "PK_dc81283a4e701643a1e4e9b8633" PRIMARY KEY ("id")); COMMENT ON COLUMN "lexemes"."id" IS 'Auto-generated UUID primary key'; COMMENT ON COLUMN "lexemes"."created_at" IS 'Timestamp when the record was created'; COMMENT ON COLUMN "lexemes"."created_by" IS 'UUID of the user or process that created the record'; COMMENT ON COLUMN "lexemes"."updated_at" IS 'Timestamp when the record was last updated'; COMMENT ON COLUMN "lexemes"."updated_by" IS 'UUID of the user or process that last updated the record'; COMMENT ON COLUMN "lexemes"."deleted_at" IS 'Timestamp when the record was soft-deleted'; COMMENT ON COLUMN "lexemes"."deleted_by" IS 'UUID of the user or process that soft-deleted the record'; COMMENT ON COLUMN "lexemes"."lemma" IS 'Dictionary headword (lemma), e.g. ''amō'''; COMMENT ON COLUMN "lexemes"."disambiguator" IS 'Disambiguation index when multiple entries share the same lemma (0-based)'; COMMENT ON COLUMN "lexemes"."etymology" IS 'Etymology of the word (Latin or Greek origin)'; COMMENT ON COLUMN "lexemes"."part_of_speech" IS 'Grammatical part of speech'`,
     );
     await queryRunner.query(
       `CREATE INDEX "IDX_9204890678d644ba216ae116e3" ON "lexemes"  ("lemma") `,
-    );
-    await queryRunner.query(
-      `CREATE INDEX "IDX_3a03721bc1b266578e9afad966" ON "lexemes"  ("inflection_id") `,
     );
     await queryRunner.query(
       `CREATE INDEX "IDX_f6fa0a0a5e197c157882f29c22" ON "lexemes"  ("part_of_speech") `,
@@ -184,7 +181,10 @@ export class Migration1780445945241 implements MigrationInterface {
       `COMMENT ON TABLE "words" IS 'A Latin word string that maps to one or more dictionary entries'`,
     );
     await queryRunner.query(
-      `ALTER TABLE "forms" ADD CONSTRAINT "FK_52ebb86789cf513c7fb44ab9a95" FOREIGN KEY ("lexeme_id") REFERENCES "lexemes"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`,
+      `ALTER TABLE "forms" ADD CONSTRAINT "FK_52ebb86789cf513c7fb44ab9a95" FOREIGN KEY ("lexeme_id") REFERENCES "lexemes"("id") ON DELETE CASCADE ON UPDATE CASCADE`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "inflections" ADD CONSTRAINT "FK_ebe1d473505c1ffc72c57d57731" FOREIGN KEY ("lexeme_id") REFERENCES "lexemes"("id") ON DELETE CASCADE ON UPDATE CASCADE`,
     );
     await queryRunner.query(
       `ALTER TABLE "principal_parts" ADD CONSTRAINT "FK_95d23e3a9561dea102f7bf9325e" FOREIGN KEY ("lexeme_id") REFERENCES "lexemes"("id") ON DELETE CASCADE ON UPDATE CASCADE`,
@@ -196,19 +196,16 @@ export class Migration1780445945241 implements MigrationInterface {
       `ALTER TABLE "translations" ADD CONSTRAINT "FK_03033925e968b7c9430896d55f8" FOREIGN KEY ("lexeme_id") REFERENCES "lexemes"("id") ON DELETE CASCADE ON UPDATE CASCADE`,
     );
     await queryRunner.query(
-      `ALTER TABLE "lexemes" ADD CONSTRAINT "FK_3a03721bc1b266578e9afad9665" FOREIGN KEY ("inflection_id") REFERENCES "inflections"("id") ON DELETE SET NULL ON UPDATE NO ACTION`,
+      `ALTER TABLE "word_forms" ADD CONSTRAINT "FK_54256ad366638dd2243dcd88b25" FOREIGN KEY ("word_id") REFERENCES "words"("id") ON DELETE CASCADE ON UPDATE CASCADE`,
     );
     await queryRunner.query(
-      `ALTER TABLE "word_forms" ADD CONSTRAINT "FK_54256ad366638dd2243dcd88b25" FOREIGN KEY ("word_id") REFERENCES "words"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`,
+      `ALTER TABLE "word_forms" ADD CONSTRAINT "FK_f19edc2c148cc8536b7bba7afa9" FOREIGN KEY ("form_id") REFERENCES "forms"("id") ON DELETE CASCADE ON UPDATE CASCADE`,
     );
     await queryRunner.query(
-      `ALTER TABLE "word_forms" ADD CONSTRAINT "FK_f19edc2c148cc8536b7bba7afa9" FOREIGN KEY ("form_id") REFERENCES "forms"("id") ON DELETE CASCADE ON UPDATE NO ACTION`,
+      `ALTER TABLE "word_lexemes" ADD CONSTRAINT "FK_579999929ed6b899e769cd234ba" FOREIGN KEY ("word_id") REFERENCES "words"("id") ON DELETE CASCADE ON UPDATE CASCADE`,
     );
     await queryRunner.query(
-      `ALTER TABLE "word_lexemes" ADD CONSTRAINT "FK_579999929ed6b899e769cd234ba" FOREIGN KEY ("word_id") REFERENCES "words"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`,
-    );
-    await queryRunner.query(
-      `ALTER TABLE "word_lexemes" ADD CONSTRAINT "FK_643892e2709e1d49641fb965b82" FOREIGN KEY ("lexeme_id") REFERENCES "lexemes"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`,
+      `ALTER TABLE "word_lexemes" ADD CONSTRAINT "FK_643892e2709e1d49641fb965b82" FOREIGN KEY ("lexeme_id") REFERENCES "lexemes"("id") ON DELETE CASCADE ON UPDATE CASCADE`,
     );
   }
 
@@ -229,9 +226,6 @@ export class Migration1780445945241 implements MigrationInterface {
       `ALTER TABLE "word_forms" DROP CONSTRAINT "FK_54256ad366638dd2243dcd88b25"`,
     );
     await queryRunner.query(
-      `ALTER TABLE "lexemes" DROP CONSTRAINT "FK_3a03721bc1b266578e9afad9665"`,
-    );
-    await queryRunner.query(
       `ALTER TABLE "translations" DROP CONSTRAINT "FK_03033925e968b7c9430896d55f8"`,
     );
     await queryRunner.query(
@@ -239,6 +233,9 @@ export class Migration1780445945241 implements MigrationInterface {
     );
     await queryRunner.query(
       `ALTER TABLE "principal_parts" DROP CONSTRAINT "FK_95d23e3a9561dea102f7bf9325e"`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "inflections" DROP CONSTRAINT "FK_ebe1d473505c1ffc72c57d57731"`,
     );
     await queryRunner.query(
       `ALTER TABLE "forms" DROP CONSTRAINT "FK_52ebb86789cf513c7fb44ab9a95"`,
@@ -270,9 +267,6 @@ export class Migration1780445945241 implements MigrationInterface {
     await queryRunner.query(`COMMENT ON TABLE "lexemes" IS NULL`);
     await queryRunner.query(
       `DROP INDEX "public"."IDX_f6fa0a0a5e197c157882f29c22"`,
-    );
-    await queryRunner.query(
-      `DROP INDEX "public"."IDX_3a03721bc1b266578e9afad966"`,
     );
     await queryRunner.query(
       `DROP INDEX "public"."IDX_9204890678d644ba216ae116e3"`,

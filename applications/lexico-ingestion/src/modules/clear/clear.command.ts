@@ -1,7 +1,7 @@
 import { Logger } from "@nestjs/common";
 import { Command, CommandRunner, Option } from "nest-commander";
 
-import { ClearService } from "./clear.service.js";
+import { ClearService } from "./clear.service";
 
 interface ClearCommandOptions {
   dictionary?: boolean;
