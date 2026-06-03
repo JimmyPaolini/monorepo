@@ -2,18 +2,22 @@ import {
   MARGIN_MINUTES,
   symbolByBody,
   symbolByOrbitalDirection,
-} from "@caelundas/src/caelundas.constants";
-import { capitalize, retrogradeBodies } from "@caelundas/src/caelundas.types";
+} from "@caelundas/src/modules/caelundas/caelundas.constants";
+import {
+  capitalize,
+  retrogradeBodies,
+} from "@caelundas/src/modules/caelundas/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Injectable } from "@nestjs/common";
-import _ from "lodash";
+
+import { LoggerService } from "../logger/logger.service";
 
 import type {
   OrbitalDirection,
   RetrogradeBody,
-} from "@caelundas/src/caelundas.types";
+} from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
@@ -29,10 +33,13 @@ export class RetrogradesService {
   private static readonly categories = ["Astronomy", "Astrology", "Direction"];
   // 🏗️ Dependency Injection
   constructor(
+    private readonly logger: LoggerService,
     private readonly ephemerisService: EphemerisService,
     private readonly mathService: MathService,
     private readonly progressiveUtilitiesService: ProgressiveUtilities,
-  ) {}
+  ) {
+    this.logger.setContext(RetrogradesService.name);
+  }
 
   // 🔐 Private Fields
 
@@ -196,7 +203,7 @@ export class RetrogradesService {
     const description = `${bodyCapitalized} Stationary ${orbitalDirectionCapitalized}`;
     const summary = `${retrogradeBodySymbol} ${orbitalDirectionSymbol} ${description}`;
 
-    console.log(`${summary} at ${timestamp.toISOString()}`);
+    this.logger.log(`${summary} at ${timestamp.toISOString()}`);
 
     const retrogradeEvent: Event = {
       start: timestamp,

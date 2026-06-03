@@ -11,7 +11,7 @@
   "targets": {
     "analyze-code": {},
     "clean": {},
-    "code-analysis": {},
+    "code-analysis": { "cache": false },
     "dependency-cruiser": {},
     "download-ephemeris": {
       "cache": false,

@@ -271,6 +271,43 @@ git push --no-verify
 
 See [Git Workflow Rules](../../AGENTS.md#git-workflow-rules) for hook enforcement policy.
 
+### Pre-Commit Hook Configuration
+
+**Hooks live in `configuration/.husky/`** (not `.husky/`). Registered via the `prepare` script in root `package.json`:
+
+```bash
+"prepare": "husky configuration/.husky"
+```
+
+There are three hooks:
+
+| Hook | What it runs |
+| ---- | ------------ |
+| `pre-commit` | `nx run monorepo:lint-staged` — runs format, lint, typecheck, etc. on staged files |
+| `commit-msg` | `nx run monorepo:commitlint` — validates commit message format |
+| `pre-push` | `nx run monorepo:validate-branch-name` — validates branch name pattern |
+
+**Reading the last pre-commit failure**: Output is always written to `last-lint-staged-output.txt` at the workspace root. Read it without re-running the hook:
+
+```bash
+cat last-lint-staged-output.txt
+```
+
+**After applying auto-fixes**, validate with `--configuration=check` before staging — do NOT re-run `lint-staged` directly (it would stage fixes before you can review them):
+
+```bash
+# Validate format fix worked
+pnpm exec nx affected --target=format --configuration=check --files=<staged-files>
+```
+
+**`sync-conformance-generators` fires** on `AGENTS.md` and `tools/conformance/generators.json` changes. Fix stale generated output by running:
+
+```bash
+pnpm exec nx run monorepo:sync-conformance-generators
+```
+
+See [triage-submission skill](../skills/triage-submission/SKILL.md) for the full hook triage procedure.
+
 ## shadcn/ui (lexico-components)
 
 ### Modifying `ui/` Files Breaks on Update

@@ -1,25 +1,27 @@
+import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
 import {
   majorAspects,
   symbolByBody,
   symbolByMajorAspect,
-} from "@caelundas/src/caelundas.constants";
+} from "@caelundas/src/modules/caelundas/caelundas.constants";
 import {
   capitalize,
   isBody,
   isMajorAspect,
   majorAspectBodies,
-} from "@caelundas/src/caelundas.types";
-import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
+} from "@caelundas/src/modules/caelundas/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
+import { LoggerService } from "../logger/logger.service";
+
 import type {
   AspectPhase,
   Body,
   MajorAspect,
-} from "@caelundas/src/caelundas.types";
+} from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
@@ -40,10 +42,12 @@ export class MajorAspectsService {
 
   // 🏗️ Dependency Injection
   constructor(
+    private readonly logger: LoggerService,
     private readonly aspectsUtilitiesService: AspectsUtilities,
     private readonly ephemerisService: EphemerisService,
     private readonly progressiveUtilitiesService: ProgressiveUtilities,
   ) {
+    this.logger.setContext(MajorAspectsService.name);
     this.detectAspectPhase = aspectsUtilitiesService.getIsAspect([
       ...majorAspects,
     ]);
@@ -254,7 +258,7 @@ export class MajorAspectsService {
       args;
     const majorAspect = this.getMajorAspect({ longitudeBody1, longitudeBody2 });
     if (!majorAspect) {
-      console.error(
+      this.logger.error(
         `No major aspect found between ${body1} and ${body2} at ${timestamp.toISOString()}: ${longitudeBody1} and ${longitudeBody2}`,
       );
       throw new Error("No major aspect found");
@@ -292,7 +296,7 @@ export class MajorAspectsService {
 
     const summary = `${phaseEmoji} ${body1Symbol} ${majorAspectSymbol} ${body2Symbol} ${description}`;
 
-    console.log(`${summary} at ${timestamp.toISOString()}`);
+    this.logger.log(`${summary} at ${timestamp.toISOString()}`);
 
     const majorAspectEvent: Event = {
       start: timestamp,

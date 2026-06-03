@@ -25,11 +25,7 @@
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "production": [
       "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
-      "!{projectRoot}/.eslintrc.json",
-      "!{projectRoot}/jest.config.[jt]s",
-      "!{projectRoot}/src/test-setup.[jt]s",
       "!{projectRoot}/tsconfig.spec.json",
-      "!{projectRoot}/vitest.config.base.ts",
       "default"
     ],
     "pythonSource": [
@@ -43,9 +39,14 @@
       "{workspaceRoot}/configuration/tsconfig.base.json",
       "{workspaceRoot}/nx.json",
       "{workspaceRoot}/pnpm-lock.yaml"
+    ],
+    "typescriptFiles": [
+      "{projectRoot}/**/*.{ts,tsx,mts,cts}",
+      "{projectRoot}/tsconfig*.json",
+      "sharedGlobals"
     ]
   },
-  "parallel": 1,
+  "parallel": 3,
   "plugins": [
     {
       "options": {
@@ -111,6 +112,10 @@
       },
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml,py,ipynb,sql}",
+        "sharedGlobals"
+      ],
       "options": {
         "outputStyle": "stream"
       }
@@ -142,7 +147,12 @@
         }
       },
       "defaultConfiguration": "check",
-      "executor": "nx:run-commands"
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,py}",
+        "{workspaceRoot}/configuration/knip.config.ts",
+        "sharedGlobals"
+      ]
     },
     "dependency-cruiser": {
       "cache": true,
@@ -169,9 +179,9 @@
       },
       "defaultConfiguration": "check",
       "inputs": [
-        "{projectRoot}/**/*.md",
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml}",
         "{workspaceRoot}/configuration/eslint.config.base.ts",
-        "default"
+        "sharedGlobals"
       ],
       "options": {
         "command": "eslint . {args}"
@@ -196,7 +206,14 @@
         }
       },
       "defaultConfiguration": "check",
-      "executor": "nx:run-commands"
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml,sql}",
+        "{workspaceRoot}/.prettierignore",
+        "{workspaceRoot}/configuration/oxfmt.config.ts",
+        "{workspaceRoot}/configuration/prettier.config.ts",
+        "sharedGlobals"
+      ]
     },
     "knip": {
       "cache": true,
@@ -235,7 +252,13 @@
         }
       },
       "defaultConfiguration": "check",
-      "executor": "nx:run-commands"
+      "executor": "nx:run-commands",
+      "inputs": [
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,md,mdx,css}",
+        "{workspaceRoot}/configuration/eslint.config.base.ts",
+        "{workspaceRoot}/configuration/oxlint.config.ts",
+        "sharedGlobals"
+      ]
     },
     "markdown-lint": {
       "cache": true,
@@ -252,7 +275,7 @@
       "inputs": [
         "{projectRoot}/**/*.md",
         "{workspaceRoot}/configuration/.markdownlint-cli2.jsonc",
-        "default"
+        "sharedGlobals"
       ],
       "options": {
         "command": "markdownlint-cli2 --config configuration/.markdownlint-cli2.jsonc '{projectRoot}/**/*.md'",
@@ -271,7 +294,11 @@
       },
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
-      "inputs": ["{workspaceRoot}/configuration/oxfmt.config.ts", "default"],
+      "inputs": [
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml}",
+        "{workspaceRoot}/configuration/oxfmt.config.ts",
+        "sharedGlobals"
+      ],
       "options": {
         "command": "oxfmt -c configuration/oxfmt.config.ts {args} {projectRoot}",
         "cwd": "{workspaceRoot}"
@@ -287,7 +314,11 @@
       },
       "defaultConfiguration": "check",
       "executor": "nx:run-commands",
-      "inputs": ["{workspaceRoot}/configuration/oxlint.config.ts", "default"],
+      "inputs": [
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs}",
+        "{workspaceRoot}/configuration/oxlint.config.ts",
+        "sharedGlobals"
+      ],
       "options": {
         "command": "oxlint --config configuration/oxlint.config.ts {args} {projectRoot}/src",
         "cwd": "{workspaceRoot}"
@@ -306,9 +337,10 @@
       "defaultConfiguration": "write",
       "executor": "nx:run-commands",
       "inputs": [
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,html,css,scss,md,mdx,yaml,yml}",
         "{workspaceRoot}/.prettierignore",
         "{workspaceRoot}/configuration/prettier.config.ts",
-        "default"
+        "sharedGlobals"
       ],
       "options": {
         "command": "prettier {args} --config configuration/prettier.config.ts --ignore-path .prettierignore {projectRoot}"
@@ -395,12 +427,13 @@
       "cache": true,
       "executor": "nx:run-commands",
       "inputs": [
-        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,css,scss,html,yaml,yml,md,mdx,py,ipynb}",
+        "{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,css,scss,html,yaml,yml,md,mdx,py,ipynb,sql}",
+        "{workspaceRoot}/configuration/.cspell/**",
         "{workspaceRoot}/configuration/cspell.config.yaml",
-        "default"
+        "sharedGlobals"
       ],
       "options": {
-        "command": "cspell --config configuration/cspell.config.yaml '{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,css,scss,html,yaml,yml,md,mdx,py,ipynb}' --no-progress --gitignore",
+        "command": "cspell --config configuration/cspell.config.yaml '{projectRoot}/**/*.{ts,tsx,js,jsx,mts,cts,mjs,cjs,json,jsonc,json5,css,scss,html,yaml,yml,md,mdx,py,ipynb,sql}' --no-progress --gitignore",
         "cwd": "{workspaceRoot}"
       }
     },
@@ -448,19 +481,20 @@
         "{projectRoot}/**/*.ts",
         "{projectRoot}/**/*.tsx",
         "{projectRoot}/tsconfig.json",
-        "default"
+        "sharedGlobals"
       ],
       "options": {
         "command": "type-coverage --detail > type-coverage-report.txt 2>&1 || (cat type-coverage-report.txt && exit 1)",
         "cwd": "{projectRoot}"
-      }
+      },
+      "outputs": ["{projectRoot}/type-coverage-report.txt"]
     },
     "typecheck": {
       "cache": true,
       "executor": "nx:run-commands",
       "inputs": [
         "^production",
-        "default",
+        "typescriptFiles",
         {
           "externalDependencies": ["typescript"]
         }
@@ -490,7 +524,7 @@
       "inputs": [
         "{projectRoot}/**/*.{yaml,yml}",
         "{workspaceRoot}/configuration/yamllint.yaml",
-        "default"
+        "sharedGlobals"
       ],
       "options": {
         "command": "uv run --project configuration yamllint -c configuration/yamllint.yaml '{projectRoot}'",

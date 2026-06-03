@@ -1,26 +1,28 @@
+import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
 import {
   specialtyAspects,
   symbolByBody,
   symbolBySpecialtyAspect,
-} from "@caelundas/src/caelundas.constants";
+} from "@caelundas/src/modules/caelundas/caelundas.constants";
 import {
   capitalize,
   isBody,
   isSpecialtyAspect,
   specialtyAspectBodies,
-} from "@caelundas/src/caelundas.types";
-import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
+} from "@caelundas/src/modules/caelundas/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
+
+import { LoggerService } from "../logger/logger.service";
 
 import type {
   AspectPhase,
   Body,
   SpecialtyAspect,
   SpecialtyAspectSymbol,
-} from "@caelundas/src/caelundas.types";
+} from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 import type { Moment } from "moment-timezone";
@@ -42,10 +44,12 @@ export class SpecialtyAspectsService {
 
   // 🏗️ Dependency Injection
   constructor(
+    private readonly logger: LoggerService,
     private readonly aspectsUtilitiesService: AspectsUtilities,
     private readonly ephemerisService: EphemerisService,
     private readonly progressiveUtilitiesService: ProgressiveUtilities,
   ) {
+    this.logger.setContext(SpecialtyAspectsService.name);
     this.detectAspectPhase = aspectsUtilitiesService.getIsAspect([
       ...specialtyAspects,
     ]);
@@ -214,7 +218,7 @@ export class SpecialtyAspectsService {
       longitudeBody2,
     });
     if (!specialtyAspect) {
-      console.error(
+      this.logger.error(
         `No specialty aspect found between ${body1} and ${body2} at ${timestamp.toISOString()}: ${longitudeBody1} and ${longitudeBody2}`,
       );
       throw new Error("No specialty aspect found");
@@ -258,7 +262,7 @@ export class SpecialtyAspectsService {
 
     const summary = `${phaseEmoji} ${body1Symbol} ${specialtyAspectSymbol} ${body2Symbol} ${description}`;
 
-    console.log(`${summary} at ${timestamp.toISOString()}`);
+    this.logger.log(`${summary} at ${timestamp.toISOString()}`);
 
     const specialtyAspectEvent: Event = {
       start: timestamp,

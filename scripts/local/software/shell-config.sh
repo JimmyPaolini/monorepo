@@ -46,7 +46,7 @@ configure_shell_rc() {
   append_shell_block "$rc_file" \
     "# monorepo: pnpm global bin" \
     "export PNPM_HOME=\"\$HOME/.local/share/pnpm\"
-case \":\$PATH:\" in *\":\$PNPM_HOME:\"*) ;; *) export PATH=\"\$PNPM_HOME:\$PATH\" ;; esac"
+case \":\$PATH:\" in *\":\$PNPM_HOME/bin:\"*) ;; *) export PATH=\"\$PNPM_HOME/bin:\$PNPM_HOME:\$PATH\" ;; esac"
 
   # ── GPG TTY (for git commit signing) ──
   # gpg-agent needs a terminal reference to show the pinentry passphrase dialog.

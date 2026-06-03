@@ -1,5 +1,6 @@
-import { MARGIN_MINUTES } from "@caelundas/src/caelundas.constants";
+import { MARGIN_MINUTES } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
+import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { Test } from "@nestjs/testing";
 import moment, { type Moment } from "moment-timezone";
@@ -35,7 +36,12 @@ let service: MonthlyLunarCycleService;
 
 beforeAll(async () => {
   const module = await Test.createTestingModule({
-    providers: [MonthlyLunarCycleService, EphemerisService, MathService],
+    providers: [
+      MonthlyLunarCycleService,
+      EphemerisService,
+      LoggerService,
+      MathService,
+    ],
   }).compile();
   service = module.get(MonthlyLunarCycleService);
 });

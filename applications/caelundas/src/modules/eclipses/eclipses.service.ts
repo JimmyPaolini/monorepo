@@ -3,8 +3,10 @@ import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Injectable } from "@nestjs/common";
 
+import { LoggerService } from "../logger/logger.service";
+
 import type { EclipseFrame } from "./eclipses.types";
-import type { EclipsePhase } from "@caelundas/src/caelundas.types";
+import type { EclipsePhase } from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type {
   AzimuthElevationEphemeris,
@@ -23,10 +25,13 @@ import type { Moment } from "moment-timezone";
 export class EclipsesService {
   // 🏗️ Dependency Injection
   constructor(
+    private readonly logger: LoggerService,
     private readonly ephemerisService: EphemerisService,
     private readonly mathService: MathService,
     private readonly progressiveUtilitiesService: ProgressiveUtilities,
-  ) {}
+  ) {
+    this.logger.setContext(EclipsesService.name);
+  }
 
   // 🔐 Private Fields
 
@@ -445,7 +450,7 @@ export class EclipsesService {
     const framedSummary = `${frameSymbol} ${summary}`;
 
     const dateString = this.formatTimeZoneIso(date, "America/New_York");
-    console.log(`${framedSummary} at ${dateString}`);
+    this.logger.log(`${framedSummary} at ${dateString}`);
 
     const solarEclipseEvent: Event = {
       start: date,
@@ -498,7 +503,7 @@ export class EclipsesService {
     const framedSummary = `${frameSymbol} ${summary}`;
 
     const dateString = this.formatTimeZoneIso(date, "America/New_York");
-    console.log(`${framedSummary} at ${dateString}`);
+    this.logger.log(`${framedSummary} at ${dateString}`);
 
     const lunarEclipseEvent: Event = {
       start: date,

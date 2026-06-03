@@ -16,7 +16,7 @@
       }
     },
     "clean": {},
-    "code-analysis": {},
+    "code-analysis": { "cache": false },
     "dependency-cruiser": {
       "executor": "nx:run-commands",
       "options": {

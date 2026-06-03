@@ -3,8 +3,8 @@ import {
   symbolByMartianPhase,
   symbolByMercurianPhase,
   symbolByVenusianPhase,
-} from "@caelundas/src/caelundas.constants";
-import { planetaryPhaseBodies } from "@caelundas/src/caelundas.types";
+} from "@caelundas/src/modules/caelundas/caelundas.constants";
+import { planetaryPhaseBodies } from "@caelundas/src/modules/caelundas/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
@@ -12,11 +12,13 @@ import { TwilightsService } from "@caelundas/src/modules/twilights/twilights.ser
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
 
+import { LoggerService } from "../logger/logger.service";
+
 import type {
   MartianPhase,
   MercurianPhase,
   VenusianPhase,
-} from "@caelundas/src/caelundas.types";
+} from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type {
   CoordinateEphemeris,
@@ -58,10 +60,13 @@ export class PhasesService {
 
   // 🏗️ Dependency Injection
   constructor(
+    private readonly logger: LoggerService,
     private readonly ephemerisService: EphemerisService,
     private readonly mathService: MathService,
     private readonly progressiveUtilitiesService: ProgressiveUtilities,
-  ) {}
+  ) {
+    this.logger.setContext(PhasesService.name);
+  }
 
   // 🔐 Private Fields
 
@@ -189,7 +194,7 @@ export class PhasesService {
     const summary = `♀️${phaseSymbol} ${description}`;
 
     const dateString = this.formatTimeZoneIso(timestamp, "America/New_York");
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const venusianPhaseEvent: Event = {
       start: timestamp,
@@ -460,7 +465,7 @@ export class PhasesService {
     const summary = `☿${phaseSymbol} ${description}`;
 
     const dateString = this.formatTimeZoneIso(timestamp, "America/New_York");
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const mercurianPhaseEvent: Event = {
       start: timestamp,
@@ -728,7 +733,7 @@ export class PhasesService {
     const summary = `♂️${phaseSymbol} ${description}`;
 
     const dateString = this.formatTimeZoneIso(timestamp, "America/New_York");
-    console.log(`${summary} at ${dateString}`);
+    this.logger.log(`${summary} at ${dateString}`);
 
     const martianPhaseEvent: Event = {
       start: timestamp,

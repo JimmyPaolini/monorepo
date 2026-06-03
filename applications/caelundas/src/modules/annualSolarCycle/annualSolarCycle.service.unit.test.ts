@@ -1,5 +1,6 @@
-import { MARGIN_MINUTES } from "@caelundas/src/caelundas.constants";
+import { MARGIN_MINUTES } from "@caelundas/src/modules/caelundas/caelundas.constants";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
+import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Test } from "@nestjs/testing";
@@ -26,13 +27,14 @@ describe("AnnualSolarCycleService", () => {
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
+        LoggerService,
         AnnualSolarCycleService,
         EphemerisService,
         MathService,
         ProgressiveUtilities,
       ],
     }).compile();
-    service = module.get(AnnualSolarCycleService);
+    service = await module.resolve(AnnualSolarCycleService);
   });
 
   // Helper to create coordinate ephemeris
@@ -575,13 +577,14 @@ describe("annualSolarCycle.utilities", () => {
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
+        LoggerService,
         AnnualSolarCycleService,
         EphemerisService,
         MathService,
         ProgressiveUtilities,
       ],
     }).compile();
-    service = module.get(AnnualSolarCycleService);
+    service = await module.resolve(AnnualSolarCycleService);
   });
 
   describe("isVernalEquinox", () => {

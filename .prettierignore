@@ -20,6 +20,8 @@ yarn.lock
 **/.next
 **/out
 **/affirmations/output
+**/data/wiktionary
+**/data/wikipedia
 
 # 🧪 Coverage
 **/coverage

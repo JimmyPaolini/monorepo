@@ -1,6 +1,7 @@
-import { specialtyAspectBodies } from "@caelundas/src/caelundas.types";
 import { AspectsUtilities } from "@caelundas/src/modules/aspects/aspects.utilities";
+import { specialtyAspectBodies } from "@caelundas/src/modules/caelundas/caelundas.types";
 import { EphemerisService } from "@caelundas/src/modules/ephemeris/ephemeris.service";
+import { LoggerService } from "@caelundas/src/modules/logger/logger.service";
 import { MathService } from "@caelundas/src/modules/math/math.service";
 import { ProgressiveUtilities } from "@caelundas/src/modules/progressive/progressive.utilities";
 import { Test } from "@nestjs/testing";
@@ -9,7 +10,7 @@ import { beforeAll, describe, expect, it, vi } from "vitest";
 
 import { SpecialtyAspectsService } from "./specialtyAspects.service";
 
-import type { Body } from "@caelundas/src/caelundas.types";
+import type { Body } from "@caelundas/src/modules/caelundas/caelundas.types";
 import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 import type { CoordinateEphemeris } from "@caelundas/src/modules/ephemeris/ephemeris.types";
 
@@ -25,6 +26,7 @@ describe("SpecialtyAspectsService", () => {
   beforeAll(async () => {
     const module = await Test.createTestingModule({
       providers: [
+        LoggerService,
         SpecialtyAspectsService,
         AspectsUtilities,
         EphemerisService,
@@ -32,7 +34,7 @@ describe("SpecialtyAspectsService", () => {
         ProgressiveUtilities,
       ],
     }).compile();
-    service = module.get(SpecialtyAspectsService);
+    service = await module.resolve(SpecialtyAspectsService);
   });
 
   it("should be defined", () => {

@@ -15,6 +15,24 @@ ESLint plugin `eslint-plugin-import` automatically sorts imports in this order:
 
 **Enforced by**: ESLint rule `import/order`
 
+## No File Extensions
+
+Always omit file extensions (`.js`, `.ts`, `.tsx`) from relative imports.
+
+### ✅ Correct
+
+```typescript
+import { getUserProfile } from "../api/user";
+import { UserCard } from "./user-card";
+```
+
+### ❌ Incorrect
+
+```typescript
+import { getUserProfile } from "../api/user.js";
+import { UserCard } from "./user-card.tsx";
+```
+
 ## Examples
 
 ### ✅ Correct Import Order

@@ -2,7 +2,6 @@
   "recommendations": [
     "aaron-bond.better-comments", // Better Comments
     "adamhartford.vscode-base64", // vscode-base64
-    "adpyke.vscode-sql-formatter", // SQL Formatter
     "bierner.comment-tagged-templates", // Comment tagged templates
     "bierner.markdown-mermaid", // Markdown Preview Mermaid Support
     "bradlc.vscode-tailwindcss", // Tailwind CSS IntelliSense
@@ -11,6 +10,8 @@
     "christian-kohler.npm-intellisense", // npm Intellisense
     "christian-kohler.path-intellisense", // Path Intellisense
     "ctf0.inline-fold-new", // Inline fold (new)
+    "dawhite.mustache", // Mustache
+    "sqlfluff.vscode-sqlfluff", // SQLFluff
     "cweijan.dbclient-jdbc", // Database Client JDBC
     "cweijan.vscode-database-client2", // Database Client
     "dbaeumer.vscode-eslint", // ESLint
@@ -28,7 +29,6 @@
     "hashicorp.terraform", // HashiCorp Terraform
     "IBM.output-colorizer", // Output Colorizer
     "iliazeus.vscode-ansi", // ANSI Colors
-    "inferrinizzard.prettier-sql-vscode", // Prettier SQL VSCode
     "jasonnutter.vscode-codeowners", // CODEOWNERS
     "jsynowiec.vscode-insertdatestring", // Insert Date String
     "KevinRose.vsc-python-indent", // Python Indent
@@ -72,6 +72,7 @@
   "unwantedRecommendations": [
     "alefragnani.Bookmarks", // Bookmarks
     "aljazsim.tsco", // TypeScript Code Organizer
+    "adpyke.vscode-sql-formatter", // SQL Formatter
     "altimateai.vscode-altimate-mcp-server", // Datamates
     "apollographql.vscode-apollo", // Apollo GraphQL
     "atlassian.atlascode", // Atlassian: Jira, Rovo Dev, Bitbucket

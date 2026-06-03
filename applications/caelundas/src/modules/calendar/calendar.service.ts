@@ -5,6 +5,8 @@ import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import moment from "moment-timezone";
 
+import { LoggerService } from "../logger/logger.service";
+
 import type {
   BuildCalendarFileContentParameters,
   Event,
@@ -23,7 +25,12 @@ import type {
 @Injectable()
 export class CalendarService {
   // 🏗️ Dependency Injection
-  constructor(private readonly configService: ConfigService<Environment>) {}
+  constructor(
+    private readonly logger: LoggerService,
+    private readonly configService: ConfigService<Environment>,
+  ) {
+    this.logger.setContext(CalendarService.name);
+  }
 
   // 🔐 Private Fields
 
@@ -95,7 +102,7 @@ END:VTIMEZONE`;
       path.join(outputDir, calendarFilename),
       new TextEncoder().encode(calendarFileContent),
     );
-    console.log(
+    this.logger.log(
       `✏️ Wrote ${events.length} events to file "${calendarFilename}"`,
     );
   }
