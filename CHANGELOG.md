@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.0](https://github.com/JimmyPaolini/monorepo/compare/v1.3.2...v1.4.0) (2026-06-03)
+
+### ✨ Features
+
+* **lexico:** ✨ add ingestion CLI app with typeorm entities package ([#53](https://github.com/JimmyPaolini/monorepo/issues/53)) ([7048b03](https://github.com/JimmyPaolini/monorepo/commit/7048b03be32c6477a5acbbc4fe59c66fd930622c))
+
+### ♻️ Code Refactoring
+
+* **conformance:** ♻️ centralize template conformance with auto-discovery ([#54](https://github.com/JimmyPaolini/monorepo/issues/54)) ([c69e136](https://github.com/JimmyPaolini/monorepo/commit/c69e136d6ca24c808b80c63ba841467e195b0e46))
+
 ## [1.3.2](https://github.com/JimmyPaolini/monorepo/compare/v1.3.1...v1.3.2) (2026-05-29)
 
 ### ♻️ Code Refactoring
