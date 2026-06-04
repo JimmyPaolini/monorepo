@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.6.0](https://github.com/JimmyPaolini/monorepo/compare/v1.5.0...v1.6.0) (2026-06-04)
+
+### ✨ Features
+
+* **conformance:** ✨ add NestJS REPL entry point to nestjs-command-application generator ([#60](https://github.com/JimmyPaolini/monorepo/issues/60)) ([f263bf4](https://github.com/JimmyPaolini/monorepo/commit/f263bf4ea8e950376128eacc33da3cce394e1d0e)), closes [#56](https://github.com/JimmyPaolini/monorepo/issues/56)
+
 ## [1.5.0](https://github.com/JimmyPaolini/monorepo/compare/v1.4.0...v1.5.0) (2026-06-03)
 
 ### ✨ Features
