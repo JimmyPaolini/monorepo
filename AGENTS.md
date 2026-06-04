@@ -81,6 +81,7 @@ Provided by the [conformance](tools/conformance/AGENTS.md) tool. Run with `nx ge
 <!-- conformance-generators-table start -->
 | Generator | Alias | Description |
 | --------- | ----- | ----------- |
+| `jupyter-notebook-application` | `jna` | Generate a Python Jupyter notebook application scaffold |
 | `nestjs-command-application` | `nca` | Generate a NestJS command-line application scaffold using nest-commander |
 | `nestjs-service-module` | `nsm` | Generate a NestJS service module with module, service, types, constants, and unit test files |
 | `react-component` | `c` | Generate a React component with test file |

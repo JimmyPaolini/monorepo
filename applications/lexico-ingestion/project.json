@@ -55,7 +55,7 @@
     },
     "spell-check": {},
     "start": {
-      "description": "Start the Lexico Ingestion application",
+      "description": "Start the LexicoIngestion application",
       "executor": "nx:run-commands",
       "options": {
         "command": "node --import @swc-node/register/esm-register src/main.ts lexico-ingestion",

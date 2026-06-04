@@ -30,10 +30,10 @@
     },
     "spell-check": {},
     "start": {
-      "description": "Start the <%= className %> application",
+      "description": "Start the {{namePascalCase}} application",
       "executor": "nx:run-commands",
       "options": {
-        "command": "node --import @swc-node/register/esm-register src/main.ts <%= propertyName %>",
+        "command": "node --import @swc-node/register/esm-register src/main.ts {{nameKebabCase}}",
         "cwd": "{projectRoot}"
       }
     },
