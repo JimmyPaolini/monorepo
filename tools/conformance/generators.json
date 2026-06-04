@@ -13,6 +13,12 @@
       "factory": "./src/generators/nestjs-command-application/generator#generateNestjsCommandApplication",
       "schema": "./src/generators/nestjs-command-application/schema.json"
     },
+    "nestjs-graphql-module": {
+      "aliases": ["ngm"],
+      "description": "Generate a NestJS GraphQL module with resolver, entities, inputs, args, service, types, constants, and unit test files",
+      "factory": "./src/generators/nestjs-graphql-module/generator#generateNestjsGraphqlModule",
+      "schema": "./src/generators/nestjs-graphql-module/schema.json"
+    },
     "nestjs-service-module": {
       "aliases": ["nsm"],
       "description": "Generate a NestJS service module with module, service, types, constants, and unit test files",
