@@ -123,7 +123,7 @@
       "executor": "nx:run-commands",
       "options": {
         "command": "vite preview",
-        "cwd": "${projectRoot}"
+        "cwd": "{projectRoot}"
       }
     },
     "spell-check": {},

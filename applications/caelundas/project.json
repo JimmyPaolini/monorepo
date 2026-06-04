@@ -35,7 +35,7 @@
       "executor": "nx:run-commands",
       "options": {
         "command": "node --import @swc-node/register/esm-register src/repl.ts",
-        "cwd": "${projectRoot}"
+        "cwd": "{projectRoot}"
       }
     },
     "spell-check": {},
@@ -44,7 +44,7 @@
       "executor": "nx:run-commands",
       "options": {
         "command": "node --import @swc-node/register/esm-register src/main.ts caelundas",
-        "cwd": "${projectRoot}"
+        "cwd": "{projectRoot}"
       }
     },
     "test": {
@@ -69,7 +69,7 @@
       "executor": "nx:run-commands",
       "options": {
         "command": "vitest run",
-        "cwd": "${projectRoot}"
+        "cwd": "{projectRoot}"
       }
     },
     "type-coverage": {},
