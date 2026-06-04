@@ -25,6 +25,7 @@ describe("generateNestjsCommandApplication", () => {
       expect(tree.exists(`${base}/eslint.config.ts`)).toBeTruthy();
       expect(tree.exists(`${base}/vitest.config.ts`)).toBeTruthy();
       expect(tree.exists(`${base}/src/main.ts`)).toBeTruthy();
+      expect(tree.exists(`${base}/src/repl.ts`)).toBeTruthy();
       expect(
         tree.exists(`${base}/src/modules/stellar-cli/stellar-cli.module.ts`),
       ).toBeTruthy();
