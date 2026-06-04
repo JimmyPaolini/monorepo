@@ -1,17 +1,4 @@
 {
-  "name": "{{nameKebabCase}}",
-  "version": "0.0.1",
-  "type": "module",
-  "scripts": {
-    "repl": "node --import @swc-node/register/esm-register src/repl.ts",
-    "start": "node --import @swc-node/register/esm-register src/main.ts {{nameKebabCase}}",
-    "test": "vitest run",
-    "test:coverage": "vitest run --coverage",
-    "test:end-to-end": "vitest run end-to-end.test.ts",
-    "test:integration": "vitest run integration.test.ts",
-    "test:unit": "vitest run unit.test.ts",
-    "test:watch": "vitest"
-  },
   "dependencies": {
     "@nestjs/common": "^11.1.23",
     "@nestjs/config": "^4.0.4",
@@ -27,16 +14,19 @@
   "devDependencies": {
     "@nestjs/testing": "^11.1.23",
     "@nx/eslint-plugin": "^22.7.3",
-    "@swc-node/register": "^1.11.1",
     "@swc/core": "^1.15.40",
     "@swc/helpers": "^0.5.21",
+    "@swc-node/register": "^1.11.1",
     "@types/node": "^25.9.1",
     "@vitest/coverage-v8": "^4.1.7",
     "typescript": "^6.0.3",
     "vitest": "^4.1.7"
   },
+  "name": "{{nameKebabCase}}",
+  "type": "module",
   "typeCoverage": {
     "atLeast": 100,
     "strict": true
-  }
+  },
+  "version": "0.0.1"
 }
