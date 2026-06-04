@@ -47,6 +47,10 @@
     },
     "type-coverage": {},
     "typecheck": {},
-    "yaml-lint": {}
+    "yaml-lint": {},
+    "pytest": {},
+    "pyright": {},
+    "ruff-lint": {},
+    "ruff-format": {}
   }
 }
