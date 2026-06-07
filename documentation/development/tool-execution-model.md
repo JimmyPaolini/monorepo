@@ -53,7 +53,7 @@ docker build --platform linux/amd64 -t myapp:latest .
 docker push ghcr.io/jimmypaolini/myapp:latest
 docker compose up -d
 
-# Note: Nx targets wrap these (e.g., nx run caelundas:docker-build)
+# Note: Nx targets wrap these (e.g., docker buildx build --platform linux/amd64 -f <dockerfile> -t <image> .)
 # but the underlying Docker CLI runs directly
 ```
 
@@ -229,7 +229,7 @@ pnpm docker:build
 # CORRECT: Direct Docker CLI (or Nx wrapper)
 docker build -t myapp .
 # OR (if Nx target exists)
-nx run caelundas:docker-build
+docker buildx build --platform linux/amd64 -f <dockerfile> -t <image> .
 ```
 
 ### ❌ Running Supabase via npm scripts

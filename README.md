@@ -51,7 +51,6 @@ Install [Docker Desktop](https://www.docker.com/products/docker-desktop/), [VSCo
 - **[caelundas](applications/caelundas)** - CLI ephemeris calendar generator with astronomical calculations
 - **[conformance](tools/conformance)** - Nx generators for scaffolding code
 - **[infrastructure](infrastructure)** - Helm charts, Terraform, Kubernetes infrastructure
-- **[JimmyPaolini](applications/JimmyPaolini)** - GitHub profile site
 - **[lexico](applications/lexico)** - TanStack Start + Supabase dictionary web application
 - **[lexico-components](packages/lexico-components)** - Shared React component library using shadcn/ui
 - **[lexico-entities](packages/lexico-entities)** - Shared TypeORM entities and GraphQL types package

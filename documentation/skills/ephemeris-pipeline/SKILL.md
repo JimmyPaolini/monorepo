@@ -17,7 +17,7 @@ Caelundas generates astronomical calendars by:
 3. **Detecting events** (aspects, phases, eclipses, etc.)
 4. **Generating calendars** in iCal and JSON formats
 
-For comprehensive architecture details, see [applications/caelundas/AGENTS.md](../../applications/caelundas/AGENTS.md).
+For comprehensive architecture details, see [applications/caelundas/AGENTS.md](../../../applications/caelundas/AGENTS.md).
 
 ## Pipeline Architecture
 
@@ -439,7 +439,7 @@ For full year calendar (365 days, 11 bodies):
 ### Generate Calendar
 
 ```bash
-nx run caelundas:develop
+nx run caelundas:start
 ```
 
 ### Clear Cache
@@ -452,7 +452,7 @@ rm applications/caelundas/ephemeris.db
 
 ```bash
 # Enable debug logging
-DEBUG=nasa-api nx run caelundas:develop
+DEBUG=nasa-api nx run caelundas:start
 ```
 
 ### Validate Output
@@ -467,8 +467,8 @@ jq . output/calendar.json
 
 ## Related Documentation
 
-- [applications/caelundas/AGENTS.md](../../applications/caelundas/AGENTS.md) - Full architecture
-- [applications/caelundas/README.md](../../applications/caelundas/README.md) - Usage guide
+- [applications/caelundas/AGENTS.md](../../../applications/caelundas/AGENTS.md) - Full architecture
+- [applications/caelundas/README.md](../../../applications/caelundas/README.md) - Usage guide
 - [NASA JPL Horizons](https://ssd.jpl.nasa.gov/horizons/) - API documentation
 
 ## Astronomical Resources

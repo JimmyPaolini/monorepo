@@ -17,7 +17,7 @@ The monorepo uses Kubernetes for deploying the caelundas ephemeris calendar gene
 3. Deploying to K8s using Helm charts
 4. Managing PVCs for input/output data persistence
 
-For comprehensive deployment patterns and infrastructure details, see [infrastructure/AGENTS.md](../../infrastructure/AGENTS.md).
+For comprehensive deployment patterns and infrastructure details, see [infrastructure/AGENTS.md](../../../infrastructure/AGENTS.md).
 
 See [Deployment Models](../../architecture/deployment-models.md) for Job vs. Deployment decisions and PVC lifecycle guidance.
 
@@ -25,7 +25,7 @@ See [Deployment Models](../../architecture/deployment-models.md) for Job vs. Dep
 
 ### Helm Charts
 
-The monorepo includes a reusable Helm chart at [infrastructure/helm/kubernetes-job](../../infrastructure/helm/kubernetes-job) for deploying batch jobs. Key features:
+The monorepo includes a reusable Helm chart at [infrastructure/helm/kubernetes-job](../../../infrastructure/helm/kubernetes-job) for deploying batch jobs. Key features:
 
 - **Auto-generated names**: Each deployment creates uniquely named resources
 - **PVC management**: Mounts input and output volumes
@@ -38,16 +38,16 @@ Jobs are preferred for batch workloads like caelundas. Deployments are for long-
 
 ```bash
 # Build Docker image for K8s platform
-nx run caelundas:docker-build
+docker buildx build --platform linux/amd64 -f <dockerfile> -t <image> .
 
 # Deploy to K8s cluster (generates unique job name)
-nx run caelundas:helm-upgrade
+helm upgrade --install <release-name> infrastructure/helm/kubernetes-job/ --values infrastructure/helm/kubernetes-job/values/base.yaml
 
 # Retrieve output files after job completion
-nx run caelundas:kubernetes-copy-files
+kubectl cp <pod>:/path/to/output <local-dir>
 
 # Clean up completed jobs
-nx run caelundas:helm-uninstall
+helm uninstall <release-name>
 ```
 
 ### PVC Strategy
@@ -57,13 +57,13 @@ Applications use two PVCs:
 - **Input PVC**: Configuration files, environment-specific data (read-only)
 - **Output PVC**: Generated artifacts, logs, results (read-write)
 
-The `kubernetes-copy-files` target synchronizes output files back to local filesystem after job completion.
+Use `kubectl cp` to synchronize output files back to local filesystem after job completion.
 
 ## Project-Specific Patterns
 
 ### caelundas Deployment
 
-See [applications/caelundas/AGENTS.md](../../applications/caelundas/AGENTS.md) for detailed caelundas deployment workflows, including:
+See [applications/caelundas/AGENTS.md](../../../applications/caelundas/AGENTS.md) for detailed caelundas deployment workflows, including:
 
 - Docker build configuration for monorepo workspace
 - Environment variable management in K8s
@@ -72,10 +72,10 @@ See [applications/caelundas/AGENTS.md](../../applications/caelundas/AGENTS.md) f
 
 Key targets:
 
-- `nx run caelundas:docker-build` - Builds for linux/amd64
-- `nx run caelundas:helm-upgrade` - Deploys with auto-generated name
-- `nx run caelundas:kubernetes-copy-files` - Retrieves output from PVC
-- `nx run caelundas:helm-uninstall` - Removes completed jobs
+- `docker buildx build --platform linux/amd64 -f <dockerfile> -t <image> .` - Builds for linux/amd64
+- `helm upgrade --install <release-name> infrastructure/helm/kubernetes-job/ --values infrastructure/helm/kubernetes-job/values/base.yaml` - Deploys with auto-generated name
+- `kubectl cp <pod>:/path/to/output <local-dir>` - Retrieves output from PVC
+- `helm uninstall <release-name>` - Removes completed jobs
 
 ## Infrastructure Configuration
 
@@ -118,10 +118,10 @@ kubectl config current-context
 
 ```bash
 # Build and push image
-nx run caelundas:docker-build
+docker buildx build --platform linux/amd64 -f <dockerfile> -t <image> .
 
 # Deploy to cluster
-nx run caelundas:helm-upgrade
+helm upgrade --install <release-name> infrastructure/helm/kubernetes-job/ --values infrastructure/helm/kubernetes-job/values/base.yaml
 ```
 
 ### Check Job Status
@@ -141,7 +141,7 @@ kubectl logs job/<job-name>
 
 ```bash
 # Copy files from output PVC
-nx run caelundas:kubernetes-copy-files
+kubectl cp <pod>:/path/to/output <local-dir>
 
 # Or manually
 kubectl cp <pod-name>:/app/output ./output
@@ -188,9 +188,9 @@ helm rollback <release-name> 0
 
 Since caelundas runs as a K8s job (not a long-running deployment), rollback means:
 
-1. **Delete the failed job**: `nx run caelundas:helm-uninstall`
+1. **Delete the failed job**: `helm uninstall <release-name>`
 2. **Revert the Docker image**: Tag the previous working image as `latest`
-3. **Redeploy**: `nx run caelundas:helm-upgrade`
+3. **Redeploy**: `helm upgrade --install <release-name> infrastructure/helm/kubernetes-job/ --values infrastructure/helm/kubernetes-job/values/base.yaml`
 
 ```bash
 # Check which image version was running
@@ -201,14 +201,14 @@ docker tag ghcr.io/jimmypaolini/caelundas:<previous-sha> ghcr.io/jimmypaolini/ca
 docker push ghcr.io/jimmypaolini/caelundas:latest
 
 # Redeploy
-nx run caelundas:helm-upgrade
+helm upgrade --install <release-name> infrastructure/helm/kubernetes-job/ --values infrastructure/helm/kubernetes-job/values/base.yaml
 ```
 
 ## Related Documentation
 
-- [infrastructure/AGENTS.md](../../infrastructure/AGENTS.md) - Infrastructure architecture
-- [applications/caelundas/AGENTS.md](../../applications/caelundas/AGENTS.md) - Caelundas deployment workflow
-- [infrastructure/helm/kubernetes-job/README.md](../../infrastructure/helm/kubernetes-job/README.md) - Helm chart details
+- [infrastructure/AGENTS.md](../../../infrastructure/AGENTS.md) - Infrastructure architecture
+- [applications/caelundas/AGENTS.md](../../../applications/caelundas/AGENTS.md) - Caelundas deployment workflow
+- [infrastructure/helm/kubernetes-job/Chart.yaml](../../../infrastructure/helm/kubernetes-job/Chart.yaml) - Helm chart metadata
 
 ## Best Practices
 

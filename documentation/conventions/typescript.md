@@ -2,7 +2,7 @@
 
 ## Strict Mode Configuration
 
-All projects inherit strict TypeScript settings from [tsconfig.base.json](../../tsconfig.base.json):
+All projects inherit strict TypeScript settings from [tsconfig.base.json](../../configuration/tsconfig.base.json):
 
 ```json
 {
@@ -366,6 +366,6 @@ const count = userInput ?? 10; // If userInput is 0, returns 0 (correct!)
 ## Resources
 
 - [TypeScript Handbook: Strict Mode](https://www.typescriptlang.org/tsconfig#strict)
-- [Root tsconfig.base.json](../../tsconfig.base.json) - Shared configuration
+- [Root tsconfig.base.json](../../configuration/tsconfig.base.json) - Shared configuration
 - [Error Handling](../code-quality/error-handling.md) - Typed error patterns
 - [Import Organization](imports.md) - Type import rules

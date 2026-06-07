@@ -6,7 +6,7 @@ This directory contains Nx plugins and generators for the monorepo.
 
 ### Conformance (`conformance`)
 
-**Purpose:** Generate React components with test files following monorepo conventions
+**Purpose:** Provide Nx generators and validators that enforce monorepo conventions
 
 **Quick Start:**
 
@@ -17,11 +17,11 @@ nx generate conformance:react-component --name=Button
 
 **Features:**
 
-- React component with TypeScript
-- Vitest test file
-- Barrel exports (optional)
-- Auto-formatted code
-- Monorepo conventions
+- React component scaffolding
+- NestJS service module scaffolding
+- NestJS command application scaffolding
+- TypeScript conformance validators
+- Auto-formatted generated code
 
 **Documentation:**
 
@@ -60,7 +60,7 @@ See [tools/conformance/AGENTS.md](./conformance/AGENTS.md) for detailed generato
 
 ```text
 tools/
-├── conformance/             # React component generator
+├── conformance/             # Generator and validator framework
 │   ├── src/
 │   │   └── generators/
 │   ├── package.json
@@ -161,9 +161,8 @@ nx build conformance --verbose
 
 **Template syntax issues?**
 
-- Use `<%= variable %>` for substitution
-- `<%= name %>` for component name
-- File extensions: `__name__.tsx__template__` → `ComponentName.tsx`
+- Use Mustache syntax (`{{variable}}`) for file content substitution
+- Template config files use `.mustache` suffix and are stripped in generator output
 
 ## References
 

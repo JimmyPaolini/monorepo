@@ -329,42 +329,26 @@ jobs:
             ghcr.io/jimmypaolini/caelundas:${{ github.sha }}
 ```
 
-## Nx Docker Targets
-
-### Build Target
+## Docker Commands
 
 ```bash
 # Build Docker image
-nx run caelundas:docker-build
+docker buildx build --platform linux/amd64 -f <dockerfile> -t <image> .
 ```
 
-Defined in `project.json`:
-
-```json
-{
-  "docker-build": {
-    "executor": "nx:run-commands",
-    "options": {
-      "command": "docker build --platform linux/amd64 -t ghcr.io/jimmypaolini/caelundas:latest .",
-      "cwd": "applications/caelundas"
-    }
-  }
-}
-```
-
-### Push Target
+### Push Image
 
 ```bash
 # Push to GHCR
-nx run caelundas:docker-push
+docker push <image>
 ```
 
-### Combined Target
+### Build and Push
 
 ```bash
 # Build and push
-nx run-many --target=docker-build --projects=caelundas
-nx run-many --target=docker-push --projects=caelundas
+docker buildx build --platform linux/amd64 -f <dockerfile> -t <image> .
+docker push <image>
 ```
 
 ## Debugging Docker Builds
@@ -451,8 +435,8 @@ COPY src ./src
 
 ## Related Documentation
 
-- [applications/caelundas/AGENTS.md](../../applications/caelundas/AGENTS.md) - Caelundas Docker configuration
-- [infrastructure/AGENTS.md](../../infrastructure/AGENTS.md) - Kubernetes integration
+- [applications/caelundas/AGENTS.md](../../../applications/caelundas/AGENTS.md) - Caelundas Docker configuration
+- [infrastructure/AGENTS.md](../../../infrastructure/AGENTS.md) - Kubernetes integration
 - [kubernetes-deployment skill](../kubernetes-deployment/SKILL.md) - K8s deployment workflows
 
 ## Best Practices Summary

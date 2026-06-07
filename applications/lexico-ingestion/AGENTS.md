@@ -12,7 +12,7 @@ Ingest Wiktionary Latin dictionary data into PostgreSQL, parsing HTML pages into
 
 ```bash
 cp .env.default .env  # Fill in required environment variables
-nx run lexico-ingestion:develop
+nx run lexico-ingestion:start
 ```
 
 ## Architecture Overview
@@ -131,11 +131,11 @@ Outputs structured JSON in production (`NODE_ENV=production`) and pretty-printed
 Always prefer running tasks through Nx rather than calling the underlying tools directly.
 
 ```bash
-nx run lexico-ingestion:develop        # Run CLI (tsx, watch mode)
+nx run lexico-ingestion:start          # Run CLI
 nx run lexico-ingestion:lint           # ESLint
 nx run lexico-ingestion:typecheck      # tsc --noEmit
 nx run lexico-ingestion:format         # oxfmt formatting
-nx run lexico-ingestion:build          # Compile for production
+nx run lexico-ingestion:test           # Run tests
 ```
 
 ### Testing

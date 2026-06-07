@@ -82,7 +82,7 @@ nx run <project>:lint --fix
 
 ## TypeScript Path Mappings
 
-Monorepo packages use the `@monorepo/*` namespace defined in [tsconfig.base.json](../../tsconfig.base.json):
+Monorepo packages use the `@monorepo/*` namespace defined in [tsconfig.base.json](../../configuration/tsconfig.base.json):
 
 ```json
 {
@@ -336,6 +336,6 @@ nx run <project>:lint --fix
 ## Resources
 
 - [TypeScript Handbook: Modules](https://www.typescriptlang.org/docs/handbook/modules.html)
-- [Root tsconfig.base.json](../../tsconfig.base.json) - Path mappings
+- [Root tsconfig.base.json](../../configuration/tsconfig.base.json) - Path mappings
 - [ESLint import/order rule](https://github.com/import-js/eslint-plugin-import/blob/main/docs/rules/order.md)
 - [TypeScript Conventions](typescript.md) - Type import patterns

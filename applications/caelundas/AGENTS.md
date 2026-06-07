@@ -12,7 +12,7 @@ Generate astronomical event calendars using NASA's JPL Horizons API (Outputs: iC
 
 ```bash
 cp .env.default .env  # Fill in required environment variables
-nx run caelundas:develop
+nx run caelundas:start
 ```
 
 ## Architecture Overview
@@ -138,11 +138,11 @@ Outputs structured JSON in production (`NODE_ENV=production`) and pretty-printed
 Always prefer running tasks through Nx rather than calling the underlying tools directly.
 
 ```bash
-nx run caelundas:develop        # Run CLI (tsx, watch mode)
+nx run caelundas:start          # Run CLI
 nx run caelundas:lint           # ESLint
 nx run caelundas:typecheck      # tsc --noEmit
 nx run caelundas:format         # oxfmt formatting
-nx run caelundas:build          # Compile for production
+nx run caelundas:test           # Run tests
 ```
 
 ### Testing
@@ -205,28 +205,25 @@ See [Deployment Models](../../documentation/architecture/deployment-models.md) f
 
 ```bash
 # 1. Build and push image
-nx run caelundas:docker-build
-docker push ghcr.io/jimmypaolini/caelundas:latest
+docker buildx build --platform linux/amd64 -f <path-to-Dockerfile> -t ghcr.io/<owner>/<image>:<tag> .
+docker push ghcr.io/<owner>/<image>:<tag>
 
-# 2. Deploy Job (auto-generated release name)
-nx run caelundas:helm-upgrade
+# 2. Deploy Job
+helm upgrade --install <release-name> infrastructure/helm/kubernetes-job/ \
+  --values infrastructure/helm/kubernetes-job/values/base.yaml
 
 # 3. Monitor completion
 kubectl wait --for=condition=complete job/<job-name> --timeout=600s
 
-# 4. Retrieve output files
-nx run caelundas:kubernetes-copy-files
-
-# 5. Clean up
-nx run caelundas:helm-uninstall
-kubectl delete pvc caelundas-output
+# 4. Clean up
+helm uninstall <release-name>
 ```
 
 ### Helm Chart
 
 Uses [infrastructure/helm/kubernetes-job](../../infrastructure/helm/kubernetes-job) - reusable chart for batch jobs with PVC storage.
 
-**Values**: [infrastructure/helm/kubernetes-job/values/caelundas-production.yaml](../../infrastructure/helm/kubernetes-job/values/caelundas-production.yaml)
+**Values**: [infrastructure/helm/kubernetes-job/values/base.yaml](../../infrastructure/helm/kubernetes-job/values/base.yaml)
 
 See [kubernetes-deployment skill](../../documentation/skills/kubernetes-deployment/SKILL.md) for Helm chart details.
 
@@ -243,7 +240,7 @@ kubectl apply -f applications/caelundas/kubernetes/secret.yaml
 ### Build
 
 ```bash
-nx run caelundas:docker-build  # Builds for linux/amd64
+docker buildx build --platform linux/amd64 -f <path-to-Dockerfile> -t ghcr.io/<owner>/<image>:<tag> .
 ```
 
 **Platform targeting**: Always use `linux/amd64` for K8s deployment (Apple Silicon compatibility).
@@ -252,12 +249,7 @@ See [docker-workflows skill](../../documentation/skills/docker-workflows/SKILL.m
 
 ### Dockerfile
 
-Single-stage build:
-
-- Base: Node.js 20 Alpine
-- Native deps: python3, make, g++ (for sqlite3 compilation)
-- Workspace: Full monorepo copied (needed for path resolution)
-- Entry: `pnpm start` (runs TypeScript directly via tsx)
+This project currently does not include a committed Dockerfile in `applications/caelundas/`.
 
 ## Performance
 

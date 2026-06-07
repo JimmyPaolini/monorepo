@@ -68,7 +68,7 @@ These operate on external systems (container registry, cluster state, database c
 When an Nx target exists, prefer it for consistency:
 
 ```bash
-nx run caelundas:docker-build
+docker buildx build --platform linux/amd64 -f <dockerfile> -t <image> .
 nx run lexico:supabase:start
 ```
 

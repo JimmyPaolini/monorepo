@@ -20,8 +20,8 @@ documentation/skills/
 .github/
 └── skills@ -> ../documentation/skills  (GitHub Copilot)
 
-.claude/
-└── skills@ -> ../documentation/skills  (Claude Code)
+.agents/
+└── skills@ -> ../documentation/skills  (local agent tooling)
 ```
 
 ## Available Skills
@@ -225,7 +225,7 @@ Skills serve as:
 
 4. **Update this README** with the new skill entry
 
-No additional symlink setup needed - the folder-level symlinks at `.github/skills` and `.claude/skills` automatically include all new skills.
+No additional symlink setup needed - the folder-level symlinks at `.github/skills` and `.agents/skills` automatically include all new skills.
 
 ## Maintenance
 
@@ -247,25 +247,18 @@ Check the symlinks are working:
 test -L .github/skills && echo "✓ GitHub Copilot symlink exists" || echo "✗ No symlink"
 test -f .github/skills/mcp-shadcn/SKILL.md && echo "✓ GitHub Copilot can access skills" || echo "✗ Cannot access"
 
-# Verify Claude Code symlink
-test -L .claude/skills && echo "✓ Claude Code symlink exists" || echo "✗ No symlink"
-test -f .claude/skills/mcp-shadcn/SKILL.md && echo "✓ Claude Code can access skills" || echo "✗ Cannot access"
+# Verify local agent symlink
+test -L .agents/skills && echo "✓ Local agent symlink exists" || echo "✗ No symlink"
+test -f .agents/skills/mcp-shadcn/SKILL.md && echo "✓ Local agents can access skills" || echo "✗ Cannot access"
 ```
 
 ### Skill Coverage
 
-Current coverage by category:
-
-- ✅ **Domain-specific**: 4 skills (caelundas, lexico, generators)
-- ✅ **Infrastructure**: 2 skills (K8s, Docker)
-- ✅ **MCP Servers**: 6 skills (shadcn, Supabase, Chrome, Figma, Terraform, GitHub)
-- ✅ **Processes**: 4 skills (commits, pull requests, CI/CD, branch naming)
-
-**Total**: 16 skills
+The repository currently includes **31** skills under `documentation/skills/`.
 
 ## Related Documentation
 
-- [AGENTS.md](../AGENTS.md) - Main monorepo architecture guide
+- [AGENTS.md](../../AGENTS.md) - Main monorepo architecture guide
 - [applications/caelundas/AGENTS.md](../../applications/caelundas/AGENTS.md) - caelundas architecture
 - [applications/lexico/AGENTS.md](../../applications/lexico/AGENTS.md) - lexico architecture
 - [packages/lexico-components/AGENTS.md](../../packages/lexico-components/AGENTS.md) - Component library

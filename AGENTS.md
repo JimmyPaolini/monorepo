@@ -297,7 +297,7 @@ pnpm add -w <package>                  # Workspace root
 ### Running Tasks
 
 ```bash
-nx run caelundas:develop               # Single project
+nx run caelundas:start                 # Single project
 nx run-many --target=lint --all        # All projects
 nx affected --target=test --base=main  # Only changed
 ```
@@ -329,7 +329,7 @@ nx run affirmations:searxng --configuration=open     # Open SearxNG search UI
 
 ## Project Architecture
 
-**Path mappings**: `@monorepo/*` namespace for shared packages (defined in [tsconfig.base.json](tsconfig.base.json))
+**Path mappings**: `@monorepo/*` namespace for shared packages (defined in [configuration/tsconfig.base.json](configuration/tsconfig.base.json))
 
 **Dependency graph**: View with `nx graph` or use `nx_workspace` MCP tool
 

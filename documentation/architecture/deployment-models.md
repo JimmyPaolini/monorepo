@@ -217,7 +217,7 @@ ls /data
 cat /data/calendar.ics
 
 # Method 3: Nx helper target (caelundas)
-nx run caelundas:kubernetes-copy-files
+kubectl cp <pod>:/path/to/output <local-dir>
 ```
 
 ### PVC Lifecycle Management
@@ -283,20 +283,20 @@ helm upgrade --install "$RELEASE_NAME" infrastructure/helm/kubernetes-job/ \
 
 ```bash
 # 1. Build and push image
-nx run caelundas:docker-build
-docker push ghcr.io/jimmypaolini/caelundas:latest
+docker buildx build --platform linux/amd64 -f <dockerfile> -t <image> .
+docker push <image>
 
 # 2. Deploy Job
-nx run caelundas:helm-upgrade
+helm upgrade --install <release-name> infrastructure/helm/kubernetes-job/ --values infrastructure/helm/kubernetes-job/values/base.yaml
 
 # 3. Wait for completion
 kubectl wait --for=condition=complete job/caelundas-20260226-143000 --timeout=600s
 
 # 4. Retrieve output files
-nx run caelundas:kubernetes-copy-files
+kubectl cp <pod>:/path/to/output <local-dir>
 
 # 5. Clean up
-nx run caelundas:helm-uninstall
+helm uninstall <release-name>
 kubectl delete pvc caelundas-output
 ```
 

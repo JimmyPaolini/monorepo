@@ -6,8 +6,8 @@ This directory contains the development container configuration for the monorepo
 
 The dev container eliminates "works on my machine" issues by standardizing:
 
-- **Node.js 22.20.0** - Matching `engines.node` in root `package.json`
-- **pnpm 10.20.0** - Matching `packageManager` in root `package.json`
+- **Node.js 24** - Matching `engines.node` in root `package.json`
+- **pnpm 11.2.2** - Matching `packageManager` in root `package.json`
 - **Supabase CLI** - For database migrations and type generation (lexico)
 - **kubectl & Helm** - For Kubernetes deployments
 - **Terraform** - For Linode LKE cluster provisioning
@@ -89,7 +89,7 @@ The container uses [Dev Container Features](https://containers.dev/features) for
 
 | Feature                    | Version | Purpose                                        | Config     |
 | -------------------------- | ------- | ---------------------------------------------- | ---------- |
-| `typescript-node:22`       | Base    | Node.js 22 with TypeScript support             | Both       |
+| `node`                     | Base    | Node.js 24 runtime                             | Both       |
 | `docker-in-docker`         | 2       | Isolated Docker daemon inside container (DinD) | Cloud only |
 | `docker-outside-of-docker` | 1       | Mounts host Docker socket (DooD)               | Local only |
 | `github-cli`               | 1       | `gh` command for GitHub operations             | Both       |
@@ -100,11 +100,11 @@ The container uses [Dev Container Features](https://containers.dev/features) for
 
 - **Supabase CLI**: Installed from GitHub releases in `postCreateCommand` (npm wrapper is broken for global installs)
 - **SQLite**: Installed via `apt-get` in `postCreateCommand` for database querying and management
-- **pnpm**: Activated via Corepack with exact version 10.20.0
+- **pnpm**: Installed via devcontainer feature with version 11.2.2
 
 ## VS Code Extensions
 
-The container auto-installs **66 extensions** organized by category. The full list is in [`devcontainer.json`](devcontainer.json) under `customizations.vscode.extensions`.
+The container auto-installs VS Code extensions organized by category. The full list is in [`local/devcontainer.json`](local/devcontainer.json) under `customizations.vscode.extensions`.
 
 **Key categories:**
 
@@ -160,16 +160,16 @@ The `test-devcontainer.sh` script in `.devcontainer/scripts/` validates tool ins
 
 | Check                         | What it validates                                                                             |
 | ----------------------------- | --------------------------------------------------------------------------------------------- |
-| Node.js version               | `node --version` starts with `v22.` (matches `package.json` `engines`)                        |
-| pnpm version                  | `pnpm --version` is exactly `10.20.0` (matches `package.json` `packageManager`)               |
+| Node.js version               | `node --version` starts with `v24.` (matches `package.json` `engines`)                        |
+| pnpm version                  | `pnpm --version` is exactly `11.2.2` (matches `package.json` `packageManager`)                |
 | Tool availability             | `nx`, `supabase`, `jq`, `yamllint`, `sqlite3` all respond                                     |
 | Container user                | Running as `root`, confirming `containerUser`/`remoteUser`                                    |
 | Environment variables         | `KUBECONFIG`, `NODE_OPTIONS`, `UV_THREADPOOL_SIZE` are set from `remoteEnv`                   |
-| Pinned feature versions       | `gh`, `terraform`, `tflint`, `helm`, `kubectl`, `python3` match `devcontainer.json` pins      |
+| Pinned feature versions       | `gh`, `terraform`, `tflint`, `helm`, `kubectl`, `python3` match `local/devcontainer.json` pins      |
 | Toolchain dependencies        | `corepack`, `tsx`, `git`, `npm`, `npx` are available                                          |
 | Post-create artifacts         | `node_modules/` and `.nx/graph.json` exist (validates `postCreateCommand` ran)                |
 | Script permissions            | All `.devcontainer/scripts/*.sh` files are executable                                         |
-| Extensions sync               | `extensions` and `recommendations` arrays in `devcontainer.json` match                        |
+| Extensions sync               | `extensions` and `recommendations` arrays in `local/devcontainer.json` match                        |
 | Workspace structure           | `applications/`, `packages/`, `infrastructure/`, `tools/` dirs exist (mount sanity)           |
 | Docker (DinD)                 | Docker daemon is reachable and `docker compose` is available                                  |
 | VS Code Machine settings sync | `.vscode/settings.json` is applied to Machine settings (skipped when VS Code is not attached) |
@@ -192,7 +192,7 @@ The `test-devcontainer` job in `.github/workflows/build-devcontainer.yml` runs t
 
 ### Adding Extensions
 
-Edit `customizations.vscode.extensions` in `devcontainer.json`:
+Edit `customizations.vscode.extensions` in `local/devcontainer.json`:
 
 ```jsonc
 "customizations": {
@@ -207,7 +207,7 @@ Edit `customizations.vscode.extensions` in `devcontainer.json`:
 
 ### Adding VS Code Settings
 
-Edit `customizations.vscode.settings` in `devcontainer.json`:
+Edit `customizations.vscode.settings` in `local/devcontainer.json`:
 
 ```jsonc
 "customizations": {
@@ -222,7 +222,7 @@ Edit `customizations.vscode.settings` in `devcontainer.json`:
 
 ### Environment Variables
 
-Add to `remoteEnv` in `devcontainer.json`:
+Add to `remoteEnv` in `local/devcontainer.json`:
 
 ```jsonc
 "remoteEnv": {
@@ -278,7 +278,7 @@ Corepack should handle this automatically. If issues persist:
 
 ```bash
 corepack enable
-corepack prepare pnpm@10.20.0 --activate
+corepack prepare pnpm@11.2.2 --activate
 ```
 
 ### Port already in use
@@ -286,7 +286,7 @@ corepack prepare pnpm@10.20.0 --activate
 If host already uses a forwarded port:
 
 1. Stop the conflicting service on host
-2. Or modify `forwardPorts` in `devcontainer.json` to use different ports
+2. Or modify `forwardPorts` in `local/devcontainer.json` (then sync to cloud if needed)
 
 ### Slow file system performance (macOS)
 
@@ -301,8 +301,8 @@ After building the container, verify the following:
 
 ```bash
 # 1. Check tool versions
-node --version          # Should output v22.20.0
-pnpm --version          # Should output 10.20.0
+node --version          # Should output v24.x
+pnpm --version          # Should output 11.2.2
 supabase --version      # Should output version number
 gh --version            # Should output gh version X.Y.Z
 helm version --short    # Should output vX.Y.Z
@@ -328,7 +328,7 @@ nx run-many --target=test --all  # Tests should pass
 
 ### Docker-in-Docker vs Docker-outside-of-Docker
 
-The default (`devcontainer.json`) runs an **isolated Docker daemon** inside the container (DinD):
+The cloud configuration (`cloud/devcontainer.json`) runs an **isolated Docker daemon** inside the container (DinD):
 
 - **Codespaces compatible**: Required when no host Docker socket is available
 - **Better isolation**: Container Docker is completely separate from host Docker

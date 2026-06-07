@@ -17,17 +17,19 @@
 
 ```bash
 # Build, push, and deploy
-nx run caelundas:docker-build
-nx run caelundas:docker-push
-nx run caelundas:helm-upgrade
-# → Release name: caelundas-20260125-143022
+docker buildx build \
+  --platform linux/amd64 \
+  -f <path-to-Dockerfile> \
+  -t ghcr.io/<owner>/<image>:<tag> .
+docker push ghcr.io/<owner>/<image>:<tag>
+helm upgrade --install <release-name> infrastructure/helm/kubernetes-job/ \
+  --values infrastructure/helm/kubernetes-job/values/base.yaml
 
-# Monitor and retrieve output
-kubectl get jobs -l app.kubernetes.io/name=caelundas -w
-nx run caelundas:kubernetes-copy-files -- --release-name=caelundas-20260125-143022
+# Monitor completion
+kubectl get jobs -w
 
 # Clean up
-nx run caelundas:helm-uninstall -- --release-name=caelundas-20260125-143022
+helm uninstall <release-name>
 ```
 
 ### Provision Kubernetes Cluster
@@ -45,13 +47,13 @@ terraform apply -var="linode_token=$LINODE_API_TOKEN"
 Code → Docker Build → Push to GHCR → Helm Upgrade → K8s Job → Retrieve Output
 ```
 
-1. **Build**: `nx run <app>:docker-build` (linux/amd64 platform)
-2. **Push**: `nx run <app>:docker-push` (to GHCR)
-3. **Secret**: `kubectl apply -f <app>/kubernetes/secret.yaml` (one-time)
-4. **Deploy**: `nx run <app>:helm-upgrade` (creates Job)
+1. **Build**: `docker buildx build ... --platform linux/amd64` (from workspace root)
+2. **Push**: `docker push <image>` (to GHCR)
+3. **Secret**: `kubectl create secret ...` (optional, for runtime environment variables)
+4. **Deploy**: `helm upgrade --install <release-name> infrastructure/helm/kubernetes-job/...` (creates Job)
 5. **Monitor**: `kubectl get jobs -w`
-6. **Retrieve**: `nx run <app>:kubernetes-copy-files`
-7. **Clean**: `nx run <app>:helm-uninstall`
+6. **Retrieve**: `kubectl cp` from the completed job/pod if needed
+7. **Clean**: `helm uninstall <release-name>`
 
 ## Documentation
 
