@@ -79,9 +79,12 @@ EVENT_TYPES=majorAspects,phases,retrogrades,eclipses
 
 ## Kubernetes Deployment
 
-Caelundas currently ships as a local CLI workflow in this repository.
+Caelundas is currently designed to run as a local CLI workflow in this repository.
 If you want to run it as a Kubernetes batch job, use the generic infrastructure chart in
 `infrastructure/helm/kubernetes-job/` and provide your own container image and runtime values.
+See [infrastructure/README.md](../../infrastructure/README.md) and
+[documentation/skills/kubernetes-deployment/SKILL.md](../../documentation/skills/kubernetes-deployment/SKILL.md)
+for the current deployment patterns.
 
 ## Development
 

@@ -336,6 +336,11 @@ jobs:
 docker buildx build --platform linux/amd64 -f <dockerfile> -t <image> .
 ```
 
+Placeholder guide:
+
+- `<dockerfile>`: path to the Dockerfile (for example, `applications/my-app/Dockerfile`)
+- `<image>`: full image reference (for example, `ghcr.io/jimmypaolini/my-app:latest`)
+
 ### Push Image
 
 ```bash

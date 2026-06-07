@@ -208,7 +208,7 @@ helm upgrade --install <release-name> infrastructure/helm/kubernetes-job/ --valu
 
 - [infrastructure/AGENTS.md](../../../infrastructure/AGENTS.md) - Infrastructure architecture
 - [applications/caelundas/AGENTS.md](../../../applications/caelundas/AGENTS.md) - Caelundas deployment workflow
-- [infrastructure/helm/kubernetes-job/Chart.yaml](../../../infrastructure/helm/kubernetes-job/Chart.yaml) - Helm chart metadata
+- [infrastructure/helm/kubernetes-job/](../../../infrastructure/helm/kubernetes-job/) - Helm chart for batch job deployments
 
 ## Best Practices
 

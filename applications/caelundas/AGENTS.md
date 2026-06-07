@@ -249,7 +249,10 @@ See [docker-workflows skill](../../documentation/skills/docker-workflows/SKILL.m
 
 ### Dockerfile
 
-This project currently does not include a committed Dockerfile in `applications/caelundas/`.
+This project currently does not include an app-specific Dockerfile in `applications/caelundas/`.
+If you need to containerize this app, follow
+[documentation/skills/docker-workflows/SKILL.md](../../documentation/skills/docker-workflows/SKILL.md)
+and adapt the generic Kubernetes chart in [infrastructure/README.md](../../infrastructure/README.md).
 
 ## Performance
 

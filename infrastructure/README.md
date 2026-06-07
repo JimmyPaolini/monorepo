@@ -32,6 +32,13 @@ kubectl get jobs -w
 helm uninstall <release-name>
 ```
 
+Replace placeholders as follows:
+
+- `<path-to-Dockerfile>`: Dockerfile path for the app you are deploying
+- `<owner>/<image>`: GHCR namespace and image name (for example, `jimmypaolini/caelundas`)
+- `<tag>`: Image tag (for example, `latest` or a commit SHA)
+- `<release-name>`: Unique Helm release name for this job run
+
 ### Provision Kubernetes Cluster
 
 ```bash
