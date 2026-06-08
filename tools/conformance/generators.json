@@ -13,6 +13,12 @@
       "factory": "./src/generators/nestjs-command-application/generator#generateNestjsCommandApplication",
       "schema": "./src/generators/nestjs-command-application/schema.json"
     },
+    "nestjs-graphql-application": {
+      "aliases": ["nga"],
+      "description": "Generate a NestJS GraphQL API application scaffold with Apollo Server",
+      "factory": "./src/generators/nestjs-graphql-application/generator#generateNestjsGraphqlApplication",
+      "schema": "./src/generators/nestjs-graphql-application/schema.json"
+    },
     "nestjs-graphql-module": {
       "aliases": ["ngm"],
       "description": "Generate a NestJS GraphQL module with resolver, entities, inputs, args, factories, service, types, constants, and unit test files",
