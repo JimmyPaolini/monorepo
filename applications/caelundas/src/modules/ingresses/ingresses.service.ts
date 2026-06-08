@@ -85,7 +85,7 @@ export class IngressesService {
     virgo: { max: 180, min: 150 },
   };
 
-  // 🌎 Public Methods
+  // 🔏 Private Methods
 
   /**
    * Determines which zodiac sign corresponds to an ecliptic longitude.
@@ -106,8 +106,6 @@ export class IngressesService {
     }
     return entry[0];
   }
-
-  // 🔏 Private Methods
 
   private getDecan(longitude: number): number {
     const sign = IngressesService.getSign(longitude);
@@ -195,6 +193,8 @@ export class IngressesService {
       IngressesService.getSign(previousLongitude)
     );
   }
+
+  // 🌎 Public Methods
 
   /**
    * Creates a decan ingress calendar event.
