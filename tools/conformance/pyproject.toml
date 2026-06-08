@@ -19,7 +19,7 @@ extend = "../../configuration/pyproject.toml"
 exclude = ["src/generators/**/templates/**"]
 
 [tool.ruff.lint.per-file-ignores]
-"**/*.test.py" = ["S101"]
+"**/*_test.py" = ["S101"]
 
 [tool.pyright]
 venvPath = "."
@@ -29,7 +29,7 @@ extraPaths = ["."]
 [tool.pytest.ini_options]
 testpaths = ["src"]
 pythonpath = ["."]
-python_files = ["test_*.py", "*.test.py"]
+python_files = ["*_test.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
 addopts = "--import-mode=importlib"

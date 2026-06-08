@@ -25,7 +25,9 @@ describe("generateJupyterNotebookApplication", () => {
     expect(tree.exists(path.join(appRoot, "README.md"))).toBe(true);
     expect(tree.exists(path.join(appRoot, "src", "__init__.py"))).toBe(true);
     expect(tree.exists(path.join(appRoot, "src", "models.py"))).toBe(true);
-    expect(tree.exists(path.join(appRoot, "src", "notebook.ipynb"))).toBe(true);
+    expect(tree.exists(path.join(appRoot, "src", "daily-notebook.ipynb"))).toBe(
+      true,
+    );
     expect(tree.exists(path.join(appRoot, "testing", "__init__.py"))).toBe(
       true,
     );
