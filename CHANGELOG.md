@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.0](https://github.com/JimmyPaolini/monorepo/compare/v1.6.0...v1.7.0) (2026-06-08)
+
+### ✨ Features
+
+* **conformance:** ✨ add nestjs-graphql-module generator ([#59](https://github.com/JimmyPaolini/monorepo/issues/59)) ([3e84ceb](https://github.com/JimmyPaolini/monorepo/commit/3e84ceb2f1c80486a91450e3aa1b03d4aef3f87e))
+
 ## [1.6.0](https://github.com/JimmyPaolini/monorepo/compare/v1.5.0...v1.6.0) (2026-06-04)
 
 ### ✨ Features
