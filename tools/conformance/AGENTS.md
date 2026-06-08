@@ -16,11 +16,20 @@ nx generate conformance:nestjs-service-module --name=user
 nx generate conformance:nestjs-service-module --name=userProfile --project=my-nestjs-app
 ```
 
+Generate a NestJS GraphQL module (prompts for project if `--project` omitted):
+
+```bash
+nx generate conformance:nestjs-graphql-module --name=post
+nx generate conformance:nestjs-graphql-module --name=post --project=my-nestjs-app
+nx g conformance:ngm --name=post
+```
+
 Short alias forms:
 
 ```bash
 nx g conformance:react-component --name=Dialog
 nx g conformance:nestjs-service-module --name=auth
+nx g conformance:nestjs-graphql-module --name=post
 ```
 
 Generate a NestJS command-line application scaffold:
@@ -59,6 +68,24 @@ tools/conformance/
 │   │           ├── __nameCamelCase__.service.ts
 │   │           ├── __nameCamelCase__.service.unit.test.ts
 │   │           └── __nameCamelCase__.types.ts
+│   │   └── nestjs-graphql-module/
+│   │       ├── generator.ts
+│   │       ├── generator.unit.test.ts
+│   │       ├── schema.json
+│   │       └── templates/
+│   │           ├── __nameKebabCase__.args.ts
+│   │           ├── __nameKebabCase__.constants.ts
+│   │           ├── __nameKebabCase__.dataloader.ts
+│   │           ├── __nameKebabCase__.dataloader.unit.test.ts
+│   │           ├── __nameKebabCase__.entities.ts
+│   │           ├── __nameKebabCase__.factories.ts
+│   │           ├── __nameKebabCase__.inputs.ts
+│   │           ├── __nameKebabCase__.module.ts
+│   │           ├── __nameKebabCase__.resolver.ts
+│   │           ├── __nameKebabCase__.resolver.unit.test.ts
+│   │           ├── __nameKebabCase__.service.ts
+│   │           ├── __nameKebabCase__.service.unit.test.ts
+│   │           └── __nameKebabCase__.types.ts
 │   │   └── nestjs-command-application/
 │   │       ├── generator.ts
 │   │       ├── generator.unit.test.ts
@@ -104,6 +131,27 @@ src/modules/user/
 └── user.types.ts
 ```
 
+### nestjs-graphql-module: `--name=post --project=my-nestjs-app`
+
+Files created in `<projectRoot>/src/modules/post/`:
+
+```text
+src/modules/post/
+├── post.args.ts
+├── post.constants.ts
+├── post.dataloader.ts
+├── post.dataloader.unit.test.ts
+├── post.entities.ts
+├── post.factories.ts
+├── post.inputs.ts
+├── post.module.ts
+├── post.resolver.ts
+├── post.resolver.unit.test.ts
+├── post.service.ts
+├── post.service.unit.test.ts
+└── post.types.ts
+```
+
 ## Troubleshooting
 
 See [Common Gotchas](../../documentation/troubleshooting/gotchas.md) for Nx and formatting issues.
@@ -121,6 +169,12 @@ See [Common Gotchas](../../documentation/troubleshooting/gotchas.md) for Nx and 
 - [src/generators/nestjs-service-module/generator.ts](src/generators/nestjs-service-module/generator.ts): Generator logic
 - [src/generators/nestjs-service-module/schema.json](src/generators/nestjs-service-module/schema.json): CLI schema (`name`, `project`)
 - [src/generators/nestjs-service-module/templates/](src/generators/nestjs-service-module/templates/): Templates (`__nameCamelCase__.module.ts`, `__nameCamelCase__.service.ts`, etc.)
+
+### nestjs-graphql-module
+
+- [src/generators/nestjs-graphql-module/generator.ts](src/generators/nestjs-graphql-module/generator.ts): Generator logic
+- [src/generators/nestjs-graphql-module/schema.json](src/generators/nestjs-graphql-module/schema.json): CLI schema (`name`, `project`)
+- [src/generators/nestjs-graphql-module/templates/](src/generators/nestjs-graphql-module/templates/): Templates (`__nameKebabCase__.resolver.ts`, `__nameKebabCase__.dataloader.ts`, `__nameKebabCase__.entities.ts`, `__nameKebabCase__.inputs.ts`, `__nameKebabCase__.args.ts`, `__nameKebabCase__.factories.ts`, etc.)
 
 ### nestjs-command-application
 
