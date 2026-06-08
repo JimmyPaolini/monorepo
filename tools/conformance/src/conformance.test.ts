@@ -36,12 +36,22 @@ function resolveNestjsModuleDirectories(
 ): string[] {
   return applications
     .filter((application) => application.tags.includes(tag))
-    .map((application) => path.join(application.rootPath, "src", "modules"))
-    .filter((modulesPath) => fs.existsSync(modulesPath))
-    .flatMap((modulesPath) =>
+    .map((application) => {
+      return {
+        appName: path.basename(application.rootPath),
+        modulesPath: path.join(application.rootPath, "src", "modules"),
+      };
+    })
+    .filter(({ modulesPath }) => fs.existsSync(modulesPath))
+    .flatMap(({ appName, modulesPath }) =>
       fs
         .readdirSync(modulesPath, { withFileTypes: true })
-        .filter((entry) => entry.isDirectory())
+        .filter(
+          (entry) =>
+            entry.isDirectory() &&
+            entry.name !== appName &&
+            entry.name !== "logger",
+        )
         .map((entry) => path.join(modulesPath, entry.name)),
     );
 }

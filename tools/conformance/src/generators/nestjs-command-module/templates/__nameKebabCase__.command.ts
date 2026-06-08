@@ -6,11 +6,11 @@ import { LoggerService } from "../logger/logger.service";
 /**
  * TODO: Document the {{nameCamelCase}} command.
  */
-@Injectable()
 @Command({
   description: "Run the {{nameKebabCase}} command",
   name: "{{nameKebabCase}}",
 })
+@Injectable()
 export class {{namePascalCase}}Command extends CommandRunner {
   // 🏗 Dependency Injection
 
@@ -28,6 +28,6 @@ export class {{namePascalCase}}Command extends CommandRunner {
   // 🌎 Public Methods
 
   async run(): Promise<void> {
-    // 🌱 Implement command behavior
+    // TODO: Implement command behavior
   }
 }

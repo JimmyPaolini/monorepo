@@ -28,7 +28,6 @@ import { TripleAspectsModule } from "../triple-aspects/triple-aspects.module";
 import { TwilightsModule } from "../twilights/twilights.module";
 
 import { CaelundasCommand } from "./caelundas.command";
-import { CaelundasService } from "./caelundas.service";
 
 /**
  * Root NestJS application module.
@@ -38,7 +37,7 @@ import { CaelundasService } from "./caelundas.service";
  */
 @Module({
   controllers: [],
-  exports: [CaelundasService],
+  exports: [CaelundasCommand],
   imports: [
     ConfigModule.forRoot({
       envFilePath: ".env",
@@ -71,6 +70,6 @@ import { CaelundasService } from "./caelundas.service";
     PerfectiveModule,
     ProgressiveModule,
   ],
-  providers: [CaelundasCommand, CaelundasService],
+  providers: [CaelundasCommand],
 })
 export class CaelundasModule {}

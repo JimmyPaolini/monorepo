@@ -6,11 +6,11 @@ import { LoggerService } from "../logger/logger.service";
 /**
  * CLI entry point for {{nameKebabCase}}.
  */
-@Injectable()
 @Command({
   name: "{{nameKebabCase}}",
   description: "Run the {{nameKebabCase}} command-line application",
 })
+@Injectable()
 export class {{namePascalCase}}Command extends CommandRunner {
   constructor(private readonly logger: LoggerService) {
     super();

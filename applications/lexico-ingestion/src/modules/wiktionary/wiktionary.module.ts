@@ -4,15 +4,14 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { Lexeme, Word } from "@monorepo/lexico-entities";
 
 import { WiktionaryCommand } from "./wiktionary.command";
-import { WiktionaryService } from "./wiktionary.service";
 
 /**
  * TODO: Document the wiktionary module.
  */
 @Module({
   controllers: [],
-  exports: [WiktionaryService],
+  exports: [WiktionaryCommand],
   imports: [TypeOrmModule.forFeature([Lexeme, Word])],
-  providers: [WiktionaryCommand, WiktionaryService],
+  providers: [WiktionaryCommand],
 })
 export class WiktionaryModule {}
