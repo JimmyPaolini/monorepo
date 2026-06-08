@@ -5,6 +5,7 @@ import { workspaceRoot } from "@nx/devkit";
 import { describe, expect, it } from "vitest";
 
 import { TEMPLATES_DIRECTORY_PATH as COMMAND_APPLICATION_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-command-application/generator";
+import { TEMPLATES_DIRECTORY_PATH as COMMAND_MODULE_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-command-module/generator";
 import { TEMPLATES_DIRECTORY_PATH as SERVICE_MODULE_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-service-module/generator";
 import {
   stringifyConformanceErrors,
@@ -25,11 +26,50 @@ interface ConformanceTemplateInstance {
 
 const NESTJS_COMMAND_APPLICATION_GENERATOR_TAG =
   "generator:nestjs-command-application";
+const NESTJS_COMMAND_APPLICATION_TAG = "framework:nest-commander";
 const NESTJS_APPLICATION_TAG = "framework:nestjs";
 const APPLICATIONS_DIRECTORY_PATH = path.join(workspaceRoot, "applications");
 
+function resolveNestjsModuleDirectories(
+  applications: { rootPath: string; tags: string[] }[],
+  tag: string,
+): string[] {
+  return applications
+    .filter((application) => application.tags.includes(tag))
+    .map((application) => path.join(application.rootPath, "src", "modules"))
+    .filter((modulesPath) => fs.existsSync(modulesPath))
+    .flatMap((modulesPath) =>
+      fs
+        .readdirSync(modulesPath, { withFileTypes: true })
+        .filter((entry) => entry.isDirectory())
+        .map((entry) => path.join(modulesPath, entry.name)),
+    );
+}
+
 function resolveTemplateInstances(): ConformanceTemplateInstance[] {
   const applications = resolveWorkspaceApplications();
+  const allNestjsModules = resolveNestjsModuleDirectories(
+    applications,
+    NESTJS_APPLICATION_TAG,
+  );
+  const commandAppModules = resolveNestjsModuleDirectories(
+    applications,
+    NESTJS_COMMAND_APPLICATION_TAG,
+  );
+
+  const commandModules = commandAppModules.filter((directoryPath) =>
+    fs.existsSync(
+      path.join(directoryPath, `${path.basename(directoryPath)}.command.ts`),
+    ),
+  );
+
+  const serviceModules = allNestjsModules.filter(
+    (directoryPath) =>
+      !fs.existsSync(
+        path.join(directoryPath, `${path.basename(directoryPath)}.command.ts`),
+      ),
+  );
+
   return [
     {
       instanceDirectoryPaths: applications
@@ -42,15 +82,14 @@ function resolveTemplateInstances(): ConformanceTemplateInstance[] {
       templateDirectoryPath: COMMAND_APPLICATION_TEMPLATES_DIRECTORY_PATH,
     },
     {
-      instanceDirectoryPaths: applications
-        .filter((application) =>
-          application.tags.includes(NESTJS_APPLICATION_TAG),
-        )
-        .map((application) => path.join(application.rootPath, "src", "modules"))
-        .filter((instancesDirectoryPath) =>
-          fs.existsSync(instancesDirectoryPath),
-        ),
-      instanceType: "multiple",
+      instanceDirectoryPaths: commandModules,
+      instanceType: "single",
+      template: "nestjs-command-module",
+      templateDirectoryPath: COMMAND_MODULE_TEMPLATES_DIRECTORY_PATH,
+    },
+    {
+      instanceDirectoryPaths: serviceModules,
+      instanceType: "single",
       template: "nestjs-service-module",
       templateDirectoryPath: SERVICE_MODULE_TEMPLATES_DIRECTORY_PATH,
     },

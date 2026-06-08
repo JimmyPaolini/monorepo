@@ -16,6 +16,14 @@ nx generate conformance:nestjs-service-module --name=user
 nx generate conformance:nestjs-service-module --name=userProfile --project=my-nestjs-app
 ```
 
+Generate a NestJS command module (prompts for project if `--project` omitted):
+
+```bash
+nx generate conformance:nestjs-command-module --name=processor
+nx generate conformance:nestjs-command-module --name=dataSync --project=lexico-ingestion
+nx g conformance:ncm --name=processor
+```
+
 Generate a NestJS GraphQL module (prompts for project if `--project` omitted):
 
 ```bash
