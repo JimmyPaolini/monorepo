@@ -3,10 +3,7 @@ name = "conformance"
 version = "0.1.0"
 description = "Python conformance validators for generator template validation"
 requires-python = ">=3.14"
-dependencies = [
-  "chevron>=0.14",
-  "mistletoe>=1.4",
-]
+dependencies = ["chevron>=0.14", "mistletoe>=1.4"]
 
 [dependency-groups]
 dev = [

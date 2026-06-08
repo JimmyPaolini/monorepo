@@ -98,6 +98,8 @@ vite
 #endregion
 
 #region 🔧 TypeScript Utilities & Build Tools
+scol
+srow
 gradlew
 infer
 instanceof

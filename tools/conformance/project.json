@@ -16,7 +16,7 @@
       }
     },
     "clean": {},
-    "code-analysis": { "cache": false },
+    "code-analysis": {},
     "dependency-cruiser": {
       "executor": "nx:run-commands",
       "options": {
@@ -37,6 +37,10 @@
       }
     },
     "prettier": {},
+    "pyright": {},
+    "pytest": {},
+    "ruff-format": {},
+    "ruff-lint": {},
     "spell-check": {},
     "test": {
       "executor": "nx:run-commands",
@@ -47,10 +51,6 @@
     },
     "type-coverage": {},
     "typecheck": {},
-    "yaml-lint": {},
-    "pytest": {},
-    "pyright": {},
-    "ruff-lint": {},
-    "ruff-format": {}
+    "yaml-lint": {}
   }
 }
