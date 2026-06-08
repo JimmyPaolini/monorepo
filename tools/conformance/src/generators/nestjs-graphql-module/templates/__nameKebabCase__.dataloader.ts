@@ -12,7 +12,7 @@ import { {{namePascalCase}}Service } from "./{{nameKebabCase}}.service";
  */
 @Injectable({ scope: Scope.REQUEST })
 export class {{namePascalCase}}DataLoader {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
   constructor(private readonly {{nameCamelCase}}Service: {{namePascalCase}}Service) {}
 
   // 🔑 Public Fields

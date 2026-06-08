@@ -10,6 +10,7 @@ import importPlugin from "eslint-plugin-import-x";
 import jsdocPlugin from "eslint-plugin-jsdoc";
 import jsoncPlugin from "eslint-plugin-jsonc";
 import jsxA11yPlugin from "eslint-plugin-jsx-a11y";
+import perfectionistPlugin from "eslint-plugin-perfectionist";
 import tsdocPlugin from "eslint-plugin-tsdoc";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import eslintPluginYml from "eslint-plugin-yml";
@@ -152,6 +153,37 @@ export default [
     },
   },
 
+  // ━━━━━━━━━━━━━━━━━━━ Emoji Hygiene ━━━━━━━━━━━━━━━━━━━
+  // Prevent variation selectors (\uFE0F) in emojis to avoid rendering issues.
+  // Standardizes on plain emojis (e.g., 🏗 instead of 🏗️).
+  {
+    files: [
+      "**/*.ts",
+      "**/*.tsx",
+      "**/*.mts",
+      "**/*.cts",
+      "**/*.js",
+      "**/*.mjs",
+      "**/*.cjs",
+      "**/*.jsx",
+      "**/*.json",
+      "**/*.jsonc",
+      "**/*.yaml",
+      "**/*.yml",
+    ],
+    rules: {
+      "no-restricted-syntax": [
+        "error",
+        {
+          message:
+            "Emojis should not use variation selectors (\uFE0F) as they can cause rendering issues. Use plain emojis instead.",
+          selector:
+            String.raw`Literal[value=/\uFE0F/], TemplateElement[value.raw=/\uFE0F/]`,
+        },
+      ],
+    },
+  },
+
   // ━━━━━━━━━━━━━━━━━━━ Unicorn Test File Relaxations ━━━━━━━━━━━━━━━━━━━
   // Allow test-specific patterns
   {
@@ -195,6 +227,7 @@ export default [
     ],
     plugins: {
       import: importPlugin,
+      perfectionist: perfectionistPlugin,
       "@typescript-eslint": tseslint.plugin,
     },
     rules: {
@@ -215,9 +248,13 @@ export default [
       "@nx/dependency-checks": "error",
 
       // Import rules for better module management
-      "import/order": [
+      "perfectionist/sort-imports": [
         "error",
         {
+          type: "natural",
+          order: "asc",
+          ignoreCase: true,
+          internalPattern: ["^@monorepo/.+"],
           groups: [
             "builtin",
             "external",
@@ -225,14 +262,127 @@ export default [
             "parent",
             "sibling",
             "index",
-            "object",
             "type",
           ],
-          "newlines-between": "always",
-          alphabetize: {
-            order: "asc",
-            caseInsensitive: true,
-          },
+          newlinesBetween: 1,
+        },
+      ],
+      "perfectionist/sort-named-imports": [
+        "error",
+        { type: "natural", order: "asc" },
+      ],
+      "perfectionist/sort-named-exports": [
+        "error",
+        { type: "natural", order: "asc" },
+      ],
+      "perfectionist/sort-exports": [
+        "error",
+        { type: "natural", order: "asc" },
+      ],
+      "perfectionist/sort-interfaces": [
+        "error",
+        { type: "natural", order: "asc" },
+      ],
+      "perfectionist/sort-object-types": [
+        "error",
+        { type: "natural", order: "asc" },
+      ],
+      "perfectionist/sort-union-types": [
+        "error",
+        { type: "natural", order: "asc" },
+      ],
+      "perfectionist/sort-intersection-types": [
+        "error",
+        { type: "natural", order: "asc" },
+      ],
+      "perfectionist/sort-array-includes": [
+        "error",
+        { type: "natural", order: "asc" },
+      ],
+      "perfectionist/sort-arrays": [
+        "off",
+      ],
+      "perfectionist/sort-enums": [
+        "error",
+        { type: "natural", order: "asc", partitionByNewLine: true },
+      ],
+      "perfectionist/sort-heritage-clauses": [
+        "error",
+        { type: "natural", order: "asc" },
+      ],
+      "perfectionist/sort-decorators": [
+        "error",
+        { type: "natural", order: "asc", partitionByNewLine: true },
+      ],
+      "perfectionist/sort-classes": [
+        "error",
+        {
+          type: "natural",
+          order: "asc",
+          groups: [
+            "constructor",
+            "index-signature",
+            "static-property",
+            "static-block",
+            "private-property",
+            "protected-property",
+            "property",
+            "accessor-property",
+            "static-method",
+            "private-method",
+            "protected-method",
+            "get-method",
+            "set-method",
+            "method",
+          ],
+        },
+      ],
+      "perfectionist/sort-sets": ["error", { type: "natural", order: "asc" }],
+      "perfectionist/sort-maps": ["error", { type: "natural", order: "asc" }],
+      "perfectionist/sort-modules": [
+        "error",
+        {
+          type: "natural",
+          order: "asc",
+          groups: [
+            "declare-enum",
+            "export-enum",
+            "enum",
+            ["declare-interface", "declare-type"],
+            ["export-interface", "export-type"],
+            ["interface", "type"],
+            "declare-class",
+            "class",
+            "export-class",
+            "declare-function",
+            "export-function",
+            "function",
+          ],
+        },
+      ],
+      "perfectionist/sort-export-attributes": [
+        "error",
+        { type: "natural", order: "asc" },
+      ],
+      "perfectionist/sort-import-attributes": [
+        "error",
+        { type: "natural", order: "asc" },
+      ],
+      "perfectionist/sort-variable-declarations": [
+        "error",
+        { type: "natural", order: "asc" },
+      ],
+      "perfectionist/sort-switch-case": [
+        "error",
+        { type: "natural", order: "asc" },
+      ],
+      "perfectionist/sort-objects": [
+        "error",
+        {
+          type: "natural",
+          order: "asc",
+          partitionByComment: true,
+          partitionByNewLine: true,
         },
       ],
       "import/no-duplicates": "error",
@@ -369,13 +519,6 @@ export default [
       "object-shorthand": ["error", "always"],
       "prefer-arrow-callback": "error",
       "no-duplicate-imports": "off", // import/no-duplicates handles this
-      "sort-imports": [
-        "error",
-        {
-          ignoreCase: true,
-          ignoreDeclarationSort: true, // import/order handles this
-        },
-      ],
     },
   },
 
@@ -484,6 +627,18 @@ export default [
     rules: {
       // Downgrade from the preset's default "error" to "warn"
       "@eslint-react/no-array-index-key": "warn",
+      "perfectionist/sort-jsx-props": [
+        "error",
+        {
+          type: "natural",
+          order: "asc",
+          customGroups: [
+            { groupName: "reserved", elementNamePattern: "^(key|ref)$" },
+            { groupName: "shorthand", modifiers: ["shorthand"] },
+          ],
+          groups: ["reserved", "unknown", "shorthand"],
+        },
+      ],
 
       // Accessibility rules
       ...jsxA11yPlugin.configs.recommended.rules,

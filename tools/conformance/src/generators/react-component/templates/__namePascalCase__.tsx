@@ -11,7 +11,7 @@ export const {{namePascalCase}} = (props: {{namePascalCase}}Props): ReactElement
 
   // 🪝 Hooks
 
-  // 🏗️ Setup
+  // 🏗 Setup
 
   // 💪 Handler
 
