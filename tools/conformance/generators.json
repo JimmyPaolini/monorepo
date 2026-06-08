@@ -15,7 +15,7 @@
     },
     "nestjs-graphql-module": {
       "aliases": ["ngm"],
-      "description": "Generate a NestJS GraphQL module with resolver, entities, inputs, args, service, types, constants, and unit test files",
+      "description": "Generate a NestJS GraphQL module with resolver, entities, inputs, args, factories, service, types, constants, and unit test files",
       "factory": "./src/generators/nestjs-graphql-module/generator#generateNestjsGraphqlModule",
       "schema": "./src/generators/nestjs-graphql-module/schema.json"
     },

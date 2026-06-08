@@ -75,7 +75,10 @@ tools/conformance/
 │   │       └── templates/
 │   │           ├── __nameKebabCase__.args.ts
 │   │           ├── __nameKebabCase__.constants.ts
+│   │           ├── __nameKebabCase__.dataloader.ts
+│   │           ├── __nameKebabCase__.dataloader.unit.test.ts
 │   │           ├── __nameKebabCase__.entities.ts
+│   │           ├── __nameKebabCase__.factories.ts
 │   │           ├── __nameKebabCase__.inputs.ts
 │   │           ├── __nameKebabCase__.module.ts
 │   │           ├── __nameKebabCase__.resolver.ts
@@ -136,7 +139,10 @@ Files created in `<projectRoot>/src/modules/post/`:
 src/modules/post/
 ├── post.args.ts
 ├── post.constants.ts
+├── post.dataloader.ts
+├── post.dataloader.unit.test.ts
 ├── post.entities.ts
+├── post.factories.ts
 ├── post.inputs.ts
 ├── post.module.ts
 ├── post.resolver.ts
@@ -168,7 +174,7 @@ See [Common Gotchas](../../documentation/troubleshooting/gotchas.md) for Nx and 
 
 - [src/generators/nestjs-graphql-module/generator.ts](src/generators/nestjs-graphql-module/generator.ts): Generator logic
 - [src/generators/nestjs-graphql-module/schema.json](src/generators/nestjs-graphql-module/schema.json): CLI schema (`name`, `project`)
-- [src/generators/nestjs-graphql-module/templates/](src/generators/nestjs-graphql-module/templates/): Templates (`__nameKebabCase__.resolver.ts`, `__nameKebabCase__.entities.ts`, `__nameKebabCase__.inputs.ts`, `__nameKebabCase__.args.ts`, etc.)
+- [src/generators/nestjs-graphql-module/templates/](src/generators/nestjs-graphql-module/templates/): Templates (`__nameKebabCase__.resolver.ts`, `__nameKebabCase__.dataloader.ts`, `__nameKebabCase__.entities.ts`, `__nameKebabCase__.inputs.ts`, `__nameKebabCase__.args.ts`, `__nameKebabCase__.factories.ts`, etc.)
 
 ### nestjs-command-application
 

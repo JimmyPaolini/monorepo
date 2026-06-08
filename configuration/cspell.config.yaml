@@ -68,6 +68,7 @@ dictionaryDefinitions:
     addWords: true
 words:
   - apikey
+  - dataloaders
   - disambiguator
   - elipssis
   - extensionless

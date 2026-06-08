@@ -19,3 +19,13 @@ export class Update{{namePascalCase}}Input {
   // TODO: Add input fields.
   _placeholder!: never;
 }
+
+/**
+ * TODO: Document the Delete{{namePascalCase}}Input GraphQL input type.
+ */
+@InputType()
+export class Delete{{namePascalCase}}Input {
+  @Field()
+  // TODO: Add input fields.
+  _placeholder!: never;
+}

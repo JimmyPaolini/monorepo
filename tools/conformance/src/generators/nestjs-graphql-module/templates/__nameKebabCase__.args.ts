@@ -1,13 +1,10 @@
-import { ArgsType, Field, Int } from "@nestjs/graphql";
+import { ArgsType } from "@nestjs/graphql";
+import { ConnectionArgs } from "nestjs-graphql-connection";
 
 /**
  * TODO: Document the Find{{namePascalCase}}Args GraphQL args type.
  */
 @ArgsType()
-export class Find{{namePascalCase}}Args {
-  @Field(() => Int, { defaultValue: 0 })
-  skip: number = 0;
-
-  @Field(() => Int, { defaultValue: 10 })
-  take: number = 10;
+export class Find{{namePascalCase}}Args extends ConnectionArgs {
+  // TODO: Add custom filter arguments here
 }
