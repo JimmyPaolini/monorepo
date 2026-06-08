@@ -1,7 +1,8 @@
-import { Lexeme } from "@monorepo/lexico-entities";
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
 import { beforeAll, describe, expect, it, vi } from "vitest";
+
+import { Lexeme } from "@monorepo/lexico-entities";
 
 import { EtymologyService } from "../etymology/etymology.service";
 import { FormsService } from "../forms/forms.service";
@@ -32,12 +33,12 @@ describe("LexemesService", () => {
         {
           provide: LoggerService,
           useValue: {
-            setContext: vi.fn(),
-            log: vi.fn(),
-            warn: vi.fn(),
-            error: vi.fn(),
             debug: vi.fn(),
+            error: vi.fn(),
+            log: vi.fn(),
+            setContext: vi.fn(),
             verbose: vi.fn(),
+            warn: vi.fn(),
           },
         },
       ],

@@ -6,11 +6,11 @@ import type {
   IlluminationEphemerisBody,
 } from "../ephemeris/ephemeris.types";
 
+type Aspect = keyof typeof symbolByAspect;
 // Local type aliases derived from constants to avoid circular imports with caelundas.types.ts
 type MajorAspect = keyof typeof symbolByMajorAspect;
 type MinorAspect = keyof typeof symbolByMinorAspect;
 type SpecialtyAspect = keyof typeof symbolBySpecialtyAspect;
-type Aspect = keyof typeof symbolByAspect;
 
 /**
  * Strongly-typed wrapper around `Object.keys()` that preserves the key union type.
@@ -30,18 +30,18 @@ export function typedObjectKeys<T extends object>(obj: T): (keyof T)[] {
  * Uses standard astrological glyphs from the Unicode Miscellaneous Symbols block.
  */
 export const symbolBySign = {
-  aries: "♈",
-  taurus: "♉︎",
-  gemini: "♊︎",
-  cancer: "♋︎",
-  leo: "♌︎",
-  virgo: "♍︎",
-  libra: "♎︎",
-  scorpio: "♏︎",
-  sagittarius: "♐︎",
-  capricorn: "♑︎",
   aquarius: "♒︎",
+  aries: "♈",
+  cancer: "♋︎",
+  capricorn: "♑︎",
+  gemini: "♊︎",
+  leo: "♌︎",
+  libra: "♎︎",
   pisces: "♓︎",
+  sagittarius: "♐︎",
+  scorpio: "♏︎",
+  taurus: "♉︎",
+  virgo: "♍︎",
 } as const;
 
 // #region Decans 🔟
@@ -63,16 +63,16 @@ export const symbolByDecan = {
  * Includes Sun and Moon as luminaries in traditional astrological usage.
  */
 export const symbolByPlanet = {
-  sun: "☀️",
-  moon: "🌙",
-  mercury: "☿",
-  venus: "♀️",
-  mars: "♂️",
   jupiter: "♃",
-  saturn: "♄",
-  uranus: "♅",
+  mars: "♂️",
+  mercury: "☿",
+  moon: "🌙",
   neptune: "♆",
   pluto: "♇",
+  saturn: "♄",
+  sun: "☀️",
+  uranus: "♅",
+  venus: "♀️",
 } as const;
 
 // #region Asteroids 💫
@@ -82,11 +82,11 @@ export const symbolByPlanet = {
  * Includes Chiron (centaur) and the four main belt asteroids used in modern astrology.
  */
 export const symbolByAsteroid = {
-  chiron: "⚷",
-  lilith: "⚸",
   ceres: "⚳",
-  pallas: "⚴",
+  chiron: "⚷",
   juno: "⚵",
+  lilith: "⚸",
+  pallas: "⚴",
   vesta: "⚶",
 } as const;
 
@@ -107,10 +107,10 @@ export const symbolByAsteroid = {
  * Nodes mark lunar orbit crossings with the ecliptic; apsides mark near/far points from Earth.
  */
 export const symbolByNode = {
-  "north lunar node": "☊",
-  "south lunar node": "☋",
   "lunar apogee": "🌚",
   "lunar perigee": "🌝",
+  "north lunar node": "☊",
+  "south lunar node": "☋",
 } as const;
 
 // #region Bodies 🔭
@@ -135,10 +135,10 @@ export const symbolByBody = {
  */
 export const symbolByMajorAspect = {
   conjunct: "☌",
+  opposite: "☍",
   sextile: "⚹",
   square: "□",
   trine: "△",
-  opposite: "☍",
 } as const;
 
 // #region Minor Aspects 🖇️
@@ -148,10 +148,10 @@ export const symbolByMajorAspect = {
  * Minor aspects are used in modern psychological astrology.
  */
 export const symbolByMinorAspect = {
+  quincunx: "⚻",
   semisextile: "⚺",
   semisquare: "∠",
   sesquiquadrate: "⚼",
-  quincunx: "⚻",
 } as const;
 
 // #region Specialty Aspects 🧮
@@ -161,13 +161,13 @@ export const symbolByMinorAspect = {
  * Based on harmonic divisions (5ths, 7ths, 9ths) of the zodiac circle.
  */
 export const symbolBySpecialtyAspect = {
+  biquintile: "±",
+  decile: "⊥",
+  novile: "N",
   quintile: "⬠",
   septile: "S",
-  decile: "⊥",
-  biquintile: "±",
-  undecile: "U",
-  novile: "N",
   tredecile: "∓",
+  undecile: "U",
 } as const;
 
 // #region Double Aspects 📐
@@ -189,10 +189,10 @@ export const symbolByAspect = {
  * Includes T-square, grand trine, yod (finger of God), and hammer patterns.
  */
 export const symbolByTripleAspect = {
-  "t-square": "⊤",
   "grand trine": "△",
-  yod: "⚛",
   hammer: "🔨",
+  "t-square": "⊤",
+  yod: "⚛",
 } as const;
 
 // #region Quadruple Aspects ✖️
@@ -202,13 +202,13 @@ export const symbolByTripleAspect = {
  * Includes grand cross, kite, mystic rectangle, and other complex configurations.
  */
 export const symbolByQuadrupleAspect = {
-  "grand cross": "➕",
-  kite: "🪁",
-  "mystic rectangle": "🚪",
-  cradle: "🛏",
   boomerang: "🪃",
   butterfly: "🦋",
+  cradle: "🛏",
+  "grand cross": "➕",
   hourglass: "⏳",
+  kite: "🪁",
+  "mystic rectangle": "🚪",
 } as const;
 
 // #region Quintuple Aspects ⭐
@@ -239,16 +239,16 @@ export const symbolBySextupleAspect = {
  * Symbol brightness increases with the number of planets involved.
  */
 export const symbolByStellium = {
-  "triple stellium": "✨",
+  "decuple stellium": "☀️",
+  "duodecuple stellium": "🔥",
+  "nonuple stellium": "🔆",
+  "octuple stellium": "✴️",
   "quadruple stellium": "🌟",
   "quintuple stellium": "⭐",
-  "sextuple stellium": "💫",
   "septuple stellium": "🌠",
-  "octuple stellium": "✴️",
-  "nonuple stellium": "🔆",
-  "decuple stellium": "☀️",
+  "sextuple stellium": "💫",
+  "triple stellium": "✨",
   "undecuple stellium": "🌞",
-  "duodecuple stellium": "🔥",
 } as const;
 
 // #region Orbital Directions 🔁
@@ -258,9 +258,9 @@ export const symbolByStellium = {
  * Retrograde indicates apparent backward motion from Earth's perspective.
  */
 export const symbolByOrbitalDirection = {
-  retrograde: "↩️",
   direct: "↪️",
   prograde: "↪️",
+  retrograde: "↩️",
 } as const;
 
 // #region Planetary Directions ⏫
@@ -318,14 +318,14 @@ export const symbolByOrbitalDirection = {
  * Ordered from new moon through the synodic month back to new moon.
  */
 export const symbolByLunarPhase = {
-  new: "🌑",
-  "waxing crescent": "🌒",
   "first quarter": "🌓",
-  "waxing gibbous": "🌔",
   full: "🌕",
-  "waning gibbous": "🌖",
   "last quarter": "🌗",
+  new: "🌑",
   "waning crescent": "🌘",
+  "waning gibbous": "🌖",
+  "waxing crescent": "🌒",
+  "waxing gibbous": "🌔",
 } as const;
 
 // #region Venusian Phases ♀️
@@ -335,23 +335,23 @@ export const symbolByLunarPhase = {
  * Tracks Venus as morning/evening star with stations, elongations, and brightest points.
  */
 export const symbolByVenusianPhase = {
-  new: "🌑",
   "inferior conjunction": "🌑☌",
+  new: "🌑",
 
   "morning rise": "🌄↥",
+  "morning set": "🌄↧",
   "morning station": "🌄⏹️",
   "western brightest": "🔆",
   "western elongation": "⬅️📏",
-  "morning set": "🌄↧",
 
   full: "🌕",
   "superior conjunction": "🌕☌",
 
-  "evening rise": "🌇↥",
-  "eastern elongation": "📏➡️",
   "eastern brightest": "🔆",
-  "evening station": "🌇⏹️",
+  "eastern elongation": "📏➡️",
+  "evening rise": "🌇↥",
   "evening set": "🌇↧",
+  "evening station": "🌇⏹️",
 } as const;
 
 // #region Mercurian Phases ☿️
@@ -361,22 +361,22 @@ export const symbolByVenusianPhase = {
  * Includes Promethean (morning) and Epimethean (evening) conjunctions in Hellenistic tradition.
  */
 export const symbolByMercurianPhase = {
-  new: "🌑",
   "inferior conjunction": "🌑☌",
+  new: "🌑",
   "promethian conjunction": "🌑☌",
 
   "morning rise": "🌄↥",
+  "morning set": "🌄↧",
   "western brightest": "🔆",
   "western elongation": "⬅️📏",
-  "morning set": "🌄↧",
 
+  "epimethian conjunction": "🌕☌",
   full: "🌕",
   "superior conjunction": "🌕☌",
-  "epimethian conjunction": "🌕☌",
 
-  "evening rise": "🌇↥",
-  "eastern elongation": "📏➡️",
   "eastern brightest": "🔆",
+  "eastern elongation": "📏➡️",
+  "evening rise": "🌇↥",
   "evening set": "🌇↧",
 } as const;
 
@@ -387,25 +387,25 @@ export const symbolByMercurianPhase = {
  * Tracks visibility as morning/evening star with retrograde stations.
  */
 export const symbolByMartianPhase = {
-  new: "🌑",
   conjunction: "🌑☌",
   "morning star": "🌄🌟",
+  new: "🌑",
 
   "morning first": "🌄🌖",
   "morning rise": "🌄↥",
-  "morning station": "🌄⏹️",
   "morning set": "🌄↧",
+  "morning station": "🌄⏹️",
 
+  "evening star": "🌇🌟",
   full: "🌕",
   opposition: "🌕☍",
-  "evening star": "🌇🌟",
 
   brightest: "🌟",
 
-  "evening rise": "🌇↥",
-  "evening station": "🌇⏹️",
-  "evening set": "🌇↧",
   "evening last": "🌇🌘",
+  "evening rise": "🌇↥",
+  "evening set": "🌇↧",
+  "evening station": "🌇⏹️",
 } as const;
 
 // export const symbolByPhase = {
@@ -658,20 +658,20 @@ export const aspects = typedObjectKeys(symbolByAspect);
  */
 const angleByMajorAspect: Record<MajorAspect, number> = {
   conjunct: 0,
+  opposite: 180,
   sextile: 60,
   square: 90,
   trine: 120,
-  opposite: 180,
 };
 
 /**
  * Maps each minor aspect to its exact angle in degrees.
  */
 const angleByMinorAspect: Record<MinorAspect, number> = {
+  quincunx: 150,
   semisextile: 30,
   semisquare: 45,
   sesquiquadrate: 135,
-  quincunx: 150,
 };
 
 /**
@@ -679,13 +679,13 @@ const angleByMinorAspect: Record<MinorAspect, number> = {
  * Based on harmonic divisions of the circle.
  */
 const angleBySpecialtyAspect: Record<SpecialtyAspect, number> = {
-  undecile: 32.727_272_727_272_73,
+  biquintile: 144,
   decile: 36,
   novile: 40,
-  septile: 51.428_571_428_571_43,
   quintile: 72,
+  septile: 51.428_571_428_571_43,
   tredecile: 108,
-  biquintile: 144,
+  undecile: 32.727_272_727_272_73,
 };
 
 /**
@@ -704,9 +704,9 @@ export const angleByAspect: Record<Aspect, number> = {
 const orbByMajorAspect: Record<MajorAspect, number> = {
   conjunct: 8,
   opposite: 8,
-  trine: 6,
-  square: 6,
   sextile: 4,
+  square: 6,
+  trine: 6,
 };
 
 /**
@@ -714,8 +714,8 @@ const orbByMajorAspect: Record<MajorAspect, number> = {
  * Smaller orbs for minor aspects.
  */
 const orbByMinorAspect: Record<MinorAspect, number> = {
-  semisextile: 2,
   quincunx: 3,
+  semisextile: 2,
   semisquare: 2,
   sesquiquadrate: 2,
 };
@@ -725,13 +725,13 @@ const orbByMinorAspect: Record<MinorAspect, number> = {
  * Very tight orbs for harmonic aspects.
  */
 const orbBySpecialtyAspect: Record<SpecialtyAspect, number> = {
-  quintile: 2,
   biquintile: 2,
-  septile: 1,
-  novile: 1,
-  undecile: 1,
   decile: 1,
+  novile: 1,
+  quintile: 2,
+  septile: 1,
   tredecile: 1,
+  undecile: 1,
 };
 
 /**

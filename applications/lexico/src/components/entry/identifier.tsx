@@ -1,3 +1,5 @@
+import { startCase } from "lodash";
+
 import {
   Badge,
   cn,
@@ -5,57 +7,56 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@monorepo/lexico-components";
-import { startCase } from "lodash";
 
 import type { ReactElement } from "react";
 
 // Abbreviation mappings
 const abbreviations: Record<string, string> = {
   // Parts of speech
-  noun: "NOUN",
-  properNoun: "PN",
-  verb: "VERB",
   adjective: "ADJ",
   adverb: "ADV",
-  pronoun: "PRON",
-  determiner: "PRON",
-  preposition: "PREP",
   conjunction: "CJN",
-  numeral: "NUM",
+  determiner: "PRON",
   interjection: "!!",
+  noun: "NOUN",
+  numeral: "NUM",
+  preposition: "PREP",
+  pronoun: "PRON",
+  properNoun: "PN",
   suffix: "-X-",
+  verb: "VERB",
   // Cases
-  nominative: "NOM",
-  genitive: "GEN",
-  dative: "DAT",
-  accusative: "ACC",
   ablative: "ABL",
-  vocative: "VOC",
+  accusative: "ACC",
+  dative: "DAT",
+  genitive: "GEN",
   locative: "LOC",
+  nominative: "NOM",
+  vocative: "VOC",
   // Gender
-  masculine: "MASC",
   feminine: "FEM",
+  masculine: "MASC",
   neuter: "NEU",
   // Number
-  singular: "S",
   plural: "P",
+  singular: "S",
   // Mood
-  indicative: "IND",
-  subjunctive: "SUB",
   imperative: "IMPV",
+  indicative: "IND",
   infinitive: "INF",
   "non finite": "NONF",
+  subjunctive: "SUB",
   // Tense
-  present: "PRES",
-  imperfect: "IMP",
   future: "FUT",
+  "future perfect": "FUTP",
+  imperfect: "IMP",
   perfect: "PERF",
   pluperfect: "PLUP",
-  "future perfect": "FUTP",
+  present: "PRES",
   // Misc
-  participle: "PART",
-  "gerund/supine": "GER/SUP",
   gerund: "GER",
+  "gerund/supine": "GER/SUP",
+  participle: "PART",
   supine: "SUP",
   // Voice
   active: "ACT",
@@ -65,79 +66,79 @@ const abbreviations: Record<string, string> = {
   second: "2",
   third: "3",
   // Declensions
+  "fifth declension": "5TH DECL",
   "first declension": "1ST DECL",
+  "fourth declension": "4TH DECL",
   "second declension": "2ND DECL",
   "third declension": "3RD DECL",
-  "fourth declension": "4TH DECL",
-  "fifth declension": "5TH DECL",
   // Conjugations
   "first conjugation": "1ST CONJ",
+  "fourth conjugation": "4TH CONJ",
   "second conjugation": "2ND CONJ",
   "third conjugation": "3RD CONJ",
-  "fourth conjugation": "4TH CONJ",
 };
 
 // Color styles for each identifier type
 const identifierStyles: Record<
   string,
-  { bg: string; text: string; border?: string; rounded?: boolean }
+  { bg: string; border?: string; rounded?: boolean; text: string }
 > = {
   // Parts of speech (rounded)
-  noun: { bg: "bg-blue-600", text: "text-white", rounded: true },
-  properNoun: { bg: "bg-blue-600", text: "text-white", rounded: true },
-  verb: { bg: "bg-red-600", text: "text-white", rounded: true },
-  adjective: { bg: "bg-green-600", text: "text-white", rounded: true },
-  adverb: { bg: "bg-orange-500", text: "text-black", rounded: true },
-  pronoun: { bg: "bg-purple-600", text: "text-white", rounded: true },
-  determiner: { bg: "bg-purple-600", text: "text-white", rounded: true },
-  preposition: { bg: "bg-yellow-400", text: "text-black", rounded: true },
-  conjunction: { bg: "bg-pink-400", text: "text-black", rounded: true },
-  numeral: { bg: "bg-gray-500", text: "text-black", rounded: true },
-  interjection: { bg: "bg-black", text: "text-white", rounded: true },
-  suffix: { bg: "bg-black", text: "text-white", rounded: true },
+  adjective: { bg: "bg-green-600", rounded: true, text: "text-white" },
+  adverb: { bg: "bg-orange-500", rounded: true, text: "text-black" },
+  conjunction: { bg: "bg-pink-400", rounded: true, text: "text-black" },
+  determiner: { bg: "bg-purple-600", rounded: true, text: "text-white" },
+  interjection: { bg: "bg-black", rounded: true, text: "text-white" },
+  noun: { bg: "bg-blue-600", rounded: true, text: "text-white" },
+  numeral: { bg: "bg-gray-500", rounded: true, text: "text-black" },
+  preposition: { bg: "bg-yellow-400", rounded: true, text: "text-black" },
+  pronoun: { bg: "bg-purple-600", rounded: true, text: "text-white" },
+  properNoun: { bg: "bg-blue-600", rounded: true, text: "text-white" },
+  suffix: { bg: "bg-black", rounded: true, text: "text-white" },
+  verb: { bg: "bg-red-600", rounded: true, text: "text-white" },
   // Cases
-  nominative: { bg: "bg-blue-500", text: "text-white" },
-  genitive: { bg: "bg-green-700", text: "text-white" },
-  dative: { bg: "bg-lime-400", text: "text-black" },
-  accusative: { bg: "bg-red-500", text: "text-white" },
   ablative: { bg: "bg-pink-500", text: "text-white" },
-  vocative: { bg: "bg-orange-600", text: "text-white" },
+  accusative: { bg: "bg-red-500", text: "text-white" },
+  dative: { bg: "bg-lime-400", text: "text-black" },
+  genitive: { bg: "bg-green-700", text: "text-white" },
   locative: { bg: "bg-amber-800", text: "text-white" },
+  nominative: { bg: "bg-blue-500", text: "text-white" },
+  vocative: { bg: "bg-orange-600", text: "text-white" },
   // Gender
-  masculine: { bg: "bg-orange-500", text: "text-white" },
   feminine: { bg: "bg-green-500", text: "text-white" },
+  masculine: { bg: "bg-orange-500", text: "text-white" },
   neuter: { bg: "bg-purple-500", text: "text-white" },
   // Number
-  singular: { bg: "bg-white", text: "text-black" },
   plural: { bg: "bg-black", text: "text-white" },
+  singular: { bg: "bg-white", text: "text-black" },
   // Mood
-  indicative: { bg: "bg-sky-600", text: "text-white" },
-  subjunctive: { bg: "bg-fuchsia-500", text: "text-white" },
   imperative: { bg: "bg-rose-900", text: "text-white" },
+  indicative: { bg: "bg-sky-600", text: "text-white" },
   infinitive: { bg: "bg-lime-500", text: "text-black" },
   "non finite": { bg: "bg-olive-600", text: "text-black" },
+  subjunctive: { bg: "bg-fuchsia-500", text: "text-white" },
   // Tense
-  present: { bg: "bg-blue-600", text: "text-white" },
-  imperfect: { bg: "bg-green-800", text: "text-white" },
   future: { bg: "bg-yellow-500", text: "text-black" },
+  "future perfect": { bg: "bg-emerald-600", text: "text-black" },
+  imperfect: { bg: "bg-green-800", text: "text-white" },
   perfect: { bg: "bg-red-700", text: "text-white" },
   pluperfect: { bg: "bg-indigo-700", text: "text-white" },
-  "future perfect": { bg: "bg-emerald-600", text: "text-black" },
+  present: { bg: "bg-blue-600", text: "text-white" },
   // Misc
-  participle: { bg: "bg-sky-400", text: "text-black" },
-  "gerund/supine": { bg: "bg-orange-400", text: "text-black" },
   gerund: { bg: "bg-amber-500", text: "text-black" },
+  "gerund/supine": { bg: "bg-orange-400", text: "text-black" },
+  participle: { bg: "bg-sky-400", text: "text-black" },
   supine: { bg: "bg-pink-600", text: "text-white" },
   // Voice
   active: {
     bg: "bg-neutral-600",
-    text: "text-white",
     border: "border border-white",
+    text: "text-white",
   },
   passive: {
     bg: "bg-neutral-400",
-    text: "text-black",
     border: "border-2 border-black",
+    text: "text-black",
   },
   // Person
   first: { bg: "bg-blue-600", text: "text-white" },
@@ -149,10 +150,10 @@ const identifierStyles: Record<
  * Props for the Identifier component that displays labeled badges.
  */
 export interface IdentifierProps {
-  /** The identifier name (e.g., "noun", "nominative", "singular") */
-  identifier: string;
   /** Additional class names */
   className?: string;
+  /** The identifier name (e.g., "noun", "nominative", "singular") */
+  identifier: string;
 }
 
 /**
@@ -162,7 +163,7 @@ export interface IdentifierProps {
  * @returns React element
  */
 export function Identifier(props: IdentifierProps): ReactElement {
-  const { identifier, className } = props;
+  const { className, identifier } = props;
 
   const identifierLowercase = identifier.toLowerCase();
   const abbreviation =
@@ -176,7 +177,6 @@ export function Identifier(props: IdentifierProps): ReactElement {
     <Tooltip>
       <TooltipTrigger asChild>
         <Badge
-          variant="outline"
           className={cn(
             "cursor-default px-1 justify-center",
             styles.bg,
@@ -184,6 +184,7 @@ export function Identifier(props: IdentifierProps): ReactElement {
             styles.border,
             className,
           )}
+          variant="outline"
         >
           {abbreviation}
         </Badge>

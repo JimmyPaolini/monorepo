@@ -1,6 +1,7 @@
-import { Lexeme, Translation } from "@monorepo/lexico-entities";
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
+
+import { Lexeme, Translation } from "@monorepo/lexico-entities";
 
 import type * as cheerio from "cheerio";
 import type { AnyNode } from "domhandler";
@@ -11,6 +12,7 @@ import type { AnyNode } from "domhandler";
 @Injectable()
 export class EtymologyService {
   // 🏗 Dependency Injection
+
   constructor() {}
 
   // 🔐 Private Fields

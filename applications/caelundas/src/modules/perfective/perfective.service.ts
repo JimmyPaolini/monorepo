@@ -27,6 +27,7 @@ import type { Input } from "@caelundas/src/modules/input/input.types";
 @Injectable()
 export class PerfectiveService {
   // 🏗 Dependency Injection
+
   constructor(
     private readonly datetimeService: DatetimeService,
     private readonly ephemerisService: EphemerisService,
@@ -95,7 +96,7 @@ export class PerfectiveService {
         startOfDay,
         endOfDay,
       )) {
-        const { events: aspectEvents, aspectBodies: currentAspectBodies } =
+        const { aspectBodies: currentAspectBodies, events: aspectEvents } =
           this.aspectsService.detect({
             coordinateEphemerisByBody,
             minute,
@@ -123,8 +124,8 @@ export class PerfectiveService {
           }),
           ...this.dailyCyclesService.detect({
             minute,
-            sunAzimuthElevationEphemeris: azimuthElevationEphemerisByBody.sun,
             moonAzimuthElevationEphemeris: azimuthElevationEphemerisByBody.moon,
+            sunAzimuthElevationEphemeris: azimuthElevationEphemerisByBody.sun,
           }),
           ...this.monthlyLunarCycleService.detect({
             minute,
@@ -140,10 +141,10 @@ export class PerfectiveService {
             sunAzimuthElevationEphemeris: azimuthElevationEphemerisByBody.sun,
           }),
           ...this.phasesService.detect({
-            minute,
             coordinateEphemerisByBody,
             distanceEphemerisByBody,
             illuminationEphemerisByBody,
+            minute,
           }),
         ];
 

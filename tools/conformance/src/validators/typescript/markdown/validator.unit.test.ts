@@ -24,8 +24,8 @@ nx run {{nameKebabCase}}:test
 `;
 
 const README_DATA = {
-  namePascalCase: "StellarCli",
   nameKebabCase: "stellar-cli",
+  namePascalCase: "StellarCli",
 };
 
 const README_RENDERED = `# StellarCli
@@ -46,10 +46,10 @@ nx run stellar-cli:test
 `;
 
 function validate(args: {
-  instance: string;
-  template: string;
   data?: Record<string, unknown>;
   filename?: string;
+  instance: string;
+  template: string;
 }): string[] {
   return validateMarkdownConformance({
     data: args.data ?? {},
@@ -67,9 +67,9 @@ describe("validateMarkdownConformance — headings", () => {
   it("returns no errors when the instance matches the rendered template", () => {
     expect(
       validate({
+        data: README_DATA,
         instance: README_RENDERED,
         template: README_TEMPLATE,
-        data: README_DATA,
       }),
     ).toEqual([]);
   });
@@ -77,16 +77,16 @@ describe("validateMarkdownConformance — headings", () => {
   it("returns no errors when the instance is a superset (extra heading added)", () => {
     const instance = `${README_RENDERED}\n## Contributing\n\nSee CONTRIBUTING.md.\n`;
     expect(
-      validate({ instance, template: README_TEMPLATE, data: README_DATA }),
+      validate({ data: README_DATA, instance, template: README_TEMPLATE }),
     ).toEqual([]);
   });
 
   it("returns an error when a required heading is missing", () => {
     const instance = `# StellarCli\n\nNestJS command-line application scaffold generated with \`conformance:nestjs-command-application\`.\n`;
     const errors = validate({
+      data: README_DATA,
       instance,
       template: README_TEMPLATE,
-      data: README_DATA,
     });
     expect(errors).toEqual(
       expect.arrayContaining([
@@ -98,9 +98,9 @@ describe("validateMarkdownConformance — headings", () => {
   it("returns an error when heading depth differs (h2 used instead of h1)", () => {
     const instance = `## StellarCli\n\nSome text.\n`;
     const errors = validate({
+      data: { name: "StellarCli" },
       instance,
       template: `# {{name}}\n\nSome text.\n`,
-      data: { name: "StellarCli" },
     });
     expect(errors).toEqual(
       expect.arrayContaining([
@@ -111,9 +111,9 @@ describe("validateMarkdownConformance — headings", () => {
 
   it("resolves Mustache interpolation before comparing headings", () => {
     const errors = validate({
+      data: { namePascalCase: "StellarCli" },
       instance: `# StellarCli\n`,
       template: `# {{namePascalCase}}\n`,
-      data: { namePascalCase: "StellarCli" },
     });
     expect(errors).toEqual([]);
   });
@@ -127,9 +127,9 @@ describe("validateMarkdownConformance — code blocks", () => {
   it("returns no errors when all code blocks are present", () => {
     expect(
       validate({
+        data: README_DATA,
         instance: README_RENDERED,
         template: README_TEMPLATE,
-        data: README_DATA,
       }),
     ).toEqual([]);
   });
@@ -137,9 +137,9 @@ describe("validateMarkdownConformance — code blocks", () => {
   it("returns an error when a required code block is missing", () => {
     const instance = `# StellarCli\n\nSome text.\n\n## Start\n\nNo code block here.\n`;
     const errors = validate({
+      data: README_DATA,
       instance,
       template: README_TEMPLATE,
-      data: README_DATA,
     });
     expect(errors).toEqual(
       expect.arrayContaining([
@@ -151,9 +151,9 @@ describe("validateMarkdownConformance — code blocks", () => {
   it("returns an error when a code block has wrong language", () => {
     const instance = `# StellarCli\n\nText.\n\n## Start\n\n\`\`\`sh\nnx run stellar-cli:start\n\`\`\`\n`;
     const errors = validate({
+      data: {},
       instance,
       template: `# StellarCli\n\nText.\n\n## Start\n\n\`\`\`bash\nnx run stellar-cli:start\n\`\`\`\n`,
-      data: {},
     });
     expect(errors).toEqual(
       expect.arrayContaining([
@@ -165,9 +165,9 @@ describe("validateMarkdownConformance — code blocks", () => {
   it("resolves Mustache interpolation in code block content", () => {
     expect(
       validate({
+        data: README_DATA,
         instance: README_RENDERED,
         template: README_TEMPLATE,
-        data: README_DATA,
       }),
     ).toEqual([]);
   });
@@ -181,9 +181,9 @@ describe("validateMarkdownConformance — paragraphs", () => {
   it("returns no errors when all paragraphs are present", () => {
     expect(
       validate({
+        data: README_DATA,
         instance: README_RENDERED,
         template: README_TEMPLATE,
-        data: README_DATA,
       }),
     ).toEqual([]);
   });
@@ -191,9 +191,9 @@ describe("validateMarkdownConformance — paragraphs", () => {
   it("returns an error when a required paragraph is missing", () => {
     const instance = `# StellarCli\n\n## Start\n\n\`\`\`bash\nnx run stellar-cli:start\n\`\`\`\n\n## Test\n\n\`\`\`bash\nnx run stellar-cli:test\n\`\`\`\n`;
     const errors = validate({
+      data: README_DATA,
       instance,
       template: README_TEMPLATE,
-      data: README_DATA,
     });
     expect(errors).toEqual(
       expect.arrayContaining([expect.stringContaining("Expected paragraph")]),

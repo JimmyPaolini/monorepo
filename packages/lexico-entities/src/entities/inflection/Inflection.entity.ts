@@ -13,14 +13,14 @@ import type { Lexeme } from "../Lexeme.entity.js";
 /**
  *
  */
-@InterfaceType()
 @Entity({
-  name: "inflections",
-  schema: "public",
   comment:
     "Abstract base table for grammatical inflection metadata using single-table inheritance",
+  name: "inflections",
+  schema: "public",
 })
-@TableInheritance({ column: { type: "text", name: "type" } })
+@InterfaceType()
+@TableInheritance({ column: { name: "type", type: "text" } })
 export class Inflection extends BaseEntity {
   @Field(() => ID)
   @PrimaryGeneratedColumn("uuid", {
@@ -30,10 +30,10 @@ export class Inflection extends BaseEntity {
   id!: string;
 
   /** The lexeme this inflection metadata belongs to. */
+  @JoinColumn()
   @OneToOne("Lexeme", "inflection", {
     onDelete: "CASCADE",
     onUpdate: "CASCADE",
   })
-  @JoinColumn()
   lexeme!: Lexeme;
 }

@@ -30,24 +30,24 @@ describe("QuintupleAspectsService", () => {
         // Connections: 0-2 (Sun-Mars), 1-3 (Moon-Jupiter), 2-4 (Mars-Venus), 3-0 (Jupiter-Sun), 4-1 (Venus-Moon)
         // No events generated because pattern exists in prev/current/next minutes
         const currentAspectBodies: AspectBodies[] = [
-          { bodies: ["sun", "mars"], aspect: "quintile" },
-          { bodies: ["moon", "jupiter"], aspect: "quintile" },
-          { bodies: ["mars", "venus"], aspect: "quintile" },
-          { bodies: ["jupiter", "sun"], aspect: "quintile" },
-          { bodies: ["venus", "moon"], aspect: "quintile" },
+          { aspect: "quintile", bodies: ["sun", "mars"] },
+          { aspect: "quintile", bodies: ["moon", "jupiter"] },
+          { aspect: "quintile", bodies: ["mars", "venus"] },
+          { aspect: "quintile", bodies: ["jupiter", "sun"] },
+          { aspect: "quintile", bodies: ["venus", "moon"] },
         ];
         const previousAspectBodies: AspectBodies[] = [
-          { bodies: ["sun", "mars"], aspect: "quintile" },
-          { bodies: ["moon", "jupiter"], aspect: "quintile" },
-          { bodies: ["mars", "venus"], aspect: "quintile" },
-          { bodies: ["jupiter", "sun"], aspect: "quintile" },
-          { bodies: ["venus", "moon"], aspect: "quintile" },
+          { aspect: "quintile", bodies: ["sun", "mars"] },
+          { aspect: "quintile", bodies: ["moon", "jupiter"] },
+          { aspect: "quintile", bodies: ["mars", "venus"] },
+          { aspect: "quintile", bodies: ["jupiter", "sun"] },
+          { aspect: "quintile", bodies: ["venus", "moon"] },
         ];
 
         const events = service.detect({
           currentAspectBodies,
-          previousAspectBodies,
           minute: currentMinute,
+          previousAspectBodies,
         });
 
         // No events - pattern exists in prev/current/next minutes
@@ -59,18 +59,18 @@ describe("QuintupleAspectsService", () => {
         // Pentagram forming (starts at current minute but ends an hour later)
         // Should detect forming event since pattern exists at current but not previous minute
         const currentAspectBodies: AspectBodies[] = [
-          { bodies: ["sun", "mars"], aspect: "quintile" },
-          { bodies: ["moon", "jupiter"], aspect: "quintile" },
-          { bodies: ["mars", "venus"], aspect: "quintile" },
-          { bodies: ["jupiter", "sun"], aspect: "quintile" },
-          { bodies: ["venus", "moon"], aspect: "quintile" },
+          { aspect: "quintile", bodies: ["sun", "mars"] },
+          { aspect: "quintile", bodies: ["moon", "jupiter"] },
+          { aspect: "quintile", bodies: ["mars", "venus"] },
+          { aspect: "quintile", bodies: ["jupiter", "sun"] },
+          { aspect: "quintile", bodies: ["venus", "moon"] },
         ];
         const previousAspectBodies: AspectBodies[] = [];
 
         const events = service.detect({
           currentAspectBodies,
-          previousAspectBodies,
           minute: currentMinute,
+          previousAspectBodies,
         });
 
         // Should detect forming event - pattern exists at current but not previous minute
@@ -84,17 +84,17 @@ describe("QuintupleAspectsService", () => {
         // Should detect dissolving event since pattern exists at current but not next minute
         const currentAspectBodies: AspectBodies[] = [];
         const previousAspectBodies: AspectBodies[] = [
-          { bodies: ["sun", "mars"], aspect: "quintile" },
-          { bodies: ["moon", "jupiter"], aspect: "quintile" },
-          { bodies: ["mars", "venus"], aspect: "quintile" },
-          { bodies: ["jupiter", "sun"], aspect: "quintile" },
-          { bodies: ["venus", "moon"], aspect: "quintile" },
+          { aspect: "quintile", bodies: ["sun", "mars"] },
+          { aspect: "quintile", bodies: ["moon", "jupiter"] },
+          { aspect: "quintile", bodies: ["mars", "venus"] },
+          { aspect: "quintile", bodies: ["jupiter", "sun"] },
+          { aspect: "quintile", bodies: ["venus", "moon"] },
         ];
 
         const events = service.detect({
           currentAspectBodies,
-          previousAspectBodies,
           minute: currentMinute,
+          previousAspectBodies,
         });
 
         // Should detect dissolving event - pattern exists at current but not next minute
@@ -106,16 +106,16 @@ describe("QuintupleAspectsService", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
         // Missing some quintiles - incomplete Pentagram
         const currentAspectBodies: AspectBodies[] = [
-          { bodies: ["sun", "mars"], aspect: "quintile" },
-          { bodies: ["moon", "jupiter"], aspect: "quintile" },
-          { bodies: ["mars", "venus"], aspect: "quintile" },
+          { aspect: "quintile", bodies: ["sun", "mars"] },
+          { aspect: "quintile", bodies: ["moon", "jupiter"] },
+          { aspect: "quintile", bodies: ["mars", "venus"] },
         ];
         const previousAspectBodies: AspectBodies[] = [];
 
         const events = service.detect({
           currentAspectBodies,
-          previousAspectBodies,
           minute: currentMinute,
+          previousAspectBodies,
         });
 
         const pentagram = events.find((e) =>
@@ -128,15 +128,15 @@ describe("QuintupleAspectsService", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
         // Only 4 bodies
         const currentAspectBodies: AspectBodies[] = [
-          { bodies: ["sun", "mars"], aspect: "quintile" },
-          { bodies: ["moon", "jupiter"], aspect: "quintile" },
+          { aspect: "quintile", bodies: ["sun", "mars"] },
+          { aspect: "quintile", bodies: ["moon", "jupiter"] },
         ];
         const previousAspectBodies: AspectBodies[] = [];
 
         const events = service.detect({
           currentAspectBodies,
-          previousAspectBodies,
           minute: currentMinute,
+          previousAspectBodies,
         });
 
         const pentagram = events.find((e) =>
@@ -150,8 +150,8 @@ describe("QuintupleAspectsService", () => {
       const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
       const events = service.detect({
         currentAspectBodies: [],
-        previousAspectBodies: [],
         minute: currentMinute,
+        previousAspectBodies: [],
       });
       expect(events.length).toBe(0);
     });
@@ -165,8 +165,8 @@ describe("QuintupleAspectsService", () => {
 
       const events = service.detect({
         currentAspectBodies,
-        previousAspectBodies,
         minute: currentMinute,
+        previousAspectBodies,
       });
       expect(events.length).toBe(0);
     });
@@ -175,24 +175,24 @@ describe("QuintupleAspectsService", () => {
       const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
       // Pentagram pattern but spans multiple hours
       const currentAspectBodies: AspectBodies[] = [
-        { bodies: ["sun", "mars"], aspect: "quintile" },
-        { bodies: ["moon", "jupiter"], aspect: "quintile" },
-        { bodies: ["mars", "venus"], aspect: "quintile" },
-        { bodies: ["jupiter", "sun"], aspect: "quintile" },
-        { bodies: ["venus", "moon"], aspect: "quintile" },
+        { aspect: "quintile", bodies: ["sun", "mars"] },
+        { aspect: "quintile", bodies: ["moon", "jupiter"] },
+        { aspect: "quintile", bodies: ["mars", "venus"] },
+        { aspect: "quintile", bodies: ["jupiter", "sun"] },
+        { aspect: "quintile", bodies: ["venus", "moon"] },
       ];
       const previousAspectBodies: AspectBodies[] = [
-        { bodies: ["sun", "mars"], aspect: "quintile" },
-        { bodies: ["moon", "jupiter"], aspect: "quintile" },
-        { bodies: ["mars", "venus"], aspect: "quintile" },
-        { bodies: ["jupiter", "sun"], aspect: "quintile" },
-        { bodies: ["venus", "moon"], aspect: "quintile" },
+        { aspect: "quintile", bodies: ["sun", "mars"] },
+        { aspect: "quintile", bodies: ["moon", "jupiter"] },
+        { aspect: "quintile", bodies: ["mars", "venus"] },
+        { aspect: "quintile", bodies: ["jupiter", "sun"] },
+        { aspect: "quintile", bodies: ["venus", "moon"] },
       ];
 
       const events = service.detect({
         currentAspectBodies,
-        previousAspectBodies,
         minute: currentMinute,
+        previousAspectBodies,
       });
 
       // No events - pattern exists in prev/current/next minutes
@@ -203,10 +203,6 @@ describe("QuintupleAspectsService", () => {
   describe("service.detectProgressive", () => {
     it("should create progressive events from forming and dissolving pairs", () => {
       const formingEvent: Event = {
-        start: moment.utc("2024-03-21T10:00:00.000Z"),
-        end: moment.utc("2024-03-21T10:00:00.000Z"),
-        summary: "Pentagram forming",
-        description: "Jupiter, Mars, Moon, Sun, Venus pentagram forming",
         categories: [
           "Astronomy",
           "Astrology",
@@ -220,13 +216,13 @@ describe("QuintupleAspectsService", () => {
           "Jupiter",
           "Venus",
         ],
+        description: "Jupiter, Mars, Moon, Sun, Venus pentagram forming",
+        end: moment.utc("2024-03-21T10:00:00.000Z"),
+        start: moment.utc("2024-03-21T10:00:00.000Z"),
+        summary: "Pentagram forming",
       };
 
       const dissolvingEvent: Event = {
-        start: moment.utc("2024-03-21T14:00:00.000Z"),
-        end: moment.utc("2024-03-21T14:00:00.000Z"),
-        summary: "Pentagram dissolving",
-        description: "Jupiter, Mars, Moon, Sun, Venus pentagram dissolving",
         categories: [
           "Astronomy",
           "Astrology",
@@ -240,6 +236,10 @@ describe("QuintupleAspectsService", () => {
           "Jupiter",
           "Venus",
         ],
+        description: "Jupiter, Mars, Moon, Sun, Venus pentagram dissolving",
+        end: moment.utc("2024-03-21T14:00:00.000Z"),
+        start: moment.utc("2024-03-21T14:00:00.000Z"),
+        summary: "Pentagram dissolving",
       };
 
       const progressiveEvents = service.detectProgressive([
@@ -256,10 +256,6 @@ describe("QuintupleAspectsService", () => {
 
     it("should handle multiple body quintets", () => {
       const quintet1Forming: Event = {
-        start: moment.utc("2024-03-21T10:00:00.000Z"),
-        end: moment.utc("2024-03-21T10:00:00.000Z"),
-        summary: "Pentagram forming",
-        description: "Sun, Moon, Mars, Jupiter, Venus pentagram forming",
         categories: [
           "Quintuple Aspect",
           "Pentagram",
@@ -270,13 +266,13 @@ describe("QuintupleAspectsService", () => {
           "Jupiter",
           "Venus",
         ],
+        description: "Sun, Moon, Mars, Jupiter, Venus pentagram forming",
+        end: moment.utc("2024-03-21T10:00:00.000Z"),
+        start: moment.utc("2024-03-21T10:00:00.000Z"),
+        summary: "Pentagram forming",
       };
 
       const quintet1Dissolving: Event = {
-        start: moment.utc("2024-03-21T14:00:00.000Z"),
-        end: moment.utc("2024-03-21T14:00:00.000Z"),
-        summary: "Pentagram dissolving",
-        description: "Sun, Moon, Mars, Jupiter, Venus pentagram dissolving",
         categories: [
           "Quintuple Aspect",
           "Pentagram",
@@ -287,14 +283,13 @@ describe("QuintupleAspectsService", () => {
           "Jupiter",
           "Venus",
         ],
+        description: "Sun, Moon, Mars, Jupiter, Venus pentagram dissolving",
+        end: moment.utc("2024-03-21T14:00:00.000Z"),
+        start: moment.utc("2024-03-21T14:00:00.000Z"),
+        summary: "Pentagram dissolving",
       };
 
       const quintet2Forming: Event = {
-        start: moment.utc("2024-03-21T11:00:00.000Z"),
-        end: moment.utc("2024-03-21T11:00:00.000Z"),
-        summary: "Pentagram forming",
-        description:
-          "Mercury, Saturn, Uranus, Neptune, Pluto pentagram forming",
         categories: [
           "Quintuple Aspect",
           "Pentagram",
@@ -305,14 +300,14 @@ describe("QuintupleAspectsService", () => {
           "Neptune",
           "Pluto",
         ],
+        description:
+          "Mercury, Saturn, Uranus, Neptune, Pluto pentagram forming",
+        end: moment.utc("2024-03-21T11:00:00.000Z"),
+        start: moment.utc("2024-03-21T11:00:00.000Z"),
+        summary: "Pentagram forming",
       };
 
       const quintet2Dissolving: Event = {
-        start: moment.utc("2024-03-21T15:00:00.000Z"),
-        end: moment.utc("2024-03-21T15:00:00.000Z"),
-        summary: "Pentagram dissolving",
-        description:
-          "Mercury, Saturn, Uranus, Neptune, Pluto pentagram dissolving",
         categories: [
           "Quintuple Aspect",
           "Pentagram",
@@ -323,6 +318,11 @@ describe("QuintupleAspectsService", () => {
           "Neptune",
           "Pluto",
         ],
+        description:
+          "Mercury, Saturn, Uranus, Neptune, Pluto pentagram dissolving",
+        end: moment.utc("2024-03-21T15:00:00.000Z"),
+        start: moment.utc("2024-03-21T15:00:00.000Z"),
+        summary: "Pentagram dissolving",
       };
 
       const progressiveEvents = service.detectProgressive([
@@ -357,10 +357,6 @@ describe("QuintupleAspectsService", () => {
 
     it("should filter out non-quintuple-aspect events", () => {
       const quintupleAspectEvent: Event = {
-        start: moment.utc("2024-03-21T10:00:00.000Z"),
-        end: moment.utc("2024-03-21T10:00:00.000Z"),
-        summary: "Pentagram forming",
-        description: "Sun, Moon, Mars, Jupiter, Venus pentagram forming",
         categories: [
           "Quintuple Aspect",
           "Pentagram",
@@ -371,14 +367,18 @@ describe("QuintupleAspectsService", () => {
           "Jupiter",
           "Venus",
         ],
+        description: "Sun, Moon, Mars, Jupiter, Venus pentagram forming",
+        end: moment.utc("2024-03-21T10:00:00.000Z"),
+        start: moment.utc("2024-03-21T10:00:00.000Z"),
+        summary: "Pentagram forming",
       };
 
       const nonQuintupleAspectEvent: Event = {
-        start: moment.utc("2024-03-21T10:00:00.000Z"),
-        end: moment.utc("2024-03-21T10:00:00.000Z"),
-        summary: "Some other event",
-        description: "Not a quintuple aspect",
         categories: ["Other"],
+        description: "Not a quintuple aspect",
+        end: moment.utc("2024-03-21T10:00:00.000Z"),
+        start: moment.utc("2024-03-21T10:00:00.000Z"),
+        summary: "Some other event",
       };
 
       const progressiveEvents = service.detectProgressive([
@@ -400,10 +400,6 @@ describe("QuintupleAspectsService", () => {
 
     it("should skip progressive when dissolving comes before forming", () => {
       const dissolvingEvent: Event = {
-        start: moment.utc("2024-03-21T10:00:00.000Z"),
-        end: moment.utc("2024-03-21T10:00:00.000Z"),
-        summary: "Pentagram dissolving",
-        description: "Sun, Moon, Mars, Jupiter, Venus pentagram dissolving",
         categories: [
           "Quintuple Aspect",
           "Pentagram",
@@ -414,13 +410,13 @@ describe("QuintupleAspectsService", () => {
           "Jupiter",
           "Venus",
         ],
+        description: "Sun, Moon, Mars, Jupiter, Venus pentagram dissolving",
+        end: moment.utc("2024-03-21T10:00:00.000Z"),
+        start: moment.utc("2024-03-21T10:00:00.000Z"),
+        summary: "Pentagram dissolving",
       };
 
       const formingEvent: Event = {
-        start: moment.utc("2024-03-21T14:00:00.000Z"),
-        end: moment.utc("2024-03-21T14:00:00.000Z"),
-        summary: "Pentagram forming",
-        description: "Sun, Moon, Mars, Jupiter, Venus pentagram forming",
         categories: [
           "Quintuple Aspect",
           "Pentagram",
@@ -431,6 +427,10 @@ describe("QuintupleAspectsService", () => {
           "Jupiter",
           "Venus",
         ],
+        description: "Sun, Moon, Mars, Jupiter, Venus pentagram forming",
+        end: moment.utc("2024-03-21T14:00:00.000Z"),
+        start: moment.utc("2024-03-21T14:00:00.000Z"),
+        summary: "Pentagram forming",
       };
 
       const progressiveEvents = service.detectProgressive([
@@ -443,10 +443,6 @@ describe("QuintupleAspectsService", () => {
 
     it("should remove phase emojis from summary", () => {
       const formingEvent: Event = {
-        start: moment.utc("2024-03-21T10:00:00.000Z"),
-        end: moment.utc("2024-03-21T10:00:00.000Z"),
-        summary: "➡️ Pentagram forming",
-        description: "Jupiter, Mars, Moon, Sun, Venus pentagram forming",
         categories: [
           "Quintuple Aspect",
           "Pentagram",
@@ -457,13 +453,13 @@ describe("QuintupleAspectsService", () => {
           "Jupiter",
           "Venus",
         ],
+        description: "Jupiter, Mars, Moon, Sun, Venus pentagram forming",
+        end: moment.utc("2024-03-21T10:00:00.000Z"),
+        start: moment.utc("2024-03-21T10:00:00.000Z"),
+        summary: "➡️ Pentagram forming",
       };
 
       const dissolvingEvent: Event = {
-        start: moment.utc("2024-03-21T14:00:00.000Z"),
-        end: moment.utc("2024-03-21T14:00:00.000Z"),
-        summary: "⬅️ Pentagram dissolving",
-        description: "Jupiter, Mars, Moon, Sun, Venus pentagram dissolving",
         categories: [
           "Quintuple Aspect",
           "Pentagram",
@@ -474,6 +470,10 @@ describe("QuintupleAspectsService", () => {
           "Jupiter",
           "Venus",
         ],
+        description: "Jupiter, Mars, Moon, Sun, Venus pentagram dissolving",
+        end: moment.utc("2024-03-21T14:00:00.000Z"),
+        start: moment.utc("2024-03-21T14:00:00.000Z"),
+        summary: "⬅️ Pentagram dissolving",
       };
 
       const progressiveEvents = service.detectProgressive([
@@ -487,10 +487,6 @@ describe("QuintupleAspectsService", () => {
 
     it("should remove phase text from description", () => {
       const formingEvent: Event = {
-        start: moment.utc("2024-03-21T10:00:00.000Z"),
-        end: moment.utc("2024-03-21T10:00:00.000Z"),
-        summary: "Pentagram forming",
-        description: "Jupiter, Mars, Moon, Sun, Venus pentagram forming",
         categories: [
           "Quintuple Aspect",
           "Pentagram",
@@ -501,13 +497,13 @@ describe("QuintupleAspectsService", () => {
           "Jupiter",
           "Venus",
         ],
+        description: "Jupiter, Mars, Moon, Sun, Venus pentagram forming",
+        end: moment.utc("2024-03-21T10:00:00.000Z"),
+        start: moment.utc("2024-03-21T10:00:00.000Z"),
+        summary: "Pentagram forming",
       };
 
       const dissolvingEvent: Event = {
-        start: moment.utc("2024-03-21T14:00:00.000Z"),
-        end: moment.utc("2024-03-21T14:00:00.000Z"),
-        summary: "Pentagram dissolving",
-        description: "Jupiter, Mars, Moon, Sun, Venus pentagram dissolving",
         categories: [
           "Quintuple Aspect",
           "Pentagram",
@@ -518,6 +514,10 @@ describe("QuintupleAspectsService", () => {
           "Jupiter",
           "Venus",
         ],
+        description: "Jupiter, Mars, Moon, Sun, Venus pentagram dissolving",
+        end: moment.utc("2024-03-21T14:00:00.000Z"),
+        start: moment.utc("2024-03-21T14:00:00.000Z"),
+        summary: "Pentagram dissolving",
       };
 
       const progressiveEvents = service.detectProgressive([

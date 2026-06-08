@@ -18,57 +18,57 @@ import type {
 // ---------------------------------------------------------------------------
 
 vi.mock("sweph", () => ({
-  set_ephe_path: vi.fn(),
-  constants: {
-    SE_GREG_CAL: 1,
-    SE_ECL2HOR: 0,
-    SE_NODBIT_OSCU: 2,
-    SEFLG_SWIEPH: 2,
-    SEFLG_SPEED: 256,
-    SE_SUN: 0,
-    SE_MOON: 1,
-    SE_MERCURY: 2,
-    SE_VENUS: 3,
-    SE_MARS: 4,
-    SE_JUPITER: 5,
-    SE_SATURN: 6,
-    SE_URANUS: 7,
-    SE_NEPTUNE: 8,
-    SE_PLUTO: 9,
-    SE_CHIRON: 15,
-    SE_MEAN_APOG: 12,
-    SE_CERES: 17,
-    SE_PALLAS: 18,
-    SE_JUNO: 19,
-    SE_VESTA: 20,
-    SE_TRUE_NODE: 11,
-    SE_OSCU_APOG: 13,
-  },
-  utc_to_jd: vi.fn().mockReturnValue({
-    flag: 0,
-    data: [2_460_395.5, 2_460_395.499_306],
-    error: "",
-  }),
+  azalt: vi.fn().mockReturnValue([180, 45, 44.8]),
   calc: vi.fn().mockReturnValue({
-    flag: 258,
     data: [120.5, -1.2, 1.01, 0, 0, 0],
     error: "",
-  }),
-  nod_aps_ut: vi.fn().mockReturnValue({
     flag: 258,
+  }),
+  constants: {
+    SE_CERES: 17,
+    SE_CHIRON: 15,
+    SE_ECL2HOR: 0,
+    SE_GREG_CAL: 1,
+    SE_JUNO: 19,
+    SE_JUPITER: 5,
+    SE_MARS: 4,
+    SE_MEAN_APOG: 12,
+    SE_MERCURY: 2,
+    SE_MOON: 1,
+    SE_NEPTUNE: 8,
+    SE_NODBIT_OSCU: 2,
+    SE_OSCU_APOG: 13,
+    SE_PALLAS: 18,
+    SE_PLUTO: 9,
+    SE_SATURN: 6,
+    SE_SUN: 0,
+    SE_TRUE_NODE: 11,
+    SE_URANUS: 7,
+    SE_VENUS: 3,
+    SE_VESTA: 20,
+    SEFLG_SPEED: 256,
+    SEFLG_SWIEPH: 2,
+  },
+  nod_aps_ut: vi.fn().mockReturnValue({
     data: {
+      aphelion: [270, 0, 0, 0, 0, 0],
       ascending: [45, 0, 0, 0, 0, 0],
       descending: [225, 0, 0, 0, 0, 0],
       perihelion: [90, 0, 0, 0, 0, 0],
-      aphelion: [270, 0, 0, 0, 0, 0],
     },
     error: "",
-  }),
-  azalt: vi.fn().mockReturnValue([180, 45, 44.8]),
-  pheno_ut: vi.fn().mockReturnValue({
     flag: 258,
+  }),
+  pheno_ut: vi.fn().mockReturnValue({
     data: [0, 0.75, 0, 0.5, 0, 0],
     error: "",
+    flag: 258,
+  }),
+  set_ephe_path: vi.fn(),
+  utc_to_jd: vi.fn().mockReturnValue({
+    data: [2_460_395.5, 2_460_395.499_306],
+    error: "",
+    flag: 0,
   }),
 }));
 
@@ -103,7 +103,7 @@ describe("EphemerisService", () => {
   describe("getCoordinateFromEphemeris", () => {
     const ts = "2024-03-21T00:00:00.000Z";
     const ephemeris: CoordinateEphemeris = {
-      [ts]: { longitude: 120.5, latitude: -1.2 },
+      [ts]: { latitude: -1.2, longitude: 120.5 },
     };
 
     it("returns longitude for a known timestamp", () => {
@@ -229,8 +229,8 @@ describe("EphemerisService", () => {
     it("returns coordinate ephemeris for a planet body", () => {
       const result = service.getCoordinateEphemerisByBody({
         bodies: ["sun"],
-        start: makeStart(),
         end: makeEnd(),
+        start: makeStart(),
         timezone: "UTC",
       });
 
@@ -247,8 +247,8 @@ describe("EphemerisService", () => {
     it("returns coordinate ephemeris for north lunar node", () => {
       const result = service.getCoordinateEphemerisByBody({
         bodies: ["north lunar node"],
-        start: makeStart(),
         end: makeEnd(),
+        start: makeStart(),
         timezone: "UTC",
       });
 
@@ -265,8 +265,8 @@ describe("EphemerisService", () => {
     it("returns coordinate ephemeris for south lunar node (longitude + 180)", () => {
       const result = service.getCoordinateEphemerisByBody({
         bodies: ["south lunar node"],
-        start: makeStart(),
         end: makeEnd(),
+        start: makeStart(),
         timezone: "UTC",
       });
 
@@ -281,8 +281,8 @@ describe("EphemerisService", () => {
     it("returns coordinate ephemeris for lunar perigee node", () => {
       const result = service.getCoordinateEphemerisByBody({
         bodies: ["lunar perigee"],
-        start: makeStart(),
         end: makeEnd(),
+        start: makeStart(),
         timezone: "UTC",
       });
 
@@ -293,16 +293,16 @@ describe("EphemerisService", () => {
     it("throws when calc returns a negative flag", async () => {
       const { calc } = await import("sweph");
       vi.mocked(calc).mockReturnValueOnce({
-        flag: -1,
         data: [0, 0, 0, 0, 0, 0],
         error: "internal error",
+        flag: -1,
       });
 
       expect(() =>
         service.getCoordinateEphemerisByBody({
           bodies: ["sun"],
-          start: makeStart(),
           end: makeEnd(),
+          start: makeStart(),
           timezone: "UTC",
         }),
       ).toThrow("calc failed for sun");
@@ -316,8 +316,8 @@ describe("EphemerisService", () => {
       const result = service.getAzimuthElevationEphemerisByBody({
         bodies: ["sun"],
         coordinates: [-74.006, 40.7128],
-        start: makeStart(),
         end: makeEnd(),
+        start: makeStart(),
         timezone: "UTC",
       });
 
@@ -339,8 +339,8 @@ describe("EphemerisService", () => {
       const result = service.getIlluminationEphemerisByBody({
         bodies: ["sun"],
         coordinates: [-74.006, 40.7128],
-        start: makeStart(),
         end: makeEnd(),
+        start: makeStart(),
         timezone: "UTC",
       });
 
@@ -355,8 +355,8 @@ describe("EphemerisService", () => {
       const result = service.getIlluminationEphemerisByBody({
         bodies: ["moon"],
         coordinates: [-74.006, 40.7128],
-        start: makeStart(),
         end: makeEnd(),
+        start: makeStart(),
         timezone: "UTC",
       });
 
@@ -375,8 +375,8 @@ describe("EphemerisService", () => {
     it("returns diameter from pheno_ut data[3] for sun", () => {
       const result = service.getDiameterEphemerisByBody({
         bodies: ["sun"],
-        start: makeStart(),
         end: makeEnd(),
+        start: makeStart(),
         timezone: "UTC",
       });
 
@@ -395,8 +395,8 @@ describe("EphemerisService", () => {
     it("returns distance from calc data[2]", () => {
       const result = service.getDistanceEphemerisByBody({
         bodies: ["sun"],
-        start: makeStart(),
         end: makeEnd(),
+        start: makeStart(),
         timezone: "UTC",
       });
 
@@ -414,14 +414,14 @@ describe("EphemerisService", () => {
   describe("computeAllEphemerides", () => {
     it("returns all five ephemeris types", () => {
       const result = service.computeAllEphemerides({
-        coordinateBodies: ["sun", "moon"],
         azimuthElevationBodies: ["sun", "moon"],
-        illuminationBodies: ["sun", "moon"],
+        coordinateBodies: ["sun", "moon"],
+        coordinates: [-74.006, 40.7128],
         diameterBodies: ["sun", "moon"],
         distanceBodies: ["sun"],
-        coordinates: [-74.006, 40.7128],
-        start: makeStart(),
         end: makeEnd(),
+        illuminationBodies: ["sun", "moon"],
+        start: makeStart(),
       });
 
       expect(result).toHaveProperty("coordinateEphemerisByBody");
@@ -433,14 +433,14 @@ describe("EphemerisService", () => {
 
     it("populates coordinate ephemeris for all requested bodies", () => {
       const result = service.computeAllEphemerides({
-        coordinateBodies: ["sun", "moon"],
         azimuthElevationBodies: ["sun"],
-        illuminationBodies: ["sun"],
+        coordinateBodies: ["sun", "moon"],
+        coordinates: [-74.006, 40.7128],
         diameterBodies: ["sun"],
         distanceBodies: ["sun"],
-        coordinates: [-74.006, 40.7128],
-        start: makeStart(),
         end: makeEnd(),
+        illuminationBodies: ["sun"],
+        start: makeStart(),
       });
 
       expect(result.coordinateEphemerisByBody.sun).toBeDefined();
@@ -449,14 +449,14 @@ describe("EphemerisService", () => {
 
     it("sets sun illumination to 100 in single-pass computation", () => {
       const result = service.computeAllEphemerides({
-        coordinateBodies: ["sun"],
         azimuthElevationBodies: ["sun"],
-        illuminationBodies: ["sun"],
+        coordinateBodies: ["sun"],
+        coordinates: [-74.006, 40.7128],
         diameterBodies: ["sun"],
         distanceBodies: ["sun"],
-        coordinates: [-74.006, 40.7128],
-        start: makeStart(),
         end: makeEnd(),
+        illuminationBodies: ["sun"],
+        start: makeStart(),
       });
 
       const illumination = result.illuminationEphemerisByBody.sun;
@@ -468,14 +468,14 @@ describe("EphemerisService", () => {
 
     it("skips azimuth/illumination/diameter/distance entries when not requested", () => {
       const result = service.computeAllEphemerides({
-        coordinateBodies: ["sun"],
         azimuthElevationBodies: [],
-        illuminationBodies: [],
+        coordinateBodies: ["sun"],
+        coordinates: [-74.006, 40.7128],
         diameterBodies: [],
         distanceBodies: [],
-        coordinates: [-74.006, 40.7128],
-        start: makeStart(),
         end: makeEnd(),
+        illuminationBodies: [],
+        start: makeStart(),
       });
 
       expect(Object.keys(result.azimuthElevationEphemerisByBody)).toHaveLength(
@@ -488,14 +488,14 @@ describe("EphemerisService", () => {
 
     it("handles node bodies in coordinateBodies (no SE constant needed)", () => {
       const result = service.computeAllEphemerides({
-        coordinateBodies: ["north lunar node", "south lunar node"],
         azimuthElevationBodies: [],
-        illuminationBodies: [],
+        coordinateBodies: ["north lunar node", "south lunar node"],
+        coordinates: [-74.006, 40.7128],
         diameterBodies: [],
         distanceBodies: [],
-        coordinates: [-74.006, 40.7128],
-        start: makeStart(),
         end: makeEnd(),
+        illuminationBodies: [],
+        start: makeStart(),
       });
 
       const north = result.coordinateEphemerisByBody["north lunar node"];

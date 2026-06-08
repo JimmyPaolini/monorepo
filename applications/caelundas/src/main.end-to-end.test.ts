@@ -46,25 +46,25 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
       const events = [
         {
-          start: moment.utc("2025-03-20T09:06:00Z"),
-          end: moment.utc("2025-03-20T09:06:00Z"),
-          summary: "☀️ → ♈ Sun ingress Aries",
-          description: "Vernal Equinox - Sun enters Aries",
           categories: ["Astronomy", "Astrology", "Ingress", "Sun", "Aries"],
+          description: "Vernal Equinox - Sun enters Aries",
+          end: moment.utc("2025-03-20T09:06:00Z"),
+          start: moment.utc("2025-03-20T09:06:00Z"),
+          summary: "☀️ → ♈ Sun ingress Aries",
         },
         {
-          start: moment.utc("2025-03-29T10:58:00Z"),
-          end: moment.utc("2025-03-29T10:58:00Z"),
-          summary: "🌕 Full Moon",
-          description: "Full Moon in Libra",
           categories: ["Astronomy", "Lunar Phase", "Moon"],
+          description: "Full Moon in Libra",
+          end: moment.utc("2025-03-29T10:58:00Z"),
+          start: moment.utc("2025-03-29T10:58:00Z"),
+          summary: "🌕 Full Moon",
         },
       ];
 
       const calendar = getCalendar({
+        description: "E2E test calendar",
         events,
         name: "Test Caelundas Calendar",
-        description: "E2E test calendar",
         timezone: "America/New_York",
       });
 
@@ -110,18 +110,18 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
       const events = [
         {
-          start: moment.utc("2025-06-21T12:00:00Z"),
-          end: moment.utc("2025-06-21T12:00:00Z"),
-          summary: "Summer Solstice",
-          description: "Summer Solstice",
           categories: ["Astronomy"],
+          description: "Summer Solstice",
+          end: moment.utc("2025-06-21T12:00:00Z"),
+          start: moment.utc("2025-06-21T12:00:00Z"),
+          summary: "Summer Solstice",
         },
       ];
 
       const calendar = getCalendar({
+        description: "E2E timezone test calendar",
         events,
         name: "Timezone Test",
-        description: "E2E timezone test calendar",
         timezone: "America/New_York",
       });
 
@@ -140,23 +140,23 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
       const events = [
         {
-          start: moment.utc("2025-04-08T18:00:00Z"),
-          end: moment.utc("2025-04-08T20:00:00Z"),
-          summary: "Total Solar Eclipse",
-          description: "Total Solar Eclipse visible from North America",
           categories: ["Astronomy", "Eclipse", "Solar"],
-          location: "Dallas, Texas, USA",
-          geography: { latitude: 32.7767, longitude: -96.797 },
-          url: "https://eclipse.nasa.gov",
-          priority: 1,
           color: "red",
+          description: "Total Solar Eclipse visible from North America",
+          end: moment.utc("2025-04-08T20:00:00Z"),
+          geography: { latitude: 32.7767, longitude: -96.797 },
+          location: "Dallas, Texas, USA",
+          priority: 1,
+          start: moment.utc("2025-04-08T18:00:00Z"),
+          summary: "Total Solar Eclipse",
+          url: "https://eclipse.nasa.gov",
         },
       ];
 
       const calendar = getCalendar({
+        description: "E2E optional fields test calendar",
         events,
         name: "Eclipse Calendar",
-        description: "E2E optional fields test calendar",
         timezone: "America/New_York",
       });
 
@@ -173,10 +173,10 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
       const { inputSchema } = await import("./modules/input/input.constants");
 
       const result = inputSchema.parse({
+        endDate: "2025-03-31",
         latitude: "40.7128",
         longitude: "-74.006",
         startDate: "2025-03-01",
-        endDate: "2025-03-31",
       });
 
       expect(result.latitude).toBe(40.7128);
@@ -191,28 +191,28 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
       // Tokyo
       const tokyoResult = inputSchema.parse({
+        endDate: "2025-01-02",
         latitude: "35.6762",
         longitude: "139.6503",
         startDate: "2025-01-01",
-        endDate: "2025-01-02",
       });
       expect(tokyoResult.timezone).toBe("Asia/Tokyo");
 
       // London
       const londonResult = inputSchema.parse({
+        endDate: "2025-01-02",
         latitude: "51.5074",
         longitude: "-0.1278",
         startDate: "2025-01-01",
-        endDate: "2025-01-02",
       });
       expect(londonResult.timezone).toBe("Europe/London");
 
       // Sydney
       const sydneyResult = inputSchema.parse({
+        endDate: "2025-01-02",
         latitude: "-33.8688",
         longitude: "151.2093",
         startDate: "2025-01-01",
-        endDate: "2025-01-02",
       });
       expect(sydneyResult.timezone).toBe("Australia/Sydney");
     });
@@ -288,35 +288,35 @@ describe("calendar generation e2e", { timeout: 10_000 }, () => {
 
       const beginnings = [
         {
-          start: moment.utc("2025-03-01T10:00:00Z"),
-          end: moment.utc("2025-03-01T10:00:00Z"),
-          summary: "Forming 1",
-          description: "First forming",
           categories: ["Test"],
+          description: "First forming",
+          end: moment.utc("2025-03-01T10:00:00Z"),
+          start: moment.utc("2025-03-01T10:00:00Z"),
+          summary: "Forming 1",
         },
         {
-          start: moment.utc("2025-03-05T10:00:00Z"),
-          end: moment.utc("2025-03-05T10:00:00Z"),
-          summary: "Forming 2",
-          description: "Second forming",
           categories: ["Test"],
+          description: "Second forming",
+          end: moment.utc("2025-03-05T10:00:00Z"),
+          start: moment.utc("2025-03-05T10:00:00Z"),
+          summary: "Forming 2",
         },
       ];
 
       const endings = [
         {
-          start: moment.utc("2025-03-03T10:00:00Z"),
-          end: moment.utc("2025-03-03T10:00:00Z"),
-          summary: "Dissolving 1",
-          description: "First dissolving",
           categories: ["Test"],
+          description: "First dissolving",
+          end: moment.utc("2025-03-03T10:00:00Z"),
+          start: moment.utc("2025-03-03T10:00:00Z"),
+          summary: "Dissolving 1",
         },
         {
-          start: moment.utc("2025-03-07T10:00:00Z"),
-          end: moment.utc("2025-03-07T10:00:00Z"),
-          summary: "Dissolving 2",
-          description: "Second dissolving",
           categories: ["Test"],
+          description: "Second dissolving",
+          end: moment.utc("2025-03-07T10:00:00Z"),
+          start: moment.utc("2025-03-07T10:00:00Z"),
+          summary: "Dissolving 2",
         },
       ];
 

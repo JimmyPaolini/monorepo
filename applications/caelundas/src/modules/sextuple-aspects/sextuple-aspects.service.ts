@@ -32,6 +32,7 @@ import type { Moment } from "moment-timezone";
 @Injectable()
 export class SextupleAspectsService {
   // 🏗 Dependency Injection
+
   constructor(private readonly mathService: MathService) {}
 
   // 🔐 Private Fields
@@ -40,10 +41,101 @@ export class SextupleAspectsService {
 
   // 🔏 Private Methods
 
-  private groupAspectsByType<T extends AspectBodies>(
-    edges: T[],
-  ): Map<Aspect, T[]> {
-    return groupByToMap(edges, (edge) => edge.aspect);
+  /**
+   * Composes Hexagram (Star of David) patterns from stored 2-body aspects.
+   *
+   * A Hexagram is one of the rarest configurations in astrology, consisting
+   * of 6 bodies forming:
+   * - Two interlocking Grand Trines (6 trine aspects total)
+   * - A hexagon of sextile connections (6 sextile aspects)
+   *
+   * The bodies are evenly distributed at 60° intervals around the zodiac,
+   * creating a perfectly balanced configuration. This pattern represents
+   * the harmonic division of 360° by 6.
+   *
+   * In astrological interpretation, the hexagram signifies a state of
+   * perfect balance, divine order, and the potential for spiritual
+   * manifestation. It's also known as the Grand Sextile.
+   *
+   * @param allEdges - All aspect edges across time for phase detection
+   * @param minute - The minute to check for Hexagram patterns
+   * @returns Array of Hexagram events detected at this minute
+   * @see {@link findHexagramPattern} for pattern validation logic
+   * @see {@link determineMultiBodyPhase} for phase calculation
+   * @see {@link getCombinations} for generating body combinations
+   */
+  private composeHexagrams(args: {
+    currentAspectBodies: AspectBodies[];
+    minute: Moment;
+    previousAspectBodies: AspectBodies[];
+  }): Event[] {
+    const { currentAspectBodies, minute, previousAspectBodies } = args;
+    const events: Event[] = [];
+
+    const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
+    const aspectsByType = this.groupAspectsByType(unionEdges);
+    const trines = aspectsByType.get("trine") || [];
+    const sextiles = aspectsByType.get("sextile") || [];
+
+    if (trines.length < 6 || sextiles.length < 6) {
+      return events;
+    }
+
+    // Collect all unique bodies involved in trines
+    const bodiesSet = new Set<Body>();
+    for (const edge of trines) {
+      bodiesSet.add(edge.bodies[0]);
+      bodiesSet.add(edge.bodies[1]);
+    }
+    const bodies = [...bodiesSet];
+
+    if (bodies.length < 6) {
+      return events;
+    }
+
+    // Try all combinations of 6 bodies
+    const combinations = this.mathService.getCombinations(bodies, 6);
+
+    for (const combo of combinations) {
+      // Check if these 6 bodies form a hexagram pattern
+      const hexagramBodies = this.findHexagramPattern(combo, unionEdges);
+
+      if (hexagramBodies) {
+        const result = this.determineCompoundPhaseFromSnapshots(
+          currentAspectBodies,
+          previousAspectBodies,
+          hexagramBodies,
+          minute,
+          (edges) => {
+            return this.findHexagramPattern(hexagramBodies, edges) !== null;
+          },
+        );
+
+        const b0 = hexagramBodies[0];
+        const b1 = hexagramBodies[1];
+        const b2 = hexagramBodies[2];
+        const b3 = hexagramBodies[3];
+        const b4 = hexagramBodies[4];
+        const b5 = hexagramBodies[5];
+        if (result && b0 && b1 && b2 && b3 && b4 && b5) {
+          events.push(
+            this.getSextupleAspectEvent({
+              body1: b0,
+              body2: b1,
+              body3: b2,
+              body4: b3,
+              body5: b4,
+              body6: b5,
+              phase: result.phase,
+              sextupleAspect: "hexagram",
+              timestamp: result.eventMinute,
+            }),
+          );
+        }
+      }
+    }
+
+    return events;
   }
 
   private determineCompoundPhaseFromSnapshots(
@@ -52,7 +144,7 @@ export class SextupleAspectsService {
     patternBodies: Body[],
     currentMinute: Moment,
     checkPatternExists: (edges: AspectBodies[]) => boolean,
-  ): { phase: AspectPhase; eventMinute: Moment } | null {
+  ): null | { eventMinute: Moment; phase: AspectPhase } {
     const bodySet = new Set(patternBodies);
     const filterByBodies = (edges: AspectBodies[]): AspectBodies[] =>
       edges.filter((e) => bodySet.has(e.bodies[0]) && bodySet.has(e.bodies[1]));
@@ -64,19 +156,16 @@ export class SextupleAspectsService {
     const previousExists = checkPatternExists(previousFiltered);
 
     if (currentExists && !previousExists) {
-      return { phase: "forming", eventMinute: currentMinute };
+      return { eventMinute: currentMinute, phase: "forming" };
     }
     if (!currentExists && previousExists) {
       return {
-        phase: "dissolving",
         eventMinute: currentMinute.clone().subtract(1, "minute"),
+        phase: "dissolving",
       };
     }
     return null;
   }
-
-  // 🌎 Public Methods
-
   /**
    * Checks if 6 bodies form a valid hexagram (Star of David) pattern.
    *
@@ -242,126 +331,29 @@ export class SextupleAspectsService {
   }
 
   /**
-   * Composes Hexagram (Star of David) patterns from stored 2-body aspects.
-   *
-   * A Hexagram is one of the rarest configurations in astrology, consisting
-   * of 6 bodies forming:
-   * - Two interlocking Grand Trines (6 trine aspects total)
-   * - A hexagon of sextile connections (6 sextile aspects)
-   *
-   * The bodies are evenly distributed at 60° intervals around the zodiac,
-   * creating a perfectly balanced configuration. This pattern represents
-   * the harmonic division of 360° by 6.
-   *
-   * In astrological interpretation, the hexagram signifies a state of
-   * perfect balance, divine order, and the potential for spiritual
-   * manifestation. It's also known as the Grand Sextile.
-   *
-   * @param allEdges - All aspect edges across time for phase detection
-   * @param minute - The minute to check for Hexagram patterns
-   * @returns Array of Hexagram events detected at this minute
-   * @see {@link findHexagramPattern} for pattern validation logic
-   * @see {@link determineMultiBodyPhase} for phase calculation
-   * @see {@link getCombinations} for generating body combinations
-   */
-  private composeHexagrams(args: {
-    currentAspectBodies: AspectBodies[];
-    previousAspectBodies: AspectBodies[];
-    minute: Moment;
-  }): Event[] {
-    const { currentAspectBodies, previousAspectBodies, minute } = args;
-    const events: Event[] = [];
-
-    const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
-    const aspectsByType = this.groupAspectsByType(unionEdges);
-    const trines = aspectsByType.get("trine") || [];
-    const sextiles = aspectsByType.get("sextile") || [];
-
-    if (trines.length < 6 || sextiles.length < 6) {
-      return events;
-    }
-
-    // Collect all unique bodies involved in trines
-    const bodiesSet = new Set<Body>();
-    for (const edge of trines) {
-      bodiesSet.add(edge.bodies[0]);
-      bodiesSet.add(edge.bodies[1]);
-    }
-    const bodies = [...bodiesSet];
-
-    if (bodies.length < 6) {
-      return events;
-    }
-
-    // Try all combinations of 6 bodies
-    const combinations = this.mathService.getCombinations(bodies, 6);
-
-    for (const combo of combinations) {
-      // Check if these 6 bodies form a hexagram pattern
-      const hexagramBodies = this.findHexagramPattern(combo, unionEdges);
-
-      if (hexagramBodies) {
-        const result = this.determineCompoundPhaseFromSnapshots(
-          currentAspectBodies,
-          previousAspectBodies,
-          hexagramBodies,
-          minute,
-          (edges) => {
-            return this.findHexagramPattern(hexagramBodies, edges) !== null;
-          },
-        );
-
-        const b0 = hexagramBodies[0];
-        const b1 = hexagramBodies[1];
-        const b2 = hexagramBodies[2];
-        const b3 = hexagramBodies[3];
-        const b4 = hexagramBodies[4];
-        const b5 = hexagramBodies[5];
-        if (result && b0 && b1 && b2 && b3 && b4 && b5) {
-          events.push(
-            this.getSextupleAspectEvent({
-              timestamp: result.eventMinute,
-              body1: b0,
-              body2: b1,
-              body3: b2,
-              body4: b3,
-              body5: b4,
-              body6: b5,
-              sextupleAspect: "hexagram",
-              phase: result.phase,
-            }),
-          );
-        }
-      }
-    }
-
-    return events;
-  }
-
-  /**
    * Create a sextuple aspect event
    */
   private getSextupleAspectEvent(params: {
-    timestamp: Moment;
     body1: Body;
     body2: Body;
     body3: Body;
     body4: Body;
     body5: Body;
     body6: Body;
-    sextupleAspect: SextupleAspect;
     phase: AspectPhase;
+    sextupleAspect: SextupleAspect;
+    timestamp: Moment;
   }): Event {
     const {
-      timestamp,
       body1,
       body2,
       body3,
       body4,
       body5,
       body6,
-      sextupleAspect,
       phase,
+      sextupleAspect,
+      timestamp,
     } = params;
 
     const body1Capitalized = _.startCase(body1);
@@ -417,13 +409,21 @@ export class SextupleAspectsService {
     ];
 
     return {
-      start: timestamp,
-      end: timestamp,
-      description,
-      summary,
       categories,
+      description,
+      end: timestamp,
+      start: timestamp,
+      summary,
     };
   }
+
+  private groupAspectsByType<T extends AspectBodies>(
+    edges: T[],
+  ): Map<Aspect, T[]> {
+    return groupByToMap(edges, (edge) => edge.aspect);
+  }
+
+  // 🌎 Public Methods
 
   /**
    * Detects all sextuple aspect patterns from stored 2-body aspect events.
@@ -440,14 +440,14 @@ export class SextupleAspectsService {
    */
   detect(args: {
     currentAspectBodies: AspectBodies[];
-    previousAspectBodies: AspectBodies[];
     minute: Moment;
+    previousAspectBodies: AspectBodies[];
   }): Event[] {
-    const { currentAspectBodies, previousAspectBodies, minute } = args;
+    const { currentAspectBodies, minute, previousAspectBodies } = args;
     return this.composeHexagrams({
       currentAspectBodies,
-      previousAspectBodies,
       minute,
+      previousAspectBodies,
     });
   }
 
@@ -480,7 +480,7 @@ export class SextupleAspectsService {
       const planets = _.sortBy(filteredPlanets);
 
       const aspect = event.categories.find((category) =>
-        ["Hexagram", "Grand Sextile"].includes(category),
+        ["Grand Sextile", "Hexagram"].includes(category),
       );
 
       return `${planets.join("-")}_${aspect}`;
@@ -511,17 +511,17 @@ export class SextupleAspectsService {
           if (potentialDissolvingEvent.categories.includes("Dissolving")) {
             // Create progressive event
             progressiveEvents.push({
-              start: currentEvent.start,
-              end: potentialDissolvingEvent.start,
-              summary: currentEvent.summary.replace(/^(?:➡️|🎯|⬅️)\s/u, ""),
-              description: currentEvent.description.replace(
-                / (forming|exact|dissolving)$/,
-                "",
-              ),
               categories: currentEvent.categories.filter(
                 (c) =>
                   c !== "Forming" && c !== "Perfective" && c !== "Dissolving",
               ),
+              description: currentEvent.description.replace(
+                / (forming|exact|dissolving)$/,
+                "",
+              ),
+              end: potentialDissolvingEvent.start,
+              start: currentEvent.start,
+              summary: currentEvent.summary.replace(/^(?:➡️|🎯|⬅️)\s/u, ""),
             });
 
             break; // Found the pair, move to next forming event

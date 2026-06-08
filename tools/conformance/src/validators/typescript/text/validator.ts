@@ -24,7 +24,7 @@ export function validateTextConformance(args: {
 }): {
   errors: ConformanceError[];
 } {
-  const { instance, template, data } = args;
+  const { data, instance, template } = args;
 
   const renderedTemplate = mustache.render(template, data);
 
@@ -40,11 +40,11 @@ export function validateTextConformance(args: {
     if (count === 0) {
       errors.push({
         errorType: "code",
+        expected: line,
+        fix: `Add the line \`${line}\` to the instance file.`,
         language: "text",
         message: `Missing line: ${line}`,
         templateLine: i + 1,
-        expected: line,
-        fix: `Add the line \`${line}\` to the instance file.`,
       });
     } else {
       instanceLineCounts.set(line, count - 1);

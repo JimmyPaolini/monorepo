@@ -1,16 +1,16 @@
-import { Lexeme, Translation, Word } from "@monorepo/lexico-entities";
 import { Injectable, Logger } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
+
+import { Lexeme, Translation, Word } from "@monorepo/lexico-entities";
 
 /**
  * Clears dictionary data from the database.
  */
 @Injectable()
 export class ClearService {
-  private readonly logger = new Logger(ClearService.name);
-
   // 🏗 Dependency Injection
+
   constructor(
     @InjectRepository(Lexeme)
     private readonly lexemesRepository: Repository<Lexeme>,
@@ -21,6 +21,8 @@ export class ClearService {
   ) {}
 
   // 🔐 Private Fields
+
+  private readonly logger = new Logger(ClearService.name);
 
   // 🔑 Public Fields
 

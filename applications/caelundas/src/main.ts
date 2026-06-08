@@ -1,5 +1,4 @@
 import "reflect-metadata";
-
 import { CommandFactory } from "nest-commander";
 
 import { CaelundasModule } from "./modules/caelundas/caelundas.module";

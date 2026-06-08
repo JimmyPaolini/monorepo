@@ -13,79 +13,55 @@ import {
 } from "@monorepo/lexico-entities";
 
 export const MANUAL_LEXEMES_TO_DELETE = [
-  { lemma: "qui", disambiguator: 0 },
-  { lemma: "quis", disambiguator: 0 },
-  { lemma: "latinitas", disambiguator: 0 },
-  { lemma: "ille", disambiguator: 0 },
-  { lemma: "ille", disambiguator: 1 },
-  { lemma: "omnis", disambiguator: 0 },
+  { disambiguator: 0, lemma: "qui" },
+  { disambiguator: 0, lemma: "quis" },
+  { disambiguator: 0, lemma: "latinitas" },
+  { disambiguator: 0, lemma: "ille" },
+  { disambiguator: 1, lemma: "ille" },
+  { disambiguator: 0, lemma: "omnis" },
 ];
 
 export const PRAENOMEN_ABBREVIATIONS: Record<
   string,
-  { masculine?: string; feminine?: string }
+  { feminine?: string; masculine?: string }
 > = {
-  a: { masculine: "aulus", feminine: "aula" },
+  a: { feminine: "aula", masculine: "aulus" },
   agr: { masculine: "agrippa" },
-  ap: { masculine: "appius", feminine: "appia" },
-  d: { masculine: "decimo", feminine: "decima" },
-  f: { masculine: "faustus", feminine: "fausta" },
-  c: { masculine: "gaius", feminine: "gaia" },
-  gn: { masculine: "gnaeus", feminine: "gnaea" },
+  ap: { feminine: "appia", masculine: "appius" },
+  c: { feminine: "gaia", masculine: "gaius" },
+  d: { feminine: "decima", masculine: "decimo" },
+  f: { feminine: "fausta", masculine: "faustus" },
+  gn: { feminine: "gnaea", masculine: "gnaeus" },
   h: { feminine: "hosta" },
   k: { masculine: "caeso" },
-  l: { masculine: "lucius", feminine: "lucia" },
-  m: { masculine: "marcus", feminine: "marcia" },
-  "m'": { masculine: "manius", feminine: "mania" },
+  l: { feminine: "lucia", masculine: "lucius" },
+  m: { feminine: "marcia", masculine: "marcus" },
+  "m'": { feminine: "mania", masculine: "manius" },
   mai: { feminine: "maio" },
-  mam: { masculine: "mamercus", feminine: "mamerca" },
+  mam: { feminine: "mamerca", masculine: "mamercus" },
   min: { feminine: "mino" },
-  n: { masculine: "numerius", feminine: "numeria" },
+  n: { feminine: "numeria", masculine: "numerius" },
   o: { masculine: "octavius" },
   oct: { feminine: "octavia" },
   opet: { masculine: "opiter" },
-  post: { masculine: "postumus", feminine: "postuma" },
   p: { masculine: "publius" },
-  pro: { masculine: "proculus", feminine: "procula" },
-  q: { masculine: "quintus", feminine: "quinta" },
+  post: { feminine: "postuma", masculine: "postumus" },
+  pro: { feminine: "procula", masculine: "proculus" },
+  q: { feminine: "quinta", masculine: "quintus" },
   s: { masculine: "spurius" },
-  sp: { feminine: "spuria" },
-  st: { masculine: "statius", feminine: "statia" },
   sec: { feminine: "secunda" },
   seq: { feminine: "secunda" },
-  ser: { masculine: "servius", feminine: "servia" },
+  ser: { feminine: "servia", masculine: "servius" },
   sert: { masculine: "sertor" },
-  sex: { masculine: "sextus", feminine: "sexta" },
-  t: { masculine: "titus", feminine: "titia" },
-  ti: { masculine: "tiberius", feminine: "tiberia" },
-  v: { masculine: "vibius", feminine: "vibia" },
-  vol: { masculine: "volesus", feminine: "volusa" },
-  vop: { masculine: "vopiscus", feminine: "vopisca" },
+  sex: { feminine: "sexta", masculine: "sextus" },
+  sp: { feminine: "spuria" },
+  st: { feminine: "statia", masculine: "statius" },
+  t: { feminine: "titia", masculine: "titus" },
+  ti: { feminine: "tiberia", masculine: "tiberius" },
+  v: { feminine: "vibia", masculine: "vibius" },
+  vol: { feminine: "volusa", masculine: "volesus" },
+  vop: { feminine: "vopisca", masculine: "vopiscus" },
 };
-
-function buildAdjectivalForms(
-  rawForms: Record<string, Record<string, Record<string, string[]>>>,
-): AdjectivalForm[] {
-  const forms: AdjectivalForm[] = [];
-  for (const gender of Object.keys(rawForms)) {
-    const cases = rawForms[gender];
-    if (!cases) continue;
-    for (const caseName of Object.keys(cases)) {
-      const numbers = cases[caseName];
-      if (!numbers) continue;
-      for (const number of Object.keys(numbers)) {
-        if (numbers[number]?.length) {
-          const form = new AdjectivalForm();
-          form.gender = gender as FormGender; // type-coverage:ignore-line
-          form.case = caseName as FormCase; // type-coverage:ignore-line
-          form.number = number as FormNumber; // type-coverage:ignore-line
-          forms.push(form);
-        }
-      }
-    }
-  }
-  return forms;
-}
 
 /**
  *
@@ -313,4 +289,28 @@ export function buildRomanNumeralTemplate(): Lexeme {
   lexeme.principalParts = [pp];
 
   return lexeme;
+}
+
+function buildAdjectivalForms(
+  rawForms: Record<string, Record<string, Record<string, string[]>>>,
+): AdjectivalForm[] {
+  const forms: AdjectivalForm[] = [];
+  for (const gender of Object.keys(rawForms)) {
+    const cases = rawForms[gender];
+    if (!cases) continue;
+    for (const caseName of Object.keys(cases)) {
+      const numbers = cases[caseName];
+      if (!numbers) continue;
+      for (const number of Object.keys(numbers)) {
+        if (numbers[number]?.length) {
+          const form = new AdjectivalForm();
+          form.gender = gender as FormGender; // type-coverage:ignore-line
+          form.case = caseName as FormCase; // type-coverage:ignore-line
+          form.number = number as FormNumber; // type-coverage:ignore-line
+          forms.push(form);
+        }
+      }
+    }
+  }
+  return forms;
 }

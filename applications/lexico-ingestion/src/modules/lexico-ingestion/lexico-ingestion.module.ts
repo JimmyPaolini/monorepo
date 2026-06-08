@@ -1,6 +1,7 @@
-import { LexicoDatabaseModule } from "@monorepo/lexico-entities";
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
+
+import { LexicoDatabaseModule } from "@monorepo/lexico-entities";
 
 import { ClearModule } from "../clear/clear.module";
 import { DictionaryModule } from "../dictionary/dictionary.module";
@@ -18,6 +19,8 @@ import { LexicoIngestionService } from "./lexico-ingestion.service";
  * Configures database connection, environment validation, and registers all ingestion sub-modules.
  */
 @Module({
+  controllers: [],
+  exports: [LexicoIngestionService],
   imports: [
     ConfigModule.forRoot({
       envFilePath: ".env",
@@ -33,8 +36,6 @@ import { LexicoIngestionService } from "./lexico-ingestion.service";
     ClearModule,
     LoggerModule,
   ],
-  controllers: [],
   providers: [LexicoIngestionCommand, LexicoIngestionService],
-  exports: [LexicoIngestionService],
 })
 export class LexicoIngestionModule {}

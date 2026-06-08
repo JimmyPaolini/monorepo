@@ -12,8 +12,8 @@ import { EclipsesService } from "./eclipses.service";
  */
 @Module({
   controllers: [],
+  exports: [EclipsesService],
   imports: [EphemerisModule, MathModule, ProgressiveUtilitiesModule],
   providers: [EclipsesService],
-  exports: [EclipsesService],
 })
 export class EclipsesModule {}

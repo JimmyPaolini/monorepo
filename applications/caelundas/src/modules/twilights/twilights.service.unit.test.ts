@@ -20,6 +20,22 @@ vi.mock("fs", () => ({
 }));
 
 interface ServicePrivate {
+  isAstronomicalDawn: (args: {
+    currentElevation: number;
+    previousElevation: number;
+  }) => boolean;
+  isAstronomicalDusk: (args: {
+    currentElevation: number;
+    previousElevation: number;
+  }) => boolean;
+  isCivilDawn: (args: {
+    currentElevation: number;
+    previousElevation: number;
+  }) => boolean;
+  isCivilDusk: (args: {
+    currentElevation: number;
+    previousElevation: number;
+  }) => boolean;
   isDawn: (args: {
     currentElevation: number;
     previousElevation: number;
@@ -30,27 +46,11 @@ interface ServicePrivate {
     previousElevation: number;
     twilight: Twilight;
   }) => boolean;
-  isAstronomicalDawn: (args: {
-    currentElevation: number;
-    previousElevation: number;
-  }) => boolean;
   isNauticalDawn: (args: {
     currentElevation: number;
     previousElevation: number;
   }) => boolean;
-  isCivilDawn: (args: {
-    currentElevation: number;
-    previousElevation: number;
-  }) => boolean;
-  isAstronomicalDusk: (args: {
-    currentElevation: number;
-    previousElevation: number;
-  }) => boolean;
   isNauticalDusk: (args: {
-    currentElevation: number;
-    previousElevation: number;
-  }) => boolean;
-  isCivilDusk: (args: {
     currentElevation: number;
     previousElevation: number;
   }) => boolean;
@@ -81,8 +81,8 @@ describe("TwilightsService", () => {
 
       // Sun crossing -6 degree threshold upward (civil dawn)
       const sunAzimuthElevationEphemeris: AzimuthElevationEphemeris = {
-        [previousMinute.toISOString()]: { azimuth: 85, elevation: -6.1 },
         [currentMinute.toISOString()]: { azimuth: 86, elevation: -5.9 },
+        [previousMinute.toISOString()]: { azimuth: 85, elevation: -6.1 },
       };
 
       const events = service.detect({
@@ -101,8 +101,8 @@ describe("TwilightsService", () => {
 
       // Sun crossing -6 degree threshold downward (civil dusk)
       const sunAzimuthElevationEphemeris: AzimuthElevationEphemeris = {
-        [previousMinute.toISOString()]: { azimuth: 275, elevation: -5.9 },
         [currentMinute.toISOString()]: { azimuth: 276, elevation: -6.1 },
+        [previousMinute.toISOString()]: { azimuth: 275, elevation: -5.9 },
       };
 
       const events = service.detect({
@@ -121,8 +121,8 @@ describe("TwilightsService", () => {
 
       // Sun crossing -12 degree threshold upward (nautical dawn)
       const sunAzimuthElevationEphemeris: AzimuthElevationEphemeris = {
-        [previousMinute.toISOString()]: { azimuth: 80, elevation: -12.1 },
         [currentMinute.toISOString()]: { azimuth: 81, elevation: -11.9 },
+        [previousMinute.toISOString()]: { azimuth: 80, elevation: -12.1 },
       };
 
       const events = service.detect({
@@ -141,8 +141,8 @@ describe("TwilightsService", () => {
 
       // Sun crossing -12 degree threshold downward (nautical dusk)
       const sunAzimuthElevationEphemeris: AzimuthElevationEphemeris = {
-        [previousMinute.toISOString()]: { azimuth: 280, elevation: -11.9 },
         [currentMinute.toISOString()]: { azimuth: 281, elevation: -12.1 },
+        [previousMinute.toISOString()]: { azimuth: 280, elevation: -11.9 },
       };
 
       const events = service.detect({
@@ -161,8 +161,8 @@ describe("TwilightsService", () => {
 
       // Sun crossing -18 degree threshold upward (astronomical dawn)
       const sunAzimuthElevationEphemeris: AzimuthElevationEphemeris = {
-        [previousMinute.toISOString()]: { azimuth: 75, elevation: -18.1 },
         [currentMinute.toISOString()]: { azimuth: 76, elevation: -17.9 },
+        [previousMinute.toISOString()]: { azimuth: 75, elevation: -18.1 },
       };
 
       const events = service.detect({
@@ -181,8 +181,8 @@ describe("TwilightsService", () => {
 
       // Sun crossing -18 degree threshold downward (astronomical dusk)
       const sunAzimuthElevationEphemeris: AzimuthElevationEphemeris = {
-        [previousMinute.toISOString()]: { azimuth: 285, elevation: -17.9 },
         [currentMinute.toISOString()]: { azimuth: 286, elevation: -18.1 },
+        [previousMinute.toISOString()]: { azimuth: 285, elevation: -17.9 },
       };
 
       const events = service.detect({
@@ -201,8 +201,8 @@ describe("TwilightsService", () => {
 
       // Sun in middle of day, not at any twilight threshold
       const sunAzimuthElevationEphemeris: AzimuthElevationEphemeris = {
-        [previousMinute.toISOString()]: { azimuth: 160, elevation: 44 },
         [currentMinute.toISOString()]: { azimuth: 161, elevation: 45 },
+        [previousMinute.toISOString()]: { azimuth: 160, elevation: 44 },
       };
 
       const events = service.detect({
@@ -313,18 +313,18 @@ describe("TwilightsService", () => {
   describe("service.detectProgressive", () => {
     it("should create daylight progressive event from civil dawn to civil dusk", () => {
       const civilDawn: Event = {
-        start: moment.utc("2024-03-21T06:00:00.000Z"),
-        end: moment.utc("2024-03-21T06:00:00.000Z"),
-        summary: "🌄 Civil Dawn",
-        description: "Civil Dawn",
         categories: ["Astronomy", "Astrology", "Twilight", "Civil Dawn"],
+        description: "Civil Dawn",
+        end: moment.utc("2024-03-21T06:00:00.000Z"),
+        start: moment.utc("2024-03-21T06:00:00.000Z"),
+        summary: "🌄 Civil Dawn",
       };
       const civilDusk: Event = {
-        start: moment.utc("2024-03-21T19:00:00.000Z"),
-        end: moment.utc("2024-03-21T19:00:00.000Z"),
-        summary: "🌇 Civil Dusk",
-        description: "Civil Dusk",
         categories: ["Astronomy", "Astrology", "Twilight", "Civil Dusk"],
+        description: "Civil Dusk",
+        end: moment.utc("2024-03-21T19:00:00.000Z"),
+        start: moment.utc("2024-03-21T19:00:00.000Z"),
+        summary: "🌇 Civil Dusk",
       };
 
       const progressiveEvents = service.detectProgressive([
@@ -341,18 +341,18 @@ describe("TwilightsService", () => {
 
     it("should create nautical twilight morning progressive event", () => {
       const nauticalDawn: Event = {
-        start: moment.utc("2024-03-21T05:30:00.000Z"),
-        end: moment.utc("2024-03-21T05:30:00.000Z"),
-        summary: "🌅 Nautical Dawn",
-        description: "Nautical Dawn",
         categories: ["Astronomy", "Astrology", "Twilight", "Nautical Dawn"],
+        description: "Nautical Dawn",
+        end: moment.utc("2024-03-21T05:30:00.000Z"),
+        start: moment.utc("2024-03-21T05:30:00.000Z"),
+        summary: "🌅 Nautical Dawn",
       };
       const civilDawn: Event = {
-        start: moment.utc("2024-03-21T06:00:00.000Z"),
-        end: moment.utc("2024-03-21T06:00:00.000Z"),
-        summary: "🌄 Civil Dawn",
-        description: "Civil Dawn",
         categories: ["Astronomy", "Astrology", "Twilight", "Civil Dawn"],
+        description: "Civil Dawn",
+        end: moment.utc("2024-03-21T06:00:00.000Z"),
+        start: moment.utc("2024-03-21T06:00:00.000Z"),
+        summary: "🌄 Civil Dawn",
       };
 
       const progressiveEvents = service.detectProgressive([
@@ -368,18 +368,18 @@ describe("TwilightsService", () => {
 
     it("should create astronomical twilight morning progressive event", () => {
       const astronomicalDawn: Event = {
-        start: moment.utc("2024-03-21T05:00:00.000Z"),
-        end: moment.utc("2024-03-21T05:00:00.000Z"),
-        summary: "🌠 Astronomical Dawn",
-        description: "Astronomical Dawn",
         categories: ["Astronomy", "Astrology", "Twilight", "Astronomical Dawn"],
+        description: "Astronomical Dawn",
+        end: moment.utc("2024-03-21T05:00:00.000Z"),
+        start: moment.utc("2024-03-21T05:00:00.000Z"),
+        summary: "🌠 Astronomical Dawn",
       };
       const nauticalDawn: Event = {
-        start: moment.utc("2024-03-21T05:30:00.000Z"),
-        end: moment.utc("2024-03-21T05:30:00.000Z"),
-        summary: "🌅 Nautical Dawn",
-        description: "Nautical Dawn",
         categories: ["Astronomy", "Astrology", "Twilight", "Nautical Dawn"],
+        description: "Nautical Dawn",
+        end: moment.utc("2024-03-21T05:30:00.000Z"),
+        start: moment.utc("2024-03-21T05:30:00.000Z"),
+        summary: "🌅 Nautical Dawn",
       };
 
       const progressiveEvents = service.detectProgressive([
@@ -396,19 +396,19 @@ describe("TwilightsService", () => {
     it("should create night progressive event from astronomical dusk to astronomical dawn", () => {
       // First day - evening
       const astronomicalDusk: Event = {
-        start: moment.utc("2024-03-21T20:00:00.000Z"),
-        end: moment.utc("2024-03-21T20:00:00.000Z"),
-        summary: "🌌 Astronomical Dusk",
-        description: "Astronomical Dusk",
         categories: ["Astronomy", "Astrology", "Twilight", "Astronomical Dusk"],
+        description: "Astronomical Dusk",
+        end: moment.utc("2024-03-21T20:00:00.000Z"),
+        start: moment.utc("2024-03-21T20:00:00.000Z"),
+        summary: "🌌 Astronomical Dusk",
       };
       // Next day - morning
       const astronomicalDawn: Event = {
-        start: moment.utc("2024-03-22T05:00:00.000Z"),
-        end: moment.utc("2024-03-22T05:00:00.000Z"),
-        summary: "🌠 Astronomical Dawn",
-        description: "Astronomical Dawn",
         categories: ["Astronomy", "Astrology", "Twilight", "Astronomical Dawn"],
+        description: "Astronomical Dawn",
+        end: moment.utc("2024-03-22T05:00:00.000Z"),
+        start: moment.utc("2024-03-22T05:00:00.000Z"),
+        summary: "🌠 Astronomical Dawn",
       };
 
       const progressiveEvents = service.detectProgressive([

@@ -27,9 +27,9 @@ const AGENTS_FILE = path.join(WORKSPACE_ROOT, "AGENTS.md");
 const MODE = process.argv[2] ?? "check";
 
 interface Generator {
-  name: string;
   aliases: string[];
   description: string;
+  name: string;
 }
 
 interface GeneratorsJson {
@@ -37,67 +37,6 @@ interface GeneratorsJson {
     string,
     { aliases?: string[]; description: string; factory: string; schema: string }
   >;
-}
-
-/**
- * Read generators from tools/conformance/generators.json
- */
-function readGenerators(): Generator[] {
-  const content = readFileSync(GENERATORS_FILE, "utf8");
-  const json = JSON.parse(content) as GeneratorsJson;
-
-  return Object.entries(json.generators).map(([name, config]) => ({
-    name,
-    aliases: config.aliases ?? [],
-    description: config.description,
-  }));
-}
-
-/**
- * Generate markdown table of generators
- */
-function generateGeneratorsTable(generators: Generator[]): string {
-  const header =
-    "| Generator | Alias | Description |\n| --------- | ----- | ----------- |";
-  const rows = generators.map((gen) => {
-    const alias = gen.aliases.map((a) => `\`${a}\``).join(", ");
-    return `| \`${gen.name}\` | ${alias} | ${gen.description} |`;
-  });
-  return [header, ...rows].join("\n");
-}
-
-/**
- * Read AGENTS.md and extract content around the generated section
- */
-function readAgentsFile(): {
-  beforeMarker: string;
-  generatedContent: string;
-  afterMarker: string;
-} {
-  const content = readFileSync(AGENTS_FILE, "utf8");
-  const startMarker = "<!-- conformance-generators-table start -->";
-  const endMarker = "<!-- conformance-generators-table end -->";
-
-  const startIndex = content.indexOf(startMarker);
-  const endIndex = content.indexOf(endMarker);
-
-  if (startIndex === -1 || endIndex === -1) {
-    throw new Error(
-      `Markers not found in AGENTS.md. Expected to find "${startMarker}" and "${endMarker}"`,
-    );
-  }
-
-  const beforeMarker = content.slice(
-    0,
-    Math.max(0, startIndex + startMarker.length),
-  );
-  const afterMarker = content.slice(Math.max(0, endIndex));
-  const generatedContent = content.slice(
-    startIndex + startMarker.length,
-    endIndex,
-  );
-
-  return { beforeMarker, generatedContent, afterMarker };
 }
 
 /**
@@ -131,17 +70,16 @@ function checkSync(generators: Generator[]): boolean {
 }
 
 /**
- * Write the generated content to AGENTS.md
+ * Generate markdown table of generators
  */
-function writeSync(generators: Generator[]): void {
-  console.log("🔄 Generating conformance generators table...");
-  const generatedTable = generateGeneratorsTable(generators);
-  const { beforeMarker, afterMarker } = readAgentsFile();
-
-  const newContent = `${beforeMarker}\n${generatedTable}\n${afterMarker}`;
-
-  writeFileSync(AGENTS_FILE, newContent, "utf8");
-  console.log(`✅ Updated AGENTS.md with ${generators.length} generators`);
+function generateGeneratorsTable(generators: Generator[]): string {
+  const header =
+    "| Generator | Alias | Description |\n| --------- | ----- | ----------- |";
+  const rows = generators.map((gen) => {
+    const alias = gen.aliases.map((a) => `\`${a}\``).join(", ");
+    return `| \`${gen.name}\` | ${alias} | ${gen.description} |`;
+  });
+  return [header, ...rows].join("\n");
 }
 
 /**
@@ -166,6 +104,68 @@ function main(): void {
     console.error("❌ Error:", error instanceof Error ? error.message : error);
     process.exit(1);
   }
+}
+
+/**
+ * Read AGENTS.md and extract content around the generated section
+ */
+function readAgentsFile(): {
+  afterMarker: string;
+  beforeMarker: string;
+  generatedContent: string;
+} {
+  const content = readFileSync(AGENTS_FILE, "utf8");
+  const startMarker = "<!-- conformance-generators-table start -->";
+  const endMarker = "<!-- conformance-generators-table end -->";
+
+  const startIndex = content.indexOf(startMarker);
+  const endIndex = content.indexOf(endMarker);
+
+  if (startIndex === -1 || endIndex === -1) {
+    throw new Error(
+      `Markers not found in AGENTS.md. Expected to find "${startMarker}" and "${endMarker}"`,
+    );
+  }
+
+  const beforeMarker = content.slice(
+    0,
+    Math.max(0, startIndex + startMarker.length),
+  );
+  const afterMarker = content.slice(Math.max(0, endIndex));
+  const generatedContent = content.slice(
+    startIndex + startMarker.length,
+    endIndex,
+  );
+
+  return { afterMarker, beforeMarker, generatedContent };
+}
+
+/**
+ * Read generators from tools/conformance/generators.json
+ */
+function readGenerators(): Generator[] {
+  const content = readFileSync(GENERATORS_FILE, "utf8");
+  const json = JSON.parse(content) as GeneratorsJson;
+
+  return Object.entries(json.generators).map(([name, config]) => ({
+    aliases: config.aliases ?? [],
+    description: config.description,
+    name,
+  }));
+}
+
+/**
+ * Write the generated content to AGENTS.md
+ */
+function writeSync(generators: Generator[]): void {
+  console.log("🔄 Generating conformance generators table...");
+  const generatedTable = generateGeneratorsTable(generators);
+  const { afterMarker, beforeMarker } = readAgentsFile();
+
+  const newContent = `${beforeMarker}\n${generatedTable}\n${afterMarker}`;
+
+  writeFileSync(AGENTS_FILE, newContent, "utf8");
+  console.log(`✅ Updated AGENTS.md with ${generators.length} generators`);
 }
 
 main();

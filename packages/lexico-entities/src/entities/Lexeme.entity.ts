@@ -16,35 +16,28 @@ import { WordLexeme } from "./WordLexeme.entity.js";
 /**
  *
  */
-@ObjectType()
 @Entity({
-  name: "lexemes",
-  schema: "public",
   comment:
     "A dictionary entry representing a Latin word form with its translations, principal parts, pronunciation, and inflection data",
+  name: "lexemes",
+  schema: "public",
 })
+@ObjectType()
 @Unique(["lemma", "disambiguator"])
 export class Lexeme extends AuditableEntity {
-  @Field()
-  @Index()
-  @Column("text", {
-    comment: "Dictionary headword (lemma), e.g. 'amō'",
-  })
-  lemma!: string;
-
-  @Field()
   @Column("bigint", {
-    default: 0,
     comment:
       "Disambiguation index when multiple entries share the same lemma (0-based)",
+    default: 0,
   })
+  @Field()
   disambiguator!: number;
 
-  @Field({ nullable: true })
   @Column("text", {
-    nullable: true,
     comment: "Etymology of the word (Latin or Greek origin)",
+    nullable: true,
   })
+  @Field({ nullable: true })
   etymology?: string;
 
   @Field(() => [Form])
@@ -56,18 +49,25 @@ export class Lexeme extends AuditableEntity {
 
   @Field(() => Inflection, { nullable: true })
   @OneToOne(() => Inflection, (inflection) => inflection.lexeme, {
-    nullable: true,
     cascade: true,
+    nullable: true,
   })
   inflection?: Inflection | null;
 
+  @Column("text", {
+    comment: "Dictionary headword (lemma), e.g. 'amō'",
+  })
+  @Field()
+  @Index()
+  lemma!: string;
+
+  @Column({
+    comment: "Grammatical part of speech",
+    enum: partOfSpeechValues,
+    type: "enum",
+  })
   @Field(() => String)
   @Index()
-  @Column({
-    type: "enum",
-    enum: partOfSpeechValues,
-    comment: "Grammatical part of speech",
-  })
   partOfSpeech!: PartOfSpeech;
 
   @Field(() => [PrincipalPart])
@@ -80,18 +80,18 @@ export class Lexeme extends AuditableEntity {
   @Field(() => [Pronunciation], { nullable: true })
   @OneToMany(() => Pronunciation, "lexeme", {
     cascade: true,
-    orphanedRowAction: "delete",
     onDelete: "CASCADE",
+    orphanedRowAction: "delete",
   })
-  pronunciations?: Pronunciation[] | null;
+  pronunciations?: null | Pronunciation[];
 
   @Field(() => [Translation], { nullable: true })
   @OneToMany(() => Translation, (translation) => translation.lexeme, {
-    nullable: true,
     cascade: true,
+    nullable: true,
     onDelete: "CASCADE",
   })
-  translations?: Translation[] | null;
+  translations?: null | Translation[];
 
   /** Junction rows linking this lexeme to every word string that can represent it. */
   @Field(() => [Object], { nullable: true })

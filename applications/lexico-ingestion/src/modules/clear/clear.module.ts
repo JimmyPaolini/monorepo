@@ -1,6 +1,7 @@
-import { Lexeme, Translation, Word } from "@monorepo/lexico-entities";
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
+
+import { Lexeme, Translation, Word } from "@monorepo/lexico-entities";
 
 import { ClearCommand } from "./clear.command";
 import { ClearService } from "./clear.service";

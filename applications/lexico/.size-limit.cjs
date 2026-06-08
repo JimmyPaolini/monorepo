@@ -5,15 +5,15 @@
 
 module.exports = [
   {
+    gzip: true,
+    limit: "180 KB",
     name: "Client JS",
     path: "../../dist/applications/lexico/client/assets/index-*.js",
-    limit: "180 KB",
-    gzip: true,
   },
   {
+    gzip: true,
+    limit: "20 KB",
     name: "Client CSS",
     path: "../../dist/applications/lexico/client/assets/*.css",
-    limit: "20 KB",
-    gzip: true,
   },
 ];

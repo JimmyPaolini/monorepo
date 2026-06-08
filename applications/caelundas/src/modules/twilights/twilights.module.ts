@@ -12,8 +12,8 @@ import { TwilightsService } from "./twilights.service";
  */
 @Module({
   controllers: [],
+  exports: [TwilightsService],
   imports: [EphemerisModule, MathModule, ProgressiveUtilitiesModule],
   providers: [TwilightsService],
-  exports: [TwilightsService],
 })
 export class TwilightsModule {}

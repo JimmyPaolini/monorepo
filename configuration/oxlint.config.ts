@@ -623,13 +623,6 @@ export default defineConfig({
         "no-var": "error",
         "prefer-const": "error",
         "prefer-template": "error",
-        "sort-imports": [
-          "error",
-          {
-            ignoreCase: true,
-            ignoreDeclarationSort: true,
-          },
-        ],
       },
     },
     // ── [7] TypeScript strict + stylistic rules ─────────────────────────────

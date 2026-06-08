@@ -37,10 +37,10 @@ type EclipseFullArgs = EclipseArgs & {
   previousLongitudeSun: number;
 };
 interface ServicePrivate {
-  isSolarEclipse: (args: EclipseFullArgs) => EclipsePhase | null;
-  isSolarEclipseActive: (args: EclipseArgs) => boolean;
   isLunarEclipse: (args: EclipseFullArgs) => EclipsePhase | null;
   isLunarEclipseActive: (args: EclipseArgs) => boolean;
+  isSolarEclipse: (args: EclipseFullArgs) => EclipsePhase | null;
+  isSolarEclipseActive: (args: EclipseArgs) => boolean;
 }
 
 describe("EclipsesService", () => {
@@ -75,8 +75,8 @@ describe("EclipsesService", () => {
         .clone()
         .subtract(MARGIN_MINUTES - i, "minutes");
       ephemeris[minute.toISOString()] = {
-        longitude: longitudes[i] ?? longitudes.at(-1) ?? 0,
         latitude: latitudes[i] ?? latitudes.at(-1) ?? 0,
+        longitude: longitudes[i] ?? longitudes.at(-1) ?? 0,
       };
     }
 
@@ -261,10 +261,6 @@ describe("EclipsesService", () => {
   describe("service.detectProgressive", () => {
     it("should create solar eclipse progressive event from beginning to ending", () => {
       const beginningEvent: Event = {
-        start: moment.utc("2024-04-08T18:00:00.000Z"),
-        end: moment.utc("2024-04-08T18:00:00.000Z"),
-        summary: "🌐 ☀️🐉▶️ Solar Eclipse begins",
-        description: "Solar Eclipse begins (Geocentric)",
         categories: [
           "Astronomy",
           "Astrology",
@@ -272,12 +268,12 @@ describe("EclipsesService", () => {
           "Solar",
           "Geocentric",
         ],
+        description: "Solar Eclipse begins (Geocentric)",
+        end: moment.utc("2024-04-08T18:00:00.000Z"),
+        start: moment.utc("2024-04-08T18:00:00.000Z"),
+        summary: "🌐 ☀️🐉▶️ Solar Eclipse begins",
       };
       const endingEvent: Event = {
-        start: moment.utc("2024-04-08T19:00:00.000Z"),
-        end: moment.utc("2024-04-08T19:00:00.000Z"),
-        summary: "🌐 ☀️🐉◀️ Solar Eclipse ends",
-        description: "Solar Eclipse ends (Geocentric)",
         categories: [
           "Astronomy",
           "Astrology",
@@ -285,6 +281,10 @@ describe("EclipsesService", () => {
           "Solar",
           "Geocentric",
         ],
+        description: "Solar Eclipse ends (Geocentric)",
+        end: moment.utc("2024-04-08T19:00:00.000Z"),
+        start: moment.utc("2024-04-08T19:00:00.000Z"),
+        summary: "🌐 ☀️🐉◀️ Solar Eclipse ends",
       };
 
       const progressiveEvents = service.detectProgressive([
@@ -313,10 +313,6 @@ describe("EclipsesService", () => {
 
     it("should create lunar eclipse progressive event from beginning to ending", () => {
       const beginningEvent: Event = {
-        start: moment.utc("2024-09-18T02:00:00.000Z"),
-        end: moment.utc("2024-09-18T02:00:00.000Z"),
-        summary: "� 🌙🐉▶️ Lunar Eclipse begins",
-        description: "Lunar Eclipse begins (Geocentric)",
         categories: [
           "Astronomy",
           "Astrology",
@@ -324,12 +320,12 @@ describe("EclipsesService", () => {
           "Lunar",
           "Geocentric",
         ],
+        description: "Lunar Eclipse begins (Geocentric)",
+        end: moment.utc("2024-09-18T02:00:00.000Z"),
+        start: moment.utc("2024-09-18T02:00:00.000Z"),
+        summary: "� 🌙🐉▶️ Lunar Eclipse begins",
       };
       const endingEvent: Event = {
-        start: moment.utc("2024-09-18T03:00:00.000Z"),
-        end: moment.utc("2024-09-18T03:00:00.000Z"),
-        summary: "🌐 🌙🐉◀️ Lunar Eclipse ends",
-        description: "Lunar Eclipse ends (Geocentric)",
         categories: [
           "Astronomy",
           "Astrology",
@@ -337,6 +333,10 @@ describe("EclipsesService", () => {
           "Lunar",
           "Geocentric",
         ],
+        description: "Lunar Eclipse ends (Geocentric)",
+        end: moment.utc("2024-09-18T03:00:00.000Z"),
+        start: moment.utc("2024-09-18T03:00:00.000Z"),
+        summary: "🌐 🌙🐉◀️ Lunar Eclipse ends",
       };
 
       const progressiveEvents = service.detectProgressive([
@@ -371,10 +371,6 @@ describe("EclipsesService", () => {
 
     it("should handle both solar and lunar eclipses together", () => {
       const solarBegin: Event = {
-        start: moment.utc("2024-04-08T18:00:00.000Z"),
-        end: moment.utc("2024-04-08T18:00:00.000Z"),
-        summary: "🌐 ☀️🐉▶️ Solar Eclipse begins",
-        description: "Solar Eclipse begins (Geocentric)",
         categories: [
           "Astronomy",
           "Astrology",
@@ -382,12 +378,12 @@ describe("EclipsesService", () => {
           "Solar",
           "Geocentric",
         ],
+        description: "Solar Eclipse begins (Geocentric)",
+        end: moment.utc("2024-04-08T18:00:00.000Z"),
+        start: moment.utc("2024-04-08T18:00:00.000Z"),
+        summary: "🌐 ☀️🐉▶️ Solar Eclipse begins",
       };
       const solarEnd: Event = {
-        start: moment.utc("2024-04-08T19:00:00.000Z"),
-        end: moment.utc("2024-04-08T19:00:00.000Z"),
-        summary: "🌐 ☀️🐉◀️ Solar Eclipse ends",
-        description: "Solar Eclipse ends (Geocentric)",
         categories: [
           "Astronomy",
           "Astrology",
@@ -395,12 +391,12 @@ describe("EclipsesService", () => {
           "Solar",
           "Geocentric",
         ],
+        description: "Solar Eclipse ends (Geocentric)",
+        end: moment.utc("2024-04-08T19:00:00.000Z"),
+        start: moment.utc("2024-04-08T19:00:00.000Z"),
+        summary: "🌐 ☀️🐉◀️ Solar Eclipse ends",
       };
       const lunarBegin: Event = {
-        start: moment.utc("2024-09-18T02:00:00.000Z"),
-        end: moment.utc("2024-09-18T02:00:00.000Z"),
-        summary: "🌐 🌙🐉▶️ Lunar Eclipse begins",
-        description: "Lunar Eclipse begins (Geocentric)",
         categories: [
           "Astronomy",
           "Astrology",
@@ -408,12 +404,12 @@ describe("EclipsesService", () => {
           "Lunar",
           "Geocentric",
         ],
+        description: "Lunar Eclipse begins (Geocentric)",
+        end: moment.utc("2024-09-18T02:00:00.000Z"),
+        start: moment.utc("2024-09-18T02:00:00.000Z"),
+        summary: "🌐 🌙🐉▶️ Lunar Eclipse begins",
       };
       const lunarEnd: Event = {
-        start: moment.utc("2024-09-18T03:00:00.000Z"),
-        end: moment.utc("2024-09-18T03:00:00.000Z"),
-        summary: "🌐 🌙🐉◀️ Lunar Eclipse ends",
-        description: "Lunar Eclipse ends (Geocentric)",
         categories: [
           "Astronomy",
           "Astrology",
@@ -421,6 +417,10 @@ describe("EclipsesService", () => {
           "Lunar",
           "Geocentric",
         ],
+        description: "Lunar Eclipse ends (Geocentric)",
+        end: moment.utc("2024-09-18T03:00:00.000Z"),
+        start: moment.utc("2024-09-18T03:00:00.000Z"),
+        summary: "🌐 🌙🐉◀️ Lunar Eclipse ends",
       };
 
       const progressiveEvents = service.detectProgressive([
@@ -446,11 +446,11 @@ describe("EclipsesService", () => {
 
     it("should filter out non-eclipse events", () => {
       const nonEclipseEvent: Event = {
-        start: moment.utc("2024-04-08T18:00:00.000Z"),
-        end: moment.utc("2024-04-08T18:00:00.000Z"),
-        summary: "Some other event",
-        description: "Not an eclipse",
         categories: ["Astronomy", "Something Else"],
+        description: "Not an eclipse",
+        end: moment.utc("2024-04-08T18:00:00.000Z"),
+        start: moment.utc("2024-04-08T18:00:00.000Z"),
+        summary: "Some other event",
       };
 
       const progressiveEvents = service.detectProgressive([nonEclipseEvent]);
@@ -477,10 +477,10 @@ describe("EclipsesService", () => {
           currentLatitudeSun: 0,
           currentLongitudeMoon: 100,
           currentLongitudeSun: 100,
-          previousLongitudeMoon: 99,
-          previousLongitudeSun: 100,
           nextLongitudeMoon: 101,
           nextLongitudeSun: 100,
+          previousLongitudeMoon: 99,
+          previousLongitudeSun: 100,
         });
         expect(result).toBe("maximum");
       });
@@ -493,10 +493,10 @@ describe("EclipsesService", () => {
           currentLatitudeSun: 0,
           currentLongitudeMoon: 100 + diameter * 0.5,
           currentLongitudeSun: 100,
-          previousLongitudeMoon: 100 + diameter * 1.5,
-          previousLongitudeSun: 100,
           nextLongitudeMoon: 100 + diameter * 0.3,
           nextLongitudeSun: 100,
+          previousLongitudeMoon: 100 + diameter * 1.5,
+          previousLongitudeSun: 100,
         });
         expect(result).toBe("beginning");
       });
@@ -509,10 +509,10 @@ describe("EclipsesService", () => {
           currentLatitudeSun: 0,
           currentLongitudeMoon: 100 + diameter * 0.5,
           currentLongitudeSun: 100,
-          previousLongitudeMoon: 100 + diameter * 0.3,
-          previousLongitudeSun: 100,
           nextLongitudeMoon: 100 + diameter * 1.5,
           nextLongitudeSun: 100,
+          previousLongitudeMoon: 100 + diameter * 0.3,
+          previousLongitudeSun: 100,
         });
         expect(result).toBe("ending");
       });
@@ -524,10 +524,10 @@ describe("EclipsesService", () => {
           currentLatitudeSun: 0,
           currentLongitudeMoon: 100,
           currentLongitudeSun: 100,
-          previousLongitudeMoon: 99,
-          previousLongitudeSun: 100,
           nextLongitudeMoon: 101,
           nextLongitudeSun: 100,
+          previousLongitudeMoon: 99,
+          previousLongitudeSun: 100,
         });
         expect(result).toBeNull();
       });
@@ -539,10 +539,10 @@ describe("EclipsesService", () => {
           currentLatitudeSun: 0,
           currentLongitudeMoon: 190,
           currentLongitudeSun: 100,
-          previousLongitudeMoon: 189,
-          previousLongitudeSun: 100,
           nextLongitudeMoon: 191,
           nextLongitudeSun: 100,
+          previousLongitudeMoon: 189,
+          previousLongitudeSun: 100,
         });
         expect(result).toBeNull();
       });
@@ -556,10 +556,10 @@ describe("EclipsesService", () => {
           currentLatitudeSun: 0,
           currentLongitudeMoon: 280,
           currentLongitudeSun: 100,
-          previousLongitudeMoon: 279,
-          previousLongitudeSun: 100,
           nextLongitudeMoon: 281,
           nextLongitudeSun: 100,
+          previousLongitudeMoon: 279,
+          previousLongitudeSun: 100,
         });
         expect(result).toBe("maximum");
       });
@@ -573,10 +573,10 @@ describe("EclipsesService", () => {
           currentLatitudeSun: 0,
           currentLongitudeMoon: 100 + oppositionThreshold + 0.5,
           currentLongitudeSun: 100,
-          previousLongitudeMoon: 100 + oppositionThreshold - 0.5,
-          previousLongitudeSun: 100,
           nextLongitudeMoon: 100 + oppositionThreshold + 1,
           nextLongitudeSun: 100,
+          previousLongitudeMoon: 100 + oppositionThreshold - 0.5,
+          previousLongitudeSun: 100,
         });
         expect(result).toBe("beginning");
       });
@@ -590,10 +590,10 @@ describe("EclipsesService", () => {
           currentLatitudeSun: 0,
           currentLongitudeMoon: 100 + oppositionThreshold + 0.5,
           currentLongitudeSun: 100,
-          previousLongitudeMoon: 100 + oppositionThreshold + 1,
-          previousLongitudeSun: 100,
           nextLongitudeMoon: 100 + oppositionThreshold - 0.5,
           nextLongitudeSun: 100,
+          previousLongitudeMoon: 100 + oppositionThreshold + 1,
+          previousLongitudeSun: 100,
         });
         expect(result).toBe("ending");
       });
@@ -605,10 +605,10 @@ describe("EclipsesService", () => {
           currentLatitudeSun: 0,
           currentLongitudeMoon: 280,
           currentLongitudeSun: 100,
-          previousLongitudeMoon: 279,
-          previousLongitudeSun: 100,
           nextLongitudeMoon: 281,
           nextLongitudeSun: 100,
+          previousLongitudeMoon: 279,
+          previousLongitudeSun: 100,
         });
         expect(result).toBeNull();
       });
@@ -620,10 +620,10 @@ describe("EclipsesService", () => {
           currentLatitudeSun: 0,
           currentLongitudeMoon: 150,
           currentLongitudeSun: 100,
-          previousLongitudeMoon: 149,
-          previousLongitudeSun: 100,
           nextLongitudeMoon: 151,
           nextLongitudeSun: 100,
+          previousLongitudeMoon: 149,
+          previousLongitudeSun: 100,
         });
         expect(result).toBeNull();
       });

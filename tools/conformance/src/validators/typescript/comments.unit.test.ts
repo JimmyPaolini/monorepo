@@ -12,10 +12,6 @@ import { describe, expect, it } from "vitest";
 
 import { getComments, validateComments } from "./comments";
 
-function parseTypescript(code: string): SourceFile {
-  return createSourceFile("test.ts", code, ScriptTarget.Latest, true);
-}
-
 function firstStatement(code: string): Node {
   const stmt = parseTypescript(code).statements.at(0);
   if (stmt === undefined) throw new Error("No statement found");
@@ -48,6 +44,10 @@ function namedDecorator(code: string, decoratorName: string): Node {
   if (decorator === undefined)
     throw new Error(`Decorator @${decoratorName} not found`);
   return decorator;
+}
+
+function parseTypescript(code: string): SourceFile {
+  return createSourceFile("test.ts", code, ScriptTarget.Latest, true);
 }
 
 describe("getComments", () => {
@@ -108,10 +108,10 @@ describe("validateComments", () => {
   it("returns no errors when template has no comments", () => {
     expect(
       validateComments({
-        templateNode: firstStatement("const x = 1;\n"),
         instanceNode: firstStatement("const x = 1;\n"),
         language: "typescript",
         side: "pos",
+        templateNode: firstStatement("const x = 1;\n"),
       }),
     ).toEqual([]);
   });
@@ -119,20 +119,20 @@ describe("validateComments", () => {
   it("returns no errors when instance has all template comments", () => {
     expect(
       validateComments({
-        templateNode: firstStatement("// section\nconst x = 1;\n"),
         instanceNode: firstStatement("// section\nconst x = 1;\n"),
         language: "typescript",
         side: "pos",
+        templateNode: firstStatement("// section\nconst x = 1;\n"),
       }),
     ).toEqual([]);
   });
 
   it("returns error for each missing template comment", () => {
     const errors = validateComments({
-      templateNode: firstStatement("// section\nconst x = 1;\n"),
       instanceNode: firstStatement("const x = 1;\n"),
       language: "typescript",
       side: "pos",
+      templateNode: firstStatement("// section\nconst x = 1;\n"),
     });
     expect(errors).toHaveLength(1);
     expect(errors.at(0)?.message).toContain('Missing comment: "// section"');
@@ -141,20 +141,20 @@ describe("validateComments", () => {
   it("returns no errors when instance has extra comments around template comments", () => {
     expect(
       validateComments({
-        templateNode: firstStatement("// required\nconst x = 1;\n"),
         instanceNode: firstStatement("// extra\n// required\nconst x = 1;\n"),
         language: "typescript",
         side: "pos",
+        templateNode: firstStatement("// required\nconst x = 1;\n"),
       }),
     ).toEqual([]);
   });
 
   it("enforces relative order — out-of-order template comment fails", () => {
     const errors = validateComments({
-      templateNode: firstStatement("// first\n// second\nconst x = 1;\n"),
       instanceNode: firstStatement("// second\n// first\nconst x = 1;\n"),
       language: "typescript",
       side: "pos",
+      templateNode: firstStatement("// first\n// second\nconst x = 1;\n"),
     });
     expect(errors).toHaveLength(1);
     expect(errors.at(0)?.message).toContain('Missing comment: "// second"');
@@ -163,22 +163,22 @@ describe("validateComments", () => {
   it("matches any TODO comment when template comment contains TODO", () => {
     expect(
       validateComments({
-        templateNode: firstStatement("// TODO: placeholder\nconst x = 1;\n"),
         instanceNode: firstStatement(
           "// TODO: completely different wording\nconst x = 1;\n",
         ),
         language: "typescript",
         side: "pos",
+        templateNode: firstStatement("// TODO: placeholder\nconst x = 1;\n"),
       }),
     ).toEqual([]);
   });
 
   it("requires exact match for non-TODO comments", () => {
     const errors = validateComments({
-      templateNode: firstStatement("// exact comment\nconst x = 1;\n"),
       instanceNode: firstStatement("// different comment\nconst x = 1;\n"),
       language: "typescript",
       side: "pos",
+      templateNode: firstStatement("// exact comment\nconst x = 1;\n"),
     });
     expect(errors).toHaveLength(1);
     expect(errors.at(0)?.message).toContain(
@@ -188,10 +188,10 @@ describe("validateComments", () => {
 
   it("includes source location in error object", () => {
     const errors = validateComments({
-      templateNode: firstStatement("// missing\nconst x = 1;\n"),
       instanceNode: firstStatement("const x = 1;\n"),
       language: "typescript",
       side: "pos",
+      templateNode: firstStatement("// missing\nconst x = 1;\n"),
     });
     const error = errors.at(0);
     expect(error?.instanceLine).toBeTypeOf("number");
@@ -200,10 +200,10 @@ describe("validateComments", () => {
 
   it("detects missing comment on new line after node when side is end", () => {
     const errors = validateComments({
-      templateNode: firstStatement("const x = 1;\n// end note\nconst y = 2;\n"),
       instanceNode: firstStatement("const x = 1;\nconst y = 2;\n"),
       language: "typescript",
       side: "end",
+      templateNode: firstStatement("const x = 1;\n// end note\nconst y = 2;\n"),
     });
     expect(errors).toHaveLength(1);
     expect(errors.at(0)?.message).toContain('Missing comment: "// end note"');
@@ -212,14 +212,14 @@ describe("validateComments", () => {
   it("returns no errors when side-end instance has the matching new-line comment", () => {
     expect(
       validateComments({
-        templateNode: firstStatement(
-          "const x = 1;\n// end note\nconst y = 2;\n",
-        ),
         instanceNode: firstStatement(
           "const x = 1;\n// end note\nconst y = 2;\n",
         ),
         language: "typescript",
         side: "end",
+        templateNode: firstStatement(
+          "const x = 1;\n// end note\nconst y = 2;\n",
+        ),
       }),
     ).toEqual([]);
   });
@@ -246,10 +246,10 @@ export class FooModule {}
     const instanceModuleDecorator = namedDecorator(instanceCode, "Module");
 
     const errors = validateComments({
-      templateNode: templateModuleDecorator,
       instanceNode: instanceModuleDecorator,
       language: "typescript",
       side: "pos",
+      templateNode: templateModuleDecorator,
     });
 
     expect(errors).toEqual([]);
@@ -271,10 +271,10 @@ export class FooModule {}
     const instanceModuleDecorator = namedDecorator(instanceCode, "Module");
 
     const errors = validateComments({
-      templateNode: templateModuleDecorator,
       instanceNode: instanceModuleDecorator,
       language: "typescript",
       side: "pos",
+      templateNode: templateModuleDecorator,
     });
 
     expect(errors).toHaveLength(1);

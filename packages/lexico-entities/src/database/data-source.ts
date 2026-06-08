@@ -1,5 +1,4 @@
 import "reflect-metadata";
-
 import { DataSource } from "typeorm";
 
 import { AdjectivalForm } from "../entities/form/AdjectivalForm.entity.js";
@@ -29,14 +28,7 @@ import { WordLexeme } from "../entities/WordLexeme.entity.js";
 import { LexicoNamingStrategy } from "./lexico-naming-strategy.js";
 
 export const dataSource = new DataSource({
-  type: "postgres",
-  host: process.env["POSTGRES_HOST"] ?? "localhost",
-  port: Number(process.env["POSTGRES_PORT"] ?? 5432),
-  username: process.env["POSTGRES_USER"] ?? "postgres",
-  password: process.env["POSTGRES_PASSWORD"] ?? "postgres",
   database: process.env["POSTGRES_DB"] ?? "postgres",
-  namingStrategy: new LexicoNamingStrategy(),
-  schema: "public",
   entities: [
     Lexeme,
     Inflection,
@@ -62,7 +54,14 @@ export const dataSource = new DataSource({
     WordForm,
     WordLexeme,
   ],
-  migrations: ["src/database/migrations/*.ts"],
-  synchronize: false,
+  host: process.env["POSTGRES_HOST"] ?? "localhost",
   logging: false,
+  migrations: ["src/database/migrations/*.ts"],
+  namingStrategy: new LexicoNamingStrategy(),
+  password: process.env["POSTGRES_PASSWORD"] ?? "postgres",
+  port: Number(process.env["POSTGRES_PORT"] ?? 5432),
+  schema: "public",
+  synchronize: false,
+  type: "postgres",
+  username: process.env["POSTGRES_USER"] ?? "postgres",
 });

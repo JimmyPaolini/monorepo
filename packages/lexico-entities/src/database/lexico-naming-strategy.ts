@@ -10,15 +10,6 @@ export class LexicoNamingStrategy extends SnakeNamingStrategy {
   /**
    *
    */
-  override tableName(targetName: string, userSpecifiedName: string): string {
-    const base = super.tableName(targetName, userSpecifiedName);
-    const tableName = pluralize(base);
-    return tableName;
-  }
-
-  /**
-   *
-   */
   override joinTableName(
     firstEntityName: string,
     secondEntityName: string,
@@ -28,5 +19,14 @@ export class LexicoNamingStrategy extends SnakeNamingStrategy {
     const sorted = [pluralize(first), pluralize(second)].toSorted();
     const joinTableName = sorted.join("_");
     return joinTableName;
+  }
+
+  /**
+   *
+   */
+  override tableName(targetName: string, userSpecifiedName: string): string {
+    const base = super.tableName(targetName, userSpecifiedName);
+    const tableName = pluralize(base);
+    return tableName;
   }
 }

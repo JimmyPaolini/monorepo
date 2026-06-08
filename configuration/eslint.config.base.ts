@@ -1,9 +1,9 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+import eslintReact from "@eslint-react/eslint-plugin";
 import eslint from "@eslint/js";
 import markdown from "@eslint/markdown";
-import eslintReact from "@eslint-react/eslint-plugin";
 import nxPlugin from "@nx/eslint-plugin";
 import eslintConfigPrettier from "eslint-config-prettier";
 import importPlugin from "eslint-plugin-import-x";
@@ -195,64 +195,41 @@ export default [
       "configuration/eslint.config.base.ts",
     ],
     plugins: {
-      import: importPlugin,
       "@typescript-eslint": tseslint.plugin,
+      import: importPlugin,
       perfectionist: perfectionistPlugin,
     },
     rules: {
       // Nx-specific rules
+      "@nx/dependency-checks": "error",
       "@nx/enforce-module-boundaries": [
         "error",
         {
-          enforceBuildableLibDependency: true,
           allow: [],
           depConstraints: [
             {
-              sourceTag: "*",
               onlyDependOnLibsWithTags: ["*"],
+              sourceTag: "*",
             },
           ],
+          enforceBuildableLibDependency: true,
         },
       ],
-      "@nx/dependency-checks": "error",
 
-      // Import rules for better module management
-      "import/order": [
-        "error",
-        {
-          groups: [
-            "builtin",
-            "external",
-            "internal",
-            "parent",
-            "sibling",
-            "index",
-            "object",
-            "type",
-          ],
-          "newlines-between": "always",
-          alphabetize: {
-            order: "asc",
-            caseInsensitive: true,
-          },
-        },
-      ],
-      "import/no-duplicates": "error",
-      "import/no-unresolved": "off", // TypeScript handles this
+      "import/default": "off", // TypeScript handles this
       "import/named": "off", // TypeScript handles this
       "import/namespace": "off", // TypeScript handles this
-      "import/default": "off", // TypeScript handles this
+      "import/no-duplicates": "error",
       "import/no-named-as-default-member": "off", // TypeScript handles this
+      "import/no-unresolved": "off", // TypeScript handles this
       "perfectionist/sort-array-includes": [
         "error",
-        { type: "natural", order: "asc" },
+        { order: "asc", type: "natural" },
       ],
       "perfectionist/sort-arrays": ["off"],
       "perfectionist/sort-classes": [
         "error",
         {
-          type: "natural",
-          order: "asc",
           groups: [
             "constructor",
             "index-signature",
@@ -269,39 +246,37 @@ export default [
             "set-method",
             "method",
           ],
+          order: "asc",
+          type: "natural",
         },
       ],
       "perfectionist/sort-decorators": [
         "error",
-        { type: "natural", order: "asc", partitionByNewLine: true },
+        { order: "asc", partitionByNewLine: true, type: "natural" },
       ],
       "perfectionist/sort-enums": [
         "error",
-        { type: "natural", order: "asc", partitionByNewLine: true },
+        { order: "asc", partitionByNewLine: true, type: "natural" },
       ],
       "perfectionist/sort-export-attributes": [
         "error",
-        { type: "natural", order: "asc" },
+        { order: "asc", type: "natural" },
       ],
       "perfectionist/sort-exports": [
         "error",
-        { type: "natural", order: "asc" },
+        { order: "asc", type: "natural" },
       ],
       "perfectionist/sort-heritage-clauses": [
         "error",
-        { type: "natural", order: "asc" },
+        { order: "asc", type: "natural" },
       ],
       "perfectionist/sort-import-attributes": [
         "error",
-        { type: "natural", order: "asc" },
+        { order: "asc", type: "natural" },
       ],
       "perfectionist/sort-imports": [
         "error",
         {
-          type: "natural",
-          order: "asc",
-          ignoreCase: true,
-          internalPattern: ["^@monorepo/.+"],
           groups: [
             "builtin",
             "external",
@@ -311,23 +286,25 @@ export default [
             "index",
             "type",
           ],
+          ignoreCase: true,
+          internalPattern: ["^@monorepo/.+"],
           newlinesBetween: 1,
+          order: "asc",
+          type: "natural",
         },
       ],
       "perfectionist/sort-interfaces": [
         "error",
-        { type: "natural", order: "asc" },
+        { order: "asc", type: "natural" },
       ],
       "perfectionist/sort-intersection-types": [
         "error",
-        { type: "natural", order: "asc" },
+        { order: "asc", type: "natural" },
       ],
-      "perfectionist/sort-maps": ["error", { type: "natural", order: "asc" }],
+      "perfectionist/sort-maps": ["error", { order: "asc", type: "natural" }],
       "perfectionist/sort-modules": [
         "error",
         {
-          type: "natural",
-          order: "asc",
           groups: [
             "declare-enum",
             "export-enum",
@@ -342,177 +319,172 @@ export default [
             "export-function",
             "function",
           ],
+          order: "asc",
+          type: "natural",
         },
       ],
       "perfectionist/sort-named-exports": [
         "error",
-        { type: "natural", order: "asc" },
+        { order: "asc", type: "natural" },
       ],
       "perfectionist/sort-named-imports": [
         "error",
-        { type: "natural", order: "asc" },
+        { order: "asc", type: "natural" },
       ],
       "perfectionist/sort-object-types": [
         "error",
-        { type: "natural", order: "asc" },
+        { order: "asc", type: "natural" },
       ],
       "perfectionist/sort-objects": [
         "error",
         {
-          type: "natural",
           order: "asc",
           partitionByComment: true,
           partitionByNewLine: true,
+          type: "natural",
         },
       ],
-      "perfectionist/sort-sets": ["error", { type: "natural", order: "asc" }],
+      "perfectionist/sort-sets": ["error", { order: "asc", type: "natural" }],
       "perfectionist/sort-switch-case": [
         "error",
-        { type: "natural", order: "asc" },
+        { order: "asc", type: "natural" },
       ],
       "perfectionist/sort-union-types": [
         "error",
-        { type: "natural", order: "asc" },
+        { order: "asc", type: "natural" },
       ],
       "perfectionist/sort-variable-declarations": [
         "error",
-        { type: "natural", order: "asc" },
+        { order: "asc", type: "natural" },
       ],
 
       // Strict TypeScript rules
-      "@typescript-eslint/explicit-function-return-type": [
-        "error",
-        {
-          allowExpressions: true,
-          allowTypedFunctionExpressions: true,
-          allowHigherOrderFunctions: true,
-        },
-      ],
-      "@typescript-eslint/explicit-module-boundary-types": "error",
-      "@typescript-eslint/no-explicit-any": "error",
-      "@typescript-eslint/no-unsafe-assignment": "error",
-      "@typescript-eslint/no-unsafe-call": "error",
-      "@typescript-eslint/no-unsafe-member-access": "error",
-      "@typescript-eslint/no-unsafe-return": "error",
-      "@typescript-eslint/no-unsafe-argument": "error",
-      "@typescript-eslint/strict-boolean-expressions": "off",
-      "@typescript-eslint/no-floating-promises": "error",
       "@typescript-eslint/await-thenable": "error",
-      "@typescript-eslint/no-misused-promises": "error",
-      "@typescript-eslint/promise-function-async": "error",
-      "@typescript-eslint/restrict-template-expressions": "off",
-      "@typescript-eslint/require-await": "error",
-      "@typescript-eslint/no-unnecessary-type-assertion": "error",
-      "@typescript-eslint/prefer-nullish-coalescing": "off",
-      "@typescript-eslint/prefer-optional-chain": "error",
-      "@typescript-eslint/prefer-readonly": "error",
-      "@typescript-eslint/prefer-reduce-type-parameter": "error",
-      "@typescript-eslint/prefer-return-this-type": "error",
-      "@typescript-eslint/switch-exhaustiveness-check": "error",
-      "@typescript-eslint/no-confusing-void-expression": [
-        "error",
-        { ignoreArrowShorthand: true, ignoreVoidOperator: true },
-      ],
-      "@typescript-eslint/no-meaningless-void-operator": "error",
-      "@typescript-eslint/consistent-type-imports": [
-        "error",
-        {
-          prefer: "type-imports",
-          fixStyle: "inline-type-imports",
-        },
-      ],
       "@typescript-eslint/consistent-type-exports": [
         "error",
         {
           fixMixedExportsWithInlineTypeSpecifier: true,
         },
       ],
-      "@typescript-eslint/no-import-type-side-effects": "error",
+      "@typescript-eslint/consistent-type-imports": [
+        "error",
+        {
+          fixStyle: "inline-type-imports",
+          prefer: "type-imports",
+        },
+      ],
+      "@typescript-eslint/explicit-function-return-type": [
+        "error",
+        {
+          allowExpressions: true,
+          allowHigherOrderFunctions: true,
+          allowTypedFunctionExpressions: true,
+        },
+      ],
+      "@typescript-eslint/explicit-module-boundary-types": "error",
       "@typescript-eslint/naming-convention": [
         "error",
         {
-          selector: "default",
-          format: ["camelCase"],
           filter: {
+            match: false,
             regex: "^(_|__(filename|dirname))$",
-            match: false,
           },
+          format: ["camelCase"],
+          selector: "default",
         },
         {
-          selector: "variable",
-          format: ["camelCase", "UPPER_CASE", "PascalCase"],
           filter: {
+            match: false,
             regex: "^__(filename|dirname)$",
-            match: false,
           },
+          format: ["camelCase", "UPPER_CASE", "PascalCase"],
+          selector: "variable",
         },
         {
+          format: ["camelCase", "PascalCase"],
           selector: "function",
-          format: ["camelCase", "PascalCase"],
         },
         {
-          selector: "typeLike",
           format: ["PascalCase"],
+          selector: "typeLike",
         },
         {
-          selector: "enumMember",
           format: ["UPPER_CASE"],
+          selector: "enumMember",
         },
         {
-          selector: "import",
-          format: ["camelCase", "PascalCase"],
           filter: {
-            regex: "^_$",
             match: false,
+            regex: "^_$",
           },
+          format: ["camelCase", "PascalCase"],
+          selector: "import",
         },
         {
-          selector: "parameter",
+          filter: {
+            match: false,
+            regex: "^_$",
+          },
           format: ["camelCase"],
           leadingUnderscore: "allow",
-          filter: {
-            regex: "^_$",
-            match: false,
-          },
+          selector: "parameter",
         },
         {
-          selector: "objectLiteralProperty",
           format: null,
+          selector: "objectLiteralProperty",
         },
       ],
+      "@typescript-eslint/no-confusing-void-expression": [
+        "error",
+        { ignoreArrowShorthand: true, ignoreVoidOperator: true },
+      ],
+      "@typescript-eslint/no-explicit-any": "error",
+      "@typescript-eslint/no-floating-promises": "error",
+      "@typescript-eslint/no-import-type-side-effects": "error",
+      "@typescript-eslint/no-meaningless-void-operator": "error",
+      "@typescript-eslint/no-misused-promises": "error",
+      "@typescript-eslint/no-unnecessary-type-assertion": "error",
+      "@typescript-eslint/no-unsafe-argument": "error",
+      "@typescript-eslint/no-unsafe-assignment": "error",
+      "@typescript-eslint/no-unsafe-call": "error",
+      "@typescript-eslint/no-unsafe-member-access": "error",
+      "@typescript-eslint/no-unsafe-return": "error",
+      "@typescript-eslint/prefer-nullish-coalescing": "off",
+      "@typescript-eslint/prefer-optional-chain": "error",
+      "@typescript-eslint/prefer-readonly": "error",
+      "@typescript-eslint/prefer-reduce-type-parameter": "error",
+      "@typescript-eslint/prefer-return-this-type": "error",
+      "@typescript-eslint/promise-function-async": "error",
+      "@typescript-eslint/require-await": "error",
+      "@typescript-eslint/restrict-template-expressions": "off",
+      "@typescript-eslint/strict-boolean-expressions": "off",
+      "@typescript-eslint/switch-exhaustiveness-check": "error",
 
       // General best practices
       // "no-console": ["warn", { allow: ["warn", "error", "info"] }],
-      "no-debugger": "error",
-      "no-alert": "error",
-      "prefer-const": "error",
-      "no-var": "error",
-      eqeqeq: ["error", "always"],
-      curly: ["error", "all"],
-      "no-throw-literal": "off", // TypeScript ESLint handles this
-      "@typescript-eslint/only-throw-error": "error",
-      "no-unused-expressions": "off", // TypeScript ESLint handles this
       "@typescript-eslint/no-unused-expressions": "error",
-      "no-unused-vars": "off", // TypeScript ESLint handles this
       "@typescript-eslint/no-unused-vars": [
         "error",
         {
           argsIgnorePattern: "^_",
-          varsIgnorePattern: "^_",
           caughtErrorsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
         },
       ],
-      "prefer-template": "error",
+      "@typescript-eslint/only-throw-error": "error",
+      curly: ["error", "all"],
+      eqeqeq: ["error", "always"],
+      "no-alert": "error",
+      "no-debugger": "error",
+      "no-duplicate-imports": "off", // import/no-duplicates handles this
+      "no-throw-literal": "off", // TypeScript ESLint handles this
+      "no-unused-expressions": "off", // TypeScript ESLint handles this
+      "no-unused-vars": "off", // TypeScript ESLint handles this
+      "no-var": "error",
       "object-shorthand": ["error", "always"],
       "prefer-arrow-callback": "error",
-      "no-duplicate-imports": "off", // import/no-duplicates handles this
-      "sort-imports": [
-        "error",
-        {
-          ignoreCase: true,
-          ignoreDeclarationSort: true, // import/order handles this
-        },
-      ],
+      "prefer-const": "error",
+      "prefer-template": "error",
     },
   },
 
@@ -532,25 +504,25 @@ export default [
   {
     files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
     ignores: ["lint-staged.config.ts", "prettier.config.ts"],
-    plugins: {
-      "@typescript-eslint": tseslint.plugin,
-    },
     languageOptions: {
       parserOptions: {
         projectService: true,
         tsconfigRootDir,
       },
     },
+    plugins: {
+      "@typescript-eslint": tseslint.plugin,
+    },
     rules: {
-      "@typescript-eslint/no-non-null-assertion": "error",
+      "@typescript-eslint/no-empty-function": "off",
       "@typescript-eslint/no-extraneous-class": [
         "error",
         { allowWithDecorator: true },
       ],
-      "@typescript-eslint/restrict-template-expressions": "off",
-      "@typescript-eslint/prefer-nullish-coalescing": "off",
-      "@typescript-eslint/no-empty-function": "off",
+      "@typescript-eslint/no-non-null-assertion": "error",
       "@typescript-eslint/no-useless-constructor": "off",
+      "@typescript-eslint/prefer-nullish-coalescing": "off",
+      "@typescript-eslint/restrict-template-expressions": "off",
     },
   },
 
@@ -568,32 +540,32 @@ export default [
       "prettier.config.ts",
     ],
     plugins: {
-      tsdoc: tsdocPlugin,
       jsdoc: jsdocPlugin,
+      tsdoc: tsdocPlugin,
     },
     rules: {
-      "tsdoc/syntax": "warn",
       "jsdoc/require-jsdoc": [
         "warn",
         {
-          require: {
-            FunctionDeclaration: true,
-            MethodDefinition: true,
-            ClassDeclaration: true,
-            ArrowFunctionExpression: false,
-            FunctionExpression: false,
-          },
+          checkConstructors: false,
           contexts: [
             "TSInterfaceDeclaration",
             "TSTypeAliasDeclaration",
             "TSEnumDeclaration",
           ],
-          publicOnly: true,
           exemptEmptyConstructors: true,
           exemptEmptyFunctions: false,
-          checkConstructors: false,
+          publicOnly: true,
+          require: {
+            ArrowFunctionExpression: false,
+            ClassDeclaration: true,
+            FunctionDeclaration: true,
+            FunctionExpression: false,
+            MethodDefinition: true,
+          },
         },
       ],
+      "tsdoc/syntax": "warn",
     },
   },
 
@@ -608,9 +580,6 @@ export default [
   },
   {
     files: ["**/*.tsx", "**/*.jsx"],
-    plugins: {
-      "jsx-a11y": jsxA11yPlugin,
-    },
     languageOptions: {
       parserOptions: {
         ecmaFeatures: {
@@ -618,19 +587,22 @@ export default [
         },
       },
     },
+    plugins: {
+      "jsx-a11y": jsxA11yPlugin,
+    },
     rules: {
       // Downgrade from the preset's default "error" to "warn"
       "@eslint-react/no-array-index-key": "warn",
       "perfectionist/sort-jsx-props": [
         "error",
         {
-          tcustomGroups: [
-            { groupName: "reserved", elementNamePattern: "^(key|ref)$" },
+          customGroups: [
+            { elementNamePattern: "^(key|ref)$", groupName: "reserved" },
             { groupName: "shorthand", modifiers: ["shorthand"] },
           ],
           groups: ["reserved", "unknown", "shorthand"],
           order: "asc",
-          type: "natural"
+          type: "natural",
         },
       ],
 
@@ -675,33 +647,33 @@ export default [
     rules: {
       "@typescript-eslint/no-require-imports": "off",
       // Disable ALL type-checked rules for JS files
+      "@typescript-eslint/await-thenable": "off",
+      "@typescript-eslint/consistent-type-exports": "off",
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+      "@typescript-eslint/naming-convention": "off",
+      "@typescript-eslint/no-confusing-void-expression": "off",
       "@typescript-eslint/no-empty-function": "off",
+      "@typescript-eslint/no-floating-promises": "off",
+      "@typescript-eslint/no-meaningless-void-operator": "off",
+      "@typescript-eslint/no-misused-promises": "off",
+      "@typescript-eslint/no-unnecessary-boolean-literal-compare": "off",
+      "@typescript-eslint/no-unnecessary-condition": "off",
+      "@typescript-eslint/no-unnecessary-type-assertion": "off",
+      "@typescript-eslint/no-unsafe-argument": "off",
       "@typescript-eslint/no-unsafe-assignment": "off",
       "@typescript-eslint/no-unsafe-call": "off",
       "@typescript-eslint/no-unsafe-member-access": "off",
       "@typescript-eslint/no-unsafe-return": "off",
-      "@typescript-eslint/no-unsafe-argument": "off",
       "@typescript-eslint/no-useless-constructor": "off",
-      "@typescript-eslint/explicit-function-return-type": "off",
-      "@typescript-eslint/explicit-module-boundary-types": "off",
-      "@typescript-eslint/no-floating-promises": "off",
-      "@typescript-eslint/await-thenable": "off",
-      "@typescript-eslint/no-misused-promises": "off",
-      "@typescript-eslint/promise-function-async": "off",
-      "@typescript-eslint/require-await": "off",
-      "@typescript-eslint/no-unnecessary-type-assertion": "off",
+      "@typescript-eslint/only-throw-error": "off",
       "@typescript-eslint/prefer-optional-chain": "off",
       "@typescript-eslint/prefer-readonly": "off",
       "@typescript-eslint/prefer-reduce-type-parameter": "off",
       "@typescript-eslint/prefer-return-this-type": "off",
+      "@typescript-eslint/promise-function-async": "off",
+      "@typescript-eslint/require-await": "off",
       "@typescript-eslint/switch-exhaustiveness-check": "off",
-      "@typescript-eslint/no-confusing-void-expression": "off",
-      "@typescript-eslint/no-meaningless-void-operator": "off",
-      "@typescript-eslint/only-throw-error": "off",
-      "@typescript-eslint/no-unnecessary-condition": "off",
-      "@typescript-eslint/no-unnecessary-boolean-literal-compare": "off",
-      "@typescript-eslint/consistent-type-exports": "off",
-      "@typescript-eslint/naming-convention": "off",
     },
   },
 
@@ -717,22 +689,22 @@ export default [
       // Keep Nx dependency checks enabled
       "@nx/dependency-checks": "error",
       // JSONC style rules
-      "jsonc/sort-keys": [
-        "error",
-        "asc",
-        { caseSensitive: false, natural: true, minKeys: 2 },
-      ],
+      "jsonc/comma-dangle": ["error", "never"],
+      "jsonc/indent": ["error", 2],
+      "jsonc/quotes": ["error", "double"],
       "jsonc/sort-array-values": [
         "error",
         {
           minValues: 2,
-          order: { type: "asc", caseSensitive: false, natural: true },
+          order: { caseSensitive: false, natural: true, type: "asc" },
           pathPattern: String.raw`^(?!(?:.*\.)?commands?$)`,
         },
       ],
-      "jsonc/quotes": ["error", "double"],
-      "jsonc/comma-dangle": ["error", "never"],
-      "jsonc/indent": ["error", 2],
+      "jsonc/sort-keys": [
+        "error",
+        "asc",
+        { caseSensitive: false, minKeys: 2, natural: true },
+      ],
     },
   },
 
@@ -754,7 +726,7 @@ export default [
         "error",
         {
           minValues: 2,
-          order: { type: "asc", caseSensitive: false, natural: true },
+          order: { caseSensitive: false, natural: true, type: "asc" },
           pathPattern: "^(?!runArgs$)",
         },
       ],
@@ -776,12 +748,12 @@ export default [
     rules: {
       // Style rules
       "yml/indent": ["error", 2],
-      "yml/quotes": ["error", { prefer: "double", avoidEscape: false }],
+      "yml/key-spacing": ["error", { afterColon: true, beforeColon: false }],
       "yml/no-multiple-empty-lines": [
         "error",
-        { max: 1, maxEOF: 0, maxBOF: 0 },
+        { max: 1, maxBOF: 0, maxEOF: 0 },
       ],
-      "yml/key-spacing": ["error", { beforeColon: false, afterColon: true }],
+      "yml/quotes": ["error", { avoidEscape: false, prefer: "double" }],
       "yml/spaced-comment": ["error", "always"],
 
       // Best practices
@@ -820,11 +792,11 @@ export default [
       "@typescript-eslint": tseslint.plugin,
     },
     rules: {
+      "@typescript-eslint/no-unsafe-argument": "off",
       "@typescript-eslint/no-unsafe-assignment": "off",
       "@typescript-eslint/no-unsafe-call": "off",
       "@typescript-eslint/no-unsafe-member-access": "off",
       "@typescript-eslint/no-unsafe-return": "off",
-      "@typescript-eslint/no-unsafe-argument": "off",
     },
   },
 
@@ -838,8 +810,8 @@ export default [
     rules: {
       "@typescript-eslint/no-unnecessary-boolean-literal-compare": "off",
       "@typescript-eslint/no-unnecessary-condition": "off",
-      "@typescript-eslint/no-unsafe-member-access": "off",
       "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/no-unsafe-member-access": "off",
     },
   },
 
@@ -847,17 +819,18 @@ export default [
   // GitHub Flavored Markdown (GFM) with YAML frontmatter support
   {
     files: ["**/*.md"],
-    plugins: {
-      markdown,
-    },
     language: "markdown/gfm",
     languageOptions: {
       frontmatter: "yaml",
+    },
+    plugins: {
+      markdown,
     },
     rules: {
       // Enable markdown-specific rules
       "markdown/fenced-code-language": "warn",
       "markdown/heading-increment": "error",
+      "markdown/no-bare-urls": "off",
       "markdown/no-duplicate-definitions": "error",
       "markdown/no-duplicate-headings": "warn",
       "markdown/no-empty-definitions": "error",
@@ -875,7 +848,6 @@ export default [
       "markdown/no-unused-definitions": "error",
       "markdown/require-alt-text": "error",
       "markdown/table-column-count": "error",
-      "markdown/no-bare-urls": "off",
     },
   },
 

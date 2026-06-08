@@ -1,3 +1,8 @@
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { noop } from "lodash";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { z } from "zod";
+
 import {
   Card,
   CardContent,
@@ -5,10 +10,6 @@ import {
   CardTitle,
   Input,
 } from "@monorepo/lexico-components";
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { noop } from "lodash";
-import { useCallback, useEffect, useRef, useState } from "react";
-import { z } from "zod";
 
 import { EntryCard } from "../components/entry/entry-card";
 import { transformForms } from "../lib/forms";
@@ -22,27 +23,9 @@ const searchSchema = z.object({
 });
 
 export const Route = createFileRoute("/search")({
-  validateSearch: searchSchema,
   component: SearchPage,
+  validateSearch: searchSchema,
 });
-
-/**
- * Custom hook that debounces a value by the specified delay.
- *
- * @param value - Value to debounce
- * @param delay - Delay in milliseconds
- * @returns Debounced value
- */
-function useDebounce<T>(value: T, delay: number): T {
-  const [debouncedValue, setDebouncedValue] = useState<T>(value);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setDebouncedValue(value), delay);
-    return () => clearTimeout(timer);
-  }, [value, delay]);
-
-  return debouncedValue;
-}
 
 /**
  * Search page component that allows users to search for Latin entries.
@@ -55,7 +38,7 @@ function SearchPage(): ReactNode {
   const [query, setQuery] = useState<string>(urlQuery ?? "");
   const [results, setResults] = useState<EntrySearchResult[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<null | string>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const debouncedQuery = useDebounce(query, 300);
@@ -75,8 +58,8 @@ function SearchPage(): ReactNode {
   useEffect(() => {
     if (debouncedQuery !== urlQuery) {
       void navigate({
-        search: debouncedQuery ? { query: debouncedQuery } : {},
         replace: true,
+        search: debouncedQuery ? { query: debouncedQuery } : {},
       });
     }
   }, [debouncedQuery, urlQuery, navigate]);
@@ -92,7 +75,7 @@ function SearchPage(): ReactNode {
 
     try {
       const searchResults = await searchEntries({
-        data: { query: searchQuery, language: "auto" },
+        data: { language: "auto", query: searchQuery },
       });
       setResults(searchResults);
     } catch (error_: unknown) {
@@ -114,11 +97,11 @@ function SearchPage(): ReactNode {
       <div className="mx-auto max-w-2xl">
         <Input
           ref={inputRef}
-          type="search"
-          placeholder="Search Latin or English..."
-          value={query}
-          onChange={(e) => setQuery(e.currentTarget.value)}
           className="w-full text-lg"
+          onChange={(e) => setQuery(e.currentTarget.value)}
+          placeholder="Search Latin or English..."
+          type="search"
+          value={query}
         />
       </div>
 
@@ -146,15 +129,15 @@ function SearchPage(): ReactNode {
             return (
               <div key={entry.id}>
                 <EntryCard
+                  etymology={entry.etymology}
+                  forms={transformedForms}
                   id={entry.id}
+                  inflection={entry.inflection}
+                  onBookmarkToggle={noop}
                   partOfSpeech={entry.part_of_speech}
                   principalParts={entry.principal_parts}
-                  inflection={entry.inflection}
-                  translations={entry.translations}
-                  forms={transformedForms}
-                  etymology={entry.etymology}
                   pronunciation={entry.pronunciation}
-                  onBookmarkToggle={noop}
+                  translations={entry.translations}
                 />
               </div>
             );
@@ -195,4 +178,22 @@ function SearchPage(): ReactNode {
       )}
     </div>
   );
+}
+
+/**
+ * Custom hook that debounces a value by the specified delay.
+ *
+ * @param value - Value to debounce
+ * @param delay - Delay in milliseconds
+ * @returns Debounced value
+ */
+function useDebounce<T>(value: T, delay: number): T {
+  const [debouncedValue, setDebouncedValue] = useState<T>(value);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedValue(value), delay);
+    return () => clearTimeout(timer);
+  }, [value, delay]);
+
+  return debouncedValue;
 }

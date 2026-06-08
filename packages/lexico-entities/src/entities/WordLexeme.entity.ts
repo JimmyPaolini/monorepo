@@ -11,22 +11,13 @@ import type { Word } from "./Word.entity.js";
  * join table so the relationship row carries audit columns and a stable UUID.
  */
 @Entity({
-  name: "word_lexemes",
-  schema: "public",
   comment:
     "Junction table linking a normalized Latin word string to the lexemes (dictionary entries) it can represent",
+  name: "word_lexemes",
+  schema: "public",
 })
 @Index(["word", "lexeme"], { unique: true })
 export class WordLexeme extends AuditableEntity {
-  /** The word string side of the junction. */
-  @Index()
-  @ManyToOne("Word", "wordLexemes", {
-    nullable: false,
-    onDelete: "CASCADE",
-    onUpdate: "CASCADE",
-  })
-  word!: Word;
-
   /** The dictionary entry side of the junction. */
   @Index()
   @ManyToOne("Lexeme", "wordLexemes", {
@@ -35,4 +26,13 @@ export class WordLexeme extends AuditableEntity {
     onUpdate: "CASCADE",
   })
   lexeme!: Lexeme;
+
+  /** The word string side of the junction. */
+  @Index()
+  @ManyToOne("Word", "wordLexemes", {
+    nullable: false,
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+  })
+  word!: Word;
 }

@@ -25,6 +25,7 @@ import type {
 @Injectable()
 export class CalendarService {
   // 🏗 Dependency Injection
+
   constructor(
     private readonly logger: LoggerService,
     private readonly configService: ConfigService<Environment>,
@@ -37,8 +38,6 @@ export class CalendarService {
   // 🔑 Public Fields
 
   // 🔏 Private Methods
-
-  // 🌎 Public Methods
 
   /**
    * Generates VTIMEZONE definition for iCalendar timezone support.
@@ -77,87 +76,7 @@ TZID:${timezone}
 END:VTIMEZONE`;
   }
 
-  /**
-   * Serializes calendar events to an ICS file and writes it to the output directory.
-   *
-   * The filename encodes the input date range in ISO 8601 format. The output directory
-   * is read from the `OUTPUT_DIRECTORY` environment variable, defaulting to `./output`.
-   *
-   * @param events - Calendar events to include in the ICS file
-   * @param input - Validated input containing the date range and IANA timezone
-   * @returns Promise that resolves when the file has been written to disk
-   */
-  async write(events: Event[], input: Input): Promise<void> {
-    const timespan = `${input.start.toISOString(true)} to ${input.end.toISOString(true)}`;
-    const calendarFilename = `caelundas_${timespan}.ics`;
-    const calendarFileContent = this.buildFileContent({
-      events,
-      name: "Caelundas 🔭",
-      description: "Astronomical events and celestial phenomena",
-      timezone: input.timezone,
-    });
-    const outputDir =
-      this.configService.get<string>("OUTPUT_DIRECTORY") ?? "./output";
-    await writeFile(
-      path.join(outputDir, calendarFilename),
-      new TextEncoder().encode(calendarFileContent),
-    );
-    this.logger.log(
-      `✏️ Wrote ${events.length} events to file "${calendarFilename}"`,
-    );
-  }
-
-  /**
-   * Generates a complete iCalendar (ICS) file from an array of events.
-   *
-   * Creates an RFC 5545-compliant VCALENDAR container with VTIMEZONE and VEVENT components.
-   *
-   * @param parameters - Calendar generation configuration
-   * @returns Complete iCalendar file content as a string
-   *
-   * @see {@link buildEventContent} for individual VEVENT generation
-   *
-   * @example
-   * ```typescript
-   * const service = new CalendarService();
-   * const calendar = service.buildFileContent({
-   *   events: [{
-   *     start: moment.utc('2026-01-21T14:23:00'),
-   *     end: moment.utc('2026-01-21T14:23:00'),
-   *     summary: '☽ ☌ ♃ Moon Conjunction Jupiter',
-   *     description: 'Exact: 2026-01-21 14:23 EST',
-   *     categories: ['aspects', 'major', 'moon'],
-   *   }],
-   *   name: 'Astronomical Events',
-   *   description: 'Caelundas astronomical calendar',
-   *   timezone: 'America/New_York',
-   * });
-   * ```
-   */
-  buildFileContent(parameters: BuildCalendarFileContentParameters): string {
-    const { events, name, description, timezone } = parameters;
-
-    let vcalendar = `BEGIN:VCALENDAR
-VERSION:2.0
-PRODID:-//Caelundas//Astronomical Calendar//EN
-CALSCALE:GREGORIAN
-METHOD:PUBLISH
-X-WR-CALNAME:${name}`;
-
-    if (description) {
-      vcalendar += `\nX-WR-CALDESC:${description}`;
-    }
-
-    if (timezone) {
-      vcalendar += `\nX-WR-TIMEZONE:${timezone}\n${this.buildTimezoneContent(timezone)}`;
-    }
-
-    vcalendar += `\n${events.map((event) => this.buildEventContent(event, timezone)).join("\n")}
-END:VCALENDAR
-`;
-
-    return vcalendar;
-  }
+  // 🌎 Public Methods
 
   /**
    * Converts a single Event to VEVENT format for iCalendar inclusion.
@@ -220,5 +139,87 @@ CREATED:${createdAt}Z
 END:VEVENT`;
 
     return vevent;
+  }
+
+  /**
+   * Generates a complete iCalendar (ICS) file from an array of events.
+   *
+   * Creates an RFC 5545-compliant VCALENDAR container with VTIMEZONE and VEVENT components.
+   *
+   * @param parameters - Calendar generation configuration
+   * @returns Complete iCalendar file content as a string
+   *
+   * @see {@link buildEventContent} for individual VEVENT generation
+   *
+   * @example
+   * ```typescript
+   * const service = new CalendarService();
+   * const calendar = service.buildFileContent({
+   *   events: [{
+   *     start: moment.utc('2026-01-21T14:23:00'),
+   *     end: moment.utc('2026-01-21T14:23:00'),
+   *     summary: '☽ ☌ ♃ Moon Conjunction Jupiter',
+   *     description: 'Exact: 2026-01-21 14:23 EST',
+   *     categories: ['aspects', 'major', 'moon'],
+   *   }],
+   *   name: 'Astronomical Events',
+   *   description: 'Caelundas astronomical calendar',
+   *   timezone: 'America/New_York',
+   * });
+   * ```
+   */
+  buildFileContent(parameters: BuildCalendarFileContentParameters): string {
+    const { description, events, name, timezone } = parameters;
+
+    let vcalendar = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Caelundas//Astronomical Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:${name}`;
+
+    if (description) {
+      vcalendar += `\nX-WR-CALDESC:${description}`;
+    }
+
+    if (timezone) {
+      vcalendar += `\nX-WR-TIMEZONE:${timezone}\n${this.buildTimezoneContent(timezone)}`;
+    }
+
+    vcalendar += `\n${events.map((event) => this.buildEventContent(event, timezone)).join("\n")}
+END:VCALENDAR
+`;
+
+    return vcalendar;
+  }
+
+  /**
+   * Serializes calendar events to an ICS file and writes it to the output directory.
+   *
+   * The filename encodes the input date range in ISO 8601 format. The output directory
+   * is read from the `OUTPUT_DIRECTORY` environment variable, defaulting to `./output`.
+   *
+   * @param events - Calendar events to include in the ICS file
+   * @param input - Validated input containing the date range and IANA timezone
+   * @returns Promise that resolves when the file has been written to disk
+   */
+  async write(events: Event[], input: Input): Promise<void> {
+    const timespan = `${input.start.toISOString(true)} to ${input.end.toISOString(true)}`;
+    const calendarFilename = `caelundas_${timespan}.ics`;
+    const calendarFileContent = this.buildFileContent({
+      description: "Astronomical events and celestial phenomena",
+      events,
+      name: "Caelundas 🔭",
+      timezone: input.timezone,
+    });
+    const outputDir =
+      this.configService.get<string>("OUTPUT_DIRECTORY") ?? "./output";
+    await writeFile(
+      path.join(outputDir, calendarFilename),
+      new TextEncoder().encode(calendarFileContent),
+    );
+    this.logger.log(
+      `✏️ Wrote ${events.length} events to file "${calendarFilename}"`,
+    );
   }
 }

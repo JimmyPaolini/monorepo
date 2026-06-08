@@ -28,11 +28,11 @@ describe("CalendarService", () => {
 
   describe("buildEventContent", () => {
     const baseEvent: Event = {
-      start: moment.utc("2025-03-20T09:06:00Z"),
-      end: moment.utc("2025-03-20T09:06:00Z"),
-      summary: "☀️ → ♈ Sun ingress Aries",
-      description: "Sun ingress Aries",
       categories: ["Astronomy", "Astrology", "Ingress", "Sun", "Aries"],
+      description: "Sun ingress Aries",
+      end: moment.utc("2025-03-20T09:06:00Z"),
+      start: moment.utc("2025-03-20T09:06:00Z"),
+      summary: "☀️ → ♈ Sun ingress Aries",
     };
 
     it("should generate valid VEVENT structure", () => {
@@ -146,27 +146,27 @@ describe("CalendarService", () => {
   describe("buildFileContent", () => {
     const sampleEvents: Event[] = [
       {
-        start: moment.utc("2025-03-20T09:06:00Z"),
-        end: moment.utc("2025-03-20T09:06:00Z"),
-        summary: "Vernal Equinox",
-        description: "Sun enters Aries",
         categories: ["Astronomy", "Equinox"],
+        description: "Sun enters Aries",
+        end: moment.utc("2025-03-20T09:06:00Z"),
+        start: moment.utc("2025-03-20T09:06:00Z"),
+        summary: "Vernal Equinox",
       },
       {
-        start: moment.utc("2025-03-29T10:58:00Z"),
-        end: moment.utc("2025-03-29T10:58:00Z"),
-        summary: "Full Moon",
-        description: "Full Moon in Libra",
         categories: ["Astronomy", "Lunar Phase"],
+        description: "Full Moon in Libra",
+        end: moment.utc("2025-03-29T10:58:00Z"),
+        start: moment.utc("2025-03-29T10:58:00Z"),
+        summary: "Full Moon",
       },
     ];
 
     it("should generate valid VCALENDAR structure", () => {
       const calendar = service.buildFileContent({
+        description: "A test calendar description",
         events: sampleEvents,
         name: "Test Calendar",
         timezone: "America/New_York",
-        description: "A test calendar description",
       });
 
       expect(calendar).toContain("BEGIN:VCALENDAR");
@@ -182,9 +182,9 @@ describe("CalendarService", () => {
 
     it("should include calendar description when provided", () => {
       const calendar = service.buildFileContent({
+        description: "A test calendar description",
         events: sampleEvents,
         name: "Test Calendar",
-        description: "A test calendar description",
         timezone: "America/New_York",
       });
 
@@ -193,10 +193,10 @@ describe("CalendarService", () => {
 
     it("should include timezone definition", () => {
       const calendar = service.buildFileContent({
+        description: "A test calendar description",
         events: sampleEvents,
         name: "Test Calendar",
         timezone: "America/New_York",
-        description: "A test calendar description",
       });
 
       expect(calendar).toContain("X-WR-TIMEZONE:America/New_York");
@@ -207,10 +207,10 @@ describe("CalendarService", () => {
 
     it("should include all events", () => {
       const calendar = service.buildFileContent({
+        description: "A test calendar description",
         events: sampleEvents,
         name: "Test Calendar",
         timezone: "America/New_York",
-        description: "A test calendar description",
       });
 
       expect(calendar).toContain("SUMMARY:Vernal Equinox");
@@ -221,10 +221,10 @@ describe("CalendarService", () => {
 
     it("should handle empty events array", () => {
       const calendar = service.buildFileContent({
+        description: "A test calendar description",
         events: [],
         name: "Empty Calendar",
         timezone: "America/New_York",
-        description: "A test calendar description",
       });
 
       expect(calendar).toContain("BEGIN:VCALENDAR");
@@ -234,10 +234,10 @@ describe("CalendarService", () => {
 
     it("should include daylight saving time rules for New York", () => {
       const calendar = service.buildFileContent({
+        description: "A test calendar description",
         events: sampleEvents,
         name: "Test Calendar",
         timezone: "America/New_York",
-        description: "A test calendar description",
       });
 
       expect(calendar).toContain("BEGIN:DAYLIGHT");

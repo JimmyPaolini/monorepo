@@ -9,8 +9,8 @@ import { EphemerisService } from "./ephemeris.service";
  */
 @Module({
   controllers: [],
+  exports: [EphemerisService],
   imports: [MathModule],
   providers: [EphemerisService],
-  exports: [EphemerisService],
 })
 export class EphemerisModule {}

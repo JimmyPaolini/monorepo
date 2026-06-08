@@ -39,7 +39,7 @@ describe("getProjectsWithTag", () => {
   });
 
   it("should return only projects with the given tag", () => {
-    const result = getProjectsWithTag({ tree, tag: "framework:nestjs" });
+    const result = getProjectsWithTag({ tag: "framework:nestjs", tree });
     expect(result).toContain("nestjs-app");
     expect(result).toContain("another-nestjs-app");
     expect(result).not.toContain("plain-app");
@@ -47,20 +47,20 @@ describe("getProjectsWithTag", () => {
   });
 
   it("should return an empty array when no projects have the tag", () => {
-    const result = getProjectsWithTag({ tree, tag: "framework:unknown" });
+    const result = getProjectsWithTag({ tag: "framework:unknown", tree });
     expect(result).toHaveLength(0);
   });
 
   it("should match only the exact tag and not partial matches", () => {
-    const result = getProjectsWithTag({ tree, tag: "framework" });
+    const result = getProjectsWithTag({ tag: "framework", tree });
     expect(result).toHaveLength(0);
   });
 
   it("should return an empty array when no projects exist", () => {
     const emptyTree = createTreeWithEmptyWorkspace();
     const result = getProjectsWithTag({
-      tree: emptyTree,
       tag: "framework:nestjs",
+      tree: emptyTree,
     });
     expect(result).toHaveLength(0);
   });
@@ -83,10 +83,10 @@ describe("resolveProjectByTag", () => {
 
   it("should return the project name when it matches the tag", async () => {
     const result = await resolveProject({
-      tree,
-      tag: "framework:nestjs",
-      project: "nestjs-app",
       message: "Select a project",
+      project: "nestjs-app",
+      tag: "framework:nestjs",
+      tree,
     });
     expect(result).toBe("nestjs-app");
   });
@@ -95,9 +95,9 @@ describe("resolveProjectByTag", () => {
     const emptyTree = createTreeWithEmptyWorkspace();
     await expect(
       resolveProject({
-        tree: emptyTree,
-        tag: "framework:nestjs",
         message: "Select a project",
+        tag: "framework:nestjs",
+        tree: emptyTree,
       }),
     ).rejects.toThrow(
       'No projects with tag "framework:nestjs" found in the workspace',
@@ -112,10 +112,10 @@ describe("resolveProjectByTag", () => {
 
     await expect(
       resolveProject({
-        tree,
-        tag: "framework:nestjs",
-        project: "plain-app",
         message: "Select a project",
+        project: "plain-app",
+        tag: "framework:nestjs",
+        tree,
       }),
     ).rejects.toThrow(
       `Project "plain-app" does not have the "framework:nestjs" tag. Available projects: nestjs-app, another-nestjs-app`,
@@ -125,10 +125,10 @@ describe("resolveProjectByTag", () => {
   it("should throw when the specified project does not exist", async () => {
     await expect(
       resolveProject({
-        tree,
-        tag: "framework:nestjs",
-        project: "nonexistent-app",
         message: "Select a project",
+        project: "nonexistent-app",
+        tag: "framework:nestjs",
+        tree,
       }),
     ).rejects.toThrow(
       `Project "nonexistent-app" does not have the "framework:nestjs" tag.`,
@@ -140,18 +140,18 @@ describe("resolveNameByCase", () => {
   describe(StringCase.CAMEL_CASE, () => {
     it("should return the name when it is already camelCase", async () => {
       const result = await resolveName({
-        name: "myService",
         case: StringCase.CAMEL_CASE,
         message: "Enter a name",
+        name: "myService",
       });
       expect(result).toBe("myService");
     });
 
     it("should return single lowercase word unchanged", async () => {
       const result = await resolveName({
-        name: "calculator",
         case: StringCase.CAMEL_CASE,
         message: "Enter a name",
+        name: "calculator",
       });
       expect(result).toBe("calculator");
     });
@@ -159,9 +159,9 @@ describe("resolveNameByCase", () => {
     it("should throw when name is PascalCase", async () => {
       await expect(
         resolveName({
-          name: "MyService",
           case: StringCase.CAMEL_CASE,
           message: "Enter a name",
+          name: "MyService",
         }),
       ).rejects.toThrow(
         `Name "MyService" must be in camelCase. Did you mean "myService"?`,
@@ -171,9 +171,9 @@ describe("resolveNameByCase", () => {
     it("should throw when name is kebab-case", async () => {
       await expect(
         resolveName({
-          name: "my-service",
           case: StringCase.CAMEL_CASE,
           message: "Enter a name",
+          name: "my-service",
         }),
       ).rejects.toThrow(
         `Name "my-service" must be in camelCase. Did you mean "myService"?`,
@@ -183,9 +183,9 @@ describe("resolveNameByCase", () => {
     it("should throw when name is snake_case", async () => {
       await expect(
         resolveName({
-          name: "my_service",
           case: StringCase.CAMEL_CASE,
           message: "Enter a name",
+          name: "my_service",
         }),
       ).rejects.toThrow(
         `Name "my_service" must be in camelCase. Did you mean "myService"?`,
@@ -215,10 +215,10 @@ describe("resolveNameByCase", () => {
       const targetDirectoryPath = "applications/my-app/src/components";
 
       generateFiles({
-        tree,
-        templateDirectoryPath,
         instanceDirectoryPath: targetDirectoryPath,
         substitutions: { namePascalCase: "Button" },
+        templateDirectoryPath,
+        tree,
       });
 
       expect(tree.read(`${targetDirectoryPath}/Button.tsx`, "utf8")).toBe(
@@ -235,14 +235,14 @@ describe("resolveNameByCase", () => {
       const targetDirectoryPath = "applications/my-app/src/modules";
 
       generateFiles({
-        tree,
-        templateDirectoryPath,
         instanceDirectoryPath: targetDirectoryPath,
         substitutions: {
           nameCamelCase: "userAuth",
-          namePascalCase: "UserAuth",
           nameKebabCase: "user-auth",
+          namePascalCase: "UserAuth",
         },
+        templateDirectoryPath,
+        tree,
       });
 
       expect(tree.exists(`${targetDirectoryPath}/user-auth.module.ts`)).toBe(
@@ -254,9 +254,9 @@ describe("resolveNameByCase", () => {
   describe(StringCase.PASCAL_CASE, () => {
     it("should return the name when it is already PascalCase", async () => {
       const result = await resolveName({
-        name: "MyService",
         case: StringCase.PASCAL_CASE,
         message: "Enter a name",
+        name: "MyService",
       });
       expect(result).toBe("MyService");
     });
@@ -264,9 +264,9 @@ describe("resolveNameByCase", () => {
     it("should throw when name is camelCase", async () => {
       await expect(
         resolveName({
-          name: "myService",
           case: StringCase.PASCAL_CASE,
           message: "Enter a name",
+          name: "myService",
         }),
       ).rejects.toThrow(
         `Name "myService" must be in PascalCase. Did you mean "MyService"?`,
@@ -276,9 +276,9 @@ describe("resolveNameByCase", () => {
     it("should throw when name is kebab-case", async () => {
       await expect(
         resolveName({
-          name: "my-service",
           case: StringCase.PASCAL_CASE,
           message: "Enter a name",
+          name: "my-service",
         }),
       ).rejects.toThrow(
         `Name "my-service" must be in PascalCase. Did you mean "MyService"?`,
@@ -289,18 +289,18 @@ describe("resolveNameByCase", () => {
   describe(StringCase.SNAKE_CASE, () => {
     it("should return the name when it is already snake_case", async () => {
       const result = await resolveName({
-        name: "my_service",
         case: StringCase.SNAKE_CASE,
         message: "Enter a name",
+        name: "my_service",
       });
       expect(result).toBe("my_service");
     });
 
     it("should return single lowercase word unchanged", async () => {
       const result = await resolveName({
-        name: "calculator",
         case: StringCase.SNAKE_CASE,
         message: "Enter a name",
+        name: "calculator",
       });
       expect(result).toBe("calculator");
     });
@@ -308,9 +308,9 @@ describe("resolveNameByCase", () => {
     it("should throw when name is camelCase", async () => {
       await expect(
         resolveName({
-          name: "myService",
           case: StringCase.SNAKE_CASE,
           message: "Enter a name",
+          name: "myService",
         }),
       ).rejects.toThrow(
         `Name "myService" must be in snake_case. Did you mean "my_service"?`,
@@ -320,9 +320,9 @@ describe("resolveNameByCase", () => {
     it("should throw when name is kebab-case", async () => {
       await expect(
         resolveName({
-          name: "my-service",
           case: StringCase.SNAKE_CASE,
           message: "Enter a name",
+          name: "my-service",
         }),
       ).rejects.toThrow(
         `Name "my-service" must be in snake_case. Did you mean "my_service"?`,
@@ -333,18 +333,18 @@ describe("resolveNameByCase", () => {
   describe(StringCase.KEBAB_CASE, () => {
     it("should return the name when it is already kebab-case", async () => {
       const result = await resolveName({
-        name: "my-service",
         case: StringCase.KEBAB_CASE,
         message: "Enter a name",
+        name: "my-service",
       });
       expect(result).toBe("my-service");
     });
 
     it("should return single lowercase word unchanged", async () => {
       const result = await resolveName({
-        name: "calculator",
         case: StringCase.KEBAB_CASE,
         message: "Enter a name",
+        name: "calculator",
       });
       expect(result).toBe("calculator");
     });
@@ -352,9 +352,9 @@ describe("resolveNameByCase", () => {
     it("should throw when name is camelCase", async () => {
       await expect(
         resolveName({
-          name: "myService",
           case: StringCase.KEBAB_CASE,
           message: "Enter a name",
+          name: "myService",
         }),
       ).rejects.toThrow(
         `Name "myService" must be in kebab-case. Did you mean "my-service"?`,
@@ -364,9 +364,9 @@ describe("resolveNameByCase", () => {
     it("should throw when name is PascalCase", async () => {
       await expect(
         resolveName({
-          name: "MyService",
           case: StringCase.KEBAB_CASE,
           message: "Enter a name",
+          name: "MyService",
         }),
       ).rejects.toThrow(
         `Name "MyService" must be in kebab-case. Did you mean "my-service"?`,
@@ -376,9 +376,9 @@ describe("resolveNameByCase", () => {
     it("should throw when name is snake_case", async () => {
       await expect(
         resolveName({
-          name: "my_service",
           case: StringCase.KEBAB_CASE,
           message: "Enter a name",
+          name: "my_service",
         }),
       ).rejects.toThrow(
         `Name "my_service" must be in kebab-case. Did you mean "my-service"?`,

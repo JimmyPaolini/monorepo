@@ -28,17 +28,17 @@ export const maxDate = "2100-12-31";
  * - `OUTPUT_DIRECTORY` — Directory path for generated calendar files (default: `./output`)
  */
 export const environmentSchema = z.object({
-  LATITUDE: z.coerce.number().min(-90).max(90).optional(),
-  LONGITUDE: z.coerce.number().min(-180).max(180).optional(),
-  START_DATE: z
-    .string()
-    .regex(/^\d{4}-\d{2}-\d{2}$/, "START_DATE must be in YYYY-MM-DD format")
-    .optional(),
   END_DATE: z
     .string()
     .regex(/^\d{4}-\d{2}-\d{2}$/, "END_DATE must be in YYYY-MM-DD format")
     .optional(),
+  LATITUDE: z.coerce.number().min(-90).max(90).optional(),
+  LONGITUDE: z.coerce.number().min(-180).max(180).optional(),
   OUTPUT_DIRECTORY: z.string().optional().default("./output"),
+  START_DATE: z
+    .string()
+    .regex(/^\d{4}-\d{2}-\d{2}$/, "START_DATE must be in YYYY-MM-DD format")
+    .optional(),
 });
 
 /**
@@ -65,6 +65,10 @@ export const environmentSchema = z.object({
  */
 export const inputSchema = z
   .object({
+    endDate: z
+      .string()
+      .optional()
+      .default(moment().add(1, "month").format("YYYY-MM-DD")),
     latitude: z.coerce.number().min(-90).max(90).optional().default(39.949_309),
     longitude: z.coerce
       .number()
@@ -76,20 +80,16 @@ export const inputSchema = z
       .string()
       .optional()
       .default(moment().subtract(1, "month").format("YYYY-MM-DD")),
-    endDate: z
-      .string()
-      .optional()
-      .default(moment().add(1, "month").format("YYYY-MM-DD")),
   })
   .transform((data) => {
     const timezone = tzLookup(data.latitude, data.longitude);
 
     return {
+      end: moment.tz(data.endDate, timezone),
       latitude: data.latitude,
       longitude: data.longitude,
-      timezone,
       start: moment.tz(data.startDate, timezone),
-      end: moment.tz(data.endDate, timezone),
+      timezone,
     };
   })
   .refine((data) => data.start.isSameOrAfter(moment(minDate)), {

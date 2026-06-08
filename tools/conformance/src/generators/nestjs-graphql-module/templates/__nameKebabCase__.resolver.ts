@@ -10,6 +10,7 @@ import { {{namePascalCase}}Service } from "./{{nameKebabCase}}.service";
 @Resolver(() => {{namePascalCase}}Entity)
 export class {{namePascalCase}}Resolver {
   // 🏗 Dependency Injection
+
   constructor(
     private readonly {{nameCamelCase}}DataLoader: {{namePascalCase}}DataLoader,
     private readonly {{nameCamelCase}}Service: {{namePascalCase}}Service,

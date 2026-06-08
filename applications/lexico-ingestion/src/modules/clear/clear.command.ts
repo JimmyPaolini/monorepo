@@ -12,20 +12,30 @@ interface ClearCommandOptions {
  * Clears dictionary data from the database.
  */
 @Command({
-  name: "clear",
   description: "Clear dictionary data from the database",
+  name: "clear",
 })
 export class ClearCommand extends CommandRunner {
-  private readonly logger = new Logger(ClearCommand.name);
+  // 🏗 Dependency Injection
 
   constructor(private readonly clearService: ClearService) {
     super();
   }
 
+  // 🔐 Private Fields
+
+  private readonly logger = new Logger(ClearCommand.name);
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
+
   /** Parses the `--dictionary` flag; returns `true` when present. */
   @Option({
-    flags: "--dictionary",
     description: "Clear all dictionary entries, translations, and words",
+    flags: "--dictionary",
   })
   parseDictionary(): boolean {
     return true;

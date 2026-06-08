@@ -7,8 +7,8 @@ import { StringCase } from "../../types";
 import { generateFiles, resolveName } from "../../utilities";
 
 interface GenerateJupyterNotebookApplicationOptions {
-  name?: string;
   description?: string;
+  name?: string;
 }
 
 const APPLICATIONS_DIRECTORY = "applications";
@@ -39,15 +39,15 @@ export async function generateJupyterNotebookApplication(
   }
 
   generateFiles({
-    tree,
-    templateDirectoryPath: TEMPLATES_DIRECTORY_PATH,
     instanceDirectoryPath: targetDirectory,
     substitutions: {
-      name: applicationName,
       description:
         options.description ??
         `A Python + Jupyter notebook application scaffold for ${applicationName}`,
+      name: applicationName,
     },
+    templateDirectoryPath: TEMPLATES_DIRECTORY_PATH,
+    tree,
   });
 
   await formatFiles(tree);

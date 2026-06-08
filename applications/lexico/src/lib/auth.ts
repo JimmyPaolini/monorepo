@@ -8,8 +8,8 @@ import type { AuthUser } from "./supabase-server";
  * Transforms Supabase user to our AuthUser type
  */
 function transformUser(user: {
-  id: string;
   email?: string;
+  id: string;
   /* eslint-disable-next-line @typescript-eslint/naming-convention -- Supabase uses snake_case */
   user_metadata?: Record<string, unknown>;
 }): AuthUser | null {
@@ -18,12 +18,12 @@ function transformUser(user: {
   }
 
   return {
-    id: user.id,
+    avatarUrl: user.user_metadata?.["avatar_url"] as string | undefined,
     email: user.email,
+    id: user.id,
     name:
       (user.user_metadata?.["full_name"] as string | undefined) ??
       (user.user_metadata?.["name"] as string | undefined),
-    avatarUrl: user.user_metadata?.["avatar_url"] as string | undefined,
   };
 }
 
@@ -76,26 +76,26 @@ export const signOut = createServerFn({ method: "POST" }).handler(
 export const getGoogleSignInUrl = createServerFn({ method: "GET" })
   .inputValidator((data: { redirectTo: string }) => data)
   .handler(
-    async ({ data }): Promise<{ url: string | null; error: string | null }> => {
+    async ({ data }): Promise<{ error: null | string; url: null | string }> => {
       const supabase = getSupabaseServerClient();
 
       const { data: authData, error } = await supabase.auth.signInWithOAuth({
-        provider: "google",
         options: {
-          redirectTo: data.redirectTo,
           queryParams: {
             access_type: "offline",
             prompt: "consent",
           },
+          redirectTo: data.redirectTo,
         },
+        provider: "google",
       });
 
       if (error) {
         console.error("Google sign in error:", error);
-        return { url: null, error: error.message };
+        return { error: error.message, url: null };
       }
 
-      return { url: authData.url, error: null };
+      return { error: null, url: authData.url };
     },
   );
 
@@ -106,17 +106,17 @@ export const getGoogleSignInUrl = createServerFn({ method: "GET" })
 export const exchangeCodeForSession = createServerFn({ method: "POST" })
   .inputValidator((data: { code: string }) => data)
   .handler(
-    async ({ data }): Promise<{ success: boolean; error: string | null }> => {
+    async ({ data }): Promise<{ error: null | string; success: boolean }> => {
       const supabase = getSupabaseServerClient();
 
       const { error } = await supabase.auth.exchangeCodeForSession(data.code);
 
       if (error) {
         console.error("Code exchange error:", error);
-        return { success: false, error: error.message };
+        return { error: error.message, success: false };
       }
 
-      return { success: true, error: null };
+      return { error: null, success: true };
     },
   );
 
@@ -125,7 +125,7 @@ export const exchangeCodeForSession = createServerFn({ method: "POST" })
  * This requires admin privileges in production.
  */
 export const deleteAccount = createServerFn({ method: "POST" }).handler(
-  async (): Promise<{ success: boolean; error: string | null }> => {
+  async (): Promise<{ error: null | string; success: boolean }> => {
     const supabase = getSupabaseServerClient();
 
     // Get current user
@@ -134,7 +134,7 @@ export const deleteAccount = createServerFn({ method: "POST" }).handler(
     } = await supabase.auth.getUser();
 
     if (!user) {
-      return { success: false, error: "Not authenticated" };
+      return { error: "Not authenticated", success: false };
     }
 
     // Sign out first
@@ -144,6 +144,6 @@ export const deleteAccount = createServerFn({ method: "POST" }).handler(
     // For now, we just sign out the user
     // TODO: Implement proper user deletion with admin API or Edge Function
 
-    return { success: true, error: null };
+    return { error: null, success: true };
   },
 );

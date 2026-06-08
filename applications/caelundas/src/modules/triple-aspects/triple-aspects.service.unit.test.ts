@@ -27,15 +27,15 @@ describe("TripleAspectsService", () => {
           // T-Square: Sun opposite Moon, with Mars square to both
           // Pattern exists in both previous and current snapshots → stable → no event
           const edges: AspectBodies[] = [
-            { bodies: ["sun", "moon"], aspect: "opposite" },
-            { bodies: ["sun", "mars"], aspect: "square" },
-            { bodies: ["moon", "mars"], aspect: "square" },
+            { aspect: "opposite", bodies: ["sun", "moon"] },
+            { aspect: "square", bodies: ["sun", "mars"] },
+            { aspect: "square", bodies: ["moon", "mars"] },
           ];
 
           const events = service.detect({
             currentAspectBodies: edges,
-            previousAspectBodies: edges,
             minute: currentMinute,
+            previousAspectBodies: edges,
           });
 
           // No events generated because pattern exists in both snapshots (stable)
@@ -47,16 +47,16 @@ describe("TripleAspectsService", () => {
 
           // T-Square forming: edges in currentAspectBodies only (not in previousAspectBodies)
           const currentAspectBodies: AspectBodies[] = [
-            { bodies: ["sun", "moon"], aspect: "opposite" },
-            { bodies: ["sun", "mars"], aspect: "square" },
-            { bodies: ["moon", "mars"], aspect: "square" },
+            { aspect: "opposite", bodies: ["sun", "moon"] },
+            { aspect: "square", bodies: ["sun", "mars"] },
+            { aspect: "square", bodies: ["moon", "mars"] },
           ];
           const previousAspectBodies: AspectBodies[] = [];
 
           const events = service.detect({
             currentAspectBodies,
-            previousAspectBodies,
             minute: currentMinute,
+            previousAspectBodies,
           });
 
           expect(events.length).toBeGreaterThanOrEqual(1);
@@ -71,15 +71,15 @@ describe("TripleAspectsService", () => {
           // T-Square dissolving: edges in previousAspectBodies only (not in currentAspectBodies)
           const currentAspectBodies: AspectBodies[] = [];
           const previousAspectBodies: AspectBodies[] = [
-            { bodies: ["sun", "moon"], aspect: "opposite" },
-            { bodies: ["sun", "mars"], aspect: "square" },
-            { bodies: ["moon", "mars"], aspect: "square" },
+            { aspect: "opposite", bodies: ["sun", "moon"] },
+            { aspect: "square", bodies: ["sun", "mars"] },
+            { aspect: "square", bodies: ["moon", "mars"] },
           ];
 
           const events = service.detect({
             currentAspectBodies,
-            previousAspectBodies,
             minute: currentMinute,
+            previousAspectBodies,
           });
 
           expect(events.length).toBeGreaterThanOrEqual(1);
@@ -93,14 +93,14 @@ describe("TripleAspectsService", () => {
 
           // Only opposition and one square (incomplete T-Square) — stable but incomplete
           const edges: AspectBodies[] = [
-            { bodies: ["sun", "moon"], aspect: "opposite" },
-            { bodies: ["sun", "mars"], aspect: "square" },
+            { aspect: "opposite", bodies: ["sun", "moon"] },
+            { aspect: "square", bodies: ["sun", "mars"] },
           ];
 
           const events = service.detect({
             currentAspectBodies: edges,
-            previousAspectBodies: edges,
             minute: currentMinute,
+            previousAspectBodies: edges,
           });
 
           const tSquare = events.find((e) => e.categories.includes("T Square"));
@@ -115,15 +115,15 @@ describe("TripleAspectsService", () => {
           // Yod: Sun sextile Moon, with Venus quincunx to both
           // Pattern exists in both snapshots → stable → no event
           const edges: AspectBodies[] = [
-            { bodies: ["sun", "moon"], aspect: "sextile" },
-            { bodies: ["sun", "venus"], aspect: "quincunx" },
-            { bodies: ["moon", "venus"], aspect: "quincunx" },
+            { aspect: "sextile", bodies: ["sun", "moon"] },
+            { aspect: "quincunx", bodies: ["sun", "venus"] },
+            { aspect: "quincunx", bodies: ["moon", "venus"] },
           ];
 
           const events = service.detect({
             currentAspectBodies: edges,
-            previousAspectBodies: edges,
             minute: currentMinute,
+            previousAspectBodies: edges,
           });
 
           // No events generated - pattern exists in both snapshots (stable)
@@ -135,14 +135,14 @@ describe("TripleAspectsService", () => {
 
           // Only sextile and one quincunx (incomplete Yod) — stable but incomplete
           const edges: AspectBodies[] = [
-            { bodies: ["sun", "moon"], aspect: "sextile" },
-            { bodies: ["sun", "venus"], aspect: "quincunx" },
+            { aspect: "sextile", bodies: ["sun", "moon"] },
+            { aspect: "quincunx", bodies: ["sun", "venus"] },
           ];
 
           const events = service.detect({
             currentAspectBodies: edges,
-            previousAspectBodies: edges,
             minute: currentMinute,
+            previousAspectBodies: edges,
           });
 
           const yod = events.find((e) => e.categories.includes("Yod"));
@@ -157,15 +157,15 @@ describe("TripleAspectsService", () => {
           // Grand Trine: Sun trine Moon, Sun trine Mars, Moon trine Mars
           // Pattern exists in both snapshots → stable → no event
           const edges: AspectBodies[] = [
-            { bodies: ["sun", "moon"], aspect: "trine" },
-            { bodies: ["sun", "mars"], aspect: "trine" },
-            { bodies: ["moon", "mars"], aspect: "trine" },
+            { aspect: "trine", bodies: ["sun", "moon"] },
+            { aspect: "trine", bodies: ["sun", "mars"] },
+            { aspect: "trine", bodies: ["moon", "mars"] },
           ];
 
           const events = service.detect({
             currentAspectBodies: edges,
-            previousAspectBodies: edges,
             minute: currentMinute,
+            previousAspectBodies: edges,
           });
 
           // No events generated - pattern exists in both snapshots (stable)
@@ -177,14 +177,14 @@ describe("TripleAspectsService", () => {
 
           // Only two trines (incomplete Grand Trine) — stable but incomplete
           const edges: AspectBodies[] = [
-            { bodies: ["sun", "moon"], aspect: "trine" },
-            { bodies: ["sun", "mars"], aspect: "trine" },
+            { aspect: "trine", bodies: ["sun", "moon"] },
+            { aspect: "trine", bodies: ["sun", "mars"] },
           ];
 
           const events = service.detect({
             currentAspectBodies: edges,
-            previousAspectBodies: edges,
             minute: currentMinute,
+            previousAspectBodies: edges,
           });
 
           const grandTrine = events.find((e) =>
@@ -198,8 +198,8 @@ describe("TripleAspectsService", () => {
         const currentMinute = moment.utc("2024-03-21T12:00:00.000Z");
         const events = service.detect({
           currentAspectBodies: [],
-          previousAspectBodies: [],
           minute: currentMinute,
+          previousAspectBodies: [],
         });
         expect(events.length).toBe(0);
       });
@@ -210,8 +210,8 @@ describe("TripleAspectsService", () => {
         // No active aspects at current time — both snapshots empty
         const events = service.detect({
           currentAspectBodies: [],
-          previousAspectBodies: [],
           minute: currentMinute,
+          previousAspectBodies: [],
         });
         expect(events.length).toBe(0);
       });
@@ -222,19 +222,19 @@ describe("TripleAspectsService", () => {
         // Both T-Square and Grand Trine present — stable in both snapshots
         const edges: AspectBodies[] = [
           // T-Square: Sun opposite Moon, Mars square both
-          { bodies: ["sun", "moon"], aspect: "opposite" },
-          { bodies: ["sun", "mars"], aspect: "square" },
-          { bodies: ["moon", "mars"], aspect: "square" },
+          { aspect: "opposite", bodies: ["sun", "moon"] },
+          { aspect: "square", bodies: ["sun", "mars"] },
+          { aspect: "square", bodies: ["moon", "mars"] },
           // Grand Trine: Venus, Jupiter, Saturn
-          { bodies: ["venus", "jupiter"], aspect: "trine" },
-          { bodies: ["venus", "saturn"], aspect: "trine" },
-          { bodies: ["jupiter", "saturn"], aspect: "trine" },
+          { aspect: "trine", bodies: ["venus", "jupiter"] },
+          { aspect: "trine", bodies: ["venus", "saturn"] },
+          { aspect: "trine", bodies: ["jupiter", "saturn"] },
         ];
 
         const events = service.detect({
           currentAspectBodies: edges,
-          previousAspectBodies: edges,
           minute: currentMinute,
+          previousAspectBodies: edges,
         });
 
         // No events - both patterns exist in both snapshots (stable)
@@ -245,10 +245,6 @@ describe("TripleAspectsService", () => {
     describe("service.detectProgressive", () => {
       it("should create progressive events from forming and dissolving pairs", () => {
         const formingEvent: Event = {
-          start: moment.utc("2024-03-21T10:00:00.000Z"),
-          end: moment.utc("2024-03-21T10:00:00.000Z"),
-          summary: "T-Square forming",
-          description: "Mars, Moon, Sun t-square forming (Mars focal)",
           categories: [
             "Astronomy",
             "Astrology",
@@ -261,13 +257,13 @@ describe("TripleAspectsService", () => {
             "Mars",
             "Mars Focal",
           ],
+          description: "Mars, Moon, Sun t-square forming (Mars focal)",
+          end: moment.utc("2024-03-21T10:00:00.000Z"),
+          start: moment.utc("2024-03-21T10:00:00.000Z"),
+          summary: "T-Square forming",
         };
 
         const dissolvingEvent: Event = {
-          start: moment.utc("2024-03-21T14:00:00.000Z"),
-          end: moment.utc("2024-03-21T14:00:00.000Z"),
-          summary: "T-Square dissolving",
-          description: "Mars, Moon, Sun t-square dissolving (Mars focal)",
           categories: [
             "Astronomy",
             "Astrology",
@@ -280,6 +276,10 @@ describe("TripleAspectsService", () => {
             "Mars",
             "Mars Focal",
           ],
+          description: "Mars, Moon, Sun t-square dissolving (Mars focal)",
+          end: moment.utc("2024-03-21T14:00:00.000Z"),
+          start: moment.utc("2024-03-21T14:00:00.000Z"),
+          summary: "T-Square dissolving",
         };
 
         const progressiveEvents = service.detectProgressive([
@@ -296,10 +296,6 @@ describe("TripleAspectsService", () => {
 
       it("should handle multiple aspect types", () => {
         const tSquareForming: Event = {
-          start: moment.utc("2024-03-21T10:00:00.000Z"),
-          end: moment.utc("2024-03-21T10:00:00.000Z"),
-          summary: "T-Square forming",
-          description: "Mars, Moon, Sun t-square forming",
           categories: [
             "Triple Aspect",
             "T Square",
@@ -308,13 +304,13 @@ describe("TripleAspectsService", () => {
             "Moon",
             "Mars",
           ],
+          description: "Mars, Moon, Sun t-square forming",
+          end: moment.utc("2024-03-21T10:00:00.000Z"),
+          start: moment.utc("2024-03-21T10:00:00.000Z"),
+          summary: "T-Square forming",
         };
 
         const tSquareDissolving: Event = {
-          start: moment.utc("2024-03-21T14:00:00.000Z"),
-          end: moment.utc("2024-03-21T14:00:00.000Z"),
-          summary: "T-Square dissolving",
-          description: "Mars, Moon, Sun t-square dissolving",
           categories: [
             "Triple Aspect",
             "T Square",
@@ -323,13 +319,13 @@ describe("TripleAspectsService", () => {
             "Moon",
             "Mars",
           ],
+          description: "Mars, Moon, Sun t-square dissolving",
+          end: moment.utc("2024-03-21T14:00:00.000Z"),
+          start: moment.utc("2024-03-21T14:00:00.000Z"),
+          summary: "T-Square dissolving",
         };
 
         const grandTrineForming: Event = {
-          start: moment.utc("2024-03-21T11:00:00.000Z"),
-          end: moment.utc("2024-03-21T11:00:00.000Z"),
-          summary: "Grand Trine forming",
-          description: "Jupiter, Saturn, Venus grand trine forming",
           categories: [
             "Triple Aspect",
             "Grand Trine",
@@ -338,13 +334,13 @@ describe("TripleAspectsService", () => {
             "Jupiter",
             "Saturn",
           ],
+          description: "Jupiter, Saturn, Venus grand trine forming",
+          end: moment.utc("2024-03-21T11:00:00.000Z"),
+          start: moment.utc("2024-03-21T11:00:00.000Z"),
+          summary: "Grand Trine forming",
         };
 
         const grandTrineDissolving: Event = {
-          start: moment.utc("2024-03-21T15:00:00.000Z"),
-          end: moment.utc("2024-03-21T15:00:00.000Z"),
-          summary: "Grand Trine dissolving",
-          description: "Jupiter, Saturn, Venus grand trine dissolving",
           categories: [
             "Triple Aspect",
             "Grand Trine",
@@ -353,6 +349,10 @@ describe("TripleAspectsService", () => {
             "Jupiter",
             "Saturn",
           ],
+          description: "Jupiter, Saturn, Venus grand trine dissolving",
+          end: moment.utc("2024-03-21T15:00:00.000Z"),
+          start: moment.utc("2024-03-21T15:00:00.000Z"),
+          summary: "Grand Trine dissolving",
         };
 
         const progressiveEvents = service.detectProgressive([
@@ -373,10 +373,6 @@ describe("TripleAspectsService", () => {
 
       it("should handle multiple body triplets", () => {
         const sunMoonMarsForming: Event = {
-          start: moment.utc("2024-03-21T10:00:00.000Z"),
-          end: moment.utc("2024-03-21T10:00:00.000Z"),
-          summary: "T-Square forming",
-          description: "Sun, Moon, Mars t-square forming",
           categories: [
             "Triple Aspect",
             "T Square",
@@ -385,13 +381,13 @@ describe("TripleAspectsService", () => {
             "Moon",
             "Mars",
           ],
+          description: "Sun, Moon, Mars t-square forming",
+          end: moment.utc("2024-03-21T10:00:00.000Z"),
+          start: moment.utc("2024-03-21T10:00:00.000Z"),
+          summary: "T-Square forming",
         };
 
         const sunMoonMarsDissolving: Event = {
-          start: moment.utc("2024-03-21T14:00:00.000Z"),
-          end: moment.utc("2024-03-21T14:00:00.000Z"),
-          summary: "T-Square dissolving",
-          description: "Sun, Moon, Mars t-square dissolving",
           categories: [
             "Triple Aspect",
             "T Square",
@@ -400,13 +396,13 @@ describe("TripleAspectsService", () => {
             "Moon",
             "Mars",
           ],
+          description: "Sun, Moon, Mars t-square dissolving",
+          end: moment.utc("2024-03-21T14:00:00.000Z"),
+          start: moment.utc("2024-03-21T14:00:00.000Z"),
+          summary: "T-Square dissolving",
         };
 
         const venusJupiterSaturnForming: Event = {
-          start: moment.utc("2024-03-21T11:00:00.000Z"),
-          end: moment.utc("2024-03-21T11:00:00.000Z"),
-          summary: "Grand Trine forming",
-          description: "Venus, Jupiter, Saturn grand trine forming",
           categories: [
             "Triple Aspect",
             "Grand Trine",
@@ -415,13 +411,13 @@ describe("TripleAspectsService", () => {
             "Jupiter",
             "Saturn",
           ],
+          description: "Venus, Jupiter, Saturn grand trine forming",
+          end: moment.utc("2024-03-21T11:00:00.000Z"),
+          start: moment.utc("2024-03-21T11:00:00.000Z"),
+          summary: "Grand Trine forming",
         };
 
         const venusJupiterSaturnDissolving: Event = {
-          start: moment.utc("2024-03-21T15:00:00.000Z"),
-          end: moment.utc("2024-03-21T15:00:00.000Z"),
-          summary: "Grand Trine dissolving",
-          description: "Venus, Jupiter, Saturn grand trine dissolving",
           categories: [
             "Triple Aspect",
             "Grand Trine",
@@ -430,6 +426,10 @@ describe("TripleAspectsService", () => {
             "Jupiter",
             "Saturn",
           ],
+          description: "Venus, Jupiter, Saturn grand trine dissolving",
+          end: moment.utc("2024-03-21T15:00:00.000Z"),
+          start: moment.utc("2024-03-21T15:00:00.000Z"),
+          summary: "Grand Trine dissolving",
         };
 
         const progressiveEvents = service.detectProgressive([
@@ -460,10 +460,6 @@ describe("TripleAspectsService", () => {
 
       it("should filter out non-triple-aspect events", () => {
         const tripleAspectEvent: Event = {
-          start: moment.utc("2024-03-21T10:00:00.000Z"),
-          end: moment.utc("2024-03-21T10:00:00.000Z"),
-          summary: "T-Square forming",
-          description: "Sun, Moon, Mars t-square forming",
           categories: [
             "Triple Aspect",
             "T Square",
@@ -472,14 +468,18 @@ describe("TripleAspectsService", () => {
             "Moon",
             "Mars",
           ],
+          description: "Sun, Moon, Mars t-square forming",
+          end: moment.utc("2024-03-21T10:00:00.000Z"),
+          start: moment.utc("2024-03-21T10:00:00.000Z"),
+          summary: "T-Square forming",
         };
 
         const nonTripleAspectEvent: Event = {
-          start: moment.utc("2024-03-21T10:00:00.000Z"),
-          end: moment.utc("2024-03-21T10:00:00.000Z"),
-          summary: "Some other event",
-          description: "Not a triple aspect",
           categories: ["Other"],
+          description: "Not a triple aspect",
+          end: moment.utc("2024-03-21T10:00:00.000Z"),
+          start: moment.utc("2024-03-21T10:00:00.000Z"),
+          summary: "Some other event",
         };
 
         const progressiveEvents = service.detectProgressive([
@@ -501,10 +501,6 @@ describe("TripleAspectsService", () => {
 
       it("should skip progressive when dissolving comes before forming", () => {
         const dissolvingEvent: Event = {
-          start: moment.utc("2024-03-21T10:00:00.000Z"),
-          end: moment.utc("2024-03-21T10:00:00.000Z"),
-          summary: "T-Square dissolving",
-          description: "Sun, Moon, Mars t-square dissolving",
           categories: [
             "Triple Aspect",
             "T Square",
@@ -513,13 +509,13 @@ describe("TripleAspectsService", () => {
             "Moon",
             "Mars",
           ],
+          description: "Sun, Moon, Mars t-square dissolving",
+          end: moment.utc("2024-03-21T10:00:00.000Z"),
+          start: moment.utc("2024-03-21T10:00:00.000Z"),
+          summary: "T-Square dissolving",
         };
 
         const formingEvent: Event = {
-          start: moment.utc("2024-03-21T14:00:00.000Z"),
-          end: moment.utc("2024-03-21T14:00:00.000Z"),
-          summary: "T-Square forming",
-          description: "Sun, Moon, Mars t-square forming",
           categories: [
             "Triple Aspect",
             "T Square",
@@ -528,6 +524,10 @@ describe("TripleAspectsService", () => {
             "Moon",
             "Mars",
           ],
+          description: "Sun, Moon, Mars t-square forming",
+          end: moment.utc("2024-03-21T14:00:00.000Z"),
+          start: moment.utc("2024-03-21T14:00:00.000Z"),
+          summary: "T-Square forming",
         };
 
         const progressiveEvents = service.detectProgressive([
@@ -540,10 +540,6 @@ describe("TripleAspectsService", () => {
 
       it("should sort bodies alphabetically in description", () => {
         const formingEvent: Event = {
-          start: moment.utc("2024-03-21T10:00:00.000Z"),
-          end: moment.utc("2024-03-21T10:00:00.000Z"),
-          summary: "Grand Trine forming",
-          description: "Venus, Jupiter, Saturn grand trine forming",
           categories: [
             "Triple Aspect",
             "Grand Trine",
@@ -552,13 +548,13 @@ describe("TripleAspectsService", () => {
             "Jupiter",
             "Saturn",
           ],
+          description: "Venus, Jupiter, Saturn grand trine forming",
+          end: moment.utc("2024-03-21T10:00:00.000Z"),
+          start: moment.utc("2024-03-21T10:00:00.000Z"),
+          summary: "Grand Trine forming",
         };
 
         const dissolvingEvent: Event = {
-          start: moment.utc("2024-03-21T14:00:00.000Z"),
-          end: moment.utc("2024-03-21T14:00:00.000Z"),
-          summary: "Grand Trine dissolving",
-          description: "Venus, Jupiter, Saturn grand trine dissolving",
           categories: [
             "Triple Aspect",
             "Grand Trine",
@@ -567,6 +563,10 @@ describe("TripleAspectsService", () => {
             "Jupiter",
             "Saturn",
           ],
+          description: "Venus, Jupiter, Saturn grand trine dissolving",
+          end: moment.utc("2024-03-21T14:00:00.000Z"),
+          start: moment.utc("2024-03-21T14:00:00.000Z"),
+          summary: "Grand Trine dissolving",
         };
 
         const progressiveEvents = service.detectProgressive([
@@ -589,10 +589,6 @@ describe("TripleAspectsService", () => {
 
       it("should include focal/apex information in progressive events", () => {
         const formingEvent: Event = {
-          start: moment.utc("2024-03-21T10:00:00.000Z"),
-          end: moment.utc("2024-03-21T10:00:00.000Z"),
-          summary: "T-Square forming",
-          description: "Mars, Moon, Sun t-square forming (Mars focal)",
           categories: [
             "Triple Aspect",
             "T Square",
@@ -602,13 +598,13 @@ describe("TripleAspectsService", () => {
             "Mars",
             "Mars Focal",
           ],
+          description: "Mars, Moon, Sun t-square forming (Mars focal)",
+          end: moment.utc("2024-03-21T10:00:00.000Z"),
+          start: moment.utc("2024-03-21T10:00:00.000Z"),
+          summary: "T-Square forming",
         };
 
         const dissolvingEvent: Event = {
-          start: moment.utc("2024-03-21T14:00:00.000Z"),
-          end: moment.utc("2024-03-21T14:00:00.000Z"),
-          summary: "T-Square dissolving",
-          description: "Mars, Moon, Sun t-square dissolving (Mars focal)",
           categories: [
             "Triple Aspect",
             "T Square",
@@ -618,6 +614,10 @@ describe("TripleAspectsService", () => {
             "Mars",
             "Mars Focal",
           ],
+          description: "Mars, Moon, Sun t-square dissolving (Mars focal)",
+          end: moment.utc("2024-03-21T14:00:00.000Z"),
+          start: moment.utc("2024-03-21T14:00:00.000Z"),
+          summary: "T-Square dissolving",
         };
 
         const progressiveEvents = service.detectProgressive([
@@ -635,16 +635,16 @@ describe("TripleAspectsService", () => {
     it("should group edges by aspect type", () => {
       const edges: AspectBodies[] = [
         {
+          aspect: "conjunct",
           bodies: ["sun", "moon"],
-          aspect: "conjunct",
         },
         {
-          bodies: ["mars", "jupiter"],
           aspect: "trine",
+          bodies: ["mars", "jupiter"],
         },
         {
-          bodies: ["venus", "saturn"],
           aspect: "conjunct",
+          bodies: ["venus", "saturn"],
         },
       ];
 
@@ -663,12 +663,12 @@ describe("TripleAspectsService", () => {
     it("should handle single aspect type", () => {
       const edges: AspectBodies[] = [
         {
-          bodies: ["sun", "moon"],
           aspect: "square",
+          bodies: ["sun", "moon"],
         },
         {
-          bodies: ["mars", "jupiter"],
           aspect: "square",
+          bodies: ["mars", "jupiter"],
         },
       ];
 
@@ -683,16 +683,16 @@ describe("TripleAspectsService", () => {
     it("should find bodies with specific aspect to given body", () => {
       const edges: AspectBodies[] = [
         {
-          bodies: ["sun", "moon"],
           aspect: "conjunct",
+          bodies: ["sun", "moon"],
         },
         {
+          aspect: "trine",
           bodies: ["sun", "mars"],
-          aspect: "trine",
         },
         {
-          bodies: ["jupiter", "sun"],
           aspect: "trine",
+          bodies: ["jupiter", "sun"],
         },
       ];
 
@@ -710,8 +710,8 @@ describe("TripleAspectsService", () => {
     it("should return empty array when no aspects found", () => {
       const edges: AspectBodies[] = [
         {
-          bodies: ["sun", "moon"],
           aspect: "conjunct",
+          bodies: ["sun", "moon"],
         },
       ];
 
@@ -727,8 +727,8 @@ describe("TripleAspectsService", () => {
     it("should handle body not in any edges", () => {
       const edges: AspectBodies[] = [
         {
-          bodies: ["sun", "moon"],
           aspect: "conjunct",
+          bodies: ["sun", "moon"],
         },
       ];
 
@@ -746,8 +746,8 @@ describe("TripleAspectsService", () => {
     it("should return true when bodies have the aspect (body1-body2 order)", () => {
       const edges: AspectBodies[] = [
         {
-          bodies: ["sun", "moon"],
           aspect: "conjunct",
+          bodies: ["sun", "moon"],
         },
       ];
 
@@ -759,8 +759,8 @@ describe("TripleAspectsService", () => {
     it("should return true when bodies have the aspect (body2-body1 order)", () => {
       const edges: AspectBodies[] = [
         {
-          bodies: ["sun", "moon"],
           aspect: "conjunct",
+          bodies: ["sun", "moon"],
         },
       ];
 
@@ -772,8 +772,8 @@ describe("TripleAspectsService", () => {
     it("should return false when bodies do not have the aspect", () => {
       const edges: AspectBodies[] = [
         {
-          bodies: ["sun", "moon"],
           aspect: "conjunct",
+          bodies: ["sun", "moon"],
         },
       ];
 
@@ -785,8 +785,8 @@ describe("TripleAspectsService", () => {
     it("should return false when bodies are not connected", () => {
       const edges: AspectBodies[] = [
         {
-          bodies: ["sun", "moon"],
           aspect: "conjunct",
+          bodies: ["sun", "moon"],
         },
       ];
 
@@ -798,12 +798,12 @@ describe("TripleAspectsService", () => {
     it("should handle multiple edges", () => {
       const edges: AspectBodies[] = [
         {
-          bodies: ["sun", "moon"],
           aspect: "conjunct",
+          bodies: ["sun", "moon"],
         },
         {
-          bodies: ["mars", "jupiter"],
           aspect: "trine",
+          bodies: ["mars", "jupiter"],
         },
       ];
 

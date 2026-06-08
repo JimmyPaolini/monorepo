@@ -11,61 +11,6 @@ import {
 import type { ConformanceError, ConformanceErrorLanguage } from "./types";
 
 /**
- * Builds a structured `ConformanceError` describing a template node that is
- * absent from the instance.
- *
- * Captures:
- * - The source location within the instance file (where the child was expected).
- * - The source location within the template file (where the missing node lives).
- * - The `SyntaxKind` name of the missing node and its identity key when present.
- * - A condensed snippet of the template node's text as the `expected` value.
- */
-function buildError(args: {
-  instanceFile: SourceFile;
-  instanceNode: Node;
-  language: ConformanceErrorLanguage;
-  templateChild: Node;
-}): ConformanceError {
-  const { templateChild, instanceNode, instanceFile, language } = args;
-
-  const templateChildKey = getKey(templateChild);
-
-  const { line: instanceLine, character: instanceCharacter } =
-    instanceFile.getLineAndCharacterOfPosition(
-      instanceNode.getStart(instanceFile),
-    );
-
-  const templateFile = templateChild.getSourceFile();
-  const { line: templateLine, character: templateCharacter } =
-    templateFile.getLineAndCharacterOfPosition(templateChild.getStart());
-
-  const kind =
-    (SyntaxKind[templateChild.kind] as string | undefined) ??
-    `SyntaxKind(${String(templateChild.kind)})`;
-
-  const breadcrumb =
-    templateChildKey === null ? kind : `${kind} "${templateChildKey}"`;
-
-  const snippet = templateChild
-    .getText(templateFile)
-    .replaceAll(/\s+/gu, " ")
-    .trim();
-
-  const error: ConformanceError = {
-    errorType: "code",
-    language,
-    message: `Missing ${breadcrumb}`,
-    instanceLine: instanceLine + 1,
-    instanceColumn: instanceCharacter + 1,
-    templateLine: templateLine + 1,
-    templateColumn: templateCharacter + 1,
-    fix: `Add the missing ${breadcrumb} to the instance file. See the template for the expected structure.`,
-    ...(snippet.length > 0 ? { expected: snippet } : {}),
-  };
-  return error;
-}
-
-/**
  * Recursively walks the template and instance ASTs in lock-step, verifying
  * that every node present in the template also exists somewhere in the instance
  * at the same depth (superset semantics — the instance may contain extra nodes).
@@ -84,13 +29,13 @@ export function validateDepthFirstSearch(args: {
   language: ConformanceErrorLanguage;
   templateNode: Node;
 }): ConformanceError[] {
-  const { templateNode, instanceNode, instanceFile, language } = args;
+  const { instanceFile, instanceNode, language, templateNode } = args;
 
   const errors: ConformanceError[] = validateComments({
-    templateNode,
     instanceNode,
     language,
     side: "pos",
+    templateNode,
   });
 
   const instanceChildren = getChildren(instanceNode);
@@ -102,15 +47,15 @@ export function validateDepthFirstSearch(args: {
       const match = filterBySameKey(instanceChildren, templateChild)[0] ?? null;
       if (match === null) {
         errors.push(
-          buildError({ templateChild, instanceNode, instanceFile, language }),
+          buildError({ instanceFile, instanceNode, language, templateChild }),
         );
       } else {
         errors.push(
           ...validateDepthFirstSearch({
-            templateNode: templateChild,
-            instanceNode: match,
             instanceFile,
+            instanceNode: match,
             language,
+            templateNode: templateChild,
           }),
         );
       }
@@ -125,16 +70,16 @@ export function validateDepthFirstSearch(args: {
 
     if (instanceChildrenSameKind.length === 0) {
       errors.push(
-        buildError({ templateChild, instanceNode, instanceFile, language }),
+        buildError({ instanceFile, instanceNode, language, templateChild }),
       );
     } else {
       const fewestErrors = instanceChildrenSameKind
         .map((instanceChildSameKind) =>
           validateDepthFirstSearch({
-            templateNode: templateChild,
-            instanceNode: instanceChildSameKind,
             instanceFile,
+            instanceNode: instanceChildSameKind,
             language,
+            templateNode: templateChild,
           }),
         )
         .reduce((fewestErrors, instanceChildErrors) =>
@@ -157,13 +102,68 @@ export function validateDepthFirstSearch(args: {
   if (lastTemplateChild === undefined) {
     errors.push(
       ...validateComments({
-        templateNode,
         instanceNode,
         language,
         side: "end",
+        templateNode,
       }),
     );
   }
 
   return errors;
+}
+
+/**
+ * Builds a structured `ConformanceError` describing a template node that is
+ * absent from the instance.
+ *
+ * Captures:
+ * - The source location within the instance file (where the child was expected).
+ * - The source location within the template file (where the missing node lives).
+ * - The `SyntaxKind` name of the missing node and its identity key when present.
+ * - A condensed snippet of the template node's text as the `expected` value.
+ */
+function buildError(args: {
+  instanceFile: SourceFile;
+  instanceNode: Node;
+  language: ConformanceErrorLanguage;
+  templateChild: Node;
+}): ConformanceError {
+  const { instanceFile, instanceNode, language, templateChild } = args;
+
+  const templateChildKey = getKey(templateChild);
+
+  const { character: instanceCharacter, line: instanceLine } =
+    instanceFile.getLineAndCharacterOfPosition(
+      instanceNode.getStart(instanceFile),
+    );
+
+  const templateFile = templateChild.getSourceFile();
+  const { character: templateCharacter, line: templateLine } =
+    templateFile.getLineAndCharacterOfPosition(templateChild.getStart());
+
+  const kind =
+    (SyntaxKind[templateChild.kind] as string | undefined) ??
+    `SyntaxKind(${String(templateChild.kind)})`;
+
+  const breadcrumb =
+    templateChildKey === null ? kind : `${kind} "${templateChildKey}"`;
+
+  const snippet = templateChild
+    .getText(templateFile)
+    .replaceAll(/\s+/gu, " ")
+    .trim();
+
+  const error: ConformanceError = {
+    errorType: "code",
+    fix: `Add the missing ${breadcrumb} to the instance file. See the template for the expected structure.`,
+    instanceColumn: instanceCharacter + 1,
+    instanceLine: instanceLine + 1,
+    language,
+    message: `Missing ${breadcrumb}`,
+    templateColumn: templateCharacter + 1,
+    templateLine: templateLine + 1,
+    ...(snippet.length > 0 ? { expected: snippet } : {}),
+  };
+  return error;
 }

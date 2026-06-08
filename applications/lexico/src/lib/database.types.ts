@@ -8,15 +8,24 @@
  */
 
 /**
- * JSON value type used in Supabase database columns.
+ * Helper type to extract composite types from the database schema.
  */
-export type Json =
-  | string
-  | number
-  | boolean
-  | null
-  | { [key: string]: Json | undefined }
-  | Json[];
+export type CompositeTypes<
+  PublicCompositeTypeNameOrOptions extends
+    | keyof DefaultSchema["CompositeTypes"]
+    | { schema: keyof DatabaseWithoutInternals },
+  CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals;
+  }
+    ? keyof DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
+    : never = never,
+> = PublicCompositeTypeNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals;
+}
+  ? DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
+  : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema["CompositeTypes"]
+    ? DefaultSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
+    : never;
 
 /**
  * Main database schema type generated from Supabase.
@@ -28,298 +37,32 @@ export type Database = {
     PostgrestVersion: "13.0.5";
   };
   public: {
-    Tables: {
-      authors: {
-        Row: {
-          id: string;
-          name: string;
-          name_tsvector: unknown;
-        };
-        Insert: {
-          id: string;
-          name: string;
-          name_tsvector?: unknown;
-        };
-        Update: {
-          id?: string;
-          name?: string;
-          name_tsvector?: unknown;
-        };
-        Relationships: [];
-      };
-      bookmarks: {
-        Row: {
-          entry_id: string;
-          user_id: string;
-        };
-        Insert: {
-          entry_id: string;
-          user_id: string;
-        };
-        Update: {
-          entry_id?: string;
-          user_id?: string;
-        };
-        Relationships: [
-          {
-            foreignKeyName: "bookmarks_entryId_fkey";
-            columns: ["entry_id"];
-            isOneToOne: false;
-            referencedRelation: "entries";
-            referencedColumns: ["id"];
-          },
-        ];
-      };
-      books: {
-        Row: {
-          author_id: string | null;
-          id: string;
-          title: string;
-          title_tsvector: unknown;
-        };
-        Insert: {
-          author_id?: string | null;
-          id: string;
-          title: string;
-          title_tsvector?: unknown;
-        };
-        Update: {
-          author_id?: string | null;
-          id?: string;
-          title?: string;
-          title_tsvector?: unknown;
-        };
-        Relationships: [
-          {
-            foreignKeyName: "books_authorId_fkey";
-            columns: ["author_id"];
-            isOneToOne: false;
-            referencedRelation: "authors";
-            referencedColumns: ["id"];
-          },
-        ];
-      };
-      entries: {
-        Row: {
-          etymology: string | null;
-          forms: Json | null;
-          id: string;
-          inflection: Json | null;
-          part_of_speech: Database["public"]["Enums"]["part_of_speech"];
-          principal_parts: Json | null;
-          pronunciation: Json | null;
-        };
-        Insert: {
-          etymology?: string | null;
-          forms?: Json | null;
-          id: string;
-          inflection?: Json | null;
-          part_of_speech: Database["public"]["Enums"]["part_of_speech"];
-          principal_parts?: Json | null;
-          pronunciation?: Json | null;
-        };
-        Update: {
-          etymology?: string | null;
-          forms?: Json | null;
-          id?: string;
-          inflection?: Json | null;
-          part_of_speech?: Database["public"]["Enums"]["part_of_speech"];
-          principal_parts?: Json | null;
-          pronunciation?: Json | null;
-        };
-        Relationships: [];
-      };
-      line_words: {
-        Row: {
-          word: string;
-        };
-        Insert: {
-          word: string;
-        };
-        Update: {
-          word?: string;
-        };
-        Relationships: [];
-      };
-      lines: {
-        Row: {
-          analytics: Json | null;
-          id: string;
-          line: string;
-          line_label: string;
-          line_number: number;
-          line_tsvector: unknown;
-          text_id: string | null;
-        };
-        Insert: {
-          analytics?: Json | null;
-          id: string;
-          line: string;
-          line_label: string;
-          line_number: number;
-          line_tsvector?: unknown;
-          text_id?: string | null;
-        };
-        Update: {
-          analytics?: Json | null;
-          id?: string;
-          line?: string;
-          line_label?: string;
-          line_number?: number;
-          line_tsvector?: unknown;
-          text_id?: string | null;
-        };
-        Relationships: [
-          {
-            foreignKeyName: "lines_textId_fkey";
-            columns: ["text_id"];
-            isOneToOne: false;
-            referencedRelation: "texts";
-            referencedColumns: ["id"];
-          },
-        ];
-      };
-      texts: {
-        Row: {
-          author_id: string | null;
-          book_id: string | null;
-          id: string;
-          title: string;
-          title_tsvector: unknown;
-        };
-        Insert: {
-          author_id?: string | null;
-          book_id?: string | null;
-          id: string;
-          title: string;
-          title_tsvector?: unknown;
-        };
-        Update: {
-          author_id?: string | null;
-          book_id?: string | null;
-          id?: string;
-          title?: string;
-          title_tsvector?: unknown;
-        };
-        Relationships: [
-          {
-            foreignKeyName: "texts_authorId_fkey";
-            columns: ["author_id"];
-            isOneToOne: false;
-            referencedRelation: "authors";
-            referencedColumns: ["id"];
-          },
-          {
-            foreignKeyName: "texts_bookId_fkey";
-            columns: ["book_id"];
-            isOneToOne: false;
-            referencedRelation: "books";
-            referencedColumns: ["id"];
-          },
-        ];
-      };
-      translation_words: {
-        Row: {
-          translation_id: string;
-          word: string;
-        };
-        Insert: {
-          translation_id: string;
-          word: string;
-        };
-        Update: {
-          translation_id?: string;
-          word?: string;
-        };
-        Relationships: [
-          {
-            foreignKeyName: "translation_words_words_translation_id_fkey";
-            columns: ["translation_id"];
-            isOneToOne: false;
-            referencedRelation: "translations";
-            referencedColumns: ["id"];
-          },
-        ];
-      };
-      translations: {
-        Row: {
-          entry_id: string | null;
-          id: string;
-          translation: string | null;
-          translation_tsvector: unknown;
-        };
-        Insert: {
-          entry_id?: string | null;
-          id?: string;
-          translation?: string | null;
-          translation_tsvector?: unknown;
-        };
-        Update: {
-          entry_id?: string | null;
-          id?: string;
-          translation?: string | null;
-          translation_tsvector?: unknown;
-        };
-        Relationships: [
-          {
-            foreignKeyName: "translations_entryId_fkey";
-            columns: ["entry_id"];
-            isOneToOne: false;
-            referencedRelation: "entries";
-            referencedColumns: ["id"];
-          },
-        ];
-      };
-      user_texts: {
-        Row: {
-          id: string;
-          text: string;
-          title: string;
-          user_id: string | null;
-        };
-        Insert: {
-          id: string;
-          text: string;
-          title: string;
-          user_id?: string | null;
-        };
-        Update: {
-          id?: string;
-          text?: string;
-          title?: string;
-          user_id?: string | null;
-        };
-        Relationships: [];
-      };
-      words: {
-        Row: {
-          analytics: Json | null;
-          entry_id: string;
-          word: string;
-        };
-        Insert: {
-          analytics?: Json | null;
-          entry_id: string;
-          word: string;
-        };
-        Update: {
-          analytics?: Json | null;
-          entry_id?: string;
-          word?: string;
-        };
-        Relationships: [
-          {
-            foreignKeyName: "words_entryId_fkey";
-            columns: ["entry_id"];
-            isOneToOne: false;
-            referencedRelation: "entries";
-            referencedColumns: ["id"];
-          },
-        ];
-      };
-    };
-    Views: {
+    CompositeTypes: {
       [_ in never]: never;
+    };
+    Enums: {
+      part_of_speech:
+        | "abbreviation"
+        | "adjective"
+        | "adverb"
+        | "circumfix"
+        | "conjunction"
+        | "determiner"
+        | "idiom"
+        | "interfix"
+        | "interjection"
+        | "noun"
+        | "numeral"
+        | "participle"
+        | "particle"
+        | "phrase"
+        | "prefix"
+        | "preposition"
+        | "pronoun"
+        | "properNoun"
+        | "proverb"
+        | "suffix"
+        | "verb";
     };
     Functions: {
       search_english: {
@@ -353,45 +96,332 @@ export type Database = {
       show_limit: { Args: never; Returns: number };
       show_trgm: { Args: { "": string }; Returns: string[] };
     };
-    Enums: {
-      part_of_speech:
-        | "preposition"
-        | "interjection"
-        | "properNoun"
-        | "noun"
-        | "participle"
-        | "numeral"
-        | "interfix"
-        | "proverb"
-        | "adverb"
-        | "abbreviation"
-        | "circumfix"
-        | "adjective"
-        | "conjunction"
-        | "idiom"
-        | "prefix"
-        | "phrase"
-        | "particle"
-        | "pronoun"
-        | "suffix"
-        | "determiner"
-        | "verb";
+    Tables: {
+      authors: {
+        Insert: {
+          id: string;
+          name: string;
+          name_tsvector?: unknown;
+        };
+        Relationships: [];
+        Row: {
+          id: string;
+          name: string;
+          name_tsvector: unknown;
+        };
+        Update: {
+          id?: string;
+          name?: string;
+          name_tsvector?: unknown;
+        };
+      };
+      bookmarks: {
+        Insert: {
+          entry_id: string;
+          user_id: string;
+        };
+        Relationships: [
+          {
+            columns: ["entry_id"];
+            foreignKeyName: "bookmarks_entryId_fkey";
+            isOneToOne: false;
+            referencedColumns: ["id"];
+            referencedRelation: "entries";
+          },
+        ];
+        Row: {
+          entry_id: string;
+          user_id: string;
+        };
+        Update: {
+          entry_id?: string;
+          user_id?: string;
+        };
+      };
+      books: {
+        Insert: {
+          author_id?: null | string;
+          id: string;
+          title: string;
+          title_tsvector?: unknown;
+        };
+        Relationships: [
+          {
+            columns: ["author_id"];
+            foreignKeyName: "books_authorId_fkey";
+            isOneToOne: false;
+            referencedColumns: ["id"];
+            referencedRelation: "authors";
+          },
+        ];
+        Row: {
+          author_id: null | string;
+          id: string;
+          title: string;
+          title_tsvector: unknown;
+        };
+        Update: {
+          author_id?: null | string;
+          id?: string;
+          title?: string;
+          title_tsvector?: unknown;
+        };
+      };
+      entries: {
+        Insert: {
+          etymology?: null | string;
+          forms?: Json | null;
+          id: string;
+          inflection?: Json | null;
+          part_of_speech: Database["public"]["Enums"]["part_of_speech"];
+          principal_parts?: Json | null;
+          pronunciation?: Json | null;
+        };
+        Relationships: [];
+        Row: {
+          etymology: null | string;
+          forms: Json | null;
+          id: string;
+          inflection: Json | null;
+          part_of_speech: Database["public"]["Enums"]["part_of_speech"];
+          principal_parts: Json | null;
+          pronunciation: Json | null;
+        };
+        Update: {
+          etymology?: null | string;
+          forms?: Json | null;
+          id?: string;
+          inflection?: Json | null;
+          part_of_speech?: Database["public"]["Enums"]["part_of_speech"];
+          principal_parts?: Json | null;
+          pronunciation?: Json | null;
+        };
+      };
+      line_words: {
+        Insert: {
+          word: string;
+        };
+        Relationships: [];
+        Row: {
+          word: string;
+        };
+        Update: {
+          word?: string;
+        };
+      };
+      lines: {
+        Insert: {
+          analytics?: Json | null;
+          id: string;
+          line: string;
+          line_label: string;
+          line_number: number;
+          line_tsvector?: unknown;
+          text_id?: null | string;
+        };
+        Relationships: [
+          {
+            columns: ["text_id"];
+            foreignKeyName: "lines_textId_fkey";
+            isOneToOne: false;
+            referencedColumns: ["id"];
+            referencedRelation: "texts";
+          },
+        ];
+        Row: {
+          analytics: Json | null;
+          id: string;
+          line: string;
+          line_label: string;
+          line_number: number;
+          line_tsvector: unknown;
+          text_id: null | string;
+        };
+        Update: {
+          analytics?: Json | null;
+          id?: string;
+          line?: string;
+          line_label?: string;
+          line_number?: number;
+          line_tsvector?: unknown;
+          text_id?: null | string;
+        };
+      };
+      texts: {
+        Insert: {
+          author_id?: null | string;
+          book_id?: null | string;
+          id: string;
+          title: string;
+          title_tsvector?: unknown;
+        };
+        Relationships: [
+          {
+            columns: ["author_id"];
+            foreignKeyName: "texts_authorId_fkey";
+            isOneToOne: false;
+            referencedColumns: ["id"];
+            referencedRelation: "authors";
+          },
+          {
+            columns: ["book_id"];
+            foreignKeyName: "texts_bookId_fkey";
+            isOneToOne: false;
+            referencedColumns: ["id"];
+            referencedRelation: "books";
+          },
+        ];
+        Row: {
+          author_id: null | string;
+          book_id: null | string;
+          id: string;
+          title: string;
+          title_tsvector: unknown;
+        };
+        Update: {
+          author_id?: null | string;
+          book_id?: null | string;
+          id?: string;
+          title?: string;
+          title_tsvector?: unknown;
+        };
+      };
+      translation_words: {
+        Insert: {
+          translation_id: string;
+          word: string;
+        };
+        Relationships: [
+          {
+            columns: ["translation_id"];
+            foreignKeyName: "translation_words_words_translation_id_fkey";
+            isOneToOne: false;
+            referencedColumns: ["id"];
+            referencedRelation: "translations";
+          },
+        ];
+        Row: {
+          translation_id: string;
+          word: string;
+        };
+        Update: {
+          translation_id?: string;
+          word?: string;
+        };
+      };
+      translations: {
+        Insert: {
+          entry_id?: null | string;
+          id?: string;
+          translation?: null | string;
+          translation_tsvector?: unknown;
+        };
+        Relationships: [
+          {
+            columns: ["entry_id"];
+            foreignKeyName: "translations_entryId_fkey";
+            isOneToOne: false;
+            referencedColumns: ["id"];
+            referencedRelation: "entries";
+          },
+        ];
+        Row: {
+          entry_id: null | string;
+          id: string;
+          translation: null | string;
+          translation_tsvector: unknown;
+        };
+        Update: {
+          entry_id?: null | string;
+          id?: string;
+          translation?: null | string;
+          translation_tsvector?: unknown;
+        };
+      };
+      user_texts: {
+        Insert: {
+          id: string;
+          text: string;
+          title: string;
+          user_id?: null | string;
+        };
+        Relationships: [];
+        Row: {
+          id: string;
+          text: string;
+          title: string;
+          user_id: null | string;
+        };
+        Update: {
+          id?: string;
+          text?: string;
+          title?: string;
+          user_id?: null | string;
+        };
+      };
+      words: {
+        Insert: {
+          analytics?: Json | null;
+          entry_id: string;
+          word: string;
+        };
+        Relationships: [
+          {
+            columns: ["entry_id"];
+            foreignKeyName: "words_entryId_fkey";
+            isOneToOne: false;
+            referencedColumns: ["id"];
+            referencedRelation: "entries";
+          },
+        ];
+        Row: {
+          analytics: Json | null;
+          entry_id: string;
+          word: string;
+        };
+        Update: {
+          analytics?: Json | null;
+          entry_id?: string;
+          word?: string;
+        };
+      };
     };
-    CompositeTypes: {
+    Views: {
       [_ in never]: never;
     };
   };
 };
 
-type DatabaseWithoutInternals = Omit<Database, "__InternalSupabase">;
+/**
+ * Helper type to extract enum types from the database schema.
+ */
+export type Enums<
+  DefaultSchemaEnumNameOrOptions extends
+    | keyof DefaultSchema["Enums"]
+    | { schema: keyof DatabaseWithoutInternals },
+  EnumName extends DefaultSchemaEnumNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals;
+  }
+    ? keyof DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
+    : never = never,
+> = DefaultSchemaEnumNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals;
+}
+  ? DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"][EnumName]
+  : DefaultSchemaEnumNameOrOptions extends keyof DefaultSchema["Enums"]
+    ? DefaultSchema["Enums"][DefaultSchemaEnumNameOrOptions]
+    : never;
 
 /**
- * Default schema type (public schema).
+ * JSON value type used in Supabase database columns.
  */
-type DefaultSchema = DatabaseWithoutInternals[Extract<
-  keyof Database,
-  "public"
->];
+export type Json =
+  | boolean
+  | Json[]
+  | null
+  | number
+  | string
+  | { [key: string]: Json | undefined };
 
 /**
  * Helper type to extract table row types from the database schema.
@@ -481,45 +511,15 @@ export type TablesUpdate<
       : never
     : never;
 
-/**
- * Helper type to extract enum types from the database schema.
- */
-export type Enums<
-  DefaultSchemaEnumNameOrOptions extends
-    | keyof DefaultSchema["Enums"]
-    | { schema: keyof DatabaseWithoutInternals },
-  EnumName extends DefaultSchemaEnumNameOrOptions extends {
-    schema: keyof DatabaseWithoutInternals;
-  }
-    ? keyof DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
-    : never = never,
-> = DefaultSchemaEnumNameOrOptions extends {
-  schema: keyof DatabaseWithoutInternals;
-}
-  ? DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"][EnumName]
-  : DefaultSchemaEnumNameOrOptions extends keyof DefaultSchema["Enums"]
-    ? DefaultSchema["Enums"][DefaultSchemaEnumNameOrOptions]
-    : never;
+type DatabaseWithoutInternals = Omit<Database, "__InternalSupabase">;
 
 /**
- * Helper type to extract composite types from the database schema.
+ * Default schema type (public schema).
  */
-export type CompositeTypes<
-  PublicCompositeTypeNameOrOptions extends
-    | keyof DefaultSchema["CompositeTypes"]
-    | { schema: keyof DatabaseWithoutInternals },
-  CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
-    schema: keyof DatabaseWithoutInternals;
-  }
-    ? keyof DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
-    : never = never,
-> = PublicCompositeTypeNameOrOptions extends {
-  schema: keyof DatabaseWithoutInternals;
-}
-  ? DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
-  : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema["CompositeTypes"]
-    ? DefaultSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
-    : never;
+type DefaultSchema = DatabaseWithoutInternals[Extract<
+  keyof Database,
+  "public"
+>];
 
 /**
  * Constants for enum values - useful for type-safe comparisons and selections
@@ -560,32 +560,32 @@ export const Constants = {
 
 /** Author table row type. */
 export type Author = Tables<"authors">;
-/** Bookmark table row type. */
-export type Bookmark = Tables<"bookmarks">;
 /** Book table row type. */
 export type Book = Tables<"books">;
+/** Bookmark table row type. */
+export type Bookmark = Tables<"bookmarks">;
 /** Entry table row type. */
 export type Entry = Tables<"entries">;
-/** LineWord table row type. */
-export type LineWord = Tables<"line_words">;
 /** Line table row type. */
 export type Line = Tables<"lines">;
-/** Text table row type. */
-export type Text = Tables<"texts">;
-/** TranslationWord table row type. */
-export type TranslationWord = Tables<"translation_words">;
-/** Translation table row type. */
-export type Translation = Tables<"translations">;
-/** UserText table row type. */
-export type UserText = Tables<"user_texts">;
-/** Word table row type. */
-export type Word = Tables<"words">;
-
+/** LineWord table row type. */
+export type LineWord = Tables<"line_words">;
 /** Part of speech enum type. */
 export type PartOfSpeech = Enums<"part_of_speech">;
-
 /**
  * Search function return types
  */
 export type SearchResult =
   Database["public"]["Functions"]["search_latin"]["Returns"][number];
+/** Text table row type. */
+export type Text = Tables<"texts">;
+/** Translation table row type. */
+export type Translation = Tables<"translations">;
+/** TranslationWord table row type. */
+export type TranslationWord = Tables<"translation_words">;
+
+/** UserText table row type. */
+export type UserText = Tables<"user_texts">;
+
+/** Word table row type. */
+export type Word = Tables<"words">;

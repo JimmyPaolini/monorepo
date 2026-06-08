@@ -1,7 +1,8 @@
 import { WordsModule } from "@lexico-ingestion/src/modules/words/words.module.js";
-import { Lexeme } from "@monorepo/lexico-entities";
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
+
+import { Lexeme } from "@monorepo/lexico-entities";
 
 import { EtymologyModule } from "../etymology/etymology.module";
 import { FormsModule } from "../forms/forms.module";

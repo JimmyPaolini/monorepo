@@ -1,9 +1,10 @@
-import { Translation } from "@monorepo/lexico-entities";
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import * as cheerio from "cheerio";
 import _ from "lodash";
 import { Like, Repository } from "typeorm";
+
+import { Translation } from "@monorepo/lexico-entities";
 
 import { LoggerService } from "../logger/logger.service";
 
@@ -19,6 +20,7 @@ import type { AnyNode } from "domhandler";
 @Injectable()
 export class TranslationsService {
   // 🏗 Dependency Injection
+
   constructor(
     @InjectRepository(Translation)
     private readonly translationsRepository: Repository<Translation>,
@@ -33,6 +35,10 @@ export class TranslationsService {
 
   // 🔏 Private Methods
 
+  private capitalizeFirstLetter(str: string): string {
+    return _.upperFirst(str);
+  }
+
   private normalize(str: string): string {
     return str
       .normalize("NFD")
@@ -41,11 +47,42 @@ export class TranslationsService {
       .trim();
   }
 
-  private capitalizeFirstLetter(str: string): string {
-    return _.upperFirst(str);
+  // 🌎 Public Methods
+
+  /** Scans translation strings for `{*word*}` cross-reference patterns and
+   * returns the unique set of referenced word strings. */
+  extractTranslationReferences(translations: Translation[]): string[] {
+    const refs: string[] = [];
+    for (const t of translations) {
+      for (const match of t.translation.matchAll(/\{\*(.+?)\*\}/g)) {
+        let ref = match[1] ?? "";
+        if (/\(.*\)/.test(ref)) ref = ref.replace(/ ?\(.*\)/, "");
+        if (ref) refs.push(ref);
+      }
+    }
+    return [...new Set(refs)];
   }
 
-  // 🌎 Public Methods
+  /** Finds all `Translation` rows whose text contains `{*...*}` reference markers. */
+  async findAllTranslationsWithReferences(take = 100): Promise<Translation[]> {
+    return this.translationsRepository.find({
+      order: { translation: "ASC" as const },
+      relations: { lexeme: true },
+      take,
+      where: { translation: Like("%{*%*}%") },
+    });
+  }
+
+  /** Finds all `Translation` rows for a single lexeme whose text contains
+   * `{*...*}` reference markers. */
+  async findTranslationsWithReferences(
+    lexemeId: string,
+  ): Promise<Translation[]> {
+    return this.translationsRepository.find({
+      relations: { lexeme: true },
+      where: { lexeme: { id: lexemeId }, translation: Like("%{*%*}%") },
+    });
+  }
 
   /**
    * Parses translations from the Wiktionary HTML element context.
@@ -109,41 +146,6 @@ export class TranslationsService {
     }
 
     return translations;
-  }
-
-  /** Scans translation strings for `{*word*}` cross-reference patterns and
-   * returns the unique set of referenced word strings. */
-  extractTranslationReferences(translations: Translation[]): string[] {
-    const refs: string[] = [];
-    for (const t of translations) {
-      for (const match of t.translation.matchAll(/\{\*(.+?)\*\}/g)) {
-        let ref = match[1] ?? "";
-        if (/\(.*\)/.test(ref)) ref = ref.replace(/ ?\(.*\)/, "");
-        if (ref) refs.push(ref);
-      }
-    }
-    return [...new Set(refs)];
-  }
-
-  /** Finds all `Translation` rows for a single lexeme whose text contains
-   * `{*...*}` reference markers. */
-  async findTranslationsWithReferences(
-    lexemeId: string,
-  ): Promise<Translation[]> {
-    return this.translationsRepository.find({
-      where: { lexeme: { id: lexemeId }, translation: Like("%{*%*}%") },
-      relations: { lexeme: true },
-    });
-  }
-
-  /** Finds all `Translation` rows whose text contains `{*...*}` reference markers. */
-  async findAllTranslationsWithReferences(take = 100): Promise<Translation[]> {
-    return this.translationsRepository.find({
-      where: { translation: Like("%{*%*}%") },
-      order: { translation: "ASC" as const },
-      relations: { lexeme: true },
-      take,
-    });
   }
 
   /** Saves an array of translations */

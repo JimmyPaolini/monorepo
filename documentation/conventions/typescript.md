@@ -262,7 +262,7 @@ import { getUser, type User } from "./api";
 
 **Why?** Clear visual separation between runtime code and compile-time types.
 
-**Enforced by**: ESLint rule `import/order` with `distinctGroup` for types
+**Enforced by**: ESLint rule `perfectionist/sort-imports`
 
 See [imports.md](imports.md) for full import organization rules.
 

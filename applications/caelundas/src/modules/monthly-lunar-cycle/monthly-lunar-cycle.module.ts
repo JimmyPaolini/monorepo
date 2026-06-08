@@ -9,8 +9,8 @@ import { MonthlyLunarCycleService } from "./monthly-lunar-cycle.service";
  */
 @Module({
   controllers: [],
+  exports: [MonthlyLunarCycleService],
   imports: [EphemerisModule],
   providers: [MonthlyLunarCycleService],
-  exports: [MonthlyLunarCycleService],
 })
 export class MonthlyLunarCycleModule {}

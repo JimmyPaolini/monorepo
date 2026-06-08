@@ -1,6 +1,7 @@
-import { Button, cn } from "@monorepo/lexico-components";
 import { Menu } from "lucide-react";
 import * as React from "react";
+
+import { Button, cn } from "@monorepo/lexico-components";
 
 import { Navigation } from "./navigation";
 
@@ -10,6 +11,10 @@ import type { NavItem } from "./navigation";
  * Props for the Layout component that provides app structure with navigation.
  */
 export interface LayoutProps {
+  /** Children to render in main content */
+  children: React.ReactNode;
+  /** Additional class names for main content */
+  className?: string | undefined;
   /** Current pathname for navigation active state */
   currentPath?: string | undefined;
   /** Custom navigation items */
@@ -20,15 +25,11 @@ export interface LayoutProps {
     isActive: boolean,
     children: React.ReactNode,
   ) => React.ReactNode;
-  /** Children to render in main content */
-  children: React.ReactNode;
-  /** Additional class names for main content */
-  className?: string | undefined;
 }
 
 const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
   (
-    { currentPath = "/", navItems, renderNavLink, children, className },
+    { children, className, currentPath = "/", navItems, renderNavLink },
     ref,
   ) => {
     const [isNavOpen, setNavOpen] = React.useState(false);
@@ -57,10 +58,10 @@ const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
         {/* Navigation */}
         <Navigation
           currentPath={currentPath}
-          isOpen={isNavOpen}
-          onToggle={toggleNav}
           isMobile={isMobile}
+          isOpen={isNavOpen}
           items={navItems}
+          onToggle={toggleNav}
           renderLink={renderNavLink}
         />
 
@@ -70,9 +71,9 @@ const Layout = React.forwardRef<HTMLDivElement, LayoutProps>(
           {isMobile && (
             <header className="sticky top-0 z-30 flex h-14 items-center border-b border-border bg-background px-4">
               <Button
-                variant="ghost"
-                size="icon"
                 onClick={toggleNav}
+                size="icon"
+                variant="ghost"
               >
                 <Menu className="h-5 w-5" />
               </Button>

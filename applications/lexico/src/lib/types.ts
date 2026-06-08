@@ -1,4 +1,77 @@
 /**
+ * Adjective declension forms organized by gender.
+ */
+export interface AdjectiveForms {
+  feminine?: NounForms;
+  masculine?: NounForms;
+  neuter?: NounForms;
+}
+
+/**
+ * Full entry data from database (for individual entry pages).
+ */
+export interface EntryFull {
+  etymology: null | string;
+  forms: Forms;
+  id: string;
+  inflection: Record<string, object>;
+  /* eslint-disable-next-line @typescript-eslint/naming-convention -- Supabase fields use snake_case */
+  part_of_speech: PartOfSpeech;
+  /* eslint-disable-next-line @typescript-eslint/naming-convention -- Supabase fields use snake_case */
+  principal_parts: PrincipalParts;
+  pronunciation: Pronunciation;
+  translations: string[];
+}
+
+/**
+ *
+ */
+export interface EntrySearchResult {
+  etymology: null | string;
+  forms: Forms;
+  id: string;
+  inflection: Record<string, object>;
+  /* eslint-disable-next-line @typescript-eslint/naming-convention -- Supabase fields use snake_case */
+  part_of_speech: PartOfSpeech;
+  /* eslint-disable-next-line @typescript-eslint/naming-convention -- Supabase fields use snake_case */
+  principal_parts: PrincipalParts;
+  pronunciation: Pronunciation;
+  similarities: number[];
+  translations: string[];
+  words: string[];
+}
+
+/**
+ * Union type for all form structures.
+ */
+export type Forms =
+  | AdjectiveForms
+  | NounForms
+  | Record<string, unknown>
+  | VerbForms;
+
+/**
+ * Noun declension forms organized by case and number.
+ */
+export interface NounForms {
+  ablative?: NumberGroup;
+  accusative?: NumberGroup;
+  dative?: NumberGroup;
+  genitive?: NumberGroup;
+  locative?: NumberGroup;
+  nominative?: NumberGroup;
+  vocative?: NumberGroup;
+}
+
+/**
+ * Number grouping (singular and plural).
+ */
+export interface NumberGroup {
+  plural?: string[];
+  singular?: string[];
+}
+
+/**
  * Part of speech classification for lexical entries.
  */
 export type PartOfSpeech =
@@ -18,20 +91,30 @@ export type PartOfSpeech =
  * Principal parts of a lexical entry (e.g., nominative/genitive for nouns).
  */
 export interface PrincipalParts {
-  /** Present tense stem (verbs) */
-  present?: string;
-  /** Infinitive form (verbs) */
-  infinitive?: string;
-  /** Perfect tense stem (verbs) */
-  perfect?: string;
-  /** Supine form (verbs) */
-  supine?: string;
-  /** Nominative singular (nouns/adjectives) */
-  nominative?: string;
-  /** Genitive singular (nouns/adjectives) */
-  genitive?: string;
   /** Additional principal parts */
   [key: string]: string | undefined;
+  /** Genitive singular (nouns/adjectives) */
+  genitive?: string;
+  /** Infinitive form (verbs) */
+  infinitive?: string;
+  /** Nominative singular (nouns/adjectives) */
+  nominative?: string;
+  /** Perfect tense stem (verbs) */
+  perfect?: string;
+  /** Present tense stem (verbs) */
+  present?: string;
+  /** Supine form (verbs) */
+  supine?: string;
+}
+
+/**
+ * Pronunciation data for both Classical and Ecclesiastical Latin.
+ */
+export interface Pronunciation {
+  /** Classical Latin pronunciation */
+  classical?: PronunciationDialect;
+  /** Ecclesiastical Latin pronunciation */
+  ecclesiastical?: PronunciationDialect;
 }
 
 /**
@@ -47,34 +130,24 @@ export interface PronunciationDialect {
 }
 
 /**
- * Pronunciation data for both Classical and Ecclesiastical Latin.
- */
-export interface Pronunciation {
-  /** Classical Latin pronunciation */
-  classical?: PronunciationDialect;
-  /** Ecclesiastical Latin pronunciation */
-  ecclesiastical?: PronunciationDialect;
-}
-
-/**
  * Complete verb conjugation forms organized by mood, tense, voice.
  */
 export interface VerbForms {
-  indicative?: {
-    active?: TenseGroup;
-    passive?: TenseGroup;
-  };
-  subjunctive?: {
-    active?: SubjunctiveTenses;
-    passive?: SubjunctiveTenses;
-  };
   imperative?: {
     active?: ImperativeTenses;
     passive?: ImperativeTenses;
   };
+  indicative?: {
+    active?: TenseGroup;
+    passive?: TenseGroup;
+  };
   nonFinite?: {
     infinitive?: InfinitiveGroup;
     participle?: ParticipleGroup;
+  };
+  subjunctive?: {
+    active?: SubjunctiveTenses;
+    passive?: SubjunctiveTenses;
   };
   verbalNoun?: {
     gerund?: GerundForms;
@@ -83,41 +156,45 @@ export interface VerbForms {
 }
 
 /**
- * Tense group for indicative forms (active or passive voice).
+ * Gerund forms by case.
  */
-interface TenseGroup {
-  present?: PersonNumberGroup;
-  imperfect?: PersonNumberGroup;
-  future?: PersonNumberGroup;
-  perfect?: PersonNumberGroup;
-  pluperfect?: PersonNumberGroup;
-  futurePerfect?: PersonNumberGroup;
+interface GerundForms {
+  ablative?: string[];
+  accusative?: string[];
+  dative?: string[];
+  genitive?: string[];
 }
 
 /**
- * Tense group for subjunctive forms.
+ * Person grouping for imperative forms (second and third person only).
  */
-interface SubjunctiveTenses {
-  present?: PersonNumberGroup;
-  imperfect?: PersonNumberGroup;
-  perfect?: PersonNumberGroup;
-  pluperfect?: PersonNumberGroup;
+interface ImperativePersonGroup {
+  plural?: { second?: string[]; third?: string[] };
+  singular?: { second?: string[]; third?: string[] };
 }
 
 /**
  * Tense group for imperative forms.
  */
 interface ImperativeTenses {
-  present?: ImperativePersonGroup;
   future?: ImperativePersonGroup;
+  present?: ImperativePersonGroup;
 }
 
 /**
- * Person-number grouping for finite verb forms.
+ * Infinitive forms by voice and tense.
  */
-interface PersonNumberGroup {
-  singular?: PersonGroup;
-  plural?: PersonGroup;
+interface InfinitiveGroup {
+  active?: { future?: string[]; perfect?: string[]; present?: string[] };
+  passive?: { future?: string[]; perfect?: string[]; present?: string[] };
+}
+
+/**
+ * Participle forms by voice and tense.
+ */
+interface ParticipleGroup {
+  active?: { future?: string[]; present?: string[] };
+  passive?: { future?: string[]; perfect?: string[] };
 }
 
 /**
@@ -130,117 +207,43 @@ interface PersonGroup {
 }
 
 /**
- * Person grouping for imperative forms (second and third person only).
+ * Person-number grouping for finite verb forms.
  */
-interface ImperativePersonGroup {
-  singular?: { second?: string[]; third?: string[] };
-  plural?: { second?: string[]; third?: string[] };
+interface PersonNumberGroup {
+  plural?: PersonGroup;
+  singular?: PersonGroup;
 }
 
 /**
- * Infinitive forms by voice and tense.
+ * Tense group for subjunctive forms.
  */
-interface InfinitiveGroup {
-  active?: { present?: string[]; perfect?: string[]; future?: string[] };
-  passive?: { present?: string[]; perfect?: string[]; future?: string[] };
+interface SubjunctiveTenses {
+  imperfect?: PersonNumberGroup;
+  perfect?: PersonNumberGroup;
+  pluperfect?: PersonNumberGroup;
+  present?: PersonNumberGroup;
 }
 
 /**
- * Participle forms by voice and tense.
+ * Entry search result from Supabase RPC search function.
  */
-interface ParticipleGroup {
-  active?: { present?: string[]; future?: string[] };
-  passive?: { perfect?: string[]; future?: string[] };
-}
-
-/**
- * Gerund forms by case.
- */
-interface GerundForms {
-  genitive?: string[];
-  dative?: string[];
-  accusative?: string[];
-  ablative?: string[];
-}
 
 /**
  * Supine forms by case.
  */
 interface SupineForms {
-  accusative?: string[];
   ablative?: string[];
+  accusative?: string[];
 }
 
 /**
- * Noun declension forms organized by case and number.
+ * Tense group for indicative forms (active or passive voice).
  */
-export interface NounForms {
-  nominative?: NumberGroup;
-  genitive?: NumberGroup;
-  dative?: NumberGroup;
-  accusative?: NumberGroup;
-  ablative?: NumberGroup;
-  vocative?: NumberGroup;
-  locative?: NumberGroup;
+interface TenseGroup {
+  future?: PersonNumberGroup;
+  futurePerfect?: PersonNumberGroup;
+  imperfect?: PersonNumberGroup;
+  perfect?: PersonNumberGroup;
+  pluperfect?: PersonNumberGroup;
+  present?: PersonNumberGroup;
 }
-
-/**
- * Number grouping (singular and plural).
- */
-export interface NumberGroup {
-  singular?: string[];
-  plural?: string[];
-}
-
-/**
- * Adjective declension forms organized by gender.
- */
-export interface AdjectiveForms {
-  masculine?: NounForms;
-  feminine?: NounForms;
-  neuter?: NounForms;
-}
-
-/**
- * Union type for all form structures.
- */
-export type Forms =
-  | VerbForms
-  | NounForms
-  | AdjectiveForms
-  | Record<string, unknown>;
-
-/**
- * Entry search result from Supabase RPC search function.
- */
-/* eslint-disable @typescript-eslint/naming-convention */
-/**
- *
- */
-export interface EntrySearchResult {
-  id: string;
-  principal_parts: PrincipalParts;
-  part_of_speech: PartOfSpeech;
-  inflection: Record<string, object>;
-  pronunciation: Pronunciation;
-  forms: Forms;
-  etymology: string | null;
-  translations: string[];
-  words: string[];
-  similarities: number[];
-}
-
-/**
- * Full entry data from database (for individual entry pages).
- */
-export interface EntryFull {
-  id: string;
-  principal_parts: PrincipalParts;
-  part_of_speech: PartOfSpeech;
-  inflection: Record<string, object>;
-  pronunciation: Pronunciation;
-  forms: Forms;
-  etymology: string | null;
-  translations: string[];
-}
-/* eslint-enable @typescript-eslint/naming-convention */

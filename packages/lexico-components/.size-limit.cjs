@@ -5,9 +5,9 @@
 
 module.exports = [
   {
+    gzip: true,
+    limit: "25 KB",
     name: "Library bundle",
     path: "../../dist/packages/lexico-components/index.js",
-    limit: "25 KB",
-    gzip: true,
   },
 ];

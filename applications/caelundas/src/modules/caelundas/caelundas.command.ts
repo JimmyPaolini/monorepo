@@ -14,12 +14,14 @@ import { ProgressiveService } from "../progressive/progressive.service";
  * runs perfective and progressive event detection in sequence, and writes
  * the result to an `.ics` file via {@link CalendarService}.
  */
-@Injectable()
 @Command({
-  name: "caelundas",
   description: "Generate astronomical calendar events for a date range",
+  name: "caelundas",
 })
+@Injectable()
 export class CaelundasCommand extends CommandRunner {
+  // 🏗 Dependency Injection
+
   constructor(
     private readonly logger: LoggerService,
     @Inject(InputService)
@@ -34,6 +36,14 @@ export class CaelundasCommand extends CommandRunner {
     super();
     this.logger.setContext(CaelundasCommand.name);
   }
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Executes the full calendar generation pipeline.

@@ -38,11 +38,8 @@ import type { Moment } from "moment-timezone";
  */
 @Injectable()
 export class SpecialtyAspectsService {
-  private readonly detectAspectPhase: ReturnType<
-    AspectsUtilities["getIsAspect"]
-  >;
-
   // 🏗 Dependency Injection
+
   constructor(
     private readonly logger: LoggerService,
     private readonly aspectsUtilitiesService: AspectsUtilities,
@@ -57,133 +54,80 @@ export class SpecialtyAspectsService {
 
   // 🔐 Private Fields
 
+  private readonly detectAspectPhase: ReturnType<
+    AspectsUtilities["getIsAspect"]
+  >;
+
   // 🔑 Public Fields
 
   // 🔏 Private Methods
 
+  private getSpecialtyAspectProgressiveEvent(
+    beginning: Event,
+    ending: Event,
+  ): Event {
+    const bodiesCapitalized = _.sortBy(
+      beginning.categories.filter((category) =>
+        specialtyAspectBodies
+          .map((specialtyAspectBody) => _.startCase(specialtyAspectBody))
+          .includes(category),
+      ),
+    );
+
+    const aspectCapitalized = beginning.categories.find((category) =>
+      specialtyAspects
+        .map((specialtyAspect) => _.startCase(specialtyAspect))
+        .includes(category),
+    );
+
+    if (bodiesCapitalized.length !== 2 || !aspectCapitalized) {
+      throw new Error(
+        `Could not extract aspect info from categories: ${beginning.categories.join(
+          ", ",
+        )}`,
+      );
+    }
+
+    const body1Capitalized = bodiesCapitalized[0] ?? "";
+    const body2Capitalized = bodiesCapitalized[1] ?? "";
+    const aspectLower = aspectCapitalized.toLowerCase();
+    const body1Lower = body1Capitalized.toLowerCase();
+    const body2Lower = body2Capitalized.toLowerCase();
+    if (
+      !isSpecialtyAspect(aspectLower) ||
+      !isBody(body1Lower) ||
+      !isBody(body2Lower)
+    ) {
+      throw new Error(
+        `Could not extract typed values from categories: ${beginning.categories.join(", ")}`,
+      );
+    }
+    const aspect = aspectLower;
+    const body1 = body1Lower;
+    const body2 = body2Lower;
+
+    const body1Symbol = symbolByBody[body1];
+    const body2Symbol = symbolByBody[body2];
+    const aspectSymbol = symbolBySpecialtyAspect[aspect];
+
+    return {
+      categories: [
+        "Astronomy",
+        "Astrology",
+        "Simple Aspect",
+        "Specialty Aspect",
+        body1Capitalized,
+        body2Capitalized,
+        aspectCapitalized,
+      ],
+      description: `${body1Capitalized} ${aspect} ${body2Capitalized}`,
+      end: ending.start,
+      start: beginning.start,
+      summary: `${body1Symbol}${aspectSymbol}${body2Symbol} ${body1Capitalized} ${aspect} ${body2Capitalized}`,
+    };
+  }
+
   // 🌎 Public Methods
-
-  /**
-   * Returns the first specialty aspect between two bodies, or `null` if none is within orb.
-   *
-   * @param args - `longitudeBody1` and `longitudeBody2` in ecliptic degrees
-   */
-  getSpecialtyAspect(args: {
-    longitudeBody1: number;
-    longitudeBody2: number;
-  }): SpecialtyAspect | null {
-    const { longitudeBody1, longitudeBody2 } = args;
-    for (const aspect of specialtyAspects) {
-      if (
-        this.aspectsUtilitiesService.isAspect({
-          longitudeBody1,
-          longitudeBody2,
-          aspect,
-        })
-      ) {
-        return aspect;
-      }
-    }
-    return null;
-  }
-
-  /**
-   * Classifies the specialty aspect phase (forming / perfective / dissolving) between two bodies
-   * across three consecutive minutes, or `null` if no specialty aspect is in progress.
-   *
-   * @param args - Longitudes at previous, current, and next minutes for both bodies
-   */
-  getSpecialtyAspectPhase(args: {
-    currentLongitudeBody1: number;
-    currentLongitudeBody2: number;
-    nextLongitudeBody1: number;
-    nextLongitudeBody2: number;
-    previousLongitudeBody1: number;
-    previousLongitudeBody2: number;
-  }): AspectPhase | null {
-    return this.detectAspectPhase(args);
-  }
-  /**
-   * Detects specialty aspect events within a single minute time window.
-   *
-   * Scans all configured body pairs for specialty aspects (quintile 72°,
-   * biquintile 144°, septile 51.43°, novile 40°) and determines
-   * the phase (forming, exact, or dissolving) based on comparison with
-   * adjacent minutes.
-   *
-   * @param args - Configuration object
-   * @param coordinateEphemerisByBody - Pre-computed ephemeris data for all bodies
-   * @param currentMinute - The minute to check for aspect events
-   * @returns Array of calendar events for all detected specialty aspects at this minute
-   */
-  detect(args: {
-    coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
-    minute: Moment;
-  }): Event[] {
-    const { coordinateEphemerisByBody, minute } = args;
-
-    const previousMinute = minute.clone().subtract(1, "minute");
-    const nextMinute = minute.clone().add(1, "minute");
-
-    const specialtyAspectEvents: Event[] = [];
-
-    for (const body1 of specialtyAspectBodies) {
-      const index = specialtyAspectBodies.indexOf(body1);
-      for (const body2 of specialtyAspectBodies.slice(index + 1)) {
-        if (body1 === body2) {
-          continue;
-        }
-
-        const ephemerisBody1 = coordinateEphemerisByBody[body1];
-        const ephemerisBody2 = coordinateEphemerisByBody[body2];
-
-        const {
-          previous: previousLongitudeBody1,
-          current: currentLongitudeBody1,
-          next: nextLongitudeBody1,
-        } = this.ephemerisService.getLongitudesWindow(
-          ephemerisBody1,
-          previousMinute,
-          minute,
-          nextMinute,
-        );
-        const {
-          previous: previousLongitudeBody2,
-          current: currentLongitudeBody2,
-          next: nextLongitudeBody2,
-        } = this.ephemerisService.getLongitudesWindow(
-          ephemerisBody2,
-          previousMinute,
-          minute,
-          nextMinute,
-        );
-
-        const phase = this.detectAspectPhase({
-          currentLongitudeBody1,
-          currentLongitudeBody2,
-          previousLongitudeBody1,
-          previousLongitudeBody2,
-          nextLongitudeBody1,
-          nextLongitudeBody2,
-        });
-
-        if (phase) {
-          specialtyAspectEvents.push(
-            this.buildSpecialtyAspectEvent({
-              timestamp: minute,
-              longitudeBody1: currentLongitudeBody1,
-              longitudeBody2: currentLongitudeBody2,
-              body1,
-              body2,
-              phase,
-            }),
-          );
-        }
-      }
-    }
-
-    return specialtyAspectEvents;
-  }
 
   /**
    * Creates a calendar event for a specific specialty aspect occurrence.
@@ -204,14 +148,14 @@ export class SpecialtyAspectsService {
    * @see {@link getSpecialtyAspect} for aspect type determination
    */
   buildSpecialtyAspectEvent(args: {
-    longitudeBody1: number;
-    longitudeBody2: number;
-    timestamp: Moment;
     body1: Body;
     body2: Body;
+    longitudeBody1: number;
+    longitudeBody2: number;
     phase: AspectPhase;
+    timestamp: Moment;
   }): Event {
-    const { longitudeBody1, longitudeBody2, timestamp, body1, body2, phase } =
+    const { body1, body2, longitudeBody1, longitudeBody2, phase, timestamp } =
       args;
     const specialtyAspect = this.getSpecialtyAspect({
       longitudeBody1,
@@ -265,13 +209,94 @@ export class SpecialtyAspectsService {
     this.logger.log(`${summary} at ${timestamp.toISOString()}`);
 
     const specialtyAspectEvent: Event = {
-      start: timestamp,
-      end: timestamp,
-      description,
-      summary,
       categories,
+      description,
+      end: timestamp,
+      start: timestamp,
+      summary,
     };
     return specialtyAspectEvent;
+  }
+  /**
+   * Detects specialty aspect events within a single minute time window.
+   *
+   * Scans all configured body pairs for specialty aspects (quintile 72°,
+   * biquintile 144°, septile 51.43°, novile 40°) and determines
+   * the phase (forming, exact, or dissolving) based on comparison with
+   * adjacent minutes.
+   *
+   * @param args - Configuration object
+   * @param coordinateEphemerisByBody - Pre-computed ephemeris data for all bodies
+   * @param currentMinute - The minute to check for aspect events
+   * @returns Array of calendar events for all detected specialty aspects at this minute
+   */
+  detect(args: {
+    coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
+    minute: Moment;
+  }): Event[] {
+    const { coordinateEphemerisByBody, minute } = args;
+
+    const previousMinute = minute.clone().subtract(1, "minute");
+    const nextMinute = minute.clone().add(1, "minute");
+
+    const specialtyAspectEvents: Event[] = [];
+
+    for (const body1 of specialtyAspectBodies) {
+      const index = specialtyAspectBodies.indexOf(body1);
+      for (const body2 of specialtyAspectBodies.slice(index + 1)) {
+        if (body1 === body2) {
+          continue;
+        }
+
+        const ephemerisBody1 = coordinateEphemerisByBody[body1];
+        const ephemerisBody2 = coordinateEphemerisByBody[body2];
+
+        const {
+          current: currentLongitudeBody1,
+          next: nextLongitudeBody1,
+          previous: previousLongitudeBody1,
+        } = this.ephemerisService.getLongitudesWindow(
+          ephemerisBody1,
+          previousMinute,
+          minute,
+          nextMinute,
+        );
+        const {
+          current: currentLongitudeBody2,
+          next: nextLongitudeBody2,
+          previous: previousLongitudeBody2,
+        } = this.ephemerisService.getLongitudesWindow(
+          ephemerisBody2,
+          previousMinute,
+          minute,
+          nextMinute,
+        );
+
+        const phase = this.detectAspectPhase({
+          currentLongitudeBody1,
+          currentLongitudeBody2,
+          nextLongitudeBody1,
+          nextLongitudeBody2,
+          previousLongitudeBody1,
+          previousLongitudeBody2,
+        });
+
+        if (phase) {
+          specialtyAspectEvents.push(
+            this.buildSpecialtyAspectEvent({
+              body1,
+              body2,
+              longitudeBody1: currentLongitudeBody1,
+              longitudeBody2: currentLongitudeBody2,
+              phase,
+              timestamp: minute,
+            }),
+          );
+        }
+      }
+    }
+
+    return specialtyAspectEvents;
   }
 
   /**
@@ -344,68 +369,44 @@ export class SpecialtyAspectsService {
     return progressiveEvents;
   }
 
-  private getSpecialtyAspectProgressiveEvent(
-    beginning: Event,
-    ending: Event,
-  ): Event {
-    const bodiesCapitalized = _.sortBy(
-      beginning.categories.filter((category) =>
-        specialtyAspectBodies
-          .map((specialtyAspectBody) => _.startCase(specialtyAspectBody))
-          .includes(category),
-      ),
-    );
-
-    const aspectCapitalized = beginning.categories.find((category) =>
-      specialtyAspects
-        .map((specialtyAspect) => _.startCase(specialtyAspect))
-        .includes(category),
-    );
-
-    if (bodiesCapitalized.length !== 2 || !aspectCapitalized) {
-      throw new Error(
-        `Could not extract aspect info from categories: ${beginning.categories.join(
-          ", ",
-        )}`,
-      );
+  /**
+   * Returns the first specialty aspect between two bodies, or `null` if none is within orb.
+   *
+   * @param args - `longitudeBody1` and `longitudeBody2` in ecliptic degrees
+   */
+  getSpecialtyAspect(args: {
+    longitudeBody1: number;
+    longitudeBody2: number;
+  }): null | SpecialtyAspect {
+    const { longitudeBody1, longitudeBody2 } = args;
+    for (const aspect of specialtyAspects) {
+      if (
+        this.aspectsUtilitiesService.isAspect({
+          aspect,
+          longitudeBody1,
+          longitudeBody2,
+        })
+      ) {
+        return aspect;
+      }
     }
+    return null;
+  }
 
-    const body1Capitalized = bodiesCapitalized[0] ?? "";
-    const body2Capitalized = bodiesCapitalized[1] ?? "";
-    const aspectLower = aspectCapitalized.toLowerCase();
-    const body1Lower = body1Capitalized.toLowerCase();
-    const body2Lower = body2Capitalized.toLowerCase();
-    if (
-      !isSpecialtyAspect(aspectLower) ||
-      !isBody(body1Lower) ||
-      !isBody(body2Lower)
-    ) {
-      throw new Error(
-        `Could not extract typed values from categories: ${beginning.categories.join(", ")}`,
-      );
-    }
-    const aspect = aspectLower;
-    const body1 = body1Lower;
-    const body2 = body2Lower;
-
-    const body1Symbol = symbolByBody[body1];
-    const body2Symbol = symbolByBody[body2];
-    const aspectSymbol = symbolBySpecialtyAspect[aspect];
-
-    return {
-      start: beginning.start,
-      end: ending.start,
-      summary: `${body1Symbol}${aspectSymbol}${body2Symbol} ${body1Capitalized} ${aspect} ${body2Capitalized}`,
-      description: `${body1Capitalized} ${aspect} ${body2Capitalized}`,
-      categories: [
-        "Astronomy",
-        "Astrology",
-        "Simple Aspect",
-        "Specialty Aspect",
-        body1Capitalized,
-        body2Capitalized,
-        aspectCapitalized,
-      ],
-    };
+  /**
+   * Classifies the specialty aspect phase (forming / perfective / dissolving) between two bodies
+   * across three consecutive minutes, or `null` if no specialty aspect is in progress.
+   *
+   * @param args - Longitudes at previous, current, and next minutes for both bodies
+   */
+  getSpecialtyAspectPhase(args: {
+    currentLongitudeBody1: number;
+    currentLongitudeBody2: number;
+    nextLongitudeBody1: number;
+    nextLongitudeBody2: number;
+    previousLongitudeBody1: number;
+    previousLongitudeBody2: number;
+  }): AspectPhase | null {
+    return this.detectAspectPhase(args);
   }
 }

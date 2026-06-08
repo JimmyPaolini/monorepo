@@ -16,175 +16,7 @@ import type {
   InstanceDirectoryValidationResult,
 } from "./types";
 
-const TS_EXTENSIONS = new Set([".ts", ".tsx", ".js", ".jsx", ".mjs", ".cjs"]);
-
-/**
- * File-system variant of {@link validateTypescriptConformance} that reads both the
- * generated instance file and the Mustache template from disk before validating.
- *
- * If either path does not exist (`ENOENT`), returns a structured error with
- * `errorType: 'file'` rather than throwing, so callers can treat a missing file
- * as a conformance failure rather than a crash.
- */
-export function validateInstanceFile(args: {
-  instanceFilePath: string;
-  templateFilePath: string;
-  data: Record<string, unknown>;
-}): {
-  errors: ConformanceError[];
-  instanceFilePath: string;
-  templateFilePath: string;
-} {
-  const { instanceFilePath, templateFilePath, data } = args;
-  try {
-    const instance = fs.readFileSync(instanceFilePath, "utf8");
-    const template = fs.readFileSync(templateFilePath, "utf8");
-    const filename = path.basename(instanceFilePath);
-    const extension = filename.slice(filename.lastIndexOf("."));
-
-    let errors: ConformanceError[];
-    if (extension === ".json") {
-      ({ errors } = validateJsonConformance({
-        instance,
-        template,
-        data,
-        filename,
-      }));
-    } else if (extension === ".md") {
-      ({ errors } = validateMarkdownConformance({
-        instance,
-        template,
-        data,
-        filename,
-      }));
-    } else if (TS_EXTENSIONS.has(extension)) {
-      ({ errors } = validateTypescriptConformance({
-        instance,
-        template,
-        data,
-        filename,
-      }));
-    } else {
-      ({ errors } = validateTextConformance({
-        instance,
-        template,
-        data,
-        filename,
-      }));
-    }
-
-    return { errors, instanceFilePath, templateFilePath };
-  } catch (error) {
-    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
-      return {
-        errors: [
-          {
-            errorType: "file",
-            message: `Missing file: ${instanceFilePath}`,
-            fix: `Create the file using the generator or manually based on the template at ${templateFilePath}`,
-          },
-        ],
-        instanceFilePath,
-        templateFilePath,
-      };
-    }
-    throw error;
-  }
-}
-
-/**
- * Validates all generated files in a single instance directory against their
- * corresponding Mustache templates in `templateDirectoryPath`.
- *
- * Each template filename may contain `__fieldName__` tokens (e.g.
- * `__nameKebabCase__.service.ts`) that are resolved to the instance filename
- * using the template variable substitutions derived from `instanceDirectoryPath`'s
- * basename. The same substitution map (`nameCamelCase`, `namePascalCase`,
- * `nameSnakeCase`, `nameKebabCase`) is passed to {@link validateInstanceFile}
- * when rendering each template.
- *
- * Validation uses AST superset-checking so that developer modifications to
- * method bodies, constructor arguments, and array contents do not produce
- * false failures — only structurally required template nodes are enforced.
- *
- * @returns The instance directory's basename and one result entry per template
- * file, each carrying the resolved filename and any validation errors.
- */
-export function validateInstanceDirectory(args: {
-  instanceDirectoryPath: string;
-  templateDirectoryPath: string;
-}): InstanceDirectoryValidationResult {
-  const { instanceDirectoryPath, templateDirectoryPath } = args;
-  const name = path.basename(instanceDirectoryPath);
-
-  const data = {
-    nameCamelCase: converterByStringCase[StringCase.CAMEL_CASE](name),
-    namePascalCase: converterByStringCase[StringCase.PASCAL_CASE](name),
-    nameSnakeCase: converterByStringCase[StringCase.SNAKE_CASE](name),
-    nameKebabCase: converterByStringCase[StringCase.KEBAB_CASE](name),
-  };
-
-  const templateFilenames = fs
-    .readdirSync(templateDirectoryPath, { withFileTypes: true })
-    .filter((node) => node.isFile())
-    .map((node) => node.name);
-
-  const results = templateFilenames.map((templateFilename) => {
-    const instanceFilename = templateFilename.replaceAll(
-      /__(\w+)__/g,
-      (_: string, field: string) => {
-        const value = (data as Record<string, unknown>)[field];
-        return typeof value === "string" ? value : "";
-      },
-    );
-    const instanceFilePath = path.join(instanceDirectoryPath, instanceFilename);
-    const templateFilePath = path.join(templateDirectoryPath, templateFilename);
-    return {
-      filename: instanceFilename,
-      ...validateInstanceFile({
-        instanceFilePath,
-        templateFilePath,
-        data,
-      }),
-    };
-  });
-
-  return { directoryName: name, results };
-}
-
-/**
- * Validates every subdirectory of `instancesDirectoryPath` by calling
- * {@link validateInstanceDirectory} on each one.
- *
- * Intended for conformance test suites that need to check an entire
- * `src/modules/` tree (or equivalent) in one call rather than iterating
- * subdirectories manually.
- *
- * @param args.excludeDirectories - Optional list of subdirectory names to skip.
- * Use this to exclude hand-crafted infrastructure modules (e.g. `logger`) that
- * intentionally diverge from the generator template.
- *
- * @returns One result entry per instance subdirectory, in filesystem order.
- */
-export function validateInstancesDirectory(args: {
-  instancesDirectoryPath: string;
-  templateDirectoryPath: string;
-  excludeDirectories?: string[];
-}): InstanceDirectoryValidationResult[] {
-  const { instancesDirectoryPath, templateDirectoryPath, excludeDirectories } =
-    args;
-  return fs
-    .readdirSync(instancesDirectoryPath, { withFileTypes: true })
-    .filter(
-      (node) => node.isDirectory() && !excludeDirectories?.includes(node.name),
-    )
-    .map((node) =>
-      validateInstanceDirectory({
-        instanceDirectoryPath: path.join(instancesDirectoryPath, node.name),
-        templateDirectoryPath,
-      }),
-    );
-}
+const TS_EXTENSIONS = new Set([".cjs", ".js", ".jsx", ".mjs", ".ts", ".tsx"]);
 
 /**
  * Formats the nested results from {@link validateInstancesDirectory} into a
@@ -197,7 +29,7 @@ export function validateInstancesDirectory(args: {
  */
 export function stringifyConformanceErrors(
   results: InstanceDirectoryValidationResult[],
-): string | null {
+): null | string {
   const directoriesWithErrors = results.filter((result) =>
     result.results.some((fileResult) => fileResult.errors.length > 0),
   );
@@ -267,4 +99,172 @@ export function stringifyConformanceErrors(
   );
 
   return lines.join("\n");
+}
+
+/**
+ * Validates all generated files in a single instance directory against their
+ * corresponding Mustache templates in `templateDirectoryPath`.
+ *
+ * Each template filename may contain `__fieldName__` tokens (e.g.
+ * `__nameKebabCase__.service.ts`) that are resolved to the instance filename
+ * using the template variable substitutions derived from `instanceDirectoryPath`'s
+ * basename. The same substitution map (`nameCamelCase`, `namePascalCase`,
+ * `nameSnakeCase`, `nameKebabCase`) is passed to {@link validateInstanceFile}
+ * when rendering each template.
+ *
+ * Validation uses AST superset-checking so that developer modifications to
+ * method bodies, constructor arguments, and array contents do not produce
+ * false failures — only structurally required template nodes are enforced.
+ *
+ * @returns The instance directory's basename and one result entry per template
+ * file, each carrying the resolved filename and any validation errors.
+ */
+export function validateInstanceDirectory(args: {
+  instanceDirectoryPath: string;
+  templateDirectoryPath: string;
+}): InstanceDirectoryValidationResult {
+  const { instanceDirectoryPath, templateDirectoryPath } = args;
+  const name = path.basename(instanceDirectoryPath);
+
+  const data = {
+    nameCamelCase: converterByStringCase[StringCase.CAMEL_CASE](name),
+    nameKebabCase: converterByStringCase[StringCase.KEBAB_CASE](name),
+    namePascalCase: converterByStringCase[StringCase.PASCAL_CASE](name),
+    nameSnakeCase: converterByStringCase[StringCase.SNAKE_CASE](name),
+  };
+
+  const templateFilenames = fs
+    .readdirSync(templateDirectoryPath, { withFileTypes: true })
+    .filter((node) => node.isFile())
+    .map((node) => node.name);
+
+  const results = templateFilenames.map((templateFilename) => {
+    const instanceFilename = templateFilename.replaceAll(
+      /__(\w+)__/g,
+      (_: string, field: string) => {
+        const value = (data as Record<string, unknown>)[field];
+        return typeof value === "string" ? value : "";
+      },
+    );
+    const instanceFilePath = path.join(instanceDirectoryPath, instanceFilename);
+    const templateFilePath = path.join(templateDirectoryPath, templateFilename);
+    return {
+      filename: instanceFilename,
+      ...validateInstanceFile({
+        data,
+        instanceFilePath,
+        templateFilePath,
+      }),
+    };
+  });
+
+  return { directoryName: name, results };
+}
+
+/**
+ * File-system variant of {@link validateTypescriptConformance} that reads both the
+ * generated instance file and the Mustache template from disk before validating.
+ *
+ * If either path does not exist (`ENOENT`), returns a structured error with
+ * `errorType: 'file'` rather than throwing, so callers can treat a missing file
+ * as a conformance failure rather than a crash.
+ */
+export function validateInstanceFile(args: {
+  data: Record<string, unknown>;
+  instanceFilePath: string;
+  templateFilePath: string;
+}): {
+  errors: ConformanceError[];
+  instanceFilePath: string;
+  templateFilePath: string;
+} {
+  const { data, instanceFilePath, templateFilePath } = args;
+  try {
+    const instance = fs.readFileSync(instanceFilePath, "utf8");
+    const template = fs.readFileSync(templateFilePath, "utf8");
+    const filename = path.basename(instanceFilePath);
+    const extension = filename.slice(filename.lastIndexOf("."));
+
+    let errors: ConformanceError[];
+    if (extension === ".json") {
+      ({ errors } = validateJsonConformance({
+        data,
+        filename,
+        instance,
+        template,
+      }));
+    } else if (extension === ".md") {
+      ({ errors } = validateMarkdownConformance({
+        data,
+        filename,
+        instance,
+        template,
+      }));
+    } else if (TS_EXTENSIONS.has(extension)) {
+      ({ errors } = validateTypescriptConformance({
+        data,
+        filename,
+        instance,
+        template,
+      }));
+    } else {
+      ({ errors } = validateTextConformance({
+        data,
+        filename,
+        instance,
+        template,
+      }));
+    }
+
+    return { errors, instanceFilePath, templateFilePath };
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === "ENOENT") {
+      return {
+        errors: [
+          {
+            errorType: "file",
+            fix: `Create the file using the generator or manually based on the template at ${templateFilePath}`,
+            message: `Missing file: ${instanceFilePath}`,
+          },
+        ],
+        instanceFilePath,
+        templateFilePath,
+      };
+    }
+    throw error;
+  }
+}
+
+/**
+ * Validates every subdirectory of `instancesDirectoryPath` by calling
+ * {@link validateInstanceDirectory} on each one.
+ *
+ * Intended for conformance test suites that need to check an entire
+ * `src/modules/` tree (or equivalent) in one call rather than iterating
+ * subdirectories manually.
+ *
+ * @param args.excludeDirectories - Optional list of subdirectory names to skip.
+ * Use this to exclude hand-crafted infrastructure modules (e.g. `logger`) that
+ * intentionally diverge from the generator template.
+ *
+ * @returns One result entry per instance subdirectory, in filesystem order.
+ */
+export function validateInstancesDirectory(args: {
+  excludeDirectories?: string[];
+  instancesDirectoryPath: string;
+  templateDirectoryPath: string;
+}): InstanceDirectoryValidationResult[] {
+  const { excludeDirectories, instancesDirectoryPath, templateDirectoryPath } =
+    args;
+  return fs
+    .readdirSync(instancesDirectoryPath, { withFileTypes: true })
+    .filter(
+      (node) => node.isDirectory() && !excludeDirectories?.includes(node.name),
+    )
+    .map((node) =>
+      validateInstanceDirectory({
+        instanceDirectoryPath: path.join(instancesDirectoryPath, node.name),
+        templateDirectoryPath,
+      }),
+    );
 }

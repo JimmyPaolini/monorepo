@@ -6,24 +6,23 @@ import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  root: import.meta.dirname,
-  cacheDir: "../../node_modules/.vite/applications/lexico",
-  resolve: {
-    tsconfigPaths: true,
-    alias: {
-      "@": path.resolve(
-        import.meta.dirname,
-        "../../packages/lexico-components/src",
-      ),
+  build: {
+    commonjsOptions: {
+      transformMixedEsModules: true,
+    },
+    emptyOutDir: true,
+    outDir: "../../dist/applications/lexico",
+    reportCompressedSize: true,
+    rolldownOptions: {
+      external: ["expo-sqlite"],
+    },
+    rollupOptions: {
+      external: ["expo-sqlite"],
     },
   },
-  server: {
-    port: 3000,
-    host: "localhost",
-  },
-  preview: {
-    port: 3000,
-    host: "localhost",
+  cacheDir: "../../node_modules/.vite/applications/lexico",
+  css: {
+    devSourcemap: true,
   },
   plugins: [
     tailwindcss(),
@@ -31,21 +30,22 @@ export default defineConfig({
     // React plugin must come after TanStack Start plugin
     react(),
   ],
-  build: {
-    outDir: "../../dist/applications/lexico",
-    emptyOutDir: true,
-    reportCompressedSize: true,
-    commonjsOptions: {
-      transformMixedEsModules: true,
-    },
-    rollupOptions: {
-      external: ["expo-sqlite"],
-    },
-    rolldownOptions: {
-      external: ["expo-sqlite"],
-    },
+  preview: {
+    host: "localhost",
+    port: 3000,
   },
-  css: {
-    devSourcemap: true,
+  resolve: {
+    alias: {
+      "@": path.resolve(
+        import.meta.dirname,
+        "../../packages/lexico-components/src",
+      ),
+    },
+    tsconfigPaths: true,
+  },
+  root: import.meta.dirname,
+  server: {
+    host: "localhost",
+    port: 3000,
   },
 });

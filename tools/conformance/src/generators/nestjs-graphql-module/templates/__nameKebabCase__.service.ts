@@ -6,6 +6,7 @@ import { Injectable } from "@nestjs/common";
 @Injectable()
 export class {{namePascalCase}}Service {
   // 🏗 Dependency Injection
+
   constructor() {}
 
   // 🔐 Private Fields

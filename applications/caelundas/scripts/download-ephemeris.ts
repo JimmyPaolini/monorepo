@@ -16,6 +16,26 @@ const ephemerisFilenames = [
 
 type EphemerisFilename = (typeof ephemerisFilenames)[number];
 
+async function downloadEphemerisFiles(): Promise<void> {
+  await mkdir(EPHEMERIS_DIRECTORY, { recursive: true });
+
+  for (const filename of ephemerisFilenames as readonly EphemerisFilename[]) {
+    const destination = path.join(EPHEMERIS_DIRECTORY, filename);
+
+    if (existsSync(destination) && statSync(destination).size > 0) {
+      console.log(`⏭️ Skipping ${filename} (already exists)`);
+      continue;
+    }
+
+    const url = `${BASE_URL}/${filename}`;
+    console.log(`💾 Downloading ${filename}...`);
+    await downloadFile(url, destination);
+    console.log(`💾 Downloaded ${filename}`);
+  }
+
+  console.log("🧮 All ephemeris files ready.");
+}
+
 async function downloadFile(url: string, destination: string): Promise<void> {
   await new Promise<void>((resolve, reject) => {
     const file = createWriteStream(destination);
@@ -47,26 +67,6 @@ async function downloadFile(url: string, destination: string): Promise<void> {
         reject(err);
       });
   });
-}
-
-async function downloadEphemerisFiles(): Promise<void> {
-  await mkdir(EPHEMERIS_DIRECTORY, { recursive: true });
-
-  for (const filename of ephemerisFilenames as readonly EphemerisFilename[]) {
-    const destination = path.join(EPHEMERIS_DIRECTORY, filename);
-
-    if (existsSync(destination) && statSync(destination).size > 0) {
-      console.log(`⏭️ Skipping ${filename} (already exists)`);
-      continue;
-    }
-
-    const url = `${BASE_URL}/${filename}`;
-    console.log(`💾 Downloading ${filename}...`);
-    await downloadFile(url, destination);
-    console.log(`💾 Downloaded ${filename}`);
-  }
-
-  console.log("🧮 All ephemeris files ready.");
 }
 
 await downloadEphemerisFiles();

@@ -12,12 +12,14 @@ import { WiktionaryService } from "../wiktionary/wiktionary.service";
  * Runs all ingestion steps in order when invoked without a sub-command.
  * Sub-commands: wiktionary, dictionary, words, manual, clear
  */
-@Injectable()
 @Command({
-  name: "lexico-ingestion",
   description: "Ingest Wiktionary Latin dictionary data into PostgreSQL",
+  name: "lexico-ingestion",
 })
+@Injectable()
 export class LexicoIngestionCommand extends CommandRunner {
+  // 🏗 Dependency Injection
+
   constructor(
     private readonly logger: LoggerService,
     private readonly clearService: ClearService,
@@ -28,6 +30,14 @@ export class LexicoIngestionCommand extends CommandRunner {
     super();
     this.logger.setContext(LexicoIngestionCommand.name);
   }
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Runs the full ingestion pipeline in order:

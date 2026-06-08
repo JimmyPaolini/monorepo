@@ -10,6 +10,7 @@ import moment, { type Moment } from "moment-timezone";
 @Injectable()
 export class DatetimeService {
   // 🏗 Dependency Injection
+
   constructor() {}
 
   // 🔐 Private Fields
@@ -19,18 +20,6 @@ export class DatetimeService {
   // 🔏 Private Methods
 
   // 🌎 Public Methods
-
-  /**
-   * Generates minute-by-minute UTC dates from start to end (inclusive).
-   */
-  *generateMinutes(start: Moment, end: Moment): Generator<Moment> {
-    const endMs = end.valueOf();
-    let currentMs = start.valueOf();
-    while (currentMs <= endMs) {
-      yield moment.utc(currentMs);
-      currentMs += 60_000;
-    }
-  }
 
   /**
    * Generates day-by-day timezone-aware dates from start to end (inclusive).
@@ -47,6 +36,18 @@ export class DatetimeService {
     while (!date.isAfter(endDate)) {
       yield date.clone();
       date.add(1, "day");
+    }
+  }
+
+  /**
+   * Generates minute-by-minute UTC dates from start to end (inclusive).
+   */
+  *generateMinutes(start: Moment, end: Moment): Generator<Moment> {
+    const endMs = end.valueOf();
+    let currentMs = start.valueOf();
+    while (currentMs <= endMs) {
+      yield moment.utc(currentMs);
+      currentMs += 60_000;
     }
   }
 }

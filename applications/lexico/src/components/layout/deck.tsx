@@ -1,5 +1,6 @@
-import { cn } from "@monorepo/lexico-components";
 import * as React from "react";
+
+import { cn } from "@monorepo/lexico-components";
 
 /**
  * Props for the Deck component that displays a responsive grid layout.

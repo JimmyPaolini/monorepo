@@ -14,22 +14,13 @@ import type { Word } from "./Word.entity.js";
  * database cascades the delete to its WordForm rows automatically.
  */
 @Entity({
-  name: "word_forms",
-  schema: "public",
   comment:
     "Junction table linking a normalized Latin word string to the morphological forms it can surface as",
+  name: "word_forms",
+  schema: "public",
 })
 @Index(["word", "form"], { unique: true })
 export class WordForm extends AuditableEntity {
-  /** The word string side of the junction. */
-  @Index()
-  @ManyToOne("Word", "wordForms", {
-    nullable: false,
-    onDelete: "CASCADE",
-    onUpdate: "CASCADE",
-  })
-  word!: Word;
-
   /** The morphological form side of the junction. Cascade-deletes with the Form. */
   @Index()
   @ManyToOne("Form", "wordForms", {
@@ -38,4 +29,13 @@ export class WordForm extends AuditableEntity {
     onUpdate: "CASCADE",
   })
   form!: Form;
+
+  /** The word string side of the junction. */
+  @Index()
+  @ManyToOne("Word", "wordForms", {
+    nullable: false,
+    onDelete: "CASCADE",
+    onUpdate: "CASCADE",
+  })
+  word!: Word;
 }

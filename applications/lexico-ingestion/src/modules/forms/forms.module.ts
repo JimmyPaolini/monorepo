@@ -1,6 +1,7 @@
-import { Form } from "@monorepo/lexico-entities";
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
+
+import { Form } from "@monorepo/lexico-entities";
 
 import { WordsModule } from "../words/words.module";
 

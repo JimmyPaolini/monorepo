@@ -1,9 +1,10 @@
-import { Lexeme, Pronunciation } from "@monorepo/lexico-entities";
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import * as cheerio from "cheerio";
 import _ from "lodash";
 import { Repository } from "typeorm";
+
+import { Lexeme, Pronunciation } from "@monorepo/lexico-entities";
 
 import { LoggerService } from "../logger/logger.service";
 
@@ -31,6 +32,7 @@ function getStringPhoneme(
 @Injectable()
 export class PronunciationService {
   // 🏗 Dependency Injection
+
   constructor(
     @InjectRepository(Lexeme)
     private readonly lexemeRepository: Repository<Lexeme>,
@@ -44,6 +46,34 @@ export class PronunciationService {
   // 🔑 Public Fields
 
   // 🔏 Private Methods
+
+  private buildPronunciations(phonemes: (string | string[][])[]): string[] {
+    const pronunciations: string[] = [];
+
+    function build(
+      prev: (string | string[][])[],
+      next: (string | string[][])[],
+    ): void {
+      if (next.length === 0) {
+        pronunciations.push(prev.join(" "));
+        return;
+      }
+      const rest = [...next];
+      const phoneme = rest.shift();
+      if (Array.isArray(phoneme)) {
+        for (const option of phoneme) {
+          if (Array.isArray(option)) {
+            build([...prev, ...option], [...rest]);
+          } else build([...prev, option], [...rest]);
+        }
+      } else if (phoneme !== undefined) {
+        build([...prev, phoneme], [...rest]);
+      }
+    }
+
+    build([], phonemes);
+    return pronunciations;
+  }
 
   private getClassicalPhonemes(wordString: string): string {
     for (const [pattern, replacement] of Object.entries(
@@ -250,34 +280,6 @@ export class PronunciationService {
 
   private getEcclesiasticalPronunciations(word: string): string[] {
     return this.buildPronunciations(this.getEcclesiasticalPhonemes(word));
-  }
-
-  private buildPronunciations(phonemes: (string | string[][])[]): string[] {
-    const pronunciations: string[] = [];
-
-    function build(
-      prev: (string | string[][])[],
-      next: (string | string[][])[],
-    ): void {
-      if (next.length === 0) {
-        pronunciations.push(prev.join(" "));
-        return;
-      }
-      const rest = [...next];
-      const phoneme = rest.shift();
-      if (Array.isArray(phoneme)) {
-        for (const option of phoneme) {
-          if (Array.isArray(option)) {
-            build([...prev, ...option], [...rest]);
-          } else build([...prev, option], [...rest]);
-        }
-      } else if (phoneme !== undefined) {
-        build([...prev, phoneme], [...rest]);
-      }
-    }
-
-    build([], phonemes);
-    return pronunciations;
   }
 
   private parsePhonics(

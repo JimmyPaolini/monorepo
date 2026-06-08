@@ -22,18 +22,18 @@ vi.mock("fs", () => ({
 }));
 
 interface ServicePrivate {
-  isSignIngress: (args: {
-    previousLongitude: number;
-    currentLongitude: number;
-  }) => boolean;
   getDecan: (longitude: number) => number;
   isDecanIngress: (args: {
-    previousLongitude: number;
     currentLongitude: number;
+    previousLongitude: number;
   }) => boolean;
   isPeakIngress: (args: {
-    previousLongitude: number;
     currentLongitude: number;
+    previousLongitude: number;
+  }) => boolean;
+  isSignIngress: (args: {
+    currentLongitude: number;
+    previousLongitude: number;
   }) => boolean;
 }
 describe("IngressesService", () => {
@@ -57,20 +57,20 @@ describe("IngressesService", () => {
     it("should create a sign ingress event for Sun entering Aries", () => {
       const event = service.buildSignIngressEvent({
         body: "sun",
-        longitude: 0, // 0° = Aries
         date: moment.utc("2024-03-20T03:06:00.000Z"),
+        longitude: 0, // 0° = Aries
       });
 
       expect(event).toMatchObject({
-        start: moment.utc("2024-03-20T03:06:00.000Z"),
-        end: moment.utc("2024-03-20T03:06:00.000Z"),
-        summary: expect.stringContaining("Aries") as string,
-        description: expect.stringContaining("Sun") as string,
         categories: expect.arrayContaining<string>([
           "Astronomy",
           "Astrology",
           "Ingress",
         ]) as string[],
+        description: expect.stringContaining("Sun") as string,
+        end: moment.utc("2024-03-20T03:06:00.000Z"),
+        start: moment.utc("2024-03-20T03:06:00.000Z"),
+        summary: expect.stringContaining("Aries") as string,
       });
       expect(event.categories).toContain("Aries");
       expect(event.categories).toContain("Sun");
@@ -79,8 +79,8 @@ describe("IngressesService", () => {
     it("should create a sign ingress event for Moon entering Taurus", () => {
       const event = service.buildSignIngressEvent({
         body: "moon",
-        longitude: 30, // 30° = Taurus
         date: moment.utc("2024-03-15T12:30:00.000Z"),
+        longitude: 30, // 30° = Taurus
       });
 
       expect(event.summary).toContain("Taurus");
@@ -99,18 +99,18 @@ describe("IngressesService", () => {
       const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       for (const body of signIngressBodies) {
         coordinateEphemerisByBody[body] = {
+          [currentMinute.toISOString()]: { latitude: 0, longitude: Number.NaN },
           [previousMinute.toISOString()]: {
-            longitude: Number.NaN,
             latitude: 0,
+            longitude: Number.NaN,
           },
-          [currentMinute.toISOString()]: { longitude: Number.NaN, latitude: 0 },
         };
       }
 
       // Sun crossing from Pisces (359.9°) to Aries (0.1°)
       coordinateEphemerisByBody.sun = {
-        [previousMinute.toISOString()]: { longitude: 359.9, latitude: 0 },
-        [currentMinute.toISOString()]: { longitude: 0.1, latitude: 0 },
+        [currentMinute.toISOString()]: { latitude: 0, longitude: 0.1 },
+        [previousMinute.toISOString()]: { latitude: 0, longitude: 359.9 },
       };
 
       const events = service.getSignIngressEvents({
@@ -131,18 +131,18 @@ describe("IngressesService", () => {
       const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       for (const body of signIngressBodies) {
         coordinateEphemerisByBody[body] = {
+          [currentMinute.toISOString()]: { latitude: 0, longitude: Number.NaN },
           [previousMinute.toISOString()]: {
-            longitude: Number.NaN,
             latitude: 0,
+            longitude: Number.NaN,
           },
-          [currentMinute.toISOString()]: { longitude: Number.NaN, latitude: 0 },
         };
       }
 
       // Moon at 45.5° Taurus (no boundary crossing)
       coordinateEphemerisByBody.moon = {
-        [previousMinute.toISOString()]: { longitude: 45.4, latitude: 0 },
-        [currentMinute.toISOString()]: { longitude: 45.5, latitude: 0 },
+        [currentMinute.toISOString()]: { latitude: 0, longitude: 45.5 },
+        [previousMinute.toISOString()]: { latitude: 0, longitude: 45.4 },
       };
 
       const events = service.getSignIngressEvents({
@@ -158,13 +158,13 @@ describe("IngressesService", () => {
     it("should create a decan ingress event", () => {
       const event = service.buildDecanIngressEvent({
         body: "venus",
-        longitude: 10.5, // Decan 2 of Aries
         date: moment.utc("2024-04-05T10:00:00.000Z"),
+        longitude: 10.5, // Decan 2 of Aries
       });
 
       expect(event).toMatchObject({
-        start: moment.utc("2024-04-05T10:00:00.000Z"),
         end: moment.utc("2024-04-05T10:00:00.000Z"),
+        start: moment.utc("2024-04-05T10:00:00.000Z"),
       });
       expect(event.categories).toContain("Decan");
       expect(event.categories).toContain("Aries");
@@ -181,18 +181,18 @@ describe("IngressesService", () => {
       const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       for (const body of decanIngressBodies) {
         coordinateEphemerisByBody[body] = {
+          [currentMinute.toISOString()]: { latitude: 0, longitude: Number.NaN },
           [previousMinute.toISOString()]: {
-            longitude: Number.NaN,
             latitude: 0,
+            longitude: Number.NaN,
           },
-          [currentMinute.toISOString()]: { longitude: Number.NaN, latitude: 0 },
         };
       }
 
       // Venus crossing decan boundary at 10°
       coordinateEphemerisByBody.venus = {
-        [previousMinute.toISOString()]: { longitude: 9.9, latitude: 0 },
-        [currentMinute.toISOString()]: { longitude: 10.1, latitude: 0 },
+        [currentMinute.toISOString()]: { latitude: 0, longitude: 10.1 },
+        [previousMinute.toISOString()]: { latitude: 0, longitude: 9.9 },
       };
 
       const events = service.getDecanIngressEvents({
@@ -212,18 +212,18 @@ describe("IngressesService", () => {
       const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       for (const body of decanIngressBodies) {
         coordinateEphemerisByBody[body] = {
+          [currentMinute.toISOString()]: { latitude: 0, longitude: Number.NaN },
           [previousMinute.toISOString()]: {
-            longitude: Number.NaN,
             latitude: 0,
+            longitude: Number.NaN,
           },
-          [currentMinute.toISOString()]: { longitude: Number.NaN, latitude: 0 },
         };
       }
 
       // Venus at 15.5° Aries (no decan boundary)
       coordinateEphemerisByBody.venus = {
-        [previousMinute.toISOString()]: { longitude: 15.4, latitude: 0 },
-        [currentMinute.toISOString()]: { longitude: 15.5, latitude: 0 },
+        [currentMinute.toISOString()]: { latitude: 0, longitude: 15.5 },
+        [previousMinute.toISOString()]: { latitude: 0, longitude: 15.4 },
       };
 
       const events = service.getDecanIngressEvents({
@@ -239,13 +239,13 @@ describe("IngressesService", () => {
     it("should create a peak ingress event", () => {
       const event = service.buildPeakIngressEvent({
         body: "mars",
-        longitude: 135, // 15° Leo (120° + 15°)
         date: moment.utc("2024-06-15T16:00:00.000Z"),
+        longitude: 135, // 15° Leo (120° + 15°)
       });
 
       expect(event).toMatchObject({
-        start: moment.utc("2024-06-15T16:00:00.000Z"),
         end: moment.utc("2024-06-15T16:00:00.000Z"),
+        start: moment.utc("2024-06-15T16:00:00.000Z"),
       });
       expect(event.categories).toContain("Peak");
       expect(event.categories).toContain("Leo");
@@ -262,18 +262,18 @@ describe("IngressesService", () => {
       const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       for (const body of peakIngressBodies) {
         coordinateEphemerisByBody[body] = {
+          [currentMinute.toISOString()]: { latitude: 0, longitude: Number.NaN },
           [previousMinute.toISOString()]: {
-            longitude: Number.NaN,
             latitude: 0,
+            longitude: Number.NaN,
           },
-          [currentMinute.toISOString()]: { longitude: Number.NaN, latitude: 0 },
         };
       }
 
       // Mars crossing 15° peak in Leo
       coordinateEphemerisByBody.mars = {
-        [previousMinute.toISOString()]: { longitude: 134.9, latitude: 0 },
-        [currentMinute.toISOString()]: { longitude: 135.1, latitude: 0 },
+        [currentMinute.toISOString()]: { latitude: 0, longitude: 135.1 },
+        [previousMinute.toISOString()]: { latitude: 0, longitude: 134.9 },
       };
 
       const events = service.getPeakIngressEvents({
@@ -293,18 +293,18 @@ describe("IngressesService", () => {
       const coordinateEphemerisByBody = {} as Record<Body, CoordinateEphemeris>;
       for (const body of peakIngressBodies) {
         coordinateEphemerisByBody[body] = {
+          [currentMinute.toISOString()]: { latitude: 0, longitude: Number.NaN },
           [previousMinute.toISOString()]: {
-            longitude: Number.NaN,
             latitude: 0,
+            longitude: Number.NaN,
           },
-          [currentMinute.toISOString()]: { longitude: Number.NaN, latitude: 0 },
         };
       }
 
       // Mars at 140.5° (no peak boundary)
       coordinateEphemerisByBody.mars = {
-        [previousMinute.toISOString()]: { longitude: 140.4, latitude: 0 },
-        [currentMinute.toISOString()]: { longitude: 140.5, latitude: 0 },
+        [currentMinute.toISOString()]: { latitude: 0, longitude: 140.5 },
+        [previousMinute.toISOString()]: { latitude: 0, longitude: 140.4 },
       };
 
       const events = service.getPeakIngressEvents({
@@ -321,13 +321,13 @@ describe("IngressesService", () => {
       const events = [
         service.buildSignIngressEvent({
           body: "sun",
-          longitude: 0,
           date: moment.utc("2024-03-20T03:06:00.000Z"),
+          longitude: 0,
         }),
         service.buildSignIngressEvent({
           body: "sun",
-          longitude: 30,
           date: moment.utc("2024-04-19T15:00:00.000Z"),
+          longitude: 30,
         }),
       ];
 
@@ -359,52 +359,52 @@ describe("IngressesService", () => {
     describe("degreeRangeBySign", () => {
       it("should have correct ranges for all signs", () => {
         expect(IngressesService.degreeRangeBySign.aries).toEqual({
-          min: 0,
           max: 30,
+          min: 0,
         });
         expect(IngressesService.degreeRangeBySign.taurus).toEqual({
-          min: 30,
           max: 60,
+          min: 30,
         });
         expect(IngressesService.degreeRangeBySign.gemini).toEqual({
-          min: 60,
           max: 90,
+          min: 60,
         });
         expect(IngressesService.degreeRangeBySign.cancer).toEqual({
-          min: 90,
           max: 120,
+          min: 90,
         });
         expect(IngressesService.degreeRangeBySign.leo).toEqual({
-          min: 120,
           max: 150,
+          min: 120,
         });
         expect(IngressesService.degreeRangeBySign.virgo).toEqual({
-          min: 150,
           max: 180,
+          min: 150,
         });
         expect(IngressesService.degreeRangeBySign.libra).toEqual({
-          min: 180,
           max: 210,
+          min: 180,
         });
         expect(IngressesService.degreeRangeBySign.scorpio).toEqual({
-          min: 210,
           max: 240,
+          min: 210,
         });
         expect(IngressesService.degreeRangeBySign.sagittarius).toEqual({
-          min: 240,
           max: 270,
+          min: 240,
         });
         expect(IngressesService.degreeRangeBySign.capricorn).toEqual({
-          min: 270,
           max: 300,
+          min: 270,
         });
         expect(IngressesService.degreeRangeBySign.aquarius).toEqual({
-          min: 300,
           max: 330,
+          min: 300,
         });
         expect(IngressesService.degreeRangeBySign.pisces).toEqual({
-          min: 330,
           max: 360,
+          min: 330,
         });
       });
     });
@@ -465,21 +465,21 @@ describe("IngressesService", () => {
     describe("isSignIngress", () => {
       it("should return true when crossing sign boundary", () => {
         expect(
-          s.isSignIngress({ previousLongitude: 29.9, currentLongitude: 30.1 }),
+          s.isSignIngress({ currentLongitude: 30.1, previousLongitude: 29.9 }),
         ).toBe(true);
 
         expect(
-          s.isSignIngress({ previousLongitude: 359.9, currentLongitude: 0.1 }),
+          s.isSignIngress({ currentLongitude: 0.1, previousLongitude: 359.9 }),
         ).toBe(true);
       });
 
       it("should return false when staying in same sign", () => {
         expect(
-          s.isSignIngress({ previousLongitude: 15, currentLongitude: 16 }),
+          s.isSignIngress({ currentLongitude: 16, previousLongitude: 15 }),
         ).toBe(false);
 
         expect(
-          s.isSignIngress({ previousLongitude: 29, currentLongitude: 29.5 }),
+          s.isSignIngress({ currentLongitude: 29.5, previousLongitude: 29 }),
         ).toBe(false);
       });
     });
@@ -510,27 +510,27 @@ describe("IngressesService", () => {
     describe("isDecanIngress", () => {
       it("should return true when crossing decan boundary within same sign", () => {
         expect(
-          s.isDecanIngress({ previousLongitude: 9.9, currentLongitude: 10.1 }),
+          s.isDecanIngress({ currentLongitude: 10.1, previousLongitude: 9.9 }),
         ).toBe(true);
 
         expect(
-          s.isDecanIngress({ previousLongitude: 19.9, currentLongitude: 20.1 }),
+          s.isDecanIngress({ currentLongitude: 20.1, previousLongitude: 19.9 }),
         ).toBe(true);
       });
 
       it("should return true when crossing sign boundary (also decan boundary)", () => {
         expect(
-          s.isDecanIngress({ previousLongitude: 29.9, currentLongitude: 30.1 }),
+          s.isDecanIngress({ currentLongitude: 30.1, previousLongitude: 29.9 }),
         ).toBe(true);
       });
 
       it("should return false when staying in same decan", () => {
         expect(
-          s.isDecanIngress({ previousLongitude: 5, currentLongitude: 6 }),
+          s.isDecanIngress({ currentLongitude: 6, previousLongitude: 5 }),
         ).toBe(false);
 
         expect(
-          s.isDecanIngress({ previousLongitude: 15, currentLongitude: 16 }),
+          s.isDecanIngress({ currentLongitude: 16, previousLongitude: 15 }),
         ).toBe(false);
       });
     });
@@ -538,27 +538,27 @@ describe("IngressesService", () => {
     describe("isPeakIngress", () => {
       it("should return true when crossing 15 degrees within a sign", () => {
         expect(
-          s.isPeakIngress({ previousLongitude: 14.9, currentLongitude: 15.1 }),
+          s.isPeakIngress({ currentLongitude: 15.1, previousLongitude: 14.9 }),
         ).toBe(true);
 
         expect(
-          s.isPeakIngress({ previousLongitude: 44.9, currentLongitude: 45.1 }),
+          s.isPeakIngress({ currentLongitude: 45.1, previousLongitude: 44.9 }),
         ).toBe(true);
       });
 
       it("should return false when not crossing 15 degrees", () => {
         expect(
-          s.isPeakIngress({ previousLongitude: 10, currentLongitude: 11 }),
+          s.isPeakIngress({ currentLongitude: 11, previousLongitude: 10 }),
         ).toBe(false);
 
         expect(
-          s.isPeakIngress({ previousLongitude: 16, currentLongitude: 17 }),
+          s.isPeakIngress({ currentLongitude: 17, previousLongitude: 16 }),
         ).toBe(false);
       });
 
       it("should return false when crossing sign boundary (not peak)", () => {
         expect(
-          s.isPeakIngress({ previousLongitude: 29.9, currentLongitude: 30.1 }),
+          s.isPeakIngress({ currentLongitude: 30.1, previousLongitude: 29.9 }),
         ).toBe(false);
       });
     });

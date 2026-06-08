@@ -15,25 +15,22 @@ import type { Longitude } from "@caelundas/src/modules/ephemeris/ephemeris.types
 @Injectable()
 export class MathService {
   // 🏗 Dependency Injection
+
   constructor() {}
 
   // 🔐 Private Fields
 
   // 🔑 Public Fields
 
-  // 🔏 Private Methods
-
-  // 🌎 Public Methods
+  /**
+   * Number of arcminutes in one degree (60).
+   */
+  static readonly arcminutesPerDegree = 60;
 
   /**
    * Number of arcseconds in one arcminute (60).
    */
   static readonly arcsecondsPerArcminute = 60;
-
-  /**
-   * Number of arcminutes in one degree (60).
-   */
-  static readonly arcminutesPerDegree = 60;
 
   /**
    * Number of arcseconds in one degree (3600).
@@ -43,22 +40,6 @@ export class MathService {
   // 🔏 Private Methods
 
   // 🌎 Public Methods
-
-  /**
-   * Normalizes an angle in degrees to the range [0, 360).
-   *
-   * @param degrees - Angle in degrees (can be any real number)
-   * @returns Normalized angle in the range [0, 360)
-   *
-   * @example
-   * ```typescript
-   * mathService.normalizeDegrees(450);  // Returns 90
-   * mathService.normalizeDegrees(-45);  // Returns 315
-   * ```
-   */
-  normalizeDegrees(degrees: number): number {
-    return ((degrees % 360) + 360) % 360;
-  }
 
   /**
    * Calculates the shortest angular distance between two ecliptic longitudes.
@@ -100,64 +81,6 @@ export class MathService {
   }
 
   /**
-   * Normalizes a longitude value for continuous comparison with a reference longitude.
-   *
-   * Adjusts longitude to eliminate discontinuities when comparing or interpolating
-   * across the 0°/360° boundary. Essential for root-finding algorithms and aspect
-   * detection. Unlike {@link normalizeDegrees}, can return values outside [0, 360).
-   *
-   * @param current - Longitude to normalize
-   * @param reference - Reference longitude for comparison
-   * @returns Adjusted longitude in the range that minimizes distance from reference
-   *
-   * @example
-   * ```typescript
-   * mathService.normalizeForComparison(10, 350);  // Returns 370
-   * mathService.normalizeForComparison(350, 10);  // Returns -10
-   * ```
-   */
-  normalizeForComparison(current: Longitude, reference: Longitude): number {
-    if (Math.abs(current - reference) > 180) {
-      return current < reference ? current + 360 : current - 360;
-    }
-    return current;
-  }
-
-  /**
-   * Determines whether a value is a local maximum in a discrete sequence.
-   *
-   * @param args - Object containing current, previous, and next values for comparison
-   * @returns `true` if current is a local maximum (previous \< current \> next)
-   *
-   * @example
-   * ```typescript
-   * mathService.isMaximum({ current: 100, previous: 99, next: 98 });  // true
-   * mathService.isMaximum({ current: 100, previous: 100, next: 99 }); // false
-   * ```
-   */
-  isMaximum(args: NeighborValues): boolean {
-    const { current, previous, next } = args;
-    return previous < current && current > next;
-  }
-
-  /**
-   * Determines whether a value is a local minimum in a discrete sequence.
-   *
-   * @param args - Object containing current, previous, and next values for comparison
-   * @returns `true` if current is a local minimum (previous \> current \< next)
-   *
-   * @example
-   * ```typescript
-   * mathService.isMinimum({ current: 10, previous: 15, next: 12 });  // true
-   * mathService.isMinimum({ current: 10, previous: 10, next: 12 });  // false
-   * ```
-   */
-  isMinimum(args: NeighborValues): boolean {
-    const { current, previous, next } = args;
-    return previous > current && current < next;
-  }
-
-  /**
    * Generates all combinations of k elements from an array.
    *
    * Uses recursive backtracking algorithm. Time complexity: O(n choose k).
@@ -195,5 +118,79 @@ export class MathService {
 
     combine(0, []);
     return result;
+  }
+
+  /**
+   * Determines whether a value is a local maximum in a discrete sequence.
+   *
+   * @param args - Object containing current, previous, and next values for comparison
+   * @returns `true` if current is a local maximum (previous \< current \> next)
+   *
+   * @example
+   * ```typescript
+   * mathService.isMaximum({ current: 100, previous: 99, next: 98 });  // true
+   * mathService.isMaximum({ current: 100, previous: 100, next: 99 }); // false
+   * ```
+   */
+  isMaximum(args: NeighborValues): boolean {
+    const { current, next, previous } = args;
+    return previous < current && current > next;
+  }
+
+  /**
+   * Determines whether a value is a local minimum in a discrete sequence.
+   *
+   * @param args - Object containing current, previous, and next values for comparison
+   * @returns `true` if current is a local minimum (previous \> current \< next)
+   *
+   * @example
+   * ```typescript
+   * mathService.isMinimum({ current: 10, previous: 15, next: 12 });  // true
+   * mathService.isMinimum({ current: 10, previous: 10, next: 12 });  // false
+   * ```
+   */
+  isMinimum(args: NeighborValues): boolean {
+    const { current, next, previous } = args;
+    return previous > current && current < next;
+  }
+
+  /**
+   * Normalizes an angle in degrees to the range [0, 360).
+   *
+   * @param degrees - Angle in degrees (can be any real number)
+   * @returns Normalized angle in the range [0, 360)
+   *
+   * @example
+   * ```typescript
+   * mathService.normalizeDegrees(450);  // Returns 90
+   * mathService.normalizeDegrees(-45);  // Returns 315
+   * ```
+   */
+  normalizeDegrees(degrees: number): number {
+    return ((degrees % 360) + 360) % 360;
+  }
+
+  /**
+   * Normalizes a longitude value for continuous comparison with a reference longitude.
+   *
+   * Adjusts longitude to eliminate discontinuities when comparing or interpolating
+   * across the 0°/360° boundary. Essential for root-finding algorithms and aspect
+   * detection. Unlike {@link normalizeDegrees}, can return values outside [0, 360).
+   *
+   * @param current - Longitude to normalize
+   * @param reference - Reference longitude for comparison
+   * @returns Adjusted longitude in the range that minimizes distance from reference
+   *
+   * @example
+   * ```typescript
+   * mathService.normalizeForComparison(10, 350);  // Returns 370
+   * mathService.normalizeForComparison(350, 10);  // Returns -10
+   * ```
+   */
+  normalizeForComparison(current: Longitude, reference: Longitude): number {
+    if (Math.abs(current - reference) > 180) {
+      return current < reference ? current + 360 : current - 360;
+    }
+    return current;
   }
 }

@@ -42,16 +42,16 @@ export async function generateNestjsCommandApplication(
   }
 
   const substitutions = {
-    nameKebabCase,
     nameCamelCase: _.camelCase(nameKebabCase),
+    nameKebabCase,
     namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
   };
 
   generateFiles({
-    tree,
-    templateDirectoryPath: TEMPLATES_DIRECTORY_PATH,
     instanceDirectoryPath: projectRoot,
     substitutions,
+    templateDirectoryPath: TEMPLATES_DIRECTORY_PATH,
+    tree,
   });
 
   await formatFiles(tree);

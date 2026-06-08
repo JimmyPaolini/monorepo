@@ -16,6 +16,33 @@ import {
 } from "typescript";
 
 /**
+ * Returns all nodes from `nodes` whose identity key matches `templateNode`,
+ * which must be keyed. The length of the result signals path ambiguity:
+ * zero or one
+ */
+export function filterBySameKey(
+  instanceNodes: Node[],
+  templateNode: Node,
+): Node[] {
+  const templateNodeKey = getKey(templateNode);
+  return instanceNodes.filter(
+    (instanceNode) => getKey(instanceNode) === templateNodeKey,
+  );
+}
+
+/**
+ * Returns all nodes from `nodes` whose `SyntaxKind` matches `templateNode`.
+ */
+export function filterBySameKind(
+  instanceNodes: Node[],
+  templateNode: Node,
+): Node[] {
+  return instanceNodes.filter(
+    (instanceNode) => instanceNode.kind === templateNode.kind,
+  );
+}
+
+/**
  * Returns the immediate children of a TypeScript AST node as a flat array.
  *
  * Uses `forEachChild` rather than `node.getChildren()` to exclude syntax-list
@@ -43,53 +70,12 @@ export function getChildren(node: Node): Node[] {
 }
 
 /**
- * Returns a stable string key that uniquely identifies a node within a set of
- * siblings of the same `SyntaxKind`, or `null` when no such key is available.
- *
- * A node is **keyed** when this function returns a non-`null` string — that
- * string is the node's *identity key*. A node is **keyless** when `null` is
- * returned; it must instead be matched by its kind and structural content.
- *
- * Keyed nodes — representative TypeScript syntax and the identity key returned:
- * ```typescript
- * import { Injectable } from '@nestjs/common' // ImportDeclaration → "@nestjs/common"
- * @Injectable()                                // Decorator         → "Injectable"
- * class DatetimeService { ... }               // ClassDeclaration  → "DatetimeService"
- * getDatetime(): Date { ... }                 // MethodDeclaration → "getDatetime"
- * ```
- *
- * Keyless nodes — no name or specifier to serve as a stable identity:
- * ```typescript
- * { return this.datetime; }        // Block (method body) — anonymous container
- * constructor(private svc: S) {}   // Constructor         — no .name property
- * Date                             // TypeReference       — uses .typeName, not .name
- * () => value                      // ArrowFunction       — anonymous expression
- * ```
- *
- * Key sources by node type:
- * - `ImportDeclaration` → the module specifier string (e.g. `"@nestjs/common"`)
- * - `ExportDeclaration` → the module specifier string when present (e.g. `"./foo"`)
- * - `Decorator` → the decorator name or qualified name (e.g. `"Injectable"`, `"Reflect.metadata"`)
- * - `Identifier` → the identifier text
- * - `StringLiteral` / `NumericLiteral` / `BigIntLiteral` / `NoSubstitutionTemplateLiteral` → the literal value text
- * - Named declarations (class, function, method, etc.) → the `.name` text, supporting
- *   `Identifier`, `PrivateIdentifier`, `StringLiteral`, and `NumericLiteral` name nodes
- *
- * Nodes that return `null` — anonymous expressions, blocks, type nodes, and
- * other structural containers — must be matched by position or by recursive
- * subtree comparison instead.
- */
-function isNamedNode(node: Node): node is Node & { name?: Node } {
-  return "name" in node;
-}
-
-/**
  * Extracts a canonical string key from a TypeScript AST node — the module
  * specifier for imports/exports, the dotted decorator name, the literal text
  * for literals, or the name identifier for named declarations. Returns `null`
  * when no key can be derived.
  */
-export function getKey(node: Node): string | null {
+export function getKey(node: Node): null | string {
   if (isImportDeclaration(node)) {
     const { moduleSpecifier } = node;
     return isStringLiteral(moduleSpecifier) ? moduleSpecifier.text : null;
@@ -148,28 +134,42 @@ export function getKey(node: Node): string | null {
 }
 
 /**
- * Returns all nodes from `nodes` whose identity key matches `templateNode`,
- * which must be keyed. The length of the result signals path ambiguity:
- * zero or one
+ * Returns a stable string key that uniquely identifies a node within a set of
+ * siblings of the same `SyntaxKind`, or `null` when no such key is available.
+ *
+ * A node is **keyed** when this function returns a non-`null` string — that
+ * string is the node's *identity key*. A node is **keyless** when `null` is
+ * returned; it must instead be matched by its kind and structural content.
+ *
+ * Keyed nodes — representative TypeScript syntax and the identity key returned:
+ * ```typescript
+ * import { Injectable } from '@nestjs/common' // ImportDeclaration → "@nestjs/common"
+ * @Injectable()                                // Decorator         → "Injectable"
+ * class DatetimeService { ... }               // ClassDeclaration  → "DatetimeService"
+ * getDatetime(): Date { ... }                 // MethodDeclaration → "getDatetime"
+ * ```
+ *
+ * Keyless nodes — no name or specifier to serve as a stable identity:
+ * ```typescript
+ * { return this.datetime; }        // Block (method body) — anonymous container
+ * constructor(private svc: S) {}   // Constructor         — no .name property
+ * Date                             // TypeReference       — uses .typeName, not .name
+ * () => value                      // ArrowFunction       — anonymous expression
+ * ```
+ *
+ * Key sources by node type:
+ * - `ImportDeclaration` → the module specifier string (e.g. `"@nestjs/common"`)
+ * - `ExportDeclaration` → the module specifier string when present (e.g. `"./foo"`)
+ * - `Decorator` → the decorator name or qualified name (e.g. `"Injectable"`, `"Reflect.metadata"`)
+ * - `Identifier` → the identifier text
+ * - `StringLiteral` / `NumericLiteral` / `BigIntLiteral` / `NoSubstitutionTemplateLiteral` → the literal value text
+ * - Named declarations (class, function, method, etc.) → the `.name` text, supporting
+ *   `Identifier`, `PrivateIdentifier`, `StringLiteral`, and `NumericLiteral` name nodes
+ *
+ * Nodes that return `null` — anonymous expressions, blocks, type nodes, and
+ * other structural containers — must be matched by position or by recursive
+ * subtree comparison instead.
  */
-export function filterBySameKey(
-  instanceNodes: Node[],
-  templateNode: Node,
-): Node[] {
-  const templateNodeKey = getKey(templateNode);
-  return instanceNodes.filter(
-    (instanceNode) => getKey(instanceNode) === templateNodeKey,
-  );
-}
-
-/**
- * Returns all nodes from `nodes` whose `SyntaxKind` matches `templateNode`.
- */
-export function filterBySameKind(
-  instanceNodes: Node[],
-  templateNode: Node,
-): Node[] {
-  return instanceNodes.filter(
-    (instanceNode) => instanceNode.kind === templateNode.kind,
-  );
+function isNamedNode(node: Node): node is Node & { name?: Node } {
+  return "name" in node;
 }

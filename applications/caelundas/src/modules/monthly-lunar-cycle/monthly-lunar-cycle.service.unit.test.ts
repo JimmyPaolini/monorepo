@@ -22,21 +22,21 @@ vi.mock("fs", () => ({
 }));
 
 interface ServicePrivate {
-  isNewMoon: (args: {
-    currentIllumination: number;
-    previousIlluminations: number[];
-    nextIlluminations: number[];
-  }) => boolean;
   isFullMoon: (args: {
     currentIllumination: number;
-    previousIlluminations: number[];
     nextIlluminations: number[];
+    previousIlluminations: number[];
   }) => boolean;
   isLunarPhase: (args: {
     currentIllumination: number;
-    previousIlluminations: number[];
-    nextIlluminations: number[];
     lunarPhase: LunarPhase;
+    nextIlluminations: number[];
+    previousIlluminations: number[];
+  }) => boolean;
+  isNewMoon: (args: {
+    currentIllumination: number;
+    nextIlluminations: number[];
+    previousIlluminations: number[];
   }) => boolean;
 }
 
@@ -228,10 +228,6 @@ describe("MonthlyLunarCycleService", () => {
   describe("service.detectProgressive", () => {
     it("should create progressive events between consecutive lunar phases", () => {
       const newMoon: Event = {
-        start: moment.utc("2024-03-10T09:00:00.000Z"),
-        end: moment.utc("2024-03-10T09:00:00.000Z"),
-        summary: "🌙 🌑 New Moon",
-        description: "New Moon",
         categories: [
           "Astronomy",
           "Astrology",
@@ -239,12 +235,12 @@ describe("MonthlyLunarCycleService", () => {
           "Lunar",
           "New",
         ],
+        description: "New Moon",
+        end: moment.utc("2024-03-10T09:00:00.000Z"),
+        start: moment.utc("2024-03-10T09:00:00.000Z"),
+        summary: "🌙 🌑 New Moon",
       };
       const waxingCrescent: Event = {
-        start: moment.utc("2024-03-13T12:00:00.000Z"),
-        end: moment.utc("2024-03-13T12:00:00.000Z"),
-        summary: "🌙 🌒 Waxing Crescent Moon",
-        description: "Waxing Crescent Moon",
         categories: [
           "Astronomy",
           "Astrology",
@@ -252,12 +248,12 @@ describe("MonthlyLunarCycleService", () => {
           "Lunar",
           "Waxing Crescent",
         ],
+        description: "Waxing Crescent Moon",
+        end: moment.utc("2024-03-13T12:00:00.000Z"),
+        start: moment.utc("2024-03-13T12:00:00.000Z"),
+        summary: "🌙 🌒 Waxing Crescent Moon",
       };
       const firstQuarter: Event = {
-        start: moment.utc("2024-03-17T04:11:00.000Z"),
-        end: moment.utc("2024-03-17T04:11:00.000Z"),
-        summary: "🌙 🌓 First Quarter Moon",
-        description: "First Quarter Moon",
         categories: [
           "Astronomy",
           "Astrology",
@@ -265,6 +261,10 @@ describe("MonthlyLunarCycleService", () => {
           "Lunar",
           "First Quarter",
         ],
+        description: "First Quarter Moon",
+        end: moment.utc("2024-03-17T04:11:00.000Z"),
+        start: moment.utc("2024-03-17T04:11:00.000Z"),
+        summary: "🌙 🌓 First Quarter Moon",
       };
 
       const progressiveEvents = service.detectProgressive([
@@ -298,11 +298,11 @@ describe("MonthlyLunarCycleService", () => {
 
     it("should filter out non-lunar cycle events", () => {
       const nonLunarEvent: Event = {
-        start: moment.utc("2024-03-10T09:00:00.000Z"),
-        end: moment.utc("2024-03-10T09:00:00.000Z"),
-        summary: "Some other event",
-        description: "Not a lunar event",
         categories: ["Astronomy", "Something Else"],
+        description: "Not a lunar event",
+        end: moment.utc("2024-03-10T09:00:00.000Z"),
+        start: moment.utc("2024-03-10T09:00:00.000Z"),
+        summary: "Some other event",
       };
 
       const progressiveEvents = service.detectProgressive([nonLunarEvent]);
@@ -311,18 +311,18 @@ describe("MonthlyLunarCycleService", () => {
     });
 
     it("should handle full lunar cycle", () => {
-      const phases: { phase: LunarPhase; date: string }[] = [
-        { phase: "new", date: "2024-03-10T09:00:00.000Z" },
-        { phase: "waxing crescent", date: "2024-03-13T12:00:00.000Z" },
-        { phase: "first quarter", date: "2024-03-17T04:11:00.000Z" },
-        { phase: "waxing gibbous", date: "2024-03-21T12:00:00.000Z" },
-        { phase: "full", date: "2024-03-25T07:00:00.000Z" },
-        { phase: "waning gibbous", date: "2024-03-28T12:00:00.000Z" },
-        { phase: "last quarter", date: "2024-04-02T03:15:00.000Z" },
-        { phase: "waning crescent", date: "2024-04-05T12:00:00.000Z" },
+      const phases: { date: string; phase: LunarPhase }[] = [
+        { date: "2024-03-10T09:00:00.000Z", phase: "new" },
+        { date: "2024-03-13T12:00:00.000Z", phase: "waxing crescent" },
+        { date: "2024-03-17T04:11:00.000Z", phase: "first quarter" },
+        { date: "2024-03-21T12:00:00.000Z", phase: "waxing gibbous" },
+        { date: "2024-03-25T07:00:00.000Z", phase: "full" },
+        { date: "2024-03-28T12:00:00.000Z", phase: "waning gibbous" },
+        { date: "2024-04-02T03:15:00.000Z", phase: "last quarter" },
+        { date: "2024-04-05T12:00:00.000Z", phase: "waning crescent" },
       ];
 
-      const events = phases.map(({ phase, date }) =>
+      const events = phases.map(({ date, phase }) =>
         service.buildMonthlyLunarCycleEvent({
           date: moment.utc(date),
           lunarPhase: phase,
@@ -337,17 +337,13 @@ describe("MonthlyLunarCycleService", () => {
 
     it("should warn and skip events with invalid categories", () => {
       const invalidEvent: Event = {
-        start: moment.utc("2024-03-10T09:00:00.000Z"),
-        end: moment.utc("2024-03-10T09:00:00.000Z"),
-        summary: "Invalid event",
-        description: "Invalid",
         categories: ["Monthly Lunar Cycle"], // Missing lunar phase category
+        description: "Invalid",
+        end: moment.utc("2024-03-10T09:00:00.000Z"),
+        start: moment.utc("2024-03-10T09:00:00.000Z"),
+        summary: "Invalid event",
       };
       const validEvent: Event = {
-        start: moment.utc("2024-03-13T12:00:00.000Z"),
-        end: moment.utc("2024-03-13T12:00:00.000Z"),
-        summary: "🌙 🌒 Waxing Crescent Moon",
-        description: "Waxing Crescent Moon",
         categories: [
           "Astronomy",
           "Astrology",
@@ -355,6 +351,10 @@ describe("MonthlyLunarCycleService", () => {
           "Lunar",
           "Waxing Crescent",
         ],
+        description: "Waxing Crescent Moon",
+        end: moment.utc("2024-03-13T12:00:00.000Z"),
+        start: moment.utc("2024-03-13T12:00:00.000Z"),
+        summary: "🌙 🌒 Waxing Crescent Moon",
       };
 
       const warnSpy = vi
@@ -410,8 +410,8 @@ describe("MonthlyLunarCycleService", () => {
       it("should return true at new moon (minimum illumination)", () => {
         const result = s.isNewMoon({
           currentIllumination: 1,
-          previousIlluminations: [5, 3],
           nextIlluminations: [3, 5],
+          previousIlluminations: [5, 3],
         });
 
         expect(result).toBe(true);
@@ -420,8 +420,8 @@ describe("MonthlyLunarCycleService", () => {
       it("should return false when illumination is not minimum", () => {
         const result = s.isNewMoon({
           currentIllumination: 10,
-          previousIlluminations: [5, 8],
           nextIlluminations: [12, 15],
+          previousIlluminations: [5, 8],
         });
 
         expect(result).toBe(false);
@@ -430,8 +430,8 @@ describe("MonthlyLunarCycleService", () => {
       it("should return false when illumination is above 50", () => {
         const result = s.isNewMoon({
           currentIllumination: 55,
-          previousIlluminations: [60, 58],
           nextIlluminations: [58, 60],
+          previousIlluminations: [60, 58],
         });
 
         expect(result).toBe(false);
@@ -440,8 +440,8 @@ describe("MonthlyLunarCycleService", () => {
       it("should handle edge case where current equals next minimum", () => {
         const result = s.isNewMoon({
           currentIllumination: 2,
-          previousIlluminations: [5, 3],
           nextIlluminations: [2, 5],
+          previousIlluminations: [5, 3],
         });
 
         expect(result).toBe(true);
@@ -452,8 +452,8 @@ describe("MonthlyLunarCycleService", () => {
       it("should return true at full moon (maximum illumination)", () => {
         const result = s.isFullMoon({
           currentIllumination: 99,
-          previousIlluminations: [95, 97],
           nextIlluminations: [97, 95],
+          previousIlluminations: [95, 97],
         });
 
         expect(result).toBe(true);
@@ -462,8 +462,8 @@ describe("MonthlyLunarCycleService", () => {
       it("should return false when illumination is not maximum", () => {
         const result = s.isFullMoon({
           currentIllumination: 80,
-          previousIlluminations: [75, 78],
           nextIlluminations: [85, 90],
+          previousIlluminations: [75, 78],
         });
 
         expect(result).toBe(false);
@@ -472,8 +472,8 @@ describe("MonthlyLunarCycleService", () => {
       it("should return false when illumination is below 50", () => {
         const result = s.isFullMoon({
           currentIllumination: 45,
-          previousIlluminations: [40, 42],
           nextIlluminations: [42, 40],
+          previousIlluminations: [40, 42],
         });
 
         expect(result).toBe(false);
@@ -482,8 +482,8 @@ describe("MonthlyLunarCycleService", () => {
       it("should handle edge case where current equals next maximum", () => {
         const result = s.isFullMoon({
           currentIllumination: 98,
-          previousIlluminations: [95, 97],
           nextIlluminations: [98, 95],
+          previousIlluminations: [95, 97],
         });
 
         expect(result).toBe(true);
@@ -495,9 +495,9 @@ describe("MonthlyLunarCycleService", () => {
         it("should delegate to isNewMoon", () => {
           const result = s.isLunarPhase({
             currentIllumination: 1,
-            previousIlluminations: [5, 3],
-            nextIlluminations: [3, 5],
             lunarPhase: "new",
+            nextIlluminations: [3, 5],
+            previousIlluminations: [5, 3],
           });
 
           expect(result).toBe(true);
@@ -508,9 +508,9 @@ describe("MonthlyLunarCycleService", () => {
         it("should delegate to isFullMoon", () => {
           const result = s.isLunarPhase({
             currentIllumination: 99,
-            previousIlluminations: [95, 97],
-            nextIlluminations: [97, 95],
             lunarPhase: "full",
+            nextIlluminations: [97, 95],
+            previousIlluminations: [95, 97],
           });
 
           expect(result).toBe(true);
@@ -521,9 +521,9 @@ describe("MonthlyLunarCycleService", () => {
         it("should return true when crossing 25% threshold while waxing", () => {
           const result = s.isLunarPhase({
             currentIllumination: 26,
-            previousIlluminations: [24],
-            nextIlluminations: [28],
             lunarPhase: "waxing crescent",
+            nextIlluminations: [28],
+            previousIlluminations: [24],
           });
 
           expect(result).toBe(true);
@@ -532,9 +532,9 @@ describe("MonthlyLunarCycleService", () => {
         it("should return false when waning", () => {
           const result = s.isLunarPhase({
             currentIllumination: 24,
-            previousIlluminations: [26],
-            nextIlluminations: [22],
             lunarPhase: "waxing crescent",
+            nextIlluminations: [22],
+            previousIlluminations: [26],
           });
 
           expect(result).toBe(false);
@@ -545,9 +545,9 @@ describe("MonthlyLunarCycleService", () => {
         it("should return true when crossing 50% threshold while waxing", () => {
           const result = s.isLunarPhase({
             currentIllumination: 51,
-            previousIlluminations: [49],
-            nextIlluminations: [53],
             lunarPhase: "first quarter",
+            nextIlluminations: [53],
+            previousIlluminations: [49],
           });
 
           expect(result).toBe(true);
@@ -556,9 +556,9 @@ describe("MonthlyLunarCycleService", () => {
         it("should return false when not crossing threshold", () => {
           const result = s.isLunarPhase({
             currentIllumination: 55,
-            previousIlluminations: [52],
-            nextIlluminations: [58],
             lunarPhase: "first quarter",
+            nextIlluminations: [58],
+            previousIlluminations: [52],
           });
 
           expect(result).toBe(false);
@@ -569,9 +569,9 @@ describe("MonthlyLunarCycleService", () => {
         it("should return true when crossing 75% threshold while waxing", () => {
           const result = s.isLunarPhase({
             currentIllumination: 76,
-            previousIlluminations: [74],
-            nextIlluminations: [78],
             lunarPhase: "waxing gibbous",
+            nextIlluminations: [78],
+            previousIlluminations: [74],
           });
 
           expect(result).toBe(true);
@@ -582,9 +582,9 @@ describe("MonthlyLunarCycleService", () => {
         it("should return true when crossing 75% threshold while waning", () => {
           const result = s.isLunarPhase({
             currentIllumination: 74,
-            previousIlluminations: [76],
-            nextIlluminations: [72],
             lunarPhase: "waning gibbous",
+            nextIlluminations: [72],
+            previousIlluminations: [76],
           });
 
           expect(result).toBe(true);
@@ -593,9 +593,9 @@ describe("MonthlyLunarCycleService", () => {
         it("should return false when waxing", () => {
           const result = s.isLunarPhase({
             currentIllumination: 76,
-            previousIlluminations: [74],
-            nextIlluminations: [78],
             lunarPhase: "waning gibbous",
+            nextIlluminations: [78],
+            previousIlluminations: [74],
           });
 
           expect(result).toBe(false);
@@ -606,9 +606,9 @@ describe("MonthlyLunarCycleService", () => {
         it("should return true when crossing 50% threshold while waning", () => {
           const result = s.isLunarPhase({
             currentIllumination: 49,
-            previousIlluminations: [51],
-            nextIlluminations: [47],
             lunarPhase: "last quarter",
+            nextIlluminations: [47],
+            previousIlluminations: [51],
           });
 
           expect(result).toBe(true);
@@ -619,9 +619,9 @@ describe("MonthlyLunarCycleService", () => {
         it("should return true when crossing 25% threshold while waning", () => {
           const result = s.isLunarPhase({
             currentIllumination: 24,
-            previousIlluminations: [26],
-            nextIlluminations: [22],
             lunarPhase: "waning crescent",
+            nextIlluminations: [22],
+            previousIlluminations: [26],
           });
 
           expect(result).toBe(true);

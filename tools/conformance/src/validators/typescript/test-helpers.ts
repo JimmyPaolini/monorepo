@@ -8,7 +8,7 @@ import type { ConformanceError } from "./types";
  */
 export function expectErrorWithMessage(
   errors: ConformanceError[],
-  message: string | RegExp,
+  message: RegExp | string,
 ): void {
   const hasMatchingError = errors.some((error) => {
     if (typeof message === "string") {

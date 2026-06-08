@@ -173,10 +173,10 @@ describe("generateNestjsGraphqlModule", () => {
         namePascalCase: "Post",
       };
       const result = validateConformance({
-        instance: resolverContent,
-        template: templateContent,
         data: vars,
         filename: "post.resolver.ts",
+        instance: resolverContent,
+        template: templateContent,
       });
       expect(result.errors).toEqual([]);
     });

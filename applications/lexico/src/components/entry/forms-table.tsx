@@ -1,5 +1,6 @@
-import { cn } from "@monorepo/lexico-components";
 import * as React from "react";
+
+import { cn } from "@monorepo/lexico-components";
 
 import { FormCell } from "./form-cell";
 
@@ -9,16 +10,16 @@ import type { FormCellPosition, FormCellProps } from "./form-cell";
  * Props for the FormsTable component that displays a grid of form cells.
  */
 export interface FormsTableProps {
+  /** Additional class names */
+  className?: string | undefined;
   /** Array of form cell data */
   forms: Omit<FormCellProps, "position" | "search">[];
   /** Search term for highlighting */
   search?: string | undefined;
-  /** Additional class names */
-  className?: string | undefined;
 }
 
 const FormsTable = React.forwardRef<HTMLDivElement, FormsTableProps>(
-  ({ forms, search, className }, ref) => {
+  ({ className, forms, search }, ref) => {
     return (
       <div
         ref={ref}
@@ -30,7 +31,7 @@ const FormsTable = React.forwardRef<HTMLDivElement, FormsTableProps>(
           const isBottom = index >= forms.length - 2;
           const isLeft = index % 2 === 0;
 
-          let horizontal: "top" | "mid" | "bottom";
+          let horizontal: "bottom" | "mid" | "top";
           if (isTop) horizontal = "top";
           else if (isBottom) horizontal = "bottom";
           else horizontal = "mid";

@@ -11,15 +11,15 @@ export default [
       "@nx/dependency-checks": [
         "error",
         {
-          ignoredFiles: [
-            "{projectRoot}/eslint.config.{js,cjs,mjs,ts,cts,mts}",
-            "{projectRoot}/src/generators/**/templates/**",
-          ],
           ignoredDependencies: [
             "@nestjs/common",
             "@types/mustache",
             "lodash",
             "react",
+          ],
+          ignoredFiles: [
+            "{projectRoot}/eslint.config.{js,cjs,mjs,ts,cts,mts}",
+            "{projectRoot}/src/generators/**/templates/**",
           ],
         },
       ],

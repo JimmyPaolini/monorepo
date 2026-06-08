@@ -78,7 +78,7 @@ function createAspectEphemeris(
   overrides: Partial<
     Record<
       (typeof majorAspectBodies)[number],
-      { previous: number; current: number; next: number }
+      { current: number; next: number; previous: number }
     >
   > = {},
 ): Record<Body, CoordinateEphemeris> {
@@ -94,9 +94,9 @@ function createAspectEphemeris(
     const next = override?.next ?? 100;
 
     ephemerisByBody[body] = {
-      [previousMinute.toISOString()]: { longitude: prev, latitude: 0 },
-      [minute.toISOString()]: { longitude: curr, latitude: 0 },
-      [nextMinute.toISOString()]: { longitude: next, latitude: 0 },
+      [minute.toISOString()]: { latitude: 0, longitude: curr },
+      [nextMinute.toISOString()]: { latitude: 0, longitude: next },
+      [previousMinute.toISOString()]: { latitude: 0, longitude: prev },
     };
   }
 
@@ -113,9 +113,9 @@ describe("major-aspects.events integration", () => {
     // nextDiff = getAngle(0,119) - 120 = -1 → isCrossing (sign change) → "perfective".
     // Verifies the service scans all combinatorial pairs, not just Sun-centric ones.
     const coordinateEphemerisByBody = createAspectEphemeris(minute, {
-      sun: { previous: 200, current: 200, next: 200 },
-      mercury: { previous: 0, current: 0, next: 0 },
-      venus: { previous: 121, current: 120, next: 119 },
+      mercury: { current: 0, next: 0, previous: 0 },
+      sun: { current: 200, next: 200, previous: 200 },
+      venus: { current: 120, next: 119, previous: 121 },
     });
 
     const events = service.detect({ coordinateEphemerisByBody, minute });
@@ -139,9 +139,9 @@ describe("major-aspects.events integration", () => {
     //   curr: getAngle(0,94)=94°, |94-90|=4≤6 (in orb), next: getAngle(0,97)=97°, |97-90|=7>6 (exits)
     // Verifies that detect() accumulates events from independent aspect pairs.
     const coordinateEphemerisByBody = createAspectEphemeris(minute, {
-      sun: { previous: 0, current: 0, next: 0 },
-      moon: { previous: 350, current: 352, next: 354 },
-      mercury: { previous: 93, current: 94, next: 97 },
+      mercury: { current: 94, next: 97, previous: 93 },
+      moon: { current: 352, next: 354, previous: 350 },
+      sun: { current: 0, next: 0, previous: 0 },
     });
 
     const events = service.detect({ coordinateEphemerisByBody, minute });

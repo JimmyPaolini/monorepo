@@ -20,24 +20,17 @@ import type {
  */
 @Injectable()
 export class AspectsUtilities {
+  // 🏗 Dependency Injection
+
   constructor(private readonly mathService: MathService) {}
 
-  /**
-   * Returns `true` when the angular separation between two bodies falls within
-   * the configured orb for the given aspect.
-   *
-   * @param args - `longitudeBody1`, `longitudeBody2` (ecliptic degrees), and `aspect` type to test
-   */
-  isAspect(args: {
-    longitudeBody1: number;
-    longitudeBody2: number;
-    aspect: Aspect;
-  }): boolean {
-    const { aspect, longitudeBody1, longitudeBody2 } = args;
-    const angle = this.mathService.getAngle(longitudeBody1, longitudeBody2);
-    const difference = Math.abs(angle - angleByAspect[aspect]);
-    return difference <= orbByAspect[aspect];
-  }
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Returns a phase-detection function bound to a specific set of aspects.
@@ -127,5 +120,22 @@ export class AspectsUtilities {
 
       return null;
     };
+  }
+
+  /**
+   * Returns `true` when the angular separation between two bodies falls within
+   * the configured orb for the given aspect.
+   *
+   * @param args - `longitudeBody1`, `longitudeBody2` (ecliptic degrees), and `aspect` type to test
+   */
+  isAspect(args: {
+    aspect: Aspect;
+    longitudeBody1: number;
+    longitudeBody2: number;
+  }): boolean {
+    const { aspect, longitudeBody1, longitudeBody2 } = args;
+    const angle = this.mathService.getAngle(longitudeBody1, longitudeBody2);
+    const difference = Math.abs(angle - angleByAspect[aspect]);
+    return difference <= orbByAspect[aspect];
   }
 }

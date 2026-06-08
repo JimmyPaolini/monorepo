@@ -1,7 +1,8 @@
-import { Lexeme } from "@monorepo/lexico-entities";
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
 import { beforeAll, describe, expect, it } from "vitest";
+
+import { Lexeme } from "@monorepo/lexico-entities";
 
 import { LoggerService } from "../logger/logger.service";
 
@@ -17,7 +18,7 @@ describe("PrincipalPartsService", () => {
         { provide: getRepositoryToken(Lexeme), useValue: {} },
         {
           provide: LoggerService,
-          useValue: { setContext: () => {}, log: () => {} },
+          useValue: { log: () => {}, setContext: () => {} },
         },
       ],
     }).compile();

@@ -24,10 +24,10 @@ vi.mock("fs", () => ({
 }));
 
 const baseInput: Input = {
+  end: moment.tz("2025-06-16", "America/New_York"),
   latitude: 39.9526,
   longitude: -75.1652,
   start: moment.tz("2025-06-15", "America/New_York"),
-  end: moment.tz("2025-06-16", "America/New_York"),
   timezone: "America/New_York",
 };
 
@@ -130,8 +130,8 @@ describe("PerfectiveService", () => {
       datetimeMock.generateMinutes.mockReturnValue([minute1, minute2]);
 
       aspectsMock.detect
-        .mockReturnValueOnce({ events: [fakeEvent1], aspectBodies: [] })
-        .mockReturnValueOnce({ events: [fakeEvent2], aspectBodies: [] });
+        .mockReturnValueOnce({ aspectBodies: [], events: [fakeEvent1] })
+        .mockReturnValueOnce({ aspectBodies: [], events: [fakeEvent2] });
 
       for (const subMock of [
         eclipsesMock,

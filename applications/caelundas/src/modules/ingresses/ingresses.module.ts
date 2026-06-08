@@ -10,8 +10,8 @@ import { IngressesService } from "./ingresses.service";
  */
 @Module({
   controllers: [],
+  exports: [IngressesService],
   imports: [EphemerisModule],
   providers: [IngressesService],
-  exports: [IngressesService],
 })
 export class IngressesModule {}

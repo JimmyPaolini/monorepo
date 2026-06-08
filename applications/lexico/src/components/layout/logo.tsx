@@ -1,18 +1,19 @@
-import { cn } from "@monorepo/lexico-components";
 import * as React from "react";
+
+import { cn } from "@monorepo/lexico-components";
 
 /**
  * Props for the Logo component that displays the Lexico logo.
  */
 export interface LogoProps {
-  /** Width of the logo in pixels */
-  width?: number | undefined;
   /** Additional class names */
   className?: string | undefined;
+  /** Width of the logo in pixels */
+  width?: number | undefined;
 }
 
 const Logo = React.forwardRef<HTMLDivElement, LogoProps>(
-  ({ width = 320, className }, ref) => {
+  ({ className, width = 320 }, ref) => {
     // Logo has 4:3 aspect ratio
     const height = width * (4 / 3);
 
@@ -20,15 +21,15 @@ const Logo = React.forwardRef<HTMLDivElement, LogoProps>(
       <div
         ref={ref}
         className={cn("flex items-center justify-center", className)}
-        style={{ width: `${width}px`, height: `${height}px` }}
+        style={{ height: `${height}px`, width: `${width}px` }}
       >
         <img
-          src="/lexico_logo.svg"
           alt="Lexico"
-          width={width}
-          height={height}
           className="object-contain"
+          height={height}
           loading="eager"
+          src="/lexico_logo.svg"
+          width={width}
         />
       </div>
     );

@@ -11,8 +11,8 @@ import { DailyCyclesService } from "./daily-cycles.service";
  */
 @Module({
   controllers: [],
+  exports: [DailyCyclesService],
   imports: [EphemerisModule, MathModule],
   providers: [DailyCyclesService],
-  exports: [DailyCyclesService],
 })
 export class DailyCyclesModule {}

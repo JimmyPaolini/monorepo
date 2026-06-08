@@ -1,23 +1,24 @@
-import { Button, cn, Input } from "@monorepo/lexico-components";
 import { Loader2, Search } from "lucide-react";
 import * as React from "react";
+
+import { Button, cn, Input } from "@monorepo/lexico-components";
 
 /**
  *
  */
 export interface SearchBarProps {
-  /** Initial search value */
-  value?: string | undefined;
-  /** Callback when search is submitted */
-  onSearch: (search: string) => void;
-  /** Callback when value changes (for controlled input) */
-  onChange?: ((value: string) => void) | undefined;
-  /** Whether a search is in progress */
-  isLoading?: boolean | undefined;
-  /** Placeholder text */
-  placeholder?: string | undefined;
   /** Additional class names */
   className?: string | undefined;
+  /** Whether a search is in progress */
+  isLoading?: boolean | undefined;
+  /** Callback when value changes (for controlled input) */
+  onChange?: ((value: string) => void) | undefined;
+  /** Callback when search is submitted */
+  onSearch: (search: string) => void;
+  /** Placeholder text */
+  placeholder?: string | undefined;
+  /** Initial search value */
+  value?: string | undefined;
 }
 
 /**
@@ -26,12 +27,12 @@ export interface SearchBarProps {
 const SearchBar = React.forwardRef<HTMLDivElement, SearchBarProps>(
   (
     {
-      value: controlledValue,
-      onSearch,
-      onChange,
-      isLoading = false,
-      placeholder = "Search Latin or English...",
       className,
+      isLoading = false,
+      onChange,
+      onSearch,
+      placeholder = "Search Latin or English...",
+      value: controlledValue,
     },
     ref,
   ) => {
@@ -65,18 +66,18 @@ const SearchBar = React.forwardRef<HTMLDivElement, SearchBarProps>(
         className={cn("flex w-full max-w-2xl items-center gap-2", className)}
       >
         <Input
-          type="text"
-          value={value}
+          className="h-12 text-lg"
           onChange={handleChange}
           onKeyDown={handleKeyDown}
           placeholder={placeholder}
-          className="h-12 text-lg"
+          type="text"
+          value={value}
         />
         <Button
-          onClick={handleSearch}
-          disabled={isLoading}
-          size="icon"
           className="h-12 w-12 shrink-0"
+          disabled={isLoading}
+          onClick={handleSearch}
+          size="icon"
         >
           {isLoading ? (
             <Loader2 className="h-5 w-5 animate-spin" />

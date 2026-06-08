@@ -51,8 +51,8 @@ describe("AnnualSolarCycleService", () => {
         .subtract(MARGIN_MINUTES - i, "minutes");
       const longitude = longitudes[i] ?? longitudes.at(-1) ?? 0;
       ephemeris[minute.toISOString()] = {
-        longitude,
         latitude: 0,
+        longitude,
       };
     }
 
@@ -287,8 +287,8 @@ describe("AnnualSolarCycleService", () => {
       );
 
       const events = service.getAnnualSolarCycleEvents({
-        sunCoordinateEphemeris,
         minute: currentMinute,
+        sunCoordinateEphemeris,
       });
 
       expect(events).toHaveLength(0);
@@ -388,10 +388,6 @@ describe("AnnualSolarCycleService", () => {
   describe("service.detectProgressive", () => {
     it("should create advancing progressive event from aphelion to perihelion", () => {
       const aphelionEvent: Event = {
-        start: moment.utc("2024-07-05T12:00:00.000Z"),
-        end: moment.utc("2024-07-05T12:00:00.000Z"),
-        summary: "☀️ ❄️ Solar Aphelion",
-        description: "Solar Aphelion",
         categories: [
           "Astronomy",
           "Astrology",
@@ -399,12 +395,12 @@ describe("AnnualSolarCycleService", () => {
           "Solar",
           "Aphelion",
         ],
+        description: "Solar Aphelion",
+        end: moment.utc("2024-07-05T12:00:00.000Z"),
+        start: moment.utc("2024-07-05T12:00:00.000Z"),
+        summary: "☀️ ❄️ Solar Aphelion",
       };
       const perihelionEvent: Event = {
-        start: moment.utc("2025-01-03T12:00:00.000Z"),
-        end: moment.utc("2025-01-03T12:00:00.000Z"),
-        summary: "☀️ 🔥 Solar Perihelion",
-        description: "Solar Perihelion",
         categories: [
           "Astronomy",
           "Astrology",
@@ -412,6 +408,10 @@ describe("AnnualSolarCycleService", () => {
           "Solar",
           "Perihelion",
         ],
+        description: "Solar Perihelion",
+        end: moment.utc("2025-01-03T12:00:00.000Z"),
+        start: moment.utc("2025-01-03T12:00:00.000Z"),
+        summary: "☀️ 🔥 Solar Perihelion",
       };
 
       const progressiveEvents = service.detectProgressive([
@@ -437,10 +437,6 @@ describe("AnnualSolarCycleService", () => {
 
     it("should create retreating progressive event from perihelion to aphelion", () => {
       const perihelionEvent: Event = {
-        start: moment.utc("2024-01-03T12:00:00.000Z"),
-        end: moment.utc("2024-01-03T12:00:00.000Z"),
-        summary: "☀️ 🔥 Solar Perihelion",
-        description: "Solar Perihelion",
         categories: [
           "Astronomy",
           "Astrology",
@@ -448,12 +444,12 @@ describe("AnnualSolarCycleService", () => {
           "Solar",
           "Perihelion",
         ],
+        description: "Solar Perihelion",
+        end: moment.utc("2024-01-03T12:00:00.000Z"),
+        start: moment.utc("2024-01-03T12:00:00.000Z"),
+        summary: "☀️ 🔥 Solar Perihelion",
       };
       const aphelionEvent: Event = {
-        start: moment.utc("2024-07-05T12:00:00.000Z"),
-        end: moment.utc("2024-07-05T12:00:00.000Z"),
-        summary: "☀️ ❄️ Solar Aphelion",
-        description: "Solar Aphelion",
         categories: [
           "Astronomy",
           "Astrology",
@@ -461,6 +457,10 @@ describe("AnnualSolarCycleService", () => {
           "Solar",
           "Aphelion",
         ],
+        description: "Solar Aphelion",
+        end: moment.utc("2024-07-05T12:00:00.000Z"),
+        start: moment.utc("2024-07-05T12:00:00.000Z"),
+        summary: "☀️ ❄️ Solar Aphelion",
       };
 
       const progressiveEvents = service.detectProgressive([
@@ -492,10 +492,6 @@ describe("AnnualSolarCycleService", () => {
 
     it("should handle full year cycle with both advancing and retreating", () => {
       const perihelion1: Event = {
-        start: moment.utc("2024-01-03T12:00:00.000Z"),
-        end: moment.utc("2024-01-03T12:00:00.000Z"),
-        summary: "☀️ 🔥 Solar Perihelion",
-        description: "Solar Perihelion",
         categories: [
           "Astronomy",
           "Astrology",
@@ -503,12 +499,12 @@ describe("AnnualSolarCycleService", () => {
           "Solar",
           "Perihelion",
         ],
+        description: "Solar Perihelion",
+        end: moment.utc("2024-01-03T12:00:00.000Z"),
+        start: moment.utc("2024-01-03T12:00:00.000Z"),
+        summary: "☀️ 🔥 Solar Perihelion",
       };
       const aphelion: Event = {
-        start: moment.utc("2024-07-05T12:00:00.000Z"),
-        end: moment.utc("2024-07-05T12:00:00.000Z"),
-        summary: "☀️ ❄️ Solar Aphelion",
-        description: "Solar Aphelion",
         categories: [
           "Astronomy",
           "Astrology",
@@ -516,12 +512,12 @@ describe("AnnualSolarCycleService", () => {
           "Solar",
           "Aphelion",
         ],
+        description: "Solar Aphelion",
+        end: moment.utc("2024-07-05T12:00:00.000Z"),
+        start: moment.utc("2024-07-05T12:00:00.000Z"),
+        summary: "☀️ ❄️ Solar Aphelion",
       };
       const perihelion2: Event = {
-        start: moment.utc("2025-01-03T12:00:00.000Z"),
-        end: moment.utc("2025-01-03T12:00:00.000Z"),
-        summary: "☀️ 🔥 Solar Perihelion",
-        description: "Solar Perihelion",
         categories: [
           "Astronomy",
           "Astrology",
@@ -529,6 +525,10 @@ describe("AnnualSolarCycleService", () => {
           "Solar",
           "Perihelion",
         ],
+        description: "Solar Perihelion",
+        end: moment.utc("2025-01-03T12:00:00.000Z"),
+        start: moment.utc("2025-01-03T12:00:00.000Z"),
+        summary: "☀️ 🔥 Solar Perihelion",
       };
 
       const progressiveEvents = service.detectProgressive([
@@ -553,11 +553,11 @@ describe("AnnualSolarCycleService", () => {
 
     it("should filter out non-annual solar cycle events", () => {
       const nonApsisEvent: Event = {
-        start: moment.utc("2024-01-03T12:00:00.000Z"),
-        end: moment.utc("2024-01-03T12:00:00.000Z"),
-        summary: "Some other event",
-        description: "Not an apsis event",
         categories: ["Astronomy", "Something Else"],
+        description: "Not an apsis event",
+        end: moment.utc("2024-01-03T12:00:00.000Z"),
+        start: moment.utc("2024-01-03T12:00:00.000Z"),
+        summary: "Some other event",
       };
 
       const progressiveEvents = service.detectProgressive([nonApsisEvent]);

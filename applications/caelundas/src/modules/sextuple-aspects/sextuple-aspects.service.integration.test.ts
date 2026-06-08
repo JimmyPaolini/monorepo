@@ -34,40 +34,40 @@ describe("sextuple-aspects.events integration", () => {
       // All other 11 aspects span across currentMinute -> both edges
       const currentAspectBodies: AspectBodies[] = [
         // First grand trine: Sun(0) - Mars(2) - Jupiter(4)
-        { bodies: ["sun", "mars"], aspect: "trine" },
-        { bodies: ["sun", "jupiter"], aspect: "trine" },
-        { bodies: ["mars", "jupiter"], aspect: "trine" },
+        { aspect: "trine", bodies: ["sun", "mars"] },
+        { aspect: "trine", bodies: ["sun", "jupiter"] },
+        { aspect: "trine", bodies: ["mars", "jupiter"] },
         // Second grand trine: Moon(1) - Venus(3) - Saturn(5)
-        { bodies: ["moon", "venus"], aspect: "trine" },
-        { bodies: ["moon", "saturn"], aspect: "trine" },
-        { bodies: ["venus", "saturn"], aspect: "trine" },
+        { aspect: "trine", bodies: ["moon", "venus"] },
+        { aspect: "trine", bodies: ["moon", "saturn"] },
+        { aspect: "trine", bodies: ["venus", "saturn"] },
         // Sextiles connecting adjacent bodies (hexagon perimeter)
-        { bodies: ["sun", "moon"], aspect: "sextile" },
-        { bodies: ["moon", "mars"], aspect: "sextile" },
-        { bodies: ["mars", "venus"], aspect: "sextile" },
-        { bodies: ["venus", "jupiter"], aspect: "sextile" },
-        { bodies: ["jupiter", "saturn"], aspect: "sextile" },
-        { bodies: ["saturn", "sun"], aspect: "sextile" },
+        { aspect: "sextile", bodies: ["sun", "moon"] },
+        { aspect: "sextile", bodies: ["moon", "mars"] },
+        { aspect: "sextile", bodies: ["mars", "venus"] },
+        { aspect: "sextile", bodies: ["venus", "jupiter"] },
+        { aspect: "sextile", bodies: ["jupiter", "saturn"] },
+        { aspect: "sextile", bodies: ["saturn", "sun"] },
       ];
       const previousAspectBodies: AspectBodies[] = [
         // All except Sun trine Mars (which starts at currentMinute)
-        { bodies: ["sun", "jupiter"], aspect: "trine" },
-        { bodies: ["mars", "jupiter"], aspect: "trine" },
-        { bodies: ["moon", "venus"], aspect: "trine" },
-        { bodies: ["moon", "saturn"], aspect: "trine" },
-        { bodies: ["venus", "saturn"], aspect: "trine" },
-        { bodies: ["sun", "moon"], aspect: "sextile" },
-        { bodies: ["moon", "mars"], aspect: "sextile" },
-        { bodies: ["mars", "venus"], aspect: "sextile" },
-        { bodies: ["venus", "jupiter"], aspect: "sextile" },
-        { bodies: ["jupiter", "saturn"], aspect: "sextile" },
-        { bodies: ["saturn", "sun"], aspect: "sextile" },
+        { aspect: "trine", bodies: ["sun", "jupiter"] },
+        { aspect: "trine", bodies: ["mars", "jupiter"] },
+        { aspect: "trine", bodies: ["moon", "venus"] },
+        { aspect: "trine", bodies: ["moon", "saturn"] },
+        { aspect: "trine", bodies: ["venus", "saturn"] },
+        { aspect: "sextile", bodies: ["sun", "moon"] },
+        { aspect: "sextile", bodies: ["moon", "mars"] },
+        { aspect: "sextile", bodies: ["mars", "venus"] },
+        { aspect: "sextile", bodies: ["venus", "jupiter"] },
+        { aspect: "sextile", bodies: ["jupiter", "saturn"] },
+        { aspect: "sextile", bodies: ["saturn", "sun"] },
       ];
 
       const events = service.detect({
         currentAspectBodies,
-        previousAspectBodies,
         minute: currentMinute,
+        previousAspectBodies,
       });
 
       expect(events).toHaveLength(1);
@@ -96,40 +96,40 @@ describe("sextuple-aspects.events integration", () => {
       // All other 11 aspects span across currentMinute -> both edges
       const currentAspectBodies: AspectBodies[] = [
         // All except Sun trine Mars (which ends at currentMinute)
-        { bodies: ["sun", "jupiter"], aspect: "trine" },
-        { bodies: ["mars", "jupiter"], aspect: "trine" },
-        { bodies: ["moon", "venus"], aspect: "trine" },
-        { bodies: ["moon", "saturn"], aspect: "trine" },
-        { bodies: ["venus", "saturn"], aspect: "trine" },
-        { bodies: ["sun", "moon"], aspect: "sextile" },
-        { bodies: ["moon", "mars"], aspect: "sextile" },
-        { bodies: ["mars", "venus"], aspect: "sextile" },
-        { bodies: ["venus", "jupiter"], aspect: "sextile" },
-        { bodies: ["jupiter", "saturn"], aspect: "sextile" },
-        { bodies: ["saturn", "sun"], aspect: "sextile" },
+        { aspect: "trine", bodies: ["sun", "jupiter"] },
+        { aspect: "trine", bodies: ["mars", "jupiter"] },
+        { aspect: "trine", bodies: ["moon", "venus"] },
+        { aspect: "trine", bodies: ["moon", "saturn"] },
+        { aspect: "trine", bodies: ["venus", "saturn"] },
+        { aspect: "sextile", bodies: ["sun", "moon"] },
+        { aspect: "sextile", bodies: ["moon", "mars"] },
+        { aspect: "sextile", bodies: ["mars", "venus"] },
+        { aspect: "sextile", bodies: ["venus", "jupiter"] },
+        { aspect: "sextile", bodies: ["jupiter", "saturn"] },
+        { aspect: "sextile", bodies: ["saturn", "sun"] },
       ];
       const previousAspectBodies: AspectBodies[] = [
         // First grand trine: Sun(0) - Mars(2) - Jupiter(4)
-        { bodies: ["sun", "mars"], aspect: "trine" },
-        { bodies: ["sun", "jupiter"], aspect: "trine" },
-        { bodies: ["mars", "jupiter"], aspect: "trine" },
+        { aspect: "trine", bodies: ["sun", "mars"] },
+        { aspect: "trine", bodies: ["sun", "jupiter"] },
+        { aspect: "trine", bodies: ["mars", "jupiter"] },
         // Second grand trine: Moon(1) - Venus(3) - Saturn(5)
-        { bodies: ["moon", "venus"], aspect: "trine" },
-        { bodies: ["moon", "saturn"], aspect: "trine" },
-        { bodies: ["venus", "saturn"], aspect: "trine" },
+        { aspect: "trine", bodies: ["moon", "venus"] },
+        { aspect: "trine", bodies: ["moon", "saturn"] },
+        { aspect: "trine", bodies: ["venus", "saturn"] },
         // Sextiles connecting adjacent bodies (hexagon perimeter)
-        { bodies: ["sun", "moon"], aspect: "sextile" },
-        { bodies: ["moon", "mars"], aspect: "sextile" },
-        { bodies: ["mars", "venus"], aspect: "sextile" },
-        { bodies: ["venus", "jupiter"], aspect: "sextile" },
-        { bodies: ["jupiter", "saturn"], aspect: "sextile" },
-        { bodies: ["saturn", "sun"], aspect: "sextile" },
+        { aspect: "sextile", bodies: ["sun", "moon"] },
+        { aspect: "sextile", bodies: ["moon", "mars"] },
+        { aspect: "sextile", bodies: ["mars", "venus"] },
+        { aspect: "sextile", bodies: ["venus", "jupiter"] },
+        { aspect: "sextile", bodies: ["jupiter", "saturn"] },
+        { aspect: "sextile", bodies: ["saturn", "sun"] },
       ];
 
       const events = service.detect({
         currentAspectBodies,
-        previousAspectBodies,
         minute: currentMinute,
+        previousAspectBodies,
       });
 
       expect(events).toHaveLength(1);
@@ -142,11 +142,6 @@ describe("sextuple-aspects.events integration", () => {
 
     it("should create progressive event from forming/dissolving Hexagram pair", () => {
       const formingEvent: Event = {
-        start: moment.utc("2024-09-22T18:42:00.000Z"),
-        end: moment.utc("2024-09-22T18:42:00.000Z"),
-        summary:
-          "➡️ ✡ ☉-☽-♂-♃-♀-♄ Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram forming",
-        description: "Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram forming",
         categories: [
           "Astronomy",
           "Astrology",
@@ -161,15 +156,14 @@ describe("sextuple-aspects.events integration", () => {
           "Sun",
           "Venus",
         ],
+        description: "Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram forming",
+        end: moment.utc("2024-09-22T18:42:00.000Z"),
+        start: moment.utc("2024-09-22T18:42:00.000Z"),
+        summary:
+          "➡️ ✡ ☉-☽-♂-♃-♀-♄ Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram forming",
       };
 
       const dissolvingEvent: Event = {
-        start: moment.utc("2024-09-22T19:00:00.000Z"),
-        end: moment.utc("2024-09-22T19:00:00.000Z"),
-        summary:
-          "⬅️ ✡ ☉-☽-♂-♃-♀-♄ Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram dissolving",
-        description:
-          "Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram dissolving",
         categories: [
           "Astronomy",
           "Astrology",
@@ -184,6 +178,12 @@ describe("sextuple-aspects.events integration", () => {
           "Sun",
           "Venus",
         ],
+        description:
+          "Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram dissolving",
+        end: moment.utc("2024-09-22T19:00:00.000Z"),
+        start: moment.utc("2024-09-22T19:00:00.000Z"),
+        summary:
+          "⬅️ ✡ ☉-☽-♂-♃-♀-♄ Jupiter, Mars, Moon, Saturn, Sun, Venus hexagram dissolving",
       };
 
       const progressiveEvents = service.detectProgressive([
@@ -218,40 +218,40 @@ describe("sextuple-aspects.events integration", () => {
       // All other 11 aspects span across currentMinute -> both edges
       const currentAspectBodies: AspectBodies[] = [
         // First grand trine: Mars-Jupiter-Saturn
-        { bodies: ["mars", "jupiter"], aspect: "trine" },
-        { bodies: ["mars", "saturn"], aspect: "trine" },
-        { bodies: ["jupiter", "saturn"], aspect: "trine" },
+        { aspect: "trine", bodies: ["mars", "jupiter"] },
+        { aspect: "trine", bodies: ["mars", "saturn"] },
+        { aspect: "trine", bodies: ["jupiter", "saturn"] },
         // Second grand trine: Uranus-Neptune-Pluto
-        { bodies: ["uranus", "neptune"], aspect: "trine" },
-        { bodies: ["uranus", "pluto"], aspect: "trine" },
-        { bodies: ["neptune", "pluto"], aspect: "trine" },
+        { aspect: "trine", bodies: ["uranus", "neptune"] },
+        { aspect: "trine", bodies: ["uranus", "pluto"] },
+        { aspect: "trine", bodies: ["neptune", "pluto"] },
         // Sextiles
-        { bodies: ["mars", "uranus"], aspect: "sextile" },
-        { bodies: ["uranus", "jupiter"], aspect: "sextile" },
-        { bodies: ["jupiter", "neptune"], aspect: "sextile" },
-        { bodies: ["neptune", "saturn"], aspect: "sextile" },
-        { bodies: ["saturn", "pluto"], aspect: "sextile" },
-        { bodies: ["pluto", "mars"], aspect: "sextile" },
+        { aspect: "sextile", bodies: ["mars", "uranus"] },
+        { aspect: "sextile", bodies: ["uranus", "jupiter"] },
+        { aspect: "sextile", bodies: ["jupiter", "neptune"] },
+        { aspect: "sextile", bodies: ["neptune", "saturn"] },
+        { aspect: "sextile", bodies: ["saturn", "pluto"] },
+        { aspect: "sextile", bodies: ["pluto", "mars"] },
       ];
       const previousAspectBodies: AspectBodies[] = [
         // All except Mars trine Jupiter (which starts at currentMinute)
-        { bodies: ["mars", "saturn"], aspect: "trine" },
-        { bodies: ["jupiter", "saturn"], aspect: "trine" },
-        { bodies: ["uranus", "neptune"], aspect: "trine" },
-        { bodies: ["uranus", "pluto"], aspect: "trine" },
-        { bodies: ["neptune", "pluto"], aspect: "trine" },
-        { bodies: ["mars", "uranus"], aspect: "sextile" },
-        { bodies: ["uranus", "jupiter"], aspect: "sextile" },
-        { bodies: ["jupiter", "neptune"], aspect: "sextile" },
-        { bodies: ["neptune", "saturn"], aspect: "sextile" },
-        { bodies: ["saturn", "pluto"], aspect: "sextile" },
-        { bodies: ["pluto", "mars"], aspect: "sextile" },
+        { aspect: "trine", bodies: ["mars", "saturn"] },
+        { aspect: "trine", bodies: ["jupiter", "saturn"] },
+        { aspect: "trine", bodies: ["uranus", "neptune"] },
+        { aspect: "trine", bodies: ["uranus", "pluto"] },
+        { aspect: "trine", bodies: ["neptune", "pluto"] },
+        { aspect: "sextile", bodies: ["mars", "uranus"] },
+        { aspect: "sextile", bodies: ["uranus", "jupiter"] },
+        { aspect: "sextile", bodies: ["jupiter", "neptune"] },
+        { aspect: "sextile", bodies: ["neptune", "saturn"] },
+        { aspect: "sextile", bodies: ["saturn", "pluto"] },
+        { aspect: "sextile", bodies: ["pluto", "mars"] },
       ];
 
       const events = service.detect({
         currentAspectBodies,
-        previousAspectBodies,
         minute: currentMinute,
+        previousAspectBodies,
       });
 
       expect(events).toHaveLength(1);
@@ -273,28 +273,28 @@ describe("sextuple-aspects.events integration", () => {
 
       // First grand trine INCOMPLETE: missing Jupiter-Mars trine
       const edges: AspectBodies[] = [
-        { bodies: ["sun", "mars"], aspect: "trine" },
-        { bodies: ["sun", "jupiter"], aspect: "trine" },
+        { aspect: "trine", bodies: ["sun", "mars"] },
+        { aspect: "trine", bodies: ["sun", "jupiter"] },
         // Missing: Mars trine Jupiter
         // Second grand trine complete
-        { bodies: ["moon", "venus"], aspect: "trine" },
-        { bodies: ["moon", "saturn"], aspect: "trine" },
-        { bodies: ["venus", "saturn"], aspect: "trine" },
+        { aspect: "trine", bodies: ["moon", "venus"] },
+        { aspect: "trine", bodies: ["moon", "saturn"] },
+        { aspect: "trine", bodies: ["venus", "saturn"] },
         // All sextiles present
-        { bodies: ["sun", "moon"], aspect: "sextile" },
-        { bodies: ["moon", "mars"], aspect: "sextile" },
-        { bodies: ["mars", "venus"], aspect: "sextile" },
-        { bodies: ["venus", "jupiter"], aspect: "sextile" },
-        { bodies: ["jupiter", "saturn"], aspect: "sextile" },
-        { bodies: ["saturn", "sun"], aspect: "sextile" },
+        { aspect: "sextile", bodies: ["sun", "moon"] },
+        { aspect: "sextile", bodies: ["moon", "mars"] },
+        { aspect: "sextile", bodies: ["mars", "venus"] },
+        { aspect: "sextile", bodies: ["venus", "jupiter"] },
+        { aspect: "sextile", bodies: ["jupiter", "saturn"] },
+        { aspect: "sextile", bodies: ["saturn", "sun"] },
       ];
       const currentAspectBodies = edges;
       const previousAspectBodies = edges;
 
       const events = service.detect({
         currentAspectBodies,
-        previousAspectBodies,
         minute: currentMinute,
+        previousAspectBodies,
       });
 
       expect(events).toHaveLength(0);
@@ -306,18 +306,18 @@ describe("sextuple-aspects.events integration", () => {
       // Both grand trines complete, but sextile ring incomplete
       const edges: AspectBodies[] = [
         // Both grand trines complete
-        { bodies: ["sun", "mars"], aspect: "trine" },
-        { bodies: ["sun", "jupiter"], aspect: "trine" },
-        { bodies: ["mars", "jupiter"], aspect: "trine" },
-        { bodies: ["moon", "venus"], aspect: "trine" },
-        { bodies: ["moon", "saturn"], aspect: "trine" },
-        { bodies: ["venus", "saturn"], aspect: "trine" },
+        { aspect: "trine", bodies: ["sun", "mars"] },
+        { aspect: "trine", bodies: ["sun", "jupiter"] },
+        { aspect: "trine", bodies: ["mars", "jupiter"] },
+        { aspect: "trine", bodies: ["moon", "venus"] },
+        { aspect: "trine", bodies: ["moon", "saturn"] },
+        { aspect: "trine", bodies: ["venus", "saturn"] },
         // Sextiles INCOMPLETE: missing Saturn-Sun sextile
-        { bodies: ["sun", "moon"], aspect: "sextile" },
-        { bodies: ["moon", "mars"], aspect: "sextile" },
-        { bodies: ["mars", "venus"], aspect: "sextile" },
-        { bodies: ["venus", "jupiter"], aspect: "sextile" },
-        { bodies: ["jupiter", "saturn"], aspect: "sextile" },
+        { aspect: "sextile", bodies: ["sun", "moon"] },
+        { aspect: "sextile", bodies: ["moon", "mars"] },
+        { aspect: "sextile", bodies: ["mars", "venus"] },
+        { aspect: "sextile", bodies: ["venus", "jupiter"] },
+        { aspect: "sextile", bodies: ["jupiter", "saturn"] },
         // Missing: Saturn sextile Sun
       ];
       const currentAspectBodies = edges;
@@ -325,8 +325,8 @@ describe("sextuple-aspects.events integration", () => {
 
       const events = service.detect({
         currentAspectBodies,
-        previousAspectBodies,
         minute: currentMinute,
+        previousAspectBodies,
       });
 
       expect(events).toHaveLength(0);

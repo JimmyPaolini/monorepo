@@ -6,4 +6,4 @@
  * - `nautical`: Sun between −6° and −12° (sea horizon barely visible)
  * - `astronomical`: Sun between −12° and −18° (faintest stars become visible)
  */
-export type Twilight = "civil" | "nautical" | "astronomical";
+export type Twilight = "astronomical" | "civil" | "nautical";

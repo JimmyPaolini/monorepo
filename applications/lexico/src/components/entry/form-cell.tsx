@@ -1,5 +1,6 @@
-import { cn } from "@monorepo/lexico-components";
 import * as React from "react";
+
+import { cn } from "@monorepo/lexico-components";
 
 import { Identifier } from "./identifier";
 
@@ -7,46 +8,46 @@ import { Identifier } from "./identifier";
  * Position in the forms grid for border styling.
  */
 export type FormCellPosition =
-  | "topLeft"
-  | "topRight"
+  | "bottomLeft"
+  | "bottomRight"
   | "midLeft"
   | "midRight"
-  | "bottomLeft"
-  | "bottomRight";
+  | "topLeft"
+  | "topRight";
 
 /**
  * Props for the FormCell component that displays a single form with labels.
  */
 export interface FormCellProps {
-  /** Position in the grid for border styling */
-  position?: FormCellPosition | undefined;
-  /** The main form text (e.g., "amō") */
-  centerText: string;
-  /** Top-left label (e.g., "first", "nominative") */
-  topLeftText?: string | undefined;
-  /** Top-right label (e.g., "singular", "plural") */
-  topRightText?: string | undefined;
   /** Bottom-left label (e.g., for extra context) */
   bottomLeftText?: string | undefined;
   /** Bottom-right label (e.g., for extra context) */
   bottomRightText?: string | undefined;
-  /** Search term for highlighting */
-  search?: string | undefined;
+  /** The main form text (e.g., "amō") */
+  centerText: string;
   /** Additional class names */
   className?: string | undefined;
+  /** Position in the grid for border styling */
+  position?: FormCellPosition | undefined;
+  /** Search term for highlighting */
+  search?: string | undefined;
+  /** Top-left label (e.g., "first", "nominative") */
+  topLeftText?: string | undefined;
+  /** Top-right label (e.g., "singular", "plural") */
+  topRightText?: string | undefined;
 }
 
 const FormCell = React.forwardRef<HTMLDivElement, FormCellProps>(
   (
     {
-      position,
-      centerText,
-      topLeftText,
-      topRightText,
       bottomLeftText,
       bottomRightText,
-      search,
+      centerText,
       className,
+      position,
+      search,
+      topLeftText,
+      topRightText,
     },
     ref,
   ) => {
@@ -68,26 +69,26 @@ const FormCell = React.forwardRef<HTMLDivElement, FormCellProps>(
     return (
       <div
         ref={ref}
-        title={showTooltip ? centerText : undefined}
         className={cn(
           "relative flex h-12 items-stretch",
           borderClasses,
           isSearched ? "bg-muted" : "bg-card",
           className,
         )}
+        title={showTooltip ? centerText : undefined}
       >
         {/* Left sidebar */}
         <div className="flex w-8 shrink-0 flex-col items-center justify-between py-0.5">
           {topLeftText && (
             <Identifier
-              identifier={topLeftText}
               className="text-sm"
+              identifier={topLeftText}
             />
           )}
           {bottomLeftText && (
             <Identifier
-              identifier={bottomLeftText}
               className="text-sm"
+              identifier={bottomLeftText}
             />
           )}
         </div>
@@ -108,14 +109,14 @@ const FormCell = React.forwardRef<HTMLDivElement, FormCellProps>(
         <div className="flex w-8 shrink-0 flex-col items-center justify-between py-0.5">
           {topRightText && (
             <Identifier
-              identifier={topRightText}
               className="text-sm"
+              identifier={topRightText}
             />
           )}
           {bottomRightText && (
             <Identifier
-              identifier={bottomRightText}
               className="text-sm"
+              identifier={bottomRightText}
             />
           )}
         </div>

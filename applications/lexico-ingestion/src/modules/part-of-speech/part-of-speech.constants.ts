@@ -1,5 +1,7 @@
 // ♟️ Constants
 
+import _ from "lodash";
+
 import {
   adjectiveDeclensionValues,
   adjectiveDegreeValues,
@@ -9,7 +11,6 @@ import {
   prepositionCaseValues,
   verbConjugationValues,
 } from "@monorepo/lexico-entities";
-import _ from "lodash";
 
 // ♟️ POS regex constants
 export const nounDeclensionRegex = new RegExp(
@@ -31,28 +32,28 @@ export const prepositionCaseRegex = new RegExp(
 
 // ♟️ First principal part name per POS
 export const firstPrincipalPartNames: Partial<Record<PartOfSpeech, string>> = {
-  noun: "nominative",
-  properNoun: "nominative",
-  verb: "present active",
-  adjective: "masculine",
-  participle: "masculine",
-  numeral: "masculine",
-  suffix: "masculine",
-  prefix: "masculine",
-  interfix: "masculine",
-  circumfix: "masculine",
-  pronoun: "masculine",
-  determiner: "masculine",
-  adverb: "positive",
-  preposition: "preposition",
-  conjunction: "conjunction",
-  interjection: "conjunction",
   abbreviation: "conjunction",
+  adjective: "masculine",
+  adverb: "positive",
+  circumfix: "masculine",
+  conjunction: "conjunction",
+  determiner: "masculine",
+  idiom: "conjunction",
   inflection: "conjunction",
+  interfix: "masculine",
+  interjection: "conjunction",
+  noun: "nominative",
+  numeral: "masculine",
+  participle: "masculine",
   particle: "conjunction",
   phrase: "conjunction",
+  prefix: "masculine",
+  preposition: "preposition",
+  pronoun: "masculine",
+  properNoun: "nominative",
   proverb: "conjunction",
-  idiom: "conjunction",
+  suffix: "masculine",
+  verb: "present active",
 };
 
 // ♟️ esse/fui lookup table for periphrastic verb forms
@@ -62,81 +63,81 @@ export const sumEsseFui: Record<
 > = {
   indicative: {
     active: {
-      present: {
-        singular: { first: ["sum"], second: ["es"], third: ["est"] },
-        plural: { first: ["sumus"], second: ["estis"], third: ["sunt"] },
-      },
-      imperfect: {
-        singular: { first: ["eram"], second: ["erās"], third: ["erat"] },
-        plural: { first: ["erāmus"], second: ["erātis"], third: ["erant"] },
-      },
       future: {
-        singular: { first: ["erō"], second: ["eris"], third: ["erit"] },
         plural: { first: ["erimus"], second: ["eritis"], third: ["erunt"] },
-      },
-      perfect: {
-        singular: { first: ["fuī"], second: ["fuistī"], third: ["fuit"] },
-        plural: {
-          first: ["fuimus"],
-          second: ["fuistis"],
-          third: ["fuērunt", "fuēre"],
-        },
-      },
-      pluperfect: {
-        singular: { first: ["fueram"], second: ["fuerās"], third: ["fuerat"] },
-        plural: {
-          first: ["fuerāmus"],
-          second: ["fuerātis"],
-          third: ["fuerant"],
-        },
+        singular: { first: ["erō"], second: ["eris"], third: ["erit"] },
       },
       futurePerfect: {
-        singular: { first: ["fuerō"], second: ["fueris"], third: ["fuerit"] },
         plural: {
           first: ["fuerimus"],
           second: ["fueritis"],
           third: ["fuerint"],
         },
+        singular: { first: ["fuerō"], second: ["fueris"], third: ["fuerit"] },
+      },
+      imperfect: {
+        plural: { first: ["erāmus"], second: ["erātis"], third: ["erant"] },
+        singular: { first: ["eram"], second: ["erās"], third: ["erat"] },
+      },
+      perfect: {
+        plural: {
+          first: ["fuimus"],
+          second: ["fuistis"],
+          third: ["fuērunt", "fuēre"],
+        },
+        singular: { first: ["fuī"], second: ["fuistī"], third: ["fuit"] },
+      },
+      pluperfect: {
+        plural: {
+          first: ["fuerāmus"],
+          second: ["fuerātis"],
+          third: ["fuerant"],
+        },
+        singular: { first: ["fueram"], second: ["fuerās"], third: ["fuerat"] },
+      },
+      present: {
+        plural: { first: ["sumus"], second: ["estis"], third: ["sunt"] },
+        singular: { first: ["sum"], second: ["es"], third: ["est"] },
       },
     },
   },
   subjunctive: {
     active: {
-      present: {
-        singular: { first: ["sim"], second: ["sīs"], third: ["sit"] },
-        plural: { first: ["sīmus"], second: ["sītis"], third: ["sint"] },
-      },
       imperfect: {
-        singular: {
-          first: ["essem", "forem"],
-          second: ["essēs", "forēs"],
-          third: ["esset", "foret"],
-        },
         plural: {
           first: ["essēmus", "forēmus"],
           second: ["essētis", "forētis"],
           third: ["essent", "forent"],
         },
+        singular: {
+          first: ["essem", "forem"],
+          second: ["essēs", "forēs"],
+          third: ["esset", "foret"],
+        },
       },
       perfect: {
-        singular: { first: ["fuerim"], second: ["fuerīs"], third: ["fuerit"] },
         plural: {
           first: ["fuerīmus"],
           second: ["fuerītis"],
           third: ["fuerint"],
         },
+        singular: { first: ["fuerim"], second: ["fuerīs"], third: ["fuerit"] },
       },
       pluperfect: {
-        singular: {
-          first: ["fuissem"],
-          second: ["fuissēs"],
-          third: ["fuisset"],
-        },
         plural: {
           first: ["fuissēmus"],
           second: ["fuissētis"],
           third: ["fuissent"],
         },
+        singular: {
+          first: ["fuissem"],
+          second: ["fuissēs"],
+          third: ["fuisset"],
+        },
+      },
+      present: {
+        plural: { first: ["sīmus"], second: ["sītis"], third: ["sint"] },
+        singular: { first: ["sim"], second: ["sīs"], third: ["sit"] },
       },
     },
   },

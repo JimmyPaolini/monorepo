@@ -49,7 +49,7 @@ describe("MinorAspectsService", () => {
         return Object.fromEntries(
           Object.entries(longitudes).map(([timestamp, longitude]) => [
             timestamp,
-            { longitude, latitude: 0 },
+            { latitude: 0, longitude },
           ]),
         );
       };
@@ -68,9 +68,9 @@ describe("MinorAspectsService", () => {
         // 200° from 0° = 200° (no aspect), from 30° = 170° (no aspect), from 75° = 125° (no aspect)
         allBodies.forEach((body) => {
           ephemerisByBody[body] = createEphemeris({
-            [previousMinute.toISOString()]: 200,
             [currentMinute.toISOString()]: 200,
             [nextMinute.toISOString()]: 200,
+            [previousMinute.toISOString()]: 200,
           });
         });
         return ephemerisByBody;
@@ -88,14 +88,14 @@ describe("MinorAspectsService", () => {
         );
 
         coordinateEphemerisByBody.sun = createEphemeris({
-          [previousMinute.toISOString()]: 29,
           [currentMinute.toISOString()]: 30,
           [nextMinute.toISOString()]: 31,
+          [previousMinute.toISOString()]: 29,
         });
         coordinateEphemerisByBody.mercury = createEphemeris({
-          [previousMinute.toISOString()]: 1,
           [currentMinute.toISOString()]: 0,
           [nextMinute.toISOString()]: 359,
+          [previousMinute.toISOString()]: 1,
         });
 
         const events = service.detect({
@@ -127,14 +127,14 @@ describe("MinorAspectsService", () => {
 
         // Semisquare has 2° orb, so venus needs to enter from >47° or <43°
         coordinateEphemerisByBody.sun = createEphemeris({
-          [previousMinute.toISOString()]: 0,
           [currentMinute.toISOString()]: 0,
           [nextMinute.toISOString()]: 0,
+          [previousMinute.toISOString()]: 0,
         });
         coordinateEphemerisByBody.venus = createEphemeris({
-          [previousMinute.toISOString()]: 48, // Outside 2° orb (>47°)
           [currentMinute.toISOString()]: 46.5, // Inside 2° orb (entering)
           [nextMinute.toISOString()]: 45.5, // Further in orb
+          [previousMinute.toISOString()]: 48, // Outside 2° orb (>47°)
         });
 
         const events = service.detect({
@@ -171,22 +171,22 @@ describe("MinorAspectsService", () => {
         allBodies.forEach((body, index) => {
           const longitude = safeLongitudes[index] ?? 0;
           coordinateEphemerisByBody[body] = createEphemeris({
-            [previousMinute.toISOString()]: longitude,
             [currentMinute.toISOString()]: longitude,
             [nextMinute.toISOString()]: longitude,
+            [previousMinute.toISOString()]: longitude,
           });
         });
 
         // Quincunx has 3° orb, so mars needs to be inside at current and outside at next
         coordinateEphemerisByBody.sun = createEphemeris({
-          [previousMinute.toISOString()]: 0,
           [currentMinute.toISOString()]: 0,
           [nextMinute.toISOString()]: 0,
+          [previousMinute.toISOString()]: 0,
         });
         coordinateEphemerisByBody.mars = createEphemeris({
-          [previousMinute.toISOString()]: 151, // Inside 3° orb (1° off)
           [currentMinute.toISOString()]: 152.5, // Still inside 3° orb (2.5° off, moving away)
           [nextMinute.toISOString()]: 154, // Outside 3° orb (4° off, exiting)
+          [previousMinute.toISOString()]: 151, // Inside 3° orb (1° off)
         });
 
         const events = service.detect({
@@ -219,19 +219,19 @@ describe("MinorAspectsService", () => {
         // Sun at 30°, Mercury at 0° = semisextile (30°)
         // Sun at 30°, Venus at 75° = semisquare (45°)
         coordinateEphemerisByBody.sun = createEphemeris({
-          [previousMinute.toISOString()]: 29,
           [currentMinute.toISOString()]: 30,
           [nextMinute.toISOString()]: 31,
+          [previousMinute.toISOString()]: 29,
         });
         coordinateEphemerisByBody.mercury = createEphemeris({
-          [previousMinute.toISOString()]: 1,
           [currentMinute.toISOString()]: 0,
           [nextMinute.toISOString()]: 359,
+          [previousMinute.toISOString()]: 1,
         });
         coordinateEphemerisByBody.venus = createEphemeris({
-          [previousMinute.toISOString()]: 74,
           [currentMinute.toISOString()]: 75,
           [nextMinute.toISOString()]: 76,
+          [previousMinute.toISOString()]: 74,
         });
 
         const events = service.detect({
@@ -274,9 +274,9 @@ describe("MinorAspectsService", () => {
         allBodies.forEach((body, index) => {
           const longitude = safeLongitudes[index] ?? 0;
           coordinateEphemerisByBody[body] = createEphemeris({
-            [previousMinute.toISOString()]: longitude,
             [currentMinute.toISOString()]: longitude,
             [nextMinute.toISOString()]: longitude,
+            [previousMinute.toISOString()]: longitude,
           });
         });
 
@@ -300,14 +300,14 @@ describe("MinorAspectsService", () => {
         );
 
         coordinateEphemerisByBody.sun = createEphemeris({
-          [previousMinute.toISOString()]: 29,
           [currentMinute.toISOString()]: 30,
           [nextMinute.toISOString()]: 31,
+          [previousMinute.toISOString()]: 29,
         });
         coordinateEphemerisByBody.mercury = createEphemeris({
-          [previousMinute.toISOString()]: 1,
           [currentMinute.toISOString()]: 0,
           [nextMinute.toISOString()]: 359,
+          [previousMinute.toISOString()]: 1,
         });
 
         const events = service.detect({
@@ -327,12 +327,12 @@ describe("MinorAspectsService", () => {
       it("should create perfective semisextile event", () => {
         const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
         const event = service.buildMinorAspectEvent({
-          longitudeBody1: 0,
-          longitudeBody2: 30,
-          timestamp,
           body1: "sun",
           body2: "moon",
+          longitudeBody1: 0,
+          longitudeBody2: 30,
           phase: "perfective",
+          timestamp,
         });
 
         expect(event.summary).toContain("🎯");
@@ -354,12 +354,12 @@ describe("MinorAspectsService", () => {
       it("should create forming semisquare event", () => {
         const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
         const event = service.buildMinorAspectEvent({
-          longitudeBody1: 0,
-          longitudeBody2: 44,
-          timestamp,
           body1: "sun",
           body2: "venus",
+          longitudeBody1: 0,
+          longitudeBody2: 44,
           phase: "forming",
+          timestamp,
         });
 
         expect(event.summary).toContain("➡️");
@@ -374,12 +374,12 @@ describe("MinorAspectsService", () => {
       it("should create dissolving sesquiquadrate event", () => {
         const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
         const event = service.buildMinorAspectEvent({
-          longitudeBody1: 0,
-          longitudeBody2: 136,
-          timestamp,
           body1: "sun",
           body2: "mars",
+          longitudeBody1: 0,
+          longitudeBody2: 136,
           phase: "dissolving",
+          timestamp,
         });
 
         expect(event.summary).toContain("⬅️");
@@ -394,12 +394,12 @@ describe("MinorAspectsService", () => {
       it("should create quincunx event", () => {
         const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
         const event = service.buildMinorAspectEvent({
-          longitudeBody1: 0,
-          longitudeBody2: 150,
-          timestamp,
           body1: "sun",
           body2: "jupiter",
+          longitudeBody1: 0,
+          longitudeBody2: 150,
           phase: "perfective",
+          timestamp,
         });
 
         expect(event.summary).toContain("⚻");
@@ -410,12 +410,12 @@ describe("MinorAspectsService", () => {
       it("should throw error when no minor aspect is found", () => {
         expect(() =>
           service.buildMinorAspectEvent({
-            longitudeBody1: 0,
-            longitudeBody2: 90,
-            timestamp: moment.utc("2024-03-21T12:00:00.000Z"),
             body1: "sun",
             body2: "moon",
+            longitudeBody1: 0,
+            longitudeBody2: 90,
             phase: "perfective",
+            timestamp: moment.utc("2024-03-21T12:00:00.000Z"),
           }),
         ).toThrow("No minor aspect found");
       });
@@ -423,12 +423,12 @@ describe("MinorAspectsService", () => {
       it("should handle wrapped longitudes (near 360/0 degrees)", () => {
         const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
         const event = service.buildMinorAspectEvent({
-          longitudeBody1: 358,
-          longitudeBody2: 28,
-          timestamp,
           body1: "sun",
           body2: "moon",
+          longitudeBody1: 358,
+          longitudeBody2: 28,
           phase: "perfective",
+          timestamp,
         });
 
         expect(event.description).toContain("semisextile");
@@ -444,10 +444,6 @@ describe("MinorAspectsService", () => {
         timestamp: Moment,
       ): Event => {
         return {
-          start: timestamp,
-          end: timestamp,
-          summary: `${phase} ${body1} ${aspect} ${body2}`,
-          description: `${body1} ${phase.toLowerCase()} ${aspect.toLowerCase()} ${body2}`,
           categories: [
             "Astronomy",
             "Astrology",
@@ -457,6 +453,10 @@ describe("MinorAspectsService", () => {
             aspect,
             phase,
           ],
+          description: `${body1} ${phase.toLowerCase()} ${aspect.toLowerCase()} ${body2}`,
+          end: timestamp,
+          start: timestamp,
+          summary: `${phase} ${body1} ${aspect} ${body2}`,
         };
       };
 
@@ -587,11 +587,11 @@ describe("MinorAspectsService", () => {
           moment.utc("2024-03-21T14:00:00.000Z"),
         );
         const nonAspectEvent: Event = {
-          start: moment.utc("2024-03-21T12:00:00.000Z"),
-          end: moment.utc("2024-03-21T12:00:00.000Z"),
-          summary: "Sunrise",
-          description: "Sunrise",
           categories: ["Solar", "Daily Cycle"],
+          description: "Sunrise",
+          end: moment.utc("2024-03-21T12:00:00.000Z"),
+          start: moment.utc("2024-03-21T12:00:00.000Z"),
+          summary: "Sunrise",
         };
 
         const events = [
@@ -675,12 +675,12 @@ describe("MinorAspectsService", () => {
   describe("getMinorAspectPhase", () => {
     it("should detect minor aspect phases", () => {
       const phase = service.getMinorAspectPhase({
-        previousLongitudeBody1: 0,
-        previousLongitudeBody2: 27,
         currentLongitudeBody1: 0,
         currentLongitudeBody2: 29,
         nextLongitudeBody1: 0,
         nextLongitudeBody2: 30,
+        previousLongitudeBody1: 0,
+        previousLongitudeBody2: 27,
       });
       expect(phase).toBe("forming");
     });

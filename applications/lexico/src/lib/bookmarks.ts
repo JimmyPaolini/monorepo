@@ -14,12 +14,12 @@ import type { PartOfSpeech, PrincipalParts } from "./types";
 export interface BookmarkedEntry {
   /** Entry UUID */
   id: string;
-  /** Principal parts of the entry */
-  principal_parts: PrincipalParts;
-  /** Part of speech classification */
-  part_of_speech: PartOfSpeech;
   /** Inflection metadata */
   inflection: Record<string, object>;
+  /** Part of speech classification */
+  part_of_speech: PartOfSpeech;
+  /** Principal parts of the entry */
+  principal_parts: PrincipalParts;
   /** Translation strings */
   translations: string[];
 }
@@ -132,7 +132,7 @@ export const isBookmarked = createServerFn({ method: "GET" })
 export const addBookmark = createServerFn({ method: "POST" })
   .inputValidator((data: { entryId: string }) => data)
   .handler(
-    async ({ data }): Promise<{ success: boolean; error: string | null }> => {
+    async ({ data }): Promise<{ error: null | string; success: boolean }> => {
       const supabase = getSupabaseServerClient();
 
       const {
@@ -140,7 +140,7 @@ export const addBookmark = createServerFn({ method: "POST" })
       } = await supabase.auth.getUser();
 
       if (!user) {
-        return { success: false, error: "Not authenticated" };
+        return { error: "Not authenticated", success: false };
       }
 
       const { error } = await supabase
@@ -150,13 +150,13 @@ export const addBookmark = createServerFn({ method: "POST" })
       if (error) {
         // Ignore duplicate key errors (already bookmarked)
         if (error.code === "23505") {
-          return { success: true, error: null };
+          return { error: null, success: true };
         }
         console.error("Error adding bookmark:", error);
-        return { success: false, error: error.message };
+        return { error: error.message, success: false };
       }
 
-      return { success: true, error: null };
+      return { error: null, success: true };
     },
   );
 
@@ -166,7 +166,7 @@ export const addBookmark = createServerFn({ method: "POST" })
 export const removeBookmark = createServerFn({ method: "POST" })
   .inputValidator((data: { entryId: string }) => data)
   .handler(
-    async ({ data }): Promise<{ success: boolean; error: string | null }> => {
+    async ({ data }): Promise<{ error: null | string; success: boolean }> => {
       const supabase = getSupabaseServerClient();
 
       const {
@@ -174,7 +174,7 @@ export const removeBookmark = createServerFn({ method: "POST" })
       } = await supabase.auth.getUser();
 
       if (!user) {
-        return { success: false, error: "Not authenticated" };
+        return { error: "Not authenticated", success: false };
       }
 
       const { error } = await supabase
@@ -185,10 +185,10 @@ export const removeBookmark = createServerFn({ method: "POST" })
 
       if (error) {
         console.error("Error removing bookmark:", error);
-        return { success: false, error: error.message };
+        return { error: error.message, success: false };
       }
 
-      return { success: true, error: null };
+      return { error: null, success: true };
     },
   );
 
@@ -201,9 +201,9 @@ export const toggleBookmark = createServerFn({ method: "POST" })
     async ({
       data,
     }): Promise<{
-      success: boolean;
       bookmarked: boolean;
-      error: string | null;
+      error: null | string;
+      success: boolean;
     }> => {
       const supabase = getSupabaseServerClient();
 
@@ -213,9 +213,9 @@ export const toggleBookmark = createServerFn({ method: "POST" })
 
       if (!user) {
         return {
-          success: false,
           bookmarked: false,
           error: "Not authenticated",
+          success: false,
         };
       }
 
@@ -236,9 +236,9 @@ export const toggleBookmark = createServerFn({ method: "POST" })
           .eq("user_id", user.id);
 
         if (error) {
-          return { success: false, bookmarked: true, error: error.message };
+          return { bookmarked: true, error: error.message, success: false };
         }
-        return { success: true, bookmarked: false, error: null };
+        return { bookmarked: false, error: null, success: true };
       } else {
         // Add bookmark
         const { error } = await supabase
@@ -246,9 +246,9 @@ export const toggleBookmark = createServerFn({ method: "POST" })
           .insert({ entry_id: data.entryId, user_id: user.id });
 
         if (error) {
-          return { success: false, bookmarked: false, error: error.message };
+          return { bookmarked: false, error: error.message, success: false };
         }
-        return { success: true, bookmarked: true, error: null };
+        return { bookmarked: true, error: null, success: true };
       }
     },
   );

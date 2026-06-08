@@ -32,17 +32,12 @@ import { LexicoNamingStrategy } from "./lexico-naming-strategy.js";
  *
  */
 @Module({
+  exports: [TypeOrmModule],
   imports: [
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],
       useFactory: (config: ConfigService) => ({
-        type: "postgres",
-        host: config.get<string>("POSTGRES_HOST", "localhost"),
-        port: config.get<number>("POSTGRES_PORT", 5432),
-        username: config.get<string>("POSTGRES_USER", "postgres"),
-        password: config.get<string>("POSTGRES_PASSWORD", "postgres"),
         database: config.get<string>("POSTGRES_DB", "postgres"),
-        namingStrategy: new LexicoNamingStrategy(),
         entities: [
           Lexeme,
           Inflection,
@@ -68,11 +63,16 @@ import { LexicoNamingStrategy } from "./lexico-naming-strategy.js";
           WordForm,
           WordLexeme,
         ],
-        synchronize: false,
+        host: config.get<string>("POSTGRES_HOST", "localhost"),
         logging: false,
+        namingStrategy: new LexicoNamingStrategy(),
+        password: config.get<string>("POSTGRES_PASSWORD", "postgres"),
+        port: config.get<number>("POSTGRES_PORT", 5432),
+        synchronize: false,
+        type: "postgres",
+        username: config.get<string>("POSTGRES_USER", "postgres"),
       }),
     }),
   ],
-  exports: [TypeOrmModule],
 })
 export class LexicoDatabaseModule {}

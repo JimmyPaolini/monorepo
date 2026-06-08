@@ -1,3 +1,7 @@
+import { Injectable } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Repository } from "typeorm";
+
 import {
   AdjectivalForm,
   AdverbForm,
@@ -22,9 +26,6 @@ import {
   type PartOfSpeech,
   SupineForm,
 } from "@monorepo/lexico-entities";
-import { Injectable } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
-import { Repository } from "typeorm";
 
 import { WordsService } from "../words/words.service";
 
@@ -47,6 +48,7 @@ function isStringArray(value: unknown): value is string[] {
 @Injectable()
 export class FormsService {
   // 🏗 Dependency Injection
+
   constructor(
     @InjectRepository(Form)
     private readonly formRepository: Repository<Form>,
@@ -54,87 +56,12 @@ export class FormsService {
   ) {}
 
   // 🔐 Private Fields
+
   private readonly transientWords = new WeakMap<Form, string[]>();
 
   // 🔑 Public Fields
 
   // 🔏 Private Methods
-
-  /**
-   * Sets transient word strings for a Form instance. These are used during
-   * ingestion to link forms to their corresponding Word rows but are not
-   * persisted on the Form entity itself.
-   */
-  setTransientWords(form: Form, words: string[]): void {
-    this.transientWords.set(form, words);
-  }
-
-  private async fetchExistingForms(lexemeId: string): Promise<Form[]> {
-    return this.formRepository.find({
-      where: { lexeme: { id: lexemeId } },
-    });
-  }
-
-  private async saveNewForms(forms: Form[], lexeme: Lexeme): Promise<Form[]> {
-    for (const form of forms) {
-      form.lexeme = lexeme;
-    }
-    return this.formRepository.save(forms);
-  }
-
-  private buildNormalizedWordMap(
-    savedForms: Form[],
-    rawWordsPerForm: string[][],
-  ): Map<string, Set<Form>> {
-    const formsByWord = new Map<string, Set<Form>>();
-    for (const [i, savedForm] of savedForms.entries()) {
-      const rawWords = rawWordsPerForm[i];
-      if (!rawWords) continue;
-
-      for (const wordString of rawWords) {
-        const normalized = wordString
-          .normalize("NFD")
-          .replaceAll(/[\u0300-\u036F]/gu, "")
-          .trim();
-        if (!/^-?[A-Za-z]/.test(normalized)) continue;
-
-        const existing = formsByWord.get(normalized) ?? new Set<Form>();
-        existing.add(savedForm);
-        formsByWord.set(normalized, existing);
-      }
-    }
-    return formsByWord;
-  }
-
-  private buildNominalForms(rawForms: unknown, lexeme: Lexeme): Form[] {
-    const forms: Form[] = [];
-    if (!isRecord(rawForms)) return forms;
-
-    for (const caseKey of Object.keys(rawForms)) {
-      const formCase = formCaseValues.find((v) => v === caseKey);
-      if (!formCase) continue;
-
-      const numberMap = rawForms[caseKey];
-      if (!isRecord(numberMap)) continue;
-
-      for (const numberKey of Object.keys(numberMap)) {
-        const formNumber = formNumberValues.find((v) => v === numberKey);
-        if (!formNumber) continue;
-
-        const words = numberMap[numberKey];
-        if (!isStringArray(words) || words.length === 0) continue;
-
-        const form = new NominalForm();
-        form.lexeme = lexeme;
-        form.case = formCase;
-        form.number = formNumber;
-        this.setTransientWords(form, words);
-        forms.push(form);
-      }
-    }
-
-    return forms;
-  }
 
   private buildAdjectivalForms(rawForms: unknown, lexeme: Lexeme): Form[] {
     const forms: Form[] = [];
@@ -195,29 +122,6 @@ export class FormsService {
     return forms;
   }
 
-  private buildVerbForms(rawForms: unknown, lexeme: Lexeme): Form[] {
-    const forms: Form[] = [];
-    if (!isRecord(rawForms)) return forms;
-
-    for (const moodKey of formMoodValues) {
-      const moodData = rawForms[moodKey];
-      if (!isRecord(moodData)) continue;
-      forms.push(...this.buildFiniteMoodForms(moodData, moodKey, lexeme));
-    }
-
-    const nonFinite = rawForms["nonFinite"];
-    if (isRecord(nonFinite)) {
-      forms.push(...this.buildNonFiniteForms(nonFinite, lexeme));
-    }
-
-    const verbalNouns = rawForms["verbalNouns"];
-    if (isRecord(verbalNouns)) {
-      forms.push(...this.buildVerbalNounForms(verbalNouns, lexeme));
-    }
-
-    return forms;
-  }
-
   private buildFiniteMoodForms(
     moodData: Record<string, unknown>,
     mood: FormMood,
@@ -252,6 +156,36 @@ export class FormsService {
             forms.push(form);
           }
         }
+      }
+    }
+
+    return forms;
+  }
+
+  private buildNominalForms(rawForms: unknown, lexeme: Lexeme): Form[] {
+    const forms: Form[] = [];
+    if (!isRecord(rawForms)) return forms;
+
+    for (const caseKey of Object.keys(rawForms)) {
+      const formCase = formCaseValues.find((v) => v === caseKey);
+      if (!formCase) continue;
+
+      const numberMap = rawForms[caseKey];
+      if (!isRecord(numberMap)) continue;
+
+      for (const numberKey of Object.keys(numberMap)) {
+        const formNumber = formNumberValues.find((v) => v === numberKey);
+        if (!formNumber) continue;
+
+        const words = numberMap[numberKey];
+        if (!isStringArray(words) || words.length === 0) continue;
+
+        const form = new NominalForm();
+        form.lexeme = lexeme;
+        form.case = formCase;
+        form.number = formNumber;
+        this.setTransientWords(form, words);
+        forms.push(form);
       }
     }
 
@@ -307,6 +241,30 @@ export class FormsService {
     return forms;
   }
 
+  private buildNormalizedWordMap(
+    savedForms: Form[],
+    rawWordsPerForm: string[][],
+  ): Map<string, Set<Form>> {
+    const formsByWord = new Map<string, Set<Form>>();
+    for (const [i, savedForm] of savedForms.entries()) {
+      const rawWords = rawWordsPerForm[i];
+      if (!rawWords) continue;
+
+      for (const wordString of rawWords) {
+        const normalized = wordString
+          .normalize("NFD")
+          .replaceAll(/[\u0300-\u036F]/gu, "")
+          .trim();
+        if (!/^-?[A-Za-z]/.test(normalized)) continue;
+
+        const existing = formsByWord.get(normalized) ?? new Set<Form>();
+        existing.add(savedForm);
+        formsByWord.set(normalized, existing);
+      }
+    }
+    return formsByWord;
+  }
+
   private buildVerbalNounForms(
     verbalNouns: Record<string, unknown>,
     lexeme: Lexeme,
@@ -344,8 +302,86 @@ export class FormsService {
     return forms;
   }
 
+  private buildVerbForms(rawForms: unknown, lexeme: Lexeme): Form[] {
+    const forms: Form[] = [];
+    if (!isRecord(rawForms)) return forms;
+
+    for (const moodKey of formMoodValues) {
+      const moodData = rawForms[moodKey];
+      if (!isRecord(moodData)) continue;
+      forms.push(...this.buildFiniteMoodForms(moodData, moodKey, lexeme));
+    }
+
+    const nonFinite = rawForms["nonFinite"];
+    if (isRecord(nonFinite)) {
+      forms.push(...this.buildNonFiniteForms(nonFinite, lexeme));
+    }
+
+    const verbalNouns = rawForms["verbalNouns"];
+    if (isRecord(verbalNouns)) {
+      forms.push(...this.buildVerbalNounForms(verbalNouns, lexeme));
+    }
+
+    return forms;
+  }
+
+  private async fetchExistingForms(lexemeId: string): Promise<Form[]> {
+    return this.formRepository.find({
+      where: { lexeme: { id: lexemeId } },
+    });
+  }
+
+  private async saveNewForms(forms: Form[], lexeme: Lexeme): Promise<Form[]> {
+    for (const form of forms) {
+      form.lexeme = lexeme;
+    }
+    return this.formRepository.save(forms);
+  }
+
   // 🌎 Public Methods
 
+  /**
+   * Builds Form entities from the raw parsed forms object for a given POS.
+   * Returns an empty array when rawForms is null or the POS has no form table.
+   */
+  buildForms(pos: PartOfSpeech, rawForms: unknown, lexeme: Lexeme): Form[] {
+    if (!rawForms) return [];
+
+    switch (pos) {
+      case "abbreviation":
+      case "circumfix":
+      case "conjunction":
+      case "idiom":
+      case "inflection":
+      case "interfix":
+      case "interjection":
+      case "particle":
+      case "phrase":
+      case "prefix":
+      case "preposition":
+      case "proverb": {
+        return [];
+      }
+      case "adjective":
+      case "numeral":
+      case "participle":
+      case "suffix": {
+        return this.buildAdjectivalForms(rawForms, lexeme);
+      }
+      case "adverb": {
+        return this.buildAdverbForms(rawForms, lexeme);
+      }
+      case "determiner":
+      case "noun":
+      case "pronoun":
+      case "properNoun": {
+        return this.buildNominalForms(rawForms, lexeme);
+      }
+      case "verb": {
+        return this.buildVerbForms(rawForms, lexeme);
+      }
+    }
+  }
   /**
    * Saves Form entities for a Lexeme, then upserts Word rows and creates
    * explicit WordLexeme and WordForm junction records.
@@ -367,7 +403,7 @@ export class FormsService {
       const matchIndex = existingForms.findIndex((ef) => {
         if (ef.constructor.name !== form.constructor.name) return false;
         const keys = Object.keys(form).filter(
-          (k) => !["id", "createdAt", "updatedAt", "lexeme"].includes(k),
+          (k) => !["createdAt", "id", "lexeme", "updatedAt"].includes(k),
         );
         return keys.every((k) => Reflect.get(ef, k) === Reflect.get(form, k));
       });
@@ -403,45 +439,11 @@ export class FormsService {
   }
 
   /**
-   * Builds Form entities from the raw parsed forms object for a given POS.
-   * Returns an empty array when rawForms is null or the POS has no form table.
+   * Sets transient word strings for a Form instance. These are used during
+   * ingestion to link forms to their corresponding Word rows but are not
+   * persisted on the Form entity itself.
    */
-  buildForms(pos: PartOfSpeech, rawForms: unknown, lexeme: Lexeme): Form[] {
-    if (!rawForms) return [];
-
-    switch (pos) {
-      case "noun":
-      case "properNoun":
-      case "pronoun":
-      case "determiner": {
-        return this.buildNominalForms(rawForms, lexeme);
-      }
-      case "adjective":
-      case "participle":
-      case "numeral":
-      case "suffix": {
-        return this.buildAdjectivalForms(rawForms, lexeme);
-      }
-      case "adverb": {
-        return this.buildAdverbForms(rawForms, lexeme);
-      }
-      case "verb": {
-        return this.buildVerbForms(rawForms, lexeme);
-      }
-      case "preposition":
-      case "conjunction":
-      case "abbreviation":
-      case "particle":
-      case "interjection":
-      case "prefix":
-      case "interfix":
-      case "circumfix":
-      case "inflection":
-      case "phrase":
-      case "proverb":
-      case "idiom": {
-        return [];
-      }
-    }
+  setTransientWords(form: Form, words: string[]): void {
+    this.transientWords.set(form, words);
   }
 }

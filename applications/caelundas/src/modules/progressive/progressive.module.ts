@@ -17,6 +17,7 @@ import { ProgressiveService } from "./progressive.service";
  */
 @Module({
   controllers: [],
+  exports: [ProgressiveService],
   imports: [
     AnnualSolarCycleModule,
     AspectsModule,
@@ -28,6 +29,5 @@ import { ProgressiveService } from "./progressive.service";
     TwilightsModule,
   ],
   providers: [ProgressiveService],
-  exports: [ProgressiveService],
 })
 export class ProgressiveModule {}

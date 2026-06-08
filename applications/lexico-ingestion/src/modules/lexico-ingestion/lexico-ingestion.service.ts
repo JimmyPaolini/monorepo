@@ -6,6 +6,7 @@ import { Injectable } from "@nestjs/common";
 @Injectable()
 export class LexicoIngestionService {
   // 🏗 Dependency Injection
+
   constructor() {}
 
   // 🔐 Private Fields

@@ -4,6 +4,11 @@ import { getSupabaseServerClient } from "./supabase-server";
 
 import type { EntryFull, EntrySearchResult } from "./types";
 
+interface SearchInput {
+  language?: "auto" | "english" | "latin";
+  query: string;
+}
+
 // Helper to detect if query is likely Latin
 function isLatinQuery(query: string): boolean {
   // Latin text typically doesn't have common English-only characters/patterns
@@ -28,11 +33,6 @@ function isLatinQuery(query: string): boolean {
 
   // Default to Latin for single words
   return true;
-}
-
-interface SearchInput {
-  query: string;
-  language?: "auto" | "latin" | "english";
 }
 
 export const searchEntries = createServerFn({ method: "GET" })

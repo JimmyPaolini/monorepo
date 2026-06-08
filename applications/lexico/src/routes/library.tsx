@@ -1,3 +1,8 @@
+import { createFileRoute } from "@tanstack/react-router";
+import _ from "lodash";
+import { BookOpen, Edit, Plus, Trash2 } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
+
 import {
   Button,
   Card,
@@ -16,10 +21,6 @@ import {
   Label,
   Textarea,
 } from "@monorepo/lexico-components";
-import { createFileRoute } from "@tanstack/react-router";
-import _ from "lodash";
-import { BookOpen, Edit, Plus, Trash2 } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
 
 import {
   createUserText,
@@ -43,10 +44,10 @@ export const Route = createFileRoute("/library")({
 function LibraryPage(): ReactNode {
   const [texts, setTexts] = useState<UserText[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<null | string>(null);
   const [isCreateOpen, setIsCreateOpen] = useState(false);
-  const [editingText, setEditingText] = useState<UserText | null>(null);
-  const [selectedText, setSelectedText] = useState<UserText | null>(null);
+  const [editingText, setEditingText] = useState<null | UserText>(null);
+  const [selectedText, setSelectedText] = useState<null | UserText>(null);
 
   // Form state
   const [formTitle, setFormTitle] = useState("");
@@ -78,7 +79,7 @@ function LibraryPage(): ReactNode {
     setIsSubmitting(true);
     try {
       const result = await createUserText({
-        data: { title: formTitle, text: formText },
+        data: { text: formText, title: formTitle },
       });
       if (result.success && result.text) {
         const newText = result.text;
@@ -100,14 +101,14 @@ function LibraryPage(): ReactNode {
     setIsSubmitting(true);
     try {
       const result = await updateUserText({
-        data: { id: editingText.id, title: formTitle, text: formText },
+        data: { id: editingText.id, text: formText, title: formTitle },
       });
       if (result.success) {
         setTexts((prev) =>
           _.orderBy(
             prev.map((t) =>
               t.id === editingText.id
-                ? { ...t, title: formTitle, text: formText }
+                ? { ...t, text: formText, title: formTitle }
                 : t,
             ),
             [(t) => t.title],
@@ -161,8 +162,8 @@ function LibraryPage(): ReactNode {
           <h1 className="text-3xl font-bold">Library</h1>
         </div>
         <Dialog
-          open={isCreateOpen}
           onOpenChange={setIsCreateOpen}
+          open={isCreateOpen}
         >
           <DialogTrigger asChild>
             <Button>
@@ -182,32 +183,32 @@ function LibraryPage(): ReactNode {
                 <Label htmlFor="title">Title</Label>
                 <Input
                   id="title"
-                  value={formTitle}
                   onChange={(e) => setFormTitle(e.currentTarget.value)}
                   placeholder="e.g., Cicero's First Catilinarian"
+                  value={formTitle}
                 />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="text">Text</Label>
                 <Textarea
+                  className="min-h-[200px]"
                   id="text"
-                  value={formText}
                   onChange={(e) => setFormText(e.currentTarget.value)}
                   placeholder="Paste your Latin text here..."
-                  className="min-h-[200px]"
+                  value={formText}
                 />
               </div>
             </div>
             <DialogFooter>
               <Button
-                variant="outline"
                 onClick={() => setIsCreateOpen(false)}
+                variant="outline"
               >
                 Cancel
               </Button>
               <Button
-                onClick={() => void handleCreate()}
                 disabled={isSubmitting || !formTitle.trim() || !formText.trim()}
+                onClick={() => void handleCreate()}
               >
                 {isSubmitting ? "Adding..." : "Add Text"}
               </Button>
@@ -218,8 +219,8 @@ function LibraryPage(): ReactNode {
 
       {/* Edit Dialog */}
       <Dialog
-        open={Boolean(editingText)}
         onOpenChange={(open) => !open && closeEdit()}
+        open={Boolean(editingText)}
       >
         <DialogContent className="sm:max-w-lg">
           <DialogHeader>
@@ -233,30 +234,30 @@ function LibraryPage(): ReactNode {
               <Label htmlFor="edit-title">Title</Label>
               <Input
                 id="edit-title"
-                value={formTitle}
                 onChange={(e) => setFormTitle(e.currentTarget.value)}
+                value={formTitle}
               />
             </div>
             <div className="space-y-2">
               <Label htmlFor="edit-text">Text</Label>
               <Textarea
-                id="edit-text"
-                value={formText}
-                onChange={(e) => setFormText(e.currentTarget.value)}
                 className="min-h-[200px]"
+                id="edit-text"
+                onChange={(e) => setFormText(e.currentTarget.value)}
+                value={formText}
               />
             </div>
           </div>
           <DialogFooter>
             <Button
-              variant="outline"
               onClick={closeEdit}
+              variant="outline"
             >
               Cancel
             </Button>
             <Button
-              onClick={() => void handleUpdate()}
               disabled={isSubmitting || !formTitle.trim() || !formText.trim()}
+              onClick={() => void handleUpdate()}
             >
               {isSubmitting ? "Saving..." : "Save Changes"}
             </Button>
@@ -291,24 +292,24 @@ function LibraryPage(): ReactNode {
                   </CardTitle>
                   <div className="flex gap-1">
                     <Button
-                      variant="ghost"
-                      size="icon"
                       className="h-8 w-8"
                       onClick={(e) => {
                         e.stopPropagation();
                         openEdit(text);
                       }}
+                      size="icon"
+                      variant="ghost"
                     >
                       <Edit className="h-4 w-4" />
                     </Button>
                     <Button
-                      variant="ghost"
-                      size="icon"
                       className="h-8 w-8 text-muted-foreground hover:text-destructive"
                       onClick={(e) => {
                         e.stopPropagation();
                         void handleDelete(text.id);
                       }}
+                      size="icon"
+                      variant="ghost"
                     >
                       <Trash2 className="h-4 w-4" />
                     </Button>
@@ -327,8 +328,8 @@ function LibraryPage(): ReactNode {
       {selectedText && (
         <div className="space-y-4">
           <Button
-            variant="outline"
             onClick={() => setSelectedText(null)}
+            variant="outline"
           >
             ← Back to Library
           </Button>

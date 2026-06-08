@@ -30,18 +30,16 @@ if (!supabaseUrl || !supabaseAnonKey) {
 export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey, {
   auth: {
     autoRefreshToken: true,
-    persistSession: true,
     detectSessionInUrl: true,
+    persistSession: true,
   },
 });
 
-// Re-export types for convenience
-export type { User, Session } from "@supabase/supabase-js";
 export type { Database } from "./database.types";
 export {
   type Author,
-  type Bookmark,
   type Book,
+  type Bookmark,
   type Entry,
   type Line,
   type LineWord,
@@ -53,3 +51,5 @@ export {
   type UserText,
   type Word,
 } from "./database.types";
+// Re-export types for convenience
+export type { Session, User } from "@supabase/supabase-js";

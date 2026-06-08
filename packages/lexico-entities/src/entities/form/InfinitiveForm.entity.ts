@@ -10,22 +10,22 @@ import {
 } from "./Form.entity.js";
 
 /** A non-finite infinitive form (voice + tense). */
-@ObjectType({ implements: Form })
 @ChildEntity("infinitive")
+@ObjectType({ implements: Form })
 export class InfinitiveForm extends Form {
-  @Field(() => String)
   @Column({
-    type: "enum",
-    enum: formVoiceValues,
-    comment: "Grammatical voice (active or passive)",
-  })
-  voice!: FormVoice;
-
-  @Field(() => String)
-  @Column({
-    type: "enum",
-    enum: formNonFiniteTenseValues,
     comment: "Tense of the infinitive (present, perfect, future)",
+    enum: formNonFiniteTenseValues,
+    type: "enum",
   })
+  @Field(() => String)
   tense!: FormNonFiniteTense;
+
+  @Column({
+    comment: "Grammatical voice (active or passive)",
+    enum: formVoiceValues,
+    type: "enum",
+  })
+  @Field(() => String)
+  voice!: FormVoice;
 }

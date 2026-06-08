@@ -30,8 +30,8 @@ import type { Moment } from "moment-timezone";
  */
 @Injectable()
 export class RetrogradesService {
-  private static readonly categories = ["Astronomy", "Astrology", "Direction"];
   // 🏗 Dependency Injection
+
   constructor(
     private readonly logger: LoggerService,
     private readonly ephemerisService: EphemerisService,
@@ -43,11 +43,187 @@ export class RetrogradesService {
 
   // 🔐 Private Fields
 
+  private static readonly categories = ["Astronomy", "Astrology", "Direction"];
+
   // 🔑 Public Fields
 
   // 🔏 Private Methods
 
+  private getRetrogradeProgressiveEvent(
+    beginningEvent: Event,
+    endingEvent: Event,
+    planet: RetrogradeBody,
+  ): Event {
+    const start = beginningEvent.start;
+    const end = endingEvent.start;
+
+    const planetCapitalized = planet.charAt(0).toUpperCase() + planet.slice(1);
+
+    // Extract planet symbol from beginning event summary (first non-whitespace character sequence)
+    const symbolMatch = /^(\S+)/.exec(beginningEvent.summary);
+    const symbol = symbolMatch ? symbolMatch[1] : "";
+
+    return {
+      categories: ["Astronomy", "Astrology", "Retrogrades"],
+      description: `${planetCapitalized} Retrograde`,
+      end,
+      start,
+      summary: `${symbol} ↩️ ${planetCapitalized} Retrograde`,
+    };
+  }
+
+  private isDirect(args: {
+    currentLongitude: number;
+    nextLongitudes: number[];
+    previousLongitudes: number[];
+  }): boolean {
+    const { currentLongitude, nextLongitudes, previousLongitudes } = args;
+
+    const hasBeenRetrograde = previousLongitudes.every((previousLongitude) => {
+      const previousLongitudeNormalized =
+        this.mathService.normalizeForComparison(
+          previousLongitude,
+          currentLongitude,
+        );
+      return previousLongitudeNormalized > currentLongitude;
+    });
+
+    const willBeDirect = nextLongitudes.every((nextLongitude) => {
+      const nextLongitudeNormalized = this.mathService.normalizeForComparison(
+        nextLongitude,
+        currentLongitude,
+      );
+      return nextLongitudeNormalized >= currentLongitude;
+    });
+
+    return hasBeenRetrograde && willBeDirect;
+  }
+
+  /**
+   * Creates a progressive event from paired retrograde and direct station events.
+   *
+   * Extracts the planet symbol from the beginning event summary and formats a
+   * progressive event showing the span of the retrograde period.
+   *
+   * @param beginningEvent - Stationary retrograde event (marks start of retrograde)
+   * @param endingEvent - Stationary direct event (marks end of retrograde)
+   * @param planet - Planet that was retrograde
+   * @returns Progressive event spanning the retrograde period
+   *
+   * @remarks
+   * - Duration spans from beginningEvent.start to endingEvent.start (not endingEvent.end)
+   * - Capitalizes planet name for display
+   * - Extracts symbol from beginning event summary (assumes first non-whitespace sequence)
+   * - Summary format: `[symbol] ↩️ [Planet] Retrograde`
+   * - Uses singular category "Retrogrades" (not "Retrograde" or "Direct")
+   * - Categories: Astronomy, Astrology, Retrogrades
+   *
+   * @example
+   * ```typescript
+   * const duration = getRetrogradeProgressiveEvent(
+   *   { summary: "☿ ↩️ Mercury Stationary Retrograde", start: Mar 15, ... },
+   *   { summary: "☿ ➡️ Mercury Stationary Direct", start: Apr 8, ... },
+   *   "mercury"
+   * );
+   * // Returns: { summary: "☿ ↩️ Mercury Retrograde", start: Mar 15, end: Apr 8, ... }
+   * ```
+   */
+  private isRetrograde(args: {
+    currentLongitude: number;
+    nextLongitudes: number[];
+    previousLongitudes: number[];
+  }): boolean {
+    const { currentLongitude, nextLongitudes, previousLongitudes } = args;
+
+    const hasBeenDirect = previousLongitudes.every((previousLongitude) => {
+      const previousLongitudeNormalized =
+        this.mathService.normalizeForComparison(
+          previousLongitude,
+          currentLongitude,
+        );
+      return previousLongitudeNormalized < currentLongitude;
+    });
+
+    const willBeRetrograde = nextLongitudes.every((nextLongitude) => {
+      const nextLongitudeNormalized = this.mathService.normalizeForComparison(
+        nextLongitude,
+        currentLongitude,
+      );
+      return nextLongitudeNormalized <= currentLongitude;
+    });
+
+    return hasBeenDirect && willBeRetrograde;
+  }
+
   // 🌎 Public Methods
+
+  /**
+   * Creates a formatted calendar event for a retrograde or direct station.
+   *
+   * Generates a calendar event with Unicode symbols and descriptive text for a
+   * planetary stationary point. Events are categorized by direction to distinguish
+   * retrograde stations from direct stations.
+   *
+   * @param args - Station event parameters
+   * @param body - Celestial body entering station (e.g., "mercury", "venus", "mars")
+   * @param timestamp - Exact time of the stationary point
+   * @param direction - Orbital direction: "retrograde" or "direct"
+   * @returns Calendar event with summary, description, and direction-specific categories
+   *
+   * @remarks
+   * - Summary format: `[bodySymbol] [directionSymbol] [Body] Stationary [Direction]`
+   * - Example retrograde: "☿ ↩️ Mercury Stationary Retrograde"
+   * - Example direct: "☿ ➡️ Mercury Stationary Direct"
+   * - Adds "Retrograde" or "Direct" category based on direction
+   * - Uses Unicode astronomical symbols: ☿ (Mercury), ♀ (Venus), ♂ (Mars), ♃ (Jupiter), etc.
+   * - Direction symbols: ↩️ (retrograde), ➡️ (direct)
+   * - Logs event to console with ISO timestamp
+   *
+   * @see {@link symbolByBody} for planetary Unicode symbols
+   * @see {@link symbolByOrbitalDirection} for direction symbols
+   * @see {@link Event} for calendar event structure
+   *
+   * @example
+   * ```typescript
+   * const event = getRetrogradeEvent({
+   *   body: "mercury",
+   *   timestamp: new Date('2026-03-15T08:30:00Z'),
+   *   direction: "retrograde"
+   * });
+   * // Returns: { summary: "☿ ↩️ Mercury Stationary Retrograde", start: ..., ... }
+   * ```
+   */
+  buildRetrogradeEvent(args: {
+    body: RetrogradeBody;
+    direction: OrbitalDirection;
+    timestamp: Moment;
+  }): Event {
+    const { body, direction, timestamp } = args;
+
+    const bodyCapitalized = capitalize(body);
+    const orbitalDirectionCapitalized = capitalize(direction);
+
+    const retrogradeBodySymbol = symbolByBody[body];
+    const orbitalDirectionSymbol = symbolByOrbitalDirection[direction];
+
+    const description = `${bodyCapitalized} Stationary ${orbitalDirectionCapitalized}`;
+    const summary = `${retrogradeBodySymbol} ${orbitalDirectionSymbol} ${description}`;
+
+    this.logger.log(`${summary} at ${timestamp.toISOString()}`);
+
+    const retrogradeEvent: Event = {
+      categories: [
+        ...RetrogradesService.categories,
+        ...(direction === "retrograde" ? ["Retrograde"] : ["Direct"]),
+      ],
+      description,
+      end: timestamp,
+      start: timestamp,
+      summary,
+    };
+
+    return retrogradeEvent;
+  }
 
   /**
    * Detects retrograde and direct station events at a specific time point.
@@ -128,95 +304,27 @@ export class RetrogradesService {
       const timestamp = minute;
       const longitudes = {
         currentLongitude,
-        previousLongitudes,
         nextLongitudes,
+        previousLongitudes,
       };
 
       if (this.isRetrograde({ ...longitudes })) {
         retrogradeEvents.push(
           this.buildRetrogradeEvent({
             body,
-            timestamp,
             direction: "retrograde",
+            timestamp,
           }),
         );
       }
       if (this.isDirect({ ...longitudes })) {
         retrogradeEvents.push(
-          this.buildRetrogradeEvent({ body, timestamp, direction: "direct" }),
+          this.buildRetrogradeEvent({ body, direction: "direct", timestamp }),
         );
       }
     }
 
     return retrogradeEvents;
-  }
-
-  /**
-   * Creates a formatted calendar event for a retrograde or direct station.
-   *
-   * Generates a calendar event with Unicode symbols and descriptive text for a
-   * planetary stationary point. Events are categorized by direction to distinguish
-   * retrograde stations from direct stations.
-   *
-   * @param args - Station event parameters
-   * @param body - Celestial body entering station (e.g., "mercury", "venus", "mars")
-   * @param timestamp - Exact time of the stationary point
-   * @param direction - Orbital direction: "retrograde" or "direct"
-   * @returns Calendar event with summary, description, and direction-specific categories
-   *
-   * @remarks
-   * - Summary format: `[bodySymbol] [directionSymbol] [Body] Stationary [Direction]`
-   * - Example retrograde: "☿ ↩️ Mercury Stationary Retrograde"
-   * - Example direct: "☿ ➡️ Mercury Stationary Direct"
-   * - Adds "Retrograde" or "Direct" category based on direction
-   * - Uses Unicode astronomical symbols: ☿ (Mercury), ♀ (Venus), ♂ (Mars), ♃ (Jupiter), etc.
-   * - Direction symbols: ↩️ (retrograde), ➡️ (direct)
-   * - Logs event to console with ISO timestamp
-   *
-   * @see {@link symbolByBody} for planetary Unicode symbols
-   * @see {@link symbolByOrbitalDirection} for direction symbols
-   * @see {@link Event} for calendar event structure
-   *
-   * @example
-   * ```typescript
-   * const event = getRetrogradeEvent({
-   *   body: "mercury",
-   *   timestamp: new Date('2026-03-15T08:30:00Z'),
-   *   direction: "retrograde"
-   * });
-   * // Returns: { summary: "☿ ↩️ Mercury Stationary Retrograde", start: ..., ... }
-   * ```
-   */
-  buildRetrogradeEvent(args: {
-    body: RetrogradeBody;
-    timestamp: Moment;
-    direction: OrbitalDirection;
-  }): Event {
-    const { body, timestamp, direction } = args;
-
-    const bodyCapitalized = capitalize(body);
-    const orbitalDirectionCapitalized = capitalize(direction);
-
-    const retrogradeBodySymbol = symbolByBody[body];
-    const orbitalDirectionSymbol = symbolByOrbitalDirection[direction];
-
-    const description = `${bodyCapitalized} Stationary ${orbitalDirectionCapitalized}`;
-    const summary = `${retrogradeBodySymbol} ${orbitalDirectionSymbol} ${description}`;
-
-    this.logger.log(`${summary} at ${timestamp.toISOString()}`);
-
-    const retrogradeEvent: Event = {
-      start: timestamp,
-      end: timestamp,
-      categories: [
-        ...RetrogradesService.categories,
-        ...(direction === "retrograde" ? ["Retrograde"] : ["Direct"]),
-      ],
-      summary,
-      description,
-    };
-
-    return retrogradeEvent;
   }
 
   /**
@@ -286,111 +394,5 @@ export class RetrogradesService {
     }
 
     return progressiveEvents;
-  }
-
-  /**
-   * Creates a progressive event from paired retrograde and direct station events.
-   *
-   * Extracts the planet symbol from the beginning event summary and formats a
-   * progressive event showing the span of the retrograde period.
-   *
-   * @param beginningEvent - Stationary retrograde event (marks start of retrograde)
-   * @param endingEvent - Stationary direct event (marks end of retrograde)
-   * @param planet - Planet that was retrograde
-   * @returns Progressive event spanning the retrograde period
-   *
-   * @remarks
-   * - Duration spans from beginningEvent.start to endingEvent.start (not endingEvent.end)
-   * - Capitalizes planet name for display
-   * - Extracts symbol from beginning event summary (assumes first non-whitespace sequence)
-   * - Summary format: `[symbol] ↩️ [Planet] Retrograde`
-   * - Uses singular category "Retrogrades" (not "Retrograde" or "Direct")
-   * - Categories: Astronomy, Astrology, Retrogrades
-   *
-   * @example
-   * ```typescript
-   * const duration = getRetrogradeProgressiveEvent(
-   *   { summary: "☿ ↩️ Mercury Stationary Retrograde", start: Mar 15, ... },
-   *   { summary: "☿ ➡️ Mercury Stationary Direct", start: Apr 8, ... },
-   *   "mercury"
-   * );
-   * // Returns: { summary: "☿ ↩️ Mercury Retrograde", start: Mar 15, end: Apr 8, ... }
-   * ```
-   */
-  private isRetrograde(args: {
-    currentLongitude: number;
-    previousLongitudes: number[];
-    nextLongitudes: number[];
-  }): boolean {
-    const { currentLongitude, previousLongitudes, nextLongitudes } = args;
-
-    const hasBeenDirect = previousLongitudes.every((previousLongitude) => {
-      const previousLongitudeNormalized =
-        this.mathService.normalizeForComparison(
-          previousLongitude,
-          currentLongitude,
-        );
-      return previousLongitudeNormalized < currentLongitude;
-    });
-
-    const willBeRetrograde = nextLongitudes.every((nextLongitude) => {
-      const nextLongitudeNormalized = this.mathService.normalizeForComparison(
-        nextLongitude,
-        currentLongitude,
-      );
-      return nextLongitudeNormalized <= currentLongitude;
-    });
-
-    return hasBeenDirect && willBeRetrograde;
-  }
-
-  private isDirect(args: {
-    currentLongitude: number;
-    previousLongitudes: number[];
-    nextLongitudes: number[];
-  }): boolean {
-    const { currentLongitude, previousLongitudes, nextLongitudes } = args;
-
-    const hasBeenRetrograde = previousLongitudes.every((previousLongitude) => {
-      const previousLongitudeNormalized =
-        this.mathService.normalizeForComparison(
-          previousLongitude,
-          currentLongitude,
-        );
-      return previousLongitudeNormalized > currentLongitude;
-    });
-
-    const willBeDirect = nextLongitudes.every((nextLongitude) => {
-      const nextLongitudeNormalized = this.mathService.normalizeForComparison(
-        nextLongitude,
-        currentLongitude,
-      );
-      return nextLongitudeNormalized >= currentLongitude;
-    });
-
-    return hasBeenRetrograde && willBeDirect;
-  }
-
-  private getRetrogradeProgressiveEvent(
-    beginningEvent: Event,
-    endingEvent: Event,
-    planet: RetrogradeBody,
-  ): Event {
-    const start = beginningEvent.start;
-    const end = endingEvent.start;
-
-    const planetCapitalized = planet.charAt(0).toUpperCase() + planet.slice(1);
-
-    // Extract planet symbol from beginning event summary (first non-whitespace character sequence)
-    const symbolMatch = /^(\S+)/.exec(beginningEvent.summary);
-    const symbol = symbolMatch ? symbolMatch[1] : "";
-
-    return {
-      start,
-      end,
-      summary: `${symbol} ↩️ ${planetCapitalized} Retrograde`,
-      description: `${planetCapitalized} Retrograde`,
-      categories: ["Astronomy", "Astrology", "Retrogrades"],
-    };
   }
 }

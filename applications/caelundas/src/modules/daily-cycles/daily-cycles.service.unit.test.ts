@@ -21,8 +21,8 @@ interface ServicePrivate {
     previousElevation: number;
   }) => boolean;
   isSet: (args: {
-    previousElevation: number;
     currentElevation: number;
+    previousElevation: number;
   }) => boolean;
 }
 
@@ -56,9 +56,9 @@ describe("DailyCyclesService", () => {
 
         // Sun rising above horizon (threshold is -16/60 degrees = -0.2667)
         const sunAzimuthElevationEphemeris: AzimuthElevationEphemeris = {
-          [previousMinute.toISOString()]: { azimuth: 90, elevation: -0.3 },
           [currentMinute.toISOString()]: { azimuth: 91, elevation: -0.1 },
           [nextMinute.toISOString()]: { azimuth: 92, elevation: 0.1 },
+          [previousMinute.toISOString()]: { azimuth: 90, elevation: -0.3 },
         };
 
         const events = service.getDailySolarCycleEvents({
@@ -78,9 +78,9 @@ describe("DailyCyclesService", () => {
 
         // Sun setting below horizon
         const sunAzimuthElevationEphemeris: AzimuthElevationEphemeris = {
-          [previousMinute.toISOString()]: { azimuth: 270, elevation: -0.1 },
           [currentMinute.toISOString()]: { azimuth: 271, elevation: -0.3 },
           [nextMinute.toISOString()]: { azimuth: 272, elevation: -0.5 },
+          [previousMinute.toISOString()]: { azimuth: 270, elevation: -0.1 },
         };
 
         const events = service.getDailySolarCycleEvents({
@@ -100,9 +100,9 @@ describe("DailyCyclesService", () => {
 
         // Sun at local maximum elevation
         const sunAzimuthElevationEphemeris: AzimuthElevationEphemeris = {
-          [previousMinute.toISOString()]: { azimuth: 178, elevation: 44.9 },
           [currentMinute.toISOString()]: { azimuth: 180, elevation: 45 },
           [nextMinute.toISOString()]: { azimuth: 182, elevation: 44.9 },
+          [previousMinute.toISOString()]: { azimuth: 178, elevation: 44.9 },
         };
 
         const events = service.getDailySolarCycleEvents({
@@ -122,9 +122,9 @@ describe("DailyCyclesService", () => {
 
         // Sun at local minimum elevation (below horizon at night)
         const sunAzimuthElevationEphemeris: AzimuthElevationEphemeris = {
-          [previousMinute.toISOString()]: { azimuth: 358, elevation: -44.9 },
           [currentMinute.toISOString()]: { azimuth: 0, elevation: -45 },
           [nextMinute.toISOString()]: { azimuth: 2, elevation: -44.9 },
+          [previousMinute.toISOString()]: { azimuth: 358, elevation: -44.9 },
         };
 
         const events = service.getDailySolarCycleEvents({
@@ -144,9 +144,9 @@ describe("DailyCyclesService", () => {
 
         // Sun in middle of sky, not at any threshold
         const sunAzimuthElevationEphemeris: AzimuthElevationEphemeris = {
-          [previousMinute.toISOString()]: { azimuth: 150, elevation: 29 },
           [currentMinute.toISOString()]: { azimuth: 151, elevation: 30 },
           [nextMinute.toISOString()]: { azimuth: 152, elevation: 31 },
+          [previousMinute.toISOString()]: { azimuth: 150, elevation: 29 },
         };
 
         const events = service.getDailySolarCycleEvents({
@@ -164,9 +164,9 @@ describe("DailyCyclesService", () => {
 
         // Edge case: sunrise and maximum at same time
         const sunAzimuthElevationEphemeris: AzimuthElevationEphemeris = {
-          [previousMinute.toISOString()]: { azimuth: 90, elevation: -0.3 },
           [currentMinute.toISOString()]: { azimuth: 91, elevation: -0.2 },
           [nextMinute.toISOString()]: { azimuth: 92, elevation: -0.25 },
+          [previousMinute.toISOString()]: { azimuth: 90, elevation: -0.3 },
         };
 
         const events = service.getDailySolarCycleEvents({
@@ -253,9 +253,9 @@ describe("DailyCyclesService", () => {
 
         // Moon rising above horizon (threshold is -16/60 degrees = -0.2667)
         const moonAzimuthElevationEphemeris: AzimuthElevationEphemeris = {
-          [previousMinute.toISOString()]: { azimuth: 90, elevation: -0.3 },
           [currentMinute.toISOString()]: { azimuth: 91, elevation: -0.1 },
           [nextMinute.toISOString()]: { azimuth: 92, elevation: 0.1 },
+          [previousMinute.toISOString()]: { azimuth: 90, elevation: -0.3 },
         };
 
         const events = service.getDailyLunarCycleEvents({
@@ -276,9 +276,9 @@ describe("DailyCyclesService", () => {
 
         // Moon setting below horizon
         const moonAzimuthElevationEphemeris: AzimuthElevationEphemeris = {
-          [previousMinute.toISOString()]: { azimuth: 270, elevation: -0.1 },
           [currentMinute.toISOString()]: { azimuth: 271, elevation: -0.3 },
           [nextMinute.toISOString()]: { azimuth: 272, elevation: -0.5 },
+          [previousMinute.toISOString()]: { azimuth: 270, elevation: -0.1 },
         };
 
         const events = service.getDailyLunarCycleEvents({
@@ -299,9 +299,9 @@ describe("DailyCyclesService", () => {
 
         // Moon at local maximum elevation
         const moonAzimuthElevationEphemeris: AzimuthElevationEphemeris = {
-          [previousMinute.toISOString()]: { azimuth: 178, elevation: 39.9 },
           [currentMinute.toISOString()]: { azimuth: 180, elevation: 40 },
           [nextMinute.toISOString()]: { azimuth: 182, elevation: 39.9 },
+          [previousMinute.toISOString()]: { azimuth: 178, elevation: 39.9 },
         };
 
         const events = service.getDailyLunarCycleEvents({
@@ -322,9 +322,9 @@ describe("DailyCyclesService", () => {
 
         // Moon at local minimum elevation (below horizon during day)
         const moonAzimuthElevationEphemeris: AzimuthElevationEphemeris = {
-          [previousMinute.toISOString()]: { azimuth: 358, elevation: -39.9 },
           [currentMinute.toISOString()]: { azimuth: 0, elevation: -40 },
           [nextMinute.toISOString()]: { azimuth: 2, elevation: -39.9 },
+          [previousMinute.toISOString()]: { azimuth: 358, elevation: -39.9 },
         };
 
         const events = service.getDailyLunarCycleEvents({
@@ -345,9 +345,9 @@ describe("DailyCyclesService", () => {
 
         // Moon in middle of sky, not at any threshold
         const moonAzimuthElevationEphemeris: AzimuthElevationEphemeris = {
-          [previousMinute.toISOString()]: { azimuth: 150, elevation: 29 },
           [currentMinute.toISOString()]: { azimuth: 151, elevation: 30 },
           [nextMinute.toISOString()]: { azimuth: 152, elevation: 31 },
+          [previousMinute.toISOString()]: { azimuth: 150, elevation: 29 },
         };
 
         const events = service.getDailyLunarCycleEvents({
@@ -365,9 +365,9 @@ describe("DailyCyclesService", () => {
 
         // Moonrise with a local maximum (unlikely in reality but tests code path)
         const moonAzimuthElevationEphemeris: AzimuthElevationEphemeris = {
-          [previousMinute.toISOString()]: { azimuth: 90, elevation: -0.3 },
           [currentMinute.toISOString()]: { azimuth: 91, elevation: -0.2 },
           [nextMinute.toISOString()]: { azimuth: 92, elevation: -0.25 },
+          [previousMinute.toISOString()]: { azimuth: 90, elevation: -0.3 },
         };
 
         const events = service.getDailyLunarCycleEvents({

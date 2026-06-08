@@ -32,6 +32,7 @@ import type { Moment } from "moment-timezone";
 @Injectable()
 export class QuintupleAspectsService {
   // 🏗 Dependency Injection
+
   constructor(private readonly mathService: MathService) {}
 
   // 🔐 Private Fields
@@ -40,10 +41,98 @@ export class QuintupleAspectsService {
 
   // 🔏 Private Methods
 
-  private groupAspectsByType<T extends AspectBodies>(
-    edges: T[],
-  ): Map<Aspect, T[]> {
-    return groupByToMap(edges, (edge) => edge.aspect);
+  /**
+   * Composes Pentagram patterns from stored 2-body aspects.
+   *
+   * A Pentagram is an extremely rare configuration of 5 bodies forming
+   * a 5-pointed star with 5 quintile aspects (72° each). This pattern
+   * represents the harmonic division of 360° by 5.
+   *
+   * The pentagram is associated with creativity, talent, and the golden
+   * ratio in sacred geometry. Its occurrence indicates a powerful alignment
+   * for manifestation and creative expression.
+   *
+   * @param allEdges - All aspect edges across time for phase detection
+   * @param minute - The minute to check for Pentagram patterns
+   * @returns Array of Pentagram events detected at this minute
+   * @see {@link findPentagramPattern} for pattern validation logic
+   * @see {@link determineMultiBodyPhase} for phase calculation
+   * @see {@link getCombinations} for generating body combinations
+   */
+  private composePentagrams(args: {
+    currentAspectBodies: AspectBodies[];
+    minute: Moment;
+    previousAspectBodies: AspectBodies[];
+  }): Event[] {
+    const { currentAspectBodies, minute, previousAspectBodies } = args;
+    const events: Event[] = [];
+
+    const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
+    const aspectsByType = this.groupAspectsByType(unionEdges);
+    const quintiles = aspectsByType.get("quintile") || [];
+
+    if (quintiles.length < 5) {
+      return events;
+    }
+
+    // Collect all unique bodies involved in quintiles
+    const bodiesSet = new Set<Body>();
+    for (const edge of quintiles) {
+      bodiesSet.add(edge.bodies[0]);
+      bodiesSet.add(edge.bodies[1]);
+    }
+    const bodies = [...bodiesSet];
+
+    if (bodies.length < 5) {
+      return events;
+    }
+
+    // Try all combinations of 5 bodies
+    const combinations = this.mathService.getCombinations(bodies, 5);
+
+    for (const combo of combinations) {
+      // Check if these 5 bodies form a pentagram pattern
+      // A pentagram is a 5-pointed star where each body connects to exactly 2 others,
+      // forming a cycle that skips one body each time (like a star)
+      const pentagramBodies = this.findPentagramPattern(combo, unionEdges);
+
+      if (pentagramBodies) {
+        const result = this.determineCompoundPhaseFromSnapshots(
+          currentAspectBodies,
+          previousAspectBodies,
+          pentagramBodies,
+          minute,
+          (edges) => {
+            return this.findPentagramPattern(pentagramBodies, edges) !== null;
+          },
+        );
+
+        if (result) {
+          const b0 = pentagramBodies[0];
+          const b1 = pentagramBodies[1];
+          const b2 = pentagramBodies[2];
+          const b3 = pentagramBodies[3];
+          const b4 = pentagramBodies[4];
+          if (!b0 || !b1 || !b2 || !b3 || !b4) {
+            continue;
+          }
+          events.push(
+            this.getQuintupleAspectEvent({
+              body1: b0,
+              body2: b1,
+              body3: b2,
+              body4: b3,
+              body5: b4,
+              phase: result.phase,
+              quintupleAspect: "pentagram",
+              timestamp: result.eventMinute,
+            }),
+          );
+        }
+      }
+    }
+
+    return events;
   }
 
   private determineCompoundPhaseFromSnapshots(
@@ -52,7 +141,7 @@ export class QuintupleAspectsService {
     patternBodies: Body[],
     currentMinute: Moment,
     checkPatternExists: (edges: AspectBodies[]) => boolean,
-  ): { phase: AspectPhase; eventMinute: Moment } | null {
+  ): null | { eventMinute: Moment; phase: AspectPhase } {
     const bodySet = new Set(patternBodies);
     const filterByBodies = (edges: AspectBodies[]): AspectBodies[] =>
       edges.filter((e) => bodySet.has(e.bodies[0]) && bodySet.has(e.bodies[1]));
@@ -64,19 +153,16 @@ export class QuintupleAspectsService {
     const previousExists = checkPatternExists(previousFiltered);
 
     if (currentExists && !previousExists) {
-      return { phase: "forming", eventMinute: currentMinute };
+      return { eventMinute: currentMinute, phase: "forming" };
     }
     if (!currentExists && previousExists) {
       return {
-        phase: "dissolving",
         eventMinute: currentMinute.clone().subtract(1, "minute"),
+        phase: "dissolving",
       };
     }
     return null;
   }
-
-  // 🌎 Public Methods
-
   /**
    * Checks if 5 bodies form a valid pentagram pattern (5-pointed star).
    *
@@ -196,121 +282,27 @@ export class QuintupleAspectsService {
   }
 
   /**
-   * Composes Pentagram patterns from stored 2-body aspects.
-   *
-   * A Pentagram is an extremely rare configuration of 5 bodies forming
-   * a 5-pointed star with 5 quintile aspects (72° each). This pattern
-   * represents the harmonic division of 360° by 5.
-   *
-   * The pentagram is associated with creativity, talent, and the golden
-   * ratio in sacred geometry. Its occurrence indicates a powerful alignment
-   * for manifestation and creative expression.
-   *
-   * @param allEdges - All aspect edges across time for phase detection
-   * @param minute - The minute to check for Pentagram patterns
-   * @returns Array of Pentagram events detected at this minute
-   * @see {@link findPentagramPattern} for pattern validation logic
-   * @see {@link determineMultiBodyPhase} for phase calculation
-   * @see {@link getCombinations} for generating body combinations
-   */
-  private composePentagrams(args: {
-    currentAspectBodies: AspectBodies[];
-    previousAspectBodies: AspectBodies[];
-    minute: Moment;
-  }): Event[] {
-    const { currentAspectBodies, previousAspectBodies, minute } = args;
-    const events: Event[] = [];
-
-    const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
-    const aspectsByType = this.groupAspectsByType(unionEdges);
-    const quintiles = aspectsByType.get("quintile") || [];
-
-    if (quintiles.length < 5) {
-      return events;
-    }
-
-    // Collect all unique bodies involved in quintiles
-    const bodiesSet = new Set<Body>();
-    for (const edge of quintiles) {
-      bodiesSet.add(edge.bodies[0]);
-      bodiesSet.add(edge.bodies[1]);
-    }
-    const bodies = [...bodiesSet];
-
-    if (bodies.length < 5) {
-      return events;
-    }
-
-    // Try all combinations of 5 bodies
-    const combinations = this.mathService.getCombinations(bodies, 5);
-
-    for (const combo of combinations) {
-      // Check if these 5 bodies form a pentagram pattern
-      // A pentagram is a 5-pointed star where each body connects to exactly 2 others,
-      // forming a cycle that skips one body each time (like a star)
-      const pentagramBodies = this.findPentagramPattern(combo, unionEdges);
-
-      if (pentagramBodies) {
-        const result = this.determineCompoundPhaseFromSnapshots(
-          currentAspectBodies,
-          previousAspectBodies,
-          pentagramBodies,
-          minute,
-          (edges) => {
-            return this.findPentagramPattern(pentagramBodies, edges) !== null;
-          },
-        );
-
-        if (result) {
-          const b0 = pentagramBodies[0];
-          const b1 = pentagramBodies[1];
-          const b2 = pentagramBodies[2];
-          const b3 = pentagramBodies[3];
-          const b4 = pentagramBodies[4];
-          if (!b0 || !b1 || !b2 || !b3 || !b4) {
-            continue;
-          }
-          events.push(
-            this.getQuintupleAspectEvent({
-              timestamp: result.eventMinute,
-              body1: b0,
-              body2: b1,
-              body3: b2,
-              body4: b3,
-              body5: b4,
-              quintupleAspect: "pentagram",
-              phase: result.phase,
-            }),
-          );
-        }
-      }
-    }
-
-    return events;
-  }
-
-  /**
    * Create a quintuple aspect event
    */
   private getQuintupleAspectEvent(params: {
-    timestamp: Moment;
     body1: Body;
     body2: Body;
     body3: Body;
     body4: Body;
     body5: Body;
-    quintupleAspect: QuintupleAspect;
     phase: AspectPhase;
+    quintupleAspect: QuintupleAspect;
+    timestamp: Moment;
   }): Event {
     const {
-      timestamp,
       body1,
       body2,
       body3,
-      body5,
       body4,
-      quintupleAspect,
+      body5,
       phase,
+      quintupleAspect,
+      timestamp,
     } = params;
 
     const body1Capitalized = _.startCase(body1);
@@ -362,13 +354,21 @@ export class QuintupleAspectsService {
     ];
 
     return {
-      start: timestamp,
-      end: timestamp,
-      description,
-      summary,
       categories,
+      description,
+      end: timestamp,
+      start: timestamp,
+      summary,
     };
   }
+
+  private groupAspectsByType<T extends AspectBodies>(
+    edges: T[],
+  ): Map<Aspect, T[]> {
+    return groupByToMap(edges, (edge) => edge.aspect);
+  }
+
+  // 🌎 Public Methods
 
   /**
    * Detects all quintuple aspect patterns from stored 2-body aspect events.
@@ -385,14 +385,14 @@ export class QuintupleAspectsService {
    */
   detect(args: {
     currentAspectBodies: AspectBodies[];
-    previousAspectBodies: AspectBodies[];
     minute: Moment;
+    previousAspectBodies: AspectBodies[];
   }): Event[] {
-    const { currentAspectBodies, previousAspectBodies, minute } = args;
+    const { currentAspectBodies, minute, previousAspectBodies } = args;
     return this.composePentagrams({
       currentAspectBodies,
-      previousAspectBodies,
       minute,
+      previousAspectBodies,
     });
   }
 
@@ -456,17 +456,17 @@ export class QuintupleAspectsService {
           if (potentialDissolvingEvent.categories.includes("Dissolving")) {
             // Create progressive event
             progressiveEvents.push({
-              start: currentEvent.start,
-              end: potentialDissolvingEvent.start,
-              summary: currentEvent.summary.replace(/^(➡️|⬅️|🎯)\s/, ""),
-              description: currentEvent.description.replace(
-                / (forming|exact|dissolving)$/,
-                "",
-              ),
               categories: currentEvent.categories.filter(
                 (c) =>
                   c !== "Forming" && c !== "Perfective" && c !== "Dissolving",
               ),
+              description: currentEvent.description.replace(
+                / (forming|exact|dissolving)$/,
+                "",
+              ),
+              end: potentialDissolvingEvent.start,
+              start: currentEvent.start,
+              summary: currentEvent.summary.replace(/^(➡️|⬅️|🎯)\s/, ""),
             });
 
             break; // Found the pair, move to next forming event

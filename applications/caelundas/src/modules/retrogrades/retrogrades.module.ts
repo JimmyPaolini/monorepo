@@ -11,8 +11,8 @@ import { RetrogradesService } from "./retrogrades.service";
  */
 @Module({
   controllers: [],
+  exports: [RetrogradesService],
   imports: [EphemerisModule, MathModule, ProgressiveUtilitiesModule],
   providers: [RetrogradesService],
-  exports: [RetrogradesService],
 })
 export class RetrogradesModule {}

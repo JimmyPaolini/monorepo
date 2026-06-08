@@ -1,30 +1,30 @@
-import { cn } from "@monorepo/lexico-components";
-
-import type { ReactElement } from "react";
-
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 
+import { cn } from "@monorepo/lexico-components";
+
+import type { ReactElement } from "react";
+
 /**
  * Props for the Translations component that displays entry translations.
  */
 export interface TranslationsProps {
-  /** Array of translation strings */
-  translations: string[];
-  /** Whether translations are expanded by default */
-  defaultOpen?: boolean;
   /** Additional class names */
   className?: string;
+  /** Whether translations are expanded by default */
+  defaultOpen?: boolean;
+  /** Array of translation strings */
+  translations: string[];
 }
 
 /**
  *
  */
 export function Translations(props: TranslationsProps): ReactElement {
-  const { translations, defaultOpen = false, className } = props;
+  const { className, defaultOpen = false, translations } = props;
 
   // 🪝 Hooks
 

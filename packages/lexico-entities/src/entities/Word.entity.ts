@@ -8,27 +8,27 @@ import { WordLexeme } from "./WordLexeme.entity.js";
 /**
  *
  */
-@ObjectType()
 @Entity({
+  comment: "A Latin word string that maps to one or more dictionary entries",
   name: "words",
   schema: "public",
-  comment: "A Latin word string that maps to one or more dictionary entries",
 })
+@ObjectType()
 export class Word extends AuditableEntity {
-  @Field()
   @Column({
-    unique: true,
     comment: "The Latin word as written",
+    unique: true,
   })
+  @Field()
   word!: string;
-
-  /** Junction rows linking this word to every lexeme it can represent. */
-  @Field(() => [WordLexeme])
-  @OneToMany(() => WordLexeme, (wl) => wl.word)
-  wordLexemes!: WordLexeme[];
 
   /** Junction rows linking this word to every morphological form it can surface as. */
   @Field(() => [WordForm])
   @OneToMany(() => WordForm, (wf) => wf.word)
   wordForms!: WordForm[];
+
+  /** Junction rows linking this word to every lexeme it can represent. */
+  @Field(() => [WordLexeme])
+  @OneToMany(() => WordLexeme, (wl) => wl.word)
+  wordLexemes!: WordLexeme[];
 }

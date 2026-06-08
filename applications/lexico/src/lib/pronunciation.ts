@@ -12,17 +12,17 @@ interface PronunciationResult {
  */
 export const getPronunciation = createServerFn({ method: "POST" })
   .inputValidator(
-    (data: { text: string; dialect?: "classical" | "ecclesiastical" }) => data,
+    (data: { dialect?: "classical" | "ecclesiastical"; text: string }) => data,
   )
-  .handler(async ({ data }): Promise<PronunciationResult | null> => {
+  .handler(async ({ data }): Promise<null | PronunciationResult> => {
     const supabase = getSupabaseServerClient();
 
     const response = await supabase.functions.invoke<PronunciationResult>(
       "pronunciation",
       {
         body: {
-          text: data.text,
           dialect: data.dialect ?? "classical",
+          text: data.text,
         },
       },
     );

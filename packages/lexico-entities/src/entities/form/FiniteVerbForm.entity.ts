@@ -16,46 +16,46 @@ import {
 } from "./Form.entity.js";
 
 /** A finite verb form (indicative, subjunctive, or imperative). */
-@ObjectType({ implements: Form })
 @ChildEntity("finite-verb")
+@ObjectType({ implements: Form })
 export class FiniteVerbForm extends Form {
-  @Field(() => String)
   @Column({
-    type: "enum",
-    enum: formMoodValues,
     comment: "Grammatical mood (indicative, subjunctive, imperative)",
+    enum: formMoodValues,
+    type: "enum",
   })
+  @Field(() => String)
   mood!: FormMood;
 
-  @Field(() => String)
   @Column({
-    type: "enum",
-    enum: formVoiceValues,
-    comment: "Grammatical voice (active or passive)",
-  })
-  voice!: FormVoice;
-
-  @Field(() => String)
-  @Column({
-    type: "enum",
-    enum: formTenseValues,
-    comment: "Grammatical tense",
-  })
-  tense!: FormTense;
-
-  @Field(() => String)
-  @Column({
-    type: "enum",
-    enum: formNumberValues,
     comment: "Grammatical number (singular or plural)",
+    enum: formNumberValues,
+    type: "enum",
   })
+  @Field(() => String)
   number!: FormNumber;
 
-  @Field(() => String)
   @Column({
-    type: "enum",
-    enum: formPersonValues,
     comment: "Grammatical person (first, second, third)",
+    enum: formPersonValues,
+    type: "enum",
   })
+  @Field(() => String)
   person!: FormPerson;
+
+  @Column({
+    comment: "Grammatical tense",
+    enum: formTenseValues,
+    type: "enum",
+  })
+  @Field(() => String)
+  tense!: FormTense;
+
+  @Column({
+    comment: "Grammatical voice (active or passive)",
+    enum: formVoiceValues,
+    type: "enum",
+  })
+  @Field(() => String)
+  voice!: FormVoice;
 }

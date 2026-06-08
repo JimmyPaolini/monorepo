@@ -44,28 +44,28 @@ describe("phases.events integration", () => {
   function createMockEphemeris(
     baseTime: Moment,
     config: {
-      longitude: number;
       distance: number;
       illumination: number;
+      longitude: number;
       step?: number;
     },
   ): Record<
     string,
     {
-      longitude: number;
-      latitude: number;
       distance: number;
       illumination: number;
+      latitude: number;
+      longitude: number;
     }
   > {
     const step = config.step ?? 0.1;
     const ephemeris: Record<
       string,
       {
-        longitude: number;
-        latitude: number;
         distance: number;
         illumination: number;
+        latitude: number;
+        longitude: number;
       }
     > = {};
 
@@ -73,10 +73,10 @@ describe("phases.events integration", () => {
     for (let i = -MARGIN_MINUTES; i <= MARGIN_MINUTES + 1; i++) {
       const time = baseTime.clone().add(i, "minutes");
       ephemeris[time.toISOString()] = {
-        longitude: config.longitude + i * step,
-        latitude: 0,
         distance: config.distance + i * 0.001,
         illumination: config.illumination + i * 0.01,
+        latitude: 0,
+        longitude: config.longitude + i * step,
       };
     }
 
@@ -91,25 +91,25 @@ describe("phases.events integration", () => {
 
       // Venus in morning sky configuration (western elongation)
       const venusEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 94,
         distance: 0.7,
         illumination: 40,
+        longitude: 94,
         step: 0.15, // Venus moves faster than Sun
       });
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 100,
         distance: 1,
         illumination: 100,
+        longitude: 100,
         step: 0.1,
       });
 
       const events = service.getVenusianPhaseEvents({
         minute: currentMinute,
+        sunCoordinateEphemeris: sunEphemeris,
         venusCoordinateEphemeris: venusEphemeris,
         venusDistanceEphemeris: venusEphemeris,
         venusIlluminationEphemeris: venusEphemeris,
-        sunCoordinateEphemeris: sunEphemeris,
       });
 
       const morningSetEvent = events.find((e) =>
@@ -128,25 +128,25 @@ describe("phases.events integration", () => {
 
       // Venus in evening sky configuration (eastern side)
       const venusEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 106,
         distance: 0.7,
         illumination: 60,
+        longitude: 106,
         step: 0.15, // Venus moves faster than Sun
       });
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 100,
         distance: 1,
         illumination: 100,
+        longitude: 100,
         step: 0.1,
       });
 
       const events = service.getVenusianPhaseEvents({
         minute: currentMinute,
+        sunCoordinateEphemeris: sunEphemeris,
         venusCoordinateEphemeris: venusEphemeris,
         venusDistanceEphemeris: venusEphemeris,
         venusIlluminationEphemeris: venusEphemeris,
-        sunCoordinateEphemeris: sunEphemeris,
       });
 
       const eveningRiseEvent = events.find((e) =>
@@ -163,25 +163,25 @@ describe("phases.events integration", () => {
       const currentMinute = moment.utc("2024-03-15T12:00:00.000Z");
 
       const venusEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 50,
         distance: 0.5,
         illumination: 50,
+        longitude: 50,
         step: 0.1,
       });
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 100, // 50° gap — never changes
         distance: 1,
         illumination: 100,
+        longitude: 100, // 50° gap — never changes
         step: 0.1,
       });
 
       const events = service.getVenusianPhaseEvents({
         minute: currentMinute,
+        sunCoordinateEphemeris: sunEphemeris,
         venusCoordinateEphemeris: venusEphemeris,
         venusDistanceEphemeris: venusEphemeris,
         venusIlluminationEphemeris: venusEphemeris,
-        sunCoordinateEphemeris: sunEphemeris,
       });
 
       expect(events).toHaveLength(0);
@@ -194,24 +194,24 @@ describe("phases.events integration", () => {
       const currentMinute = moment.utc("2024-02-15T06:00:00.000Z");
 
       const mercuryEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 94,
         distance: 0.6,
         illumination: 35,
+        longitude: 94,
         step: 0.15,
       });
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 100,
         distance: 1,
         illumination: 100,
+        longitude: 100,
         step: 0.1,
       });
 
       const events = service.getMercurianPhaseEvents({
-        minute: currentMinute,
         mercuryCoordinateEphemeris: mercuryEphemeris,
         mercuryDistanceEphemeris: mercuryEphemeris,
         mercuryIlluminationEphemeris: mercuryEphemeris,
+        minute: currentMinute,
         sunCoordinateEphemeris: sunEphemeris,
       });
 
@@ -229,24 +229,24 @@ describe("phases.events integration", () => {
       const currentMinute = moment.utc("2024-04-15T18:00:00.000Z");
 
       const mercuryEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 106,
         distance: 0.8,
         illumination: 70,
+        longitude: 106,
         step: 0.15,
       });
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 100,
         distance: 1,
         illumination: 100,
+        longitude: 100,
         step: 0.1,
       });
 
       const events = service.getMercurianPhaseEvents({
-        minute: currentMinute,
         mercuryCoordinateEphemeris: mercuryEphemeris,
         mercuryDistanceEphemeris: mercuryEphemeris,
         mercuryIlluminationEphemeris: mercuryEphemeris,
+        minute: currentMinute,
         sunCoordinateEphemeris: sunEphemeris,
       });
 
@@ -263,24 +263,24 @@ describe("phases.events integration", () => {
       const currentMinute = moment.utc("2024-05-15T12:00:00.000Z");
 
       const mercuryEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 50,
         distance: 0.7,
         illumination: 55,
+        longitude: 50,
         step: 0.1,
       });
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 100, // 50° gap — constant
         distance: 1,
         illumination: 100,
+        longitude: 100, // 50° gap — constant
         step: 0.1,
       });
 
       const events = service.getMercurianPhaseEvents({
-        minute: currentMinute,
         mercuryCoordinateEphemeris: mercuryEphemeris,
         mercuryDistanceEphemeris: mercuryEphemeris,
         mercuryIlluminationEphemeris: mercuryEphemeris,
+        minute: currentMinute,
         sunCoordinateEphemeris: sunEphemeris,
       });
 
@@ -294,24 +294,24 @@ describe("phases.events integration", () => {
       const currentMinute = moment.utc("2024-06-01T06:00:00.000Z");
 
       const marsEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 94,
         distance: 1.5,
         illumination: 92,
+        longitude: 94,
         step: 0.15,
       });
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 100,
         distance: 1,
         illumination: 100,
+        longitude: 100,
         step: 0.1,
       });
 
       const events = service.getMartianPhaseEvents({
-        minute: currentMinute,
         marsCoordinateEphemeris: marsEphemeris,
         marsDistanceEphemeris: marsEphemeris,
         marsIlluminationEphemeris: marsEphemeris,
+        minute: currentMinute,
         sunCoordinateEphemeris: sunEphemeris,
       });
 
@@ -329,24 +329,24 @@ describe("phases.events integration", () => {
       const currentMinute = moment.utc("2024-08-01T18:00:00.000Z");
 
       const marsEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 106,
         distance: 2,
         illumination: 88,
+        longitude: 106,
         step: 0.15,
       });
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 100,
         distance: 1,
         illumination: 100,
+        longitude: 100,
         step: 0.1,
       });
 
       const events = service.getMartianPhaseEvents({
-        minute: currentMinute,
         marsCoordinateEphemeris: marsEphemeris,
         marsDistanceEphemeris: marsEphemeris,
         marsIlluminationEphemeris: marsEphemeris,
+        minute: currentMinute,
         sunCoordinateEphemeris: sunEphemeris,
       });
 
@@ -363,24 +363,24 @@ describe("phases.events integration", () => {
       const currentMinute = moment.utc("2024-09-15T12:00:00.000Z");
 
       const marsEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 50,
         distance: 1.8,
         illumination: 90,
+        longitude: 50,
         step: 0.1,
       });
 
       const sunEphemeris = createMockEphemeris(currentMinute, {
-        longitude: 100, // 50° gap — constant
         distance: 1,
         illumination: 100,
+        longitude: 100, // 50° gap — constant
         step: 0.1,
       });
 
       const events = service.getMartianPhaseEvents({
-        minute: currentMinute,
         marsCoordinateEphemeris: marsEphemeris,
         marsDistanceEphemeris: marsEphemeris,
         marsIlluminationEphemeris: marsEphemeris,
+        minute: currentMinute,
         sunCoordinateEphemeris: sunEphemeris,
       });
 

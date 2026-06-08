@@ -8,15 +8,15 @@ import {
 } from "./Form.entity.js";
 
 /** A verbal noun supine form (accusative or ablative case). */
-@ObjectType({ implements: Form })
 @ChildEntity("supine")
+@ObjectType({ implements: Form })
 export class SupineForm extends Form {
-  @Field(() => String)
   @Column({
-    type: "enum",
+    comment: "Grammatical case of the supine (accusative or ablative)",
     enum: formSupineCaseValues,
     name: "form_case",
-    comment: "Grammatical case of the supine (accusative or ablative)",
+    type: "enum",
   })
+  @Field(() => String)
   case!: FormSupineCase;
 }

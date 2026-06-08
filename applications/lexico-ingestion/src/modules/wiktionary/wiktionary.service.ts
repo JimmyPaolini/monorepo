@@ -8,8 +8,8 @@ import { LoggerService } from "../logger/logger.service";
 
 import { categories } from "./wiktionary.constants";
 
-import type { Category } from "./wiktionary.types";
 import type { WiktionaryPage } from "../lexico-ingestion/lexico-ingestion.types";
+import type { Category } from "./wiktionary.types";
 
 /**
  * Provides Wiktionary entry fetching and parsing utilities.
@@ -19,11 +19,13 @@ import type { WiktionaryPage } from "../lexico-ingestion/lexico-ingestion.types"
 @Injectable()
 export class WiktionaryService {
   // 🏗 Dependency Injection
+
   constructor(private readonly logger: LoggerService) {
     this.logger.setContext(WiktionaryService.name);
   }
 
   // 🔐 Private Fields
+
   private readonly directory = path.join(process.cwd(), "./data/wiktionary");
   private readonly host = "https://en.wiktionary.org";
   private readonly maxRetries = 5;
@@ -34,6 +36,9 @@ export class WiktionaryService {
 
   // 🔏 Private Methods
 
+  private escapeCapitals(word: string): string {
+    return word.replaceAll(/[A-Z]/g, (char) => `_${char.toLowerCase()}`);
+  }
   private async fetchWithRetry(
     url: string,
     retries = this.maxRetries,
@@ -57,24 +62,6 @@ export class WiktionaryService {
 
     // Final attempt — let caller handle non-ok response
     return fetch(url);
-  }
-
-  // 🌎 Public Methods
-
-  /** Scrapes every configured Latin category from Wiktionary, stores each
-   * article's HTML as a JSON file under `./data/wiktionary`, following
-   * pagination until all pages in each category are exhausted. */
-  async ingestWiktionary(): Promise<void> {
-    this.logger.log(`🌐 Ingesting wiktionary`);
-    if (!fs.existsSync(this.directory)) {
-      fs.mkdirSync(this.directory, { recursive: true });
-    }
-    for (const category of Object.keys(categories).filter(
-      (key): key is Category => Object.hasOwn(categories, key),
-    )) {
-      await this.ingestCategory(category);
-    }
-    this.logger.log(`🌐 Ingested wiktionary`);
   }
 
   private async ingestCategory(
@@ -128,10 +115,6 @@ export class WiktionaryService {
     }
   }
 
-  private escapeCapitals(word: string): string {
-    return word.replaceAll(/[A-Z]/g, (char) => `_${char.toLowerCase()}`);
-  }
-
   private async ingestWord(
     word: string,
     urlPath: string,
@@ -139,9 +122,9 @@ export class WiktionaryService {
   ): Promise<void> {
     if (!urlPath.includes("#Latin")) urlPath += "#Latin";
     const entry: WiktionaryPage = {
-      word,
       category,
       href: `${this.host}${urlPath}`,
+      word,
     };
 
     this.logger.log(`💬 Ingesting word "${entry.word}"`);
@@ -180,5 +163,23 @@ export class WiktionaryService {
     );
     fs.writeFileSync(filePath, JSON.stringify(entryWithHtml));
     this.logger.log(`💬 Ingested word "${entry.word}"`);
+  }
+
+  // 🌎 Public Methods
+
+  /** Scrapes every configured Latin category from Wiktionary, stores each
+   * article's HTML as a JSON file under `./data/wiktionary`, following
+   * pagination until all pages in each category are exhausted. */
+  async ingestWiktionary(): Promise<void> {
+    this.logger.log(`🌐 Ingesting wiktionary`);
+    if (!fs.existsSync(this.directory)) {
+      fs.mkdirSync(this.directory, { recursive: true });
+    }
+    for (const category of Object.keys(categories).filter(
+      (key): key is Category => Object.hasOwn(categories, key),
+    )) {
+      await this.ingestCategory(category);
+    }
+    this.logger.log(`🌐 Ingested wiktionary`);
   }
 }

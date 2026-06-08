@@ -18,53 +18,53 @@ export type PronunciationVariant = (typeof pronunciationVariantValues)[number];
 /**
  *
  */
-@ObjectType()
 @Entity({
-  name: "pronunciations",
-  schema: "public",
   comment:
     "A pronunciation variant (classical, ecclesiastical, or vulgar) for a Latin lexeme",
+  name: "pronunciations",
+  schema: "public",
 })
+@ObjectType()
 @Unique(["lexeme", "variant"])
 export class Pronunciation extends AuditableEntity {
   @Field(() => Object)
   @Index()
+  @JoinColumn()
   @ManyToOne("Lexeme", "pronunciations", {
     onDelete: "CASCADE",
     onUpdate: "CASCADE",
   })
-  @JoinColumn()
   lexeme!: Lexeme;
 
-  @Field(() => String)
-  @Column({
-    type: "enum",
-    enum: pronunciationVariantValues,
-    comment: "Pronunciation tradition (classical, ecclesiastical, or vulgar)",
+  @Column("text", {
+    comment: "Phonemic segmentation (e.g. a.moː)",
+    nullable: true,
   })
+  @Field({ nullable: true })
+  @Index()
+  phonemes?: null | string;
+
+  @Column("text", {
+    comment: "Phonemic IPA transcription (e.g. /ˈaː.moː/)",
+    nullable: true,
+  })
+  @Field({ nullable: true })
+  @Index()
+  phonemic?: null | string;
+
+  @Column("text", {
+    comment: "Phonetic IPA transcription (e.g. [ˈäː.moː])",
+    nullable: true,
+  })
+  @Field({ nullable: true })
+  phonetic?: null | string;
+
+  @Column({
+    comment: "Pronunciation tradition (classical, ecclesiastical, or vulgar)",
+    enum: pronunciationVariantValues,
+    type: "enum",
+  })
+  @Field(() => String)
   @Index()
   variant!: PronunciationVariant;
-
-  @Field({ nullable: true })
-  @Column("text", {
-    nullable: true,
-    comment: "Phonemic segmentation (e.g. a.moː)",
-  })
-  @Index()
-  phonemes?: string | null;
-
-  @Field({ nullable: true })
-  @Column("text", {
-    nullable: true,
-    comment: "Phonemic IPA transcription (e.g. /ˈaː.moː/)",
-  })
-  @Index()
-  phonemic?: string | null;
-
-  @Field({ nullable: true })
-  @Column("text", {
-    nullable: true,
-    comment: "Phonetic IPA transcription (e.g. [ˈäː.moː])",
-  })
-  phonetic?: string | null;
 }

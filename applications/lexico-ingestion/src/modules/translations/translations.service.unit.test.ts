@@ -1,4 +1,3 @@
-import { Lexeme, Translation } from "@monorepo/lexico-entities";
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
 import { Like, type Repository } from "typeorm";
@@ -11,6 +10,8 @@ import {
   type Mocked,
   vi,
 } from "vitest";
+
+import { Lexeme, Translation } from "@monorepo/lexico-entities";
 
 import { LexemesService } from "../lexemes/lexemes.service";
 import { LoggerService } from "../logger/logger.service";
@@ -45,12 +46,12 @@ describe("TranslationsService", () => {
         {
           provide: LoggerService,
           useValue: {
-            setContext: vi.fn(),
-            log: vi.fn(),
-            warn: vi.fn(),
-            error: vi.fn(),
             debug: vi.fn(),
+            error: vi.fn(),
+            log: vi.fn(),
+            setContext: vi.fn(),
             verbose: vi.fn(),
+            warn: vi.fn(),
           },
         },
       ],
@@ -106,8 +107,8 @@ describe("TranslationsService", () => {
       await service.findTranslationsWithReferences("amor:1");
 
       expect(translationsRepository.find).toHaveBeenCalledWith({
-        where: { lexeme: { id: "amor:1" }, translation: Like("%{*%*}%") },
         relations: { lexeme: true },
+        where: { lexeme: { id: "amor:1" }, translation: Like("%{*%*}%") },
       });
     });
 

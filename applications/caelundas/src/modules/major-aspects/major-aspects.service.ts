@@ -36,11 +36,8 @@ import type { Moment } from "moment-timezone";
  */
 @Injectable()
 export class MajorAspectsService {
-  private readonly detectAspectPhase: ReturnType<
-    AspectsUtilities["getIsAspect"]
-  >;
-
   // 🏗 Dependency Injection
+
   constructor(
     private readonly logger: LoggerService,
     private readonly aspectsUtilitiesService: AspectsUtilities,
@@ -55,51 +52,214 @@ export class MajorAspectsService {
 
   // 🔐 Private Fields
 
+  private readonly detectAspectPhase: ReturnType<
+    AspectsUtilities["getIsAspect"]
+  >;
+
   // 🔑 Public Fields
 
   // 🔏 Private Methods
 
+  /**
+   * Creates a progressive event from paired forming and dissolving aspect events.
+   *
+   * Extracts body names and aspect type from event categories, then formats a duration
+   * event showing the span of time when the aspect remained within orb.
+   *
+   * @param beginning - Forming aspect event (marks entry into orb)
+   * @param ending - Dissolving aspect event (marks exit from orb)
+   * @returns Progressive event spanning from forming to dissolving
+   * @throws When categories don't contain exactly 2 bodies and 1 aspect type
+   *
+   * @remarks
+   * - Assumes beginning and ending events have matching body pairs and aspect type
+   * - Uses alphabetically sorted body names for consistency
+   * - Summary format: `[body1Symbol][aspectSymbol][body2Symbol] [Body1] [aspect] [Body2]`
+   * - Categories: Astronomy, Astrology, Simple Aspect, Major Aspect, [Body1], [Body2], [Aspect]
+   * - Duration spans from beginning.start to ending.start (not ending.end)
+   *
+   * @see {@link majorAspectBodies} for extracting body categories
+   * @see {@link majorAspects} for extracting aspect category
+   *
+   * @example
+   * ```typescript
+   * const progressive = getMajorAspectProgressiveEvent(
+   *   { summary: "➡️ ☉ □ ♃ ...", start: Jan 1, categories: ["Sun", "Jupiter", "Square", ...] },
+   *   { summary: "⬅️ ☉ □ ♃ ...", start: Jan 10, categories: ["Sun", "Jupiter", "Square", ...] }
+   * );
+   * // Returns: { summary: "☉□♃ Sun square Jupiter", start: Jan 1, end: Jan 10, ... }
+   * ```
+   */
+  private getMajorAspectProgressiveEvent(
+    beginning: Event,
+    ending: Event,
+  ): Event {
+    const bodiesCapitalized = _.sortBy(
+      beginning.categories.filter((category) =>
+        majorAspectBodies
+          .map((majorAspectBody) => _.startCase(majorAspectBody))
+          .includes(category),
+      ),
+    );
+
+    const aspectCapitalized = beginning.categories.find((category) =>
+      majorAspects
+        .map((majorAspect) => _.startCase(majorAspect))
+        .includes(category),
+    );
+
+    if (bodiesCapitalized.length !== 2 || !aspectCapitalized) {
+      throw new Error(
+        `Could not extract aspect info from categories: ${beginning.categories.join(
+          ", ",
+        )}`,
+      );
+    }
+
+    const body1Capitalized = bodiesCapitalized[0] ?? "";
+    const body2Capitalized = bodiesCapitalized[1] ?? "";
+    const aspectLower = aspectCapitalized.toLowerCase();
+    const body1Lower = body1Capitalized.toLowerCase();
+    const body2Lower = body2Capitalized.toLowerCase();
+    if (
+      !isMajorAspect(aspectLower) ||
+      !isBody(body1Lower) ||
+      !isBody(body2Lower)
+    ) {
+      throw new Error(
+        `Could not extract typed values from categories: ${beginning.categories.join(", ")}`,
+      );
+    }
+    const aspect = aspectLower;
+    const body1 = body1Lower;
+    const body2 = body2Lower;
+
+    const body1Symbol = symbolByBody[body1];
+    const body2Symbol = symbolByBody[body2];
+    const aspectSymbol = symbolByMajorAspect[aspect];
+
+    return {
+      categories: [
+        "Astronomy",
+        "Astrology",
+        "Simple Aspect",
+        "Major Aspect",
+        body1Capitalized,
+        body2Capitalized,
+        aspectCapitalized,
+      ],
+      description: `${body1Capitalized} ${aspect} ${body2Capitalized}`,
+      end: ending.start,
+      start: beginning.start,
+      summary: `${body1Symbol}${aspectSymbol}${body2Symbol} ${body1Capitalized} ${aspect} ${body2Capitalized}`,
+    };
+  }
+
   // 🌎 Public Methods
 
   /**
-   * Returns the first major aspect between two bodies, or `null` if none is within orb.
+   * Creates a formatted calendar event for a major aspect at a specific phase.
    *
-   * @param args - `longitudeBody1` and `longitudeBody2` in ecliptic degrees
+   * Generates a calendar event with Unicode symbols, descriptive text, and categorization
+   * for a major aspect between two bodies. Includes phase-specific emoji and categories
+   * to distinguish forming, exact, and dissolving aspects.
+   *
+   * @param args - Aspect event parameters
+   * @param longitudeBody1 - Ecliptic longitude of first body in degrees (0-360)
+   * @param longitudeBody2 - Ecliptic longitude of second body in degrees (0-360)
+   * @param timestamp - Exact time of the aspect phase event
+   * @param body1 - First celestial body (e.g., "sun", "moon", "mercury")
+   * @param body2 - Second celestial body
+   * @param phase - Aspect phase: "forming", "perfective", or "dissolving"
+   * @returns Calendar event with summary, description, categories, and timing
+   * @throws When no major aspect is found at the given longitudes
+   *
+   * @remarks
+   * - **Exact phase**: Uses 🎯 emoji, adds "Perfective" category
+   * - **Forming phase**: Uses ➡️ emoji, adds "Forming" category
+   * - **Dissolving phase**: Uses ⬅️ emoji, adds "Dissolving" category
+   * - Summary format: `[phaseEmoji] [body1Symbol] [aspectSymbol] [body2Symbol] [description]`
+   * - Example: "🎯 ☉ ☌ ☽ Sun perfective conjunct Moon"
+   * - Logs event to console with ISO timestamp
+   *
+   * @see {@link getMajorAspect} for aspect type detection
+   * @see {@link symbolByBody} for body Unicode symbols
+   * @see {@link symbolByMajorAspect} for aspect Unicode symbols
+   * @see {@link Event} for calendar event structure
+   *
+   * @example
+   * ```typescript
+   * const event = getMajorAspectEvent({
+   *   longitudeBody1: 120.5,
+   *   longitudeBody2: 240.3,
+   *   timestamp: new Date('2026-01-21T12:00:00Z'),
+   *   body1: "venus",
+   *   body2: "mars",
+   *   phase: "perfective"
+   * });
+   * // Returns: { summary: "🎯 ♀ △ ♂ Venus perfective trine Mars", ... }
+   * ```
    */
-  getMajorAspect(args: {
+  buildMajorAspectEvent(args: {
+    body1: Body;
+    body2: Body;
     longitudeBody1: number;
     longitudeBody2: number;
-  }): MajorAspect | null {
-    const { longitudeBody1, longitudeBody2 } = args;
-    for (const aspect of majorAspects) {
-      if (
-        this.aspectsUtilitiesService.isAspect({
-          longitudeBody1,
-          longitudeBody2,
-          aspect,
-        })
-      ) {
-        return aspect;
-      }
+    phase: AspectPhase;
+    timestamp: Moment;
+  }): Event {
+    const { body1, body2, longitudeBody1, longitudeBody2, phase, timestamp } =
+      args;
+    const majorAspect = this.getMajorAspect({ longitudeBody1, longitudeBody2 });
+    if (!majorAspect) {
+      this.logger.error(
+        `No major aspect found between ${body1} and ${body2} at ${timestamp.toISOString()}: ${longitudeBody1} and ${longitudeBody2}`,
+      );
+      throw new Error("No major aspect found");
     }
-    return null;
-  }
 
-  /**
-   * Classifies the major aspect phase (forming / perfective / dissolving) between two bodies
-   * across three consecutive minutes, or `null` if no major aspect is in progress.
-   *
-   * @param args - Longitudes at previous, current, and next minutes for both bodies
-   */
-  getMajorAspectPhase(args: {
-    currentLongitudeBody1: number;
-    currentLongitudeBody2: number;
-    nextLongitudeBody1: number;
-    nextLongitudeBody2: number;
-    previousLongitudeBody1: number;
-    previousLongitudeBody2: number;
-  }): AspectPhase | null {
-    return this.detectAspectPhase(args);
+    const body1Capitalized = capitalize(body1);
+    const body2Capitalized = capitalize(body2);
+
+    const body1Symbol = symbolByBody[body1];
+    const body2Symbol = symbolByBody[body2];
+    const majorAspectSymbol = symbolByMajorAspect[majorAspect];
+
+    const phaseMetadata = {
+      dissolving: { emoji: "⬅️", label: "Dissolving", verb: "dissolving" },
+      forming: { emoji: "➡️", label: "Forming", verb: "forming" },
+      perfective: { emoji: "🎯", label: "Perfective", verb: "perfective" },
+    } as const satisfies Record<
+      AspectPhase,
+      { emoji: string; label: string; verb: string }
+    >;
+
+    const { emoji: phaseEmoji, label, verb } = phaseMetadata[phase];
+    const description = `${body1Capitalized} ${verb} ${majorAspect} ${body2Capitalized}`;
+
+    const baseCategories = [
+      "Astronomy",
+      "Astrology",
+      "Simple Aspect",
+      "Major Aspect",
+      body1Capitalized,
+      body2Capitalized,
+      _.startCase(majorAspect),
+    ];
+    const categories = [...baseCategories, label];
+
+    const summary = `${phaseEmoji} ${body1Symbol} ${majorAspectSymbol} ${body2Symbol} ${description}`;
+
+    this.logger.log(`${summary} at ${timestamp.toISOString()}`);
+
+    const majorAspectEvent: Event = {
+      categories,
+      description,
+      end: timestamp,
+      start: timestamp,
+      summary,
+    };
+    return majorAspectEvent;
   }
   /**
    * Detects major aspect phase transitions at a specific time point.
@@ -157,9 +317,9 @@ export class MajorAspectsService {
         const ephemerisBody2 = coordinateEphemerisByBody[body2];
 
         const {
-          previous: previousLongitudeBody1,
           current: currentLongitudeBody1,
           next: nextLongitudeBody1,
+          previous: previousLongitudeBody1,
         } = this.ephemerisService.getLongitudesWindow(
           ephemerisBody1,
           previousMinute,
@@ -167,9 +327,9 @@ export class MajorAspectsService {
           nextMinute,
         );
         const {
-          previous: previousLongitudeBody2,
           current: currentLongitudeBody2,
           next: nextLongitudeBody2,
+          previous: previousLongitudeBody2,
         } = this.ephemerisService.getLongitudesWindow(
           ephemerisBody2,
           previousMinute,
@@ -180,132 +340,27 @@ export class MajorAspectsService {
         const phase = this.detectAspectPhase({
           currentLongitudeBody1,
           currentLongitudeBody2,
-          previousLongitudeBody1,
-          previousLongitudeBody2,
           nextLongitudeBody1,
           nextLongitudeBody2,
+          previousLongitudeBody1,
+          previousLongitudeBody2,
         });
 
         if (phase) {
           majorAspectEvents.push(
             this.buildMajorAspectEvent({
-              timestamp: minute,
-              longitudeBody1: currentLongitudeBody1,
-              longitudeBody2: currentLongitudeBody2,
               body1,
               body2,
+              longitudeBody1: currentLongitudeBody1,
+              longitudeBody2: currentLongitudeBody2,
               phase,
+              timestamp: minute,
             }),
           );
         }
       }
     }
     return majorAspectEvents;
-  }
-
-  /**
-   * Creates a formatted calendar event for a major aspect at a specific phase.
-   *
-   * Generates a calendar event with Unicode symbols, descriptive text, and categorization
-   * for a major aspect between two bodies. Includes phase-specific emoji and categories
-   * to distinguish forming, exact, and dissolving aspects.
-   *
-   * @param args - Aspect event parameters
-   * @param longitudeBody1 - Ecliptic longitude of first body in degrees (0-360)
-   * @param longitudeBody2 - Ecliptic longitude of second body in degrees (0-360)
-   * @param timestamp - Exact time of the aspect phase event
-   * @param body1 - First celestial body (e.g., "sun", "moon", "mercury")
-   * @param body2 - Second celestial body
-   * @param phase - Aspect phase: "forming", "perfective", or "dissolving"
-   * @returns Calendar event with summary, description, categories, and timing
-   * @throws When no major aspect is found at the given longitudes
-   *
-   * @remarks
-   * - **Exact phase**: Uses 🎯 emoji, adds "Perfective" category
-   * - **Forming phase**: Uses ➡️ emoji, adds "Forming" category
-   * - **Dissolving phase**: Uses ⬅️ emoji, adds "Dissolving" category
-   * - Summary format: `[phaseEmoji] [body1Symbol] [aspectSymbol] [body2Symbol] [description]`
-   * - Example: "🎯 ☉ ☌ ☽ Sun perfective conjunct Moon"
-   * - Logs event to console with ISO timestamp
-   *
-   * @see {@link getMajorAspect} for aspect type detection
-   * @see {@link symbolByBody} for body Unicode symbols
-   * @see {@link symbolByMajorAspect} for aspect Unicode symbols
-   * @see {@link Event} for calendar event structure
-   *
-   * @example
-   * ```typescript
-   * const event = getMajorAspectEvent({
-   *   longitudeBody1: 120.5,
-   *   longitudeBody2: 240.3,
-   *   timestamp: new Date('2026-01-21T12:00:00Z'),
-   *   body1: "venus",
-   *   body2: "mars",
-   *   phase: "perfective"
-   * });
-   * // Returns: { summary: "🎯 ♀ △ ♂ Venus perfective trine Mars", ... }
-   * ```
-   */
-  buildMajorAspectEvent(args: {
-    longitudeBody1: number;
-    longitudeBody2: number;
-    timestamp: Moment;
-    body1: Body;
-    body2: Body;
-    phase: AspectPhase;
-  }): Event {
-    const { longitudeBody1, longitudeBody2, timestamp, body1, body2, phase } =
-      args;
-    const majorAspect = this.getMajorAspect({ longitudeBody1, longitudeBody2 });
-    if (!majorAspect) {
-      this.logger.error(
-        `No major aspect found between ${body1} and ${body2} at ${timestamp.toISOString()}: ${longitudeBody1} and ${longitudeBody2}`,
-      );
-      throw new Error("No major aspect found");
-    }
-
-    const body1Capitalized = capitalize(body1);
-    const body2Capitalized = capitalize(body2);
-
-    const body1Symbol = symbolByBody[body1];
-    const body2Symbol = symbolByBody[body2];
-    const majorAspectSymbol = symbolByMajorAspect[majorAspect];
-
-    const phaseMetadata = {
-      perfective: { verb: "perfective", emoji: "🎯", label: "Perfective" },
-      forming: { verb: "forming", emoji: "➡️", label: "Forming" },
-      dissolving: { verb: "dissolving", emoji: "⬅️", label: "Dissolving" },
-    } as const satisfies Record<
-      AspectPhase,
-      { verb: string; emoji: string; label: string }
-    >;
-
-    const { verb, emoji: phaseEmoji, label } = phaseMetadata[phase];
-    const description = `${body1Capitalized} ${verb} ${majorAspect} ${body2Capitalized}`;
-
-    const baseCategories = [
-      "Astronomy",
-      "Astrology",
-      "Simple Aspect",
-      "Major Aspect",
-      body1Capitalized,
-      body2Capitalized,
-      _.startCase(majorAspect),
-    ];
-    const categories = [...baseCategories, label];
-
-    const summary = `${phaseEmoji} ${body1Symbol} ${majorAspectSymbol} ${body2Symbol} ${description}`;
-
-    this.logger.log(`${summary} at ${timestamp.toISOString()}`);
-
-    const majorAspectEvent: Event = {
-      start: timestamp,
-      end: timestamp,
-      description,
-      summary,
-      categories,
-    };
-    return majorAspectEvent;
   }
 
   /**
@@ -402,97 +457,43 @@ export class MajorAspectsService {
   }
 
   /**
-   * Creates a progressive event from paired forming and dissolving aspect events.
+   * Returns the first major aspect between two bodies, or `null` if none is within orb.
    *
-   * Extracts body names and aspect type from event categories, then formats a duration
-   * event showing the span of time when the aspect remained within orb.
-   *
-   * @param beginning - Forming aspect event (marks entry into orb)
-   * @param ending - Dissolving aspect event (marks exit from orb)
-   * @returns Progressive event spanning from forming to dissolving
-   * @throws When categories don't contain exactly 2 bodies and 1 aspect type
-   *
-   * @remarks
-   * - Assumes beginning and ending events have matching body pairs and aspect type
-   * - Uses alphabetically sorted body names for consistency
-   * - Summary format: `[body1Symbol][aspectSymbol][body2Symbol] [Body1] [aspect] [Body2]`
-   * - Categories: Astronomy, Astrology, Simple Aspect, Major Aspect, [Body1], [Body2], [Aspect]
-   * - Duration spans from beginning.start to ending.start (not ending.end)
-   *
-   * @see {@link majorAspectBodies} for extracting body categories
-   * @see {@link majorAspects} for extracting aspect category
-   *
-   * @example
-   * ```typescript
-   * const progressive = getMajorAspectProgressiveEvent(
-   *   { summary: "➡️ ☉ □ ♃ ...", start: Jan 1, categories: ["Sun", "Jupiter", "Square", ...] },
-   *   { summary: "⬅️ ☉ □ ♃ ...", start: Jan 10, categories: ["Sun", "Jupiter", "Square", ...] }
-   * );
-   * // Returns: { summary: "☉□♃ Sun square Jupiter", start: Jan 1, end: Jan 10, ... }
-   * ```
+   * @param args - `longitudeBody1` and `longitudeBody2` in ecliptic degrees
    */
-  private getMajorAspectProgressiveEvent(
-    beginning: Event,
-    ending: Event,
-  ): Event {
-    const bodiesCapitalized = _.sortBy(
-      beginning.categories.filter((category) =>
-        majorAspectBodies
-          .map((majorAspectBody) => _.startCase(majorAspectBody))
-          .includes(category),
-      ),
-    );
-
-    const aspectCapitalized = beginning.categories.find((category) =>
-      majorAspects
-        .map((majorAspect) => _.startCase(majorAspect))
-        .includes(category),
-    );
-
-    if (bodiesCapitalized.length !== 2 || !aspectCapitalized) {
-      throw new Error(
-        `Could not extract aspect info from categories: ${beginning.categories.join(
-          ", ",
-        )}`,
-      );
+  getMajorAspect(args: {
+    longitudeBody1: number;
+    longitudeBody2: number;
+  }): MajorAspect | null {
+    const { longitudeBody1, longitudeBody2 } = args;
+    for (const aspect of majorAspects) {
+      if (
+        this.aspectsUtilitiesService.isAspect({
+          aspect,
+          longitudeBody1,
+          longitudeBody2,
+        })
+      ) {
+        return aspect;
+      }
     }
+    return null;
+  }
 
-    const body1Capitalized = bodiesCapitalized[0] ?? "";
-    const body2Capitalized = bodiesCapitalized[1] ?? "";
-    const aspectLower = aspectCapitalized.toLowerCase();
-    const body1Lower = body1Capitalized.toLowerCase();
-    const body2Lower = body2Capitalized.toLowerCase();
-    if (
-      !isMajorAspect(aspectLower) ||
-      !isBody(body1Lower) ||
-      !isBody(body2Lower)
-    ) {
-      throw new Error(
-        `Could not extract typed values from categories: ${beginning.categories.join(", ")}`,
-      );
-    }
-    const aspect = aspectLower;
-    const body1 = body1Lower;
-    const body2 = body2Lower;
-
-    const body1Symbol = symbolByBody[body1];
-    const body2Symbol = symbolByBody[body2];
-    const aspectSymbol = symbolByMajorAspect[aspect];
-
-    return {
-      start: beginning.start,
-      end: ending.start,
-      summary: `${body1Symbol}${aspectSymbol}${body2Symbol} ${body1Capitalized} ${aspect} ${body2Capitalized}`,
-      description: `${body1Capitalized} ${aspect} ${body2Capitalized}`,
-      categories: [
-        "Astronomy",
-        "Astrology",
-        "Simple Aspect",
-        "Major Aspect",
-        body1Capitalized,
-        body2Capitalized,
-        aspectCapitalized,
-      ],
-    };
+  /**
+   * Classifies the major aspect phase (forming / perfective / dissolving) between two bodies
+   * across three consecutive minutes, or `null` if no major aspect is in progress.
+   *
+   * @param args - Longitudes at previous, current, and next minutes for both bodies
+   */
+  getMajorAspectPhase(args: {
+    currentLongitudeBody1: number;
+    currentLongitudeBody2: number;
+    nextLongitudeBody1: number;
+    nextLongitudeBody2: number;
+    previousLongitudeBody1: number;
+    previousLongitudeBody2: number;
+  }): AspectPhase | null {
+    return this.detectAspectPhase(args);
   }
 }
