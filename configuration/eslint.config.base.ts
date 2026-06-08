@@ -30,6 +30,7 @@ export default [
     ignores: [
       "**/dist",
       "**/node_modules",
+      "**/.venv",
       "**/coverage",
       "**/.nx",
       "**/build",

@@ -1,4 +1,5 @@
 """Unit tests for the Jupyter notebook conformance validator."""
+
 import json
 
 import pytest
@@ -66,9 +67,7 @@ def test_error_for_missing_heading_in_markdown_cell():
         template=template,
     )
     assert len(result["errors"]) > 0
-    assert any(
-        "heading" in e.message.lower() or "h1" in e.message for e in result["errors"]
-    )
+    assert any("heading" in e.message.lower() or "h1" in e.message for e in result["errors"])
 
 
 @pytest.mark.unit

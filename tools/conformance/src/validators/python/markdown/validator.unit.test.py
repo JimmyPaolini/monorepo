@@ -1,4 +1,5 @@
 """Unit tests for the Markdown conformance validator."""
+
 import pytest
 
 from src.validators.python.markdown.validator import validate_markdown_conformance

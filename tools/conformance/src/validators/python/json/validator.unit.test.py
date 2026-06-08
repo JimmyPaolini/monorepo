@@ -1,4 +1,5 @@
 """Unit tests for the JSON/JSONC conformance validator."""
+
 import pytest
 
 from src.validators.python.json.comments import get_comments, validate_comments
@@ -101,8 +102,8 @@ def test_comment_validation_all_present():
     result = validate_json_conformance(
         data={},
         filename="test.json",
-        instance="// required comment\n{\"a\": 1}",
-        template="// required comment\n{\"a\": 1}",
+        instance='// required comment\n{"a": 1}',
+        template='// required comment\n{"a": 1}',
     )
     assert result["errors"] == []
 
@@ -113,7 +114,7 @@ def test_error_for_missing_comment():
         data={},
         filename="test.json",
         instance='{"a": 1}',
-        template="// required comment\n{\"a\": 1}",
+        template='// required comment\n{"a": 1}',
     )
     assert any(e.error_type == "comment" for e in result["errors"])
 
@@ -123,8 +124,8 @@ def test_extra_comments_allowed():
     result = validate_json_conformance(
         data={},
         filename="test.json",
-        instance="// extra\n// required comment\n{\"a\": 1}",
-        template="// required comment\n{\"a\": 1}",
+        instance='// extra\n// required comment\n{"a": 1}',
+        template='// required comment\n{"a": 1}',
     )
     assert result["errors"] == []
 
@@ -134,8 +135,8 @@ def test_todo_comment_loose_match():
     result = validate_json_conformance(
         data={},
         filename="test.json",
-        instance="// anything here\n{\"a\": 1}",
-        template="// TODO: fill this in\n{\"a\": 1}",
+        instance='// anything here\n{"a": 1}',
+        template='// TODO: fill this in\n{"a": 1}',
     )
     assert result["errors"] == []
 
@@ -146,7 +147,7 @@ def test_todo_comment_missing():
         data={},
         filename="test.json",
         instance='{"a": 1}',
-        template="// TODO: fill this in\n{\"a\": 1}",
+        template='// TODO: fill this in\n{"a": 1}',
     )
     assert any(e.error_type == "comment" for e in result["errors"])
 
@@ -156,8 +157,8 @@ def test_non_todo_comment_exact_match_required():
     result = validate_json_conformance(
         data={},
         filename="test.json",
-        instance="// different comment\n{\"a\": 1}",
-        template="// required comment\n{\"a\": 1}",
+        instance='// different comment\n{"a": 1}',
+        template='// required comment\n{"a": 1}',
     )
     assert any(e.error_type == "comment" for e in result["errors"])
 
@@ -167,8 +168,8 @@ def test_comment_order_enforced():
     result = validate_json_conformance(
         data={},
         filename="test.json",
-        instance="// second\n// first\n{\"a\": 1}",
-        template="// first\n// second\n{\"a\": 1}",
+        instance='// second\n// first\n{"a": 1}',
+        template='// first\n// second\n{"a": 1}',
     )
     # "first" appears after "second" in instance, so "second" is consumed first
     # then "first" is not found in remaining comments
@@ -177,13 +178,13 @@ def test_comment_order_enforced():
 
 @pytest.mark.unit
 def test_get_comments_extracts_line_comments():
-    comments = get_comments("// hello\n{\"a\": 1}")
+    comments = get_comments('// hello\n{"a": 1}')
     assert "// hello" in comments
 
 
 @pytest.mark.unit
 def test_get_comments_extracts_block_comments():
-    comments = get_comments("/* block */\n{\"a\": 1}")
+    comments = get_comments('/* block */\n{"a": 1}')
     assert "/* block */" in comments
 
 

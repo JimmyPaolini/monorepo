@@ -1,5 +1,6 @@
 """🔤 Markdown AST node utilities for conformance validation."""
-from ..constants import TODO_LINE_REGEX
+
+from src.validators.python.constants import TODO_LINE_REGEX
 
 CONTAINER_TYPES = frozenset(
     [
@@ -34,7 +35,7 @@ def text_matches(template_text: str, instance_text: str) -> bool:
         return False
     return all(
         bool(TODO_LINE_REGEX.search(t)) or t == i
-        for t, i in zip(template_lines, instance_lines)
+        for t, i in zip(template_lines, instance_lines, strict=False)
     )
 
 
@@ -44,39 +45,44 @@ def get_node_children(node) -> list:
 
     if isinstance(node, Table):
         rows = []
-        if hasattr(node, "header") and node.header is not None:
-            rows.append(node.header)
-        if hasattr(node, "children") and node.children:
-            rows.extend(node.children)
+        header = getattr(node, "header", None)
+        if header is not None:
+            rows.append(header)
+        children = getattr(node, "children", None)
+        if children is not None:
+            rows.extend(children)
         return rows
     if isinstance(node, TableRow):
-        if hasattr(node, "cells"):
-            return list(node.cells)
-        if hasattr(node, "children"):
-            return list(node.children)
+        cells = getattr(node, "cells", None)
+        if cells is not None:
+            return list(cells)
+        children = getattr(node, "children", None)
+        if children is not None:
+            return list(children)
         return []
-    if hasattr(node, "children") and node.children:
-        return list(node.children)
+    children = getattr(node, "children", None)
+    if children is not None:
+        return list(children)
     return []
 
 
 def nodes_match(template_node, instance_node) -> bool:
     """Returns True when instance_node is a valid match for template_node."""
     from mistletoe.block_token import (
-        Heading,
-        CodeFence,
         BlockCode,
+        CodeFence,
+        Heading,
         List,
         ListItem,
+        Paragraph,
+        Quote,
         Table,
         TableRow,
         ThematicBreak,
-        Quote,
-        Paragraph,
     )
-    from mistletoe.span_token import Link, Image, Strong, Emphasis, InlineCode, RawText
+    from mistletoe.span_token import Emphasis, Image, InlineCode, Link, Strong
 
-    if type(template_node) != type(instance_node):
+    if type(template_node) is not type(instance_node):
         return False
     if isinstance(template_node, Heading):
         return template_node.level == instance_node.level and text_matches(
@@ -87,9 +93,7 @@ def nodes_match(template_node, instance_node) -> bool:
     if isinstance(template_node, (CodeFence, BlockCode)):
         t_lang = getattr(template_node, "language", "") or ""
         i_lang = getattr(instance_node, "language", "") or ""
-        return t_lang == i_lang and text_matches(
-            get_text(template_node), get_text(instance_node)
-        )
+        return t_lang == i_lang and text_matches(get_text(template_node), get_text(instance_node))
     if isinstance(template_node, List):
         t_ordered = getattr(template_node, "start", None) is not None
         i_ordered = getattr(instance_node, "start", None) is not None
@@ -130,20 +134,21 @@ def nodes_match(template_node, instance_node) -> bool:
 
 def build_error(node, instance_hint=None):
     """Build a ConformanceError for a missing markdown node."""
-    from ..types import ConformanceError
     from mistletoe.block_token import (
-        Heading,
-        CodeFence,
         BlockCode,
+        CodeFence,
+        Heading,
         List,
-        ThematicBreak,
-        Table,
+        ListItem,
         Paragraph,
         Quote,
-        ListItem,
+        Table,
         TableRow,
+        ThematicBreak,
     )
-    from mistletoe.span_token import Link, Image, Strong, Emphasis, InlineCode
+    from mistletoe.span_token import Emphasis, Image, InlineCode, Link, Strong
+
+    from ..types import ConformanceError
 
     node_type = type(node).__name__
     pos = getattr(node, "position", None)
@@ -193,7 +198,7 @@ def build_error(node, instance_hint=None):
     elif isinstance(node, Emphasis):
         message = f'Expected italic text: "{text}"'
     elif isinstance(node, InlineCode):
-        message = f'Expected inline code: `{text}`'
+        message = f"Expected inline code: `{text}`"
     else:
         message = f'Expected {node_type}: "{text}"'
     err = ConformanceError(

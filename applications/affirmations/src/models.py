@@ -1,3 +1,5 @@
+"""🧬 Models"""
+
 from pydantic import BaseModel, field_validator
 
 from src.grammars import Grammar

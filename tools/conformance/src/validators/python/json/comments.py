@@ -1,18 +1,19 @@
 """🔤 JSONC comment extraction utilities."""
+
 import re
 
-from ..constants import TODO_LINE_REGEX
-from ..types import ConformanceError
+from src.validators.python.constants import TODO_LINE_REGEX
+from src.validators.python.types import ConformanceError
 
-_COMMENT_PATTERN = re.compile(r"//[^\n]*|/\*[\s\S]*?\*/")
+_TOKEN_PATTERN = re.compile(r'("(?:\\.|[^"\\])*")|(//[^\n]*|/\*[\s\S]*?\*/)')
 
 
 def get_comments(text: str) -> list[str]:
-    return [m.group(0).strip() for m in _COMMENT_PATTERN.finditer(text)]
+    return [m.group(2).strip() for m in _TOKEN_PATTERN.finditer(text) if m.group(2)]
 
 
 def get_comments_with_offsets(text: str) -> list[tuple[str, int]]:
-    return [(m.group(0).strip(), m.start()) for m in _COMMENT_PATTERN.finditer(text)]
+    return [(m.group(2).strip(), m.start(2)) for m in _TOKEN_PATTERN.finditer(text) if m.group(2)]
 
 
 def offset_to_line(text: str, offset: int) -> int:

@@ -5,8 +5,16 @@ __pycache__/
 .mypy_cache/
 .ruff_cache/
 .pytest_cache/
+
+# Python virtual environment
 .venv/
+
 *.egg-info/
 dist/
+
+# Jupyter checkpoints
 .ipynb_checkpoints/
-output/*.json
+
+# Generated output
+output/*
+!output/.gitkeep

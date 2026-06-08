@@ -1,13 +1,13 @@
 """📓 Jupyter notebook conformance validator."""
+
 import json
 
 import chevron
 
-from ..json.comments import validate_comments as validate_json_comments
-from ..json.validator import _strip_comments, _validate_dfs
-from ..markdown.validator import validate_markdown_conformance
-from ..types import ConformanceError
-from ..validator import validate_python_conformance
+from src.validators.python.json.validator import _strip_comments, _validate_dfs
+from src.validators.python.markdown.validator import validate_markdown_conformance
+from src.validators.python.types import ConformanceError
+from src.validators.python.validator import validate_python_conformance
 
 
 def validate_notebook_conformance(

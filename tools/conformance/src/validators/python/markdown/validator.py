@@ -1,10 +1,16 @@
 """🔤 Markdown file conformance validator."""
+
 import chevron
-from mistletoe.html_renderer import HtmlRenderer
 from mistletoe.block_token import Document
+from mistletoe.html_renderer import HtmlRenderer
 from mistletoe.span_token import RawText
 
-from .nodes import CONTAINER_TYPES, build_error, get_node_children, nodes_match
+from src.validators.python.markdown.nodes import (
+    CONTAINER_TYPES,
+    build_error,
+    get_node_children,
+    nodes_match,
+)
 
 
 def _validate_children(template_children: list, instance_children: list) -> list:

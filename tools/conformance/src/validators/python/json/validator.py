@@ -1,17 +1,18 @@
 """🔤 JSON/JSONC file conformance validator."""
+
 import json
 import re
 
 import chevron
 
-from .comments import validate_comments
-from ..types import ConformanceError
+from src.validators.python.json.comments import validate_comments
+from src.validators.python.types import ConformanceError
 
-_COMMENT_PATTERN = re.compile(r"//[^\n]*|/\*[\s\S]*?\*/")
+_TOKEN_PATTERN = re.compile(r'("(?:\\.|[^"\\])*")|(//[^\n]*|/\*[\s\S]*?\*/)')
 
 
 def _strip_comments(text: str) -> str:
-    return _COMMENT_PATTERN.sub("", text)
+    return _TOKEN_PATTERN.sub(lambda m: m.group(1) if m.group(1) else "", text)
 
 
 def _format_path(path: list) -> str:
@@ -79,9 +80,7 @@ def _validate_dfs(template, instance, path=None) -> list[ConformanceError]:
     return errors
 
 
-def validate_json_conformance(
-    *, data: dict, filename: str, instance: str, template: str
-) -> dict:
+def validate_json_conformance(*, data: dict, filename: str, instance: str, template: str) -> dict:
     rendered = chevron.render(template, data)
     template_obj = json.loads(_strip_comments(rendered))
     instance_obj = json.loads(_strip_comments(instance))

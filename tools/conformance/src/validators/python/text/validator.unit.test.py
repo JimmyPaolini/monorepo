@@ -1,4 +1,5 @@
 """Unit tests for the text conformance validator."""
+
 import pytest
 
 from src.validators.python.text.validator import validate_text_conformance
@@ -69,7 +70,7 @@ def test_blank_lines_are_required():
         instance="line1\nline2",
         template="line1\n\nline2",
     )
-    assert any("" == e.expected for e in result["errors"]) or len(result["errors"]) > 0
+    assert any(e.expected == "" for e in result["errors"]) or len(result["errors"]) > 0
 
 
 @pytest.mark.unit
