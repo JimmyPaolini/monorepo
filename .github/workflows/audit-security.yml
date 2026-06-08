@@ -49,7 +49,7 @@ jobs:
             terraform:
               - infrastructure/terraform/**
 
-      - name: 🏗️ Trivy Infrastructure Scan
+      - name: 🏗 Trivy Infrastructure Scan
         if: |
           github.event_name == 'schedule' ||
           steps.paths.outputs.terraform == 'true'

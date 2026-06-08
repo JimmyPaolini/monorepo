@@ -23,7 +23,7 @@ Templates use emoji comments as named section anchors. These survive EJS renderi
 
 ### Marker Convention
 
-Use **emoji + descriptive noun phrase** — e.g. `// 🔒 Private fields`, `// 🏗️ Constructor`. Avoid generic single-emoji markers (e.g. `// ✅`) that may collide with other code comments.
+Use **emoji + descriptive noun phrase** — e.g. `// 🔒 Private fields`, `// 🏗 Constructor`. Avoid generic single-emoji markers (e.g. `// ✅`) that may collide with other code comments.
 
 ### Three-Stage Example
 
@@ -40,7 +40,7 @@ export class <%= namePascalCase %>Service {
 
   // 🔐 Private fields
 
-  // 🏗️ Constructor
+  // 🏗 Constructor
   constructor() {}
 
   // 🌎 Public methods
@@ -62,7 +62,7 @@ export class UserService {
 
   // 🔐 Private fields
 
-  // 🏗️ Constructor
+  // 🏗 Constructor
   constructor() {}
 
   // 🌎 Public methods
@@ -87,7 +87,7 @@ export class UserService {
   // 🔐 Private fields
   private baseUrl = '/api/users';
 
-  // 🏗️ Constructor
+  // 🏗 Constructor
   constructor(private http: HttpClient) {}
 
   // 🌎 Public methods
@@ -239,7 +239,7 @@ The validator checks that all structural lines from the template are still prese
 - **RISK-001**: ~~**Single-character brace lines (`{`, `}`) in structural validation** — lines containing only `{` or `}` are included as structural lines per scope; because these lines appear many times in typical TypeScript files, the sequential-cursor search will find them quickly and always advance the cursor. However, if a file reorders or nests additional blocks, the cursor may find a `}` from a different scope than intended. Mitigation: document the behavior; if it proves noisy in practice, a future option flag (`strictStructuralLines: boolean`) can gate single-character line validation.~~ **Resolved** — structural line extraction MUST preserve the full line including leading whitespace (do not `.trim()` when building the list of lines to validate). A formatted TypeScript file has `  {` (2-space indent, inside a class body) vs `{` (0-indent, top-level) vs `    {` (4-space, inside a method) — indentation makes each level contextually unique. The sequential-cursor search will match the correct scope because `indexOf('  {', cursor)` will not match `    {` accidentally. This assumes the generated file has been auto-formatted (Prettier/oxfmt), which is a valid assumption per the monorepo's formatting pipeline. Update `extractStructuralLines` to capture lines with their leading whitespace intact (no trimming) — only trim for the emptiness check (`line.trim() !== ''`).
 - **RISK-002**: **EJS whitespace normalization differences** — EJS `-%>` newline-slurping in templates collapses blank lines in rendered output; because structural line extraction happens on the raw template and cross-references the rendered output, a template line preceded by `-%>` on the previous line may not appear in the rendered output and will be silently excluded from validation (correct behavior). No mitigation needed.
 - **RISK-003**: **Template file encoding** — `fs.readFileSync(path, 'utf-8')` assumes UTF-8; emoji characters in markers are multi-byte UTF-8 sequences. Node.js 22 handles this correctly. Risk is negligible.
-- **RISK-004**: **`\p{Emoji_Presentation}` regex coverage** — the emoji marker pattern uses `\p{Emoji_Presentation}` with the `u` flag; this covers all current template markers (`🔒`, `🌍`, `🏗️`, `🪝`, `🔧`, `🔑`, `🔐`, etc.). Emoji that default to text-presentation but use VS16 (`️` = U+FE0F) are still matched because `\p{Emoji_Presentation}` matches the base codepoint. Risk of a new marker emoji not matching is low.
+- **RISK-004**: **`\p{Emoji_Presentation}` regex coverage** — the emoji marker pattern uses `\p{Emoji_Presentation}` with the `u` flag; this covers all current template markers (`🔒`, `🌍`, `🏗`, `🪝`, `🔧`, `🔑`, `🔐`, etc.). Emoji that default to text-presentation but use VS16 (`️` = U+FE0F) are still matched because `\p{Emoji_Presentation}` matches the base codepoint. Risk of a new marker emoji not matching is low.
 - **RISK-005**: **`pnpm-lock.yaml` update** — adding `ejs` modifies the lockfile; CI must install fresh dependencies. Standard `pnpm install` in CI already handles this.
 
 - **ASSUMPTION-001**: Current generator templates (`nestjs-service-module`, `react-component`) contain no conditional EJS blocks (`<% if (...) { %>`) around structural lines — the conditional exclusion logic is implemented for correctness but is not exercised by current templates

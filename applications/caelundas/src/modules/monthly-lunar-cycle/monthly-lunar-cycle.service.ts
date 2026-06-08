@@ -57,7 +57,7 @@ export class MonthlyLunarCycleService {
     "waning crescent",
   ]);
 
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
   constructor(
     private readonly logger: LoggerService,
     private readonly ephemerisService: EphemerisService,

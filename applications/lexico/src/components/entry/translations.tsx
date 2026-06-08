@@ -28,7 +28,7 @@ export function Translations(props: TranslationsProps): ReactElement {
 
   // 🪝 Hooks
 
-  // 🏗️ Setup
+  // 🏗 Setup
 
   const isExpandable = translations.length > 2;
 

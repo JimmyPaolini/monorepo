@@ -26,7 +26,7 @@ import type { Input } from "@caelundas/src/modules/input/input.types";
  */
 @Injectable()
 export class PerfectiveService {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
   constructor(
     private readonly datetimeService: DatetimeService,
     private readonly ephemerisService: EphemerisService,

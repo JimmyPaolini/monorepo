@@ -31,7 +31,7 @@ import type { Moment } from "moment-timezone";
  */
 @Injectable()
 export class QuintupleAspectsService {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
   constructor(private readonly mathService: MathService) {}
 
   // 🔐 Private Fields

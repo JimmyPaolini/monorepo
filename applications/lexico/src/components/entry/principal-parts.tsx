@@ -193,7 +193,7 @@ export function PrincipalParts(props: PrincipalPartsProps): ReactElement {
 
   // 🪝 Hooks
 
-  // 🏗️ Setup
+  // 🏗 Setup
   const principalPartsLabel = getPrincipalPartsLabel(principalParts);
   const BookmarkToggleIcon = bookmarked ? BookmarkCheck : Bookmark;
   const gender = (inflection as NounInflection | undefined)?.gender;

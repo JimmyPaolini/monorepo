@@ -23,7 +23,7 @@ import {
 export class ManualService {
   private readonly logger = new Logger(ManualService.name);
 
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
   constructor(
     @InjectRepository(Lexeme)
     private readonly lexemesRepository: Repository<Lexeme>,

@@ -18,7 +18,7 @@ import { LEXICO_INGESTION_BY_ID } from "../lexico-ingestion/lexico-ingestion.con
 export class WordsService {
   private readonly logger = new Logger(WordsService.name);
 
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
   constructor(
     @InjectRepository(Word)
     private readonly wordsRepository: Repository<Word>,

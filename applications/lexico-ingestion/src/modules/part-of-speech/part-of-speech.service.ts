@@ -50,7 +50,7 @@ function isUnknownArray(value: unknown): value is unknown[] {
  */
 @Injectable()
 export class PartOfSpeechService {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
   constructor() {}
 
   // 🔐 Private Fields

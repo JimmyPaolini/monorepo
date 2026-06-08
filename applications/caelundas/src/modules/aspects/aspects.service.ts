@@ -31,7 +31,7 @@ export type { AspectBodies } from "./aspects.types";
  */
 @Injectable()
 export class AspectsService {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
   constructor(
     @Inject(MajorAspectsService)
     private readonly majorAspectsService: MajorAspectsService,

@@ -10,7 +10,7 @@ import type { AnyNode } from "domhandler";
  */
 @Injectable()
 export class EtymologyService {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
   constructor() {}
 
   // 🔐 Private Fields

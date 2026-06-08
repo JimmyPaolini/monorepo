@@ -110,7 +110,7 @@ export function EntryCard(props: EntryCardProps): ReactElement {
     translationsExpanded ? "translations" : "",
   );
 
-  // 🏗️ Setup
+  // 🏗 Setup
   const hasPronunciation =
     pronunciation?.classical || pronunciation?.ecclesiastical;
 

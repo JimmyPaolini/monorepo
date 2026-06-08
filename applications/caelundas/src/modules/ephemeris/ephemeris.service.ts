@@ -55,7 +55,7 @@ initializeSwissEphemeris();
  */
 @Injectable()
 export class EphemerisService {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
   constructor(private readonly mathService: MathService) {}
 
   // 🔐 Private Fields

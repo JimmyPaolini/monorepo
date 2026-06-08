@@ -24,7 +24,7 @@ import type {
  */
 @Injectable()
 export class CalendarService {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
   constructor(
     private readonly logger: LoggerService,
     private readonly configService: ConfigService<Environment>,

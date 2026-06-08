@@ -13,7 +13,7 @@ import type { AnyNode } from "domhandler";
  */
 @Injectable()
 export class PrincipalPartsService {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
   constructor(
     @InjectRepository(Lexeme)
     private readonly lexemeRepository: Repository<Lexeme>,

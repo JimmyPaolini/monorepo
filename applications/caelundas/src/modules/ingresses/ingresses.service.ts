@@ -92,7 +92,7 @@ export class IngressesService {
     return entry[0];
   }
 
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
   constructor(
     private readonly logger: LoggerService,
     private readonly ephemerisService: EphemerisService,

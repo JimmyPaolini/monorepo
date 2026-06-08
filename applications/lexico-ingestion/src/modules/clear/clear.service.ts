@@ -10,7 +10,7 @@ import { Repository } from "typeorm";
 export class ClearService {
   private readonly logger = new Logger(ClearService.name);
 
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
   constructor(
     @InjectRepository(Lexeme)
     private readonly lexemesRepository: Repository<Lexeme>,

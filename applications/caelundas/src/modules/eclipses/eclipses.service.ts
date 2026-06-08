@@ -23,7 +23,7 @@ import type { Moment } from "moment-timezone";
  */
 @Injectable()
 export class EclipsesService {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
   constructor(
     private readonly logger: LoggerService,
     private readonly ephemerisService: EphemerisService,

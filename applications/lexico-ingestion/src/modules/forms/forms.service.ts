@@ -46,7 +46,7 @@ function isStringArray(value: unknown): value is string[] {
  */
 @Injectable()
 export class FormsService {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
   constructor(
     @InjectRepository(Form)
     private readonly formRepository: Repository<Form>,

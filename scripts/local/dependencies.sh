@@ -32,7 +32,7 @@ popd > /dev/null
 
 # `terraform init` downloads the required providers (linode) and configures the
 # backend. This must run before any `terraform plan/apply` or state imports.
-echo "🏗️  Initializing Terraform..."
+echo "🏗  Initializing Terraform..."
 pushd infrastructure/terraform > /dev/null
 terraform init
 echo "✅ Terraform initialized"

@@ -40,7 +40,7 @@ export class MajorAspectsService {
     AspectsUtilities["getIsAspect"]
   >;
 
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
   constructor(
     private readonly logger: LoggerService,
     private readonly aspectsUtilitiesService: AspectsUtilities,

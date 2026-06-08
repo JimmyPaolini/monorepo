@@ -26,7 +26,7 @@ export class LoggerService extends ConsoleLogger {
 
   private child: pino.Logger = LoggerService.root;
 
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
   constructor() {
     super();
   }

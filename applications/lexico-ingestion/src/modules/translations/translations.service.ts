@@ -18,7 +18,7 @@ import type { AnyNode } from "domhandler";
  */
 @Injectable()
 export class TranslationsService {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
   constructor(
     @InjectRepository(Translation)
     private readonly translationsRepository: Repository<Translation>,

@@ -18,7 +18,7 @@ import type { WiktionaryPage } from "../lexico-ingestion/lexico-ingestion.types"
  */
 @Injectable()
 export class WiktionaryService {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
   constructor(private readonly logger: LoggerService) {
     this.logger.setContext(WiktionaryService.name);
   }

@@ -36,7 +36,7 @@ export class TwilightsService {
   };
   private static readonly categories = ["Astronomy", "Astrology", "Twilight"];
 
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
   constructor(
     private readonly logger: LoggerService,
     private readonly ephemerisService: EphemerisService,

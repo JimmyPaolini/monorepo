@@ -9,7 +9,7 @@ import pino from "pino";
  */
 @Injectable({ scope: Scope.TRANSIENT })
 export class LoggerService extends ConsoleLogger {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
   constructor() {
     super();
   }

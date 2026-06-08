@@ -33,7 +33,7 @@ import type { Moment } from "moment-timezone";
  */
 @Injectable()
 export class TripleAspectsService {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
   constructor(private readonly logger: LoggerService) {
     this.logger.setContext(TripleAspectsService.name);
   }

@@ -101,7 +101,7 @@ All workflows call this composite action after checkout. It provides:
 |🔍 Gitleaks|`pnpm exec nx run monorepo:gitleaks --configuration=ci`|
 |🐍 Bandit (Python)|`pnpm exec nx affected --target=bandit --parallel=3`|
 |📦 Dependency Audit|`pnpm exec nx affected --target=scan-dependencies --parallel=3`|
-|🏗️ Trivy (Infrastructure)|`aquasecurity/trivy-action@v0.36.0` on `infrastructure/terraform/` (severity: `CRITICAL,HIGH`; runs on schedule or when Terraform files changed)|
+|🏗 Trivy (Infrastructure)|`aquasecurity/trivy-action@v0.36.0` on `infrastructure/terraform/` (severity: `CRITICAL,HIGH`; runs on schedule or when Terraform files changed)|
 
 **Concurrency:** Cancels in-progress runs for the same branch
 

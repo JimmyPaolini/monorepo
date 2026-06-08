@@ -5,7 +5,7 @@ import { Injectable } from "@nestjs/common";
  */
 @Injectable()
 export class CaelundasService {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
   constructor() {}
 
   // 🔐 Private Fields

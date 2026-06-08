@@ -30,7 +30,7 @@ export class DailyCyclesService {
     "Lunar",
   ];
 
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
   constructor(
     private readonly logger: LoggerService,
     private readonly ephemerisService: EphemerisService,

@@ -25,7 +25,7 @@ import type { WiktionaryPage } from "../lexico-ingestion/lexico-ingestion.types"
  */
 @Injectable()
 export class LexemesService {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
   constructor(
     @InjectRepository(Lexeme)
     private readonly lexemeRepository: Repository<Lexeme>,

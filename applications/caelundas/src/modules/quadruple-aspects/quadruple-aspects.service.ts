@@ -30,7 +30,7 @@ import type { Moment } from "moment-timezone";
  */
 @Injectable()
 export class QuadrupleAspectsService {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
   constructor() {}
 
   // 🔐 Private Fields
