@@ -4,7 +4,7 @@
   "prefix": "lib",
   "projectType": "library",
   "sourceRoot": "tools/conformance/src",
-  "tags": ["language:typescript", "type:util"],
+  "tags": ["language:python", "language:typescript", "type:util"],
   "targets": {
     "analyze-code": {},
     "build": {
@@ -16,7 +16,7 @@
       }
     },
     "clean": {},
-    "code-analysis": { "cache": false },
+    "code-analysis": {},
     "dependency-cruiser": {
       "executor": "nx:run-commands",
       "options": {
@@ -24,9 +24,49 @@
         "cwd": "{workspaceRoot}"
       }
     },
-    "format": {},
+    "format": {
+      "configurations": {
+        "check": {
+          "commands": [
+            "nx run {projectName}:prettier:check",
+            "nx run {projectName}:oxfmt:check",
+            "nx run {projectName}:ruff-format:check"
+          ],
+          "parallel": true
+        },
+        "write": {
+          "commands": [
+            "nx run {projectName}:prettier:write",
+            "nx run {projectName}:oxfmt:write",
+            "nx run {projectName}:ruff-format:write"
+          ],
+          "parallel": false
+        }
+      },
+      "executor": "nx:run-commands"
+    },
     "knip": {},
-    "lint": {},
+    "lint": {
+      "configurations": {
+        "check": {
+          "commands": [
+            "nx run {projectName}:eslint:check",
+            "nx run {projectName}:oxlint:check",
+            "nx run {projectName}:ruff-lint:check"
+          ],
+          "parallel": true
+        },
+        "write": {
+          "commands": [
+            "nx run {projectName}:eslint:write",
+            "nx run {projectName}:oxlint:write",
+            "nx run {projectName}:ruff-lint:write"
+          ],
+          "parallel": false
+        }
+      },
+      "executor": "nx:run-commands"
+    },
     "markdown-lint": {},
     "oxfmt": {},
     "oxlint": {
@@ -37,16 +77,40 @@
       }
     },
     "prettier": {},
+    "pyright": {},
+    "pytest": {},
+    "ruff-format": {},
+    "ruff-lint": {},
     "spell-check": {},
     "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx run {projectName}:vitest",
+          "nx run {projectName}:pytest"
+        ],
+        "parallel": true
+      }
+    },
+    "type-coverage": {},
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "tsc --noEmit -p tsconfig.json",
+          "nx run {projectName}:pyright"
+        ],
+        "cwd": "{projectRoot}",
+        "parallel": true
+      }
+    },
+    "vitest": {
       "executor": "nx:run-commands",
       "options": {
         "command": "vitest run {args.args}",
         "cwd": "tools/conformance"
       }
     },
-    "type-coverage": {},
-    "typecheck": {},
     "yaml-lint": {}
   }
 }

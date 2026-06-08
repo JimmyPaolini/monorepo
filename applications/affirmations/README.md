@@ -1,6 +1,39 @@
 # Affirmations
 
+A Python + Jupyter notebook application scaffold in this monorepo.
+
 Python application that generates structured affirmations for spiritual practices using LangChain, LangGraph, and a locally-hosted Qwen 3.5 LLM via Ollama. A LangGraph ReAct agent researches spiritual topics using SearxNG metasearch (aggregating Wikipedia, DuckDuckGo, Google Scholar, and more) with Trafilatura-powered content extraction, then generates Pydantic-validated affirmations saved as structured JSON.
+
+## Requirements
+
+- Python `>=3.11`
+- [uv](https://docs.astral.sh/uv/) package manager
+
+## Setup
+
+```bash
+cd applications/affirmations
+uv sync
+```
+
+## Run tests
+
+```bash
+cd applications/affirmations
+uv run pytest
+```
+
+## Lint / format / typecheck
+
+```bash
+cd applications/affirmations
+uv run ruff check .
+uv run ruff format .
+uv run pyright
+uv run ty check
+uv run vulture src testing
+uv run bandit -r src
+```
 
 ## Prerequisites
 

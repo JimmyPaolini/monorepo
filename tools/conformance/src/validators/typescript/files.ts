@@ -243,9 +243,7 @@ export function validateInstanceFile(args: {
  * `src/modules/` tree (or equivalent) in one call rather than iterating
  * subdirectories manually.
  *
- * @param args.excludeDirectories - Optional list of subdirectory names to skip.
- * Use this to exclude hand-crafted infrastructure modules (e.g. `logger`) that
- * intentionally diverge from the generator template.
+ * @param args - Validation arguments.
  *
  * @returns One result entry per instance subdirectory, in filesystem order.
  */

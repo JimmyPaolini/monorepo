@@ -28,6 +28,8 @@ classmethod
 dataclasses
 Dataclass
 DOTALL
+finditer
+frozenset
 getattr
 hasattr
 isinstance

@@ -10,6 +10,16 @@ node_modules/
 .nx
 .venv
 
+# Python 🐍
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.pyright_cache/
+.ipynb_checkpoints/
+
 # Environment 🎛️
 .env
 

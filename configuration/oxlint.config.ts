@@ -55,6 +55,7 @@ export default defineConfig({
   ignorePatterns: [
     "**/*.min.js",
     "**/.nx",
+    "**/.venv",
     // Terraform state and generated files
     "**/.terraform/**",
     "**/build",

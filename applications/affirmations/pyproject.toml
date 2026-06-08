@@ -56,8 +56,9 @@ runtime-evaluated-base-classes = ["pydantic.BaseModel"]
 "*.ipynb" = ["F811", "TC002"]
 
 [tool.pyright]
-# Venv settings and LangChain/LangGraph suppressions are project-specific
-# Base config (pythonVersion, typeCheckingMode) is in root pyproject.toml
+# Venv settings are project-specific; base config (pythonVersion, typeCheckingMode)
+# is in root pyproject.toml
+# LangChain/LangGraph suppressions are project-specific
 venvPath = "."
 venv = ".venv"
 # LangChain/LangGraph packages don't ship complete type stubs; suppress false positives

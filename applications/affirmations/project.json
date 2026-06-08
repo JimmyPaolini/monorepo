@@ -3,7 +3,12 @@
   "name": "affirmations",
   "projectType": "application",
   "sourceRoot": "applications/affirmations/src",
-  "tags": ["language:python", "scope:affirmations", "type:application"],
+  "tags": [
+    "generator:jupyter-notebook-application",
+    "language:python",
+    "scope:affirmations",
+    "type:application"
+  ],
   "targets": {
     "bandit": {},
     "clean": {

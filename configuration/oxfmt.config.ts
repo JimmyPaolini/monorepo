@@ -10,6 +10,7 @@ export default defineConfig({
   ignorePatterns: [
     "!**/*.d.ts.map",
     "**/*.d.ts",
+    "**/.venv",
     "**/*.md",
     "**/*.mdx",
     "**/.next",
