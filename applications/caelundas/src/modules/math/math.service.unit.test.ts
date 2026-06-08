@@ -100,25 +100,25 @@ describe("MathService", () => {
   describe("isMaximum", () => {
     it("should return true when current is greater than both neighbors", () => {
       expect(
-        service.isMaximum({ previous: 5, current: 10, next: 5 }),
+        service.isMaximum({ current: 10, next: 5, previous: 5 }),
       ).toBeTruthy();
       expect(
-        service.isMaximum({ previous: 0, current: 100, next: 50 }),
+        service.isMaximum({ current: 100, next: 50, previous: 0 }),
       ).toBeTruthy();
     });
 
     it("should return false when current is not a maximum", () => {
       expect(
-        service.isMaximum({ previous: 10, current: 5, next: 10 }),
+        service.isMaximum({ current: 5, next: 10, previous: 10 }),
       ).toBeFalsy();
       expect(
-        service.isMaximum({ previous: 5, current: 10, next: 15 }),
+        service.isMaximum({ current: 10, next: 15, previous: 5 }),
       ).toBeFalsy();
       expect(
-        service.isMaximum({ previous: 15, current: 10, next: 5 }),
+        service.isMaximum({ current: 10, next: 5, previous: 15 }),
       ).toBeFalsy();
       expect(
-        service.isMaximum({ previous: 10, current: 10, next: 10 }),
+        service.isMaximum({ current: 10, next: 10, previous: 10 }),
       ).toBeFalsy();
     });
   });
@@ -126,25 +126,25 @@ describe("MathService", () => {
   describe("isMinimum", () => {
     it("should return true when current is less than both neighbors", () => {
       expect(
-        service.isMinimum({ previous: 10, current: 5, next: 10 }),
+        service.isMinimum({ current: 5, next: 10, previous: 10 }),
       ).toBeTruthy();
       expect(
-        service.isMinimum({ previous: 100, current: 0, next: 50 }),
+        service.isMinimum({ current: 0, next: 50, previous: 100 }),
       ).toBeTruthy();
     });
 
     it("should return false when current is not a minimum", () => {
       expect(
-        service.isMinimum({ previous: 5, current: 10, next: 5 }),
+        service.isMinimum({ current: 10, next: 5, previous: 5 }),
       ).toBeFalsy();
       expect(
-        service.isMinimum({ previous: 15, current: 10, next: 5 }),
+        service.isMinimum({ current: 10, next: 5, previous: 15 }),
       ).toBeFalsy();
       expect(
-        service.isMinimum({ previous: 5, current: 10, next: 15 }),
+        service.isMinimum({ current: 10, next: 15, previous: 5 }),
       ).toBeFalsy();
       expect(
-        service.isMinimum({ previous: 10, current: 10, next: 10 }),
+        service.isMinimum({ current: 10, next: 10, previous: 10 }),
       ).toBeFalsy();
     });
   });

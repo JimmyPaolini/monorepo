@@ -102,6 +102,15 @@ function getUser(id: string): { id: string; name: string } {
   return { id, name: "Alice" };
 }
 
+## Emoji Standardization
+
+To ensure consistent rendering across all editors and platforms, emojis must not use **Variation Selector-16 (`\uFE0F`)**. These selectors can cause rendering issues (appearing as question marks) in some environments.
+
+- ❌ **WRONG**: `🏗` (contains hidden `\uFE0F`)
+- ✅ **CORRECT**: `🏗` (plain emoji)
+
+This is enforced automatically by a pre-commit hook that strips variation selectors from all staged files.
+
 // ✅ CORRECT: Named interface
 interface User {
   id: string;
@@ -253,7 +262,7 @@ import { getUser, type User } from "./api";
 
 **Why?** Clear visual separation between runtime code and compile-time types.
 
-**Enforced by**: ESLint rule `import/order` with `distinctGroup` for types
+**Enforced by**: ESLint rule `perfectionist/sort-imports`
 
 See [imports.md](imports.md) for full import organization rules.
 

@@ -1,4 +1,3 @@
-import { Form, Lexeme, NominalForm, WordForm } from "@monorepo/lexico-entities";
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
 import {
@@ -10,6 +9,8 @@ import {
   type Mocked,
   vi,
 } from "vitest";
+
+import { Form, Lexeme, NominalForm, WordForm } from "@monorepo/lexico-entities";
 
 import { WordsService } from "../words/words.service";
 

@@ -19,31 +19,6 @@ export function getComments(text: string): string[] {
 }
 
 /**
- * Extracts all comments from a JSONC string together with their byte offsets.
- */
-function getCommentsWithOffsets(
-  text: string,
-): { text: string; offset: number }[] {
-  const comments: { text: string; offset: number }[] = [];
-  visit(text, {
-    onComment: (offset: number, length: number) => {
-      comments.push({
-        text: text.slice(offset, offset + length).trim(),
-        offset,
-      });
-    },
-  });
-  return comments;
-}
-
-/**
- * Converts a byte offset within `text` to a 1-based line number.
- */
-function offsetToLine(text: string, offset: number): number {
-  return text.slice(0, offset).split("\n").length;
-}
-
-/**
  * Validates that every comment present in the rendered template text also
  * appears in the instance text, in the same relative order.
  *
@@ -59,7 +34,7 @@ export function validateComments(args: {
   instanceText: string;
   templateText: string;
 }): ConformanceError[] {
-  const { templateText, instanceText } = args;
+  const { instanceText, templateText } = args;
   const errors: ConformanceError[] = [];
 
   const templateComments = getCommentsWithOffsets(templateText);
@@ -79,11 +54,11 @@ export function validateComments(args: {
       const templateLine = offsetToLine(templateText, templateComment.offset);
       errors.push({
         errorType: "comment",
+        expected: templateComment.text,
+        fix: `Add the comment \`${templateComment.text}\` to the instance file.`,
         language: "json",
         message: `Missing comment: "${templateComment.text}"`,
         templateLine,
-        expected: templateComment.text,
-        fix: `Add the comment \`${templateComment.text}\` to the instance file.`,
       });
     } else {
       startPosition += index + 1;
@@ -91,4 +66,29 @@ export function validateComments(args: {
   }
 
   return errors;
+}
+
+/**
+ * Extracts all comments from a JSONC string together with their byte offsets.
+ */
+function getCommentsWithOffsets(
+  text: string,
+): { offset: number; text: string }[] {
+  const comments: { offset: number; text: string }[] = [];
+  visit(text, {
+    onComment: (offset: number, length: number) => {
+      comments.push({
+        offset,
+        text: text.slice(offset, offset + length).trim(),
+      });
+    },
+  });
+  return comments;
+}
+
+/**
+ * Converts a byte offset within `text` to a 1-based line number.
+ */
+function offsetToLine(text: string, offset: number): number {
+  return text.slice(0, offset).split("\n").length;
 }

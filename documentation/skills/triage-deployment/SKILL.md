@@ -201,7 +201,7 @@ Fix: Address the reported security issue (e.g., use `secrets.token_hex()` instea
 
 Fix: Upgrade the vulnerable dependency to a patched version, or add a `pnpm audit --ignore` entry if no fix is available and the risk is accepted.
 
-#### 🏗️ Trivy Infrastructure Scan
+#### 🏗 Trivy Infrastructure Scan
 
 Config: [configuration/trivyignore](../../../configuration/trivyignore)
 

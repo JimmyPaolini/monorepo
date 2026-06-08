@@ -23,7 +23,8 @@ import type { Moment } from "moment-timezone";
  */
 @Injectable()
 export class EclipsesService {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
+
   constructor(
     private readonly logger: LoggerService,
     private readonly ephemerisService: EphemerisService,
@@ -41,10 +42,398 @@ export class EclipsesService {
 
   // 🔏 Private Methods
 
-  // 🌎 Public Methods
-
   private formatTimeZoneIso(date: Moment, timezone: string): string {
     return date.clone().tz(timezone).toISOString(true);
+  }
+
+  private getLunarEclipseDurationEvent(
+    beginning: Event,
+    ending: Event,
+    frameLabel: "Geocentric" | "Topocentric Visibility",
+  ): Event {
+    const frameSymbol = frameLabel === "Geocentric" ? "🌐" : "📍";
+    return {
+      categories: [...this.categories, "Lunar", frameLabel],
+      description: `Lunar Eclipse (${frameLabel})`,
+      end: ending.start,
+      start: beginning.start,
+      summary: `${frameSymbol} 🌙🐉 Lunar Eclipse (${frameLabel})`,
+    };
+  }
+
+  private getSolarEclipseDurationEvent(
+    beginning: Event,
+    ending: Event,
+    frameLabel: "Geocentric" | "Topocentric Visibility",
+  ): Event {
+    const frameSymbol = frameLabel === "Geocentric" ? "🌐" : "📍";
+    return {
+      categories: [...this.categories, "Solar", frameLabel],
+      description: `Solar Eclipse (${frameLabel})`,
+      end: ending.start,
+      start: beginning.start,
+      summary: `${frameSymbol} ☀️🐉 Solar Eclipse (${frameLabel})`,
+    };
+  }
+
+  private getTopocentricPhase(args: {
+    currentActive: boolean;
+    geocentricPhase: EclipsePhase | null;
+    nextActive: boolean;
+    previousActive: boolean;
+  }): EclipsePhase | null {
+    const { currentActive, geocentricPhase, nextActive, previousActive } = args;
+
+    if (!currentActive) {
+      return null;
+    }
+    if (!previousActive) {
+      return "beginning";
+    }
+    if (!nextActive) {
+      return "ending";
+    }
+    if (geocentricPhase === "maximum") {
+      return "maximum";
+    }
+
+    return null;
+  }
+
+  private isLunarEclipse(args: {
+    currentDiameterMoon: number;
+    currentDiameterSun: number;
+    currentLatitudeMoon: number;
+    currentLatitudeSun: number;
+    currentLongitudeMoon: number;
+    currentLongitudeSun: number;
+    nextLongitudeMoon: number;
+    nextLongitudeSun: number;
+    previousLongitudeMoon: number;
+    previousLongitudeSun: number;
+  }): EclipsePhase | null {
+    const {
+      currentDiameterMoon,
+      currentDiameterSun,
+      currentLatitudeMoon,
+      currentLatitudeSun,
+      currentLongitudeMoon,
+      currentLongitudeSun,
+      nextLongitudeMoon,
+      nextLongitudeSun,
+      previousLongitudeMoon,
+      previousLongitudeSun,
+    } = args;
+
+    const currentLongitudeAngle = this.mathService.getAngle(
+      currentLongitudeMoon,
+      currentLongitudeSun,
+    );
+    const nextLongitudeAngle = this.mathService.getAngle(
+      nextLongitudeMoon,
+      nextLongitudeSun,
+    );
+    const previousLongitudeAngle = this.mathService.getAngle(
+      previousLongitudeMoon,
+      previousLongitudeSun,
+    );
+
+    const isMaximumLongitudeAngle = this.mathService.isMaximum({
+      current: currentLongitudeAngle,
+      next: nextLongitudeAngle,
+      previous: previousLongitudeAngle,
+    });
+
+    const currentLatitudeAngle = this.mathService.getAngle(
+      currentLatitudeMoon,
+      currentLatitudeSun,
+    );
+    const currentDiameter = currentDiameterSun + currentDiameterMoon;
+    const isCurrentInEclipse = currentLatitudeAngle < currentDiameter;
+
+    const wasApproachingOpposition =
+      previousLongitudeAngle < currentLongitudeAngle;
+    const willBeLeavingOpposition = currentLongitudeAngle > nextLongitudeAngle;
+
+    if (isMaximumLongitudeAngle && isCurrentInEclipse) {
+      return "maximum";
+    }
+
+    const oppositionThreshold = 180 - currentDiameter;
+    if (
+      wasApproachingOpposition &&
+      isCurrentInEclipse &&
+      previousLongitudeAngle < oppositionThreshold &&
+      currentLongitudeAngle >= oppositionThreshold
+    ) {
+      return "beginning";
+    }
+
+    if (
+      willBeLeavingOpposition &&
+      isCurrentInEclipse &&
+      nextLongitudeAngle < oppositionThreshold &&
+      currentLongitudeAngle >= oppositionThreshold
+    ) {
+      return "ending";
+    }
+
+    return null;
+  }
+
+  private isLunarEclipseActive(args: {
+    currentDiameterMoon: number;
+    currentDiameterSun: number;
+    currentLatitudeMoon: number;
+    currentLatitudeSun: number;
+    currentLongitudeMoon: number;
+    currentLongitudeSun: number;
+  }): boolean {
+    const {
+      currentDiameterMoon,
+      currentDiameterSun,
+      currentLatitudeMoon,
+      currentLatitudeSun,
+      currentLongitudeMoon,
+      currentLongitudeSun,
+    } = args;
+
+    const currentLongitudeAngle = this.mathService.getAngle(
+      currentLongitudeMoon,
+      currentLongitudeSun,
+    );
+    const currentLatitudeAngle = this.mathService.getAngle(
+      currentLatitudeMoon,
+      currentLatitudeSun,
+    );
+    const currentDiameter = currentDiameterSun + currentDiameterMoon;
+    const oppositionThreshold = 180 - currentDiameter;
+
+    return (
+      currentLatitudeAngle < currentDiameter &&
+      currentLongitudeAngle >= oppositionThreshold
+    );
+  }
+
+  private isSolarEclipse(args: {
+    currentDiameterMoon: number;
+    currentDiameterSun: number;
+    currentLatitudeMoon: number;
+    currentLatitudeSun: number;
+    currentLongitudeMoon: number;
+    currentLongitudeSun: number;
+    nextLongitudeMoon: number;
+    nextLongitudeSun: number;
+    previousLongitudeMoon: number;
+    previousLongitudeSun: number;
+  }): EclipsePhase | null {
+    const {
+      currentDiameterMoon,
+      currentDiameterSun,
+      currentLatitudeMoon,
+      currentLatitudeSun,
+      currentLongitudeMoon,
+      currentLongitudeSun,
+      nextLongitudeMoon,
+      nextLongitudeSun,
+      previousLongitudeMoon,
+      previousLongitudeSun,
+    } = args;
+
+    const currentLongitudeAngle = this.mathService.getAngle(
+      currentLongitudeMoon,
+      currentLongitudeSun,
+    );
+    const nextLongitudeAngle = this.mathService.getAngle(
+      nextLongitudeMoon,
+      nextLongitudeSun,
+    );
+    const previousLongitudeAngle = this.mathService.getAngle(
+      previousLongitudeMoon,
+      previousLongitudeSun,
+    );
+
+    const isMinimumLongitudeAngle = this.mathService.isMinimum({
+      current: currentLongitudeAngle,
+      next: nextLongitudeAngle,
+      previous: previousLongitudeAngle,
+    });
+
+    const currentLatitudeAngle = this.mathService.getAngle(
+      currentLatitudeMoon,
+      currentLatitudeSun,
+    );
+    const currentDiameter = currentDiameterSun + currentDiameterMoon;
+    const isCurrentInEclipse = currentLatitudeAngle < currentDiameter;
+
+    const wasApproachingConjunction =
+      previousLongitudeAngle > currentLongitudeAngle;
+    const willBeLeavingConjunction = currentLongitudeAngle < nextLongitudeAngle;
+
+    if (isMinimumLongitudeAngle && isCurrentInEclipse) {
+      return "maximum";
+    }
+
+    if (
+      wasApproachingConjunction &&
+      isCurrentInEclipse &&
+      currentLongitudeAngle <= currentDiameter &&
+      previousLongitudeAngle > currentDiameter
+    ) {
+      return "beginning";
+    }
+
+    if (
+      willBeLeavingConjunction &&
+      isCurrentInEclipse &&
+      currentLongitudeAngle <= currentDiameter &&
+      nextLongitudeAngle > currentDiameter
+    ) {
+      return "ending";
+    }
+
+    return null;
+  }
+
+  private isSolarEclipseActive(args: {
+    currentDiameterMoon: number;
+    currentDiameterSun: number;
+    currentLatitudeMoon: number;
+    currentLatitudeSun: number;
+    currentLongitudeMoon: number;
+    currentLongitudeSun: number;
+  }): boolean {
+    const {
+      currentDiameterMoon,
+      currentDiameterSun,
+      currentLatitudeMoon,
+      currentLatitudeSun,
+      currentLongitudeMoon,
+      currentLongitudeSun,
+    } = args;
+
+    const currentLongitudeAngle = this.mathService.getAngle(
+      currentLongitudeMoon,
+      currentLongitudeSun,
+    );
+    const currentLatitudeAngle = this.mathService.getAngle(
+      currentLatitudeMoon,
+      currentLatitudeSun,
+    );
+    const currentDiameter = currentDiameterSun + currentDiameterMoon;
+
+    return (
+      currentLatitudeAngle < currentDiameter &&
+      currentLongitudeAngle <= currentDiameter
+    );
+  }
+
+  // 🌎 Public Methods
+
+  /**
+   * Creates a lunar eclipse calendar event.
+   *
+   * Lunar eclipses occur when Earth passes between Sun and Moon,
+   * casting Earth's shadow on the Moon.
+   *
+   * @param args - Configuration object
+   * @param date - Precise UTC time of eclipse phase
+   * @param phase - Eclipse phase: beginning, maximum, or ending
+   * @returns Calendar event for lunar eclipse phase
+   * @see {@link isLunarEclipse} for detection algorithm
+   */
+  buildLunarEclipseEvent(args: {
+    date: Moment;
+    frame: EclipseFrame;
+    phase: EclipsePhase;
+    // type: "partial" | "total" | "penumbral";
+  }): Event {
+    const { date, frame, phase } = args;
+
+    let description: string;
+    let summary: string;
+
+    if (phase === "maximum") {
+      description = `Lunar Eclipse maximum`;
+      summary = `🌙🐉🎯 ${description}`;
+    } else if (phase === "beginning") {
+      description = `Lunar Eclipse begins`;
+      summary = `🌙🐉▶️ ${description}`;
+    } else {
+      description = `Lunar Eclipse ends`;
+      summary = `🌙🐉◀️ ${description}`;
+    }
+
+    const frameLabel =
+      frame === "geocentric" ? "Geocentric" : "Topocentric Visibility";
+    const frameSymbol = frame === "geocentric" ? "🌐" : "📍";
+    const framedDescription = `${description} (${frameLabel})`;
+    const framedSummary = `${frameSymbol} ${summary}`;
+
+    const dateString = this.formatTimeZoneIso(date, "America/New_York");
+    this.logger.log(`${framedSummary} at ${dateString}`);
+
+    const lunarEclipseEvent: Event = {
+      categories: [...this.categories, "Lunar", frameLabel],
+      description: framedDescription,
+      end: date,
+      start: date,
+      summary: framedSummary,
+    };
+    return lunarEclipseEvent;
+  }
+
+  /**
+   * Creates a solar eclipse calendar event.
+   *
+   * Solar eclipses occur when the Moon passes between Earth and Sun,
+   * casting a shadow on Earth's surface.
+   *
+   * @param args - Configuration object
+   * @param date - Precise UTC time of eclipse phase
+   * @param phase - Eclipse phase: beginning, maximum, or ending
+   * @returns Calendar event for solar eclipse phase
+   * @see {@link isSolarEclipse} for detection algorithm
+   */
+  buildSolarEclipseEvent(args: {
+    date: Moment;
+    frame: EclipseFrame;
+    phase: EclipsePhase;
+    // type: "partial" | "total" | "annular";
+  }): Event {
+    const { date, frame, phase } = args;
+
+    let description: string;
+    let summary: string;
+
+    if (phase === "maximum") {
+      description = `Solar Eclipse maximum`;
+      summary = `☀️🐉🎯 ${description}`;
+    } else if (phase === "beginning") {
+      description = `Solar Eclipse begins`;
+      summary = `☀️🐉▶️ ${description}`;
+    } else {
+      description = `Solar Eclipse ends`;
+      summary = `☀️🐉◀️ ${description}`;
+    }
+
+    const frameLabel =
+      frame === "geocentric" ? "Geocentric" : "Topocentric Visibility";
+    const frameSymbol = frame === "geocentric" ? "🌐" : "📍";
+    const framedDescription = `${description} (${frameLabel})`;
+    const framedSummary = `${frameSymbol} ${summary}`;
+
+    const dateString = this.formatTimeZoneIso(date, "America/New_York");
+    this.logger.log(`${framedSummary} at ${dateString}`);
+
+    const solarEclipseEvent: Event = {
+      categories: [...this.categories, "Solar", frameLabel],
+      description: framedDescription,
+      end: date,
+      start: date,
+      summary: framedSummary,
+    };
+    return solarEclipseEvent;
   }
 
   /**
@@ -385,136 +774,6 @@ export class EclipsesService {
     return eclipseEvents;
   }
 
-  private getTopocentricPhase(args: {
-    currentActive: boolean;
-    geocentricPhase: EclipsePhase | null;
-    nextActive: boolean;
-    previousActive: boolean;
-  }): EclipsePhase | null {
-    const { currentActive, geocentricPhase, nextActive, previousActive } = args;
-
-    if (!currentActive) {
-      return null;
-    }
-    if (!previousActive) {
-      return "beginning";
-    }
-    if (!nextActive) {
-      return "ending";
-    }
-    if (geocentricPhase === "maximum") {
-      return "maximum";
-    }
-
-    return null;
-  }
-
-  /**
-   * Creates a solar eclipse calendar event.
-   *
-   * Solar eclipses occur when the Moon passes between Earth and Sun,
-   * casting a shadow on Earth's surface.
-   *
-   * @param args - Configuration object
-   * @param date - Precise UTC time of eclipse phase
-   * @param phase - Eclipse phase: beginning, maximum, or ending
-   * @returns Calendar event for solar eclipse phase
-   * @see {@link isSolarEclipse} for detection algorithm
-   */
-  buildSolarEclipseEvent(args: {
-    date: Moment;
-    frame: EclipseFrame;
-    phase: EclipsePhase;
-    // type: "partial" | "total" | "annular";
-  }): Event {
-    const { date, frame, phase } = args;
-
-    let description: string;
-    let summary: string;
-
-    if (phase === "maximum") {
-      description = `Solar Eclipse maximum`;
-      summary = `☀️🐉🎯 ${description}`;
-    } else if (phase === "beginning") {
-      description = `Solar Eclipse begins`;
-      summary = `☀️🐉▶️ ${description}`;
-    } else {
-      description = `Solar Eclipse ends`;
-      summary = `☀️🐉◀️ ${description}`;
-    }
-
-    const frameLabel =
-      frame === "geocentric" ? "Geocentric" : "Topocentric Visibility";
-    const frameSymbol = frame === "geocentric" ? "🌐" : "📍";
-    const framedDescription = `${description} (${frameLabel})`;
-    const framedSummary = `${frameSymbol} ${summary}`;
-
-    const dateString = this.formatTimeZoneIso(date, "America/New_York");
-    this.logger.log(`${framedSummary} at ${dateString}`);
-
-    const solarEclipseEvent: Event = {
-      start: date,
-      end: date,
-      summary: framedSummary,
-      description: framedDescription,
-      categories: [...this.categories, "Solar", frameLabel],
-    };
-    return solarEclipseEvent;
-  }
-
-  /**
-   * Creates a lunar eclipse calendar event.
-   *
-   * Lunar eclipses occur when Earth passes between Sun and Moon,
-   * casting Earth's shadow on the Moon.
-   *
-   * @param args - Configuration object
-   * @param date - Precise UTC time of eclipse phase
-   * @param phase - Eclipse phase: beginning, maximum, or ending
-   * @returns Calendar event for lunar eclipse phase
-   * @see {@link isLunarEclipse} for detection algorithm
-   */
-  buildLunarEclipseEvent(args: {
-    date: Moment;
-    frame: EclipseFrame;
-    phase: EclipsePhase;
-    // type: "partial" | "total" | "penumbral";
-  }): Event {
-    const { date, frame, phase } = args;
-
-    let description: string;
-    let summary: string;
-
-    if (phase === "maximum") {
-      description = `Lunar Eclipse maximum`;
-      summary = `🌙🐉🎯 ${description}`;
-    } else if (phase === "beginning") {
-      description = `Lunar Eclipse begins`;
-      summary = `🌙🐉▶️ ${description}`;
-    } else {
-      description = `Lunar Eclipse ends`;
-      summary = `🌙🐉◀️ ${description}`;
-    }
-
-    const frameLabel =
-      frame === "geocentric" ? "Geocentric" : "Topocentric Visibility";
-    const frameSymbol = frame === "geocentric" ? "🌐" : "📍";
-    const framedDescription = `${description} (${frameLabel})`;
-    const framedSummary = `${frameSymbol} ${summary}`;
-
-    const dateString = this.formatTimeZoneIso(date, "America/New_York");
-    this.logger.log(`${framedSummary} at ${dateString}`);
-
-    const lunarEclipseEvent: Event = {
-      start: date,
-      end: date,
-      summary: framedSummary,
-      description: framedDescription,
-      categories: [...this.categories, "Lunar", frameLabel],
-    };
-    return lunarEclipseEvent;
-  }
-
   /**
    * Builds progressive event spans for eclipse periods.
    *
@@ -586,263 +845,5 @@ export class EclipsesService {
     }
 
     return progressiveEvents;
-  }
-
-  private getSolarEclipseDurationEvent(
-    beginning: Event,
-    ending: Event,
-    frameLabel: "Geocentric" | "Topocentric Visibility",
-  ): Event {
-    const frameSymbol = frameLabel === "Geocentric" ? "🌐" : "📍";
-    return {
-      start: beginning.start,
-      end: ending.start,
-      summary: `${frameSymbol} ☀️🐉 Solar Eclipse (${frameLabel})`,
-      description: `Solar Eclipse (${frameLabel})`,
-      categories: [...this.categories, "Solar", frameLabel],
-    };
-  }
-
-  private getLunarEclipseDurationEvent(
-    beginning: Event,
-    ending: Event,
-    frameLabel: "Geocentric" | "Topocentric Visibility",
-  ): Event {
-    const frameSymbol = frameLabel === "Geocentric" ? "🌐" : "📍";
-    return {
-      start: beginning.start,
-      end: ending.start,
-      summary: `${frameSymbol} 🌙🐉 Lunar Eclipse (${frameLabel})`,
-      description: `Lunar Eclipse (${frameLabel})`,
-      categories: [...this.categories, "Lunar", frameLabel],
-    };
-  }
-
-  private isSolarEclipse(args: {
-    currentDiameterMoon: number;
-    currentDiameterSun: number;
-    currentLatitudeMoon: number;
-    currentLatitudeSun: number;
-    currentLongitudeMoon: number;
-    currentLongitudeSun: number;
-    nextLongitudeMoon: number;
-    nextLongitudeSun: number;
-    previousLongitudeMoon: number;
-    previousLongitudeSun: number;
-  }): EclipsePhase | null {
-    const {
-      currentDiameterMoon,
-      currentDiameterSun,
-      currentLatitudeMoon,
-      currentLatitudeSun,
-      currentLongitudeMoon,
-      currentLongitudeSun,
-      nextLongitudeMoon,
-      nextLongitudeSun,
-      previousLongitudeMoon,
-      previousLongitudeSun,
-    } = args;
-
-    const currentLongitudeAngle = this.mathService.getAngle(
-      currentLongitudeMoon,
-      currentLongitudeSun,
-    );
-    const nextLongitudeAngle = this.mathService.getAngle(
-      nextLongitudeMoon,
-      nextLongitudeSun,
-    );
-    const previousLongitudeAngle = this.mathService.getAngle(
-      previousLongitudeMoon,
-      previousLongitudeSun,
-    );
-
-    const isMinimumLongitudeAngle = this.mathService.isMinimum({
-      current: currentLongitudeAngle,
-      previous: previousLongitudeAngle,
-      next: nextLongitudeAngle,
-    });
-
-    const currentLatitudeAngle = this.mathService.getAngle(
-      currentLatitudeMoon,
-      currentLatitudeSun,
-    );
-    const currentDiameter = currentDiameterSun + currentDiameterMoon;
-    const isCurrentInEclipse = currentLatitudeAngle < currentDiameter;
-
-    const wasApproachingConjunction =
-      previousLongitudeAngle > currentLongitudeAngle;
-    const willBeLeavingConjunction = currentLongitudeAngle < nextLongitudeAngle;
-
-    if (isMinimumLongitudeAngle && isCurrentInEclipse) {
-      return "maximum";
-    }
-
-    if (
-      wasApproachingConjunction &&
-      isCurrentInEclipse &&
-      currentLongitudeAngle <= currentDiameter &&
-      previousLongitudeAngle > currentDiameter
-    ) {
-      return "beginning";
-    }
-
-    if (
-      willBeLeavingConjunction &&
-      isCurrentInEclipse &&
-      currentLongitudeAngle <= currentDiameter &&
-      nextLongitudeAngle > currentDiameter
-    ) {
-      return "ending";
-    }
-
-    return null;
-  }
-
-  private isSolarEclipseActive(args: {
-    currentDiameterMoon: number;
-    currentDiameterSun: number;
-    currentLatitudeMoon: number;
-    currentLatitudeSun: number;
-    currentLongitudeMoon: number;
-    currentLongitudeSun: number;
-  }): boolean {
-    const {
-      currentDiameterMoon,
-      currentDiameterSun,
-      currentLatitudeMoon,
-      currentLatitudeSun,
-      currentLongitudeMoon,
-      currentLongitudeSun,
-    } = args;
-
-    const currentLongitudeAngle = this.mathService.getAngle(
-      currentLongitudeMoon,
-      currentLongitudeSun,
-    );
-    const currentLatitudeAngle = this.mathService.getAngle(
-      currentLatitudeMoon,
-      currentLatitudeSun,
-    );
-    const currentDiameter = currentDiameterSun + currentDiameterMoon;
-
-    return (
-      currentLatitudeAngle < currentDiameter &&
-      currentLongitudeAngle <= currentDiameter
-    );
-  }
-
-  private isLunarEclipse(args: {
-    currentDiameterMoon: number;
-    currentDiameterSun: number;
-    currentLatitudeMoon: number;
-    currentLatitudeSun: number;
-    currentLongitudeMoon: number;
-    currentLongitudeSun: number;
-    nextLongitudeMoon: number;
-    nextLongitudeSun: number;
-    previousLongitudeMoon: number;
-    previousLongitudeSun: number;
-  }): EclipsePhase | null {
-    const {
-      currentDiameterMoon,
-      currentDiameterSun,
-      currentLatitudeMoon,
-      currentLatitudeSun,
-      currentLongitudeMoon,
-      currentLongitudeSun,
-      nextLongitudeMoon,
-      nextLongitudeSun,
-      previousLongitudeMoon,
-      previousLongitudeSun,
-    } = args;
-
-    const currentLongitudeAngle = this.mathService.getAngle(
-      currentLongitudeMoon,
-      currentLongitudeSun,
-    );
-    const nextLongitudeAngle = this.mathService.getAngle(
-      nextLongitudeMoon,
-      nextLongitudeSun,
-    );
-    const previousLongitudeAngle = this.mathService.getAngle(
-      previousLongitudeMoon,
-      previousLongitudeSun,
-    );
-
-    const isMaximumLongitudeAngle = this.mathService.isMaximum({
-      current: currentLongitudeAngle,
-      previous: previousLongitudeAngle,
-      next: nextLongitudeAngle,
-    });
-
-    const currentLatitudeAngle = this.mathService.getAngle(
-      currentLatitudeMoon,
-      currentLatitudeSun,
-    );
-    const currentDiameter = currentDiameterSun + currentDiameterMoon;
-    const isCurrentInEclipse = currentLatitudeAngle < currentDiameter;
-
-    const wasApproachingOpposition =
-      previousLongitudeAngle < currentLongitudeAngle;
-    const willBeLeavingOpposition = currentLongitudeAngle > nextLongitudeAngle;
-
-    if (isMaximumLongitudeAngle && isCurrentInEclipse) {
-      return "maximum";
-    }
-
-    const oppositionThreshold = 180 - currentDiameter;
-    if (
-      wasApproachingOpposition &&
-      isCurrentInEclipse &&
-      previousLongitudeAngle < oppositionThreshold &&
-      currentLongitudeAngle >= oppositionThreshold
-    ) {
-      return "beginning";
-    }
-
-    if (
-      willBeLeavingOpposition &&
-      isCurrentInEclipse &&
-      nextLongitudeAngle < oppositionThreshold &&
-      currentLongitudeAngle >= oppositionThreshold
-    ) {
-      return "ending";
-    }
-
-    return null;
-  }
-
-  private isLunarEclipseActive(args: {
-    currentDiameterMoon: number;
-    currentDiameterSun: number;
-    currentLatitudeMoon: number;
-    currentLatitudeSun: number;
-    currentLongitudeMoon: number;
-    currentLongitudeSun: number;
-  }): boolean {
-    const {
-      currentDiameterMoon,
-      currentDiameterSun,
-      currentLatitudeMoon,
-      currentLatitudeSun,
-      currentLongitudeMoon,
-      currentLongitudeSun,
-    } = args;
-
-    const currentLongitudeAngle = this.mathService.getAngle(
-      currentLongitudeMoon,
-      currentLongitudeSun,
-    );
-    const currentLatitudeAngle = this.mathService.getAngle(
-      currentLatitudeMoon,
-      currentLatitudeSun,
-    );
-    const currentDiameter = currentDiameterSun + currentDiameterMoon;
-    const oppositionThreshold = 180 - currentDiameter;
-
-    return (
-      currentLatitudeAngle < currentDiameter &&
-      currentLongitudeAngle >= oppositionThreshold
-    );
   }
 }

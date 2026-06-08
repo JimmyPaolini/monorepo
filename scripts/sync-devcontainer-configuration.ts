@@ -76,21 +76,13 @@ const MODE = process.argv[2] ?? "check";
 // ─── Types ────────────────────────────────────────────────────────────────────
 
 interface DevcontainerConfig {
-  name?: string;
-  features?: Record<string, unknown>;
-  runArgs?: string[];
   [key: string]: unknown;
+  features?: Record<string, unknown>;
+  name?: string;
+  runArgs?: string[];
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
-
-function isDockerFeatureKey(key: string): boolean {
-  return (
-    key.includes("docker-in-docker") || key.includes("docker-outside-of-docker")
-  );
-}
-
-// ─── Sync ─────────────────────────────────────────────────────────────────────
 
 function applySync(
   localConfig: DevcontainerConfig,
@@ -139,7 +131,7 @@ function applySync(
   return mergedConfig;
 }
 
-// ─── Check / Write ────────────────────────────────────────────────────────────
+// ─── Sync ─────────────────────────────────────────────────────────────────────
 
 function check(
   expectedConfig: DevcontainerConfig,
@@ -178,20 +170,13 @@ function check(
   return false;
 }
 
-function write(
-  mergedConfig: DevcontainerConfig,
-  cloudConfigFile: string,
-): void {
-  const relativeFilePath = path.relative(WORKSPACE_ROOT, cloudConfigFile);
-  writeFileSync(
-    cloudConfigFile,
-    `${JSON.stringify(mergedConfig, null, 2)}\n`,
-    "utf8",
-  );
-  console.log(`✅ Updated: ${relativeFilePath}`);
-}
+// ─── Check / Write ────────────────────────────────────────────────────────────
 
-// ─── Main ─────────────────────────────────────────────────────────────────────
+function isDockerFeatureKey(key: string): boolean {
+  return (
+    key.includes("docker-in-docker") || key.includes("docker-outside-of-docker")
+  );
+}
 
 function main(): void {
   const localConfig: DevcontainerConfig = JSON5.parse(
@@ -215,6 +200,21 @@ function main(): void {
     );
     process.exit(1);
   }
+}
+
+// ─── Main ─────────────────────────────────────────────────────────────────────
+
+function write(
+  mergedConfig: DevcontainerConfig,
+  cloudConfigFile: string,
+): void {
+  const relativeFilePath = path.relative(WORKSPACE_ROOT, cloudConfigFile);
+  writeFileSync(
+    cloudConfigFile,
+    `${JSON.stringify(mergedConfig, null, 2)}\n`,
+    "utf8",
+  );
+  console.log(`✅ Updated: ${relativeFilePath}`);
 }
 
 main();

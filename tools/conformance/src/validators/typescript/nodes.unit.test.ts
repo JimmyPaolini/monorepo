@@ -20,17 +20,9 @@ import {
   getKey,
 } from "./nodes";
 
-function parseTypescript(code: string): SourceFile {
-  return createSourceFile("test.ts", code, ScriptTarget.Latest, true);
-}
-
-function statementsOf(code: string): Node[] {
-  return getChildren(parseTypescript(code));
-}
-
-function defined<T>(value: T | undefined): T {
-  if (value === undefined) throw new Error("Expected defined value");
-  return value;
+function assertClassDeclaration(node: Node): ClassDeclaration {
+  if (!isClassDeclaration(node)) throw new Error("Expected ClassDeclaration");
+  return node;
 }
 
 function assertVariableStatement(node: Node): VariableStatement {
@@ -38,9 +30,9 @@ function assertVariableStatement(node: Node): VariableStatement {
   return node;
 }
 
-function assertClassDeclaration(node: Node): ClassDeclaration {
-  if (!isClassDeclaration(node)) throw new Error("Expected ClassDeclaration");
-  return node;
+function defined<T>(value: T | undefined): T {
+  if (value === undefined) throw new Error("Expected defined value");
+  return value;
 }
 
 function findDecorator(classCode: string): Node {
@@ -56,6 +48,14 @@ function findDecorator(classCode: string): Node {
   });
   if (found === undefined) throw new Error("No decorator found");
   return found;
+}
+
+function parseTypescript(code: string): SourceFile {
+  return createSourceFile("test.ts", code, ScriptTarget.Latest, true);
+}
+
+function statementsOf(code: string): Node[] {
+  return getChildren(parseTypescript(code));
 }
 
 describe("getChildren", () => {

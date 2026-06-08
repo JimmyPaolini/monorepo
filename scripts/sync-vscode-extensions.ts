@@ -38,11 +38,6 @@ const DEVCONTAINER_FILES = [
 ];
 const MODE = process.argv[2] || "check";
 
-interface ExtensionsJson {
-  recommendations: string[];
-  unwantedRecommendations: string[];
-}
-
 interface DevcontainerJson {
   customizations: {
     vscode: {
@@ -53,18 +48,9 @@ interface DevcontainerJson {
   };
 }
 
-function showDifference(source: string[], target: string[]): void {
-  const missing = _.difference(source, target);
-  const extra = _.difference(target, source);
-
-  if (missing.length > 0) {
-    console.log(`  Missing in devcontainer.json (${missing.length} items):`);
-    missing.forEach((item) => console.log(`    + ${item}`));
-  }
-  if (extra.length > 0) {
-    console.log(`  Extra in devcontainer.json (${extra.length} items):`);
-    extra.forEach((item) => console.log(`    - ${item}`));
-  }
+interface ExtensionsJson {
+  recommendations: string[];
+  unwantedRecommendations: string[];
 }
 
 function checkSync(
@@ -130,27 +116,6 @@ function checkSync(
   return true;
 }
 
-function writeSync(
-  extensions: ExtensionsJson,
-  devcontainer: DevcontainerJson,
-  devcontainerFile: string,
-): void {
-  const label = path.relative(WORKSPACE_ROOT, devcontainerFile);
-  console.log(`🔄 Syncing extensions to ${label}...`);
-  // Copy recommendations to both extensions and recommendations in devcontainer
-  devcontainer.customizations.vscode.extensions = extensions.recommendations;
-  devcontainer.customizations.vscode.recommendations =
-    extensions.recommendations;
-  devcontainer.customizations.vscode.unwantedRecommendations =
-    extensions.unwantedRecommendations;
-  writeFileSync(
-    devcontainerFile,
-    `${JSON.stringify(devcontainer, null, 2)}\n`,
-    "utf8",
-  );
-  console.log(`✅ Extensions synced to ${label}`);
-}
-
 function main(): void {
   const extensions: ExtensionsJson = JSON5.parse(
     readFileSync(EXTENSIONS_FILE, "utf8"),
@@ -189,6 +154,41 @@ function main(): void {
     );
     process.exit(1);
   }
+}
+
+function showDifference(source: string[], target: string[]): void {
+  const missing = _.difference(source, target);
+  const extra = _.difference(target, source);
+
+  if (missing.length > 0) {
+    console.log(`  Missing in devcontainer.json (${missing.length} items):`);
+    missing.forEach((item) => console.log(`    + ${item}`));
+  }
+  if (extra.length > 0) {
+    console.log(`  Extra in devcontainer.json (${extra.length} items):`);
+    extra.forEach((item) => console.log(`    - ${item}`));
+  }
+}
+
+function writeSync(
+  extensions: ExtensionsJson,
+  devcontainer: DevcontainerJson,
+  devcontainerFile: string,
+): void {
+  const label = path.relative(WORKSPACE_ROOT, devcontainerFile);
+  console.log(`🔄 Syncing extensions to ${label}...`);
+  // Copy recommendations to both extensions and recommendations in devcontainer
+  devcontainer.customizations.vscode.extensions = extensions.recommendations;
+  devcontainer.customizations.vscode.recommendations =
+    extensions.recommendations;
+  devcontainer.customizations.vscode.unwantedRecommendations =
+    extensions.unwantedRecommendations;
+  writeFileSync(
+    devcontainerFile,
+    `${JSON.stringify(devcontainer, null, 2)}\n`,
+    "utf8",
+  );
+  console.log(`✅ Extensions synced to ${label}`);
 }
 
 main();

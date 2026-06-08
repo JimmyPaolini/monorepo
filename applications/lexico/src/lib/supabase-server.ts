@@ -12,6 +12,16 @@ import type { Database } from "./database.types";
 import type { SupabaseClient } from "@supabase/supabase-js";
 
 /**
+ * User type returned from auth operations
+ */
+export interface AuthUser {
+  avatarUrl?: string | undefined;
+  email: string;
+  id: string;
+  name?: string | undefined;
+}
+
+/**
  * Creates a Supabase client for server-side operations with cookie handling.
  * This client automatically handles auth session cookies via HTTP headers.
  *
@@ -41,21 +51,11 @@ export function getSupabaseServerClient(): SupabaseClient<Database> {
         return parsed.map(({ name, value }) => ({ name, value: value ?? "" }));
       },
       setAll(cookiesToSet) {
-        cookiesToSet.forEach(({ name, value, options }) => {
+        cookiesToSet.forEach(({ name, options, value }) => {
           const serialized = serializeCookieHeader(name, value, options);
           setResponseHeader("Set-Cookie", serialized);
         });
       },
     },
   });
-}
-
-/**
- * User type returned from auth operations
- */
-export interface AuthUser {
-  id: string;
-  email: string;
-  name?: string | undefined;
-  avatarUrl?: string | undefined;
 }

@@ -9,6 +9,14 @@ import pino from "pino";
  */
 @Injectable()
 export class LoggerService extends ConsoleLogger {
+  // 🏗 Dependency Injection
+
+  constructor() {
+    super();
+  }
+
+  // 🔐 Private Fields
+
   private static readonly isProduction =
     process.env["NODE_ENV"] === "production";
 
@@ -18,20 +26,13 @@ export class LoggerService extends ConsoleLogger {
       : {
           level: process.env["LOG_LEVEL"] ?? "info",
           transport: {
-            target: "pino-pretty",
             options: { colorize: true, singleLine: true },
+            target: "pino-pretty",
           },
         },
   );
 
   private child: pino.Logger = LoggerService.root;
-
-  // 🏗️ Dependency Injection
-  constructor() {
-    super();
-  }
-
-  // 🔐 Private Fields
 
   // 🔑 Public Fields
 
@@ -39,20 +40,9 @@ export class LoggerService extends ConsoleLogger {
 
   // 🌎 Public Methods
 
-  /** Sets the context label included in every subsequent log line. */
-  override setContext(context: string): void {
-    super.setContext(context);
-    this.child = LoggerService.root.child({ context });
-  }
-
-  /** Logs an informational message at the `info` level. */
-  override log(message: unknown, context?: string): void {
-    this.child.info({ context: context ?? this.context }, String(message));
-  }
-
-  /** Logs a warning message at the `warn` level. */
-  override warn(message: unknown, context?: string): void {
-    this.child.warn({ context: context ?? this.context }, String(message));
+  /** Logs a debug message at the `debug` level. */
+  override debug(message: unknown, context?: string): void {
+    this.child.debug({ context: context ?? this.context }, String(message));
   }
 
   /** Logs an error message at the `error` level, optionally including a stack trace. */
@@ -63,13 +53,24 @@ export class LoggerService extends ConsoleLogger {
     );
   }
 
-  /** Logs a debug message at the `debug` level. */
-  override debug(message: unknown, context?: string): void {
-    this.child.debug({ context: context ?? this.context }, String(message));
+  /** Logs an informational message at the `info` level. */
+  override log(message: unknown, context?: string): void {
+    this.child.info({ context: context ?? this.context }, String(message));
+  }
+
+  /** Sets the context label included in every subsequent log line. */
+  override setContext(context: string): void {
+    super.setContext(context);
+    this.child = LoggerService.root.child({ context });
   }
 
   /** Logs a verbose message at the `trace` level. */
   override verbose(message: unknown, context?: string): void {
     this.child.trace({ context: context ?? this.context }, String(message));
+  }
+
+  /** Logs a warning message at the `warn` level. */
+  override warn(message: unknown, context?: string): void {
+    this.child.warn({ context: context ?? this.context }, String(message));
   }
 }

@@ -1,6 +1,7 @@
-import { Button } from "@monorepo/lexico-components";
 import { Loader2, Volume2 } from "lucide-react";
 import { useCallback, useState } from "react";
+
+import { Button } from "@monorepo/lexico-components";
 
 import { getPronunciation } from "../lib/pronunciation";
 
@@ -10,21 +11,21 @@ import type { ReactNode } from "react";
  * Props for PronunciationButton component that plays Latin audio.
  */
 interface PronunciationButtonProps {
-  /** The Latin text to pronounce */
-  text: string;
-  /** Pronunciation dialect (classical or ecclesiastical) */
-  dialect?: "classical" | "ecclesiastical";
   /** Additional class names */
   className?: string;
+  /** Pronunciation dialect (classical or ecclesiastical) */
+  dialect?: "classical" | "ecclesiastical";
+  /** The Latin text to pronounce */
+  text: string;
 }
 
 /**
  * Button component that plays pronunciation audio for Latin text.
  */
 export function PronunciationButton({
-  text,
-  dialect = "classical",
   className,
+  dialect = "classical",
+  text,
 }: PronunciationButtonProps): ReactNode {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -32,7 +33,7 @@ export function PronunciationButton({
     setIsLoading(true);
     try {
       const result = await getPronunciation({
-        data: { text, dialect },
+        data: { dialect, text },
       });
 
       if (result?.audio) {
@@ -62,12 +63,12 @@ export function PronunciationButton({
 
   return (
     <Button
-      variant="ghost"
-      size="icon"
-      onClick={() => void handlePlay()}
-      disabled={isLoading}
       className={className}
+      disabled={isLoading}
+      onClick={() => void handlePlay()}
+      size="icon"
       title={`Play ${dialect} pronunciation`}
+      variant="ghost"
     >
       {isLoading ? (
         <Loader2 className="h-4 w-4 animate-spin" />

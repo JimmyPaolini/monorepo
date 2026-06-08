@@ -2,37 +2,6 @@
 import type { Body } from "@caelundas/src/modules/caelundas/caelundas.types";
 
 /**
- * Ecliptic latitude in degrees.
- * Range: -90° (south) to +90° (north) from the ecliptic plane.
- */
-export type Latitude = number;
-
-/**
- * Ecliptic longitude in degrees.
- * Range: 0° to 360° along the ecliptic, starting from the vernal equinox.
- */
-export type Longitude = number;
-
-/**
- * Coordinate pair representing a position on the celestial sphere.
- * Format: [longitude, latitude] in degrees.
- */
-export type Coordinates = [Longitude, Latitude];
-
-/**
- * Time-indexed ephemeris of ecliptic coordinates for a celestial body.
- *
- * Keys are ISO 8601 timestamp strings, values contain longitude and latitude
- * in degrees. Used for tracking body positions through the zodiac.
- *
- * @see {@link getCoordinateFromEphemeris} for data retrieval
- */
-export type CoordinateEphemeris = Record<
-  string,
-  { longitude: number; latitude: number }
->;
-
-/**
  * Time-indexed ephemeris of horizontal coordinates (observer frame).
  *
  * Keys are ISO timestamps, values contain azimuth and elevation in degrees.
@@ -46,20 +15,35 @@ export type AzimuthElevationEphemeris = Record<
 >;
 
 /**
- * Time-indexed ephemeris of illumination fraction.
- *
- * Keys are ISO timestamps, values are illumination percentages (0-100).
- * Used for lunar phase and planetary phase calculations.
+ * Bodies for which azimuth/elevation ephemerides are generated.
+ * Limited to Sun and Moon for rise/set calculations.
  */
-export type IlluminationEphemeris = Record<string, { illumination: number }>;
+export type AzimuthElevationEphemerisBody = Extract<Body, "moon" | "sun">;
 
 /**
- * Time-indexed ephemeris of observer-body distance.
+ * Time-indexed ephemeris of ecliptic coordinates for a celestial body.
  *
- * Keys are ISO timestamps, values are distances in astronomical units (AU).
- * Used for apsis detection (perihelion/aphelion, perigee/apogee).
+ * Keys are ISO 8601 timestamp strings, values contain longitude and latitude
+ * in degrees. Used for tracking body positions through the zodiac.
+ *
+ * @see {@link getCoordinateFromEphemeris} for data retrieval
  */
-export type DistanceEphemeris = Record<string, { distance: number }>;
+export type CoordinateEphemeris = Record<
+  string,
+  { latitude: number; longitude: number }
+>;
+
+/**
+ * Bodies for which coordinate ephemerides are generated.
+ * Includes all tracked planets, asteroids, comets, and lunar nodes.
+ */
+export type CoordinateEphemerisBody = Body;
+
+/**
+ * Coordinate pair representing a position on the celestial sphere.
+ * Format: [longitude, latitude] in degrees.
+ */
+export type Coordinates = [Longitude, Latitude];
 
 /**
  * Time-indexed ephemeris of apparent angular diameter.
@@ -70,31 +54,18 @@ export type DistanceEphemeris = Record<string, { distance: number }>;
 export type DiameterEphemeris = Record<string, { diameter: number }>;
 
 /**
- * Bodies for which coordinate ephemerides are generated.
- * Includes all tracked planets, asteroids, comets, and lunar nodes.
- */
-export type CoordinateEphemerisBody = Body;
-
-/**
- * Bodies for which azimuth/elevation ephemerides are generated.
- * Limited to Sun and Moon for rise/set calculations.
- */
-export type AzimuthElevationEphemerisBody = Extract<Body, "sun" | "moon">;
-
-/**
- * Bodies for which illumination ephemerides are generated.
- * Includes bodies with visible phases: Sun (always 100%), Moon, and inner planets.
- */
-export type IlluminationEphemerisBody = Extract<
-  Body,
-  "sun" | "moon" | "venus" | "mercury" | "mars"
->;
-
-/**
  * Bodies for which diameter ephemerides are generated.
  * Limited to Sun and Moon for eclipse calculations.
  */
-export type DiameterEphemerisBody = Extract<Body, "sun" | "moon">;
+export type DiameterEphemerisBody = Extract<Body, "moon" | "sun">;
+
+/**
+ * Time-indexed ephemeris of observer-body distance.
+ *
+ * Keys are ISO timestamps, values are distances in astronomical units (AU).
+ * Used for apsis detection (perihelion/aphelion, perigee/apogee).
+ */
+export type DistanceEphemeris = Record<string, { distance: number }>;
 
 /**
  * Bodies for which distance ephemerides are generated.
@@ -102,5 +73,34 @@ export type DiameterEphemerisBody = Extract<Body, "sun" | "moon">;
  */
 export type DistanceEphemerisBody = Extract<
   Body,
-  "sun" | "venus" | "mercury" | "mars"
+  "mars" | "mercury" | "sun" | "venus"
 >;
+
+/**
+ * Time-indexed ephemeris of illumination fraction.
+ *
+ * Keys are ISO timestamps, values are illumination percentages (0-100).
+ * Used for lunar phase and planetary phase calculations.
+ */
+export type IlluminationEphemeris = Record<string, { illumination: number }>;
+
+/**
+ * Bodies for which illumination ephemerides are generated.
+ * Includes bodies with visible phases: Sun (always 100%), Moon, and inner planets.
+ */
+export type IlluminationEphemerisBody = Extract<
+  Body,
+  "mars" | "mercury" | "moon" | "sun" | "venus"
+>;
+
+/**
+ * Ecliptic latitude in degrees.
+ * Range: -90° (south) to +90° (north) from the ecliptic plane.
+ */
+export type Latitude = number;
+
+/**
+ * Ecliptic longitude in degrees.
+ * Range: 0° to 360° along the ecliptic, starting from the vernal equinox.
+ */
+export type Longitude = number;

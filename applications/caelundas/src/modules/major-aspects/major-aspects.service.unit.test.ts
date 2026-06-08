@@ -51,7 +51,7 @@ describe("MajorAspectsService", () => {
         return Object.fromEntries(
           Object.entries(longitudes).map(([timestamp, longitude]) => [
             timestamp,
-            { longitude, latitude: 0 },
+            { latitude: 0, longitude },
           ]),
         );
       };
@@ -68,9 +68,9 @@ describe("MajorAspectsService", () => {
         allBodies.forEach((body, index) => {
           const longitude = index * 20; // Space them out
           ephemerisByBody[body] = createEphemeris({
-            [previousMinute.toISOString()]: longitude,
             [currentMinute.toISOString()]: longitude,
             [nextMinute.toISOString()]: longitude,
+            [previousMinute.toISOString()]: longitude,
           });
         });
         return ephemerisByBody;
@@ -89,14 +89,14 @@ describe("MajorAspectsService", () => {
 
         // Override sun and mercury to be in conjunction
         coordinateEphemerisByBody.sun = createEphemeris({
-          [previousMinute.toISOString()]: 0,
           [currentMinute.toISOString()]: 0,
           [nextMinute.toISOString()]: 0,
+          [previousMinute.toISOString()]: 0,
         });
         coordinateEphemerisByBody.mercury = createEphemeris({
-          [previousMinute.toISOString()]: 1,
           [currentMinute.toISOString()]: 0,
           [nextMinute.toISOString()]: 359,
+          [previousMinute.toISOString()]: 1,
         });
 
         const events = service.detect({
@@ -130,14 +130,14 @@ describe("MajorAspectsService", () => {
 
         // Opposition has 8° orb, so venus needs to enter from >188° or <172°
         coordinateEphemerisByBody.sun = createEphemeris({
-          [previousMinute.toISOString()]: 0,
           [currentMinute.toISOString()]: 0,
           [nextMinute.toISOString()]: 0,
+          [previousMinute.toISOString()]: 0,
         });
         coordinateEphemerisByBody.venus = createEphemeris({
-          [previousMinute.toISOString()]: 189, // Outside 8° orb (>188°)
           [currentMinute.toISOString()]: 187, // Inside 8° orb (entering)
           [nextMinute.toISOString()]: 185, // Further in orb
+          [previousMinute.toISOString()]: 189, // Outside 8° orb (>188°)
         });
 
         const events = service.detect({
@@ -168,14 +168,14 @@ describe("MajorAspectsService", () => {
 
         // Trine has 6° orb, so mars needs to exit beyond >126° or <114°
         coordinateEphemerisByBody.sun = createEphemeris({
-          [previousMinute.toISOString()]: 0,
           [currentMinute.toISOString()]: 0,
           [nextMinute.toISOString()]: 0,
+          [previousMinute.toISOString()]: 0,
         });
         coordinateEphemerisByBody.mars = createEphemeris({
-          [previousMinute.toISOString()]: 122, // Inside 6° orb
           [currentMinute.toISOString()]: 125, // Still inside 6° orb (moving away)
           [nextMinute.toISOString()]: 127, // Outside 6° orb (exiting)
+          [previousMinute.toISOString()]: 122, // Inside 6° orb
         });
 
         const events = service.detect({
@@ -205,19 +205,19 @@ describe("MajorAspectsService", () => {
         );
 
         coordinateEphemerisByBody.sun = createEphemeris({
-          [previousMinute.toISOString()]: 0,
           [currentMinute.toISOString()]: 0,
           [nextMinute.toISOString()]: 0,
+          [previousMinute.toISOString()]: 0,
         });
         coordinateEphemerisByBody.mercury = createEphemeris({
-          [previousMinute.toISOString()]: 91,
           [currentMinute.toISOString()]: 90,
           [nextMinute.toISOString()]: 89,
+          [previousMinute.toISOString()]: 91,
         });
         coordinateEphemerisByBody.venus = createEphemeris({
-          [previousMinute.toISOString()]: 179,
           [currentMinute.toISOString()]: 180,
           [nextMinute.toISOString()]: 181,
+          [previousMinute.toISOString()]: 179,
         });
 
         const events = service.detect({
@@ -260,9 +260,9 @@ describe("MajorAspectsService", () => {
         allBodies.forEach((body, index) => {
           const longitude = safeLongitudes[index] ?? 0;
           coordinateEphemerisByBody[body] = createEphemeris({
-            [previousMinute.toISOString()]: longitude,
             [currentMinute.toISOString()]: longitude,
             [nextMinute.toISOString()]: longitude,
+            [previousMinute.toISOString()]: longitude,
           });
         });
 
@@ -286,14 +286,14 @@ describe("MajorAspectsService", () => {
         );
 
         coordinateEphemerisByBody.sun = createEphemeris({
-          [previousMinute.toISOString()]: 0,
           [currentMinute.toISOString()]: 0,
           [nextMinute.toISOString()]: 0,
+          [previousMinute.toISOString()]: 0,
         });
         coordinateEphemerisByBody.jupiter = createEphemeris({
-          [previousMinute.toISOString()]: 1,
           [currentMinute.toISOString()]: 0,
           [nextMinute.toISOString()]: 359,
+          [previousMinute.toISOString()]: 1,
         });
 
         const events = service.detect({
@@ -314,12 +314,12 @@ describe("MajorAspectsService", () => {
       it("should create perfective conjunction event", () => {
         const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
         const event = service.buildMajorAspectEvent({
-          longitudeBody1: 0,
-          longitudeBody2: 0,
-          timestamp,
           body1: "sun",
           body2: "moon",
+          longitudeBody1: 0,
+          longitudeBody2: 0,
           phase: "perfective",
+          timestamp,
         });
 
         expect(event.summary).toContain("🎯");
@@ -341,12 +341,12 @@ describe("MajorAspectsService", () => {
       it("should create forming opposition event", () => {
         const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
         const event = service.buildMajorAspectEvent({
-          longitudeBody1: 0,
-          longitudeBody2: 178,
-          timestamp,
           body1: "sun",
           body2: "mars",
+          longitudeBody1: 0,
+          longitudeBody2: 178,
           phase: "forming",
+          timestamp,
         });
 
         expect(event.summary).toContain("➡️");
@@ -361,12 +361,12 @@ describe("MajorAspectsService", () => {
       it("should create dissolving trine event", () => {
         const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
         const event = service.buildMajorAspectEvent({
-          longitudeBody1: 0,
-          longitudeBody2: 122,
-          timestamp,
           body1: "venus",
           body2: "jupiter",
+          longitudeBody1: 0,
+          longitudeBody2: 122,
           phase: "dissolving",
+          timestamp,
         });
 
         expect(event.summary).toContain("⬅️");
@@ -383,12 +383,12 @@ describe("MajorAspectsService", () => {
       it("should create square event", () => {
         const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
         const event = service.buildMajorAspectEvent({
-          longitudeBody1: 0,
-          longitudeBody2: 90,
-          timestamp,
           body1: "mercury",
           body2: "saturn",
+          longitudeBody1: 0,
+          longitudeBody2: 90,
           phase: "perfective",
+          timestamp,
         });
 
         expect(event.summary).toContain("☿");
@@ -401,12 +401,12 @@ describe("MajorAspectsService", () => {
       it("should create sextile event", () => {
         const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
         const event = service.buildMajorAspectEvent({
-          longitudeBody1: 0,
-          longitudeBody2: 60,
-          timestamp,
           body1: "moon",
           body2: "uranus",
+          longitudeBody1: 0,
+          longitudeBody2: 60,
           phase: "perfective",
+          timestamp,
         });
 
         expect(event.summary).toContain("🌙");
@@ -421,12 +421,12 @@ describe("MajorAspectsService", () => {
 
         expect(() =>
           service.buildMajorAspectEvent({
-            longitudeBody1: 0,
-            longitudeBody2: 45, // No major aspect at 45 degrees
-            timestamp,
             body1: "sun",
             body2: "moon",
+            longitudeBody1: 0,
+            longitudeBody2: 45, // No major aspect at 45 degrees
             phase: "perfective",
+            timestamp,
           }),
         ).toThrow("No major aspect found");
       });
@@ -434,12 +434,12 @@ describe("MajorAspectsService", () => {
       it("should handle wrapped longitudes (near 360/0 degrees)", () => {
         const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
         const event = service.buildMajorAspectEvent({
-          longitudeBody1: 358,
-          longitudeBody2: 2,
-          timestamp,
           body1: "sun",
           body2: "moon",
+          longitudeBody1: 358,
+          longitudeBody2: 2,
           phase: "perfective",
+          timestamp,
         });
 
         expect(event.description).toContain("conjunct");
@@ -454,10 +454,6 @@ describe("MajorAspectsService", () => {
         phase: string,
         timestamp: Moment,
       ): Event => ({
-        start: timestamp,
-        end: timestamp,
-        summary: `${body1} ${aspect} ${body2}`,
-        description: `${body1} ${phase} ${aspect} ${body2}`,
         categories: [
           "Astronomy",
           "Astrology",
@@ -467,6 +463,10 @@ describe("MajorAspectsService", () => {
           aspect, // Already in Start Case like "Conjunct", "Opposite"
           phase, // "Forming" or "Dissolving"
         ],
+        description: `${body1} ${phase} ${aspect} ${body2}`,
+        end: timestamp,
+        start: timestamp,
+        summary: `${body1} ${aspect} ${body2}`,
       });
 
       it("should create progressive events from forming and dissolving pairs", () => {
@@ -605,11 +605,11 @@ describe("MajorAspectsService", () => {
           moment.utc("2024-03-21T14:00:00.000Z"),
         );
         const nonAspectEvent: Event = {
-          start: moment.utc("2024-03-21T12:00:00.000Z"),
-          end: moment.utc("2024-03-21T12:00:00.000Z"),
-          summary: "Sunrise",
-          description: "Sunrise",
           categories: ["Solar", "Daily Cycle"],
+          description: "Sunrise",
+          end: moment.utc("2024-03-21T12:00:00.000Z"),
+          start: moment.utc("2024-03-21T12:00:00.000Z"),
+          summary: "Sunrise",
         };
 
         const events = [
@@ -659,16 +659,16 @@ describe("MajorAspectsService", () => {
     it("should return true for conjunction within orb", () => {
       expect(
         aspectsUtilitiesService.isAspect({
+          aspect: "conjunct",
           longitudeBody1: 0,
           longitudeBody2: 5,
-          aspect: "conjunct",
         }),
       ).toBe(true);
       expect(
         aspectsUtilitiesService.isAspect({
+          aspect: "conjunct",
           longitudeBody1: 100,
           longitudeBody2: 105,
-          aspect: "conjunct",
         }),
       ).toBe(true);
     });
@@ -676,9 +676,9 @@ describe("MajorAspectsService", () => {
     it("should return false for conjunction outside orb", () => {
       expect(
         aspectsUtilitiesService.isAspect({
+          aspect: "conjunct",
           longitudeBody1: 0,
           longitudeBody2: 10,
-          aspect: "conjunct",
         }),
       ).toBe(false);
     });
@@ -686,16 +686,16 @@ describe("MajorAspectsService", () => {
     it("should return true for opposition within orb", () => {
       expect(
         aspectsUtilitiesService.isAspect({
+          aspect: "opposite",
           longitudeBody1: 0,
           longitudeBody2: 180,
-          aspect: "opposite",
         }),
       ).toBe(true);
       expect(
         aspectsUtilitiesService.isAspect({
+          aspect: "opposite",
           longitudeBody1: 0,
           longitudeBody2: 175,
-          aspect: "opposite",
         }),
       ).toBe(true);
     });
@@ -703,16 +703,16 @@ describe("MajorAspectsService", () => {
     it("should return true for trine within orb", () => {
       expect(
         aspectsUtilitiesService.isAspect({
+          aspect: "trine",
           longitudeBody1: 0,
           longitudeBody2: 120,
-          aspect: "trine",
         }),
       ).toBe(true);
       expect(
         aspectsUtilitiesService.isAspect({
+          aspect: "trine",
           longitudeBody1: 0,
           longitudeBody2: 115,
-          aspect: "trine",
         }),
       ).toBe(true);
     });
@@ -720,16 +720,16 @@ describe("MajorAspectsService", () => {
     it("should return true for square within orb", () => {
       expect(
         aspectsUtilitiesService.isAspect({
+          aspect: "square",
           longitudeBody1: 0,
           longitudeBody2: 90,
-          aspect: "square",
         }),
       ).toBe(true);
       expect(
         aspectsUtilitiesService.isAspect({
+          aspect: "square",
           longitudeBody1: 0,
           longitudeBody2: 85,
-          aspect: "square",
         }),
       ).toBe(true);
     });
@@ -737,16 +737,16 @@ describe("MajorAspectsService", () => {
     it("should return true for sextile within orb", () => {
       expect(
         aspectsUtilitiesService.isAspect({
+          aspect: "sextile",
           longitudeBody1: 0,
           longitudeBody2: 60,
-          aspect: "sextile",
         }),
       ).toBe(true);
       expect(
         aspectsUtilitiesService.isAspect({
+          aspect: "sextile",
           longitudeBody1: 0,
           longitudeBody2: 57,
-          aspect: "sextile",
         }),
       ).toBe(true);
     });
@@ -817,48 +817,48 @@ describe("MajorAspectsService", () => {
   describe("getMajorAspectPhase", () => {
     it("should return forming when entering aspect orb", () => {
       const phase = service.getMajorAspectPhase({
-        previousLongitudeBody1: 0,
-        previousLongitudeBody2: 171,
         currentLongitudeBody1: 0,
         currentLongitudeBody2: 173,
         nextLongitudeBody1: 0,
         nextLongitudeBody2: 175,
+        previousLongitudeBody1: 0,
+        previousLongitudeBody2: 171,
       });
       expect(phase).toBe("forming");
     });
 
     it("should return dissolving when exiting aspect orb", () => {
       const phase = service.getMajorAspectPhase({
-        previousLongitudeBody1: 0,
-        previousLongitudeBody2: 185,
         currentLongitudeBody1: 0,
         currentLongitudeBody2: 187,
         nextLongitudeBody1: 0,
         nextLongitudeBody2: 189,
+        previousLongitudeBody1: 0,
+        previousLongitudeBody2: 185,
       });
       expect(phase).toBe("dissolving");
     });
 
     it("should return perfective when crossing the exact aspect angle", () => {
       const phase = service.getMajorAspectPhase({
-        previousLongitudeBody1: 0,
-        previousLongitudeBody2: 179,
         currentLongitudeBody1: 0,
         currentLongitudeBody2: 180,
         nextLongitudeBody1: 0,
         nextLongitudeBody2: 181,
+        previousLongitudeBody1: 0,
+        previousLongitudeBody2: 179,
       });
       expect(phase).toBe("perfective");
     });
 
     it("should return null when not in any aspect phase", () => {
       const phase = service.getMajorAspectPhase({
-        previousLongitudeBody1: 0,
-        previousLongitudeBody2: 45,
         currentLongitudeBody1: 0,
         currentLongitudeBody2: 46,
         nextLongitudeBody1: 0,
         nextLongitudeBody2: 47,
+        previousLongitudeBody1: 0,
+        previousLongitudeBody2: 45,
       });
       expect(phase).toBeNull();
     });

@@ -22,11 +22,11 @@ import type {
  * nodes that are only valid inside tables and lists.
  */
 export type MdastNode =
+  | ListItem
   | PhrasingContent
   | RootContent
-  | ListItem
-  | TableRow
-  | TableCell;
+  | TableCell
+  | TableRow;
 
 /**
  * Node types that act as containers: after a matching node is found in the
@@ -40,9 +40,78 @@ export const CONTAINER_TYPES = new Set([
   "listItem",
   "paragraph",
   "table",
-  "tableRow",
   "tableCell",
+  "tableRow",
 ]);
+
+/**
+ * Returns the children of an mdast node as a `MdastNode[]`, or an empty
+ * array for leaf nodes.
+ */
+export function getNodeChildren(node: MdastNode): MdastNode[] {
+  if (
+    typeof node === "object" &&
+    "children" in node &&
+    Array.isArray(node.children)
+  ) {
+    return node.children;
+  }
+  return [];
+}
+
+/** Type guard to check if a node is a Code block. */
+export function isCode(node: MdastNode): node is Code {
+  return node.type === "code";
+}
+
+/**
+ * Type guard functions for narrowing MdastNode types within switch statements.
+ * These replace type assertions with proper TypeScript type predicates.
+ */
+
+/** Type guard to check if a node is a Heading. */
+export function isHeading(node: MdastNode): node is Heading {
+  return node.type === "heading";
+}
+
+/** Type guard to check if a node is raw HTML. */
+export function isHtml(node: MdastNode): node is Html {
+  return node.type === "html";
+}
+
+/** Type guard to check if a node is an Image. */
+export function isImage(node: MdastNode): node is Image {
+  return node.type === "image";
+}
+
+/** Type guard to check if a node is inline code. */
+export function isInlineCode(node: MdastNode): node is InlineCode {
+  return node.type === "inlineCode";
+}
+
+/** Type guard to check if a node is a Link. */
+export function isLink(node: MdastNode): node is Link {
+  return node.type === "link";
+}
+
+/** Type guard to check if a node is a List. */
+export function isList(node: MdastNode): node is List {
+  return node.type === "list";
+}
+
+/** Type guard to check if a node is a Table. */
+export function isTable(node: MdastNode): node is MdastNode & {
+  children: { children: unknown[] }[];
+} & {
+  type: "table";
+} {
+  return node.type === "table";
+}
+
+/** Type guard to check if a node is plain text. */
+export function isText(node: MdastNode): node is Text {
+  return node.type === "text";
+}
 
 /**
  * Compares two strings line-by-line. Lines in `templateText` that match
@@ -61,71 +130,4 @@ export function textMatches(
     const iLine = instanceLines[i] ?? "";
     return TODO_LINE_REGEX.test(tLine) || tLine === iLine;
   });
-}
-
-/**
- * Returns the children of an mdast node as a `MdastNode[]`, or an empty
- * array for leaf nodes.
- */
-export function getNodeChildren(node: MdastNode): MdastNode[] {
-  if (
-    typeof node === "object" &&
-    "children" in node &&
-    Array.isArray(node.children)
-  ) {
-    return node.children;
-  }
-  return [];
-}
-
-/**
- * Type guard functions for narrowing MdastNode types within switch statements.
- * These replace type assertions with proper TypeScript type predicates.
- */
-
-/** Type guard to check if a node is a Heading. */
-export function isHeading(node: MdastNode): node is Heading {
-  return node.type === "heading";
-}
-
-/** Type guard to check if a node is a Code block. */
-export function isCode(node: MdastNode): node is Code {
-  return node.type === "code";
-}
-
-/** Type guard to check if a node is a List. */
-export function isList(node: MdastNode): node is List {
-  return node.type === "list";
-}
-
-/** Type guard to check if a node is a Table. */
-export function isTable(node: MdastNode): node is MdastNode & {
-  type: "table";
-} & { children: { children: unknown[] }[] } {
-  return node.type === "table";
-}
-
-/** Type guard to check if a node is a Link. */
-export function isLink(node: MdastNode): node is Link {
-  return node.type === "link";
-}
-
-/** Type guard to check if a node is an Image. */
-export function isImage(node: MdastNode): node is Image {
-  return node.type === "image";
-}
-
-/** Type guard to check if a node is inline code. */
-export function isInlineCode(node: MdastNode): node is InlineCode {
-  return node.type === "inlineCode";
-}
-
-/** Type guard to check if a node is raw HTML. */
-export function isHtml(node: MdastNode): node is Html {
-  return node.type === "html";
-}
-
-/** Type guard to check if a node is plain text. */
-export function isText(node: MdastNode): node is Text {
-  return node.type === "text";
 }

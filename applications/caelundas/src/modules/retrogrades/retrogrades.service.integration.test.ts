@@ -64,9 +64,9 @@ function createRetrogradeEphemeris(
   minute: Moment,
   override?: {
     body: RetrogradeBody;
-    previous: number;
     current: number;
     next: number;
+    previous: number;
   },
 ): Record<RetrogradeBody, CoordinateEphemeris> {
   const DEFAULT_LONGITUDE = 100;
@@ -88,8 +88,8 @@ function createRetrogradeEphemeris(
         : DEFAULT_LONGITUDE;
       const nextLongitude = isOverridden ? override.next : DEFAULT_LONGITUDE;
 
-      bodyEphemeris[prevTimestamp] = { longitude: prevLongitude, latitude: 0 };
-      bodyEphemeris[nextTimestamp] = { longitude: nextLongitude, latitude: 0 };
+      bodyEphemeris[prevTimestamp] = { latitude: 0, longitude: prevLongitude };
+      bodyEphemeris[nextTimestamp] = { latitude: 0, longitude: nextLongitude };
     }
 
     const currentTimestamp = minute.toISOString();
@@ -97,8 +97,8 @@ function createRetrogradeEphemeris(
       ? override.current
       : DEFAULT_LONGITUDE;
     bodyEphemeris[currentTimestamp] = {
-      longitude: currentLongitude,
       latitude: 0,
+      longitude: currentLongitude,
     };
 
     ephemerisByBody[body] = bodyEphemeris;
@@ -116,9 +116,9 @@ describe("retrogrades.events integration", () => {
     // Mercury longitude peaks at 100.0 — all previous and next values are 99.5
     const coordinateEphemerisByBody = createRetrogradeEphemeris(minute, {
       body: "mercury",
-      previous: 99.5,
       current: 100,
       next: 99.5,
+      previous: 99.5,
     });
 
     const events = service.detect({ coordinateEphemerisByBody, minute });
@@ -136,9 +136,9 @@ describe("retrogrades.events integration", () => {
     // Mercury longitude bottoms at 100.0 — all previous and next values are 100.5
     const coordinateEphemerisByBody = createRetrogradeEphemeris(minute, {
       body: "mercury",
-      previous: 100.5,
       current: 100,
       next: 100.5,
+      previous: 100.5,
     });
 
     const events = service.detect({ coordinateEphemerisByBody, minute });

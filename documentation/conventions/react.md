@@ -47,7 +47,7 @@ export const UserCard = (props: UserCardProps): ReactElement => {
     fetchUser(userId).then(setUser);
   }, [userId]);
 
-  // 🏗️ Setup (computed values, memoized callbacks)
+  // 🏗 Setup (computed values, memoized callbacks)
   const displayName = user?.name ?? "Unknown User";
   const handleClick = useCallback(() => {
     console.log("User clicked", user);
@@ -79,7 +79,7 @@ export const UserCard = (props: UserCardProps): ReactElement => {
 1. **🔖 Type**: Props interface, types
 2. **🧩 Component**: Component declaration
 3. **🪝 Hooks**: useState, useEffect, custom hooks
-4. **🏗️ Setup**: Computed values, memoized callbacks
+4. **🏗 Setup**: Computed values, memoized callbacks
 5. **💪 Handler**: Event handlers
 6. **🏁 Early returns**: Loading, error states
 7. **🎨 Render**: JSX return

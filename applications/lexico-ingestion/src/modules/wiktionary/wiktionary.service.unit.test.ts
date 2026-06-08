@@ -15,12 +15,12 @@ describe("WiktionaryService", () => {
         {
           provide: LoggerService,
           useValue: {
-            setContext: vi.fn(),
-            log: vi.fn(),
-            warn: vi.fn(),
-            error: vi.fn(),
             debug: vi.fn(),
+            error: vi.fn(),
+            log: vi.fn(),
+            setContext: vi.fn(),
             verbose: vi.fn(),
+            warn: vi.fn(),
           },
         },
       ],

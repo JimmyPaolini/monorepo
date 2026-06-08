@@ -18,11 +18,11 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
 
 function makeEvent(summary: string): Event {
   return {
-    start: moment.utc("2025-06-15T12:00:00Z"),
-    end: moment.utc("2025-06-15T12:00:00Z"),
-    summary,
-    description: summary,
     categories: [],
+    description: summary,
+    end: moment.utc("2025-06-15T12:00:00Z"),
+    start: moment.utc("2025-06-15T12:00:00Z"),
+    summary,
   };
 }
 

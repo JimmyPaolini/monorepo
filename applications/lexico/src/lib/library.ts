@@ -12,10 +12,10 @@ import { getSupabaseServerClient } from "./supabase-server";
 export interface UserText {
   /** Text UUID */
   id: string;
-  /** Title of the text */
-  title: string;
   /** Content of the text */
   text: string;
+  /** Title of the text */
+  title: string;
   /** ID of the user who owns the text */
   user_id: string;
 }
@@ -55,14 +55,14 @@ export const getUserTexts = createServerFn({ method: "GET" }).handler(
  * Create a new text for the current user
  */
 export const createUserText = createServerFn({ method: "POST" })
-  .inputValidator((data: { title: string; text: string }) => data)
+  .inputValidator((data: { text: string; title: string }) => data)
   .handler(
     async ({
       data,
     }): Promise<{
+      error: null | string;
       success: boolean;
-      text: UserText | null;
-      error: string | null;
+      text: null | UserText;
     }> => {
       const supabase = getSupabaseServerClient();
 
@@ -71,15 +71,15 @@ export const createUserText = createServerFn({ method: "POST" })
       } = await supabase.auth.getUser();
 
       if (!user) {
-        return { success: false, text: null, error: "Not authenticated" };
+        return { error: "Not authenticated", success: false, text: null };
       }
 
       const { data: newText, error } = await supabase
         .from("user_texts")
         .insert({
           id: crypto.randomUUID(),
-          title: data.title,
           text: data.text,
+          title: data.title,
           user_id: user.id,
         })
         .select()
@@ -87,10 +87,10 @@ export const createUserText = createServerFn({ method: "POST" })
 
       if (error) {
         console.error("Error creating text:", error);
-        return { success: false, text: null, error: error.message };
+        return { error: error.message, success: false, text: null };
       }
 
-      return { success: true, text: newText as UserText, error: null };
+      return { error: null, success: true, text: newText as UserText };
     },
   );
 
@@ -98,9 +98,9 @@ export const createUserText = createServerFn({ method: "POST" })
  * Update an existing text
  */
 export const updateUserText = createServerFn({ method: "POST" })
-  .inputValidator((data: { id: string; title: string; text: string }) => data)
+  .inputValidator((data: { id: string; text: string; title: string }) => data)
   .handler(
-    async ({ data }): Promise<{ success: boolean; error: string | null }> => {
+    async ({ data }): Promise<{ error: null | string; success: boolean }> => {
       const supabase = getSupabaseServerClient();
 
       const {
@@ -108,24 +108,24 @@ export const updateUserText = createServerFn({ method: "POST" })
       } = await supabase.auth.getUser();
 
       if (!user) {
-        return { success: false, error: "Not authenticated" };
+        return { error: "Not authenticated", success: false };
       }
 
       const { error } = await supabase
         .from("user_texts")
         .update({
-          title: data.title,
           text: data.text,
+          title: data.title,
         })
         .eq("id", data.id)
         .eq("user_id", user.id);
 
       if (error) {
         console.error("Error updating text:", error);
-        return { success: false, error: error.message };
+        return { error: error.message, success: false };
       }
 
-      return { success: true, error: null };
+      return { error: null, success: true };
     },
   );
 
@@ -135,7 +135,7 @@ export const updateUserText = createServerFn({ method: "POST" })
 export const deleteUserText = createServerFn({ method: "POST" })
   .inputValidator((data: { id: string }) => data)
   .handler(
-    async ({ data }): Promise<{ success: boolean; error: string | null }> => {
+    async ({ data }): Promise<{ error: null | string; success: boolean }> => {
       const supabase = getSupabaseServerClient();
 
       const {
@@ -143,7 +143,7 @@ export const deleteUserText = createServerFn({ method: "POST" })
       } = await supabase.auth.getUser();
 
       if (!user) {
-        return { success: false, error: "Not authenticated" };
+        return { error: "Not authenticated", success: false };
       }
 
       const { error } = await supabase
@@ -154,9 +154,9 @@ export const deleteUserText = createServerFn({ method: "POST" })
 
       if (error) {
         console.error("Error deleting text:", error);
-        return { success: false, error: error.message };
+        return { error: error.message, success: false };
       }
 
-      return { success: true, error: null };
+      return { error: null, success: true };
     },
   );

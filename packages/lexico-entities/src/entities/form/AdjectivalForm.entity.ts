@@ -12,31 +12,31 @@ import {
 } from "./Form.entity.js";
 
 /** A declined form for an adjective (gender + case + number). */
-@ObjectType({ implements: Form })
 @ChildEntity("adjectival")
+@ObjectType({ implements: Form })
 export class AdjectivalForm extends Form {
-  @Field(() => String)
   @Column({
-    type: "enum",
-    enum: formGenderValues,
-    comment: "Grammatical gender of this adjectival form",
-  })
-  gender!: FormGender;
-
-  @Field(() => String)
-  @Column({
-    type: "enum",
+    comment: "Grammatical case of this form",
     enum: formCaseValues,
     name: "form_case",
-    comment: "Grammatical case of this form",
+    type: "enum",
   })
+  @Field(() => String)
   case!: FormCase;
 
-  @Field(() => String)
   @Column({
+    comment: "Grammatical gender of this adjectival form",
+    enum: formGenderValues,
     type: "enum",
-    enum: formNumberValues,
-    comment: "Grammatical number (singular or plural)",
   })
+  @Field(() => String)
+  gender!: FormGender;
+
+  @Column({
+    comment: "Grammatical number (singular or plural)",
+    enum: formNumberValues,
+    type: "enum",
+  })
+  @Field(() => String)
   number!: FormNumber;
 }

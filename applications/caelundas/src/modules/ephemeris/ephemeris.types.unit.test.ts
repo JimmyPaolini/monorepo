@@ -54,8 +54,8 @@ describe("ephemeris.types", () => {
   describe("CoordinateEphemeris type", () => {
     it("should accept valid coordinate ephemeris structure", () => {
       const ephemeris: CoordinateEphemeris = {
-        "2024-03-21T00:00:00.000Z": { longitude: 0, latitude: 0 },
-        "2024-03-21T00:01:00.000Z": { longitude: 0.1, latitude: 0.05 },
+        "2024-03-21T00:00:00.000Z": { latitude: 0, longitude: 0 },
+        "2024-03-21T00:01:00.000Z": { latitude: 0.05, longitude: 0.1 },
       };
 
       expect(ephemeris["2024-03-21T00:00:00.000Z"]?.longitude).toBe(0);
@@ -65,7 +65,7 @@ describe("ephemeris.types", () => {
     it("should use ISO string timestamps as keys", () => {
       const timestamp = "2024-03-21T00:00:00.000Z";
       const ephemeris: CoordinateEphemeris = {
-        [timestamp]: { longitude: 120.5, latitude: -5.2 },
+        [timestamp]: { latitude: -5.2, longitude: 120.5 },
       };
 
       expect(ephemeris[timestamp]).toBeDefined();

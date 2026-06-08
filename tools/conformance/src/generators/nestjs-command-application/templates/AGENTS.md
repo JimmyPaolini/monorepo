@@ -149,7 +149,7 @@ Follow the section-comment layout from the template — it keeps large services 
 ```ts
 @Injectable()
 export class MyDomainService {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
   constructor(
     @InjectRepository(MyEntity)
     private readonly repo: Repository<MyEntity>,

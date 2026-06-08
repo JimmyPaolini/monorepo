@@ -53,9 +53,9 @@ beforeAll(async () => {
  */
 function createIlluminationEphemeris(
   minute: Moment,
-  values: { previous: number; current: number; next: number },
+  values: { current: number; next: number; previous: number },
 ): IlluminationEphemeris {
-  const { previous, current, next } = values;
+  const { current, next, previous } = values;
   const ephemeris: IlluminationEphemeris = {};
 
   for (let offset = 1; offset <= MARGIN_MINUTES; offset++) {
@@ -79,9 +79,9 @@ describe("monthly-lunar-cycle.events integration", () => {
     // isNewMoon: current < min(prev30) AND current <= min(next30) AND current < 50
     // Illumination reaches a local minimum of 0.5, well below the 50 threshold
     const ephemeris = createIlluminationEphemeris(minute, {
-      previous: 1,
       current: 0.5,
       next: 1,
+      previous: 1,
     });
 
     const events = service.detect({
@@ -100,9 +100,9 @@ describe("monthly-lunar-cycle.events integration", () => {
     // isFullMoon: current > max(prev30) AND current >= max(next30) AND current > 50
     // Illumination reaches a local maximum of 100, well above the 50 threshold
     const ephemeris = createIlluminationEphemeris(minute, {
-      previous: 99.5,
       current: 100,
       next: 99.5,
+      previous: 99.5,
     });
 
     const events = service.detect({
@@ -122,9 +122,9 @@ describe("monthly-lunar-cycle.events integration", () => {
     // prev[0] is the immediately preceding minute (offset=1), checked by the service
     // next > current ensures the moon is still waxing and not at a local max (no full moon)
     const ephemeris = createIlluminationEphemeris(minute, {
-      previous: 49.5,
       current: 50.5,
       next: 51,
+      previous: 49.5,
     });
 
     const events = service.detect({
@@ -143,9 +143,9 @@ describe("monthly-lunar-cycle.events integration", () => {
     // isLastQuarter: isWaning (current < prev[0]) AND isCrossingDown (current < 50 AND prev[0] >= 50)
     // next < current ensures the moon is still waning and not at a local min (no new moon)
     const ephemeris = createIlluminationEphemeris(minute, {
-      previous: 50.5,
       current: 49.5,
       next: 49,
+      previous: 50.5,
     });
 
     const events = service.detect({
@@ -163,9 +163,9 @@ describe("monthly-lunar-cycle.events integration", () => {
   it("should return no events when illumination is flat across the full window", () => {
     // Constant illumination at 50 — not a local min/max, no threshold crossing
     const ephemeris = createIlluminationEphemeris(minute, {
-      previous: 50,
       current: 50,
       next: 50,
+      previous: 50,
     });
 
     const events = service.detect({

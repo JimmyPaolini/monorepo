@@ -1,3 +1,5 @@
+import * as React from "react";
+
 import {
   cn,
   Tabs,
@@ -5,7 +7,6 @@ import {
   TabsList,
   TabsTrigger,
 } from "@monorepo/lexico-components";
-import * as React from "react";
 
 import { Identifier } from "./identifier";
 
@@ -13,34 +14,34 @@ import { Identifier } from "./identifier";
  * Props for the FormTabs component that displays tabbed form navigation.
  */
 export interface FormTabsProps {
-  /** Tab labels */
-  tabs: string[];
   /** Currently active tab index */
   activeTab: number;
-  /** Callback when tab changes */
-  onTabChange: (index: number) => void;
   /** Content to render for active tab */
   children: React.ReactNode;
   /** Additional class names */
   className?: string | undefined;
+  /** Callback when tab changes */
+  onTabChange: (index: number) => void;
+  /** Tab labels */
+  tabs: string[];
 }
 
 const FormTabs = React.forwardRef<HTMLDivElement, FormTabsProps>(
-  ({ tabs, activeTab, onTabChange, children, className }, ref) => {
+  ({ activeTab, children, className, onTabChange, tabs }, ref) => {
     // Convert index to tab value string
     const activeValue = tabs[activeTab] ?? tabs[0] ?? "";
 
     return (
       <Tabs
         ref={ref}
-        value={activeValue}
+        className={cn("w-full", className)}
         onValueChange={(value: string) => {
           const index = tabs.indexOf(value);
           if (index !== -1) {
             onTabChange(index);
           }
         }}
-        className={cn("w-full", className)}
+        value={activeValue}
       >
         <TabsList
           className="grid w-full gap-1 bg-muted/30 group-hover:bg-transparent p-1"
@@ -51,12 +52,12 @@ const FormTabs = React.forwardRef<HTMLDivElement, FormTabsProps>(
           {tabs.map((tab) => (
             <TabsTrigger
               key={tab}
-              value={tab}
               className="h-full p-0 transition-colors data-[state=active]:ring-2 data-[state=active]:ring-primary data-[state=active]:ring-offset-1 data-[state=active]:ring-offset-background"
+              value={tab}
             >
               <Identifier
-                identifier={tab}
                 className="flex text-md h-full w-full items-center justify-center rounded-[inherit]"
+                identifier={tab}
               />
             </TabsTrigger>
           ))}
@@ -64,8 +65,8 @@ const FormTabs = React.forwardRef<HTMLDivElement, FormTabsProps>(
         {tabs.map((tab) => (
           <TabsContent
             key={tab}
-            value={tab}
             className="mt-0"
+            value={tab}
           >
             {tab === activeValue ? children : null}
           </TabsContent>

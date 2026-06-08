@@ -1,6 +1,7 @@
-import { Lexeme, Word, WordForm, WordLexeme } from "@monorepo/lexico-entities";
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
+
+import { Lexeme, Word, WordForm, WordLexeme } from "@monorepo/lexico-entities";
 
 import { WordsService } from "./words.service";
 

@@ -1,7 +1,7 @@
-import type { AdjectiveForms, Forms, NounForms, VerbForms } from "./types";
 import type { AdjectiveForm } from "../components/entry/adjective-forms-table";
 import type { NounForm } from "../components/entry/noun-forms-table";
 import type { VerbForm } from "../components/entry/verb-forms-table";
+import type { AdjectiveForms, Forms, NounForms, VerbForms } from "./types";
 
 // Case order for declensions
 const CASE_ORDER = [
@@ -44,30 +44,11 @@ const SUBJUNCTIVE_TENSE_ORDER = [
 // Voice order
 const VOICE_ORDER = ["active", "passive"] as const;
 
-/**
- * Convert nested noun forms from database to flat array for NounFormsTable
- */
-export function transformNounForms(forms: NounForms): NounForm[] {
-  const result: NounForm[] = [];
-
-  for (const caseName of CASE_ORDER) {
-    const caseData = forms[caseName];
-    if (!caseData) continue;
-
-    for (const number of NUMBER_ORDER) {
-      const formArray = caseData[number];
-      if (!formArray || formArray.length === 0) continue;
-
-      result.push({
-        case: caseName,
-        number,
-        form: formArray.join(", "),
-      });
-    }
-  }
-
-  return result;
-}
+type TransformResult =
+  | null
+  | { forms: AdjectiveForm[]; type: "adjective" }
+  | { forms: NounForm[]; type: "noun" }
+  | { forms: VerbForm[]; type: "verb" };
 
 /**
  * Convert nested adjective forms from database to flat array for AdjectiveFormsTable
@@ -91,9 +72,9 @@ export function transformAdjectiveForms(
 
         result.push({
           case: caseName,
-          number,
-          gender,
           form: formArray.join(", "),
+          gender,
+          number,
         });
       }
     }
@@ -103,23 +84,72 @@ export function transformAdjectiveForms(
 }
 
 /**
- * Helper to get person display string
+ * Transform forms based on part of speech
  */
-function personDisplay(person: string): string {
-  switch (person) {
-    case "first": {
-      return "1st";
-    }
-    case "second": {
-      return "2nd";
-    }
-    case "third": {
-      return "3rd";
-    }
-    default: {
-      return person;
+export function transformForms(
+  partOfSpeech: string,
+  forms: Forms,
+): TransformResult {
+  if (Object.keys(forms).length === 0) {
+    return null;
+  }
+
+  const pos = partOfSpeech.toLowerCase();
+
+  if (pos === "verb" && isVerbForms(forms)) {
+    return { forms: transformVerbForms(forms), type: "verb" };
+  }
+
+  if ((pos === "noun" || pos === "pronoun") && isNounForms(forms)) {
+    return { forms: transformNounForms(forms), type: "noun" };
+  }
+
+  if (
+    (pos === "adjective" || pos === "participle" || pos === "numeral") &&
+    isAdjectiveForms(forms)
+  ) {
+    return { forms: transformAdjectiveForms(forms), type: "adjective" };
+  }
+
+  // Try to auto-detect
+  if (isVerbForms(forms)) {
+    return { forms: transformVerbForms(forms), type: "verb" };
+  }
+
+  if (isAdjectiveForms(forms)) {
+    return { forms: transformAdjectiveForms(forms), type: "adjective" };
+  }
+
+  if (isNounForms(forms)) {
+    return { forms: transformNounForms(forms), type: "noun" };
+  }
+
+  return null;
+}
+
+/**
+ * Convert nested noun forms from database to flat array for NounFormsTable
+ */
+export function transformNounForms(forms: NounForms): NounForm[] {
+  const result: NounForm[] = [];
+
+  for (const caseName of CASE_ORDER) {
+    const caseData = forms[caseName];
+    if (!caseData) continue;
+
+    for (const number of NUMBER_ORDER) {
+      const formArray = caseData[number];
+      if (!formArray || formArray.length === 0) continue;
+
+      result.push({
+        case: caseName,
+        form: formArray.join(", "),
+        number,
+      });
     }
   }
+
+  return result;
 }
 
 /**
@@ -147,12 +177,12 @@ export function transformVerbForms(forms: VerbForms): VerbForm[] {
             if (!formArray || formArray.length === 0) continue;
 
             result.push({
+              form: formArray.join(", "),
               mood: "indicative",
+              number,
+              person: personDisplay(person),
               tense,
               voice,
-              person: personDisplay(person),
-              number,
-              form: formArray.join(", "),
             });
           }
         }
@@ -179,12 +209,12 @@ export function transformVerbForms(forms: VerbForms): VerbForm[] {
             if (!formArray || formArray.length === 0) continue;
 
             result.push({
+              form: formArray.join(", "),
               mood: "subjunctive",
+              number,
+              person: personDisplay(person),
               tense,
               voice,
-              person: personDisplay(person),
-              number,
-              form: formArray.join(", "),
             });
           }
         }
@@ -211,12 +241,12 @@ export function transformVerbForms(forms: VerbForms): VerbForm[] {
             if (!formArray || formArray.length === 0) continue;
 
             result.push({
+              form: formArray.join(", "),
               mood: "imperative",
+              number,
+              person: personDisplay(person),
               tense,
               voice,
-              person: personDisplay(person),
-              number,
-              form: formArray.join(", "),
             });
           }
         }
@@ -237,10 +267,10 @@ export function transformVerbForms(forms: VerbForms): VerbForm[] {
           if (!formArray || formArray.length === 0) continue;
 
           result.push({
+            form: formArray.join(", "),
             mood: "infinitive",
             tense,
             voice,
-            form: formArray.join(", "),
           });
         }
       }
@@ -255,10 +285,10 @@ export function transformVerbForms(forms: VerbForms): VerbForm[] {
           if (!formArray || formArray.length === 0) continue;
 
           result.push({
+            form: formArray.join(", "),
             mood: "participle",
             tense,
             voice: "active",
-            form: formArray.join(", "),
           });
         }
       }
@@ -270,10 +300,10 @@ export function transformVerbForms(forms: VerbForms): VerbForm[] {
           if (!formArray || formArray.length === 0) continue;
 
           result.push({
+            form: formArray.join(", "),
             mood: "participle",
             tense,
             voice: "passive",
-            form: formArray.join(", "),
           });
         }
       }
@@ -294,10 +324,10 @@ export function transformVerbForms(forms: VerbForms): VerbForm[] {
         if (!formArray || formArray.length === 0) continue;
 
         result.push({
+          form: formArray.join(", "),
           mood: "gerund",
           tense: caseName,
           voice: "active",
-          form: formArray.join(", "),
         });
       }
     }
@@ -309,28 +339,16 @@ export function transformVerbForms(forms: VerbForms): VerbForm[] {
         if (!formArray || formArray.length === 0) continue;
 
         result.push({
+          form: formArray.join(", "),
           mood: "supine",
           tense: caseName,
           voice: "active",
-          form: formArray.join(", "),
         });
       }
     }
   }
 
   return result;
-}
-
-/**
- * Determine if forms are verb forms
- */
-function isVerbForms(forms: Forms): forms is VerbForms {
-  return (
-    "indicative" in forms ||
-    "subjunctive" in forms ||
-    "imperative" in forms ||
-    "nonFinite" in forms
-  );
 }
 
 /**
@@ -355,52 +373,34 @@ function isNounForms(forms: Forms): forms is NounForms {
   );
 }
 
-type TransformResult =
-  | { type: "verb"; forms: VerbForm[] }
-  | { type: "noun"; forms: NounForm[] }
-  | { type: "adjective"; forms: AdjectiveForm[] }
-  | null;
+/**
+ * Determine if forms are verb forms
+ */
+function isVerbForms(forms: Forms): forms is VerbForms {
+  return (
+    "indicative" in forms ||
+    "subjunctive" in forms ||
+    "imperative" in forms ||
+    "nonFinite" in forms
+  );
+}
 
 /**
- * Transform forms based on part of speech
+ * Helper to get person display string
  */
-export function transformForms(
-  partOfSpeech: string,
-  forms: Forms,
-): TransformResult {
-  if (Object.keys(forms).length === 0) {
-    return null;
+function personDisplay(person: string): string {
+  switch (person) {
+    case "first": {
+      return "1st";
+    }
+    case "second": {
+      return "2nd";
+    }
+    case "third": {
+      return "3rd";
+    }
+    default: {
+      return person;
+    }
   }
-
-  const pos = partOfSpeech.toLowerCase();
-
-  if (pos === "verb" && isVerbForms(forms)) {
-    return { type: "verb", forms: transformVerbForms(forms) };
-  }
-
-  if ((pos === "noun" || pos === "pronoun") && isNounForms(forms)) {
-    return { type: "noun", forms: transformNounForms(forms) };
-  }
-
-  if (
-    (pos === "adjective" || pos === "participle" || pos === "numeral") &&
-    isAdjectiveForms(forms)
-  ) {
-    return { type: "adjective", forms: transformAdjectiveForms(forms) };
-  }
-
-  // Try to auto-detect
-  if (isVerbForms(forms)) {
-    return { type: "verb", forms: transformVerbForms(forms) };
-  }
-
-  if (isAdjectiveForms(forms)) {
-    return { type: "adjective", forms: transformAdjectiveForms(forms) };
-  }
-
-  if (isNounForms(forms)) {
-    return { type: "noun", forms: transformNounForms(forms) };
-  }
-
-  return null;
 }

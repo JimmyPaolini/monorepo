@@ -76,7 +76,7 @@ function createAspectEphemeris(
   overrides: Partial<
     Record<
       (typeof minorAspectBodies)[number],
-      { previous: number; current: number; next: number }
+      { current: number; next: number; previous: number }
     >
   > = {},
 ): Record<Body, CoordinateEphemeris> {
@@ -92,9 +92,9 @@ function createAspectEphemeris(
     const next = override?.next ?? 100;
 
     ephemerisByBody[body] = {
-      [previousMinute.toISOString()]: { longitude: prev, latitude: 0 },
-      [minute.toISOString()]: { longitude: curr, latitude: 0 },
-      [nextMinute.toISOString()]: { longitude: next, latitude: 0 },
+      [minute.toISOString()]: { latitude: 0, longitude: curr },
+      [nextMinute.toISOString()]: { latitude: 0, longitude: next },
+      [previousMinute.toISOString()]: { latitude: 0, longitude: prev },
     };
   }
 
@@ -110,8 +110,8 @@ describe("minor-aspects.events integration", () => {
     // getAngle(0,152.5)=152.5 → |152.5-150|=2.5 ≤ 3 → IN ORB curr
     // Phase: !previousInOrb && currentInOrb → "forming"
     const coordinateEphemerisByBody = createAspectEphemeris(minute, {
-      sun: { previous: 0, current: 0, next: 0 },
-      moon: { previous: 154, current: 152.5, next: 151 },
+      moon: { current: 152.5, next: 151, previous: 154 },
+      sun: { current: 0, next: 0, previous: 0 },
     });
 
     const events = service.detect({ coordinateEphemerisByBody, minute });
@@ -132,8 +132,8 @@ describe("minor-aspects.events integration", () => {
     // prevDiff = 136-135 = +1, currDiff = 135-135 = 0, nextDiff = 134-135 = -1
     // Phase: isCrossing (sign change from positive to negative) → "perfective"
     const coordinateEphemerisByBody = createAspectEphemeris(minute, {
-      sun: { previous: 0, current: 0, next: 0 },
-      mercury: { previous: 136, current: 135, next: 134 },
+      mercury: { current: 135, next: 134, previous: 136 },
+      sun: { current: 0, next: 0, previous: 0 },
     });
 
     const events = service.detect({ coordinateEphemerisByBody, minute });
@@ -156,8 +156,8 @@ describe("minor-aspects.events integration", () => {
     // getAngle(0,32.2)=32.2 → |32.2-30|=2.2 > 2 → exits orb next
     // Phase: currentInOrb && !nextInOrb → "dissolving"
     const coordinateEphemerisByBody = createAspectEphemeris(minute, {
-      sun: { previous: 0, current: 0, next: 0 },
-      venus: { previous: 31, current: 31.8, next: 32.2 },
+      sun: { current: 0, next: 0, previous: 0 },
+      venus: { current: 31.8, next: 32.2, previous: 31 },
     });
 
     const events = service.detect({ coordinateEphemerisByBody, minute });

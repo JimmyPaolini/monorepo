@@ -1,35 +1,18 @@
+import { Link } from "@tanstack/react-router";
+import { startCase } from "lodash";
+import { Bookmark, BookmarkCheck } from "lucide-react";
+
 import {
   Button,
   CardDescription,
   CardTitle,
   cn,
 } from "@monorepo/lexico-components";
-import { Link } from "@tanstack/react-router";
-import { startCase } from "lodash";
-import { Bookmark, BookmarkCheck } from "lucide-react";
 
 import { Identifier } from "./identifier";
 
 import type { PartOfSpeech } from "../../lib/supabase";
 import type { ReactElement } from "react";
-
-/**
- * Inflection data for noun entries.
- */
-export interface NounInflection {
-  /** Declension pattern (first, second, third, etc.) */
-  declension?: string;
-  /** Grammatical gender (masculine, feminine, neuter) */
-  gender?: string;
-}
-
-/**
- * Inflection data for verb entries.
- */
-export interface VerbInflection {
-  /** Conjugation pattern (first, second, third, fourth) */
-  conjugation?: string;
-}
 
 /**
  * Inflection data for adjective entries.
@@ -45,10 +28,31 @@ export interface AdjectiveInflection {
  * Inflection data for adverb entries.
  */
 export interface AdverbInflection {
-  /** Adverb type */
-  type?: string;
   /** Degree of comparison */
   degree?: string;
+  /** Adverb type */
+  type?: string;
+}
+
+/**
+ * Union type for all inflection data structures.
+ */
+export type Inflection =
+  | AdjectiveInflection
+  | AdverbInflection
+  | NounInflection
+  | PrepositionInflection
+  | Uninflected
+  | VerbInflection;
+
+/**
+ * Inflection data for noun entries.
+ */
+export interface NounInflection {
+  /** Declension pattern (first, second, third, etc.) */
+  declension?: string;
+  /** Grammatical gender (masculine, feminine, neuter) */
+  gender?: string;
 }
 
 /**
@@ -60,6 +64,36 @@ export interface PrepositionInflection {
 }
 
 /**
+ * Represents a principal part of a word (e.g., nominative, genitive for nouns).
+ */
+export interface PrincipalPart {
+  /** Name of the principal part */
+  name: string;
+  /** Text forms of the principal part */
+  text: string[];
+}
+
+/**
+ * Props for the PrincipalParts component that displays entry header information.
+ */
+export interface PrincipalPartsProps {
+  bookmarked?: boolean | undefined;
+  /** Callback when bookmark is toggled */
+  /** Additional class names */
+  className?: string | undefined;
+  /** Entry ID */
+  id: string;
+  /** Inflection data */
+  inflection?: Inflection | null | undefined;
+  /** Whether entry is bookmarked */
+  onBookmarkToggle: (id: string) => void;
+  /** Part of speech */
+  partOfSpeech: PartOfSpeech;
+  /** Principal parts array */
+  principalParts: PrincipalPart[] | Record<string, string | undefined>;
+}
+
+/**
  * Inflection data for uninflected parts of speech.
  */
 export interface Uninflected {
@@ -68,24 +102,122 @@ export interface Uninflected {
 }
 
 /**
- * Union type for all inflection data structures.
+ * Inflection data for verb entries.
  */
-export type Inflection =
-  | NounInflection
-  | VerbInflection
-  | AdjectiveInflection
-  | AdverbInflection
-  | PrepositionInflection
-  | Uninflected;
+export interface VerbInflection {
+  /** Conjugation pattern (first, second, third, fourth) */
+  conjugation?: string;
+}
 
 /**
- * Represents a principal part of a word (e.g., nominative, genitive for nouns).
+ * Component that displays principal parts, part of speech, and inflection info.
+ *
+ * @param props - Component props
+ * @returns React element
  */
-export interface PrincipalPart {
-  /** Name of the principal part */
-  name: string;
-  /** Text forms of the principal part */
-  text: string[];
+export function PrincipalParts(props: PrincipalPartsProps): ReactElement {
+  const {
+    bookmarked,
+    className,
+    id,
+    inflection,
+    onBookmarkToggle,
+    partOfSpeech,
+    principalParts,
+  } = props;
+
+  // 🪝 Hooks
+
+  // 🏗 Setup
+  const principalPartsLabel = getPrincipalPartsLabel(principalParts);
+  const BookmarkToggleIcon = bookmarked ? BookmarkCheck : Bookmark;
+  const gender = (inflection as NounInflection | undefined)?.gender;
+  const prepositionCase = (inflection as PrepositionInflection | undefined)
+    ?.case;
+  const declension = (
+    inflection as AdjectiveInflection | NounInflection | undefined
+  )?.declension;
+  const conjugation = (inflection as undefined | VerbInflection)?.conjugation;
+  const declensionIdentifier = declension
+    ? /declension/i.test(declension)
+      ? declension
+      : `${declension} declension`
+    : undefined;
+  const conjugationIdentifier = conjugation
+    ? /conjugation/i.test(conjugation)
+      ? conjugation
+      : `${conjugation} conjugation`
+    : undefined;
+
+  // 💪 Handlers
+
+  // 🎨 Markup
+
+  // 🔌 Short Circuits
+
+  return (
+    <Link
+      className={cn("flex items-center gap-3 p-4", className)}
+      params={{ id }}
+      to="/word/$id"
+    >
+      <div className="flex-grow flex items-start flex-col">
+        <CardTitle className="text-2xl self-start flex-grow">
+          {principalPartsLabel}
+        </CardTitle>
+        {/* Identifier tags under principal parts */}
+        <CardDescription className="flex flex-wrap gap-1 pt-1">
+          <Identifier
+            className="text-xs"
+            identifier={partOfSpeech}
+          />
+          {/* Declension for nouns/proper nouns/adjectives */}
+          {(partOfSpeech === "noun" ||
+            partOfSpeech === "properNoun" ||
+            partOfSpeech === "adjective" ||
+            partOfSpeech === "numeral" ||
+            partOfSpeech === "suffix") &&
+            declensionIdentifier && (
+              <Identifier
+                className="text-xs"
+                identifier={declensionIdentifier}
+              />
+            )}
+          {/* Conjugation for verbs */}
+          {partOfSpeech === "verb" && conjugationIdentifier && (
+            <Identifier
+              className="text-xs"
+              identifier={conjugationIdentifier}
+            />
+          )}
+          {/* Gender for nouns/proper nouns */}
+          {(partOfSpeech === "noun" || partOfSpeech === "properNoun") &&
+            gender && (
+              <Identifier
+                className="text-xs"
+                identifier={gender}
+              />
+            )}
+          {/* Case for prepositions */}
+          {partOfSpeech === "preposition" && prepositionCase && (
+            <Identifier
+              className="text-xs"
+              identifier={prepositionCase}
+            />
+          )}
+        </CardDescription>
+      </div>
+
+      <Button
+        aria-label={bookmarked ? "Remove bookmark" : "Add bookmark"}
+        onClick={() => onBookmarkToggle(id)}
+        size="sm"
+        variant="ghost"
+      >
+        <BookmarkToggleIcon className="h-5 w-5" />
+      </Button>
+    </Link>
+  );
 }
 
 /**
@@ -117,7 +249,7 @@ function getInflectionLabel(
     else if (declension) label = `${declension} declension`;
     else if (degree) label = degree;
   } else if (partOfSpeech === "adverb") {
-    const { type, degree } = inflection as AdverbInflection;
+    const { degree, type } = inflection as AdverbInflection;
     if (type && degree) label = `${type}, ${degree}`;
     else if (type) label = type;
     else if (degree) label = degree;
@@ -152,137 +284,6 @@ function getPrincipalPartsLabel(
   }
   // Handle object format from database
   return Object.values(principalParts).filter(Boolean).join(", ");
-}
-
-/**
- * Props for the PrincipalParts component that displays entry header information.
- */
-export interface PrincipalPartsProps {
-  bookmarked?: boolean | undefined;
-  /** Callback when bookmark is toggled */
-  /** Additional class names */
-  className?: string | undefined;
-  /** Entry ID */
-  id: string;
-  /** Inflection data */
-  inflection?: Inflection | null | undefined;
-  /** Whether entry is bookmarked */
-  onBookmarkToggle: (id: string) => void;
-  /** Part of speech */
-  partOfSpeech: PartOfSpeech;
-  /** Principal parts array */
-  principalParts: PrincipalPart[] | Record<string, string | undefined>;
-}
-
-/**
- * Component that displays principal parts, part of speech, and inflection info.
- *
- * @param props - Component props
- * @returns React element
- */
-export function PrincipalParts(props: PrincipalPartsProps): ReactElement {
-  const {
-    bookmarked,
-    className,
-    id,
-    inflection,
-    onBookmarkToggle,
-    partOfSpeech,
-    principalParts,
-  } = props;
-
-  // 🪝 Hooks
-
-  // 🏗️ Setup
-  const principalPartsLabel = getPrincipalPartsLabel(principalParts);
-  const BookmarkToggleIcon = bookmarked ? BookmarkCheck : Bookmark;
-  const gender = (inflection as NounInflection | undefined)?.gender;
-  const prepositionCase = (inflection as PrepositionInflection | undefined)
-    ?.case;
-  const declension = (
-    inflection as NounInflection | AdjectiveInflection | undefined
-  )?.declension;
-  const conjugation = (inflection as VerbInflection | undefined)?.conjugation;
-  const declensionIdentifier = declension
-    ? /declension/i.test(declension)
-      ? declension
-      : `${declension} declension`
-    : undefined;
-  const conjugationIdentifier = conjugation
-    ? /conjugation/i.test(conjugation)
-      ? conjugation
-      : `${conjugation} conjugation`
-    : undefined;
-
-  // 💪 Handlers
-
-  // 🎨 Markup
-
-  // 🔌 Short Circuits
-
-  return (
-    <Link
-      to="/word/$id"
-      params={{ id }}
-      className={cn("flex items-center gap-3 p-4", className)}
-    >
-      <div className="flex-grow flex items-start flex-col">
-        <CardTitle className="text-2xl self-start flex-grow">
-          {principalPartsLabel}
-        </CardTitle>
-        {/* Identifier tags under principal parts */}
-        <CardDescription className="flex flex-wrap gap-1 pt-1">
-          <Identifier
-            identifier={partOfSpeech}
-            className="text-xs"
-          />
-          {/* Declension for nouns/proper nouns/adjectives */}
-          {(partOfSpeech === "noun" ||
-            partOfSpeech === "properNoun" ||
-            partOfSpeech === "adjective" ||
-            partOfSpeech === "numeral" ||
-            partOfSpeech === "suffix") &&
-            declensionIdentifier && (
-              <Identifier
-                identifier={declensionIdentifier}
-                className="text-xs"
-              />
-            )}
-          {/* Conjugation for verbs */}
-          {partOfSpeech === "verb" && conjugationIdentifier && (
-            <Identifier
-              identifier={conjugationIdentifier}
-              className="text-xs"
-            />
-          )}
-          {/* Gender for nouns/proper nouns */}
-          {(partOfSpeech === "noun" || partOfSpeech === "properNoun") &&
-            gender && (
-              <Identifier
-                identifier={gender}
-                className="text-xs"
-              />
-            )}
-          {/* Case for prepositions */}
-          {partOfSpeech === "preposition" && prepositionCase && (
-            <Identifier
-              identifier={prepositionCase}
-              className="text-xs"
-            />
-          )}
-        </CardDescription>
-      </div>
-
-      <Button
-        onClick={() => onBookmarkToggle(id)}
-        variant="ghost"
-        size="sm"
-        aria-label={bookmarked ? "Remove bookmark" : "Add bookmark"}
-      >
-        <BookmarkToggleIcon className="h-5 w-5" />
-      </Button>
-    </Link>
-  );
 }
 
 export { getInflectionLabel, getPrincipalPartsLabel };

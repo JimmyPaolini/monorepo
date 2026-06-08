@@ -12,8 +12,8 @@ import { AnnualSolarCycleService } from "./annual-solar-cycle.service";
  */
 @Module({
   controllers: [],
+  exports: [AnnualSolarCycleService],
   imports: [EphemerisModule, MathModule, ProgressiveUtilitiesModule],
   providers: [AnnualSolarCycleService],
-  exports: [AnnualSolarCycleService],
 })
 export class AnnualSolarCycleModule {}

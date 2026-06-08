@@ -1,10 +1,11 @@
+import { createFileRoute } from "@tanstack/react-router";
+
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
 } from "@monorepo/lexico-components";
-import { createFileRoute } from "@tanstack/react-router";
 
 import type { ReactNode } from "react";
 

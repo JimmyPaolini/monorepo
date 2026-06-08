@@ -1,4 +1,3 @@
-import { Button, cn } from "@monorepo/lexico-components";
 import {
   Bookmark,
   BookOpen,
@@ -11,73 +10,75 @@ import {
 } from "lucide-react";
 import * as React from "react";
 
-/**
- * Represents a navigation item in the sidebar.
- */
-export interface NavItem {
-  /** Route path */
-  href: string;
-  /** Display label */
-  label: string;
-  /** Icon component */
-  icon: React.ReactNode;
-}
+import { Button, cn } from "@monorepo/lexico-components";
 
 /**
  * Props for the Navigation component that displays the app sidebar.
  */
 export interface NavigationProps {
+  /** Additional class names */
+  className?: string | undefined;
   /** Current pathname for active state */
   currentPath?: string | undefined;
-  /** Whether nav is open (mobile) */
-  isOpen?: boolean | undefined;
-  /** Callback to toggle nav */
-  onToggle?: (() => void) | undefined;
   /** Whether on mobile viewport */
   isMobile?: boolean | undefined;
+  /** Whether nav is open (mobile) */
+  isOpen?: boolean | undefined;
   /** Custom navigation items (uses defaults if not provided) */
   items?: NavItem[] | undefined;
+  /** Callback to toggle nav */
+  onToggle?: (() => void) | undefined;
   /** Render prop for link - use your framework's Link component */
   renderLink: (
     item: NavItem,
     isActive: boolean,
     children: React.ReactNode,
   ) => React.ReactNode;
-  /** Additional class names */
-  className?: string | undefined;
+}
+
+/**
+ * Represents a navigation item in the sidebar.
+ */
+export interface NavItem {
+  /** Route path */
+  href: string;
+  /** Icon component */
+  icon: React.ReactNode;
+  /** Display label */
+  label: string;
 }
 
 const defaultNavItems: NavItem[] = [
-  { href: "/", label: "Search", icon: <Search className="h-5 w-5" /> },
+  { href: "/", icon: <Search className="h-5 w-5" />, label: "Search" },
   {
     href: "/bookmarks",
-    label: "Bookmarks",
     icon: <Bookmark className="h-5 w-5" />,
+    label: "Bookmarks",
   },
   {
     href: "/library",
-    label: "Library",
     icon: <BookOpen className="h-5 w-5" />,
+    label: "Library",
   },
-  { href: "/tools", label: "Tools", icon: <Wrench className="h-5 w-5" /> },
+  { href: "/tools", icon: <Wrench className="h-5 w-5" />, label: "Tools" },
   {
     href: "/settings",
-    label: "Settings",
     icon: <Settings className="h-5 w-5" />,
+    label: "Settings",
   },
-  { href: "/about", label: "About", icon: <Info className="h-5 w-5" /> },
+  { href: "/about", icon: <Info className="h-5 w-5" />, label: "About" },
 ];
 
 const Navigation = React.forwardRef<HTMLDivElement, NavigationProps>(
   (
     {
-      currentPath = "/",
-      isOpen = false,
-      onToggle,
-      isMobile = false,
-      items = defaultNavItems,
-      renderLink,
       className,
+      currentPath = "/",
+      isMobile = false,
+      isOpen = false,
+      items = defaultNavItems,
+      onToggle,
+      renderLink,
     },
     ref,
   ) => {
@@ -120,9 +121,9 @@ const Navigation = React.forwardRef<HTMLDivElement, NavigationProps>(
           )}
           {isMobile && (
             <Button
-              variant="ghost"
-              size="icon"
               onClick={onToggle}
+              size="icon"
+              variant="ghost"
             >
               <X className="h-5 w-5" />
             </Button>
@@ -139,9 +140,9 @@ const Navigation = React.forwardRef<HTMLDivElement, NavigationProps>(
             return (
               <button
                 key={item.href}
-                type="button"
-                onClick={handleItemClick}
                 className="w-full text-left"
+                onClick={handleItemClick}
+                type="button"
               >
                 {renderLink(
                   item,
@@ -172,10 +173,10 @@ const Navigation = React.forwardRef<HTMLDivElement, NavigationProps>(
           {/* Backdrop */}
           {isOpen && (
             <button
-              type="button"
+              aria-label="Close navigation"
               className="fixed inset-0 z-40 cursor-default bg-black/50"
               onClick={onToggle}
-              aria-label="Close navigation"
+              type="button"
             />
           )}
           {/* Drawer */}
@@ -197,4 +198,4 @@ const Navigation = React.forwardRef<HTMLDivElement, NavigationProps>(
 );
 Navigation.displayName = "Navigation";
 
-export { Navigation, defaultNavItems };
+export { defaultNavItems, Navigation };

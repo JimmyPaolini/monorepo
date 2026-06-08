@@ -4,14 +4,14 @@ import { ChildEntity, Column } from "typeorm";
 import { Form, type FormDegree, formDegreeValues } from "./Form.entity.js";
 
 /** An adverb form at a specific degree (positive, comparative, superlative). */
-@ObjectType({ implements: Form })
 @ChildEntity("adverb")
+@ObjectType({ implements: Form })
 export class AdverbForm extends Form {
-  @Field(() => String)
   @Column({
-    type: "enum",
-    enum: formDegreeValues,
     comment: "Degree of comparison (positive, comparative, superlative)",
+    enum: formDegreeValues,
+    type: "enum",
   })
+  @Field(() => String)
   degree!: FormDegree;
 }

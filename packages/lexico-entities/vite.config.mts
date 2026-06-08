@@ -6,13 +6,17 @@ import { defineConfig } from "vite";
 import pkg from "./package.json" with { type: "json" };
 
 export default defineConfig({
-  plugins: [nxViteTsPaths()],
   build: {
+    commonjsOptions: {
+      transformMixedEsModules: true,
+    },
     lib: {
       entry: "packages/lexico-entities/src/index.ts",
       fileName: "index",
       formats: ["es", "cjs"],
     },
+    outDir: "dist/packages/lexico-entities",
+    reportCompressedSize: true,
     rollupOptions: {
       external: [
         ...builtinModules,
@@ -22,10 +26,6 @@ export default defineConfig({
         /^typeorm.*/,
       ],
     },
-    outDir: "dist/packages/lexico-entities",
-    reportCompressedSize: true,
-    commonjsOptions: {
-      transformMixedEsModules: true,
-    },
   },
+  plugins: [nxViteTsPaths()],
 });

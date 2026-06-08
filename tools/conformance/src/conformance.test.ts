@@ -13,20 +13,49 @@ import {
 } from "./validators/typescript/files";
 
 interface ConformanceTemplateInstance {
+  /** Absolute instance paths to validate for this template. */
+  instanceDirectoryPaths: string[];
+  /** Whether each path points to one instance directory or a directory of many instances. */
+  instanceType: "multiple" | "single";
   /** Human-readable template identifier. */
   template: string;
   /** Absolute path to the template directory used for validation. */
   templateDirectoryPath: string;
-  /** Whether each path points to one instance directory or a directory of many instances. */
-  instanceType: "single" | "multiple";
-  /** Absolute instance paths to validate for this template. */
-  instanceDirectoryPaths: string[];
 }
 
 const NESTJS_COMMAND_APPLICATION_GENERATOR_TAG =
   "generator:nestjs-command-application";
 const NESTJS_APPLICATION_TAG = "framework:nestjs";
 const APPLICATIONS_DIRECTORY_PATH = path.join(workspaceRoot, "applications");
+
+function resolveTemplateInstances(): ConformanceTemplateInstance[] {
+  const applications = resolveWorkspaceApplications();
+  return [
+    {
+      instanceDirectoryPaths: applications
+        .filter((application) =>
+          application.tags.includes(NESTJS_COMMAND_APPLICATION_GENERATOR_TAG),
+        )
+        .map((application) => application.rootPath),
+      instanceType: "single",
+      template: "nestjs-command-application",
+      templateDirectoryPath: COMMAND_APPLICATION_TEMPLATES_DIRECTORY_PATH,
+    },
+    {
+      instanceDirectoryPaths: applications
+        .filter((application) =>
+          application.tags.includes(NESTJS_APPLICATION_TAG),
+        )
+        .map((application) => path.join(application.rootPath, "src", "modules"))
+        .filter((instancesDirectoryPath) =>
+          fs.existsSync(instancesDirectoryPath),
+        ),
+      instanceType: "multiple",
+      template: "nestjs-service-module",
+      templateDirectoryPath: SERVICE_MODULE_TEMPLATES_DIRECTORY_PATH,
+    },
+  ];
+}
 
 function resolveWorkspaceApplications(): {
   rootPath: string;
@@ -69,35 +98,6 @@ function resolveWorkspaceApplications(): {
         tags: projectConfiguration.tags ?? [],
       };
     });
-}
-
-function resolveTemplateInstances(): ConformanceTemplateInstance[] {
-  const applications = resolveWorkspaceApplications();
-  return [
-    {
-      template: "nestjs-command-application",
-      templateDirectoryPath: COMMAND_APPLICATION_TEMPLATES_DIRECTORY_PATH,
-      instanceType: "single",
-      instanceDirectoryPaths: applications
-        .filter((application) =>
-          application.tags.includes(NESTJS_COMMAND_APPLICATION_GENERATOR_TAG),
-        )
-        .map((application) => application.rootPath),
-    },
-    {
-      template: "nestjs-service-module",
-      templateDirectoryPath: SERVICE_MODULE_TEMPLATES_DIRECTORY_PATH,
-      instanceType: "multiple",
-      instanceDirectoryPaths: applications
-        .filter((application) =>
-          application.tags.includes(NESTJS_APPLICATION_TAG),
-        )
-        .map((application) => path.join(application.rootPath, "src", "modules"))
-        .filter((instancesDirectoryPath) =>
-          fs.existsSync(instancesDirectoryPath),
-        ),
-    },
-  ];
 }
 
 describe("generator template conformance", () => {

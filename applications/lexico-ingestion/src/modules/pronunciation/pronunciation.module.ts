@@ -1,6 +1,7 @@
-import { Lexeme } from "@monorepo/lexico-entities";
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
+
+import { Lexeme } from "@monorepo/lexico-entities";
 
 import { LoggerModule } from "../logger/logger.module";
 

@@ -13,7 +13,7 @@ node_modules/
 # Environment 🎛️
 .env
 
-# Infrastructure 🏗️
+# Infrastructure 🏗
 .terraform/
 .terraform.lock.hcl
 *.terraform-provider-*

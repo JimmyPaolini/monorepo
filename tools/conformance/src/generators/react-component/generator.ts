@@ -25,16 +25,16 @@ export async function generateComponent(
   options: GenerateComponentOptions,
 ): Promise<void> {
   const projectName = await resolveProject({
-    tree,
     tag: "framework:react",
+    tree,
     ...(options.project !== undefined && { project: options.project }),
     message: "Which project should the component be generated in?",
   });
 
   const name = await resolveName({
-    name: options.name,
     case: StringCase.KEBAB_CASE,
     message: "What is the name of the component? (kebab-case)",
+    name: options.name,
     subject: "Component name",
   });
 
@@ -62,10 +62,10 @@ export async function generateComponent(
   const filesPath = path.join(__dirname, "templates");
   const substitutions = { namePascalCase };
   generateFiles({
-    tree,
-    templateDirectoryPath: filesPath,
     instanceDirectoryPath: directory,
     substitutions,
+    templateDirectoryPath: filesPath,
+    tree,
   });
   await formatFiles(tree);
 }

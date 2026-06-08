@@ -12,13 +12,60 @@ import type { Tree } from "@nx/devkit";
 import type { Choice, PromptObject } from "prompts";
 
 /**
+ * Renders Mustache templates from a directory into the Nx tree.
+ *
+ * Template filenames may include `__fieldName__` placeholders which are
+ * resolved from `substitutions` (for example `__namePascalCase__.tsx`).
+ */
+export function generateFiles(args: {
+  instanceDirectoryPath: string;
+  substitutions: Record<string, string>;
+  templateDirectoryPath: string;
+  tree: Tree;
+}): void {
+  const {
+    instanceDirectoryPath: targetDirectoryPath,
+    substitutions,
+    templateDirectoryPath,
+    tree,
+  } = args;
+
+  const resolveName = (name: string): string =>
+    name.replaceAll(
+      /__(\w+)__/g,
+      (token: string, field: string) => substitutions[field] ?? token,
+    );
+
+  const nodes = fs.readdirSync(templateDirectoryPath, { withFileTypes: true });
+
+  for (const node of nodes) {
+    const instanceName = resolveName(node.name);
+    const instancePath = path.join(targetDirectoryPath, instanceName);
+    const templatePath = path.join(templateDirectoryPath, node.name);
+
+    if (node.isDirectory()) {
+      generateFiles({
+        instanceDirectoryPath: instancePath,
+        substitutions,
+        templateDirectoryPath: templatePath,
+        tree,
+      });
+    } else {
+      const template = fs.readFileSync(templatePath, "utf8");
+      const instance = mustache.render(template, substitutions);
+      tree.write(instancePath, instance);
+    }
+  }
+}
+
+/**
  * Returns the names of all workspace projects that have the given tag.
  */
 export function getProjectsWithTag(args: {
-  tree: Tree;
   tag: string;
+  tree: Tree;
 }): string[] {
-  const { tree, tag } = args;
+  const { tag, tree } = args;
   const allProjects = getProjects(tree);
 
   const projectsWithTag = [...allProjects.entries()]
@@ -26,82 +73,6 @@ export function getProjectsWithTag(args: {
     .map(([projectName]) => projectName);
 
   return projectsWithTag;
-}
-
-/**
- * Prompts the user to select a project from a list and returns the chosen name.
- * Throws if the user cancels without selecting.
- */
-async function promptProjectSelection(args: {
-  projects: string[];
-  message: string;
-}): Promise<string> {
-  const { projects, message } = args;
-  const request: PromptObject<"project"> = {
-    type: "select",
-    name: "project",
-    message,
-    choices: projects.map((name): Choice => ({ title: name, value: name })),
-  };
-  const response: { project: string | undefined } = await prompts(request);
-  if (!response.project) {
-    throw new Error("No project selected");
-  }
-  const project = response.project;
-  return project;
-}
-
-/**
- * Resolves the target project name for a generator.
- *
- * If `project` is already provided it is validated against the set of projects
- * with the given `tag`. If it is omitted the user is prompted to pick one
- * interactively. Throws when no matching projects exist in the workspace.
- */
-export async function resolveProject(args: {
-  tree: Tree;
-  tag: string;
-  project?: string;
-  message: string;
-}): Promise<string> {
-  const { tree, tag, project, message } = args;
-
-  const projectsWithTag = getProjectsWithTag({ tree, tag });
-
-  if (projectsWithTag.length === 0) {
-    throw new Error(`No projects with tag "${tag}" found in the workspace`);
-  }
-
-  const projectName =
-    project ??
-    (await promptProjectSelection({ projects: projectsWithTag, message }));
-
-  if (!projectsWithTag.includes(projectName)) {
-    throw new Error(
-      `Project "${projectName}" does not have the "${tag}" tag. Available projects: ${projectsWithTag.join(", ")}`,
-    );
-  }
-
-  return projectName;
-}
-
-/**
- * Prompts the user to enter a name and returns the input.
- * Throws if the user cancels without providing one.
- */
-async function promptNameInput(args: { message: string }): Promise<string> {
-  const { message } = args;
-  const request: PromptObject<"name"> = {
-    type: "text",
-    name: "name",
-    message,
-  };
-  const response: { name: string | undefined } = await prompts(request);
-  if (!response.name) {
-    throw new Error("No name provided");
-  }
-  const name = response.name;
-  return name;
 }
 
 /**
@@ -113,9 +84,9 @@ async function promptNameInput(args: { message: string }): Promise<string> {
  * the required casing.
  */
 export async function resolveName(args: {
-  name?: string;
   case: StringCaseValue;
   message: string;
+  name?: string;
   subject?: string;
 }): Promise<string> {
   const { message, subject = "Name" } = args;
@@ -134,48 +105,77 @@ export async function resolveName(args: {
 }
 
 /**
- * Renders Mustache templates from a directory into the Nx tree.
+ * Resolves the target project name for a generator.
  *
- * Template filenames may include `__fieldName__` placeholders which are
- * resolved from `substitutions` (for example `__namePascalCase__.tsx`).
+ * If `project` is already provided it is validated against the set of projects
+ * with the given `tag`. If it is omitted the user is prompted to pick one
+ * interactively. Throws when no matching projects exist in the workspace.
  */
-export function generateFiles(args: {
+export async function resolveProject(args: {
+  message: string;
+  project?: string;
+  tag: string;
   tree: Tree;
-  templateDirectoryPath: string;
-  instanceDirectoryPath: string;
-  substitutions: Record<string, string>;
-}): void {
-  const {
-    tree,
-    templateDirectoryPath,
-    instanceDirectoryPath: targetDirectoryPath,
-    substitutions,
-  } = args;
+}): Promise<string> {
+  const { message, project, tag, tree } = args;
 
-  const resolveName = (name: string): string =>
-    name.replaceAll(
-      /__(\w+)__/g,
-      (token: string, field: string) => substitutions[field] ?? token,
-    );
+  const projectsWithTag = getProjectsWithTag({ tag, tree });
 
-  const nodes = fs.readdirSync(templateDirectoryPath, { withFileTypes: true });
-
-  for (const node of nodes) {
-    const instanceName = resolveName(node.name);
-    const instancePath = path.join(targetDirectoryPath, instanceName);
-    const templatePath = path.join(templateDirectoryPath, node.name);
-
-    if (node.isDirectory()) {
-      generateFiles({
-        tree,
-        templateDirectoryPath: templatePath,
-        instanceDirectoryPath: instancePath,
-        substitutions,
-      });
-    } else {
-      const template = fs.readFileSync(templatePath, "utf8");
-      const instance = mustache.render(template, substitutions);
-      tree.write(instancePath, instance);
-    }
+  if (projectsWithTag.length === 0) {
+    throw new Error(`No projects with tag "${tag}" found in the workspace`);
   }
+
+  const projectName =
+    project ??
+    (await promptProjectSelection({ message, projects: projectsWithTag }));
+
+  if (!projectsWithTag.includes(projectName)) {
+    throw new Error(
+      `Project "${projectName}" does not have the "${tag}" tag. Available projects: ${projectsWithTag.join(", ")}`,
+    );
+  }
+
+  return projectName;
+}
+
+/**
+ * Prompts the user to enter a name and returns the input.
+ * Throws if the user cancels without providing one.
+ */
+async function promptNameInput(args: { message: string }): Promise<string> {
+  const { message } = args;
+  const request: PromptObject<"name"> = {
+    message,
+    name: "name",
+    type: "text",
+  };
+  const response: { name: string | undefined } = await prompts(request);
+  if (!response.name) {
+    throw new Error("No name provided");
+  }
+  const name = response.name;
+  return name;
+}
+
+/**
+ * Prompts the user to select a project from a list and returns the chosen name.
+ * Throws if the user cancels without selecting.
+ */
+async function promptProjectSelection(args: {
+  message: string;
+  projects: string[];
+}): Promise<string> {
+  const { message, projects } = args;
+  const request: PromptObject<"project"> = {
+    choices: projects.map((name): Choice => ({ title: name, value: name })),
+    message,
+    name: "project",
+    type: "select",
+  };
+  const response: { project: string | undefined } = await prompts(request);
+  if (!response.project) {
+    throw new Error("No project selected");
+  }
+  const project = response.project;
+  return project;
 }

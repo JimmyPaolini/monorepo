@@ -12,8 +12,8 @@ import { PhasesService } from "./phases.service";
  */
 @Module({
   controllers: [],
+  exports: [PhasesService],
   imports: [EphemerisModule, MathModule, ProgressiveUtilitiesModule],
   providers: [PhasesService],
-  exports: [PhasesService],
 })
 export class PhasesModule {}

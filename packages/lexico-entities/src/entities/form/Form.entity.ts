@@ -110,14 +110,14 @@ export type FormSupineCase = (typeof formSupineCaseValues)[number];
 /**
  *
  */
-@InterfaceType()
 @Entity({
-  name: "forms",
-  schema: "public",
   comment:
     "Abstract base table for normalized inflected forms using single-table inheritance",
+  name: "forms",
+  schema: "public",
 })
-@TableInheritance({ column: { type: "text", name: "type" } })
+@InterfaceType()
+@TableInheritance({ column: { name: "type", type: "text" } })
 export class Form extends AuditableEntity {
   // id, createdAt, createdBy, updatedAt, updatedBy, deletedAt, deletedBy inherited from AuditableEntity
 

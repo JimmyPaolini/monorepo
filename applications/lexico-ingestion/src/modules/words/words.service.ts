@@ -1,3 +1,7 @@
+import { Injectable, Logger } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
+import { In, Repository } from "typeorm";
+
 import {
   Form,
   Lexeme,
@@ -5,9 +9,6 @@ import {
   WordForm,
   WordLexeme,
 } from "@monorepo/lexico-entities";
-import { Injectable, Logger } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
-import { In, Repository } from "typeorm";
 
 import { LEXICO_INGESTION_BY_ID } from "../lexico-ingestion/lexico-ingestion.constants";
 
@@ -16,9 +17,8 @@ import { LEXICO_INGESTION_BY_ID } from "../lexico-ingestion/lexico-ingestion.con
  */
 @Injectable()
 export class WordsService {
-  private readonly logger = new Logger(WordsService.name);
+  // 🏗 Dependency Injection
 
-  // 🏗️ Dependency Injection
   constructor(
     @InjectRepository(Word)
     private readonly wordsRepository: Repository<Word>,
@@ -30,11 +30,33 @@ export class WordsService {
 
   // 🔐 Private Fields
 
+  private readonly logger = new Logger(WordsService.name);
+
   // 🔑 Public Fields
 
   // 🔏 Private Methods
 
+  private escapeCapitals(word: string): string {
+    return word.replaceAll(/[A-Z]/g, (char) => `_${char.toLowerCase()}`);
+  }
+
+  private normalize(str: string): string {
+    return str
+      .normalize("NFD")
+      .replaceAll(/[\u0300-\u036F]/gu, "")
+      .toLowerCase()
+      .trim();
+  }
+
   // 🌎 Public Methods
+
+  /** Returns all searchable word strings for a lexeme — the text of each
+   * principal part. Form-based words are ingested separately via DictionaryService. */
+  getLexemeWords(lexeme: Lexeme): string[] {
+    const words: string[] = [];
+    lexeme.principalParts.forEach((pp) => words.push(...pp.text));
+    return words;
+  }
 
   /** Generates and persists a `Word` row for every inflected form and
    * principal part that belongs to the given `Lexeme`.
@@ -72,33 +94,13 @@ export class WordsService {
           .createQueryBuilder()
           .insert()
           .into(WordLexeme)
-          .values(words.map((word) => ({ word, lexeme })))
+          .values(words.map((word) => ({ lexeme, word })))
           .orIgnore()
           .execute();
       }
     }
 
     this.logger.log(`🔤 Ingested words for "${lexeme.id}"`);
-  }
-
-  private escapeCapitals(word: string): string {
-    return word.replaceAll(/[A-Z]/g, (char) => `_${char.toLowerCase()}`);
-  }
-
-  private normalize(str: string): string {
-    return str
-      .normalize("NFD")
-      .replaceAll(/[\u0300-\u036F]/gu, "")
-      .toLowerCase()
-      .trim();
-  }
-
-  /** Returns all searchable word strings for a lexeme — the text of each
-   * principal part. Form-based words are ingested separately via DictionaryService. */
-  getLexemeWords(lexeme: Lexeme): string[] {
-    const words: string[] = [];
-    lexeme.principalParts.forEach((pp) => words.push(...pp.text));
-    return words;
   }
 
   /** Upserts an array of normalized word strings into the `Word` table, then
@@ -112,9 +114,9 @@ export class WordsService {
 
     await this.wordsRepository.upsert(
       normalizedWords.map((w) => ({
-        word: w,
         createdBy: LEXICO_INGESTION_BY_ID,
         updatedBy: LEXICO_INGESTION_BY_ID,
+        word: w,
       })),
       { conflictPaths: ["word"], skipUpdateIfNoValuesChanged: true },
     );
@@ -126,10 +128,10 @@ export class WordsService {
     const wordMap = new Map(words.map((w) => [w.word, w]));
 
     const wordLexemeValues = words.map((word) => ({
-      word,
-      lexeme,
       createdBy: LEXICO_INGESTION_BY_ID,
+      lexeme,
       updatedBy: LEXICO_INGESTION_BY_ID,
+      word,
     }));
 
     if (wordLexemeValues.length > 0) {
@@ -148,10 +150,10 @@ export class WordsService {
       if (!word) continue;
       for (const form of formSet) {
         wordFormValues.push({
-          word,
-          form,
           createdBy: LEXICO_INGESTION_BY_ID,
+          form,
           updatedBy: LEXICO_INGESTION_BY_ID,
+          word,
         });
       }
     }

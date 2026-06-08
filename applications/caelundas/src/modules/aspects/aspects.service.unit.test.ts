@@ -54,16 +54,12 @@ describe("AspectsService", () => {
     const timestamp = moment.utc("2026-01-21T12:00:00Z");
 
     function createAspectEvent(args: {
+      aspectType: string;
       body1: string;
       body2: string;
-      aspectType: string;
-      phase: "Forming" | "Perfective" | "Dissolving";
+      phase: "Dissolving" | "Forming" | "Perfective";
     }): Event {
       return {
-        start: timestamp,
-        end: timestamp,
-        summary: `${args.body1} ${args.phase.toLowerCase()} ${args.aspectType} ${args.body2}`,
-        description: "",
         categories: [
           "Astronomy",
           "Astrology",
@@ -74,6 +70,10 @@ describe("AspectsService", () => {
           args.aspectType,
           args.phase,
         ],
+        description: "",
+        end: timestamp,
+        start: timestamp,
+        summary: `${args.body1} ${args.phase.toLowerCase()} ${args.aspectType} ${args.body2}`,
       };
     }
 
@@ -86,15 +86,15 @@ describe("AspectsService", () => {
         [],
         [
           createAspectEvent({
+            aspectType: "Conjunct",
             body1: "Sun",
             body2: "Moon",
-            aspectType: "Conjunct",
             phase: "Forming",
           }),
           createAspectEvent({
+            aspectType: "Conjunct",
             body1: "Sun",
             body2: "Moon",
-            aspectType: "Conjunct",
             phase: "Perfective",
           }),
         ],
@@ -102,8 +102,8 @@ describe("AspectsService", () => {
 
       expect(result).toEqual([
         {
-          bodies: ["sun", "moon"],
           aspect: "conjunct",
+          bodies: ["sun", "moon"],
         },
       ]);
     });
@@ -113,9 +113,9 @@ describe("AspectsService", () => {
         [],
         [
           createAspectEvent({
+            aspectType: "Conjunct",
             body1: "Sun",
             body2: "Moon",
-            aspectType: "Conjunct",
             phase: "Forming",
           }),
         ],
@@ -123,9 +123,9 @@ describe("AspectsService", () => {
 
       const result = service.computeAspectBodies(afterForming, [
         createAspectEvent({
+          aspectType: "Conjunct",
           body1: "Sun",
           body2: "Moon",
-          aspectType: "Conjunct",
           phase: "Dissolving",
         }),
       ]);
@@ -138,9 +138,9 @@ describe("AspectsService", () => {
         [],
         [
           createAspectEvent({
+            aspectType: "Conjunct",
             body1: "Moon",
             body2: "Sun",
-            aspectType: "Conjunct",
             phase: "Forming",
           }),
         ],
@@ -148,9 +148,9 @@ describe("AspectsService", () => {
 
       const result = service.computeAspectBodies(afterForming, [
         createAspectEvent({
+          aspectType: "Conjunct",
           body1: "Sun",
           body2: "Moon",
-          aspectType: "Conjunct",
           phase: "Dissolving",
         }),
       ]);
@@ -163,15 +163,15 @@ describe("AspectsService", () => {
         [],
         [
           createAspectEvent({
+            aspectType: "Conjunct",
             body1: "Sun",
             body2: "Moon",
-            aspectType: "Conjunct",
             phase: "Forming",
           }),
           createAspectEvent({
+            aspectType: "Sextile",
             body1: "Sun",
             body2: "Moon",
-            aspectType: "Sextile",
             phase: "Forming",
           }),
         ],
@@ -180,8 +180,8 @@ describe("AspectsService", () => {
       expect(result).toHaveLength(2);
       expect(result).toEqual(
         expect.arrayContaining([
-          { bodies: ["sun", "moon"], aspect: "conjunct" },
-          { bodies: ["sun", "moon"], aspect: "sextile" },
+          { aspect: "conjunct", bodies: ["sun", "moon"] },
+          { aspect: "sextile", bodies: ["sun", "moon"] },
         ]),
       );
     });
@@ -191,11 +191,11 @@ describe("AspectsService", () => {
         [],
         [
           {
-            start: timestamp,
-            end: timestamp,
-            summary: "Moon enters Aries",
-            description: "",
             categories: ["Astronomy", "Ingress", "Moon", "Aries"],
+            description: "",
+            end: timestamp,
+            start: timestamp,
+            summary: "Moon enters Aries",
           },
         ],
       );
@@ -208,9 +208,9 @@ describe("AspectsService", () => {
         [],
         [
           createAspectEvent({
+            aspectType: "Conjunct",
             body1: "Sun",
             body2: "Moon",
-            aspectType: "Conjunct",
             phase: "Forming",
           }),
         ],
@@ -218,9 +218,9 @@ describe("AspectsService", () => {
 
       service.computeAspectBodies(afterForming, [
         createAspectEvent({
+          aspectType: "Conjunct",
           body1: "Sun",
           body2: "Moon",
-          aspectType: "Conjunct",
           phase: "Dissolving",
         }),
       ]);

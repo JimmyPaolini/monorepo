@@ -1,8 +1,9 @@
-import { Lexeme } from "@monorepo/lexico-entities";
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import * as cheerio from "cheerio";
 import { Repository } from "typeorm";
+
+import { Lexeme } from "@monorepo/lexico-entities";
 
 import { EtymologyService } from "../etymology/etymology.service";
 import { FormsService } from "../forms/forms.service";
@@ -25,7 +26,8 @@ import type { WiktionaryPage } from "../lexico-ingestion/lexico-ingestion.types"
  */
 @Injectable()
 export class LexemesService {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
+
   constructor(
     @InjectRepository(Lexeme)
     private readonly lexemeRepository: Repository<Lexeme>,
@@ -57,58 +59,13 @@ export class LexemesService {
 
   // 🌎 Public Methods
 
-  /** Persists a parsed Lexeme and its related entities. */
-  async saveParsedLexeme(lexeme: Lexeme): Promise<Lexeme | null> {
-    await this.upsertLexeme(lexeme);
-    const savedLexeme = await this.fetchSavedLexeme(
-      lexeme.lemma,
-      lexeme.disambiguator,
-    );
-    if (!savedLexeme) return null;
-
-    if (lexeme.inflection) {
-      lexeme.inflection.lexeme = savedLexeme;
-      await lexeme.inflection.save();
-      savedLexeme.inflection = lexeme.inflection;
-    }
-
-    await this.principalPartsService.ingestLexemePrincipalParts(
-      savedLexeme,
-      lexeme.principalParts,
-    );
-    if (lexeme.pronunciations !== undefined && lexeme.pronunciations !== null) {
-      await this.pronunciationService.ingestLexemePronunciations(
-        savedLexeme,
-        lexeme.pronunciations,
-      );
-    }
-    if (lexeme.translations !== undefined && lexeme.translations !== null) {
-      const preparedTranslations =
-        this.translationsService.prepareTranslationsForSave(
-          savedLexeme,
-          lexeme.translations,
-        );
-      savedLexeme.translations = preparedTranslations;
-      await this.lexemeRepository.save(savedLexeme);
-    }
-    if (lexeme.forms.length > 0) {
-      await this.formsService.ingestLexemeForms(lexeme.forms, savedLexeme);
-    }
-    await this.wordsService.ingestLexemeWords(savedLexeme);
-    this.logger.debug(
-      `Upserted lexeme "${lexeme.lemma}" (disambiguator: ${lexeme.disambiguator})`,
-    );
-    return savedLexeme;
-  }
-
-  /** Upserts the Lexeme row. */
-  async upsertLexeme(lexeme: Lexeme): Promise<void> {
-    lexeme.createdBy = LEXICO_INGESTION_BY_ID;
-    lexeme.updatedBy = LEXICO_INGESTION_BY_ID;
-    await this.lexemeRepository.upsert(lexeme, {
-      conflictPaths: ["lemma", "disambiguator"],
-      skipUpdateIfNoValuesChanged: true,
-    });
+  /** Returns true if a lexeme matching `lemma` already exists in the DB. */
+  async existsByLemma(lemma: string): Promise<boolean> {
+    const count = await this.lexemeRepository
+      .createQueryBuilder("lexeme")
+      .where("lexeme.lemma = :lemma", { lemma })
+      .getCount();
+    return count > 0;
   }
 
   /**
@@ -119,23 +76,14 @@ export class LexemesService {
     disambiguator: number,
   ): Promise<Lexeme | null> {
     return this.lexemeRepository.findOne({
-      where: { lemma, disambiguator },
       relations: {
+        inflection: true,
         principalParts: true,
         pronunciations: true,
         translations: true,
-        inflection: true,
       },
+      where: { disambiguator, lemma },
     });
-  }
-
-  /** Returns true if a lexeme matching `lemma` already exists in the DB. */
-  async existsByLemma(lemma: string): Promise<boolean> {
-    const count = await this.lexemeRepository
-      .createQueryBuilder("lexeme")
-      .where("lexeme.lemma = :lemma", { lemma })
-      .getCount();
-    return count > 0;
   }
 
   /** Finds all lexemes matching `lemma`, including their translations. */
@@ -190,7 +138,7 @@ export class LexemesService {
       lexeme.partOfSpeech = partOfSpeech;
 
       try {
-        const { principalParts, macronizedWord } =
+        const { macronizedWord, principalParts } =
           this.principalPartsService.parsePrincipalParts(
             lexeme,
             $,
@@ -246,5 +194,59 @@ export class LexemesService {
     }
 
     return lexemes;
+  }
+
+  /** Persists a parsed Lexeme and its related entities. */
+  async saveParsedLexeme(lexeme: Lexeme): Promise<Lexeme | null> {
+    await this.upsertLexeme(lexeme);
+    const savedLexeme = await this.fetchSavedLexeme(
+      lexeme.lemma,
+      lexeme.disambiguator,
+    );
+    if (!savedLexeme) return null;
+
+    if (lexeme.inflection) {
+      lexeme.inflection.lexeme = savedLexeme;
+      await lexeme.inflection.save();
+      savedLexeme.inflection = lexeme.inflection;
+    }
+
+    await this.principalPartsService.ingestLexemePrincipalParts(
+      savedLexeme,
+      lexeme.principalParts,
+    );
+    if (lexeme.pronunciations !== undefined && lexeme.pronunciations !== null) {
+      await this.pronunciationService.ingestLexemePronunciations(
+        savedLexeme,
+        lexeme.pronunciations,
+      );
+    }
+    if (lexeme.translations !== undefined && lexeme.translations !== null) {
+      const preparedTranslations =
+        this.translationsService.prepareTranslationsForSave(
+          savedLexeme,
+          lexeme.translations,
+        );
+      savedLexeme.translations = preparedTranslations;
+      await this.lexemeRepository.save(savedLexeme);
+    }
+    if (lexeme.forms.length > 0) {
+      await this.formsService.ingestLexemeForms(lexeme.forms, savedLexeme);
+    }
+    await this.wordsService.ingestLexemeWords(savedLexeme);
+    this.logger.debug(
+      `Upserted lexeme "${lexeme.lemma}" (disambiguator: ${lexeme.disambiguator})`,
+    );
+    return savedLexeme;
+  }
+
+  /** Upserts the Lexeme row. */
+  async upsertLexeme(lexeme: Lexeme): Promise<void> {
+    lexeme.createdBy = LEXICO_INGESTION_BY_ID;
+    lexeme.updatedBy = LEXICO_INGESTION_BY_ID;
+    await this.lexemeRepository.upsert(lexeme, {
+      conflictPaths: ["lemma", "disambiguator"],
+      skipUpdateIfNoValuesChanged: true,
+    });
   }
 }

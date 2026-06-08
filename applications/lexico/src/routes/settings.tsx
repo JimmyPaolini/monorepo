@@ -1,3 +1,6 @@
+import { createFileRoute, useRouter } from "@tanstack/react-router";
+import { deleteAccount, getGoogleSignInUrl, signOut } from "~/lib/auth";
+
 import {
   Button,
   Card,
@@ -7,11 +10,8 @@ import {
   Label,
   Separator,
 } from "@monorepo/lexico-components";
-import { createFileRoute, useRouter } from "@tanstack/react-router";
 
 import type { ReactNode } from "react";
-
-import { deleteAccount, getGoogleSignInUrl, signOut } from "~/lib/auth";
 
 export const Route = createFileRoute("/settings")({
   component: SettingsPage,
@@ -66,8 +66,8 @@ function SettingsPage(): ReactNode {
               across devices.
             </p>
             <Button
-              onClick={() => void handleSignIn()}
               className="w-full"
+              onClick={() => void handleSignIn()}
             >
               Sign in with Google
             </Button>
@@ -92,8 +92,8 @@ function SettingsPage(): ReactNode {
               <p className="text-muted-foreground">{user.email}</p>
             </div>
             <Button
-              variant="outline"
               onClick={() => void handleSignOut()}
+              variant="outline"
             >
               Sign Out
             </Button>
@@ -129,8 +129,8 @@ function SettingsPage(): ReactNode {
               </p>
             </div>
             <Button
-              variant="destructive"
               onClick={() => void handleDeleteAccount()}
+              variant="destructive"
             >
               Delete Account
             </Button>

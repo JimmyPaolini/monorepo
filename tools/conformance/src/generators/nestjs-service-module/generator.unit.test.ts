@@ -130,10 +130,10 @@ describe("generateNestjsServiceModule", () => {
         namePascalCase: "Calculator",
       };
       const result = validateConformance({
-        instance: serviceContent,
-        template: templateContent,
         data: vars,
         filename: "calculator.service.ts",
+        instance: serviceContent,
+        template: templateContent,
       });
       expect(result.errors).toEqual([]);
       expect(result.errors.length === 0).toBe(true);

@@ -16,6 +16,7 @@ import { DictionaryService } from "./dictionary.service";
  */
 @Module({
   controllers: [],
+  exports: [DictionaryService],
   imports: [
     FormsModule,
     LexemesModule,
@@ -26,6 +27,5 @@ import { DictionaryService } from "./dictionary.service";
     WordsModule,
   ],
   providers: [DictionaryCommand, DictionaryService],
-  exports: [DictionaryService],
 })
 export class DictionaryModule {}

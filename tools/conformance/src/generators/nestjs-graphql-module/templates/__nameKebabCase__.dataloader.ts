@@ -12,10 +12,12 @@ import { {{namePascalCase}}Service } from "./{{nameKebabCase}}.service";
  */
 @Injectable({ scope: Scope.REQUEST })
 export class {{namePascalCase}}DataLoader {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
+
   constructor(private readonly {{nameCamelCase}}Service: {{namePascalCase}}Service) {}
 
   // 🔑 Public Fields
+
   public readonly byId = new DataLoader<string, {{namePascalCase}}Entity | null>(
     async (ids: readonly string[]) => {
       // TODO: Implement batch loading logic via {{nameCamelCase}}Service.

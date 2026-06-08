@@ -33,8 +33,8 @@ describe("generateJupyterNotebookApplication", () => {
 
   it("uses provided description in pyproject.toml", async () => {
     await generateJupyterNotebookApplication(tree, {
-      name: "daily-notebook",
       description: "My custom notebook app",
+      name: "daily-notebook",
     });
 
     const pyproject = tree.read(

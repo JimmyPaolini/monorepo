@@ -14,7 +14,8 @@ import type { Environment, Input } from "./input.types";
  */
 @Injectable()
 export class InputService {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
+
   constructor(private readonly configService: ConfigService<Environment>) {}
 
   // 🔐 Private Fields
@@ -36,10 +37,10 @@ export class InputService {
    */
   parse(): Input {
     return inputSchema.parse({
+      endDate: this.configService.get<string>("END_DATE"),
       latitude: this.configService.get<number>("LATITUDE"),
       longitude: this.configService.get<number>("LONGITUDE"),
       startDate: this.configService.get<string>("START_DATE"),
-      endDate: this.configService.get<string>("END_DATE"),
     });
   }
 }

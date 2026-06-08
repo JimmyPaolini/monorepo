@@ -1,5 +1,4 @@
 import "reflect-metadata";
-
 import { CommandFactory } from "nest-commander";
 
 import { LexicoIngestionModule } from "./modules/lexico-ingestion/lexico-ingestion.module.js";

@@ -35,16 +35,16 @@ export async function generateNestjsServiceModule(
   options: GenerateNestjsServiceModuleOptions,
 ): Promise<GeneratorCallback> {
   const projectName = await resolveProject({
-    tree,
     tag: "framework:nestjs",
+    tree,
     ...(options.project !== undefined && { project: options.project }),
     message: "Which project should the module be generated in?",
   });
 
   const nameKebabCase = await resolveName({
-    name: options.name,
     case: StringCase.KEBAB_CASE,
     message: "What is the name of the module? (kebab-case)",
+    name: options.name,
     subject: "Module name",
   });
 
@@ -70,15 +70,15 @@ export async function generateNestjsServiceModule(
   const targetPath = path.join(directory, nameKebabCase);
   const substitutions = {
     nameCamelCase: _.camelCase(nameKebabCase),
-    namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
     nameKebabCase,
+    namePascalCase: _.upperFirst(_.camelCase(nameKebabCase)),
   };
 
   generateFiles({
-    tree,
-    templateDirectoryPath: TEMPLATES_DIRECTORY_PATH,
     instanceDirectoryPath: targetPath,
     substitutions,
+    templateDirectoryPath: TEMPLATES_DIRECTORY_PATH,
+    tree,
   });
 
   const generatedFiles = tree

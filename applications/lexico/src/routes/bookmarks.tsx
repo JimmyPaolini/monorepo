@@ -1,3 +1,8 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { noop } from "lodash";
+import { Bookmark, BookmarkX } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
+
 import {
   Button,
   Card,
@@ -5,10 +10,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@monorepo/lexico-components";
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { noop } from "lodash";
-import { Bookmark, BookmarkX } from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
 
 import { EntryCard } from "../components/entry/entry-card";
 import { getBookmarks, removeBookmark } from "../lib/bookmarks";
@@ -28,7 +29,7 @@ export const Route = createFileRoute("/bookmarks")({
 function BookmarksPage(): ReactNode {
   const [bookmarks, setBookmarks] = useState<BookmarkedEntry[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<null | string>(null);
 
   const fetchBookmarks = useCallback(async () => {
     setIsLoading(true);
@@ -87,29 +88,29 @@ function BookmarksPage(): ReactNode {
               className="group relative"
             >
               <Link
-                to="/word/$id"
-                params={{ id: entry.id }}
                 className="block transition-transform hover:scale-[1.01]"
+                params={{ id: entry.id }}
+                to="/word/$id"
               >
                 <EntryCard
-                  onBookmarkToggle={noop}
                   id={entry.id}
+                  inflection={entry.inflection}
+                  onBookmarkToggle={noop}
                   partOfSpeech={entry.part_of_speech}
                   principalParts={entry.principal_parts}
-                  inflection={entry.inflection}
                   translations={entry.translations}
                   bookmarked
                 />
               </Link>
               <Button
-                variant="ghost"
-                size="icon"
                 className="absolute right-2 top-2 opacity-0 transition-opacity group-hover:opacity-100"
                 onClick={(e) => {
                   e.preventDefault();
                   void handleRemoveBookmark(entry.id);
                 }}
+                size="icon"
                 title="Remove bookmark"
+                variant="ghost"
               >
                 <BookmarkX className="h-5 w-5 text-muted-foreground hover:text-destructive" />
               </Button>

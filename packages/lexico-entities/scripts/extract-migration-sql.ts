@@ -26,33 +26,7 @@ const MIGRATIONS_DIR =
   "packages/lexico-entities/src/database/migrations" as const;
 const MIGRATION_GLOB = /^\d{13}-\w.*\.ts$/;
 
-type Mode = "latest" | "all";
-
-function parseMode(): Mode {
-  const flag = process.argv.find((arg) => arg.startsWith("--mode="));
-  const value = flag?.split("=")[1];
-  if (value === "all") return "all";
-  return "latest";
-}
-
-async function findMigrationFiles(mode: Mode): Promise<string[]> {
-  const entries = await readdir(MIGRATIONS_DIR);
-  const sorted = entries.filter((f) => MIGRATION_GLOB.test(f)).toSorted();
-
-  if (sorted.length === 0) {
-    throw new Error(`No migration files found in ${MIGRATIONS_DIR}`);
-  }
-
-  if (mode === "latest") {
-    const latest = sorted.at(-1);
-    if (latest === undefined) {
-      throw new Error(`No migration files found in ${MIGRATIONS_DIR}`);
-    }
-    return [path.join(MIGRATIONS_DIR, latest)];
-  }
-
-  return sorted.map((f) => path.join(MIGRATIONS_DIR, f));
-}
+type Mode = "all" | "latest";
 
 function extractSqlFromMethod(
   method: ts.MethodDeclaration,
@@ -101,7 +75,7 @@ function extractSqlFromMethod(
 function extractSqlFromMigration(
   source: string,
   filePath: string,
-): { up: string[]; down: string[] } {
+): { down: string[]; up: string[] } {
   const sourceFile = ts.createSourceFile(
     filePath,
     source,
@@ -135,15 +109,62 @@ function extractSqlFromMigration(
 
   ts.forEachChild(sourceFile, visit);
 
-  return { up: upStatements, down: downStatements };
+  return { down: downStatements, up: upStatements };
+}
+
+async function findMigrationFiles(mode: Mode): Promise<string[]> {
+  const entries = await readdir(MIGRATIONS_DIR);
+  const sorted = entries.filter((f) => MIGRATION_GLOB.test(f)).toSorted();
+
+  if (sorted.length === 0) {
+    throw new Error(`No migration files found in ${MIGRATIONS_DIR}`);
+  }
+
+  if (mode === "latest") {
+    const latest = sorted.at(-1);
+    if (latest === undefined) {
+      throw new Error(`No migration files found in ${MIGRATIONS_DIR}`);
+    }
+    return [path.join(MIGRATIONS_DIR, latest)];
+  }
+
+  return sorted.map((f) => path.join(MIGRATIONS_DIR, f));
+}
+
+async function main(): Promise<void> {
+  const mode = parseMode();
+  const migrationPaths = await findMigrationFiles(mode);
+
+  console.log(
+    `Mode: ${mode} — processing ${migrationPaths.length} migration(s)`,
+  );
+
+  const generatedFiles: string[] = [];
+
+  for (const file of migrationPaths) {
+    const { downPath, upPath } = await processMigrationFile(file);
+    generatedFiles.push(upPath, downPath);
+  }
+
+  console.log(`\nSuccessfully extracted SQL:`);
+  for (const file of generatedFiles) {
+    console.log(`  ${file}`);
+  }
+}
+
+function parseMode(): Mode {
+  const flag = process.argv.find((arg) => arg.startsWith("--mode="));
+  const value = flag?.split("=")[1];
+  if (value === "all") return "all";
+  return "latest";
 }
 
 async function processMigrationFile(
   file: string,
-): Promise<{ upPath: string; downPath: string }> {
+): Promise<{ downPath: string; upPath: string }> {
   const source = await readFile(file, "utf8");
 
-  const { up, down } = extractSqlFromMigration(source, file);
+  const { down, up } = extractSqlFromMigration(source, file);
 
   if (up.length === 0) {
     console.warn(
@@ -176,28 +197,7 @@ async function processMigrationFile(
   console.log(`Wrote ${up.length} statement(s) to ${baseName}-up.sql`);
   console.log(`Wrote ${down.length} statement(s) to ${baseName}-down.sql`);
 
-  return { upPath, downPath };
-}
-
-async function main(): Promise<void> {
-  const mode = parseMode();
-  const migrationPaths = await findMigrationFiles(mode);
-
-  console.log(
-    `Mode: ${mode} — processing ${migrationPaths.length} migration(s)`,
-  );
-
-  const generatedFiles: string[] = [];
-
-  for (const file of migrationPaths) {
-    const { upPath, downPath } = await processMigrationFile(file);
-    generatedFiles.push(upPath, downPath);
-  }
-
-  console.log(`\nSuccessfully extracted SQL:`);
-  for (const file of generatedFiles) {
-    console.log(`  ${file}`);
-  }
+  return { downPath, upPath };
 }
 
 await main();

@@ -1,8 +1,9 @@
-import { Button, Separator } from "@monorepo/lexico-components";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { noop } from "lodash";
 import { Bookmark, BookmarkCheck } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
+
+import { Button, Separator } from "@monorepo/lexico-components";
 
 import { AdjectiveFormsTable } from "../components/entry/adjective-forms-table";
 import { NounFormsTable } from "../components/entry/noun-forms-table";
@@ -16,11 +17,11 @@ import { getEntry } from "../lib/search";
 import type { ReactNode } from "react";
 
 export const Route = createFileRoute("/word/$id")({
+  component: WordPage,
   loader: async ({ params }) => {
     const entry = await getEntry({ data: { id: params.id } });
     return { entry };
   },
-  component: WordPage,
 });
 
 /**
@@ -55,8 +56,8 @@ function WordPage(): ReactNode {
           The word you are looking for does not exist in our dictionary.
         </p>
         <Link
-          to="/search"
           className="text-primary hover:underline"
+          to="/search"
         >
           ← Back to Search
         </Link>
@@ -75,16 +76,16 @@ function WordPage(): ReactNode {
       {/* Navigation bar */}
       <div className="flex items-center justify-between">
         <Link
-          to="/search"
           className="text-muted-foreground hover:text-foreground"
+          to="/search"
         >
           ← Back to Search
         </Link>
         <Button
-          variant="ghost"
-          size="icon"
           onClick={() => void handleBookmarkToggle()}
+          size="icon"
           title={bookmarked ? "Remove bookmark" : "Add bookmark"}
+          variant="ghost"
         >
           {bookmarked ? (
             <BookmarkCheck className="h-5 w-5 text-primary" />
@@ -97,12 +98,12 @@ function WordPage(): ReactNode {
       {/* Page header with principal parts */}
       <header className="space-y-2">
         <PrincipalParts
+          className="border-none p-0"
           id={entry.id}
+          inflection={entry.inflection}
+          onBookmarkToggle={noop}
           partOfSpeech={entry.part_of_speech}
           principalParts={entry.principal_parts}
-          inflection={entry.inflection}
-          className="border-none p-0"
-          onBookmarkToggle={noop}
         />
       </header>
 
@@ -145,8 +146,8 @@ function WordPage(): ReactNode {
                         {entry.pronunciation.classical.phonetic}
                       </span>
                       <PronunciationButton
-                        text={entry.principal_parts.present ?? entry.id}
                         dialect="classical"
+                        text={entry.principal_parts.present ?? entry.id}
                       />
                     </div>
                   )}
@@ -159,8 +160,8 @@ function WordPage(): ReactNode {
                         {entry.pronunciation.ecclesiastical.phonetic}
                       </span>
                       <PronunciationButton
-                        text={entry.principal_parts.present ?? entry.id}
                         dialect="ecclesiastical"
+                        text={entry.principal_parts.present ?? entry.id}
                       />
                     </div>
                   )}

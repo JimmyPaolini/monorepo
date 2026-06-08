@@ -29,7 +29,8 @@ import type { Moment } from "moment-timezone";
  */
 @Injectable()
 export class StelliumService {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
+
   constructor() {}
 
   // 🔐 Private Fields
@@ -37,57 +38,6 @@ export class StelliumService {
   // 🔑 Public Fields
 
   // 🔏 Private Methods
-
-  private groupAspectsByType<T extends AspectBodies>(
-    edges: T[],
-  ): Map<Aspect, T[]> {
-    return groupByToMap(edges, (edge) => edge.aspect);
-  }
-
-  private haveAspect(
-    body1: Body,
-    body2: Body,
-    aspectType: Aspect,
-    edges: AspectBodies[],
-  ): boolean {
-    return edges.some(
-      (edge) =>
-        edge.aspect === aspectType &&
-        ((edge.bodies[0] === body1 && edge.bodies[1] === body2) ||
-          (edge.bodies[0] === body2 && edge.bodies[1] === body1)),
-    );
-  }
-
-  private determineCompoundPhaseFromSnapshots(
-    currentAspectBodies: AspectBodies[],
-    previousAspectBodies: AspectBodies[],
-    patternBodies: Body[],
-    currentMinute: Moment,
-    checkPatternExists: (edges: AspectBodies[]) => boolean,
-  ): { phase: AspectPhase; eventMinute: Moment } | null {
-    const bodySet = new Set(patternBodies);
-    const filterByBodies = (edges: AspectBodies[]): AspectBodies[] =>
-      edges.filter((e) => bodySet.has(e.bodies[0]) && bodySet.has(e.bodies[1]));
-
-    const currentFiltered = filterByBodies(currentAspectBodies);
-    const previousFiltered = filterByBodies(previousAspectBodies);
-
-    const currentExists = checkPatternExists(currentFiltered);
-    const previousExists = checkPatternExists(previousFiltered);
-
-    if (currentExists && !previousExists) {
-      return { phase: "forming", eventMinute: currentMinute };
-    }
-    if (!currentExists && previousExists) {
-      return {
-        phase: "dissolving",
-        eventMinute: currentMinute.clone().subtract(1, "minute"),
-      };
-    }
-    return null;
-  }
-
-  // 🌎 Public Methods
 
   /**
    * Composes Stellium patterns from stored 2-body aspects.
@@ -115,10 +65,10 @@ export class StelliumService {
    */
   private composeStelliums(args: {
     currentAspectBodies: AspectBodies[];
-    previousAspectBodies: AspectBodies[];
     minute: Moment;
+    previousAspectBodies: AspectBodies[];
   }): Event[] {
-    const { currentAspectBodies, previousAspectBodies, minute } = args;
+    const { currentAspectBodies, minute, previousAspectBodies } = args;
     const events: Event[] = [];
 
     const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
@@ -234,9 +184,9 @@ export class StelliumService {
         if (result) {
           events.push(
             this.createStelliumEvent({
-              timestamp: result.eventMinute,
               bodies,
               phase: result.phase,
+              timestamp: result.eventMinute,
             }),
           );
         }
@@ -250,11 +200,11 @@ export class StelliumService {
    * Create a stellium event
    */
   private createStelliumEvent(params: {
-    timestamp: Moment;
     bodies: Body[];
     phase: AspectPhase;
+    timestamp: Moment;
   }): Event {
-    const { timestamp, bodies, phase } = params;
+    const { bodies, phase, timestamp } = params;
 
     const bodiesCapitalized = bodies.map((b) => _.startCase(b));
     const bodySymbols = bodies.map((b) => symbolByBody[b]);
@@ -291,13 +241,63 @@ export class StelliumService {
     ];
 
     return {
-      start: timestamp,
-      end: timestamp,
-      description,
-      summary,
       categories,
+      description,
+      end: timestamp,
+      start: timestamp,
+      summary,
     };
   }
+
+  private determineCompoundPhaseFromSnapshots(
+    currentAspectBodies: AspectBodies[],
+    previousAspectBodies: AspectBodies[],
+    patternBodies: Body[],
+    currentMinute: Moment,
+    checkPatternExists: (edges: AspectBodies[]) => boolean,
+  ): null | { eventMinute: Moment; phase: AspectPhase } {
+    const bodySet = new Set(patternBodies);
+    const filterByBodies = (edges: AspectBodies[]): AspectBodies[] =>
+      edges.filter((e) => bodySet.has(e.bodies[0]) && bodySet.has(e.bodies[1]));
+
+    const currentFiltered = filterByBodies(currentAspectBodies);
+    const previousFiltered = filterByBodies(previousAspectBodies);
+
+    const currentExists = checkPatternExists(currentFiltered);
+    const previousExists = checkPatternExists(previousFiltered);
+
+    if (currentExists && !previousExists) {
+      return { eventMinute: currentMinute, phase: "forming" };
+    }
+    if (!currentExists && previousExists) {
+      return {
+        eventMinute: currentMinute.clone().subtract(1, "minute"),
+        phase: "dissolving",
+      };
+    }
+    return null;
+  }
+  private groupAspectsByType<T extends AspectBodies>(
+    edges: T[],
+  ): Map<Aspect, T[]> {
+    return groupByToMap(edges, (edge) => edge.aspect);
+  }
+
+  private haveAspect(
+    body1: Body,
+    body2: Body,
+    aspectType: Aspect,
+    edges: AspectBodies[],
+  ): boolean {
+    return edges.some(
+      (edge) =>
+        edge.aspect === aspectType &&
+        ((edge.bodies[0] === body1 && edge.bodies[1] === body2) ||
+          (edge.bodies[0] === body2 && edge.bodies[1] === body1)),
+    );
+  }
+
+  // 🌎 Public Methods
 
   /**
    * Detects all stellium patterns from stored 2-body aspect events.
@@ -318,15 +318,15 @@ export class StelliumService {
    */
   detect(args: {
     currentAspectBodies: AspectBodies[];
-    previousAspectBodies: AspectBodies[];
     minute: Moment;
+    previousAspectBodies: AspectBodies[];
   }): Event[] {
-    const { currentAspectBodies, previousAspectBodies, minute } = args;
+    const { currentAspectBodies, minute, previousAspectBodies } = args;
     return [
       ...this.composeStelliums({
         currentAspectBodies,
-        previousAspectBodies,
         minute,
+        previousAspectBodies,
       }),
     ];
   }
@@ -390,17 +390,17 @@ export class StelliumService {
           if (potentialDissolvingEvent.categories.includes("Dissolving")) {
             // Create progressive event
             progressiveEvents.push({
-              start: currentEvent.start,
-              end: potentialDissolvingEvent.start,
-              summary: currentEvent.summary.replace(/^(?:➡️|🎯|⬅️)\s/u, ""),
-              description: currentEvent.description.replace(
-                / (forming|exact|dissolving)$/i,
-                "",
-              ),
               categories: currentEvent.categories.filter(
                 (c) =>
                   c !== "Forming" && c !== "Perfective" && c !== "Dissolving",
               ),
+              description: currentEvent.description.replace(
+                / (forming|exact|dissolving)$/i,
+                "",
+              ),
+              end: potentialDissolvingEvent.start,
+              start: currentEvent.start,
+              summary: currentEvent.summary.replace(/^(?:➡️|🎯|⬅️)\s/u, ""),
             });
 
             break; // Found the pair, move to next forming event

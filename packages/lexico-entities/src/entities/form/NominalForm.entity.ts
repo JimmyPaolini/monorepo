@@ -10,23 +10,23 @@ import {
 } from "./Form.entity.js";
 
 /** A declined form for a noun, pronoun, or determiner (case + number). */
-@ObjectType({ implements: Form })
 @ChildEntity("nominal")
+@ObjectType({ implements: Form })
 export class NominalForm extends Form {
-  @Field(() => String)
   @Column({
-    type: "enum",
+    comment: "Grammatical case of this form",
     enum: formCaseValues,
     name: "form_case",
-    comment: "Grammatical case of this form",
+    type: "enum",
   })
+  @Field(() => String)
   case!: FormCase;
 
-  @Field(() => String)
   @Column({
-    type: "enum",
-    enum: formNumberValues,
     comment: "Grammatical number (singular or plural)",
+    enum: formNumberValues,
+    type: "enum",
   })
+  @Field(() => String)
   number!: FormNumber;
 }

@@ -9,10 +9,10 @@ describe("validateJsonConformance — structural checks", () => {
   it("returns no errors for identical JSON objects", () => {
     const template = `{ "name": "my-app", "version": "1.0.0" }`;
     const result = validateJsonConformance({
-      instance: template,
-      template,
       data: {},
       filename: "package.json",
+      instance: template,
+      template,
     });
     expect(result.errors).toEqual([]);
   });
@@ -21,10 +21,10 @@ describe("validateJsonConformance — structural checks", () => {
     const template = `{ "name": "my-app" }`;
     const instance = `{ "name": "my-app", "extra": true }`;
     const result = validateJsonConformance({
-      instance,
-      template,
       data: {},
       filename: "package.json",
+      instance,
+      template,
     });
     expect(result.errors).toEqual([]);
   });
@@ -33,10 +33,10 @@ describe("validateJsonConformance — structural checks", () => {
     const template = `{ "name": "my-app", "version": "1.0.0" }`;
     const instance = `{ "name": "my-app" }`;
     const result = validateJsonConformance({
-      instance,
-      template,
       data: {},
       filename: "package.json",
+      instance,
+      template,
     });
     expectErrorWithMessage(result.errors, 'Missing required key: "version"');
   });
@@ -45,10 +45,10 @@ describe("validateJsonConformance — structural checks", () => {
     const template = `{ "name": "my-app" }`;
     const instance = `{ "name": "other-app" }`;
     const result = validateJsonConformance({
-      instance,
-      template,
       data: {},
       filename: "package.json",
+      instance,
+      template,
     });
     expectErrorWithMessage(result.errors, '"name"');
     expectErrorWithMessage(result.errors, '"my-app"');
@@ -59,10 +59,10 @@ describe("validateJsonConformance — structural checks", () => {
     const template = `{ "name": "{{nameKebabCase}}" }`;
     const instance = `{ "name": "my-service" }`;
     const result = validateJsonConformance({
-      instance,
-      template,
       data: { nameKebabCase: "my-service" },
       filename: "package.json",
+      instance,
+      template,
     });
     expect(result.errors).toEqual([]);
   });
@@ -71,10 +71,10 @@ describe("validateJsonConformance — structural checks", () => {
     const template = `{ "name": "{{nameKebabCase}}" }`;
     const instance = `{ "name": "wrong-name" }`;
     const result = validateJsonConformance({
-      instance,
-      template,
       data: { nameKebabCase: "my-service" },
       filename: "package.json",
+      instance,
+      template,
     });
     expectErrorWithMessage(result.errors, '"my-service"');
     expectErrorWithMessage(result.errors, '"wrong-name"');
@@ -84,10 +84,10 @@ describe("validateJsonConformance — structural checks", () => {
     const template = `{ "scripts": { "build": "tsc" } }`;
     const instance = `{ "scripts": {} }`;
     const result = validateJsonConformance({
-      instance,
-      template,
       data: {},
       filename: "package.json",
+      instance,
+      template,
     });
     expectErrorWithMessage(
       result.errors,
@@ -99,10 +99,10 @@ describe("validateJsonConformance — structural checks", () => {
     const template = `{ "scripts": { "build": "tsc" } }`;
     const instance = `{ "scripts": { "build": "tsc", "test": "vitest" } }`;
     const result = validateJsonConformance({
-      instance,
-      template,
       data: {},
       filename: "package.json",
+      instance,
+      template,
     });
     expect(result.errors).toEqual([]);
   });
@@ -111,20 +111,20 @@ describe("validateJsonConformance — structural checks", () => {
     const template = `{ "tags": ["nestjs", "typescript"] }`;
     const instance = `{ "tags": ["nestjs"] }`;
     const result = validateJsonConformance({
-      instance,
-      template,
       data: {},
       filename: "project.json",
+      instance,
+      template,
     });
     expect(result.errors.length).toBeGreaterThan(0);
   });
 
   it("returns no errors for empty objects", () => {
     const result = validateJsonConformance({
-      instance: "{}",
-      template: "{}",
       data: {},
       filename: "package.json",
+      instance: "{}",
+      template: "{}",
     });
     expect(result.errors).toEqual([]);
   });
@@ -137,10 +137,10 @@ describe("validateJsonConformance — JSONC comment checks", () => {
   "name": "my-app"
 }`;
     const result = validateJsonConformance({
-      instance: template,
-      template,
       data: {},
       filename: "project.json",
+      instance: template,
+      template,
     });
     expect(result.errors).toEqual([]);
   });
@@ -154,10 +154,10 @@ describe("validateJsonConformance — JSONC comment checks", () => {
   "name": "my-app"
 }`;
     const result = validateJsonConformance({
-      instance,
-      template,
       data: {},
       filename: "project.json",
+      instance,
+      template,
     });
     expectErrorWithMessage(
       result.errors,
@@ -176,10 +176,10 @@ describe("validateJsonConformance — JSONC comment checks", () => {
   "name": "my-app"
 }`;
     const result = validateJsonConformance({
-      instance,
-      template,
       data: {},
       filename: "project.json",
+      instance,
+      template,
     });
     expect(result.errors).toEqual([]);
   });
@@ -194,10 +194,10 @@ describe("validateJsonConformance — JSONC comment checks", () => {
   "name": "my-app"
 }`;
     const result = validateJsonConformance({
-      instance,
-      template,
       data: {},
       filename: "project.json",
+      instance,
+      template,
     });
     expect(result.errors).toEqual([]);
   });
@@ -211,10 +211,10 @@ describe("validateJsonConformance — JSONC comment checks", () => {
   "name": "my-app"
 }`;
     const result = validateJsonConformance({
-      instance,
-      template,
       data: {},
       filename: "project.json",
+      instance,
+      template,
     });
     expectErrorWithMessage(result.errors, "Missing comment");
   });
@@ -229,10 +229,10 @@ describe("validateJsonConformance — JSONC comment checks", () => {
   "name": "my-app"
 }`;
     const result = validateJsonConformance({
-      instance,
-      template,
       data: {},
       filename: "project.json",
+      instance,
+      template,
     });
     expectErrorWithMessage(
       result.errors,
@@ -254,10 +254,10 @@ describe("validateJsonConformance — JSONC comment checks", () => {
   "b": 2
 }`;
     const result = validateJsonConformance({
-      instance,
-      template,
       data: {},
       filename: "project.json",
+      instance,
+      template,
     });
     expectErrorWithMessage(result.errors, 'Missing comment: "// second"');
   });
@@ -267,8 +267,8 @@ describe("validateComments", () => {
   it("returns no errors when instance has no comments and template has none", () => {
     expect(
       validateComments({
-        templateText: '{"a":1}',
         instanceText: '{"a":1}',
+        templateText: '{"a":1}',
       }),
     ).toEqual([]);
   });
@@ -276,14 +276,14 @@ describe("validateComments", () => {
   it("returns no errors for matching single-line comment", () => {
     const text = '{\n  // hello\n  "a": 1\n}';
     expect(
-      validateComments({ templateText: text, instanceText: text }),
+      validateComments({ instanceText: text, templateText: text }),
     ).toEqual([]);
   });
 
   it("returns error for missing comment in instance", () => {
     const errors = validateComments({
-      templateText: '{\n  // required\n  "a": 1\n}',
       instanceText: '{"a":1}',
+      templateText: '{\n  // required\n  "a": 1\n}',
     });
     expect(errors).toHaveLength(1);
     expect(errors.at(0)?.message).toContain('Missing comment: "// required"');
@@ -292,8 +292,8 @@ describe("validateComments", () => {
   it("allows extra comments in instance", () => {
     expect(
       validateComments({
-        templateText: '{\n  // needed\n  "a": 1\n}',
         instanceText: '{\n  // extra\n  // needed\n  "a": 1\n}',
+        templateText: '{\n  // needed\n  "a": 1\n}',
       }),
     ).toEqual([]);
   });
@@ -301,8 +301,8 @@ describe("validateComments", () => {
   it("matches any TODO comment loosely", () => {
     expect(
       validateComments({
-        templateText: '{\n  // TODO: placeholder\n  "a": 1\n}',
         instanceText: '{\n  // TODO: reworded\n  "a": 1\n}',
+        templateText: '{\n  // TODO: placeholder\n  "a": 1\n}',
       }),
     ).toEqual([]);
   });

@@ -1,8 +1,9 @@
-import { Lexeme, Translation } from "@monorepo/lexico-entities";
 import { Injectable, Logger } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import numberToWords from "number-to-words";
 import { Repository } from "typeorm";
+
+import { Lexeme, Translation } from "@monorepo/lexico-entities";
 
 import { WordsService } from "../words/words.service";
 
@@ -21,9 +22,8 @@ import {
  */
 @Injectable()
 export class ManualService {
-  private readonly logger = new Logger(ManualService.name);
+  // 🏗 Dependency Injection
 
-  // 🏗️ Dependency Injection
   constructor(
     @InjectRepository(Lexeme)
     private readonly lexemesRepository: Repository<Lexeme>,
@@ -32,48 +32,11 @@ export class ManualService {
 
   // 🔐 Private Fields
 
+  private readonly logger = new Logger(ManualService.name);
+
   // 🔑 Public Fields
 
   // 🔏 Private Methods
-
-  // 🌎 Public Methods
-
-  /** Runs the full manual-lexeme pipeline: deletes stale overrides, re-creates
-   * hic/ille/omnis lexemes, populates praenomen abbreviations, and ingests
-   * Roman numeral lexemes I–MMMCMXCIX. */
-  async ingestManual(): Promise<void> {
-    this.logger.log("📋 Ingesting manual lexemes");
-
-    for (const { lemma, disambiguator } of MANUAL_LEXEMES_TO_DELETE) {
-      await this.deleteManual(lemma, disambiguator);
-    }
-
-    await this.createManual(buildHicTemplate());
-    await this.createManual(buildIlleTemplate());
-    await this.createManual(buildOmnisTemplate());
-
-    await this.ingestPraenomenAbbreviations();
-    await this.ingestRomanNumerals();
-
-    this.logger.log("📋 Ingested manual lexemes");
-  }
-
-  /** Deletes any existing row with the same lemma and disambiguator then saves `manual` and
-   * re-ingests its word search records. */
-  async createManual(manual: Lexeme): Promise<void> {
-    await this.deleteManual(manual.lemma, manual.disambiguator);
-    this.logger.log(`✏️ Creating "${manual.lemma}:${manual.disambiguator}"`);
-    const lexeme = await this.lexemesRepository.save(manual, { reload: false });
-    await this.wordsService.ingestLexemeWords(lexeme);
-    this.logger.log(`✏️ Created "${manual.lemma}:${manual.disambiguator}"`);
-  }
-
-  /** Removes the `Lexeme` row identified by `lemma` and `disambiguator` from the database. */
-  async deleteManual(lemma: string, disambiguator: number): Promise<void> {
-    this.logger.log(`🗑️ Deleting "${lemma}:${disambiguator}"`);
-    await this.lexemesRepository.delete({ lemma, disambiguator });
-    this.logger.log(`🗑️ Deleted "${lemma}:${disambiguator}"`);
-  }
 
   private decimalToRoman(decimal: number): string {
     if (decimal < 1 || decimal > 3999) {
@@ -168,5 +131,44 @@ export class ManualService {
       await this.createManual(lexeme);
     }
     this.logger.log("🔢 Ingested Roman numerals");
+  }
+
+  // 🌎 Public Methods
+
+  /** Deletes any existing row with the same lemma and disambiguator then saves `manual` and
+   * re-ingests its word search records. */
+  async createManual(manual: Lexeme): Promise<void> {
+    await this.deleteManual(manual.lemma, manual.disambiguator);
+    this.logger.log(`✏️ Creating "${manual.lemma}:${manual.disambiguator}"`);
+    const lexeme = await this.lexemesRepository.save(manual, { reload: false });
+    await this.wordsService.ingestLexemeWords(lexeme);
+    this.logger.log(`✏️ Created "${manual.lemma}:${manual.disambiguator}"`);
+  }
+
+  /** Removes the `Lexeme` row identified by `lemma` and `disambiguator` from the database. */
+  async deleteManual(lemma: string, disambiguator: number): Promise<void> {
+    this.logger.log(`🗑️ Deleting "${lemma}:${disambiguator}"`);
+    await this.lexemesRepository.delete({ disambiguator, lemma });
+    this.logger.log(`🗑️ Deleted "${lemma}:${disambiguator}"`);
+  }
+
+  /** Runs the full manual-lexeme pipeline: deletes stale overrides, re-creates
+   * hic/ille/omnis lexemes, populates praenomen abbreviations, and ingests
+   * Roman numeral lexemes I–MMMCMXCIX. */
+  async ingestManual(): Promise<void> {
+    this.logger.log("📋 Ingesting manual lexemes");
+
+    for (const { disambiguator, lemma } of MANUAL_LEXEMES_TO_DELETE) {
+      await this.deleteManual(lemma, disambiguator);
+    }
+
+    await this.createManual(buildHicTemplate());
+    await this.createManual(buildIlleTemplate());
+    await this.createManual(buildOmnisTemplate());
+
+    await this.ingestPraenomenAbbreviations();
+    await this.ingestRomanNumerals();
+
+    this.logger.log("📋 Ingested manual lexemes");
   }
 }

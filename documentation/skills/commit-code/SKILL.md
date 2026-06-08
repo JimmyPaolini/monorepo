@@ -117,13 +117,13 @@ When a commit touches multiple concerns, **summarize or split** — never list c
 
 ```text
 # ❌ BAD — lists multiple changes with commas/"and"
-feat(infrastructure): 🏗️ migrate lint-staged configuration to new file, add sync scripts for VS Code extensions and conventional commit scopes
+feat(infrastructure): 🏗 migrate lint-staged configuration to new file, add sync scripts for VS Code extensions and conventional commit scopes
 
 # ✅ Summarize at a higher level
-feat(infrastructure): 🏗️ add lint-staged config and sync scripts
+feat(infrastructure): 🏗 add lint-staged config and sync scripts
 
 # ✅ Or split into separate commits
-feat(infrastructure): 🏗️ migrate lint-staged to standalone config
+feat(infrastructure): 🏗 migrate lint-staged to standalone config
 feat(scripts): ✨ add vscode extension sync script
 feat(scripts): ✨ add conventional scopes sync script
 ```
@@ -148,7 +148,7 @@ Fix(Caelundas): 🐛 fix bug                       # Wrong case (type)
 fix(caelundas): 🐛 Fix bug                       # Wrong case (subject)
 docs: 📝 updated docs                            # Missing scope, wrong tense
 chore(deps): ⬆️ bump                             # Invalid scope (use 'dependencies')
-feat(infrastructure): 🏗️ add config, scripts, and sync tools  # Too verbose, lists multiple changes
+feat(infrastructure): 🏗 add config, scripts, and sync tools  # Too verbose, lists multiple changes
 ```
 
 ## Gitmoji

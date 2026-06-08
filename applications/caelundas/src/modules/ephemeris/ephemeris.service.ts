@@ -55,7 +55,8 @@ initializeSwissEphemeris();
  */
 @Injectable()
 export class EphemerisService {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
+
   constructor(private readonly mathService: MathService) {}
 
   // 🔐 Private Fields
@@ -66,10 +67,65 @@ export class EphemerisService {
 
   // 🔏 Private Methods
 
-  // 🌎 Public Methods
+  private computeBodyCoordinate(
+    body: Exclude<Body, Node>,
+    julianDayEphemerisTime: number,
+  ): { latitude: number; longitude: number } {
+    const swissEphemerisConstant = this.getSwissEphemerisConstantForBody(body);
+    const result = calc(
+      julianDayEphemerisTime,
+      swissEphemerisConstant,
+      SWISS_EPHEMERIS_FLAGS,
+    );
+    if (result.flag < 0) {
+      throw new Error(`calc failed for ${body}: ${result.error}`);
+    }
+    return { latitude: result.data[1], longitude: result.data[0] };
+  }
 
-  private isNode(body: string): body is Node {
-    return this.nodeSet.has(body);
+  private computeNodeCoordinate(
+    node: Node,
+    julianDayEphemerisTime: number,
+    julianDayUniversalTime: number,
+  ): { latitude: number; longitude: number } {
+    if (node === "lunar perigee") {
+      const result = nod_aps_ut(
+        julianDayUniversalTime,
+        constants.SE_MOON,
+        SWISS_EPHEMERIS_FLAGS,
+        OSCULATING_ORBITAL_ELEMENTS_FLAG,
+      );
+      if (result.flag < 0) {
+        throw new Error(`nod_aps_ut failed for lunar perigee: ${result.error}`);
+      }
+      return {
+        latitude: 0,
+        longitude: this.mathService.normalizeDegrees(result.data.perihelion[0]),
+      };
+    }
+
+    const swissEphemerisConstant = swissEphemerisConstantByNode[node];
+    if (swissEphemerisConstant === null) {
+      throw new Error(
+        `No Swiss Ephemeris constant configured for node: ${node}`,
+      );
+    }
+
+    const result = calc(
+      julianDayEphemerisTime,
+      swissEphemerisConstant,
+      SWISS_EPHEMERIS_FLAGS,
+    );
+    if (result.flag < 0) {
+      throw new Error(`calc failed for ${node}: ${result.error}`);
+    }
+
+    const longitude =
+      node === "south lunar node"
+        ? this.mathService.normalizeDegrees(result.data[0] + 180)
+        : this.mathService.normalizeDegrees(result.data[0]);
+
+    return { latitude: 0, longitude };
   }
 
   private dateToJulianDays(date: Moment): {
@@ -123,461 +179,11 @@ export class EphemerisService {
     );
   }
 
-  private computeNodeCoordinate(
-    node: Node,
-    julianDayEphemerisTime: number,
-    julianDayUniversalTime: number,
-  ): { longitude: number; latitude: number } {
-    if (node === "lunar perigee") {
-      const result = nod_aps_ut(
-        julianDayUniversalTime,
-        constants.SE_MOON,
-        SWISS_EPHEMERIS_FLAGS,
-        OSCULATING_ORBITAL_ELEMENTS_FLAG,
-      );
-      if (result.flag < 0) {
-        throw new Error(`nod_aps_ut failed for lunar perigee: ${result.error}`);
-      }
-      return {
-        longitude: this.mathService.normalizeDegrees(result.data.perihelion[0]),
-        latitude: 0,
-      };
-    }
-
-    const swissEphemerisConstant = swissEphemerisConstantByNode[node];
-    if (swissEphemerisConstant === null) {
-      throw new Error(
-        `No Swiss Ephemeris constant configured for node: ${node}`,
-      );
-    }
-
-    const result = calc(
-      julianDayEphemerisTime,
-      swissEphemerisConstant,
-      SWISS_EPHEMERIS_FLAGS,
-    );
-    if (result.flag < 0) {
-      throw new Error(`calc failed for ${node}: ${result.error}`);
-    }
-
-    const longitude =
-      node === "south lunar node"
-        ? this.mathService.normalizeDegrees(result.data[0] + 180)
-        : this.mathService.normalizeDegrees(result.data[0]);
-
-    return { longitude, latitude: 0 };
-  }
-
-  private computeBodyCoordinate(
-    body: Exclude<Body, Node>,
-    julianDayEphemerisTime: number,
-  ): { longitude: number; latitude: number } {
-    const swissEphemerisConstant = this.getSwissEphemerisConstantForBody(body);
-    const result = calc(
-      julianDayEphemerisTime,
-      swissEphemerisConstant,
-      SWISS_EPHEMERIS_FLAGS,
-    );
-    if (result.flag < 0) {
-      throw new Error(`calc failed for ${body}: ${result.error}`);
-    }
-    return { longitude: result.data[0], latitude: result.data[1] };
+  private isNode(body: string): body is Node {
+    return this.nodeSet.has(body);
   }
 
   // 🌎 Public Methods
-
-  /**
-   * Safely extracts coordinate data (longitude or latitude) from ephemeris at a timestamp.
-   *
-   * @param ephemeris - Coordinate ephemeris object indexed by ISO timestamp
-   * @param timestamp - ISO 8601 timestamp string
-   * @param fieldName - Field to extract ("longitude" or "latitude")
-   * @returns Coordinate value in degrees
-   * @throws When timestamp or field is missing from ephemeris
-   */
-  getCoordinateFromEphemeris(
-    ephemeris: CoordinateEphemeris,
-    timestamp: string,
-    fieldName: "longitude" | "latitude",
-  ): number {
-    const data = ephemeris[timestamp];
-    if (data?.[fieldName] === undefined) {
-      throw new Error(`Missing ${fieldName} at ${timestamp}`);
-    }
-    return data[fieldName];
-  }
-
-  /**
-   * Extracts the ecliptic longitude for a body at the previous, current, and next minute.
-   *
-   * Convenience wrapper around {@link getCoordinateFromEphemeris} that fetches all three
-   * minute-window positions in a single call, reducing the six individual calls required
-   * by aspect phase detection into two.
-   *
-   * @param ephemeris - Coordinate ephemeris for one body, indexed by ISO timestamp
-   * @param previous - One minute before the target
-   * @param minute - Target minute
-   * @param next - One minute after the target
-   * @returns Object containing `previous`, `current`, and `next` longitude values in degrees
-   * @throws When any of the three timestamps are missing from the ephemeris
-   */
-  getLongitudesWindow(
-    ephemeris: CoordinateEphemeris,
-    previous: Moment,
-    minute: Moment,
-    next: Moment,
-  ): { previous: number; current: number; next: number } {
-    return {
-      previous: this.getCoordinateFromEphemeris(
-        ephemeris,
-        previous.toISOString(),
-        "longitude",
-      ),
-      current: this.getCoordinateFromEphemeris(
-        ephemeris,
-        minute.toISOString(),
-        "longitude",
-      ),
-      next: this.getCoordinateFromEphemeris(
-        ephemeris,
-        next.toISOString(),
-        "longitude",
-      ),
-    };
-  }
-
-  /**
-   * Safely extracts azimuth or elevation data from horizon coordinate ephemeris.
-   *
-   * @param ephemeris - Azimuth/elevation ephemeris indexed by ISO timestamp
-   * @param timestamp - ISO 8601 timestamp string
-   * @param fieldName - Field to extract ("azimuth" or "elevation")
-   * @returns Coordinate value in degrees
-   * @throws When timestamp or field is missing from ephemeris
-   */
-  getAzimuthElevationFromEphemeris(
-    ephemeris: AzimuthElevationEphemeris,
-    timestamp: string,
-    fieldName: "azimuth" | "elevation",
-  ): number {
-    const data = ephemeris[timestamp];
-    if (data?.[fieldName] === undefined) {
-      throw new Error(`Missing ${fieldName} at ${timestamp}`);
-    }
-    return data[fieldName];
-  }
-
-  /**
-   * Safely extracts illumination fraction from ephemeris.
-   *
-   * @param ephemeris - Illumination ephemeris indexed by ISO timestamp
-   * @param timestamp - ISO 8601 timestamp string
-   * @param fieldName - Field description (kept for API consistency)
-   * @returns Illumination percentage (0-100)
-   * @throws When timestamp or field is missing from ephemeris
-   */
-  getIlluminationFromEphemeris(
-    ephemeris: IlluminationEphemeris,
-    timestamp: string,
-    fieldName: string,
-  ): number {
-    const data = ephemeris[timestamp];
-    if (data?.illumination === undefined) {
-      throw new Error(`Missing ${fieldName} at ${timestamp}`);
-    }
-    return data.illumination;
-  }
-
-  /**
-   * Safely extracts distance from Earth from ephemeris.
-   *
-   * @param ephemeris - Distance ephemeris indexed by ISO timestamp
-   * @param timestamp - ISO 8601 timestamp string
-   * @param fieldName - Field description (kept for API consistency)
-   * @returns Distance in astronomical units
-   * @throws When timestamp or field is missing from ephemeris
-   */
-  getDistanceFromEphemeris(
-    ephemeris: DistanceEphemeris,
-    timestamp: string,
-    fieldName: string,
-  ): number {
-    const data = ephemeris[timestamp];
-    if (data?.distance === undefined) {
-      throw new Error(`Missing ${fieldName} at ${timestamp}`);
-    }
-    return data.distance;
-  }
-
-  /**
-   * Safely extracts angular diameter from ephemeris.
-   *
-   * @param ephemeris - Diameter ephemeris indexed by ISO timestamp
-   * @param timestamp - ISO 8601 timestamp string
-   * @param fieldName - Field description (kept for API consistency)
-   * @returns Angular diameter in degrees
-   * @throws When timestamp or field is missing from ephemeris
-   */
-  getDiameterFromEphemeris(
-    ephemeris: DiameterEphemeris,
-    timestamp: string,
-    fieldName: string,
-  ): number {
-    const data = ephemeris[timestamp];
-    if (data?.diameter === undefined) {
-      throw new Error(`Missing ${fieldName} at ${timestamp}`);
-    }
-    return data.diameter;
-  }
-
-  /**
-   * Computes minute-by-minute ecliptic coordinates for all requested bodies.
-   *
-   * @param args - Query parameters including bodies and date range
-   * @returns Coordinate ephemeris keyed by ISO timestamp for each body
-   */
-  getCoordinateEphemerisByBody(args: {
-    bodies: Body[];
-    end: Moment;
-    start: Moment;
-    timezone: string;
-  }): Record<Body, CoordinateEphemeris> {
-    const { bodies, start, end } = args;
-
-    const entries: [Body, CoordinateEphemeris][] = [];
-
-    for (const body of bodies) {
-      const ephemeris: CoordinateEphemeris = {};
-
-      for (const date of this.generateMinutes(start, end)) {
-        const { julianDayEphemerisTime, julianDayUniversalTime } =
-          this.dateToJulianDays(date);
-        const timestamp = date.toISOString();
-        const coord = this.isNode(body)
-          ? this.computeNodeCoordinate(
-              body,
-              julianDayEphemerisTime,
-              julianDayUniversalTime,
-            )
-          : this.computeBodyCoordinate(body, julianDayEphemerisTime);
-        ephemeris[timestamp] = coord;
-      }
-
-      entries.push([body, ephemeris]);
-    }
-
-    return typedFromEntries(entries);
-  }
-
-  /**
-   * Computes minute-by-minute horizontal coordinates (azimuth, apparent elevation)
-   * for the requested bodies at the observer's location.
-   *
-   * @param args - Query parameters including bodies, date range, and observer coordinates
-   * @returns Azimuth/elevation ephemeris keyed by ISO timestamp for each body
-   */
-  getAzimuthElevationEphemerisByBody(args: {
-    bodies: AzimuthElevationEphemerisBody[];
-    coordinates: Coordinates;
-    end: Moment;
-    start: Moment;
-    timezone: string;
-  }): Record<Body, AzimuthElevationEphemeris> {
-    const { bodies, coordinates, start, end } = args;
-    const [observerLongitude, observerLatitude] = coordinates;
-
-    const entries: [Body, AzimuthElevationEphemeris][] = [];
-
-    for (const body of bodies) {
-      const ephemeris: AzimuthElevationEphemeris = {};
-      const swissEphemerisConstant =
-        this.getSwissEphemerisConstantForBody(body);
-
-      for (const date of this.generateMinutes(start, end)) {
-        const { julianDayEphemerisTime, julianDayUniversalTime } =
-          this.dateToJulianDays(date);
-        const timestamp = date.toISOString();
-
-        // Compute geocentric ecliptic coordinates for the body
-        const coordResult = calc(
-          julianDayEphemerisTime,
-          swissEphemerisConstant,
-          SWISS_EPHEMERIS_FLAGS,
-        );
-        if (coordResult.flag < 0) {
-          throw new Error(`calc failed for ${body}: ${coordResult.error}`);
-        }
-        const [longitude, latitude, distance] = coordResult.data;
-
-        // Convert ecliptic coordinates to horizontal (azimuth + altitude)
-        // geopos: [observerLongitude, observerLatitude, elevation_m]; atpress/attemp: 0 = standard atmosphere
-        const azaltResult = azalt(
-          julianDayUniversalTime,
-          ECLIPTIC_TO_HORIZONTAL_FLAG,
-          [observerLongitude, observerLatitude, 0],
-          0,
-          0,
-          [longitude, latitude, distance],
-        );
-
-        // azaltResult: [azimuth, true altitude, apparent altitude (refracted)]
-        ephemeris[timestamp] = {
-          azimuth: azaltResult[0],
-          elevation: azaltResult[2], // apparent altitude accounts for atmospheric refraction
-        };
-      }
-
-      entries.push([body, ephemeris]);
-    }
-
-    return typedFromEntries(entries);
-  }
-
-  /**
-   * Computes minute-by-minute illumination fraction for the requested bodies.
-   *
-   * @param args - Query parameters including bodies, date range, and observer coordinates
-   * @returns Illumination ephemeris keyed by ISO timestamp for each body
-   *
-   * @remarks
-   * Illumination is returned as a percentage (0-100). The Sun is always 100.
-   * Uses pheno_ut() which returns a fraction (0-1); multiplied by 100 for storage.
-   */
-  getIlluminationEphemerisByBody(args: {
-    bodies: IlluminationEphemerisBody[];
-    coordinates: Coordinates;
-    end: Moment;
-    start: Moment;
-    timezone: string;
-  }): Record<Body, IlluminationEphemeris> {
-    const { bodies, start, end } = args;
-
-    const entries: [Body, IlluminationEphemeris][] = [];
-
-    for (const body of bodies) {
-      const ephemeris: IlluminationEphemeris = {};
-      const swissEphemerisConstant =
-        this.getSwissEphemerisConstantForBody(body);
-
-      for (const date of this.generateMinutes(start, end)) {
-        const { julianDayUniversalTime } = this.dateToJulianDays(date);
-        const timestamp = date.toISOString();
-
-        if (body === "sun") {
-          // Sun has no phase from Earth's perspective
-          ephemeris[timestamp] = { illumination: 100 };
-          continue;
-        }
-
-        const result = pheno_ut(
-          julianDayUniversalTime,
-          swissEphemerisConstant,
-          SWISS_EPHEMERIS_FLAGS,
-        );
-        if (result.flag < 0) {
-          throw new Error(`pheno_ut failed for ${body}: ${result.error}`);
-        }
-
-        // data[1] = phase (illuminated fraction 0-1); convert to 0-100 percentage scale
-        ephemeris[timestamp] = { illumination: result.data[1] * 100 };
-      }
-
-      entries.push([body, ephemeris]);
-    }
-
-    return typedFromEntries(entries);
-  }
-
-  /**
-   * Computes minute-by-minute apparent angular diameter for the requested bodies.
-   *
-   * @param args - Query parameters including bodies and date range
-   * @returns Diameter ephemeris keyed by ISO timestamp for each body
-   *
-   * @remarks
-   * pheno_ut() returns apparent diameter in degrees.
-   */
-  getDiameterEphemerisByBody(args: {
-    bodies: DiameterEphemerisBody[];
-    end: Moment;
-    start: Moment;
-    timezone: string;
-  }): Record<Body, DiameterEphemeris> {
-    const { bodies, start, end } = args;
-
-    const entries: [Body, DiameterEphemeris][] = [];
-
-    for (const body of bodies) {
-      const ephemeris: DiameterEphemeris = {};
-      const swissEphemerisConstant =
-        this.getSwissEphemerisConstantForBody(body);
-
-      for (const date of this.generateMinutes(start, end)) {
-        const { julianDayUniversalTime } = this.dateToJulianDays(date);
-        const timestamp = date.toISOString();
-
-        const result = pheno_ut(
-          julianDayUniversalTime,
-          swissEphemerisConstant,
-          SWISS_EPHEMERIS_FLAGS,
-        );
-        if (result.flag < 0) {
-          throw new Error(`pheno_ut failed for ${body}: ${result.error}`);
-        }
-
-        // data[3] = apparent diameter of disc in degrees
-        ephemeris[timestamp] = { diameter: result.data[3] };
-      }
-
-      entries.push([body, ephemeris]);
-    }
-
-    return typedFromEntries(entries);
-  }
-
-  /**
-   * Computes minute-by-minute geocentric distance for the requested bodies.
-   *
-   * @param args - Query parameters including bodies and date range
-   * @returns Distance ephemeris keyed by ISO timestamp for each body
-   */
-  getDistanceEphemerisByBody(args: {
-    bodies: DistanceEphemerisBody[];
-    end: Moment;
-    start: Moment;
-    timezone: string;
-  }): Record<Body, DistanceEphemeris> {
-    const { bodies, start, end } = args;
-
-    const entries: [Body, DistanceEphemeris][] = [];
-
-    for (const body of bodies) {
-      const ephemeris: DistanceEphemeris = {};
-      const swissEphemerisConstant =
-        this.getSwissEphemerisConstantForBody(body);
-
-      for (const date of this.generateMinutes(start, end)) {
-        const { julianDayEphemerisTime } = this.dateToJulianDays(date);
-        const timestamp = date.toISOString();
-
-        const result = calc(
-          julianDayEphemerisTime,
-          swissEphemerisConstant,
-          SWISS_EPHEMERIS_FLAGS,
-        );
-        if (result.flag < 0) {
-          throw new Error(`calc failed for ${body}: ${result.error}`);
-        }
-
-        // data[2] = distance in astronomical units
-        ephemeris[timestamp] = { distance: result.data[2] };
-      }
-
-      entries.push([body, ephemeris]);
-    }
-
-    return typedFromEntries(entries);
-  }
 
   /**
    * Computes all five ephemeris types for all bodies in a single pass, eliminating
@@ -596,30 +202,30 @@ export class EphemerisService {
    * @returns All five ephemeris dictionaries keyed by body
    */
   computeAllEphemerides(args: {
-    coordinateBodies: Body[];
     azimuthElevationBodies: AzimuthElevationEphemerisBody[];
-    illuminationBodies: IlluminationEphemerisBody[];
+    coordinateBodies: Body[];
+    coordinates: Coordinates;
     diameterBodies: DiameterEphemerisBody[];
     distanceBodies: DistanceEphemerisBody[];
-    coordinates: Coordinates;
     end: Moment;
+    illuminationBodies: IlluminationEphemerisBody[];
     start: Moment;
   }): {
-    coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
     azimuthElevationEphemerisByBody: Record<Body, AzimuthElevationEphemeris>;
-    illuminationEphemerisByBody: Record<Body, IlluminationEphemeris>;
+    coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
     diameterEphemerisByBody: Record<Body, DiameterEphemeris>;
     distanceEphemerisByBody: Record<Body, DistanceEphemeris>;
+    illuminationEphemerisByBody: Record<Body, IlluminationEphemeris>;
   } {
     const {
-      coordinateBodies,
       azimuthElevationBodies,
-      illuminationBodies,
+      coordinateBodies,
+      coordinates,
       diameterBodies,
       distanceBodies,
-      coordinates,
-      start,
       end,
+      illuminationBodies,
+      start,
     } = args;
 
     const [observerLongitude, observerLatitude] = coordinates;
@@ -685,7 +291,7 @@ export class EphemerisService {
         const latitude = result.data[1];
         const distance = result.data[2];
 
-        coordinateEphemeris[timestamp] = { longitude, latitude };
+        coordinateEphemeris[timestamp] = { latitude, longitude };
 
         // Reuse calc() distance — no second calc() call needed
         if (needsDistance) {
@@ -757,12 +363,290 @@ export class EphemerisService {
     }
 
     return {
-      coordinateEphemerisByBody: typedFromEntries(coordinateEntries),
       azimuthElevationEphemerisByBody: typedFromEntries(azimuthEntries),
-      illuminationEphemerisByBody: typedFromEntries(illuminationEntries),
+      coordinateEphemerisByBody: typedFromEntries(coordinateEntries),
       diameterEphemerisByBody: typedFromEntries(diameterEntries),
       distanceEphemerisByBody: typedFromEntries(distanceEntries),
+      illuminationEphemerisByBody: typedFromEntries(illuminationEntries),
     };
+  }
+
+  /**
+   * Computes minute-by-minute horizontal coordinates (azimuth, apparent elevation)
+   * for the requested bodies at the observer's location.
+   *
+   * @param args - Query parameters including bodies, date range, and observer coordinates
+   * @returns Azimuth/elevation ephemeris keyed by ISO timestamp for each body
+   */
+  getAzimuthElevationEphemerisByBody(args: {
+    bodies: AzimuthElevationEphemerisBody[];
+    coordinates: Coordinates;
+    end: Moment;
+    start: Moment;
+    timezone: string;
+  }): Record<Body, AzimuthElevationEphemeris> {
+    const { bodies, coordinates, end, start } = args;
+    const [observerLongitude, observerLatitude] = coordinates;
+
+    const entries: [Body, AzimuthElevationEphemeris][] = [];
+
+    for (const body of bodies) {
+      const ephemeris: AzimuthElevationEphemeris = {};
+      const swissEphemerisConstant =
+        this.getSwissEphemerisConstantForBody(body);
+
+      for (const date of this.generateMinutes(start, end)) {
+        const { julianDayEphemerisTime, julianDayUniversalTime } =
+          this.dateToJulianDays(date);
+        const timestamp = date.toISOString();
+
+        // Compute geocentric ecliptic coordinates for the body
+        const coordResult = calc(
+          julianDayEphemerisTime,
+          swissEphemerisConstant,
+          SWISS_EPHEMERIS_FLAGS,
+        );
+        if (coordResult.flag < 0) {
+          throw new Error(`calc failed for ${body}: ${coordResult.error}`);
+        }
+        const [longitude, latitude, distance] = coordResult.data;
+
+        // Convert ecliptic coordinates to horizontal (azimuth + altitude)
+        // geopos: [observerLongitude, observerLatitude, elevation_m]; atpress/attemp: 0 = standard atmosphere
+        const azaltResult = azalt(
+          julianDayUniversalTime,
+          ECLIPTIC_TO_HORIZONTAL_FLAG,
+          [observerLongitude, observerLatitude, 0],
+          0,
+          0,
+          [longitude, latitude, distance],
+        );
+
+        // azaltResult: [azimuth, true altitude, apparent altitude (refracted)]
+        ephemeris[timestamp] = {
+          azimuth: azaltResult[0],
+          elevation: azaltResult[2], // apparent altitude accounts for atmospheric refraction
+        };
+      }
+
+      entries.push([body, ephemeris]);
+    }
+
+    return typedFromEntries(entries);
+  }
+
+  /**
+   * Safely extracts azimuth or elevation data from horizon coordinate ephemeris.
+   *
+   * @param ephemeris - Azimuth/elevation ephemeris indexed by ISO timestamp
+   * @param timestamp - ISO 8601 timestamp string
+   * @param fieldName - Field to extract ("azimuth" or "elevation")
+   * @returns Coordinate value in degrees
+   * @throws When timestamp or field is missing from ephemeris
+   */
+  getAzimuthElevationFromEphemeris(
+    ephemeris: AzimuthElevationEphemeris,
+    timestamp: string,
+    fieldName: "azimuth" | "elevation",
+  ): number {
+    const data = ephemeris[timestamp];
+    if (data?.[fieldName] === undefined) {
+      throw new Error(`Missing ${fieldName} at ${timestamp}`);
+    }
+    return data[fieldName];
+  }
+
+  /**
+   * Computes minute-by-minute ecliptic coordinates for all requested bodies.
+   *
+   * @param args - Query parameters including bodies and date range
+   * @returns Coordinate ephemeris keyed by ISO timestamp for each body
+   */
+  getCoordinateEphemerisByBody(args: {
+    bodies: Body[];
+    end: Moment;
+    start: Moment;
+    timezone: string;
+  }): Record<Body, CoordinateEphemeris> {
+    const { bodies, end, start } = args;
+
+    const entries: [Body, CoordinateEphemeris][] = [];
+
+    for (const body of bodies) {
+      const ephemeris: CoordinateEphemeris = {};
+
+      for (const date of this.generateMinutes(start, end)) {
+        const { julianDayEphemerisTime, julianDayUniversalTime } =
+          this.dateToJulianDays(date);
+        const timestamp = date.toISOString();
+        const coord = this.isNode(body)
+          ? this.computeNodeCoordinate(
+              body,
+              julianDayEphemerisTime,
+              julianDayUniversalTime,
+            )
+          : this.computeBodyCoordinate(body, julianDayEphemerisTime);
+        ephemeris[timestamp] = coord;
+      }
+
+      entries.push([body, ephemeris]);
+    }
+
+    return typedFromEntries(entries);
+  }
+
+  /**
+   * Safely extracts coordinate data (longitude or latitude) from ephemeris at a timestamp.
+   *
+   * @param ephemeris - Coordinate ephemeris object indexed by ISO timestamp
+   * @param timestamp - ISO 8601 timestamp string
+   * @param fieldName - Field to extract ("longitude" or "latitude")
+   * @returns Coordinate value in degrees
+   * @throws When timestamp or field is missing from ephemeris
+   */
+  getCoordinateFromEphemeris(
+    ephemeris: CoordinateEphemeris,
+    timestamp: string,
+    fieldName: "latitude" | "longitude",
+  ): number {
+    const data = ephemeris[timestamp];
+    if (data?.[fieldName] === undefined) {
+      throw new Error(`Missing ${fieldName} at ${timestamp}`);
+    }
+    return data[fieldName];
+  }
+
+  /**
+   * Computes minute-by-minute apparent angular diameter for the requested bodies.
+   *
+   * @param args - Query parameters including bodies and date range
+   * @returns Diameter ephemeris keyed by ISO timestamp for each body
+   *
+   * @remarks
+   * pheno_ut() returns apparent diameter in degrees.
+   */
+  getDiameterEphemerisByBody(args: {
+    bodies: DiameterEphemerisBody[];
+    end: Moment;
+    start: Moment;
+    timezone: string;
+  }): Record<Body, DiameterEphemeris> {
+    const { bodies, end, start } = args;
+
+    const entries: [Body, DiameterEphemeris][] = [];
+
+    for (const body of bodies) {
+      const ephemeris: DiameterEphemeris = {};
+      const swissEphemerisConstant =
+        this.getSwissEphemerisConstantForBody(body);
+
+      for (const date of this.generateMinutes(start, end)) {
+        const { julianDayUniversalTime } = this.dateToJulianDays(date);
+        const timestamp = date.toISOString();
+
+        const result = pheno_ut(
+          julianDayUniversalTime,
+          swissEphemerisConstant,
+          SWISS_EPHEMERIS_FLAGS,
+        );
+        if (result.flag < 0) {
+          throw new Error(`pheno_ut failed for ${body}: ${result.error}`);
+        }
+
+        // data[3] = apparent diameter of disc in degrees
+        ephemeris[timestamp] = { diameter: result.data[3] };
+      }
+
+      entries.push([body, ephemeris]);
+    }
+
+    return typedFromEntries(entries);
+  }
+
+  /**
+   * Safely extracts angular diameter from ephemeris.
+   *
+   * @param ephemeris - Diameter ephemeris indexed by ISO timestamp
+   * @param timestamp - ISO 8601 timestamp string
+   * @param fieldName - Field description (kept for API consistency)
+   * @returns Angular diameter in degrees
+   * @throws When timestamp or field is missing from ephemeris
+   */
+  getDiameterFromEphemeris(
+    ephemeris: DiameterEphemeris,
+    timestamp: string,
+    fieldName: string,
+  ): number {
+    const data = ephemeris[timestamp];
+    if (data?.diameter === undefined) {
+      throw new Error(`Missing ${fieldName} at ${timestamp}`);
+    }
+    return data.diameter;
+  }
+
+  /**
+   * Computes minute-by-minute geocentric distance for the requested bodies.
+   *
+   * @param args - Query parameters including bodies and date range
+   * @returns Distance ephemeris keyed by ISO timestamp for each body
+   */
+  getDistanceEphemerisByBody(args: {
+    bodies: DistanceEphemerisBody[];
+    end: Moment;
+    start: Moment;
+    timezone: string;
+  }): Record<Body, DistanceEphemeris> {
+    const { bodies, end, start } = args;
+
+    const entries: [Body, DistanceEphemeris][] = [];
+
+    for (const body of bodies) {
+      const ephemeris: DistanceEphemeris = {};
+      const swissEphemerisConstant =
+        this.getSwissEphemerisConstantForBody(body);
+
+      for (const date of this.generateMinutes(start, end)) {
+        const { julianDayEphemerisTime } = this.dateToJulianDays(date);
+        const timestamp = date.toISOString();
+
+        const result = calc(
+          julianDayEphemerisTime,
+          swissEphemerisConstant,
+          SWISS_EPHEMERIS_FLAGS,
+        );
+        if (result.flag < 0) {
+          throw new Error(`calc failed for ${body}: ${result.error}`);
+        }
+
+        // data[2] = distance in astronomical units
+        ephemeris[timestamp] = { distance: result.data[2] };
+      }
+
+      entries.push([body, ephemeris]);
+    }
+
+    return typedFromEntries(entries);
+  }
+
+  /**
+   * Safely extracts distance from Earth from ephemeris.
+   *
+   * @param ephemeris - Distance ephemeris indexed by ISO timestamp
+   * @param timestamp - ISO 8601 timestamp string
+   * @param fieldName - Field description (kept for API consistency)
+   * @returns Distance in astronomical units
+   * @throws When timestamp or field is missing from ephemeris
+   */
+  getDistanceFromEphemeris(
+    ephemeris: DistanceEphemeris,
+    timestamp: string,
+    fieldName: string,
+  ): number {
+    const data = ephemeris[timestamp];
+    if (data?.distance === undefined) {
+      throw new Error(`Missing ${fieldName} at ${timestamp}`);
+    }
+    return data.distance;
   }
 
   /**
@@ -786,14 +670,129 @@ export class EphemerisService {
     const { coordinates, end, start } = args;
 
     return this.computeAllEphemerides({
-      coordinateBodies: bodies,
       azimuthElevationBodies,
-      illuminationBodies,
+      coordinateBodies: bodies,
+      coordinates,
       diameterBodies,
       distanceBodies,
-      coordinates,
-      start,
       end,
+      illuminationBodies,
+      start,
     });
+  }
+
+  /**
+   * Computes minute-by-minute illumination fraction for the requested bodies.
+   *
+   * @param args - Query parameters including bodies, date range, and observer coordinates
+   * @returns Illumination ephemeris keyed by ISO timestamp for each body
+   *
+   * @remarks
+   * Illumination is returned as a percentage (0-100). The Sun is always 100.
+   * Uses pheno_ut() which returns a fraction (0-1); multiplied by 100 for storage.
+   */
+  getIlluminationEphemerisByBody(args: {
+    bodies: IlluminationEphemerisBody[];
+    coordinates: Coordinates;
+    end: Moment;
+    start: Moment;
+    timezone: string;
+  }): Record<Body, IlluminationEphemeris> {
+    const { bodies, end, start } = args;
+
+    const entries: [Body, IlluminationEphemeris][] = [];
+
+    for (const body of bodies) {
+      const ephemeris: IlluminationEphemeris = {};
+      const swissEphemerisConstant =
+        this.getSwissEphemerisConstantForBody(body);
+
+      for (const date of this.generateMinutes(start, end)) {
+        const { julianDayUniversalTime } = this.dateToJulianDays(date);
+        const timestamp = date.toISOString();
+
+        if (body === "sun") {
+          // Sun has no phase from Earth's perspective
+          ephemeris[timestamp] = { illumination: 100 };
+          continue;
+        }
+
+        const result = pheno_ut(
+          julianDayUniversalTime,
+          swissEphemerisConstant,
+          SWISS_EPHEMERIS_FLAGS,
+        );
+        if (result.flag < 0) {
+          throw new Error(`pheno_ut failed for ${body}: ${result.error}`);
+        }
+
+        // data[1] = phase (illuminated fraction 0-1); convert to 0-100 percentage scale
+        ephemeris[timestamp] = { illumination: result.data[1] * 100 };
+      }
+
+      entries.push([body, ephemeris]);
+    }
+
+    return typedFromEntries(entries);
+  }
+
+  /**
+   * Safely extracts illumination fraction from ephemeris.
+   *
+   * @param ephemeris - Illumination ephemeris indexed by ISO timestamp
+   * @param timestamp - ISO 8601 timestamp string
+   * @param fieldName - Field description (kept for API consistency)
+   * @returns Illumination percentage (0-100)
+   * @throws When timestamp or field is missing from ephemeris
+   */
+  getIlluminationFromEphemeris(
+    ephemeris: IlluminationEphemeris,
+    timestamp: string,
+    fieldName: string,
+  ): number {
+    const data = ephemeris[timestamp];
+    if (data?.illumination === undefined) {
+      throw new Error(`Missing ${fieldName} at ${timestamp}`);
+    }
+    return data.illumination;
+  }
+
+  /**
+   * Extracts the ecliptic longitude for a body at the previous, current, and next minute.
+   *
+   * Convenience wrapper around {@link getCoordinateFromEphemeris} that fetches all three
+   * minute-window positions in a single call, reducing the six individual calls required
+   * by aspect phase detection into two.
+   *
+   * @param ephemeris - Coordinate ephemeris for one body, indexed by ISO timestamp
+   * @param previous - One minute before the target
+   * @param minute - Target minute
+   * @param next - One minute after the target
+   * @returns Object containing `previous`, `current`, and `next` longitude values in degrees
+   * @throws When any of the three timestamps are missing from the ephemeris
+   */
+  getLongitudesWindow(
+    ephemeris: CoordinateEphemeris,
+    previous: Moment,
+    minute: Moment,
+    next: Moment,
+  ): { current: number; next: number; previous: number } {
+    return {
+      current: this.getCoordinateFromEphemeris(
+        ephemeris,
+        minute.toISOString(),
+        "longitude",
+      ),
+      next: this.getCoordinateFromEphemeris(
+        ephemeris,
+        next.toISOString(),
+        "longitude",
+      ),
+      previous: this.getCoordinateFromEphemeris(
+        ephemeris,
+        previous.toISOString(),
+        "longitude",
+      ),
+    };
   }
 }

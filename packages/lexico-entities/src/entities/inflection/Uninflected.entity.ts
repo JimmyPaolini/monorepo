@@ -6,6 +6,6 @@ import { Inflection } from "./Inflection.entity.js";
 /**
  *
  */
-@ObjectType({ implements: Inflection })
 @ChildEntity("uninflected")
+@ObjectType({ implements: Inflection })
 export class Uninflected extends Inflection {}

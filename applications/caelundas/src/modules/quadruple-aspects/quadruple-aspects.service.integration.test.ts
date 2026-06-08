@@ -28,24 +28,24 @@ describe("quadruple-aspects.events integration", () => {
       // ensures the union has each opposition exactly once, preventing duplicate
       // Grand Cross detections from the nested "for oppositions" loops.
       const currentAspectBodies: AspectBodies[] = [
-        { bodies: ["sun", "mars"], aspect: "opposite" }, // newly added
-        { bodies: ["moon", "jupiter"], aspect: "opposite" }, // newly added
-        { bodies: ["sun", "moon"], aspect: "square" },
-        { bodies: ["sun", "jupiter"], aspect: "square" },
-        { bodies: ["mars", "moon"], aspect: "square" },
-        { bodies: ["mars", "jupiter"], aspect: "square" },
+        { aspect: "opposite", bodies: ["sun", "mars"] }, // newly added
+        { aspect: "opposite", bodies: ["moon", "jupiter"] }, // newly added
+        { aspect: "square", bodies: ["sun", "moon"] },
+        { aspect: "square", bodies: ["sun", "jupiter"] },
+        { aspect: "square", bodies: ["mars", "moon"] },
+        { aspect: "square", bodies: ["mars", "jupiter"] },
       ];
       const previousAspectBodies: AspectBodies[] = [
-        { bodies: ["sun", "moon"], aspect: "square" },
-        { bodies: ["sun", "jupiter"], aspect: "square" },
-        { bodies: ["mars", "moon"], aspect: "square" },
-        { bodies: ["mars", "jupiter"], aspect: "square" },
+        { aspect: "square", bodies: ["sun", "moon"] },
+        { aspect: "square", bodies: ["sun", "jupiter"] },
+        { aspect: "square", bodies: ["mars", "moon"] },
+        { aspect: "square", bodies: ["mars", "jupiter"] },
       ];
 
       const events = service.detect({
         currentAspectBodies,
-        previousAspectBodies,
         minute: currentMinute,
+        previousAspectBodies,
       });
 
       expect(events).toHaveLength(1);
@@ -70,24 +70,24 @@ describe("quadruple-aspects.events integration", () => {
       // ensures the union has each opposition exactly once, preventing duplicate
       // Grand Cross detections from the nested "for oppositions" loops.
       const currentAspectBodies: AspectBodies[] = [
-        { bodies: ["sun", "moon"], aspect: "square" },
-        { bodies: ["sun", "jupiter"], aspect: "square" },
-        { bodies: ["mars", "moon"], aspect: "square" },
-        { bodies: ["mars", "jupiter"], aspect: "square" },
+        { aspect: "square", bodies: ["sun", "moon"] },
+        { aspect: "square", bodies: ["sun", "jupiter"] },
+        { aspect: "square", bodies: ["mars", "moon"] },
+        { aspect: "square", bodies: ["mars", "jupiter"] },
       ];
       const previousAspectBodies: AspectBodies[] = [
-        { bodies: ["sun", "mars"], aspect: "opposite" }, // about to end
-        { bodies: ["moon", "jupiter"], aspect: "opposite" }, // about to end
-        { bodies: ["sun", "moon"], aspect: "square" },
-        { bodies: ["sun", "jupiter"], aspect: "square" },
-        { bodies: ["mars", "moon"], aspect: "square" },
-        { bodies: ["mars", "jupiter"], aspect: "square" },
+        { aspect: "opposite", bodies: ["sun", "mars"] }, // about to end
+        { aspect: "opposite", bodies: ["moon", "jupiter"] }, // about to end
+        { aspect: "square", bodies: ["sun", "moon"] },
+        { aspect: "square", bodies: ["sun", "jupiter"] },
+        { aspect: "square", bodies: ["mars", "moon"] },
+        { aspect: "square", bodies: ["mars", "jupiter"] },
       ];
 
       const events = service.detect({
         currentAspectBodies,
-        previousAspectBodies,
         minute: currentMinute,
+        previousAspectBodies,
       });
 
       expect(events).toHaveLength(1);
@@ -107,11 +107,6 @@ describe("quadruple-aspects.events integration", () => {
       const dissolvingStart = moment.utc("2024-06-15T18:00:00.000Z");
 
       const formingEvent: Event = {
-        start: formingStart,
-        end: formingStart,
-        summary:
-          "➡️ ➕ ☀️-♂️-🌙-♃ Jupiter, Mars, Moon, Sun grand cross forming",
-        description: "Jupiter, Mars, Moon, Sun grand cross forming",
         categories: [
           "Astronomy",
           "Astrology",
@@ -124,14 +119,14 @@ describe("quadruple-aspects.events integration", () => {
           "Moon",
           "Jupiter",
         ],
+        description: "Jupiter, Mars, Moon, Sun grand cross forming",
+        end: formingStart,
+        start: formingStart,
+        summary:
+          "➡️ ➕ ☀️-♂️-🌙-♃ Jupiter, Mars, Moon, Sun grand cross forming",
       };
 
       const dissolvingEvent: Event = {
-        start: dissolvingStart,
-        end: dissolvingStart,
-        summary:
-          "⬅️ ➕ ☀️-♂️-🌙-♃ Jupiter, Mars, Moon, Sun grand cross dissolving",
-        description: "Jupiter, Mars, Moon, Sun grand cross dissolving",
         categories: [
           "Astronomy",
           "Astrology",
@@ -144,6 +139,11 @@ describe("quadruple-aspects.events integration", () => {
           "Moon",
           "Jupiter",
         ],
+        description: "Jupiter, Mars, Moon, Sun grand cross dissolving",
+        end: dissolvingStart,
+        start: dissolvingStart,
+        summary:
+          "⬅️ ➕ ☀️-♂️-🌙-♃ Jupiter, Mars, Moon, Sun grand cross dissolving",
       };
 
       const progressiveEvents = service.detectProgressive([
@@ -178,22 +178,22 @@ describe("quadruple-aspects.events integration", () => {
       // previous ensures C(trines,3)=1 grand trine combination in the union,
       // preventing duplicate Kite detections.
       const currentAspectBodies: AspectBodies[] = [
-        { bodies: ["sun", "moon"], aspect: "trine" }, // newly added
-        { bodies: ["sun", "mars"], aspect: "trine" }, // newly added
-        { bodies: ["moon", "mars"], aspect: "trine" }, // newly added
-        { bodies: ["sun", "venus"], aspect: "opposite" }, // newly added
-        { bodies: ["venus", "moon"], aspect: "sextile" },
-        { bodies: ["venus", "mars"], aspect: "sextile" },
+        { aspect: "trine", bodies: ["sun", "moon"] }, // newly added
+        { aspect: "trine", bodies: ["sun", "mars"] }, // newly added
+        { aspect: "trine", bodies: ["moon", "mars"] }, // newly added
+        { aspect: "opposite", bodies: ["sun", "venus"] }, // newly added
+        { aspect: "sextile", bodies: ["venus", "moon"] },
+        { aspect: "sextile", bodies: ["venus", "mars"] },
       ];
       const previousAspectBodies: AspectBodies[] = [
-        { bodies: ["venus", "moon"], aspect: "sextile" },
-        { bodies: ["venus", "mars"], aspect: "sextile" },
+        { aspect: "sextile", bodies: ["venus", "moon"] },
+        { aspect: "sextile", bodies: ["venus", "mars"] },
       ];
 
       const events = service.detect({
         currentAspectBodies,
-        previousAspectBodies,
         minute: currentMinute,
+        previousAspectBodies,
       });
 
       expect(events).toHaveLength(1);
@@ -219,22 +219,22 @@ describe("quadruple-aspects.events integration", () => {
       // ensures C(trines,3)=1 grand trine combination in the union, preventing
       // duplicate Kite detections.
       const currentAspectBodies: AspectBodies[] = [
-        { bodies: ["venus", "moon"], aspect: "sextile" },
-        { bodies: ["venus", "mars"], aspect: "sextile" },
+        { aspect: "sextile", bodies: ["venus", "moon"] },
+        { aspect: "sextile", bodies: ["venus", "mars"] },
       ];
       const previousAspectBodies: AspectBodies[] = [
-        { bodies: ["sun", "moon"], aspect: "trine" }, // about to end
-        { bodies: ["sun", "mars"], aspect: "trine" }, // about to end
-        { bodies: ["moon", "mars"], aspect: "trine" }, // about to end
-        { bodies: ["sun", "venus"], aspect: "opposite" }, // about to end
-        { bodies: ["venus", "moon"], aspect: "sextile" },
-        { bodies: ["venus", "mars"], aspect: "sextile" },
+        { aspect: "trine", bodies: ["sun", "moon"] }, // about to end
+        { aspect: "trine", bodies: ["sun", "mars"] }, // about to end
+        { aspect: "trine", bodies: ["moon", "mars"] }, // about to end
+        { aspect: "opposite", bodies: ["sun", "venus"] }, // about to end
+        { aspect: "sextile", bodies: ["venus", "moon"] },
+        { aspect: "sextile", bodies: ["venus", "mars"] },
       ];
 
       const events = service.detect({
         currentAspectBodies,
-        previousAspectBodies,
         minute: currentMinute,
+        previousAspectBodies,
       });
 
       expect(events).toHaveLength(1);
@@ -255,11 +255,6 @@ describe("quadruple-aspects.events integration", () => {
       const dissolvingStart = moment.utc("2024-07-20T14:00:00.000Z");
 
       const formingEvent: Event = {
-        start: formingStart,
-        end: formingStart,
-        summary:
-          "➡️ 🪁 ☀️-🌙-♂️-♀️ Mars, Moon, Sun, Venus kite forming (Venus focal)",
-        description: "Mars, Moon, Sun, Venus kite forming (Venus focal)",
         categories: [
           "Astronomy",
           "Astrology",
@@ -273,14 +268,14 @@ describe("quadruple-aspects.events integration", () => {
           "Venus",
           "Venus Focal",
         ],
+        description: "Mars, Moon, Sun, Venus kite forming (Venus focal)",
+        end: formingStart,
+        start: formingStart,
+        summary:
+          "➡️ 🪁 ☀️-🌙-♂️-♀️ Mars, Moon, Sun, Venus kite forming (Venus focal)",
       };
 
       const dissolvingEvent: Event = {
-        start: dissolvingStart,
-        end: dissolvingStart,
-        summary:
-          "⬅️ 🪁 ☀️-🌙-♂️-♀️ Mars, Moon, Sun, Venus kite dissolving (Venus focal)",
-        description: "Mars, Moon, Sun, Venus kite dissolving (Venus focal)",
         categories: [
           "Astronomy",
           "Astrology",
@@ -294,6 +289,11 @@ describe("quadruple-aspects.events integration", () => {
           "Venus",
           "Venus Focal",
         ],
+        description: "Mars, Moon, Sun, Venus kite dissolving (Venus focal)",
+        end: dissolvingStart,
+        start: dissolvingStart,
+        summary:
+          "⬅️ 🪁 ☀️-🌙-♂️-♀️ Mars, Moon, Sun, Venus kite dissolving (Venus focal)",
       };
 
       const progressiveEvents = service.detectProgressive([
@@ -324,18 +324,18 @@ describe("quadruple-aspects.events integration", () => {
 
       // Only one opposition — need 2 for a Grand Cross
       const currentAspectBodies: AspectBodies[] = [
-        { bodies: ["sun", "mars"], aspect: "opposite" },
-        { bodies: ["sun", "moon"], aspect: "square" },
-        { bodies: ["sun", "jupiter"], aspect: "square" },
-        { bodies: ["mars", "moon"], aspect: "square" },
-        { bodies: ["mars", "jupiter"], aspect: "square" },
+        { aspect: "opposite", bodies: ["sun", "mars"] },
+        { aspect: "square", bodies: ["sun", "moon"] },
+        { aspect: "square", bodies: ["sun", "jupiter"] },
+        { aspect: "square", bodies: ["mars", "moon"] },
+        { aspect: "square", bodies: ["mars", "jupiter"] },
       ];
       const previousAspectBodies: AspectBodies[] = [];
 
       const events = service.detect({
         currentAspectBodies,
-        previousAspectBodies,
         minute: currentMinute,
+        previousAspectBodies,
       });
 
       const grandCrossEvents = events.filter((e) =>
@@ -349,16 +349,16 @@ describe("quadruple-aspects.events integration", () => {
 
       // Kite-specific aspects but no Grand Trine (no trines at all)
       const currentAspectBodies: AspectBodies[] = [
-        { bodies: ["sun", "venus"], aspect: "opposite" },
-        { bodies: ["venus", "moon"], aspect: "sextile" },
-        { bodies: ["venus", "mars"], aspect: "sextile" },
+        { aspect: "opposite", bodies: ["sun", "venus"] },
+        { aspect: "sextile", bodies: ["venus", "moon"] },
+        { aspect: "sextile", bodies: ["venus", "mars"] },
       ];
       const previousAspectBodies: AspectBodies[] = [];
 
       const events = service.detect({
         currentAspectBodies,
-        previousAspectBodies,
         minute: currentMinute,
+        previousAspectBodies,
       });
 
       const kiteEvents = events.filter((e) => e.categories.includes("Kite"));
@@ -370,25 +370,25 @@ describe("quadruple-aspects.events integration", () => {
 
       // Two oppositions but connections are trines, not squares
       const currentAspectBodies: AspectBodies[] = [
-        { bodies: ["sun", "mars"], aspect: "opposite" },
-        { bodies: ["moon", "jupiter"], aspect: "opposite" },
-        { bodies: ["sun", "moon"], aspect: "trine" },
-        { bodies: ["sun", "jupiter"], aspect: "trine" },
-        { bodies: ["mars", "moon"], aspect: "trine" },
-        { bodies: ["mars", "jupiter"], aspect: "trine" },
+        { aspect: "opposite", bodies: ["sun", "mars"] },
+        { aspect: "opposite", bodies: ["moon", "jupiter"] },
+        { aspect: "trine", bodies: ["sun", "moon"] },
+        { aspect: "trine", bodies: ["sun", "jupiter"] },
+        { aspect: "trine", bodies: ["mars", "moon"] },
+        { aspect: "trine", bodies: ["mars", "jupiter"] },
       ];
       const previousAspectBodies: AspectBodies[] = [
-        { bodies: ["sun", "mars"], aspect: "opposite" },
-        { bodies: ["moon", "jupiter"], aspect: "opposite" },
-        { bodies: ["sun", "jupiter"], aspect: "trine" },
-        { bodies: ["mars", "moon"], aspect: "trine" },
-        { bodies: ["mars", "jupiter"], aspect: "trine" },
+        { aspect: "opposite", bodies: ["sun", "mars"] },
+        { aspect: "opposite", bodies: ["moon", "jupiter"] },
+        { aspect: "trine", bodies: ["sun", "jupiter"] },
+        { aspect: "trine", bodies: ["mars", "moon"] },
+        { aspect: "trine", bodies: ["mars", "jupiter"] },
       ];
 
       const events = service.detect({
         currentAspectBodies,
-        previousAspectBodies,
         minute: currentMinute,
+        previousAspectBodies,
       });
 
       const grandCrossEvents = events.filter((e) =>

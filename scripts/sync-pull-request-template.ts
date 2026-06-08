@@ -38,47 +38,6 @@ const MARKER = "pr-template";
 
 // ─── Template Loading ─────────────────────────────────────────────────────────
 
-function loadTemplate(): string {
-  return readFileSync(TEMPLATE_FILE, "utf8").trimEnd();
-}
-
-function wrapInCodeBlock(content: string): string {
-  return `\`\`\`markdown\n${content}\n\`\`\``;
-}
-
-// ─── Marker Utilities ─────────────────────────────────────────────────────────
-
-/**
- * Extract content between marker comments in a file.
- * Markers are HTML comments like `<!-- pr-template-start -->`.
- */
-function extractMarkerContent(
-  content: string,
-  markerName: string,
-): string | undefined {
-  const pattern = new RegExp(
-    String.raw`<!-- ${markerName}-start -->\n([\s\S]*?)<!-- ${markerName}-end -->`,
-  );
-  const match = pattern.exec(content);
-  return match?.[1];
-}
-
-/**
- * Replace content between marker comments, preserving the markers.
- */
-function replaceMarkerContent(
-  content: string,
-  markerName: string,
-  newContent: string,
-): string {
-  const pattern = new RegExp(
-    String.raw`(<!-- ${markerName}-start -->\n)[\s\S]*?(<!-- ${markerName}-end -->)`,
-  );
-  return content.replace(pattern, `$1\n${newContent}\n\n$2`);
-}
-
-// ─── Check / Write Logic ──────────────────────────────────────────────────────
-
 function checkTargetSync(templateContent: string, targetFile: string): boolean {
   const targetName = path.relative(WORKSPACE_ROOT, targetFile);
   const fileContent = readFileSync(targetFile, "utf8");
@@ -101,16 +60,25 @@ function checkTargetSync(templateContent: string, targetFile: string): boolean {
   return true;
 }
 
-function writeTargetSync(templateContent: string, targetFile: string): void {
-  const targetName = path.relative(WORKSPACE_ROOT, targetFile);
-  console.log(`🔄 Syncing ${targetName} PR template...`);
+/**
+ * Extract content between marker comments in a file.
+ * Markers are HTML comments like `<!-- pr-template-start -->`.
+ */
+function extractMarkerContent(
+  content: string,
+  markerName: string,
+): string | undefined {
+  const pattern = new RegExp(
+    String.raw`<!-- ${markerName}-start -->\n([\s\S]*?)<!-- ${markerName}-end -->`,
+  );
+  const match = pattern.exec(content);
+  return match?.[1];
+}
 
-  const fileContent = readFileSync(targetFile, "utf8");
-  const codeBlock = wrapInCodeBlock(templateContent);
-  const updatedContent = replaceMarkerContent(fileContent, MARKER, codeBlock);
+// ─── Marker Utilities ─────────────────────────────────────────────────────────
 
-  writeFileSync(targetFile, updatedContent, "utf8");
-  console.log(`✅ ${targetName} PR template synced`);
+function loadTemplate(): string {
+  return readFileSync(TEMPLATE_FILE, "utf8").trimEnd();
 }
 
 function main(): void {
@@ -152,6 +120,38 @@ function main(): void {
     );
     process.exit(1);
   }
+}
+
+// ─── Check / Write Logic ──────────────────────────────────────────────────────
+
+/**
+ * Replace content between marker comments, preserving the markers.
+ */
+function replaceMarkerContent(
+  content: string,
+  markerName: string,
+  newContent: string,
+): string {
+  const pattern = new RegExp(
+    String.raw`(<!-- ${markerName}-start -->\n)[\s\S]*?(<!-- ${markerName}-end -->)`,
+  );
+  return content.replace(pattern, `$1\n${newContent}\n\n$2`);
+}
+
+function wrapInCodeBlock(content: string): string {
+  return `\`\`\`markdown\n${content}\n\`\`\``;
+}
+
+function writeTargetSync(templateContent: string, targetFile: string): void {
+  const targetName = path.relative(WORKSPACE_ROOT, targetFile);
+  console.log(`🔄 Syncing ${targetName} PR template...`);
+
+  const fileContent = readFileSync(targetFile, "utf8");
+  const codeBlock = wrapInCodeBlock(templateContent);
+  const updatedContent = replaceMarkerContent(fileContent, MARKER, codeBlock);
+
+  writeFileSync(targetFile, updatedContent, "utf8");
+  console.log(`✅ ${targetName} PR template synced`);
 }
 
 main();

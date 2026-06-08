@@ -14,7 +14,7 @@ yarn.lock
 # 💾 Nx cache
 **/.nx
 
-# 🏗️ Build outputs
+# 🏗 Build outputs
 **/dist
 **/build
 **/.next

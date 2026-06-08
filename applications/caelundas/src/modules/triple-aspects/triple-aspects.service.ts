@@ -33,7 +33,8 @@ import type { Moment } from "moment-timezone";
  */
 @Injectable()
 export class TripleAspectsService {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
+
   constructor(private readonly logger: LoggerService) {
     this.logger.setContext(TripleAspectsService.name);
   }
@@ -44,7 +45,221 @@ export class TripleAspectsService {
 
   // 🔏 Private Methods
 
+  private static determineCompoundPhaseFromSnapshots(
+    currentAspectBodies: AspectBodies[],
+    previousAspectBodies: AspectBodies[],
+    patternBodies: Body[],
+    currentMinute: Moment,
+    checkPatternExists: (edges: AspectBodies[]) => boolean,
+  ): null | { eventMinute: Moment; phase: AspectPhase } {
+    const bodySet = new Set(patternBodies);
+    const filterByBodies = (edges: AspectBodies[]): AspectBodies[] =>
+      edges.filter((e) => bodySet.has(e.bodies[0]) && bodySet.has(e.bodies[1]));
+
+    const currentFiltered = filterByBodies(currentAspectBodies);
+    const previousFiltered = filterByBodies(previousAspectBodies);
+
+    const currentExists = checkPatternExists(currentFiltered);
+    const previousExists = checkPatternExists(previousFiltered);
+
+    if (currentExists && !previousExists) {
+      return { eventMinute: currentMinute, phase: "forming" };
+    }
+    if (!currentExists && previousExists) {
+      return {
+        eventMinute: currentMinute.clone().subtract(1, "minute"),
+        phase: "dissolving",
+      };
+    }
+    return null;
+  }
+
   // 🌎 Public Methods
+
+  /**
+   * Finds all bodies that share a specific aspect type with the given body.
+   *
+   * @param body - The reference celestial body
+   * @param aspectType - The aspect angle category to search for
+   * @param edges - Available aspect relationships to search
+   * @returns Array of bodies that have the specified aspect with the given body
+   */
+  static findBodiesWithAspectTo(
+    body: Body,
+    aspectType: Aspect,
+    edges: AspectBodies[],
+  ): Body[] {
+    return edges
+      .filter(
+        (edge) =>
+          edge.aspect === aspectType &&
+          TripleAspectsService.involvesBody(edge, body),
+      )
+      .map((edge) => TripleAspectsService.getOtherBody(edge, body))
+      .filter((b): b is Body => b !== null);
+  }
+
+  private static getOtherBody(edge: AspectBodies, body: Body): Body | null {
+    if (edge.bodies[0] === body) {
+      return edge.bodies[1];
+    }
+    if (edge.bodies[1] === body) {
+      return edge.bodies[0];
+    }
+    return null;
+  }
+
+  /**
+   * Groups an array of aspect edges by their aspect type.
+   *
+   * @param edges - Aspect relationships to group
+   * @returns Map from aspect type to edges of that type
+   */
+  static groupAspectsByType<T extends AspectBodies>(
+    edges: T[],
+  ): Map<Aspect, T[]> {
+    return groupByToMap(edges, (edge) => edge.aspect);
+  }
+
+  /**
+   * Returns `true` if two bodies share a specific aspect type within the given edges.
+   *
+   * @param body1 - First celestial body
+   * @param body2 - Second celestial body
+   * @param aspectType - The aspect angle category to check
+   * @param edges - Active aspect relationships to search
+   */
+  static haveAspect(
+    body1: Body,
+    body2: Body,
+    aspectType: Aspect,
+    edges: AspectBodies[],
+  ): boolean {
+    return edges.some(
+      (edge) =>
+        edge.aspect === aspectType &&
+        ((edge.bodies[0] === body1 && edge.bodies[1] === body2) ||
+          (edge.bodies[0] === body2 && edge.bodies[1] === body1)),
+    );
+  }
+
+  private static involvesBody(edge: AspectBodies, body: Body): boolean {
+    return edge.bodies[0] === body || edge.bodies[1] === body;
+  }
+
+  /**
+   * Composes Grand Trine patterns from stored 2-body aspects.
+   *
+   * A Grand Trine is a harmonious configuration consisting of:
+   * - 3 trines (120°) forming an equilateral triangle
+   *
+   * Visual pattern:
+   * ```
+   *       Body1
+   *       /   \
+   * 120° /     \ 120°
+   *     /       \
+   * Body2 ----- Body3
+   *      120°
+   * ```
+   *
+   * All three bodies are in the same element (fire/earth/air/water),
+   * creating a flow of harmonious energy. Can indicate talent but
+   * may lack motivation without challenging aspects.
+   *
+   * @param allEdges - All aspect edges across time for phase detection
+   * @param minute - The minute to check for Grand Trine patterns
+   * @returns Array of Grand Trine events detected at this minute
+   * @see {@link determineMultiBodyPhase} for phase calculation
+   */
+  private composeGrandTrines(args: {
+    currentAspectBodies: AspectBodies[];
+    minute: Moment;
+    previousAspectBodies: AspectBodies[];
+  }): Event[] {
+    const { currentAspectBodies, minute, previousAspectBodies } = args;
+    const events: Event[] = [];
+
+    const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
+    const aspectsByType = TripleAspectsService.groupAspectsByType(unionEdges);
+
+    const trines = aspectsByType.get("trine") || [];
+
+    // Find sets of three bodies where each pair is in trine
+    const bodiesInTrines = new Set<Body>();
+    for (const trine of trines) {
+      bodiesInTrines.add(trine.bodies[0]);
+      bodiesInTrines.add(trine.bodies[1]);
+    }
+
+    const bodiesArray = [...bodiesInTrines];
+
+    // Check all combinations of 3 bodies
+    for (let i = 0; i < bodiesArray.length; i++) {
+      for (let j = i + 1; j < bodiesArray.length; j++) {
+        for (let k = j + 1; k < bodiesArray.length; k++) {
+          const body1 = bodiesArray[i];
+          const body2 = bodiesArray[j];
+          const body3 = bodiesArray[k];
+          if (!body1 || !body2 || !body3) {
+            continue;
+          }
+
+          // Check if all three pairs are in trine
+          if (
+            TripleAspectsService.haveAspect(body1, body2, "trine", trines) &&
+            TripleAspectsService.haveAspect(body1, body3, "trine", trines) &&
+            TripleAspectsService.haveAspect(body2, body3, "trine", trines)
+          ) {
+            const result =
+              TripleAspectsService.determineCompoundPhaseFromSnapshots(
+                currentAspectBodies,
+                previousAspectBodies,
+                [body1, body2, body3],
+                minute,
+                (edges) => {
+                  return (
+                    TripleAspectsService.haveAspect(
+                      body1,
+                      body2,
+                      "trine",
+                      edges,
+                    ) &&
+                    TripleAspectsService.haveAspect(
+                      body1,
+                      body3,
+                      "trine",
+                      edges,
+                    ) &&
+                    TripleAspectsService.haveAspect(
+                      body2,
+                      body3,
+                      "trine",
+                      edges,
+                    )
+                  );
+                },
+              );
+
+            if (result) {
+              events.push(
+                this.getTripleAspectEvent({
+                  body1,
+                  body2,
+                  body3,
+                  phase: result.phase,
+                  timestamp: result.eventMinute,
+                  tripleAspect: "grand trine",
+                }),
+              );
+            }
+          }
+        }
+      }
+    }
+
+    return events;
+  }
 
   /**
    * Composes T-Square patterns from stored 2-body aspects.
@@ -73,10 +288,10 @@ export class TripleAspectsService {
    */
   private composeTSquares(args: {
     currentAspectBodies: AspectBodies[];
-    previousAspectBodies: AspectBodies[];
     minute: Moment;
+    previousAspectBodies: AspectBodies[];
   }): Event[] {
-    const { currentAspectBodies, previousAspectBodies, minute } = args;
+    const { currentAspectBodies, minute, previousAspectBodies } = args;
     const events: Event[] = [];
 
     const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
@@ -159,13 +374,13 @@ export class TripleAspectsService {
           if (result) {
             events.push(
               this.getTripleAspectEvent({
-                timestamp: result.eventMinute,
                 body1,
                 body2,
                 body3: focalBody,
-                tripleAspect: "t-square",
                 focalOrApexBody: focalBody,
                 phase: result.phase,
+                timestamp: result.eventMinute,
+                tripleAspect: "t-square",
               }),
             );
           }
@@ -203,10 +418,10 @@ export class TripleAspectsService {
    */
   private composeYods(args: {
     currentAspectBodies: AspectBodies[];
-    previousAspectBodies: AspectBodies[];
     minute: Moment;
+    previousAspectBodies: AspectBodies[];
   }): Event[] {
-    const { currentAspectBodies, previousAspectBodies, minute } = args;
+    const { currentAspectBodies, minute, previousAspectBodies } = args;
     const events: Event[] = [];
 
     const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
@@ -288,13 +503,13 @@ export class TripleAspectsService {
           if (result) {
             events.push(
               this.getTripleAspectEvent({
-                timestamp: result.eventMinute,
                 body1,
                 body2,
                 body3: apexBody,
-                tripleAspect: "yod",
                 focalOrApexBody: apexBody,
                 phase: result.phase,
+                timestamp: result.eventMinute,
+                tripleAspect: "yod",
               }),
             );
           }
@@ -305,183 +520,23 @@ export class TripleAspectsService {
     return events;
   }
 
-  /**
-   * Composes Grand Trine patterns from stored 2-body aspects.
-   *
-   * A Grand Trine is a harmonious configuration consisting of:
-   * - 3 trines (120°) forming an equilateral triangle
-   *
-   * Visual pattern:
-   * ```
-   *       Body1
-   *       /   \
-   * 120° /     \ 120°
-   *     /       \
-   * Body2 ----- Body3
-   *      120°
-   * ```
-   *
-   * All three bodies are in the same element (fire/earth/air/water),
-   * creating a flow of harmonious energy. Can indicate talent but
-   * may lack motivation without challenging aspects.
-   *
-   * @param allEdges - All aspect edges across time for phase detection
-   * @param minute - The minute to check for Grand Trine patterns
-   * @returns Array of Grand Trine events detected at this minute
-   * @see {@link determineMultiBodyPhase} for phase calculation
-   */
-  private composeGrandTrines(args: {
-    currentAspectBodies: AspectBodies[];
-    previousAspectBodies: AspectBodies[];
-    minute: Moment;
-  }): Event[] {
-    const { currentAspectBodies, previousAspectBodies, minute } = args;
-    const events: Event[] = [];
-
-    const unionEdges = [...currentAspectBodies, ...previousAspectBodies];
-    const aspectsByType = TripleAspectsService.groupAspectsByType(unionEdges);
-
-    const trines = aspectsByType.get("trine") || [];
-
-    // Find sets of three bodies where each pair is in trine
-    const bodiesInTrines = new Set<Body>();
-    for (const trine of trines) {
-      bodiesInTrines.add(trine.bodies[0]);
-      bodiesInTrines.add(trine.bodies[1]);
-    }
-
-    const bodiesArray = [...bodiesInTrines];
-
-    // Check all combinations of 3 bodies
-    for (let i = 0; i < bodiesArray.length; i++) {
-      for (let j = i + 1; j < bodiesArray.length; j++) {
-        for (let k = j + 1; k < bodiesArray.length; k++) {
-          const body1 = bodiesArray[i];
-          const body2 = bodiesArray[j];
-          const body3 = bodiesArray[k];
-          if (!body1 || !body2 || !body3) {
-            continue;
-          }
-
-          // Check if all three pairs are in trine
-          if (
-            TripleAspectsService.haveAspect(body1, body2, "trine", trines) &&
-            TripleAspectsService.haveAspect(body1, body3, "trine", trines) &&
-            TripleAspectsService.haveAspect(body2, body3, "trine", trines)
-          ) {
-            const result =
-              TripleAspectsService.determineCompoundPhaseFromSnapshots(
-                currentAspectBodies,
-                previousAspectBodies,
-                [body1, body2, body3],
-                minute,
-                (edges) => {
-                  return (
-                    TripleAspectsService.haveAspect(
-                      body1,
-                      body2,
-                      "trine",
-                      edges,
-                    ) &&
-                    TripleAspectsService.haveAspect(
-                      body1,
-                      body3,
-                      "trine",
-                      edges,
-                    ) &&
-                    TripleAspectsService.haveAspect(
-                      body2,
-                      body3,
-                      "trine",
-                      edges,
-                    )
-                  );
-                },
-              );
-
-            if (result) {
-              events.push(
-                this.getTripleAspectEvent({
-                  timestamp: result.eventMinute,
-                  body1,
-                  body2,
-                  body3,
-                  tripleAspect: "grand trine",
-                  phase: result.phase,
-                }),
-              );
-            }
-          }
-        }
-      }
-    }
-
-    return events;
-  }
-
-  /**
-   * Detects all triple aspect patterns from stored 2-body aspect events.
-   *
-   * Analyzes combinations of simple aspects to identify higher-order patterns:
-   * - T-Square (1 opposition + 2 squares)
-   * - Yod (1 sextile + 2 quincunxes)
-   * - Grand Trine (3 trines)
-   *
-   * These compound aspects represent significant configurations where
-   * the whole is greater than the sum of parts, indicating major themes
-   * in astrological interpretation.
-   *
-   * @param storedAspects - Previously detected simple aspect events
-   * @param minute - The minute to check for triple aspect patterns
-   * @returns Array of all detected triple aspect events at this minute
-   * @see {@link parseAspectEvents} for extracting aspect relationships
-   * @see {@link composeTSquares} for T-Square detection
-   * @see {@link composeYods} for Yod detection
-   * @see {@link composeGrandTrines} for Grand Trine detection
-   */
-  detect(args: {
-    currentAspectBodies: AspectBodies[];
-    previousAspectBodies: AspectBodies[];
-    minute: Moment;
-  }): Event[] {
-    const { currentAspectBodies, previousAspectBodies, minute } = args;
-    return [
-      ...this.composeTSquares({
-        currentAspectBodies,
-        previousAspectBodies,
-        minute,
-      }),
-      ...this.composeYods({
-        currentAspectBodies,
-        previousAspectBodies,
-        minute,
-      }),
-      ...this.composeGrandTrines({
-        currentAspectBodies,
-        previousAspectBodies,
-        minute,
-      }),
-      // Can add more patterns: Hammer, etc.
-    ];
-  }
-
   private getTripleAspectEvent(args: {
-    timestamp: Moment;
     body1: Body;
     body2: Body;
     body3: Body;
-    tripleAspect: TripleAspect;
-    phase: AspectPhase;
     focalOrApexBody?: Body;
+    phase: AspectPhase;
+    timestamp: Moment;
+    tripleAspect: TripleAspect;
   }): Event {
     const {
-      timestamp,
       body1,
       body2,
       body3,
-      tripleAspect,
-      phase,
       focalOrApexBody,
+      phase,
+      timestamp,
+      tripleAspect,
     } = args;
 
     const body1Capitalized = _.startCase(body1);
@@ -535,12 +590,58 @@ export class TripleAspectsService {
     }
 
     return {
-      start: timestamp,
-      end: timestamp,
-      description,
-      summary,
       categories,
+      description,
+      end: timestamp,
+      start: timestamp,
+      summary,
     };
+  }
+
+  /**
+   * Detects all triple aspect patterns from stored 2-body aspect events.
+   *
+   * Analyzes combinations of simple aspects to identify higher-order patterns:
+   * - T-Square (1 opposition + 2 squares)
+   * - Yod (1 sextile + 2 quincunxes)
+   * - Grand Trine (3 trines)
+   *
+   * These compound aspects represent significant configurations where
+   * the whole is greater than the sum of parts, indicating major themes
+   * in astrological interpretation.
+   *
+   * @param storedAspects - Previously detected simple aspect events
+   * @param minute - The minute to check for triple aspect patterns
+   * @returns Array of all detected triple aspect events at this minute
+   * @see {@link parseAspectEvents} for extracting aspect relationships
+   * @see {@link composeTSquares} for T-Square detection
+   * @see {@link composeYods} for Yod detection
+   * @see {@link composeGrandTrines} for Grand Trine detection
+   */
+  detect(args: {
+    currentAspectBodies: AspectBodies[];
+    minute: Moment;
+    previousAspectBodies: AspectBodies[];
+  }): Event[] {
+    const { currentAspectBodies, minute, previousAspectBodies } = args;
+    return [
+      ...this.composeTSquares({
+        currentAspectBodies,
+        minute,
+        previousAspectBodies,
+      }),
+      ...this.composeYods({
+        currentAspectBodies,
+        minute,
+        previousAspectBodies,
+      }),
+      ...this.composeGrandTrines({
+        currentAspectBodies,
+        minute,
+        previousAspectBodies,
+      }),
+      // Can add more patterns: Hammer, etc.
+    ];
   }
 
   /**
@@ -574,7 +675,7 @@ export class TripleAspectsService {
       );
 
       const aspect = event.categories.find((category) =>
-        ["T Square", "Grand Trine", "Yod"].includes(category),
+        ["Grand Trine", "T Square", "Yod"].includes(category),
       );
 
       if (planets.length === 3 && aspect) {
@@ -621,7 +722,7 @@ export class TripleAspectsService {
           );
 
           const aspectCapitalized = forming.categories.find((category) =>
-            ["T Square", "Grand Trine", "Yod"].includes(category),
+            ["Grand Trine", "T Square", "Yod"].includes(category),
           );
 
           if (bodiesCapitalized.length !== 3 || !aspectCapitalized) {
@@ -634,8 +735,8 @@ export class TripleAspectsService {
 
           // Convert aspect name back to the key format
           const aspectMap: Record<string, TripleAspect> = {
-            "T Square": "t-square",
             "Grand Trine": "grand trine",
+            "T Square": "t-square",
             Yod: "yod",
           };
           const aspect = aspectMap[aspectCapitalized];
@@ -681,10 +782,6 @@ export class TripleAspectsService {
           }
 
           progressiveEvents.push({
-            start: forming.start,
-            end: dissolving.start,
-            summary: `${aspectSymbol} ${body1Symbol}-${body2Symbol}-${body3Symbol} ${body1Capitalized}, ${body2Capitalized}, ${body3Capitalized} ${aspect}${extraInfo}`,
-            description: `${body1Capitalized}, ${body2Capitalized}, ${body3Capitalized} ${aspect}`,
             categories: [
               "Astronomy",
               "Astrology",
@@ -695,111 +792,15 @@ export class TripleAspectsService {
               body2Capitalized,
               body3Capitalized,
             ],
+            description: `${body1Capitalized}, ${body2Capitalized}, ${body3Capitalized} ${aspect}`,
+            end: dissolving.start,
+            start: forming.start,
+            summary: `${aspectSymbol} ${body1Symbol}-${body2Symbol}-${body3Symbol} ${body1Capitalized}, ${body2Capitalized}, ${body3Capitalized} ${aspect}${extraInfo}`,
           });
         }
       }
     }
 
     return progressiveEvents;
-  }
-
-  private static involvesBody(edge: AspectBodies, body: Body): boolean {
-    return edge.bodies[0] === body || edge.bodies[1] === body;
-  }
-
-  private static getOtherBody(edge: AspectBodies, body: Body): Body | null {
-    if (edge.bodies[0] === body) {
-      return edge.bodies[1];
-    }
-    if (edge.bodies[1] === body) {
-      return edge.bodies[0];
-    }
-    return null;
-  }
-
-  /**
-   * Groups an array of aspect edges by their aspect type.
-   *
-   * @param edges - Aspect relationships to group
-   * @returns Map from aspect type to edges of that type
-   */
-  static groupAspectsByType<T extends AspectBodies>(
-    edges: T[],
-  ): Map<Aspect, T[]> {
-    return groupByToMap(edges, (edge) => edge.aspect);
-  }
-
-  /**
-   * Finds all bodies that share a specific aspect type with the given body.
-   *
-   * @param body - The reference celestial body
-   * @param aspectType - The aspect angle category to search for
-   * @param edges - Available aspect relationships to search
-   * @returns Array of bodies that have the specified aspect with the given body
-   */
-  static findBodiesWithAspectTo(
-    body: Body,
-    aspectType: Aspect,
-    edges: AspectBodies[],
-  ): Body[] {
-    return edges
-      .filter(
-        (edge) =>
-          edge.aspect === aspectType &&
-          TripleAspectsService.involvesBody(edge, body),
-      )
-      .map((edge) => TripleAspectsService.getOtherBody(edge, body))
-      .filter((b): b is Body => b !== null);
-  }
-
-  /**
-   * Returns `true` if two bodies share a specific aspect type within the given edges.
-   *
-   * @param body1 - First celestial body
-   * @param body2 - Second celestial body
-   * @param aspectType - The aspect angle category to check
-   * @param edges - Active aspect relationships to search
-   */
-  static haveAspect(
-    body1: Body,
-    body2: Body,
-    aspectType: Aspect,
-    edges: AspectBodies[],
-  ): boolean {
-    return edges.some(
-      (edge) =>
-        edge.aspect === aspectType &&
-        ((edge.bodies[0] === body1 && edge.bodies[1] === body2) ||
-          (edge.bodies[0] === body2 && edge.bodies[1] === body1)),
-    );
-  }
-
-  private static determineCompoundPhaseFromSnapshots(
-    currentAspectBodies: AspectBodies[],
-    previousAspectBodies: AspectBodies[],
-    patternBodies: Body[],
-    currentMinute: Moment,
-    checkPatternExists: (edges: AspectBodies[]) => boolean,
-  ): { phase: AspectPhase; eventMinute: Moment } | null {
-    const bodySet = new Set(patternBodies);
-    const filterByBodies = (edges: AspectBodies[]): AspectBodies[] =>
-      edges.filter((e) => bodySet.has(e.bodies[0]) && bodySet.has(e.bodies[1]));
-
-    const currentFiltered = filterByBodies(currentAspectBodies);
-    const previousFiltered = filterByBodies(previousAspectBodies);
-
-    const currentExists = checkPatternExists(currentFiltered);
-    const previousExists = checkPatternExists(previousFiltered);
-
-    if (currentExists && !previousExists) {
-      return { phase: "forming", eventMinute: currentMinute };
-    }
-    if (!currentExists && previousExists) {
-      return {
-        phase: "dissolving",
-        eventMinute: currentMinute.clone().subtract(1, "minute"),
-      };
-    }
-    return null;
   }
 }

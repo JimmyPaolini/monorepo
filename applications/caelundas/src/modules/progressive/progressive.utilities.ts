@@ -13,10 +13,19 @@ import type { Event } from "@caelundas/src/modules/calendar/calendar.types";
  */
 @Injectable()
 export class ProgressiveUtilities {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
+
   constructor(private readonly logger: LoggerService) {
     this.logger.setContext(ProgressiveUtilities.name);
   }
+
+  // 🔐 Private Fields
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
+
+  // 🌎 Public Methods
 
   /**
    * Pairs beginning and ending events into tuples.

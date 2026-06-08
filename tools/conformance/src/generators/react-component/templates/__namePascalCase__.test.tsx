@@ -8,7 +8,7 @@ describe('{{namePascalCase}}', () => {
   // 🎭 Mocks
   let props: {{namePascalCase}}Props;
 
-  // 🏗️ Setup
+  // 🏗 Setup
   beforeEach(() => {
     props = {
       className: faker.helpers.arrayElement([undefined, faker.string.alpha(10)]),

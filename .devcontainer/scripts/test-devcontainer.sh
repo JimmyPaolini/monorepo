@@ -102,7 +102,7 @@ echo "⚡ Supabase CLI — must be ${EXPECTED_SUPABASE_VERSION}"
 assert_version_contains "supabase" "${EXPECTED_SUPABASE_VERSION}" "supabase --version"
 
 echo ""
-echo "🏗️  Terraform — must be ${EXPECTED_TERRAFORM_VERSION}"
+echo "🏗  Terraform — must be ${EXPECTED_TERRAFORM_VERSION}"
 assert_version_contains "terraform" "${EXPECTED_TERRAFORM_VERSION}" "terraform version"
 
 echo ""

@@ -9,9 +9,9 @@ import { routeTree } from "./routeTree.gen";
  */
 export function getRouter(): Router<typeof routeTree> {
   const router = createRouter({
+    defaultPreload: "intent",
     routeTree,
     scrollRestoration: true,
-    defaultPreload: "intent",
   });
 
   return router;

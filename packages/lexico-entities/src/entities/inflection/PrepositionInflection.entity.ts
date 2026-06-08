@@ -12,23 +12,23 @@ export type PrepositionCase = (typeof prepositionCaseValues)[number];
 /**
  *
  */
-@ObjectType({ implements: Inflection })
 @ChildEntity("preposition")
+@ObjectType({ implements: Inflection })
 export class PrepositionInflection extends Inflection {
-  @Field(() => String)
   @Column({
-    type: "enum",
-    enum: prepositionCaseValues,
-    default: "",
     comment:
       "Grammatical case governed by the preposition (accusative or ablative)",
+    default: "",
+    enum: prepositionCaseValues,
+    type: "enum",
   })
+  @Field(() => String)
   case!: PrepositionCase;
 
-  @Field(() => String, { nullable: true })
   @Column("text", {
-    nullable: true,
     comment: "Additional inflection notes",
+    nullable: true,
   })
+  @Field(() => String, { nullable: true })
   other?: string;
 }

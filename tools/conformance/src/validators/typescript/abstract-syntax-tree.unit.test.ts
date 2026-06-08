@@ -39,10 +39,10 @@ describe("validateConformanceAST", () => {
     const templateContent = fs.readFileSync(SERVICE_TEMPLATE_PATH, "utf8");
     const rendered = mustache.render(templateContent, data);
     const result = validateConformance({
-      instance: rendered,
-      template: templateContent,
       data,
       filename: "user.service.ts",
+      instance: rendered,
+      template: templateContent,
     });
     expect(result.errors.length === 0).toBe(true);
     expect(result.errors).toEqual([]);
@@ -56,10 +56,10 @@ describe("validateConformanceAST", () => {
       "controllers: [UserController],",
     );
     const result = validateConformance({
-      instance: fileContent,
-      template: templateContent,
       data,
       filename: "user.module.ts",
+      instance: fileContent,
+      template: templateContent,
     });
     expect(result.errors.length === 0).toBe(true);
     expect(result.errors).toEqual([]);
@@ -73,10 +73,10 @@ describe("validateConformanceAST", () => {
       "exports: [UserService, UserRepository],",
     );
     const result = validateConformance({
-      instance: fileContent,
-      template: templateContent,
       data,
       filename: "user.module.ts",
+      instance: fileContent,
+      template: templateContent,
     });
     expect(result.errors.length === 0).toBe(true);
     expect(result.errors).toEqual([]);
@@ -90,10 +90,10 @@ describe("validateConformanceAST", () => {
       "  ) {\n    this.init();\n  }",
     );
     const result = validateConformance({
-      instance: fileContent,
-      template: templateContent,
       data,
       filename: "user.service.ts",
+      instance: fileContent,
+      template: templateContent,
     });
     expect(result.errors.length === 0).toBe(true);
     expect(result.errors).toEqual([]);
@@ -104,10 +104,10 @@ describe("validateConformanceAST", () => {
     const rendered = mustache.render(templateContent, data);
     const fileContent = rendered.replace("@Injectable()\n", "");
     const result = validateConformance({
-      instance: fileContent,
-      template: templateContent,
       data,
       filename: "user.service.ts",
+      instance: fileContent,
+      template: templateContent,
     });
     expect(result.errors.length === 0).toBe(false);
     expectErrorWithMessage(result.errors, 'Missing Decorator "Injectable"');
@@ -118,10 +118,10 @@ describe("validateConformanceAST", () => {
     const rendered = mustache.render(templateContent, data);
     const fileContent = rendered.replace("UserService", "RenamedService");
     const result = validateConformance({
-      instance: fileContent,
-      template: templateContent,
       data,
       filename: "user.service.ts",
+      instance: fileContent,
+      template: templateContent,
     });
     expect(result.errors.length === 0).toBe(false);
     expectErrorWithMessage(
@@ -135,10 +135,10 @@ describe("validateConformanceAST", () => {
     const rendered = mustache.render(templateContent, data);
     const fileContent = rendered.replace("  // 🔑 Public Fields\n", "");
     const result = validateConformance({
-      instance: fileContent,
-      template: templateContent,
       data,
       filename: "user.service.ts",
+      instance: fileContent,
+      template: templateContent,
     });
     expect(result.errors.length === 0).toBe(false);
     expectErrorWithMessage(
@@ -155,10 +155,10 @@ describe("validateConformanceAST", () => {
       "",
     );
     const result = validateConformance({
-      instance: fileContent,
-      template: templateContent,
       data,
       filename: "user.service.ts",
+      instance: fileContent,
+      template: templateContent,
     });
     expect(result.errors.length === 0).toBe(false);
     expectErrorWithMessage(
@@ -172,10 +172,10 @@ describe("validateConformanceAST", () => {
     const rendered = mustache.render(templateContent, data);
     const fileContent = rendered.replace("  controllers: [],\n", "");
     const result = validateConformance({
-      instance: fileContent,
-      template: templateContent,
       data,
       filename: "user.module.ts",
+      instance: fileContent,
+      template: templateContent,
     });
     expect(result.errors.length === 0).toBe(false);
     expectErrorWithMessage(
@@ -192,7 +192,7 @@ describe("validateConformanceAST", () => {
       "/** Computes ephemeris data for a date range. */",
       "@Injectable()",
       "export class EphemerisService {",
-      "  // 🏗️ Dependency Injection",
+      "  // 🏗 Dependency Injection",
       "  constructor() {}",
       "",
       "  // 🔐 Private Fields",
@@ -217,10 +217,10 @@ describe("validateConformanceAST", () => {
     ].join("\n");
     const templateContent = fs.readFileSync(SERVICE_TEMPLATE_PATH, "utf8");
     const result = validateConformance({
-      instance: fileContent,
-      template: templateContent,
       data: { nameCamelCase: "ephemeris", namePascalCase: "Ephemeris" },
       filename: "ephemeris.service.ts",
+      instance: fileContent,
+      template: templateContent,
     });
     expect(result.errors).toEqual([]);
   });
@@ -236,7 +236,7 @@ describe("validateConformanceAST", () => {
       "/** Handles ephemeris data for the application. */",
       "@Injectable()",
       "export class EphemerisService {",
-      "  // 🏗️ Dependency Injection",
+      "  // 🏗 Dependency Injection",
       "  constructor() {}",
       "",
       "  // 🔐 Private Fields",
@@ -257,10 +257,10 @@ describe("validateConformanceAST", () => {
     ].join("\n");
     const templateContent = fs.readFileSync(SERVICE_TEMPLATE_PATH, "utf8");
     const result = validateConformance({
-      instance: fileContent,
-      template: templateContent,
       data: { nameCamelCase: "ephemeris", namePascalCase: "Ephemeris" },
       filename: "ephemeris.service.ts",
+      instance: fileContent,
+      template: templateContent,
     });
     expect(result.errors).toEqual([]);
   });
@@ -275,10 +275,10 @@ describe("validateConformanceAST", () => {
       "  // TODO: implement the public fields later",
     );
     const result = validateConformance({
-      instance: fileContent,
-      template: templateContent,
       data,
       filename: "user.service.ts",
+      instance: fileContent,
+      template: templateContent,
     });
     expect(result.errors).toEqual([]);
   });
@@ -291,10 +291,10 @@ describe("validateConformanceAST", () => {
       "  // 🔑 Renamed Fields",
     );
     const result = validateConformance({
-      instance: fileContent,
-      template: templateContent,
       data,
       filename: "user.service.ts",
+      instance: fileContent,
+      template: templateContent,
     });
     expectErrorWithMessage(
       result.errors,
@@ -310,10 +310,10 @@ describe("validateConformanceAST", () => {
       'import { Injectable } from "@nestjs/common";\nimport { Extra } from "extra-package";',
     );
     const result = validateConformance({
-      instance: fileContent,
-      template: templateContent,
       data,
       filename: "user.service.ts",
+      instance: fileContent,
+      template: templateContent,
     });
     expect(result.errors).toEqual([]);
   });
@@ -322,10 +322,10 @@ describe("validateConformanceAST", () => {
     const template = `import { Injectable } from "@nestjs/common";\n\n@Injectable()\nexport class UserService {\n  doWork(): void {}\n}\n`;
     const instance = `import { Injectable } from "@nestjs/common";\n\n@Injectable()\nexport class UserService {\n  doWork(): void {}\n  extra(): void {}\n}\n`;
     const result = validateConformance({
-      instance,
-      template,
       data: {},
       filename: "user.service.ts",
+      instance,
+      template,
     });
     expect(result.errors).toEqual([]);
   });
@@ -334,10 +334,10 @@ describe("validateConformanceAST", () => {
     const template = `export function Component(): JSX.Element {\n  return <div />;\n}\n`;
     const instance = `export function Component(): JSX.Element {\n  return <div className="wrapper" />;\n}\n`;
     const result = validateConformance({
-      instance,
-      template,
       data: {},
       filename: "component.tsx",
+      instance,
+      template,
     });
     expect(result.errors).toEqual([]);
   });
@@ -347,10 +347,10 @@ describe("validateConformanceAST", () => {
     const rendered = mustache.render(templateContent, data);
     const fileContent = rendered.replace("  providers: [UserService],\n", "");
     const result = validateConformance({
-      instance: fileContent,
-      template: templateContent,
       data,
       filename: "user.module.ts",
+      instance: fileContent,
+      template: templateContent,
     });
     expectErrorWithMessage(
       result.errors,
@@ -371,10 +371,10 @@ describe("validateConformanceAST", () => {
     ].join("\n");
     const rendered = mustache.render(template, data);
     const result = validateConformance({
-      instance: rendered,
-      template,
       data,
       filename: "user.service.ts",
+      instance: rendered,
+      template,
     });
     expect(result.errors).toEqual([]);
   });
@@ -392,10 +392,10 @@ describe("validateConformanceAST", () => {
     ].join("\n");
     const instance = template.replace("/* shared internal note */\n", "");
     const result = validateConformance({
-      instance,
-      template,
       data,
       filename: "user.service.ts",
+      instance,
+      template,
     });
     expectErrorWithMessage(
       result.errors,
@@ -419,10 +419,10 @@ describe("validateConformanceAST", () => {
       "/** TODO: replace with real documentation */",
     );
     const result = validateConformance({
-      instance,
-      template,
       data,
       filename: "user.service.ts",
+      instance,
+      template,
     });
     expect(result.errors).toEqual([]);
   });
@@ -443,10 +443,10 @@ describe("validateConformanceAST", () => {
       "/** Handles user operations for the authentication flow. */",
     );
     const result = validateConformance({
-      instance,
-      template,
       data,
       filename: "user.service.ts",
+      instance,
+      template,
     });
     expect(result.errors).toEqual([]);
   });
@@ -464,10 +464,10 @@ describe("validateConformanceAST", () => {
     ].join("\n");
     const instance = template.replace("/** Handles user operations. */\n", "");
     const result = validateConformance({
-      instance,
-      template,
       data,
       filename: "user.service.ts",
+      instance,
+      template,
     });
     expectErrorWithMessage(
       result.errors,
@@ -503,10 +503,10 @@ describe("validateConformanceAST — multi-candidate keyless nodes", () => {
       "",
     ].join("\n");
     const result = validateConformance({
-      instance,
-      template,
       data: {},
       filename: "user.service.ts",
+      instance,
+      template,
     });
     expect(result.errors).toEqual([]);
   });
@@ -525,10 +525,10 @@ describe("validateConformanceAST — multi-candidate keyless nodes", () => {
       "",
     ].join("\n");
     const result = validateConformance({
-      instance,
-      template,
       data: {},
       filename: "user.service.ts",
+      instance,
+      template,
     });
     expectErrorWithMessage(result.errors, 'Missing Identifier "requiredCall"');
   });
@@ -540,7 +540,7 @@ describe("validateConformanceAST — error detection", () => {
     "",
     "@Injectable()",
     "export class DatetimeService {",
-    "  // 🏗️ Dependency Injection",
+    "  // 🏗 Dependency Injection",
     "  constructor() {}",
     "",
     "  // 🔐 Private Fields",
@@ -562,7 +562,7 @@ describe("validateConformanceAST — error detection", () => {
     "",
     "@Injectable()",
     "export class MathService {",
-    "  // 🏗️ Dependency Injection",
+    "  // 🏗 Dependency Injection",
     "  constructor() {}",
     "",
     "  // 🔐 Private Fields",
@@ -595,10 +595,10 @@ describe("validateConformanceAST — error detection", () => {
   it("missing @Injectable decorator fails", () => {
     const fileContent = MOCK_DATETIME_SERVICE.replace("@Injectable()\n", "");
     const result = validateConformance({
-      instance: fileContent,
-      template: readServiceTemplate(),
       data: { nameCamelCase: "datetime", namePascalCase: "Datetime" },
       filename: "datetime.service.ts",
+      instance: fileContent,
+      template: readServiceTemplate(),
     });
     expectErrorWithMessage(result.errors, 'Missing Decorator "Injectable"');
   });
@@ -609,10 +609,10 @@ describe("validateConformanceAST — error detection", () => {
       "",
     );
     const result = validateConformance({
-      instance: fileContent,
-      template: readServiceTemplate(),
       data: { nameCamelCase: "math", namePascalCase: "Math" },
       filename: "math.service.ts",
+      instance: fileContent,
+      template: readServiceTemplate(),
     });
     expectErrorWithMessage(
       result.errors,
@@ -626,10 +626,10 @@ describe("validateConformanceAST — error detection", () => {
       "RenamedService",
     );
     const result = validateConformance({
-      instance: fileContent,
-      template: readServiceTemplate(),
       data: { nameCamelCase: "datetime", namePascalCase: "Datetime" },
       filename: "datetime.service.ts",
+      instance: fileContent,
+      template: readServiceTemplate(),
     });
     expectErrorWithMessage(
       result.errors,
@@ -640,10 +640,10 @@ describe("validateConformanceAST — error detection", () => {
   it("missing constructor fails", () => {
     const fileContent = MOCK_MATH_SERVICE.replace("  constructor() {}\n", "");
     const result = validateConformance({
-      instance: fileContent,
-      template: readServiceTemplate(),
       data: { nameCamelCase: "math", namePascalCase: "Math" },
       filename: "math.service.ts",
+      instance: fileContent,
+      template: readServiceTemplate(),
     });
     expectErrorWithMessage(result.errors, "Missing Constructor");
   });

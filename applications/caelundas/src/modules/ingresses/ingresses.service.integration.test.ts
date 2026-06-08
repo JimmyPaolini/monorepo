@@ -21,7 +21,7 @@ function createFullEphemeris(
   baseTime: Moment,
   bodies: readonly Body[],
   overrides: Partial<
-    Record<Body, { previous: number; current: number; next: number }>
+    Record<Body, { current: number; next: number; previous: number }>
   > = {},
 ): Record<Body, CoordinateEphemeris> {
   const result: Record<string, CoordinateEphemeris> = {};
@@ -30,17 +30,17 @@ function createFullEphemeris(
   for (const body of bodies) {
     const override = overrides[body];
     result[body] = {
-      [baseTime.clone().subtract(1, "minute").toISOString()]: {
-        longitude: override?.previous ?? defaultLongitude,
+      [baseTime.clone().add(1, "minute").toISOString()]: {
         latitude: 0,
+        longitude: override?.next ?? defaultLongitude,
+      },
+      [baseTime.clone().subtract(1, "minute").toISOString()]: {
+        latitude: 0,
+        longitude: override?.previous ?? defaultLongitude,
       },
       [baseTime.toISOString()]: {
+        latitude: 0,
         longitude: override?.current ?? defaultLongitude,
-        latitude: 0,
-      },
-      [baseTime.clone().add(1, "minute").toISOString()]: {
-        longitude: override?.next ?? defaultLongitude,
-        latitude: 0,
       },
     };
   }
@@ -62,7 +62,7 @@ describe("ingresses.events integration", () => {
         baseTime,
         signIngressBodies,
         {
-          sun: { previous: 359.9, current: 0.1, next: 0.2 },
+          sun: { current: 0.1, next: 0.2, previous: 359.9 },
         },
       );
 
@@ -87,7 +87,7 @@ describe("ingresses.events integration", () => {
         baseTime,
         signIngressBodies,
         {
-          moon: { previous: 59.9, current: 60.1, next: 60.3 },
+          moon: { current: 60.1, next: 60.3, previous: 59.9 },
         },
       );
 
@@ -128,7 +128,7 @@ describe("ingresses.events integration", () => {
         baseTime,
         decanIngressBodies,
         {
-          sun: { previous: 9.9, current: 10.1, next: 10.2 },
+          sun: { current: 10.1, next: 10.2, previous: 9.9 },
         },
       );
 
@@ -151,7 +151,7 @@ describe("ingresses.events integration", () => {
         baseTime,
         decanIngressBodies,
         {
-          sun: { previous: 29.9, current: 30.1, next: 30.2 },
+          sun: { current: 30.1, next: 30.2, previous: 29.9 },
         },
       );
 
@@ -174,7 +174,7 @@ describe("ingresses.events integration", () => {
         baseTime,
         peakIngressBodies,
         {
-          sun: { previous: 44.9, current: 45.1, next: 45.2 },
+          sun: { current: 45.1, next: 45.2, previous: 44.9 },
         },
       );
 
@@ -194,25 +194,25 @@ describe("ingresses.events integration", () => {
     it("should create progressive events from consecutive sign ingresses", () => {
       const events: Event[] = [
         {
-          start: moment.utc("2025-03-20T09:06:00Z"),
-          end: moment.utc("2025-03-20T09:06:00Z"),
-          summary: "☀️ → ♈ Sun ingress Aries",
-          description: "Sun ingress Aries",
           categories: ["Astronomy", "Astrology", "Ingress", "Sun", "Aries"],
+          description: "Sun ingress Aries",
+          end: moment.utc("2025-03-20T09:06:00Z"),
+          start: moment.utc("2025-03-20T09:06:00Z"),
+          summary: "☀️ → ♈ Sun ingress Aries",
         },
         {
-          start: moment.utc("2025-04-19T20:00:00Z"),
-          end: moment.utc("2025-04-19T20:00:00Z"),
-          summary: "☀️ → ♉︎ Sun ingress Taurus",
-          description: "Sun ingress Taurus",
           categories: ["Astronomy", "Astrology", "Ingress", "Sun", "Taurus"],
+          description: "Sun ingress Taurus",
+          end: moment.utc("2025-04-19T20:00:00Z"),
+          start: moment.utc("2025-04-19T20:00:00Z"),
+          summary: "☀️ → ♉︎ Sun ingress Taurus",
         },
         {
-          start: moment.utc("2025-05-20T19:00:00Z"),
-          end: moment.utc("2025-05-20T19:00:00Z"),
-          summary: "☀️ → ♊︎ Sun ingress Gemini",
-          description: "Sun ingress Gemini",
           categories: ["Astronomy", "Astrology", "Ingress", "Sun", "Gemini"],
+          description: "Sun ingress Gemini",
+          end: moment.utc("2025-05-20T19:00:00Z"),
+          start: moment.utc("2025-05-20T19:00:00Z"),
+          summary: "☀️ → ♊︎ Sun ingress Gemini",
         },
       ];
 
@@ -242,32 +242,32 @@ describe("ingresses.events integration", () => {
     it("should handle events for multiple bodies separately", () => {
       const events: Event[] = [
         {
-          start: moment.utc("2025-01-10T10:00:00Z"),
-          end: moment.utc("2025-01-10T10:00:00Z"),
-          summary: "Sun ingress Aquarius",
-          description: "Sun ingress Aquarius",
           categories: ["Astronomy", "Astrology", "Ingress", "Sun", "Aquarius"],
+          description: "Sun ingress Aquarius",
+          end: moment.utc("2025-01-10T10:00:00Z"),
+          start: moment.utc("2025-01-10T10:00:00Z"),
+          summary: "Sun ingress Aquarius",
         },
         {
-          start: moment.utc("2025-01-12T08:00:00Z"),
-          end: moment.utc("2025-01-12T08:00:00Z"),
-          summary: "Moon ingress Gemini",
-          description: "Moon ingress Gemini",
           categories: ["Astronomy", "Astrology", "Ingress", "Moon", "Gemini"],
+          description: "Moon ingress Gemini",
+          end: moment.utc("2025-01-12T08:00:00Z"),
+          start: moment.utc("2025-01-12T08:00:00Z"),
+          summary: "Moon ingress Gemini",
         },
         {
-          start: moment.utc("2025-01-14T15:00:00Z"),
-          end: moment.utc("2025-01-14T15:00:00Z"),
-          summary: "Moon ingress Cancer",
-          description: "Moon ingress Cancer",
           categories: ["Astronomy", "Astrology", "Ingress", "Moon", "Cancer"],
+          description: "Moon ingress Cancer",
+          end: moment.utc("2025-01-14T15:00:00Z"),
+          start: moment.utc("2025-01-14T15:00:00Z"),
+          summary: "Moon ingress Cancer",
         },
         {
-          start: moment.utc("2025-02-18T12:00:00Z"),
-          end: moment.utc("2025-02-18T12:00:00Z"),
-          summary: "Sun ingress Pisces",
-          description: "Sun ingress Pisces",
           categories: ["Astronomy", "Astrology", "Ingress", "Sun", "Pisces"],
+          description: "Sun ingress Pisces",
+          end: moment.utc("2025-02-18T12:00:00Z"),
+          start: moment.utc("2025-02-18T12:00:00Z"),
+          summary: "Sun ingress Pisces",
         },
       ];
 

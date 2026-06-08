@@ -1,4 +1,3 @@
-import { type Inflection, Lexeme } from "@monorepo/lexico-entities";
 import { Test } from "@nestjs/testing";
 import {
   beforeAll,
@@ -9,6 +8,8 @@ import {
   type Mocked,
   vi,
 } from "vitest";
+
+import { type Inflection, Lexeme } from "@monorepo/lexico-entities";
 
 import { LexemesService } from "../lexemes/lexemes.service";
 import { LoggerService } from "../logger/logger.service";
@@ -23,14 +24,14 @@ describe("DictionaryService", () => {
 
   beforeAll(async () => {
     const mockLexemesService = {
+      existsByLemma: vi.fn().mockResolvedValue(true),
       parseLexemes: vi.fn(),
       saveParsedLexeme: vi.fn().mockResolvedValue(undefined),
-      existsByLemma: vi.fn().mockResolvedValue(true),
     };
 
     const mockTranslationsService = {
-      findTranslationsWithReferences: vi.fn().mockResolvedValue([]),
       extractTranslationReferences: vi.fn().mockReturnValue([]),
+      findTranslationsWithReferences: vi.fn().mockResolvedValue([]),
     };
 
     const module = await Test.createTestingModule({
@@ -44,12 +45,12 @@ describe("DictionaryService", () => {
         {
           provide: LoggerService,
           useValue: {
-            setContext: vi.fn(),
-            log: vi.fn(),
-            warn: vi.fn(),
-            error: vi.fn(),
             debug: vi.fn(),
+            error: vi.fn(),
+            log: vi.fn(),
+            setContext: vi.fn(),
             verbose: vi.fn(),
+            warn: vi.fn(),
           },
         },
       ],
@@ -87,10 +88,10 @@ describe("DictionaryService", () => {
       translationsService.extractTranslationReferences.mockReturnValue([]);
 
       await service.ingestLexeme("amo", {
-        word: "amō",
         category: "Latin",
         href: "/wiki/amo",
         html: "<html>test</html>",
+        word: "amō",
       });
 
       expect(lexemesService.saveParsedLexeme).toHaveBeenCalledWith(newLexeme);
@@ -127,10 +128,10 @@ describe("DictionaryService", () => {
       translationsService.extractTranslationReferences.mockReturnValue([]);
 
       await service.ingestLexeme("amo", {
-        word: "amō",
         category: "Latin",
         href: "/wiki/amo",
         html: "<html>test</html>",
+        word: "amō",
       });
 
       // Should call saveParsedLexeme
@@ -159,10 +160,10 @@ describe("DictionaryService", () => {
       lexemesService.saveParsedLexeme.mockResolvedValue(newLexeme);
 
       await service.ingestLexeme("amo", {
-        word: "amō",
         category: "Latin",
         href: "/wiki/amo",
         html: "<html>test</html>",
+        word: "amō",
       });
 
       expect(lexemesService.saveParsedLexeme).toHaveBeenCalledWith(newLexeme);
@@ -186,10 +187,10 @@ describe("DictionaryService", () => {
       lexemesService.existsByLemma.mockResolvedValue(true);
 
       await service.ingestLexeme("amor", {
-        word: "amor",
         category: "Latin",
         href: "/wiki/amor",
         html: "<html>test</html>",
+        word: "amor",
       });
 
       expect(lexemesService.saveParsedLexeme).toHaveBeenCalledWith(savedLexeme);

@@ -55,8 +55,8 @@ describe("SpecialtyAspectsService", () => {
             );
           }
           ephemeris[timestamp] = {
-            longitude,
             latitude: 0,
+            longitude,
           };
         });
         return ephemeris;
@@ -76,9 +76,9 @@ describe("SpecialtyAspectsService", () => {
         // novile (40°), undecile (32.73°), decile (36°), tredecile (108°)
         allBodies.forEach((body) => {
           ephemerisByBody[body] = createEphemeris({
-            [previousMinute.toISOString()]: 200,
             [currentMinute.toISOString()]: 200,
             [nextMinute.toISOString()]: 200,
+            [previousMinute.toISOString()]: 200,
           });
         });
         return ephemerisByBody;
@@ -96,14 +96,14 @@ describe("SpecialtyAspectsService", () => {
         );
 
         coordinateEphemerisByBody.sun = createEphemeris({
-          [previousMinute.toISOString()]: 71,
           [currentMinute.toISOString()]: 72,
           [nextMinute.toISOString()]: 73,
+          [previousMinute.toISOString()]: 71,
         });
         coordinateEphemerisByBody.mercury = createEphemeris({
-          [previousMinute.toISOString()]: 1,
           [currentMinute.toISOString()]: 0,
           [nextMinute.toISOString()]: 359,
+          [previousMinute.toISOString()]: 1,
         });
 
         const events = service.detect({
@@ -136,14 +136,14 @@ describe("SpecialtyAspectsService", () => {
         // Sun at 72°, Venus moving from 357° to 358.5° (entering 2° quintile orb)
         // Angle from Sun: 75° (outside) → 73.5° (inside) → entering orb around 72° (within 2°)
         coordinateEphemerisByBody.sun = createEphemeris({
-          [previousMinute.toISOString()]: 72,
           [currentMinute.toISOString()]: 72,
           [nextMinute.toISOString()]: 72,
+          [previousMinute.toISOString()]: 72,
         });
         coordinateEphemerisByBody.venus = createEphemeris({
-          [previousMinute.toISOString()]: 357,
           [currentMinute.toISOString()]: 358.5,
           [nextMinute.toISOString()]: 359.5,
+          [previousMinute.toISOString()]: 357,
         });
 
         const events = service.detect({
@@ -176,14 +176,14 @@ describe("SpecialtyAspectsService", () => {
         // Sun at 0°, Mars moving from 40.5° to 41.5° (exiting 1° novile orb at 40°)
         // Angle: 40.5° to 41.5° → exiting 1° orb around 40°
         coordinateEphemerisByBody.sun = createEphemeris({
-          [previousMinute.toISOString()]: 0,
           [currentMinute.toISOString()]: 0,
           [nextMinute.toISOString()]: 0,
+          [previousMinute.toISOString()]: 0,
         });
         coordinateEphemerisByBody.mars = createEphemeris({
-          [previousMinute.toISOString()]: 40.5,
           [currentMinute.toISOString()]: 40.8,
           [nextMinute.toISOString()]: 41.5,
+          [previousMinute.toISOString()]: 40.5,
         });
 
         const events = service.detect({
@@ -217,19 +217,19 @@ describe("SpecialtyAspectsService", () => {
         // Sun at 72°, Mercury at 0° = quintile (72°)
         // Sun at 72°, Venus at 112° = novile (40°)
         coordinateEphemerisByBody.sun = createEphemeris({
-          [previousMinute.toISOString()]: 71,
           [currentMinute.toISOString()]: 72,
           [nextMinute.toISOString()]: 73,
+          [previousMinute.toISOString()]: 71,
         });
         coordinateEphemerisByBody.mercury = createEphemeris({
-          [previousMinute.toISOString()]: 1,
           [currentMinute.toISOString()]: 0,
           [nextMinute.toISOString()]: 359,
+          [previousMinute.toISOString()]: 1,
         });
         coordinateEphemerisByBody.venus = createEphemeris({
-          [previousMinute.toISOString()]: 111,
           [currentMinute.toISOString()]: 112,
           [nextMinute.toISOString()]: 113,
+          [previousMinute.toISOString()]: 111,
         });
 
         const events = service.detect({
@@ -271,9 +271,9 @@ describe("SpecialtyAspectsService", () => {
         allBodies.forEach((body, index) => {
           const longitude = safeLongitudes[index] ?? 0;
           coordinateEphemerisByBody[body] = createEphemeris({
-            [previousMinute.toISOString()]: longitude,
             [currentMinute.toISOString()]: longitude,
             [nextMinute.toISOString()]: longitude,
+            [previousMinute.toISOString()]: longitude,
           });
         });
 
@@ -297,14 +297,14 @@ describe("SpecialtyAspectsService", () => {
         );
 
         coordinateEphemerisByBody.sun = createEphemeris({
-          [previousMinute.toISOString()]: 71,
           [currentMinute.toISOString()]: 72,
           [nextMinute.toISOString()]: 73,
+          [previousMinute.toISOString()]: 71,
         });
         coordinateEphemerisByBody.mercury = createEphemeris({
-          [previousMinute.toISOString()]: 1,
           [currentMinute.toISOString()]: 0,
           [nextMinute.toISOString()]: 359,
+          [previousMinute.toISOString()]: 1,
         });
 
         const events = service.detect({
@@ -325,12 +325,12 @@ describe("SpecialtyAspectsService", () => {
       it("should create perfective quintile event", () => {
         const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
         const event = service.buildSpecialtyAspectEvent({
-          longitudeBody1: 0,
-          longitudeBody2: 72,
-          timestamp,
           body1: "sun",
           body2: "moon",
+          longitudeBody1: 0,
+          longitudeBody2: 72,
           phase: "perfective",
+          timestamp,
         });
 
         expect(event.summary).toContain("🎯");
@@ -350,12 +350,12 @@ describe("SpecialtyAspectsService", () => {
       it("should create forming septile event", () => {
         const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
         const event = service.buildSpecialtyAspectEvent({
-          longitudeBody1: 0,
-          longitudeBody2: 50.8,
-          timestamp,
           body1: "sun",
           body2: "venus",
+          longitudeBody1: 0,
+          longitudeBody2: 50.8,
           phase: "forming",
+          timestamp,
         });
 
         expect(event.summary).toContain("➡️");
@@ -369,12 +369,12 @@ describe("SpecialtyAspectsService", () => {
       it("should create dissolving biquintile event", () => {
         const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
         const event = service.buildSpecialtyAspectEvent({
-          longitudeBody1: 0,
-          longitudeBody2: 145.5,
-          timestamp,
           body1: "sun",
           body2: "mars",
+          longitudeBody1: 0,
+          longitudeBody2: 145.5,
           phase: "dissolving",
+          timestamp,
         });
 
         expect(event.summary).toContain("⬅️");
@@ -388,12 +388,12 @@ describe("SpecialtyAspectsService", () => {
       it("should create novile event", () => {
         const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
         const event = service.buildSpecialtyAspectEvent({
-          longitudeBody1: 0,
-          longitudeBody2: 40,
-          timestamp,
           body1: "sun",
           body2: "jupiter",
+          longitudeBody1: 0,
+          longitudeBody2: 40,
           phase: "perfective",
+          timestamp,
         });
 
         expect(event.summary).toContain("🎯");
@@ -405,12 +405,12 @@ describe("SpecialtyAspectsService", () => {
         const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
         expect(() =>
           service.buildSpecialtyAspectEvent({
-            longitudeBody1: 0,
-            longitudeBody2: 90,
-            timestamp,
             body1: "sun",
             body2: "moon",
+            longitudeBody1: 0,
+            longitudeBody2: 90,
             phase: "perfective",
+            timestamp,
           }),
         ).toThrow("No specialty aspect found");
       });
@@ -418,12 +418,12 @@ describe("SpecialtyAspectsService", () => {
       it("should handle wrapped longitudes (near 360/0 degrees)", () => {
         const timestamp = moment.utc("2024-03-21T12:00:00.000Z");
         const event = service.buildSpecialtyAspectEvent({
-          longitudeBody1: 350,
-          longitudeBody2: 62,
-          timestamp,
           body1: "sun",
           body2: "moon",
+          longitudeBody1: 350,
+          longitudeBody2: 62,
           phase: "perfective",
+          timestamp,
         });
 
         expect(event.summary).toContain("quintile");
@@ -434,10 +434,6 @@ describe("SpecialtyAspectsService", () => {
     describe("service.detectProgressive", () => {
       it("should create progressive events from forming and dissolving pairs", () => {
         const formingEvent: Event = {
-          start: moment.utc("2024-03-21T10:00:00.000Z"),
-          end: moment.utc("2024-03-21T10:00:00.000Z"),
-          summary: "➡️ ☀️ ⬠ ☿ Sun forming quintile Mercury",
-          description: "Sun forming quintile Mercury",
           categories: [
             "Astronomy",
             "Astrology",
@@ -447,13 +443,13 @@ describe("SpecialtyAspectsService", () => {
             "Quintile",
             "Forming",
           ],
+          description: "Sun forming quintile Mercury",
+          end: moment.utc("2024-03-21T10:00:00.000Z"),
+          start: moment.utc("2024-03-21T10:00:00.000Z"),
+          summary: "➡️ ☀️ ⬠ ☿ Sun forming quintile Mercury",
         };
 
         const dissolvingEvent: Event = {
-          start: moment.utc("2024-03-21T14:00:00.000Z"),
-          end: moment.utc("2024-03-21T14:00:00.000Z"),
-          summary: "⬅️ ☀️ ⬠ ☿ Sun dissolving quintile Mercury",
-          description: "Sun dissolving quintile Mercury",
           categories: [
             "Astronomy",
             "Astrology",
@@ -463,6 +459,10 @@ describe("SpecialtyAspectsService", () => {
             "Quintile",
             "Dissolving",
           ],
+          description: "Sun dissolving quintile Mercury",
+          end: moment.utc("2024-03-21T14:00:00.000Z"),
+          start: moment.utc("2024-03-21T14:00:00.000Z"),
+          summary: "⬅️ ☀️ ⬠ ☿ Sun dissolving quintile Mercury",
         };
 
         const progressiveEvents = service.detectProgressive([
@@ -481,10 +481,6 @@ describe("SpecialtyAspectsService", () => {
 
       it("should handle multiple aspect types for same body pair", () => {
         const quintileForming: Event = {
-          start: moment.utc("2024-03-21T10:00:00.000Z"),
-          end: moment.utc("2024-03-21T10:00:00.000Z"),
-          summary: "forming",
-          description: "Sun forming quintile Mercury",
           categories: [
             "Specialty Aspect",
             "Sun",
@@ -492,13 +488,13 @@ describe("SpecialtyAspectsService", () => {
             "Quintile",
             "Forming",
           ],
+          description: "Sun forming quintile Mercury",
+          end: moment.utc("2024-03-21T10:00:00.000Z"),
+          start: moment.utc("2024-03-21T10:00:00.000Z"),
+          summary: "forming",
         };
 
         const quintileDissolving: Event = {
-          start: moment.utc("2024-03-21T14:00:00.000Z"),
-          end: moment.utc("2024-03-21T14:00:00.000Z"),
-          summary: "dissolving",
-          description: "Sun dissolving quintile Mercury",
           categories: [
             "Specialty Aspect",
             "Sun",
@@ -506,13 +502,13 @@ describe("SpecialtyAspectsService", () => {
             "Quintile",
             "Dissolving",
           ],
+          description: "Sun dissolving quintile Mercury",
+          end: moment.utc("2024-03-21T14:00:00.000Z"),
+          start: moment.utc("2024-03-21T14:00:00.000Z"),
+          summary: "dissolving",
         };
 
         const biquintileForming: Event = {
-          start: moment.utc("2024-03-22T10:00:00.000Z"),
-          end: moment.utc("2024-03-22T10:00:00.000Z"),
-          summary: "forming",
-          description: "Sun forming biquintile Mercury",
           categories: [
             "Specialty Aspect",
             "Sun",
@@ -520,13 +516,13 @@ describe("SpecialtyAspectsService", () => {
             "Biquintile",
             "Forming",
           ],
+          description: "Sun forming biquintile Mercury",
+          end: moment.utc("2024-03-22T10:00:00.000Z"),
+          start: moment.utc("2024-03-22T10:00:00.000Z"),
+          summary: "forming",
         };
 
         const biquintileDissolving: Event = {
-          start: moment.utc("2024-03-22T14:00:00.000Z"),
-          end: moment.utc("2024-03-22T14:00:00.000Z"),
-          summary: "dissolving",
-          description: "Sun dissolving biquintile Mercury",
           categories: [
             "Specialty Aspect",
             "Sun",
@@ -534,6 +530,10 @@ describe("SpecialtyAspectsService", () => {
             "Biquintile",
             "Dissolving",
           ],
+          description: "Sun dissolving biquintile Mercury",
+          end: moment.utc("2024-03-22T14:00:00.000Z"),
+          start: moment.utc("2024-03-22T14:00:00.000Z"),
+          summary: "dissolving",
         };
 
         const progressiveEvents = service.detectProgressive([
@@ -554,10 +554,6 @@ describe("SpecialtyAspectsService", () => {
 
       it("should handle multiple body pairs", () => {
         const sunMercuryForming: Event = {
-          start: moment.utc("2024-03-21T10:00:00.000Z"),
-          end: moment.utc("2024-03-21T10:00:00.000Z"),
-          summary: "forming",
-          description: "Sun forming quintile Mercury",
           categories: [
             "Specialty Aspect",
             "Sun",
@@ -565,13 +561,13 @@ describe("SpecialtyAspectsService", () => {
             "Quintile",
             "Forming",
           ],
+          description: "Sun forming quintile Mercury",
+          end: moment.utc("2024-03-21T10:00:00.000Z"),
+          start: moment.utc("2024-03-21T10:00:00.000Z"),
+          summary: "forming",
         };
 
         const sunMercuryDissolving: Event = {
-          start: moment.utc("2024-03-21T14:00:00.000Z"),
-          end: moment.utc("2024-03-21T14:00:00.000Z"),
-          summary: "dissolving",
-          description: "Sun dissolving quintile Mercury",
           categories: [
             "Specialty Aspect",
             "Sun",
@@ -579,13 +575,13 @@ describe("SpecialtyAspectsService", () => {
             "Quintile",
             "Dissolving",
           ],
+          description: "Sun dissolving quintile Mercury",
+          end: moment.utc("2024-03-21T14:00:00.000Z"),
+          start: moment.utc("2024-03-21T14:00:00.000Z"),
+          summary: "dissolving",
         };
 
         const venusMarForming: Event = {
-          start: moment.utc("2024-03-21T11:00:00.000Z"),
-          end: moment.utc("2024-03-21T11:00:00.000Z"),
-          summary: "forming",
-          description: "Venus forming septile Mars",
           categories: [
             "Specialty Aspect",
             "Venus",
@@ -593,13 +589,13 @@ describe("SpecialtyAspectsService", () => {
             "Septile",
             "Forming",
           ],
+          description: "Venus forming septile Mars",
+          end: moment.utc("2024-03-21T11:00:00.000Z"),
+          start: moment.utc("2024-03-21T11:00:00.000Z"),
+          summary: "forming",
         };
 
         const venusMarDissolving: Event = {
-          start: moment.utc("2024-03-21T15:00:00.000Z"),
-          end: moment.utc("2024-03-21T15:00:00.000Z"),
-          summary: "dissolving",
-          description: "Venus dissolving septile Mars",
           categories: [
             "Specialty Aspect",
             "Venus",
@@ -607,6 +603,10 @@ describe("SpecialtyAspectsService", () => {
             "Septile",
             "Dissolving",
           ],
+          description: "Venus dissolving septile Mars",
+          end: moment.utc("2024-03-21T15:00:00.000Z"),
+          start: moment.utc("2024-03-21T15:00:00.000Z"),
+          summary: "dissolving",
         };
 
         const progressiveEvents = service.detectProgressive([
@@ -634,10 +634,6 @@ describe("SpecialtyAspectsService", () => {
 
       it("should filter out non-specialty-aspect events", () => {
         const specialtyAspectEvent: Event = {
-          start: moment.utc("2024-03-21T10:00:00.000Z"),
-          end: moment.utc("2024-03-21T10:00:00.000Z"),
-          summary: "forming",
-          description: "Sun forming quintile Moon",
           categories: [
             "Specialty Aspect",
             "Sun",
@@ -645,14 +641,18 @@ describe("SpecialtyAspectsService", () => {
             "Quintile",
             "Forming",
           ],
+          description: "Sun forming quintile Moon",
+          end: moment.utc("2024-03-21T10:00:00.000Z"),
+          start: moment.utc("2024-03-21T10:00:00.000Z"),
+          summary: "forming",
         };
 
         const nonSpecialtyAspectEvent: Event = {
-          start: moment.utc("2024-03-21T10:00:00.000Z"),
-          end: moment.utc("2024-03-21T10:00:00.000Z"),
-          summary: "other event",
-          description: "Some other event",
           categories: ["Other"],
+          description: "Some other event",
+          end: moment.utc("2024-03-21T10:00:00.000Z"),
+          start: moment.utc("2024-03-21T10:00:00.000Z"),
+          summary: "other event",
         };
 
         const progressiveEvents = service.detectProgressive([
@@ -674,10 +674,6 @@ describe("SpecialtyAspectsService", () => {
 
       it("should sort body names alphabetically in progressive event", () => {
         const formingEvent: Event = {
-          start: moment.utc("2024-03-21T10:00:00.000Z"),
-          end: moment.utc("2024-03-21T10:00:00.000Z"),
-          summary: "forming",
-          description: "Venus forming quintile Mars",
           categories: [
             "Specialty Aspect",
             "Venus",
@@ -685,13 +681,13 @@ describe("SpecialtyAspectsService", () => {
             "Quintile",
             "Forming",
           ],
+          description: "Venus forming quintile Mars",
+          end: moment.utc("2024-03-21T10:00:00.000Z"),
+          start: moment.utc("2024-03-21T10:00:00.000Z"),
+          summary: "forming",
         };
 
         const dissolvingEvent: Event = {
-          start: moment.utc("2024-03-21T14:00:00.000Z"),
-          end: moment.utc("2024-03-21T14:00:00.000Z"),
-          summary: "dissolving",
-          description: "Venus dissolving quintile Mars",
           categories: [
             "Specialty Aspect",
             "Venus",
@@ -699,6 +695,10 @@ describe("SpecialtyAspectsService", () => {
             "Quintile",
             "Dissolving",
           ],
+          description: "Venus dissolving quintile Mars",
+          end: moment.utc("2024-03-21T14:00:00.000Z"),
+          start: moment.utc("2024-03-21T14:00:00.000Z"),
+          summary: "dissolving",
         };
 
         const progressiveEvents = service.detectProgressive([

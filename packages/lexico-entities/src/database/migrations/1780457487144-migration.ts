@@ -9,6 +9,144 @@ export class Migration1780457487144 implements MigrationInterface {
   /**
    *
    */
+  public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.query(
+      `ALTER TABLE "word_lexemes" DROP CONSTRAINT "FK_643892e2709e1d49641fb965b82"`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "word_lexemes" DROP CONSTRAINT "FK_579999929ed6b899e769cd234ba"`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "word_forms" DROP CONSTRAINT "FK_f19edc2c148cc8536b7bba7afa9"`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "word_forms" DROP CONSTRAINT "FK_54256ad366638dd2243dcd88b25"`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "translations" DROP CONSTRAINT "FK_03033925e968b7c9430896d55f8"`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "pronunciations" DROP CONSTRAINT "FK_ccf78e53911b7c121a65192c89d"`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "principal_parts" DROP CONSTRAINT "FK_95d23e3a9561dea102f7bf9325e"`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "inflections" DROP CONSTRAINT "FK_ebe1d473505c1ffc72c57d57731"`,
+    );
+    await queryRunner.query(
+      `ALTER TABLE "forms" DROP CONSTRAINT "FK_52ebb86789cf513c7fb44ab9a95"`,
+    );
+    await queryRunner.query(`COMMENT ON TABLE "words" IS NULL`);
+    await queryRunner.query(`DROP TABLE "words"`);
+    await queryRunner.query(`COMMENT ON TABLE "word_lexemes" IS NULL`);
+    await queryRunner.query(
+      `DROP INDEX "public"."IDX_3bfcf800c79bf43fa516db099d"`,
+    );
+    await queryRunner.query(
+      `DROP INDEX "public"."IDX_643892e2709e1d49641fb965b8"`,
+    );
+    await queryRunner.query(
+      `DROP INDEX "public"."IDX_579999929ed6b899e769cd234b"`,
+    );
+    await queryRunner.query(`DROP TABLE "word_lexemes"`);
+    await queryRunner.query(`COMMENT ON TABLE "word_forms" IS NULL`);
+    await queryRunner.query(
+      `DROP INDEX "public"."IDX_a3450e22c3c4ab78e8f3f817c8"`,
+    );
+    await queryRunner.query(
+      `DROP INDEX "public"."IDX_f19edc2c148cc8536b7bba7afa"`,
+    );
+    await queryRunner.query(
+      `DROP INDEX "public"."IDX_54256ad366638dd2243dcd88b2"`,
+    );
+    await queryRunner.query(`DROP TABLE "word_forms"`);
+    await queryRunner.query(`COMMENT ON TABLE "lexemes" IS NULL`);
+    await queryRunner.query(
+      `DROP INDEX "public"."IDX_f6fa0a0a5e197c157882f29c22"`,
+    );
+    await queryRunner.query(
+      `DROP INDEX "public"."IDX_9204890678d644ba216ae116e3"`,
+    );
+    await queryRunner.query(`DROP TABLE "lexemes"`);
+    await queryRunner.query(`DROP TYPE "public"."lexemes_part_of_speech_enum"`);
+    await queryRunner.query(`COMMENT ON TABLE "translations" IS NULL`);
+    await queryRunner.query(
+      `DROP INDEX "public"."IDX_9bc0b8d1aa44faf6ebfde865a2"`,
+    );
+    await queryRunner.query(
+      `DROP INDEX "public"."IDX_6dba6d45fe6d365d0373220f0f"`,
+    );
+    await queryRunner.query(
+      `DROP INDEX "public"."IDX_03033925e968b7c9430896d55f"`,
+    );
+    await queryRunner.query(`DROP TABLE "translations"`);
+    await queryRunner.query(
+      `DELETE FROM "public"."typeorm_metadata" WHERE "type" = $1 AND "name" = $2 AND "database" = $3 AND "schema" = $4 AND "table" = $5`,
+      [
+        "GENERATED_COLUMN",
+        "translation_full_text_search",
+        "postgres",
+        "public",
+        "translations",
+      ],
+    );
+    await queryRunner.query(`COMMENT ON TABLE "pronunciations" IS NULL`);
+    await queryRunner.query(
+      `DROP INDEX "public"."IDX_8fc53b1cbb6c5683b37f65a328"`,
+    );
+    await queryRunner.query(
+      `DROP INDEX "public"."IDX_8de57efb4c40b209b2883c3d8c"`,
+    );
+    await queryRunner.query(
+      `DROP INDEX "public"."IDX_81c176364b794cdcdf309a7a60"`,
+    );
+    await queryRunner.query(
+      `DROP INDEX "public"."IDX_ccf78e53911b7c121a65192c89"`,
+    );
+    await queryRunner.query(`DROP TABLE "pronunciations"`);
+    await queryRunner.query(`DROP TYPE "public"."pronunciations_variant_enum"`);
+    await queryRunner.query(`COMMENT ON TABLE "principal_parts" IS NULL`);
+    await queryRunner.query(
+      `DROP INDEX "public"."IDX_95d23e3a9561dea102f7bf9325"`,
+    );
+    await queryRunner.query(`DROP TABLE "principal_parts"`);
+    await queryRunner.query(`COMMENT ON TABLE "inflections" IS NULL`);
+    await queryRunner.query(
+      `DROP INDEX "public"."IDX_2f191c1029749f9f01b877e7f8"`,
+    );
+    await queryRunner.query(`DROP TABLE "inflections"`);
+    await queryRunner.query(
+      `DROP TYPE "public"."inflections_conjugation_enum"`,
+    );
+    await queryRunner.query(`DROP TYPE "public"."inflections_case_enum"`);
+    await queryRunner.query(
+      `DROP TYPE "public"."inflections_adverb_type_enum"`,
+    );
+    await queryRunner.query(`DROP TYPE "public"."inflections_degree_enum"`);
+    await queryRunner.query(`DROP TYPE "public"."inflections_gender_enum"`);
+    await queryRunner.query(`DROP TYPE "public"."inflections_declension_enum"`);
+    await queryRunner.query(`COMMENT ON TABLE "forms" IS NULL`);
+    await queryRunner.query(
+      `DROP INDEX "public"."IDX_2bc463838022e5cc652df63c4a"`,
+    );
+    await queryRunner.query(
+      `DROP INDEX "public"."IDX_52ebb86789cf513c7fb44ab9a9"`,
+    );
+    await queryRunner.query(`DROP TABLE "forms"`);
+    await queryRunner.query(`DROP TYPE "public"."forms_person_enum"`);
+    await queryRunner.query(`DROP TYPE "public"."forms_tense_enum"`);
+    await queryRunner.query(`DROP TYPE "public"."forms_voice_enum"`);
+    await queryRunner.query(`DROP TYPE "public"."forms_mood_enum"`);
+    await queryRunner.query(`DROP TYPE "public"."forms_degree_enum"`);
+    await queryRunner.query(`DROP TYPE "public"."forms_number_enum"`);
+    await queryRunner.query(`DROP TYPE "public"."forms_form_case_enum"`);
+    await queryRunner.query(`DROP TYPE "public"."forms_gender_enum"`);
+  }
+
+  /**
+   *
+   */
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(
       `CREATE TYPE "public"."forms_gender_enum" AS ENUM('masculine', 'feminine', 'neuter')`,
@@ -207,143 +345,5 @@ export class Migration1780457487144 implements MigrationInterface {
     await queryRunner.query(
       `ALTER TABLE "word_lexemes" ADD CONSTRAINT "FK_643892e2709e1d49641fb965b82" FOREIGN KEY ("lexeme_id") REFERENCES "lexemes"("id") ON DELETE CASCADE ON UPDATE CASCADE`,
     );
-  }
-
-  /**
-   *
-   */
-  public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query(
-      `ALTER TABLE "word_lexemes" DROP CONSTRAINT "FK_643892e2709e1d49641fb965b82"`,
-    );
-    await queryRunner.query(
-      `ALTER TABLE "word_lexemes" DROP CONSTRAINT "FK_579999929ed6b899e769cd234ba"`,
-    );
-    await queryRunner.query(
-      `ALTER TABLE "word_forms" DROP CONSTRAINT "FK_f19edc2c148cc8536b7bba7afa9"`,
-    );
-    await queryRunner.query(
-      `ALTER TABLE "word_forms" DROP CONSTRAINT "FK_54256ad366638dd2243dcd88b25"`,
-    );
-    await queryRunner.query(
-      `ALTER TABLE "translations" DROP CONSTRAINT "FK_03033925e968b7c9430896d55f8"`,
-    );
-    await queryRunner.query(
-      `ALTER TABLE "pronunciations" DROP CONSTRAINT "FK_ccf78e53911b7c121a65192c89d"`,
-    );
-    await queryRunner.query(
-      `ALTER TABLE "principal_parts" DROP CONSTRAINT "FK_95d23e3a9561dea102f7bf9325e"`,
-    );
-    await queryRunner.query(
-      `ALTER TABLE "inflections" DROP CONSTRAINT "FK_ebe1d473505c1ffc72c57d57731"`,
-    );
-    await queryRunner.query(
-      `ALTER TABLE "forms" DROP CONSTRAINT "FK_52ebb86789cf513c7fb44ab9a95"`,
-    );
-    await queryRunner.query(`COMMENT ON TABLE "words" IS NULL`);
-    await queryRunner.query(`DROP TABLE "words"`);
-    await queryRunner.query(`COMMENT ON TABLE "word_lexemes" IS NULL`);
-    await queryRunner.query(
-      `DROP INDEX "public"."IDX_3bfcf800c79bf43fa516db099d"`,
-    );
-    await queryRunner.query(
-      `DROP INDEX "public"."IDX_643892e2709e1d49641fb965b8"`,
-    );
-    await queryRunner.query(
-      `DROP INDEX "public"."IDX_579999929ed6b899e769cd234b"`,
-    );
-    await queryRunner.query(`DROP TABLE "word_lexemes"`);
-    await queryRunner.query(`COMMENT ON TABLE "word_forms" IS NULL`);
-    await queryRunner.query(
-      `DROP INDEX "public"."IDX_a3450e22c3c4ab78e8f3f817c8"`,
-    );
-    await queryRunner.query(
-      `DROP INDEX "public"."IDX_f19edc2c148cc8536b7bba7afa"`,
-    );
-    await queryRunner.query(
-      `DROP INDEX "public"."IDX_54256ad366638dd2243dcd88b2"`,
-    );
-    await queryRunner.query(`DROP TABLE "word_forms"`);
-    await queryRunner.query(`COMMENT ON TABLE "lexemes" IS NULL`);
-    await queryRunner.query(
-      `DROP INDEX "public"."IDX_f6fa0a0a5e197c157882f29c22"`,
-    );
-    await queryRunner.query(
-      `DROP INDEX "public"."IDX_9204890678d644ba216ae116e3"`,
-    );
-    await queryRunner.query(`DROP TABLE "lexemes"`);
-    await queryRunner.query(`DROP TYPE "public"."lexemes_part_of_speech_enum"`);
-    await queryRunner.query(`COMMENT ON TABLE "translations" IS NULL`);
-    await queryRunner.query(
-      `DROP INDEX "public"."IDX_9bc0b8d1aa44faf6ebfde865a2"`,
-    );
-    await queryRunner.query(
-      `DROP INDEX "public"."IDX_6dba6d45fe6d365d0373220f0f"`,
-    );
-    await queryRunner.query(
-      `DROP INDEX "public"."IDX_03033925e968b7c9430896d55f"`,
-    );
-    await queryRunner.query(`DROP TABLE "translations"`);
-    await queryRunner.query(
-      `DELETE FROM "public"."typeorm_metadata" WHERE "type" = $1 AND "name" = $2 AND "database" = $3 AND "schema" = $4 AND "table" = $5`,
-      [
-        "GENERATED_COLUMN",
-        "translation_full_text_search",
-        "postgres",
-        "public",
-        "translations",
-      ],
-    );
-    await queryRunner.query(`COMMENT ON TABLE "pronunciations" IS NULL`);
-    await queryRunner.query(
-      `DROP INDEX "public"."IDX_8fc53b1cbb6c5683b37f65a328"`,
-    );
-    await queryRunner.query(
-      `DROP INDEX "public"."IDX_8de57efb4c40b209b2883c3d8c"`,
-    );
-    await queryRunner.query(
-      `DROP INDEX "public"."IDX_81c176364b794cdcdf309a7a60"`,
-    );
-    await queryRunner.query(
-      `DROP INDEX "public"."IDX_ccf78e53911b7c121a65192c89"`,
-    );
-    await queryRunner.query(`DROP TABLE "pronunciations"`);
-    await queryRunner.query(`DROP TYPE "public"."pronunciations_variant_enum"`);
-    await queryRunner.query(`COMMENT ON TABLE "principal_parts" IS NULL`);
-    await queryRunner.query(
-      `DROP INDEX "public"."IDX_95d23e3a9561dea102f7bf9325"`,
-    );
-    await queryRunner.query(`DROP TABLE "principal_parts"`);
-    await queryRunner.query(`COMMENT ON TABLE "inflections" IS NULL`);
-    await queryRunner.query(
-      `DROP INDEX "public"."IDX_2f191c1029749f9f01b877e7f8"`,
-    );
-    await queryRunner.query(`DROP TABLE "inflections"`);
-    await queryRunner.query(
-      `DROP TYPE "public"."inflections_conjugation_enum"`,
-    );
-    await queryRunner.query(`DROP TYPE "public"."inflections_case_enum"`);
-    await queryRunner.query(
-      `DROP TYPE "public"."inflections_adverb_type_enum"`,
-    );
-    await queryRunner.query(`DROP TYPE "public"."inflections_degree_enum"`);
-    await queryRunner.query(`DROP TYPE "public"."inflections_gender_enum"`);
-    await queryRunner.query(`DROP TYPE "public"."inflections_declension_enum"`);
-    await queryRunner.query(`COMMENT ON TABLE "forms" IS NULL`);
-    await queryRunner.query(
-      `DROP INDEX "public"."IDX_2bc463838022e5cc652df63c4a"`,
-    );
-    await queryRunner.query(
-      `DROP INDEX "public"."IDX_52ebb86789cf513c7fb44ab9a9"`,
-    );
-    await queryRunner.query(`DROP TABLE "forms"`);
-    await queryRunner.query(`DROP TYPE "public"."forms_person_enum"`);
-    await queryRunner.query(`DROP TYPE "public"."forms_tense_enum"`);
-    await queryRunner.query(`DROP TYPE "public"."forms_voice_enum"`);
-    await queryRunner.query(`DROP TYPE "public"."forms_mood_enum"`);
-    await queryRunner.query(`DROP TYPE "public"."forms_degree_enum"`);
-    await queryRunner.query(`DROP TYPE "public"."forms_number_enum"`);
-    await queryRunner.query(`DROP TYPE "public"."forms_form_case_enum"`);
-    await queryRunner.query(`DROP TYPE "public"."forms_gender_enum"`);
   }
 }

@@ -24,25 +24,25 @@ export const SWISS_EPHEMERIS_FLAGS: number =
 
 /** Maps each planet name to its Swiss Ephemeris integer body identifier. */
 export const swissEphemerisConstantByPlanet: Record<Planet, number> = {
-  sun: constants.SE_SUN,
-  moon: constants.SE_MOON,
-  mercury: constants.SE_MERCURY,
-  venus: constants.SE_VENUS,
-  mars: constants.SE_MARS,
   jupiter: constants.SE_JUPITER,
-  saturn: constants.SE_SATURN,
-  uranus: constants.SE_URANUS,
+  mars: constants.SE_MARS,
+  mercury: constants.SE_MERCURY,
+  moon: constants.SE_MOON,
   neptune: constants.SE_NEPTUNE,
   pluto: constants.SE_PLUTO,
+  saturn: constants.SE_SATURN,
+  sun: constants.SE_SUN,
+  uranus: constants.SE_URANUS,
+  venus: constants.SE_VENUS,
 };
 
 /** Maps each asteroid name to its Swiss Ephemeris integer body identifier. */
 export const swissEphemerisConstantByAsteroid: Record<Asteroid, number> = {
-  chiron: constants.SE_CHIRON,
-  lilith: constants.SE_MEAN_APOG,
   ceres: constants.SE_CERES,
-  pallas: constants.SE_PALLAS,
+  chiron: constants.SE_CHIRON,
   juno: constants.SE_JUNO,
+  lilith: constants.SE_MEAN_APOG,
+  pallas: constants.SE_PALLAS,
   vesta: constants.SE_VESTA,
 };
 
@@ -50,11 +50,11 @@ export const swissEphemerisConstantByAsteroid: Record<Asteroid, number> = {
  * Maps each lunar node / apside name to its Swiss Ephemeris integer body identifier.
  * Lunar perigee has no direct SE constant and is derived from osculating elements, so its value is `null`.
  */
-export const swissEphemerisConstantByNode: Record<Node, number | null> = {
-  "north lunar node": constants.SE_TRUE_NODE,
-  "south lunar node": constants.SE_TRUE_NODE,
+export const swissEphemerisConstantByNode: Record<Node, null | number> = {
   "lunar apogee": constants.SE_OSCU_APOG,
   "lunar perigee": null,
+  "north lunar node": constants.SE_TRUE_NODE,
+  "south lunar node": constants.SE_TRUE_NODE,
 };
 
 /**

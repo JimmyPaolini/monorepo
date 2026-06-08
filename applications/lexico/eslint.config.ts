@@ -12,11 +12,11 @@ export default [
       "@nx/dependency-checks": [
         "error",
         {
+          ignoredDependencies: ["vite", "@vitejs/plugin-react", "lodash"],
           ignoredFiles: [
             "{projectRoot}/eslint.config.{js,cjs,mjs,ts,cts,mts}",
             "{projectRoot}/vite.config.{js,ts,mjs,mts}",
           ],
-          ignoredDependencies: ["vite", "@vitejs/plugin-react", "lodash"],
         },
       ],
     },

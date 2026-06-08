@@ -31,7 +31,8 @@ export type { AspectBodies } from "./aspects.types";
  */
 @Injectable()
 export class AspectsService {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
+
   constructor(
     @Inject(MajorAspectsService)
     private readonly majorAspectsService: MajorAspectsService,
@@ -63,91 +64,6 @@ export class AspectsService {
   }
 
   // 🌎 Public Methods
-
-  /**
-   * Detects all aspect events at a single minute, including 2-body and multi-body patterns.
-   *
-   * Runs simple-aspect detection first (major, minor, specialty), then computes the
-   * updated active-aspect registry and uses it to detect composite configurations
-   * (triple, quadruple, quintuple, sextuple, stellium).
-   *
-   * @param args - Ephemeris data, target minute, and the currently active aspect bodies
-   * @returns Detected calendar events and the updated active-aspect registry
-   */
-  detect(args: {
-    coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
-    minute: Moment;
-    previousAspectBodies: AspectBodies[];
-  }): { events: Event[]; aspectBodies: AspectBodies[] } {
-    const { coordinateEphemerisByBody, minute, previousAspectBodies } = args;
-
-    const simpleAspectEvents: Event[] = [
-      ...this.majorAspectsService.detect({ coordinateEphemerisByBody, minute }),
-      ...this.minorAspectsService.detect({ coordinateEphemerisByBody, minute }),
-      ...this.specialtyAspectsService.detect({
-        coordinateEphemerisByBody,
-        minute,
-      }),
-    ];
-
-    const currentAspectBodies = this.computeAspectBodies(
-      previousAspectBodies,
-      simpleAspectEvents,
-    );
-
-    const events: Event[] = [
-      ...simpleAspectEvents,
-      ...this.tripleAspectsService.detect({
-        currentAspectBodies,
-        previousAspectBodies,
-        minute,
-      }),
-      ...this.quadrupleAspectsService.detect({
-        currentAspectBodies,
-        previousAspectBodies,
-        minute,
-      }),
-      ...this.quintupleAspectsService.detect({
-        currentAspectBodies,
-        previousAspectBodies,
-        minute,
-      }),
-      ...this.sextupleAspectsService.detect({
-        currentAspectBodies,
-        previousAspectBodies,
-        minute,
-      }),
-      ...this.stelliumService.detect({
-        currentAspectBodies,
-        previousAspectBodies,
-        minute,
-      }),
-    ];
-
-    return { events, aspectBodies: currentAspectBodies };
-  }
-
-  /**
-   * Pairs forming and dissolving events into progressive (duration) events for all aspect types.
-   *
-   * Delegates to each sub-service so that every aspect category produces progressive
-   * events spanning its full in-orb period.
-   *
-   * @param events - Instantaneous events accumulated over a complete date range
-   * @returns Progressive events, one per aspect occurrence, covering its forming-to-dissolving span
-   */
-  detectProgressive(events: Event[]): Event[] {
-    return [
-      ...this.majorAspectsService.detectProgressive(events),
-      ...this.minorAspectsService.detectProgressive(events),
-      ...this.specialtyAspectsService.detectProgressive(events),
-      ...this.tripleAspectsService.detectProgressive(events),
-      ...this.quadrupleAspectsService.detectProgressive(events),
-      ...this.quintupleAspectsService.detectProgressive(events),
-      ...this.sextupleAspectsService.detectProgressive(events),
-      ...this.stelliumService.detectProgressive(events),
-    ];
-  }
 
   /**
    * Incrementally updates the active 2-body aspect registry from the current minute's events.
@@ -227,5 +143,90 @@ export class AspectsService {
     }
 
     return [...map.values()];
+  }
+
+  /**
+   * Detects all aspect events at a single minute, including 2-body and multi-body patterns.
+   *
+   * Runs simple-aspect detection first (major, minor, specialty), then computes the
+   * updated active-aspect registry and uses it to detect composite configurations
+   * (triple, quadruple, quintuple, sextuple, stellium).
+   *
+   * @param args - Ephemeris data, target minute, and the currently active aspect bodies
+   * @returns Detected calendar events and the updated active-aspect registry
+   */
+  detect(args: {
+    coordinateEphemerisByBody: Record<Body, CoordinateEphemeris>;
+    minute: Moment;
+    previousAspectBodies: AspectBodies[];
+  }): { aspectBodies: AspectBodies[]; events: Event[] } {
+    const { coordinateEphemerisByBody, minute, previousAspectBodies } = args;
+
+    const simpleAspectEvents: Event[] = [
+      ...this.majorAspectsService.detect({ coordinateEphemerisByBody, minute }),
+      ...this.minorAspectsService.detect({ coordinateEphemerisByBody, minute }),
+      ...this.specialtyAspectsService.detect({
+        coordinateEphemerisByBody,
+        minute,
+      }),
+    ];
+
+    const currentAspectBodies = this.computeAspectBodies(
+      previousAspectBodies,
+      simpleAspectEvents,
+    );
+
+    const events: Event[] = [
+      ...simpleAspectEvents,
+      ...this.tripleAspectsService.detect({
+        currentAspectBodies,
+        minute,
+        previousAspectBodies,
+      }),
+      ...this.quadrupleAspectsService.detect({
+        currentAspectBodies,
+        minute,
+        previousAspectBodies,
+      }),
+      ...this.quintupleAspectsService.detect({
+        currentAspectBodies,
+        minute,
+        previousAspectBodies,
+      }),
+      ...this.sextupleAspectsService.detect({
+        currentAspectBodies,
+        minute,
+        previousAspectBodies,
+      }),
+      ...this.stelliumService.detect({
+        currentAspectBodies,
+        minute,
+        previousAspectBodies,
+      }),
+    ];
+
+    return { aspectBodies: currentAspectBodies, events };
+  }
+
+  /**
+   * Pairs forming and dissolving events into progressive (duration) events for all aspect types.
+   *
+   * Delegates to each sub-service so that every aspect category produces progressive
+   * events spanning its full in-orb period.
+   *
+   * @param events - Instantaneous events accumulated over a complete date range
+   * @returns Progressive events, one per aspect occurrence, covering its forming-to-dissolving span
+   */
+  detectProgressive(events: Event[]): Event[] {
+    return [
+      ...this.majorAspectsService.detectProgressive(events),
+      ...this.minorAspectsService.detectProgressive(events),
+      ...this.specialtyAspectsService.detectProgressive(events),
+      ...this.tripleAspectsService.detectProgressive(events),
+      ...this.quadrupleAspectsService.detectProgressive(events),
+      ...this.quintupleAspectsService.detectProgressive(events),
+      ...this.sextupleAspectsService.detectProgressive(events),
+      ...this.stelliumService.detectProgressive(events),
+    ];
   }
 }

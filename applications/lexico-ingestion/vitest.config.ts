@@ -5,12 +5,12 @@ export default defineConfig({
     tsconfigPaths: true,
   },
   test: {
+    coverage: {
+      exclude: ["src/**/*.test.ts"],
+      include: ["src/**/*.ts"],
+    },
     globals: true,
     include: ["src/**/*.test.ts", "testing/**/*.test.ts"],
     setupFiles: ["./testing/setup.ts"],
-    coverage: {
-      include: ["src/**/*.ts"],
-      exclude: ["src/**/*.test.ts"],
-    },
   },
 });

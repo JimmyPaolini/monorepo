@@ -11,26 +11,26 @@ import type { FormCellProps } from "./form-cell";
 export interface AdjectiveForm {
   /** Grammatical case (nominative, genitive, etc.) */
   case: string;
-  /** Grammatical number (singular or plural) */
-  number: string;
-  /** Grammatical gender (masculine, feminine, neuter) */
-  gender: string;
   /** Degree of comparison (positive, comparative, superlative) */
   degree?: string | undefined;
   /** The declined form text */
   form: string;
+  /** Grammatical gender (masculine, feminine, neuter) */
+  gender: string;
+  /** Grammatical number (singular or plural) */
+  number: string;
 }
 
 /**
  * Props for the AdjectiveFormsTable component.
  */
 export interface AdjectiveFormsTableProps {
+  /** Additional class names */
+  className?: string | undefined;
   /** Adjective forms data */
   forms: AdjectiveForm[];
   /** Current search term for highlighting */
   search?: string | undefined;
-  /** Additional class names */
-  className?: string | undefined;
 }
 
 // Case order for adjective declension
@@ -47,20 +47,20 @@ const GENDER_ORDER = ["masculine", "feminine", "neuter"];
 const DEGREE_ORDER = ["positive", "comparative", "superlative"];
 
 const CASE_ABBREVIATIONS: Record<string, string> = {
-  nominative: "Nom.",
-  genitive: "Gen.",
-  dative: "Dat.",
-  accusative: "Acc.",
   ablative: "Abl.",
-  vocative: "Voc.",
+  accusative: "Acc.",
+  dative: "Dat.",
+  genitive: "Gen.",
   locative: "Loc.",
+  nominative: "Nom.",
+  vocative: "Voc.",
 };
 
 interface AdjectiveFormGroup {
   degree: string;
   genders: {
-    gender: string;
     cells: FormCellProps[];
+    gender: string;
   }[];
 }
 
@@ -119,7 +119,7 @@ function groupByGender(forms: AdjectiveForm[]): AdjectiveFormGroup["genders"] {
 
     const cells = restructureAdjectiveForms(grouped[gender]);
     if (cells.length > 0) {
-      result.push({ gender, cells });
+      result.push({ cells, gender });
     }
   }
 
@@ -131,7 +131,7 @@ function groupByGender(forms: AdjectiveForm[]): AdjectiveFormGroup["genders"] {
  */
 function restructureAdjectiveForms(forms: AdjectiveForm[]): FormCellProps[] {
   // Group by case
-  const byCase: Record<string, { singular?: string; plural?: string }> = {};
+  const byCase: Record<string, { plural?: string; singular?: string }> = {};
 
   for (const form of forms) {
     const caseName = form.case.toLowerCase();
@@ -157,13 +157,13 @@ function restructureAdjectiveForms(forms: AdjectiveForm[]): FormCellProps[] {
     // Singular cell (left column)
     cells.push(
       {
+        centerText: caseData.singular || "-",
         topLeftText: CASE_ABBREVIATIONS[caseName] || caseName,
         topRightText: "SG",
-        centerText: caseData.singular || "-",
       },
       {
-        topRightText: "PL",
         centerText: caseData.plural || "-",
+        topRightText: "PL",
       },
     );
   }
@@ -174,7 +174,7 @@ function restructureAdjectiveForms(forms: AdjectiveForm[]): FormCellProps[] {
 const AdjectiveFormsTable = React.forwardRef<
   HTMLDivElement,
   AdjectiveFormsTableProps
->(({ forms, search, className }, ref) => {
+>(({ className, forms, search }, ref) => {
   const grouped = React.useMemo(() => groupAdjectiveForms(forms), [forms]);
 
   const [activeDegree, setActiveDegree] = React.useState(0);
@@ -201,9 +201,9 @@ const AdjectiveFormsTable = React.forwardRef<
   const genderContent =
     genderTabs.length > 1 ? (
       <FormTabs
-        tabs={genderTabs}
         activeTab={activeGender}
         onTabChange={setActiveGender}
+        tabs={genderTabs}
       >
         {currentGender && (
           <FormsTable
@@ -228,9 +228,9 @@ const AdjectiveFormsTable = React.forwardRef<
     >
       {hasDegrees ? (
         <FormTabs
-          tabs={degreeTabs}
           activeTab={activeDegree}
           onTabChange={setActiveDegree}
+          tabs={degreeTabs}
         >
           {genderContent}
         </FormTabs>

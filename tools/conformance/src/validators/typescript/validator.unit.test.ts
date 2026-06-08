@@ -29,16 +29,15 @@ const SERVICE_TEMPLATE_PATH = path.join(
 describe("heavily modified service integration", () => {
   const TEMPLATE_CONTENT = fs.readFileSync(SERVICE_TEMPLATE_PATH, "utf8");
 
-  const MOCK_SERVICES: { camel: string; pascal: string; content: string }[] = [
+  const MOCK_SERVICES: { camel: string; content: string; pascal: string }[] = [
     {
       camel: "alpha",
-      pascal: "Alpha",
       content: [
         'import { Injectable } from "@nestjs/common";',
         "",
         "@Injectable()",
         "export class AlphaService {",
-        "  // 🏗️ Dependency Injection",
+        "  // 🏗 Dependency Injection",
         "  constructor() {}",
         "",
         "  // 🔐 Private Fields",
@@ -54,10 +53,10 @@ describe("heavily modified service integration", () => {
         "}",
         "",
       ].join("\n"),
+      pascal: "Alpha",
     },
     {
       camel: "beta",
-      pascal: "Beta",
       content: [
         'import { Injectable } from "@nestjs/common";',
         "",
@@ -65,7 +64,7 @@ describe("heavily modified service integration", () => {
         "",
         "@Injectable()",
         "export class BetaService {",
-        "  // 🏗️ Dependency Injection",
+        "  // 🏗 Dependency Injection",
         "  constructor(private readonly alphaService: AlphaService) {}",
         "",
         "  // 🔐 Private Fields",
@@ -85,10 +84,10 @@ describe("heavily modified service integration", () => {
         "}",
         "",
       ].join("\n"),
+      pascal: "Beta",
     },
     {
       camel: "gamma",
-      pascal: "Gamma",
       content: [
         'import { Injectable } from "@nestjs/common";',
         'import { Logger } from "@nestjs/common";',
@@ -96,7 +95,7 @@ describe("heavily modified service integration", () => {
         "/** Gamma service with extra fields interspersed between section comments. */",
         "@Injectable()",
         "export class GammaService {",
-        "  // 🏗️ Dependency Injection",
+        "  // 🏗 Dependency Injection",
         "  constructor() {}",
         "",
         "  // 🔐 Private Fields",
@@ -121,19 +120,20 @@ describe("heavily modified service integration", () => {
         "}",
         "",
       ].join("\n"),
+      pascal: "Gamma",
     },
   ];
 
-  for (const { camel, pascal, content } of MOCK_SERVICES) {
+  for (const { camel, content, pascal } of MOCK_SERVICES) {
     it(`${camel} service conforms to the service template structure`, () => {
       const result = validateConformance({
-        instance: content,
-        template: TEMPLATE_CONTENT,
         data: {
           nameCamelCase: camel,
           namePascalCase: pascal,
         },
         filename: `${camel}.service.ts`,
+        instance: content,
+        template: TEMPLATE_CONTENT,
       });
       const structuralErrors = result.errors.filter(
         (error) => !error.message.startsWith("Missing comment:"),
@@ -259,9 +259,9 @@ describe("validateInstanceFile", () => {
     fs.writeFileSync(instancePath, "export class UserService {}\n");
 
     const result = validateInstanceFile({
+      data: { namePascalCase: "User" },
       instanceFilePath: instancePath,
       templateFilePath: templatePath,
-      data: { namePascalCase: "User" },
     });
 
     expect(result.errors).toEqual([]);
@@ -277,9 +277,9 @@ describe("validateInstanceFile", () => {
     fs.writeFileSync(instancePath, "export class WrongService {}\n");
 
     const result = validateInstanceFile({
+      data: { namePascalCase: "User" },
       instanceFilePath: instancePath,
       templateFilePath: templatePath,
-      data: { namePascalCase: "User" },
     });
 
     expectErrorWithMessage(
@@ -294,9 +294,9 @@ describe("validateInstanceFile", () => {
     const instancePath = path.join(tmpDir, "nonexistent.service.ts");
 
     const result = validateInstanceFile({
+      data: {},
       instanceFilePath: instancePath,
       templateFilePath: templatePath,
-      data: {},
     });
 
     expect(result.errors).toEqual([
@@ -416,16 +416,16 @@ describe("collectConformanceErrors", () => {
         directoryName: "user",
         results: [
           {
+            errors: [],
             filename: "user.service.ts",
             instanceFilePath: "/tmp/user/user.service.ts",
             templateFilePath: "/tmp/tpl/user.service.ts",
-            errors: [],
           },
           {
+            errors: [],
             filename: "user.module.ts",
             instanceFilePath: "/tmp/user/user.module.ts",
             templateFilePath: "/tmp/tpl/user.module.ts",
-            errors: [],
           },
         ],
       },
@@ -439,16 +439,16 @@ describe("collectConformanceErrors", () => {
         directoryName: "user",
         results: [
           {
-            filename: "user.service.ts",
-            instanceFilePath: "/tmp/user/user.service.ts",
-            templateFilePath: "/tmp/tpl/user.service.ts",
             errors: [
               {
                 errorType: "code" as const,
-                message: 'Missing ClassDeclaration "UserService"',
                 fix: "Add the class.",
+                message: 'Missing ClassDeclaration "UserService"',
               },
             ],
+            filename: "user.service.ts",
+            instanceFilePath: "/tmp/user/user.service.ts",
+            templateFilePath: "/tmp/tpl/user.service.ts",
           },
         ],
       },
@@ -466,16 +466,16 @@ describe("collectConformanceErrors", () => {
         directoryName: "user",
         results: [
           {
-            filename: "user.service.ts",
-            instanceFilePath: "/tmp/user/user.service.ts",
-            templateFilePath: "/tmp/tpl/user.service.ts",
             errors: [
               {
                 errorType: "code" as const,
-                message: "Missing something",
                 fix: "Do the thing.",
+                message: "Missing something",
               },
             ],
+            filename: "user.service.ts",
+            instanceFilePath: "/tmp/user/user.service.ts",
+            templateFilePath: "/tmp/tpl/user.service.ts",
           },
         ],
       },
@@ -490,12 +490,12 @@ describe("collectConformanceErrors", () => {
         directoryName: "user",
         results: [
           {
+            errors: [
+              { errorType: "code" as const, fix: "fix A", message: "error A" },
+            ],
             filename: "user.service.ts",
             instanceFilePath: "/tmp/user/user.service.ts",
             templateFilePath: "/tmp/tpl/user.service.ts",
-            errors: [
-              { errorType: "code" as const, message: "error A", fix: "fix A" },
-            ],
           },
         ],
       },
@@ -503,12 +503,12 @@ describe("collectConformanceErrors", () => {
         directoryName: "admin",
         results: [
           {
+            errors: [
+              { errorType: "code" as const, fix: "fix C", message: "error C" },
+            ],
             filename: "admin.service.ts",
             instanceFilePath: "/tmp/admin/admin.service.ts",
             templateFilePath: "/tmp/tpl/admin.service.ts",
-            errors: [
-              { errorType: "code" as const, message: "error C", fix: "fix C" },
-            ],
           },
         ],
       },

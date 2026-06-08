@@ -2,18 +2,19 @@
 
 ## Auto-Sorted Import Order
 
-ESLint plugin `eslint-plugin-import` automatically sorts imports in this order:
+ESLint plugin `eslint-plugin-perfectionist` automatically sorts imports in this order:
 
 1. **Node builtins** (with `node:` prefix)
 2. **External packages** (from `node_modules`)
 3. **Internal paths** (monorepo packages with `@monorepo/*`)
 4. **Parent imports** (`../`)
 5. **Sibling imports** (`./`)
-6. **Type imports** (always last, separate group)
+6. **Index imports** (`./index`)
+7. **Type imports** (always last, separate group)
 
 **Blank lines** separate each group.
 
-**Enforced by**: ESLint rule `import/order`
+**Enforced by**: ESLint rule `perfectionist/sort-imports`
 
 ## No File Extensions
 

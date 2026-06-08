@@ -9,30 +9,30 @@ import type { FormCellProps } from "./form-cell";
  * Represents a single conjugated form of a verb.
  */
 export interface VerbForm {
+  /** The conjugated form text */
+  form: string;
   /** Grammatical mood (indicative, subjunctive, imperative) */
   mood: string;
+  /** Grammatical number (singular or plural) */
+  number?: string | undefined;
+  /** Grammatical person (first, second, third) */
+  person?: string | undefined;
   /** Tense (present, imperfect, future, etc.) */
   tense: string;
   /** Voice (active, passive) */
   voice: string;
-  /** Grammatical person (first, second, third) */
-  person?: string | undefined;
-  /** Grammatical number (singular or plural) */
-  number?: string | undefined;
-  /** The conjugated form text */
-  form: string;
 }
 
 /**
  * Props for the VerbFormsTable component.
  */
 export interface VerbFormsTableProps {
+  /** Additional class names */
+  className?: string | undefined;
   /** Verb forms data */
   forms: VerbForm[];
   /** Current search term for highlighting */
   search?: string | undefined;
-  /** Additional class names */
-  className?: string | undefined;
 }
 
 // Mood order
@@ -63,8 +63,8 @@ const PERSON_ABBREVIATIONS: Record<string, string> = {
 };
 
 const NUMBER_ABBREVIATIONS: Record<string, string> = {
-  singular: "SG",
   plural: "PL",
+  singular: "SG",
 };
 
 interface VerbFormGroup {
@@ -72,8 +72,8 @@ interface VerbFormGroup {
   tenses: {
     tense: string;
     voices: {
-      voice: string;
       cells: FormCellProps[];
+      voice: string;
     }[];
   }[];
 }
@@ -120,7 +120,7 @@ function groupVerbForms(forms: VerbForm[]): VerbFormGroup[] {
         const cells = restructureVerbForms(voiceForms);
 
         if (cells.length > 0) {
-          voices.push({ voice, cells });
+          voices.push({ cells, voice });
         }
       }
 
@@ -177,13 +177,13 @@ function restructureVerbForms(forms: VerbForm[]): FormCellProps[] {
       // Singular cell (left column)
       cells.push(
         {
+          centerText: singularForm || "-",
           topLeftText: PERSON_ABBREVIATIONS[person] || person,
           topRightText: NUMBER_ABBREVIATIONS["singular"],
-          centerText: singularForm || "-",
         },
         {
-          topRightText: NUMBER_ABBREVIATIONS["plural"],
           centerText: pluralForm || "-",
+          topRightText: NUMBER_ABBREVIATIONS["plural"],
         },
       );
     }
@@ -193,7 +193,7 @@ function restructureVerbForms(forms: VerbForm[]): FormCellProps[] {
 }
 
 const VerbFormsTable = React.forwardRef<HTMLDivElement, VerbFormsTableProps>(
-  ({ forms, search, className }, ref) => {
+  ({ className, forms, search }, ref) => {
     const grouped = React.useMemo(() => groupVerbForms(forms), [forms]);
 
     const [activeMood, setActiveMood] = React.useState(0);
@@ -229,23 +229,23 @@ const VerbFormsTable = React.forwardRef<HTMLDivElement, VerbFormsTableProps>(
       >
         {/* Mood tabs */}
         <FormTabs
-          tabs={moodTabs}
           activeTab={activeMood}
           onTabChange={setActiveMood}
+          tabs={moodTabs}
         >
           {/* Tense tabs */}
           {tenseTabs.length > 1 ? (
             <FormTabs
-              tabs={tenseTabs}
               activeTab={activeTense}
               onTabChange={setActiveTense}
+              tabs={tenseTabs}
             >
               {/* Voice tabs */}
               {voiceTabs.length > 1 ? (
                 <FormTabs
-                  tabs={voiceTabs}
                   activeTab={activeVoice}
                   onTabChange={setActiveVoice}
+                  tabs={voiceTabs}
                 >
                   {currentVoice && (
                     <FormsTable
@@ -265,9 +265,9 @@ const VerbFormsTable = React.forwardRef<HTMLDivElement, VerbFormsTableProps>(
             </FormTabs>
           ) : voiceTabs.length > 1 ? (
             <FormTabs
-              tabs={voiceTabs}
               activeTab={activeVoice}
               onTabChange={setActiveVoice}
+              tabs={voiceTabs}
             >
               {currentVoice && (
                 <FormsTable
@@ -291,4 +291,4 @@ const VerbFormsTable = React.forwardRef<HTMLDivElement, VerbFormsTableProps>(
 );
 VerbFormsTable.displayName = "VerbFormsTable";
 
-export { VerbFormsTable, groupVerbForms, restructureVerbForms };
+export { groupVerbForms, restructureVerbForms, VerbFormsTable };

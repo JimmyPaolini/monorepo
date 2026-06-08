@@ -32,23 +32,23 @@ describe("quintuple-aspects.events integration", () => {
       // Star pattern: Sun(0) -> Mars(2), Moon(1) -> Jupiter(3), Mars(2) -> Venus(4), Jupiter(3) -> Sun(0), Venus(4) -> Moon(1)
       // Sun-Mars is the critical forming aspect; others are stable
       const currentAspectBodies: AspectBodies[] = [
-        { bodies: ["sun", "mars"], aspect: "quintile" },
-        { bodies: ["moon", "jupiter"], aspect: "quintile" },
-        { bodies: ["mars", "venus"], aspect: "quintile" },
-        { bodies: ["jupiter", "sun"], aspect: "quintile" },
-        { bodies: ["venus", "moon"], aspect: "quintile" },
+        { aspect: "quintile", bodies: ["sun", "mars"] },
+        { aspect: "quintile", bodies: ["moon", "jupiter"] },
+        { aspect: "quintile", bodies: ["mars", "venus"] },
+        { aspect: "quintile", bodies: ["jupiter", "sun"] },
+        { aspect: "quintile", bodies: ["venus", "moon"] },
       ];
       const previousAspectBodies: AspectBodies[] = [
-        { bodies: ["moon", "jupiter"], aspect: "quintile" },
-        { bodies: ["mars", "venus"], aspect: "quintile" },
-        { bodies: ["jupiter", "sun"], aspect: "quintile" },
-        { bodies: ["venus", "moon"], aspect: "quintile" },
+        { aspect: "quintile", bodies: ["moon", "jupiter"] },
+        { aspect: "quintile", bodies: ["mars", "venus"] },
+        { aspect: "quintile", bodies: ["jupiter", "sun"] },
+        { aspect: "quintile", bodies: ["venus", "moon"] },
       ];
 
       const events = service.detect({
         currentAspectBodies,
-        previousAspectBodies,
         minute: currentMinute,
+        previousAspectBodies,
       });
 
       expect(events).toHaveLength(1);
@@ -73,23 +73,23 @@ describe("quintuple-aspects.events integration", () => {
 
       // Sun-Mars dissolving; others stable
       const currentAspectBodies: AspectBodies[] = [
-        { bodies: ["moon", "jupiter"], aspect: "quintile" },
-        { bodies: ["mars", "venus"], aspect: "quintile" },
-        { bodies: ["jupiter", "sun"], aspect: "quintile" },
-        { bodies: ["venus", "moon"], aspect: "quintile" },
+        { aspect: "quintile", bodies: ["moon", "jupiter"] },
+        { aspect: "quintile", bodies: ["mars", "venus"] },
+        { aspect: "quintile", bodies: ["jupiter", "sun"] },
+        { aspect: "quintile", bodies: ["venus", "moon"] },
       ];
       const previousAspectBodies: AspectBodies[] = [
-        { bodies: ["sun", "mars"], aspect: "quintile" },
-        { bodies: ["moon", "jupiter"], aspect: "quintile" },
-        { bodies: ["mars", "venus"], aspect: "quintile" },
-        { bodies: ["jupiter", "sun"], aspect: "quintile" },
-        { bodies: ["venus", "moon"], aspect: "quintile" },
+        { aspect: "quintile", bodies: ["sun", "mars"] },
+        { aspect: "quintile", bodies: ["moon", "jupiter"] },
+        { aspect: "quintile", bodies: ["mars", "venus"] },
+        { aspect: "quintile", bodies: ["jupiter", "sun"] },
+        { aspect: "quintile", bodies: ["venus", "moon"] },
       ];
 
       const events = service.detect({
         currentAspectBodies,
-        previousAspectBodies,
         minute: currentMinute,
+        previousAspectBodies,
       });
 
       expect(events).toHaveLength(1);
@@ -101,11 +101,6 @@ describe("quintuple-aspects.events integration", () => {
 
     it("should create progressive event from forming/dissolving Pentagram pair", () => {
       const formingEvent: Event = {
-        start: moment.utc("2024-06-15T14:23:00.000Z"),
-        end: moment.utc("2024-06-15T14:23:00.000Z"),
-        summary:
-          "➡️ ⬠ ☉-☽-♂-♃-♀ Jupiter, Mars, Moon, Sun, Venus pentagram forming",
-        description: "Jupiter, Mars, Moon, Sun, Venus pentagram forming",
         categories: [
           "Astronomy",
           "Astrology",
@@ -119,14 +114,14 @@ describe("quintuple-aspects.events integration", () => {
           "Sun",
           "Venus",
         ],
+        description: "Jupiter, Mars, Moon, Sun, Venus pentagram forming",
+        end: moment.utc("2024-06-15T14:23:00.000Z"),
+        start: moment.utc("2024-06-15T14:23:00.000Z"),
+        summary:
+          "➡️ ⬠ ☉-☽-♂-♃-♀ Jupiter, Mars, Moon, Sun, Venus pentagram forming",
       };
 
       const dissolvingEvent: Event = {
-        start: moment.utc("2024-06-15T14:30:00.000Z"),
-        end: moment.utc("2024-06-15T14:30:00.000Z"),
-        summary:
-          "⬅️ ⬠ ☉-☽-♂-♃-♀ Jupiter, Mars, Moon, Sun, Venus pentagram dissolving",
-        description: "Jupiter, Mars, Moon, Sun, Venus pentagram dissolving",
         categories: [
           "Astronomy",
           "Astrology",
@@ -140,6 +135,11 @@ describe("quintuple-aspects.events integration", () => {
           "Sun",
           "Venus",
         ],
+        description: "Jupiter, Mars, Moon, Sun, Venus pentagram dissolving",
+        end: moment.utc("2024-06-15T14:30:00.000Z"),
+        start: moment.utc("2024-06-15T14:30:00.000Z"),
+        summary:
+          "⬅️ ⬠ ☉-☽-♂-♃-♀ Jupiter, Mars, Moon, Sun, Venus pentagram dissolving",
       };
 
       const progressiveEvents = service.detectProgressive([
@@ -171,23 +171,23 @@ describe("quintuple-aspects.events integration", () => {
 
       // Saturn-Neptune forming; others stable
       const currentAspectBodies: AspectBodies[] = [
-        { bodies: ["saturn", "neptune"], aspect: "quintile" },
-        { bodies: ["uranus", "pluto"], aspect: "quintile" },
-        { bodies: ["neptune", "jupiter"], aspect: "quintile" },
-        { bodies: ["pluto", "saturn"], aspect: "quintile" },
-        { bodies: ["jupiter", "uranus"], aspect: "quintile" },
+        { aspect: "quintile", bodies: ["saturn", "neptune"] },
+        { aspect: "quintile", bodies: ["uranus", "pluto"] },
+        { aspect: "quintile", bodies: ["neptune", "jupiter"] },
+        { aspect: "quintile", bodies: ["pluto", "saturn"] },
+        { aspect: "quintile", bodies: ["jupiter", "uranus"] },
       ];
       const previousAspectBodies: AspectBodies[] = [
-        { bodies: ["uranus", "pluto"], aspect: "quintile" },
-        { bodies: ["neptune", "jupiter"], aspect: "quintile" },
-        { bodies: ["pluto", "saturn"], aspect: "quintile" },
-        { bodies: ["jupiter", "uranus"], aspect: "quintile" },
+        { aspect: "quintile", bodies: ["uranus", "pluto"] },
+        { aspect: "quintile", bodies: ["neptune", "jupiter"] },
+        { aspect: "quintile", bodies: ["pluto", "saturn"] },
+        { aspect: "quintile", bodies: ["jupiter", "uranus"] },
       ];
 
       const events = service.detect({
         currentAspectBodies,
-        previousAspectBodies,
         minute: currentMinute,
+        previousAspectBodies,
       });
 
       expect(events).toHaveLength(1);
@@ -207,23 +207,23 @@ describe("quintuple-aspects.events integration", () => {
 
       // Missing the 5th quintile needed to complete the pentagram
       const currentAspectBodies: AspectBodies[] = [
-        { bodies: ["sun", "mars"], aspect: "quintile" },
-        { bodies: ["moon", "jupiter"], aspect: "quintile" },
-        { bodies: ["mars", "venus"], aspect: "quintile" },
-        { bodies: ["jupiter", "sun"], aspect: "quintile" },
+        { aspect: "quintile", bodies: ["sun", "mars"] },
+        { aspect: "quintile", bodies: ["moon", "jupiter"] },
+        { aspect: "quintile", bodies: ["mars", "venus"] },
+        { aspect: "quintile", bodies: ["jupiter", "sun"] },
         // Missing: Venus quintile Moon (the 5th edge to complete the star)
       ];
       const previousAspectBodies: AspectBodies[] = [
-        { bodies: ["sun", "mars"], aspect: "quintile" },
-        { bodies: ["moon", "jupiter"], aspect: "quintile" },
-        { bodies: ["mars", "venus"], aspect: "quintile" },
-        { bodies: ["jupiter", "sun"], aspect: "quintile" },
+        { aspect: "quintile", bodies: ["sun", "mars"] },
+        { aspect: "quintile", bodies: ["moon", "jupiter"] },
+        { aspect: "quintile", bodies: ["mars", "venus"] },
+        { aspect: "quintile", bodies: ["jupiter", "sun"] },
       ];
 
       const events = service.detect({
         currentAspectBodies,
-        previousAspectBodies,
         minute: currentMinute,
+        previousAspectBodies,
       });
 
       expect(events).toHaveLength(0);
@@ -234,24 +234,24 @@ describe("quintuple-aspects.events integration", () => {
 
       // Has 5 edges but one is a sextile instead of quintile
       const currentAspectBodies: AspectBodies[] = [
-        { bodies: ["sun", "mars"], aspect: "quintile" },
-        { bodies: ["moon", "jupiter"], aspect: "quintile" },
-        { bodies: ["mars", "venus"], aspect: "sextile" }, // WRONG ASPECT TYPE
-        { bodies: ["jupiter", "sun"], aspect: "quintile" },
-        { bodies: ["venus", "moon"], aspect: "quintile" },
+        { aspect: "quintile", bodies: ["sun", "mars"] },
+        { aspect: "quintile", bodies: ["moon", "jupiter"] },
+        { aspect: "sextile", bodies: ["mars", "venus"] }, // WRONG ASPECT TYPE
+        { aspect: "quintile", bodies: ["jupiter", "sun"] },
+        { aspect: "quintile", bodies: ["venus", "moon"] },
       ];
       const previousAspectBodies: AspectBodies[] = [
-        { bodies: ["sun", "mars"], aspect: "quintile" },
-        { bodies: ["moon", "jupiter"], aspect: "quintile" },
-        { bodies: ["mars", "venus"], aspect: "sextile" },
-        { bodies: ["jupiter", "sun"], aspect: "quintile" },
-        { bodies: ["venus", "moon"], aspect: "quintile" },
+        { aspect: "quintile", bodies: ["sun", "mars"] },
+        { aspect: "quintile", bodies: ["moon", "jupiter"] },
+        { aspect: "sextile", bodies: ["mars", "venus"] },
+        { aspect: "quintile", bodies: ["jupiter", "sun"] },
+        { aspect: "quintile", bodies: ["venus", "moon"] },
       ];
 
       const events = service.detect({
         currentAspectBodies,
-        previousAspectBodies,
         minute: currentMinute,
+        previousAspectBodies,
       });
 
       expect(events).toHaveLength(0);

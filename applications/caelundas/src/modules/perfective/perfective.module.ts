@@ -20,6 +20,7 @@ import { PerfectiveService } from "./perfective.service";
  */
 @Module({
   controllers: [],
+  exports: [PerfectiveService],
   imports: [
     DatetimeModule,
     EphemerisModule,
@@ -34,6 +35,5 @@ import { PerfectiveService } from "./perfective.service";
     PhasesModule,
   ],
   providers: [PerfectiveService],
-  exports: [PerfectiveService],
 })
 export class PerfectiveModule {}

@@ -23,20 +23,8 @@ export type { Twilight } from "./twilights.types";
  */
 @Injectable()
 export class TwilightsService {
-  static readonly twilights = [
-    "civil",
-    "nautical",
-    "astronomical",
-  ] as const satisfies readonly Twilight[];
-  static readonly sunRadiusDegrees = 16 / MathService.arcminutesPerDegree;
-  static readonly degreesByTwilight: Record<Twilight, number> = {
-    civil: 6,
-    nautical: 12,
-    astronomical: 18,
-  };
-  private static readonly categories = ["Astronomy", "Astrology", "Twilight"];
+  // 🏗 Dependency Injection
 
-  // 🏗️ Dependency Injection
   constructor(
     private readonly logger: LoggerService,
     private readonly ephemerisService: EphemerisService,
@@ -47,11 +35,354 @@ export class TwilightsService {
 
   // 🔐 Private Fields
 
+  private static readonly categories = ["Astronomy", "Astrology", "Twilight"];
+
   // 🔑 Public Fields
+
+  static readonly degreesByTwilight: Record<Twilight, number> = {
+    astronomical: 18,
+    civil: 6,
+    nautical: 12,
+  };
+  static readonly sunRadiusDegrees = 16 / MathService.arcminutesPerDegree;
+
+  static readonly twilights = [
+    "civil",
+    "nautical",
+    "astronomical",
+  ] as const satisfies readonly Twilight[];
 
   // 🔏 Private Methods
 
+  private getAstronomicalTwilightEveningDurationEvent(
+    beginning: Event,
+    ending: Event,
+  ): Event {
+    return {
+      categories: [
+        ...TwilightsService.categories,
+        "Astronomical Twilight",
+        "Evening",
+      ],
+      description: "Astronomical Twilight (Evening)",
+      end: ending.start,
+      start: beginning.start,
+      summary: "🌌 Astronomical Twilight (Evening)",
+    };
+  }
+
+  private getAstronomicalTwilightMorningDurationEvent(
+    beginning: Event,
+    ending: Event,
+  ): Event {
+    return {
+      categories: [
+        ...TwilightsService.categories,
+        "Astronomical Twilight",
+        "Morning",
+      ],
+      description: "Astronomical Twilight (Morning)",
+      end: ending.start,
+      start: beginning.start,
+      summary: "🌠 Astronomical Twilight (Morning)",
+    };
+  }
+
+  private getDaylightDurationEvent(beginning: Event, ending: Event): Event {
+    return {
+      categories: [...TwilightsService.categories, "Daylight"],
+      description: "Daylight",
+      end: ending.start,
+      start: beginning.start,
+      summary: "☀️ Daylight",
+    };
+  }
+
+  private getNauticalTwilightEveningDurationEvent(
+    beginning: Event,
+    ending: Event,
+  ): Event {
+    return {
+      categories: [
+        ...TwilightsService.categories,
+        "Nautical Twilight",
+        "Evening",
+      ],
+      description: "Nautical Twilight (Evening)",
+      end: ending.start,
+      start: beginning.start,
+      summary: "🌉 Nautical Twilight (Evening)",
+    };
+  }
+
+  private getNauticalTwilightMorningDurationEvent(
+    beginning: Event,
+    ending: Event,
+  ): Event {
+    return {
+      categories: [
+        ...TwilightsService.categories,
+        "Nautical Twilight",
+        "Morning",
+      ],
+      description: "Nautical Twilight (Morning)",
+      end: ending.start,
+      start: beginning.start,
+      summary: "🌅 Nautical Twilight (Morning)",
+    };
+  }
+
+  private getNightDurationEvent(beginning: Event, ending: Event): Event {
+    return {
+      categories: [...TwilightsService.categories, "Night"],
+      description: "Night",
+      end: ending.start,
+      start: beginning.start,
+      summary: "🌃 Night",
+    };
+  }
+
+  private isAstronomicalDawn(args: {
+    currentElevation: number;
+    previousElevation: number;
+  }): boolean {
+    const { currentElevation, previousElevation } = args;
+    return this.isDawn({
+      currentElevation,
+      previousElevation,
+      twilight: "astronomical",
+    });
+  }
+
+  private isAstronomicalDusk(args: {
+    currentElevation: number;
+    previousElevation: number;
+  }): boolean {
+    const { currentElevation, previousElevation } = args;
+    return this.isDusk({
+      currentElevation,
+      previousElevation,
+      twilight: "astronomical",
+    });
+  }
+
+  private isCivilDawn(args: {
+    currentElevation: number;
+    previousElevation: number;
+  }): boolean {
+    const { currentElevation, previousElevation } = args;
+    return this.isDawn({
+      currentElevation,
+      previousElevation,
+      twilight: "civil",
+    });
+  }
+
+  private isCivilDusk(args: {
+    currentElevation: number;
+    previousElevation: number;
+  }): boolean {
+    const { currentElevation, previousElevation } = args;
+    return this.isDusk({
+      currentElevation,
+      previousElevation,
+      twilight: "civil",
+    });
+  }
+
+  private isDawn(args: {
+    currentElevation: number;
+    previousElevation: number;
+    twilight: Twilight;
+  }): boolean {
+    const { currentElevation, previousElevation, twilight } = args;
+    const degrees = TwilightsService.degreesByTwilight[twilight];
+    return currentElevation > -degrees && previousElevation < -degrees;
+  }
+
+  private isDusk(args: {
+    currentElevation: number;
+    previousElevation: number;
+    twilight: Twilight;
+  }): boolean {
+    const { currentElevation, previousElevation, twilight } = args;
+    const degrees = TwilightsService.degreesByTwilight[twilight];
+    return currentElevation < -degrees && previousElevation > -degrees;
+  }
+
+  private isNauticalDawn(args: {
+    currentElevation: number;
+    previousElevation: number;
+  }): boolean {
+    const { currentElevation, previousElevation } = args;
+    return this.isDawn({
+      currentElevation,
+      previousElevation,
+      twilight: "nautical",
+    });
+  }
+
+  private isNauticalDusk(args: {
+    currentElevation: number;
+    previousElevation: number;
+  }): boolean {
+    const { currentElevation, previousElevation } = args;
+    return this.isDusk({
+      currentElevation,
+      previousElevation,
+      twilight: "nautical",
+    });
+  }
+
   // 🌎 Public Methods
+
+  /**
+   * Creates an astronomical dawn calendar event.
+   * Marks when the sky begins to lighten (Sun at -18° elevation).
+   * @param date - Precise UTC time
+   * @returns Calendar event for astronomical dawn
+   */
+  buildAstronomicalDawnEvent(date: Moment): Event {
+    const description = "Astronomical Dawn";
+    const summary = `🌠 ${description}`;
+
+    const dateString = date.clone().tz("America/New_York").toISOString(true);
+    this.logger.log(`${summary} at ${dateString}`);
+
+    const astronomicalDawnEvent: Event = {
+      categories: [...TwilightsService.categories, "Astronomical Dawn"],
+      description,
+      end: date,
+      start: date,
+      summary,
+    };
+    return astronomicalDawnEvent;
+  }
+
+  /**
+   * Creates an astronomical dusk calendar event.
+   *
+   * Marks when the sky is dark enough for astronomical observation (Sun at −18° elevation).
+   *
+   * @param date - Precise UTC time of astronomical dusk
+   * @returns Calendar event for astronomical dusk
+   */
+  buildAstronomicalDuskEvent(date: Moment): Event {
+    const description = "Astronomical Dusk";
+    const summary = `🌌 ${description}`;
+
+    const dateString = date.clone().tz("America/New_York").toISOString(true);
+    this.logger.log(`${summary} at ${dateString}`);
+
+    const astronomicalDuskEvent: Event = {
+      categories: [...TwilightsService.categories, "Astronomical Dusk"],
+      description,
+      end: date,
+      start: date,
+      summary,
+    };
+    return astronomicalDuskEvent;
+  }
+
+  /**
+   * Creates a civil dawn calendar event.
+   *
+   * Marks when outdoor activities are possible without artificial light (Sun at −6° elevation).
+   *
+   * @param date - Precise UTC time of civil dawn
+   * @returns Calendar event for civil dawn
+   */
+  buildCivilDawnEvent(date: Moment): Event {
+    const description = "Civil Dawn";
+    const summary = `🌄 ${description}`;
+
+    const dateString = date.clone().tz("America/New_York").toISOString(true);
+    this.logger.log(`${summary} at ${dateString}`);
+
+    const civilDawnEvent: Event = {
+      categories: [...TwilightsService.categories, "Civil Dawn"],
+      description,
+      end: date,
+      start: date,
+      summary,
+    };
+    return civilDawnEvent;
+  }
+
+  /**
+   * Creates a civil dusk calendar event.
+   *
+   * Marks when artificial light becomes necessary for outdoor activities (Sun at −6° elevation).
+   *
+   * @param date - Precise UTC time of civil dusk
+   * @returns Calendar event for civil dusk
+   */
+  buildCivilDuskEvent(date: Moment): Event {
+    const description = "Civil Dusk";
+    const summary = `🌇 ${description}`;
+
+    const dateString = date.clone().tz("America/New_York").toISOString(true);
+    this.logger.log(`${summary} at ${dateString}`);
+
+    const civilDuskEvent: Event = {
+      categories: [...TwilightsService.categories, "Civil Dusk"],
+      description,
+      end: date,
+      start: date,
+      summary,
+    };
+    return civilDuskEvent;
+  }
+
+  /**
+   * Creates a nautical dawn calendar event.
+   *
+   * Marks when the horizon becomes visible at sea (Sun at −12° elevation).
+   *
+   * @param date - Precise UTC time of nautical dawn
+   * @returns Calendar event for nautical dawn
+   */
+  buildNauticalDawnEvent(date: Moment): Event {
+    const description = "Nautical Dawn";
+    const summary = `🌅 ${description}`;
+
+    const dateString = date.clone().tz("America/New_York").toISOString(true);
+    this.logger.log(`${summary} at ${dateString}`);
+
+    const nauticalDawnEvent: Event = {
+      categories: [...TwilightsService.categories, "Nautical Dawn"],
+      description,
+      end: date,
+      start: date,
+      summary,
+    };
+    return nauticalDawnEvent;
+  }
+
+  /**
+   * Creates a nautical dusk calendar event.
+   *
+   * Marks when the sea horizon becomes indistinguishable (Sun at −12° elevation).
+   *
+   * @param date - Precise UTC time of nautical dusk
+   * @returns Calendar event for nautical dusk
+   */
+  buildNauticalDuskEvent(date: Moment): Event {
+    const description = "Nautical Dusk";
+    const summary = `🌉 ${description}`;
+
+    const dateString = date.clone().tz("America/New_York").toISOString(true);
+    this.logger.log(`${summary} at ${dateString}`);
+
+    const nauticalDuskEvent: Event = {
+      categories: [...TwilightsService.categories, "Nautical Dusk"],
+      description,
+      end: date,
+      start: date,
+      summary,
+    };
+    return nauticalDuskEvent;
+  }
 
   /**
    * Detects twilight transition events at a specific minute.
@@ -121,154 +452,6 @@ export class TwilightsService {
     }
 
     return twilightEvents;
-  }
-
-  /**
-   * Creates an astronomical dawn calendar event.
-   * Marks when the sky begins to lighten (Sun at -18° elevation).
-   * @param date - Precise UTC time
-   * @returns Calendar event for astronomical dawn
-   */
-  buildAstronomicalDawnEvent(date: Moment): Event {
-    const description = "Astronomical Dawn";
-    const summary = `🌠 ${description}`;
-
-    const dateString = date.clone().tz("America/New_York").toISOString(true);
-    this.logger.log(`${summary} at ${dateString}`);
-
-    const astronomicalDawnEvent: Event = {
-      start: date,
-      end: date,
-      summary,
-      description,
-      categories: [...TwilightsService.categories, "Astronomical Dawn"],
-    };
-    return astronomicalDawnEvent;
-  }
-
-  /**
-   * Creates a nautical dawn calendar event.
-   *
-   * Marks when the horizon becomes visible at sea (Sun at −12° elevation).
-   *
-   * @param date - Precise UTC time of nautical dawn
-   * @returns Calendar event for nautical dawn
-   */
-  buildNauticalDawnEvent(date: Moment): Event {
-    const description = "Nautical Dawn";
-    const summary = `🌅 ${description}`;
-
-    const dateString = date.clone().tz("America/New_York").toISOString(true);
-    this.logger.log(`${summary} at ${dateString}`);
-
-    const nauticalDawnEvent: Event = {
-      start: date,
-      end: date,
-      summary,
-      description,
-      categories: [...TwilightsService.categories, "Nautical Dawn"],
-    };
-    return nauticalDawnEvent;
-  }
-
-  /**
-   * Creates a civil dawn calendar event.
-   *
-   * Marks when outdoor activities are possible without artificial light (Sun at −6° elevation).
-   *
-   * @param date - Precise UTC time of civil dawn
-   * @returns Calendar event for civil dawn
-   */
-  buildCivilDawnEvent(date: Moment): Event {
-    const description = "Civil Dawn";
-    const summary = `🌄 ${description}`;
-
-    const dateString = date.clone().tz("America/New_York").toISOString(true);
-    this.logger.log(`${summary} at ${dateString}`);
-
-    const civilDawnEvent: Event = {
-      start: date,
-      end: date,
-      summary,
-      description,
-      categories: [...TwilightsService.categories, "Civil Dawn"],
-    };
-    return civilDawnEvent;
-  }
-
-  /**
-   * Creates a civil dusk calendar event.
-   *
-   * Marks when artificial light becomes necessary for outdoor activities (Sun at −6° elevation).
-   *
-   * @param date - Precise UTC time of civil dusk
-   * @returns Calendar event for civil dusk
-   */
-  buildCivilDuskEvent(date: Moment): Event {
-    const description = "Civil Dusk";
-    const summary = `🌇 ${description}`;
-
-    const dateString = date.clone().tz("America/New_York").toISOString(true);
-    this.logger.log(`${summary} at ${dateString}`);
-
-    const civilDuskEvent: Event = {
-      start: date,
-      end: date,
-      summary,
-      description,
-      categories: [...TwilightsService.categories, "Civil Dusk"],
-    };
-    return civilDuskEvent;
-  }
-
-  /**
-   * Creates a nautical dusk calendar event.
-   *
-   * Marks when the sea horizon becomes indistinguishable (Sun at −12° elevation).
-   *
-   * @param date - Precise UTC time of nautical dusk
-   * @returns Calendar event for nautical dusk
-   */
-  buildNauticalDuskEvent(date: Moment): Event {
-    const description = "Nautical Dusk";
-    const summary = `🌉 ${description}`;
-
-    const dateString = date.clone().tz("America/New_York").toISOString(true);
-    this.logger.log(`${summary} at ${dateString}`);
-
-    const nauticalDuskEvent: Event = {
-      start: date,
-      end: date,
-      summary,
-      description,
-      categories: [...TwilightsService.categories, "Nautical Dusk"],
-    };
-    return nauticalDuskEvent;
-  }
-
-  /**
-   * Creates an astronomical dusk calendar event.
-   *
-   * Marks when the sky is dark enough for astronomical observation (Sun at −18° elevation).
-   *
-   * @param date - Precise UTC time of astronomical dusk
-   * @returns Calendar event for astronomical dusk
-   */
-  buildAstronomicalDuskEvent(date: Moment): Event {
-    const description = "Astronomical Dusk";
-    const summary = `🌌 ${description}`;
-
-    const dateString = date.clone().tz("America/New_York").toISOString(true);
-    this.logger.log(`${summary} at ${dateString}`);
-
-    const astronomicalDuskEvent: Event = {
-      start: date,
-      end: date,
-      summary,
-      description,
-      categories: [...TwilightsService.categories, "Astronomical Dusk"],
-    };
-    return astronomicalDuskEvent;
   }
 
   /**
@@ -384,185 +567,5 @@ export class TwilightsService {
     }
 
     return progressiveEvents;
-  }
-
-  private getAstronomicalTwilightMorningDurationEvent(
-    beginning: Event,
-    ending: Event,
-  ): Event {
-    return {
-      start: beginning.start,
-      end: ending.start,
-      summary: "🌠 Astronomical Twilight (Morning)",
-      description: "Astronomical Twilight (Morning)",
-      categories: [
-        ...TwilightsService.categories,
-        "Astronomical Twilight",
-        "Morning",
-      ],
-    };
-  }
-
-  private getNauticalTwilightMorningDurationEvent(
-    beginning: Event,
-    ending: Event,
-  ): Event {
-    return {
-      start: beginning.start,
-      end: ending.start,
-      summary: "🌅 Nautical Twilight (Morning)",
-      description: "Nautical Twilight (Morning)",
-      categories: [
-        ...TwilightsService.categories,
-        "Nautical Twilight",
-        "Morning",
-      ],
-    };
-  }
-
-  private getDaylightDurationEvent(beginning: Event, ending: Event): Event {
-    return {
-      start: beginning.start,
-      end: ending.start,
-      summary: "☀️ Daylight",
-      description: "Daylight",
-      categories: [...TwilightsService.categories, "Daylight"],
-    };
-  }
-
-  private getNauticalTwilightEveningDurationEvent(
-    beginning: Event,
-    ending: Event,
-  ): Event {
-    return {
-      start: beginning.start,
-      end: ending.start,
-      summary: "🌉 Nautical Twilight (Evening)",
-      description: "Nautical Twilight (Evening)",
-      categories: [
-        ...TwilightsService.categories,
-        "Nautical Twilight",
-        "Evening",
-      ],
-    };
-  }
-
-  private getAstronomicalTwilightEveningDurationEvent(
-    beginning: Event,
-    ending: Event,
-  ): Event {
-    return {
-      start: beginning.start,
-      end: ending.start,
-      summary: "🌌 Astronomical Twilight (Evening)",
-      description: "Astronomical Twilight (Evening)",
-      categories: [
-        ...TwilightsService.categories,
-        "Astronomical Twilight",
-        "Evening",
-      ],
-    };
-  }
-
-  private getNightDurationEvent(beginning: Event, ending: Event): Event {
-    return {
-      start: beginning.start,
-      end: ending.start,
-      summary: "🌃 Night",
-      description: "Night",
-      categories: [...TwilightsService.categories, "Night"],
-    };
-  }
-
-  private isDawn(args: {
-    currentElevation: number;
-    previousElevation: number;
-    twilight: Twilight;
-  }): boolean {
-    const { currentElevation, previousElevation, twilight } = args;
-    const degrees = TwilightsService.degreesByTwilight[twilight];
-    return currentElevation > -degrees && previousElevation < -degrees;
-  }
-
-  private isAstronomicalDawn(args: {
-    currentElevation: number;
-    previousElevation: number;
-  }): boolean {
-    const { currentElevation, previousElevation } = args;
-    return this.isDawn({
-      currentElevation,
-      previousElevation,
-      twilight: "astronomical",
-    });
-  }
-
-  private isNauticalDawn(args: {
-    currentElevation: number;
-    previousElevation: number;
-  }): boolean {
-    const { currentElevation, previousElevation } = args;
-    return this.isDawn({
-      currentElevation,
-      previousElevation,
-      twilight: "nautical",
-    });
-  }
-
-  private isCivilDawn(args: {
-    currentElevation: number;
-    previousElevation: number;
-  }): boolean {
-    const { currentElevation, previousElevation } = args;
-    return this.isDawn({
-      currentElevation,
-      previousElevation,
-      twilight: "civil",
-    });
-  }
-
-  private isDusk(args: {
-    currentElevation: number;
-    previousElevation: number;
-    twilight: Twilight;
-  }): boolean {
-    const { currentElevation, previousElevation, twilight } = args;
-    const degrees = TwilightsService.degreesByTwilight[twilight];
-    return currentElevation < -degrees && previousElevation > -degrees;
-  }
-
-  private isCivilDusk(args: {
-    currentElevation: number;
-    previousElevation: number;
-  }): boolean {
-    const { currentElevation, previousElevation } = args;
-    return this.isDusk({
-      currentElevation,
-      previousElevation,
-      twilight: "civil",
-    });
-  }
-
-  private isNauticalDusk(args: {
-    currentElevation: number;
-    previousElevation: number;
-  }): boolean {
-    const { currentElevation, previousElevation } = args;
-    return this.isDusk({
-      currentElevation,
-      previousElevation,
-      twilight: "nautical",
-    });
-  }
-
-  private isAstronomicalDusk(args: {
-    currentElevation: number;
-    previousElevation: number;
-  }): boolean {
-    const { currentElevation, previousElevation } = args;
-    return this.isDusk({
-      currentElevation,
-      previousElevation,
-      twilight: "astronomical",
-    });
   }
 }

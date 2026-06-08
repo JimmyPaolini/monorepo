@@ -1,4 +1,17 @@
 import {
+  createRootRoute,
+  HeadContent,
+  Link,
+  Outlet,
+  Scripts,
+  useMatches,
+} from "@tanstack/react-router";
+import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
+import { Bookmark, BookOpen, Info, Search, User, Wrench } from "lucide-react";
+import { useState } from "react";
+import { getCurrentUser } from "~/lib/auth";
+
+import {
   Button,
   Sidebar,
   SidebarContent,
@@ -13,45 +26,32 @@ import {
   useSidebar,
 } from "@monorepo/lexico-components";
 import appCss from "@monorepo/lexico-components/styles/globals.css?url";
-import {
-  createRootRoute,
-  HeadContent,
-  Link,
-  Outlet,
-  Scripts,
-  useMatches,
-} from "@tanstack/react-router";
-import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
-import { Bookmark, BookOpen, Info, Search, User, Wrench } from "lucide-react";
-import { useState } from "react";
 
 import { Logo } from "../components/layout";
 
 import type { ReactNode } from "react";
 
-import { getCurrentUser } from "~/lib/auth";
-
 interface NavItem {
   href: string;
-  label: string;
   icon: ReactNode;
+  label: string;
 }
 
 const navItems: NavItem[] = [
-  { href: "/search", label: "Search", icon: <Search className="h-5 w-5" /> },
+  { href: "/search", icon: <Search className="h-5 w-5" />, label: "Search" },
   {
     href: "/bookmarks",
-    label: "Bookmarks",
     icon: <Bookmark className="h-5 w-5" />,
+    label: "Bookmarks",
   },
   {
     href: "/library",
-    label: "Literature",
     icon: <BookOpen className="h-5 w-5" />,
+    label: "Literature",
   },
-  { href: "/tools", label: "Grammar", icon: <Wrench className="h-5 w-5" /> },
-  { href: "/settings", label: "User", icon: <User className="h-5 w-5" /> },
-  { href: "/about", label: "About", icon: <Info className="h-5 w-5" /> },
+  { href: "/tools", icon: <Wrench className="h-5 w-5" />, label: "Grammar" },
+  { href: "/settings", icon: <User className="h-5 w-5" />, label: "User" },
+  { href: "/about", icon: <Info className="h-5 w-5" />, label: "About" },
 ];
 
 export const Route = createRootRoute({
@@ -59,64 +59,39 @@ export const Route = createRootRoute({
     const user = await getCurrentUser();
     return { user };
   },
+  component: RootComponent,
   head: () => ({
+    links: [
+      { href: "/favicon.ico", rel: "icon" },
+      { href: appCss, rel: "stylesheet" },
+    ],
     meta: [
       {
         charSet: "utf8",
       },
       {
-        name: "viewport",
         content: "width=device-width, initial-scale=1",
+        name: "viewport",
       },
       {
         title: "Lexico - Latin Dictionary & Reader",
       },
       {
-        name: "description",
         content:
           "Lexico is a Latin dictionary and reader application for students and scholars.",
+        name: "description",
       },
     ],
-    links: [
-      { rel: "icon", href: "/favicon.ico" },
-      { rel: "stylesheet", href: appCss },
-    ],
   }),
-  component: RootComponent,
   notFoundComponent: NotFound,
 });
 
 /**
- * 404 Not Found page component.
- *
- * @returns React node
+ * Props for the AppSidebar component.
  */
-function NotFound(): ReactNode {
-  return (
-    <div className="flex min-h-[50vh] flex-col items-center justify-center text-center">
-      <h1 className="text-4xl font-bold">404</h1>
-      <p className="mt-2 text-muted-foreground">Page not found</p>
-      <Button
-        asChild
-        className="mt-4"
-      >
-        <Link to="/">Go Home</Link>
-      </Button>
-    </div>
-  );
-}
-
-/**
- * Root component that wraps the entire application.
- *
- * @returns React node
- */
-function RootComponent(): ReactNode {
-  return (
-    <RootDocument>
-      <Outlet />
-    </RootDocument>
-  );
+interface AppSidebarProps {
+  /** Callback when hover state changes */
+  onHoverChange: (hovered: boolean) => void;
 }
 
 /**
@@ -125,55 +100,6 @@ function RootComponent(): ReactNode {
 interface RootDocumentProps {
   /** Child elements to render */
   children: ReactNode;
-}
-
-/**
- * Root document component that provides HTML structure and sidebar.
- *
- * @param props - Component props
- * @returns React node
- */
-function RootDocument(props: Readonly<RootDocumentProps>): ReactNode {
-  const { children } = props;
-  const [open, setOpen] = useState(false);
-
-  return (
-    <html
-      lang="en"
-      className="dark"
-    >
-      <head>
-        <HeadContent />
-      </head>
-      <body className="min-h-screen bg-background text-foreground antialiased">
-        <SidebarProvider
-          open={open}
-          onOpenChange={setOpen}
-        >
-          <AppSidebar onHoverChange={setOpen} />
-          <SidebarInset>
-            {/* Mobile header with hamburger */}
-            <header className="flex h-14 items-center border-b border-border bg-card px-4 md:hidden">
-              <SidebarTrigger />
-              <span className="ml-3 text-lg font-semibold">Lexico</span>
-            </header>
-            {/* Page content */}
-            <div className="flex-1 px-4 py-8 md:px-8">{children}</div>
-          </SidebarInset>
-        </SidebarProvider>
-        <TanStackRouterDevtools position="bottom-right" />
-        <Scripts />
-      </body>
-    </html>
-  );
-}
-
-/**
- * Props for the AppSidebar component.
- */
-interface AppSidebarProps {
-  /** Callback when hover state changes */
-  onHoverChange: (hovered: boolean) => void;
 }
 
 /**
@@ -196,8 +122,8 @@ function AppSidebar(props: Readonly<AppSidebarProps>): ReactNode {
     >
       <SidebarHeader className="border-b border-sidebar-border">
         <Link
-          to="/"
           className="flex h-8 items-center gap-2 text-lg font-semibold text-sidebar-foreground transition-colors hover:text-sidebar-accent-foreground cursor-pointer"
+          to="/"
         >
           <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-[#66023C]">
             <Logo width={18} />
@@ -217,9 +143,9 @@ function AppSidebar(props: Readonly<AppSidebarProps>): ReactNode {
               return (
                 <SidebarMenuItem key={item.href}>
                   <SidebarMenuButton
-                    asChild
                     isActive={isActive}
                     tooltip={item.label}
+                    asChild
                   >
                     <Link to={item.href}>
                       {item.icon}
@@ -233,5 +159,79 @@ function AppSidebar(props: Readonly<AppSidebarProps>): ReactNode {
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
+  );
+}
+
+/**
+ * 404 Not Found page component.
+ *
+ * @returns React node
+ */
+function NotFound(): ReactNode {
+  return (
+    <div className="flex min-h-[50vh] flex-col items-center justify-center text-center">
+      <h1 className="text-4xl font-bold">404</h1>
+      <p className="mt-2 text-muted-foreground">Page not found</p>
+      <Button
+        className="mt-4"
+        asChild
+      >
+        <Link to="/">Go Home</Link>
+      </Button>
+    </div>
+  );
+}
+
+/**
+ * Root component that wraps the entire application.
+ *
+ * @returns React node
+ */
+function RootComponent(): ReactNode {
+  return (
+    <RootDocument>
+      <Outlet />
+    </RootDocument>
+  );
+}
+
+/**
+ * Root document component that provides HTML structure and sidebar.
+ *
+ * @param props - Component props
+ * @returns React node
+ */
+function RootDocument(props: Readonly<RootDocumentProps>): ReactNode {
+  const { children } = props;
+  const [open, setOpen] = useState(false);
+
+  return (
+    <html
+      className="dark"
+      lang="en"
+    >
+      <head>
+        <HeadContent />
+      </head>
+      <body className="min-h-screen bg-background text-foreground antialiased">
+        <SidebarProvider
+          onOpenChange={setOpen}
+          open={open}
+        >
+          <AppSidebar onHoverChange={setOpen} />
+          <SidebarInset>
+            {/* Mobile header with hamburger */}
+            <header className="flex h-14 items-center border-b border-border bg-card px-4 md:hidden">
+              <SidebarTrigger />
+              <span className="ml-3 text-lg font-semibold">Lexico</span>
+            </header>
+            {/* Page content */}
+            <div className="flex-1 px-4 py-8 md:px-8">{children}</div>
+          </SidebarInset>
+        </SidebarProvider>
+        <TanStackRouterDevtools position="bottom-right" />
+        <Scripts />
+      </body>
+    </html>
   );
 }

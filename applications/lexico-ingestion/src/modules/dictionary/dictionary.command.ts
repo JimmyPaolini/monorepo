@@ -10,21 +10,21 @@ import { ManualService } from "../manual/manual.service";
 import { DictionaryService } from "./dictionary.service";
 
 interface DictionaryCommandOptions {
-  startLemma?: string | null;
-  endLemma?: string | null;
+  endLemma?: null | string;
+  startLemma?: null | string;
 }
 
 /**
  * Ingest dictionary entries from Wiktionary HTML data files.
  */
-@Injectable()
 @Command({
-  name: "dictionary",
   description:
     "Process ingested Wiktionary HTML into structured dictionary lexemes",
+  name: "dictionary",
 })
+@Injectable()
 export class DictionaryCommand extends CommandRunner {
-  private readonly logger = new Logger(DictionaryCommand.name);
+  // 🏗 Dependency Injection
 
   constructor(
     private readonly dictionaryService: DictionaryService,
@@ -32,6 +32,14 @@ export class DictionaryCommand extends CommandRunner {
   ) {
     super();
   }
+
+  // 🔐 Private Fields
+
+  private readonly logger = new Logger(DictionaryCommand.name);
+
+  // 🔑 Public Fields
+
+  // 🔏 Private Methods
 
   private getLemmaChoices(): { title: string; value: string }[] {
     const dataDir = path.join(process.cwd(), "./data/wiktionary");
@@ -46,54 +54,18 @@ export class DictionaryCommand extends CommandRunner {
       });
   }
 
-  /**
-   *
-   */
-  @Option({
-    flags: "-s, --startLemma [lemma]",
-    description: "The lemma to start ingestion from",
-  })
-  async parseStartLemma(startLemma?: string): Promise<string | undefined> {
-    if (!startLemma) return undefined;
-
-    const choices = this.getLemmaChoices();
-    if (typeof startLemma === "string") {
-      if (choices.some((choice) => choice.value === startLemma)) {
-        return startLemma;
-      } else {
-        throw new Error(
-          `Start lemma "${startLemma}" not found in the dataset.`,
-        );
-      }
-    }
-
-    const response = (await prompts({
-      type: "autocomplete",
-      name: "startLemma",
-      message: "Select the starting lemma",
-      choices: [{ title: "None", value: null }, ...choices],
-    })) as { startLemma: string | null };
-
-    if (
-      response.startLemma === null ||
-      typeof response.startLemma !== "string"
-    ) {
-      return undefined;
-    }
-
-    return response.startLemma;
-  }
+  // 🌎 Public Methods
 
   /**
    *
    */
   @Option({
-    flags: "-e, --endLemma [lemma]",
     description: "The lemma to end ingestion at",
+    flags: "-e, --endLemma [lemma]",
   })
   async parseEndLemma(
     endLemma?: string,
-    startLemma?: string | null,
+    startLemma?: null | string,
   ): Promise<string | undefined> {
     if (!endLemma) return undefined;
 
@@ -110,17 +82,55 @@ export class DictionaryCommand extends CommandRunner {
     }
 
     const response = (await prompts({
-      type: "autocomplete",
-      name: "endLemma",
-      message: "Select the ending lemma",
       choices: [{ title: "None", value: null }, ...choices],
-    })) as { endLemma: string | null };
+      message: "Select the ending lemma",
+      name: "endLemma",
+      type: "autocomplete",
+    })) as { endLemma: null | string };
 
     if (response.endLemma === null || typeof response.endLemma !== "string") {
       return undefined;
     }
 
     return response.endLemma;
+  }
+
+  /**
+   *
+   */
+  @Option({
+    description: "The lemma to start ingestion from",
+    flags: "-s, --startLemma [lemma]",
+  })
+  async parseStartLemma(startLemma?: string): Promise<string | undefined> {
+    if (!startLemma) return undefined;
+
+    const choices = this.getLemmaChoices();
+    if (typeof startLemma === "string") {
+      if (choices.some((choice) => choice.value === startLemma)) {
+        return startLemma;
+      } else {
+        throw new Error(
+          `Start lemma "${startLemma}" not found in the dataset.`,
+        );
+      }
+    }
+
+    const response = (await prompts({
+      choices: [{ title: "None", value: null }, ...choices],
+      message: "Select the starting lemma",
+      name: "startLemma",
+      type: "autocomplete",
+    })) as { startLemma: null | string };
+
+    if (
+      response.startLemma === null ||
+      typeof response.startLemma !== "string"
+    ) {
+      return undefined;
+    }
+
+    return response.startLemma;
   }
 
   /** Runs the dictionary ingestion for a single word when `--word` is given,

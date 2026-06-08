@@ -10,22 +10,22 @@ import type { FormCellProps } from "./form-cell";
 export interface NounForm {
   /** Grammatical case (nominative, genitive, etc.) */
   case: string;
-  /** Grammatical number (singular or plural) */
-  number: string;
   /** The declined form text */
   form: string;
+  /** Grammatical number (singular or plural) */
+  number: string;
 }
 
 /**
  * Props for the NounFormsTable component.
  */
 export interface NounFormsTableProps {
+  /** Additional class names */
+  className?: string | undefined;
   /** Noun forms data */
   forms: NounForm[];
   /** Current search term for highlighting */
   search?: string | undefined;
-  /** Additional class names */
-  className?: string | undefined;
 }
 
 // Case order for noun declension
@@ -39,13 +39,13 @@ const CASE_ORDER = [
   "locative",
 ];
 const CASE_ABBREVIATIONS: Record<string, string> = {
-  nominative: "Nom.",
-  genitive: "Gen.",
-  dative: "Dat.",
-  accusative: "Acc.",
   ablative: "Abl.",
-  vocative: "Voc.",
+  accusative: "Acc.",
+  dative: "Dat.",
+  genitive: "Gen.",
   locative: "Loc.",
+  nominative: "Nom.",
+  vocative: "Voc.",
 };
 
 /**
@@ -54,7 +54,7 @@ const CASE_ABBREVIATIONS: Record<string, string> = {
  */
 function restructureNounForms(forms: NounForm[]): FormCellProps[] {
   // Group by case
-  const byCase: Record<string, { singular?: string; plural?: string }> = {};
+  const byCase: Record<string, { plural?: string; singular?: string }> = {};
 
   for (const form of forms) {
     const caseName = form.case.toLowerCase();
@@ -80,13 +80,13 @@ function restructureNounForms(forms: NounForm[]): FormCellProps[] {
     // Singular cell (left column)
     cells.push(
       {
+        centerText: caseData.singular || "-",
         topLeftText: CASE_ABBREVIATIONS[caseName] || caseName,
         topRightText: "SG",
-        centerText: caseData.singular || "-",
       },
       {
-        topRightText: "PL",
         centerText: caseData.plural || "-",
+        topRightText: "PL",
       },
     );
   }
@@ -95,7 +95,7 @@ function restructureNounForms(forms: NounForm[]): FormCellProps[] {
 }
 
 const NounFormsTable = React.forwardRef<HTMLDivElement, NounFormsTableProps>(
-  ({ forms, search, className }, ref) => {
+  ({ className, forms, search }, ref) => {
     const cells = React.useMemo(() => restructureNounForms(forms), [forms]);
 
     return (

@@ -1,8 +1,9 @@
-import { Lexeme, PrincipalPart } from "@monorepo/lexico-entities";
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import * as cheerio from "cheerio";
 import { Repository } from "typeorm";
+
+import { Lexeme, PrincipalPart } from "@monorepo/lexico-entities";
 
 import { LoggerService } from "../logger/logger.service";
 
@@ -13,7 +14,8 @@ import type { AnyNode } from "domhandler";
  */
 @Injectable()
 export class PrincipalPartsService {
-  // 🏗️ Dependency Injection
+  // 🏗 Dependency Injection
+
   constructor(
     @InjectRepository(Lexeme)
     private readonly lexemeRepository: Repository<Lexeme>,
@@ -56,7 +58,7 @@ export class PrincipalPartsService {
     $: cheerio.CheerioAPI,
     elt: AnyNode,
     firstPrincipalPartName: string,
-  ): { principalParts: PrincipalPart[]; macronizedWord: string } {
+  ): { macronizedWord: string; principalParts: PrincipalPart[] } {
     const principalParts: PrincipalPart[] = [];
 
     const firstPP = new PrincipalPart();
@@ -89,6 +91,6 @@ export class PrincipalPartsService {
 
     if (principalParts.length === 0) throw new Error("no principal parts");
     const macronizedWord = principalParts[0]?.text[0] ?? "";
-    return { principalParts, macronizedWord };
+    return { macronizedWord, principalParts };
   }
 }
