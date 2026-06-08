@@ -83,5 +83,8 @@ jobs:
       - name: 📋 Validate Pull Request Template
         run: npx nx run monorepo:sync-pull-request-template:check
 
-      - name: 🎯 Validate Agent Skills
+      - name: 💡 Validate Agent Skills
         run: npx nx run monorepo:sync-agent-skills:check
+
+      - name: 🧩 Validate Conformance Generators
+        run: npx nx run monorepo:sync-conformance-generators:check

@@ -29,13 +29,6 @@
   },
   "name": "lexico",
   "private": true,
-  "scripts": {
-    "build": "vite build",
-    "develop": "vite dev",
-    "preview": "vite preview",
-    "start": "node .output/server/index.mjs",
-    "typecheck": "tsc --noEmit"
-  },
   "type": "module",
   "typeCoverage": {
     "atLeast": 99.36,

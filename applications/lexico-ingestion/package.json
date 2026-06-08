@@ -37,15 +37,6 @@
     "vitest": "^4.1.7"
   },
   "name": "lexico-ingestion",
-  "scripts": {
-    "start": "node --import @swc-node/register/esm-register src/main.ts lexico-ingestion",
-    "test": "vitest run",
-    "test:coverage": "vitest run --coverage",
-    "test:end-to-end": "vitest run end-to-end.test.ts",
-    "test:integration": "vitest run integration.test.ts",
-    "test:unit": "vitest run unit.test.ts",
-    "test:watch": "vitest"
-  },
   "type": "module",
   "typeCoverage": {
     "atLeast": 100,
