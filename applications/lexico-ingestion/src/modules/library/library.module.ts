@@ -3,15 +3,14 @@ import { Module } from "@nestjs/common";
 import { LoggerModule } from "../logger/logger.module";
 
 import { LibraryCommand } from "./library.command";
-import { LibraryService } from "./library.service";
 
 /**
- * TODO: Document the library module.
+ * Scrape thelatinlibrary.com to populate library.json.
  */
 @Module({
   controllers: [],
-  exports: [LibraryCommand, LibraryService],
+  exports: [LibraryCommand],
   imports: [LoggerModule],
-  providers: [LibraryCommand, LibraryService],
+  providers: [LibraryCommand],
 })
 export class LibraryModule {}

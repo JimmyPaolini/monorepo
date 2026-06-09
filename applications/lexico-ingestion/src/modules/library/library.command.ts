@@ -1,4 +1,4 @@
-import fs from "node:fs/promises";
+import * as fs from "node:fs/promises";
 import path from "node:path";
 
 import { Injectable } from "@nestjs/common";
@@ -6,11 +6,21 @@ import * as cheerio from "cheerio";
 import cheerioTableParser from "cheerio-tableparser";
 import { Command, CommandRunner } from "nest-commander";
 
+import { authorIdToName } from "../literature/literature.constants";
 import { LoggerService } from "../logger/logger.service";
 
-import { authorIdToName } from "./library.constants";
+interface AuthorIngestionDTO {
+  name: string;
+  nickname: string;
+  path: string;
+  works: TextIngestionDTO[];
+}
 
-import type { LibraryAuthor, LibraryWork } from "./library.types";
+interface TextIngestionDTO {
+  book?: string;
+  path: string;
+  title: string;
+}
 
 /**
  * Scrape literature data from thelatinlibrary.com to library.json.
@@ -28,58 +38,41 @@ export class LibraryCommand extends CommandRunner {
     this.logger.setContext(LibraryCommand.name);
   }
 
-  // 🔐 Private Fields
-
-  private readonly host = "https://www.thelatinlibrary.com/";
-
-  // 🔑 Public Fields
-
-  // 🔏 Private Methods
-
   // 🌎 Public Methods
 
   /** Scrape thelatinlibrary.com and save library.json */
   async run(): Promise<void> {
-    await this.scrapeLibrary();
-  }
+    const host = "https://www.thelatinlibrary.com/";
+    this.logger.log(`Scraping library from ${host}`);
 
-  /**
-   *
-   */
-  async scrapeLibrary(): Promise<void> {
-    this.logger.log(`Scraping library from ${this.host}`);
-
-    const res = await fetch(this.host);
+    const res = await fetch(host);
     const textData = await res.text();
     const tableHtml = cheerio.load(textData);
     cheerioTableParser(tableHtml);
-    const authors = (
+
+    const authors: AuthorIngestionDTO[] = (
       tableHtml("p>table").first() as unknown as {
         parsetable: (a: boolean, b: boolean, c: boolean) => string[][];
       }
     )
       .parsetable(true, true, false)
       .flat()
-      .map((elt: string) => {
+      .map((elt: string): AuthorIngestionDTO => {
         const a = cheerio.load(elt.trim())("a");
         const nickname = a.text().replace(/\s/, " ").trim().toLowerCase();
         const name = authorIdToName[nickname] || nickname;
         const href = a.attr("href") ?? "";
-        return {
-          name,
-          nickname,
-          path: href,
-          works: [] as LibraryWork[],
-        } satisfies LibraryAuthor;
+        return { name, nickname, path: href, works: [] };
       })
       .toSorted((a, b) => a.nickname.localeCompare(b.nickname));
 
     for (const author of authors) {
       this.logger.log(`Scraping author: ${author.nickname}`);
 
-      const authorRes = await fetch(this.host + author.path);
+      const authorRes = await fetch(host + author.path);
       const authorText = await authorRes.text();
       const $ = cheerio.load(authorText);
+
       for (const a of $("a").get()) {
         const href = $(a).attr("href");
         if (
@@ -94,10 +87,8 @@ export class LibraryCommand extends CommandRunner {
         author.works.push({ book, path: href, title });
       }
 
-      if (!author.works.every((work) => /.*.s?html/.exec(work.path))) {
-        author.works = [
-          { path: author.path, title: author.nickname },
-        ] satisfies LibraryWork[];
+      if (!author.works.every((work) => work.path.endsWith(".html"))) {
+        author.works = [{ path: author.path, title: author.nickname }];
       }
     }
 

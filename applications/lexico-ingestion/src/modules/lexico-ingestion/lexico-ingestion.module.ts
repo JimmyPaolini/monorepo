@@ -23,21 +23,21 @@ import { environmentSchema } from "./lexico-ingestion.constants";
   controllers: [],
   exports: [LexicoIngestionCommand],
   imports: [
+    ClearModule,
     ConfigModule.forRoot({
       envFilePath: ".env",
       isGlobal: true,
       validate: (config: Record<string, unknown>) =>
         environmentSchema.parse(config),
     }),
-    LexicoDatabaseModule,
-    WiktionaryModule,
     DictionaryModule,
-    WordsModule,
-    ManualModule,
-    LiteratureModule,
-    ClearModule,
+    LexicoDatabaseModule,
     LibraryModule,
+    LiteratureModule,
     LoggerModule,
+    ManualModule,
+    WiktionaryModule,
+    WordsModule,
   ],
   providers: [LexicoIngestionCommand],
 })
