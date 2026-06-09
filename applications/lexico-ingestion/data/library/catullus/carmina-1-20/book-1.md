@@ -1,0 +1,28 @@
+---
+title: book 1
+author: catullus
+type: text
+---
+
+# book 1
+
+Cui dono lepidum novum libellum
+
+arida modo pumice expolitum?
+
+Corneli, tibi: namque tu solebas
+
+meas esse aliquid putare nugas.
+
+Iam tum, cum ausus es unus Italorum
+
+omne aevum tribus explicare cartis . . .
+
+Doctis, Iuppiter, et laboriosis!
+
+Quare habe tibi quidquid hoc libelli—
+
+qualecumque, quod, o patrona virgo,
+
+plus uno maneat perenne saeclo!
+

@@ -1,0 +1,24 @@
+---
+title: book 80
+author: catullus
+type: text
+---
+
+# book 80
+
+Quid dicam, Gelli, quare rosea ista labella
+
+hiberna fiant candidiora nive,
+
+mane domo cum exis et cum te octava quiete
+
+e molli longo suscitat hora die?
+
+nescio quid certe est: an vere fama susurrat
+
+grandia te medii tenta vorare viri?
+
+sic certe est: clamant Victoris rupta miselli
+
+ilia, et emulso labra notata sero.
+

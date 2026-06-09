@@ -1,0 +1,22 @@
+---
+title: book 27
+author: catullus
+type: text
+---
+
+# book 27
+
+Minister vetuli puer Falerni
+
+inger mi calices amariores,
+
+ut lex Postumiae iubet magistrae
+
+ebrioso acino ebriosioris.
+
+at vos quo lubet hinc abite, lymphae
+
+vini pernicies, et ad severos
+
+migrate. hic merus est Thyonianus.
+

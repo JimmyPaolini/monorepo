@@ -1,0 +1,24 @@
+---
+title: book 88
+author: catullus
+type: text
+---
+
+# book 88
+
+Quid facit is, Gelli, qui cum matre atque sorore
+
+prurit, et abiectis pervigilat tunicis?
+
+quid facit is, patruum qui non sinit esse maritum?
+
+ecquid scis quantum suscipiat sceleris?
+
+suscipit, o Gelli, quantum non ultima Tethys
+
+nec genitor Nympharum abluit Oceanus:
+
+nam nihil est quicquam sceleris, quo prodeat ultra,
+
+non si demisso se ipse voret capite.
+

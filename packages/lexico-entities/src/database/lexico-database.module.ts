@@ -33,7 +33,7 @@ import { WordLexeme } from "../entities/WordLexeme.entity.js";
 import { LexicoNamingStrategy } from "./lexico-naming-strategy.js";
 
 /**
- *
+ * Database module handling the TypeORM setup for Lexico.
  */
 @Module({
   exports: [TypeOrmModule],
@@ -76,7 +76,7 @@ import { LexicoNamingStrategy } from "./lexico-naming-strategy.js";
         namingStrategy: new LexicoNamingStrategy(),
         password: config.get<string>("POSTGRES_PASSWORD", "postgres"),
         port: config.get<number>("POSTGRES_PORT", 5432),
-        synchronize: false,
+        synchronize: true,
         type: "postgres",
         username: config.get<string>("POSTGRES_USER", "postgres"),
       }),

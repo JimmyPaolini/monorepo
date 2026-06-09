@@ -1,0 +1,20 @@
+---
+title: book 73
+author: catullus
+type: text
+---
+
+# book 73
+
+Desine de quoquam quicquam bene velle mereri
+
+aut aliquem fieri posse putare pium.
+
+omnia sunt ingrata, nihil fecisse benigne
+
+prodest immo etiam taedet obestque magis;
+
+ut mihi, quem nemo gravius nec acerbius urget,
+
+quam modo qui me unum atque unicum amicum habuit.
+

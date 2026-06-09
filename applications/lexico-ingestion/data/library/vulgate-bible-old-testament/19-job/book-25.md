@@ -1,0 +1,20 @@
+---
+title: book 25
+author: vulgate bible old testament
+type: text
+---
+
+# book 25
+
+respondens autem Baldad Suites dixit
+
+potestas et terror apud eum est qui facit concordiam in sublimibus suis
+
+numquid est numerus militum eius et super quem non surget lumen illius
+
+numquid iustificari potest homo conparatus Deo aut apparere mundus natus de muliere
+
+ecce etiam luna non splendet et stellae non sunt mundae in conspectu eius
+
+quanto magis homo putredo et filius hominis vermis
+

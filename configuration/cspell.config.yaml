@@ -71,6 +71,7 @@ dictionaryDefinitions:
     addWords: true
 words:
   - apikey
+  - Canis
   - dataloaders
   - disambiguator
   - elipssis
@@ -93,6 +94,7 @@ words:
   - noqa
   - nums
   - oneline
+  - pagehead
   - paolini
   - querykey
   - reagent

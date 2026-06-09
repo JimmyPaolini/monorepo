@@ -1,0 +1,36 @@
+---
+title: book 13
+author: catullus
+type: text
+---
+
+# book 13
+
+Cenabis bene, mi Fabulle, apud me
+
+paucis, si tibi di favent, diebus,
+
+si tecum attuleris bonam atque magnam
+
+cenam, non sine candida puella
+
+et vino et sale et omnibus cachinnis.
+
+haec si, inquam, attuleris, venuste noster,
+
+cenabis bene; nam tui Catulli
+
+plenus sacculus est aranearum.
+
+sed contra accipies meros amores
+
+seu quid suavius elegantiusve est:
+
+nam unguentum dabo, quod meae puellae
+
+donarunt Veneres Cupidinesque,
+
+quod tu cum olfacies, deos rogabis,
+
+totum ut te faciant, Fabulle, nasum.
+

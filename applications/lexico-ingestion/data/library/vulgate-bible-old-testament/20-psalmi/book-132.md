@@ -1,0 +1,14 @@
+---
+title: book 132
+author: vulgate bible old testament
+type: text
+---
+
+# book 132
+
+canticum graduum David ecce quam bonum et quam decorum habitare fratres in uno
+
+sicut unguentum optimum in capite quod descendit in barbam barbam Aaron quod descendit super oram vestimentorum eius
+
+sicut ros Hermon qui descendit super montana Sion quoniam ibi mandavit Dominus benedictionem vitam usque in aeternum
+

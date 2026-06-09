@@ -1,5 +1,5 @@
 import { Field, ObjectType } from "@nestjs/graphql";
-import { Column, Entity, ManyToOne, OneToMany } from "typeorm";
+import { Column, Entity, Index, ManyToOne, OneToMany } from "typeorm";
 
 import { AuditableEntity } from "../Auditable.entity.js";
 
@@ -18,6 +18,7 @@ import type { Token } from "./Token.entity.js";
 @ObjectType()
 export class Line extends AuditableEntity {
   @Field(() => Object)
+  @Index()
   @ManyToOne("Author", { eager: false, onDelete: "CASCADE" })
   author!: Author;
 
@@ -33,7 +34,7 @@ export class Line extends AuditableEntity {
   @Field()
   lineLabel!: string;
 
-  @Column("int", {
+  @Column("bigint", {
     comment: "The sequential 0-based index of the line within its text",
   })
   @Field()
@@ -48,6 +49,7 @@ export class Line extends AuditableEntity {
   slug!: string;
 
   @Field(() => Object)
+  @Index()
   @ManyToOne("Text", "lines", { eager: true, onDelete: "CASCADE" })
   text!: Text;
 

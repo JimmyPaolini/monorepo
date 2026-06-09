@@ -45,20 +45,20 @@ export class LexicoIngestionCommand extends CommandRunner {
    * clear → wiktionary → dictionary → manual
    */
   async run(): Promise<void> {
-    this.logger.log("Starting full ingestion pipeline");
+    this.logger.log("🚀 Starting full ingestion pipeline");
 
-    this.logger.log("Step 1/4: Clearing dictionary data");
+    this.logger.log("🗂️ Step 1/4: Clearing dictionary data");
     await this.clearCommand.clearDictionary();
 
-    this.logger.log("Step 2/4: Ingesting Wiktionary pages");
+    this.logger.log("🗂️ Step 2/4: Ingesting Wiktionary pages");
     await this.wiktionaryCommand.ingestWiktionary();
 
-    this.logger.log("Step 3/4: Processing dictionary lexemes");
+    this.logger.log("🗂️ Step 3/4: Processing dictionary lexemes");
     await this.dictionaryCommand.ingestAll();
 
-    this.logger.log("Step 4/4: Ingesting manual lexemes");
+    this.logger.log("🗂️ Step 4/4: Ingesting manual lexemes");
     await this.manualService.ingestManual();
 
-    this.logger.log("Full ingestion pipeline complete");
+    this.logger.log("✅ Full ingestion pipeline complete");
   }
 }

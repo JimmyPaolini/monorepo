@@ -1,5 +1,12 @@
 import { Field, ObjectType } from "@nestjs/graphql";
-import { Column, Entity, JoinColumn, ManyToOne, OneToMany } from "typeorm";
+import {
+  Column,
+  Entity,
+  Index,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+} from "typeorm";
 
 import { AuditableEntity } from "../Auditable.entity.js";
 
@@ -17,6 +24,7 @@ import type { Line } from "./Line.entity.js";
 @ObjectType()
 export class Text extends AuditableEntity {
   @Field(() => Object)
+  @Index()
   @JoinColumn({ name: "author_id" })
   @ManyToOne("Author", "texts", { eager: true, onDelete: "CASCADE" })
   author!: Author;
@@ -30,6 +38,7 @@ export class Text extends AuditableEntity {
   lines!: Line[];
 
   @Field(() => Object, { nullable: true })
+  @Index()
   @JoinColumn({ name: "parent_text_id" })
   @ManyToOne("Text", "childTexts", {
     eager: false,

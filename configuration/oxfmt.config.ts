@@ -47,6 +47,7 @@ export default defineConfig({
     "**/lexico-components/src/lib",
     "**/lexico-components/src/lib/utils",
     "**/applications/lexico-ingestion/data/**",
+    "**/applications/lexico-ingestion/data/library/**",
     "**/applications/lexico-ingestion/src/modules/literature/literature.constants.ts",
     "**/applications/lexico-ingestion/src/modules/library/library.constants.ts",
     "**/library.json",

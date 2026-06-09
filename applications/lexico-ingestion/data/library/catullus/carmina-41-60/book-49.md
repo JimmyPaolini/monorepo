@@ -1,0 +1,22 @@
+---
+title: book 49
+author: catullus
+type: text
+---
+
+# book 49
+
+Disertissime Romuli nepotum,
+
+quot sunt quotque fuere, Marce Tulli,
+
+quotque post aliis erunt in annis,
+
+gratias tibi maximas Catullus
+
+agit pessimus omnium poeta,
+
+tanto pessimus omnium poeta,
+
+quanto tu optimus omnium patronus.
+

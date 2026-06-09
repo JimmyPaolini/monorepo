@@ -1,7 +1,16 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 
-import { Author, Line, Text, Token, Word } from "@monorepo/lexico-entities";
+import {
+  Author,
+  LexicoDatabaseModule,
+  Line,
+  Text,
+  Token,
+  Word,
+} from "@monorepo/lexico-entities";
+
+import { LoggerModule } from "../logger/logger.module.js";
 
 import { LiteratureCommand } from "./literature.command.js";
 
@@ -10,7 +19,11 @@ import { LiteratureCommand } from "./literature.command.js";
  */
 @Module({
   exports: [LiteratureCommand],
-  imports: [TypeOrmModule.forFeature([Author, Text, Line, Token, Word])],
+  imports: [
+    LexicoDatabaseModule,
+    TypeOrmModule.forFeature([Author, Text, Line, Token, Word]),
+    LoggerModule,
+  ],
   providers: [LiteratureCommand],
 })
 export class LiteratureModule {}

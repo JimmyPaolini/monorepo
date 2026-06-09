@@ -1,0 +1,22 @@
+---
+title: book 54
+author: catullus
+type: text
+---
+
+# book 54
+
+Othonis caput oppido est pusillum,
+
+et eri rustice semilauta crura,
+
+subtile et leve peditum Libonis,
+
+si non omnia, displicere vellem
+
+tibi et Sufficio seni recocto...
+
+irascere iterum meis iambis
+
+inmerentibus, unice imperator.
+

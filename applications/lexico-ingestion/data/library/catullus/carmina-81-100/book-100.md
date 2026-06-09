@@ -1,0 +1,24 @@
+---
+title: book 100
+author: catullus
+type: text
+---
+
+# book 100
+
+Caelius Aufillenum et Qvintius Aufillenam
+
+flos Veronensum depereunt iuvenum,
+
+hic fratrem, ille sororem. hoc est, quod dicitur, illud
+
+fraternum vere dulce sodalicium.
+
+cui faveam potius? Caeli, tibi: nam tua nobis
+
+perspecta ex igni est unica amicitia,
+
+cum vesana meas torreret flamma medullas.
+
+sis felix, Caeli, sis in amore potens.
+

@@ -1,0 +1,14 @@
+---
+title: book 133
+author: vulgate bible old testament
+type: text
+---
+
+# book 133
+
+canticum graduum ecce benedicite Domino omnes servi Domini qui statis in domo Domini
+
+in noctibus levate manus vestras ad sanctum et benedicite Domino
+
+benedicat tibi Dominus ex Sion factor caeli et terrae
+

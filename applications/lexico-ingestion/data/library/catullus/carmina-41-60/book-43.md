@@ -1,0 +1,24 @@
+---
+title: book 43
+author: catullus
+type: text
+---
+
+# book 43
+
+Salve, nec minimo puella naso
+
+nec bello pede nec nigris ocellis
+
+nec longis digitis nec ore sicco
+
+nec sane nimis elegante lingua,
+
+decoctoris amica Formiani.
+
+ten provincia narrat esse bellam?
+
+tecum Lesbia nostra comparatur?
+
+o saeclum insapiens et infacetum!
+

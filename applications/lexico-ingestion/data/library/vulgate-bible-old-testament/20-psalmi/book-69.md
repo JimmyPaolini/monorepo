@@ -1,0 +1,20 @@
+---
+title: book 69
+author: vulgate bible old testament
+type: text
+---
+
+# book 69
+
+victori David ad recordandum
+
+Deus ut liberes me Domine ut auxilieris mihi festina
+
+confundantur et erubescant qui quaerunt animam meam
+
+convertantur retrorsum et erubescant qui volunt malum mihi revertantur ad vestigium confusionis suae qui dicunt va va
+
+gaudeant et laetentur in te omnes qui quaerunt te et dicant semper magnificetur Deus qui diligunt salutare tuum
+
+ego autem egenus et pauper Deus festina pro me auxilium meum et salvator meus tu Domine ne moreris
+

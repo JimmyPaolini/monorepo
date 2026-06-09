@@ -1,0 +1,20 @@
+---
+title: book 48
+author: catullus
+type: text
+---
+
+# book 48
+
+Mellitos oculos tuos, Iuventi,
+
+si quis me sinat usque basiare,
+
+usque ad milia basiem trecenta
+
+nec numquam videar satur futurus,
+
+non si densior aridis aristis
+
+sit nostrae seges osculationis.
+

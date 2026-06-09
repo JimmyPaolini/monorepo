@@ -41,19 +41,26 @@ export class ClearService {
    * in dependency order to avoid foreign-key constraint violations. */
   async clearDictionary(): Promise<void> {
     this.logger.log("🗑️ Clearing dictionary");
+    this.logger.log("  🧹 Deleting words...");
     await this.wordsRepository.createQueryBuilder().delete().execute();
+    this.logger.log("  🧹 Deleting translations...");
     await this.translationsRepository.createQueryBuilder().delete().execute();
+    this.logger.log("  🧹 Deleting lexemes...");
     await this.lexemesRepository.createQueryBuilder().delete().execute();
-    this.logger.log("🗑️ Cleared dictionary");
+    this.logger.log("✨ Cleared dictionary");
   }
 
   /** Deletes all literature data */
   async clearLiterature(): Promise<void> {
     this.logger.log("🗑️ Clearing literature");
+    this.logger.log("  🧹 Deleting tokens...");
     await this.tokensRepository.createQueryBuilder().delete().execute();
+    this.logger.log("  🧹 Deleting lines...");
     await this.linesRepository.createQueryBuilder().delete().execute();
+    this.logger.log("  🧹 Deleting texts...");
     await this.textsRepository.createQueryBuilder().delete().execute();
+    this.logger.log("  🧹 Deleting authors...");
     await this.authorsRepository.createQueryBuilder().delete().execute();
-    this.logger.log("🗑️ Cleared literature");
+    this.logger.log("✨ Cleared literature");
   }
 }

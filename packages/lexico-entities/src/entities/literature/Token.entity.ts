@@ -1,5 +1,5 @@
 import { Field, ObjectType } from "@nestjs/graphql";
-import { Column, Entity, JoinColumn, ManyToOne } from "typeorm";
+import { Column, Entity, Index, JoinColumn, ManyToOne } from "typeorm";
 
 import { AuditableEntity } from "../Auditable.entity.js";
 
@@ -20,10 +20,11 @@ import type { Text } from "./Text.entity.js";
 @ObjectType()
 export class Token extends AuditableEntity {
   @Field(() => Object)
+  @Index()
   @ManyToOne("Author", { eager: false, onDelete: "CASCADE" })
   author!: Author;
 
-  @Column("int", {
+  @Column("bigint", {
     comment: "The 0-based index of this token within its parent line",
   })
   @Field()
@@ -37,6 +38,7 @@ export class Token extends AuditableEntity {
   isPunctuation!: boolean;
 
   @Field(() => Object)
+  @Index()
   @ManyToOne("Line", "tokens", { eager: false, onDelete: "CASCADE" })
   line!: Line;
 
@@ -49,14 +51,17 @@ export class Token extends AuditableEntity {
   slug!: string;
 
   @Field(() => Object)
+  @Index()
   @ManyToOne("Text", { eager: false, onDelete: "CASCADE" })
   text!: Text;
 
   @Column("varchar", { comment: "The raw string value of the token" })
   @Field()
+  @Index()
   textValue!: string;
 
   @Field(() => Object, { nullable: true })
+  @Index()
   @JoinColumn()
   @ManyToOne("Word", { eager: false, nullable: true })
   word?: null | Word;

@@ -1,0 +1,40 @@
+---
+title: book 99
+author: catullus
+type: text
+---
+
+# book 99
+
+Surripui tibi, dum ludis, mellite Iuventi,
+
+suaviolum dulci dulcius ambrosia.
+
+verum id non impune tuli: namque amplius horam
+
+suffixum in summa me memini esse cruce,
+
+dum tibi me purgo nec possum fletibus ullis
+
+tantillum vestrae demere saevitiae.
+
+nam simul id factum est, multis diluta labella
+
+guttis abstersisti omnibus articulis,
+
+ne quicquam nostro contractum ex ore maneret,
+
+tamquam commictae spurca saliva lupae.
+
+praeterea infesto miserum me tradere amori
+
+non cessasti omnique excruciare modo,
+
+ut mi ex ambrosia mutatum iam foret illud
+
+suaviolum tristi tristius elleboro.
+
+quam quoniam poenam misero proponis amori,
+
+numquam iam posthac basia surripiam.
+

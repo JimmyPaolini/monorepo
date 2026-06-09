@@ -1,0 +1,20 @@
+---
+title: book 83
+author: catullus
+type: text
+---
+
+# book 83
+
+Lesbia mi praesente viro mala plurima dicit:
+
+haec illi fatuo maxima laetitia est.
+
+mule, nihil sentis? si nostri oblita taceret,
+
+sana esset: nunc quod gannit et obloquitur,
+
+non solum meminit, sed, quae multo acrior est res,
+
+irata est. hoc est, uritur et loquitur.
+

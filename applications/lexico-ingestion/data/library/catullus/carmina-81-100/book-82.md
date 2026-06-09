@@ -1,0 +1,16 @@
+---
+title: book 82
+author: catullus
+type: text
+---
+
+# book 82
+
+Quinti, si tibi vis oculos debere Catullum
+
+aut aliud si quid carius est oculis,
+
+eripere ei noli, multo quod carius illi
+
+est oculis seu quid carius est oculis.
+

@@ -1,14 +1,23 @@
 import * as fs from "node:fs/promises";
 import path from "node:path";
 
-import { Injectable, Logger } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
+import _ from "lodash";
+import { toString } from "mdast-util-to-string";
 import { Command, CommandRunner } from "nest-commander";
+import { remark } from "remark";
+import remarkFrontmatter from "remark-frontmatter";
+import remarkGfm from "remark-gfm";
 import { type DeepPartial, Repository } from "typeorm";
 
 import { Author, Line, Text, Token, Word } from "@monorepo/lexico-entities";
 
+import { LoggerService } from "../logger/logger.service.js";
+
 import { authorIdToName } from "./literature.constants";
+
+import type { Paragraph } from "mdast";
 
 const ROMAN_VALUES: Record<string, number> = {
   C: 100,
@@ -40,10 +49,11 @@ export class LiteratureCommand extends CommandRunner {
     private readonly tokenRepository: Repository<Token>,
     @InjectRepository(Word)
     private readonly wordRepository: Repository<Word>,
+    private readonly logger: LoggerService,
   ) {
     super();
+    this.logger.setContext(LiteratureCommand.name);
   }
-  private readonly logger = new Logger(LiteratureCommand.name);
 
   private wordsCache: Map<string, string> | null = null;
 
@@ -71,51 +81,117 @@ export class LiteratureCommand extends CommandRunner {
     nickname: string,
     basePath: string,
   ): Promise<void> {
-    this.logger.log(`Ingesting author: ${nickname}`);
+    this.logger.log(`👤 Ingesting author: ${nickname}`);
 
-    const author = await this.authorRepository.save({
-      name: authorIdToName[nickname] || nickname,
-      slug: nickname,
-    });
+    try {
+      const author = await this.authorRepository.save({
+        name: authorIdToName[nickname] || nickname,
+        slug: nickname,
+      });
 
-    const authorPath = path.join(basePath, nickname);
-    const entries = await fs.readdir(authorPath, { withFileTypes: true });
+      const authorPath = path.join(basePath, nickname);
+      const entries = await fs.readdir(authorPath, { withFileTypes: true });
 
-    for (const entry of entries) {
-      const fullPath = path.join(authorPath, entry.name);
+      for (const entry of entries) {
+        const fullPath = path.join(authorPath, entry.name);
 
-      if (entry.isDirectory()) {
-        await this.ingestTextDir(author, entry.name, fullPath);
-      } else if (entry.isFile() && entry.name.endsWith(".txt")) {
-        const title = path.basename(entry.name, ".txt");
-        await this.ingestText(author, undefined, title, fullPath);
+        if (entry.isDirectory()) {
+          const title = _.startCase(entry.name);
+          await this.ingestTextDir(author, title, entry.name, fullPath);
+        } else if (entry.isFile() && entry.name.endsWith(".md")) {
+          const slugName = path.basename(entry.name, ".md");
+          const title = _.startCase(slugName);
+          await this.ingestText(author, undefined, title, slugName, fullPath);
+        }
       }
+    } catch (error) {
+      const err = error as Error;
+      this.logger.error(
+        `Error ingesting author ${nickname}: ${err.message}`,
+        err.stack,
+      );
+      throw err;
     }
   }
 
   private async ingestLines(text: Text, textPath: string): Promise<void> {
+    this.logger.log(`  📜 Parsing lines for ${text.title}`);
     const content = await fs.readFile(textPath, "utf8");
-    if (!content.includes(String.raw`\n`)) {
-      this.logger.log(`NO LINES in ${text.slug}`);
-    }
 
     const wordMap = await this.getWordsCache();
     const tokenEntities: DeepPartial<Token>[] = [];
 
-    const lines = content.split(String.raw`\n`);
-    const areLinesLabelled = lines.some((line: string) => /^#\S+/.test(line));
+    const ast = remark().use(remarkFrontmatter).use(remarkGfm).parse(content);
 
-    const lineEntities = lines.map((lineText: string, lineNumber: number) => {
-      let lineLabel = areLinesLabelled ? "•" : `${lineNumber + 1}`;
-      const lineLabelHashtag = /^#\S+/.exec(lineText);
+    const paragraphs = ast.children.filter(
+      (child): child is Paragraph => child.type === "paragraph",
+    );
 
-      if (lineLabelHashtag) {
-        lineLabel = lineLabelHashtag[0].slice(1);
-        if (/[IVXLCDM]+/.test(lineLabel)) {
-          lineLabel = `${this.romanToDecimal(lineLabel)}`;
+    if (paragraphs.length === 0) {
+      this.logger.log(`NO LINES in ${text.slug}`);
+    }
+
+    const lineEntities = paragraphs.map((para, lineNumber) => {
+      let lineLabel = `${lineNumber + 1}`;
+      let lineNodes = para.children;
+      const firstNode = lineNodes[0];
+
+      if (firstNode?.type === "strong") {
+        const strongNode = firstNode;
+        const rawLabel = toString(strongNode).trim();
+
+        // Extract the actual label if it's mixed with a title (e.g. "XXVII. Canis et...")
+        const labelMatch = /^([IVXLCDM]+|[0-9]+[a-zA-Z]*)\.?\s*(.*)$/i.exec(
+          rawLabel,
+        );
+        if (labelMatch?.[1]) {
+          lineLabel = labelMatch[1];
+          if (/^[IVXLCDM]+$/i.test(lineLabel)) {
+            lineLabel = `${this.romanToDecimal(lineLabel)}`;
+          }
+
+          const remainder = labelMatch[2];
+          lineNodes = lineNodes.slice(1);
+
+          if (remainder) {
+            const newNode = {
+              type: "text",
+              value: `${remainder} `,
+            } as Extract<
+              Parameters<typeof lineNodes.unshift>[0],
+              { type: "text" }
+            >;
+            lineNodes.unshift(newNode);
+          }
+        } else {
+          // If it doesn't match a standard label format, just use the raw label if it fits, or fallback
+          if (rawLabel.length <= 32) {
+            lineLabel = rawLabel;
+            if (/^[IVXLCDM]+$/i.test(lineLabel)) {
+              lineLabel = `${this.romanToDecimal(lineLabel)}`;
+            }
+          }
+          lineNodes = lineNodes.slice(1);
+          // If we rejected the rawLabel as a label because it was too long, we should put it back in the text
+          if (rawLabel.length > 32) {
+            const newNode = {
+              type: "text",
+              value: `${rawLabel} `,
+            } as Extract<
+              Parameters<typeof lineNodes.unshift>[0],
+              { type: "text" }
+            >;
+            lineNodes.unshift(newNode);
+          }
         }
-        lineText = lineText.replace(/^#\S+ ?/, "");
+
+        const nextNode = lineNodes[0];
+        if (nextNode?.type === "text" && "value" in nextNode) {
+          nextNode.value = nextNode.value.replace(/^\s+/, "");
+        }
       }
+
+      const lineText = toString({ children: lineNodes, type: "paragraph" });
 
       const slug = `${text.slug}_${lineNumber}`;
       return {
@@ -128,13 +204,23 @@ export class LiteratureCommand extends CommandRunner {
       };
     });
 
-    const savedLines = await this.lineRepository.save(lineEntities);
+    const savedLines: Line[] = [];
+    const lineChunkSize = 1000;
+    for (let i = 0; i < lineEntities.length; i += lineChunkSize) {
+      const chunk = lineEntities.slice(i, i + lineChunkSize);
+      const savedChunk = await this.lineRepository.save(chunk);
+      savedLines.push(...savedChunk);
+    }
+
+    this.logger.log(
+      `  💾 Saved ${savedLines.length} lines. Extracting tokens...`,
+    );
 
     for (const line of savedLines) {
       const tokenStrings = line.line.match(/[\p{L}]+|[^\p{L}\s]+/gu) || [];
       tokenStrings.forEach((tokenText, index) => {
         const isPunctuation = !/^[\p{L}]+$/u.test(tokenText);
-        let wordId = null;
+        let wordId: null | string = null;
         if (!isPunctuation) {
           const normalized = this.escapeCapitals(this.normalize(tokenText));
           wordId = wordMap.get(normalized) || null;
@@ -153,9 +239,12 @@ export class LiteratureCommand extends CommandRunner {
       });
     }
 
+    this.logger.log(
+      `  💾 Saving ${tokenEntities.length} tokens for ${text.title}...`,
+    );
     const chunkSize = 5000;
     for (let i = 0; i < tokenEntities.length; i += chunkSize) {
-      await this.tokenRepository.save(tokenEntities.slice(i, i + chunkSize));
+      await this.tokenRepository.insert(tokenEntities.slice(i, i + chunkSize));
     }
   }
 
@@ -163,11 +252,12 @@ export class LiteratureCommand extends CommandRunner {
     author: Author,
     parentText: Text | undefined,
     title: string,
+    textSlugName: string,
     textPath: string,
   ): Promise<void> {
     const textSlug = parentText
-      ? `${parentText.slug}/${title}`
-      : `${author.slug}/${title}`;
+      ? `${parentText.slug}/${textSlugName}`
+      : `${author.slug}/${textSlugName}`;
 
     const textSaveObj: DeepPartial<Text> = {
       author,
@@ -187,21 +277,23 @@ export class LiteratureCommand extends CommandRunner {
   private async ingestTextDir(
     author: Author,
     title: string,
+    dirSlug: string,
     dirPath: string,
   ): Promise<void> {
     const parentText = await this.textRepository.save({
       author,
-      slug: `${author.slug}/${title}`,
+      slug: `${author.slug}/${dirSlug}`,
       title,
       type: "book",
     });
 
     const texts = await fs.readdir(dirPath, { withFileTypes: true });
     for (const textFile of texts) {
-      if (!textFile.isFile() || !textFile.name.endsWith(".txt")) continue;
-      const textTitle = path.basename(textFile.name, ".txt");
+      if (!textFile.isFile() || !textFile.name.endsWith(".md")) continue;
+      const slugName = path.basename(textFile.name, ".md");
+      const textTitle = _.startCase(slugName);
       const fullPath = path.join(dirPath, textFile.name);
-      await this.ingestText(author, parentText, textTitle, fullPath);
+      await this.ingestText(author, parentText, textTitle, slugName, fullPath);
     }
   }
 
@@ -232,7 +324,7 @@ export class LiteratureCommand extends CommandRunner {
   /** Runs the literature ingestion pipeline. */
   async run(): Promise<void> {
     const dataPath = path.resolve("data", "library");
-    this.logger.log(`Ingesting literature from ${dataPath}`);
+    this.logger.log(`📚 Ingesting literature from ${dataPath}`);
 
     try {
       await fs.access(dataPath);
@@ -250,6 +342,6 @@ export class LiteratureCommand extends CommandRunner {
       await this.ingestAuthor(nickname, dataPath);
     }
 
-    this.logger.log("Literature ingestion complete");
+    this.logger.log("📚 Literature ingestion complete");
   }
 }

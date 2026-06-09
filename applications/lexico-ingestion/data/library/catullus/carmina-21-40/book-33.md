@@ -1,0 +1,24 @@
+---
+title: book 33
+author: catullus
+type: text
+---
+
+# book 33
+
+O Furum optime balneariorum
+
+Vibenni pater et cinaede fili
+
+(nam dextra pater inquinatiore,
+
+culo filius est voraciore),
+
+cur non exilium malasque in oras
+
+itis? quandoquidem patris rapinae
+
+notae sunt populo, et natis pilosas,
+
+fili, non potes asse venditare.
+

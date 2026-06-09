@@ -1,0 +1,20 @@
+---
+title: book 86
+author: catullus
+type: text
+---
+
+# book 86
+
+Quintia formosa est multis. mihi candida, longa,
+
+recta est: haec ego sic singula confiteor.
+
+totum illud formosa nego: nam nulla venustas,
+
+nulla in tam magno est corpore mica salis.
+
+Lesbia formosa est, quae cum pulcerrima tota est,
+
+tum omnibus una omnis surripuit Veneres.
+

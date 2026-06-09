@@ -4,6 +4,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import {
   Author,
   Lexeme,
+  LexicoDatabaseModule,
   Line,
   Text,
   Token,
@@ -21,6 +22,7 @@ import { ClearService } from "./clear.service";
   controllers: [],
   exports: [ClearCommand, ClearService],
   imports: [
+    LexicoDatabaseModule,
     TypeOrmModule.forFeature([
       Lexeme,
       Translation,
