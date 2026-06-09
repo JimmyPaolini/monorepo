@@ -10,18 +10,7 @@ import { Command, CommandRunner } from "nest-commander";
 import { authorIdToName } from "../literature/literature.constants";
 import { LoggerService } from "../logger/logger.service";
 
-interface AuthorIngestionDTO {
-  name: string;
-  nickname: string;
-  path: string;
-  works: TextIngestionDTO[];
-}
-
-interface TextIngestionDTO {
-  book?: string;
-  path: string;
-  title: string;
-}
+import type { LibraryAuthor, LibraryWork } from "./library.types";
 
 /**
  * Scrape literature data from thelatinlibrary.com to library.json.
@@ -51,16 +40,17 @@ export class LibraryCommand extends CommandRunner {
     const tableHtml = cheerio.load(textData);
     cheerioTableParser(tableHtml);
 
-    const authors: AuthorIngestionDTO[] = tableHtml("p>table")
+    const authors: LibraryAuthor[] = tableHtml("p>table")
       .first()
       .parsetable(true, true, false)
       .flat()
-      .map((elt: string): AuthorIngestionDTO => {
+      .map((elt: string): LibraryAuthor => {
         const a = cheerio.load(elt.trim())("a");
         const nickname = a.text().replace(/\s/, " ").trim().toLowerCase();
-        const name = authorIdToName[nickname] || nickname;
+        const slug = _.kebabCase(nickname);
+        const name = authorIdToName[slug] || nickname;
         const href = a.attr("href") ?? "";
-        return { name, nickname, path: href, works: [] };
+        return { name, nickname, path: href, slug, works: [] };
       })
       .toSorted((a, b) => a.nickname.localeCompare(b.nickname));
 
@@ -89,7 +79,7 @@ export class LibraryCommand extends CommandRunner {
         const book = rawBook ? _.startCase(rawBook) : undefined;
         const rawTitle = $(a).text().trim().toLowerCase();
         const title = rawTitle ? _.startCase(rawTitle) : "";
-        const workDto: TextIngestionDTO = { path: href, title };
+        const workDto: LibraryWork = { path: href, title };
         if (book !== undefined) {
           workDto.book = book;
         }
@@ -111,7 +101,7 @@ export class LibraryCommand extends CommandRunner {
 
     // Fetch and generate markdown for each work
     for (const author of authors) {
-      const authorPath = path.join(dataPath, author.nickname);
+      const authorPath = path.join(dataPath, author.slug);
       await fs.mkdir(authorPath, { recursive: true });
 
       for (const work of author.works) {
@@ -123,7 +113,7 @@ export class LibraryCommand extends CommandRunner {
           const workHtml = await workRes.text();
           const $work = cheerio.load(workHtml);
 
-          let markdown = `---\ntitle: ${work.title}\nauthor: ${author.nickname}\nsource_url: ${host + work.path}\ntype: ${work.book ? "text" : "book"}\n---\n\n`;
+          let markdown = `---\ntitle: ${work.title}\nauthor: ${author.slug}\nsource_url: ${host + work.path}\ntype: ${work.book ? "text" : "book"}\n---\n\n`;
 
           if (work.book) {
             markdown += `# ${work.book}\n\n`;

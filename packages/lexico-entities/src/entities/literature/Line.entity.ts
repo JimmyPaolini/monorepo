@@ -22,9 +22,15 @@ export class Line extends AuditableEntity {
   @ManyToOne("Author", { eager: false, onDelete: "CASCADE" })
   author!: Author;
 
-  @Column("varchar", { comment: "The raw text content of the line" })
+  @Column("varchar", { comment: "The raw text data content of the line" })
   @Field()
-  line!: string;
+  data!: string;
+
+  @Column("bigint", {
+    comment: "The sequential 0-based index of the line within its text",
+  })
+  @Field()
+  index!: number;
 
   @Column("varchar", {
     comment:
@@ -32,13 +38,7 @@ export class Line extends AuditableEntity {
     length: 32,
   })
   @Field()
-  lineLabel!: string;
-
-  @Column("bigint", {
-    comment: "The sequential 0-based index of the line within its text",
-  })
-  @Field()
-  lineNumber!: number;
+  label!: string;
 
   @Column("varchar", {
     comment: "Unique slug identifier (e.g. 'caesar/de bello gallico_12')",

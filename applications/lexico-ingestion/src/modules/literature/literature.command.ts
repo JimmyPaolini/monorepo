@@ -77,19 +77,16 @@ export class LiteratureCommand extends CommandRunner {
     return this.wordsCache;
   }
 
-  private async ingestAuthor(
-    nickname: string,
-    basePath: string,
-  ): Promise<void> {
-    this.logger.log(`👤 Ingesting author: ${nickname}`);
+  private async ingestAuthor(slug: string, basePath: string): Promise<void> {
+    this.logger.log(`👤 Ingesting author: ${slug}`);
 
     try {
       const author = await this.authorRepository.save({
-        name: authorIdToName[nickname] || nickname,
-        slug: nickname,
+        name: authorIdToName[slug] || slug,
+        slug,
       });
 
-      const authorPath = path.join(basePath, nickname);
+      const authorPath = path.join(basePath, slug);
       const entries = await fs.readdir(authorPath, { withFileTypes: true });
 
       for (const entry of entries) {
@@ -107,7 +104,7 @@ export class LiteratureCommand extends CommandRunner {
     } catch (error) {
       const err = error as Error;
       this.logger.error(
-        `Error ingesting author ${nickname}: ${err.message}`,
+        `Error ingesting author ${slug}: ${err.message}`,
         err.stack,
       );
       throw err;
@@ -131,8 +128,8 @@ export class LiteratureCommand extends CommandRunner {
       this.logger.log(`NO LINES in ${text.slug}`);
     }
 
-    const lineEntities = paragraphs.map((para, lineNumber) => {
-      let lineLabel = `${lineNumber + 1}`;
+    const lineEntities = paragraphs.map((para, index) => {
+      let label = `${index + 1}`;
       let lineNodes = para.children;
       const firstNode = lineNodes[0];
 
@@ -145,9 +142,9 @@ export class LiteratureCommand extends CommandRunner {
           rawLabel,
         );
         if (labelMatch?.[1]) {
-          lineLabel = labelMatch[1];
-          if (/^[IVXLCDM]+$/i.test(lineLabel)) {
-            lineLabel = `${this.romanToDecimal(lineLabel)}`;
+          label = labelMatch[1];
+          if (/^[IVXLCDM]+$/i.test(label)) {
+            label = `${this.romanToDecimal(label)}`;
           }
 
           const remainder = labelMatch[2];
@@ -166,9 +163,9 @@ export class LiteratureCommand extends CommandRunner {
         } else {
           // If it doesn't match a standard label format, just use the raw label if it fits, or fallback
           if (rawLabel.length <= 32) {
-            lineLabel = rawLabel;
-            if (/^[IVXLCDM]+$/i.test(lineLabel)) {
-              lineLabel = `${this.romanToDecimal(lineLabel)}`;
+            label = rawLabel;
+            if (/^[IVXLCDM]+$/i.test(label)) {
+              label = `${this.romanToDecimal(label)}`;
             }
           }
           lineNodes = lineNodes.slice(1);
@@ -193,12 +190,12 @@ export class LiteratureCommand extends CommandRunner {
 
       const lineText = toString({ children: lineNodes, type: "paragraph" });
 
-      const slug = `${text.slug}_${lineNumber}`;
+      const slug = `${text.slug}_${index}`;
       return {
         author: text.author,
-        line: lineText,
-        lineLabel,
-        lineNumber,
+        data: lineText,
+        index,
+        label,
         slug,
         text,
       };
@@ -217,7 +214,7 @@ export class LiteratureCommand extends CommandRunner {
     );
 
     for (const line of savedLines) {
-      const tokenStrings = line.line.match(/[\p{L}]+|[^\p{L}\s]+/gu) || [];
+      const tokenStrings = line.data.match(/[\p{L}]+|[^\p{L}\s]+/gu) || [];
       tokenStrings.forEach((tokenText, index) => {
         const isPunctuation = !/^[\p{L}]+$/u.test(tokenText);
         let wordId: null | string = null;
@@ -338,8 +335,8 @@ export class LiteratureCommand extends CommandRunner {
       .filter((dirent) => dirent.isDirectory())
       .map((dirent) => dirent.name);
 
-    for (const nickname of authorDirs) {
-      await this.ingestAuthor(nickname, dataPath);
+    for (const slug of authorDirs) {
+      await this.ingestAuthor(slug, dataPath);
     }
 
     this.logger.log("📚 Literature ingestion complete");

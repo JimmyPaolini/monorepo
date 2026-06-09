@@ -10,4 +10,3 @@ type: text
 ## Liber Ii
 
 Si epistulam mittes huic: latinlibrary@mac.com, forsan paginam invenire aut facere potero. Maximas gratias et pax.
-

@@ -15,11 +15,16 @@ import type { Lexeme } from "./Lexeme.entity.js";
 })
 @ObjectType()
 export class Translation extends AuditableEntity {
-  constructor(translation: string, lexeme?: Lexeme) {
+  constructor(data: string, lexeme?: Lexeme) {
     super();
-    this.translation = translation;
+    this.data = data;
     if (lexeme) this.lexeme = lexeme;
   }
+
+  @Column("text", { comment: "English translation text" })
+  @Field()
+  @Index()
+  data!: string;
 
   @Field(() => Object)
   @Index()
@@ -30,13 +35,8 @@ export class Translation extends AuditableEntity {
   })
   lexeme!: Lexeme;
 
-  @Column("text", { comment: "English translation text" })
-  @Field()
-  @Index()
-  translation!: string;
-
   @Column({
-    asExpression: "to_tsvector('english', translation)",
+    asExpression: "to_tsvector('english', data)",
     generatedType: "STORED",
     nullable: true,
     select: false,

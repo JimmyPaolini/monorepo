@@ -430,4 +430,3 @@ Ingenui, timidas non habuisse manus.
 The Latin Library
 
 The Classics Page
-

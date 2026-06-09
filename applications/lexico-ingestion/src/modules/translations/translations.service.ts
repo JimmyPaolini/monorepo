@@ -54,7 +54,7 @@ export class TranslationsService {
   extractTranslationReferences(translations: Translation[]): string[] {
     const refs: string[] = [];
     for (const t of translations) {
-      for (const match of t.translation.matchAll(/\{\*(.+?)\*\}/g)) {
+      for (const match of t.data.matchAll(/\{\*(.+?)\*\}/g)) {
         let ref = match[1] ?? "";
         if (/\(.*\)/.test(ref)) ref = ref.replace(/ ?\(.*\)/, "");
         if (ref) refs.push(ref);
@@ -66,10 +66,10 @@ export class TranslationsService {
   /** Finds all `Translation` rows whose text contains `{*...*}` reference markers. */
   async findAllTranslationsWithReferences(take = 100): Promise<Translation[]> {
     return this.translationsRepository.find({
-      order: { translation: "ASC" as const },
+      order: { data: "ASC" as const },
       relations: { lexeme: true },
       take,
-      where: { translation: Like("%{*%*}%") },
+      where: { data: Like("%{*%*}%") },
     });
   }
 
@@ -80,7 +80,7 @@ export class TranslationsService {
   ): Promise<Translation[]> {
     return this.translationsRepository.find({
       relations: { lexeme: true },
-      where: { lexeme: { id: lexemeId }, translation: Like("%{*%*}%") },
+      where: { data: Like("%{*%*}%"), lexeme: { id: lexemeId } },
     });
   }
 
@@ -122,7 +122,7 @@ export class TranslationsService {
       translations.push(new Translation(translation, lexeme));
     }
 
-    translations = translations.filter((t) => !!t.translation);
+    translations = translations.filter((t) => !!t.data);
     return translations;
   }
 
@@ -136,7 +136,7 @@ export class TranslationsService {
     const existingTranslations = savedLexeme.translations ?? [];
     for (const translation of translations) {
       const existing = existingTranslations.find(
-        (t) => t.translation === translation.translation,
+        (t) => t.data === translation.data,
       );
       if (existing) {
         translation.id = existing.id;

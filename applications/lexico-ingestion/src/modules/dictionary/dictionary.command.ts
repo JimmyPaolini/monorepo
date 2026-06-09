@@ -101,9 +101,9 @@ export class DictionaryCommand extends CommandRunner {
   private async ingestTranslationReference(
     translation: Translation,
   ): Promise<void> {
-    const matches = [...translation.translation.matchAll(/\{\*(.+?)\*\}/g)];
+    const matches = [...translation.data.matchAll(/\{\*(.+?)\*\}/g)];
     if (matches.length === 0) {
-      this.logger.warn(`No reference found in: ${translation.translation}`);
+      this.logger.warn(`No reference found in: ${translation.data}`);
       return;
     }
 
@@ -130,7 +130,7 @@ export class DictionaryCommand extends CommandRunner {
       }
 
       const mapped = (lexeme.translations ?? []).map(
-        (t) => new Translation(t.translation, translation.lexeme),
+        (t) => new Translation(t.data, translation.lexeme),
       );
       newTranslations.push(...mapped);
     }
@@ -139,9 +139,7 @@ export class DictionaryCommand extends CommandRunner {
       await this.translationsService.saveTranslations(newTranslations);
     }
 
-    translation.translation = translation.translation
-      .replaceAll(/\{\*(.+?)\*\}/g, "")
-      .trim();
+    translation.data = translation.data.replaceAll(/\{\*(.+?)\*\}/g, "").trim();
     await this.translationsService.saveTranslations([translation]);
   }
 

@@ -3,6 +3,7 @@
     "name": "ammianus marcellinus",
     "nickname": "ammianus",
     "path": "/ammianus",
+    "slug": "ammianus",
     "works": [
       {
         "path": "/ammianus",
@@ -14,6 +15,7 @@
     "name": "lucius apuleius madaurensis",
     "nickname": "apuleius",
     "path": "/apuleius",
+    "slug": "apuleius",
     "works": [
       {
         "path": "/apuleius",
@@ -25,16 +27,17 @@
     "name": "caesar divi filius augustus",
     "nickname": "augustus",
     "path": "/augustus",
+    "slug": "augustus",
     "works": [
       {
-        "book": "Res Gestae Divi Avgvsti",
         "path": "resgestae.html",
-        "title": "Res Gestae I"
+        "title": "Res Gestae I",
+        "book": "Res Gestae Divi Avgvsti"
       },
       {
-        "book": "Res Gestae Divi Avgvsti",
         "path": "resgestae1.html",
-        "title": "Res Gestae Ii In Tabulis"
+        "title": "Res Gestae Ii In Tabulis",
+        "book": "Res Gestae Divi Avgvsti"
       }
     ]
   },
@@ -42,21 +45,22 @@
     "name": "sextus aurelius victor",
     "nickname": "aurelius victor",
     "path": "/victor",
+    "slug": "aurelius-victor",
     "works": [
       {
-        "book": "Liber Et Incertorvm Libri",
         "path": "victor.caes.html",
-        "title": "De Caesaribus"
+        "title": "De Caesaribus",
+        "book": "Liber Et Incertorvm Libri"
       },
       {
-        "book": "Liber Et Incertorvm Libri",
         "path": "victor.ill.html",
-        "title": "De Viris Illustribus"
+        "title": "De Viris Illustribus",
+        "book": "Liber Et Incertorvm Libri"
       },
       {
-        "book": "Liber Et Incertorvm Libri",
         "path": "victor.origio.html",
-        "title": "De Origine Gentis Romanae"
+        "title": "De Origine Gentis Romanae",
+        "book": "Liber Et Incertorvm Libri"
       }
     ]
   },
@@ -64,6 +68,7 @@
     "name": "gaius iulius caesar",
     "nickname": "caesar",
     "path": "/caesar",
+    "slug": "caesar",
     "works": [
       {
         "path": "/caesar",
@@ -75,16 +80,17 @@
     "name": "marcus porcius cato censor",
     "nickname": "cato",
     "path": "/cato",
+    "slug": "cato",
     "works": [
       {
-        "book": "234 149 B C",
         "path": "cato.frag.html",
-        "title": "Orationum Fragmenta"
+        "title": "Orationum Fragmenta",
+        "book": "234 149 B C"
       },
       {
-        "book": "234 149 B C",
         "path": "cato.agri.html",
-        "title": "De Agri Cultura"
+        "title": "De Agri Cultura",
+        "book": "234 149 B C"
       }
     ]
   },
@@ -92,6 +98,7 @@
     "name": "gaius valerius catullus",
     "nickname": "catullus",
     "path": "catullus.shtml",
+    "slug": "catullus",
     "works": [
       {
         "path": "catullus.shtml",
@@ -103,6 +110,7 @@
     "name": "christian",
     "nickname": "christian",
     "path": "christian.html",
+    "slug": "christian",
     "works": [
       {
         "path": "christian.html",
@@ -114,6 +122,7 @@
     "name": "marcus tullius cicero",
     "nickname": "cicero",
     "path": "/cicero",
+    "slug": "cicero",
     "works": [
       {
         "path": "/cicero",
@@ -125,6 +134,7 @@
     "name": "claudius claudianus",
     "nickname": "claudian",
     "path": "claudian.html",
+    "slug": "claudian",
     "works": [
       {
         "path": "claudian/claudian.olyb.html",
@@ -156,6 +166,7 @@
     "name": "quintus curtius rufus",
     "nickname": "curtius rufus",
     "path": "curtius.html",
+    "slug": "curtius-rufus",
     "works": [
       {
         "path": "curtius.html",
@@ -167,12 +178,14 @@
     "name": "quintus ennius",
     "nickname": "ennius",
     "path": "enn.html",
+    "slug": "ennius",
     "works": []
   },
   {
     "name": "eutropius",
     "nickname": "eutropius",
     "path": "eutropius.html",
+    "slug": "eutropius",
     "works": [
       {
         "path": "eutropius.html",
@@ -184,16 +197,17 @@
     "name": "florus",
     "nickname": "florus",
     "path": "florus.html",
+    "slug": "florus",
     "works": [
       {
-        "book": "Epitome De T Livio Bellorum Omnium Annorum Dcc Libri Duo",
         "path": "florus1.html",
-        "title": "Liber I"
+        "title": "Liber I",
+        "book": "Epitome De T Livio Bellorum Omnium Annorum Dcc Libri Duo"
       },
       {
-        "book": "Epitome De T Livio Bellorum Omnium Annorum Dcc Libri Duo",
         "path": "florus2.html",
-        "title": "Liber Ii"
+        "title": "Liber Ii",
+        "book": "Epitome De T Livio Bellorum Omnium Annorum Dcc Libri Duo"
       }
     ]
   },
@@ -201,6 +215,7 @@
     "name": "sextus iulius frontinus",
     "nickname": "frontinus",
     "path": "frontinus.html",
+    "slug": "frontinus",
     "works": [
       {
         "path": "frontinus.html",
@@ -212,6 +227,7 @@
     "name": "aulus gellius",
     "nickname": "gellius",
     "path": "gellius.html",
+    "slug": "gellius",
     "works": [
       {
         "path": "gellius.html",
@@ -223,6 +239,7 @@
     "name": "scriptores historiae augustae",
     "nickname": "historia augusta",
     "path": "sha.html",
+    "slug": "historia-augusta",
     "works": [
       {
         "path": "sha.html",
@@ -234,6 +251,7 @@
     "name": "quintus horacius flaccus",
     "nickname": "horace",
     "path": "hor.html",
+    "slug": "horace",
     "works": [
       {
         "path": "hor.html",
@@ -245,26 +263,27 @@
     "name": "ius romanum",
     "nickname": "ius romanum",
     "path": "ius.html",
+    "slug": "ius-romanum",
     "works": [
       {
-        "book": "Ivs Romanvm",
         "path": "leges.html",
-        "title": "Leges Rei Publicae"
+        "title": "Leges Rei Publicae",
+        "book": "Ivs Romanvm"
       },
       {
-        "book": "Ivs Romanvm",
         "path": "gaius.html",
-        "title": "Gaius"
+        "title": "Gaius",
+        "book": "Ivs Romanvm"
       },
       {
-        "book": "Ivs Romanvm",
         "path": "theodosius.html",
-        "title": "Theodosian Code"
+        "title": "Theodosian Code",
+        "book": "Ivs Romanvm"
       },
       {
-        "book": "Ivs Romanvm",
         "path": "justinian.html",
-        "title": "Justinian"
+        "title": "Justinian",
+        "book": "Ivs Romanvm"
       }
     ]
   },
@@ -272,11 +291,12 @@
     "name": "marcus iunianus iustinus",
     "nickname": "justin",
     "path": "justin.html",
+    "slug": "justin",
     "works": [
       {
-        "book": "Historiarvm Philippicarvm T Pompeii Trogi Libri Xlivin Epitomen Redacti",
         "path": "justin/prologi.html",
-        "title": "Prologi"
+        "title": "Prologi",
+        "book": "Historiarvm Philippicarvm T Pompeii Trogi Libri Xlivin Epitomen Redacti"
       },
       {
         "path": "justin/praefatio.html",
@@ -464,6 +484,7 @@
     "name": "decimus iunius iuvenalis",
     "nickname": "juvenal",
     "path": "juvenal.html",
+    "slug": "juvenal",
     "works": [
       {
         "path": "juvenal.html",
@@ -475,6 +496,7 @@
     "name": "titus livius",
     "nickname": "livy",
     "path": "liv.html",
+    "slug": "livy",
     "works": [
       {
         "path": "liv.html",
@@ -486,6 +508,7 @@
     "name": "marcus annaeus lucanus",
     "nickname": "lucan",
     "path": "lucan.html",
+    "slug": "lucan",
     "works": [
       {
         "path": "lucan.html",
@@ -497,6 +520,7 @@
     "name": "titus lucretius carus",
     "nickname": "lucretius",
     "path": "lucretius.html",
+    "slug": "lucretius",
     "works": [
       {
         "path": "lucretius.html",
@@ -508,6 +532,7 @@
     "name": "marcus valerius martialis",
     "nickname": "martial",
     "path": "martial.html",
+    "slug": "martial",
     "works": [
       {
         "path": "martial.html",
@@ -519,6 +544,7 @@
     "name": "medieval",
     "nickname": "medieval",
     "path": "medieval.html",
+    "slug": "medieval",
     "works": [
       {
         "path": "medieval.html",
@@ -530,6 +556,7 @@
     "name": "miscellany",
     "nickname": "miscellany",
     "path": "misc.html",
+    "slug": "miscellany",
     "works": [
       {
         "path": "misc.html",
@@ -541,6 +568,7 @@
     "name": "neo-latin",
     "nickname": "neo-latin",
     "path": "neo.html",
+    "slug": "neo-latin",
     "works": [
       {
         "path": "neo.html",
@@ -552,6 +580,7 @@
     "name": "cornelius nepos",
     "nickname": "nepos",
     "path": "nepos.html",
+    "slug": "nepos",
     "works": [
       {
         "path": "nepos.html",
@@ -563,6 +592,7 @@
     "name": "publius ovidius naso",
     "nickname": "ovid",
     "path": "ovid.html",
+    "slug": "ovid",
     "works": [
       {
         "path": "ovid.html",
@@ -574,6 +604,7 @@
     "name": "aulus persius flaccus",
     "nickname": "persius",
     "path": "persius.html",
+    "slug": "persius",
     "works": [
       {
         "path": "persius.html",
@@ -585,16 +616,17 @@
     "name": "gaius petronius",
     "nickname": "petronius",
     "path": "petronius.html",
+    "slug": "petronius",
     "works": [
       {
-        "book": "C 27 66 A D",
         "path": "petronius1.html",
-        "title": "Satiricon Liber"
+        "title": "Satiricon Liber",
+        "book": "C 27 66 A D"
       },
       {
-        "book": "C 27 66 A D",
         "path": "petroniusfrag.html",
-        "title": "Fragmenta"
+        "title": "Fragmenta",
+        "book": "C 27 66 A D"
       }
     ]
   },
@@ -602,31 +634,32 @@
     "name": "phaedrus",
     "nickname": "phaedrus",
     "path": "phaedrus.html",
+    "slug": "phaedrus",
     "works": [
       {
-        "book": "Fabvlarvm Aesopiarvm Libri Qvinqve",
         "path": "phaedr1.html",
-        "title": "Liber I"
+        "title": "Liber I",
+        "book": "Fabvlarvm Aesopiarvm Libri Qvinqve"
       },
       {
-        "book": "Fabvlarvm Aesopiarvm Libri Qvinqve",
         "path": "phaedr2.html",
-        "title": "Liber Ii"
+        "title": "Liber Ii",
+        "book": "Fabvlarvm Aesopiarvm Libri Qvinqve"
       },
       {
-        "book": "Fabvlarvm Aesopiarvm Libri Qvinqve",
         "path": "phaedr3.html",
-        "title": "Liber Iii"
+        "title": "Liber Iii",
+        "book": "Fabvlarvm Aesopiarvm Libri Qvinqve"
       },
       {
-        "book": "Fabvlarvm Aesopiarvm Libri Qvinqve",
         "path": "phaedr4.html",
-        "title": "Liber Iv"
+        "title": "Liber Iv",
+        "book": "Fabvlarvm Aesopiarvm Libri Qvinqve"
       },
       {
-        "book": "Fabvlarvm Aesopiarvm Libri Qvinqve",
         "path": "phaedr5.html",
-        "title": "Liber V"
+        "title": "Liber V",
+        "book": "Fabvlarvm Aesopiarvm Libri Qvinqve"
       },
       {
         "path": "phaedrapp.html",
@@ -638,6 +671,7 @@
     "name": "titus maccius plautus",
     "nickname": "plautus",
     "path": "plautus.html",
+    "slug": "plautus",
     "works": [
       {
         "path": "plautus.html",
@@ -649,11 +683,12 @@
     "name": "gaius plinius secundus",
     "nickname": "pliny maior",
     "path": "pliny1.html",
+    "slug": "pliny-maior",
     "works": [
       {
-        "book": "Natvralis Historia",
         "path": "pliny.nhpr.html",
-        "title": "Praefatio"
+        "title": "Praefatio",
+        "book": "Natvralis Historia"
       },
       {
         "path": "pliny.nh1.html",
@@ -681,56 +716,57 @@
     "name": "gaius plinius caecilius secundus",
     "nickname": "pliny minor",
     "path": "pliny.html",
+    "slug": "pliny-minor",
     "works": [
       {
-        "book": "Epistvlarvm Libri Decem",
         "path": "pliny.ep1.html",
-        "title": "Liber I"
+        "title": "Liber I",
+        "book": "Epistvlarvm Libri Decem"
       },
       {
-        "book": "Epistvlarvm Libri Decem",
         "path": "pliny.ep2.html",
-        "title": "Liber Ii"
+        "title": "Liber Ii",
+        "book": "Epistvlarvm Libri Decem"
       },
       {
-        "book": "Epistvlarvm Libri Decem",
         "path": "pliny.ep3.html",
-        "title": "Liber Iii"
+        "title": "Liber Iii",
+        "book": "Epistvlarvm Libri Decem"
       },
       {
-        "book": "Epistvlarvm Libri Decem",
         "path": "pliny.ep4.html",
-        "title": "Liber Iv"
+        "title": "Liber Iv",
+        "book": "Epistvlarvm Libri Decem"
       },
       {
-        "book": "Epistvlarvm Libri Decem",
         "path": "pliny.ep5.html",
-        "title": "Liber V"
+        "title": "Liber V",
+        "book": "Epistvlarvm Libri Decem"
       },
       {
-        "book": "Epistvlarvm Libri Decem",
         "path": "pliny.ep6.html",
-        "title": "Liber Vi"
+        "title": "Liber Vi",
+        "book": "Epistvlarvm Libri Decem"
       },
       {
-        "book": "Epistvlarvm Libri Decem",
         "path": "pliny.ep7.html",
-        "title": "Liber Vii"
+        "title": "Liber Vii",
+        "book": "Epistvlarvm Libri Decem"
       },
       {
-        "book": "Epistvlarvm Libri Decem",
         "path": "pliny.ep8.html",
-        "title": "Liber Viii"
+        "title": "Liber Viii",
+        "book": "Epistvlarvm Libri Decem"
       },
       {
-        "book": "Epistvlarvm Libri Decem",
         "path": "pliny.ep9.html",
-        "title": "Liber Ix"
+        "title": "Liber Ix",
+        "book": "Epistvlarvm Libri Decem"
       },
       {
-        "book": "Epistvlarvm Libri Decem",
         "path": "pliny.ep10.html",
-        "title": "Liber X"
+        "title": "Liber X",
+        "book": "Epistvlarvm Libri Decem"
       },
       {
         "path": "pliny.panegyricus.html",
@@ -742,26 +778,27 @@
     "name": "sextus propertius",
     "nickname": "propertius",
     "path": "prop.html",
+    "slug": "propertius",
     "works": [
       {
-        "book": "Elegiae",
         "path": "propertius1.html",
-        "title": "Liber I"
+        "title": "Liber I",
+        "book": "Elegiae"
       },
       {
-        "book": "Elegiae",
         "path": "prop2.html",
-        "title": "Liber Ii"
+        "title": "Liber Ii",
+        "book": "Elegiae"
       },
       {
-        "book": "Elegiae",
         "path": "prop3.html",
-        "title": "Liber Iii"
+        "title": "Liber Iii",
+        "book": "Elegiae"
       },
       {
-        "book": "Elegiae",
         "path": "prop4.html",
-        "title": "Liber Iv"
+        "title": "Liber Iv",
+        "book": "Elegiae"
       }
     ]
   },
@@ -769,6 +806,7 @@
     "name": "marcus fabius quiintilianus",
     "nickname": "quintilian",
     "path": "quintilian.html",
+    "slug": "quintilian",
     "works": [
       {
         "path": "quintilian.html",
@@ -780,6 +818,7 @@
     "name": "gaius sallustius crispus",
     "nickname": "sallust",
     "path": "sall.html",
+    "slug": "sallust",
     "works": [
       {
         "path": "sall.html",
@@ -791,56 +830,57 @@
     "name": "lucius annaeus seneca maior",
     "nickname": "seneca maior",
     "path": "seneca.html",
+    "slug": "seneca-maior",
     "works": [
       {
-        "book": "Controversiae",
         "path": "seneca.contr1.html",
-        "title": "Liber I"
+        "title": "Liber I",
+        "book": "Controversiae"
       },
       {
-        "book": "Controversiae",
         "path": "seneca.contr2.html",
-        "title": "Liber Ii"
+        "title": "Liber Ii",
+        "book": "Controversiae"
       },
       {
-        "book": "Controversiae",
         "path": "seneca.contr3.html",
-        "title": "Liber Iii"
+        "title": "Liber Iii",
+        "book": "Controversiae"
       },
       {
-        "book": "Controversiae",
         "path": "seneca.contr4.html",
-        "title": "Liber Iv"
+        "title": "Liber Iv",
+        "book": "Controversiae"
       },
       {
-        "book": "Controversiae",
         "path": "seneca.contr5.html",
-        "title": "Liber V"
+        "title": "Liber V",
+        "book": "Controversiae"
       },
       {
-        "book": "Controversiae",
         "path": "seneca.contr6.html",
-        "title": "Liber Vi"
+        "title": "Liber Vi",
+        "book": "Controversiae"
       },
       {
-        "book": "Controversiae",
         "path": "seneca.contr7.html",
-        "title": "Liber Vii"
+        "title": "Liber Vii",
+        "book": "Controversiae"
       },
       {
-        "book": "Controversiae",
         "path": "seneca.contr8.html",
-        "title": "Liber Viii"
+        "title": "Liber Viii",
+        "book": "Controversiae"
       },
       {
-        "book": "Controversiae",
         "path": "seneca.contr9.html",
-        "title": "Liber Ix"
+        "title": "Liber Ix",
+        "book": "Controversiae"
       },
       {
-        "book": "Controversiae",
         "path": "seneca.contr10.html",
-        "title": "Liber X"
+        "title": "Liber X",
+        "book": "Controversiae"
       },
       {
         "path": "seneca.suasoriae.html",
@@ -856,6 +896,7 @@
     "name": "lucius annaeus seneca",
     "nickname": "seneca minor",
     "path": "sen.html",
+    "slug": "seneca-minor",
     "works": [
       {
         "path": "sen.html",
@@ -867,6 +908,7 @@
     "name": "silius italicus",
     "nickname": "silius italicus",
     "path": "silius.html",
+    "slug": "silius-italicus",
     "works": [
       {
         "path": "silius.html",
@@ -878,6 +920,7 @@
     "name": "publius papinius statius",
     "nickname": "statius",
     "path": "statius.html",
+    "slug": "statius",
     "works": [
       {
         "path": "statius.html",
@@ -889,106 +932,107 @@
     "name": "gaius suetonius tranquillus",
     "nickname": "suetonius",
     "path": "suet.html",
+    "slug": "suetonius",
     "works": [
       {
-        "book": "De Vitis Caesarum",
         "path": "suetonius/suet.caesar.html",
-        "title": "Divus Iulius"
+        "title": "Divus Iulius",
+        "book": "De Vitis Caesarum"
       },
       {
-        "book": "De Vitis Caesarum",
         "path": "suetonius/suet.aug.html",
-        "title": "Divus Augustus"
+        "title": "Divus Augustus",
+        "book": "De Vitis Caesarum"
       },
       {
-        "book": "De Vitis Caesarum",
         "path": "suetonius/suet.tib.html",
-        "title": "Tiberius"
+        "title": "Tiberius",
+        "book": "De Vitis Caesarum"
       },
       {
-        "book": "De Vitis Caesarum",
         "path": "suetonius/suet.cal.html",
-        "title": "Gaius"
+        "title": "Gaius",
+        "book": "De Vitis Caesarum"
       },
       {
-        "book": "De Vitis Caesarum",
         "path": "suetonius/suet.claudius.html",
-        "title": "Divus Claudius"
+        "title": "Divus Claudius",
+        "book": "De Vitis Caesarum"
       },
       {
-        "book": "De Vitis Caesarum",
         "path": "suetonius/suet.nero.html",
-        "title": "Nero"
+        "title": "Nero",
+        "book": "De Vitis Caesarum"
       },
       {
-        "book": "De Vitis Caesarum",
         "path": "suetonius/suet.galba.html",
-        "title": "Galba"
+        "title": "Galba",
+        "book": "De Vitis Caesarum"
       },
       {
-        "book": "De Vitis Caesarum",
         "path": "suetonius/suet.otho.html",
-        "title": "Otho"
+        "title": "Otho",
+        "book": "De Vitis Caesarum"
       },
       {
-        "book": "De Vitis Caesarum",
         "path": "suetonius/suet.vit.html",
-        "title": "Vitellius"
+        "title": "Vitellius",
+        "book": "De Vitis Caesarum"
       },
       {
-        "book": "De Vitis Caesarum",
         "path": "suetonius/suet.vesp.html",
-        "title": "Divus Vespasianus"
+        "title": "Divus Vespasianus",
+        "book": "De Vitis Caesarum"
       },
       {
-        "book": "De Vitis Caesarum",
         "path": "suetonius/suet.titus.html",
-        "title": "Titus"
+        "title": "Titus",
+        "book": "De Vitis Caesarum"
       },
       {
-        "book": "De Vitis Caesarum",
         "path": "suetonius/suet.dom.html",
-        "title": "Domitianus"
+        "title": "Domitianus",
+        "book": "De Vitis Caesarum"
       },
       {
-        "book": "De Poetis",
         "path": "suetonius/suet.terence.html",
-        "title": "Terence"
+        "title": "Terence",
+        "book": "De Poetis"
       },
       {
-        "book": "De Poetis",
         "path": "suetonius/suet.virgil.html",
-        "title": "Virgil"
+        "title": "Virgil",
+        "book": "De Poetis"
       },
       {
-        "book": "De Poetis",
         "path": "suetonius/suet.horace.html",
-        "title": "Horace"
+        "title": "Horace",
+        "book": "De Poetis"
       },
       {
-        "book": "De Poetis",
         "path": "suetonius/suet.tibullus.html",
-        "title": "Tibullus"
+        "title": "Tibullus",
+        "book": "De Poetis"
       },
       {
-        "book": "De Poetis",
         "path": "suetonius/suet.persius.html",
-        "title": "Persius"
+        "title": "Persius",
+        "book": "De Poetis"
       },
       {
-        "book": "De Poetis",
         "path": "suetonius/suet.lucan.html",
-        "title": "Lucan"
+        "title": "Lucan",
+        "book": "De Poetis"
       },
       {
-        "book": "De Poetis",
         "path": "suetonius/suet.pliny.html",
-        "title": "Pliny"
+        "title": "Pliny",
+        "book": "De Poetis"
       },
       {
-        "book": "De Poetis",
         "path": "suetonius/suet.crispus.html",
-        "title": "Crispus"
+        "title": "Crispus",
+        "book": "De Poetis"
       },
       {
         "path": "suetonius/suet.gram.html",
@@ -1004,12 +1048,14 @@
     "name": "sulpicia",
     "nickname": "sulpicia",
     "path": "sulpicia.html",
+    "slug": "sulpicia",
     "works": []
   },
   {
     "name": "publius cornelius tacitus",
     "nickname": "tacitus",
     "path": "tac.html",
+    "slug": "tacitus",
     "works": [
       {
         "path": "tac.html",
@@ -1021,36 +1067,37 @@
     "name": "publius terentius afer",
     "nickname": "terence",
     "path": "ter.html",
+    "slug": "terence",
     "works": [
       {
-        "book": "195 185 C 159 B C",
         "path": "ter.andria.html",
-        "title": "Andria"
+        "title": "Andria",
+        "book": "195 185 C 159 B C"
       },
       {
-        "book": "195 185 C 159 B C",
         "path": "ter.hecyra.html",
-        "title": "Hecyra"
+        "title": "Hecyra",
+        "book": "195 185 C 159 B C"
       },
       {
-        "book": "195 185 C 159 B C",
         "path": "ter.eunuchus.html",
-        "title": "Eunuchus"
+        "title": "Eunuchus",
+        "book": "195 185 C 159 B C"
       },
       {
-        "book": "195 185 C 159 B C",
         "path": "ter.phormio.html",
-        "title": "Phormio"
+        "title": "Phormio",
+        "book": "195 185 C 159 B C"
       },
       {
-        "book": "195 185 C 159 B C",
         "path": "ter.heauton.html",
-        "title": "Heauton Timorumenos"
+        "title": "Heauton Timorumenos",
+        "book": "195 185 C 159 B C"
       },
       {
-        "book": "195 185 C 159 B C",
         "path": "ter.adel.html",
-        "title": "Adelphoe"
+        "title": "Adelphoe",
+        "book": "195 185 C 159 B C"
       }
     ]
   },
@@ -1058,21 +1105,22 @@
     "name": "albius tibullus",
     "nickname": "tibullus",
     "path": "tib.html",
+    "slug": "tibullus",
     "works": [
       {
-        "book": "Tibvlli Aliorvmque Carminvm Libri Tres",
         "path": "tibullus1.html",
-        "title": "Liber I"
+        "title": "Liber I",
+        "book": "Tibvlli Aliorvmque Carminvm Libri Tres"
       },
       {
-        "book": "Tibvlli Aliorvmque Carminvm Libri Tres",
         "path": "tibullus2.html",
-        "title": "Liber Ii"
+        "title": "Liber Ii",
+        "book": "Tibvlli Aliorvmque Carminvm Libri Tres"
       },
       {
-        "book": "Tibvlli Aliorvmque Carminvm Libri Tres",
         "path": "tibullus3.html",
-        "title": "Liber Iii"
+        "title": "Liber Iii",
+        "book": "Tibvlli Aliorvmque Carminvm Libri Tres"
       }
     ]
   },
@@ -1080,46 +1128,47 @@
     "name": "gaius valereius flaccus",
     "nickname": "valerius flaccus",
     "path": "valeriusflaccus.html",
+    "slug": "valerius-flaccus",
     "works": [
       {
-        "book": "Argonavtica",
         "path": "valeriusflaccus1.html",
-        "title": "Liber Primus"
+        "title": "Liber Primus",
+        "book": "Argonavtica"
       },
       {
-        "book": "Argonavtica",
         "path": "valeriusflaccus2.html",
-        "title": "Liber Secundus"
+        "title": "Liber Secundus",
+        "book": "Argonavtica"
       },
       {
-        "book": "Argonavtica",
         "path": "valeriusflaccus3.html",
-        "title": "Liber Tertius"
+        "title": "Liber Tertius",
+        "book": "Argonavtica"
       },
       {
-        "book": "Argonavtica",
         "path": "valeriusflaccus4.html",
-        "title": "Liber Quartus"
+        "title": "Liber Quartus",
+        "book": "Argonavtica"
       },
       {
-        "book": "Argonavtica",
         "path": "valeriusflaccus5.html",
-        "title": "Liber Quintus"
+        "title": "Liber Quintus",
+        "book": "Argonavtica"
       },
       {
-        "book": "Argonavtica",
         "path": "valeriusflaccus6.html",
-        "title": "Liber Sextus"
+        "title": "Liber Sextus",
+        "book": "Argonavtica"
       },
       {
-        "book": "Argonavtica",
         "path": "valeriusflaccus7.html",
-        "title": "Liber Septimus"
+        "title": "Liber Septimus",
+        "book": "Argonavtica"
       },
       {
-        "book": "Argonavtica",
         "path": "valeriusflaccus8.html",
-        "title": "Liber Octavus"
+        "title": "Liber Octavus",
+        "book": "Argonavtica"
       }
     ]
   },
@@ -1127,31 +1176,32 @@
     "name": "valerius maximus",
     "nickname": "valerius maximus",
     "path": "valmax.html",
+    "slug": "valerius-maximus",
     "works": [
       {
-        "book": "Factorvm Et Dictorvm Memorabilivm Libri Novem",
         "path": "valmax1.html",
-        "title": "Liber I"
+        "title": "Liber I",
+        "book": "Factorvm Et Dictorvm Memorabilivm Libri Novem"
       },
       {
-        "book": "Factorvm Et Dictorvm Memorabilivm Libri Novem",
         "path": "valmax2.html",
-        "title": "Liber Ii"
+        "title": "Liber Ii",
+        "book": "Factorvm Et Dictorvm Memorabilivm Libri Novem"
       },
       {
-        "book": "Factorvm Et Dictorvm Memorabilivm Libri Novem",
         "path": "valmax3.html",
-        "title": "Liber Iii"
+        "title": "Liber Iii",
+        "book": "Factorvm Et Dictorvm Memorabilivm Libri Novem"
       },
       {
-        "book": "Factorvm Et Dictorvm Memorabilivm Libri Novem",
         "path": "valmax4.html",
-        "title": "Liber Iv"
+        "title": "Liber Iv",
+        "book": "Factorvm Et Dictorvm Memorabilivm Libri Novem"
       },
       {
-        "book": "Factorvm Et Dictorvm Memorabilivm Libri Novem",
         "path": "valmax5.html",
-        "title": "Liber V"
+        "title": "Liber V",
+        "book": "Factorvm Et Dictorvm Memorabilivm Libri Novem"
       },
       {
         "path": "valmax6.html",
@@ -1175,56 +1225,57 @@
     "name": "marcus terentius varro",
     "nickname": "varro",
     "path": "varro.html",
+    "slug": "varro",
     "works": [
       {
-        "book": "Rervm Rvsticarvm De Agri Cvltura",
         "path": "varro.rr1.html",
-        "title": "Liber I"
+        "title": "Liber I",
+        "book": "Rervm Rvsticarvm De Agri Cvltura"
       },
       {
-        "book": "Rervm Rvsticarvm De Agri Cvltura",
         "path": "varro.rr2.html",
-        "title": "Liber Ii"
+        "title": "Liber Ii",
+        "book": "Rervm Rvsticarvm De Agri Cvltura"
       },
       {
-        "book": "Rervm Rvsticarvm De Agri Cvltura",
         "path": "varro.rr3.html",
-        "title": "Liber Iii"
+        "title": "Liber Iii",
+        "book": "Rervm Rvsticarvm De Agri Cvltura"
       },
       {
-        "book": "De Lingva Latina",
         "path": "varro.ll5.html",
-        "title": "Liber V"
+        "title": "Liber V",
+        "book": "De Lingva Latina"
       },
       {
-        "book": "De Lingva Latina",
         "path": "varro.ll6.html",
-        "title": "Liber Vi"
+        "title": "Liber Vi",
+        "book": "De Lingva Latina"
       },
       {
-        "book": "De Lingva Latina",
         "path": "varro.ll7.html",
-        "title": "Liber Vii"
+        "title": "Liber Vii",
+        "book": "De Lingva Latina"
       },
       {
-        "book": "De Lingva Latina",
         "path": "varro.ll8.html",
-        "title": "Liber Viii"
+        "title": "Liber Viii",
+        "book": "De Lingva Latina"
       },
       {
-        "book": "De Lingva Latina",
         "path": "varro.ll9.html",
-        "title": "Liber Ix"
+        "title": "Liber Ix",
+        "book": "De Lingva Latina"
       },
       {
-        "book": "De Lingva Latina",
         "path": "varro.ll10.html",
-        "title": "Liber X"
+        "title": "Liber X",
+        "book": "De Lingva Latina"
       },
       {
-        "book": "De Lingva Latina",
         "path": "varro.frag.html",
-        "title": "Fragmenta"
+        "title": "Fragmenta",
+        "book": "De Lingva Latina"
       }
     ]
   },
@@ -1232,16 +1283,17 @@
     "name": "velleius",
     "nickname": "velleius",
     "path": "vell.html",
+    "slug": "velleius",
     "works": [
       {
-        "book": "Historiae Romanae",
         "path": "vell1.html",
-        "title": "Liber Prior"
+        "title": "Liber Prior",
+        "book": "Historiae Romanae"
       },
       {
-        "book": "Historiae Romanae",
         "path": "vell2.html",
-        "title": "Liber Posterior"
+        "title": "Liber Posterior",
+        "book": "Historiae Romanae"
       }
     ]
   },
@@ -1249,6 +1301,7 @@
     "name": "vergil",
     "nickname": "vergil",
     "path": "verg.html",
+    "slug": "vergil",
     "works": [
       {
         "path": "verg.html",
@@ -1260,56 +1313,57 @@
     "name": "marcus vitruvius pollio",
     "nickname": "vitruvius",
     "path": "/vitruvius",
+    "slug": "vitruvius",
     "works": [
       {
-        "book": "De Architectvra",
         "path": "vitruvius1.html",
-        "title": "Liber I"
+        "title": "Liber I",
+        "book": "De Architectvra"
       },
       {
-        "book": "De Architectvra",
         "path": "vitruvius2.html",
-        "title": "Liber Ii"
+        "title": "Liber Ii",
+        "book": "De Architectvra"
       },
       {
-        "book": "De Architectvra",
         "path": "vitruvius3.html",
-        "title": "Liber Iii"
+        "title": "Liber Iii",
+        "book": "De Architectvra"
       },
       {
-        "book": "De Architectvra",
         "path": "vitruvius4.html",
-        "title": "Liber Iv"
+        "title": "Liber Iv",
+        "book": "De Architectvra"
       },
       {
-        "book": "De Architectvra",
         "path": "vitruvius5.html",
-        "title": "Liber V"
+        "title": "Liber V",
+        "book": "De Architectvra"
       },
       {
-        "book": "De Architectvra",
         "path": "vitruvius6.html",
-        "title": "Liber Vi"
+        "title": "Liber Vi",
+        "book": "De Architectvra"
       },
       {
-        "book": "De Architectvra",
         "path": "vitruvius7.html",
-        "title": "Liber Vii"
+        "title": "Liber Vii",
+        "book": "De Architectvra"
       },
       {
-        "book": "De Architectvra",
         "path": "vitruvius8.html",
-        "title": "Liber Viii"
+        "title": "Liber Viii",
+        "book": "De Architectvra"
       },
       {
-        "book": "De Architectvra",
         "path": "vitruvius9.html",
-        "title": "Liber Ix"
+        "title": "Liber Ix",
+        "book": "De Architectvra"
       },
       {
-        "book": "De Architectvra",
         "path": "vitruvius10.html",
-        "title": "Liber X"
+        "title": "Liber X",
+        "book": "De Architectvra"
       }
     ]
   }
