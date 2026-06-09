@@ -35,6 +35,7 @@ toplevel
 tsconfig
 workspaces
 worktree
+worktrees
 
 #endregion
 

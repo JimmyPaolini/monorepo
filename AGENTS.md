@@ -51,6 +51,7 @@ Specialized domain knowledge for working on specific systems or patterns:
 - **[nx-run-tasks](documentation/skills/nx-run-tasks/SKILL.md)**: Helps with running tasks in an Nx workspace. USE WHEN the user wants to execute build, test, lint, serve, or run any other tasks defined in the workspace.
 - **[nx-workspace](documentation/skills/nx-workspace/SKILL.md)**: "Explore and understand Nx workspaces. USE WHEN answering questions about the workspace, projects, or tasks. ALSO USE WHEN an nx command fails or you need to check available targets/configuration before running a task. EXAMPLES: 'What projects are in this workspace?', 'How is project X configured?', 'What depends on library Y?', 'What targets can I run?', 'Cannot find configuration for task', 'debug nx task failure'."
 - **[refresh-documentation](documentation/skills/refresh-documentation/SKILL.md)**: Review and update all project documentation to keep it accurate and current. Use this skill when asked to refresh, update, or audit documentation, README files, AGENTS.md files, skill descriptions, or any markdown docs across the monorepo.
+- **[rename-branch](documentation/skills/rename-branch/SKILL.md)**: "Rename a git branch or worktree. Analyzes changes against the main branch, decides on a conventional name, and executes the rename."
 - **[resolve-conflicts](documentation/skills/resolve-conflicts/SKILL.md)**: Workflow to resolve Git merge conflicts cleanly. Use when asked to resolve conflicts, fix merge issues, merge a branch, or rebase with conflicts. This skill instructs the agent to analyze both branches to understand their distinct purposes before resolving conflicts to preserve the intent of both.
 - **[submit-changes](documentation/skills/submit-changes/SKILL.md)**: Automatically submit local changes through the full branch → commit → push → pull request pipeline. Use this skill when asked to submit, ship, or push changes; when you want to move from local changes to an open PR in one step; or when orchestrating the complete git workflow automatically without manual steps.
 - **[supabase-development](documentation/skills/supabase-development/SKILL.md)**: Work with Supabase in the lexico project - migrations, RLS policies, Edge Functions, and type generation. Use this skill when modifying the lexico database or authentication.
@@ -83,6 +84,9 @@ Provided by the [conformance](tools/conformance/AGENTS.md) tool. Run with `nx ge
 | --------- | ----- | ----------- |
 | `jupyter-notebook-application` | `jna` | Generate a Python Jupyter notebook application scaffold |
 | `nestjs-command-application` | `nca` | Generate a NestJS command-line application scaffold using nest-commander |
+| `nestjs-command-module` | `ncm` | Generate a NestJS command module with command, module, types, constants, and unit test files |
+| `nestjs-dataloader-module` | `ndm` | Generate a NestJS DataLoader module with dataloader, types, and unit test files |
+| `nestjs-graphql-application` | `nga` | Generate a NestJS GraphQL API application scaffold with Apollo Server |
 | `nestjs-graphql-module` | `ngm` | Generate a NestJS GraphQL module with resolver, entities, inputs, args, factories, service, types, constants, and unit test files |
 | `nestjs-service-module` | `nsm` | Generate a NestJS service module with module, service, types, constants, and unit test files |
 | `react-component` | `c` | Generate a React component with test file |

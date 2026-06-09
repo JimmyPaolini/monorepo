@@ -8,6 +8,7 @@ import { PerfectiveService } from "../perfective/perfective.service";
 import { ProgressiveService } from "../progressive/progressive.service";
 
 /**
+ * CLI entry point for caelundas.
  * CLI entry point that orchestrates the full calendar generation pipeline.
  *
  * Reads observer coordinates and date range from environment variables,
@@ -15,7 +16,7 @@ import { ProgressiveService } from "../progressive/progressive.service";
  * the result to an `.ics` file via {@link CalendarService}.
  */
 @Command({
-  description: "Generate astronomical calendar events for a date range",
+  description: "Run the caelundas command-line application",
   name: "caelundas",
 })
 @Injectable()

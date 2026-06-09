@@ -1,19 +1,14 @@
 import { faker } from "@faker-js/faker";
 import { Factory } from "fishery";
 
-import { Find{{namePascalCase}}Args } from "./{{nameKebabCase}}.args";
-import { {{namePascalCase}}Entity } from "./{{nameKebabCase}}.entities";
 import {
   Create{{namePascalCase}}Input,
   Delete{{namePascalCase}}Input,
+  Find{{namePascalCase}}Args,
   Update{{namePascalCase}}Input,
-} from "./{{nameKebabCase}}.inputs";
+} from "./{{nameKebabCase}}.entities";
 
-export const {{nameCamelCase}}EntityFactory = Factory.define<{{namePascalCase}}Entity>(
-  () => ({
-    id: faker.string.uuid(),
-  }),
-);
+// 📥 Inputs
 
 export const create{{namePascalCase}}InputFactory = Factory.define<Create{{namePascalCase}}Input>(
   () => ({
@@ -32,6 +27,8 @@ export const delete{{namePascalCase}}InputFactory = Factory.define<Delete{{nameP
     _placeholder: undefined as never,
   }),
 );
+
+// ⚙️ Args
 
 export const find{{namePascalCase}}ArgsFactory = Factory.define<Find{{namePascalCase}}Args>(
   () => ({

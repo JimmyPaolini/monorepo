@@ -1,17 +1,19 @@
 import { Test } from "@nestjs/testing";
 import { beforeAll, describe, expect, it, vi } from "vitest";
 
+import { LoggerModule } from "../logger/logger.module";
 import { LoggerService } from "../logger/logger.service";
 
-import { WiktionaryService } from "./wiktionary.service";
+import { WiktionaryCommand } from "./wiktionary.command";
 
-describe("WiktionaryService", () => {
-  let service: WiktionaryService;
+describe("WiktionaryCommand", () => {
+  let command: WiktionaryCommand;
 
   beforeAll(async () => {
     const module = await Test.createTestingModule({
+      imports: [LoggerModule],
       providers: [
-        WiktionaryService,
+        WiktionaryCommand,
         {
           provide: LoggerService,
           useValue: {
@@ -26,10 +28,10 @@ describe("WiktionaryService", () => {
       ],
     }).compile();
 
-    service = await module.resolve(WiktionaryService);
+    command = await module.resolve(WiktionaryCommand);
   });
 
   it("should be defined", () => {
-    expect(service).toBeDefined();
+    expect(command).toBeDefined();
   });
 });

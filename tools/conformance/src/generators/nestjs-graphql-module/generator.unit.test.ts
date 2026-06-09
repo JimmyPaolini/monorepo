@@ -29,7 +29,7 @@ describe("generateNestjsGraphqlModule", () => {
   });
 
   describe("file generation", () => {
-    it("should generate all 13 module files under a subfolder", async () => {
+    it("should generate all 7 module files under a subfolder", async () => {
       await generateNestjsGraphqlModule(tree, {
         name: "post",
         project: PROJECT_NAME,
@@ -37,15 +37,9 @@ describe("generateNestjsGraphqlModule", () => {
 
       const base = `${MODULES_DIR}/post`;
       expect(tree.exists(`${base}/post.module.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/post.service.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/post.service.unit.test.ts`)).toBeTruthy();
       expect(tree.exists(`${base}/post.resolver.ts`)).toBeTruthy();
       expect(tree.exists(`${base}/post.resolver.unit.test.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/post.dataloader.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/post.dataloader.unit.test.ts`)).toBeTruthy();
       expect(tree.exists(`${base}/post.entities.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/post.inputs.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/post.args.ts`)).toBeTruthy();
       expect(tree.exists(`${base}/post.factories.ts`)).toBeTruthy();
       expect(tree.exists(`${base}/post.types.ts`)).toBeTruthy();
       expect(tree.exists(`${base}/post.constants.ts`)).toBeTruthy();
@@ -82,7 +76,6 @@ describe("generateNestjsGraphqlModule", () => {
 
       const content = tree.read(`${MODULES_DIR}/post/post.resolver.ts`, "utf8");
       expect(content).toContain("PostResolver");
-      expect(content).toContain("PostEntity");
       expect(content).toContain("PostService");
     });
 
@@ -93,28 +86,7 @@ describe("generateNestjsGraphqlModule", () => {
       });
 
       const content = tree.read(`${MODULES_DIR}/post/post.entities.ts`, "utf8");
-      expect(content).toContain("PostEntity");
-    });
-
-    it("should use PascalCase class names in generated inputs file", async () => {
-      await generateNestjsGraphqlModule(tree, {
-        name: "post",
-        project: PROJECT_NAME,
-      });
-
-      const content = tree.read(`${MODULES_DIR}/post/post.inputs.ts`, "utf8");
-      expect(content).toContain("CreatePostInput");
-      expect(content).toContain("UpdatePostInput");
-    });
-
-    it("should use PascalCase class names in generated args file", async () => {
-      await generateNestjsGraphqlModule(tree, {
-        name: "post",
-        project: PROJECT_NAME,
-      });
-
-      const content = tree.read(`${MODULES_DIR}/post/post.args.ts`, "utf8");
-      expect(content).toContain("FindPostArgs");
+      expect(content).toContain("Post");
     });
 
     it("should use PascalCase class names in generated factories file", async () => {
@@ -127,7 +99,6 @@ describe("generateNestjsGraphqlModule", () => {
         `${MODULES_DIR}/post/post.factories.ts`,
         "utf8",
       );
-      expect(content).toContain("PostEntity");
       expect(content).toContain("CreatePostInput");
       expect(content).toContain("UpdatePostInput");
       expect(content).toContain("DeletePostInput");
@@ -142,16 +113,6 @@ describe("generateNestjsGraphqlModule", () => {
 
       const content = tree.read(`${MODULES_DIR}/post/post.module.ts`, "utf8");
       expect(content).toContain("TODO: Document the post module.");
-    });
-
-    it("should include a TODO JSDoc comment in the generated service file", async () => {
-      await generateNestjsGraphqlModule(tree, {
-        name: "post",
-        project: PROJECT_NAME,
-      });
-
-      const content = tree.read(`${MODULES_DIR}/post/post.service.ts`, "utf8");
-      expect(content).toContain("TODO: Document the post service.");
     });
 
     it("should conform to the resolver template structure", async () => {

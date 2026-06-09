@@ -1,19 +1,20 @@
 import { Injectable } from "@nestjs/common";
 import { Command, CommandRunner } from "nest-commander";
 
-import { ClearService } from "../clear/clear.service";
-import { DictionaryService } from "../dictionary/dictionary.service";
+import { ClearCommand } from "../clear/clear.command";
+import { DictionaryCommand } from "../dictionary/dictionary.command";
 import { LoggerService } from "../logger/logger.service";
 import { ManualService } from "../manual/manual.service";
-import { WiktionaryService } from "../wiktionary/wiktionary.service";
+import { WiktionaryCommand } from "../wiktionary/wiktionary.command";
 
 /**
+ * CLI entry point for lexico-ingestion.
  * Root CLI entry point for lexicoIngestion.
  * Runs all ingestion steps in order when invoked without a sub-command.
  * Sub-commands: wiktionary, dictionary, words, manual, clear
  */
 @Command({
-  description: "Ingest Wiktionary Latin dictionary data into PostgreSQL",
+  description: "Run the lexico-ingestion command-line application",
   name: "lexico-ingestion",
 })
 @Injectable()
@@ -22,9 +23,9 @@ export class LexicoIngestionCommand extends CommandRunner {
 
   constructor(
     private readonly logger: LoggerService,
-    private readonly clearService: ClearService,
-    private readonly wiktionaryService: WiktionaryService,
-    private readonly dictionaryService: DictionaryService,
+    private readonly clearCommand: ClearCommand,
+    private readonly wiktionaryCommand: WiktionaryCommand,
+    private readonly dictionaryCommand: DictionaryCommand,
     private readonly manualService: ManualService,
   ) {
     super();
@@ -47,13 +48,13 @@ export class LexicoIngestionCommand extends CommandRunner {
     this.logger.log("Starting full ingestion pipeline");
 
     this.logger.log("Step 1/4: Clearing dictionary data");
-    await this.clearService.clearDictionary();
+    await this.clearCommand.clearDictionary();
 
     this.logger.log("Step 2/4: Ingesting Wiktionary pages");
-    await this.wiktionaryService.ingestWiktionary();
+    await this.wiktionaryCommand.ingestWiktionary();
 
     this.logger.log("Step 3/4: Processing dictionary lexemes");
-    await this.dictionaryService.ingestAll();
+    await this.dictionaryCommand.ingestAll();
 
     this.logger.log("Step 4/4: Ingesting manual lexemes");
     await this.manualService.ingestManual();

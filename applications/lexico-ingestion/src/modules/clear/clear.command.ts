@@ -1,36 +1,58 @@
-import { Logger } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
 import { Command, CommandRunner, Option } from "nest-commander";
+import { Repository } from "typeorm";
 
-import { ClearService } from "./clear.service";
+import { Lexeme, Translation, Word } from "@monorepo/lexico-entities";
+
+import { LoggerService } from "../logger/logger.service";
 
 interface ClearCommandOptions {
   dictionary?: boolean;
 }
 
 /**
- * CLI command: `lexico-ingestion clear`
+ * TODO: Document the clear command.
  * Clears dictionary data from the database.
  */
 @Command({
-  description: "Clear dictionary data from the database",
+  description: "Run the clear command",
   name: "clear",
 })
+@Injectable()
 export class ClearCommand extends CommandRunner {
   // 🏗 Dependency Injection
 
-  constructor(private readonly clearService: ClearService) {
+  constructor(
+    private readonly logger: LoggerService,
+    @InjectRepository(Lexeme)
+    private readonly lexemesRepository: Repository<Lexeme>,
+    @InjectRepository(Translation)
+    private readonly translationsRepository: Repository<Translation>,
+    @InjectRepository(Word)
+    private readonly wordsRepository: Repository<Word>,
+  ) {
     super();
+    this.logger.setContext(ClearCommand.name);
   }
 
   // 🔐 Private Fields
-
-  private readonly logger = new Logger(ClearCommand.name);
 
   // 🔑 Public Fields
 
   // 🔏 Private Methods
 
   // 🌎 Public Methods
+
+  /** Deletes all `Word`, `Translation`, and `Lexeme` rows from the database
+   * in dependency order to avoid foreign-key constraint violations. */
+  async clearDictionary(): Promise<void> {
+    this.logger.log("🗑️ Clearing dictionary");
+    await this.wordsRepository.delete({});
+    await this.translationsRepository.delete({});
+    await this.lexemesRepository.delete({});
+    this.logger.log("🗑️ Cleared dictionary");
+  }
 
   /** Parses the `--dictionary` flag; returns `true` when present. */
   @Option({
@@ -49,7 +71,7 @@ export class ClearCommand extends CommandRunner {
   ): Promise<void> {
     this.logger.log("Running clear command");
     if (options.dictionary) {
-      await this.clearService.clearDictionary();
+      await this.clearDictionary();
     } else {
       this.logger.warn(
         "No options specified. Use --dictionary to clear dictionary data.",

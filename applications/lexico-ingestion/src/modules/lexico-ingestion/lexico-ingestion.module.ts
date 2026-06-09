@@ -12,7 +12,6 @@ import { WordsModule } from "../words/words.module";
 
 import { LexicoIngestionCommand } from "./lexico-ingestion.command";
 import { environmentSchema } from "./lexico-ingestion.constants";
-import { LexicoIngestionService } from "./lexico-ingestion.service";
 
 /**
  * Root application module for lexicoIngestion.
@@ -20,7 +19,7 @@ import { LexicoIngestionService } from "./lexico-ingestion.service";
  */
 @Module({
   controllers: [],
-  exports: [LexicoIngestionService],
+  exports: [LexicoIngestionCommand],
   imports: [
     ConfigModule.forRoot({
       envFilePath: ".env",
@@ -36,6 +35,6 @@ import { LexicoIngestionService } from "./lexico-ingestion.service";
     ClearModule,
     LoggerModule,
   ],
-  providers: [LexicoIngestionCommand, LexicoIngestionService],
+  providers: [LexicoIngestionCommand],
 })
 export class LexicoIngestionModule {}

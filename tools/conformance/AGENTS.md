@@ -16,6 +16,14 @@ nx generate conformance:nestjs-service-module --name=user
 nx generate conformance:nestjs-service-module --name=userProfile --project=my-nestjs-app
 ```
 
+Generate a NestJS command module (prompts for project if `--project` omitted):
+
+```bash
+nx generate conformance:nestjs-command-module --name=processor
+nx generate conformance:nestjs-command-module --name=dataSync --project=lexico-ingestion
+nx g conformance:ncm --name=processor
+```
+
 Generate a NestJS GraphQL module (prompts for project if `--project` omitted):
 
 ```bash
@@ -30,6 +38,13 @@ Short alias forms:
 nx g conformance:react-component --name=Dialog
 nx g conformance:nestjs-service-module --name=auth
 nx g conformance:nestjs-graphql-module --name=post
+```
+
+Generate a NestJS GraphQL API application scaffold:
+
+```bash
+nx generate conformance:nestjs-graphql-application --name=stellar-api
+nx g conformance:nestjs-graphql-application --name=stellar-api
 ```
 
 Generate a NestJS command-line application scaffold:
@@ -87,6 +102,11 @@ tools/conformance/
 │   │           ├── __nameKebabCase__.service.unit.test.ts
 │   │           └── __nameKebabCase__.types.ts
 │   │   └── nestjs-command-application/
+│   │       ├── generator.ts
+│   │       ├── generator.unit.test.ts
+│   │       ├── schema.json
+│   │       └── templates/
+│   │   └── nestjs-graphql-application/
 │   │       ├── generator.ts
 │   │       ├── generator.unit.test.ts
 │   │       ├── schema.json
@@ -152,6 +172,37 @@ src/modules/post/
 └── post.types.ts
 ```
 
+### nestjs-graphql-application: `--name=stellar-api`
+
+Files created in `applications/stellar-api/`:
+
+```text
+applications/stellar-api/
+├── src/
+│   ├── main.ts
+│   ├── main.end-to-end.test.ts
+│   └── modules/
+│       ├── stellar-api/              ← root NestJS module
+│       │   ├── stellar-api.module.ts
+│       │   ├── stellar-api.constants.ts
+│       │   └── stellar-api.types.ts
+│       ├── logger/
+│       └── sample/                   ← example GraphQL module
+│           ├── sample.module.ts
+│           ├── sample.resolver.ts
+│           ├── sample.service.ts
+│           ├── sample.dataloader.ts
+│           ├── sample.entities.ts
+│           ├── sample.inputs.ts
+│           ├── sample.args.ts
+│           ├── sample.factories.ts
+│           └── sample.*.unit.test.ts
+├── testing/
+├── project.json
+├── package.json
+└── tsconfig.json
+```
+
 ## Troubleshooting
 
 See [Common Gotchas](../../documentation/troubleshooting/gotchas.md) for Nx and formatting issues.
@@ -181,6 +232,12 @@ See [Common Gotchas](../../documentation/troubleshooting/gotchas.md) for Nx and 
 - [src/generators/nestjs-command-application/generator.ts](src/generators/nestjs-command-application/generator.ts): Generator logic
 - [src/generators/nestjs-command-application/schema.json](src/generators/nestjs-command-application/schema.json): CLI schema (`name`)
 - [src/generators/nestjs-command-application/templates/](src/generators/nestjs-command-application/templates/): Application scaffold templates
+
+### nestjs-graphql-application
+
+- [src/generators/nestjs-graphql-application/generator.ts](src/generators/nestjs-graphql-application/generator.ts): Generator logic
+- [src/generators/nestjs-graphql-application/schema.json](src/generators/nestjs-graphql-application/schema.json): CLI schema (`name`)
+- [src/generators/nestjs-graphql-application/templates/](src/generators/nestjs-graphql-application/templates/): Application scaffold templates (Apollo Server, sample GraphQL module)
 
 ### Shared utilities
 
