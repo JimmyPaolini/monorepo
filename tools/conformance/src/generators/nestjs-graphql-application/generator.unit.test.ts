@@ -44,9 +44,6 @@ describe("generateNestjsGraphqlApplication", () => {
         tree.exists(`${base}/src/modules/sample/sample.service.ts`),
       ).toBeTruthy();
       expect(
-        tree.exists(`${base}/src/modules/sample/sample.dataloader.ts`),
-      ).toBeTruthy();
-      expect(
         tree.exists(`${base}/src/modules/sample/sample.entities.ts`),
       ).toBeTruthy();
       expect(tree.exists(`${base}/testing/setup.ts`)).toBeTruthy();

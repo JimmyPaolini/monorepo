@@ -19,6 +19,12 @@
       "factory": "./src/generators/nestjs-command-module/generator#generateNestjsCommandModule",
       "schema": "./src/generators/nestjs-command-module/schema.json"
     },
+    "nestjs-dataloader-module": {
+      "aliases": ["ndm"],
+      "description": "Generate a NestJS DataLoader module with dataloader, types, and unit test files",
+      "factory": "./src/generators/nestjs-dataloader-module/generator#generateNestjsDataloaderModule",
+      "schema": "./src/generators/nestjs-dataloader-module/schema.json"
+    },
     "nestjs-graphql-application": {
       "aliases": ["nga"],
       "description": "Generate a NestJS GraphQL API application scaffold with Apollo Server",

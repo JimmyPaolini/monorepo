@@ -1,7 +1,7 @@
 import { Injectable, Scope } from "@nestjs/common";
 import DataLoader from "dataloader";
 
-import { {{namePascalCase}}Entity } from "./{{nameKebabCase}}.entities";
+import { type {{namePascalCase}} } from "./{{nameKebabCase}}.types";
 import { {{namePascalCase}}Service } from "./{{nameKebabCase}}.service";
 
 /**
@@ -18,7 +18,7 @@ export class {{namePascalCase}}DataLoader {
 
   // 🔑 Public Fields
 
-  public readonly byId = new DataLoader<string, {{namePascalCase}}Entity | null>(
+  public readonly byId = new DataLoader<string, {{namePascalCase}} | null>(
     async (ids: readonly string[]) => {
       // TODO: Implement batch loading logic via {{nameCamelCase}}Service.
       // Must return an array of the same length and order as `ids`.

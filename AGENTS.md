@@ -85,6 +85,7 @@ Provided by the [conformance](tools/conformance/AGENTS.md) tool. Run with `nx ge
 | `jupyter-notebook-application` | `jna` | Generate a Python Jupyter notebook application scaffold |
 | `nestjs-command-application` | `nca` | Generate a NestJS command-line application scaffold using nest-commander |
 | `nestjs-command-module` | `ncm` | Generate a NestJS command module with command, module, types, constants, and unit test files |
+| `nestjs-dataloader-module` | `ndm` | Generate a NestJS DataLoader module with dataloader, types, and unit test files |
 | `nestjs-graphql-application` | `nga` | Generate a NestJS GraphQL API application scaffold with Apollo Server |
 | `nestjs-graphql-module` | `ngm` | Generate a NestJS GraphQL module with resolver, entities, inputs, args, factories, service, types, constants, and unit test files |
 | `nestjs-service-module` | `nsm` | Generate a NestJS service module with module, service, types, constants, and unit test files |
