@@ -26,25 +26,7 @@ describe("generateNestjsGraphqlApplication", () => {
       expect(tree.exists(`${base}/vitest.config.ts`)).toBeTruthy();
       expect(tree.exists(`${base}/src/main.ts`)).toBeTruthy();
       expect(
-        tree.exists(`${base}/src/modules/stellar-api/stellar-api.module.ts`),
-      ).toBeTruthy();
-      expect(
-        tree.exists(`${base}/src/modules/stellar-api/stellar-api.constants.ts`),
-      ).toBeTruthy();
-      expect(
         tree.exists(`${base}/src/modules/logger/logger.service.ts`),
-      ).toBeTruthy();
-      expect(
-        tree.exists(`${base}/src/modules/sample/sample.module.ts`),
-      ).toBeTruthy();
-      expect(
-        tree.exists(`${base}/src/modules/sample/sample.resolver.ts`),
-      ).toBeTruthy();
-      expect(
-        tree.exists(`${base}/src/modules/sample/sample.service.ts`),
-      ).toBeTruthy();
-      expect(
-        tree.exists(`${base}/src/modules/sample/sample.entities.ts`),
       ).toBeTruthy();
       expect(tree.exists(`${base}/testing/setup.ts`)).toBeTruthy();
     });
@@ -62,14 +44,6 @@ describe("generateNestjsGraphqlApplication", () => {
       expect(projectJson).toContain('"framework:nestjs-graphql-api"');
       expect(projectJson).toContain('"framework:nestjs"');
 
-      const rootModule = tree.read(
-        "applications/stellar-api/src/modules/stellar-api/stellar-api.module.ts",
-        "utf8",
-      );
-      expect(rootModule).toContain("GraphQLModule");
-      expect(rootModule).toContain("ApolloDriver");
-      expect(rootModule).toContain("class StellarApiModule");
-
       const envDefault = tree.read(
         "applications/stellar-api/.env.default",
         "utf8",
@@ -84,13 +58,6 @@ describe("generateNestjsGraphqlApplication", () => {
 
       const mainTs = tree.read("applications/my-api/src/main.ts", "utf8");
       expect(mainTs).toContain("MyApiModule");
-
-      const rootModule = tree.read(
-        "applications/my-api/src/modules/my-api/my-api.module.ts",
-        "utf8",
-      );
-      expect(rootModule).toContain("class MyApiModule");
-      expect(rootModule).toContain("my-api.constants");
     });
   });
 

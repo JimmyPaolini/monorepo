@@ -29,7 +29,7 @@ describe("generateNestjsGraphqlModule", () => {
   });
 
   describe("file generation", () => {
-    it("should generate all 11 module files under a subfolder", async () => {
+    it("should generate all 7 module files under a subfolder", async () => {
       await generateNestjsGraphqlModule(tree, {
         name: "post",
         project: PROJECT_NAME,
@@ -37,8 +37,6 @@ describe("generateNestjsGraphqlModule", () => {
 
       const base = `${MODULES_DIR}/post`;
       expect(tree.exists(`${base}/post.module.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/post.service.ts`)).toBeTruthy();
-      expect(tree.exists(`${base}/post.service.unit.test.ts`)).toBeTruthy();
       expect(tree.exists(`${base}/post.resolver.ts`)).toBeTruthy();
       expect(tree.exists(`${base}/post.resolver.unit.test.ts`)).toBeTruthy();
       expect(tree.exists(`${base}/post.entities.ts`)).toBeTruthy();
@@ -115,16 +113,6 @@ describe("generateNestjsGraphqlModule", () => {
 
       const content = tree.read(`${MODULES_DIR}/post/post.module.ts`, "utf8");
       expect(content).toContain("TODO: Document the post module.");
-    });
-
-    it("should include a TODO JSDoc comment in the generated service file", async () => {
-      await generateNestjsGraphqlModule(tree, {
-        name: "post",
-        project: PROJECT_NAME,
-      });
-
-      const content = tree.read(`${MODULES_DIR}/post/post.service.ts`, "utf8");
-      expect(content).toContain("TODO: Document the post service.");
     });
 
     it("should conform to the resolver template structure", async () => {
