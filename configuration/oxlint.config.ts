@@ -83,6 +83,10 @@ export default defineConfig({
     "packages/lexico-components/src/components/ui",
     "packages/lexico-components/src/hooks",
     "packages/lexico-components/src/lib",
+    "**/applications/lexico-ingestion/data/**",
+    "**/applications/lexico-ingestion/src/modules/literature/literature.constants.ts",
+    "**/applications/lexico-ingestion/src/modules/library/library.constants.ts",
+    "**/library.json",
     // Nx-generated agent skill folders
     ".github/skills/monitor-ci/**",
     ".github/skills/nx-generate/**",

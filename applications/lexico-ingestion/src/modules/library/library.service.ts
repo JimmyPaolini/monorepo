@@ -1,0 +1,90 @@
+import * as fs from "node:fs/promises";
+import path from "node:path";
+
+import { Injectable, Logger } from "@nestjs/common";
+import * as cheerio from "cheerio";
+import cheerioTableParser from "cheerio-tableparser";
+
+import { authorIdToName } from "../literature/literature.constants.js";
+
+interface AuthorIngestionDTO {
+  name: string;
+  nickname: string;
+  path: string;
+  works: TextIngestionDTO[];
+}
+
+interface TextIngestionDTO {
+  book?: string;
+  path: string;
+  title: string;
+}
+
+/**
+ * Service for scraping thelatinlibrary.com
+ */
+@Injectable()
+export class LibraryService {
+  private readonly logger = new Logger(LibraryService.name);
+
+  /** Scrape thelatinlibrary.com and save library.json */
+  async scrapeLibrary(): Promise<void> {
+    const host = "https://www.thelatinlibrary.com/";
+    this.logger.log(`Scraping library from ${host}`);
+
+    const res = await fetch(host);
+    const textData = await res.text();
+    const tableHtml = cheerio.load(textData);
+    cheerioTableParser(tableHtml);
+
+    const authors: AuthorIngestionDTO[] = (
+      tableHtml("p>table").first() as unknown as {
+        parsetable: (a: boolean, b: boolean, c: boolean) => string[][];
+      }
+    )
+      .parsetable(true, true, false)
+      .flat()
+      .map((elt: string): AuthorIngestionDTO => {
+        const a = cheerio.load(elt.trim())("a");
+        const nickname = a.text().replace(/\s/, " ").trim().toLowerCase();
+        const name = authorIdToName[nickname] || nickname;
+        const href = a.attr("href") ?? "";
+        return { name, nickname, path: href, works: [] };
+      })
+      .toSorted((a, b) => a.nickname.localeCompare(b.nickname));
+
+    for (const author of authors) {
+      this.logger.log(`Scraping author: ${author.nickname}`);
+
+      const authorRes = await fetch(host + author.path);
+      const authorText = await authorRes.text();
+      const $ = cheerio.load(authorText);
+
+      for (const a of $("a").get()) {
+        const href = $(a).attr("href");
+        if (
+          !href ||
+          href.includes("index.html") ||
+          href.includes("classics.html")
+        ) {
+          continue;
+        }
+        const book = $(a).closest("div").prev(":header").text().toLowerCase();
+        const title = $(a).text().toLowerCase();
+        author.works.push({ book, path: href, title });
+      }
+
+      if (!author.works.every((work) => work.path.endsWith(".html"))) {
+        author.works = [{ path: author.path, title: author.nickname }];
+      }
+    }
+
+    const dataPath = path.resolve("data", "library");
+    await fs.mkdir(dataPath, { recursive: true });
+    await fs.writeFile(
+      path.join(dataPath, "library.json"),
+      JSON.stringify(authors, null, 2),
+    );
+    this.logger.log("Successfully scraped library.json");
+  }
+}

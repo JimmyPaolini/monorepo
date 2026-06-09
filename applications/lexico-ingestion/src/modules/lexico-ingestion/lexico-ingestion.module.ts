@@ -5,6 +5,8 @@ import { LexicoDatabaseModule } from "@monorepo/lexico-entities";
 
 import { ClearModule } from "../clear/clear.module";
 import { DictionaryModule } from "../dictionary/dictionary.module";
+import { LibraryModule } from "../library/library.module";
+import { LiteratureModule } from "../literature/literature.module";
 import { LoggerModule } from "../logger/logger.module";
 import { ManualModule } from "../manual/manual.module";
 import { WiktionaryModule } from "../wiktionary/wiktionary.module";
@@ -32,7 +34,9 @@ import { environmentSchema } from "./lexico-ingestion.constants";
     DictionaryModule,
     WordsModule,
     ManualModule,
+    LiteratureModule,
     ClearModule,
+    LibraryModule,
     LoggerModule,
   ],
   providers: [LexicoIngestionCommand],

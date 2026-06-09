@@ -11,6 +11,14 @@
   ],
   "targets": {
     "analyze-code": {},
+    "build": {
+      "description": "Build the application",
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node --import @swc-node/register/esm-register src/main.ts build",
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
     "clean": {},
     "clear": {
       "description": "Clear ingested data from the database",
@@ -32,7 +40,19 @@
     "eslint": {},
     "format": {},
     "knip": {},
+    "library": {
+      "command": "node --import @swc-node/register/esm-register src/main.ts library",
+      "options": {
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
     "lint": {},
+    "literature": {
+      "command": "node --import @swc-node/register/esm-register src/main.ts literature",
+      "options": {
+        "cwd": "applications/lexico-ingestion"
+      }
+    },
     "manual": {
       "description": "Ingest manually curated entries into the database",
       "executor": "nx:run-commands",

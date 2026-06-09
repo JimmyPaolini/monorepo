@@ -3,7 +3,10 @@ import baseConfig from "../../configuration/eslint.config.base.ts";
 export default [
   ...baseConfig,
   {
-    files: ["**/*.{json}"],
+    ignores: ["data/**"],
+  },
+  {
+    files: ["**/*.json"],
     rules: {
       "@nx/dependency-checks": [
         "error",
@@ -11,6 +14,7 @@ export default [
           ignoredFiles: ["{projectRoot}/eslint.config.{js,cjs,mjs,ts,cts,mts}"],
         },
       ],
+      "no-irregular-whitespace": "off",
     },
   },
 ];

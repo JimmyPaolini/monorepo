@@ -57,6 +57,11 @@ export default [
       // Raw data folders (large JSON dumps, not source code)
       "**/data/wikipedia/**",
       "**/data/wiktionary/**",
+      "**/data/library/**",
+      "**/applications/lexico-ingestion/data/**",
+      "**/applications/lexico-ingestion/src/modules/literature/literature.constants.ts",
+      "**/applications/lexico-ingestion/src/modules/library/library.constants.ts",
+      "**/library.json",
       // Nx-generated agent skill folders
       ".github/skills/monitor-ci/**",
       ".github/skills/nx-generate/**",

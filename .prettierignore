@@ -22,6 +22,10 @@ yarn.lock
 **/affirmations/output
 **/data/wiktionary
 **/data/wikipedia
+**/applications/lexico-ingestion/data
+**/applications/lexico-ingestion/src/modules/literature/literature.constants.ts
+**/applications/lexico-ingestion/src/modules/library/library.constants.ts
+**/library.json
 
 # 🧪 Coverage
 **/coverage

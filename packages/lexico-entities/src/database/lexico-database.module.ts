@@ -19,6 +19,10 @@ import { PrepositionInflection } from "../entities/inflection/PrepositionInflect
 import { Uninflected } from "../entities/inflection/Uninflected.entity.js";
 import { VerbInflection } from "../entities/inflection/VerbInflection.entity.js";
 import { Lexeme } from "../entities/Lexeme.entity.js";
+import { Author } from "../entities/literature/Author.entity.js";
+import { Line } from "../entities/literature/Line.entity.js";
+import { Text } from "../entities/literature/Text.entity.js";
+import { Token } from "../entities/literature/Token.entity.js";
 import { PrincipalPart } from "../entities/PrincipalPart.entity.js";
 import { Pronunciation } from "../entities/Pronunciation.entity.js";
 import { Translation } from "../entities/Translation.entity.js";
@@ -62,6 +66,10 @@ import { LexicoNamingStrategy } from "./lexico-naming-strategy.js";
           SupineForm,
           WordForm,
           WordLexeme,
+          Author,
+          Text,
+          Line,
+          Token,
         ],
         host: config.get<string>("POSTGRES_HOST", "localhost"),
         logging: false,

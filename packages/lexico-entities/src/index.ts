@@ -77,6 +77,10 @@ export {
 } from "./entities/inflection/VerbInflection.entity.js";
 export type { VerbConjugation } from "./entities/inflection/VerbInflection.entity.js";
 export { Lexeme } from "./entities/Lexeme.entity.js";
+export { Author } from "./entities/literature/Author.entity.js";
+export { Line } from "./entities/literature/Line.entity.js";
+export { Text } from "./entities/literature/Text.entity.js";
+export { Token } from "./entities/literature/Token.entity.js";
 export type { PartOfSpeech } from "./entities/PartOfSpeech.entity.js";
 export { partOfSpeechValues } from "./entities/PartOfSpeech.entity.js";
 export { PrincipalPart } from "./entities/PrincipalPart.entity.js";

@@ -29,6 +29,9 @@ ignorePaths:
   - "**/routeTree.gen.ts"
   - "**/terraform.tfstate*"
   - "**/supabase/data.sql"
+  - "**/applications/lexico-ingestion/data/**"
+  - "**/applications/lexico-ingestion/src/modules/literature/literature.constants.ts"
+  - "**/applications/lexico-ingestion/src/modules/library/library.constants.ts"
   - coverage
   - dist
   - documentation/planning/**
@@ -73,8 +76,10 @@ words:
   - elipssis
   - extensionless
   - futp
+  - gallico
   - hackathon
   - Indo
+  - IVXLCDM
   - jimmypaolini
   - joor
   - killallnode
@@ -93,6 +98,8 @@ words:
   - reagent
   - satisfies
   - shiftsmart
+  - testamentum
+  - thelatinlibrary
   - timespan
   - tolower
   - toon
