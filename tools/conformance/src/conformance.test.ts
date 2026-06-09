@@ -6,6 +6,8 @@ import { describe, expect, it } from "vitest";
 
 import { TEMPLATES_DIRECTORY_PATH as COMMAND_APPLICATION_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-command-application/generator";
 import { TEMPLATES_DIRECTORY_PATH as COMMAND_MODULE_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-command-module/generator";
+import { TEMPLATES_DIRECTORY_PATH as GRAPHQL_APPLICATION_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-graphql-application/generator";
+import { TEMPLATES_DIRECTORY_PATH as GRAPHQL_MODULE_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-graphql-module/generator";
 import { TEMPLATES_DIRECTORY_PATH as SERVICE_MODULE_TEMPLATES_DIRECTORY_PATH } from "./generators/nestjs-service-module/generator";
 import {
   stringifyConformanceErrors,
@@ -26,6 +28,8 @@ interface ConformanceTemplateInstance {
 
 const NESTJS_COMMAND_APPLICATION_GENERATOR_TAG =
   "generator:nestjs-command-application";
+const NESTJS_GRAPHQL_APPLICATION_GENERATOR_TAG =
+  "generator:nestjs-graphql-application";
 const NESTJS_COMMAND_APPLICATION_TAG = "framework:nest-commander";
 const NESTJS_APPLICATION_TAG = "framework:nestjs";
 const APPLICATIONS_DIRECTORY_PATH = path.join(workspaceRoot, "applications");
@@ -73,14 +77,26 @@ function resolveTemplateInstances(): ConformanceTemplateInstance[] {
     ),
   );
 
+  const graphqlModules = allNestjsModules.filter((directoryPath) =>
+    fs.existsSync(
+      path.join(directoryPath, `${path.basename(directoryPath)}.resolver.ts`),
+    ),
+  );
+
   const serviceModules = allNestjsModules.filter(
     (directoryPath) =>
       !fs.existsSync(
         path.join(directoryPath, `${path.basename(directoryPath)}.command.ts`),
+      ) &&
+      !fs.existsSync(
+        path.join(directoryPath, `${path.basename(directoryPath)}.resolver.ts`),
+      ) &&
+      fs.existsSync(
+        path.join(directoryPath, `${path.basename(directoryPath)}.service.ts`),
       ),
   );
 
-  return [
+  const instances: ConformanceTemplateInstance[] = [
     {
       instanceDirectoryPaths: applications
         .filter((application) =>
@@ -92,10 +108,26 @@ function resolveTemplateInstances(): ConformanceTemplateInstance[] {
       templateDirectoryPath: COMMAND_APPLICATION_TEMPLATES_DIRECTORY_PATH,
     },
     {
+      instanceDirectoryPaths: applications
+        .filter((application) =>
+          application.tags.includes(NESTJS_GRAPHQL_APPLICATION_GENERATOR_TAG),
+        )
+        .map((application) => application.rootPath),
+      instanceType: "single",
+      template: "nestjs-graphql-application",
+      templateDirectoryPath: GRAPHQL_APPLICATION_TEMPLATES_DIRECTORY_PATH,
+    },
+    {
       instanceDirectoryPaths: commandModules,
       instanceType: "single",
       template: "nestjs-command-module",
       templateDirectoryPath: COMMAND_MODULE_TEMPLATES_DIRECTORY_PATH,
+    },
+    {
+      instanceDirectoryPaths: graphqlModules,
+      instanceType: "single",
+      template: "nestjs-graphql-module",
+      templateDirectoryPath: GRAPHQL_MODULE_TEMPLATES_DIRECTORY_PATH,
     },
     {
       instanceDirectoryPaths: serviceModules,
@@ -104,6 +136,10 @@ function resolveTemplateInstances(): ConformanceTemplateInstance[] {
       templateDirectoryPath: SERVICE_MODULE_TEMPLATES_DIRECTORY_PATH,
     },
   ];
+
+  return instances.filter(
+    (templateInstance) => templateInstance.instanceDirectoryPaths.length > 0,
+  );
 }
 
 function resolveWorkspaceApplications(): {
