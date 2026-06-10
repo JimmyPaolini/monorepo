@@ -3,6 +3,7 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 
 import { Lexeme } from "@monorepo/lexico-entities";
 
+import { NumeralsModule } from "../numerals/numerals.module";
 import { WordsModule } from "../words/words.module";
 
 import { ManualService } from "./manual.service";
@@ -13,7 +14,7 @@ import { ManualService } from "./manual.service";
 @Module({
   controllers: [],
   exports: [ManualService],
-  imports: [TypeOrmModule.forFeature([Lexeme]), WordsModule],
+  imports: [TypeOrmModule.forFeature([Lexeme]), WordsModule, NumeralsModule],
   providers: [ManualService],
 })
 export class ManualModule {}

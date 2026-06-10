@@ -15,8 +15,9 @@ import { type DeepPartial, Repository } from "typeorm";
 import { Author, Line, Text, Token, Word } from "@monorepo/lexico-entities";
 
 import { LoggerService } from "../logger/logger.service.js";
+import { NumeralsService } from "../numerals/numerals.service.js";
 
-import { authorIdToName, ROMAN_VALUES } from "./literature.constants.js";
+import { authorIdToName } from "./literature.constants.js";
 
 import type { LiteratureCommandOptions } from "./literature.types.js";
 import type { Paragraph } from "mdast";
@@ -42,6 +43,7 @@ export class LiteratureCommand extends CommandRunner {
     @InjectRepository(Word)
     private readonly wordRepository: Repository<Word>,
     private readonly logger: LoggerService,
+    private readonly numeralsService: NumeralsService,
   ) {
     super();
     this.logger.setContext(LiteratureCommand.name);
@@ -221,7 +223,7 @@ export class LiteratureCommand extends CommandRunner {
         if (labelMatch?.[1]) {
           label = labelMatch[1];
           if (/^[IVXLCDM]+$/i.test(label)) {
-            label = `${this.romanToDecimal(label)}`;
+            label = `${this.numeralsService.toDecimal(label)}`;
           }
 
           const remainder = labelMatch[2];
@@ -242,7 +244,7 @@ export class LiteratureCommand extends CommandRunner {
           if (rawLabel.length <= 32) {
             label = rawLabel;
             if (/^[IVXLCDM]+$/i.test(label)) {
-              label = `${this.romanToDecimal(label)}`;
+              label = `${this.numeralsService.toDecimal(label)}`;
             }
           }
           lineNodes = lineNodes.slice(1);
@@ -408,22 +410,6 @@ export class LiteratureCommand extends CommandRunner {
       .replaceAll(/[\u0300-\u036F]/gu, "")
       .toLowerCase()
       .trim();
-  }
-
-  private romanToDecimal(roman: string): number {
-    const upperRoman = roman.toUpperCase();
-    let decimal = 0;
-
-    for (let i = 0; i < upperRoman.length; i++) {
-      const v1 = ROMAN_VALUES[upperRoman.charAt(i)] || 0;
-      const v2 = ROMAN_VALUES[upperRoman.charAt(i + 1)] || 0;
-      if (i + 1 < upperRoman.length && v1 < v2) {
-        decimal -= v1;
-      } else {
-        decimal += v1;
-      }
-    }
-    return decimal;
   }
 
   // 🌎 Public Methods

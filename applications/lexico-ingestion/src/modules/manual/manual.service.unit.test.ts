@@ -4,6 +4,7 @@ import { beforeAll, describe, expect, it } from "vitest";
 
 import { Lexeme, Word, WordForm, WordLexeme } from "@monorepo/lexico-entities";
 
+import { NumeralsService } from "../numerals/numerals.service";
 import { WordsService } from "../words/words.service";
 
 import { ManualService } from "./manual.service";
@@ -20,6 +21,7 @@ describe("ManualService", () => {
         { provide: getRepositoryToken(Word), useValue: {} },
         { provide: getRepositoryToken(WordLexeme), useValue: {} },
         { provide: getRepositoryToken(WordForm), useValue: {} },
+        { provide: NumeralsService, useValue: { toRoman: () => "I" } },
       ],
     }).compile();
 

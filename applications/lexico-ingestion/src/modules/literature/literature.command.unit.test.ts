@@ -4,6 +4,9 @@ import { beforeAll, describe, expect, it } from "vitest";
 
 import { Author, Line, Text, Token, Word } from "@monorepo/lexico-entities";
 
+import { LoggerService } from "../logger/logger.service";
+import { NumeralsService } from "../numerals/numerals.service";
+
 import { LiteratureCommand } from "./literature.command";
 
 describe("LiteratureCommand", () => {
@@ -32,6 +35,14 @@ describe("LiteratureCommand", () => {
         {
           provide: getRepositoryToken(Word),
           useValue: {},
+        },
+        {
+          provide: LoggerService,
+          useValue: { setContext: () => {} },
+        },
+        {
+          provide: NumeralsService,
+          useValue: { toDecimal: () => 1 },
         },
       ],
     }).compile();

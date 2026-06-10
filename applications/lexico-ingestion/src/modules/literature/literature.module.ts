@@ -11,6 +11,7 @@ import {
 } from "@monorepo/lexico-entities";
 
 import { LoggerModule } from "../logger/logger.module.js";
+import { NumeralsModule } from "../numerals/numerals.module.js";
 
 import { LiteratureCommand } from "./literature.command.js";
 
@@ -23,6 +24,7 @@ import { LiteratureCommand } from "./literature.command.js";
     LexicoDatabaseModule,
     TypeOrmModule.forFeature([Author, Text, Line, Token, Word]),
     LoggerModule,
+    NumeralsModule,
   ],
   providers: [LiteratureCommand],
 })
