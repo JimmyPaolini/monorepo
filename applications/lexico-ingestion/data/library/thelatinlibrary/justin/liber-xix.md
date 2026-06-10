@@ -10,7 +10,7 @@ author_metadata:
 
 ## Liber Xix
 
-I. Mago, Karthaginiensium imperator, cum primus omnium ordinata
+**I** Mago, Karthaginiensium imperator, cum primus omnium ordinata
 
 disciplina militari imperium Poenorum condidisset viresque civitatis non
 
@@ -54,7 +54,7 @@ propter adsidua finitimorum bella ceteris, ne per omnia contumaces
 
 viderentur, cupide paruere.
 
-II. Interea Hamilcar bello Siciliensi interficitur relictis tribus filiis,
+**II** Interea Hamilcar bello Siciliensi interficitur relictis tribus filiis,
 
 Himilcone, Hannone, Gisgone. 2 Asdrubali quoque par numerus
 
@@ -96,7 +96,7 @@ litore plangentium gemitus, tunc infelicium matrum ululatus et flebiles
 
 querelae audiebantur.
 
-III. Inter haec procedit inops navi sua imperator sordida servilique
+**III** Inter haec procedit inops navi sua imperator sordida servilique
 
 tunica discinctus, ad cuius conspectum plangentium agmina iunguntur. 2
 

@@ -1,7 +1,7 @@
 ---
 author: aurelius-victor
 text_metadata:
-  source_url: https://www.thelatinlibrary.com/victor.caes.html
+  source_url: https://www.thelatinlibrary.com/victor/victor.caes.html
 title: De Caesaribus
 type: text
 author_metadata:

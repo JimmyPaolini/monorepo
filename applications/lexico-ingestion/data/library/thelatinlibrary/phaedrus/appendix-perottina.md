@@ -414,7 +414,7 @@ Ferendus esses, arte si te diceres
 
 superasse eum qui te esset melior uiribus."
 
-XIV. [Asinus ad lyram]
+**XIV** [Asinus ad lyram]
 
 Quomodo ingenia saepe calamitate intercidant
 

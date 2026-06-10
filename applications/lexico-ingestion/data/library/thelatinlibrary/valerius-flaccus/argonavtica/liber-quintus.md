@@ -20,7 +20,7 @@ labitur extremi sibi tum non inscius aevi.
 
 at memor Aesonides nimium iam vera locuti
 
-Phineos hinc alios rapto pavet Idmone luctus.                    5
+Phineos hinc alios rapto pavet Idmone luctus. **5**
 
 tum comiti pia iusta tulit caelataque multa
 
@@ -30,7 +30,7 @@ hospes humum sedemque Lycus. flens arma revellit
 
 Idmonis e celsa Mopsus rate. robora caedunt
 
-pars silvis portantque arae, pars auguris alba                    10
+pars silvis portantque arae, pars auguris alba **10**
 
 fronde <caput> vittisque ligant positumque feretro
 
@@ -40,7 +40,7 @@ Ecce inter lacrimas interque extrema virorum
 
 munera, quem cursus penes imperiumque carinae,
 
-Tiphyn agit violenta lues cunctique pavore                    15
+Tiphyn agit violenta lues cunctique pavore **15**
 
 attoniti fundunt maestas ad sidera voces:
 
@@ -50,7 +50,7 @@ hoc, pater, hoc nobis refove caput, ulla laboris
 
 si nostri te cura movet, qui cardine summo
 
-vertitur atque omnis manibus nunc pendet ab unis!'                    20
+vertitur atque omnis manibus nunc pendet ab unis!' **20**
 
 dicta dabant ventis nec debita fata movebant.
 
@@ -60,7 +60,7 @@ natorum flet parva manus trepidique precantur
 
 duret ut invalidis et adhuc genitoris egenis,
 
-haud aliter socii supremo in tempore Tiphyn                    25
+haud aliter socii supremo in tempore Tiphyn **25**
 
 ante alios superesse volunt. mors frigida contra
 
@@ -70,7 +70,7 @@ exanimum frustra Minyae clamore morantur
 
 avellique negant: vix membra rigentia tandem
 
-imposuere rogo lacrimasque et munera flammis                    30
+imposuere rogo lacrimasque et munera flammis **30**
 
 vana ferunt, crescit donis feralis acervus.
 
@@ -80,7 +80,7 @@ et rapidae sonuere faces, tunc ipsa cremari
 
 visa ratis medioque viros deponere ponto.
 
-non tulit Aesonius geminis flagrantia cernens                    35
+non tulit Aesonius geminis flagrantia cernens **35**
 
 corpora cara rogis, sed pectore ductor ab imo
 
@@ -90,7 +90,7 @@ numina? quas nostri poenas meruere labores?
 
 bina (nefas) toto pariter mihi funera surgunt
 
-litore. magna adeo comitum numerosaque pubes?                    40
+litore. magna adeo comitum numerosaque pubes? **40**
 
 aut socios rapit atra dies aut ipse relinquo
 
@@ -100,7 +100,7 @@ fata canens? ubi monstriferae par ille novercae?
 
 te sine, Thespiade, nos ulla movebimus ultra
 
-aequora? nec summa speculantem puppe videbo                    45
+aequora? nec summa speculantem puppe videbo **45**
 
 Pleiadumque globos et agentes noctibus Arctos?
 
@@ -110,7 +110,7 @@ carpere securas quis iam iubet Aesona noctes?
 
 hoc labor, hoc dulci totiens fraudata sopore
 
-lumina et admotis nimium mens anxia Colchis                    50
+lumina et admotis nimium mens anxia Colchis **50**
 
 profuit? heu quantum Phasis, quantum Aea recessit!
 
@@ -120,7 +120,7 @@ adsis umbra, precor, venturi praescia caeli
 
 rectoremque tuae moneas ratis.' haec ubi fatus,
 
-sola virum flammis vidit labentibus ossa.                    55
+sola virum flammis vidit labentibus ossa. **55**
 
 'quod tamen externis unum solamen in oris
 
@@ -130,7 +130,7 @@ ossaque nec tumulo nec separe contegat urna,
 
 sed simul, ut iunctis venistis in aequora fatis.'
 
-haud mora, reliquias socii defletaque miscent                    60
+haud mora, reliquias socii defletaque miscent **60**
 
 nomina. tum vivo frondens e caespite tellus
 
@@ -140,7 +140,7 @@ Maesti omnes dubiique, ratem fidissima cuius
 
 dextra regat. simul Ancaeus sollersque petebat
 
-Nauplius. Erginum fato vocat ipsa monenti                    65
+Nauplius. Erginum fato vocat ipsa monenti **65**
 
 quercus et ad tonsas victi rediere magistri.
 
@@ -150,7 +150,7 @@ fertur ovans, hunc omnis honos, hunc omnis in unum
 
 transit amor. primo laetus sic tempore rector
 
-ingreditur cursus. etenim dat candida certam                    70
+ingreditur cursus. etenim dat candida certam **70**
 
 nox Helicen. iam prora fretum commoverat et iam
 
@@ -160,7 +160,7 @@ Inde premente noto tristes Acherusidos oras
 
 praeterit et festa vulgatum nocte Lyaei
 
-Callichoron. nec vana fides: his Bacchus in undis                    75
+Callichoron. nec vana fides: his Bacchus in undis **75**
 
 abluit eoo rorantes sanguine thyrsos.
 
@@ -170,7 +170,7 @@ aequoris hic resides thiasos, hic aera moventem
 
 udaque pampinea nectentem cornua vitta
 
-nunc etiam meministis, aquae, Boeotia qualem                    80
+nunc etiam meministis, aquae, Boeotia qualem **80**
 
 Thyias et infelix cuperet vidisse Cithaeron.
 
@@ -180,7 +180,7 @@ interea et magnis natorum laudibus implet,
 
 addita <ia>mque fretis repetens freta iamque patentes
 
-Cyaneas. ardent avidos attollere vultus                    85
+Cyaneas. ardent avidos attollere vultus **85**
 
 quos pietas vel tangit adhuc quos aemula virtus.
 
@@ -190,7 +190,7 @@ conditus, ad carae mittunt spectacula turbae.
 
 it Sthenelus. qualem Mavortia vidit Amazon
 
-cumque suis comitem Alcides ut condidit armis,                    90
+cumque suis comitem Alcides ut condidit armis, **90**
 
 talis ab aequorei consurgens aggere busti
 
@@ -200,7 +200,7 @@ tolleret aut nubem quater<et> polus. atque ea vixdum
 
 visa viris atra nox protinus abstulit umbra.
 
-ille dolens altum repetit chaos. omina Mopsus                    95
+ille dolens altum repetit chaos. omina Mopsus **95**
 
 dum stupet, in prima tumulum procul aspicit acta
 
@@ -220,7 +220,7 @@ Parthenium, ante alios Triviae qui creditur amnis
 
 fidus et Inopi materna gratior unda.
 
-mox etiam Cromnae iuga pallentem<que> Cytoron                    105
+mox etiam Cromnae iuga pallentem<que> Cytoron **105**
 
 te cita penitus condunt, Erythia, carina.
 
@@ -230,7 +230,7 @@ raditur et magnae pelago tremit umbra Sinopes.
 
 Assyrios complexa sinus stat opima Sinope,
 
-nympha prius blandosque Iovis quae luserat ignes                    110
+nympha prius blandosque Iovis quae luserat ignes **110**
 
 caelicolis immota procis: deceptus amatae
 
@@ -240,7 +240,7 @@ Addidit hic casu comites fortuna benigno
 
 Autolycum Phlogiumque et Deileonta, secutos
 
-Herculis arma viros. vagus hos ibi fixerat error.                    115
+Herculis arma viros. vagus hos ibi fixerat error. **115**
 
 ut Graiam videre manum puppemque Pelasgam
 
@@ -250,7 +250,7 @@ accipiant socios. nova dux accedere gaudet
 
 nomina desertos et iam sibi currere remos.
 
-transit Halys longisque fluens anfractibus Iris                    120
+transit Halys longisque fluens anfractibus Iris **120**
 
 saevaque Thermodon medio sale murmura volvens,
 
@@ -260,7 +260,7 @@ donat equos, donat votas cui virgo secures
 
 cum redit ingenti per Caspia claustra triumpho
 
-Massageten Medumque trahens. est vera propago                    125
+Massageten Medumque trahens. est vera propago **125**
 
 sanguinis, est ollis genitor deus. hinc magis alta
 
@@ -270,7 +270,7 @@ ipse autem comitum conversus ad ora novorum
 
 'vos mihi nunc pugnas' ait 'et victricia' ductor
 
-'Herculis arma mei vestrasque in litore Martis                    130
+'Herculis arma mei vestrasque in litore Martis **130**
 
 interea memorate manus.' sic fatus et aegro
 
@@ -280,7 +280,7 @@ virginei, exciderit frenis quae prima remissis,
 
 semianimem patrius quam sanguine vexerit amnis,
 
-quae pelta latus atque umeros nudata pharetris                    135
+quae pelta latus atque umeros nudata pharetris **135**
 
 fugerit, Herculeae mox vulnere prensa sagittae,
 
@@ -290,7 +290,7 @@ fleturusque pater, quantus duce terror in ipsa,
 
 qui furor in signis, quo balteus arserit auro.
 
-Nocte sub extrema clausis telluris ab antris                    140
+Nocte sub extrema clausis telluris ab antris **140**
 
 pervigil auditur Chalybum labor: arma fatigant
 
@@ -300,7 +300,7 @@ prima manus belli, terras crudelis in omnes.
 
 nam prius ignoti quam dura cubilia ferri
 
-eruerent ensesque darent, Odia aegra sine armis                    145
+eruerent ensesque darent, Odia aegra sine armis **145**
 
 errabant Iraeque inopes et segnis Erinys.
 
@@ -310,7 +310,7 @@ dant virides post terga lacus, ubi deside mitra
 
 feta ligat partuque virum fovet ipsa soluto.
 
-vos quoque non notae mirati vela carinae,                    150
+vos quoque non notae mirati vela carinae, **150**
 
 Mossynoeci, et vos stabulis, Macrones, ab altis
 
@@ -320,7 +320,7 @@ litora, quae cornu pepulit Saturnus equino.
 
 Ultimus inde sinus saevumque cubile Promethei
 
-cernitur, in gelidas consurgens Caucasus Arctos.                    155
+cernitur, in gelidas consurgens Caucasus Arctos. **155**
 
 ille etiam Alciden Titania fata morantem
 
@@ -330,7 +330,7 @@ undique convellens veteris cum strage pruinae
 
 vincula prensa manu saxis abduxerat imis
 
-arduus et laevo gravior pede. consonat ingens                    160
+arduus et laevo gravior pede. consonat ingens **160**
 
 Caucasus et summo pariter cum monte secutae
 
@@ -340,7 +340,7 @@ fit fragor, aetherias ceu Iuppiter arduus arces
 
 impulerit imas manus aut Neptunia terras.
 
-horruit immensum Ponti latus, horruit omnis                    165
+horruit immensum Ponti latus, horruit omnis **165**
 
 Armeniae praetentus Hiber penitusque recusso
 
@@ -350,7 +350,7 @@ tum gemitu propiore chalybs densusque revulsis
 
 rupibus audiri montis labor et grave Titan
 
-vociferans, fixos scopulis dum vellitur artus.                    170
+vociferans, fixos scopulis dum vellitur artus. **170**
 
 contra autem ignari (quis enim nunc credat in illis
 
@@ -360,7 +360,7 @@ pergere iter socii. tantum mirantur ab alto
 
 litora discussa sterni nive ruptaque saxa
 
-et simul ingentem moribundae desuper umbram                    175
+et simul ingentem moribundae desuper umbram **175**
 
 alitis atque atris rorantes imbribus auras.
 
@@ -370,7 +370,7 @@ coeperat optatos iam lux ostendere Colchos,
 
 magnus ubi adversum spumanti Phasis in aequor
 
-ore ruit. cuncti pariter loca debita noscunt                    180
+ore ruit. cuncti pariter loca debita noscunt **180**
 
 signaque commemorant emensasque ordine gentes
 
@@ -380,7 +380,7 @@ Pallas et alipedum Iuno iuga sistit equorum.
 
 Ac dum prima gravi ductor subit ostia pulsu
 
-populeos flexus tumulumque virentia supra                    185
+populeos flexus tumulumque virentia supra **185**
 
 flumina cognati medio videt aggere Phrixi,
 
@@ -390,7 +390,7 @@ stat soror, hinc saevae formidine maesta novercae,
 
 inde maris, pecudique timens imponere palmas.
 
-sistere tum socios iubet atque hinc prima ligari                    190
+sistere tum socios iubet atque hinc prima ligari **190**
 
 vincula, ceu Pagasas patriumque intraverit amnem.
 
@@ -400,7 +400,7 @@ rite ferens umbram vocat et sic fatur ad aras:
 
 'per genus atque pares tecum mihi, Phrixe, labores,
 
-tu precor orsa regas meque his tuteris in oris                    195
+tu precor orsa regas meque his tuteris in oris **195**
 
 tot freta, tot ~durae properanti~ sidera passum.
 
@@ -410,7 +410,7 @@ tu quoque nunc, tumulo nequiquam condita inani,
 
 adnue, diva maris, numeroque accede tuorum.
 
-quando egomet rursus per te vehar? aurea quando                    200
+quando egomet rursus per te vehar? aurea quando **200**
 
 Seston et infaustos agnoscent vellera fluctus?
 
@@ -420,7 +420,7 @@ pandite dives ubi pellis micet arbore sacra.
 
 tunc tibi, fecundi proles Iovis, orte nivali
 
-Arcados axe deae, fluvio modo, Phasi, quieto                    205
+Arcados axe deae, fluvio modo, Phasi, quieto **205**
 
 Palladiam patiare ratem. nec dona nec arae
 
@@ -430,7 +430,7 @@ effigies te, Phasi, manet, quam magnus Enipeus
 
 et pater aurato quantus iacet Inachus antro.'
 
-dixerat atque illi dextra sine versa magistri                    210
+dixerat atque illi dextra sine versa magistri **210**
 
 protinus in proram rediit ratis omine certo
 
@@ -440,7 +440,7 @@ utque vocas, revehemur!' ait. sic deinde precatus
 
 arma iubet celsa socios depromere puppe.
 
-dona dehinc Bacchi casusque ut firmet in omnes                    215
+dona dehinc Bacchi casusque ut firmet in omnes **215**
 
 rapta Ceres viridesque premunt longo ordine ripas.
 
@@ -450,7 +450,7 @@ Thessalici da bella ducis. non mens mihi, non haec
 
 ora satis. ventum ad furias infandaque natae
 
-foedera et horrenda trepidam sub virgine puppem;                    220
+foedera et horrenda trepidam sub virgine puppem; **220**
 
 impia monstriferis surgunt iam proelia campis.
 
@@ -460,7 +460,7 @@ Soligenae falli meriti meritique relinqui,
 
 inde canens: Scythica senior iam Solis in urbe
 
-fata laborati Phrixus compleverat aevi.                    225
+fata laborati Phrixus compleverat aevi. **225**
 
 illius extremo sub funere mira repente
 
@@ -470,7 +470,7 @@ aequora cuncta movens. at vellera Martis in umbra
 
 ipse sui Phrixus monumentum insigne pericli
 
-liquerat ardenti quercum complexa metallo.                    230
+liquerat ardenti quercum complexa metallo. **230**
 
 quondam etiam tacitae visus per tempora noctis
 
@@ -480,7 +480,7 @@ prodita vox: '<o> qui patria tellure fugatum
 
 quaerentemque domos his me considere passus
 
-sedibus, oblata generum mox prole petisti,                    235
+sedibus, oblata generum mox prole petisti, **235**
 
 tunc tibi regnorum labes luctusque supersunt
 
@@ -490,7 +490,7 @@ praeterea infernae quae nunc sacrata Dianae
 
 fert castos Medea choros, quemcumque procorum
 
-pacta petat, maneat regnis ne virgo paternis.'                    240
+pacta petat, maneat regnis ne virgo paternis.' **240**
 
 dixit et admota pariter fatalia visus
 
@@ -500,7 +500,7 @@ currere per summi fulgor laquearia tecti.
 
 membra toris rapit ille tremens patriumque precatur
 
-numen et eoo surgentes litore currus:                    245
+numen et eoo surgentes litore currus: **245**
 
 'haec tibi fatorum, genitor, tutela meorum,
 
@@ -510,7 +510,7 @@ sparge mari. seu nostra dolos molitur opertos
 
 sive externa manus, primus mihi nuntius esto.
 
-tu quoque, sacrata rutilant cui vellera quercu,                    250
+tu quoque, sacrata rutilant cui vellera quercu, **250**
 
 excubias, Gradive, tene. praesentia luco
 
@@ -520,7 +520,7 @@ vix ea, Caucaseis cum lapsus montibus anguis
 
 haud sine mente dei spiris nemus omne refusis
 
-implicuit Graiumque procul respexit ad orbem.                    255
+implicuit Graiumque procul respexit ad orbem. **255**
 
 ergo omnes prohibere minas praedictaque Phrixi
 
@@ -530,7 +530,7 @@ adnuitur thalamis Albani virgo tyranni.
 
 Interea auguriis monstrisque minacibus urbem
 
-territat ante monens semper deus et data seri                    260
+territat ante monens semper deus et data seri **260**
 
 signa mali, reddi iubet exitiale sacerdos
 
@@ -540,7 +540,7 @@ contra Sole satus Phrixi praecepta volutans
 
 aegro corde negat nec vulgi cura tyranno
 
-dum sua sit modo tuta salus. tunc ordine regi                    265
+dum sua sit modo tuta salus. tunc ordine regi **265**
 
 proximus et frater materno sanguine Perses
 
@@ -550,7 +550,7 @@ ille furens ira solio se proripit alto
 
 praecipitatque patres ipsumque ut talibus ausis
 
-spem sibi iam rerum vulgi levitate serentem                    270
+spem sibi iam rerum vulgi levitate serentem **270**
 
 ense petit. rapit inde fugam crudelia Perses
 
@@ -560,7 +560,7 @@ iamque aderat magnis regum cum milibus urbi
 
 primaque in adversos frustratus proelia muros
 
-constiterat. datus et sociis utrimque cremandis                    275
+constiterat. datus et sociis utrimque cremandis **275**
 
 ille dies alterque dies, cum Marte remisso
 
@@ -570,7 +570,7 @@ Nox hominum genus et duros mi<se>rata labores
 
 rettulerat fessis optata silentia terris.
 
-at Iuno et summi virgo Iovis intima secum                    280
+at Iuno et summi virgo Iovis intima secum **280**
 
 consilia et varias sociabant pectore curas.
 
@@ -580,7 +580,7 @@ cernis,' ait 'Colchos habeant quae proelia quique
 
 nunc status. hinc Perses, illinc non viribus aequis
 
-apparat Aeetes aciem. quibus addimur armis?'                    285
+apparat Aeetes aciem. quibus addimur armis?' **285**
 
 cui Iuno: 'dimitte metus, ne proelia forte
 
@@ -590,7 +590,7 @@ et nostros iam sudor equos. stat pectore fixum
 
 Aeetae sociare manus. scio perfida regis
 
-corda quidem, nullos Minyis exsolvet honores.                    290
+corda quidem, nullos Minyis exsolvet honores. **290**
 
 verum alios tunc ipsa dolos, alia orsa movebo.'--
 
@@ -600,7 +600,7 @@ Pallas ait 'liceat Grais ut reddere terris
 
 Aesonium caput et puppem, quam struximus ipsae,
 
-iactatam tandem nostro componere caelo.'                    295
+iactatam tandem nostro componere caelo.' **295**
 
 talia tunc hominum superi pro laude movebant.
 
@@ -610,7 +610,7 @@ nox Minyis egesta metu. nil quippe reperto
 
 Phaside, nil domitis actum Symplegados undis
 
-cunctaque adhuc, magni veniant dum regis ad urbem,                    300
+cunctaque adhuc, magni veniant dum regis ad urbem, **300**
 
 ambigua et dubia rerum pendentia summa.
 
@@ -620,7 +620,7 @@ mens rapit undantem curis ac multa novantem.
 
 qualiter ex alta cum Iuppiter arce coruscat
 
-Pliadas ille movens mixtumque sonoribus imbrem                     305
+Pliadas ille movens mixtumque sonoribus imbrem **305**
 
 horriferamve nivem, canis ubi tollitur omnis
 
@@ -630,7 +630,7 @@ aut alios duris fatorum gentibus ortus,
 
 sic tum diversis hinc atque hinc motibus anceps
 
-pectora dux crebro gemitu quatit, optat et almum                    310
+pectora dux crebro gemitu quatit, optat et almum **310**
 
 iam iubar et certi tandem discriminis horas.
 
@@ -640,7 +640,7 @@ versus ad ora virum 'quod primum ingentibus ausis
 
 optavistis' ait 'veterumque quod horruit aetas,
 
-adsumus en tantumque fretis enavimus orbem.                    315
+adsumus en tantumque fretis enavimus orbem. **315**
 
 nec pelagi nos mille viae nec fama fefellit
 
@@ -650,7 +650,7 @@ ergo ubi lux altum sparget mare, tecta petenda
 
 urbis et ignoti mens experienda tyranni.
 
-adnuet ipse, reor, neque <in>exorabile certe                    320
+adnuet ipse, reor, neque <in>exorabile certe **320**
 
 quod petimus. sin vero preces et dicta superbus
 
@@ -660,7 +660,7 @@ quaque via patriis referamus vellera terris,
 
 stet potius: rebus semper pudor absit in artis.'
 
-dixerat et Scythicam qui se comitentur ad urbem                    325
+dixerat et Scythicam qui se comitentur ad urbem **325**
 
 sorte petit numeroque novem ducuntur ab omni.
 
@@ -670,7 +670,7 @@ corripiunt regemque petunt iam luce reducta.
 
 Forte deum variis per noctem territa monstris
 
-senserat ut pulsas tandem Medea tenebras                    330
+senserat ut pulsas tandem Medea tenebras **330**
 
 rapta toris primi iubar ad placabile Phoebi
 
@@ -680,7 +680,7 @@ namque soporatos tacitis in sedibus artus
 
 dum premit alta quies nullaeque in virgine curae,
 
-visa pavens castis Hecates excedere lucis,                    335
+visa pavens castis Hecates excedere lucis, **335**
 
 dumque pii petit ora patris, stetit arduus inter
 
@@ -690,7 +690,7 @@ fratre tamen conante sequi. mox stare paventes
 
 viderat intenta pueros nece seque trementem
 
-spargere caede manus et lumina rumpere fletu.                    340
+spargere caede manus et lumina rumpere fletu. **340**
 
 his turbata minis fluvios ripamque petebat
 
@@ -700,7 +700,7 @@ florea per verni qualis iuga duxit Hymetti
 
 aut Sicula sub rupe choros hinc gressibus haerens
 
-Pallados, hinc carae Proserpina iuncta Dianae,                    345
+Pallados, hinc carae Proserpina iuncta Dianae, **345**
 
 altior ac nulla comitum certante, priusquam
 
@@ -710,7 +710,7 @@ talis et in vittis geminae cum lumine taedae
 
 Colchis erat nondum miseros exosa parentes.
 
-ut procul extremi gelidis a fluminis undis                    350
+ut procul extremi gelidis a fluminis undis **350**
 
 prima viros tacito vidit procedere passu,
 
@@ -720,7 +720,7 @@ substitit ac maesto nutricem adfata timore est:
 
 advenit haud armis, haud umquam cognita cultu?
 
-quaere fugam, precor, et tutos circumspice saltus.'                    355
+quaere fugam, precor, et tutos circumspice saltus.' **355**
 
 audit virginei custos grandaeva pudoris
 
@@ -730,7 +730,7 @@ tum trepidam dictis firmans hortatur alumnam.
 
 'non tibi ab hoste minae nec vis' ait 'ulla propinquat
 
-nec [te] metus: externo iam flammea murice cerno                    360
+nec [te] metus: externo iam flammea murice cerno **360**
 
 tegmina, iam vittas frondemque imbellis olivae.
 
@@ -740,7 +740,7 @@ Sic ait. at Iuno, pulchrum longissima quando
 
 robur cura ducis magnique edere labores,
 
-mole nova et roseae perfudit luce iuventae.                    365
+mole nova et roseae perfudit luce iuventae. **365**
 
 iam Talaum iamque Ampyciden astroque comantes
 
@@ -750,7 +750,7 @@ non secus autumno quam cum magis asperat ignes
 
 Sirius et saevo cum nox accenditur auro
 
-luciferas crinita faces, hebet Arcas et ingens                    370
+luciferas crinita faces, hebet Arcas et ingens **370**
 
 Iuppiter. ast illum tanto non gliscere caelo
 
@@ -760,7 +760,7 @@ regina, attonito quamquam pav<or> ore silentem
 
 exanimet, mirata tamen paulumque reductis
 
-passibus in solo stupuit duce. nec minus inter                    375
+passibus in solo stupuit duce. nec minus inter **375**
 
 ille tot ignoti socias gregis haeret in una
 
@@ -770,7 +770,7 @@ defixus sentitque ducem dominamque catervae.
 
 has ego credo faces, haec virginis ora Dianae,
 
-teque renodatam pharetris ac pace fruentem                    380
+teque renodatam pharetris ac pace fruentem **380**
 
 ad sua Caucaseae producunt flumina nymphae.
 
@@ -780,7 +780,7 @@ felix prole parens olimque beatior ille,
 
 qui tulerit longis et te sibi iunxerit annis.
 
-sed fer opem, regina, viris! nos hospita pubes                    385
+sed fer opem, regina, viris! nos hospita pubes **385**
 
 advehimur, Graium proceres [ta] tua tecta petentes.
 
@@ -800,7 +800,7 @@ virgineo cunctata metu sic orsa vicissim:
 
 moenia, si vivos possis discernere calles.
 
-hac adeo duce ferte gradus! ingentia namque                    395
+hac adeo duce ferte gradus! ingentia namque **395**
 
 castra alios aditus atque impius obsidet hostis.'
 
@@ -810,7 +810,7 @@ sacraque terrificae supplex movet inrita Nocti.
 
 Ille autem inceptum famula duce protinus urget
 
-aere saeptus iter, patitur nec regia cerni                    400
+aere saeptus iter, patitur nec regia cerni **400**
 
 Iuno virum, prior Aeetae ne nuntius adsit.
 
@@ -820,19 +820,19 @@ cum comes orsa loqui: 'Phoebi genitoris ad aras
 
 ventum.' ait 'huc adytis iam se de more paternis
 
-rex feret, hic proceres audit populosque precantes                    405
+rex feret, hic proceres audit populosque precantes **405**
 
 adloquiis facilis: praesens pater admonet aequi.'
 
-Dixerat. ast illi propere monstrata capessunt                    426
+Dixerat. ast illi propere monstrata capessunt **426**
 
-limina. non aliter quam si radiantis adirent                    407
+limina. non aliter quam si radiantis adirent **407**
 
 ora dei verasque aeterni luminis arces,
 
 tale iubar <per> tecta micat. stat ferreus Atlans
 
-Oceano genibusque tumens infringitur unda.                    410
+Oceano genibusque tumens infringitur unda. **410**
 
 at medii per terga senis rapit ipse nitentes
 
@@ -842,7 +842,7 @@ pone rota breviore soror densaeque sequuntur
 
 Pliades et madidis rorantes crinibus ignes.
 
-nec minus hinc varia dux laetus imagine templi                    415
+nec minus hinc varia dux laetus imagine templi **415**
 
 ad geminas fert ora fores cunabula gentis
 
@@ -852,7 +852,7 @@ intulerit rex bella Getis, ut clade suorum
 
 territus hos Thebas patriumque reducat ad amnem,
 
-Phasidis hos imponat agris Colchosque vocari                    420
+Phasidis hos imponat agris Colchosque vocari **420**
 
 imperet. Arsinoen illi tepidaeque requirunt
 
@@ -862,15 +862,15 @@ et iam Sarmaticis permutant carbasa bracis.
 
 barbarus in patriis sectatur montibus Aean
 
-Phasis amore furens. pavidas iacit illa pharetras                    425
+Phasis amore furens. pavidas iacit illa pharetras **425**
 
-virgineo turbata metu, discursibus et iam                    427
+virgineo turbata metu, discursibus et iam **427**
 
 deficit ac volucri victam deus alligat unda.
 
 flebant populeae iuvenem Phaethonta sorores
 
-ater et Eridani trepidum globus ibat in amnem.                    430
+ater et Eridani trepidum globus ibat in amnem. **430**
 
 at iuga vix Tethys sparsumque recolligit axem
 
@@ -880,7 +880,7 @@ aurea quin etiam praesaga Mulciber arte
 
 vellera venturosque olim caelarat Achivos.
 
-texitur Argea pinus Pagasaea securi                    435
+texitur Argea pinus Pagasaea securi **435**
 
 iamque eadem remos, eadem dea flectit habenas,
 
@@ -890,7 +890,7 @@ exoritur Notus et toto ratis una profundo
 
 cernitur, Odrysio gaudebant carmine phocae.
 
-apparent trepidi <per> Phasidis ostia Colchi                    440
+apparent trepidi <per> Phasidis ostia Colchi **440**
 
 clamantemque procul linquens regina parentem.
 
@@ -900,7 +900,7 @@ ludus ubi et cantus taedaeque in nocte iugales
 
 regalique toro laetus gener; ille priorem
 
-deserit: ultrices spectant a culmine Dirae.                    445
+deserit: ultrices spectant a culmine Dirae. **445**
 
 deficit in thalamis turbataque paelice coniunx
 
@@ -910,7 +910,7 @@ apparat ante omnes secum dequesta labores.
 
 munere quo patrias paelex ornatur ad aras
 
-infelix et iam rutilis correpta venenis                    450
+infelix et iam rutilis correpta venenis **450**
 
 implicat igne domos. haec tum miracula Colchis
 
@@ -920,7 +920,7 @@ quis labor, aligeris aut quae secet anguibus auras
 
 caede madens. odere tamen visusque reflectunt.
 
-Quin idem Minyas operum defixerat error,                    455
+Quin idem Minyas operum defixerat error, **455**
 
 cum se Sole satus patriis penetralibus infert.
 
@@ -930,7 +930,7 @@ dignus avo quemque insontem meliora manerent.
 
 tum gener Albanis Styrus qui advenerat oris,
 
-distulerant sed bella toros. tum Phrontis et Argus                    460
+distulerant sed bella toros. tum Phrontis et Argus **460**
 
 Aeolidae fraterque Melas, quos advena Phrixus
 
@@ -940,7 +940,7 @@ post alii, quos praecipuo Titania tellus
 
 legit honore patres, motique ad proelia reges.
 
-admonet hic socios nebulamque erumpit Iason                    465
+admonet hic socios nebulamque erumpit Iason **465**
 
 sideris ora ferens; nova lux offusa Cytaeis.
 
@@ -950,7 +950,7 @@ quidve ferant. postquam primis inhiantia dictis
 
 agmina suppressumque videt iam murmur Iason
 
-talia miranti propius tulit orsa tyranno:                    470
+talia miranti propius tulit orsa tyranno: **470**
 
 'rex Hyperionide, quem per freta tanta petendum
 
@@ -960,7 +960,7 @@ siquando hic aliquam nostro satus orbe solebat
 
 Thessaliam, siquos Phrixus memorare Pelasgos,
 
-hi tibi tot casus, horrenda tot avia mensi                    475
+hi tibi tot casus, horrenda tot avia mensi **475**
 
 cernimur. ipse egomet proprio de sanguine Phrixi:
 
@@ -970,7 +970,7 @@ cum Iove Neptunoque et cum Salmonide nympha.
 
 me neque nunc enses araeque egere paternae
 
-nec tua Thessalicis quamquam inclita nomina terris                    480
+nec tua Thessalicis quamquam inclita nomina terris **480**
 
 sponte sequor. cui non iusso tot adire voluptas
 
@@ -980,7 +980,7 @@ sceptra tui toto Pelias sub numine Phoebi
 
 maxima sorte tenens totque illa ~cremantia~ clivos
 
-oppida, tot vigili pulcherrima flumina cornu,                    485
+oppida, tot vigili pulcherrima flumina cornu, **485**
 
 ille meum imperiis urget caput, ille labores
 
@@ -990,7 +990,7 @@ Alciden, Sthenelo ipse satus. tamen aspera regum
 
 perpetimur iuga nec melior parere recuso.
 
-hic sibi me auratae pecudis quiscumque periclis                    490
+hic sibi me auratae pecudis quiscumque periclis **490**
 
 exuvias perferre iubet. tibi gratia nostri
 
@@ -1000,7 +1000,7 @@ teque alium quam quem Pelias speratque cupitque
 
 promisi et meliora tuae mihi foedera dextrae.
 
-si petere hoc saevi statuissem sanguine belli,                    495
+si petere hoc saevi statuissem sanguine belli, **495**
 
 Ossa dabat Pindusque rates quotque ante secuti
 
@@ -1010,7 +1010,7 @@ sed me nuda fides sanctique potentia iusti
 
 huc tulit ac medii sociatrix gratia Phrixi
 
-iamque tibi nostra geniti de stirpe nepotes.                    500
+iamque tibi nostra geniti de stirpe nepotes. **500**
 
 nec tamen aut Phrygios reges aut arva furentis
 
@@ -1020,7 +1020,7 @@ seu quis honore meos, sua reddita dona deumque
 
 nos genus atque ratem magnae sensere Minervae.
 
-vix tandem longis quaesitam Colchida votis                    505
+vix tandem longis quaesitam Colchida votis **505**
 
 contigimus qualemque dabat te fama videmus.
 
@@ -1030,7 +1030,7 @@ non aliena peto terrisve indebita nostris
 
 (siquis et in precibus vero locus) atque ea Phrixo
 
-crede dari, Phrixum ad patrios ea ferre penates.                    510
+crede dari, Phrixum ad patrios ea ferre penates. **510**
 
 munera tu contra victum mihi vecta per aequor
 
@@ -1040,7 +1040,7 @@ frenaque et accinctum gemmis fulgentibus ensem:
 
 hoc patrium decus, haec materni texta laboris,
 
-his Lapithes adsuerat eques. da iungere dona,                    515
+his Lapithes adsuerat eques. da iungere dona, **515**
 
 da Scythicas sociare domos. sciat effera regis
 
@@ -1050,7 +1050,7 @@ Caucasus atque tuis quantum mitescat habenis.'
 
 Talibus orantem vultu gravis ille minaci
 
-iamdudum premit et furiis ignescit opertis.                    520
+iamdudum premit et furiis ignescit opertis. **520**
 
 ceu tumet atque imo sub gurgite concipit austros
 
@@ -1060,7 +1060,7 @@ et nunc ausa viri, nunc heu sua prodita Grais
 
 regna fremit. quin et facili sibi mente receptum
 
-iam Phrixum dolet et Scythiae periisse timores.                    525
+iam Phrixum dolet et Scythiae periisse timores. **525**
 
 nunc quassat caput ac iuvenis spes ridet inanes,
 
@@ -1070,7 +1070,7 @@ urit et antiquae memorem vox praescia sortis:
 
 cur simul ac Persen illinc sibi moverit atque hinc
 
-Thessalicam fortuna ratem, num debitus ista                    530
+Thessalicam fortuna ratem, num debitus ista **530**
 
 finis agat saevaeque petant iam vellera Parcae.
 
@@ -1080,7 +1080,7 @@ cura prior, fingit placidis fera pectora dictis
 
 reddit et haec: 'cuperem haut tali vos tempore tectis
 
-advenisse meis, quo me gravis adsidet hostis.                    535
+advenisse meis, quo me gravis adsidet hostis. **535**
 
 frater enim--sceptri sic omnibus una cupido--
 
@@ -1090,7 +1090,7 @@ quare age cognatas primum defendite sedes
 
 nec decus oblati dimiseris advena belli;
 
-namque virum trahit ipse chalybs. tum vellera victor                    540
+namque virum trahit ipse chalybs. tum vellera victor **540**
 
 tam meritis nec sola dabo.' contra inscius astus
 
@@ -1100,7 +1100,7 @@ excipit Aesonides 'et ceu nihil aequore passis
 
 additus iste dies? veniant super haec quoque fato
 
-bella meo? non hunc parva mihi caede dolorem                    545
+bella meo? non hunc parva mihi caede dolorem **545**
 
 quasque dedit luet ille moras.' tum Castora mittit,
 
@@ -1110,7 +1110,7 @@ acribus ast illos curis mora saeva trahebat
 
 ac simul ut medio viderunt Castora campo
 
-crebrior incussit mentem pavor. 'o Iovis alma                    550
+crebrior incussit mentem pavor. 'o Iovis alma **550**
 
 progenies, fare an patriam spes ulla videndi,
 
@@ -1120,7 +1120,7 @@ fare!' omnes, ille in mediis sic orsus Achivis:
 
 terga negat, bello interea sed pressus iniquo
 
-auxilium petit: armatos dux protinus omnes                    555
+auxilium petit: armatos dux protinus omnes **555**
 
 accelerare iubet, longo nam tuta recessu
 
@@ -1130,7 +1130,7 @@ Haud mora. prosiliunt quos nec Rhipaea iuventus
 
 quos nec Hiber aut tota suis Aurora pharetris
 
-sustineat. stetit explicito prius agmine pubes                    560
+sustineat. stetit explicito prius agmine pubes **560**
 
 expertique simul si tela artusque sequantur.
 
@@ -1140,7 +1140,7 @@ sed magis ad praesens itur decus. incita cristas
 
 aura quatit, variis floret via discolor armis,
 
-qualis ab Oceano nitidum ~chorus~ aethera vestit,                    565
+qualis ab Oceano nitidum ~chorus~ aethera vestit, **565**
 
 qualibus adsurgens nox aurea cingitur astris.
 
@@ -1150,7 +1150,7 @@ miratur temere adsumptos nec talia mallet
 
 robora quam medios hostem subiisse penates.
 
-interea laeto patitur convivia cultu                    570
+interea laeto patitur convivia cultu **570**
 
 et iuxta Aesoniden magno cratere lacessit
 
@@ -1160,7 +1160,7 @@ Aeacidum, nunc ingentes Calydonis alumnos.
 
 audit et Alciden infando errore relictum
 
-defletosque duces terraeque marisque labores.                    575
+defletosque duces terraeque marisque labores. **575**
 
 ipse autem tantis concita furoribus arma
 
@@ -1170,7 +1170,7 @@ expetit Aesonides et amicos ordine reges.
 
 subligat et stricto stat proximus armiger arcu
 
-ceu pugnam paret et positas confundere mensas?'                    580
+ceu pugnam paret et positas confundere mensas?' **580**
 
 contra flammigeri proles Perseia Solis
 
@@ -1178,13 +1178,13 @@ contra flammigeri proles Perseia Solis
 
 semper habere viro, semper meminisse pharetrae.'
 
-'illum' ait Aesonides 'pariter refer, horrida signis                    587
+'illum' ait Aesonides 'pariter refer, horrida signis **587**
 
 cui chlamys et multa spirat coma flexilis aura.'
 
 respicit Aeetes atque hunc quoque nomine reddit:
 
-'dives Aron. croceos sic illius omnis odores                    590
+'dives Aron. croceos sic illius omnis odores **590**
 
 iactat eques, cunctis sic est coma culta maniplis;
 
@@ -1194,7 +1194,7 @@ Campesus hic spoliis in tigri<di>s. ille profundo
 
 incumbens Odrussa mero; viden alta comantem
 
-pectora et ingenti turbantem pocula barba?'                    595
+pectora et ingenti turbantem pocula barba?' **595**
 
 hic et Iaxarten dictis stupet hospes acerbis
 
@@ -1204,7 +1204,7 @@ non superum, non praesentis reverentia belli.
 
 contra autem Aeetes 'non frustra magna superbo
 
-dicta volant' ait 'et vocem paria arma sequuntur                    600
+dicta volant' ait 'et vocem paria arma sequuntur **600**
 
 nec requies quin Marte diem noctemque fatiget.
 
@@ -1214,13 +1214,13 @@ iam pavidi cum prole Getae, iam pervigil illum
 
 Medus et oppositis exspectat Hiberia claustris.
 
-quid Latagum, quid si amnigenam mirere Choaspen?                    584
+quid Latagum, quid si amnigenam mirere Choaspen? **584**
 
 bellatoris equi potantem cerne cruores
 
 nec tamen immissis hic segnior ibit habenis.
 
-hos autem quae quemque manus, <quae> signa sequantur                    605
+hos autem quae quemque manus, <quae> signa sequantur **605**
 
 si memorem, prius umentem lux solverit umbram.
 
@@ -1230,7 +1230,7 @@ dissona, saxiferae surgat quibus imber habenae,
 
 quae iaculo gens apta levi, quae picta pharetris
 
-venerit. ingentes animo iam prospice campos                    610
+venerit. ingentes animo iam prospice campos **610**
 
 atque hanc alipedi pulsantem corpora curru
 
@@ -1240,7 +1240,7 @@ et quantum elata valeat peltata securi,
 
 cara mihi et veras inter non ultima natas.'
 
-fatur et occiduo libat cratera parenti.                    615
+fatur et occiduo libat cratera parenti. **615**
 
 quisque suis tum vota deis et pocula fundit,
 
@@ -1250,7 +1250,7 @@ Ecce autem Geticis veniens Gradivus ab antris
 
 ingentemque trahens Arctoa per aequora nubem
 
-aspicit Aeaea Minyas stupefactus in urbe                    620
+aspicit Aeaea Minyas stupefactus in urbe **620**
 
 ambitumque senem promissaque vellera puppi
 
@@ -1260,7 +1260,7 @@ tecta ruit questuque Iovem testatur acerbo:
 
 'quae studiis, rex magne, quies? iam mutua divi
 
-exitia in solos hominum molimur honores                    625
+exitia in solos hominum molimur honores **625**
 
 teque ea cuncta iuvant, rabidam qui Pallada caelo
 
@@ -1270,7 +1270,7 @@ non queror exstructa quod vexerit ipsa carina
 
 vellera sacra meis sperantem avertere lucis
 
-quodque palam tutata viros. sic cetera pergat,                    630
+quodque palam tutata viros. sic cetera pergat, **630**
 
 si valet. insidiis quid nunc fallacibus ambit,
 
@@ -1280,7 +1280,7 @@ non opus auxilio Colchis nec foedere vestro:
 
 et Persen simul et Minyas deposcimus hostes.
 
-quin age (quid tantae coeunt in proelia gentes,                    635
+quin age (quid tantae coeunt in proelia gentes, **635**
 
 quid tuus Aesonides?) imus nos, protinus imus
 
@@ -1290,7 +1290,7 @@ vel tu sola polo tacitis inopina tenebris
 
 labere: quantus ibi deus experiere nec illas
 
-adstiteris impune trabes. an Martia templa                    640
+adstiteris impune trabes. an Martia templa **640**
 
 intemeranda minus, tantum mihi lucus et agger
 
@@ -1300,7 +1300,7 @@ est amor et rerum cunctis tutela suarum.
 
 et tibi, magne pater, terris donaria certant;
 
-est honor his etiam silvis. ego cara Mycenes                    645
+est honor his etiam silvis. ego cara Mycenes **645**
 
 culmina, virgineas praeder si Cecropis arces,
 
@@ -1310,7 +1310,7 @@ nata querens. metuant ergo nec talia possint.'
 
 Non tulit haec animis quin longa silentia Pallas
 
-rumperet inridens strepitumque minasque Gradivi.                    650
+rumperet inridens strepitumque minasque Gradivi. **650**
 
 'non tibi Aloidae quibus haec fera <mur>mura iactes,
 
@@ -1320,7 +1320,7 @@ nec vocer ulterius proles Iovis, excidat iste
 
 ni tibi corde tumor: lituos miser armaque faxo
 
-oderis et primis adimam tua nomina bellis.                    655
+oderis et primis adimam tua nomina bellis. **655**
 
 quin simili matrem demens gravitate secutus?
 
@@ -1330,7 +1330,7 @@ quod tamen adgressae scelus aut quo crimine sontes
 
 si iuvenem, qui iussa sui tam dira tyranni
 
-impavidus maria et nondum qui nota subibat,                    660
+impavidus maria et nondum qui nota subibat, **660**
 
 iuvimus et magnis aliquam spem movimus ausis?
 
@@ -1340,7 +1340,7 @@ ulla sequi, caeca sed cuncta impellere pugna
 
 debuimus? sic Thraces agunt, sic turbidus iste
 
-siqua petit. cuperem haec etiamnum bella remitti                    665
+siqua petit. cuperem haec etiamnum bella remitti **665**
 
 nec socias armare manus. da vellera, rector,
 
@@ -1350,7 +1350,7 @@ abnegat et solus nostris sudoribus obstat,
 
 ibimus indecores frustraque tot aequora vectae?'--
 
-'fas aliquid nequeat sit femina--' coeperat ardens                    670
+'fas aliquid nequeat sit femina--' coeperat ardens **670**
 
 hic iterum alternis Mavors insurgere dictis.
 
@@ -1360,7 +1360,7 @@ excipit hinc contra pater et sic voce coercet:
 
 peccatumque satis, tunc ad mea iura venitis.
 
-quolibet ista modo quacumque impellite pugna,                    675
+quolibet ista modo quacumque impellite pugna, **675**
 
 quae coepistis, habent quoniam sua fata furores.
 
@@ -1370,7 +1370,7 @@ sit Persen pepulisse satis nec vana retentet
 
 spes Minyas finemve velint imponere bello.
 
-illum etenim talis rerum manet, accipite, ordo:                    680
+illum etenim talis rerum manet, accipite, ordo: **680**
 
 victa retro nunc castra dabit bellumque remittet
 
@@ -1380,7 +1380,7 @@ mox ubi Thessalicis referent hos flamina terris,
 
 tunc aderit victorque domos et sceptra tenebit,
 
-donec et Aeeten inopis post longa senectae                    685
+donec et Aeeten inopis post longa senectae **685**
 
 exilia, heu magnis quantum licet, impia, fatis,
 
@@ -1390,7 +1390,7 @@ hic labor amborum<que> haec sunt discrimina fratrum.
 
 vadite et adversis, ut quis volet, inruat armis.'
 
-Dixerat. instaurat mensas pacemque reducit                    690
+Dixerat. instaurat mensas pacemque reducit **690**
 
 et iam sidereo noctem demittit Olympo.
 

@@ -16,19 +16,19 @@ author_metadata:
 
 **1**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Tua quidem pietas, imperator sanctissime, optaverat, ut quam tardissime succederes patri; sed di immortales festinaverunt virtutes tuas ad gubernacula rei publicae quam susceperas admovere. 2 Precor ergo ut tibi et per te generi humano prospera omnia, id est digna saeculo tuo contingant. Fortem te et hilarem, imperator optime, et privatim et publice opto.
 
 **2**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Exprimere, domine, verbis non possum, quantum mihi gaudium attuleris, quod me dignum putasti iure trium liberorum. Quamvis enim Iuli Serviani, optimi viri tuique amantissimi, precibus indulseris, tamen etiam ex rescripto intellego libentius hoc ei te praestitisse, quia pro me rogabat. 2 Videor ergo summam voti mei consecutus, cum inter initia felicissimi principatus tui probaveris me ad peculiarem indulgentiam tuam pertinere; eoque magis liberos concupisco, quos habere etiam illo tristissimo saeculo volui, sicut potes duobus matrimoniis meis credere. 3 Sed di melius, qui omnia integra bonitati tuae reservarunt; malui hoc potius tempore me patrem fieri, quo futurus essem et securus et felix.
 
 **3 A**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Ut primum me, domine, indulgentia vestra promovit ad praefecturam aerarii Saturni, omnibus advocationibus, quibus alioqui numquam eram promiscue functus, renuntiavi, ut toto animo delegato mihi officio vacarem. 2 Qua ex causa, cum patronum me provinciales optassent contra Marium Priscum, et petii veniam huius muneris et impetravi. Sed cum postea consul designatus censuisset agendum nobiscum, quorum erat excusatio recepta, ut essemus in senatus potestate pateremurque nomina nostra in urnam conici, convenientissimum esse tranquillitati saeculi tui putavi praesertim tam moderatae voluntati amplissimi ordinis non repugnare. 3 Cui obsequio meo opto, ut existimes constare rationem, cum omnia facta dictaque mea probare sanctissimis moribus tuis cupiam.
 
@@ -40,19 +40,19 @@ Et civis et senatoris boni partibus functus es obsequium amplissimi ordinis quod
 
 **4**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Indulgentia tua, imperator optime, quam plenissimam experior, hortatur me, ut audeam tibi etiam pro amicis obligari; inter quos sibi vel praecipuum locum vindicat Voconius Romanus, ab ineunte aetate condiscipulus et contubernalis. 2 Quibus ex causis et a divo patre tuo petieram, ut illum in amplissimum ordinem promoveret. Sed hoc votum meum bonitati tuae reservatum est, quia mater Romani liberalitatem sestertii quadragies, quod conferre se filio codicillis ad patrem tuum scriptis professa fuerat, nondum satis legitime peregerat; quod postea fecit admonita a nobis. 3 Nam fundos emancipavit, et cetera quae in emancipatione implenda solent exigi consummavit. 4 Cum sit ergo finitum, quod spes nostras morabatur, non sine magna fiducia subsigno apud te fidem pro moribus Romani mei, quos et liberalia studia exornant et eximia pietas, quae hanc ipsam matris liberalitatem et statim patris hereditatem et adoptionem a vitrico meruit. 5 Auget haec et natalium et paternarum facultatium splendor; quibus singulis multum commendationis accessurum etiam ex meis precibus indulgentiae tuae credo. 6 Rogo ergo, domine, ut me exoptatissimae mihi gratulationis compotem facias et honestis, ut spero, affectibus meis praestes, ut non in me tantum verum et in amico gloriari iudiciis tuis possim.
 
 **5**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Proximo anno, domine, gravissima valetudine usque ad periculum vitae vexatus iatralipten assumpsi; cuius sollicitudini et studio tuae tantum indulgentiae beneficio referre gratiam parem possum. 2 Quare rogo des ei civitatem Romanam. Est enim peregrinae condicionis manumissus a peregrina. Vocatur ipse Arpocras, patronam habuit Thermuthin Theonis, quae iam pridem defuncta est. Item rogo des ius Quiritium libertis Antoniae Maximillae, ornatissimae feminae, Hediae et Antoniae Harmeridi; quod a te petente patrona peto.
 
 **6**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Ago gratias, domine, quod et ius Quiritium libertis necessariae mihi feminae et civitatem Romanam Arpocrati, iatraliptae meo, sine mora indulsisti. Sed cum annos eius et censum sicut praeceperas ederem, admonitus sum a peritioribus debuisse me ante ei Alexandrinam civitatem impetrare, deinde Romanam, quoniam esset Aegyptius. 2 Ego autem, quia inter Aegyptios ceterosque peregrinos nihil interesse credebam, contentus fueram hoc solum scribere tibi, esse eum a peregrina manumissum patronamque eius iam pridem decessisse. De qua ignorantia mea non queror, per quam stetit ut tibi pro eodem homine saepius obligarer. Rogo itaque, ut beneficio tuo legitime frui possim, tribuas ei et Alexandrinam civitatem [et Romanam]. Annos eius et censum, ne quid rursus indulgentiam tuam moraretur, libertis tuis quibus iusseras misi.
 
@@ -64,7 +64,7 @@ Civitatem Alexandrinam secundum institutionem principum non temere dare proposui
 
 **8**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Cum divus pater tuus, domine, et oratione pulcherrima et honestissimo exemplo omnes cives ad munificentiam esset cohortatus, petii ab eo, ut statuas principum, quas in longinquis agris per plures successiones traditas mihi quales acceperam custodiebam, permitteret in municipium transferre adiecta sua statua. 2 Quod quidem ille mihi cum plenissimo testimonio indulserat; ego statim decurionibus scripseram, ut assignarent solum in quo templum pecunia mea exstruerem; illi in honorem operis ipsius electionem loci mihi obtulerant. 3 Sed primum mea, deinde patris tui valetudine, postea curis delegati a vobis officii retentus, nunc videor commodissime posse in rem praesentem excurrere. Nam et menstruum meum Kalendis Septembribus finitur, et sequens mensis complures dies feriatos habet. 4 Rogo ergo ante omnia permittas mihi opus quod incohaturus sum exornare et tua statua; deinde, ut hoc facere quam maturissime possim, indulgeas commeatum. 5 Non est autem simplicitatis meae dissimulare apud bonitatem tuam obiter te plurimum collaturum utilitatibus rei familiaris meae. Agrorum enim, quos in eadem regione possideo, locatio, cum alioqui CCCC excedat, adeo non potest differri, ut proximam putationem novus colonus facere debeat. Praeterea continuae sterilitates cogunt me de remissionibus cogitare; quarum rationem nisi praesens inire non possum. 6 Debebo ergo, domine, indulgentiae tuae et pietatis meae celeritatem et status ordinationem, si mihi ob utraque haec dederis commeatum XXX dierum. Neque enim angustius tempus praefinire possum, cum et municipium et agri de quibus loquor sint ultra centesimum et quinquagesimum lapidem.
 
@@ -76,37 +76,37 @@ Et multas et omnes publicas causas petendi commeatus reddidisti; mihi autem vel 
 
 **10**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Exprimere, domine, verbis non possum, quanto me gaudio affecerint epistulae tuae, ex quibus cognovi te Arpocrati, iatraliptae meo, et Alexandrinam civitatem tribuisse, quamvis secundum institutionem principum non temere eam dare proposuisses. Esse autem Arpocran νομοῦ . . . μεμφίτου indico tibi. 2 Rogo ergo, indulgentissime imperator, ut mihi ad Pompeium Plantam praefectum Aegypti amicum tuum, sicut promisisti, epistulam mittas. Obviam iturus, quo maturius, domine, exoptatissimi adventus tui gaudio frui possim, rogo permittas mihi quam longissime occurrere tibi.
 
 **11**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Proxima infirmitas mea, domine, obligavit me Postumio Marino medico; cui parem gratiam referre beneficio tuo possum, si precibus meis ex consuetudine bonitatis tuae indulseris. 2 Rogo ergo, ut propinquis eius des civitatem, Chrysippo Mithridatis uxorique Chrysippi, Stratonicae Epigoni, item liberis eiusdem Chrysippi, Epigono et Mithridati, ita ut sint in patris potestate utque iis in libertos servetur ius patronorum. Item rogo indulgeas ius Quiritium L. Satrio Abascanto et P. Caesio Phosphoro et Panchariae Soteridi; quod a te volentibus patronis peto.
 
 **12**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Scio, domine, memoriae tuae, quae est bene faciendi tenacissima, preces nostras inhaerere. Quia tamen in hoc quoque indulsisti, admoneo simul et impense rogo, ut Attium Suram praetura exornare digneris, cum locus vacet. 2 Ad quam spem alioqui quietissimum hortatur et natalium splendor et summa integritas in paupertate et ante omnia felicitas temporum, quae bonam conscientiam civium tuorum ad usum indulgentiae tuae provocat et attollit.
 
 **13**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 Cum sciam, domine, ad testimonium laudemque morum meorum pertinere tam boni principis iudicio exornari, rogo dignitati, ad quam me provexit indulgentia tua, vel auguratum vel septemviratum, quia vacant adicere digneris, ut iure sacerdotii precari deos pro te publice possim, quos nunc precor pietate privata.
 
 **14**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 Victoriae tuae, optime imperator, maximae, pulcherrimae, antiquissimae et tuo nomine et rei publicae gratulor, deosque immortales precor, ut omnes cogitationes tuas tam laetus sequatur eventus, cum virtutibus tantis gloria imperii et novetur et augeatur.
 
 **15**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 Quia confido, domine, ad curam tuam pertinere, nuntio tibi me Ephesum cum omnibus meis ὑπὲρ . . . μαλέαν navigasse quamvis contrariis ventis retentum. Nunc destino partim orariis navibus, partim vehiculis provinciam petere. Nam sicut itineri graues aestus, ita continuae navigationi etesiae reluctantur.
 
@@ -118,13 +118,13 @@ Recte renuntiasti, mi Secunde carissime. Pertinet enim ad animum meum, quali iti
 
 **17 A**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Sicut saluberrimam navigationem, domine, usque Ephesum expertus ita inde, postquam vehiculis iter facere coepi, gravissimis aestibus atque etiam febriculis vexatus Pergami substiti. 2 Rursus, cum transissem in orarias nauculas, contrariis ventis retentus aliquanto tardius quam speraveram, id est XV Kal. Octobres, Bithyniam intravi. Non possum tamen de mora queri, cum mihi contigerit, quod erat auspicatissimum, natalem tuum in provincia celebrare. 3 Nunc rei publicae Prusensium impendia, reditus, debitores excutio; quod ex ipso tractatu magis ac magis necessarium intellego. Multae enim pecuniae variis ex causis a privatis detinentur; praeterea quaedam minime legitimis sumptibus erogantur. 4 Haec tibi, domine, in ipso ingressu meo scripsi.
 
 **17 B**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Quinto decimo Kal. Octob., domine, provinciam intravi, quam in eo obsequio, in ea erga te fide, quam de genere humano mereris, inveni. 2 Dispice, domine, an necessarium putes mittere huc mensorem. Videntur enim non mediocres pecuniae posse revocari a curatoribus operum, si mensurae fideliter agantur. Ita certe prospicio ex ratione Prusensium, quam cum maxime tracto.
 
@@ -136,7 +136,7 @@ TRAIANUS PLINIO
 
 **19**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Rogo, domine, consilio me regas haesitantem, utrum per publicos civitatium servos, quod usque adhuc factum, an per milites asservare custodias debeam. Vereor enim, ne et per publicos parum fideliter custodiantur, et non exiguum militum numerum haec cura distringat. 2 Interim publicis servis paucos milites addidi. Video tamen periculum esse, ne id ipsum utrisque neglegentiae causa sit, dum communem culpam hi in illos, illi in hos regerere posse confidunt.
 
@@ -148,7 +148,7 @@ TRAIANUS PLINIO
 
 **21**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Gavius Bassus praefectus orae Ponticae et reverentissime et officiosissime, domine, venit ad me et compluribus diebus fuit mecum, quantum perspicere potui, vir egregius et indulgentia tua dignus. Cui ego notum feci praecepisse te ut ex cohortibus, quibus me praeesse voluisti, contentus esset beneficiariis decem, equitibus duobus, centurione uno. 2 Respondit non sufficere sibi hunc numerum, idque se scripturum tibi. Hoc in causa fuit, quominus statim revocandos putarem, quos habet supra numerum.
 
@@ -160,7 +160,7 @@ TRAIANUS PLINIO
 
 **23**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Prusenses, domine, balineum habent; est sordidum et vetus. Itaque magni aestimant novum fieri; quod videris mihi desiderio eorum indulgere posse. 2 Erit enim pecunia, ex qua fiat, primum ea quam revocare a privatis et exigere iam coepi; deinde quam ipsi erogare in oleum soliti parati sunt in opus balinei conferre; quod alioqui et dignitas civitatis et saeculi tui nitor postulat.
 
@@ -172,19 +172,19 @@ Si instructio novi balinei oneratura vires Prusensium non est, possumus desideri
 
 **25**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 Servilius Pudens legatus, domine, VIII Kal. Decembres Nicomediam venit meque longae exspectationis sollicitudine liberavit.
 
 **26**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Rosianum Geminum, domine, artissimo vinculo mecum tua in me beneficia iunxerunt; habui enim illum quaestorem in consulatu. Mei sum observantissimum expertus; tantam mihi post consulatum reverentiam praestat, et publicae necessitudinis pignera privatis cumulat officiis. 2 Rogo ergo, ut ipse apud te pro dignitate eius precibus meis faveas. Cui et, si quid mihi credis, indulgentiam tuam dabis; dabit ipse operam ut in iis, quae ei mandaveris, maiora mereatur. Parciorem me in laudando facit, quod spero tibi et integritatem eius et probitatem et industriam non solum ex eius honoribus, quos in urbe sub oculis tuis gessit, verum etiam ex commilitio esse notissimam. 3 Illud unum, quod propter caritatem eius nondum mihi videor satis plene fecisse, etiam atque etiam facio teque, domine, rogo, gaudere me exornata quaestoris mei dignitate, id est per illum mea, quam maturissime velis.
 
 **27**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 Maximus libertus et procurator tuus, domine, praeter decem beneficiarios, quos assignari a me Gemellino optimo viro iussisti, sibi quoque confirmat necessarios esse milites sex. Hos interim, sicut inveneram, in ministerio eius relinquendos existimavi, praesertim cum ad frumentum comparandum iret in Paphlagoniam. Quin etiam tutelae causa, quia ita desiderabat, addidi duos equites. In futurum, quid servari velis, rogo rescribas.
 
@@ -196,7 +196,7 @@ Nunc quidem proficiscentem ad comparationem frumentorum Maximum libertum meum re
 
 **29**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Sempronius Caelianus, egregius iuvenis, repertos inter tirones duos servos misit ad me; quorum ego supplicium distuli, ut te conditorem disciplinae militaris firmatoremque consulerem de modo poenae. 2 Ipse enim dubito ob hoc maxime quod, ut iam dixerant sacramento, ita nondum distributi in numeros erant. Quid ergo debeam sequi rogo, domine, scribas, praesertim cum pertineat ad exemplum.
 
@@ -208,7 +208,7 @@ TRAIANUS PLINIO
 
 **31**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Salva magnitudine tua, domine, descendas oportet ad meas curas, cum ius mihi dederis referendi ad te, de quibus dubito. 2 In plerisque civitatibus, maxime Nicomediae et Nicaeae, quidam vel in opus damnati vel in ludum similiaque his genera poenarum publicorum servorum officio ministerioque funguntur, atque etiam ut publici servi annua accipiunt. Quod ego cum audissem, diu multumque haesitavi, quid facere deberem. 3 Nam et reddere poenae post longum tempus plerosque iam senes et, quantum affirmatur, frugaliter modesteque viventes nimis severum arbitrabar, et in publicis officiis retinere damnatos non satis honestum putabam; eosdem rursus a re publica pasci otiosos inutile, non pasci etiam periculosum existimabam. 4 Necessario ergo rem totam, dum te consulerem, in suspenso reliqui. Quaeres fortasse, quem ad modum evenerit, ut poenis in quas damnati erant exsolverentur: et ego quaesii, sed nihil comperi, quod affirmare tibi possim. Ut decreta quibus damnati erant proferebantur, ita nulla monumenta quibus liberati probarentur. 5 Erant tamen, qui dicerent deprecantes iussu proconsulum legatorumve dimissos. Addebat fidem, quod credibile erat neminem hoc ausum sine auctore.
 
@@ -220,7 +220,7 @@ TRAIANUS PLINIO
 
 **33**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Cum diversam partem provinciae circumirem, Nicomediae vastissimum incendium multas privatorum domos et duo publica opera, quamquam via interiacente, Gerusian et Iseon absumpsit. 2 Est autem latius sparsum, primum violentia venti, deinde inertia hominum quos satis constat otiosos et immobiles tanti mali spectatores perstitisse; et alioqui nullus usquam in publico sipo, nulla hama, nullum denique instrumentum ad incendia compescenda. Et haec quidem, ut iam praecepi, parabuntur; 3 tu, domine, dispice an instituendum putes collegium fabrorum dumtaxat hominum CL. Ego attendam, ne quis nisi faber recipiatur neve iure concesso in aliud utantur; nec erit difficile custodire tam paucos.
 
@@ -232,7 +232,7 @@ TRAIANUS PLINIO
 
 **35**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 Sollemnia vota pro incolumitate tua, qua publica salus continetur, et suscepimus, domine, pariter et solvimus precati deos, ut velint ea semper solvi semperque signari.
 
@@ -244,7 +244,7 @@ Et solvisse vos cum provincialibus dis immortalibus vota pro mea salute et incol
 
 **37**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** In aquae ductum, domine, Nicomedenses impenderunt HS XXX CCCXVIII, qui imperfectus adhuc omissus, destructus etiam est; rursus in alium ductum erogata sunt CC. Hoc quoque relicto novo impendio est opus, ut aquam habeant, qui tantam pecuniam male perdiderunt. 2 Ipse perveni ad fontem purissimum, ex quo videtur aqua debere perduci, sicut initio temptatum erat, arcuato opere, ne tantum ad plana civitatis et humilia perveniat. Manent adhuc paucissimi arcus: possunt et erigi quidam lapide quadrato, qui ex superiore opere detractus est; aliqua pars, ut mihi videtur, testaceo opere agenda erit, id enim et facilius et vilius. 3 Sed in primis necessarium est mitti a te vel aquilegem vel architectum, ne rursus eveniat quod accidit. Ego illud unum affirmo, et utilitatem operis et pulchritudinem saeculo tuo esse dignissimam.
 
@@ -256,7 +256,7 @@ Curandum est, ut aqua in Nicomedensem civitatem perducatur. Vere credo te ea, qu
 
 **39**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Theatrum, domine, Nicaeae maxima iam parte constructum, imperfectum tamen, sestertium - ut audio; neque enim ratio operis excussa est - amplius centies hausit: vereor ne frustra. 2 Ingentibus enim rimis desedit et hiat, sive in causa solum umidum et molle, sive lapis ipse gracilis et putris: dignum est certe deliberatione, sitne faciendum an sit relinquendum an etiam destruendum. Nam fulturae ac substructiones, quibus subinde suscipitur, non tam firmae mihi quam sumptuosae uidentur. 3 Huic theatro ex priuatorum pollicitationibus multa debentur, ut basilicae circa, ut porticus supra caveam. Quae nunc omnia differuntur cessante eo, quod ante peragendum est. 4 Iidem Nicaeenses gymnasium incendio amissum ante aduentum meum restituere coeperunt, longe numerosius laxiusque quam fuerat, et iam aliquantum erogauerunt; periculum est, ne parum utiliter; incompositum enim et sparsum est. Praeterea architectus, sane aemulus eius a quo opus incohatum est, adfirmat parietes quamquam uiginti et duos pedes latos imposita onera sustinere non posse, quia sine caemento medii farti nec testaceo opere praecincti.
 
@@ -270,7 +270,7 @@ TRAIANUS PLINIO
 
 **41**
 
-C. PLINIVS TRAIANO IMPERATORI
+**C** PLINIVS TRAIANO IMPERATORI
 
 **1** Intuenti mihi et fortunae tuae et animi magnitudinem conuenientissimum uidetur demonstrari opera non minus aeternitate tua quam gloria digna, quantumque pulchritudinis tantum utilitatis habitura. 2 Est in Nicomedensium finibus amplissimus lacus. Per hunc marmora fructus ligna materiae et sumptu modico et labore usque ad uiam nauibus, inde magno labore maiore impendio uehiculis ad mare deuehuntur ... hoc opus multas manus poscit. At eae porro non desunt. Nam et in agris magna copia est hominum et maxima in civitate, certaque spes omnes libentissime aggressuros opus omnibus fructuosum. 3 Superest ut tu libratorem vel architectum si tibi videbitur mittas, qui diligenter exploret, sitne lacus altior mari, quem artifices regionis huius quadraginta cubitis altiorem esse contendunt. 4 Ego per eadem loca invenio fossam a rege percussam, sed incertum utrum ad colligendum umorem circumiacentium agrorum an ad committendum flumini lacum; est enim imperfecta. Hoc quoque dubium, intercepto rege mortalitate an desperato operis effectu. 5 Sed hoc ipso - feres enim me ambitiosum pro tua gloria - incitor et accendor, ut cupiam peragi a te quae tantum coeperant reges.
 
@@ -282,7 +282,7 @@ Potest nos sollicitare lacus iste, ut committere illum mari velimus; sed plane e
 
 **43**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Requirenti mihi Byzantiorum rei publicae impendia, quae maxima fecit, indicatum est, domine, legatum ad te salutandum annis omnibus cum psephismate mitti, eique dari nummorum duodena milia. 2 Memor ergo propositi tui legatum quidem retinendum, psephisma autem mittendum putavi, ut simul et sumptus levaretur et impleretur publicum officium. 3 Eidem civitati imputata sunt terna milia, quae viatici nomine annua dabantur legato eunti ad eum qui Moesiae praeest publice salutandum. Haec ego in posterum circumcidenda existimavi. 4 Te, domine, rogo ut quid sentias rescribendo aut consilium meum confirmare aut errorem emendare digneris.
 
@@ -294,7 +294,7 @@ Optime fecisti, Secunde carissime, duodena ista Byzantiis quae ad salutandum me 
 
 **45**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 Diplomata, domine, quorum dies praeterit, an omnino observari et quam diu velis, rogo scribas meque haesitatione liberes. Vereor enim, ne in alterutram partem ignorantia lapsus aut illicita confirmem aut necessaria impediam.
 
@@ -306,7 +306,7 @@ Diplomata, quorum praeteritus est dies, non debent esse in usu. Ideo inter prima
 
 **47**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Cum vellem, domine, Apameae cognoscere publicos debitores et reditum et impendia, responsum est mihi cupere quidem universos, ut a me rationes coloniae legerentur, numquam tamen esse lectas ab ullo proconsulum; habuisse privilegium et vetustissimum morem arbitrio suo rem publicam administrare. 2 Exegi ut quae dicebant quaeque recitabant libello complecterentur; quem tibi qualem acceperam misi, quamvis intellegerem pleraque ex illo ad id, de quo quaeritur, non pertinere. 3 Te rogo ut mihi praeire digneris, quid me putes observare debere. Vereor enim ne aut excessisse aut non implesse officii mei partes videar.
 
@@ -318,7 +318,7 @@ TRAIANUS PLINIO
 
 **49**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Ante adventum meum, domine, Nicomedenses priori foro novum adicere coeperunt, cuius in angulo est aedes vetustissima Matris Magnae aut reficienda aut transferenda, ob hoc praecipue quod est multo depressior opere eo quod cum maxime surgit. 2 Ego cum quaererem, num esset aliqua lex dicta templo, cognovi alium hic, alium apud nos esse morem dedicationis. Dispice ergo, domine, an putes aedem, cui nulla lex dicta est, salva religione posse transferri; alioqui commodissimum est, si religio non impedit.
 
@@ -330,13 +330,13 @@ Potes, mi Secunde carissime, sine sollicitudine religionis, si loci positio vide
 
 **51**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Difficile est, domine, exprimere verbis, quantam perceperim laetitiam, quod et mihi et socrui meae praestitisti, ut affinem eius Caelium Clementem in hanc provinciam transferres. 2 Ex illo enim et mensuram beneficii tui penitus intellego, cum tam plenam indulgentiam cum tota domo mea experiar, cui referre gratiam parem ne audeo quidem, quamvis maxime possim. Itaque ad vota confugio deosque precor, ut iis, quae in me assidue confers, non indignus existimer.
 
 **52**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 Diem, domine, quo servasti imperium, dum suscipis, quanta mereris laetitia celebravimus, precati deos ut te generi humano, cuius tutela et securitas saluti tuae innisa est, incolumem florentemque praestarent. Praeivimus et commilitonibus ius iurandum more sollemni, eadem provincialibus certatim pietate iurantibus.
 
@@ -348,7 +348,7 @@ Quanta religione et laetitia commilitones cum provincialibus te praeeunte diem i
 
 **54**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Pecuniae publicae, domine, providentia tua et ministerio nostro et iam exactae sunt et exiguntur; quae vereor ne otiosae iaceant. Nam et praediorum comparandorum aut nulla aut rarissima occasio est, nec inveniuntur qui velint debere rei publicae, praesertim duodenis assibus, quanti a privatis mutuantur. 2 Dispice ergo, domine, numquid minuendam usuram ac per hoc idoneos debitores invitandos putes, et, si nec sic reperiuntur, distribuendam inter decuriones pecuniam, ita ut recte rei publicae caveant; quod quamquam invitis et recusantibus minus acerbum erit leviore usura constituta.
 
@@ -360,7 +360,7 @@ Et ipse non aliud remedium dispicio, mi Secunde carissime, quam ut quantitas usu
 
 **56**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Summas, domine, gratias ago, quod inter maximas occupationes <in> iis, de quibus te consului, me quoque regere dignatus es; quod nunc quoque facias rogo. 2 Adiit enim me quidam indicavitque adversarios suos a Servilio Calvo, clarissimo viro, in triennium relegatos in provincia morari: illi contra ab eodem se restitutos affirmaverunt edictumque recitaverunt. Qua causa necessarium credidi rem integram ad te referre. 3 Nam, sicut mandatis tuis cautum est, ne restituam ab alio aut a me relegatos, ita de iis, quos alius et relegaverit et restituerit, nihil comprehensum est. Ideo tu, domine, consulendus fuisti, quid observare me velles, tam hercule quam de iis qui in perpetuum relegati nec restituti in provincia deprehenduntur. 4 Nam haec quoque species incidit in cognitionem meam. Est enim adductus ad me in perpetuum relegatus <a> Iulio Basso proconsule. Ego, quia sciebam acta Bassi rescissa datumque a senatu ius omnibus, de quibus ille aliquid constituisset, ex integro agendi, dumtaxat per biennium, interrogavi hunc, quem relegaverat, an adisset docuissetque proconsulem. <Negavit.> 5 Per quod effectum est, ut te consulerem, reddendum eum poenae suae an gravius aliquid et quid potissimum constituendum putares et in hunc et in eos, si qui forte in simili condicione invenirentur. Decretum Calvi et edictum, item decretum Bassi his litteris subieci.
 
@@ -372,7 +372,7 @@ TRAIANUS PLINIO
 
 **58**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Cum citarem iudices, domine, conventum incohaturus, Flavius Archippus vacationem petere coepit ut philosophus. 2 Fuerunt, qui dicerent non liberandum eum iudicandi necessitate, sed omnino tollendum de iudicum numero reddendumque poenae, quam fractis vinculis evasisset. 3 Recitata est sententia Veli Pauli proconsulis, qua probabatur Archippus crimine falsi damnatus in metallum: ille nihil proferebat, quo restitutum se doceret; allegabat tamen pro restitutione et libellum a se Domitiano datum et epistulas eius ad honorem suum pertinentes et decretum Prusensium. Addebat his et tuas litteras scriptas sibi, addebat et patris tui edictum et epistulam, quibus confirmasset beneficia a Domitiano data. 4 Itaque, quamvis eidem talia crimina applicarentur, nihil decernendum putavi, donec te consulerem de eo, quod mihi constitutione tua dignum videbatur. Ea quae sunt utrimque recitata his litteris subieci.
 
@@ -394,7 +394,7 @@ EPISTULA EIUSDEM AD TULLIUM IUSTUM
 
 **59**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 Flavius Archippus per salutem tuam aeternitatemque petit a me, ut libellum quem mihi dedit mitterem tibi. Quod ego sic roganti praestandum putavi, ita tamen ut missurum me notum accusatrici eius facerem, a qua et ipsa acceptum libellum his epistulis iunxi, quo facilius velut audita utraque parte dispiceres, quid statuendum putares.
 
@@ -406,7 +406,7 @@ TRAIANUS PLINIO
 
 **61**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Tu quidem, domine, providentissime vereris,ne commissus flumini atque ita mari lacus effluat; sed ego in re praesenti invenisse videor, quem ad modum huic periculo occurrerem. 2 Potest enim lacus fossa usque ad flumen adduci nec tamen in flumen emitti, sed relicto quasi margine contineri pariter et dirimi. Sic consequemur, ut neque aqua viduetur flumini mixtus et sit perinde ac si misceatur. Erit enim facile per illam brevissimam terram, quae interiacebit, advecta fossa onera transponere in flumen. 3 Quod ita fiet si necessitas coget, et - spero - non coget. Est enim et lacus ipse satis altus et nunc in contrariam partem flumen emittit, quod interclusum inde et quo volumus aversum, sine ullo detrimento lacus tantum aquae quantum nunc portat effundet. Praeterea per id spatium, per quod fossa fodienda est, incidunt rivi; qui si diligenter colligantur, augebunt illud quod lacus dederit. 4 Enimvero, si placeat fossam longius ducere et altius pressam mari aequare nec in flumen, sed in ipsum mare emittere, repercussus maris servabit et reprimet, quidquid e lacu veniet. Quorum si nihil nobis loci natura praestaret, expeditum tamen erat cataractis aquae cursum temperare. 5 Verum et haec et alia multo sagacius conquiret explorabitque librator, quem plane, domine, debes mittere, ut polliceris. Est enim res digna et magnitudine tua et cura. Ego interim Calpurnio Macro clarissimo viro auctore te scripsi, ut libratorem quam maxime idoneum mitteret.
 
@@ -418,19 +418,19 @@ Manifestum, mi Secunde carissime, nec prudentiam nec diligentiam tibi defuisse c
 
 **63**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 Scripsit mihi, domine, Lycormas libertus tuus ut, si qua legatio a Bosporo venisset urbem petitura, usque in adventum suum retineretur. Et legatio quidem, dumtaxat in eam civitatem, in qua ipse sum, nulla adhuc venit, sed venit tabellarius Sauromatae <regis>, quem ego usus opportunitate, quam mihi casus obtulerat, cum tabellario qui Lycormam ex itinere praecessit mittendum putavi, ut posses ex Lycormae et regis epistulis pariter cognoscere, quae fortasse pariter scire deberes.
 
 **64**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 Rex Sauromates scripsit mihi esse quaedam, quae deberes quam maturissime scire. Qua ex causa festinationem tabellarii, quem ad te cum epistulis misit, diplomate adiuvi.
 
 **65**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Magna, domine, et ad totam provinciam pertinens quaestio est de condicione et alimentis eorum, quos vocant 'threptous'. 2 In qua ego auditis constitutionibus principum, quia nihil inveniebam aut proprium aut universale, quod ad Bithynos referretur, consulendum te existimavi, quid observari velles; neque putavi posse me in eo, quod auctoritatem tuam posceret, exemplis esse contentum. 3 Recitabatur autem apud me edictum, quod dicebatur divi Augusti, ad Andaniam pertinens; recitatae et epistulae divi Vespasiani ad Lacedaemonios et divi Titi ad eosdem et Achaeos et Domitiani ad Avidium Tigrinum et Armenium Brocchum proconsules, item ad Lacedaemonios; quae ideo tibi non misi, quia et parum emendata et quaedam non certae fidei videbantur, et quia vera et emendata in scriniis tuis esse credebam.
 
@@ -442,13 +442,13 @@ TRAIANUS PLINIO
 
 **67**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Legato Sauromatae regis; cum sua sponte Nicaeae, ubi me invenerat, biduo substitisset, longiorem moram faciendam, domine, non putavi, primum quod incertum adhuc erat, quando libertus tuus Lycormas venturus esset, deinde quod ipse proficiscebar in diversam provinciae partem, ita officii necessitate exigente. 2 Haec in notitiam tuam perferenda existimavi, quia proxime scripseram petisse Lycormam, ut legationem, si qua venisset a Bosporo, usque in adventum suum retinerem. Quod diutius faciendi nulla mihi probabilis ratio occurrit, praesertim cum epistulae Lycormae, quas detinere, ut ante praedixi, nolui, aliquot diebus hinc legatum antecessurae viderentur.
 
 **68**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 Petentibus quibusdam, ut sibi reliquias suorum aut propter iniuriam vetustatis aut propter fluminis incursum aliaque his similia quocumque secundum exemplum proconsulum transferre permitterem, quia sciebam in urbe nostra ex eius modi causa collegium pontificum adiri solere, te, domine, maximum pontificem consulendum putavi, quid observare me velis.
 
@@ -460,7 +460,7 @@ Durum est iniungere necessitatem provincialibus pontificum adeundorum, si reliqu
 
 **70**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Quaerenti mihi, domine, Prusae ubi posset balineum quod indulsisti fieri, placuit locus in quo fuit aliquando domus, ut audio, pulchra, nunc deformis ruinis. Per hoc enim consequemur, ut foedissima facies civitatis ornetur, atque etiam ut ipsa civitas amplietur nec ulla aedificia tollantur, sed quae sunt vetustate sublapsa relaxentur in melius. 2 Est autem huius domus condicio talis: legaverat eam Claudius Polyaenus Claudio Caesari iussitque in peristylio templum ei fieri, reliqua ex domo locari. Ex ea reditum aliquamdiu civitas percepit; deinde paulatim partim spoliata, partim neglecta cum peristylio domus tota collapsa est, ac iam paene nihil ex ea nisi solum superest; quod tu, domine, sive donaveris civitati sive venire iusseris, propter opportunitatem loci pro summo munere accipiet. 3 Ego, si permiseris, cogito in area vacua balineum collocare, eum autem locum, in quo aedificia fuerunt, exedra et porticibus amplecti atque tibi consecrare, cuius beneficio elegans opus dignumque nomine tuo fiet. 4 Exemplar testamenti, quamquam mendosum, misi tibi; ex quo cognosces multa Polyaenum in eiusdem domus ornatum reliquisse, quae ut domus ipsa perierunt, a me tamen in quantum potuerit requirentur.
 
@@ -472,7 +472,7 @@ Possumus apud Prusenses area ista cum domo collapsa, quam vacare scribis, ad exs
 
 **72**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 Postulantibus quibusdam, ut de agnoscendis liberis restituendisque natalibus et secundum epistulam Domitiani scriptam Minicio Rufo et secundum exempla proconsulum ipse cognoscerem, respexi ad senatus consultum pertinens ad eadem genera causarum, quod de iis tantum provinciis loquitur, quibus proconsules praesunt; ideoque rem integram distuli, dum <tu>, domine, praeceperis, quid observare me velis.
 
@@ -484,13 +484,13 @@ Si mihi senatus consultum miseris quod haesitationem tibi fecit, aestimabo an de
 
 **74**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Appuleius, domine, miles qui est in statione Nicomedensi, scripsit mihi quendam nomine Callidromum, cum detineretur a Maximo et Dionysio pistoribus, quibus operas suas locaverat, confugisse ad tuam statuam perductumque ad magistratus indicasse, servisse aliquando Laberio Maximo, captumque a Susago in Moesia et a Decibalo muneri missum Pacoro Parthiae regi, pluribusque annis in ministerio eius fuisse, deinde fugisse, atque ita in Nicomediam pervenisse. 2 Quem ego perductum ad me, cum eadem narrasset, mittendum ad te putavi; quod paulo tardius feci, dum requiro gemmam, quam sibi habentem imaginem Pacori et quibus ornatus fuisset subtractam indicabat. 3 Volui enim hanc quoque, si inveniri potuisset, simul mittere, sicut glebulam misi, quam se ex Parthico metallo attulisse dicebat. Signata est anulos meo, cuius est aposphragisma quadriga.
 
 **75**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Iulius, domine, Largus ex Ponto nondum mihi visus ac ne auditus quidem - scilicet iudicio tuo credidit - dispensationem quandam mihi erga te pietatis suae ministeriumque mandavit. 2 Rogavit enim testamento, ut hereditatem suam adirem cerneremque, ac deinde praeceptis quinquaginta milibus nummum reliquum omne Heracleotarum et Tianorum civitatibus redderem, ita ut esset arbitrii mei utrum opera facienda, quae honori tuo consecrarentur, putarem an instituendos quinquennales agonas, qui Traiani appellarentur. Quod in notitiam tuam perferendum existimavi ob hoc maxime, ut dispiceres quid eligere debeam.
 
@@ -502,7 +502,7 @@ Iulius Largus fidem tuam quasi te bene nosset elegit. Quid ergo potissimum ad pe
 
 **77**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Providentissime, domine, fecisti, quod praecepisti Calpurnio Macro clarissimo viro, ut legionarium centurionem Byzantium mitteret. 2 Dispice an etiam Iuliopolitanis simili ratione consulendum putes, quorum civitas, cum sit perexigua, onera maxima sustinet tantoque graviores iniurias quanto est infirmior patitur. 3 Quidquid autem Iuliopolitanis praestiteris, id etiam toti provinciae proderit. Sunt enim in capite Bithyniae, plurimisque per eam commeantibus transitum praebent.
 
@@ -514,7 +514,7 @@ TRAIANUS PLINIO
 
 **79**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Cautum est, domine, Pompeia lege quae Bithynis data est, ne quis capiat magistratum neve sit in senatu minor annorum triginta. Eadem lege comprehensum est, ut qui ceperint magistratum sint in senatu. 2 Secutum est dein edictum divi Augusti, quo permisit minores magistratus ab annis duobus et viginti capere. 3 Quaeritur ergo an, qui minor triginta annorum gessit magistratum, possit a censoribus in senatum legi, et, si potest, an ii quoque, qui non gesserint, possint per eandem interpretationem ab ea aetate senatores legi, a qua illis magistratum gerere permissum est; quod alioqui factitatum adhuc et esse necessarium dicitur, quia sit aliquanto melius honestorum hominum liberos quam e plebe in curiam admitti. 4 Ego a destinatis censoribus quid sentirem interrogatus eos quidem, qui minores triginta annis gessissent magistratum, putabam posse in senatum et secundum edictum Augusti et secundum legem Pompeiam legi, quoniam Augustus gerere magistratus minoribus annis triginta permisisset, lex senatorem esse voluisset qui gessisset magistratum. 5 De iis autem qui non gessissent, quamvis essent aetatis eiusdem cuius illi quibus gerere permissum est, haesitabam; per quod effectum est ut te, domine, consulerem, quid observari velles. Capita legis, tum edictum Augusti litteris subieci.
 
@@ -526,7 +526,7 @@ Interpretationi tuae, mi Secunde carissime, idem existimo: hactenus edicto divi 
 
 **81**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Cum Prusae ad Olympum, domine, publicis negotiis intra hospitium eodem die exiturus vacarem, Asclepiades magistratus indicavit appellatum me a Claudio Eumolpo. Cum Cocceianus Dion in bule assignari civitati opus cuius curam egerat vellet, tum Eumolpus assistens Flavio Archippo dixit exigendam esse a Dione rationem operis, ante quam rei publicae traderetur, quod aliter fecisset ac debuisset. 2 Adiecit etiam esse in eodem positam tuam statuam et corpora sepultorum, uxoris Dionis et filii, postulavitque ut cognoscerem pro tribunali. 3 Quod cum ego me protinus facturum dilaturumque profectionem dixissem, ut longiorem diem ad struendam causam darem utque in alia civitate cognoscerem petiit. 4 Ego me auditurum Nicaeae respondi. Ubi cum consedissem cogniturus, idem Eumolpus tamquam si adhuc parum instructus dilationem petere coepit, contra Dion ut audiretur exigere. 5 Dicta sunt utrimque multa, etiam de causa. Ego cum dandam dilationem et <te> consulendum existimarem in re ad exemplum pertinenti, dixi utrique parti ut postulationum suarum libellos darent. Volebam enim te ipsorum potissimum verbis ea quae erant proposita cognoscere. 6 Et Dion quidem se daturum dixit. Eumolpus respondit complexurum se libello quae rei publicae peteret, ceterum quod ad sepultos pertineret non accusatorem se sed advocatum Flavi Archippi, cuius mandata pertulisset. Archippus, cui Eumolpus sicut Prusiade assistebat, dixit se libellum daturum. At nec Eumolpus nec Archippus quam<quam> plurimis diebus exspectati adhuc mihi libellos dederunt; Dion dedit, quem huic epistulae iunxi. 7 Ipse in re praesenti fui et vidi tuam quoque statuam in bibliotheca positam, id autem in quo dicuntur sepulti filius et uxor Dionis in area collocatum, quae porticibus includitur. 8 Te, domine, rogo ut me in hoc praecipue genere cognitionis regere digneris, cum alioqui magna sit exspectatio, ut necesse est in ea re quae et in confessum venit et exemplis defenditur.
 
@@ -538,7 +538,7 @@ TRAIANUS PLINIO
 
 **83**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 Rogatus, domine, a Nicaeensibus publice per ea, quae mihi et sunt et debent esse sanctissima, id est per aeternitatem tuam salutemque, ut preces suas ad te perferrem, fas non putavi negare acceptumque ab iis libellum huic epistulae iunxi.
 
@@ -550,13 +550,13 @@ Nicaeensibus, qui intestatorum civium suorum concessam vindicationem bonorum a d
 
 **85**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 Maximum libertum et procuratorem tuum, domine, per omne tempus, quo fuimus una, probum et industrium et diligentem ac sicut rei tuae amantissimum ita disciplinae tenacissimum expertus, libenter apud te testimonio prosequor, ea fide quam tibi debeo.
 
 **86 A**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 Gavium Bassum, domine, praefectum orae Ponticae integrum probum industrium atque inter ista reverentissimum mei expertus, voto pariter et suffragio prosequor, ea fide quam tibi debeo.
 
@@ -568,13 +568,13 @@ Gavium Bassum, domine, praefectum orae Ponticae integrum probum industrium atque
 
 **87**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Nymphidium Lupum, domine, primipilarem commilitonem habui, cum ipse tribunus essem ille praefectus: inde familiariter diligere coepi. Crevit postea caritas ipsa mutuae vetustate amicitiae. 2 Itaque et quieti eius inieci manum et exegi, ut me in Bithynia consilio instrueret. Quod ille amicissime et otii et senectutis ratione postposita et iam fecit et facturus est. 3 Quibus ex causis necessitudines eius inter meas numero, filium in primis, Nymphidium Lupum, iuvenem probum industrium et egregio patre dignissimum, suffecturum indulgentiae tuae, sicut primis eius experimentis cognoscere potes, cum praefectus cohortis plenissimum testimonium meruerit Iuli Ferocis et Fusci Salinatoris clarissimorum virorum. Meum gaudium, domine, meamque gratulationem filii honore cumulabis.
 
 **88**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 Opto, domine, et hunc natalem et plurimos alios quam felicissimos agas aeternaque laude florentem virtutis tuae gloriam ... quam incolumis et fortis aliis super alia operibus augebis.
 
@@ -586,7 +586,7 @@ Agnosco vota tua, mi Secunde carissime, quibus precaris, ut plurimos et feliciss
 
 **90**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Sinopenses, domine, aqua deficiuntur; quae videtur et bona et copiosa ab sexto decimo miliario posse perduci. Est tamen statim ab capite paulo amplius passus mille locus suspectus et mollis, quem ego interim explorari modico impendio iussi, an recipere et sustinere opus possit. 2 Pecunia curantibus nobis contracta non deerit, si tu, domine, hoc genus operis et salubritati et amoenitati valde sitientis coloniae indulseris.
 
@@ -598,7 +598,7 @@ Ut coepisti, Secunde carissime, explora diligenter, an locus ille quem suspectum
 
 **92**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 Amisenorum civitas libera et foederata beneficio indulgentiae tuae legibus suis utitur. In hac datum mihi libellum ad 'epanous' pertinentem his litteris subieci, ut tu, domine, dispiceres quid et quatenus aut permittendum aut prohibendum putares.
 
@@ -610,7 +610,7 @@ Amisenos, quorum libellum epistulae tuae iunxeras, si legibus istorum, quibus be
 
 **94**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Suetonium Tranquillum, probissimum honestissimum eruditissimum virum, et mores eius secutus et studia iam pridem, domine, in contubernium assumpsi, tantoque magis diligere coepi quanto nunc propius inspexi. 2 Huic ius trium liberorum necessarium faciunt duae causae; nam et iudicia amicorum promeretur et parum felix matrimonium expertus est, impetrandumque a bonitate tua per nos habet quod illi fortunae malignitas denegavit. 3 Scio, domine, quantum beneficium petam, sed peto a te cuius in omnibus desideriis meis indulgentiam experior. Potes enim colligere quanto opere cupiam, quod non rogarem absens si mediocriter cuperem.
 
@@ -622,7 +622,7 @@ Quam parce haec beneficia tribuam, utique, mi Secunde carissime, haeret tibi, cu
 
 **96**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Sollemne est mihi, domine, omnia de quibus dubito ad te referre. Quis enim potest melius vel cunctationem meam regere vel ignorantiam instruere? Cognitionibus de Christianis interfui numquam: ideo nescio quid et quatenus aut puniri soleat aut quaeri. 2 Nec mediocriter haesitavi, sitne aliquod discrimen aetatum, an quamlibet teneri nihil a robustioribus differant; detur paenitentiae venia, an ei, qui omnino Christianus fuit, desisse non prosit; nomen ipsum, si flagitiis careat, an flagitia cohaerentia nomini puniantur. Interim, <in> iis qui ad me tamquam Christiani deferebantur, hunc sum secutus modum. 3 Interrogavi ipsos an essent Christiani. Confitentes iterum ac tertio interrogavi supplicium minatus; perseverantes duci iussi. Neque enim dubitabam, qualecumque esset quod faterentur, pertinaciam certe et inflexibilem obstinationem debere puniri. 4 Fuerunt alii similis amentiae, quos, quia cives Romani erant, adnotavi in urbem remittendos.
 
@@ -638,7 +638,7 @@ TRAIANUS PLINIO
 
 **98**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Amastrianorum civitas, domine, et elegans et ornata habet inter praecipua opera pulcherrimam eandemque longissimam plateam; cuius a latere per spatium omne porrigitur nomine quidem flumen, re vera cloaca foedissima, ac sicut turpis immundissimo aspectu, ita pestilens odore taeterrimo. 2 Quibus ex causis non minus salubritatis quam decoris interest eam contegi; quod fiet si permiseris curantibus nobis, ne desit quoque pecunia operi tam magno quam necessario.
 
@@ -650,7 +650,7 @@ Rationis est, mi Secunde carissime, contegi aquam istam, quae per civitatem Amas
 
 **100**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 Vota, domine, priore anno nuncupata alacres laetique persolvimus novaque rursus certante commilitonum et provincialium pietate suscepimus, precati deos ut te remque publicam florentem et incolumem ea benignitate servarent, quam super magnas plurimasque virtutes praecipua sanctitate obsequio deorum honore meruisti.
 
@@ -662,7 +662,7 @@ Solvisse vota dis immortalibus te praeeunte pro mea incolumitate commilitones cu
 
 **102**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 Diem, quo in te tutela generis humani felicissima successione translata est, debita religione celebravimus, commendantes dis imperii tui auctoribus et vota publica et gaudia.
 
@@ -674,7 +674,7 @@ Diem imperii mei debita laetitia et religione commilitonibus et provincialibus p
 
 **104**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 Valerius, domine, Paulinus excepto Paulino ius Latinorum suorum mihi reliquit; ex quibus rogo tribus interim ius Quiritium des. Vereor enim, ne sit immodicum pro omnibus pariter invocare indulgentiam tuam, qua debeo tanto modestius uti, quanto pleniorem experior. Sunt autem pro quibus peto: C. Valerius Astraeus, C. Valerius Dionysius, C. Valerius Aper.
 
@@ -686,7 +686,7 @@ Cum honestissime iis, qui apud fidem tuam a Valerio Paulino depositi sunt, consu
 
 **106**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 Rogatus, domine, a P. Accio Aquila, centurione cohortis sextae equestris, ut mitterem tibi libellum per quem indulgentiam pro statu filiae suae implorat, durum putavi negare, cum scirem quantam soleres militum precibus patientiam humanitatemque praestare.
 
@@ -698,7 +698,7 @@ Libellum P. Accii Aquilae, centurionis sextae equestris, quem mihi misisti, legi
 
 **108**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Quid habere iuris velis et Bithynas et Ponticas civitates in exigendis pecuniis, quae illis vel ex locationibus vel ex venditionibus aliisve causis debeantur, rogo, domine, rescribas. Ego inveni a plerisque proconsulibus concessam iis protopraxian eamque pro lege valuisse. 2 Existimo tamen tua providentia constituendum aliquid et sanciendum per quod utilitatibus eorum in perpetuum consulatur. Nam quae sunt ab illis instituta, sint licet sapienter indulta, brevia tamen et infirma sunt, nisi illis tua contingit auctoritas.
 
@@ -710,7 +710,7 @@ Quo iure uti debeant Bithynae vel Ponticae civitates in iis pecuniis, quae ex qu
 
 **110**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Ecdicus, domine, Amisenorum civitatis petebat apud me a Iulio Pisone denariorum circiter quadraginta milia donata ei publice ante viginti annos bule et ecclesia consentiente, utebaturque mandatis tuis, quibus eius modi donationes vetantur. 2 Piso contra plurima se in rem publicam contulisse ac prope totas facultates erogasse dicebat. Addebat etiam temporis spatium postulabatque, ne id, quod pro multis et olim accepisset, cum eversione reliquae dignitatis reddere cogeretur. Quibus ex causis integram cognitionem differendam existimavi, ut te, domine, consulerem, quid sequendum putares.
 
@@ -722,7 +722,7 @@ Sicut largitiones ex publico fieri mandata prohibent, ita, ne multorum securitas
 
 **112**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Lex Pompeia, domine, qua Bithyni et Pontici utuntur, eos, qui in bulen a censoribus leguntur, dare pecuniam non iubet; sed ii, quos indulgentia tua quibusdam civitatibus super legitimum numerum adicere permisit, et singula milia denariorum et bina intulerunt. 2 Anicius deinde Maximus proconsul eos etiam, qui a censoribus legerentur, dumtaxat in paucissimis civitatibus aliud aliis iussit inferre. 3 Superest ergo, ut ipse dispicias, an in omnibus civitatibus certum aliquid omnes, qui deinde buleutae legentur, debeant pro introitu dare. Nam, quod in perpetuum mansurum est, a te constitui decet, cuius factis dictisque debetur aeternitas.
 
@@ -734,7 +734,7 @@ Honorarium decurionatus omnes, qui in quaque civitate Bithyniae decuriones fiunt
 
 **114**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Lege, domine, Pompeia permissum Bithynicis civitatibus ascribere sibi quos vellent cives, dum ne quem earum civitatium, quae sunt in Bithynia. Eadem lege sancitur, quibus de causis e senatu a censoribus eiciantur. 2 Inde me quidam ex censoribus consulendum putaverunt, an eicere deberent eum qui esset alterius civitatis. 3 Ego quia lex sicut ascribi civem alienum vetabat, ita eici e senatu ob hanc causam non iubebat, praeterea, quod affirmabatur mihi in omni civitate plurimos esse buleutas ex aliis civitatibus, futurumque ut multi homines multaeque civitates concuterentur ea parte legis, quae iam pridem consensu quodam exolevisset, necessarium existimavi consulere te, quid servandum putares. Capita legis his litteris subieci.
 
@@ -746,7 +746,7 @@ Merito haesisti, Secunde carissime, quid a te rescribi oporteret censoribus cons
 
 **116**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Qui virilem togam sumunt vel nuptias faciunt vel ineunt magistratum vel opus publicum dedicant, solent totam bulen atque etiam e plebe non exiguum numerum vocare binosque denarios vel singulos dare. Quod an celebrandum et quatenus putes, rogo scribas. 2 Ipse enim, sicut arbitror, praesertim ex sollemnibus causis, concedendum ius istud invitationis, ita vereor ne ii qui mille homines, interdum etiam plures vocant, modum excedere et in speciem διανομῆς incidere videantur.
 
@@ -758,7 +758,7 @@ Merito vereris, ne in speciem διανομῆς incidat invitatio, quae et in nu
 
 **118**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Athletae, domine, ea quae pro iselasticis certaminibus constituisti, deberi sibi putant statim ex eo die, quo sunt coronati; nihil enim referre, quando sint patriam invecti, sed quando certamine vicerint, ex quo invehi possint. Ego contra scribo 'iselastici nomine': itaque Åeorum vehementer addubitem an sit potius id tempus, quo εἰσήλασαν intuendum. 2 Iidem obsonia petunt pro eo agone, qui a te iselasticus factus est, quamvis vicerint ante quam fieret. Aiunt enim congruens esse, sicut non detur sibi pro iis certaminibus, quae esse iselastica postquam vicerunt desierunt, ita pro iis dari quae esse coeperunt. 3 Hic quoque non mediocriter haereo, ne cuiusquam retro habeatur ratio dandumque, quod tunc cum vincerent non debebatur. Rogo ergo, ut dubitationem meam regere, id est beneficia tua interpretari ipse digneris.
 
@@ -770,7 +770,7 @@ Iselasticum tunc primum mihi videtur incipere deberi, cum quis in civitatem suam
 
 **120**
 
-C. PLINIUS TRAIANO IMPERATORI
+**C** PLINIUS TRAIANO IMPERATORI
 
 **1** Usque in hoc tempus, domine, neque cuiquam diplomata commodavi neque in rem ullam nisi tuam misi. Quam perpetuam servationem meam quaedam necessitas rupit. 2 Uxori enim meae audita morte avi volenti ad amitam suam excurrere usum eorum negare durum putavi, cum talis officii gratia in celeritate consisteret, sciremque te rationem itineris probaturum, cuius causa erat pietas. Haec tibi scripsi, quia mihi parum gratus fore videbar, si dissimulassem inter alia beneficia hoc unum quoque me debere indulgentiae tuae, quod fiducia eius quasi consulto te non dubitavi facere, quem si consuluissem, sero fecissem.
 

@@ -16,17 +16,17 @@ author_metadata:
 
 **LIBER III**
 
-**1** Deus autem vel dea generale nomen est omnibus  * * *  Varro ad Ciceronem
+**1.** Deus autem vel dea generale nomen est omnibus  * * *  Varro ad Ciceronem
 
 tertio: "Ita respondeant cur dicant deos, cum de omnibus antiqui dixerint
 
 divos."
 
-**2** Figor ambigue declinatur apud veteres tempore perfecto. Reperimus
+**2.** Figor ambigue declinatur apud veteres tempore perfecto. Reperimus
 
 enim fictus et fixus  * * *  Varro ad Ciceronem tertio "fixum".
 
-**3** Hoc nomen licet veteres Latinum negent, auctoritate tamen valet.
+**3.** Hoc nomen licet veteres Latinum negent, auctoritate tamen valet.
 
 Dicebant enim leonem masculum et feminam  * * * . Leam vero Varro ad Ciceronem
 
@@ -34,13 +34,13 @@ dicit libro III: "Sicut non est panthera et lea."
 
 **LIBER IV**
 
-**4** "Prolubium et lubidinem dici ab eo quod lubeat: unde etiam lucus
+**4.** "Prolubium et lubidinem dici ab eo quod lubeat: unde etiam lucus
 
 Veneris Lubentinae dicatur."
 
 **LIBER VIII**
 
-**5** M. Varronis liber ad Ciceronem de Lingua Latina octavus nullam esse
+**5.** M. Varronis liber ad Ciceronem de Lingua Latina octavus nullam esse
 
 observationem similium docet inque omnibus paene verbis consuetudinem dominari
 
@@ -70,7 +70,7 @@ potuerunt." Sed idem Varro in aliis libris multa pro analogiai tuenda scribit.
 
 **LIBER IX**
 
-**6** Et ubi auctoritas maiorum genus tibi non demonstraverit, quid ibi faciendum
+**6.** Et ubi auctoritas maiorum genus tibi non demonstraverit, quid ibi faciendum
 
 est? Scripsit Varro ad Ciceronem: "Potestatis nostrae est illis rebus dare
 
@@ -92,7 +92,7 @@ ipsius, non erunt genera nisi duo, masculinum et femininum. Nulla enim
 
 genera creare possunt nisi haec duo.
 
-**8** Ostrea primae declinationis fuerit, sicut Musa, feminino genere declinabitur,
+**8.** Ostrea primae declinationis fuerit, sicut Musa, feminino genere declinabitur,
 
 ut ad animal referamus; si ad testam, ostreum dicendum est neutro genere
 
@@ -100,7 +100,7 @@ et ad secundam declinationem, ut sit huius ostrei, huic ostreo, quia dicit
 
 Varro "nullam rem animalem neutro genere declinari."
 
-**9** Ait Plinius Secundus secutus Varronem: "Quando dubitamus principale
+**9.** Ait Plinius Secundus secutus Varronem: "Quando dubitamus principale
 
 genus, redeamus ad diminutionem, et ex diminutivo cognoscimus principale
 
@@ -112,7 +112,7 @@ cuius generis est? facis inde diminutivum, id est columella, et inde intellegis
 
 quoniam principale feminini generis est."
 
-**10** "Hypocorismata semper generibus suis unde oriuntur consonant, pauca
+**10.** "Hypocorismata semper generibus suis unde oriuntur consonant, pauca
 
 dissonant, velut haec rana hic ranunculus, hic unguis haec ungula, hoc
 
@@ -124,7 +124,7 @@ haec pistrilla, ut Terentius in Adelphis, hic ensis haec ensicula et hic
 
 ensiculus: sic in Rudente Plautus."
 
-**11** Dies communis generis est. Qui masculino genere dicendum putaverunt,
+**11.** Dies communis generis est. Qui masculino genere dicendum putaverunt,
 
 has causas reddiderunt, quod dies festos auctores dixerunt, non festas,
 
@@ -142,11 +142,11 @@ Varro autem distinxit, ut masculino genere unius diei cursum significaret,
 
 feminino autem temporis spatium; quod nemo servavit.
 
-**12** Catinus masculino genere dicitur  * * *  et hinc deminutive catillus
+**12.** Catinus masculino genere dicitur  * * *  et hinc deminutive catillus
 
 fit  * * * Sed Varro ad Ciceronem XI "catinuli" dixit, non catilli.
 
-**13** Naevus generis neutri, sed Varro ad Ciceronem "hic naevus".
+**13.** Naevus generis neutri, sed Varro ad Ciceronem "hic naevus".
 
 **14** A. Antiquissimi tamen et hic gausapes et haec gausapa et hoc gausape
 
@@ -172,23 +172,23 @@ margarita, aut communia, ut athletes athleta. Ergo neutraliter hoc margaritum
 
 dicere uitiosum est; et tamen multi dixerunt, ut Valgius  * * *  et Varro Epistularum
 
-VIII "margaritum unum, margarita plura." Sed idem Varro saepe et alii plures
+**VIII** "margaritum unum, margarita plura." Sed idem Varro saepe et alii plures
 
 margarita feminine dixerunt; in genetivo tamen plurali non nisi feminino
 
 genere margaritarum.
 
-**15** VAS terminata et SIS faciunt genitivo et DIS, hoc vas huius vasis;
+**15.** VAS terminata et SIS faciunt genitivo et DIS, hoc vas huius vasis;
 
 utrumque Varro ait de Lingua Latina: hic vas huius vadis.
 
-**16** VIS et ipsa tertiae sunt declinationis et similem nominativo faciunt
+**16.** VIS et ipsa tertiae sunt declinationis et similem nominativo faciunt
 
 genetivum, hic civis huius civis, haec vis huius vis et plurali hae vis,
 
 sicut Lucretius et Varro: nam hae vires numero semper plurali declinantur.
 
-**17** M. Varronem et P. Nigidium, viros Romani generis doctissimos, comperimus
+**17.** M. Varronem et P. Nigidium, viros Romani generis doctissimos, comperimus
 
 non aliter elocutos esse et scripsisse quam senatuis et domuis et fluctuis,
 
@@ -196,7 +196,7 @@ qui est patrius casus ab eo quod est senatus, domus, fluctus; huic senatui,
 
 domui, fluctui, ceteraque is consimilia pariter dixisse.
 
-**18** Amni Maro,
+**18.** Amni Maro,
 
 Secundo defluit amni.
 
@@ -210,9 +210,9 @@ hoc enim cane orbe carbone turre falce igne ueste fine monte fonte ponte
 
 strigile tegete ave asse axe nave classe dicimus."
 
-**19** Quem Plinius ad eundem XI "rure ordinatum arbustum" dixisse laudat.
+**19.** Quem Plinius ad eundem XI "rure ordinatum arbustum" dixisse laudat.
 
-**20** Fonteis: "Quorum nominum genetivi pluralis ante UM syllabam I litteram
+**20.** Fonteis: "Quorum nominum genetivi pluralis ante UM syllabam I litteram
 
 merebuntur, accusativus," inquit Plinius, "per EIS loquetur, montium monteis;
 
@@ -224,31 +224,31 @@ lintreis ventreis stirpeis urbeis corbeis vecteis menteis. Et tamen manus
 
 dat praemissae regulae ridicule, ut exceptis his nominibus valeat regula."
 
-**21** Poematorum et in II et in III idem Varro adsidue dicit et his poematis,
+**21.** Poematorum et in II et in III idem Varro adsidue dicit et his poematis,
 
 tam quam nominativo hoc poematum sit et non hoc poema. Nam et ad Ciceronem
 
 XI, horum poematorum et his poematis oportere dici.
 
-**22** Git: Varro ad Ciceronem XI per omnes casus id nomen ire debere conmeminit;
+**22.** Git: Varro ad Ciceronem XI per omnes casus id nomen ire debere conmeminit;
 
 vulgo autem hoc gitti dicunt.
 
 **LIBER XIII**
 
-**23** Palpetras per T Varro ad Ciceronem XIII dixit. Sed Fabianus de Animalibus
+**23.** Palpetras per T Varro ad Ciceronem XIII dixit. Sed Fabianus de Animalibus
 
 primo palpebras per B. Alii dicunt palpetras genas, palpebras autem ipsos
 
 pilos.
 
-**24** Oxo: "Varro ad Ciceronem XIII olivo et oxo putat fieri," inquit
+**24.** Oxo: "Varro ad Ciceronem XIII olivo et oxo putat fieri," inquit
 
 Plinius Sermonis Dubii libro VI.
 
 **LIBER XVIII**
 
-**25** Indiscriminatim, indifferenter. Varro de Lingua Latina lib. XVIII:
+**25.** Indiscriminatim, indifferenter. Varro de Lingua Latina lib. XVIII:
 
 "Quibus nos in hoc libro, proinde ut nihil intersit, utemur indiscriminatim,
 
@@ -256,7 +256,7 @@ promisce."
 
 **LIBER XXII**
 
-**26** Rure Terentius in Eunucho:
+**26.** Rure Terentius in Eunucho:
 
 Ex meo propinquo rure hoc capio commodi.
 
@@ -264,13 +264,13 @@ Itaque et Varro ad Ciceronem XXII "rure veni."
 
 **LIBER XXIII**
 
-**27** Varro ad Ciceronem in libro XXIII: "ingluvies tori," inquit, "sunt
+**27.** Varro ad Ciceronem in libro XXIII: "ingluvies tori," inquit, "sunt
 
 circa gulam, qui propter pinguedinem fiunt atque interiectas habent rugas."
 
 Sed nunc pro gula positum.
 
-**28** Cum in disciplinas dialecticas induci atque imbui vellemus,
+**28.** Cum in disciplinas dialecticas induci atque imbui vellemus,
 
 necessus fuit adire atque cognoscere quas vocant dialectici eisagogas.
 
@@ -362,7 +362,7 @@ vera esse non queunt; possis simul eodemque tempore neque ambulare neque
 
 stare neque currere.
 
-**29** Excipiuntur haurio hausi (invenitur tamen etiam haurivi uel haurii;
+**29.** Excipiuntur haurio hausi (invenitur tamen etiam haurivi uel haurii;
 
 Varro in XXIIII ad Ciceronem: "Cum indidem haurierint"), saepio saepsi
 

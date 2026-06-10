@@ -12,7 +12,7 @@ author_metadata:
 
 ## Liber Posterior
 
-[1]  Potentiae Romanorum prior Scipio viam aperuerat, luxuriae posterior
+**[1]** Potentiae Romanorum prior Scipio viam aperuerat, luxuriae posterior
 
 aperuit: quippe remoto Carthaginis metu sublataque imperii aemula non
 
@@ -54,7 +54,7 @@ negaverunt, sicut quondam Caudini fecerant, dicentes publicam violationem
 
 fidei non debere unius lui sanguine.
 
-[2]  Inmanem deditio Mancini civitatis movit dissensionem. Quippe
+**[2]** Inmanem deditio Mancini civitatis movit dissensionem. Quippe
 
 Tiberius Gracchus, Tiberii Gracchi clarissimi atque eminentissimi viri
 
@@ -84,7 +84,7 @@ creavit se socerumque suum, consularem Appium, et Gaium fratrem admodum
 
 iuvenem.
 
-[3]  Tum P. Scipio Nasica, eius qui optimus vir a
+**[3]** Tum P. Scipio Nasica, eius qui optimus vir a
 
 senatu iudicatus erat, nepos, eius qui censor porticus in Capitolio
 
@@ -126,7 +126,7 @@ et ubi semel recto deerratum est, in praeceps pervenitur, nec quisquam sibi
 
 putat turpe, quod alii fuit fructuosum.
 
-[4]  Interim, dum haec in Italia geruntur, Aristonicus, qui mortuo rege
+**[4]** Interim, dum haec in Italia geruntur, Aristonicus, qui mortuo rege
 
 Attalo a quo Asia populo Romano hereditate relicta erat, sicut relicta
 
@@ -182,7 +182,7 @@ quinquagesimo: 7 de quo si quis ambiget, recurrat ad priorem consulatum
 
 eius, in quem creatus est anno octavo et tricesimo: ita dubitare desinet.
 
-[5]  Ante tempus excisae Numantiae praeclara in Hispania militia D. Bruti
+**[5]** Ante tempus excisae Numantiae praeclara in Hispania militia D. Bruti
 
 fuit, qui penetratis omnibus  Hispaniae gentibus ingenti vi hominum
 
@@ -208,7 +208,7 @@ facti, at Fabius Aemilianus Pauli exemplo disciplina in Hispania fuit
 
 clarissimus.
 
-[6]  Decem deinde interpositis annis, qui Ti. Graccum idem Gaium fratrem
+**[6]** Decem deinde interpositis annis, qui Ti. Graccum idem Gaium fratrem
 
 eius occupavit furor, tam virtutibus eius omnibus quam huic errori similem,
 
@@ -258,7 +258,7 @@ tranfixit. 7 Ut Ti. Gracchi antea corpus, ita Gai mira crudelitate
 
 victorum in Tiberim deiectum est.
 
-[7]  Hunc Ti. Gracchi liberi, P. Scipionis Africani nepotes, viva adhuc
+**[7]** Hunc Ti. Gracchi liberi, P. Scipionis Africani nepotes, viva adhuc
 
 matre Cornelia, Africani filia, viri optimis ingeniis male usi, vitae
 
@@ -314,7 +314,7 @@ colonia Carthago condita est. Subinde Porcio Marcioque consulibus deducta
 
 colonia Narbo Martius.
 
-[8]  Mandetur deinde memoriae severitas iudiciorum.
+**[8]** Mandetur deinde memoriae severitas iudiciorum.
 
 Quippe C. Cato consularis, M. Catonis nepos, Africani sororis filius,
 
@@ -342,7 +342,7 @@ cladibus nobiles. Per eadem tempora clarus eius Minucii, qui porticus, quae
 
 hodieque celebres sunt, molitus est, ex Scordiscis triumphus fuit.
 
-[9]  Eodem tractu temporum nituerunt oratores Scipio Aemilianus
+**[9]** Eodem tractu temporum nituerunt oratores Scipio Aemilianus
 
 Laeliusque, Ser. Galba, duo Gracchi, C. Fannius, Carbo Papinus; nec
 
@@ -380,7 +380,7 @@ Pomponium sensibus celebrem, verbis rudem et novitate inventi a se operis
 
 commendabilem.
 
-[10]  Prosequamur nota severitatem censorum Cassii Longini Caepionisque,
+**[10]** Prosequamur nota severitatem censorum Cassii Longini Caepionisque,
 
 qui abhinc annos centum quinquaginta tris Lepidum Aemilium augurem, quod
 
@@ -404,7 +404,7 @@ consulatum sacerdotiaque, ad triumphi autem paene omnes pervenerunt
 
 insignia.
 
-[11]  Bellum deinde Iugurthinum gestum est per Q. Metellum, nulli
+**[11]** Bellum deinde Iugurthinum gestum est per Q. Metellum, nulli
 
 secundum saeculi sui. Huius legatus fuit C. Marius, quem praediximus,
 
@@ -436,7 +436,7 @@ quemadmodum urbium imperiorumque, ita gentium nunc florere fortunam,
 
 nunc senescere, nunc interire.
 
-[12]  At C. Marius L. Sullam, iam tunc ut praecaventibus fatis,
+**[12]** At C. Marius L. Sullam, iam tunc ut praecaventibus fatis,
 
 copulatum sibi quaestorem habuit et per eum missum ad regem Bocchum
 
@@ -486,7 +486,7 @@ discutientium, consul armis compescuit hominesque exitiabibis in
 
 Hostilia curia morte multavit.
 
-[13]  Deinde interiectis paucis annis tribunatum iniit  M. Livius
+**[13]** Deinde interiectis paucis annis tribunatum iniit  M. Livius
 
 Drusus, vir nobilissimus, eloquentissimus, sanctissimus, meliore in
 
@@ -518,7 +518,7 @@ quae ab illis intendebantur,  aequo animo reciperet, et huius summae
 
 gloriae invideret, illorum modicam ferret.
 
-[14]  Tum conversus Drusi animus, quando bene incepta male cedebant, ad
+**[14]** Tum conversus Drusi animus, quando bene incepta male cedebant, ad
 
 dandam civitatem Italiae. Quod cum moliens revertisset e foro, immensa
 
@@ -548,9 +548,9 @@ despicere posset, "Tu vero" inquit,  "si quid in te artis est, ita
 
 compone domum meam, ut, quidquid agam, ab omnibus perspici possit".
 
-[15]  Mors Drusi iam pridem tumescens bellum excitavit Italicum; quippe
+**[15]** Mors Drusi iam pridem tumescens bellum excitavit Italicum; quippe
 
-L. Caesare et P. Rutilio consulibus abhinc annos centum viginti,
+**L** Caesare et P. Rutilio consulibus abhinc annos centum viginti,
 
 universa Italia, cum id malum ab Asculanis ortum esset (quippe Servilium
 
@@ -586,13 +586,13 @@ triumphis honoribusque quam aut causa exilii aut exilio aut reditu
 
 clarior fuit Nurnidicus.
 
-[16]  Italicorum autem fuerunt celeberrimi duces Silo Popaedius, Herius Asinius, Insteius Cato, C. Pontidius, Telesinus Pontius, Marius Egnatius, Papius Mutilus. 2 Neque ego verecundia omestici sanguinis gloriae quidquam, dum verum refero, subtraham: quippe multum Minatii Magii, atavi mei, Aeculanensis, tribuendum est memonae, qui nepos Decii Magii, Campanorum principis, celeberrimi et fidelissimi viri, tantam hoc bello Romanis fidem praestitit, ut cum legione, quam ipse in Hirpinis conscripserat, Herculaneum simul curn T. Didio caperet, Pompeios cum L. Sulla oppugnaret Compsamque  occuparet: 3 cuius de virtutibus cum alii, tum maxime dilucide Q. Hortensius in annalibus suis rettulit . Cuius illi pietati plenam populus Romanus gratiam rettulit ipsum viritim civitate donando, duos filios eius creando praetores, cum seni adhuc crearentur. 4 Tam varia atque atrox fortuna Italici belli fuit, ut per biennium continuum duo Rcmani consules, Rutilius ac deinde Cato Porcius, ab hostibus occiderentur, exercitus populi Romani multis in locis funderentur, utque ad saga iretur diuque in eo habitu maneretur. Caput imperii sui Corfinium legerant atque appellarant Italicam. Paulatim deinde recipiendo in civitatem, qui arma aut non ceperant aut deposuerant maturius, vires refectae sunt, Pompeio Sullaque et Mano fluentem procumbentemque rem populi Romani restituentibus.
+**[16]** Italicorum autem fuerunt celeberrimi duces Silo Popaedius, Herius Asinius, Insteius Cato, C. Pontidius, Telesinus Pontius, Marius Egnatius, Papius Mutilus. 2 Neque ego verecundia omestici sanguinis gloriae quidquam, dum verum refero, subtraham: quippe multum Minatii Magii, atavi mei, Aeculanensis, tribuendum est memonae, qui nepos Decii Magii, Campanorum principis, celeberrimi et fidelissimi viri, tantam hoc bello Romanis fidem praestitit, ut cum legione, quam ipse in Hirpinis conscripserat, Herculaneum simul curn T. Didio caperet, Pompeios cum L. Sulla oppugnaret Compsamque  occuparet: 3 cuius de virtutibus cum alii, tum maxime dilucide Q. Hortensius in annalibus suis rettulit . Cuius illi pietati plenam populus Romanus gratiam rettulit ipsum viritim civitate donando, duos filios eius creando praetores, cum seni adhuc crearentur. 4 Tam varia atque atrox fortuna Italici belli fuit, ut per biennium continuum duo Rcmani consules, Rutilius ac deinde Cato Porcius, ab hostibus occiderentur, exercitus populi Romani multis in locis funderentur, utque ad saga iretur diuque in eo habitu maneretur. Caput imperii sui Corfinium legerant atque appellarant Italicam. Paulatim deinde recipiendo in civitatem, qui arma aut non ceperant aut deposuerant maturius, vires refectae sunt, Pompeio Sullaque et Mano fluentem procumbentemque rem populi Romani restituentibus.
 
-[17]  Finito ex maxrima parte, nisi quae Nolani belli manebant reliquiae, Italico bello, quo quidem Romani victis adflictisque ipsi exarmati quam integri universis civitatem dare maluerunt, consulatum inierunt Q. Pompeius et L. Cornelius Sulla, vir qui neque ad finem victoriae satis laudari neque post victoriam abunde vituperan potest. 2 Hic natus familia nobili, sextus a Cornelio Rufino, qui bello Pyrrhi inter celeberrimos fuerat duces, cum familiae eius ciaritudo intermissa esset, diu ita se gessit, ut nullam petendi consulatum cogitationem habere videretur: 3 deinde post praeturam inlustratus bello Italico et ante in Gallia legatione sub Mario, qua eminentissimos duces hostium fuderat, ex successu animum sumpsit petensque consulatum paene omnium civium suffragiis factus est; sed eum honorem undequinquagesimo aetatis suae anno adsecutus est.
+**[17]** Finito ex maxrima parte, nisi quae Nolani belli manebant reliquiae, Italico bello, quo quidem Romani victis adflictisque ipsi exarmati quam integri universis civitatem dare maluerunt, consulatum inierunt Q. Pompeius et L. Cornelius Sulla, vir qui neque ad finem victoriae satis laudari neque post victoriam abunde vituperan potest. 2 Hic natus familia nobili, sextus a Cornelio Rufino, qui bello Pyrrhi inter celeberrimos fuerat duces, cum familiae eius ciaritudo intermissa esset, diu ita se gessit, ut nullam petendi consulatum cogitationem habere videretur: 3 deinde post praeturam inlustratus bello Italico et ante in Gallia legatione sub Mario, qua eminentissimos duces hostium fuderat, ex successu animum sumpsit petensque consulatum paene omnium civium suffragiis factus est; sed eum honorem undequinquagesimo aetatis suae anno adsecutus est.
 
-[18]  Per ea tempora Mithridates, Ponticus rex. Vir neque silendus neque dicendus sine cura, bello acerrimus, virtute eximius, aliquando fortuna, semper animo maximus, consiliis dux, miles manu, odio in Romanos Hannibal, occupata Asia necatisque in ea omnibus civibus Romanis, quos quidem eadem die 2 atque hora redditis civitatibus litteris ingenti cum pollicitatione praemiorum interimi iusserat, quo tempore neque fortitudine 3 adversus Mithridatem neque fide in Romanos quisquam Rhodiis par fuit (horum fidem Mytilenaeorum perfidia inluminavit, qui M. Aquilium aliosque Mithridati vinctos tradiderunt, quibus libertas in unius Theophanis gratiam postea a Pompeio restituta est), cum terribilis Italiae quoque videretur imminere, sorte obvenit Sullae Asia provincia. 4 Is egressus urbe cum circa Nolam moraretur (quippe ea urbs pertinacissime arma retinebat exercituque Romano obsidebatur, velut paeniteret eius fidei, quam omnium sanctissimam bello praestiterat Punico), 5 Sulpicius tribunus plebis, disertus, acer, opibus gratia amicitiis vigore ingenii atque animi celeberrimus, cum antea rectissima voluntate apud populum maximam quaesisset dignitatem quasi pigeret eum virtutum suarum et bene consulta ei male cederent, 6 subito pravus et praeceps se C. Mano post septuagesimum annum omnia imperia et omnis provincias concupiscenti addixit legemque ad populum tulit, qua Sullae imperium abrogaretur, C. Mario bellum decerneretur Mithridaticums aliasque leges perniciosas et exitiabiles neque tolerandas liberae civitati tulit. Quin etiam Q. Pompei consulis filium eundemque Sullae generum per emissarios factionis suae interfecit.
+**[18]** Per ea tempora Mithridates, Ponticus rex. Vir neque silendus neque dicendus sine cura, bello acerrimus, virtute eximius, aliquando fortuna, semper animo maximus, consiliis dux, miles manu, odio in Romanos Hannibal, occupata Asia necatisque in ea omnibus civibus Romanis, quos quidem eadem die 2 atque hora redditis civitatibus litteris ingenti cum pollicitatione praemiorum interimi iusserat, quo tempore neque fortitudine 3 adversus Mithridatem neque fide in Romanos quisquam Rhodiis par fuit (horum fidem Mytilenaeorum perfidia inluminavit, qui M. Aquilium aliosque Mithridati vinctos tradiderunt, quibus libertas in unius Theophanis gratiam postea a Pompeio restituta est), cum terribilis Italiae quoque videretur imminere, sorte obvenit Sullae Asia provincia. 4 Is egressus urbe cum circa Nolam moraretur (quippe ea urbs pertinacissime arma retinebat exercituque Romano obsidebatur, velut paeniteret eius fidei, quam omnium sanctissimam bello praestiterat Punico), 5 Sulpicius tribunus plebis, disertus, acer, opibus gratia amicitiis vigore ingenii atque animi celeberrimus, cum antea rectissima voluntate apud populum maximam quaesisset dignitatem quasi pigeret eum virtutum suarum et bene consulta ei male cederent, 6 subito pravus et praeceps se C. Mano post septuagesimum annum omnia imperia et omnis provincias concupiscenti addixit legemque ad populum tulit, qua Sullae imperium abrogaretur, C. Mario bellum decerneretur Mithridaticums aliasque leges perniciosas et exitiabiles neque tolerandas liberae civitati tulit. Quin etiam Q. Pompei consulis filium eundemque Sullae generum per emissarios factionis suae interfecit.
 
-[19]  Tum Sulla contracto exercitu ad urbem rediit eamque armis
+**[19]** Tum Sulla contracto exercitu ad urbem rediit eamque armis
 
 occupavit, duodecim auctores novarum pessimarumque rerum, inter quos
 
@@ -630,7 +630,7 @@ Carthaginiensium toleravit, cum Marius aspiciens Carthaginem, illa
 
 intuens Marium, alter alten possent esse solacio.
 
-[20]  Hoc anno primum sanguine consulis Romani militis imbutae manus
+**[20]** Hoc anno primum sanguine consulis Romani militis imbutae manus
 
 sunt; quippe Q. Pompeius, collega Sullae, ab exercitu Cn. Pompei
 
@@ -672,7 +672,7 @@ partibus auctoritate, cuius augendae gratia C. Marium cum filio de
 
 exilio revocavit quique cum iis pulsi erant.
 
-[21]  Dum bellum autem infert patriae Cinna, Cn. Pompeius, Magni pater,
+**[21]** Dum bellum autem infert patriae Cinna, Cn. Pompeius, Magni pater,
 
 cuius praeclara opera bello Marsico praecipue circa Picenum agrum. ut
 
@@ -714,7 +714,7 @@ consul fuit.
 
 occupaverunt, sed prior ingressus Cinna de recipiendo Mario legem tulit.
 
-[22]  Mox C. Marius pestifero civibus suis reditu intravit moenia.
+**[22]** Mox C. Marius pestifero civibus suis reditu intravit moenia.
 
 Nihil illa victoria fuisset crudelius, nisi mox Sullana esset secuta:
 
@@ -762,7 +762,7 @@ is nocens, suique quisque periculi merces foret, nec quidquam videretur
 
 turpe, quod esset quaestuosum.
 
-[23]  Secundum deinde consulatum Cinna et septimum Marius in priorum
+**[23]** Secundum deinde consulatum Cinna et septimum Marius in priorum
 
 dedecus iniit, cuius initio morbo oppressus decessit, vir in bello
 
@@ -808,7 +808,7 @@ captivos recepit, in perfugas noxiosque animadvertit, paternis, id est
 
 Pontici finibus contentum esse iussit.
 
-[24]  C. Flavius Fimbria, qui praefectus equitum ante  adventum Sullae
+**[24]** C. Flavius Fimbria, qui praefectus equitum ante  adventum Sullae
 
 Valerium Flaccum consularem virum interfecerat exercituque occupato
 
@@ -858,7 +858,7 @@ consultando temerarium, in exequendo virum. Carbo nullo suffecto collega
 
 solus toto anno consul fuit.
 
-[25]  Putares Sullam venisse in Italiam non belli vindicem, sed pacis
+**[25]** Putares Sullam venisse in Italiam non belli vindicem, sed pacis
 
 auctorem; anta cum quiete exercitum per Calabriam Apuliamque cum
 
@@ -898,7 +898,7 @@ memoriam et inscriptio templi adfixa posti hodieque et tabula testatur
 
 aerea intra aedem.
 
-[26]  Deinde consules Carbo tertium et C. Marius, septiens consulis
+**[26]** Deinde consules Carbo tertium et C. Marius, septiens consulis
 
 filius, annos natus sex et viginti, vir animi magis quam aevi paterni,
 
@@ -928,7 +928,7 @@ praediximus, viro gladio se ipsa transfixit. Quantum huius gloriae
 
 famaeque accessit nunc virtute feminae! nec propria latet.
 
-[27]  At Pontius Telesinus, dux Samnitium, vir domi bellique
+**[27]** At Pontius Telesinus, dux Samnitium, vir domi bellique
 
 fortissimus penitusque Romano nomini infestissimus, contractis circiter
 
@@ -984,7 +984,7 @@ perpetua ludorum circensium honoravit memoria, qui sub eius nomine
 
 Sullanae Victoriae celebrantur.
 
-[28]  Paulo ante quam Sulla ad Sacriportum dimicaret, magnificis
+**[28]** Paulo ante quam Sulla ad Sacriportum dimicaret, magnificis
 
 proeliis partiurn eius viri hostium exercitum fuderant, duo Serviii apud
 
@@ -1022,7 +1022,7 @@ petendorum honorum iure prohiberentur simulque, quod indignissimum est,
 
 senatorum filii et onera ordinis sustinerent et iura perderent.
 
-[29]  Sub adventum in Italiam L. Sullae Cn. Pompeius, eius Cn. Pompei
+**[29]** Sub adventum in Italiam L. Sullae Cn. Pompeius, eius Cn. Pompei
 
 filius, quem magnificentissimas res in consulatu gessisse bello Marsico
 
@@ -1070,7 +1070,7 @@ prudentia excoluerat, ut a Sertorio Metellus laudaretur magis, Pompeius
 
 timeretur validius.
 
-[30]  Tum M. Perpenna praetorius, e proscriptis, gentis clarioris quam
+**[30]** Tum M. Perpenna praetorius, e proscriptis, gentis clarioris quam
 
 animi, Sertorium inter cenam Oscae interemit Romanisque certam
 
@@ -1108,15 +1108,15 @@ milia hominum se Romano exercitui opposuerint. Huius patrati gloria
 
 penes M. Crassum fuit, mox rei publicae omnium consensu principem.
 
-[31]  Converterat Cn. Pompei persona totum in se terrarum orbem et per omnia maior civi habebatur. Qui cum consul perquam laudabiliter iurasset se in nullam provinciam ex eo magistratu iturum idque servasset, 2 post biennium A. Gabinius tribunus legem tulit, ut cum belli more, non latrociniorum, orbem classibus iam, non furtivis expeditionibus piratae terrerent quasdamque etiam Italiae urbes diripuissent, Cn. Pompeius ad eos opprimendos mitteretur essetque ei imperiurn aequum in omnibus provinciis cum proconsulibus usque ad quinquagesimum miliarium a mari. Quo scito paene totius terrarum orbis imperium uni viro deferebatur; 3 sed tamen idem hoc ante septennium in M. Antonii praetura decretum erat. 4 Sed interdum persona ut exemplo nocet, ita invidiam auget aut levat: in Antonio homines aequo animo passi erant; raro enim invidetur eorum honoribus, quorum vis non timetur: contra in iis homines extraordinaria reformidant, qui ea suo arbitrio aut deposituri aut retenturi videntur et modum in voluntate habent. Dissuadebant optimates, sed consilia impetu victa sunt.
+**[31]** Converterat Cn. Pompei persona totum in se terrarum orbem et per omnia maior civi habebatur. Qui cum consul perquam laudabiliter iurasset se in nullam provinciam ex eo magistratu iturum idque servasset, 2 post biennium A. Gabinius tribunus legem tulit, ut cum belli more, non latrociniorum, orbem classibus iam, non furtivis expeditionibus piratae terrerent quasdamque etiam Italiae urbes diripuissent, Cn. Pompeius ad eos opprimendos mitteretur essetque ei imperiurn aequum in omnibus provinciis cum proconsulibus usque ad quinquagesimum miliarium a mari. Quo scito paene totius terrarum orbis imperium uni viro deferebatur; 3 sed tamen idem hoc ante septennium in M. Antonii praetura decretum erat. 4 Sed interdum persona ut exemplo nocet, ita invidiam auget aut levat: in Antonio homines aequo animo passi erant; raro enim invidetur eorum honoribus, quorum vis non timetur: contra in iis homines extraordinaria reformidant, qui ea suo arbitrio aut deposituri aut retenturi videntur et modum in voluntate habent. Dissuadebant optimates, sed consilia impetu victa sunt.
 
-[32]  Digna est memoria Q. Catuli cum auctoritas tum verecundia. Qui cum dissuadens legem in contione dixisset esse quidem praeclarum virum Cn. Pompeium, sed nimium iam liberae rei publicae neque omnia in uno reponenda adiecissetque: "si quid huic acciderit, quem in eius locum substituetis?" subclamavit universa contio: "te, Q. Catule". Tum ille victus consensu omnium et tam honorifico civitatis testimonio e contione discessit '. 2 Hic hominis verecundiam, populi iustitiam mirari libet, huius, quod non ultra contendit, plebis, quod dissuadentem et adversarium voluntatis suae vero testimonio fraudare noluit. 3 Per idem tempus Cotta iudicandi munus, quod C. Gracchus ereptum senatui ad. equites, Sulla ab illis ad senatum transtulerant, aequaliter in utrumque ordinem partitus est; Oto Roscius lege sua equitibus in theatro loca restituit. 4  At Cn. Pompeius multis et praeclaris viris in id bellum adsumptis discriptoque paene in omnis recessus maris praesidio navium, brevi inexsuperabili manu terrarum orbem liberavit praedonesque saepe multis iam aliis locis victos circa Ciliciam classe adgressus fudit ac fugavit; et quo maturius bellum tam late diffusum conficeret, 5 reliquias eorum contractas in urbibus remotoque mari loco in certa sede constituit. 6 Sunt qui hoc carpant, sed quamquam in auctore satis rationis est, tamen ratio quemlibet magnum auctorem faceret; data enim facultate sine rapto vivendi rapinis arcuit.
+**[32]** Digna est memoria Q. Catuli cum auctoritas tum verecundia. Qui cum dissuadens legem in contione dixisset esse quidem praeclarum virum Cn. Pompeium, sed nimium iam liberae rei publicae neque omnia in uno reponenda adiecissetque: "si quid huic acciderit, quem in eius locum substituetis?" subclamavit universa contio: "te, Q. Catule". Tum ille victus consensu omnium et tam honorifico civitatis testimonio e contione discessit '. 2 Hic hominis verecundiam, populi iustitiam mirari libet, huius, quod non ultra contendit, plebis, quod dissuadentem et adversarium voluntatis suae vero testimonio fraudare noluit. 3 Per idem tempus Cotta iudicandi munus, quod C. Gracchus ereptum senatui ad. equites, Sulla ab illis ad senatum transtulerant, aequaliter in utrumque ordinem partitus est; Oto Roscius lege sua equitibus in theatro loca restituit. 4  At Cn. Pompeius multis et praeclaris viris in id bellum adsumptis discriptoque paene in omnis recessus maris praesidio navium, brevi inexsuperabili manu terrarum orbem liberavit praedonesque saepe multis iam aliis locis victos circa Ciliciam classe adgressus fudit ac fugavit; et quo maturius bellum tam late diffusum conficeret, 5 reliquias eorum contractas in urbibus remotoque mari loco in certa sede constituit. 6 Sunt qui hoc carpant, sed quamquam in auctore satis rationis est, tamen ratio quemlibet magnum auctorem faceret; data enim facultate sine rapto vivendi rapinis arcuit.
 
-[33]  Cum esset in fine bellum piraticum et L. Lucullus, qui ante septem annos ex consulatu sortitus Asiam Mithridati oppositus erat magnasque et memorabiles res ibi gesserat, Mithridatem saepe multis locis fuderat, egregia Cyzicum liberarat victoria, Tigranem, regum maximum, in Armenia vicerat ultimamque bello manum paene magis noluerat imponere quam non potuerat, quia alioqui per omnia laudabilis et bello paene invictus pecuniae pellebatur cupidine, idem bellum adhuc administraret, Manilius tribunus plebis, semper venalis et alienae minister potentiae, legem tulit, ut bellum Mithridaticum per Cn. Pompeium  administraretur. 2 Accepta ea magnisque certatum inter imperatores iurgiis, cum Pompeius Lucullo infamiam pecuniae, Lucullus Pompeio interminatam cupiditatem obiiceret imperii neuterque ab altero quod arguebat mentitus argui posset. 3 Nam neque Pompeius, ut primum ad rem publicam adgressus est, quemquam omnino parem tulit, et in quibus rebus primus esse debebat, solus esse cupiebat (neque eo viro quisquam aut alia omnia minus aut gloriam magis concupiit, in adpetendis honoribus inmodicus, in gerendis verecundissimus, ut qui eos ut libentissime iniret, ita finiret aequo animo, et quod cupisset, arbitrio suo sumeret, alieno deponeret) 4 et Lucullus, summus alioqui vir, profusae huius in aedificiis convictibusque et apparatibus luxuriae primus auctor fuit, quem ob iniectas moles mari et receptum suffossis montibus  in terras mare haud infacete Magnus Pompeius Xerxen togatum vocare adsueverat.
+**[33]** Cum esset in fine bellum piraticum et L. Lucullus, qui ante septem annos ex consulatu sortitus Asiam Mithridati oppositus erat magnasque et memorabiles res ibi gesserat, Mithridatem saepe multis locis fuderat, egregia Cyzicum liberarat victoria, Tigranem, regum maximum, in Armenia vicerat ultimamque bello manum paene magis noluerat imponere quam non potuerat, quia alioqui per omnia laudabilis et bello paene invictus pecuniae pellebatur cupidine, idem bellum adhuc administraret, Manilius tribunus plebis, semper venalis et alienae minister potentiae, legem tulit, ut bellum Mithridaticum per Cn. Pompeium  administraretur. 2 Accepta ea magnisque certatum inter imperatores iurgiis, cum Pompeius Lucullo infamiam pecuniae, Lucullus Pompeio interminatam cupiditatem obiiceret imperii neuterque ab altero quod arguebat mentitus argui posset. 3 Nam neque Pompeius, ut primum ad rem publicam adgressus est, quemquam omnino parem tulit, et in quibus rebus primus esse debebat, solus esse cupiebat (neque eo viro quisquam aut alia omnia minus aut gloriam magis concupiit, in adpetendis honoribus inmodicus, in gerendis verecundissimus, ut qui eos ut libentissime iniret, ita finiret aequo animo, et quod cupisset, arbitrio suo sumeret, alieno deponeret) 4 et Lucullus, summus alioqui vir, profusae huius in aedificiis convictibusque et apparatibus luxuriae primus auctor fuit, quem ob iniectas moles mari et receptum suffossis montibus  in terras mare haud infacete Magnus Pompeius Xerxen togatum vocare adsueverat.
 
-[34]  Per id tempus a Q. Metello Creta insula, in populi Romani potestatem redacta est, quae ducibus Panare et Lasthene quattuor et viginti milibus iuvenum coactis, velocitate pernicibus, armorum laborumque patientissimis, sagittarum usu celeberrimis, per triennium Romanos exercitus fatigaverat. 2 Ne ab huius quidem usura gloriae temperavit animum Cn. Pompeius, quin victoriae partem conaretur vindicare. Sed et Luculli et Metelli triumphum cum ipsorum singularis virtus, tum etiam invidia Pompei apud optimum quemque fecit favorabilem. 3 Per haec tempora M. Cicero, qui omnia incrementa sua sibi debuit, vir novitatis nobilissimae et ut vita clarus, ita ingenio maximus, quique effecit, ne quorum arma viceramus, eorum ingenio vinceremur, consul Sergii Catilinae Lentulique et Cethegi et aliorum utriusque ordinis virorum coniurationem singulari virtute, constantia, vigilia curaque aperuit. 4 Catilina metu consularis imperi urbe pulsus est; Lentulus consularis et praetor iterum Cethegusque et alii clari nominis viri auctore senatu, iussu consulis in carcere necati sunt.
+**[34]** Per id tempus a Q. Metello Creta insula, in populi Romani potestatem redacta est, quae ducibus Panare et Lasthene quattuor et viginti milibus iuvenum coactis, velocitate pernicibus, armorum laborumque patientissimis, sagittarum usu celeberrimis, per triennium Romanos exercitus fatigaverat. 2 Ne ab huius quidem usura gloriae temperavit animum Cn. Pompeius, quin victoriae partem conaretur vindicare. Sed et Luculli et Metelli triumphum cum ipsorum singularis virtus, tum etiam invidia Pompei apud optimum quemque fecit favorabilem. 3 Per haec tempora M. Cicero, qui omnia incrementa sua sibi debuit, vir novitatis nobilissimae et ut vita clarus, ita ingenio maximus, quique effecit, ne quorum arma viceramus, eorum ingenio vinceremur, consul Sergii Catilinae Lentulique et Cethegi et aliorum utriusque ordinis virorum coniurationem singulari virtute, constantia, vigilia curaque aperuit. 4 Catilina metu consularis imperi urbe pulsus est; Lentulus consularis et praetor iterum Cethegusque et alii clari nominis viri auctore senatu, iussu consulis in carcere necati sunt.
 
-[35]  Ille senatus dies, quo haec acta sunt, virtutem M. Catonis iam
+**[35]** Ille senatus dies, quo haec acta sunt, virtutem M. Catonis iam
 
 multis in rebus conspicuarn atque praenitentem in altissimo culmine
 
@@ -1154,7 +1154,7 @@ sceleris conandi consilia inierat: quippe fortissime dimicans quem
 
 spiritum supplicio debuerat, proelio reddidit.
 
-[36]  Consulatui Ciceronis non mediocre adiecit decus natus eo anno
+**[36]** Consulatui Ciceronis non mediocre adiecit decus natus eo anno
 
 divus Augustus abhinc annos LXXXII, omnibus omnium gentium viris
 
@@ -1182,7 +1182,7 @@ forrna operis sui; nam vivorum ut magna admiratio, ita censura diffcilis
 
 est.
 
-[37]  Dum haec in urbe Italiaque geruntur, Cn. Pompeius memorabile
+**[37]** Dum haec in urbe Italiaque geruntur, Cn. Pompeius memorabile
 
 adversus Mithridaten, qui post Luculli profectionem magnas novi
 
@@ -1220,7 +1220,7 @@ aliae tum primum in eius potestatem redactae, ut Syria, quae tum primum
 
 facta est stipendiaria. Finis imperii regii terminatus Armenia .
 
-[38]  Haud absurdum videtur propositi operis regulae paucis
+**[38]** Haud absurdum videtur propositi operis regulae paucis
 
 percurrere, quae cuiusque ductu gens ac natio redacta in formulam
 
@@ -1268,7 +1268,7 @@ Metelli ductu longissimae libertatis fine multata est. Syria Pontusque
 
 Cn. Pompei virtutis monumenta sunt.
 
-[39]  Gallias primum a Domitio Fabioque, nepote Pauli, qui
+**[39]** Gallias primum a Domitio Fabioque, nepote Pauli, qui
 
 Allobrogicus vocatus est, intratas cum exercitu, magna mox clade nostra,
 
@@ -1300,7 +1300,7 @@ Cappadociam populo Romano fecit stipendairiam. Sed revertamur ad
 
 ordinem.
 
-[40]  Secuta deinde Cn. Pompei militia, gloriae laborisne maioris
+**[40]** Secuta deinde Cn. Pompei militia, gloriae laborisne maioris
 
 incertum est. Penetratae cum victoria Media, Albania, Hiberia; deinde
 
@@ -1354,7 +1354,7 @@ pars optimatium refragabatur, ne aut promissa civitatibus a Pompeio aut
 
 bene meritis praemia ad arbitrium eius persolverentur.
 
-[41]  Secutus deinde est consulatus C. Caesaris, qui scribenti manum
+**[41]** Secutus deinde est consulatus C. Caesaris, qui scribenti manum
 
 iniicit et quamlibet festinantem in se morari cogit. Hic nobilissima
 
@@ -1398,7 +1398,7 @@ solito variaret, suspectus iis, qui oculis tantummodo eum custodiebant,
 
 foret.
 
-[42]  Longum est narrare, quid et quotiens ausus sit, quanto opere conata
+**[42]** Longum est narrare, quid et quotiens ausus sit, quanto opere conata
 
 eius qui obtinebat Asiam magistratus populi Romani metu suo destituerit.
 
@@ -1426,7 +1426,7 @@ celeritate revectus ad mare, priusquam de ea re ulli proconsulis
 
 redderentur epistulae, omnes, quos ceperat, suffixit cruci.
 
-[43]  Idem mox ad sacerdotium ineundum (quippe absens pontifex factus erat
+**[43]** Idem mox ad sacerdotium ineundum (quippe absens pontifex factus erat
 
 in Cottae consularis locum, cum paene puer a Mario Cinnaque flamen dialis
 
@@ -1468,7 +1468,7 @@ sacerdotum patris, viri in tantum boni, in quantum humana simplicitas
 
 intellegi potest) quo notiora sunt, minus egent stilo.
 
-[44]  Hoc igitur consule inter eum et Cn. Pompeium et M. Crassum inita
+**[44]** Hoc igitur consule inter eum et Cn. Pompeium et M. Crassum inita
 
 potentiae societas, quae urbi orbique terrarum nec minus diverso cuique
 
@@ -1504,7 +1504,7 @@ augere vult invidiam collegae, auxit potentiam. Tum Caesari decretae in
 
 quinquennium Galliae.
 
-[45]  Per idem tempus P. Clodius, homo nobilis, disertus, audax, quique
+**[45]** Per idem tempus P. Clodius, homo nobilis, disertus, audax, quique
 
 neque dicendi neque faciendi ullum nisi quem vellet nosset modum, malorum
 
@@ -1556,7 +1556,7 @@ ac senatu effusa civitate obviam, cum per Tiberim subiret navibus, non ante
 
 iis egressus est, quam ad eum locum pervenit, ubi erat exponenda pecunia.
 
-[46]  Cum deinde inmanis res vix multis voluminibus explicandas C. Caesar
+**[46]** Cum deinde inmanis res vix multis voluminibus explicandas C. Caesar
 
 in Gallia gereret nec contentus plurimis ac felicissimis victoriis
 
@@ -1592,7 +1592,7 @@ quaestor, conservavit Syriamque adeo in populi Romani potestate retinuit,
 
 ut transgressos in eam Parthos felici rerum eventu fugaret ac funderet.
 
-[47]  Per haec insequentiaque et quae praedixirnus tempora amplius
+**[47]** Per haec insequentiaque et quae praedixirnus tempora amplius
 
 quadringenta milia hostium a C. Caesare caesa sunt, plura capta; pugnatum
 
@@ -1636,7 +1636,7 @@ esemplum probarentque eum civem occisum, quo nemo perniciosior rei publicae
 
 neque bonis inimicior vixerat.
 
-[48]  Intra breve deinde spatium belli civilis exarserunt initia, cum
+**[48]** Intra breve deinde spatium belli civilis exarserunt initia, cum
 
 iustissimus quisque et a Caesare et a Pompeio vellet dimitti exercitus;
 
@@ -1694,7 +1694,7 @@ eminuissentque sine periculo, quieta aut certe non praecipitata fatali ante
 
 initium bellorum civilium morte functi sunt.
 
-[49]  Lentulo et Marcello consulibus post urbem conditam annis
+**[49]** Lentulo et Marcello consulibus post urbem conditam annis
 
 septingentis et tribus, et annos octo et septuaginta ante quam tu, M.
 
@@ -1728,7 +1728,7 @@ Caesar cum exercitu Rubiconem transiit. Cn. Pompeius consulesque et maior
 
 pars senatus relicta urbe ac deinde Italia transmisere Dyrrachium.
 
-[50]  At Caesar Domitio legionibusque, Corfini quae una cum eo fuerant,
+**[50]** At Caesar Domitio legionibusque, Corfini quae una cum eo fuerant,
 
 potitus, duce aliisque, qui voluerant abire ad Pompeium, sine dilatione
 
@@ -1754,7 +1754,7 @@ adventus vigore ac fulgore occupatus se Caesari tradidit; uterque legatorum
 
 et quisquis cuiusque ordinis sequi eos voluerat, remissi ad Pompeium.
 
-[51]   Proximo anno cum Dyrrachium ac vicina ei urbi regio castris Pompei
+**[51]** Proximo anno cum Dyrrachium ac vicina ei urbi regio castris Pompei
 
 obtineretur, qui accitis ex ornnibus transmarinis provinciis legionibus,
 
@@ -1784,7 +1784,7 @@ consularis. Variatum deinde proeliis, sed uno longe magis Pompeianis
 
 prospero, quo graviter impulsi sunt Caesaris milites.
 
-[52]  Tum Caesar cum exercitu fatalem victoriae suae Thessaliam petiit.
+**[52]** Tum Caesar cum exercitu fatalem victoriae suae Thessaliam petiit.
 
 Pompeius, longe diversa aliis suadentibus, 2 quorum plerique hortabantur,
 
@@ -1818,7 +1818,7 @@ misericordiae corrupit pertinacia, cum libentius vitam victor iam daret,
 
 quam victi acciperent.
 
-[53]  Pompeius profugiens cum duobus Lentulis consularibus Sextoque filio
+**[53]** Pompeius profugiens cum duobus Lentulis consularibus Sextoque filio
 
 et Favonio praetorio, quos comites ei fortuna adgregaverat, aliis, ut
 
@@ -1864,7 +1864,7 @@ Servilio consulibus tam facilis esset annorum digestio? Quod adieci, non ut
 
 arguerem, sed ne arguerer.
 
-[54]  Non fuit maior in Caesarem, quam in Pompeium fuerat, regis eorumque,
+**[54]** Non fuit maior in Caesarem, quam in Pompeium fuerat, regis eorumque,
 
 quorum is auctoritaie regebatur, fides. Quippe cum venientem eum
 
@@ -1886,7 +1886,7 @@ Qui vir cum summum ei a militibus deferretur imperium, honoratiori parere
 
 maluit.
 
-[55]  Admonet promissae brevitatis fides, quanto omnia transcursu dicenda
+**[55]** Admonet promissae brevitatis fides, quanto omnia transcursu dicenda
 
 sint. Sequens fortunam suam Caesar pervectus in Africam est, quam occiso C.
 
@@ -1922,7 +1922,7 @@ a milite fortius. Cn. Pompeius gravis vulnere inventus inter solitudines
 
 avias interemptus est; Labienum Varumque acies abstulit.
 
-[56]  Caesar omnium victor regressus in urbem, quod humanam excedat fidem,
+**[56]** Caesar omnium victor regressus in urbem, quod humanam excedat fidem,
 
 omnibus, qui contra se arma tulerant, ignovit, magnificentissimisque
 
@@ -1950,7 +1950,7 @@ differendo Cassium offenderat, adiectis etiam consiliar�s caedis
 
 familiarissimis omnium et fortuna partium eius in summum evectis fastigium,
 
-D. Bruto et C. Trebonio aliisque clari nominis viris, interemptus est. 4
+**D** Bruto et C. Trebonio aliisque clari nominis viris, interemptus est. 4
 
 Cui magnam invidiam conciliarat M. Antonius, omnibus audendis paratissimus,
 
@@ -1958,7 +1958,7 @@ consulatus collega, inponendo capiti eius Lupercalibus sedentis pro rostris
 
 insigne regium, quod ad eo ita repulsum erat, ut non offensus videretur.
 
-[57] Laudandum experientia consilium est Pansae atque Hirtii, qui semper
+**[57]** Laudandum experientia consilium est Pansae atque Hirtii, qui semper
 
 praedixerant Caesari ut principatum armis quaesitum armis teneret. Ille
 
@@ -1978,7 +1978,7 @@ erant. Sed profecto ineluctabilis fatorum vis, 3 cuiuscumque fortunam
 
 mutare constituit, consilia corrumpit.
 
-[58] Quo anno id patravere facinus Brutus et Cassius praetores erant, D.
+**[58]** Quo anno id patravere facinus Brutus et Cassius praetores erant, D.
 
 Brutus consul designatus. 2 Hi una cum coniurationis globo, stipati
 
@@ -2002,7 +2002,7 @@ Atheniensium celeberrimi exemplum, relatum a Cicerone, oblivionis
 
 praeteritarum rerum decreto patrum comprobatum est.
 
-[59] Caesaris deinde testamentum apertum est, quo C. Octavium, nepotem
+**[59]** Caesaris deinde testamentum apertum est, quo C. Octavium, nepotem
 
 sororis suae Iuliae, adoptabat. De cuius origine, etiam si premit iter,
 
@@ -2046,7 +2046,7 @@ curvatus aequaliter rotundatusque in colorem arcus velut coronam tanti mox
 
 viri capiti imponens conspectus est.
 
-[60] Non placebat Atiae matri Philippoque vitrico adiri nomen invidiosae
+**[60]** Non placebat Atiae matri Philippoque vitrico adiri nomen invidiosae
 
 fortunae Caesaris, sed adserebant salutaria rei publicae terrarumque orbis
 
@@ -2082,7 +2082,7 @@ sibi; interque naturaliter dissimillimos ac diversa volentis crescebat
 
 odium eoque C. Caesar iuvenis cotidianis Antonii petebatur insidiis.
 
-[61] Torpebat oppressa dominatione Antonii civitas. Indignatio et dolor
+**[61]** Torpebat oppressa dominatione Antonii civitas. Indignatio et dolor
 
 omnibus, vis ad resistendum nulli aderat, cum C. Caesar undevicesimum annum
 
@@ -2114,7 +2114,7 @@ liberatus. Antonius turpi ac nuda fuga coactus deserere Italiam, consulum
 
 autem alter in acie, alter post paucos dies ex volnere mortem obiit.
 
-[62] Omnia ante quam fugaretur Antonius honorifice a senatu in Caesarem
+**[62]** Omnia ante quam fugaretur Antonius honorifice a senatu in Caesarem
 
 exercitumque eius decreta sunt maxime auctore Cicerone; sed ut recessit
 
@@ -2126,7 +2126,7 @@ occupaverant, decretae, laudati quicumque se iis exercitus tradidissent,
 
 omnia transmarina imperia eorum commissa arbitrio. 3 Quippe M. Brutus et
 
-C. Cassius, nunc metuentes arma Antonii, nunc ad augendam eius invidiam
+**C** Cassius, nunc metuentes arma Antonii, nunc ad augendam eius invidiam
 
 simulantes se metuere, testati edictis libenter se vel in perpetuo exilio
 
@@ -2160,7 +2160,7 @@ amore Pompeianarum partium Caesarem laudandum et tollendum censebat, cum
 
 aliud diceret, aliud intellegi vellet.
 
-[63] Interim Antonius fuga transgressus Alpes, primo per conloquia
+**[63]** Interim Antonius fuga transgressus Alpes, primo per conloquia
 
 repulsus a M. Lepido, qui pontifex maximus in C. Caesaris locum furto
 
@@ -2188,7 +2188,7 @@ mox eiusdem proditor, Asinius autem Pollio firmus proposito et Iulianis
 
 partibus fidus, Pompeianis adversus, uterque exercitus tradidere Antonio.
 
-[64] D. Brutus desertus primo a Planco, postea etiam insidiis eiusdem
+**[64]** D. Brutus desertus primo a Planco, postea etiam insidiis eiusdem
 
 petitus, paulatim relinquente eum exercitu fugiens in hospitis cuiusdam
 
@@ -2214,7 +2214,7 @@ velut satiato Antonio paene finita. Lepidus deinde a senatu hostis
 
 iudicatus est, ut ante fuerat Antonius.
 
-[65] Tum inter eum Caesaremque et Antonium commercia epistularum et
+**[65]** Tum inter eum Caesaremque et Antonium commercia epistularum et
 
 condicionum facta mentio, cum Antonius subinde Caesarem admoneret, quam
 
@@ -2244,7 +2244,7 @@ triumpho ductus erat, in ea consularem praetextam iungentem praetoria. Idem
 
 hic postea triumphavit.
 
-[66] Furente deinde Antonio simulque Lepido, quorum uterque, ut
+**[66]** Furente deinde Antonio simulque Lepido, quorum uterque, ut
 
 praediximus, hostes iudicati erant, cum ambo mallent sibi nuntiari, quid
 
@@ -2260,7 +2260,7 @@ vox publica est, cum eius salutem nemo defendisset, qui per tot annos et
 
 publicam civitatis et privatam civium defenderat. 3 Nihil tamen egisti,
 
-M. Antoni (cogit enim excedere propositi formam operis erumpens animo ac
+**M** Antoni (cogit enim excedere propositi formam operis erumpens animo ac
 
 pectore indignatio) nihil, inquam, egisti mercedem caelestissimi oris et
 
@@ -2286,7 +2286,7 @@ illius in te scripta mirabitur, tuum in eum factum execrabitur citiusque e
 
 mundo genus hominum quam Ciceronis nomen cedet.
 
-[67] Huius totius temporis fortunam ne deflere quidem quisquam satis
+**[67]** Huius totius temporis fortunam ne deflere quidem quisquam satis
 
 digne potuit, adeo nemo exprimere verbis potest. Id tamen notandum est, 2
 
@@ -2306,7 +2306,7 @@ currum Lepidi Plancique secuti erant, inter execrationem civium usurpabant
 
 hunc versum: De germanis, non de Gallis duo triumphant consules.
 
-[68]  Suo praeteritum loco referatur; neque enim persona umbram actae rei
+**[68]** Suo praeteritum loco referatur; neque enim persona umbram actae rei
 
 capit. Dum in acie Pharsalica acriter de summa rerum Caesar dimicat, M.
 
@@ -2348,7 +2348,7 @@ quod aut natura sua ei excedendum foret aut minuenda dignitas. Sed ad
 
 ordinem revertendum est.
 
-[69] Iam et Dolabella in Asia C. Trebonium consularem, cui succedebat,
+**[69]** Iam et Dolabella in Asia C. Trebonium consularem, cui succedebat,
 
 fraude deceptum Zmyrnae occiderat, virum adversus merita Caesaris
 
@@ -2394,7 +2394,7 @@ reperias, quos aut pronior fortuna comitata sit aut veluti fatigata
 
 maturius destituerit quam Brutum et Cassium.
 
-[70] Tum Caesar et Antonius traiecerunt exercitus in Macedoniam et apud
+**[70]** Tum Caesar et Antonius traiecerunt exercitus in Macedoniam et apud
 
 urbem Philippos cum Bruto Cassioque acie concurrerunt. Cornu, cui Brutus
 
@@ -2436,7 +2436,7 @@ locum, qua cor emicat, impellens se in vulnus uno ictu transfixus expiravit
 
 protinus.
 
-[71] Messalla, fulgentissimus iuvenis, proximus in illis castris Bruti
+**[71]** Messalla, fulgentissimus iuvenis, proximus in illis castris Bruti
 
 Cassiique auctoritati, cum essent qui eum ducem poscerent, servari
 
@@ -2462,7 +2462,7 @@ quem id facere coegerat, manu, cum se insignibus honorum velasset,
 
 iugulatus est.
 
-[72] Hunc exitum M. Bruti partium septimum et tricesimum annum agentis
+**[72]** Hunc exitum M. Bruti partium septimum et tricesimum annum agentis
 
 fortuna esse voluit, incorrupto animo eius in diem, quae illi omnes
 
@@ -2498,7 +2498,7 @@ quilibet dux erat idoneus, cum fortuna non electionem daret, sed perfugium
 
 ostenderet exitialemque tempestatem fugientibus statio pro portu foret.
 
-[73] Hic adulescens erat studiis rudis, sermone barbarus, impetu
+**[73]** Hic adulescens erat studiis rudis, sermone barbarus, impetu
 
 strenuus, manu promptus, cogitatu celer, fide patri dissimillimus,
 
@@ -2526,7 +2526,7 @@ depucleret vindicatum armis ac ductu patris sui mare infestare piraticis
 
 sceleribus.
 
-[74] Fractis Brutianis Cassianisque partibus Antonius transmarinas
+**[74]** Fractis Brutianis Cassianisque partibus Antonius transmarinas
 
 obiturus provincias substitit. Caesar in Italiam se recepit eamque longe
 
@@ -2556,7 +2556,7 @@ cuius initium incendii princeps eius loci fecit Macedonicus, qui subiecto
 
 rebus ac penatibus suis igni transfixum se gladio flammae intulit.
 
-[75]  Per eadem tempora exarserat in Campania be1lum, quod professus
+**[75]** Per eadem tempora exarserat in Campania be1lum, quod professus
 
 eorum, qui perdiderant agros, patrocinium ciebat Ti. Claudius Nero
 
@@ -2584,7 +2584,7 @@ facilius occultaretur fuga, pervenit ad mare et cum viro Nerone pervecta in
 
 Siciliam est.
 
-[76] Quod alieno testimonium redderem, eo non fraudabo avum meum. Quippe C. Velleius, honoratissimo inter illos trecentos et sexaginta iudices loco
+**[76]** Quod alieno testimonium redderem, eo non fraudabo avum meum. Quippe C. Velleius, honoratissimo inter illos trecentos et sexaginta iudices loco
 
 a Cn. Pompeio lectus, eiusdem Marcique Bruti ac Ti. Neronis praefectus
 
@@ -2610,7 +2610,7 @@ classis factum ducem, consiliis suis inlectum ac fide data iunxit Antonio:
 
 pax circa Brundusium composita. 4 Per quae tempora Rufi Salvidieni scelesta consilia patefacta sunt. Qui natus obscurissimis initiis parum habebat summa accepisse et proximus a Cn. Pompeio ipsoque  Caesare equestris ordinis consul creatus esse, nisi in id ascendisset, e quo infra se et Caesarem videret et rem publicam.
 
-[77] Tum expostulante consensu populi, quem gravis urebat infesto mari annona, cum Pompeio quoque circa Misenum pax inita, qui haud absurde, cum
+**[77]** Tum expostulante consensu populi, quem gravis urebat infesto mari annona, cum Pompeio quoque circa Misenum pax inita, qui haud absurde, cum
 
 in navi Caesaremque et Antonium cena exciperet, dixit in carinis suis se
 
@@ -2632,7 +2632,7 @@ virum collegam officii Mena et Menecrates fastidierant, Pompeius in Sicilia
 
 interfecerat.
 
-[78]  Hoc tractu temporum Octaviam, sororem Caesaris, M. Antonius duxit uxorem. Redierat Pompeius in Siciliam, Antonius in transmarinas provincias,
+**[78]** Hoc tractu temporum Octaviam, sororem Caesaris, M. Antonius duxit uxorem. Redierat Pompeius in Siciliam, Antonius in transmarinas provincias,
 
 quas magnis momentis Labienus, ex Brutianis castris profectus ad Parthos,
 
@@ -2648,11 +2648,11 @@ experientia durabat exercitum. 3  Eadem tempestate Calvinus Domitius, cum ex con
 
 acie fugam fusti percussit.
 
-[79]  Crescente in dies et classe et fama Pompei Caesar molem belli eius suscipere statuit. Aedificandis navibus contrahendoque militi ac remigi
+**[79]** Crescente in dies et classe et fama Pompei Caesar molem belli eius suscipere statuit. Aedificandis navibus contrahendoque militi ac remigi
 
 navalibusque adsuescendo certaminibus atque exercitationibus praefectus est
 
-M. Agrippa, virtutis nobilissimae, labore, vigilia, periculo invictus
+**M** Agrippa, virtutis nobilissimae, labore, vigilia, periculo invictus
 
 parendique, sed uni, scientissimus, aliis sane imperandi cupidus et per
 
@@ -2690,7 +2690,7 @@ dignitatem retinet, nunc vitam precatur, a Titio iugulatus est. 6  Cui in tantum
 
 Pompei faciens execratione populi spectaculo, quod praebebat, pelleretur.
 
-[80]  Acciverat gerens contra Pompeium bellum ex Africa Caesar Lepidum cum duodecim semiplenis legionibus. Hic vir omnium vanissimus neque ulla virtute tam longam fortunae indugentiarn meritus exercitum Pompei, quia
+**[80]** Acciverat gerens contra Pompeium bellum ex Africa Caesar Lepidum cum duodecim semiplenis legionibus. Hic vir omnium vanissimus neque ulla virtute tam longam fortunae indugentiarn meritus exercitum Pompei, quia
 
 propior fuerat, sequentem non ipsius, sed Caesaris auctoritatem ac fidem,
 
@@ -2720,11 +2720,11 @@ advolutus est. Vita rerumque suarum dominium concessa ei sunt, spoliata,
 
 quam tueri non poterat, dignitas.
 
-[81]  Subita deinde exercitus seditio, qui plexumque contemplatus
+**[81]** Subita deinde exercitus seditio, qui plexumque contemplatus
 
 frequentiam suam a disciplina desciscit et, quod cogere se putat posse, rogare non sustinet, partim severitate, partim liberalitate discussa principis, 2  speciosumque per idem tempus adiectum supplementum Campanae coloniae (veteranis in agros deductis qui coloniae veteranis in agros deductis qui coloniae eius relicti erant publici: pro his longe uberiores reditus duodecies sestertium in Creta insula redditi et aqua promissa, quae hodieque singulare et salubritaiis instrumentum et amoenitatis ornarnentum est. 3  Insigne coronae classicae, quo nemo umquam Romanorum donatus erat, hoc bello Agrippa singulari virtute meruit. Vicior deinde Caesar reversus in urbem contractas emptionibus complures domos per procuratores, quo laxior fieret ipsius, publicis se usibus destinare professus est, templumque Apollinis et circa porticus facturum promisit, quod ab eo singulari extructum munificentia est.
 
-[82]  Qua aestate Caesar tam prospere sepelivit in Sicilia bellum,
+**[82]** Qua aestate Caesar tam prospere sepelivit in Sicilia bellum,
 
 fortuna, in Caesare et in re publica mitis, saeviit ad Orientem. Quippe
 
@@ -2762,7 +2762,7 @@ velatus aurea et thyrsum tenens cothurnisque succinctus curru velut Liber
 
 Pater vectus esset Alexandriae.
 
-[83] Inter hunc apparatum belli Plancus, non iudicio recta legendi neque amore rei publicae aut Caesaris, quippe haec semper impugnabat, sed morbo
+**[83]** Inter hunc apparatum belli Plancus, non iudicio recta legendi neque amore rei publicae aut Caesaris, quippe haec semper impugnabat, sed morbo
 
 proditor, cum fuisset humillimus adsentator reginae et infra servos cliens,
 
@@ -2784,7 +2784,7 @@ nefanda Plancus absenti Antonio in senatu obiceret, "multa,", inquit,
 
 "mehercules fecit Antonius pridie quam tu illum relinqueres ".
 
-[84]  Caesare deinde et Messala Corvino consulibus debellatum apud Actium, ubi longe ante quam dimicaretur exploratissima Iulianarum partium fuit
+**[84]** Caesare deinde et Messala Corvino consulibus debellatum apud Actium, ubi longe ante quam dimicaretur exploratissima Iulianarum partium fuit
 
 victoria. Vigebat in hac parte mi1es atque imperator, in illa marcebant
 
@@ -2802,11 +2802,11 @@ numquam reginam nisi nomine salutavit, maximo et praecipiti periculo
 
 transmisit ad Caesarem. Denique in ore atque oculis Antonianae classis per
 
-M. Agrippam Leucas expugnata, Patrae captae, Corinthus occupata, bis ante
+**M** Agrippam Leucas expugnata, Patrae captae, Corinthus occupata, bis ante
 
 ultimum discrimen classis hostium superata.
 
-[85]  Advenit deinde maximi discriminis dies, quo Caesar Antoniusque productis classibus pro salute alter, in ruinam alter terrarum orbis
+**[85]** Advenit deinde maximi discriminis dies, quo Caesar Antoniusque productis classibus pro salute alter, in ruinam alter terrarum orbis
 
 dimicavere. 2  Dextrum navium Iulianarum cornu M. Lurio commissum, laevum Arruntio, Agrippae omne classici certaminis arbitrium; Caesar ei parti destinatus, in quam a fortuna vocaretur, ubique aderat. Classis Antonii
 
@@ -2836,7 +2836,7 @@ temperaturus fuerit, qui ad eius arbitrium direxerit fugam. Idem locatus in
 
 terra fecit exercitus, cum se Canidius praecipti fuga rapuisset ad Antonium.
 
-[86]  Quid ille dies terrarum orbi praestiterit, ex quo in quem statum
+**[86]** Quid ille dies terrarum orbi praestiterit, ex quo in quem statum
 
 pervenerit fortuna publica, quis in hoc transcursu tam artati operis
 
@@ -2860,7 +2860,7 @@ mea ", inquit, "in Antonium maiora merita sunt, illius in me beneficia
 
 notiora; itaque discrimini vestro me subtraham et ero praeda victoris".
 
-[87]  Proximo deinde anno persecutus reginam Antoniumque Alexandream, ultimam bellis civilibus imposuit manum. Antonius se ipse non segniter interemit, adeo ut multa desidiae crimina morte redimeret. At Cleopatra
+**[87]** Proximo deinde anno persecutus reginam Antoniumque Alexandream, ultimam bellis civilibus imposuit manum. Antonius se ipse non segniter interemit, adeo ut multa desidiae crimina morte redimeret. At Cleopatra
 
 frustratis custodibus inlata aspide in morsu et sanie eius expers muliebris
 
@@ -2882,7 +2882,7 @@ qua semper usus erat, congruebat. Ultimus autem ex interfectoribus Caesaris
 
 Parmensis Cassius morte poenas dedit, ut dederat Trebonius primus.
 
-[88]  Dum bello Actiaco Alexandrinoque Caesar imponit ultimam manum, M. Lepidus, iuvenis forma quam mente melior, Lepidi eius, qui triumvir fuerat rei publicae constituendae, filius, Iunia Bruti sorore natus,
+**[88]** Dum bello Actiaco Alexandrinoque Caesar imponit ultimam manum, M. Lepidus, iuvenis forma quam mente melior, Lepidi eius, qui triumvir fuerat rei publicae constituendae, filius, Iunia Bruti sorore natus,
 
 interficiendi, simul in urbem revertisset, Caesaris consilia inierat. 2
 
@@ -2908,7 +2908,7 @@ Lepidi uxor, quae vivo igni devorato praematura morte immortalem nominis
 
 sui pensavit memoriam.
 
-[89]  Caesar autem reversus in Italiam atque urbem quo occursu, quo
+**[89]** Caesar autem reversus in Italiam atque urbem quo occursu, quo
 
 favore hominum omnium generum, aetatum, ordinum exceptus sit, quae
 
@@ -2952,7 +2952,7 @@ spatium impensurum in id solum opus scriptorem fatigarent: nos memores
 
 professionis universam imaginem principatus eius oculis animisque subiecimus.
 
-[90] Sepultis, ut praediximus, bellis civilibus coalescentibusque rei
+**[90]** Sepultis, ut praediximus, bellis civilibus coalescentibusque rei
 
 publicae membris, et coaluere quae tam longa armorum series laceraverat.
 
@@ -3000,7 +3000,7 @@ numquam vacaverant, eae sub C. Antistio ac deinde P. Silio legato
 
 ceterisque postea etiam latrociniis vacarent.
 
-[91] Dum pacatur occidens, ab oriente ac rege Parthorum signa Romana,
+**[91]** Dum pacatur occidens, ab oriente ac rege Parthorum signa Romana,
 
 quae Crasso oppresso Orodes, quae Antonio pulso filius eius Phraates
 
@@ -3036,7 +3036,7 @@ passurus minus conspici. Neque hic prioribus in occultando felicior fuit,
 
 abditusque carceri cum consciis facinoris mortem dignissimam vita sua obiit.
 
-[92] Praeclarum excellentis viri factum C. Sentii Saturnini circa ea
+**[92]** Praeclarum excellentis viri factum C. Sentii Saturnini circa ea
 
 tempora consulis ne fraudetur memoria. Aberat ordinandis Asiae Orientisque
 
@@ -3070,7 +3070,7 @@ libentius et praesentia invidia, praeterita veneratione prosequimur et his
 
 nos obrui, illis instrui credimus.
 
-[93] Ante triennium fere, quam Egnatianum scelus erumperet, circa Murenae
+**[93]** Ante triennium fere, quam Egnatianum scelus erumperet, circa Murenae
 
 Caepionisque coniurationis tempus ,abhinc annos quinquaginta, M. Marcellus,
 
@@ -3078,7 +3078,7 @@ sororis Augusti Octaviae filius, quem homines ita, si quid accidisset
 
 Caesari, successorem potentiae eius arbitrabantur futurum, ut tamen id per
 
-M. Agrippam securo ei posse contingere non existimarent, magnificentissimo
+**M** Agrippam securo ei posse contingere non existimarent, magnificentissimo
 
 munere aedilitatis edito decessit admodum iuvenis, sane, ut aiunt,
 
@@ -3094,7 +3094,7 @@ filiam Caesaris Iuliam, quam in matrimonio Marcellus habuerat, duxit
 
 uxorem, feminam neque sibi neque rei publicae felicis uteri.
 
-[94] Hoc tractu temporum Ti. Claudius Nero, quo trimo, ut praediximus,
+**[94]** Hoc tractu temporum Ti. Claudius Nero, quo trimo, ut praediximus,
 
 Livia, Drusi Claudiani filia, despondente Ti. Nerone, cui ante nupta
 
@@ -3122,7 +3122,7 @@ potestatem populi Romani regnum eius Artavasdi dedit. Quin rex quaque
 
 Parthorum tanti nominis fama territus liberos suos ad Caesarem misit obsides.
 
-[95] Reversum inde Neronem Caesar haud mediocris belli mole experiri
+**[95]** Reversum inde Neronem Caesar haud mediocris belli mole experiri
 
 statuit, adiutore operis dato fratre ipsius Druso Claudio, quem intra
 
@@ -3146,7 +3146,7 @@ Plancus timere deberet, nec quidquam obiicere posset adulescentibus aut
 
 obiicientes audire, quod non agnosceret senex.
 
-[96] Mors deinde Agrippae, qui novitatem suam multis rebus nobilitaverat
+**[96]** Mors deinde Agrippae, qui novitatem suam multis rebus nobilitaverat
 
 atque in hoc perduxerat, ut et Neronis esset socer, cuiusque liberos
 
@@ -3164,7 +3164,7 @@ multiplices eo bello victorias tanti mperatoris alio loco explicabimus: hoc
 
 opus servet formam suam. Huius victoriae compos Nero ovans triumphavit.
 
-[97] Sed dum in hac parte imperii omnia geruntur prosperrime, accepta in
+**[97]** Sed dum in hac parte imperii omnia geruntur prosperrime, accepta in
 
 Germania clades sub legato M. Lollio, homine in omnia pecuniae quam recte
 
@@ -3200,7 +3200,7 @@ stipendiariae redigeret provinciae. Tum alter triumphus cum altero
 
 consulatu ei oblatus est.
 
-[98] Dum ea, quae diximus, in Pannonia Germaniaque geruntur, atrox in
+**[98]** Dum ea, quae diximus, in Pannonia Germaniaque geruntur, atrox in
 
 Thracia bellum ortum, omnibus eius gentis nationibus in arma accensis, L.
 
@@ -3222,7 +3222,7 @@ diligat aut facilius sufficiat negotio et magis quae agenda sunt curet sine
 
 ulla ostentatione agendi.
 
-[99] Brevi interiecto spatio Ti. Nero duobus consulatibus totidemque
+**[99]** Brevi interiecto spatio Ti. Nero duobus consulatibus totidemque
 
 triumphis actis tribuniciae potestatis consortione aequatus Augusto, civium
 
@@ -3254,7 +3254,7 @@ convenientes semper privato, si illa maiestas privata umquam fuit, fasces
 
 suos summiserint fassique sint otium eius honoratius imperio suo.
 
-[100] Sensit terrarum orbis digressum a custodia Neronem urbis: nam et
+**[100]** Sensit terrarum orbis digressum a custodia Neronem urbis: nam et
 
 Parthus desciscens a societate Romana adiecit Armeniae manum et Germania,
 
@@ -3298,7 +3298,7 @@ subducta oculis, quam tamen comitata mater Scribonia voluntaria exilii
 
 permansit comes.
 
-[101] Breve ab hoc intercesserat spatium, cum C. Caesar ante aliis
+**[101]** Breve ab hoc intercesserat spatium, cum C. Caesar ante aliis
 
 provinciis ad visendum obitis in Syriam missus, convento prius Ti. Nerone,
 
@@ -3328,7 +3328,7 @@ Parthus apud Gaium in nostra ripa, posterior hic apud regem in hostili
 
 epulatus est.
 
-[102] Quo tempore M. Lollii, quem veluti moderatorem iuventae filii sui
+**[102]** Quo tempore M. Lollii, quem veluti moderatorem iuventae filii sui
 
 Augustus esse voluerat, perfida et plena subdoli ac versuti animi consilia,
 
@@ -3360,7 +3360,7 @@ obiit, cum ante annum ferme L. Caesar frater eius Hispanias petens
 
 Massiliae decessisset.
 
-[103] Sed fortuna, quae subduxerat spem magni nominis, iam tum rei
+**[103]** Sed fortuna, quae subduxerat spem magni nominis, iam tum rei
 
 publicae sua praesidia reddiderat: quippe ante utriusque horum obitum patre
 
@@ -3398,7 +3398,7 @@ quietis, pacis, tranquillitatis, adeo ut nec plus sperari potuerit nec spei
 
 responderi felicius.
 
-[104] Adoptatus eadem die etiam M. Agrippa, quem post mortem Agrippae
+**[104]** Adoptatus eadem die etiam M. Agrippa, quem post mortem Agrippae
 
 Iulia enixa erat, sed in Neronis adoptione illud adiectum his ipsis
 
@@ -3444,7 +3444,7 @@ ego in Pannonia, ego in Germania donatus sum" neque verbis exprimi et
 
 fortasse vix mereri fidem potest.
 
-[105] Intrata protinus Germania, subacti Canninefates, Attuarii,
+**[105]** Intrata protinus Germania, subacti Canninefates, Attuarii,
 
 Bructeri, recepti Cherusci (gentis eius Arminius mox nostra clade nobilis),
 
@@ -3474,7 +3474,7 @@ cuius mediis finibus ad caput Lupiae fluminis hiberna digrediens princeps
 
 locaverat.
 
-[106] Pro dii boni, quanti voluminis opera insequenti aestate sub duce
+**[106]** Pro dii boni, quanti voluminis opera insequenti aestate sub duce
 
 Tiberio Caesare gessimus! Perlustrata armis tota Germania est, victae
 
@@ -3502,7 +3502,7 @@ Qumine Albi subvecta, cum plurimarum gentium victoria parta cum
 
 abundantissima rerum omnium copia exercitui Caesarique se iunxit.
 
-[107] Non tempero mihi quin tantae rerum magnitudini hoc, qualecumque
+**[107]** Non tempero mihi quin tantae rerum magnitudini hoc, qualecumque
 
 est, inseram. Cum citeriorem ripam praedicti fluminis castris occupassemus
 
@@ -3538,7 +3538,7 @@ hostium fraude eorum temptato exercitu in hiberna legiones reduxit, eadem
 
 qua priore anno festinatione urbem petens.
 
-[108] Nihil erat iam in Germania, quod vinci posset, praeter gentem
+**[108]** Nihil erat iam in Germania, quod vinci posset, praeter gentem
 
 Marcomannorum, quae Maroboduo duce excita sedibus suis atque in interiora
 
@@ -3560,51 +3560,51 @@ potentissima. Occupatis igitur, quos praediximus, locis finitimos omnis aut
 
 bello domuit aut condicionibus iuris sui fecit.
 
-[109] Corpus suum custodientium imperium, perpetuis exercitiis paene adRomanae disciplinae formam redactum, brevi in eminens et nostro quoque imperio timendum perduxit fastigium gerebatque se ita adversus Romanos, ut neque bello nos lacesseret, et si lacesseretur, superesse sibi vim ac voluntatem resistendi ostenderet. 2 Legati, quos mittebat ad Caesares,  interdum ut supplicem commendabant, interdum ut pro pari loquebantur. Gentibus hominibusque a nobis desciscentibus erat apud eum perfugium, in  totumque ex male dissimulato agebat aemulum; exercitunlque, quem septuaginta milium peditum, quattuor equitum fecerat, adsiduis adversus finitimos bellis exercendo maiori quam, quod habebat, operi praeparabat:  3 eratque etiam eo timendus, quod cum Germaniam ad laevam et in fronte, Pannoniam ad dextram, a tergo sedium suarum haberet Noricos, tamquam in omnes semper venturus ab omnibus timebatur. 4 Nec securam incrementi sui patiebatur esse Italiam, quippe cum a summis Alpium iugis, quae finem Italiae terminant, initium eius finium haud multo plus ducentis milibus passuum abesset. 5 Hunc virum et hanc regionem proximo anno diversis e  partibus Ti. Caesar adgredi statuit. Sentio Saturnino mandatum, ut per Cattos excisis continentibus Hercyniae silvis legiones Boiohaemum (id regioni, quam incolebat Maroboduus, nomen est) duceret, ipse a Carnunto,  qui locus Norici regni proximus ab hac parte erat, exercitum, qui in Illyrico merebat, ducere in Marcomannos orsus est.
+**[109]** Corpus suum custodientium imperium, perpetuis exercitiis paene adRomanae disciplinae formam redactum, brevi in eminens et nostro quoque imperio timendum perduxit fastigium gerebatque se ita adversus Romanos, ut neque bello nos lacesseret, et si lacesseretur, superesse sibi vim ac voluntatem resistendi ostenderet. 2 Legati, quos mittebat ad Caesares,  interdum ut supplicem commendabant, interdum ut pro pari loquebantur. Gentibus hominibusque a nobis desciscentibus erat apud eum perfugium, in  totumque ex male dissimulato agebat aemulum; exercitunlque, quem septuaginta milium peditum, quattuor equitum fecerat, adsiduis adversus finitimos bellis exercendo maiori quam, quod habebat, operi praeparabat:  3 eratque etiam eo timendus, quod cum Germaniam ad laevam et in fronte, Pannoniam ad dextram, a tergo sedium suarum haberet Noricos, tamquam in omnes semper venturus ab omnibus timebatur. 4 Nec securam incrementi sui patiebatur esse Italiam, quippe cum a summis Alpium iugis, quae finem Italiae terminant, initium eius finium haud multo plus ducentis milibus passuum abesset. 5 Hunc virum et hanc regionem proximo anno diversis e  partibus Ti. Caesar adgredi statuit. Sentio Saturnino mandatum, ut per Cattos excisis continentibus Hercyniae silvis legiones Boiohaemum (id regioni, quam incolebat Maroboduus, nomen est) duceret, ipse a Carnunto,  qui locus Norici regni proximus ab hac parte erat, exercitum, qui in Illyrico merebat, ducere in Marcomannos orsus est.
 
-[110] Rumpit interdum, interdum moratur proposita hominum fortuna. Praeparaverat iam hiberna Caesar ad Danubium admotoque exercitu non plus  quam quinque dierum iter a primis hostium aberat, 2 legionesque quas Saturninum admovere placuerat, paene aequali divisae intervallo ab hoste  intra paucos dies in praedicto loco cum Caesare se iuncturae erant, cum universa Pannonia, insolens longae pacis bonis, adulta viribus, Delmatia  omnibusque tractus eius gentibus in societatem adductis consilii, arma corripuit. 3 Tum necessaria gloriosis praeposita neque tutum visum abdito in interiora exercitu vacuam tam vicino hosti relinquere Italiam. Gentium nationumque, quae rebel1averant, omnis numerus amplius octingentis milibus explebat; ducenta fere peditum colligebantur armis habilia, equitum novem.Cuius immensae multitudinis, 4 parentis acerrimis ac peritissimis ducibus, pars petere Italiam decreverat iunctam sibi Nauporti ac Tergestis confinio, pars in Macedoniam se effuderat, pars suis sedibus praesidium esse destinaverat. Maxima duobus Batonibus ac Pinneti duribus auctoritas  erat. 5 Omnibus autem Pannoniis non disciplinae tantummodo, sed linguae quoque notitia Romanae, plerisque etiam litterarum usus et familiaris animorum erat exercitatio. Etaque hercules nulla umquam natio tam mature  consilio belli bellum iunxit ac decreta patravit. 6 Oppressi cives Romani, trucidati negotiatores, magnus vexillariorum numerus ad internecionem ea in regione, quae plurimum ab imperatore aberat, caesus,  occupata armis Macedonia, omnia et in omnibus 1ocis igni ferroque vastata. Quin etiam tantus huius belli metus fuit, ut stabilem illum et firmatum tantorum bellorum experientia Caesaris Augusti animum quateret atque terreret.
+**[110]** Rumpit interdum, interdum moratur proposita hominum fortuna. Praeparaverat iam hiberna Caesar ad Danubium admotoque exercitu non plus  quam quinque dierum iter a primis hostium aberat, 2 legionesque quas Saturninum admovere placuerat, paene aequali divisae intervallo ab hoste  intra paucos dies in praedicto loco cum Caesare se iuncturae erant, cum universa Pannonia, insolens longae pacis bonis, adulta viribus, Delmatia  omnibusque tractus eius gentibus in societatem adductis consilii, arma corripuit. 3 Tum necessaria gloriosis praeposita neque tutum visum abdito in interiora exercitu vacuam tam vicino hosti relinquere Italiam. Gentium nationumque, quae rebel1averant, omnis numerus amplius octingentis milibus explebat; ducenta fere peditum colligebantur armis habilia, equitum novem.Cuius immensae multitudinis, 4 parentis acerrimis ac peritissimis ducibus, pars petere Italiam decreverat iunctam sibi Nauporti ac Tergestis confinio, pars in Macedoniam se effuderat, pars suis sedibus praesidium esse destinaverat. Maxima duobus Batonibus ac Pinneti duribus auctoritas  erat. 5 Omnibus autem Pannoniis non disciplinae tantummodo, sed linguae quoque notitia Romanae, plerisque etiam litterarum usus et familiaris animorum erat exercitatio. Etaque hercules nulla umquam natio tam mature  consilio belli bellum iunxit ac decreta patravit. 6 Oppressi cives Romani, trucidati negotiatores, magnus vexillariorum numerus ad internecionem ea in regione, quae plurimum ab imperatore aberat, caesus,  occupata armis Macedonia, omnia et in omnibus 1ocis igni ferroque vastata. Quin etiam tantus huius belli metus fuit, ut stabilem illum et firmatum tantorum bellorum experientia Caesaris Augusti animum quateret atque terreret.
 
-[111] Habiti itaque dilectus, revocati undique et omnes veterani, viri  feminaeque ex censu 1ibertinum coactae dare militem. Audita in senatu vox principis, decimo die, ni caveretur, posse hostem in urbis Romae venire conspectum. Senatorum equitumque Romanorum exactae ad id bellum operae, pollicitati. 2 Omnia haec frustra praeparassemus, nisi qui illa regeret fuisset. Itaque ut praesidium ultimum res publica ab Augusto ducem in bellum poposcit Tiberium. 3 Habuit in hoc quoque bello mediocritas nostra speciosi ministerii locum. Finita equestri mi1itia designatus quaesior necdum senator aequatus senatoribus, etiam designatis tribunis plebei, partem exercitus ab urbe traditi ab Augusto perduxi ad filium eius. 4 In quaestura deinde remissa sorte provinciae legatus eiusdem ad eundem missus sum. Quas nos primo anno acies hostium vidimus! Quantis prudentia ducis opportunitatibus furentes eorum vires universas elusimus, fudimus partibus! Quanto cum temperamento simul civilitatis res auctoritate imperatoria agi vidimus! Qua prudentia hiberna disposita sunt! Quanto opere inclusus custodiis exercitus nostri, ne qua posset erumpere inopsque copiarum et intra se furens viribus hostis elanguesceret!
+**[111]** Habiti itaque dilectus, revocati undique et omnes veterani, viri  feminaeque ex censu 1ibertinum coactae dare militem. Audita in senatu vox principis, decimo die, ni caveretur, posse hostem in urbis Romae venire conspectum. Senatorum equitumque Romanorum exactae ad id bellum operae, pollicitati. 2 Omnia haec frustra praeparassemus, nisi qui illa regeret fuisset. Itaque ut praesidium ultimum res publica ab Augusto ducem in bellum poposcit Tiberium. 3 Habuit in hoc quoque bello mediocritas nostra speciosi ministerii locum. Finita equestri mi1itia designatus quaesior necdum senator aequatus senatoribus, etiam designatis tribunis plebei, partem exercitus ab urbe traditi ab Augusto perduxi ad filium eius. 4 In quaestura deinde remissa sorte provinciae legatus eiusdem ad eundem missus sum. Quas nos primo anno acies hostium vidimus! Quantis prudentia ducis opportunitatibus furentes eorum vires universas elusimus, fudimus partibus! Quanto cum temperamento simul civilitatis res auctoritate imperatoria agi vidimus! Qua prudentia hiberna disposita sunt! Quanto opere inclusus custodiis exercitus nostri, ne qua posset erumpere inopsque copiarum et intra se furens viribus hostis elanguesceret!
 
-[112] Felix eventu, forte conatu prima aestate belli Messalini opus mandandum est memoriae. 2 Qui vir animo etiam quam gente nobilior dignissimusque, qui et patrem Corvinum habuisset et cognomen suum Cottae  fratri relinqueret, praepositus Illyrico subita rebellione cum semiplena  legione vicesima circumdatus hostili exercitu amplius viginti milia fudit fugavitque et ob id ornamentis triumphalibus honoratus est. 3 ita placebat barbaris numerus suus, ita fiducia virium, ut ubicumque Caesar esset, nihil in se reponerent. Pars exercitus eorum, proposita ipsi duci et ad arbitrium utilitatemque nostram macerata perductaque ad exitiabilem famem, neque instantem sustinere neque cum facientibus copiam pugnandi derigentibusque aciem ausa congredi occupato monte Claudio munitione se defendit. 4 At ea pars, quae obviam se effuderat exercitui, quem A. Caecina et Silvanus Plautius consulares ex transmarinis adducebant provinciis, circumfusa quinque legionibus nostris auxiliaribusque ei equitatui regio (quippe magnam Thracum manum iunctus praedictis ducibus Rhoemetalces, Thraciae rex, in adiutorium eius belli secum trahebat) paene exitiabilem omnibus cladem intulit: 5 fusa regiorum equestris acies, fugatae alae, conversae cohortes sunt, apud signa quoque legionum trepidatum. Sed Romani virtus militis plus eo tempore vindicavit gloriae  quam ducibus reliquit, qui multum a more imperatoris sui discrepantes ante in hostem inciderunt, quam per explora,tores, ubi hostis esset, cognoscerent. Iam igitur in dubiis rebus semet ipsae legiones adhortatae, 6 iugulatis ab hoste quibusdam tribunis militum, interempto praefecto castrorum praefectisque cohortium, non incruentis centurionibus, e quibus etiam primi ordinis cecidere, invasere hostes nec sustinuisse contenti perrupta eorum acie ex insperato victoriam vindicaverunt. 7 Hoc fere tempore Agrippa, qui eodem die quo Tiberius adoptatus ab avo suo naturali erat et iam ante biennium, qualis esset, apparere coeperat, mira pravitate animi atque ingenii in praecipitia conversus patris atque eiusdem avi sui animum alienavit sibi, moxque crescentibus in dies vitiis dignum furore suo habuit exitum.
+**[112]** Felix eventu, forte conatu prima aestate belli Messalini opus mandandum est memoriae. 2 Qui vir animo etiam quam gente nobilior dignissimusque, qui et patrem Corvinum habuisset et cognomen suum Cottae  fratri relinqueret, praepositus Illyrico subita rebellione cum semiplena  legione vicesima circumdatus hostili exercitu amplius viginti milia fudit fugavitque et ob id ornamentis triumphalibus honoratus est. 3 ita placebat barbaris numerus suus, ita fiducia virium, ut ubicumque Caesar esset, nihil in se reponerent. Pars exercitus eorum, proposita ipsi duci et ad arbitrium utilitatemque nostram macerata perductaque ad exitiabilem famem, neque instantem sustinere neque cum facientibus copiam pugnandi derigentibusque aciem ausa congredi occupato monte Claudio munitione se defendit. 4 At ea pars, quae obviam se effuderat exercitui, quem A. Caecina et Silvanus Plautius consulares ex transmarinis adducebant provinciis, circumfusa quinque legionibus nostris auxiliaribusque ei equitatui regio (quippe magnam Thracum manum iunctus praedictis ducibus Rhoemetalces, Thraciae rex, in adiutorium eius belli secum trahebat) paene exitiabilem omnibus cladem intulit: 5 fusa regiorum equestris acies, fugatae alae, conversae cohortes sunt, apud signa quoque legionum trepidatum. Sed Romani virtus militis plus eo tempore vindicavit gloriae  quam ducibus reliquit, qui multum a more imperatoris sui discrepantes ante in hostem inciderunt, quam per explora,tores, ubi hostis esset, cognoscerent. Iam igitur in dubiis rebus semet ipsae legiones adhortatae, 6 iugulatis ab hoste quibusdam tribunis militum, interempto praefecto castrorum praefectisque cohortium, non incruentis centurionibus, e quibus etiam primi ordinis cecidere, invasere hostes nec sustinuisse contenti perrupta eorum acie ex insperato victoriam vindicaverunt. 7 Hoc fere tempore Agrippa, qui eodem die quo Tiberius adoptatus ab avo suo naturali erat et iam ante biennium, qualis esset, apparere coeperat, mira pravitate animi atque ingenii in praecipitia conversus patris atque eiusdem avi sui animum alienavit sibi, moxque crescentibus in dies vitiis dignum furore suo habuit exitum.
 
-[113] Accipe nunc, M. Vinici, tantum in bello ducem, quantum in pacevides principem. Iunctis exercitibus, quique sub Caesare fuerant quique ad eum venerant, contractisque in una castra decem legionibus, septuaginta amplius cohortibus, decem alis et pluribus quam decem veteranorum milibus, ad hoc magno voluntariorum numero frequentique equite regio, tanto denique exercitu, quantus nullo umquam loco post bella fuerat civilia, omnes eo ipso laeti erant maximamque fiduciam victoriae in numero reponebant. 2 At imperator, optimus eorum quae agebat iudex et utilia speciosis praeferens quodque semper eum facientem vidi in omnibus bellis, quae probanda essent, non quae utique probarentur sequens, paucis diebus exercitum, qui venerat, ad refovendas ex itinere eius vires moratus, cum eum maiorem, quam ut temperari posset, neque habi1em gubernaculo cerneret, dimittere statuit;  3 prosecutusque longo et perquam laborioso itinere, cuius difficultas narrari vix potest, ut neque universos quisquam auderet adgredi et partem digredientium, suorum quisque metu finium, universi temptare non possent, remisit eo, unde venerant, et ipse asperrimae hiemis initio regressus Sisciam legatos, inter quos ipsi fuimus, partitis praefecit hibernis.
+**[113]** Accipe nunc, M. Vinici, tantum in bello ducem, quantum in pacevides principem. Iunctis exercitibus, quique sub Caesare fuerant quique ad eum venerant, contractisque in una castra decem legionibus, septuaginta amplius cohortibus, decem alis et pluribus quam decem veteranorum milibus, ad hoc magno voluntariorum numero frequentique equite regio, tanto denique exercitu, quantus nullo umquam loco post bella fuerat civilia, omnes eo ipso laeti erant maximamque fiduciam victoriae in numero reponebant. 2 At imperator, optimus eorum quae agebat iudex et utilia speciosis praeferens quodque semper eum facientem vidi in omnibus bellis, quae probanda essent, non quae utique probarentur sequens, paucis diebus exercitum, qui venerat, ad refovendas ex itinere eius vires moratus, cum eum maiorem, quam ut temperari posset, neque habi1em gubernaculo cerneret, dimittere statuit;  3 prosecutusque longo et perquam laborioso itinere, cuius difficultas narrari vix potest, ut neque universos quisquam auderet adgredi et partem digredientium, suorum quisque metu finium, universi temptare non possent, remisit eo, unde venerant, et ipse asperrimae hiemis initio regressus Sisciam legatos, inter quos ipsi fuimus, partitis praefecit hibernis.
 
-[114] O rem dictu non eminentem, sed solida veraque virtute atque utilitate maximam, experientia suavissimam, humanitate singularem! Per omne belli Germanici Pannonicique tempus nemo e nobis gradumve nostrum aut praecedentibus aut sequentibus imbecillus fuit, cuius salus ac valetudo non ita sustentaretur Caesaris cura, tamquam distractissimus ille tantorum onerum mole huic uni negotio vacaret animus. 2 Erat desiderantibus paratum iunctum vehiculum, lectica eius publicata, cuius usum cum alii tum ego sensi; iam medici, iam apparatus cibi, iam in hoc solum uni portatum  instrumentum balinei nullius non succurrit valetudini; domus tantum ac domestici deerant, ceterum nihil, quod ab illis aut praestari aut desiderari posset. 3 Adiciam illud, quod, quisquis illis temporibus interfuit, ut alia, quae retuli, agnoscet protinus: solus semper equo vectus est, solus cum iis, quos invitaverat, maiore parte aestivarum expeditionum cenavit sedens; non sequentibus disciplinam, quatenus exemplonon nocebatur, ignovit; admonitio frequens, interdum et castigatio, vindicta tamen rarissima, agebatque medium plurima dissimulantis, aliqua  inhibentis. 4 Hiems emolumentum patrati belli contulit, sed insequenti  aestate omnis Pannonia reliquiis totius belli in Delmatia manentibus pacem petiit. Ferocem illam tot milium iuventutem, paulo ante servitutem minatam Italiae, conferentem arma, quibus usa erat, apud flumen nomine Bathinum prosternentemque se universam genibus imperatoris, Batonemque et Pinnetem excelsissimos duces, captum alterum, alterum a se deditum iustis voluminibus ordine narrabimus, ut spero. 5 Autumno victor in hiberna reducitur exercitus, cuius omnibus copiis a Caesare M. Lepidus praefectus est, vir nomini ac fortunae Caesarum proximus, quem in quantum quisque aut cognoscere aut intellegere potuit, in tantum miratur ac diligit tantorumque nominum, quibus ortus est, ornamentum iudicat.
+**[114]** O rem dictu non eminentem, sed solida veraque virtute atque utilitate maximam, experientia suavissimam, humanitate singularem! Per omne belli Germanici Pannonicique tempus nemo e nobis gradumve nostrum aut praecedentibus aut sequentibus imbecillus fuit, cuius salus ac valetudo non ita sustentaretur Caesaris cura, tamquam distractissimus ille tantorum onerum mole huic uni negotio vacaret animus. 2 Erat desiderantibus paratum iunctum vehiculum, lectica eius publicata, cuius usum cum alii tum ego sensi; iam medici, iam apparatus cibi, iam in hoc solum uni portatum  instrumentum balinei nullius non succurrit valetudini; domus tantum ac domestici deerant, ceterum nihil, quod ab illis aut praestari aut desiderari posset. 3 Adiciam illud, quod, quisquis illis temporibus interfuit, ut alia, quae retuli, agnoscet protinus: solus semper equo vectus est, solus cum iis, quos invitaverat, maiore parte aestivarum expeditionum cenavit sedens; non sequentibus disciplinam, quatenus exemplonon nocebatur, ignovit; admonitio frequens, interdum et castigatio, vindicta tamen rarissima, agebatque medium plurima dissimulantis, aliqua  inhibentis. 4 Hiems emolumentum patrati belli contulit, sed insequenti  aestate omnis Pannonia reliquiis totius belli in Delmatia manentibus pacem petiit. Ferocem illam tot milium iuventutem, paulo ante servitutem minatam Italiae, conferentem arma, quibus usa erat, apud flumen nomine Bathinum prosternentemque se universam genibus imperatoris, Batonemque et Pinnetem excelsissimos duces, captum alterum, alterum a se deditum iustis voluminibus ordine narrabimus, ut spero. 5 Autumno victor in hiberna reducitur exercitus, cuius omnibus copiis a Caesare M. Lepidus praefectus est, vir nomini ac fortunae Caesarum proximus, quem in quantum quisque aut cognoscere aut intellegere potuit, in tantum miratur ac diligit tantorumque nominum, quibus ortus est, ornamentum iudicat.
 
-[115] Caesar ad alteram belli Delmatici molem animum atque arma contulit. In qua regione quali adiutore legatoque fratre meo Magio Celere Velleiano' usus sit, ipsius patrisque eius praedicatione testatum est et amplissimorum donorum, quibus triumphans eum Caesar donavit, signat memoria. Initio aestatis 2 Lepidus educto hibernis exercitu per gentis integras immunesque adhuc clade belli et eo feroces ac truces tendens ad Tiberium  imperatorem et cum difficultate locorum et cum vi hostium luctatus, magna cum clade obsistentium excisis agris, exustis aedihciis, caesis viris, laetus victoria praedaque onustus pervenit ad Caesarem, 3 et ob ea, quae si propriis gessisset auspiciis, triumphare debuerat, ornamentis triumphalibus consentiente cum iudicio principum voluntate senatus donatus est. 4 Illa aestas maximi belli consummavit effectus: quippe Perustae et Desidiates Delmatae, situ locorum ac montium, ingeniorum ferocia, mira etiam pugnandi scientia et praecipue angustiis saltuum paene inexpugnabiles, non iam ductu, sed manibus atque armis ipsius Caesaris tum demum pacati sunt, cum paene funditus eversi forent. 5 Nihil in hoctanto bello, nihil in Germania aut videre maius aut mirari magis potui, quam quod imperatori numquam adeo ulla opportuna visa. est victoriae occasio, quam  damno amissi pensaret militis semperque visum est gloriosissimum, quod esset tutissimum, et ante conscientiae quam famae consultum nec umquam consilia ducis iudicio exercitus, sed exercitus providentia ducis rectus est.
+**[115]** Caesar ad alteram belli Delmatici molem animum atque arma contulit. In qua regione quali adiutore legatoque fratre meo Magio Celere Velleiano' usus sit, ipsius patrisque eius praedicatione testatum est et amplissimorum donorum, quibus triumphans eum Caesar donavit, signat memoria. Initio aestatis 2 Lepidus educto hibernis exercitu per gentis integras immunesque adhuc clade belli et eo feroces ac truces tendens ad Tiberium  imperatorem et cum difficultate locorum et cum vi hostium luctatus, magna cum clade obsistentium excisis agris, exustis aedihciis, caesis viris, laetus victoria praedaque onustus pervenit ad Caesarem, 3 et ob ea, quae si propriis gessisset auspiciis, triumphare debuerat, ornamentis triumphalibus consentiente cum iudicio principum voluntate senatus donatus est. 4 Illa aestas maximi belli consummavit effectus: quippe Perustae et Desidiates Delmatae, situ locorum ac montium, ingeniorum ferocia, mira etiam pugnandi scientia et praecipue angustiis saltuum paene inexpugnabiles, non iam ductu, sed manibus atque armis ipsius Caesaris tum demum pacati sunt, cum paene funditus eversi forent. 5 Nihil in hoctanto bello, nihil in Germania aut videre maius aut mirari magis potui, quam quod imperatori numquam adeo ulla opportuna visa. est victoriae occasio, quam  damno amissi pensaret militis semperque visum est gloriosissimum, quod esset tutissimum, et ante conscientiae quam famae consultum nec umquam consilia ducis iudicio exercitus, sed exercitus providentia ducis rectus est.
 
-[116] Magna in bello Delmatico experimenta virtutis in incultos ac difficilis locos praemissus Germanicus dedit; celebri etiam opera diligentique 2 Vibius Postumus vir consularis, praepositus Delmatiae, ornamenta meruit triumphalia: quem honorem ante paucos annos Passienus et Cossus, viri quamquam diversis virtutibus celebres, in Africa meruerant.  Sed Cossus victoriae testimonium etiam in cognomen filii contulit, adulescentis in omnium virtutum exempla geniti. 3 At Postumi operum L.  Apronius particeps illa quoque militia eos, quos mox consecutus est, honores excellenti virtute meruit. Utinam non maioribus experimentis testatum esset, quantum in omni re fortuna posset! Sed in hoc quoque genere abunde agnosci vis eius potest. Nam et Aelius Lamia, vir antiquissimi moris et priscam gravitatem semper humanitate temperans, in Germania Illyricoque et mox in Africa splendidissimis functus ministeriis, non merito, sed materia adipiscendi triumphalia defectus est, 4 et A. Licinius Nerva Silianus, P. Silii fihus, quem virum ne qui intellexit quidem abunde miratus est, in eo nihil non optimo civi simplicissimo duci superesse praeferens, inmatura morte et fructu amplissimae principis amicitiae et consummatione evectae in altissimum paternumque fastigium imaginis defectus est. 5 Horum virorum mentioni si quis quaesisse me dicet locum, fatentem arguet; neque enim iustus sine mendacio candor apud bonos crimini est.
+**[116]** Magna in bello Delmatico experimenta virtutis in incultos ac difficilis locos praemissus Germanicus dedit; celebri etiam opera diligentique 2 Vibius Postumus vir consularis, praepositus Delmatiae, ornamenta meruit triumphalia: quem honorem ante paucos annos Passienus et Cossus, viri quamquam diversis virtutibus celebres, in Africa meruerant.  Sed Cossus victoriae testimonium etiam in cognomen filii contulit, adulescentis in omnium virtutum exempla geniti. 3 At Postumi operum L.  Apronius particeps illa quoque militia eos, quos mox consecutus est, honores excellenti virtute meruit. Utinam non maioribus experimentis testatum esset, quantum in omni re fortuna posset! Sed in hoc quoque genere abunde agnosci vis eius potest. Nam et Aelius Lamia, vir antiquissimi moris et priscam gravitatem semper humanitate temperans, in Germania Illyricoque et mox in Africa splendidissimis functus ministeriis, non merito, sed materia adipiscendi triumphalia defectus est, 4 et A. Licinius Nerva Silianus, P. Silii fihus, quem virum ne qui intellexit quidem abunde miratus est, in eo nihil non optimo civi simplicissimo duci superesse praeferens, inmatura morte et fructu amplissimae principis amicitiae et consummatione evectae in altissimum paternumque fastigium imaginis defectus est. 5 Horum virorum mentioni si quis quaesisse me dicet locum, fatentem arguet; neque enim iustus sine mendacio candor apud bonos crimini est.
 
-[117] Tantum quod ultimam imposuerat Pannonico ac Delmatico bello Caesar manum, cum intra quinque consummati tanti operis dies funesta ex Germaniae epistulae nuntium attulere caesi Vari trucidatarumque legionum trium todidemque alarum et sex cohortium, velut in hoc slatem tantummodo indulgente nobis fortuna, ne occupato duce tanta clades inferretur. Sed etcausa et persona moram exigit. 2 Varus Quintilius inlustri magis quam nobili ortus familia, vir ingenio mitis, moribus quietus et corpore et animo immobilior, otio magis castrorum quam bellicae adsuetus militiae, pecuniae vero quam non contemptor, Syria, cui praefuerat, declaravit, quam pauper divitem ingressus dives pauperem  reliquit; 3 is cum exercitui, qui erat in Germania, praeesset, concepit esse homines, qui nihil praeter vocem membraque haberent hominum, quique  gladiis domari non poterant, posse iure mulceri. 4 Quo proposito mediam ingressus Germaniam velut inter viros pacis gaudentes dulcedine iurisdictionibus agendoque pro tribunali ordine trahebat aestiva.
+**[117]** Tantum quod ultimam imposuerat Pannonico ac Delmatico bello Caesar manum, cum intra quinque consummati tanti operis dies funesta ex Germaniae epistulae nuntium attulere caesi Vari trucidatarumque legionum trium todidemque alarum et sex cohortium, velut in hoc slatem tantummodo indulgente nobis fortuna, ne occupato duce tanta clades inferretur. Sed etcausa et persona moram exigit. 2 Varus Quintilius inlustri magis quam nobili ortus familia, vir ingenio mitis, moribus quietus et corpore et animo immobilior, otio magis castrorum quam bellicae adsuetus militiae, pecuniae vero quam non contemptor, Syria, cui praefuerat, declaravit, quam pauper divitem ingressus dives pauperem  reliquit; 3 is cum exercitui, qui erat in Germania, praeesset, concepit esse homines, qui nihil praeter vocem membraque haberent hominum, quique  gladiis domari non poterant, posse iure mulceri. 4 Quo proposito mediam ingressus Germaniam velut inter viros pacis gaudentes dulcedine iurisdictionibus agendoque pro tribunali ordine trahebat aestiva.
 
-[118] At illi, quod nisi expertus vix credat, in summa feritate versutissimi natumque mendacio genus, simulantes fictas litium series et  nunc provocantes alter alterum in iurgia, nunc agentes gratias, quod ea Romana iustitia finiret feritasque sua novitate incognitae disciplinae mitesceret et solita armis discerni iure terminarentur, in summam socordiam perduxere Quintilium, usque eo, ut se praetorem urbanum in foro ius dicere, non in mediis Germaniae finibus exercitui praeesse crederet. 2 Tum iuvenis genere nobilis, manu fortis, sensu celer, ultra barbarum  promptus ingenio, nomine Arminius, Sigimeri principis gentis eius filius, ardorem animi vultu oculis praeferens, adsiduus militiae nostrae prioris  comes, iure etiam civitatis Romanae decus equestris consecutus gradis, segnitia ducis in occasionem sceleris opprimi, quam qui nihil timeret, et frequentissimum initium esse calamitatis securitatem. 3 Primo igitur paucos, mox pluris in societatem consilii recepit: opprimi posse Romanos et dicit et persuadet, decretis facta iungit, tempus insidiarum constituit.  4 Id Varo per virum eius gentis fidelum clarique nominis, Segesten, indicatur. Postulabat etiam vinciri socios. Sed praevalebant iam fata consiliis omnemque animi eius aciem praestrinxerant: quippe ita se res habet, ut plerumque cuius fortunam mutaturus deus, consilia corrumpat efficiatque, quod miserrimum est, ut, quod accidit, etiam meritoaccidisse videatur et casus in culpam transeat. Negat itaque se credere speciemque in se benevolentiae ex merito aestimare profitetur. Nec diutius post primum  indicem secundo relictus locus.
+**[118]** At illi, quod nisi expertus vix credat, in summa feritate versutissimi natumque mendacio genus, simulantes fictas litium series et  nunc provocantes alter alterum in iurgia, nunc agentes gratias, quod ea Romana iustitia finiret feritasque sua novitate incognitae disciplinae mitesceret et solita armis discerni iure terminarentur, in summam socordiam perduxere Quintilium, usque eo, ut se praetorem urbanum in foro ius dicere, non in mediis Germaniae finibus exercitui praeesse crederet. 2 Tum iuvenis genere nobilis, manu fortis, sensu celer, ultra barbarum  promptus ingenio, nomine Arminius, Sigimeri principis gentis eius filius, ardorem animi vultu oculis praeferens, adsiduus militiae nostrae prioris  comes, iure etiam civitatis Romanae decus equestris consecutus gradis, segnitia ducis in occasionem sceleris opprimi, quam qui nihil timeret, et frequentissimum initium esse calamitatis securitatem. 3 Primo igitur paucos, mox pluris in societatem consilii recepit: opprimi posse Romanos et dicit et persuadet, decretis facta iungit, tempus insidiarum constituit.  4 Id Varo per virum eius gentis fidelum clarique nominis, Segesten, indicatur. Postulabat etiam vinciri socios. Sed praevalebant iam fata consiliis omnemque animi eius aciem praestrinxerant: quippe ita se res habet, ut plerumque cuius fortunam mutaturus deus, consilia corrumpat efficiatque, quod miserrimum est, ut, quod accidit, etiam meritoaccidisse videatur et casus in culpam transeat. Negat itaque se credere speciemque in se benevolentiae ex merito aestimare profitetur. Nec diutius post primum  indicem secundo relictus locus.
 
-[119] Ordinem atrocissimae calamitatis, qua nulla post Crassi in Parthum damnum in externis gentibus gravior Romanis fuit, iustis voluminibus ut alii, ita nos conabimur exponere: nunc summa deflenda est. 2 Exercitus  omnium fortissimus, disciplina, manu experentiaque bellorum inter Romanos milites princeps, marcore ducis, refidia hostis,iniquitate fortunae circumventus, cum ne pugnandi quidem aut egrediendi occasio iis, in quantum voluerant, data esset immunis, castigatis etiam quibusdam gravi poena, quia Romanis et armis et animis usi fuissent, inclusus silvis, paludibus, insisiis ab eo hoste ad internecionem trucidatus est, quem ita semper more pecudum trucidaverat, ut vitam aut mortem eius nunc ira nunc venia temperraret. 3 Duci plus ad moriendum quam ad pugnandum animi fuit: quippe paterni avitique successor exempli se ipse transfixit. 4 At e praefectis castrorum duobus quam clarum exemplum L. Eggius, tam turpe Ceionius prodidit, qui, cum longe maximam partem absumpsisset acies, auctor deditionis supplicio quam proelio mori maluit. At Vala Numonius, lagatus  Vari, cetera quietus ac probus, diri auctor exempli, spoliatum equite peditem relinquens fuga cum alis Rhenum petere ingressus est. Quod factum eius fortuna ulta est; non enim desertis superfuit, sed desertor 5 Vari corpus semiustum hostilis laceraverat feritas; caput eius abscisum latumque ad Marboduum et ab eo missum ad Caesarem gentilicii tamen tumuli sepultura honoratum est.
+**[119]** Ordinem atrocissimae calamitatis, qua nulla post Crassi in Parthum damnum in externis gentibus gravior Romanis fuit, iustis voluminibus ut alii, ita nos conabimur exponere: nunc summa deflenda est. 2 Exercitus  omnium fortissimus, disciplina, manu experentiaque bellorum inter Romanos milites princeps, marcore ducis, refidia hostis,iniquitate fortunae circumventus, cum ne pugnandi quidem aut egrediendi occasio iis, in quantum voluerant, data esset immunis, castigatis etiam quibusdam gravi poena, quia Romanis et armis et animis usi fuissent, inclusus silvis, paludibus, insisiis ab eo hoste ad internecionem trucidatus est, quem ita semper more pecudum trucidaverat, ut vitam aut mortem eius nunc ira nunc venia temperraret. 3 Duci plus ad moriendum quam ad pugnandum animi fuit: quippe paterni avitique successor exempli se ipse transfixit. 4 At e praefectis castrorum duobus quam clarum exemplum L. Eggius, tam turpe Ceionius prodidit, qui, cum longe maximam partem absumpsisset acies, auctor deditionis supplicio quam proelio mori maluit. At Vala Numonius, lagatus  Vari, cetera quietus ac probus, diri auctor exempli, spoliatum equite peditem relinquens fuga cum alis Rhenum petere ingressus est. Quod factum eius fortuna ulta est; non enim desertis superfuit, sed desertor 5 Vari corpus semiustum hostilis laceraverat feritas; caput eius abscisum latumque ad Marboduum et ab eo missum ad Caesarem gentilicii tamen tumuli sepultura honoratum est.
 
-[120] His auditis revolat ad patrem Caesar; perpetuus patronus Romani imperii adsuetam sibi causam suscipit. Mittitur ad Germaniam, Gallias confirmat, disponit exercitus, praesidia munit et se magnitudine sua, non fiducia hostis metiens, qui Cimbricam Teutonicamque militiam Italiae minabatur, ultro Rhenum cum exercitu transgreditur. 2 Arma infert hosti quem arcuisse pater et patria contenti erant; penetrat interius, aperit limites, vastat agros, urit domos, fundit obvios maximaque cum gloria, incolumi omnium, quos transduxerat, numero in hiberna revertitur. 3 Reddatur verum L. Asprenati testimonium, qui legatus sub avunculo suo Varo militans gnava virilique opera duarum legionum, quibus praeerat, exercitum immunem tanta calamitate servavit matureque ad inferiora hiberna descendendo vacillantium etiam cis Rhenum  sitarum gentium animos confirmavit. Sunt tamen, qui ut vivos ab eo vindicatos, ita iugulatorum sub Varo occupata crediderint patrimonia hereditatemque occisi exercitus, in quantum voluerit, ab eo aditam. 4 L. etiam Caedicii praefecti castrorum eorumque, qui una circumdati A1isone immensis Germanorum copiis obsidebaniur, laudanda virtus est, qui omnibus difficultatibus superatis, quas inopia rerum intolerabilis, vis hostium faciebat inexsuperabi1is, nec temerario consilio nec segni providentia usi speculatique opportunitatem ferro sibi ad suos peperere reditum. 5 Ex quo apparet Varum, sane gravem et bonae voluntatis virum, magis imperatoris defectum consilio quam virtute destitutum militum se magnificentissimumque perdidisse exercitum. 6 Cum in captivos saexiretur a Germanis, praeclari facinoris auctor fuit Caldus Caelius, adulescens vetustate familiae suae  dignissimus, qui complexus catenarum, quibus vinctus erat, seriem, ita illas inlisit capiti suo, ut protinus pariter sanguinis cerebrique eRuvio expiraret.
+**[120]** His auditis revolat ad patrem Caesar; perpetuus patronus Romani imperii adsuetam sibi causam suscipit. Mittitur ad Germaniam, Gallias confirmat, disponit exercitus, praesidia munit et se magnitudine sua, non fiducia hostis metiens, qui Cimbricam Teutonicamque militiam Italiae minabatur, ultro Rhenum cum exercitu transgreditur. 2 Arma infert hosti quem arcuisse pater et patria contenti erant; penetrat interius, aperit limites, vastat agros, urit domos, fundit obvios maximaque cum gloria, incolumi omnium, quos transduxerat, numero in hiberna revertitur. 3 Reddatur verum L. Asprenati testimonium, qui legatus sub avunculo suo Varo militans gnava virilique opera duarum legionum, quibus praeerat, exercitum immunem tanta calamitate servavit matureque ad inferiora hiberna descendendo vacillantium etiam cis Rhenum  sitarum gentium animos confirmavit. Sunt tamen, qui ut vivos ab eo vindicatos, ita iugulatorum sub Varo occupata crediderint patrimonia hereditatemque occisi exercitus, in quantum voluerit, ab eo aditam. 4 L. etiam Caedicii praefecti castrorum eorumque, qui una circumdati A1isone immensis Germanorum copiis obsidebaniur, laudanda virtus est, qui omnibus difficultatibus superatis, quas inopia rerum intolerabilis, vis hostium faciebat inexsuperabi1is, nec temerario consilio nec segni providentia usi speculatique opportunitatem ferro sibi ad suos peperere reditum. 5 Ex quo apparet Varum, sane gravem et bonae voluntatis virum, magis imperatoris defectum consilio quam virtute destitutum militum se magnificentissimumque perdidisse exercitum. 6 Cum in captivos saexiretur a Germanis, praeclari facinoris auctor fuit Caldus Caelius, adulescens vetustate familiae suae  dignissimus, qui complexus catenarum, quibus vinctus erat, seriem, ita illas inlisit capiti suo, ut protinus pariter sanguinis cerebrique eRuvio expiraret.
 
-[121] Eadem virtus et fortuna subsequenti tempore ingressi Germaniam imperatoris Tiberii fuit, quae initio iuerat. Qui concussis hostium viribus classicis peditumque expeditionibus, cum res Galliarum maximae molis accensasque plebis Viennensium dissensiones coercitione magis quam poena  mollisset, senatus populusque Romanus postulante patre eius, ut aequum ei ius in omnibus provinciis exercitibusque esset, quam erat ipsi, decreto complexus est. Etenim absurdum erat non esse sub illo, quae ab illo vindicabantur, 2 et qui ad opem ferendam primus erat, ad vindicandum honorem non iudicari parem. In urbem reversus iam pridem debitum, sedcontinuatione bellorum dilatum ex Pannoniis Delmatisque egit triumphum. Cuius magnificentiam quis miretur in Caesare? Fortunae vero quis non miretur indulgentiam? 3 Quippe omnis eminentissimos hostium duces non occisos fama narravit, sed vinctos triumphus ostendit; quem mihi fratrique meo inter praecipuos praecipuisque donis adornatos viros comitari contigit.
+**[121]** Eadem virtus et fortuna subsequenti tempore ingressi Germaniam imperatoris Tiberii fuit, quae initio iuerat. Qui concussis hostium viribus classicis peditumque expeditionibus, cum res Galliarum maximae molis accensasque plebis Viennensium dissensiones coercitione magis quam poena  mollisset, senatus populusque Romanus postulante patre eius, ut aequum ei ius in omnibus provinciis exercitibusque esset, quam erat ipsi, decreto complexus est. Etenim absurdum erat non esse sub illo, quae ab illo vindicabantur, 2 et qui ad opem ferendam primus erat, ad vindicandum honorem non iudicari parem. In urbem reversus iam pridem debitum, sedcontinuatione bellorum dilatum ex Pannoniis Delmatisque egit triumphum. Cuius magnificentiam quis miretur in Caesare? Fortunae vero quis non miretur indulgentiam? 3 Quippe omnis eminentissimos hostium duces non occisos fama narravit, sed vinctos triumphus ostendit; quem mihi fratrique meo inter praecipuos praecipuisque donis adornatos viros comitari contigit.
 
-[122] Quis non inter reliqua, quibus singularis moderatio Ti. Caesaris  elucet atque eminet, hoc quoque miretur, quod, cum sine ulla dubitatione  septem triumphos meruerit, tribus contentus fuit. Quis enim dubitare potest, quin ex Armenia recepta et ex rege praeposito ei, cuius capiti insigne regium sua manu imposuerat, ordinatisque rebus Orientis ovans triumphare debuerit, et Vindelicorum Raetorumque victor curru urbem ingredi? 2 Fractis deinde post adoptionem continua triennii militia Germaniae viribus idem illi honor et deferendus et recipiendus fuerit? Et post cladem sub Varo acceptam, expectato ocius prosperrimo rerum eventu eadem excisa Germania triumphus summi ducis adornari debuerit? Sed in hoc viro nescias utrum magis mireris quod laborum periculorumque semper excessit modum an quod honorum temperavit.
+**[122]** Quis non inter reliqua, quibus singularis moderatio Ti. Caesaris  elucet atque eminet, hoc quoque miretur, quod, cum sine ulla dubitatione  septem triumphos meruerit, tribus contentus fuit. Quis enim dubitare potest, quin ex Armenia recepta et ex rege praeposito ei, cuius capiti insigne regium sua manu imposuerat, ordinatisque rebus Orientis ovans triumphare debuerit, et Vindelicorum Raetorumque victor curru urbem ingredi? 2 Fractis deinde post adoptionem continua triennii militia Germaniae viribus idem illi honor et deferendus et recipiendus fuerit? Et post cladem sub Varo acceptam, expectato ocius prosperrimo rerum eventu eadem excisa Germania triumphus summi ducis adornari debuerit? Sed in hoc viro nescias utrum magis mireris quod laborum periculorumque semper excessit modum an quod honorum temperavit.
 
-[123] Venitur ad tempus, in quo fuit plurimum metus. Quippe Caesar Augustus cum Germanicum nepotem suum reliqua belli patraturum misisset in Germaniam. Tiberium autem filium missurus esset in Illyricum ad firmanda  pace quae bello subegerat, prosequens eum simulque interfuturus athletarum certaminis ludicro, quod eius honori sacratum a Neapolitanis est, processit in Campaniam. Quamquam iam motus imbecillitatis inclinataeque in deterius principia valetudinis senserat, tamen obnitente vi animi prosecutus filium digressusque ab eo Beneventi ipse Nolam petiit: et ingravescente in dies  valetudine, cum sciret, quis volenti omnia post se salva remanere accersendus foret, festinanter revocavit filium; ille ad patrem patriae expectato revolavit maturius. 2 Tum securum se Augustus praedicans circumfususque amplexibus Tiberii sui, commendans illi sua atque ipsius opera nec quidquam iam de fine, si fata poscerent, recusans, subrefectus primo conspectu alloquioque carissimi sibi spiritus, mox, cum omnem curam fata vincerent, in sua resolutus initia Pompeio Apuleioque consulibus septuagesimo et sexto anno animam caelestem caelo reddidit.
+**[123]** Venitur ad tempus, in quo fuit plurimum metus. Quippe Caesar Augustus cum Germanicum nepotem suum reliqua belli patraturum misisset in Germaniam. Tiberium autem filium missurus esset in Illyricum ad firmanda  pace quae bello subegerat, prosequens eum simulque interfuturus athletarum certaminis ludicro, quod eius honori sacratum a Neapolitanis est, processit in Campaniam. Quamquam iam motus imbecillitatis inclinataeque in deterius principia valetudinis senserat, tamen obnitente vi animi prosecutus filium digressusque ab eo Beneventi ipse Nolam petiit: et ingravescente in dies  valetudine, cum sciret, quis volenti omnia post se salva remanere accersendus foret, festinanter revocavit filium; ille ad patrem patriae expectato revolavit maturius. 2 Tum securum se Augustus praedicans circumfususque amplexibus Tiberii sui, commendans illi sua atque ipsius opera nec quidquam iam de fine, si fata poscerent, recusans, subrefectus primo conspectu alloquioque carissimi sibi spiritus, mox, cum omnem curam fata vincerent, in sua resolutus initia Pompeio Apuleioque consulibus septuagesimo et sexto anno animam caelestem caelo reddidit.
 
-[124] Quid tunc homines timuerint, quae senatus trepidatio, quae populi confusio, quis urbis metus, in quam arto salutis exitiique fuerimus confinio, neque mihi tam festinanti exprimere vacat neque cui vacat potest. Id solum voce publica dixisse satis habeo: cuius orbis ruinam timueramus, eum ne commotum quidem sensimus, tantaque unius viri maiestas fuit, ut nec pro bonis neque contra malos opus armis foret. 2 Una tamen veluti luctatio civitatis fuit, pugnantis cum Caesare senatus populique Romani, ut stationi paternae succederet, illius, ut potius aequalem civem quam eminentem liceret agere principem. Tandem magis ratione quam honore victus est, cum quidquid tuendum non suscepisset, periturum videret, solique huic contigit paene diutius recusare principatum, quam, ut occuparent eum, alii armis pugnaverant. 3 Post redditum caelo patrem et corpus eius humanis  honoribus, numen divinis honoratum, primum principalium eius operum fuit  ordinatio comitiorum, quam manu sua scriptam divus Augustus reliquerat. 4 Quo tempore mihi fratrique meo, candidatis Caesaris, proxime a nobilissimis ac sacerdotalibus viris destinari praetoribus contigit, consecutis quidem, ut neque post nos quemquam divus Augustus neque ante nos Caesar commendaret Tiberius.
+**[124]** Quid tunc homines timuerint, quae senatus trepidatio, quae populi confusio, quis urbis metus, in quam arto salutis exitiique fuerimus confinio, neque mihi tam festinanti exprimere vacat neque cui vacat potest. Id solum voce publica dixisse satis habeo: cuius orbis ruinam timueramus, eum ne commotum quidem sensimus, tantaque unius viri maiestas fuit, ut nec pro bonis neque contra malos opus armis foret. 2 Una tamen veluti luctatio civitatis fuit, pugnantis cum Caesare senatus populique Romani, ut stationi paternae succederet, illius, ut potius aequalem civem quam eminentem liceret agere principem. Tandem magis ratione quam honore victus est, cum quidquid tuendum non suscepisset, periturum videret, solique huic contigit paene diutius recusare principatum, quam, ut occuparent eum, alii armis pugnaverant. 3 Post redditum caelo patrem et corpus eius humanis  honoribus, numen divinis honoratum, primum principalium eius operum fuit  ordinatio comitiorum, quam manu sua scriptam divus Augustus reliquerat. 4 Quo tempore mihi fratrique meo, candidatis Caesaris, proxime a nobilissimis ac sacerdotalibus viris destinari praetoribus contigit, consecutis quidem, ut neque post nos quemquam divus Augustus neque ante nos Caesar commendaret Tiberius.
 
-[125] Tulit protinus et voti et consilii sui pretium res publica, neque diu latuit aut quid non impetrando passuri fuissemus aut quid impetrando  profecissemus. Quippe exercitus, qui in Germania militabat praesentisque  Germanici imperio regebatur, simulque legiones, quae in Illyrico erant, rabie quadam et profunda confudendi omnia cupiditate novum ducem, novum statum, novam quaerebant rem publicam; quin etiam ausi sunt minaridaturos se senatui, daturos principi leges; 2 modum stipendii, finem militiae sibi ipsi constituere conati sunt. Processum etiam in arma ferrumque strictum est et paene in ultima gladiorum erupit impunitas, defuitque, qui contra rem publicam duceret, non qui sequerentur. 3 Sed haec omnia veteris imperatoris maturitas, multa inhibentis, aliqua cum gravitate pollicentis, et inter severam praecipue noxiorum ultionem mitis aliorum castigatio brevi sopiit ac sustulit. 4 Quo quidem tempore ut pleraque non ignave Germanicus, ita Drusus, qui a patre in id ipsum plurimo quidem igne emicans incendium militaris tumultus missus erat, prisca antiquaque severitate usus ancipitia sibi maluit tenere quam exemplo perniciosa, et his ipsis militum gladiis, quibus obsessus erat, 5 obsidentes coercuit, singulari adiutore in eo negotio usus Iunio Blaeso, viro nescias utiliore in castris an meliore in toga: qui post paucos annos proconsu1 in Africa ornamenta triumphalia cum appellatione imperatoria meruit. At Hispanias exercitumque in iis cum M. Lepidus, de cuius virtutibus celeberrimaque in Illyrico militia praediximus, cum imperio obtineret, in summa pace et quiete continuit, cum ei pietas rectissima sentiendi et auctoritas quae sentiebat obtinendi superesset. Cuius curam ac fidem Dolabella quoque, vir simplicitatis generosissimae, in maritima parte Illyrici per omnia imitatus est.
+**[125]** Tulit protinus et voti et consilii sui pretium res publica, neque diu latuit aut quid non impetrando passuri fuissemus aut quid impetrando  profecissemus. Quippe exercitus, qui in Germania militabat praesentisque  Germanici imperio regebatur, simulque legiones, quae in Illyrico erant, rabie quadam et profunda confudendi omnia cupiditate novum ducem, novum statum, novam quaerebant rem publicam; quin etiam ausi sunt minaridaturos se senatui, daturos principi leges; 2 modum stipendii, finem militiae sibi ipsi constituere conati sunt. Processum etiam in arma ferrumque strictum est et paene in ultima gladiorum erupit impunitas, defuitque, qui contra rem publicam duceret, non qui sequerentur. 3 Sed haec omnia veteris imperatoris maturitas, multa inhibentis, aliqua cum gravitate pollicentis, et inter severam praecipue noxiorum ultionem mitis aliorum castigatio brevi sopiit ac sustulit. 4 Quo quidem tempore ut pleraque non ignave Germanicus, ita Drusus, qui a patre in id ipsum plurimo quidem igne emicans incendium militaris tumultus missus erat, prisca antiquaque severitate usus ancipitia sibi maluit tenere quam exemplo perniciosa, et his ipsis militum gladiis, quibus obsessus erat, 5 obsidentes coercuit, singulari adiutore in eo negotio usus Iunio Blaeso, viro nescias utiliore in castris an meliore in toga: qui post paucos annos proconsu1 in Africa ornamenta triumphalia cum appellatione imperatoria meruit. At Hispanias exercitumque in iis cum M. Lepidus, de cuius virtutibus celeberrimaque in Illyrico militia praediximus, cum imperio obtineret, in summa pace et quiete continuit, cum ei pietas rectissima sentiendi et auctoritas quae sentiebat obtinendi superesset. Cuius curam ac fidem Dolabella quoque, vir simplicitatis generosissimae, in maritima parte Illyrici per omnia imitatus est.
 
-[126] Horum sedecim annorum opera quis cum ingerantur oculis animisque  omnium, partibus eloquatur? Sacravit parentem suum Caesar non imperio, sed religione, non appellavit eum, sed fecit deum. 2 Revocata in forum fides, summota e foro seditio, ambitio campo, discordia curia, sepultaeque ac situ obsitae iustitia, aequitas, industria civitati redditae; accessit magistratibus auctoritas, senatui maiestas, iudiciis gravitas; compressa  theatralis seditio, recte faciendi omnibus aut incussa voluntas aut imposita necessitas: 3 honorantur recta, prava puniuntur, suspicit potentem humilis, non timet, antecedit, non contemnit humiliorem potens.  Quando annona moderatior, quando pax laetior? Diffusa in orientis occidentisque tractus et quidquid meridiano aut septentrione finitur, paxaugusta omnis terrarum orbis angulos a latrociniorum metu servat immunes. 4 Fortuita non civium tantummodo, sed urbium damna principis rnunificentia vindicat. Restitutae urbes Asiae, vindicatae ab iniuriis magistratuum provinciae: honor dignis paratissimus, poena in malos sera,  sed aliqua: superatur aequitate gratia, ambitio virtute; nam facere recte civis suos princeps optimus faciendo docet, cumque sit imperio maximus, exemplo maior est.
+**[126]** Horum sedecim annorum opera quis cum ingerantur oculis animisque  omnium, partibus eloquatur? Sacravit parentem suum Caesar non imperio, sed religione, non appellavit eum, sed fecit deum. 2 Revocata in forum fides, summota e foro seditio, ambitio campo, discordia curia, sepultaeque ac situ obsitae iustitia, aequitas, industria civitati redditae; accessit magistratibus auctoritas, senatui maiestas, iudiciis gravitas; compressa  theatralis seditio, recte faciendi omnibus aut incussa voluntas aut imposita necessitas: 3 honorantur recta, prava puniuntur, suspicit potentem humilis, non timet, antecedit, non contemnit humiliorem potens.  Quando annona moderatior, quando pax laetior? Diffusa in orientis occidentisque tractus et quidquid meridiano aut septentrione finitur, paxaugusta omnis terrarum orbis angulos a latrociniorum metu servat immunes. 4 Fortuita non civium tantummodo, sed urbium damna principis rnunificentia vindicat. Restitutae urbes Asiae, vindicatae ab iniuriis magistratuum provinciae: honor dignis paratissimus, poena in malos sera,  sed aliqua: superatur aequitate gratia, ambitio virtute; nam facere recte civis suos princeps optimus faciendo docet, cumque sit imperio maximus, exemplo maior est.
 
-[127] Raro eminentes viri non magnis adiutoribus ad gubernandam fortunam  suam usi sunt, ut duo Scipiones duobus Laeliis, quos per omnia aequaverunt sibi, ut divus Augustus M. Agrippa et proxime ab eo Statilio Tauro, quibus novitas familiae haut obstitit quominus ad multiplicis consulatus triumphosque et complura eveherentur sacerdotia. 2 Etenim magna negotia magnis adiutoribus egent interestque rei publicae quod usu necessariurn est, dignitate eminere utilitatemque auctoritate muniri. 3 Sub his exemplis Ti. Caesar Seianum Aelium, principe equestris ordinis patre natum, materno vero genere clarissimas veteresque et insignes honoribus complexum familias, habentem consularis fratres, consobrinos, avunculum, ipsum vero laboris ac fidei capacissimum, sufficiente etiam vigori animi compage corporis, singularem principalium onerum adiutorem in omnia habuit atque  habet, 4 virum severitatis laetissimae, hilaritatis priscae, actu otiosis simillimum, nihil sibi vindicantem eoque adsequentem omnia, semperque infra aliorum aestimationes se metientem, vultu vitaque tranquillum, animo exsomnem.
+**[127]** Raro eminentes viri non magnis adiutoribus ad gubernandam fortunam  suam usi sunt, ut duo Scipiones duobus Laeliis, quos per omnia aequaverunt sibi, ut divus Augustus M. Agrippa et proxime ab eo Statilio Tauro, quibus novitas familiae haut obstitit quominus ad multiplicis consulatus triumphosque et complura eveherentur sacerdotia. 2 Etenim magna negotia magnis adiutoribus egent interestque rei publicae quod usu necessariurn est, dignitate eminere utilitatemque auctoritate muniri. 3 Sub his exemplis Ti. Caesar Seianum Aelium, principe equestris ordinis patre natum, materno vero genere clarissimas veteresque et insignes honoribus complexum familias, habentem consularis fratres, consobrinos, avunculum, ipsum vero laboris ac fidei capacissimum, sufficiente etiam vigori animi compage corporis, singularem principalium onerum adiutorem in omnia habuit atque  habet, 4 virum severitatis laetissimae, hilaritatis priscae, actu otiosis simillimum, nihil sibi vindicantem eoque adsequentem omnia, semperque infra aliorum aestimationes se metientem, vultu vitaque tranquillum, animo exsomnem.
 
-[128] In huius virtutum aestimatione iam pridem iudicia civitatis cum iudiciis principis certant; neque novus hic mos senatus populique Romani  est putandi, quod optimum sit, esse nobilissimum. Nam et illi qui ante bellum Punicum abhinc annos trecentos Ti. Coruncanium, hominem novum, cum aliis omnibus honoribus ium pontificatu etiam maximo ad principale extulere fastigium, et qui equestri loco natum Sp. Carvilium et mox M. Catonem,2 novum etiam Tusculo urbis inquilinum, Mummiumque Achaicum in consulatus,  censuras et triumphos provexere, et qui C. Marium 3 ignotae originis usque ad sextum consulatum sine dubitatione Romani nominis habuere principem, et qui M. Tullio tantum tribuere, ut paene adsentatione sua quibus vellet principatus conciliaret, quique nihil Asinio Pollioni negaverunt, quod nobilissimis summo cum sudore consequendum foret, profecto hoc senserunt, in cuiuscumque animo virtus inesset, ei plurimum esse tribuendum. 4 Haec naturalis exempli imitatio ad experiendum Seianum Caesarem, ad iuvanda vero onera principis Seianum propulit senatumque et  populum Romanum eo perduxit, ut, quod usu optimum intellegit, id in tutelam securitatis suae libenter advocet.
+**[128]** In huius virtutum aestimatione iam pridem iudicia civitatis cum iudiciis principis certant; neque novus hic mos senatus populique Romani  est putandi, quod optimum sit, esse nobilissimum. Nam et illi qui ante bellum Punicum abhinc annos trecentos Ti. Coruncanium, hominem novum, cum aliis omnibus honoribus ium pontificatu etiam maximo ad principale extulere fastigium, et qui equestri loco natum Sp. Carvilium et mox M. Catonem,2 novum etiam Tusculo urbis inquilinum, Mummiumque Achaicum in consulatus,  censuras et triumphos provexere, et qui C. Marium 3 ignotae originis usque ad sextum consulatum sine dubitatione Romani nominis habuere principem, et qui M. Tullio tantum tribuere, ut paene adsentatione sua quibus vellet principatus conciliaret, quique nihil Asinio Pollioni negaverunt, quod nobilissimis summo cum sudore consequendum foret, profecto hoc senserunt, in cuiuscumque animo virtus inesset, ei plurimum esse tribuendum. 4 Haec naturalis exempli imitatio ad experiendum Seianum Caesarem, ad iuvanda vero onera principis Seianum propulit senatumque et  populum Romanum eo perduxit, ut, quod usu optimum intellegit, id in tutelam securitatis suae libenter advocet.
 
-[129] Sed proposita quasi universa principatus Ti. Caesaris forma singula recenseamus. Qua ille prudentia Rhascupolim, interemptorem fratris sui filii Cotyis consortisque eiusdem imperii, Romam evocavit. Singulari in eo negotio usus opera Flacci Pomponii consularis viri, nati ad omnia, quae recte facienda sunt, simplicique virtute merentis semper, numquam captantis gloriam. 2 Cum quanta gravitate ut senator et iudex, non ut princeps, causam Drusi Libonis audivit! Quam celeriter ingratum et nova molientem oppressit! Quibus praeceptis instructum Germanicum suum imbuiumque rudimentis militiae secum actae domitorem recepit Germaniae! Quibus iuventam eius exaggeravit honoribus, respondente cultu triumphi rerum, quas gesserat, magnitudini! 3 Quotiens populum congiariis honoravit senatorumque censum, cum id senatu auctore facere potuit, quam libenter explevit, ut neque luxuriam invitaret neque honestam paupertatem pateretur dignitate destitui! Ouanto cum honore Germanicum suum in transmarinas misit provincias! Qua vi, consiliorum suorum ministro et adiutore usus Druso filio suo, Maroboduum inhaerentem occupati regni finibus, pace maiestatis eius dixerim, velut serpentem abstrusam terrae salubribus medicamentis coegit egredi! Quam illum ut honorate, sic secure continet! Quantae molis bellum principe Galliarum ciente Sacroviro Floroque Iulio mira celeritate ac virtute compressit, ut ante populus Romanus vicisse se quam bellare cognosceret nuntiosque periculi victoriae praecederet nuntius! 4 Magni etiam terroris bellum Africum et cotidiano auctu maius auspiciis consiliisque eius brevi sepultum est.
+**[129]** Sed proposita quasi universa principatus Ti. Caesaris forma singula recenseamus. Qua ille prudentia Rhascupolim, interemptorem fratris sui filii Cotyis consortisque eiusdem imperii, Romam evocavit. Singulari in eo negotio usus opera Flacci Pomponii consularis viri, nati ad omnia, quae recte facienda sunt, simplicique virtute merentis semper, numquam captantis gloriam. 2 Cum quanta gravitate ut senator et iudex, non ut princeps, causam Drusi Libonis audivit! Quam celeriter ingratum et nova molientem oppressit! Quibus praeceptis instructum Germanicum suum imbuiumque rudimentis militiae secum actae domitorem recepit Germaniae! Quibus iuventam eius exaggeravit honoribus, respondente cultu triumphi rerum, quas gesserat, magnitudini! 3 Quotiens populum congiariis honoravit senatorumque censum, cum id senatu auctore facere potuit, quam libenter explevit, ut neque luxuriam invitaret neque honestam paupertatem pateretur dignitate destitui! Ouanto cum honore Germanicum suum in transmarinas misit provincias! Qua vi, consiliorum suorum ministro et adiutore usus Druso filio suo, Maroboduum inhaerentem occupati regni finibus, pace maiestatis eius dixerim, velut serpentem abstrusam terrae salubribus medicamentis coegit egredi! Quam illum ut honorate, sic secure continet! Quantae molis bellum principe Galliarum ciente Sacroviro Floroque Iulio mira celeritate ac virtute compressit, ut ante populus Romanus vicisse se quam bellare cognosceret nuntiosque periculi victoriae praecederet nuntius! 4 Magni etiam terroris bellum Africum et cotidiano auctu maius auspiciis consiliisque eius brevi sepultum est.
 
-[130] Quanta suo suorumque nomine extruxit opera! Quam pia munificentia superque humanam evecta fidem templum patri molitur! Quam magnifico animi temperamento Cn. quoque Pompei munera absumpta igni restituit! Quidquid enim umquam claritudine eminuit, id veluti cognatum censet tuendum. Qua liberalitate cum alias, tum proxime incenso monte Caelio 2 omnis ordinis hominum iacturae patrimonio succurrit suo! Quanta cum quiete hominum rem  perpetui praecipuique timoris, supplementum, sine trepidatione dilectus providet! 3 Si aut natura patitur aut mediocritas recipit hominum, audeo cum deis queri: quid hic meruit, primurn ut scelerata Drusus Libo iniret  consilia? Deinde ut Silium Pisonemque tam infestos haberet, quorum alterius dignitatem constituit, auxit alterius? Ut ad maiora transcendam, quamquam et haec ille duxit maxima, quid, ut iuvenes amitteret filios? Quid, ut nepotem ex Druso suo? Dolenda adhuc retulimus: 4 veniendum ad erubescenda est. Quantis hoc triennium, M. Vinici, doloribus laceravit animum eius! Quam diu abstruso, quod miserrimum est, pectus eius flagravit incendio, quod ex nuru, quod ex nepote dolere, indignari, erubescere coactus est. Cuius temporis aegritudinem auxit amissa mater, 5 eminentissima et per  omnia deis quam hominibus similior foemina, cuius potentiam nemo sensit nisi aut levatione periculi aut accessione dignitatis.
+**[130]** Quanta suo suorumque nomine extruxit opera! Quam pia munificentia superque humanam evecta fidem templum patri molitur! Quam magnifico animi temperamento Cn. quoque Pompei munera absumpta igni restituit! Quidquid enim umquam claritudine eminuit, id veluti cognatum censet tuendum. Qua liberalitate cum alias, tum proxime incenso monte Caelio 2 omnis ordinis hominum iacturae patrimonio succurrit suo! Quanta cum quiete hominum rem  perpetui praecipuique timoris, supplementum, sine trepidatione dilectus providet! 3 Si aut natura patitur aut mediocritas recipit hominum, audeo cum deis queri: quid hic meruit, primurn ut scelerata Drusus Libo iniret  consilia? Deinde ut Silium Pisonemque tam infestos haberet, quorum alterius dignitatem constituit, auxit alterius? Ut ad maiora transcendam, quamquam et haec ille duxit maxima, quid, ut iuvenes amitteret filios? Quid, ut nepotem ex Druso suo? Dolenda adhuc retulimus: 4 veniendum ad erubescenda est. Quantis hoc triennium, M. Vinici, doloribus laceravit animum eius! Quam diu abstruso, quod miserrimum est, pectus eius flagravit incendio, quod ex nuru, quod ex nepote dolere, indignari, erubescere coactus est. Cuius temporis aegritudinem auxit amissa mater, 5 eminentissima et per  omnia deis quam hominibus similior foemina, cuius potentiam nemo sensit nisi aut levatione periculi aut accessione dignitatis.
 
-[131] Voto finiendum volumen est. Iuppiter Capitoline, et auctor ac stator Romani nominis Gradive Mars perpetuorumque custos Vesta ignium et  quidquid numinun hanc Romani imperii molem in amplissimum terrarum orbis  fastigium extulit, vos publica voce obtestor atque precor custodite, servate, protegite hunc statum, hanc pacem, hunc principem, 2 eique functo longissima statione mortali destinate suceessores quam serissimos, sed eos, quorum cervice tam fortiter sustinendo terrarum orbis imperio sufficiant quam huius suffecisse sensimus, consiliaque omnium civiun aut  pia fovete aut impia opprimite.
+**[131]** Voto finiendum volumen est. Iuppiter Capitoline, et auctor ac stator Romani nominis Gradive Mars perpetuorumque custos Vesta ignium et  quidquid numinun hanc Romani imperii molem in amplissimum terrarum orbis  fastigium extulit, vos publica voce obtestor atque precor custodite, servate, protegite hunc statum, hanc pacem, hunc principem, 2 eique functo longissima statione mortali destinate suceessores quam serissimos, sed eos, quorum cervice tam fortiter sustinendo terrarum orbis imperio sufficiant quam huius suffecisse sensimus, consiliaque omnium civiun aut  pia fovete aut impia opprimite.
 
 Velleius
 

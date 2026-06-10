@@ -1680,7 +1680,7 @@ quem, quae scire timet, quaerere fata iubet.
 
 **XXIII**
 
-CVI fugienda fuit indocti semita vulgi,
+**CVI** fugienda fuit indocti semita vulgi,
 
 ipsa petita lacu nunc mihi dulcis aqua est.
 
@@ -1938,7 +1938,7 @@ una sat est cuivis femina multa mala.
 
 **XXVIa**
 
-VIDI te in somnis fracta, mea vita, carina
+**VIDI** te in somnis fracta, mea vita, carina
 
 Ionio lassas ducere rore manus,
 

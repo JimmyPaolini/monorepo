@@ -148,7 +148,7 @@ ipse perpetuo spintriae cognomine notatus existimatusque corporis
 
 gratia initium et causa incrementorum patri fuisse.
 
-IV. Sequenti
+**IV** Sequenti
 
 quoque aetate omnibus probris contaminatus, praecipuum in aula
 

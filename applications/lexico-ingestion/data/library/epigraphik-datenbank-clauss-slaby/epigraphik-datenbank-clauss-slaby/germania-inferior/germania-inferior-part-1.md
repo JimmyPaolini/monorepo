@@ -1317,3 +1317,693 @@ type: text
 **EDCS-01200348** ]O Ma[3] / [3]N[
 
 **EDCS-01200349** ] fecit
+
+**EDCS-03000650** [L]egio prim[a] / Minerv[ia] / [P]ia Fideli[s] / prata / [A]urelian[a] / [a]dampliav[it]
+
+**EDCS-03000651** Leg(io) Hisp(ana) / IX
+
+**EDCS-03000652** PSCATATS / M
+
+**EDCS-03300691** [Im]p(eratori) Cae[s(ari) divi] / [Ne]rvae [f(ilio) Nervae] / [Tra]iano O[ptimo Aug(usto) Germ(anico)]
+
+**EDCS-03300692** I(ovi) O(ptimo) M(aximo) / Sex(tus) Seni/us Secun/dinus mil(es) / leg(ionis) I M(inerviae) P(iae) F(idelis) / b(ene)f(iciarius) co(n)s(ularis) / v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-03300693** I(ovi) O(ptimo) M(aximo) et / Genio loci / T(itus) Farfenna / Ianuar(ius) b(ene)f(iciarius) co(n)s(ularis) / G(ermaniae) i(nferioris) s(ub) Aur(elio) Cal/endino |(centurione) leg(ionis) / XXX U(lpiae) pro se et [s(uis)] / v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-03300694** ] f(ilius?) Ma[3] / [3 e]x(?) coh(orte) [
+
+**EDCS-03300695** Leg(ionis) VIII Aug(ustae)
+
+**EDCS-03300696** Vikeni(!)
+
+**EDCS-03300697** Galikini(!)
+
+**EDCS-03300698** Primi
+
+**EDCS-04900725** [3]AE / [3]M / [3]RI / [3]VS / [3]CV / [3]VS[
+
+**EDCS-04900726** Galeti |(centuriae) M(a)xsumi(!)
+
+**EDCS-05000635** T(urmae) Veracis Pupi
+
+**EDCS-05000636** T(urmae) Veri Hahuci
+
+**EDCS-05200510** Ol(l)am Fortunae / Supe(r)stinius Filica / Clementinio Advento / pr(a)efecto leg(ionis) XXX cum / familia sua utatur feliciter
+
+**EDCS-05200511** Herculi / Magusn(o) / Iulius Gen/ialis veter(anus) / leg(ionis) X G(eminae) P(iae) F(idelis) / v(otum) s(olvit) l(ibens) l(aetus) m(erito)
+
+**EDCS-06100447** D(eae) / Arkanu/ae(!) M(arcus) / I(ulius?) Am() / l(ibens) m(erito)
+
+**EDCS-06100448** [Imp(eratori) Caesari] / [divi Nervae f(ilio)] / [Nervae Traiano] / [Aug(usto)] Ge[r(manico) Dacico] / [Parthi]co pon[t(ifici) max(imo)] / coh(ors)] IIII Th/rac(um) P(ia) F(idelis)]
+
+**EDCS-06100449** Homulli G() et Hom[3]G
+
+**EDCS-06100451** Marti
+
+**EDCS-06100452** Utere / felix / vivas
+
+**EDCS-06100453** Pictos / victos / hostis / deleta / ludite / securi
+
+**EDCS-07000790** Mercurio / Amandinia / Quieta cum suis / l(ibens) m(erito)
+
+**EDCS-07000791** Mercurio / Hrannon / Nigrinia / titula ex / visu monita / l(ibens) m(erito)
+
+**EDCS-07400577** [Marti] / H[alamardo] / T(itus) [3] / |(centurio) [leg(ionis) 3] / [v(otum) s(olvit) l(ibens) m(erito)]
+
+**EDCS-07400578** ] / [b(ene)f(iciarius) co(n)s(ularis) leg(ionis) I] / M(inerviae) Ant(oninianae) v(otum) [s(olvit)] / l(ibens) m(erito)
+
+**EDCS-07600321** Mat(ronis) / Vet(eranehis) / Iul(ius) / Vitalis / (ibens) m(erito)
+
+**EDCS-07600322** [Matro]nis / [Veterane]habus / [3]VV
+
+**EDCS-07600323** Ma[tronis] / Vet[eranehis]
+
+**EDCS-07600324** [Ma]tronis / [Vet]eranis / [3]nua Sabi/[
+
+**EDCS-07600325** Matr[on]is / Veter[a]nehis / [3]EC[3]ius
+
+**EDCS-08400393** [3]rrini Seve[ri] / [3]s() leg(ionis) I Min(erviae) / [3] stipend(iorum) XXIIII / [h(eres)] f(aciendum) c(uravit)
+
+**EDCS-08400394** Hic ia[cet in p]ac[e] r[e]/qui[escit 3] funere / raptus qui vixit anns / XI menses VIII / in sua fata recessit / (h)unc titlum parents e/x consens fecerunt
+
+**EDCS-08400395** Deo / Silvno / sacrum M(arcus) / Aur(eliu)s Tuto/rius pr/o se et / su{u}is / v(otum) l(ibens) m(erito) / mi(les) l(egionis) I M(inerviae)
+
+**EDCS-08400396** Matronis su/[i]s Vanginehis / Auvaca Attici / [f(ilia)] ex imperio / [i]psarum l(ibens) m(erito)
+
+**EDCS-08400397** [Matronis Alaferh]/uiabus Q(uintus) Apon[iu]s / Pr[im]us pro se et suis l(ibens) / l(aetus) m(erito)
+
+**EDCS-08400398** [Amf]ratnihen[is] / [3]aniae Titaca / [3] l(ibentes) m(erito)
+
+**EDCS-08400399** Matron[is] / Amratninei[s] / Optius Qua[rt(us?)]
+
+**EDCS-08400400** ] / Albanus ex / [i]mperio ipsa/rum l(ibens) m(erito)
+
+**EDCS-08400401** Alaferhuis / Q(uintus) Volusius In/genu(u)s p(ro) se et su(is) l(ibens)
+
+**EDCS-08400402** Amfratnihenis / C(aius) Iul(ius) Tertius / ex [im(perio) i]p(sarum) l(ibens) m(erito)
+
+**EDCS-08400403** Alaferhuiab[us] / T(itus) Bassianu[s] / Firminus p[ro se et] / suis ex impe[rio] / ips(arum) P() P() S() T() M() [
+
+**EDCS-08400404** Alaferhuiabu[s] / C(a)esoniae Iar[1]/stu[3]ia l(ibens) m(erito)
+
+**EDCS-08400405** Matronis / Alaferhuia/bus / Flavia Amma / l(ibens) m(erito)
+
+**EDCS-08400406** Matronis / Amfratnineis / T(itus) Iulius Secun/dus v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-08400407** [Mat]ro[nis] Alaferh[uiabus
+
+**EDCS-08400408** [Alaf]erhuiis / [3]lsinia Am/[3] ex i(mperio) i(psarum) l(ibens) / [
+
+**EDCS-08400409** Matronis / [A]laferhuiabu(s) / M(arcus) Iuventius / [
+
+**EDCS-08400410** Amfratninis / L(ucius) Nigrinius / Comes l(ibens) m(erito)
+
+**EDCS-08400411** ] / C(aius) Albanius / Vitalis / v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-08400412** Alaferhuiabu[s] / Sex(tus) Suhetianiu[s] / [3]I[
+
+**EDCS-08400413** Matroni[s] / Alaferhuia[bus] / [S]ex(tus) Val(erius) Iuniu[s] / l(ibens) m(erito)
+
+**EDCS-08400414** Matronis / Amfratninehi[s] / C(aius) Ferenniu[s] / Opt[a]tus p[ro] / [
+
+**EDCS-08400415** Matronis / [A]mfratninhis / Q(uintus) Quintinius / [1]P[
+
+**EDCS-08400416** Alaferchuiabus Lic[ini] / Primus Vrus idelis h[oc] / ves(tigium) a(nimis) l(ibentes) m(erito)
+
+**EDCS-08400417** M(atronis) Amartn(i)n/[e]his T(itus) Iulius / Vitalis pro / se [et suis] v(otum) / s(olvit) l(ibens) m(erito)
+
+**EDCS-08400418** Matronis / [Alaf]erhuiab[us] / [A]mfratnineh[is]
+
+**EDCS-08400419** Matronis / [A]laferhuiabus / Teuscienio Mar/[ti]alis et Teuscie/[nio
+
+**EDCS-08400420** Neg]/aletian[i]us [V]ic[t]/[o]r(?) et Ianuaria Alb/uci f(ilia) et Negalati/ani Acceptus et / Certus Similis / f(ilii?) l(ibentes) m(erito)
+
+**EDCS-08400421** Matronis / Berguiahenis / [
+
+**EDCS-08500491** Deae Arcanu(a)e Ulpius Verinus veteranus leg(ionis) VI v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-08500493** [M]atronis / [
+
+**EDCS-08600542** [Ti(berio) Cl]audio / [Drusi Ge]rmanici f(ilio) / [Caesari Aug(usto) Ger]/[manico
+
+**EDCS-08900493** Deae
+
+**EDCS-08901051** ] / T(ito) Imp(eratoris) Vespasian[i] / Aug(usti) f(ilio) tr(ibunicia) pot(estate) imp(eratore) / IIII co(n)s(ule) II desig(nato) / III cens(ore) desig(nato) / A(ulo) Mario Celso / leg(ato) Aug(usti) pr(o) pr(aetore) / Sex(to) Caelio Tu[s]co / leg(ato) Aug(usti) / leg(io) VI Victrix
+
+**EDCS-08901053** M(arcus) Scanius M(arci) (!) Vol(tinia) / Maximus Amp(hipoli?) / mil(es) leg(ionis) X G(eminae) P(iae) F(idelis) a(nnos) vi(xit) / LI[
+
+**EDCS-08901054** L(egionis) X G(eminae) / |(centuriae) Cinnae / Amoni Iulli
+
+**EDCS-09001541** Gabin[i]s sa/crum ex / im[p]erio ip/sar[u]m L(ucius) Fo/nte[ius] Fir/mus v(otum) [s(olvit) l(ibens) m(erito)]
+
+**EDCS-09001542** Matronis / M(arcus) Chamari f(ilius) / et Allo
+
+**EDCS-09001543** [M]atronis / [Vet]aran/[ehis
+
+**EDCS-09001544** [Matronis] / [Vete]raneh/[is 3]sam/[3 e]x imp/[erio
+
+**EDCS-09001545** Matro[nis] / Veterane[his] / [
+
+**EDCS-09001547** Ganeutius / Gareccon[is f(ilius)] / sibi et Hris[tae(?)
+
+**EDCS-09001548** ]ndus / [3] arm(orum) / [c(ustos) 3 v(otum) s(olvit)] l(ibens) m(erito)
+
+**EDCS-09001549** Matribus Octocannis / Albinius Gratinus Albinius / Albulus / Albinius Ursulus / Albinius Paternus mils / Oglannius Lubainus mil(es) / [O]glannius Messor mils / [2]issinius Verinus / pro se et suis ex iussu ip/sarum v(ota) s(olverunt) l(ibentes) m(erito)
+
+**EDCS-09001550** ] / Gal(eria) Se[3] / Lug(duno) mil(es?) [3] / ann(orum) XXV[3] / C(aius) I[ul(ius)] Ep[
+
+**EDCS-09001551** |(Centuria) C(ai) Var[3]
+
+**EDCS-09001552** Coh(ortis) VI Ing(enuorum)
+
+**EDCS-09001553** Marti Cicol/lui sacrum / pro salute ⟦Ne⟧/⟦ronis Caes(aris)⟧ Au[g(usti)] / German[i]ci I[mp(eratoris)] / p(atris) [p(atriae)] / cives Lingonum qui Cib[ernoduro(?)] / consistun[t
+
+**EDCS-09300460** ] / [leg(atus?) Aug(usti) pro praet(ore) provinci]ae Belgica[e 3] / [exornatus sacerdotio] VIIviratus e[pulonum] / [leg(atus?) Aug(usti) pro praet(ore) exercitu]s Germani[ci inferioris]
+
+**EDCS-09300461** [I]anus(?) Lacedaxonis serv(u)s
+
+**EDCS-09300462** Sintotali
+
+**EDCS-09300463** T(itus) Ussi(us) equ(es?) l(egionis) I G()
+
+**EDCS-09300464** Cresti
+
+**EDCS-09300465** Flav[3]
+
+**EDCS-09301104** Leg(ionis) VIIII Hisp(anae)
+
+**EDCS-09301105** Crodo(des)
+
+**EDCS-09301106** Nymphis / Marcia / Vangionis / li(berta) Verec/unda v(otum) / s(olvit) l(ibens) m(erito)
+
+**EDCS-09301107** ] / Ulpiae A[3] / [3]V[
+
+**EDCS-09301108** P]erpet[uus(?)] / [3] ipen[sa(?) 3]
+
+**EDCS-09301109** I(ovi) O(ptimo) M(aximo)
+
+**EDCS-09301110** Turstua[he]/[nis 3] / [3]du[s] / [pro se et s]ui[s
+
+**EDCS-09301111** Matronis / Alusneihis / T(itus) Tattianus / [1]eranus pro / se et suis l(ibens) m(erito)
+
+**EDCS-09301112** Mat[ronis] / Gava[diabus] / T(itus) Sec[
+
+**EDCS-09301113** Dis Ma[n(ibus)] / C(aio) Iul(io) Ter[3] / [1]nna[
+
+**EDCS-09301114** T]rof[i]mus / [3 pr]o se et suis / [v(otum) s(olvit)] l(ibens) m(erito)
+
+**EDCS-09301115** Matron[is] / Gavadiab[us] / C(aius) Cornel[ius] / Priscus [et] / C(aius) Corne[lius] / [
+
+**EDCS-09301116** Vi[l]latius / et nati nost/ri kari co(n)iugi / mei(!) Sol(a)e tit[u]/lum ponet(!) / an(n)orum / XXX[3]
+
+**EDCS-09301117** [P]ro salute im[p(eratoris)] / [Di]an(a)e sac[rum] / [cult]ores(?) [
+
+**EDCS-09301118** Vacallinehis / M(arcus) Frontini/us Victor / ex imperio l(ibens)
+
+**EDCS-09301119** M(atronis) Vacalline/his T(itus) Statili/us Candi/dus v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-09301120** Minervae sacrum / T(itus) Aurelius / Exoratus m(iles) l(egionis) / XXX U(lpiae) V(ictricis) magist(er) / calc(ariorum) [3] / HS XXI |(semis?) [v(otum) s(olvit)] l(ibens) m(erito)
+
+**EDCS-09301121** Minervae / [3] Frontinius / Similis / mil(es) leg(ionis) XXX / U(lpiae) V(ictricis) v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-09301122** [M]inervae [ve]/xillatio leg(ionis) / [XX]X U(lpiae) V(ictricis) sub V[3] / [3]LE[3] / [3 le]g(ionis) eiu[sd(em)]
+
+**EDCS-09301123** M[a]tronis / Rumanehis / [3]nus / [
+
+**EDCS-09301124** Matronis / [1]illoruha/nehabus / [
+
+**EDCS-09301125** Fachinehis / L(ucius) Huaiionius / Primus l(ibens) m(erito)
+
+**EDCS-09301126** Mat(ronis) Fachine/is L() Celer/is pro se / et suis / l(ibens) m(erito)
+
+**EDCS-09301127** [Apo]llini / [et Aesc]u[l]apio / [
+
+**EDCS-09301129** [Mat]ronis / [Aufa]niabu[s(?)] / [
+
+**EDCS-09301130** [6] / sacru[m] / vicus Mati[aco]/rum(?)
+
+**EDCS-09301131** M(arcus) Veran[ius 3] / vet(eranus) leg(ionis) [XXX(?) U(lpiae?) V(ictricis?)] / [e]x arm[
+
+**EDCS-09301132** Ti(berio) Iul(io) Tertio / pictori / h(eres) e(x) t(estamento) f(aciendum) c(uravit)
+
+**EDCS-09301133** [H]erculi Mag(usano) / Ulp(ius) Agilis Vad/ul(lius?) Victor / [V]al(erius) Placidu[s] / [3]n() Hetinius H[3] / [3]asvo Amabilin[us] / [3]I[3]V[1]M[1] / [3]I[3]OI[1]N[3] / [3]ius Vo[3]
+
+**EDCS-09301135** Matronis / Rumanehis / C(aius) Iullius / Manius l(ibens) m(erito)
+
+**EDCS-09301136** Mat[ronis] / Veter[anehis] / L(ucius) Sev[erinius] / Tac[itus(?)
+
+**EDCS-09301137** Quadrivi(i)s / Q(uintus) Aemilius / Septiminus / b(ene)f(iciarius) Corneli Pris/ci leg(ati) leg(ionis) I M(inerviae) / P(iae) F(idelis) / v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-09301138** M(arcus) Iuliu[s 3 f(ilius)] / Quir(ina) Mo[3]orus / Seg[3 mil(es) XX]I Rap(acis) / |(centuria) M(arci) Fa[3] a[nn(orum)] XXXV / s[t(ipendiorum) XV[3] / h(eres) ex t(estamento) f(aciendum) c(uravit)
+
+**EDCS-09301139** [1 V]eratius(?) C(ai) f(ilius) / [3]b() Val(e)ns / [3]TAIIA mil(es) / XXI [Rap]a(cis) ann(orum) / XXXV sti(pendiorum) X[3] / h(eres) e(x) t(estamento) [f(aciendum) c(uravit)]
+
+**EDCS-09301140** ]li Ad[3] / [3]elsonius / [3]us immu/[nis(?) 3] h(eres) f(aciendum) c(uravit)
+
+**EDCS-09301141** Virei[us(?) Ve]/tusti(?) f[ilius(?)] / et Lic[inius(?)] / Grati f[ilius(?)] / dom(o) Fo[3] / h(eres) [f(aciendum?) c(uravit?)]
+
+**EDCS-09301142** C(aius) Ulentinius / [
+
+**EDCS-09301143** [Mer]cur[i]o / [3]IVI / [3]lliniu[s
+
+**EDCS-09301144** [Ma]tron[is] / [Ru]man[ehis] / [3]OD[
+
+**EDCS-09301145** [Ma]tron[is] / [Ru]maneh[is] / [
+
+**EDCS-09301146** [3] Sextio Fabio / Se[3] / [3]CO[3]+RI / [proc(uratori)] CC(ducenario) [3]VN / [3]DI[3]N / [3]CO[3]VE / [3]RE[3]D / [
+
+**EDCS-09400540** Cilone [3]
+
+**EDCS-09400542** Deae / Nehalen[niae] / Q(uintus) Phoebi[us] / Hi[l]arus d(ecurio) m(unicipii) B(atavorum) / p[ro] mercibu[s] / be[ne c]o[nser]/va[ndis] v(otum) s(olvit) [l(ibens) m(erito)]
+
+**EDCS-09400543** Leg(io) XXX S(everiana) A(lexandriana)
+
+**EDCS-09400544** [Coh(ortis)] VI Breuc(orum) cui prae/[est Ti(berius)] Cl(audius) Ampliatus pr(aefectus?)
+
+**EDCS-09400545** Tigernilo mil(iti) / c(o)hor(tis) III Gallor(um) e(quitatae)
+
+**EDCS-09400546** Tul(l)o Loucoru(m) / Albano medico
+
+**EDCS-09400547** [In] h(onorem) [d(omus) d(ivinae)] / [deae Vi]rat[hethi(?)
+
+**EDCS-09400548** C(o)ho(rs) IIII T(h)r(acum)
+
+**EDCS-09400549** |(Centuria) Bisae
+
+**EDCS-09400550** |(Centuria) Cris(pi?) con(tubernio) Cusioni
+
+**EDCS-09400551** |(Centuria) Firmi contubarnio Maximi coh(ortis) II T(hracum)
+
+**EDCS-09400552** Tegularia transrhenana
+
+**EDCS-09400553** Legio XXII Primigenia Pia Fidelis
+
+**EDCS-09400554** Legio XXX
+
+**EDCS-09400555** Legio I Minervia Pia Fidelis Antoniniana
+
+**EDCS-09400556** Exercitus Germanicus inferior
+
+**EDCS-09400557** Cohors II Thracum
+
+**EDCS-09400558** [Cohors H]isp(anorum) e(quitata)
+
+**EDCS-09400560** Deae / Nehalaenniae / Exomnius / Isaurici fil(ius) / aram posuit ex iussu
+
+**EDCS-09400561** Deae / Nehalenniae / T(itus) Tertinius / Virilis / pro se et suis / v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-09400562** Deae / Nehalaenni(a)e / Neuto Lucani / fil(ius) / v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-09400563** Deae / Nehalenniae / T(itus) Tagaduni/us Adiutor / v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-09400564** Deae / Nehalaeniae / aram quam / Phoeb(ius?) Hilarus / d(ecurio) m(unicipii) B(atavorum) ob merce[s] / suas bene cons/[er]vatas vovera[t] / [p]osuit l(ibens) m(erito) / Albino et Maxi/mo co(n)s(ulibus)
+
+**EDCS-09400565** Deae Nehala/enniae pro me/rcibus conse/rvandis C(aius) Cre/scentius Flo/rus ex imp(erio) eius / l(ibens) m(erito)
+
+**EDCS-09400566** In h(onorem) d(omus) d(ivinae) deae / Nehal(e)nniae / C(aius) Maximinius / Rusticus et / T(itus) Iulius Taci/tus v(otum) solver/unt l(ibentes) m(erito)
+
+**EDCS-09400567** Deae / Nehalenni/ae C(aius) Senius Secundus / pr[o se] et suis / v(otum) [s(olvit)] l(ibens) m(erito)
+
+**EDCS-09400568** [Deae] Nehalen/niae Commodus / Ufentis filius / v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-09400569** Deae Nehalenniae / Placidus Viduci fil(ius) / civs Veliocassinius / negotiat(or) Britann(icianus) / v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-09400570** [I]n h(onorem) d(omus) d(ivinae) d[e]ae / [Ne]halenniae C(aius) Iul(ius) / [A]prilis veteran[u]s ex b(ene)f(iciario) / co(n)s(ularis) pro se et sui[s] v(otum) s(olvit) l(ibens) m(erito) / Maximo et Aelia[n]o co(n)s(ulibus)
+
+**EDCS-09400571** Immuni / Primus et / Ibliomarus / Trev(eri) / v(otum) s(olverunt) l(ibentes) m(erito)
+
+**EDCS-09400572** Deae / Nehalenniae / M(arcus) Iustinius / [
+
+**EDCS-09400573** Deae / Nehalen/niae pro / navibus / Merca/[tori]us / Amabilis / v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-09400574** D[eae] / Nehalenniae / C(aius) Sabinianu[s] / Se[x]tus / v(otum) [s(olvit) l(ibens)] m(erito)
+
+**EDCS-09401487** Deae / Nehalen(n)iae / M(arcus) Exgingius / Agricola / civs Trever / negotiator / salarius / c(oloniae) C(laudiae) A(rae) A(grippinensium) v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-09401489** Deae Nehale/n(n)iae sacrum / C(aius) Iul(ius) Floren/tinus Agripp(inensis) / negotiator / salarius pro s/e et sui[s v(otum)] s(olvit) l(ibens) m(erito)
+
+**EDCS-09401490** De(ae) / Nehalenniae L(ucius) Secundius / Similis et T(itus) Carinius / Gratus negotiatores / allecari v(otum) s(olverunt) l(ibentes) m(erito) / ⟦6⟧
+
+**EDCS-09401491** In h(onorem) d(omus) d(ivinae) / deae Neh[alenniae] / aram Aes[tivus(?)] / Iuni Silviserus / Manchissa / ex voto p(osuerunt) l(ibentes) m(erito)
+
+**EDCS-09401492** Deae Ne/halenniae / L(ucius) Sattonius / Victorinu[s] / v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-09401493** Deae Nehalen/niae C(aius) Iulius / Primitiv(u)s / pro se et suis / v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-09401494** [N]eh[ale]nniae / M(arcus) Fi[r]mius / [3]u[s] / v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-09401495** Deae Nehalenniae / ob merces recte conser/vatas M(arcus) Secund(inius) Silvanus / negoti(a)tor cretarius / Britannicianus / v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-09401496** Deae Neha/lenniae C(aius) / Sabinianus Sa/turninus l(ibens)
+
+**EDCS-09401497** Deae Nehalenniae / Vegisonius Mar/tinus civs / Seuanus nauta / v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-09401498** [I]n h(onorem) d(omus) d(ivinae) / [deae Neh]alenniae / [ar]am L(ucius) Silvius Vic/[tor e]x voto libens l(aetus) m(erito)
+
+**EDCS-09401499** [Deae Nehal]/[en]nia[e 3] / [3]M[3] / Gallicanu[s] / v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-09401500** In h(onorem) d(omus) d(ivinae) / deae / Nehalenniae / C(aius) Catullinius / Secco / negotiator / allecarius / civs Trever / pro se / et suis / v(otum) l(ibens) p(osuit)
+
+**EDCS-09401501** Deae / Nehalen/niae L(ucius) / Amminius / Saturninus / v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-09401502** D(eae) Nehale/n(n)iae Iraman/us Ursul[i] / pro se v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-09401503** Deae / Nehalenni(ae) / Q(uintus) Cornelius / Superstis / negotiator / salarius / v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-09401504** Deae / Nehalen/niae M(arcus) / Similinius / Seranus / v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-09401505** De[ae] Nehalenni[ae] / [3] Val(erius) Mar[3] / negot(iator) Can[tianus] / [et(?)] Geserecan[us 3] / [o]b merces bene c[onser(vatas)
+
+**EDCS-09500054** [Impp(eratoribus) Caesaribus] / [dd(ominis) nn(ostris) C(aius) Vibio Treboniano] / [Gallo et Vibio] Afinio / [Veldumni]ano / [Volusia]no Augg(ustis) / [po(ntificibus) m(aximis) co(n)s(ulibus) ] trib(unicia) / [pot(estate) p(atribus) p(atriae) p(roconsulibus)] a col(onia) / [leug(as) XI]II
+
+**EDCS-09500055** ] / P(io) Fel(ici) [Augusto] / (t)rib(unicia) p(otestate) / [a] col(onia) / [leug(as) XIII]
+
+**EDCS-09500056** Au]g(usto) / [3]nico / [3 maxi]mo /
+
+**EDCS-09500057** Matronis / Celapauth/arabus / [3]ontonius / [1]acer / [v(otum) s(olvit)] l(ibens) m(erito)
+
+**EDCS-09500058** ]E[3] / [3 A]n[t]estius Vic[to]/[r 3 A]ntes(tius) Quietus / [3] l(egionis) XXX Antes(tius?) Satu/[3 A]ntes(tius?) [
+
+**EDCS-09500059** [Austria]henis / [3 I]ustus / [3 le]g(ionis) I / [M(inerviae) P(iae) F(idelis) v(otum)] s(olvit) l(ibens) m(erito)
+
+**EDCS-09500060** [L]eg(ionis) X[XX 3]
+
+**EDCS-09500061** Ten[e] ol(l)a(m)
+
+**EDCS-09500062** Victorini lago[e]na(?)
+
+**EDCS-09500063** Lucius AMAKA fecit Ferenius lego(e)nam
+
+**EDCS-09500064** Ol(l)a(m) tene bibe
+
+**EDCS-09500065** Reple ol(l)a(m)
+
+**EDCS-09700695** ]CL[
+
+**EDCS-09701589** Matroni[s] / [T]extume[i]/[his] Ambia[marcis(?)] / l(ibens) m(erito) / [3]S
+
+**EDCS-09701590** [Matronis V]/acal[linehis(?) Fla]/vi Secu[ndus(?)
+
+**EDCS-09701591** ]medeo / [3]iensis / [
+
+**EDCS-09701593** Ma[tronis] / Vaca[llinehis] / Q(uintus) A[3] / IDR
+
+**EDCS-09701594** [Mat]ronis / V[a]calli/[n]ehabus / [3] Anti[stius(?)] / [3]i[3]nus / v(otum) [s(olvit) l(ibens) m(erito)
+
+**EDCS-09701595** Matronis / Vacalline/habus / M(arcus) Bassianus / Atticus / v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-09701596** Matron[is] / Vac[all]in[ehis] / Tib(erius) Cl[audius] / Silvan[us
+
+**EDCS-09701597** Mat[ronis] / Vacall[inehis] / T(itus) Daco[nius] / [
+
+**EDCS-09701598** Mat[ronis Vacall]ine[hi]s Ius/ti[nius(?) 3]vin[3] / [3 v(otum) s(olvit) l(ibens)] m(erito)
+
+**EDCS-09701599** [Ma]tronis / [Va]callinehis / [Se]xt(us) Ov[in]ius / [Am]andu[s e]t I[u]/[lia(?)
+
+**EDCS-09701602** [Matro]n[is] / [Vacal]linehi[s] / [3]onius(?) / [3]r s(olvit) l(ibens)
+
+**EDCS-09701603** Ma[t]ro(nis) [Vac]/allinh[is] / Atto C[
+
+**EDCS-09701604** M(atronis) Vacalline/his Leubasn/ius Exomni / pro se et sui/s v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-09701605** Ma[t]ron[i]s / Vacallineh/abus Secun/du[s
+
+**EDCS-09701606** [Matronis] / Vocall[i]n[e]h/abus Gr[3] / [M]erca[tor(?)
+
+**EDCS-09701608** Mat(ronis) sac(rum) / G(aius!) Murrani/us pro se et suis / [v(otum) s(olvit)] l(ibens) m(erito)
+
+**EDCS-09701609** [Matr]onis / [3]s Sulio / [3]ni / [
+
+**EDCS-09701610** V]ac[allinehis] / [3] Iul[ius(?)
+
+**EDCS-09701611** ] / [Vac]al[line]/[his] P(ublius) Co[3] / [3]I[
+
+**EDCS-09701612** Va]callinehi[s] / [I]uliu[s] / [
+
+**EDCS-09701613** ] / [Vaca]lline[his] / [3 Va]leri[us] / [
+
+**EDCS-09701614** ] / [Vacalli]nehis / [3]s Flo/[rus et Ve]rania / [3 e]x im[p(erio)] / [ipsar(um)
+
+**EDCS-09701615** Vacalline]habus / [3] Vallius / [
+
+**EDCS-09701616** ] / Vocalli[nehis] / [3] S[eve]rius(?) Lu[pus(?)] / [pro se] et sui[s v(otum) s(olvit)] / [l(ibens) m(erito)]
+
+**EDCS-09701617** Vaca[llinehis] / C(aius) Iu[lius(?)
+
+**EDCS-09701618** [Vacallin]ehis P(ublius) Iu[lius(?)
+
+**EDCS-09701619** [Vacalline]his T(itus) Iul(ius) / [3 I]ul(ia) Sim/[plicia(?)
+
+**EDCS-09701620** [Va]callinehis / Vennia / [At]t[i]a(?) e[x imp(erio) ipsarum(?)] / [
+
+**EDCS-09701622** Vocallineh[is] / Secund[a(?)] / [
+
+**EDCS-09701623** ] / Leudi[nis 3] / M(arcus) Tam[monius(?) 3 pro se] / [e]t suis [v(otum) s(olvit) l(ibens) m(erito)]
+
+**EDCS-09701625** Et]/rahe[nis] / Fir[
+
+**EDCS-09701626** ]ula[3] / T(itus) Ac[ceptius(?)] / San[ctus(?)
+
+**EDCS-09701627** pro sa]lute / [Calp]urniae / [Sab]inae(?) / [3]vo Ti[
+
+**EDCS-09701628** ] / Cl[audius(?) 3]/nus Pr[imin]/ius(?) Au[3] / Muna[tius(?)
+
+**EDCS-09701629** ] / Ti(berius?) Cla[u]/[di]us Sa[
+
+**EDCS-09701630** ]/us [3] / Iulia [
+
+**EDCS-09701631** ] / [I]ul[i]a / Se[xta(?)] / l(ibens) [m(erito)]
+
+**EDCS-09701632** ] C(aius) Iul(ius) / [3 leg(ionis) X]XX U(lpiae) V(ictricis) / [3 pos]uit
+
+**EDCS-09701633** ] / Iu[lius(?) 3] / S[
+
+**EDCS-09701634** [M(atronis) Vaca]ll[i]n[ehis] / [3] Iuniu[s] / [3] Poten[s] / [v(otum) s(olvit)] l(ibens) m(erito)
+
+**EDCS-09701635** ] / M(arcus) Nig[rini]/us M[aximu]/s(?) S[
+
+**EDCS-09701636** ] / Ses[3] / Appius v(otum) [s(olvit) l(ibens) m(erito)]
+
+**EDCS-09701637** ]S[3] / Spe[3] / Sus[
+
+**EDCS-09701638** ] / C(aius) VCL[3] / Appiu[s
+
+**EDCS-09701639** ] / Val[3] / Vall[
+
+**EDCS-09701640** ] / Vale[rius Avi]/tus(?) [
+
+**EDCS-09701641** ] / Valli[us] / Super
+
+**EDCS-09701642** ]ria / [3]gilis [v(otum) s(olvit) l(ibens)] m(erito)
+
+**EDCS-09701643** ]/s App[3] / v(otum) [s(olvit)]
+
+**EDCS-09701644** ]tius / Ius[ti]nus / [pro se] et / [su]is / [v(otum) s(olvit) l(ibens)] m(erito)
+
+**EDCS-09701645** ] / Cre[3] / et Al[
+
+**EDCS-09701646** ] / Suppo / Calpae / [
+
+**EDCS-09701647** ] / Amma[ca(?)] / v(otum) s(olvit) l(ibens) [m(erito)]
+
+**EDCS-09701648** F]irma [
+
+**EDCS-09701649** M]artia/[lis(?) pr]o se et / [suis v(otum) s(olvit) l(ibens)] m(erito)
+
+**EDCS-09701650** ] / Secu[ndus(?) 3] / [3]S[
+
+**EDCS-09701651** ] / Susc[eptus(?) 3] / LI[
+
+**EDCS-09701652** ] Vi[t]ali[s] / e[t] Can[dida(?)] / [e]x i[mp(erio)
+
+**EDCS-09701653** ] / C[3] / Fin[itimus(?)] / ex im[pe(rio) 3] / [3]I[
+
+**EDCS-09701658** ] Fusco II [et] / Dextro co(n)sulibus
+
+**EDCS-09701661** ] Nicia[s(?)] / [3]AV Matr(onis?) / [3 Ant]on(ino) et ⟦[Get]a⟧ co(n)s(ulibus)
+
+**EDCS-09701662** misso honesta] / missi[one ex] / leg(ione) X[XX U(lpia) V(ictrice) 3]/tia I[
+
+**EDCS-09701663** ]alis I[3] / [3 A]gilis [3] / [3]nus [
+
+**EDCS-09701664** Ambiamarci[s] / Genio[q(ue)] / loc[i] / [3] Lucanius / [S]ecundinus / s[ig]nif(er) et Q(uintus) / Iuli[us(?)] Firminus / [ve]t(eranus?) leg(ionis) XXX U(lpiae) V(ictricis) / v(otum) s(olverunt) l(ibentes) m(erito) / Imp(eratore) Antonino c[o(n)s(ule)]
+
+**EDCS-09701665** Q(uintus) Iu[lius] / [3 f(ilius) Vol(tinia) Ve]rus(?) / [Alb]a(?) / [mil(es) l(egionis) X] G(eminae) / [|(centuria) Sat]urnini / an(norum) XXX st(ipendiorum) X / h(ic) s(itus) e(st)
+
+**EDCS-09701666** |(Centuria) Erotis(?) / C(aius) Marcius / Matern()
+
+**EDCS-10600359** ] / Fortuna[e] / Aprionius / Iunius v(otum) l(ibens) s(olvit)
+
+**EDCS-10600360** Vihansae / Q(uintus) Catius Libo Nepos / centurio leg(ionis) III / Cyrenaicae scu/tum et lanceam d(onum) d(edit)
+
+**EDCS-10600361** [V]ola[no] / [ci]ves Rom[ani] / cent[uria] / [V]alentin[i] / [n(umeri)] G(a)esatoru[m] / [b]asem [p(osuerunt)]
+
+**EDCS-10600362** D(eo) (H)ercu(li) / res(titutum?)
+
+**EDCS-10600363** Aurunc(uleius?) Pertur(us?) lib[r]ari(us) centur(iae) leg(ionis) IV
+
+**EDCS-10600364** D(is) M(anibus) / Nepos Silvini fil(ius) sibi et Velmadae / Gangussonis fil(iae) / uxori obitae v(ivus) f(ecit)
+
+**EDCS-10600365** RVANI(?)
+
+**EDCS-10600366** ]DEST[
+
+**EDCS-10700514** Pulsator accip(i)et lam(i)nas LXXX / imbrices murales n(umero) XX / qos dodrantes n(umero) XX / sextum Kalndas Augustas / Iustius Optatus accipit / secundarias n(umero) [3] / lam(i)nas n(umero) XII / ibrices n(umero) XXX
+
+**EDCS-10700515** Felicissimo saeculo d(omini) n(ostri) M(arci) / Antoni Gordiani Pii Fel(icis) / Invicti Aug(usti) et Sabiniae Tr/anquillinae Aug(ustae) coniug(is) / Aug(usti) n(ostri) Iul(ius) Mercurialis [prae]/fect(us) coh(ortis) I Fl(aviae) G[ordianae(?)] / Prae[textato et Attico co(n)s(ulibus?)]
+
+**EDCS-10700516** L(ucius) Latinius L(uci) f(ilius) Publilia / Macer Ver(ona) p(rimus) p(ilus) leg(ionis) VIIII Hisp(anae) / praef(ectus) castr(orum) pro se et suis / Apollini / v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-10700517** [Mercurio] / curia / Amratinna / [i]pendio Sex(ti) / Antisti / [F]lavini
+
+**EDCS-10700519** Mercurio / Tib(erius) Claudius / Iustus ex im[p(erio)] / ips(ius) l(ibens) m(erito) [pr(o) sal(ute)] / |(curiae) Etratium
+
+**EDCS-10700520** Matronis / Gesationu/m Iul(ia) Ver[i] / f(ilia) Attia / v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-10700521** Matronis / Vacall[i]n/[e]habus / [3]llon[3] / [3] pro [se] / [et] su[is]
+
+**EDCS-10700523** ] Vacalline/[hi]s Leu[dinis] / [Fu]scus[3] / [3]IS[
+
+**EDCS-10700524** ] / Q(uintus) Coel[ius Procu]/leianus [3] / v(otum) s(olvit) l(ibens) m(erito) / leg(ione?) III Cyr(enaicae) [
+
+**EDCS-10700526** Ge(nio) l[e]g(ionis) XXX / U(lpiae) V(ictricis) C(aius) Suri[3]/nius [F]irm/us im[a]g[i]n[if]/er l(ibens) m(erito)
+
+**EDCS-10700527** ] Mine[rvae] / [3]in[iu]s / [S]upe[r]stis mi[l(es)] / [l]eg(ionis) [XX]X U(lpiae) V(ictricis) Go[r]/dian[ae] im(munis) co(n)[s(ularis)] / v(otum) s(olvit) l(ibens) m(erito) [S]abino / et V[en]usto / co(n)s(ulibus)
+
+**EDCS-10700528** ]ANV[3] / [3 le]g(ionis) XXX [U(lpiae) V(ictricis)
+
+**EDCS-10700529** ] Ae[sculapio et] / Hyg[iae 3] / GEI[3] / LL[3] / DI[3] / PE[3] / D[
+
+**EDCS-10700530** ]G[3] / [3]I |(centuria?) [
+
+**EDCS-10700531** Au]g(ustus) po[nt(ifex) max(imus) 3] / [3 co(n)s(ul)] VI des[ig(natus) VII
+
+**EDCS-10700532** ]M[3]IM[
+
+**EDCS-10700533** In h(onorem) d(omus) d(ivinae) / deo Herculi Mag(usano) / M(arcus) Naevius Minervi/nus optio princi/pis leg(ionis) I M(inerviae) P(iae) F(idelis) ⟦S(everianae) A(lexandrianae)⟧ / imp(eratore) d(omino) n(ostro) ⟦Alexandro⟧ / Aug(usto) II et Marcel/lo co(n)s(ulibus) v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-10700534** Reburrus Fra/tton(i)s f(ilius) eques al(ae) / Fr[o]nt(onianae) an[n(orum)
+
+**EDCS-10700535** ]bano co(n)[s(ulibus)] / d(onum) d(edit)
+
+**EDCS-10700536** D(is) M(anibus) et secur[itati] / aetern(a)e A[3] / Sossia viv[a sibi et] / Bitio Mat[3] / et Bitio[3] / fili(i)s o[bitis et] / Aurelio [3] / coniug[i
+
+**EDCS-10700539** [Hercu]l[i 3] / [3]V[3]O[3]S / Merca[t]or
+
+**EDCS-10700540** Euthenia / annor(um) XXXV / pia in suis / h(ic) s(ita) e(st) s(it) t(ibi) t(erra) l(evis) / Gemellus / contuber/nali
+
+**EDCS-10700542** im]/aginifer leg(ionis) I M(inerviae) P(iae) / F(idelis) et Flavia Apra / M(arco) Aur(elio) Septimio / F[la]viano filio / dulcissimo obito / f(aciendum) c(uraverunt)
+
+**EDCS-10700559** ] / missi v[3] sua [3] / et tu sta[3]s [3] / quod HS CII[3] / valere [3] / cogit esse [3] / ab nobis habet ses[3] / in te et filium [
+
+**EDCS-10700560** ] / Modestus [3] / Victor Attonis libertus [3] / Capito [3] / [3] / Tullio et Securu[3] / Victor [
+
+**EDCS-10700561** DANS HS(?) IDII(?) Claudia / Pacilio ad am[
+
+**EDCS-10700563** Hic [3] / RECO [3] / fili(a)e [3] / vixit [3] / me(n)ss [3] / MCA[
+
+**EDCS-10700564** Tu me amas
+
+**EDCS-10700565** I N Z E
+
+**EDCS-10700566** Vivas
+
+**EDCS-10700567** V K(alendas) Nov(embres)
+
+**EDCS-10700569** ]ECO / [3]LLINI / [3 ma]rito et s(ibi)
+
+**EDCS-10700571** ] item Perrnia Pa[
+
+**EDCS-10700572** Cilone [3] / [
+
+**EDCS-10700573** Cantrusteihi/abus Faustini/us Albinus pro / se et suis ex imp(erio) / ips(arum) l(ibens) m(erito)
+
+**EDCS-10700574** Arpvar erat (f)elx undique PRE
+
+**EDCS-10700577** L(egio) V
+
+**EDCS-10700578** ]alis I[3] / [3 A]gilis [3] / [3]nus[
+
+**EDCS-10700579** Deo Fanoni / Ac(ce)ptinius / [3]us et / [3]a Lu/[
+
+**EDCS-10700580** misso honesta] / missi[one ex] / leg(ione) X[XX U(lpia) V(ictrice) 3]/tia I[
+
+**EDCS-10700581** In pace hic re/ceptus est Bati/modus qui / vixit annos / quinquagin/ta et recessit
+
+**EDCS-10700582** ]OV[3] / [3]CRIX[3] / [3]ER[
+
+**EDCS-10700583** Genio signif(erorum) / leg(ionis) XXX U(lpiae) V(ictricis) / P(ublius) Aelius Seve/rinus t(estamento) p(oni) i(ussit)
+
+**EDCS-10700589** Ne]rvae / [3] Traian(o) / [
+
+**EDCS-10701814** Suge de mea si vis vita / rem nemo vita [3] tene me Verul(e) / tangat |(denarios) XXXXV Verule / pr(a)esta si me amas non i despicer(e) Seriole / {I} v(u)ltum meum (h)omo / sum ne d(a) / compotu(m)
+
+**EDCS-10701815** (H)omo sum ne da com(a)s potum
+
+**EDCS-10900416** SET[
+
+**EDCS-10900417** ]iano / [3]us / [
+
+**EDCS-10900418** Dis M(anibus) / Friomathin/a Animula / Severio Vero / coniugi dul/cissimo / f(aciendum) c(uravit)
+
+**EDCS-10900419** D(is) M(anibus) / Haldaniae
+
+**EDCS-10900420** ]e ob(itae?) / [dulcis]sim(a)e(?) / [3]E fil(iae?) / [3]ternus / [3]R / [3 si]bi(?) / [3]IF
+
+**EDCS-10900421** Matroni[s] / [C]hanninis / [
+
+**EDCS-10900422** [Matr]oni[s] / [Vesu]ni[ahenis] / [
+
+**EDCS-10900423** [Ma]tronis / [Tu]rstuaheni(s) / C(aius) Caldinius / Avvaco / [p]ro liberis / suis l(ibens) m(erito)
+
+**EDCS-10900424** [M]atronis [Al]usnehis L(ucius) / [3]anius Si/[mili]s pro se et s(uis) / [v(otum)] s(olvit) l(ibens) m(erito)
+
+**EDCS-10900425** Au[fa]niabus / Q(uintus) Bratonius / Gratus l(ibens) m(erito)
+
+**EDCS-10900426** [I(ovi) O(ptimo)] M(aximo) / [vic]ani [Iuliac]enses
+
+**EDCS-10900427** [6] / [3]ae / [3]VLI / [3]nis / [6]
+
+**EDCS-10900428** Sabinus / lib(ertus) L(uci) Petro/ni Nepot[is] / |(centurionis) leg(ionis) XXI pro / [se et S]aturni/na Apollini v(otum) s(olvit) / l(ibens) m(erito)
+
+**EDCS-10900429** Matr(ibus) / Iul(ius) M/[a]urus / v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-10900430** Matronis / [R]enahena/[b]us P(ublius) M() / Crescens / ex im(perio) ip(sarum) / pr(o) s(e) l(ibens) m(erito)
+
+**EDCS-10900431** Nemesi Da/nae Publius / Publi Claudia / Savaria Au(i)/leiensis Opponi(us) / Iustus archit(ectus) / leg(ionis) XXII P(rimigeniae) P(iae) F(idelis)
+
+**EDCS-10900432** Victoriae / sacrum / C(aius) Iulius Pala/[
+
+**EDCS-10900433** ]C[3] / [3]ES[3] / [3] Aug[(usto?)
+
+**EDCS-10900434** Imp(erator?) [Caes(ar?)
+
+**EDCS-10900435** ] / EI[3] / IANI[3]
+
+**EDCS-10900436** e]t aedil[i]/cio du(u)m/[virali(?)
+
+**EDCS-10900437** Matronis / Vatvims T(itus) / Iulius Calvisius / ex imp(erio) ipsarum / l(ibens) m(erito)
+
+**EDCS-10900438** Matronis / Vatvims L(ucius) L/aubasnian/us Ammal/enus pro se / et suis / v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-10900439** Matronis / Vatvims / C(aius) Sollius / Saturninus / ex imp(erio) ips(arum) l(ibens) m(erito)
+
+**EDCS-10900440** Mat(ronis) Vatvia(bus) / M(arcus) Firminius / Bassus pro se / et s(uis) s(olvit) l(ibens) m(erito)
+
+**EDCS-10900441** Vatviabus / Berhliahenis / T(itus) Ianuarinius / Similis / pro se et suis / l(ibens) m(erito)
+
+**EDCS-10900442** I(ovi) O(ptimo) M(aximo) / [
+
+**EDCS-10900443** Matri Magn(a)e / Val(erius) Firmus / v(otum) s(olvit)
+
+**EDCS-10900444** ]HA[3] / [3]RIBV[
+
+**EDCS-10900445** ]OVII[3] / [3]SEV[
+
+**EDCS-10900446** [Io]vi O(ptimo) M(aximo) / [v(otum)] s(olvit) l(ibens) l(aetus) m(erito) / [1]ACENO[1]/[3]VS IOC[1]/[3]rius [3] / [pro se] et sui[s]
+
+**EDCS-10900447** L(ucius) Nami/nius / miles / leg(ionis) XVI / v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-10900448** M(arcus) Melloniu[s] / Mercator / cornicen / loco test(amento) / dibu[s] / M(anibus?) s[acr(ato?)
+
+**EDCS-10900449** Tiber(ius) Iulius / Pancuius / mil(es) coh(ortis) / Lusitanorum / an(norum) LV stip(endiorum) XXVIII / hic s(i)t(us) est

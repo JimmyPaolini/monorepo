@@ -12,7 +12,7 @@ author_metadata:
 
 ## Liber Ii
 
-I. Ita Seditionum omnium causas tribunicia potestas
+**I** Ita Seditionum omnium causas tribunicia potestas
 
 excitavit, quae specie quidem plebis tuendae, cuius in auxilium
 
@@ -44,7 +44,7 @@ possidentium eversione, qui ipsi para populi erant, et tum relictas sibi
 
 a maioribus sedes aetate quasi iure possidebant?
 
-II. Primam certaminum facem Ti. Gracchus
+**II** Primam certaminum facem Ti. Gracchus
 
 accendit, genere, forma, eloquentia facile princeps. Sed hic, sive
 
@@ -80,7 +80,7 @@ poscentis, atque ita duce Scipione Nasica, concitato in arma populo,
 
 quasi iure oppressus est.
 
-III. Statim et mortis et legum fratris sui
+**III** Statim et mortis et legum fratris sui
 
 vindex non minore impetu incaluit C. Gracchus. Qui cum pari tumultu
 
@@ -100,7 +100,7 @@ Insultatum quoque mortis reliquiis, et illud sacrosanctum caput tribuni
 
 plebis percussoribus auro repensatum.
 
-IV. Nihilo minus Apuleius Saturnius Gracchanas
+**IV** Nihilo minus Apuleius Saturnius Gracchanas
 
 adserere leges non destitit. Tantum animorum viro Marius dabat, qui
 
@@ -140,7 +140,7 @@ ducibus factionis receptus in curai est. Ibi eum facta inruptione
 
 populus fustibus saxisque coopertum in ipsa quoque morte laceravit.
 
-V. Postremo Livius Drusus non tribunatus modo
+**V** Postremo Livius Drusus non tribunatus modo
 
 viribus, sed ipsius etiam senatus auctoritate totiusque Italiae consensu
 
@@ -192,7 +192,7 @@ discrimine, mors abstulit. Nec ideo minus socii promissa Drusi a populo
 
 Romano reposcere armis desierunt.
 
-VI. Bellum, quod adversus socios gestum est,
+**VI** Bellum, quod adversus socios gestum est,
 
 sociale bellum vocetur licet, ut extenuemus invidiam; si verum tamen
 
@@ -260,7 +260,7 @@ caedium fecit, quam Asculi eversione manibus tot exercituum, consulum
 
 direptarumque urbium diis litaretur utcumque.
 
-VII. Utcumque, etsi cum
+**VII** Utcumque, etsi cum
 
 sociis—nefas—cum liberis tamen et ingenuis dimicatum est, quis
 
@@ -342,7 +342,7 @@ circa adprehendendum eum multitudo contendit, inter rixantium manus
 
 praeda lacerata est.
 
-VIII. Enimvero et servilium armorum dedecus
+**VIII** Enimvero et servilium armorum dedecus
 
 feras; nam etsi per fortunam in omnia obnoxii, tamen quasi secundum
 
@@ -418,7 +418,7 @@ sine missione pugnatum est. Spartacus ipse in primo agmine fortissime
 
 dimicans quasi imperator occisus est.
 
-IX. Hoc deerat unum populi Romani malis, ut iam
+**IX** Hoc deerat unum populi Romani malis, ut iam
 
 ipse intra se parricidale bellum domi stringeret, et in urbe media ac
 
@@ -588,7 +588,7 @@ sed quod modo morte damnati duci iubentur, sic damnatam civitatem iussit
 
 Sulla deleri.
 
-X. Bellum Sertorianum quid amplius quam
+**X** Bellum Sertorianum quid amplius quam
 
 Sullanae proscriptionis hereditas fuit? Hostile potius an civile dixerim
 
@@ -636,7 +636,7 @@ Sic recepta in pacem Hispania. Victores duces externum id magis quam
 
 civile bellum videri voluerunt, ut triumpharent.
 
-XI. Marco Lepido Quinto Catulo consulibus
+**XI** Marco Lepido Quinto Catulo consulibus
 
 civile bellum paene citius oppressum est quam inciperet: sed
 
@@ -674,7 +674,7 @@ paenitentia interiit. Victores quoque, quod non temere alias in
 
 civilibus bellis, pace contenti fuerunt.
 
-XII. Catilinam luxuria primum, tum hinc
+**XII** Catilinam luxuria primum, tum hinc
 
 conflata egestas rei familiaris, simul occasio, quod in extremis finibus
 
@@ -742,7 +742,7 @@ anima corpore tegebat. Catilina longe a suis inter hostium cadavera
 
 repertus est, pulcherrima morte, si pro patria sic concidisset.
 
-XIII. Iam paene toto orbe pacato maius erat
+**XIII** Iam paene toto orbe pacato maius erat
 
 imperium Romanum, quam ut ullis externis viribus opprimi posset. Itaque
 
@@ -1308,7 +1308,7 @@ viginti volneribus ad terram datus est. Sic ille, terrarum orbem civili
 
 sanguine inpleverat, tandem ipse sanguine suo curiam implevit.
 
-XIV. Populum Romanus Caesare et Pompeio
+**XIV** Populum Romanus Caesare et Pompeio
 
 trucidatis redisse in statum pristinum liberatis videbatur. Et redierat,
 
@@ -1352,7 +1352,7 @@ civilibus, externis, servilibus, terrestribus ac navalibus bellis omne
 
 imperii corpus agitatum est.
 
-XV. Prima civilium motuum causa testamentum
+**XV** Prima civilium motuum causa testamentum
 
 Caesaris fuit, cuius secundus heres Antonius, praelatum sibi Octavium
 
@@ -1382,7 +1382,7 @@ cruentus et saucius aquilam a moriente signifero traditam suis umeris in
 
 castra referebat.
 
-XVI. Alterum bellum concitavit agrorum
+**XVI** Alterum bellum concitavit agrorum
 
 divisio, quod Caesar veteranis patris pretium militiae persolvebat.
 
@@ -1436,7 +1436,7 @@ Caesar percussoribus patris contentus fuit, ideo ne in inulta fuisset,
 
 etiam iusta eius caedes haberetur.
 
-XVII. Brutus et Cassius sic C. Caesarem quasi
+**XVII** Brutus et Cassius sic C. Caesarem quasi
 
 Tarquinium regem depulisse regno videbantur, sed libertatem, quam maxime
 
@@ -1526,7 +1526,7 @@ sectae fuit, ne violarent manus, sed in amolitione fortissimarum
 
 piissimarumque animarum iudicio suo, scelere alieno uterentur.
 
-XVIII. Sublatis percussoribus Caesaris
+**XVIII** Sublatis percussoribus Caesaris
 
 supererat Pompei domus. Alter iuvenum in Hispaniam occiderat, alter fuga
 
@@ -1596,7 +1596,7 @@ extincto praetoriae navis lumine, anulis in mare abiectis, pavens atque
 
 respectans, et tamen non timens nisi ne reperiretur.
 
-XIX. Quamvis in Cassio et Bruto parte
+**XIX** Quamvis in Cassio et Bruto parte
 
 sustulisset, in Pompeio totum partium nomen abolevisset, nondum tamen ad
 
@@ -1638,7 +1638,7 @@ circumlato eius per urbes, quae desciverant, capite Syria sine bello
 
 recepta. Sic Crassianam cladem Pacori caede pensavimus.
 
-XX. Expertis invicem Parthis atque Romanis,
+**XX** Expertis invicem Parthis atque Romanis,
 
 cum Crassus et Pacorus utrimque virum mutuarum documenta fecissent, pari
 
@@ -1704,7 +1704,7 @@ tamen perfugit in Syriam, ubi incredibili quadam mentis vecordia
 
 ferocior aliquando factus est, quasi vicisset, qui evaserat.
 
-XXI. Furor Antonii quatenus per ambitum non
+**XXI** Furor Antonii quatenus per ambitum non
 
 poterat interire, luxu libidine extinctus est. Quippe cum Parthos
 
@@ -1790,7 +1790,7 @@ conversa ferme plaga ferocius agebat, Norici, Illyrici, Pannonii,
 
 Dalmatae, Moesi, Thraces et Daci, Sarmatae atque Germani.
 
-XXII. Noricis animos dabant Alpes, quasi in
+**XXII** Noricis animos dabant Alpes, quasi in
 
 rupes et nives bellum posset ascendere; sed omnes illius cardinis
 
@@ -1802,7 +1802,7 @@ per mulieres ostendere, quae deficientibus telis infantes suos adflictos
 
 humi in ora militum adversa miserunt.
 
-XXIII. Illyrici quoque sub Alpibus agunt
+**XXIII** Illyrici quoque sub Alpibus agunt
 
 imasque valles earum et quaedam quasi claustra custodiunt abrupit
 
@@ -1818,7 +1818,7 @@ cum sublatus multitudine pons succidisset, saucius manibus et cruribus,
 
 speciosior sanguine et ipso periculo augustior terga hostium praecidit.
 
-XXIV. Pannonii duobus acribus fluviis, Dravo
+**XXIV** Pannonii duobus acribus fluviis, Dravo
 
 Savoque vallantur. Populati proximos intra ripas se recipiebant. In hos
 
@@ -1828,7 +1828,7 @@ non ex more belli cremata, sed rupta sunt et in profluentem data, ut
 
 Caesari nomen eis qui resistebant sic nuntiaretur.
 
-XXV. Dalmatae plerumque sub silius agebant;
+**XXV** Dalmatae plerumque sub silius agebant;
 
 unde in latrocinia promptissimi. Hos iam pridem Marcius consul incerta
 
@@ -1842,7 +1842,7 @@ aurumque venis repurgare; quod alioquin gens omnium cupidissima eo
 
 studio, ea diligentia anquirit, ut illud in usus suos eruere videatur.
 
-XXVI. Moeni quam feri, quam truces fuerint,
+**XXVI** Moeni quam feri, quam truces fuerint,
 
 quam ipsorum etiam barbari barbarorum horribile dictu est. Vnus ducum
 
@@ -1864,7 +1864,7 @@ super cassidem, agitatum motu corporis, flamman velut ardenti capite
 
 funditabat.
 
-XXVII. Thraces antea saepe, tum maxime
+**XXVII** Thraces antea saepe, tum maxime
 
 Rhoemetalce rege desciverant. Ille barbaros et signis militaribus et
 
@@ -1874,7 +1874,7 @@ ipsa captivitate rabiem ostendere. Quippe cum catenas morsibus
 
 temptaret, feritatem suam ipsi puniebat.
 
-XXVIII. Daci montibus inhaerent. Inde
+**XXVIII** Daci montibus inhaerent. Inde
 
 Cotisonis regis imperio, quotiens concretus gelu Danuvius iunxerat
 
@@ -1886,7 +1886,7 @@ perpulit ripam; citra praesidia constituta. Sic tum Dacia non victa, sed
 
 summota atque dilata est.
 
-XXIX. Sarmatae patentibus campis inequitant.
+**XXIX** Sarmatae patentibus campis inequitant.
 
 Et hos per eundem Lentulum prohibere Danuvio satis fuit. Nihil praeter
 
@@ -1894,7 +1894,7 @@ nives pruinasque et silvas habent. Tanta barbaria est, ut nec
 
 intellegant pacem.
 
-XXX. Germaniam quoque utinam vincere tanti non
+**XXX** Germaniam quoque utinam vincere tanti non
 
 putasset! Magis turpiter amissa est quam gloriose adquisita. Sed
 
@@ -1986,7 +1986,7 @@ palude sic latuit. Hac clade factum, ut imperium, quod in litore Oceani
 
 non steterat, in ripa Rheni fluminis staret.
 
-XXXI. Haec ad septentrionem: sub meridiano
+**XXXI** Haec ad septentrionem: sub meridiano
 
 tumultuatum magis quam bellatum est. Musulamios atque Gaetulos, unde
 
@@ -1996,7 +1996,7 @@ Garamantas Quirinio subigendos dedit. Potuit et ille redire Marmaricus,
 
 sed modestior in aestimanda victoria fuit.
 
-XXXII. Ad orientem plus negotii cum Armeniis.
+**XXXII** Ad orientem plus negotii cum Armeniis.
 
 Huc alterum ex Caesaribus, nepotibus suis, misit. Ambo fato breves, sed
 
@@ -2022,7 +2022,7 @@ barbarus undique infesto exercitu oppressus gladio et pyra, in quam se
 
 percussus inmisit, superstiti etiam nunc Caesari satisfecit.
 
-XXXIII. Sub occasus pacata erat fere omnis
+**XXXIII** Sub occasus pacata erat fere omnis
 
 Hispania, nisi quam Pyrenaei desinentis scopulis inhaerentem citerior
 
@@ -2112,7 +2112,7 @@ Astures nitentes in profundo opes suas atque divitias, dum aliis
 
 quaerunt, nosse coeperunt.
 
-XXXIV. Omnibus ad occasum et meridiem pacatis
+**XXXIV** Omnibus ad occasum et meridiem pacatis
 
 gentibus ad septentrionem quoque, dumtaxat intra Rhenum atque Danuvium,
 

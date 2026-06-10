@@ -19,22 +19,6 @@ interface EdcsRecord {
   };
 }
 
-interface LocalAuthor {
-  metadata?: Record<string, unknown>;
-  name: string;
-  nickname: string;
-  path: string;
-  slug: string;
-  works: LocalWork[];
-}
-
-interface LocalWork {
-  book: string;
-  metadata?: Record<string, unknown>;
-  path: string;
-  title: string;
-}
-
 /**
  * Provider for ingesting EDCS (Epigraphik-Datenbank Clauss-Slaby) inscriptions.
  */
@@ -63,13 +47,11 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
     const authorDir = path.join(dataPath, authorSlug);
     await fs.mkdir(authorDir, { recursive: true });
 
-    const author: LocalAuthor = {
-      name: "Epigraphik-Datenbank Clauss-Slaby",
-      nickname: "EDCS",
-      path: host,
-      slug: authorSlug,
-      works: [],
-    };
+    const author = new Author();
+    author.name = "Epigraphik-Datenbank Clauss-Slaby";
+    author.slug = authorSlug;
+    author.metadata = { sourceUrl: host };
+    author.texts = [];
 
     // We'll fetch up to 1,000,000 records to capture the full 500,000+ corpus.
     const limit = 1_000_000;
@@ -120,11 +102,24 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
       }
     }
 
+    const booksMap = new Map<string, Text>();
+
     // Save each province as a book with chunked works (files)
     for (const [province, inscriptions] of provinceData.entries()) {
       const bookSlug = _.kebabCase(province);
       const bookDir = path.join(authorDir, bookSlug);
       await fs.mkdir(bookDir, { recursive: true });
+
+      let bookText = booksMap.get(province);
+      if (!bookText) {
+        bookText = new Text();
+        bookText.type = "book";
+        bookText.title = province;
+        bookText.slug = bookSlug;
+        bookText.childTexts = [];
+        booksMap.set(province, bookText);
+        author.texts.push(bookText);
+      }
 
       // Chunk into files of 1000 inscriptions each
       const chunkSize = 1000;
@@ -136,12 +131,12 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
         const textSlug = `${authorSlug}/${bookSlug}/${titleSlug}`;
         if (options?.text && textSlug !== options.text) continue;
 
-        const workDto: LocalWork = {
-          book: province,
-          path: `${bookSlug}/${titleSlug}.md`,
-          title,
-        };
-        author.works.push(workDto);
+        const textEntity = new Text();
+        textEntity.type = "text";
+        textEntity.title = title;
+        textEntity.slug = titleSlug;
+        textEntity.metadata = { sourceUrl: `${bookSlug}/${titleSlug}.md` };
+        bookText.childTexts.push(textEntity);
 
         const frontmatterObj: Record<string, unknown> = {
           author: authorSlug,
@@ -162,33 +157,6 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
       }
     }
 
-    const authorEntity = new Author();
-    authorEntity.name = author.name;
-    authorEntity.slug = author.slug;
-    authorEntity.metadata = { sourceUrl: author.path };
-    authorEntity.texts = [];
-
-    const booksMap = new Map<string, Text>();
-    for (const localWork of author.works) {
-      let bookText = booksMap.get(localWork.book);
-      if (!bookText) {
-        bookText = new Text();
-        bookText.type = "book";
-        bookText.title = localWork.book;
-        bookText.slug = _.kebabCase(localWork.book);
-        bookText.childTexts = [];
-        booksMap.set(localWork.book, bookText);
-        authorEntity.texts.push(bookText);
-      }
-
-      const textEntity = new Text();
-      textEntity.type = "text";
-      textEntity.title = localWork.title;
-      textEntity.slug = _.kebabCase(localWork.title);
-      textEntity.metadata = { sourceUrl: localWork.path };
-      bookText.childTexts.push(textEntity);
-    }
-
-    return [authorEntity];
+    return [author];
   }
 }

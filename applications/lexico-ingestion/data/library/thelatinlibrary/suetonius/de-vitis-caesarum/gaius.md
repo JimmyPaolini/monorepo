@@ -12,7 +12,7 @@ author_metadata:
 
 ## Gaius
 
-[1] Germanicus, C. Caesaris pater, Drusi et minoris Antoniae filius,
+**[1]** Germanicus, C. Caesaris pater, Drusi et minoris Antoniae filius,
 
 a Tiberio patruo adoptatus, quaesturam quinquennio ante quam per leges
 
@@ -38,7 +38,7 @@ per os fluebant, cremati quoque cor inter ossa incorruptum repertum est,
 
 cuius ea natura existimatur, ut tinctum veneno igne confici nequeat.
 
-[2] Obiit autem, ut opinio fuit, fraude Tiberi, ministerio et
+**[2]** Obiit autem, ut opinio fuit, fraude Tiberi, ministerio et
 
 opera Cn. Pisonis, qui sub idem tempus Syriae praepositus, nec
 
@@ -50,7 +50,7 @@ acerbitatibus nullo adhibito modo adfecit; propter quae, ut Romam
 
 rediit, paene discerptus a populo, a senatu capitis damnatus est.
 
-[3] Omnes Germanico corporis animique virtutes, et quantas nemini
+**[3]** Omnes Germanico corporis animique virtutes, et quantas nemini
 
 cuiquam, contigisse satis constat: formam et fortitudinem egregiam,
 
@@ -86,7 +86,7 @@ quidem ultra progressus, quam ut amicitiam ei more maiorum renuntiaret
 
 mandaretque domesticis ultionem, si quid sibi accideret.
 
-[4]
+**[4]** 
 
 Quarum virtutum fructum uberrimum tulit, sic probatus et dilectus a
 
@@ -108,7 +108,7 @@ exirent, populi autem Romani sexum, aetatem, ordinem omnem usque ad
 
 vicesimum lapidem effudisse se.
 
-[5] Tamen longe maiora et
+**[5]** Tamen longe maiora et
 
 firmiora de eo iudicia in morte ac post mortem exstiterunt. Quo
 
@@ -126,7 +126,7 @@ maximi luctus; regum etiam regem et exercitatione venandi et convictu
 
 megistanum abstinuisse, quod apud Parthos iusti[ti] instar est.
 
-[6] Romae quidem, cum ad primam famam valitudinis attonita et maesta
+**[6]** Romae quidem, cum ad primam famam valitudinis attonita et maesta
 
 civitas sequentis nuntios opperiretur, et repente iam vesperi incertis
 
@@ -150,7 +150,7 @@ temporum, cunctis nec temere opinantibus reverentia eius ac metu
 
 repressam Tiberi saevitiam, quae mox eruperit.
 
-[7] Habuit in
+**[7]** Habuit in
 
 matrimonio Agrippinam, M. Agrippae et Iuliae filiam, et ex ea novem
 
@@ -168,7 +168,7 @@ mares, Nero et Drusus et C. Caesar. Neronem et Drusum senatus Tiberio
 
 criminante hostes iudicavit.
 
-[8]  C. Caesar natus est pridie
+**[8]** C. Caesar natus est pridie
 
 Kal. Sept. patre suo et C. Fonteio Capitone coss. Ubi natus sit,
 
@@ -234,7 +234,7 @@ dilexerit tradaturque etiam sedem ac domicilium imperii taedio urbis
 
 transferre eo destinasse.
 
-[9] Caligulae cognomen castrensi ioco
+**[9]** Caligulae cognomen castrensi ioco
 
 traxit, quia manipulario habitu inter milites educabatur. Apud quos
 
@@ -252,7 +252,7 @@ paenitentiam versi reprenso ac retento vehiculo invidiam quae sibi
 
 fieret deprecati sunt.
 
-[10] Comitatus est patrem et Syriaca
+**[10]** Comitatus est patrem et Syriaca
 
 expeditione. Unde reversus primum in matris, deinde ea relegata in
 
@@ -276,7 +276,7 @@ et qui iuxta erant obsequii, ut non immerito sit dictum nec servum
 
 meliorem ullum nec deteriorem dominum fuisse.
 
-[11] Naturam
+**[11]** Naturam
 
 tamen saevam atque probrosam ne tunc quidem inhibere poterat, quin et
 
@@ -294,7 +294,7 @@ aliquotiens praedicaret exitio suo omniumque Gaium vivere et se natricem
 
 populo Romano, Phaethontem orbi terrarum educare.
 
-[12] Non ita
+**[12]** Non ita
 
 multo post Iuniam Claudillam M. Silani nobilissimi viri filiam duxit
 
@@ -334,7 +334,7 @@ Tiberi[i] dormientis et misericordia correptum abiecto ferro recessisse;
 
 nec illum, quanquam sensisset, aut inquirere quicquam aut exsequi ausum.
 
-[13] Sic imperium adeptus, populum Romanum, vel dicam hominum
+**[13]** Sic imperium adeptus, populum Romanum, vel dicam hominum
 
 genus, voti compotem fecit, exoptatissimus princeps maximae parti
 
@@ -350,7 +350,7 @@ taedas densissimo et laetissimo obviorum agmine incessit, super fausta
 
 nomina "sidus" et "pullum" et "pupum" et "alumnum" appellantium.
 
-[14] Ingressoque urbem, statim consensu senatus et irrumpentis in
+**[14]** Ingressoque urbem, statim consensu senatus et irrumpentis in
 
 curiam turbae, inrita Tiberi voluntate, qui testamento alterum nepotem
 
@@ -384,7 +384,7 @@ consularis et transgressus Euphraten aquilas et signa Romana Caesarumque
 
 imagines adoravit.
 
-[15] Incendebat et ipse studia hominum omni
+**[15]** Incendebat et ipse studia hominum omni
 
 genere popularitatis. Tiberio cum plurimis lacrimis pro contione laudato
 
@@ -436,7 +436,7 @@ salute sua oblatum non recepit, contendens nihil sibi admissum cur
 
 cuiquam invisus esset, negavitque se delatoribus aures habere.
 
-[16] Spintrias monstrosarum libidinum aegre ne profundo mergeret
+**[16]** Spintrias monstrosarum libidinum aegre ne profundo mergeret
 
 exoratus, urbe submovit. Titi Labieni, Cordi Cremuti, Cassi Severi
 
@@ -486,7 +486,7 @@ dies, quo cepisset imperium, Parilia vocaretur, velut argumentum rursus
 
 conditae urbis.
 
-[17] Consulatus quattuor gessit, primum ex
+**[17]** Consulatus quattuor gessit, primum ex
 
 Kal. Iul. per duos menses, secundum ex Kal. Ian. per XXX dies, tertium
 
@@ -508,7 +508,7 @@ distribuit. Et ut laetitiam publicam in perpetuum quoque augeret,
 
 adiecit diem Saturnalibus appellavitque Iuvenalem.
 
-[18] Munera
+**[18]** Munera
 
 gladiatoria partim in amphitheatro Tauri partim in Saeptis aliquot
 
@@ -538,7 +538,7 @@ senatorio ordine aurigantibus. Commisit et subitos, cum e Gelotiana
 
 apparatum circi prospicientem pauci ex proximis Maenianis postulassent.
 
-[19] Novum praeterea atque inauditum genus spectaculi
+**[19]** Novum praeterea atque inauditum genus spectaculi
 
 excogitavit. Nam Baiarum medium intervallum [ad] Puteolanas moles, trium
 
@@ -572,7 +572,7 @@ successore Tiberio et in verum nepotem proniori affirmasset non magis
 
 Gaium imperaturum quam per Baianum sinum equis discursurum.
 
-[20] Edidit et peregre spectacula, in Sicilia Syracusis asticos ludos et
+**[20]** Edidit et peregre spectacula, in Sicilia Syracusis asticos ludos et
 
 in Gallia Luguduni miscellos; sed hic certamen quoque Graecae Latinaeque
 
@@ -584,7 +584,7 @@ displicuissent, scripta sua spongia linguave delere iussos, nisi ferulis
 
 obiurgari aut flumine proximo mergi maluissent.
 
-[21] Opera sub
+**[21]** Opera sub
 
 Tiberio semiperfecta, templum Augusti theatrumque Pompei, absolvit.
 
@@ -600,7 +600,7 @@ Didymeum peragere, in iugo Alpium urbem condere, sed ante omnia Isthmum
 
 in Achaia perfodere, miseratque iam ad dimetiendum opus primipilarem.
 
-[22] Hactenus quasi de principe, reliqua ut de monstro
+**[22]** Hactenus quasi de principe, reliqua ut de monstro
 
 narranda sunt. Compluribus cognominibus adsumptis – nam et "pius"
 
@@ -658,7 +658,7 @@ Divi Augusti ponte transmisso Palatium Capitoliumque coniunxit. Mox, quo
 
 propior esset, in area Capitolina novae domus fundamenta iecit.
 
-[23] Agrippae se nepotem neque credi neque dici ob ignobilitatem eius
+**[23]** Agrippae se nepotem neque credi neque dici ob ignobilitatem eius
 
 volebat suscensebatque, si qui vel oratione vel carmine imaginibus eum
 
@@ -702,7 +702,7 @@ tussim medicamento usus esset. Nam Claudium patruum non nisi in
 
 ludibrium reservavit.
 
-[24] Cum omnibus sororibus suis
+**[24]** Cum omnibus sororibus suis
 
 consuetudinem stupri fecit plenoque convivio singulas infra se vicissim
 
@@ -740,7 +740,7 @@ sed et tres gladios in necem suam praeparatos Marti Ultori addito elogio
 
 consecravit.
 
-[25] Matrimonia contraxerit turpius an dimiserit
+**[25]** Matrimonia contraxerit turpius an dimiserit
 
 an tenuerit, non est facile discernere. Liviam Orestillam C. Pisoni
 
@@ -756,7 +756,7 @@ premere," statimque e convivio abduxisse secum ac proximo die edixisse:
 
 matrimonium sibi repertum exemplo Romuli et Augusti. Lolliam Paulinam,
 
-C. Memmio consulari exercitus regenti nuptam, facta mentione aviae eius
+**C** Memmio consulari exercitus regenti nuptam, facta mentione aviae eius
 
 ut quondam pulcherrimae, subito ex provincia evocavit ac perductam a
 
@@ -784,13 +784,13 @@ feritatis, quae illi quoque tanta iam tunc erat, ut infestis digitis ora
 
 et oculos simul ludentium infantium incesseret.
 
-[26] Leve ac
+**[26]** Leve ac
 
 frigidum sit his addere, quo propinquos amicosque pacto tractaverit,
 
 Ptolemaeum regis Iubae filium, consobrinum suum – erat enim et is
 
-M. Antoni ex Selene filia nepos – et in primis ipsum Macronem,
+**M** Antoni ex Selene filia nepos – et in primis ipsum Macronem,
 
 ipsam Enniam, adiutores imperii; quibus omnibus pro necessitudinis iure
 
@@ -836,7 +836,7 @@ bonam partem sed insignis debilitate aliqua corporis subiciebat. Ac
 
 nonnumquam horreis praeclusis populo famem indixit.
 
-[27]
+**[27]** 
 
 Saevitiam ingenii per haec maxime ostendit. Cum ad saginam ferarum
 
@@ -880,7 +880,7 @@ harena igni cremavit. Equitem R. obiectum feris, cum se innocentem
 
 proclamasset, reduxit abscisaque lingua rursus induxit.
 
-[28]
+**[28]** 
 
 Revocatum quendam a vetere exilio sciscitatus, quidnam ibi facere
 
@@ -900,7 +900,7 @@ quam membra et artus et viscera hominis tracta per vicos atque ante se
 
 congesta vidisset.
 
-[29] Immanissima facta augebat atrocitate
+**[29]** Immanissima facta augebat atrocitate
 
 verborum. Nihil magis in natura sua laudare se ac probare dicebat quam,
 
@@ -928,7 +928,7 @@ Gallis Graecisque aliquot uno tempore condemnatis gloriabatur
 
 Gallograeciam se subegisse.
 
-[30] Non temere in quemquam nisi
+**[30]** Non temere in quemquam nisi
 
 crebris et minutis ictibus animadverti passus est, perpetuo notoque iam
 
@@ -960,7 +960,7 @@ fuscina omnes victores interemit: hanc ut crudelissimam caedem et
 
 deflevit edicto et eos, qui spectare sustinuissent, execratus est.
 
-[31] Queri etiam palam de condicione temporum suorum solebat, quod
+**[31]** Queri etiam palam de condicione temporum suorum solebat, quod
 
 nullis calamitatibus publicis insignirentur; Augusti principatum clade
 
@@ -970,7 +970,7 @@ oblivionem imminere prosperitate rerum; atque identidem exercituum
 
 caedes, famem, pestilentiam, incendia, hiatum aliquem terrae optabat.
 
-[32] Animum quoque remittenti ludoque et epulis dedito eadem
+**[32]** Animum quoque remittenti ludoque et epulis dedito eadem
 
 factorum dictorumque saevitia aderat. Saepe in conspectu prandentis vel
 
@@ -1004,7 +1004,7 @@ consulibus, qui iuxta cubabant, quidnam rideret blande quaerentibus:
 
 posse?"
 
-[33] Inter varios iocos, cum assistens simulacro Iovis
+**[33]** Inter varios iocos, cum assistens simulacro Iovis
 
 Apellen tragoedum consuluisset uter illi maior videretur, cunctantem
 
@@ -1018,7 +1018,7 @@ iactabat exquisiturum se vel fidiculis de Caesonia sua, cur eam tanto
 
 opere diligeret.
 
-[34] Nec minore livore ac malignitate quam
+**[34]** Nec minore livore ac malignitate quam
 
 superbia saevitiaque paene adversus omnis aevi hominum genus grassatus
 
@@ -1046,7 +1046,7 @@ aboliturus, saepe iactavit se mehercule effecturum ne quid respondere
 
 possint praeter eum.
 
-[35] Vetera familiarum insignia
+**[35]** Vetera familiarum insignia
 
 nobilissimo cuique ademit, Torquato torquem, Cincinnato crinem, Cn.
 
@@ -1086,7 +1086,7 @@ plus honoris gladiatori tribuentem quam consecratis principibus aut
 
 praesenti sibi.
 
-[36] Pudicitiae neque suae neque alienae
+**[36]** Pudicitiae neque suae neque alienae
 
 pepercit. M. Lepidum, Mnesterem pantomimum, quosdam obsides dilexisse
 
@@ -1114,7 +1114,7 @@ Quibusdam absentium maritorum nomine repudium ipse misit iussitque in
 
 acta ita referri.
 
-[37] Nepotatus sumptibus omnium prodigorum
+**[37]** Nepotatus sumptibus omnium prodigorum
 
 ingenia superavit, commentus novum balnearum usum, portentosissima
 
@@ -1150,7 +1150,7 @@ immensas opes totumque illud Ti. Caesaris vicies ac septies milies
 
 sestertium non toto vertente anno absumpsit.
 
-[38] Exhaustus igitur
+**[38]** Exhaustus igitur
 
 atque egens ad rapinas convertit animum vario et exquisitissimo
 
@@ -1204,7 +1204,7 @@ licendi finem factum, quoad tredecim gladiatores sestertium nonagies
 
 ignoranti addicerentur.
 
-[39] In Gallia quoque, cum damnatarum
+**[39]** In Gallia quoque, cum damnatarum
 
 sororum ornamenta et supellectilem et servos atque etiam libertos
 
@@ -1234,7 +1234,7 @@ in auctione misit, qui nescio quid frivoli ducentis milibus traderet
 
 diceretque cenaturum apud Caesarem vocatu ipsius.
 
-[40]
+**[40]** 
 
 Vectigalia nova atque inaudita primum per publicanos, deinde, quia
 
@@ -1256,7 +1256,7 @@ additumque ad caput legis, ut tenerentur publico et quae meretricium
 
 quive lenocinium fecissent, nec non et matrimonia obnoxia essent.
 
-[41] Eius modi vectigalibus indictis neque propositis, cum per
+**[41]** Eius modi vectigalibus indictis neque propositis, cum per
 
 ignorantiam scripturae multa commissa fierent, tandem flagitante populo
 
@@ -1284,7 +1284,7 @@ locupletis sine mora corripi confiscarique iussisset, exultans rediit
 
 gloriansque numquam se prosperiore alea usum.
 
-[42] Filia vero
+**[42]** Filia vero
 
 nata paupertatem nec iam imperatoria modo sed et patria conquerens onera
 
@@ -1322,7 +1322,7 @@ propinquarum urbium plebe verri sibi vias et conspergi propter pulverem
 
 exigeret.
 
-[44] Postquam castra attigit, ut se acrem ac severum
+**[44]** Postquam castra attigit, ut se acrem ac severum
 
 ducem ostenderet, legatos, qui auxilia serius ex diversis locis
 
@@ -1346,7 +1346,7 @@ forum usque et curiam pertenderent nec nisi in aede Martis ac frequente
 
 senatu consulibus traderent.
 
-[45] Mox deficiente belli materia
+**[45]** Mox deficiente belli materia
 
 paucos de custodia Germanos traici occulique trans Rhenum iussit ac sibi
 
@@ -1384,7 +1384,7 @@ discriminibus obiecto tempestiva convivia, circum et theatra et amoenos
 
 secessus celebrarent.
 
-[46] Postremo quasi perpetraturus bellum,
+**[46]** Postremo quasi perpetraturus bellum,
 
 derecta acie in litore Oceani ac ballistis machinisque dispositis,
 
@@ -1402,7 +1402,7 @@ denariis, quasi omne exemplum liberalitatis supergressus: "abite,"
 
 inquit, "laeti, abite locupletes."
 
-[47] Conversus hinc ad curam
+**[47]** Conversus hinc ad curam
 
 triumphi praeter captivos ac transfugas barbaros Galliarum quoque
 
@@ -1420,7 +1420,7 @@ procuratoribus, triumphum appararent quam minima summa, sed quantus
 
 numquam alius fuisset, quando in omnium hominum bona ius haberent.
 
-[48] Prius quam provincia decederet, consilium iniit nefandae
+**[48]** Prius quam provincia decederet, consilium iniit nefandae
 
 atrocitatis legiones, quae post excessum Augusti seditionem olim
 
@@ -1444,7 +1444,7 @@ cetera fraudatum se iusto triumpho, cum ipse paulo ante, ne quid de
 
 honoribus suis ageretur, etiam sub mortis poena denuntiasset.
 
-[49] Aditus ergo in itinere a legatis amplissimi ordinis ut maturaret
+**[49]** Aditus ergo in itinere a legatis amplissimi ordinis ut maturaret
 
 orantibus, quam maxima voce: "veniam," inquit, "veniam, et hic mecum,"
 
@@ -1474,7 +1474,7 @@ demersis infecta maria traduntur non sine piscium exitio, quos enectos
 
 aestus in proxima litora eiecit.
 
-[50] Statura fuit eminenti, colore
+**[50]** Statura fuit eminenti, colore
 
 expallido, corpore enormi, gracilitate maxima cervicis et crurum, oculis
 
@@ -1514,7 +1514,7 @@ taedio nunc toro residens, nunc per longissimas porticus vagus invocare
 
 identidem atque expectare lucem consuerat.
 
-[51] Non inmerito
+**[51]** Non inmerito
 
 mentis valitudini attribuerim diversissima in eodem vitia, summam
 
@@ -1552,7 +1552,7 @@ milites ementiendi, ipsum sibi manus intulisse nuntio malae pugnae
 
 perterritum.
 
-[52] Vestitu calciatuque et cetero habitu neque
+**[52]** Vestitu calciatuque et cetero habitu neque
 
 patrio neque civili, ac ne virili quidem ac denique humano semper usus
 
@@ -1570,7 +1570,7 @@ Triumphalem quidem ornatum etiam ante expeditionem assidue gestavit,
 
 interdum et Magni Alexandri thoracem repetitum e conditorio eius. 
 
-[53]
+**[53]** 
 
 Ex disciplinis liberalibus minimum eruditioni, eloquentiae plurimum
 
@@ -1596,7 +1596,7 @@ sua quemque vel sublevare, equestri quoque ordine ad audiendum invitato
 
 per edicta.
 
-[54] Sed et aliorum generum artes studiosissime et
+**[54]** Sed et aliorum generum artes studiosissime et
 
 diversissimas exercuit. Thraex et auriga, idem cantor atque saltator,
 
@@ -1622,7 +1622,7 @@ palla tunicaque talari prosiluit ac desaltato cantico abiit. Atque hic
 
 tam docilis ad cetera natare nesciit.
 
-[55] Quorum vero studio
+**[55]** Quorum vero studio
 
 teneretur, omnibus ad insaniam favit. Mnesterem pantomimum etiam inter
 
@@ -1658,7 +1658,7 @@ familiam et supellectilem dedit, quo lautius nomine eius invitati
 
 acciperentur; consulatum quoque traditur destinasse.
 
-[56] Ita
+**[56]** Ita
 
 bacchantem atque grassantem non defuit plerisque animus adoriri. Sed una
 
@@ -1692,7 +1692,7 @@ agenti gratias osculandam manum offerre formatam commotamque in
 
 obscaenum modum.
 
-[57] Futurae caedis multa prodigia
+**[57]** Futurae caedis multa prodigia
 
 exstiterunt. Olympiae simulacrum Iovis, quod dissolvi transferrique
 
@@ -1736,7 +1736,7 @@ noctem spectaculum, quo argumenta inferorum per Aegyptios et Aethiopas
 
 explicarentur.
 
-[58] VIIII. Kal. Febr. hora fere septima
+**[58]** VIIII. Kal. Febr. hora fere septima
 
 cunctatus an ad prandium surgeret marcente adhuc stomacho pridiani cibi
 
@@ -1772,7 +1772,7 @@ custodes, ac nonnullos ex percussoribus, quosdam etiam senatores
 
 innoxios interemerunt.
 
-[59] Vixit annis viginti novem,
+**[59]** Vixit annis viginti novem,
 
 imperavit triennio et decem mensibus diebusque octo. Cadaver eius clam
 
@@ -1790,7 +1790,7 @@ consumpta sit. Perit una et uxor Caesonia gladio a centurione confossa
 
 et filia parieti inlisa.
 
-[60] Condicionem temporum illorum
+**[60]** Condicionem temporum illorum
 
 etiam per haec aestimare quivis possit. Nam neque caede vulgata statim
 

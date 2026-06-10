@@ -248,7 +248,7 @@ SENES DUO
 
 DE. Ehem opportune: te ipsum quaerito.
 
-MI. Quid tristis es? DE. Rogas me, ubi nobis Aeschinus
+**MI** Quid tristis es? DE. Rogas me, ubi nobis Aeschinus
 
 sic est, quid tristis ego sim? MI. Dixin hoc fore?
 
@@ -280,7 +280,7 @@ nullum huius simile factum. haec quom illi, Micio,
 
 dico, tibi dico: tu illum corrumpi sinis.
 
-MI. Homine inperito numquam quicquam iniustiust,
+**MI** Homine inperito numquam quicquam iniustiust,
 
 qui nisi quod ipse fecit nil rectum putat.
 
@@ -332,7 +332,7 @@ te plura. in hac re peccare ostendam. DE. Ei mihi!
 
 pater esse disce ab illis qui uere sciunt.
 
-MI. Natura tu illi pater es, consiliis ego.
+**MI** Natura tu illi pater es, consiliis ego.
 
 DE. Tun consiliis? quicquam.. MI. Ah, si pergis, abiero.
 
@@ -346,7 +346,7 @@ ego item alterum. nam curare ambos propemodum
 
 reposcere illum est quem dedisti. DE. Ah, Micio!
 
-MI. Mihi sic uidetur. DE. Quid istic? tibi si istuc placet,
+**MI** Mihi sic uidetur. DE. Quid istic? tibi si istuc placet,
 
 profundat perdat pereat! nihil ad me attinet.
 
@@ -362,7 +362,7 @@ quom ita lit uolo esse est; tuos iste ipse sentiet
 
 posterius . . nolo in illum grauius dicere. ---
 
-MI. Nec nil neque omnia haec sunt quae dicit; tamen
+**MI** Nec nil neque omnia haec sunt quae dicit; tamen
 
 non nil molesta haec sunt mihi; sed ostendere
 
@@ -1308,7 +1308,7 @@ MICIO HEGIO
 
 SENES DVO
 
-MI. Ego in hac re nil reperio, quam ob rem lauder tanto opere, Hegio.
+**MI** Ego in hac re nil reperio, quam ob rem lauder tanto opere, Hegio.
 
 Meum officium facio: quod peccatum a nobis ortumst corrigo.
 
@@ -1340,7 +1340,7 @@ propter suam inpotentiam se semper credunt ludier.
 
 quapropter te ipsum purgare ipsi coram placabilius est.
 
-MI. Et recte et uerum dicis. HE. Sequere me ergo
+**MI** Et recte et uerum dicis. HE. Sequere me ergo
 
 hac intro. MI. Maxume.
 
@@ -1400,7 +1400,7 @@ MICIO    AESCHINVS
 
 SENEX    ADVLESCENS
 
-MI. Ita uti dixi, Sostrata,
+**MI** Ita uti dixi, Sostrata,
 
 facite: ego Aeschinum conueniam, ut quo modo acta haec sint sciat.
 
@@ -1414,7 +1414,7 @@ quandoquidem hoc numquam mi ipse uoluit credere.
 
 nil mihi respondes? AE. Non equidem istas, quod sciam.
 
-MI. Ita? nam mirabar, quid hic negoti esset tibi.
+**MI** Ita? nam mirabar, quid hic negoti esset tibi.
 
 erubuit: salua res est. AE. Die sodes, pater,
 
@@ -1430,7 +1430,7 @@ ut opinor eas non nosse te, et certo scio:
 
 neque enim diu huc migrarunt. AE. Quid tum postea?
 
-MI. Virgo est cum matre. AE. Perge. MI. Haec uirgo orbast patre:
+**MI** Virgo est cum matre. AE. Perge. MI. Haec uirgo orbast patre:
 
 hic meus amicus illi generest proxumus:
 
@@ -1440,7 +1440,7 @@ AE. Nil: recte: perge. MI. Is uenit ut secum auehat:
 
 nam habitat Mileti. AE. Hem, uirginem ut secum auehat?
 
-MI. Sic est. AE. Miletum usque obsecro? MI. Ita. AE. Animo malest.
+**MI** Sic est. AE. Miletum usque obsecro? MI. Ita. AE. Animo malest.
 
 quid ipsae? quid aiunt? MI. Quid illas censes? nihil enim.
 
@@ -1452,15 +1452,15 @@ priorem esse illum, non oportere huic dari.
 
 AE. Eho, nonne haec iusta tibi uidentur poscier?
 
-MI. Non. AE. Obsecro non? an illam hinc abducet, pater?
+**MI** Non. AE. Obsecro non? an illam hinc abducet, pater?
 
-MI. Quid illam ni abducat? AE. Factum a uobis duriter
+**MI** Quid illam ni abducat? AE. Factum a uobis duriter
 
 inmisericorditerque atque etiam, si est, pater,
 
 dicendum magis aperte, inliberaliter.
 
-MI. Quam ob rem? AE. Rogas me? quid illi tandem creditis
+**MI** Quam ob rem? AE. Rogas me? quid illi tandem creditis
 
 fore animi misero, quicum ea consueuit prius
 
@@ -1470,7 +1470,7 @@ quom hanc sibi uidebit praesens praesenti eripi
 
 abduci ab oculis? facinus indig,num, pater!
 
-MI. Qua ratione istuc? quis despondit? quis dedit?
+**MI** Qua ratione istuc? quis despondit? quis dedit?
 
 quoi quando nupsit? auctor his rebus quis est?
 
@@ -1482,7 +1482,7 @@ illim ueniret exspectantem? haec, mi pater,
 
 te dicere aequom fuit et id defendere.
 
-MI. Ridiculum: aduorsumne illum causam dicerem,
+**MI** Ridiculum: aduorsumne illum causam dicerem,
 
 quoi ueneram aduocatus? sed quid ista, Aeschine
 
@@ -1528,7 +1528,7 @@ obsecro, num ludis nunc tu me? MI. Ego te? quam ob rem? AE. Nescio:
 
 quia tam misere hoc esse cupio uerum, eo uereor magis.
 
-MI. Abi domum ac deos comprecare, ut uxorem arcessas: abi.
+**MI** Abi domum ac deos comprecare, ut uxorem arcessas: abi.
 
 AE. Quid? eam uxorem? MI. Eam. AE. Iam? MI. iam
 
@@ -1536,15 +1536,15 @@ quantum potis. AE. Di me, pater,
 
 omnes oderint, ni magis te quam oculos nunc ego amo meos.
 
-MI. Quid? quam illam? AE. Aeque. MI. Perbenigne. AE. Quid? ille ubist Milesius?
+**MI** Quid? quam illam? AE. Aeque. MI. Perbenigne. AE. Quid? ille ubist Milesius?
 
-MI. Periit, abiit, nauem ascendit; sed quor cessas? AE. Abi, pater,
+**MI** Periit, abiit, nauem ascendit; sed quor cessas? AE. Abi, pater,
 
 tu potius deos comprecare: nam tibi eos certo scio,
 
 quo uir melior multo es quam ego, optemperaturos magis.
 
-MI. Ego eo intro, ut quae opus sunt parentur: tu fac ut dixi, si sapis.---
+**MI** Ego eo intro, ut quae opus sunt parentur: tu fac ut dixi, si sapis.---
 
 AE. Quid hoc est negoti? hoc est patrem esse aut hoc est filium esse?
 
@@ -1578,11 +1578,11 @@ MICIO DEMEA
 
 SENES DVO
 
-MI. Ibo, illis dicam nullam esse in nobis moram
+**MI** Ibo, illis dicam nullam esse in nobis moram
 
 DE. Sed eccum ipsum. te iam dudum quaero, Micio.
 
-MI. Quidnam? DE. Fero alia flagitia ad te ingentia
+**MI** Quidnam? DE. Fero alia flagitia ad te ingentia
 
 boni illius adulescentis. MI. Ecce autem DE. Noua
 
@@ -1598,7 +1598,7 @@ non clamas? non insanis? MI. Non. DE. Malim quidem.
 
 puer natust. MI. Di bene uortant! DE. Virgo nihil habet.
 
-MI. Audiui. DE. Et ducenda indotatast. MI. Scilicet.
+**MI** Audiui. DE. Et ducenda indotatast. MI. Scilicet.
 
 DE. Quid nunc futurumst? MI. Id enim quod res ipsa fert:
 
@@ -1636,13 +1636,13 @@ DE. Quid igitur facies? MI. Domi erit. DE. Pro diuom fidem,
 
 meretrix et mater familias una in domo?
 
-MI. Quor non? DE. Sanum te credis esse? MI. Equidem arbitror.
+**MI** Quor non? DE. Sanum te credis esse? MI. Equidem arbitror.
 
 DE. Ita me di ament, ut tuam ego uideo ineptiam,
 
 facturum credo, ut habeas quicum cantites.
 
-MI. Quor non? DE. Et noua nupta eadem haec discet. MI. Scilicet.
+**MI** Quor non? DE. Et noua nupta eadem haec discet. MI. Scilicet.
 
 DE. Tu inter eas restim ductans saltabis. MI. Probe.
 
@@ -1726,7 +1726,7 @@ MICIO DEMEA
 
 SENES DVO
 
-MI. Parata a nobis sunt, ita ut dixi, Sostrata:
+**MI** Parata a nobis sunt, ita ut dixi, Sostrata:
 
 ubi uis.. quisnam a me pepulit tam grauiter fores?
 
@@ -1740,7 +1740,7 @@ paratae lites: succurrendumst. DE. Eccum adest
 
 communis corruptela nostrum liberum.
 
-MI. Tandem reprime iracundiam atque ad te redi.
+**MI** Tandem reprime iracundiam atque ad te redi.
 
 DE. Repressi, redii, mitto maledicta omnia:
 
@@ -1758,13 +1758,13 @@ mihi idem ius tecum ipse aequomst quod mecumst tibi?
 
 quando ego tuom non curo, ne cura meum.
 
-MI. Non aequom dicis. DE. Non? MI. Nam uetus uerbum hoc quidemst,
+**MI** Non aequom dicis. DE. Non? MI. Nam uetus uerbum hoc quidemst,
 
 communia esse amicorum inter se omnia.
 
 DE. Facete: nunc demum istaec nata oratiost.
 
-MI. Ausculta paucis, nisi molestumst, Demea.
+**MI** Ausculta paucis, nisi molestumst, Demea.
 
 principio, si id te mordet, sumptus filii
 
@@ -1860,7 +1860,7 @@ DE. Derides? fortunatus, qui isto animo sies.
 
 ego sentio.. MI. Ah, pergisne? DE. Iam iam desino.
 
-MI. I ergo intro, et quoi rei est, ei rei hunc sumamus diem.
+**MI** I ergo intro, et quoi rei est, ei rei hunc sumamus diem.
 
 DEMEA
 
@@ -2020,7 +2020,7 @@ MICIO DEMEA AESCHINVS
 
 SENES DVO   ADVLESCENS
 
-MI. Iubet frater? ubi is est? tun iubes hoc, Demea?
+**MI** Iubet frater? ubi is est? tun iubes hoc, Demea?
 
 DE. Ego uero iubeo et hac re et aliis omnibus
 
@@ -2028,25 +2028,25 @@ quam maxume unam facere nos hanc familiam,
 
 colere adiuuare adiungere. AE. Ita quaeso, pater.
 
-MI. Haud aliter censeo. DE. Immo hercle ita nobis decet:
+**MI** Haud aliter censeo. DE. Immo hercle ita nobis decet:
 
 primum huius uxori est mater. MI. Est. quid postea?
 
 DE. Proba et modesta. MI. Ita; aiunt. DE. Natu grandior.
 
-MI. Scio. DE. Parere iam diu haec per annos non potest:
+**MI** Scio. DE. Parere iam diu haec per annos non potest:
 
 nec qui eam respiciat quisquam est: solast. MI. Quam hic rem agit?
 
 D:E. Hanc te aequomst ducere, et te operam ut fiat dare.
 
-MI. Me ducere autem? DE. Te. MI. Me? DE. Te inquam. MI. Ineptis. DE. Si tu sis homo,
+**MI** Me ducere autem? DE. Te. MI. Me? DE. Te inquam. MI. Ineptis. DE. Si tu sis homo,
 
 hic faciat. AE. Mi pater! MI. Quid tu autem huic, asine, auscultas? DE. Nihil agis:
 
 fieri aliter non potest. MI. Deliras. AE. Sine te exorem, mi pater.
 
-MI. Insanis: aufer te. DE. Age, da ueniam filio. MI. Satin sanus es?
+**MI** Insanis: aufer te. DE. Age, da ueniam filio. MI. Satin sanus es?
 
 ego nouos maritus anno demum quinto et sexagensumo
 
@@ -2060,17 +2060,17 @@ DE. Da ueniam. AE. Ne grauare. DE. Fac, promitte. MI. Non omittitis?
 
 AE. Non, nisi te exorem. MI. Vis est haec quidem. Age prolixe, Micio.
 
-MI. Etsi hoc mihi prauom ineptum absurdum atque alienum a uita mea
+**MI** Etsi hoc mihi prauom ineptum absurdum atque alienum a uita mea
 
 uidetur, si uos tanto opere istuc uoltis, fiat. AE. Bene facis.
 
 DE. Merito te amo. uerum quid ego dicam, hoc quom confit quod uolo?
 
-MI. Quid? numquid restat? DE. Hegio cognatus his est proxumus,
+**MI** Quid? numquid restat? DE. Hegio cognatus his est proxumus,
 
 adfinis nobis, pauper: bene nos aliquid facere illi decet.
 
-MI. Quid facere? DE. Agelli est hic sub urbe paulum quod locitas foras:
+**MI** Quid facere? DE. Agelli est hic sub urbe paulum quod locitas foras:
 
 huic demus qui fruatur. MI. Paulum id autemst? DE. Si multumst, tamen
 
@@ -2084,7 +2084,7 @@ quod nimium ad rem in senecta attenti sumus'. hanc maculam nos decet
 
 ecfugere: et dictumst uere et re eapse fieri oportet. AE. Mi pater!
 
-MI. Quid istic? ager dabitur Hegioni, quandoquidem hic uolt. AE. Gaudeo.
+**MI** Quid istic? ager dabitur Hegioni, quandoquidem hic uolt. AE. Gaudeo.
 
 DE. Nunc tu mihi es germanus frater pariter animo et corpore.
 
@@ -2132,11 +2132,11 @@ hodie prima mammam dedit haec. DE. Hercle uero serio,
 
 siquidem prima dedit, hau dubiumst quin emitti aequom siet.
 
-MI. Ob eam rem? DE. Ob eam: postremo a me argentum quantist sumito.
+**MI** Ob eam rem? DE. Ob eam: postremo a me argentum quantist sumito.
 
 SY. Di tibi, Demea, omnia omnes semper optata offerant!
 
-MI. Syre, processisti hodie pulcre. DE. Siquidem porro, Micio,
+**MI** Syre, processisti hodie pulcre. DE. Siquidem porro, Micio,
 
 hi tuom officium facies, atque huic aliquid paulum prae manu
 
@@ -2146,7 +2146,7 @@ AE. Frugi homost. SY. Reddam hercle, da modo. AE. Age, pater! MI. Post consulam.
 
 DE. Faciet. SY. O uir optume! AE. O pater mi festiuissume!
 
-MI. Quid istuc? quae res tam repente mores mutauit tuos
+**MI** Quid istuc? quae res tam repente mores mutauit tuos
 
 quod prolubium? quae istaec subitast largitas? DE. Dicam tibi:
 

@@ -16,7 +16,7 @@ author_metadata:
 
 **1**
 
-C. PLINIUS ANNIO SEVERO SUO S.
+**C** PLINIUS ANNIO SEVERO SUO S.
 
 **1** Legatum mihi obvenit modicum sed amplissimo gratius. Cur amplissimo gratius? Pomponia Galla exheredato filio Asudio Curiano heredem reliquerat me, dederat coheredes Sertorium Severum praetorium virum aliosque splendidos equites Romanos. 2 Curianus orabat, ut sibi donarem portionem meam seque praeiudicio iuvarem; eandem tacita conventione salvam mihi pollicebatur. 3 Respondebam non convenire moribus meis aliud palam aliud agere secreto; praeterea non esse satis honestum donare et locupleti et orbo; in summa non profuturum ei si donassem, profuturum si cessissem, esse autem me paratum cedere si inique exheredatum mihi liqueret. 4 Ad hoc ille: 'Rogo cognoscas.' Cunctatus paulum 'Faciam' inquam; 'neque enim video cur ipse me minorem putem, quam tibi videor. Sed iam nunc memento non defuturam mihi constantiam, si ita fides duxerit, secundum matrem tuam pronuntiandi.' 5 'Ut voles' ait; 'voles enim quod aequissimum.' Adhibui in consilium duos quos tunc civitas nostra spectatissimos habuit, Corellium et Frontinum. 6 His circumdatus in cubiculo meo sedi. Dixit Curianus quae pro se putabat. Respondi paucis ego — neque enim aderat alius, qui defunctae pudorem tueretur -, deinde secessi, et ex consilii sententia 'Videtur' inquam, 'Curiane, mater tua iustas habuisse causas irascendi tibi.'
 
@@ -26,31 +26,31 @@ Post hoc ille cum ceteris subscripsit centumvirale iudicium, non subscripsit mec
 
 **2**
 
-C. PLINIUS CALPURNIO FLACCO SUO S.
+**C** PLINIUS CALPURNIO FLACCO SUO S.
 
 **1** Accepi pulcherrimos turdos, cum quibus parem calculum ponere nec urbis copiis ex Laurentino nec maris tam turbidis tempestatibus possum. 2 Recipies ergo epistulas steriles et simpliciter ingratas, ac ne illam quidem sollertiam Diomedis in permutando munere imitantes. Sed, quae facilitas tua, hoc magis dabis veniam, quod se non mereri fatentur. Vale.
 
 **3**
 
-C. PLINIUS TITIO ARISTONI SUO S.
+**C** PLINIUS TITIO ARISTONI SUO S.
 
 **1** Cum plurima officia tua mihi grata et iucunda sunt, tum vel maxime quod me celandum non putasti, fuisse apud te de versiculis meis multum copiosumque sermonem, eumque diversitate iudiciorum longius processisse, exstitisse etiam quosdam, qui scripta quidem ipsa non improbarent, me tamen amice simpliciterque reprehenderent, quod haec scriberem recitaremque. 2 Quibus ego, ut augeam meam culpam, ita respondeo: facio non numquam versiculos severos parum, facio; nam et comoedias audio et specto mimos et lyricos lego et Sotadicos intellego; aliquando praeterea rideo iocor ludo, utque omnia innoxiae remissionis genera breviter amplectar, homo sum. 3 Nec vero moleste fero hanc esse de moribus meis existimationem, ut qui nesciunt talia doctissimos gravissimos sanctissimos homines scriptitasse, me scribere mirentur. 4 Ab illis autem quibus notum est, quos quantosque auctores sequar, facile impetrari posse confido, ut errare me sed cum illis sinant, quorum non seria modo verum etiam lusus exprimere laudabile est. 5 An ego verear — neminem viventium, ne quam in speciem adulationis incidam, nominabo -, sed ego verear ne me non satis deceat, quod decuit M. Tullium, C. Calvum, Asinium Pollionem, M. Messalam, Q. Hortensium, M. Brutum, L. Sullam, Q. Catulum, Q. Scaevolam, Servium Sulpicium, Varronem, Torquatum, immo Torquatos, C. Memmium, Lentulum Gaetulicum, Annaeum Senecam et proxime Verginium Rufum et, si non sufficiunt exempla privata, Divum Iulium, Divum Augustum, Divum Nervam, Tiberium Caesarem? 6 Neronem enim transeo, quamvis sciam non corrumpi in deterius quae aliquando etiam a malis, sed honesta manere quae saepius a bonis fiunt. Inter quos vel praecipue numerandus est P. Vergilius, Cornelius Nepos et prius Accius Enniusque. Non quidem hi senatores, sed sanctitas morum non distat ordinibus. 7 Recito tamen, quod illi an fecerint nescio. Etiam: sed illi iudicio suo poterant esse contenti, mihi modestior constantia est quam ut satis absolutum putem, quod a me probetur. 8 Itaque has recitandi causas sequor, primum quod ipse qui recitat aliquanto acrius scriptis suis auditorum reverentia intendit; deinde quod de quibus dubitat, quasi ex consilii sententia statuit. 9 Multa etiam multis admonetur, et si non admoneatur, quid quisque sentiat perspicit ex vultu oculis nutu manu murmure silentio; quae satis apertis notis iudicium ab humanitate discernunt. 10 Atque adeo si cui forte eorum qui interfuerunt curae fuerit eadem illa legere, intelleget me quaedam aut commutasse aut praeterisse, fortasse etiam ex suo iudicio, quamvis ipse nihil dixerit mihi. 11 Atque haec ita disputo quasi populum in auditorium, non in cubiculum amicos advocarim, quos plures habere multis gloriosum, reprehensioni nemini fuit. Vale.
 
 **4**
 
-C. PLINIUS IULIO VALERIANO SUO S.
+**C** PLINIUS IULIO VALERIANO SUO S.
 
 **1** Res parva, sed initium non parvae. Vir praetorius Sollers a senatu periit, ut sibi instituere nundinas in agris suis permitteretur. Contra dixerunt legati Vicetinorum; adfuit Tuscilius Nominatus. 2 Dilata causa est. Alio senatu Vicetini sine advocato intraverunt, dixerunt se deceptos, lapsine verbo, an quia ita sentiebant. Interrogati a Nepote praetore, quem docuissent, responderunt quem prius. Interrogati an tunc gratis adfuisset, responderunt sex milibus nummum; an rursus aliquid dedissent, dixerunt mille denarios. Nepos postulavit ut Nominatus induceretur. 3 Hactenus illo die. Sed quantum auguror longius res procedet. Nam pleraque tacta tantum et omnino commota latissime serpunt. Erexi aures tuas. 4 Quam diu nunc oportet, quam blande roges, ut reliqua cognoscas! si tamen non ante ob haec ipsa veneris Romam, spectatorque malueris esse quam lector. Vale.
 
 **5**
 
-C. PLINIUS NOVIO MAXIMO SUO S.
+**C** PLINIUS NOVIO MAXIMO SUO S.
 
 **1** Nuntiatum mihi C. Fannium decessisse; qui nuntius me gravi dolore confudit, primum quod amavi hominem elegantem disertum, deinde quod iudicio eius uti solebam. Erat enim acutus natura, usu exercitatus, veritate promptissimus. 2 Angit me super ista casus ipsius: decessit veteri testamento, omisit quos maxime diligebat, prosecutus est quibus offensior erat. Sed hoc utcumque tolerabile; gravius illud, quod pulcherrimum opus imperfectum reliquit. 3 Quamvis enim agendis causis distringeretur, scribebat tamen exitus occisorum aut relegatorum a Nerone et iam tres libros absolverat subtiles et diligentes et Latinos atque inter sermonem historiamque medios, ac tanto magis reliquos perficere cupiebat, quanto frequentius hi lectitabantur. 4 Mihi autem videtur acerba semper et immatura mors eorum, qui immortale aliquid parant. Nam qui voluptatibus dediti quasi in diem vivunt, vivendi causas cotidie finiunt; qui vero posteros cogitant, et memoriam sui operibus extendunt, his nulla mors non repentina est, ut quae semper incohatum aliquid abrumpat. 5 Gaius quidem Fannius, quod accidit, multo ante praesensit. Visus est sibi per nocturnam quietem iacere in lectulo suo compositus in habitum studentis, habere ante se scrinium — ita solebat -; mox imaginatus est venisse Neronem, in toro resedisse, prompsisse primum librum quem de sceleribus eius ediderat, cumque ad extremum revolvisse; idem in secundo ac tertio fecisse, tunc abisse. 6 Expavit et sic interpretatus est, tamquam idem sibi futurus esset scribendi finis, qui fuisset illi legendi: et fuit idem. 7 Quod me recordantem miseratio subit, quantum vigiliarum quantum laboris exhauserit frustra. Occursant animo mea mortalitas mea scripta. Nec dubito te quoque eadem cogitatione terreri, pro istis quae inter manus habes. 8 Proinde, dum suppetit vita, enitamur ut mors quam paucissima quae abolere possit inveniat. Vale.
 
 **6**
 
-C. PLINIUS DOMITIO APOLLINARI SUO S.
+**C** PLINIUS DOMITIO APOLLINARI SUO S.
 
 **1** Amavi curam et sollicitudinem tuam, quod cum audisses me aestate Tuscos meos petiturum, ne facerem suasisti, dum putas insalubres. 2 Est sane gravis et pestilens ora Tuscorum, quae per litus extenditur; sed hi procul a mari recesserunt, quin etiam Appennino saluberrimo montium subiacent. 3 Atque adeo ut omnem pro me metum ponas, accipe temperiem caeli regionis situm villae amoenitatem, quae et tibi auditu et mihi relatu iucunda erunt.
 
@@ -68,49 +68,49 @@ Verum illuc unde coepi, ne secundum legem meam iure reprendar, si longior fuero 
 
 **7**
 
-C. PLINIUS CALVISIO RUFO SUO S.
+**C** PLINIUS CALVISIO RUFO SUO S.
 
 **1** Nec heredem institui nec praecipere posse rem publicam constat; Saturninus autem, qui nos reliquit heredes, quadrantem rei publicae nostrae, deinde pro quadrante praeceptionem quadringentorum milium dedit. Hoc si ius aspicias irritum, si defuncti voluntatem ratum et firmum est. 2 Mihi autem defuncti voluntas — vereor quam in partem iuris consulti quod sum dicturus accipiant — antiquior iure est, utique in eo quod ad communem patriam voluit pervenire. 3 An cui de meo sestertium sedecies contuli, huic quadringentorum milium paulo amplius tertiam partem ex adventicio denegem? Scio te quoque a iudicio meo non abhorrere, cum eandem rem publicam ut civis optimus diligas. 4 Velim ergo, cum proxime decuriones contrahentur, quid sit iuris indices, parce tamen et modeste; deinde subiungas nos quadringenta milia offerre, sicut praeceperit Saturninus. Illius hoc munus, illius liberalitas; nostrum tantum obsequium vocetur. 5 Haec ego scribere publice supersedi, primum quod memineram pro necessitudine amicitiae nostrae, pro facultate prudentiae tuae et debere te et posse perinde meis ac tuis partibus fungi; deinde quia verebar ne modum, quem tibi in sermone custodire facile est, tenuisse in epistula non viderer. 6 Nam sermonem vultus gestus vox ipsa moderatur, epistula omnibus commendationibus destituta malignitati interpretantium exponitur. Vale.
 
 **8**
 
-C. PLINIUS TITINIO CAPITONI SUO S.
+**C** PLINIUS TITINIO CAPITONI SUO S.
 
 **1** Suades ut historiam scribam, et suades non solus: multi hoc me saepe monuerunt et ego volo, non quia commode facturum esse confidam — id enim temere credas nisi expertus -, sed quia mihi pulchrum in primis videtur non pati occidere, quibus aeternitas debeatur, aliorumque famam cum sua extendere. 2 Me autem nihil aeque ac diuturnitatis amor et cupido sollicitat, res homine dignissima, eo praesertim qui nullius sibi conscius culpae posteritatis memoriam non reformidet. 3 Itaque diebus ac noctibus cogito, si 'qua me quoque possim tollere humo'; id enim voto meo sufficit, illud supra votum 'victorque virum volitare per ora'; 'quamquam o-': sed hoc satis est, quod prope sola historia polliceri videtur. 4 Orationi enim et carmini parva gratia, nisi eloquentia est summa: historia quoquo modo scripta delectat. Sunt enim homines natura curiosi, et quamlibet nuda rerum cognitione capiuntur, ut qui sermunculis etiam fabellisque ducantur. Me vero ad hoc studium impellit domesticum quoque exemplum. 5 Avunculus meus idemque per adoptionem pater historias et quidem religiosissime scripsit. Invenio autem apud sapientes honestissimum esse maiorum vestigia sequi, si modo recto itinere praecesserint. Cur ergo cunctor? 6 Egi magnas et graves causas. Has, etiamsi mihi tenuis ex iis spes, destino retractare, ne tantus ille labor meus, nisi hoc quod reliquum est studii addidero, mecum pariter intercidat. 7 Nam si rationem posteritatis habeas, quidquid non est peractum, pro non incohato est. Dices: 'Potes simul et rescribere actiones et componere historiam.' Utinam! sed utrumque tam magnum est, ut abunde sit alterum efficere. 8 Unodevicensimo aetatis anno dicere in foro coepi, et nunc demum quid praestare debeat orator, adhuc tamen per caliginem video. 9 Quid si huic oneri novum accesserit? Habet quidem oratio et historia multa communia, sed plura diversa in his ipsis, quae communia videntur. Narrat illa narrat haec, sed aliter: huic pleraque humilia et sordida et ex medio petita, illi omnia recondita splendida excelsa conveniunt; 10 hanc saepius ossa musculi nervi, illam tori quidam et quasi iubae decent; haec vel maxime vi amaritudine instantia, illa tractu et suavitate atque etiam dulcedine placet; postremo alia verba alius sonus alia constructio. 11 Nam plurimum refert, ut Thucydides ait, κτῆμα sit an ἀγώνισμα; quorum alterum oratio, alterum historia est. His ex causis non adducor ut duo dissimilia et hoc ipso diversa, quo maxima, confundam misceamque, ne tanta quasi colluvione turbatus ibi faciam quod hic debeo; ideoque interim veniam, ut ne a meis verbis recedam, advocandi peto. 12 Tu tamen iam nunc cogita quae potissimum tempora aggrediar. Vetera et scripta aliis? Parata inquisitio, sed onerosa collatio. Intacta et nova? Graves offensae levis gratia. 13 Nam praeter id, quod in tantis vitiis hominum plura culpanda sunt quam laudanda, tum si laudaveris parcus, si culpaveris nimius fuisse dicaris, quamvis illud plenissime, hoc restrictissime feceris. 14 Sed haec me non retardant; est enim mihi pro fide satis animi: illud peto praesternas ad quod hortaris, eligasque materiam, ne mihi iam scribere parato alia rursus cunctationis et morae iusta ratio nascatur. Vale.
 
 **9**
 
-C. PLINIUS SEMPRONIO RUFO SUO S.
+**C** PLINIUS SEMPRONIO RUFO SUO S.
 
 **1** Descenderam in basilicam Iuliam, auditurus quibus proxima comperendinatione respondere debebam. 2 Sedebant iudices, decemviri venerant, obversabantur advocati, silentium longum; tandem a praetore nuntius. Dimittuntur centumviri, eximitur dies me gaudente, qui umquam ita paratus sum ut non mora laeter. 3 Causa dilationis Nepos praetor, qui legibus quaerit. Proposuerat breve edictum, admonebat accusatores, admonebat reos exsecuturum se quae senatus consulto continerentur. 4 Suberat edicto senatus consultum: hoc omnes qui quid negotii haberent iurare prius quam agerent iubebantur, nihil sc ob advocationem cuiquam dedisse promisisse cavisse. His enim verbis ac mille praeterea et venire advocationes et emi vetabantur; peractis tamen negotiis permittebatur pecuniam dumtaxat decem milium dare. 5 Hoc facto Nepotis commotus praetor qui centumviralibus praesidet, deliberaturus an sequeretur exemplum, inopinatum nobis otium dedit. 6 Interim tota civitate Nepotis edictum carpitur laudatur. Multi: 'Invenimus, qui curva corrigeret! Quid? ante hunc praetores non fuerunt? quis autem hic est, qui emendet publicos mores?' Alii contra: 'Rectissime fecit; initurus magistratum iura cognovit, senatus consulta legit, reprimit foedissimas pactiones, rem pulcherrimam turpissime venire non patitur.' 7 Tales ubique sermones, qui tamen alterutram in partem ex eventu praevalebunt. Est omnino iniquum, sed usu receptum, quod honesta consilia vel turpia, prout male aut prospere cedunt, ita vel probantur vel reprehenduntur. Inde plerumque eadem facta modo diligentiae modo vanitatis, modo libertatis modo furoris nomen accipiunt. Vale.
 
 **10**
 
-C. PLINIUS SUETONIO TRANQUILLO SUO S.
+**C** PLINIUS SUETONIO TRANQUILLO SUO S.
 
 **1** Libera tandem hendecasyllaborum meorum fidem, qui scripta tua communibus amicis spoponderunt. Appellantur cotidie, efflagitantur, ac iam periculum est ne cogantur ad exhibendum formulam accipere. 2 Sum et ipse in edendo haesitator, tu tamen meam quoque cunctationem tarditatemque vicisti. Proinde aut rumpe iam moras aut cave ne eosdem istos libellos, quos tibi hendecasyllabi nostri blanditiis elicere non possunt, convicio scazontes extorqueant. 3 Perfectum opus absolutumque est, nec iam splendescit lima sed atteritur. Patere me videre titulum tuum, patere audire describi legi venire volumina Tranquilli mei. Aequum est nos in amore tam mutuo eandem percipere ex te voluptatem, qua tu perfrueris ex nobis. Vale.
 
 **11**
 
-C. PLINIUS CALPURNIO FABATO PROSOCERO SUO S.
+**C** PLINIUS CALPURNIO FABATO PROSOCERO SUO S.
 
 **1** Recepi litteras tuas ex quibus cognovi speciosissimam te porticum sub tuo filiique tui nomine dedicasse, sequenti die in portarum ornatum pecuniam promisisse, ut initium novae liberalitatis esset consummatio prioris. 2 Gaudeo primum tua gloria, cuius ad me pars aliqua pro necessitudine nostra redundat; deinde quod memoriam soceri mei pulcherrimis operibus video proferri; postremo quod patria nostra florescit, quam mihi a quocumque excoli iucundum, a te vero laetissimum est. 3 Quod superest, deos precor ut animum istum tibi, animo isti tempus quam longissimum tribuant. Nam liquet mihi futurum ut peracto quod proxime promisisti, incohes aliud. Nescit enim semel incitata liberalitas stare, cuius pulchritudinem usus ipse commendat. Vale.
 
 **12**
 
-C. PLINIUS TERENTIO SCAURO SUO S.
+**C** PLINIUS TERENTIO SCAURO SUO S.
 
 **1** Recitaturus oratiunculam quam publicare cogito, advocavi aliquos ut vererer, paucos ut verum audirem. Nam mihi duplex ratio recitandi, una ut sollicitudine intendar, altera ut admonear, si quid forte me ut meum fallit. 2 Tuli quod petebam: inveni qui mihi copiam consilii sui facerent, ipse praeterea quaedam emendanda adnotavi. Emendavi librum, quem misi tibi. 3 Materiam ex titulo cognosces, cetera liber explicabit, quem iam nunc oportet ita consuescere, ut sine praefatione intellegatur. 4 Tu velim quid de universo, quid de partibus sentias, scribas mihi. Ero enim vel cautior in continendo vel constantior in edendo, si huc vel illuc auctoritas tua accesserit. Vale.
 
 **13**
 
-C. PLINIUS <IULIO> VALERIANO SUO S.
+**C** PLINIUS <IULIO> VALERIANO SUO S.
 
 **1** Et tu rogas et ego promisi si rogasses, scripturum me tibi quem habuisset eventum postulatio Nepotis circa Tuscilium Nominatum. Inductus est Nominatus; egit ipse pro se nullo accusante. Nam legati Vicetinorum non modo non presserunt eum verum etiam sublevaverunt. 2 Summa defensionis, non fidem sibi in advocatione sed constantiam defuisse; descendisse ut acturum, atque etiam in curia visum, deinde sermonibus amicorum perterritum recessisse; monitum enim ne desiderio senatoris, non iam quasi de nundinis sed quasi de gratia fama dignitate certantis, tam pertinaciter praesertim in senatu repugnaret, alioqui maiorem invidiam quam proxime passurus. 3 Erat sane prius, a paucis tamen, acclamatum exeunti. Subiunxit preces multumque lacrimarum; quin etiam tota actione homo in dicendo exercitatus operam dedit, ut deprecari magis — id enim et favorabilius et tutius — quam defendi videretur. 4 Absolutus est sententia designati consulis Afrani Dextri, cuius haec summa: melius quidem Nominatum fuisse facturum, si causam Vicetinorum eodem animo quo susceperat pertulisset; quia tamen in hoc genus culpae non fraude incidisset, nihilque dignum animadversione admisisse convinceretur, liberandum, ita ut Vicetinis quod acceperat redderet. 5 Assenserunt omnes praeter Fabium Aprum. Is interdicendum ei advocationibus in quinquennium censuit, et quamvis neminem auctoritate traxisset, constanter in sententia mansit; quin etiam Dextrum, qui primus diversum censuerat, prolata lege de senatu habendo iurare coegit e re publica esse quod censuisset. 6 Cui quamquam legitimae postulationi a quibusdam reclamatum est; exprobrare enim censenti ambitionem videbatur. Sed prius quam sententiae dicerentur, Nigrinus tribunus plebis recitavit libellum disertum et gravem, quo questus est venire advocationes, venire etiam praevaricationes, in lites coiri, et gloriae loco poni ex spoliis civium magnos et statos reditus. 7 Recitavit capita legum, admonuit senatus consultorum, in fine dixit petendum ab optimo principe, ut quia leges, quia senatus consulta contemnerentur, ipse tantis vitiis mederetur. 8 Pauci dies, et liber principis severus et tamen moderatus: leges ipsum; est in publicis actis. Quam me iuvat, quod in causis agendis non modo pactione dono munere verum etiam xeniis semper abstinui! 9 Oportet quidem, quae sunt inhonesta, non quasi illicita sed quasi pudenda vitare; iucundum tamen si prohiberi publice videas, quod numquam tibi ipse permiseris. 10 Erit fortasse, immo non dubie, huius propositi mei et minor laus et obscurior fama, cum omnes ex necessitate facient quod ego sponte faciebam. Interim fruor voluptate, cum alii divinum me, alii meis rapinis meae avaritiae occursum per ludum ac iocum dictitant. Vale.
 
 **14**
 
-C. PLINIUS PONTIO ALLIFANO SUO S.
+**C** PLINIUS PONTIO ALLIFANO SUO S.
 
 **1** Secesseram in municipium, cum mihi nuntiatum est Cornutum Tertullum accepisse Aemiliae viae curam. 2 Exprimere non possum, quanto sim gaudio affectus, et ipsius et meo nomine: ipsius quod, sit licet — sicut est — ab omni ambitione longe remotus, debet tamen ei iucundus honor esse ultro datus, meo quod aliquanto magis me delectat mandatum mihi officium, postquam par Cornuto datum video. 3 Neque enim augeri dignitate quam aequari bonis gratius. Cornuto autem quid melius, quid sanctius, quid in omni genere laudis ad exemplar antiquitatis expressius? quod mihi cognitum est non fama, qua alioqui optima et meritissima fruitur, sed longis magnisque experimentis. 4 Una diligimus, una dileximus omnes fere quos aetas nostra in utroque sexu aemulandos tulit; quae societas amicitiarum artissima nos familiaritate coniunxit. 5 Accessit vinculum necessitudinis publicae; idem enim mihi, ut scis, collega quasi voto petitus in praefectura aerarii fuit, fuit et in consulatu. Tum ego qui vir et quantus esset altissime inspexi, cum sequerer ut magistrum, ut parentem vererer, quod non tam aetatis maturitate quam vitae merebatur. 6 His ex causis ut illi sic mihi gratulor, nec privatim magis quam publice, quod tandem homines non ad pericula ut prius verum ad honores virtute perveniunt.
 
@@ -118,19 +118,19 @@ C. PLINIUS PONTIO ALLIFANO SUO S.
 
 **15**
 
-C. PLINIUS ARRIO ANTONINO SUO S.
+**C** PLINIUS ARRIO ANTONINO SUO S.
 
 **1** Cum versus tuos aemulor, tum maxime quam sint boni experior. Ut enim pictores pulchram absolutamque faciem raro nisi in peius effingunt, ita ego ab hoc archetypo labor et decido. 2 Quo magis hortor, ut quam plurima proferas, quae imitari omnes concupiscant, nemo aut paucissimi possint. Vale.
 
 **16**
 
-C. PLINIUS AEFULANO MARCELLINO SUO S.
+**C** PLINIUS AEFULANO MARCELLINO SUO S.
 
 **1** Tristissimus haec tibi scribo, Fundani nostri filia minore defuncta. Qua puella nihil umquam festivius amabilius, nec modo longiore vita sed prope immortalitate dignius vidi. 2 Nondum annos xiiii impleverat, et iam illi anilis prudentia, matronalis gravitas erat et tamen suavitas puellaris cum virginali verecundia. 3 Ut illa patris cervicibus inhaerebat! ut nos amicos paternos et amanter et modeste complectebatur! ut nutrices, ut paedagogos, ut praeceptores pro suo quemque officio diligebat! quam studiose, quam intellegenter lectitabat! ut parce custoditeque ludebat! Qua illa temperantia, qua patientia, qua etiam constantia novissimam valetudinem tulit! 4 Medicis obsequebatur, sororem patrem adhortabatur ipsamque se destitutam corporis viribus vigore animi sustinebat. 5 Duravit hic illi usque ad extremum, nec aut spatio valetudinis aut metu mortis infractus est, quo plures gravioresque nobis causas relinqueret et desiderii et doloris. 6 O triste plane acerbumque funus! o morte ipsa mortis tempus indignius! iam testinata erat egregio iuveni, iam electus nuptiarum dies, iam nos vocati. Quod gaudium quo maerore mutatum est! 7 Non possum exprimere verbis quantum animo vulnus acceperim, cum audivi Fundanum ipsum, ut multa luctuosa dolor invenit, praecipientem, quod in vestes margarita gemmas fuerat erogaturus, hoc in tus et unguenta et odores impenderetur. 8 Est quidem ille eruditus et sapiens, ut qui se ab ineunte aetate altioribus studiis artibusque dediderit; sed nunc omnia, quae audiit saepe quae dixit, aspernatur expulsisque virtutibus aliis pietatis est totus. 9 Ignosces, laudabis etiam, si cogitaveris quid amiserit. Amisit enim filiam, quae non minus mores eius quam os vultumque referebat, totumque patrem mira similitudine exscripserat. 10 Proinde si quas ad eum de dolore tam iusto litteras mittes, memento adhibere solacium non quasi castigatorium et nimis forte, sed molle et humanum. Quod ut facilius admittat, multum faciet medii temporis spatium. 11 Ut enim crudum adhuc vulnus medentium manus reformidat, deinde patitur atque ultro requirit, sic recens animi dolor consolationes reicit ac refugit, mox desiderat et clementer admotis acquiescit. Vale.
 
 **17**
 
-C. PLINIUS VESTRICIO SPURINNAE SUO S.
+**C** PLINIUS VESTRICIO SPURINNAE SUO S.
 
 **1** Scio quanto opere bonis artibus faveas, quantum gaudium capias, si nobiles iuvenes dignum aliquid maioribus suis faciant. Quo festinantius nuntio tibi fuisse me hodie in auditorio Calpurni Pisonis. 2 Recitabat καταστερισμῶν eruditam sane luculentamque materiam. Scripta elegis erat fluentibus et teneris et enodibus, sublimibus etiam, ut poposcit locus. Apte enim et varie nunc attollebatur, nunc residebat; excelsa depressis, exilia plenis, severis iucunda mutabat, omnia ingenio pari. 3 Commendabat haec voce suavissima, vocem verecundia: multum sanguinis, multum sollicitudinis in ore, magna ornamenta recitantis. Etenim nescio quo pacto magis in studiis homines timor quam fiducia decet. 4 Ne plura — quamquam libet plura, quo sunt pulchriora de iuvene, rariora de nobili -, recitatione finita multum ac diu exosculatus adulescentem, qui est acerrimus stimulus monendi, laudibus incitavi, pergeret qua coepisset, lumenque quod sibi maiores sui praetulissent, posteris ipse praeferret. 5 Gratulatus sum optimae matri, gratulatus et fratri, qui ex auditorio illo non minorem pietatis gloriam quam ille alter eloquentiae retulit: tam notabiliter pro fratre recitante primum metus eius, mox gaudium eminuit.
 
@@ -138,19 +138,19 @@ C. PLINIUS VESTRICIO SPURINNAE SUO S.
 
 **18**
 
-C. PLINIUS CALPURNIO MACRO SUO S.
+**C** PLINIUS CALPURNIO MACRO SUO S.
 
 **1** Bene est mihi quia tibi bene est. Habes uxorem tecum, habes filium; frueris mari fontibus viridibus agro villa amoenissima. Neque enim dubito esse amoenissimam, in qua se composuerat homo felicior, ante quam felicissimus fieret. 2 Ego in Tuscis et venor et studeo, quae interdum alternis, interdum simul facio; nec tamen adhuc possum pronuntiare, utrum sit difficilius capere aliquid an scribere. Vale.
 
 **19**
 
-C. PLINIUS VALERIO PAULINO SUO S.
+**C** PLINIUS VALERIO PAULINO SUO S.
 
 **1** Video quam molliter tuos habeas; quo simplicius tibi confitebor, qua indulgentia meos tractem. 2 Est mihi semper in animo et Homericum illud πατὴρ δ᾽ ὥς ἤπιος ἦεν et hoc nostrum 'pater familiae'. Quod si essem natura asperior et durior, frangeret me tamen infirmitas liberti mei Zosimi, cui tanto maior humanitas exhibenda est, quanto nunc illa magis eget. 3 Homo probus officiosus litteratus; et ars quidem eius et quasi inscriptio comoedus, in qua plurimum facit. Nam pronuntiat acriter sapienter apte decenter etiam; utitur et cithara perite, ultra quam comoedo necesse est. Idem tam commode orationes et historias et carmina legit, ut hoc solum didicisse videatur. 4 Haec tibi sedulo exposui, quo magis scires, quam multa unus mihi et quam iucunda ministeria praestaret. Accedit longa iam caritas hominis, quam ipsa pericula auxerunt. 5 Est enim ita natura comparatum, ut nihil aeque amorem incitet et accendat quam carendi metus; quem ego pro hoc non semel patior. 6 Nam ante aliquot annos, dum intente instanterque pronuntiat, sanguinem reiecit atque ob hoc in Aegyptum missus a me post longam peregrinationem confirmatus rediit nuper; deinde dum per continuos dies nimis imperat voci, veteris infirmitatis tussicula admonitus rursus sanguinem reddidit. 7 Qua ex causa destinavi eum mittere in praedia tua, quae Foro Iulii possides. Audivi enim te saepe referentem esse ibi et aera salubrem et lac eiusmodi curationibus accommodatissimum. 8 Rogo ergo scribas tuis, ut illi villa, ut domus pateat, offerant etiam sumptibus eius, si quid opus erit. 9 Erit autem opus modico; est enim tam parcus et continens, ut non solum delicias verum etiam necessitates valetudinis frugalitate restringat. Ego proficiscenti tantum viatici dabo, quantum sufficiat eunti in tua. Vale.
 
 **20**
 
-C. PLINIUS CORNELIO URSO SUO S.
+**C** PLINIUS CORNELIO URSO SUO S.
 
 **1** Iterum Bithyni: breve tempus a Iulio Basso, et Rufum Varenum proconsulem detulerunt, Varenum quem nuper adversus Bassum advocatum et postularant et acceperant. Inducti in senatum inquisitionem postulaverunt. 2 Varenus petit ut sibi quoque defensionis causa evocare testes liceret; recusantibus Bithynis cognitio suscepta est. Egi pro Vareno non sine eventu; nam bene an male liber indicabit. 3 In actionibus enim utramque in partem fortuna dominatur: multum commendationis et detrahit et affert memoria vox gestus tempus ipsum, postremo vel amor vel odium rei; liber offensis, liber gratia, liber et secundis casibus et adversis caret. 4 Respondit mihi Fonteius Magnus, unus ex Bithynis, plurimis verbis paucissimis rebus. Est plerisque Graecorum, ut illi, pro copia volubilitas: tam longas tamque frigidas perihodos uno spiritu quasi torrente contorquent. 5 Itaque Iulius Candidus non invenuste solet dicere, aliud esse eloquentiam aliud loquentiam. Nam eloquentia vix uni aut alteri, immo — si M. Antonio credimus — nemini, haec vero, quam Candidus loquentiam appellat, multis atque etiam impudentissimo cuique maxime contigit. 6 Postero die dixit pro Vareno Homullus callide acriter culte, contra Nigrinus presse graviter ornate. Censuit Acilius Rufus consul designatus inquisitionem Bithynis dandam, postulationem Vareni silentio praeteriit. 7 Haec forma negandi fuit. Cornelius Priscus consularis et accusatoribus quae petebant et reo tribuit, vicitque numero. Impetravimus rem nec lege comprehensam nec satis usitatam, iustam tamen. 8 Quare iustam, non sum epistula exsecuturus, ut desideres actionem. Nam si verum est Homericum illud:
 
@@ -162,7 +162,7 @@ providendum est mihi, ne gratiam novitatis et florem, quae oratiunculam illam ve
 
 **21**
 
-C. PLINIUS POMPEIO SATURNINO SUO S.
+**C** PLINIUS POMPEIO SATURNINO SUO S.
 
 **1** Varie me affecerunt litterae tuae; nam partim laeta partim tristia continebant: laeta quod te in urbe teneri nuntiabant — 'nollem' inquis; sed ego volo -, praeterea quod recitaturum statim ut venissem pollicebantur; ago gratias quod exspector. 2 Triste illud, quod Iulius Valens graviter iacet; quamquam ne hoc quidem triste, si illius utilitatibus aestimetur, cuius interest quam maturissime inexplicabili morbo liberari. 3 Illud plane non triste solum verum etiam luctuosum, quod Iulius Avitus decessit dum ex quaestura redit, decessit in nave, procul a fratre amantissimo, procul a matre a sororibus 4 — nihil ista ad mortuum pertinent, sed pertinuerunt cum moreretur, pertinent ad hos qui supersunt -; iam quod in flore primo tantae indolis iuvenis exstinctus est summa consecuturus, si virtutes eius maturuissent. 5 Quo ille studiorum amore flagrabat! quantum legit, quantum etiam scripsit! quae nunc omnia cum ipso sine fructu posteritatis abierunt. 6 Sed quid ego indulgeo dolori? Cui si frenos remittas, nulla materia non maxima est. Finem epistulae faciam, ut facere possim etiam lacrimis quas epistula expressit. Vale.
 

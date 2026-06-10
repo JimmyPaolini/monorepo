@@ -24,7 +24,7 @@ tum mihi constantis deiecit lumina fastus
 
 et caput impositis pressit Amor pedibus,
 
-donec me docuit castas odisse puellas                 5
+donec me docuit castas odisse puellas **5**
 
 improbus, et nullo vivere consilio.
 
@@ -34,7 +34,7 @@ cum tamen adversos cogor habere deos.
 
 Milanion nullos fugiendo, Tulle, labores
 
-saevitiam durae contudit Iasidos.                 10
+saevitiam durae contudit Iasidos. **10**
 
 nam modo Partheniis amens errabat in antris,
 
@@ -44,7 +44,7 @@ ille etiam Hylaei percussus vulnere rami
 
 saucius Arcadiis rupibus ingemuit.
 
-ergo velocem potuit domuisse puellam:                 15
+ergo velocem potuit domuisse puellam: **15**
 
 tantum in amore fides et benefacta valent.
 
@@ -54,7 +54,7 @@ nec meminit notas, ut prius, ire vias.
 
 at vos, deductae quibus est pellacia lunae
 
-et labor in magicis sacra piare focis,                 20
+et labor in magicis sacra piare focis, **20**
 
 en agedum dominae mentem convertite nostrae,
 
@@ -64,7 +64,7 @@ tunc ego crediderim Manes et sidera vobis
 
 posse Cytinaeis ducere carminibus.
 
-aut vos, qui sero lapsum revocatis, amici,                 25
+aut vos, qui sero lapsum revocatis, amici, **25**
 
 quaerite non sani pectoris auxilia.
 
@@ -74,7 +74,7 @@ sit modo libertas quae velit ira loqui.
 
 ferte per extremas gentes et ferte per undas,
 
-qua non ulla meum femina norit iter.                 30
+qua non ulla meum femina norit iter. **30**
 
 vos remanete, quibus facili deus annuit aure,
 
@@ -84,7 +84,7 @@ nam me nostra Venus noctes exercet amaras,
 
 et nullo vacuus tempore defit Amor.
 
-hoc, moneo, vitate malum: sua quemque moretur                 35
+hoc, moneo, vitate malum: sua quemque moretur **35**
 
 cura, neque assueto mutet amore torum.
 
@@ -102,7 +102,7 @@ aut quid Orontea crines perfundere murra,
 
 teque peregrinis vendere muneribus,
 
-naturaeque decus mercato perdere cultu,                 5
+naturaeque decus mercato perdere cultu, **5**
 
 nec sinere in propriis membra nitere bonis?
 
@@ -112,7 +112,7 @@ nudus Amor formam non amat artificem.
 
 aspice quos summittat humus non fossa colores,
 
-ut veniant hederae sponte sua melius,                 10
+ut veniant hederae sponte sua melius, **10**
 
 surgat et in solis formosior arbutus antris,
 
@@ -122,7 +122,7 @@ litora nativis praefulgent picta lapillis,
 
 et volucres nulla dulcius arte canunt.
 
-non sic Leucippis succendit Castora Phoebe,                 15
+non sic Leucippis succendit Castora Phoebe, **15**
 
 Pollucem cultu non Helaira soror;
 
@@ -132,7 +132,7 @@ Eueni patriis filia litoribus;
 
 nec Phrygium falso traxit candore maritum
 
-avecta externis Hippodamia rotis:                 20
+avecta externis Hippodamia rotis: **20**
 
 sed facies aderat nullis obnoxia gemmis,
 
@@ -142,7 +142,7 @@ non illis studium fuco conquirere amantes:
 
 illis ampla satis forma pudicitia.
 
-non ego nunc vereor ne sis tibi vilior istis:                 25
+non ego nunc vereor ne sis tibi vilior istis: **25**
 
 uni si qua placet, culta puella sat est;
 
@@ -152,7 +152,7 @@ Aoniamque libens Calliopea lyram,
 
 unica nec desit iucundis gratia verbis,
 
-omnia quaeque Venus, quaeque Minerva probat.                 30
+omnia quaeque Venus, quaeque Minerva probat. **30**
 
 his tu semper eris nostrae gratissima vitae,
 
@@ -168,7 +168,7 @@ qualis et accubuit primo Cepheia somno
 
 libera iam duris cotibus Andromede;
 
-nec minus assiduis Edonis fessa choreis                 5
+nec minus assiduis Edonis fessa choreis **5**
 
 qualis in herboso concidit Apidano:
 
@@ -178,7 +178,7 @@ Cynthia consertis nixa caput manibus,
 
 ebria cum multo traherem vestigia Baccho,
 
-et quaterent sera nocte facem pueri.                 10
+et quaterent sera nocte facem pueri. **10**
 
 hanc ego, nondum etiam sensus deperditus omnis,
 
@@ -188,7 +188,7 @@ et quamvis duplici correptum ardore iuberent
 
 hac Amor hac Liber, durus uterque deus,
 
-subiecto leviter positam temptare lacerto                 15
+subiecto leviter positam temptare lacerto **15**
 
 osculaque admota sumere tarda manu,
 
@@ -198,7 +198,7 @@ expertae metuens iurgia saevitiae;
 
 sed sic intentis haerebam fixus ocellis,
 
-Argus ut ignotis cornibus Inachidos.                 20
+Argus ut ignotis cornibus Inachidos. **20**
 
 et modo solvebam nostra de fronte corollas
 
@@ -208,7 +208,7 @@ et modo gaudebam lapsos formare capillos;
 
 nunc furtiva cavis poma dabam manibus:
 
-omnia quae ingrato largibar munera somno,                 25
+omnia quae ingrato largibar munera somno, **25**
 
 munera de prono saepe voluta sinu;
 
@@ -218,7 +218,7 @@ obstupui vano credulus auspicio,
 
 ne qua tibi insolitos portarent visa timores,
 
-neve quis invitam cogeret esse suam:                 30
+neve quis invitam cogeret esse suam: **30**
 
 donec diversas praecurrens luna fenestras,
 
@@ -228,7 +228,7 @@ compositos levibus radiis patefecit ocellos.
 
 sic ait in molli fixa toro cubitum:
 
-'tandem te nostro referens iniuria lecto                 35
+'tandem te nostro referens iniuria lecto **35**
 
 alterius clausis expulit e foribus?
 
@@ -238,7 +238,7 @@ languidus exactis, ei mihi, sideribus?
 
 o utinam talis perducas, improbe, noctes,
 
-me miseram qualis semper habere iubes!                 40
+me miseram qualis semper habere iubes! **40**
 
 nam modo purpureo fallebam stamine somnum,
 
@@ -248,7 +248,7 @@ interdum leviter mecum deserta querebar
 
 externo longas saepe in amore moras:
 
-dum me iucundis lassam Sopor impulit alis.                 45
+dum me iucundis lassam Sopor impulit alis. **45**
 
 illa fuit lacrimis ultima cura meis.'
 
@@ -262,7 +262,7 @@ quid me non pateris vitae quodcumque sequetur
 
 hoc magis assueto ducere servitio?
 
-tu licet Antiopae formam Nycteidos, et tu                 5
+tu licet Antiopae formam Nycteidos, et tu **5**
 
 Spartanae referas laudibus Hermionae,
 
@@ -272,7 +272,7 @@ Cynthia non illas nomen habere sinat:
 
 nedum, si levibus fuerit collata figuris,
 
-inferior duro iudice turpis eat.                 10
+inferior duro iudice turpis eat. **10**
 
 haec sed forma mei pars est extrema furoris;
 
@@ -282,7 +282,7 @@ ingenuus color et motis decor artubus et quae
 
 gaudia sub tacita discere veste libet.
 
-quo magis et nostros contendis solvere amores,                 15
+quo magis et nostros contendis solvere amores, **15**
 
 hoc magis accepta fallit uterque fide.
 
@@ -292,7 +292,7 @@ et tibi non tacitis vocibus hostis erit;
 
 nec tibi me post haec committet Cynthia nec te
 
-quaeret; erit tanti criminis illa memor,                 20
+quaeret; erit tanti criminis illa memor, **20**
 
 et te circum omnis alias irata puellas
 
@@ -302,7 +302,7 @@ nullas illa suis contemnet fletibus aras,
 
 et quicumque sacer, qualis ubique, lapis.
 
-non ullo gravius temptatur Cynthia damno                 25
+non ullo gravius temptatur Cynthia damno **25**
 
 quam sibi cum rapto cessat amore decus,
 
@@ -330,7 +330,7 @@ molliter irasci non sciet illa tibi.
 
 quod si forte tuis non est contraria votis,
 
-at tibi curarum milia quanta dabit!                 10
+at tibi curarum milia quanta dabit! **10**
 
 non tibi iam somnos, non illa relinquet ocellos:
 
@@ -340,7 +340,7 @@ a, mea contemptus quotiens ad limina curres,
 
 cum tibi singultu fortia verba cadent,
 
-et tremulus maestis orietur fletibus horror,                 15
+et tremulus maestis orietur fletibus horror, **15**
 
 et timor informem ducet in ore notam,
 
@@ -350,7 +350,7 @@ nec poteris, qui sis aut ubi, nosse miser!
 
 tum grave servitium nostrae cogere puellae
 
-discere et exclusum quid sit abire domum;                 20
+discere et exclusum quid sit abire domum; **20**
 
 nec iam pallorem totiens mirabere nostrum,
 
@@ -360,7 +360,7 @@ nec tibi nobilitas poterit succurrere amanti:
 
 nescit Amor priscis cedere imaginibus.
 
-quod si parva tuae dederis vestigia culpae,                 25
+quod si parva tuae dederis vestigia culpae, **25**
 
 quam cito de tanto nomine rumor eris!
 
@@ -370,7 +370,7 @@ cum mihi nulla mei sit medicina mali;
 
 sed pariter miseri socio cogemur amore
 
-alter in alterius mutua flere sinu.                 30
+alter in alterius mutua flere sinu. **30**
 
 quare, quid possit mea Cynthia, desine, Galle,
 
@@ -386,7 +386,7 @@ cum quo Rhipaeos possim conscendere montes
 
 ulteriusque domos vadere Memnonias;
 
-sed me complexae remorantur verba puellae,                 5
+sed me complexae remorantur verba puellae, **5**
 
 mutatoque graves saepe colore preces.
 
@@ -396,7 +396,7 @@ et queritur nullos esse relicta deos;
 
 illa meam mihi iam se denegat, illa minatur
 
-quae solet ingrato tristis amica viro.                 10
+quae solet ingrato tristis amica viro. **10**
 
 his ego non horam possum durare querelis:
 
@@ -406,7 +406,7 @@ an mihi sit tanti doctas cognoscere Athenas
 
 atque Asiae veteres cernere divitias,
 
-ut mihi deducta faciat convicia puppi                 15
+ut mihi deducta faciat convicia puppi **15**
 
 Cynthia et insanis ora notet manibus,
 
@@ -416,7 +416,7 @@ et nihil infido durius esse viro?
 
 tu patrui meritas conare anteire secures,
 
-et vetera oblitis iura refer sociis.                 20
+et vetera oblitis iura refer sociis. **20**
 
 nam tua non aetas umquam cessavit amori,
 
@@ -426,7 +426,7 @@ et tibi non umquam nostros puer iste labores
 
 afferat et lacrimis omnia nota meis!
 
-me sine, quem semper voluit fortuna iacere,                 25
+me sine, quem semper voluit fortuna iacere, **25**
 
 huic animam extremam reddere nequitiae.
 
@@ -436,7 +436,7 @@ in quorum numero me quoque terra tegat.
 
 non ego sum laudi, non natus idoneus armis:
 
-hanc me militiam fata subire volunt.                 30
+hanc me militiam fata subire volunt. **30**
 
 at tu, seu mollis qua tendit Ionia, seu qua
 
@@ -446,7 +446,7 @@ seu pedibus terras seu pontum remige carpes,
 
 ibis et accepti pars eris imperii:
 
-tum tibi si qua mei veniet non immemor hora,                 35
+tum tibi si qua mei veniet non immemor hora, **35**
 
 vivere me duro sidere certus eris.
 
@@ -460,7 +460,7 @@ atque, ita sim felix, primo contendis Homero
 
 (sint modo fata tuis mollia carminibus),
 
-nos, ut consuemus, nostros agitamus amores,                 5
+nos, ut consuemus, nostros agitamus amores, **5**
 
 atque aliquid duram quaerimus in dominam;
 
@@ -470,7 +470,7 @@ cogor et aetatis tempora dura queri.
 
 hic mihi conteritur vitae modus, haec mea famast,
 
-hinc cupio nomen carminis ire mei.                 10
+hinc cupio nomen carminis ire mei. **10**
 
 me laudent doctae solum placuisse puellae,
 
@@ -480,7 +480,7 @@ me legat assidue post haec neglectus amator,
 
 et prosint illi cognita nostra mala.
 
-te quoque si certo puer hic concusserit arcu—                 15
+te quoque si certo puer hic concusserit arcu— **15**
 
 quo nollem nostros me violasse deos!—
 
@@ -490,7 +490,7 @@ flebis in aeterno surda iacere situ;
 
 et frustra cupies mollem componere versum,
 
-nec tibi subiciet carmina serus Amor.                 20
+nec tibi subiciet carmina serus Amor. **20**
 
 tum me non humilem mirabere saepe poetam,
 
@@ -500,7 +500,7 @@ tunc ego Romanis praeferar ingeniis.
 
 'ardoris nostri magne poeta iaces.']
 
-tu cave nostra tuo contemnas carmina fastu:                 25
+tu cave nostra tuo contemnas carmina fastu: **25**
 
 saepe venit magno faenore tardus Amor.
 
@@ -514,7 +514,7 @@ et tibi iam tanti, quicumquest, iste videtur,
 
 ut sine me vento quolibet ire velis?
 
-tune audire potes vesani murmura ponti                 5
+tune audire potes vesani murmura ponti **5**
 
 fortis, et in dura nave iacere potes?
 
@@ -524,13 +524,13 @@ tu potes insolitas, Cynthia, ferre nives?
 
 o utinam hibernae duplicentur tempora brumae,
 
-et sit iners tardis navita Vergiliis,                 10
+et sit iners tardis navita Vergiliis, **10**
 
 nec tibi Tyrrhena solvatur funis harena,
 
 neve inimica meas elevet aura preces
 
-et me defixum vacua patiatur in ora                 15
+et me defixum vacua patiatur in ora **15**
 
 crudelem infesta saepe vocare manu!
 
@@ -538,11 +538,11 @@ sed quocumque modo de me, periura, mereris,
 
 sit Galatea tuae non aliena viae;
 
-atque ego non videam talis subsidere ventos,                 13
+atque ego non videam talis subsidere ventos, **13**
 
 cum tibi provectas auferet unda rates,
 
-ut te felici post victa Ceraunia remo                 19
+ut te felici post victa Ceraunia remo **19**
 
 accipiat placidis Oricos aequoribus.
 
@@ -554,7 +554,7 @@ nec me deficiet nautas rogitare citatos
 
 'dicite, quo portu clausa puella meast?',
 
-et dicam 'licet Artaciis considat in oris,                 25
+et dicam 'licet Artaciis considat in oris, **25**
 
 et licet Hylaeis, illa futura meast.'
 
@@ -566,7 +566,7 @@ vicimus: assiduas non tulit illa preces.
 
 falsa licet cupidus deponat gaudia livor:
 
-destitit ire novas Cynthia nostra vias.                 30
+destitit ire novas Cynthia nostra vias. **30**
 
 illi carus ego et per me carissima Roma
 
@@ -576,7 +576,7 @@ illa vel angusto mecum requiescere lecto
 
 et quocumque modo maluit esse mea,
 
-quam sibi dotatae regnum vetus Hippodamiae,                 35
+quam sibi dotatae regnum vetus Hippodamiae, **35**
 
 et quas Elis opes apta pararat equis.
 
@@ -586,7 +586,7 @@ non tamen illa meos fugit avara sinus.
 
 hanc ego non auro, non Indis flectere conchis,
 
-sed potui blandi carminis obsequio.                 40
+sed potui blandi carminis obsequio. **40**
 
 sunt igitur Musae, neque amanti tardus Apollo,
 
@@ -596,7 +596,7 @@ nunc mihi summa licet contingere sidera plantis:
 
 sive dies seu nox venerit, illa meast!
 
-nec mihi rivalis certos subducet amores:                 45
+nec mihi rivalis certos subducet amores: **45**
 
 ista meam norit gloria canitiem.
 
@@ -610,7 +610,7 @@ ecce iaces supplexque venis ad iura puellae,
 
 et tibi nunc quaevis imperat empta modo.
 
-non me Chaoniae vincant in amore columbae                 5
+non me Chaoniae vincant in amore columbae **5**
 
 dicere, quos iuvenes quaeque puella domet.
 
@@ -620,7 +620,7 @@ atque utinam posito dicar amore rudis!
 
 quid tibi nunc misero prodest grave dicere carmen
 
-aut Amphioniae moenia flere lyrae?                 10
+aut Amphioniae moenia flere lyrae? **10**
 
 plus in amore valet Mimnermi versus Homero:
 
@@ -630,7 +630,7 @@ i quaeso et tristis istos sepone libellos,
 
 et cane quod quaevis nosse puella velit!
 
-quid si non esset facilis tibi copia! nunc tu                 15
+quid si non esset facilis tibi copia! nunc tu **15**
 
 insanus medio flumine quaeris aquam.
 
@@ -640,7 +640,7 @@ haec est venturi prima favilla mali.
 
 tum magis Armenias cupies accedere tigres
 
-et magis infernae vincula nosse rotae,                 20
+et magis infernae vincula nosse rotae, **20**
 
 quam pueri totiens arcum sentire medullis
 
@@ -650,7 +650,7 @@ nullus Amor cuiquam facilis ita praebuit alas,
 
 ut non alterna presserit ille manu.
 
-nec te decipiat, quod sit satis illa parata:                 25
+nec te decipiat, quod sit satis illa parata: **25**
 
 acrius illa subit, Pontice, si qua tuast,
 
@@ -660,7 +660,7 @@ nec vigilare alio limine cedat Amor.
 
 qui non ante patet, donec manus attigit ossa:
 
-quisquis es, assiduas tu fuge blanditias!                 30
+quisquis es, assiduas tu fuge blanditias! **30**
 
 illis et silices et possint cedere quercus,
 
@@ -680,7 +680,7 @@ o noctem meminisse mihi iucunda voluptas,
 
 o quotiens votis illa vocanda meis,
 
-cum te complexa morientem, Galle, puella                 5
+cum te complexa morientem, Galle, puella **5**
 
 vidimus et longa ducere verba mora!
 
@@ -690,7 +690,7 @@ et mediis caelo Luna ruberet equis,
 
 non tamen a vestro potui secedere lusu:
 
-tantus in alternis vocibus ardor erat.                 10
+tantus in alternis vocibus ardor erat. **10**
 
 sed quoniam non es veritus concredere nobis,
 
@@ -700,7 +700,7 @@ non solum vestros didici reticere dolores,
 
 est quiddam in nobis maius, amice, fide.
 
-possum ego diversos iterum coniungere amantes,                 15
+possum ego diversos iterum coniungere amantes, **15**
 
 et dominae tardas possum aperire fores;
 
@@ -710,7 +710,7 @@ nec levis in verbis est medicina meis.
 
 Cynthia me docuit, semper quae cuique petenda
 
-quaeque cavenda forent: non nihil egit Amor.                 20
+quaeque cavenda forent: non nihil egit Amor. **20**
 
 tu cave ne tristi cupias pugnare puellae,
 
@@ -720,7 +720,7 @@ neu, si quid petiit, ingrata fronte negaris,
 
 neu tibi pro vano verba benigna cadant.
 
-irritata venit, quando contemnitur illa,                 25
+irritata venit, quando contemnitur illa, **25**
 
 nec meminit iustas ponere laesa minas:
 
@@ -742,7 +742,7 @@ et modo Thesproti mirantem subdita regno
 
 proxima Misenis aequora nobilibus,
 
-nostri cura subit memores adducere noctes?                 5
+nostri cura subit memores adducere noctes? **5**
 
 ecquis in extremo restat amore locus?
 
@@ -750,11 +750,11 @@ an te nescio quis simulatis ignibus hostis
 
 sustulit e nostris, Cynthia, carminibus,
 
-ut solet amoto labi custode puella,                 15
+ut solet amoto labi custode puella, **15**
 
 perfida communis nec meminisse deos?
 
-atque utinam mage te remis confisa minutis                 9
+atque utinam mage te remis confisa minutis **9**
 
 parvula Lucrina cumba moretur aqua,
 
@@ -766,13 +766,13 @@ quam vacet alterius blandos audire susurros
 
 molliter in tacito litore compositam!
 
-non quia perspecta non es mihi cognita fama,                 17
+non quia perspecta non es mihi cognita fama, **17**
 
 sed quod in hac omnis parte timetur amor.
 
 ignosces igitur, si quid tibi triste libelli
 
-attulerint nostri: culpa timoris erit.                 20
+attulerint nostri: culpa timoris erit. **20**
 
 ah mihi non maior carae custodia matris
 
@@ -782,7 +782,7 @@ tu mihi sola domus, tu, Cynthia, sola parentes,
 
 omnia tu nostrae tempora laetitiae.
 
-seu tristis veniam seu contra laetus amicis,                 25
+seu tristis veniam seu contra laetus amicis, **25**
 
 quicquid ero, dicam 'Cynthia causa fuit.'
 
@@ -804,7 +804,7 @@ tam multa illa meo divisast milia lecto,
 
 quantum Hypanis Veneto dissidet Eridano;
 
-nec mihi consuetos amplexu nutrit amores                 5
+nec mihi consuetos amplexu nutrit amores **5**
 
 Cynthia, nec nostra dulcis in aure sonat.
 
@@ -814,7 +814,7 @@ contigit ut simili posset amare fide.
 
 invidiae fuimus: num me deus obruit? an quae
 
-lecta Prometheis dividit herba iugis?                 10
+lecta Prometheis dividit herba iugis? **10**
 
 non sum ego qui fueram: mutat via longa puellas.
 
@@ -824,7 +824,7 @@ nunc primum longas solus cognoscere noctes
 
 cogor et ipse meis auribus esse gravis.
 
-felix, qui potuit praesenti flere puellae                 15
+felix, qui potuit praesenti flere puellae **15**
 
 (non nihil aspersus gaudet Amor lacrimis),
 
@@ -846,7 +846,7 @@ at non ipse tuas imitabor, perfide, voces:
 
 fallere te numquam, Galle, puella velit.
 
-dum tibi deceptis augetur fama puellis,                 5
+dum tibi deceptis augetur fama puellis, **5**
 
 certus et in nullo quaeris amore moram,
 
@@ -856,7 +856,7 @@ incipis, et primo lapsus abire gradu.
 
 haec erit illarum contempti poena doloris:
 
-multarum miseras exiget una vices.                 10
+multarum miseras exiget una vices. **10**
 
 haec tibi vulgaris istos compescet amores,
 
@@ -866,7 +866,7 @@ haec non sum rumore malo, non augure doctus;
 
 vidi ego: me quaeso teste negare potes?
 
-vidi ego te toto vinctum languescere collo                 15
+vidi ego te toto vinctum languescere collo **15**
 
 et flere iniectis, Galle, diu manibus,
 
@@ -876,7 +876,7 @@ et quae deinde meus celat, amice, pudor.
 
 non ego complexus potui diducere vestros:
 
-tantus erat demens inter utrosque furor.                 20
+tantus erat demens inter utrosque furor. **20**
 
 non sic Haemonio Salmonida mixtus Enipeo
 
@@ -886,7 +886,7 @@ nec sic caelestem flagrans amor Herculis Heben
 
 sensit ab Oetaeis gaudia prima rogis.
 
-una dies omnis potuit praecurrere amantes:                 25
+una dies omnis potuit praecurrere amantes: **25**
 
 nam tibi non tepidas subdidit illa faces,
 
@@ -896,7 +896,7 @@ nec sinet: addictum te tuus ardor aget.
 
 nec mirum, cum sit Iove dignae proxima Ledae
 
-et Ledae partu gratior, una tribus;                 30
+et Ledae partu gratior, una tribus; **30**
 
 illa sit Inachiis et blandior heroinis,
 
@@ -906,7 +906,7 @@ tu vero quoniam semel es periturus amore,
 
 utere: non alio limine dignus eras.
 
-qui tibi sit felix, quoniam novus incidit, error;                 35
+qui tibi sit felix, quoniam novus incidit, error; **35**
 
 et quotcumque voles, una sit ista tibi.
 
@@ -920,7 +920,7 @@ et modo tam celeris mireris currere lintres
 
 et modo tam tardas funibus ire rates;
 
-et nemus omne satas intendat vertice silvas,                 5
+et nemus omne satas intendat vertice silvas, **5**
 
 urgetur quantis Caucasus arboribus;
 
@@ -930,7 +930,7 @@ nescit Amor magnis cedere divitiis.
 
 nam sive optatam mecum trahit illa quietem,
 
-seu facili totum ducit amore diem,                 10
+seu facili totum ducit amore diem, **10**
 
 tum mihi Pactoli veniunt sub tecta liquores,
 
@@ -940,7 +940,7 @@ tum mihi cessuros spondent mea gaudia reges:
 
 quae maneant, dum me fata perire volent!
 
-nam quis divitiis adverso gaudet Amore?                 15
+nam quis divitiis adverso gaudet Amore? **15**
 
 nulla mihi tristi praemia sint Venere!
 
@@ -950,7 +950,7 @@ illa etiam duris mentibus esse dolor:
 
 illa neque Arabium metuit transcendere limen
 
-nec timet ostrino, Tulle, subire toro,                 20
+nec timet ostrino, Tulle, subire toro, **20**
 
 et miserum toto iuvenem versare cubili:
 
@@ -970,7 +970,7 @@ aspice me quanto rapiat fortuna periclo!
 
 tu tamen in nostro lenta timore venis;
 
-et potes hesternos manibus componere crines                 5
+et potes hesternos manibus componere crines **5**
 
 et longa faciem quaerere desidia,
 
@@ -980,7 +980,7 @@ ut formosa novo quae parat ire viro.
 
 at non sic Ithaci digressu mota Calypso
 
-desertis olim fleverat aequoribus:                 10
+desertis olim fleverat aequoribus: **10**
 
 multos illa dies incomptis maesta capillis
 
@@ -990,23 +990,23 @@ et quamvis numquam post haec visura, dolebat
 
 illa tamen, longae conscia laetitiae.
 
-nec sic Aesoniden rapientibus anxia ventis                 17
+nec sic Aesoniden rapientibus anxia ventis **17**
 
 Hypsipyle vacuo constitit in thalamo:
 
 Hypsipyle nullos post illos sensit amores,
 
-ut semel Haemonio tabuit hospitio.                 20
+ut semel Haemonio tabuit hospitio. **20**
 
 coniugis Euadne miseros elata per ignes
 
 occidit, Argivae fama pudicitiae.
 
-Alphesiboea suos ultast pro coniuge fratres,                 15
+Alphesiboea suos ultast pro coniuge fratres, **15**
 
 sanguinis et cari vincula rupit amor.
 
-quarum nulla tuos potuit convertere mores,                 23
+quarum nulla tuos potuit convertere mores, **23**
 
 tu quoque uti fieres nobilis historia.
 
@@ -1020,7 +1020,7 @@ si quid forte tibi durius inciderit!
 
 alta prius retro labentur flumina ponto,
 
-annus et inversas duxerit ante vices,                 30
+annus et inversas duxerit ante vices, **30**
 
 quam tua sub nostro mutetur pectore cura:
 
@@ -1030,7 +1030,7 @@ tam tibi ne viles isti videantur ocelli,
 
 per quos saepe mihi credita perfidiast!
 
-hos tu iurabas, si quid mentita fuisses,                 35
+hos tu iurabas, si quid mentita fuisses, **35**
 
 ut tibi suppositis exciderent manibus:
 
@@ -1040,7 +1040,7 @@ nec tremis admissae conscia nequitiae?
 
 quis te cogebat multos pallere colores
 
-et fletum invitis ducere luminibus?                 40
+et fletum invitis ducere luminibus? **40**
 
 quis ego nunc pereo, similis moniturus amantes
 
@@ -1056,7 +1056,7 @@ cuius inaurati celebrarunt limina currus,
 
 captorum lacrimis umida supplicibus,
 
-nunc ego, nocturnis potorum saucia rixis,                 5
+nunc ego, nocturnis potorum saucia rixis, **5**
 
 pulsata indignis saepe queror manibus,
 
@@ -1066,7 +1066,7 @@ semper et exclusi signa iacere faces.
 
 nec possum infamis dominae defendere voces,
 
-nobilis obscenis tradita carminibus;                 10
+nobilis obscenis tradita carminibus; **10**
 
 nec tamen illa suae revocatur parcere famae,
 
@@ -1076,7 +1076,7 @@ has inter gravius cogor deflere querelas,
 
 supplicis a longis tristior excubiis.
 
-ille meos numquam patitur requiescere postes,                 15
+ille meos numquam patitur requiescere postes, **15**
 
 arguta referens carmina blanditia:
 
@@ -1086,7 +1086,7 @@ quid mihi tam duris clausa taces foribus?
 
 cur numquam reserata meos admittis amores,
 
-nescia furtivas reddere mota preces?                 20
+nescia furtivas reddere mota preces? **20**
 
 nullane finis erit nostro concessa dolori,
 
@@ -1096,13 +1096,13 @@ me mediae noctes, me sidera prona iacentem,
 
 frigidaque Eoo me dolet aura gelu.
 
-o utinam traiecta cava mea vocula rima                 27
+o utinam traiecta cava mea vocula rima **27**
 
 percussas dominae vertat in auriculas!
 
 sit licet et saxo patientior illa Sicano,
 
-sit licet et ferro durior et chalybe,                 30
+sit licet et ferro durior et chalybe, **30**
 
 non tamen illa suos poterit compescere ocellos,
 
@@ -1112,21 +1112,21 @@ nunc iacet alterius felici nixa lacerto,
 
 at mea nocturno verba cadunt Zephyro.
 
-sed tu sola mei, tu maxima causa doloris,                 35
+sed tu sola mei, tu maxima causa doloris, **35**
 
 victa meis numquam, ianua, muneribus,
 
-tu sola humanos numquam miserata dolores                 25
+tu sola humanos numquam miserata dolores **25**
 
 respondes tacitis mutua cardinibus.
 
-te non ulla meae laesit petulantia linguae;                 37
+te non ulla meae laesit petulantia linguae; **37**
 
 quae solet irato dicere tanta ioco,
 
 ut me tam longa raucum patiare querela
 
-sollicitas trivio pervigilare moras?                 40
+sollicitas trivio pervigilare moras? **40**
 
 at tibi saepe novo deduxi carmina versu,
 
@@ -1136,7 +1136,7 @@ ante tuos quotiens verti me, perfida, postes,
 
 debitaque occultis vota tuli manibus!'
 
-haec ille et si quae miseri novistis amantes,                 45
+haec ille et si quae miseri novistis amantes, **45**
 
 et matutinis obstrepit alitibus.
 
@@ -1154,7 +1154,7 @@ nec mihi Cassiope salvo visura carinam,
 
 omniaque ingrato litore vota cadunt.
 
-quin etiam absenti prosunt tibi, Cynthia, venti:                 5
+quin etiam absenti prosunt tibi, Cynthia, venti: **5**
 
 aspice, quam saevas increpat aura minas.
 
@@ -1164,7 +1164,7 @@ haecine parva meum funus harena teget?
 
 tu tamen in melius saevas converte querelas:
 
-sat tibi sit poenae nox et iniqua vada.                 10
+sat tibi sit poenae nox et iniqua vada. **10**
 
 an poteris siccis mea fata reposcere ocellis,
 
@@ -1174,7 +1174,7 @@ ah pereat, quicumque rates et vela paravit
 
 primus et invito gurgite fecit iter!
 
-nonne fuit levius dominae pervincere mores                 15
+nonne fuit levius dominae pervincere mores **15**
 
 (quamvis dura, tamen rara puella fuit),
 
@@ -1184,7 +1184,7 @@ cernere et optatos quaerere Tyndaridas?
 
 illic si qua meum sepelissent fata dolorem,
 
-ultimus et posito staret amore lapis,                 20
+ultimus et posito staret amore lapis, **20**
 
 illa meo caros donasset funere crines,
 
@@ -1194,7 +1194,7 @@ illa meum extremo clamasset pulvere nomen,
 
 ut mihi non ullo pondere terra foret.
 
-at vos, aequoreae formosa Doride natae,                 25
+at vos, aequoreae formosa Doride natae, **25**
 
 candida felici solvite vela choro:
 
@@ -1212,7 +1212,7 @@ hic licet occultos proferre impune dolores,
 
 si modo sola queant saxa tenere fidem.
 
-unde tuos primum repetam, mea Cynthia, fastus?                 5
+unde tuos primum repetam, mea Cynthia, fastus? **5**
 
 quod mihi das flendi, Cynthia, principium?
 
@@ -1222,7 +1222,7 @@ nunc in amore tuo cogor habere notam.
 
 quid tantum merui? quae te mihi crimina mutant?
 
-an nova tristitiae causa puella tuae?                 10
+an nova tristitiae causa puella tuae? **10**
 
 sic mihi te referas, levis, ut non altera nostro
 
@@ -1232,7 +1232,7 @@ quamvis multa tibi dolor hic meus aspera debet,
 
 non ita saeva tamen venerit ira mea,
 
-ut tibi sim merito semper furor, et tua flendo                 15
+ut tibi sim merito semper furor, et tua flendo **15**
 
 lumina deiectis turpia sint lacrimis.
 
@@ -1242,7 +1242,7 @@ et non ulla meo clamat in ore fides?
 
 vos eritis testes, si quos habet arbor amores,
 
-fagus et Arcadio pinus amica deo.                 20
+fagus et Arcadio pinus amica deo. **20**
 
 ah quotiens vestras resonant mea verba sub umbras,
 
@@ -1252,7 +1252,7 @@ ah tua quot peperit nobis iniuria curas,
 
 quae solum tacitis cognita sunt foribus!
 
-omnia consuevi timidus perferre superbae                 25
+omnia consuevi timidus perferre superbae **25**
 
 iussa neque arguto facta dolore queri.
 
@@ -1262,7 +1262,7 @@ et datur inculto tramite dura quies;
 
 et quodcumque meae possunt narrare querelae,
 
-cogor ad argutas dicere solus aves.                 30
+cogor ad argutas dicere solus aves. **30**
 
 sed qualiscumque's, resonent mihi 'Cynthia' silvae,
 
@@ -1278,7 +1278,7 @@ sed ne forte tuo careat mihi funus amore,
 
 hic timor est ipsis durior exsequiis.
 
-non adeo leviter nostris puer haesit ocellis,                 5
+non adeo leviter nostris puer haesit ocellis, **5**
 
 ut meus oblito pulvis amore vacet.
 
@@ -1288,7 +1288,7 @@ non potuit caecis immemor esse locis,
 
 sed cupidus falsis attingere gaudia palmis
 
-Thessalis antiquam venerat umbra domum.                 10
+Thessalis antiquam venerat umbra domum. **10**
 
 illic quidquid ero, semper tua dicar imago:
 
@@ -1298,7 +1298,7 @@ illic formosae veniant chorus heroinae,
 
 quas dedit Argivis Dardana praeda viris:
 
-quarum nulla tua fuerit mihi, Cynthia, forma                 15
+quarum nulla tua fuerit mihi, Cynthia, forma **15**
 
 gratior et (Tellus hoc ita iusta sinat)
 
@@ -1308,7 +1308,7 @@ cara tamen lacrimis ossa futura meis.
 
 quae tu viva mea possis sentire favilla!
 
-tum mihi non ullo mors sit amara loco.                 20
+tum mihi non ullo mors sit amara loco. **20**
 
 quam vereor, ne te contempto, Cynthia, busto
 
@@ -1318,7 +1318,7 @@ cogat et invitam lacrimas siccare cadentis!
 
 flectitur assiduis certa puella minis.
 
-quare, dum licet, inter nos laetemur amantes:                 25
+quare, dum licet, inter nos laetemur amantes: **25**
 
 non satis est ullo tempore longus amor.
 
@@ -1332,7 +1332,7 @@ saepe imprudenti fortuna occurrit amanti:
 
 crudelis Minyis sic erat Ascanius.
 
-est tibi non infra specie, non nomine dispar,                 5
+est tibi non infra specie, non nomine dispar, **5**
 
 Theiodamanteo proximus ardor Hylae:
 
@@ -1342,7 +1342,7 @@ sive Aniena tuos tinxerit unda pedes,
 
 sive Gigantei spatiabere litoris ora,
 
-sive ubicumque vago fluminis hospitio,                 10
+sive ubicumque vago fluminis hospitio, **10**
 
 Nympharum semper cupidas defende rapinas
 
@@ -1352,7 +1352,7 @@ ne tibi sit duros montes et frigida saxa,
 
 Galle, neque expertos semper adire lacus.
 
-quae miser ignotis error perpessus in oris                 15
+quae miser ignotis error perpessus in oris **15**
 
 Herculis indomito fleverat Ascanio.
 
@@ -1362,7 +1362,7 @@ egressam longe Phasidos isse viam,
 
 et iam praeteritis labentem Athamantidos undis
 
-Mysorum scopulis applicuisse ratem.                 20
+Mysorum scopulis applicuisse ratem. **20**
 
 hic manus heroum, placidis ut constitit oris,
 
@@ -1372,7 +1372,7 @@ at comes invicti iuvenis processerat ultra
 
 raram sepositi quaerere fontis aquam.
 
-hunc duo sectati fratres, Aquilonia proles                 25
+hunc duo sectati fratres, Aquilonia proles **25**
 
 (nunc superat Zetes, nunc superat Calais),
 
@@ -1382,7 +1382,7 @@ oscula et alterna ferre supina fuga.
 
 ille sed extrema pendentes ludit in ala
 
-et volucris ramo summovet insidias.                 30
+et volucris ramo summovet insidias. **30**
 
 iam Pandioniae cessit genus Orithyiae:
 
@@ -1392,7 +1392,7 @@ hic erat Arganthi Pege sub vertice montis,
 
 grata domus Nymphis umida Thyniasin,
 
-quam supra nulli pendebant debita curae                 35
+quam supra nulli pendebant debita curae **35**
 
 roscida desertis poma sub arboribus,
 
@@ -1402,7 +1402,7 @@ candida purpureis mixta papaveribus.
 
 quae modo decerpens tenero pueriliter ungui
 
-proposito florem praetulit officio,                 40
+proposito florem praetulit officio, **40**
 
 et modo formosis incumbens nescius undis
 
@@ -1412,7 +1412,7 @@ tandem haurire parat demissis flumina palmis
 
 innixus dextro plena trahens umero.
 
-cuius ut accensae Dryades candore puellae                 45
+cuius ut accensae Dryades candore puellae **45**
 
 miratae solitos destituere choros
 
@@ -1422,7 +1422,7 @@ tum sonitum rapto corpore fecit Hylas.
 
 cui procul Alcides ter 'Hyla!' respondet: at illi
 
-nomen ab extremis montibus aura refert.                 50
+nomen ab extremis montibus aura refert. **50**
 
 his, o Galle, tuos monitus servabis amores,
 
@@ -1438,7 +1438,7 @@ quid nostro gemitu turgentia lumina torques?
 
 pars ego sum vestrae proxima militiae.
 
-sic te servato possint gaudere parentes,                 5
+sic te servato possint gaudere parentes, **5**
 
 haec soror acta tuis sentiat e lacrimis:
 
@@ -1460,7 +1460,7 @@ si Perusina tibi patriae sunt nota sepulcra,
 
 Italiae duris funera temporibus,
 
-cum Romana suos egit discordia cives—                 5
+cum Romana suos egit discordia cives— **5**
 
 sic mihi praecipue, pulvis Etrusca, dolor,
 

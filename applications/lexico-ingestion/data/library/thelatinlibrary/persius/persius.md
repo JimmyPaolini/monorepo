@@ -4,6 +4,7 @@ text_metadata:
   source_url: https://www.thelatinlibrary.com/persius.html
 title: persius
 type: book
+author_metadata: {}
 ---
 
 ## persius
@@ -18,7 +19,7 @@ memini, ut repente sic poeta prodirem.
 
 Heliconidasque pallidamque Pirenen
 
-illis remitto quorum imagines lambunt            5
+illis remitto quorum imagines lambunt **5**
 
 hederae sequaces; ipse semipaganus
 
@@ -28,7 +29,7 @@ quis expediuit psittaco suum 'chaere'
 
 picamque docuit nostra uerba conari?
 
-magister artis ingenique largitor            10
+magister artis ingenique largitor **10**
 
 uenter, negatas artifex sequi uoces.
 
@@ -48,7 +49,7 @@ uel duo uel nemo. 'turpe et miserabile.' quare?
 
 ne mihi Polydamas et Troiades Labeonem
 
-praetulerint? nugae. non, si quid turbida Roma            5
+praetulerint? nugae. non, si quid turbida Roma **5**
 
 eleuet, accedas examenue inprobum in illa
 
@@ -58,7 +59,7 @@ nam Romae quis non—a, si fas dicere—sed fas
 
 tum cum ad canitiem et nostrum istud uiuere triste
 
-aspexi ac nucibus facimus quaecumque relictis,            10
+aspexi ac nucibus facimus quaecumque relictis, **10**
 
 cum sapimus patruos. tunc tunc—ignoscite (nolo,
 
@@ -68,7 +69,7 @@ scribimus inclusi, numeros ille, hic pede liber,
 
 grande aliquid quod pulmo animae praelargus anhelet.
 
-scilicet haec populo pexusque togaque recenti            15
+scilicet haec populo pexusque togaque recenti **15**
 
 et natalicia tandem cum sardonyche albus
 
@@ -78,7 +79,7 @@ mobile conlueris, patranti fractus ocello.
 
 tunc neque more probo uideas nec uoce serena
 
-ingentis trepidare Titos, cum carmina lumbum            20
+ingentis trepidare Titos, cum carmina lumbum **20**
 
 intrant et tremulo scalpuntur ubi intima uersu.
 
@@ -88,7 +89,7 @@ articulis quibus et dicas cute perditus 'ohe'?
 
 'quo didicisse, nisi hoc fermentum et quae semel intus
 
-innata est rupto iecore exierit caprificus?'            25
+innata est rupto iecore exierit caprificus?' **25**
 
 en pallor seniumque! o mores, usque adeone
 
@@ -98,7 +99,7 @@ scire tuum nihil est nisi te scire hoc sciat alter?
 
 ten cirratorum centum dictata fuisse
 
-pro nihilo pendes?' ecce inter pocula quaerunt            30
+pro nihilo pendes?' ecce inter pocula quaerunt **30**
 
 Romulidae saturi quid dia poemata narrent.
 
@@ -108,7 +109,7 @@ rancidulum quiddam balba de nare locutus
 
 Phyllidas, Hypsipylas, uatum et plorabile siquid,
 
-eliquat ac tenero subplantat uerba palato.            35
+eliquat ac tenero subplantat uerba palato. **35**
 
 adsensere uiri: nunc non cinis ille poetae
 
@@ -118,7 +119,7 @@ laudant conuiuae: nunc non e manibus illis,
 
 nunc non e tumulo fortunataque fauilla
 
-nascentur uiolae? 'rides' ait 'et nimis uncis            40
+nascentur uiolae? 'rides' ait 'et nimis uncis **40**
 
 naribus indulges. an erit qui uelle recuset
 
@@ -128,7 +129,7 @@ linquere nec scombros metuentia carmina nec tus?'
 
 quisquis es, o modo quem ex aduerso dicere feci,
 
-non ego cum scribo, si forte quid aptius exit,            45
+non ego cum scribo, si forte quid aptius exit, **45**
 
 quando haec rara auis est, si quid tamen aptius exit,
 
@@ -138,7 +139,7 @@ sed recti finemque extremumque esse recuso
 
 'euge' tuum et 'belle.' nam 'belle' hoc excute totum:
 
-quid non intus habet? non hic est Ilias Atti            50
+quid non intus habet? non hic est Ilias Atti **50**
 
 ebria ueratro? non siqua elegidia crudi
 
@@ -148,7 +149,7 @@ scribitur in citreis? calidum scis ponere sumen,
 
 scis comitem horridulum trita donare lacerna,
 
-et 'uerum' inquis 'amo, uerum mihi dicite de me.'            55
+et 'uerum' inquis 'amo, uerum mihi dicite de me.' **55**
 
 qui pote? uis dicam? nugaris, cum tibi, calue,
 
@@ -158,7 +159,7 @@ o Iane, a tergo quem nulla ciconia pinsit
 
 nec manus auriculas imitari mobilis albas
 
-nec linguae quantum sitiat canis Apula tantae.            60
+nec linguae quantum sitiat canis Apula tantae. **60**
 
 uos, o patricius sanguis, quos uiuere fas est
 
@@ -168,7 +169,7 @@ occipiti caeco, posticae occurrite sannae.
 
 nunc demum numero fluere, ut per leue seueros
 
-effundat iunctura unguis? scit tendere uersum            65
+effundat iunctura unguis? scit tendere uersum **65**
 
 non secus ac si oculo rubricam derigat uno.
 
@@ -178,7 +179,7 @@ dicere, res grandes nostro dat Musa poetae.'
 
 ecce modo heroas sensus adferre docemus
 
-nugari solitos Graece, nec ponere lucum            70
+nugari solitos Graece, nec ponere lucum **70**
 
 artifices nec rus saturum laudare, ubi corbes
 
@@ -188,7 +189,7 @@ unde Remus sulcoque terens dentalia, Quinti,
 
 cum trepida ante boues dictatorem induit uxor
 
-et tua aratra domum lictor tulit—euge poeta!            75
+et tua aratra domum lictor tulit—euge poeta! **75**
 
 'est nunc Brisaei quem uenosus liber Acci,
 
@@ -198,7 +199,7 @@ Antiopa aerumnis cor luctificabile fulta?'
 
 hos pueris monitus patres infundere lippos
 
-cum uideas, quaerisne unde haec sartago loquendi            80
+cum uideas, quaerisne unde haec sartago loquendi **80**
 
 uenerit in linguas, unde istud dedecus in quo
 
@@ -208,7 +209,7 @@ nilne pudet capiti non posse pericula cano
 
 pellere quin tepidum hoc optes audire 'decenter'?
 
-'fur es' ait Pedio. Pedius quid? crimina rasis            85
+'fur es' ait Pedio. Pedius quid? crimina rasis **85**
 
 librat in antithetis, doctas posuisse figuras
 
@@ -218,7 +219,7 @@ men moueat? quippe, et, cantet si naufragus, assem
 
 protulerim? cantas, cum fracta te in trabe pictum
 
-ex umero portes? uerum nec nocte paratum            90
+ex umero portes? uerum nec nocte paratum **90**
 
 plorabit qui me uolet incuruasse querella.
 
@@ -228,7 +229,7 @@ cludere sic uersum didicit "Berecyntius Attis"
 
 et "qui caeruleum dirimebat Nerea delphin,"
 
-sic "costam longo subduximus Appennino."            95
+sic "costam longo subduximus Appennino." **95**
 
 "Arma uirum", nonne hoc spumosum et cortice pingui
 
@@ -238,7 +239,7 @@ quidnam igitur tenerum et laxa ceruice legendum?
 
 'torua Mimalloneis inplerunt cornua bombis,
 
-et raptum uitulo caput ablatura superbo            100
+et raptum uitulo caput ablatura superbo **100**
 
 Bassaris et lyncem Maenas flexura corymbis
 
@@ -248,7 +249,7 @@ haec fierent si testiculi uena ulla paterni
 
 uiueret in nobis? summa delumbe saliua
 
-hoc natat in labris et in udo est Maenas et Attis            105
+hoc natat in labris et in udo est Maenas et Attis **105**
 
 nec pluteum caedit nec demorsos sapit unguis.
 
@@ -258,7 +259,7 @@ auriculas? uide sis ne maiorum tibi forte
 
 limina frigescant: sonat hic de nare canina
 
-littera.' per me equidem sint omnia protinus alba;            110
+littera.' per me equidem sint omnia protinus alba; **110**
 
 nil moror. euge omnes, omnes bene, mirae eritis res.
 
@@ -268,7 +269,7 @@ pinge duos anguis: 'pueri, sacer est locus, extra
 
 meiite.' discedo. secuit Lucilius urbem,
 
-te Lupe, te Muci, et genuinum fregit in illis.            115
+te Lupe, te Muci, et genuinum fregit in illis. **115**
 
 omne uafer uitium ridenti Flaccus amico
 
@@ -278,7 +279,7 @@ callidus excusso populum suspendere naso.
 
 me muttire nefas? nec clam? nec cum scrobe? nusquam?
 
-hic tamen infodiam. uidi, uidi ipse, libelle:            120
+hic tamen infodiam. uidi, uidi ipse, libelle: **120**
 
 auriculas asini quis non habet? hoc ego opertum,
 
@@ -288,7 +289,7 @@ Iliade. audaci quicumque adflate Cratino
 
 iratum Eupolidem praegrandi cum sene palles,
 
-aspice et haec, si forte aliquid decoctius audis.            125
+aspice et haec, si forte aliquid decoctius audis. **125**
 
 inde uaporata lector mihi ferueat aure,
 
@@ -298,7 +299,7 @@ sordidus et lusco qui possit dicere 'lusce,'
 
 sese aliquem credens Italo quod honore supinus
 
-fregerit heminas Arreti aedilis iniquas,            130
+fregerit heminas Arreti aedilis iniquas, **130**
 
 nec qui abaco numeros et secto in puluere metas
 
@@ -318,7 +319,7 @@ funde merum genio. non tu prece poscis emaci
 
 quae nisi seductis nequeas committere diuis;
 
-at bona pars procerum tacita libabit acerra.            5
+at bona pars procerum tacita libabit acerra. **5**
 
 haut cuiuis promptum est murmurque humilisque susurros
 
@@ -328,7 +329,7 @@ tollere de templis et aperto uiuere uoto.
 
 illa sibi introrsum et sub lingua murmurat: 'o si
 
-ebulliat patruus, praeclarum funus!' et 'o si            10
+ebulliat patruus, praeclarum funus!' et 'o si **10**
 
 sub rastro crepet argenti mihi seria dextro
 
@@ -338,7 +339,7 @@ inpello, expungam; nam et est scabiosus et acri
 
 bile tumet. Nerio iam tertia conditur uxor.'
 
-haec sancte ut poscas, Tiberino in gurgite mergis            15
+haec sancte ut poscas, Tiberino in gurgite mergis **15**
 
 mane caput bis terque et noctem flumine purgas.
 
@@ -348,7 +349,7 @@ de Ioue quid sentis? estne ut praeponere cures
 
 hunc—cuinam? cuinam? uis Staio? an—scilicet haeres?
 
-quis potior iudex puerisue quis aptior orbis?            20
+quis potior iudex puerisue quis aptior orbis? **20**
 
 hoc igitur quo tu Iouis aurem inpellere temptas
 
@@ -358,7 +359,7 @@ dic agedum Staio. 'pro Iuppiter, o bone' clamet
 
 ignouisse putas quia, cum tonat, ocius ilex
 
-sulpure discutitur sacro quam tuque domusque?            25
+sulpure discutitur sacro quam tuque domusque? **25**
 
 an quia non fibris ouium Ergennaque iubente
 
@@ -368,7 +369,7 @@ idcirco stolidam praebet tibi uellere barbam
 
 Iuppiter? aut quidnam est qua tu mercede deorum
 
-emeris auriculas? pulmone et lactibus unctis?            30
+emeris auriculas? pulmone et lactibus unctis? **30**
 
 ecce auia aut metuens diuum matertera cunis
 
@@ -378,7 +379,7 @@ infami digito et lustralibus ante saliuis
 
 expiat, urentis oculos inhibere perita;
 
-tunc manibus quatit et spem macram supplice uoto            35
+tunc manibus quatit et spem macram supplice uoto **35**
 
 nunc Licini in campos, nunc Crassi mittit in aedis:
 
@@ -388,7 +389,7 @@ hunc rapiant; quidquid calcauerit hic, rosa fiat.'
 
 ast ego nutrici non mando uota. negato,
 
-Iuppiter, haec illi, quamuis te albata rogarit.            40
+Iuppiter, haec illi, quamuis te albata rogarit. **40**
 
 poscis opem neruis corpusque fidele senectae.
 
@@ -396,7 +397,7 @@ esto age. sed grandes patinae tuccetaque crassa
 
 adnuere his superos uetuere Iouemque morantur.
 
-rem struere exoptas caeso boue Mercuriumque            45
+rem struere exoptas caeso boue Mercuriumque **45**
 
 arcessis fibra: 'da fortunare Penatis,
 
@@ -406,7 +407,7 @@ tot tibi cum in flamma iunicum omenta liquescant?
 
 et tamen hic extis et opimo uincere ferto
 
-intendit: 'iam crescit ager, iam crescit ouile,            50
+intendit: 'iam crescit ager, iam crescit ouile, **50**
 
 iam dabitur, iam iam';donec deceptus et exspes
 
@@ -416,7 +417,7 @@ si tibi creterras argenti incusaque pingui
 
 auro dona feram, sudes et pectore laeuo
 
-excutiat guttas laetari praetrepidum cor.            55
+excutiat guttas laetari praetrepidum cor. **55**
 
 hinc illud subiit, auro sacras quod ouato
 
@@ -426,7 +427,7 @@ somnia pituita qui purgatissima mittunt,
 
 praecipui sunto sitque illis aurea barba.'
 
-aurum uasa Numae Saturniaque inpulit aera            60
+aurum uasa Numae Saturniaque inpulit aera **60**
 
 Vestalisque urnas et Tuscum fictile mutat.
 
@@ -436,7 +437,7 @@ quid iuuat hoc, templis nostros inmittere mores
 
 et bona dis ex hac scelerata ducere pulpa?
 
-haec sibi corrupto casiam dissoluit oliuo,            65
+haec sibi corrupto casiam dissoluit oliuo, **65**
 
 haec Calabrum coxit uitiato murice uellus,
 
@@ -446,7 +447,7 @@ feruentis massae crudo de puluere iussit.
 
 peccat et haec, peccat, uitio tamen utitur. at uos
 
-dicite, pontifices, in sancto quid facit aurum?            70
+dicite, pontifices, in sancto quid facit aurum? **70**
 
 nempe hoc quod Veneri donatae a uirgine pupae.
 
@@ -456,7 +457,7 @@ non possit magni Messalae lippa propago?
 
 conpositum ius fasque animo sanctosque recessus
 
-mentis et incoctum generoso pectus honesto.            75
+mentis et incoctum generoso pectus honesto. **75**
 
 haec cedo ut admoueam templis et farre litabo.
 
@@ -470,7 +471,7 @@ stertimus, indomitum quod despumare Falernum
 
 sufficiat, quinta dum linea tangitur umbra.
 
-'en quid agis? siccas insana canicula messes            5
+'en quid agis? siccas insana canicula messes **5**
 
 iam dudum coquit et patula pecus omne sub ulmo est'
 
@@ -480,7 +481,7 @@ huc aliquis. nemon? turgescit uitrea bilis:
 
 findor, ut Arcadiae pecuaria rudere credas.
 
-iam liber et positis bicolor membrana capillis            10
+iam liber et positis bicolor membrana capillis **10**
 
 inque manus chartae nodosaque uenit harundo.
 
@@ -490,7 +491,7 @@ nigra sed infusa uanescit sepia lympha,
 
 dilutas querimur geminet quod fistula guttas.
 
-o miser inque dies ultra miser, hucine rerum            15
+o miser inque dies ultra miser, hucine rerum **15**
 
 uenimus? a, cur non potius teneroque columbo
 
@@ -500,7 +501,7 @@ poscis et iratus mammae lallare recusas?
 
 an tali studeam calamo? cui uerba? quid istas
 
-succinis ambages? tibi luditur. effluis amens,            20
+succinis ambages? tibi luditur. effluis amens, **20**
 
 contemnere. sonat uitium percussa, maligne
 
@@ -510,7 +511,7 @@ udum et molle lutum es, nunc nunc properandus et acri
 
 fingendus sine fine rota. sed rure paterno
 
-est tibi far modicum, purum et sine labe salinum            25
+est tibi far modicum, purum et sine labe salinum **25**
 
 (quid metuas?) cultrixque foci secura patella.
 
@@ -520,7 +521,7 @@ stemmate quod Tusco ramum millesime ducis
 
 censoremue tuum uel quod trabeate salutas?
 
-ad populum phaleras! ego te intus et in cute noui.            30
+ad populum phaleras! ego te intus et in cute noui. **30**
 
 non pudet ad morem discincti uiuere Nattae.
 
@@ -530,7 +531,7 @@ pingue, caret culpa, nescit quid perdat, et alto
 
 demersus summa rursus non bullit in unda.
 
-magne pater diuum, saeuos punire tyrannos            35
+magne pater diuum, saeuos punire tyrannos **35**
 
 haut alia ratione uelis, cum dira libido
 
@@ -540,7 +541,7 @@ uirtutem uideant intabescantque relicta.
 
 anne magis Siculi gemuerunt aera iuuenci
 
-et magis auratis pendens laquearibus ensis            40
+et magis auratis pendens laquearibus ensis **40**
 
 purpureas subter ceruices terruit, 'imus,
 
@@ -550,7 +551,7 @@ palleat infelix quod proxima nesciat uxor?
 
 saepe oculos, memini, tangebam paruus oliuo,
 
-grandia si nollem morituri uerba Catonis            45
+grandia si nollem morituri uerba Catonis **45**
 
 discere non sano multum laudanda magistro,
 
@@ -560,7 +561,7 @@ iure; etenim id summum, quid dexter senio ferret,
 
 scire erat in uoto, damnosa canicula quantum
 
-raderet, angustae collo non fallier orcae,            50
+raderet, angustae collo non fallier orcae, **50**
 
 neu quis callidior buxum torquere flagello.
 
@@ -570,7 +571,7 @@ quaeque docet sapiens bracatis inlita Medis
 
 porticus, insomnis quibus et detonsa iuuentus
 
-inuigilat siliquis et grandi pasta polenta;            55
+inuigilat siliquis et grandi pasta polenta; **55**
 
 et tibi quae Samios diduxit littera ramos
 
@@ -580,7 +581,7 @@ stertis adhuc laxumque caput conpage soluta
 
 oscitat hesternum dissutis undique malis.
 
-est aliquid quo tendis et in quod derigis arcum?            60
+est aliquid quo tendis et in quod derigis arcum? **60**
 
 an passim sequeris coruos testaque lutoque,
 
@@ -590,7 +591,7 @@ elleborum frustra, cum iam cutis aegra tumebit,
 
 poscentis uideas; uenienti occurrite morbo,
 
-et quid opus Cratero magnos promittere montis?            65
+et quid opus Cratero magnos promittere montis? **65**
 
 discite et, o miseri, causas cognoscite rerum:
 
@@ -600,7 +601,7 @@ quis datus, aut metae qua mollis flexus et unde,
 
 quis modus argento, quid fas optare, quid asper
 
-utile nummus habet, patriae carisque propinquis            70
+utile nummus habet, patriae carisque propinquis **70**
 
 quantum elargiri deceat, quem te deus esse
 
@@ -610,7 +611,7 @@ disce nec inuideas quod multa fidelia putet
 
 in locuplete penu, defensis pinguibus Vmbris,
 
-et piper et pernae, Marsi monumenta clientis,            75
+et piper et pernae, Marsi monumenta clientis, **75**
 
 maenaque quod prima nondum defecerit orca.
 
@@ -620,7 +621,7 @@ dicat: 'quod sapio satis est mihi. non ego curo
 
 esse quod Arcesilas aerumnosique Solones
 
-obstipo capite et figentes lumine terram,            80
+obstipo capite et figentes lumine terram, **80**
 
 murmura cum secum et rabiosa silentia rodunt
 
@@ -630,7 +631,7 @@ aegroti ueteris meditantes somnia, gigni
 
 de nihilo nihilum, in nihilum nil posse reuerti.
 
-hoc est quod palles? cur quis non prandeat hoc est?'            85
+hoc est quod palles? cur quis non prandeat hoc est?' **85**
 
 his populus ridet, multumque torosa iuuentus
 
@@ -640,7 +641,7 @@ ingeminat tremulos naso crispante cachinnos.
 
 faucibus exsuperat grauis halitus, inspice sodes'
 
-qui dicit medico, iussus requiescere, postquam            90
+qui dicit medico, iussus requiescere, postquam **90**
 
 tertia conpositas uidit nox currere uenas,
 
@@ -650,7 +651,7 @@ lenia loturo sibi Surrentina rogabit.
 
 'heus bone, tu palles.' 'nihil est.' 'uideas tamen istuc,
 
-quidquid id est. surgit tacite tibi lutea pellis.'            95
+quidquid id est. surgit tacite tibi lutea pellis.' **95**
 
 'at tu deterius palles, ne sis mihi tutor.
 
@@ -660,7 +661,7 @@ turgidus hic epulis atque albo uentre lauatur,
 
 gutture sulpureas lente exhalante mefites.
 
-sed tremor inter uina subit calidumque trientem            100
+sed tremor inter uina subit calidumque trientem **100**
 
 excutit e manibus, dentes crepuere retecti,
 
@@ -670,7 +671,7 @@ hinc tuba, candelae, tandemque beatulus alto
 
 conpositus lecto crassisque lutatus amomis
 
-in portam rigidas calces extendit. at illum            105
+in portam rigidas calces extendit. at illum **105**
 
 hesterni capite induto subiere Quirites.
 
@@ -680,7 +681,7 @@ nil calet hic. summosque pedes attinge manusque;
 
 non frigent.' uisa est si forte pecunia, siue
 
-candida uicini subrisit molle puella,            110
+candida uicini subrisit molle puella, **110**
 
 cor tibi rite salit? positum est algente catino
 
@@ -690,7 +691,7 @@ temptemus fauces; tenero latet ulcus in ore
 
 putre quod haut deceat plebeia radere beta.
 
-alges, cum excussit membris timor albus aristas;            115
+alges, cum excussit membris timor albus aristas; **115**
 
 nunc face supposita feruescit sanguis et ira
 
@@ -708,7 +709,7 @@ dicere, sorbitio tollit quem dira cicutae)
 
 scilicet ingenium et rerum prudentia uelox
 
-ante pilos uenit, dicenda tacendaue calles.            5
+ante pilos uenit, dicenda tacendaue calles. **5**
 
 ergo ubi commota feruet plebecula bile,
 
@@ -718,7 +719,7 @@ maiestate manus. quid deinde loquere? "Quirites,
 
 hoc puta non iustum est, illud male, rectius illud."
 
-scis etenim iustum gemina suspendere lance            10
+scis etenim iustum gemina suspendere lance **10**
 
 ancipitis librae, rectum discernis ubi inter
 
@@ -728,7 +729,7 @@ et potis es nigrum uitio praefigere theta.
 
 quin tu igitur summa nequiquam pelle decorus
 
-ante diem blando caudam iactare popello            15
+ante diem blando caudam iactare popello **15**
 
 desinis, Anticyras melior sorbere meracas?
 
@@ -738,7 +739,7 @@ semper et adsiduo curata cuticula sole?
 
 expecta, haut aliud respondeat haec anus. i nunc,
 
-"Dinomaches ego sum" suffla, "sum candidus." esto,            20
+"Dinomaches ego sum" suffla, "sum candidus." esto, **20**
 
 dum ne deterius sapiat pannucia Baucis,
 
@@ -748,7 +749,7 @@ ut nemo in sese temptat descendere, nemo,
 
 sed praecedenti spectatur mantica tergo!
 
-quaesieris 'nostin Vettidi praedia?' 'cuius?'            25
+quaesieris 'nostin Vettidi praedia?' 'cuius?' **25**
 
 'diues arat Curibus quantum non miluus errat.'
 
@@ -758,7 +759,7 @@ qui, quandoque iugum pertusa ad compita figit,
 
 seriolae ueterem metuens deradere limum
 
-ingemit "hoc bene sit" tunicatum cum sale mordens            30
+ingemit "hoc bene sit" tunicatum cum sale mordens **30**
 
 cepe et farratam pueris plaudentibus ollam
 
@@ -768,7 +769,7 @@ at si unctus cesses et figas in cute solem,
 
 est prope te ignotus cubito qui tangat et acre
 
-despuat: 'hi mores! penemque arcanaque lumbi            35
+despuat: 'hi mores! penemque arcanaque lumbi **35**
 
 runcantem populo marcentis pandere uuluas.
 
@@ -778,7 +779,7 @@ inguinibus quare detonsus gurgulio extat?
 
 quinque palaestritae licet haec plantaria uellant
 
-elixasque nates labefactent forcipe adunca,            40
+elixasque nates labefactent forcipe adunca, **40**
 
 non tamen ista filix ullo mansuescit aratro.'
 
@@ -788,7 +789,7 @@ uiuitur hoc pacto, sic nouimus. ilia subter
 
 caecum uulnus habes, sed lato balteus auro
 
-praetegit. ut mauis, da uerba et decipe neruos,            45
+praetegit. ut mauis, da uerba et decipe neruos, **45**
 
 si potes. 'egregium cum me uicinia dicat,
 
@@ -798,7 +799,7 @@ si facis in penem quidquid tibi uenit, amarum
 
 si puteal multa cautus uibice flagellas,
 
-nequiquam populo bibulas donaueris aures.            50
+nequiquam populo bibulas donaueris aures. **50**
 
 respue quod non es; tollat sua munera cerdo.
 
@@ -814,7 +815,7 @@ fabula seu maesto ponatur hianda tragoedo,
 
 uolnera seu Parthi ducentis ab inguine ferrum.
 
-'quorsum haec? aut quantas robusti carminis offas            5
+'quorsum haec? aut quantas robusti carminis offas **5**
 
 ingeris, ut par sit centeno gutture niti?
 
@@ -824,7 +825,7 @@ si quibus aut Procnes aut si quibus olla Thyestae
 
 feruebit saepe insulso cenanda Glyconi.
 
-tu neque anhelanti, coquitur dum massa camino,            10
+tu neque anhelanti, coquitur dum massa camino, **10**
 
 folle premis uentos nec clauso murmure raucus
 
@@ -834,7 +835,7 @@ nec scloppo tumidas intendis rumpere buccas.
 
 uerba togae sequeris iunctura callidus acri,
 
-ore teres modico, pallentis radere mores            15
+ore teres modico, pallentis radere mores **15**
 
 doctus et ingenuo culpam defigere ludo.
 
@@ -844,7 +845,7 @@ cum capite et pedibus plebeiaque prandia noris.'
 
 non equidem hoc studeo, pullatis ut mihi nugis
 
-pagina turgescat dare pondus idonea fumo.            20
+pagina turgescat dare pondus idonea fumo. **20**
 
 secrete loquimur. tibi nunc hortante Camena
 
@@ -854,7 +855,7 @@ pars tua sit, Cornute, animae, tibi, dulcis amice,
 
 ostendisse iuuat. pulsa, dinoscere cautus
 
-quid solidum crepet et pictae tectoria linguae.            25
+quid solidum crepet et pictae tectoria linguae. **25**
 
 hic ego centenas ausim deposcere fauces,
 
@@ -864,7 +865,7 @@ uoce traham pura, totumque hoc uerba resignent
 
 quod latet arcana non enarrabile fibra.
 
-cum primum pauido custos mihi purpura cessit            30
+cum primum pauido custos mihi purpura cessit **30**
 
 bullaque subcinctis Laribus donata pependit,
 
@@ -874,7 +875,7 @@ permisit sparsisse oculos iam candidus umbo,
 
 cumque iter ambiguum est et uitae nescius error
 
-diducit trepidas ramosa in compita mentes,            35
+diducit trepidas ramosa in compita mentes, **35**
 
 me tibi supposui. teneros tu suscipis annos
 
@@ -884,7 +885,7 @@ adposita intortos extendit regula mores
 
 et premitur ratione animus uincique laborat
 
-artificemque tuo ducit sub pollice uoltum.            40
+artificemque tuo ducit sub pollice uoltum. **40**
 
 tecum etenim longos memini consumere soles
 
@@ -894,7 +895,7 @@ unum opus et requiem pariter disponimus ambo
 
 atque uerecunda laxamus seria mensa.
 
-non equidem hoc dubites, amborum foedere certo            45
+non equidem hoc dubites, amborum foedere certo **45**
 
 consentire dies et ab uno sidere duci.
 
@@ -904,7 +905,7 @@ Parca tenax ueri, seu nata fidelibus hora
 
 diuidit in Geminos concordia fata duorum
 
-Saturnumque grauem nostro Ioue frangimus una,            50
+Saturnumque grauem nostro Ioue frangimus una, **50**
 
 nescio quod certe est quod me tibi temperat astrum.
 
@@ -914,7 +915,7 @@ uelle suum cuique est nec uoto uiuitur uno.
 
 mercibus hic Italis mutat sub sole recenti
 
-rugosum piper et pallentis grana cumini,            55
+rugosum piper et pallentis grana cumini, **55**
 
 hic satur inriguo mauult turgescere somno,
 
@@ -924,7 +925,7 @@ in uenerem putris; sed cum lapidosa cheragra
 
 fregerit articulos ueteris ramalia fagi,
 
-tunc crassos transisse dies lucemque palustrem            60
+tunc crassos transisse dies lucemque palustrem **60**
 
 et sibi iam seri uitam ingemuere relictam.
 
@@ -934,7 +935,7 @@ cultor enim iuuenum purgatas inseris aures
 
 fruge Cleanthea. petite hinc, puerique senesque,
 
-finem animo certum miserisque uiatica canis.            65
+finem animo certum miserisque uiatica canis. **65**
 
 'cras hoc fiet.' idem cras fiat. 'quid? quasi magnum
 
@@ -944,7 +945,7 @@ iam cras hesternum consumpsimus; ecce aliud cras
 
 egerit hos annos et semper paulum erit ultra.
 
-nam quamuis prope te, quamuis temone sub uno            70
+nam quamuis prope te, quamuis temone sub uno **70**
 
 uertentem sese frustra sectabere canthum,
 
@@ -954,7 +955,7 @@ libertate opus est. non hac, ut quisque Velina
 
 Publius emeruit, scabiosum tesserula far
 
-possidet. heu steriles ueri, quibus una Quiritem            75
+possidet. heu steriles ueri, quibus una Quiritem **75**
 
 uertigo facit! hic Dama est non tresis agaso,
 
@@ -964,7 +965,7 @@ uerterit hunc dominus, momento turbinis exit
 
 Marcus Dama. papae! Marco spondente recusas
 
-credere tu nummos? Marco sub iudice palles?            80
+credere tu nummos? Marco sub iudice palles? **80**
 
 Marcus dixit, ita est. adsigna, Marce, tabellas.
 
@@ -974,7 +975,7 @@ haec mera libertas, hoc nobis pillea donant.
 
 cui licet ut libuit? licet ut uolo uiuere, non sum
 
-liberior Bruto?' 'mendose colligis' inquit            85
+liberior Bruto?' 'mendose colligis' inquit **85**
 
 Stoicus hic aurem mordaci lotus aceto,
 
@@ -984,7 +985,7 @@ Stoicus hic aurem mordaci lotus aceto,
 
 cur mihi non liceat, iussit quodcumque uoluntas,
 
-excepto siquid Masuri rubrica uetabit?'            90
+excepto siquid Masuri rubrica uetabit?' **90**
 
 disce, sed ira cadat naso rugosaque sanna,
 
@@ -994,7 +995,7 @@ non praetoris erat stultis dare tenuia rerum
 
 officia atque usum rapidae permittere uitae;
 
-sambucam citius caloni aptaueris alto.            95
+sambucam citius caloni aptaueris alto. **95**
 
 stat contra ratio et secretam garrit in aurem,
 
@@ -1004,7 +1005,7 @@ publica lex hominum naturaque continet hoc fas,
 
 ut teneat uetitos inscitia debilis actus.
 
-diluis elleborum, certo conpescere puncto            100
+diluis elleborum, certo conpescere puncto **100**
 
 nescius examen? uetat hoc natura medendi.
 
@@ -1014,7 +1015,7 @@ luciferi rudis, exclamet Melicerta perisse
 
 frontem de rebus. tibi recto uiuere talo
 
-ars dedit et ueris speciem dinoscere calles,            105
+ars dedit et ueris speciem dinoscere calles, **105**
 
 ne qua subaerato mendosum tinniat auro?
 
@@ -1024,7 +1025,7 @@ illa prius creta, mox haec carbone notasti?
 
 es modicus uoti, presso lare, dulcis amicis?
 
-iam nunc adstringas, iam nunc granaria laxes,            110
+iam nunc adstringas, iam nunc granaria laxes, **110**
 
 inque luto fixum possis transcendere nummum
 
@@ -1034,7 +1035,7 @@ nec gluttu sorbere saliuam Mercurialem?
 
 liberque ac sapiens praetoribus ac Ioue dextro.
 
-sin tu, cum fueris nostrae paulo ante farinae.            115
+sin tu, cum fueris nostrae paulo ante farinae. **115**
 
 pelliculam ueterem retines et fronte politus
 
@@ -1044,7 +1045,7 @@ quae dederam supra relego funemque reduco.
 
 nil tibi concessit ratio; digitum exere, peccas,
 
-et quid tam paruum est? sed nullo ture litabis,            120
+et quid tam paruum est? sed nullo ture litabis, **120**
 
 haereat in stultis breuis ut semuncia recti.
 
@@ -1054,7 +1055,7 @@ tris tantum ad numeros Satyrum moueare Bathylli.
 
 'liber ego.' unde datum hoc sumis, tot subdite rebus?
 
-an dominum ignoras nisi quem uindicta relaxat?            125
+an dominum ignoras nisi quem uindicta relaxat? **125**
 
 'i, puer, et strigiles Crispini ad balnea defer'
 
@@ -1064,7 +1065,7 @@ te nihil inpellit nec quicquam extrinsecus intrat
 
 quod neruos agitet; sed si intus et in iecore aegro
 
-nascuntur domini, qui tu inpunitior exis            130
+nascuntur domini, qui tu inpunitior exis **130**
 
 atque hic quem ad strigilis scutica et metus egit erilis?
 
@@ -1074,7 +1075,7 @@ surge.' negas. instat. 'surge' inquit. 'non queo.' 'surge.'
 
 'et quid agam?' 'rogat! en saperdas aduehe Ponto,
 
-castoreum, stuppas, hebenum, tus, lubrica Coa.            135
+castoreum, stuppas, hebenum, tus, lubrica Coa. **135**
 
 tolle recens primus piper et sitiente camelo.
 
@@ -1084,7 +1085,7 @@ baro, regustatum digito terebrare salinum
 
 contentus perages, si uiuere cum Ioue tendis.'
 
-iam pueris pellem succinctus et oenophorum aptas.            140
+iam pueris pellem succinctus et oenophorum aptas. **140**
 
 ocius ad nauem! nihil obstat quin trabe uasta
 
@@ -1094,7 +1095,7 @@ seductum moneat: 'quo deinde, insane, ruis, quo?
 
 quid tibi uis? calido sub pectore mascula bilis
 
-intumuit quam non extinxerit urna cicutae?            145
+intumuit quam non extinxerit urna cicutae? **145**
 
 tu mare transilias? tibi torta cannabe fulto
 
@@ -1104,7 +1105,7 @@ exhalet uapida laesum pice sessilis obba?
 
 quid petis? ut nummi, quos hic quincunce modesto
 
-nutrieras, pergant auidos sudare deunces?            150
+nutrieras, pergant auidos sudare deunces? **150**
 
 indulge genio, carpamus dulcia, nostrum est
 
@@ -1114,7 +1115,7 @@ uiue memor leti, fugit hora, hoc quod loquor inde est.'
 
 en quid agis? duplici in diuersum scinderis hamo.
 
-huncine an hunc sequeris? subeas alternus oportet            155
+huncine an hunc sequeris? subeas alternus oportet **155**
 
 ancipiti obsequio dominos, alternus oberres.
 
@@ -1124,7 +1125,7 @@ parere imperio, 'rupi iam uincula' dicas;
 
 nam et luctata canis nodum abripit, et tamen illi,
 
-cum fugit, a collo trahitur pars longa catenae.            160
+cum fugit, a collo trahitur pars longa catenae. **160**
 
 'Daue, cito, hoc credas iubeo, finire dolores
 
@@ -1134,7 +1135,7 @@ adrodens ait haec). 'an siccis dedecus obstem
 
 cognatis? an rem patriam rumore sinistro
 
-limen ad obscenum frangam, dum Chrysidis udas            165
+limen ad obscenum frangam, dum Chrysidis udas **165**
 
 ebrius ante fores extincta cum face canto?'
 
@@ -1144,7 +1145,7 @@ percute.' 'sed censen plorabit, Daue, relicta?'
 
 'nugaris. solea, puer, obiurgabere rubra,
 
-ne trepidare uelis atque artos rodere casses.            170
+ne trepidare uelis atque artos rodere casses. **170**
 
 nunc ferus et uiolens; at, si uocet, haut mora dicas
 
@@ -1154,7 +1155,7 @@ supplicet, accedam?" si totus et integer illinc
 
 exieras, nec nunc.' hic hic quod quaerimus, hic est,
 
-non in festuca, lictor quam iactat ineptus.            175
+non in festuca, lictor quam iactat ineptus. **175**
 
 ius habet ille sui, palpo quem ducit hiantem
 
@@ -1164,7 +1165,7 @@ rixanti populo, nostra ut Floralia possint
 
 aprici meminisse senes. quid pulchrius? at cum
 
-Herodis uenere dies unctaque fenestra            180
+Herodis uenere dies unctaque fenestra **180**
 
 dispositae pinguem nebulam uomuere lucernae
 
@@ -1174,7 +1175,7 @@ cauda natat thynni, tumet alba fidelia uino,
 
 labra moues tacitus recutitaque sabbata palles.
 
-tum nigri lemures ouoque pericula rupto,            185
+tum nigri lemures ouoque pericula rupto, **185**
 
 tum grandes galli et cum sistro lusca sacerdos
 
@@ -1184,7 +1185,7 @@ praedictum ter mane caput gustaueris ali.
 
 dixeris haec inter uaricosos centuriones,
 
-continuo crassum ridet Pulfenius ingens            190
+continuo crassum ridet Pulfenius ingens **190**
 
 et centum Graecos curto centusse licetur.
 
@@ -1198,7 +1199,7 @@ mire opifex numeris ueterum primordia uocum
 
 atque marem strepitum fidis intendisse Latinae,
 
-mox iuuenes agitare iocos et pollice honesto            5
+mox iuuenes agitare iocos et pollice honesto **5**
 
 egregius lusisse senex. mihi nunc Ligus ora
 
@@ -1208,7 +1209,7 @@ dant scopuli et multa litus se ualle receptat.
 
 'Lunai portum, est operae, cognoscite, ciues.'
 
-cor iubet hoc Enni, postquam destertuit esse            10
+cor iubet hoc Enni, postquam destertuit esse **10**
 
 Maeonides Quintus pauone ex Pythagoreo.
 
@@ -1218,7 +1219,7 @@ infelix pecori, securus et angulus ille
 
 uicini nostro quia pinguior, etsi adeo omnes
 
-ditescant orti peioribus, usque recusem            15
+ditescant orti peioribus, usque recusem **15**
 
 curuus ob id minui senio aut cenare sine uncto
 
@@ -1228,7 +1229,7 @@ discrepet his alius. geminos, horoscope, uaro
 
 producis genio: solis natalibus est qui
 
-tinguat holus siccum muria uafer in calice empta,            20
+tinguat holus siccum muria uafer in calice empta, **20**
 
 ipse sacrum inrorans patinae piper; hic bona dente
 
@@ -1238,7 +1239,7 @@ nec rhombos ideo libertis ponere lautus
 
 nec tenuis sollers turdarum nosse saliuas.
 
-messe tenus propria uiue et granaria (fas est)            25
+messe tenus propria uiue et granaria (fas est) **25**
 
 emole. quid metuas? occa et seges altera in herba est.
 
@@ -1248,7 +1249,7 @@ prendit amicus inops remque omnem surdaque uota
 
 condidit Ionio, iacet ipse in litore et una
 
-ingentes de puppe dei iamque obuia mergis            30
+ingentes de puppe dei iamque obuia mergis **30**
 
 costa ratis lacerae; nunc et de caespite uiuo
 
@@ -1258,7 +1259,7 @@ caerulea in tabula. sed cenam funeris heres
 
 negleget iratus quod rem curtaueris; urnae
 
-ossa inodora dabit, seu spirent cinnama surdum            35
+ossa inodora dabit, seu spirent cinnama surdum **35**
 
 seu ceraso peccent casiae nescire paratus.
 
@@ -1268,7 +1269,7 @@ doctores Graios: 'ita fit; postquam sapere urbi
 
 cum pipere et palmis uenit nostrum hoc maris expers,
 
-fenisecae crasso uitiarunt unguine pultes.'            40
+fenisecae crasso uitiarunt unguine pultes.' **40**
 
 haec cinere ulterior metuas? at tu, meus heres
 
@@ -1278,7 +1279,7 @@ o bone, num ignoras? missa est a Caesare laurus
 
 insignem ob cladem Germanae pubis et aris
 
-frigidus excutitur cinis ac iam postibus arma,            45
+frigidus excutitur cinis ac iam postibus arma, **45**
 
 iam chlamydas regum, iam lutea gausapa captis
 
@@ -1288,7 +1289,7 @@ dis igitur genioque ducis centum paria ob res
 
 egregie gestas induco. quis uetat? aude.
 
-uae, nisi coniues. oleum artocreasque popello            50
+uae, nisi coniues. oleum artocreasque popello **50**
 
 largior. an prohibes? dic clare. 'non adeo' inquis
 
@@ -1298,7 +1299,7 @@ iam reliqua ex amitis, patruelis nulla, proneptis
 
 nulla manet patrui, sterilis matertera uixit
 
-deque auia nihilum superest, accedo Bouillas            55
+deque auia nihilum superest, accedo Bouillas **55**
 
 cliuumque ad Virbi, praesto est mihi Manius heres.
 
@@ -1308,7 +1309,7 @@ sit pater: haut prompte, dicam tamen; adde etiam unum,
 
 unum etiam: terrae est iam filius et mihi ritu
 
-Manius hic generis prope maior auunculus exit.            60
+Manius hic generis prope maior auunculus exit. **60**
 
 qui prior es, cur me in decursu lampada poscis?
 
@@ -1318,7 +1319,7 @@ pingitur. an renuis? uis tu gaudere relictis?
 
 'dest aliquid summae.' minui mihi, sed tibi totum est
 
-quidquid id est. ubi sit, fuge quaerere, quod mihi quondam            65
+quidquid id est. ubi sit, fuge quaerere, quod mihi quondam **65**
 
 legarat Tadius, neu dicta, 'pone paterna,
 
@@ -1328,7 +1329,7 @@ quid relicum est?' relicum? nunc nunc inpensius ungue,
 
 ungue, puer, caules. mihi festa luce coquatur
 
-urtica et fissa fumosum sinciput aure,            70
+urtica et fissa fumosum sinciput aure, **70**
 
 ut tuus iste nepos olim satur anseris extis,
 
@@ -1338,7 +1339,7 @@ patriciae inmeiat uoluae? mihi trama figurae
 
 sit reliqua, ast illi tremat omento popa uenter?
 
-uende animam lucro, mercare atque excute sollers            75
+uende animam lucro, mercare atque excute sollers **75**
 
 omne latus mundi, ne sit praestantior alter
 
@@ -1348,7 +1349,7 @@ rem duplica. 'feci; iam triplex, iam mihi quarto,
 
 iam decies redit in rugam. depunge ubi sistam,
 
-inuentus, Chrysippe, tui finitor acerui.'            80
+inuentus, Chrysippe, tui finitor acerui.' **80**
 
 The Latin Library
 

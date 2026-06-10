@@ -1249,3 +1249,761 @@ type: text
 **EDCS-00700508** V
 
 **EDCS-00700509** V
+
+**EDCS-02400001** Marcia Italica an[n(orum) 3] / h(ic) s(ita) e(st) s(it) t(ibi) [t(erra) l(evis)] / Allius Alexande[r uxori] / indulgentissima[e et desi]/derantis[simae] / fecit
+
+**EDCS-02400008** Aiu(s?) / v(ovit?)
+
+**EDCS-02400009** F[or]tun[ae]
+
+**EDCS-02400010** Iunon[i] / Ma[
+
+**EDCS-02400011** Phoe[bo] / The[o] / Iphic[us
+
+**EDCS-02400017** [3]sis / C(aius) Al[lius 3] / infe[lix
+
+**EDCS-02400020** [D(is) M(anibus)] / [3 Si]lvani / [3 a]nn(orum) L
+
+**EDCS-02400023** [Imp(eratori) Caes(ari) Fl(avio) Val(erio) Constan]tio [P(io) F(elici) Invi]cto [Aug(usto)
+
+**EDCS-02400027** Ilurbe/dae G(aius!) V() / Paternus a(nimo) l(ibens) p(osuit)
+
+**EDCS-02400029** I(ovi) O(ptimo) M(aximo) C() / Tangi/nus Ton/ginae f(ilius) / votum / p(iissime) f(actum) s(olvit)
+
+**EDCS-02400030** [3 sibi(?)] et vir[o(?) 3]
+
+**EDCS-02400031** [3] d(e) s(uo) f(aciendum) [c(uravit)]
+
+**EDCS-02400032** [3]CL[3]O[3] / [de] suo pos[uit(?)]
+
+**EDCS-02400033** D(is) [M(anibus) s(acrum)] / [3]VR[
+
+**EDCS-02400034** D(is) [M(anibus) s(acrum)] / [
+
+**EDCS-02400035** [D(is)] M(anibus) / [3 A]moena / [
+
+**EDCS-02400036** [3]nis f(ilius?) / [3]O S[
+
+**EDCS-02400037** [3]A[3] / [3]MV[
+
+**EDCS-02400038** [3]S f(ilius?) / [3]S an(norum) XX / [
+
+**EDCS-02400039** [3]tri[3]
+
+**EDCS-02400040** [3]VC[3] / [3]O(?) PV[
+
+**EDCS-02400041** ]TM[
+
+**EDCS-02400042** [3]O VF[3] / [3]S[
+
+**EDCS-02400043** [3]BV[3]
+
+**EDCS-02400044** BLIO[3] / [3]ARR[3]
+
+**EDCS-02400045** [6] / [3]utalo / [
+
+**EDCS-02400046** [3]S Felix / [3 R]ufi f(ilius) / [3 Mar]tialis / [Te]rtius / [3]ni / [
+
+**EDCS-02400047** Alia(!) [A]/vita[e]
+
+**EDCS-02400048** Boutiae
+
+**EDCS-02400049** Domn[i]
+
+**EDCS-02400050** Cesimi
+
+**EDCS-03000428** D(is) M(anibus) s(acrum) / Q(uinti) Mur(r)ici A(uli) f(ilii) a[l(eria!) A]/niani(?) an(norum) XVIIII / Aronica(?) Q() MAII/NA(?) [3] / [3] c(uravit) h(ic) [s(itus) e(st) s(it) t(ibi) t(erra) l(evis)]
+
+**EDCS-03000429** Mu[n]ia Brocina / Arconis f(ilia) a(nnorum) XXXV / h(ic) s(ita) [e(st)] / s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-03000430** Signum / Marti Aug(usto) / Cicerius / Iuvena/lis Augustalis / ex test(amento) po/ni iussit / Ma[3]lion(us?) / sive Raicirri/[3] p(onendum?) c(uravit)
+
+**EDCS-03000431** D(is) [M(anibus) s(acrum)] / FA[3] / A[3] / M[3] H[3] / L() S() MV[3] / meren[ti 3] / et soceri [
+
+**EDCS-03000432** [C]ornel[io 3] / [3] Bocch[o 3] / [3 flamin]i provinc[iae
+
+**EDCS-03000433** ] / Leo [pate]r pi/entissimu/s posu{u}it
+
+**EDCS-03000434** D(is) M(anibus)
+
+**EDCS-03000435** I(ovi) O(ptimo) / [
+
+**EDCS-03000436** Victo/riae / Curius / Privatus / v(otum) l(ibens) s(olvit)
+
+**EDCS-03000437** D(is) M(anibus) s(acrum) / Am(o)e(nae) Ruf(inae) Ce(lti) / a(nnorum) XXXV
+
+**EDCS-03000438** ] / BAS[3] / XL h(ic) [s(itus?) e(st)] / [s(it) t(ibi)] t(erra) l(evis) [
+
+**EDCS-03000439** Caino / Catur[onis] f(ilio)
+
+**EDCS-03000440** D(is) M(anibus) s(acrum) / Cel(tius?) Reb(urri) an(n)o(rum) / LXVI
+
+**EDCS-03000442** D(is) M(anibus) s(acrum) / Val(eriae) Amoe/nae a(nnorum) LXX / filio(!) f(ecit)
+
+**EDCS-03000443** D(is) M(anibus) s(acrum) F() / Fu() a(nnorum) XXX
+
+**EDCS-03000444** Di(s) Ma(nibus) / sa(crum) F() A/[6] / a(nnorum) [
+
+**EDCS-03000445** ]S a(nnorum) / LX V / A [
+
+**EDCS-03000446** Casa Arantoni f(ilia) / sibi et Gemello / Apti lib(erto) / marito f(aciendum) c(uravit)
+
+**EDCS-03000447** Cesseae Sciti lib(ertae)
+
+**EDCS-03000448** Graecinio Her/meti et Grae/ciniae Caesiae / Graecinius / Rufinus pa/t{e}ri et matri f(aciendum) c(uravit)
+
+**EDCS-03000450** Marti / Flavius / Igaedit(anorum) lib(ertus) / Ariston
+
+**EDCS-03000451** Rufinus Rufi / f(ilius) ann(orum) XXV h(ic) s(itus) es[t] / tu qui legis ave / perlegisti vale
+
+**EDCS-03000453** G(aius!) Matius G(ai!) l(ibertus) Optatus / ann(orum) LXX / Matia G(ai!) l(iberta) Festa ann(orum) (!) / Matia Optata an(norum) XXV / C(aius) Matius Emeritus an(norum) XXVI / ex testamento / h(ic) s(iti) s(unt) s(it) v(obis) t(erra) l(evis)
+
+**EDCS-03000456** Severa Tan/cini f(ilia) an(norum) L / h(ic) s(ita) e(st) s(it) t(ibi) t(erra) l(evis) / Sex(tus) Iulius / Hispanus / piae uxori / [
+
+**EDCS-03000457** Tancinus / [C]louti / (!) XXV h(ic) e(st) s(itus) / [l(evis)] t(erra) t(ibi) s(it)
+
+**EDCS-03000458** D(is) M(anibus) s(acrum) / Nicotyc/he ann(orum) / XVII mate/r h(ic) s(ita) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-03000467** Patrue/nus Ca/eri f(ilius) a/n(norum) L h(ic) s(itus) / e(st) t(ibi) t(erra) l(evis)
+
+**EDCS-03000468** D(is) M(anibus) / [Q](u)adra[t]/us Q(u)ad/rati f(ilius) / ann(orum) XXX / h(ic) [s(itus) e(st) s(it) t(ibi) t(erra)] l(evis)
+
+**EDCS-03000470** D(is) M(anibus) s(acrum) / Flacil(l)a / an(norum) LXXX / [
+
+**EDCS-03300380** ] / ex vo(to)
+
+**EDCS-03300382** D(omino) n(ostro) / Fla(vio) Val(erio) Cons/tantino no/bilis(s)imo Caes(ari) / ac fortis(s)imo / [
+
+**EDCS-03300383** ] Cae[sar
+
+**EDCS-03300384** Pro(culi?)
+
+**EDCS-03300385** Maria G(ai!) f(ilia) / Boutia / h(ic) s(ita)
+
+**EDCS-03300386** ] / matri piis[simae
+
+**EDCS-03300387** ] Utic(enses) / [3 Lu]cretius C[3] / [3]aceus [
+
+**EDCS-03300388** D(is) [M(anibus)] / G(aio!) Sapidio A[3] / Pollia[e(?) 3] / G(aius!) Pollius A[3] / f(aciendum) [c(uravit)]
+
+**EDCS-03300389** T(itus) Iunius T(iti) f(ilius) [3]/tus mater / p(onendum) c(uravit) / [h(ic)] s(itus) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-03300401** I(ovi) O(ptimo) M(aximo) / C(aius) Val(erius) Te/lespho/rus ex vi/su et mo/n[itu] p[o]/suit
+
+**EDCS-03300404** S(anctae) d(eae) D(ominae) T/uri[b]/ri(gensi) M(arcus?) / TV[
+
+**EDCS-03300406** Pilip(p)us / cognit/[us(?)
+
+**EDCS-03300407** ]avi / f(ilius?) vo(tum) / s(olvit) l(ibens) a(nimo)
+
+**EDCS-03300408** ] / solvi{i}t
+
+**EDCS-03300409** Licin/ius Ru/sticu/s l(ibens) v(otum) s(olvit)
+
+**EDCS-03300410** C(aius) N[3] / ETI[3] / MA[3] / h(ic) s(itus) [e(st)
+
+**EDCS-03300411** L(ucius) Norbanu/s Sillo an(norum) L / h(ic) s(itus) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-03300412** D(is) M(anibus) / Valer(ius) / Ver() an/norum / XVIIII / NNS[3] / PEPE[3] / famil/[i]aricus(?) / [
+
+**EDCS-03300413** Secunda / a[n]n(orum) III h(ic) / si[t]a e[st] / [
+
+**EDCS-03300414** D(is) M(anibus) s(acrum) / Nor(b)ana / Bovia an(norum) L/XXXXVIII / [h(ic)] s(ita) e(st) s(it) t(ibi) t(erra) l(evis) / filius pi(e)n/tis(s)imus f(aciendum) / c(uravit)
+
+**EDCS-03300416** P(ublius) I[3] / Iu[3] / an[nor]um / XX [h(ic) s(itus) e(st)] s(it) t(ibi) t(erra) l(evis) C(aius) [3]us / P(ubli) f(ilius) [3]ca / an(norum) XV h(ic) s(itus) e(st) / s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-03300417** ] Mar[ci f(ilius?)] ex co[ns(ulto?)] / Andaieco / p(ius?) p(osuit?)
+
+**EDCS-03700347** Va{l}leria m/ater et Avi/tus frater / pientissimi
+
+**EDCS-03700348** D(is) M(anibus) / G(aio!) Cominio / Rufo Gal(eria) an(norum) L[1] / Lucretia Sa[le]/tina mater / filio pienti[s]/simo posuit
+
+**EDCS-03700349** [3 Calp]urnia / [Calpurni]ae(?) l[i]b(erta) Pi[3] / [3 a]nn(orum) X[3] h(ic) s(ita) e(st) / [Calp]u[r]nia C(h)elido s(oror) e[x t(estamento)] / [d(e)] s(uo) f(aciendum) c(uravit) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-03700350** [D(is)] M(anibus) Bov[i]o / Bovi[a]n[i] / fil(io) ann(orum) XXX[1] / Ma[xi]ma / ma[te]r / f(aciendum) [c(uravit)]
+
+**EDCS-03700351** Genio / municipi(i)
+
+**EDCS-03700352** D(is) M(anibus) s(acrum) / Rufo Aviti f(ilio) viro / Rufinae Rufi f(iliae) a(nnorum) XXVI / Aufidiae Ulleae / Q(uinti) f(iliae) matri Aufidia / Amoena filia f(aciendum) c(uravit)
+
+**EDCS-03700354** ]LEA Iunia et [3] / [3] Sabina Secun[da(?)] / [3 Ca]ssia Turran[ia(?)
+
+**EDCS-03700355** Ocelli
+
+**EDCS-03700357** Oipaengi(ae) / Apana Pissiri / v(otum) s(olvit)
+
+**EDCS-03700358** C(aius) Allius / Tangini / f(ilius) Pap(iria) / [
+
+**EDCS-03700359** Boutiae / Saelgi f(iliae) / Camira / Saelgi f(ilia) / [s]orori
+
+**EDCS-03700360** Camira Saelgi / f(ilia) h(ic) s(ita) e(st)
+
+**EDCS-03700361** Iulia Rufa / Tongeti f(ilia)
+
+**EDCS-03700362** ]A / h(ic) s(ita?) e(st)
+
+**EDCS-03700363** Marco / Aurelio / [C]arino / nobilis(s)/imo Cae/s(ari)
+
+**EDCS-03700365** L(ucius) Annius / Cerealis / Emerite(n)sis an[n(orum) 3] h[ic] s(itus) e(st) s(it) t(ibi) / [t(erra) l(evis)
+
+**EDCS-03700366** [3]ctus / [
+
+**EDCS-03700367** [3]chnis / [
+
+**EDCS-03700368** D(is) M(anibus) s(acrum) / Ebriliae C(ai) l(ibertae) / [
+
+**EDCS-03700369** [D(is)] M(anibus) s(acrum) / [Ar]gent(ariae) Veranae Emer(itensi) ann(orum) LXV Ar(gentarius) / [Ve]getinus materterae et patro/[n]ae faciendum curavit / h(ic) s(ita) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-03700370** D(is) M(anibus) s(acrum) / M(arcus) Argentarius / Achaicus Emer(itensis) / an(norum) XXII h(ic) s(itus) e(st) s(it) t(ibi) t(erra) l(evis) / Argentar(ia) Verana / sobrino et lib(erto) f(ecit)
+
+**EDCS-03700371** D(is) M(anibus) s(acrum)
+
+**EDCS-03700372** D(is) M(anibus) s(acrum) / Philetus / Phileti / filius / ann(orum) VIII / h(ic) s(itus) (es)t
+
+**EDCS-03700373** D(is) M(anibus) [s(acrum)] / Iul(ia) Glyconis / nat(ione) Nicomedica / ann(orum) XXXXV s(it) t(ibi) t(erra) l(evis) / L(ucius) Munatius As/clepiades et M(arcus) Lu/canius Avit(us) f(ilii) m(atri) p(iissimae) f(ecerunt)
+
+**EDCS-03700374** P(ublius) Curtius Cypaerus / h(ic) s(itus) e(st) / P(ublius) Curtius P(ubli) f(ilius) Papiria / Italicus an(norum) XXXVIII
+
+**EDCS-03700375** Valeria / Allage ann(orum) LX h(ic) s(ita) e(st) s(it) / t(ibi) t(erra) l(evis) / C(aius) Sulpicius C(ai) f(ilius) Gal(eria) Superstes / an(norum) XXXVIII IIvir III Metellinensium / huic col(onia) Emeritensis et col(onia) Metelli(nensis) / d(ecreto) d(ecurionum) locum sepulturae et funeris ipen(sam) / decreverunt h(ic) s(itus) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-03700376** D(is) M(anibus) s(acrum)
+
+**EDCS-03700377** [V]ernaclus / Agroeci / disp(ensatoris) vicar(ius) / ann(orum) XXII / h(ic) s(itus) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-03700378** Cornelia / P(ubli) l(iberta) Nothi[s] / secunda mim[a] / Sollemnis et / Halyi / h(ic) s(ita) [e(st)] s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-03700379** Euterpe / Protarchi / L(uci) Arrunti Stellae / ser(vi) vic(aria) an(norum) XVI / [h(ic) s(ita)] e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-03700380** Imp(eratori) Caes(ari) / Publio ⟦Li[cinio Egnatio]⟧ / ⟦[Gallieno Pio Felici Aug(usto)]⟧ / pontifici maximo Daci(co) / maximo Germ(anico) max(imo) tr(ibunicia) / pot(estate) X co(n)s(uli) III imp(eratori) III pr(o)co(n)s(uli) / p(atri) p(atriae) / P(ublius) Clodius Laetus / Macrinus v(ir) c(larissimus) leg(atus) eor(um!) / pr(o) pr(aetore) devotus [N]umini / maiestatique eius
+
+**EDCS-03700381** Q(uintus) Caecilius Q(uinti) f(ilius) Pap(iria) / Varica / cohortis Antistianae / praetoriae
+
+**EDCS-03700382** D(is) M(anibus) s(acrum) / [Aci]lia Apolauste ann(orum) XXXV / h(ic) s(ita) e(st) s(it) t(ibi) t(erra) l(evis) / [3] Titinius Lupus Emer(itensis) uxori et / L(ucius) Acilius Apolaustus sorori / et sibi fecer(unt)
+
+**EDCS-03700385** Pontin/a P(ubli) f(ilia) Qu/anta(!) h(ic) / s(ita) [e(st) s(it)] t(ibi) t(erra) l(evis)
+
+**EDCS-03700386** Q(uintus) Serto/rius C(ai) f(ilius) / Pap(iria) Balb/u[s 3] / P(ublio) [Se]rvil/io(?) [Al]bi[no(?)] / pa[3 a]mi/co [3]
+
+**EDCS-03700387** D(is) M(anibus) s(acrum) / Augusin/[
+
+**EDCS-03700388** ] / Macra / patri d(e) s(uo) / [f(aciendum)] c(uravit)
+
+**EDCS-03700389** G(aius!) Norb/anus / Novatu[s] / [
+
+**EDCS-03700390** L(ucio) Mar[3] / Maxu[mo(!)] / equit[i
+
+**EDCS-03700392** D(is) M(anibus) s(acrum) / [3]E[1]C/[3 a]n(norum) L / h(ic) s(itus?) e(st) [s(it)] t(ibi) t(erra) l(evis) / Titia l(iberta) / f(aciendum) c(uravit)
+
+**EDCS-03700393** ] / [S]ever[us(?)] / [a]n(norum) [1]X[3] / h(ic) s(itus?) e(st) s(it) t(ibi) t(erra) l(evis) / matert[e]/ra f(aciendum) c(uravit)
+
+**EDCS-03700394** erm[e]/ros [1] / an(norum) II h(ic) [s(itus) e(st)] / s(it) t(ibi) t(erra) l(evis) / [3]T[3]
+
+**EDCS-03700395** C(aius) Iulius [3 f(ilius)] / Pap(iria) Ruf[us] / an(norum) C h(ic) s(itus) e(st) s(it) [t(ibi)] / t(erra) l(evis) Rufill[a] / f(ilia) f(aciendum) c(uravit)
+
+**EDCS-03700396** ] / V[1]LI / an(norum) LX h(ic) s(itus) e(st) s(it) t(ibi) t(erra) [l(evis)] / f(ilius?) f(aciendum) c(uravit?)
+
+**EDCS-03700397** L(ucius?) GOV[1]AI / VR[1]IA
+
+**EDCS-03700398** C(aius) Flavius / A(uli) f(ilius) aram / Herculi / d(e) s(ua) p(ecunia) p(onendam?) c(uravit)
+
+**EDCS-03700399** Pei Lur/ta Con/celti f(ilii) / an(norum) LXX / h(ic) s(it) t(erra) / l(evis)
+
+**EDCS-03700400** M(arcus) Iulius / [A]rcisus / [D]ualia / [u]xor d(e) s(uo) / [f(aciendum)] c(uravit) Iulia / M(arci) f(ilia) Paula / [s(it)] t(ibi) t(erra) l(evis)
+
+**EDCS-03700401** Caecilia / C(ai) f(ilia) / Galla / an(norum) XX / [h(ic) s(ita)] es[t]
+
+**EDCS-03700402** Turaesio / Turcau/di f(ilius?) et / Pans[3] / Maeilonis / f(ilii?) s(it) eis / t(erra) l(evis)
+
+**EDCS-03700403** Caeno / Loucin[i] / f(ilius) [
+
+**EDCS-03700404** Iovi O(ptimo) M(aximo) / C(aius) A[3]/s M[3]/s v(otum) [s(olvit) l(ibens?) a(nimo?)]
+
+**EDCS-03700405** Saturn/inus Bo/uti f(ilius) an(norum) [
+
+**EDCS-03700406** D(is) M(anibus) s(acrum) / Acilia [3] / [3]TIL[
+
+**EDCS-03700407** Caecilia / Q(uinti) f(ilia) Terti/a an(norum) XLV / h(ic) s(ita) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-03700408** L(ucius) Norb/anus Rufu/s L(uci) f(ilius) / an(n)o(rum) / LV
+
+**EDCS-03700409** Iulia Nigri / Hospita an(norum) / XX h(ic) s(ita) e(st) s(it) t(ibi) t(erra) l(evis) / L(ucius) Norban/us L(uci) f(ilius) Cele/r an(norum) III h(ic) (!) / e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-03700410** Sa[1]t[1] / Max/[1]OLIO/NIS co/l(l)egio / D() A() L() P()
+
+**EDCS-03700411** L(ucius) Naevi/dius C(ai) / f(ilius) Nige/r an(norum) LXX / h(ic) s(itus) e(st) s(it) / t(ibi) t(erra) l(evis)
+
+**EDCS-03700412** Iulia / Terol(i) f(ilia) / Ursa
+
+**EDCS-03700413** Scaeva(?) / Glouti f(ilius) / h(ic) s(itus) est s(it) / t(ibi) t(erra) l(evis) f(ilius?) f(aciendum) / c(uravit?)
+
+**EDCS-03700414** M(arcus) Vibiu/s Rufus / Pap(iria) an(norum) L / hic s(itus) e(st) s(it) / t(ibi) t(erra) l(evis) AIAI
+
+**EDCS-03700415** Maxsum[ia(!)] / Libisina / Gai filia / h(ic) (!) e(st) s(it) t(ibi) t(erra) l(evis) / f(ilius?) d(e) s(uo) f(ecit?)
+
+**EDCS-03700416** ] / C(ai) f(ilius?) Baso [
+
+**EDCS-03700417** Turculla/e sacrum / Norbana / Quintilla / a(nimo) (olvit) l(ibens) p(osuit)
+
+**EDCS-03700418** P() Pontina / Q() P() Pontin/a Niger mat(ri?) / f(aciendum) curavit s(ibi) / et Paulae / sit t(erra) l(evis)
+
+**EDCS-03700419** C(aio) Iulio / Arqui [f(ilio)] / Cilio / Salici/[u]s pat(ri)
+
+**EDCS-03700420** [1] Iulio / Severi [f(ilio)] / equit [1]
+
+**EDCS-03700421** I(ovi) O(ptimo) M(aximo) / sacr(u)m / Ac(i)lius / Liberali/s a(nimo) l(ibens) v(otum) s(olvit)
+
+**EDCS-03700422** Iovi / Optmo / Max(imo) Mo/destinus / Luci a(nimo) l(ibens) p(osuit)
+
+**EDCS-03700423** Ara Ma/rti Luci/[3]
+
+**EDCS-03700424** Anula Ta/lavi f(ilia) h(ic) s(ita) e(st) / a(nnorum) XL s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-03700425** Vicanus / Talaba/ri f(ilius) an(norum) LX / h(ic) s(itus) s(it) t(ibi) t(erra) / [l(evis)] fili(i) f(aciendum) c(uraverunt)
+
+**EDCS-03700426** [3]us / [C]umel[i f(ilius)] / h(ic) s(itus) / e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-03700427** Tancinu/s Cauqu/iri f(ilius) an(norum) / LXXXV h(ic) / s(itus) e(st) t(ibi) t(erra) l(evis) fr/ater f(aciendum) c(uravit)
+
+**EDCS-03700428** ] / Gracili[s] / veteranu/s {I}leg(ionis) X G(eminae)
+
+**EDCS-03700429** L(ucius) Antesti/us Celer / h(ic) s(itus) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-03700430** [1]TI / M [1]I OMV/[1]LA [a]n(norum) XX / hi(c) s[ita] es[t] / s(it) [t(ibi) t(erra)] l(evis)
+
+**EDCS-03700431** D(is) M(anibus) s(acrum) / L(ucius?) Ses[
+
+**EDCS-03700432** ]ri f(ilius) / [Ru]fus / [a]n(norum) L h(ic) / [s(itus) e(st)]
+
+**EDCS-03700433** [3]ba / Albu[3] / [3]FV
+
+**EDCS-03700434** L(ucius) Nor[ba]/nus Ruf/us Iovi / [a]ram / [
+
+**EDCS-03700435** Galla / Maxsu/mae(!) lib(erta) / ann(orum) LXX / h(ic) s(ita) e(st) s(it) t(ibi) t(erra) l(evis) / liberti / libertae / f(aciendum) c(uraverunt)
+
+**EDCS-03700436** Brita / Marci liberta / Nova an(norum) / LXXV h(ic) e(st) / s(ita) s(it) t(ibi) [t(erra) l(evis)]
+
+**EDCS-03700437** O[1] / [3]AN / Quad/ratus / Belona(e) / votum / aram / [
+
+**EDCS-03700438** A[1]V[3] / E[1]VAIV / Vinia Cam/pegien/sis et Val/seni
+
+**EDCS-03700439** Cadaru[s] / Oraisa[si f(ilius)] / Marti v(otum) [s(olvit)] / l(ibens) m(erito)
+
+**EDCS-03700444** [B]and[u]/[i] Alae[r]/[ia]ego / [3] Sulp(icius?) / [V]eg[et(us?)] / [e]x(?) v[ot(o?)]
+
+**EDCS-04900480** D(is) M(anibus) s(acrum) / [
+
+**EDCS-04900481** ] / [in p]ace [d(ie) 3] / Mart[ias
+
+**EDCS-04900482** Festellus fa/mulus dei vi/xit annos VI / sex requiev(i)t in / pace d(i)e VII Ka/lendas Mar/tias (a)era DLXV / {h}ora pro / me
+
+**EDCS-04900483** Leopardus / famulus dei / vixit ann(os) L duos / d(ies) XXXVI reces(s)it / in pace d(ie) VI Kal(endas) Ian/uarias (a)era DLXIIII
+
+**EDCS-04900484** Stefan[us famu]/lus de[i vixit annos] / LX re[quievit] / in pa[ce d(ie) 3] / Nov[emb]re[s] / (a)era D[CL]XV
+
+**EDCS-04900485** ]s / [famulu]s d(e)i / v[ixit an]nos / XLV r[eq]u[i]ev/it in pa[ce] d(ie) / XII K(a)l(endas) Dec(e)mb(res) / (a)era DLXIIII
+
+**EDCS-04900488** L(ucio) Antonio / Urso / liberti et / familia
+
+**EDCS-04900489** [D(is)] M(anibus) [s(acrum)] / [Cl]odia / [C]omps[e] / [a]nn(orum) XL[3] / [h(ic) s(ita)] e(st) s(it) t(ibi) [t(erra) l(evis)] / [Clo]dia F[3] / mater
+
+**EDCS-04900490** [Ti(berius?)] Cae(sar) / divi / Aug(usti) f(ilius) [Aug(ustus?)] / [tri]b(unicia) p[ot(estate?)] pon[t(ifex) max(imus)] / co(n)s(ul) IIII / [im]p(erator) [3] m(ilia) p(assuum) [3]
+
+**EDCS-04900494** [Vene]ris templum / [C(aius) Canti]us Modestinus / [ex] patrimonio suo
+
+**EDCS-04900495** [Mar]ti te[mplum] / [C(aius) Canti]us Mo[destinus] / [ex pat]rimo[nio suo]
+
+**EDCS-04900497** Masxellio / Ermeti / patri pio / posui / h(ic) s(itus?) s(epultus?) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-04900498** Deo / Iovi / Aemilius Aemilianus / v(ir) p(erfectissimus) p(raeses) p(rovinciae) u(lterioris) L(usitaniae) / pro sua ac suorum / incolumitate / posuit
+
+**EDCS-04900499** Camira / Tertiae f(ilia) / et liberta / an(norum) XXXV / G() Gargenna / d(e) s(uo) f(aciendum) c(uravit)
+
+**EDCS-04900500** Mana / Maelonis / f(ilia) h(ic) s(ita) est / s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-04900501** Cabura / Bouti f(ilia) / h(ic) s(ita) e(st) / Caturo / Tafi f(ilius) d(e) s(uo) f(ecit)
+
+**EDCS-04900502** Co(n)stitus / Mode(s)tus / XXXXXXXXVI / [3] fili(i) / [T]urpencu/[s(?)
+
+**EDCS-04900503** C[3] / N[3] / Pap(iria?) [ann]or/um L h(ic) s(itus) e(st) / t(ibi) t(erra) l(evis) [3] / [3]V[
+
+**EDCS-04900505** D(is) M(anibus) s(acrum) / Q(uintus) Faracius / [Se]verus(?) an(norum) / [3 h(ic) s(itus) e(st)] s(it) [t(ibi)] t(erra) l(evis)
+
+**EDCS-04900533** D(is) M(anibus) / Clou(tio) / an(norum) LX / [6]
+
+**EDCS-04900535** Salic/iae Pin/[tovi f(iliae) a]n(norum) L
+
+**EDCS-04900536** Ander/en(us) Tr/iti f(ilius) an(norum) / XV m(onumentum)
+
+**EDCS-04900537** Adia / Clouti / f(ilia) an(norum) LX / h(ic) s(ita) t(ibi) t(erra) l(evis)
+
+**EDCS-04900538** D(is) M(anibus) / Aniu(s) / Dovitero / [h(ic) s(itus)] t(ibi) [t(erra) l(evis)]
+
+**EDCS-04900539** D(is) M(anibus) s(acrum) / [
+
+**EDCS-04900541** Dobiter/[in]a(?) Dobit/[eri
+
+**EDCS-04900543** Ambatus / Div(i)li f(ilius) / an(norum) XXV / h(ic) s(itus) t(ibi) t(erra) l(evis)
+
+**EDCS-04900544** D(is) M(anibus) / [
+
+**EDCS-04900545** D(is) M(anibus) / Avitu[s] / Aviti f(ilius) / an(norum) XXX / [
+
+**EDCS-04900546** D(is) M(anibus) / Ilos[3] / an(norum) X / [
+
+**EDCS-04900547** D(is) M(anibus) m(onumentum) / Reburro [3] / [3] ann(orum) [
+
+**EDCS-04900548** D(is) M(anibus) m(onumentum) / Ana[
+
+**EDCS-04900549** D(is) M(anibus) m(onumentum) / Ama[3] / [6] / h(ic) s(ita) t(ibi) t(erra) l(evis)
+
+**EDCS-04900550** D(is) M(anibus) / Do[vit(erus)] / an(norum) X[
+
+**EDCS-04900551** ]/us Cai/{i} f(ilius) an(norum) / XXX / h(ic) s(itus) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-04900553** D(is) M(anibus) / Reburri/no Rebu/ri f(ilio) an(norum) XX/II h(ic) s(itus) t(ibi) t(erra) l(evis)
+
+**EDCS-04900554** Celtius / Clouti / f(ilius) ann(orum) X/XXII h(ic) s(itus) s(it) t(erra) l(evis)
+
+**EDCS-04900563** Modestin/us Quran/um Libero / Patri votu/m libe(ns) ani/mo s(olvit)
+
+**EDCS-04900568** Nym[ph]is / Aug(ustis) s(acrum) M(arcus) / Antonius / [libe(ns)] v(otum) a(nimo) s(olvit)
+
+**EDCS-04900571** ] / [Iovi(?)] / [S]oluto/rio v(otum) s(olvit) / a(nimo) l(ibens)
+
+**EDCS-04900579** ] / N[3] / FII[
+
+**EDCS-05000391** [3]NVSVIINTI[3]
+
+**EDCS-05000392** [3]HONI(?) / [
+
+**EDCS-05000393** [3]S Theseus / [3] XXXXV / [
+
+**EDCS-05000394** L(uci) S() P()
+
+**EDCS-05000395** ] vixit / [3] requievit / [in p]ace d(omi)ni d(ie) IIIII / [Id]us Martias / [(a)era] DLXas
+
+**EDCS-05000397** Exsode/ru[s(?)] pres(by)t(er) / vixit a(nnos) / LXXXV r/[eq](uie)vit in / p[a]c[e] IIII Kal(endas) / [
+
+**EDCS-05000398** Im[p(erator) Caesar L(ucius) Domitius A]urelia[nus] / Pi[us Felix Augustus p]ontife[x] / m[aximus Germani]cus maximu[s p(ater) p(atriae)] / tr[ib(unicia) pot(estate) II proconsul co]nsul I / [3]NTI ORO[3] / [3 civitat]is(?) Miro(brigensium) C[elt(icum?)]
+
+**EDCS-05000399** C(aius) Licinius Vegetus / Quangeio Turicaeco / v(otum) l(ibens) a(nimo) s(olvit)
+
+**EDCS-05000400** D(is) M(anibus) / Terentiae / Lauri filiae / ann(orum) XXXI / Iunia mater / f(iliae) p(ientissimae) p(onendum) c(uravit)
+
+**EDCS-05000401** N(umerio?) Clito / SIIAPI / IA[3]P[3] / O[3]SSA [3] / I s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05000402** Doquir/us Bov/i votum Iovi l(ibens) m(erito)
+
+**EDCS-05000403** ] / de suo / BANE(?) / v(otum) l(ibens) s(olvit)
+
+**EDCS-05000404** [Ruf]ino(?) Callae[ci(?)] / et Camalae Polli / Modestus patri et matri / de suo f(aciendum) c(uravit)
+
+**EDCS-05000406** C(ornelius?) Severus / [I]ovi votu/m solvit / libens a/nimo
+
+**EDCS-05000410** L(ucius) Fl[av]ius / V[er]ecu/ndus P/acens/is an(norum) LX / h(ic) s(itus) e(st) / [
+
+**EDCS-05000413** Bucco / Maeloni/s f(ilius) Caurie/nsis / an(norum) XXV / [h(ic) s(itus)] est / [
+
+**EDCS-05000414** ] Proculi f(ilius) / [3] an(norum) V h(ic) s(itus) / [3] L(ucius) Quintius / [Proc]ulus et Titia /[3]a filio [f(aciendum)] c(uraverunt)
+
+**EDCS-05000420** an(norum)] / XVI h(ic) s(itus?) e(st) s(it) t(ibi) t(erra) / l(evis) Afelia avia / d(e) s(uo) f(ecit)
+
+**EDCS-05000421** Celtiatus / Veniati / h(ic) s(itus) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05000424** Elandet(us) / Tirii f(i)li/us filio / Tatiano / an(n)or(um) II (h)i(c) s(itus) e(st) [3]
+
+**EDCS-05000425** [A]mo[e]na(?) / Cae[ni]ci f(ilia) / an[n(orum)] LV / h(ic) s(ita) [e(st)] s(it) t(ibi) t(erra) l(evis) / Sal[v]ius / ver[n]a f(aciendum) c(uravit)
+
+**EDCS-05000427** D(is) M(anibus) s(acrum) / Novatus / Boeli fili/us vix{s}it / an(nos) LXXX / h(ic) s(itus) s(it) t(ibi) t(erra) [l(evis)] / Calus fi/lius / f(aciendum) c(uravit)
+
+**EDCS-05000428** h(ic)] / s(itus?) s(it) t(ibi) t(erra) [l(evis) 3] / f(ilius?) et [3]/lia [
+
+**EDCS-05000429** ]SIS / lib(ertus?) d(e) s(uo) f(aciendum) c(uravit)
+
+**EDCS-05000430** Capiti/ni Arr/onis fi/lio an/n(orum) XXXV [
+
+**EDCS-05200311** Rest[itu]tus fa/[mulus d]ei v/[ixit an]n[os] / [plus] minu[s 3] / [requ]ievi[t in] / [pac]e sub d[ie] / [3 K]alenda[s] / Sept(embres) (a)era / DLXI
+
+**EDCS-05200320** Sal(uti) sac(rum) / Ap(pius) N() / Auca Pi/asirus / ex voto po/suit
+
+**EDCS-05200321** D(is) [M(anibus) s(acrum)] / C(ai) A[3]/i At[3] / an(norum) [3] / HE[3] / AV[3] / ux[or] / EN[3] / IA[3] / D[
+
+**EDCS-05200323** [Imp(erator) Caes(ar)? divi Nervae f(ilius) Nerva Tra]ianus Op[timus] / [Aug(ustus) Germ(anicus)? Dac(icus)? pont(ifex) max(imus) trib(unicia) po]t(estate) XVIIII [imp(erator) XI] / [co(n)s(ul) VI p(ater) p(atriae)
+
+**EDCS-05200324** sa]cerd/o(s) h[os]tiam / ded[ic]avit
+
+**EDCS-05200325** Caeno / Bovi f(ilius) / h(ic) s(itus) e(st)
+
+**EDCS-05200327** D(is) M(anibus) / P(ublio) Placidio / Sabino / ann(orum) XXXV / Gallia / Avita / [
+
+**EDCS-05200328** ]CI[3] / [R]usticus et Tar/[3]lia lib(erti) et her(edes) / [ex] test(amento) f(aciendum) c(uraverunt)
+
+**EDCS-05200329** D(is) M(anibus) / Rufinae / Lubacci [f(iliae)] / an(norum) XXXX / Oculatia mater / p(onendum) c(uravit) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05200330** ] ann(orum) LXX / [3 dis Ma]nibus sacru[m]
+
+**EDCS-05200331** Albucel/ainco / Efficaci / Rufinus / Rufi f(ilius) / Aelatius / v(otum) l(ibens) s(olvit)
+
+**EDCS-05200332** Val[erius(?)] / Placed[us] / ex{s} orti [f]onte surpde/um po/suit
+
+**EDCS-05200333** ]ius / [3]ARI[
+
+**EDCS-05200334** Maelo / Alboni f(ilius) / hic sit(us) est
+
+**EDCS-05200335** ] / [V]al(erio)? Re/[bu]rro [
+
+**EDCS-05200336** ]TAI[3] / [3]nus [3] / [3]LACO[3] / [3] an(norum) XV [
+
+**EDCS-05200337** [S]ulla Lucrio / [3]OROSVCELAEBVLO / [La]nciensi Oppidan[o] / uxor f(aciendum) c(uravit)
+
+**EDCS-05200338** Qua[d]/ratu[s] / Curi f(ilius) / h(ic) s(itus) e(st)
+
+**EDCS-05200342** anno] coloniae CXXX / [3 C]aes(ari) Aug(usto) Ger(manico) Dacic[o(?) 3 provi]nciae Lusit[aniae] / [3]ari Larum et imaginum [3]D DAT[3] / [3]AD[3]
+
+**EDCS-05200343** D(is) M(anibus) s(acrum) / Vipsaniae Atticillae / ann(orum) XXVIII / M(arcus) Ulpius Aug(usti) lib(ertus) Lupus / uxori
+
+**EDCS-05200345** [L]ucio [3]/li Camalu/s f(ilius) Pinara e/t Apana Luci / f(ilia) et Pisira / Bouti ux{s}o/r et Cabu/ra Caenoni(s) / f(ilia) mater c(uraverunt)
+
+**EDCS-05200346** [Ca]esilius / [M]alceno / [Ma]elonis / [f(ilio)] amico / [su]o statuit
+
+**EDCS-05500001** Imp(eratori) Caes(ari) P(ublio) Licinio / Valeriano P(ii) F(elici) Aug(usto) / pont(ifici) max(imo) p(atri) p(atriae) tr(ibunicia) pot(estate) / III co(n)s(uli) res p(ublica) Osson(obensis) ex d/ecreto ord(inis) devot[a] / numini maiestatiq(ue) / eius d(ecreto) d(ecurionum)
+
+**EDCS-05500002** M(arcus) Cornelius Eridanus C(aius) Iunius Receptus / ob honorem IIIIIIvir(atus) d(e) s(ua) p(ecunia) d(onum) d(ederunt)
+
+**EDCS-05500003** D(is) M(anibus) s(acrum) / C(aius) Annius / Romulus / annorum / XXVIII / h(ic) s(itus) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05500004** D(is) M(anibus) s(acrum) / Caturicae Pri/mae coniugi piissimae / quae vixit ann(os) XXV / m(enses) VIII L(ucius) Calp(urnius) The/odorus marit(us)
+
+**EDCS-05500005** D(is) M(anibus) s(acrum) / Iunia [H]erennia / ann[o]rum [V]I / [
+
+**EDCS-05500006** D(is) M(anibus) s(acrum) / Teia[3] dole[ns?
+
+**EDCS-05500007** ]escus [
+
+**EDCS-05500008** I(ovi) O(ptimo) M(aximo) / in memoriam / L(uci) Atili Maximi / Severiani fil(ii) / pientissimi / L(ucius) Atil(ius) Atilianus / et Artullia / G(ai!) f(ilia) Severa ex / [ar]genti lib(ris) / [3] posuerunt
+
+**EDCS-05500009** [D(is)] M(anibus) / [T]rophime / [
+
+**EDCS-05500010** Tiror[3] Tioriras
+
+**EDCS-05500011** Cin(a)ede / Cefalus
+
+**EDCS-05500012** D(is) M(anibus) s(acrum) / T(itus) Manlius / Lacon an/nor(um) LV / h(ic) s(itus) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05500013** Fortunae Aug(ustae) / sacr(um) / Annius Primitivus / ob honorem / IIIIIIvir(atus) sui / edito barcarum / certamine et / pugilum sportulis / etiam civibus / datis / d(e) s(ua) p(ecunia) d(edit) d(edicavit)
+
+**EDCS-05500014** D(is) M(anibus) s(acrum) / Caturico Lupato / vix[it] an[n]is [3] / dies(!) [X]VIII(?) Caturica / Agatemera marito be/ne merenti pos[u]it
+
+**EDCS-05500015** Ex d(ecreto) d(ecurionum) m[unicip]es m(unicipii) Myr[tiliano]r(um) / per C(aium) Iulium Marinum [3] / [3] C(aium) Marcium Optatum IIvir(um)
+
+**EDCS-05500016** D(is) M(anibus) s(acrum) / Aemiliae / L[3] ma/tri Serto/rius Ni[g]el/lio / posuit
+
+**EDCS-05500017** L(ucius) Firmidius / Peregrinus / Uticensis / vixit an(nos) LX / h(ic) s(itus) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05500018** D(is) M(anibus) s(acrum) / Herennia Se/cundina vixit / an(nos) LV Pub(lius) Fe[l]ix / (h)osp(iti) mer(erenti) pos(uit)
+
+**EDCS-05500019** D(is) M(anibus) s(acrum) Quin/tus Iulius / Lup() vix(it) ann(is) III m/[e]nsibus S[e]x(tia) F[i]lume/[na f]il[i]o pientiss/[imo pos]uit h(ic) s(itus) e(st) [s(it)] t(ibi) t(erra) l(evis)
+
+**EDCS-05500020** D(is) M(anibus) s(acrum) / Kam() Len[3] / IV vix{s}[it 3] / an(n)o I m[ens(ibus?) 3] / hic situ[s est] / hc s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05500021** Aesculapio / deo / C(aius) Attius Ianuarius / medicus Pacensis / testamento legavit / ob merita splendi/dissimi ordinis / [qu]od ei quinquatri/[du]um praestiterit / Fabius Isas heres / fac(iendum) cur(avit)
+
+**EDCS-05500022** Marti / sacrum / in hono/rem G(ai!) Pag() / Marini / Pag() Mari/ane(!) fratri / pientissimo
+
+**EDCS-05500023** Veneri Victri/ci Aug(ustae) sacr(um) / in honorem Lu/ciliae Lepidinae / Flavia Titia filiae / pientissimae
+
+**EDCS-05500024** ]VAH[3] / [3] Augg[3] / [3]ONIA [3] / [3 trib(unicia?) p]ot(estate) VII[
+
+**EDCS-05500025** M(arco) Iulio Mar/cello / aed(ili) [3] / e[t] IIvir[o m(unicipes?)] / m(unicipii) F(lavi) M[erobrig(ensis?)] / cod[icario(?)] / I[3]A / [3]a suis / [3]illius Ati/[li]anus her(es) / [pe]r successi[o]/nem p(onendum) c(uravit)
+
+**EDCS-05500026** G(aio!) Cocilico Fusco / patri / ex test(amento) Cocilici/a Pastos[3]
+
+**EDCS-05500027** G(aio!) Pagusico / Valeriano / ex testament(o) / suo Scribo/nia G(ai!) f(ilia) Maxi/ma heres f(aciendum) c(uravit)
+
+**EDCS-05500028** Pagusigae(!) / L(uci) f(iliae) Funda/nae C(aius) Pagu/sicus Luci/anus soro/ri optmae
+
+**EDCS-05500029** Q(uinto) Scribonio / L(uci) f(ilio) Quiri(na) / Paterno / L(ucius) Scriboniu(s) / Saturninus / pater
+
+**EDCS-05500030** D(is) M(anibus) s(acrum) / Iulia C(ai) fil(ia) / Marcellin/a an(norum) XXX / h(ic) s(ita) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05500031** ] / an(nos?) L Claud(ius) / Thalassinus / marit(a)e me/rentissim(a)e / h(ic) s(ita) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05500032** Iovi O(ptimo) M(aximo) / Flavia L(uci) f(ilia) Rufina / Emeritensis fla/minica provinc(iae) / Lusitaniae item col(oniae) / Emeritensis perpet(ua) / et municipi(i) Salicien(sis) / d(ecreto) d(ecurionum)
+
+**EDCS-05500033** Isidi Dominae / M(arcus) Octavius Octaviae / M(arci) f(iliae) Marcellae Mode/ratillae lib(ertus) Theophilus / v(otum) s(olvit) l(ibens) a(nimo)
+
+**EDCS-05500034** L(ucio) Porcio L(uci) f(ilio) / Gal(eria) Himero / IIvir(o) praef(ecto) pro / IIvir(o) flamini / divorum bis / ob merita / ples aere conlato / huius tituli honore / contentus impe(n)sam / remisit
+
+**EDCS-05500035** [L(ucio)] C[orn]elio C(ai) [f(ilio)] Boccho / [fl]am(ini) pro[v]inc(iae) tr(ibuno) mil(itum) / [co]lonia Scallabitana / [ob] m[e]rita in colon(iam)
+
+**EDCS-05500036** D(is) M(anibus) s(acrum) / Iulia Laeo/nica annor(um) / XXXI Q(uintus) Iuli/us Marcia/nus matri / piissimae fa/cien[dum curavit]
+
+**EDCS-05500037** L(ucius) Rubrius / Priscinus / ann(orum) XXVI h(ic) s(itus) e(st)
+
+**EDCS-05500038** D(is) M(anibus) s(acrum) / M(umia) L(uci) filia Cu/pita ann(orum) XXXXIIII / Q(uintus) L() N() marit(a)e et / Antonia Fundana / et Mumia Rufina / filias(!) matri pi/issim(a)e posue/runt / h(ic) s(ita) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05500039** D(is) M(anibus) s(acrum) / Mumius C(h)r[e]/simus an(norum) / XVI / Mumia / Fundana / liberto me/renti po[s](uit) / h(ic) s(ita) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05500040** D(is) M(anibus) s(acrum) / L() Gall() / ann(orum) XXXXV / s(it) t(ibi) l(evis)
+
+**EDCS-05500041** L(ucius) Iulius L(uci) et T(iti) lib(ertus) / Valens annor(um) / XXV h(ic) s(itus) e(st) s(it) t(ibi) t(erra) l(evis) / Copirus fratri
+
+**EDCS-05500042** D(is) M(anibus) s(acrum) / G(aius!) L() Fabianus / ann(orum) XXXVIII / h(ic) s(itus) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05500043** D(is) M(anibus) s(acrum) / f(ilii) p(ientissimi) / Mario Antioc(h)o / m(erenti) f(ecerunt) / an(norum) LXXX / s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05500044** D(is) M(anibus) / L(ucius) Vibius Cal/listratus / ann(orum) XXXX / h(ic) s(itus) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05500045** ⟦6⟧ / Alphuric(a?) / Cenesis ex / iuventute / [a(nimo)] l(ibens) d(onum) d(edit)
+
+**EDCS-05500046** Serapi Pantheo / sacrum / in honorem G(ai!) Ma/ri Prisciani / Stelina Prisca / mater filii / indulgentissimi / d(onum) d(edit)
+
+**EDCS-05500047** L(ucio) Aelio Aurelio / Commodo / Imp(eratoris) Caes(aris) T(iti) Aeli Ha/driani Anto/nini Aug(usti) Pii p(atris) p(atriae) filio / col(onia) Pax Iulia / d(ecreto) d(ecurionum) / Q(uinto) Petronio Materno / C(aio) Iulio Iuliano / IIvir(is)
+
+**EDCS-05500048** ] Pax Iuli[a 3] / [3] Q(uintus?) Petroni[us(?)
+
+**EDCS-05500049** M(arco) Aurelio C(ai) f(ilio) / Gal(eria) IIvir(o) flamin[i] / Ti(beri) Caesaris Aug(usti) / praefec(to) fabr[um] / [3]ulus
+
+**EDCS-05500050** [3 C]lo[d]io M(arci) f(ilio) / Gal(eria) [Qua]drat[o] / aedili / Modestus s[er(vus)] / d(e) s(uo)
+
+**EDCS-05500051** L(ucio) Cl[3]u(!) M(arci) f(ilio) Gal(eria) Salviano / [flam(ini)] divo[ru]m Aug(ustorum) [
+
+**EDCS-05500052** C(aius) Iulius C(ai) f(ilius) [3] / IIvir bis prae[f(ectus) fabr(um?) 3] / utrique sen[
+
+**EDCS-05500053** C(aio) Iulio C(ai) f(ilio) / Gal(eria) Pedoni / IIvir(o) flamini / divorum ob / rem p(ublicam) bene / administra/tam et anno/nam inlata / pecunia ad/iutam plebs / aere conlato
+
+**EDCS-05500054** C(olonorum) c(oloniae) P(acis) I(uliae)
+
+**EDCS-05500055** ] / curiae pont[ifici(?) 3] / flam(ini) Pacis Iuliae [3]/VE flami[ni(?)
+
+**EDCS-05500056** praef(ectus)] equit(um) praef(ectus) / fabrum [
+
+**EDCS-05500057** ]sdem A[3]
+
+**EDCS-05500058** ]ulus publ[
+
+**EDCS-05500059** A]ugustal(is?) / [de]cur(ionum) dec(reto) / [
+
+**EDCS-05500060** ]LIICO / [ac]cepto(?)
+
+**EDCS-05500061** ] / Candia/lla an(norum) XXII / h(ic) s(ita) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05500062** Quisq(uis) praet[eris hic] / sitam viato[r postquam] / termine legeri[s mori] / me aetatis vicesim[o] / dolebis et si sensus er[it] / meae quietisque lasso / tibi dulcius praecabor / vivas pluribus et diu [se]/nescas qua m[ihi non] / [l]icu[it] fruare vita [si] / [t]e flere iuvat quitn(i) inge[m]/[i]scis ann() Inachus han[c] m[e]/[ri]to fac(it) i potius propera nam / [tu] legis ipse legeris i Nice a(nnos) XX v(ixit)
+
+**EDCS-05500063** D(is) M(anibus) s(acrum) / Iulia Paterna / ann(orum) XV / Iulia / Terspichore / libertae ob/sequentissimae / h(ic) s(ita) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05500064** C(aio) Iulio L(uci) f(ilio) Gal(eria) / Avito fratri [Iuli]/us Sabinus [
+
+**EDCS-05500065** G(aius!) Iu[lius] / Maxumus(!) / ann(orum) XXVII / h(ic) s(itus) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05500066** Q(uinto) Iulio Q(uinti) f(ilio) Gal(eria) / Salviano
+
+**EDCS-05500067** D(is) M(anibus) s(acrum) / Hel() Aeria/nus anno/rum XII / h(ic) s(itus) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05500068** D(is) M(anibus) s(acrum) / Patricius / Exodiarius / annorum / [
+
+**EDCS-05500069** Q(uinto) Peticio T(iti) f(ilio) / Rufo / mater filio
+
+**EDCS-05500070** D(is) M(anibus) s(acrum) / Sextilia / an(n)o(rum) XXX / h(ic) s(ita) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05500071** D(is) M(anibus) s(acrum) / Sulpicia Iul/iana vix(it) an/n(os) XXVIII Sul/[pic]ius Moni[3]/[3]us ux{s}or[i] / [S]ulpicia V[3] / mater
+
+**EDCS-05500072** ]D P ARV[3] / [3]O E S E[3] / [3]R OS[
+
+**EDCS-05500073** ]MIGC[3]S D L[
+
+**EDCS-05500074** ]IXIII[3] / [3]ASEB
+
+**EDCS-05500075** ] I I[3] / [3 ann(orum?)] XIIX / h(ic) s(itus) e(st) s(it) [t(ibi) t(erra) l(evis)]
+
+**EDCS-05500076** D(eae) s(anctae) Turubric(ensi!) / L(ucius) Axonius / v(otum) s(olvit)
+
+**EDCS-05500077** D(is) M(anibus) [3] / ACT[3] / NV[3] / VM[3] / PI[3] / M[3] / EI[3] / I[3] / h(ic) [s(itus)] e(st) [
+
+**EDCS-05500078** D(is) M(anibus) s(acrum) / Fabricio Fro/ntoni an(norum) / XXVI Fabri/cius [G]allio / pater et Alb/ura mater / filio pient/issimo f(aciendum) c(uraverunt) / h(ic) s(itus) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05500079** D(is) M(anibus) / Felicio ann(orum) / XXXXV hic s(itus) / e(st) s(it) t(ibi) / t(erra) l(evis)
+
+**EDCS-05500080** Iulia [3] / Avito[3] / an(n)o(rum?) [3] / [3]OS[
+
+**EDCS-05500081** C(ai) Iuli C(ai) f(ilii) Atlondi
+
+**EDCS-05500082** M(arcus) Iulius / Marcel/lus h(ic) s(itus) e(st)
+
+**EDCS-05500083** ] Marcel(lae) / [vix(it) a]nn(os) XXXII / [un]o contenta / marito Iul(ius) Ma/rinus uxori / pientissim(a)e / fecit / [hi]c s(ita) est s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05500084** Meranius / Victus an(norum) / XXV h(ic) s(itus) e(st) s(it) t(ibi) t(erra) l(evis) / Iulia Lobessa / coniugi p(onendum) c(uravit)
+
+**EDCS-05500085** Dd(is) M(anibus) ss(acris) / Musice vix(it) / ann(os) XXXVIII / fecit [ma]ritus / PCR[3]ANS / SS T P S / s(it) t(erra) l(evis)
+
+**EDCS-05500086** vix(it) ann(os)] / XXXXVIII [3] / pientissi[mo 3] / Secunda [3] / [f]ec(it) [3] / h(ic) s(itus) e(st) [s(it) t(ibi) t(erra) l(evis)]
+
+**EDCS-05500087** ] Sulpici[3] / [3]ius MA[3] / [3 m]erentis[simae? 3] / [3] posuit [
+
+**EDCS-05500088** ]M / PRET[3]nu/s vi[{s}it] a/n(n)is LXXV / frter / posuit
+
+**EDCS-05500089** D(is) [M(anibus)] / L(ucius) Leon[
+
+**EDCS-05500090** [3]VS H[3] / [3]NSVM[3] / [3] et QVIN[
+
+**EDCS-05500091** ]ANS / [3]ADS / [
+
+**EDCS-05500092** ] an(norum) / [3 h(ic) s(itus)] e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05500093** ]/VS FI[3] / [3]I[
+
+**EDCS-05500094** ]R G[3] / [3]LI[
+
+**EDCS-05500096** D(is) M(anibus) s(acrum) / Lama(?) / XXXV / F C T LAE S
+
+**EDCS-05500097** D(is) M(anibus) s(acrum) / Dignitas / vixit ann(os) / XXV C(h)ryseros / maritus posuit / h(ic) s(ita) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05500098** D(is) M(anibus) s(acrum) / Marius / Letoides / vixit / annis / LXXXV / h(ic) s(itus) e(st) m(onumento) s(it) t(ibi) / t(erra) l(evis)
+
+**EDCS-05500099** D(is) M(anibus) s(a)c(rum?) / Maria Euprepi/a qua fate / concesseru/nt vivere a/n(n)is / XXXXV ben/e merenti Mo/destus coniu/gi su(a)e posuit
+
+**EDCS-05500100** D(is) M(anibus) s(acrum) / Musa vixit / ann(os) LX / Livia liber(t)a(?) pos[u]it / h(oc) e(st) s(ita) m(onumento) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05500101** D(is) M(anibus) s(acrum) / Peren(n)ia mar(itus) / pos(uit) quae [an]/[n]or(um) XXXV / [
+
+**EDCS-05500102** Hislonencasselsas / Florentis d(ecreto) d(ecurionum)
+
+**EDCS-05500104** D(is) M(anibus) s(acrum) / Terenti/us C(h)ryso/gonus / ann(orum) XXXVII / h(ic) s(itus) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05500105** ] Attuni [
+
+**EDCS-05500106** Q(uinti) Corneli / Merni P(ubli) f(ilii)
+
+**EDCS-05500107** D(is) M(anibus) s(acrum) / Misinius / Phanstianus / vixit ann(os) XXXV / Milfus / Sulpicius / Pat[er po]nend(um) / cur[avit
+
+**EDCS-05500108** Iulia / Merman/di f(ilia) / Brocina
+
+**EDCS-05500109** C(aius) Albius C(ai) f(ilius) / Gal(eria) Albicus / [
+
+**EDCS-05500110** Iulia C(ai) f(ilia) Procu/la annor/[u]m LXX h(ic) / [s(ita) e(st)] s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05500111** Deae Sanc(tae) hae crat(e)r(ae) s(acratae) cerac(h)a{n}tilio se(stertiis) CCC
+
+**EDCS-05500112** D(is) M(anibus) s(acrum) / Mercator / ann(orum) XXXII / uxor marito / merenti posuit / h(ic) s(itus) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05500113** D(is) M(anibus) / Martiali / Secundina / soror f(aciendum) c(uravit)
+
+**EDCS-05500114** D(is) M(anibus) s(acrum) / A(ntonia?) Helice / an(norum) XXXVII / con[l]actia / M(arci) A(ntoni?) Max(imi) / posuit / mater / h(ic) s(ita) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05500115** ] ann(orum) XXXIII / G(aius!) Blossius Satu/rninus Galeria / Napolitanus Afe/r Ar{e}niensis(!) inc[o]/la Balsensis fili/ae pientissimae / h(ic) s(ita) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05500116** D(is) M(anibus) s(acrum) / L(ucius) I(ulius) Polbius / ann(orum) LXXII / h(ic) s(itus) e(st) s(it) t(ibi) t(erra) l(evis)
+
+**EDCS-05500117** Phila[delp]ho tes(tamento) / h(eres) [
+
+**EDCS-05500118** ]/tius Severus / eques Roman/us v(otum) s(olvit) l(ibens) m(erito)
+
+**EDCS-05500119** ]sa[3] / [3]pia[3] / [3]C[3] / [3]EI[3] / [3]SII[
+
+**EDCS-05500120** [Furiae Sabiniae] / [Tra]nqui[llinae] / [san]ctiss[imae] / [Aug(ustae)] co(n)iug[i d(omini) n(ostri)] / [Imp(eratoris)] Caes(aris) [M(arci)] A[ntoni] / [Gor]diani [Pii Fe]/[lic]is Aug(usti) [mun(icipes)] / [Ebo]renses [d(ecreto) d(ecurionum)]
+
+**EDCS-05500121** D(is) M(anibus) / Canidiae Albinae / c(larissimae) m(emoriae) f(eminae) matri Catin(i) / Canidiani c(larissimae) m(emoriae) v(iri) / consobrin(i) sui / Catinia M(arci) fil(ia) / Aciliana c(larissima) f(emina) / s(ua) p(ecunia) f(ecit)
+
+**EDCS-05500122** D(is) M(anibus) s(acrum)
+
+**EDCS-05500123** Xv]ir(o) stlitib(us) iudicand(is) / [3]lia Q(uinti) f(ilia) Avita mater / [3]t itemque d(e)d(icavit)

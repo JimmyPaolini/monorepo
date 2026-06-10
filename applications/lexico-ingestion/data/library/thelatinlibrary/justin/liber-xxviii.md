@@ -10,7 +10,7 @@ author_metadata:
 
 ## Liber Xxviii
 
-I. Olympias,  Pyrri Epirotae regis filia,  amisso marito eodemque
+**I** Olympias,  Pyrri Epirotae regis filia,  amisso marito eodemque
 
 germano fratre Alexandro cum tutelam filiorum ex eo susceptorum,
 
@@ -40,7 +40,7 @@ deducerent paterenturque liberos esse,  qui soli quondam adversus
 
 Troianos,  auctores originis suae,  auxilia Graecis non miserint.
 
-II. Sed Aetoli legationem Romanorum superbe audivere,  Poenos illis
+**II** Sed Aetoli legationem Romanorum superbe audivere,  Poenos illis
 
 et Gallos,  a quibus tot bellis occidione caesi sint,  2 exprobrantes
 
@@ -92,7 +92,7 @@ Romanorum,  ne fortius locuti quam fecisse viderentur,  fines Epiri regni et
 
 Acarnaniae depopulantur.
 
-III. Iam Olympias filiis regna tradiderat,  et in locum Pyrri,  fratris
+**III** Iam Olympias filiis regna tradiderat,  et in locum Pyrri,  fratris
 
 defuncti,  Ptolomeus successerat,  2 qui cum hostibus instructo exercitu
 
@@ -148,7 +148,7 @@ imperent. 16 Cum populus pudore motus recipere eum regnum iuberet,
 
 tam diu recusavit,  quoad seditionis auctores supplicio traderentur.
 
-IV. Post haec bellum Spartanis infert,  qui soli Philippi Alexandrique
+**IV** Post haec bellum Spartanis infert,  qui soli Philippi Alexandrique
 
 bellis et imperium Macedonum et omnibus metuenda arma
 

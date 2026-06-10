@@ -12,7 +12,7 @@ author_metadata:
 
 ## Lucan
 
-M. ANNAEUS LUCANUS CORDUBENSIS prima ingenii experimenta in "Neronis
+**M** ANNAEUS LUCANUS CORDUBENSIS prima ingenii experimenta in "Neronis
 
 laudibus" dedit quinquennali certamine, dein "Civile Bellum," quod a
 

@@ -123,12 +123,12 @@ export class PerseusLibraryProvider {
           authorsMap.set(authorSlug, author);
         }
 
-        const workDto = new Text();
-        workDto.metadata = { ...metadata, sourceUrl: xmlPath };
-        workDto.title = rawTitle;
-        workDto.slug = titleSlug;
-        workDto.type = "text";
-        author.texts.push(workDto);
+        const textEntity = new Text();
+        textEntity.metadata = { ...metadata, sourceUrl: xmlPath };
+        textEntity.title = rawTitle;
+        textEntity.slug = titleSlug;
+        textEntity.type = "text";
+        author.texts.push(textEntity);
 
         // Process markdown
         const frontmatterObj: Record<string, unknown> = {

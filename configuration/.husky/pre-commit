@@ -1,6 +1,8 @@
 set -e
 
-git restore --staged scripts/database/notebook.sql || true
+git restore --staged scripts/database/notepad.d.ts || true
+git restore --staged scripts/database/notepad.sql || true
+git restore --staged scripts/database/notepad.text || true
 
 EXIT_CODE=0
 

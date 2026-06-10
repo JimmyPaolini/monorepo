@@ -1,0 +1,2009 @@
+---
+author: epigraphik-datenbank-clauss-slaby
+text_metadata:
+  source_url: https://db.edcs.eu
+title: Latium et Campania / Regio I Part 45
+type: text
+---
+
+# Latium et Campania / Regio I Part 45
+
+**EDCS-85100129** [3] mite orantem miscellam quandam nem[o] curat
+
+**EDCS-85100130** Cave rixam o puer os non est
+
+**EDCS-85100131** Cerdponi vendo d()
+
+**EDCS-85100132** M(anius) A() O()
+
+**EDCS-85100133** [3]us IIv(i)r / Sollem[nis]
+
+**EDCS-85100134** Secundus
+
+**EDCS-85100135** Alcis
+
+**EDCS-85100136** Sa(lutem) Poppaeo Charitoni
+
+**EDCS-85100137** Ropmanos / omnes viti[i]s / regn(at)
+
+**EDCS-85100138** Romanus
+
+**EDCS-85100139** Non(is) Aug(ustis) +++++ Titi
+
+**EDCS-85100140** Non(is) Iun(iis) ite
+
+**EDCS-85100141** R
+
+**EDCS-85100142** Ver
+
+**EDCS-85100143** Sarnus / Cn(aeus)
+
+**EDCS-85100144** CLXI
+
+**EDCS-85100145** Quisquis amat puellas sine fine puellas / sacu[li 3]
+
+**EDCS-85100146** Stab(i)anus
+
+**EDCS-85100147** Cinnamus
+
+**EDCS-85100148** Stabi(anus)
+
+**EDCS-85100149** Stabian()
+
+**EDCS-85100150** Actus
+
+**EDCS-85100151** CCI
+
+**EDCS-85100152** VIII
+
+**EDCS-85100153** SPXI
+
+**EDCS-85100154** Cresce(n)s
+
+**EDCS-85100155** Cre(scens)
+
+**EDCS-85100156** ERNH[1]
+
+**EDCS-85100157** O
+
+**EDCS-85100158** Cum
+
+**EDCS-85100159** Qui(dam?)
+
+**EDCS-85100160** C Cresce(n)s
+
+**EDCS-85100161** Mater
+
+**EDCS-85100162** Va(le)
+
+**EDCS-85100163** Sal(utem)
+
+**EDCS-85100164** Ibi eras
+
+**EDCS-85100165** Habito sa[l(utem)] / Issae sal(utem)
+
+**EDCS-85100166** Amor fel(l)a(t)
+
+**EDCS-85100167** A(sses) DLXXX / K(alendas) V
+
+**EDCS-85100168** OIHLIVLIV++++OYMMV / +AFDID++I+
+
+**EDCS-85100169** ] / s[e]rves Augusta[3]
+
+**EDCS-85100170** IIIIIII
+
+**EDCS-85100171** IIIII
+
+**EDCS-85100172** XXX
+
+**EDCS-85100173** Venerosus
+
+**EDCS-85100174** Ve{i}nus
+
+**EDCS-85100175** [3]IIIIIIII
+
+**EDCS-85100176** [3]T+++T+S++
+
+**EDCS-85100177** Spar{t}itu(ndol)
+
+**EDCS-85100178** AR+
+
+**EDCS-85100179** [3]lio
+
+**EDCS-85100180** IIII
+
+**EDCS-85100181** Provi/dentes
+
+**EDCS-85100182** X / X
+
+**EDCS-85100183** Anicet(e) va(le)
+
+**EDCS-85100184** T(h)rae(x)
+
+**EDCS-85100185** X
+
+**EDCS-85100186** XXXX
+
+**EDCS-85100187** III
+
+**EDCS-85100188** T[i]midae / + liben/t[e]r ++++ / ubiq(u)e sa[l(utem)]
+
+**EDCS-85100189** IIIIIIIIIIIIII
+
+**EDCS-85100190** M
+
+**EDCS-85100191** Sogellus / Nobili[s] / a(nte) d(iem) III[
+
+**EDCS-85100192** IIIIIII
+
+**EDCS-85100193** XXIIIIII
+
+**EDCS-85100194** IX
+
+**EDCS-85100195** IIII / IX
+
+**EDCS-85100196** X
+
+**EDCS-85100197** A(sses) XI
+
+**EDCS-85100198** X
+
+**EDCS-85100199** XXX
+
+**EDCS-85100200** B
+
+**EDCS-85100201** XX
+
+**EDCS-85100202** R
+
+**EDCS-85100203** IIII
+
+**EDCS-85100204** A
+
+**EDCS-85100205** X
+
+**EDCS-85100206** I III II
+
+**EDCS-85100208** IIIII / II II
+
+**EDCS-85100209** XX
+
+**EDCS-85100210** S
+
+**EDCS-85100211** R / O / A / B / R / CL / ++ / IOP / pedico / ++S
+
+**EDCS-85100212** Gemelli locus
+
+**EDCS-85100213** C(aius) F() Proclus
+
+**EDCS-85100214** IIIIIIIIIIIIIIIIIIIIIIIII / IIIIIIIIIIIIIIIIIIIIIIIIIIII / IIIIIIIIIIIIIIIIIIIIIIII
+
+**EDCS-85100215** IIIIIIIIIIIIII
+
+**EDCS-85100216** Harmo+++s
+
+**EDCS-85100217** XX XXXX
+
+**EDCS-85100218** Nereu Augustiane
+
+**EDCS-85100219** Q(uintus) Piranius / Cerialis
+
+**EDCS-85100220** [3] Augustiana
+
+**EDCS-85100221** Cornelia / Fortunata / A(u)gustiana
+
+**EDCS-85100222** Sph() Augustian()
+
+**EDCS-85100223** Ampliata / Florilla
+
+**EDCS-85100224** Am(pliata) F(lorilla) / Am(pliata) F(lorilla)
+
+**EDCS-85100225** Pamphilus
+
+**EDCS-85100226** Quantus
+
+**EDCS-85100227** C(aius) H[e]l[v]iu[s] / cunnum / [lingi]s(?)
+
+**EDCS-85100228** Pamphilus
+
+**EDCS-85100229** [Pa]mphilus
+
+**EDCS-85100230** [P]am[phil]us
+
+**EDCS-85100231** Cipius periit(?)]
+
+**EDCS-85100232** [3]mmus
+
+**EDCS-85100233** Cum
+
+**EDCS-85100234** Si qui SAPVIM
+
+**EDCS-85100235** ZO
+
+**EDCS-85100236** Marcus
+
+**EDCS-85100237** Cum quidam pauper
+
+**EDCS-85100238** Cum quidam
+
+**EDCS-85100239** CIX
+
+**EDCS-85100240** Viv(at)
+
+**EDCS-85100241** M(anius) M(anius) / M(anius)
+
+**EDCS-85100242** IIIIIIIIII
+
+**EDCS-85100243** Calos
+
+**EDCS-85100244** R II R / S
+
+**EDCS-85100245** Y / MP
+
+**EDCS-85100246** XXX
+
+**EDCS-85100247** Vix(it) a(nnum) I
+
+**EDCS-85100248** VII
+
+**EDCS-85100249** V
+
+**EDCS-85100250** Vives
+
+**EDCS-85100251** XXVII
+
+**EDCS-85100252** IIIIIII
+
+**EDCS-85100253** CXM
+
+**EDCS-85100254** Cedo dolori
+
+**EDCS-85100255** IIIIIIIII
+
+**EDCS-85100256** Y / K
+
+**EDCS-85100257** Venita am(antes)
+
+**EDCS-85100258** Spic()
+
+**EDCS-85100259** NG / V
+
+**EDCS-85100260** υ ω
+
+**EDCS-85100261** Rus(us?)
+
+**EDCS-85100262** Rusus amas
+
+**EDCS-85100263** IIIIIIIII
+
+**EDCS-85100264** III
+
+**EDCS-85100265** M
+
+**EDCS-85100266** Rus(us?)
+
+**EDCS-85100267** Mans[i]
+
+**EDCS-85100268** XII
+
+**EDCS-85100269** IIII
+
+**EDCS-85100270** IIIIIIIIIIIIIII
+
+**EDCS-85100271** IIIIIIIIIIIIII
+
+**EDCS-85100272** XIII
+
+**EDCS-85100273** M(arcus) F() C()
+
+**EDCS-85100274** IIIIIIIIIIIIIIIIIIII
+
+**EDCS-85100275** III III III
+
+**EDCS-85100276** Can()
+
+**EDCS-85100277** Rom()
+
+**EDCS-85100278** R
+
+**EDCS-85100279** BB
+
+**EDCS-85100280** Quibus
+
+**EDCS-85100281** IIIIIIIIII
+
+**EDCS-85100282** XX
+
+**EDCS-85100283** IIIIIIIIIII
+
+**EDCS-85100284** Φ
+
+**EDCS-85100285** IIII
+
+**EDCS-85100286** IIIII IIII IIIIIIIIIIIIIIIIIIIIIIIIIIII
+
+**EDCS-85100287** P(ublius) Erus(iu)s / Nygm[u]s / |(coronae) I
+
+**EDCS-85100288** Sammarius Amandioni suo sal(utem)
+
+**EDCS-85100289** Aur()
+
+**EDCS-85100290** XVIIII / XX / X / X / III
+
+**EDCS-85100291** M(arco) Arrun[ti]o co(n)s(ule) / C(aio)  Ca(tellio) co(n)s(ule)
+
+**EDCS-85100292** ++++ Auctus
+
+**EDCS-85100293** XXX[3]X[3]
+
+**EDCS-85100294** XV
+
+**EDCS-85100295** Nexia
+
+**EDCS-85100296** IIIIIIIIIIIIII
+
+**EDCS-85100297** A
+
+**EDCS-85100298** IIIIIIIIIIIIIII
+
+**EDCS-85100299** [3]nor
+
+**EDCS-85100300** M[3]
+
+**EDCS-85100301** S[p]uri[u]s
+
+**EDCS-85100302** BBB
+
+**EDCS-85100303** IX
+
+**EDCS-85100304** R
+
+**EDCS-85100305** curo / curavi
+
+**EDCS-85100306** Alba
+
+**EDCS-85100307** Rosa
+
+**EDCS-85100308** Ago
+
+**EDCS-85100309** Mastig[i]a
+
+**EDCS-85100310** Libycus
+
+**EDCS-85100311** Romanus
+
+**EDCS-85100312** R
+
+**EDCS-85100313** Romanus
+
+**EDCS-85100314** Sto
+
+**EDCS-85100315** [3]tiosus
+
+**EDCS-85100316** CIE
+
+**EDCS-85100317** A dea
+
+**EDCS-85100318** Pro
+
+**EDCS-85100319** Lares
+
+**EDCS-85100320** NET
+
+**EDCS-85100321** Carus
+
+**EDCS-85100322** COM
+
+**EDCS-85100323** Amabis me
+
+**EDCS-85100324** Tumulo
+
+**EDCS-85100325** EN
+
+**EDCS-85100326** Vene [eve]ntus sit tibi
+
+**EDCS-85100327** N+YS
+
+**EDCS-85100328** Do
+
+**EDCS-85100329** Mar()
+
+**EDCS-85100330** XX
+
+**EDCS-85100331** XI
+
+**EDCS-85100332** IIIIIIIIIIIIIIIIIIIIIII
+
+**EDCS-85100333** XXX
+
+**EDCS-85100334** XXX
+
+**EDCS-85100335** Sisinin[us]
+
+**EDCS-85100336** Ros[a(?)]
+
+**EDCS-85100337** Sis[ininus(?)]
+
+**EDCS-85100338** M() C()
+
+**EDCS-85100339** [3]ino
+
+**EDCS-85100340** Ma(nliane)
+
+**EDCS-85100341** Συν(έρωϛ)
+
+**EDCS-85100342** CCXXIIII
+
+**EDCS-85100343** IX
+
+**EDCS-85100344** X
+
+**EDCS-85100345** Postum[ius]
+
+**EDCS-85100346** SI
+
+**EDCS-85100347** IIIIIIIIIIIIIIIIIII
+
+**EDCS-85100348** Va(le) ave
+
+**EDCS-85100349** Cumae
+
+**EDCS-85100350** Luci / suge
+
+**EDCS-85100351** Autem amo te si meus sis
+
+**EDCS-85100352** Cumes
+
+**EDCS-85100353** Plausum
+
+**EDCS-85100354** Marcu[us(?)]
+
+**EDCS-85100355** LXXX
+
+**EDCS-85100356** Volcia
+
+**EDCS-85100357** MM / M
+
+**EDCS-85100358** Edax
+
+**EDCS-85100359** Crimen
+
+**EDCS-85100360** III
+
+**EDCS-85100361** Cai Marii / a()
+
+**EDCS-85100362** Modestus
+
+**EDCS-85100363** Veci/lius / II
+
+**EDCS-85100364** XXX
+
+**EDCS-85100365** Equa nera
+
+**EDCS-85100366** Manus
+
+**EDCS-85100367** IIIIIII
+
+**EDCS-85100368** X / IIIIIIIIIII
+
+**EDCS-85100369** XXXXXXXXX
+
+**EDCS-85100370** X
+
+**EDCS-85100371** Matri / Severus v[a(le?)]
+
+**EDCS-85100372** XX / II
+
+**EDCS-85100373** ἄλφη
+
+**EDCS-85100374** XXXXIII s(emis)
+
+**EDCS-85100375** Roma
+
+**EDCS-85100376** Secundus sal(utem)
+
+**EDCS-85100377** Secundus / salutem
+
+**EDCS-85100378** Aequas
+
+**EDCS-85100379** [3]us Sammana[r]a
+
+**EDCS-85100380** XXXX
+
+**EDCS-85100381** Conticuere
+
+**EDCS-85100382** Vix(i)sti X
+
+**EDCS-85100383** Anteros
+
+**EDCS-85100384** Ari[st]odamus
+
+**EDCS-85100385** XLIIX
+
+**EDCS-85100386** Iuni va(le)
+
+**EDCS-85100387** Sol paca
+
+**EDCS-85100388** R
+
+**EDCS-85100389** II(asses) III(sicilici)
+
+**EDCS-85100390** [N]orbana
+
+**EDCS-85100391** Secund(us?)
+
+**EDCS-85100392** Npovius
+
+**EDCS-85100393** XXXX
+
+**EDCS-85100394** XXXXI
+
+**EDCS-85100395** IIII
+
+**EDCS-85100396** XX
+
+**EDCS-85100397** Nicia va(le) / viv(e)
+
+**EDCS-85100398** RD
+
+**EDCS-85100399** IIIII
+
+**EDCS-85100400** XXXXXX
+
+**EDCS-85100401** [3]ius Li[c]inus
+
+**EDCS-85100402** Mitulus
+
+**EDCS-85100403** Aprilis
+
+**EDCS-85100404** Antonius / Alcides / E[uem]erus(?) / Avus / Aninius / Anteros / [M]aximus
+
+**EDCS-85100405** CQ
+
+**EDCS-85100406** XX
+
+**EDCS-85100407** IX
+
+**EDCS-85100408** [3]ira vita / vale / [3]m
+
+**EDCS-85100409** RVE
+
+**EDCS-85100410** XI
+
+**EDCS-85100411** IIIIIIIIII
+
+**EDCS-85100412** IIIIIIIIIIIIIIIIIIIIIIII
+
+**EDCS-85100413** IV
+
+**EDCS-85100414** XX / XXXX / XXX
+
+**EDCS-85100415** XX
+
+**EDCS-85100416** Ex corde
+
+**EDCS-85100417** S
+
+**EDCS-85100418** XII
+
+**EDCS-85100419** XII
+
+**EDCS-85100420** XII
+
+**EDCS-85100421** VIII XXXX
+
+**EDCS-85100422** Porculus
+
+**EDCS-85100423** XXX
+
+**EDCS-85100424** Sura va(le)
+
+**EDCS-85100425** Suo
+
+**EDCS-85100426** Aug()
+
+**EDCS-85100427** Venus
+
+**EDCS-85100428** Cor+++
+
+**EDCS-85100429** Seius
+
+**EDCS-85100430** Est / Seio / Musculus
+
+**EDCS-85100431** V V I s(emis)
+
+**EDCS-85100432** Minu[3]us / VI(victoriarum) m(issus)
+
+**EDCS-85100433** [3]ucun[3]un
+
+**EDCS-85100434** Alcin(us)
+
+**EDCS-85100435** RAR
+
+**EDCS-85100436** NVI
+
+**EDCS-85100437** SA
+
+**EDCS-85100438** I III(sicilici)
+
+**EDCS-85100439** IIIIIII
+
+**EDCS-85100440** Masius / h(ic) fui Molpus
+
+**EDCS-85100441** Nonu[3] / [3]us
+
+**EDCS-85100442** S[3]o fratri suo salu(tem)
+
+**EDCS-85100443** IIII
+
+**EDCS-85100444** IIIIII
+
+**EDCS-85100445** Amiculus Borio s(alutem)
+
+**EDCS-85100446** Saucia / Naide
+
+**EDCS-85100447** XX
+
+**EDCS-85100448** XXXII
+
+**EDCS-85100449** XIIII XII XI
+
+**EDCS-85100450** Borio
+
+**EDCS-85100451** Maurinus / futuit
+
+**EDCS-85100452** [H]ic subura
+
+**EDCS-85100453** Urbicius
+
+**EDCS-85100454** XI XV
+
+**EDCS-85100455** Seve(r)
+
+**EDCS-85100456** βίνει
+
+**EDCS-85100457** Venimus
+
+**EDCS-85100458** Euodus
+
+**EDCS-85100459** [P]edicavi
+
+**EDCS-85100460** [3]
+
+**EDCS-85100461** Savius
+
+**EDCS-85100462** Mica vale
+
+**EDCS-85100463** Suedius
+
+**EDCS-85100464** Carbo
+
+**EDCS-85100465** IV
+
+**EDCS-85100466** |(Sestarii) V IIII
+
+**EDCS-85100467** Paulus
+
+**EDCS-85100468** Trax{s}i
+
+**EDCS-85100469** Est ad usu hic lusus
+
+**EDCS-85100470** D[e]recius
+
+**EDCS-85100471** AN
+
+**EDCS-85100472** [3]on hic
+
+**EDCS-85100473** Sec()
+
+**EDCS-85100474** Earinus / a(ssibus) II
+
+**EDCS-85100475** December
+
+**EDCS-85100476** Cunne
+
+**EDCS-85100477** Bios
+
+**EDCS-85100478** DOELIOKI
+
+**EDCS-85100479** IIIIII
+
+**EDCS-85100480** IIIIIIII
+
+**EDCS-85100481** RV
+
+**EDCS-85100482** Hantus
+
+**EDCS-85100483** PO+()
+
+**EDCS-85100484** IIIIIII
+
+**EDCS-85100485** Aeceus
+
+**EDCS-85100486** Cos
+
+**EDCS-85100487** [3]+ΚΙΔΗΠΕΤΟΓΟ+[3]
+
+**EDCS-85100488** X
+
+**EDCS-85100489** IIIIIIIII
+
+**EDCS-85100490** Delphin[us] / Vir[i]ano sal(utem)
+
+**EDCS-85100491** XXXX
+
+**EDCS-85100492** XXXXVII
+
+**EDCS-85100493** V
+
+**EDCS-85100494** Amoene amo[3]
+
+**EDCS-85100495** Socii
+
+**EDCS-85100496** [A]nser / qui es ++S++++
+
+**EDCS-85100497** K
+
+**EDCS-85100498** Pom[peius(?) 3 v]ixi[t(?)] / T[3] S[s]titus / quale[s] vixerunt [3]s / et Lucideius
+
+**EDCS-85100499** Alimnus
+
+**EDCS-85100500** Emolitum
+
+**EDCS-85100501** Brutus
+
+**EDCS-85100502** FA
+
+**EDCS-85100503** Cum edisset n[3] / necesse est [3]
+
+**EDCS-85100504** MV
+
+**EDCS-85100505** Nul[l]ius es
+
+**EDCS-85100506** Sagutta
+
+**EDCS-85100507** B
+
+**EDCS-85100508** +
+
+**EDCS-85100509** Crispa
+
+**EDCS-85100510** [3]C++S[1]io solus [3]S / [3]as itur [3] ante [3]
+
+**EDCS-85100511** ΛΔΓ
+
+**EDCS-85100512** Quis vom(it?)
+
+**EDCS-85100513** IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+
+**EDCS-85100514** IIII IIII
+
+**EDCS-85100515** Quartio
+
+**EDCS-85100516** A corde
+
+**EDCS-85100517** IIIIIIIIIIIII
+
+**EDCS-85100518** Magis[3]
+
+**EDCS-85100519** XXXX
+
+**EDCS-85100520** Optatus
+
+**EDCS-85100521** CC
+
+**EDCS-85100522** Gamo a(sses) II
+
+**EDCS-85100523** Anthus
+
+**EDCS-85100524** HA
+
+**EDCS-85100525** A(sse?) I
+
+**EDCS-85100526** Ex NAOIIIOA
+
+**EDCS-85100527** Lib(ertus?)
+
+**EDCS-85100528** III
+
+**EDCS-85100529** CIIII
+
+**EDCS-85100530** Salus
+
+**EDCS-85100531** Urba[3]
+
+**EDCS-85100532** Mul()
+
+**EDCS-85100533** B
+
+**EDCS-85100534** Inn[u]lus
+
+**EDCS-85100535** Baenius
+
+**EDCS-85100536** IIIII
+
+**EDCS-85100537** Decius
+
+**EDCS-85100538** AV
+
+**EDCS-85100539** [3]VIC[3] / H++ corpus con[3] / A+[3]III
+
+**EDCS-85100540** SA
+
+**EDCS-85100541** IIIIIIIII / quis est +XDOMI+I+V++++ aliud
+
+**EDCS-85100542** Oviu[s] iun(ior) modi[c]um numm[a]us
+
+**EDCS-85100543** +++PHI++D A[3]
+
+**EDCS-85100544** Quis
+
+**EDCS-85100545** A(sses) LXXIII
+
+**EDCS-85100546** MIV
+
+**EDCS-85100547** IIII s(emis)
+
+**EDCS-85100548** V VI s(emis) V / ++ vinea +A[3]
+
+**EDCS-85100549** MIV
+
+**EDCS-85100550** Sittium Actillum
+
+**EDCS-85100551** C(aius) D() Fidus
+
+**EDCS-85100552** C Caere
+
+**EDCS-85100553** S
+
+**EDCS-85100554** Pica
+
+**EDCS-85100555** Probum virum
+
+**EDCS-85100556** Probum vi[rum]
+
+**EDCS-85100557** Quisquis v[3]
+
+**EDCS-85100558** LXXV
+
+**EDCS-85100559** Pravam
+
+**EDCS-85100560** NVI
+
+**EDCS-85100561** Marra
+
+**EDCS-85100562** Nemo
+
+**EDCS-85100563** Quia m[3]
+
+**EDCS-85100564** XX / XXX
+
+**EDCS-85100565** Cicuta cum [3]
+
+**EDCS-85100566** +++++ duru[m] sa[xso]
+
+**EDCS-85100567** Ian[uari]
+
+**EDCS-85100568** Amata venias
+
+**EDCS-85100569** IPD
+
+**EDCS-85100570** XCI Op()
+
+**EDCS-85100571** XV
+
+**EDCS-85100572** Am()
+
+**EDCS-85100573** Lupercus
+
+**EDCS-85100574** VII
+
+**EDCS-85100575** Pro
+
+**EDCS-85100576** VI / LXXI
+
+**EDCS-85100577** IIIIIIIIIIIIIIIIIIIIII
+
+**EDCS-85100578** [S]i nomen quaeris om[3]rum / n[emi]nem igne sumas / eorum quinque vides
+
+**EDCS-85100579** ++++IS[3]+BON++++S / [3]+++N++++II / [3]+++M++++S
+
+**EDCS-85100580** Anticlus
+
+**EDCS-85100581** XXXVIII
+
+**EDCS-85100582** C(aius) N() L(uci) f(ilius) [Q]uintus
+
+**EDCS-85100583** Primus
+
+**EDCS-85100584** IIIIII / IIIIIIIII
+
+**EDCS-85100585** Pyrri[c]ho pugio Acti / Fe[3]is
+
+**EDCS-85100586** IIII IIII II
+
+**EDCS-85100587** Stupidus qusue
+
+**EDCS-85100588** [3]sutus hic
+
+**EDCS-85100589** [3]SEN++[3]++++++++++ et Popidios hic amabimus
+
+**EDCS-85100590** Alcimus Pyrro
+
+**EDCS-85100591** Debilis
+
+**EDCS-85100592** Mocci
+
+**EDCS-85100593** Dotatus
+
+**EDCS-85100594** C(aius) Caesar
+
+**EDCS-85100595** Manum inser(e) hora ter(tia) est
+
+**EDCS-85100596** Venustus / [
+
+**EDCS-85100597** Vota Restitutus donum d(edit) +++
+
+**EDCS-85100598** C(ai) Holconi Felix {h}ave / +++ salvm [3]
+
+**EDCS-85100599** R
+
+**EDCS-85100600** IIIII
+
+**EDCS-85100601** βεινῆϛ
+
+**EDCS-85100602** IX III
+
+**EDCS-85100603** IIIII
+
+**EDCS-85100604** ANOSRBYSCR
+
+**EDCS-85100605** XIVOD+MO++++PH αλκ(ι)μι
+
+**EDCS-85100606** XXXX
+
+**EDCS-85100607** Miccio
+
+**EDCS-85100608** Miccio
+
+**EDCS-85100609** Miccio
+
+**EDCS-85100610** Velcha
+
+**EDCS-85100611** Gaude prunos V d pinges
+
+**EDCS-85100612** XXXXII / XXXXIII / XXXXII / LXX
+
+**EDCS-85100613** Eita
+
+**EDCS-85100614** [C]om(m)ode ferimus
+
+**EDCS-85100615** XXXXII
+
+**EDCS-85100616** IIIII
+
+**EDCS-85100617** II
+
+**EDCS-85100618** V
+
+**EDCS-85100619** XXXIIII
+
+**EDCS-85100620** XXIIIIIIII
+
+**EDCS-85100621** Euche
+
+**EDCS-85100622** Philargra li[nge m]entula fellator elinge
+
+**EDCS-85100623** Berus
+
+**EDCS-85100624** Munatius hic am[3]
+
+**EDCS-85100625** MV
+
+**EDCS-85100626** Truc()
+
+**EDCS-85100627** C
+
+**EDCS-85100628** Pacuviae Vibiae / vixit an(nos) XXIIX domina f(ecit?)
+
+**EDCS-85100629** Dixi insane
+
+**EDCS-85100630** Hy(mnus?)
+
+**EDCS-85100631** L(ucius) Ma+++[1]s
+
+**EDCS-85100632** Hymnus
+
+**EDCS-85100633** IIIIII s(emis) T
+
+**EDCS-85100634** Myronis
+
+**EDCS-85100635** II
+
+**EDCS-85100636** II
+
+**EDCS-85100637** IIIIIIIIII
+
+**EDCS-85100638** C(ai) Cassi Sca[3]
+
+**EDCS-85100639** Igeta felix
+
+**EDCS-85100640** Mur(millo)
+
+**EDCS-85100641** SSS S /S
+
+**EDCS-85100642** Ara[3]
+
+**EDCS-85100643** [3]+ENNV+[3]
+
+**EDCS-85100644** L(ucius) Va[le]rius Rufus
+
+**EDCS-85100645** A
+
+**EDCS-85100646** Cer(vus)
+
+**EDCS-85100647** III
+
+**EDCS-85100648** VII VI[3] / XXII VI VI s(emis) III / IIII / IIII s(emis) VII V VIIII
+
+**EDCS-85100649** [3]II VIII V XIII VIIII VI
+
+**EDCS-85100650** S(emis) IV VII s(emis) VI VII XV III s(emis)
+
+**EDCS-85100651** XX / VIII / XVIIII
+
+**EDCS-85100652** VI VIII V s(emis) III
+
+**EDCS-85100653** ESTI()
+
+**EDCS-85100654** ⟦3⟧ selibatur ancilla / be[3]
+
+**EDCS-85100655** Cui Siro
+
+**EDCS-85100656** MIS
+
+**EDCS-85100657** Una lib[3] / una STII[1]CE[1]VNAMII[1] / sugo [3] a cunnu semis val(e)
+
+**EDCS-85100658** Bron()
+
+**EDCS-85100659** IIIII III / II / II / X
+
+**EDCS-85100660** IIIII
+
+**EDCS-85100661** A(ssem) I / III VII
+
+**EDCS-85100662** XIIII
+
+**EDCS-85100663** IIIII
+
+**EDCS-85100664** X
+
+**EDCS-85100665** XIIII IIII
+
+**EDCS-85100666** IIII
+
+**EDCS-85100667** D() LXXXXV / O() LXXIII
+
+**EDCS-85100668** IIIIIII
+
+**EDCS-85100669** IIII
+
+**EDCS-85100670** Suco
+
+**EDCS-85100671** A
+
+**EDCS-85100672** RP
+
+**EDCS-85100673** Cum prius / [P]runicus sa[l(utem)]
+
+**EDCS-85100674** Cum quidam / ta[3]s
+
+**EDCS-85100675** Quinq()
+
+**EDCS-85100676** [3]ius / [3]io
+
+**EDCS-85100677** Ambo
+
+**EDCS-85100678** Va(le)
+
+**EDCS-85100679** Quos
+
+**EDCS-85100680** Numin++++
+
+**EDCS-85100681** A(sses) III
+
+**EDCS-85100682** Roma
+
+**EDCS-85100683** [3]to[1]e / vale
+
+**EDCS-85100684** XI
+
+**EDCS-85100685** M
+
+**EDCS-85100686** M
+
+**EDCS-85100687** II I II III
+
+**EDCS-85100688** X
+
+**EDCS-85100689** X
+
+**EDCS-85100690** IIIIIIIIIII
+
+**EDCS-85100691** IIIIIIII
+
+**EDCS-85100692** Iumen+
+
+**EDCS-85100693** IIIIII / III s(emis)
+
+**EDCS-85100694** Marci +++TII +++I
+
+**EDCS-85100695** Quisquis
+
+**EDCS-85100696** Qui mi missi erunt / IICTEVIAIIIS / +++D VILIS
+
+**EDCS-85100697** Euplia
+
+**EDCS-85100698** Mutacus
+
+**EDCS-85100699** Mim[us(?)]
+
+**EDCS-85100700** ΑΔΡΣ / ΠΕΓΙΤΘΛΡΣΝ+ΦΙΝ / ΒΙ
+
+**EDCS-85100701** [E]utychis vale / B
+
+**EDCS-85100702** Tim+[3] vale
+
+**EDCS-85100703** ΔΕ+ΑΤΟΣ  / ΗΜΙΙΡΟΣ / faustus
+
+**EDCS-85100704** Suc(c)es(s)us
+
+**EDCS-85100705** Vitu[lu]s
+
+**EDCS-85100706** Nicopolis va(le) / va(le) Nicopolis / Auctus / amator
+
+**EDCS-85100707** Valentinus / va(le)
+
+**EDCS-85100708** Antioc(h)us
+
+**EDCS-85100709** AER
+
+**EDCS-85100710** A
+
+**EDCS-85100711** [V]enere rogamus av(e) / tibi +ocus solito exp/ero
+
+**EDCS-85100712** IIII
+
+**EDCS-85100713** Didius ++++++
+
+**EDCS-85100714** Lucrio [N]olanus / [be]ne meritus de populo
+
+**EDCS-85100715** [L(ucio) Rub]ellio Gemino / C(aio) uio Gemino co(n)s(ulibus) Idibus [Iu]liis
+
+**EDCS-85100716** IX
+
+**EDCS-85100717** I[uv]encus
+
+**EDCS-85100718** [1] Clodius M[3]
+
+**EDCS-85100719** Flavio / Philoxeni
+
+**EDCS-85100720** Acastus
+
+**EDCS-85100721** Agathea / Flavia / A
+
+**EDCS-85100722** [Vertia |(mulieris) l(iberta) P]hilumina M(arcus) Oct[avius] M(arci) f(ilius) p(osuerunt)
+
+**EDCS-85100723** Munatia / [Eu]che
+
+**EDCS-85100724** Aninia / Mun+[3]
+
+**EDCS-85100725** κατατένομαι
+
+**EDCS-85100726** At(i)metus
+
+**EDCS-85100727** LX
+
+**EDCS-85100728** Pittaci
+
+**EDCS-85100729** So[t]ades
+
+**EDCS-85100730** Philod()
+
+**EDCS-85100731** Autostolus / Autostole
+
+**EDCS-85100732** Procule [3]ire val(e) / Ro[3]
+
+**EDCS-85100733** A(ulus) Peren(n)iu(s) Felicio ++ / va(le)
+
+**EDCS-85100734** ++++++E+ / C(aio) Calvent[io Sitt]io(?) +++++
+
+**EDCS-85100735** Iarinus Expectato / sal(utem) / amabil[i]ter ubi{i}que
+
+**EDCS-85100736** PH
+
+**EDCS-85100737** R
+
+**EDCS-85100738** Epp(ius?)
+
+**EDCS-85100739** L(ucius) Pelsius
+
+**EDCS-85100740** Vale camali
+
+**EDCS-85100741** Lucius / Pinus / Q
+
+**EDCS-85100742** Pinu(s)
+
+**EDCS-85100743** IIIIIIIIII
+
+**EDCS-85100744** Tyr+++n+s
+
+**EDCS-85100745** Aufidianus
+
+**EDCS-85100746** Cissonio sal(utem)
+
+**EDCS-85100747** Isis
+
+**EDCS-85100748** [3] Sesu[s(?)]
+
+**EDCS-85100749** ++MCA / CVIIII[3]
+
+**EDCS-85100750** Suro sedet hic / Turonio sal(utem)
+
+**EDCS-85100751** [3] K(alendas) III Septemb[res 3] / [3]ss[3]
+
+**EDCS-85100752** Habi[tus]
+
+**EDCS-85100753** Epic(h)resis / Sentio / [3] va(le) / op+[3]
+
+**EDCS-85100754** Hab[i]tus /[3]io[3 s]al(utem) / [3] Issian[u]s / +++++
+
+**EDCS-85100755** Crescens / Recond[itus] et Himenos
+
+**EDCS-85100756** I II IIX IV IV VI MIV VI
+
+**EDCS-85100757** [3]me ru[3]
+
+**EDCS-85100758** XV XV XV / XXV XXV XXV / LV LV
+
+**EDCS-85100759** Cres(cens)
+
+**EDCS-85100760** X
+
+**EDCS-85100761** AE
+
+**EDCS-85100762** M
+
+**EDCS-85100763** XXX / CIXXV / CXXXXVIII
+
+**EDCS-85100764** XXXII
+
+**EDCS-85100765** V[i]na [o]dorata +++++ [fundo(?)] Gamiano MI+++ / vina odorata [3] / XIII K(alendas) Febr(uarias) ad Apollonium [misi(?)] / VIIII
+
+**EDCS-85100766** IIIIIIII
+
+**EDCS-85100767** [3]no / [3]niano / co(n)s(ulibus) / IIII K(alendas) Ianuari(a)s
+
+**EDCS-85100768** Ex{s} vitul[is] / Secund[i]
+
+**EDCS-85100769** Hilarus / hic
+
+**EDCS-85100770** Seve/rum / annui
+
+**EDCS-85100771** FII+IANOSIIEIII / Masculi
+
+**EDCS-85100772** C(ai) Vibi
+
+**EDCS-85100773** Arun(culeiu)s(?)
+
+**EDCS-85100774** Sul(pici) III
+
+**EDCS-85100775** Sul(pici) IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII[3]
+
+**EDCS-85100776** Sucr() / verna ++
+
+**EDCS-85100777** Eromene
+
+**EDCS-85100778** XXXX
+
+**EDCS-85100779** Dies Saturni Luna XXV / M(arco) Arruntio Aquila M(arco) Vettio Bolano co(n)s(ulibus)
+
+**EDCS-85100780** Scito ama et aude M / [6]
+
+**EDCS-85100781** Vibia num Puteolis / properas ama IIII Nonas Iunias
+
+**EDCS-85100782** Ebulli / ave / va(le) / utina[m]
+
+**EDCS-85100783** ABC
+
+**EDCS-85100784** AB
+
+**EDCS-85100785** ABCDEFGHILMNOP/QRSTVX
+
+**EDCS-85100786** ABCDE
+
+**EDCS-85100787** ABCD/EF[G]HIKL[m]NOPQ/[
+
+**EDCS-85100788** ΟΠΡΣΤΥΦΧΨΩ
+
+**EDCS-85100789** AB
+
+**EDCS-85100790** AB
+
+**EDCS-85100791** AA
+
+**EDCS-85100792** ΧΦΨ
+
+**EDCS-85100793** ABCDEFGHIKLMNOPQRS
+
+**EDCS-85100794** [A]BCS[3]
+
+**EDCS-85100795** VVV
+
+**EDCS-85100796** X
+
+**EDCS-85100797** Hyme()
+
+**EDCS-85100798** |(Decies centena milia)
+
+**EDCS-85100799** II
+
+**EDCS-85100800** XXXX
+
+**EDCS-85100801** B
+
+**EDCS-85100802** III
+
+**EDCS-85100803** Ξ
+
+**EDCS-85100804** X
+
+**EDCS-85100805** |(Milies centena milia) / |(Ducenties centena milia)
+
+**EDCS-85100806** Προκοπή / Ανατολή
+
+**EDCS-85100807** X / X / XXXV
+
+**EDCS-85100808** X
+
+**EDCS-85100809** γαειϛ καμερειϛ αγαθαιϛ
+
+**EDCS-85100810** Iano
+
+**EDCS-85100811** IIIII
+
+**EDCS-85100812** ξδρυλ
+
+**EDCS-85100813** XIIIIIIII
+
+**EDCS-85100814** XVIII
+
+**EDCS-85100815** IIIIIIIIIIII
+
+**EDCS-85100816** Eud()
+
+**EDCS-85100817** X
+
+**EDCS-85100818** Reburrus
+
+**EDCS-85100819** C
+
+**EDCS-85100820** Reburrus
+
+**EDCS-85100821** Mimo s(alutem)
+
+**EDCS-85100822** XXX
+
+**EDCS-85100823** IIIII
+
+**EDCS-85100824** Berus Vecil(ius)
+
+**EDCS-85100825** III II
+
+**EDCS-85100826** IIIIIII
+
+**EDCS-85100827** IIIIIIIIIIIIIIIIIIIII
+
+**EDCS-85100828** XXXXXXXXXX / IIIIIII / IIIII
+
+**EDCS-85100829** B
+
+**EDCS-85100830** A(sses) IIIII
+
+**EDCS-85100831** IIIII
+
+**EDCS-85100832** IIIII
+
+**EDCS-85100833** IIIIII
+
+**EDCS-85100834** IIII Idus [3]mpus
+
+**EDCS-85100835** XXXX a(sses)
+
+**EDCS-85100836** IIII
+
+**EDCS-85100837** κατηφῆϛ
+
+**EDCS-85100838** XXXIIIII
+
+**EDCS-85100839** X
+
+**EDCS-85100840** IIIIIIIIIIIIIII
+
+**EDCS-85100841** Draco
+
+**EDCS-85100842** μνήσθη Βήρυλλοϛ
+
+**EDCS-85100843** VVVV
+
+**EDCS-85100844** IIIIIIIIIIIIII
+
+**EDCS-85100845** B
+
+**EDCS-85100846** μνήσθ[η]
+
+**EDCS-85100847** Εὐόπηϛ
+
+**EDCS-85100848** IIIIIIIII s(emis) IIIII
+
+**EDCS-85100849** IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII / IIIIIIIIIIIIIIIIIIIIIIIII
+
+**EDCS-85100850** III / II / XX / XX / III / II
+
+**EDCS-85100851** YICVIII
+
+**EDCS-85100852** IIIIIII
+
+**EDCS-85100853** [3]IIIIII
+
+**EDCS-85100854** IIIIII[3]
+
+**EDCS-85100855** A
+
+**EDCS-85100856** IIIIIIIIIIIIIIIIIIIIIIIIIII
+
+**EDCS-85100857** Hmnus
+
+**EDCS-85100858** XIIIII / III
+
+**EDCS-85100859** VII IIIIII X / IIIIIIIIIIIIII I II
+
+**EDCS-85100860** IIIIIII
+
+**EDCS-85100861** IIIIIIIIIIIIIII / IIII
+
+**EDCS-85100862** IIIIIIIIIII
+
+**EDCS-85100863** IV
+
+**EDCS-85100864** Hic situs / Suellius
+
+**EDCS-85100865** XII
+
+**EDCS-85100866** IIIIIIIII
+
+**EDCS-85100867** IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIi
+
+**EDCS-85100868** LXXXVIIII
+
+**EDCS-85100869** IIIIIIIII IIIIIIIII XI II
+
+**EDCS-85100870** X / XX
+
+**EDCS-85100871** XIII K(alendas) X K(alendas) III Id(us)
+
+**EDCS-85100872** Ambo
+
+**EDCS-85100873** XV
+
+**EDCS-85100874** IIII
+
+**EDCS-85100875** XI
+
+**EDCS-85100876** IX VI
+
+**EDCS-85100877** III I
+
+**EDCS-85100878** IX IIIIIIIII
+
+**EDCS-85100879** IIIII[3] / IIIIIIII
+
+**EDCS-85100880** XII
+
+**EDCS-85100881** A(sses) IV
+
+**EDCS-85100882** X / A
+
+**EDCS-85100883** IIIIIIIIIIIII
+
+**EDCS-85100884** IIIIIIIIIIII
+
+**EDCS-85100885** Vene[3]
+
+**EDCS-85100886** Avbes / K(alendas) III Iunias
+
+**EDCS-85100887** Demo
+
+**EDCS-85100888** VIII
+
+**EDCS-85100889** IIII IIIII
+
+**EDCS-85100890** |(Denariorum) IIIIIIII
+
+**EDCS-85100891** A(ulus) Memm(ius)
+
+**EDCS-85100892** IIIIIIIII
+
+**EDCS-85100893** IIIIIIIIIIII
+
+**EDCS-85100894** |(Denarios) VII a(sses) IIIIIIIIIIIII
+
+**EDCS-85100895** IIIIIIIIIIIIIIIIIIIII
+
+**EDCS-85100896** II IIIII IIII
+
+**EDCS-85100897** X
+
+**EDCS-85100898** IIIIII
+
+**EDCS-85100899** IIIIIIIIII
+
+**EDCS-85100900** M
+
+**EDCS-85100901** II
+
+**EDCS-85100902** XXIII X / XXI XXV
+
+**EDCS-85100903** Ama
+
+**EDCS-85100904** IIIIIIII
+
+**EDCS-85100905** XIIII C X XXXV CXX C
+
+**EDCS-85100906** C XIII
+
+**EDCS-85100907** VM
+
+**EDCS-85100908** MA
+
+**EDCS-85100909** Viv()
+
+**EDCS-85100910** IIIIIIIIIII
+
+**EDCS-85100911** XI
+
+**EDCS-85100912** X
+
+**EDCS-85100913** IIIIIIIIIIIIIIII
+
+**EDCS-85100914** IIII
+
+**EDCS-85100915** IIIIIIIIIIIIIIII
+
+**EDCS-85100916** III
+
+**EDCS-85100917** II
+
+**EDCS-85100918** IX a(sses)
+
+**EDCS-85100919** Q(uintus) V() S()
+
+**EDCS-85100920** Sabin[a]
+
+**EDCS-85100921** Paris
+
+**EDCS-85100922** C ISOII / O / +O
+
+**EDCS-85100923** CCCCCLXXV
+
+**EDCS-85100924** Mortus / (H)ercolanius
+
+**EDCS-85100925** Mortus / Deid(ius)
+
+**EDCS-85100926** IIIII
+
+**EDCS-85100927** |III(Denarii)
+
+**EDCS-85100928** |(Denarius)
+
+**EDCS-85100929** Ursa
+
+**EDCS-85100930** QE
+
+**EDCS-85100931** καὶ Γάιοϛ Γάιοϛ Γάιοϛ / Γάιοϛ / Γάιοϛ Γάιοϛ / Γάιοϛ / Γάιοϛ Γάιοϛ / Γάιοϛ / Γάιοϛ Γάιοϛ / Γάιοϛ / Γάιοϛ Γά[ιοϛ] / Γάιοϛ Γ[άιοϛ] / Γάιοϛ / Γάι[οϛ] / Γάιο[ϛ]
+
+**EDCS-85100932** C(ai) Veii
+
+**EDCS-85100933** L(ucius) Livius
+
+**EDCS-85100934** T(itus) Cannu{u}tius / Euc(h)restus
+
+**EDCS-85100935** K(alendas) Nov(e)m(b)res / tridicum / a(ssibus) XIV |(denario) I
+
+**EDCS-85100936** XIIII IIII XI XVII
+
+**EDCS-85100937** Duxi
+
+**EDCS-85100938** D
+
+**EDCS-85100939** IIII III I III
+
+**EDCS-85100940** IIIIIIIIII
+
+**EDCS-85100941** A(ulus) Vitius
+
+**EDCS-85100942** IIIIIIIIIIIIIIIII
+
+**EDCS-85100943** III / II / IIIII / V
+
+**EDCS-85100944** IIIII
+
+**EDCS-85100945** IIIIIII
+
+**EDCS-85100946** III
+
+**EDCS-85100947** VII
+
+**EDCS-85100948** Y
+
+**EDCS-85100949** IV
+
+**EDCS-85100950** II
+
+**EDCS-85100951** II
+
+**EDCS-85100952** VIII VIIII
+
+**EDCS-85100953** K(alendis) O(ctobribus)
+
+**EDCS-85100954** LXX
+
+**EDCS-85100955** IIIIIIIIIIIIIIII
+
+**EDCS-85100956** IIIIIIIIIIIIII
+
+**EDCS-85100957** Lumen
+
+**EDCS-85100958** IIII
+
+**EDCS-85100959** III
+
+**EDCS-85100960** IIIIIII
+
+**EDCS-85100961** IIIIIIII
+
+**EDCS-85100962** IIIIIIII
+
+**EDCS-85100963** XXIIII XXVI / XXIIX s(emis)
+
+**EDCS-85100964** IIIIIIIIII
+
+**EDCS-85100965** II
+
+**EDCS-85100966** IIIII
+
+**EDCS-85100967** X
+
+**EDCS-85100968** X
+
+**EDCS-85100969** IIIIIIIIIIII IIIIII
+
+**EDCS-85100970** II
+
+**EDCS-85100971** X
+
+**EDCS-85100972** IIIIIIIIIIIIIIIIIIIIIIIIIIII
+
+**EDCS-85100973** IIIIIIIIIIIIIIIIIIII
+
+**EDCS-85100974** II
+
+**EDCS-85100975** X
+
+**EDCS-85100976** IIIII
+
+**EDCS-85100977** IIIIIIIIIIIIIII
+
+**EDCS-85100978** Hgia fel(l)at
+
+**EDCS-85100979** IIIIIIIIIIIIIIIIIIII
+
+**EDCS-85100980** IIIIIIIII
+
+**EDCS-85100981** IIIIIII
+
+**EDCS-85100982** X / X
+
+**EDCS-85100983** |(Denarius)
+
+**EDCS-85100984** XII XXXXXXIII / XXXXXXIIII XXX / XXI XVIII / IIII IIIIIIIIIIII
+
+**EDCS-85100985** IIIIIIIIII / XXXIII II
+
+**EDCS-85100986** II
+
+**EDCS-85100987** IIIII
+
+**EDCS-85100988** Stabiani {H} hic sine Thalamo
+
+**EDCS-85100989** Crece(n)s
+
+**EDCS-85100990** IIIII
+
+**EDCS-85100991** A(sses) DCIII
+
+**EDCS-85100992** Roma / R(o)m(a) / Roma
+
+**EDCS-85100993** IIIII
+
+**EDCS-85100994** IIIIII / IIIIII
+
+**EDCS-85100995** IX
+
+**EDCS-85100996** IIIIIII
+
+**EDCS-85100997** Suc() Suc(c)essi pato[r] / hic
+
+**EDCS-85100998** Thalamus
+
+**EDCS-85100999** Iunctores hic / amantes
+
+**EDCS-85101000** Auctus
+
+**EDCS-85101001** Thalamus
+
+**EDCS-85101002** Thalamus carmina canas
+
+**EDCS-85101003** X
+
+**EDCS-85101004** Si quis formosae cupiat servire puellae
+
+**EDCS-85101005** Te amo / Cai
+
+**EDCS-85101006** Hgia amat Suc(c)es(s)um
+
+**EDCS-85101007** Roma
+
+**EDCS-85101008** Amanda
+
+**EDCS-85101009** IIIII s(emis)
+
+**EDCS-85101010** IIIIIIIIII
+
+**EDCS-85101011** Rubrio M(arco) Arrio Flacco co(n)s(ulibus)
+
+**EDCS-85101012** III
+
+**EDCS-85101013** III
+
+**EDCS-85101014** XXII
+
+**EDCS-85101015** VIII M II
+
+**EDCS-85101016** ABCDE
+
+**EDCS-85101017** MTLPRVXTS
+
+**EDCS-85101018** ABCDEFGH
+
+**EDCS-85200001** Pia
+
+**EDCS-85200002** ?
+
+**EDCS-85200003** ?
+
+**EDCS-85200004** ?
+
+**EDCS-85200005** ?
+
+**EDCS-85200006** Sotercus
+
+**EDCS-85200007** ?
+
+**EDCS-85200008** ?
+
+**EDCS-85200009** ?
+
+**EDCS-85200010** ?
+
+**EDCS-85200011** ?
+
+**EDCS-85200012** ?
+
+**EDCS-85200013** ?
+
+**EDCS-85200014** ?
+
+**EDCS-85200015** ?
+
+**EDCS-85200016** ?
+
+**EDCS-85200017** ?
+
+**EDCS-85200018** ?
+
+**EDCS-85200019** ?
+
+**EDCS-85200020** ?
+
+**EDCS-85200021** ?
+
+**EDCS-85200022** ?
+
+**EDCS-85200023** ?
+
+**EDCS-85200024** ?
+
+**EDCS-85200025** ?
+
+**EDCS-85200026** ?
+
+**EDCS-85200027** ?
+
+**EDCS-85200028** ?
+
+**EDCS-85200029** ?
+
+**EDCS-85200030** ?
+
+**EDCS-85200031** ?
+
+**EDCS-85200032** ?
+
+**EDCS-85200033** ?
+
+**EDCS-85200034** ?
+
+**EDCS-85200035** ?
+
+**EDCS-85200036** ?
+
+**EDCS-85200037** ?
+
+**EDCS-85200038** ?
+
+**EDCS-85200039** ?
+
+**EDCS-85200040** ?
+
+**EDCS-85200041** ?
+
+**EDCS-85200042** ?
+
+**EDCS-85200043** ?
+
+**EDCS-85200044** ?
+
+**EDCS-85200045** ?
+
+**EDCS-85200046** ?
+
+**EDCS-85200047** ?
+
+**EDCS-85200048** ?
+
+**EDCS-85200049** ?
+
+**EDCS-85200050** ?
+
+**EDCS-85200051** ?
+
+**EDCS-85200052** ?
+
+**EDCS-85200053** ?
+
+**EDCS-85200054** ?
+
+**EDCS-85200055** ?
+
+**EDCS-85200056** ?
+
+**EDCS-85200057** ?
+
+**EDCS-85200058** ?
+
+**EDCS-85200059** ?
+
+**EDCS-85200060** ?
+
+**EDCS-85200061** ?
+
+**EDCS-85200062** ?
+
+**EDCS-85200063** ?
+
+**EDCS-85200064** ?
+
+**EDCS-85200065** ?
+
+**EDCS-85200066** ?
+
+**EDCS-85200067** ?
+
+**EDCS-85200068** ?
+
+**EDCS-85200069** ?
+
+**EDCS-85200070** ?
+
+**EDCS-85200071** ?
+
+**EDCS-85200072** ?
+
+**EDCS-85200073** ?
+
+**EDCS-85200074** ?
+
+**EDCS-85200075** ?
+
+**EDCS-85200076** ?
+
+**EDCS-85200077** ?
+
+**EDCS-85200078** ?
+
+**EDCS-85200079** ?
+
+**EDCS-85200080** ?
+
+**EDCS-85200081** ?
+
+**EDCS-85200082** ?
+
+**EDCS-85200083** ?
+
+**EDCS-85200084** ?
+
+**EDCS-85200085** ?
+
+**EDCS-85200086** ?
+
+**EDCS-85200087** ?
+
+**EDCS-85200088** ?
+
+**EDCS-85200089** ?
+
+**EDCS-85200090** ?
+
+**EDCS-85200091** ?
+
+**EDCS-85200092** ?
+
+**EDCS-85200093** ?
+
+**EDCS-85200094** ?
+
+**EDCS-85200095** ?
+
+**EDCS-85200096** ?
+
+**EDCS-85200097** ?
+
+**EDCS-85200098** ?
+
+**EDCS-85200099** ?
+
+**EDCS-85200100** ?
+
+**EDCS-85200101** ?
+
+**EDCS-85200102** ?
+
+**EDCS-85200103** ?
+
+**EDCS-85200104** ?
+
+**EDCS-85200105** ?
+
+**EDCS-85200106** ?
+
+**EDCS-85200107** ?
+
+**EDCS-85200108** ?
+
+**EDCS-85200109** ?
+
+**EDCS-85200110** ?
+
+**EDCS-85200111** ?

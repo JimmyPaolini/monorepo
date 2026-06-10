@@ -10,7 +10,7 @@ author_metadata:
 
 ## Liber Xxiii
 
-I. Agathocles, rex Siciliae, pacificatus cum Karthaginiensibus partem
+**I** Agathocles, rex Siciliae, pacificatus cum Karthaginiensibus partem
 
 civitatium a se fiducia virium dissidentem armis subegit. 2 Dein quasi
 
@@ -70,7 +70,7 @@ Quare feritas eorum successu felicitatis incensa diu terribilis finitimis fuit.
 
 Italiam traiecit.
 
-II. Principio adventus opinione eius concussi legatos ad eum
+**II** Principio adventus opinione eius concussi legatos ad eum
 
 societatem amicitiamque petentes miserunt. 2 Quos Agathocles ad cenam
 
@@ -132,7 +132,7 @@ totius insulae occupandae datam sibi existimantes magnis viribus eo
 
 traiciunt multasque civitates subigunt.
 
-III. Eo tempore et Pyrrus adversus Romanos bellum gerebat, 2 qui
+**III** Eo tempore et Pyrrus adversus Romanos bellum gerebat, 2 qui
 
 inploratus a Sicilia in auxilium, sicuti dictum est, cum Syracusas venisset,
 
@@ -178,7 +178,7 @@ destruens, quae cumulaverat, Siciliensi ruinae naufragium maris et foedam
 
 adversus Romanos pugnam turpemque ab Italia discessum adiecit.
 
-IV. Post profectionem a Sicilia Pyrri magistratus Hiero creatur, cuius
+**IV** Post profectionem a Sicilia Pyrri magistratus Hiero creatur, cuius
 
 tanta moderatio fuit, 2 ut consentiente omnium civitatium favore dux
 

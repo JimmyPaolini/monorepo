@@ -1,7 +1,7 @@
 ---
 author: aurelius-victor
 text_metadata:
-  source_url: https://www.thelatinlibrary.com/victor.ill.html
+  source_url: https://www.thelatinlibrary.com/victor/victor.ill.html
 title: De Viris Illustribus
 type: text
 author_metadata:

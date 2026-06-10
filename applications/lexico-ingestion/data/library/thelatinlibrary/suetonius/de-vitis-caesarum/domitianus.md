@@ -58,7 +58,7 @@ singula, contrectatis multorum uxoribus, Domitiam Longinam Aelio
 
 Lamiae nuptam etiam in matrimonium abduxit, atque uno die super
 
-XX. officia urbana aut peregrina distribuit, mirari se Vespasiano
+**XX** officia urbana aut peregrina distribuit, mirari se Vespasiano
 
 dictitante, quod successorem non et sibi mitteret.
 

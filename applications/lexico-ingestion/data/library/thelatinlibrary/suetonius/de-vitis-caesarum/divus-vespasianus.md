@@ -74,7 +74,7 @@ Vespasianus natus est in Sabinis ultra Reate vico modico, cui
 
 nomen est Phalacrinae, XV. kal. Dec. vesperi, Q. Sulpicio Camerino
 
-C. Poppaeo Sabino cons., quinquennio ante quam Augustus excederet;
+**C** Poppaeo Sabino cons., quinquennio ante quam Augustus excederet;
 
 educatus sub paterna avia Tertulla in praediis Cosanis. Quare
 

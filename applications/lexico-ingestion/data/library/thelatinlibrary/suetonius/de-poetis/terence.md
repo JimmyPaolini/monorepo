@@ -12,7 +12,7 @@ author_metadata:
 
 ## Terence
 
-I. PUBLIUS TERENTIUS AFER, Carthagine natus, serviit Romae Terentio
+**I** PUBLIUS TERENTIUS AFER, Carthagine natus, serviit Romae Terentio
 
 Lucano senatori, a quo ob ingenium et formam non institutus modo
 
@@ -58,7 +58,7 @@ Eorum ille opera ne domum quidem habuit conducticiam,
 
 Saltem ut esset quo referret obitum domini servulus."
 
-II. Scripsit comoedias sex, ex quibus primam "Andriam" cum aedilibus
+**II** Scripsit comoedias sex, ex quibus primam "Andriam" cum aedilibus
 
 daret, iussus ante Caecilio recitare, ad cenantem cum venisset, dictus est
 
@@ -82,7 +82,7 @@ quoque titulo ascribitur. Nam "Adelphorum" principium Varro etiam
 
 praefert principio Menandri.
 
-III. Non obscura fama est adiutum Terentium in scriptis a Laelio et
+**III** Non obscura fama est adiutum Terentium in scriptis a Laelio et
 
 Scipione, eamque ipse auxit numquam nisi leviter refutare conatus, ut in
 
@@ -124,7 +124,7 @@ proferret pronuntiasse versus qui sunt in "Heautontimorumeno":
 
 "Satis pol proterve me Syri promissa huc induxerunt."
 
-IV. Santra Terentium existimat, si modo in scribendo adiutoribus
+**IV** Santra Terentium existimat, si modo in scribendo adiutoribus
 
 indiguerit, non tam Scipione et Laelio uti potuisse, qui tunc adulescentuli
 
@@ -154,7 +154,7 @@ Iter hinc in Asiam fecit, et navem ut semel
 
 Conscendit, visus numquam est; sic vita vacat."
 
-V. Q. Cosconius redeuntem e Graecia perisse in mari dicit cum C. et VIII.
+**V** Q. Cosconius redeuntem e Graecia perisse in mari dicit cum C. et VIII.
 
 fabulis conversis a Menandro. Ceteri mortuum esse in Arcadia Stymphali
 

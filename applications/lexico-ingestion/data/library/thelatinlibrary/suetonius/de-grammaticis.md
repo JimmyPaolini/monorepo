@@ -10,7 +10,7 @@ author_metadata:
 
 ## De Grammaticis
 
-[1] Grammatica Romae ne in usu quidem olim, nedum in
+**[1]** Grammatica Romae ne in usu quidem olim, nedum in
 
 honore ullo erat, rudi scilicet ac bellicosa etiam tum civitate, necdum
 
@@ -30,7 +30,7 @@ iure arguit L. Cotta non poetae sed posterioris Ennii esse, cuius etiam
 
 de augurandi disciplina volumina ferantur.
 
-[2] Primus igitur, quantum opinamur, studium grammaticae
+**[2]** Primus igitur, quantum opinamur, studium grammaticae
 
 in urbem intulit Crates Mallotes, Aristarchi aequalis, qui missus ad senatum
 
@@ -58,9 +58,9 @@ familiaris sui, quas legisse se apud Archelaum Pompeius Lenaeus, apud Philocomum
 
 Valerius Cato praedicant.
 
-[3] Instruxerunt auxeruntque ab omni parte grammaticam
+**[3]** Instruxerunt auxeruntque ab omni parte grammaticam
 
-L. Aelius Lanuvinus generque Aelii Ser. Cloduis, uterque eques Ro. multique
+**L** Aelius Lanuvinus generque Aelii Ser. Cloduis, uterque eques Ro. multique
 
 ac varii et in doctrina et in re p. usus. Aelius cognomine duplici fuit;
 
@@ -90,7 +90,7 @@ Daphnidem, quem Laevius Melissus per cavillationem nominis Panos agasma
 
 dicit, DCC. milibus nummum a Q. M. Catulo emptum ac brevi manumissum,
 
-L. Apuleium ab Eficio Calvino equite Romano praedivite quadringenis annuis
+**L** Apuleium ab Eficio Calvino equite Romano praedivite quadringenis annuis
 
 *conductos multos edoceret. Nam in provincias quoque grammatica penetraverat,
 
@@ -102,7 +102,7 @@ hic quidem ad ultimam aetatem, et cum iam non ingressu modo deficeretur
 
 sed et visu.
 
-[4] Appellatio grammaticorum Graeca consuetudine invaluit;
+**[4]** Appellatio grammaticorum Graeca consuetudine invaluit;
 
 sed initio litterati vocabantur. Cornelius quoque Nepos libello quo distinguit
 
@@ -158,7 +158,7 @@ Clari professores et de quibus prodi possit aliquid dum taxat a nobis
 
 fere hi fuerunt.
 
-[5] Sevius Nicanor primus ad famam dignationemque docendo
+**[5]** Sevius Nicanor primus ad famam dignationemque docendo
 
 pervenit, fecitque praeter commentarios, quorum tamen pars maxima intercepta
 
@@ -174,7 +174,7 @@ Sunt qui tradant, ob infamiam quandam eum in Sardiniam secessisse ibique
 
 diem obisse.
 
-[6] Aurelius Opilius, Epicurei cuiusdam libertus, philosophiam
+**[6]** Aurelius Opilius, Epicurei cuiusdam libertus, philosophiam
 
 primo, deinde rhetoricam, novissime grammaticam docuit. Dimissa autem schola,
 
@@ -192,7 +192,7 @@ animadverto, verum ipse id per duas effert in parastichide libelli, qui
 
 inscribitur pinax.
 
-[7] M. Antonius. Gnipho, ingenuus in Gallia natus sed
+**[7]** M. Antonius. Gnipho, ingenuus in Gallia natus sed
 
 expositus, a nutritore suo manumissus institutusque (Alexandriae quidem,
 
@@ -220,7 +220,7 @@ reliquisse eum tradit; nam cetera scripta discipulorum eius esse, non ipsius;
 
 in quibus et suum alicubi reperiri nomen, ut hoc *.
 
-[8] M. Pompilius Andronicus, natione Syrus, studia Epicureae
+**[8]** M. Pompilius Andronicus, natione Syrus, studia Epicureae
 
 sectae desidiosior in professione grammatica habebatur minusque idoneus
 
@@ -236,7 +236,7 @@ nummum cuidam vendere, quos libros Orbilius suppressos redemisse se dicit
 
 vulgandosque curasse nomine auctoris.
 
-[9] L. Orbilius Pupillus Beneventanus, morte parentum,
+**[9]** L. Orbilius Pupillus Beneventanus, morte parentum,
 
 una atque eadem die inimicorum dolo interemptorum, destitutus, primo apparituram
 
@@ -282,7 +282,7 @@ habitu sedentis ac palliati, appositis duobus scriniis. Reliquit filium
 
 Orbilium, et ipsum grammaticum professorem.
 
-[10] L. Ateius Philologus libertinus Athenis est natus.
+**[10]** L. Ateius Philologus libertinus Athenis est natus.
 
 Hunc Capito Ateius notas iuris consultus inter grammaticos rhetorem,
 
@@ -328,7 +328,7 @@ sciat nihil aliud suadere quam ut noto civilique et proprio sermone utatur,
 
 vitetque maxime obscuritatem Sallustii et audaciam in translationibus.
 
-[11] P. Valerius Cato, ut nonnulli tradiderunt, Burseni
+**[11]** P. Valerius Cato, ut nonnulli tradiderunt, Burseni
 
 cuiusdam libertus ex Gallia; ipse libello, cui est titulus Indignatio,
 
@@ -392,7 +392,7 @@ Unim difficile expedire nomen.
 
 En cor Zenodoti, en iecur Cratetis!
 
-[12] Cornelius Epicadus, L. Cornelii Syllae dictatoris
+**[12]** Cornelius Epicadus, L. Cornelii Syllae dictatoris
 
 libertus calatorque in sacerdotio augurali, filio quoque eius Fausto gratissimus
 
@@ -400,7 +400,7 @@ fuit; quare nunquam non utriusque se libertum edidit. Librum autem, quem
 
 Sylla novissimum de rebus suis imperfectum reliquerat, ipse supplevit.
 
-[13] Staberius Eros suomet aere emptus de catasta et
+**[13]** Staberius Eros suomet aere emptus de catasta et
 
 propter litterarum studium manumissus, docuit inter ceteros Brutum et Cassium.
 
@@ -408,7 +408,7 @@ Sunt qui tradant tanta eum honestate praeditum, ut temporibus Syllanis
 
 proscriptorum liberos gratis et sine mercede ulla in disciplinam receperit.
 
-[14] Curtius Nicia haesit CN. Pompeio et C. Memmio;
+**[14]** Curtius Nicia haesit CN. Pompeio et C. Memmio;
 
 sed cum codicillos Memmi ad Pompei uxorem de stupro pertulisset, proditus
 
@@ -436,7 +436,7 @@ iucundus esse non] possit? Voluntas tamen eius mihi grata est. Huius
 
 de Lucilio libros etiam Santra comprobat.
 
-[15] Lenaeus, Magni Pompei libertus et pene omnium
+**[15]** Lenaeus, Magni Pompei libertus et pene omnium
 
 expeditionum comes, defuncto eo filiisque eius schola se sustentavit; docuitque
 
@@ -456,7 +456,7 @@ liberalibus disciplinis, pretium suum retulisse, verum ob ingenium atque
 
 doctrinam gratis manumissus.
 
-[16] Q. Caecilius Epirota, Tusculi natus, libertus
+**[16]** Q. Caecilius Epirota, Tusculi natus, libertus
 
 Attici equitis Romani, ad quem sunt Ciceronis epistolae, cum filiam patroni
 
@@ -476,7 +476,7 @@ praelegere coepisse, quod etiam Domitii Marsi versiculus indicat:
 
 Epirota, tenellorum nutricula vatum.
 
-[17] M. Verrius Flaccus libertinus docendi genere maxime
+**[17]** M. Verrius Flaccus libertinus docendi genere maxime
 
 claruit. Namque ad exercitanda discentium ingenia aequales inter se committere
 
@@ -496,7 +496,7 @@ habet Praeneste, in superiore fori parte circa hemicyclium, in quo fastos
 
 a se ordinatos et marmoreo parieti incisos publicarat.
 
-[18] L. Crassicius, genere Tarentinus, ordinis libertini,
+**[18]** L. Crassicius, genere Tarentinus, ordinis libertini,
 
 cognomine Pasicles, mox Pansam se transnominavit. Hic initio circa scenam
 
@@ -518,7 +518,7 @@ filium, ut Verrio quoque Flacco compararetur, dimissa repente schola, transiit
 
 ad Q. Sexti philosophi sectam.
 
-[19] Scribonius Aphrodisius, Orbilii servus atque discipulus,
+**[19]** Scribonius Aphrodisius, Orbilii servus atque discipulus,
 
 mox a Scribonia Libonis filia, quae prior Augusti uxor fuerat, redemptus
 
@@ -526,7 +526,7 @@ et manumissus, docuit quo Verrius tempore, cuius etiam libris de orthographia
 
 rescripsit, non sine insectatione studiorum morumque eius.
 
-[20] C. Iulius Hyginus, Augusti libertus, natione Hispanus,
+**[20]** C. Iulius Hyginus, Augusti libertus, natione Hispanus,
 
 (nonnulli Alexandrinum putant et a Caesare puerum Romam adductum Alexandria
 
@@ -544,7 +544,7 @@ quoad vixerit, sustentatum. Huius libertus fuit Iulius Modestus, in studiis
 
 atque doctrina vestigia patroni secutus.
 
-[21] C. Melissus, Spoleti natus ingenuus, sed ob discordiam
+**[21]** C. Melissus, Spoleti natus ingenuus, sed ob discordiam
 
 parentum expositus, cura et industria educatoris sui altiora studia percepit,
 
@@ -564,7 +564,7 @@ componere instituit, absolvitque C et L, quibus et alios diversi operis
 
 postea addidit. Fecit et novum genus togatarum inscripsitque trabeatas.
 
-[22] M. Pomponius Marcellus, sermonis Latini exactor
+**[22]** M. Pomponius Marcellus, sermonis Latini exactor
 
 molestissimus, in advocatione quadam (nam interdum et causas agebat) soloecismum
 
@@ -588,7 +588,7 @@ Qui caput ad levam didicit, glossemata nobis
 
 Praecipit: os nullum, vel potius pugilis!
 
-[23] Q. Remmius Palaemon, Vicetinus, mulieris verna, primo,
+**[23]** Q. Remmius Palaemon, Vicetinus, mulieris verna, primo,
 
 ut ferunt, textrinum, deinde herilem filium dum comitatur in scholam, litteras
 
@@ -628,7 +628,7 @@ quanquam refugiens devitare non posset. Vis tu, inquit, magister,
 
 quotiens festinantem aliquem vides, abligurire?
 
-[24] M. Valerius Probus, Berytius, diu centuriatum
+**[24]** M. Valerius Probus, Berytius, diu centuriatum
 
 petiit, donec taedio ad studia se contulit. Legerat in provincia quosdam
 

@@ -1,7 +1,7 @@
 ---
 author: augustus
 text_metadata:
-  source_url: https://www.thelatinlibrary.com/resgestae.html
+  source_url: https://www.thelatinlibrary.com/augustus/resgestae.html
 title: Res Gestae I
 type: text
 author_metadata:
@@ -18,7 +18,7 @@ subiecit, et impensarum quas in rem publicam populumque Romanum fecit,
 
 incisarum in duabus aheneis pilis, quae sunt Romae positae, exemplar subiectum.
 
-[1] Annos undeviginti natus exercitum privato consilio et privata impensa
+**[1]** Annos undeviginti natus exercitum privato consilio et privata impensa
 
 comparavi, per quem rem publicam a dominatione factionis oppressam in
 
@@ -34,11 +34,11 @@ eodem anno me consulem, cum cos. uterque bello cecidisset, et triumvirum rei
 
 publicae constituendae creavit.
 
-[2] Qui parentem meum trucidaverunt, eos in exilium expuli iudiciis legitimis
+**[2]** Qui parentem meum trucidaverunt, eos in exilium expuli iudiciis legitimis
 
 ultus eorum facinus, et postea bellum inferentis rei publicae vici bis acie.
 
-[3] Bella terra et mari civilia externaque toto in orbe terrarum saepe gessi,
+**[3]** Bella terra et mari civilia externaque toto in orbe terrarum saepe gessi,
 
 victorque omnibus veniam petentibus civibus peperci. Externas gentes, quibus
 
@@ -52,7 +52,7 @@ trecenta, et iis omnibus agros adsignavi aut pecuniam pro praemiis militiae
 
 dedi. Naves cepi sescentas praeter eas, si quae minores quam triremes fuerunt.
 
-[4] Bis ovans triumphavi, tris egi curulis triumphos et appellatus sum viciens
+**[4]** Bis ovans triumphavi, tris egi curulis triumphos et appellatus sum viciens
 
 et semel imperator. Cum autem pluris triumphos mihi senatus decrevisset, iis
 
@@ -70,7 +70,7 @@ reges aut regum liberi novem. Consul fueram terdeciens, cum scribebam haec, et
 
 agebam septimum et tricensimum tribuniciae potestatis.
 
-[5] Dictaturam et apsenti et praesenti mihi delatam et a populo et a senatu, M.
+**[5]** Dictaturam et apsenti et praesenti mihi delatam et a populo et a senatu, M.
 
 Marcello et L. Arruntio consulibus non accepi. Non recusavi in summa frumenti
 
@@ -80,7 +80,7 @@ periclo praesenti populum universum liberarem impensa et cura mea. Consulatum
 
 quoque tum annuum et perpetuum mihi delatum non recepi.
 
-[6] Consulibus M. Vinicio et Q. Lucretio et postea P. Lentulo et Cn. Lentulo et
+**[6]** Consulibus M. Vinicio et Q. Lucretio et postea P. Lentulo et Cn. Lentulo et
 
 tertium Paullo Fabio Maximo et Q. Tuberone senatu populoque Romano
 
@@ -92,7 +92,7 @@ voluit, per tribuniciam potestatem perfeci, cuius potestatis conlegam et ipse
 
 ultro quinquiens a senatu depoposci et accepi.
 
-[7] Triumvirum rei publicae constituendae fui per continuos annos decem.
+**[7]** Triumvirum rei publicae constituendae fui per continuos annos decem.
 
 Princeps senatus fui usque ad eum diem quo scripseram haec per annos
 
@@ -100,7 +100,7 @@ quadraginta. Pontifex maximus, augur, XV virum sacris faciundis, VII virum
 
 epulonum, frater arvalis, sodalis Titius, fetialis fui.
 
-[8] Patriciorum numerum auxi consul quintum iussu populi et senatus. Senatum
+**[8]** Patriciorum numerum auxi consul quintum iussu populi et senatus. Senatum
 
 ter legi, et in consulatu sexto censum populi conlega M. Agrippa egi. Lustrum
 
@@ -124,7 +124,7 @@ exolescentia iam ex nostro saeculo reduxi et ipse multarum rerum exempla
 
 imitanda posteris tradidi.
 
-[9] Vota pro valetudine mea suscipi per consules et sacerdotes quinto quoque
+**[9]** Vota pro valetudine mea suscipi per consules et sacerdotes quinto quoque
 
 anno senatus decrevit. Ex iis votis saepe fecerunt vivo me ludos aliquotiens
 
@@ -134,7 +134,7 @@ et municipatim universi cives unanimiter continenter apud omnia pulvinaria pro
 
 valetudine mea supplicaverunt.
 
-[10] Nomen meum senatus consulto inclusum est in saliare carmen, et
+**[10]** Nomen meum senatus consulto inclusum est in saliare carmen, et
 
 sacrosanctus in perpetum ut essem et, quoad viverem, tribunicia potestas mihi
 
@@ -150,17 +150,17 @@ Romae nunquam fertur ante id tempus fuisse, recepi, P. Sulpicio C. Valgio
 
 consulibus.
 
-[11] Aram Fortunae Reducis ante aedes Honoris et Virtutis ad portam Capenam pro
+**[11]** Aram Fortunae Reducis ante aedes Honoris et Virtutis ad portam Capenam pro
 
 reditu meo senatus consacravit, in qua pontifices et virgines Vestales
 
 anniversarium sacrificium facere iussit eo die quo, consulibus Q. Lucretio et
 
-M. Vinicio, in urbem ex Syria redieram, et diem Augustalia ex cognomine nostro
+**M** Vinicio, in urbem ex Syria redieram, et diem Augustalia ex cognomine nostro
 
 appellavit.
 
-[12] Ex senatus auctoritate pars praetorum et tribunorum plebi cum consule Q.
+**[12]** Ex senatus auctoritate pars praetorum et tribunorum plebi cum consule Q.
 
 Lucretio et principibus viris obviam mihi missa est in Campaniam, qui honos ad
 
@@ -174,7 +174,7 @@ Martium, in qua magistratus et sacerdotes virginesque Vestales anniversarium
 
 sacrificium facere iussit.
 
-[13] Ianum Quinnum, quem claussum esse maiores nostri voluerunt cum per totum
+**[13]** Ianum Quinnum, quem claussum esse maiores nostri voluerunt cum per totum
 
 imperium populi Romani terra marique esset parta victoriis pax, cum priusquam
 
@@ -182,7 +182,7 @@ nascerer, a condita urbe bis omnino clausum fuisse prodatur memoriae, ter me
 
 principe senatus claudendum esse censuit.
 
-[14] Filios meos, quos iuvenes mihi eripuit fortuna, Gaium et Lucium Caesares
+**[14]** Filios meos, quos iuvenes mihi eripuit fortuna, Gaium et Lucium Caesares
 
 honoris mei caussa senatus populusque Romanus annum quintum et decimum agentis
 
@@ -194,7 +194,7 @@ Equites autem Romani universi principem iuventutis utrumque eorum parmis et
 
 hastis argenteis donatum appellaverunt.
 
-[15] Plebei Romanae viritim HS trecenos numeravi ex testamento patris mei et
+**[15]** Plebei Romanae viritim HS trecenos numeravi ex testamento patris mei et
 
 nomine meo HS quadringenos ex bellorum manibiis consul quintum dedi, iterum
 
@@ -220,7 +220,7 @@ tum frumentum publicum accipiebat dedi; ea millia hominum paullo plura quam
 
 ducenta fuerunt.
 
-[16] Pecuniam pro agris quos in consulatu meo quarto et postea consulibus M.
+**[16]** Pecuniam pro agris quos in consulatu meo quarto et postea consulibus M.
 
 Crasso et Cn. Lentulo Augure adsignavi militibus solvi municipis; ea summa
 
@@ -240,7 +240,7 @@ cos., militibus quos emeriteis stipendis in sua municipia deduxi praemia
 
 numerato persolvi, quam in rem sestertium quater milliens circiter impendi.
 
-[17] Quater pecunia mea iuvi aerarium, ita ut sestertium milliens et
+**[17]** Quater pecunia mea iuvi aerarium, ita ut sestertium milliens et
 
 quingentiens ad eos qui praerant aerario detulerim. Et M. Lepido et L. Arruntio
 
@@ -250,13 +250,13 @@ darentur militibus qui vicena aut plura stipendia emeruissent, HS milliens et
 
 septingentiens ex patrimonio meo detuli.
 
-[18] Ab eo anno quo Cn. et P. Lentulli consules fuerunt, cum deficerent
+**[18]** Ab eo anno quo Cn. et P. Lentulli consules fuerunt, cum deficerent
 
 vectigalia, tum centum milibus hominum tum pluribus multo frumentarios et
 
 nummarios tributus ex horreo et patrimonio meo edidi.
 
-[19] Curiam et continens ei Chalcidicum templumque Apollinis in Palatio cum
+**[19]** Curiam et continens ei Chalcidicum templumque Apollinis in Palatio cum
 
 porticibus, aedem divi Iuli, Lupercal, porticum ad circum Flaminium, quam sum
 
@@ -270,7 +270,7 @@ Aventino, aedem Larum in summa sacra via, aedem deum Penatium in Velia, aedem
 
 Iuventatis, aedem Matris Magnae in Palatio feci.
 
-[20] Capitolium et Pompeium theatrum utrumque opus impensa grandi refeci sine
+**[20]** Capitolium et Pompeium theatrum utrumque opus impensa grandi refeci sine
 
 ulla inscriptione nominis mei.  Rivos aquarum compluribus locis vetustate
 
@@ -290,7 +290,7 @@ refeci nullo praetermisso quod eo tempore refici debebat. Consul septimum viam
 
 Flaminiam ab urbe Ariminum refeci pontesque omnes praeter Mulvium et Minucium.
 
-[21] In privato solo Martis Ultoris templum forumque Augustum ex manibiis feci.
+**[21]** In privato solo Martis Ultoris templum forumque Augustum ex manibiis feci.
 
 Theatrum ad aedem Apollinis in solo magna ex parte a privatis empto feci, quod
 
@@ -308,7 +308,7 @@ appellatus sum, aurum coronarium non accepi decernentibus municipiis et colonis
 
 aeque benigne adque antea decreverant.
 
-[22] Ter munus gladiatorium dedi meo nomine et quinquiens filiorum meorum aut
+**[22]** Ter munus gladiatorium dedi meo nomine et quinquiens filiorum meorum aut
 
 nepotum nomine, quibus muneribus depugnaverunt hominum circiter decem millia.
 
@@ -330,7 +330,7 @@ dedi sexiens et viciens, quibus confecta sunt bestiarum circiter tria millia et
 
 quingentae.
 
-[23] Navalis proeli spectaclum populo dedi trans Tiberim in quo loco nunc nemus
+**[23]** Navalis proeli spectaclum populo dedi trans Tiberim in quo loco nunc nemus
 
 est Caesarum, cavato solo in longitudinem mille et octingentos pedes, in
 
@@ -340,7 +340,7 @@ biremes, plures autem minores inter se conflixerunt; quibus in classibus
 
 pugnaverunt praeter remiges millia hominum tria circiter.
 
-[24] In templis omnium civitatium provinciae Asiae victor ornamenta reposui
+**[24]** In templis omnium civitatium provinciae Asiae victor ornamenta reposui
 
 quae spoliatis templis is cum quo bellum gesseram privatim possederat. Statuae
 
@@ -350,7 +350,7 @@ circiter, quas ipse sustuli, exque ea pecunia dona aurea in aede Apollinis meo
 
 nomine et illorum qui mihi statuarum honorem habuerunt posui.
 
-[25] Mare pacavi a praedonibus. Eo bello servorum qui fugerant a dominis suis
+**[25]** Mare pacavi a praedonibus. Eo bello servorum qui fugerant a dominis suis
 
 et arma contra rem publicam ceperant triginta fere millia capta dominis ad
 
@@ -366,7 +366,7 @@ postea consules facti sunt ad eum diem quo scripta sunt haec LXXXIII,
 
 sacerdotes circiter CLXX.
 
-[26] Omnium provinciarum populi Romani quibus finitimae fuerunt gentes quae non
+**[26]** Omnium provinciarum populi Romani quibus finitimae fuerunt gentes quae non
 
 parerent imperio nostro fines auxi. Gallias et Hispanias provincias, item
 
@@ -392,7 +392,7 @@ In Aethiopiam usque ad oppidum Nabata perventum est, cui proxima est Meroe; in
 
 Arabiam usque in fines Sabaeorum processit exercitus ad oppidum Mariba.
 
-[27] Aegyptum imperio populi Romani adieci. Armeniam maiorem interfecto rege
+**[27]** Aegyptum imperio populi Romani adieci. Armeniam maiorem interfecto rege
 
 eius Artaxe cum possem facere provinciam malui maiorum nostrorum exemplo regnum
 
@@ -412,7 +412,7 @@ Cyrenasque, iam ex parte magna regibus ea possidentibus, et antea Siciliam et
 
 Sardiniam occupatas bello servili reciperavi.
 
-[28] Colonias in Africa, Sicilia, Macedonia, utraque Hispania, Achaia, Asia,
+**[28]** Colonias in Africa, Sicilia, Macedonia, utraque Hispania, Achaia, Asia,
 
 Syria, Gallia Narbonensi, Pisidia militum deduxi. Italia autem XXVIII colonias
 
@@ -420,7 +420,7 @@ quae vivo me celeberrimae et frequentissimae fuerunt mea auctoritate deductas
 
 habet.
 
-[29] Signa militaria complura per alios duces amissa devictis hostibus recepi
+**[29]** Signa militaria complura per alios duces amissa devictis hostibus recepi
 
 ex Hispania et Gallia et a Dalmateis. Parthos trium exercitum Romanorum spolia
 
@@ -428,7 +428,7 @@ et signa reddere mihi supplicesque amicitiam populi Romani petere coegi. Ea
 
 autem signa in penetrali quod est in templo Martis Ultoris reposui.
 
-[30] Pannoniorum gentes, quas ante me principem populi Romani exercitus nunquam
+**[30]** Pannoniorum gentes, quas ante me principem populi Romani exercitus nunquam
 
 adit, devictas per Ti. Neronem, qui tum erat privignus et legatus meus, imperio
 
@@ -440,7 +440,7 @@ postea trans Danuvium ductus exercitus meus Dacorum gentes imperia populi
 
 Romani perferre coegit.
 
-[31] Ad me ex India regum legationes saepe missae sunt non visae ante id tempus
+**[31]** Ad me ex India regum legationes saepe missae sunt non visae ante id tempus
 
 apud quemquam Romanorum ducem. Nostram amicitiam appetiverunt per legatos
 
@@ -448,7 +448,7 @@ Bastarnae Scythaeque et Sarmatarum qui sunt citra flumen Tanaim et ultra reges,
 
 Albanorumque rex et Hiberorum et Medorum.
 
-[32] Ad me supplices confugerunt reges Parthorum Tiridates et postea Phrates
+**[32]** Ad me supplices confugerunt reges Parthorum Tiridates et postea Phrates
 
 regis Phratis filius, Medorum Artavasdes, Adiabenorum Artaxares, Britannorum
 
@@ -464,13 +464,13 @@ principe quibus antea cum populo Romano nullum extiterat legationum et
 
 amicitiae commercium.
 
-[33] A me gentes Parthorum et Medorum per legatos principes earum gentium reges
+**[33]** A me gentes Parthorum et Medorum per legatos principes earum gentium reges
 
 petitos acceperunt: Parthi Vononem, regis Phratis filium, regis Orodis nepotem,
 
 Medi Ariobarzanem, regis Artavazdis filium, regis Ariobarzanis nepotem.
 
-[34] In consulatu sexto et septimo, postquam bella civilia exstinxeram, per
+**[34]** In consulatu sexto et septimo, postquam bella civilia exstinxeram, per
 
 consensum universorum potitus rerum omnium, rem publicam ex mea potestate in
 
@@ -488,7 +488,7 @@ Post id tempus auctoritate omnibus praestiti, potestatis autem nihilo amplius
 
 habui quam ceteri qui mihi quoque in magistratu conlegae fuerunt.
 
-[35] Tertium decimum consulatum cum gerebam, senatus et equester ordo
+**[35]** Tertium decimum consulatum cum gerebam, senatus et equester ordo
 
 populusque Romanus universus appellavit me patrem patriae, idque in vestibulo
 
@@ -498,11 +498,11 @@ mihi ex s.c. positae sunt censuit. Cum scripsi haec annum agebam septuagensumum
 
 sextum.
 
-[1] Summa pecuniae quam dedit vel in aerarium vel Plebei Romanae vel dimissis
+**[1]** Summa pecuniae quam dedit vel in aerarium vel Plebei Romanae vel dimissis
 
 militibus: denarium sexiens milliens.
 
-[2] Opera fecit nova aedem Martis, Iovis Tonantis et Feretri, Apollinis, divi
+**[2]** Opera fecit nova aedem Martis, Iovis Tonantis et Feretri, Apollinis, divi
 
 Iuli, Quirini, Minervae, Iunonis Reginae, Iovis Libertatis, Larum, deum
 
@@ -512,11 +512,11 @@ Chalcidico, forum Augustum, basilicam Iuliam, theatrum Marcelli, porticum
 
 Octaviam, nemus trans Tiberim Caesarum.
 
-[3] Refecit Capitolium sacrasque aedes numero octoginta duas, theatrum Pompei,
+**[3]** Refecit Capitolium sacrasque aedes numero octoginta duas, theatrum Pompei,
 
 aquarum rivos, viam Flaminiam.
 
-[4] Impensa praestita in spectacula scaenica et munera gladiatorum atque
+**[4]** Impensa praestita in spectacula scaenica et munera gladiatorum atque
 
 athletas et venationes et naumachiam et donata pecunia colonis, municipiis,
 

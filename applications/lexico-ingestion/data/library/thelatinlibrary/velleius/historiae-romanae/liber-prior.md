@@ -12,7 +12,7 @@ author_metadata:
 
 ## Liber Prior
 
-[1]  [Epeus] tempestate distractus a duce suo Nestore Metapontum condidit.  Teucer, non receptus a patre Telamone ob segnitiam non vindicatae fratris
+**[1]** [Epeus] tempestate distractus a duce suo Nestore Metapontum condidit.  Teucer, non receptus a patre Telamone ob segnitiam non vindicatae fratris
 
 iniuriae, Cyprum adpulsus cognominem patriae suae Salamina constituit:
 
@@ -42,7 +42,7 @@ incolis et mari nobile ac perpetuum a se nomen dedit. Post Orestis
 
 interitum filii eius Penthilus et Tisamenus regnavere triennio.
 
-[2] Tum fere anno octogesimo post Troiam captam, centesimo et vicesimo
+**[2]** Tum fere anno octogesimo post Troiam captam, centesimo et vicesimo
 
 quam Hercules ad deos excesserat, Pelopis progenies, quae omni hoc tempore
 
@@ -84,7 +84,7 @@ Exclusi ab Heraclidis Orestis liberi iactatique cum variis casibus tum
 
 saevitia maris quinto decimo anno sedem cepere circa Lesbum insulam.
 
-[3] Tum Graecia maximis concussa est motibus. Achaei ex Laconica pulsi
+**[3]** Tum Graecia maximis concussa est motibus. Achaei ex Laconica pulsi
 
 eas occupavere sedes, quas nunc obtinent; Pelasgi Athenas commigravere,
 
@@ -118,7 +118,7 @@ urbem et quasdam Ionum colonias iis nominibus appellat, quibus vocabantur
 
 aetate eius, multo post Ilium captum conditae.
 
-[4] Athenienses in Euboea Chalcida et Eretriam colonis occupavere,
+**[4]** Athenienses in Euboea Chalcida et Eretriam colonis occupavere,
 
 Lacedaemonii in Asia Magnesiam. Nec multo post Chalcidenses orti, ut
 
@@ -156,7 +156,7 @@ clarasque urbes condiderunt, Smymam, Cymen, Larissam, Myrinam Mytilenenque
 
 et alias urbes, quae sunt in Lesbo insula.
 
-[5] Clarissimum deinde Homeri inluxit ingenium, sine exemplo maximum, qui
+**[5]** Clarissimum deinde Homeri inluxit ingenium, sine exemplo maximum, qui
 
 magnitudine operis et fulgore carminum solus appellari poeta meruit;  2 in
 
@@ -178,7 +178,7 @@ EISIN"; hoc enim ut hominum, ita saeculorum notatur differentia. Quem si
 
 quis caecum genitum putat, omnibus sensibus orbus est.
 
-[6] Insequenti tempore imperium Asiaticum ab Assyriis, qui id obtinuerant
+**[6]** Insequenti tempore imperium Asiaticum ab Assyriis, qui id obtinuerant
 
 annis mille septuaginta, translatum est ad Medos, abhinc annos ferme
 
@@ -218,7 +218,7 @@ tempus et initium regis Nini Assyriorum, qui princeps rerum potitus est,
 
 intersunt anni MDCCCCXCV."
 
-[7] Huius temporis aequalis Hesiodus fuit, circa centum et viginti annos
+**[7]** Huius temporis aequalis Hesiodus fuit, circa centum et viginti annos
 
 distinctus ab Homeri aetate, vir perelegantis ingenii et mollissima
 
@@ -246,7 +246,7 @@ dixerim, vix crediderim tam mature tantam urbem crevisse, floruisse,
 
 concidisse, resurrexisse.
 
-[8] Clarissimum deinde omnium ludicrum certamen et ad excitandam corporis
+**[8]** Clarissimum deinde omnium ludicrum certamen et ad excitandam corporis
 
 animique virtutem efficacissimum Olympiorum initium habuit, auctorem
 
@@ -296,7 +296,7 @@ originem nomen patriciorum habet. Raptus virginum Sabinarum . . . * * *.
 
 hic magna pars libri perdita est
 
-[9]  * * * . . . quam timuerat hostis, expetit. Nam biennio adeo varia fortuna
+**[9]** * * * . . . quam timuerat hostis, expetit. Nam biennio adeo varia fortuna
 
 cum consulibus conflixerat, ut plerumque superior fuerit magnamque partem
 
@@ -346,7 +346,7 @@ sestertium aerario intulerit is, et omnium ante actorum comparationem
 
 amplitudine vicerit.
 
-[10] Per idem tempus, cum Antiochus Epiphanes, qui Athenis Olympieum
+**[10]** Per idem tempus, cum Antiochus Epiphanes, qui Athenis Olympieum
 
 inchoavit, tum rex Syriae, Ptolemaeum puerum Alexandriae obsideret, missus
 
@@ -390,7 +390,7 @@ fuit: quippe Fulvii censoris frater, et quidem consors, Cn. Fulvius senatu
 
 motus est ab iis censoribus.
 
-[11] Post victum captumque Persen, qui quadriennio post in libera
+**[11]** Post victum captumque Persen, qui quadriennio post in libera
 
 custodia Albae decessit, Pseudophilippus a mendacio simulatae originis
 
@@ -444,7 +444,7 @@ quartus candidatus consulatus, quem honorem adeptus est. Hoc est nimirum
 
 magis feliciter  de vita migrare quam mori.
 
-[12] Universa deinde instincta in bellum Achaia, cuius pars magna, ut
+**[12]** Universa deinde instincta in bellum Achaia, cuius pars magna, ut
 
 praediximus, eiusdem Metelli Macedonici virtute armisque fracta erat,
 
@@ -496,7 +496,7 @@ certamibus ortum ultra metum durat et ne in victis quidem deponitur neque
 
 ante invisum esse desinit quam esse desiit.
 
-[13] Ante triennium quam Carthago deleretur, M Cato, perpetuus diruendae
+**[13]** Ante triennium quam Carthago deleretur, M Cato, perpetuus diruendae
 
 eius auctor, L Censorino M. Manilio consulibus mortem obiit. Eodem anno,
 
@@ -536,7 +536,7 @@ rudem Corinthiorum intellectum quam in tantum  ea intellegi, et quin hac
 
 prudentia illa imprudentia decori publico fuerit convenientior.
 
-[14]  Cum facilius cuiusque rei in unam contracta species quam divisa
+**[14]** Cum facilius cuiusque rei in unam contracta species quam divisa
 
 temporibus oculis animisque inhaereat, statui priorem huius voluminis
 
@@ -600,7 +600,7 @@ Postque biennium deducta Valentia et sub adventum in Italiam Hannibalis
 
 Cremona atque Placentia.
 
-[15]  Deinde neque dum Hannibal in Italia moratur, neque proximis post
+**[15]** Deinde neque dum Hannibal in Italia moratur, neque proximis post
 
 excessum eius annis vacavit Romanis colonias condere, cum esset in bello
 
@@ -644,7 +644,7 @@ Neque facile memoriae mandaverim quae, nisi militans, post hoc tempus
 
 deducta sit.
 
-[16]  Cum haec particula operis velut formam propositi excesserit,
+**[16]** Cum haec particula operis velut formam propositi excesserit,
 
 quamquam intellego mihi in hac tam praecipiti festinatione, quae me rotae
 
@@ -686,7 +686,7 @@ discipulos clarum in oratoribus fuit? Adeo quidem artatum angustiis
 
 temporum, ut nemo memoria dignus alter ab altero videri nequiverint.
 
-[17]  Neque hoc in Graecis quam in Romanis evenit magis. Nam nisi aspera
+**[17]** Neque hoc in Graecis quam in Romanis evenit magis. Nam nisi aspera
 
 ac rudia repetas et inventi laudanda nomine, in Accio circaque eum Romana
 
@@ -740,7 +740,7 @@ nitamur, conquirimus, sequiturque ut frequens ac mobilis transitus maximum
 
 perfecti operis impedimentum sit.
 
-[18]  Transit admiratio ab conditione temporum et ad urbium. Una urbs
+**[18]** Transit admiratio ab conditione temporum et ad urbium. Una urbs
 
 Attica pluribus omnis eloquentiae quam universa Graecia operibus usque
 

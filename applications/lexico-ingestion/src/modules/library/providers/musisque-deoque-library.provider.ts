@@ -94,12 +94,12 @@ export class MusisqueDeoqueLibraryProvider {
           authorsMap.set(authorSlug, author);
         }
 
-        const workDto = new Text();
-        workDto.metadata = { sourceUrl: jsonPath };
-        workDto.title = rawTitle;
-        workDto.slug = titleSlug;
-        workDto.type = "text";
-        author.texts.push(workDto);
+        const textEntity = new Text();
+        textEntity.metadata = { sourceUrl: jsonPath };
+        textEntity.title = rawTitle;
+        textEntity.slug = titleSlug;
+        textEntity.type = "text";
+        author.texts.push(textEntity);
 
         const frontmatterObj: Record<string, unknown> = {
           author: authorSlug,

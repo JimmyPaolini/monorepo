@@ -14,7 +14,7 @@ author_metadata:
 
 **FRAGMENTA AD LIBROS VT VIDETUR CONTROVERSIARVM SPECTANTIA**
 
-**1** Quint. 9,2,42: Novi vero et praecipue declamatores audacius nec
+**1.** Quint. 9,2,42: Novi vero et praecipue declamatores audacius nec
 
 mehercule sine motu quodam imaginantur, ut Seneca in controversia, cuius
 
@@ -26,13 +26,13 @@ quocumque vis imprime�. et post paulo: aspice� inquit quod diu non
 
 credidisti. ego vero non video: nox oboritur et crassa caligo.�
 
-**2** 98 Nam et in totum iurare, nisi ubi necesse est, gravi viro parum
+**2.** 98 Nam et in totum iurare, nisi ubi necesse est, gravi viro parum
 
 convenit, et est a Seneca dictum eleganter non patronorum hoc esse sed
 
 testium.
 
-**3** Donati vita Vergiliana 29 Seneca tradidit Iulium Montanum poetam
+**3.** Donati vita Vergiliana 29 Seneca tradidit Iulium Montanum poetam
 
 solitum dicere involaturum se Vergilio quaedam, si et vocem posset et os
 
@@ -42,7 +42,7 @@ illo inanes esse mutosque.
 
 **FRAGMENTA HISTORIARV** M
 
-**4** Lact. inst. 7,15: Non inscite Seneca Romanae urbis tempora distribuit
+**4.** Lact. inst. 7,15: Non inscite Seneca Romanae urbis tempora distribuit
 
 in aetates. primam enim dixit infantiam sub rege Romulo fuisse, a quo et
 
@@ -76,7 +76,7 @@ consenuit, tamquam sustentare se ipsa non valeret, nisi adminiculo
 
 regentium uteretur.
 
-**5** Suet. Tib. 73 Seneca eum scribit intellecta defectione exemptum
+**5.** Suet. Tib. 73 Seneca eum scribit intellecta defectione exemptum
 
 anulum quasi alicui traditurum parumper tenuisse, dein rursus aptasse
 

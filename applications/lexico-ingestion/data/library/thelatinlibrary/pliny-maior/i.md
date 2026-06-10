@@ -14,209 +14,209 @@ author_metadata:
 
 **LIBRO II CONTINENTUR**
 
-[1]   An finitus sit mundus et an unus
+**[1]** An finitus sit mundus et an unus
 
-[2]   de forma eius
+**[2]** de forma eius
 
-[3]   de motu eius. cur mundus dicatur
+**[3]** de motu eius. cur mundus dicatur
 
-[4]   de elementis
+**[4]** de elementis
 
-[5]   de deo
+**[5]** de deo
 
-[6]   de siderum errantium natura
+**[6]** de siderum errantium natura
 
-[7]   de lunae et solis defectibus. de nocte
+**[7]** de lunae et solis defectibus. de nocte
 
-[8]   de magnitudine siderum
+**[8]** de magnitudine siderum
 
 [9-10]   quae quis invenerit in observatione caelesti
 
-[11]   de lunae motu
+**[11]** de lunae motu
 
-[12]   errantium motus et luminum canonica
+**[12]** errantium motus et luminum canonica
 
 [13-14]   quare eadem altior, alias propiora videantur
 
-[15]   catholica siderum errantium
+**[15]** catholica siderum errantium
 
-[16]   quae ratio colores eorum mutet
+**[16]** quae ratio colores eorum mutet
 
-[17]   solis motus. dierum inaequalitatis ratio
+**[17]** solis motus. dierum inaequalitatis ratio
 
-[18]   quare fulmina Iovi adsignentur
+**[18]** quare fulmina Iovi adsignentur
 
-[19]   intervalla siderum
+**[19]** intervalla siderum
 
-[20]   de sideribus musica
+**[20]** de sideribus musica
 
-[21]   de mundo geometrica
+**[21]** de mundo geometrica
 
 [22-23]   de repentinis sideribus. de cometis. natura et situs et genera eorum
 
-[24]   Hipparchea de sideribus agnoscendis
+**[24]** Hipparchea de sideribus agnoscendis
 
-[25]   de caelstibus prodigiis per exempla historica lampades, bolides
+**[25]** de caelstibus prodigiis per exempla historica lampades, bolides
 
-[26]   trabes caelestes, chasma caeli
+**[26]** trabes caelestes, chasma caeli
 
-[27]   de caeli coloribus de flamma caelesti
+**[27]** de caeli coloribus de flamma caelesti
 
 [28-29]   de coronis caelestibusde circulis repentinis
 
-[31]   plures soles
+**[31]** plures soles
 
-[32]   plures lunae
+**[32]** plures lunae
 
-[33]   dierum modo noctibus lux
+**[33]** dierum modo noctibus lux
 
-[34]   clipei ardentes
+**[34]** clipei ardentes
 
-[35]   ostentum caeli semel notatum
+**[35]** ostentum caeli semel notatum
 
-[36]   de discursu stellarum
+**[36]** de discursu stellarum
 
-[37]   de stellis quae Castore vocantur
+**[37]** de stellis quae Castore vocantur
 
-[38]   de aëre
+**[38]** de aëre
 
 [39-41]   de statis tempestatibus
 
-[40]   de caniculae ortu
+**[40]** de caniculae ortu
 
-[41]   vis temporum anni stata
+**[41]** vis temporum anni stata
 
-[42]   de incertis tempestatibus. de imbribus et quare lapidibus pluat
+**[42]** de incertis tempestatibus. de imbribus et quare lapidibus pluat
 
-[43]   de tonitiribus et fulgetris
+**[43]** de tonitiribus et fulgetris
 
 [44-48]   qua ratione echo reddatur, ventorum genera, naturae, observations
 
-[49]   ecnephias, typhon
+**[49]** ecnephias, typhon
 
-[50]   turbines, presteres, vertices, alia prodigiosa genera tempestatum
+**[50]** turbines, presteres, vertices, alia prodigiosa genera tempestatum
 
 [51-56]   de fulminibus
 
-[52]   quibus in terris non cadant et quare genera fulgurum et miracula
+**[52]** quibus in terris non cadant et quare genera fulgurum et miracula
 
-[53]   Etrusca observatio in iis et Romana
+**[53]** Etrusca observatio in iis et Romana
 
-[54]   de fulminibus evocandis
+**[54]** de fulminibus evocandis
 
-[55]   catholica fulgurum
+**[55]** catholica fulgurum
 
-[56]   quae numquam feriantur
+**[56]** quae numquam feriantur
 
-[57]   lacte pluisse, sanguine, carne, ferro, lana, lateribus coctis
+**[57]** lacte pluisse, sanguine, carne, ferro, lana, lateribus coctis
 
-[58]   portenta
+**[58]** portenta
 
-[59]   de lapidibus caelo cadentibus. Anaxagorea de his
+**[59]** de lapidibus caelo cadentibus. Anaxagorea de his
 
-[60]   arcus caelestis
+**[60]** arcus caelestis
 
-[61]   natura grandinis, nivis, pruinae, nebulae, roris. nubium imagines
+**[61]** natura grandinis, nivis, pruinae, nebulae, roris. nubium imagines
 
-[62]   proprietates caeli in locis
+**[62]** proprietates caeli in locis
 
-[63]   natura terrae
+**[63]** natura terrae
 
-[64]   de forma eius
+**[64]** de forma eius
 
 [65-66]   an sint antipodes. quomodo aqua terrae innexa. quae ratio fluminum
 
-[67]   an circumdatus terrae oceanus
+**[67]** an circumdatus terrae oceanus
 
-[68]   quae portio terrae habitetur
+**[68]** quae portio terrae habitetur
 
-[69]   mediam esse mundi terram
+**[69]** mediam esse mundi terram
 
-[70]   de obliquitate zonarum
+**[70]** de obliquitate zonarum
 
-[71]   de inaequalitate climatum
+**[71]** de inaequalitate climatum
 
-[72]   ubi eclipses non appareant et quare
+**[72]** ubi eclipses non appareant et quare
 
-[73]   quae ratio diurnae lucis in terris
+**[73]** quae ratio diurnae lucis in terris
 
-[74]   gnomonica de ea re
+**[74]** gnomonica de ea re
 
 [75-76]   ubi et quando nullae umbrae, ubi bis anno. ubi in contrarium umbrae ferantur
 
-[77]   [ubi longissimi dies, ubi brevissimi]
+**[77]** [ubi longissimi dies, ubi brevissimi]
 
-[78]   de primo horologio
+**[78]** de primo horologio
 
-[79]   quo modo observentur dies
+**[79]** quo modo observentur dies
 
-[80]   differentia gentium ad rationem mundi
+**[80]** differentia gentium ad rationem mundi
 
 [81-83]   de terrae motibus. de terrae hiatibus. signa motus futuri
 
-[84]   auxilia contra motus futuros
+**[84]** auxilia contra motus futuros
 
-[85]   portenta terrarum semel tradita
+**[85]** portenta terrarum semel tradita
 
-[86]   miracula terrae motus
+**[86]** miracula terrae motus
 
 [87-88]   quibus locis maria recesserint. insularum enascentium ratio
 
-[89]   quae et quibus temporibus enatae sint
+**[89]** quae et quibus temporibus enatae sint
 
-[90]   quas terras interruperint maria
+**[90]** quas terras interruperint maria
 
-[91]   quae insulae continenti adiunctae sint
+**[91]** quae insulae continenti adiunctae sint
 
-[92]   quae terrae in totum mari permutatae
+**[92]** quae terrae in totum mari permutatae
 
-[93]   quae terrae ipsae se minuerint
+**[93]** quae terrae ipsae se minuerint
 
-[94]   urbes haustae mari
+**[94]** urbes haustae mari
 
-[95]   de spiraculis
+**[95]** de spiraculis
 
-[96]   de terris semper trementibus. de insulis semper fluctuantibus
+**[96]** de terris semper trementibus. de insulis semper fluctuantibus
 
-[97]   quibus locis non inpluat
+**[97]** quibus locis non inpluat
 
-[98]   acervata terrarum miracula
+**[98]** acervata terrarum miracula
 
-[99]   qua ratione aestus maris accedant et recedant
+**[99]** qua ratione aestus maris accedant et recedant
 
-[100]   ubi aestus extra rationem idem faciant
+**[100]** ubi aestus extra rationem idem faciant
 
 [101-105]   miracula maris
 
-[102]   otentia lunae ad terrena et marina
+**[102]** otentia lunae ad terrena et marina
 
-[103]   quae solis
+**[103]** quae solis
 
-[104]   quare salsum mare
+**[104]** quare salsum mare
 
-[105]   ubi altissimum mare
+**[105]** ubi altissimum mare
 
-[106]   mirabilia fontium et fluminum
+**[106]** mirabilia fontium et fluminum
 
 [107-110]   ignium et aquarum iuncta miracula
 
-[108]   de maltha
+**[108]** de maltha
 
-[109]   de naphtha
+**[109]** de naphtha
 
-[110]   quae loca semper ardeant
+**[110]** quae loca semper ardeant
 
-[111]   ignium per se miracula
+**[111]** ignium per se miracula
 
-[112]   terrae universae mensura
+**[112]** terrae universae mensura
 
-[113]   harmonica mundi ratio
+**[113]** harmonica mundi ratio
 
 **Summa:**  res et historiae et observationes CCCCXVII
 
 **EX AUCTORIBUS**
 
-M. Varrone. Sulpicio Gallo. Tito Caesare Imperatore. Q. Tuberone. Tullione Tirone. L. Pisone. T. Livio. Cornelio Nepote. Seboso. Caelio Antipatro. Fabiano. Antiate. Muciano. Caecina qui de Etrusca disciplina. Tarquitio qui item. Iulio Aquila qui item. Sergio Plauto.
+**M** Varrone. Sulpicio Gallo. Tito Caesare Imperatore. Q. Tuberone. Tullione Tirone. L. Pisone. T. Livio. Cornelio Nepote. Seboso. Caelio Antipatro. Fabiano. Antiate. Muciano. Caecina qui de Etrusca disciplina. Tarquitio qui item. Iulio Aquila qui item. Sergio Plauto.
 
 **EXTERNIS**
 
@@ -226,45 +226,45 @@ Hipparcho. Timaeo. Sosigene. Petosiri. Nechepso. Pythagoricis. Posidonio. Anaxim
 
 situs, gentes, maria, oppida, portus, montes, flumina, mensurae, populi qui sunt aut fuerunt
 
-[3]   Baeticae
+**[3]** Baeticae
 
-[4]   Hispaniae citerioris
+**[4]** Hispaniae citerioris
 
-[5]   Narbonensis provinciae
+**[5]** Narbonensis provinciae
 
 [6-10]   Italiae usque Locros
 
-[9]   Tiberis, Roma
+**[9]** Tiberis, Roma
 
-[11]   insularum LXIIII, in his Baliarum
+**[11]** insularum LXIIII, in his Baliarum
 
-[12]   Corsicae
+**[12]** Corsicae
 
-[13]   Sardinia
+**[13]** Sardinia
 
-[14]   Siciliae
+**[14]** Siciliae
 
 [15-20]   Italiae Locris usque Ravennam
 
-[20]   de Pado
+**[20]** de Pado
 
 [21-22]   Italiae trans Padum
 
-[23]   Histriae
+**[23]** Histriae
 
-[24]   Alpium et gentium Alpinarum
+**[24]** Alpium et gentium Alpinarum
 
-[25]   Illyrici, Liburniae
+**[25]** Illyrici, Liburniae
 
-[26]   Dalmatiae
+**[26]** Dalmatiae
 
-[27]   Noricorum
+**[27]** Noricorum
 
-[28]   Pannoniae
+**[28]** Pannoniae
 
-[29]   Moesiae
+**[29]** Moesiae
 
-[30]   insularum Ionii et Hadriatici
+**[30]** insularum Ionii et Hadriatici
 
 **Summa:**  oppida et gentes ...
 
@@ -298,45 +298,45 @@ situs, gentes, maria, oppida, portus, montes, flumina, mensurae, populi qui sunt
 
 [14-15]   Thessaliae
 
-[16]   Magnesia
+**[16]** Magnesia
 
-[17]   Macedoniae
+**[17]** Macedoniae
 
-[18]   Thraciae
+**[18]** Thraciae
 
 [19-23]   insularum ante eas terras, inter quas
 
-[20]   Creta
+**[20]** Creta
 
-[21]   Euboea
+**[21]** Euboea
 
-[22]   Cyclades
+**[22]** Cyclades
 
-[23]   Sporades
+**[23]** Sporades
 
-[24]   Hellesponti, Ponti, Maeotidis
+**[24]** Hellesponti, Ponti, Maeotidis
 
 [25-26]   Daciae, Sarmatiae, Scythia
 
-[27]   insularum Ponti
+**[27]** insularum Ponti
 
 [28-29]   Germaniae
 
-[30]   insularum in Gallico oceano XCVI, quas inter Britannia
+**[30]** insularum in Gallico oceano XCVI, quas inter Britannia
 
-[31]   Belgicae Galliae
+**[31]** Belgicae Galliae
 
-[32]   Lugdunensis Galliae
+**[32]** Lugdunensis Galliae
 
-[33]   Aquitanicae Galliae
+**[33]** Aquitanicae Galliae
 
-[34]   citerioris Hispaniae ab oceano
+**[34]** citerioris Hispaniae ab oceano
 
-[35]   Lusitaniae
+**[35]** Lusitaniae
 
-[36]   insularum in mari Atlantico
+**[36]** insularum in mari Atlantico
 
-[37]   universae Europae mensura
+**[37]** universae Europae mensura
 
 **Summa:**  oppida et gentes ...
 
@@ -360,75 +360,75 @@ Polybio. Hecataeo. Hellanico. Damaste. Eudoxo. Dicaearcho. Timosthene. Eratosthe
 
 **LIBRO V CONTINENTUR**
 
-[1]   Mauretaniarum
+**[1]** Mauretaniarum
 
-[2]   Numidiae
+**[2]** Numidiae
 
-[3]   Africae
+**[3]** Africae
 
-[4]   Syrtium
+**[4]** Syrtium
 
 [5-6]   Cyrenaicae
 
-[7]   insularum circa Africam
+**[7]** insularum circa Africam
 
-[8]   aversorum Africae
+**[8]** aversorum Africae
 
 [9-11]   Aegypti
 
-[12]   Chorae, Thebaidis, Nili Arabiae quae est ad mare Aegyptium
+**[12]** Chorae, Thebaidis, Nili Arabiae quae est ad mare Aegyptium
 
 [13-14]   Idumaeae, Syriae, Palaestines, Samariae
 
-[15]   Iudaeae
+**[15]** Iudaeae
 
-[17]   Phoenices
+**[17]** Phoenices
 
 [18-19]   Syriae Coeles, Syriae Antiochiae
 
 [20-21]   Euphratis
 
-[22]   Cilicae et iunctarum gentium
+**[22]** Cilicae et iunctarum gentium
 
-[23]   Isauricae, Omanadum
+**[23]** Isauricae, Omanadum
 
-[24]   Pisidiae
+**[24]** Pisidiae
 
-[25]   Lycaoniae
+**[25]** Lycaoniae
 
-[26]   Pamphyliae
+**[26]** Pamphyliae
 
-[27]   Tauri montis
+**[27]** Tauri montis
 
-[28]   Lyciae
+**[28]** Lyciae
 
-[29]   Cariae
+**[29]** Cariae
 
-[31]   Ioniae
+**[31]** Ioniae
 
-[32]   Aeolidis
+**[32]** Aeolidis
 
-[33]   Troadis et iunctarum gentium
+**[33]** Troadis et iunctarum gentium
 
 [34-39]   insularum ante Asiam CCXII. in iis
 
-[35]   Cypri
+**[35]** Cypri
 
-[36]   Rhodi, Coi
+**[36]** Rhodi, Coi
 
-[37]   Sami
+**[37]** Sami
 
-[38]   Chii
+**[38]** Chii
 
-[39]   Lesbi
+**[39]** Lesbi
 
-[40]   Hellespontus, Mysia
+**[40]** Hellespontus, Mysia
 
-[41]   Phrygia
+**[41]** Phrygia
 
-[42]   Galatia et iunctae gentes
+**[42]** Galatia et iunctae gentes
 
-[43]   Bithynia
+**[43]** Bithynia
 
 **Summa:**  oppida et gentes ...
 
@@ -454,81 +454,81 @@ Iuba rege. Hecataeo. Hellanico. Damaste. Dicaearcho. Baetone. Timosthene. Philon
 
 situs, gentes, maria, oppida, portus, montes, flumina, mensurae, populi qui sunt aut fuerunt
 
-[1]   Ponti, Mariandynorum
+**[1]** Ponti, Mariandynorum
 
-[2]   Paphlagonum
+**[2]** Paphlagonum
 
 [3-8]   Cappadocum
 
-[4]   Themiscyrena regio et in ea gentes. Heniochi
+**[4]** Themiscyrena regio et in ea gentes. Heniochi
 
-[5]   regio Colica et gentes. Achaeorum gentes. ceterae eodem tractu gentes
+**[5]** regio Colica et gentes. Achaeorum gentes. ceterae eodem tractu gentes
 
-[6]   Bosporus Cimmerius
+**[6]** Bosporus Cimmerius
 
-[7]   Maeotis. gentes circa Maeotim
+**[7]** Maeotis. gentes circa Maeotim
 
-[9]   Armenia minor, Armenia maior
+**[9]** Armenia minor, Armenia maior
 
-[10]   Cyrus fluvius, Araxes fluvius
+**[10]** Cyrus fluvius, Araxes fluvius
 
-[11]   Albania, Hiberia
+**[11]** Albania, Hiberia
 
-[12]   et iunctae portae Caucasiae
+**[12]** et iunctae portae Caucasiae
 
-[13]   insulae in Ponto
+**[13]** insulae in Ponto
 
-[14]   gentes a Scythico oceano
+**[14]** gentes a Scythico oceano
 
-[15]   Caspium et Hyrcanium mare
+**[15]** Caspium et Hyrcanium mare
 
-[16]   Adiabene
+**[16]** Adiabene
 
-[17]   Media, portae Caspiae
+**[17]** Media, portae Caspiae
 
-[18]   gentes circa Hyrcanium mare
+**[18]** gentes circa Hyrcanium mare
 
-[19]   Scytharum gentes
+**[19]** Scytharum gentes
 
-[20]   situs ab oceano Eoo. Seres
+**[20]** situs ab oceano Eoo. Seres
 
 [21-23]   Indi
 
-[22]   Ganges
+**[22]** Ganges
 
-[23]   Indus
+**[23]** Indus
 
-[24]   Taprobane
+**[24]** Taprobane
 
-[25]   Ariani et iunctae gentes
+**[25]** Ariani et iunctae gentes
 
-[26]   navigationes in Indiam
+**[26]** navigationes in Indiam
 
-[27]   Carmania
+**[27]** Carmania
 
-[28]   sinus Persicus
+**[28]** sinus Persicus
 
-[29]   Parthorum regna
+**[29]** Parthorum regna
 
 [30-31]   Mesopotamia
 
-[31]   Tigris
+**[31]** Tigris
 
-[32]   Arabia
+**[32]** Arabia
 
-[33]   sinus maris Rubri
+**[33]** sinus maris Rubri
 
-[34]   Trogodytice
+**[34]** Trogodytice
 
-[35]   Aethiopia
+**[35]** Aethiopia
 
-[36]   insulae Aethiopici maris
+**[36]** insulae Aethiopici maris
 
-[37]   de iis Fortunatis
+**[37]** de iis Fortunatis
 
-[38]   terrae per mensuras conparatae
+**[38]** terrae per mensuras conparatae
 
-[39]   digestio terrarum in parallelos et umbras pares
+**[39]** digestio terrarum in parallelos et umbras pares
 
 **Summa:**  oppida MCXCV
 
@@ -546,7 +546,7 @@ situs, gentes, maria, oppida, portus, montes, flumina, mensurae, populi qui sunt
 
 **EX AUCTORIBUS**
 
-M. Agrippa. M. Varrone. Varrone Atacino. Cornelio Nepote. Hygino. L. Vetere. Mela Pomponio. Domitio Corbulone. Licinio Muciano. Claudio Caesare. Arruntio. Seboso. Fabricio Tusco. T. Livio filio. Seneca. Nigidio.
+**M** Agrippa. M. Varrone. Varrone Atacino. Cornelio Nepote. Hygino. L. Vetere. Mela Pomponio. Domitio Corbulone. Licinio Muciano. Claudio Caesare. Arruntio. Seboso. Fabricio Tusco. T. Livio filio. Seneca. Nigidio.
 
 **EXTERNIS**
 
@@ -554,125 +554,125 @@ Iuba rege. Hecataeo. Hellanico. Damaste. Eudoxo. Dicaearcho. Baetone. Timosthene
 
 **LIBRO VII CONTINENTUR**
 
-[2]   gentium mirabiles figurae
+**[2]** gentium mirabiles figurae
 
-[3]   prodigiosi partus
+**[3]** prodigiosi partus
 
-[4]   de homine generando. pariendi tempora per inlustria exempla a mensibus VII ad XIII
+**[4]** de homine generando. pariendi tempora per inlustria exempla a mensibus VII ad XIII
 
-[5]   signa sexus in gravidis pertinentia ante partum
+**[5]** signa sexus in gravidis pertinentia ante partum
 
-[6]   monstruosi partus
+**[6]** monstruosi partus
 
-[7]   excisi utero
+**[7]** excisi utero
 
-[8]   qui sint vopisci
+**[8]** qui sint vopisci
 
-[9]   de conceptu hominum. de generatione hominum
+**[9]** de conceptu hominum. de generatione hominum
 
-[10]   similitudinum exempla
+**[10]** similitudinum exempla
 
-[11]   numerosissimae subolis exempla
+**[11]** numerosissimae subolis exempla
 
-[12]   ad quos annos generatio
+**[12]** ad quos annos generatio
 
-[13]   mensum in feminis miracula
+**[13]** mensum in feminis miracula
 
-[14]   quae ratio generandi
+**[14]** quae ratio generandi
 
-[15]   historica circa dentes. historica circa infantes
+**[15]** historica circa dentes. historica circa infantes
 
-[16]   magnitudinum exempla
+**[16]** magnitudinum exempla
 
-[17]   praeproperi infantes
+**[17]** praeproperi infantes
 
-[18]   insignia corporum
+**[18]** insignia corporum
 
-[19]   vires eximiae
+**[19]** vires eximiae
 
-[20]   velocitas praecipua
+**[20]** velocitas praecipua
 
-[21]   visus eximii
+**[21]** visus eximii
 
-[22]   auditus miraculum
+**[22]** auditus miraculum
 
-[23]   patientia corporis
+**[23]** patientia corporis
 
-[24]   memoria
+**[24]** memoria
 
-[25]   vigor animi
+**[25]** vigor animi
 
-[26]   clementia, animi magnitudo
+**[26]** clementia, animi magnitudo
 
-[27]   rerum gestarum claritas summa
+**[27]** rerum gestarum claritas summa
 
-[28]   tres summae virtutes in eodem, innocentia summa
+**[28]** tres summae virtutes in eodem, innocentia summa
 
-[29]   fortitudo summa
+**[29]** fortitudo summa
 
-[30]   ingenia praecipua
+**[30]** ingenia praecipua
 
-[31]   qui sapientissimi
+**[31]** qui sapientissimi
 
-[32]   praecepta vitae utilissima
+**[32]** praecepta vitae utilissima
 
-[33]   de divinatione
+**[33]** de divinatione
 
-[34]   vir optimus iudicatus
+**[34]** vir optimus iudicatus
 
-[35]   matronae pudicissimae
+**[35]** matronae pudicissimae
 
-[36]   summae pietatis exempla
+**[36]** summae pietatis exempla
 
 [37-39]   artibus excellentes
 
-[37]   astrologia, [gammatica], medicina
+**[37]** astrologia, [gammatica], medicina
 
-[38]   geometria, architectura
+**[38]** geometria, architectura
 
-[39]   pictura, scalptura aeraria, marmoraria, eboraria, caelatura
+**[39]** pictura, scalptura aeraria, marmoraria, eboraria, caelatura
 
-[40]   pretia hominum insignia
+**[40]** pretia hominum insignia
 
-[41]   de felicitate summa
+**[41]** de felicitate summa
 
-[42]   raritas continuationis in familiis
+**[42]** raritas continuationis in familiis
 
-[43]   varietatis exempla mirabilia bis proscriptus
+**[43]** varietatis exempla mirabilia bis proscriptus
 
-[44]   honorum exempla mirabilia
+**[44]** honorum exempla mirabilia
 
-[45]   decem res in uno felicissimae
+**[45]** decem res in uno felicissimae
 
-[46]   divi Augusti adversa
+**[46]** divi Augusti adversa
 
-[47]   quos di felicissimos iudicaverint
+**[47]** quos di felicissimos iudicaverint
 
-[48]   quem viventem ut deum coli iusserint. fulgur mirabile
+**[48]** quem viventem ut deum coli iusserint. fulgur mirabile
 
-[49]   de spatiis vitae longissimis
+**[49]** de spatiis vitae longissimis
 
-[50]   de varietate nascendi
+**[50]** de varietate nascendi
 
-[51]   in morbis exempla varia
+**[51]** in morbis exempla varia
 
-[52]   de morte
+**[52]** de morte
 
-[53]   qui elati revixerint
+**[53]** qui elati revixerint
 
-[54]   subitae mortis exempla
+**[54]** subitae mortis exempla
 
-[55]   de sepultura
+**[55]** de sepultura
 
-[56]   de manibus, de anima
+**[56]** de manibus, de anima
 
-[57]   quae quis in vita invenerit
+**[57]** quae quis in vita invenerit
 
-[58]   in quibus rebus primi gentium consensu. de antiquis litteris
+**[58]** in quibus rebus primi gentium consensu. de antiquis litteris
 
-[59]   quando primum tonsores
+**[59]** quando primum tonsores
 
-[60]   quando primum horologia
+**[60]** quando primum horologia
 
 **Summa:**  res et historiae et observationes DCCXLVII.
 
@@ -688,165 +688,165 @@ Herodoto. Aristea. Baetone. Isigono. Cratete. Agatharchide. Calliphane. Aristote
 
 [1-11]   de elephantis
 
-[1]   de sensu eorum
+**[1]** de sensu eorum
 
-[2]   quod primum iuncti
+**[2]** quod primum iuncti
 
-[3]   de docilitate eorum
+**[3]** de docilitate eorum
 
-[4]   mirabilia in factis eorum
+**[4]** mirabilia in factis eorum
 
-[5]   de natura ferarum ad pericula sua intellegenda
+**[5]** de natura ferarum ad pericula sua intellegenda
 
-[6]   quando primum in Italia visi elephanti
+**[6]** quando primum in Italia visi elephanti
 
-[7]   pugnae eorum
+**[7]** pugnae eorum
 
-[8]   quibus modis capiantur
+**[8]** quibus modis capiantur
 
-[9]   quibus domentur
+**[9]** quibus domentur
 
-[10]   de partu eorum et reliqua natura
+**[10]** de partu eorum et reliqua natura
 
-[11]   ubi nascantur. discordia eorum et draconum
+**[11]** ubi nascantur. discordia eorum et draconum
 
-[12]   de sollertia animalium
+**[12]** de sollertia animalium
 
-[13]   de draconibus
+**[13]** de draconibus
 
-[14]   mirae magnitudines serpentium
+**[14]** mirae magnitudines serpentium
 
-[15]   de Scythicis animalibus. de septentrionalibus, de bisontibus, uris
+**[15]** de Scythicis animalibus. de septentrionalibus, de bisontibus, uris
 
-[16]   alce, achli, bonaso
+**[16]** alce, achli, bonaso
 
 [17-21]   de leonibus
 
-[17]   quomodo gignantur
+**[17]** quomodo gignantur
 
-[18]   quae genera eorum
+**[18]** quae genera eorum
 
-[19]   quae propria naturae
+**[19]** quae propria naturae
 
-[20]   quis primus leontomachiam Romae, quis plurimos in ea leones donaverit
+**[20]** quis primus leontomachiam Romae, quis plurimos in ea leones donaverit
 
-[21]   quis primus Romanorum iunxerit. mirabilia in leonum factis
+**[21]** quis primus Romanorum iunxerit. mirabilia in leonum factis
 
-[22]   a dracone agnitus et servatus
+**[22]** a dracone agnitus et servatus
 
 [23-24]   de pantheris
 
-[24]   senatusconsultum et leges de Africanis. quis primus Romae Africanas et quando; quis plurimas
+**[24]** senatusconsultum et leges de Africanis. quis primus Romae Africanas et quando; quis plurimas
 
-[25]   de tigribus. quando primum Romae visa tigris. de natura earum fetu capto
+**[25]** de tigribus. quando primum Romae visa tigris. de natura earum fetu capto
 
-[26]   de camelis. genera eorum
+**[26]** de camelis. genera eorum
 
-[27]   de camelopardali. quando primum Romae visa
+**[27]** de camelopardali. quando primum Romae visa
 
-[28]   de chama. de cephis
+**[28]** de chama. de cephis
 
-[29]   de rhinocerote
+**[29]** de rhinocerote
 
-[30]   de lynce et sphingibus. de crocottis. de cercopithecis
+**[30]** de lynce et sphingibus. de crocottis. de cercopithecis
 
-[31]   Aethiopiae terrestria animalia
+**[31]** Aethiopiae terrestria animalia
 
-[32]   item Indiae. bestia visu interficiens
+**[32]** item Indiae. bestia visu interficiens
 
-[33]   de basiliscis serpentibus
+**[33]** de basiliscis serpentibus
 
-[34]   de lupis. unde fabula versipellium
+**[34]** de lupis. unde fabula versipellium
 
-[35]   serpentium genera
+**[35]** serpentium genera
 
-[36]   de ichneumone
+**[36]** de ichneumone
 
-[37]   de crocodilo
+**[37]** de crocodilo
 
-[38]   de scinco
+**[38]** de scinco
 
-[39]   de hippopotamio
+**[39]** de hippopotamio
 
-[40]   quis primus ostenderit eu Romae et crocodilum
+**[40]** quis primus ostenderit eu Romae et crocodilum
 
-[41]   medicinae ab animalibus repertae
+**[41]** medicinae ab animalibus repertae
 
-[42]   prognostica periculorum ex animalibus
+**[42]** prognostica periculorum ex animalibus
 
-[43]   gentes ab animalibus sublatae
+**[43]** gentes ab animalibus sublatae
 
 [44-45]   de hyaenis
 
-[45]   de corocottis. de mantichoris
+**[45]** de corocottis. de mantichoris
 
-[46]   de onagris
+**[46]** de onagris
 
 [47-49]   de aquaticis et iisdem terrestribus
 
-[50]   de fibris, de lutris. de vitulo marino, de stellionibus. de cervis
+**[50]** de fibris, de lutris. de vitulo marino, de stellionibus. de cervis
 
-[51]   de chamaeleonte
+**[51]** de chamaeleonte
 
-[52]   de reliquis colorem mutantibus, tarandro, lycaone, thoe
+**[52]** de reliquis colorem mutantibus, tarandro, lycaone, thoe
 
-[53]   de hystrice
+**[53]** de hystrice
 
-[54]   de ursis. de fetu eorum
+**[54]** de ursis. de fetu eorum
 
-[55]   de muribus Ponticis et Alpinis
+**[55]** de muribus Ponticis et Alpinis
 
-[56]   irenaceis
+**[56]** irenaceis
 
-[57]   leontophono. lynces
+**[57]** leontophono. lynces
 
-[58]   meles, sciuri
+**[58]** meles, sciuri
 
-[59]   de cocleis
+**[59]** de cocleis
 
-[60]   de lacertis
+**[60]** de lacertis
 
 [61-63]   canum natura
 
-[62]   exempla eorum circa dominos. qui proeliorum causa canes habuerint. de generatione eorum
+**[62]** exempla eorum circa dominos. qui proeliorum causa canes habuerint. de generatione eorum
 
-[63]   contra rabiem remedia
+**[63]** contra rabiem remedia
 
 [64-67]   equorum natura
 
-[66]   de ingeniis equorum. mirabilia quadrigarum, generatio equorum
+**[66]** de ingeniis equorum. mirabilia quadrigarum, generatio equorum
 
-[67]   vento concipientes
+**[67]** vento concipientes
 
-[68]   de asinis. generatio in hjj
+**[68]** de asinis. generatio in hjj
 
-[69]   mularum natura et reliquorum iumentorum
+**[69]** mularum natura et reliquorum iumentorum
 
 [70-71]   de bubus. generatio eorum
 
-[71]   Apis in Aegypto
+**[71]** Apis in Aegypto
 
 [72-75]   pecorum natura
 
-[73]   generatio eorum. genera lanae et colorum
+**[73]** generatio eorum. genera lanae et colorum
 
-[74]   genera vestium
+**[74]** genera vestium
 
-[76]   caprarum natura et generatio
+**[76]** caprarum natura et generatio
 
-[77]   suum item.
+**[77]** suum item.
 
-[78]   de feris subus. quis primus vivaria bestiarum instituerit
+**[78]** de feris subus. quis primus vivaria bestiarum instituerit
 
-[80]   de simiis
+**[80]** de simiis
 
-[81]   de leporum generibus
+**[81]** de leporum generibus
 
-[82]   de semiferis animalibus
+**[82]** de semiferis animalibus
 
-[83]   quae quibus locis animalia non sint
+**[83]** quae quibus locis animalia non sint
 
-[84]   ubi et quae advenis tantum noceant. ubi et quae indigenis tantum
+**[84]** ubi et quae advenis tantum noceant. ubi et quae indigenis tantum
 
 **Summa:**  res et historiae et observationes DCCLXXXVII.
 
@@ -860,187 +860,187 @@ Iuba rege. Polybio. Herodoto. Antipatro. Aristotele. Demetrio physico. Democrito
 
 **LIBRO IX CONTINENTUR**
 
-[1]   aquatilium naturae. quare maxima in mari animalia
+**[1]** aquatilium naturae. quare maxima in mari animalia
 
-[2]   Indici maris belvae
+**[2]** Indici maris belvae
 
-[3]   quae in quoque oceano maximae
+**[3]** quae in quoque oceano maximae
 
-[4]   de Tritonum et Nereidum figuris. de elephantorum marinorum figuris
+**[4]** de Tritonum et Nereidum figuris. de elephantorum marinorum figuris
 
-[5]   debalaenis, de orcis
+**[5]** debalaenis, de orcis
 
-[6]   an spirent pisces, an dormiant
+**[6]** an spirent pisces, an dormiant
 
 [7-10]   de delphinis
 
-[8]   quos amaverint
+**[8]** quos amaverint
 
-[9]   quibus in locis societate cum hominibus piscentur
+**[9]** quibus in locis societate cum hominibus piscentur
 
-[10]   alia circa eos mira
+**[10]** alia circa eos mira
 
-[11]   de thyrsionibus
+**[11]** de thyrsionibus
 
 [12-13]   de testudinibus
 
-[12]   quae genera aquatilium testudinum et quo modo capiantur
+**[12]** quae genera aquatilium testudinum et quo modo capiantur
 
-[13]   quis primus testudinem secare instituerit
+**[13]** quis primus testudinem secare instituerit
 
-[14]   digestio aquatilium per species
+**[14]** digestio aquatilium per species
 
-[15]   de vitulis marinis sive phocis. quae pilo careant et quo modo pariant
+**[15]** de vitulis marinis sive phocis. quae pilo careant et quo modo pariant
 
-[16]   quot genera piscium
+**[16]** quot genera piscium
 
-[17]   qui maximi pisces
+**[17]** qui maximi pisces
 
-[18]   cordylae, pelamydes, thynni. membratim ex his salsura. apolecti, cybia
+**[18]** cordylae, pelamydes, thynni. membratim ex his salsura. apolecti, cybia
 
-[19]   amiae, scombri
+**[19]** amiae, scombri
 
-[20]   qui non sint pisces in Ponto. qui intrent, qui alia redeant
+**[20]** qui non sint pisces in Ponto. qui intrent, qui alia redeant
 
-[21]   quare pisces extra aquam exiliant. gladius piscis
+**[21]** quare pisces extra aquam exiliant. gladius piscis
 
-[22]   esse auguria ex piscibus
+**[22]** esse auguria ex piscibus
 
-[23]   in quo genere piscium mares non sint
+**[23]** in quo genere piscium mares non sint
 
-[24]   qui calculum in capite habeant. qui lateant hieme. qui hieme non capiantur nisi statis diebus
+**[24]** qui calculum in capite habeant. qui lateant hieme. qui hieme non capiantur nisi statis diebus
 
-[25]   qui aestate lateant. qui siderentur pisces
+**[25]** qui aestate lateant. qui siderentur pisces
 
-[26]   de mugile
+**[26]** de mugile
 
-[27]   de acipensere
+**[27]** de acipensere
 
-[28]   de lupo, de asello
+**[28]** de lupo, de asello
 
-[29]   de scaro, de mustela
+**[29]** de scaro, de mustela
 
-[30]   mullorum genera. sargus
+**[30]** mullorum genera. sargus
 
-[31]   mirabilia piscium pretia
+**[31]** mirabilia piscium pretia
 
-[32]   non ubique eadem genera placere cenitari
+**[32]** non ubique eadem genera placere cenitari
 
-[33]   de branchis. de squamis
+**[33]** de branchis. de squamis
 
-[34]   vocales et sine branchis pisces
+**[34]** vocales et sine branchis pisces
 
-[35]   qui in terram exeant. tempora capturae
+**[35]** qui in terram exeant. tempora capturae
 
-[36]   digestio piscium in figuras corporum. rhomborum et passerum differentia. de longis piscibus
+**[36]** digestio piscium in figuras corporum. rhomborum et passerum differentia. de longis piscibus
 
-[37]   de piscium pinnis et natandi ratione
+**[37]** de piscium pinnis et natandi ratione
 
-[38]   anguillae
+**[38]** anguillae
 
-[39]   murenae
+**[39]** murenae
 
-[40]   planorum piscium genera
+**[40]** planorum piscium genera
 
-[41]   echeneis. effectus eius
+**[41]** echeneis. effectus eius
 
-[42]   qui pisces colorem mutent
+**[42]** qui pisces colorem mutent
 
-[43]   de hirundine. de pisce qui noctibus lucet. de cornuta. de dracone marino
+**[43]** de hirundine. de pisce qui noctibus lucet. de cornuta. de dracone marino
 
-[44]   de piscibus sanguine carentibus. qui pisces molles appellentur
+**[44]** de piscibus sanguine carentibus. qui pisces molles appellentur
 
-[45]   de saepia. de lolligine. de pectunculis. qui volent extra aquam
+**[45]** de saepia. de lolligine. de pectunculis. qui volent extra aquam
 
 [46-48]   de polypis
 
-[47]   de navigatore polypo
+**[47]** de navigatore polypo
 
-[49]   de navigatore nauplio
+**[49]** de navigatore nauplio
 
 [50-52]   crusta intecti
 
-[50]   de locustis
+**[50]** de locustis
 
-[51]   cancrorum genera. de pinotere. de echinis. de cocleis. de pectinibus
+**[51]** cancrorum genera. de pinotere. de echinis. de cocleis. de pectinibus
 
-[52]   concharum genera
+**[52]** concharum genera
 
-[53]   quanta luxuriae materia mari sit
+**[53]** quanta luxuriae materia mari sit
 
 [54-59]   de margaritis
 
-[54]   quomodo nascantur et ubi
+**[54]** quomodo nascantur et ubi
 
-[55]   quomodo inveniantur
+**[55]** quomodo inveniantur
 
-[56]   quae genera unionum
+**[56]** quae genera unionum
 
-[57]   quae observanda in iis. quae natura eorum
+**[57]** quae observanda in iis. quae natura eorum
 
-[58]   exempla circa eos
+**[58]** exempla circa eos
 
-[59]   quando primum in usum venerint Romae
+**[59]** quando primum in usum venerint Romae
 
 [60-65]   murcium natura
 
-[60]   de purpuris
+**[60]** de purpuris
 
-[61]   quae nationes purpurae
+**[61]** quae nationes purpurae
 
-[62]   quomodo ex his lanae tinguantur
+**[62]** quomodo ex his lanae tinguantur
 
-[63]   quando purpurae usus Romae, quando lati clavi et praetextae
+**[63]** quando purpurae usus Romae, quando lati clavi et praetextae
 
-[64]   de conchyliatis vestibus
+**[64]** de conchyliatis vestibus
 
-[65]   de amethysto tinguendo, de Tyrio, de hysgino, de cocco
+**[65]** de amethysto tinguendo, de Tyrio, de hysgino, de cocco
 
-[66]   de pina et pinotere
+**[66]** de pina et pinotere
 
-[67]   de sensu aquatilium. torpedo, pastinaca, scolopendrae, glanis. de ariete pisce
+**[67]** de sensu aquatilium. torpedo, pastinaca, scolopendrae, glanis. de ariete pisce
 
-[68]   de iis quae tertiam naturam habent animalium et fruticum. de urticis
+**[68]** de iis quae tertiam naturam habent animalium et fruticum. de urticis
 
-[69]   de spongeis. quae genera earum et ubi nascantur. animal esse eas
+**[69]** de spongeis. quae genera earum et ubi nascantur. animal esse eas
 
-[70]   de caniculis
+**[70]** de caniculis
 
-[71]   de iis quae silicea testa cluduntur. quae sine sensu ullo in mari. de reliquis sordium animalibus
+**[71]** de iis quae silicea testa cluduntur. quae sine sensu ullo in mari. de reliquis sordium animalibus
 
-[72]   de venenatis marinis
+**[72]** de venenatis marinis
 
-[73]   de morbis piscium
+**[73]** de morbis piscium
 
 [74-77]   de generatione eorum
 
-[74]   mira generationum
+**[74]** mira generationum
 
-[75]   qui intra se et ova pariant et animal
+**[75]** qui intra se et ova pariant et animal
 
-[76]   quorum in partu rumpatur venter, dein coeat
+**[76]** quorum in partu rumpatur venter, dein coeat
 
-[77]   qui volvas habeant. qui ipsi se ineant
+**[77]** qui volvas habeant. qui ipsi se ineant
 
-[78]   quae longissima vita piscium
+**[78]** quae longissima vita piscium
 
-[79]   quis primus vivaria piscium instituerit. de ostreis
+**[79]** quis primus vivaria piscium instituerit. de ostreis
 
-[81]   quis murenarum vivaria instituerit. insignia piscinarum
+**[81]** quis murenarum vivaria instituerit. insignia piscinarum
 
-[82]   quis primus coclearum vivaria instituerit
+**[82]** quis primus coclearum vivaria instituerit
 
-[83]   pisces terreni
+**[83]** pisces terreni
 
-[84]   de muribus in Nilo
+**[84]** de muribus in Nilo
 
-[85]   quo modo capiantur anthiae pisces
+**[85]** quo modo capiantur anthiae pisces
 
-[86]   de stellis marinis
+**[86]** de stellis marinis
 
-[87]   de dactylorum miraculis
+**[87]** de dactylorum miraculis
 
-[88]   de inimicitiis inter se aquatilium et amicitiis
+**[88]** de inimicitiis inter se aquatilium et amicitiis
 
 **Summa:**  res et historiae et observationes DCL.
 
@@ -1056,215 +1056,215 @@ Aristotele. Archelao rege. Callimacho. Democrito. Theophrasto. Thrasyllo. Hegesi
 
 volucrum naturae.
 
-[1]   de struthocamelo
+**[1]** de struthocamelo
 
-[2]   phoenice
+**[2]** phoenice
 
-[3]   aquilarum genera
+**[3]** aquilarum genera
 
-[4]   natura earum
+**[4]** natura earum
 
-[5]   quando legionum signa esse coeperint
+**[5]** quando legionum signa esse coeperint
 
-[6]   de aquila quae in rogum virginis se misit
+**[6]** de aquila quae in rogum virginis se misit
 
-[7]   vultur
+**[7]** vultur
 
-[8]   avis sanqualis. inmusulus
+**[8]** avis sanqualis. inmusulus
 
 [9-11]   accipitres
 
-[9]   buteo
+**[9]** buteo
 
-[10]   in quibus locis societate accipitres et homines aucupentur
+**[10]** in quibus locis societate accipitres et homines aucupentur
 
-[11]   quae avis sola a suo genere interimatur. quae avis singula ova pariat
+**[11]** quae avis sola a suo genere interimatur. quae avis singula ova pariat
 
-[12]   milui
+**[12]** milui
 
-[13]   digestio avium per genera
+**[13]** digestio avium per genera
 
-[14]   de inauspicatis avibus. cornices quibus mensibus non sint inauspicatae
+**[14]** de inauspicatis avibus. cornices quibus mensibus non sint inauspicatae
 
-[15]   de corvis
+**[15]** de corvis
 
-[16]   de bubone
+**[16]** de bubone
 
-[17]   aves quarum vita aut notitita intercidit
+**[17]** aves quarum vita aut notitita intercidit
 
-[18]   quae a causa nascantur
+**[18]** quae a causa nascantur
 
-[19]   de noctuis
+**[19]** de noctuis
 
-[20]   de pico Martio
+**[20]** de pico Martio
 
-[21]   de iis quae uncos ungues habent
+**[21]** de iis quae uncos ungues habent
 
 [22-25]   de iis quae digitos habent
 
-[22]   de pavonibus
+**[22]** de pavonibus
 
-[23]   quis primus pavonem cibi causa occiderit. quis farcire instituerit
+**[23]** quis primus pavonem cibi causa occiderit. quis farcire instituerit
 
-[24]   de gallinaceis
+**[24]** de gallinaceis
 
-[25]   quo modo castrentur. de gallinaceo locuto
+**[25]** quo modo castrentur. de gallinaceo locuto
 
-[26]   de ansere
+**[26]** de ansere
 
-[27]   quis primus iecur anserinum instituerit
+**[27]** quis primus iecur anserinum instituerit
 
-[28]   de Commageno
+**[28]** de Commageno
 
-[29]   chenalopeces, chenerotes, tetraones, otides
+**[29]** chenalopeces, chenerotes, tetraones, otides
 
-[30]   grues
+**[30]** grues
 
-[31]   de ciconiis
+**[31]** de ciconiis
 
 [32-33]   de palmipede reliquo genere
 
-[33]   de oloribus
+**[33]** de oloribus
 
-[33]   de avibus peregrinis quae veniunt: coturnices, glottides, cychramus, otus
+**[33]** de avibus peregrinis quae veniunt: coturnices, glottides, cychramus, otus
 
-[34]   de avibus nostris quae discedunt, et quo abeant: hirundines, turdi, merulae, sturni
+**[34]** de avibus nostris quae discedunt, et quo abeant: hirundines, turdi, merulae, sturni
 
-[35]   de avibus quae plumas amittunt in occultatione: turtur, palumbis
+**[35]** de avibus quae plumas amittunt in occultatione: turtur, palumbis
 
-[36]   quae avium perennes, quae semestres, quae trimestres. galguli, upupae
+**[36]** quae avium perennes, quae semestres, quae trimestres. galguli, upupae
 
-[37]   Memnonides
+**[37]** Memnonides
 
-[38]   Meleagrides
+**[38]** Meleagrides
 
-[39]   Seleucides
+**[39]** Seleucides
 
-[40]   ibis
+**[40]** ibis
 
-[41]   quae quibus locis aves non sint
+**[41]** quae quibus locis aves non sint
 
 [42-45]   quae mutent colorem et vocem
 
-[42]   de oscinum gre
+**[42]** de oscinum gre
 
-[43]   de luscinis
+**[43]** de luscinis
 
-[44]   de melancoryphis. erithaci, phoenicuri
+**[44]** de melancoryphis. erithaci, phoenicuri
 
-[45]   oenanthe, chlorio
+**[45]** oenanthe, chlorio
 
-[46]   tempus avium geniturae
+**[46]** tempus avium geniturae
 
-[47]   halcyones. dies earum navigabiles
+**[47]** halcyones. dies earum navigabiles
 
-[48]   de reliquo aquaticarum genere
+**[48]** de reliquo aquaticarum genere
 
 [49-51]   sollertia avium in nidis
 
-[49]   hirundinum opera mira. ripariae
+**[49]** hirundinum opera mira. ripariae
 
-[50]   acanthyllis
+**[50]** acanthyllis
 
-[51]   merops. de perdicibus
+**[51]** merops. de perdicibus
 
 [52-54]   de columbis. opera earum mirabilia et pretia
 
-[54]   differentiae volatus avium et incessus
+**[54]** differentiae volatus avium et incessus
 
-[55]   apodes sive cypseli
+**[55]** apodes sive cypseli
 
-[56]   de pastu avium. caprimulgi, platea
+**[56]** de pastu avium. caprimulgi, platea
 
-[57]   de ingeniis avium. carduelis, taurus, anthus
+**[57]** de ingeniis avium. carduelis, taurus, anthus
 
 [58-60]   de avibus quae locuntur
 
-[58]   psittaci
+**[58]** psittaci
 
-[59]   picae glandares
+**[59]** picae glandares
 
-[60]   propter corvum loquentem seditio populi Romani
+**[60]** propter corvum loquentem seditio populi Romani
 
-[61]   Diomediae
+**[61]** Diomediae
 
-[62]   quae animalia nihil discant
+**[62]** quae animalia nihil discant
 
-[63]   de potu avium. de porphyrione
+**[63]** de potu avium. de porphyrione
 
-[64]   himantopodes
+**[64]** himantopodes
 
 [65-66]   de pastu avium
 
-[66]   onocrotali
+**[66]** onocrotali
 
 [67-68]   de peregrinis avibus. Phalerides, Phasianae, Numidicae
 
-[68]   phoenicopteri, attagenae, phalacrocoraces, pyrrhocoraces, lagopodes
+**[68]** phoenicopteri, attagenae, phalacrocoraces, pyrrhocoraces, lagopodes
 
-[69]   de novis avibus. bibiones
+**[69]** de novis avibus. bibiones
 
-[70]   de fabulosis avibus
+**[70]** de fabulosis avibus
 
-[71]   qui gallinas farcire instituerint, quique hoc primi consules vetuerint
+**[71]** qui gallinas farcire instituerint, quique hoc primi consules vetuerint
 
-[72]   quis primus aviaria instituerit. de Aesopi patina
+**[72]** quis primus aviaria instituerit. de Aesopi patina
 
 [73-80]   generatio avium
 
-[73]   quae praeter aves ova gignant
+**[73]** quae praeter aves ova gignant
 
-[74]   ovorum genera et naturae
+**[74]** ovorum genera et naturae
 
-[75]   vitia et remedia incubantium
+**[75]** vitia et remedia incubantium
 
-[76]   Augustae ex ovis augurium
+**[76]** Augustae ex ovis augurium
 
-[77]   quales gallinae optimae
+**[77]** quales gallinae optimae
 
-[78]   morbis earum et remedia
+**[78]** morbis earum et remedia
 
-[79]   ardeolarum genera
+**[79]** ardeolarum genera
 
-[80]   quae sint ova urina, quae cynosura, quae hypenemia. quo modo optime serventur ova
+**[80]** quae sint ova urina, quae cynosura, quae hypenemia. quo modo optime serventur ova
 
-[81]   quae volucrum sola animalia pariat et lacte nutriat
+**[81]** quae volucrum sola animalia pariat et lacte nutriat
 
-[82]   quae terrestrium ova pariant. serpentium generatio
+**[82]** quae terrestrium ova pariant. serpentium generatio
 
 [83-87]   terrestrium omnium generatio
 
-[84]   quae sit animalium in uteris positio
+**[84]** quae sit animalium in uteris positio
 
-[85]   quorum animalium origo adhuc incerta sit
+**[85]** quorum animalium origo adhuc incerta sit
 
-[86]   de salamandris
+**[86]** de salamandris
 
-[87]   quae nascantur ex non genitis. quae nata nihil gignant. in quibus neuter sexus sit
+**[87]** quae nascantur ex non genitis. quae nata nihil gignant. in quibus neuter sexus sit
 
 [88-90]   de sensibus animalium
 
-[88]   tactus omnibus esse. item gustatus. quibus visus praecipuus, quibus odoratus, quibus auditus. de talpis. an ostreis auditus
+**[88]** tactus omnibus esse. item gustatus. quibus visus praecipuus, quibus odoratus, quibus auditus. de talpis. an ostreis auditus
 
-[89]   qui ex piscibus clarissime audiant
+**[89]** qui ex piscibus clarissime audiant
 
-[90]   qui ex piscibus maxime odorentur
+**[90]** qui ex piscibus maxime odorentur
 
 [91-93]   diversitas animalium in pastu
 
-[92]   quae venenis vivant,
+**[92]** quae venenis vivant,
 
-[93]   quae terra. quae fame aut siti non intereant
+**[93]** quae terra. quae fame aut siti non intereant
 
-[94]   de diversitate potus
+**[94]** de diversitate potus
 
-[95]   quae inter se dissideant
+**[95]** quae inter se dissideant
 
-[96]   amicitiam animalium esse et affectus animalium. exempla affectus serpentium
+**[96]** amicitiam animalium esse et affectus animalium. exempla affectus serpentium
 
-[97]   de somno animalium
+**[97]** de somno animalium
 
-[98]   quae somnient
+**[98]** quae somnient
 
 **Summa:**  res et historiae et observationes DCCXCIIII.
 
@@ -1278,263 +1278,263 @@ Homero. Phemonoe. Philemone. Boetho qui ornijogonian. Hyla qui de auguriis. Aris
 
 **LIBRO XI CONTINENTUR**
 
-[1]   insectorum animalium genera. subtilitas in his rebus naturae
+**[1]** insectorum animalium genera. subtilitas in his rebus naturae
 
-[2]   an spirent. an habeant sanguinem
+**[2]** an spirent. an habeant sanguinem
 
-[3]   de corpore eorum
+**[3]** de corpore eorum
 
 [4-23]   de apibus
 
-[5]   qui ordo in opere earum
+**[5]** qui ordo in opere earum
 
-[6]   quid sit in eo commosis. quid sit pissoceros. quid sit propolis
+**[6]** quid sit in eo commosis. quid sit pissoceros. quid sit propolis
 
-[7]   quid erithace sive sandaraca sive cerinthos
+**[7]** quid erithace sive sandaraca sive cerinthos
 
-[8]   ex quibus floribus opera fiant
+**[8]** ex quibus floribus opera fiant
 
-[9]   apium studio capti
+**[9]** apium studio capti
 
-[11]   de fucis
+**[11]** de fucis
 
-[12]   quae natura mellis
+**[12]** quae natura mellis
 
-[13]   quae optima mella
+**[13]** quae optima mella
 
-[14]   quae genera mellis in singulis locis
+**[14]** quae genera mellis in singulis locis
 
-[15]   quomodo probentur. de erice sive tetralice sive sisyro
+**[15]** quomodo probentur. de erice sive tetralice sive sisyro
 
-[16]   quomo apes generent
+**[16]** quomo apes generent
 
-[17]   quae regum in iis ratio
+**[17]** quae regum in iis ratio
 
-[18]   aliquando et laetum omen esse examinum
+**[18]** aliquando et laetum omen esse examinum
 
-[19]   genera apium
+**[19]** genera apium
 
-[20]   de morbis apium
+**[20]** de morbis apium
 
-[21]   quae iminica apibus
+**[21]** quae iminica apibus
 
-[22]   de continendis apibus
+**[22]** de continendis apibus
 
-[23]   de reparandis
+**[23]** de reparandis
 
-[24]   de vespis, crabronibus, quae animalia ex alieno suum faciant
+**[24]** de vespis, crabronibus, quae animalia ex alieno suum faciant
 
 [25-27]   de bombyce Assyria
 
-[26]   de bombyliis, necydalis. quae prima invenerit bombycinam vestem
+**[26]** de bombyliis, necydalis. quae prima invenerit bombycinam vestem
 
-[27]   de bombyce Coa. quo modo conficiatur Coa vestis
+**[27]** de bombyce Coa. quo modo conficiatur Coa vestis
 
 [28-29]   de araneis
 
-[28]   qui ex iis texant. quae materiae natura ad texendum
+**[28]** qui ex iis texant. quae materiae natura ad texendum
 
-[29]   generatio araneorum
+**[29]** generatio araneorum
 
-[30]   de scorpionibus
+**[30]** de scorpionibus
 
-[31]   de stellionibus
+**[31]** de stellionibus
 
-[32]   de cicadis. sine ore esse et sine exitu cibi
+**[32]** de cicadis. sine ore esse et sine exitu cibi
 
-[33]   de pinnis insectorum
+**[33]** de pinnis insectorum
 
-[34]   de scarabaeis. lampyrides. reliqua scarabaeorum generis
+**[34]** de scarabaeis. lampyrides. reliqua scarabaeorum generis
 
-[35]   de locustis
+**[35]** de locustis
 
-[36]   de formicis
+**[36]** de formicis
 
-[37]   chrysallides, asilus, papiliones
+**[37]** chrysallides, asilus, papiliones
 
-[38]   de iis animalibus quae ex ligno aut in ligno nascuntur
+**[38]** de iis animalibus quae ex ligno aut in ligno nascuntur
 
-[39]   sordium hominis animalia. quod animal minimum. aestatis animalia
+**[39]** sordium hominis animalia. quod animal minimum. aestatis animalia
 
-[40]   animal cui cibi exitus non sit
+**[40]** animal cui cibi exitus non sit
 
-[41]   tineae, cantharides, culices. nivis animal
+**[41]** tineae, cantharides, culices. nivis animal
 
-[42]   ignium animal, pyrallis sive pyrotocum
+**[42]** ignium animal, pyrallis sive pyrotocum
 
-[43]   hemerobion
+**[43]** hemerobion
 
 [44-97]   animalium omnium per singula membra naturae et historiae
 
-[44]   quae apices habeant, quae cristas
+**[44]** quae apices habeant, quae cristas
 
-[45]   cornuum genera. quibus mobilia
+**[45]** cornuum genera. quibus mobilia
 
-[46]   de capitibus. quibus nulla
+**[46]** de capitibus. quibus nulla
 
-[47]   de capillo
+**[47]** de capillo
 
-[48]   de ossibus capitis
+**[48]** de ossibus capitis
 
-[49]   de cerebro
+**[49]** de cerebro
 
-[50]   de auribus. quae aures non habeant. quae sine auribus et sine foraminibus audiant
+**[50]** de auribus. quae aures non habeant. quae sine auribus et sine foraminibus audiant
 
-[51]   de facie. de fronte. de superciliis
+**[51]** de facie. de fronte. de superciliis
 
 [52-57]   de oculis
 
-[52]   quae sine oculis animalia. quae singulos tantum oculos habeant
+**[52]** quae sine oculis animalia. quae singulos tantum oculos habeant
 
-[53]   de diversitate oculorum
+**[53]** de diversitate oculorum
 
-[54]   quae ratio visus. noctu videntes
+**[54]** quae ratio visus. noctu videntes
 
-[55]   de natura pupillae. quae non coniveant. quibus eruti oculi renascantur
+**[55]** de natura pupillae. quae non coniveant. quibus eruti oculi renascantur
 
-[56]   de palpebris. quibus non sint, quibus ab altera tantum parte sint
+**[56]** de palpebris. quibus non sint, quibus ab altera tantum parte sint
 
-[57]   quibus genae non sint
+**[57]** quibus genae non sint
 
-[58]   de malis
+**[58]** de malis
 
-[59]   de naribus
+**[59]** de naribus
 
-[60]   buccis, labris, mento, maxillis
+**[60]** buccis, labris, mento, maxillis
 
 [61-64]   de dentibus
 
-[61]   quae genera eorum. quibus non utraque parte sint, quibus cavi
+**[61]** quae genera eorum. quibus non utraque parte sint, quibus cavi
 
-[62]   de serpentium dentibus. de veneno earum. cui volucri dentes
+**[62]** de serpentium dentibus. de veneno earum. cui volucri dentes
 
-[63]   mirabilia dentium
+**[63]** mirabilia dentium
 
-[64]   aetas ruminantium ab iis
+**[64]** aetas ruminantium ab iis
 
-[65]   de lingua. quae sine ea. de ranarum sono. de palato
+**[65]** de lingua. quae sine ea. de ranarum sono. de palato
 
-[66]   de tonsillis. uva, epiglossis. arteriae, gula
+**[66]** de tonsillis. uva, epiglossis. arteriae, gula
 
-[67]   cervix, collum, spina
+**[67]** cervix, collum, spina
 
-[68]   guttur, fauces, stomachus
+**[68]** guttur, fauces, stomachus
 
 [69-71]   de corde
 
-[69]   sanguine, animo
+**[69]** sanguine, animo
 
-[70]   quibus maxima corda, quibus minima, quibus bina
+**[70]** quibus maxima corda, quibus minima, quibus bina
 
-[71]   quando in extis aspici coepta
+**[71]** quando in extis aspici coepta
 
-[72]   de pulmone. quibus maximus, quibus minimus. quibus nihil aliud quam pulmo intus. quae causa velocitatis animalium
+**[72]** de pulmone. quibus maximus, quibus minimus. quibus nihil aliud quam pulmo intus. quae causa velocitatis animalium
 
 [73-76]   de iocinere
 
-[73]   de capite extorum. haruspicum circa id observationes. quibus animalibus et in quibus locis bina iocinera
+**[73]** de capite extorum. haruspicum circa id observationes. quibus animalibus et in quibus locis bina iocinera
 
-[74]   de felle. ubi et quibus geminum. quibus animalium non sit. quibus animalium aliubi quam in iocinere
+**[74]** de felle. ubi et quibus geminum. quibus animalium non sit. quibus animalium aliubi quam in iocinere
 
-[75]   quae vis eius
+**[75]** quae vis eius
 
-[76]   quibus crescat cum luna et decrescat iocur. haruspicum circa ea observationes et prodigia mira
+**[76]** quibus crescat cum luna et decrescat iocur. haruspicum circa ea observationes et prodigia mira
 
-[77]   praecordia. risus natura
+**[77]** praecordia. risus natura
 
-[78]   de ventre. quibus nullus. quae sola vomant
+**[78]** de ventre. quibus nullus. quae sola vomant
 
-[79]   lactes, hillae, alvus, colon. quare quaedam insatiabilia animalia
+**[79]** lactes, hillae, alvus, colon. quare quaedam insatiabilia animalia
 
-[80]   de omento. de splene. quibus animalium non sint
+**[80]** de omento. de splene. quibus animalium non sint
 
-[81]   de renibus. ubi quaterni animalibus. quibus nulli
+**[81]** de renibus. ubi quaterni animalibus. quibus nulli
 
-[82]   pectus, costae
+**[82]** pectus, costae
 
-[83]   vesica. quibus animalium non sit. ilia. de membranis
+**[83]** vesica. quibus animalium non sit. ilia. de membranis
 
-[84]   uterus. de locis. de volvis. de suum volva, sumine
+**[84]** uterus. de locis. de volvis. de suum volva, sumine
 
-[85]   quae adipem, quae sebum habeant. de natura utriusque. quae non pinguescant
+**[85]** quae adipem, quae sebum habeant. de natura utriusque. quae non pinguescant
 
-[86]   de medullis. quibus non sint
+**[86]** de medullis. quibus non sint
 
-[87]   de ossibus. de spinis. quibus nec ossa nec spinae. cartilagines
+**[87]** de ossibus. de spinis. quibus nec ossa nec spinae. cartilagines
 
-[88]   de nervis. quae sine nervis
+**[88]** de nervis. quae sine nervis
 
 [89-92]   arteriae, venae
 
-[89]   quae nec venas nec arterias habeant. de sanguine. de sudore
+**[89]** quae nec venas nec arterias habeant. de sanguine. de sudore
 
-[90]   quorum celerrime sanguis spissetur, quorum non coeat. quibus crassissimus, quibus tenuissimus, quibus nullus
+**[90]** quorum celerrime sanguis spissetur, quorum non coeat. quibus crassissimus, quibus tenuissimus, quibus nullus
 
-[91]   quibus certis temporibus anni nullus
+**[91]** quibus certis temporibus anni nullus
 
-[92]   an in sanguine principatus
+**[92]** an in sanguine principatus
 
-[93]   de tergore
+**[93]** de tergore
 
-[94]   de pilis et vestitu tergoris. quibus os intus et pedes subtus hirti
+**[94]** de pilis et vestitu tergoris. quibus os intus et pedes subtus hirti
 
-[95]   de mammis. quae volucrum mammas habeant. notabilia animalium in uberibus
+**[95]** de mammis. quae volucrum mammas habeant. notabilia animalium in uberibus
 
 [96-97]   de lacte
 
-[96]   quod solum animal sugat in cursu. de colostris. de caseis. ex quibus non fiant. de coagulo. genera alimenti ex lacte
+**[96]** quod solum animal sugat in cursu. de colostris. de caseis. ex quibus non fiant. de coagulo. genera alimenti ex lacte
 
-[97]   genera caseorum
+**[97]** genera caseorum
 
 [98-113]   differentiae membrorum hominis a reliquis animalibus
 
-[99]   de bracchis, de digitis
+**[99]** de bracchis, de digitis
 
-[100]   de simiarum similitudine
+**[100]** de simiarum similitudine
 
-[101]   de unguibus
+**[101]** de unguibus
 
-[102]   de genibus et poplitibus
+**[102]** de genibus et poplitibus
 
-[103]   in quibus membris corporis humani religio
+**[103]** in quibus membris corporis humani religio
 
-[104]   varices
+**[104]** varices
 
-[105]   de gressu. de pedibus et cruribus
+**[105]** de gressu. de pedibus et cruribus
 
-[106]   de ungulis
+**[106]** de ungulis
 
-[107]   volucrum pedes
+**[107]** volucrum pedes
 
-[108]   pedes animalium a binis ad centenos. de pumilionibus
+**[108]** pedes animalium a binis ad centenos. de pumilionibus
 
-[109]   de genitalibus. de hermaphroditis
+**[109]** de genitalibus. de hermaphroditis
 
-[110]   de testibus. trium generum semiviri
+**[110]** de testibus. trium generum semiviri
 
-[111]   de caudis
+**[111]** de caudis
 
-[112]   de vocibus animalium
+**[112]** de vocibus animalium
 
-[113]   de agnascentibus membris
+**[113]** de agnascentibus membris
 
-[114]   vitalitiatis et morum notae ex membris hominum
+**[114]** vitalitiatis et morum notae ex membris hominum
 
-[115]   de anima. de victu
+**[115]** de anima. de victu
 
-[116]   quae veneno pasta ipsa non pereant et gustata necent
+**[116]** quae veneno pasta ipsa non pereant et gustata necent
 
-[117]   quibus de causis homo non concoquat. de remediis cruditatium
+**[117]** quibus de causis homo non concoquat. de remediis cruditatium
 
-[118]   quem ad modum corpulentia contingat. quem ad modum minuatur
+**[118]** quem ad modum corpulentia contingat. quem ad modum minuatur
 
-[119]   quae gustu famem et sitim sedent
+**[119]** quae gustu famem et sitim sedent
 
 **Summa:**  res et historiae et observationes MMDCC.
 
 **EX AUCTORIBUS**
 
-M. Varrone. Hygino. Scrofa. Saserna. Celso Cornelio. Aemilio Macro. Vergilio. Columella. Iulio Aquila qui de Etrusca disciplina scripsit. Tarquitio qui item. Umbricio Meliore qui item. Catone censorio. Domitio Calvino. Trogo. Melisso. Fabiano. Muciano. Nigidio. Mamilio. Oppio.
+**M** Varrone. Hygino. Scrofa. Saserna. Celso Cornelio. Aemilio Macro. Vergilio. Columella. Iulio Aquila qui de Etrusca disciplina scripsit. Tarquitio qui item. Umbricio Meliore qui item. Catone censorio. Domitio Calvino. Trogo. Melisso. Fabiano. Muciano. Nigidio. Mamilio. Oppio.
 
 **EXTERNIS**
 
@@ -1550,131 +1550,131 @@ arborum naturae.
 
 [3-5]   platanus
 
-[3]   quando primum in Italiam et unde
+**[3]** quando primum in Italiam et unde
 
-[4]   natura earum
+**[4]** natura earum
 
-[5]   miracula ex iis
+**[5]** miracula ex iis
 
-[6]   chamaeplatani. quis primus viridaria tondere instituerit
+**[6]** chamaeplatani. quis primus viridaria tondere instituerit
 
-[7]   malum Assyrium. quo modo seratur
+**[7]** malum Assyrium. quo modo seratur
 
 [8-17]   Indiae arbores
 
-[9]   quando primum hebenus Romae visa. quae genera eius
+**[9]** quando primum hebenus Romae visa. quae genera eius
 
-[10]   spina Indica
+**[10]** spina Indica
 
-[11]   ficus Indica
+**[11]** ficus Indica
 
 [12-13]   Indicarum arborum formae sine nominibus. liniferae Indorum arbores. arbor pala. pomum ariera
 
-[14]   piperis arbores. genera piperis. bregma. zingiberi sive zimpiberi
+**[14]** piperis arbores. genera piperis. bregma. zingiberi sive zimpiberi
 
-[15]   caryophyllon. lycium sive pyxacanthum Chironium
+**[15]** caryophyllon. lycium sive pyxacanthum Chironium
 
-[16]   machir
+**[16]** machir
 
-[17]   saccaron
+**[17]** saccaron
 
-[18]   arbores Arianae gentis, item Gedrosiae, item Hyrcaniae
+**[18]** arbores Arianae gentis, item Gedrosiae, item Hyrcaniae
 
-[19]   item Bactriae. bdellium sive brochum sive malachan sive maldacum. scordasti. in omnibus odoribus aut condimentis dicuntur adulterationes, experimenta, pretia
+**[19]** item Bactriae. bdellium sive brochum sive malachan sive maldacum. scordasti. in omnibus odoribus aut condimentis dicuntur adulterationes, experimenta, pretia
 
-[20]   Persidis arbores
+**[20]** Persidis arbores
 
-[21]   Persici marj insularum arbores. gossypinum arbor
+**[21]** Persici marj insularum arbores. gossypinum arbor
 
-[22]   cynas arbor. ex quibus arboribus lintea in oriente fiant
+**[22]** cynas arbor. ex quibus arboribus lintea in oriente fiant
 
-[23]   quo in loco arborum nullis folia decidant
+**[23]** quo in loco arborum nullis folia decidant
 
-[24]   quibus modis constent arborum fructus
+**[24]** quibus modis constent arborum fructus
 
-[25]   de costo
+**[25]** de costo
 
-[26]   de nardo. differentiae eius XII
+**[26]** de nardo. differentiae eius XII
 
-[27]   asaron
+**[27]** asaron
 
-[28]   amomum, amomis
+**[28]** amomum, amomis
 
-[29]   cardamomum
+**[29]** cardamomum
 
 [30-32]   de turifera regione
 
-[31]   de arboribus, quae tus ferunt
+**[31]** de arboribus, quae tus ferunt
 
-[32]   quae natura turis et quae genera
+**[32]** quae natura turis et quae genera
 
 [33-35]   de murra
 
-[34]   de arboribus quae ferunt eam
+**[34]** de arboribus quae ferunt eam
 
-[35]   natura et genera murrae
+**[35]** natura et genera murrae
 
-[36]   de mastiche
+**[36]** de mastiche
 
-[37]   de ladano, storbo
+**[37]** de ladano, storbo
 
-[38]   enhaemo
+**[38]** enhaemo
 
-[39]   bratus arbor
+**[39]** bratus arbor
 
-[40]   stobrum arbor
+**[40]** stobrum arbor
 
-[41]   de felicitate Arabiae
+**[41]** de felicitate Arabiae
 
-[42]   de cinnamo, cinnamomo, xylocinnamo
+**[42]** de cinnamo, cinnamomo, xylocinnamo
 
-[43]   casia
+**[43]** casia
 
-[44]   cancamum, tarum
+**[44]** cancamum, tarum
 
-[45]   serichatum, gabalium
+**[45]** serichatum, gabalium
 
-[46]   myrobalanus
+**[46]** myrobalanus
 
-[47]   phoenicobalanus
+**[47]** phoenicobalanus
 
-[48]   de calamo odorato. de iunco odorato
+**[48]** de calamo odorato. de iunco odorato
 
-[49]   Hammoniacum
+**[49]** Hammoniacum
 
-[50]   sphagnos
+**[50]** sphagnos
 
-[51]   cypros
+**[51]** cypros
 
-[52]   aspalathos sive erysisceptron
+**[52]** aspalathos sive erysisceptron
 
-[53]   maron
+**[53]** maron
 
-[54]   de balsamo, opobalsamo, xylobalsamo
+**[54]** de balsamo, opobalsamo, xylobalsamo
 
-[55]   styrax
+**[55]** styrax
 
-[56]   galbanum
+**[56]** galbanum
 
-[57]   de panace
+**[57]** de panace
 
-[58]   spondylion
+**[58]** spondylion
 
-[59]   de malobathro
+**[59]** de malobathro
 
-[60]   de omphacio
+**[60]** de omphacio
 
-[61]   bryon, oenanthe, massaris
+**[61]** bryon, oenanthe, massaris
 
-[62]   elate vel spathe
+**[62]** elate vel spathe
 
-[63]   cinnamum comacum
+**[63]** cinnamum comacum
 
 **Summa:**  res et historiae et observationes CCCCLXVIIII.
 
 **EX AUCTORIBUS**
 
-M. Varrone. Muciano. Vergilio. Fabiano. Seboso. Pomponio Mela. Fabio Proculo. Hygino. Trogo. Claudio Caesare. Cornelio Nepote. Sextio Nigro qui Graece de medicina scripsit. Cassio Hemina. L. Pisone. Tuditano. Antiate.
+**M** Varrone. Muciano. Vergilio. Fabiano. Seboso. Pomponio Mela. Fabio Proculo. Hygino. Trogo. Claudio Caesare. Cornelio Nepote. Sextio Nigro qui Graece de medicina scripsit. Cassio Hemina. L. Pisone. Tuditano. Antiate.
 
 **EXTERNIS**
 
@@ -1686,121 +1686,121 @@ de peregrinis arboribus.
 
 [1-5]   de unguentis
 
-[1]   quando coeperint
+**[1]** quando coeperint
 
-[2]   genera eorum et conpositiones XXI
+**[2]** genera eorum et conpositiones XXI
 
-[3]   diapasmata, magmata. probatio unguenti
+**[3]** diapasmata, magmata. probatio unguenti
 
-[4]   quanta in unguentis luxuria
+**[4]** quanta in unguentis luxuria
 
-[5]   quando primum Romanis in usu
+**[5]** quando primum Romanis in usu
 
 [6-9]   de palmis
 
-[7]   de natura earum
+**[7]** de natura earum
 
-[8]   quo modo serantur
+**[8]** quo modo serantur
 
-[9]   genera fructus earum et insignia XLVIIII
+**[9]** genera fructus earum et insignia XLVIIII
 
-[10]   Syriae arbores. pistacia, cottana, Damascena, myxae
+**[10]** Syriae arbores. pistacia, cottana, Damascena, myxae
 
-[11]   cedrus. quae arbores trium annorum fructum pariter habeant
+**[11]** cedrus. quae arbores trium annorum fructum pariter habeant
 
-[12]   terebinthus
+**[12]** terebinthus
 
-[13]   rhuus
+**[13]** rhuus
 
-[14]   Aegypti arbores. ficus Alexandrina
+**[14]** Aegypti arbores. ficus Alexandrina
 
-[15]   ficus Cypria
+**[15]** ficus Cypria
 
-[16]   siliqua ceraunia
+**[16]** siliqua ceraunia
 
-[17]   Persica arbor. quibus arboribus assidue subnascuntur fructus
+**[17]** Persica arbor. quibus arboribus assidue subnascuntur fructus
 
-[18]   cuci
+**[18]** cuci
 
-[19]   spina Aegyptia
+**[19]** spina Aegyptia
 
-[20]   cummium genera VIII. sarcocolla
+**[20]** cummium genera VIII. sarcocolla
 
 [21-27]   de papyro
 
-[21]   de charatae usu. quando coeperit
+**[21]** de charatae usu. quando coeperit
 
-[22]   quo modo fiat
+**[22]** quo modo fiat
 
-[23]   genera eius VIIII
+**[23]** genera eius VIIII
 
-[24]   probatio chartarum
+**[24]** probatio chartarum
 
-[25]   vitia chartarum
+**[25]** vitia chartarum
 
-[26]   de glutino chartarum
+**[26]** de glutino chartarum
 
-[27]   de libris Numae
+**[27]** de libris Numae
 
-[28]   Aethiopiae arbores
+**[28]** Aethiopiae arbores
 
-[29]   Atlantica arbor
+**[29]** Atlantica arbor
 
 [29-31]   de citri arbore
 
-[29]   de citreis mensis
+**[29]** de citreis mensis
 
-[30]   quae probentur aut vituperentur in iis
+**[30]** quae probentur aut vituperentur in iis
 
-[31]   malum citreum
+**[31]** malum citreum
 
-[32]   lotos
+**[32]** lotos
 
-[33]   Cyrenaicae arbores. paliurus
+**[33]** Cyrenaicae arbores. paliurus
 
-[34]   Punici mali genera VIIII. balaustium
+**[34]** Punici mali genera VIIII. balaustium
 
 [35-47]   Asiae et Graeciae arbores
 
-[35]   epicactis. erice. granum Cnidium sive thymelea sive chamelaea sive pyrosachne sive cnestor sive cneorum
+**[35]** epicactis. erice. granum Cnidium sive thymelea sive chamelaea sive pyrosachne sive cnestor sive cneorum
 
-[36]   tragion, tragacantha
+**[36]** tragion, tragacantha
 
-[37]   tragos sive scorpio, myrice sive brya, ostrys
+**[37]** tragos sive scorpio, myrice sive brya, ostrys
 
-[38]   euonymos
+**[38]** euonymos
 
-[39]   leon arbor
+**[39]** leon arbor
 
-[40]   andrachle
+**[40]** andrachle
 
-[41]   coccygia, apharce
+**[41]** coccygia, apharce
 
-[42]   ferula
+**[42]** ferula
 
-[43]   thapsia
+**[43]** thapsia
 
-[44]   capparis sive cynosbaton sive ophios staphyle
+**[44]** capparis sive cynosbaton sive ophios staphyle
 
-[45]   saripha
+**[45]** saripha
 
-[46]   spina regia
+**[46]** spina regia
 
-[47]   cytisus
+**[47]** cytisus
 
 [48-49]   arbores et frutices in mari nostro
 
-[50]   item in Rubro
+**[50]** item in Rubro
 
-[51]   item in Indico
+**[51]** item in Indico
 
-[52]   item in Trogodytico. phycos, grasson sive zoster, bryon marinum, Isidos plocamos, Chariton blepharon
+**[52]** item in Trogodytico. phycos, grasson sive zoster, bryon marinum, Isidos plocamos, Chariton blepharon
 
 **Summa:**  res et historiae et observationes CCCCLXVIII.
 
 **EX AUCTORIBUS**
 
-M. Varrone. Muciano. Vergilio. Fabiano. Seboso. Pomponio Mela. Fabio Proculo. Hygino. Trogo. Claudio Caesare. Cornelio Nepote. Sextio Nigro qui Graece de medicina scripsit. Cassio Hemina. L. Pisone. Tuditano. Antiate.
+**M** Varrone. Muciano. Vergilio. Fabiano. Seboso. Pomponio Mela. Fabio Proculo. Hygino. Trogo. Claudio Caesare. Cornelio Nepote. Sextio Nigro qui Graece de medicina scripsit. Cassio Hemina. L. Pisone. Tuditano. Antiate.
 
 **EXTERNIS**
 
@@ -1810,65 +1810,65 @@ Theophrasto. Herodoto. Callisthene. Isigono. Clitarcho. Anaximene. Duride. Nearc
 
 frugiferae arbores.
 
-[2]   de vitium natura
+**[2]** de vitium natura
 
-[3]   quibus modis serantur. de uvarum natura et cura
+**[3]** quibus modis serantur. de uvarum natura et cura
 
-[4]   vitium et uvarum genera XCI
+**[4]** vitium et uvarum genera XCI
 
-[5]   insignia culturae et vinearum
+**[5]** insignia culturae et vinearum
 
-[6]   de inventione mulsi
+**[6]** de inventione mulsi
 
-[8]   vina generosa L
+**[8]** vina generosa L
 
-[9]   vina generos transmarina XXXVIII
+**[9]** vina generos transmarina XXXVIII
 
-[16]   de vino Opimiano
+**[16]** de vino Opimiano
 
-[16]   notabilia circa apothecas
+**[16]** notabilia circa apothecas
 
-[7]   de natura vini
+**[7]** de natura vini
 
-[10]   vini salsi genera VII
+**[10]** vini salsi genera VII
 
-[11]   de passi et hepsematum et dulcium generibus XVII
+**[11]** de passi et hepsematum et dulcium generibus XVII
 
-[12]   secundari vini genera III
+**[12]** secundari vini genera III
 
-[13]   quam nuper coeperint vina generosa in Italia
+**[13]** quam nuper coeperint vina generosa in Italia
 
-[14]   de vino observationes a Romulo rege
+**[14]** de vino observationes a Romulo rege
 
-[15]   quibus vinis usi antiqui
+**[15]** quibus vinis usi antiqui
 
-[17]   quando primum vini quattuor genera apposita
+**[17]** quando primum vini quattuor genera apposita
 
-[18]   ex labursca usus V. qui frigidissimus natura sucus
+**[18]** ex labursca usus V. qui frigidissimus natura sucus
 
-[19]   vini fictici genera LXVI
+**[19]** vini fictici genera LXVI
 
-[20]   hydromeli sive apomeli sive melicraton
+**[20]** hydromeli sive apomeli sive melicraton
 
-[21]   oxymeli
+**[21]** oxymeli
 
-[22]   vini prodigiosa genera XII
+**[22]** vini prodigiosa genera XII
 
-[23]   quibus vinis ad sacra uti fas non sit
+**[23]** quibus vinis ad sacra uti fas non sit
 
 [24-25]   quibus generibus musta condiant
 
-[25]   de pice, resinis
+**[25]** de pice, resinis
 
-[27]   de vasis vinariis
+**[27]** de vasis vinariis
 
-[26]   de aceto. de faece
+**[26]** de aceto. de faece
 
-[27]   de cellis
+**[27]** de cellis
 
-[28]   de ebrietate
+**[28]** de ebrietate
 
-[29]   ex aqua et frugibus vini vim fieri
+**[29]** ex aqua et frugibus vini vim fieri
 
 **Summa:**  res et historiae et observationes DX.
 
@@ -1886,69 +1886,69 @@ naturae frugiferarum arborum.
 
 [1-8]   de olea
 
-[2]   quamdiu apud Graecos tantum fuerit. quando primum in Italia, Hispania, Africa esse coeperit
+**[2]** quamdiu apud Graecos tantum fuerit. quando primum in Italia, Hispania, Africa esse coeperit
 
-[3]   de oleo. nationes et bonitates olei
+**[3]** de oleo. nationes et bonitates olei
 
-[2]   quae natura olivae et olei incipientis
+**[2]** quae natura olivae et olei incipientis
 
-[4]   olivarum genera XV
+**[4]** olivarum genera XV
 
-[5]   de natura olei
+**[5]** de natura olei
 
-[6]   cultura olearum. de servandis. quo modo faciendum oleum
+**[6]** cultura olearum. de servandis. quo modo faciendum oleum
 
-[7]   olei fictici genera XLVIII. cci arbor sive croto sive sibi sive sesamon
+**[7]** olei fictici genera XLVIII. cci arbor sive croto sive sibi sive sesamon
 
-[8]   de amurca
+**[8]** de amurca
 
 [9-34]   pomorum omnium genera et natura
 
-[9]   nucum pinearum genera IIII
+**[9]** nucum pinearum genera IIII
 
-[10]   struthiorum genera IIII. cotoneorum genera IIII
+**[10]** struthiorum genera IIII. cotoneorum genera IIII
 
-[11]   Punicorum genera VIIII. Persicorum genera VII
+**[11]** Punicorum genera VIIII. Persicorum genera VII
 
-[12]   prunorum genera XII
+**[12]** prunorum genera XII
 
-[13]   de persea
+**[13]** de persea
 
-[14]   malorum genera XXX. quo quaeque tempore externa poma venerint in Italiam et unde
+**[14]** malorum genera XXX. quo quaeque tempore externa poma venerint in Italiam et unde
 
-[15]   quae novissime
+**[15]** quae novissime
 
-[16]   pirorum genera XLI
+**[16]** pirorum genera XLI
 
-[17]   de insitorum varietate et fulgurum piatione
+**[17]** de insitorum varietate et fulgurum piatione
 
-[18]   de pomis servandis et uvis
+**[18]** de pomis servandis et uvis
 
-[19]   ficorum genera XXVIIII
+**[19]** ficorum genera XXVIIII
 
-[20]   de ficis historica
+**[20]** de ficis historica
 
-[21]   de caprificatione
+**[21]** de caprificatione
 
-[22]   mespilae genera III
+**[22]** mespilae genera III
 
-[23]   sorvorum genera IIII
+**[23]** sorvorum genera IIII
 
-[24]   nucum genera VIIII
+**[24]** nucum genera VIIII
 
-[25]   castanearum genera VIII
+**[25]** castanearum genera VIII
 
-[26]   siliquae
+**[26]** siliquae
 
-[27]   de carnosis pomis. de moris
+**[27]** de carnosis pomis. de moris
 
-[28]   de unedone
+**[28]** de unedone
 
-[29]   acinorum naturae. bacarum naturae
+**[29]** acinorum naturae. bacarum naturae
 
-[30]   cerasorum genera VIIII
+**[30]** cerasorum genera VIIII
 
-[31]   corna. lentisci
+**[31]** corna. lentisci
 
 [32-33]   sucorum differentiae XIII
 
@@ -1956,7 +1956,7 @@ naturae frugiferarum arborum.
 
 [36, 38]   historica de myrto
 
-[37]   genera eius XI
+**[37]** genera eius XI
 
 [39-40]   laurus. genera eius XIII
 
@@ -1974,213 +1974,213 @@ Hesiodo. Theophrasto. Aristotele. Democrito. Hierone rege. Philometore rege. Att
 
 silvestrium arborum naturae.
 
-[1]   gentes sine arbore
+**[1]** gentes sine arbore
 
-[2]   miracula in septentrionali regione arborum
+**[2]** miracula in septentrionali regione arborum
 
 [3-13]   de glandiferis
 
-[3]   de civica corona
+**[3]** de civica corona
 
-[4]   de coronarum origine
+**[4]** de coronarum origine
 
-[5]   qui frondea corona dontai
+**[5]** qui frondea corona dontai
 
-[6]   glandium genera XIII
+**[6]** glandium genera XIII
 
-[7]   de fago
+**[7]** de fago
 
-[8]   de reliquis glandibus. de carbone
+**[8]** de reliquis glandibus. de carbone
 
-[9]   de galla
+**[9]** de galla
 
 [10-13]   quam multa praeter glandem ferant eaedem arbores
 
-[11]   cachrys
+**[11]** cachrys
 
-[12]   coccum
+**[12]** coccum
 
-[13]   agaricum
+**[13]** agaricum
 
-[14]   quarum arborum cortices in usu
+**[14]** quarum arborum cortices in usu
 
-[15]   de scandulis
+**[15]** de scandulis
 
-[16]   de pinu
+**[16]** de pinu
 
-[17]   pinastro
+**[17]** pinastro
 
-[18]   picea, abiete
+**[18]** picea, abiete
 
-[19]   larice, taeda
+**[19]** larice, taeda
 
-[20]   taxo
+**[20]** taxo
 
-[21]   quibus modis fiat pix liquida. quo modo cedrium fiat
+**[21]** quibus modis fiat pix liquida. quo modo cedrium fiat
 
-[22]   quibus modis spissa pix fiat. quibus coquatur resina
+**[22]** quibus modis spissa pix fiat. quibus coquatur resina
 
-[23]   zopissa
+**[23]** zopissa
 
 [24-29]   quarum arborum materiae in pretio
 
-[24]   fraxini genera IIII
+**[24]** fraxini genera IIII
 
-[25]   tiliae genera II
+**[25]** tiliae genera II
 
-[26]   aceris genera X
+**[26]** aceris genera X
 
-[27]   bruscum, molluscum, staphylodendron
+**[27]** bruscum, molluscum, staphylodendron
 
-[28]   buxi genera III
+**[28]** buxi genera III
 
-[29]   ulmorum genera VI
+**[29]** ulmorum genera VI
 
 [30-31]   arborum natura per situs
 
-[30]   quae montanae. quae campestres
+**[30]** quae montanae. quae campestres
 
-[31]   quae siccaneae. quae aquaticae. quae communes
+**[31]** quae siccaneae. quae aquaticae. quae communes
 
-[32]   divisio generum
+**[32]** divisio generum
 
-[33]   quibus folia non decidant. de rhododendro. quibus non omnia folia cadant. quibus in locis nulli arborum
+**[33]** quibus folia non decidant. de rhododendro. quibus non omnia folia cadant. quibus in locis nulli arborum
 
-[34]   de natura foliorum cadentium
+**[34]** de natura foliorum cadentium
 
-[35]   quibus foliorum varii colores. populorum genera III. quorum foliorum figura mutetur
+**[35]** quibus foliorum varii colores. populorum genera III. quorum foliorum figura mutetur
 
-[36]   quae folia versentur omnibus annis
+**[36]** quae folia versentur omnibus annis
 
-[37]   foliorum e palmis cura et usus
+**[37]** foliorum e palmis cura et usus
 
-[38]   foliorum mirabilia
+**[38]** foliorum mirabilia
 
-[39]   ordo naturae in satis
+**[39]** ordo naturae in satis
 
-[40]   quae arbores numquam floreant. de iuniperis
+**[40]** quae arbores numquam floreant. de iuniperis
 
-[41]   de conceptu arborum. de germinatione. de partu
+**[41]** de conceptu arborum. de germinatione. de partu
 
-[42]   quo ordine floreant
+**[42]** quo ordine floreant
 
-[43]   de cornu. quo quaeque tempore ferant
+**[43]** de cornu. quo quaeque tempore ferant
 
-[44]   anniferae. in triennium ferentes
+**[44]** anniferae. in triennium ferentes
 
-[45]   quae fructum non ferant. quae infelices existimentur
+**[45]** quae fructum non ferant. quae infelices existimentur
 
-[46]   quae facillime perdant fructum aut florem
+**[46]** quae facillime perdant fructum aut florem
 
-[47]   quae ubique non ferant
+**[47]** quae ubique non ferant
 
-[48]   quo modo quaeque ferant
+**[48]** quo modo quaeque ferant
 
-[49]   quibus fructus ante quam folium nascatur
+**[49]** quibus fructus ante quam folium nascatur
 
-[50]   biferae. triferae
+**[50]** biferae. triferae
 
-[51]   quae celerrime senescant. quae tardissime. praecoces fructus. serotini
+**[51]** quae celerrime senescant. quae tardissime. praecoces fructus. serotini
 
-[52]   in quibus plura rerum genera gignantur. crataegum
+**[52]** in quibus plura rerum genera gignantur. crataegum
 
 [53-56]   differentiae arborum per corpora et ramos
 
-[53]   lotos sive faba Graeca
+**[53]** lotos sive faba Graeca
 
-[54]   de ramis
+**[54]** de ramis
 
-[55]   cortice
+**[55]** cortice
 
-[56]   radicibus
+**[56]** radicibus
 
-[57]   arbores quae sponte resurrexerint
+**[57]** arbores quae sponte resurrexerint
 
-[58]   quibus modis [sponte] nascantur arbores
+**[58]** quibus modis [sponte] nascantur arbores
 
 [58-60]   naturae differentiae non omnia ubique generantis
 
-[59]   ubi quae non nascantur
+**[59]** ubi quae non nascantur
 
-[60]   de cupressis
+**[60]** de cupressis
 
-[61]   nasci saepe ex terra quae ante nata non sint
+**[61]** nasci saepe ex terra quae ante nata non sint
 
-[62]   ivyde hedera. genera eius XX
+**[62]** ivyde hedera. genera eius XX
 
-[63]   smilax
+**[63]** smilax
 
 [64-71]   de aquaticis
 
-[64]   de calamis. harundinum genera XXVIII
+**[64]** de calamis. harundinum genera XXVIII
 
-[65]   de sagittariis
+**[65]** de sagittariis
 
-[64]   et scriptoriis
+**[64]** et scriptoriis
 
-[66]   et fistulatoriis calamis
+**[66]** et fistulatoriis calamis
 
-[66]   de Orchomenia harundine et aucupatoria et piscatoria
+**[66]** de Orchomenia harundine et aucupatoria et piscatoria
 
-[67]   de vinitoria harundine. de alno
+**[67]** de vinitoria harundine. de alno
 
-[68]   de salice. genera eius VIII
+**[68]** de salice. genera eius VIII
 
-[69]   quae praeter salicem adligando utilia
+**[69]** quae praeter salicem adligando utilia
 
-[70]   de scirpis, candelis, cannis, tegulo
+**[70]** de scirpis, candelis, cannis, tegulo
 
-[71]   de sabucis, de rubis
+**[71]** de sabucis, de rubis
 
-[72]   de arborum sucis
+**[72]** de arborum sucis
 
-[73]   de natura materiarum
+**[73]** de natura materiarum
 
 [74-75]   de arboribus caedendis
 
-[76]   de magnitudine arborum. de materiis architectonica. de sappino
+**[76]** de magnitudine arborum. de materiis architectonica. de sappino
 
-[77]   igniaria e ligno
+**[77]** igniaria e ligno
 
-[78]   quae cariem non sentiant, quae rimam
+**[78]** quae cariem non sentiant, quae rimam
 
-[79]   historica de perpetuitate materiarum
+**[79]** historica de perpetuitate materiarum
 
-[80]   teredinum genera
+**[80]** teredinum genera
 
-[82]   de materiis fabrilia
+**[82]** de materiis fabrilia
 
-[83]   de glutinanda materia
+**[83]** de glutinanda materia
 
-[84]   de laminis sectilibus
+**[84]** de laminis sectilibus
 
 [85-89]   arborum durantium vetustas
 
-[85]   ab afrano priore sata in urbe Roma D annorum arbor
+**[85]** ab afrano priore sata in urbe Roma D annorum arbor
 
-[86]   ab urbe condita arbores
+**[86]** ab urbe condita arbores
 
-[87]   vetustiores urbe in suburbanis
+**[87]** vetustiores urbe in suburbanis
 
-[88]   ab Agamemenone satae arbores. a primo anno belli Troiani arbores. ab Illi appellatione arbores apud Troiam antiquiores bello Troiano
+**[88]** ab Agamemenone satae arbores. a primo anno belli Troiani arbores. ab Illi appellatione arbores apud Troiam antiquiores bello Troiano
 
-[89]   item Argis. ab Hercule satae. ab Apolline satae. arbor antiquior quam Athenae
+**[89]** item Argis. ab Hercule satae. ab Apolline satae. arbor antiquior quam Athenae
 
-[90]   quae genera arborum minume durent
+**[90]** quae genera arborum minume durent
 
-[91]   arbores ex eventu nobiles
+**[91]** arbores ex eventu nobiles
 
-[92]   quae sedem nascendi suam non habeant
+**[92]** quae sedem nascendi suam non habeant
 
-[93]   quae in arboribus vivant et in terra nasci non possint. genera earum VIIII. cassytas, hyphear, stelis, hippophaeston. de visi et similium natura
+**[93]** quae in arboribus vivant et in terra nasci non possint. genera earum VIIII. cassytas, hyphear, stelis, hippophaeston. de visi et similium natura
 
-[94]   de visco faciendo
+**[94]** de visco faciendo
 
 **Summa:**  res et historiae et observationes MCXXXV
 
 **EX AUCTORIBUS**
 
-M. Varrone. Fetiale. Nigidio. Cornelio Nepote. Hygino. Masurio. Catone. Muciano. L. Pisone. Trogo. Calpurnio Basso. Cremutio. Sextio Nigro. Cornelio Boccho. Vitruvio. Graecino.
+**M** Varrone. Fetiale. Nigidio. Cornelio Nepote. Hygino. Masurio. Catone. Muciano. L. Pisone. Trogo. Calpurnio Basso. Cremutio. Sextio Nigro. Cornelio Boccho. Vitruvio. Graecino.
 
 **EXTERNIS**
 
@@ -2190,101 +2190,101 @@ Alexandro polyhistore. Hesiodo. Theophrasto. Democrito. Homero. Timaeo mathemati
 
 sativarum arborum naturae.
 
-[1]   arborum pretia mirabilia
+**[1]** arborum pretia mirabilia
 
-[2]   caeli natura ad arbores. quam partem caeli spectare vineae debeant
+**[2]** caeli natura ad arbores. quam partem caeli spectare vineae debeant
 
-[3]   qualis terra optima
+**[3]** qualis terra optima
 
-[4]   de terrae, qua Graeci, Britannia et Galliae laetant, generibus VIII
+**[4]** de terrae, qua Graeci, Britannia et Galliae laetant, generibus VIII
 
-[5]   de cineris usu
+**[5]** de cineris usu
 
-[6]   de fimo
+**[6]** de fimo
 
-[7]   quae sata uberiorem terram faciant, quae urant
+**[7]** quae sata uberiorem terram faciant, quae urant
 
-[8]   quibus modis fimo utendum
+**[8]** quibus modis fimo utendum
 
 [9-21]   quibus modis arbores serantur
 
-[10]   semine nascentia
+**[10]** semine nascentia
 
-[11]   quae numquam degenerent
+**[11]** quae numquam degenerent
 
-[12]   plantis nascentia
+**[12]** plantis nascentia
 
-[13]   avolsione nascentia et surculo
+**[13]** avolsione nascentia et surculo
 
-[14]   de seminariis. de transferendis seminariis
+**[14]** de seminariis. de transferendis seminariis
 
-[15]   de ulmis serendis
+**[15]** de ulmis serendis
 
-[16]   de scrobibus
+**[16]** de scrobibus
 
-[17]   de intervallis arborum
+**[17]** de intervallis arborum
 
-[18]   de umbra
+**[18]** de umbra
 
-[19]   de stillicids
+**[19]** de stillicids
 
-[20]   quae tarde crescant, quae celeriter
+**[20]** quae tarde crescant, quae celeriter
 
-[21]   propagine nascentia
+**[21]** propagine nascentia
 
 [22-26]   de insitione
 
-[22]   quo modo inventa sit
+**[22]** quo modo inventa sit
 
-[24]   genera insitionum
+**[24]** genera insitionum
 
-[23]   inoculatio
+**[23]** inoculatio
 
-[26]   emplastratio
+**[26]** emplastratio
 
-[25]   de vite inserenda
+**[25]** de vite inserenda
 
-[27]   ramo nascentia
+**[27]** ramo nascentia
 
-[28]   quae taleis et quo modo serantur
+**[28]** quae taleis et quo modo serantur
 
 [29-30]   olearum cultura
 
-[30]   operum surcularium per tempora anni digestio
+**[30]** operum surcularium per tempora anni digestio
 
-[31]   de ablaqueandis et adcumulandis
+**[31]** de ablaqueandis et adcumulandis
 
-[32]   de salicto
+**[32]** de salicto
 
-[33]   harundineta
+**[33]** harundineta
 
-[34]   de ceteris ad perticas et palos caeduis
+**[34]** de ceteris ad perticas et palos caeduis
 
 [35-36]   vinearum ratio et arbustorum
 
-[36]   ne uvae ab animalibus infestentur
+**[36]** ne uvae ab animalibus infestentur
 
-[37]   morbi arborum
+**[37]** morbi arborum
 
-[38]   prodigia ex arboribus
+**[38]** prodigia ex arboribus
 
 [39-47]   medicinae arborum
 
-[40]   quo modo rigandum
+**[40]** quo modo rigandum
 
-[41]   mirabilia de riguis
+**[41]** mirabilia de riguis
 
-[42]   de scariphatione
+**[42]** de scariphatione
 
-[43]   quo modo circumforandum. castratio arborum
+**[43]** quo modo circumforandum. castratio arborum
 
-[44]   caprificatio
+**[44]** caprificatio
 
-[45]   quae putationis
+**[45]** quae putationis
 
-[46]   quae stercorationis vitia arboribus
+**[46]** quae stercorationis vitia arboribus
 
-[47]   medicamenta
+**[47]** medicamenta
 
 **Summa:**  res et historiae et observationes MCCCLXXX
 
@@ -2300,163 +2300,163 @@ Hesiodo. Theophrasto. Aristotele. Democrito. Theopompo. Hierone rege. Philometor
 
 naturae frugum.
 
-[1]   antiquorum studium in agricultura
+**[1]** antiquorum studium in agricultura
 
-[2]   quae prima Romae corona. de spicea corona
+**[2]** quae prima Romae corona. de spicea corona
 
-[3]   de iugero
+**[3]** de iugero
 
-[4]   quotiens et quibus temporibus fuerit summa vilitas annonae
+**[4]** quotiens et quibus temporibus fuerit summa vilitas annonae
 
-[5]   qui inlustres de agricultura scripserint
+**[5]** qui inlustres de agricultura scripserint
 
-[6]   quae observanda in agro parando
+**[6]** quae observanda in agro parando
 
-[7]   de villarum positione
+**[7]** de villarum positione
 
-[8]   praecepta antiquorum de agro colendo
+**[8]** praecepta antiquorum de agro colendo
 
-[9]   genera frugum
+**[9]** genera frugum
 
 [10-29]   naturae per genera frumenti
 
-[11]   de farre
+**[11]** de farre
 
-[12]   tritico
+**[12]** tritico
 
 [13-15, 18]   hordeo
 
-[14]   polenta
+**[14]** polenta
 
-[15]   ptisana
+**[15]** ptisana
 
-[16]   trago
+**[16]** trago
 
-[17]   amylo
+**[17]** amylo
 
-[20]   siligine, similagine
+**[20]** siligine, similagine
 
-[29]   arinca sive olyra. semine sive zea
+**[29]** arinca sive olyra. semine sive zea
 
-[19]   de reliquis in oriente generibus
+**[19]** de reliquis in oriente generibus
 
-[23]   de pisturis
+**[23]** de pisturis
 
-[22]   de sesima. de erysimo sive irione. de hormino
+**[22]** de sesima. de erysimo sive irione. de hormino
 
-[24]   milio
+**[24]** milio
 
-[25]   panico
+**[25]** panico
 
-[26]   de fermentis
+**[26]** de fermentis
 
-[27]   panis faciendi ratio et genera
+**[27]** panis faciendi ratio et genera
 
-[28]   quando pistorum initium Romae
+**[28]** quando pistorum initium Romae
 
 [30-33, 36]   de leguminibus
 
-[30]   faba
+**[30]** faba
 
-[32]   ciceris genera
+**[32]** ciceris genera
 
-[33]   faseoli
+**[33]** faseoli
 
-[31]   pisum
+**[31]** pisum
 
-[34]   de rapis
+**[34]** de rapis
 
-[35]   napis
+**[35]** napis
 
-[36]   lupino
+**[36]** lupino
 
 [37-43]   pabularia
 
-[37]   viia
+**[37]** viia
 
-[38]   ervum
+**[38]** ervum
 
-[39]   silicia
+**[39]** silicia
 
-[40]   secale sive asia
+**[40]** secale sive asia
 
-[41]   farrago
+**[41]** farrago
 
-[42]   de ocino. ervilia
+**[42]** de ocino. ervilia
 
-[43]   medica
+**[43]** medica
 
-[44]   de avena. morbi frugum
+**[44]** de avena. morbi frugum
 
-[445]   remedia
+**[445]** remedia
 
-[46]   quid in quoque terrae generum debeat seri
+**[46]** quid in quoque terrae generum debeat seri
 
-[47]   diversitas gentium in sationibus
+**[47]** diversitas gentium in sationibus
 
-[48]   vomerum genera
+**[48]** vomerum genera
 
-[49]   ratio arandi
+**[49]** ratio arandi
 
-[50]   de occando, runcando, sariendo. de cratitione
+**[50]** de occando, runcando, sariendo. de cratitione
 
-[51]   de summa fertilitate soli
+**[51]** de summa fertilitate soli
 
-[52]   ratio saepius anno serendi. idem arvum
+**[52]** ratio saepius anno serendi. idem arvum
 
-[53]   stercoratio
+**[53]** stercoratio
 
-[54]   seminum probatio
+**[54]** seminum probatio
 
-[55]   quantum ex quoque genere frumenti in iugero serendum
+**[55]** quantum ex quoque genere frumenti in iugero serendum
 
 [56-61]   de temporibus serrendi
 
-[57]   digestio siderum in dies et notae terrestres rerum in agro agendarum
+**[57]** digestio siderum in dies et notae terrestres rerum in agro agendarum
 
 [62-74]   quid quoque mense in agro fieri oporteat
 
-[61]   de papavere
+**[61]** de papavere
 
-[67]   de faeno
+**[67]** de faeno
 
 [69-70]   causae sterilitatium et remedia
 
-[72]   de messibus
+**[72]** de messibus
 
-[73]   de frumento servando
+**[73]** de frumento servando
 
-[74]   de vindemia et autumno operibus
+**[74]** de vindemia et autumno operibus
 
-[75]   lunaris ratio
+**[75]** lunaris ratio
 
-[76]   ventorum ratio
+**[76]** ventorum ratio
 
-[77]   limiation agrorum
+**[77]** limiation agrorum
 
 [78-90]   prognostica
 
-[78]   a sole
+**[78]** a sole
 
-[79]   a luna
+**[79]** a luna
 
-[80]   stellis
+**[80]** stellis
 
-[81]   tonitribus
+**[81]** tonitribus
 
-[82]   nubibus
+**[82]** nubibus
 
-[83]   nebulis
+**[83]** nebulis
 
-[84]   ignibus terrestribus
+**[84]** ignibus terrestribus
 
-[85]   aquis
+**[85]** aquis
 
-[86]   ab ipsis tempestatibus
+**[86]** ab ipsis tempestatibus
 
 [87-88]   ab animalibus aquatilibus. a volucribus
 
-[88]   a quadripedibus
+**[88]** a quadripedibus
 
 **Summa:**  res et historiae et observationes MMLX
 
@@ -2472,59 +2472,59 @@ Hesiodo. Theophrasto. Aristotele. Democrito. Hierone rege. Philometore rege. Att
 
 [1-6]   lini natura et miracula
 
-[2]   genera eius excellentia
+**[2]** genera eius excellentia
 
-[3]   quo modo seratur et perficiatur
+**[3]** quo modo seratur et perficiatur
 
-[6]   quando primum in theatris vela
+**[6]** quando primum in theatris vela
 
 [7-9]   de sparti natura
 
-[8]   quo modo perficiatur
+**[8]** quo modo perficiatur
 
-[9]   quando primum usus eius
+**[9]** quando primum usus eius
 
-[10]   de eriophoro bulbo
+**[10]** de eriophoro bulbo
 
-[11]   quae sine radice nascantur et vivant. quae nascantur et seri non possint
+**[11]** quae sine radice nascantur et vivant. quae nascantur et seri non possint
 
-[12]   misy, iton, geranion
+**[12]** misy, iton, geranion
 
-[13]   de tuberibus
+**[13]** de tuberibus
 
-[14]   pezicae
+**[14]** pezicae
 
 [15-16]   de laserpicio et lasere. maspetum. magydaris
 
-[17]   de rubia
+**[17]** de rubia
 
-[18]   de radicula
+**[18]** de radicula
 
 [19-20]   hortorum gratia
 
-[21]   digestio terra enascentium praeter fruges et frutices
+**[21]** digestio terra enascentium praeter fruges et frutices
 
 [22-37]   natura et genera et historiae nascentium in hortis rerum
 
-[31]   de omnium earum radicibus, floribus, foliis. quibus hortensiorum folia cadant
+**[31]** de omnium earum radicibus, floribus, foliis. quibus hortensiorum folia cadant
 
-[35]   quoto quaeque die nascantur
+**[35]** quoto quaeque die nascantur
 
-[36]   seminum natura. quo modo quaeque serantur
+**[36]** seminum natura. quo modo quaeque serantur
 
-[37]   quorum singula genera, quorum plura sint
+**[37]** quorum singula genera, quorum plura sint
 
 [38-55]   natura et genera et historiae ad condimenta in horto satarum rerum XXIII
 
-[48]   lacrima sua nascens
+**[48]** lacrima sua nascens
 
-[56]   ferulacea genera IIII. cannabis
+**[56]** ferulacea genera IIII. cannabis
 
-[57]   morbi hortensiorum
+**[57]** morbi hortensiorum
 
 [58-59]   remedia
 
-[60]   quibus modis formicae necentur. contra urucas remedia, contra culices. quibus salsae aquae prosint
+**[60]** quibus modis formicae necentur. contra urucas remedia, contra culices. quibus salsae aquae prosint
 
 [61-62]   de sucis et saporibus hortensiorum. de piperitide et libanotide et zmyrnio
 
@@ -2542,199 +2542,199 @@ Herodoto. Theophrasto. Democrito. Aristomacho. Menandro qui biocrhsta scripsit. 
 
 medicinae ex iis quae in hortis seruntur.
 
-[2]   cucumere silvestri XXVI
+**[2]** cucumere silvestri XXVI
 
-[3]   elaterio XXVII
+**[3]** elaterio XXVII
 
-[4]   anguino cucumere sive erratico V
+**[4]** anguino cucumere sive erratico V
 
-[5]   cucumere sativo VIIII
+**[5]** cucumere sativo VIIII
 
-[6]   pepone XI
+**[6]** pepone XI
 
-[7]   curcurbita silvestri sompho I
+**[7]** curcurbita silvestri sompho I
 
-[8]   colocynthide XIII
+**[8]** colocynthide XIII
 
-[9]   rapis VIIII
+**[9]** rapis VIIII
 
-[10]   rapo silvestri I
+**[10]** rapo silvestri I
 
-[11]   napis sive bunio sive buniade V
+**[11]** napis sive bunio sive buniade V
 
-[13]   raphano sativo XLIII
+**[13]** raphano sativo XLIII
 
-[12]   armoracia I
+**[12]** armoracia I
 
-[14]   pastinaca. hibisco sive plistolochia sive moloche agria XI
+**[14]** pastinaca. hibisco sive plistolochia sive moloche agria XI
 
-[15]   staphylino sive pastinaca erratica XXII
+**[15]** staphylino sive pastinaca erratica XXII
 
-[16]   gingidio I
+**[16]** gingidio I
 
-[17]   sisere XI
+**[17]** sisere XI
 
-[18]   sile XII
+**[18]** sile XII
 
-[19]   inula XI
+**[19]** inula XI
 
-[20]   caepa XXVII
+**[20]** caepa XXVII
 
-[21]   porro sectivo XXXII
+**[21]** porro sectivo XXXII
 
-[22]   porro capitato XXXVIIII
+**[22]** porro capitato XXXVIIII
 
-[23]   alio LXI
+**[23]** alio LXI
 
-[24]   lactuca XLII. caprina IIII
+**[24]** lactuca XLII. caprina IIII
 
-[25]   caesapo I. isati I. lactuca silvatica VII
+**[25]** caesapo I. isati I. lactuca silvatica VII
 
-[26]   hieracia XVII
+**[26]** hieracia XVII
 
-[27]   beta XXIIII
+**[27]** beta XXIIII
 
-[28]   limonio sive neuroide IIII
+**[28]** limonio sive neuroide IIII
 
-[29]   intubo quae ambubaia IIII
+**[29]** intubo quae ambubaia IIII
 
-[30]   cichorio sive chreste sive pancratio XII
+**[30]** cichorio sive chreste sive pancratio XII
 
-[31]   hedypnoide IIII
+**[31]** hedypnoide IIII
 
-[32]   seris generibus II medicinae VII
+**[32]** seris generibus II medicinae VII
 
-[33]   brassica LXXXVII
+**[33]** brassica LXXXVII
 
-[335]   cyma
+**[335]** cyma
 
-[36]   brassica silvestri XXVII
+**[36]** brassica silvestri XXVII
 
-[37]   lapsana I
+**[37]** lapsana I
 
-[38]   marina brassica I
+**[38]** marina brassica I
 
-[39]   scilla XXIIII
+**[39]** scilla XXIIII
 
-[40]   bulbis XXX
+**[40]** bulbis XXX
 
-[41]   bulbine I. bulbo vomitorio
+**[41]** bulbine I. bulbo vomitorio
 
-[42]   asparago sativo XVII
+**[42]** asparago sativo XVII
 
-[43]   corruda sive ormino sive Libyco XXIIII
+**[43]** corruda sive ormino sive Libyco XXIIII
 
-[44]   apio XVII
+**[44]** apio XVII
 
-[45]   apiastro sive melissophyllo
+**[45]** apiastro sive melissophyllo
 
-[46]   olusatro sive hipposelino XI. oreoselino II. heleoselino I
+**[46]** olusatro sive hipposelino XI. oreoselino II. heleoselino I
 
-[47]   petroselino I. buselino I
+**[47]** petroselino I. buselino I
 
-[48]   ocimo XXVIII
+**[48]** ocimo XXVIII
 
-[49]   eruca XII
+**[49]** eruca XII
 
-[50]   nasturcio XLII
+**[50]** nasturcio XLII
 
-[51]   ruta LXXXIIII
+**[51]** ruta LXXXIIII
 
-[52]   mentastro XX
+**[52]** mentastro XX
 
-[53]   menta XLI
+**[53]** menta XLI
 
-[54]   puleio XXV
+**[54]** puleio XXV
 
-[55]   puleio silvestri XVIIII
+**[55]** puleio silvestri XVIIII
 
-[56]   nepeta VIIII
+**[56]** nepeta VIIII
 
-[57]   cumino XVI. sumino silvestri XXVI
+**[57]** cumino XVI. sumino silvestri XXVI
 
-[58]   ami X
+**[58]** ami X
 
-[59]   cappari XVIII
+**[59]** cappari XVIII
 
-[60]   ligustico sive panace III
+**[60]** ligustico sive panace III
 
-[61]   cunila bubula V
+**[61]** cunila bubula V
 
-[62]   cunila gallinacea sive origano V
+**[62]** cunila gallinacea sive origano V
 
-[63]   cunilagine VIII
+**[63]** cunilagine VIII
 
-[64]   cunila molli II. libanotide II
+**[64]** cunila molli II. libanotide II
 
-[65]   cunila sativa III. cunila montana VII
+**[65]** cunila sativa III. cunila montana VII
 
-[66]   piperitide sive siliquastro V
+**[66]** piperitide sive siliquastro V
 
-[67]   origano oniti sive prasio VI
+**[67]** origano oniti sive prasio VI
 
-[68]   tragorigano VIIII
+**[68]** tragorigano VIIII
 
-[69]   origano Heraclio, generum III, medicinae XXX
+**[69]** origano Heraclio, generum III, medicinae XXX
 
-[70]   lepidio III
+**[70]** lepidio III
 
-[71]   git sive melanthio XXIII
+**[71]** git sive melanthio XXIII
 
 [72-73]   aneso sive aniceto LXI
 
-[74]   aneto VIIII
+**[74]** aneto VIIII
 
-[75]   sacopenio sive sagapeno XIII
+**[75]** sacopenio sive sagapeno XIII
 
-[76]   papavere albo II. papavere nigro VIII. de sopore. de opio. contra potiones quas anwdunouV et lhxipuretouV et peptikaV vocant. papavere silvestri II. meconio
+**[76]** papavere albo II. papavere nigro VIII. de sopore. de opio. contra potiones quas anwdunouV et lhxipuretouV et peptikaV vocant. papavere silvestri II. meconio
 
-[77]   papavere rhoea II
+**[77]** papavere rhoea II
 
-[78]   papavere ceratiti sive glaucio sive paralio V
+**[78]** papavere ceratiti sive glaucio sive paralio V
 
-[79]   papavere Heraclio sive aphrode II. dia kwduwn
+**[79]** papavere Heraclio sive aphrode II. dia kwduwn
 
-[80]   papavere tithymalo sive paralio III. quo modo sucus herbarum colligendus
+**[80]** papavere tithymalo sive paralio III. quo modo sucus herbarum colligendus
 
-[81]   porcilaca XLV. pepli XLV
+**[81]** porcilaca XLV. pepli XLV
 
-[82]   coriandro XXI
+**[82]** coriandro XXI
 
-[83]   atriplice XIIII
+**[83]** atriplice XIIII
 
-[84]   malva malope XLVI. malva malache I. malva althaea sive plistolochia XVIIII
+**[84]** malva malope XLVI. malva malache I. malva althaea sive plistolochia XVIIII
 
-[85]   lapatho silvestri sive oxalide sive lapatho canterino sive rumice I. oxylapatho VII. hydrolapatho II. hippolapatho VI
+**[85]** lapatho silvestri sive oxalide sive lapatho canterino sive rumice I. oxylapatho VII. hydrolapatho II. hippolapatho VI
 
-[86]   lapatho sativo XXI. bulapatho I
+**[86]** lapatho sativo XXI. bulapatho I
 
-[87]   sinapi, generum III, medicinae XLVIII
+**[87]** sinapi, generum III, medicinae XLVIII
 
-[88]   adarca XLVIII
+**[88]** adarca XLVIII
 
-[89]   marrubio sive prasio sive linostropho sive philopaede sive philochare XXVIIII
+**[89]** marrubio sive prasio sive linostropho sive philopaede sive philochare XXVIIII
 
-[90]   serpyllo XVIII
+**[90]** serpyllo XVIII
 
-[91]   sisymbrio sive Thymbraeo XIII
+**[91]** sisymbrio sive Thymbraeo XIII
 
-[92]   lini semine XXVII
+**[92]** lini semine XXVII
 
-[93]   blito VI
+**[93]** blito VI
 
-[94]   meo Athamantico sive Athamanico VII
+**[94]** meo Athamantico sive Athamanico VII
 
-[95]   feniculo XXIII
+**[95]** feniculo XXIII
 
-[96]   hippomaratho sive myrsineo V
+**[96]** hippomaratho sive myrsineo V
 
-[97]   cannabi VII
+**[97]** cannabi VII
 
-[98]   ferula VIII
+**[98]** ferula VIII
 
-[99]   carduo sive scolymo VI
+**[99]** carduo sive scolymo VI
 
-[100]   theriacae conpositio
+**[100]** theriacae conpositio
 
 **Summa:**  res et historiae et observationes MDCVI
 
@@ -2752,303 +2752,303 @@ MEDICIS Hippocrate. Chrysippo. Diocle. Ophione. Heraclide. Hicesio. Dionysio. Ap
 
 naturae florum et coronamentorum.
 
-[2]   de strophiolis. serta
+**[2]** de strophiolis. serta
 
-[3]   qui invenerint miscere flores. quando primum corollae appellatae et quare
+**[3]** qui invenerint miscere flores. quando primum corollae appellatae et quare
 
-[4]   quis primus coronas foliis argenteis et aureis dederit. quare corollaria dicta. de lemniscis. quis primus caelaverit eos
+**[4]** quis primus coronas foliis argenteis et aureis dederit. quare corollaria dicta. de lemniscis. quis primus caelaverit eos
 
-[5]   quantus honor coronarum apud antiquos fuerit
+**[5]** quantus honor coronarum apud antiquos fuerit
 
-[6]   severitas antiquorum in coronis
+**[6]** severitas antiquorum in coronis
 
-[7]   quem floribus honoraverit populus Romanus
+**[7]** quem floribus honoraverit populus Romanus
 
-[8]   pactiles coronae. de sutilibus coronis. de nardinis. de Sericis
+**[8]** pactiles coronae. de sutilibus coronis. de nardinis. de Sericis
 
-[9]   Cleopatrae reginae factum in coronis
+**[9]** Cleopatrae reginae factum in coronis
 
-[10]   de rosa. gen. eius XII
+**[10]** de rosa. gen. eius XII
 
-[73]   med. XXXII
+**[73]** med. XXXII
 
-[11]   lili gen. III
+**[11]** lili gen. III
 
-[74]   med. XXI
+**[74]** med. XXI
 
-[11]   lacrima sua nascens
+**[11]** lacrima sua nascens
 
-[12]   naarcissi gen. III
+**[12]** naarcissi gen. III
 
-[75]   med. XVI
+**[75]** med. XVI
 
-[13]   quorum semen tinguatur, ut infecta nascantur
+**[13]** quorum semen tinguatur, ut infecta nascantur
 
 [14-37]   quem ad modum quaeque nascantur, serantur, colantur sub singulis generibus
 
-[14]   violae colores III
+**[14]** violae colores III
 
-[76]   med. XVII
+**[76]** med. XVII
 
-[14]   luteae gen. V
+**[14]** luteae gen. V
 
-[76]   med. X
+**[76]** med. X
 
-[15]   caltha. regius flos
+**[15]** caltha. regius flos
 
-[16]   baccar
+**[16]** baccar
 
-[77]   med. XVII
+**[77]** med. XVII
 
-[16]   combretum
+**[16]** combretum
 
-[77]   med. I
+**[77]** med. I
 
-[17]   crocum
+**[17]** crocum
 
-[81]   med. XX
+**[81]** med. XX
 
-[17]   ubi optimi flores. qui flores Torianis temporibus in usu
+**[17]** ubi optimi flores. qui flores Torianis temporibus in usu
 
-[18]   de natura odorum
+**[18]** de natura odorum
 
-[19]   iris
+**[19]** iris
 
-[83]   med. XLI
+**[83]** med. XLI
 
-[20]   saliunca
+**[20]** saliunca
 
-[83]   med. II
+**[83]** med. II
 
-[21]   polium sive teuthrion
+**[21]** polium sive teuthrion
 
-[84]   med. XVIII
+**[84]** med. XVIII
 
-[21]   qui flos alium colorem mane habeat, alium meridie, alium sole occidente
+**[21]** qui flos alium colorem mane habeat, alium meridie, alium sole occidente
 
-[22]   vestium aemulatio cum floribus
+**[22]** vestium aemulatio cum floribus
 
-[23]   amarantus
+**[23]** amarantus
 
-[24]   cyanus
+**[24]** cyanus
 
-[84]   med. II
+**[84]** med. II
 
-[24]   holochrysos
+**[24]** holochrysos
 
-[85]   med. III
+**[85]** med. III
 
-[25]   petilium. bellio
+**[25]** petilium. bellio
 
-[26]   chrysocome sive chrysitis
+**[26]** chrysocome sive chrysitis
 
-[85]   med. VI
+**[85]** med. VI
 
-[27]   qui frutices flore coronent
+**[27]** qui frutices flore coronent
 
-[28]   qui folio
+**[28]** qui folio
 
-[29]   melothrum. spiraea. origanum. cneorum sive casia, gen. II. melissophyllum sive melittaena
+**[29]** melothrum. spiraea. origanum. cneorum sive casia, gen. II. melissophyllum sive melittaena
 
-[86]   med. XXI
+**[86]** med. XXI
 
 [29, 37]   melilotos quae sertula Campana
 
-[87]   med. XIII
+**[87]** med. XIII
 
-[30]   trifoli gen. III
+**[30]** trifoli gen. III
 
-[88]   med. IIII
+**[88]** med. IIII
 
-[30]   myophonum
+**[30]** myophonum
 
-[31]   thymi genera II
+**[31]** thymi genera II
 
-[89]   med. XXXIII
+**[89]** med. XXXIII
 
-[31]   flore nascentia, non semine
+**[31]** flore nascentia, non semine
 
-[32]   conyza
+**[32]** conyza
 
-[33]   Iovis flos. hemerocalles
+**[33]** Iovis flos. hemerocalles
 
-[90]   med. IIII
+**[90]** med. IIII
 
-[33]   Helenium
+**[33]** Helenium
 
-[91]   med. V
+**[91]** med. V
 
-[33]   phlox. quae ramis et folio odorata
+**[33]** phlox. quae ramis et folio odorata
 
-[34]   habrotonum
+**[34]** habrotonum
 
-[92]   med. XXII
+**[92]** med. XXII
 
-[34]   Adonium. genera II ipsa se propagantia
+**[34]** Adonium. genera II ipsa se propagantia
 
-[34]   leucanthemum
+**[34]** leucanthemum
 
-[93]   med. I
+**[93]** med. I
 
-[35]   amaracum sive sampsuchum
+**[35]** amaracum sive sampsuchum
 
-[93]   med. XI
+**[93]** med. XI
 
-[36]   nyctegreton sive chenamyche sive nyctalops
+**[36]** nyctegreton sive chenamyche sive nyctalops
 
 [38-39]   quo ordine temporum flores nascantur
 
-[38]   anemone coronaria sive phrenion
+**[38]** anemone coronaria sive phrenion
 
-[94]   med. X
+**[94]** med. X
 
-[38]   oenanthe herba
+**[38]** oenanthe herba
 
-[95]   med. VI
+**[95]** med. VI
 
-[38]   melanium. heliochrysos
+**[38]** melanium. heliochrysos
 
-[96]   med. XI
+**[96]** med. XI
 
-[39]   lychnis
+**[39]** lychnis
 
-[98]   med. VII
+**[98]** med. VII
 
-[38]   gladiolus. hyacinthus
+**[38]** gladiolus. hyacinthus
 
-[97]   med. VIII
+**[97]** med. VIII
 
-[39]   tiphyon. pothi gen. II. orsinae gen. II
+**[39]** tiphyon. pothi gen. II. orsinae gen. II
 
-[39]   vicapervica sive chamaedaphne
+**[39]** vicapervica sive chamaedaphne
 
-[99]   med. IIII
+**[99]** med. IIII
 
-[39]   quae semper vireat herba
+**[39]** quae semper vireat herba
 
-[40]   quam longa cuique vita florum
+**[40]** quam longa cuique vita florum
 
-[41]   quae propter apes serenda inter flores. cerintha
+**[41]** quae propter apes serenda inter flores. cerintha
 
 [42-43]   de pabulo apium. de morbis earum et remediis
 
-[44]   de venenato melle et remediis eius
+**[44]** de venenato melle et remediis eius
 
-[45]   de melle insano
+**[45]** de melle insano
 
-[46]   de melle quod muscae non attingunt
+**[46]** de melle quod muscae non attingunt
 
-[47]   de alvariis. de alvis et cura earum
+**[47]** de alvariis. de alvis et cura earum
 
-[48]   si famem apes sentiant
+**[48]** si famem apes sentiant
 
-[49]   de cera facienda. quae optima eius genera. de cera Punica
+**[49]** de cera facienda. quae optima eius genera. de cera Punica
 
 [50-108]   sponte nascentium herbarum in quibuscumque gentibus usus, naturae, miracula
 
-[50]   fraga. tmanum. ruscum
+**[50]** fraga. tmanum. ruscum
 
-[100]   med. IIII
+**[100]** med. IIII
 
-[50]   batis gen. II
+**[50]** batis gen. II
 
-[101]   med. II
+**[101]** med. II
 
-[50]   pastinaca pratensis. lupus salictarius
+**[50]** pastinaca pratensis. lupus salictarius
 
-[51]   colocasia
+**[51]** colocasia
 
-[102]   med. II
+**[102]** med. II
 
-[52]   anthalium
+**[52]** anthalium
 
-[52]   anthyllium sive anhyllum
+**[52]** anthyllium sive anhyllum
 
-[103]   med. VI
+**[103]** med. VI
 
-[52]   oetum. quae radices nihil supra terram gignant: arachidne, aracos
+**[52]** oetum. quae radices nihil supra terram gignant: arachidne, aracos
 
-[52]   candryala. hypochoeris. caucalis. enthryscum. scandix, eadem tragopogon. parthenium sive leucanthes sive amaracum sive perdicium sive muralis
+**[52]** candryala. hypochoeris. caucalis. enthryscum. scandix, eadem tragopogon. parthenium sive leucanthes sive amaracum sive perdicium sive muralis
 
-[104]   med. VIII
+**[104]** med. VIII
 
-[52]   trychnum sive strychnum sive halicacabum sive callias sive dorycnion sive manicon sive peritton sive neuras sive morio sive moly
+**[52]** trychnum sive strychnum sive halicacabum sive callias sive dorycnion sive manicon sive peritton sive neuras sive morio sive moly
 
-[105]   med. III
+**[105]** med. III
 
-[52]   corchorus
+**[52]** corchorus
 
-[106]   med. VI
+**[106]** med. VI
 
-[52]   aphace. achynops. epipetron. quae numquam floreat, quae semper
+**[52]** aphace. achynops. epipetron. quae numquam floreat, quae semper
 
-[53]   cneci gen. III
+**[53]** cneci gen. III
 
-[107]   med. III
+**[107]** med. III
 
 [54-58]   aculeati generis herbae
 
-[54]   erynge. glycyrriza
+**[54]** erynge. glycyrriza
 
 [54, 58]   tribulus
 
-[58]   anonis
+**[58]** anonis
 
-[54]   pheos sive stoebe. hippophaes
+**[54]** pheos sive stoebe. hippophaes
 
-[55]   urticae gen. IIII. lamium. scorpio
+**[55]** urticae gen. IIII. lamium. scorpio
 
-[56]   acorna. leucacanthos. chalceos. cnecos. polyacanthos. onopyxos. helxine. scolymos. chamaeleon. tetralix. atractylis sive phonos. acanthice mastiche
+**[56]** acorna. leucacanthos. chalceos. cnecos. polyacanthos. onopyxos. helxine. scolymos. chamaeleon. tetralix. atractylis sive phonos. acanthice mastiche
 
-[57]   cactos. [tenica, pappum, ascalia]
+**[57]** cactos. [tenica, pappum, ascalia]
 
-[59]   herbarum genera per caules: coronopus, anchusa, canthemis. phyllanthes. crepis. lotos
+**[59]** herbarum genera per caules: coronopus, anchusa, canthemis. phyllanthes. crepis. lotos
 
-[60]   differentiae herbarum per folia: quibus folia non cadant. quae particulatim floreant
+**[60]** differentiae herbarum per folia: quibus folia non cadant. quae particulatim floreant
 
 [29-30]   heliotropium, adiantum, herbae quarum medicinae sequenti libro
 
-[60]   dicentur
+**[60]** dicentur
 
-[61]   spicatarum genera: tanyops. alopecuros. stelephuros sive ortyx sive plantage. thryallis
+**[61]** spicatarum genera: tanyops. alopecuros. stelephuros sive ortyx sive plantage. thryallis
 
-[62]   perdicium. ornithogale
+**[62]** perdicium. ornithogale
 
-[63]   post annum nascentes. a summo florentes, item ab imo
+**[63]** post annum nascentes. a summo florentes, item ab imo
 
-[64]   lappa herba quae intra se parit. Opuntia e folio radicem faciens
+**[64]** lappa herba quae intra se parit. Opuntia e folio radicem faciens
 
-[65]   iasine. chondrylla, picris. quae toto anno floreant
+**[65]** iasine. chondrylla, picris. quae toto anno floreant
 
-[66]   quibus flos ante quam caules exeant, quibus caulis ante quam flos. quae ter floreat
+**[66]** quibus flos ante quam caules exeant, quibus caulis ante quam flos. quae ter floreat
 
-[67]   cypiros
+**[67]** cypiros
 
-[69]   med. VIII
+**[69]** med. VIII
 
-[67]   thesium
+**[67]** thesium
 
-[68]   asphodelus sive hastula regia. anthericus sive albucum
+**[68]** asphodelus sive hastula regia. anthericus sive albucum
 
-[69]   iunci gen. VI. med. IIII
+**[69]** iunci gen. VI. med. IIII
 
-[70]   cyperus. med. XIIII. cyperis. cypira
+**[70]** cyperus. med. XIIII. cyperis. cypira
 
-[71]   holoschoenos
+**[71]** holoschoenos
 
-[72]   med. ex iunco odorato sive teuchite X
+**[72]** med. ex iunco odorato sive teuchite X
 
-[78]   med. ex asaro VIII
+**[78]** med. ex asaro VIII
 
-[79]   med. ex Gallico nardo VIII
+**[79]** med. ex Gallico nardo VIII
 
-[80]   med. ex herba quam phun vocant IIII
+**[80]** med. ex herba quam phun vocant IIII
 
-[82]   [Syrium] crocomagma, med. II
+**[82]** [Syrium] crocomagma, med. II
 
-[108]   pesoluta. med. I
+**[108]** pesoluta. med. I
 
-[109]   Graecorum nominum in ponderibus et mensuris interpretatio
+**[109]** Graecorum nominum in ponderibus et mensuris interpretatio
 
 **Summa:**  res et historiae et observationes DCCXXX
 
@@ -3066,165 +3066,165 @@ MEDICIS Mnesitheo qui de coronis. Callimacho qui item. Phania physico. Timaristo
 
 [1-7]   auctoritas herbarum
 
-[2]   gentes herbis formae gratia uti
+**[2]** gentes herbis formae gratia uti
 
-[3]   herbis infici vestes, item pigmento Gallicae cortinae. de sagminibus. de verbenis et clarigatione
+**[3]** herbis infici vestes, item pigmento Gallicae cortinae. de sagminibus. de verbenis et clarigatione
 
-[4]   de corona graminea. de raritate eius
+**[4]** de corona graminea. de raritate eius
 
-[5]   qui soli corona ea donati
+**[5]** qui soli corona ea donati
 
-[6]   qui solus centurio
+**[6]** qui solus centurio
 
 [8-9]   medicinae ex reliquis coronamentis: erynge sive eryngio quae centum capita XXX
 
-[10]   acano I
+**[10]** acano I
 
-[11]   glycyrriza sive adipso XV. stomatice I
+**[11]** glycyrriza sive adipso XV. stomatice I
 
-[12]   tribuli gen. II med. XII
+**[12]** tribuli gen. II med. XII
 
-[13]   stoebe sive pheos
+**[13]** stoebe sive pheos
 
-[14]   hippophaes. gen. II. med. II
+**[14]** hippophaes. gen. II. med. II
 
-[15]   urtica LXI
+**[15]** urtica LXI
 
-[16]   lamio VII
+**[16]** lamio VII
 
-[17]   scorpionis gen. II med. I
+**[17]** scorpionis gen. II med. I
 
-[18]   leucacantha quae phyllos sive ischas sive polygonatos IIII
+**[18]** leucacantha quae phyllos sive ischas sive polygonatos IIII
 
-[19]   helxine XII
+**[19]** helxine XII
 
-[20]   perdicio sive Parthenio sive siderite quae urceolaris sive astercum XI
+**[20]** perdicio sive Parthenio sive siderite quae urceolaris sive astercum XI
 
-[21]   chamaeleone sive ixia sive ulophyto sive cynozolo, gen. II, med. XII. mastiche
+**[21]** chamaeleone sive ixia sive ulophyto sive cynozolo, gen. II, med. XII. mastiche
 
-[22]   coronopode
+**[22]** coronopode
 
-[23]   anchusa XIIII
+**[23]** anchusa XIIII
 
-[24]   pseudoanchusa quae echis sive doris III
+**[24]** pseudoanchusa quae echis sive doris III
 
-[25]   onochilo sive archebio sive onocheli ssv rhexia sive enchrysa X. cuius radices colorem mutent
+**[25]** onochilo sive archebio sive onocheli ssv rhexia sive enchrysa X. cuius radices colorem mutent
 
-[26]   anthemide sive leucanthemide sive leucanthemo sive chamaemelo sive melanthio, gen. III, med. XI
+**[26]** anthemide sive leucanthemide sive leucanthemo sive chamaemelo sive melanthio, gen. III, med. XI
 
-[27]   loto herba III
+**[27]** loto herba III
 
-[28]   lotometra II
+**[28]** lotometra II
 
-[29]   heliotropio sive helioscopio sive verrucaria XII. heliotropio sive tricocco sive scorpiuro XIIII
+**[29]** heliotropio sive helioscopio sive verrucaria XII. heliotropio sive tricocco sive scorpiuro XIIII
 
-[30]   adianto sive callitricho sive trichomane sive polytricho sive saxifraga, gen. II, med. XXVIII. fruex sine radice
+**[30]** adianto sive callitricho sive trichomane sive polytricho sive saxifraga, gen. II, med. XXVIII. fruex sine radice
 
-[31]   picride I. thesio I.
+**[31]** picride I. thesio I.
 
-[32]   asphodelo LI
+**[32]** asphodelo LI
 
-[33]   halimo XIIII
+**[33]** halimo XIIII
 
-[34]   acantho sive paederote sive melamphyllo V
+**[34]** acantho sive paederote sive melamphyllo V
 
-[35]   bupleuro V
+**[35]** bupleuro V
 
-[36]   bupresti I
+**[36]** bupresti I
 
-[37]   elaphobosco VIIII
+**[37]** elaphobosco VIIII
 
-[38]   scandice VIII. enthrysco II
+**[38]** scandice VIII. enthrysco II
 
-[39]   iasine IIII
+**[39]** iasine IIII
 
-[40]   caucalide XII
+**[40]** caucalide XII
 
-[41]   sio XI
+**[41]** sio XI
 
-[42]   sillybo
+**[42]** sillybo
 
-[43]   scolymo sive limonio V
+**[43]** scolymo sive limonio V
 
-[44]   sonco, gen. II, med. XV
+**[44]** sonco, gen. II, med. XV
 
-[45]   condrio sive condrille VI
+**[45]** condrio sive condrille VI
 
-[46]   de boletis. proprietas eorum in nascendo
+**[46]** de boletis. proprietas eorum in nascendo
 
-[47]   de fungis. notae venenatorum. med. ex iis VIIII
+**[47]** de fungis. notae venenatorum. med. ex iis VIIII
 
-[48]   silphio VII
+**[48]** silphio VII
 
-[49]   laseri XXXVIIII
+**[49]** laseri XXXVIIII
 
-[50]   propoli V. mellis XVI
+**[50]** propoli V. mellis XVI
 
 [51-52]   aquae mulsae XVIII
 
-[52]   quare genere ciborum mores quoque mutentur
+**[52]** quare genere ciborum mores quoque mutentur
 
-[53]   mulso VI
+**[53]** mulso VI
 
-[54]   melitite III
+**[54]** melitite III
 
-[55]   cera VIII
+**[55]** cera VIII
 
-[56]   contra conpositiones medicorum
+**[56]** contra conpositiones medicorum
 
 [57-76]   medicinae ex frgibus
 
-[57]   siligine I. tritico II. palea II. farre I. furfuribus I. arinca. athera II
+**[57]** siligine I. tritico II. palea II. farre I. furfuribus I. arinca. athera II
 
-[58]   farina per genera. medicinae XXXVIIII
+**[58]** farina per genera. medicinae XXXVIIII
 
-[59]   polenta VIII
+**[59]** polenta VIII
 
-[60]   polline V. pulte I. farina chartaria I
+**[60]** polline V. pulte I. farina chartaria I
 
-[61]   alica VI
+**[61]** alica VI
 
-[62]   milio VI
+**[62]** milio VI
 
-[63]   panico IIII
+**[63]** panico IIII
 
-[64]   sesima VII. sesamoide II. Anticyrico IIII
+**[64]** sesima VII. sesamoide II. Anticyrico IIII
 
-[65]   hordeo VIIII. hordeo murino quam Graeci Phoeniceam I
+**[65]** hordeo VIIII. hordeo murino quam Graeci Phoeniceam I
 
-[66]   ptisana IIII
+**[66]** ptisana IIII
 
-[67]   amylo VIII. avena I
+**[67]** amylo VIII. avena I
 
-[68]   pane XXI
+**[68]** pane XXI
 
-[69]   faba XIIII
+**[69]** faba XIIII
 
-[70]   lente XXXII. fakw epi telmatwn II
+**[70]** lente XXXII. fakw epi telmatwn II
 
-[71]   elelisphaco sive sphaco quae salvia XIII
+**[71]** elelisphaco sive sphaco quae salvia XIII
 
-[72]   cicere et cicercula XXVI
+**[72]** cicere et cicercula XXVI
 
-[73]   ervo XX
+**[73]** ervo XX
 
-[74]   lupino XXXV
+**[74]** lupino XXXV
 
-[75]   irione sive erysimo quod Galli velam XV
+**[75]** irione sive erysimo quod Galli velam XV
 
-[76]   hormino VI
+**[76]** hormino VI
 
-[77]   lolio V
+**[77]** lolio V
 
-[78]   miliaria herba I
+**[78]** miliaria herba I
 
-[79]   bromo I
+**[79]** bromo I
 
-[80]   orobanche sive cynomorio I
+**[80]** orobanche sive cynomorio I
 
-[81]   contra leguminum bestiolas I
+**[81]** contra leguminum bestiolas I
 
-[82]   de zytho I. spuma
+**[82]** de zytho I. spuma
 
 **Summa:**  res et historiae et observationes DCCCCVI
 
@@ -3236,169 +3236,169 @@ iisdem quibus priore libro et praeter eos Chrysermo. Eratosthene. Alcaeo.
 
 medicinae ex arboribus cultis:
 
-[2]   vitibus XX
+**[2]** vitibus XX
 
-[3]   foliis et pampinis vitium XII
+**[3]** foliis et pampinis vitium XII
 
-[4]   omphacio vitum XIIII
+**[4]** omphacio vitum XIIII
 
-[5]   oenanthe XXI
+**[5]** oenanthe XXI
 
-[6]   uvis recentibus
+**[6]** uvis recentibus
 
-[7]   uvarum servatarum generibus med. XI
+**[7]** uvarum servatarum generibus med. XI
 
-[8]   sarmentis uvarum I
+**[8]** sarmentis uvarum I
 
-[9]   nucleis acinorum VI
+**[9]** nucleis acinorum VI
 
-[10]   vinaceis III
+**[10]** vinaceis III
 
-[11]   uva theriace IIII
+**[11]** uva theriace IIII
 
-[12]   uva passa sive astaphide XVII
+**[12]** uva passa sive astaphide XVII
 
-[13]   astaphide agria sive staphide sive pituitaria XII
+**[13]** astaphide agria sive staphide sive pituitaria XII
 
-[14]   labrusca sive uva taminia quae et ampelos agria XII
+**[14]** labrusca sive uva taminia quae et ampelos agria XII
 
-[15]   salicastro XII
+**[15]** salicastro XII
 
-[16]   vite alba sive ampelo leuce sive staphyle sive melothro sive psilothro sive archezosti sive cedrosti sive mado XXXI
+**[16]** vite alba sive ampelo leuce sive staphyle sive melothro sive psilothro sive archezosti sive cedrosti sive mado XXXI
 
-[17]   vite nigra sive bryonia sive Chironia sive gynaecanthe sive apronia XXXV
+**[17]** vite nigra sive bryonia sive Chironia sive gynaecanthe sive apronia XXXV
 
-[18]   musto XV
+**[18]** musto XV
 
-[20]   Falerno VI. Albano II. Surrentino III
+**[20]** Falerno VI. Albano II. Surrentino III
 
-[21]   Setino I. Statano I. Signino I
+**[21]** Setino I. Statano I. Signino I
 
-[22]   ceteris vinis XIIII
+**[22]** ceteris vinis XIIII
 
 [22-23]   observationes circa vina LXI
 
 [24-26]   quibus aegris danda, quando danda, quomodo danda. observationes circa ea XCI
 
-[27]   aceto XXXIII
+**[27]** aceto XXXIII
 
-[28]   aceto scillino XVII
+**[28]** aceto scillino XVII
 
-[29]   oxymelite VII. oxyalme VII
+**[29]** oxymelite VII. oxyalme VII
 
-[30]   sapa VII
+**[30]** sapa VII
 
-[31]   faece vini XII
+**[31]** faece vini XII
 
-[32]   faece aceti XVII
+**[32]** faece aceti XVII
 
-[33]   faece sapae IIII
+**[33]** faece sapae IIII
 
-[34]   foliis oleae XXIII
+**[34]** foliis oleae XXIII
 
-[35]   flore IIII. olea ipsa VI
+**[35]** flore IIII. olea ipsa VI
 
-[36]   olivis albis IIII. olivis nigris III
+**[36]** olivis albis IIII. olivis nigris III
 
-[37]   amurca XXI
+**[37]** amurca XXI
 
-[38]   foliis oleastri XXI
+**[38]** foliis oleastri XXI
 
-[39]   omphacio III
+**[39]** omphacio III
 
-[40]   oenanthino oleo XXVIII
+**[40]** oenanthino oleo XXVIII
 
-[41]   cicino XVI
+**[41]** cicino XVI
 
-[42]   amygdalino XVI
+**[42]** amygdalino XVI
 
-[43]   laureo VIIII
+**[43]** laureo VIIII
 
-[44]   myrteo XX
+**[44]** myrteo XX
 
-[45]   chamaemyrsinae sive oxymyrsinae, cupressino, citreo, caryino, Cnidio, lentiscino, balanino
+**[45]** chamaemyrsinae sive oxymyrsinae, cupressino, citreo, caryino, Cnidio, lentiscino, balanino
 
-[46]   cyprino et cypro ipsa XV
+**[46]** cyprino et cypro ipsa XV
 
 [46-47]   gleucino I, balsamino XV
 
-[48]   malobathro V
+**[48]** malobathro V
 
-[49]   hyoscyamino II. thermino I. narcissino I. raphanino II. sesamino III. lilino IIII. Selgitico I. Iguino I
+**[49]** hyoscyamino II. thermino I. narcissino I. raphanino II. sesamino III. lilino IIII. Selgitico I. Iguino I
 
-[50]   elaeomeli II. pissino II
+**[50]** elaeomeli II. pissino II
 
-[51]   palmis VIIII
+**[51]** palmis VIIII
 
-[52]   palma myrobalano III
+**[52]** palma myrobalano III
 
-[53]   palma elate XV
+**[53]** palma elate XV
 
 [54-83]   medicinae ex singulorum generum flore, foliis, fructu, ramis, cortice, suco, ligno, radice, cinere
 
-[54]   malorum observations VI. cotoneorum XXV. struthiorum I
+**[54]** malorum observations VI. cotoneorum XXV. struthiorum I
 
-[55]   dulcium malorum VI. austerorum I
+**[55]** dulcium malorum VI. austerorum I
 
-[56]   citreorum V
+**[56]** citreorum V
 
 [57-58]   Punicorum XXIII
 
-[58]   stomatice XIIII
+**[58]** stomatice XIIII
 
-[59]   cytino VIIII
+**[59]** cytino VIIII
 
-[60]   balaustio XV
+**[60]** balaustio XV
 
-[62]   pirorum observationes XIII
+**[62]** pirorum observationes XIII
 
-[63]   ficorum CXI
+**[63]** ficorum CXI
 
-[64]   caprificorum XLII
+**[64]** caprificorum XLII
 
-[65]   erineo herba
+**[65]** erineo herba
 
-[66]   prunis IIII
+**[66]** prunis IIII
 
-[67]   Persicis II
+**[67]** Persicis II
 
-[68]   prunis silvestribus II
+**[68]** prunis silvestribus II
 
-[69]   lichene arborum II
+**[69]** lichene arborum II
 
 [70-71]   moris XXXXVIIII
 
-[71]   stomatice sive arteriace [sive] panchrestos IIII
+**[71]** stomatice sive arteriace [sive] panchrestos IIII
 
-[72]   cerasis V
+**[72]** cerasis V
 
-[73]   mespilis II. sorbis II
+**[73]** mespilis II. sorbis II
 
-[74]   nucibus pineis XIII
+**[74]** nucibus pineis XIII
 
-[75]   amygdalis XXVIIII
+**[75]** amygdalis XXVIIII
 
-[76]   nucibus Graecis V
+**[76]** nucibus Graecis V
 
-[77]   iuglandibus XXIIII. antidoto
+**[77]** iuglandibus XXIIII. antidoto
 
-[78]   abellanis III. pistaciis VIII. castaneis V
+**[78]** abellanis III. pistaciis VIII. castaneis V
 
-[79]   siliquis V. corno I. unedonibus
+**[79]** siliquis V. corno I. unedonibus
 
-[80]   lauris LXVIIII
+**[80]** lauris LXVIIII
 
-[81]   myrtis LX
+**[81]** myrtis LX
 
-[82]   myrtidano XIII
+**[82]** myrtidano XIII
 
-[83]   oxymyrsine sive chamaemyrsine quae ruscum VI
+**[83]** oxymyrsine sive chamaemyrsine quae ruscum VI
 
 **Summa:**  res et historiae et observationes MCCCCXVIII
 
 **EX AUCTORIBUS**
 
-C. Valgio. Pompeio Lenaeo. Sextio Nigro qui Graece scripsit. Iulio basso qui item. Antonio Castore. M. Varrone. Cornelio Celso. Fabiano.
+**C** Valgio. Pompeio Lenaeo. Sextio Nigro qui Graece scripsit. Iulio basso qui item. Antonio Castore. M. Varrone. Cornelio Celso. Fabiano.
 
 **EXTERNIS**
 
@@ -3410,247 +3410,247 @@ MEDICIS Mnesitheo. Callimacho. Phania physico. Timaristo. Simo. Hippocrate. Chry
 
 medicinae ex arboribus silvestribus:
 
-[2]   loto Italica VI
+**[2]** loto Italica VI
 
-[3]   glandibus XIII
+**[3]** glandibus XIII
 
-[4]   cocco ilicis III
+**[4]** cocco ilicis III
 
-[5]   galla XXIII
+**[5]** galla XXIII
 
-[6]   visco IX
+**[6]** visco IX
 
-[7]   pilulis glandiferarum I. cerro VIII
+**[7]** pilulis glandiferarum I. cerro VIII
 
-[8]   subere II
+**[8]** subere II
 
-[9]   fago IIII
+**[9]** fago IIII
 
-[10]   cupresso XXIII
+**[10]** cupresso XXIII
 
-[11]   cedro XIII
+**[11]** cedro XIII
 
-[12]   cedride X
+**[12]** cedride X
 
-[13]   galbano XXVI
+**[13]** galbano XXVI
 
-[14]   Hammoniaco XXIIII
+**[14]** Hammoniaco XXIIII
 
-[15]   styrace XII
+**[15]** styrace XII
 
-[16]   spondylio XVII
+**[16]** spondylio XVII
 
-[17]   sphagno sive sphaco sive bryo V
+**[17]** sphagno sive sphaco sive bryo V
 
-[18]   terebintho VI
+**[18]** terebintho VI
 
-[19]   picea VIII
+**[19]** picea VIII
 
-[20]   chamaepity XV
+**[20]** chamaepity XV
 
-[21]   pityusa VI
+**[21]** pityusa VI
 
-[22]   resinis XXV
+**[22]** resinis XXV
 
-[23]   pice XXVII
+**[23]** pice XXVII
 
-[24]   pisselaeo sive palimpissa XVI
+**[24]** pisselaeo sive palimpissa XVI
 
-[25]   pissasphalto II
+**[25]** pissasphalto II
 
-[26]   zopissa I
+**[26]** zopissa I
 
-[27]   taeda I
+**[27]** taeda I
 
-[28]   lentisco XXII
+**[28]** lentisco XXII
 
-[29]   platano XV
+**[29]** platano XV
 
-[30]   fraxino V
+**[30]** fraxino V
 
-[31]   acere I
+**[31]** acere I
 
-[32]   populo VIII
+**[32]** populo VIII
 
-[33]   ulmo XVI
+**[33]** ulmo XVI
 
-[34]   tilia V
+**[34]** tilia V
 
-[35]   sabuco XV
+**[35]** sabuco XV
 
-[36]   iunipero XXI
+**[36]** iunipero XXI
 
-[37]   salice XIIII. Amerina I
+**[37]** salice XIIII. Amerina I
 
-[38]   vitice XXXIII
+**[38]** vitice XXXIII
 
-[39]   erice I
+**[39]** erice I
 
-[40]   genista V
+**[40]** genista V
 
-[41]   myrice quae et tamarica III
+**[41]** myrice quae et tamarica III
 
-[43]   virga sanguinea I
+**[43]** virga sanguinea I
 
-[42]   brya XVIIII
+**[42]** brya XVIIII
 
-[44]   silere III
+**[44]** silere III
 
-[45]   ligustro VIII
+**[45]** ligustro VIII
 
-[46]   alno I
+**[46]** alno I
 
-[47]   ivyhederis XXXVIIII
+**[47]** ivyhederis XXXVIIII
 
-[48]   cisto V
+**[48]** cisto V
 
-[49]   cisso erythrano II. chamaecisso II. milace II. clematide II
+**[49]** cisso erythrano II. chamaecisso II. milace II. clematide II
 
-[50]   harundine XVIIII
+**[50]** harundine XVIIII
 
-[51]   papyro, charta III
+**[51]** papyro, charta III
 
-[52]   hebeno V
+**[52]** hebeno V
 
-[53]   rhododendro I
+**[53]** rhododendro I
 
-[54]   rhus gen. II medicinae VI. stomatice
+**[54]** rhus gen. II medicinae VI. stomatice
 
-[55]   rhu erythro VIIII
+**[55]** rhu erythro VIIII
 
-[56]   erythrodano XI
+**[56]** erythrodano XI
 
-[57]   alysso II
+**[57]** alysso II
 
-[58]   radicula sive struthio XVI. apocyno II
+**[58]** radicula sive struthio XVI. apocyno II
 
-[59]   rore marino XVIII
+**[59]** rore marino XVIII
 
-[60]   cachry V
+**[60]** cachry V
 
-[61]   herba Sabina VII
+**[61]** herba Sabina VII
 
-[62]   selagine II
+**[62]** selagine II
 
-[63]   samolo II
+**[63]** samolo II
 
-[64]   cummi XI
+**[64]** cummi XI
 
-[65]   spina Arabica IIII
+**[65]** spina Arabica IIII
 
-[66]   spina Alba II. acanthio I
+**[66]** spina Alba II. acanthio I
 
-[67]   acacia XVIII
+**[67]** acacia XVIII
 
 [68-69]   aspalatho sive erysisceptro sive adipsatheo sive diaxylo VIIII
 
-[70]   spina appendice II. pyracantha I
+**[70]** spina appendice II. pyracantha I
 
-[71]   paliuro X
+**[71]** paliuro X
 
-[72]   aquifolia X. taxo I
+**[72]** aquifolia X. taxo I
 
-[73]   rubis LI. stomatice
+**[73]** rubis LI. stomatice
 
-[74]   cynosbato III
+**[74]** cynosbato III
 
-[75]   Idaeo rubo III
+**[75]** Idaeo rubo III
 
-[76]   rhamni gen. II med. V
+**[76]** rhamni gen. II med. V
 
-[77]   Lycio XVIII
+**[77]** Lycio XVIII
 
-[78]   sarcocolla II
+**[78]** sarcocolla II
 
-[79]   oporice II
+**[79]** oporice II
 
-[80]   trixagine sive chamaedrye sive chamaerope sive Teucria XVI
+**[80]** trixagine sive chamaedrye sive chamaerope sive Teucria XVI
 
-[81]   chamaedaphne VI
+**[81]** chamaedaphne VI
 
-[82]   chamelaea VI
+**[82]** chamelaea VI
 
-[83]   chamaesyce VIII
+**[83]** chamaesyce VIII
 
-[84]   chamaecisso herba I
+**[84]** chamaecisso herba I
 
-[85]   chamaeleuce sive farfaro sive farfugio I
+**[85]** chamaeleuce sive farfaro sive farfugio I
 
-[86]   chamaepeuce II. chamaecyparisso II. ampelopraso VI. stachye I
+**[86]** chamaepeuce II. chamaecyparisso II. ampelopraso VI. stachye I
 
-[87]   clinopodio sive cleopiceto sive zopyrontio sive ocimoide III
+**[87]** clinopodio sive cleopiceto sive zopyrontio sive ocimoide III
 
-[88]   clematide centunculo III
+**[88]** clematide centunculo III
 
-[89]   clematide sive aetite sive lagine X
+**[89]** clematide sive aetite sive lagine X
 
-[90]   clematide Aegyptia sive daphnoide sive polygonoide II
+**[90]** clematide Aegyptia sive daphnoide sive polygonoide II
 
 [91-92]   aro XLII
 
-[93]   dracunulo II
+**[93]** dracunulo II
 
-[94]   Aristoteles IIII
+**[94]** Aristoteles IIII
 
-[95]   milifolio sive myriophyllo VII
+**[95]** milifolio sive myriophyllo VII
 
-[96]   pseudobunio IIII
+**[96]** pseudobunio IIII
 
-[97]   myrride sive myrra sive myriza VIII
+**[97]** myrride sive myrra sive myriza VIII
 
-[98]   oenobreche III
+**[98]** oenobreche III
 
 [99-102]   Magica de herbis
 
-[99]   coracesia et calicia
+**[99]** coracesia et calicia
 
-[100]   Minyade sive Corinthia I
+**[100]** Minyade sive Corinthia I
 
-[101]   aproxi. Pythagorea de recidivis morborum
+**[101]** aproxi. Pythagorea de recidivis morborum
 
-[102]   aglaophotide sive marmaritide. Achaemenide sive hippophobade. theombrotio sive semnio. adamantide. Arianide, theronarca. Aethiopide sive Meroide. ophiusa. thalassaegle sive potamaugide. theangelide. gelotophyllide. hesiateride sive protomedia sive casignete sive Dionysonymphade. helianthide sive heliocallide. hermesiade. aeschynomene. crocide. opnothuride. anacampserote
+**[102]** aglaophotide sive marmaritide. Achaemenide sive hippophobade. theombrotio sive semnio. adamantide. Arianide, theronarca. Aethiopide sive Meroide. ophiusa. thalassaegle sive potamaugide. theangelide. gelotophyllide. hesiateride sive protomedia sive casignete sive Dionysonymphade. helianthide sive heliocallide. hermesiade. aeschynomene. crocide. opnothuride. anacampserote
 
-[103]   eriphia
+**[103]** eriphia
 
-[104]   herba lanaria I. lactoris I. militaris I
+**[104]** herba lanaria I. lactoris I. militaris I
 
-[105]   stratiotes V
+**[105]** stratiotes V
 
-[106]   herba de capite statuae I
+**[106]** herba de capite statuae I
 
-[107]   herba de fluminibus I
+**[107]** herba de fluminibus I
 
-[108]   lingua hba
+**[108]** lingua hba
 
-[109]   herba de cribro I
+**[109]** herba de cribro I
 
-[110]   herba de fimetis I
+**[110]** herba de fimetis I
 
-[111]   herba a canum urina I
+**[111]** herba a canum urina I
 
-[112]   rodarum III
+**[112]** rodarum III
 
-[113]   impia II
+**[113]** impia II
 
-[114]   Veneris pecten I
+**[114]** Veneris pecten I
 
-[115]   exedum I. notia I
+**[115]** exedum I. notia I
 
-[116]   philanthropos I. lappa canaria II
+**[116]** philanthropos I. lappa canaria II
 
-[117]   tordylon sive syreon III
+**[117]** tordylon sive syreon III
 
-[118]   gramen XVII
+**[118]** gramen XVII
 
-[119]   dactylos V
+**[119]** dactylos V
 
-[120]   faenum Graecum quae silicia XXXI
+**[120]** faenum Graecum quae silicia XXXI
 
 **Summa:**  res et historiae et observationes MCLXXVI
 
 **EX AUCTORIBUS**
 
-C. Valgio. Pompeio Lenaeo. Sextio Nigro qui Graece scripsit. Iulio basso qui item. Antonio Castore. Cornelio Celso.
+**C** Valgio. Pompeio Lenaeo. Sextio Nigro qui Graece scripsit. Iulio basso qui item. Antonio Castore. Cornelio Celso.
 
 **EXTERNIS**
 
@@ -3662,217 +3662,217 @@ MEDICIS Mnesitheo. Callimacho. Phania physico. Timaristo. Simo. Hippocrate. Chry
 
 naturae herbarum sponte nascentium.
 
-[1]   auctoritas herbarum. de origine usus earum
+**[1]** auctoritas herbarum. de origine usus earum
 
-[2]   qui Latine usus earum scripserint
+**[2]** qui Latine usus earum scripserint
 
-[3]   quando ad Romanos ea notitia pervenerint
+**[3]** quando ad Romanos ea notitia pervenerint
 
 [4-5]   qui primi Graecorum de his conposuerint
 
-[6]   quare minus exerceantur ea remedia. herbae mirabiliter inventae. cynorrodum, med. II. dracunculus caulis I. Britannia V
+**[6]** quare minus exerceantur ea remedia. herbae mirabiliter inventae. cynorrodum, med. II. dracunculus caulis I. Britannia V
 
-[7]   de maximo dolore
+**[7]** de maximo dolore
 
 [7-39]   nobilium herbarum inventores
 
-[8]   moly III
+**[8]** moly III
 
-[9]   dwdeka jewn I
+**[9]** dwdeka jewn I
 
-[10]   paeonia sive pentoboros sive glycysides I
+**[10]** paeonia sive pentoboros sive glycysides I
 
-[11]   panaces Asclepion II
+**[11]** panaces Asclepion II
 
-[12]   panaces Heraclion III
+**[12]** panaces Heraclion III
 
-[13]   panaces Chironion IIII
+**[13]** panaces Chironion IIII
 
-[14]   panaces Centaurion sive Pharnacion III
+**[14]** panaces Centaurion sive Pharnacion III
 
-[15]   Heraclion siderion IIII
+**[15]** Heraclion siderion IIII
 
-[17]   hyoscyamos quae Apollinaris sive altercum, gen. V. med. IIII
+**[17]** hyoscyamos quae Apollinaris sive altercum, gen. V. med. IIII
 
-[18]   linozostis sive parthenion sive Hermu postea quae Mercurialis, gen. II med. XXII
+**[18]** linozostis sive parthenion sive Hermu postea quae Mercurialis, gen. II med. XXII
 
-[19]   Achillea sideritis sive panaces Heracleum quae milifolium aut scopa regia, gen. VI. med. III
+**[19]** Achillea sideritis sive panaces Heracleum quae milifolium aut scopa regia, gen. VI. med. III
 
-[20]   Teucria sive hermione sive splenios II
+**[20]** Teucria sive hermione sive splenios II
 
-[21]   Melampodum sive elleborum quod veratrum, gen. III. quo modo colligatur, quo modo probetur
+**[21]** Melampodum sive elleborum quod veratrum, gen. III. quo modo colligatur, quo modo probetur
 
-[22]   med. ex nigro XXIIII. quomodo sumendum
+**[22]** med. ex nigro XXIIII. quomodo sumendum
 
-[23]   item in albo. med. ex eo XXIII
+**[23]** item in albo. med. ex eo XXIII
 
 [24-25]   quibus non dandum. observationes circa utrumque genus LXXXVIII
 
-[26]   Mithridatia II
+**[26]** Mithridatia II
 
-[27]   scordotis sive scordion IIII
+**[27]** scordotis sive scordion IIII
 
-[28]   Polemonia sive Philetaeria sive chiliodynamus VI
+**[28]** Polemonia sive Philetaeria sive chiliodynamus VI
 
-[29]   Eupatoria I
+**[29]** Eupatoria I
 
-[30]   Centaurion sive Chironion XX
+**[30]** Centaurion sive Chironion XX
 
-[31]   Centaurion lepton sive libadion quod fel terrae XXII
+**[31]** Centaurion lepton sive libadion quod fel terrae XXII
 
-[32]   Centauris triorchis II
+**[32]** Centauris triorchis II
 
-[33]   Clymenos II
+**[33]** Clymenos II
 
-[34]   Gentiana XIII
+**[34]** Gentiana XIII
 
-[35]   Lysimachia VIII
+**[35]** Lysimachia VIII
 
-[36]   Artemisia sive parthenis sive botrys sive ambrosia V
+**[36]** Artemisia sive parthenis sive botrys sive ambrosia V
 
-[37]   nymphaea sive Heraclion sive rhopalon sive mallos, gen. II. med. XIIII
+**[37]** nymphaea sive Heraclion sive rhopalon sive mallos, gen. II. med. XIIII
 
-[38]   Euphorbeae gen. II. med. IIII
+**[38]** Euphorbeae gen. II. med. IIII
 
-[39]   plantaginis gen. II. med. XLVI
+**[39]** plantaginis gen. II. med. XLVI
 
-[40]   buglossos II
+**[40]** buglossos II
 
-[41]   cynoglossos III
+**[41]** cynoglossos III
 
-[42]   buphthalmos sive chalca I
+**[42]** buphthalmos sive chalca I
 
 [43-49]   herbae quas gentes invenerunt
 
-[43]   Scythice III
+**[43]** Scythice III
 
-[44]   hippace III
+**[44]** hippace III
 
-[45]   ischaemon II
+**[45]** ischaemon II
 
-[46]   cestros sive psychrotrophon quae Vettonica sive serratula XLVIII
+**[46]** cestros sive psychrotrophon quae Vettonica sive serratula XLVIII
 
-[47]   Cantabrica II
+**[47]** Cantabrica II
 
-[48]   consiligo I
+**[48]** consiligo I
 
-[49]   Hiberis VII
+**[49]** Hiberis VII
 
 [50-53]   herbae ab animalibus repertae
 
-[53]   chelidonia VI. canaria I. dictamnon VIII. pseudodictamnon sive chondirs. quibus locis potentissimae herbae. propter herbas in Arcadia lac potari
+**[53]** chelidonia VI. canaria I. dictamnon VIII. pseudodictamnon sive chondirs. quibus locis potentissimae herbae. propter herbas in Arcadia lac potari
 
-[54]   aristolochia sive clematitis sive Cretica sive plistolochia sive lochia polyrrizos quae malum terrae XXII
+**[54]** aristolochia sive clematitis sive Cretica sive plistolochia sive lochia polyrrizos quae malum terrae XXII
 
-[56]   argemonia IIII
+**[56]** argemonia IIII
 
-[57]   agaricum XXXIII
+**[57]** agaricum XXXIII
 
-[58]   echios, gen. III. med. II
+**[58]** echios, gen. III. med. II
 
-[58]   hierabotane sive aristereon quae verbenaca, gen. II. med. X
+**[58]** hierabotane sive aristereon quae verbenaca, gen. II. med. X
 
-[60]   blattaria I
+**[60]** blattaria I
 
-[61]   molemonium I
+**[61]** molemonium I
 
-[62]   pentapetes sive pentaphyllon sive chamaezelon quae quinquefolium, med. XXXIII
+**[62]** pentapetes sive pentaphyllon sive chamaezelon quae quinquefolium, med. XXXIII
 
-[63]   sparganion I
+**[63]** sparganion I
 
-[64]   dauci gen. IIII. med. XVIII
+**[64]** dauci gen. IIII. med. XVIII
 
-[65]   theronarca II
+**[65]** theronarca II
 
-[66]   persollata sive arcion VIII
+**[66]** persollata sive arcion VIII
 
-[67]   cyclaminos quae tuber terrae XII
+**[67]** cyclaminos quae tuber terrae XII
 
-[68]   cyclaminos cissanthemos IIII
+**[68]** cyclaminos cissanthemos IIII
 
-[69]   cyclaminos chamaecissos III
+**[69]** cyclaminos chamaecissos III
 
-[70]   peucedanum XXVIII
+**[70]** peucedanum XXVIII
 
-[71]   ebulum VI
+**[71]** ebulum VI
 
-[72]   polemonia I
+**[72]** polemonia I
 
-[73]   phlomos quae verbascum XV
+**[73]** phlomos quae verbascum XV
 
-[74]   phlomides II. phlomis lychnitis sive thryallis
+**[74]** phlomides II. phlomis lychnitis sive thryallis
 
-[75]   thelyphonon sive scorpio I
+**[75]** thelyphonon sive scorpio I
 
-[76]   phrynion sive neuras sive poterion I
+**[76]** phrynion sive neuras sive poterion I
 
-[77]   alcima sive damasonion sive lyron XVIII
+**[77]** alcima sive damasonion sive lyron XVIII
 
-[78]   peristereos VI
+**[78]** peristereos VI
 
-[80]   antirrinon sive pararrinon sive lychnis agria III
+**[80]** antirrinon sive pararrinon sive lychnis agria III
 
-[81]   euplia I
+**[81]** euplia I
 
-[82]   pericarpum, gen. II. med. II
+**[82]** pericarpum, gen. II. med. II
 
-[83]   nymphaea Heraclia II
+**[83]** nymphaea Heraclia II
 
-[84]   lingulaca I
+**[84]** lingulaca I
 
-[85]   cacalia sive leontice III
+**[85]** cacalia sive leontice III
 
-[86]   callithrix I
+**[86]** callithrix I
 
-[87]   hyssopum XX
+**[87]** hyssopum XX
 
-[88]   lonchitis IIII
+**[88]** lonchitis IIII
 
-[89]   xiphion sive phasganion IIII
+**[89]** xiphion sive phasganion IIII
 
-[90]   psyllion sive cynois sive chrysallion sive Sicelicon sive cynomyia XVI. thrysellion I
+**[90]** psyllion sive cynois sive chrysallion sive Sicelicon sive cynomyia XVI. thrysellion I
 
 [91-103]   remedia oculorum
 
-[92]   anagallis sive acoron quae felis oculus, gen. II. med. VI
+**[92]** anagallis sive acoron quae felis oculus, gen. II. med. VI
 
-[93]   aegilops II
+**[93]** aegilops II
 
-[94]   mandragors sive Cirecion sive morion sive hippophlomon, gen. II. med. XIIII
+**[94]** mandragors sive Cirecion sive morion sive hippophlomon, gen. II. med. XIIII
 
-[95]   cicuta XIII
+**[95]** cicuta XIII
 
-[96]   cremnos agrios III
+**[96]** cremnos agrios III
 
-[97]   molybdaena I
+**[97]** molybdaena I
 
-[98]   capnos trunca quae pedes gallinacei I
+**[98]** capnos trunca quae pedes gallinacei I
 
-[99]   capnos fruticos III
+**[99]** capnos fruticos III
 
-[100]   acoron sive acorion XVII
+**[100]** acoron sive acorion XVII
 
-[101]   cotyledonis gen. II. med. LXI
+**[101]** cotyledonis gen. II. med. LXI
 
-[102]   aizoum maius sive buphthalmon sive zoophthalmon sive hypogeson sive ambrosion sive amerimnon quae sedum magnum aut oculus aut digitellus, med. XXXI. aizoum minus sive erithales sive trithales sive erysithales quae isoetes aut sedum, med. XXXII
+**[102]** aizoum maius sive buphthalmon sive zoophthalmon sive hypogeson sive ambrosion sive amerimnon quae sedum magnum aut oculus aut digitellus, med. XXXI. aizoum minus sive erithales sive trithales sive erysithales quae isoetes aut sedum, med. XXXII
 
-[103]   andrachle agria quae illecebra XXXII
+**[103]** andrachle agria quae illecebra XXXII
 
-[106]   erigeron sive pappos sive acanthis quae senecio VIII
+**[106]** erigeron sive pappos sive acanthis quae senecio VIII
 
-[107]   ephemeron II
+**[107]** ephemeron II
 
-[108]   labrum Venereum I
+**[108]** labrum Venereum I
 
-[109]   batrachion quae ranunculus sive strumos, gen. IIII. med. XIII
+**[109]** batrachion quae ranunculus sive strumos, gen. IIII. med. XIII
 
-[110]   stomatice, gen. II
+**[110]** stomatice, gen. II
 
 **Summa:**  res et historiae et observationes MCCXCII
 
 **EX AUCTORIBUS**
 
-C. Valgio. Pompeio Lenaeo. Sextio Nigro qui Graece scripsit. Iulio basso qui item. Antonio Castore. Cornelio Celso. Fabiano.
+**C** Valgio. Pompeio Lenaeo. Sextio Nigro qui Graece scripsit. Iulio basso qui item. Antonio Castore. Cornelio Celso. Fabiano.
 
 **EXTERNIS**
 
@@ -3884,143 +3884,143 @@ MEDICIS Mnesitheo. Callimacho. Phania physico. Timaristo. Simo. Hippocrate. Chry
 
 reliqua per genera medicinae
 
-[1]   reliquae per gra de novis morbis
+**[1]** reliquae per gra de novis morbis
 
-[2]   quid sint lichenes
+**[2]** quid sint lichenes
 
-[3]   quando primum in Italia coeperint
+**[3]** quando primum in Italia coeperint
 
-[4]   item carbunculus
+**[4]** item carbunculus
 
-[5]   item elephantiasis
+**[5]** item elephantiasis
 
-[6]   item colum
+**[6]** item colum
 
-[7]   de nova medicina. de Asclepiade medico
+**[7]** de nova medicina. de Asclepiade medico
 
-[8]   qua ratione medicinam veterem mutaverit
+**[8]** qua ratione medicinam veterem mutaverit
 
-[9]   contra Magos
+**[9]** contra Magos
 
-[10]   lichen, gen. II. med. V
+**[10]** lichen, gen. II. med. V
 
-[11]   Proserpinaca I
+**[11]** Proserpinaca I
 
-[13]   bellis II
+**[13]** bellis II
 
-[14]   condurdum I
+**[14]** condurdum I
 
-[16]   bechion sive arcion sive chamaeleuce quae tussilago III
+**[16]** bechion sive arcion sive chamaeleuce quae tussilago III
 
-[17]   bechion quae salvia IIII
+**[17]** bechion quae salvia IIII
 
-[19]   molon sive syron I. amomon III
+**[19]** molon sive syron I. amomon III
 
-[20]   ephedra sive anabasis III
+**[20]** ephedra sive anabasis III
 
-[21]   geum III
+**[21]** geum III
 
-[22]   tripolion III
+**[22]** tripolion III
 
-[23]   gromphaena
+**[23]** gromphaena
 
-[24]   malundrum II
+**[24]** malundrum II
 
-[25]   chalcetum I. [molemonium I]
+**[25]** chalcetum I. [molemonium I]
 
-[26]   halus sive cotonea V
+**[26]** halus sive cotonea V
 
-[27]   chamaerops I. stoechas I
+**[27]** chamaerops I. stoechas I
 
-[29]   astragalus VI
+**[29]** astragalus VI
 
-[30]   ladanum XIII
+**[30]** ladanum XIII
 
-[31]   chondris sive pseudodictamnum I. hypocisthis sive orobethron, gen. II. med. VIII
+**[31]** chondris sive pseudodictamnum I. hypocisthis sive orobethron, gen. II. med. VIII
 
-[32]   laver sive sion
+**[32]** laver sive sion
 
-[33]   potamogiton VIII. statice III
+**[33]** potamogiton VIII. statice III
 
-[34]   ceratia II. leontopodion sive leuceoron sive doripetron sive thorybethron.... lagopus II
+**[34]** ceratia II. leontopodion sive leuceoron sive doripetron sive thorybethron.... lagopus II
 
-[35]   epithymon sive hippopheos VIII
+**[35]** epithymon sive hippopheos VIII
 
-[36]   pycnocomon IIII
+**[36]** pycnocomon IIII
 
-[37]   polypodion III
+**[37]** polypodion III
 
-[38]   scamonia VIII
+**[38]** scamonia VIII
 
-[39]   tithymalos characia ...
+**[39]** tithymalos characia ...
 
-[40]   tithymalos myrtites sive caryites XXI
+**[40]** tithymalos myrtites sive caryites XXI
 
-[41]   tithymalos paralius sive tithymalis IIII
+**[41]** tithymalos paralius sive tithymalis IIII
 
-[42]   tithymalos helioscopios XVIII
+**[42]** tithymalos helioscopios XVIII
 
-[43]   tithymalos cyparittias XVIII
+**[43]** tithymalos cyparittias XVIII
 
-[44]   tithymalos platyphyllos sive corymbites sive amygdalites III
+**[44]** tithymalos platyphyllos sive corymbites sive amygdalites III
 
-[45]   tithymalos dendroides sive cobios sive leptophyllos XVIII
+**[45]** tithymalos dendroides sive cobios sive leptophyllos XVIII
 
-[46]   apios ischas sive raphanos agria II
+**[46]** apios ischas sive raphanos agria II
 
-[50]   crethmon XI. cachry
+**[50]** crethmon XI. cachry
 
-[51]   anthyllion II. anthyllis II
+**[51]** anthyllion II. anthyllis II
 
-[52]   cepaea I
+**[52]** cepaea I
 
-[53]   hypericon sive chamaepitys sive corisson VIIII
+**[53]** hypericon sive chamaepitys sive corisson VIIII
 
-[54]   caros sive hypericon X
+**[54]** caros sive hypericon X
 
-[55]   callithrix I. perpressa I. chrysanthemum I. anthemis I
+**[55]** callithrix I. perpressa I. chrysanthemum I. anthemis I
 
-[56]   silaus I
+**[56]** silaus I
 
-[57]   herba Fulviana
+**[57]** herba Fulviana
 
-[59]   inguinalis sive argemo
+**[59]** inguinalis sive argemo
 
-[60]   Chrysippeos I
+**[60]** Chrysippeos I
 
-[62]   orchis sive Serapias V
+**[62]** orchis sive Serapias V
 
-[63]   satyrion III. satyrion Erythraicon IIII
+**[63]** satyrion III. satyrion Erythraicon IIII
 
-[65]   lappago sive mollugo I. asperugo I
+**[65]** lappago sive mollugo I. asperugo I
 
-[66]   phycos quod fucus marinus, gen. III. med. V. lappa boaria
+**[66]** phycos quod fucus marinus, gen. III. med. V. lappa boaria
 
-[68]   geranion sive myrris sive myrtis, gen. III. med. VI
+**[68]** geranion sive myrris sive myrtis, gen. III. med. VI
 
-[69]   onothera sive onear III
+**[69]** onothera sive onear III
 
-[73]   acte sive ebulum. chamaeacte
+**[73]** acte sive ebulum. chamaeacte
 
-[83]   hippuris sive ephedron sive anabasis quae equisetum, gen. III. med. XVII
+**[83]** hippuris sive ephedron sive anabasis quae equisetum, gen. III. med. XVII
 
-[84]   stephanomelis
+**[84]** stephanomelis
 
-[85]   erysithales I
+**[85]** erysithales I
 
-[88]   polycnemon I
+**[88]** polycnemon I
 
-[91]   arsenogonon I. thelygonon I
+**[91]** arsenogonon I. thelygonon I
 
-[92]   mastos I
+**[92]** mastos I
 
-[93]   ophrys
+**[93]** ophrys
 
 **Summa:**  res et historiae et observationes MXVIIII
 
 **EX AUCTORIBUS**
 
-M. Varrone. C. Valgio. Pompeio Lenaeo. Sextio Nigro qui Graece scripsit. Iulio basso qui item. Antonio Castore. Cornelio Celso.
+**M** Varrone. C. Valgio. Pompeio Lenaeo. Sextio Nigro qui Graece scripsit. Iulio basso qui item. Antonio Castore. Cornelio Celso.
 
 **EXTERNIS**
 
@@ -4032,249 +4032,249 @@ MEDICIS Mnesitheo. Callimacho. Phania physico. Timaristo. Simo. Hippocrate. Chry
 
 reliqua genera herbarum. medicinae ex iis.
 
-[2]   aconitum sive thelyphonon sive cammaron sive pardalianches sive scorpion, med. IIII
+**[2]** aconitum sive thelyphonon sive cammaron sive pardalianches sive scorpion, med. IIII
 
-[3]   Aethiopis IIII
+**[3]** Aethiopis IIII
 
-[4]   ageraton IIII
+**[4]** ageraton IIII
 
-[5]   aloe XXVIIII
+**[5]** aloe XXVIIII
 
-[6]   alcea IIIII
+**[6]** alcea IIIII
 
-[7]   alypon I
+**[7]** alypon I
 
-[8]   alsine ad eadem quae helxine V
+**[8]** alsine ad eadem quae helxine V
 
-[9]   androsaces III
+**[9]** androsaces III
 
-[10]   androsaemon sive ascyron VI
+**[10]** androsaemon sive ascyron VI
 
-[11]   ambrosia sive botrys sive Artemisia III
+**[11]** ambrosia sive botrys sive Artemisia III
 
-[12]   anonis sive ononis V
+**[12]** anonis sive ononis V
 
-[13]   anagyros sive acopon VI
+**[13]** anagyros sive acopon VI
 
-[14]   anonymos V
+**[14]** anonymos V
 
-[15]   aparine sive omphalocarpos sive philanthropos IIII
+**[15]** aparine sive omphalocarpos sive philanthropos IIII
 
-[16]   arction sive arcturon V
+**[16]** arction sive arcturon V
 
-[17]   asplenos sive hemionios II
+**[17]** asplenos sive hemionios II
 
-[18]   Asclepias II
+**[18]** Asclepias II
 
-[19]   aster sive bubonion III
+**[19]** aster sive bubonion III
 
-[20]   ascyron et ascyroides IIII
+**[20]** ascyron et ascyroides IIII
 
-[21]   aphaca III
+**[21]** aphaca III
 
-[22]   alcibium I
+**[22]** alcibium I
 
-[23]   alectoros lophos quae crista II
+**[23]** alectoros lophos quae crista II
 
-[24]   alum quod symphyton petraeum XIIII
+**[24]** alum quod symphyton petraeum XIIII
 
-[25]   alga rufa I
+**[25]** alga rufa I
 
-[26]   actaea I
+**[26]** actaea I
 
-[27]   ampelos agria IIII
+**[27]** ampelos agria IIII
 
-[28]   absinthium, gen. III. med. XLVIIII
+**[28]** absinthium, gen. III. med. XLVIIII
 
-[29]   absinthium marinum sive seriphum II
+**[29]** absinthium marinum sive seriphum II
 
-[30]   ballote sive porrum nigrum III
+**[30]** ballote sive porrum nigrum III
 
-[31]   botrys sive Artemisia I
+**[31]** botrys sive Artemisia I
 
-[32]   brabilla I
+**[32]** brabilla I
 
-[33]   bryon marinum V
+**[33]** bryon marinum V
 
-[34]   bupleuron I
+**[34]** bupleuron I
 
-[35]   catanance I. cemos I
+**[35]** catanance I. cemos I
 
-[36]   calyx III
+**[36]** calyx III
 
-[37]   calyx sive anchusa sive rhinoclia II
+**[37]** calyx sive anchusa sive rhinoclia II
 
-[38]   Circeia III
+**[38]** Circeia III
 
-[39]   cirsion I
+**[39]** cirsion I
 
-[40]   crataegonon, gen. II. med. VIII
+**[40]** crataegonon, gen. II. med. VIII
 
-[41]   crocodileon II
+**[41]** crocodileon II
 
-[42]   cynosorchis sive orchis IIII
+**[42]** cynosorchis sive orchis IIII
 
-[43]   chrysolachani gen. II. med. III. coagulum terrae II
+**[43]** chrysolachani gen. II. med. III. coagulum terrae II
 
-[44]   cucullus sive strumus sive strychnos VI
+**[44]** cucullus sive strumus sive strychnos VI
 
-[45]   conferva II
+**[45]** conferva II
 
-[46]   coccum Cnidium II
+**[46]** coccum Cnidium II
 
-[47]   dipsacos III
+**[47]** dipsacos III
 
-[48]   dryopteris II
+**[48]** dryopteris II
 
-[49]   drabe I
+**[49]** drabe I
 
-[50]   elatine II
+**[50]** elatine II
 
-[51]   empetros quam nostri calcifragam IIII
+**[51]** empetros quam nostri calcifragam IIII
 
-[52]   epicactis ssv elleborine II
+**[52]** epicactis ssv elleborine II
 
-[53]   epimedion III
+**[53]** epimedion III
 
-[54]   enneaphyllon III
+**[54]** enneaphyllon III
 
-[55]   felicis gen. II, quam Graeci pterim, alii blachron, item thelypterim, nymphaeam pterim vocant, XI
+**[55]** felicis gen. II, quam Graeci pterim, alii blachron, item thelypterim, nymphaeam pterim vocant, XI
 
-[56]   femur bubulum
+**[56]** femur bubulum
 
-[57]   galeopsis sive galeobdolon sive galion VI
+**[57]** galeopsis sive galeobdolon sive galion VI
 
-[58]   glaux I
+**[58]** glaux I
 
-[59]   glaucion III. collyrium, med. II
+**[59]** glaucion III. collyrium, med. II
 
-[60]   glycyside sive Paeonia sive pentorobon XX
+**[60]** glycyside sive Paeonia sive pentorobon XX
 
-[61]   gnaphalion sive chamaezelon VI
+**[61]** gnaphalion sive chamaezelon VI
 
-[62]   gallidraga I
+**[62]** gallidraga I
 
-[63]   holcus sive aristis
+**[63]** holcus sive aristis
 
-[64]   hyoseris I
+**[64]** hyoseris I
 
-[65]   holosteon III
+**[65]** holosteon III
 
-[66]   hippophaeston VIII
+**[66]** hippophaeston VIII
 
-[67]   hypoglossa I
+**[67]** hypoglossa I
 
-[68]   hypecoon
+**[68]** hypecoon
 
-[69]   Idaea IIII
+**[69]** Idaea IIII
 
-[70]   isopyron sive phaselion III
+**[70]** isopyron sive phaselion III
 
-[71]   lathyris II
+**[71]** lathyris II
 
-[72]   leontopetalon sive rhapadion II
+**[72]** leontopetalon sive rhapadion II
 
-[73]   lycapsos II
+**[73]** lycapsos II
 
-[74]   lithospermon sive exonychon sive DioV puron sive HrakleouV II
+**[74]** lithospermon sive exonychon sive DioV puron sive HrakleouV II
 
-[75]   lapidis muscus I
+**[75]** lapidis muscus I
 
-[76]   limeum I
+**[76]** limeum I
 
-[77]   leuce sive mesoleucium sive leucas III
+**[77]** leuce sive mesoleucium sive leucas III
 
-[78]   leucographis V
+**[78]** leucographis V
 
-[79]   medion III
+**[79]** medion III
 
-[80]   myosota sive myosotis III
+**[80]** myosota sive myosotis III
 
-[81]   myagros I
+**[81]** myagros I
 
-[82]   nyma I
+**[82]** nyma I
 
-[83]   natrix I
+**[83]** natrix I
 
-[84]   odontitis I
+**[84]** odontitis I
 
-[85]   othonna I
+**[85]** othonna I
 
-[86]   onosma I
+**[86]** onosma I
 
-[87]   onopradon V
+**[87]** onopradon V
 
-[88]   osyris IIII
+**[88]** osyris IIII
 
-[89]   oxys II
+**[89]** oxys II
 
-[90]   polyanthemon sive batrachion III
+**[90]** polyanthemon sive batrachion III
 
-[91]   polygonos sive polygonion sive thalattias sive carcinothron sive clema sive myrtopetalos quae sanguinaria sive orios, gen. IIII. med. XXXIII
+**[91]** polygonos sive polygonion sive thalattias sive carcinothron sive clema sive myrtopetalos quae sanguinaria sive orios, gen. IIII. med. XXXIII
 
-[92]   pancration XII
+**[92]** pancration XII
 
-[93]   peplis sive syce sive meconion sive mecon aphrodes III
+**[93]** peplis sive syce sive meconion sive mecon aphrodes III
 
-[94]   periclymenon V
+**[94]** periclymenon V
 
-[95]   pelecinos II
+**[95]** pelecinos II
 
-[96]   polygala I
+**[96]** polygala I
 
-[97]   poterion sive phrynion sive neuras IIII
+**[97]** poterion sive phrynion sive neuras IIII
 
-[98]   phalangitis sive phalangion sive leucacantha IIII
+**[98]** phalangitis sive phalangion sive leucacantha IIII
 
-[99]   phyteuma I
+**[99]** phyteuma I
 
-[100]   phyllon I
+**[100]** phyllon I
 
-[101]   pellandrion II
+**[101]** pellandrion II
 
-[102]   phaleris II
+**[102]** phaleris II
 
-[103]   polyrrizon II
+**[103]** polyrrizon II
 
-[104]   Proserpinaca V
+**[104]** Proserpinaca V
 
-[105]   rhecoma XXXVI
+**[105]** rhecoma XXXVI
 
-[106]   reseda II
+**[106]** reseda II
 
-[107]   stoechas III
+**[107]** stoechas III
 
-[108]   solanum quam Graeci strychnon II
+**[108]** solanum quam Graeci strychnon II
 
-[109]   Smyrnion XXXII. sinon II
+**[109]** Smyrnion XXXII. sinon II
 
-[110]   Telephion IIII
+**[110]** Telephion IIII
 
-[111]   trichomanes V
+**[111]** trichomanes V
 
-[112]   thalictrum I
+**[112]** thalictrum I
 
-[113]   thlaspi sive Persicon napy IIII
+**[113]** thlaspi sive Persicon napy IIII
 
-[114]   Trachinia I
+**[114]** Trachinia I
 
-[115]   tragonis sive tragion III
+**[115]** tragonis sive tragion III
 
-[116]   tragos sive scorpio IIII
+**[116]** tragos sive scorpio IIII
 
-[117]   tragopogon sive come I
+**[117]** tragopogon sive come I
 
-[118]   de aetatibus herbarum
+**[118]** de aetatibus herbarum
 
-[119]   quo modo cuiusque vires efficaciores
+**[119]** quo modo cuiusque vires efficaciores
 
-[120]   gentium vitia diversa
+**[120]** gentium vitia diversa
 
 **Summa:**  res et historiae et observationes DCII
 
 **EX AUCTORIBUS**
 
-C. Valgio. Pompeio Lenaeo. Sextio Nigro qui Graece scripsit. Iulio basso qui item. Antonio Castore. Cornelio Celso.
+**C** Valgio. Pompeio Lenaeo. Sextio Nigro qui Graece scripsit. Iulio basso qui item. Antonio Castore. Cornelio Celso.
 
 **EXTERNIS**
 
@@ -4286,11 +4286,11 @@ MEDICIS Mnesitheo. Callimacho. Timaristo. Simo. Hippocrate. Chrysippo. Diocle. O
 
 medicinae ex animalibus.
 
-[3]   an sit in medendo verborum aliqua vis
+**[3]** an sit in medendo verborum aliqua vis
 
 [4-5]   ostenta et sanciri et depelli
 
-[2]   ex homine remedia. contraria Magos
+**[2]** ex homine remedia. contraria Magos
 
 [6-19]   ex viro medicinae et observations CCXXVI, puero VIII
 
@@ -4298,47 +4298,47 @@ medicinae ex animalibus.
 
 [24-32]   ex peregrinis animalibus
 
-[24]   elephanto VIII
+**[24]** elephanto VIII
 
-[25]   leone X
+**[25]** leone X
 
-[26]   camelo X
+**[26]** camelo X
 
-[27]   hyaena LXXVIIII
+**[27]** hyaena LXXVIIII
 
-[28]   crocodilo XVIIII. crocodilea XI
+**[28]** crocodilo XVIIII. crocodilea XI
 
-[29]   chamaeleone XV
+**[29]** chamaeleone XV
 
-[30]   scinco IIII
+**[30]** scinco IIII
 
-[31]   hippopotamio VII
+**[31]** hippopotamio VII
 
-[32]   lynce V
+**[32]** lynce V
 
 [33-41]   medicinae communes ex animalibus feris aut eiusdem generis placidis
 
-[33]   lactis usus et observations LVII
+**[33]** lactis usus et observations LVII
 
-[34]   de caseis XII
+**[34]** de caseis XII
 
-[35]   butyro XXV
+**[35]** butyro XXV
 
-[36]   oxygala I
+**[36]** oxygala I
 
-[37]   adipis usus et observations LII
+**[37]** adipis usus et observations LII
 
-[38]   de sebo
+**[38]** de sebo
 
-[39]   de medulla
+**[39]** de medulla
 
-[40]   de felle
+**[40]** de felle
 
-[41]   de sanguine
+**[41]** de sanguine
 
 [42-80]   privatae ex animalibus medicinae digestae in morbos
 
-[71]   ex apro XLI
+**[71]** ex apro XLI
 
 sue LX
 
@@ -4390,7 +4390,7 @@ de glutino taurino probando, et medicinae ex eo VII
 
 **EX AUCTORIBUS**
 
-M. Varrone. L. Pisone. Antiate. Flacco Verrio. Fabiano. Catone censorio. Servio Sulpicio. Licinio Macro. Celso. Masurio. Sextio Nigro qui Graece scripsit. Bitho Durracheno. Rabirio medico. Ofilio medico. Granio medico.
+**M** Varrone. L. Pisone. Antiate. Flacco Verrio. Fabiano. Catone censorio. Servio Sulpicio. Licinio Macro. Celso. Masurio. Sextio Nigro qui Graece scripsit. Bitho Durracheno. Rabirio medico. Ofilio medico. Granio medico.
 
 **EXTERNIS**
 
@@ -4400,35 +4400,35 @@ Democrito. Apollonio qui et Mys. Meleto. Artemone. Sextilio Antaeo. Homero. Theo
 
 medicinae ex animalibus.
 
-[1]   de origine medicinae
+**[1]** de origine medicinae
 
-[2]   de Hippocrate. quando primum clinice. quod primum iatraliptice
+**[2]** de Hippocrate. quando primum clinice. quod primum iatraliptice
 
-[3]   de Chrysippo medico. de Erasistrato
+**[3]** de Chrysippo medico. de Erasistrato
 
-[4]   de empirice
+**[4]** de empirice
 
-[5]   de Herophilo. de reliquis inlustribus medicis. quotiens ratio medicinae mutata sit
+**[5]** de Herophilo. de reliquis inlustribus medicis. quotiens ratio medicinae mutata sit
 
-[6]   quis primus Romae medicus et quando
+**[6]** quis primus Romae medicus et quando
 
-[7]   quid de medicis antiqui Romani iudicaverint
+**[7]** quid de medicis antiqui Romani iudicaverint
 
-[8]   vitia mekha
+**[8]** vitia mekha
 
-[9]   remedia ex lanis XXXV et sequenti libro XXV: LX
+**[9]** remedia ex lanis XXXV et sequenti libro XXV: LX
 
-[10]   oesypo XXXIII, seq. l. XX: LII
+**[10]** oesypo XXXIII, seq. l. XX: LII
 
-[11]   ovis XXII, seq. l. XLIII: LXV. quae sitista ova. quo modo fiant tota lutea
+**[11]** ovis XXII, seq. l. XLIII: LXV. quae sitista ova. quo modo fiant tota lutea
 
-[12]   de serpentium ovis
+**[12]** de serpentium ovis
 
-[13]   de Commageno conficiendo. medicinae ex eo
+**[13]** de Commageno conficiendo. medicinae ex eo
 
 [14-40]   remedia ex animalibus quae placida non sint aut fera
 
-[38]   ariete V et seq. l. VII: XII
+**[38]** ariete V et seq. l. VII: XII
 
 pecude XXII et seq. l. LV: LXXVII
 
@@ -4468,9 +4468,9 @@ dracone VI et seq. l. IIII: X
 
 vipera XIIII et seq. l. XXI: XXXV
 
-[38]   de viperino sale
+**[38]** de viperino sale
 
-[17]   angue VIII et seq. l. XXVII: XXXV
+**[17]** angue VIII et seq. l. XXVII: XXXV
 
 hydro I
 
@@ -4490,7 +4490,7 @@ scolopendra sive multipeda sive milipeda sive centipeda sive onisco sive iulo I 
 
 admiratio naturae nihil sine usu gignentis]   jhriakh ecewn
 
-[39]   limace I et seq. l. III: IIII
+**[39]** limace I et seq. l. III: IIII
 
 [uruca I et seq. l. II: III]
 
@@ -4514,7 +4514,7 @@ ansere VII et seq. l. XV: XXII
 
 de adipe avium conficiendo
 
-[17]   corvo II et seq. l. IIII: VI
+**[17]** corvo II et seq. l. IIII: VI
 
 cornice II et seq. l. I: III
 
@@ -4556,7 +4556,7 @@ pityocampe V [et seq. l. IIII: VI]
 
 naturae benignitatem etiam foedis animalibus inseruisse magna remedia
 
-[30]   scarabaeo I et seq. l. VII: VIII
+**[30]** scarabaeo I et seq. l. VII: VIII
 
 blatta et seq. l. XIII: XVII
 
@@ -4578,7 +4578,7 @@ formicis III et seq. l. V: VIII
 
 **EX AUCTORIBUS**
 
-M. Varrone. L. Pisone. Flacco Verrio. Antiate. Nigidio. Cassio Hemina. Cicerone. Plauto. Celso. Sextio Nigro qui Graece scripsit. Caecilio medico. Metello Scipione. Ovidio poeta. Licinio Macro.
+**M** Varrone. L. Pisone. Flacco Verrio. Antiate. Nigidio. Cassio Hemina. Cicerone. Plauto. Celso. Sextio Nigro qui Graece scripsit. Caecilio medico. Metello Scipione. Ovidio poeta. Licinio Macro.
 
 **EXTERNIS**
 
@@ -4590,21 +4590,21 @@ MEDICIS Botrye. Apollodoro. Archedemo. Aristogene. Xenocrate. Democrate. Diodoro
 
 medicinae ex animalibus reliquae prioris libri.
 
-[1]   de origine magices
+**[1]** de origine magices
 
-[2]   quando et a quo coeperit. a quibus celebrata sit
+**[2]** quando et a quo coeperit. a quibus celebrata sit
 
-[3]   an exercuerit eam Italia. quando primum senatus vetuerit hominem immolari
+**[3]** an exercuerit eam Italia. quando primum senatus vetuerit hominem immolari
 
-[4]   de Galliarum Druidis
+**[4]** de Galliarum Druidis
 
-[5]   de generibus magices
+**[5]** de generibus magices
 
-[7]   opinio Magorum de talpis. med. V
+**[7]** opinio Magorum de talpis. med. V
 
 [8-53]   reliquae medicinae per morbos digestae in animalibus quorum genera non sunt placida aut fera
 
-[15]   pecude LV et priore l. XII: LXXVII
+**[15]** pecude LV et priore l. XII: LXXVII
 
 ariete VII et pr. l. V: XII
 
@@ -4794,7 +4794,7 @@ formicis V et pr. l. III: VIII
 
 **EX AUCTORIBUS**
 
-M. Varrone. Nigidio. M. Cicerone. Sextio Nigro qui Graece scripsit. Licinio Macro.
+**M** Varrone. Nigidio. M. Cicerone. Sextio Nigro qui Graece scripsit. Licinio Macro.
 
 **EXTERNIS**
 
@@ -4806,109 +4806,109 @@ MEDICIS Botrye. Apollodoro. Menandro. Archedemo. Aristogene. Xenocrate. Diodoro.
 
 medicina ex aquatilibus
 
-[1]   aquarum mirabilia
+**[1]** aquarum mirabilia
 
-[2]   aquarum differentiae
+**[2]** aquarum differentiae
 
 [3-17]   medicinae. observationes CCLXVI
 
-[3]   quales oculis aquae prosint
+**[3]** quales oculis aquae prosint
 
-[4]   quales fecunditatem faciant. quales insaniae medeantur
+**[4]** quales fecunditatem faciant. quales insaniae medeantur
 
-[5]   quales calculosis
+**[5]** quales calculosis
 
-[6]   quales volneribus
+**[6]** quales volneribus
 
-[7]   quales partem custodiant
+**[7]** quales partem custodiant
 
-[8]   quales vitiliginem tollant
+**[8]** quales vitiliginem tollant
 
-[9]   quae colorem lanis faciant
+**[9]** quae colorem lanis faciant
 
-[10]   quae hominibus
+**[10]** quae hominibus
 
-[11]   quae memoriam, quae oblivionem
+**[11]** quae memoriam, quae oblivionem
 
-[12]   quae sensus subtilitatem, quae tarditatem, quae canoram vocem
+**[12]** quae sensus subtilitatem, quae tarditatem, quae canoram vocem
 
-[13]   quae vini taedium, quae inebrient
+**[13]** quae vini taedium, quae inebrient
 
-[14]   quae olei vicem praestent
+**[14]** quae olei vicem praestent
 
-[15]   quae salsae et amarae
+**[15]** quae salsae et amarae
 
-[16]   saxa egerentes, risum aut ploratum facientes. quae amorem sanare dicantur
+**[16]** saxa egerentes, risum aut ploratum facientes. quae amorem sanare dicantur
 
-[17]   per triduum calentes haustus
+**[17]** per triduum calentes haustus
 
 [18-20]   aquarum miracula
 
-[18]   in quibus omnia mergantur, in quibus nihil
+**[18]** in quibus omnia mergantur, in quibus nihil
 
-[19]   aquae necantes, pisces venenati
+**[19]** aquae necantes, pisces venenati
 
-[20]   quae lapideae fiant aut lapidem faciant
+**[20]** quae lapideae fiant aut lapidem faciant
 
-[21]   de salubirtate aquarum
+**[21]** de salubirtate aquarum
 
-[22]   de vitiis aquarum
+**[22]** de vitiis aquarum
 
-[23]   probatio aquarum
+**[23]** probatio aquarum
 
-[24]   de aqua Marcia
+**[24]** de aqua Marcia
 
-[25]   de aqua Virgine
+**[25]** de aqua Virgine
 
-[26]   aquas inveniendi ratio
+**[26]** aquas inveniendi ratio
 
-[27]   signa aquarum
+**[27]** signa aquarum
 
-[28]   differentia aquarum per genera terrae
+**[28]** differentia aquarum per genera terrae
 
-[29]   ratio aqaar per tempora anni
+**[29]** ratio aqaar per tempora anni
 
-[30]   aquarum subito nascentium aut desinentium observatio historica
+**[30]** aquarum subito nascentium aut desinentium observatio historica
 
-[31]   ratio aquae ducendae
+**[31]** ratio aquae ducendae
 
-[32]   quo modo medicatis utendum et ad quae genera valitudinum
+**[32]** quo modo medicatis utendum et ad quae genera valitudinum
 
-[33]   item marinis XXVIIII. quid prosit navigatio V
+**[33]** item marinis XXVIIII. quid prosit navigatio V
 
-[34]   quo modo marina aqua in mediterraneis possit fieri I
+**[34]** quo modo marina aqua in mediterraneis possit fieri I
 
-[35]   quo modo thalassomeli I
+**[35]** quo modo thalassomeli I
 
-[36]   quo modo hydromeli I
+**[36]** quo modo hydromeli I
 
-[37]   remedium contra peregrinas aquas
+**[37]** remedium contra peregrinas aquas
 
-[38]   ex musco medicinae VI. medicinae ex harenis
+**[38]** ex musco medicinae VI. medicinae ex harenis
 
 [39-45]   de salis generibus et confecturis et medicinis observationes CCIIII
 
-[41]   de salis auctoritate historica CXX
+**[41]** de salis auctoritate historica CXX
 
 [41, 45]   spuma salis
 
-[42]   flos salis XX. salsugo II
+**[42]** flos salis XX. salsugo II
 
-[43]   de garo XV. de muria XV
+**[43]** de garo XV. de muria XV
 
-[44]   de allece VIII
+**[44]** de allece VIII
 
-[45]   de natura salis
+**[45]** de natura salis
 
-[46]   de nitri generibus et confecturis et medicinis observations CCXXI
+**[46]** de nitri generibus et confecturis et medicinis observations CCXXI
 
-[47]   de spongeis. medicinae et observationes XCII
+**[47]** de spongeis. medicinae et observationes XCII
 
 **Summa:**  res et historiae et observationes DCCCCXXIIII
 
 **EX AUCTORIBUS**
 
-M. Varrone. Cassio Parmense. Cicerone. Muciano. Caelio. Celso. Trogo. Ovidio. Polybio. Sornatio.
+**M** Varrone. Cassio Parmense. Cicerone. Muciano. Caelio. Celso. Trogo. Ovidio. Polybio. Sornatio.
 
 **EXTERNIS**
 
@@ -4918,43 +4918,43 @@ Calimacho. Ctesia. Eudico. Theophrasto. Eudoxo. Theopompo. Polyclito. Iuba. Lyco
 
 medicinae ex aquatilibus.
 
-[1]   summa naturae vis in antipathia
+**[1]** summa naturae vis in antipathia
 
-[1]   de echenaide II
+**[1]** de echenaide II
 
-[2]   de torpedine VII
+**[2]** de torpedine VII
 
-[3]   de lepore marino V
+**[3]** de lepore marino V
 
-[4]   mirabilia Rubri maris
+**[4]** mirabilia Rubri maris
 
 [5-9]   de ingeniis piscium mirabiles
 
-[8]   ubi responsa dentur ex piscibus
+**[8]** ubi responsa dentur ex piscibus
 
-[7]   ubi ex manu edant
+**[7]** ubi ex manu edant
 
-[8]   ubi vocem agnoscant
+**[8]** ubi vocem agnoscant
 
-[9]   ubi amari sint, ubi salsi, ubi ducles, ubi non muti. esse et locorum sympathiam vel antipathiam
+**[9]** ubi amari sint, ubi salsi, ubi ducles, ubi non muti. esse et locorum sympathiam vel antipathiam
 
-[10]   quando marini pisces in usu P. R. esse coeperint. Numae regis constitutio de piscibus
+**[10]** quando marini pisces in usu P. R. esse coeperint. Numae regis constitutio de piscibus
 
-[11]   de curalio. medicinae et observationes XLIII
+**[11]** de curalio. medicinae et observationes XLIII
 
-[12]   de discordia inter se marinorum. pastinaca VIIII. galeo, mullo XV
+**[12]** de discordia inter se marinorum. pastinaca VIIII. galeo, mullo XV
 
 [13-14]   de iis quibus in aqua et in terra victus est. de castoreis. medicinae et observationes LVI
 
-[14]   de testudine. medicinae et observationes LXVI
+**[14]** de testudine. medicinae et observationes LXVI
 
-[16]   aurata IIII. stella marina VII
+**[16]** aurata IIII. stella marina VII
 
-[17]   sardis I. cybia
+**[17]** sardis I. cybia
 
-[18]   rana marina VI. fluviatiles LII. rana rubeta. observationes circa eas XXXII
+**[18]** rana marina VI. fluviatiles LII. rana rubeta. observationes circa eas XXXII
 
-[19]   enhydris III.
+**[19]** enhydris III.
 
 cancri fluviatiles XLV. cancri marini VII
 
@@ -4964,7 +4964,7 @@ coracinis IIII
 
 porco pisce II
 
-[20]   vitulo marino X
+**[20]** vitulo marino X
 
 murena I
 
@@ -4972,11 +4972,11 @@ hippocamp VIIII
 
 echinis XI
 
-[21]   ostreorum genera et observatones et medicinae LVIIII. purpura VIIII
+**[21]** ostreorum genera et observatones et medicinae LVIIII. purpura VIIII
 
-[22]   alga marina II
+**[22]** alga marina II
 
-[23]   mus marinus II
+**[23]** mus marinus II
 
 ex scorpione marino
 
@@ -4986,7 +4986,7 @@ murices XIII
 
 conchylia V
 
-[24]   piscium adips II
+**[24]** piscium adips II
 
 callionymi III
 
@@ -4998,17 +4998,17 @@ sepiae XXIII
 
 ichthyocolla V
 
-[25]   batia I
+**[25]** batia I
 
 bacchus sive mizyes II
 
 marini peduculi II
 
-[26]   canicula IIII
+**[26]** canicula IIII
 
 cetum I
 
-[27]   ex delphinis VIII
+**[27]** ex delphinis VIII
 
 coluthia sive coryphia III
 
@@ -5016,7 +5016,7 @@ alcyoneum VII
 
 thynnus V
 
-[28]
+**[28]** 
 
 menae XVI
 
@@ -5028,11 +5028,11 @@ conchis I
 
 siluro XV
 
-[30]   strombo sive concha longa VI
+**[30]** strombo sive concha longa VI
 
 tethea V
 
-[31]   olus marinum I
+**[31]** olus marinum I
 
 myaces XXXV
 
@@ -5044,7 +5044,7 @@ seriphum II
 
 erythinis II
 
-[32]   solea pisce I
+**[32]** solea pisce I
 
 rhombo I
 
@@ -5064,7 +5064,7 @@ mugile I
 
 ex pelamyde IIII
 
-[34]   sciaena I
+**[34]** sciaena I
 
 perca IIII
 
@@ -5072,39 +5072,39 @@ ex squatina III
 
 zmarides III
 
-[35]   ophidio I
+**[35]** ophidio I
 
-[36]   ex fibro IIII
+**[36]** ex fibro IIII
 
 bryon I
 
-[38]   ex asello pisce I
+**[38]** ex asello pisce I
 
 phagro I
 
 ex balaena I
 
-[42]   polypo I
+**[42]** polypo I
 
-[45]   ex glano I
+**[45]** ex glano I
 
-[46]   glaucisco I
+**[46]** glaucisco I
 
-[49]   rrubellio I
+**[49]** rrubellio I
 
 uva marina I
 
 anguilla I
 
-[50]   hippopotamio I
+**[50]** hippopotamio I
 
 crocodilo I
 
-[52]   adarca sive calamnochnus III
+**[52]** adarca sive calamnochnus III
 
 calamo VIII
 
-[53]   animalium omnium in mari viventium nomina CLXXVI
+**[53]** animalium omnium in mari viventium nomina CLXXVI
 
 **Summa:**  res et historiae et observationes DCCCCXC
 
@@ -5122,127 +5122,127 @@ metallorum naturae.
 
 [2-25]   de auro
 
-[3]   quae prima commendatio eius
+**[3]** quae prima commendatio eius
 
-[4]   de anulorum aureorum origine
+**[4]** de anulorum aureorum origine
 
-[5]   de modo auri apud antiquos
+**[5]** de modo auri apud antiquos
 
 [6-9]   de equestri ordine. de iure anulorum aureorum
 
-[7]   de decuriis
+**[7]** de decuriis
 
-[9]   quotiens nomen equestris ordinis mutatum
+**[9]** quotiens nomen equestris ordinis mutatum
 
-[10]   de donis militaribus aureis et argenteis
+**[10]** de donis militaribus aureis et argenteis
 
-[11]   quando primum corona aurea data
+**[11]** quando primum corona aurea data
 
-[12]   de reliquo usu auri, feminarum
+**[12]** de reliquo usu auri, feminarum
 
-[13]   de nummo aureo
+**[13]** de nummo aureo
 
-[13]   quando primum signatum aes, argentum. urum. antequam ea signarentur, quis mos in aere
+**[13]** quando primum signatum aes, argentum. urum. antequam ea signarentur, quis mos in aere
 
-[13]   quae maxima pecunia primi census
+**[13]** quae maxima pecunia primi census
 
-[13]   quotiens et quibus temporibus aucta sit aeris aut nummi signati aestimatio
+**[13]** quotiens et quibus temporibus aucta sit aeris aut nummi signati aestimatio
 
-[14]   de cupiditate auri
+**[14]** de cupiditate auri
 
-[15]   qui plurimum auri et argenti possiderint
+**[15]** qui plurimum auri et argenti possiderint
 
-[16]   quando primum argenti apparatus in harena, quando in scaena
+**[16]** quando primum argenti apparatus in harena, quando in scaena
 
-[17]   quibus temporibus plurimum in aerario populi Romani auri et argenti fuerit
+**[17]** quibus temporibus plurimum in aerario populi Romani auri et argenti fuerit
 
-[18]   quando primum lacunaria inaurata
+**[18]** quando primum lacunaria inaurata
 
-[19]   quibus de causis praecipua auctoritas auro
+**[19]** quibus de causis praecipua auctoritas auro
 
-[20]   ratio inaurandi
+**[20]** ratio inaurandi
 
-[21]   de inveniendo auro
+**[21]** de inveniendo auro
 
-[22]   de auropigmento
+**[22]** de auropigmento
 
-[23]   de electro
+**[23]** de electro
 
-[24]   primae aureae statuae
+**[24]** primae aureae statuae
 
-[25]   medicinae ex auro VIII
+**[25]** medicinae ex auro VIII
 
 [26-29]   de chrysocolla
 
-[27]   ratio eius in picturis
+**[27]** ratio eius in picturis
 
-[28]   medicinae ex chrysocolla VII
+**[28]** medicinae ex chrysocolla VII
 
-[29]   de aurificum chrysocolla sive santerna
+**[29]** de aurificum chrysocolla sive santerna
 
-[30]   mirabilia naturae glutinandis inter se et perficiendis metallicis rebus
+**[30]** mirabilia naturae glutinandis inter se et perficiendis metallicis rebus
 
-[31]   de argento
+**[31]** de argento
 
-[32]   de argento vivo
+**[32]** de argento vivo
 
-[34]   de stimi sive stibi sive alabastro sive larbasi sive platyophthalmo. medicinae ex eo VII
+**[34]** de stimi sive stibi sive alabastro sive larbasi sive platyophthalmo. medicinae ex eo VII
 
-[35]   de scoria argenti. medicinae ex ea VI. de spuma argenti. medicinae ex ea VII
+**[35]** de scoria argenti. medicinae ex ea VI. de spuma argenti. medicinae ex ea VII
 
 [36-41]   de minio
 
-[36]   quam religiosum apud antiquos fuerit
+**[36]** quam religiosum apud antiquos fuerit
 
-[37]   de inventione eius et origine
+**[37]** de inventione eius et origine
 
-[38]   de cinnabari
+**[38]** de cinnabari
 
 [38-39]   ratio eius in picturis et medicina
 
-[40]   genera mini
+**[40]** genera mini
 
-[40]   ratio eius in picturis
+**[40]** ratio eius in picturis
 
-[41]   de hydrargyro
+**[41]** de hydrargyro
 
-[41]   medicina ex minio
+**[41]** medicina ex minio
 
-[42]   de argento inaurando
+**[42]** de argento inaurando
 
-[43]   de coticulis aurariis
+**[43]** de coticulis aurariis
 
 [44-55]   argenti genera et experimenta
 
-[45]   de speculis
+**[45]** de speculis
 
-[46]   de Aegyptio argento
+**[46]** de Aegyptio argento
 
-[47]   de inmodica pecunia. quorum maximae opes fuerint
+**[47]** de inmodica pecunia. quorum maximae opes fuerint
 
-[48]   quando primum populus Romanus stipem sparserit
+**[48]** quando primum populus Romanus stipem sparserit
 
-[49]   de luxuria in vasis argenteis
+**[49]** de luxuria in vasis argenteis
 
-[50]   frugalitatis antiquae in argento exempla
+**[50]** frugalitatis antiquae in argento exempla
 
-[51]   quando primum lectis argentum additum
+**[51]** quando primum lectis argentum additum
 
-[52]   quando lances inmodicae factae
+**[52]** quando lances inmodicae factae
 
-[52]   quando repositoriis argentum additum
+**[52]** quando repositoriis argentum additum
 
-[52]   quando tympana facta
+**[52]** quando tympana facta
 
-[53]   inmodica argenti pretia
+**[53]** inmodica argenti pretia
 
-[54]   de statuis argenteis
+**[54]** de statuis argenteis
 
-[55]   nobilitates operum et artificum in argento
+**[55]** nobilitates operum et artificum in argento
 
-[56]   de sile
+**[56]** de sile
 
-[56]   qui primi sile pinxerint et qua ratione
+**[56]** qui primi sile pinxerint et qua ratione
 
 [57-58]   de caeruleo. medicinae ex eo II
 
@@ -5262,119 +5262,119 @@ Theophrasto. Democrito. Iuba. Timaeo historico. Qui de medicina metallica scrips
 
 [2-5]   genera aeris
 
-[3]   quae Corinthia
+**[3]** quae Corinthia
 
-[4]   quae Deliaca
+**[4]** quae Deliaca
 
-[5]   quae Aeginetica
+**[5]** quae Aeginetica
 
 [4, 5, 8]   de tricliniis aeratis
 
-[6]   de candelabris
+**[6]** de candelabris
 
-[7]   de templorum ornamentis ex aere
+**[7]** de templorum ornamentis ex aere
 
-[9]   quod primum dei simulacrum Romae ex aere factum
+**[9]** quod primum dei simulacrum Romae ex aere factum
 
-[9]   de origine statuarum et honore
+**[9]** de origine statuarum et honore
 
 [10-11]   statuarum genera et figurae. santiquas statuas togatas sine tunicis fuisse
 
-[11]   quae primae statuae Romae. quibus primum publice postiae, quibus primum in columna, quando rostra
+**[11]** quae primae statuae Romae. quibus primum publice postiae, quibus primum in columna, quando rostra
 
-[12]   quibus externis Romae publice positae
+**[12]** quibus externis Romae publice positae
 
-[13]   quibus Romae mulieribus in publico positae. quae prima Romae statua equestris publice posita
+**[13]** quibus Romae mulieribus in publico positae. quae prima Romae statua equestris publice posita
 
-[14]   quando omnes privatim positae statuae ex publico sublatae
+**[14]** quando omnes privatim positae statuae ex publico sublatae
 
-[15]   quae prima ab externis publice posita
+**[15]** quae prima ab externis publice posita
 
-[16]   fuisse antiquitus et in Italia statuarios
+**[16]** fuisse antiquitus et in Italia statuarios
 
-[17]   de pretiis signorum inmodicis
+**[17]** de pretiis signorum inmodicis
 
-[18]   de colossis in urbe celeberrimis
+**[18]** de colossis in urbe celeberrimis
 
-[19]   nobilitates ex aere operum et artificum CCCLXVI
+**[19]** nobilitates ex aere operum et artificum CCCLXVI
 
-[20]   differentiae aeris et mixturae. de pyropo
+**[20]** differentiae aeris et mixturae. de pyropo
 
-[20]   de Campano aere
+**[20]** de Campano aere
 
-[21]   de servando aere
+**[21]** de servando aere
 
-[22]   de cadmia
+**[22]** de cadmia
 
-[23]   med. ex ea XV
+**[23]** med. ex ea XV
 
-[24]   aeris usti effectus in medicina X
+**[24]** aeris usti effectus in medicina X
 
-[25]   de scoria aeris. de flore aeris, squama aeris, stomomate aeris. med. ex iis XLVII
+**[25]** de scoria aeris. de flore aeris, squama aeris, stomomate aeris. med. ex iis XLVII
 
-[26]   aerugo. med. ex ea XVIII
+**[26]** aerugo. med. ex ea XVIII
 
-[27]   hieracium
+**[27]** hieracium
 
-[28]   scolex aeris. med. ex eo XVIII
+**[28]** scolex aeris. med. ex eo XVIII
 
-[29]   de chalcitide. med. ex ea VII. psoricon
+**[29]** de chalcitide. med. ex ea VII. psoricon
 
-[30]   sori. med. ex eo III
+**[30]** sori. med. ex eo III
 
-[31]   misy. med. ex eo XIII
+**[31]** misy. med. ex eo XIII
 
-[32]   chalcanthum sive atramentum sutorium. med. ex eo XVII
+**[32]** chalcanthum sive atramentum sutorium. med. ex eo XVII
 
 [33-34]   pompholyx. spodium. med. ex iis VI
 
-[35]   antispodi gen. XV
+**[35]** antispodi gen. XV
 
-[36]   smegma
+**[36]** smegma
 
-[37]   de diphryge
+**[37]** de diphryge
 
-[38]   de triente Servilio
+**[38]** de triente Servilio
 
 [39-46]   de ferrariis metallis
 
-[40]   simulacra ex ferro. caelaturae ex ferro
+**[40]** simulacra ex ferro. caelaturae ex ferro
 
-[41]   differentiae ferri
+**[41]** differentiae ferri
 
-[42]   de ferro quod vivum appellant
+**[42]** de ferro quod vivum appellant
 
-[41]   ferri temperatura
+**[41]** ferri temperatura
 
-[43]   robiginis remedia
+**[43]** robiginis remedia
 
-[44]   med. ex ferro VII
+**[44]** med. ex ferro VII
 
-[45]   med. ex robigine XIIII
+**[45]** med. ex robigine XIIII
 
-[46]   med. ex squama ferri XVII. hygremplastrum
+**[46]** med. ex squama ferri XVII. hygremplastrum
 
 [47-56]   de plumbi metallis
 
-[47]   de plumbo albo
+**[47]** de plumbo albo
 
-[48]   de argentario. de stagno
+**[48]** de argentario. de stagno
 
-[49]   de plumbo nigro
+**[49]** de plumbo nigro
 
-[50]   med. ex plumbo XV
+**[50]** med. ex plumbo XV
 
-[51]   med. ex scoria plumbi XV
+**[51]** med. ex scoria plumbi XV
 
-[52]   spodium ex plumbo
+**[52]** spodium ex plumbo
 
-[53]   de molybdaena. med. ex ea V
+**[53]** de molybdaena. med. ex ea V
 
-[54]   psimythium sive cerussa. med. ex ea VI
+**[54]** psimythium sive cerussa. med. ex ea VI
 
-[55]   sandaraca. med. ex ea XI
+**[55]** sandaraca. med. ex ea XI
 
-[56]   arrhenicum
+**[56]** arrhenicum
 
 **Summa:**  medicinae CCLVIII.
 
@@ -5382,7 +5382,7 @@ ex iis ad canis morsus, ad caput, alopecias, oculos XXV, aures, nares, oris viti
 
 **EX AUCTORIBUS**
 
-L. Pisone. Antiate. Verrio. M. Varrone. Cornelio Nepote. Messala Rufo. Marso poeta. Boccho. Iulio Basso qui de medicina Graece scripsit. Sextio Nigro qui item. Fabio Vestale.
+**L** Pisone. Antiate. Verrio. M. Varrone. Cornelio Nepote. Messala Rufo. Marso poeta. Boccho. Iulio Basso qui de medicina Graece scripsit. Sextio Nigro qui item. Fabio Vestale.
 
 **EXTERNIS**
 
@@ -5390,125 +5390,125 @@ Democrito. Metrodoro Scepsio. Menaechmo qui de toreutice scripsit. Xenocrate qui
 
 **LIBRO XXXV CONTINENTUR**
 
-[1]   honos picturae
+**[1]** honos picturae
 
-[2]   honos imaginum
+**[2]** honos imaginum
 
-[3]   quando primum clupei vice imaginum instituti. quando primum in publico positi
+**[3]** quando primum clupei vice imaginum instituti. quando primum in publico positi
 
-[4]   quando in domibus
+**[4]** quando in domibus
 
-[5]   de picturae initiis. de monochromatis picturis. de primis pictoribus
+**[5]** de picturae initiis. de monochromatis picturis. de primis pictoribus
 
-[6]   antiquitas picturarum in Italia
+**[6]** antiquitas picturarum in Italia
 
-[7]   de pictoribus Romanis. quando primum dignitas picturae et quibus ex causis Romae. qui victorias suas pictas proposuerint
+**[7]** de pictoribus Romanis. quando primum dignitas picturae et quibus ex causis Romae. qui victorias suas pictas proposuerint
 
 [8-10]   quando primum externis picturis dignitas Romae
 
-[11]   ratio pingendi
+**[11]** ratio pingendi
 
 [12-32]   de pigmentis praeter metallica
 
-[12]   de coloribus facticiis
+**[12]** de coloribus facticiis
 
-[13]   de Sinopide. med. ex ea XI
+**[13]** de Sinopide. med. ex ea XI
 
-[14]   de rubrica. de terra Lemnia. med. ex ea VIIII
+**[14]** de rubrica. de terra Lemnia. med. ex ea VIIII
 
-[15]   de Aegyptia terra
+**[15]** de Aegyptia terra
 
-[16]   de ochra. med. ex rubria III
+**[16]** de ochra. med. ex rubria III
 
-[17]   leucophorum
+**[17]** leucophorum
 
-[18]   Paraetonium
+**[18]** Paraetonium
 
-[19]   Melinum. med. ex eo VI
+**[19]** Melinum. med. ex eo VI
 
-[20]   cerussa usta
+**[20]** cerussa usta
 
-[21]   Eretria terra. med. ex ea VI
+**[21]** Eretria terra. med. ex ea VI
 
-[22]   sandaraca
+**[22]** sandaraca
 
-[23]   sandyx
+**[23]** sandyx
 
-[24]   Syricum
+**[24]** Syricum
 
-[25]   atramentum
+**[25]** atramentum
 
-[26]   purpurrissum
+**[26]** purpurrissum
 
-[27]   Indicum. med. ex eo III
+**[27]** Indicum. med. ex eo III
 
-[28]   Armenium. med. ex eo. I
+**[28]** Armenium. med. ex eo. I
 
-[29]   viride Appianum
+**[29]** viride Appianum
 
-[30]   anulare
+**[30]** anulare
 
-[31]   qui colores udo non inducantur
+**[31]** qui colores udo non inducantur
 
-[32]   quibus coloribus antiqui pinxerint
+**[32]** quibus coloribus antiqui pinxerint
 
-[33]   quando primum gladiatorum pugnae pictae et propositae sint
+**[33]** quando primum gladiatorum pugnae pictae et propositae sint
 
-[34]   de aetate picturae
+**[34]** de aetate picturae
 
 [34-41]   operum et artificum in pictura nobilitates CCCCV
 
-[35]   picturae primum certamen
+**[35]** picturae primum certamen
 
 [36-37]   qui penicillo pinxerint
 
-[38]   de avium cantu compescendo
+**[38]** de avium cantu compescendo
 
 [39-41]   qui encausta cauterio vel cestro vel penicillo pinxerint
 
-[39]   quae quis primus invenerit in pictura
+**[39]** quae quis primus invenerit in pictura
 
-[40]   quid difficillimum in pictura. de generibus picturae
+**[40]** quid difficillimum in pictura. de generibus picturae
 
-[40]   quis primus lacunaria pinxerit. quando primum camarae pictae
+**[40]** quis primus lacunaria pinxerit. quando primum camarae pictae
 
-[40]   pretia mirabilia picturarum. de talento
+**[40]** pretia mirabilia picturarum. de talento
 
-[43]   plastices primi inventores
+**[43]** plastices primi inventores
 
-[44]   quis primus ex facie imaginem expresserit
+**[44]** quis primus ex facie imaginem expresserit
 
-[45]   nobilitates artificum in plastice XIIII
+**[45]** nobilitates artificum in plastice XIIII
 
-[45]   de figlinis operibus. de Signinis
+**[45]** de figlinis operibus. de Signinis
 
 [47-58]   terrae varietates
 
-[47]   de pulvere Puteolano et aliis terrae generibus quae in lapidem vertuntur
+**[47]** de pulvere Puteolano et aliis terrae generibus quae in lapidem vertuntur
 
-[48]   de parietibus formaceis
+**[48]** de parietibus formaceis
 
-[49]   de latericiis et laterum ratione
+**[49]** de latericiis et laterum ratione
 
-[50]   de sulpure et generibus eius. med. XIIII
+**[50]** de sulpure et generibus eius. med. XIIII
 
-[51]   de bitumine et generibus eius. med. XXVII
+**[51]** de bitumine et generibus eius. med. XXVII
 
-[52]   de alumine et generibus eius. med. ex eo XXXXIIII
+**[52]** de alumine et generibus eius. med. ex eo XXXXIIII
 
-[53]   de terra Samia. med. ex ea III
+**[53]** de terra Samia. med. ex ea III
 
-[54]   Eretriae terrae genera
+**[54]** Eretriae terrae genera
 
-[55]   de terra ad medicinam lavanda
+**[55]** de terra ad medicinam lavanda
 
-[56]   de Chia terra. med. ex ea III. de Selinusia. med. ex ea III. de pnigitide. med. ex ea VIIII. de ampelitide. med. ex ea IIII
+**[56]** de Chia terra. med. ex ea III. de Selinusia. med. ex ea III. de pnigitide. med. ex ea VIIII. de ampelitide. med. ex ea IIII
 
-[57]   cretae ad vestium usus. Cimolia. med. ex ea VIIII. Sarda. Umbrica. saxum
+**[57]** cretae ad vestium usus. Cimolia. med. ex ea VIIII. Sarda. Umbrica. saxum
 
-[58]   argentaria. qui et quorum liberti praepotentes
+**[58]** argentaria. qui et quorum liberti praepotentes
 
-[59]   terra ex Galata. terra Clupea. terra Baliarica. terra Ebusitana. med. ex iis IIII
+**[59]** terra ex Galata. terra Clupea. terra Baliarica. terra Ebusitana. med. ex iis IIII
 
 **Summa:**  medicinae et historiae et observationes DCCCCLVI
 
@@ -5526,149 +5526,149 @@ naturae lapidum.
 
 [1-3]   luxuria in marmoribus
 
-[3]   quis primus peregrino marmore columnas habuerit Romae
+**[3]** quis primus peregrino marmore columnas habuerit Romae
 
 [2-3]   quis primus in publicis operibus ostenderit
 
-[4]   qui primi laudati in marmore scalpendo et quibus temporibus
+**[4]** qui primi laudati in marmore scalpendo et quibus temporibus
 
-[4]   de Mausoleo Cariae
+**[4]** de Mausoleo Cariae
 
-[4]   nobilitates operum et artificum in marmore CCXXV
+**[4]** nobilitates operum et artificum in marmore CCXXV
 
-[5]   quando primum marmorum in aedificiis usus
+**[5]** quando primum marmorum in aedificiis usus
 
-[6]   qui primi marmora secuerint et quando
+**[6]** qui primi marmora secuerint et quando
 
-[7]   quis primus Romae crustaverit parietes
+**[7]** quis primus Romae crustaverit parietes
 
-[8]   quibus aetatibus quaeque marmora in usum venerint Romae
+**[8]** quibus aetatibus quaeque marmora in usum venerint Romae
 
-[9]   ratio secandi marmora. de harenis quibus secantur
+**[9]** ratio secandi marmora. de harenis quibus secantur
 
-[10]   de Naxio. de Armenio
+**[10]** de Naxio. de Armenio
 
-[11]   de Alexandrinis marmoribus
+**[11]** de Alexandrinis marmoribus
 
-[12]   de onyche sive alabastrite. med. ex eo III
+**[12]** de onyche sive alabastrite. med. ex eo III
 
-[13]   de lygdino, corallitico, Alabandico, Thebaico, Syenite
+**[13]** de lygdino, corallitico, Alabandico, Thebaico, Syenite
 
 [14-15]   de obeliscis
 
-[15]   de eo qui pro gnomone in campo Martio est
+**[15]** de eo qui pro gnomone in campo Martio est
 
 [16-23]   opera mirabilia in terris
 
-[17]   Sphinx Aegyptia. pyramides
+**[17]** Sphinx Aegyptia. pyramides
 
-[18]   Pharos
+**[18]** Pharos
 
-[19]   labyrinthi
+**[19]** labyrinthi
 
-[20]   pensiles horti. pensile oppidum
+**[20]** pensiles horti. pensile oppidum
 
-[21]   de templo Ephesiae Dianae
+**[21]** de templo Ephesiae Dianae
 
-[22]   aliorum templorum admirabilia
+**[22]** aliorum templorum admirabilia
 
-[23]   de lapide fugitivo. echo septiens resonans. sine clavo aedificia
+**[23]** de lapide fugitivo. echo septiens resonans. sine clavo aedificia
 
-[24]   Romae miracula operum XVIII
+**[24]** Romae miracula operum XVIII
 
-[25]   de magnete lapide. med. ex eo III
+**[25]** de magnete lapide. med. ex eo III
 
-[26]   Syrius lapis
+**[26]** Syrius lapis
 
-[27]   de sarcophago sive Assio. med. ex eo X
+**[27]** de sarcophago sive Assio. med. ex eo X
 
-[28]   de chernite. de poro
+**[28]** de chernite. de poro
 
-[29]   de lapidibus osseis. de palmatis. de Taenariis. de Coranis. de nigris marmoribus
+**[29]** de lapidibus osseis. de palmatis. de Taenariis. de Coranis. de nigris marmoribus
 
-[30]   de molaribus lapidibus. pyrites. med. ex eo VII
+**[30]** de molaribus lapidibus. pyrites. med. ex eo VII
 
-[31]   ostracites. med. ex eo IIII. amiantus. med. ex eo III
+**[31]** ostracites. med. ex eo IIII. amiantus. med. ex eo III
 
-[32]   geodes. med. ex eo III.
+**[32]** geodes. med. ex eo III.
 
-[33]   melitinus. med. ex eo VI
+**[33]** melitinus. med. ex eo VI
 
-[34]   gagates. med. ex eo VI
+**[34]** gagates. med. ex eo VI
 
-[35]   spongites. med. ex eo II
+**[35]** spongites. med. ex eo II
 
-[36]   Phrygius
+**[36]** Phrygius
 
-[37]   haematites. med. ex eo V. schistos. med. ex eo VII
+**[37]** haematites. med. ex eo V. schistos. med. ex eo VII
 
-[38]   androdamas. med. ex eo II. Arabicus. milites sive hepatites. anthracites
+**[38]** androdamas. med. ex eo II. Arabicus. milites sive hepatites. anthracites
 
-[39]   aëtites. Taphiusius. callimus
+**[39]** aëtites. Taphiusius. callimus
 
-[40]   Samius. med. ex eo VIII
+**[40]** Samius. med. ex eo VIII
 
-[41]   Arabus. med. ex eo II
+**[41]** Arabus. med. ex eo II
 
-[42]   de pumice. med. ex eo VIIII
+**[42]** de pumice. med. ex eo VIIII
 
-[43]   de mortariis medicinalibus et aliis. Etesius lapis. chalazius
+**[43]** de mortariis medicinalibus et aliis. Etesius lapis. chalazius
 
-[44]   Siphnius. lapides molles
+**[44]** Siphnius. lapides molles
 
-[45]   lapides speculares
+**[45]** lapides speculares
 
-[46]   phengites
+**[46]** phengites
 
-[47]   de cotibus
+**[47]** de cotibus
 
-[48]   de tophis
+**[48]** de tophis
 
 [49-50]   de silicum natura. de reliquis ad structuram lapidibus
 
-[51]   genera structurae
+**[51]** genera structurae
 
-[52]   de cisternis
+**[52]** de cisternis
 
-[53]   de calce
+**[53]** de calce
 
-[54]   harenae genera. mixtura harenae et calcis
+**[54]** harenae genera. mixtura harenae et calcis
 
-[55]   vitia structurae. de tectoriis
+**[55]** vitia structurae. de tectoriis
 
-[56]   de columnis. genera columnarum
+**[56]** de columnis. genera columnarum
 
-[57]   med. ex calce V
+**[57]** med. ex calce V
 
-[58]   de maltha
+**[58]** de maltha
 
-[59]   de gypso
+**[59]** de gypso
 
 [60-64]   de pavimentis
 
-[60]   asarotos oecos
+**[60]** asarotos oecos
 
-[61]   quod primum pavimentum Romae
+**[61]** quod primum pavimentum Romae
 
-[62]   de subdialibus pavimentis
+**[62]** de subdialibus pavimentis
 
-[63]   Graecanica pavimenta
+**[63]** Graecanica pavimenta
 
-[64]   quando primum lithostrota
+**[64]** quando primum lithostrota
 
-[64]   quando primum camarae vitreae
+**[64]** quando primum camarae vitreae
 
-[65]   origo vitri
+**[65]** origo vitri
 
-[66]   genera eius et ratio faciendi
+**[66]** genera eius et ratio faciendi
 
-[67]   de Obsianis
+**[67]** de Obsianis
 
-[68]   miracula ignium
+**[68]** miracula ignium
 
-[69]   medicinae ex igni et cinere III
+**[69]** medicinae ex igni et cinere III
 
-[70]   prodigia foci
+**[70]** prodigia foci
 
 **Summa:**  medicinae ex iis LXXXVIIII:
 
@@ -5678,7 +5678,7 @@ Summa omnis: res et historiae et observationes CCCCXXXIIII
 
 **EX AUCTORIBUS**
 
-M. Vcarrone. C. Galba. Cincio. Muciano. Nepote Cornelio. L. Pisone. Q. Tuberone. Fabio Vestale. Annio Fetiale. Fabiano. Seneca. Catone censorio. Vitruvio.
+**M** Vcarrone. C. Galba. Cincio. Muciano. Nepote Cornelio. L. Pisone. Q. Tuberone. Fabio Vestale. Annio Fetiale. Fabiano. Seneca. Catone censorio. Vitruvio.
 
 **EXTERNIS**
 
@@ -5686,165 +5686,165 @@ Theophrasto. Pasitele. Iuba rege. Nicandro. Sotaco. Sudine. Alexandro polyhistor
 
 **LIBRO XXXVII CONTINENTUR**
 
-[1]   origo gemmarum
+**[1]** origo gemmarum
 
 [2-3]   de Polycratis tyranni gemma, de Pyrrhi regis
 
-[4]   qui scaptores optimi
+**[4]** qui scaptores optimi
 
-[4]   nobilitates scalpturae
+**[4]** nobilitates scalpturae
 
-[5]   quae prima Romae dactyliothece
+**[5]** quae prima Romae dactyliothece
 
-[6]   gemmae in Pompei Magni triumpho translatae
+**[6]** gemmae in Pompei Magni triumpho translatae
 
-[7]   quando primum myrrhina invecta. luxuria circa ea
+**[7]** quando primum myrrhina invecta. luxuria circa ea
 
-[8]   natura eorum
+**[8]** natura eorum
 
 [9-10]   de crystallo
 
-[10]   medicina ex eo. luxuria in crystallo
+**[10]** medicina ex eo. luxuria in crystallo
 
 [11-12]   de sucino
 
-[11]   quae mentiti sint auctores de eo
+**[11]** quae mentiti sint auctores de eo
 
-[12]   gen. eius VII. med. ex his ...
+**[12]** gen. eius VII. med. ex his ...
 
-[13]   lyncurium. med. II
+**[13]** lyncurium. med. II
 
-[15]   de adamante sive anancite. gen. adamantis VI. med. II
+**[15]** de adamante sive anancite. gen. adamantis VI. med. II
 
 [16-19]   de smaragdis
 
-[17]   gen. eorum
+**[17]** gen. eorum
 
-[18]   vitia eorum
+**[18]** vitia eorum
 
-[19]   tanos gemma. chalcosmaragdos
+**[19]** tanos gemma. chalcosmaragdos
 
-[20]   de beryllis. genera eorum VIII. vitia eorum
+**[20]** de beryllis. genera eorum VIII. vitia eorum
 
 [21-22]   de opalis. genera eorum VII. vitia eorum et experimenta
 
-[23]   de sardonyche. gen. eius ... vitia eius
+**[23]** de sardonyche. gen. eius ... vitia eius
 
-[24]   de onyche. gen. eius ...
+**[24]** de onyche. gen. eius ...
 
 [25-26]   de carbunculis
 
-[25]   gen. eorum XII
+**[25]** gen. eorum XII
 
-[26]   vitia eorum et experimenta
+**[26]** vitia eorum et experimenta
 
-[27]   anthracitis
+**[27]** anthracitis
 
-[28]   sandastros. sandaresus
+**[28]** sandastros. sandaresus
 
-[29]   lychnis. gen. eius IIII
+**[29]** lychnis. gen. eius IIII
 
-[30]   Carchedonia
+**[30]** Carchedonia
 
-[31]   sarda. gen. eius V
+**[31]** sarda. gen. eius V
 
-[32]   de topazo. gen. eius II
+**[32]** de topazo. gen. eius II
 
-[33]   de callaina
+**[33]** de callaina
 
-[34]   de prasio. gen. eius III
+**[34]** de prasio. gen. eius III
 
-[35]   nilion
+**[35]** nilion
 
-[36]   molochitis
+**[36]** molochitis
 
-[37]   de iaspide. gen. eius XVII. vitia eorum
+**[37]** de iaspide. gen. eius XVII. vitia eorum
 
-[38]   de cyano. gen. eius III
+**[38]** de cyano. gen. eius III
 
-[39]   de sappiro
+**[39]** de sappiro
 
-[40]   amethystos. gen. eius V. socondion. sapenos. pharanitis. Aphrodites blepharon sive anteros sive paederos
+**[40]** amethystos. gen. eius V. socondion. sapenos. pharanitis. Aphrodites blepharon sive anteros sive paederos
 
-[41]   hyacinthus
+**[41]** hyacinthus
 
-[42]   de chrysolitho. gen. eius IIII
+**[42]** de chrysolitho. gen. eius IIII
 
-[43]   de chryselectro
+**[43]** de chryselectro
 
-[44]   leucochrysos. gen. eius III
+**[44]** leucochrysos. gen. eius III
 
-[45]   melichrysi, xuthi
+**[45]** melichrysi, xuthi
 
-[46]   paederos sive sangenon sive syenites
+**[46]** paederos sive sangenon sive syenites
 
-[47]   asteria
+**[47]** asteria
 
-[48]   astrion
+**[48]** astrion
 
-[49]   astriotes
+**[49]** astriotes
 
-[50]   astolon
+**[50]** astolon
 
-[51]   ceraunia. gen. eius IIII. baetylos
+**[51]** ceraunia. gen. eius IIII. baetylos
 
-[52]   iris
+**[52]** iris
 
-[53]   leros
+**[53]** leros
 
-[54]   Achatae. gen. eorum XIIII. acopos. med. ex ea ... alabastritis. med. ex ea ... alectoriae. androdamas. argyrodamas. antipathes. Arabica. aromatitis. asbestos. apisatis. atizoe. augitis. amphidanes sive chrysocolla. Aphrodisiaca. apsyctos. Aegyptilla
+**[54]** Achatae. gen. eorum XIIII. acopos. med. ex ea ... alabastritis. med. ex ea ... alectoriae. androdamas. argyrodamas. antipathes. Arabica. aromatitis. asbestos. apisatis. atizoe. augitis. amphidanes sive chrysocolla. Aphrodisiaca. apsyctos. Aegyptilla
 
-[55]   Balanitae. batrachitis. baptes. Beli oculus. Belus. baroptenus sive baripe. botryitis. bostrychitis. bucardia. brontea. boloe
+**[55]** Balanitae. batrachitis. baptes. Beli oculus. Belus. baroptenus sive baripe. botryitis. bostrychitis. bucardia. brontea. boloe
 
-[56]   Cadmitis. callais. capnitis. Cappadocia. callaica. catochitis. catoptritis. cepitis sive cepolatitis. ceramitis. cinaediae. ceritis. circos. corsoides. corallachates. corallis. crateritis. crocallis. cyitis. chalcophonos. chelidoniae. cheloniae. chelonitis. chloritis. Choaspitis. chrysolampsis. chrysopis. cetionides
+**[56]** Cadmitis. callais. capnitis. Cappadocia. callaica. catochitis. catoptritis. cepitis sive cepolatitis. ceramitis. cinaediae. ceritis. circos. corsoides. corallachates. corallis. crateritis. crocallis. cyitis. chalcophonos. chelidoniae. cheloniae. chelonitis. chloritis. Choaspitis. chrysolampsis. chrysopis. cetionides
 
-[57]   Daphnea. diadochos. diphyes. Dionysias. dracontias
+**[57]** Daphnea. diadochos. diphyes. Dionysias. dracontias
 
-[58]   Encardia sive enariste. enorchis. exhebenus. erythallis. erotylos sive amphicomos sive hieromemnon. eumeces. eumithres. eupetalos. eureos. eurotias. eusebes. epimelas
+**[58]** Encardia sive enariste. enorchis. exhebenus. erythallis. erotylos sive amphicomos sive hieromemnon. eumeces. eumithres. eupetalos. eureos. eurotias. eusebes. epimelas
 
-[59]   Galaxias. galactitis sive leucogaea sive leucographitis sive synechitis. gallaica. gassinnade. glossopetra. Gorgonia. goniaea
+**[59]** Galaxias. galactitis sive leucogaea sive leucographitis sive synechitis. gallaica. gassinnade. glossopetra. Gorgonia. goniaea
 
-[60]   Heliotropion. Hephaestitis. Hermi aedoeon. hexecontalithos. hieracitis. hammitis. Hammonis cornu. hormiscion. hyaeniae. haematitis meniu sive xuthos
+**[60]** Heliotropion. Hephaestitis. Hermi aedoeon. hexecontalithos. hieracitis. hammitis. Hammonis cornu. hormiscion. hyaeniae. haematitis meniu sive xuthos
 
-[61]   Idaei dactyli. icterias. Iovis gemma sive drosolithos. Indicae. ion
+**[61]** Idaei dactyli. icterias. Iovis gemma sive drosolithos. Indicae. ion
 
-[62]   Lepidotis. Lesbia. leucophthalmos. leucopoecilos. libanochrus. limoniatis. liparea. lysimachos. leucochryos
+**[62]** Lepidotis. Lesbia. leucophthalmos. leucopoecilos. libanochrus. limoniatis. liparea. lysimachos. leucochryos
 
-[63]   Memnonia. Media. meconitis. mithrax. morochthos. mormorion sive promnion sive Alexandrion. myrritis. myrmecias. myrsinitis. mesoleucos. mesomelas
+**[63]** Memnonia. Media. meconitis. mithrax. morochthos. mormorion sive promnion sive Alexandrion. myrritis. myrmecias. myrsinitis. mesoleucos. mesomelas
 
-[64]   Nasoamonitis. nebritis. Nipparena
+**[64]** Nasoamonitis. nebritis. Nipparena
 
-[65]   Oica. ombria sive notia. onocardia. oritis sive sideritis. ostracias sive ostracitis. ostritis. ophicardelos. obsiana
+**[65]** Oica. ombria sive notia. onocardia. oritis sive sideritis. ostracias sive ostracitis. ostritis. ophicardelos. obsiana
 
-[66]   Panchrus. pangonus. paneros sive panerastos. Ponticae. gen. IIII. phloginos sive chrysitis. phoenicitis. phycitis. perileucos. paeanitis sive gaeanis
+**[66]** Panchrus. pangonus. paneros sive panerastos. Ponticae. gen. IIII. phloginos sive chrysitis. phoenicitis. phycitis. perileucos. paeanitis sive gaeanis
 
-[67]   Solis gemma. sagda. Samothracia. sauritis. sarcitis. selenitis. sideritis. sideropeocilos. spongitis. synodontitis. Syrtitis. syringitis
+**[67]** Solis gemma. sagda. Samothracia. sauritis. sarcitis. selenitis. sideritis. sideropeocilos. spongitis. synodontitis. Syrtitis. syringitis
 
-[68]   Trichrus. thelyrrhizos. thelycardios sive mucul. Thracia, gen. III. tephritis. tecolithos
+**[68]** Trichrus. thelyrrhizos. thelycardios sive mucul. Thracia, gen. III. tephritis. tecolithos
 
-[69]   Veneris crines. Veientana
+**[69]** Veneris crines. Veientana
 
-[70]   Zathene. zamilampis. zoraniscaea
+**[70]** Zathene. zamilampis. zoraniscaea
 
-[71]   hepatitis. steatitis. Adadu nephros. Adadu ophthalmos. Adadu dactylos. triophthalmos
+**[71]** hepatitis. steatitis. Adadu nephros. Adadu ophthalmos. Adadu dactylos. triophthalmos
 
-[72]   carcinias. echitis. scorpitis. scaritis. triglitis. aegophthalmos. hypophthalmos. geranitis. aëtitis. myrmecitis. cantharias. lycophthalmos. taos. timictonia
+**[72]** carcinias. echitis. scorpitis. scaritis. triglitis. aegophthalmos. hypophthalmos. geranitis. aëtitis. myrmecitis. cantharias. lycophthalmos. taos. timictonia
 
-[73]   ammochrysos. cenchritis. dryitis. cissitis. narcissitis. cyamias. pyren. phoenicitis. chalazias. pyritis. polyzonos. astrapaea. phlogitis. anthracitis. enygros. polythrix. leontios. pardalios. drosolithos. melichrus. melichloros. crocias. polias. spartopolia. rhoditis. melitis. chalcitis. sycitis. bostrychitis. chernitis. anancitis. synochitis. dendritis
+**[73]** ammochrysos. cenchritis. dryitis. cissitis. narcissitis. cyamias. pyren. phoenicitis. chalazias. pyritis. polyzonos. astrapaea. phlogitis. anthracitis. enygros. polythrix. leontios. pardalios. drosolithos. melichrus. melichloros. crocias. polias. spartopolia. rhoditis. melitis. chalcitis. sycitis. bostrychitis. chernitis. anancitis. synochitis. dendritis
 
-[74]   chochlides
+**[74]** chochlides
 
-[75]   de figura gemmarum
+**[75]** de figura gemmarum
 
-[76]   ratio probandi
+**[76]** ratio probandi
 
-[77]   comparatio naturae per terras. comparatio rerum per pretia
+**[77]** comparatio naturae per terras. comparatio rerum per pretia
 
 **Summa:**  res et historiae et observationes MCCC
 
 **EX AUCTORIBUS**
 
-M. Varrone. actis triumphorum. Maecenate. Iaccho. Cornelio Boccho.
+**M** Varrone. actis triumphorum. Maecenate. Iaccho. Cornelio Boccho.
 
 **EXTERNIS**
 

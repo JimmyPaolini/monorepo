@@ -10,7 +10,7 @@ author_metadata:
 
 ## De Rhetoribus
 
-[1] Rhetorica quoque apud nos perinde atque grammatica
+**[1]** Rhetorica quoque apud nos perinde atque grammatica
 
 fere recepta est, paulo etiam difficilius, quippe quam constet nonnunquam
 
@@ -18,7 +18,7 @@ etiam prohibitam exerceri. Quod ne cui dubium sit vetus S. C. item censorium
 
 edictum subiiciam: C. Fannio Strabone M. Valerio Messala cons.
 
-M. Pomponius praetor senatum consuluit. Quod verba facta sunt de
+**M** Pomponius praetor senatum consuluit. Quod verba facta sunt de
 
 philosophis et rhetoribus, de ea re ita censuerut, ut N. Pomponius praetor
 
@@ -26,7 +26,7 @@ anirndiverteret curaretque, ut si ei e re p. fideque sua videretur, uti
 
 Romae ne essent. De eisdem interiecto tempore CN. Domitius Aenobarbus,
 
-L. Licinius Crassus censores ita edixerunt: Renuntiatum est nobis, esse
+**L** Licinius Crassus censores ita edixerunt: Renuntiatum est nobis, esse
 
 homines qui novum genus disciplinae instituerunt, ad quos inventus in ludum
 
@@ -120,9 +120,9 @@ Illustres professores, et quorum memoria aliqua extet, non temere alii
 
 reperientur quam de quibus tradam.
 
-[2] L. Plotius Gallus. De hoc Cicero in epistola ad
+**[2]** L. Plotius Gallus. De hoc Cicero in epistola ad
 
-M. Titinnium sic refert: Equidem memoria teneo, pueris nobis primum
+**M** Titinnium sic refert: Equidem memoria teneo, pueris nobis primum
 
 Laline docere coepisse Plotium quendam. Ad quern cum fieret concursus,
 
@@ -138,7 +138,7 @@ dictasse Atratino, accusatori suo, actionem; subtractoque nomine, ordearium
 
 eum rhetorem appellat, deridens ut inflatum ac levem et sordidum.
 
-[3] L. Voltacilius Pilutus servisse dicitur atqne etiam
+**[3]** L. Voltacilius Pilutus servisse dicitur atqne etiam
 
 ostiarius vetere more in catena fuisse, donec ob ingenium ac studium litterarum
 
@@ -152,7 +152,7 @@ Nepos opinatur, scribere historiam orsus, nonnisi ab honestissimo quoque
 
 scribi solitam ad id tempus.
 
-[4] M. Epidius, calumnia notatus, ludum dicendi aperuit
+**[4]** M. Epidius, calumnia notatus, ludum dicendi aperuit
 
 docuitque inter ceteros M. Antonium el Augustum; quibusquondam C. Cannutius,
 
@@ -166,11 +166,11 @@ quem ferunt olim praecipitatum in fontem fluminis Sarni, paulo post cum
 
 cornibus extitisse, ac statim non comparuisse in numeroque deorum habitum.
 
-[5] Sextus Clodius, e Sicilia, Latinae simul Graecaeque
+**[5]** Sextus Clodius, e Sicilia, Latinae simul Graecaeque
 
 eloquentiae professor, male oculatus et dicax, par oculorum in amicitia
 
-M. Antonii triumviri extrisse se aiebat; eiusdem uxorem Fulviam, cui
+**M** Antonii triumviri extrisse se aiebat; eiusdem uxorem Fulviam, cui
 
 altera bucca inflatior erat, acumen stili tentare dixit, nec eo
 
@@ -190,7 +190,7 @@ Duo milia iugerum campi Leontini Sex. Clodio rhetori assignasti et
 
 quidem immunia, ut tanta mercede nihil sapere disceres.
 
-[6] C. Albucius Silus, Novariensis, cum aedilitate in
+**[6]** C. Albucius Silus, Novariensis, cum aedilitate in
 
 patria fungeretur, cum forte ius diceret, ab iis contra quos pronuntiabat
 
@@ -246,43 +246,43 @@ nomina rhetorum undecim, et post stellulam posuimus quae Hieronymus in
 
 Chronico hinc decerpsit.
 
-[7] L. Cestius Pius * Cestius Smyrnaeus Latinam Romae
+**[7]** L. Cestius Pius * Cestius Smyrnaeus Latinam Romae
 
 rhetoricam docuit (anno ab u. c. 741).
 
-[8] M. Porcius Latro * M. Porcius Latro, Latinus
+**[8]** M. Porcius Latro * M. Porcius Latro, Latinus
 
 declamator, taedio duplicis quartanae semet ipsum interfecit (a. 750. 751)
 
-[9] Q. Curtius Rufus *
+**[9]** Q. Curtius Rufus *
 
-[10] L. Valerius Primanus *
+**[10]** L. Valerius Primanus *
 
-[11] Verginius Flavus *
+**[11]** Verginius Flavus *
 
-[12] L. Statius Ursulus * Statius Ursulus (al.
+**[12]** L. Statius Ursulus * Statius Ursulus (al.
 
 Sursulus, al. Surculus) Tolosanus celeberrime in Gallia rhetoricam
 
 docet (a. 810. 811).
 
-[13] P. Clodius Quirinalis * Clodius (al. Claudius)
+**[13]** P. Clodius Quirinalis * Clodius (al. Claudius)
 
 Quirinalis, rhetor Arelatensis, Romae insignissime docet (a 797.
 
 798).
 
-[14] M. Antonius Liberalis * M. Antonius
+**[14]** M. Antonius Liberalis * M. Antonius
 
 Liberalis, Latinus rhetor, magnas inimicitias cum Palaemone exercet
 
 (a. 801. 802).
 
-[15] Sex. Iulius Gabinianus * Gabinianus celeberrimi
+**[15]** Sex. Iulius Gabinianus * Gabinianus celeberrimi
 
 nominisrhetor in Galliis docuit (a. 829. 830).
 
-[16] M. Fabius Quintilianus * M. Fabius Quintilianus
+**[16]** M. Fabius Quintilianus * M. Fabius Quintilianus
 
 Romam a Galba perducitur (a. 821) ... Quintilianus, ex Hispania
 
@@ -290,7 +290,7 @@ Calagurritanus, qui primus Romae publicam scholam et salarium e fisco accepit,
 
 claruit (a. 838-842)
 
-[17] Iulius Tiro *
+**[17]** Iulius Tiro *
 
 Minus certa fide haec quoque hinc petita existimantur:
 

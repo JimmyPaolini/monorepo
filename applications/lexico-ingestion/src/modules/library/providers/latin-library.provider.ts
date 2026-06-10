@@ -12,22 +12,6 @@ import { Author, Text } from "@monorepo/lexico-entities";
 import { authorIdToName } from "../../literature/literature.constants";
 import { LoggerService } from "../../logger/logger.service";
 
-interface LocalAuthor {
-  metadata?: Record<string, unknown>;
-  name: string;
-  nickname: string;
-  path: string;
-  slug: string;
-  works: LocalWork[];
-}
-
-interface LocalWork {
-  book?: string;
-  metadata?: Record<string, unknown>;
-  path: string;
-  title: string;
-}
-
 /**
  * Provider for scraping The Latin Library.
  */
@@ -52,28 +36,92 @@ export class LatinLibraryProvider {
     const tableHtml = cheerio.load(textData);
     cheerioTableParser(tableHtml);
 
-    const authors: LocalAuthor[] = tableHtml("p>table")
+    const rootAuthors: Author[] = [];
+    tableHtml("p>table")
       .first()
-      .parsetable(true, true, false)
-      .flat()
-      .map((elt: string): LocalAuthor => {
-        const a = cheerio.load(elt.trim())("a");
-        const nickname = a.text().replace(/\s/, " ").trim().toLowerCase();
+      .find("a")
+      .each((_i, a) => {
+        const $a = tableHtml(a);
+        const nickname = $a.text().replace(/\s/, " ").trim().toLowerCase();
         const slug = _.kebabCase(nickname);
         const name = authorIdToName[slug] || nickname;
-        const href = a.attr("href") ?? "";
-        return { name, nickname, path: href, slug, works: [] };
-      })
-      .toSorted((a, b) => a.nickname.localeCompare(b.nickname));
+        const href = $a.attr("href")?.trim() ?? "";
+
+        if (!href || href.includes("index.html")) return;
+
+        const author = new Author();
+        author.name = name;
+        author.slug = slug;
+        author.metadata = { nickname, sourceUrl: href };
+        author.texts = [];
+        rootAuthors.push(author);
+      });
+
+    const categoryHrefs = new Set([
+      "christian.html",
+      "ius.html",
+      "medieval.html",
+      "misc.html",
+      "neo.html",
+    ]);
+    const authors: Author[] = [];
+
+    for (const author of rootAuthors) {
+      const href = author.metadata?.["sourceUrl"] as string;
+      if (categoryHrefs.has(href)) {
+        const catRes = await fetch(host + href);
+        const catHtml = await catRes.text();
+        const $cat = cheerio.load(catHtml);
+
+        $cat("table a").each((_i, a) => {
+          const $a = $cat(a);
+          const nickname = $a.text().replace(/\s/, " ").trim().toLowerCase();
+          if (!nickname) return;
+
+          const slug = _.kebabCase(nickname);
+          const name = authorIdToName[slug] || nickname;
+          let childHref = $a.attr("href")?.trim() ?? "";
+
+          if (
+            !childHref ||
+            childHref.includes("index.html") ||
+            childHref.includes("classics.html")
+          ) {
+            return;
+          }
+
+          if (childHref.startsWith("/")) {
+            childHref = childHref.slice(1);
+          }
+
+          const childAuthor = new Author();
+          childAuthor.name = name;
+          childAuthor.slug = slug;
+          childAuthor.metadata = { nickname, sourceUrl: childHref };
+          childAuthor.texts = [];
+          authors.push(childAuthor);
+        });
+      } else {
+        authors.push(author);
+      }
+    }
+
+    authors.sort((a, b) => {
+      const nickA = (a.metadata?.["nickname"] as string) || "";
+      const nickB = (b.metadata?.["nickname"] as string) || "";
+      return nickA.localeCompare(nickB);
+    });
 
     for (const author of authors) {
       if (options?.author && author.slug !== options.author) {
         continue;
       }
 
-      this.logger.log(`Scraping author: ${author.nickname}`);
+      const nickname = author.metadata?.["nickname"] as string;
+      const authorPath = author.metadata?.["sourceUrl"] as string;
+      this.logger.log(`Scraping author: ${nickname}`);
 
-      const authorRes = await fetch(host + author.path);
+      const authorRes = await fetch(new URL(authorPath, host).href);
       const authorText = await authorRes.text();
       const $ = cheerio.load(authorText);
 
@@ -114,41 +162,97 @@ export class LatinLibraryProvider {
         }
       }
       if (Object.keys(metadata).length > 0) {
-        author.metadata = metadata;
+        author.metadata = { ...author.metadata, ...metadata };
       }
 
+      const booksMap = new Map<string, Text>();
+
       for (const a of $("a").get()) {
-        const href = $(a).attr("href");
+        const href = $(a).attr("href")?.trim();
         if (
           !href ||
           href.includes("index.html") ||
-          href.includes("classics.html")
+          href.includes("classics.html") ||
+          href.includes("medieval.html") ||
+          href.includes("neo.html") ||
+          href.includes("christian.html") ||
+          href.includes("misc.html") ||
+          href.includes("ius.html")
         ) {
           continue;
         }
-        const rawBook = $(a)
+
+        const normalizedHref = href.toLowerCase();
+        if (
+          !normalizedHref.endsWith(".html") &&
+          !normalizedHref.endsWith(".htm") &&
+          !normalizedHref.endsWith(".shtml")
+        ) {
+          continue;
+        }
+
+        const absoluteUrl = new URL(href, authorRes.url).href;
+
+        let rawBook = $(a)
           .closest("div")
           .prev(":header")
           .text()
           .trim()
           .toLowerCase();
+
+        if (!rawBook) {
+          const parentTable = $(a).closest("table");
+          if (parentTable.length > 0) {
+            const outerTable = parentTable.parents("table").last();
+            const tableToCheck =
+              outerTable.length > 0 ? outerTable : parentTable;
+
+            let prev = tableToCheck.prev();
+            while (prev.length > 0 && !prev.text().trim()) {
+              prev = prev.prev();
+            }
+            if (prev.length > 0) {
+              rawBook = prev.text().trim().toLowerCase();
+            }
+          }
+        }
+
         const book = rawBook ? _.startCase(rawBook) : undefined;
         const rawTitle = $(a).text().trim().toLowerCase();
         const title = rawTitle ? _.startCase(rawTitle) : "";
-        const workDto: LocalWork = { path: href, title };
-        if (book !== undefined) {
-          workDto.book = book;
+
+        const textEntity = new Text();
+        textEntity.type = "text";
+        textEntity.title = title;
+        textEntity.slug = _.kebabCase(title);
+        textEntity.metadata = { sourceUrl: absoluteUrl };
+
+        if (book === undefined) {
+          author.texts.push(textEntity);
+        } else {
+          let bookText = booksMap.get(book);
+          if (!bookText) {
+            bookText = new Text();
+            bookText.type = "book";
+            bookText.title = book;
+            bookText.slug = _.kebabCase(book);
+            bookText.childTexts = [];
+            booksMap.set(book, bookText);
+            author.texts.push(bookText);
+          }
+          textEntity.metadata["book"] = book;
+          bookText.childTexts.push(textEntity);
         }
-        author.works.push(workDto);
       }
 
-      const htmlWorks = author.works.filter((work) =>
-        work.path.endsWith(".html"),
-      );
-      author.works =
-        htmlWorks.length > 0
-          ? htmlWorks
-          : [{ path: author.path, title: author.nickname }];
+      if (author.texts.length === 0) {
+        const fallback = new Text();
+        fallback.title = author.metadata?.["nickname"] as string;
+        fallback.slug = _.kebabCase(fallback.title);
+        fallback.type = "text";
+        fallback.metadata = { sourceUrl: authorRes.url };
+        author.texts = [fallback];
+      }
     }
 
     const dataPath = path.resolve("data", "library", this.name);
@@ -163,39 +267,48 @@ export class LatinLibraryProvider {
       const authorPath = path.join(dataPath, author.slug);
       await fs.mkdir(authorPath, { recursive: true });
 
-      for (const work of author.works) {
-        if (!work.path.endsWith(".html")) continue;
+      const allTextNodes = author.texts.flatMap((t) =>
+        t.type === "book" ? t.childTexts : [t],
+      );
+      for (const work of allTextNodes) {
+        const workPath = work.metadata?.["sourceUrl"] as string;
+        const workBook = work.metadata?.["book"] as string | undefined;
 
         const safeTitle = _.kebabCase(work.title);
-        const textSlug = work.book
-          ? `${author.slug}/${_.kebabCase(work.book)}/${safeTitle}`
+        const textSlug = workBook
+          ? `${author.slug}/${_.kebabCase(workBook)}/${safeTitle}`
           : `${author.slug}/${safeTitle}`;
         if (options?.text && textSlug !== options.text) {
           continue;
         }
 
         try {
-          const workRes = await fetch(host + work.path);
+          const workRes = await fetch(workPath);
           const workHtml = await workRes.text();
           const $work = cheerio.load(workHtml);
 
           const frontmatterObj: Record<string, unknown> = {
             author: author.slug,
             text_metadata: {
-              ...work.metadata,
-              source_url: host + work.path,
+              source_url: workPath,
             },
             title: work.title,
-            type: work.book ? "text" : "book",
+            type: workBook ? "text" : "book",
           };
           if (author.metadata) {
-            frontmatterObj["author_metadata"] = author.metadata;
+            frontmatterObj["author_metadata"] = { ...author.metadata };
+            delete (
+              frontmatterObj["author_metadata"] as Record<string, unknown>
+            )["nickname"];
+            delete (
+              frontmatterObj["author_metadata"] as Record<string, unknown>
+            )["sourceUrl"];
           }
 
           let markdown = `---\n${YAML.stringify(frontmatterObj)}---\n\n`;
 
-          if (work.book) {
-            markdown += `# ${work.book}\n\n`;
+          if (workBook) {
+            markdown += `# ${workBook}\n\n`;
           }
           markdown += `## ${work.title}\n\n`;
 
@@ -210,7 +323,11 @@ export class LatinLibraryProvider {
               $p.find("a").length > 3
             )
               return;
-            if ($p.text().trim().length === 0) return;
+
+            const pText = $p.text().trim();
+            if (pText.length === 0) return;
+            if (pText === "The Latin Library" || pText === "The Classics Page")
+              return;
 
             let paraHtml = $p.html() || "";
             // Replace <br> with newlines, keep <b> text to detect as labels
@@ -243,10 +360,24 @@ export class LatinLibraryProvider {
               line = line.trim();
               if (!line) continue;
 
-              const numMatch = /^(\d+[a-zA-Z]*)\.?\s+(.*)$/.exec(line);
-              if (numMatch && !line.startsWith("**")) {
-                line = `**${numMatch[1]}** ${numMatch[2]}`;
+              if (!line.startsWith("**")) {
+                const bracketMatch = /^\[([a-zA-Z0-9]+)\]\s*(.*)$/.exec(line);
+                const decimalMatch =
+                  /^((?:\d+\.)+[a-zA-Z0-9]*\.?)\s+(.*)$/.exec(line);
+                const simpleMatch =
+                  /^(\d+[a-zA-Z]*|[MDCLXVI]+)\.?\s+(.*)$/.exec(line);
+
+                if (bracketMatch) {
+                  line = `**[${bracketMatch[1]}]** ${bracketMatch[2]}`;
+                } else if (decimalMatch) {
+                  line = `**${decimalMatch[1]}** ${decimalMatch[2]}`;
+                } else if (simpleMatch) {
+                  line = `**${simpleMatch[1]}** ${simpleMatch[2]}`;
+                }
               }
+
+              // Handle end-of-line poetry numbers padded with whitespace
+              line = line.replace(/\s{3,}(\d+)$/, " **$1**");
 
               paragraphs.push(line);
             }
@@ -260,8 +391,8 @@ export class LatinLibraryProvider {
           }
 
           const safeTitle = _.kebabCase(work.title);
-          if (work.book) {
-            const safeBook = _.kebabCase(work.book);
+          if (workBook) {
+            const safeBook = _.kebabCase(workBook);
             const bookPath = path.join(authorPath, safeBook);
             await fs.mkdir(bookPath, { recursive: true });
             await fs.writeFile(
@@ -285,55 +416,28 @@ export class LatinLibraryProvider {
       }
     }
 
-    const entityAuthors: Author[] = [];
-
-    for (const localAuthor of authors) {
-      if (options?.author && localAuthor.slug !== options.author) continue;
-
-      const authorEntity = new Author();
-      authorEntity.name = localAuthor.name;
-      authorEntity.slug = localAuthor.slug;
-      authorEntity.metadata = localAuthor.metadata
-        ? { ...localAuthor.metadata, sourceUrl: localAuthor.path }
-        : { sourceUrl: localAuthor.path };
-      authorEntity.texts = [];
-
-      const booksMap = new Map<string, Text>();
-      for (const localWork of localAuthor.works) {
-        if (!localWork.path.endsWith(".html")) continue;
-
-        let bookText: Text | undefined;
-        if (localWork.book) {
-          bookText = booksMap.get(localWork.book);
-          if (!bookText) {
-            bookText = new Text();
-            bookText.type = "book";
-            bookText.title = localWork.book;
-            bookText.slug = _.kebabCase(localWork.book);
-            bookText.childTexts = [];
-            booksMap.set(localWork.book, bookText);
-            authorEntity.texts.push(bookText);
-          }
-        }
-
-        const textEntity = new Text();
-        textEntity.type = "text";
-        textEntity.title = localWork.title;
-        textEntity.slug = _.kebabCase(localWork.title);
-        textEntity.metadata = localWork.metadata
-          ? { ...localWork.metadata, sourceUrl: localWork.path }
-          : { sourceUrl: localWork.path };
-
-        if (bookText) {
-          bookText.childTexts.push(textEntity);
-        } else {
-          authorEntity.texts.push(textEntity);
+    // Clean up temporary metadata used for processing
+    for (const author of authors) {
+      if (author.metadata) {
+        delete author.metadata["nickname"];
+        if (
+          Object.keys(author.metadata).length === 1 &&
+          author.metadata["sourceUrl"]
+        ) {
+          // keep sourceUrl
         }
       }
-
-      entityAuthors.push(authorEntity);
+      for (const text of author.texts) {
+        if (text.type === "book") {
+          for (const child of text.childTexts) {
+            if (child.metadata) delete child.metadata["book"];
+          }
+        } else if (text.metadata) {
+          delete text.metadata["book"];
+        }
+      }
     }
 
-    return entityAuthors;
+    return authors;
   }
 }
