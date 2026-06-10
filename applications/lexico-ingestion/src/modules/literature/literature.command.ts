@@ -49,6 +49,16 @@ export class LiteratureCommand extends CommandRunner {
     this.logger.setContext(LiteratureCommand.name);
   }
 
+  // Ordered by priority
+  private readonly priorityProviders = [
+    "perseus",
+    "corpus-scriptorum-ecclesiasticorum-latinorum",
+    "musisque-deoque",
+    "open-greek-and-latin",
+    "thelatinlibrary",
+    "epigraphik-datenbank-clauss-slaby",
+  ];
+
   private wordsCache: Map<string, string> | null = null;
 
   // 🔒 Private Methods
@@ -57,66 +67,45 @@ export class LiteratureCommand extends CommandRunner {
     return word.replaceAll(/[A-Z]/g, (char) => `_${char.toLowerCase()}`);
   }
 
-  private async getAuthorChoices(): Promise<
+  private async getAuthorChoices(
+    provider?: string,
+  ): Promise<{ title: string; value: string }[]> {
+    const library = await this.scanLibrary();
+    const filtered = provider
+      ? library.filter((t) => t.provider === provider)
+      : library;
+    const authors = [...new Set(filtered.map((t) => t.authorSlug))].toSorted();
+    return authors.map((a) => ({ title: a, value: a }));
+  }
+
+  private async getProviderChoices(): Promise<
     { title: string; value: string }[]
   > {
-    const dataDir = path.join(process.cwd(), "./data/library");
-    try {
-      await fs.access(dataDir);
-    } catch {
-      return [];
-    }
-
-    const entries = await fs.readdir(dataDir, { withFileTypes: true });
-    return entries
-      .filter((dirent) => dirent.isDirectory())
-      .map((dirent) => ({ title: dirent.name, value: dirent.name }));
+    const library = await this.scanLibrary();
+    const providers = [...new Set(library.map((t) => t.provider))].toSorted();
+    return providers.map((p) => ({ title: p, value: p }));
   }
 
   private async getTextChoices(
+    provider?: string,
     authorSlug?: string,
   ): Promise<{ title: string; value: string }[]> {
-    const dataDir = path.join(process.cwd(), "./data/library");
-    const choices: { title: string; value: string }[] = [];
+    const library = await this.scanLibrary();
+    let filtered = library;
+    if (provider) filtered = filtered.filter((t) => t.provider === provider);
+    if (authorSlug)
+      filtered = filtered.filter((t) => t.authorSlug === authorSlug);
 
-    try {
-      let authors: string[] = [];
-      if (authorSlug) {
-        authors = [authorSlug];
-      } else {
-        const entries = await fs.readdir(dataDir, { withFileTypes: true });
-        authors = entries.filter((d) => d.isDirectory()).map((d) => d.name);
-      }
-
-      for (const author of authors) {
-        const authorPath = path.join(dataDir, author);
-        const entries = await fs.readdir(authorPath, {
-          withFileTypes: true,
-        });
-        for (const entry of entries) {
-          if (entry.isDirectory()) {
-            const texts = await fs.readdir(path.join(authorPath, entry.name), {
-              withFileTypes: true,
-            });
-            for (const textFile of texts) {
-              if (textFile.isFile() && textFile.name.endsWith(".md")) {
-                const slug = `${author}/${entry.name}/${path.basename(
-                  textFile.name,
-                  ".md",
-                )}`;
-                choices.push({ title: slug, value: slug });
-              }
-            }
-          } else if (entry.isFile() && entry.name.endsWith(".md")) {
-            const slug = `${author}/${path.basename(entry.name, ".md")}`;
-            choices.push({ title: slug, value: slug });
-          }
-        }
-      }
-    } catch {
-      // Ignore
-    }
-    return choices;
+    const textSlugs = [
+      ...new Set(
+        filtered.map((t) =>
+          t.bookSlug
+            ? `${t.authorSlug}/${t.bookSlug}/${t.textSlug}`
+            : `${t.authorSlug}/${t.textSlug}`,
+        ),
+      ),
+    ].toSorted();
+    return textSlugs.map((t) => ({ title: t, value: t }));
   }
 
   private async getWordsCache(): Promise<Map<string, string>> {
@@ -129,65 +118,6 @@ export class LiteratureCommand extends CommandRunner {
       this.logger.log(`Cached ${this.wordsCache.size} words.`);
     }
     return this.wordsCache;
-  }
-
-  private async ingestAuthor(
-    slug: string,
-    basePath: string,
-    targetTextSlug?: string,
-  ): Promise<void> {
-    this.logger.log(`👤 Ingesting author: ${slug}`);
-
-    try {
-      await this.authorRepository.upsert(
-        {
-          name: authorIdToName[slug] || slug,
-          slug,
-        },
-        { conflictPaths: ["slug"], skipUpdateIfNoValuesChanged: true },
-      );
-
-      const author = await this.authorRepository.findOneOrFail({
-        where: { slug },
-      });
-
-      const authorPath = path.join(basePath, slug);
-      const entries = await fs.readdir(authorPath, { withFileTypes: true });
-
-      for (const entry of entries) {
-        const fullPath = path.join(authorPath, entry.name);
-
-        if (entry.isDirectory()) {
-          const dirPrefix = `${slug}/${entry.name}/`;
-          if (targetTextSlug && !targetTextSlug.startsWith(dirPrefix)) {
-            continue;
-          }
-          const title = _.startCase(entry.name);
-          await this.ingestTextDir(
-            author,
-            title,
-            entry.name,
-            fullPath,
-            targetTextSlug,
-          );
-        } else if (entry.isFile() && entry.name.endsWith(".md")) {
-          const slugName = path.basename(entry.name, ".md");
-          const textSlug = `${slug}/${slugName}`;
-          if (targetTextSlug && targetTextSlug !== textSlug) {
-            continue;
-          }
-          const title = _.startCase(slugName);
-          await this.ingestText(author, undefined, title, slugName, fullPath);
-        }
-      }
-    } catch (error) {
-      const err = error as Error;
-      this.logger.error(
-        `Error ingesting author ${slug}: ${err.message}`,
-        err.stack,
-      );
-      throw err;
-    }
   }
 
   private async ingestLines(text: Text, textPath: string): Promise<void> {
@@ -365,51 +295,97 @@ export class LiteratureCommand extends CommandRunner {
     await this.ingestLines(text, textPath);
   }
 
-  private async ingestTextDir(
-    author: Author,
-    title: string,
-    dirSlug: string,
-    dirPath: string,
-    targetTextSlug?: string,
-  ): Promise<void> {
-    const parentTextSlug = `${author.slug}/${dirSlug}`;
-    await this.textRepository.upsert(
-      {
-        author,
-        slug: parentTextSlug,
-        title,
-        type: "book",
-      },
-      { conflictPaths: ["slug"], skipUpdateIfNoValuesChanged: true },
-    );
-
-    const parentText = await this.textRepository.findOneOrFail({
-      relations: { author: true },
-      where: { slug: parentTextSlug },
-    });
-
-    const texts = await fs.readdir(dirPath, { withFileTypes: true });
-    for (const textFile of texts) {
-      if (!textFile.isFile() || !textFile.name.endsWith(".md")) continue;
-      const slugName = path.basename(textFile.name, ".md");
-      const textSlug = `${author.slug}/${dirSlug}/${slugName}`;
-
-      if (targetTextSlug && targetTextSlug !== textSlug) {
-        continue;
-      }
-
-      const textTitle = _.startCase(slugName);
-      const fullPath = path.join(dirPath, textFile.name);
-      await this.ingestText(author, parentText, textTitle, slugName, fullPath);
-    }
-  }
-
   private normalize(str: string): string {
     return str
       .normalize("NFD")
       .replaceAll(/[\u0300-\u036F]/gu, "")
       .toLowerCase()
       .trim();
+  }
+
+  private async scanLibrary(): Promise<
+    {
+      authorSlug: string;
+      bookSlug?: string;
+      fullPath: string;
+      provider: string;
+      textSlug: string;
+      title: string;
+    }[]
+  > {
+    const dataDir = path.resolve("data", "library");
+    const texts: {
+      authorSlug: string;
+      bookSlug?: string;
+      fullPath: string;
+      provider: string;
+      textSlug: string;
+      title: string;
+    }[] = [];
+
+    try {
+      const providers = await fs.readdir(dataDir, { withFileTypes: true });
+      for (const provider of providers) {
+        if (!provider.isDirectory()) continue;
+        const providerName = provider.name;
+
+        const authors = await fs.readdir(path.join(dataDir, providerName), {
+          withFileTypes: true,
+        });
+        for (const author of authors) {
+          if (!author.isDirectory()) continue;
+          const authorSlug = author.name;
+
+          const authorContents = await fs.readdir(
+            path.join(dataDir, providerName, authorSlug),
+            { withFileTypes: true },
+          );
+          for (const entry of authorContents) {
+            if (entry.isDirectory()) {
+              const bookSlug = entry.name;
+              const bookContents = await fs.readdir(
+                path.join(dataDir, providerName, authorSlug, bookSlug),
+                { withFileTypes: true },
+              );
+              for (const textFile of bookContents) {
+                if (textFile.isFile() && textFile.name.endsWith(".md")) {
+                  texts.push({
+                    authorSlug,
+                    bookSlug,
+                    fullPath: path.join(
+                      dataDir,
+                      providerName,
+                      authorSlug,
+                      bookSlug,
+                      textFile.name,
+                    ),
+                    provider: providerName,
+                    textSlug: path.basename(textFile.name, ".md"),
+                    title: _.startCase(path.basename(textFile.name, ".md")),
+                  });
+                }
+              }
+            } else if (entry.isFile() && entry.name.endsWith(".md")) {
+              texts.push({
+                authorSlug,
+                fullPath: path.join(
+                  dataDir,
+                  providerName,
+                  authorSlug,
+                  entry.name,
+                ),
+                provider: providerName,
+                textSlug: path.basename(entry.name, ".md"),
+                title: _.startCase(path.basename(entry.name, ".md")),
+              });
+            }
+          }
+        }
+      }
+    } catch {
+      // Ignore if data directory doesn't exist yet
+    }
+    return texts;
   }
 
   // 🌎 Public Methods
@@ -421,9 +397,16 @@ export class LiteratureCommand extends CommandRunner {
     description: "The author to ingest",
     flags: "-a, --author [author]",
   })
-  async parseAuthor(author?: string): Promise<string | undefined> {
+  async parseAuthor(
+    author?: string,
+    _ignored?: unknown,
+    _options?: unknown,
+  ): Promise<string | undefined> {
     if (!author) return undefined;
 
+    // Use passed provider context if available when prompted manually, though nest-commander usually resolves these sequentially
+    // So we'll pass undefined provider to getAuthorChoices to just allow any author if specified.
+    // The filtering will happen later.
     const choices = await this.getAuthorChoices();
     if (typeof author === "string") {
       if (choices.some((choice) => choice.value === author)) {
@@ -451,13 +434,50 @@ export class LiteratureCommand extends CommandRunner {
    *
    */
   @Option({
+    description: "The provider to ingest from",
+    flags: "-p, --provider [provider]",
+  })
+  async parseProvider(provider?: string): Promise<string | undefined> {
+    if (!provider) return undefined;
+
+    const choices = await this.getProviderChoices();
+    if (typeof provider === "string") {
+      if (choices.some((choice) => choice.value === provider)) {
+        return provider;
+      } else {
+        throw new Error(`Provider "${provider}" not found in the dataset.`);
+      }
+    }
+
+    const response = (await prompts({
+      choices: [{ title: "None", value: null }, ...choices],
+      message: "Select the provider",
+      name: "provider",
+      type: "autocomplete",
+    })) as { provider: null | string };
+
+    if (response.provider === null || typeof response.provider !== "string") {
+      return undefined;
+    }
+
+    return response.provider;
+  }
+
+  /**
+   *
+   */
+  @Option({
     description: "The specific text to ingest",
     flags: "-t, --text [text]",
   })
-  async parseText(text?: string, author?: string): Promise<string | undefined> {
+  async parseText(
+    text?: string,
+    _ignored?: unknown,
+    _options?: unknown,
+  ): Promise<string | undefined> {
     if (!text) return undefined;
 
-    const choices = await this.getTextChoices(author);
+    const choices = await this.getTextChoices();
     if (typeof text === "string") {
       if (choices.some((choice) => choice.value === text)) {
         return text;
@@ -482,35 +502,130 @@ export class LiteratureCommand extends CommandRunner {
 
   /** Runs the literature ingestion pipeline. */
   async run(_args: string[], options: LiteratureCommandOptions): Promise<void> {
-    const dataPath = path.resolve("data", "library");
-    this.logger.log(`📚 Ingesting literature from ${dataPath}`);
+    this.logger.log(`📚 Starting literature ingestion...`);
 
-    try {
-      await fs.access(dataPath);
-    } catch {
-      this.logger.warn(`Directory not found: ${dataPath}`);
+    const library = await this.scanLibrary();
+    if (library.length === 0) {
+      this.logger.warn(`No texts found in data/library directory.`);
       return;
     }
 
+    const provider = await this.parseProvider(options.provider ?? undefined);
     const author = await this.parseAuthor(options.author ?? undefined);
-    const text = await this.parseText(options.text ?? undefined, author);
+    const text = await this.parseText(options.text ?? undefined);
 
-    const readdirResult = await fs.readdir(dataPath, { withFileTypes: true });
-    let authorDirs = readdirResult
-      .filter((dirent) => dirent.isDirectory())
-      .map((dirent) => dirent.name);
+    let filtered = library;
 
+    if (provider) {
+      filtered = filtered.filter((t) => t.provider === provider);
+    }
     if (author) {
-      authorDirs = authorDirs.filter((dir) => dir === author);
-    } else if (text) {
-      const textAuthor = text.split("/")[0];
-      if (textAuthor) {
-        authorDirs = authorDirs.filter((dir) => dir === textAuthor);
+      filtered = filtered.filter((t) => t.authorSlug === author);
+    }
+    if (text) {
+      filtered = filtered.filter(
+        (t) =>
+          (t.bookSlug
+            ? `${t.authorSlug}/${t.bookSlug}/${t.textSlug}`
+            : `${t.authorSlug}/${t.textSlug}`) === text,
+      );
+    }
+
+    // De-duplicate by selecting the highest priority provider for each text
+    const textMap = new Map<string, (typeof filtered)[0]>();
+
+    for (const t of filtered) {
+      const slug = t.bookSlug
+        ? `${t.authorSlug}/${t.bookSlug}/${t.textSlug}`
+        : `${t.authorSlug}/${t.textSlug}`;
+      const existing = textMap.get(slug);
+
+      if (existing) {
+        const existingPriority = this.priorityProviders.indexOf(
+          existing.provider,
+        );
+        const newPriority = this.priorityProviders.indexOf(t.provider);
+
+        // If the new provider has a higher priority (lower index, but not -1), or the existing provider is not in the priority list
+        if (
+          newPriority !== -1 &&
+          (existingPriority === -1 || newPriority < existingPriority)
+        ) {
+          textMap.set(slug, t);
+        }
+      } else {
+        textMap.set(slug, t);
       }
     }
 
-    for (const slug of authorDirs) {
-      await this.ingestAuthor(slug, dataPath, text);
+    const textsToIngest = [...textMap.values()];
+    this.logger.log(`Selected ${textsToIngest.length} texts for ingestion.`);
+
+    // Group by author -> book -> text
+    const grouped = _.groupBy(textsToIngest, "authorSlug");
+
+    for (const [authorSlug, texts] of Object.entries(grouped)) {
+      this.logger.log(`👤 Ingesting author: ${authorSlug}`);
+
+      await this.authorRepository.upsert(
+        {
+          name: authorIdToName[authorSlug] || _.startCase(authorSlug),
+          slug: authorSlug,
+        },
+        { conflictPaths: ["slug"], skipUpdateIfNoValuesChanged: true },
+      );
+
+      const authorEntity = await this.authorRepository.findOneOrFail({
+        where: { slug: authorSlug },
+      });
+
+      const textsByBook = _.groupBy(texts, "bookSlug");
+
+      for (const [bookSlug, bookTexts] of Object.entries(textsByBook)) {
+        if (bookSlug === "undefined") {
+          // Direct texts
+          for (const t of bookTexts) {
+            this.logger.log(`  -> Ingesting: ${t.title} (from ${t.provider})`);
+            await this.ingestText(
+              authorEntity,
+              undefined,
+              t.title,
+              t.textSlug,
+              t.fullPath,
+            );
+          }
+        } else {
+          // Inside a book/directory
+          const parentTextSlug = `${authorSlug}/${bookSlug}`;
+
+          await this.textRepository.upsert(
+            {
+              author: authorEntity,
+              slug: parentTextSlug,
+              title: _.startCase(bookSlug),
+              type: "book",
+            },
+            { conflictPaths: ["slug"], skipUpdateIfNoValuesChanged: true },
+          );
+
+          const parentText = await this.textRepository.findOneOrFail({
+            where: { slug: parentTextSlug },
+          });
+
+          for (const t of bookTexts) {
+            this.logger.log(
+              `  -> Ingesting: ${parentText.title} / ${t.title} (from ${t.provider})`,
+            );
+            await this.ingestText(
+              authorEntity,
+              parentText,
+              t.title,
+              t.textSlug,
+              t.fullPath,
+            );
+          }
+        }
+      }
     }
 
     this.logger.log("📚 Literature ingestion complete");
