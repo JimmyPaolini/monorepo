@@ -159,7 +159,18 @@ export class WordsService {
     }
 
     if (wordFormValues.length > 0) {
-      await this.wordFormRepository.save(wordFormValues);
+      // Chunk to avoid exceeding PostgreSQL parameter limits
+      const chunkSize = 1000;
+      for (let i = 0; i < wordFormValues.length; i += chunkSize) {
+        const chunk = wordFormValues.slice(i, i + chunkSize);
+        await this.wordFormRepository
+          .createQueryBuilder()
+          .insert()
+          .into(WordForm)
+          .values(chunk)
+          .orIgnore()
+          .execute();
+      }
     }
   }
 }

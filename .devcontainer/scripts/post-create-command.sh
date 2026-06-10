@@ -2,7 +2,15 @@
 
 set -euo pipefail
 
-echo "🔑 Installing Gitleaks v${GITLEAKS_VERSION}..."
+echo "� Installing PostgreSQL 18 Client tools..."
+. /etc/os-release
+echo "deb http://apt.postgresql.org/pub/repos/apt ${VERSION_CODENAME}-pgdg main" > /etc/apt/sources.list.d/pgdg.list
+curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg || true
+apt-get update
+apt-get install -y postgresql-client-18
+echo "✅ PostgreSQL 18 Client tools installed: $(pg_dump --version)"
+
+echo "�🔑 Installing Gitleaks v${GITLEAKS_VERSION}..."
 curl -sSfL \
   "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" \
   | tar -xzC /usr/local/bin gitleaks

@@ -79,7 +79,11 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
       return [];
     }
 
-    for (const file of chunkFiles) {
+    for (let i = 0; i < chunkFiles.length; i++) {
+      const file = chunkFiles[i];
+      if (!file) continue;
+
+      this.logger.log(`📜 Starting processing chunk: ${file}`);
       try {
         const filePath = path.join(sourceDataDir, file);
         const fileContent = await fs.readFile(filePath, "utf8");
@@ -103,6 +107,11 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
           provArr.push(markdownLine);
           provinceData.set(provinz, provArr);
         }
+
+        const progressString = ` (${(((i + 1) / chunkFiles.length) * 100).toFixed(2)}%, ${i + 1}/${chunkFiles.length})`;
+        this.logger.log(
+          `📜 Completed processing chunk: ${file}${progressString}`,
+        );
       } catch (error) {
         this.logger.warn(
           `⚠️ Error reading chunk file ${file}: ${String(error)}`,
@@ -113,7 +122,12 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
     const booksMap = new Map<string, Text>();
 
     // Save each province as a book with chunked works (files)
-    for (const [province, inscriptions] of provinceData.entries()) {
+    const provinceEntries = [...provinceData.entries()];
+    let currentProvince = 0;
+    const totalProvinces = provinceEntries.length;
+
+    for (const [province, inscriptions] of provinceEntries) {
+      this.logger.log(`🌍 Starting province: ${province}`);
       const bookSlug = _.kebabCase(province);
       const bookDir = path.join(authorDir, bookSlug);
       await fs.mkdir(bookDir, { recursive: true });
@@ -163,6 +177,10 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
           "utf8",
         );
       }
+
+      currentProvince++;
+      const provinceProgress = ` (${((currentProvince / totalProvinces) * 100).toFixed(2)}%, ${currentProvince}/${totalProvinces})`;
+      this.logger.log(`🌍 Completed province: ${province}${provinceProgress}`);
     }
 
     return [author];

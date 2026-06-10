@@ -266,11 +266,19 @@ export class LibraryCommand extends CommandRunner {
   /** Orchestrate ingestion from library sources */
   async run(_args: string[], options: LibraryCommandOptions): Promise<void> {
     this.logger.log("📚 Starting library ingestion...");
+    this.logger.log(`⚙️ Options: ${JSON.stringify(options)}`);
     const startTime = performance.now();
 
     // Create base data directory
     const dataPath = path.resolve("data", "library");
     await fs.mkdir(dataPath, { recursive: true });
+
+    const outputDir = path.join(process.cwd(), "output");
+    await fs.mkdir(outputDir, { recursive: true });
+    const logFilePath = path.join(
+      outputDir,
+      `library-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
+    );
 
     const providerName = await this.parseProvider(
       options.provider ?? undefined,
@@ -294,21 +302,29 @@ export class LibraryCommand extends CommandRunner {
     const total = providersToRun.length;
 
     for (const provider of providersToRun) {
-      current++;
-      const progressString = ` (${((current / total) * 100).toFixed(2)}%, ${current}/${total})`;
-      this.logger.log(
-        `🏛️ Running ingestion for provider: ${provider.name}${progressString}`,
-      );
+      this.logger.log(`🏛️ Starting ingestion for provider: ${provider.name}`);
       try {
         const ingestOptions: { author?: string; text?: string } = {};
         if (author) ingestOptions.author = author;
         if (text) ingestOptions.text = text;
 
         await provider.ingest(ingestOptions);
-      } catch (error) {
+
+        current++;
+        const progressString = ` (${((current / total) * 100).toFixed(2)}%, ${current}/${total})`;
+        this.logger.log(
+          `🏛️ Completed ingestion for provider: ${provider.name}${progressString}`,
+        );
+      } catch (error: unknown) {
+        const errorMessage =
+          error instanceof Error ? error.stack || error.message : String(error);
         this.logger.error(
           `❌ Error in provider ${provider.name}`,
           error instanceof Error ? error.stack : undefined,
+        );
+        await fs.appendFile(
+          logFilePath,
+          `[${new Date().toISOString()}] ${provider.name}: ${errorMessage}\n`,
         );
       }
     }

@@ -13,14 +13,13 @@ import {
 } from "@monorepo/lexico-entities";
 
 import { ClearCommand } from "./clear.command";
-import { ClearService } from "./clear.service";
 
 /**
  * Handles clearing dictionary data from the database.
  */
 @Module({
   controllers: [],
-  exports: [ClearCommand, ClearService],
+  exports: [ClearCommand],
   imports: [
     LexicoDatabaseModule,
     TypeOrmModule.forFeature([
@@ -33,6 +32,6 @@ import { ClearService } from "./clear.service";
       Token,
     ]),
   ],
-  providers: [ClearCommand, ClearService],
+  providers: [ClearCommand],
 })
 export class ClearModule {}

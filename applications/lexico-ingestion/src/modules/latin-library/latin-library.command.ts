@@ -83,6 +83,13 @@ export class LatinLibraryCommand extends CommandRunner {
 
     await fs.mkdir(this.dataDir, { recursive: true });
 
+    const outputDir = path.join(process.cwd(), "output");
+    await fs.mkdir(outputDir, { recursive: true });
+    const logFilePath = path.join(
+      outputDir,
+      `latin-library-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
+    );
+
     // 1. Fetch index
     const indexHtml = await this.fetchAndSave(host, host);
     const $index = cheerio.load(indexHtml);
@@ -243,8 +250,16 @@ export class LatinLibraryCommand extends CommandRunner {
               }
             });
           }
-        } catch (error) {
+        } catch (error: unknown) {
+          const errorMessage =
+            error instanceof Error
+              ? error.stack || error.message
+              : String(error);
           this.logger.error(`❌ Error processing ${urlStr}: ${String(error)}`);
+          await fs.appendFile(
+            logFilePath,
+            `[${new Date().toISOString()}] ${urlStr}: ${errorMessage}\n`,
+          );
         }
       }
     };

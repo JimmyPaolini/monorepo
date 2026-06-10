@@ -61,8 +61,7 @@ export class PerseusLibraryProvider {
       const xmlPath = xmlPaths[i];
       if (!xmlPath) continue;
 
-      const progressString = ` (${(((i + 1) / xmlPaths.length) * 100).toFixed(2)}%, ${i + 1}/${xmlPaths.length})`;
-      this.logger.log(`📜 Processing ${xmlPath}${progressString}`);
+      this.logger.log(`📜 Starting processing: ${xmlPath}`);
 
       try {
         const xmlContent = await fs.readFile(xmlPath, "utf8");
@@ -262,6 +261,9 @@ export class PerseusLibraryProvider {
 
         // Small delay
         await new Promise((resolve) => setTimeout(resolve, 100));
+
+        const progressString = ` (${(((i + 1) / xmlPaths.length) * 100).toFixed(2)}%, ${i + 1}/${xmlPaths.length})`;
+        this.logger.log(`📜 Completed processing: ${xmlPath}${progressString}`);
       } catch (error) {
         this.logger.warn(`⚠️ Error processing ${xmlPath}: ${error}`);
       }

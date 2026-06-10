@@ -62,3 +62,4 @@ dist
 last-lint-staged-output.txt
 applications/caelundas/output
 vite.config.*.timestamp*
+data/**

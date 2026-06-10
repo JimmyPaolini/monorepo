@@ -104,6 +104,8 @@ words:
   - oneline
   - Pagina
   - pagehead
+  - PGPASSWORD
+
   - paolini
   - querykey
   - reagent

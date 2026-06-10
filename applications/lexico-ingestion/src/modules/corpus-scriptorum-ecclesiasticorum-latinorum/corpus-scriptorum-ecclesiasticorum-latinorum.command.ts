@@ -70,6 +70,13 @@ export class CorpusScriptorumEcclesiasticorumLatinorumCommand extends CommandRun
     this.logger.log(`🗂️ Found ${xmlPaths.length} Latin XML files in CSEL repo`);
     await fs.mkdir(this.dataDir, { recursive: true });
 
+    const outputDir = path.join(process.cwd(), "output");
+    await fs.mkdir(outputDir, { recursive: true });
+    const logFilePath = path.join(
+      outputDir,
+      `csel-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
+    );
+
     for (const xmlPath of xmlPaths) {
       const targetPath = path.join(this.dataDir, xmlPath);
 
@@ -95,8 +102,14 @@ export class CorpusScriptorumEcclesiasticorumLatinorumCommand extends CommandRun
         const xmlContent = await res.text();
         await fs.writeFile(targetPath, xmlContent, "utf8");
         await new Promise((resolve) => setTimeout(resolve, 100)); // polite delay
-      } catch (error) {
+      } catch (error: unknown) {
+        const errorMessage =
+          error instanceof Error ? error.stack || error.message : String(error);
         this.logger.error(`❌ Error downloading ${xmlPath}: ${String(error)}`);
+        await fs.appendFile(
+          logFilePath,
+          `[${new Date().toISOString()}] ${xmlPath}: ${errorMessage}\n`,
+        );
       }
     }
 

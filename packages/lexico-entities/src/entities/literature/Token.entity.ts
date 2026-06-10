@@ -18,6 +18,7 @@ import type { Text } from "./Text.entity.js";
   schema: "public",
 })
 @Index(["line", "index"], { unique: true })
+@Index(["text", "index"])
 @ObjectType()
 export class Token extends AuditableEntity {
   @Field(() => Object)
@@ -44,12 +45,10 @@ export class Token extends AuditableEntity {
   isPunctuation!: boolean;
 
   @Field(() => Object)
-  @Index()
   @ManyToOne("Line", "tokens", { eager: false, onDelete: "CASCADE" })
   line!: Line;
 
   @Field(() => Object)
-  @Index()
   @ManyToOne("Text", { eager: false, onDelete: "CASCADE" })
   text!: Text;
 

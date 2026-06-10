@@ -206,6 +206,9 @@ export class LexemesService {
     if (!savedLexeme) return null;
 
     if (lexeme.inflection) {
+      if (savedLexeme.inflection) {
+        lexeme.inflection.id = savedLexeme.inflection.id;
+      }
       lexeme.inflection.lexeme = savedLexeme;
       await lexeme.inflection.save();
       savedLexeme.inflection = lexeme.inflection;

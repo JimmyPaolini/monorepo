@@ -42,7 +42,6 @@ export class Line extends AuditableEntity {
   label!: string;
 
   @Field(() => Object)
-  @Index()
   @ManyToOne("Text", "lines", { eager: true, onDelete: "CASCADE" })
   text!: Text;
 

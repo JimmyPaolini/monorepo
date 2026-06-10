@@ -293,7 +293,7 @@
       "executor": "nx:run-commands",
       "options": {}
     },
-    "postgres": {
+    "postgres-container": {
       "configurations": {
         "down": {
           "command": "docker compose -f infrastructure/docker/docker-compose.yml down postgres"
@@ -307,6 +307,57 @@
       },
       "defaultConfiguration": "up",
       "description": "Start, stop, or recreate the local PostgreSQL container (recreate removes the volume)",
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "{workspaceRoot}"
+      }
+    },
+    "postgres-data": {
+      "configurations": {
+        "dump-complete": {
+          "command": "PGPASSWORD=${POSTGRES_PASSWORD:-postgres} pg_dump -h ${POSTGRES_HOST:-localhost} -p ${POSTGRES_PORT:-5432} -U ${POSTGRES_USER:-postgres} -Fc -d ${POSTGRES_DB:-postgres} -f data/complete.dump"
+        },
+        "dump-custom": {
+          "command": "PGPASSWORD=${POSTGRES_PASSWORD:-postgres} pg_dump -h ${POSTGRES_HOST:-localhost} -p ${POSTGRES_PORT:-5432} -U ${POSTGRES_USER:-postgres} {args.flags} -Fc -d ${POSTGRES_DB:-postgres} -f data/{args.name}.dump"
+        },
+        "dump-database": {
+          "command": "PGPASSWORD=${POSTGRES_PASSWORD:-postgres} pg_dump -h ${POSTGRES_HOST:-localhost} -p ${POSTGRES_PORT:-5432} -U ${POSTGRES_USER:-postgres} -Fc -d {args.database} -f data/{args.database}.dump"
+        },
+        "dump-dictionary": {
+          "command": "PGPASSWORD=${POSTGRES_PASSWORD:-postgres} pg_dump -h ${POSTGRES_HOST:-localhost} -p ${POSTGRES_PORT:-5432} -U ${POSTGRES_USER:-postgres} -t forms -t inflections -t lexemes -t principal_parts -t pronunciations -t translations -t words -t word_forms -t word_lexemes -Fc -d ${POSTGRES_DB:-postgres} -f data/dictionary.dump"
+        },
+        "dump-literature": {
+          "command": "PGPASSWORD=${POSTGRES_PASSWORD:-postgres} pg_dump -h ${POSTGRES_HOST:-localhost} -p ${POSTGRES_PORT:-5432} -U ${POSTGRES_USER:-postgres} -t authors -t lines -t texts -t tokens -Fc -d ${POSTGRES_DB:-postgres} -f data/literature.dump"
+        },
+        "dump-schema": {
+          "command": "PGPASSWORD=${POSTGRES_PASSWORD:-postgres} pg_dump -h ${POSTGRES_HOST:-localhost} -p ${POSTGRES_PORT:-5432} -U ${POSTGRES_USER:-postgres} -n {args.schema} -Fc -d ${POSTGRES_DB:-postgres} -f data/{args.schema}.dump"
+        },
+        "dump-table": {
+          "command": "PGPASSWORD=${POSTGRES_PASSWORD:-postgres} pg_dump -h ${POSTGRES_HOST:-localhost} -p ${POSTGRES_PORT:-5432} -U ${POSTGRES_USER:-postgres} -t {args.table} -Fc -d ${POSTGRES_DB:-postgres} -f data/{args.table}.dump"
+        },
+        "restore-complete": {
+          "command": "PGPASSWORD=${POSTGRES_PASSWORD:-postgres} pg_restore -h ${POSTGRES_HOST:-localhost} -p ${POSTGRES_PORT:-5432} -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-postgres} -c -1 data/complete.dump"
+        },
+        "restore-custom": {
+          "command": "PGPASSWORD=${POSTGRES_PASSWORD:-postgres} pg_restore -h ${POSTGRES_HOST:-localhost} -p ${POSTGRES_PORT:-5432} -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-postgres} -c -1 {args.flags} data/{args.name}.dump"
+        },
+        "restore-database": {
+          "command": "PGPASSWORD=${POSTGRES_PASSWORD:-postgres} pg_restore -h ${POSTGRES_HOST:-localhost} -p ${POSTGRES_PORT:-5432} -U ${POSTGRES_USER:-postgres} -d {args.database} -c -1 data/{args.database}.dump"
+        },
+        "restore-dictionary": {
+          "command": "PGPASSWORD=${POSTGRES_PASSWORD:-postgres} pg_restore -h ${POSTGRES_HOST:-localhost} -p ${POSTGRES_PORT:-5432} -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-postgres} -c -1 -t forms -t inflections -t lexemes -t principal_parts -t pronunciations -t translations -t words -t word_forms -t word_lexemes data/dictionary.dump"
+        },
+        "restore-literature": {
+          "command": "PGPASSWORD=${POSTGRES_PASSWORD:-postgres} pg_restore -h ${POSTGRES_HOST:-localhost} -p ${POSTGRES_PORT:-5432} -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-postgres} -c -1 -t authors -t lines -t texts -t tokens data/literature.dump"
+        },
+        "restore-schema": {
+          "command": "PGPASSWORD=${POSTGRES_PASSWORD:-postgres} pg_restore -h ${POSTGRES_HOST:-localhost} -p ${POSTGRES_PORT:-5432} -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-postgres} -c -1 -n {args.schema} data/{args.schema}.dump"
+        },
+        "restore-table": {
+          "command": "PGPASSWORD=${POSTGRES_PASSWORD:-postgres} pg_restore -h ${POSTGRES_HOST:-localhost} -p ${POSTGRES_PORT:-5432} -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-postgres} -c -1 -t {args.table} data/{args.table}.dump"
+        }
+      },
+      "description": "Dump and restore PostgreSQL data (databases, schemas, tables)",
       "executor": "nx:run-commands",
       "options": {
         "cwd": "{workspaceRoot}"

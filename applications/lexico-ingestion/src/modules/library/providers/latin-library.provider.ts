@@ -135,12 +135,9 @@ export class LatinLibraryProvider {
     const totalAuthors = authorsToProcess.length;
 
     for (const author of authorsToProcess) {
-      currentAuthor++;
-      const authorProgress = ` (${((currentAuthor / totalAuthors) * 100).toFixed(2)}%, ${currentAuthor}/${totalAuthors})`;
-
       const nickname = author.metadata?.["nickname"] as string;
       const authorPath = author.metadata?.["sourceUrl"] as string;
-      this.logger.log(`👤 Processing author: ${nickname}${authorProgress}`);
+      this.logger.log(`👤 Starting author metadata: ${nickname}`);
 
       const authorUrlObj = new URL(authorPath, host);
       const authorText = await this.readLocal(authorUrlObj.href, host);
@@ -284,6 +281,12 @@ export class LatinLibraryProvider {
         fallback.metadata = { sourceUrl: authorUrlObj.href };
         author.texts = [fallback];
       }
+
+      currentAuthor++;
+      const authorProgress = ` (${((currentAuthor / totalAuthors) * 100).toFixed(2)}%, ${currentAuthor}/${totalAuthors})`;
+      this.logger.log(
+        `👤 Completed author metadata: ${nickname}${authorProgress}`,
+      );
     }
 
     const dataPath = path.resolve("data", "library", this.name);
@@ -301,6 +304,10 @@ export class LatinLibraryProvider {
       const allTextNodes = author.texts.flatMap((t) =>
         t.type === "book" ? t.childTexts : [t],
       );
+
+      let currentText = 0;
+      const totalTexts = allTextNodes.length;
+
       for (const work of allTextNodes) {
         const workPath = work.metadata?.["sourceUrl"] as string;
         const workBook = work.metadata?.["book"] as string | undefined;
@@ -312,6 +319,8 @@ export class LatinLibraryProvider {
         if (options?.text && textSlug !== options.text) {
           continue;
         }
+
+        this.logger.log(`📜 Starting work: ${textSlug}`);
 
         try {
           const workHtml = await this.readLocal(workPath, host);
@@ -448,6 +457,10 @@ export class LatinLibraryProvider {
               "utf8",
             );
           }
+
+          currentText++;
+          const textProgress = ` (${((currentText / totalTexts) * 100).toFixed(2)}%, ${currentText}/${totalTexts})`;
+          this.logger.log(`📜 Completed work: ${textSlug}${textProgress}`);
         } catch (error) {
           this.logger.error(
             `❌ Failed to fetch work ${work.title}`,

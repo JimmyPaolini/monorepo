@@ -278,7 +278,7 @@ pnpm exec nx run monorepo:sync-devcontainer-configuration:check
 | Failing target | What to do |
 | --- | --- |
 | `typecheck` | Read the TypeScript/Python errors. **TS**: Use optional chaining `arr[0]?.prop` for index access, avoid `any`, require explicit function return types, and use `import { type Foo }` for type-only imports. **Python**: Note that `[tool.ty]` config must remain in the project-level `pyproject.toml` (not workspace root). |
-| `spell-check` | Either fix the typo, or add the word to `configuration/cspell.config.yaml` under `words`. |
+| `spell-check` | Either fix the typo, or if it's a valid word (false negative), add it to the most relevant dictionary in `configuration/.cspell/` (e.g. `lexico.txt`, `tooling.txt`). If a suitable category doesn't exist, create a new dictionary file in `configuration/.cspell/`, register it in `configuration/cspell.config.yaml`, and refactor existing dictionaries to move any relevant words into the new dictionary. As a fallback, add it directly to `words` in `configuration/cspell.config.yaml`. |
 | `yaml-lint` | Fix YAML syntax errors per `configuration/yamllint.yaml` rules. |
 | `stylelint` | Fix CSS issues per `configuration/stylelint.config.cjs`. |
 | `check-lockfile` | Run `pnpm install` to regenerate `pnpm-lock.yaml`. Do NOT stage the lockfile — leave it unstaged for the user to review. **Lesson**: Any manual change to a `package.json` or workspace config often requires this. |
@@ -389,7 +389,7 @@ Report a summary to the user covering:
 | `Unexpected token`, `Expected whitespace` | oxfmt/prettier format check failed | `nx affected --target=format --configuration=write` |
 | `error  ...  @typescript-eslint/...` | ESLint rule violation | `nx affected --target=lint --configuration=write` or manual fix |
 | `Type 'X' is not assignable to 'Y'` | TypeScript type error | Manual fix — check `tsconfig.json` strict settings |
-| `Unknown word` in cspell | Unrecognized word | Add to `configuration/cspell.config.yaml` `words` list |
+| `Unknown word` in cspell | Unrecognized word | Add it to the most relevant dictionary in `configuration/.cspell/` (e.g. `lexico.txt`, `tooling.txt`). If a suitable category doesn't exist, create a new dictionary file, register it in `configuration/cspell.config.yaml`, and refactor existing dictionaries to move any relevant words into the new dictionary. As a fallback, add it to `configuration/cspell.config.yaml` `words` list. |
 | `lockfile needs update` | `pnpm-lock.yaml` out of sync | `pnpm install` (leave lockfile unstaged for user to review) |
 | `sync check failed` | Generated file is out of date | Run the corresponding `:write` target |
 | `subject may not be empty` | commitlint missing subject | Amend commit message to correct format |

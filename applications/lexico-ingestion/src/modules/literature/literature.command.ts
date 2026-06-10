@@ -51,6 +51,8 @@ export class LiteratureCommand extends CommandRunner {
     this.logger.setContext(LiteratureCommand.name);
   }
 
+  private readonly memoizedWordCache = new Map<string, null | string>();
+
   // Ordered by priority
   private readonly priorityProviders = [
     "perseus",
@@ -204,20 +206,20 @@ export class LiteratureCommand extends CommandRunner {
     });
 
     const lineChunkSize = 1000;
-    for (let i = 0; i < lineEntities.length; i += lineChunkSize) {
-      const chunk = lineEntities.slice(i, i + lineChunkSize);
-      await this.lineRepository.upsert(
-        chunk as QueryDeepPartialEntity<Line>[],
-        {
+    const lineChunks = _.chunk(lineEntities, lineChunkSize);
+    await Promise.all(
+      lineChunks.map(async (chunk) =>
+        this.lineRepository.upsert(chunk as QueryDeepPartialEntity<Line>[], {
           conflictPaths: ["text", "index"],
           skipUpdateIfNoValuesChanged: true,
-        },
-      );
-    }
+        }),
+      ),
+    );
 
     const savedLines = await this.lineRepository.find({
+      loadEagerRelations: false,
       order: { index: "ASC" },
-      relations: { text: { author: true } },
+      select: { data: true, id: true, index: true },
       where: { text: { id: text.id } },
     });
 
@@ -231,17 +233,22 @@ export class LiteratureCommand extends CommandRunner {
         const isPunctuation = !/^[\p{L}]+$/u.test(data);
         let wordId: null | string = null;
         if (!isPunctuation) {
-          const normalized = this.escapeCapitals(this.normalize(data));
-          wordId = wordMap.get(normalized) || null;
+          if (this.memoizedWordCache.has(data)) {
+            wordId = this.memoizedWordCache.get(data) || null;
+          } else {
+            const normalized = this.escapeCapitals(this.normalize(data));
+            wordId = wordMap.get(normalized) || null;
+            this.memoizedWordCache.set(data, wordId);
+          }
         }
 
         tokenEntities.push({
-          author: line.text.author,
+          author: text.author,
           data,
           index,
           isPunctuation,
           line,
-          text: line.text,
+          text,
           word: wordId ? { id: wordId } : null,
         });
       });
@@ -250,19 +257,16 @@ export class LiteratureCommand extends CommandRunner {
     this.logger.log(
       `  💾 Saving ${tokenEntities.length} tokens for ${text.title}...`,
     );
-    const chunkSize = 5000;
-    for (let i = 0; i < tokenEntities.length; i += chunkSize) {
-      await this.tokenRepository.upsert(
-        tokenEntities.slice(
-          i,
-          i + chunkSize,
-        ) as QueryDeepPartialEntity<Token>[],
-        {
+    const chunkSize = 2000;
+    const tokenChunks = _.chunk(tokenEntities, chunkSize);
+    await Promise.all(
+      tokenChunks.map(async (chunk) =>
+        this.tokenRepository.upsert(chunk as QueryDeepPartialEntity<Token>[], {
           conflictPaths: ["line", "index"],
           skipUpdateIfNoValuesChanged: true,
-        },
-      );
-    }
+        }),
+      ),
+    );
   }
 
   private async ingestText(
@@ -529,6 +533,7 @@ export class LiteratureCommand extends CommandRunner {
   /** Runs the literature ingestion pipeline. */
   async run(_args: string[], options: LiteratureCommandOptions): Promise<void> {
     this.logger.log(`📚 Starting literature ingestion...`);
+    this.logger.log(`⚙️ Options: ${JSON.stringify(options)}`);
     const startTime = performance.now();
 
     const library = await this.scanLibrary();
@@ -588,6 +593,13 @@ export class LiteratureCommand extends CommandRunner {
     }
 
     const textsToIngest = [...textMap.values()];
+    const outputDir = path.join(process.cwd(), "output");
+    await fs.mkdir(outputDir, { recursive: true });
+    const logFilePath = path.join(
+      outputDir,
+      `literature-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
+    );
+
     this.logger.log(`📚 Selected ${textsToIngest.length} texts for ingestion.`);
 
     // Group by author
@@ -598,9 +610,7 @@ export class LiteratureCommand extends CommandRunner {
     const totalAuthors = authors.length;
 
     for (const [authorSlug, texts] of authors) {
-      currentAuthor++;
-      const authorProgress = ` (${((currentAuthor / totalAuthors) * 100).toFixed(2)}%, ${currentAuthor}/${totalAuthors})`;
-      this.logger.log(`👤 Ingesting author: ${authorSlug}${authorProgress}`);
+      this.logger.log(`👤 Starting author: ${authorSlug}`);
 
       await this.authorRepository.upsert(
         {
@@ -619,13 +629,8 @@ export class LiteratureCommand extends CommandRunner {
       let currentText = 0;
       const totalTexts = texts.length;
 
+      // Ensure all intermediate directories exist as Text entities sequentially
       for (const t of texts) {
-        currentText++;
-        const textProgress = ` (${((currentText / totalTexts) * 100).toFixed(2)}%, ${currentText}/${totalTexts})`;
-
-        let parentText: Text | undefined = undefined;
-
-        // Ensure all intermediate directories exist as Text entities
         if (t.pathParts.length > 0) {
           let currentPath = authorSlug;
           for (const part of t.pathParts) {
@@ -651,25 +656,61 @@ export class LiteratureCommand extends CommandRunner {
               });
               parentTexts.set(currentPath, newParent);
             }
-            parentText = parentTexts.get(currentPath);
           }
         }
+      }
 
-        const hierarchy = parentText
-          ? `${parentText.slug.replace(`${authorSlug}/`, "")} / `
-          : "";
-        this.logger.log(
-          `  📜 Ingesting: ${hierarchy}${t.title} (from ${t.provider})${textProgress}`,
-        );
+      const textChunks = _.chunk(texts, 5);
+      for (const chunk of textChunks) {
+        await Promise.all(
+          chunk.map(async (t) => {
+            let parentText: Text | undefined;
+            if (t.pathParts.length > 0) {
+              const currentPath = [authorSlug, ...t.pathParts].join("/");
+              parentText = parentTexts.get(currentPath);
+            }
 
-        await this.ingestText(
-          authorEntity,
-          parentText,
-          t.title,
-          t.textSlug,
-          t.fullPath,
+            const hierarchy = parentText
+              ? `${parentText.slug.replace(`${authorSlug}/`, "")} / `
+              : "";
+            this.logger.log(
+              `  📜 Starting: ${hierarchy}${t.title} (from ${t.provider})`,
+            );
+
+            try {
+              await this.ingestText(
+                authorEntity,
+                parentText,
+                t.title,
+                t.textSlug,
+                t.fullPath,
+              );
+            } catch (error: unknown) {
+              const errorMessage =
+                error instanceof Error
+                  ? error.stack || error.message
+                  : String(error);
+              this.logger.error(
+                `❌ Failed to process ${hierarchy}${t.title} (from ${t.provider}): ${String(error)}`,
+              );
+              await fs.appendFile(
+                logFilePath,
+                `[${new Date().toISOString()}] ${t.fullPath}: ${errorMessage}\n`,
+              );
+            }
+
+            currentText++;
+            const textProgress = ` (${((currentText / totalTexts) * 100).toFixed(2)}%, ${currentText}/${totalTexts})`;
+            this.logger.log(
+              `  ✅ Completed: ${hierarchy}${t.title} (from ${t.provider})${textProgress}`,
+            );
+          }),
         );
       }
+
+      currentAuthor++;
+      const authorProgress = ` (${((currentAuthor / totalAuthors) * 100).toFixed(2)}%, ${currentAuthor}/${totalAuthors})`;
+      this.logger.log(`👤 Completed author: ${authorSlug}${authorProgress}`);
     }
 
     const endTime = performance.now();

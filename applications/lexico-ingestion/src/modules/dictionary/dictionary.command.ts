@@ -220,6 +220,13 @@ export class DictionaryCommand extends CommandRunner {
       files = files.slice(start, end + 1);
     }
 
+    const outputDir = path.join(process.cwd(), "output");
+    fs.mkdirSync(outputDir, { recursive: true });
+    const logFilePath = path.join(
+      outputDir,
+      `dictionary-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
+    );
+
     this.logger.log(`📖 Processing ${files.length} lexemes`);
 
     let current = 0;
@@ -230,13 +237,21 @@ export class DictionaryCommand extends CommandRunner {
       try {
         const filePath = path.join(this.dataDir, file);
         const wiktionaryPage = this.readWiktionaryPage(filePath);
-        if (!wiktionaryPage) continue;
+        if (!wiktionaryPage) {
+          throw new Error("File missing or unreadable");
+        }
         await this.ingestLexeme(wiktionaryPage.word, wiktionaryPage, {
           current,
           total,
         });
-      } catch (error) {
+      } catch (error: unknown) {
+        const errorMessage =
+          error instanceof Error ? error.stack || error.message : String(error);
         this.logger.error(`❌ Failed to process ${file}: ${String(error)}`);
+        fs.appendFileSync(
+          logFilePath,
+          `[${new Date().toISOString()}] ${file}: ${errorMessage}\n`,
+        );
       }
     }
 
@@ -255,13 +270,14 @@ export class DictionaryCommand extends CommandRunner {
     try {
       if (!wiktionaryPage) {
         const page = this.loadWiktionaryPageForWord(word);
-        if (!page) return;
+        if (!page) {
+          throw new Error(`File missing or unreadable for word: ${word}`);
+        }
         wiktionaryPage = page;
       }
 
       if (!wiktionaryPage.html) {
-        this.logger.warn(`⚠️ No HTML for word: ${word}`);
-        return;
+        throw new Error(`Missing HTML data in file for word: ${word}`);
       }
 
       const progressString = progress
@@ -364,6 +380,7 @@ export class DictionaryCommand extends CommandRunner {
    * or processes all cached Wiktionary HTML files otherwise. */
   async run(_args: string[], options: DictionaryCommandOptions): Promise<void> {
     this.logger.log(`📖 Ingesting dictionary...`);
+    this.logger.log(`⚙️ Options: ${JSON.stringify(options)}`);
     const startTime = performance.now();
 
     const startLemma = await this.parseStartLemma(

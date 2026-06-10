@@ -36,7 +36,10 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
 
   // 🔏 Private Methods
 
-  private async fetchChunk(start: number): Promise<boolean> {
+  private async fetchChunk(
+    start: number,
+    logFilePath: string,
+  ): Promise<boolean> {
     const chunkFile = path.join(this.dataDir, `chunk-${start}.json`);
 
     try {
@@ -75,9 +78,15 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
       // Small delay to be polite to the API
       await new Promise((resolve) => setTimeout(resolve, 500));
       return true;
-    } catch (error) {
+    } catch (error: unknown) {
+      const errorMessage =
+        error instanceof Error ? error.stack || error.message : String(error);
       this.logger.error(
         `❌ Error fetching chunk at ${start}: ${String(error)}`,
+      );
+      await fs.appendFile(
+        logFilePath,
+        `[${new Date().toISOString()}] chunk-${start}: ${errorMessage}\n`,
       );
       return true;
     }
@@ -90,12 +99,19 @@ export class EpigraphikDatenbankClaussSlabyCommand extends CommandRunner {
     this.logger.log(`📁 Ensuring data directory exists at ${this.dataDir}`);
     await fs.mkdir(this.dataDir, { recursive: true });
 
+    const outputDir = path.join(process.cwd(), "output");
+    await fs.mkdir(outputDir, { recursive: true });
+    const logFilePath = path.join(
+      outputDir,
+      `edcs-${new Date().toISOString().replaceAll(/[:.]/g, "-")}.log`,
+    );
+
     this.logger.log(
       `🕷️ Starting Epigraphik-Datenbank Clauss-Slaby JSON ingestion...`,
     );
 
     for (let start = 0; start < this.limit; start += this.batchSize) {
-      const shouldContinue = await this.fetchChunk(start);
+      const shouldContinue = await this.fetchChunk(start, logFilePath);
       if (!shouldContinue) {
         break;
       }
