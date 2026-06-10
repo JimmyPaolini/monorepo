@@ -70,6 +70,7 @@ dictionaryDefinitions:
     path: .cspell/tooling.txt
     addWords: true
 words:
+  - amissa
   - apikey
   - Canis
   - dataloaders
@@ -95,6 +96,7 @@ words:
   - noqa
   - nums
   - oneline
+  - Pagina
   - pagehead
   - paolini
   - querykey

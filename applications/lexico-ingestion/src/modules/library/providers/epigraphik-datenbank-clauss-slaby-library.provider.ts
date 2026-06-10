@@ -3,10 +3,11 @@ import path from "node:path";
 
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
+import YAML from "yaml";
+
+import { Author, Text } from "@monorepo/lexico-entities";
 
 import { LoggerService } from "../../logger/logger.service";
-
-import type { LibraryAuthor, LibraryWork } from "../library.types";
 
 interface EdcsRecord {
   obj: {
@@ -16,6 +17,22 @@ interface EdcsRecord {
     inschriften: [string, unknown, string[], string[]][];
     provinz: null | string;
   };
+}
+
+interface LocalAuthor {
+  metadata?: Record<string, unknown>;
+  name: string;
+  nickname: string;
+  path: string;
+  slug: string;
+  works: LocalWork[];
+}
+
+interface LocalWork {
+  book: string;
+  metadata?: Record<string, unknown>;
+  path: string;
+  title: string;
 }
 
 /**
@@ -33,7 +50,7 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
   async ingest(options?: {
     author?: string;
     text?: string;
-  }): Promise<LibraryAuthor[]> {
+  }): Promise<Author[]> {
     const host = "https://edcs.hist.uzh.ch/api/query";
     this.logger.log(`Fetching from EDCS API at ${host}`);
 
@@ -46,7 +63,7 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
     const authorDir = path.join(dataPath, authorSlug);
     await fs.mkdir(authorDir, { recursive: true });
 
-    const author: LibraryAuthor = {
+    const author: LocalAuthor = {
       name: "Epigraphik-Datenbank Clauss-Slaby",
       nickname: "EDCS",
       path: host,
@@ -54,9 +71,8 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
       works: [],
     };
 
-    // We'll fetch the first 10,000 records to avoid overwhelming the server or disk space
-    // The user can modify this limit if they want the full 500,000+ corpus.
-    const limit = 10_000;
+    // We'll fetch up to 1,000,000 records to capture the full 500,000+ corpus.
+    const limit = 1_000_000;
     const batchSize = 1000;
 
     // Group records by province
@@ -74,6 +90,11 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
         }
 
         const data = (await res.json()) as { data: EdcsRecord[] };
+
+        if (data.data.length === 0) {
+          this.logger.log(`No more EDCS records found after ${start}.`);
+          break;
+        }
 
         for (const item of data.data) {
           const obj = item.obj;
@@ -115,14 +136,21 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
         const textSlug = `${authorSlug}/${bookSlug}/${titleSlug}`;
         if (options?.text && textSlug !== options.text) continue;
 
-        const workDto: LibraryWork = {
+        const workDto: LocalWork = {
           book: province,
           path: `${bookSlug}/${titleSlug}.md`,
           title,
         };
         author.works.push(workDto);
 
-        let markdown = `---\ntitle: ${title}\nauthor: ${authorSlug}\nsource_url: https://db.edcs.eu\ntype: text\n---\n\n`;
+        const frontmatterObj: Record<string, unknown> = {
+          author: authorSlug,
+          text_metadata: { source_url: "https://db.edcs.eu" },
+          title,
+          type: "text",
+        };
+
+        let markdown = `---\n${YAML.stringify(frontmatterObj)}---\n\n`;
         markdown += `# ${title}\n\n`;
         markdown += `${chunk.join("\n\n")}\n`;
 
@@ -134,6 +162,33 @@ export class EpigraphikDatenbankClaussSlabyLibraryProvider {
       }
     }
 
-    return [author];
+    const authorEntity = new Author();
+    authorEntity.name = author.name;
+    authorEntity.slug = author.slug;
+    authorEntity.metadata = { sourceUrl: author.path };
+    authorEntity.texts = [];
+
+    const booksMap = new Map<string, Text>();
+    for (const localWork of author.works) {
+      let bookText = booksMap.get(localWork.book);
+      if (!bookText) {
+        bookText = new Text();
+        bookText.type = "book";
+        bookText.title = localWork.book;
+        bookText.slug = _.kebabCase(localWork.book);
+        bookText.childTexts = [];
+        booksMap.set(localWork.book, bookText);
+        authorEntity.texts.push(bookText);
+      }
+
+      const textEntity = new Text();
+      textEntity.type = "text";
+      textEntity.title = localWork.title;
+      textEntity.slug = _.kebabCase(localWork.title);
+      textEntity.metadata = { sourceUrl: localWork.path };
+      bookText.childTexts.push(textEntity);
+    }
+
+    return [authorEntity];
   }
 }

@@ -5,11 +5,28 @@ import { Injectable } from "@nestjs/common";
 import * as cheerio from "cheerio";
 import cheerioTableParser from "cheerio-tableparser";
 import _ from "lodash";
+import YAML from "yaml";
+
+import { Author, Text } from "@monorepo/lexico-entities";
 
 import { authorIdToName } from "../../literature/literature.constants";
 import { LoggerService } from "../../logger/logger.service";
 
-import type { LibraryAuthor, LibraryWork } from "../library.types";
+interface LocalAuthor {
+  metadata?: Record<string, unknown>;
+  name: string;
+  nickname: string;
+  path: string;
+  slug: string;
+  works: LocalWork[];
+}
+
+interface LocalWork {
+  book?: string;
+  metadata?: Record<string, unknown>;
+  path: string;
+  title: string;
+}
 
 /**
  * Provider for scraping The Latin Library.
@@ -26,7 +43,7 @@ export class LatinLibraryProvider {
   async ingest(options?: {
     author?: string;
     text?: string;
-  }): Promise<LibraryAuthor[]> {
+  }): Promise<Author[]> {
     const host = "https://www.thelatinlibrary.com/";
     this.logger.log(`Scraping library from ${host}`);
 
@@ -35,11 +52,11 @@ export class LatinLibraryProvider {
     const tableHtml = cheerio.load(textData);
     cheerioTableParser(tableHtml);
 
-    const authors: LibraryAuthor[] = tableHtml("p>table")
+    const authors: LocalAuthor[] = tableHtml("p>table")
       .first()
       .parsetable(true, true, false)
       .flat()
-      .map((elt: string): LibraryAuthor => {
+      .map((elt: string): LocalAuthor => {
         const a = cheerio.load(elt.trim())("a");
         const nickname = a.text().replace(/\s/, " ").trim().toLowerCase();
         const slug = _.kebabCase(nickname);
@@ -60,6 +77,46 @@ export class LatinLibraryProvider {
       const authorText = await authorRes.text();
       const $ = cheerio.load(authorText);
 
+      const h1Text =
+        $("h1.pagehead").text().trim() || $("h1").first().text().trim();
+      const h2Text =
+        $("h2.date").text().trim() || $("h2").first().text().trim();
+
+      const metadata: Record<string, unknown> = {};
+      if (
+        h1Text &&
+        h1Text.toLowerCase() !== author.name.toLowerCase() &&
+        !h1Text.includes("Pagina amissa")
+      ) {
+        metadata["full_name"] = h1Text;
+      }
+
+      if (h2Text) {
+        // Simple heuristic for (70 - 19 B.C.) etc
+        const dateMatch =
+          /(\d+)\s*(B\.?C\.?|A\.?D\.?)?\s*[-–]\s*(?:c\.\s*)?(\d+)\s*(B\.?C\.?|A\.?D\.?)?/i.exec(
+            h2Text,
+          );
+        if (dateMatch) {
+          const startYear = Number.parseInt(dateMatch[1] ?? "0", 10);
+          const startEra =
+            dateMatch[2] ||
+            (dateMatch[4]?.toUpperCase().includes("B") ? "B.C." : "A.D.");
+          const endYear = Number.parseInt(dateMatch[3] ?? "0", 10);
+          const endEra = dateMatch[4] || "A.D.";
+
+          metadata["birth_year"] = startEra.toUpperCase().includes("B")
+            ? -startYear
+            : startYear;
+          metadata["death_year"] = endEra.toUpperCase().includes("B")
+            ? -endYear
+            : endYear;
+        }
+      }
+      if (Object.keys(metadata).length > 0) {
+        author.metadata = metadata;
+      }
+
       for (const a of $("a").get()) {
         const href = $(a).attr("href");
         if (
@@ -78,16 +135,20 @@ export class LatinLibraryProvider {
         const book = rawBook ? _.startCase(rawBook) : undefined;
         const rawTitle = $(a).text().trim().toLowerCase();
         const title = rawTitle ? _.startCase(rawTitle) : "";
-        const workDto: LibraryWork = { path: href, title };
+        const workDto: LocalWork = { path: href, title };
         if (book !== undefined) {
           workDto.book = book;
         }
         author.works.push(workDto);
       }
 
-      if (!author.works.every((work) => work.path.endsWith(".html"))) {
-        author.works = [{ path: author.path, title: author.nickname }];
-      }
+      const htmlWorks = author.works.filter((work) =>
+        work.path.endsWith(".html"),
+      );
+      author.works =
+        htmlWorks.length > 0
+          ? htmlWorks
+          : [{ path: author.path, title: author.nickname }];
     }
 
     const dataPath = path.resolve("data", "library", this.name);
@@ -118,7 +179,20 @@ export class LatinLibraryProvider {
           const workHtml = await workRes.text();
           const $work = cheerio.load(workHtml);
 
-          let markdown = `---\ntitle: ${work.title}\nauthor: ${author.slug}\nsource_url: ${host + work.path}\ntype: ${work.book ? "text" : "book"}\n---\n\n`;
+          const frontmatterObj: Record<string, unknown> = {
+            author: author.slug,
+            text_metadata: {
+              ...work.metadata,
+              source_url: host + work.path,
+            },
+            title: work.title,
+            type: work.book ? "text" : "book",
+          };
+          if (author.metadata) {
+            frontmatterObj["author_metadata"] = author.metadata;
+          }
+
+          let markdown = `---\n${YAML.stringify(frontmatterObj)}---\n\n`;
 
           if (work.book) {
             markdown += `# ${work.book}\n\n`;
@@ -211,6 +285,55 @@ export class LatinLibraryProvider {
       }
     }
 
-    return authors;
+    const entityAuthors: Author[] = [];
+
+    for (const localAuthor of authors) {
+      if (options?.author && localAuthor.slug !== options.author) continue;
+
+      const authorEntity = new Author();
+      authorEntity.name = localAuthor.name;
+      authorEntity.slug = localAuthor.slug;
+      authorEntity.metadata = localAuthor.metadata
+        ? { ...localAuthor.metadata, sourceUrl: localAuthor.path }
+        : { sourceUrl: localAuthor.path };
+      authorEntity.texts = [];
+
+      const booksMap = new Map<string, Text>();
+      for (const localWork of localAuthor.works) {
+        if (!localWork.path.endsWith(".html")) continue;
+
+        let bookText: Text | undefined;
+        if (localWork.book) {
+          bookText = booksMap.get(localWork.book);
+          if (!bookText) {
+            bookText = new Text();
+            bookText.type = "book";
+            bookText.title = localWork.book;
+            bookText.slug = _.kebabCase(localWork.book);
+            bookText.childTexts = [];
+            booksMap.set(localWork.book, bookText);
+            authorEntity.texts.push(bookText);
+          }
+        }
+
+        const textEntity = new Text();
+        textEntity.type = "text";
+        textEntity.title = localWork.title;
+        textEntity.slug = _.kebabCase(localWork.title);
+        textEntity.metadata = localWork.metadata
+          ? { ...localWork.metadata, sourceUrl: localWork.path }
+          : { sourceUrl: localWork.path };
+
+        if (bookText) {
+          bookText.childTexts.push(textEntity);
+        } else {
+          authorEntity.texts.push(textEntity);
+        }
+      }
+
+      entityAuthors.push(authorEntity);
+    }
+
+    return entityAuthors;
   }
 }

@@ -15,7 +15,8 @@ import { MusisqueDeoqueLibraryProvider } from "./providers/musisque-deoque-libra
 import { OpenGreekAndLatinProvider } from "./providers/open-greek-and-latin.provider";
 import { PerseusLibraryProvider } from "./providers/perseus-library.provider";
 
-import type { LibraryAuthor, LibraryCommandOptions } from "./library.types";
+import type { LibraryCommandOptions } from "./library.types";
+import type { Author } from "@monorepo/lexico-entities";
 
 /**
  * Scrape literature data from various sources to markdown files.
@@ -50,10 +51,7 @@ export class LibraryCommand extends CommandRunner {
   }
 
   private readonly providers: {
-    ingest: (options?: {
-      author?: string;
-      text?: string;
-    }) => Promise<LibraryAuthor[]>;
+    ingest: (options?: { author?: string; text?: string }) => Promise<Author[]>;
     name: string;
   }[];
 
@@ -88,9 +86,7 @@ export class LibraryCommand extends CommandRunner {
     const textSlugs = [
       ...new Set(
         filtered.map((t) =>
-          t.bookSlug
-            ? `${t.authorSlug}/${t.bookSlug}/${t.textSlug}`
-            : `${t.authorSlug}/${t.textSlug}`,
+          [t.authorSlug, ...t.pathParts, t.textSlug].join("/"),
         ),
       ),
     ].toSorted();
@@ -100,8 +96,8 @@ export class LibraryCommand extends CommandRunner {
   private async scanLibrary(): Promise<
     {
       authorSlug: string;
-      bookSlug?: string;
       fullPath: string;
+      pathParts: string[];
       provider: string;
       textSlug: string;
       title: string;
@@ -110,12 +106,40 @@ export class LibraryCommand extends CommandRunner {
     const dataDir = path.resolve("data", "library");
     const texts: {
       authorSlug: string;
-      bookSlug?: string;
       fullPath: string;
+      pathParts: string[];
       provider: string;
       textSlug: string;
       title: string;
     }[] = [];
+
+    async function walk(
+      dir: string,
+      currentPathParts: string[],
+      providerName: string,
+      authorSlug: string,
+    ): Promise<void> {
+      const entries = await fs.readdir(dir, { withFileTypes: true });
+      for (const entry of entries) {
+        if (entry.isDirectory()) {
+          await walk(
+            path.join(dir, entry.name),
+            [...currentPathParts, entry.name],
+            providerName,
+            authorSlug,
+          );
+        } else if (entry.isFile() && entry.name.endsWith(".md")) {
+          texts.push({
+            authorSlug,
+            fullPath: path.join(dir, entry.name),
+            pathParts: currentPathParts,
+            provider: providerName,
+            textSlug: path.basename(entry.name, ".md"),
+            title: _.startCase(path.basename(entry.name, ".md")),
+          });
+        }
+      }
+    }
 
     try {
       const providers = await fs.readdir(dataDir, { withFileTypes: true });
@@ -130,50 +154,12 @@ export class LibraryCommand extends CommandRunner {
           if (!author.isDirectory()) continue;
           const authorSlug = author.name;
 
-          const authorContents = await fs.readdir(
+          await walk(
             path.join(dataDir, providerName, authorSlug),
-            { withFileTypes: true },
+            [],
+            providerName,
+            authorSlug,
           );
-          for (const entry of authorContents) {
-            if (entry.isDirectory()) {
-              const bookSlug = entry.name;
-              const bookContents = await fs.readdir(
-                path.join(dataDir, providerName, authorSlug, bookSlug),
-                { withFileTypes: true },
-              );
-              for (const textFile of bookContents) {
-                if (textFile.isFile() && textFile.name.endsWith(".md")) {
-                  texts.push({
-                    authorSlug,
-                    bookSlug,
-                    fullPath: path.join(
-                      dataDir,
-                      providerName,
-                      authorSlug,
-                      bookSlug,
-                      textFile.name,
-                    ),
-                    provider: providerName,
-                    textSlug: path.basename(textFile.name, ".md"),
-                    title: _.startCase(path.basename(textFile.name, ".md")),
-                  });
-                }
-              }
-            } else if (entry.isFile() && entry.name.endsWith(".md")) {
-              texts.push({
-                authorSlug,
-                fullPath: path.join(
-                  dataDir,
-                  providerName,
-                  authorSlug,
-                  entry.name,
-                ),
-                provider: providerName,
-                textSlug: path.basename(entry.name, ".md"),
-                title: _.startCase(path.basename(entry.name, ".md")),
-              });
-            }
-          }
         }
       }
     } catch {
@@ -193,25 +179,24 @@ export class LibraryCommand extends CommandRunner {
   })
   async parseAuthor(
     author?: string,
-    _ignored?: unknown,
-    _options?: unknown,
+    provider?: string,
   ): Promise<string | undefined> {
-    if (!author) return undefined;
-
-    const choices = await this.getAuthorChoices();
-    if (typeof author === "string") {
+    const choices = await this.getAuthorChoices(
+      typeof provider === "string" ? provider : undefined,
+    );
+    if (typeof author === "string" && author.trim() !== "") {
       // Allow custom input in case it's not downloaded yet
       return author;
     }
 
     const response = (await prompts({
-      choices: [{ title: "None", value: null }, ...choices],
+      choices: [{ title: "All", value: "ALL" }, ...choices],
       message: "Select the author",
       name: "author",
       type: "autocomplete",
-    })) as { author: null | string };
+    })) as { author: string };
 
-    if (response.author === null || typeof response.author !== "string") {
+    if (response.author === "ALL" || typeof response.author !== "string") {
       return undefined;
     }
 
@@ -226,10 +211,8 @@ export class LibraryCommand extends CommandRunner {
     flags: "-p, --provider [provider]",
   })
   async parseProvider(provider?: string): Promise<string | undefined> {
-    if (!provider) return undefined;
-
     const choices = this.getProviderChoices();
-    if (typeof provider === "string") {
+    if (typeof provider === "string" && provider.trim() !== "") {
       if (choices.some((choice) => choice.value === provider)) {
         return provider;
       } else {
@@ -238,13 +221,13 @@ export class LibraryCommand extends CommandRunner {
     }
 
     const response = (await prompts({
-      choices: [{ title: "None", value: null }, ...choices],
+      choices: [{ title: "All", value: "ALL" }, ...choices],
       message: "Select the provider",
       name: "provider",
       type: "autocomplete",
-    })) as { provider: null | string };
+    })) as { provider: string };
 
-    if (response.provider === null || typeof response.provider !== "string") {
+    if (response.provider === "ALL" || typeof response.provider !== "string") {
       return undefined;
     }
 
@@ -260,25 +243,26 @@ export class LibraryCommand extends CommandRunner {
   })
   async parseText(
     text?: string,
-    _ignored?: unknown,
-    _options?: unknown,
+    provider?: string,
+    authorSlug?: string,
   ): Promise<string | undefined> {
-    if (!text) return undefined;
-
-    const choices = await this.getTextChoices();
-    if (typeof text === "string") {
+    const choices = await this.getTextChoices(
+      typeof provider === "string" ? provider : undefined,
+      typeof authorSlug === "string" ? authorSlug : undefined,
+    );
+    if (typeof text === "string" && text.trim() !== "") {
       // Allow custom input in case it's not downloaded yet
       return text;
     }
 
     const response = (await prompts({
-      choices: [{ title: "None", value: null }, ...choices],
+      choices: [{ title: "All", value: "ALL" }, ...choices],
       message: "Select the text",
       name: "text",
       type: "autocomplete",
-    })) as { text: null | string };
+    })) as { text: string };
 
-    if (response.text === null || typeof response.text !== "string") {
+    if (response.text === "ALL" || typeof response.text !== "string") {
       return undefined;
     }
 
@@ -296,8 +280,15 @@ export class LibraryCommand extends CommandRunner {
     const providerName = await this.parseProvider(
       options.provider ?? undefined,
     );
-    const author = await this.parseAuthor(options.author ?? undefined);
-    const text = await this.parseText(options.text ?? undefined);
+    const author = await this.parseAuthor(
+      options.author ?? undefined,
+      providerName,
+    );
+    const text = await this.parseText(
+      options.text ?? undefined,
+      providerName,
+      author,
+    );
 
     let providersToRun = this.providers;
     if (providerName) {
@@ -311,11 +302,7 @@ export class LibraryCommand extends CommandRunner {
         if (author) ingestOptions.author = author;
         if (text) ingestOptions.text = text;
 
-        const authors = await provider.ingest(ingestOptions);
-        await fs.writeFile(
-          path.join(dataPath, `${provider.name}.json`),
-          JSON.stringify(authors, null, 2),
-        );
+        await provider.ingest(ingestOptions);
       } catch (error) {
         this.logger.error(
           `Error in provider ${provider.name}`,

@@ -21,6 +21,7 @@
     "remark-gfm": "^4.0.1",
     "typeorm": "^1.0.0",
     "vitest": "^4.1.7",
+    "yaml": "^2.9.0",
     "zod": "^4.4.3"
   },
   "devDependencies": {

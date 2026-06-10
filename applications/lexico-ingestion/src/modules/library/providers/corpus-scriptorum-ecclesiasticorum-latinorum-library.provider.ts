@@ -4,10 +4,11 @@ import path from "node:path";
 import { Injectable } from "@nestjs/common";
 import * as cheerio from "cheerio";
 import _ from "lodash";
+import YAML from "yaml";
+
+import { Author, Text } from "@monorepo/lexico-entities";
 
 import { LoggerService } from "../../logger/logger.service";
-
-import type { LibraryAuthor, LibraryWork } from "../library.types";
 
 /**
  * Provider for ingesting CSEL (Corpus Scriptorum Ecclesiasticorum Latinorum) texts.
@@ -24,7 +25,7 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
   async ingest(options?: {
     author?: string;
     text?: string;
-  }): Promise<LibraryAuthor[]> {
+  }): Promise<Author[]> {
     const host =
       "https://raw.githubusercontent.com/OpenGreekAndLatin/csel-dev/master/";
     this.logger.log(`Scraping library from ${host}`);
@@ -49,7 +50,7 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
           node.type === "blob" &&
           node.path.startsWith("data/") &&
           node.path.endsWith(".xml") &&
-          node.path.includes("-lat"),
+          !node.path.endsWith("__cts__.xml"),
       )
       .map((node) => node.path);
 
@@ -58,7 +59,7 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
     const dataPath = path.resolve("data", "library", this.name);
     await fs.mkdir(dataPath, { recursive: true });
 
-    const authorsMap = new Map<string, LibraryAuthor>();
+    const authorsMap = new Map<string, Author>();
 
     for (let i = 0; i < xmlPaths.length; i++) {
       const xmlPath = xmlPaths[i];
@@ -87,6 +88,22 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
           continue;
         }
 
+        const metadata: Record<string, unknown> = {};
+        const editors = $("titleStmt editor")
+          .map((_, el) => $(el).text().trim())
+          .get();
+        if (editors.length > 0) metadata["editors"] = editors;
+
+        const publisher =
+          $("sourceDesc biblStruct publisher").first().text().trim() ||
+          $("sourceDesc publisher").first().text().trim();
+        if (publisher) metadata["publisher"] = publisher;
+
+        const printDate =
+          $("sourceDesc biblStruct date").first().text().trim() ||
+          $("sourceDesc date").first().text().trim();
+        if (printDate) metadata["print_publication_date"] = printDate;
+
         const authorSlug = _.kebabCase(rawAuthor);
         if (options?.author && authorSlug !== options.author) continue;
 
@@ -96,23 +113,32 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
 
         let author = authorsMap.get(authorSlug);
         if (!author) {
-          author = {
-            name: rawAuthor,
-            nickname: rawAuthor,
-            path: xmlPath,
-            slug: authorSlug,
-            works: [],
-          };
+          author = new Author();
+          author.name = rawAuthor;
+          author.metadata = { sourceUrl: xmlPath };
+          author.slug = authorSlug;
+          author.texts = [];
           authorsMap.set(authorSlug, author);
         }
 
-        const workDto: LibraryWork = {
-          path: xmlPath,
-          title: rawTitle,
-        };
-        author.works.push(workDto);
+        const workDto = new Text();
+        workDto.metadata = { ...metadata, sourceUrl: xmlPath };
+        workDto.title = rawTitle;
+        workDto.slug = titleSlug;
+        workDto.type = "text";
+        author.texts.push(workDto);
 
-        let markdown = `---\ntitle: ${rawTitle}\nauthor: ${authorSlug}\nsource_url: ${fileUrl}\ntype: text\n---\n\n`;
+        const frontmatterObj: Record<string, unknown> = {
+          author: authorSlug,
+          title: rawTitle,
+          type: "text",
+        };
+        const textMetadata = { ...metadata, source_url: fileUrl };
+        if (Object.keys(textMetadata).length > 0) {
+          frontmatterObj["text_metadata"] = textMetadata;
+        }
+
+        let markdown = `---\n${YAML.stringify(frontmatterObj)}---\n\n`;
         markdown += `# ${rawTitle}\n\n`;
 
         const paragraphs: string[] = [];

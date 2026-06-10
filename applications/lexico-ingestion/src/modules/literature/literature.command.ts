@@ -11,6 +11,7 @@ import { remark } from "remark";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkGfm from "remark-gfm";
 import { type DeepPartial, Repository } from "typeorm";
+import YAML from "yaml";
 
 import { Author, Line, Text, Token, Word } from "@monorepo/lexico-entities";
 
@@ -20,7 +21,8 @@ import { NumeralsService } from "../numerals/numerals.service.js";
 import { authorIdToName } from "./literature.constants.js";
 
 import type { LiteratureCommandOptions } from "./literature.types.js";
-import type { Paragraph } from "mdast";
+import type { Paragraph, Root } from "mdast";
+import type { QueryDeepPartialEntity } from "typeorm/query-builder/QueryPartialEntity.js";
 
 /**
  * Ingest local literature texts into the database.
@@ -99,9 +101,7 @@ export class LiteratureCommand extends CommandRunner {
     const textSlugs = [
       ...new Set(
         filtered.map((t) =>
-          t.bookSlug
-            ? `${t.authorSlug}/${t.bookSlug}/${t.textSlug}`
-            : `${t.authorSlug}/${t.textSlug}`,
+          [t.authorSlug, ...t.pathParts, t.textSlug].join("/"),
         ),
       ),
     ].toSorted();
@@ -120,14 +120,11 @@ export class LiteratureCommand extends CommandRunner {
     return this.wordsCache;
   }
 
-  private async ingestLines(text: Text, textPath: string): Promise<void> {
+  private async ingestLines(text: Text, ast: Root): Promise<void> {
     this.logger.log(`  📜 Parsing lines for ${text.title}`);
-    const content = await fs.readFile(textPath, "utf8");
 
     const wordMap = await this.getWordsCache();
     const tokenEntities: DeepPartial<Token>[] = [];
-
-    const ast = remark().use(remarkFrontmatter).use(remarkGfm).parse(content);
 
     const paragraphs = ast.children.filter(
       (child): child is Paragraph => child.type === "paragraph",
@@ -211,10 +208,13 @@ export class LiteratureCommand extends CommandRunner {
     const lineChunkSize = 1000;
     for (let i = 0; i < lineEntities.length; i += lineChunkSize) {
       const chunk = lineEntities.slice(i, i + lineChunkSize);
-      await this.lineRepository.upsert(chunk, {
-        conflictPaths: ["text", "index"],
-        skipUpdateIfNoValuesChanged: true,
-      });
+      await this.lineRepository.upsert(
+        chunk as QueryDeepPartialEntity<Line>[],
+        {
+          conflictPaths: ["text", "index"],
+          skipUpdateIfNoValuesChanged: true,
+        },
+      );
     }
 
     const savedLines = await this.lineRepository.find({
@@ -254,10 +254,16 @@ export class LiteratureCommand extends CommandRunner {
     );
     const chunkSize = 5000;
     for (let i = 0; i < tokenEntities.length; i += chunkSize) {
-      await this.tokenRepository.upsert(tokenEntities.slice(i, i + chunkSize), {
-        conflictPaths: ["line", "index"],
-        skipUpdateIfNoValuesChanged: true,
-      });
+      await this.tokenRepository.upsert(
+        tokenEntities.slice(
+          i,
+          i + chunkSize,
+        ) as QueryDeepPartialEntity<Token>[],
+        {
+          conflictPaths: ["line", "index"],
+          skipUpdateIfNoValuesChanged: true,
+        },
+      );
     }
   }
 
@@ -272,6 +278,37 @@ export class LiteratureCommand extends CommandRunner {
       ? `${parentText.slug}/${textSlugName}`
       : `${author.slug}/${textSlugName}`;
 
+    const content = await fs.readFile(textPath, "utf8");
+    const ast = remark().use(remarkFrontmatter).use(remarkGfm).parse(content);
+
+    let frontmatterData: Record<string, unknown> = {};
+    const yamlNode = ast.children.find((node) => node.type === "yaml") as
+      | undefined
+      | { value: string };
+    if (yamlNode?.value) {
+      try {
+        const parsed = YAML.parse(yamlNode.value) as null | Record<
+          string,
+          unknown
+        >;
+        if (parsed) {
+          frontmatterData = parsed;
+        }
+      } catch {
+        // ignore malformed YAML
+      }
+    }
+
+    if (frontmatterData["author_metadata"]) {
+      const existingMetadata =
+        (author.metadata as null | Record<string, unknown>) || {};
+      author.metadata = _.merge(
+        existingMetadata,
+        frontmatterData["author_metadata"],
+      );
+      await this.authorRepository.save(author);
+    }
+
     const textSaveObj: DeepPartial<Text> = {
       author,
       slug: textSlug,
@@ -281,18 +318,24 @@ export class LiteratureCommand extends CommandRunner {
     if (parentText) {
       textSaveObj.parentText = parentText;
     }
+    if (frontmatterData["text_metadata"]) {
+      textSaveObj.metadata = frontmatterData["text_metadata"];
+    }
 
-    await this.textRepository.upsert(textSaveObj, {
-      conflictPaths: ["slug"],
-      skipUpdateIfNoValuesChanged: true,
-    });
+    await this.textRepository.upsert(
+      textSaveObj as QueryDeepPartialEntity<Text>,
+      {
+        conflictPaths: ["slug"],
+        skipUpdateIfNoValuesChanged: true,
+      },
+    );
 
     const text = await this.textRepository.findOneOrFail({
       relations: { author: true },
       where: { slug: textSlug },
     });
 
-    await this.ingestLines(text, textPath);
+    await this.ingestLines(text, ast);
   }
 
   private normalize(str: string): string {
@@ -306,8 +349,8 @@ export class LiteratureCommand extends CommandRunner {
   private async scanLibrary(): Promise<
     {
       authorSlug: string;
-      bookSlug?: string;
       fullPath: string;
+      pathParts: string[];
       provider: string;
       textSlug: string;
       title: string;
@@ -316,12 +359,40 @@ export class LiteratureCommand extends CommandRunner {
     const dataDir = path.resolve("data", "library");
     const texts: {
       authorSlug: string;
-      bookSlug?: string;
       fullPath: string;
+      pathParts: string[];
       provider: string;
       textSlug: string;
       title: string;
     }[] = [];
+
+    async function walk(
+      dir: string,
+      currentPathParts: string[],
+      providerName: string,
+      authorSlug: string,
+    ): Promise<void> {
+      const entries = await fs.readdir(dir, { withFileTypes: true });
+      for (const entry of entries) {
+        if (entry.isDirectory()) {
+          await walk(
+            path.join(dir, entry.name),
+            [...currentPathParts, entry.name],
+            providerName,
+            authorSlug,
+          );
+        } else if (entry.isFile() && entry.name.endsWith(".md")) {
+          texts.push({
+            authorSlug,
+            fullPath: path.join(dir, entry.name),
+            pathParts: currentPathParts,
+            provider: providerName,
+            textSlug: path.basename(entry.name, ".md"),
+            title: _.startCase(path.basename(entry.name, ".md")),
+          });
+        }
+      }
+    }
 
     try {
       const providers = await fs.readdir(dataDir, { withFileTypes: true });
@@ -336,50 +407,12 @@ export class LiteratureCommand extends CommandRunner {
           if (!author.isDirectory()) continue;
           const authorSlug = author.name;
 
-          const authorContents = await fs.readdir(
+          await walk(
             path.join(dataDir, providerName, authorSlug),
-            { withFileTypes: true },
+            [],
+            providerName,
+            authorSlug,
           );
-          for (const entry of authorContents) {
-            if (entry.isDirectory()) {
-              const bookSlug = entry.name;
-              const bookContents = await fs.readdir(
-                path.join(dataDir, providerName, authorSlug, bookSlug),
-                { withFileTypes: true },
-              );
-              for (const textFile of bookContents) {
-                if (textFile.isFile() && textFile.name.endsWith(".md")) {
-                  texts.push({
-                    authorSlug,
-                    bookSlug,
-                    fullPath: path.join(
-                      dataDir,
-                      providerName,
-                      authorSlug,
-                      bookSlug,
-                      textFile.name,
-                    ),
-                    provider: providerName,
-                    textSlug: path.basename(textFile.name, ".md"),
-                    title: _.startCase(path.basename(textFile.name, ".md")),
-                  });
-                }
-              }
-            } else if (entry.isFile() && entry.name.endsWith(".md")) {
-              texts.push({
-                authorSlug,
-                fullPath: path.join(
-                  dataDir,
-                  providerName,
-                  authorSlug,
-                  entry.name,
-                ),
-                provider: providerName,
-                textSlug: path.basename(entry.name, ".md"),
-                title: _.startCase(path.basename(entry.name, ".md")),
-              });
-            }
-          }
         }
       }
     } catch {
@@ -399,16 +432,12 @@ export class LiteratureCommand extends CommandRunner {
   })
   async parseAuthor(
     author?: string,
-    _ignored?: unknown,
-    _options?: unknown,
+    provider?: string,
   ): Promise<string | undefined> {
-    if (!author) return undefined;
-
-    // Use passed provider context if available when prompted manually, though nest-commander usually resolves these sequentially
-    // So we'll pass undefined provider to getAuthorChoices to just allow any author if specified.
-    // The filtering will happen later.
-    const choices = await this.getAuthorChoices();
-    if (typeof author === "string") {
+    const choices = await this.getAuthorChoices(
+      typeof provider === "string" ? provider : undefined,
+    );
+    if (typeof author === "string" && author.trim() !== "") {
       if (choices.some((choice) => choice.value === author)) {
         return author;
       } else {
@@ -417,13 +446,13 @@ export class LiteratureCommand extends CommandRunner {
     }
 
     const response = (await prompts({
-      choices: [{ title: "None", value: null }, ...choices],
+      choices: [{ title: "All", value: "ALL" }, ...choices],
       message: "Select the author",
       name: "author",
       type: "autocomplete",
-    })) as { author: null | string };
+    })) as { author: string };
 
-    if (response.author === null || typeof response.author !== "string") {
+    if (response.author === "ALL" || typeof response.author !== "string") {
       return undefined;
     }
 
@@ -438,10 +467,8 @@ export class LiteratureCommand extends CommandRunner {
     flags: "-p, --provider [provider]",
   })
   async parseProvider(provider?: string): Promise<string | undefined> {
-    if (!provider) return undefined;
-
     const choices = await this.getProviderChoices();
-    if (typeof provider === "string") {
+    if (typeof provider === "string" && provider.trim() !== "") {
       if (choices.some((choice) => choice.value === provider)) {
         return provider;
       } else {
@@ -450,13 +477,13 @@ export class LiteratureCommand extends CommandRunner {
     }
 
     const response = (await prompts({
-      choices: [{ title: "None", value: null }, ...choices],
+      choices: [{ title: "All", value: "ALL" }, ...choices],
       message: "Select the provider",
       name: "provider",
       type: "autocomplete",
-    })) as { provider: null | string };
+    })) as { provider: string };
 
-    if (response.provider === null || typeof response.provider !== "string") {
+    if (response.provider === "ALL" || typeof response.provider !== "string") {
       return undefined;
     }
 
@@ -472,13 +499,14 @@ export class LiteratureCommand extends CommandRunner {
   })
   async parseText(
     text?: string,
-    _ignored?: unknown,
-    _options?: unknown,
+    provider?: string,
+    authorSlug?: string,
   ): Promise<string | undefined> {
-    if (!text) return undefined;
-
-    const choices = await this.getTextChoices();
-    if (typeof text === "string") {
+    const choices = await this.getTextChoices(
+      typeof provider === "string" ? provider : undefined,
+      typeof authorSlug === "string" ? authorSlug : undefined,
+    );
+    if (typeof text === "string" && text.trim() !== "") {
       if (choices.some((choice) => choice.value === text)) {
         return text;
       } else {
@@ -487,13 +515,13 @@ export class LiteratureCommand extends CommandRunner {
     }
 
     const response = (await prompts({
-      choices: [{ title: "None", value: null }, ...choices],
+      choices: [{ title: "All", value: "ALL" }, ...choices],
       message: "Select the text",
       name: "text",
       type: "autocomplete",
-    })) as { text: null | string };
+    })) as { text: string };
 
-    if (response.text === null || typeof response.text !== "string") {
+    if (response.text === "ALL" || typeof response.text !== "string") {
       return undefined;
     }
 
@@ -511,8 +539,15 @@ export class LiteratureCommand extends CommandRunner {
     }
 
     const provider = await this.parseProvider(options.provider ?? undefined);
-    const author = await this.parseAuthor(options.author ?? undefined);
-    const text = await this.parseText(options.text ?? undefined);
+    const author = await this.parseAuthor(
+      options.author ?? undefined,
+      provider,
+    );
+    const text = await this.parseText(
+      options.text ?? undefined,
+      provider,
+      author,
+    );
 
     let filtered = library;
 
@@ -524,10 +559,7 @@ export class LiteratureCommand extends CommandRunner {
     }
     if (text) {
       filtered = filtered.filter(
-        (t) =>
-          (t.bookSlug
-            ? `${t.authorSlug}/${t.bookSlug}/${t.textSlug}`
-            : `${t.authorSlug}/${t.textSlug}`) === text,
+        (t) => [t.authorSlug, ...t.pathParts, t.textSlug].join("/") === text,
       );
     }
 
@@ -535,9 +567,7 @@ export class LiteratureCommand extends CommandRunner {
     const textMap = new Map<string, (typeof filtered)[0]>();
 
     for (const t of filtered) {
-      const slug = t.bookSlug
-        ? `${t.authorSlug}/${t.bookSlug}/${t.textSlug}`
-        : `${t.authorSlug}/${t.textSlug}`;
+      const slug = [t.authorSlug, ...t.pathParts, t.textSlug].join("/");
       const existing = textMap.get(slug);
 
       if (existing) {
@@ -561,7 +591,7 @@ export class LiteratureCommand extends CommandRunner {
     const textsToIngest = [...textMap.values()];
     this.logger.log(`Selected ${textsToIngest.length} texts for ingestion.`);
 
-    // Group by author -> book -> text
+    // Group by author
     const grouped = _.groupBy(textsToIngest, "authorSlug");
 
     for (const [authorSlug, texts] of Object.entries(grouped)) {
@@ -579,52 +609,55 @@ export class LiteratureCommand extends CommandRunner {
         where: { slug: authorSlug },
       });
 
-      const textsByBook = _.groupBy(texts, "bookSlug");
+      const parentTexts = new Map<string, Text>();
 
-      for (const [bookSlug, bookTexts] of Object.entries(textsByBook)) {
-        if (bookSlug === "undefined") {
-          // Direct texts
-          for (const t of bookTexts) {
-            this.logger.log(`  -> Ingesting: ${t.title} (from ${t.provider})`);
-            await this.ingestText(
-              authorEntity,
-              undefined,
-              t.title,
-              t.textSlug,
-              t.fullPath,
-            );
-          }
-        } else {
-          // Inside a book/directory
-          const parentTextSlug = `${authorSlug}/${bookSlug}`;
+      for (const t of texts) {
+        let parentText: Text | undefined = undefined;
 
-          await this.textRepository.upsert(
-            {
-              author: authorEntity,
-              slug: parentTextSlug,
-              title: _.startCase(bookSlug),
-              type: "book",
-            },
-            { conflictPaths: ["slug"], skipUpdateIfNoValuesChanged: true },
-          );
+        // Ensure all intermediate directories exist as Text entities
+        if (t.pathParts.length > 0) {
+          let currentPath = authorSlug;
+          for (const part of t.pathParts) {
+            const parentSlug = currentPath;
+            currentPath = `${currentPath}/${part}`;
 
-          const parentText = await this.textRepository.findOneOrFail({
-            where: { slug: parentTextSlug },
-          });
+            if (!parentTexts.has(currentPath)) {
+              const pText = parentTexts.get(parentSlug);
 
-          for (const t of bookTexts) {
-            this.logger.log(
-              `  -> Ingesting: ${parentText.title} / ${t.title} (from ${t.provider})`,
-            );
-            await this.ingestText(
-              authorEntity,
-              parentText,
-              t.title,
-              t.textSlug,
-              t.fullPath,
-            );
+              await this.textRepository.upsert(
+                {
+                  author: authorEntity,
+                  parentText: pText,
+                  slug: currentPath,
+                  title: _.startCase(part),
+                  type: "book",
+                } as QueryDeepPartialEntity<Text>,
+                { conflictPaths: ["slug"], skipUpdateIfNoValuesChanged: true },
+              );
+
+              const newParent = await this.textRepository.findOneOrFail({
+                where: { slug: currentPath },
+              });
+              parentTexts.set(currentPath, newParent);
+            }
+            parentText = parentTexts.get(currentPath);
           }
         }
+
+        const hierarchy = parentText
+          ? `${parentText.slug.replace(`${authorSlug}/`, "")} / `
+          : "";
+        this.logger.log(
+          `  -> Ingesting: ${hierarchy}${t.title} (from ${t.provider})`,
+        );
+
+        await this.ingestText(
+          authorEntity,
+          parentText,
+          t.title,
+          t.textSlug,
+          t.fullPath,
+        );
       }
     }
 

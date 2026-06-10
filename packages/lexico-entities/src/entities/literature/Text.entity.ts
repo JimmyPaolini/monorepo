@@ -37,6 +37,10 @@ export class Text extends AuditableEntity {
   @OneToMany("Line", "text", { cascade: true })
   lines!: Line[];
 
+  @Column("jsonb", { comment: "Unstructured metadata", nullable: true })
+  @Field(() => Object, { nullable: true })
+  metadata?: null | Record<string, unknown>;
+
   @Field(() => Object, { nullable: true })
   @Index()
   @JoinColumn({ name: "parent_text_id" })

@@ -3,10 +3,11 @@ import path from "node:path";
 
 import { Injectable } from "@nestjs/common";
 import _ from "lodash";
+import YAML from "yaml";
+
+import { Author, Text } from "@monorepo/lexico-entities";
 
 import { LoggerService } from "../../logger/logger.service";
-
-import type { LibraryAuthor, LibraryWork } from "../library.types";
 
 /**
  * Provider for ingesting Musisque Deoque (MQDQ) texts from a JSON mirror.
@@ -23,7 +24,7 @@ export class MusisqueDeoqueLibraryProvider {
   async ingest(options?: {
     author?: string;
     text?: string;
-  }): Promise<LibraryAuthor[]> {
+  }): Promise<Author[]> {
     const host =
       "https://raw.githubusercontent.com/souravsingh/latin_text_musisque_deoque/master/";
     this.logger.log(`Scraping MQDQ from ${host}`);
@@ -51,7 +52,7 @@ export class MusisqueDeoqueLibraryProvider {
     const dataPath = path.resolve("data", "library", this.name);
     await fs.mkdir(dataPath, { recursive: true });
 
-    const authorsMap = new Map<string, LibraryAuthor>();
+    const authorsMap = new Map<string, Author>();
 
     for (let i = 0; i < jsonPaths.length; i++) {
       const jsonPath = jsonPaths[i];
@@ -85,23 +86,29 @@ export class MusisqueDeoqueLibraryProvider {
 
         let author = authorsMap.get(authorSlug);
         if (!author) {
-          author = {
-            name: rawAuthor,
-            nickname: rawAuthor,
-            path: jsonPath,
-            slug: authorSlug,
-            works: [],
-          };
+          author = new Author();
+          author.name = rawAuthor;
+          author.metadata = { sourceUrl: jsonPath };
+          author.slug = authorSlug;
+          author.texts = [];
           authorsMap.set(authorSlug, author);
         }
 
-        const workDto: LibraryWork = {
-          path: jsonPath,
-          title: rawTitle,
-        };
-        author.works.push(workDto);
+        const workDto = new Text();
+        workDto.metadata = { sourceUrl: jsonPath };
+        workDto.title = rawTitle;
+        workDto.slug = titleSlug;
+        workDto.type = "text";
+        author.texts.push(workDto);
 
-        let markdown = `---\ntitle: ${rawTitle}\nauthor: ${authorSlug}\nsource_url: ${fileUrl}\ntype: text\n---\n\n`;
+        const frontmatterObj: Record<string, unknown> = {
+          author: authorSlug,
+          text_metadata: { source_url: fileUrl },
+          title: rawTitle,
+          type: "text",
+        };
+
+        let markdown = `---\n${YAML.stringify(frontmatterObj)}---\n\n`;
         markdown += `# ${rawTitle}\n\n`;
 
         // The text is stored directly as a string with newlines.

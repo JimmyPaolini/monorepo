@@ -15,6 +15,10 @@ import type { Text } from "./Text.entity.js";
 })
 @ObjectType()
 export class Author extends AuditableEntity {
+  @Column("jsonb", { comment: "Unstructured metadata", nullable: true })
+  @Field(() => Object, { nullable: true })
+  metadata?: null | Record<string, unknown>;
+
   @Column("varchar", { comment: "The display name of the author", length: 64 })
   @Field()
   name!: string;
