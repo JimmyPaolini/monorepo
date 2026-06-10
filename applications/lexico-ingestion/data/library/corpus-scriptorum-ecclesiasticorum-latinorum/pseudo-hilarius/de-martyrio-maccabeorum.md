@@ -12,7 +12,7 @@ text_metadata:
 
 # De Martyrio Maccabeorum
 
-**1** Maccab. II 6 et 7 Rex fuit Antiochus Syriae ditissimus olim,
+**1** Rex fuit Antiochus Syriae ditissimus olim,
 
 **2** in cuius regno mater natique fuerunt
 

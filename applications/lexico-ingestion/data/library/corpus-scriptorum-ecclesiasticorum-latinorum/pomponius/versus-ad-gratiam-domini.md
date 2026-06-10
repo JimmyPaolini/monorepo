@@ -12,7 +12,7 @@ text_metadata:
 
 # Versus Ad Gratiam Domini
 
-**1** MEL. Tityre, tu patulae recubans sub tegmine fagi,
+**1** Tityre, tu patulae recubans sub tegmine fagi,
 
 **2** nescio qua praeter solitum dulcedine laetus,
 
@@ -22,7 +22,7 @@ text_metadata:
 
 **5** 5 et cantare paras I diuino carmine, pastor,
 
-**6** formonsi pecoris custos, formonsior ipse. TIT.
+**6** formonsi pecoris custos, formonsior ipse.
 
 **7** Non incerta cano I uatum praedicta priorum.
 
@@ -50,7 +50,7 @@ text_metadata:
 
 **19** aeternis regit imperiis I et temperat iras.
 
-**20** ni faciat, maria ac terras I nox incubat atra. MEL.
+**20** ni faciat, maria ac terras I nox incubat atra.
 
 **21** Felix, qui potuit rerum cognoscere causas!
 
@@ -60,7 +60,7 @@ text_metadata:
 
 **24** sis felix! | nam te maioribus ire per altum
 
-**25** auspiciis manifesta fides I pro laudibus istis. TIT.
+**25** auspiciis manifesta fides I pro laudibus istis.
 
 **26** Accipe daque fidem: I neque est ignobile carmen.
 
@@ -100,7 +100,7 @@ text_metadata:
 
 **44** hoc uirtutis opus, I terras temptare repostas
 
-**45** sideream in sedem I atque alto succedere caelo. MEL.
+**45** sideream in sedem I atque alto succedere caelo.
 
 **46** Tityre, J tamne aliquas ad caelum hinc ire putandum est
 
@@ -112,11 +112,11 @@ text_metadata:
 
 **50** 50 si modo quod memoras factum I contingere possit.
 
-**51** Ne dubita I nulla fati quod lege tenetur: TIT.
+**51** Ne dubita I nulla fati quod lege tenetur:
 
 **52** crede deo — nam uera uides —, I sine posse parentem.
 
-**53** quam minime re(ris) I fato prudentia maior.. MEL.
+**53** quam minime re(ris) I fato prudentia maior..
 
 **54** Credo equidem, nec uana fides; I quis talia demens
 
@@ -128,7 +128,7 @@ text_metadata:
 
 **58** unum oro: I doceas iter, et sacra ostia pandas,
 
-**59** quidue sequens tantos possim superare labores. (TIT.)
+**59** quidue sequens tantos possim superare labores.
 
 **60** Dicam equidem nec te suspensum, nate, tenebo,
 
@@ -158,23 +158,23 @@ text_metadata:
 
 **73** urgentur poenis. I quam uellent aethere in alto
 
-**74** omnia I et superas caeli uenisse sub auras.\' MEL.
+**74** omnia I et superas caeli uenisse sub auras.\'
 
 **75** Quae tibi, quae tali reddam pro carmine dona?
 
 **76** non opis est nostrae: I nomen tollemus ad astra,
 
-**77** Tityre. I discussae umbrae et lux reddita menti. (TIT.)
+**77** Tityre. I discussae umbrae et lux reddita menti.
 
 **78** Non haec humanis opibus, non arte magistra
 
 **79** proueniunt: I quae sit poteris cognoscere uirtus.
 
-**80** ni refugis, I prima repetens ab origine pergam. MEL.
+**80** ni refugis, I prima repetens ab origine pergam.
 
 **81** Immo age et a prima dic, hospes, origine nobis;
 
-**82** accipio agnoscoque libens ut uerba parentis. TIT.
+**82** accipio agnoscoque libens ut uerba parentis.
 
 **83** Accipe: I prisca fides facto, sed fama perennis.
 

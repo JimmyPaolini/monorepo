@@ -152,15 +152,15 @@ text_metadata:
 
 **55** matres atque uiri I pueri innuptaeque puellae.
 
-**56** Principio caelum ac terras camposque liquentes Gen. 1, 1
+**56** Principio caelum ac terras camposque liquentes
 
-**57** lucentemque globum lunae I solisque labores Gen. 1, 16
+**57** lucentemque globum lunae I solisque labores
 
 **58** ipse pater statuit, I uos, o clarissima mundi I
 
 **59** lumina, labentem caelo quae ducitis annum.
 
-**60** nam neque erant astrorum ignes nec lucidus aether, Gen. 1, 2
+**60** nam neque erant astrorum ignes nec lucidus aether,
 
 **61** set nox atra polum bigis subuecta tenebat,I
 
@@ -172,9 +172,9 @@ text_metadata:
 
 **65** aera dimouit tenebrosum et dispulit umbras
 
-**66** et medium luci atque umbris iam diuidit orbem. Gen. 1, 4
+**66** et medium luci atque umbris iam diuidit orbem.
 
-**67** sidera cuncta notat tacito labentia caelo Gen. 1, 16 sq.
+**67** sidera cuncta notat tacito labentia caelo
 
 **68** intentos uoluens oculos, I qua parte calores
 
@@ -184,7 +184,7 @@ text_metadata:
 
 **71** omnipotens, I stellis numeros et nomina fecit
 
-**72** temporibusque parem diuersis quattuor annum Gen. 1, 14
+**72** temporibusque parem diuersis quattuor annum
 
 **73** aestusque pluuiasque et agentes frigora uentos.
 
@@ -208,11 +208,11 @@ text_metadata:
 
 **83** ducebatque diem I stellis Aurora fugatis.
 
-**84** tum durare solum et discludere Nerea ponto Gen. 1, 9
+**84** tum durare solum et discludere Nerea ponto
 
 **85** incipit I et rerum paulatim sumere formas,
 
-**86** et uariae pelagi Ifaciesfacies inmania cete Gen. 1, 21
+**86** et uariae pelagi Ifaciesfacies inmania cete
 
 **87** aequora uerrebant caudis aestumque secabant.
 
@@ -224,7 +224,7 @@ text_metadata:
 
 **91** postera iamque dies primo surgebat eoo.
 
-**92** fundit humus flores I et frondes explicat omnes Gen. 1, 11
+**92** fundit humus flores I et frondes explicat omnes
 
 **93** sanguineisque inculta rubent auiaria bacis,
 
@@ -232,13 +232,13 @@ text_metadata:
 
 **95** tertia lux gelidam caelo dimouerat umbram.
 
-**96** auia tum resonant auibus uirgulta canoris Gen. 1, 22
+**96** auia tum resonant auibus uirgulta canoris
 
 **97** et liquidas corui presso dant gutture uoces
 
 **98** nec gemere aeria cessauit turtur ab ulmo.
 
-**99** quarto terra die I uariarum monstra ferarum Gen. 1, 24
+**99** quarto terra die I uariarum monstra ferarum
 
 **100** omnigenumque I pecus nullo custode per herbam
 
@@ -260,23 +260,23 @@ text_metadata:
 
 **109** prospiciens genitor I perfectis ordine rebus
 
-**110** expleri mentem nequit ardescitque tuendo Gen. 1, 25
+**110** expleri mentem nequit ardescitque tuendo
 
 **111** terrasque tractusque maris caelumque profundum,
 
 **112** alituum pecudumque genus, I secumque uolutat,
 
-**113** qui mare, qui terras omni dicione tenerent, Gen. 1, 2G
+**113** qui mare, qui terras omni dicione tenerent,
 
 **114** neu segnes iaceant terrae. I iuuat usque morari.
 
 **115** talia uersanti subito sententia sedit,
 
-**116** felicemque trahit limum I fingitque premendo Gen. 2, 7
+**116** felicemque trahit limum I fingitque premendo
 
 **117** pingue solum primis extemplo a mensibus anni.
 
-**118** iamque inprouiso I tantae pietatis imago Gen. 1, 27
+**118** iamque inprouiso I tantae pietatis imago
 
 **119** procedit noua forma uiri I pulcherrima primum,
 
@@ -284,11 +284,11 @@ text_metadata:
 
 **121** maior agit deus atque opera ad maiora remittit.
 
-**122** quaeritur huic alius; nec quisquam ex agmine tanto Gen. 2, 20
+**122** quaeritur huic alius; nec quisquam ex agmine tanto
 
 **123** audet adire uirum I sociusque m regna uocari.
 
-**124** haut mora continuo I placidam per membra quietem Gen. 2, 21 4
+**124** haut mora continuo I placidam per membra quietem
 
 **125** dat iuueni et | dulci declinat lumina somno.
 
@@ -310,7 +310,7 @@ text_metadata:
 
 **134** coniugium uocat I ac stupefactus numine pressit
 
-**135** excepitque manu dextramque amplexus inhaesit. Gen. 2, 24
+**135** excepitque manu dextramque amplexus inhaesit.
 
 **136** His demum exactis I torquet qui sidera mundi.
 
@@ -318,9 +318,9 @@ text_metadata:
 
 **138** et tremefacta solo tellus, silet arduus aether:
 
-**139** \'uiuite felices I interque nitentia culta Gen. 1, 28
+**139** \'uiuite felices I interque nitentia culta
 
-**140** fortunatorum nemorum sedesque beatas. Gen. 2, 15
+**140** fortunatorum nemorum sedesque beatas.
 
 **141** haec domus, haec patria est, I requies ea certa laborum.
 
@@ -334,7 +334,7 @@ text_metadata:
 
 **146** debilitat uires animi mutatque uigorem.
 
-**147** uos contra I quae dicam animis aduertite uestris. Gen. 2, 16
+**147** uos contra I quae dicam animis aduertite uestris.
 
 **148** est in conspectu I ramis felicibus arbos,
 
@@ -368,7 +368,7 @@ text_metadata:
 
 **163** hic uer purpureum atque alienis mensibus aestas,
 
-**164** hic liquidi fontes, 1 hic caeli tempore certo Gen. 2, 6.10
+**164** hic liquidi fontes, 1 hic caeli tempore certo
 
 **165** dulcia mella premunt, I hic candida populus antro
 
@@ -384,7 +384,7 @@ text_metadata:
 
 **171** coniugis infandae: I docuit post exitus ingens.
 
-**172** Iamque dies infanda aderat: I per florea rura Gen. 3, 1
+**172** Iamque dies infanda aderat: I per florea rura
 
 **173** ecce inimicus atrox I inmensis orbibus anguis
 
@@ -440,7 +440,7 @@ text_metadata:
 
 **199** instituuntque dapes I contactuque omnia foedant.
 
-**200** praecipue infelix pesti deuota futurae Gen. 3, 6
+**200** praecipue infelix pesti deuota futurae
 
 **201** mirataque nouas frondes et non sua poma,
 
@@ -452,7 +452,7 @@ text_metadata:
 
 **205** obicit atque | animum subita dulcedine mouit.
 
-**206** continuo noua lux oculis effulsit; I at illi Gen. 3, 7
+**206** continuo noua lux oculis effulsit; I at illi
 
 **207** terrentur uisu subito [ nec plura morati
 
@@ -480,11 +480,11 @@ text_metadata:
 
 **219** dispiciunt: I taedet caeli conuexa tueri.
 
-**220** Nec longum in medio tempus, I cum creber ad aures Gen. 3, 8
+**220** Nec longum in medio tempus, I cum creber ad aures
 
 **221** uisus adesse pedum sonitus genitorque per auras
 
-**222** hunc, ubi uix multa maestum cognouit in umbra, Gen. 3, 9
+**222** hunc, ubi uix multa maestum cognouit in umbra,
 
 **223** talibus adloquitur dictis I atque increpat ultro:
 
@@ -506,7 +506,7 @@ text_metadata:
 
 **232** attollitque globos flammarum et sidera lambit.
 
-**233** ille sub haec: I \'tua me, genitor, tua tristis imago Gen. 3, 12 .................
+**233** ille sub haec: I \'tua me, genitor, tua tristis imago .................
 
 **234** his posuere locis: I merui nec deprecor\', inquit
 
@@ -528,7 +528,7 @@ text_metadata:
 
 **243** contigimusque manu I quod non sua seminat arbor.\'
 
-**244** tum pater omnipotens I solio sic infit ab alto: Gen. 3, 14 sq.
+**244** tum pater omnipotens I solio sic infit ab alto:
 
 **245** \'accipite ergo animis atque haec mea figite dicta:
 
@@ -544,7 +544,7 @@ text_metadata:
 
 **251** tenuis ubi argilla et dumosis calculus aruis.\'
 
-**252** \'at tibi pro scelere\' exclamat, \'pro talibus ausis Gen. 3, 17 sqq,
+**252** \'at tibi pro scelere\' exclamat, \'pro talibus ausis
 
 **253** omne aeuum ferro teritur, I primusque per artem,
 
@@ -566,7 +566,7 @@ text_metadata:
 
 **262** et labor et durae rapit inclementia mortis.
 
-**263** haec tibi semper erunt, I tuque, o saeuissima coniunx, Gen. 3, 16
+**263** haec tibi semper erunt, I tuque, o saeuissima coniunx,
 
 **264** non ignara mali, I caput horum et causa malorum,
 
@@ -584,7 +584,7 @@ text_metadata:
 
 **271** amplius aut I notas audire et reddere uoces.
 
-**272** haut mora, festinant iussi rapidisque feruntur Gen. 3, 23
+**272** haut mora, festinant iussi rapidisque feruntur
 
 **273** passibus, I et pariter gressi per opaca uiarum
 
@@ -596,7 +596,7 @@ text_metadata:
 
 **277** dant rami et uulsis pascunt radicibus herbae.
 
-**278** Interea magnum sol circumuertitur annum: Gen. 4, 1 sq.
+**278** Interea magnum sol circumuertitur annum:
 
 **279** matri longa decem tulerunt fastidia menses,
 
@@ -610,7 +610,7 @@ text_metadata:
 
 **284** instituunt I udoque docent inolescere libro.
 
-**285** tum, gemini fratres Iadolentadolent dum altaria taedis, Gen. 4, 3 sqq
+**285** tum, gemini fratres Iadolentadolent dum altaria taedis,
 
 **286** alter in alterius I praelato inuidit honore —
 
@@ -638,7 +638,7 @@ text_metadata:
 
 **298** mouit agros, curis acuens mortalia corda,
 
-**299** deterior donec paulatim ac decolor aetas, Gen. 6, 4
+**299** deterior donec paulatim ac decolor aetas,
 
 **300** ferrea progenies, duris caput extulit aruis
 
@@ -654,19 +654,19 @@ text_metadata:
 
 **306** nec doluit miserans inopem I dextramque tetendit.
 
-**307** Tum pater omnipotens | grauiter commotus ab alto Gen. 6, 5 sqq.
+**307** Tum pater omnipotens | grauiter commotus ab alto
 
 **308** aethere se mittit: | tellurem effundit m undas
 
-**309** diluuio miscens caelumque in Tartara soluit. Gen. 7, 17
+**309** diluuio miscens caelumque in Tartara soluit.
 
 **310** sternit agros, sternit sata laeta bouumque labores
 
 **311** diluit: inplentur fossae et caua flumina crescunt: I
 
-**312** et genus omne neci pecudum dedit, omne ferarum. Gen. 7, 21
+**312** et genus omne neci pecudum dedit, omne ferarum.
 
-**313** tum pietate grauem ac meritis I — mirabile dictu —, Gen. I 1 6, 9 ; 7, 23
+**313** tum pietate grauem ac meritis I — mirabile dictu —,
 
 **314** qui fuit in terris et seruantissimus aequi, I
 
@@ -674,7 +674,7 @@ text_metadata:
 
 **316** ut genus unde nouae stirpis reuocetur haberet. I
 
-**317** Diluuio ex illo I patribus dat iura uocatis Gen. 9, 11
+**317** Diluuio ex illo I patribus dat iura uocatis
 
 **318** omnipotens: I magnis agitant sub legibus aeuum. I
 
@@ -682,11 +682,11 @@ text_metadata:
 
 **320** nesciaque humanis precibus mansuescere corda. I
 
-**321** Aegyptum uiresque orientis et ultima I bella Exod. I 1, 9 squ.I
+**321** Aegyptum uiresque orientis et ultima I bella
 
 **322** magnanimosque duces totiusque ordine gentis, - |
 
-**323** quo cursu deserta petiuerit I et tribus et gens Exod. 13, 1
+**323** quo cursu deserta petiuerit I et tribus et gens
 
 **324** magna uirum, I menti tanti non inmemor umquam,
 
@@ -734,7 +734,7 @@ text_metadata:
 
 **346** Iamque aderat promissa dies, I quo tempore primum
 
-**347** extulit os sacrum I diuinae stirpis origo Luc. 2, 6 et 7
+**347** extulit os sacrum I diuinae stirpis origo
 
 **348** missus in imperium, I uenitque m corpore uirtus
 
@@ -742,7 +742,7 @@ text_metadata:
 
 **350** haut mora, continuo I caeli regione serena,
 
-**351** stella facem ducens multa cum luce cucurrit. Matth. 2. 2. 11
+**351** stella facem ducens multa cum luce cucurrit.
 
 **352** agnouere deum proceres I cunctisque repente
 
@@ -754,7 +754,7 @@ text_metadata:
 
 **356** flagrantisque dei | diuini signa decoris.
 
-**357** protinus ad regem I magno feruore ruentum Matth. 2, 3
+**357** protinus ad regem I magno feruore ruentum
 
 **358** fama uolat I magnisque acuit rumoribus iras
 
@@ -768,7 +768,7 @@ text_metadata:
 
 **363** dum curae ambiguae, dum I mens exaestuat ira.
 
-**364** at rex sollicitus I stirpem et genus omne futurum Matth. 2, 16
+**364** at rex sollicitus I stirpem et genus omne futurum
 
 **365** praecipitare iubet subiectisque urere flammis,
 
@@ -784,7 +784,7 @@ text_metadata:
 
 **371** corpora natorum I sternuntur limine primo.
 
-**372** at mater I gemitu non frustra exterrita tanto, Matth. 2,13 et a
+**372** at mater I gemitu non frustra exterrita tanto,
 
 **373** ipsa sinu prae se portans, I turbante tumultu,
 
@@ -802,13 +802,13 @@ text_metadata:
 
 **380** Et iam finis erat I perfecto temporis orbe.
 
-**381** ut primum cessit furor et rabida ora quierunt, Matth. 2, 22
+**381** ut primum cessit furor et rabida ora quierunt,
 
 **382** ante annos animumque gerens I caelestis origo 4
 
 **383** per medias urbes graditur I populosque propinquos.
 
-**384** illum omnis tectis agrisque effusa iuuentus Luc. i, 14 sq. 22
+**384** illum omnis tectis agrisque effusa iuuentus
 
 **385** attonitis inhians animis I prospectat euntem,
 
@@ -816,13 +816,13 @@ text_metadata:
 
 **387** qui uultus uocisque sonus uel gressus eunti est!\'
 
-**388** Continuo uates I — namque is certissimus auctor — Marc. 1,9 sq. Matth. 3. 11
+**388** Continuo uates I — namque is certissimus auctor —
 
-**389** ut procul egelido secretum flumine uidit, Luc. 3, 16
+**389** ut procul egelido secretum flumine uidit,
 
-**390** \'tempus\' ait: \'deus, ecce, deus, cui I maxima rerum Ioann.
+**390** \'tempus\' ait: \'deus, ecce, deus, cui I maxima rerum
 
-**391** uerborumque fides. I tu nunc eris alter ab illo, 1, 15 sqq. „
+**391** uerborumque fides. I tu nunc eris alter ab illo,
 
 **392** fortunate puer, I caeli cui sidera parent.
 
@@ -840,11 +840,11 @@ text_metadata:
 
 **399** radit iter liquidum celeris neque commouet alas.
 
-**400** huc omnis turba ad ripas effusa ruebat Marc. 1, 5
+**400** huc omnis turba ad ripas effusa ruebat
 
 **401** certatim largos umeris infundere rores.
 
-**402** tum genitor natum dictis I conpellat amicis: Marc. 1, 11
+**402** tum genitor natum dictis I conpellat amicis:
 
 **403** nate, meae uires, mea magna potentia solus
 
@@ -898,9 +898,9 @@ text_metadata:
 
 **428** intonsi montes: I respondent omnia ualles.
 
-**429** Tempore non alio I — magnum et memorabile nomen — Matth. I
+**429** Tempore non alio I — magnum et memorabile nomen —
 
-**430** serpentis furiale malum I meminisse necesse est. 4, 1 sqq Luc. 4, 1 sqq
+**430** serpentis furiale malum I meminisse necesse est.
 
 **431** ausus quin etiam I — fama est obscurior annis —
 
@@ -952,11 +952,11 @@ text_metadata:
 
 **455** contentusque fuga I caecis se inmiscuit umbris.
 
-**456** Interea I uolitans magnas it fama per urbes. Matth. 4, 25 Marc.
+**456** Interea I uolitans magnas it fama per urbes.
 
-**457** conuenere uiri: mens omnibus una sequendi 3, 7 sqq.
+**457** conuenere uiri: mens omnibus una sequendi
 
-**458** in quascumque uelit pelago deducere terras. Luc. 6, 17
+**458** in quascumque uelit pelago deducere terras.
 
 **459** multi praeterea, quos fama obscura recondit,
 
@@ -974,7 +974,7 @@ text_metadata:
 
 **466** conspicit ecce alios dextra laeuaque I frequentis.
 
-**467** quos ubi confertos audere in proelia uidit, Matth. 5, 1 sqq.
+**467** quos ubi confertos audere in proelia uidit,
 
 **468** incipit et dictis diuinum aspirat amorem:
 
@@ -1030,13 +1030,13 @@ text_metadata:
 
 **494** profuerit meminisse magis, I si credere dignum est.
 
-**495** sed fugit interea, fugit inreparabile tempus, Matth.
+**495** sed fugit interea, fugit inreparabile tempus,
 
-**496** flammarumque I dies et uis inimica propinquat\'. 24, 29 sqq. Marc.
+**496** flammarumque I dies et uis inimica propinquat\'.
 
-**497** adtonitis haesere animis : nec plura moratus 13, 24 sqq.
+**497** adtonitis haesere animis : nec plura moratus
 
-**498** hic aliud maius miseris I mortalibus aegris Luc. 21, 25 sqq.
+**498** hic aliud maius miseris I mortalibus aegris
 
 **499** iudicium I canit — et tristis denuntiat iras —
 
@@ -1050,13 +1050,13 @@ text_metadata:
 
 **504** insinuat pauor, I et taciti uentura uidebant.
 
-**505** Haec super aduentu I cum multa horrenda moneret, Matth. 19. 16 sqq.
+**505** Haec super aduentu I cum multa horrenda moneret,
 
-**506** ora puer prima signans intonsa iuuenta, Marc.
+**506** ora puer prima signans intonsa iuuenta,
 
-**507** diues opum, I studiis florens ignobilis oti — 10, 17 sqq. Luc.
+**507** diues opum, I studiis florens ignobilis oti —
 
-**508** quinque greges illi balantum, quina redibant 18, 18 sqq.
+**508** quinque greges illi balantum, quina redibant
 
 **509** armenta, et j dapibus mensas onerabat inemptis —
 
@@ -1106,7 +1106,7 @@ text_metadata:
 
 **532** deducunt socii nauis I atque arte magistra
 
-**533** hic alius latum funda transuerberat amnem Marc. 6. 48 sqq. Matth. 14, 22 sqq.
+**533** hic alius latum funda transuerberat amnem
 
 **534** alta petens, pelagoque alius trahit umida lina.
 
@@ -1164,13 +1164,13 @@ text_metadata:
 
 **561** et tandem laeti notae aduertuntur harenae.
 
-**562** Tunc etiam I tardi costas agitator aselli Matth.
+**562** Tunc etiam I tardi costas agitator aselli
 
-**563** insedit nimbo effulgens: | cui plurima circum 21, 7 sqq. Marc.
+**563** insedit nimbo effulgens: | cui plurima circum
 
-**564** matres atque uiri, pueri I uelamina nota 11, 7 sqq.
+**564** matres atque uiri, pueri I uelamina nota
 
-**565** subiciunt I funemque manu contingere gaudent. Luc. 19, 35 sqq.
+**565** subiciunt I funemque manu contingere gaudent.
 
 **566** iamque propinquabant portis I templumque uetustum
 
@@ -1182,13 +1182,13 @@ text_metadata:
 
 **570** hae sacrae sedes, I miro quod honore colebant.
 
-**571** namque sub ingenti lustrat dum singula templo, Matth. 21. 12 sq.
+**571** namque sub ingenti lustrat dum singula templo,
 
-**572** horrescit uisu subito I insonuitque flagello Marc. 11, 15 sq.
+**572** horrescit uisu subito I insonuitque flagello
 
 **573** significatque manu et magno simul I intonat ore:
 
-**574** \'quae scelerum facies, I quaeue aera micantia cerno Luc. 19, 45 sq.
+**574** \'quae scelerum facies, I quaeue aera micantia cerno
 
 **575** Caesaris et nomen? I quae mentem insania mutat?
 
@@ -1200,13 +1200,13 @@ text_metadata:
 
 **579** ossa tremor, I mensasque metu liquere priores.
 
-**580** Deuexo interea propior fit Uesper Olympo. Matth. 26, 20 sqq.
+**580** Deuexo interea propior fit Uesper Olympo.
 
-**581** tum uictu reuocant uires fusique per herbam Marc.
+**581** tum uictu reuocant uires fusique per herbam
 
-**582** et dapibus mensas onerant et pocula ponunt. 14, 17 sqq. Luc.
+**582** et dapibus mensas onerant et pocula ponunt.
 
-**583** postquam prima quies epulis mensaeque remotae, 22, 14 sqq.
+**583** postquam prima quies epulis mensaeque remotae,
 
 **584** ipse inter primos I genitori instaurat honores,
 
@@ -1228,9 +1228,9 @@ text_metadata:
 
 **593** et lux cum primum terris se crastina reddet,
 
-**594** unus erit tantum I in me exitiumque meorum, Matth. 26, 21
+**594** unus erit tantum I in me exitiumque meorum,
 
-**595** dum paci medium se offert I de corpore nostro. Marc. 14, 20 Luc. 22, 21
+**595** dum paci medium se offert I de corpore nostro.
 
 **596** iamque dies, nisi fallor, adest. I secludite curas.
 
@@ -1240,13 +1240,13 @@ text_metadata:
 
 **599** conticuit j seramque dedit per membra quietem.
 
-**600** Oceanum interea surgens Aurora reliquit. Matth.
+**600** Oceanum interea surgens Aurora reliquit.
 
-**601** iamque sacerdotes | late loca questibus implent 27, 12 sqq. Marc.
+**601** iamque sacerdotes | late loca questibus implent
 
-**602** cum populo patribus ferturque per agmina murmur. 15, 1 sqq.
+**602** cum populo patribus ferturque per agmina murmur.
 
-**603** quod genus hoc hominum, quaeue hunc tam barbara morem Luc. 23, 10 sqq.
+**603** quod genus hoc hominum, quaeue hunc tam barbara morem
 
 **604** permittit patria? I poenas cum sanguine poscunt
 
@@ -1264,9 +1264,9 @@ text_metadata:
 
 **611** facta uiri mixtus dolor et I stupor urguet inertis —
 
-**612** nescia mens hominum —, I certantque inludere capto. Matth. 26, 67;
+**612** nescia mens hominum —, I certantque inludere capto.
 
-**613** tum uero I raptis concurrunt undique telis. 27, 29. Marc. 15, 19 sq.
+**613** tum uero I raptis concurrunt undique telis.
 
 **614** tollitur in caelum clamor I cunctique repente
 
@@ -1274,7 +1274,7 @@ text_metadata:
 
 **616** ingentem quercum decisis undique ramis-
 
-**617** constituunt I spirisque ligant ingentibus ipsum, Luc. 23, 33 Ioann. 19, 18
+**617** constituunt I spirisque ligant ingentibus ipsum,
 
 **618** tendebantque manus I pedibus per mutua nexis —
 
@@ -1290,9 +1290,9 @@ text_metadata:
 
 **624** talia perstabat memorans fixusque manebat.
 
-**625** Interea magno misceri murmure caelum Matth.27,45;
+**625** Interea magno misceri murmure caelum
 
-**626** incipit I et rebus nox abstulit atra colorem 51 sqq. Luc. 28, 44
+**626** incipit I et rebus nox abstulit atra colorem
 
 **627** impiaque aeternam timuerunt saecula noctem.
 
@@ -1316,7 +1316,7 @@ text_metadata:
 
 **637** tum caput obscura nitidum ferrugine texit.
 
-**638** Diffugiunt comites et nocte teguntur opaca Matth. 26,56 Marc. 14, 50
+**638** Diffugiunt comites et nocte teguntur opaca
 
 **639** multaque dura suo tristi cum corde I uolutant.
 
@@ -1346,11 +1346,11 @@ text_metadata:
 
 **652** corpus ubi exanime positum, I — nec claustra nec ipsi
 
-**653** custodes sufferre ualent — I auulsaque saxis Marc. 1G, 4
+**653** custodes sufferre ualent — I auulsaque saxis
 
-**654** saxa uident, | laxis laterum conpagibus artis. Luc. 24, 2 Ioann. 20, 1
+**654** saxa uident, | laxis laterum conpagibus artis.
 
-**655** fit sonus: ingenti concussa est pondere tellus. Matth. 28, 2
+**655** fit sonus: ingenti concussa est pondere tellus.
 
 **656** horror ubique animo, simul ipsa silentia terrent.
 
@@ -1364,9 +1364,9 @@ text_metadata:
 
 **661** atque hic ingentem comitum adfluxisse nouorum
 
-**662** inuenit admirans numerum I cunctisque repente Ioann. 20, 19
+**662** inuenit admirans numerum I cunctisque repente
 
-**663** inprouisus ait: \'coram, quem quaeritis, adsum. Luc. 24, 33 sqq.
+**663** inprouisus ait: \'coram, quem quaeritis, adsum.
 
 **664** uicit iter durum pietas I et uiuida uirtus.
 
@@ -1384,17 +1384,17 @@ text_metadata:
 
 **671** prima tulit tellus, eadem uos ubere laeto
 
-**672** accipiet. I reuocate animum maestumque timorem Luc. 24, 38
+**672** accipiet. I reuocate animum maestumque timorem
 
 **673** mittite I et uosmet rebus seruate secundis.
 
 **674** quod super est, laeti bene gestis ordine rebus
 
-**675** pacem orate manu, I pacem laudate sedentes Ioann. 20, 21
+**675** pacem orate manu, I pacem laudate sedentes
 
 **676** magnanimi; I pacis solum inuiolabile pignus.\'
 
-**677** et simul his dictis faciem ostendebat et I ora, Luc. 24, 40
+**677** et simul his dictis faciem ostendebat et I ora,
 
 **678** ora manusque ambas populataque I pectora ferro:
 
@@ -1404,7 +1404,7 @@ text_metadata:
 
 **681** et conferre gradum I et dextrae coniungere dextram.
 
-**682** His demum exactis I spirantes dimouet auras: Luc. 24, 51 Marc. 16, 19
+**682** His demum exactis I spirantes dimouet auras:
 
 **683** aera per tenerum I caeloque inuectus aperto
 

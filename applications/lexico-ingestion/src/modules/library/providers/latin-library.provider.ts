@@ -313,8 +313,14 @@ export class LatinLibraryProvider {
           markdown += `## ${work.title}\n\n`;
 
           // Extract text primarily from <p> tags
+          let $containers = $work("p");
+          if ($containers.length < 2) {
+            $containers =
+              $work("div.page").length > 0 ? $work("div.page") : $work("body");
+          }
+
           const paragraphs: string[] = [];
-          $work("p").each((_, p) => {
+          $containers.each((_, p) => {
             const $p = $work(p);
             // Skip navigation and footer paragraphs
             if (
@@ -385,7 +391,7 @@ export class LatinLibraryProvider {
 
           markdown += `${paragraphs.join("\n\n")}\n`;
 
-          if ($work("p").length < 2) {
+          if ($containers.length < 2 && paragraphs.length < 2) {
             markdown +=
               "<!-- Scraper note: Very few <p> tags found, text might be structured differently -->\n\n";
           }

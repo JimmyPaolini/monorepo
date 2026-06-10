@@ -151,7 +151,10 @@ export class CorpusScriptorumEcclesiasticorumLatinorumLibraryProvider {
               return;
             }
 
-            let text = $el.text().trim();
+            const $clone = $el.clone();
+            $clone.find("note, app, rdg, lem").remove();
+
+            let text = $clone.text().trim();
             if (!text) return;
 
             text = text.replaceAll(/\s+/g, " ");

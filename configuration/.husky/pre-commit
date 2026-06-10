@@ -1,8 +1,9 @@
 set -e
 
-git restore --staged scripts/database/notepad.d.ts || true
-git restore --staged scripts/database/notepad.sql || true
-git restore --staged scripts/database/notepad.text || true
+git restore --staged notepads/notepad.ts || true
+git restore --staged notepads/notepad.md || true
+git restore --staged notepads/notepad.py || true
+git restore --staged notepads/notepad.sql || true
 
 EXIT_CODE=0
 

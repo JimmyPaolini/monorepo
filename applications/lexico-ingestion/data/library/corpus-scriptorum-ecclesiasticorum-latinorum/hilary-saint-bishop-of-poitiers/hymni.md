@@ -14,7 +14,7 @@ text_metadata:
 
 Felix propheta Dauid primus organi in carne Christum ymnis mundo nuntians.
 
-**1** De Christo deo. Ante saecula qui manes
+**1** Ante saecula qui manes
 
 **2** semperque nate, semper ut est pater! —
 

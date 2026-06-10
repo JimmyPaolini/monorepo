@@ -300,7 +300,7 @@ text_metadata:
 
 **144** sed licet ipse uelis non sum passura tyranne:
 
-**145** omnes nam pariter pereant certamine tanto, corruptissima sunt quae supersunt fere omnia, nec eiusmodi quae admittant emendationis diligentiam.
+**145** omnes nam pariter pereant certamine tanto,
 
 **146** temporis ipse tui mutes licet horride poenam,
 
@@ -702,7 +702,7 @@ text_metadata:
 
 **345** mente create tenes. quamuis et charus, et infans,
 
-**346** hoc magis aure pia attende parentis. Deest uerbum quale est dictis
+**346** hoc magis aure pia attende parentis.
 
 **347** primum disce puer quid sis post ista futurus.
 

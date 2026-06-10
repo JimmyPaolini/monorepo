@@ -229,21 +229,21 @@ export class LiteratureCommand extends CommandRunner {
 
     for (const line of savedLines) {
       const tokenStrings = line.data.match(/[\p{L}]+|[^\p{L}\s]+/gu) || [];
-      tokenStrings.forEach((tokenText, index) => {
-        const isPunctuation = !/^[\p{L}]+$/u.test(tokenText);
+      tokenStrings.forEach((data, index) => {
+        const isPunctuation = !/^[\p{L}]+$/u.test(data);
         let wordId: null | string = null;
         if (!isPunctuation) {
-          const normalized = this.escapeCapitals(this.normalize(tokenText));
+          const normalized = this.escapeCapitals(this.normalize(data));
           wordId = wordMap.get(normalized) || null;
         }
 
         tokenEntities.push({
           author: line.text.author,
+          data,
           index,
           isPunctuation,
           line,
           text: line.text,
-          textValue: tokenText,
           word: wordId ? { id: wordId } : null,
         });
       });

@@ -12,7 +12,7 @@ text_metadata:
 
 # Alethia
 
-Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indagine rerum mentibus humanis sensu conprendere fas est et nescire nefas; nam te ratione profunda in tribus esse deum, sed tres sic credimus unum, ut proprias generis species substantia reddat indiscreta pio conseruans foedera nexu: tu sine principio, pariter sine fine perennis solus semper idem nullique obnoxius aeuo, tu spatium rerum, mentis quocumque recessus tenditur, excedis spatio neque cingeris ullo; - nec te qui capiat locus est cum rebus alumnis, nec magis ipse locus; nec fas contingere menti, quae sit imago tibi, quia fine coercita nullo forma fugit sensus, uel qui uirtute beata te uegetet motus, quia totus semper ubique es: tu mens et sacrae penitus substantia mentis, tu ratio et plenae prudens rationis origo, tu uirtus, uirtutis apex atque ipsa profecto tu uita et genitor uitae lucisque profundae, INCIPIT PLTEFATIO UEL PRECATIO AD UNM MARII* I UICTORIS (s eras.) ORATORIS MAS SILIENSIS 2 suptili 3 comprendere G conprehendere 4 Et [in ras., fuit Me) 5 tribus* (s in ras.) 7 foedera G foedere 8 perennis G perennes 10 recesus 11 excedis G excedes 13 contingere (post u et i parua ras.) 14 imago (i in ras. litt. m) 15 sensus (sus in ras.) 16 ubique (bi in ras.) 17 penitus (i s. u.) tu lux uera, deus, tu rerum causa uigorque. a te principium traxit quodcumque repente ex nihilo emicuit tantoque auctore repletum uel uim mentis habet uel formam in mente recepit. te dominum natura probat seruata caducis partibus et iussam seriem datus ordo fatetur: tu dociles numeros distinguens, pondera librans, mensuras uarians, modulos motumque gubernans alternas seruare uices iugemque recursum rerum stare iubes et mentis imagine plenum aethere mota tibi iam saecula uoluere mundum. tu non contentus uno dotare creatum munere, quicquid id est, quod per te uenit in usus: et plus est aliquid factum melioraque cuncta qua sunt parte latent et per se grata placere interior quoque causa facit: nonnulla uigorem ex aliis acuere suum: contraria quaedam, si certent, plus pacis habent. sic omnia diues conditor aduersis etiam cognata elementis nectis et a toto fusis uirtutibus imples. et tamen haec cum sint in maiestate creandi, nil horum quae gignis eges mundique peracti et per te stabili rerum conpage manentis non tibi currit opus promptumque in munere nostro est. omnia posse tuum: nec in hoc tua gloria tantum est, quod praestanda facis bonus auctor, sed quod et ipsa ut possint praestare facis causasque secundas inuoluis primis, quod qui tua munera sentit munus et ipse tuum est. liquida ratione probasti, 24 recepit G recipit 25 natura (u s. u.) 26 P*artibus (r eras.) datus G datis 27 Tu (T ex corr.) distinguens G distingues 29 alternasi seruare 30 stare (a ex re) iubis plcnum 31 aethere ego Et dere mota (mo in ras.), nota G 32 creatum M creatam 34 fort. set 37 acuere M cauere 38 fort. certant 40 imples (s ex re) 42 egis 43 conpage (ge in ras.) . manentis G manentes 44 promtumque 46 pstanda (p in ras.) facis (m2 ex ficit) ipsa G ipsu 47 *Ut possint G possis secundas M sequendis 48 inuoluis B Inuoluens 49 tuu (m2 in ras.) est (s. u.) quod tibi sola, deus, gigni qua cuncta iuberes, causa fuit bonitas, cum iussis uiuere primum spiritibus mundoque frui, quem mente gerebas, esse datum rebus subitis et cedere late in caelum terrasque simul sedemque coruscam angelico praebere gregi. quis libera corda arbitriumque sui largitus mente benigna, ut fieret uirtutis opus meritisque piorum hoc quoque conferres, praestando ut debitor esses. nec quod de primis a te regnare creatis unus, dum lucis domino uitaeque suoque inuidet auctori titulumque hunc appetit, auctor maluit esse mali mortemque inducere terris cum scelerum sociis celso deiectus Olympo, uirtuti quicquam sacrae praescribere fas est, cui satis est fecisse bonum: nec fas erat ulli munus abesse dei laudisque hoc continet almae summa, nec ingratis uitam sensumque negasse ac proprium mentis per cuncta negotia regnum. nam quis fructus inest, genitis nisi libera mens est? libera mens prorsus nulli est, nisi fas pereundi est. fas hoc esse datum nisi peccans nemo probasset. huc addam, quod cuncta sui diuersa uicissim examen conlata tenent atque inde perire posse datum cunctis, ut uiuere dulcius esset mutuaque alterni conpar mensura pericli cederet ad meritum, cum iudice digna seuero praemia sanctorum geminaret poena malorum uel quod — praefata fas sit dixisse trementi 50 iuberes G iuberis 51 iusisis (i alt. eras.) primum*** 52 Spiritibus ***** (mundo uel mundi eras.) frui (r ex corr.) 53 cedere ego credere 55 *gregi 58 conferres (r alt. s. u.) 59 creatis (a s. u. m2) 61 hunc G unc apetit 62 terris (i ex e) 63 celso (o ex is m2) 66 absesse (s pr. eras.) continet (i ex e; -& alme in ras.) 68 Ac proprium .. 69 mens est in ras. litt. paulo minortbus 70 Libera .. 71 esse datum in mg. inf. signo y. et hic et supra adscripto 72 huc M Hunc uicissem 73 Examen (x in ras.) perire (erir in ras.) 77 poena (e ex i) pace tua, genitor — maius sit forsan apud te non peccasse boni per lubrica tempora uitae quam miseris peccasse mali. sed uiderit ista maiestas ut sese habeat censura futuri: hoc nobis satis est, quod per te nobile terrae inspirans rationis opus de puluere uili, ut domino ingratum talis quoque uinceret hostem, erexisti hominem, quem saeui fraude ueneni in mortis laqueos et ad impia Tartara raptum sanguine mox proprio, dignatus sumere corpus, sedibus ex Erebi cura maiore petitum restituis quam factus erat uitaeque perenni reddis et in caelum tecum uehis hoste subacto. iamiam nemo patrem temerarius arguat Adam, quod leue praescriptum uiolata lege resoluens ad letum patefecit iter. poena illa parentis prima fuit tanti, quia plus est uincere mortem quam nescisse mori. patria nunc laetus ab aula despicit aetherios axes et sidera calcat dispositosque uocat uentura in regna ministros, quos iterum formauit aquis docuitque renasci, quae totum genuit, patris sapientia uerbi. in quo te, deus alme, precor, qui numine prono das sentire animis et uerum pectora cogis ignaro quoque uate loqui, da nosse precanti, dum teneros formare animos et corda paramus ad uerum uirtutis iter puerilibus annis, 87] Uerg. Aen. VI, 543 ad impia Tartara. 96 sq.] cf. Uerg. Ecl. V, 56 sq. 98] Uerg. Aen. VII, 256 generum .. in regna uoeari. 79 genitor (s. U. m2) 80 sq. bonum .. malum G 82 censura (sur in ras.) futuri (ri in ras.) 83 te (s. u.) 85 talis M tales 90 sq. restituis .. reddis G restitues.. reddes 94 letum (e ex o m2) iter (in ras. m2) parentis G parentes .96 letus (in ras. m2) aula G aulo 97 Despicit B Dispicit (D ex Q) 98 ministros (ini in ras.; fuisse uidetur magistros) 99 formauit G formabit 100 In (eras.) Quae patris B patri, patrii Petschenifj 101 quos (s eras.) 102 das sentire G Disentire uerum M uinun 103 precanti (n s. u., t ex c) 105 uerum M uero; uerae G inclita legiferi quod pandunt scrinia Moysis, quae sit origo poli uel quae primordia mundi, arcanamque fidem qui toto excusserit aucta pestis et in mores penitus descenderit error, quaque iterum redeat uerum ritusque profanos pellat et aeternae reseret sacra mystica uitae. da simul et mentem, da congrua tempora menti, da studium, tanto ne desit cura. labori, sensumque bonum studii quodque omnia nota iure supercurrit ualidoque includit amictu, ne damnes, tantum quod tam reus audeo munus. criminibus cunctis, quae feci, ignosce benignus; et uires sensumque animis meritumque dedisti. quod si lege metri quicquam peccauerit ordo, peccarit sermo inproprius sensusque uacillans — incauto passim liceat decurrere uersu —, ne fidei hinc ullum subeat mensura periclum, per legum Christum, qui filius unice tecum maiestate uigens pariter qua. spiritus almus indeprensa animis saeclorum saecula uiuit et regnat, sollemne tibi quod consecrat Amen. 106 legeferi (1 ex g m2) 107 primordia (dia s. M. anz ut uidetur) 109 descenderit ego discesserit error (r pr. s. u.) 110 quaque ego quaue 111 pellat M Pellet 112 tempora G tempera 118 fort. en 119 quicqua (a ex id) 120 improprius G inpropriis uacillians (ci s. u. m2, i alt. eras.) 122 ne ego nec 123 unice M unica 125 indeprensa 111 Indeprehensa saeclorum (ec in ras. ex ecu) in saecula G 126 consecra FINIT PEECATIO CLAUDI NARI, PICTORIS ORATORISIMAS- SILIENSIS.
+Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indagine rerum mentibus humanis sensu conprendere fas est et nescire nefas; nam te ratione profunda in tribus esse deum, sed tres sic credimus unum, ut proprias generis species substantia reddat indiscreta pio conseruans foedera nexu: tu sine principio, pariter sine fine perennis solus semper idem nullique obnoxius aeuo, tu spatium rerum, mentis quocumque recessus tenditur, excedis spatio neque cingeris ullo; - nec te qui capiat locus est cum rebus alumnis, nec magis ipse locus; nec fas contingere menti, quae sit imago tibi, quia fine coercita nullo forma fugit sensus, uel qui uirtute beata te uegetet motus, quia totus semper ubique es: tu mens et sacrae penitus substantia mentis, tu ratio et plenae prudens rationis origo, tu uirtus, uirtutis apex atque ipsa profecto tu uita et genitor uitae lucisque profundae, tu lux uera, deus, tu rerum causa uigorque. a te principium traxit quodcumque repente ex nihilo emicuit tantoque auctore repletum uel uim mentis habet uel formam in mente recepit. te dominum natura probat seruata caducis partibus et iussam seriem datus ordo fatetur: tu dociles numeros distinguens, pondera librans, mensuras uarians, modulos motumque gubernans alternas seruare uices iugemque recursum rerum stare iubes et mentis imagine plenum aethere mota tibi iam saecula uoluere mundum. tu non contentus uno dotare creatum munere, quicquid id est, quod per te uenit in usus: et plus est aliquid factum melioraque cuncta qua sunt parte latent et per se grata placere interior quoque causa facit: nonnulla uigorem ex aliis acuere suum: contraria quaedam, si certent, plus pacis habent. sic omnia diues conditor aduersis etiam cognata elementis nectis et a toto fusis uirtutibus imples. et tamen haec cum sint in maiestate creandi, nil horum quae gignis eges mundique peracti et per te stabili rerum conpage manentis non tibi currit opus promptumque in munere nostro est. omnia posse tuum: nec in hoc tua gloria tantum est, quod praestanda facis bonus auctor, sed quod et ipsa ut possint praestare facis causasque secundas inuoluis primis, quod qui tua munera sentit munus et ipse tuum est. liquida ratione probasti, quod tibi sola, deus, gigni qua cuncta iuberes, causa fuit bonitas, cum iussis uiuere primum spiritibus mundoque frui, quem mente gerebas, esse datum rebus subitis et cedere late in caelum terrasque simul sedemque coruscam angelico praebere gregi. quis libera corda arbitriumque sui largitus mente benigna, ut fieret uirtutis opus meritisque piorum hoc quoque conferres, praestando ut debitor esses. nec quod de primis a te regnare creatis unus, dum lucis domino uitaeque suoque inuidet auctori titulumque hunc appetit, auctor maluit esse mali mortemque inducere terris cum scelerum sociis celso deiectus Olympo, uirtuti quicquam sacrae praescribere fas est, cui satis est fecisse bonum: nec fas erat ulli munus abesse dei laudisque hoc continet almae summa, nec ingratis uitam sensumque negasse ac proprium mentis per cuncta negotia regnum. nam quis fructus inest, genitis nisi libera mens est? libera mens prorsus nulli est, nisi fas pereundi est. fas hoc esse datum nisi peccans nemo probasset. huc addam, quod cuncta sui diuersa uicissim examen conlata tenent atque inde perire posse datum cunctis, ut uiuere dulcius esset mutuaque alterni conpar mensura pericli cederet ad meritum, cum iudice digna seuero praemia sanctorum geminaret poena malorum uel quod — praefata fas sit dixisse trementi pace tua, genitor — maius sit forsan apud te non peccasse boni per lubrica tempora uitae quam miseris peccasse mali. sed uiderit ista maiestas ut sese habeat censura futuri: hoc nobis satis est, quod per te nobile terrae inspirans rationis opus de puluere uili, ut domino ingratum talis quoque uinceret hostem, erexisti hominem, quem saeui fraude ueneni in mortis laqueos et ad impia Tartara raptum sanguine mox proprio, dignatus sumere corpus, sedibus ex Erebi cura maiore petitum restituis quam factus erat uitaeque perenni reddis et in caelum tecum uehis hoste subacto. iamiam nemo patrem temerarius arguat Adam, quod leue praescriptum uiolata lege resoluens ad letum patefecit iter. poena illa parentis prima fuit tanti, quia plus est uincere mortem quam nescisse mori. patria nunc laetus ab aula despicit aetherios axes et sidera calcat dispositosque uocat uentura in regna ministros, quos iterum formauit aquis docuitque renasci, quae totum genuit, patris sapientia uerbi. in quo te, deus alme, precor, qui numine prono das sentire animis et uerum pectora cogis ignaro quoque uate loqui, da nosse precanti, dum teneros formare animos et corda paramus ad uerum uirtutis iter puerilibus annis, inclita legiferi quod pandunt scrinia Moysis, quae sit origo poli uel quae primordia mundi, arcanamque fidem qui toto excusserit aucta pestis et in mores penitus descenderit error, quaque iterum redeat uerum ritusque profanos pellat et aeternae reseret sacra mystica uitae. da simul et mentem, da congrua tempora menti, da studium, tanto ne desit cura. labori, sensumque bonum studii quodque omnia nota iure supercurrit ualidoque includit amictu, ne damnes, tantum quod tam reus audeo munus. criminibus cunctis, quae feci, ignosce benignus; et uires sensumque animis meritumque dedisti. quod si lege metri quicquam peccauerit ordo, peccarit sermo inproprius sensusque uacillans — incauto passim liceat decurrere uersu —, ne fidei hinc ullum subeat mensura periclum, per legum Christum, qui filius unice tecum maiestate uigens pariter qua. spiritus almus indeprensa animis saeclorum saecula uiuit et regnat, sollemne tibi quod consecrat Amen.
 
 **1** Ante polos caelique diem mundique tenebras,
 
@@ -112,7 +112,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **49** excelsi conuexa poli terraeque iacentes
 
-**50** pars prima est operis? sed terras texerat aequor Gen. 1,1 et 2
+**50** pars prima est operis? sed terras texerat aequor
 
 **51** aeraque in medio sordenti nube madentem
 
@@ -124,7 +124,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **55** nondum compositis fundenda ad germina terris
 
-**56** insinuanda dabat, cum lux inmissa superne Gen. 1, 3I
+**56** insinuanda dabat, cum lux inmissa superne
 
 **57** emicuit cogente deo discretaque nigrum I
 
@@ -132,7 +132,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **59** et medias obiecit aquas fugiensque sequentis I
 
-**60** mox pos terga fuit. nomen sic meta diei Gen, 1, 4 et 5I
+**60** mox pos terga fuit. nomen sic meta diei
 
 **61** inposuit lucis spatiis mundoque refusam
 
@@ -140,7 +140,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **63** Rursum mane nouum: primo iam uespere pulso
 
-**64** reddita lux nituit, cum se firmissima moles Gen. 1, G et 7,
+**64** reddita lux nituit, cum se firmissima moles
 
 **65** fluctibus a mediis concreto corpore tendens I
 
@@ -152,7 +152,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **69** nixa superfudit rebus, quas circite uasto
 
-**70** clausit et antiquum spoliauit nomine caelum. Gen. 1,8
+**70** clausit et antiquum spoliauit nomine caelum.
 
 **71** forsitan hic aliquis sic secum errore perito
 
@@ -182,13 +182,13 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **84** gestet et inmenso constantem pondere uoluat.
 
-**85** Tertia lux tumidos stupuit discedere fluctus, Gen. 1, 9
+**85** Tertia lux tumidos stupuit discedere fluctus,
 
 **86** cum deus inpulsis reliqui iam gurgitis undis
 
 **87** aeriis magnum spatiis patefecit inane.-
 
-**88** arida tunc primum mundi pars ima retectam Gen. 1, 10
+**88** arida tunc primum mundi pars ima retectam
 
 **89** ostendit faciem tremefactaque numine uerbi
 
@@ -196,7 +196,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **91** quas uario raptim iussas uirescere fetu
 
-**92** luxuriosa nouo texerunt germina limo Gen. l, 11 sq.
+**92** luxuriosa nouo texerunt germina limo
 
 **93** et rudis e tenero prorumpens caespite laetis
 
@@ -204,11 +204,11 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **95** quaeque ferens proprium semen, testata satorem est.
 
-**96** Iam tribus exactis motu succensa citato Gen. 1, 14
+**96** Iam tribus exactis motu succensa citato
 
 **97** in flammas ignisque globum se cogere iussa est
 
-**98** solis prima dies fundataque semina lucis Gen. l, 1C
+**98** solis prima dies fundataque semina lucis
 
 **99** puniceos roseo sparserunt fomite crines,
 
@@ -240,7 +240,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **113** artificemque sacrum mira compage fatetur.
 
-**114** Quinta dies mouit spirantia corpora ponto, Gen. 1, 20
+**114** Quinta dies mouit spirantia corpora ponto,
 
 **115** quae liquor ex facili genuit sparsitque profundo,
 
@@ -280,7 +280,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **133** hoc animal, nitidis quod rursum nascitur undis.
 
-**134** Iam bis terna dies claro radiabat Olympo Gen. 1, 24
+**134** Iam bis terna dies claro radiabat Olympo
 
 **135** tertia post calidi genitalia munera solis, -
 
@@ -332,7 +332,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **159** \'stat data summa operi, bona sunt quaecumque creaui.
 
-**160** nunc hominem faciamus\' ait, \'qui regnet in orbe Gen. 1, 26
+**160** nunc hominem faciamus\' ait, \'qui regnet in orbe
 
 **161** et sit imago dei. similem decet esse creanti,
 
@@ -348,17 +348,17 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **167** et mox praepositum rebus cum coniuge iussit
 
-**168** crescere per subolem terrasque replere uacantes. Gen. 1, 28
+**168** crescere per subolem terrasque replere uacantes.
 
 **169** iam bene sic dicente deo natura creandi
 
 **170** inposita est cunctis, quae per se uiua mouentur.
 
-**171** Septima lux magnum uidit cessasse parentem, Gen. 2, I sq.
+**171** Septima lux magnum uidit cessasse parentem,
 
 **172** sed generum numeros tantum desisse creare
 
-**173** et requiem tenuisse suam, meritoque sacrata est, Gen.2,3
+**173** et requiem tenuisse suam, meritoque sacrata est,
 
 **174** diuersum quae uidit opus; namque hoc quoque plenum est
 
@@ -420,7 +420,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **203** dignatur curam studii suadetque patrari
 
-**204** paene laboris opus; facilem nam cedere limum Gen. 2. 7
+**204** paene laboris opus; facilem nam cedere limum
 
 **205** et flexum formamque sequi qua ducitur arte
 
@@ -462,7 +462,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **224** Eoos aperit felix qua terra recessus,
 
-**225** editiore globo nemoris paradisus amoeni Gen. S, 8
+**225** editiore globo nemoris paradisus amoeni
 
 **226** pangitur et teretis distinguitur ordine siluae.
 
@@ -470,7 +470,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **228** solis et aeternum paribus uer temperat horis,
 
-**229** illic quaeque suis diues stat fructibus arbor Gen. 2, 9
+**229** illic quaeque suis diues stat fructibus arbor
 
 **230** pomaque succiduis pelluntur mitia pomis,
 
@@ -540,7 +540,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **263** hic uiget ac mentes agitat sensusque ministrat.
 
-**264** sed satis hoc fidei est, laeto quod semine surgens Gen. 2, 9
+**264** sed satis hoc fidei est, laeto quod semine surgens
 
 **265** hinc arbor uitae celsis petat aera pomis,
 
@@ -550,7 +550,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **268** at gremium sacri nemoris, quod silua coronat,
 
-**269** fons rigat et diti prolem uirtute maritat, Gen. 2, 10
+**269** fons rigat et diti prolem uirtute maritat,
 
 **270** quadrifido tumidum laetus caput amne resoluens,
 
@@ -562,7 +562,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **274** fluctibus infusis quam qui decrescere nescit
 
-**275** amnibus effusis. primo sed flumine Fison Gen. 2, 11 et 12
+**275** amnibus effusis. primo sed flumine Fison
 
 **276** prosilit exultans, pars fontis quarta beati,
 
@@ -580,7 +580,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **283** ac uiridi radiat fulgescens luce smaragdus.
 
-**284** nec minor inde Geon, placidis sed mitior undis Gen. 2, 13
+**284** nec minor inde Geon, placidis sed mitior undis
 
 **285** Niliacas attollit aquas arsuraque late
 
@@ -590,7 +590,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **288** tertius hinc rapido procurrens gurgite Tigris
 
-**289** it comes Euphrati, iuncta quos mole ruentes Gen. 2, 14
+**289** it comes Euphrati, iuncta quos mole ruentes
 
 **290** tellus uicta cauo sorbet patefacta barathro,
 
@@ -622,7 +622,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **304** consumat terris, pelagi quod debuit undis.
 
-**305** Haec igitur cuncto naturae ditia fetu Gen. 2,15
+**305** Haec igitur cuncto naturae ditia fetu
 
 **306** regna, tot et tanta uirtutum dote refertae
 
@@ -652,7 +652,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **319** spondet adhuc maiora bonis et praemia seruat,
 
-**320** qui causam meritis statuit, cum \'uescere\' dixit Gen. 2,16 et 17
+**320** qui causam meritis statuit, cum \'uescere\' dixit
 
 **321** \'arboribus cunctis: hanc tantum horrere memento,
 
@@ -690,7 +690,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **338** indulsisse pium rudis incola crederet orbis,
 
-**339** omne animal, quod adhuc tellus dare iussa creauit Gen. 2, 19
+**339** omne animal, quod adhuc tellus dare iussa creauit
 
 **340** et tacito, uernans in corpore, semine fudit,
 
@@ -698,7 +698,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **342** summaque post generum uocitamina dicere, partis
 
-**343** nomina- ceu famulis rebus quo figeret, Adam: Gen. 2, 20
+**343** nomina- ceu famulis rebus quo figeret, Adam:
 
 **344** ammonitu domini tanta inter munera uitae
 
@@ -734,7 +734,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **360** in se materiem gignendae ignarus habebat.
 
-**361** ergo opus adgreditur notum deus ictaque raptim Gen. 2. 21 et 22
+**361** ergo opus adgreditur notum deus ictaque raptim
 
 **362** corda uiri tanto dissoluit languida somno,
 
@@ -784,7 +784,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **385** ut iam scire daret, quod nomen coniugis uxor,
 
-**386** quod dulces nati postponendique parentes Gen. 2, 24
+**386** quod dulces nati postponendique parentes
 
 **387** coniugibus. quid? iam una duos in carne manere
 
@@ -802,7 +802,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **394** nondum erat auxilium uitae propriumque uigebat
 
-**395** inmortale animae —, ni serpens dira ueneno Gen. 3, 1—
+**395** inmortale animae —, ni serpens dira ueneno
 
 **396** maioris stimulata mali dissoluere legem
 
@@ -834,7 +834,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **410** serpentis primum sonuit uox impia diri,
 
-**411** qui mortis tunc causa fuit. nam credula postquam Gen. 3, 6
+**411** qui mortis tunc causa fuit. nam credula postquam
 
 **412** rupit sacrilegis praescriptum morsibus Eua,
 
@@ -858,7 +858,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **422** creuit et ignaro percussit pectora sensu.
 
-**423** hinc timor, inde pudor: quippe antea degere nudis Gen. 3, 7
+**423** hinc timor, inde pudor: quippe antea degere nudis
 
 **424** et nescire datum, siue almi plena uigoris
 
@@ -904,7 +904,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **445** culpa suae est, ut iam miseros mortale pauentes
 
-**446** mortis imago iuuet. siluas umbrosaque lustra Gen. 3, 8
+**446** mortis imago iuuet. siluas umbrosaque lustra
 
 **447** obtendunt, uanae solacia falsa latebrae.
 
@@ -924,7 +924,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **455** quam uastis iaceas et non celere tenebris.
 
-**456** uoce uocans ubi sis pariter testatur utrumque. Gen. 3, 9
+**456** uoce uocans ubi sis pariter testatur utrumque.
 
 **457** nam cur te cernens quaerit deus et, cui praesens
 
@@ -968,7 +968,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **477** hac mihi iusta nouos feriet censura nocentes.
 
-**478** inter cuncta, frui toto quae iussimus orbe, Gen. 3, 14
+**478** inter cuncta, frui toto quae iussimus orbe,
 
 **479** tu maledictus eris et peior, quam tegis intus,
 
@@ -998,7 +998,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **492** ut perimare magis, semper timeare iubebo.
 
-**493** atque huius, prima gaudes quam fraude subactam, Gen. 8, 15
+**493** atque huius, prima gaudes quam fraude subactam,
 
 **494** inferior pedibus degens et pectore pronus
 
@@ -1006,7 +1006,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **496** ut capiti trepidans etiam uestigia figat.\'
 
-**497** dixit et exanguem sic est exorsus in Euam: Gen. S, 16
+**497** dixit et exanguem sic est exorsus in Euam:
 
 **498** \'at tu quae minimum solam te perdere fructum
 
@@ -1032,11 +1032,11 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **509** uincula femineis postponere fraudibus auso
 
-**510** sponte mori placuit, talem reus excipe sortem: Gen. 3, 17
+**510** sponte mori placuit, talem reus excipe sortem:
 
 **511** criminibus tellus, quam tu sulcabis aratro,
 
-**512** sit maledicta tuis. spinas tribulosque minaces Gen. 3, 18
+**512** sit maledicta tuis. spinas tribulosque minaces
 
 **514** culta ferat fallatque tuum spes improba uotum. tu mihi desisti mente inseruire fideli:
 
@@ -1044,17 +1044,17 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **516** his in deliciis et cunctis uiuere saeclis
 
-**517** sponte recusasti: duro nunc uiue labore, Gen. 3, 19
+**517** sponte recusasti: duro nunc uiue labore,
 
 **518** uiue in miseriis, donec te lenta senectus,
 
 **519** terram, quod magis es, faciat terraeque refundat.\'
 
-**520** dixit et ignaros caelum defendere membris Gen. 3, 21
+**520** dixit et ignaros caelum defendere membris
 
 **521** ueste tegit pecudum miserans uitamque tueri
 
-**522** edocet. at ne iterum facinus, quod mente gerebat, Gen. 3, 22
+**522** edocet. at ne iterum facinus, quod mente gerebat,
 
 **523** auderet mortis formidine percitus Adam,
 
@@ -1068,7 +1068,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **528** ac miseros semperque reos grauiora manerent,
 
-**529** continuo sacris iussos decedere lucis Gen. 3, 23
+**529** continuo sacris iussos decedere lucis
 
 **530** expediunt uenti, nemoris quos silua profundi
 
@@ -1496,7 +1496,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **195** quisque recognoscit. summo ergo hoc limite ueri
 
-**196** haereat. augustis quom pulsus sedibus Adam, Gen. 4, 1
+**196** haereat. augustis quom pulsus sedibus Adam,
 
 **197** nullum aliud prius officium quam coniuge dignum
 
@@ -1520,7 +1520,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **207** ruris in officiis, quorum qui maximus aeuo
 
-**208** arua Cain duris uertebat pinguia rastris; Gen. 4, 2
+**208** arua Cain duris uertebat pinguia rastris;
 
 **209** at uiuo gaudere lucro dignissimus Abel
 
@@ -1534,7 +1534,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **214** ammonuit mentes operum libamina iustum
 
-**215** prima dicare deo. sacras prior impedit aras Gen. 4, 3
+**215** prima dicare deo. sacras prior impedit aras
 
 **216** frugibus ille nouis, niueo magis hic litat agno,
 
@@ -1542,7 +1542,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **218** impia, sed signo iam tunc imbuta futurae
 
-**219** indicioque piae. namque ut suscepta notauit Gen. 4, 4 et 5
+**219** indicioque piae. namque ut suscepta notauit
 
 **220** fratris sacra Cain, sibi nulla in fruge litanti
 
@@ -1554,7 +1554,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **224** mente nocens, illo (dirum) de fonte uenenum,
 
-**225** quo serpens materque, bibit fratremque cauendi Gen.4,8
+**225** quo serpens materque, bibit fratremque cauendi
 
 **226** ignarum saeua mactatum caede trucidat.
 
@@ -1608,7 +1608,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **251** omne hominis letum non prima sorte perempti
 
-**252** esse necem fratris. tali tunc caede madentem Gen. 4, 9
+**252** esse necem fratris. tali tunc caede madentem
 
 **253** non aspernatur — tanta est clementia — dignum
 
@@ -1632,7 +1632,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **263** criminis ac totos uehemens exiret in artus
 
-**264** motaque praecipiti raperentur membra rotatu, Gen. 4, 12
+**264** motaque praecipiti raperentur membra rotatu,
 
 **265** ut labris saepti latices cum luce recussa
 
@@ -1662,7 +1662,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **278** propositum exemplum, praesens purgatio culpae
 
-**279** et quod promisit signum custodia uitae: Gen. 4, 15
+**279** et quod promisit signum custodia uitae:
 
 **280** ne quisquam perimat ferroque abolere laboret
 
@@ -1670,7 +1670,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **282** supplicium blandis naro admiscere seuera:
 
-**283** amandat longe uastasque relegat in oras. Gen. 4, 16
+**283** amandat longe uastasque relegat in oras.
 
 **284** hoc quoque munus habet, ne polluat arua piorum,
 
@@ -1704,7 +1704,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **299** uicturo post supplicium factique pudorem
 
-**300** parcitur exilio. iam quod comes additur uxor Gen. 4, 17
+**300** parcitur exilio. iam quod comes additur uxor
 
 **301** fida reo, nec damnatis absistere munus
 
@@ -1728,11 +1728,11 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **311** et proprii regem populi mox de patre summo
 
-**312** constituis. primus nam cingere moenibus urbes Gen. 4, 17
+**312** constituis. primus nam cingere moenibus urbes
 
 **313** erudiit, quod nemo potest nisi plebe coacta. -
 
-**314** confessusque metu meritum de gente suorum Gen. 4, 23 et 24
+**314** confessusque metu meritum de gente suorum
 
 **315** ultorem admonuit Syrum docuitque perire,
 
@@ -1742,7 +1742,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **318** et mors ipsa lucrum est, quod criminis ultio facta est.
 
-**319** Interea maesto rusum grauis Eua marito Gen. 4, 25I
+**319** Interea maesto rusum grauis Eua marito
 
 **320** pensarat primum sancto iam pignere damnum
 
@@ -1756,7 +1756,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **325** non tacuere patris seriesque adiecta probauit.
 
-**326** huius quippe uiri de semine proditus Enos, Gen. 5, 6.
+**326** huius quippe uiri de semine proditus Enos,
 
 **327** qui primus tacita lectus uirtute sacerdos
 
@@ -1774,13 +1774,13 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **334** criminis antiqui poenam differre sinebat,
 
-**335** usque adeo ut cunctis pollens uirtutibus Enoc Gen. 5, 19
+**335** usque adeo ut cunctis pollens uirtutibus Enoc
 
 **336** horum de serie, quos continet alma propago,
 
 **337** redditus in sedes patrias orbemque beatum
 
-**338** uiuat adhuc uitaeque habeat iam regna futurae. Gen. 5, 24
+**338** uiuat adhuc uitaeque habeat iam regna futurae.
 
 **339** quippe nouo mundi cultu usque carenti
 
@@ -1800,7 +1800,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **347** augendi sceleris lucis qui terminus esset.
 
-**348** namque Cainigenum cum se coniuncta profanis Gen. C, 2
+**348** namque Cainigenum cum se coniuncta profanis
 
 **349** damnasset thalamis, melior cui uena, iuuentus,
 
@@ -1808,7 +1808,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **351** concidit atque hostem insidiis patefacta recepit
 
-**352** talia fante deo: \'non semper noster in istis Gen. G, 3
+**352** talia fante deo: \'non semper noster in istis
 
 **353** spiritus insistet populis nec differet ultra
 
@@ -1832,7 +1832,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **363** peccatis traducta patrum, generata repente
 
-**364** monstra hominum, celsa membrorum mole gigantes, Gen. 6, m
+**364** monstra hominum, celsa membrorum mole gigantes,
 
 **365** mente feri tumida. quantum per corpora diris
 
@@ -1840,7 +1840,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **367** seruitio oppressis tam magnae molis iniquo,
 
-**368** non illis quicquam inliciti temerasse profanum Gen. C, 11
+**368** non illis quicquam inliciti temerasse profanum
 
 **369** aut licitum cordi: uetitis succensa libido
 
@@ -1858,7 +1858,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **376** auctorisque poli, tantumque in crimina summa
 
-**377** processum est, ut cuncta deum informasse pigeret, Gen. G, 5—\'
+**377** processum est, ut cuncta deum informasse pigeret,
 
 **378** quis uitam lucemque dedit, causaque nocentum
 
@@ -1870,7 +1870,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **381a** ......
 
-**381b** , . , . , , , ,. fidelis Gen. 6, 8 et 9
+**381b** , . , . , , , ,. fidelis
 
 **382** iam per quingentos inmunem criminis annos
 
@@ -1878,7 +1878,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **384** cui sic sancta deus pandens arcana reuelat:
 
-**385** terrarum uitiis hominumque ad crimina pronis Gen. 6, 12 et 13
+**385** terrarum uitiis hominumque ad crimina pronis
 
 **386** abiecta uirtute malis succurrere rerum
 
@@ -1912,11 +1912,11 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **401** quadratis igitur trabibus contexta paretur
 
-**402** arca tibi, quae ter centum tendatur in ulnas Gen. 6, 14 et 15
+**402** arca tibi, quae ter centum tendatur in ulnas
 
 **403** perque decem quinas pateat, consurgat in altum
 
-**404** ter denis tantum; per ... Gen. 6,1G
+**404** ter denis tantum; per ...
 
 **404a** .......... consummetur in unam
 
@@ -1924,7 +1924,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **406** collecta oblico fastiget machina tecto.
 
-**407** tunc calidum bibula spirans conpage bitumen Gen. 6, 14
+**407** tunc calidum bibula spirans conpage bitumen
 
 **408** exploret tenues et uestiat undique rimas -
 
@@ -1984,7 +1984,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **436** naufragiis, natura, tuis, causamque ciebat,
 
-**437** cum deus e celso famulum dignatur Olympo Gen. 7,1
+**437** cum deus e celso famulum dignatur Olympo
 
 **438** uoce monere Noen summum iam tempus adesse
 
@@ -1992,7 +1992,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **440** eripere instanti exitio mortisque tenebris
 
-**441** carcere uitali secumque animantia cuncta, Gen. 7,1 et
+**441** carcere uitali secumque animantia cuncta,
 
 **442** quae sua tellus alit, quae non sua sustinet aer,
 
@@ -2024,7 +2024,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **456** nox ruit et subitae caelum obduxere tenebrae
 
-**457** effusoque cadens terras ferit aere nimbus Gen. 7, 12
+**457** effusoque cadens terras ferit aere nimbus
 
 **458** praeceps, more breuis, seruaturusque tenorem
 
@@ -2036,7 +2036,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **462** fulminis et tonitru caelum terraeque reclamant.
 
-**463** nec satis excidio est qui nubibus effluit imber: Gen. 7, 17
+**463** nec satis excidio est qui nubibus effluit imber:
 
 **464** antiquae laxantur aquae iamque aethere aperto
 
@@ -2072,21 +2072,21 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **480** undique litoribus summo se circite iungat
 
-**481** fluctus et oppressis concurrant aequora terris. Gen. 7, 18 et 19
+**481** fluctus et oppressis concurrant aequora terris.
 
-**482** et iam ter quinis super omnia celsior ulnis Gen. 7, 20
+**482** et iam ter quinis super omnia celsior ulnis
 
-**483** arca ferebatur; namque haec mensura supremos Gen. 7, 19
+**483** arca ferebatur; namque haec mensura supremos
 
-**484** excessit. montes, cum quadraginta diebus Gen. 7, 12
+**484** excessit. montes, cum quadraginta diebus
 
 **485** ullius pluuiae furor et nox una fuisset.
 
 **486** ter quinquagenis post solibus aere sudo
 
-**487** cum similis ponti modus et mensura maneret, Gen. 7, 24
+**487** cum similis ponti modus et mensura maneret,
 
-**488** clausorum omnipotens miserans decedere magnum Gen. 8, 3
+**488** clausorum omnipotens miserans decedere magnum
 
 **489** paulatim iussit pelagus, seu parcere cunctis,
 
@@ -2096,9 +2096,9 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **492** tutius in sedem stabilem subducta locaret.
 
-**493** denique mons t aer diffuso uertice planus Gen.8,4
+**493** denique mons t aer diffuso uertice planus
 
-**494** )uecturus suscepit onus. iam summa uideri Gen. 8, 5
+**494** )uecturus suscepit onus. iam summa uideri
 
 **495** posse iuga ac planos scopulis distinguere fluctus
 
@@ -2106,11 +2106,11 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **497** aequore et occulti paulatim surgere colles.
 
-**498** iamque niger patula speculator missus ab arca Gen. 8, 6 et 7
+**498** iamque niger patula speculator missus ab arca
 
 **499** aera prodiderat placidum praedaque reperta
 
-**500** detentus; sed adhuc cella claustrisque morandum Gen 8, 8-11
+**500** detentus; sed adhuc cella claustrisque morandum
 
 **501** fessa columba refert, quae rursum missa reportat
 
@@ -2146,7 +2146,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **517** ut uetitum nasci caelumque diemque subire
 
-**518** non uocitante deo, propria qui uoce trementem Gen. 8, 15
+**518** non uocitante deo, propria qui uoce trementem
 
 **519** iussa Noen monuit sacris excedere claustris
 
@@ -2158,7 +2158,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **523** humanos pollens opifex formauit in usus.
 
-**524** quae, postquam data porta, ruunt: pars aera pennis, Gen. 8,19
+**524** quae, postquam data porta, ruunt: pars aera pennis,
 
 **525** pars saltus siluasque petunt, pars mersa cauernis
 
@@ -2228,7 +2228,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **558** ipse docebit aquis populos sic posse renasci.
 
-**1** Talia mente gerens uenturaque saecula cernens Gen. 8, 201
+**1** Talia mente gerens uenturaque saecula cernens
 
 **2** non prius officii quicquam mortalis inire
 
@@ -2256,7 +2256,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **13** qui mitis semperque bonus pro munere nostro
 
-**14** accipiens quicquid recipit gaudensque piorum Gen. 8, 21
+**14** accipiens quicquid recipit gaudensque piorum
 
 **15** officiis hominum, quorum non indiget usu,
 
@@ -2282,7 +2282,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **26** cessabunt, meritis semper condigna referre
 
-**27** nos cessare decet. laeti UQV crescite alumni, Gen. 9, 1
+**27** nos cessare decet. laeti UQV crescite alumni,
 
 **28** crescite securi fecundaque prole replete
 
@@ -2292,7 +2292,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **31** seminibus propriis reddetur debita messis.
 
-**32** curret opus mundi conpar discordibus horis: Gen. 8, 22
+**32** curret opus mundi conpar discordibus horis:
 
 **33** aestati certabit hiemps ac tempora librans
 
@@ -2300,7 +2300,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **35** uosque, quibus regnum solidi permisimus orbis,
 
-**36** quos tremit et dominos sentit genus omne animantum, Gen. 9, 2
+**36** quos tremit et dominos sentit genus omne animantum,
 
 **37** hoc legis seruare loco iurisque seueri
 
@@ -2308,9 +2308,9 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **39** inter tot species rerum, quas sponte mouentes
 
-**40** membra animis uestros bis iam largimur in usus, Gen. 9, 3
+**40** membra animis uestros bis iam largimur in usus,
 
-**41** lurida ne quisquam permixto sanguine turpes Gen. 9, 4
+**41** lurida ne quisquam permixto sanguine turpes
 
 **42** membra cibos faciat, quod crimen\' non secus acris
 
@@ -2318,15 +2318,15 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **44** hauriat humanum quisquam ferus ense cruorem,
 
-**45** quem semper repetam uindex adeoque requiram, Gen. 9, 5
+**45** quem semper repetam uindex adeoque requiram,
 
 **46** ut mihi non solus pendat rationis abundans
 
-**47** supplicium, sed bruta quoque: cruor omnibus aeque Gen. 9, 6
+**47** supplicium, sed bruta quoque: cruor omnibus aeque
 
 **48** sit sacer humanus, nostra quae luce fruuntur.
 
-**49** et sint signa, quibus caelo radiante remissas Gen. 9, 11-17
+**49** et sint signa, quibus caelo radiante remissas
 
 **50** diluuii testemur aquas: quippe aere denso
 
@@ -2348,7 +2348,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **59** quod plus ignis habet rutilans et iam minus imbris.\'
 
-**60** Talibus attoniti imperiis, quae cuncta tremiscunt, Gen. 9, 20
+**60** Talibus attoniti imperiis, quae cuncta tremiscunt,
 
 **61** promissisque piis alacres, quibus omnia gaudent,
 
@@ -2380,7 +2380,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **75** et reuoluta simul uestis secreta retexit
 
-**76** corporis ac risum tibi, Cham deterrime, mouit Gen. 9, 22
+**76** corporis ac risum tibi, Cham deterrime, mouit
 
 **77** fons et origo tui, fratresque aspergine culpae
 
@@ -2388,7 +2388,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **79** disce quid exposcat quod .... t rese cachinno
 
-**80** tu solus: fratrum melior sententia dignum Gen. 9, 23
+**80** tu solus: fratrum melior sententia dignum
 
 **81** officii putat esse locum; nam tegmine rapto
 
@@ -2398,17 +2398,17 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **84** et palmam fratri rapuit pietatis uterque
 
-**85** sublatam medio. nam postquam libera somno Gen. 9, 24
+**85** sublatam medio. nam postquam libera somno
 
 **86** corda Noe repetunt diuini nuntia sensus,
 
 **87** natorum meritum tali mercede rependit:
 
-**88** \'Cham maledicte, tuo dubius seruire parenti Gen. 9, 25
+**88** \'Cham maledicte, tuo dubius seruire parenti
 
 **89** fratrum seruus eris, sancto tu, maxime natu
 
-**90** Sem, benedicte deo uiues fratremque minorem Gen. 9, 26 et 27
+**90** Sem, benedicte deo uiues fratremque minorem
 
 **91** (semine iam) dominus multo distendet in orbe,
 
@@ -2422,7 +2422,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **96** mille minus decies quinos, quos summa recusat,
 
-**97** conscia uenturi resolutus pectora leto Gen. 9, 29
+**97** conscia uenturi resolutus pectora leto
 
 **98** cessit et hunc orbem natis curasque relinquit:
 
@@ -2560,7 +2560,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **165** impia tura darent, cum prodita turba parente.\'
 
-**166** moxque parum sano genitus de stemmate Nembrod, Gen. 10, 8—1
+**166** moxque parum sano genitus de stemmate Nembrod,
 
 **167** mole et mente gigans, Babylonis praeditus aulae,
 
@@ -2654,7 +2654,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **212** cuncta Noe suboles terras implesset Eoas
 
-**213** et Senaar artos decrescere cerneret agros, Gen. 11, 2
+**213** et Senaar artos decrescere cerneret agros,
 
 **214** per uarias orbis partes spargenda iuuentus
 
@@ -2694,7 +2694,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **232** nesciat, aeternam factis extendite famam.
 
-**233** urbem condamus, cuius sub nomine turrem Gen. 11, 4
+**233** urbem condamus, cuius sub nomine turrem
 
 **234** tanto attollamus, donec pingentia mundum
 
@@ -2704,7 +2704,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **237** in caelum migrasse putet.\' sic mota iuuentus
 
-**238** contemnit cautes et quicquid monte reciso Gen. 11, 3
+**238** contemnit cautes et quicquid monte reciso
 
 **239** caeditur: edomitae fictos de uiscere terrae
 
@@ -2720,7 +2720,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **245** transilit et fruitur caeli propiore sereno,
 
-**246** cum pater haec propriis regni consortibus infit: Gen. 11, 6 et 7
+**246** cum pater haec propriis regni consortibus infit:
 
 **247** \'en terrena phalanx quid non furiosa resignet,
 
@@ -2752,7 +2752,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **261** confusae damnet melior discordia linguae.\'
 
-**262** dixit et intentos operi molemque leuantes Gen. 11, 8 et o
+**262** dixit et intentos operi molemque leuantes
 
 **263** mentibus attonitis obliuio subdita primum
 
@@ -2870,7 +2870,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **320** fons et origo cui Sem clarum praestitit ortum,
 
-**321** in Tharan exiret, summa qui sede relicta Gen. 11, 25 et 3
+**321** in Tharan exiret, summa qui sede relicta
 
 **322** Chaldaei generis cuncta cum stirpe suorum
 
@@ -2878,9 +2878,9 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **324** mansit in Assyriis demum nouus accola Carris.
 
-**325** et cum quinque super bis centum exegerat annos, Gen. 11, 32
+**325** et cum quinque super bis centum exegerat annos,
 
-**326** lapsus more patrum est. huius set filius Abram, Gen. 11, 26
+**326** lapsus more patrum est. huius set filius Abram,
 
 **327** uir dignus caelo, iam primo a limine uitae
 
@@ -2890,7 +2890,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **330** iussa sequi iam posse dei sine fraude licebat,
 
-**331** his dominus famulum monitis dignatus adire est: Gen. 12, 1
+**331** his dominus famulum monitis dignatus adire est:
 
 **332** \'quandoquidem toto te solum inuenimus orbe,
 
@@ -2904,7 +2904,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **337** me duce peruenies, ne sis pars gentis iniquae,
 
-**338** qui sanctae caput esse potes. tunc sacra dicabo, Gen. 12, 2
+**338** qui sanctae caput esse potes. tunc sacra dicabo,
 
 **339** quae maneant, benedicte, tibi, nomenque per omnes
 
@@ -2912,13 +2912,13 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **341** aut mala pro meritis, quorum diuersa uoluntas
 
-**342** te circum fuerit, per quem benedictio fusa Gen. 12, 3
+**342** te circum fuerit, per quem benedictio fusa
 
 **343** spargetur tribubus cunctis aeuoque renato/
 
 **344** Dixit et imperiis mentem qua seruiat indit
 
-**345** promissisque piis credat. mora nulla retentat: Gen. 12, 4 et 5
+**345** promissisque piis credat. mora nulla retentat:
 
 **346** cum gregibus uarii generis famulisque paternis,
 
@@ -2934,7 +2934,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **352** in Chanaas donec populorum, quos genuit Cham,
 
-**353** intraret terras et rura uberrima Sichae. Gen. 12, 6 et 7
+**353** intraret terras et rura uberrima Sichae.
 
 **354** quae postquam concessa sibi prolique futurae
 
@@ -2942,7 +2942,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **356** et ueteres reuocans cultor nouus auget honores.
 
-**357** inde petit Bethlem, sedes quae lecta beati Gen. 12, 8
+**357** inde petit Bethlem, sedes quae lecta beati
 
 **358** hospitiis sacrata uiri est cunctasque superbis
 
@@ -2962,21 +2962,21 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **366** namque fame rursum sedem mutare coactus
 
-**367** castra mouet totamque domum famulosque gregesque Gen. 12, 10
+**367** castra mouet totamque domum famulosque gregesque
 
 **368** secum agit et rebus conmercia iusta rependens
 
-**369** intrat in Aegyptum. sed nomine pulchra sororis Gen. 12, 11-1
+**369** intrat in Aegyptum. sed nomine pulchra sororis
 
 **370** protegitur coniunx, ne barbara pectora sancti
 
 **371** hospitis in caedem stimulet furiosa libido.
 
-**372** denique mox Pharao radiantis imagine formae Gen. 12, 15
+**372** denique mox Pharao radiantis imagine formae
 
 **373** ductus inardescit thalamosque et foedera certa
 
-**374** lege parat; sed tota pauor formidine mersa Gen. 12, 17
+**374** lege parat; sed tota pauor formidine mersa
 
 **375** ingruit et subito quatit improba corda tumultu
 
@@ -2994,21 +2994,21 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **382** appeteret ferro, quem nec uiduare liceret.
 
-**383** sponte igitur nulla uiolatam labe marito Gen. 12, IS-.
+**383** sponte igitur nulla uiolatam labe marito
 
 **384** restituit culpamque refert tutumque frequenti
 
 **385** custode et multa cumulatum fruge remittit
 
-**386** in Sichem Bethlemque suam: laetique receptos Gen 13, 1-5
+**386** in Sichem Bethlemque suam: laetique receptos
 
 **387** exercent campos et pinguia pascua late
 
-**388** inmixtis carpunt gregibus. sed iurgia crebra Gen. 13, 6 et 7
+**388** inmixtis carpunt gregibus. sed iurgia crebra
 
 **389** inter pastores; nullo nam limite cuiquam
 
-**390** discretus pandebat ager. plenissimus ergo Gen. 13, 8 et 9
+**390** discretus pandebat ager. plenissimus ergo
 
 **391** uenturi, iuris set seruantissimus aequi,
 
@@ -3016,7 +3016,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **393** Abram, qui senior, concessos diuidit agros.
 
-**394** iunior elegit, qua dulcibus undique fusis Gen. 13, 10-12
+**394** iunior elegit, qua dulcibus undique fusis
 
 **395** rura maritat aquis ripisque umbrantibus amnes
 
@@ -3026,13 +3026,13 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **398** declinans Sodomae iunctos Loth migrat in agros,
 
-**399** cum deus hac Abram maesti spe pectora firmans Gen. 13, 14
+**399** cum deus hac Abram maesti spe pectora firmans
 
 **400** \'ne carparis\' ait, \'fratris quod prole relictus
 
-**401** damna patris tuleris sancti. innumerabile uulgus Gen. 13, 16
+**401** damna patris tuleris sancti. innumerabile uulgus
 
-**402** tu mihi solus eris, populi qui regna tenebis, Gen. 13, 14 et 15
+**402** tu mihi solus eris, populi qui regna tenebis,
 
 **403** quae primo cum sole uides, quae uersus in arcton
 
@@ -3046,11 +3046,11 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **408** quis tu ut iam terris longe lateque fruaris,
 
-**409** surge et quid pateant gressu prius hospite lustra.\' Gen. 13, 17
+**409** surge et quid pateant gressu prius hospite lustra.\'
 
 **410** Sic ait: ille libens paret sedemque relinquens
 
-**411** emigrat Chebronque subit subque ilicis atrae Gen. 13,18
+**411** emigrat Chebronque subit subque ilicis atrae
 
 **412** dispensata comis figit tentoria Mambrae
 
@@ -3058,7 +3058,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **414** hic quoque sollemnes domino struit, ut colat, aras.
 
-**415** Interea, magno circum turbante tumultu Gen, 14, 1-7
+**415** Interea, magno circum turbante tumultu
 
 **416** hostis adest auidus, uaria quem dote referta
 
@@ -3066,7 +3066,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **418** ungula et effusis errat populator habenis.
 
-**419** Loth cum rege simul portis erumpit apertis Gen. 14, 8
+**419** Loth cum rege simul portis erumpit apertis
 
 **420** et uicina manus regum socia arma ferentum:
 
@@ -3084,13 +3084,13 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **427** ut rursum exarsit repetitus clamor in iras,
 
-**428** uertunt terga metu: rapido pars moenia cursu, Gen. 14, 10
+**428** uertunt terga metu: rapido pars moenia cursu,
 
 **429** pars montes siluasque petunt, pars saepta cateruis
 
 **430** porrigit ignauas ad tristia uincula palmas.
 
-**431** Loth captum patruus ut primum conperit Abram, Gen. Ii, 12-14
+**431** Loth captum patruus ut primum conperit Abram,
 
 **432** non fletu — quid enim fletus conferret inanis? —,
 
@@ -3100,7 +3100,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **435** et sensim sequitur, qua tendere prodidit hostem
 
-**436** lentum praeda grauis, curatque ut prima quietis Gen. 14, 15
+**436** lentum praeda grauis, curatque ut prima quietis
 
 **437** nocte superueniat, cum iam languentia corda
 
@@ -3142,7 +3142,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **456** usque Chobarrenos instans formido secuta est.
 
-**457** at uictor tanti nil motus laude triumphi Gen. 14, 16, 21 Sq?
+**457** at uictor tanti nil motus laude triumphi
 
 **458** inter equos pecudumque greges populumque receptum
 
@@ -3156,7 +3156,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **463** direptis passim populis regique reformat,
 
-**464** non sibi se pugnasse docens: decimam tamen offert Gen. 14, 18-20
+**464** non sibi se pugnasse docens: decimam tamen offert
 
 **465** hostibus excussae, quae uera est hostia, praedae
 
@@ -3170,7 +3170,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **470** uoce sacerdotis tanti bona cuncta precantis,
 
-**471** hoc famulum alloquii dominus quoque munere donat: Gen, 15, 1-4
+**471** hoc famulum alloquii dominus quoque munere donat:
 
 **472** \'quandoquidem nullis cupidum te praeda subegit
 
@@ -3190,7 +3190,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **480** et festinantem natorum fallit amorem.
 
-**481** suspice conuexum quam denso lumine caelum Gen. 15, 5
+**481** suspice conuexum quam denso lumine caelum
 
 **482** picta nocte micet, quantis congesta premantur
 
@@ -3198,7 +3198,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **484** seminis hoc exemplar habe stirpisque futurae
 
-**485** hinc formam meritumque tene.\' sic fatus: at ille Gen. 15, 6
+**485** hinc formam meritumque tene.\' sic fatus: at ille
 
 **486** credidit et nudae fidei consensio sola
 
@@ -3212,7 +3212,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **491** qui, uox uiua patris, rursum sic fatus ad Abram:
 
-**492** \'omnipotens ego sum dominus, qui teque tuosque Gen. 15, 7
+**492** \'omnipotens ego sum dominus, qui teque tuosque
 
 **493** Chaldaea de gente tuli tandemque paternis
 
@@ -3228,7 +3228,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **499** quod quia cunctaris dubiusque ita credere peccas,
 
-**500** trimam sume mihi torua iam fronte iuuencam, Gen. 15, 9
+**500** trimam sume mihi torua iam fronte iuuencam,
 
 **501** cum qua par annis blando grege lecta capella
 
@@ -3240,7 +3240,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **505** ulterius uolucrum non sentiat hostia ferrum.
 
-**506** at pecudes uteris mediae scindantur apertis Gen. 15, 10
+**506** at pecudes uteris mediae scindantur apertis
 
 **507** inque duas abeant tantum tria corpora partes,
 
@@ -3256,7 +3256,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **513** assuetus raptim properat mandata patrare.
 
-**514** sed cum dispositam quo iussa est ordine terrae Gen. 15, 11
+**514** sed cum dispositam quo iussa est ordine terrae
 
 **515** strauisset seriem, subito globus ingruit ater
 
@@ -3266,7 +3266,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **518** undique sollicitus cauet et circumspicit Abram.
 
-**519** sed cum operi attonitum tanto nec sole cadente Gen. 15, 12
+**519** sed cum operi attonitum tanto nec sole cadente
 
 **520** uinceret officii moles tam magna recepti,
 
@@ -3292,7 +3292,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **531** talibus attonito uisis non defuit almus
 
-**532** interpres : \'praenosce tuos subolemque tuorum, Gen. 15, 13 et 14
+**532** interpres : \'praenosce tuos subolemque tuorum,
 
 **533** crescet in externis quae post uos edita terris
 
@@ -3302,21 +3302,21 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **536** seruitio, eripiam dominosque ulciscar iniquos
 
-**537** et reddam terris, blando quas gurgite cingunt Gen. 15, 18
+**537** et reddam terris, blando quas gurgite cingunt
 
-**538** Nilus et Euphrates, sed cum peccata nocentum Gen. 15, 16
+**538** Nilus et Euphrates, sed cum peccata nocentum
 
 **539** gentis Amorraeae populi(que) haec regna tenentis
 
 **540** explerint summam scelerum dignique paternis
 
-**541** sedibus expelli fuerint. at tu tamen ante Gen. 15, 15
+**541** sedibus expelli fuerint. at tu tamen ante
 
 **542** longaeuo felix decedens limite uitae
 
 **543** laudatus natis cum pace et munere nostro
 
-**544** ad sanctos migrabis auos.\' sic fatus: et alto, Gen. 15, 17
+**544** ad sanctos migrabis auos.\' sic fatus: et alto,
 
 **545** cum iam nox terris densas induceret umbras,
 
@@ -3338,7 +3338,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **554** excutiunt pronum, qui terram euerberet, ignem,
 
-**555** Interea certus regni prolisque futurae Gen. 16, 1 et 2
+**555** Interea certus regni prolisque futurae
 
 **556** accelerare patrem cupit Abram, casta sed uxor
 
@@ -3356,7 +3356,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **563** progeniem uili concredere perpulit aluo.
 
-**564** pro seruile nefas! ut primum uiuere sensit Gen. 16, 4
+**564** pro seruile nefas! ut primum uiuere sensit
 
 **565** Agar uentris onus, fastu tumefacta superbo
 
@@ -3364,7 +3364,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **567** debebat, causamque sui furiosa tumoris.
 
-**568** recte igitur flagris hanc uir iustissimus Abram Gen. 16, 6
+**568** recte igitur flagris hanc uir iustissimus Abram
 
 **569** coniugis addixit, quorum magis acta pudore
 
@@ -3376,7 +3376,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **573** contemnit, quo more potest, mauultque pericla
 
-**574** secretae perferre uiae, ni missus Olympo Gen. 16, 7-12
+**574** secretae perferre uiae, ni missus Olympo
 
 **575** angelus occurrat famulamque ad pristina iura
 
@@ -3390,13 +3390,13 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **580** quo maiore redit uoto iam certa futuri
 
-**581** et partu dominum fecit prior ipsa parentem, Gen. 16,15 et it
+**581** et partu dominum fecit prior ipsa parentem,
 
 **582** cum iam decursi spatiis felicibus aeui
 
 **583** octoginta super bis ternos clauderet annos.
 
-**584** Qui cum bis senas unam super ordine coepto Gen. 17, 1 et 2
+**584** Qui cum bis senas unam super ordine coepto
 
 **585** adderet aestates, solito hunc rursum pater almus
 
@@ -3404,13 +3404,13 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **587** degere felicem: simul et promissa reuoluit,
 
-**588** quae merces uirtutis erat — tunc corpore prono Gen. 17, 3
+**588** quae merces uirtutis erat — tunc corpore prono
 
 **589** Abram suppliciter dominum prostratus adorat —
 
 **590** et post multa, quibus percursis uota fidelis
 
-**591** laxauit famuli, signo discernere cunctis Gen. 17, 10 et 11
+**591** laxauit famuli, signo discernere cunctis
 
 **592** se iussit tacito populis, ut sponte resecta
 
@@ -3422,13 +3422,13 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **596** quod res ipsa tacens loquitur: resecare pudenda
 
-**597** sic monuisse deum puerosque a matre recentes Gen. 17, 12
+**597** sic monuisse deum puerosque a matre recentes
 
 **598** atque rudis uitae, dum mens ignara dolendi est,
 
 **599** praeputio exutos octaua luce sacrari,
 
-**600** quod qui tam sanctum corrumpere testamentum Gen. 17, 14
+**600** quod qui tam sanctum corrumpere testamentum
 
 **601** auderet cessans legi inseruire rogatae,
 
@@ -3442,13 +3442,13 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **606** \'littera te renouet, te syllaba plena reformet,
 
-**607** ut non Sara tibi coniunx, sed Sarra uocetur Gen. 17, 15
+**607** ut non Sara tibi coniunx, sed Sarra uocetur
 
 **608** et tu non Abram, sed nomine clarior aucto
 
 **609** Abraham populis posthac uocitere futuris.
 
-**610** quod commune ideo tibimet cum coniuge uera est Gen. 17, 16 ( 18, 10-15)
+**610** quod commune ideo tibimet cum coniuge uera est
 
 **611** promissi, quoniam saeclis uoluentibus aeuum
 
@@ -3462,7 +3462,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **616** sic ut praestiterim fieri potuisse putetur.
 
-**617** sed tamen ignoscam dubiis pueroque futuro Gen. 17, 19
+**617** sed tamen ignoscam dubiis pueroque futuro
 
 **618** inponam nomen, quod culpam hanc arguat, Isac,
 
@@ -3470,7 +3470,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **620** heres erit certus seruato foedere pacti.
 
-**621** nec tamen hic sacrae, quem solum amplecteris, Ismael Gen. 17, 20
+**621** nec tamen hic sacrae, quem solum amplecteris, Ismael
 
 **622** expers dotis erit; nostro nam munere fultus
 
@@ -3478,7 +3478,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **624** bis senis pariter ducibus regnanda creabit.\'
 
-**625** Dixit: at ille auidus pactum accelerare receptum Gen. 17, 23 et 24
+**625** Dixit: at ille auidus pactum accelerare receptum
 
 **626** iam centum pulsans annos, iam pubere nato
 
@@ -3516,7 +3516,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **643** quamuis caelitibus famulis comitatus adiret,
 
-**644** uisibus obiecit. iuxta aedes quippe sedenti Gen. 18, 1 et 2
+**644** uisibus obiecit. iuxta aedes quippe sedenti
 
 **645** tres subito adstiterunt augusta luce micantes.
 
@@ -3524,7 +3524,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **647** procurrit dominumque solo prostratus adorat
 
-**648** unum, cum tres miretur, cupidusque placendi, Gen, 18, 3-8
+**648** unum, cum tres miretur, cupidusque placendi,
 
 **649** ut sibi mente pia liceat seruire, precatur,
 
@@ -3554,7 +3554,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **662** ederet et praesens famulum dubitare uetaret.
 
-**663** inde mouens gressus lateri comes haeret euntum Gen. 18, 16-22
+**663** inde mouens gressus lateri comes haeret euntum
 
 **664** hospes ouans dulcique quatit concussa pauore
 
@@ -3566,7 +3566,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **668** emissos famulos pacisque iraeque ministros,
 
-**669** et cum cognosset tanta quid mole pararet Gen, 18, 23-33
+**669** et cum cognosset tanta quid mole pararet
 
 **670** arcana pandente deo causamque docente
 
@@ -3594,7 +3594,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **682** tendentem ulterius seque in sua regna recepit.
 
-**683** Interea Sodomam missi Loth forte sedentem Gen. 19, 1-8
+**683** Interea Sodomam missi Loth forte sedentem
 
 **684** ante fores urbis iam terris sole propinquo
 
@@ -3610,7 +3610,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **690** innocuosque cibos et pocula parca ministrat.
 
-**691** ecce sub occasum lucis noctisque recursum Gen. 19, 4 et 5
+**691** ecce sub occasum lucis noctisque recursum
 
 **692** foeda manus uulgi, si fas dixisse, uirilis
 
@@ -3624,7 +3624,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **697** uel dum damnatur, quod iam tunc more sinistro
 
-**698** infandae lex urbis erat. mollire furentes Gen. 19, 6-9
+**698** infandae lex urbis erat. mollire furentes
 
 **699** Loth cupiens natas, quibus nata manebat
 
@@ -3638,7 +3638,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **704** auctorem fidei, morum iustique magistrum.
 
-**705** ut uis iam maior, quam quae uirtute repelli Gen. 19, 10 et II
+**705** ut uis iam maior, quam quae uirtute repelli
 
 **706** humani ualeat nisus, tunc hospes uterque
 
@@ -3652,7 +3652,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **711** tunc ad Loth sancti trepidum uix mente recepta
 
-**712** condicione sui (non) dissimulata ministri Gen. 19, 12-15
+**712** condicione sui (non) dissimulata ministri
 
 **713** iam semet sensisse animo, quod (et) ipse timebat,
 
@@ -3670,7 +3670,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **720** difficilis fidei credat, cum linquere sedes
 
-**721** Loth quoque dissimulet. quem postquam luce propinqua Gen 19, 16 et 17
+**721** Loth quoque dissimulet. quem postquam luce propinqua
 
 **722** cunctantem pigrasque moras sine fine trahentem
 
@@ -3682,7 +3682,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **726** tali lege data, ne quis quae praeterit ultra
 
-**727** pos se respiciat cautus male. sed metuens Loth, Gen. 19, 18.
+**727** pos se respiciat cautus male. sed metuens Loth,
 
 **728** ne tardum uelox poenae praeuerteret ira,
 
@@ -3738,7 +3738,7 @@ Summe et sancte deus, cunctae uirtutis origo, omnipotens, quem nec subtili indag
 
 **754** conpulit et crebro tonitrus referente corusco
 
-**755** consternare animos, coniunx miserabilis ut Loth Gen. 19, 26
+**755** consternare animos, coniunx miserabilis ut Loth
 
 **756** lumina, quod uetitum, pauitans conuersa referret
 

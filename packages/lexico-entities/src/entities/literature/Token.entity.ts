@@ -25,6 +25,11 @@ export class Token extends AuditableEntity {
   @ManyToOne("Author", { eager: false, onDelete: "CASCADE" })
   author!: Author;
 
+  @Column("varchar", { comment: "The raw string value of the token" })
+  @Field()
+  @Index()
+  data!: string;
+
   @Column("bigint", {
     comment: "The 0-based index of this token within its parent line",
   })
@@ -47,11 +52,6 @@ export class Token extends AuditableEntity {
   @Index()
   @ManyToOne("Text", { eager: false, onDelete: "CASCADE" })
   text!: Text;
-
-  @Column("varchar", { comment: "The raw string value of the token" })
-  @Field()
-  @Index()
-  textValue!: string;
 
   @Field(() => Object, { nullable: true })
   @Index()

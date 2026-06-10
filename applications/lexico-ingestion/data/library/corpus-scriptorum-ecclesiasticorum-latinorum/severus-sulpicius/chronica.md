@@ -24,7 +24,7 @@ uisum autem mihi est non absurdum, cum usque ad Christi crucem Apostolorumque ac
 
 ceterum illud non pigebit fateri, me, sicubi ratio exegit, ad distinguenda tempora continuandamque seriem usum esse historicis mundialibus atque ex his, quae ad supplementum cognitionis deerant, usurpasse, ut et imperitos docerem et litteratos conuincerem.
 
-uerumtamen ea quae de sacris uoluminibus breuiata digessimus, non ita legentibus auctor accesserim, ut praetermissis his, unde INCIPIT PHOLOGVS SVLPITII SEVERI IN CHKONICA. QVAE IPSE FECIT AB EXORDIO MVNDI VSQ. AD TEMPVS SVVM P, uerbis usq. ad tempus suum su- per ab exordio mundi scriptis 3 a me studiose b 10 conectere P, ut coniecit Giselinus: conuertere b II hierusolimae P 12 locuturo Hieron. Mercerus; \'magisplaceret, si hoc uerbum penitus deesset\' de Prato; cf. tamen I, 28, 5: erat Allophylis moris .. Samson quasi in pompam publicum producere, capto insultantes et 1, 38, 6 Huius eum facti mox piguit paenituitque, ueniam a Deo petens etc. 14 hystoricis P II mundialibus P, add. sup. lm. manu saec. XVvel XVIothnicis, ut est in b; cf, 2, 14, 6 18 acutor P II praetermissis his unde P: praetermissis illis unde haec b 1* deriuata sunt, appetantur: nisi cum illa quis familiariter nouerit, hic recognoscat quae ibi legerit:
+uerumtamen ea quae de sacris uoluminibus breuiata digessimus, non ita legentibus auctor accesserim, ut praetermissis his, unde deriuata sunt, appetantur: nisi cum illa quis familiariter nouerit, hic recognoscat quae ibi legerit:
 
 etenim uniuersa diuinarum rerum mysteria non nisi ex ipsis fontibus hauriri queunt. nunc initium narrandi faciam.
 
@@ -40,7 +40,7 @@ igitur Adam post necem filii minoris Seth filium procreauit, cum iam trigesimum 
 
 ex quo Noe natus, iustitia egregius et prae ceteris mortalibus Deo carus acceptusque.
 
-qua tempestate cum iam humanum genus abundaret, angeli, quibus caelum sedes erat, speciosarum forma uirginum 5 Gen. 1. 9 Gen. 2. 18 Gen. 4. 19 Gen. 5. 1 diriuata P 4 faciam INCIPIT LIBER P 5 a Deo P et SigoniUlJ: a Domino b II annorum malebat Giselinus 6 millia b 8 uenustatis P 10 constutiti P 11 interdicta sibi arbore seripsi: interdicti sibi arboro P, interdictam sibi arborem b 12 nascitur P: nascuntur b 13 Is filium Vonck (inLectionumLatinarum libris II. Traiecti1745) II enoc P 14 ex eo Irad atque ex hoc malebat de Prato 15 mauiahel P: Mamahel b II hic Mathusael Vorstius 16 iuuenis P: iuuenis quidam b 17 pmissum P (non pmissum, ut ait de Prato) 20 ducentesimum] sic LXX, contra textus hebr. et vulg. centesimum 21 Kainan P (bis), ut coni. Gelasinius: Nainan b j) Maleleel LXX et Lucas 24 iustitiS P II deo P: Domino b 26 sedis P, sed eadeni manu sedes corr. II spetiosarum P capti illicitas cupiditates appetierunt: ac naturae suae originisque degeneres, relictis superioribus, quorum incolae erant, matrimoniis se mortalibus miscuerunt.
+qua tempestate cum iam humanum genus abundaret, angeli, quibus caelum sedes erat, speciosarum forma uirginum capti illicitas cupiditates appetierunt: ac naturae suae originisque degeneres, relictis superioribus, quorum incolae erant, matrimoniis se mortalibus miscuerunt.
 
 hi paulatim mores noxios conserentes humanam corrupere progeniem, exque eorum coitu Gigantes editi esse dicuntur, cum diuersae inter se naturae permixtio monstra gigneret.
 
@@ -56,7 +56,7 @@ ita Noe aream egressus est. id gestum a mundi exordio post annos, ut ego comperi
 
 Ac primum Noe aram Deo statuit hostiasque ex uolucribus immolauit. mox a Deo cum filiis benedicitur, praeceptumque accepit, ne sanguine uesceretur aut sanguinem hominis effunderet, quia mundi primordia mandati, istius liber Cain maculauerat. igitur uacuo tum saeculo ex filiis Noe semen fuit:
 
-tres enim 9 Gen. 7. 26 Gen. 9. 4 humanum P II exque eorum Vonck: ex quS eorum P, ex quorum b 10 a deo P: a Domino b 13 nuribus ost clausus b 14 uniyeni generis malebat de Prato 15 imbrium uim scripsi: imbrium P, imbrem b 16 et P: ac b II intelleret P 17 decedere P corr. 1 m. ex decerere 18 conitioP II deteuttlP: detento b 19 reperiisset b 20 emissa Qiselinus: remisuPb 21 iudiciumP 22 desedisse Vonck 24.11. (i.e. II milia) P: II b 25 et 26 deoP. Domino b 26 accipit coni de Prato 29 semen amicus Vonckii et de Prato: Sem Pbpro sedi, ut vox in P scribi solet habuit, Sem, Cham, Iaphet. sed Cham, quod sopitum uino patremriserat, maledictum a patre meruit.
+tres enim habuit, Sem, Cham, Iaphet. sed Cham, quod sopitum uino patremriserat, maledictum a patre meruit.
 
 huius filius, Chus nomine, Nebroth gigantem genuit,. a quo Babylon ciuitas constructa traditur. pleraque etiam oppida ea tempestate condita mmorantur, quae nominatim persequi animus non fuit. sed cum
 
@@ -72,7 +72,7 @@ Abraham autem patre Thara natus post diluuium anno millesimo et septuagesimo. Ab
 
 qua tempestate admonitus a Deo, domum patriam ac patrem relinquens, assumpto Loth fratris filio in terram Chananaeorum profectus in loco, cui Sychem nomen est, consedit.
 
-mox annonae inopia Aegyptum concessit, ac rursum reversus. Loth, prae multitudine familiae a patruo digressus, ut laxioribus uacuae tum regionis spatiis uterentur, in 5 Gen. 10. 10 Gen. 11. 21 Gen. 12, 3 Nebrod b II meruit P, sed ead. m. genuit corr. II babylllon P 7 tamen P: tantum b || omis P 10 diducerentur Hornius 12 assueto P, inassueto b 14 quia P: quum b 16 iaphe P 18 natus P: natus est b 19 septuagesimo secundo H. Mercier II Sarai Io. Arcerius, cuius emendationes Vonckius in Lectt. latt. publicauit 20 eius nos: eis Pb, ei de Prato II Carras Drusius 21 a Domino b 22 domum, patriam edd. 23 chananeorum P II sychem P ut est inLXX: Sichem b 24concessit, ac rarsum reuersus Loth b; uerborum distinctionem mutauit de Prato (concessit. ac rursum reuersis, Loth Sigonius 26 aacui P; de scriptura uacuae Drusius in notis p. 45 suspicionem mouit, nec tamen uacui lectio ferenda uidetur Sodomis consedit. id oppidum infame incolis, uiris in uiros irruentibus, atque ob id inuisum Deo fuisse traditur.
+mox annonae inopia Aegyptum concessit, ac rursum reversus. Loth, prae multitudine familiae a patruo digressus, ut laxioribus uacuae tum regionis spatiis uterentur, in Sodomis consedit. id oppidum infame incolis, uiris in uiros irruentibus, atque ob id inuisum Deo fuisse traditur.
 
 ea tempestate reges uicinarum gentium in annis erant, cum antea nullum inter mortales certamen fuisset. sed aduersum hos, qui bello uicina temptabant, reges Sodomorum et Gomorrae uicinarumque regionum in proelium erumpunt, primoque impetu fusi uictoriam concessere. tum a uictoribus Sodoma direpta praedae hostibus fuit, ductusque Loth in captiuitatem.
 
@@ -86,7 +86,7 @@ tunc ei atque uxori eius adiectione unius: litterae nomen inmutatum: ita nunc ex
 
 eodem tempore Abrahae lex circumcisionis imposita est, erat ei autem ex ancilla filius Ismahel. et cum ipse esset annorum centum, uxor autem eius nonaginta, futurum eis filium Isaac Deus pollicetur, qui cum duobus angelis ad eum uenerat.
 
-inde Sodomam missi angeli Loth in porta sedentem reppererunt. quos cum ille, homines existimans, hospitio receptos 2 Gen. 14. 13 Gen. 15 et 17. 23 Gen. 18. 25 Gen. 19. 2 Domino b 3 erant cum b: erant inmortales cum P 5 sodomum et gomorrumP; Sodomorum, Gommoreorum b; Gomorrhae coni. Vorstius, coll. interprete Graeco: βασιλεὺς ∑οδóμωυ, βασιλεὺς Γομóρρας (Sodomitarum et Gomorrhaeorum coni. de Prato) II uicinarumque urbium coni. Drusius 6 uictoria P; at cf. 1, 34, 5 11 decimas b sed ante praedae: om. P 13 Dominus b 15 praedictum futurum b 16 post P: postea b 18 inmutatum P corr. \\I ex Abram Abraam Drusius II ex Sara Sarra Sigonius: ex sarai sara Pb; cf. Genes. 17, 5 et 15 ex interpret. LXX, August. de ciu. Dei XVI, 26, 25 21 Ismael b || ipse esse P 22 annorum fere (uel prope) centum coni. de Prato 23 Dominus b 1\\ cum duobus b: duobus P, at u. Gen. 18, 2 apparuerunt ei tres uiri stantes propc eum. 24 sedente P II reperierunt b cenatosque domi haberet, iuuentus improba ex oppido nouos hospites ad stuprum flagitabant. Loth pro hospitibus filias offerens, non adquiescentibus, quibus illicita potius desiderio erant, ipse ad stuprum trahebatur.
+inde Sodomam missi angeli Loth in porta sedentem reppererunt. quos cum ille, homines existimans, hospitio receptos cenatosque domi haberet, iuuentus improba ex oppido nouos hospites ad stuprum flagitabant. Loth pro hospitibus filias offerens, non adquiescentibus, quibus illicita potius desiderio erant, ipse ad stuprum trahebatur.
 
 quem angeli propere ab iniuria uindicantes luminibus impudicorum caecitatem offuderunt. tum Loth ab hospitibus edoctus perdendum oppidum, propere cum uxore et filiabus egressus: interdictum tamen est, ne retrorsum respicerent.
 
@@ -100,7 +100,7 @@ nec multum post Deus Abrahae fidem temptans immolandum sibi a patre filium Isaac
 
 at Sara, cum septimum et uigesimum et centesimum annum ageret, decessit: corpus cura uiri sepultum in Chebron, Chananaeorum oppido, etenim illic Abraham commorabatur.
 
-tum Abraham Isaac filium iuuenilis aetatis uidens, siquidem cum quadragesimum annum aetatis ageret, seruo suo imperauit uxorem ei quaereret, ex ea tamen tribu atque terra, de qua ipse oriundus uidebatur: modo ut inuentam puellam in regionem Chananaeorum 14 Gten. 21. 16 Gen. 22. 22 Gen. 23. 24 Gen. 24. 1 coenatosque b 4 «trahebatnr P 7 egressus P: est egressus b II tamen eis est b 1\\ respicerent P: conspicerent b 8 aegre nos: aeger P, aegriua b 9 immolem P 11 interiisse b 13 esset iam Wopkens(lect. Tull. I, 9): esset etiam Pb 14 habraham P 16 Domini b II nec P: Non b; immo nec multo post, ut est I, 21, 2 et 3. 50, 6. II, 18, 5 II Dominus b 17 habrahae P 19 puero ut parceret b 21 abrehae P II Dominus b 22 et cent. P: supra centesimum b 23 Hebron b II chananeorum P 25 iam uiriiis aetatis coni. de Prato \\I cum - ageret P: tum — agebat b 28 chananeorum P dednceret, nec putaret is causa coniugis in solum patrium rediturum. atque ut ea strenue mandata exequeretur, contacto domini femine sacramentum dedit.
+tum Abraham Isaac filium iuuenilis aetatis uidens, siquidem cum quadragesimum annum aetatis ageret, seruo suo imperauit uxorem ei quaereret, ex ea tamen tribu atque terra, de qua ipse oriundus uidebatur: modo ut inuentam puellam in regionem Chananaeorum dednceret, nec putaret is causa coniugis in solum patrium rediturum. atque ut ea strenue mandata exequeretur, contacto domini femine sacramentum dedit.
 
 ita seruus profectus mMesopotamiam ad oppidum Nachor, Abrahae fratris, deuenit. successitque in domum Bathuelis Syri, Nachore patre geniti: huius filiam Rebeccam, speciosam uirginem, conspicatus poposcit atque ad dominum adduxit.
 
@@ -114,7 +114,7 @@ ea tempestate grauis annonae inopia incesserat. qua necessitate Isaac in Geraris
 
 igitur annis grauior, luminibus obductis, cum Esau filium benedicere pararet, consilio Rebeccae matris Iacob se benedicendum pro fratre obtulit. ita Iacob adorandus principibus et gentibus fratri praeponitur.
 
-quis rebus Esau accensus fratri necem moliebatur. quo metu Iacob hortante matre in Mesopotamiam confugit, admonitus a patre ut ex domo Laban, fratris Rebeccae, uxorem acciperet: tanta illis cura fuit, cum in alienis terris 7 Gen. 25. 8 I Paral. 1, 32. 13 Gen. 25. 19 Gen. 26. 23Gen.27. 28 Gen. 28. 1 is P: eum b 2 exequerentur b 5 Nahore b 7 Ceturam Drusius 8 paralipomenonis concnbina edicitur P 12 sepulcro P, sed ead. m. sepulchro corr. 15 Domini b 16 minoris Barthius: minori Pb 17 setis Pb 19 incesserat P: terras incesserat b \\I Gerara Sigonius 20 concessit malebat Vorstius 25 se b: om. P 27 queis b 29 amonitus P consisterent, genus tamen intra familiam suam ducere.
+quis rebus Esau accensus fratri necem moliebatur. quo metu Iacob hortante matre in Mesopotamiam confugit, admonitus a patre ut ex domo Laban, fratris Rebeccae, uxorem acciperet: tanta illis cura fuit, cum in alienis terris consisterent, genus tamen intra familiam suam ducere.
 
 ita Iacob profectus in Mesopotamiam, per soporem Dominum uidisse traditur: atque ob id locum somnii sacratum habens, lapidem ex eo sumpsit: uouitque, si rebus prosperis reuertisset, titulum sibi domus Dei futurum decimasque omnium, quae adquisita sibi forent, Deo daturum.
 
@@ -128,7 +128,7 @@ filiorum, quos ex Lia Iacob habuit, haec sunt nomina: Ruben, Symeon, Leui, ludas
 
 tum Iacob redire ad patrem cupiens, cum ei Laban socer partem pecorum mercedem seruitii dedisset, obque id parum sibi eum aequum gener Iacob ratus, dolum ab eo suspectans, clam profectus est uigesimopostfereanno, quam aduenerat. Rachel uiro inscio patris idola furto abstulit: qua iniuria Laban generum persecutus, non repertis idolis, pace facta regressus est, multum obtestatus generum, ne uxores filiabus suis superduceret.
 
-inde digressus Iacob uidisse angelos et castra Dei traditur. sed cum 6 Gen. 29. 15 Gen. 29. 30. 18 Gen. 31. 24 Gen. 32. 33. 1 suam in P deesse falso tradidit de Prato 4 properis P 5 domfi P, addita s sup. 11 ead. manu II dei P, ut coni. Drusius: Domini b\' 6 Domino b 9 pulchra P: pulchra fuisse b 10 in matrimonium Vorstius coil. I, 11. 34. 35; at cf. I, 43 11 mancipatil P 12 septennii P, ut coni. G. Fabricius: septem in b 15 Symeon P: Simeon edd. cf. LXX 16 lię P, ut coni. Giselinus: hae b II neptalin Pb 17 desperato iam partu b 19 in mercedem malebat Vonck j) obque id P: ob quae b 20 gener Iacob glossema uidetur 21 p\' (i. e. post) P: primo b || uiro 6: uero P 23 pace facta b: patefacta P 24 obtestus P II superduceret de Prato: perduceret P, superinduceret b; cf. Capitolini Anton. phil. c. 29 extr. ne tot liberis superduccret nouercam, Sulp. Viet. inst. rhet. 36 (Rhett. lat. p. 333 ed. Lips.) nouercam filio superduxit 25 Domini b praeter regionem Edom, quam Esau frater incolebat, iter destinaret, missis prius legatis et muneribus suspectum sibi fratrem explorauit. tum ille obuiam fratri processit: nec tamen Iacob se ultra fratri credidit.
+inde digressus Iacob uidisse angelos et castra Dei traditur. sed cum praeter regionem Edom, quam Esau frater incolebat, iter destinaret, missis prius legatis et muneribus suspectum sibi fratrem explorauit. tum ille obuiam fratri processit: nec tamen Iacob se ultra fratri credidit.
 
 sed pridie, quam inter se fratres conuenirent, Deus humana specie assumpta, colluctatus cum Iacob refertur. et cum aduersus Deum praeualuisset, tamen non esse mortalem non ignorauit: benedici se ab eo flagitabat.
 
@@ -142,7 +142,7 @@ mox a Deo monitus Bethel petiit ibique altarium Deo statuit. inde in parte turri
 
 at Esau potens diuitiis erat, uxoribus sibi etiam e Chananaeorum gente assumptis: cuius progeniem in hoc tam praeciso opere inserendam non putaui. si quis studiosior erit, ad originem reuertatur.
 
-post excessum patris Iacob in solo eo, in quo 12 Gen. 33. 16 Gen. 34. 20 Gon. 35. 22 Gen. 36. 3 fratri Vonchio glossa uidetur 5 Dominus b II asumpta P 6 Dominum b 7 ignorans Fabricius; contra de Prato malebat ideoque benedici uel et ben. II se P: sibi b II a Deo b: abeo Pilei P: illi b 9 a Domino nomen Domini b 10 responsum est b 11 femoris b 14 Chorreus Sigonius : chorrens P (rrens in rasura, sed prima m. ita scriptum): Chemo- reus b; LXX in Gen. 34, 2: \'Εμμὼρ ὁΕὐαιος, ὁ ἄρχaωυ τής τής cf. tamen de Prato ad h. l. 15 Sichem b, at cf. LXX 16 Simeon edd. 17 atq. nos: at P, ac b 18 ulti sunt b 19 est abducta b 20 Domino b II Bethel Drwrius: Bethleem Pb; cf. Genes. 35 II altare Domino b 23 octaginta P II diuitiis b: diuinitus P 24 chananeorum gentS P 25 miserendam P 26 originem P: origines b Isaac uixerat, commorabatur. filii eius aliquando ab eo pascui gratia cum gregibus secesserunt, Ioseph tamen et Beniamin paruus domi resederant.
+post excessum patris Iacob in solo eo, in quo Isaac uixerat, commorabatur. filii eius aliquando ab eo pascui gratia cum gregibus secesserunt, Ioseph tamen et Beniamin paruus domi resederant.
 
 carus admodum Ioseph patri obque id inuisus fratribus, simul quia frequentibus eius somniis maiorem eum omnibus futurum portendi uidebatur. igitur ad inspiciendos greges reuisendosque fratres a patre missus oportunus iniuriae fuit. namque uiso fratre consilium necis eius ceperunt.
 
@@ -154,7 +154,7 @@ tum Thamar meretricio habitu assumpto socero mixta est, exque eo geminos edidit.
 
 in partu autem illo mirabile fuit, quod cum prodeunti puero, ad dinoscendum qui prius nasceretur, obstetrix manum eius cocco illigasset, reductus in aluum matris puer posterior editus est. nomen infantibus Pares et Zara inditum.
 
-at Ioseph, cum benigne a curatore regio, qui eum pretio acceperat, haberetur domumque eius et familiam procuraret, decorus ipse insigni specie uxoris domini oculos in se conuerterat. cumque amore turpi deperiret, appetitum saepius nec adquiescentem sibi falso scelere infamat, ac uiro queritur stuprum sibi intentatum. ita Ioseph in carcerem coniectus. erant in 2 Gen. 37. 12 Gen. 38. 20 Gen. 39. 26 Gen. 40. 1 aliquando nos: aliquanto P, aliquantum b 2 cum] oum P II seces- serant b II et P: ac b 6 opportunus b 7 coeperunt P llpetefre P Potifari b; illud reponendum esse docuit de Prato coll. LXX atque Hieronymo in Quaestt. hebr. etAuguat. in Quaestt. in Gen. 1\\ praeposito coquorum Phar. coni. de Prato cum LXX et Aug. Q. in Gen. 77 12 Sanam Drusius: suam Pb, cf. LXX et August. Q. 128 in Gen. II chananeam P 13 Ἤρ, Avvav, ∑ηλὼμ LXX 14 concubio P: connubio b 15 quia spermata b: qui afer uasta P 16 a Domino b 17 illud malebat de Prato, ac paulo post prodeunte 20 posterior edituR Drusius: postero die reductus P, postero die editus b 23 decorfls P 24 turpi P: ipsius b 26 est coniectus b II erant P ead. m. ex irati corr. eadem custodia ministri regii duo:
+at Ioseph, cum benigne a curatore regio, qui eum pretio acceperat, haberetur domumque eius et familiam procuraret, decorus ipse insigni specie uxoris domini oculos in se conuerterat. cumque amore turpi deperiret, appetitum saepius nec adquiescentem sibi falso scelere infamat, ac uiro queritur stuprum sibi intentatum. ita Ioseph in carcerem coniectus. erant in eadem custodia ministri regii duo:
 
 qui cum somnia sua ad Ioseph retulissent, futura ex somnio coniectans, unum eorum poenas capite luiturum, alium absoluendum pronuntiauit. atque ita accidit. igitur post biennium somnium regi obiectum est.
 
@@ -172,7 +172,7 @@ igitur Ioseph rerum potentem, penes quem annonae arbitrium erat, fratres adeunt 
 
 angebatur autem, quod Beniamin fratrem non uidebat. res ergo in id deducitur, ut praesentiam eius pollicerentur, nimirum ut ex eo quaereretur, an isti explorandi causa Aegyptum intrassent. ad promissi autem fidem Symeon obses traditur: ipsis frumentum gratis datum. rursum igitur reuertentes Beniamin, ut conuenerat, deduxerunt.
 
-tum se , cognoscendum Ioseph fratribus praebuit, non sine pudore male merentium. ita eos oneratos frumento multisque donatos domum 3 Gen. 41. 19 Gen. 42. 28 Gen. 43-45. 1 regii nos: regio P, regis b 2 peonas p. 13 consulerat P 14 erat b: est P 1\\ tempus P: tempus vero b 1\\ Asenec Pb 15 Manassem b \\I effi-em Pb 16 septemdecim b 21 Ioseph Pb: casu excidit in edd. plerisque 23 agnicionem P 25 deducitur P: deducta b 28 Simeon edd. remisit, praemonens quinque adhuc annos famem futuram: cum patre atque omni progenie et familia commigrarent.
+tum se , cognoscendum Ioseph fratribus praebuit, non sine pudore male merentium. ita eos oneratos frumento multisque donatos domum remisit, praemonens quinque adhuc annos famem futuram: cum patre atque omni progenie et familia commigrarent.
 
 ita Iacob in Aegyptum descendit, Aegyptiis admodum laetantibus, gaudente rege, benigne a filio susceptus. id gestum anno aetatis Iacob centesimo et trigesimo, a diluuio autem anno MCCC et LX. ceterum ab eo tempore, quo Abraham in terra Chananaeorum consedit, in id, quo Iacob Aegyptum ingressus est, referuntur anni ccxv.
 
@@ -188,7 +188,7 @@ sed defuncto rege, qui eos ob merita Ioseph benigne fouebat, succedentium regum 
 
 nec dissimulari cruentum imperium licebat. qua tempestate filia Pharaonis infantem in flumine repertum nutriendum pro filio curauit: nomen puero Moyses dedit.
 
-Moyses hic, cum uiriles annos ageret, conspicatur Hebraeum ab Aegyptio pulsari: quo permotus dolore, fratrem ab iniuria 2 Gen. 46. 47. 7 Oen. 48. 17 Exod. 1. 25 Exod. 2. 1 annos b: om. P 2 et P: ac b II ad se commigrarent b II ita P: Igitur b 5 annos in CCC P erasa c post ccc II LX Giselinus: XL. P 6 chananeorum P 7 id quod Pb 8 septimo decimo Sigontus II quam in de Prato: quam (vel quain) P II Aegyptum Sigonius 9 sepulchro sno b 10 benedicendos P: patri benedicendos b 13 patram P: maiorum b 17 Hebraei igitur b II aegypto P II incredibili P 19 merito P, meritum b 21 ciuitatium P: ciuitatum b 27 conspicatus b 28 quo P: om. b uindicans, Aegyptium calce perculsum interemit.
+Moyses hic, cum uiriles annos ageret, conspicatur Hebraeum ab Aegyptio pulsari: quo permotus dolore, fratrem ab iniuria uindicans, Aegyptium calce perculsum interemit.
 
 mox supplicium e facto metuens in terram Madian profugit: et apud Iothor sacerdotem regionis illius diuersatus filiam eius Sepphoram in matrimonium accepit exque ea duos filios Gersam et Eliezer sustulit.
 
@@ -204,7 +204,7 @@ qua nouitate obstupefactus rubo propius accessit, statimque ad eum istius modi f
 
 ita Moyses in Aegyptum profectus, signis prius apud suos editis, assumpto fratre Aaron regem adiit: missum se a Deo prodit uerbisque se Dei dicere, populum Hebraeum uti dimitteret. at ille negans se Dominum nosse parere imperio abnuebat.
 
-cumque Moyses in testimonium mandatorum Dei ex uirga draconem fecisset, mox aquas omnes in sanguinem conuertisset totamque terram ranis opplesset, facientibus similia Chaldaeis, magicas esse artes, quaecumque per Moysen fierent, potius quam Dei uirtutem pronuntiabat, donec superductis 14 Exod. 3. 21 Exod. 4. 24 Exod. 5. 25 Exod. 6-8. 2 Madiam de Prato cum LXX \\I iothor P, ut uoluit Drusius: Iethor b 4 Gersam de Prato: gersan P, Gersom b [I Elieser b 5 lege P, ut coni. Voncfc: legem b 9 prae doloris b: predoris P 14 conuersis Vonck: conuersi Pb 18 Deum Drusius coll. Exod. 3, 6 19 dominationS P || iret ergo P: iter ergo susciperet b 21 potestatS P 30 scyniphibus (ex Graeco axvty) P, cyniphibus b, ciniphibos wwIgo sciniphibus terra oppleta est, Chaldaeis fatentibus maiestate diuina ista fieri.
+cumque Moyses in testimonium mandatorum Dei ex uirga draconem fecisset, mox aquas omnes in sanguinem conuertisset totamque terram ranis opplesset, facientibus similia Chaldaeis, magicas esse artes, quaecumque per Moysen fierent, potius quam Dei uirtutem pronuntiabat, donec superductis sciniphibus terra oppleta est, Chaldaeis fatentibus maiestate diuina ista fieri.
 
 tum rex malo coactus, aduocato ad se Moyse et Aaron, dat populo discedendi potestatem, modo ut superductam cladem auerterent.
 
@@ -216,7 +216,7 @@ ita populus egressus diues et suis copiis et Aegypti spoliis cumulatior: cuius n
 
 igitur propere egressis columna nubis interdiu, noctu columna ignis praeferebatur. sed cum ob interfectum sinum rubri maris praeter terram Phylistiim uia duceret, ne postea Hebraeis eremum aspernantibus redeundi in Aegyptum continentibus terris noto itinere facultas panderetur, nutu Dei auersi in rubrum mare illati sunt castraque ibi cunctantes constituerunt.
 
-quod ubi regi 4 Exod. 9-11 7 Exod. 12 sq. 19 Exod. 12. 23 Exod. 14. 1 fatentibus b: facientibus P 2 moysen P 3 populii P 5 israhelitas P 8 pridic de Prato: pridem P, prius b II est egressus b 9 Domini b 11 solennitatem b 16 dives et P: et om. b II et] ex P 18 primi in scripsi: primum Pb 19 sexceijta b 1\\ peruenerat Pb: perucnevant edd. priores pleraeque \\I ab eo autem] nisi malis Vorstium secutus ab co tempore scribere, utrum de Prato uidisse existimandus est, qui hic enuntiatum intercidisse statuit, quod sic explere conatus est: peruenerat [id factum post annos ccv ab eo tempore quo Jacob in Aegyptum peruenerat:] ab eo autem etc. 24 Philistiim de Prato tsecundum Graecum Φλιστιε(μ), phylistim P, Philistim b 1\\ heremum P nuntiatum est, Hebraeum populum uiae errore in obiectum mare deuenisse, nullum ei esse exitum obsistente elemento, furensanimi, quoniam angebatur, tothominiim milia regno suo et potestati decedere, exercitum propere educit.
+quod ubi regi nuntiatum est, Hebraeum populum uiae errore in obiectum mare deuenisse, nullum ei esse exitum obsistente elemento, furensanimi, quoniam angebatur, tothominiim milia regno suo et potestati decedere, exercitum propere educit.
 
 iamque eminus arma signaque et protentae patentibus late campis acies uisebantur, cum Hebraeis metu trepidis et caelum aspectantibus Moyses a Deo monitus percussum uirga mare discidit.
 
@@ -232,7 +232,7 @@ exin promotum agmen apud Elim duodecim fontibus aqua- \'rum et septuaginta arbor
 
 postero autem die animaduertunt qui extra castra processerant, paruis quibusdam siliquis oppletum solum: quarum species in modum coriandri seminis glaciali albitudine erat, ut crebro hibernis mensibus superductis pruinis tegi terram nidemus.
 
-tum per Moysen populus admonetur, panem hunc eis munere missum Dei: unumquemque in id paratis uasculis tantum 11 Exod. 15. 19 Exod. 16. 2 fort. nec ullum 3 quoniam scripsi: quo Pb (pro quo), quod de Prato 4 eicercitum P, item t1. 10 excercitu 7 verba uelut—aegyptius P in litura scripta habet, sed prima manu 11 incolumitate suorum, exitio hostium b: incolumitate exitium hOBtium P, an ob incolumitatem suorum et exitium h. ? II uirtute P: uirtuteque b, uirtuteque Dei Sigo- Mtus 12 Domino b 13 mulieris P II ingressus P, etA. Sigonius II heremum P 15 impatentiB (non impatientis) P, impotentia b II contnmatia P 19 arborum Pb, etII. Sigonius; ef. 1, 27, 3 oliuarum arbores exustae 21 tum rex coturnuscum P, em. ita b 24 albedine b 26 pannem P 2 usurpare debere, quantum in diem unum pro numero singulis satis esset: sexto tamen die, quia sabbato colligi non liceret, duplum praesumerent.
+tum per Moysen populus admonetur, panem hunc eis munere missum Dei: unumquemque in id paratis uasculis tantum usurpare debere, quantum in diem unum pro numero singulis satis esset: sexto tamen die, quia sabbato colligi non liceret, duplum praesumerent.
 
 uerum populus, ut semper parum dicto audiens, more humani ingenii non refrenauit cupiditatem, ex reconditis in posterum quoque diem consulens. sed reposita foetore diro in uer-
 
@@ -248,7 +248,7 @@ huius consilioMoyses ordines populi distribuit: tribunos centurionesque et decur
 
 ibi Moyses a Domino monetur, populus ut sanctificaretur, auditurus Dei uoces: idque sollicite curatum. sed ubi Deus monti institit, ualidis tubarum clangoribus aer quatiebatur, crassaeque nubes crebris cum fulminibus aduoluebantur.
 
-sed Moyses et Aaron in 11 Exod. 17. 19 Exod. 18. 25 Exod. 19. 1 pro numero domesticorunf (vel familiae) malebat de Prato 5 fetore P 7 cibo sunt osi b II cuius b: cil P (pro cui\', ut cuius semper scriptum est) 8 tradit P 9 diuini b: diluuii P 12 teperabat P 13 Choreb Exod. 17, 6: chreph P, Oreb b 14 amalechitae Ph 15 uexabant mdlebat Sigonius 16 Ὤρ LXX 19 hiesus P 19 et 24 Jethro b 23 distribuit et malebat de Prato (ad 1, 25 pag. 41) 25 synam P 26 sanctificaret P 29 fluminibus P montis cacumine Dominum propter, populus circa ima montis constitit. ita lex lata multiplex et copiosa Dei uerbis, et saepe repetita: cuius si quis erit curiosior, fontem ipsum adeat, nos eam breuiter perstringimus.
+sed Moyses et Aaron in montis cacumine Dominum propter, populus circa ima montis constitit. ita lex lata multiplex et copiosa Dei uerbis, et saepe repetita: cuius si quis erit curiosior, fontem ipsum adeat, nos eam breuiter perstringimus.
 
 Non erunt, inquit, tibi dii alieni praeter me: non facies tibi idolum: non sumes nomen Dei tui in uanum: sabbato nullum opus facies: honorifica patrem tuum et matrem tuam: non occides: non moechaberis: non furtum facies: non falsum testimonium dices aduersus proximum tuum: non concupisces quicquam proximi tui.
 
@@ -260,7 +260,7 @@ si quis Hebraeum subreptum uendiderit, morti dabitur. si quis seruum proprium se
 
 taurus si hominem occiderit, lapidabitur: si dominus sciens bestiae uitium non consuluerit, et ipse lapidabitur, aut pretio se redimat, in quantum accusator poposcerit. si seruum taurus occiderit, in triginta didrachmis pecunia domino numerabitur.
 
-si quis defossum lacum non cooperuerit pecusque ui lacum : 2 Eiod. 20. 14 Exod. 21. 4 Dei alieni b 5 silmes P 7 non occides om. P 13 Dominus b 16 qui prudens hominem Sigonius 18 conuiciumque Pb, em. de Prato II afficitur P 20 isque malebat Vonck II in om. b 21 excusserit] Exod. 31,22: \'Εάv ih μάχωvται dvo ἄvδρες παι πατάξωσι γυναϊxα ξv γαστρϊ tyouoav, xal έξέλϑη τό παιδlov aύτης έξειxονισμένον , έπιζήμιον ζημιω- ϑὴσεται\' xaaort av έπιβάλη o άνηρ τη̃ς γυναιxóς, δώσει pera áξιώματος. έάν δέ ξξειxονισμένον 9, δώσει Ψυχὴν avrl Ψυχη̃ς. Suppleuit de Prato secundum Drusium: si quis partum non deformatum mulieri excusserit, [multam pendet; si deformatum] neci dabitur. 26 dragmis P, em. Dru- siw ex LXX Exod. 21, 32 2* ceciderit, pretium pecudis domino dabit. si taurus alterius taurum occiderit, pecus uenum dabitur pretiumque domini partientur, peremptum etiam diuident. quod si dominus uitium tauri sciens non consuluerit, taurum dabit.
+si quis defossum lacum non cooperuerit pecusque ui lacum : ceciderit, pretium pecudis domino dabit. si taurus alterius taurum occiderit, pecus uenum dabitur pretiumque domini partientur, peremptum etiam diuident. quod si dominus uitium tauri sciens non consuluerit, taurum dabit.
 
 si quis uitulum subripuerit, quinque restituet: si ouem subripuerit, quadrupli poena erit: si uiua penes abactorem pecora reperientur, dupla restituet. nocturnum furem occidi licet , diurnum non licet. si cuius pecora alterius sata depauerint, dominus pecoris euersa restituet. si depositum perierit, is, penes quem depositum fuit, iurabit nihil se dolo egisse. fur inuentus duplum dabit. commendatum pecus a bestia interceptum non restituetur.
 
@@ -272,7 +272,7 @@ innocentem et iustum non occides. non iustificabis impium pro muneribus.] munera
 
 Haec fere Moyses ad populum verba dei retulit altariumque ex duodecim lapidibus sub monte constituit.
 
-ac rursum montem in quo Deus consistebat, conscendit, adhibito secum Aaron, Nabad 18 Exod. 23. 27 Exod. 24. et Abiud maioribusque natu septuaginta, sed hi non ualentes Dominum intueri, locum tamen, in quo Deus stabat, uiderunt: cuius mirabilis forma et claritudo eximia refertur. Moyses accersitus autem a Deo interiorem nubem, quae circum Deum steterat, in- gressus , quadraginta diebus totidemque noctibus ibi fuisse traditur.
+ac rursum montem in quo Deus consistebat, conscendit, adhibito secum Aaron, Nabad . et Abiud maioribusque natu septuaginta, sed hi non ualentes Dominum intueri, locum tamen, in quo Deus stabat, uiderunt: cuius mirabilis forma et claritudo eximia refertur. Moyses accersitus autem a Deo interiorem nubem, quae circum Deum steterat, in- gressus , quadraginta diebus totidemque noctibus ibi fuisse traditur.
 
 quo tempore super aedificando tabernaculo atque arca rituque sacrificandi edoctus uerbis Dei est : quae ego, quia prolixa admodum uidebantur, inserenda huic tam praeciso operi non putaui.
 
@@ -300,7 +300,7 @@ tum Deus inmensam copiam coturnicum castris intulit: quae cum auide diriperent, 
 
 inde promotum agmen et in Faran uentum est: edoctusque a Deo Moyses, uicinam esse terram, cuius possessionem eis promiserat Deus, exploratoribus in eam missis renuntiatur, felicem omni copia esse regionem, sed gentes ualidas et munita ingentibus muris oppida.
 
-quod ubi populo compertum, magna mentes omnium formido incesserat : eoque mali uentum, 11 Num. 1 sqq. 14 Num. 11. 17 Num. 12, sq. 22 Num. 14. 2 Domini b 3 tabernaculfl P: tabernaculi b II referetur P: refertur b, quo recepto hoc in loco interpretantur \'scilicet ab Exodi cap. 35 usque ad finem libri\'. Quodsi codicis scriptura uera est, adnotationem Seueri de re habemus, quam exsecuturus erat, sed incertum qua causa praetermisit 8 legi Vonck: legis Pb 10 hystoriam P 11 persequimur] sic P, non prosequimur, utaitde Prato 12 DC. et .111..D. P, DC et nr ub; nos scripsimus rn addito signo millenario, ut iam sit numerus hominum 603,500; in quarto libro Pentateuchi (Num. 1, 46) numervs est 603 milia et 550 15 desiderabat P (sc. cibos): dapes desiderabat b II Dominus b, item u. 21 17 clades in castris b 18 xx. et III. uirorum P: xx et m virorum millia b n perisse traduntur P, periisse tradantur b 19 desiderauerat de Prato 20 a Domino b 21 ei malebat de Prato ut spreto Moysi imperio ducem sibi constituere pararent, cuius ductu m Aegyptum reuerterentur.
+quod ubi populo compertum, magna mentes omnium formido incesserat : eoque mali uentum, ut spreto Moysi imperio ducem sibi constituere pararent, cuius ductu m Aegyptum reuerterentur.
 
 tum Iesus et Chaleb, qui inter exploratores terrae fuerant, conscissis uestibus flentes populum obtestantur, ne exploratoribus credant, formidolosa referentibus: se quoque una cum his fuisse, nihil metuendum in solo illo repperisse:
 
@@ -312,7 +312,7 @@ nec multo post totius populi in Moysen et Aaron orta seditio est, adeo ut tabern
 
 nec multo post ob aquae penuriam, ut iam saepius, populi exorta seditio est. tum Moyses a Deo monitus, ut petram uirga feriret, familiari sibi experimento, siquidem id iam ante fecisset, semel atque iterum petram percussit, atque ita aqua effluxit. in quo quidem notatus a Deo Moyses refertur, quod per diffidentiam non nisi iterato ictu aquam eduxerit: denique ob hoc peccatum promissam sibi terram non ingressus est, sicut inferius ostendam.
 
-igitur Moyses ex eo loco promouens, cum praeter Edom agmen ducere pararet, missis ad regem legatis transeundi copiam poposcit, ob ius sanguinis bello abstinendum ratus: etenim gens illa Esau progenies erat. sed rex supplices aspernatus transitum negauit, paratus armis contendere. 11 Num. 16 sq. 13 Num. 20. 1 spreto b: expto P 2 Tunc b 5 unft P II nibil P II reperisse b 8 in perniciem suam Drusius et dePrato; at refertur eorum adJesum et Chalebum, u. Num. 14,10 II queis rebus commotus Dominus b 9 obiecit. Eiploratoribus b et edd. priores; uerborum distinctionem emendauit de Prato 11 contumatia P \\I Abirom Drusius 13 obsorbuit P: absorbuit b 15 ni P: nisi b 18 DeC. et XIIII. milia P 19 TuncMoises a Domino b 20 farailiarc P 22 a Domino b 26 ducere de Prato: educere Pb
+igitur Moyses ex eo loco promouens, cum praeter Edom agmen ducere pararet, missis ad regem legatis transeundi copiam poposcit, ob ius sanguinis bello abstinendum ratus: etenim gens illa Esau progenies erat. sed rex supplices aspernatus transitum negauit, paratus armis contendere.
 
 tum Moyses in Or montem iter conuertit, uetita uia abstinens, ne quam inter consanguineos causam belli praeberet , in eoque cursu regem gentis Chananaeorum deleuit. Seon quoque regem Amorlaeorum perculit omnibusque eorum oppidis potitus est: Basan etiam et Balac reges deuicit. castra super Iordanem haud longe ab Iericho molitus est. tum aduersus Madianitas certatum uictique et subacti sunt. Moyses mortuus est.
 
@@ -328,7 +328,7 @@ principio autem suscepti imperii dimissis per castra nuntiis populum certiorem f
 
 sed Iordanis flumen ualidissimum transitum prohibebat, quia neque nauium copia pro tempore erat neque uadari fluuius poterat, qui tum pleno alueo ferebatur. igitur aream praeferri a sacerdotibus eosdemque aduerso flumine consistere iubet, quo facto incisus Iordanis traditur: ita per siccum copiae traductae.
 
-erat in his locis oppidum nomine Iericho, muris ualidissimis munitum neque expugnationi neque 2 Num. 21 et Dent. 3, 20. 3 Num. 22 sqq. 7 Num. 31. Dcut. 34. 11 Dent. 32. 17 Jos. 1. 24 Jos. 3. 1 in Hor m. Druum II ne quam b: nequaqui P 2 in eoque de Prato: in eo quoque Pb 3 amorreoruln Pb 4 omnibusque VOftà: omniumque Pb 5 etiam Pb: quoque edd. pUraeque II castra P: et castra b 6 iericho P, sed infra c. 22 hiericho II Tunc b 9 heremo P 13 asscribitur P 15 de sepulchri loco b: depulchrolocoP 17 Moysea P ante rasuram II Naue] Navrj in LXX corruptum esse ex Navv notauit Drusius 19 sui simillimum Sigonius: suis simillimum Pb 21 flamen uadosiHHimum malebnt de Prato 26 erant P 27 Hiericho Pb obsidioni facile. sed Iesus Deo fretus, non armis aut uiribus urbem aggressus, ferri aream Dei circa muros iubet sacerdotesque praeire aream et tuba canere. sed cum arca septies circumacta esset, muri ac turres conciderunt, direptum oppidum atque incensum. tam Iesus Deum traditur...
+erat in his locis oppidum nomine Iericho, muris ualidissimis munitum neque expugnationi neque obsidioni facile. sed Iesus Deo fretus, non armis aut uiribus urbem aggressus, ferri aream Dei circa muros iubet sacerdotesque praeire aream et tuba canere. sed cum arca septies circumacta esset, muri ac turres conciderunt, direptum oppidum atque incensum. tam Iesus Deum traditur...
 
 inde aduersus Geth ductus exercitus, locatisque a tergo urbis insidiis, Iesus metum simulans, terga hosti dedit. quo uiso qui in oppido erant patentibus portis cedentibus instare. ita hi, qui in insidiis fuerant, uacuam urbem cepere, caesique omnes absque ullius effugio: rex captus summoque supplicio affectus.
 
@@ -338,7 +338,7 @@ sed regibus proximarum urbium deditio eorum iras conciuerat. itaque admotis copi
 
 ita ille maturato itinere inopinantibus superuenit caesaque ad internecionem multa hostium milia. cum dies caedentes deficeret noxque uictis futura praesidio uideretur, merito fidei dux Hebraeus noctem auertit, dies perseuerauit: ita nullum hostibus effugium fuit. quinque reges capti interfecti sunt. eodem impetu uicinae quoque urbes imperio adiectae regesque earum perempti.
 
-uerum quia omnia haec \' in ordinem persequi non fuit consilium, dum breuitati studemus, 1 Jos. 6. 5 Jos. 8. 11 Jos. 9. 16 Jos. 10. 23 Jos. 11. 24 Jos. 12. 1 facilis Pb II Domino b 3 circumacta P: circumlata b 4 turres Pb: turris edd. multae uitiase 5 Dominum b II traditur] supplet Gciesinius ex Josuae cap. 6, 26: Tum Jesus Dominum traditur allocataa, iis male precando, qui Hierichon oppidum ope diuins. disturbatum instaa- . . rare aggrederentur. \\I Geth Pb: Gai de Prato (praeeunte Drusio) cum graecis Bibliis et Hieronytno de locis Paiestinae II excercitus P 12 \'мal- lem tantwn uel in bellum conspirant uel conspirant H. annis depellere* de Prato; cf. II, 11, 4 13 dedidcrant Galesinius: dederunt Pb 14 malim receptisque in fidem.. imperatum 16 Gabaoth Pb: Gabaon Drusius 17 artis P : arctis b 18 nuntiiss (sic) P \\I succurret P 19 internecionem I ulta P id modo annotandum curauimus, xx et nouem regna imperio Hebraeorum subiecta: quorum terra per undecim tribus uiritim distributa est. Leuitis enim in sacerdotium assumptis nulla portio data, quo liberius seruirent Deo.
+uerum quia omnia haec \' in ordinem persequi non fuit consilium, dum breuitati studemus, id modo annotandum curauimus, xx et nouem regna imperio Hebraeorum subiecta: quorum terra per undecim tribus uiritim distributa est. Leuitis enim in sacerdotium assumptis nulla portio data, quo liberius seruirent Deo.
 
 equidem hoc exemplum non tacitus praeterierim, legendumque ministris ecclesiarum libenter ingesserim. etenim praecepti huius non solum immemores, sed etiam ignari mihi uidentur: tanta hoc tempore animos eorum habendi cupido ueluti tabes incessit. inhiant possessionibus, praedia excolunt, auro incubant, emunt uenduntque, quaestui per omnia student.
 
@@ -350,7 +350,7 @@ eodem tractu Iesus mortuus est, anno aetatis decimo et centesimo. de imperii aut
 
 Iesu mortuo populus sine duce agebat. sed cum aduersus Chananaeos bellandum esset, dux belli ludas assumptus est. huius ductu res prospere gestae: domi militiaeque summum otium: populus subactis aut per deditionem acceptis gentibus imperitabat.
 
-inde, ut semper fieri secundis rebus solet, morum disciplinaeque immemor matrimonia ex uictis assumere paulatimque externos mores trahere ac mox profano ritu idolis sacrificare occepit: adeo 3 Jos. 13. sqq. 15 Jos. 23. 24. 22 Jud. 1. 1 xxxi Stgonius coll. Jos. 12, 24. 2 terra per undecim tribus uiritim b: trib; per undecim tribus uirtntem P; uerum erat per xn tribus, sed uidetur error ipsim Seueri 6 immoemores P 7 labendi P 15 incoeptum Pb 17 annis nemine audente tentare b ex interpolatione 1\\ tractu temporis malebat de Prato, temporum tractu Vonck coll. I, 13. II, 5. 9. 12. 33. 21 m P, ut coni. GiselintIJJ: M b 22 chananeos P 23 Juda coni. Brusius, quoniam de tribu sermo est 25 populus aut subactis b 27 assumere b: assumpsere P cuncta cum externis societas perniciosa est. quae Deus longo ante prospiciens salubri Hebraeos responso instruxerat, deuictas gentes ut internecioni darent. sed plebs cupida dominandi imperare victis cum pernicie malebat.
+inde, ut semper fieri secundis rebus solet, morum disciplinaeque immemor matrimonia ex uictis assumere paulatimque externos mores trahere ac mox profano ritu idolis sacrificare occepit: adeo cuncta cum externis societas perniciosa est. quae Deus longo ante prospiciens salubri Hebraeos responso instruxerat, deuictas gentes ut internecioni darent. sed plebs cupida dominandi imperare victis cum pernicie malebat.
 
 igitur cum relicto Deo idola colerent, destituti diuino auxilio, a rege Mesopotamiae euieti et subacti VIII annis captiuitatem pependerunt, donec Gothoniel duce in libertatem restituti per quinquaginta annos rerum potiti sunt.
 
@@ -360,7 +360,7 @@ rursumque Hebraeos sectantes idola rex Chananaeorum Iabin nomine subiugauit grau
 
 rursumque ob peccata Madianitis traditi duro imperio habebantur, afflictique malo seruitutis diuinum auxilium implorauerunt. ita semper in secundis rebus immemores caelestium beneficiorum idolis supplicabant, in aduersis Deo.
 
-unde cum reputare in animo soleo, populum tot beneficiis Dei obligatum, tot cladibus cum peccaret coercitum, expertumque et misericordiam et seueritatem Dei nequaquam emendatum, et cum semper ueniam erroris acciperet, semper peccasse post ueniam, nihil mirum uideri potest Christum 4 Jud. 3. 14 Jud. 4 sq. 20 Jud. 5. 1 pernitiosa P, item u. 4 pernitie II longo P: longe b 3 internetioni P 5 malim Mesopotamiae uicti 6 vm Vorstim (ef. Jud. 3,8): vn Pb IIlibertate P 7 quadraginta Judicum 3,11, cf. de Prato ad h. I. 9 Eglom Vorgtius: eglo P (ab Eglo enim rege b) 10 intinctu P \\I Aod Drusius: Adon Pb 11 exercitui P 13 Samegar LXX et August. Quaest. 25 in lib. Jud. II isque P (corr. 1 m. ex icque): hicque b II aduersum P corr. II allofilos P II secundo euentu Drusim 19 forma J. C. Hofmeisterus (in ed. Tiguri 1708) glossema esse uidit \\I est depulsa b 23 coelestium b 25 Deo malebat de Prato ab his non receptum, cum iam inde ab initio totiens in Domino rebelles deprehendantur: magisque mirum est, illis semper peccantibus numquam Dei, si quando eum implorauerunt, defuisse clementiam.
+unde cum reputare in animo soleo, populum tot beneficiis Dei obligatum, tot cladibus cum peccaret coercitum, expertumque et misericordiam et seueritatem Dei nequaquam emendatum, et cum semper ueniam erroris acciperet, semper peccasse post ueniam, nihil mirum uideri potest Christum ab his non receptum, cum iam inde ab initio totiens in Domino rebelles deprehendantur: magisque mirum est, illis semper peccantibus numquam Dei, si quando eum implorauerunt, defuisse clementiam.
 
 Igitur cum eis, ut supra retulimus, Madianitae dominarentur, conuersi ad Dominum, misericordiam solitam flagitantes, impetrauerunt.
 
@@ -374,7 +374,7 @@ perfecto sacrificio dirutaque ara, quam Baalis idolo Madianitae sacrauerant, ad 
 
 sed priusquam confligeret, Deus ad eum locutus est, nimiam esse hanc multitudinem, quam in proelium uellet educere: Hebraeos pro solita perfidia euentum pugnae non Deo, sed uirtuti suae daturos: itaque daret uolentibus discedendi potestatem. quod ubi populo diuulgatum, xx et II a castris recesserunt. sed ex decem milibus, quae resederant, admonitus a Deo non amplius quam trecentos tenuit:
 
-reliquos ab armis dimisit. ita media uigilia castra hostium ingressus, iussis omnibus tuba canere, magnum terrorem iniecit: neque cuiquam resistendi animus fuit: turpi fuga quo quisque potuit dilapsi. 19 Jud. 7. 1 non esse receptum b II toties b II in Dominum Vorstius 8 Domino b 9 et addidit Vorstius II inquid P 10 Dominum ingemiscebat b II siquidem populum Giselinus 14 abnuere in se Hornius; siquidmutandum, potius Be delendum uidetur 15 perstare P: perstare contra b 16 Dominus b II perfecto P: perfecto igitur b 17 bachili P corr. w bachali 18 perfectus P 19 Amalec Drusius 20 n milia] n P 22 pręlio P II solitã P 26 a Domino b 29 quisque 6: quisqui P II dilapsi P: dilapsis b sed occurrentibus omni ex parte Hebraeis passim fugientes cadunt. reges Gedeon persecutus ultra Iordanem, comprehensos neci dedit. ea pugna c et xx ex hostibus caesa, xv capta traduntur.
+reliquos ab armis dimisit. ita media uigilia castra hostium ingressus, iussis omnibus tuba canere, magnum terrorem iniecit: neque cuiquam resistendi animus fuit: turpi fuga quo quisque potuit dilapsi. sed occurrentibus omni ex parte Hebraeis passim fugientes cadunt. reges Gedeon persecutus ultra Iordanem, comprehensos neci dedit. ea pugna c et xx ex hostibus caesa, xv capta traduntur.
 
 tum consensu omnium Gedeoni, ut princeps populi esset, delatum. quod ille aspernatus communi iure cum ciuibus uiuere quam praeesse suis maluit. depulsa igitur captiuitate, quae septem annos populum continuerat, pax per XL annos fuit.
 
@@ -388,7 +388,7 @@ quo tempore eis Deum inuocantibus diuinum responsum redditum est, simulacra poti
 
 igitur Iepta duce ad libertatem armis uindicandam frequentes conueniunt, missis prius ad Ammon regem legatis, finibus suis contentus bello abstineret. at ille proelium non abnuens aciem instruxit. tum Iepta prius quam signum pugnae daretur, uouisse dicitur, si prospere pugnasset, eum, qui sibi primus reuertenti obuius fuisset, hostiam Deo dandum.
 
-ita uictis hostibus, cum 2 Jud. 8. 8 Jud. 9. 13 Jud. 10. 24 Jud. 11. 3 xv b: xv P II Tunc b 8 Gedeoni b, Gedeone Vonck 10 Sichimorum b 1\\ operam P: operam Fei b 15 Thola Galesinivs: cholias Pb 17 Domino b \\I iarahelitae P; itemp. -30, 11 18 ab illophilis P II duoq. b: duo P 19 Dominum b 20 diuinum P: diuinum scilicet b 22 precari ueniam b 24 Jephtha Drusius 25 Amon ad regem P, ad Amõ regem b, ad Ammonitarum regem Voratius, ad regem fUiorum Ammon Drusius; at cf. 1, 35, 4 ad regem Moab II finibus P: ut finibufl b J26 abstinere P 29 damdfl (sic) P, sed ù ex ã ead. m. corr. domum rediret, filia ei obuiam fit, quae patrem exceptura uictorem cum tympanis et choris laeta processerat. tum Iepta consternatus, dolore conscissis uestibus, indicat filiae uoti necessitatem. at illa non feminea constantia, mori non recusans, duos tantum tamen menses uitae spatium petit, ut aequales suas prius uideret. quibus actis ultro ad patrem rediit uotumque Deo reddidit. Iepta principatum sex annis tenuit.
+ita uictis hostibus, cum domum rediret, filia ei obuiam fit, quae patrem exceptura uictorem cum tympanis et choris laeta processerat. tum Iepta consternatus, dolore conscissis uestibus, indicat filiae uoti necessitatem. at illa non feminea constantia, mori non recusans, duos tantum tamen menses uitae spatium petit, ut aequales suas prius uideret. quibus actis ultro ad patrem rediit uotumque Deo reddidit. Iepta principatum sex annis tenuit.
 
 huic Esebon successit, et tranquillis rebus exacto imperio anno septimo decessit. postque eum Ailon Zabulonites annis x itemque Abdon annis VIII rerum potiti, pacis tempore nihil quod historia loqueretur ediderunt.
 
@@ -400,7 +400,7 @@ is intonso capite mirae uirtutis fuisse traditur, adeo ut leonem in uia obuium m
 
 grandi Allophylorum exitio abreptae uxoris iniuriam ultus uidebatur. quo dolore Allophyli permoti mulierem tanti mali causam cum domo et patre incendio consumpserunt. sed Samson parum se uindicatum ratus, urguere omnibus incommodis profanam gentem non desinebat.
 
-tum compulsi Iudaei uinctum eum Allophylis tradiderunt: 7 Jud. 12. 11 Jud. 13. 17 Jud. 14 21 Jud. 15. 4 foeminea b 5 tamen del. Fabricius, item Vonck, nisi tantum delendum sit 6 rediit Pb: redit edd. recentiores II Domino b 7 \'Εσεβάυ in 8 et b: om. P 9 Allon Pb, Atkwv LXX, Ahialon uulgo 12 allophilis P et sic infra semper allophili 14 dictaque P II sicera P, sed s eadem m. ex c corr. 17 fuisse Pb: om. edd. recentt. pleraeque 21 Domino b \\I uictoris P 23 immisit. At tum b 28 urgere b sed traditus ruptis uinculis, arrepto osse asini, quod casus telum dederat, mille ex hostibus prostrauit. ingrauescente autem aestu, cum siti affectus esset, inuocato Deo ex osse, quod manu tenebat, aqua fluxit.
+tum compulsi Iudaei uinctum eum Allophylis tradiderunt: sed traditus ruptis uinculis, arrepto osse asini, quod casus telum dederat, mille ex hostibus prostrauit. ingrauescente autem aestu, cum siti affectus esset, inuocato Deo ex osse, quod manu tenebat, aqua fluxit.
 
 Ea tempestate Samson Hebraeis praeerat, Allophylis unius uirtute domitis. igitur insidiantes uitae eius nec palam eum temptare audentes uxorem eius, quam ille postea acceperat, pecunia corripiunt, uirtutem uiri uti proderet.
 
@@ -414,7 +414,7 @@ ita die quodam, cum publicum epulum in honorem idoli dedissent, Samson exhiberi 
 
 productus Samson inter columnas statuitur. tum ille tempore arrepto, inuocato prius Domino, columnas disiecit: turbaque omnis ruina domus obruta, ipse cum hostibus non inultus occubuit, cum xx annis Hebraeis praefuisset.
 
-huic Simmichar successit, de quo nihil amplius scriptura prodidit. nam neque finem imperii eius repperi et fuisse populum sine duce inuenio. ideo, cum aduersus Beniamin tribum ciuile bellum fuit, ludas temporarius dux belli assumptus est. sed plerique, qui de temporibus scripserunt, annuum imperium eius annotauerunt: plerique ita eum praeterierunt, ut post Samson 6 Jud. 16. 3 Domino b 6 teptare P 8 corripiunt P: corrumpunt b 9 multa P: multum b 10 captis P 14 accisos Pb II cum eo P: cum eis b II occoeperat b 18 idolis P 19 exhyberi P 21 mire P 25 Simmichar Pb, at infra c. 29, 7 Semigar 26 reperi b 27 ideo 6; adeo P p tribuum de Prato 29 plerique] immo pauci (uel aliqui); videtur eum librarius sequens plerique calamo praecepisse p annuum imperium scripsi: annùunù imperiO. P, annum unum imperio edd. Heli sacerdotem snbiunieriiit. nos eam rem ut parum compertam in medio relinquemus.
+huic Simmichar successit, de quo nihil amplius scriptura prodidit. nam neque finem imperii eius repperi et fuisse populum sine duce inuenio. ideo, cum aduersus Beniamin tribum ciuile bellum fuit, ludas temporarius dux belli assumptus est. sed plerique, qui de temporibus scripserunt, annuum imperium eius annotauerunt: plerique ita eum praeterierunt, ut post Samson Heli sacerdotem snbiunieriiit. nos eam rem ut parum compertam in medio relinquemus.
 
 Per haec tempora ciuile, ut diximus, bellum exarserat, causa autem motus haec fuit.
 
@@ -432,7 +432,7 @@ nam cum post Samson iudicem Semigar fuerit, pauloque post historia consignet pop
 
 ceterum a die mortis Iesu usque in id tempus, quo Samson defunctus est, numerantur anni cccc et XVIIII, a mundi autem exordio anni IIII ccc et m.
 
-quamquam ab hac supputatione nostra 4 Jud. 19. 15 Jud. 20 sq. 1 Eli rectius scribi monuit Drusius 5 urgente b 6 successerat scripsi: succederat P, secesserat b; cf. 1, 35, 5 8 parentes P II exorati Sigonius: exortati P, exhortati b 10 crediderunt P, em. in b 11 uerecundiae Pb, em. in ed. Colon. II patrum P 18 internetionem P 19 regnorum coni de Prato, ut est infra II sequuntur P: sequentur b 21 et 22 hystoria P 21 cum P sup. lin. sed 1 manu 23 bęli P me et paulo post 24 sed P, ut malebat Vorstius: sed quum b 25 uideo] iudęo P 27 xvnn lnselinus: vmi P 28 nii Pb: IV edd. multae perperam II in] XXIII Sigonius ceteros discordare non nesciam: sed mihi conscius sum, me non incuriose latentem annorum ordinem protulisse, donec m haec tempora incidi, de quibus dubitare me fateor. nunc reliqua exequar.
+quamquam ab hac supputatione nostra ceteros discordare non nesciam: sed mihi conscius sum, me non incuriose latentem annorum ordinem protulisse, donec m haec tempora incidi, de quibus dubitare me fateor. nunc reliqua exequar.
 
 Igitur, ut supra retuli, Hebraei sine iudice aut duce ullo I proprio arbitrio agebant. Heli sacerdos erat: sub hoc Samuel natus est. huic pater Elchana, mater Anna.
 
@@ -450,7 +450,7 @@ Victores secundo proelio Allophyli arcam Dei, quae in potestatem uenerat eorum, 
 
 cumque idolum loco restituissent, nocte insecuta discerptum est. inde mures per omnem regionem exorti noxiis morsibus multa hominum milia leto dabant.
 
-quo malo compulsi Azotii ad declinandam calamitatem arcam Dei ad Gethaeos transtulerunt. qui 5 Jud. 21. I Reg. 1 aqq. 23 I Reg. 5 1 discordiare P 1\\ non curiose Pb, emendauit Oiselinus 2 done P 5 agebant Vorstius: agebantur Pb; cf. I, 24,1. 29, 7. 34, 2. 11, 9, 2 (?). 10, 4. 46, 8. II Samnhel P, et sic plerumque, sed non seMper 6 Elcana Drusius et deinde Hanna 8 Domino et 9 Dominus b 10 dennntians ob uitia de Prato 11 a om. P II quanquam P 12 lenior P: ,leuior b 14 aciem b: etiem P 17 conspecta P 18 Domini et 19 Do- mino b 28 loeto dabunt P 29 getheos P 3 cum simili clade afficerentur, in oppidum Ascalonensium arcam transuexerunt. his uero, aduocatis gentis eius primoribus, consilium fuit, arcam Domini Hebraeis reddere. ita ex sententia principum augurumque et sacerdotum imposita uehiculo multis cum muneribus remittitur.
+quo malo compulsi Azotii ad declinandam calamitatem arcam Dei ad Gethaeos transtulerunt. qui cum simili clade afficerentur, in oppidum Ascalonensium arcam transuexerunt. his uero, aduocatis gentis eius primoribus, consilium fuit, arcam Domini Hebraeis reddere. ita ex sententia principum augurumque et sacerdotum imposita uehiculo multis cum muneribus remittitur.
 
 illud mirabile, quod, cum oneri boues feminas subiecissent uitulosque earum domi retinuissent, iter nullo duce in Iudaeam pecudes direxerunt, non reuocante affectu foetus relicti. cuius rei miraculo reguli Allophylorum usque in fines Hebraeorum aream secuti religiosum officium praestiterunt.
 
@@ -466,7 +466,7 @@ sed hostili metu remoto secundis tranquillisque rebus, corruptis consiliis, more
 
 igitur frequentesSamuelem circumsistunt, ut, quia iam ipse senuisset, regem eis constitueret.
 
-at ille placide salubri oratione ab insana uoluntate detorquere plebem: dominationem regiam et superba imperia exponere, libertatem extollere, seruitutem detestari, postremo diuinam eis iram denuntiare, siquidem homines mente corrupti, Deum regem habentes, regem sibi ex hominibus 2 I Reg. 6. 15 I Beg. 7. 25 I Reg. 8. 10 Betbsamis b, Βαιϑσαμύς LXX, Bethsames Drusius 11 Domino b 15 strage pestilentiae saenitam malebat de Prato II chariar thiarim P 20 Domino b II imflium P II deduxit b 24 perinmsum P: semper innisum b 25 plane P: planeque b II insigni Bernays p. 26: non sine Pb flagitarent.
+at ille placide salubri oratione ab insana uoluntate detorquere plebem: dominationem regiam et superba imperia exponere, libertatem extollere, seruitutem detestari, postremo diuinam eis iram denuntiare, siquidem homines mente corrupti, Deum regem habentes, regem sibi ex hominibus flagitarent.
 
 his atque aliis istiusmodi frustra dictis, cum populus in sententia perseueraret, Deum consulit. qui permotus uecordia insana6 gentis nihil aduersum se petentibus negandum respondit.
 
@@ -482,7 +482,7 @@ igitur ex peccato regis metus omnem exercitum peruaserat. castra hostium haud lo
 
 igitur Ionatha audaci consilio, solo armigero suo comite, castra hostium ingressus uiginti fere ex hostibus interemptis, uniuersum exercitum terrore perculerat.
 
-tmn uero\' 4 I Reg. 9 et 10 12 Reg. 13. 25 I Reg. 14.. 2 Dominum b 4 Ita P: Igitur b II Saul b: om. P 6 excellenti P: excellenti erat b 9 sed.- uenia P: Verum hos Saul impigre ultus est: uictique hostes, et uenia b 13 opperitnr P: opperitus esset b uel latebasr II Domino b 14 bolocaustum P 16 poenitentia b 19 lacrimas (add. a. I. 1 m. vel latebras) P, lachrymas et latebras 6; lacrimas potius ex lamas corruptum esse perspexit Bernays (Rhein. Mus. f. Philol. XVI, 371) colI. I Reg. 13, 6. 20 Dominum b M delectu P II imaxinia P 23 superiores Pb, em. Giselinus II cotis addidit Bemays ex I Beg. 13, 20,; alii suppl. usum armorum 3* nutu Dei in fugam uersi non imperia exequi, non ordines obseruare, omne praesidium in pedibus habere. quod ubi Saul animaduertit, suis propere eductis fugientes persecutus uictoria potitus est.
+tmn uero\' nutu Dei in fugam uersi non imperia exequi, non ordines obseruare, omne praesidium in pedibus habere. quod ubi Saul animaduertit, suis propere eductis fugientes persecutus uictoria potitus est.
 
 eo die rex edixisse traditur, ne quis nisi confectis hostibus cibum caperet. sed Ionatha interdicti nescius fauo reperto, tincto spiculo, mei degustauerat. id ubi regi ex Dei ira compertum est, morte affici filium iussit. sed populi auxilio ab exitio uindicatus est.
 
@@ -498,7 +498,7 @@ qua tempestate Allophylis atque Hebraeis bello flagrantibus, cum ex aduerso acie
 
 tum rex magna praemia et filiae nuptias despondit, si quis prouocantis spolia retulisset: sed nemo ex tanto agmine aggredi audebat.
 
-igitur Dauid etiamnum puer pugnae se obtulit reiectisque armis, quibus infirma aetas grauabatur, uirga tantum et quinque lapidibus sumptis in proelium processit. primoque ictu, misso funda lapide, Allophylum perculit, caput uicti et. spolia abstulit, gladium postea in templum posuit: Allophyli 8 I Reg. 15. 16 I Reg. 16. 19 I Reg. 17. 1 ordines scruare malebat Vorsttus 2 impedibus P 5 interdicti nesciufl P: interdictionis eius inscius b 6 speculoP || id G. Richter (Spec. obaernatt. crit. Jettae 1713 p. 16): sed Pb (flic praeceptum ex enuntiato sequenti), sed id Drusius, quod Vorstius; cf. II, 13, 4. 21, 3. y Domini b et etatim poet Domino et Domini 14 Dominus et 16 Domino b 15 constitueret P 16 perlinit P corr. 1 m. ex perimit p parum P 18 cythara P 20 golias P, goliat b 29 templo malebat de Prato autem omnes in fugam uersi uictoriam concessere.
+igitur Dauid etiamnum puer pugnae se obtulit reiectisque armis, quibus infirma aetas grauabatur, uirga tantum et quinque lapidibus sumptis in proelium processit. primoque ictu, misso funda lapide, Allophylum perculit, caput uicti et. spolia abstulit, gladium postea in templum posuit: Allophyli autem omnes in fugam uersi uictoriam concessere.
 
 sed e proelio reuersis multuscircaDauid fauor inuidiam regis accenderat. timens autem tam carum omnibus cum inuidia et pernicie necare, sub specie honoris obiectare eum periculis statuit.
 
@@ -516,7 +516,7 @@ exinde iam non occulte, sed palam ei necem parabat: nec ultra se Dauid regi cred
 
 ea tempestate Saul Abimelech sacerdotem interemit, cur Dauid recepisset: et cum ex ministris regiis nemo in sacerdotem manus inferre auderet, Doec Syrus cruentum ministerium executus est.
 
-post id Dauid desertum petiit. illuc quoque eum Saul persecutus est, sed inani opera eius exitium moliebatur, quem Deus protegebat. erat 1 I Reg. 18. 19 I Reg. 20. 24 I Reg. 22. 29 I Beg. 24. ! 3 pernecie P 7 Mtlxoi LXX, Michal text. hebr. 13 matrimonio P: matrimonium b 21 loetalem P 23 Abimelech, post ad regem Geth, postremo Drusvus 25 in t. Juda coni. de Prato, ut estin LXX d, yñv \'Ιούα 26 cur P: quod b; cf. Ind. IIIs. u. 28 doęc P, Doeg b; cf. LXX dutjx II sirus P 29 peraeqnntns b II sed om. P, fori. \'persecntns, set inani 30 exitum P 1\\ Dominus b in deserto spelunca, uasto recessu patens. in huius interiora Dauid se coniecerat.
+post id Dauid desertum petiit. illuc quoque eum Saul persecutus est, sed inani opera eius exitium moliebatur, quem Deus protegebat. erat in deserto spelunca, uasto recessu patens. in huius interiora Dauid se coniecerat.
 
 Saul nesciens in primo speluncae aditu reficiendi corporis gratia successerat, ibique somno captus requiescebat. quod ubi Dauid animaduertit, hortantibus cunctis ut oportunitate uteretur, abstinuit regis exitio, diploidem tamen eius abstulit.
 
@@ -530,7 +530,7 @@ Ea tempestate Samuel diem functus est. Saul Allophylis bellum inferentibus Deum 
 
 igitur Allophyli castris in hostili solo positis postero die aciem instruunt, Dauid tamen ex castris remisso, quia parum crediderunt sibi illum aduersum suos fidum fore. sed conserto proelio Hebraei fusi, filii regis cadunt: Saul equo delapsus, ne uiuus in potestatem hostium ueniret, gladio suo incubuit.
 
-de aetate imperii eius parum certa comperimus, nisi quod in actibus Apostolorum XL annos regnasse dictus est. quamquam ego arbitrer, tum 16 I Reg. 25. 18 I Reg. 28. 23 I Reg. 29. 25 I Reg. 31. 28 A. Ap. 13, 21. 4 opportunitate b 5 diploidem b: diplo id P 6 a tergo P: a tergo regem b 8 nt P: atque b II a Domino b 9 culpam Saul b 10 lachrymas b 13 pensius P: penitius b, penitus ed. Colon. II malum conu de Prato 14 regi b: rei P 1\\ heremum P 16 τ Φαλτl LXX in I Beg. 25, 44; Phalti Vulg. 19 Dominum b II nullumque est ei b 22 flliis Drtmus: filio Pb; cf. u. 26 et I Reg. 28,19 24 crediderunt P: crediderant b 29 arbitrer P: arbitror b 1 a Paulo, cuius illa praedicatio refertur, etiam Samuelis annos sub regis istius aetate numeratos.
+de aetate imperii eius parum certa comperimus, nisi quod in actibus Apostolorum XL annos regnasse dictus est. quamquam ego arbitrer, tum a Paulo, cuius illa praedicatio refertur, etiam Samuelis annos sub regis istius aetate numeratos.
 
 plerique tamen, qui de temporibus scripserunt, xxx eum annos regnasse annotauerunt, cui opinioni nequaquam accedimus, nam ea tempestate, qua Dei arca in Cariathiarim oppidum translata est, necdum regnare Saul coeperat: refertur autem per Dauid regem ex illo oppido arcam sublatam, cum per xx annos ibi constitisset. ergo, cum intra id tempus Saul regnauerit atque decesserit, paruo admodum spatio tenuit imperium.
 
@@ -542,7 +542,7 @@ nos in tanta erroris copia Chronicorum annotationem secuti, quia eam ex Apostolo
 
 sed Abenner, qui magister militiae Saul regis fuerat, spreto Dauid, Isbaal regis Saul filium regem constituit. crebris deinde proeliis inter duces regum concursum: pulsus Abenner saepius, fratrem tamen Ioab, qui ex parte Dauid exercitui praeerat, fugiens peremit. quo dolore postea Ioab, cum\' se Abenner Dauid regi dedidisset, iugulari eum praecepit, non sine dolore regis, cuius fidem cruentauerat.
 
-per idem tempus 18 II Reg. 1. \'1 illic de Prato 3 xx Drusius coll. Jos. Ant. hebr. 6, 14, 9 It cni1 (i. e. cuius) P 4 Domini b 1\\ archa in chariathirim oppidum translata P 5 ceperat P 9 qui P: ut qui b 10 sub G. Richter: cum Pb; cf- I, 30,1. n 27, 2 1\\ hęli P 11 fere Hornius: nere Pb 12 hystoria sygnauit P /I a plerisque autem P: om. b; nos lacunae signum adiecimus 14 reperi b 16 arbitremur P: arbitramur b 17 Saulum ed. Vorstiana 21 et 24 Abner Ph, sed P infra u. 26 abenner, ut est in LXX \'Αβευυὴρ 22 regis Saul scripsi: regis sui Pb, cf. IIBeg. 2, 8: \' Αβεvvὴp vlog Νὴϱ ἀϱχισι ϱάτηγος Σαούλ ἔλαβε τόv \' Ιοβóσεϑ viov rov Znovk etc. 26 dedisset Pb omnes fere natu maiores Hebraeorum publico consensu regnum ei totius gentis detulerunt: nam per septem annos in Chebron tantum regnauerat. ita tertio rex unguitur, annorum circiter xxx. Allophylos in regnum irruentes secundis proeliis reppulit.
+per idem tempus omnes fere natu maiores Hebraeorum publico consensu regnum ei totius gentis detulerunt: nam per septem annos in Chebron tantum regnauerat. ita tertio rex unguitur, annorum circiter xxx. Allophylos in regnum irruentes secundis proeliis reppulit.
 
 ea tempestate arcam Dei, quae in Cariathiarim oppido, ut supra retulimus, erat, in Sion transtulit. cumque aedificare Deo templum in animo haberet, diuinum ei responsum redditum, semini illius id reseruari.
 
@@ -554,7 +554,7 @@ Qua tempestate Bersaben quandam, mirae «feminam pulchritudinis, stupro comperta
 
 tum per Nathan prophetam grauiter increpitus, licet agnito errore, castigationem Dei non effugit. namque filium ex furtiuo illo concubitu editum paucos post dies amisit, multaque m domum familiamque eius execranda acciderunt.
 
-ad extremum Abessalon filius eius arma impia aduersus patrem sustulit, regno eum depellere cupiens. aduersus hunc Ioab acie conflixit, admonitus a rege ut uicto parceret: sed ille spreto imperio 3 n Reg. 5. 4 11 Reg. 6-8 11 II Reg. 10. 15 II Reg. 11. 20 n Reg. 12-18. 1 maiores om. P, fort. omnes maiores natu, cf. II Beg. 5, 3 πάvτες ot πρεοβύτεροui \'Ισραήλ 3 ungitur b 4 repulit b 5 Domini b \\I chariathirim P 6 syon P II Domino b 11 Annon] animę P, Chanun b, \'Avvώv LXX in II Reg. 10,1 II siris P 12 ammotis P 15 Bersabee uel Bersabeen mal. de Prato, ut iam prius G. Bichter, cf. infra p. 41, 23 16 uri P: uiri b, Uriae de Prato, in LXX (II Beg. 11, 3) est ywij Ovqtov, in Vulg. uxor Uriae 19 in matrimonio Pb, in del. de Prato II uacuam P: uiduam b 21 Domini b II fugit P, sed corr. 1 m. effugit 24 abessalon P (ex LXX \'Αβεσσαλώμ): Absalon b 26 ille b: illo P parricidales conatus ferro ultus est. flebilis ea uictoria fuisse regi traditur: tanta in eo pietas erat, ut etiam parricidae filio ignosci noluerit.
+ad extremum Abessalon filius eius arma impia aduersus patrem sustulit, regno eum depellere cupiens. aduersus hunc Ioab acie conflixit, admonitus a rege ut uicto parceret: sed ille spreto imperio parricidales conatus ferro ultus est. flebilis ea uictoria fuisse regi traditur: tanta in eo pietas erat, ut etiam parricidae filio ignosci noluerit.
 
 uix hoc bellum extinctum uidebatur, aliud rursum exortum, Sabaea quodam duce, qui pessimum quemque ad arma inci- . tauerat. sed propere motus omnis morte ducis repressus.
 
@@ -568,7 +568,7 @@ tum Dauid uidens angelum, cuius dextera populus prosternebatur, ueniam precari s
 
 , ex ,вersabee Yri uxore susceptum, successorem regni constituit. is regali unguentofper Sadoc sacerdotem unctus, patre adhuc incolumi, rex appellatus. Dauid, cum regnasset annos XL, defunctus est.
 
-Salomon initio regni urbem muro circumdedit. huic per soporem astare Deus uisus est, petendi quae uellet tribuens 1 II Reg. 19. 3 II Reg. 20. 5 II Reg. 21-23. 8 II Reg. 24. 22 ID Reg. 1. 1 parricidialea b 3 cum aliud malebat Sigoniug, at cf. tN. Mari. 7, 3 4 Zafci LXX, Sabea Drusins 9 metuendas P 10 ita ioab militiae magistra P, fort. ita per Joab m. magistram 12 petens] efad 1, 1 uisum est mihi.. locaturus II regna sui P 16 deprecatus malebat de Prato 19 unum P et Drusius: uiuum b 22 Domino b 23 bersabeS P (pro bersabeS, ut uidetur; nam terminationes nominum propriorum alienigenarum plerumque in P apices habent) 1\\ uri P: Uriae b 28 Dominus b, item paulo post Domini et a Domino optionem.
+Salomon initio regni urbem muro circumdedit. huic per soporem astare Deus uisus est, petendi quae uellet tribuens optionem.
 
 sed ille non aliud sibi quam sapientiam dari poposcit, reliqua omnia parui aestimans. ita somno excitatus, cum ante sacrarium Dei constitisset, indultae sibi a Deo sapientiae documentum dedit.
 
@@ -582,7 +582,7 @@ Quis opibus confisus templum Deo inmensi operis facere aggressus, paratis per tr
 
 sed non dubito librariorum potius neglegentia, praesertim tot iam saeculis intercedentibus, ueritatem fuisse corruptam, quam ut propheta errauerit. sicut in hoc ipso nostro opusculo futurum credimus, ut describentium incuria, quae non incuriose a nobis sunt digesta, uitientur. igitur Salomon coeptum templi opus uigesimo anno explicuit.
 
-celebrato deinde ibidem sacrificio dictaque oratione, qua populum templumque benedixit, Deus ad eum locutus est, denuntians fore, si quando peccassent ac Deum reliquissent, 1 III Reg. 3. 15 III Reg. 4 18 III Reg. 6 30 III Reg. 8. 8 indici perperam malebat de Prato 9 negantes P corr. et b 18 Queis b /I Domino immensi b 29 uitentnr P 31 Dominus b, item 32 Dominum. templum illud solo aequandum. quod iam pridem impletum uidemus, et mox conexum rerum ordinem exponemus.
+celebrato deinde ibidem sacrificio dictaque oratione, qua populum templumque benedixit, Deus ad eum locutus est, denuntians fore, si quando peccassent ac Deum reliquissent, templum illud solo aequandum. quod iam pridem impletum uidemus, et mox conexum rerum ordinem exponemus.
 
 interea Salomon florens opibus, omnium qui umquam fuerant regum ditissimus, quique semper ordo rerum est, ab opibus in luxum et uitia delap- . sus, cum aduersum interdictum Dei ex alienigenis coniugia sumpsisset et iam septingentas uxores et trecentas concubinas haberet, idola eis ritu gentium suarum, quibus litarent, constituit.
 
@@ -596,7 +596,7 @@ quo ille metu in Aegyptum confugit, ibique uxore accepta ex stirpe regia, cognit
 
 penes Roboam \' tamen duae tribus, Iudae et Beniamin, resederant: ex his ad trecenta milia parauit exercitum. cumque acies promouerentur, uerbis Dei populus admonetur, proelio abstineret: ex suo nutu Jeroboam regnum accepisse.
 
-ita spreto regis imperio exercitus dilapsus: Jeroboam imperium inualuerat. sed cum Hierosolymam Roboam optineret, ubi templo a Salomone facto populus sacrificare Deo consueuerat, ueritus Jeroboam, ne ab eo plebem religio 1 m Reg. 10. 2 III Reg. 11 11 III Reg. 12. 2 connexum b (mox iuxta connexum coni. de Prato) 3 regum fuerant P 4 delapsa P 5 sumpsissent P 6 et iam de Prato: etiam Pb 7 Quibus r. anersns Dominus b 11 Nam om. b 12 aetatis XLI Drusius recte ut uidetur, cf. III Reg. 14, 21 et Paral. II, 12,13 II paternum maIfibat Drusiw 15 a se auerterat malebat Vorstius 18 cum eresponso P 23 ad co milia Drueim coil. III Reg. 12, 21 27 delapsns P 29 Do- mino b, item paulo post II Hieroboam Pb 1\\ ne a se Drusius auerteret, statuit animos eius superstitione occupare.
+ita spreto regis imperio exercitus dilapsus: Jeroboam imperium inualuerat. sed cum Hierosolymam Roboam optineret, ubi templo a Salomone facto populus sacrificare Deo consueuerat, ueritus Jeroboam, ne ab eo plebem religio auerteret, statuit animos eius superstitione occupare.
 
 itaque uaccam auream in Bethel, alteram apud Dan constituit, quibus populus litaret, sacerdotesque omissa Leui tribu ex plebe instituit. inuisum Deo flagitium postulatio consecuta. crebra deinde inter reges proelia: dubio euentu regnum optinebant. Roboam septimo et decimo imperii anno exacto uita functus est.
 
@@ -610,7 +610,7 @@ sed initio regni huius Jeroboam rex decem tribuum defunctus est, regnum Nabath f
 
 Baasam Achiae filium successorem habuit, aeque a Deo alienissimum. isque sexto et uigesimo imperii anno defunctus est: regnum ad Elam filium deuolutum nec ultra biennium retentum. namque eum Zambri, princeps equitum, epulantem interfecit regnumque occupauit, uir perinde in Deum atque homines impius. ab hoc pars populi secessit: Thamni cuidam regium nomen delatum.
 
-3 III Reg. 13. 7 IU Reg. 14. 15 II ParaL 16. 19 III Reg. 15. 25 IU Reg. 16. 1 superstitionS P 4 postnlatio P: expostulatio b 7 Abiu Dru- sius ex lectione LXXHfhoi in III Beg. 15, 1, sed ibi alii \'Αβlα (Abiam Vulg.) 9 Asa Drusim call. III Reg. 15, 9 10 et 16 Domini b II 16 nimię P, nimium b 17 coniecit Pb, em. O. Richter 18 et 21 Domino b 19 Hieroboam Pb II regnuP 1\\ Nabath de Prato (ex leetioneLXX in IIIBeg. 15,25 Ναβάτ): nabaech P, Nadab b 20 patemis P, ut coni. Sigonim: maternis b 22 Baasam Achiae Drusius exIII Beg. 15, 33: banachiae Pb, Ban Achiae Sigonim 23 Domino et 26 Dominum b 23 xxnn. Sigonius coll. III Reg. 15, 33 24 Elam Drmim: bęlam P, Helam b sed Zambri ante hunc septem annos, et cum eodem duodecim regnauit.
+sed Zambri ante hunc septem annos, et cum eodem duodecim regnauit.
 
 at in parte tribus Iudae Asab mortuo Iosaphat filius eius regnare coepit, uir religiosisnirtutibusmerito clarus. is cum Zambri pacem habuit. defunctus est autem, cum regnasset annos v et xx.
 
@@ -624,7 +624,7 @@ ne admonitus a Deo Saraptae oppidum petiit, ad mulierem uiduam diuertit. cumque 
 
 sed cum Elias uerbis Dei polliceretur, nec hydriam farre nec uas oleo esse minuendum, mulier poscenti fidem non cunctata prophetae credere, promissorum fidem consecuta est, siquidem diurnis incrementis tantum accresceret, quantum cotidie detrahebat. eodem tempore eiusdem uiduae filium mortuum Elias in uitam reduxit.
 
-tum iussu 8 HI Reg. 17. 23 III Reg. 18. 1 zambri P: Jambri b 2 Asa Vorstius 3 religionis malebat Sigonius II iambri Pb, em. de Prato; nam apparet Seuerum per totum locum duos homines, Zambri (Zamri) et Ambri (Amri) confudisse 5 Jambri Pb; scripsimus Ambri, ut est i", LXX Reg. III, 16, 29 \'Αχαάβ vlde \'Αμβρl, nisi hic quoque Seuerus Zambri continuata nominum confusione dederat (Sigonius ubique Amri scribendum esse censuit) 6 in Dominum b II Jezabel b: zazabel P; cf. III Reg. 16, 31. 7 Basae Pb: Ethbaal Sigonius et alii; at monuit de Prato, Luciferum quoque Caralitanum in lib. de regibus apostaticis legere: Jezabel filiam Basan et Helam regis Sidoniorum n in matrimonium malebat Vorsnus, cf. ad 1,9 n Baali b 8 constituit et prophetas Domini b II Elias Drusius: hęlias P, et sic infra 9 oratione coelum b "13 herenmm P 14 petisset Pb: petiis- set edd. recentt. 15 a Domino b II Saraptae Pb: Sareptae edd. recentt. 17 pngillum P, ut coni. Drusius: pusillum b 18 assmnpto P 20 olei P II mnnuendum P 21 diurnis P 1 m. corr. e diuniia, diuinis b Dei regem adiit exprobratoque ei sacrilegio poposcit ad se omnem populum congregari. qui cum propere conuenisset, accitis idolorum ac lucorum sacerdotibus cccc fere et L, inter eos inde altercatio: Elia Deum praedicante illi superstitionee suas asserebant.
+tum iussu Dei regem adiit exprobratoque ei sacrilegio poposcit ad se omnem populum congregari. qui cum propere conuenisset, accitis idolorum ac lucorum sacerdotibus cccc fere et L, inter eos inde altercatio: Elia Deum praedicante illi superstitionee suas asserebant.
 
 postremo placuit fieri periculum, ut, si cuius caesam hostiam missus caelo ignis absumeret, rata esset religio quae uirtutem edidisset. ita sacerdotes occiso uitulo Bahal idolum inuocare coeperunt, frustraque consumptis inuocationibus imbecillitatem dei sui taciti fatebantur. tum Elias irridens eos (ne forte\' inquit (dormiat, clamate uehementius, ut somno quo tenetur euigilet\'. enimuero miseri trepidantes mussare, et tamen, quidnam Elias facturus esset, expectare.
 
@@ -636,7 +636,7 @@ Ea tempestate Achab rex Samariae uineam Nabuthei, adhaerentem sibi, concupiuit. 
 
 mox per Eliam uerbis Dei increpitus, agnito crimine cilicio indutus egisse paenitentiam traditur: quo facto imminentem poenam auertit.
 
-namque rexSyriae 17 III Reg. 19. 22 III Reg. 21. 1 Domini b 3 locorum P, at u. p. 44,10 et 45,8 II inde P: inde orta est b 4 Dominum b 6 assumeret P 7 Baal b 8 Domini sui tacite b 9 tam Elias nos: tam forte P (forte ex sequenti \'ne forte\' praeceptum), tum uero Helias b \\I clamite P, an ex clamitatc? 13 spectantibus nos: expcctantibus Pb 15 Dominum b 16 prophani b 18 et 24 zezabel P 19 esse adhuc b 20 que se P II dedidissent malebat de Prato praeeunte Drusio 22 rex Samariae de Prato spurium habet; at u. Reg. III, 21, 1\\1 Nabuthaei b\', Nabuthae Drusius cum LXX, in quibus est Ναβοvϑαl (sed in aliis libris Ναβούϑ) 25 uerbis dei increpitus agnito P: uerbo Domini increpitus, agnitoque b magno cum exercitu, duobus et triginta regibus in societatem belli ascitis, fines Samariae ingressus urbem cum rege obsidere coepit. artis deinde obsessorum rebus dat belli conditiones, si aurum argentumque et feminas tradidissent, fore uti uitae eorum parceret. sed tam iniustis conditionibus extrema perpeti satius uisum.
+namque rexSyriae magno cum exercitu, duobus et triginta regibus in societatem belli ascitis, fines Samariae ingressus urbem cum rege obsidere coepit. artis deinde obsessorum rebus dat belli conditiones, si aurum argentumque et feminas tradidissent, fore uti uitae eorum parceret. sed tam iniustis conditionibus extrema perpeti satius uisum.
 
 et cum iam omnium desperata esset salus, propheta a Deo missus regem adit, hortatur ut in proelium exeat, cunctantem multis confirmat. ita eruptione facta fusi hostes copiosaque praeda reperta.
 
@@ -650,7 +650,7 @@ tum rex comprehendi eum ac deduci ad se iubet, sed missi caelesti igne absumpti.
 
 post hunc Ochozias filius imperium adeptus est. hoc regnante Elias translatus refertur. eodem tempore Helisaeus, discipulus eius, multis signis potens extitit: quae omnia notiora sunt quam ut stilo egeant.
 
-ab eo uiduae filius 14 III Reg. 22. 19 IV Reg. 1. 28 IV Reg. 2. sqq. 2 cam rege orbem b 3 artis P, ut coni. Druaius: actis b; cf. b 23, 2. II, 16,1 4 et argentom b 6 a Domino b 16 Michaea b tt cur P: quod b 21 consecuram P, conBequuturam b 24 imperium P: imperio b 25 iora (pro iora) P 26 annos VIII Sigonius 28 ademptus P 29 heliseuB P, Eliseus b 30 stiio P: nostro stylo b II ab eo P: ab eo eat b .. resuscitatus, vel Syrus lepra purgatus, uel famis tempore omnium rerum copia fugatis hostibus inuecta, uel in usum trium exercituum aquae praebitae, uel de exiguo olei inmodicis incrementis solutum mulieris debitum et ipsi sufficiens uiuendi substantia data.
+ab eo uiduae filius resuscitatus, vel Syrus lepra purgatus, uel famis tempore omnium rerum copia fugatis hostibus inuecta, uel in usum trium exercituum aquae praebitae, uel de exiguo olei inmodicis incrementis solutum mulieris debitum et ipsi sufficiens uiuendi substantia data.
 
 huius temporibus, ut diximus, Ochozias duarum tribuum erat rex, decem uero loram, ut supra retulimus, imperabat: interque eos foedus ictum. nam et aduersum Syros iunctis uiribus bellatum, et aduersum leu, qui per prophetam in regem decem tribuum unctus fuerat, pariter in proelium egressi eadem pugna interiere.
 
@@ -660,7 +660,7 @@ hic initio regni obseruantissimus diuini cultus fuit magnisque sumptibus templum
 
 at in parte decem tribuum defuncto Ieu Ioachas filius eius regnauit, inuisus Deo malis operibus, ob quae regnum eius Syris praedae fuit, donec Dei misericordia depulsis hostibus pristinum habere statum coeperunt.
 
-Ioachas diem functus Ioae filio reliquit regnum. is Amassiae regi duarum tribuum ciuile bellum intulit: uictoriam potitus multam praedam in regnum suum conuertit. id Amassiae ob delictum 10 IV Reg. 9. 13 IV Reg. 11. 20 IV Rcg. 13. 23 IV Reg. 14. II Par. 23. 26 II Par. 25. 1 resuscitatus b: om. P II uel quater P (scil. f, non et, ut ait de Prato): om. b; cf. Ind. uerb. 3 aquae praebitae b: aquis praebitis P 7 aduersus Syros b 8 ieu P (ut ex LXX\'Irjov coni. Drusius): Jehu b, et sic deinceps 10 post Ochoziam in I. regem G. Bichter: posito Ochozia (ochozozia P) in Judaea (iudea P) rege Pb 14 sacerdotes P: sacerdotem b; cf. 1, 50, 1 15 diuni P 16 post adulationem Pb, em. Giselinus 17 iram P: Dei iram b; cf. Chron. II, 24,18: et facta est ira contra Judam et Jerusalem II Hazael Drusius 20 Amessia (uel Amesaias) Dru- sim 22 ob que in regnum eius siris praeda fuit P, tn in b 24 Joae de Prato: Johae Pb 24 amessiae P 25 uictoriam P: uictoriaque b 26 id nos: is P, idque b j) ob Amassiae b accidisse traditur, siquidem Idumaeorum fines uictor ingressus idola gentis eius assumpserat.
+Ioachas diem functus Ioae filio reliquit regnum. is Amassiae regi duarum tribuum ciuile bellum intulit: uictoriam potitus multam praedam in regnum suum conuertit. id Amassiae ob delictum accidisse traditur, siquidem Idumaeorum fines uictor ingressus idola gentis eius assumpserat.
 
 hic nouem annos regnasse scribitur, quantum in libris Regnorum repperi. Sed in Paralipomenis atque etiam in Chronicis nouem et uiginti annos imperium tenuisse annotatus est, ea nimirum id persuadente ratione, quae in his [Regnorum] libris facile perspici potest. Ieroboam enim rex decem tribuum octauo anno imperii Amassiae traditur regnare coepisse unumque et quadraginta annos imperium tenuisse: regnante demum Ozia, Amassiae filio, quarto imperii eius anno esse defunctus.
 
@@ -672,7 +672,7 @@ horum nos regum omniumque, qui in parte decem tribuum Samariae praefuerunt, anno
 
 igitur Ozias regnum Iudae, adeptus praecipuam curam Domini cognoscendi habuit, Zacharia . propheta plurimum usus: (Isaias etiam sub hoc primum prophetasse traditur) quo merito prosperis euentibus aduersum finitimos bella gessit, Arabas etiam deuicit.
 
-iamque Aegyptum terrore nominis sui concusserat, elatusque secundis rebus, illicita praesumens, incensum Deo obtulit, quod solis facere sacerdotibus mos erat. itaque per Azariam sacerdotem increpitus cum loco decedere 13 IV Reg. 15. 20 n Par. 26. 2 nouem] immo xxvnir, ut libri etiam IV Reg. 14, 2 habent; cf. de Prato ad h. I. 5 aimotatas est. Ea P: annotatum est. Et b 6 regnormn] Chronicorum de Prato, nos regnorum inclusimus II Jeroboam P, ut coni. Hornius: Joram b 7 octauo] xviii de Prato cum Eusebio (xv Reg. IV, 14, 23) 9 quarto] at u. de Prato II esse defonctas P: defanctas est b 10 efficit (scil. Eusebius in ahron.) coni. de Prato 12 auctoritate P 13 Ozias (ut est infra) de Prato: Otia Pb 14 ieroboae P: Joram b 15 eius filius b 19 credimus Pb, em. de Prato 22 Esaias b 23 enntibuB P II adaersus b 26 mos P: fas b 27 cum nos: com P (Itaque cum per A. — eo loco b) 4 cogeretur atque in iram exarsisset, lepra oppletus decessit. quo morbo affectus uita functus est, cum regnasset annos duo et quinquaginta.
+iamque Aegyptum terrore nominis sui concusserat, elatusque secundis rebus, illicita praesumens, incensum Deo obtulit, quod solis facere sacerdotibus mos erat. itaque per Azariam sacerdotem increpitus cum loco decedere cogeretur atque in iram exarsisset, lepra oppletus decessit. quo morbo affectus uita functus est, cum regnasset annos duo et quinquaginta.
 
 regnum inde Ioathae filio datum: isque admodum sanctus fuisse traditur prospereque imperium administrauit: gentem Ammonitarum bello uictam stipendium praestare coegit. regnauit autem annis xvi eidemque Achaz filius successit.
 
@@ -688,7 +688,7 @@ audita est uox prophetae: ac statim iussu regis exemploque populus uniuersus, qu
 
 ita imminens malum auersum. Ionae apud Deum conquerenti, quod fides dictis non affuisset, responsum, paenitentibus ueniam negari non posse.
 
-At in Samaria Zachariam regem admodum impium, quem superius regnasse memorauimus, Sella quidam interemit 1 IV Reg. 15. 7 Jon. 1 sqq. 29 IV Reg. 15. 2 duos b 4 ammanitanim P 6 azhaz P 7 id] in P 8 assure P: Assur b n Sem DrumtM: Seon Pb; cf. Genes. 10, 22 10 oitiis b: diuitiia P II queis b 12 Gomorrha b 14 Dominum b 16 Tharsis Drusim, ut LXX ii, Θαρσlς 19 coeto P II marino monstro obelo notauit Vonck 23 at statim malebat de Prato 24 abstinentur P: abstinere iubentur b 28 negare P 29 samariã P 30 Sella] ∑ελλούμ LXX in Reg. 4, 15, 10 regnumque occupauit: idemque Mane insidiis exemplo facti sui periit. Mane ereptum Sellae imperium tenuit filioque Pachae reliquit.
+At in Samaria Zachariam regem admodum impium, quem superius regnasse memorauimus, Sella quidam interemit regnumque occupauit: idemque Mane insidiis exemplo facti sui periit. Mane ereptum Sellae imperium tenuit filioque Pachae reliquit.
 
 eundem uero Paehe quidam eiusdem nominis interemit regnumque occupauit. mox ab Osee peremptus eodem scelere quo assumpserat imperium amisit.
 
@@ -702,7 +702,7 @@ Huic Ezechias filius successit, multum paterni dissimilis ingenii. namque initio
 
 ita conuersis ad religionem omnium animis Leuitas sacerdotesque omnes ad celebranda secundum legem sacrificia ordinauit celebrarique Pascha instituit, quod iam pridem fuerat omissum.
 
-cumque dies festus 21 IV Reg. 18. II Par. 29. 28 II Par. 80. 1 mane P, ut coni. G. Richter: Manae b, Μαvαήμ LXX p perit b 3 pacbę P: Pache b; in LXX dicitur (IVReg. 15,22) Φαxεlας 7 et 10 Salmanassar Pb: Salmanasser edd. recentt. 9 accerseret b 13 quot P 16 AcbasPb, em. dePrato, ut est in LXX et supra c. 47 18 auxilio P: ille (illae edd. seqq.) auxilio b 19 nephariae b 21 Ezecias Drusius 24 consequuti b 25 obducte P 26 mererentur nos: merentur P, mereantur b 28 aacrificia b: sacrilegia P 4* adesset, dimissis per omnem terram nuntiis conuentus diem edixit: ut si qui post abductionem decem tribuum inSamaria resedissent, ad sollemne sacrum conuenirent. ita frequentissimo conuentu dies sacer publica laetitia exactus, longo post interuallo religione legitima per Ezechiam restituta.
+cumque dies festus adesset, dimissis per omnem terram nuntiis conuentus diem edixit: ut si qui post abductionem decem tribuum inSamaria resedissent, ad sollemne sacrum conuenirent. ita frequentissimo conuentu dies sacer publica laetitia exactus, longo post interuallo religione legitima per Ezechiam restituta.
 
 pari deinde industria, qua diuina curauerat, rem bellicam administrauit, Allophylosque frequentibus proeliis contudit: donec ei Sennacherim rex Assyriorum bellum intulit, magno cum exercitu fines eius ingressus, lateque agris uastatis nullo obsistente urbis obsidionem urgebat: Ezechias enim multitudine inferior, non ausus manum conserere, muris se tuebatur.
 
@@ -714,7 +714,7 @@ Quo nuntio Sennacherim ad sua tuenda conuersus, fremens et clamitans uictori sib
 
 sed nihil his Ezechias motus orasse Deum traditur, ne hanc tantam hominis insolentiam inultam sineret. ita eadem nocte angelus castra Assyriorum aggressus multa hominum milia leto dedit. rex trepidus in oppidum Niniuem confugit ibique a filiis interfectus dignum se exitum tulit.
 
-per idem tempus Ezechias aeger corpore morbo incubuerat. cumque Isaias ei uerbis Domini annuntiasset 6 IV Reg. 1. II Par. 31. Esai. 36. 13 EsaL 37. 17 IV Reg. 19 27 IV Reg. 20. Esai. 38. 3 solemne b .7 sennacherim P (ut est in LXX ∑ευvαχηρεlμ): Sens nacherib b, item infra 9 etechias P (litterae t et z in P persmiles sunt) 11 excidum P 13 stlpsisse P, ut coni. Sigonim: srcppreasigse b 15 Esaiam b 16 fore b: fere P 17 tarraca (addito in extrema a apict) P: Tirchac b; in LXX estGagaxa 22 domi compositis b: cd domi positis P II reditum P 23 Dominum b 24 insolenteram P (syTlaba ter per compendium) 25 loeta P, letho b 26 Niniuen b 27 exitum P et Brusius: exitium b 28 esaias hic P || nerbis P, ut coni. dePrato: uerbum b uitae eius finem adesse, flesse rex traditur: ita xv annos prorogari sibi ad uitam meruit.
+per idem tempus Ezechias aeger corpore morbo incubuerat. cumque Isaias ei uerbis Domini annuntiasset uitae eius finem adesse, flesse rex traditur: ita xv annos prorogari sibi ad uitam meruit.
 
 quibus peractis nono et uigesimo imperii anno decessit: regnum Manasse filio reliquit. is a patre multum degenerans relicto Deo culturas impias exercuit: ob quod in potestatem Assyriorum traditus malo coactus agnouit errorem, populumque adhortatus est ut relictis idolis Deum colerent. nihil sane dignum memoria gessit, regnauit autem annos v et L.
 
@@ -728,7 +728,7 @@ quod ubi indultum . sibi per Oldam prophetissam comperit, maiore cura, utpote ob
 
 quibus Iosias in puluerem redactis sacerdotes quoque profanarum aedium interfecit. sed ne sepulchris quidem impiorum pepercit, quod olim praedictum a propheta, impletum animaduersum est. huius octauo et decimo imperii anno Pascha celebratum.
 
-post triennium fere aduersusNechao regem Aegypti, qui bellum Assyriis inferebat, in proelium egressus, priusquam inter se acies concurrerent, sagitta ictus est. exque eo uulnere in urbem relatus decessit, cum regnasset annos unum et uiginti. 3 II Reg. 21. 6 IV Reg. 22. 11 IV Reg. 22 sq. 25 II Par. 35. 2 merrmt P 3 Manassae Giselinus 4 Domino b II impotestatem P 6 Dominum b 7 amos P: Amon b 8 indeptus P: adeptus b 9 Domini negligens b 12 Helchia Pb; in LXX dicitur Xflxtag 13 uerbis P: uerbi b 17 Oldam Drusius: Ollam Pb; in LXX estvOXia, in Vulg. Holda II utpote b: ut puta P II oblegatus P 19 idoli P 20 diunos P 23 ne pulchris quidem P 26 triennium] cf. de Prato 29 annos I et XXX Vorstius coll. IV Beg. 22,1
+post triennium fere aduersusNechao regem Aegypti, qui bellum Assyriis inferebat, in proelium egressus, priusquam inter se acies concurrerent, sagitta ictus est. exque eo uulnere in urbem relatus decessit, cum regnasset annos unum et uiginti.
 
 Ioachas inde filius eius regnum indeptus tribus mensibus tenuit, captiuitati ob impietatem destinatus. namque eum Nechao rex Aegypti uinctum captumque duxit, nec multo post in uinculis diem functus est.
 
@@ -740,7 +740,7 @@ ita cum Ioachim, exactis in regno annis undecim, filio eiusdem nominis locum fec
 
 eisdemque rex Sedechias praepositus, ademptis uiribus inani tantum umbra regii nominis concessa. sed Ioachim tribus mensibus tempus imperii habuit.
 
-is cum populo Babylonam translatus et in carcerem coniectus: trigesimum post annum emissus atque a rege in amicitiam receptus mensaque et consiliis participatus, non sine solacio depulsae calamitatis decessit. 2 IV Reg. 23. 11 IV Reg. 24. 21 IV Reg. 25. 1 adeptus b 2 impięta.te P 3 uictum de Prato coll. Ezech. 19, 2 sq., item Vonck 5 Eliachim Pb, em. de Prato 6 Joachis Pb, em. Vorstius cf. II, 1, 2 (Joacim Sigonius) II ioachae frater iosiae fllios P, ut coni. Drusius: Joachae fratris Josiae f. b 9 babilonius P 11 ba- bilbnam P 12 Joachis Pb, itern infra u. 23. 13 eiusdem nominis] cf. de Prato 15 internetioni P II hierusolimam P 17 uel-uel] sic P, non et—et, ut ait de Prato 18 mulieris P 20 agris b: om. P, fort. eIereendis agris colendisque II incultu P 21 Sedecias Drusius cum LXX ∑εδεxlας 24 babiloham P II coniectus eat b II tricesimum septimum Sigonius, cf. IV Eeg. 25, 27 26 solatio Pb
+is cum populo Babylonam translatus et in carcerem coniectus: trigesimum post annum emissus atque a rege in amicitiam receptus mensaque et consiliis participatus, non sine solacio depulsae calamitatis decessit.
 
 Interea Sedechias rex turbae inutilis, quamquam sine uiribus, infido ingenio et Dei immemor, qui non intellegeret captiuitatem ob delicta gentis illatam, postremis denique malis debitus, regis animum offendit. ita ei post nouem annos Nabuchodonosor bellum intulit, compulsumque intra muros confugere triennio obsedit.
 
@@ -754,7 +754,7 @@ interea obsessos uis hostium et penuria urgebat, consumptisque omnibus, quae man
 
 cum eum Nabuzardan, princeps regius, captiuum cum ceteris duceret, delata sibi optione ab eo, utrum in solo patrio deserto desolatoque subsistere an secum abire in summis honoribus uellet, residere in patria maluit.
 
-Nabuchodonosor abducto populo, residuis quos belli conditio uel praedae fastidium relinqui a uictoribus fecerat, Godoliam eiusdem gentis praeposuit absque ullo insigni regio aut imperii nomine, quia praeesse paucis et calamitosis nulla dignitas erat. 10 Jer. 37 sqq. 13 IV Reg. 25. H Par. 36. 4 nouem b: nn. P, cf. IV Reg. 25,1. 6 Jeremiam b II qaiaam saepius P 7 consuluit malebat de Prato 10 carcere P 13 non est ausus b II hiedem P 14 coenoque b 16 principibus mitior Vorstius coni. 19 famia P 21 babilonam P 22 Nabuzardan Pb: Nebuzardan aliquot editt. posteriores 26 uel] sic P, non et, ut ait de Prato II relinqui P, ut coni. Oiselintu et Sigonius: reliqui b 28 praeesee] pracee P (pro praeêê) 29 erat. EXPLICIT SACROBV CHRONICORV LIBER PRIMVS. INCIPIT SECVNDVS . LEGE FELICITER . P .
+Nabuchodonosor abducto populo, residuis quos belli conditio uel praedae fastidium relinqui a uictoribus fecerat, Godoliam eiusdem gentis praeposuit absque ullo insigni regio aut imperii nomine, quia praeesse paucis et calamitosis nulla dignitas erat.
 
 Captiuitatis tempora prophetarum uaticiniis atque actibus illustrata sunt, maximeque Danielis egregia ad conseruandam legem perseuerantia et in absolutione Susannae diuino consilio ceterisque ab eo gestis, quae iam ordine persequemur.
 
@@ -762,7 +762,7 @@ hic sub rege Ioachim captus deductusque Babylonam paruus admodum puer: postea ob
 
 sed cum eos rex delicatioribus cibis curari praecepisset idque Asphanae eunucho negotii dedisset, Daniel paternarum traditionum memor, ne ex mensa regis gentilium cibis participaret, poposcit ab eunucho, ut leguminibus tantum uterentur.
 
-causante Asphane, ne dissimulatum imperium regis consecutura macies proderet, Daniel Deo fretus pollicetur maioris decoris sibi [uultus ex:leguminibus quam ex cibis regiis fore. fidesque dictis affuit, ita ut minime eorum uultus comparabiles haberentur, qui imperialibus impendiis procurabantur. igitur a rege in honorem et gratiam adhibiti prudentia et 7 Dan. 1. 2 egregiam — perseuerantiara P, em. de Prato (Maiime itaque Danielis egregiam ad c. 1. perseuerantiam, et in abaolutionem S. diuino consilio, caeteraque ab eo gesta ordine persequemur b) 3 absolutionS P, em. Hofmeister et de Prato 11 suBsanne P 4 quae iam ordine scripsi: quae in ordine P 5 Joacim Sigonius 11 babalonam P 6 eligantiam P 7 Ananias b, item infra c. 3 8 delicatoribus P 11 asphane eununcho P 9 patriarum Sigonius, at u. II, 12, 6 II memo. ne P 11 uescerentur Sigonius II asphanen P 13 maius P 16 in honorem et gratiam nos: in honore et gratia (sed gratia ex gratiS raswra faetum) P, in honore et gratia b disciplina breui omnibus regis proximis antelati.
+causante Asphane, ne dissimulatum imperium regis consecutura macies proderet, Daniel Deo fretus pollicetur maioris decoris sibi [uultus ex:leguminibus quam ex cibis regiis fore. fidesque dictis affuit, ita ut minime eorum uultus comparabiles haberentur, qui imperialibus impendiis procurabantur. igitur a rege in honorem et gratiam adhibiti prudentia et disciplina breui omnibus regis proximis antelati.
 
 per idem tempus Susanna, cuidam Ioachi nupta, spectatae femina pulchritudinis, a duobus presbyteris appquita, cum impudicis non adquieuisset, falso crimine incessitur, isdem presbyteris deferentibus, in remotis locis adulescentem cum ea deprehensum, sed illum iuuenili alacritate senum manus effugisse. ita presbyteris fides habita: iudicio populi Susanna damnatur.
 
@@ -774,7 +774,7 @@ enimuero multitudo Iudaeorum, quae tum aderat, non sine Deo existimans puerum co
 
 Ea tempestate Nabuchodonosor somnium uidit, mysterio futurorum mirabile. cuius interpretationem cum per se non posset euoluere, ascitis ad interpretandum Chaldaeis quique magicis artibus extisque hostiarum scire occulta et futura praecinere uidebantur, mox ueritus, ne more hominum non uera, sed placita regi ex somnio coniectarent, uisa subprimit poscitque ab eis, ut, si uera in iis diuinatio esset, somnium ipsum sibi dicerent: tum demum interpretationi eorum crediturum, si prius enuntiando somnium artis periculum fecissent.
 
-illi uero tantam molem abnuentes, non esse id humanae opis confitebantur. rex motus, cur falsa diuinandi professione homines erroribus illuderent, cum astricti praesenti negotio nihil scire se confiterentur: ita edicto regis in eos 18 Dan. 2. 1 tempus BQS I snsaanna P 2 cuidam de Prato: quaedam P II Joachim b, Joacim Drusius 3 presbiteris P et sic deincepa 4 hiadem P 5 dephensfls P 7 snssanna dampnatur P 9 innocenter P: inno- centem edd. II reduci scripsi: reduce P, reducere b 13 Danieli b, item p. 68, 2 14 unumquemque de Prato: unumque Pb 17 dampnati P 18 misterio P 20 quique Drusitu: qui Pb, cf. Dan. 2, 2 et 2, 10 22 ueritur P 23 poscitque nos: poposcitque Pb II in his Pb 27 car P: quod b animaduersum palamque omnes huius artis interficiebantur.
+illi uero tantam molem abnuentes, non esse id humanae opis confitebantur. rex motus, cur falsa diuinandi professione homines erroribus illuderent, cum astricti praesenti negotio nihil scire se confiterentur: ita edicto regis in eos animaduersum palamque omnes huius artis interficiebantur.
 
 quod ubi Danielo compertum, regis proximum appellat: enuntiationem 80mnii interpretationemque eius pollicetur.
 
@@ -792,7 +792,7 @@ in uentre aereo tertium regnum portendi pronuntiatur, atque impletum uidemus, si
 
 crura ferrea imperium quartum, idque Romanum intellegitur, omnibus ante regnis ualidissimum. pedes uero partim ferrei, partim fictiles diuidendum esse Romanum regnum, ita ut numquam inter se coёa.t, praefigurant: quod aeque impletum est, siquidem cum non ab uno imperatore, sed etiam a pluribus semperque inter se armis aut studiis dissentientibus res Romana administretur.
 
-demque commisceri testum atque ferrum numquam inter se coeunte materie commixtiones humani generis futurae a se inuicem dissidentes significantur, siquidem Romanum solum ab exteris gentibus aut rebellibus occupatum aut dedentibus se per 2 Danieli b 4 accersitur b II per Dominum b 5 refert de Prato (idem regi scribens): refertur P (uisio regis refertur solutioque 6) 7 pectore addendum esse uidit Drusius, cf. u. 15 et Dan. 2, 32. 9 partim b: om. P 10 se addidit Giselinua; confasum inter se Vorstius 11 abscisus P 18 atque P: idque b 24 siquidem iam non .. administratnr b II fort. sed iam a pluribus 26 denique quod commiecentur Bernays p. 28 not. 48 27 coeunte materia Bernays, coeuntS materig P 29 rebelli P II se per pacis speciem Sigonius: semper pacis speciS P pacis speciem traditum constet, exercitibusque nostris, urbibus atque prouinciis permixtas barbaras nationes, et praecipue Iudaeos, inter nos degere nec tamen in mores nostros transire uideamus. atque haec esse postrema prophetae annuntiant.
+demque commisceri testum atque ferrum numquam inter se coeunte materie commixtiones humani generis futurae a se inuicem dissidentes significantur, siquidem Romanum solum ab exteris gentibus aut rebellibus occupatum aut dedentibus se per pacis speciem traditum constet, exercitibusque nostris, urbibus atque prouinciis permixtas barbaras nationes, et praecipue Iudaeos, inter nos degere nec tamen in mores nostros transire uideamus. atque haec esse postrema prophetae annuntiant.
 
 in lapide uero sine manibus abscisso, quiaurum, argentum, aes, ferrum testumque comminuit, Christi figura est. is enim non conditione humana editus, siquidem non ex uoluntate uiri, sed ex Deo natus est, mundum istum, in quo sunt regna terrarum, in nihilum rediget regnumque aliud incorruptum atque perpetuum, id est futurum saeculum, quod sanctis paratum est, confirmabit.
 
@@ -804,7 +804,7 @@ At in Iudaea, cui post excidium Hierosolymae Godoliam praepositum supra memoraui
 
 at hi, qui extra noxiam fuerant, ultum ire facinus cupientes propere aduersum Ismael arma capiunt. sed ut ille cognouit exitium sibi imminere, relicto exercitu, quem contraxerat, non amplius octo comitantibus ad Ammonitas confugit.
 
-igitur populum uniuersum metus peruaserat, ne paucorum scelus omnium exitio rex Babylonius ultum iret: nam praeter Godoliam 15 Dan. 2. 19 IV Reg. 25. 23 Jer. 40 sq. 2 et praecipue Judaeos corruptuni censet Bernays l. c. 4 -postrema P: postrema tempora b II propheta (sc. Daniel) annuntiat de Prato 5 absciao P II aea scripsi: ea. (sic) P, et b; cf. Dan. 2, 35 (es pro aes codex etiam II, 8, 5 habet) 6 figuram esse b 8 redigit P, em. Giselinus 11 credentium de Prato: credendum P 13 donatus P, ut coni. Vonck: donatur b 14 misahel P 16 hiezechielis P 20 Judaei quidam malebat de Prato 21 ertirpeP II non 6: om. P 22 concentore P 25 ut ille nos: ille P, ille quia b 26 vni nos: om. P, quam octo 6; cf. Jerem. 41,15 28 babyllonius P multos ex Chaldaeis cum eo interfecerant.
+igitur populum uniuersum metus peruaserat, ne paucorum scelus omnium exitio rex Babylonius ultum iret: nam praeter Godoliam multos ex Chaldaeis cum eo interfecerant.
 
 itaque consilium ineunt fugiendi in Aegyptum, sed prius Hieremiam frequentes adeunt, sciscitantes diuinum responsum.
 
@@ -820,7 +820,7 @@ itaqueuincti compedibus in medias flammas coniciuntur. sed ministros infandi ope
 
 tum rex haud dubius diuinam in re praesenti fuisse uirtutem, missis per omne regnum suum edictis facti miraculum prouulgauit, confessus soli Deo honorem deferendum.
 
-nec multo post obiecto sibi somnio, mox uoce etiam caelo emissa admonitus, potestate regia abiecta atque ab omni conuersatione humana remotus, herbis tantum uitam sustinens, egisse paenitentiam traditur: seruatum ei nutu Dei imperium, donec impleto tempore, agnito . demum Deo, post vn annos et regno et statui pristino restitutus 2 Jer. 43. 6 Jer. 44. 10 Dan. 3. 27 Dan. 4. 3 scisscitantes P 8 profecta est b 14 misahel P 16 prępositaque\'p 18 compedibus Drusius: pedibus Pb, cf. I, 28, 3 22 cum aspectantibus edd. pleraeque .23 inter ignem b 28 post rex obiecto b 31 seruatumque coni. de Prato est.
+nec multo post obiecto sibi somnio, mox uoce etiam caelo emissa admonitus, potestate regia abiecta atque ab omni conuersatione humana remotus, herbis tantum uitam sustinens, egisse paenitentiam traditur: seruatum ei nutu Dei imperium, donec impleto tempore, agnito . demum Deo, post vn annos et regno et statui pristino restitutus est.
 
 hic post deuictum, ut supra diximus, Sedechiam, quem captiuum Babylonam transtulit, regnasse traditur annos vi et xx, quamquam id non in sacra historia scriptum inuenerim.
 
@@ -834,7 +834,7 @@ cumque his per luxum ac licentiam regalis conuiuii promiscue omnes uirilis ac mu
 
 igitur rex perterritus magos et Chaldaeos aduocat. quibus mussantibus nec quicquam respondentibus, regina regem admonet, esse quendam Hebraeum Daniel nomine, qui olim Nabuchodonosor occulti mysterii somnium reuelasset, iam tum ob illustrem sapientiam summis honoribus donatum.
 
-itaque accitus perlegit interpretatusque, ob delictum regis, qui sacra Deo vasa temerasset, ipsi exitium imminere regnumque eius Medis ac Persis 12 IV Reg. 25. 15 Dan. 5. 2 babilloni P, Babylonem b 4 hanc in interpolato Qiselinus 5 repperirem P 6 regnum babilloniorum P 7 consentirent P, em. de Prato 12 regnum est adeptus b 13 Euilmarodac Pb: Enilmarodach Drusius 14 Balsasar Drusius 15 Is cum b: com P 17 hierolimae P II nec P: ac b 19 cnmq. P: cum b 20 omnes P, ut coni. Sigonius: omnis b 21 conspicatur P (non conspicatns est): conepicit b 22 possit P 23 repperiebatur P 24 mussitantUras b, at cf. I, 43, 7 27 accitus Daniel b datum. quod mox consecutum eet.
+itaque accitus perlegit interpretatusque, ob delictum regis, qui sacra Deo vasa temerasset, ipsi exitium imminere regnumque eius Medis ac Persis datum. quod mox consecutum eet.
 
 nam eadem nocte Balthasar interiit, regnum eius Darius natione Medus occupauit: Danielum illustri opinione compertum uniuerso imperio praeposuit, secutus superiorum regum iudicium. nam et Nabuchodonosor eum regno praefecerat et Balthasar neete purpurea et torque aureo donatum tertium regni principem constituerat.
 
@@ -852,7 +852,7 @@ quod si qui studiosior erit, rectius ibi quaesitum reperiet: nobis propositum es
 
 Hunc Cyrus, ex filia, nepos eius, regno expulit, Persarum usus armis: unde summa imperii ad Persas translata est.
 
-Babylonii quoque in potestatem ditionemque eius concessere. igitur 21 Dan. 7-10. 28 Esra 1. Jer. 25. II Par. 36. 2 regnumque b 11 Danielem b 8 inuidia Giselinus: iniudęa P, in Judaea b 9 compellant malebat de Prato coll. Seueri dial. 2, 6 10 deum P, ut coniecit de Prato : Dominum b 11 id olario P 18 feram P 19 haberi P: haberi coepit b II aritiquato P 24 anticristum P 25 si quia b 26 duo de xx P 27 astyagis P 30 potestatem et ditionemq. P initio regni, propositis publice edictis, dat potestatem Iudaeis in solum patrium redeundi, sacra etiam uasa, quae Nabuchodonosor de templo Hierosolymae abstulerat, reddidit. itaque pauci tum in Iudaeam regressi: ceteris redeundi animus an facultas defuerit parum comperimus.
+Babylonii quoque in potestatem ditionemque eius concessere. igitur initio regni, propositis publice edictis, dat potestatem Iudaeis in solum patrium redeundi, sacra etiam uasa, quae Nabuchodonosor de templo Hierosolymae abstulerat, reddidit. itaque pauci tum in Iudaeam regressi: ceteris redeundi animus an facultas defuerit parum comperimus.
 
 erat ea tempestate apud Babylonios Beli antiquissimi regis, cuius etiam Virgilius meminit, ex sere simulacrum, quod superstitione hominum consecratum Cyrus quoque adorare erat solitus, antistitum eius dolo illusus, qui uesci effigiem illam atque potare affirmabant, cum diurnam pensitationem, quae idolo inferebatur, clam ipsi absumerent.
 
@@ -866,7 +866,7 @@ itaque signo regis templum obsignatur, cum prius Daniel sacerdotibus insciis pau
 
 tum Daniel occultam fraudem uestigiis prodentibus reserat, sacerdotes cum uxoribus et filiis, subfosso foramine ingressos, ea quae idolo apposita fuerant deuorasse. ita omnes iussu regis interfecti, templum ac simulacrum Danielo in potestatem datum atque arbitrio eius dirutum.
 
-Interea Iudaei, quos ex permissu Cyri in patriam regressos supra memorauimus, urbem ac templum restituere aggressi, ut 6 Aen. I, 729. 30 II Par. 36. 4 defuerat P 5 Beli b: bella P 6 cnina — meminit Sigonio glossema uidebatur 10 Daniele b 14 ut I ut es illud P II accyri P, acoersi b 18 sueta P: om. b; aliquid deesse recte Vorstius senserat II inferri P et Vorgtnu: inferre b 21 Danieli b 23 ues tia P 28 Danielo om. P, Danieli b 31 restuere P pauci atque inopes parum proficiebant, donec centesimo fere anno, Artaxerse rege Persis imperitante, per eos, qui locis praeerant, ab aedificando deterriti:
+Interea Iudaei, quos ex permissu Cyri in patriam regressos supra memorauimus, urbem ac templum restituere aggressi, ut pauci atque inopes parum proficiebant, donec centesimo fere anno, Artaxerse rege Persis imperitante, per eos, qui locis praeerant, ab aedificando deterriti:
 
 etenim tum Syria atque omnis Iudaea sub Persarum imperio per magistratus ac praesides regebatur. igitur his consilium fuit regi Artaxersi scribere, non oportere Iudaeis restituendae urbis suae copiam dari, ne pro contumaci ingenio resumptis uiribus, aliis gentibus imperare soliti, non paterentur sub alieno imperio degere.
 
@@ -880,7 +880,7 @@ post huius mortem magi duo fratres, natione Medi, menses vnPersarum regnum optin
 
 hic* ante quadriennium quam decederet, apud Marathonam pugnauit, celeberrimo Graecis Romanisque historiis proelio. id gestum post Romam conditam anno fere ducentesimo et sexagesimo, Macerino et Augurino consulibus, abhinc annos, si tamen inuestigatio Romanorum consulum non fefellit, DCCC LXXX et VIII : omne enim tempus in Stiliconem consulem direxi.
 
-post Darium Xerses fuit, isque uno et xx annis 2 Esra 3. 8 Esra 6. 2 Artaierxe b, et sic semper in hoc nomine 3 sunt deterriti b 4 regebatur b: agebatur P, an ex agebat ? cf. ad 1, 30,1 9 et usque malebat de Prato 12 contexta P 13 significamas P II unù et xxx annis P 15 ceperat P 16 regnauitque b 18 ipse P: ipsum b 21 hystaspi P 24 Marathona malebat de Prato 26 macherino P, em. de Prato 28 omnS P II stillioonem P 29 exerses P, Xerxes b et sic deinceps II unum et xx annos b regnasse traditur: quamquam in plerisque exemplaribus xx et v annos imperii eius fuisse repperi. huic successit Artaxerses, cuius supra meminimus.
+post Darium Xerses fuit, isque uno et xx annis regnasse traditur: quamquam in plerisque exemplaribus xx et v annos imperii eius fuisse repperi. huic successit Artaxerses, cuius supra meminimus.
 
 hic cum inhiberi aedificationem urbis Iudaeae templique iussisset, suspensum opus usque in secundum Darii regis annum pependit. sed ut usque ad eum temporum ordo conexus sit, Artaxerses regnauit annis uno et XL, Xerses duobus mensibus. postque eum Sucdianus vn mensibus fuit.
 
@@ -890,7 +890,7 @@ ita templum quadriennio consummatum, sexto post anno quam Darius regnare coepera
 
 per idem tempus Esdras scriba legis post xx fere annos quam templum fuerat consummatum, defuncto iam Dario, qui unum de uiginti annos rerum fuerat potitus, permissu Artaxersis secundi, non illius, qui inter duos Xerses fuit, sed huius, qui Dario Ocho successerat, Babylonia profectus multique eum secuti Hierosolymam peruexere uasa diuersi operis et dona, quae rex templo Dei miserat, cum xu Leuitis:
 
-uix emrn hic numerus ex illa tribu repertus traditur. is cum deprehendisset Iudaeos gentilium conubiis permixtos, multis increpitos renuntiare 12 Esra 6. 23 Esra 7 sq. 26 Esra 9 sq. 3 meminimus P: mentionem fecimus b 6 annis uno nos: annos unū P 7 Sucdianus] uulgo Sogdianus 9 ademptus P 11 docimento ammirationem P 12 concupissct malebat de Prato 14 imperaret ut b 16 ceperat P 21 untl de xx. annos P: unum do xx annis b (Dndeuiginti de Prato) 22 artarxerses P 23 dario cho P II multique eum secuti Hierosolymam peruexere uasa diuersi operis scripsi: multisque eum secuti hicrosolimam pernenere uasa diucrsi operis P, multisque eum sequutis, Hierosolymam peruenere. Vasa quoque diuersi operis b 27 cocconubiis P, connubiis edd. 5 iatiusmodi matrimoniis ac filios ex his susceptos extrudi iubet, omnesque dictoparuere. purgatus populus ueteris legis ritu agebat
+uix emrn hic numerus ex illa tribu repertus traditur. is cum deprehendisset Iudaeos gentilium conubiis permixtos, multis increpitos renuntiare iatiusmodi matrimoniis ac filios ex his susceptos extrudi iubet, omnesque dictoparuere. purgatus populus ueteris legis ritu agebat
 
 ceterum Esdram nihil super reficienda urbe egisse comperio, credo potiorem curam ratus plebem corruptis moribus reformare.
 
@@ -904,7 +904,7 @@ paruit rex piis precibus, statimque eum cum praesidio equitum, quo tutius iter a
 
 iflagrante inuidia gentium uicinae urbes conspirant opera interrumpere Iudaeosque ab aedificando deterrere. sed Neemias, dispositis aduersum incursantes praesidiis, nihil territus coepta explicnit: consummatoque mtWO et ualuis portarum perfectis, per familias construendis interius domibus urbem dimensus est. censuitque populum minime urbi parem, neque enim amplius quam ad quinquaginta milia promiscui sexus atque ordinis reperta:
 
-tantum ex illo quondam inmani numero frequentibus bellis absumptum aut captiuitate detentum. nam olim hae duae tribus, quarum hoc residuum fuit, cum ab his decem tribus separatae sunt, ccc et xx milia uirorum armauerant. a Deo ob peccatum 10 Neh. 2. 20 Neh. 3 sqq. 2 ritu de Prato: ritO Pb 5 Nehemias Drusius 6 artarxersi P 10 misericordiamque b 14 et sexaginta Sigonius 20 cum flagrante] conflagrante P 22 Judaeos b II dispositis b: depositis P 24 muro Sigomus addidit, possis etiam opere 25 dimensus Gcdesinius et Giselium: dimissus P 31 CLXXX Sigonius II a Dco de Prato: adeo edd. priores internecioni et captiuitati datae ad hanc usque paucitatem donenerant.
+tantum ex illo quondam inmani numero frequentibus bellis absumptum aut captiuitate detentum. nam olim hae duae tribus, quarum hoc residuum fuit, cum ab his decem tribus separatae sunt, ccc et xx milia uirorum armauerant. a Deo ob peccatum internecioni et captiuitati datae ad hanc usque paucitatem donenerant.
 
 sed haec, ut dixi, plebs duarum tribuum fuit: decem uero prius deductae per Parthos, Medos, Indos atque Aethiopas dis*persae numquam in solum patrium regressae, hodieque barba*rarum gentium imperiis continentur. sed consummatio restitutae urbis xxx et n imperii Artaxersis anno refertur.
 
@@ -916,7 +916,7 @@ In hoc temporum tractu Esther atque Iudith fuisse arbitramur: quarum quidem actu
 
 mihi tamen uisum est huic Artaxersi, sub quo Hierosolyma est restituta., Esther historiam conectere, quia non sit uerisimile, ut, si sub priore Artaxerse fuisset, cuius tempora Esdra complexus est, nullam tam illustris feminae mentionem retulisset, maxime cum ab illo Artaxerse inhibitam templi aedificationem, sicut supra memorauimus, constet: neque Esther passura fuerit [tum], si in illius matrimonio tum fuisset. nunc gesta edisseram.
 
-erat ea tempestate regi in matrimonio Vastis quaedam, mirae femina 10 Dan. 9. 1 datA P 3 deductae nos: ductae P, abductae de Prato 4 sunt regressae b 6 n] duo P II artarxersis P 7 Fufium P: Fusium b II Geminium b II rebellium P, em. de Prato 8 malim consS. (sic cod.) 8 (i. e. sunt) anni 14 post CCLX est in P spatium uacuum quindecim fere litterarum 15 nhoc P initio noui uersus, Hoc b II Esther Drusius: heater P et sic deinceps 17 artarxerse P, item u. 22 et 24, et artarrerei u. 20 18 reppcrerim scripsi: repperi P 21 quia non sit scripsi: qui an fuit P, quae ante fuit b II ucrisimilis b 22 tempora Esdra de Prato: tẽprã P 24 sic supra P 26 utrumque tum de Prato delendum censet, nos prius saltem inclusimus 5* pulchritudinis. cuius cum formam omnibus praedicaret, die quodam, cum publicum conuiuium dabat, adesse reginam demonstrandae pulchritudinis gratia iubet.
+erat ea tempestate regi in matrimonio Vastis quaedam, mirae femina pulchritudinis. cuius cum formam omnibus praedicaret, die quodam, cum publicum conuiuium dabat, adesse reginam demonstrandae pulchritudinis gratia iubet.
 
 illa uero stulto rege consultior, pudens uirorum oculis spectaculum corporis praebere, iussa abnuit. qua contumelia barbarus animus permotus uxorem matrimonio ac regia depellit.
 
@@ -932,7 +932,7 @@ erat ea tempestate regi Aman quidam perfamiliaris, quem aequatum sibi adorari mo
 
 igitur Aman ad perniciem Hebraei animum intendens regem adit affirmatque, esse in regno eius hominum genus prauis superstitionibus deo hominibusque inuisum, externis legibus uiuens, dignum exitio: rectum esse omnes huius gentis internecioni dare, exque eorum bonis inmensas opes pollicetur.
 
-facile ld barbaro persuasum: edictum emittitur Iudaeos necandos, missique continuo qui per omne regnum ab India usque Aethiopiam promulgarent. id ubi Mardochaeo compertum, conscissis uestibus sacco obuoluitur conspersusque cinere pergit ad regiam, ibique eiuiatu multo cuncta questibus replet: facinus indignum immeritam gentem perire neque ullam pereundi 6 Esther 2. 18 Esther 3. 28 Esther 4. 8 mardochoeo P || patraele b lOetom. P, ac b II ammonita P 13 coepit P 14 aequatam sibi imp. malebat Vorstim 15 mardocheus P, et sic deinceps 18 amman h. Z. P, sed alias aman; Haman b 21 pernitiem P 22 intendene b: incendensP 1\\ adiit Pb 27 omnSP 28 promulgarent P: edictoia promalgarent b 30 regiam P et de Prato: reginam b causam dari.
+facile ld barbaro persuasum: edictum emittitur Iudaeos necandos, missique continuo qui per omne regnum ab India usque Aethiopiam promulgarent. id ubi Mardochaeo compertum, conscissis uestibus sacco obuoluitur conspersusque cinere pergit ad regiam, ibique eiuiatu multo cuncta questibus replet: facinus indignum immeritam gentem perire neque ullam pereundi causam dari.
 
 Esther lamentantis voce excita rem, ut erat, cognoscit. tum uero anceps consilii, quia adeundi regem potestas non erat — etenim more Persarum reginae introire ad regem nisi accersitae non licet, nec tamen, cum fuerit regi libitum, sed statuto tempore admittitur — et forte tum ita euenerat, ut diebus xxx proximis separata a conspectu regis Esther haberetur.
 
@@ -946,7 +946,7 @@ et tum regi compertum, poenam crucis per Aman Mardochaeo paratam. ita Aman eaede
 
 Huic rerum ordini recte Iudith actus conseram: traditur enim post captiuitatem fuisse, sed quis eo tempore Persis regnauerit, historiadiuinanonedidit: regem tamen, sub quo illa gesta sint, Nabuchodonosor nuncupat, non utique eum, qui Hierosolymam ceperit.
 
-sed nullum hoc nomine post captiuitatem apud Persas regnasse reperio, nisi si ob inpotentiam et pariles conatus 6 Esther 5. 13 Esther 7. 24 Judith 1. 8 parata de Prato : parat Pb II dõ P corr. 1 m, ex dnõ: Domino b 9 percalsns b 10 coeipm b 11 gentis P, em. Galesinius 13 pernitiem P 17 cunctatnr deliherandique b 18 ut uidit Sigonim: uidit P 20 compertum erat b 21 epdem P: eidem b 22 artazerses P 23 LX P: XL Sigoniue; contra de Prato cenaet infra anni n et XL (pro dno et xx) scribendum esse 24 conaeram P, ut coni. Drurius: conferam b 26 gesta sunt malebat de Prato 29 inpatientiam Pt em. Sigonius II quicumq. P et Sigonius: quicum b quicumque ille rex Nabuchodonosor a Iudaeis uocitatus est.
+sed nullum hoc nomine post captiuitatem apud Persas regnasse reperio, nisi si ob inpotentiam et pariles conatus quicumque ille rex Nabuchodonosor a Iudaeis uocitatus est.
 
 plerique tamen Cambysen, Cyri regis filium, putant, eo quod uictor Aegyptum atque Aethiopiam penetrauerit. sed huic opinioni eadem sacra historia repugnat: nam duodecimo regis illius anno Iudith fuisse signatur.
 
@@ -960,7 +960,7 @@ ceterum illud nemini mirum esse oportebit, quod scriptores saecularium litteraru
 
 etenim erat indignissimum, ut alia agentibus aut alia quaerentibus haec quoque cum reliquis miscerentur. sed pergam ad cetera ac per Iudith gesta, ut potero, paucis absoluam.
 
-Igitur reuersis, ut supra memorauimus, in solum patrium Iudaeis, necdum composito rerum aut urbis statu, rex Persarum Medis bellum infert atque aduersus regem eorum, Arphaxad 12 Jndith 2. 30 Judith 1. 2 eo P: esse b 6 artarxersen P 8 conitio P t) in 6: om. P 11 sęcularibus P: Becularibus quibusdam scriptis b 14 olofern\', t. e. olofernus P 15 aduersus b II duxit Laubmann: dux P, duxerat b, duceret de Prato 17 opionis P 21 attigerunt b: contigerunt P, attigerint malebat de Prato II prouidente coni. de Prato 22 uelP: et b 27 ac Jndith gesta Sigonius 30 arfaxat P, em. Drusius e Graeco \'Αρϕαξάδ nomine, acie confligit secundo euentu: perempto rege gentem imperio adiungit.
+Igitur reuersis, ut supra memorauimus, in solum patrium Iudaeis, necdum composito rerum aut urbis statu, rex Persarum Medis bellum infert atque aduersus regem eorum, Arphaxad nomine, acie confligit secundo euentu: perempto rege gentem imperio adiungit.
 
 idem reliquis nationibus facit, praemisso Holofeme, quem principem militiae delegarat, cum milibus peditum c et xx, equitum xn. is Cilicia et Arabia bello uastatis multas urbes aut ui capit aut metu in deditionem compellit. iamque.
 
@@ -976,7 +976,7 @@ exin uario rerum statu floruisse aut concidisse, atque iterum malis emersisse, s
 
 ad haec Holofernes ferox multis uictoriis, nihil sibi inuictum ratus, ira accensus, cur ex peccato potissimum Iudaeorum pendere illius uictoria putaretur, propelli Achior in castra Hebraeorum iubet, ut cam his periret, quos uinci non posse affirmauerat.
 
-ac tum Iudaei montes petiuerant: ita quibus id negotii datum, ima 2 Judith 2 sq. 7 Judith 4. 12 Judith 5. 28 Judith 6. 2 oloferne Petaic deinceps 3 delegerat b 6 torrere P 8 antea nos: antead P (an ex antehac?), ante b 11 salutem P 12 et 25 olofernis P, item, p. 72,5 II Moabitis] addendum censet Drusius et Am. monitis (uei et flliia Ammon), quia Aohior Ammonitarum dux fuerit 13 asumptis P 15 aeitor P (etsic deinceps, sed p., 721 accitor), Accitor b, em. Drusius, cf. Judith 5, 6 20 emeruiase P 22 captiui. tatis P II coercerentur Vorstius 28 uincti P montium successere ibique uinctum Achior reliquerunt. quod ubi Iudaei animaduerterunt, exemptum uinculis in collem perducunt. causas rei quaerentibus gesta exponit receptusque in pacem exitum opperiebatur. is post uictoriam circumcisus Iudaeus factus est.
+ac tum Iudaei montes petiuerant: ita quibus id negotii datum, ima montium successere ibique uinctum Achior reliquerunt. quod ubi Iudaei animaduerterunt, exemptum uinculis in collem perducunt. causas rei quaerentibus gesta exponit receptusque in pacem exitum opperiebatur. is post uictoriam circumcisus Iudaeus factus est.
 
 igitur Holofernes difficultate locorum comperta, quia adiri praecelsa non poterant, montes militibus circumdat et summa cura Hebraeos aquationibus prohibet: eoque maturius obsidionem sensere. itaque uicti penuria aquae ad Oziam principem concurrunt, proni omnes ad deditionem. ille uero opperiendum paulisper et diuinum auxilium expectandum respondens, quinto demum die deditionis tempus constituit.
 
@@ -988,7 +988,7 @@ sed ubi per triduum egrediendi ac redeundi consuetudinem sibi barbaris fidem fec
 
 tum remotis ministris, priusquam uim mulieri inferret, somno captus est. Iudith tempore arrepto caput hostis desecat secumque aufert. et cum secundum consuetudinemcastrisegredi crederetur, incolumis regressa.
 
-postero die Hebraei, caput Holofernis de superioribus ostentantes, 8 Judith 7. 12 Judith 8-10. 18 Judith 12. 27 Judith 13 sq. 2 amin aduerterunt P 3 in pacem nos: inparem P, parem b 6 milibus P 10 demum Sigonius: decimo P, cf. ltό. Judith 7,15 14 arctis b 20 consuetudinem sibi, barbaris fidem distinctum est in editt. ; uidetwr sententia: ubi barbaris fidem fecit, sibi esse egred. ac redeundi consuetudinem, cf. infra: cum secundum consuetudinem castris egredi crederetur (consuetudine sibi apud barbaros fidem fecit Vorstius) 21 fideP 22 abntendi Drusius 23 deducitur P, ut coni. Drusius: deducunt b II initoque conuiuio de Prato: initioque conuiuii P 27 regressa P: ad suos regressa est b , eruptione facta ad castra hostium pergunt. tum uero barbari signum pugnae poscentes tabernaculum ducis frequentes assistunt. ubi truncum corpus repertum. foeda formidine in fugam uersi terga hostibus praebuerunt.
+postero die Hebraei, caput Holofernis de superioribus ostentantes, eruptione facta ad castra hostium pergunt. tum uero barbari signum pugnae poscentes tabernaculum ducis frequentes assistunt. ubi truncum corpus repertum. foeda formidine in fugam uersi terga hostibus praebuerunt.
 
 Iudaei fugientes persecuti caesisque multis milibus castris ac praeda potiti. Iudith summis laudibus celebrata c et v annos uixisse traditur.
 
@@ -1004,7 +1004,7 @@ regnum amici eius, qui simul cum illo maxima illa bella gesserant, partiti sunt.
 
 nec uero hic rerum status diu mansit, omnesque se reges appellari maluerunt. primus in Syria post Alexandrum Seleucus rex fuit, subiecta eidem Perside ac Babylone.
 
-qua tempestate Iudaei annuum stipendium trecenta argenti talenta regi dabant, nec tamen per externos magistratus, sed per sacerdotes suos regebantur. patrioque ritu uiuebant, donec plerique eorum longa rursum pace corrupti miscere omnia seditionibus et 2 Judith 15 sq. 6 si P: om. b 8 duo et xx] duo et XL de Prato, cf. eius edit. II, p. 123 sq. 10 Bagua spado Pb, sed cf. II, 14, 5 11 Arxes Pb 13 aler- sander P 15 omniurn b: om. P 18 liberum esset b 19 babyllonam P 21 hi P: inde b 22 Arrideo Pb 24 re de Prato: res P 27 eadem peraide ac babyllone P 29 externos Sigonius: ternos P turbare coepenmt, affectantee summum sacerdotium libidine, auaritia et dominandi cupidine.
+qua tempestate Iudaei annuum stipendium trecenta argenti talenta regi dabant, nec tamen per externos magistratus, sed per sacerdotes suos regebantur. patrioque ritu uiuebant, donec plerique eorum longa rursum pace corrupti miscere omnia seditionibus et turbare coepenmt, affectantee summum sacerdotium libidine, auaritia et dominandi cupidine.
 
 Namque primum sub rege Seleuco, Antiochi magni filio, Oniam sacerdotem, uirum sanctum atque integrum, Simon quidam falsis apud regem criminibus insimulatum excutere nequiuerat.
 
@@ -1018,7 +1018,7 @@ nec multo post, cum promissum argenti modum non reddidisset, loco pellitur: Lysi
 
 his initiis corruptis moribus eo usque processum, ut plerique popularium ab Antiocho poscerent, permitti sibi more gentilium uiuere. quod cum rex petentibus annuisset, certatim pessimus quisque delubra extruere, idolis supplicare, legem profanare occeperat. interea Antiochus rediens
 
-ab Alexandria — namque tum bellum regi Aegyptio intulerat, quod iussu senatus et populi Romani deposuit, Paulo et Crasso consulibus — Hierosolymam adiit. cum discordantem superstitionibus susceptis populum repperisset, legem Dei destruens et his fauens, qui impia sequebantur, omnia templi ornamenta detraxit 25 II Macc. 5. 1 auarię et donandi P, em. in b 4 Oniam b: omam P 5 eicutere Giselinus: exquire P, exquirere b (extinguere Sigonius, extrudere Clericus, excipere Vonck) 9 permissum cuiquam erat b II non perpetuo (uel non perfungi) Sigonius et Drusius, uulgatam sic explicat de Prato: \'sacerdotium, quod perpetuum erat, usurpare1 10 sollititu P, uollicitatus malebat de Prato, sed eodem sensu sollieitus dictum esse apparet, cf. ad II, 51, 5 11 depulsa P II est mandatum b 13 symonis P II promiasa P 15 menelaus P: Menelaus quoque b II obtinuit Sigonius II quum is promissum b 17 foeda P: foeda fuere b 18 init\', i. e. initus P 22 nantiochua P 27 frauaens P II templo Vorstius ac multa caede uastauit.
+ab Alexandria — namque tum bellum regi Aegyptio intulerat, quod iussu senatus et populi Romani deposuit, Paulo et Crasso consulibus — Hierosolymam adiit. cum discordantem superstitionibus susceptis populum repperisset, legem Dei destruens et his fauens, qui impia sequebantur, omnia templi ornamenta detraxit ac multa caede uastauit.
 
 id gestum ab excessu Alexandri anno centesimo uno et quinquagesimo, Paulo, ut diximus, Crassoque consulibus, post quinquennium fere quam Antiochus regnare coeperat.
 
@@ -1034,7 +1034,7 @@ ita Antiocho magno mortuo Seleucus filius eius natu maior regnum indeptus est, s
 
 is post quinquennium quam regnare coeperat, ut supra docuimus, Hierosolymam depopulatus est. etenim graue Romanis stipendium pensitans ipse inmensis sumptibus paene necessario cogebatur pecunias rapto quaerere neque ullam praedandi occasionem omittere.
 
-post biennium deinde, pari rursum clade affectis Iudaeis, ne forte frequentibus malis compulsi bellum sumerent, 1 m. caede urbem uastanit coni. Sigonius probabUiter 2 uno b: imo P; minus uerisimUe est imo ex dittographia ortum esse, cf ; de Prato ad h. l. de chronologia 7 fuerant P: fuerunt b 12 qui et theus P: qui Ettbaeus b 15 Callinici delenchm esse uidit de Prato 16 Lucios Scipio nos: ut suscipio P, Scipio b 17 Asiaticiu de Prato: asyana gens P, Africani frater b 19 eius filius b 20 maior P, nt coni. de Prato: minor b II adeptus b II omam P 21 aymone P 27 Bomptibus deditus coni. de Prato praesidium arci imposuit. inde sacram legem euertere aggressus mittit edictum, ut omnes relictis maiorum traditionibus gentilium ritu uiuerent.
+post biennium deinde, pari rursum clade affectis Iudaeis, ne forte frequentibus malis compulsi bellum sumerent, praesidium arci imposuit. inde sacram legem euertere aggressus mittit edictum, ut omnes relictis maiorum traditionibus gentilium ritu uiuerent.
 
 nec defuere qui profano imperio uolentes parerent. tum uero foedum spectaculum: per uniuersas urbes palam. in plateis litabatur, sacra etiam legis et prophetarum uolumina igni cremata.
 
@@ -1050,7 +1050,7 @@ Interea Matthathias moritur: uicarium exercitui, quem parauerat ducem, ludam fil
 
 nam primum Apollonium ducem hostium, qui magnis copiis in conflictum descenderat, cum omni exercitu deleuit. quod cum Seron quidam, qui tum Syriae praeerat, comperisset, multiplicatis legionibus ludam aggressus, ferox quia numero praestabat, ubi in aequum descensum, fusus ac fugatus, octingentis ferme amissis in Syriam regressus est.
 
-id ubi compertum est Antiocho, ira 1 I Macc. 1, 35 sqq. 7 I Macc. 2. 16 II Macc. 7. 22 I Macc. 3 sqq. 2 maiorum P: maiorum suorum b 4 fedum P \\I uniuersam urbem P, em. de Prato 5 litabatur P: diis litabatur b 7 matthathias P: Mathathias b, et sic infra 12 queis b 13 et uel in bello P: et in bello potius b (errauit de Prato de P) 14 nantiochus P 18 Dei et b 22 aduersus b 27 quia P (per compendium) addita eadem m. Byllaba ta s. I. 28 in aequum P: in certamen b et dolore succensus, quippe angebatur duces suos cum magnis exercitibus deuictos, auxilium per omne regnum contrahit, donatiuum militibus, exhaustis penitus thesauris, largitur.
+id ubi compertum est Antiocho, ira et dolore succensus, quippe angebatur duces suos cum magnis exercitibus deuictos, auxilium per omne regnum contrahit, donatiuum militibus, exhaustis penitus thesauris, largitur.
 
 etenim tum praecipue grauiter pecuniae inopia affectus erat. nam deficientibus Iudaeis ab eo, qui ei ultra trecenta argenti talenta annua pensitauerant, praeterea Graecis urbibus multisque regionibus persecutionis malo turbatis — ne gentilibus quidem pepercerat, quos deserere inueteratas superstitiones et ad unum ritum deducere temptauerat, illis quidem, ubi nihil sancti erat, facile relinquentibus.
 
@@ -1064,7 +1064,7 @@ haec ubi Lysiae ex nuntiis comperta, maiore cura copias parat annoque post imman
 
 ludas pulsis hostibus Hierosolymam regressus purgare templum et restituere animum intendit, quod euersum ab Antiocho profanatumque a gentibus foedam sui speciem praebebat.
 
-sed Syris arcem tenentibus, quae continua templo et loci natura superior 28 I Macc. 4. 1 duces duos malebat de Prato, et deinde aoxilia 8 inueterate P 12 regis P 15 lisyas P, item infra u. 25 lisyae II delegitur P 16 Doronem cum Sigonio aut delendum est aut scribendtm Ptolemaeum Dorymenis fllium; cf. Maccab. 3, 38 et Jos. Antiq. 12,11 21 in aeię P 27 uictus P: uictus denuo b 31 contigua Drusius probabiliter, ut est II, 34, 2 et Dial. 3,10 contigua flumini.. habitacula atque inexpugnabilis erat, adiri subiecta non poterant, crebris eruptionibus prohibentibus.
+sed Syris arcem tenentibus, quae continua templo et loci natura superior atque inexpugnabilis erat, adiri subiecta non poterant, crebris eruptionibus prohibentibus.
 
 aduersum hos ludas ualidissimam suorum aciem obiecit. ita opus sacrae aedis curatum templumque muro circumdatum, constitutique qui perpetuum praesidium armati agitarent.
 
@@ -1080,7 +1080,7 @@ tum ludas laxata obsidione regi obuiam tendit primoque proelio Syros fundit. rex
 
 nam Demetrius, Seleuci filius, quem Romanis obsidem datum supra memorauimus, ut audiuit Antiochum decessisse, petiuit, ut se in regnum remitterent. quod cum ei negatum fuisset, clam Roma profugit, in Syriam uenit regnumque occupauit, Antiochi filio, qui annum unum et menses sex regnauerat, interfecto.
 
-hoc 7 I Macc. 6. 29 1 Macc. 8. 7 in bello P: in bellum b 8 Elimum b, Elymaeum coni de Prato 10 confluxente P, sed confluente malebat de Prato 11 res a Lysia inpr. gestas Sigonius, res uel a Lysia uel a Lysiae ducibus coni. de Prato 20 cum peditum centura milibus Sigonius 21 suisobsidioP 23 patit P \\I quia P: qua Drusius, qua quia Vorstiua 27 remitteret P 28 Antiochi P, at coni. Vorstim: Antiocho b (Antiocho Antiochi f. Drusius) regnante primum Iudaei a populo Romano amicitiam foedusque petiere: benigneque excepta legatio, decreto aenatus socii atque amici appellati. interim Demetrius aduersus ludam per duces SUO8 bellum gerebat.
+hoc regnante primum Iudaei a populo Romano amicitiam foedusque petiere: benigneque excepta legatio, decreto aenatus socii atque amici appellati. interim Demetrius aduersus ludam per duces SUO8 bellum gerebat.
 
 ac primum per Bacchidem quendam et Alcimum Iudaeum. ductus exercitus: post Nicanor bello praepositus in proelio occubuit. tum Bacchides et Alcimus resumptis uiribus auctisque copiis aduersum ludam confligunt in ea pugna uictores Syri cruente admodum uictoria usi.
 
@@ -1092,7 +1092,7 @@ hic Alexander, priusquam aduersus Demetrium confligeret, foedus cum Ionatha fece
 
 ita quinquennio, quo rerum potitus est, res Iudaeorum tranquillae fuerunt. igitur Demetrius Demetrii filius, qui post mortem patris Cretam confugerat, hortante Lasthene Cretensium duce, regnum patrium bello repetens, impar uiribus Ptolemaeum Philometorem regem Aegypti, Alexandri socerum, iam tum genero infestum, ut sibi sit auxilio, implorat.
 
-ille uero non tam supplicis precibus quam spe Syriae occupandae illectus copias cum eo iungit, ac filiam Alexandro nuptam dat Demetrio. 4 I Macc. 9. 29 I Maoc. 11. 4 alchimum P (et sic deinceps), em. Giselinus 8 usi P: sunt usi b II in locum occisi Judae Sigonius 9 Ionathan b 10 sotio P 17 ptolomei P 21 Jonathas b 22 iuuit.. occurrit coni. de Prato 23 corrupit P: uiolauit b 25 Demetrius addidit Sigonius 26 lastene P 27 ptolomeum phylometorem P aduersus hos Alexander acie confligit. eo proelio Ptolemaeus cadit, Alexander uincitur:
+ille uero non tam supplicis precibus quam spe Syriae occupandae illectus copias cum eo iungit, ac filiam Alexandro nuptam dat Demetrio. aduersus hos Alexander acie confligit. eo proelio Ptolemaeus cadit, Alexander uincitur:
 
 paulo post interfectus, cum regnasset annos quinque uel, ut in plerisque auctoribus repperi, nouem.
 
@@ -1102,7 +1102,7 @@ Tryphon, ubi se imparem cernit, pacem simulat, receptumque. in amicitiam inuitat
 
 tum Demetrius, refecto cum Iudaeis foedere, contemplatione cladis a Tryphone illatae — nam post Ionathae necem urbes eorum atque agros bello uastauerat — annua eis uectigalia in perpetuum remittit: etenim usque ad id tempus regibus Syriae, nisi cum armis restiterunt, stipendium pensitauerant.
 
-id gestum Demetrii regis anno secundo, quod ideo 1 eo pręlio uincitur ptolomeus . cadit alexander nincitur paulo post P, eo proelio uincitur Ptolemaeus, cadit Alexander. Vincitur Ptolemaeus, et paulo post b; secuti sumus emendationem G. Bichteri, nisi quod ille secutldum editionem principem et ante paulo addidit 2 interfectus P: interficitur b 3 implerisque P 4 Jonathan b 5 iudas P jj 5 et 8 trifon P 6 regno] hic quaedam intercidisse critici recte intellexerunt; nec tamen sufficit cum Hieronymo de Prato inhiabat supplere; nam apparet plura deesse et uerba eum bello prohibiturus non ad sententiam. Requentem, sed ad priorem pertinere. Ex Maccab. I, 12, 39 sq., \'xal ξζη̄τησε Τρύϕωv βασιλεύσαι rfjg lAalag xal περιϑεσϑαι ro δuιδημσ xαί εχτεῑvαι xEiea ὲπιιι \' Avlοχοv τόv βασιλέα\' xal ὲϕοβη̄ϑη μὴ ποτε οὐx αὐτὸv \'Ιωvi\'ιϑαv xal μὴ ποτε πολεμήσ xαìal ξζὴτει πóροv Toli σvλλαfitTv τόv \'Ιωváϑαν xal áπολέσαι avrov, xal áπáρας ὴλϑεν tlg Βαιϑσάν \' lacuna sic fere explenda uidetur: regno [Asiae inhians, ueritus ne Jonatha sibi arma inferret, profectus est Baethsan] eum bello prohibiturus. contra Jonatha ete. 7 ionatha (cum apice super syllaba tha) P: Jonathan b 8 milium b: milib; P 9 ptolomaidam P, Ptolemaidem Drusius, nisi malis Ptolemaida 10 interficit malebat de Prato II Jonathan b II symonem P 12 in quibus matris et fratrum de Prato; immo potius et fratrum et matris et patris, cf. Maccab. I, 13, 28 14 trifonQ P 16 eis Giselinus: eius P II imperpetuum P 17 restiterunt P: resisterent b signauimus, quia usque in hunc annum per tempora Asianorum regum cucurrimus, ut ratio temporum digesta luceret.
+id gestum Demetrii regis anno secundo, quod ideo signauimus, quia usque in hunc annum per tempora Asianorum regum cucurrimus, ut ratio temporum digesta luceret.
 
 nunc autem per tempora eorum, qui Iudaeis uel pontifices uel reges fuerunt, usque ad Christi natiuitatem rerum ordinem digeremus.
 
@@ -1116,7 +1116,7 @@ Alexander deinde filius eius, rex pariter et pontifex fuit, regnauit annos VII e
 
 post huius obitum foeda inter fratres de regno certamina. ac primum Hyrcanus imperium obtinebat: mox ab Aristobulo fratre pulsus confugit ad Pompeium, qui tum Mitridatico bello confecto pacataque Armenia et Ponto uictor omnium gentium, quas adierat, introrsum pergere et uicina quaeque Romano imperio adiungere cupiens, causas belli et materiam uincendi quaerebat. igitur Hyrcanum libens excepit ductuque eius Iudaeos aggreditur:
 
-urbe capta atque eruta templo pepercit. Aristobulum uinctum Romam mittit, Hyrcano ius pontificatus restituit: impositoludaeis stipendio procuratorem eis Antipatrum quendam 5 Jonathan b II symon P 6 id enim;- populo scripsi: et id enim et tnti et a suis et a populo P, id enim ei tum a suis, tum et a populo b (Dru- stus: a regibus eius loco quod est a populo Ro.) 8 ptolomei P 11 annos vi et xx r. potitus Qiselinus : anno vr et xx rerum potitus est P 12 aristobolus P 15 filius] \'immo frater, ut ex Josepho liqueV dePrato 18 Salina P, ut coni. Brusius: Solina b n alexandria P 19 prim\'ū (t. e. primusum) P 20 moi aristobolo P 23 aderat P II introrsum P: ultrorsum b 24 nincendi P: incendii aliquot edd. recentt. 25 excipit malebat de Prato 26 ernta P: arce b II uinctum Sigonius : nictum P, cf. Jos. Ant. 14, 8. Flor. 1, 41, 30 etc. 27 impositoque b 28 ascolonitem P, itemp. 82, 3 ascolonitae .. 6 Ascalonitem praeposuit.
+urbe capta atque eruta templo pepercit. Aristobulum uinctum Romam mittit, Hyrcano ius pontificatus restituit: impositoludaeis stipendio procuratorem eis Antipatrum quendam Ascalonitem praeposuit.
 
 Hyrcanus quattuor et triginta annos rerum potitus, dum aduersum Parthos bellum gerit, capitur.
 
@@ -1132,7 +1132,7 @@ hoc regnante, anno regni eius octauo et decimo, Dominus cruci fixus est FuSo Gem
 
 Apostolorum actus Lucas edidit usque in tempus, quo Paulus Romam deductus est Nerone imperante: qui non dicam regum, sed omnium hominum et uel inmanium bestiarum sordidissimus dignus extitit, qui persecutionem primus inciperet: nescio an et postremus explerit, siquidem opinione multorum receptum sit, ipsum ante Antichristum uenturum.
 
-huius uitia ut plenius exponerem res admonebat, nisi non esset huius operis tam uasta ingredi: id tantum annotasse contentus sum, hunc per omnia foedissima et crudelissima eo processisse, ut matrem interficeret, post etiam Pythagorae cuidam in modum sollemnium coniugiorum 28 ex Tac. Ann. 15, 37. 1 IIII et xx Sigonim 2 bella b 7 sub 6: sed P 12 deminuerit P, diminueret b 14 postq. eum\'P: post quem b 15 annis xx P: an. xx b, annos xx complures edd. posteriores II eius P: om. b 16 fusio P: Fusio b II rebellio P, em. de Prato et iam ante evm Joh. Clericus 17 a om. P II atilliconem P 18 CCCLXYII Sigonius 22 persecutionem P: perNecutionem in Christianos b 23 explebit Giselinus; immo expleturus sit II receptus P 24 ante Antichristum de Prato (lectione in P non cognita): antecristum P, Antichriatum b; cf. Dial. II, 14 26 fedissima P 28 phytagorae P II sollempniorum P denuberet; inditumque imperatori flammeum; dos et genialis torus et faces nuptiales, cuncta denique, quae uelinfeminis non sine uerecundia conspiciuntur, spectata.
+huius uitia ut plenius exponerem res admonebat, nisi non esset huius operis tam uasta ingredi: id tantum annotasse contentus sum, hunc per omnia foedissima et crudelissima eo processisse, ut matrem interficeret, post etiam Pythagorae cuidam in modum sollemnium coniugiorum denuberet; inditumque imperatori flammeum; dos et genialis torus et faces nuptiales, cuncta denique, quae uelinfeminis non sine uerecundia conspiciuntur, spectata.
 
 reliqua uero eius incertum pigeat an pudeat magis disserere. hic primus Christianum nomen tollere aggressus est: quippe semper inimica uirtutibus uitia sunt et optimi quique ab improbis quasi exprobrantes aspiciuntur.
 
@@ -1146,7 +1146,7 @@ neque ulla re Nero efficiebat, quin ab eo iussum incendium putaretur. igitur uer
 
 hoc initio in Christianos saeuiri coeptum. post etiam datis legibus religio uetabatur, palamque edictis propositis Christianum esse non licebat. tum Paulus ac Petrus capitis damnati:
 
-quorum um ceruix gladio desecta, Petrus in crucem sublatus est. dum haec Romae geruntur, Iudaei, 19 Tac. ann. 15, 40 sqq. 1 denuberet P (ut est ita Tae. Ann. 15, 37 extr.): nnberet b 2 thorue b 3 conspicuntur P 8 praesidis P, ut uoluercU Stgonius: prae- auliB b 11 ediderant Pb: ediderunt edd. complures 13 symonem P 13 congreaio P 15 dilapsna P 21 afficiebat P 27 latis legibus Sigonius 28 Christiano Nic. Heinsius ad Ovid. ep. Heroid. 14, 64 29 dampnati P 6* praesidis sui Festi Flori iniurias non ferentes, rebellare coeperunt. aduersus eos Vespasianus proconsulari imperio a Nerone missus multis grauibusque proeliis deuictos coegit intra muros Hierosolymae confugere.
+quorum um ceruix gladio desecta, Petrus in crucem sublatus est. dum haec Romae geruntur, Iudaei, praesidis sui Festi Flori iniurias non ferentes, rebellare coeperunt. aduersus eos Vespasianus proconsulari imperio a Nerone missus multis grauibusque proeliis deuictos coegit intra muros Hierosolymae confugere.
 
 interim Nero iam etiam sibi pro conscientia scelerum inuisus, humanis rebus eximitur, incertum an ipse sibi mortem consciuerit: certe corpus illius nonrepertum.
 
@@ -1158,7 +1158,7 @@ tum Vitellius e Gallia fretus exercitibus, quibus praeerat, urbem ingressus, Oth
 
 Vespasianus Romam profectus, summo fauore senatus et populi receptus, cum se Vitellius interfecisset, imperium confirmauit. interea Iudaei obsidione clausi, quia nulla neque pacis neque deditionis copia dabatur, ad extremum fame interibant, passimque uiae oppleri cadaueribus coepere, uicto iam officio humandi: quin omnia nefanda esca super ausi ne humanis quidem corporibus pepercerunt, nisi quae eiusmodi alimentis tabes praeripuerat.
 
-igitur defessis defensoribus irrupere Romani. ac tum forte in diem Paschae omnis ex agris aliisque Iudaeae oppidis multitudo conuenerat: 8 Apocal. 13, 3. 1 Festi] a Josepho uocatur Gessius Floras, ab Eusebio Cestios FL 4 Nero P, ut coni. Giselinus: uero b 6 non repertum (sic ñreptù.) P: interemptum b; sententiam diuinauerat TUlemont proponens irrepertum 8 ei\' P: fort. 08, i e. esse: II et Sigonius: uel (per comp.) P, ut b 12 Tunc b II in Gallias Pb, ex Galliis Sigonius, in Galliis. Is fretus Vonck 13 excercitibus P 14 postea malebat de Prato 15 R. P. P 18 consalutatus P: Imperator consalutatus b 21 sibi confirmanit de Prato 22 obsidioni P 23 interiebant P haud scio an recte 25 esca super P: insuper b ; cf. Bernays p. 59 n. 79 nimirum ita Deo placitum, ut eo tempore, quo Dominum cruci aftixerat, gens impia internecioni daretur.
+igitur defessis defensoribus irrupere Romani. ac tum forte in diem Paschae omnis ex agris aliisque Iudaeae oppidis multitudo conuenerat: nimirum ita Deo placitum, ut eo tempore, quo Dominum cruci aftixerat, gens impia internecioni daretur.
 
 Pharisaei aliquantisper pro templo acerrime restiterunt, donec obstinatis ad mortem animis ultro se subiectis ignibus intulerunt. numerus peremptorum ad undecies centena milia refertur, capta uero C milia ac uenundata.
 
@@ -1172,7 +1172,7 @@ Interiecto dein tempore Domitianus, Vespasiani filius, persecutus est Christiano
 
 qui cum tormentis et quaestionibus nihil in Christianis morte aut poena dignum repperisset, saeuiri in eos ultrauetuit.
 
-sub Adriano deinde Iudaei rebellare uoluerunt, Syriam ac Palaestinam 2 farisaei P 5 C b: om. P; C milia habet Eusebius, τρεϊς μvριάδας Syneellus, ad C milia Drusius secundum Josephum 8 oportere P: deberi b, debere de Prato quasi ex codice 9 perenne P 11 templum in primis b II penitiue coni Bernays p. 57; at u. ad 1, 35, 9 13 hisdem P II ab hic addidit de Prato, ante isdem Sigonius 17 quae P 18 patria P, non patriae, ut ait de Prato 23 deinde b 24 Joannem b 25 Patmum Drusius II archanis P diripere conati: misso exercitu subacti sunt. qua tempestate Adrianus, existimans se Christianam fidem loci iniuria perempturum, et in templo et loco Dominicae passionis daemonum simulacra constituit.
+sub Adriano deinde Iudaei rebellare uoluerunt, Syriam ac Palaestinam diripere conati: misso exercitu subacti sunt. qua tempestate Adrianus, existimans se Christianam fidem loci iniuria perempturum, et in templo et loco Dominicae passionis daemonum simulacra constituit.
 
 et quia Christiani ex Iudaeis potissimum putabantur — namque tum Hierosolymae non nisi ex circumcisione habebat ecclesia sacerdotem — militum cohortem custodias in perpetuum agitare iussit, quae Iudaeos omnes Hierosolymae aditu arceret.
 
@@ -1188,7 +1188,7 @@ mox Decio imperante iam tum septima persecutione saeuitum in Christianos. inde V
 
 post eum, interiectis annis fere quinquaginta, Diocletiano et Maximiano imperantibus acerbissima persecutio exorta, quae per decem continuos annos plebem Dei depopulata est. qua tempestate omnis fere sacro martyrum cruore orbis infectus est: quippe certatim gloriosa in certamina ruebatur multoque auidius tum martyria gloriosis mortibus quaerebantur, quam nunc episcopatus prauis ambitionibus appetuntur.
 
-nullis umquam magis bellis mundus exhaustus est, neque maiore umquam triumpho uicimus, quam cum decem annorum 1 rnissoP: miseoque b 3 et in templo et loco P: et in templo ac loco b, qua uitiosa scriptura de Prato inductus est ut locum mancum esse putaret call. Paulini ep. 31 et Rieron. ep. 58. 6 imperpetuum P 13 postea Pb: post aliquot edd. recentt. 19 leonida P: Leonidas b, Leonides de Prato cum Eusebio 22 iam tum uix sanum est 25 Maximiano Pb: Maximiniano praue edd. llornii et Vorstii stragibus uinci non potuimus.
+nullis umquam magis bellis mundus exhaustus est, neque maiore umquam triumpho uicimus, quam cum decem annorum stragibus uinci non potuimus.
 
 extant etiam mandatae litteris praeclarae eius temporis martyrum passiones, quas conectendas non putaui, ne modum operis excederem.
 
@@ -1206,7 +1206,7 @@ illud mirum, quod locus ille, in quo postremum institerant diuina uestigia, cum 
 
 quin etiam calcati Deo pulueris adeo perenne documentum est, ut uestigia impressa cernantur.
 
-et cum cotidie confluentium fides certatim Domino calcata diripiat, damnum tamen arena non sentiat, et eandem adhuc sui speciem, uelut impressis signata uestigiis, terra custodit. 18—29 Paulini ep. ad Seuerum 31. 1 praeclarae b: praecarae P 2 conectandas P, connectendas edd. 7 quia adnersum P, em. Vonck 18 adhornata P, eat adornata b 20 concnpisceret b 21 basylicas P, basilicam b 23 postrem\' (posiremns) P 24 sublatus est b 28 docimentaiQ P 30 eandem Laubmann: eadem P
+et cum cotidie confluentium fides certatim Domino calcata diripiat, damnum tamen arena non sentiat, et eandem adhuc sui speciem, uelut impressis signata uestigiis, terra custodit.
 
 Eiusdem reginae beneficio crux Domini tum reperta: quae neque in principio obsistentibus Iudaeis potuerat consecrari, et postea dirutae ciuitatis oppressa ruderibus, non nisi tam fideliter requirenti meruit ostendi.
 
@@ -1222,7 +1222,7 @@ His per Helenam gestis, principe Christiano libertatem atque exemplum fidei mund
 
 etenim duobus Arriis acerrimis perfidiae huius auctoribus imperator etiam deprauatus, dum sibi religionis officium uidetur implere, uim persecutionis exercuit: actique in exilium episcopi, saeuitum in clericos, animaduersum in laicos, qui se ab Arriorum communione secreuerant.
 
-quae autem Arrii praedicabant, erant huiusmodi: patrem Deum instituendi orbis causa genuisse 1 cap. 34 ex Pantini ep. 5. 27 - p. 89, 2 ex Hilario fragm. II, 26 col. 642 cd. Veron. 1730. 7 pcium P 10 dignoscendi b II quo P: ill quo b 14 funus P, ut coni. S\'igonius: funeriB b II immo efferebatnr, ut Hofmeisterus quoque uidit 22 Arriana de Prato: arriani P, Ami b (P semper habet arrius, etsi nomen est graecum \'Αρεϊος) II iniecto P: inuecto b 24 deprauatus dum P: deprauatur: dumque b II regionis P 26 animaduersus P II Arrianorum b 27 Arriani b 28 huiuBcemodi b II deum P: Domini b (praue intellecto compendio in P dm̃); apud Hilarium est : tradebant autem Arii talia: patrem Deum instituendi orbis causa genuisse filium, et pro potcstate filium, et pro potestate sui ex nihilo in substantiam nouam atque alteram Deum nouum alterumque fecisse: fuisse autem tempus, quo filius non fuisset.
+quae autem Arrii praedicabant, erant huiusmodi: patrem Deum instituendi orbis causa genuisse filium, et pro potestate sui ex nihilo in substantiam nouam atque alteram Deum nouum alterumque fecisse: fuisse autem tempus, quo filius non fuisset.
 
 igitur huius mali causa synodus apud Nicaeam ex toto orbe contrahitur, ccc siquidem et duodeuiginti episcopis congregatis: fides plena, conscribitur, haeresis Arriana damnatur, imperator decretum episcopale complectitur.
 
@@ -1236,7 +1236,7 @@ sed de Photino dubium non erat merito fuisse damnatum: in Marcello nihil tum dam
 
 ceterum Arriani non hos potius quam Athanasium remouere cupiebant. itaque imperatorem eo usque compellunt, ut Athanasius exulatum ad Gallias mitteretur.
 
-mox in Aegypto LXXX episcopi congregati Athanasium iniuste condemnatum esse pronuntiant. res ad Constantinum refertur: iubet ex toto orbe apud Sardicam episcopos congregari atque . omne iudicium, quo Athanasius damnatus fuerat, retractari i. 3-5 Hilarii fragm. II, 27 sui ei nihilo in substantiam nonam atque alteram Deum nouum alterumque fecisse 1 et Galesinius: eo P 2 deum P: factum Dominum b II fecisse supple- uimus ex Hilario 6 dampnatur P 7 detrectare coni. de Prato 10 adacrsum b 12 uirn sanctum P distincte: iuns consultum b 13 affuerat P 15 fotinum P et sic postea 19 a studiis p. innocentia Mceaserat scripsi: astudiis p. innocentiù cesserat P, studium p. innocontium aceesserat b 20 condempnatus P et sic saepius 23 compellant tnalebat de Prato II, p, 103 II athanasids (sic) P 25 Constantinum] at u. de Prato ad h. l. 26 serdicam P inter haec Constantinus moritur:
+mox in Aegypto LXXX episcopi congregati Athanasium iniuste condemnatum esse pronuntiant. res ad Constantinum refertur: iubet ex toto orbe apud Sardicam episcopos congregari atque . omne iudicium, quo Athanasius damnatus fuerat, retractari i. inter haec Constantinus moritur:
 
 synodus congregata iam Constantio imperatore Athanasium absoluit, Marcellus quoque episcopatui redditur: nam de Photino episcopo Sirmiensi non est rescissa sententia, qui etiam nostrorum iudicio haereticus probatur. et tamen hoc ipsum Marcellum grauabat, quia Photinus auditor eius fuisse in adolescentia uidebatur.
 
@@ -1252,7 +1252,7 @@ namque Marcellus Sabellianae haeresis assertor extiterat: Photinus uero nonam ha
 
 igitur Arriani astuto consilio miscent innoxium criminosis, damnationemque Photini et Marcelli et Athanasii eadem sententia comprehendunt, illud nimirum apud imperitorum animos praestruentes, ut non putarentur de Athanasio perperam iudicasse, qui de Marcello atque Photino uera sensissent.
 
-uerumtamen ea tempestate Arriani perfidiam suam occultabant: non ausi palam erroris sui dogmata praedicare catholicos se gerebant, nihil sibi prius agendum rati quam 1 constantio P : Constantino b 4 qui etiam scripsi: quia etiam P II probatur P: probabatur b 7 Vrsacius de Prato 14 fidei P: fidei esse b 17 fuerit P 20 ut P: quod b II fuisse P 21 quam ininste Marcellus malebat de Prato 22 haereticuB esse b 23 assator P 26 miBcnnt P II fofotini P 28 imperitorum de Prato : imperatorum Pb II prostruentes corr. 1 m. in pstruentes P 31 non P: nec malebat de Prato ut Athanasium ecclesia submouerent, qui semper eis uelut murus obstiterat: quo remoto reliquos in libidinem suam cessuros sperabant.
+uerumtamen ea tempestate Arriani perfidiam suam occultabant: non ausi palam erroris sui dogmata praedicare catholicos se gerebant, nihil sibi prius agendum rati quam ut Athanasium ecclesia submouerent, qui semper eis uelut murus obstiterat: quo remoto reliquos in libidinem suam cessuros sperabant.
 
 sed pars episcoporum, quae Arrios sequebatur, damnationem. Athanasii cupitam accepit: pars coacti metu et factione studia partium concesserant: pauci, quibus fides cara et ueritas potior erat, iniustum iudicium non receperunt: inter quos Paulinus, episcopus Treuerorum, oblata sibi epistola ita subscripsisse traditur, se in Photini atque Marcelli damnationem praebere consensum, de Athanasio non probare.
 
@@ -1266,7 +1266,7 @@ hi ita palatium occupauerant, ut nihil sine eorum nutu ageret imperator, obnoxiu
 
 nam eo tempore, quo apud Mursam contra Magnentium armis certatum, Constantius descendere in conspectum pugnae non ausus in basilica martyrum extra oppidum sita, Valente tum eius loci episcopo in solatium assumpto, diuersatus est. ceterum Valens callide per .. suos disposuerat, ut quis proelii fuisset euentus primus cognosceret, uel gratiam regis captans, si prior bonum nuntium detulisset, uel uitae consulens, ante.capturus fugiendi spatium, si quid contra accidisset.
 
-itaque paucis, qui 15 Hilarii fragm. n (ex epist. Sardic. synodi). 2 concessuros Vorstius, ut est paulo post u. 5 3 arrios P: Arrium b 6 concesserunt coni. de Prato 6 portior P 9 de A. non praebere Giselinus 11 quodlibet b 12 deuixerant P 15 in perfidiam Vorstius 16 mursia P, em. de Prato II ab Heraclia b 18 menofantus P, ut cosi. de Prato : Menophanes b II Laodicea b II Neronopoli Sigonius (sed ille Neronipoli): Neapoli Pb. Jeropoli cod. Hilarii 20 obnixius P 21 mursam P: Morsam b 22 constantiùs (sed - eras.) P: Constantinus b 22 conspectu P 25 per agros (uel campum) auos de Prato, ipse malim per uiam suos circa regem erant, metu trepidis, imperatore anxio, primus nuntiat hostes fugere. cum ille indicem ipsum intromitti posceret, Valens ut reuerentiam sui adderet, angelum sibi fuisse nuntium respondit.
+itaque paucis, qui circa regem erant, metu trepidis, imperatore anxio, primus nuntiat hostes fugere. cum ille indicem ipsum intromitti posceret, Valens ut reuerentiam sui adderet, angelum sibi fuisse nuntium respondit.
 
 facilis ad credendum imperator palam postea dicere solitus, se Valentis meritis, non uirtute exercitus uicisse.
 
@@ -1280,7 +1280,7 @@ tum Eusebius Vercellensium et Lucifer a Carali Sardiniae episcopi relegati. cete
 
 illinc epistolam sub imperatoris nomine emittunt, omni prauitate infectam, eo nimirum consilio, ut, si eam aequis auribus populus recepisset, publica auctoritate cupita proferrent: sin aliter fuisset excepta, omnis inuidia esset in rege, et ipsa uenialis, quia etiam tum catechumenus sacramentum fidei merito uideretur potuisse nescire.
 
-igitur lecta in ecclesia epistola populus auersatus. Dionysius, quia non esset assensus, urbe 1 anxo P 5 est solitus b 11 tum b: cum P /I bitteras P: Buteras b, Biterras Sigonius, ut Hilarius quoque habet 13 ac tum P: nec tum b; cf. de Prato ad h. l. 14 iudicum de Prato: iudicium Pb 20 Caralis P et edd., adhaesit s ex sequenti uoce II episcopis P, fort. JWo episcopi s = sunt 26 infectam P: refertam b II ei P: ca b 27 proferent P 28 ct ipsa] fort. ipsi 29 catecuminus P 30 lecta - auersatus P: lectam in Ecclesia epistolam populus auersatur b pellitur, statimque eius in locum Auxentius episcopus snbrogatur.
+igitur lecta in ecclesia epistola populus auersatus. Dionysius, quia non esset assensus, urbe pellitur, statimque eius in locum Auxentius episcopus snbrogatur.
 
 Liberius quoque urbis Romae et Hilarius Pictauorum episcopi dantur exilio. Rhodanium quoque, Tolosanum antistitem, qui natura lenior non tam suis uiribus quam Hilarii societate non cesserat Arrianis, eadem conditio implicuit, cum tamen hi omnes parati essent Athanasium a communione suspendere, modo ut de fide inter episcopos quaereretur.
 
@@ -1296,7 +1296,7 @@ sed quidam ex his ultra processerant, άνομοιοvσίαν id est dissimilem 
 
 nam Italiam, Illyricum atque Orientem Valens e Vrsatius ceterique, quorum nomina edidimus, infecerant. Gallias nostras Saturninus Arelatensium episcopus, homo impotens et factiosus, premebat.
 
-Osium 1 Auxentius suppleuit Sigonius2 episcopi de Prato: e:ps P, cf. H, 47, 2 3 rhodanum P, sed c. 45 extr. rhodanius II toloaanom P, ut coni. Theod. Canterus: et Dosanum b (syllaba olo ita in P scnpta est, ut facile do kgas) 4 tam b: tam P II hylarius P 5 hi omnes P: homines b (Îft P est hi oaa), omnes Vorstius 6 commune P 8 praestantissimo P 11 redditur b 12 cebratoa P 13 legationibusq. P: legationibus quoque b 16 niceam P 18 quendam P II omo usion et 19 omeo usion P 19 cst unins P, xt coni. de Prato: unius est b 23 hominis unitatem Sigonius24 anomeousian P, Anomoeousiam b 27 illiricum P quoque ab Hispania in eandem perfidiam concessisse opinio fuit: quod eo mirum atque incredibile uidetur, quia omni fere aetatis suae tempore constantissimus nostrarum partium. et Nicaena synodus auctore illo confecta habebatur: nisi fatiscente aeuo — etenim maior centenario fuit, ut sanctus Hilarius in epistolis refert — delirauerat.
+Osium quoque ab Hispania in eandem perfidiam concessisse opinio fuit: quod eo mirum atque incredibile uidetur, quia omni fere aetatis suae tempore constantissimus nostrarum partium. et Nicaena synodus auctore illo confecta habebatur: nisi fatiscente aeuo — etenim maior centenario fuit, ut sanctus Hilarius in epistolis refert — delirauerat.
 
 quis rebus perturbato orbe terrarum et morbo quodam ecclesiis languentibus, segnior quidem, sed non minus grauis cum principem exercebat, quod licet Arriani, quibus fauebat, superiores uiderentur, necdum tamen de fide inter episcopos conueniret.
 
@@ -1306,7 +1306,7 @@ ita missis per Illyricum, Italiam, Africam, Hispanias Galliasque magistri offici
 
 sed id nostris, id est Aquitanis, Gallis ac Britannis, indecens uisum: repudiatis fiscalibus propriis cum sumptibus uiuere maluerunt. tres tantum et: Britannis inopia proprii publico usi sunt, cum oblatam a ceteris collationem respuissent, sanctius putantes fiscum grauare quam singulos.
 
-hoc ego Gauidium episcopum nostrum quasi obtrectantem referre solitum audiui, sed longe aliter senserim laudique attribuo, episcopos tam pauperes fuisse, ut nihil proprium haberent neque ab aliis potius quam a fisco sumerent, ubi neminem grauabant: ita in utrisque egregium exemplum. de reliquis nihil 5 uerba ut S. Hil in epist. refert Sigonius pro glossemate habuit, quod Seuerus numquam alias aliquem nomine sancti nominasset; locus II, 96, 1 diuersus est 6 delirauerat P: delirauerit b II quibus rebus b 15 aCricam P II magistri P, ut coni. Gothofredus (ad cod. Тheod. I, 10, 3) : magistris b; cf. dial. 9, 11 et Bil. fragm. 1, 4, ubi de hac ipBa re dicit : officiales magistri uolit.ant 16 aut coacti Sigonius : aut macti P, aut etiam coacti Giselinus, aut adacti Bernay, not. 38 17 conuenere b 18 dare P, em. SigoniusII id est - Britannia Sigonius pro glossetnate habuit, at recte monuit de Prato nostris hic nota significari cstAolicoe, Bed solos Aquitanos; cf. Bernays n. JJ 20 cum P: Otn. b 25 epi acopiB b 26 a P: om. b II sumere uoluisee Bernays 27 in utriaque Drusius : in utriusque P; sententiam recte perspexerunt Hofmeisterat de memoria dignum traditur, sed redeo ad ordinem.
+hoc ego Gauidium episcopum nostrum quasi obtrectantem referre solitum audiui, sed longe aliter senserim laudique attribuo, episcopos tam pauperes fuisse, ut nihil proprium haberent neque ab aliis potius quam a fisco sumerent, ubi neminem grauabant: ita in utrisque egregium exemplum. de reliquis nihil memoria dignum traditur, sed redeo ad ordinem.
 
 posteaquam omnes, ut supra diximus, in unum collecti sunt, fit partium secessio. ecclesiam nostri optinent, Arriani autem aedem, tum de industria uacantem, orationis loco capiunt, sed hi non amplius quam LXXX, reliqui nostrarum partium erant.
 
@@ -1322,7 +1322,7 @@ qua tempestate Hilarius, quartum iam exilii annum in Phrygia agens, inter reliqu
 
 cum tamen nihil de eo specialiter mandasset imperator, iudices tantum generalem iussionem secuti, qua omnes episcopos ad concilium cogere iubebantur, hunc quoque inter reliquos uolentes misere. ut ego conicio , Dei nutu ita gestum, ut uir diuinarum rerum instructissimus, cum de fide disceptandum erat, interesset.
 
-is ubi Seleuciam uenit, magno cum fauore exceptus omnium in se animos et studia conuerterat. ac primum quaesitum ab eo, quae Prato; concludit enim Seuerus relationem hac sententia : ita in utrisque, (h. e. tam Aquitanis Gallisque, qui fiscalia repudiauerant, quam Britannia, qui a fiscco potius quam ab aliis sumlre maluerant) egregium est aemplum 2 omneis, ut supra dictum b 3 autem aedem tum Joh. Clericus (Bibliothėque choisie Tom. XX, 1 p. 349): tmedentil P, aedem tum Giselinus , tantum locum Вaroniusl, iunctam aedem tum Bochartus, tam * Edentum b 8 esset p. fides uel P: essent p. fides et b \' 13 ueneno perfldiae de Prato 18 seleutiam isau I oppidum P 20 frigia P 24 misere P: miscero b 25 conitio P; ut ego conicio ad sequentia referen- dum esse uidit Sigonius asset Gallorum fides: quia tum, Arrianis praua de nobis uulgantibus, suspecti ab Orientalibus habebamur trionymam solitarii Dei unionem secundum Sabellium credidisse. sed exposita fide sua iuxta ea, quae Nicaeae erant a patribus conscripta, Occidentalibus perhibuit testimonium.
+is ubi Seleuciam uenit, magno cum fauore exceptus omnium in se animos et studia conuerterat. ac primum quaesitum ab eo, quae asset Gallorum fides: quia tum, Arrianis praua de nobis uulgantibus, suspecti ab Orientalibus habebamur trionymam solitarii Dei unionem secundum Sabellium credidisse. sed exposita fide sua iuxta ea, quae Nicaeae erant a patribus conscripta, Occidentalibus perhibuit testimonium.
 
 ita absolutis omnium animis, intra conscientiam communionis nec non etiam in societatem receptus concilioque ascitus est. agi deinde coeptum, repertique prauae haeresis auctores atque ab ecclesiae corpore auulsi.
 
@@ -1334,7 +1334,7 @@ namque usiae uerbum tamquam ambiguum et temere a patribus usurpatum, neque ex au
 
 ita dimissis legatis praefecto mandatum, ut synodum non ante laxaret, quam conscriptae fidei consentire se omnes subscriptionibus profiterentur: ac si qui pertinacius obsisterent, dummodo is numerus intra quindecim esset, in exilium pellerentur.
 
-sed regressis legatis, licet uim regiam deprecantibus, negata communio. enimuero compertis quae decreta erant maior rerum et consiliorum perturbatio: dein paulatim plerique nostrorum, partim imbecillitate ingenii, partim taedio peregrinationis euicti, dedere se aduersariis, iam post reditum legatorum superioribus et ecclesiam nostris inde detrusis optinentibus: factaque semel inclinatione animorum cateruatim in partem 2 trioñymũ P 4 nicea P 5 absolutus J. C. Hofmeister 7 conscilioque P; ex consilioque? 10 Leontinus Galesinius II auagrius theodolM P 11 insynuaret P 12 satis creti P 15 uniri b : unire P II conscripta P 16 fallantibus P 25 pertinatius P alteram concessum, donec ad uiginti usque nostrorum numerus inminutus est.
+sed regressis legatis, licet uim regiam deprecantibus, negata communio. enimuero compertis quae decreta erant maior rerum et consiliorum perturbatio: dein paulatim plerique nostrorum, partim imbecillitate ingenii, partim taedio peregrinationis euicti, dedere se aduersariis, iam post reditum legatorum superioribus et ecclesiam nostris inde detrusis optinentibus: factaque semel inclinatione animorum cateruatim in partem alteram concessum, donec ad uiginti usque nostrorum numerus inminutus est.
 
 Sed hi quanto pauciores, tanto ualidiores erant. constantissimus inter eos habebatur noster FoegadiuB et Seruatio Tungrorum episcopus. hos, quia minis et terriculis non cesserant, Taurus precibus aggreditur ac lacrimans obtestatur, mitiora uti consulerent. clausos intra unam urbem episcopos iam septimum mensem agere, iniuria hiemis et inopia confectis nullam spem reuersionis dari: quis tandem esset finis ?
 
@@ -1348,7 +1348,7 @@ postremo si quid minus plene praesenti fide editum uideretur, ipsi adderent, qua
 
 dein conceptae a Foegadio et Seruatione professiones edi coepere: in quis primum damnatus Arrius totaque eius perfidia ceterum etiam patri aequalis et sine initio, sine tempore Dei filius pronuntiatur.
 
-tum Valens tamquam nostros adiuuans subiecit sententiam, cui inerat occultus dolus, filium Dei non esse creaturam sicut ceteras creaturas: fefellitque audientes fraus professionis. etenim his uerbis, quibus similis esse ceteris creaturis 3 constantissimus P: constantissimusque b (constantissimi - habebantur coni. de Prato) 4 Foegadius P: Faegadius b et sic postea; alias audit nomen Phoebadius 10 enimuero de Prato : etenim ueroP 14 proftciebat BC. Foegadius Sigoniuв 15 affirmantes] \'haec quasi absodute po- sita pro Valente ot V. affirmantibus\' de Prato; ipse malim affirmant 17 et quia de Prato: ut quis P, ecquis Sigonius, aut quis Baronius 20 addanda P 24 feruatione P 25 damnatur b 26 ceterum de Prato: coetem\' (sic) P, ceterum non b II aequalis b : om. P 7 filius negabatur, creatura tamen, potior tantum ceteris pronuntiabatur.
+tum Valens tamquam nostros adiuuans subiecit sententiam, cui inerat occultus dolus, filium Dei non esse creaturam sicut ceteras creaturas: fefellitque audientes fraus professionis. etenim his uerbis, quibus similis esse ceteris creaturis filius negabatur, creatura tamen, potior tantum ceteris pronuntiabatur.
 
 ita neutra pars uicisse se penitus aut uictam putare poterat, quia fides ipsa pro Arrianis, professiones uero postea adiectae pro nostris erant, praeter illam, quam Valens anbiunIerat, quae tum non intellecta sero demum animaduersa est. hoc uero modo concilium dimissum, bono initio foedo exitu consummatum.
 
@@ -1362,7 +1362,7 @@ id uero Arriani maximo opere abnuere. postremo quasi discordiae seminarium et pe
 
 uerum ubi permensus est orbem paene terrarum, malo perfidiae infectum, dubius animi et magna curarum mole aestuans, cum plerisque uideretur non ineundam cum his communionem, qui Ariminensem synodum recepissent, optimum factu arbitratus reuocare cunctos ad emendationem et paenitentiam, frequentibus intra Gallias conciliis, atque omnibus fere episcopis de errore profitentibus, apud Ariminum gesta condemnat et in statum pristinum ecclesiarum fidem reformat.
 
-resistebat sanis consiliis Saturninus Arelatensium episcopus, uir 5 non b: om. P 6 exitũ P II est consummatum b 8 nimirum malebat de Prato II nora. P ut uiàetur 11 fidem b : om. P 12 etiam om. b 13 dedidere coni. de Prato II retinentes P, tmL Giselinus 18 forlan P 22 maximo opere P : maximopere b 30 epis (i. e. episcopia) P, ut coni. Giselinus: epistolis b II condempnat-reformat P (de quo de Prato falsa tradit): condemnant - reformant b sane pessimus et ingenio malo prauoque. uerum is praeter haeresis infamiam multis atque infandis criminibus conuictus ecclesia eiectus est. ita partium uires amisso duce infractae.
+resistebat sanis consiliis Saturninus Arelatensium episcopus, uir sane pessimus et ingenio malo prauoque. uerum is praeter haeresis infamiam multis atque infandis criminibus conuictus ecclesia eiectus est. ita partium uires amisso duce infractae.
 
 PatemuI etiam a Petrocoriis, aeque uecors nec detrectans perfidiam profiteri, sacerdotio pulsus: ceteris uenia. data. illud apud omnes constitit unius Hilarii beneficio Gallias nostras piaculo haeresis liberatas.
 
@@ -1380,7 +1380,7 @@ prorsus multa in animi et corporis bona cerneres. uigilare multum, famem ac siti
 
 sed idem uanissimus et plus iusto infIatior profanarum rerum scientia : quin et magicas artes ab adolescentia eum exercuisse creditum est. is ubi doctrinam exitiabilem aggressus est, multos nobilium pluresque populares auctoritate persuadendi et arte blandiendi allicuit in societatem.
 
-ad hoc mulieres nouarum rerum cupidae, fluxa fide et ad omnia curioso ingenio, 1 is nos: si P, etiam b 4 petruooriis P, Petrocoris b 7 Lucifero coni. de Prato, at вi quid mutandum, malim cum Baronio Lucifer tam Antiochiae agens 9 eos uel P: eos b 11 frigia P 17 atq. Aegyptua scripsi : at aegyptos P, ab Aegyptiis b; cf Tac. Ann. 15, 44 18 init\' i. e. initus P 19 memphis P, cm. Galesinius 21 Elpidius de Prato 23 felix - prauo P in litura habet, Bed 1 m. scripta. 7* cateruatim ad eum confluebant : quippe humilitatis speciem ore et habitu praetendens honorem sui et reuerentiam cunctis iniecerat.
+ad hoc mulieres nouarum rerum cupidae, fluxa fide et ad omnia curioso ingenio, cateruatim ad eum confluebant : quippe humilitatis speciem ore et habitu praetendens honorem sui et reuerentiam cunctis iniecerat.
 
 iamque paulatim perfidiae istius tabes pleraque Нispaniae peruaserat, quin et nonnulli episcoporum deprauati, inter quos Instantius et Saluianus Priscillianum non solum consensione, sed sub
 
@@ -1396,7 +1396,7 @@ additum etiam ut, si qui damnatos in communionem recepisset, sciret in se eandem
 
 interim Instantius et Saluianus damnati iudicio sacerdotum Priscillianum etiam laicum, sed principem malorum omnium, una secum Caesaraugustana synodo notatum, ad confirmandas uires suas episcopum in Abilensi oppido constituunt, rati nimirum, si hominem acrem et callidum sacerdotali auctoritate armassent, tutiores fore sese.
 
-tum uero Y dacius atque Ithacius acrius instare, 6 quoad Hyginus de Prato: quoadyginus P, Quo Adyginus b 7 comperto, ad Idatium emeritae aetatis sacerdotem refert b II ydatium P (et sic infra): Idatium uulgo 11 nee Vonck: ct Pb 14 tamen P: tum b 15 episcopi Drttsius: cps P; cf II, .39, 7 16 si quis b 17 Itacins (non Ithacius) scribendum esse docere conati sunt Florez et Giruesius Hispani 1\\ OBsoDobensi (uel Oxomensi) Sigonim; illud (uel Ossonubensi) uerisimilius uidetur et plerorumque historicorum Msensum tulit 19 et addidi, maximeque b 1\\ yginum P II extra communioncm faceret b : commnnions (sed - erasum) faceret P, fort. communione arceret (uel secemeret) 24 caesar augnstina synodll P 25 labilensi P, em. Sigonius 27 ydatius atque jthatins P arbitrantes posse inter initia malum comprimi: sed parum sanis consiliis saeculares iudices adeunt, ut eorum decretis atque executionibus haeretici urbibus pellerentur.
+tum uero Y dacius atque Ithacius acrius instare, arbitrantes posse inter initia malum comprimi: sed parum sanis consiliis saeculares iudices adeunt, ut eorum decretis atque executionibus haeretici urbibus pellerentur.
 
 igitur post multa et foeda certamina Ydacio supplicante elicitur a Gratiano tum imperatore rescriptum, quo uniuersi haeretici excedere non ecclesiis tantum aut urbibus, sed extra omnes terras propelli iubebantur.
 
@@ -1414,7 +1414,7 @@ tum uertere consilia, ut, quia duobus episcopis, quorum ea tempestate summa auct
 
 hoc freti Instantius et Priscillianus repetiuere Hispanias; nam Saluianus in urbe obierat: ac tum sine ullo certamine ecclesias, qui bus praefuerant, recepere.
 
-Verum Ithacio ad resistendum non animus, sed facultas defuit, quia haeretici corrupto V oluentio proconsule uires suas 4 certamina om. b 9 Actum P, At tum b 11 Aquitaniam b 15 Delphinum h II euchrotiae P, ut em. de Prato : Euchrociae h, et sic infra 17 cum feminis atque alienis etiam moribus coni. de Prato 21 conspectu P 22 ęquê P 24 tempestatS P 26 tum P, ut coni. Sigonius: cum b 27 restoi P 31 Ithacio Baronius: itachio P, Trachio b, Idacio Sigonius 32 Viucntio Baronius confirmauerant.
+Verum Ithacio ad resistendum non animus, sed facultas defuit, quia haeretici corrupto V oluentio proconsule uires suas confirmauerant.
 
 quin etiam Ithacius ab his quasi perturbator ecclesiarum reus postulatus, iussusque per atrocem executionem deduci trepidus profugit ad Gallias: ibi Gregorium praefectum adiit. qui compertis quae gesta erant, rapi ad se turbarum auctores iubet ac de omnibus ad imperatorem refert, ut haereticis uiam ambiendi praecluderet.
 
@@ -1430,7 +1430,7 @@ quibus permotus imperator, datis ad praefectum Galliarum atque ad uicarium Hispa
 
 ita deducti Instantius et Priscillianus: quorum Instantius prior iussus causam dicere, postquam se parum expurgabat, indignus esse episcopatu pronuntiatus est.
 
-Priscillianus uero, ne ab episcopis audiretur, ad principem prouocauit. permissumque id nostrorum inconstantia, qui aut sententiam uel in refragantem ferre debuerant aut, si ipsi suspecti 1 itachius P 5 ambien (sic) P 10 deferretur om. P, deferatur suppleuit Galesinius 11 itbatium P et sic saepius 1\\ in Trcueris P, ut coni. Giselinus: in aere ueris b, quae lectio inde exorta est, quod in P intreneris ex inèreueris correctumest, littera e, de qua agitur, non deleta. Scriptura talis est teste Reifferscheidio, ut ta-ntum accuratius inspicienti intreueris correctum use appareaf. 12 frustratus P et Sigonius: frustratur b 13 britannium P, ut coni. Tillemont: Pritannium &, Britomum Hontheim Prodr. hist. Treuir. I, 134 II defessUS P II tum om. b \'14 clemens maximu P: Clementem Мaximum b ; cf. Sall. Jug. 22 sed is rumor clemeus erat, et Prisc. 18, 277 p. 353 ed. Bert.. II inperium P 16 noni] noim P 22 Burdegalenaem b 26 qui aut de Prato : quia aut Pb 27 ucl P : om. b II aut si P et Giselinus : aut sibi b habebantur, aliis episcopis audientiam reseruare, non causam imperatori de tam manifestis criminibus permittere.
+Priscillianus uero, ne ab episcopis audiretur, ad principem prouocauit. permissumque id nostrorum inconstantia, qui aut sententiam uel in refragantem ferre debuerant aut, si ipsi suspecti habebantur, aliis episcopis audientiam reseruare, non causam imperatori de tam manifestis criminibus permittere.
 
 Ita omnes, quos causa inuoluerat, ad regem deducti. secuti etiam accusatores Ydacius et Ithacius episcopi, quorum studium super expugnandis haereticis non reprehenderem, si non studio uincendi plus quam oportuit certassent.
 
@@ -1446,7 +1446,7 @@ denique quoad usque Martinus Treueris fuit, dilata cognitio est: at mox discessu
 
 sed postea imperator per Magnum et Rufmn episcopos deprauatus at a mitioribus consiliis deflexuscausam praefecto Euodio permisit, uiro acri e seuero.
 
-is Priscillianum gemino iudicio auditum conuictumque maleficŲ nec diffitentem obscenis se studuisse doctrinis, nocturnos etiam turpium feminarum egisse conuentus nudumque orare solitum, nocentem pronuntiauit redegitque in custodiam, donec ad principem referret. gesta ad palatium delata censuitque imperator, Priscillianum sociosque eius capite damnari oportere. 4 ydatius et ithatius P II stidimn P 5 super nos: super in P, in b 1\\ non] n (pro ñ) P 7 mihi non tam Sigonius 8 audisJ: P 9 suptuosus P 10 stiltitiae P 17 infelium P 19 seuum P, nouumb 20 indicaret P corr. ex uindicaret, quod haud scio an praeferendum sit 24 defluxus P 25 eniodio P tj is P: Qui b i7 obsooenis b 30 gesta ad p. delata censuitq. P: gestis ad p. delatis ceBsuit b 31 capitis bi
+is Priscillianum gemino iudicio auditum conuictumque maleficŲ nec diffitentem obscenis se studuisse doctrinis, nocturnos etiam turpium feminarum egisse conuentus nudumque orare solitum, nocentem pronuntiauit redegitque in custodiam, donec ad principem referret. gesta ad palatium delata censuitque imperator, Priscillianum sociosque eius capite damnari oportere.
 
 Ceterum Ithacius uidens, quam inuidiosum sibi apud episcopos foret, ai accusator etiam postremis rerum capitalium iudiciis astitisset - etenim iterari iudicium necesse erat - subtrahit se cognitioni, frustra callidus iam scelere perfecto.
 
@@ -1462,8 +1462,8 @@ nam Ydacius, licet minus nocens, sponte se episcopatu abdicauerat: sapienter id 
 
 ceterum Priscilliano occiso, non solum non repressa est haeresis, quae illo auctore proruperat, sed confirmata. latius propaga1;a est. namque sectatores eius, qui eum prius ut sanctum honorauerant, postea ut martyrem colere coeperunt.
 
-peremptorum corpora ad Hispanias relata magnisque obsequiis celebrata eorum funera: 2 a.ccusator P: accusa.to b 4 callidua P, ut coni. Bernays: calido b II actũ P, At tum b 7 cum essent om. b 10 splinanci insulam P: Sylinam insulam b; paulo infra P item habet syUnancr 11 britannias P: Britanniam b ; cf. 11, 46, 3 12 asariuus P (non asaricius) : Asarinus b 13 delatus Vallarsius; at cf. II, 39, 7 dantur exilio et II, 1,6 morti dedisaent 16 homines licet Iuce Bernays p. 18 n. 82. 19 iurgiis sollicitatus Bernays: in iurgiis solitus Pb, fort. iurgiiB sollicitus cĮ: II, 18, 3 21 nam Ida.cius Sigonius: nàydatius (ut tamen etiam nardatiM legere possis, uårgula super na erasa) F, Nardacius b 22 uerecundię P 25 fort. confirmata. et latiua quin et iurare per Priscillianum summa religio putabatur. at inter nostros perpetuum discordiarum bellum exarserat, quod iam per quindecim annos foedis dissensionibus agitatum nullo modo sopiri poterat.
+peremptorum corpora ad Hispanias relata magnisque obsequiis celebrata eorum funera: quin et iurare per Priscillianum summa religio putabatur. at inter nostros perpetuum discordiarum bellum exarserat, quod iam per quindecim annos foedis dissensionibus agitatum nullo modo sopiri poterat.
 
 et nunc, cum maxime discordiis episcoporum omnia turbari ac misceri cernerentur cunctaque per eos odio aut gratia, metu, inconstantia, inuidia, factione, libidine, auaritia, arrogantia, somno, desidia deprauata, postremo plures aduersum paucos bene consulentes insanis consiliis et pertinacibus studiis certabant:
 
-inter haec plebs Dei et optimus unus quisque probro atque ludibrio habebatur. 1 at P, ut coni. de Prato: ac b . 3 fcdis disscntionibus P 4 et tunc de Prato 5 omnia om. P, post misceri habet b II ac de Prajo: aut Pb 7 somno deest in edcl. compluribus II deprauata P: essen. deprauata b 9 optimus quisque b 10 P subscriptione caret.
+inter haec plebs Dei et optimus unus quisque probro atque ludibrio habebatur.

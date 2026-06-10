@@ -116,8 +116,7 @@ export class MusisqueDeoqueLibraryProvider {
         const paragraphs = data.text
           .split("\n")
           .map((line) => line.trim())
-          .filter((line) => line.length > 0)
-          .map((line, idx) => `**${String(idx + 1)}** ${line}`);
+          .filter((line) => line.length > 0);
 
         markdown += `${paragraphs.join("\n\n")}\n`;
 

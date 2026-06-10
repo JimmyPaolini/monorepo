@@ -12,8 +12,6 @@ text_metadata:
 
 # Instructiones
 
-XV. 1
-
 S. = Sitzungsberichte der phil.-hist. Classe der kais. Akademie der Wissenschaften.
 
 b. Gbl. = Blatter fur das bayer. Gymnasialschulwesen.
@@ -94,7 +92,7 @@ XIII. Inuictus.
 
 XIIII. Siluanus.
 
-XV. Hercules. In codd. CBA haec capitula primo libro praemissa binis exarata sunt columnis; in Bl et A desunt numeri, quos in B Bigaltius, ut uidetur, addidit; et is quidem in numeris scribendis arabica, librarius codicis C romana utebatur forma. Editiones Rigaltianae octoginta utriusque libri capitula uno tenore scripta praebent; Oehler capitula omnino omittit. Inscriptio Liber primus deest in O; in C autem ante capitula haec leguntur: Incip commodiani instructiones per litteras uersuum primas; cf. p. 5 V Iupiter Cr VI audite om. Or\'; in r* hoc uerbum uncino seclusum XII bachus C XIHI Syluanus BA 1*
+XV. Hercules.
 
 XVI. De dis deabusque.
 
@@ -146,7 +144,7 @@ XXXVIIII. Item Iudaeis.
 
 XL. Iterum ipsis.
 
-XLI. De Antechristi tempore. XVI diis Or; cf. ipsius carminis inscriptionem XVIII deo] do C; in A et Bl lacuna unius uersus est, quam Rigaltius in B recte expleuit XXII seculi O; cf. acrostichi initia XXV credent scripsi (cf. acrostichi inscriptionem et initium u. 20); credant BAr; in C extremae litterae parum dilucide scriptae XXVI adaersus legem Christi (Christi om. r1) Cr; aduersus leg. (sic, omisso Christi) BA dei uiui r1; om. Or\'; cf. p. 33 XXX aestote C XXXVI crucistultitia scripsi; crucis stultitia Or; sed uide, quae ad acrostichi inscriptionem notauimus XXXVII Qui iudaeidiant (indeidiaut C) fanatici (fantatici C) CB* (= Rig.) r; Qui Iud. (ceteris omissis) BlA XXXVIIII indeis C XLI Antechristi scripsi; cf. acrostichi imcriptionem et initium u. 6; Antichristi Or
+XLI. De Antechristi tempore.
 
 **1** Praefatio nostra uiam erranti demonstrat
 
@@ -1432,7 +1430,7 @@ XII. Militibus Christi.
 
 XIII. De refugis.
 
-XIIII. De lolii semine. Tituli I-XXI (XX) inueniuntur in CBA; ceteros omiserunt B\' A, in B altera manus (Bigaltii, ut uidetur) suppleuit. Numeri titulorum hic quoque sicut in capitulatione prioris libri eadem manu altera in margine sunt additi, desunt in ABl I Omnipotentia BA; iidem inde nouum uersum ordiuntur Christi om. BAr sancto — uino om. C; cf. p. 58 II seculi BA I—III tres primi tituli in B sic scripti sunt: 1 1 De populo absconso sancto 2 Omnipotentia dei uiui 2 3 De seculi istius fine 3 4 De resurrectione prima Numeri alterius manus sunt; eadem lineolam inter uocabula De et Omnipotentia duocit. Apparet inde Rigaltium(?) initio arbitratum esse ab Omnipotentia alterum titulum initium capere; dein intellecto errore uocem Omnipotentia lineola cum antecedentibus copulauit, numeros primo scriptos expunxit uerioresque eorum loco posuit VIII penitentibus C XIIxpi C XIII refagiis 0
+XIIII. De lolii semine.
 
 XV. Dissimulatori.
 
@@ -1482,7 +1480,7 @@ XXXVII. Pastori.
 
 XXXVIII. Oranti.
 
-XXXVIIII. Nomen Gasei. I XV Dissimulatori (Dessimulatori C) secularia. in totum (toto C) fugienda O. Antiquo igitur errore, ut ipsa acrosticha XV et XVI (cf. p. 78), ita etiam tituli eorum coaluerunt. Quo factum est, ut acrosttchis insequentibus XVII, XVIII, XVIIII etc. in CB falso numeri XVI, XVII, XVIII (16, 17, 18) etc. adtribuerentur; qui error in editionis primae titulis correctecs est; ibi enim legitur: 56. Dissimulatori. 57. Secularia in totum fugienda etc. (cf. S. 107 p. 741 sq.) XVII tale C XVIIII Item CjBr (ef. titulo I, 39 et p. 85); Iterum ALd XXI Marturium Ld; cf. p. 89 XXIII concupiscentie C; concupiscentiae r1 XXVI Rectoribus r XXVIIII Maloribus C dico om. C; cf. p. 99 XXXV fabulis B(?) XXXVIIII GASEI C; gasei B (cf. p. 110); Gazei r1; Gazaei r2v\'
+XXXVIIII. Nomen Gasei.
 
 **1** Desidet (populus) absconsus ultimus sanctus,
 

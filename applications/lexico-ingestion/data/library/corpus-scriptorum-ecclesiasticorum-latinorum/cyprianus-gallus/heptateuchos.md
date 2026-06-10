@@ -1526,7 +1526,7 @@ text_metadata:
 
 **756** cumque locum busto praestarent pignora Cetis,
 
-**757** dissensit uates, pretio taxare paratus. 15 sq.
+**757** dissensit uates, pretio taxare paratus.
 
 **758** quadringenta dedit sestertia diues Ephrono,
 
@@ -2988,7 +2988,7 @@ text_metadata:
 
 **1487** lumina, dum functi ueneratur turba sepulchrum.
 
-**1488** quin etiam nati septem lux ere diebus 15 furens.
+**1488** quin etiam nati septem lux ere diebus
 
 **1489** uberibus lacrimis, pacem reddente Iosepo
 
@@ -3010,17 +3010,17 @@ text_metadata:
 
 **1498** decessit petiitque deum corpusque reliquit.
 
-**1** Interea uarios agitant dum tempora cursus disparibus 55 7
+**1** Interea uarios agitant dum tempora cursus
 
 **2** et noua pararet surgit de germine proles,
 
-**3** crimine obeunt nati prolesque sequentum. 8
+**3** crimine obeunt nati prolesque sequentum.
 
 **4** diuersosque nouat tellus Memphitica reges.
 
 **5** notio cuncta Isacum nec uatum mulier prosunt
 
-**6** eximie dilecta prius. sed munere sancti 607
+**6** eximie dilecta prius. sed munere sancti
 
 **7** tutantis populum domini numerosa creantur
 
@@ -3028,29 +3028,29 @@ text_metadata:
 
 **9** quae metuenda sibi postquam rex uidit Aegypti,
 
-**10** talibus capessit socios, alacris permouet ira: 9
+**10** talibus capessit socios, alacris permouet ira:
 
-**11** "En pubes captiua prius contentaque uictu. 65
+**11** "En pubes captiua prius contentaque uictu.
 
 **12** porrexit quem parca manus, en longa cohortes
 
 **13** iam legione ciet et solis non tumet armis,
 
-**14** pugnaci uirtute prior, uultusque minaces 10
+**14** pugnaci uirtute prior, uultusque minaces
 
 **15** et subiecta gerit. quid, si nunc tela capessit
 
-**16** hostibus aut societ sese, qua mole duelli 70
+**16** hostibus aut societ sese, qua mole duelli
 
 **17** Aegyptus uastata cadet quantasque ruinas
 
-**18** sublimes facient conuulsis moenibus urbes? 11
+**18** sublimes facient conuulsis moenibus urbes?
 
 **19** quin potius dura frangantur sorte laborum
 
 **20** inmensasque leuent substructis molibus arces,
 
-**21** ne redeat uacuis spes libertatis amissae." 75
+**21** ne redeat uacuis spes libertatis amissae."
 
 **22** haec ubi dicta, uiros sollertes praeficit illis,
 
@@ -3060,7 +3060,7 @@ text_metadata:
 
 **25** oppida sudato condunt nonnulla labore,
 
-**26** Ramassum, Pythona dehinc, et nomine Solis 8012
+**26** Ramassum, Pythona dehinc, et nomine Solis
 
 **27** Etonum insignem. sed mirum, quo mage tristi
 
@@ -3070,7 +3070,7 @@ text_metadata:
 
 **30** terretur magis atque magis rex toruus Aegypti
 
-**31** exitioque uouet nondum sua iussa timentes, 8516
+**31** exitioque uouet nondum sua iussa timentes,
 
 **32** praecipiens defluxit, pariant cum germina fetae,
 
@@ -3078,29 +3078,29 @@ text_metadata:
 
 **34** ad maritas, si iuratae despecta relinquant:
 
-**35** quarum Phua fuit socia cum tenens dicta. 17
+**35** quarum Phua fuit socia cum tenens dicta.
 
-**36** quae terrore dei timida inter corda locato 9018
+**36** quae terrore dei timida inter corda locato
 
-**37** ductoris tempsere minas atque, adfore iussae, 19
+**37** ductoris tempsere minas atque, adfore iussae,
 
 **38** Hebraeas nullo dicunt solamine fultas
 
 **39** maturos propere consuesse effundere fetus.
 
-**40** quae propter domini meruerunt dicta fauorem, 21
+**40** quae propter domini meruerunt dicta fauorem,
 
-**41** consuetis sese gaudentes condere tectis, 95
+**41** consuetis sese gaudentes condere tectis,
 
 **42** dum dominum toto laudantes corde uerentur.
 
-**43** 22 Vertitur imperium proceris populusque monetur
+**43** Vertitur imperium proceris populusque monetur
 
 **44** progenitos Nili pueros mersare fluento.
 
 **45** paret turba duci nascentes flumine mergens.
 
-**46** 1 quos inter motus Leuites coniuge ducta 100
+**46** quos inter motus Leuites coniuge ducta
 
 **47** progenerat pulchro candentem corpore natum
 
@@ -3108,9 +3108,9 @@ text_metadata:
 
 **49** \'futurum cum forma uirum, ne forte necetur,
 
-**50** occultumque fouet iam trinis mensibus actis. 8
+**50** occultumque fouet iam trinis mensibus actis.
 
-**51** sed metuens poenam, ne fraus admissa pateret, 105
+**51** sed metuens poenam, ne fraus admissa pateret,
 
 **52** expositum mittit tristis, quo rauca fluenta
 
@@ -3120,7 +3120,7 @@ text_metadata:
 
 **55** quantum acie possunt oculi seruare sequentes,
 
-**56** ut casum expositi possit narrare parenti. 110 5
+**56** ut casum expositi possit narrare parenti.
 
 **57** sed senior, plausibiles dum captat laeta incedens,
 
@@ -3130,7 +3130,7 @@ text_metadata:
 
 **60** adspicit haec modicam tumida super aequora lintrem
 
-**61** cupitamque iubet praedam deferre ministras. 115 6
+**61** cupitamque iubet praedam deferre ministras.
 
 **62** illae alacres, ut laeta subest pubentibus aetas,
 
@@ -3140,17 +3140,17 @@ text_metadata:
 
 **65** quae cupiens seruare sibi tam dulcia formae
 
-**66** gaudia et eximiae praestantem frontis honorem 120 7
+**66** gaudia et eximiae praestantem frontis honorem
 
 **67** Hebraea de plebe palam, quae conforet altrix,
 
-**68** imperat acciri, puerique haec cura famem 8
+**68** imperat acciri, puerique haec cura famem
 
 **69** inditur. illa uocat nulla iam fraude parentem
 
 **70** sollicitam, cui nata ducis sua pignora laetae
 
-**71** redderet, adposito nutricis nomine matri. 125
+**71** redderet, adposito nutricis nomine matri.
 
 **72** adcreuit raptimque puer prorepsit ad annos,
 
@@ -3160,7 +3160,7 @@ text_metadata:
 
 **75** accipit et nomen Musseos, quod foret undis
 
-**76** exemptus querulis, modico fluitante faselo. 130 11
+**76** exemptus querulis, modico fluitante faselo.
 
 **77** ille autem ingenii monitus cordisque secutus
 
@@ -3170,37 +3170,37 @@ text_metadata:
 
 **80** forte uiae medio Pharia de plebe tuetur
 
-**81** clamosa cum uoce uirum multare gementem 135
+**81** clamosa cum uoce uirum multare gementem
 
-**82** Hebraeum quendam, sortemque exosus iniquam. 12
+**82** Hebraeum quendam, sortemque exosus iniquam.
 
 **83** omnia conlustrat nullumque hic adfore cernens,
 
 **84** qui testis conperta loco depromere possit.
 
-**85** calce ferit fusumque ingesta condit harena. 13
+**85** calce ferit fusumque ingesta condit harena.
 
-**86** inde alios Iudaea uidet de gente minantes 140
+**86** inde alios Iudaea uidet de gente minantes
 
 **87** expletus uiros ac, dum se sedulus offert
 
-**88** infirmamque iuuat partem pacemque reducit, 14
+**88** infirmamque iuuat partem pacemque reducit,
 
 **89** excipit irato missas de pectore uoces:
 
 **90** "Quid celsa ceruice tumes, ceu principis alti
 
-**91** sceptra regas scriptaeque fremant, te praesule, leges? 145
+**91** sceptra regas scriptaeque fremant, te praesule, leges?
 
 **92** aut fortasse paras subito me perdere leto,
 
-**93** ut Pharium hesterna iuuenem sub luce necasti?" 15
+**93** ut Pharium hesterna iuuenem sub luce necasti?"
 
 **94** haec fuerant ut dicta, ducis deportat ad aures
 
 **95** fama loquax, uatemque fugat rex iuuenem ira.
 
-**96** ille solum uertens puteum peruenit ad altum, 150 16
+**96** ille solum uertens puteum peruenit ad altum,
 
 **97** Madia quem tellus habet, qua sede sacerdos
 
@@ -3210,7 +3210,7 @@ text_metadata:
 
 **100** haec molles commissa sibi cum cura bidentes
 
-**101** seruabant quiuit cauo de fonte trahebant; 155 17
+**101** seruabant quiuit cauo de fonte trahebant;
 
 **102** infirmam sed forte manum sexumque pauentem
 
@@ -3220,19 +3220,19 @@ text_metadata:
 
 **105** uindicat et riguas Moses adiungit ad undas
 
-**106** expletasque fouet pecudes tectisque remittit. 160 18
+**106** expletasque fouet pecudes tectisque remittit.
 
 **107** puellae genitore satis mirante reuersae
 
-**108** anterius solito promptimque ad iussa locutae 20
+**108** anterius solito promptimque ad iussa locutae
 
 **109** accitum iuuenem paterna ad limina ducunt.
 
 **110** qui procera praegelido metitus lumine membra
 
-**111** maioremque animum forma coniungere natae 165
+**111** maioremque animum forma coniungere natae
 
-**112** gaudet et eximia cernit de stirpe nepotes. 22
+**112** gaudet et eximia cernit de stirpe nepotes.
 
 **113** Sephora nam propero Gersamum sedula partu
 
@@ -3240,7 +3240,7 @@ text_metadata:
 
 **115** Gersamus externa signat regione creatum
 
-**116** ereptumque ducis rigidi Eleazarus irae. 170
+**116** ereptumque ducis rigidi Eleazarus irae.
 
 **117** haec inter dux morte cadit captiuaque pubes
 
@@ -3250,29 +3250,29 @@ text_metadata:
 
 **120** dum memor in saeclum secum sua dona reuolui
 
-**121** sopore dudum promissa bonis, quae tempore coept 175
+**121** sopore dudum promissa bonis, quae tempore coept
 
 **122** audierat uentura suis Abramus et una
 
-**123** sealam lectusque dehinc ad sancta Iacobus. 25
+**123** sealam lectusque dehinc ad sancta Iacobus.
 
 **124** iamque deum mitem tutelam fundere caelo
 
 **125** gens oppressa uidet, dum pacem poscit ab altis.
 
-**126** 1 Ac dum lanigeras soceri per rura bidentes 180
+**126** Ac dum lanigeras soceri per rura bidentes
 
 **127** Moses solus agit, sacrati ad culmina collis
 
-**128** deuenit, Hebraea quem dicit lingua Chorebum. 2
+**128** deuenit, Hebraea quem dicit lingua Chorebum.
 
 **129** in quo conspicua flammarum lampade cernit
 
-**130** procuruam fulgere rubum neque ignibus uri. 8
+**130** procuruam fulgere rubum neque ignibus uri.
 
-**131** permotus nouitate rei disquirere gaudet, 185
+**131** permotus nouitate rei disquirere gaudet,
 
-**132** fomite quo tandem tam clara incendia surgant. 4
+**132** fomite quo tandem tam clara incendia surgant.
 
 **133** dumque pauens tacite se rex tam conminus offert,
 
@@ -3280,17 +3280,17 @@ text_metadata:
 
 **135** incessu properare cito; sed sistere gressum
 
-**136** et tegumenta pedum geminis mox demere plantis 190
+**136** et tegumenta pedum geminis mox demere plantis
 
-**137** cogitur: et paret sacratae ob culmina terrae. 6
+**137** cogitur: et paret sacratae ob culmina terrae.
 
 **138** mox timor ingreditur sensus lumenque caligat
 
 **139** lumine de nimio, dominum quia cernere non est
 
-**140** fas cuiquam, uultumque simul atque ora retorquet. 7
+**140** fas cuiquam, uultumque simul atque ora retorquet.
 
-**141** tum uox missa sonat, qua se rex inclitus infit 195
+**141** tum uox missa sonat, qua se rex inclitus infit
 
 **142** esse deum procerum, dudum quos diximus esse
 
@@ -3300,7 +3300,7 @@ text_metadata:
 
 **145** plebis uota meae, uastis quae molibus urbes
 
-**146** extruit et duris operum sudoribus acta 200
+**146** extruit et duris operum sudoribus acta
 
 **147** Aegypti sublimat opes et non sua regna;
 
@@ -3310,7 +3310,7 @@ text_metadata:
 
 **150** atque ideo huc ueni celso degressus olympo,
 
-**151** ut tuear tollamque meos de sede Canopi, 205
+**151** ut tuear tollamque meos de sede Canopi,
 
 **152** magnarum largitor opum terraeque feracis,
 
@@ -3320,39 +3320,39 @@ text_metadata:
 
 **155** Pherezaea manu Gergessorumque sequente,
 
-**156** quamque simul\' perfundens colit Euaeaque pubes. 210
+**156** quamque simul\' perfundens colit Euaeaque pubes.
 
 **157** dulcibus hic scatebris opimo e flumine mella
 
-**158** albenti cum lacte fluunt; haec dona daturus 10
+**158** albenti cum lacte fluunt; haec dona daturus
 
 **159** electis te pono ducem, te pergere mando
 
-**160** regis ad optutus, ut quae sunt iussa renarres. 12
+**160** regis ad optutus, ut quae sunt iussa renarres.
 
-**161** ac ne, praetrepidus coeptu, infirmere sub actu, 215
+**161** ac ne, praetrepidus coeptu, infirmere sub actu,
 
 **162** tecum semper ero. qui libertate reuersa
 
 **163** hoc in colle mihi sensu Iuminibus ouanti."
 
-**164** 18 Haec ubi detonuit dominus, fiducia uatem
+**164** Haec ubi detonuit dominus, fiducia uatem
 
 **165** parua tenet primum. mox nomen quaerit aeternum
 
-**166** quod habeat dominus, ut signum Iudaea noscat 220 14
+**166** quod habeat dominus, ut signum Iudaea noscat
 
 **167** principis inpositi. saluator talia iungit:
 
-**168** "Ille ego sum qui sum, sic dices, et super (astra) 15
+**168** "Ille ego sum qui sum, sic dices, et super (astra)
 
 **169** qui uiget, estque deus uestrorum a stirpe parentum:
 
 **170** inmensus ubicumque deus gentesque per omnes,
 
-**171** uiuorum per saecla sator non luce carentum. 225 16
+**171** uiuorum per saecla sator non luce carentum.
 
-**172** hoc mihi nomen inest, collem hoc fare coactis; 18
+**172** hoc mihi nomen inest, collem hoc fare coactis;
 
 **173** qui tum pacificas dimittant dicta per aures.
 
@@ -3360,19 +3360,19 @@ text_metadata:
 
 **175** Israhelitarum dominum iussisse superne
 
-**176** dicatis, ut trina die deserta per arua 230
+**176** dicatis, ut trina die deserta per arua
 
 **177** incedat Iudaea phalanx et munera sancto
 
-**178** immolet apta deo ritumque obseruet auorum. .19
+**178** immolet apta deo ritumque obseruet auorum.
 
 **179** namque meam plebem tumidus laxare tyrannus
 
 **180** post cladem pestemque uolet, quae crebra profundo
 
-**181** mittatur caelo, multis uariata periclis. 23521
+**181** mittatur caelo, multis uariata periclis.
 
-**182** quin etiam fuerit cum facta licentia uobis, 22
+**182** quin etiam fuerit cum facta licentia uobis,
 
 **183** ut iussum carpatis iter, tum femina poscat
 
@@ -3380,37 +3380,37 @@ text_metadata:
 
 **185** Aegyptus nunc mollis habet, petitaque sumat,
 
-**186** ut legio informes heremi ducenda per agros 240
+**186** ut legio informes heremi ducenda per agros
 
 **187** nobilibus spoliis uacuatam linquat Aegyptum..
 
-**188** 1 Post haec signa petit uates, quae forte labantes
+**188** Post haec signa petit uates, quae forte labantes
 
 **189** confirmare queant animos, si lumine cerni
 
-**190** non credant potuisse deum tam candida fantem., 8
+**190** non credant potuisse deum tam candida fantem.,
 
-**191** praecipitur lentam propere dimittere uirgam 245
+**191** praecipitur lentam propere dimittere uirgam
 
 **192** et laxare manu; quam postquam terra recepit,
 
-**193** spumeus in spiram tractu se colligit anguis 4
+**193** spumeus in spiram tractu se colligit anguis
 
 **194** terrorem incutiens proceri; quem prendere cauda
 
-**195** iussus in antiquam redigit reuocatque figuram. 6
+**195** iussus in antiquam redigit reuocatque figuram.
 
-**196** inde manum sinibus condens candore niuali 250 7
+**196** inde manum sinibus condens candore niuali
 
 **197** protulit, atque iterum tectam deprompsit: et olli
 
-**198** in speciem leuoluta suam. tum deinde monetur, 9
+**198** in speciem leuoluta suam. tum deinde monetur,
 
 **199** haec si parua forent, sumptam de flumine lympham
 
-**200** fundere et albentem rubro mutare cruore. 10
+**200** fundere et albentem rubro mutare cruore.
 
-**201** nec minus obniti uates tenuemque loquellam 255
+**201** nec minus obniti uates tenuemque loquellam
 
 **202** dicere, et obstrictam nodis uix promere uocem,
 
@@ -3420,7 +3420,7 @@ text_metadata:
 
 **205** arguitur nullum, domino nisi dante, politis
 
-**206** sensibus effari, nec longa silentia mutos 260
+**206** sensibus effari, nec longa silentia mutos
 
 **207** rumpere, loquuntur dominus laxaret uincula linguae;
 
@@ -3430,9 +3430,9 @@ text_metadata:
 
 **210** "Vade, ait, et plena confisus fare loquella,
 
-**211** nobilis eloquio sensuque ad uerba rotundo." 265 13
+**211** nobilis eloquio sensuque ad uerba rotundo."
 
-**212** sed dum saepe deum poscit aliumque precatur 14
+**212** sed dum saepe deum poscit aliumque precatur
 
 **213** substitui subdique sibi. conmouit in iram
 
@@ -3440,27 +3440,27 @@ text_metadata:
 
 **215** "Germanus est ecce tuus limata facundus
 
-**216** ora gerens notusque mihi, Leuita creatus 270
+**216** ora gerens notusque mihi, Leuita creatus
 
 **217** ille tribu, certo quem dicunt nomine Aronem."
 
-**218** 18 Ilicet abscedit uates soceroque fatetur
+**218** Ilicet abscedit uates soceroque fatetur
 
 **219** sese reuersurum fratresque inuisere uelle
 
 **220** Iudaea de gente satos. hic flectitur ille
 
-**221** et salua pietate iubet discedere laetum. 275 20
+**221** et salua pietate iubet discedere laetum.
 
 **222** ille alacris secum natis et coniuge sumpta
 
-**223** mandatum praecepit iter; fessusque uiando. 24
+**223** mandatum praecepit iter; fessusque uiando.
 
 **224** dum refouet uires, gelida declinis in umbra.
 
-**225** angelus ecce uenit domini mortemque minatur. 25
+**225** angelus ecce uenit domini mortemque minatur.
 
-**226** Sephora sed silicem dicitis rimatur acutam 280
+**226** Sephora sed silicem dicitis rimatur acutam
 
 **227** praeputiumque secat teneri mox sedula nati;
 
@@ -3468,9 +3468,9 @@ text_metadata:
 
 **229** "Sistatur cruor iste, canit, de uulnere parui. 16
 
-**230** cuius ad eloquium sanctus discessit ad astra. 27
+**230** cuius ad eloquium sanctus discessit ad astra.
 
-**231** iamque inopis heremi uates calcabat harenas, 285
+**231** iamque inopis heremi uates calcabat harenas,
 
 **232** cum subito imperio domini mandantis Aronus
 
@@ -3480,59 +3480,59 @@ text_metadata:
 
 **235** alternasque iuuat mentes sermone sequaci
 
-**236** pandere quemque sibi, quae sint facienda uel acta. 290
+**236** pandere quemque sibi, quae sint facienda uel acta.
 
-**237** ilicet eloquio domini coniungit uterque 29
+**237** ilicet eloquio domini coniungit uterque
 
 **238** sinceram firmamque fidem, pariterque uadentes
 
 **239** accitis dicunt senibus. disiungi quae sit
 
-**240** mandatumque dei; signisque ex ordine factis 31
+**240** mandatumque dei; signisque ex ordine factis
 
-**241** credidit optatam populus remeasse medellam. 295
+**241** credidit optatam populus remeasse medellam.
 
-**242** et genua inflectens dominum subnixus adorat. 1
+**242** et genua inflectens dominum subnixus adorat.
 
-**243** pergitur ad regem, caeco nil corde uidentem 2
+**243** pergitur ad regem, caeco nil corde uidentem
 
 **244** credentemue deo, quem notum non fere dixit
 
-**245** esse sibi, populum dura sub lege cohercens 5
+**245** esse sibi, populum dura sub lege cohercens
 
-**246** imperioque truci; dum crescit cura laborum 300
+**246** imperioque truci; dum crescit cura laborum
 
 **247** et geminatur opus pondusque adiungitur ingens
 
-**248** lateribus crudis, quos solis lampada tostat. 7
+**248** lateribus crudis, quos solis lampada tostat.
 
 **249** quin etiam paleas rimosae ad uincula terrae
 
 **250** madentisque luti solitas miscerier aufert,
 
-**251** ut plebs fessa malis animos deponere mallet 305
+**251** ut plebs fessa malis animos deponere mallet
 
-**252** exiliumque pati. quae dum confecta maerore 14
+**252** exiliumque pati. quae dum confecta maerore
 
-**253** uerberibus agitur duris, effudit in ipsos 20
+**253** uerberibus agitur duris, effudit in ipsos
 
 **254** iurgia pontifices, adflictam se fore clamans
 
 **255** acre magis, postquam inmodicis sermonibus usi
 
-**256** . seruitium miserum pro libertate pararint. 310
+**256** . seruitium miserum pro libertate pararint.
 
-**257** 22 Haec ut dicta sibi domino suggessit aeterno
+**257** Haec ut dicta sibi domino suggessit aeterno
 
-**258** mitificus uates, haec rursus uerba receptat: 1
+**258** mitificus uates, haec rursus uerba receptat:
 
 **259** "Ecce deum regis Pharaonis te fore iussi,
 
-**260** germanumque tuum studio seruire prophetae 2
+**260** germanumque tuum studio seruire prophetae
 
-**261** et parere tibi. tu dices cognita fratri; 315
+**261** et parere tibi. tu dices cognita fratri;
 
-**262** ille canet regi, ut plebem emittere curet.. 7
+**262** ille canet regi, ut plebem emittere curet..
 
 **263** iamque pius uates bis quadraginta per annos
 
@@ -3540,7 +3540,7 @@ text_metadata:
 
 **265** hi dum sanctificis regem mollire loquellis
 
-**266** percupiunt et signa nouant, nil lubricus anguis 320
+**266** percupiunt et signa nouant, nil lubricus anguis
 
 **267** proiecta factus uirga, nil sanguine rubro
 
@@ -3550,7 +3550,7 @@ text_metadata:
 
 **270** idcirco quoniam cantu succincta sinistro
 
-**271** mens profana uirum paribus callebat in actis. 325 7
+**271** mens profana uirum paribus callebat in actis.
 
 **272** quin etiam similes faciunt prorepere ranas
 
@@ -3558,9 +3558,9 @@ text_metadata:
 
 **274** magorum canore modis, quas uoce crepanti
 
-**275** cuncta coaxantes studuit depellere uates. 9 14
+**275** cuncta coaxantes studuit depellere uates.
 
-**276** fluminibus tantum non passus defore suetas. 330
+**276** fluminibus tantum non passus defore suetas.
 
 **277** oblatum id regi, si pestem euadere uellet
 
@@ -3570,27 +3570,27 @@ text_metadata:
 
 **280** redditur atque eadem cunctae de morte necantur
 
-**281** congestaeque simul odio soluuntur acerbo. 335 16
+**281** congestaeque simul odio soluuntur acerbo.
 
 **282** gignuntur scinifes propere per corpora cuncta
 
-**283** quadrupedum hominumque ( simul) tellusque repletur. 18
+**283** quadrupedum hominumque ( simul) tellusque repletur.
 
 **284** hoc etiam Chaldaea cohors molita fatetur
 
 **285** esse manum domini, curamque omittit inanem.
 
-**286** 24 His actis cynomyia fluit, quae musca canina 340
+**286** His actis cynomyia fluit, quae musca canina
 
-**287** dicitur, et uatis conpleuit nutibus omnes 22
+**287** dicitur, et uatis conpleuit nutibus omnes
 
 **288** exspatiata locos solique haut cognita Gessae,
 
 **289** quae tum terra fuit Iudaeae commoda genti,
 
-**290** traxit inexhaustos, quacumque est acta, dolores. 25 lux.
+**290** traxit inexhaustos, quacumque est acta, dolores.
 
-**291** tum uero uictus Pharaon abscedere mandat, 345
+**291** tum uero uictus Pharaon abscedere mandat,
 
 **292** et quocumque uelint migrantes promere gressus,
 
@@ -3598,19 +3598,19 @@ text_metadata:
 
 **294** ut praesens nimiumque malum discedat ab aruis
 
-**295** Aegypti tandemque deus clementior adsit. 81
+**295** Aegypti tandemque deus clementior adsit.
 
-**296** nec mora: cum subiti mittuntur funera leti 350 82
+**296** nec mora: cum subiti mittuntur funera leti
 
 **297** coniunctimque necant omnes. sed cornea fibra
 
-**298** quae fuerat in rege, redit: mox mittitur una 6
+**298** quae fuerat in rege, redit: mox mittitur una
 
 **299** iumentis gregibusque lues mortesque sequentes,
 
 **300** Iudaea perdente nihil. tum cassa fauilla
 
-**301** fornacis deprompta sinu uibratur in astra 355
+**301** fornacis deprompta sinu uibratur in astra
 
 **302** arentesque ciet papulas per membra uirorum
 
@@ -3618,9 +3618,9 @@ text_metadata:
 
 **304** omnimodis gregibus generant tormenta per agros.
 
-**305** sed renouata mali facies instabat inerti 16
+**305** sed renouata mali facies instabat inerti
 
-**306** nequiquam regi, quo laus sublimior esset 36028
+**306** nequiquam regi, quo laus sublimior esset
 
 **307** mutantis tot monstra dei: ecce inter et ignes,
 
@@ -3628,9 +3628,9 @@ text_metadata:
 
 **309** - quae domino mandante crepant, decurrit ab astris
 
-**310** grando minax passimque rotat frigentia tela, 25
+**310** grando minax passimque rotat frigentia tela,
 
-**311** quae densa de caute uolant, hominesque carentes 365
+**311** quae densa de caute uolant, hominesque carentes
 
 **312** tegmine tectorum conliso [stellas corpore trudit
 
@@ -3638,19 +3638,19 @@ text_metadata:
 
 **314** debilitat siluas libroque extinguit arente,
 
-**315** inuisitata prius saeclisque incognita priscis. 31
+**315** inuisitata prius saeclisque incognita priscis.
 
-**316** triticeas segetes nondum pubentibus herbis 370 32
+**316** triticeas segetes nondum pubentibus herbis
 
 **317** atque alicam modo strauit humi; nam cetera mersit,
 
-**318** quae conspersa solo nondum deprompserat occa. 88
+**318** quae conspersa solo nondum deprompserat occa.
 
 **319** haec etiam amittit uires poscente propheta,
 
 **320** perspicuo remeante die; quia pectore fracto
 
-**321** debilis orarat ductor, dum crimina pandit 375
+**321** debilis orarat ductor, dum crimina pandit
 
 **322** ipse sua iustumque deum denarrat in altis.
 
@@ -3658,39 +3658,39 @@ text_metadata:
 
 **324** uiuentis ad damna ducis peiora laturi,
 
-**325** nec sociis credit casum pereuntis Aegypti. 8
+**325** nec sociis credit casum pereuntis Aegypti.
 
-**326** sed tamen nexus modice largitur eundi 380
+**326** sed tamen nexus modice largitur eundi
 
-**327** ius, uacuis rerum, uitae quas conparat usus. 9
+**327** ius, uacuis rerum, uitae quas conparat usus.
 
 **328** non patitur uates censumque expostulat omnem
 
 **329** quadrupedumque greges; sed iusta oratio non est
 
-**330** auribus inuitis. haec propter pellitur extra. 13
+**330** auribus inuitis. haec propter pellitur extra.
 
-**331** fratre simul truso. tum uentus flamine multo 385
+**331** fratre simul truso. tum uentus flamine multo
 
 **332** auster adest fuscatque diem noctisque per umbram
 
-**333** inmodico glomerat uiridantes terga locustas, 15
+**333** inmodico glomerat uiridantes terga locustas,
 
 **334** quae, quidquid madidum suco per frondea tecta
 
-**335** reppererant, mandunt herbasque in caespite laetas. 19
+**335** reppererant, mandunt herbasque in caespite laetas.
 
-**336** haec deinde metu regis poscente necantur 390
+**336** haec deinde metu regis poscente necantur
 
-**337** congestaeque simul Rubra merguntur in unda. 24
+**337** congestaeque simul Rubra merguntur in unda.
 
-**338** haec ubi pro paruis toruus rex despuit ore, 22
+**338** haec ubi pro paruis toruus rex despuit ore,
 
 **339** nox omnes delapsa tenet uastaeque procellae
 
-**340** includunt cohibentque uiros, pariterque diebus 28
+**340** includunt cohibentque uiros, pariterque diebus
 
-**341** occulti mansere tribus nullusque propinquum 395
+**341** occulti mansere tribus nullusque propinquum
 
 **342** uidit et ex inopi potuit consurgere lecto,
 
@@ -3700,17 +3700,17 @@ text_metadata:
 
 **345** innocui tacuere canes pressoque latratu
 
-**346** intrepidi lambunt caudae de uerbere crura, 400
+**346** intrepidi lambunt caudae de uerbere crura,
 
-**347** nonnumquam in dominos posita formidine saeui. 28
+**347** nonnumquam in dominos posita formidine saeui.
 
 **348** non tamen his damnis regis sententia cedit
 
 **349** increpitatque fremens uatem mortemque minatur,
 
-**350** quod pecora et totum uellet conuerrere censum. 29
+**350** quod pecora et totum uellet conuerrere censum.
 
-**351** iamque deus piceo noctem fuscarat amictu, 405
+**351** iamque deus piceo noctem fuscarat amictu,
 
 **352** occultam meditans densa inter funera plagam,
 
@@ -3720,17 +3720,17 @@ text_metadata:
 
 **355** ipsius (a) solio regis, cunctosque deinde
 
-**356** quacumque de stirpe uiros pecudesque ferasque. 410 30
+**356** quacumque de stirpe uiros pecudesque ferasque.
 
 **357** ilicet horrisonas uoces dolor excitat ingens,
 
-**358** omnia tecta fremunt, resonant plangoribus urbes. 31
+**358** omnia tecta fremunt, resonant plangoribus urbes.
 
 **359** tum uero incumbunt omnes detrudere plebem,
 
-**360** Iudaeum quae nomen habet, ceu causa malorum 32
+**360** Iudaeum quae nomen habet, ceu causa malorum
 
-**361** illa foret meritis, censusque et cuncta supellex 415
+**361** illa foret meritis, censusque et cuncta supellex
 
 **362** traditur et nullum putatur hinc fore damnum:
 
@@ -3740,7 +3740,7 @@ text_metadata:
 
 **365** contentisque uehunt umeris commercia uitae.
 
-**366** 40 Iamque quater centum mundus consumpserat annos, 420
+**366** Iamque quater centum mundus consumpserat annos,
 
 **367** atque quater denos pariter, si summa putetur
 
@@ -3750,7 +3750,7 @@ text_metadata:
 
 **370** his deus expletis tandem miseratus ab alto,
 
-**371** sustulit indomito plebem laudabilis hosti. 425 14
+**371** sustulit indomito plebem laudabilis hosti.
 
 **372** flumina dies primo censetur munere paschae,
 
@@ -3760,7 +3760,7 @@ text_metadata:
 
 **375** otia lenta ferunt curaque omittitur omnis;
 
-**376** nemo solum uertit curuique inmunis aratri 430 44
+**376** nemo solum uertit curuique inmunis aratri
 
 **377** sopitur per metitur labor seruique laetantur
 
@@ -3768,9 +3768,9 @@ text_metadata:
 
 **379** iungere corda deo stratisque incumbere lectis
 
-**380** et dubios inferre cibos, quos ditibus aruis 3
+**380** et dubios inferre cibos, quos ditibus aruis
 
-**381** felix terra creat. agnusque adsumitur albens, 435 5
+**381** felix terra creat. agnusque adsumitur albens,
 
 **382** mensibus explicitis, bissenos quos facit annus,
 
@@ -3780,7 +3780,7 @@ text_metadata:
 
 **385** ossibus intactis, cuiusque e sanguine postes
 
-**386** tinguere mundificum tutamque adquirere uitam. 440 44
+**386** tinguere mundificum tutamque adquirere uitam.
 
 **387** ius omnes commune tenet atque aere parati\'
 
@@ -3790,7 +3790,7 @@ text_metadata:
 
 **390** nec quidquam superesse licet; si rara corona
 
-**391** omnia non carpsit, uicinum adiungere fas campi\'.445 15
+**391** omnia non carpsit, uicinum adiungere fas campi\'
 
 **392** fermento carent panes mollisque farina
 
@@ -3798,17 +3798,17 @@ text_metadata:
 
 **394** azyma quos memorant patrio sermone terit.
 
-**395** ista haec sacra fiunt cunctis redeuntibus flumine. 450 14 17
+**395** ista haec sacra fiunt cunctis redeuntibus flumine.
 
 **396** quattuor atque decem postquam decurrere luces
 
-**397** mense nouo cernunt homines ratione magistra. 11
+**397** mense nouo cernunt homines ratione magistra.
 
 **398** sollicitaque sinus constringunt cura fluentes,
 
 **399** intenti, ceu signa canant bellumque geratur,
 
-**400** armataeque manus baculorum robora gestant. 455 22
+**400** armataeque manus baculorum robora gestant.
 
 **401** insuper arripiunt pallentis gramen hysopi
 
@@ -3818,7 +3818,7 @@ text_metadata:
 
 **404** postibus ut caris concrescat nobilis unda,
 
-**405** quae uetat introitum temptantis sancta maligni. 460
+**405** quae uetat introitum temptantis sancta maligni.
 
 **406** iamque gradum ad quintum numquid descenderat ordo,
 
@@ -3828,39 +3828,39 @@ text_metadata:
 
 **409** ossa gerens, uero qui quondam dixerat ore
 
-**410** serenos domini intuitus dextramque benignam 465
+**410** serenos domini intuitus dextramque benignam
 
-**411** uenturam caelo libertatemque laturam. 20
+**411** uenturam caelo libertatemque laturam.
 
-**412** Sochotumque dehinc ueniunt Othumque relinquunt, 21
+**412** Sochotumque dehinc ueniunt Othumque relinquunt,
 
 **413** ignotas monstrante uias per deuia Christo,
 
 **414** qui cum mane nouo lucem pandebat ab astris,
 
-**415** ante uolans niuea sulcabat sidera nube 470
+**415** ante uolans niuea sulcabat sidera nube
 
 **416** candentemque iubar fuscata per aethera solem
 
-**417** nocte tegens, claro fulgebat crine cometae. 2
+**417** nocte tegens, claro fulgebat crine cometae.
 
 **418** Pauleum deinde petunt, cui Magdola tellus
 
 **419** iungitur obuerso confinis Bellisephoni.
 
-**420** hic animum regis dominus formidine priuat, 475
+**420** hic animum regis dominus formidine priuat,
 
 **421** praetumidos acuens sensus mentemque ferocem;
 
-**422** ut populum fugitare magis, quem miserat ipse, 6
+**422** ut populum fugitare magis, quem miserat ipse,
 
 **423** diceret atque suas acies in bella moueret
 
 **424** praecipites. facili credens conamine iungi
 
-**425** posse uiros, quos error agat, quos deuia tardent. 480
+**425** posse uiros, quos error agat, quos deuia tardent.
 
-**426** ergo alacris in bella ciet ceu parua phalanges 7
+**426** ergo alacris in bella ciet ceu parua phalanges
 
 **427** ferratos agitans currus, quos axe uolante
 
@@ -3868,17 +3868,17 @@ text_metadata:
 
 **429** nunc humilis, nunc uentosas sublimis in auras,
 
-**430** terroris fraudisque capax, quia uerbere crebro 485
+**430** terroris fraudisque capax, quia uerbere crebro
 
 **431** pulsati sternunt acies, quae comminus obstant,
 
 **432** \'cornipedes pulsumque rotis feruentibus addunt,
 
-**433** incita quas uariis adsultibus ungula uersat. 9
+**433** incita quas uariis adsultibus ungula uersat.
 
 **434** iamque (iter) adcelerans procurua ad litora Rubri
 
-**435** marmoris admorat frigente in bella quadrigas, 490 10
+**435** marmoris admorat frigente in bella quadrigas,
 
 **436** cum Iudaea manus confestim lumine uerso
 
@@ -3888,7 +3888,7 @@ text_metadata:
 
 **439** mole pari saepta, dum pontum cernit et hostem
 
-**440** oppositum, duris in uatem uocibus usa 495 11
+**440** oppositum, duris in uatem uocibus usa
 
 **441** haec memorat: r Quae tanta fuit fiducia, ductor,
 
@@ -3898,7 +3898,7 @@ text_metadata:
 
 **444** oceanum? quid maesta quidem, sed tuta ferentes
 
-**445** pondera ab inuisa nequiquam tollere Aegypto? 500 12
+**445** pondera ab inuisa nequiquam tollere Aegypto?
 
 **446** nonne fuit satius tristes Pharaonis aerumnas
 
@@ -3908,7 +3908,7 @@ text_metadata:
 
 **449** praeponit tolerata prius et dulcia ducit,
 
-**450** inuisitata sibi quotiens peiora sequuntur? 505
+**450** inuisitata sibi quotiens peiora sequuntur?
 
 **451** diximus hoc dudum, cum nos ad uota uocares
 
@@ -3918,9 +3918,9 @@ text_metadata:
 
 **454** sustentare iugi. quam nunc decumbere leto
 
-**455** squalentes inter campos terramque relictam. 510
+**455** squalentes inter campos terramque relictam.
 
-**456** dum trepido in casu pelago terremur et hoste." 13
+**456** dum trepido in casu pelago terremur et hoste."
 
 **457** at uates nulla rerum formidine uictus
 
@@ -3928,7 +3928,7 @@ text_metadata:
 
 **459** "Soluite mordaces curas animosque serenos
 
-**460** induite, o socii, rectoque aduertite uisu. 515
+**460** induite, o socii, rectoque aduertite uisu.
 
 **461** quanta salus uobis celsis referatur ab astris,
 
@@ -3938,7 +3938,7 @@ text_metadata:
 
 **464** haud licitum est uobis, quos mortis tempus adurget.
 
-**465** namque deus celsa bellator dextera pugnat 520
+**465** namque deus celsa bellator dextera pugnat
 
 **466** subiectosque regit. tacita dum stringitis ora.\'
 
@@ -3948,7 +3948,7 @@ text_metadata:
 
 **469** pone locans, fuluaque dehinc posterga columna
 
-**470** sistitur et medio discernit limite ualla 525
+**470** sistitur et medio discernit limite ualla
 
 **471** castrorumque situm, noctemque infundit opacam
 
@@ -3958,9 +3958,9 @@ text_metadata:
 
 **474** o nimium felix. celsis cui misit ab astris
 
-**475** munimenta deus, candens cui militat aether 530
+**475** munimenta deus, candens cui militat aether
 
-**476** et coniuratae ueniunt ad proelia noctes! 21 16
+**476** et coniuratae ueniunt ad proelia noctes!
 
 **477** hinc procerem mandata dei depromere uirgam
 
@@ -3968,7 +3968,7 @@ text_metadata:
 
 **479** despectare fretum. quod postquam rite peractum est,
 
-**480** auster uentus adest. totis qui flatibus usus 535
+**480** auster uentus adest. totis qui flatibus usus
 
 **481** per tacitam noctem feruentes ebibit undas
 
@@ -3978,17 +3978,17 @@ text_metadata:
 
 **484** cum bibulas refugus nudasset pontus harenas.
 
-**485** ergo ubi festinum pelagus discesserat, illos 540
+**485** ergo ubi festinum pelagus discesserat, illos
 
 **486** curuata in montis faciem circumstetit unda
 
-**487** accepitque sinu patulo misitque per altum. 23
+**487** accepitque sinu patulo misitque per altum.
 
-**488** quod licitum credens Pharao, dum comminus instat, 25
+**488** quod licitum credens Pharao, dum comminus instat,
 
 **489** ingreditur calcatque salum; sed tarda repente
 
-**490** plaustra gemunt totoque in terram pectore proni 545
+**490** plaustra gemunt totoque in terram pectore proni
 
 **491** cornipedes genibus nequiquam pondera trudunt.
 
@@ -3998,7 +3998,7 @@ text_metadata:
 
 **494** festinam temptare fugam rursumque reuerti
 
-**495** nitentes uano stimulant terrore iugales. 550 27
+**495** nitentes uano stimulant terrore iugales.
 
 **496** his aliud maius miseris multoque tremendum
 
@@ -4008,7 +4008,7 @@ text_metadata:
 
 **499** discretas coniunxit aquas undasque tumentes
 
-**500** miscuit et totam fundo demersit Aegyptum. 555 31
+**500** miscuit et totam fundo demersit Aegyptum.
 
 **501** at Iudaea cohors fluitantia corpora cernens
 
@@ -4018,9 +4018,9 @@ text_metadata:
 
 **504** suspexit timuitque deum sensuque fideli
 
-**505** credidit imperio domini uatemque sacrauit, 560
+**505** credidit imperio domini uatemque sacrauit,
 
-**506** cantica dum psallit Moysetis dulcia uerbis: 1
+**506** cantica dum psallit Moysetis dulcia uerbis:
 
 **507** "Cantemus domino deoque nostro,
 
@@ -4028,17 +4028,17 @@ text_metadata:
 
 **509** sese magnificis decorat actis.
 
-**510** dum currus celeres Aegyptiorum . 565
+**510** dum currus celeres Aegyptiorum .
 
 **511** iunctis equitibus grauique turba
 
-**512** Rubri marmoris enecat fluentis. 2
+**512** Rubri marmoris enecat fluentis.
 
 **513** adiutor ualidus meae salutis
 
 **514** plebem de medio tulit profundo,
 
-**515** custos et genitor salusque uera! 570
+**515** custos et genitor salusque uera!
 
 **516** hic est, hic dominus meus et altor!
 
@@ -4046,27 +4046,27 @@ text_metadata:
 
 **518** qui est progenitor mei parentis.
 
-**519** ipsum uocibus arduis fatebor, 575
+**519** ipsum uocibus arduis fatebor,
 
-**520** qui bellum tulit obruitque fortes, 3
+**520** qui bellum tulit obruitque fortes,
 
-**521** dignus nomine quo deus uocatur. 4 5 10
+**521** dignus nomine quo deus uocatur.
 
 **522** saxis adsimiles grauique plumbo
 
 **523** uastis fluctibus abdidit cohortes,
 
-**524** quas rex Niliacus in arma cogens 580
+**524** quas rex Niliacus in arma cogens
 
 **525** praedae participes minax canebat:
 
 **526** nostris dum iugulis recludit enses
 
-**527** et strictum rotat excutitque ferrum, 9
+**527** et strictum rotat excutitque ferrum,
 
 **528** dicens: "Corripiam eos fugaces,
 
-**529** praedam partiar obruamque uictos 585
+**529** praedam partiar obruamque uictos
 
 **530** et cum gloria nobilis duelli
 
@@ -4074,31 +4074,31 @@ text_metadata:
 
 **532** haec dum commemorat sibique fidit,
 
-**533** cunctis perniciem suis parauit. 11
+**533** cunctis perniciem suis parauit.
 
-**534** nullus est similis tibi. creator, 590
+**534** nullus est similis tibi. creator,
 
 **535** factis maxime, principumque princeps
 
-**536** ingens subsidium tuis dedisti, 14
+**536** ingens subsidium tuis dedisti,
 
-**537** gentes quod metuunt Philistinorum. 15
+**537** gentes quod metuunt Philistinorum.
 
 **538** Edones etiam Moabitaeque.
 
-**539** quorum perniciem tremunt Chananni, 595
+**539** quorum perniciem tremunt Chananni,
 
 **540** donec hic populus tibi redemptus
 
 **541** montem conspicuum deoque sanctum
 
-**542** scandat perpetuis heres tropaeis." 20
+**542** scandat perpetuis heres tropaeis."
 
 **543** Haec paribus iterata modis plaudente corona
 
-**544** cantarunt matres, uatis dictante sorore, 600
+**544** cantarunt matres, uatis dictante sorore,
 
-**545** tympana pulsantes digitis, dum consona dicunt. 22
+**545** tympana pulsantes digitis, dum consona dicunt.
 
 **546** ilicet intrepidi postquam Pharaonis iniqui
 
@@ -4106,9 +4106,9 @@ text_metadata:
 
 **548** quae Surum sunt dicta prius, siccumque per aestum
 
-**549** arentes triuere dies; quos lumine trino .605
+**549** arentes triuere dies; quos lumine trino
 
-**550** feruidiore coma torrebat lampada solis. 23
+**550** feruidiore coma torrebat lampada solis.
 
 **551** defessi Myrram ueniunt tristique sapore
 
@@ -4116,17 +4116,17 @@ text_metadata:
 
 **553** libantes longe iaciunt; quia praegrauis unda
 
-**554** obsessas fauces sensu torquebat amaro. 610
+**554** obsessas fauces sensu torquebat amaro.
 
-**555** quod uitium propter fontem cognomine signant 24
+**555** quod uitium propter fontem cognomine signant
 
 **556** et fremitu denso uatem liquentia poscunt
 
-**557** flumina, quae calidos possint mollire uapores. 25
+**557** flumina, quae calidos possint mollire uapores.
 
 **558** ille deum poscit; nam qua licentia fluctus
 
-**559** gigneret, astrigera dominus nisi mitteret aula? 615
+**559** gigneret, astrigera dominus nisi mitteret aula?
 
 **560** confestimque capit quo sedat tristia lignum
 
@@ -4134,9 +4134,9 @@ text_metadata:
 
 **562** illic iusta deus, librato examine lancis.
 
-**563** iura dedit, temptans procerem, dum talia dicit: 26
+**563** iura dedit, temptans procerem, dum talia dicit:
 
-**564** "Si mea quaeque memor sincero in pectore dicta 620
+**564** "Si mea quaeque memor sincero in pectore dicta
 
 **565** sumpseris, ut facias, quae sint accommoda uitae,
 
@@ -4146,9 +4146,9 @@ text_metadata:
 
 **568** damnorum morbique trucis; distabis ab omni
 
-**569** clade mali, quaecumque feram uastauit Aegyptum. 625
+**569** clade mali, quaecumque feram uastauit Aegyptum.
 
-**570** quandoquidem ego sum dominus, qui pectora curo 27
+**570** quandoquidem ego sum dominus, qui pectora curo
 
 **571** et sanos praestare queo." post Elima uentum est
 
@@ -4156,17 +4156,17 @@ text_metadata:
 
 **573** frondentes inter palmas, quae uertice celso
 
-**574** motabant septem denos per nubila conos. 630
+**574** motabant septem denos per nubila conos.
 
 **575** ac postquam ad Sinum positis sunt otia castris
 
 **576** trita uilis, quintoque dehinc decimoque uiantes
 
-**577** deproperant per opaca die, de mense secundo, 2
+**577** deproperant per opaca die, de mense secundo,
 
-**578** extremam gemuere famem, dum uocibus altis 3
+**578** extremam gemuere famem, dum uocibus altis
 
-**579** obiurgant uexantque ducem: "Quae tanta malorum 635
+**579** obiurgant uexantque ducem: "Quae tanta malorum
 
 **580** causa fuit? quaeue esse potest? quae tristior esse
 
@@ -4176,7 +4176,7 @@ text_metadata:
 
 **583** quae dilata grauat plus quam quae comminus instat?
 
-**584** atque utinam nobis letum sors una dedisset 640
+**584** atque utinam nobis letum sors una dedisset
 
 **585** Aegypto positis tum, cum substantia uictus
 
@@ -4186,7 +4186,7 @@ text_metadata:
 
 **588** est ubi uita grauis, etiam si tristia non sint.
 
-**589** ergo ualet quisquam squalentes inter harenas 645
+**589** ergo ualet quisquam squalentes inter harenas
 
 **590** inuisum tolerare diem. solemque calentem
 
@@ -4196,47 +4196,47 @@ text_metadata:
 
 **593** dux grandaeue, tuos. Nilum Pharumque rogamus
 
-**594** redde tuis, cunctosque dehinc iterare labores 650
+**594** redde tuis, cunctosque dehinc iterare labores
 
 **595** poscentes permitte uiros, quia tristius esse
 
-**596** accisis nil posse cibis sententia nostra est, 4
+**596** accisis nil posse cibis sententia nostra est,
 
 **597** et saturos seruire iuuat.. post talia dicta
 
 **598** profatur uates, socio sermonis Arone:.
 
-**599** II Quid tantum indomito uoces iactare tumultu 655
+**599** II Quid tantum indomito uoces iactare tumultu
 
 **600** et proceres uexare iuuat? quid poscere uictum,
 
-**601** quem solus praestare potest, qui sidera fecit? 6
+**601** quem solus praestare potest, qui sidera fecit?
 
 **602** sed tamen occidua cernetis lampade solis
 
 **603** esse deum, uobis cuius pro munere panis
 
-**604** mittitur e caelo; qui uos, Mareotide fusca 660
+**604** mittitur e caelo; qui uos, Mareotide fusca
 
 **605** inplicitos dudum, laetos nunc mittit ad agros.
 
 **606** quare agite et primo redeuntis lumine solis
 
-**607** insuetas libate dapes mannamque caelestem. 7 8
+**607** insuetas libate dapes mannamque caelestem.
 
 **608** iurgia nam populi, nostris non congrua factis,
 
-**609** in dominum sunt missa magis, qui pascere sueuit, 665
+**609** in dominum sunt missa magis, qui pascere sueuit,
 
-**610** quidquid alit, longoque educit saecula pastu." 10
+**610** quidquid alit, longoque educit saecula pastu."
 
-**611** haec ubi disseruit, dominus de nube superna 12
+**611** haec ubi disseruit, dominus de nube superna
 
 **612** emicuit meliore die uictumque caelestem
 
 **613** despondit cunctis, quem messis nescia fraudis
 
-**614** progenerat nulloque extinguit semina fuco. 670
+**614** progenerat nulloque extinguit semina fuco.
 
 **615** inde ubi iam croceo radiauit uesper ab axe,
 
@@ -4246,87 +4246,87 @@ text_metadata:
 
 **618** castrorumque situm cunctis mirantibus inplet.
 
-**619** quin etiam primo cum se lux reddidit ortu, 675
+**619** quin etiam primo cum se lux reddidit ortu,
 
 **620** niuosos dat manna cibos, quae farre minuto,
 
-**621** sunt coriandra uelut, totis defluxit ab astris. 16
+**621** sunt coriandra uelut, totis defluxit ab astris.
 
 **622** quam iussi carpsere manu ratione legendi
 
 **623** certa uiri. ne quis forsan plus condere mallet,
 
-**624** quam iusti mensura cibi est. quae sufficit uno 680
+**624** quam iusti mensura cibi est. quae sufficit uno
 
-**625** quoque die, nec uana Sella sollertia quemquam 20
+**625** quoque die, nec uana Sella sollertia quemquam
 
 **626** plus iusto posuisse domi; nam sole calente
 
-**627** putria multimodo uitiantur uerme polenta. 22
+**627** putria multimodo uitiantur uerme polenta.
 
 **628** hoc solum nequeunt geminae disperdere luces,
 
-**629** quae festo mandenda die parasceue prompsit, 685
+**629** quae festo mandenda die parasceue prompsit,
 
 **630** quem sanctum iubet esse deus nullumque laborem
 
-**631** sustentare homines, quotiens lux illa recurrit, 23
+**631** sustentare homines, quotiens lux illa recurrit,
 
-**632** sabbata quae memorant lentae concessa quieti. 25
+**632** sabbata quae memorant lentae concessa quieti.
 
 **633** quin etiam cunctis penitus haec cognita res est,
 
-**634** septima quaque die nullum descendere uictum, 690
+**634** septima quaque die nullum descendere uictum,
 
-**635** caelestis quem messis habet; quia cura sagaci 27
+**635** caelestis quem messis habet; quia cura sagaci
 
 **636** progressi per rura uiri camposque iacentes.
 
 **637** nil praeter undantes uentorum flatibus herbas
 
-**638** intuiti, sinibus uacuis referuntur ad aedes. 695 32
+**638** intuiti, sinibus uacuis referuntur ad aedes.
 
 **639** ac ne forte dei tantum monumenta uiderent,
 
-**640** ad quos missa fuit melliti muneris esca, 33
+**640** ad quos missa fuit melliti muneris esca,
 
 **641** clauditur auratae quiddam munimine thecae,
 
 **642** quod uideat generanda manus olimque futura
 
-**643** \'ac uenerata deum uictum miretur auorum. 700 1
+**643** \'ac uenerata deum uictum miretur auorum.
 
 **644** post haec signa mouent longumque educitur agmen
 
-**645** ad uitam, quae sole calens atque indiga lymphae 2
+**645** ad uitam, quae sole calens atque indiga lymphae
 
 **646** mordaces populum fecit depromere uoces
 
-**647** in procerem, dum poscit aquam; nec murmure solo, 4
+**647** in procerem, dum poscit aquam; nec murmure solo,
 
-**648** sed paene est grassata manu; nam saxa sacerdos 705
+**648** sed paene est grassata manu; nam saxa sacerdos
 
 **649** in semet iaculanda timens emittit ad altum
 
-**650** uerba deum siccisque implorat syrtibus amnes. ó
+**650** uerba deum siccisque implorat syrtibus amnes.
 
 **651** ilicet instinctus domini sententia magni
 
 **652** maiores pariter natu praecedere mandat;
 
-**653** tum uirgam capit adsuetam, qua sistere fluctus 710
+**653** tum uirgam capit adsuetam, qua sistere fluctus
 
 **654** nouerat et medio pontum diducere uallo;
 
 **655** Chorebumque petit montem, qui plurimus extat
 
-**656** sacratumque caput uicina ad nubila tollit. 713
+**656** sacratumque caput uicina ad nubila tollit.
 
 **657** illic dura silex conclusas saepserat undas, —
 
-**658** quam super adstabat dominus fontesque ciebat 714
+**658** quam super adstabat dominus fontesque ciebat
 
-**659** uirtutum ratione pari, qua flumina toto 715
+**659** uirtutum ratione pari, qua flumina toto
 
 **660** distinxit mundo inmensa et marmora fudit.
 
@@ -4336,9 +4336,9 @@ text_metadata:
 
 **663** curritur ad fluctus certatim congrege turba
 
-**664** innumeraeque ruunt pecudes aestumque resoluunt 720
+**664** innumeraeque ruunt pecudes aestumque resoluunt
 
-**665** expletisque redit defessa in corpora uirtus. 7
+**665** expletisque redit defessa in corpora uirtus.
 
 **666** ilicet ipse locus causae de nomine nomen
 
@@ -4346,19 +4346,19 @@ text_metadata:
 
 **668** ambigua cum mente fuit, an summus in illo
 
-**669** degeret omnipotens, et quod plebs aspera dictis 725
+**669** degeret omnipotens, et quod plebs aspera dictis
 
-**670** optasset maledicta duci, quae concipit ira. 8
+**670** optasset maledicta duci, quae concipit ira.
 
 **671** istic belligeris Amalec instructa cateruis
 
-**672** Hebraeos fudit cuneos; quod dedecus arcens 9
+**672** Hebraeos fudit cuneos; quod dedecus arcens
 
 **673** Iesus lecta rapit bellantum robora secum :
 
-**674** quem ferrata manu suscepta in bella uadentem 730
+**674** quem ferrata manu suscepta in bella uadentem
 
-**675** dux uotis precibusque iuuat collemque Chorebum 10
+**675** dux uotis precibusque iuuat collemque Chorebum
 
 **676** conscendit celerante gradu, quem iunctus Aronus
 
@@ -4366,87 +4366,87 @@ text_metadata:
 
 **678** laboris refugos nec standi ad munia fortes
 
-**679** subposito firmant saxo durumque sedile 735
+**679** subposito firmant saxo durumque sedile
 
 **680** subiciunt sternuntque duci; tum deinde fluentes
 
 **681** sustentant in prona manus, ut pectoris orsis
 
-**682** palmarum prex iuncta foret; nam saepe cadentes 11
+**682** palmarum prex iuncta foret; nam saepe cadentes
 
-**683** pondere grandaeuo dubium certamen agebant. 18
+**683** pondere grandaeuo dubium certamen agebant.
 
-**684** has ubi subpositae firmarunt undique dextrae, 740
+**684** has ubi subpositae firmarunt undique dextrae,
 
 **685** hostiles cedunt acies campique replentur
 
-**686** caede uirum nullusque e tantis milibus extat. 14
+**686** caede uirum nullusque e tantis milibus extat.
 
 **687** haec fuerant ut gesta deo mandante, propheta
 
-**688** conscripsit docili uentura in tempora libro; 15
+**688** conscripsit docili uentura in tempora libro;
 
-**689** confestimque deo sacratum construit altar. 745
+**689** confestimque deo sacratum construit altar.
 
 **690** conpellans per uerba locum fidelia sanctum;
 
-**691** , Spes mihi certa dei, cuius protectio semper 10
+**691** , Spes mihi certa dei, cuius protectio semper
 
 **692** subsidium mihi sola dedit, qui robore clauso
 
 **693** absconsaque manu Sethum dispulit bellantes
 
-**694** Amalechas necat < et) tota cum pube cohortes.750
+**694** Amalechas necat < et) tota cum pube cohortes
 
 **695** Interea generi Iothorus percipit acta
 
-**696** festinusque uenit. oculis dinoscere gaudens, 18
+**696** festinusque uenit. oculis dinoscere gaudens,
 
-**697** quae fuerant memorata sibi. saeptumque labore 13
+**697** quae fuerant memorata sibi. saeptumque labore
 
 **698** inuenit inmodico. dum causas noscitat omnes
 
-**699** carentis turbae numero, magnumque precatus 755
+**699** carentis turbae numero, magnumque precatus
 
-**700** ante deum mactat pecudes; tum deinde monendo 21
+**700** ante deum mactat pecudes; tum deinde monendo
 
 **701** efficit, ut lecta fierent de plebe tribuni
 
 **702** atque alii aliique gradus, quos ordine miles
 
-**703** accipit, ut certa legiones lege regantur, 22
+**703** accipit, ut certa legiones lege regantur,
 
-**704** ac modicas pensent lites. quo iurgia magna 760
+**704** ac modicas pensent lites. quo iurgia magna
 
-**705** sint soli noscenda duci. quis rite peractis 27
+**705** sint soli noscenda duci. quis rite peractis
 
-**706** Iothorus sua tecta petit generumque reliquit. 1
+**706** Iothorus sua tecta petit generumque reliquit.
 
 **707** tertius interea sese per tempora mensis
 
 **708** festinus uariata dedit. cum sola per arua
 
-**709** Sinainum ad montem domini perducitur agmen. 765
+**709** Sinainum ad montem domini perducitur agmen.
 
 **710** quem uates propere conscendit uocibus actus
 
 **711** ualeret monitisque dei: mox procubus audit:
 
-**712** Haec. (quae) dicta tibi. cunctis narrare memento: 4
+**712** Haec. (quae) dicta tibi. cunctis narrare memento:
 
 **713** uidistis. quae monstra. uiri. tolerarit Aegyptus.
 
-**714** dum uestri me cura tenet et congrego cunctos 770
+**714** dum uestri me cura tenet et congrego cunctos
 
 **715** atque ueho, tamquam pinnarum tramite ductos.
 
-**716** quas pandit uolucrum princeps. dum nubila sulcat. 5
+**716** quas pandit uolucrum princeps. dum nubila sulcat.
 
 **717** et nunc, si uestras ueniant mea dicta per aures,
 
 **718** ut, quae sunt mandata, fiant et consona iustae
 
-**719** corda haereant legi, plebem uos semper habebo 775
+**719** corda haereant legi, plebem uos semper habebo
 
 **720** ditibus insignem rebus cunctisque praeponam
 
@@ -4454,11 +4454,11 @@ text_metadata:
 
 **722** haec omnis nam terra mea est; et quidquid ubique
 
-**723** . gignitur, id iuri subiectum semper aeterno est. 6
+**723** . gignitur, id iuri subiectum semper aeterno est.
 
-**724** uos captiuosque regnum. mea ut quod dextera clarum, 780
+**724** uos captiuosque regnum. mea ut quod dextera clarum,
 
-**725** et gens sancta mihi, longum quae prorogat aeuum." 7
+**725** et gens sancta mihi, longum quae prorogat aeuum."
 
 **726** ille memor iussi, fuerant quae dicta reuoluit
 
@@ -4466,29 +4466,29 @@ text_metadata:
 
 **728** credidit et magno submisit corda tonanti.
 
-**729** facturum sese mandata inlustria dicens. 785
+**729** facturum sese mandata inlustria dicens.
 
-**730** his aliud maius dominus de sedibus altis 10
+**730** his aliud maius dominus de sedibus altis
 
 **731** instituturus agit uatemque ad munia mittit
 
 **732** sueta sibi cunctosque iubet liquentibus undis
 
-**733** eluere infectas sordes uel ueste uel artu. 11
+**733** eluere infectas sordes uel ueste uel artu.
 
-**734** abnoctare uiros, ut mente et corpore puris 790
+**734** abnoctare uiros, ut mente et corpore puris
 
-**735** tertia luce deus celsis uideatur ab astris 12
+**735** tertia luce deus celsis uideatur ab astris
 
-**736** monte procul positis, nullus quem comminus adstans 13
+**736** monte procul positis, nullus quem comminus adstans
 
 **737** tanget agetque; pecus longa in deserta minare
 
 **738** praecipitur, ne poena foret coniuncta nocenti.
 
-**739** quae saxis felТo(ue) uenit, cum missile telum 795
+**739** quae saxis felТo(ue) uenit, cum missile telum
 
-**740** torquet adacta manus aut cautem uerbera uibrant. 16
+**740** torquet adacta manus aut cautem uerbera uibrant.
 
 **741** his actis, nullo maculatus corpora naeuo,
 
@@ -4496,7 +4496,7 @@ text_metadata:
 
 **743** tertia luce dedit stellis aurora remotis.
 
-**744** fulmina iamque micant, iam celsis magnus ab astris 800
+**744** fulmina iamque micant, iam celsis magnus ab astris
 
 **745** auditur fremitus uocum nimbosaque nubes
 
@@ -4506,179 +4506,179 @@ text_metadata:
 
 **748** in castris plebs maesta tremit montisque sacrati
 
-**749** caelesti testata dei latera ardua fumant. 805
+**749** caelesti testata dei latera ardua fumant.
 
-**750** et quicumque fuit electa ex plebe sacerdos, 20
+**750** et quicumque fuit electa ex plebe sacerdos,
 
 **751** monte procul degit. solis quem scandere ius est
 
-**752** - Aroni Moysique piis. tum perpete fatu 1
+**752** - Aroni Moysique piis. tum perpete fatu
 
-**753** mansura dat iussa deus hoc ordine legis: 2
+**753** mansura dat iussa deus hoc ordine legis:
 
-**754** "Ille ego sum dominus. qui te discrimine priuans 810
+**754** "Ille ego sum dominus. qui te discrimine priuans
 
 **755** Aegypti de terra tuli durumque laborem.
 
-**756** seruilis quem cura dabat. desistere iussi. 3
+**756** seruilis quem cura dabat. desistere iussi.
 
-**757** me tantum tua corda colant, neque idola pangas 4
+**757** me tantum tua corda colant, neque idola pangas
 
 **758** ulla tibi fictumque deum subnixus adores;
 
-**759** numina nec credas, quae sunt inlustria caelo 815
+**759** numina nec credas, quae sunt inlustria caelo
 
 **760** sidera, uel quidquam in terris mirere perinde,
 
-**761** uel quod glauca tegunt fluitantis marmora ponti. 5
+**761** uel quod glauca tegunt fluitantis marmora ponti.
 
 **762** sum dominus zelans, peccatis criminibus reddens
 
-**763** in patres prolemque dehinc quae quarta creatur; 6
+**763** in patres prolemque dehinc quae quarta creatur;
 
-**764** misericors multum, maiora et grandia reddens 820
+**764** misericors multum, maiora et grandia reddens
 
 **765** quae iusti meruere uiri. qui corde sub imo
 
-**766** amplexi mea iussa tenent et mente sequuntur. 7
+**766** amplexi mea iussa tenent et mente sequuntur.
 
-**767** tu nomen uenerare dei. tu sabbata festa 8
+**767** tu nomen uenerare dei. tu sabbata festa
 
 **768** cum natis seruisque cole totumque laborem
 
-**769** pone libens, quotiens mundo lux illa recursat. 825
+**769** pone libens, quotiens mundo lux illa recursat.
 
 **770** bis ternis dominus fecit quaecumque diebus
 
-**771** u terris caeloque uegent pontoque tumenti: 10
+**771** u terris caeloque uegent pontoque tumenti:
 
 **772** septima perfecto uirtutum fine quieuit;
 
 **773** hinc festus uiget ille dies, hinc semper acerbus,
 
-**774** semper honoratus domino indulgente sacratur. 830
+**774** semper honoratus domino indulgente sacratur.
 
 **775** honorem da, nate, tuis genitoribus, ut sis
 
-**776** perpetuae in terris uitae, quam prorogat ingens 14
+**776** perpetuae in terris uitae, quam prorogat ingens
 
-**777** ingenti de sede deus. ne dilige moechas. 13 16
+**777** ingenti de sede deus. ne dilige moechas.
 
 **778** neue hominem perime, nec sacramenta sinistre
 
-**779** periurans perhibe; furtum ne feceris ullum, 835
+**779** periurans perhibe; furtum ne feceris ullum,
 
-**780** neue malus testis iurgantem fraude tuere. 17
+**780** neue malus testis iurgantem fraude tuere.
 
 **781** coniuge ab alterius animum uultumque coherce
 
-**782** et quidquid non esse tuum mens admonet, horre. 24
+**782** et quidquid non esse tuum mens admonet, horre.
 
 **783** aggere de terrae congesta altaria surgant,
 
-**784** hic ubi deuotas fas sit mactare bidentes. 840
+**784** hic ubi deuotas fas sit mactare bidentes.
 
 **785** quae si forte sedet saxorum adtollere mole,
 
 **786** ferrum linque procul, quoniam sordentia fiunt
 
-**787** artifici leuigata manu; quae scandere gressu 26
+**787** artifici leuigata manu; quae scandere gressu
 
-**788** non sineris prompto, ne forte obscena renudes. 2
+**788** non sineris prompto, ne forte obscena renudes.
 
-**789** seruus erit quisquis cognata in gente creatus, 845
+**789** seruus erit quisquis cognata in gente creatus,
 
 **790** bis ternis seruile iugum patiatur in annis;
 
-**791** post abeat liber, secum sua praemia portans,. 3
+**791** post abeat liber, secum sua praemia portans,.
 
-**792** coniuge missa simul, si nondum feta uidetur. 4
+**792** coniuge missa simul, si nondum feta uidetur.
 
 **793** ac si iam natis paterno et nomine gaudet.
 
-**794** uxorem et prolem domino dimittere debet. 850
+**794** uxorem et prolem domino dimittere debet.
 
-**795** ipse sui compos nodoque exutus erili. 5
+**795** ipse sui compos nodoque exutus erili.
 
-**796** quod si non dubie mauult persistere uerna, 6
+**796** quod si non dubie mauult persistere uerna,
 
 **797** ante fores domino sanctas sistente locetur
 
 **798** uulnera passurus, tenuis quae subula pungit,
 
-**799** aure tenus molli, numquam cameris in aeuum. 855
+**799** aure tenus molli, numquam cameris in aeuum.
 
 **800** uendere progenitam discreta in gente parenti
 
 **801** non licitum sociaque manet cum plebe potestas;
 
-**802** quam tamen ut seruam nequaquam emittere ius est. 8
+**802** quam tamen ut seruam nequaquam emittere ius est.
 
 **803** quae si displiceat domino, cui uendita cessit,
 
-**804** reddentur nummi, fuerat taxatio quorum. 860
+**804** reddentur nummi, fuerat taxatio quorum.
 
-**805** ut reuocare queat paterna ad limina sese. 9
+**805** ut reuocare queat paterna ad limina sese.
 
-**806** quae si forte datur nato, sic conuenit ipsum 10
+**806** quae si forte datur nato, sic conuenit ipsum
 
 **807** ut natam tractare suam. qui sumere iuste
 
 **808** si mauult, permissa sibi, quis membra teguntur,
 
-**809** indumenta palam faciet, nec deinde negabit, 865
+**809** indumenta palam faciet, nec deinde negabit,
 
 **810** si coitu sit nota sibi; uel, si rata non sunt
 
-**811** haec conmissa uiro, poterit laxare uadentem, 12
+**811** haec conmissa uiro, poterit laxare uadentem,
 
 **812** nec pretium reuocare datum. qui uulnere duro
 
-**813** aequora(uatem sternitque uirum, decumbat eodem, 13
+**813** aequora(uatem sternitque uirum, decumbat eodem,
 
-**814** quo perimet, leto; at si discrimina casu 870
+**814** quo perimet, leto; at si discrimina casu
 
 **815** sunt inlata magis, domino tradente nocentem
 
 **816** ictibus alterius, locus est qui condere possit
 
-**817** donandum uenia, domino indulgente salutem. 14
+**817** donandum uenia, domino indulgente salutem.
 
 **818** at uero qui membra dolo uiuentia ferro
 
-**819** disicit et studio gratatur sanguine fuso, 875
+**819** disicit et studio gratatur sanguine fuso,
 
 **820** crimen habet mortis, nequiquam tecta requirens
 
 **821** sublimi sacrata deo; nam demitur inde
 
-**822** seiunctusque procul rigido truncabitur ense. 15 17
+**822** seiunctusque procul rigido truncabitur ense.
 
 **823** et qui conpellat tumide pulsatue parentes.
 
-**824** in crimen noxale ruit. quod morte piatur. 880
+**824** in crimen noxale ruit. quod morte piatur.
 
 **825** nec minus ad poenam petitur, qui forte doloso
 
 **826** perfidus ingenio paterna in plebe creatum.
 
-**827** cleptat et acceptis gaudet transcribere nummis. 18
+**827** cleptat et acceptis gaudet transcribere nummis.
 
 **828** quod si litigium fuerit per uerba paratum
 
-**829** pulsatusque aliquis pugno saxoque recusso 885
+**829** pulsatusque aliquis pugno saxoque recusso
 
 **830** reciperet solitas uires, nil fraudis haerebit:
 
-**831** soluendum tamen est. sumpsit quod cura medentis. 20
+**831** soluendum tamen est. sumpsit quod cura medentis.
 
 **832** ancillam seruumque suum qui uerbere uirgae
 
-**833** confestim perimit, poenam non uitat haerentem. 21
+**833** confestim perimit, poenam non uitat haerentem.
 
-**834** quod si post aliam morietur uernula lucem, 890
+**834** quod si post aliam morietur uernula lucem,
 
-**835** nil noxale subest, pretium quia perdidit eius. 22
+**835** nil noxale subest, pretium quia perdidit eius.
 
 **836** at si forte uiris feruebit rixa duobus,
 
@@ -4686,37 +4686,37 @@ text_metadata:
 
 **838** germine concepto alius pulsarit eorum,
 
-**839** in plagam porrecta manu, partumque futurum 895
+**839** in plagam porrecta manu, partumque futurum
 
 **840** fecerit ante diem materno ex pectore trudi,
 
 **841** restituet pretio partum, taxante marito,
 
-**842** si nondum perfecta fuit expressaque forma. 23
+**842** si nondum perfecta fuit expressaque forma.
 
-**843** si uero explicitis decessit uultibus infans, 24
+**843** si uero explicitis decessit uultibus infans,
 
-**844** morte cadet merita. lumen pro lumine rapto 900
+**844** morte cadet merita. lumen pro lumine rapto
 
 **845** reddet quisque nocens, dentem pro dente resignans,
 
 **846** proque manu dabit ille manum pedemque uicissim,
 
-**847** detruncat quicumque pedem; conbustaque flammis 25
+**847** detruncat quicumque pedem; conbustaque flammis
 
 **848** expiat ignis edax; dabitur pro uulnere uulnus;
 
-**849** liuida liuenti sedantur corpore membra. 905
+**849** liuida liuenti sedantur corpore membra.
 
 **850** quod si quis rapto famulum de lumine priuat
 
-**851** ancillamue suam, missos patiatur abire, 27
+**851** ancillamue suam, missos patiatur abire,
 
 **852** libertas quocumque uocat: uel fragmina dentis
 
 **853** si fuerint decussa manu, solacia sumat
 
-**854** debilitas, ut dona suo pro uulnere penset. 910
+**854** debilitas, ut dona suo pro uulnere penset.
 
 **855** at si praeualida gaudens ceruice his,
 
@@ -4726,9 +4726,9 @@ text_metadata:
 
 **858** obrutus et. nullo carpendus dente uirorum,
 
-**859** membra dabit terrae liquidos soluenda per artus. 915
+**859** membra dabit terrae liquidos soluenda per artus.
 
-**860** insonti nulla domino discrimina linquens. 29
+**860** insonti nulla domino discrimina linquens.
 
 **861** quod si consuetum lunata fronte ferire
 
@@ -4736,47 +4736,47 @@ text_metadata:
 
 **863** decumbat pro caede bouis taurusque necetur.
 
-**864** si uero extincti pretium sententia mitis 920
+**864** si uero extincti pretium sententia mitis
 
 **865** exigit. et soluat, quidquid taxatio poscit.
 
-**866** hoc etiam pro caede sui fas poscere nati 32
+**866** hoc etiam pro caede sui fas poscere nati
 
 **867** uel natae quemcumque uirum. si seruulus ictu
 
 **868** decubuit tauri, ter denos pendere nummos
 
-**869** cura tenet dominum saeuo pereunte iuuenco. 925
+**869** cura tenet dominum saeuo pereunte iuuenco.
 
 **870** at si quis multa puteum demittere fossa
 
-**871** egesto uult usque solo, mox tegmine claudat, 34
+**871** egesto uult usque solo, mox tegmine claudat,
 
 **872** ne, si forte pecus fuerit per prona uolutum,
 
 **873** damna luat, domino pretium poscente, ruentum
 
-**874** empturus pecudum tenui solamine carnes. 930
+**874** empturus pecudum tenui solamine carnes.
 
 **875** quod si forte bouem bos cornu occiderit unco,
 
 **876** uendatur; pretium fiat commune duorum
 
-**877** diuiduaque legant mactati uiscera tauri. 36
+**877** diuiduaque legant mactati uiscera tauri.
 
 **878** quod si iam uitium fuerat testatius eius,
 
-**879** pro pecude pecudem dominus redhibebit amissa 935
+**879** pro pecude pecudem dominus redhibebit amissa
 
-**880** innocuus, strati praesumens membra iuuenci. 1
+**880** innocuus, strati praesumens membra iuuenci.
 
 **881** qui uitulum cleptat, cogatur reddere quinque;
 
-**882** bis binas soluat quicumque auerterit agnam. 2
+**882** bis binas soluat quicumque auerterit agnam.
 
 **883** nocturnum furem licitum prosternere ferro.
 
-**884** dum penetrat postes obsaeptaque limina rumpit. 940
+**884** dum penetrat postes obsaeptaque limina rumpit.
 
 **885** si uero exorto fuerit flumine sole prehensus.
 
@@ -4784,9 +4784,9 @@ text_metadata:
 
 **887** quae si non fuerint in censu et uiribus eius,
 
-**888** uendetur, manuum pensurus furta labore. 5
+**888** uendetur, manuum pensurus furta labore.
 
-**889** cuius forte pecus segetem uitemue uirentem 945
+**889** cuius forte pecus segetem uitemue uirentem
 
 **890** nudatis aut patulo carptim arca ore,
 
@@ -4796,7 +4796,7 @@ text_metadata:
 
 **893** quae fuerint inlata prius. haec formula nectit
 
-**894** hos etiam, qui tota simul noualia uerrunt 950
+**894** hos etiam, qui tota simul noualia uerrunt
 
 **895** pampineasque metunt consumpto palmite uites.
 
@@ -4806,37 +4806,37 @@ text_metadata:
 
 **898** fomite de modico solitus conprendere uepres.
 
-**899** arentem stipulam et truncos cortice nudos. 955
+**899** arentem stipulam et truncos cortice nudos.
 
 **900** si segetem alterius uitemue absumpserit aestu.
 
 **901** crimen ad auctoris merita per damna recurrit.
 
-**902** ut reddat quidquid noxalis flamma peredit. 7
+**902** ut reddat quidquid noxalis flamma peredit.
 
 **903** depositum redhibere decet: quod perfida furum
 
-**904** si fuerit populata manus, auctore reperto 960
+**904** si fuerit populata manus, auctore reperto
 
 **905** duplex summa datur: si uero est abditus ille.
 
 **906** auersas qui dempsit opes. hostia sola
 
-**907** exortem culpae faciet, quia fraude carebit. 11
+**907** exortem culpae faciet, quia fraude carebit.
 
 **908** at si mendoso fallax nudatur in astu.
 
-**909** depositi reddat geminum sub iudice pondus. 965
+**909** depositi reddat geminum sub iudice pondus.
 
-**910** haec etiam in pecudum causis mensura tenenda est: 12
+**910** haec etiam in pecudum causis mensura tenenda est:
 
 **911** propterea ut, furto quae sunt direpta sinistro.
 
-**912** restituat, cuius fuerit custodia segnis. 13
+**912** restituat, cuius fuerit custodia segnis.
 
 **913** at si molle pecus rabies uesana luporum
 
-**914** lancinat, ostensa mitescunt iurgia carne. 970
+**914** lancinat, ostensa mitescunt iurgia carne.
 
 **915** quod si quis geminos ducenda ad plaustra iuuencos
 
@@ -4844,119 +4844,119 @@ text_metadata:
 
 **917** idem. si fuerit praesens, stimulator euntum.
 
-**918** hoc etiam in reliquis, quos pressant pondera iussa. 15
+**918** hoc etiam in reliquis, quos pressant pondera iussa.
 
-**919** sed si festinos accepta animalia perdit. 975
+**919** sed si festinos accepta animalia perdit.
 
 **920** quisquis agit. ius est, ut damnum sentiat omne.
 
 **921** quae si perdiderit posita mercede locatus,
 
-**922** illa operae in pretio promptim taxanda locabit. 16
+**922** illa operae in pretio promptim taxanda locabit.
 
 **923** uirginis haut sponsae si quis sibi sumpserit usum,
 
-**924** uxorem cum dote sibi sociabit eandem. 980
+**924** uxorem cum dote sibi sociabit eandem.
 
 **925** quod si coniugio mens est non consona raptae,
 
-**926** munera det, thalamis quae sunt accommoda, patri. 18. .19
+**926** munera det, thalamis quae sunt accommoda, patri.
 
 **927** maleficum celare nefas. mors dura necabit
 
-**928** permixtum pecudi coitus deformis in actu. 20
+**928** permixtum pecudi coitus deformis in actu.
 
-**929** linquat uita uiros demonum sacella uerentes. 985
+**929** linquat uita uiros demonum sacella uerentes.
 
-**930** quandoquidem soli domino fas subdere colla. 21
+**930** quandoquidem soli domino fas subdere colla.
 
 **931** nemo peregrinum uiolet uerboue manuue:
 
 **932** idcirco quoniam uosmet suscepit Aegyptus
 
-**933** linquentes genitale solum sedemque priorem. 22
+**933** linquentes genitale solum sedemque priorem.
 
-**934** femina defuncto ne sit temnenda marito, 990
+**934** femina defuncto ne sit temnenda marito,
 
-**935** sed palpanda magis puerique parentibus orbi. 24
+**935** sed palpanda magis puerique parentibus orbi.
 
 **936** ne paribus poenis subeant fidus nocentes
 
-**937** destituantque suos celeri exterritus funere rapti: 28
+**937** destituantque suos celeri exterritus funere rapti:
 
-**938** acta nam corda deus auditque iuuatque. 25
+**938** acta nam corda deus auditque iuuatque.
 
-**939** credito poscenti nummorum quos rogat usum. 995
+**939** credito poscenti nummorum quos rogat usum.
 
 **940** seposita mercede procul usuiaque turpi;
 
-**941** nec festinus age trepidantem. ut sumpta reformet. 26
+**941** nec festinus age trepidantem. ut sumpta reformet.
 
 **942** ac si forte sui uelamen corporis idem
 
 **943** committit traditque tibi pro pignore nummi.
 
-**944** restitue. sol ante caput quam condat olympo. 1000
+**944** restitue. sol ante caput quam condat olympo.
 
-**945** misericors ego sum dominus: hos audio promptim. 28
+**945** misericors ego sum dominus: hos audio promptim.
 
 **946** externis cessate deis maledicere cuncti
 
-**947** praecipuisque uiris. populi qui frena tenebunt. 29
+**947** praecipuisque uiris. populi qui frena tenebunt.
 
 **948** fructibus e primis domino pia dona referto
 
-**949** et quemcumque creas primo de germine nuptae, 1005
+**949** et quemcumque creas primo de germine nuptae,
 
-**950** sacrabis domino, sol postquam septimus altum 31
+**950** sacrabis domino, sol postquam septimus altum
 
 **951** est permensus iter. ut sitis sancta propago.
 
 **952** extinctam pecudem raptorum dente luporum
 
-**953** • nullus edat: mensis quae non sunt digna refutet. 1
+**953** • nullus edat: mensis quae non sunt digna refutet.
 
-**954** non credes narrata tibi, quae nulla fidei 1010
+**954** non credes narrata tibi, quae nulla fidei
 
-**955** firmamenta iuuant. neu falsum dicere testis 2
+**955** firmamenta iuuant. neu falsum dicere testis
 
 **956** iniqua cum mente uelis. nec pluribus unum
 
-**957** additus in coetum certes superare nocentem, 3
+**957** additus in coetum certes superare nocentem,
 
-**958** ut tenuem et modicum quaesito ex crimine damnes. 4
+**958** ut tenuem et modicum quaesito ex crimine damnes.
 
-**959** quin potius si forte pecus errare uidebis, .1015
+**959** quin potius si forte pecus errare uidebis,
 
-**960** cum quo corda tibi non sunt coniuncta, reforma. 5
+**960** cum quo corda tibi non sunt coniuncta, reforma.
 
 **961** et si mole graui iumenta obnoxia sunt,
 
-**962** erige et alternis conitens subleua palmis. 7
+**962** erige et alternis conitens subleua palmis.
 
-**963** innocuum ne sterne uirum, nam pectore iusto est. 8
+**963** innocuum ne sterne uirum, nam pectore iusto est.
 
-**964** munera non sumes trepidi pro cura nocentis 1020
+**964** munera non sumes trepidi pro cura nocentis
 
 **965** sollicitique rei, quoniam mox lumina caecant
 
-**966** sermonesque uirum cunctaque examina frangunt. 10
+**966** sermonesque uirum cunctaque examina frangunt.
 
-**967** uberibus glebis bis ternos cultor in annos 11
+**967** uberibus glebis bis ternos cultor in annos
 
 **968** immineat uegetus, debet quia septimus esse
 
-**969** otia lenta ferens, quo pauper quisque capessat 1025
+**969** otia lenta ferens, quo pauper quisque capessat
 
 **970** quae fuerant generata palam. laetusque relinquat
 
-**971** quae superant mandenda feris, dum saltibus errant. 14
+**971** quae superant mandenda feris, dum saltibus errant.
 
 **972** circite perpetua uolucris dum uoluitur annus,
 
-**973** diuisos in trina modos sollemnia uobis 15
+**973** diuisos in trina modos sollemnia uobis
 
-**974** septeno seruanda die, quo mollia ius est 1030
+**974** septeno seruanda die, quo mollia ius est
 
 **975** azyma triticeo gaudentes sumere farre,-
 
@@ -4964,7 +4964,7 @@ text_metadata:
 
 **977** libertas cum plena fuit discedere Aegypto.
 
-**978** ante meos uultus uacuus ne prodeat ullus. 16
+**978** ante meos uultus uacuus ne prodeat ullus.
 
 **979** primitias operum messisque exordia nosce
 
@@ -4972,7 +4972,7 @@ text_metadata:
 
 **981** uel cum decurso requies coniungitur anno,
 
-**982** omnibus explicitis, generat quae cura laborum. 1040 17
+**982** omnibus explicitis, generat quae cura laborum.
 
 **983** omnis homo trinum distinguat tempus in anno.
 
@@ -4982,7 +4982,7 @@ text_metadata:
 
 **986** gentibus edomitis commissa et credita, nosce
 
-**987** azyma sola meis ponenda altaribus esse; 1045
+**987** azyma sola meis ponenda altaribus esse;
 
 **988** multimodas pecudes et rubram sanguinis undam
 
@@ -4990,9 +4990,9 @@ text_metadata:
 
 **990** peruigilem et noctem durare in tempora lucis.
 
-**991** quae redeunt, quotiens sacrorum cura recursat. 19
+**991** quae redeunt, quotiens sacrorum cura recursat.
 
-**992** agnus neue tener materno in lacte coquatur. 1050 20
+**992** agnus neue tener materno in lacte coquatur.
 
 **993** ecce ego sidereum caelesti ex arce ministrum
 
@@ -5000,9 +5000,9 @@ text_metadata:
 
 **995** uadentem ad terram foueat. quae pinguibus aruis
 
-**996** laeta uiret dulcesque euoluit nectaris undas. 21
+**996** laeta uiret dulcesque euoluit nectaris undas.
 
-**997** hunc audire parans sacratis crede loquellis. 1055
+**997** hunc audire parans sacratis crede loquellis.
 
 **998** coniunctus est ille tibi fidusque manebit.
 
@@ -5012,17 +5012,17 @@ text_metadata:
 
 **1001** mandatumque meum sincera adsumite mente;
 
-**1002** ut sitis plebs cara mihi populusque beatus 1060
+**1002** ut sitis plebs cara mihi populusque beatus
 
 **1003** et regnum sublime dei. gens ardua semper,
 
 **1004** omnibus in terris, quas sol utrumque recurrens
 
-**1005** adspicit et calido mundum conplectitur axe. 23
+**1005** adspicit et calido mundum conplectitur axe.
 
 **1006** concordes palpabo tuos cunctisque resistam,
 
-**1007** qui tecum bellare parant; tibi cedet Amorreus 1065
+**1007** qui tecum bellare parant; tibi cedet Amorreus
 
 **1008** Cethaeusque ferox et quos nunc optima tellus
 
@@ -5032,27 +5032,27 @@ text_metadata:
 
 **1011** hostilesque deos trepide subnixus adores.
 
-**1012** quin potius profana rue atque idola cuncta 1070
+**1012** quin potius profana rue atque idola cuncta
 
-**1013** disice cum titulis inscriptaque nomina dele, 25
+**1013** disice cum titulis inscriptaque nomina dele,
 
 **1014** ut possis seruire deo, quem cuncta tremiscunt.
 
 **1015** mox uictum sacrabo tuum fontesque meantes;
 
-**1016** morborumque tuo demam de corpore pestes. 26
+**1016** morborumque tuo demam de corpore pestes.
 
-**1017** nullus inops nati tota de plebe dolebit 1075
+**1017** nullus inops nati tota de plebe dolebit
 
 **1018** paternum non esse sibi nomenque decusque.
 
 **1019** longinquos praestabo dies. quis terminus aeui
 
-**1020** laxior optatae producat tempora uitae. 27
+**1020** laxior optatae producat tempora uitae.
 
-**1021** ante tuas acies tristis formido uolabit, 28
+**1021** ante tuas acies tristis formido uolabit,
 
-**1022** atque uenenato praecurrent uulnere uespae. 1080
+**1022** atque uenenato praecurrent uulnere uespae.
 
 **1023** ut tua belligeris metuantur signa maniplis,
 
@@ -5062,7 +5062,7 @@ text_metadata:
 
 **1026** ne uacua sit terra uiris, atque sanctum multo
 
-**1027** increscat nimia rabidarum turba ferarum. 1085 31
+**1027** increscat nimia rabidarum turba ferarum.
 
 **1028** milite difl\'uso faciam se extendere fines
 
@@ -5072,79 +5072,79 @@ text_metadata:
 
 **1031** usque Philistinum pelagus terramque carentem
 
-**1032** humano cultore, cluens atque agmine multo 1090
+**1032** humano cultore, cluens atque agmine multo
 
 **1033** qua fluit Euphrates uitreis perlucidus undis. "
 
-**1034** 1 Haec ubi detonuit, dominus conscendere collem
+**1034** Haec ubi detonuit, dominus conscendere collem
 
 **1035** Aronem Moysenque iubet ac nobilis aeui
 
-**1036** septuaginta uiros longeque inflectere colla 2
+**1036** septuaginta uiros longeque inflectere colla
 
-**1037** aeterno summoque deo; nam comminus ipsum 1095
+**1037** aeterno summoque deo; nam comminus ipsum
 
-**1038** permittit properare ducem, qui iussa facessens 4
+**1038** permittit properare ducem, qui iussa facessens
 
 **1039** sancta dei celsum confestim construit altar
 
 **1040** monte sub eximio. uacuas qui surgit in auras:
 
-**1041** bissenos lapides. tribuum quae summa uidetur. 5
+**1041** bissenos lapides. tribuum quae summa uidetur.
 
-**1042** comminus adiungens. hic nondum quarum iuuencos 1100
+**1042** comminus adiungens. hic nondum quarum iuuencos
 
-**1043** exhibet armata sacrisque hos inmolat aris; 6
+**1043** exhibet armata sacrisque hos inmolat aris;
 
 **1044** sanguine de quorum partem diffundit ad altar.
 
-**1045** creterrae instillans aliam, plebemque frequentem 8
+**1045** creterrae instillans aliam, plebemque frequentem
 
-**1046** spargit rore leui, librumque euoluit aeterni 7
+**1046** spargit rore leui, librumque euoluit aeterni
 
-**1047** seruantem monumenta dei. quae consona postquam 1105
+**1047** seruantem monumenta dei. quae consona postquam
 
-**1048** dixit cara sibi docilis sententia plebis, 9
+**1048** dixit cara sibi docilis sententia plebis,
 
 **1049** conscendit tumidum lento molimine collem
 
-**1050** grandaeuosque senes fratremque in uertice sistit. 10
+**1050** grandaeuosque senes fratremque in uertice sistit.
 
 **1051** hi simul adspiciunt rutilantem fulgure gemmam.
 
-**1052** in qua siderei steterant uestigia regis: 1110
+**1052** in qua siderei steterant uestigia regis:
 
-**1053** sapphira nomen habet; caelumque hic uisitur albens 11
+**1053** sapphira nomen habet; caelumque hic uisitur albens
 
 **1054** praetentum per dorsa iugi: quae cuncta uerentes
 
-**1055** sublimi cum laude ferunt uictumque capessunt. 14
+**1055** sublimi cum laude ferunt uictumque capessunt.
 
-**1056** interea, monitis uates senioribus illic 13
+**1056** interea, monitis uates senioribus illic
 
-**1057** sidere, Iesutem secum subiungere gressus 1115 14
+**1057** sidere, Iesutem secum subiungere gressus
 
 **1058** pacato de corde Sennarum. Hurumque relinquit
 
 **1059** Aronemque suis, certantum ut iurgia noscant
 
-**1060** aequa lance uirum iurisque ut uerba loquantur. 15
+**1060** aequa lance uirum iurisque ut uerba loquantur.
 
 **1061** ipse ubi sanctifici tenuit iuga plurima collis,
 
-**1062** labitur aetherio propere nubs fulgida caelo 1120
+**1062** labitur aetherio propere nubs fulgida caelo
 
-**1063** et montem conplexa tegit uatemque seorsum nomine
+**1063** et montem conplexa tegit uatemque seorsum
 
 **1064** occulit a sociis terno bis lumine solis.
 
 **1065** septima iamque dies niueum patefecerat axem.
 
-**1066** cum dominus media conpellat nube prophetam. 17
+**1066** cum dominus media conpellat nube prophetam.
 
-**1067** mirificas inter flammas dum fulgidus infit, 1125 18
+**1067** mirificas inter flammas dum fulgidus infit,
 
-**1068** atque quater denis uati dat iussa diebus; 8
+**1068** atque quater denis uati dat iussa diebus;
 
 **1069** noscere quis posset, quae sint sacraria summo
 
@@ -5152,27 +5152,27 @@ text_metadata:
 
 **1071** perpetuo ualidis. nulla quae dissipat aetas.
 
-**1072** haec miris descendit modis mensuraque iussa 1130 11
+**1072** haec miris descendit modis mensuraque iussa
 
-**1073** lammina conspicui praeuelat ductilis auri. 12
+**1073** lammina conspicui praeuelat ductilis auri.
 
 **1074** conectens geminos tereti uertigine circlos
 
-**1075** in dextrum laeuumque latus, qua sancta coluntur. 13
+**1075** in dextrum laeuumque latus, qua sancta coluntur.
 
-**1076** inde leuigatis intexit frondibus arcam, 16
+**1076** inde leuigatis intexit frondibus arcam,
 
-**1077** in qua perpetui maneant mandata tonantis. 1135 18
+**1077** in qua perpetui maneant mandata tonantis.
 
-**1078** quin etiam rutilo prorumpere perficit auro 19
+**1078** quin etiam rutilo prorumpere perficit auro
 
 **1079** diuersosque locat, qua sese altaria pandunt,
 
 **1080** alarum splendore pari similique uolatu,
 
-**1081** ceu moueant agiles uentosa in nubila pinnas. 22 orbis.
+**1081** ceu moueant agiles uentosa in nubila pinnas.
 
-**1082** multaque praeterea rerum commenta nouarum 1140
+**1082** multaque praeterea rerum commenta nouarum
 
 **1083** mirificis sunt facta modis, quae dicere qui uult,
 
@@ -5180,9 +5180,9 @@ text_metadata:
 
 **1085** sed neque quam multae species nec nomina quae sint.
 
-**1086** lex numeris adstricta potest depromere fando. 29
+**1086** lex numeris adstricta potest depromere fando.
 
-**1087** dum cyathos uates, phialas, mortaria pangit 1145
+**1087** dum cyathos uates, phialas, mortaria pangit
 
 **1088** caelatasque facit gestanda ad munera lances
 
@@ -5190,9 +5190,9 @@ text_metadata:
 
 **1090** iam quaecumque tegunt sacratam desuper arcam
 
-**1091** aut uelant postes, ardenti e Lothus tinxit. 4
+**1091** aut uelant postes, ardenti e Lothus tinxit.
 
-**1092** quin etiam Melchae texuntur pallia peplo, 1150
+**1092** quin etiam Melchae texuntur pallia peplo,
 
 **1093** Aroni uatibusque piis, qui munera libant
 
@@ -5202,67 +5202,65 @@ text_metadata:
 
 **1096** distinctim tribuum, quarum de corpore plebs est.
 
-**1097** singula nobilibus signantes nomina gemmis. 1155 17
+**1097** singula nobilibus signantes nomina gemmis.
 
-**1098** sedes prima loco. topazo adiuncta smaragdus: 18
+**1098** sedes prima loco. topazo adiuncta smaragdus:
 
 **1099** sapphirus hanc sequitur, cum qua carbunculus ardet,
 
-**1100** iaspisque uiget fuluoque intermicat auro: 19
+**1100** iaspisque uiget fuluoque intermicat auro:
 
 **1101** tertia ligurio senes: effrenis Sarram fluuius
 
-**1102** atque amethysto. fulgens quem purpura tingit. 1160 20
+**1102** atque amethysto. fulgens quem purpura tingit.
 
-**1103** chrysolithus quartus, berillo adnexus onychnus. 36
+**1103** chrysolithus quartus, berillo adnexus onychnus.
 
 **1104** additur aetherii signum uenerabile regis,
 
-**1105** lammina conspicui formatum quod tenet auri. 39
+**1105** lammina conspicui formatum quod tenet auri.
 
 **1106** lintea quin etiam niuoso uice textu
 
-**1107** in laxos cohibere sinus atque indere membris 1165 42
+**1107** in laxos cohibere sinus atque indere membris
 
-**1108** praecipitur partemque obscenam condere carnis. 43
+**1108** praecipitur partemque obscenam condere carnis.
 
 **1109** ne, dum sacra uehunt, denudent turpia uates.
 
-**1110** haec inter totus sacrorum euoluitur ordo: 10 tyranni.
+**1110** haec inter totus sacrorum euoluitur ordo:
 
 **1111** peccatum quae dona leuent. quaeue hostia ferro
 
-**1112** icta cadat sanctamque dei determinat iram. 1170
+**1112** icta cadat sanctamque dei determinat iram.
 
-**1113** nam quicumque uirum sacrata altaria tangit,, 37
+**1113** nam quicumque uirum sacrata altaria tangit,,
 
 **1114** sanctior efficitur purgatus pectora naeuo.
-
-**1115** 8
 
 **1116** pendeat ut lychnus semper laquearibus altis
 
 **1117** incensus noctemque suo de lumine uincat.
 
-**1118** edicit censura dei. ne forte tenebrae 1175horrificam faciant per sancta altaria noctem. 25-32
+**1118** edicit censura dei. ne forte tenebrae horrificam faciant per sancta altaria noctem.
 
 **1119** ponitur et liquidi nonnumquam sucus oliui,
 
 **1120** sanctificans hominum carnes. dum uertice summo
 
-**1121** liquitur et crasso perfundit unguine membra: 34
+**1121** liquitur et crasso perfundit unguine membra:
 
-**1122** adice tusque, leuis cuius fit naribus aptus 1180
+**1122** adice tusque, leuis cuius fit naribus aptus
 
 **1123** halitus et dulces inrorat sensibus auras.
 
 **1124** ilicet ut magni splenderet machina templi
 
-**1125** ornatuque suo cunctas transcenderet aedes. 3
+**1125** ornatuque suo cunctas transcenderet aedes.
 
 **1126** perdociles tribuit sensus et maxima fabris
 
-**1127** ornamenta deus omnesque his indidit artes 1185 6 2
+**1127** ornamenta deus omnesque his indidit artes
 
 **1128** Achisamo de Dana tribu iunctoque Beselo,
 
@@ -5272,9 +5270,9 @@ text_metadata:
 
 **1131** accipit e gemina formatas caute tabellas
 
-**1132** propheta tribuente deo, quas pollice sancto 1190
+**1132** propheta tribuente deo, quas pollice sancto
 
-**1133** et paribus scripsit digitis manus inclita regis. 1
+**1133** et paribus scripsit digitis manus inclita regis.
 
 **1134** interea populus. metata in castra locatus,
 
@@ -5282,7 +5280,7 @@ text_metadata:
 
 **1136** mordaci sub corde gemit nusquamque uideri
 
-**1137** murmurat. adsidue deposcit numina demens 1195 2
+**1137** murmurat. adsidue deposcit numina demens
 
 **1138** Aronem peruersa sibi; quos ille frementes
 
@@ -5292,17 +5290,17 @@ text_metadata:
 
 **1141** natiua dum forma parum splendoris habere
 
-**1142** ducitur et turpi de uulnere defluit aurum. 1200 3
+**1142** ducitur et turpi de uulnere defluit aurum.
 
-**1143** hoc ubi congessit populus, coniecit in ignem 4
+**1143** hoc ubi congessit populus, coniecit in ignem
 
 **1144** mollitumque dehinc eruens flamma camini
 
 **1145** miscuit et torua formauit fronte iuuencum
 
-**1146** uenturumque diem sollemnem confore dixit. 6
+**1146** uenturumque diem sollemnem confore dixit.
 
-**1147** ilicet albentes cum primum lucifer ignes 1205
+**1147** ilicet albentes cum primum lucifer ignes
 
 **1148** protulit et celso noctem seclusit olympo.
 
@@ -5310,19 +5308,19 @@ text_metadata:
 
 **1150** laeta colit multisque infundit pectora poclis.
 
-**1151** atque exultantes ducit furiata choreas. 7
+**1151** atque exultantes ducit furiata choreas.
 
-**1152** aspicit haec celsa dominus sublimis in arce 1210
+**1152** aspicit haec celsa dominus sublimis in arce
 
 **1153** innocuumque iubet propere descendere uatem.
 
 **1154** dum memorat: "Decurre citus. montemque relinque.
 
-**1155** peruersi ductor populi plebisque magister. 8
+**1155** peruersi ductor populi plebisque magister.
 
 **1156** quam profana iuuant; peccauit praesule multum
 
-**1157** te Iudaea suo, dum sanctos despicit actus. 1215
+**1157** te Iudaea suo, dum sanctos despicit actus.
 
 **1158** en quibus indomiti Pharaonis soluere uincla
 
@@ -5332,7 +5330,7 @@ text_metadata:
 
 **1161** proque deo celebrant mentiti membra iuuenci
 
-**1162** et libertatis memorant id nunc suae numen. 1220
+**1162** et libertatis memorant id nunc suae numen.
 
 **1163** tu motus ne flecte meos neue obuius ito,
 
@@ -5340,19 +5338,19 @@ text_metadata:
 
 **1165** nec tu iacturam metuas. ne dempta potestas
 
-**1166** culmen ad alterius confestim missa recurrat. 10
+**1166** culmen ad alterius confestim missa recurrat.
 
-**1167** dabitur in Terris multum praestantior armis 1225
+**1167** dabitur in Terris multum praestantior armis
 
 **1168** gens ignota tibi, quae sit te principe uictrix."
 
-**1169** 11 Territus his uates dominum subnixus adorat
+**1169** Territus his uates dominum subnixus adorat
 
 **1170** talibus effatus: "Cur tantis motibus exit
 
 **1171** in populum nunc ira tuum, quem dura gementem
 
-**1172** imperia nimium metuens laxauit Aegyptus, 1230
+**1172** imperia nimium metuens laxauit Aegyptus,
 
 **1173** dum te, magne, timet, dum celsae robora dextrae
 
@@ -5362,7 +5360,7 @@ text_metadata:
 
 **1176** captiuis priuata suis infensaque plebi,
 
-**1177** quam cernit nunc esse tuam, nisi te, deus ingens. 1235
+**1177** quam cernit nunc esse tuam, nisi te, deus ingens.
 
 **1178** nequiquam consueta tibi pietate fauentem
 
@@ -5372,9 +5370,9 @@ text_metadata:
 
 **1181** sublimis indulge tuis uultumque serenum
 
-**1182** exhibe poscenti; nam te quis uiuere moto 1240
+**1182** exhibe poscenti; nam te quis uiuere moto
 
-**1183** in terris caeloque potest ? quem currit ad unum 13
+**1183** in terris caeloque potest ? quem currit ad unum
 
 **1184** quod moritur uiuitque tibi. tandemque recurrat
 
@@ -5382,7 +5380,7 @@ text_metadata:
 
 **1186** Abramo quondam, proceri quae deinde Iacobo
 
-**1187** Isacique pio. felix quos seruitus ornat, 1245
+**1187** Isacique pio. felix quos seruitus ornat,
 
 **1188** quod placuere tibi: iuratus per tua, sancte.
 
@@ -5392,7 +5390,7 @@ text_metadata:
 
 **1191** innumeraque acie, ceu magni sidera caeli
 
-**1192** stellantesque micant mundano in cardine gemmae. 1250
+**1192** stellantesque micant mundano in cardine gemmae.
 
 **1193** cur promissa labant? cur ditis commoda terrae
 
@@ -5400,9 +5398,9 @@ text_metadata:
 
 **1195** cui mellis spondes latices et flumina lactis?"
 
-**1196** 14 Flectitur his dominus totamque expectorat iram. 15
+**1196** Flectitur his dominus totamque expectorat iram.
 
-**1197** ilicet excelso descendit colle propheta, 1255
+**1197** ilicet excelso descendit colle propheta,
 
 **1198** conscriptas referens domini de lege tabellas
 
@@ -5412,7 +5410,7 @@ text_metadata:
 
 **1201** uocibus inmodicis populi defigitur Auses
 
-**1202** clamoremque putat bellantis hunc fore turbae. 1260 18
+**1202** clamoremque putat bellantis hunc fore turbae.
 
 **1203** sed uates non bella uidet, sed languida uino
 
@@ -5422,27 +5420,27 @@ text_metadata:
 
 **1206** bacchantis cernit populi feruere choreas
 
-**1207** auratumque uidet tumida ceruice iuuencum: 1265
+**1207** auratumque uidet tumida ceruice iuuencum:
 
 **1208** quem uelut aetherium spectabat turba parentem.
 
 **1209** ilicet infensus calidam dum concipit iram.
 
-**1210** confringit tabulas. totum dum surgit in ictum, 20
+**1210** confringit tabulas. totum dum surgit in ictum,
 
 **1211** iniectumque focis uitulum dissoluit et exin
 
-**1212** porricit in pelagus sumptisque exinde fluentis 127021
+**1212** porricit in pelagus sumptisque exinde fluentis
 
 **1213** attonitos libare iubet: fratremque deinde
 
 **1214** increpat offensus ualide, quod uana petentes
 
-**1215** audierit iustaque deum uiolauerit ira. 22
+**1215** audierit iustaque deum uiolauerit ira.
 
 **1216** ille pacem poscens crimen populare fatetur.
 
-**1217** exortem sese faciens culpabilis ausi. 1275 26
+**1217** exortem sese faciens culpabilis ausi.
 
 **1218** at princeps, punire parans dementia uulgi
 
@@ -5450,19 +5448,19 @@ text_metadata:
 
 **1220** et ferrum nudare iubet atque obuia passim
 
-**1221** corpora, cognata quamquam de plebe, ferire. 28
+**1221** corpora, cognata quamquam de plebe, ferire.
 
-**1222** illi alacres per nota sibi diuortia currunt 1280
+**1222** illi alacres per nota sibi diuortia currunt
 
 **1223** oblatosque ruunt cuneos raptimque uirorum,
 
 **1224** ultores domini, circum tria milia caedunt,
 
-**1225** quis uicena simul studio quasi milia iungas. 30
+**1225** quis uicena simul studio quasi milia iungas.
 
-**1226** his gestis propheta suis iam mitior exit 31
+**1226** his gestis propheta suis iam mitior exit
 
-**1227** aeternumque rogat populi pro crimine regem, 1285
+**1227** aeternumque rogat populi pro crimine regem,
 
 **1228** talibus effatus: "Peccauit turba tuorum.
 
@@ -5472,9 +5470,9 @@ text_metadata:
 
 **1231** his et uota dedit et numen credidit aurum.
 
-**1232** et nunc, o domine, si dignum me prece ducis. 1290
+**1232** et nunc, o domine, si dignum me prece ducis.
 
-**1233** quam faciam fundamque tibi. dimitte reatum, 32
+**1233** quam faciam fundamque tibi. dimitte reatum,
 
 **1234** quem solus laxare potes. sin amplior illos
 
@@ -5482,7 +5480,7 @@ text_metadata:
 
 **1236** nomen, sancte, meum caelesti ex pagina dele,
 
-**1237** quam scripsit ueneranda manus, cui subiacet orbis. " 1295 33
+**1237** quam scripsit ueneranda manus, cui subiacet orbis. "
 
 **1238** orantem responsa dei felicia palpant:
 
@@ -5490,9 +5488,9 @@ text_metadata:
 
 **1240** me contra ueniens. hunc sancti pagina libri
 
-**1241** nulla tenet nomenque nocens delebitur inde. 34
+**1241** nulla tenet nomenque nocens delebitur inde.
 
-**1242** at tu depropera captumque hinc explica cursum 1300
+**1242** at tu depropera captumque hinc explica cursum
 
 **1243** promissosque locos susceptae adscribito turbae.
 
@@ -5500,19 +5498,19 @@ text_metadata:
 
 **1245** nuntius anterior semper gradietur euntem.
 
-**1246** ast illos sua facta grauant, quos crimina fuscant. 3
+**1246** ast illos sua facta grauant, quos crimina fuscant.
 
-**1247** erecta ceruice uiros sensuque tumentes: 1305
+**1247** erecta ceruice uiros sensuque tumentes:
 
 **1248** quapropter socio tecum non ambulo gressu."
 
-**1249** 4 Haec populus maesto suscepit dicta reatu,
+**1249** Haec populus maesto suscepit dicta reatu,
 
 **1250** inriguoque gemit ob tanta obprobria fletu,.
 
-**1251** pollutas sumens nigranti stamine uestes. 5 6
+**1251** pollutas sumens nigranti stamine uestes.
 
-**1252** quem bonus eloquiis uates deponere tristes 1310
+**1252** quem bonus eloquiis uates deponere tristes
 
 **1253** indutus luctumque iubet multumque precatur,
 
@@ -5520,29 +5518,29 @@ text_metadata:
 
 **1255** si fortasse pari fuerit de crimine laesus.
 
-**1256** 7 His actis conposta sibi tentoria promit
+**1256** His actis conposta sibi tentoria promit
 
-**1257** semotisque locat castris nomenque decenter 1315
+**1257** semotisque locat castris nomenque decenter
 
-**1258** indidit a teste, cuius sententia uera est. 8
+**1258** indidit a teste, cuius sententia uera est.
 
 **1259** ilium facta deo subeuntem limina cuncti
 
 **1260** certatim uidere uiri ipsique uicissim
 
-**1261** gaudebant inferre gradum uel sistere contra: 9
+**1261** gaudebant inferre gradum uel sistere contra:
 
-**1262** cum subito, horrendum uisu, nubs fulgida caelo 1320
+**1262** cum subito, horrendum uisu, nubs fulgida caelo
 
-**1263** labitur et summi perfundit culmina templi; 11
+**1263** labitur et summi perfundit culmina templi;
 
 **1264** dumque pius uates graditur. dum deinde recursat.
 
-**1265** aedibus in domini semper se condidit Auses 12
+**1265** aedibus in domini semper se condidit Auses
 
 **1266** nusquam progrediens. at uates dicta reuoluit
 
-**1267** cum domino consueta sibi, quaeque antea non sunt 1325 13
+**1267** cum domino consueta sibi, quaeque antea non sunt
 
 **1268** mortali concessa uiro, deposcit. ut ora
 
@@ -5552,19 +5550,19 @@ text_metadata:
 
 **1271** quamlibet aetherius uallaret nuntius illum.
 
-**1272** adnuitur dictisque deus sublimibus infit. 1330 20
+**1272** adnuitur dictisque deus sublimibus infit.
 
 **1273** quae facienda prius, quam tanti gratia doni
 
 **1274** obtutus pascat mundana inuisere suetos.
 
-**1275** "Heia age, deproperans rupem conscende minacem 22
+**1275** "Heia age, deproperans rupem conscende minacem
 
 **1276** et gressum defige tuum, ac dum meus alto
 
-**1277** sic rediens decurrit honor, sub fornice saxi, 1335
+**1277** sic rediens decurrit honor, sub fornice saxi,
 
-**1278** umbratus mea dextra, mane, dum praepete cursu 28
+**1278** umbratus mea dextra, mane, dum praepete cursu
 
 **1279** praeteriens refero diuinae umbracula palmae.
 
@@ -5572,17 +5570,17 @@ text_metadata:
 
 **1281** crura potes: uultum non fas est uisere cuiquam
 
-**1282** spirantum ex numero, mundana quos fouet aura." 1340 4
+**1282** spirantum ex numero, mundana quos fouet aura."
 
 **1283** haec, fuerant ut iussa, fiunt; mox caute dolata
 
 **1284** consimiles tabulas diuina ad iura reformat
 
-**1285** consuetamque sibi solitis de cursibus arcem 3
+**1285** consuetamque sibi solitis de cursibus arcem
 
 **1286** incomitatus adit montemque accedere iuxta
 
-**1287** non patitur cunctos ipsasque eliminat illinc 1345
+**1287** non patitur cunctos ipsasque eliminat illinc
 
 **1288** lanigeras pecudes, quia sunt contigua noxae
 
@@ -5590,7 +5588,7 @@ text_metadata:
 
 **1290** ilicet optatis domini sermonibus usus
 
-**1291** cognoscit uentura suis seque ingerit ultro: 1350 6
+**1291** cognoscit uentura suis seque ingerit ultro:
 
 **1292** "O domine, quem larga facit clementia magnum
 
@@ -5600,7 +5598,7 @@ text_metadata:
 
 **1295** indulgens pariter populis, quos mundus ubique
 
-**1296** laetus habet tota dominum cum mente fatentes: 1355
+**1296** laetus habet tota dominum cum mente fatentes:
 
 **1297** tu cunctos de fraude leuas, tu quidquid iniquum est,
 
@@ -5610,17 +5608,17 @@ text_metadata:
 
 **1300** in prolem natosque patrum natosque natorum:
 
-**1301** nobiscum praecelsa- deus uirtute maneto. 1360
+**1301** nobiscum praecelsa- deus uirtute maneto.
 
 **1302** nam plebs ista ferox rigida ceruice superbit;
 
-**1303** crimine si cuius commissa piacula donas, 10
+**1303** crimine si cuius commissa piacula donas,
 
 **1304** uiuemus per saecla tui." mox sanctus ab aula
 
 **1305** effatur dominus caeli, quae iusserat ante;
 
-**1306** ut, cum uulnifica populus post bella quiesset, 1365
+**1306** ut, cum uulnifica populus post bella quiesset,
 
 **1307** otia respiciens, tantum consortia nosset
 
@@ -5628,19 +5626,19 @@ text_metadata:
 
 **1309** incautas mentes fallaci cluderet astu
 
-**1310** coniunx sumpta foris profanaque sacra doceret. 28
+**1310** coniunx sumpta foris profanaque sacra doceret.
 
-**1311** iamque quaterdenos celeri cum lumine soles 1370
+**1311** iamque quaterdenos celeri cum lumine soles
 
 **1312** triuerat hic uates, nullamque adsumpserat escam,
 
-**1313** ieiunum referens ad castra ingentia pectus. 29
+**1313** ieiunum referens ad castra ingentia pectus.
 
 **1314** illum conspicuae fulgentem lampade flammae
 
-**1315** obtutus timuere uirum fraterque ueretur 31
+**1315** obtutus timuere uirum fraterque ueretur
 
-**1316** mortales reuocans fulgenti a lumine uisus. 1375 33
+**1316** mortales reuocans fulgenti a lumine uisus.
 
 **1317** nescius at uates subitae uirtutis honorem
 
@@ -5648,37 +5646,35 @@ text_metadata:
 
 **1319** noscitat inmensi uelandum luminis ictum,
 
-**1320** ne Iudaea cohors cum uisu auerteret aures. 34
+**1320** ne Iudaea cohors cum uisu auerteret aures.
 
-**1321** sed cum pacifica domini se ad uerba ferebat, 1380
+**1321** sed cum pacifica domini se ad uerba ferebat,
 
-**1322** lutea peI:spicuo tollebat lintea peplo. 5
+**1322** lutea peI:spicuo tollebat lintea peplo.
 
-**1323** ilicet exhibitis populo certante metallis 6
+**1323** ilicet exhibitis populo certante metallis
 
 **1324** et quae Sidonio tinguntur uellera luto,.
 
-**1325** artibus eximiis sacratam perficit aedem. 32
+**1325** artibus eximiis sacratam perficit aedem.
 
-**1326** quam dominus missa sublimis nube repleuit 1385
+**1326** quam dominus missa sublimis nube repleuit
 
-**1327** in tantum, ut uates non posset scandere postes 88
+**1327** in tantum, ut uates non posset scandere postes
 
 **1328** sanctificos, quamuis toto se limine uelum
 
 **1329** panderet et foribus custos non obuius esset.
 
-**1330** 34
+**1331** Haec cum mobilibus sese dimouerat auris.
 
-**1331** Haec cum mobilibus sese dimouerat auris. 36
-
-**1332** castra mouebantur; nox rursum sueta reuerti 1390
+**1332** castra mouebantur; nox rursum sueta reuerti
 
 **1333** fulgebat rubrae nimio de lumine flammae.
 
 **1334** dum uolucris deferuet apex numenque praesentat.
 
-**1** Postquam conspicuo longinqua in deuia templo π2 π1
+**1** Postquam conspicuo longinqua in deuia templo
 
 **2** extrema est inposta manus. mox cura sacrorum
 
@@ -5686,37 +5682,37 @@ text_metadata:
 
 **4** hostia peccatum demeret quae, quaeue salutem
 
-**5** caesa daret; quae dona potens, quae pauper ad aram 5 7
+**5** caesa daret; quae dona potens, quae pauper ad aram
 
-**6** poneret et geminus quae ferret commoda turtur: 11
+**6** poneret et geminus quae ferret commoda turtur:
 
-**7** quaeue columba pari sociata et iuncta columbae 24
+**7** quaeue columba pari sociata et iuncta columbae
 
 **8** sed mirum, pecudum caesarum uiscera raptim
 
 **9** ignis edax celso rapiebat sidere missus.
 
-**10** Interea iuuenes uegeti iam fortibus annis. 10
+**10** Interea iuuenes uegeti iam fortibus annis.
 
 **11** esse sibi licitum stolido dum pectore credunt.
 
 **12** Nabdus et Abiudus, Aronis nota prophetae.
 
-**13** pignora, sacrilegis accendunt ritibus ignem. 2
+**13** pignora, sacrilegis accendunt ritibus ignem.
 
 **14** haut multum dilata nece: nam fulgur ab axe
 
-**15** emicuit supero atque inter uota necauit 15
+**15** emicuit supero atque inter uota necauit
 
-**16** non sincera uiros. multum genitore maerente. 5
+**16** non sincera uiros. multum genitore maerente.
 
-**17** frigentumque dehinc tumulantur membra senulchro. 6
+**17** frigentumque dehinc tumulantur membra senulchro.
 
 **18** mox tamen abstinuit genitor lugere sepultos
 
 **19** germanique omnes, fletum prohibente propheta.
 
-**20** qui populo permissus erat: namque igneus ardor. 20
+**20** qui populo permissus erat: namque igneus ardor.
 
 **21** caelesti de sede uolans. concusserat omnes
 
@@ -5724,19 +5720,19 @@ text_metadata:
 
 **23** temnendum non esse deum. qui non foret absens.
 
-**24** 9 Haec inter domini cognoscit uoce sacerdos
+**24** Haec inter domini cognoscit uoce sacerdos
 
 **25** uina negata sibi mellitaque sicera natis.
 
 **26** ne. quando dominum positas uenerentur ad aras.
 
-**27** halitus offendat uinoso ex pectore missus. 2
+**27** halitus offendat uinoso ex pectore missus.
 
 **28** communis populo distinguit regula uictus :
 
 **29** et quid uel liceat uel fas adsumere non sit.
 
-**30** eloquitur. quem nostra etiam conuiuia morem 30 13-15
+**30** eloquitur. quem nostra etiam conuiuia morem
 
 **31** caelesti sub lege tenent: ne uultur in escis
 
@@ -5748,17 +5744,17 @@ text_metadata:
 
 **35** ne quae munda parum congesta in pectore sidunt.
 
-**36** innocuas tactu faciant sordescere fibras. 36 2
+**36** innocuas tactu faciant sordescere fibras.
 
 **37** femina. quae licito uacuatur uiscera partu.J
 
-**38** si puerum generat, septeno in lumine sordet 3
+**38** si puerum generat, septeno in lumine sordet
 
 **39** corpore cum toto; sed cum se uerterit axis
 
-**40** octauus. quo sollemne est truncare pudenda. 4
+**40** octauus. quo sollemne est truncare pudenda.
 
-**41** pelliculum demet ueretri. atque inde sedebit 5
+**41** pelliculum demet ueretri. atque inde sedebit
 
 **42** ter denis tribusque dehinc iam feta diebus.
 
@@ -5768,7 +5764,7 @@ text_metadata:
 
 **45** quodsi concepta laxant membra puellae,
 
-**46** obseruans geminum tempus nil fraudis habebit, 10 6
+**46** obseruans geminum tempus nil fraudis habebit,
 
 **47** quo deinde expleto confestim dona uouebit
 
@@ -5778,7 +5774,7 @@ text_metadata:
 
 **50** ut saniem precibus ualeat cohibere sacerdos.
 
-**51** Morborum quoque effigies et signa docentur, 15
+**51** Morborum quoque effigies et signa docentur,
 
 **52** dumtaxat quos lepra creat, quae corpore toto
 
@@ -5788,7 +5784,7 @@ text_metadata:
 
 **55** ut, quia per domini nonnumquam exaestuat iram,
 
-**56** hoc medicante fugam capiat corpusque relinquat 20
+**56** hoc medicante fugam capiat corpusque relinquat
 
 **57** orantis pro noxa uiri munusque ferentis,
 
@@ -5796,39 +5792,39 @@ text_metadata:
 
 **59** saepe solet; dominus uotum quia simplicis haurit.
 
-**60** nec grandis inpensa tamen praestanda medendi: 10
+**60** nec grandis inpensa tamen praestanda medendi:
 
-**61** nam pullos offerre duos agnosque gemellos, 25
+**61** nam pullos offerre duos agnosque gemellos,
 
 **62** ut uitulo coniungat ouem, ius praecipit omne,
 
-**63** polline cum tenui, quam sparsit riuus oliui. 21
+**63** polline cum tenui, quam sparsit riuus oliui.
 
 **64** haec diues offerre potest: sed munera paruum
 
 **65** parua manent; namque aut uitulum mactabit ad aram,
 
-**66** qui uiget explicito bis senis mensibus anno, 30
+**66** qui uiget explicito bis senis mensibus anno,
 
-**67** et quiddam de farre pio, quod miscit oliuo, 22
+**67** et quiddam de farre pio, quod miscit oliuo,
 
 **68** turtures aut geminos, similes aut forte columbas.
 
-**69** 2 Quin etiam somnos hominum quia saepe uoluptas
+**69** Quin etiam somnos hominum quia saepe uoluptas
 
 **70** per noctem deludit iners, si forte ueretro
 
-**71** semina destillant, fit corpus turpe iacentum 35 7
+**71** semina destillant, fit corpus turpe iacentum
 
 **72** inmundumque manet, donec iam uesper ab aethra
 
-**73** conspicuus laeto praecedat lumine noctem; 4 sqq.
+**73** conspicuus laeto praecedat lumine noctem;
 
 **74** nec solum foedo deturpant corpora naeuo,
 
-**75** sed quidquid contingit agens, quem somnia fuscant: 13
+**75** sed quidquid contingit agens, quem somnia fuscant:
 
-**76** id propter fluuio fas est perfundere membra, 40
+**76** id propter fluuio fas est perfundere membra,
 
 **77** puritas ut redeat propere cessante reatu.
 
@@ -5838,7 +5834,7 @@ text_metadata:
 
 **80** diluere ac uitreo sordes diducere riuo.
 
-**81** 16 Hac etiam liciti coitus sub lege piantur. 45 13-la
+**81** Hac etiam liciti coitus sub lege piantur.
 
 **82** ilicet exutis membrorum labe molesta
 
@@ -5848,9 +5844,9 @@ text_metadata:
 
 **85** turture si gemino ueniat subnixus ad aram
 
-**86** peccati uotique reus paribusque columbis.50
+**86** peccati uotique reus paribusque columbis
 
-**87** 19 Femina, decurso quae fit iam menstrua mense.
+**87** Femina, decurso quae fit iam menstrua mense.
 
 **88** foedatur sanie madida, quae promitur aluo.
 
@@ -5858,119 +5854,119 @@ text_metadata:
 
 **90** lucifero redeunte dies; sin auctius urget
 
-**91** unda nocens certique abscedit temporis ordo. 55
+**91** unda nocens certique abscedit temporis ordo.
 
-**92** indiscreta mali facies idemque reati 29
+**92** indiscreta mali facies idemque reati
 
 **93** finis erit, sanctam si promat munus ad aram
 
 **94** ex his, quas domino constat placuisse uolucres.
 
-**95** Interea extinctis mento sub crimine natis 37
+**95** Interea extinctis mento sub crimine natis
 
-**96** Aaronis proceris dominus haec intimat ingens. 2
+**96** Aaronis proceris dominus haec intimat ingens.
 
 **97** ut, quia praetentis dimissa umbracula uelis
 
-**98** altar habet sacraque simul praenubitur arca, 40
+**98** altar habet sacraque simul praenubitur arca,
 
 **99** temporibus certis sese referatque locetque
 
 **100** sacerdos pia uota ferens, quia sanctus ibidem
 
-**101** consistat dominus albenti in nube uiden\'lus. 3
+**101** consistat dominus albenti in nube uiden\'lus.
 
-**102** sic tamen ut uitulum proprio pro crimine mactet. 6 7
+**102** sic tamen ut uitulum proprio pro crimine mactet.
 
-**103** proque synagoga similes mox immolet hircos. 45 8 10
+**103** proque synagoga similes mox immolet hircos.
 
 **104** sorte sub oblata, unus qua deuius erret.
 
-**105** peccantum delicta ferens secumque recondens. 9
+**105** peccantum delicta ferens secumque recondens.
 
 **106** ast alius placidam ut domino mactetur ad aram.
 
 **107** optima siderei laturus commoda doni.
 
-**108** 14 Bestia uel uolucris, nullo quae sanguine fuso 50
+**108** Bestia uel uolucris, nullo quae sanguine fuso
 
 **109** functa fuit, nullis prandentum est congrua mensis:
 
-**110** idcirco, quoniam multorum in sanguine mens est. 13
+**110** idcirco, quoniam multorum in sanguine mens est.
 
 **111** atque etiam si forte pecus mucrone peremptum
 
 **112** laxant croceam sectis de faucibus undam.
 
-**113** debet terra tegi. ne sit non condita fraudi. 55
+**113** debet terra tegi. ne sit non condita fraudi.
 
 **114** Instruit hinc dominus, quae sint consortia noxae
 
 **115** quaeue iuuent parili concordia pectora nexu.
 
-**116** quae certis digesta modis hic explicat ordo: 58 7.
+**116** quae certis digesta modis hic explicat ordo:
 
-**117** inprimis genetrix cubili accommoda non est. 59
+**117** inprimis genetrix cubili accommoda non est.
 
-**118** in quo nupta iacet. nullumque -agnouerit usum 60
+**118** in quo nupta iacet. nullumque -agnouerit usum
 
 **119** excepta pietate sui mens sedula nati.
 
-**120** ut quae paternis nonnumquam amplexibus haesit. 9 sqq.
+**120** ut quae paternis nonnumquam amplexibus haesit.
 
 **121** hoc germana modo, eadem de matre creata.
 
-**122** aut neptis inspecta tibi natoue nataeue: 12
+**122** aut neptis inspecta tibi natoue nataeue:
 
-**123** non amita affectu nec sit matertera foedo 65 15
+**123** non amita affectu nec sit matertera foedo
 
 **124** iunctior inue nurum noxalis luxus oberret.
 
-**125** uel nuptam. quam frater habet; non nouerit usum 17
+**125** uel nuptam. quam frater habet; non nouerit usum
 
 **126** filia, quem genetrix. lectoue incumbat eodem.
 
 **127** uni mixta uiro, coniunctaque nomina turpet.
 
-**128** si nouerca fiat canorum feta nepotum. 70
+**128** si nouerca fiat canorum feta nepotum.
 
 **129** ut quae priuigno coniungitur. et duas uno
 
-**130** germanas cohibere sinu res absona iuri est. 20
+**130** germanas cohibere sinu res absona iuri est.
 
-**131** uel quam coniuncta uobis de plebe capessit 21
+**131** uel quam coniuncta uobis de plebe capessit
 
 **132** proximus; haut natus detur seruire potenti.
 
-**133** ne uetito nomen domini uioletur in actu. 75 22
+**133** ne uetito nomen domini uioletur in actu.
 
 **134** masculus obsceno ne sit permixtus amore.
 
 **135** neu sexum deturpa tuum. nec quadrupes ulla
 
-**136** nouerit informes coitus nuptaeue uiriue: 24
+**136** nouerit informes coitus nuptaeue uiriue:
 
-**137** crimina quae propter dominum laesere potentem 25
+**137** crimina quae propter dominum laesere potentem
 
-**138** gentes multimodae, terraque his omnibus iras 80
+**138** gentes multimodae, terraque his omnibus iras
 
-**139** exhibet et sordes, quibus est infecta, refutat. 81
+**139** exhibet et sordes, quibus est infecta, refutat.
 
-**140** at cum triticeas tondet iam messor aristas. 59 10
+**140** at cum triticeas tondet iam messor aristas.
 
-**141** uel cum flauentes resecat uindemitor uuas. 60
+**141** uel cum flauentes resecat uindemitor uuas.
 
-**142** nemo legat totum, ut pars linquatur egenti. 11
+**142** nemo legat totum, ut pars linquatur egenti.
 
 **143** quae suprema fuit. mendum ne dixerit ullus.
 
 **144** neu furtis seruire uelit nec perdere fratrem
 
-**145** nec super iniustum iurandi inponere iura. 13
+**145** nec super iniustum iurandi inponere iura.
 
-**146** laedere ne libeat quemquam uel rapta tenere. 65
+**146** laedere ne libeat quemquam uel rapta tenere.
 
-**147** neue operi pretium demat mercede locati 14
+**147** neue operi pretium demat mercede locati
 
 **148** uel una sub nocte um: neu dicere surdo
 
@@ -5978,21 +5974,21 @@ text_metadata:
 
 **150** iudicis arbitrium ne sit propensius umquam
 
-**151** in laeuum dextrumue latus. quia pauperis una 70
+**151** in laeuum dextrumue latus. quia pauperis una
 
 **152** eximiique uiri debet persona uideri
 
-**153** illis. qui posita rectum discernere lance 16
+**153** illis. qui posita rectum discernere lance
 
 **154** mente queunt docili. mox turgida pectora frena,
 
-**155** inuisus ne forte fias. dum despicis omnes. 17
+**155** inuisus ne forte fias. dum despicis omnes.
 
-**156** oderis aut fratrem. tacita si cogeris ira, 75
+**156** oderis aut fratrem. tacita si cogeris ira,
 
-**157** sed castiga magis coramque euolue locato, 79
+**157** sed castiga magis coramque euolue locato,
 
-**158** ut uitet commissa prius mentemque reformet. 80 18
+**158** ut uitet commissa prius mentemque reformet.
 
 **159** et cum iura tibi fuerint commissa nocendi,
 
@@ -6000,15 +5996,15 @@ text_metadata:
 
 **161** pectore quae tacito dudum contracta uigebat;
 
-**162** ne dominus sis ipse tui uindexque doloris. 84
+**162** ne dominus sis ipse tui uindexque doloris.
 
-**163** utque tuis cupies iucunda et commoda rebus. 76
+**163** utque tuis cupies iucunda et commoda rebus.
 
 **164** sic fratri deposce tuo. ne dissona mens sit.
 
-**165** hoc seruate uiri sanctoque insistite iuri. 78 85
+**165** hoc seruate uiri sanctoque insistite iuri.
 
-**166** Sint iumenta tuis subnixa et subdita plaustris 86
+**166** Sint iumenta tuis subnixa et subdita plaustris
 
 **167** corpore consimili, nec taurum iunge caballo.
 
@@ -6016,7 +6012,7 @@ text_metadata:
 
 **169** farra serens: uestisque tibi nec discolor ulla
 
-**170** diuerso sit texta modo filoue biformi. 90 20
+**170** diuerso sit texta modo filoue biformi.
 
 **171** diligit ancillam si quis mercede seorsa.
 
@@ -6026,49 +6022,49 @@ text_metadata:
 
 **174** [puella] si non iuncta uiro sensum coniunxerit unum,
 
-**175** si facilis nullo coitus luctamine praestat. 95 21
+**175** si facilis nullo coitus luctamine praestat.
 
 **176** lenitur per uota deus. si de grege molli
 
-**177** uotiuus aries domini mactetur ad aram. 28
+**177** uotiuus aries domini mactetur ad aram.
 
 **178** insita siluestri quotiens sunt germina trunco.
 
 **179** carpite post ternos nequaquam poma decembres.
 
-**180** sed summo sacrate deo; quia quintus edendi 100 25
+**180** sed summo sacrate deo; quia quintus edendi
 
-**181** iura dabit uobis licitis cum uictibus annus. 26
+**181** iura dabit uobis licitis cum uictibus annus.
 
-**182** auguriis seruire nega atque auspicia orsa 27
+**182** auguriis seruire nega atque auspicia orsa
 
 **183** pro ueris audire fuge; rectumque capillum
 
 **184** crispanti rutilare coma. uel carpere barbam.
 
-**185** aut ferro signare cutem, uel stigmata membris 105
+**185** aut ferro signare cutem, uel stigmata membris
 
-**186** indere corporeis haut umquam mitia membris. 29
+**186** indere corporeis haut umquam mitia membris.
 
-**187** filia blandiloquis ne sit te mancipe moechis 31
+**187** filia blandiloquis ne sit te mancipe moechis
 
-**188** aut turpi transcripta toro; cantuque medentes 32
+**188** aut turpi transcripta toro; cantuque medentes
 
 **189** euitate uiros; dignaque accersite noxa.
 
-**190** si iuuenis uetulo non adsurrexerit, et si 110
+**190** si iuuenis uetulo non adsurrexerit, et si
 
 **191** barbato cuicumque puer, quia grandior aeuo\'
 
-**192** postulat officium, paternis quod datur annis. 35
+**192** postulat officium, paternis quod datur annis.
 
-**193** sit modio mensura tuo non debilis umquam: 36
+**193** sit modio mensura tuo non debilis umquam:
 
 **194** nec trutinam serues, cui sit semuncia fraudis.
 
-**195** iustus iusta deus quocumque exquirit in actu. 115 6
+**195** iustus iusta deus quocumque exquirit in actu.
 
-**196** et qui uentriloquos poscunt responsa. refuta. 5
+**196** et qui uentriloquos poscunt responsa. refuta.
 
 **197** defunctum propter nullus deponere barbam
 
@@ -6076,79 +6072,79 @@ text_metadata:
 
 **199** polluat aut quidquam, quo sit deformior, optet.
 
-**200** femina, noctiuagus si quam possedit adulter. 120
+**200** femina, noctiuagus si quam possedit adulter.
 
 **201** coniugio est indigna uiri, quem postea sumat.
 
-**202** et quae de sensu, quo sunt diuortia, missa est. 10
+**202** et quae de sensu, quo sunt diuortia, missa est.
 
 **203** nesciat alterius thalamos; purusque sacerdos
 
 **204** omnibus in rebus nitidum praestabit oliuum.
 
-**205** quo perfusa prius sacrati uerticis arx est. 125 13
+**205** quo perfusa prius sacrati uerticis arx est.
 
-**206** huic coniunx de gente sua conpertaque soli 14
+**206** huic coniunx de gente sua conpertaque soli
 
-**207** haereat et uiduam uitet luxuue nocentem. 15
+**207** haereat et uiduam uitet luxuue nocentem.
 
-**208** ne maculosa fiat uetita de matre propago. 17sqq.
+**208** ne maculosa fiat uetita de matre propago.
 
 **209** et si quis uitium quodcumque in corpore gestat.
 
-**210** (ille) haud dignus erit, qui (munia) sancta capessat. 130 22
+**210** (ille) haud dignus erit, qui (munia) sancta capessat.
 
-**211** corpora pura placent, maculis haut inlita foedis. 4
+**211** corpora pura placent, maculis haut inlita foedis.
 
 **212** femineus quae luxus habet, cum uota sacrantur.
 
-**213** quae captu pro quisque suo deuouit ad altar. 23
+**213** quae captu pro quisque suo deuouit ad altar.
 
 **214** quin et uela simul nequaquam iungere fas est;
 
-**215** nam maculis sordent. purus est rector in altis. 135 12
+**215** nam maculis sordent. purus est rector in altis.
 
 **216** filia sanctifici fuerit si tradita uatis
 
-**217** externi sub iura uiri, libamina prima 13
+**217** externi sub iura uiri, libamina prima
 
 **218** nequaquam contingat edens: si coniuge functo
 
 **219** aedibus in patriis coepit consistere, sumat
 
-**220** quem genitor, secura cibum panemque uicissim. 140 14
+**220** quem genitor, secura cibum panemque uicissim.
 
 **221** quod si sancta manu quicumque admouerit 011
 
 **222** nescius, ob culpam quintas deportet ad altar.
 
-**223** 2 Pendeat ante tholum lychnus laquearibus altis, 82143
+**223** Pendeat ante tholum lychnus laquearibus altis,
 
 **224** noctibus ut praestet flammatum lumen oliuum.
 
 **225** ne decursa dies pallentes misceat umbras
 
-**226** aedibus in domini sanctaque altaria condat. 85
+**226** aedibus in domini sanctaque altaria condat.
 
-**227** 10 Haec inter calido iuuenes duo felle mouentur: 144
+**227** Haec inter calido iuuenes duo felle mouentur:
 
-**228** hic Hebraeus erat. alius generatus Aegypto. 145
+**228** hic Hebraeus erat. alius generatus Aegypto.
 
 **229** dumque alterna sibi dicunt maledicta frementes.
 
 **230** inmensum domini nomen fuscare querella
 
-**231** non timuit Iudaeus iners. dum ducitur ira. 14
+**231** non timuit Iudaeus iners. dum ducitur ira.
 
 **232** quod facinus propter castrorum ex aggere tractus
 
-**233** et positus campi medio. mandante loquella 150
+**233** et positus campi medio. mandante loquella
 
 **234** sublimis domini. saxorum concidit ictu.
 
-**235** percurrit pia iura deus atque omnia pandit. 152 25
+**235** percurrit pia iura deus atque omnia pandit.
 
-**236** Indigus alterius quotiens uult sumere nummos 86
+**236** Indigus alterius quotiens uult sumere nummos
 
 **237** pignore deposito. si rus addixerit illi,
 
@@ -6156,103 +6152,103 @@ text_metadata:
 
 **239** cum fuerit ditata manus. atque illa receptet,
 
-**240** quae fuerant transcripta prius; in perpete uita 90 28
+**240** quae fuerant transcripta prius; in perpete uita
 
 **241** indigus extiterit. illo fit liber in anno.
 
-**242** quo cunctis est missa quies et dulce leuamen. 29
+**242** quo cunctis est missa quies et dulce leuamen.
 
 **243** quod si forte domum media quis mancipet urbe,
 
 **244** restituat hic aera sibi commissa per annum.
 
-**245** ne post emissum dimittat praedia tempus. 95 35
+**245** ne post emissum dimittat praedia tempus.
 
 **246** sic tamen orantum danda est pecunia dextris,
 
-**247** exigat inplicitum ne post usura lucellum. 39
+**247** exigat inplicitum ne post usura lucellum.
 
 **248** quisquis inops tenuem uitae non sustinet usum
 
 **249** ac duros perferre dies, meliusque putabit
 
-**250** subdere se domino iam libertate remota, 100
+**250** subdere se domino iam libertate remota,
 
-**251** non ferat ille iugum ueluti de serua creatus, 40
+**251** non ferat ille iugum ueluti de serua creatus,
 
-**252** sed uelut adscitus positae mercedis ad actum, 41
+**252** sed uelut adscitus positae mercedis ad actum,
 
 **253** donec decurso redeat iam tempore liber,
 
 **254** quo cunctis concessa simul sunt otia rebus.
 
-**255** ac si ceu domini imperio distractus abibit, 105
+**255** ac si ceu domini imperio distractus abibit,
 
 **256** proximus hunc redimat, aut, si non adfuit ille,
 
 **257** contribulis quicumque sui commercia fratris
 
-**258** iussus agat iugumque uiro seruile sequestret. 50
+**258** iussus agat iugumque uiro seruile sequestret.
 
 **259** nam si legitimo fuerit diuenditus aere,
 
-**260** seruiet, optato ueniat dum tempus in anno, 110
+**260** seruiet, optato ueniat dum tempus in anno,
 
-**261** quo cuncti sua iura simul dimissa resumunt. 52
+**261** quo cuncti sua iura simul dimissa resumunt.
 
 **262** aut, si parua fuit annorum summa, labore
 
-**263** conpleat hanc proprio manuum quem praestitit actu. 54
+**263** conpleat hanc proprio manuum quem praestitit actu.
 
 **264** sic abeat, quocumque uolet, secumque reducat
 
-**265** libera securos pariter cum coniuge natos. 115 3
+**265** libera securos pariter cum coniuge natos.
 
-**266** talia sincero condentem pectore iussa 153 6
+**266** talia sincero condentem pectore iussa
 
 **267** pax tranquilla manet, nullo quam bella tumultu
 
-**268** proturbare queunt; longos sed missa per annos 155 5
+**268** proturbare queunt; longos sed missa per annos
 
 **269** otia multimodo conplebunt horrea fructu.
 
-**270** quin etiam si tela ferox destrinxerit hostis, 8
+**270** quin etiam si tela ferox destrinxerit hostis,
 
 **271** exigua. bellante manu detrusus abibit,
 
-**272** quam libet inmensas acies in proelia ducat. 14
+**272** quam libet inmensas acies in proelia ducat.
 
-**273** ast ilium, qui iussa dei sublimia uitat, 160 16
+**273** ast ilium, qui iussa dei sublimia uitat,
 
 **274** mortis terror aget, ceu ferrum torqueat hostis,
 
-**275** praecipitique fuga trepida condetur in urbe. 20
+**275** praecipitique fuga trepida condetur in urbe.
 
 **276** hinc postrema fames morbis pallentibus illum
 
 **277** ambiet et saturus quamuis ieiuna putabit
 
-**278** ora sibi semperque metu redeunte timebit. 165 21
+**278** ora sibi semperque metu redeunte timebit.
 
 **279** ac si conlibitum portis bipatentibus ire,
 
-**280** quo sensus duxere sui, hunc maesta per agros 22
+**280** quo sensus duxere sui, hunc maesta per agros
 
 **281** undique desertos heremus confundet euntem,
 
 **282** raptoresque lupos et quae sunt dente uel ungui
 
-**283** terribiles per rura ferae, plus triste timebit: 170 26
+**283** terribiles per rura ferae, plus triste timebit:
 
 **284** et quamuis pingui generetur caespite terrae
 
-**285** uerna seges, teneras culmis non promet aristas. 29
+**285** uerna seges, teneras culmis non promet aristas.
 
 **286** natorum tum membra pater ceu dulcia morsu
 
 **287** adpetet atque fame genetrix demittet ad aluum.
 
-**288** quod genuit fecunda prius. tum uincula captis 175 33
+**288** quod genuit fecunda prius. tum uincula captis
 
 **289** inponet iam uictor ouans flammaeque micantes
 
@@ -6260,17 +6256,17 @@ text_metadata:
 
 **291** urbibus in cinerem uersis, quae foeda gerentes
 
-**292** ambierant ualido quondam tutamine muri. 30
+**292** ambierant ualido quondam tutamine muri.
 
-**293** deficient tituli, uaiiai-um insignia laudum; 180
+**293** deficient tituli, uaiiai-um insignia laudum;
 
 **294** et quae pulchra prius fuerant, destructa peribunt,
 
 **295** ut deus in celsis semper uenerandus ametur,
 
-**296** idola quem nequeunt mentito adtingere cultu. 188
+**296** idola quem nequeunt mentito adtingere cultu.
 
-**297** Quae deinde in uotis maneat taxatio dragmae, 116
+**297** Quae deinde in uotis maneat taxatio dragmae,
 
 **298** femina si fuerit seu mas donatus ad altar,
 
@@ -6278,7 +6274,7 @@ text_metadata:
 
 **300** seu puer aut uirgo nondum pubentibus annis,
 
-**301** seu domus aut fundus, seu quidquid mente dicatur, 120
+**301** seu domus aut fundus, seu quidquid mente dicatur,
 
 **302** cum secura deo gaudet mens credere summo,
 
@@ -6286,9 +6282,9 @@ text_metadata:
 
 **304** ni quibus inplicitus ne sese inuolueret error,
 
-**305** pars expressa manet, pars est concredita uati, 30
+**305** pars expressa manet, pars est concredita uati,
 
-**306** ut decimos etiam taxet sententia fructus. 125 31
+**306** ut decimos etiam taxet sententia fructus.
 
 **307** si libitum retinere pecus agrumue domumue,
 
@@ -6298,7 +6294,7 @@ text_metadata:
 
 **1** Verterat interea solitis recursibus annus,
 
-**2** mensibus explicitis sua per uestigia currens, 185
+**2** mensibus explicitis sua per uestigia currens,
 
 **3** postquam lecta deo pubes Nilotica liquit
 
@@ -6308,37 +6304,37 @@ text_metadata:
 
 **6** imperat, ut uates tribuum mandata tribunis
 
-**7** certa ferat plebemque dehinc percenseat omnem, 190 3
+**7** certa ferat plebemque dehinc percenseat omnem,
 
 **8** sepositis pueris et quos iam grandior aetas
 
 **9** exhibet inmunes trepidi sub cura duelli,
 
-**10** ut, quae summa fiat, bis denis noscat ab annis. 18
+**10** ut, quae summa fiat, bis denis noscat ab annis.
 
 **11** illi alacres relegunt numero currente per omnes
 
-**12** turmas quisque suas cursimque inspecta locuntur 195
+**12** turmas quisque suas cursimque inspecta locuntur
 
-**13** nomina, bissenis tribubus quae condita perstant. 46
+**13** nomina, bissenis tribubus quae condita perstant.
 
 **14** haec sexcenta simul conplerunt et tria iunctim
 
-**15** milia, quingentos pariter si iungere cures 44?
+**15** milia, quingentos pariter si iungere cures
 
 **16** quinquies et denos, domuum cum deinde uiritim
 
-**17** notio perdocuit procerum bis milia sena. 200 49
+**17** notio perdocuit procerum bis milia sena.
 
 **18** Leuitas uero, domini quos cura sacrorum
 
 **19** sola manet, uetuit plebis coniungere summae.
 
-**20** hinc adlecta deo Getsonum milia septem, 17 28
+**20** hinc adlecta deo Getsonum milia septem,
 
 **21** quingentis pariter positis; Gaada seorsum
 
-**22** bis quaterna facit sexcentis comminus auctis; 205 33
+**22** bis quaterna facit sexcentis comminus auctis;
 
 **23** tertia bis ternis sed milibus atque ducentis
 
@@ -6346,39 +6342,39 @@ text_metadata:
 
 **25** has diuersa manet quoniam custodia summas
 
-**26** sacrorum templique dei, sic castra sequestrant. 23
+**26** sacrorum templique dei, sic castra sequestrant.
 
-**27** prima legit pelagus; alia se porgit ad austrum; 210 2935
+**27** prima legit pelagus; alia se porgit ad austrum;
 
-**28** tertia praegelidas aquilonis respicit auras. 38
+**28** tertia praegelidas aquilonis respicit auras.
 
 **29** at qua prima rubet uenientis flamma diei,
 
-**30** maxima conspicui ponunt tentoria uatis. 40
+**30** maxima conspicui ponunt tentoria uatis.
 
 **31** hinc genitos primo pueros dinoscere partu
 
-**32** et domino sacrare parat, qui milia conplet 215 43
+**32** et domino sacrare parat, qui milia conplet
 
 **33** bis undena, simul bis centum si superaddas
 
 **34** septies et denos, pro quis adsumere dragmam
 
-**35** uatibus est licitum sacrisque addicere templi, 49
+**35** uatibus est licitum sacrisque addicere templi,
 
-**36** emptos cum ueluti diuina eliminet ara. 48
+**36** emptos cum ueluti diuina eliminet ara.
 
-**37** ilicet adplicitos sacrarum ad munera rerum 220
+**37** ilicet adplicitos sacrarum ad munera rerum
 
 **38** ex Getsona manu Gadaque et dicta Merara
 
 **39** bis quaterna legunt quingentis milia iunctis,
 
-**40** quinquaginta super positis, quos ferre seorsum 49
+**40** quinquaginta super positis, quos ferre seorsum
 
 **41** ornamenta domus domini uel promere iussit.
 
-**42** sic ibi iam positis sumebant otia castris; 225 2
+**42** sic ibi iam positis sumebant otia castris;
 
 **43** ex quibus excludi placuit trans limina portae,
 
@@ -6386,9 +6382,9 @@ text_metadata:
 
 **45** ne ualidos inter positi contagia ferrent,
 
-**46** abdita dum calidis errant discrimina uenis. 12
+**46** abdita dum calidis errant discrimina uenis.
 
-**47** ilicet uxori tacito qui pectore zelat, 230 13
+**47** ilicet uxori tacito qui pectore zelat,
 
 **48** nec testem, qui prodat, habet, si serus adulter
 
@@ -6398,17 +6394,17 @@ text_metadata:
 
 **51** quam credit peccasse sibi. canamque farinam,
 
-**52** hordea quam faciunt, sacratum promat ad altar. 235
+**52** hordea quam faciunt, sacratum promat ad altar.
 
-**53** quam nec ture linat, nec pingui inroret oliuo. 17
+**53** quam nec ture linat, nec pingui inroret oliuo.
 
 **54** praeuidus hic uates undam de fonte capessat
 
 **55** fictilibus labris, modico quam puluere tinguat
 
-**56** quem capit e media pronus testudine templi. 18
+**56** quem capit e media pronus testudine templi.
 
-**57** mox illam nudare caput palmisque tenere 240
+**57** mox illam nudare caput palmisque tenere
 
 **58** conpellet geminis memoris libamina sacri.
 
@@ -6416,9 +6412,9 @@ text_metadata:
 
 **60** conpellet senior. quae St si criminis exsors,-
 
-**61** inlaesa cum mente manet uultuque sereno. 20
+**61** inlaesa cum mente manet uultuque sereno.
 
-**62** at si sub tacitis celantur crimina fibris, 245 21
+**62** at si sub tacitis celantur crimina fibris,
 
 **63** turgebit subita mulier tentigine morbi,
 
@@ -6428,19 +6424,19 @@ text_metadata:
 
 **66** dum facili exprobat commissa piacula risu.
 
-**67** 2 Haec inter casto uitam si ducere ritu 230
+**67** Haec inter casto uitam si ducere ritu
 
 **68** mente parat quisquam uotique implere reatum
 
 **69** peruigili exoptat sensu, ne luxus in ipso
 
-**70** corporeus certo possit sub fine uigere: 3
+**70** corporeus certo possit sub fine uigere:
 
 **71** uina neget sibi nata libens et cuncta refutet
 
-**72** pocula, quae calidis in uinum uertere lymphis 255
+**72** pocula, quae calidis in uinum uertere lymphis
 
-**73** aut melle aut pomis consueuit cura bibentum, 4
+**73** aut melle aut pomis consueuit cura bibentum,
 
 **74** cum liquidos puris renouant de fontibus haustus.
 
@@ -6448,7 +6444,7 @@ text_metadata:
 
 **76** qui uini uel rore madet, uel solibus aret
 
-**77** in passum crispo concretus margine rimae; 260
+**77** in passum crispo concretus margine rimae;
 
 **78** quin etiam laticem mordacis uitet aceti.
 
@@ -6456,11 +6452,11 @@ text_metadata:
 
 **80** concretamque gerat toto cum tempore barbam,
 
-**81** qui uoto perscriptus erit; crinemque fluentem 6
+**81** qui uoto perscriptus erit; crinemque fluentem
 
-**82** intonsus conseruet apex; lustrare sepulchra 265 7
+**82** intonsus conseruet apex; lustrare sepulchra
 
-**83** nesciat et patrum tumulos bustumque sororis, 8
+**83** nesciat et patrum tumulos bustumque sororis,
 
 **84** ut sanctus persistat honor. si forte sub isdem
 
@@ -6468,39 +6464,39 @@ text_metadata:
 
 **86** morte obita, infectum ueluti sordescere coget.
 
-**87** is igitur ueniam curis mordacibus oret, 270
+**87** is igitur ueniam curis mordacibus oret,
 
-**88** tondeat et crinem squalenti in uertice pastum; 10
+**88** tondeat et crinem squalenti in uertice pastum;
 
 **89** et cum clara dies septeno eluxerit ortu,
 
-**90** turtures aut simili candentes pluma columbas 11
+**90** turtures aut simili candentes pluma columbas
 
-**91** offerat, ut uitium uatis per uerba leuetur 12
+**91** offerat, ut uitium uatis per uerba leuetur
 
-**92** atque precem; iactura tamen sit temporis eius, 275
+**92** atque precem; iactura tamen sit temporis eius,
 
 **93** quo prius abstemius fuerat, rursusque capessat
 
 **94** principia optatis iterum currentia uotis,
 
-**95** quaesitam ut meritis ualeat contingere metam. 14
+**95** quaesitam ut meritis ualeat contingere metam.
 
 **96** omnibus his gestis, postquam sua praemia conpos
 
-**97** certa tenet, similes albentis uelleris agnos 280
+**97** certa tenet, similes albentis uelleris agnos
 
-**98** offerat, expliciti bidentes cursibus anni; 16
+**98** offerat, expliciti bidentes cursibus anni;
 
 **99** unus ut occumbat quaesitae ad praemia mercis
 
 **100** peccatumque leuet; nitidi iam corporis alter
 
-**101** atque salutiferos aries decumbat ad actus. 15
+**101** atque salutiferos aries decumbat ad actus.
 
-**102** ille etiam niueos panes conspargat oliuo, 285
+**102** ille etiam niueos panes conspargat oliuo,
 
-**103** et quidquid sacri ueteris sollemnia poscunt, 20
+**103** et quidquid sacri ueteris sollemnia poscunt,
 
 **104** ut ualeat rursum desueta adsumere pocla.
 
@@ -6508,7 +6504,7 @@ text_metadata:
 
 **106** orantem cupitis, hoc Christum poscite fatu:
 
-**107** "Dextera uerticibus hominum dum prona recumbit, 290 24
+**107** "Dextera uerticibus hominum dum prona recumbit,
 
 **108** candidus aetheria uobis benedicat ab aula
 
@@ -6516,11 +6512,11 @@ text_metadata:
 
 **110** fulgentemque deus faciem super omnia uestrum
 
-**111** attollat capita, et sit miserator in aeuum; 26
+**111** attollat capita, et sit miserator in aeuum;
 
-**112** eleuet et uultus, ut uos de sede reuisat 295
+**112** eleuet et uultus, ut uos de sede reuisat
 
-**113** inclita et ingenti dominus det munere pacem." 1
+**113** inclita et ingenti dominus det munere pacem."
 
 **114** nec minus interea uates circum omnia promptus
 
@@ -6528,49 +6524,49 @@ text_metadata:
 
 **116** exornat domini pinguique inrorat oliuo.
 
-**117** et quaecumque nitent argento effecta uel auro 300
+**117** et quaecumque nitent argento effecta uel auro
 
-**118** uasa domus sanctae, simili de flumine lauit. 2 3
+**118** uasa domus sanctae, simili de flumine lauit.
 
 **119** plaustra dehinc, tribuum dederant quae iuncta tribuni,
 
-**120** cornigeris bobus parilem diuisit ad usum 6
+**120** cornigeris bobus parilem diuisit ad usum
 
-**121** Leuitisque dedit; geminis bis ducta iuuencis 7
+**121** Leuitisque dedit; geminis bis ducta iuuencis
 
-**122** carra duo primae Getsonum tradita turmae; 305 8
+**122** carra duo primae Getsonum tradita turmae;
 
 **123** at Merara cohors quaterno bis boue iuncta
 
 **124** quattuor accepit rebus carpenta ferendis,
 
-**125** quae sacris sunt facta dei; nam sola Gaada 9
+**125** quae sacris sunt facta dei; nam sola Gaada
 
-**126** inmunis donis gestauit pondera collo. 309
+**126** inmunis donis gestauit pondera collo.
 
-**127** 11 Interea tribuum proceres pia dona ferentes 129
+**127** Interea tribuum proceres pia dona ferentes
 
-**128** discretos habuere dies; namque agmina plebis 130
+**128** discretos habuere dies; namque agmina plebis
 
 **129** sunt quingenta, simul uiginti et milia bina,
 
-**130** bis senis ducenda uiris, quorum ordine primo 12
+**130** bis senis ducenda uiris, quorum ordine primo
 
-**131** uouit Iuda tribus donum Nassone tribuno; 18 14
+**131** uouit Iuda tribus donum Nassone tribuno;
 
 **132** in quo uasa dedit argento insignia fuluo,
 
-**133** quae simul expletis faciunt bis pondera centum 135
+**133** quae simul expletis faciunt bis pondera centum
 
 **134** atque decem, niuea prorsum siligine plena,,
 
-**135** sacrorum ex more riuo uiridantis oliui 15
+**135** sacrorum ex more riuo uiridantis oliui
 
-**136** praemadida uitulumque dehinc agnumque nitentem 16
+**136** praemadida uitulumque dehinc agnumque nitentem
 
-**137** arietemque simul, haedus cui iungitur albens, 17
+**137** arietemque simul, haedus cui iungitur albens,
 
-**138** qui peccata leuat, simili cum fronte iuuencas 140
+**138** qui peccata leuat, simili cum fronte iuuencas
 
 **139** una duas, quae sacra iuuant coniuncta saluti,
 
@@ -6578,9 +6574,9 @@ text_metadata:
 
 **141** consimili numero: primi sunt muneris ista.
 
-**142** 18sqq Post haec quaeque tribus discretis laeta diebus
+**142** Post haec quaeque tribus discretis laeta diebus
 
-**143** dona dedit nusquam fraterno in munere discors, 145
+**143** dona dedit nusquam fraterno in munere discors,
 
 **144** omnibus in uasis pariter si summa locetur.
 
@@ -6588,29 +6584,29 @@ text_metadata:
 
 **146** uiginti centumque fiunt per pondera librae.
 
-**147** 89 Haec ubi deuouit sacrorum insignia uates,
+**147** Haec ubi deuouit sacrorum insignia uates,
 
-**148** effantem dominum sacrata audiuit in aede, 150
+**148** effantem dominum sacrata audiuit in aede,
 
 **149** dum super eximia rutilans fastigia candet
 
-**150** . atque (Cherubinos inter dat dogmata. legis. 2
+**150** . atque (Cherubinos inter dat dogmata. legis.
 
 **151** nec minus et positae diuersa in parte lucernae
 
 **152** bis senas uomuere faces, quas candidus ordo
 
-**153** distinctim rutilare dedit, dum brachia pandit 155
+**153** distinctim rutilare dedit, dum brachia pandit
 
 **154** aurea ceriforum, discreta et lumina fulcit.
 
 **155** Interea Leuita manus donaria tractans
 
-**156** a bis uicenis et quinque adsumitur annis, 25
+**156** a bis uicenis et quinque adsumitur annis,
 
 **157** et qui seruitium iam denis quinquies annis
 
-**158** explerit domini, uacuus sit cura parendi 160
+**158** explerit domini, uacuus sit cura parendi
 
 **159** inque locum uetuli iuuenis succedat et adsit.
 
@@ -6620,17 +6616,17 @@ text_metadata:
 
 **162** caesariem comit, si crinis sorduit ingens.
 
-**163** indumenta dehinc studio curaque lauantur, 165
+**163** indumenta dehinc studio curaque lauantur,
 
 **164** ne quando occultum maculent contagia corpus..
 
 **165** Haec inter de plebe uiri, quos criminis atrox
 
-**166** cura sequebatur, animo dum teste fatentur, \' 7 sqq.
+**166** cura sequebatur, animo dum teste fatentur, \'
 
 **167** exorant procerem, si possent pascha sacratum
 
-**168** consueto celebrare die; quos ille parumper 170
+**168** consueto celebrare die; quos ille parumper
 
 **169** sustinet ac domini subnixus iussa precatur
 
@@ -6640,33 +6636,33 @@ text_metadata:
 
 **172** quem nox laeta monet, decurso cum uenit anno.
 
-**173** 13 At uero innocuus populi si festa retractet, 175
+**173** At uero innocuus populi si festa retractet,
 
 **174** nec procul a templo teneat hunc cura uiandi.
 
-**175** crimen habet mortis: lex est haec omnibus aequa. 177
+**175** crimen habet mortis: lex est haec omnibus aequa.
 
-**176** Postquam cuncta pius perfecit munia uates. 310 12 13
+**176** Postquam cuncta pius perfecit munia uates.
 
-**177** quae templo sunt digna dei, mox agmina mouit 2
+**177** quae templo sunt digna dei, mox agmina mouit
 
 **178** terrificasque tubas ualidis clangoribus implet.
 
 **179** quas prius argento domini per iussa pararat.
 
-**180** lammina dum tenuis teretem sinuatur in orbem. 3
+**180** lammina dum tenuis teretem sinuatur in orbem.
 
-**181** exiguum[que] signum uentosa ad murmura pandit 315
+**181** exiguum[que] signum uentosa ad murmura pandit
 
 **182** ordinibus positis, ut primo bucina cantu
 
-**183** sollicitas acies ad sancta oracula sistat. 5
+**183** sollicitas acies ad sancta oracula sistat.
 
 **184** haec properat prima castrorum portio, quae se
 
-**185** porrigit aurorae primaque ad lumina solis. 6
+**185** porrigit aurorae primaque ad lumina solis.
 
-**186** cumque alios sonitus iteret tuba, prodeat agmen, 320
+**186** cumque alios sonitus iteret tuba, prodeat agmen,
 
 **187** quod leuis obuerso de cardine respicit auster.
 
@@ -6676,7 +6672,7 @@ text_metadata:
 
 **190** post quas uasa. legit aquiloni obiecta iuuentus.
 
-**191** at cum Leuitae diuina ad munia lecti . 325
+**191** at cum Leuitae diuina ad munia lecti .
 
 **192** agmina. conmorant, Aronis pignora uatis,
 
@@ -6684,9 +6680,9 @@ text_metadata:
 
 **194** cura decens cunctaque deo transcripta ciere.
 
-**195** deueniunt primis longa in deserta uadentes 29
+**195** deueniunt primis longa in deserta uadentes
 
-**196** ad Pharana locum castris; hic uates amico 330
+**196** ad Pharana locum castris; hic uates amico
 
 **197** exorat generum fatu Raguele creatum
 
@@ -6696,17 +6692,17 @@ text_metadata:
 
 **200** in quibus ubertim manarent dulcia plenis
 
-**201** mella fauis niuei multo cum flumine lactis. 335 30
+**201** mella fauis niuei multo cum flumine lactis.
 
 **202** sed piger et dubia paulisper mente moratus
 
-**203** ad patrias mauult cursum conuertere sedes, 31
+**203** ad patrias mauult cursum conuertere sedes,
 
 **204** nequaquam edomitus soceri sermone rogantis:
 
 **205** ,, Cur, inquit, diuersus abis? huc dirige mentem:
 
-**206** quo domini nos regna uocant, quae ditia semper. 340
+**206** quo domini nos regna uocant, quae ditia semper.
 
 **207** semper honorata nulla sub labe uacillant.
 
@@ -6716,7 +6712,7 @@ text_metadata:
 
 **210** quam procul et dudum, sensu meliora petente,
 
-**211** dimissam mediis heremus disiungit harenis: 345
+**211** dimissam mediis heremus disiungit harenis:
 
 **212** in quo nulla tuos mouit sententia sensus.
 
@@ -6726,7 +6722,7 @@ text_metadata:
 
 **215** pocla forent calidoque arderent sidere solis,
 
-**216** cumque iter ambiguum et spes incerta futuri 350
+**216** cumque iter ambiguum et spes incerta futuri
 
 **217** ignaros quateret. at nunc iam fine sub ipsa
 
@@ -6736,7 +6732,7 @@ text_metadata:
 
 **220** ceu suadeam peiora tibi, quam sensibus opto.
 
-**221** quin potius, iuuenis, caro te redde parenti, 355
+**221** quin potius, iuuenis, caro te redde parenti,
 
 **222** et coeptam percurre uiam munusque receptum
 
@@ -6746,7 +6742,7 @@ text_metadata:
 
 **225** et proceres inter positus sis grandior actu. \'
 
-**226** 33 Inde abeunt montemque dei posterga relinquunt: 360
+**226** Inde abeunt montemque dei posterga relinquunt:
 
 **227** nec minus aetherii custodem dogmatis arcam
 
@@ -6756,27 +6752,27 @@ text_metadata:
 
 **230** ut sanctis domini semper praeeuntibus esset
 
-**231** iusta quies populo, multo sub fasce uianti. 365
+**231** iusta quies populo, multo sub fasce uianti
 
 **232** inde prius uates, dum signum sedulus offert
 
-**233** agminibus primis, haec supplex uerba profatur 35
+**233** agminibus primis, haec supplex uerba profatur
 
 **234** "Sublimis consurge, deus, atque hostica promptim
 
 **235** milia disperge; fugiant bellare parantes
 
-**236** aduersum tua castra, deus, quique inpete sensu 370
+**236** aduersum tua castra, deus, quique inpete sensu
 
 **237** oderunt te, summe sator; tu robora contra
 
-**238** quamuis firma uales uerbo sternenda perenni." 34
+**238** quamuis firma uales uerbo sternenda perenni."
 
 **239** dicentem nubs clara tegit agmenque refertum
 
-**240** inmensasque acies obtentu uestis inumbrat. 1
+**240** inmensasque acies obtentu uestis inumbrat.
 
-**241** at populus truculenta ferox dum murmura uoluit, 375
+**241** at populus truculenta ferox dum murmura uoluit,
 
 **242** misit et in dominum rabiosae obprobria linguae.
 
@@ -6786,9 +6782,9 @@ text_metadata:
 
 **245** parte tenus certa, sed flammas triste micantes
 
-**246** in segetem poenae iucunda oratio sanctis 380
+**246** in segetem poenae iucunda oratio sanctis
 
-**247** auribus extinxit canoque in puluere soluit; 11 sqq.
+**247** auribus extinxit canoque in puluere soluit;
 
 **248** dum pius obstipa uates ceruice laborat
 
@@ -6796,9 +6792,9 @@ text_metadata:
 
 **250** atque iterat solum populi tolerare tumultus
 
-**251** adsiduos fesso nequiquam pectore uelle. 385
+**251** adsiduos fesso nequiquam pectore uelle.
 
-**252** sed dominus consueta deus solacia uati 16
+**252** sed dominus consueta deus solacia uati
 
 **253** exhibet atque senes fraterno ex agmine poscit
 
@@ -6806,7 +6802,7 @@ text_metadata:
 
 **255** et numero facile iurgantum frangeret iras,
 
-**256** cum prophetarum pariter tot consona corda 390
+**256** cum prophetarum pariter tot consona corda
 
 **257** uno uelut sensu diuina oracula ferrent:
 
@@ -6816,27 +6812,27 @@ text_metadata:
 
 **260** nec minus et iuuenes, castrorum in parte manentes,
 
-**261** diuina cum mente duo certissima fantur 395
+**261** diuina cum mente duo certissima fantur
 
 **262** atque prophetali pariter sermone praesagant
 
-**263** Modus et Eldadus; quod postquam nuntius aures 28
+**263** Modus et Eldadus; quod postquam nuntius aures
 
 **264** detulit ad proceres, Iesus instantius urget,
 
-**265** ut uelut inlicito narrantes uera relatu 29
+**265** ut uelut inlicito narrantes uera relatu
 
-**266** frenet et obiurget; sed uates protinus almo 400
+**266** frenet et obiurget; sed uates protinus almo
 
 **267** arguit adfatu mentemque ex aethere missam
 
-**268** inuidia cohibere docet non esse fidei. 34
+**268** inuidia cohibere docet non esse fidei.
 
 **269** ilicet Aserotum ueniunt atque aggere uasto
 
-**270** castra locant, ceu bella forent nocturna timori. 1
+**270** castra locant, ceu bella forent nocturna timori.
 
-**271** hic germana pii uatis fraterque tumescunt 405
+**271** hic germana pii uatis fraterque tumescunt
 
 **272** inuidiaque fremunt: "Cur coniunx iuncta prophetae
 
@@ -6844,19 +6840,19 @@ text_metadata:
 
 **274** germanis commune decus? nam se quoque summi
 
-**275** percipere monumenta dei atque inclita. iussa. " 3
+**275** percipere monumenta dei atque inclita. iussa. "
 
-**276** sedulus haec uates et cunctis mitior audit 410
+**276** sedulus haec uates et cunctis mitior audit
 
-**277** innocua cum mente silens seque abdicat irae. 4
+**277** innocua cum mente silens seque abdicat irae.
 
-**278** non tamen indomitos dominus procedere motus . 5
+**278** non tamen indomitos dominus procedere motus .
 
 **279** sublimi de sede sinit coramque locatos
 
-**280** increpat et liquida uallatus nube profatur: 6
+**280** increpat et liquida uallatus nube profatur:
 
-**281** ,, Quisquis erit uobis cognata e gente propheta, 415
+**281** ,, Quisquis erit uobis cognata e gente propheta,
 
 **282** somnia uera magis sensu spectante uidebit
 
@@ -6866,17 +6862,17 @@ text_metadata:
 
 **285** dum loquor et paribus sermonem accommodo dictis.
 
-**286** qua me perspiciat, oraque et lumina cernat 420
+**286** qua me perspiciat, oraque et lumina cernat
 
-**287** iuncta sibi, quae nemo ualet dinoscere uiuens? 7
+**287** iuncta sibi, quae nemo ualet dinoscere uiuens?
 
 **288** at non hic mos est, mea cum sententia uerax
 
 **289** donatur uati, tota, qui sede fidelis
 
-**290** est, mea dum licitis adnectit pectora sacris. 8
+**290** est, mea dum licitis adnectit pectora sacris.
 
-**291** ille meos coram potis est consistere uultus 425
+**291** ille meos coram potis est consistere uultus
 
 **292** perspicuoque deum lustrare et cernere uisu.
 
@@ -6886,19 +6882,19 @@ text_metadata:
 
 **295** ille igitur potuit domini regnantis honorem
 
-**296** cernere et inuisum mortali aduertere lumen. 430
+**296** cernere et inuisum mortali aduertere lumen.
 
 **297** et uestros inter non quiuit ponere motus
 
-**298** mitificam pacem tristesque abolere susurros?" 9 10
+**298** mitificam pacem tristesque abolere susurros?"
 
 **299** uix haec ediderat, cum raptim nube remota
 
 **300** ira uenit domini Mariamque amplexa. trementem
 
-**301** perculit et toto perfundit corpore lepram. 435
+**301** perculit et toto perfundit corpore lepram.
 
-**302** haec exempla uidens Aaron conterritus iniit: 11
+**302** haec exempla uidens Aaron conterritus iniit:
 
 **303** Parce, precor, domine, iramque auerte nocentem .
 
@@ -6906,9 +6902,9 @@ text_metadata:
 
 **305** fecimus ignari: nostros quod percutit artus,
 
-**306** uerberat et sensus, id mors ne missa sequatur, 440
+**306** uerberat et sensus, id mors ne missa sequatur,
 
-**307** ultrix nequitiae, custodi et consule nobis!. 13
+**307** ultrix nequitiae, custodi et consule nobis!.
 
 **308** nec mora, cum uates precibus dat corda fraternis,
 
@@ -6916,17 +6912,17 @@ text_metadata:
 
 **310** letiferam ob pestem, totos quae sparsa per artus
 
-**311** germanae tristi torquebat uiscera. morsu. 445
+**311** germanae tristi torquebat uiscera. morsu.
 
 **312** talia dum clamat: Excedit poena reatum
 
-**313** tanta! deus, dimitte metum. morboque medere.* 15
+**313** tanta! deus, dimitte metum. morboque medere.*
 
 **314** ilicet adnuitur; sed castris femina trusa
 
 **315** exulat atque tabem septenis passa diebus
 
-**316** inlaesos recipit laetis cum uultibus artus 450
+**316** inlaesos recipit laetis cum uultibus artus
 
 **317** consuetoque dehinc plebis celebratur honore.
 
@@ -6934,9 +6930,9 @@ text_metadata:
 
 **319** signa mouet castraque dehinc Pharanis in aruis
 
-**320** conlocat et tuto conponit moenia uallo. 2 3
+**320** conlocat et tuto conponit moenia uallo.
 
-**321** illic sidereo conpulsus mittere fatu 455
+**321** illic sidereo conpulsus mittere fatu
 
 **322** bissenos iuuenes, tribuum quos esse tribunos
 
@@ -6946,9 +6942,9 @@ text_metadata:
 
 **325** illi abeunt saltumque petunt Ematha uocatum
 
-**326** permensi[que] deserta heremi Chebronaque lustrant, 460
+**326** permensi[que] deserta heremi Chebronaque lustrant,
 
-**327** quam populi tenuere feri Sesique Thalique. 24
+**327** quam populi tenuere feri Sesique Thalique.
 
 **328** ut uentum ad uallem, iam tum quae consita ficis,
 
@@ -6956,7 +6952,7 @@ text_metadata:
 
 **330** seu granata magis, laeta cum uite uirebat.
 
-**331** ex hac poma ferunt signum latura fidei 465
+**331** ex hac poma ferunt signum latura fidei
 
 **332** atque etiam ex aliis. diues quae prompserat aruum.
 
@@ -6966,9 +6962,9 @@ text_metadata:
 
 **335** atque quaterdenis trepida cum cura diebus
 
-**336** praeteritis tandem, fuerant quae uisa, reportant, 470 29
+**336** praeteritis tandem, fuerant quae uisa, reportant,
 
-**337** terrorem addentes, dum dicunt moenia uasto 34
+**337** terrorem addentes, dum dicunt moenia uasto
 
 **338** edita suspectu gentesque inmensa. leuantes
 
@@ -6976,9 +6972,9 @@ text_metadata:
 
 **340** stipitis annosi stellatis iungitur astris.
 
-**341** 1 Frangitur his populus, sensuque adfectus amaro 475
+**341** Frangitur his populus, sensuque adfectus amaro
 
-**342** triste gemit largoque umectat flumine uultus. 3
+**342** triste gemit largoque umectat flumine uultus.
 
 **343** talia dum memorat: ,,O semper laude ferendi
 
@@ -6986,7 +6982,7 @@ text_metadata:
 
 **345** terruit et solita functos tellure locauit!
 
-**346** quos nec triste solum calidis ambussit harenis, 480
+**346** quos nec triste solum calidis ambussit harenis,
 
 **347** et multum tolerata sitis mannaeque minutal:
 
@@ -6996,7 +6992,7 @@ text_metadata:
 
 **350** iungitur. et tenui consumit corpora uictu.
 
-**351** at non in Pharia quondam regione manentes 485
+**351** at non in Pharia quondam regione manentes
 
 **352** tam tristes torsere cibi, cum uerrere pisces
 
@@ -7006,7 +7002,7 @@ text_metadata:
 
 **355** exuere et laeta uentres laxare sagina.
 
-**356** nos dites gregibus. cunctis nos pinguibus hortis 490 5
+**356** nos dites gregibus. cunctis nos pinguibus hortis
 
 **357** inemptos pepones aluumque inflare solentes
 
@@ -7014,9 +7010,9 @@ text_metadata:
 
 **359** nos alia et caepe. nos illic sectile porrum
 
-**360** pauit et expletos somno marcente refouit. 4
+**360** pauit et expletos somno marcente refouit.
 
-**361** quin agite et finem iam duris ponite rebus. 495
+**361** quin agite et finem iam duris ponite rebus.
 
 **362** uertite signa citi Niloque has reddite turmas
 
@@ -7026,7 +7022,7 @@ text_metadata:
 
 **365** quam suae uel trepidi proceris. qui dicta secutus.
 
-**366** ut dicit. metuenda dei. deserta per arua 500
+**366** ut dicit. metuenda dei. deserta per arua
 
 **367** destituit miseros hostique obponit enormi,
 
@@ -7036,19 +7032,19 @@ text_metadata:
 
 **370** ducitur et tumido seruit captiua tyranno.\'
 
-**371** 10 His dictis grauiora parant; namque incita turba 505
+**371** His dictis grauiora parant; namque incita turba
 
 **372** saxa capit totoque insurgens corpore librat.
 
-**373** sed dum praetrepidant. dum sese ad crimina firmant, 6
+**373** sed dum praetrepidant. dum sese ad crimina firmant,
 
 **374** discindunt habitus proceres pronique ruentes
 
-**375** ad terram fluxere metu cunctosque precantur. 9
+**375** ad terram fluxere metu cunctosque precantur.
 
-**376** ne stolida in dubiis mittant conuicia rebus 510
+**376** ne stolida in dubiis mittant conuicia rebus
 
-**377** in caelum sedemque dei, neue ardua credant 6
+**377** in caelum sedemque dei, neue ardua credant
 
 **378** decretis promissa dei; cum deinde Chalebus,
 
@@ -7056,7 +7052,7 @@ text_metadata:
 
 **380** "Tempore quo placuit terras temptare repostas
 
-**381** hostilesque domos uisaque expromere uobis. 515
+**381** hostilesque domos uisaque expromere uobis.
 
 **382** omnibus e tribubus primi placuere tribuni.
 
@@ -7066,7 +7062,7 @@ text_metadata:
 
 **385** et nunc si parilis perstat reuerentia nostri
 
-**386** nominis et nullis uentosa emittimus orsa. 520
+**386** nominis et nullis uentosa emittimus orsa.
 
 **387** credite conpertis; nam quae fiducia ciues
 
@@ -7076,7 +7072,7 @@ text_metadata:
 
 **390** quae quidam metuenda putant, dum uultibus albus
 
-**391** pallor inest sensusque labant formidine capti 525
+**391** pallor inest sensusque labant formidine capti
 
 **392** uana quidem. quia iussa dei nos maxima firmant
 
@@ -7086,7 +7082,7 @@ text_metadata:
 
 **395** nobis terra patet, post quam perditibus aruis
 
-**396** felicem lustrasse iuuat, quae flumine multo 530
+**396** felicem lustrasse iuuat, quae flumine multo
 
 **397** actis opima fluit et dulcis gurgite mellis.
 
@@ -7096,17 +7092,17 @@ text_metadata:
 
 **400** numquam uicta dei famulans uictoria ditat.*-
 
-**401** 10 Haec ubi dicta, dei confestim sedibus altis 535
+**401** Haec ubi dicta, dei confestim sedibus altis
 
 **402** maiestas ueneranda uenit populumque patresque
 
 **403** atque synagogam miro perfudit honore.
 
-**404** 11 Haec inter dominus tristes denuntiat iras
+**404** Haec inter dominus tristes denuntiat iras
 
 **405** extremamque luem, qua gens inmensa necetur.
 
-**406** squalentes inter saltus terramque relictam, 540 30
+**406** squalentes inter saltus terramque relictam,
 
 **407** exceptis tantum metuenda a peste duobus.
 
@@ -7116,7 +7112,7 @@ text_metadata:
 
 **410** quamlibet. id uates orando auertere temptans
 
-**411** mollibus adloquiis timida inter uerba rogaret, 545
+**411** mollibus adloquiis timida inter uerba rogaret,
 
 **412** ue stolida incassum mittentes uerba Chananni
 
@@ -7126,7 +7122,7 @@ text_metadata:
 
 **415** nec tamen eualuit metuenda inflectere dicta,
 
-**416** quae firma sub lege uolant; nam uisere nulli 550
+**416** quae firma sub lege uolant; nam uisere nulli
 
 **417** arua fuit licitum soli concessa fidei;
 
@@ -7136,7 +7132,7 @@ text_metadata:
 
 **420** Haec inter stolidis armata et incita curis,
 
-**421** consurgit legio summoque in uertice collis . 555
+**421** consurgit legio summoque in uertice collis .
 
 **422** signa locat praecepsque obliquum fertur in hostem.
 
@@ -7146,17 +7142,17 @@ text_metadata:
 
 **425** praescius id uates castrorum in sede remansit,
 
-**426** sacratam cohibens uallis tutantibus arcam. 560
+**426** sacratam cohibens uallis tutantibus arcam.
 
-**427** 32 Interea ei populo quidam sub lumine festo
+**427** Interea ei populo quidam sub lumine festo
 
 **428** dum sarmenta legit, legis contemptor aeternae,
 
 **429** corripitur sanctaque dei per iussa necatur
 
-**430** missilibus saxis, uetitum ne serperet ausum. 38
+**430** missilibus saxis, uetitum ne serperet ausum.
 
-**431** quin etiam quo saepe uiros mens cauta moneret 565
+**431** quin etiam quo saepe uiros mens cauta moneret
 
 **432** aeternos domini ad monitus conuertere mentes,
 
@@ -7166,7 +7162,7 @@ text_metadata:
 
 **435** exim causa mali uetito consurgit ab actu:
 
-**436** namque Coras Leuita tribu pariterque Dathamus 570 5sqq
+**436** namque Coras Leuita tribu pariterque Dathamus
 
 **437** atque Abirus, licitum cunctis offerre tonanti
 
@@ -7176,7 +7172,7 @@ text_metadata:
 
 **440** nec longum dilata nece; nam cardine rupto
 
-**441** terra patens cunctos inferna ad tartara misit.575 35
+**441** terra patens cunctos inferna ad tartara misit
 
 **442** cum quibus extincti pariter sua funera cernunt
 
@@ -7184,19 +7180,19 @@ text_metadata:
 
 **444** quinquies et deni cunctorum congrege turba,
 
-**445** et pecora et quidquid fuerat sub iure nocentum; 34
+**445** et pecora et quidquid fuerat sub iure nocentum;
 
-**446** ac uelut in totos pariter nex una ueniret, 580
+**446** ac uelut in totos pariter nex una ueniret,
 
 **447** dispersi trepidare metu ignemque supernum
 
-**448** nequiquam fugere ac sese abscondere temptant. 41
+**448** nequiquam fugere ac sese abscondere temptant.
 
 **449** quin etiam reuoluta die feruere tumultu
 
-**450** non ueriti magna confestim clade premuntur. 49
+**450** non ueriti magna confestim clade premuntur.
 
-**451** atque eadem sub morte ruunt bis milia septem 585
+**451** atque eadem sub morte ruunt bis milia septem
 
 **452** sexcentique uiri : et ni discrimina uates
 
@@ -7204,11 +7200,11 @@ text_metadata:
 
 **454** grandior infandum punisset poena reatum.
 
-**455** Verum ubi post trepidos redierunt otia motus, 17
+**455** Verum ubi post trepidos redierunt otia motus,
 
-**456** auratas pateras, iuuenes quibus ante sinistri 590
+**456** auratas pateras, iuuenes quibus ante sinistri
 
-**457** obtulerant insueta deo libamina caeli, 38 39
+**457** obtulerant insueta deo libamina caeli,
 
 **458** dissipat et tenui sollerter lammina cunctas
 
@@ -7216,19 +7212,19 @@ text_metadata:
 
 **460** idcirco quia sacra fiunt, quaecumque feruntur
 
-**461** ad dominum celsaque dei ante ora locantur. 595 1
+**461** ad dominum celsaque dei ante ora locantur.
 
-**462** nec minus ut uates inter discretio summos 2
+**462** nec minus ut uates inter discretio summos
 
 **463** atque tribus fieret, uirgam deposcit ab omni
 
 **464** principe, bissenas donec iam summa repleret;
 
-**465** sepositamque dehinc Aaronis nomine uates 4
+**465** sepositamque dehinc Aaronis nomine uates
 
-**466** exhibet et domini media intra tecta relinquit. 600 8
+**466** exhibet et domini media intra tecta relinquit.
 
-**467** cumque reuertenti micuissent sidera sole, 9
+**467** cumque reuertenti micuissent sidera sole,
 
 **468** res haut nota prius, populo mirante coacto,
 
@@ -7236,17 +7232,17 @@ text_metadata:
 
 **470** enodis nam uirga prius truncataque ferro
 
-**471** Aaronis proceris nullo de fomite terrae 605
+**471** Aaronis proceris nullo de fomite terrae
 
-**472** floruit atque nuces sicco iam stipite prompsit. 2
+**472** floruit atque nuces sicco iam stipite prompsit.
 
 **473** additur ad legis monumenta et iussa sacratae,
 
 **474** ut uitula. cui flaua cutis per membra nitebit,
 
-**475** occidat ante fores domini corpusque cremetur 9
+**475** occidat ante fores domini corpusque cremetur
 
-**476** ignibus, utque cinis conbusto e uiscere natus 610
+**476** ignibus, utque cinis conbusto e uiscere natus
 
 **477** corpora purificet foedo sordentia tactu,
 
@@ -7254,9 +7250,9 @@ text_metadata:
 
 **479** iungitur. ut tenui diffundat uerbere rores
 
-**480** flumineos mundaque infectos diluat unda. 11 sqq.
+**480** flumineos mundaque infectos diluat unda.
 
-**481** nam quicunque manu contingit corpora functa, 615
+**481** nam quicunque manu contingit corpora functa,
 
 **483** uel iacet exanimum cuius sub tecta cadauer,
 
@@ -7266,17 +7262,17 @@ text_metadata:
 
 **485** cuncta sunt, uulnusque dehinc quicumque cruentum
 
-**486** contingit ossaque uirum bustumue sepulti, 620 19
+**486** contingit ossaque uirum bustumue sepulti,
 
 **487** tertia luce potest sese uel septima. purum
 
-**488** reddere, si dominum tacito sub corde precatus 18
+**488** reddere, si dominum tacito sub corde precatus
 
 **489** dona ferat medici purgatus flumine rami.
 
 **490** Haec inter Iudaea phalanx deserta per arua
 
-**491** dum graditur, Cadessa uenit procerisque sororem 625 2
+**491** dum graditur, Cadessa uenit procerisque sororem
 
 **492** extinctam tumulat multaque accenditur ira,
 
@@ -7284,23 +7280,23 @@ text_metadata:
 
 **494** fontibus e gelidis riuos; quodque arida cunctis
 
-**495** ora forent tostoque arderent corpora sole. 8
+**495** ora forent tostoque arderent corpora sole.
 
-**496** id dominus meditans uati depromere uirgam 630
+**496** id dominus meditans uati depromere uirgam
 
 **497** imperat et gemino rupem contingere tactu.
 
-**498** quam tamen incutiens dubio cum pectore Moyses 10
+**498** quam tamen incutiens dubio cum pectore Moyses
 
 **499** obiurgat populum dicens: Heu! mente feroces
 
 **500** sensibus et duri, numquidnam saxa madere
 
-**501** ulla queunt riuis uiuosque emittere fontes?" 635 11
+**501** ulla queunt riuis uiuosque emittere fontes?"
 
 **502** haec dum motus ait, lenta dat uerbera uirga.
 
-**503** .......... rumpuntur cotibus amnes. — 12
+**503** .......... rumpuntur cotibus amnes. —
 
 **504** attamen omnipotens cunctantum pectora uatum
 
@@ -7308,7 +7304,7 @@ text_metadata:
 
 **506** ancipiti sub corde fuit meque omnia posse
 
-**507** mens haut firma uidet paruumque inpertit honorem 640
+**507** mens haut firma uidet paruumque inpertit honorem
 
 **508** sublimis domini imperio, cui credere coram "
 
@@ -7318,19 +7314,19 @@ text_metadata:
 
 **511** ad sedes dudum sponsas terramque feracem
 
-**512** haut licitum uobis magnaque adsumere dona." 645
+**512** haut licitum uobis magnaque adsumere dona."
 
-**513** 14 Interea populus Edomum adiungitur aruis,
+**513** Interea populus Edomum adiungitur aruis,
 
 **514** per quae pacificas acies deducere Moyses
 
-**515** percupiens placido regem sermone poposcit 20
+**515** percupiens placido regem sermone poposcit
 
-**516** praetumida uirtute ferum pugnamque parantem. 22
+**516** praetumida uirtute ferum pugnamque parantem.
 
-**517** quem tamen euitans monti coniungitur Oro, 650 29
+**517** quem tamen euitans monti coniungitur Oro,
 
-**518** in quo decursae post tempora plurima uitae 28
+**518** in quo decursae post tempora plurima uitae
 
 **519** conditur Aronus notaque insignia liquit
 
@@ -7338,27 +7334,27 @@ text_metadata:
 
 **521** maiorem cunctis Eleazaron, ut deus ingens
 
-**522** iusserat et placitis ministrum adlegerat aris. 655 1
+**522** iusserat et placitis ministrum adlegerat aris.
 
 **523** illic multimoda fidentes pube Chananni
 
 **524** terrorem inmodicum ualida cum clade dedere
 
-**525** Iudaeis, cum terga darent nudata per agros. 3
+**525** Iudaeis, cum terga darent nudata per agros.
 
 **526** sed tamen adsumunt animos dominoque fauente
 
-**527** hostiles sternunt cuneos atque urbibus ignem 660
+**527** hostiles sternunt cuneos atque urbibus ignem
 
 **528** subiciunt ualidis inmensa et laude triumphant.
 
-**529** 4 Sed quamuis fluerent optatis commoda rebus,
+**529** Sed quamuis fluerent optatis commoda rebus,
 
-**530** non tamen obliqui fremitus nec murmura desunt 5
+**530** non tamen obliqui fremitus nec murmura desunt
 
 **531** in uatem coniecta pium; dum quisque feroci
 
-**532** uoce gemit multa terrarum dote refertam 665
+**532** uoce gemit multa terrarum dote refertam
 
 **533** Aegyptum post terga datam Nilumque feracem
 
@@ -7368,17 +7364,17 @@ text_metadata:
 
 **536** uipereas acies uiroso ex fomite prompsit:
 
-**537** quae multos strauere uiros. dum tenuia quamquam 670
+**537** quae multos strauere uiros. dum tenuia quamquam
 
 **538** uulnera letali distendunt corpora suco.-
 
-**539** 7 At populus lugubre gemens, dum procubus orat
+**539** At populus lugubre gemens, dum procubus orat
 
 **540** ante pedes uatis et publica funera narrat.
 
 **541** agnitione probri cunctorum in corde reposta
 
-**542** accipit optatam domino saluante medellam. 675 8
+**542** accipit optatam domino saluante medellam.
 
 **543** namque probus princeps tumidum formare draconem
 
@@ -7388,13 +7384,13 @@ text_metadata:
 
 **546** exueret letum pendentem uersus ad anguem.
 
-**547** 10 11 Hinc populus Obetha uenit. Achina deinde 680 lo
+**547** Hinc populus Obetha uenit. Achina deinde
 
 **548** arua petit; Zaredina dehinc; mox transit ad Adar.
 
-**549** iam uiridi in campo, sedis ubi cultor amoenae 684
+**549** iam uiridi in campo, sedis ubi cultor amoenae
 
-**550** Amorreus agit et opimo pascitur aruo. 685 16
+**550** Amorreus agit et opimo pascitur aruo.
 
 **551** illic est puteus uitrea perlucidus unda.
 
@@ -7404,7 +7400,7 @@ text_metadata:
 
 **554** duceret ut riguos latices undamque nitentem.
 
-**555** consona tunc penitus diuina in cantica cunctis 690
+**555** consona tunc penitus diuina in cantica cunctis
 
 **556** lingua fuit. domino dum laudes hoc canit hymno:
 
@@ -7424,7 +7420,7 @@ text_metadata:
 
 **564** usus ceu proprius pateret ipsis.
 
-**565** externis procul omnibus remotis. 700
+**565** externis procul omnibus remotis.
 
 **566** hic nostrae a domino datus saluti
 
@@ -7434,9 +7430,9 @@ text_metadata:
 
 **569** castra mouent. uariosque locos post terga relinquunt.
 
-**570** Seonem ad regem decurso limite ducti. 705 24
+**570** Seonem ad regem decurso limite ducti.
 
-**571** obpositas acies ualido certamine fundunt, 23
+**571** obpositas acies ualido certamine fundunt,
 
 **572** quas ille, innocui deridens dicta prophetae,
 
@@ -7444,7 +7440,7 @@ text_metadata:
 
 **574** gentis Amorreae; duro quae subdita bello
 
-**575** decubuit ualidas iam dudum saepta per urbes. 710 32
+**575** decubuit ualidas iam dudum saepta per urbes.
 
 **576** Iazera quin etiam. simili uastata duello.
 
@@ -7452,19 +7448,19 @@ text_metadata:
 
 **578** dedidit. optatae deposcens otia pacis.
 
-**579** 2 Haec ubi sollicito dictauit fama Balaci.
+**579** Haec ubi sollicito dictauit fama Balaci.
 
-**580** qui Moabitarum populos urbesque regebat. 715 5
+**580** qui Moabitarum populos urbesque regebat.
 
 **581** concutitur grauiore metu Balamque prophetam
 
-**582** ambit honoratis precibus. ut tanta gerentem 6
+**582** ambit honoratis precibus. ut tanta gerentem
 
 **583** impediat dictis populum cursumque refrenet
 
 **584** bellantum penitus; quoniam. quae procubus oret,
 
-**585** audiat omnipotens et tristia quaeque secundet. 720 12
+**585** audiat omnipotens et tristia quaeque secundet.
 
 **586** ille negat fas esse sibi maledicta referre
 
@@ -7474,27 +7470,27 @@ text_metadata:
 
 **589** iustius, ut meritis accommoda quaeque precetur.
 
-**590** quandoquidem dominus nocturno in tempore uisus 725
+**590** quandoquidem dominus nocturno in tempore uisus
 
-**591** inhibeat reserare senem responsa Balaci. 14
+**591** inhibeat reserare senem responsa Balaci.
 
-**592** talia sed postquam dimissus nuntius iniit, 15
+**592** talia sed postquam dimissus nuntius iniit,
 
 **593** et regem sua cura tenet, perquirit anhelus
 
 **594** electos proceres rursusque ad limina uatis
 
-**595** mittit oratores dudum iam dicta rogantes 730 18
+**595** mittit oratores dudum iam dicta rogantes
 
-**596** nequiquam, quia dicta dei contraria pugnant. 21
+**596** nequiquam, quia dicta dei contraria pugnant.
 
 **597** sed tamen emersus uates conscendit asellam
 
-**598** atque praecedentes conlatis passibus aequat. 22
+**598** atque praecedentes conlatis passibus aequat.
 
 **599** ecce uiae medio domini mox angelus offert
 
-**600** strinctam aciem contra pronamque obuersus et instans 735
+**600** strinctam aciem contra pronamque obuersus et instans
 
 **601** cornipedem terret, celeri quae concita saltu
 
@@ -7504,49 +7500,49 @@ text_metadata:
 
 **604** circumagit uates ac pressis pugnat habenis,
 
-**605** calcibus et fodicat uirgaque euerberat acri, 740 24
+**605** calcibus et fodicat uirgaque euerberat acri,
 
 **606** pampineas inter uites iam tegmine lapso
 
-**607** semirutus paries cunctanti obiectus asellae 25
+**607** semirutus paries cunctanti obiectus asellae
 
 **608** procursum inpediit; pedem quae ad saxa recussit
 
 **609** oblisitque senis sensuque adfecit acerbo.
 
-**610** nuntius inde citus diuersa in parte resistit 745
+**610** nuntius inde citus diuersa in parte resistit
 
 **611** calle perangusto, tenuis quo semita duxit,
 
-**612** circumitus nullos quacumque in parte relinquens. 27
+**612** circumitus nullos quacumque in parte relinquens.
 
 **613** quadrupes bunc strincto uidit mucrone micantem
 
 **614** et multum pauefacta ruit. quam surgere iussam
 
-**615** uerberat et multa uector uibice cohercet. 750 28
+**615** uerberat et multa uector uibice cohercet.
 
 **616** illa ubi perdoluit, subito sermone locuta est,
 
 **617** dum deus eloquium desueta in uerba relaxat:
 
-**618** . Quid feci meruiue tibi. quod uerbere multo 30
+**618** . Quid feci meruiue tibi. quod uerbere multo
 
 **619** labentem conixus agis? num terga negaui
 
-**620** sueta tibi? umquamue pauens mea pondera fugi, 755
+**620** sueta tibi? umquamue pauens mea pondera fugi,
 
 **621** praecipitemue dedi, prono dum cernuus armo
 
-**622** laberis et prona fusus ceruice rotaris?* 29
+**622** laberis et prona fusus ceruice rotaris?*
 
 **623** talia dicenti commotus dicta sacerdos
 
 **624** tristia saepe refert multaque exaestuat ira,,
 
-**625** dumque fremens saeuit, claro mox angelus ore 760
+**625** dumque fremens saeuit, claro mox angelus ore
 
-**626** emicat et sancta conpellat uoce prophetam: 82
+**626** emicat et sancta conpellat uoce prophetam:
 
 **627** "Inmeritam pecudem trino iam uerbere pulsas, .
 
@@ -7554,7 +7550,7 @@ text_metadata:
 
 **629** idcirco, quoniam non est tua semita summo
 
-**630** grata deo longeque uagis nunc gressibus erras. 765 33
+**630** grata deo longeque uagis nunc gressibus erras.
 
 **631** et nisi cornipedem diuersa in parte uadentem
 
@@ -7564,55 +7560,55 @@ text_metadata:
 
 **634** ut te deposito mihimet possessa fuisset."
 
-**635** desilit hic uates sanctumque inflexus adorat 770
+**635** desilit hic uates sanctumque inflexus adorat
 
-**636** delictumque dolens reditum uitamque precatur. 35
+**636** delictumque dolens reditum uitamque precatur.
 
 **637** dimissus celerat suscepta et munia conplet,
 
-**638** uerba locuturus domini dictanda relatu. 86
+**638** uerba locuturus domini dictanda relatu.
 
 **639** iamque uiam uincens Moabae adiungitur urbi
 
-**640** conspicuumque uidet condenso in milite regem 775
+**640** conspicuumque uidet condenso in milite regem
 
 **641** auxiliumque sibi timida cum uoce rogantem
 
 **642** inspicit et domino septenis supplicat aris;
 
-**643** conspicuosque simul uitulos lectasque bidentes 780 3
+**643** conspicuosque simul uitulos lectasque bidentes
 
 **644** inmolat et cuncta conmittit munera regi
 
-**645** iudiciumque dei tacita sub nocte meretur. 6
+**645** iudiciumque dei tacita sub nocte meretur.
 
-**646** quod deinde euoluens his regem terruit orsis: 7
+**646** quod deinde euoluens his regem terruit orsis:
 
 **647** "Montibus e patriis Moabo a principe iussus.
 
-**648** unde rubet uentura dies lumenque serenum,785
+**648** unde rubet uentura dies lumenque serenum,
 
 **649** quaque iacet tellus geminis inclusa fluentis
 
-**650** Tigris et Euphratis, ut dictis saeuus acerbis 8
+**650** Tigris et Euphratis, ut dictis saeuus acerbis
 
 **651** exoptem non digna uiris, quos sanctus ab alto
 
-**652** protegit omnipotens terraeque indicit opimae. 9
+**652** protegit omnipotens terraeque indicit opimae.
 
 **653** hos igitur de colle procul mox uisere ius est
 
-**654** optatosque mihi iamiam dinoscere uultus 790
+**654** optatosque mihi iamiam dinoscere uultus
 
 **655** felicis populi. quem solum magna secuntur
 
 **656** dona dei. gentesque procul seiunctus et exsors
 
-**657** percipit optatas placido de numine sedes. 10
+**657** percipit optatas placido de numine sedes.
 
 **658** quisnam igitur prisci quaesiuit clara Iacobi
 
-**659** pignora uel plebem numeris percurrere quiuit? 795
+**659** pignora uel plebem numeris percurrere quiuit?
 
 **660** occidat hos inter potius mea uita relinquens
 
@@ -7620,7 +7616,7 @@ text_metadata:
 
 **662** progeniesque mea tali cum germine uiuat!"
 
-**663** 11 Haec ubi disseruit sensu torpente Balacus 800
+**663** Haec ubi disseruit sensu torpente Balacus
 
 **664** concidit et uatem diuersa et dissona fantem
 
@@ -7628,19 +7624,19 @@ text_metadata:
 
 **666** ut partem exiguam populi subiecta per arua
 
-**667** cerneret. haec iterum digestis uocibus addit: 18
+**667** cerneret. haec iterum digestis uocibus addit:
 
-**668** "Confestim mea dicta tuas demitte per aures. 805
+**668** "Confestim mea dicta tuas demitte per aures.
 
 **669** Moabi rector populi, testisque uenito!
 
 **670** dissimilis hominum deus est nec uera locutus
 
-**671** inrita uerba facit quidquamue inpune minatur. 20
+**671** inrita uerba facit quidquamue inpune minatur.
 
 **672** qui me magna monet subnixus dona precari.
 
-**673** ut facio; plebemque dei per uota sacrabo. 810 21
+**673** ut facio; plebemque dei per uota sacrabo.
 
 **674** quam dolor effugiet totus operumque labores.
 
@@ -7650,27 +7646,27 @@ text_metadata:
 
 **677** huius tu procerem sacro de sidere, rector
 
-**678** caelorum ten-aeque, uide: nam dignus honore est 815 22
+**678** caelorum ten-aeque, uide: nam dignus honore est
 
 **679** ille tuo, qui pressa diu ceruice gementem
 
 **680** eduxit populum regno Pharaonis acerbi,
 
-**681** signifer et nulli uirtutum laude secundus 23
+**681** signifer et nulli uirtutum laude secundus
 
 **682** unica regna fouet nulloque in augure fidit.
 
-**683** carmina nulla canit nec quidquam captat inane. 820
+**683** carmina nulla canit nec quidquam captat inane.
 
 **684** tempore sub certo felicia dicta superni
 
 **685** accipiet secura dei perfectaque uirtus
 
-**686** Iebusaea fiet domini de robore summi. 24
+**686** Iebusaea fiet domini de robore summi.
 
 **687** emicat hic populus, ueluti cum sola per arua
 
-**688** crinigera ceruice leo sese arduus infert, 825
+**688** crinigera ceruice leo sese arduus infert,
 
 **689** non ante adsuetae repetens cubilia siluae.
 
@@ -7678,29 +7674,29 @@ text_metadata:
 
 **691** terruerit uirides minaci ex murmure montes."
 
-**692** 27 Haec etiam renuit multa rex saucius ira 830 28
+**692** Haec etiam renuit multa rex saucius ira
 
-**693** tertia dicta rogans diuerso in colle prophetam; 2
+**693** tertia dicta rogans diuerso in colle prophetam;
 
 **694** uertice de cuius populum per castra locatum
 
-**695** ut uidit, docili deprompsit pectore uerba: 5
+**695** ut uidit, docili deprompsit pectore uerba:
 
 **696** "Sublimes magnaeque domus, quascumque Iacobi
 
-**697** semen habet, paribusque attollunt culmina tectis, 835 6
+**697** semen habet, paribusque attollunt culmina tectis,
 
 **698** ut cedrus siluaque nitens. quae frondis honorem
 
 **699** uentilat et querulis modulatur sibila ramis.
 
-**700** uel quae laeta uiret sub ripis fluminis acta. 7
+**700** uel quae laeta uiret sub ripis fluminis acta.
 
 **701** has dominus struxit celsaque erexit ad astra.
 
-**702** semine de cuius quondam nascetur in omnes 840
+**702** semine de cuius quondam nascetur in omnes
 
-**703** iura ferens populos regnoque insignis aeterno. 8
+**703** iura ferens populos regnoque insignis aeterno.
 
 **704** quem deus e Pharia clemens arcessit Aegypto
 
@@ -7708,7 +7704,7 @@ text_metadata:
 
 **706** diriget hic gentes diuersa in parte rebelles.
 
-**707** plurima letali contorquens spicula dextra. 845 9
+**707** plurima letali contorquens spicula dextra.
 
 **708** adclinis cum deinde cubat similisque leoni.
 
@@ -7718,7 +7714,7 @@ text_metadata:
 
 **711** et quis hunc tactu faciet consistere rursum?
 
-**712** qui tua sanctifico laudat praeconia fatu. 850
+**712** qui tua sanctifico laudat praeconia fatu.
 
 **713** felix ille fiet; at qui contraria dicit.
 
@@ -7728,7 +7724,7 @@ text_metadata:
 
 **716** imperat, eloquio quod fas infringere nulli est
 
-**717** nec mutare uiro quidquamue adiungere praeter. 855
+**717** nec mutare uiro quidquamue adiungere praeter.
 
 **718** quamlibet argenti magnum des ferre talentum
 
@@ -7736,9 +7732,9 @@ text_metadata:
 
 **720** munera nil prosunt; fixum quod dicitur hoc est."
 
-**721** 25 His actis sua tecta petit regemque relinquit
+**721** His actis sua tecta petit regemque relinquit
 
-**722** attonitum duraque inmensum dicta gementem. 860 1 2
+**722** attonitum duraque inmensum dicta gementem.
 
 **723** at manus interea bellis Iudaea secundis
 
@@ -7748,55 +7744,55 @@ text_metadata:
 
 **726** Beseli deuota prius mutoque Phegoro.
 
-**727** hinc ingens mox ira dei consurgit et exim 865 4
+**727** hinc ingens mox ira dei consurgit et exim
 
 **728** patentem ad campum proceres procedere mandat.
 
 **729** conuersusque iubet redeuntis lumina solis
 
-**730** cernere et attentos factum noxale piare. 5
+**730** cernere et attentos factum noxale piare.
 
-**731** id uates festinus agit ferrumque renudat 870
+**731** id uates festinus agit ferrumque renudat
 
 **732** innocuos sontesque uago mucrone secutus.
 
-**733** 6 Haec inter quidam fraterna obprobria prodens,
+**733** Haec inter quidam fraterna obprobria prodens,
 
 **734** quod sibi non licitum Madia ex gente parasset
 
-**735** conubium. coram cunctos uatemque praesentat 14 15
+**735** conubium. coram cunctos uatemque praesentat
 
-**736** Zambrium Chasbumque pari sub fraude nocentes. 875 7
+**736** Zambrium Chasbumque pari sub fraude nocentes.
 
-**737** quos Phinea citus arrepta euerberat hasta 8
+**737** quos Phinea citus arrepta euerberat hasta
 
-**738** inmensamque plagam per iusta piacula sedat, 9
+**738** inmensamque plagam per iusta piacula sedat,
 
 **739** quae bis dena uirum consumpsit milia leto
 
-**740** atque tria. domini dum telum cun-it in omnes. 12 13
+**740** atque tria. domini dum telum cun-it in omnes.
 
-**741** hoc facinus propter sacrata altaria uates 880
+**741** hoc facinus propter sacrata altaria uates
 
 **742** accipit et domini sublimem sumpsit honorem.
 
-**743** 2 Interea generata nouo de germine pubes
+**743** Interea generata nouo de germine pubes
 
 **744** adlegitur numerisque dehinc subducta notatur.
 
 **745** primaeuo quae flore uirens iam germine molli
 
-**746** uestibat uultus uicenos laeta per annos. 885 51
+**746** uestibat uultus uicenos laeta per annos.
 
 **747** quae deinde summa sexcenta ad milia uenit
 
-**748** atque bis octona. tercentum insuper auctis. 53
+**748** atque bis octona. tercentum insuper auctis.
 
 **749** haec meruit sedes domino donante beatas;
 
-**750** ilicet omnipotens obliquum uertere in hostem 890
+**750** ilicet omnipotens obliquum uertere in hostem
 
-**751** signa iubet uati coeptoque insistere bello. 6
+**751** signa iubet uati coeptoque insistere bello.
 
 **752** ad quos bis senis hominum cum milibus itur.
 
@@ -7804,43 +7800,43 @@ text_metadata:
 
 **754** singula de propriis numerant pugnacia turmis.
 
-**755** Phineus haec ductor agit. dum uascula sancta 895
+**755** Phineus haec ductor agit. dum uascula sancta
 
-**756** terrificasque tubas consueta in proelia portat; 7
+**756** terrificasque tubas consueta in proelia portat;
 
-**757** atque alacris lecto confestim milite caedit 8
+**757** atque alacris lecto confestim milite caedit
 
 **758** Moabas acies regesque interficit omnes:
 
 **759** fusorum dum terga premit uatemque Balamum
 
-**760** enecat et domita praedam de gente reportat. 900 15
+**760** enecat et domita praedam de gente reportat.
 
-**761** sed quia femineas acies post bella trahebat 17
+**761** sed quia femineas acies post bella trahebat
 
-**762** agmine captiuo, proceris per iussa monetur 18
+**762** agmine captiuo, proceris per iussa monetur
 
-**763** uirginibus tantum meritam non demere uitam, 19
+**763** uirginibus tantum meritam non demere uitam,
 
 **764** corporeasque uirum maculas purgare fluentis.
 
-**765** nec minus et praedam populum partitur in omnem. 905 30
+**765** nec minus et praedam populum partitur in omnem.
 
 **766** Leuitisque dedit merito de munere partem.
 
-**767** quos domini in templo semper pia cura tenebat. 28
+**767** quos domini in templo semper pia cura tenebat.
 
 **768** primitiaeque deo nec non redduntur aeterno.
 
 **769** omnibus ex rebus domita de gente relatis.
 
-**770** His actis Rubena tribus mediaque Manasses 910 33
+**770** His actis Rubena tribus mediaque Manasses
 
 **771** atque Gada sedes laetae Galaditis orant.
 
-**772** pecudibus facilis tellus: nam gramine multo 5
+**772** pecudibus facilis tellus: nam gramine multo
 
-**773** herbida Iordani fluuio coniuncta uirebat. 6
+**773** herbida Iordani fluuio coniuncta uirebat.
 
 **774** quos licet intrepido ductor sermone negarit.
 
@@ -7854,17 +7850,17 @@ text_metadata:
 
 **2** Iordanem ad fluuium populus promouerat arma;
 
-**3** qui uirides inter saltus dum lubricus errat. 920
+**3** qui uirides inter saltus dum lubricus errat.
 
 **4** eximiam Hiericho fluctu labente reliquit
 
-**5** et sequitur pontoque dehinc miscetur aperto. 5
+**5** et sequitur pontoque dehinc miscetur aperto.
 
 **6** illic sanctificus uates, dum funera cernit
 
 **7** aduentare sibi summamque instare dierum.
 
-**8** quae mundo perscripta fuit: dum degitur istic, 925
+**8** quae mundo perscripta fuit: dum degitur istic,
 
 **9** collectum in turmas populum numerosque frequentes
 
@@ -7874,7 +7870,7 @@ text_metadata:
 
 **12** et placidam pacem uentura in saecla tenere.
 
-**13** formidate deum totoque in pectora sensu 930
+**13** formidate deum totoque in pectora sensu
 
 **14** condite, ut inlaeso semper sit iunctus amore;
 
@@ -7886,7 +7882,7 @@ text_metadata:
 
 **18** instantem trepidis nudataque terga prementem;
 
-**19** qui dedit et nubem securi ad signa diei, 935
+**19** qui dedit et nubem securi ad signa diei,
 
 **20** et piceam claro detersit lumine noctem:
 
@@ -7894,7 +7890,7 @@ text_metadata:
 
 **22** firmarent elementa dei, mutantia sese,
 
-**23** quo nox fusca uenit, quo candent sidera cursu; 940
+**23** quo nox fusca uenit, quo candent sidera cursu;
 
 **24** ille et alterno solitum procurrere motu
 
@@ -7904,7 +7900,7 @@ text_metadata:
 
 **27** sanguineam exsudans, rubrantia litora, terram;
 
-**28** ut uos ancipiti constrictos clade laborum 945
+**28** ut uos ancipiti constrictos clade laborum
 
 **29** duceret, erectis alterna ad bracchia muris,
 
@@ -7914,7 +7910,7 @@ text_metadata:
 
 **32** uos circum, dum pone uolans se concitat hostis
 
-**33** consimilemque uiam uentoso in marmore quaerit. 950
+**33** consimilemque uiam uentoso in marmore quaerit.
 
 **34** at non ille potens tumidos transmittere fluctus
 
@@ -7924,17 +7920,17 @@ text_metadata:
 
 **37** informes heremi terras domibusque negatas
 
-**38** uicistis tutante deo, dum lumina saxis 955 3
+**38** uicistis tutante deo, dum lumina saxis
 
 **39** ilicet et mannam nitido demittit olympo.
 
 **40** grandibus et nimbis per noctem lapsa coturnix
 
-**41** aequora conpleuit positis circum data castris. 4
+**41** aequora conpleuit positis circum data castris.
 
-**42** indumenta. pedum longus non discidit usus, (29 5)
+**42** indumenta. pedum longus non discidit usus,
 
-**43** nec uestes periere situ uel corpore tritae;960
+**43** nec uestes periere situ uel corpore tritae;
 
 **44** omnia uos circum non perdit fessa uetustas.
 
@@ -7944,7 +7940,7 @@ text_metadata:
 
 **47** debilitans omnes, uestris qui gressibus obstant.
 
-**48** et nunc aequorei quoniam Iordanis ad undas 965
+**48** et nunc aequorei quoniam Iordanis ad undas
 
 **49** uenimus et tellus sese iam proxima iungit .
 
@@ -7956,157 +7952,157 @@ text_metadata:
 
 **53** sensibus et toto uelitis corde tenere.
 
-**54** nil durum rigidumue iubet. sunt omnia iusta, 970
+**54** nil durum rigidumue iubet. sunt omnia iusta,
 
 **55** mollia, iocunda longaeque accommoda uitae,
 
 **56** utpote quae iubeant. ut, quidquid non placet ulli
 
-**57** conmissum in sese. id nulli inferre laboret. 14
+**57** conmissum in sese. id nulli inferre laboret.
 
 **58** sabbata diligite. sincero et corde fouete,
 
-**59** quos lex una tenet. dominus quos exhibet unus. 975
+**59** quos lex una tenet. dominus quos exhibet unus.
 
 **60** nil uetitum fecisse uolet. qui diligit omnes
 
-**61** nascendi sub lege pares. sit pascha quotannis 8
+**61** nascendi sub lege pares. sit pascha quotannis
 
 **62** peruigili cum nocte potens septemque diebus
 
 **63** otia lenta ferat nullique obnoxia curae.
 
-**64** sit pater et genetrix cari semperque uerendi. 980
+**64** sit pater et genetrix cari semperque uerendi.
 
-**65** coniugium uetitum externa in gente cauete. 5
+**65** coniugium uetitum externa in gente cauete.
 
 **66** idola disicite n.tumque auertite laeuum,
 
 **67** quem gentes peperere ferae, dum mortua curant
 
-**68** numina. et umbrosis statuunt donaria lucis. 1
+**68** numina. et umbrosis statuunt donaria lucis.
 
-**69** quin etiam quotiens dat signum rauca cruentum 985
+**69** quin etiam quotiens dat signum rauca cruentum
 
-**70** bucina et aeratas educunt classica turmas, 5 6
+**70** bucina et aeratas educunt classica turmas,
 
-**71** constructas sacrate domus uinetaque laeta 7
+**71** constructas sacrate domus uinetaque laeta
 
 **72** coniugium et licitum consuetis iungito festis:
 
 **73** nam dubios semper faciunt instantia casus
 
-**74** bella uiris nullusque sibi dat tempora uitae. 990
+**74** bella uiris nullusque sibi dat tempora uitae.
 
 **75** inbelles cohibete domi: mens saucia turbat
 
-**76** saepe uiros fortes. omnique in tempore belli 11
+**76** saepe uiros fortes. omnique in tempore belli
 
 **77** parcite supplicibus et debellate superbos.
 
-**78** euitete. uiri. fecundam euertere siluam 20
+**78** euitete. uiri. fecundam euertere siluam
 
-**79** nobilibus pomis; steriles succidite saltus 995
+**79** nobilibus pomis; steriles succidite saltus
 
 **80** tempore bellorum. corpus si forte perempti
 
-**81** cernitur intectum, Leuitas cura tenebit 4
+**81** cernitur intectum, Leuitas cura tenebit
 
-**82** iuuencae truncare pedem. ne maximus ultor 8 11
+**82** iuuencae truncare pedem. ne maximus ultor
 
 **83** sit deus innocui. captiuam iungere lecto
 
-**84** si placuit, ius omne sinet sub tecta tenere. 1000
+**84** si placuit, ius omne sinet sub tecta tenere.
 
-**85** crinigerum tondere caput unguesque secare 18
+**85** crinigerum tondere caput unguesque secare
 
 **86** terdenosque dies lacrimis praestare maerentis
 
 **87** extinctos caesosque senes. quis illa creata est.
 
-**88** coniugioque sibi tum demum adnectere iusto. 14
+**88** coniugioque sibi tum demum adnectere iusto.
 
-**89** ac si displicuit post damnum capta pudoris, 1005
+**89** ac si displicuit post damnum capta pudoris,
 
-**90** deponat seruile iugum dominumque relinquat. 15
+**90** deponat seruile iugum dominumque relinquat.
 
 **91** uxores si forte duas uir duxerit unus
 
-**92** et non aequali seruat consortia cura, 17
+**92** et non aequali seruat consortia cura,
 
 **93** pignora contemptae bissem cum iure tenebunt
 
-**94** omnibus ex rebus, peperit quas cura parentis. 1010
+**94** omnibus ex rebus, peperit quas cura parentis.
 
 **95** damnatos tumulate uiros cunctosque sepulchris
 
-**96** condite percussos: nulli nam terra negatur. 5
+**96** condite percussos: nulli nam terra negatur.
 
 **97** uestimenta uiri nequaquam femina sumat
 
-**98** mulierumue mares; uetito fit noxia cultu. 6
+**98** mulierumue mares; uetito fit noxia cultu.
 
-**99** inplumes auium si quis uult prendere fetus. 1015
+**99** inplumes auium si quis uult prendere fetus.
 
 **100** ne matrem cum prole ferat. qui culmina pangit.
 
-**101** prouldeat. ne forte faber uoluatur ab alto. 9
+**101** prouldeat. ne forte faber uoluatur ab alto.
 
 **102** uinea ne grauidos pariat bis feta racemos:
 
-**103** nec tibi duplicibus carpatur messis aristis. 1sqq.
+**103** nec tibi duplicibus carpatur messis aristis. .
 
-**104** gentiles uitate uiros; et quidquid abhorret 1020
+**104** gentiles uitate uiros; et quidquid abhorret
 
-**105** moribus aut cultu, longe lex sancta repellit. 17 18
+**105** moribus aut cultu, longe lex sancta repellit.
 
 **106** inmundas inhibite lupas, ne praemia noctis
 
-**107** uenditae ad aeternam domini sacraria portent. 15
+**107** uenditae ad aeternam domini sacraria portent.
 
 **108** fugacem ne reddat ero quicumque tenebit,
 
-**109** ne ferus adficiat duro sub uerbere captum. 1025
+**109** ne ferus adficiat duro sub uerbere captum.
 
 **110** messem nemo legat alieno in rure creatam;
 
-**111** nec uinum pressare uelit, quod protulit uua 25
+**111** nec uinum pressare uelit, quod protulit uua
 
 **112** uicini de parte sui; praecerpere sane
 
-**113** racemos spicasque licet, non demere totum. 2
+**113** racemos spicasque licet, non demere totum.
 
-**114** coniunx pulsa domo alio si forte marito 1030
+**114** coniunx pulsa domo alio si forte marito
 
-**115** nupserit, amisso si post uiduetur eodem. 4
+**115** nupserit, amisso si post uiduetur eodem.
 
-**116** ne redeat spreti repetens consortia lecti. 5
+**116** ne redeat spreti repetens consortia lecti.
 
-**117** nemo nouam nuptam infecto eliminet anno. 6
+**117** nemo nouam nuptam infecto eliminet anno.
 
 **118** nec mola uendatur. gemino quae concaua saxo
 
-**119** in goerum sinuata uolat frumentaque frangit. 1035
+**119** in goerum sinuata uolat frumentaque frangit.
 
-**120** alter ob alterius ne pendat crimina. poenam. 3
+**120** alter ob alterius ne pendat crimina. poenam.
 
 **121** ille quaterdena susceptet uerbera tergo,
 
-**122** qui stolido sermone ferox conuicia iactat. 4
+**122** qui stolido sermone ferox conuicia iactat.
 
-**123** ora triturantis fuerint ne uincta iuuenci. 5
+**123** ora triturantis fuerint ne uincta iuuenci.
 
-**124** pignore non genito si fors decesserit ille. 1040
+**124** pignore non genito si fors decesserit ille.
 
 **125** cui frater adstabit. dimissam ducat ad aedes,
 
-**126** qui superest. natosque creet. ne semine nullo 6
+**126** qui superest. natosque creet. ne semine nullo
 
-**127** sit uacuata domus gentemque infuscet inanem; 7
+**127** sit uacuata domus gentemque infuscet inanem;
 
 **128** at si uir renuit, causam mox femina dicat
 
-**129** ad proceres legemque citet, quae cogit inertes. 1045
+**129** ad proceres legemque citet, quae cogit inertes.
 
 **130** iurgia se quotiens in rixam perfida uertunt
 
@@ -8116,7 +8112,7 @@ text_metadata:
 
 **133** inguina corripiat alieni obscena mariti.
 
-**134** Haec quisquis deuotus agit. non tangitur ulla 1050
+**134** Haec quisquis deuotus agit. non tangitur ulla
 
 **135** peste mali, nec bella timet morbosque calentes,
 
@@ -8126,9 +8122,9 @@ text_metadata:
 
 **138** diuitias donante deo. qui crimina mundi
 
-**139** despectat mitis iraeque in tempore punit." 1055
+**139** despectat mitis iraeque in tempore punit."
 
-**140** Talibus orabat uates cunctosque monebat 9 25
+**140** Talibus orabat uates cunctosque monebat
 
 **141** Leuitas, quos cura manet uenerabilis aulae
 
@@ -8136,7 +8132,7 @@ text_metadata:
 
 **143** omnibus adsidue legerent; quo promptior esset
 
-**144** sollicitudo dei cunctorum in corde uirorum; 1060
+**144** sollicitudo dei cunctorum in corde uirorum;
 
 **145** utque etiam tabulas gemina de caute politas.
 
@@ -8144,41 +8140,41 @@ text_metadata:
 
 **147** sanctificae adseruent clausas penetralibus arcae.
 
-**148** 14 His actis prodire iubet Nauete creatum
+**148** His actis prodire iubet Nauete creatum
 
-**149** iudicioque dei plebis dat iura regendae, 1065
+**149** iudicioque dei plebis dat iura regendae,
 
-**150** utque libens Iudaea manus subuerteret aras 19
+**150** utque libens Iudaea manus subuerteret aras
 
 **151** mentitosque deos, hymno dat uerba melodo.
 
-**152** 1 Auditum tribuat deumque laudet
+**152** Auditum tribuat deumque laudet
 
 **153** caelum quodque supra praetexit astra;
 
-**154** et tellus tumido diuisa ponto 1070
+**154** et tellus tumido diuisa ponto
 
 **155** aures conmodet et sonos receptet.
 
-**156** mentis nuntia quos ait loquella: 2
+**156** mentis nuntia quos ait loquella:
 
 **157** ut sueuit pluuios potare rores,
 
 **158** aestus cum rapidi calente flamma
 
-**159** messis puluereo tabescit aruo; 1075
+**159** messis puluereo tabescit aruo;
 
 **160** rident gramina parturitque mundus
 
 **161** et multum patulis diuisa rimis
 
-**162** nimbos frugiferos hiulca sorbet. 3
+**162** nimbos frugiferos hiulca sorbet.
 
 **163** nomen nam domini mei poposci.
 
-**164** cuius gloriae conuenit honores 1080
+**164** cuius gloriae conuenit honores
 
-**165** et laudes meritos referre seruos. 4
+**165** et laudes meritos referre seruos.
 
 **166** cuius eloquiis uerum cohaeret,
 
@@ -8186,9 +8182,9 @@ text_metadata:
 
 **168** rectum iudicium uiaeque iustae
 
-**169** nullis flexibus inplicant uiantes: 1085
+**169** nullis flexibus inplicant uiantes:
 
-**170** iniquum nihil est nihilque prauum. 5
+**170** iniquum nihil est nihilque prauum.
 
 **171** beatae dominus fidelitatis
 
@@ -8196,7 +8192,7 @@ text_metadata:
 
 **173** quamuis progenies iniqua pactis
 
-**174** pernix supplicium sibi laboret. 1090
+**174** pernix supplicium sibi laboret.
 
 **175** heu plebs tristificae dicanda morti.
 
@@ -8206,17 +8202,17 @@ text_metadata:
 
 **178** seruis dum tribuit nomen natorum:
 
-**179** cunctos numine cum ragat perenni, 1095
+**179** cunctos numine cum ragat perenni,
 
 **180** ac possit subito delere leto?
 
 **181** hic te constituit. creauit ille.
 
-**182** qui nunc obtinet et tenebit olim. 7
+**182** qui nunc obtinet et tenebit olim.
 
 **183** memento potius aeui perennis.
 
-**184** et quae post obitum funusque uiuant; 1100
+**184** et quae post obitum funusque uiuant;
 
 **185** annos quos series futura sumat
 
@@ -8226,9 +8222,9 @@ text_metadata:
 
 **188** qui te continuo totum docebit:
 
-**189** uel de presbyteris unum rogato: 1105
+**189** uel de presbyteris unum rogato:
 
-**190** nubem discutiet dabitque lucem. 8
+**190** nubem discutiet dabitque lucem.
 
 **191** cum semper dominus in astra celsus
 
@@ -8242,41 +8238,41 @@ text_metadata:
 
 **196** finem gentibus indiditque summam.
 
-**197** qualem sidereae tenent cohortes. 9
+**197** qualem sidereae tenent cohortes.
 
 **198** cohaesit domino plebes Iacobi.
 
-**199** cuius cretio conrogatur ipsi: 1115
+**199** cuius cretio conrogatur ipsi:
 
 **200** heres nam domini deique uiuit
 
-**201** sola sufficiens sibique firma: 10
+**201** sola sufficiens sibique firma:
 
 **202** qua tellus iacet abnegata tectis
 
 **203** et solis calidis anhela flammis
 
-**204** nullis perpetuum rigatur undis. 1120
+**204** nullis perpetuum rigatur undis.
 
 **205** istic eliciens -deus nocentes
 
 **206** adfecit merita subinde plaga.
 
-**207** et mox sanctificae dedit medellae. .11
+**207** et mox sanctificae dedit medellae.
 
 **208** . subdens dexterae. ceu laborat ales
 
-**209** pullos tegmine sub fouere pinnis. 1125
+**209** pullos tegmine sub fouere pinnis.
 
 **210** lumen ut medium solemus ipsi.
 
 **211** per quod cernimus. abditum tenere.
 
-**212** ne sit fors aliqua molesta plagae. 12
+**212** ne sit fors aliqua molesta plagae.
 
 **213** solus quos dominus ademit hosti,
 
-**214** qui caelum statuit fecitque terras, 1130
+**214** qui caelum statuit fecitque terras,
 
 **215** ipsis multimodum cibum parauit,
 
@@ -8284,49 +8280,49 @@ text_metadata:
 
 **217** mellis et latices dedere saxa,
 
-**218** et pingui pariter fluente oliuo. 14
+**218** et pingui pariter fluente oliuo.
 
-**219** lac uictum pecudum dedere mammae; 1135
+**219** lac uictum pecudum dedere mammae;
 
 **220** tellus triticeas fecunda messes
 
-**221** et uinum madidis creauit uuis. 15
+**221** et uinum madidis creauit uuis.
 
 **222** cuius laticibus repleta pubes
 
 **223** gestit ebria denegare numen,
 
-**224** cuius muneribus ditata regnat! 1140
+**224** cuius muneribus ditata regnat!
 
-**225** quin et pestiferos secuta ritus 17
+**225** quin et pestiferos secuta ritus
 
-**226** pingues daemonibus parauit aras. 19
+**226** pingues daemonibus parauit aras.
 
 **227** uidit haec domini deique lumen
 
 **228** et iustam meritis necem parauit
 
-**229** sontes dissocians proculque pellens, 1145
+**229** sontes dissocians proculque pellens,
 
 **230** dum rectum potius uidetur ipsi
 
-**231** ignotam refugis praeferre gentem. 22
+**231** ignotam refugis praeferre gentem.
 
 **232** ignis e domini coruscat ore,
 
 **233** qui, cum perpetuum pererret orbem,
 
-**234** ipsis emicat inferis timendus. 1150
+**234** ipsis emicat inferis timendus.
 
 **235** sternit pabula diruitque messes
 
-**236** et quae seminibus uenere iactis. 23
+**236** et quae seminibus uenere iactis.
 
 **237** lucent sidera fulgurantque montes,
 
 **238** iusta cum dominus mouetur ira
 
-**239** et telo timidos petit calenti. 1155
+**239** et telo timidos petit calenti.
 
 **240** pallor corpora luridus necabit,
 
@@ -8334,41 +8330,41 @@ text_metadata:
 
 **242** illos pennigerae ferent uolucres;
 
-**243** illos bestiae mordicus uorabunt: 25
+**243** illos bestiae mordicus uorabunt:
 
-**244** illos uulnera duriora ferro 1160
+**244** illos uulnera duriora ferro
 
-**245** consumptis facient lugere natis; 27
+**245** consumptis facient lugere natis;
 
 **246** tandem desinat ut sibi uideri
 
-**247** diues ceu proprio ludaea dono. 30
+**247** diues ceu proprio ludaea dono.
 
 **248** illam uulnificus delebit hostis,
 
-**249** unum dum fugiunt timentque mille. 1165
+**249** unum dum fugiunt timentque mille.
 
 **250** sed rursus dominus redit serenus,
 
 **251** ut totam protinus [placidus] sedauit iram;
 
-**252** longe dissimilis deis reorum; 32
+**252** longe dissimilis deis reorum;
 
 **253** quorum uinea uitis est Gomorrae
 
-**254** fellito nimium fecunda musto. 1170
+**254** fellito nimium fecunda musto.
 
-**255** cunctis dirior aspidum uenenis. 35
+**255** cunctis dirior aspidum uenenis.
 
 **256** tempus iam properat, uidete. leti.
 
-**257** omnes quo dominus cohercet ultor. 37
+**257** omnes quo dominus cohercet ultor.
 
-**258** et nunc pestiferos rogate diuos: 38
+**258** et nunc pestiferos rogate diuos:
 
-**259** adsint, subueniant leuentque poenas. 1175
+**259** adsint, subueniant leuentque poenas.
 
-**260** ut uotis redeat medella uestris. 39
+**260** ut uotis redeat medella uestris.
 
 **261** solus sum dominus, uidete: solus
 
@@ -8376,27 +8372,27 @@ text_metadata:
 
 **263** ius est parcere, ius mihi ferire!
 
-**264** nullus fortior arbiter caelorum 1180
+**264** nullus fortior arbiter caelorum
 
 **265** extat. qui ualeat leuare leto
 
-**266** illum, quem domini manus cohercet. 40
+**266** illum, quem domini manus cohercet.
 
 **267** quam dum stelligera per astra tollo.
 
-**268** dicam: "Perpetuis mandabo saeclis 41
+**268** dicam: "Perpetuis mandabo saeclis
 
-**269** educens gla.dium uagina nudum: 1185
+**269** educens gla.dium uagina nudum:
 
 **270** qui dum per trepidos rotatur hostes.
 
 **271** lucet fulgure candidus corusco.
 
-**272** imis pestifer et timendus altis. " 43
+**272** imis pestifer et timendus altis. "
 
 **273** semper cum domino laetare, caelum!
 
-**274** quem cunctus polus angelique laudent 1190
+**274** quem cunctus polus angelique laudent
 
 **275** et gentes socia parique plebe.
 
@@ -8406,21 +8402,21 @@ text_metadata:
 
 **278** parcit subditis et pios reseruat.
 
-**279** 1 Postquam digna deo cecinit modulamina uates, 1195
+**279** Postquam digna deo cecinit modulamina uates,
 
 **280** uisurus terram Nabali e uertice montis
 
 **281** donatam populo, cuius moderamen agebat.
 
-**282** conscendit sublime iugum functusque deinde 5
+**282** conscendit sublime iugum functusque deinde
 
-**283** occubuit. nullo contectus membra sepulchro. 7
+**283** occubuit. nullo contectus membra sepulchro.
 
-**284** cuius uita fuit bis sexaginta per annos 1200
+**284** cuius uita fuit bis sexaginta per annos
 
 **285** omnibus in rebus felici interrita cursu.
 
-**286** nullis ft\'acta malis nullique obnoxia morbo: 7
+**286** nullis ft\'acta malis nullique obnoxia morbo:
 
 **287** quin etiam occiduo sub tempore lumina flammas
 
@@ -8428,15 +8424,15 @@ text_metadata:
 
 **1** Haec inter dominus lesum dignatus adire
 
-**2** promittit ualidis sublimem confore donis, 2
+**2** promittit ualidis sublimem confore donis,
 
 **3** admonitum transire uadum Iordanis amoeni
 
 **4** castraque metata hostili inponere ripae;
 
-**5** utque nouas sedes terrarum in parte reposta 6
+**5** utque nouas sedes terrarum in parte reposta
 
-**6** constituat plebemque locis disponat opimis.\' 4
+**6** constituat plebemque locis disponat opimis.\'
 
 **7** quin etiam gentes distincto ex nomine noscit
 
@@ -8446,7 +8442,7 @@ text_metadata:
 
 **10** Euphrates. Syrio disiungens limite Persas,
 
-**11** uel mare, quod tumidum uentosis fluctuat undis. 5
+**11** uel mare, quod tumidum uentosis fluctuat undis.
 
 **12** nam praeter eximium conserta in proelia robur,
 
@@ -8456,15 +8452,15 @@ text_metadata:
 
 **15** cui meritum insigne dominus largitus ab astris
 
-**16** praestitit. ut caperet dites sine uulnere terras. 7
+**16** praestitit. ut caperet dites sine uulnere terras.
 
 **17** "Heia age uiriles, deus intonat, arripe curas,
 
-**18** ut populus donata sibi mox regna capessat. 8
+**18** ut populus donata sibi mox regna capessat.
 
 **19** legiferoque simul uisus ne dimoue libro.
 
-**20** ut domino tutus numquam uiduere perenni." 10
+**20** ut domino tutus numquam uiduere perenni."
 
 **21** ille citus scribis mandata gerentibus infit.
 
@@ -8474,19 +8470,19 @@ text_metadata:
 
 **24** tertia puniceum signet cum linea mundum.
 
-**25** adfatusque tribus iuncto Iordane manentes. 14
+**25** adfatusque tribus iuncto Iordane manentes.
 
-**26** ut pecora et natos percepta in rura. relinquant, 15
+**26** ut pecora et natos percepta in rura. relinquant,
 
 **27** at bellum commune gerant uictisque deinde
 
-**28** se referant populis. domino quos principe pulsent. 16
+**28** se referant populis. domino quos principe pulsent.
 
 **29** illae alacres iungunt cuneos atque agmina miscent.
 
 **30** aspera quaeque pares ferro uotisque petentes.
 
-**31** 1 Haec inter iuuenes pugnaci ex agmine lectos.
+**31** Haec inter iuuenes pugnaci ex agmine lectos.
 
 **32** quae loca quiue habeant homines, ubi moenia gentis,
 
@@ -8500,15 +8496,15 @@ text_metadata:
 
 **37** excipit hos meretrix, dudum quae dicta Rachaba est,
 
-**38** clamque tegit trepidos ac uerbis sedula mulcet. 2
+**38** clamque tegit trepidos ac uerbis sedula mulcet.
 
 **39** quod postquam regi dictum, terrore minaci
 
-**40** exigit absconsos stabili cum mente loquentis 5
+**40** exigit absconsos stabili cum mente loquentis
 
-**41** egressos dudum portis bipatentibus ambos. 6
+**41** egressos dudum portis bipatentibus ambos.
 
-**42** quos tamen occultim lignorum texerat antro. 7
+**42** quos tamen occultim lignorum texerat antro.
 
 **43** illos cura ducis per deuia quaeque requirit
 
@@ -8516,9 +8512,9 @@ text_metadata:
 
 **45** at meretrix, postquam cessauit cura tyranni,
 
-**46** uertitur ad iuuenes et uatis more locuta est: 9
+**46** uertitur ad iuuenes et uatis more locuta est:
 
-**47** "Nota mihi, fratres, dominus quae praemia uobis 10
+**47** "Nota mihi, fratres, dominus quae praemia uobis
 
 **48** deferat, ex furua cum primum dempsit Aegypto:
 
@@ -8534,7 +8530,7 @@ text_metadata:
 
 **54** Iordanis positi, uestro mucrone cadentes
 
-**55** liquerunt patrias uobis uincentibus urbes. 11
+**55** liquerunt patrias uobis uincentibus urbes.
 
 **56** quid moror? obsedit mentes et pectora pallor;
 
@@ -8546,7 +8542,7 @@ text_metadata:
 
 **60** uobis uera datur. iuuenes. uictoria, uobis
 
-**61** sidereo ab rege, qui terram fecit et astra. 12
+**61** sidereo ab rege, qui terram fecit et astra.
 
 **62** et nunc, o iuuenes, iuratis dicite uerbis.
 
@@ -8556,17 +8552,17 @@ text_metadata:
 
 **65** ne captiua fiam socia cum stirpe domuque
 
-**66** patribus et caris. quorum me cura fatigat." 14
+**66** patribus et caris. quorum me cura fatigat."
 
 **67** adnuitur cunctosque domi seruare iubetur.
 
-**68** uiuere quos cupiat secum, atque indice signo 18
+**68** uiuere quos cupiat secum, atque indice signo
 
 **69** spartea uincla sua suspendat cauta fenestra:
 
 **70** ut, cum per captam legio se fuderit urbem.
 
-**71** inlita puniceo cernatur lana colore. 22
+**71** inlita puniceo cernatur lana colore.
 
 **72** illi alacres superant fossas et tuta capessunt
 
@@ -8576,7 +8572,7 @@ text_metadata:
 
 **75** incurrant aliquos diuersa ex parte sequentes.
 
-**76** at meretrix secura sui mandata facessit. 1
+**76** at meretrix secura sui mandata facessit.
 
 **77** nec non et princeps, iuuenum sententia doctus.
 
@@ -8584,21 +8580,21 @@ text_metadata:
 
 **79** aduolat atque animos palpat dans otia cunctis
 
-**80** trina die; scribasque instigat dicere plebi. 3
+**80** trina die; scribasque instigat dicere plebi.
 
 **81** ut, cum sacratam praeferri adspexerit arcam
 
 **82** atque sacerdotes post altar pergere celsum.
 
-**83** signa leuent alacres promptim spatiumque relinquant. 4
+**83** signa leuent alacres promptim spatiumque relinquant.
 
 **84** milia quod sensim duo conpleat: atque fluentis
 
 **85** corpora purificent, domini ante ora locandi.
 
-**86** 7 Haec inter princeps domini dignatus honore
+**86** Haec inter princeps domini dignatus honore
 
-**87** emicat, eximio. Moysetis stemmate dignus. 15
+**87** emicat, eximio. Moysetis stemmate dignus.
 
 **88** iamque sacerdotes fluuium transmittere iussi
 
@@ -8606,25 +8602,25 @@ text_metadata:
 
 **90** tum bissena tribus dat lectos iussa tribunos.
 
-**91** qui medio e fundo legerent candentia saxa, 6 7
+**91** qui medio e fundo legerent candentia saxa,
 
 **92** calculus ut madidis bissenus demptus harenis.
 
-**93** flumina testetur populo siccata uianti. 9
+**93** flumina testetur populo siccata uianti.
 
 **94** consimiles etiam cautes numeroque modoque
 
 **95** in medio posuere sinu. quas mobilis unda
 
-**96** diluit et rauco perfundit lubrica fluctu. 12
+**96** diluit et rauco perfundit lubrica fluctu.
 
 **97** at Rubena tribus nudatum transmeat amnem:
 
-**98** quam Gada subsequitur. media properante Manasse. 18
+**98** quam Gada subsequitur. media properante Manasse.
 
 **99** quadraginta uirum mittentes milia bello.
 
-**100** cum subito eluuies, fluuio decurrere sueta, 16
+**100** cum subito eluuies, fluuio decurrere sueta,
 
 **101** stringitur et glacie cursus frenatur aquarum:
 
@@ -8634,7 +8630,7 @@ text_metadata:
 
 **104** a regione, pii quae condit membra Mosetis,
 
-**105** usque ad inmensum dubiis cum fluctibus aequor. 18
+**105** usque ad inmensum dubiis cum fluctibus aequor.
 
 **106** atque ubi Iordanem transmeauere frequentes,
 
@@ -8642,13 +8638,13 @@ text_metadata:
 
 **108** exsuctasque prius coniungit flumine ripas.
 
-**109** 1 Haec ubi cognorunt diuersa in parte tyranni.
+**109** Haec ubi cognorunt diuersa in parte tyranni.
 
-**110** demittunt mentes; nullum constantia firmat. 2
+**110** demittunt mentes; nullum constantia firmat.
 
-**111** hic princeps cultros bissena ex caute parauit, 6
+**111** hic princeps cultros bissena ex caute parauit,
 
-**112** de quibus. ut iussum est. populi praeputia dempsit. 6
+**112** de quibus. ut iussum est. populi praeputia dempsit.
 
 **113** nam bis uicenos heremo plebs tanta per annos
 
@@ -8656,19 +8652,19 @@ text_metadata:
 
 **115** praebetur his lenta quies, ut tristia maestis
 
-**116** uulnera mitificet sensim coitura cicatrix. 10
+**116** uulnera mitificet sensim coitura cicatrix.
 
-**117** pascha dehinc colitur et candens manna negatur 12
+**117** pascha dehinc colitur et candens manna negatur
 
 **118** ditibus annona. quam passim plurima messis
 
 **119** exhibuit populo certatim farra metenti.
 
-**120** azyma. niuosa pascit de polline laetos. 10
+**120** azyma. niuosa pascit de polline laetos.
 
 **121** noctis festa piae campo celebrantur aperto,
 
-**122** nouorum in mense senis bis solibus actis. 1)
+**122** nouorum in mense senis bis solibus actis.
 
 **123** haec super e portis despectat turba pauentum,
 
@@ -8680,7 +8676,7 @@ text_metadata:
 
 **127** talia dum memorat: "Qua te de parte praesentas?
 
-**128** noster es, an potius Phoenicum ex gente? fatere." 14
+**128** noster es, an potius Phoenicum ex gente? fatere."
 
 **129** accipit optati sermonis protinus usum.
 
@@ -8688,7 +8684,7 @@ text_metadata:
 
 **131** aethere nunc ueni, totis cui militat astris
 
-**132** insignis legio et quo sub principe degit." 15
+**132** insignis legio et quo sub principe degit."
 
 **133** ille sub haec mixta tacitus formidine gaudet,
 
@@ -8696,35 +8692,35 @@ text_metadata:
 
 **135** "O domine, inmensam dignatus linquere sedem,
 
-**136** quae famulum celerare iubes, quas sumere curas?" 16
+**136** quae famulum celerare iubes, quas sumere curas?"
 
 **137** dicitur, ut propere plantarum uincula soluat,
 
-**138** fixerat in sancta quoniam uestigia terra. 1
+**138** fixerat in sancta quoniam uestigia terra.
 
 **139** quin etiam ualidam muris atque obice firma
 
-**140** casuram Hiericho uidet, gentesque feroces 2
+**140** casuram Hiericho uidet, gentesque feroces
 
-**141** atque obitum regum, quibus est coniuncta ruina. 3 7
+**141** atque obitum regum, quibus est coniuncta ruina.
 
 **142** ille celer toto circumdat milite muros,
 
-**143** pone sacerdotes statuens arcamque sacratam. 8
+**143** pone sacerdotes statuens arcamque sacratam.
 
 **144** uatibus inperitans, quo plebs audentior esset.
 
-**145** terrificos sonitus septem proflare tubarum. 11
+**145** terrificos sonitus septem proflare tubarum.
 
-**146** iussa dehinc legio tacite circumuenit urbem. 10
+**146** iussa dehinc legio tacite circumuenit urbem.
 
 **147** ut tum belligerum tollat stipata clamorem.
 
-**148** terrificum dederit proceris cum tessera, signum. 15
+**148** terrificum dederit proceris cum tessera, signum.
 
 **149** septima iamque dies laetum patefecerat orbem.
 
-**150** cum iubet aeratas acies in proelia Iesus 16
+**150** cum iubet aeratas acies in proelia Iesus
 
 **151** fidentem proferre gradum uastumque fragorem
 
@@ -8734,29 +8730,29 @@ text_metadata:
 
 **154** incessens etiam muros portasque superbas.
 
-**155** sed fragor et uastae concordi murmure uoces 20
+**155** sed fragor et uastae concordi murmure uoces
 
 **156** tormentum mortale gerunt, quo moenia sidunt
 
-**157** nudataque suis patuerunt omnia claustris. 21
+**157** nudataque suis patuerunt omnia claustris.
 
 **158** inrumpunt alacres subuersam protinus urbem.
 
 **159** omnia uertentes gladio flammaque uoraci.
 
-**160** femina sola fuit meritae donata saluti, 23
+**160** femina sola fuit meritae donata saluti,
 
 **161** ciuili discreta neci atque abdita castris,
 
 **162** cognata comitante manu, ne nescius illam
 
-**163** interimat miles, totis dum postibus errat. 24
+**163** interimat miles, totis dum postibus errat.
 
 **164** seruatur domino uirtutum lauta supellex
 
 **165** omnibus ex rebus. poterant quae pascere uisum.
 
-**166** 26 His actis princeps populum iurare coegit,
+**166** His actis princeps populum iurare coegit,
 
 **167** ne studeat quisquam muros renouare iacentes
 
@@ -8774,11 +8770,11 @@ text_metadata:
 
 **174** quem sectata cohors dominum legemque reliquit.
 
-**175** in uetitis haut laeta diu: nam milia postquam 3
+**175** in uetitis haut laeta diu: nam milia postquam
 
 **176** trina uirum consueta. nefas. sunt missa per arua
 
-**177** hostica credentum facili formidine uinci 4
+**177** hostica credentum facili formidine uinci
 
 **178** Georum pubem, trepide dant terga per agros
 
@@ -8788,7 +8784,7 @@ text_metadata:
 
 **181** discindit uestes et prouida pectora tundit.
 
-**182** quem comitata senum confestim turba maerentum 7
+**182** quem comitata senum confestim turba maerentum
 
 **183** supplicat, innocuis dum poscit uocibus Auses:
 
@@ -8828,7 +8824,7 @@ text_metadata:
 
 **201** commemorans sensim deformis crimina culpae
 
-**202** plectenda exitio capitis. quod talia suasit. 16
+**202** plectenda exitio capitis. quod talia suasit.
 
 **203** hinc ubi prima dies noctem dimouit opacam.
 
@@ -8838,17 +8834,17 @@ text_metadata:
 
 **206** deprendens noxale caput dat corpora morti
 
-**207** inproba, dum pariter pecudes mittuntur in ignem. 20
+**207** inproba, dum pariter pecudes mittuntur in ignem.
 
-**208** quod facinus primus conmissum dixit Acharus 21
+**208** quod facinus primus conmissum dixit Acharus
 
 **209** infelix praedae et spoliorum accensus amore.
 
-**210** quae sepulta domi propria tellure tegebat. 22
+**210** quae sepulta domi propria tellure tegebat.
 
-**211** continuo haec missi quaerunt; quae cito reperta 23
+**211** continuo haec missi quaerunt; quae cito reperta
 
-**212** et coram conposta duce populoque frequenti. 24
+**212** et coram conposta duce populoque frequenti.
 
 **213** ille ubi quaesitam uidit non defore praedam.
 
@@ -8874,27 +8870,27 @@ text_metadata:
 
 **224** et pecora et quidquid rerum seruauerat idem,
 
-**225** candens flamma rapit canoque in puluere soluit. 1
+**225** candens flamma rapit canoque in puluere soluit.
 
 **226** his actis curae emotae: deus omnia mitis
 
 **227** respicit et cunctis pariter consueta resignat
 
-**228** robora, quis ualeant acies detrudere cunctas. 3
+**228** robora, quis ualeant acies detrudere cunctas.
 
 **229** accipit hic domini mandata insignia rector,
 
 **230** instruat ut socias quaecumque in bella cohortes,
 
-**231** mille legens iuuenes insigni corpore et annis, 4
+**231** mille legens iuuenes insigni corpore et annis,
 
 **232** ut, belli dum furta parant, dumeta capessant,
 
-**233** haut procul hos tacite Gergesi a moenibus abdens, 5
+**233** haut procul hos tacite Gergesi a moenibus abdens,
 
 **234** ut cum mentita formidine uertere terga
 
-**235** occipiat clausosque uiros educat in aequum, 7
+**235** occipiat clausosque uiros educat in aequum,
 
 **236** continuo celeres nemorosa cubilia linquant
 
@@ -8904,17 +8900,17 @@ text_metadata:
 
 **239** postquam obliquo decertant agmine turmae,
 
-**240** princeps terga suos confestim uertere iussit, 16
+**240** princeps terga suos confestim uertere iussit,
 
 **241** quos inimica super denso ruit agmine turba
 
-**242** ac multo clamore premit ferrumque coruscat. 19
+**242** ac multo clamore premit ferrumque coruscat.
 
 **243** quod speculata cohors, quae concaua ualle latebat.
 
 **244** euolat et uacuis perrumpit moenia portis,
 
-**245** subiciens rapidos tectis sublimibus ignes. 20
+**245** subiciens rapidos tectis sublimibus ignes.
 
 **246** confusus cum deinde sonus ac flebile murmur
 
@@ -8934,19 +8930,19 @@ text_metadata:
 
 **254** truditur, aut captae portis sese arietat urbis.
 
-**255** sternuntur ferro iuuenum bis milia sena. 23
+**255** sternuntur ferro iuuenum bis milia sena.
 
 **256** ipse quoque exultans aususque erumpere in aequum
 
-**257** rex primo incursu capitur uinctusque tenetur 29
+**257** rex primo incursu capitur uinctusque tenetur
 
-**258** configiturque cruci; miserum dant saxa sepulchrum. 27
+**258** configiturque cruci; miserum dant saxa sepulchrum.
 
 **259** omnibus absumptis solum non sorbuit ignis.
 
 **260** quod rapuit festina manus; iumentaque tantum
 
-**261** sunt dirempta neci, subeunt quae pondera tergo. 1
+**261** sunt dirempta neci, subeunt quae pondera tergo.
 
 **262** interea ad reges reuolat uictoria. cunctos.
 
@@ -8970,7 +8966,7 @@ text_metadata:
 
 **272** omnibus unus amor Iesum detrudere regnis.
 
-**273** conueniuntque Gabana, loco atque agmina sistunt. 80
+**273** conueniuntque Gabana, loco atque agmina sistunt.
 
 **274** ipse inter curas bellorum construit altar.
 
@@ -8980,23 +8976,23 @@ text_metadata:
 
 **277** aequali coeunte situ. libamina promens
 
-**278** grata deo. quis spirat odor iucundus in altis. 32
+**278** grata deo. quis spirat odor iucundus in altis.
 
 **279** quin etiam legis discribit iura magistrae:
 
 **280** Deuteron est nomen, quoniam transacta reuoluit;
 
-**281** quam pariter totum fas est cognoscere mundum. 33
+**281** quam pariter totum fas est cognoscere mundum.
 
 **282** arca sacerdotum uehitur ceruicibus alma.
 
-**283** quicumque ut uideant domini donaria summi. 34
+**283** quicumque ut uideant domini donaria summi.
 
 **284** atque etiam uates populo benedicere suetus
 
 **285** percurrit, quae iussa prius, quae cauta deinde,
 
-**286** gestorum ratione pari atque ordine certo. 3
+**286** gestorum ratione pari atque ordine certo.
 
 **287** at Gabaona manus postquam successibus altis
 
@@ -9004,13 +9000,13 @@ text_metadata:
 
 **289** urbibus euersis nullumque obsistere posse,
 
-**290** callida uersuto celerant conludia facto 16
+**290** callida uersuto celerant conludia facto
 
-**291** et, quos contiguis regio coniunxerat aruis. 9
+**291** et, quos contiguis regio coniunxerat aruis.
 
 **292** confingunt discreta procul sese adfore terra
 
-**293** mirantes tropaea uiri palmasque recentes,. 11
+**293** mirantes tropaea uiri palmasque recentes,.
 
 **294** si ualeant precibus uictori adiungere dextras
 
@@ -9020,13 +9016,13 @@ text_metadata:
 
 **297** despiciant humiles et subdita colla retractent.
 
-**298** utque fidis certae ualeant seruare colorem, 12 4
+**298** utque fidis certae ualeant seruare colorem,
 
 **299** deprensos multo conpellant pondere mulos,
 
 **300** putria portantes celeri molimine farra.
 
-**301** quae ueteres lasso cohibebant tegmine sacci; 13 5
+**301** quae ueteres lasso cohibebant tegmine sacci;
 
 **302** uinaque consuti multo cum uulnere folles
 
@@ -9034,43 +9030,43 @@ text_metadata:
 
 **304** uestitus lacero nudabat corpora panno.
 
-**305** calceus adtritis misere dat tegmina plantis. 15
+**305** calceus adtritis misere dat tegmina plantis.
 
 **306** frangitur his ductor populi, dum supplice palma
 
 **307** uincitur et mentes credit cohaerere loquellae.
 
-**308** suscipit orantes ueniam castrisque receptat. 16
+**308** suscipit orantes ueniam castrisque receptat.
 
 **309** set, ut saepe solet, non longum ficta teguntur,
 
-**310** conpositosque dolos aperit testatio ueri. 22
+**310** conpositosque dolos aperit testatio ueri.
 
-**311** ilicet hos uates coram castigat amice; 19
+**311** ilicet hos uates coram castigat amice;
 
 **312** et, quia iurarat domini per nomen aeterni,
 
-**313** mansit amica fides; sed ius commune negatum est: 21 23
+**313** mansit amica fides; sed ius commune negatum est:
 
 **314** lixarum officio circum sacraria iussi
 
-**315** conuehere exortes puris de fontibus undas. 1
+**315** conuehere exortes puris de fontibus undas.
 
 **316** hos Donibezelo postquam descisse relatum est.
 
-**317** regna Iebusaea qui tum tractabat in aula. 5
+**317** regna Iebusaea qui tum tractabat in aula.
 
 **318** quinque mouet reges suscepta in proelia fidos.
 
 **319** acrius obliquus sociis pro foedere rupto,
 
-**320** quam <in> populum, inmensas acies qui fuderat armis. 6
+**320** quam <in> populum, inmensas acies qui fuderat armis.
 
 **321** at Gabaon coetu multorum territa regum
 
 **322** mittit oratores uatemque exposcit amicum.
 
-**323** confestim toto succurrat milite maestis. 7
+**323** confestim toto succurrat milite maestis.
 
 **324** nec mora, correptis dimittit Galgala signis
 
@@ -9090,17 +9086,17 @@ text_metadata:
 
 **332** nusquam fronte pari concurrent comminus hostes
 
-**333** palantes tumida ualido cum milite caede." 9
+**333** palantes tumida ualido cum milite caede."
 
 **334** haec ubi cognouit, numerosum tendit ad hostem;
 
-**335** namque Apaphum belli tenuerunt sede tyranni 10
+**335** namque Apaphum belli tenuerunt sede tyranni
 
 **336** confestimque fugam dimisso milite sumunt.
 
 **337** cetera turba uirum confusae stragis aceruo
 
-**338** occubuit camposque inpleuit fusa patentes. 11
+**338** occubuit camposque inpleuit fusa patentes.
 
 **339** nec tantum exanimes uincentum perculit ensis.
 
@@ -9108,7 +9104,7 @@ text_metadata:
 
 **341** et licet hinc enses, hinc fulmina clara coruscent.
 
-**342** una dies tantis non est sat longa triumphis. 12
+**342** una dies tantis non est sat longa triumphis.
 
 **343** ergo hebetes cernens gladios et funera lenta.
 
@@ -9124,47 +9120,47 @@ text_metadata:
 
 **349** ut elementa, suis ceu nescia currere metis,
 
-**350** tempora protelent. condensus dum ruit hostis.. 13
+**350** tempora protelent. condensus dum ruit hostis..
 
 **351** auditur propere: sol sistitur et uaga luna
 
 **352** cohibuit faciles utroque in cardine cursus.
 
-**353** nec minus et reges. quos concaua saxa tegebant, 18
+**353** nec minus et reges. quos concaua saxa tegebant,
 
 **354** obstricta ceruice palam consistere iussit.
 
 **355** undique tum positis concurrit Iudaea telis
 
-**356** inpressoque genu conculcat colla gementum. 26
+**356** inpressoque genu conculcat colla gementum.
 
 **357** ilicet exsangues crucibus figuntur in altis
 
-**358** pendentes, donec sese nox reddidit atra. 27
+**358** pendentes, donec sese nox reddidit atra.
 
 **359** tum suspensa uirum deponit corpora ligno.
 
-**360** quae super adgestis onerantur saxa ruinis. 29
+**360** quae super adgestis onerantur saxa ruinis.
 
-**361** his actis properat bellator subdere Lemnam. 30
+**361** his actis properat bellator subdere Lemnam.
 
 **362** grandaeuosque necat. pueris nec defuit ensis;
 
-**363** nil penitus tota permissum uiuere gente. 31
+**363** nil penitus tota permissum uiuere gente.
 
 **364** inde petita Lachis prostratis moenibus ardet;
 
-**365** rex etiam populi capitur ferroque necatur. 38
+**365** rex etiam populi capitur ferroque necatur.
 
 **366** Dabira quin etiam. paribus cooperta ruinis,
 
-**367** extincta legione perit socioque tyranno. 40
+**367** extincta legione perit socioque tyranno.
 
 **368** et qui dumosis habuere in collibus arces
 
 **369** aut curuas coluit ualles camposque iacentes.
 
-**370** occidit, extinctis pariter cum rege maniplis. 1
+**370** occidit, extinctis pariter cum rege maniplis.
 
 **371** ac dum cuncta fluunt successu laeta secundo.
 
@@ -9178,7 +9174,7 @@ text_metadata:
 
 **376** quem Roboamus adit propere Ma[che]donis ab aula;
 
-**377** et Somorus factusque comes Axinus in armis. 2 8
+**377** et Somorus factusque comes Axinus in armis.
 
 **378** et qui Sidonia ductor regnabat in arce.
 
@@ -9186,7 +9182,7 @@ text_metadata:
 
 **380** firmabant animos sceptri socialis amore.
 
-**381** iungitur Ernadurus et qui coniuncta Chanannus 3
+**381** iungitur Ernadurus et qui coniuncta Chanannus
 
 **382** rura colit ponto. uel qui primordia solis
 
@@ -9196,7 +9192,7 @@ text_metadata:
 
 **385** Cetius Eucheusque Pherezeusque sequuntur.
 
-**386** qui deserta colunt squalentis deuia Thitsae. 4
+**386** qui deserta colunt squalentis deuia Thitsae.
 
 **387** omnibus est animus stipata incurrere turba.
 
@@ -9206,31 +9202,31 @@ text_metadata:
 
 **390** quadriiugique ruunt ferrato milite currus.
 
-**391** ut fragor ipse fuget nitentem comminus hostem. 7
+**391** ut fragor ipse fuget nitentem comminus hostem.
 
 **392** at parte ex alia Iesus nil territus instat.
 
-**393** propter aquas ueniens Maronis nomine dictas; 8
+**393** propter aquas ueniens Maronis nomine dictas;
 
 **394** atque ubi cum lecto conscendit milite collem,
 
 **395** desuper incurrens securum proterit hostem.
 
-**396** omnia caede madent tellusque infecta cruore est. 9
+**396** omnia caede madent tellusque infecta cruore est.
 
 **397** mox currus celeres subiectus deuorat ignis
 
-**398** cornipedumque pedes gladio truncantur acuto. 10
+**398** cornipedumque pedes gladio truncantur acuto.
 
 **399** ipse regum princeps ferro dat pectus Asurus;
 
-**400** urbs etiam totis procumbit subruta muris. 14
+**400** urbs etiam totis procumbit subruta muris.
 
-**401** communis hic praeda datur uictoribus omnis. 24
+**401** communis hic praeda datur uictoribus omnis.
 
 **402** bis denos hac pugna duces nouemque peremit
 
-**403** unus ab astrigera signum qui sumpserat aula. 23
+**403** unus ab astrigera signum qui sumpserat aula.
 
 **404** protinus adscribit uates populoque uiritim
 
@@ -9244,11 +9240,11 @@ text_metadata:
 
 **409** usque supinatam Chebronis nomine uallem.
 
-**410** Hermonium ad montem. uasto qui uertice surgit, 3
+**410** Hermonium ad montem. uasto qui uertice surgit,
 
 **411** atque ad Amar pelagus Cheneri et marmora glauca,
 
-**412** sepositam et Phasgam dudumque Asedota uocatum. 4
+**412** sepositam et Phasgam dudumque Asedota uocatum.
 
 **413** solus conpositis restabat praeda duellis\'
 
@@ -9256,7 +9252,7 @@ text_metadata:
 
 **415** gigantum uirtute ferox, quos rector agebat.
 
-**416** Astarota cui domus est et sedes in Aedra. 6
+**416** Astarota cui domus est et sedes in Aedra.
 
 **417** huius terra datur tribubus sulcanda duabus
 
@@ -9264,13 +9260,13 @@ text_metadata:
 
 **419** Rubenae Gadaeque simul sociaeque Manasse.
 
-**420** cetera partitur sociis dux aequus in omnes. 5
+**420** cetera partitur sociis dux aequus in omnes.
 
-**421** accedit regio qua Libanus exit in auras, 6
+**421** accedit regio qua Libanus exit in auras,
 
-**422** et mare Masrefatum fecundaque Sidonis arua. 4)
+**422** et mare Masrefatum fecundaque Sidonis arua.
 
-**423** Leuitas dominus uillarum nomine priuat. 22
+**423** Leuitas dominus uillarum nomine priuat.
 
 **424** Balamus occumbit uentura edicere suetus.
 
@@ -9298,37 +9294,37 @@ text_metadata:
 
 **436** et nunc, quod bellum Enachina ex gente superstat,
 
-**437** cognata cum pube geram. non degener aeuo. 10
+**437** cognata cum pube geram. non degener aeuo.
 
-**438** etsi quater denus bis iam mihi uoluitur annus. 12
+**438** etsi quater denus bis iam mihi uoluitur annus.
 
 **439** ordinis esto memor sedemque adlega petenti.
 
-**440** quam propriam teneant nati prolesque natorum." 13
+**440** quam propriam teneant nati prolesque natorum."
 
-**441** talia poscentem Chebrono in colle locauit. 15
+**441** talia poscentem Chebrono in colle locauit.
 
-**442** additur et magnis haut decolor urbibus Ardoc. 15
+**442** additur et magnis haut decolor urbibus Ardoc.
 
 **443** his actis properat Dabiram exscindere gentem,
 
 **444** cuius opus suetum dociles conscribere fatus
 
-**445** et elementa graues pueris dictare magistros. 16
+**445** et elementa graues pueris dictare magistros.
 
 **446** elicit ille uirum promissae ad foedera, natae.
 
-**447** prompta cui uirtus animusque in pectore praesens. 63
+**447** prompta cui uirtus animusque in pectore praesens.
 
 **448** omnibus interea populis seruire coactis
 
 **449** Iebusaea manus patriis non cessat ab aruis.
 
-**450** Chananno perstante domi tectisque parentum. 20
+**450** Chananno perstante domi tectisque parentum.
 
-**451** cetera ter ternis tribubus metata traduntur. 2
+**451** cetera ter ternis tribubus metata traduntur.
 
-**452** Leuitis merito bis ternas segregat urbes 3
+**452** Leuitis merito bis ternas segregat urbes
 
 **453** perfugioque dedit factum noxale timenti,
 
@@ -9336,19 +9332,19 @@ text_metadata:
 
 **455** quae proceres mandat librata. expendere lance,
 
-**456** ut facto grauiore reum nex congrua damnet. 39
+**456** ut facto grauiore reum nex congrua damnet.
 
 **457** ipse quater denas Leuitis deuouet urbes
 
-**458** fenoris exsortes. tum plebis consona uoce 50
+**458** fenoris exsortes. tum plebis consona uoce
 
 **459** accipit Ephremum uentura in tempora collem.
 
-**460** urbe super iuncta, mansit cui Thamnatha nomen. 46
+**460** urbe super iuncta, mansit cui Thamnatha nomen.
 
 **461** condidit hic cultros dura de caute paratos,
 
-**462** de quibus obscenos dictu truncauerat artus. 1
+**462** de quibus obscenos dictu truncauerat artus.
 
 **463** omnibus explicitis socios remeare uolentes
 
@@ -9358,7 +9354,7 @@ text_metadata:
 
 **466** fortibus e factis pariles meruistis honores,
 
-**467** quos dedit omnipotens cunctis. qui collibus istis 4
+**467** quos dedit omnipotens cunctis. qui collibus istis
 
 **468** conposuere domus. et nunc remeate laetantes.
 
@@ -9380,23 +9376,23 @@ text_metadata:
 
 **477** uisceribus totis totoque e pectore nostro:
 
-**478** sic fiet ut uestra pressentur sub iuga gentes. * 6
+**478** sic fiet ut uestra pressentur sub iuga gentes. *
 
 **479** haec ubi dicta dedit cunctisque optando poposcit.
 
 **480** illi iter incoeptum peragunt fluuioque propinquant
 
-**481** conspicuamque locant turrito culmine molem. 11
+**481** conspicuamque locant turrito culmine molem.
 
-**482** quae tribubus ubi facta nouem monumenta patescunt. 12
+**482** quae tribubus ubi facta nouem monumenta patescunt.
 
-**483** ceu domini inmemores cupiunt conlidere bello: 13
+**483** ceu domini inmemores cupiunt conlidere bello:
 
 **484** ante tamen missi, certum qui noscere possent;
 
-**485** Phineus legitur, Aaronis candidus heres, 14
+**485** Phineus legitur, Aaronis candidus heres,
 
-**486** atque decem primi tribuum meritoque locoque, 16
+**486** atque decem primi tribuum meritoque locoque,
 
 **487** qui memores mandata simul procerisque patrumque
 
@@ -9416,7 +9412,7 @@ text_metadata:
 
 **495** haec odio in gentes mandant populosque patresque,
 
-**496** dum bellum sociale parant atque arma resumunt. 19
+**496** dum bellum sociale parant atque arma resumunt.
 
 **497** numquid parua data sunt uobis iugera terrae.
 
@@ -9426,7 +9422,7 @@ text_metadata:
 
 **500** dum modo sidereo semper sacrata tonanti
 
-**501** sit synagoga parens, nobis nec dissona distet. 20
+**501** sit synagoga parens, nobis nec dissona distet.
 
 **502** conmoneat sensus factum dementis Achari,
 
@@ -9434,9 +9430,9 @@ text_metadata:
 
 **504** nonne malum praeceps contracti criminis egit.
 
-**505** unius ob noxam populum qui perculit ultor?" 21
+**505** unius ob noxam populum qui perculit ultor?"
 
-**506** illi humiles blandis respondent talia dictis: 22
+**506** illi humiles blandis respondent talia dictis:
 
 **507** "Nos colimus. qui cuncta pio sermone creauit
 
@@ -9444,7 +9440,7 @@ text_metadata:
 
 **509** nec opus, ut testes ad publica facta uocemus:
 
-**510** ipse deus nouit. quae causa extruxerit aram. 27
+**510** ipse deus nouit. quae causa extruxerit aram.
 
 **511** nobis cura fuit condendae ad flumina molis
 
@@ -9464,17 +9460,17 @@ text_metadata:
 
 **519** quae sueuit synagoga deo libare perenni."
 
-**520** his dictis manifesta fides placidique tribuni 32
+**520** his dictis manifesta fides placidique tribuni
 
 **521** laudibus ornatos meritis liquere laetantes.
 
-**522** interea longo uates iam senior aeuo 2
+**522** interea longo uates iam senior aeuo
 
 **523** accitum populum. monitis fidelibus inplet:
 
 **524** "Cernitis ut, ciues, me iam longa-eua senectus
 
-**525** ingrauet et motu tardentur membra supremo: 3
+**525** ingrauet et motu tardentur membra supremo:
 
 **526** et nunc uel moneo, uel, si non displicet, oro,
 
@@ -9490,7 +9486,7 @@ text_metadata:
 
 **532** sed dominus, qui signa pius agmenque praeiuit,
 
-**533** praegrediens nosmet, quotiens fit comminus hostis; 5
+**533** praegrediens nosmet, quotiens fit comminus hostis;
 
 **534** qui populos tantos gelida formidine missa
 
@@ -9514,11 +9510,11 @@ text_metadata:
 
 **544** accipiat meritas laudes. dum consona plausu
 
-**545** lingua canit nil esse deum sublimius uno. 6
+**545** lingua canit nil esse deum sublimius uno.
 
-**546** pergite, quo ducit docilis sententia legis: 7
+**546** pergite, quo ducit docilis sententia legis:
 
-**547** ne uariis actus sub flexibus ambitus erret. 14
+**547** ne uariis actus sub flexibus ambitus erret.
 
 **548** idola nulla uirum deuicta ex gente supersint.
 
@@ -9530,7 +9526,7 @@ text_metadata:
 
 **552** eligite, o cuncti, quae sunt accommoda uobis.
 
-**553** deserit omnipotens refugas longeque refutat, 9
+**553** deserit omnipotens refugas longeque refutat,
 
 **554** qui sub pestiferi quondam monumenta Balacis
 
@@ -9540,7 +9536,7 @@ text_metadata:
 
 **557** et quam magna deus cunctis fidelibus addat.
 
-**558** hunc colite et ualidas legi conectite mentes." 16
+**558** hunc colite et ualidas legi conectite mentes."
 
 **559** consona respondit populi sententia uati:
 
@@ -9550,25 +9546,25 @@ text_metadata:
 
 **562** dignatus. colimus solumque agnoscimus omnes
 
-**563** esse deum caeli terraeque et marmoris alti, 17
+**563** esse deum caeli terraeque et marmoris alti,
 
 **564** quo mandante maris patuerunt aequora Rubri
 
-**565** et qui signa dedit nostris percongrua uotis. 18
+**565** et qui signa dedit nostris percongrua uotis.
 
 **566** qui gentes nostris subiecit gressibus omnes."
 
-**567** haec ubi disseruit populus fidelia fatu. 26
+**567** haec ubi disseruit populus fidelia fatu.
 
 **568** pagina sanctificis legitur laudabilis orsis.
 
 **569** ipse senex cautem terebinthi in codice ponit.
 
-**570** ut sit perpetuae testis noscenda fidei. 29
+**570** ut sit perpetuae testis noscenda fidei.
 
 **571** expletis igitur uitae dux optimus actis.
 
-**572** cuius uita fuit centum distenta per annos 30
+**572** cuius uita fuit centum distenta per annos
 
 **573** atque decem, functus merito da.t membra sepulchro
 
@@ -9578,7 +9574,7 @@ text_metadata:
 
 **576** cultellos tantum proceris iunxere fauillis,
 
-**577** circumcisa quibus fuerat Iudaea iuuentus, 32
+**577** circumcisa quibus fuerat Iudaea iuuentus,
 
 **578** ossaque in Sicimis Iosepi inposta. quiescunt,
 
@@ -9590,7 +9586,7 @@ text_metadata:
 
 **582** gentiles populus cultus atque idola sumpsit,.
 
-**583** defugiens dominum terrae dominumque caelorum. 37
+**583** defugiens dominum terrae dominumque caelorum.
 
 **584** subditur Eglomum quae propter facta tyrannis,
 
@@ -9966,7 +9962,7 @@ text_metadata:
 
 **185** secretum, sociae dum uitat lumina turbae.
 
-**186** 27 iamque memor facti socios in bella lacessit
+**186** iamque memor facti socios in bella lacessit
 
 **187** terribilesque tubae sonitus permiscet Aodus:
 
@@ -11034,7 +11030,7 @@ text_metadata:
 
 **719** quo pater orbatus fratresque et pignora cuncta
 
-**720** conueniunt functumque dolent decorantque sepulchro. Reg. II 23
+**720** conueniunt functumque dolent decorantque sepulchro.
 
 **721** [hunc sequitur Semada ducem. qui fortibus ausis
 
@@ -11118,13 +11114,13 @@ text_metadata:
 
 denique quaesitos tetigit tamen ille penates.
 
-2 20 30 sq. praecaue nunc miser nec te dum nescis et audes
+. praecaue nunc miser nec te dum nescis et audes
 
 obrepit partemque secat de ueste fluenti.
 
 .. quasi uermiculus ligni tenerrimus ..
 
-r, 2311 sq. hunc sequitur Semada ducem, qui fortibus ausis sescentos perimit et tempora laeta reducit. titulos carminum prueter Iobum tradunt ueteres catalogi Nazarianae et Clutiiacensium bibliothecarum. 1 Jlico: Quesitus. Denique-penates. Vulif. Et Dauid fugit et saluatus est nocte illa. 2 Miro: Prpcaue. Nunc—audes. Alc (audis deterior codex cf. AUartial. VII 92, 4. 6. 8 audis et nescis, Baccara, quid sit opus.) Yulg. Iratus autem Saul aduersus Ionathan dixit ei : Fili mulieris uirum ultro rapientis. numquid ignoro, quia diligis filium Isai in confusionem tuam et in confusionem matris tuae? (81) omnibus enim diebus. quibus filius Isai uixerit super terram, non stabilieris tu, neque regnum tuum. S Mico : Obrepit— flueunti. partemquej pariterque deterior codex. Vulg. Surrexit ergo Dauid et praecidit oram chlamydis Saul silenter. 4 Aldhelmus p. 310: tener tenerrimus, ut in Bnsilion cautum est: quasi-tenerrimus. Vulg. Haec nomina fortium Dauid . sedens in cathedra sapientissimus princeps inter trcs ipse est quasi tenerrimus ligni uei-miculus. qui octingentos interfecit impetu uno.\' 5 uid. Iudicum uu. 721 sq. Vulg. Et post hunc (Eleazarum) Semma tilius Age de Arari (o Σαμαιας οιος).ΙΙλα •> Apayi); et congregati sunt Philisthiim in etationu: erat ibi quippe ager lente plenus. cumque fugisset populus a facie Philistliiim, (12) stetit ille in medio agri et tuitus est eum percussitque Philisthaeos. et fecit dominus salutem magnam. XXIII. Cypr. poet. 14
+. hunc sequitur Semada ducem, qui fortibus ausis sescentos perimit et tempora laeta reducit. XXIII. Cypr. poet.
 
 hinc repetita sacri gradiens per moenia templi
 
@@ -11132,11 +11128,9 @@ distento et plenam monstrantes uentre saginam.
 
 purpureis maior Persarum in sede tyrannis
 
-23 sqq. partitusque meis iustos indico labores
+. partitusque meis iustos indico labores
 
 iussit ut obrizo non parui ponderis auro
-
-6 Mico: Repetita. Hinc repetita-templi. Snll. [Salomo ?] Yulg. Kex autem Salomon et omnis multitudo Israel. quae conuenerat ad eum, gradiebatur cum illo ante aream et immolabant oues et boues absque aestimatione et numero. 7 Mico : Sagina . Distento—saginam. Yulg. In die illa sanctificauit rex medium atrii , quod erat ante domum domini; fecit quippe holocaustum ibi et sacrificium et adipcm paciflcorum, quoniam altare acreum . quod erat coram domino , minns erat at capere non poterat holocaustum et sacrificium et adipem paeificorum. rf. Num. 355 laeta uentres laxare sagina. • 8 AUUielmus p. 232: sicut in nouissimo uersn libri Kegum cautum: Purpureis—tyrannis. Vuly. et[Euilmerodachrex Ilocutus est ei [Ioachimo regiludaej benigne ct po-uit thronum eius super thronum regum, qui erant cum eo in Babvlone. 9 Mico f Partitusque-labores . Prosper. rulg. (3) Numeratique sunt Leuitae .. (4> ex his dedi sunt et distributi in ministeriura domus domini uiginti quattnor milia , praepositonim autem et iudicum sex milia etc. 10 Mico: Obrizo . lussit—auro . Alchimns. Vnlg. Altari autem. in quo adoletur incensum, aurum purissimum dedit.
 
 a lanigerae pecudes et equorum bellica pubes
 
@@ -11148,4 +11142,4 @@ nec lupus insidians Christi deroderet agnos.
 
 captiuamque manum deformis seruitus urget.
 
-contulit atque seni suffragia sancta salutis. 11 Aldhelmus p. 218: Iob prosapia in plilldpio libri quod prosa contexitur ot deinceps secunduiu Hebraeos dactylo spondeoque scandero fertur. et septem lanigerarum pecudum descripta summa narrantur. Aldhelmus p. 288 : lanigerae—proles. haec ex Cypriani carmine esse Manitius suspicatur. cf. (\'ypriani Erod. 1288 ipsaaque eliminat illine lanigeras pecudes. Vulg.Et fuit possessio eius septem milia ouium ettriamiliacamelorum. quingenta quoque iuga boum et quingentae asinae ac familia multa nimis. 12 il/icf;: Attamen. Omnibus attamen-uoluisti. Apollinnt. [sc. Auiti ad Apollinarium fratreni missa carmina erant]. 13 Mico : Angelico-canopi. egvpti. cf. Cifpriani Gen. 818 adeat. ne rogna Canopi.\' 14 Mieo: l:oderet. Nec—agnos. Alc. 15 Mico: Sei-uitus. Cahtiuamque-urget. cf Cypriani Iud. 88 omnia uictor habet. subiectum seruitus urgot. 16 Mico: Suffragor. Contulit-salutis. Alcuinus. an de Samuele (Reg. 1 25.,O ?
+contulit atque seni suffragia sancta salutis.

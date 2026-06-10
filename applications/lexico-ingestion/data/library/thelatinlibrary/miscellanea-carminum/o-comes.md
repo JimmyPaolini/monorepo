@@ -1,0 +1,52 @@
+---
+author: miscellanea-carminum
+text_metadata:
+  source_url: https://www.thelatinlibrary.com/comes.html
+title: O Comes
+type: book
+author_metadata: {}
+---
+
+## O Comes
+
+O comes amoris dolor,
+
+cuius mala male solor,
+
+nec habent remedium,
+
+dolor urget me, nec mirum,
+
+quem a predilecta dirum
+
+en vocat exilium,
+
+cuius laus est singularis,
+
+pro qua non curasset Paris
+
+Helene consortium.
+
+Gaude vallis insignita,
+
+vallis rosis redimita,
+
+vallis flos convallium,
+
+inter valles vallis una,
+
+quam collaudat sol et luna,
+
+dulcis cantus avium,
+
+quam collaudat philomena.
+
+Nam quam dulcis et amena
+
+mestis dans solatium!
+
+Medieval Latin
+
+To the Library
+
+To the Classics Homepage

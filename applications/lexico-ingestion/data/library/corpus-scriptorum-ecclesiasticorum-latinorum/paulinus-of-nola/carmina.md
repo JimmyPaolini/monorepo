@@ -15718,7 +15718,7 @@ text_metadata:
 
 . Felicis penetral,! prisco uenerabile cultu lux noua diffusis nunc aperit spatiis. angusti memores solii gaudete uidentes praesulis ad laudem quam nitet hoc solium.
 
-2. Paruus erat locus ante sacris angustus agendis supplicibusque negans pandere posse manus, nunc populo spatiosa sacris altaria praebet officiis medii martyris in gremio. cuncta deo renouata placent, nouat omnia semper Christus et in cumulum luminis amplificat. sic et dilecti solium Felicis honorans et splendore simul protulit et spatio.
+Paruus erat locus ante sacris angustus agendis supplicibusque negans pandere posse manus, nunc populo spatiosa sacris altaria praebet officiis medii martyris in gremio. cuncta deo renouata placent, nouat omnia semper Christus et in cumulum luminis amplificat. sic et dilecti solium Felicis honorans et splendore simul protulit et spatio.
 
 **1** Ante puer patribus claris et nomine auito
 

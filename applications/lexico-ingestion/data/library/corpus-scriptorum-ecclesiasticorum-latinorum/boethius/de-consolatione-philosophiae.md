@@ -66,7 +66,7 @@ speciem, veluti fumosas imagines solet, caligo quaedam neglectae vetustatis obdu
 
 quidam insigniti videbantur, quibus ab inferiore ad superius elementum esset ascensus. Eandem tamen vestem violentorum quorundam sciderant manus et particulas, quas &
 
-quisque potuit, abstulerant. Et dextra quidem eius libellos, sceptrum vero sinistra gestabat. 7 De timilibus Fulgentii et llart Cap. (lib. III. et VII.) exordiis cf. Klingner 114 17 infra p. 6,13 22 Boeth. in Porph. Dial. I 3 (CSEL IIL 8, Isq.): est.. philosophia genus, species vero eius duae, una quae theoretica dicitur, altera quae practica TTL YKE 6 designarem YKE- 9 calore P 11 futura P1 20 extrema Tl JPeip. 22 inter utr. T2VE 23 ad inf. P 25 sciderunt T1 26 dextera Ts Peip. eius om. P
+quisque potuit, abstulerant. Et dextra quidem eius libellos, sceptrum vero sinistra gestabat.
 
 Quae ubi poeticas Musas vidit nostro assistentes toro fletibusque meis verba dictantes, commota paulisper ac torvis inflammata luminibus:
 
@@ -144,7 +144,7 @@ Tum vero totis in me intenta luminibus: Tune ille es, ait. qui nostro quondam la
 
 nostris educatus alimentis in virilis animi robur evaseras? Atqui talia contuleramus arma.
 
-quae nisi prior abiecisses. invicta te firmitate tuerentur. Agnoscisne me? Quid taces, pudore an stupore siluisti? Mallem pudore, sed te, ut video, stupor PTLVKE 1 acta F2K2 12 qai Tl 26 promtis P (signo addito, quo ad marginem reUgari solet, ttbi nihtl tamen exstat) 29 prias(V) T1 30 agnoscesne T1L1V1 Aur. 31 videor P1 oppressit.
+quae nisi prior abiecisses. invicta te firmitate tuerentur. Agnoscisne me? Quid taces, pudore an stupore siluisti? Mallem pudore, sed te, ut video, stupor oppressit.
 
 Cumque me non modo tacitum, sed elinguem prorsus mutumque vidisset, ammovit pectori meo leniter manum et: Nihil, inquit, pericli est, lethargum patitur, communem illusarum mentium morbum.
 
@@ -170,7 +170,7 @@ Haec dixit oculosque meos fletibus undantes contracta in rugam veste siccavit.
 
 **9** emicat et subito vibratus lumine Phoebus
 
-**10** mirantes oculos radiis ferit. (10)
+**10** mirantes oculos radiis ferit.
 
 Haud aliter tristitiae nebulis dissolutis hausi caelum et ad cognoscendam medicantis faciem mentem recepi.
 
@@ -178,7 +178,7 @@ itaque ubi in eam deduxi oculos intuitumque defixi, respicio nutricem meam, cuiu
 
 tu in has exsilii nostri solitudines, o omnium magistra virtutum, supero cardine delapsa venisti, an ut tu quoque mecum rea falsis criminationibus agiteris?
 
-— An, inquit illa, te, alumne, desererem nec sarcinam, quam mei nominis invidia 1 elingem T1 7 tergeamus P1T2 tergemus L2 11 gl. nubila PTLVKE Schraikr, R. Volkmann, Peip. (con. Sen. Phaedr. 737: ocior nubes glomerante Coro); cf. Eng. choro codd. 12 nimbo*sisque T stetit (i e corr.) T 15 threicios L threicins P theicios T1 trheicias F1 emisus Tl 16 ververet T1L1V1 clasam P1 clarum Wakefield ad Lucr. VI 174 17 ut TlLlVlKE Peip., cf. Verg. Aen. V 319: emicat et Foebus T1
+— An, inquit illa, te, alumne, desererem nec sarcinam, quam mei nominis invidia
 
 sustulisti, communicato tecum labore partirer? Atqui Philosophiae fas non erat incomitatum relinquere iter
 
@@ -196,7 +196,7 @@ nostris moribus instituti studiis improborum dissimillimi videbantur. Itaque nih
 
 salo circumflantibus agitemur procellis, quibus hoc maxime propositum est pessimis displicere. Quorum quidem tametsi est numerosus exercitus, spernendus tamen est, quoniam
 
-nullo duce regitur, sed errore tantum temere ac passim lymphante raptatur. Qui si quando contra nos aciem struens valentior incubuerit, nostra quidem dux copias suas in arcem contrahit, illi vero circa diripiendas inutiles 25 Plut. Ex. 602 d. 607 e: ὣσπεϱ iv νὴσψ σάλον ἐχούση πολύν, ϰαϑάπεϱ ϕησὶν d Πλάτων (Phaedr. 250 c) 31 cf. Klingner 3, 1πολύν, PTLVKE .4 accideret PT1 aeciderit rei. Peip. 15 abire P1V1E1 24 am- miraere Tx 29 lymphanter aptatur LlV. ut vid. Tl instrnens L sarcinulas occupantur.
+nullo duce regitur, sed errore tantum temere ac passim lymphante raptatur. Qui si quando contra nos aciem struens valentior incubuerit, nostra quidem dux copias suas in arcem contrahit, illi vero circa diripiendas inutiles sarcinulas occupantur.
 
 At nos desuper irridemus vilissima rerum quaeque rapientes securi totius furiosi tumultus eoque vallo muniti, quo grassanti stultitiae aspirare fas non sit.
 
@@ -236,7 +236,7 @@ At nos desuper irridemus vilissima rerum quaeque rapientes securi totius furiosi
 
 **18** nectit, qua valeat trahi, catenam.
 
-Sentisne, inquit, haec atque animo illabuntur tuo an ὄνος λύϱας? Quid fles, quid lacrimis manas? ἔξαύδα, μὴ ϰεῦϑε νόῳ. Si operam medicantis exspectas, oportet 23 Hom. A 363 0 regit Bednarz (coll. Verg. Aen. VII 101) iecit Rand (colI. Verg. PTL VKE eorg. II492) dedit Agricola, Peip. tegit Klusscf. Eng. 9 agitantis P mci antis interpres W (Langc coll. IV m. 4,1) Peip. exigentis Obb. (Barth. Adv. V 16); cf. Eng. 10 camenis T1L1V1 14 suos Peip.1 feros Langt, Peip., sf. Eng. 20 loco ut rid. T1 loque F1 23 ad ANONOC schol sine merito add. PL V expers P, in mg. V ἐξαύδα—νόψ om. P EZAYAA V (ἐξαύδα Aur.) 24 ME (s. s Uet ne) ΚΕΥθΕΝ (s. s. abscondas) ∗IHN∗ (s. s. lo, te, solum) T MI KEYeEMAI L MH (s. s. ne) SH KEOTOH (X sub tnsu, s. s. l abscondas) OAVC V
+Sentisne, inquit, haec atque animo illabuntur tuo an ὄνος λύϱας? Quid fles, quid lacrimis manas? ἔξαύδα, μὴ ϰεῦϑε νόῳ. Si operam medicantis exspectas, oportet
 
 vulnus detegas. — Tum egit collecto in vires animo: Anne adhuc eget ammonitione nec per se satis eminet fortunae in nos exagitantis asperitas? Nihilne te ipsa loci facies
 
@@ -252,7 +252,7 @@ ne improbis flagitiosisque civibus urbium relicta gubernacula pestem bonis ac pe
 
 secutus, quod a te inter secreta otia didiceram, transferre in actum publicae amministrationis optavi. Tu mihi et, qui te sapientium mentibus inseruit, deus conscii nullum me ad
 
-magistratum nisi commune bonorum omnium studium detulisse. Inde cum improbis graves inexorabilesque discordiae et, quod conscientiae libertas habet, pro tuendo iure spreta potentiorum semper offensio. 3 Cic. in Cat. I 1: nihilne te .. Lic .. locus .. moverunt?t. 8/9 Verg. Aen. VI 849sq.: caelique meatus describent radio 10 Plat. Rep. 592 b: tv οὺϱανψ̄ ἲσως παϱάδειγμα ἀνάϰειται τψ̄ βουλομένψ όϱὰν xci ὸρω̄ντι iavrdv ϰατοιϰίζειν llsqq. Rep. 473d. 487 e; de Arist. fr. \'\' Jaeger 53 sq. 97,1; cf. Iul. Capitol. Vita M. Ant. 27, 7. Val. Max. VII 2 ext. 4. Prud. C. Symm. 132 14 Plat. Epist. X 350b: ἃμα γὰϱ ξυμβαίνει ϰαὶ χώϱαν ϰαταλιμπάνειν ϕαύλοις ἀνϑϱώποις; Rep. I 347c: τη̄ς frufo μεγίστη T6 ὑπὸ ποτηϱοτέϱου ἃϱχεσϑαι, cf. F Novotny (Opera facult. philos. Univ. Masaryk. Brun. XXX 1930. 272\\ PTLVKE 4 bilyotheca T biblioteca P 8 varias P ,10 exemplar T2 haecinae P (extr. -ae in ras- 15 capessendae (s. s. et ae in ras.) P rei F. riLVE 16 inprovis T1V1 21 magisteriatum Vall.
+magistratum nisi commune bonorum omnium studium detulisse. Inde cum improbis graves inexorabilesque discordiae et, quod conscientiae libertas habet, pro tuendo iure spreta potentiorum semper offensio.
 
 Quotiens ego Conigastum in imbecilli cuiusque fortunas impetum facientem obvius excepi, quotiens Trigguillam regiae praepositum domus ab incepta, perpetrata iam prorsus iniuria deieci, quotiens miseros, quos infinitis calumniis impunita barbarorum semper avaritia vexabat, obiecta periculis auctoritate protexi! Numquam me ab iure ad iniuriam quicquam detraxit.
 
@@ -270,7 +270,7 @@ Quorum Basilius olim regio ministerio depulsus in delationem nostri nominis alie
 
 est. Opilionem vero atque Gaudentium vero atque Gaudentium cum ob innumeras - £ 1 h.
 
--multiplicesque fraudes ire In exsilium regia censura decrevisset cumque illi-parere nolentes sacrarum sese aedium \' Plat. Apol. 33a: ovtitvl πώποτε ξυγχωϱήσας οὺδὲν παϱὰ ro dixaiov 2 triguillam P trigguilam T1 tringuillam T* 3 propositum P pfL VKE (a) Perpetrata Kluss. (ac) p. Met.2 Nolte Βασ. 6 iure (quis eras.) P 7 qUlcquam P quisquam rel. Peip. 10 inextricabilis Lindahl, Glossar zu Notkers Boeth. De cons; Ups. 1916r 99,1 12 praef. TLV pra- tori L pretii P praetorii (ii m. 2) T praet V 15 Palatini F* (Schepss) 17 corripere P 18 cipr. PE 19 exacerb. PL1 exaceru. rel. Peip. (exacerbasse tractum est ab acervare s. s. V; cf. infra p. 101, 6) 20 aliquos P alicos Vl defensione tuerentur compertumque id regi foret, edixit,
+-multiplicesque fraudes ire In exsilium regia censura decrevisset cumque illi-parere nolentes sacrarum sese aedium defensione tuerentur compertumque id regi foret, edixit,
 
 uti, ni intra praescriptum diem Ravenna urbe decederent, notas insigniti frontibus pellerentur. Quid huic severitati posse astrui videtur?
 
@@ -290,7 +290,7 @@ nec mihi Socratico decreto fas esse arbitror vel occuluissej veritatem vet «onc
 
 Cuius rei seriem atque veritatem, ne latere posteros queat, stilo etiam memoriaeque mandavi. Nam de compositis falso litteris, quibus libertatem arguor sperasse Romanam, quid attinet dicere? Quarum fraus aperta patuisset, si nobis
 
-ipsorum confessione delatorum, quod in omnibus negotus maximas vires habet, uti licuisset. Nam Quae sperari reliqua 19 aq. Theaet. 151 d: ψεῡδός t* ξυγχωϱη̄σαι at ἀληϑὲς ἀϕανίσαι οὺδαμω̄ς ϑέμις; cf. Rep. 485c PTLTKE 2 ut intra PT* nisi V (m2 ut vid.), K 4 atquin PTIL1 atqui in rel. Peip. 8 vilitas interpretis esse censuit Peip. vilitatis Glareanvs (Petri Fabri codex apud Barihium Adv. 49,3*) Peip.; cf. Eng. 9 quaeres PTV1 qaaeris rd. Pap. 12/13 quid itur e mag. c. P 14 pudori T2 Peip. 14/15 fatebamur P 15 cessabit K Anr* Prip. 16 hordinis ex hominis P iudicabo T\'- 21 est L 27 namque PTlK namquQ F libertas potest? Atque utinam posset ulla! Respondissem Canii verbo, qui cum a Gaio Caesare Germanici filio conscius contra se factae coniurationis fuisse diceretur: \'Si ego\', inquit, \'scissem, tu nescisses\'.
+ipsorum confessione delatorum, quod in omnibus negotus maximas vires habet, uti licuisset. Nam Quae sperari reliqua libertas potest? Atque utinam posset ulla! Respondissem Canii verbo, qui cum a Gaio Caesare Germanici filio conscius contra se factae coniurationis fuisse diceretur: \'Si ego\', inquit, \'scissem, tu nescisses\'.
 
 Qua in re non ita sensus nostros maeror hebetavit, ut impios scelerata contra virtutem querar molitos, sed, quae speraverint, effecisse vehementer ammiror.
 
@@ -306,7 +306,7 @@ Scis me haec et vera proferre et in nulla umquam mei laude iactasse; minuit enim
 
 Sed innocentiam nostram quis exceperit eventus, vides; pro verae virtutis praemiis falsi sceleris poenas subimus.
 
-Eccuius umquam 9-11 Epicur. fr. 374 (Lactant. De iradei 13, 21): si et vult (tollere mala) et potest, quod solum deo convenit, unde ergo sunt mala? aut cur illa non tollit?; sedv. Schundelen, Tbeol. Lit.-Bl. 1871, 60; Rand, Jahrb. Suppl. XXVI 430, 1 5 hebit. T1 6 quaerar PVl 9 aud K aut P1 haut ut vid. V1 TTLVKE 19 delatum T\'lE Notker (ἐπιϕεϱόμενον Plan.) molliretur P 22 post nulla repetituri erant et in PF 26 falsis P eccuins Tl haec cuius PLl hęe T* (in mg. ai et) et c. rel. Peip.: cf. Fmd. Apoth. 492, Arch. f. lat. Lex. XV 76, Phil. Woch. 1913, 1145, Jahrb. CXV 761 facinoris manifesta confessio ita iudices habuit in severitate concordes, ut non aliquos vel ipse ingenii error humani vel fortunae condicio cunctis mortalibus incerta summitteret.
+Eccuius umquam facinoris manifesta confessio ita iudices habuit in severitate concordes, ut non aliquos vel ipse ingenii error humani vel fortunae condicio cunctis mortalibus incerta summitteret.
 
 Si inflammare sacras aedes voluisse, si sacerdotes impio iugulare gladio, si bonis omnibus necem struxisse diceremur, praesentem tamen sententia, confessum tamen convictumve punisset; nunc quingentis fere passuum milibus procul muti atque indefensi ob studium propensius in senatum morti proscriptionique damnamur.s o meritos de simili crimine neminem posse convinci!
 
@@ -316,7 +316,7 @@ rent, ob ambitum dignitatis sacrilegio me conscientiam polluisse mentiti sunt. A
 
 Instillabus enim auribus cogitationibusque cotidie meis Pythagoricum illud ἕπου θεῷ. Nec conveniebat vilissimorum me spirituum praesidia captare, quem tu in hanc excellentiam componebas, ut consimilem deo faceres.
 
-Praeterea penetral innocens domus, honestissimorum coetus amicorum. socer etiam sanctus et aeque ac tu ipsa . I 137 (Sosiades): Sen. De vita beat. 15, 5 (deum sequere), Ad Lucil. (II) 16, n; lamb!. Vita Pyth. 18 (86): ἃπας ὁ βίος συντέταϰται πϱὸς rd ἁϰολουϑεῑν τψ̄ ϑεψ̄ 19 Sen. Ad Lucil. (VII) 48,11: quod mihi philosophia promittit, ut parem deo faciat. IambI. Protr. 3 (11, 1-1 P- : i} .. γνω̄σις τω̄ν ϑεω̄ν (ϑείων Reintsius, cf. Diels, Doxogr. 273, 12) ποιεῑ .. ἡμᾱς τοῑς 9tot; ὸμοίους S PTLVKE 3 summiteret P2 sumiteret 1 6 alterum tamen del. TLV ow- Peip. convinctumve PlK 7 moti T2L1V2KE2 Notker 9 merito T* LVJ; cf. Pfeilschifter (Kirchengesch. Stud. III ½, Munster 1896, p. 178), qui vertit: In der Tat, die Senatoren wāren es wert, dap keiner eines solchen Yerbrechens uberfuhrt icerden könnte simile P dissimili TI 18 pithag. L pytag. VE phitag. PK ϕεόν libri (AllO 6Y 6EOX T5) ϑεοῑς Eng. (de non diis s. s. TLV sed de deo sperare auxilium add. T) 19 praesidium L 22 aeque T ac tu ipsa Sitznu acta ipso libri Peip. reverendus ab omni nos huius criminis suspicione defendunt. Sed — o nefas!
+Praeterea penetral innocens domus, honestissimorum coetus amicorum. socer etiam sanctus et aeque ac tu ipsa reverendus ab omni nos huius criminis suspicione defendunt. Sed — o nefas!
 
 illi vero de te tanti criminis fidem capiunt atque hoc ipso videbimur affines fuisse maleficio, quod tuis imbuti disciplinis, tuis instituti moribus sumus.
 
@@ -338,7 +338,7 @@ Videre autem videor nefarias sceleratorum officinas gaudio laetitiaque fluitante
 
 **4** legemque pati sidera cogis,
 
-**5** ut nunc pleno lucida cornu (5)
+**5** ut nunc pleno lucida cornu
 
 **6** totis fratris obvia flammis
 
@@ -398,7 +398,7 @@ Videre autem videor nefarias sceleratorum officinas gaudio laetitiaque fluitante
 
 **34** Latet obscuris condita virtus
 
-**35** clara tenebris iustusque tulit (35)
+**35** clara tenebris iustusque tulit
 
 **36** crimen iniqui.
 
@@ -434,7 +434,7 @@ Sed tu quam procul a patria non quidem pulsus es, sed aberrasti ac, si te pulsum
 
 Si enim, cuius oriundo sis patriae, reminiscare, non uti Atheniensium quondam multitudinis imperio regitur, sed εἷς κοίρανός ἐστιν, εἷς βασιλεύς, qui frequentia civium, non depulsione laetetur, cuius agi frenis atque obtemperare iustitiae libertas est.
 
-An ignoras illam tuae civitatis antiquissimam legem, qua sanctum est ei ius exsulare non esse, quisquis in ea sedem fundare maluerit? Nam qui vallo eius ac munimine continetur, nullus metus 23 Hom. B 204 sq. 3 mendali * T1 6 gaudet K1 (Agricola) gaudent rtl. Peip. PILYKE 10 sale Peip. 11 rabidos T\'l 13 stabili Wakefidd ad lucr.Y 1001 15 quaest. PL1 16 exsulemquae T1 21 **fas T oriundus J* Aur* KE 22 reminiscaris Y 23 KOYPAWC PT 26 s*anetum 2 1 sancitom T2V2K eius PLl eat, nc exsul esse mereatur;
+An ignoras illam tuae civitatis antiquissimam legem, qua sanctum est ei ius exsulare non esse, quisquis in ea sedem fundare maluerit? Nam qui vallo eius ac munimine continetur, nullus metus eat, nc exsul esse mereatur;
 
 at quisquis inhabitare eam velie » desierit, pariter desinit etiam mereri. Itaque non tam me loci huius quam tua facies movet nec bibliothecae potius comptos ebore ac vitro parietes quam tuae mentis sedem requiro, in qua non libros, sed id. quod libris pretium facit.
 
@@ -496,7 +496,7 @@ primum igitur paterisne me pauculis rogationibus statum tuae mentis attingere at
 
 Atqui. inquam. nullo existimaverim modo. ut fortuita temeritate tam certa moveantur. verum operi suo conditorem praesidere deum scio nec umquam fuerit dies, qui me ab hac sententiae veritate depellat. —
 
-Ita est. inquit; nam id etiam ; 4* fontibus capitis 6 v. Htiiler 23 f paulo ante cecinisti hominesque tantum divinae exsortes curae esse deplorasti.
+Ita est. inquit; nam id etiam paulo ante cecinisti hominesque tantum divinae exsortes curae esse deplorasti.
 
 Nam de ceteris, quin ratione regerentur, nihil movebare. rapae autem vehementer ammiror, cur in tam salubri sententia locatus aegrotes. Verum altius perscrutemur; nescio quid abesse coniecto.
 
@@ -522,7 +522,7 @@ id me esse confiteor. — Et illa: Nihilne aliud te esse novisti?
 
 aegritudinis tuae rationem vel aditum reconciliandae sospitatis inveni. Nam quoniam tui oblivione confunderis.
 
-et exsulem te et exspoliatum Dronriis bonis esse doluisti- Quoniam vero, quis sit rerum finis, ignoras, nequam homines atque nefarios potentes felicesque arbitraris; quoniam vero. quibus gubernaculis mundus regatur, oblitus es, has 1 c. supra 14,21 22 Boeth. In Porph. III4 (CSELIIL 208,21 sq.): à rationali mortale subieceris, hominem feceris. Plut Apoll ll6b: ζᾣοv .. ϑvηόv PTLVKE 4 quur PTL1 14 de atqui cf. Schepss, Phil. 1893, 380 21 hoc- cine T* 25 Kia P 29 hominis TlVl fortunarum vices aestimas sine rectore fluitare: magnae non ad morbum modo, verum ad interitum quoque causae; sed sospitatis auctori grates, quod te nondum totum natura destituit.
+et exsulem te et exspoliatum Dronriis bonis esse doluisti- Quoniam vero, quis sit rerum finis, ignoras, nequam homines atque nefarios potentes felicesque arbitraris; quoniam vero. quibus gubernaculis mundus regatur, oblitus es, has fortunarum vices aestimas sine rectore fluitare: magnae non ad morbum modo, verum ad interitum quoque causae; sed sospitatis auctori grates, quod te nondum totum natura destituit.
 
 Habemus maximum tuae fomitem salutis veram de mundi gubernatione sententiam, quod eam non casuum temeritati, sed divinae rationi subditam credis; nihil igitur pertimescas, iam tibi ex hac minima scintillula vitalis calor illuxerit.
 
@@ -594,7 +594,7 @@ Post haec paulisper obticuit atque, ubi attentionem meam modesta taciturnitate c
 
 ea tantum animi tui. sicuti tu tibi fingis, mutata pervertit. Intellego multiformes illius prodigii fucos et eo usque cum his, quos
 
-eludere nititur, blandissimam familiaritatem, dum intolerabili dolore confundat, quos insperata reliquerit. Cuius si 4: Mart. Cap. 54, 13D. (35, 28 E.) : lumine claro .. cernere vultus 8 sqq. cf. Verg. Aen. V 812; VI 733: hine cupiunt metuuntque dolent gaudentque PTLYKE 11 timor T dolor in mg.), Fl Anicii Manlii ( Mallii P Manilii LE) Severini Boethii i Boethi L _ Boetii PTL V* Boeti Aur.) (vc ex (sie) inl) P Excons Ord (Exmag. Off. Atq.) P Patr. (Patricio (sic) P) Philosophiae i-ie TL -ice T1 ; Consolationis Explicit Lib I Incipit Lib II Feliciter PTL V AUT. E 18 statum in ras. V (τήv Tr,; σής διαvοίας xατάστασιv sril τοσόvδε μεϑαϱμοϑεīσαv Plan.)19 post tui s. c. s. virtutem T naturam, mores ac meritum reminiscare, nec habuisse te in ea pulchrum aliquid nec amisisse cognosces, sed, ut arbitror, haud multum tibi haec in memoriam revocare laboraverim.
+eludere nititur, blandissimam familiaritatem, dum intolerabili dolore confundat, quos insperata reliquerit. Cuius si naturam, mores ac meritum reminiscare, nec habuisse te in ea pulchrum aliquid nec amisisse cognosces, sed, ut arbitror, haud multum tibi haec in memoriam revocare laboraverim.
 
 Solebus enim praesentem quoque blandientemque virilibus incessere verbis eamque de nostro adyto prolatis insectabare sententiis.
 
@@ -612,7 +612,7 @@ Deprehendisti caeci numinis ambiguos vultus. Quae sese adhuc velat aliis, tota t
 
 Si probus, utere moribus, ne queraris. Si perfidiam perhorrescis, sperne atque abice perniciosa ludentem; nam quae nunc tibi est tanti causa maeroris, haec eadem tranquillitatis esse debuisset. Reliquit enim te, quam non relicturam nemo umquam poterit esse securus.
 
-An vero tu pretiosam 11 v. supra 16, 20 sq. et Klingner 12sq., qui de popvlari philoiophia verba facit 4 bland. quoque TlLlVx Aur.1 Peip. o adto Ll aditu PE2 PTLVKE adytu V* 7 contingat Pl 8 descisceris PT1 L1 V1 discesseris V2 Aur.K 11 reth. PTLVK 12 recta PLIEJ, ut vid. T1V1 13 tunc P1 T1 V1 misice ut vid. T1 17 mutatam Peip. (typothetarum ut uid.errore) 18 servabit PTlLV servabat Aur. 21 nominis Tl 23 perfidam TF1 Erfurt. Par. 15090 (probat Schepss 23 sq. sperne atque om. P. aestimas abituram felicitatem et cara tibi est fortuna
+An vero tu pretiosam aestimas abituram felicitatem et cara tibi est fortuna
 
 praesens nec manendi fida et, cum discesserit, allatura maerorem? Quodsi nec ex arbitrio retineri potest et calami-
 
@@ -658,7 +658,7 @@ Nulla tibi a nobis est allata violentia. Opes, honores ceteraque talium mei sunt
 
 Audacter adfirmem, si tua forent, quae amissa conquereris, nullo modo perdidisses.
 
-An ego i riut. Apoll. 103 d. 104 a, b: ὀϱϑϖς 6 Φαληϱεύς Δημήτϱοις είπόvτος Εύϱιπίδοv (fr. 420, 2) μιxϱὰ τὰ (uιxϱόταταlibril σϕάλλοvτα xai fu ήμέϱα i Td μέv xαϑειλεv ύΨόϑεvxa \\d ήδ\'avta I xa μέv cUla xαλᾣς ἔϕη λέyειv avrdv, βέλτιοv fI\' vἔχειvti μή μίαv ήμέϱαv, ἀλλἀ στιyμήv είπε χϱόvov 6 Dio Chrys. LXV 8 doxti μοι 1) Túχη πϱός avxov; δίxαια ἂv είπειv (cf. Klingner 15) 7sqq. Cic. Tusc. I 93: quid est quod querare, si repetit, cum vult; ea enim condicione acceperas. Plut. Apoll. 116 a: έπί πἀvτωv λέyειv χϱή xa τϖv ϑεωv ἔχοvτες έπιμελοv- μεϑα. i ὃταv δε χϱήζωσ av-r\' ἀϕαιϱούvται πἀλιv. : ov δει oJ, δυσϕοϱειv. . a ἔχϱησαv ήμιv πϱὀς όliyov, ταύτ\' ἀπαιτωσιv 83 suae vis Eng.56 suis libri si quis vrsui sequ. add. PT1V1PTLVKE 8 tua tibi TV Peip. 13 te s. v. P 15 iuri P 16 debes Peip., ef. Nolte habe Vall. e coni. ut rid. Crescii 20 iuris s. r. P 22 per. didisse P sola meum ius exercere prohibebor? Licet caelo proferre ® lucidos dies eosdemque tenebrosis noctibus condere, licet anno terrae vultum nunc floribus frugibusque redimire, nunc nimbis frigoribusque confundere, ius est mari nunc strato aequore blandiri, nunc procellis ac fluctibus inhorrescere:
+An ego sola meum ius exercere prohibebor? Licet caelo proferre ® lucidos dies eosdemque tenebrosis noctibus condere, licet anno terrae vultum nunc floribus frugibusque redimire, nunc nimbis frigoribusque confundere, ius est mari nunc strato aequore blandiri, nunc procellis ac fluctibus inhorrescere:
 
 nos ad constantiam nostris moribus alienam inexpleta hominum cupiditas alligabit? Haec nostra vis est, hunc continuum ludum ludimus: rotam volubili orbe versamus, infima summis, summa infimis mutare gaudemus.
 
@@ -668,7 +668,7 @@ formidabilem, mox deinde miserandum rogi flammis traditum, misso caelitus imbre 
 
 Quid tragoediarum clamor aliud deflet nisi indiscreto ictu fortunam felicia regna vertentem? Nonne
 
-adulescentulus dvo πίϑους, xbv ukv eva xαxωv, tdv ds ἔτεϱοv έἀωv in Iovis limine iacere didicisti? Quid si uberius de bonorum parte sumpsisti. quid si a te non tota discessi, PTLVKE 2 eademqueP 3 redimere PT1L1V1, in ras. IC 7 allegabit L1 allegavit T1 V1 alligavit PV1 E 10 uti ne Vall. ne utique Kluss. ne ta hip., cf. Eng.2 cum om. Par. 15060 13 "miserandum Burmann ad Anth. Lat. 11% regi P fljtmmas T1 15 inpedisse Pl 18 ΑΥΟΥC L l ATOTC TE δοιούς Peip. Ilierc K. 0 tn ras. P TON NEN P TON "E PL 1 SAAaX KE KAAOX T\'r 19 ovis P quid si haec ipsa mei mutabilitas iusta tibi causa est sperandi meliora, tamen ne animo contabescas et intra commune omnibus regnum locatus proprio vivere iure desideres?\'
+adulescentulus dvo πίϑους, xbv ukv eva xαxωv, tdv ds ἔτεϱοv έἀωv in Iovis limine iacere didicisti? Quid si uberius de bonorum parte sumpsisti. quid si a te non tota discessi, quid si haec ipsa mei mutabilitas iusta tibi causa est sperandi meliora, tamen ne animo contabescas et intra commune omnibus regnum locatus proprio vivere iure desideres?\'
 
 **1** Si quantas rapidis flatibus incitus
 
@@ -708,11 +708,11 @@ adulescentulus dvo πίϑους, xbv ukv eva xαxωv, tdv ds ἔτεϱοv έἀ
 
 **19** Numquam dives qui trepidus gemens
 
-**20** sese credit egentem. (20)
+**20** sese credit egentem.
 
 His igitur, si pro se tecum Fortuna loqueretur. quid profecto contra hisceres, non haberes; aut. si quid est. quo querelam tuam iure tuearis, proferas oportet. dabimus dicendi locum.
 
-— Tum ego: Speciosa quidem ista sunt, .⅔ Pluto Apoll. 103 c,d (ilenander): tl δ\'έπί τοις; αύτοις vόμοις i έΨ οίσπεϱ ήμεīς ἔσπασας τός ἀέϱα τόv xοιvov ..οίστέοv ἂμειvovxavta xat λοyιστέοv 9 Hor. Carm. saec. 59 -1 rabidis T2LV1E 6 quod P quo V1 steUigeris L 10 handiå- Pl L eo continuaturus erat T1 11 cesse Tl 15 parte Tl 17 altos deter., Rand 20 largus PT1L1V1; cf. Eng.* 22 erit F! 23 creditegeotem continuaturus erat T\'i aeg. P 21 fortune P inquam, oblitaque rhetoricae ac musicae melle dulcedinis tum tantum, cum audiuntur, oblectant, sed miseris malorum altior sensus est; itaque cum haec auribus insonare desierint.
+— Tum ego: Speciosa quidem ista sunt, inquam, oblitaque rhetoricae ac musicae melle dulcedinis tum tantum, cum audiuntur, oblectant, sed miseris malorum altior sensus est; itaque cum haec auribus insonare desierint.
 
 insitus animum maeror praegravat. — Et illa: Ita est. inquit; haec enim nondum morbi tui remedia, sed adhuc
 
@@ -728,7 +728,7 @@ ad singularem felicitatis tuae cumulum venire delectat. Si quis rerum mortalium 
 
 Dedisti, ut opinor, verba Fortunae, dum te illa demulcet, dum te ut delicias suas fovet. Munus, quod nulli umquam privato commodaverat, abstulisti.
 
-Visne igitur cum Fortuna calculum ponere? Nunc te primum liventi oculo praestrinxit. PTX TKE 1 reth. PTVlE mellea dulcedine Wakejield ad Lucr. III 948 6 curationum T1 T1 dolores PTaK1 7 namque P 11 affinitate PTK principium P \' T 15 cum VxEy Peip. (typothetarum errore 20 lucis om. Hlinis s. s. V 21 facundiae quae T 25 CODa PTLVE S, tum tte illa) PT1 30 te s. r. T libeoti PT1 V1 Aur.1K1 praestinxit P praestrixit K Si numerum modumque laetorum tristiumve consideres, adhuc te felicem negare non possis.
+Visne igitur cum Fortuna calculum ponere? Nunc te primum liventi oculo praestrinxit. Si numerum modumque laetorum tristiumve consideres, adhuc te felicem negare non possis.
 
 Quodsi idcirco te fortunatum esse non aestimas, quoniam, quae tunc laeta videbantur, abierunt. non est. quod te miserum putes, quoniam, quae nunc creduntur maesta, praetereunt.
 
@@ -790,7 +790,7 @@ tuam vel ipsa concesserim, tui desiderio lacrimis ac dolore tabescit. Quid dicam
 
 id aetatis pueris vel paterni vel aviti specimen elucet ingenii? Cum igitur praecipua sit mortalibus vitae cura retinendae, o te, si tua bona cognoscas, felicem, cui suppetunt etiam nunc, quae vita nemo dubitat esse cariora.
 
-Quare sicca iam lacrimas; nondum est ad unum omnes exosa fortuna nec tibi nimium valida. tempestas incubuit. 24 Verg. Georg. II 458: 0 fortunatos nimium, sua si bona norint, agricolas! 11L YKE 5 fel. fuisse PVE 6 luis Ts 8 maximis quae T1 13 simm. PTL symmacus K 14 quod et Barih yir ** T 16 sq. pudicitia PT1F1 Aur.1 (cf. SalL Cat. 12,2. Cic. in Cat. II 25; pro Mil. 77) pudicitiae T2LV2 del. Volkmann pudicitia et Kluss. p. ac Eng. pudicitiae flore Peip. ; p. LXVI. pudore del. Βασ.: cf. Schepss, Philol. 1893, 381 19 exossa P 20 tuo PV1 22 avi P 23 precipue P 24 cuios P 27 exossa PL1 quando tenaces haerent ancorae, quae nec praesentis solamen nec futuri spem temporis abesse patiantur. —
+Quare sicca iam lacrimas; nondum est ad unum omnes exosa fortuna nec tibi nimium valida. tempestas incubuit. quando tenaces haerent ancorae, quae nec praesentis solamen nec futuri spem temporis abesse patiantur. —
 
 Et haereant, inquam, precor; illis namque manentibus, utcumque se res habeant, enatabimus. Sed quantum ornamentis nostris decesserit, vides.
 
@@ -806,7 +806,7 @@ inest enim singulis, quod inexpertus ignoret, expertus exhorreat.
 
 Adde, quod felicissimi cuiusque delicatissimus sensus est et, nisi ad nutum cuncta suppetant, omnis adversitatis insolens minimis quibusque prosternitur: adeo perexigua sunt, quae fortunatissimis beatitudinis summam detrahunt.
 
-Quam multos esse coniectas, qui sese caelo proximos arbitrentur, si de fortunae tuae reliquiis pars eis minima contingat? Hic ipse locus, quem tu exsilium vocas. 8/9 Plut. Apoll. 103b: ovx ἔστιv δστις ndvx\' dvfjo εύδαιμοvεῑ.Sinc usque ad IV 6 Protreptici Aristotelis exeerptis Boethium usum esse adfirmat Usener 51, obloquuntur Miiller (II 5-nr 9), Rand, Klingner 8 sq. 24Plut. Ex. 600 a: ού yag oluai πολλούvείvαι Σαϱιαvωv 01 URJ tCC σἀ πϱἀyματα xaιμετἀcpvyrsπἂλλοv έϑελήσοvσιv αίτοίς ειv Ad ux. 611 b: δειvόv έστιv έτέϱος \'μέv ήδέως âv έλέσϑαιιήv σήv τίχηv • • πηλίxας ἔχει ra σωζόμεvαχἀϱιτας 8 atque s. v. T\'l 9 est om. P aliqui P 13 (vel, degener P PTLVKE 11 aetatur P deletis P dilectis X1 delectis V1 23 suma P 24 quis esse T1
+Quam multos esse coniectas, qui sese caelo proximos arbitrentur, si de fortunae tuae reliquiis pars eis minima contingat? Hic ipse locus, quem tu exsilium vocas.
 
 incolentibus patria est. Adeo nihil est miserum, nisi cum
 
@@ -828,7 +828,7 @@ beatitudinem percipiendam fortunae instabilitas aspirare non possit. Ad haec, qu
 
 An vel si amiserit, neglegendum putat?
 
-Sic QUOQue Derexile bonum est, quod aequo animo feratur -amissum. Et quoniam tu ; 1 Menandri Epitr. fr. 179 K. ts Koerte; Stob. IV 44, 57): ούδεv πέϖοvϑας δειvόv, ἂvμή πϱοσποιή adfertur a Plat. Ex. 599c. Sen.Ad Lucil. 19,20 (Epicur. fr. 474): miser est, qui ae beatissimum non iudicat PTLVKE 4 mutari T2LV2 7 habeat PT1 retinere TlVl 9 perpetuo VL 10 pe.titis P 11 insciti atque T1 14 tuam mittere TlE 15 cognoscas T1 Peip. (agnoscas in Aur. ita exaratum est, ut facile cogn. legi possit) 19 quoniam ad Rand, sed v. supra 18, 2 et Phil. Woch. 1922,1205 22 noscit P 25 an om. TaL1 an si vel P1 26amiseris P 27 sq. illi demens P1 idem es, cui persuasum atque insitum permultis demonstrationibus scio mentes hominum nullo modo esse mortales, cumque clarum sit fortuitam felicitatem corporis morte finiri, dubitari nequit, si haec afferre beatitudinem potest, quin omne mortalium genus in miseriam mortis fine labatur.
+Sic QUOQue Derexile bonum est, quod aequo animo feratur -amissum. Et quoniam tu ; idem es, cui persuasum atque insitum permultis demonstrationibus scio mentes hominum nullo modo esse mortales, cumque clarum sit fortuitam felicitatem corporis morte finiri, dubitari nequit, si haec afferre beatitudinem potest, quin omne mortalium genus in miseriam mortis fine labatur.
 
 Quodsi multos scimus beatitudinis fructum non morte solum, verum etiam doloribus suppliciisque quaesisse, quonam modo praesens facere beatos potest, quae miseros transacta non efficit?
 
@@ -890,7 +890,7 @@ quod cum factum est, pauperes necesse est faciant quos relinquunt.s o igitur ang
 
 An gemmarum fulgor oculos trahit? Sed si quid est in hoc splendore praecipui, gemmarum est lux illa, non hominum; quas quidem mirari homines vehementer ammiror.
 
-Quid est enim carens animae motu atque compage. quod animatae rationabilique naturae pulchrum esse iure 1 v. supra 16,20. 21, 11; de sollemni Protrepticorum ordine. quo neque ob divitias neque ob nobilitatem neque ob pulchritudinem atium studium spernendum esse ostenditur, Hartlieh 320, qui praeter hunc locum et HI 3-7 adfert Plat. Euth. 281 b, Galeni Protr. - T > \'? (deAristotelis fr.59 v. infra II 6 p. 36,21), Hortens. fr. 73/80sq., Plut. Πεϱί παίδωvdywyrts 8, Epict. III 22, 27 7,8 lh)l\'.l;1.; II 2, 1 confert Rand 11, 1 PTLYEE 6 vestrae PT1, ut rid. V1 vestri Fs vestra rel. Peip. 7 ac PT1LE aut T* an KV bis PTl his E congestae F5 pecunia PV1E2. c\' Eng.\'; Phil. Woch. 1922,1206 aut qui P hae V * 10 quaemque Tl 11 pretiosa om. Pl 14 replet in ras. P 20 quidem in P 21 pręcipu n T* 23 quidem enim P videatur?
+Quid est enim carens animae motu atque compage. quod animatae rationabilique naturae pulchrum esse iure videatur?
 
 Quae tametsi conditoris opera suique distinctione postremae aliquid pulchritudinis trahunt, infra. vestram tamen excellentiam collocatae ammirationem vestram nullo modo mereantur.
 
@@ -908,7 +908,7 @@ Paucis enim minimisque natura contenta est; cuius satietatem si superfluis urgue
 
 Iam vero pulchrum variis fulgere vestibus putas. Quarum si grata intuitu species est. aut materiae naturam aut ingenium mirabor artificis.
 
-An vero te longus ordo 7110 de Cie. Hort, fr. 70/77 amoenitas) r. PJasberg 66, Miiller 37 7 1.1. 43/53 (eaeli aignorum admirabilem ordinem) 12/13 Sen. Ad M*rc. 19,5. non potest id fortana tenere, quod natura dimisit. 15/16 Cic. Hort. ^: intellegas, quam illud non sit necessarium, quod redandat, 85/92 (V. Plasberg 67; schol. Cruqu. ad Hor. Sat. II 6. 79 : eandem non modo mediocri pecuni sed etiam tenui pereipere possumus; Tusc. V 89: hic (philosophus) quam parvo est contentus; 99, 102. Aug. Solil. I 17 (Ciceronis liber i; cf. Mela, Arch. f. Gesch. Philoa. I 1888, 479 19/20 Arist. fr. 57 (Stob. III 3, 25 + Pap. Oxyrh. 666): .. rfr εύδαι- μοτίαv αύx έv tw πολλὰ xεxτ ήσϑαι yίyvεϑαι μαλλοv i1 έv τῴ τηv διαxείϑαι xal yctp ovdi rd σωμαov rd λαμπϱάέσϑήτι xεxοσμημέvov ϕαίη r/f ἂv tbai μαxάϱιοv .. συμβαίvει roif μηδεvός ἂξίοιςοὕσι δταv τύχωσι χοϱηyίας at τωv Sia τής τύχής ἀyαως πλέοvος ἂξια αύτωv tlrat ra xτήματα 8 πὰvτωv αίσχωτοv ■ cf. H _. 2 Postremo T1 Peip. 4 mereantur Em- merebantur hbn i - PT LVKEI\'Ai> audes—gloriari om. P 17 superfiuis is in ras.) V superliiu surgere T1 superfluis surijere X1 LXVII. Boethin«, Cons. Weinberger. 3 famulorum facit esse felicem? Qui si vitiosi moribus sint, perniciosa domus sarcina et ipsi domino vehementer inimica;
+An vero te longus ordo famulorum facit esse felicem? Qui si vitiosi moribus sint, perniciosa domus sarcina et ipsi domino vehementer inimica;
 
 sin vero probi, quonam modo in tuis opibus aliena probitas numerabitur? Ex quibus omnibus nihil horum, quae tu in tuis computas bonis, tuum esse bonum liquido monstratur.
 
@@ -928,7 +928,7 @@ sibi splendere nisi inanimatae supellectilis possessione videatur? Et alia quide
 
 ornamenta captatis nec intellegitis, quantam conditori vestro faciatis iniuriam. Ille genus humanum terrenis omnibus
 
-praestare voluit, vos diffnitatem vestram infra infima quaeque detruditis. Nam si omne cuiusque bonum eo. cuius est, constat esse pretiosius, cum vilissima rerum vestra 16 Gell. IX 8: verum est profecto, quod observato rerum usu sapientes viri dixere, multis egere, qui multa habeat; XIII 24 PTLVDKE 3 sint P 6 inest om. P 7 vel prius om. P quodsi (sui) Schepss EngS 8 haec s. r. P 12 (in) tanto Kluss. , cf. Eng. 14 ab opus tnctptt D 17 minimo V* suae L 28 (quod) c. bonum (est) Laud1 E2 (quod) c. b. (id) VI DLaud2 (quod) c. b. (est id) TiLE1; cf. Eng. bona esse iudicatis, eisdem vestra ipsos vestra existimatione summittitis, quod quidem haud immerito cadit.
+praestare voluit, vos diffnitatem vestram infra infima quaeque detruditis. Nam si omne cuiusque bonum eo. cuius est, constat esse pretiosius, cum vilissima rerum vestra bona esse iudicatis, eisdem vestra ipsos vestra existimatione summittitis, quod quidem haud immerito cadit.
 
 Humanae quippe naturae ista condicio est, ut tum tantum ceteris rebus, cum se cognoscit. excellat. eadem tamen infra bestias redigatur, si se nosse desierit; nam ceteris animantibus sese ignorare naturae est. hominibus vitio venit. Quam vero late patet vester hic error.
 
@@ -952,7 +952,7 @@ qui nunc contum gladiumque sollicitus pertimescis. si vitae huius callem vacuus 
 
 **4** facili quae sera solebat
 
-**5** ieiunia solvere glande.
+**5** ieiunia solvere glande
 
 **6** Non Bacchica munera norant
 
@@ -1004,7 +1004,7 @@ qui nunc contum gladiumque sollicitus pertimescis. si vitae huius callem vacuus 
 
 **30** pretiosa pericula fodit?
 
-Quid autem de dignitatibus potentiaque disseram. ^ qua vos verae dignitatis ac potestatis inscii caelo ex aequatis? Quae si in improbissimum quemque ceciderunt, 23 cf. Ov. Met. I 140: effodiuntur opes, inritamenta maior- 24 Arist. fr. 59: τιμαὶ δὲ xal δόξαι rct ζηλούμενα μᾱλλον Tåw }.Oł1f-: ἀδιηγήτον γέμει ϕλυαρίας (Iambl. c. 8; cf. Miiller 39). Cic. Tusc. nihil melius homini, nihil magis expetendum, nihil praestantios honoribus, imperiis, populari gloria. Plut. Apoll. 103e: ἐπαερϑέντες ἤ ^ χρημάτων περιουσίαν ἄϕϑονον fj διὰ μέγεϑος ἀρχη̃ς ἤ διά τιτας προ- εδρίαςπολιτιὰς ij διὰ Tiuas xal δόξας PTLVDKE 6 altas ut vid. Tl 11 arma V (prQbat Huttinger 1900, p. 19. n.t:tP 18 aethnae LiKE 25 qua TELaud* quam P quae LV Aur K2 Laud quasi?) DKl 26 ceciderint DlE, (i ex u, u m 2 s.s.) T quae flammis Aetnae eructantibus, quod diluvium tantas strages dederint?
+Quid autem de dignitatibus potentiaque disseram. ^ qua vos verae dignitatis ac potestatis inscii caelo ex aequatis? Quae si in improbissimum quemque ceciderunt, quae flammis Aetnae eructantibus, quod diluvium tantas strages dederint?
 
 Certe, uti meminisse te arbitror, consulare imperium, quod libertatis principium fuerat, ob superbiam consulum vestri veteres abolere cupiverunt, qui ob eandem superbiam prius regium de civitate nomen abstulerant.
 
@@ -1022,7 +1022,7 @@ Cum liberum quendam virum suppliciis se tyrannus adacturum putaret. ut adversum 
 
 quod in alium facere quisque possit, quod sustinere ab alio ipse non possit?
 
-Busiridem accepimus necare hospites 14, r1 de Zenone cf. 6,19; PIat. Περὶ ἀδολεσχ. 505 d, Easeb. Praep. ev. X 14, 15 sqq., Laert. Diog. IX 5,27; alii de Anaxarcho (Diogen. IX 59) eogitant; de Anaxagora, qui in schol. commemoratur. v. Sehepsa, Progr. Wiizrburg 1881, p. 44 et supra 6, 18 e1 quae (ineendia) F* (s)ethn(a)e PT2LV2K Aetna D* Valll.) PTLVDKM eructuant. T1L1VDK Peip.; cf. Verg. Aen. III 576. Gell. XVII 10, 9. Macr. V 17,14. 2 dederunt P 11 num D, ut vid. T1 12 videris T1L 1 19 nune P 21 puteret P 26 qaisquam codd. quidam Obb. 27 Ipse om. P accipimus PP VDK; cf. infra 40, 2. 75. 9.
+Busiridem accepimus necare hospites
 
 solitum ab Hercule hospite fuisse mactatum. Regulus plures i
 
@@ -1042,7 +1042,7 @@ quod proprium est, nec contrariarum rerum miscetur effectibus et ultro, quae sun
 
 modo non efficit dignos, sed prodit otius et ostentat indignos. Cur ita provenit? Gaudetis enim res sese aliter habentes falsis compellare nominibus, quae facile ipsarum rerum redarguuntur effectu:
 
-itaaue nec illae divitiae nec illa potentia nec haec dignitas iure appellari potest. Postremo idem de tota concludere fortuna licet, in qua nihil 11/12 cf. Klingner 21,1 (Dio Chrya. LXV 10: χρήματα ἰσχὺς δὐrαuις δόξα τιμαί) rlLVDKE 11 sepissimia PL1 12 paciatur P 16 est om. P 17 misicos Tl 18 rethorica PTVlKE -cae TxDlK -ce Peip. 19 contrarium P 20 auersa Peip. (typothetarum errore) 24 sed — indignas in mg. P ostendat PLl 25 resese P 27 redarguntur Tl, ut vid. VI (cf. Peip. p. LXVI) expetendum, nihil nativae bonitatis inesse manifestum est. quae nec se bonis semper adiungit et bonos, quibus fuerit adiuncta., non efficit.
+itaaue nec illae divitiae nec illa potentia nec haec dignitas iure appellari potest. Postremo idem de tota concludere fortuna licet, in qua nihil expetendum, nihil nativae bonitatis inesse manifestum est. quae nec se bonis semper adiungit et bonos, quibus fuerit adiuncta., non efficit.
 
 **1** Novimus. quantas dederit ruinas
 
@@ -1062,7 +1062,7 @@ itaaue nec illae divitiae nec illa potentia nec haec dignitas iure appellari pot
 
 **9** quos videt condens radios sub undas
 
-**10** Phoebus, extremo veniens ab ortu.
+**10** Phoebus, extremo veniens ab ortu
 
 **11** quos premunt septem gelidi triones.
 
@@ -1082,7 +1082,7 @@ Tum ego: Scis, inquam, ipsa minimum nobis ambitionem mortalium rerum fuisse domi
 
 Et illa: Atqui hoc unum est, quod praestantes quidem natura mentes, sed nondum ad extremam manum virtutum perfectione perductas allicere possit, gloriae scilicet cupido et optimorum in rem publicam fama meritorum.
 
-Quae quam sit exilis et totius vacua ponderis, sic 28 Cic. Tusc. I 40. Sen. Ad Marc. 21. Plut Ex. 601c. Ptol. Syntax I 6. Macrob. Somn. II 9, 10; 10, 3. Mart. Cap. 290, 6 (197,21). Amm. Marc. XV 1, 4 12 subundans P 13 Phoeb. in PT1V1D1 15 nontus T1 nothus PFCLVDKE T2L1V2E 18 ignavi Pei. inpuri Peip.2 insani Pulman. 26 inde a perductas usque ad puto quae nec (infra 56,22) codex T suppletus est e W considera. Omnem terrae ambitum, sicuti astrologicis ? demonstrationibus accepisti, ad caeli spatium puncti constat:: obtinere rationem, id est, ut, si ad caelestis globi magnitudinem conferatur, nihil spatii prorsus habere iudicetur.
+Quae quam sit exilis et totius vacua ponderis, sic considera. Omnem terrae ambitum, sicuti astrologicis ? demonstrationibus accepisti, ad caeli spatium puncti constat:: obtinere rationem, id est, ut, si ad caelestis globi magnitudinem conferatur, nihil spatii prorsus habere iudicetur.
 
 Huius igitur tam exiguae in mundo regionis quarta fere
 
@@ -1094,7 +1094,7 @@ guisque limitibus artata? Adde, quod hoc ipsum brevis habitaculi saeptum plures 
 
 non modo fama hominum singulorum, sed ne urbium quidem pervenire queat. Aetate denique M. Tullii, sicut ipse quo dam loco significat, nondum Caucasum montem Romanae
 
-rei publicae fama transcenderat et erat tunc adulta Parthis etiam ceterisque id locorum gentibus formidolosa. Videsne igitur, quam sit angusta, quam compressa gloria, quam dilatare ac propagare laboratis? An ubi Romani nominis transire fama nequit, Romani hominis gloria progredietur? 6 Ptol. Syntax. II, cf. Macrob. Somn. II 5 8 Verg. Aen. VI 42: deserta siti regio 16 Cic. Hort. 27/37: quantum inter se homines studiis moribus omni vitae ratione differunt (Dienel 1913. 7 sq. 19/20 Cic. Rep. VI 22 23 Cic. Hort 80,87 (Usener, Rhein. Mus. XXVIII 397. Hartlich 252. Dienel 15. Plasbere 62 ) PFCLVDKE 3 [id est] Usener, Rhein. Mus. XXVIII 401 6 partio P inde a rr. quae nobis usque ad 41, 21 poterit esse deest in D 8 sit in P siti∗∗∗ V s. s. I in via, in mg. id est ubi pluvia non est sicut in arabia, quae ab ariditate nomen accepit 9 dest. FlVl 12 ut eraS. VKE at L* aut F* aliquid Fl 19 m F (s. B. mucil, CL r Marci Ptip. men tulii P (in) quodam W* Peip. 24 propagare ac dilitare P
+rei publicae fama transcenderat et erat tunc adulta Parthis etiam ceterisque id locorum gentibus formidolosa. Videsne igitur, quam sit angusta, quam compressa gloria, quam dilatare ac propagare laboratis? An ubi Romani nominis transire fama nequit, Romani hominis gloria progredietur?
 
 Quid quod diversarum gentium mores inter se atque instituta discordant, ut. quod apud alios laude, apud alios supplicio dignum iudicetur.
 
@@ -1114,7 +1114,7 @@ Etenim finitis ad se invicem fuerit quaedam, infiniti vero atque finiti nulla um
 
 Ita fit, ut quamlibet prolixi temporis fama, si cum inexhausta aeternitate cogitetur. non parva, sed plane nulla esse videatur.
 
-Vos autem nisi ad Populares auras inanesque rumores recte facere nescitis et 1 cf. Usener, Gott. Anz. 1892, 388 (Cic. fragm. in schol. ad Luc. II 375 serv.) 9 Cic. Rep. VI 25: oblivione posteritatis exstinguitur lOHor. Epist. II 2,118 Ipremit ... vetustas) 13sqq. Plut. Apoll. 11 le. 17 e: d μαϰρότατος ploç ὀλίγος ἐστὶxal στιγμαι̃ος npdi τὸν ἄπειρον °\' cf. Cic. Hort. 25/35 ( annoram, quos in fastis habemns, msgnns 190* complectitur). Rep. VI 2k Tac. Dial. 16. Usener 1.1.392. Plasberg 63. Dienel 7,11. Rand 12, 1 Macrobio (Somn. IIII. 13) collato Boethium aliam rationem inire potuisse disputat 1 quidquid Pl quid quod in ras. V s. s. s. e (scilicet est; quid est PFCLVDKE quod W Peip., cf. Usener p. 402 5 pexvulgata codd. quidam Obb. 10 quem cum PIVl 13 ad om.L2W1 Prip. aeteniitates P 15 decem aut a Boethio aut a librario pro duodecim positum esse dicit Vsener 19 nec FCV Peip. 20 (in) infin. P 24 aures FLK ut nd. F1 relicta conscientiae virtutisque praestantia de alienis.
+Vos autem nisi ad Populares auras inanesque rumores recte facere nescitis et relicta conscientiae virtutisque praestantia de alienis.
 
 praemia sermunculis postulatis. Accipe in huius modi arrogantiae levitate quam festive aliquis illuserit; nam cum quidam adortus esset hominem contumeliis, qui non ad verae virtutis usum, sed ad superbam gloriam falsum sibi philosophi nomen induerat, adiecissetque iam se sciturum, an ille philosophus esset, si quidem inlatas iniurias leniter patienterque tolerasset, ille patientiam paulisper assumpsit acceptaque contumelia velut insultans: \'Tam
 
@@ -1180,7 +1180,7 @@ Sed ne me inexorabile contra fortunam gerere bellum putes, est aliquando. cum de
 
 Nondum forte, quid loquar, intellegis; mirum est, Quod dicere gestio, eoque sententiam verbis explicare vix queo.
 
-Etenim plus hominibus reor adversam -quam prosperam prodesse fortunam, illa enim 5 sq. Cf. Yerg. Aen.lV 174 (Fama\\ 193 f lingnae) 24 fallax illa nihil poetae cuiusdam esse suspicatur Klusa.: Sen. Agam. 5ssqq. failax Fortttna) 16 verba inde a num usque ad terminos (p. 44, 27 exciderunt in D PFCLVKE 24 (illa eras.) fallax FL V Laud 25 nihil eras.Laud non nihil V \\ 1 ϰατεσχηματισμένη ἐϰεἰνη Plan.) 26 quod P semper specie felicitatis, cum videtur blanda, mentitur,
+Etenim plus hominibus reor adversam -quam prosperam prodesse fortunam, illa enim semper specie felicitatis, cum videtur blanda, mentitur,
 
 haec semper vera est, cum se instabilem mutatione demonstrat. Illa fallit, haec instruit, illa mendacium specie bonorum mentes fruentium ligat, haec cognitione fragilis felicitatis absolvit; itaque illam videas ventosam fluentem
 
@@ -1190,11 +1190,11 @@ a vero bono devios blanditiis trahit, adversa plerumque ad vera bona reduces unc
 
 discedens suos abstulit, tuos reliquit? Quanti hoc integer et, ut videbaris tibi, fortunatus emisses? Nunc amissas opes querere, quod pretiosissimum divitiarum genus est, amicos invenisti.
 
-Quod mundus stabili fide concordes variat vices, quod pugnantia semina foedus perpetuum tenent, (5) quod Phoebus roseum diem curru provehit aureo, ut, quas duxerit Hesperos, Phoebe noctibus imperet, ut fluctus avidum mare(10) certo fine coherceat, ne terris liceat vagis latos tendere terminos, li sqq. cf. Mart. Cap. 3, 7 (1,5): semina .. pugnantia .. elementa ligas vicibus .. foedere .. sexus concilians et sub amore fidem PFCL VKE 1 balanda P 2 mutationem P 6 ex P 13 et FlLE om. rei. Peip. uti Tf Peip. 14 [fortunatus] Βασ. emisser L 1, ut vid. V1 nunc F1L nunc et PF1, V1 ut vid., Aur. Laud desine (dess. E) nunc et V-E nunc m 2 s. s.), K (rasura ante nunc) desine W Peip., in ras. C l desine in mg. F) quaerere P, V (schol.: alia lra habet: amissas opes querere, melius et erit yronia), Peip. 22 hesperos V\'K, cf. stf pra p. 14, 6 26 nec F hanc rerum seriem ligat terras ac pelagus regens et caelo imperitans amor. (15) Hic si frena remiserit, quicquid nunc amat invicem, bellum continuo geret et, quam nunc socia fide pulchris motibus incitant, (20) certent solvere machinam. Hic sancto populos quoque iunctos foedere continet, hic et coniugii sacrum castis nectit amoribus, (15) hic fidis etiam sua dictat iura sodalibus. O felix hominum genus, si vestros animos amor, quo caelum regitur, regat! (30)
+Quod mundus stabili fide concordes variat vices, quod pugnantia semina foedus perpetuum tenent, quod Phoebus roseum diem curru provehit aureo, ut, quas duxerit Hesperos, Phoebe noctibus imperet, ut fluctus avidum mare certo fine coherceat, ne terris liceat vagis latos tendere terminos, hanc rerum seriem ligat terras ac pelagus regens et caelo imperitans amor. (15) Hic si frena remiserit, quicquid nunc amat invicem, bellum continuo geret et, quam nunc socia fide pulchris motibus incitant, (20) certent solvere machinam. Hic sancto populos quoque iunctos foedere continet, hic et coniugii sacrum castis nectit amoribus, (15) hic fidis etiam sua dictat iura sodalibus. O felix hominum genus, si vestros animos amor, quo caelum regitur, regat! (30)
 
 Iam cantum illa finiverat, cum me audiendi avidum stupentemque arrectis adhuc auribus carminis mulcedo defixerat.
 
-Itaque paulo post: O, inauam, summum lassorum solamen animorum, quam tu me vel sententiarum pondere vel canendi etiam iucunditate refovisti, adeo ut iam me 20 Plat. Proto 32sd: ἀπεπαύσατο .. ϰεϰηλημένος .. ἐπιϑυμω̃ν ἀϰούειν 9 certant V\', ut rid. L 1, K 12 hinc P 13 nectat P PFCLVDKE AKICII MANLII (MALLII P) SEVERINI BOETHII ( BOETII PL1V2 Laud BOECII K) EXCONS ORD (ORDI P) PATRIC (VIRI COXSUL ET ILLVSTRI C) PHILOSOPHIAE (ICE K) CON- SOLATIONIS LIB II EXPL INCIPIT LIB III FELICITER PCL V Aur. D Laud, K (om. feliciter) c.23 quam tu PVlD, pro quantam s. s. Aur. Laud quantum rel. Peip., ef infra 75, 4 quantum tu Obb. posthac imparem fortunae ictibus esse non arbitrer! Itaque remedia, quae paulo acriora esse dicebas, non modo non perhorresco, sed audiendi avidus vehementer efflagito.
+Itaque paulo post: O, inauam, summum lassorum solamen animorum, quam tu me vel sententiarum pondere vel canendi etiam iucunditate refovisti, adeo ut iam me posthac imparem fortunae ictibus esse non arbitrer! Itaque remedia, quae paulo acriora esse dicebas, non modo non perhorresco, sed audiendi avidus vehementer efflagito.
 
 — Tum illa: Sensi, inquit, cum verba nostra tacitus attentusque rapiebas, eumque tuae mentis habitum vel exspectavi vel, quod est verius, ipsa perfeci; talia sunt quippe, quae
 
@@ -1242,7 +1242,7 @@ Hunc, uti diximus, diverso tramite mortales omnes conantur adipisci; est enim me
 
 Quorum quidem alii summum bonum esse nihilo indigere credentes, ut divitiis affluant, elaborant, alii vero, bonum quod sit dignissimum, veneratione iudicantes adeptis honoribus reverendi civibus suis esse nituntur.
 
-Sunt qui summum bonum in summa potentia esse constituant: hi vel regnare ipsi volunt vel regnantibus adhaerere conantur. At quibus optimum quiddam claritas I9 Plat. Euth. 27se: ἀ̃ρά γε πάντες ἄνϑρωποι βουλόμεϑα tv πράττειν; (Iambl. V 24, 22; r. Jaeger 62). Cic. Hort. 26/36: beati certe omnes esse volumus, unde disputationis (alteritls partis iudice Byicatero 56) sumptum esse initium August. Trin. XIII4, 7 testatur; cf. contra Ae. 15. Civ. VIII 8. XIX 1. Hort. 29/39 15/16 r. Plasberg 59 de Cic. Hort. 61/70: ex ea (certa via) multis vitiis et erroribus depravata deducitur, Tusc. III 1-6 (.5 deinhine P 6 angustam KE, (n in ral.) L ag. P 13 auforet PFCL VDKE (u in ras.) F1 abforet FICVs 16 hanc F1 vel hunc F* (vel del.) L 20 esse bonum F
+Sunt qui summum bonum in summa potentia esse constituant: hi vel regnare ipsi volunt vel regnantibus adhaerere conantur. At quibus optimum quiddam claritas
 
 videtur, hi vel belli vel pacis artibus gloriosum nomen propagare festinant. Plurimi vero boni fructum gaudio laetitiaque metiuntur:
 
@@ -1258,7 +1258,7 @@ Habes igitur ante oculos propositam fere formam felicitatis humanae: opes, honor
 
 Sed ad hominum studia revertor, quorum animus etsi caligante memoria tamen bonum suum repetit.
 
-sed velut ebrius, domum quo tramite revertatur, ignorat. Num enim 24 Epic. fr. 348 (Aug. Civ. XIX 1) 27/28 cf. Plat. Rep. 51se. Klingner 30, 38 PFCLVDKE 7 appetunt CW Peip. 12 numerantur E1 W Peip. 15 magnitudo quae (bonum esse ex est?) quod ab omnibus petitur) P 19 indicat esse F bonum iudicat P 23 honoresq; P 24 voluptatem W Peip. 28 ueluti W Peip. videntur errare hi, qui nihilo indigere nituntur? Atqui non est aliud, quod aeque perficere beatitudinem possit quam copiosus bonorum omnium status nec alieni egens, sed sibi ipse sufficiens.
+sed velut ebrius, domum quo tramite revertatur, ignorat. Num enim videntur errare hi, qui nihilo indigere nituntur? Atqui non est aliud, quod aeque perficere beatitudinem possit quam copiosus bonorum omnium status nec alieni egens, sed sibi ipse sufficiens.
 
 Num vero labuntur hi, qui, quod sit optimum, id etiam reverentiae cultu dignissimum putent? Minime; neque enim vile quiddam contemnendumque est, quod adipisci omnium fere mortalium laborat intentio.
 
@@ -1290,7 +1290,7 @@ Bonum est igitur, quod tam diversis studiis homines petunt; in quo quanta sit na
 
 **9** captent escas metuantque trucem
 
-**10** soliti verbera ferre magistrum, (10)
+**10** soliti verbera ferre magistrum,
 
 **11** si cruor horrida tinxerit ora,
 
@@ -1348,7 +1348,7 @@ Bonum est igitur, quod tam diversis studiis homines petunt; in quo quanta sit na
 
 **38** stabilemque sui fecerit orbem.
 
-Vos quoque, o terrena animalia, tenui licet imagine vestrum tamen principium somniatis verumque illum beatitudinis finem licet minime perspicaci, qualicumque tamen cogitatione prospicitis eoque vos et ad verum bonum na- PFCLVDКE 12 tecto F2L2 Aur.2 E (hoc est tecto s. «. F2) 20 specta P re* spectat F\' 23 cursum solitus P 32 perspicitis P Laud I (ϑεα̃σϑε Plan.) turalis ducit intentio et ab eodem multiplex error abducit.
+Vos quoque, o terrena animalia, tenui licet imagine vestrum tamen principium somniatis verumque illum beatitudinis finem licet minime perspicaci, qualicumque tamen cogitatione prospicitis eoque vos et ad verum bonum na- turalis ducit intentio et ab eodem multiplex error abducit.
 
 Considera namque, an per ea, quibus se homines adepturos beatitudinem putant, ad destinatum finem valeant pervenire.
 
@@ -1374,7 +1374,7 @@ Atqui hoc quoque maxime considerandum puto, quod nihil habeat suapte natura pecu
 
 — Quidni fateare, cum eam cotidie valennor aliquis eripiat invito? Unde enim forenses querimoniae, nisi quod vel vi vel fraude nolentibus pecuniae repetuntur ereptae? — Ita est, inquam.
 
-— Egebit igitur, - cf- infra p. 52, 15, Hartlieh 312 (Plut. Kccra πλούτον fr.2lD, VII 123B [Stob. IV 31 c 86]) 24/25 cf. Usener, Gott Anz. 1892, 381 (Aug. [Stob.IV31cs6])24/25cf. Keat. vit. 4,26. 2,14), Plasberg 70 (Cic. Hort. 76/83) 4 pecuniae DlKW Peip. pecunia (beatos non fien; f o ot- PFCLVDKE ferunt P nil P 6 fatemur L* 13 nequeo W Peip., ut vid. FC 14 adesse PC1 V1 Aur.1 15 abesse P 16 desiderabus om. JV1 uncis inelmit Peip. 24 pecunia — bove p 52. 21 om. P -4*
+— Egebit igitur,
 
 inquit, extrinsecus petito praesidio, quo suam pecuniam quisque tueatur. — Quis id, inquam, neget — Atqui non egeret eo, nisi possideret pecuniam, quam possit amittere..
 
@@ -1400,7 +1400,7 @@ si haec hians semper atque aliquid poscens opibus expletur, maneat necesse est, 
 
 Sed dignitates honorabilem reverendumque, cui provenerint, reddunt.
 
-Num vis ea est magistratibus, ut utentium mentibus virtutes inserant, vitia depellant? Atqui non fugare, sed inlustrare potius nequitiam solent, quo fit, ut indignemur eas saepe nequissimis hominibus contigisse; unde Catullus licet in curuli Nonium sedentem strumam 20 cf. Hor. Epod. 8, 14: onusta bacis 29 Catull. 52,2: sella in curtili struma Nonius sedet Plin. N. h. XXXTII 81) (P) FCLV(D)KE 2 id om. VE 3 eo del. P posset Par. 15090, Vind. 13 <non> expletur F2 VaU. 16 possunt indigo W Peip. 20 verba inde ab oneretque usque ad offiicio 53,24) excideruflt in D 22 deserit FW Peip. deserat F1 (ovr1 b ἐϰϕύγοι Plan.), cf. Eng. tamen appellat.
+Num vis ea est magistratibus, ut utentium mentibus virtutes inserant, vitia depellant? Atqui non fugare, sed inlustrare potius nequitiam solent, quo fit, ut indignemur eas saepe nequissimis hominibus contigisse; unde Catullus licet in curuli Nonium sedentem strumam tamen appellat.
 
 Videsne, quantum malis dedecus adiciant dignitates? Atqui minus eorum patebit indignitas, si nullis honoribus inclarescant.
 
@@ -1426,7 +1426,7 @@ Sed quoniam id eis non propria vis, sed hominum fallax adnectit opinio, vanescun
 
 Sed hoc apud exteras nationes: inter eos vero, apud quos ortae sunt, num perpetuo perdurant?
 
-Atqui praetura magna olim Potestas, nunc inane nomen et senatorii census gravis B5 putareris lJlommsen (Cassåod. Var. p. 492 s. r. Decoratus) optares PFCLV(D)KE Erakman: cf. Eng* 14 eo om. F\'CL YK 16 ostendat PK Laud 21 umbrabiles CL1 V Aur.1 K Laud1 W Peip. (cf. Amm. Marc. XXI 16.21: imperium .. cassum et umbratile) contingere (sic collige) W Peip. (sic aecipe) s. v. F2: cf. p. 30,16 30 praefectura F2CV2D2W Peip. sarcina; si quis quondam populi curasset annonam, magnus o nihil.
+Atqui praetura magna olim Potestas, nunc inane nomen et senatorii census gravis sarcina; si quis quondam populi curasset annonam, magnus o nihil.
 
 habebatur, nunc ea praefectura quid abiectius? ut enim paulo ante diximus, quod nihil habet proprii decoris. opinione utentium nunc splendorem accipit, nunc amittit.
 
@@ -1456,7 +1456,7 @@ O praeclara potentia, quae ne ad conservationem quidem sui satis efficax invenit
 
 tudinis auctor est, nonne, si qua parte defuerit, felicitatemqI\\ minuat, miseriam importet? Sed quamvis late humana ten-
 
-dantur imperia, plures necesse est gentes relinqui, quibus regum quisque non imperet. Qua vero parte beatos facien» desinit potestas, hac impotentia subintrat, quae miseros facit, hoc igitur modo maiorem regibus inesse necesse est miseriae ½ de Pompeio Magno v. Cassiod. Var. VI 18 3 v. supra! 20 Cie. Arch. 14: plena exemplorum vetustas PFCLVDKE 1 pop. quondam W Peip. an non iam P an non naID Vt 21 regis P ; probat Schepss) mutuaverint V Aur.KLaud, cf. Eng.2 Wn...IeWpeap. 22 nec W Peip. 27 regnum PVl imperet regum quisque W Peip. Verticem portionem.
+dantur imperia, plures necesse est gentes relinqui, quibus regum quisque non imperet. Qua vero parte beatos facien» desinit potestas, hac impotentia subintrat, quae miseros facit, hoc igitur modo maiorem regibus inesse necesse est miseriae Verticem portionem.
 
 Expertus sortis suae periculorum tyrannus f regni metus pendentis supra verticem gladii terrore simulavit.
 
@@ -1484,7 +1484,7 @@ Quae vero pestis efficacior ad nocendum quam familiaris inimicus?
 
 **4** foedis summittat habenis:
 
-**5** etenim licet Indica longe (5)
+**5** etenim licet Indica longe
 
 **6** tellus tua iura tremescat ,
 
@@ -1512,7 +1512,7 @@ consequens est, ut foedum non extendisse iudicetur. seu cum, uti paulo ante diss
 
 tu aestimas esse gloriosum, proxima parte terrarum videatur inglorius. Inter haec vero popularem gratiam ne com-
 
-memoratione quidem dignam puto, quae nec iudicio provenit nec umquam firma perdurat. Iam vero quam si inane, quam futtile nobilitatis nomen, quis non videat. Quae si ad claritudinem refertur, aliena est; videtur namque esse nobilitas quaedam de meritis veniens laus parentum. 2 Verg. Georg. 130: tibi serYiatult. Thule ssq. Ear. Andr. 3l9sq. 18 v. p. 40,14sqq.; 54,25sq. 24/25 Arist. Rhet. 1399b 16 (εὐγενείας.. ϕιλοτιμώτερον tlvat τὸν ϰεϰτημέον .. tvy. ἐντιμότης προγόνων), SaIl. lug. 85, 21—25, Hartlieh 321 PFCLVDEE 9 EIOTON PVAur. Laud ETOTON F HQTO-N L OrKON Peip. 13 conquisita PFlClLVxDK sit PC1LV1DK1, v. Eng* 18 esse gentes W Peip. 20 proxima FC*LAurs, l maxirna m2 s. s. E r0\'; πλησιοχώροις Plan.) pro maxima rel. 22 iudicio inde denuo T - ~
+memoratione quidem dignam puto, quae nec iudicio provenit nec umquam firma perdurat. Iam vero quam si inane, quam futtile nobilitatis nomen, quis non videat. Quae si ad claritudinem refertur, aliena est; videtur namque esse nobilitas quaedam de meritis veniens laus parentum.
 
 Quodsi claritudinem praedicatio facit, illi sint clari necesse est, qui praedicantur; quare splendidum te, si tuam non habes, aliena claritudo non efficit.
 
@@ -1544,7 +1544,7 @@ Quarum motus quid habeat iucunditatis, ignoro; tristes vero esse voluptatum exit
 
 Quae si beatos explicare possunt, nihil causae est, quin pecudes quoque beatae esse dicantur. quarum omnis ad explendam corporalem lacunam festinat intentio.
 
-Honestissima quidem coniugis foret liberorumque iucunditas, sed nimis e natura dictum est nescio quem filios invenisse tortores; quorum 7\'3\'8 Mart. Cap. 427, 7 (299, 261: cornua lnnae 15 ef. Cic. Hori. G6 74, 73/80, 74/81, Plasberg 77, Dienel 1914, 7 26 cf Soph. Ant. 645sqq.: δστις δ\'ἀνωϕέλητα ϕιτύει τέϰνα, i Tt åv εἴποις allo πλὴν αὑτω̜̃ πόνους ϕῡσαι; Euen. fr. 6: ἢ δέος ἢ λύπη παῑς πατρὶ πάντα χρόνον st. Eth. 1119b ssqq. non recte adferri videtur) sid.5 degenerent T2L Aur.2 DE (probat Schepsi 9 om. P et PTLVDK sid. T2LV2 Aur. K Laud2 E (Cally) 24 lacinam P lueinam ut trid. V1 s. s. -i. retentio aque dr) 26 tortorem PLV1 Aur. DK Laud E1
+Honestissima quidem coniugis foret liberorumque iucunditas, sed nimis e natura dictum est nescio quem filios invenisse tortores; quorum
 
 quam sit mordax quaecumque condicio, neque alias expertum te neque nunc anxium necesse est ammonere. In quo Euripidis mei sententiam probo, qui carentem liberis infortunio dixit esse felicem.
 
@@ -1572,7 +1572,7 @@ Potentiamne desideras? Subiectorum insidiis obnoxius periculis subiacebis. Glori
 
 Voluptariam vitam degas?
 
-Sed quis non spernat atque abiciat vilissimae fragilissimaeque rei, corporis, servum? Iam vero qui bona prae se corporis ferunt, quam exigua, quam fragili possessione nituntur! Num enim elephantos mole. tauros robore superare poteritis, num tigres velocitate praeibitis? 25 3 Eur. Andr. 420: δυστυχω̃ν εὐδαιμονει̃ 21 Plut. Apoll. lWi- ϑρώπων ὄντως ϑνητὰ at ἐϕήμερα tc; σώματα. 114d 24 Gal. Protr. 9 (21, 12sq. K.): τίς λεόντων ij ἐλεϕάντων ἀλϰιμώτερος; Plut. H- παίδ. cv. 5e: πόστον yap ἐστιν ἰσχὺς ἀνϑρωπίνη τη̃ς τω̃ν ἄλλων ζώ̩ων .. οἱ̃ον ἐλεϕάιωνxctl Tavotav cd λεόντων; PTLVDKE 5 omnis hoc vol. Pulman Peip. 6 l furentes s. s. T 11 01 s. B. hill d. i. P 12 vitae Pl 14 demonstrabo PE2, cf. Eng.2 et infra p. 81,22 15 conaberis P1T2 Aur.2 conaveris E conabaeris Tl conabaris P2L V Aur.1 DK Laud Peip. conaris ERg. coneris Bacr. eripias pE 19 petis T2V2E2 (probat Schepss) 21 degas a e corr.) Y deligis 1\'2, s. s. 1 degas I degere vis F 25 praehibitis P2 1
+Sed quis non spernat atque abiciat vilissimae fragilissimaeque rei, corporis, servum? Iam vero qui bona prae se corporis ferunt, quam exigua, quam fragili possessione nituntur! Num enim elephantos mole. tauros robore superare poteritis, num tigres velocitate praeibitis? 25
 
 Respicite caeli spatium, firmitudinem, celeritatem et aliquando desinite vilia mirari. Quod quidem caelum non his potius est quam sua, qua regitur, ratione mirandum.
 
@@ -1640,7 +1640,7 @@ deprehendisti?
 
 imbecillioris valentiae sit, in hac praesidio necesse est egeat alieno.
 
-— Ita est. inquam. — Igitur sufficientiae potentiaeque una est eademque natura. — Sic videtur. — Quod vero huius modi sit. spernendumne esse censes an contra rerum 20 cf. infra 73, 19; 82,12. Plat. Phaedr. 263 a (δοϰω̃ μέν 8 λέγεις μανϑάνειν, έτι δ\' ειπέ σαϕέστεϱον) similesque locos adfert Klingaer 4 PTLVDKE 6 nec scire Tl 12 tunc P 14 sufficerit PTDKlEl 17 gloriae Tl ut vid., VILaudlEt 20 apertius ex te D* cognoscere apertius LT* ex te cogn. malim apertius V 24 agere inpotentia P omnium veneratione dignissimum? — At hoc, inquam, ne dubitari quidem potest.
+— Ita est. inquam. — Igitur sufficientiae potentiaeque una est eademque natura. — Sic videtur. — Quod vero huius modi sit. spernendumne esse censes an contra rerum omnium veneratione dignissimum? — At hoc, inquam, ne dubitari quidem potest.
 
 — Addamus igitur sufficientiae potentiaeque reverentiam, ut haec tria unum esse iudicemus. — Addamus, si quidem vera volumus confiteri. —
 
@@ -1662,7 +1662,7 @@ Hoc igitur, quod est unum simplexque natura, pravitas humana dispertit et, dum r
 
 modo? — Qui divitias, inquit, petit penuriae fuga, de potentia nihil laborat, vilis obscurusque esse mavult multas etiam sibi naturales quoque subtrahit voluptates, ne pecuniam, quam paravit, amittat.
 
-Sed hoc modo ne sufficientia quidem contingit ei, quem valentia deserit, quem 20 cf. Plat. Prot. 329 c. d .1 ad PT1L1VK 11 confiteor TLX 14 posset F 2+ dis- PTLVDKE Petit P 27 fugat PKl 27 sq. deponentia PTl 29 nec 1\'1 30 nec TIK Peip.
+Sed hoc modo ne sufficientia quidem contingit ei, quem valentia deserit, quem
 
 molestia pungit, quem vilitas abicit, quem recondit obscuritas. Qui vero solum posse desiderat, profligat opes, despicit
 
@@ -1684,7 +1684,7 @@ potentem, reverendum. celebrem laetumque perficiat. Atque ut me interius animadv
 
 - O te, alumne. hac opinione felicem. si quidem hoc. inquit?
 
-adieceris! — Quidnam? inquam. — Essene aliquid in his 13 r. supra 59, 13sqq. 22 v. 60, 15 28 cf. Klingner 79 Phaedr. 263 c d: άϱιστα λέγεις\' άλλ\' ειπὲ xal τόδε PTLrDKE 1 obicit Ii 2 dispicit PT1V1 displicit K Aur.1 5 ut prius om. P \' etiam; hic quod \':P 11 quis V 12 in illis T1 16 _uda V* 22 conabaris VIK conareris Aur.2 E (probat Schepss) 29 quirinam PT1V1 , mortalibus caducisque rebus putas, quod huius modi statum possit afferre? — Minime, inquam, puto idque a te, nihil ut amplius desideretur, ostensum est.
+adieceris! — Quidnam? inquam. — Essene aliquid in his , mortalibus caducisque rebus putas, quod huius modi statum possit afferre? — Minime, inquam, puto idque a te, nihil ut amplius desideretur, ostensum est.
 
 — Haec igitur vel imagines veri boni vel imperfecta quaedam bona dare mortalibus videntur, verum autem atque perfectum bonum conferre non possunt. — Assentior, inquam.
 
@@ -1756,7 +1756,7 @@ quonam haec felicitatis perfectio constituta sit. In quo illud primum arbitror i
 
 exsistere, ne nos praeter rei subiectae veritatem cassa cogitationis imago decipiat. Sed quin exsistat sitque hoc veluti quit.lam omnium fons bonorum, negari nequit: omne enim.
 
-quod imperfectum esse dicitur. id imminutione perfecti imperfectum esse perhibetur. Quo fit, ut, si in quolibet genere imperfectum quid esse videatur, in eo perfectum quoque aliquid esse necesse sit; etenim perfectione sublata; unde illud. quod imperfectum perhibetur. exstiterit. ne fingi 10 Mart Cap. 74. 18 (49, 4 : Da, pater, aetherios mentem couscendere coetus 11 Eucler. ( Anth. Lat. ed. Riese 789) 8: qua luce reperta 15aq. cf. Plat. Leg. 7l5e: d .. ϑεὸς .. dQxnv re xal τελευτὴν ϰαι ftica Tciiv ο̃ντων άπάντων ε̎χων adfert Plut Ex. 601bf; Apoc. 1,8: ego sum A et Ω, principium et finis. De vectore Klinener 5ssq. 21 v. 63,5 PTLVDKE 14 micat unamque T1L1V quidem potest.
+quod imperfectum esse dicitur. id imminutione perfecti imperfectum esse perhibetur. Quo fit, ut, si in quolibet genere imperfectum quid esse videatur, in eo perfectum quoque aliquid esse necesse sit; etenim perfectione sublata; unde illud. quod imperfectum perhibetur. exstiterit. ne fingi quidem potest.
 
 Neque enim ab deminutis inconsummatisque natura rerum cepit exordium, sed ab integris absolutisque procedens in haec extrema atque effeta dilabitur.
 
@@ -1774,7 +1774,7 @@ Quare ne in infinitum ratio prodeat, confitendum est summum deum summi perfectiq
 
 — Ne hunc rerum omnium patrem illud summum bonum, quo plenus esse perhibetur, vel extrinsecus accepisse vel ita naturaliter habere praesumas, quasi habentis dei habitaeque beatitudinis diversam cogites esse substantiam.
 
-Nam si extrinsecus acceptum putes, praestantius id. quod dederit, ab eo, quod acceperit, existimare possis, sed hunc esse rerum omnium praecellentissimum dignissime confitemur. 51 diminutis T2K demunitis P 2 cepit K coepit rel. Peip. PTLVDKE 22 fragilis om. L fragilis (et) Baa. 8 considerandum rerum Tl. 22 ab ullo usque ad Super (66,27) deest D 31 ab eras. V 32 dignissime (q. s. v. add.) P. LXVII. Boethius, Cons. (WeiDberger) 5
+Nam si extrinsecus acceptum putes, praestantius id. quod dederit, ab eo, quod acceperit, existimare possis, sed hunc esse rerum omnium praecellentissimum dignissime confitemur.
 
 Quod si natura quidem inest, sed est ratione diversum. cum de rerum principe loquamur deo, fingat, qui potest.
 
@@ -1796,7 +1796,7 @@ verius nec ratiocinatione firmius nec deo dignius concludi potest. — Super hae
 
 demonstratis propositis aliquid inferre, quae porismata ipsi vocant, ita ego quoque tibi veluti corollarium dabo. Nam quoniam beatitudinis adeptione fiunt homines beati, beatitudo vero est ipsa divinitas.
 
-divinitatis adeptione beatos fieri manifestum est. Sed uti iustitiae adeptione iusti, PTLVKE 6 de do P 25 sq. reapse verius Schepss re ab severius P Laud2, ui vid. V1 re ab avenas Laud1 re ah severius t se eras.) K re verius L re*verius T1 re hac veriiia II re ipsa verius rel. JPeip. sapientiae sapientes fiunt, ita divinitatem adeptos deos fieri simili ratione necesse est.
+divinitatis adeptione beatos fieri manifestum est. Sed uti iustitiae adeptione iusti, sapientiae sapientes fiunt, ita divinitatem adeptos deos fieri simili ratione necesse est.
 
 Omnis igitur beatus deus, sed natura quidem unus; participatione vero nihil prohibet esse quam plurimos.
 
@@ -1820,7 +1820,7 @@ minime igitur membra sunt; alioquin ex uno membro beatitudo videbitur esse coniu
 
 — Id quidem, inquam, dubium non est, sed id, quod restat, exspecto. - Ad bonum vero cetera referri palam est.
 
-Ideirco enim sufficientia petitur, quoniam bonum esse iudicatur, idcirco 19 Klingner 72 cum Plat. Phaed. 60b: ώσπεϱ be μια̃ς ϰοϱυϕη̃ς ήμμένω confert Themist. I, p. 5 c 20 v. supra 60,19 PD4 ut pulchrum JBaa. (ώς PlaN.) 8 videtur PL\'D 11 velle PTLVDKE PD 12 ad ! ipsarum) P1. ut rid. V1 ut F* 18 bona T* I5. potentia, quoniam id quoque esse creditur bonum;
+Ideirco enim sufficientia petitur, quoniam bonum esse iudicatur, idcirco potentia, quoniam id quoque esse creditur bonum;
 
 idem de reverentia, claritudine, iucunditate coniectare licet. Omnium s igitur expetendorum summa atque causa bonum est; quod r enim neque re neque similitudine ullum in se retinet bonum.
 
@@ -1890,7 +1890,7 @@ Assentior, inquam; cuncta enim firmissimis nexa rationibus constant. — Tum ill
 
 — Oportet icitur idem esse unum atque bonum simili ratione concedas; eadem namque substantia est eorum, quorum naturaliter non est diversus effectus. — Negare, inquam, nequeo.
 
-— Nostine igitur, inquit, omne, quod est, tam diu manere atque subsistere, quamdiu sit unum? sed interire atque dissolvi, pariter atque unum esse 13 v. supra 66,1ssqq. 14 Klingner 81 Crito 4sb: άλλὰ μένει)
+— Nostine igitur, inquit, omne, quod est, tam diu manere atque subsistere, quamdiu sit unum? sed interire atque dissolvi, pariter atque unum esse
 
 destiterit? — Quonam modo? — Ut in animalibus, inquit. cum in unum coeunt ac permanent anima corpusque, id animal vocatur;
 
@@ -1912,7 +1912,7 @@ ubi, quantum earum natura queat, cito exarescere atque interire non possint. Nam
 
 aliarum fecundae sunt steriles harenae, quas si in alia \' quispiam loca transferre conetur, arescant. Sed dat cuique natura, quod convenit, et ne, dum manere possunt, intereant.
 
-elaborat. Quid quod omnes velut in terras ore deme trahunt alimenta radicibus ac per medullas robur corti - 22 Plut Ex. 607 e: ϕυτω̜̃ ε̎στι τις χώϱα μάλλον έτέϱας έτέϱα πϱόσϕοϱος, Ir ; τϱέϕεται ϰαι βλαστάνει βέλτιοv PTLVDKE 8 percurrenti <tibi s. v.> T1 12 (aliqtÚd s. v.) quod T* agat t. r. T* t. s. ut trid. vivet ivivat in mg. F) 16 nnllas P cemque diffundunt?
+elaborat. Quid quod omnes velut in terras ore deme trahunt alimenta radicibus ac per medullas robur corti - cemque diffundunt?
 
 Quid quod mollissimum quidque, sicuti medulla est, interiore semper sede reconditur, extra vero quadam ligni firmitate, ultimus autem cortex adversum caeli intemperiem quasi mali patiens defensor opponitur?
 
@@ -1938,7 +1938,7 @@ Nam saepe mortem cogentibus causis, quam natura reformidat, voluntas amplectitur
 
 Adeo haec sui caritas non ex animali motione, sed ex naturali intentione procedit; dedit enim providentia creatis a se rebus hanc vel maximam manendi causam, ut. Quoad possunt. naturaliter manere desiderent.
 
-Quare nihil est, quod ullo modo queas dubitare cuncfca, .1 secuti T1V1 7 permanendi verum generatum P 19 a- PTL VDKM scissa V1 20 cognoscentes P 30sq. dedit ei providentia P
+Quare nihil est, quod ullo modo queas dubitare cuncfca,
 
 quae sunt, appetere naturaliter constantiam permanendi, devitare perniciem.
 
@@ -1998,7 +1998,7 @@ Mundus hic ex tam diversis contrariisque partibus in unam formam minime convenis
 
 Coniuncta vero naturarum ipsa diversitas invicem discors dissociaret atque divelleret, nisi unus esset, qui quod nexuit contineret.
 
-Non tam vero certus naturae ordo procederet nec tam dispositos motus locis, temporibus, efficientia, spatiis, qualitatibus explicarent, nisi unus esset, qui has mutationum 9 Phaed. 76a 16sq. v. supra 18,7 19 v. 60, 19sq. 20 v. 18,6sq.; 63,17.6sq.v.supra18,719t1.60,19sq.2011.18,61>1}.; 18 inscientiam P (glossa in V) 20 (a) deo Met. minime s. a TTL VDKE nemini T2 E2 28 praecederet T1 30 eipliearet VAur. E
+Non tam vero certus naturae ordo procederet nec tam dispositos motus locis, temporibus, efficientia, spatiis, qualitatibus explicarent, nisi unus esset, qui has mutationum
 
 varietates manens ipse disponeret. Hoc quicquid est, quo condita manent atque agitantur, usitato cunctis vocabulo deum nomino.
 
@@ -2024,7 +2024,7 @@ regantur seque ad disponentis nutum veluti convenientia contemperataque rectori 
 
 - Nihil est igitur, quod naturam servans deo contra ire cone--.
 
-tur ? — Nihil, inquam. — Quodsi conetur, ait, num tandem proficiet quicquam adversum eum, quem iure beatitudinis potentissimum esse concessimus? - Prorsus. inquam, nihil PTLVDKE 1 varietatos P 8 concessimus % 15 Tx E .20 deducis ia e corr., s. s. deflectia T 21 continendum Tl 2-1 voluntarie T 26 contemperataeque Tl 31 adversus PlTSD Peip. valeret.
+tur ? — Nihil, inquam. — Quodsi conetur, ait, num tandem proficiet quicquam adversum eum, quem iure beatitudinis potentissimum esse concessimus? - Prorsus. inquam, nihil valeret.
 
 - Non est igitur aliquid, quod summo huic bono vel n vel possit obsistere? — Non, inquam, arbitror. —
 
@@ -2050,7 +2050,7 @@ Etenim paulo ante beatitudine incipiens eam summum bonum esse dicebas,quam in su
 
 Ipsum quoe deum summum esse bonum plenamque beatitudinem disserebas, ex quo neminem beatum fore. nisi qui pariter deus esset, quasi munusculum dabas.
 
-Rursus ipsam boni formam dei ac beatitudinis loquebaris esse substantiam 3sq. Sap. 8,1: attinget.. fortiter et disponit omnia suaviter con- sensum fortuitum existimat Rand 26,1) 12 Plat. Rep. 434 e: τάχ\' av ώσπεϱ έϰ πυϱειων έϰλάμψαι ποιήσαιμεν TTJP διϰαιοσύνην 24 r. supra 65, 11 1 valet F1, in mg. E valebit V1 bono ex homo T bomo Fl PTL YDKE 9 lacesceates P gigantes PLV2KE 16 potest PTlDl 21 nuBCque egredieris (om. quidem) T1 24 {a) beat. F* (probGt Sdupa)
+Rursus ipsam boni formam dei ac beatitudinis loquebaris esse substantiam
 
 ipsumque unum id ipsum esse bonum docebus, quod ab omni rerum natura peteretur. Deum quoque bonitatis gu-
 
@@ -2182,7 +2182,7 @@ Haec cum Philosophia dignitate vultus et oris gravitate servata leniter suaviter
 
 o, inquam, veri praevia luminis, quae usque adhuc tua fudit oratio, cum sui speculatione divina tum tuis rationibus invicta patuerunt eaque mihi.
 
-dolorem nuper oblita, non tamen antehac prorsus ignorata. dixisti. Sed ea ipsa est vel maxima nostri PTLVDKE 9 emdicen P ANICII. AXCII Laud; MANLII SEVERINI BOETHII BOETHI L BOETII P Laud BOECII K) EXCOXS ORD EXCONSOL RD r: PATRICII PHILOSOPHIAE f-PHYAE P -SOPICE K) CONSOLA- TIONIS LIBER TERTIUS EXPLICIT (COXSOLATI EXPLIC LIB III PK) INCIPIT LIB QYARTVS ((feliciter) PLK) PTLV Aur. DK, vexcons — patricii et lib om.) Laud, f lib om.) E 21 parentis P 23 ea quae PTlLx 24sq. antehactenus (anteh del.) prorsus*** YI causa maeroris, quod, cum rerum bonus rector exsistat, vel esse omnino mala possint vel impunita praetereant, quod solum quanta dignum sit ammiratione, profecto consideras. At huic aliud maius adiungitur;
+dolorem nuper oblita, non tamen antehac prorsus ignorata. dixisti. Sed ea ipsa est vel maxima nostri causa maeroris, quod, cum rerum bonus rector exsistat, vel esse omnino mala possint vel impunita praetereant, quod solum quanta dignum sit ammiratione, profecto consideras. At huic aliud maius adiungitur;
 
 nam imperante florenteque nequitia virtus non solum praemiis caret, verum etiam sceleratorum pedibus subiecta calcatur et in locum facinorum supplicia luit.
 
@@ -2258,7 +2258,7 @@ Pennas etiam tuae menti, quibus se in altum tollere possit, adfigam. ut perturba
 
 Tum ego: Papae, inquam, ut magna promittis.
 
-dubito, quin possis efficere, tu modo, quem excitaveris, ne moreris. — Primum igitur, inquit, bonis semper adesse 1 Mart. Cap. 40,12 (26,13): mundi exsuperat .. globum 7 Verg. Georg. I 336: frigida Saturni .. stella. 17 Plat. Phaedr. 216 e: Zενς ελαύνων πτηνὸν ἃϱμα .. διαϰοσμω̄ν πάντα PTLVDKE 6 iangat P 12 populum PV1D1 13 praemat PTlLl 15 scre- ptum P 19 scire ducem P 2ssq. excitaveris memor eris T1 potentiam, malos cunctis viribus esse desertos agnoscas licebit, quorum quidem alterum demonstratur ex altero.
+dubito, quin possis efficere, tu modo, quem excitaveris, ne moreris. — Primum igitur, inquit, bonis semper adesse potentiam, malos cunctis viribus esse desertos agnoscas licebit, quorum quidem alterum demonstratur ex altero.
 
 Nam cum bonum malumque contraria sint, si bonum potens esse constiterit, liquet imbecillitas mali, at si fragilitas clarescat mali, boni firmitas nota est.
 
@@ -2284,7 +2284,7 @@ Omnes igitur homines boni pariter ac mali indiscreta intentIone ad bonum perveni
 
 bonum, mali esse non possent. — Ita est.
 
-— Cum igitur Tlo sententia P 10 quisqaam Kindtrling 12 quem si PTL T DKE T1 25 memoria Antν.2 (probat Schepss; 28 certum est F2V2 Peip. LXVll. Boetkins, Cons. (Weinberger.) 6 utrique bonum petant, sed hi quidem adipiscantur, illi vero minime.
+— Cum igitur utrique bonum petant, sed hi quidem adipiscantur, illi vero minime.
 
 num dubium est bonos auidem potentes esse, qui vero mali sint, imbecillos? — Quisquis, inquam, dubitat, nec rerum naturam nec consequentiam potest considerare rationum. —
 
@@ -2306,7 +2306,7 @@ quod adipiscendi boni naturale ofiicium non est, idem ipsum conantur adipisci; a
 
 honos quidem potentes, malos vero esse necesse est imbecillos. — Recte. inquit, praecurris idque, uti medici sperare solent.
 
-indicium pst erectae iam resistentisque naturae. Sed quoniam te ad intellegendum promptissi- PTLVDKE 3 sunt TPeip. imbecilles PVlK 6 sunt P 12 pleniUJ T1L, cf. supra 73,19 20 quidem PvsD 21 ambigiit L1 ambigit T2L2 Laud E 22 positum P propos. (est) T2 Aur.2 E 23 appetant V* uaria P uaria capiditate Erfurt. 27 esse T2V2 E om. rel., cf.. infra 98, 14. 109,26. Eng.* 28 inbecilles PV2E1 mum esse conspicio, crebras coacervabo rationes; vide enim, quanta vitiosorum hominum pateat infirmitas, qui ne ad hoc quidem pervenire queunt, ad quod eos naturalis ducit ae paene compellit intentio.
+indicium pst erectae iam resistentisque naturae. Sed quoniam te ad intellegendum promptissi- mum esse conspicio, crebras coacervabo rationes; vide enim, quanta vitiosorum hominum pateat infirmitas, qui ne ad hoc quidem pervenire queunt, ad quod eos naturalis ducit ae paene compellit intentio.
 
 Et quid, si hoc tam magno ac paene invicto praeeuntis naturae desererentur auxilio?
 
@@ -2324,7 +2324,7 @@ An scientes volentesque bonum deserunt, ad vitia deflectunt? Sed hoc modo non so
 
 m qui mali sunt, eos malos esse non ab- nuo; sed eosdem esse pure atque simpliciter nego.
 
-Nam uti cadaver hominem mortuum dixeris. simpliciter vero hominem appellare non possis, ita vitiosos malos quidem esse 7 Yerg. Aen. XII 764sq.: neque enim levia aut ludicra petuntur pro .4 ac—magno om. pI 5 praeeuntes P 6 quantos P 18 in- PTLVDKE sciane f 24 pariter quod P 2, non om P 29 pure an ras. P 6*
+Nam uti cadaver hominem mortuum dixeris. simpliciter vero hominem appellare non possis, ita vitiosos malos quidem esse
 
 concesserim, sed esse absolute nequeam confiteri. Est enim, quod ordinem retinet servatque naturam; quod vero ab hac deficit, esse etiam, quod in sua natura situm est, derelinquit.
 
@@ -2346,7 +2346,7 @@ niaque expetenda referri ad bonum velut ad quoddam naturae suae cacumen ostendim
 
 Atqui omnis potentia expetenda est; liquet igitur malorum possibilitatem non esse potentiam. Ex quibus omnibus bonorum quidem potentia, malorum vero minime dubitabilis apparet infirmitas veramque illam Platonis esse sententiam liquet solos, quod desiderent, facere posse sapientes, improbos-
 
-bos vero exercere quidem, quod libeat., quod vero desiderent, explere non posse. Faciunt enim quaelibet, dum per 30 ssqq. v. supra 76,4 12 v. 75,1 27 Klingner 85, 3 Peipffo, qui adnotat: nt in Gorg. 507 c Alcib. primo 124 e sqq., oblocutus adfert Gorg. 466b—481b; t1. infra 90, 18. 91, 4. Band hoc caput et proximum Gorgiae paraphrasim esse dicit. PTLVDKE 1 consenserim YK 11 atqui T\' ut om. V 15 nisi qui Т2V2. 20 sq. omnia quae PT1L1V1 ea, quibus delectantur, id bonum, quod desiderant, se adepturos putant; sed minime adipiscuntur, quoniam ad beatitudinem probra non veniunt.
+bos vero exercere quidem, quod libeat., quod vero desiderent, explere non posse. Faciunt enim quaelibet, dum per 30 ea, quibus delectantur, id bonum, quod desiderant, se adepturos putant; sed minime adipiscuntur, quoniam ad beatitudinem probra non veniunt.
 
 **1** Quos vides sedere celsos solii culmine reges,
 
@@ -2366,7 +2366,7 @@ bos vero exercere quidem, quod libeat., quod vero desiderent, explere non posse.
 
 **9** Ergo cum caput tot unum cernas ferre tyrannos,
 
-**10** non facit, quod optat ipse, dominis pressus iniquis. (10)
+**10** non facit, quod optat ipse, dominis pressus iniquis.
 
 Videsne igitur, quanto in caeno probra volvantur, qua probitas luce resplendeat? In quo perspicuum est numquam bonis praemia, numquam sua sceleribus deesse suppca.
 
@@ -2378,7 +2378,7 @@ Atqui hoc a bonis non potest separari — neque enim bonus ultra iure vocabitur,
 
 ua-ntumlibet igitur saeviant mali, sapienti tamen corona non decidet, non arescet: neque enim probis animis proprium decus aliena decerpit improbitas.
 
-Quodsi extrinsecus 4-11 Mart. Cap. 16, 1 (9, 25): spes incerta fatigat 21sq. 11. supra 47, 7 sqq. 26sq. Ps. 89, 6: vespere decidat et obduret et arescat. Prov. 14, 24: Corona sapientium dhitiae eorum. Ier. 13,18 5 nitentes aeptos PTl 11 captos T2V2 Aur.2 (probat Peip.2) PTLVDKE 19 ut em c. (ni in ras. P currenti T2V2 21 id∗∗ T idem L2E2 Peip. id est rel.; cf. 32, 20. 23 accepto laetaretur, poterat hoc vel alius quispiam vel ipse < etiam, qui contulisset, auferre; sed quoniam id sua cuique I
+Quodsi extrinsecus accepto laetaretur, poterat hoc vel alius quispiam vel ipse < etiam, qui contulisset, auferre; sed quoniam id sua cuique I
 
 probitas confert, tum suo praemio carebit, cum probus esse desierit. Postremo cum omne praemium idcirco appetatur,
 
@@ -2396,7 +2396,7 @@ lam vero quisquis afficitur poena, malo se affectum esse non dubitat. Si igitur 
 
 Vide autem ex adversa parte bonorum, quae improbos poena comitetur; omne namque, quod sit, unum esse ipsum-
 
-que unum bonum esse paulo ante didicisti, cui consequens est, ut omne, quod sit, id etiam bonum esse videatur. Hoc igitur modo, quicquid a bono deficit, esse desistit. Quo fit. 7 ν.. supra 66, 29 17 sq. cf. Ambr. De off. I 12,46: impius ipse sibi poena est, iustus .. gratia et utrique aut bonorum ant malorum operam merees ex se ipso solvitur 26 v. sura 761 PTLVDKE 1 me L 10 sunt TIE 15 poena TI 16 accidere T2 Laud, rt. infra 100,18 17 pro nobis Tl 2x2 extremum Βασ. (τω̨̄ ϰολοϕω̄νι Tarr ϰαϰω̄ν Plan.) extrema codd. Peip. afficit P1 Aur.2 Laud2 E 23 inficit T1 Aur.2 Laud1 E ut mali desinant esse, quod fuerant - sed fuisse homines adhuc ipsa humani corporis reliqua species ostentat quare versi in malitiam humanam quoque amisere naturam.
+que unum bonum esse paulo ante didicisti, cui consequens est, ut omne, quod sit, id etiam bonum esse videatur. Hoc igitur modo, quicquid a bono deficit, esse desistit. Quo fit. ut mali desinant esse, quod fuerant - sed fuisse homines adhuc ipsa humani corporis reliqua species ostentat quare versi in malitiam humanam quoque amisere naturam.
 
 cea cum ultra homines quemque provehere sola probitas possit, necesse est, ut, quos ab humana condicione deiecit, infra hominis meritum detrudat improbitas; evenit igitur, ut, quem transformatum vitiis videas, hominem aestimare non possis.
 
@@ -2494,7 +2494,7 @@ Ita fit, ut qui probitate deserta homo esse desierit, \' cum in divinam condicio
 
 **38** nec nocentia corpori
 
-**39** mentis vulnere saeviunt. PTLVDKE
+**39** mentis vulnere saeviunt.
 
 Tum ego: Fateor, inquam, nec iniuria dici video vitiosos, tametsi humani corporis speciem servent, in beluas tamen animorum qualitate mutari; sed quorum atrox scelerataque mens bonorum pernicie saevit, id ipsum eis licere noluissem.
 
@@ -2514,7 +2514,7 @@ facinorum machina. repentino atque insperato saepe fine destruitur, quod quidem 
 
 Quos infelicissimos esse iudicarem, si non eorum malitiam saltem mors extrema finiret; etenim si de pravitatis infortunio vera conclusimus, infinitam liquet esse miseriam, quam esse constat aeternam.
 
-— Tum ego: Mira quidem, inquam., et concessu difficilis inlatio, sed his eam, quae prius concessa, sunt, nimium convenire cognosco. — 9 <f. Plat. Gorg. 509 d. dc. Hort. 29/39. Augustin. Civ. V 26 extr. (Plasberg28). Wilhelm610. Kiingners5sq. Tl3 atrorum P 8 cuiq̃ K cuipiam Schepss 12 misere F, ut νιd PTLVDKE T1 miserae rej. (infeliciter s. t. F) Peip. 22 distruitur T1K Peip. distribuitur D 26 concludimus P1V1 2seaP
+— Tum ego: Mira quidem, inquam., et concessu difficilis inlatio, sed his eam, quae prius concessa, sunt, nimium convenire cognosco. —
 
 Recte, inquit, aestimas, sed qui conclusioni accedere durum putat, aequum est vel falsum aliquid praecessisse demonstret vel collocationem propositionum non esse efficacem necessariae conclusionis ostendat; alioquin concessis praecedentibus nihil prorsus est, quod de inlatione causetur.
 
@@ -2530,7 +2530,7 @@ Bonos, inquit, esse felices, malos vero miseros nonne concessimus? — Ita est, 
 
 eo, cuius pura ac solitaria sine cuiusQuam boni ammixtione miseria est? — Sic, inquam, videtur. — Quid si eidem misero, qui cunctis careat bonis, praeter ea, quibus miser est, malum aliud fuerit adnexum, nonne multo infelicior eo censendus est, cuius infortunium boni participatione relevatur?
 
-—- Quidni? inquam. — Habent igitur improbi, cum puniuntur quidem, boni aliquid adnexum, poenam ipsam scilicet, quae 1 de Hort. 42,52, 49/58, 50/59, 51,60 c. Plasberg 41 sq. 8 Plat. Gorg.472e: d ἀδιϰω̃ν T< ϰαι d α̃διϰος πάντως μὲν ἄϑλιος ἀϑλιώτεϱος μἑντοι, ἑἀν μἡ διδω̨̄ δίϰην μηδἑ τυγχάνη τιμωϱίας, ἡττον δ\' ἄϑλιος ἑἀν διδω̨̄ δίϰην; p. supra 84,27, tn/fo 91,4 PTLVDKE lconcIosionePJT 3 collationem T1 Peip. propositionem r 7 neque F, ut υιd. T1, V1K1 16 (si) quis V2K1 22 (eo) praeter PT1V1K1E2, cf. Eng.2 25sqq. post inquam transponunt Sed puniri - Liquere respondi (p.91,5-9f Langen (Symb. phil. Bonn.266) et Eng. Uquere respondi non vertit Plan. malum liquere. — Respon tum Peip. malum liquet esse (om. respondi) E ratione iustitiae bona est, idemque cum supplicio carent, inest eis aliquid ulterius, mali ipsa impunitas, quam iniquitatis merito malum esse confessus es.
+—- Quidni? inquam. — Habent igitur improbi, cum puniuntur quidem, boni aliquid adnexum, poenam ipsam scilicet, quae ratione iustitiae bona est, idemque cum supplicio carent, inest eis aliquid ulterius, mali ipsa impunitas, quam iniquitatis merito malum esse confessus es.
 
 — Negare non possum. — Multo igitur infeliciores improbi sunt iniusta impunitate donati quam iusta ultione puniti.
 
@@ -2548,7 +2548,7 @@ Cui sententiae consequens est, ut tum demum gravioribus suppliciis urgueantur, c
 
 Tum ego: Cum tuas. mauajn, rationes considero, nihil 26 dici verius -puto, at si ad hominum iudicia revertar, quis ille est, cui haec non credenda. modo, sed saltem audienda videantur? — Ita. est. inquit illa..
 
-Nequeunt enim oculos tenebris assuetos ad lucem perspicuae veritatis attollere similesque avibus sunt, quarum intuitum nox inluminat, dies caecat; dum enim non rerum ordinem, sed suos .5 sqq. υ.90, 25 8 negavit PT1V1DKE 9 est om. P 13 acer- PTLVDKE vitate PT1VDK 16autquMP 22 demissos PVDE intuentur affectus, vel licentiam vel impunitatem scelerum putant esse felicem.. )
+Nequeunt enim oculos tenebris assuetos ad lucem perspicuae veritatis attollere similesque avibus sunt, quarum intuitum nox inluminat, dies caecat; dum enim non rerum ordinem, sed suos intuentur affectus, vel licentiam vel impunitatem scelerum putant esse felicem.. )
 
 Vide autem, quid aeterna. lex sanciat. Melionbus animum conformaveris: nihil opus est iudice praemium defe-.
 
@@ -2570,7 +2570,7 @@ mamentis, infeliciores eos esse, qui faciant, quam q patiantur iniuriam. — Vel
 
 — Miserior igitur tibi iniuriae inlator quam acceptor esse videretur. — Consequitur, inquam. Hac igitur aliisque causis ea radice nitentibus. quod turpitudo suapte natura miseros faciat, apparet inlatam cuilibet iniuriam non accipientis, sed inferentis esse miseriam. —.--WI
 
-Atqui nunc. ait, contra faciunt oratores; pro his enim qui grave quid acerbumque perpessi sunt, miserationem PTLVDKE 5 ipsu P 7 truxisti P 8 cernenda P 14 caeco Βασ (ταὺτὰ τω̨̄̄ τυϕλω̨̄ Plan.) caecos libri P<tp. 18 nnqua P 24 doleremde dolorem D1 26 hinc T2L2E2 27 aliisque de far. 15090 aliis ce rd. P<tp. aliisve Eng.2 (Plan.: ταύτη .. τη̄ αιτία xcl ἑτἑϱαις, cf. Βασ.) 31 aeerunmque PTT acerhumque ut ttd. L* miserationum P iudicum excitare conantur, cum magis admittentibus iustior miseratio debeatur, quos non ab iratis, sed a propitiis f potius miserantibusque accusatoribus ad iudicium veluti aegros ad medicum duci oportebat, ut culpae morbos supplicio resecarent.
+Atqui nunc. ait, contra faciunt oratores; pro his enim qui grave quid acerbumque perpessi sunt, miserationem iudicum excitare conantur, cum magis admittentibus iustior miseratio debeatur, quos non ab iratis, sed a propitiis f potius miserantibusque accusatoribus ad iudicium veluti aegros ad medicum duci oportebat, ut culpae morbos supplicio resecarent.
 
 Quo pacto defensorum opera vel tota frigeret, vel si prodesse hominibus mallet, in accusationis habitum verteretur.
 
@@ -2668,7 +2668,7 @@ paulisper arridens: Ad rem me, inquit, omnium quaesitu maximam vocas, cui vix ex
 
 Talis namque materia est, ut una. dubitatione succisa innumerabiles aliae velut hydrae capita. succrescant; nec ullus fuerit modus, nisi quis eas vivacissimo mentis igne coerceat. in hac.
 
-c enim de providentiae simplicitate, de fati serie, de repentinis Ii.22 sq. locos Platonicos υelut Phaed. 62 &: ἡϱἑμα ὲπιγελάσας adfert Klingner 82, 6sqq. P1 celeres vacem suspectam dicit Peip. 2 stupepit (1 eϰa) aeteris PTLVDKE P .9 chori libri 12 solvere V1 solYere ab V2K 17 inscientiae P insciti Cally 18 censent PZ\' cessant r\' 20 volatasque p 21 ut K utique PTVDE (et) quoniam T2LV2E 26 suarescant P casibus, de cognitione ac praedestinatione divina, de ar-
+c enim de providentiae simplicitate, de fati serie, de repentinis casibus, de cognitione ac praedestinatione divina, de ar-
 
 bitrii libertate quaeri solet, quae quanti oneris sint ipse perpendis. Sed quoniam haec quoque te nosse quaedam
 
@@ -2680,7 +2680,7 @@ formas ex divinae mentis stabilitate sortitur. Haec in suae simplicitatis arce c
 
 bus appellatum est. Quae diversa esse facile liquebit, si quis utriusque vim mente conspexerit; nam providentia. est ipsa illa divina ratio in summo omnium principe constituta. quae cuncta disponit. fatum vero inhaerens rebus mobilibus
 
-dispositio, per Quam providentia suis quaeque nectit ordinibus. Providentia namque cuncta pariter quamvis diversa, quamvis infinita complectitur, fatum vero singula digerit in motum locis, formis ac temporibus distributa,, ut haec tem- 25 poralis ordinis explicatio in divinae mentis adunata. 9 hinc alio fonte toque Neoplatonico usum esse Boethium putat Usener 52, r. Kiingner 4e, 3 (Plotin. I 7,1. II 2,1 sqq. III 1, 7sq.; 3, 4 sq. VI 8,18; 9, 8), 8ssq. Muller 26 (ProcLProv. 5sqq.; lolsqq. Tim. 30b\'. Rand 17,1 confert Cic. De divin. II 101: tum ego rursus quasi ab alio principio sum exorsus dicere 12 Schundelen, Theol. Lit.-Bl. 1870, 809 coll. Ang. De tria. III 4, 9 probasse non ridetur singulas Consolationis sententias, si minus ex Augustino fluϰerint, at tamen M eo explicari posse PTLVDKE lpraedist.TZr\'Z) 5 delibare Pulman 8 orationes T1LV 9 tum T1KE Pctp. 13 rebus gerendis E, in mg. F rebus regendis W (Kluss.) regerendis ut nd. V1Laud1 regendis rel. (n in ras. 3 lItt. r rfM. 2 litt. post g Zaud) regendi Antν.2 P<tp.: cf. infra 97, 15 sq. PhiloL 1893, 381 23 sq. immotum PT1V prospectum providentia sit, eadem vero adunatio digesta atque explicata temporibus fatum vocetur.
+dispositio, per Quam providentia suis quaeque nectit ordinibus. Providentia namque cuncta pariter quamvis diversa, quamvis infinita complectitur, fatum vero singula digerit in motum locis, formis ac temporibus distributa,, ut haec tem- 25 poralis ordinis explicatio in divinae mentis adunata. prospectum providentia sit, eadem vero adunatio digesta atque explicata temporibus fatum vocetur.
 
 Quae licet diversa sint, alterum tamen pendet ex altero; ordo namque fatalis ex providentiae simplicitate procedit.
 
@@ -2690,7 +2690,7 @@ Sive igitur famulantibus quibusdam providentiae divinis spiritibus fatum exercet
 
 Quo fit, ut omnia, quae fato subsunt, providentiae quoque subiecta sint, cui ipsum etiam subiacet fatum, quaedam vero, quae sub providentia locata sunt, fati seriem superent; ea vero sunt, quae primae propinqua. divinitati stabiliter fixa fatalis ordinem mobilitatis excedunt.
 
-Nam ut orbium circa. eundem cardinem sese vertentium, qui est intimus. ad simplicitatem medietatis accedit ceterorumque extra locatorum veluti cardo quidam, circa quem versentur, exsistit, extimus vero maiore ambitu rotatus, quanto a puncti media individuitate discedit, tanto amplioribus spatiis explicatur. si quid vero illi se medio conectat et societ, in simplicitatem cogitur diffundique ac diffluere cessat, simili ratione, quod longius a prima mente discedit, maioribus fati nexibus 5 percipiens PT2LV2KE 6 movet om. P praesentariaeque P, PTLVDKE ut nA r\', DKE 20 fatum — Nimis quidem (104, 12) desunt \'? E ..21 locuta PT1 28 amplicatur P 29 illis e T\'ZF\' illis eat f illis (e om.) K coniectat P (-at <M f<M.) T1 MVH. BoetkiM, CODa. (Weinberger.)
+Nam ut orbium circa. eundem cardinem sese vertentium, qui est intimus. ad simplicitatem medietatis accedit ceterorumque extra locatorum veluti cardo quidam, circa quem versentur, exsistit, extimus vero maiore ambitu rotatus, quanto a puncti media individuitate discedit, tanto amplioribus spatiis explicatur. si quid vero illi se medio conectat et societ, in simplicitatem cogitur diffundique ac diffluere cessat, simili ratione, quod longius a prima mente discedit, maioribus fati nexibus
 
 implicatur ac tanto aliquid fato liberum est, quanto illum rerum cardinem vicinius petit. Quodsi supernae mentis hae-
 
@@ -2708,7 +2708,7 @@ disponat. Nihil est enim, quod mali causa ne ab ipsis qu*\' dem improbis fiat; q
 
 summi boni cardine proficiens a suo quoquam deSecta.exordio. Quae vero, inquies, potest ulla iniquior esse confusio, quam ut bonis tum adversa.
 
-tum DrosDera, malis etiam tum optata. tum odiosa. contingant? Num igitur ea mentis integritate homines degunt, ut, quos probos improbosve censuerunt, eos quoque, uti existimant, esse necesse sit. 11 cf. Cic.Dedivin. 1125: fatum autem id appello, quod Graect ειμαϱμἑνην id est ordinem seriemque causarum, cum causae causa nexa rem ex se gignat 24 de Tito Bostrensi r. KlingBer 89, 4 PTLVDK 3 snpergredietar Baa. (cuH. Plan.: ύπεϱαναβήσται) 7 testabi- lem P 13 proficiscantur L2 ipsam . , immutabilem T2 F\' 21 nec P emproCIscantur Immuta1em.-., 24 proficiscens L2 Aur. Peip., cf. Eng. 29 censuerunt T2V2
+tum DrosDera, malis etiam tum optata. tum odiosa. contingant? Num igitur ea mentis integritate homines degunt, ut, quos probos improbosve censuerunt, eos quoque, uti existimant, esse necesse sit.
 
 Atqui in hoc hominum iudicia, depugnant et, quos alii praemio, alii supplicio dignos arbitrantur.
 
@@ -2732,7 +2732,7 @@ Hic igitur quicquid citra. spem videas geri, rebus quidem rectus ordo est, opini
 
 Sed sit ; aliquis ita bene moratus, ut de eo divinum iudicium pariter humanumque consentiat, sed est animi viribus infirmus, cui si quid eveniat adversi, desinet colere forsitan innocentiam, per quam non potuit retinere fortunam.
 
-Parcit itaque sapiens dispensatio ei, quem deteriorem facere possit 19 sq. Verg. Aea. II 426: iustissimus uaas .. et servantissimus aequi 22 Lucan. 1128 victrix causa deis placuit, sed victa Catoni d1 atquin hoc P hominem P 5 veluti P ditio P T qui PTLVDK de P 8 adiuventur 2-\' ad PV1 13 mediator F 21 diis T2L 23 rebus om.P 26 et humanum T1 Peip. 2T desinat iL devenit F 7*
+Parcit itaque sapiens dispensatio ei, quem deteriorem facere possit
 
 adversis, ne, cui non convenit, laborare patiatur. Est alius cunctis virtutibus absolutus sanctusque ac deo proximus;
 
@@ -2750,7 +2750,7 @@ hos in experimentum sui tristibus ducit. Nonnulli venerandum saeculi nomen glori
 
 site et ex eorum bono, quibus accedere videntur, Rant, nulla dubitatio est.
 
-Nam illud quoque, quod improbis nunc tristia., nunc optata. proveniunt, ex eisdem ducitur causis. Ac de tristibus quidem nemo miratur, quod eos malo meritos omnes existimant — quorum quidem supplicia. tum ceteros 6 ParmeMtdt tribuebat Peip. (coll. 8,56 << 1C, 1 Diels) PTLVDK 6 AKAPOC V Aur. Laud ANAPOC E\' anapos P AH PV Aur. Laud f<p<w T* fpoc D rpor V MpM) r<-J. δέμας Haupt (Henn. III 146) Δ L ααιμαις P ααινας F δαινας Aur. K δαιμας rel. AIEeEPC y οιϰο- δονησαν F OIKOAOecHAK P OIKAAOAXNICAN JT 7 ut P 8 exuperana F, cy. supra 29,13 10 remordet (rerum s. s.) F itaque et rerum <t ex quo pendet, ablativus rehtt mutatione (cf\'. 21, 6; 44,2: 54, 6) videtur MCtdtMe (de glussis codicis F, quae ad aliam lectionem pertinent, cf. 9, 19; 42,19; 44,14; 79,25; 89,13; 105,28), remordet corruptum censet Baa. (coM. Plan.: ἀηδοῡς συγχωϱεī πειϱαϑη̄ναι), v. Eng. iQxorient P1T1 duris (permittit <. a.) F (sinit) j5oMd 11 agit. (sinit) Goth. quidam Obb. <. XY. agit. 〈vult〉 JHMM. virtute f, ut ctd. Z virtutis T f-D 12 mutunnt F possunt — (13) ferre OM. Vi alii — possunt om. P lo saeculis Βασ. 18 accidere ZT\', cf-. 86,16 20 eis P 21 male P(?), L2 Peip. ab sceleribus deterrent, tum ipsos, quibus invehuntur, emendant — laeta vero magnum bonis argumentum loquuntur, quid de huius modi felicitate debeant iudicare, quam famulari- lari saepe improbis cernant.
+Nam illud quoque, quod improbis nunc tristia., nunc optata. proveniunt, ex eisdem ducitur causis. Ac de tristibus quidem nemo miratur, quod eos malo meritos omnes existimant — quorum quidem supplicia. tum ceteros ab sceleribus deterrent, tum ipsos, quibus invehuntur, emendant — laeta vero magnum bonis argumentum loquuntur, quid de huius modi felicitate debeant iudicare, quam famulari- lari saepe improbis cernant.
 
 In qua re illud etiam dispensari credo, quod est forsitan alicuius tam praeceps atque importuna natura, ut eum in scelera potius exacerbare possit rei familiaris inopia; huius morbo providentia collatae pecuniae remedio medetur.
 
@@ -2768,7 +2768,7 @@ Nam dum iniqua sibi a pessimis quidam perpeti videntur, noxiorum odio flagrantes
 
 vis, cui mala. quoque bona. sint, cum eis competenter utendo a.Iiemus boni elicit effectum. Ordo enim quidam cuncta.
 
-eomplectitur. ut, quod adsignata ordinis ratione decesserit, hoc licet in alium, tamen ordinem relabatur, ne quid in regno providentiae liceat temeritati. 6 exacervare PT1L1VDK 9 spectans T\'Z et spectans Aur.2 PTLVDK expectans rel. fctp. (αἰσϑανμενος Plan.) 10 rei PMJmaM: <-/. Eng. 13 ***acta r (auct erasum esse putarit Peip.) aucta F (probat Schepss) ducta in mg. T* ac P ἐπενεχϑεīσα Plan. 15 foedus ita nt ipsi P 17 dissentiant faciatque P 18 fuissent P 23 redire P redigere L1 24 student om. P 27 〈ab〉 adsignata T2LV2
+eomplectitur. ut, quod adsignata ordinis ratione decesserit, hoc licet in alium, tamen ordinem relabatur, ne quid in regno providentiae liceat temeritati.
 
 Ἀργαλέον δέ με ταῦτα θεὸν ὣς πάντ\' ἀγορεύειν.
 
@@ -2868,7 +2868,7 @@ creduntur, si disponentem providentiam spectes, nihil usquam mali esse perpendas
 
 **44** Hic est cunctis communis amor
 
-**45** repetuntque boni fine teneri, (45)
+**45** repetuntque boni fine teneri,
 
 **46** quia non aliter durare queant,
 
@@ -2900,7 +2900,7 @@ ita QUoque esse optimam censet.
 
 — Quid reliqua., quae cum sit aspera, iusto supplicio malos cohercet, num bonam populus putat? — Immo omnium, inquam, quae excogitari possunt.
 
-iudicat esse miserrimam. — Vide igitur, ne opinionem populi sequentes 11 cf. 96,15 aq. PTLVDKE 1 queunt V2 3 refluunt ut vid. T1 6 quid PT1VK1 qui K2 11 inquam denuo incipit E 12 fatumque P 19 sq. quod eet (prodest — prod OM.) P 27 reliquam T2L2E quiddam valde inopinabile confecerimus. — Quid? inquam. —
+iudicat esse miserrimam. — Vide igitur, ne opinionem populi sequentes quiddam valde inopinabile confecerimus. — Quid? inquam. —
 
 Ex his enim, ait, quae concessa sunt, evenit eorum quidem, qui vel sunt vel in possessione vel in provectu vel in adeptione virtutis, omnem, quaecumque sit, bonam, in improbitate vero manentibus omnem pessimam esse fortunam. — Hoc, inquam, verum est, tametsi nemo audeat confiteri.
 
@@ -3004,7 +3004,7 @@ Simul, cum omne disputatioms tuae latus indubitata fide constiterit, nihil de se
 
 Tum illa: Morem, inquit, geram tibi, simulque sic orsa est: Si quidem, inquit, aliquis eventum temerario motu nullaque causarum conexione productum casum esse definiat, nihil omnino casum esse confirmo et praeter subiectae rei significationem inanem prorsus vocem esse decerno; quis enim cohercente in ordinem cuncta deo locus esse ullus temeritati reliquus potest?
 
-Nam nihil ex nihilo exsistere vera sententia est, cui nemo umquam veterum refragatus 22 e. Epicnrea ed. Usener p.5. 13; 374. CIass. Review XXXIV 161; XXXV 23. Rand, Jahrb. Sapp!. XXVI 425. Pers. 3, 84: gigni de sihilonthilum. Inscriptio deest in F ANICII MANLIt SEVERINI BOETHII PTLVDKE (BOETII Laud) VC ET INh EXCOXS (EXCOXSOL D ORD EXMAG OFF ATQE PATRICIO(CII Z\') PHILOSOPHICAE (PHILOSOPHIAE T) CONSOLATIONYS LIB . IIII EXPLICIT (expl. l. quartus TK) INCIPIT LIB V FELICITER TLV Aur. DLaud, (om. Te et ml .. exmag off atque) K 3 exortatio L1 VDK exoratiojP tua quae T1V2 4 quaestioautn P1, ut p,j TI g quae enim P 17 eveatn F est, quamquam id illi non de operante principio, sed de
+Nam nihil ex nihilo exsistere vera sententia est, cui nemo umquam veterum refragatus est, quamquam id illi non de operante principio, sed de
 
 materiali subiecto hoc omnium de natura rationum quasi quoddam iecerint fundamentum. At si nullis ex causis aliquid oriatur, id de nihilo ortum esse videbitur; quodsi hoc fieri nequit, ne casum quidem huius modi esse possibile est, qualem paulo ante definivimus. —
 
@@ -3024,7 +3024,7 @@ Neque enim vel qui aurum obruit vel qui agrum exercuit,
 
 ut ea pecunia repperiretur, intendit, sed, uti dixi, quo ille obruit. hunc fodisse convenit atque concurrit. Licet igitur
 
-definire casum esse inopinatum ex confluentibus causis in his, quae ob aliquid geruntur, eventum. Concurrere vero atque confluere causas facit ordo ille inevitabili conexione procedens, qui de providentiae fonte descendens cuncta suis locis temporibusque disponit. 6 c. 107,18 9sq. Aristot. Phys. II 4 PTLVDKE 1 id om. Met. 2 hoc (est) Jfff.; v. Eng. 3 iecerunt f 7 ni- hilne esse P 8 tam nt si P 9 aristotelis PTL1VKE 10 vetert PF* 11 qm P quo X 12 de ont. P 15 fortuitn PT1V2E Peip. accedisse L1VD1K 18 loco PKE 19 haec r\'L 1Aur.D1 Peip. 20 fortuitu PV1(-ta V2) causa PT1L1V1 Aur.D Peip. ex om. P 22 argentum rcnit (ste) f 2T fecit P 28 prudentiae P
+definire casum esse inopinatum ex confluentibus causis in his, quae ob aliquid geruntur, eventum. Concurrere vero atque confluere causas facit ordo ille inevitabili conexione procedens, qui de providentiae fonte descendens cuncta suis locis temporibusque disponit.
 
 **1** Rupis Achaemeniae scopulis, ubi versa sequentum
 
@@ -3066,7 +3066,7 @@ Nam supernis divinisque substantiis et perspicax iudicium et incorrupta voluntas
 
 Humanas vero animas liberiores quidem esse necesse est, cum se in mentis divinae speculatione conservant, minus vero, cum dilabuntur ad corpora. minusque servitus, cum terrenis artubus colligantur.
 
-Extrema, vero est 30 servitus, cum vitiis deditae rationis propriae possessione 1 acham. P sequentiumjP 2 figit om. T1 picula P 3 tygris PTLVDKE P eufrates PTK fronte P 5 coherant P coheant L 1 6 conaaat P 7 conveniant P conveniunt K 12 frons P 22 in ipsis OM. T1E uncis incl. Peip. 25 voluptas P eScat P 26 esse om. p 27 necesse est cras. P
+Extrema, vero est 30 servitus, cum vitiis deditae rationis propriae possessione
 
 ceciderunt. Nam ubi oculos a summae luce veritatis ad inferiora, et tenebrosa deiecerint, mox inscitiae nube caligant, perniciosis turbantur affectibus, quibus accedendo
 
@@ -3090,7 +3090,7 @@ consentiendoque, quam invexere sibi, adiuvant servitutem et sunt quodam modo pro
 
 **9** nulla terrae mole resistunt,
 
-**10** non nox atris nubibus obstat.
+**10** non nox atris nubibus obstat
 
 **11** Quae sint, quae fuerint veniantque,
 
@@ -3102,7 +3102,7 @@ consentiendoque, quam invexere sibi, adiuvant servitutem et sunt quodam modo pro
 
 Tum ego: En, inquam, difficiliore rursus ambiguitate confundor.
 
-— Quaenam, inquit, ista est? lam enim, quibus perturbere, coniecto. — Nimium, inquam, adversari ac re-!5 pugnare videtur praenoscere universa. deum et esse ullum 8 Hom. F277: \'Ηέλιός ϑ\', 8: Trttyr\' ἐϕοϱᾱͅς ϰαὶ πάντ\' ἐπαϰούεις, cf. 1109. μ 323 9 Hom. A 605: λαμπϱὸν ϕάος ἠελίοιο 18 Verg. Georg. IV 393: quae sunt, quae fuerint, quae mox ventura trahuntur 20 cf Cic. Xat. deor. 11 68. III 54. Lact. Inst. II 10. Firm. Mat. De err. prof. rel. 17, 1. Mart. Cap. 74, 1 (48, 9) 22 sqq. cf. Aag. Civ. V 9-11 PTLVDKE 1 ceciderint V 2 inscientiae VE 4 adiubant T1V1DK1E2 (-bent JE\') 7 quaque P praedist. rZDiT 8 earmtMt attribuit Eng. (cf. Plan.) ΗΑΝΦΟΡΑΝ KAI ΝΑΝΤΕΠΑΚΟΙΕΗ P ἐϕοϱω̄ν . . ἐπα- ϰούων Obb. Petp. 24 pertarbere DLV1 perturbaere E perturbare rel. Peip. libertatis arbitrium.
+— Quaenam, inquit, ista est? lam enim, quibus perturbere, coniecto. — Nimium, inquam, adversari ac re-!5 pugnare videtur praenoscere universa. deum et esse ullum libertatis arbitrium.
 
 Nam si cuncta prospicit deus neQue falli ullo modo potest, evenire necesse est, quod providentia. futurum esse praeviderit.
 
@@ -3122,7 +3122,7 @@ In utroque igitur necessitas inest, in hoc quiuem sedendi, at vero in altero ver
 
 Sed non idcirco quisque sedet, quoniam vera est opinio, sed haec potius vera est, quoniam quempiam sedere praecessit.
 
-Ita cum 8 provisa P 9 praesentia PK1 16 (est eras.) hoc T 19 ce- PTLVDKE cessitas TV Aur.LaudKE 20 in futurum (an otH.) P faturarumZ* fQtara y necessitate K1 26 at T1 Peip. est conversa P 27 copiam P 28 est om. P causa veritatis ex altera parte procedat, inest tamen communis in utraque necessitas.
+Ita cum causa veritatis ex altera parte procedat, inest tamen communis in utraque necessitas.
 
 Similia de providentia futurisque rebus ratiocinari patet; nam etiam si idcirco, quoniam futura sunt, providentur, non vero ideo, quoniam providentur, eveniunt, nihilo minus tamen a deo vel ventura provideri vel provisa necesse est
 
@@ -3144,7 +3144,7 @@ Quid igitur, quonam modo deus haec incerta. futura praenoscit?
 
 Nam si inevitabiliter eventura. censet, quae
 
-etiam non evenire possibile est, fallitur, quod non sentire modo nefas est, sed etiam voce proferre. At si ita, uti sunt, ita ea futura esse decernit, ut aeque vel fieri ea vel non fieri posse cognoscat, quae est haec praescientia, quae nihil PTLVDKE 6 ab TLV1DK 7 prorisa om. T2V2E2 Peip.; cf. Eng. 13 esse — id ipsam in my. T 11 sq. ita — necesse est om. PD1 novi — futurum om. V1 21 ab om. Т2L1 23 aereat P 24 nti etiam P 26 qui P 28 quod nec sentire P 30 decernet P certum, nihil stabile comprehendit?
+etiam non evenire possibile est, fallitur, quod non sentire modo nefas est, sed etiam voce proferre. At si ita, uti sunt, ita ea futura esse decernit, ut aeque vel fieri ea vel non fieri posse cognoscat, quae est haec praescientia, quae nihil certum, nihil stabile comprehendit?
 
 Aut quid hoc refert vaticinio illo ridiculo Tiresiae Quicquid dicam, aut erit aut non?
 
@@ -3166,7 +3166,7 @@ es quicquam fuerint, sed omnium meritorum potius mixta. atque indiscreta. confus
 
 Igitur nec sperandi aliquid nec deprecandi ulla ratio est; quid enim vel speret quisque vel etiam deprecetur, quando optanda omnia. series indeflexa conectit?
 
-Auferetur igitur unicum illud inter homines deumque : commercium sperandi scilicet ac deprecandi, si quidem iustae humilitatis pretio inaestimabilem vicem divinae gratiae promeremur, qui solus modus est, quo cum deo colloqui 3 Hor. Sat. II 5,59; cf-. Cic. Nat. deor. I 70 -1 fert P difFert Bentley (ad Horat.) 2 ridienlo om. P PTLVDKE I? futura P 24 esset Schepss potest P 29 praeconio P 30 pro- Oteremnr (emur in f<M.) T promereremar Schepss LXVn. Boethtas, Cone. (Weinberger.) 8 homines posse videantur illique inaccessae luci prius quoque, quam impetrent, ipsa, supplicandi ratione coniungi.
+Auferetur igitur unicum illud inter homines deumque : commercium sperandi scilicet ac deprecandi, si quidem iustae humilitatis pretio inaestimabilem vicem divinae gratiae promeremur, qui solus modus est, quo cum deo colloqui homines posse videantur illique inaccessae luci prius quoque, quam impetrent, ipsa, supplicandi ratione coniungi.
 
 Quae si recepta. futurorum necessitate nihil virium habere
 
@@ -3190,7 +3190,7 @@ credantur, quid erit, quo summo illi rerum principi conecti atque adhaerere poss
 
 **9** nequit oppressi luminis igne
 
-**10** rerum tenues noscere nexus?
+**10** rerum tenues noscere nexus
 
 **11** Sed cur tanto flagrat amore
 
@@ -3248,7 +3248,7 @@ Si igitur praenotio nullam futuris rebus adicit necessitatem, quod tu etiam paul
 
 Etenim positionis gratia, ut, quid consequatur, advertas, statuamus nullam esse praescientiam.
 
-Num iaritur, quantum ad hoc attinet, quae ex a.rbitrio veniunt, ad necessitatem 10 CIc. Div.II ssqq. 24 Orig. (Euseb. Praep. ev.VIll): ἡ πϱόγνωσις τοῡ ϑεοῡ οὐϰ ἀνάγϰην ἐπιτίϑησι τοīς πεϱὶ ὡν ϰατείληϕε, cf. 116, 33sq. 25 p. lli, 23 10 M.que om. T1 mensque tulit iocam divinatione P distruit PTLVKE T1L1V describit L2 12 antqaaquam P 19 effica computes P praesentiam bis P 29 eveniunt T Peip. 8*
+Num iaritur, quantum ad hoc attinet, quae ex a.rbitrio veniunt, ad necessitatem
 
 cogantur? — Minime. — Statuamus iterum esse, sed nihil rebus necessitatis iniungere;
 
@@ -3272,7 +3272,7 @@ eadem. nrins nnam fiant. sine necessitate futura sunt.
 
 Quare sunt quaedam eventura, quorum exitus ab omni necessitate sit absolutus. Nam illud quidem nullum arbitror esse dicturum, quod, quae nunc fiunt, prius quam fierent, eventura non fuerint:
 
-haec isritur etiam praecognita liberos habent eventus. Nam sicut scientia. praesentium rerum nihil his, quae fiunt, ita praescientia futuro- PTLVDKE 1 cogantur PTIE coguntur reL igitur P 18 ventura TV 27 prins denuo incipit D 30 nune om. P Mt ras. F 33 praesentia PK rum nihil his, quae ventura sunt, necessitatis importat.
+haec isritur etiam praecognita liberos habent eventus. Nam sicut scientia. praesentium rerum nihil his, quae fiunt, ita praescientia futuro- rum nihil his, quae ventura sunt, necessitatis importat.
 
 Sed hoc, inquis, ipsum dubitatur, an earum rerum, quae necessarios exitus non habent, ulla possit esse praenotio.
 
@@ -3294,7 +3294,7 @@ Ratio vero hanc quoque transcendit speciemque ipsam, quae singularibus inest, un
 
 Intellegentiae vero celsior oculus exsistit; supergressa. namque universitatis ambitum ipsam illam simplicem formam pura mentis acie contuetur.
 
-In quo illud maxime considerandum est: nam superior comprehendendi vis amplectitur inferiorem, 12 (cy. 118,20) de Ammonio Iamblichum secuto (ἡ γνω̄σις . ἐνέϱγεια τιῡ γινώσϰοντος) c< Proclo (omne quod cognoscitur non secundum sui vim, sed secundum cognoscentium potias comprehenditur faccltatem) v. Klingner 107 -L necessitas P 2 inquies Schepss T incerta PT1 \' 〈s〉 in 〈t〉 certa PTLVDKE Eng.2 7sq. id esse e corr. T 23 (cocstitutam} iudicat P 25 intellegentia Fy 26 oculis T\' existat P
+In quo illud maxime considerandum est: nam superior comprehendendi vis amplectitur inferiorem,
 
 inferior vero ad superiorem nullo modo consurgit. Neque enim sensus aliquid extra materiam valet vel universales species imaginatio contuetur vel ratio capit simplicem formam, sed intellegentia quasi desuper spectans concepta forma, quae
 
@@ -3390,7 +3390,7 @@ Neque id iniuria; nam cum omne iudicium iudicantis actus exsistat, necesse est, 
 
 **39** introrsumque reconditis
 
-**40** formis miscet imagines. (40)
+**40** formis miscet imagines.
 
 Quodsi in corporibus sentiendis, quamvis afficiant instrumenta sensuum forinsecus obiectae qualitates animique agentis vigorem passio corporis antecedat, quae in se actum mentis provocet excitetque interim quiescentes intrinsecus formas, si in sentiendis, inquam, corporibus animus non passione insignitur, sed ex sua vi subiectam corpori iudicat passionem, quanto magis ea, quae cunctis corporum affectionibus absoluta, sunt, in discernendo non
 
@@ -3404,7 +3404,7 @@ Quid igitur, si ratiocinationi sensus imaginatioque refragentur nihil esse illud
 
 Quod sese intueri ratio putet? Quod enim sensibile vel imaginabile est, id universum esse non posse, aut igitur rationis verum esse iudicium nec quicquam esse sensibile aut, quoniam sibi notum sit plura sensibus et imaginationi esse subiecta, inanem conceptionem esse rationis.
 
-quae, auod sensibile sit ac singulare, quasi quiddam universale consideret. Ad haec, si ratio contra respondeat se quidem et quod sensibile et quod imaginabile sit in universitatis ratione conspicere, illa vero ad universitatis cognitionem aspirare non posse, quoniam eorum notio corporales figuras non posset excedere, PTLVDKE 1 quam efficiant P 10 igitur PE cogitationes PKl 12 co- gitationibus P 13 cesset T1D1 15 fugiendi appetendive om. P 18 sna aptePJS\' 20 imaginationique P1 imaginatioqq L 20sq. refragetur PT1 21 sq. ratio intueri F 23 posse abrumpitur D igitur desinit E 28 si quidem PT1VK sensibile abrumpitur P de rerum vero cognitione firmiori potius perfectiorique iudicio esse credendum, in huius modi igitur lite nos, quibus tam ratiocinandi quam imaginandi etiam sentiendique vis inest, nonne rationis potius causam probaremus?
+quae, auod sensibile sit ac singulare, quasi quiddam universale consideret. Ad haec, si ratio contra respondeat se quidem et quod sensibile et quod imaginabile sit in universitatis ratione conspicere, illa vero ad universitatis cognitionem aspirare non posse, quoniam eorum notio corporales figuras non posset excedere, de rerum vero cognitione firmiori potius perfectiorique iudicio esse credendum, in huius modi igitur lite nos, quibus tam ratiocinandi quam imaginandi etiam sentiendique vis inest, nonne rationis potius causam probaremus?
 
 Simile est, quod humana ratio divinam intellegentiam futura. nisi ut ipsa cognoscit, non putat intueri.
 
@@ -3460,7 +3460,7 @@ in hodierna quoque vita non amplius vivitis quam in illo mobili transitorioque m
 
 cum temporis infinitate tendatur, nondum tamen tale est, ut aeternum esse iure credatur. Non enim totum simul
 
-infinitae licet vitae spatium comprehendit atque complectitur, sed futura nondum, transacta iam non habet. Quod igitur interminabilis vitae plenitudinem totam pariter comprehendit ac possidet, cui neque futuri quicquam absit nec praeteriti fluxerit, id aeternum esse iure perhibetur idque 5sq. c. 117,12sqq. Augustin. De gen. ad litt. 14, Civ. XII 12, Boet. Trin. 158, 55—72, cf. Rand, Jahrb. Suppl. XXVI 427 21 Aristot. libro I De caelo; cf. II 1 (283b 26: οὐδὲ γέγονεν d πᾱς οὐϱανὸς orr\' ἐνδέχεται ϕϑαϱη̄ναι eqs.) TLVK 12 patefecit T1 Peip. patefecerit T2 21 l:cet...(mand)oc(en- snit) e corr. T 21 sq. arestotelia T necesse est et sui compos praesens sibi semper assistere et infinitatem mobilis temporis habere praesentem.
+infinitae licet vitae spatium comprehendit atque complectitur, sed futura nondum, transacta iam non habet. Quod igitur interminabilis vitae plenitudinem totam pariter comprehendit ac possidet, cui neque futuri quicquam absit nec praeteriti fluxerit, id aeternum esse iure perhibetur idque necesse est et sui compos praesens sibi semper assistere et infinitatem mobilis temporis habere praesentem.
 
 Unde non recte quidam, qui, cum audiunt visum Platoni mundum hunc nec habuisse initium temporis nec habiturum esse defectum, hoc modo conditori conditum mundum fieri < coaeternum putant.
 
@@ -3474,7 +3474,7 @@ infinitum temporis iter arripuit eoque modo factum est, ut continuaret eundo vit
 
 Itaque si digna. rebus nomina. velimus imponere, Platonem sequentes deum quidem aeternum, mundum vero dicamus esse perpetuum.
 
-Quoniam igitur omne iudicium secundum sui naturam, quae sibi subiecta sunt, comprehendit, est autem deo semper aeternus ac praesentarius status, scientia quoque eius X3sq. Plat. Tim. 2ssqq.; cf. Procl. in Tim. 75a; Angastia. Civ. X 31. XI 4, 5 25 aq. Tim. 37d sqq. o complexam T1V Peip. 14 immotum T1L1V (et) exT\' TZFX\' lo futurum ac praeteritum r* omnem temporis supergressa motionem in suae manet simplicitate praesentiae infinitaque praeteriti ac futuri spatia
+Quoniam igitur omne iudicium secundum sui naturam, quae sibi subiecta sunt, comprehendit, est autem deo semper aeternus ac praesentarius status, scientia quoque eius omnem temporis supergressa motionem in suae manet simplicitate praesentiae infinitaque praeteriti ac futuri spatia
 
 complectens omnia, quasi iam gerantur, in sua simplici cognitione considerat. Itaque si praevidentiam pensare velis, qua cuncta dinoscit, non esse praescientiam quasi
 
@@ -3494,7 +3494,7 @@ quamquam simul utrumque conspectum tamen discernitis et hoc voluntarium, illud e
 
 minime perturbat apud se Quidem praesentium, ad condicionem vero temporis futurarum. Quo fit, ut hoc non sit opinio, sed veritate potius nixa cognitio, cum exstaturum quid esse cognoscit, quod idem exsistendi necessitate carere non nesciat.
 
-Hic si dicas, quod eventurum deus videt, id non evenire non posse. quod autem non potest non evenire, id ex necessitate contingere, meque ad hoc nomen necessitatis adstrin- TLVK 4: praevidentiam F* praescieatiamF\'ZaMJ (πϱόγνωσιν\' Plan.) prae- sentiam rc?. JPctp. pensare — (5) praescientiam om. K 8 ab L Aur.1Laud\' 19 sq. necessariae &M T1L1 F\' 24 despiciens T2LV 32 nequo Mf ttJ. T1V1 gas, fatebor rem quidem solidissimae veritatis, sed cui vix aliquis nisi divini speculator accesserit.
+Hic si dicas, quod eventurum deus videt, id non evenire non posse. quod autem non potest non evenire, id ex necessitate contingere, meque ad hoc nomen necessitatis adstrin- gas, fatebor rem quidem solidissimae veritatis, sed cui vix aliquis nisi divini speculator accesserit.
 
 Respondebo namque idem futurum, cum ad divinam notionem refertur, necessarium, cum vero in sua natura perpenditur, liberum prorsus atque absolutum videri.
 
@@ -3514,7 +3514,7 @@ Quid igitur refert non esse necessaria, cum propter divinae scientiae condicione
 
 Hoc scilicet, quod ea, quae paulo ante proposui, sol oriens et gradiens homo, quae dum sunt, non fieri non possunt, eorum tamen unum prius quoque, quam fieret, necesse erat exsistere, alterum vero minime.
 
-Ita etiam, quae praesentia deus habet, dubio procul exsistent, sed eorum hoc Quidem de rerum necessitate 2 Ammon. p. 135: ϰαὶ ε̌στι r6 αὐτὸ τη̄ μὲν ϕύσει τη̄ ἑαυτοῡ ἐνδεχόμενον i? δὲ γνώσει rd<y ϑεω̄ν οὐϰέτι ἀόϱιστον, ἀλλ\' ὡϱισμένον 27 cf. 124,21 o enim sunt K 7 〈hominem〉 aliquem K 13 eam OM. T1 TLVK 16 ds in ras. quattuor fere litt. 2\'* 18 fiant T1K1 Fe!p. 20 f!H deficiunt? 23 quia Aur.2 26evematZ\' 31 existunt TL1 Peip.
+Ita etiam, quae praesentia deus habet, dubio procul exsistent, sed eorum hoc Quidem de rerum necessitate
 
 descendit, illud vero de potestate facientium. Haud igitur iniuria. diximus haec, si ad divinam notitiam referantur, necessaria, si per se considerentur, necessitatis esse nexibus absoluta, sicuti omne, quod sensibus patet, si ad rationem referas, universale est, si ad se ipsa respicias, singulare.
 
@@ -3534,10 +3534,10 @@ ante posuisti, indignum esse, si scientiae dei causam futura nostra praestare di
 
 complectens rebus modum omnibus ipsa constituit, nihil vero posterioribus debet. Quae cum ita sint, manet intemerata morta-libus arbitrii libertas nec
 
-iniquae leges solutis omni necessitate voluntatibus praemia poenasque proponunt. Manet etiam spectator desuper cunctorum praescius deus visionisque eius praesens semper 30 cf; Prud. Cath. II 105 sqq.: Specuiator adstat desuper, i qui nos diebus omnibus ! actusque nostros prospicit TLVK 2 iniuriam T1VK 5 ipsum V2, cf. Eng. 7 cumque T1L1V 8 tuum quidem <t< r<d. Tl 11 praesentiam T1 19 illud T1 Peip. aeternitas cum nostrorum actuum futura qualitate concurrit bonis praemia, malis supplicia dispensans.
+iniquae leges solutis omni necessitate voluntatibus praemia poenasque proponunt. Manet etiam spectator desuper cunctorum praescius deus visionisque eius praesens semper aeternitas cum nostrorum actuum futura qualitate concurrit bonis praemia, malis supplicia dispensans.
 
 Nec frustra sunt in deo positae spes precesque, quae cum rectae sunt, inefficaces esse non possunt.
 
 Aversamini igitur vitia, colite virtutes, ad rectas spes animum sublevate, humiles preces in excelsa porrigite.
 
-Magna vobis est, si dissimulare non vultis, necessitas indicta probitatis, cum ante oculos agitis iudicis cuncta cernentis. 8 Esth. 16, 4: Dei cuncta cernentis arbitrantur se posse fugere sententiam. 4 adversamini T1 Peip. TLVK ANICII MANLII SEVERINI BOECII UC ET INL EXCONSL ORD EXMAG OFF ATQ PATRICIO PHILOSOPHIAE CSOLA- TIONIS LIB QVINT\' FELICITER EXPLICIT.DO GRATIAS AMHNf DO GRATIAS EXPLICIT FELICITER TAur. EXPLICIT LIBER QUINTUS FELICITER L EXPLICIT FELICITER F
+Magna vobis est, si dissimulare non vultis, necessitas indicta probitatis, cum ante oculos agitis iudicis cuncta cernentis.

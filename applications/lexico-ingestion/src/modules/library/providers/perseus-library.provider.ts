@@ -173,9 +173,9 @@ export class PerseusLibraryProvider {
             const directParagraphs: string[] = [];
             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
             $el.children("p, l").each((_index: number, pElem: unknown) => {
-              let text = $(pElem as string)
-                .text()
-                .trim();
+              const $clone = $(pElem as string).clone();
+              $clone.find("note, app, rdg, lem").remove();
+              let text = $clone.text().trim();
               if (!text) return;
               text = text.replaceAll(/\s+/g, " ");
               const nAttr = $(pElem as string).attr("n");
@@ -194,9 +194,9 @@ export class PerseusLibraryProvider {
             const paragraphs: string[] = [];
             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-call
             $el.find("p, l").each((_index: number, pElem: unknown) => {
-              let text = $(pElem as string)
-                .text()
-                .trim();
+              const $clone = $(pElem as string).clone();
+              $clone.find("note, app, rdg, lem").remove();
+              let text = $clone.text().trim();
               if (!text) return;
               text = text.replaceAll(/\s+/g, " ");
               const nAttr = $(pElem as string).attr("n");
@@ -207,8 +207,10 @@ export class PerseusLibraryProvider {
             });
 
             if (paragraphs.length === 0) {
+              const $clone = $el.clone();
+              $clone.find("note, app, rdg, lem").remove();
               // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-              let text = $el.text().trim();
+              let text = $clone.text().trim();
               if (text) {
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
                 text = text.replaceAll(/\s+/g, " ");

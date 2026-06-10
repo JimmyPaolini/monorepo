@@ -60,4 +60,4 @@ De Germinio episcopo Sirmiensi: Ex epistula Germinii ad episcopos Arianos: symbo
 
 Epistula Ualentis, Ursacii, Gaii et Pauli ad Germinium = Ser. B V (supra p. 159 sq.). ∗ ∗ ∗∗ ∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗ ∗∗∗∗∗
 
-Epistula Germinii ad Kufianum, Palladium et ceteros = Ser. B VI (supra p. 160—164). ∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗ ∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗ LXV. Hilarius pars 4. Fed er. 13
+Epistula Germinii ad Kufianum, Palladium et ceteros = Ser. B VI (supra p. 160—164). ∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗ ∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗∗
